@@ -1,0 +1,18 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+
+// Colors.
+$white: #ffffff;
+$black: rgba(0, 0, 0, .8);
+$lightgray: rgba(0, 0, 0, .15);
+$gray: rgba(0, 0, 0, 0.52);
+
+$dark-gray-800: #23282d;
+$light-gray-500: #e2e4e7;   // good for "grayed" items and borders
+
+$editor-html-font: Menlo, Consolas, monaco, monospace;
+$text-editor-font-size: 14px;

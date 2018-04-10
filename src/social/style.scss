@@ -1,0 +1,73 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.wp-block-coblocks-social {
+
+	&__button {
+		background-size: cover;
+		box-shadow: none !important;
+		display: inline-block;
+		height: 28px;
+		padding: 0 !important;
+		position: relative;
+		text-decoration: none !important;
+		width: 28px;
+	}
+
+	a {
+		background-color: #222;
+		margin: 0 0.33em;
+
+		&:first-of-type {
+			margin-left: 0;
+		}
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+
+		&:active {
+			animation: pulse 200ms;
+			animation-timing-function: ease-out;
+			animation-fill-mode: none;
+		}
+	}
+
+	.button--twitter {
+		mask-image: url(images/twitter.svg);
+	}
+
+	.button--facebook {
+		mask-image: url(images/facebook.svg);
+	}
+
+	.button--pinterest {
+		mask-image: url(images/pinterest.svg);
+	}
+
+	.button--linkedin {
+		mask-image: url(images/linkedin.svg);
+	}
+
+	.button--tumblr {
+		mask-image: url(images/tumblr.svg);
+	}
+
+	@keyframes pulse {
+
+		0% {
+			transform: scale(1);
+		}
+
+		15% {
+			transform: scale(0.9);
+		}
+
+		100% {
+			transform: scale(1);
+		}
+	}
+}

@@ -1,0 +1,38 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.editor-block-list__block[data-type="coblocks/dynamic-separator"] {
+
+	.coblocks-spacer-control {
+		margin-bottom: 0;
+
+		&::before {
+			transition: width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), max-width 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+		}
+	}
+
+	&.is-selected::before {
+		outline: none;
+	}
+
+	.editor-block-list__block-edit {
+		outline: 1px dashed $lightgray;
+	}
+
+	&.is-selected .editor-block-list__block-edit,
+	&.is-hovered .editor-block-list__block-edit {
+		outline: 1px dotted $lightgray;
+	}
+
+	&.is-selected .editor-block-list__block-edit {
+		outline: 1px solid #e2e4e7;
+	}
+
+	.wp-block-coblocks-dynamic-separator.hr-style--fullwidth::before {
+		width: calc(100% - 10px);
+	}
+}

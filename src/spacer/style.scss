@@ -1,0 +1,16 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.wp-block-coblocks-spacer {
+	background: none;
+	margin: 0 0 1.5em;
+	padding: 0;
+	opacity: inherit;
+
+	@media (min-width: 600px) {
+		margin: 0 0 1.85em;
+	}
+}
