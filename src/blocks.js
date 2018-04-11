@@ -9,6 +9,7 @@
  * Webpack is compiling as the input file.
  */
 
-import './spacer/index.js';
-import './social/index.js';
-import './dynamic-separator/index.js';
+import './blocks/spacer/index.js';
+import './blocks/social/index.js';
+import './blocks/dynamic-separator/index.js';
+import './blocks/alert/index.js';

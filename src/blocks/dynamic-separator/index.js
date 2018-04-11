@@ -1,12 +1,12 @@
-// Import CSS.
+// Import CSS
 import './editor.scss';
 import './style.scss';
 
-// External Dependencies.
+// External Dependencies
 import classnames from 'classnames';
 import ResizableBox from 're-resizable';
 
-// Internal Dependencies.
+// Internationalization
 const { __ } = wp.i18n;
 
 const {
