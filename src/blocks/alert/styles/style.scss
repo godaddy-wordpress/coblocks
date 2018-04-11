@@ -1,0 +1,62 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.wp-block-coblocks-alert {
+	border-radius: 0.25rem;
+	border: solid 1px #d6d8db;
+	margin-bottom: 1.5em;
+	padding: 1.1em 1.3em;
+	position: relative;
+
+	&.alignleft,
+	&.alignright {
+		@media (max-width: 599px) {
+			display: inline-block;
+			float: none;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		@media (min-width: 600px) {
+			max-width: 360px;
+		}
+	}
+
+	& &__title {
+		font-size: 1.2rem;
+		font-weight: 400;
+		line-height: 1;
+		margin-bottom: 0.65em;
+		width: 100%;
+		display: inline-block;
+
+		p {
+			margin-bottom: 0;
+		}
+
+		&:empty {
+			display: none;
+		}
+	}
+
+	& &__text {
+
+		a {
+			box-shadow: 0 -1px 0 inset;
+			color: inherit;
+			text-decoration: none;
+
+			&:hover {
+				box-shadow: 0 -2px 0 inset;
+				color: inherit;
+			}
+		}
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
