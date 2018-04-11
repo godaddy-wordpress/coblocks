@@ -18,6 +18,7 @@
   "dependencies": {
     "cgb-scripts": "1.9.4",
     "classnames": "2.2.5",
+    "md5": "^2.2.1",
     "lodash": "4.17.4",
     "moment": "2.21.0",
     "querystringify": "1.0.0",
