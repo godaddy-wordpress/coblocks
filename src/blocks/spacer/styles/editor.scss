@@ -11,10 +11,6 @@
 		margin-bottom: 0;
 	}
 
-	&.is-selected .editor-block-list__block-edit::before {
-		outline: none;
-	}
-
 	.editor-block-list__block-edit {
 		outline: 1px dashed $lightgray;
 	}
@@ -30,7 +26,6 @@
 }
 
 .coblocks-block-spacer-control__resize-handle {
-	background: none;
 	background: none;
 	border-radius: 0;
 	bottom: -15px !important;
