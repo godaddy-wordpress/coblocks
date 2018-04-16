@@ -1,0 +1,13 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.editor-block-list__block[data-type="coblocks/gif"] {
+
+	p {
+		margin: 0;
+	}
+}
