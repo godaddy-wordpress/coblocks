@@ -1,110 +1,57 @@
-// Import CSS
-import './editor.scss';
-import './style.scss';
+import Inspector from './components/inspector';
+import Controls from './components/controls';
 
-// External Dependencies
-import classnames from 'classnames';
+import './styles/editor.scss';
+import './styles/style.scss';
 
-// Internationalization
 const { __ } = wp.i18n;
 
-const {
-	Toolbar,
-	PanelColor,
-	Dashicon,
-	RangeControl,
-	ToggleControl,
-	SelectControl,
-} = wp.components;
+const { Component } = wp.element;
 
-const {
-	registerBlockType,
-	InspectorControls,
-	ColorPalette,
-	BlockControls,
-	AlignmentToolbar,
-} = wp.blocks;
+const { registerBlockType } = wp.blocks;
 
-registerBlockType( 'coblocks/social', {
+class SocialBlock extends Component {
 
-	title: __( 'Social ' ),
+	render() {
 
-	description: __( 'Add a social sharing element to your post.' ),
+		const {
+			attributes,
+			className,
+			isSelected,
+			setAttributes,
+		} = this.props;
 
-	icon: 'share',
-
-	category: 'common',
-
-	keywords: [
-		__( 'share' ),
-		__( 'twitter' ),
-		__( 'coblocks' ),
-	],
-
-	supports: {
-		customClassName: false,
-		html: false,
-	},
-
-	edit( { className, attributes, setAttributes, isSelected } ) {
-
-		const { twitter, facebook, pinterest, tumblr, linkedin, align, backgroundColor } = attributes;
+		const {
+			align,
+			backgroundColor,
+			facebook,
+			linkedin,
+			pinterest,
+			size,
+			space,
+			tumblr,
+			twitter,
+		} = attributes;
 
 		const iconStyle = {
 			backgroundColor: backgroundColor,
+			height: size ? size + 'px' : undefined,
+			margin: '0' + space ? space + 'px' : undefined,
+			width: size ? size + 'px' : undefined,
 		};
 
-		const inspectorControls = isSelected && (
-			<InspectorControls key="inspector">
-				<ToggleControl
-					label={ __( 'Twitter' ) }
-					checked={ !! twitter }
-					onChange={ () => setAttributes( {  twitter: ! twitter } ) }
-				/>
-				<ToggleControl
-					label={ __( 'Facebook' ) }
-					checked={ !! facebook }
-					onChange={ () => setAttributes( {  facebook: ! facebook } ) }
-				/>
-				<ToggleControl
-					label={ __( 'LinkedIn' ) }
-					checked={ !! linkedin }
-					onChange={ () => setAttributes( {  linkedin: ! linkedin } ) }
-				/>
-				<ToggleControl
-					label={ __( 'Pinterest' ) }
-					checked={ !! pinterest }
-					onChange={ () => setAttributes( {  pinterest: ! pinterest } ) }
-				/>
-				<ToggleControl
-					label={ __( 'Tumblr' ) }
-					checked={ !! tumblr }
-					onChange={ () => setAttributes( {  tumblr: ! tumblr } ) }
-				/>
-				<PanelColor title={ __( 'Icon Color' ) } colorValue={ backgroundColor }>
-					<ColorPalette
-						value={ backgroundColor }
-						onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
-					/>
-				</PanelColor>
-			</InspectorControls>
-		);
-
-		const controls = isSelected && (
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ align }
-					onChange={ ( newAlignment ) => setAttributes( { align: newAlignment } ) }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
-		);
-
 		return [
-			controls,
-			inspectorControls,
+			isSelected && (
+				<Controls
+					{ ...this.props }
+				/>
+			),
+			isSelected && (
+				<Inspector
+					{ ...this.props }
+				/>
+			),
 			<div className={ className } style={ { textAlign: align } }>
-
 				<p>
 					{ twitter &&
 						<a className={ 'wp-block-coblocks-social__button button--twitter icon--coblocks' } style={ iconStyle }>
@@ -148,8 +95,33 @@ registerBlockType( 'coblocks/social', {
 				</p>
 			</div>
 		];
+	}
+}
+
+registerBlockType( 'coblocks/social', {
+
+	title: __( 'Social ' ),
+
+	description: __( 'Add a social sharing module.' ),
+
+	icon: 'share',
+
+	category: 'common',
+
+	keywords: [
+		__( 'share' ),
+		__( 'twitter' ),
+		__( 'coblocks' ),
+	],
+
+	supports: {
+		customClassName: false,
+		html: false,
 	},
 
-	save( { attributes, className } ) {
+	edit: SocialBlock,
+
+	save() {
+		return null;
 	},
 } );
