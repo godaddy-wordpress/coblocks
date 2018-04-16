@@ -1,7 +1,6 @@
 const { Component } = wp.element;
 
 import classnames from 'classnames';
-import * as uniqueID from './../../../utils/helper';
 
 export default class Alert extends Component {
 
@@ -11,12 +10,24 @@ export default class Alert extends Component {
 
 	render() {
 
-		const { attributes: { title, textAlign, backgroundColor, textColor, borderColor, align } } = this.props;
+		const {
+			attributes,
+			className,
+		} = this.props;
+
+		const {
+			align,
+			backgroundColor,
+			borderColor,
+			textAlign,
+			textColor,
+			title,
+		} = attributes;
 
 		return (
 			<div
 				className={ classnames(
-					this.props.className,
+					className,
 					`align${ align }`
 				) }
 				style={ {

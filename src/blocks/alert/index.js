@@ -1,6 +1,7 @@
 import Inspector from './components/inspector';
 import Controls from './components/controls';
 import Alert from './components/alert';
+import icons from './components/icons';
 
 import './styles/style.scss';
 import './styles/editor.scss';
@@ -12,23 +13,29 @@ const { Component } = wp.element;
 const {
 	registerBlockType,
 	RichText,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-	MediaUpload,
 } = wp.blocks;
-
-const {
-	Button,
-	SelectControl,
-	withFallbackStyles,
-} = wp.components;
 
 class AlertBlock extends Component {
 
 	render() {
 
-		const { attributes: { title, value, textAlign, backgroundColor, borderColor, textColor, titleColor, align }, isSelected, className, setAttributes } = this.props;
+		const {
+			attributes,
+			className,
+			isSelected,
+			setAttributes,
+		} = this.props;
+
+		const {
+			align,
+			backgroundColor,
+			borderColor,
+			textAlign,
+			textColor,
+			title,
+			titleColor,
+			value,
+		} = attributes;
 
 		return [
 			isSelected && (
@@ -47,11 +54,13 @@ class AlertBlock extends Component {
 						tagName="p"
 						placeholder={ __( 'Add optional title...' ) }
 						value={ title }
+						isSelected={ isSelected }
 						className={ `${ className }__title` }
 						style={ {
 							color: titleColor,
 						} }
-						onChange={ ( value ) => this.props.setAttributes( { title: value } ) }
+						onChange={ ( value ) => setAttributes( { title: value } ) }
+						keepPlaceholderOnFocus
 					/>
 				) }
 				<RichText
@@ -60,10 +69,13 @@ class AlertBlock extends Component {
 					placeholder={ __( 'Write alert...' ) }
 					value={ value }
 					isSelected={ isSelected }
-					keepPlaceholderOnFocus
 					className={ `${ className }__text` }
-					style={ { backgroundColor: backgroundColor, borderColor: borderColor  } }
-					onChange={ ( value ) => this.props.setAttributes( { value: value } ) }
+					style={ {
+						backgroundColor: backgroundColor,
+						borderColor: borderColor,
+					} }
+					onChange={ ( value ) => setAttributes( { value: value } ) }
+					keepPlaceholderOnFocus
 				/>
 			</Alert>
 		];
@@ -76,7 +88,7 @@ registerBlockType( 'coblocks/alert', {
 
 	description: __( 'Provide contextual feedback messages.' ),
 
-	icon: 'admin-post',
+	icon: icons.alert,
 
 	category: 'common',
 
@@ -132,7 +144,16 @@ registerBlockType( 'coblocks/alert', {
 
 	save: function( props ) {
 
-		const { title, value, textAlign, backgroundColor, borderColor, textColor, titleColor, align } = props.attributes;
+		const {
+			align,
+			backgroundColor,
+			borderColor,
+			textAlign,
+			textColor,
+			title,
+			titleColor,
+			value,
+		} = props.attributes;
 
 		return (
 			<Alert { ...props }>
