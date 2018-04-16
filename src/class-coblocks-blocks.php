@@ -89,7 +89,7 @@ class CoBlocks_Blocks {
 	 * @access public
 	 */
 	public function load_dynamic_blocks() {
-		foreach ( glob( dirname( __FILE__ ) . '/*/index.php' ) as $block_logic ) {
+		foreach ( glob( dirname( __FILE__ ) . '/blocks/*/index.php' ) as $block_logic ) {
 			require $block_logic;
 		}
 	}
