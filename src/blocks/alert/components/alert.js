@@ -1,6 +1,12 @@
-const { Component } = wp.element;
-
+/**
+ * External dependencies
+ */
 import classnames from 'classnames';
+
+/**
+ * WordPress dependencies
+ */
+const { Component } = wp.element;
 
 export default class Alert extends Component {
 

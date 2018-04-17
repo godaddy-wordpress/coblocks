@@ -1,87 +1,21 @@
-import Inspector from './components/inspector';
-import Controls from './components/controls';
-import Alert from './components/alert';
-import icons from './components/icons';
-
+/**
+ * Internal dependencies
+ */
 import './styles/style.scss';
 import './styles/editor.scss';
+import Alert from './components/alert';
+import AlertBlock from './components/edit';
+import icons from './components/icons';
 
+/**
+ * WordPress dependencies
+ */
 const { __ } = wp.i18n;
+const { registerBlockType } = wp.blocks;
 
-const { Component } = wp.element;
-
-const {
-	registerBlockType,
-	RichText,
-} = wp.blocks;
-
-class AlertBlock extends Component {
-
-	render() {
-
-		const {
-			attributes,
-			className,
-			isSelected,
-			setAttributes,
-		} = this.props;
-
-		const {
-			align,
-			backgroundColor,
-			borderColor,
-			textAlign,
-			textColor,
-			title,
-			titleColor,
-			value,
-		} = attributes;
-
-		return [
-			isSelected && (
-				<Controls
-					{ ...this.props }
-				/>
-			),
-			isSelected && (
-				<Inspector
-					{ ...this.props }
-				/>
-			),
-			<Alert { ...this.props }>
-				{ ( ( title && title.length > 0 ) || isSelected ) && (
-					<RichText
-						tagName="p"
-						placeholder={ __( 'Add optional title...' ) }
-						value={ title }
-						isSelected={ isSelected }
-						className={ `${ className }__title` }
-						style={ {
-							color: titleColor,
-						} }
-						onChange={ ( value ) => setAttributes( { title: value } ) }
-						keepPlaceholderOnFocus
-					/>
-				) }
-				<RichText
-					tagName="div"
-					multiline="p"
-					placeholder={ __( 'Write alert...' ) }
-					value={ value }
-					isSelected={ isSelected }
-					className={ `${ className }__text` }
-					style={ {
-						backgroundColor: backgroundColor,
-						borderColor: borderColor,
-					} }
-					onChange={ ( value ) => setAttributes( { value: value } ) }
-					keepPlaceholderOnFocus
-				/>
-			</Alert>
-		];
-	}
-}
-
+/**
+ * Block registration
+ */
 registerBlockType( 'coblocks/alert', {
 
 	title: __( 'Alert' ),

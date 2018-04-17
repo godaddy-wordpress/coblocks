@@ -1,19 +1,14 @@
+/**
+ * WordPress dependencies
+ */
 const { __ } = wp.i18n;
-
 const { Component } = wp.element;
+const { InspectorControls, ColorPalette } = wp.blocks;
+const { PanelBody, RangeControl, PanelColor, ToggleControl } = wp.components;
 
-const {
-	InspectorControls,
-	ColorPalette,
-} = wp.blocks;
-
-const {
-	PanelBody,
-	RangeControl,
-	PanelColor,
-	ToggleControl,
-} = wp.components;
-
+/**
+ * Inspector controls
+ */
 export default class Inspector extends Component {
 
 	constructor( props ) {
@@ -28,14 +23,14 @@ export default class Inspector extends Component {
 		} = this.props;
 
 		const {
-			twitter,
+			backgroundColor,
 			facebook,
-			pinterest,
-			tumblr,
 			linkedin,
+			pinterest,
 			size,
 			space,
-			backgroundColor,
+			tumblr,
+			twitter,
 		} = attributes;
 
 		return (

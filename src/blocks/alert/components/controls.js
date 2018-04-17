@@ -1,19 +1,15 @@
+/**
+ * Internal dependencies
+ */
 import icons from './icons';
 
+/**
+ * WordPress dependencies
+ */
 const { __ } = wp.i18n;
-
 const { Component } = wp.element;
-
-const {
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-} = wp.blocks;
-
-const {
-	Toolbar,
-	DropdownMenu,
-} = wp.components;
+const { AlignmentToolbar, BlockControls, BlockAlignmentToolbar } = wp.blocks;
+const { Toolbar, DropdownMenu } = wp.components;
 
 export default class Controls extends Component {
 

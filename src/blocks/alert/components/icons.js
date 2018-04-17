@@ -1,3 +1,6 @@
+/**
+ * Custom icons
+ */
 const icons = {};
 
 icons.success =

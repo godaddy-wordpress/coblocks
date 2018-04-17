@@ -9,7 +9,7 @@ import ResizableBox from 're-resizable';
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import GifBlock from './components/block';
+import GifBlock from './components/edit';
 
 /**
  * WordPress dependencies

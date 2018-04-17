@@ -52,6 +52,13 @@ class CoBlocks_Blocks {
 	private $_version;
 
 	/**
+	 * The Plugin version.
+	 *
+	 * @var string $_slug
+	 */
+	private $_slug;
+
+	/**
 	 * The Constructor.
 	 */
 	private function __construct() {
@@ -74,53 +81,50 @@ class CoBlocks_Blocks {
 	 * @access public
 	 */
 	public function register_blocks() {
+
+		// Shortcut for the slug.
+		$slug = $this->_slug;
+
 		register_block_type(
-			'coblocks/ad', array(
-				'editor_script' => $this->_slug . '-editor',
-				'editor_style'  => $this->_slug . '-editor',
-				'style'         => $this->_slug . '-frontend',
+			$slug . '/ad', array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			'coblocks/click-to-share', array(
-				'editor_script' => $this->_slug . '-editor',
-				'editor_style'  => $this->_slug . '-editor',
-				'style'         => $this->_slug . '-frontend',
+			$slug . '/click-to-share', array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			'coblocks/alert', array(
-				'editor_script' => $this->_slug . '-editor',
-				'editor_style'  => $this->_slug . '-editor',
-				'style'         => $this->_slug . '-frontend',
+			$slug . '/alert', array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			'coblocks/dynamic-separator', array(
-				'editor_script' => $this->_slug . '-editor',
-				'editor_style'  => $this->_slug . '-editor',
-				'style'         => $this->_slug . '-frontend',
+			$slug . '/dynamic-separator', array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			'coblocks/gif', array(
-				'editor_script' => $this->_slug . '-editor',
-				'editor_style'  => $this->_slug . '-editor',
-				'style'         => $this->_slug . '-frontend',
+			$slug . '/gif', array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			'coblocks/social', array(
-				'editor_script' => $this->_slug . '-editor',
-				'editor_style'  => $this->_slug . '-editor',
-				'style'         => $this->_slug . '-frontend',
-			)
-		);
-		register_block_type(
-			'coblocks/spacer', array(
-				'editor_script' => $this->_slug . '-editor',
-				'editor_style'  => $this->_slug . '-editor',
-				'style'         => $this->_slug . '-frontend',
+			$slug . '/spacer', array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
 			)
 		);
 	}

@@ -1,20 +1,14 @@
+/**
+ * WordPress dependencies
+ */
 const { __ } = wp.i18n;
-
 const { Component } = wp.element;
+const { InspectorControls, ColorPalette } = wp.blocks;
+const { PanelBody, PanelColor, FormToggle, RangeControl, SelectControl } = wp.components;
 
-const {
-	InspectorControls,
-	ColorPalette,
-} = wp.blocks;
-
-const {
-	PanelBody,
-	PanelColor,
-	FormToggle,
-	RangeControl,
-	SelectControl,
-} = wp.components;
-
+/**
+ * Inspector controls
+ */
 export default class Inspector extends Component {
 
 	constructor( props ) {
@@ -55,43 +49,41 @@ export default class Inspector extends Component {
 
 		return (
 			<InspectorControls key="inspector">
-				<PanelBody>
-					<PanelColor title={ __( 'Background Color' ) } colorValue={ backgroundColor } initialOpen={ false }>
-						<ColorPalette
-							label={ __( 'Background Color' ) }
-							value={ backgroundColor }
-							onChange={ ( value ) => styles( value ) }
-							colors={ ['#e2e3e5', '#cce5ff', '#d4edda', '#f8d7da', '#fff3cd'] }
-						/>
-					</PanelColor>
+				<PanelColor title={ __( 'Background Color' ) } colorValue={ backgroundColor } initialOpen={ false }>
+					<ColorPalette
+						label={ __( 'Background Color' ) }
+						value={ backgroundColor }
+						onChange={ ( value ) => styles( value ) }
+						colors={ ['#e2e3e5', '#cce5ff', '#d4edda', '#f8d7da', '#fff3cd'] }
+					/>
+				</PanelColor>
 
-					<PanelColor title={ __( 'Title Color' ) } colorValue={ titleColor } initialOpen={ false }>
-						<ColorPalette
-							label={ __( 'Title Color' ) }
-							value={ titleColor }
-							onChange={ ( value ) => setAttributes( { titleColor: value } ) }
-							colors={ ['#383d41', '#004085', '#155724', '#721c24', '#856404'] }
-						/>
-					</PanelColor>
+				<PanelColor title={ __( 'Title Color' ) } colorValue={ titleColor } initialOpen={ false }>
+					<ColorPalette
+						label={ __( 'Title Color' ) }
+						value={ titleColor }
+						onChange={ ( value ) => setAttributes( { titleColor: value } ) }
+						colors={ ['#383d41', '#004085', '#155724', '#721c24', '#856404'] }
+					/>
+				</PanelColor>
 
-					<PanelColor title={ __( 'Text Color' ) } colorValue={ textColor } initialOpen={ false }>
-						<ColorPalette
-							label={ __( 'Background Color' ) }
-							value={ textColor }
-							onChange={ ( value ) => setAttributes( { textColor: value } ) }
-							colors={ ['#383d41', '#004085', '#155724', '#721c24', '#856404'] }
-						/>
-					</PanelColor>
+				<PanelColor title={ __( 'Text Color' ) } colorValue={ textColor } initialOpen={ false }>
+					<ColorPalette
+						label={ __( 'Background Color' ) }
+						value={ textColor }
+						onChange={ ( value ) => setAttributes( { textColor: value } ) }
+						colors={ ['#383d41', '#004085', '#155724', '#721c24', '#856404'] }
+					/>
+				</PanelColor>
 
-					<PanelColor title={ __( 'Border Color' ) } colorValue={ textColor } initialOpen={ false }>
-						<ColorPalette
-							label={ __( 'Border Color' ) }
-							value={ textColor }
-							onChange={ ( value ) => setAttributes( { borderColor: value } ) }
-							colors={ ['#d6d8db', '#b8daff', '#c3e6cb', '#f5c6cb', '#ffeeba'] }
-						/>
-					</PanelColor>
-				</PanelBody>
+				<PanelColor title={ __( 'Border Color' ) } colorValue={ textColor } initialOpen={ false }>
+					<ColorPalette
+						label={ __( 'Border Color' ) }
+						value={ textColor }
+						onChange={ ( value ) => setAttributes( { borderColor: value } ) }
+						colors={ ['#d6d8db', '#b8daff', '#c3e6cb', '#f5c6cb', '#ffeeba'] }
+					/>
+				</PanelColor>
 
 			</InspectorControls>
 		);

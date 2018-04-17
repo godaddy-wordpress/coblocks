@@ -147,8 +147,12 @@ function coblocks_render_social_block( $attributes ) {
  * Registers the block on server.
  */
 function coblocks_register_social_block() {
+
 	register_block_type(
 		'coblocks/social', array(
+			'editor_script'   => 'coblocks-editor',
+			'editor_style'    => 'coblocks-editor',
+			'style'           => 'coblocks-frontend',
 			'attributes'      => array(
 				'twitter'         => array(
 					'type'    => 'boolean',
