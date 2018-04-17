@@ -36,10 +36,8 @@
 	width: 100% !important;
 	z-index: 999;
 
-	.editor-block-list__block[data-type="coblocks/spacer"].is-selected &,
-	.editor-block-list__block[data-type="coblocks/spacer"].is-hovered &,
-	.editor-block-list__block[data-type="coblocks/dynamic-separator"].is-selected &,
-	.editor-block-list__block[data-type="coblocks/dynamic-separator"].is-hovered & {
+	.editor-block-list__block.is-selected &,
+	.editor-block-list__block.is-hovered & {
 		display: block;
 	}
 

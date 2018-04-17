@@ -5,9 +5,72 @@
  * which makes it higher in priority.
  */
 
+
+.wp-block-image__resize-handler-top-right,
+.wp-block-image__resize-handler-bottom-right,
+.wp-block-image__resize-handler-top-left,
+.wp-block-image__resize-handler-bottom-left {
+
+	.wp-block-coblocks-gif.is-focused & {
+		display: block;
+		z-index: z-index(".wp-block-image__resize-handlers");
+	}
+}
+
 .editor-block-list__block[data-type="coblocks/gif"] {
 
-	p {
+	figure.wp-block-coblocks-gif {
+		padding: 0;
+	}
+
+	.wp-block-coblocks-gif {
 		margin: 0;
+		padding: 50px 0;
+
+		form,
+		.components-placeholder__fieldset {
+			max-width: none;
+
+			input {
+				max-width: 280px;
+			}
+		}
+
+		&__results {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			align-content: stretch;
+			list-style: none;
+			line-height: 1;
+			margin-top: 1.5em;
+			max-width: 430px;
+
+			li {
+				padding: 2px;
+				margin: 0;
+				flex: 0 0 auto;
+				display: block;
+				width: 86px;
+				height: 86px;
+				overflow: hidden;
+				position: relative;
+				border-radius: 3px;
+
+				img {
+					border-radius: 3px;
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+	}
+
+	.giphy__placeholder-logo {
+		position: absolute;
+		top: 15px;
+		right: 20px;
+		width: 120px;
 	}
 }
