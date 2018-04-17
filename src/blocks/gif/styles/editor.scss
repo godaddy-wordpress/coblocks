@@ -17,11 +17,19 @@
 	}
 }
 
-.editor-block-list__block[data-type="coblocks/gif"] {
-
-	figure.wp-block-coblocks-gif {
-		padding: 0;
+.editor-block-list__block[data-type="core/image"][data-align="center"] {
+	.wp-block-image {
+		margin-left: auto;
+		margin-right: auto;
 	}
+
+	&[data-resized="false"] .wp-block-image > div {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.editor-block-list__block[data-type="coblocks/gif"] {
 
 	.wp-block-coblocks-gif {
 		margin: 0;
@@ -65,12 +73,33 @@
 				}
 			}
 		}
+
+		&__attribution {
+			position: absolute;
+			top: 15px;
+			right: 20px;
+			width: 120px;
+		}
 	}
 
-	.giphy__placeholder-logo {
-		position: absolute;
-		top: 15px;
-		right: 20px;
-		width: 120px;
+	&[data-align="center"] {
+
+		.wp-block-coblocks-gif {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		&[data-resized="false"] .wp-block-coblocks-gif > div {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	figure.wp-block-coblocks-gif {
+		padding: 0;
+
+		img {
+			width: 100%;
+		}
 	}
 }

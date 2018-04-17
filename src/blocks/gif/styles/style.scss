@@ -7,10 +7,17 @@
 .wp-block-coblocks-gif {
 	margin: 0 0 1.5em;
 	padding: 0;
+	width: fit-content;
+
+	&.aligncenter {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
 
 	img {
 		vertical-align: middle;
 		display: block;
-		width: 100%;
 	}
 }
