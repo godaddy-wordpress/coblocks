@@ -1,26 +1,32 @@
-// import Inspector from './components/inspector';
-import Controls from './controls';
-import Size from './size';
-import icons from './icons';
-
+/**
+ * External dependencies
+ */
 import classnames from 'classnames';
 import ResizableBox from 're-resizable';
 
+/**
+ * WordPress dependencies
+ */
 const { __ } = wp.i18n;
-
 const { Component } = wp.element;
-
+const { keycodes, viewPort, } = wp.utils;
+const { Placeholder, Spinner, Button } = wp.components;
 const { registerBlockType, withContext } = wp.blocks;
 
-const { Placeholder, Spinner, Button } = wp.components;
+/**
+ * Internal dependencies
+ */
+import Controls from './controls';
+import icons from './icons';
+import Inspector from './inspector';
+import Size from './size';
 
-const { keycodes, viewPort, } = wp.utils;
-
+/**
+ * Module constants
+ */
 const GIPHY_URL = 'https://api.giphy.com/v1/gifs/search?api_key=w0o6fO8pv5gSM334gfqUlcdrVaaoiA81&limit=10&offset=0&rating=G&lang=en&q=';
-
 const MIN_SIZE = 20;
-
-const { ESCAPE } = keycodes;
+const ESCAPE = keycodes;
 
 export default class GifBlock extends Component {
 
@@ -78,6 +84,11 @@ export default class GifBlock extends Component {
 			return [
 				isSelected && (
 					<Controls
+						{ ...this.props }
+					/>
+				),
+				isSelected && (
+					<Inspector
 						{ ...this.props }
 					/>
 				),

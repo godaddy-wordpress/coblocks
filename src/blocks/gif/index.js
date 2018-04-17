@@ -15,14 +15,8 @@ import GifBlock from './components/block';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-
 const { Component } = wp.element;
-
-const { registerBlockType, createBlock } = wp.blocks;
-
-const { Placeholder, Spinner, Button } = wp.components;
-
-const { keycodes, viewPort } = wp.utils;
+const { registerBlockType } = wp.blocks;
 
 /**
  * Block registration

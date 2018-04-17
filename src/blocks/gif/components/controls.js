@@ -1,11 +1,9 @@
+/**
+ * WordPress dependencies
+ */
 const { __ } = wp.i18n;
-
 const { Component } = wp.element;
-
-const {
-	BlockControls,
-	BlockAlignmentToolbar,
-} = wp.blocks;
+const { BlockControls, BlockAlignmentToolbar } = wp.blocks;
 
 export default class Controls extends Component {
 

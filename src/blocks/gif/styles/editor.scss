@@ -5,35 +5,12 @@
  * which makes it higher in priority.
  */
 
-
-.wp-block-image__resize-handler-top-right,
-.wp-block-image__resize-handler-bottom-right,
-.wp-block-image__resize-handler-top-left,
-.wp-block-image__resize-handler-bottom-left {
-
-	.wp-block-coblocks-gif.is-focused & {
-		display: block;
-		z-index: z-index(".wp-block-image__resize-handlers");
-	}
-}
-
-.editor-block-list__block[data-type="core/image"][data-align="center"] {
-	.wp-block-image {
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	&[data-resized="false"] .wp-block-image > div {
-		margin-left: auto;
-		margin-right: auto;
-	}
-}
-
 .editor-block-list__block[data-type="coblocks/gif"] {
 
 	.wp-block-coblocks-gif {
 		margin: 0;
 		padding: 50px 0;
+		width: inherit;
 
 		form,
 		.components-placeholder__fieldset {
@@ -101,5 +78,16 @@
 		img {
 			width: 100%;
 		}
+	}
+}
+
+.wp-block-image__resize-handler-top-right,
+.wp-block-image__resize-handler-bottom-right,
+.wp-block-image__resize-handler-top-left,
+.wp-block-image__resize-handler-bottom-left {
+
+	.wp-block-coblocks-gif.is-focused & {
+		display: block;
+		z-index: z-index(".wp-block-image__resize-handlers");
 	}
 }

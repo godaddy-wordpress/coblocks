@@ -1,3 +1,6 @@
+/**
+ * WordPress dependencies
+ */
 const { Component } = wp.element;
 
 export default class Size extends Component {
