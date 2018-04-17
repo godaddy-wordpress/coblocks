@@ -1,6 +1,6 @@
 const { Component } = wp.element;
 
-export default class GifSize extends Component {
+export default class Size extends Component {
 	constructor() {
 		super( ...arguments );
 		this.state = {

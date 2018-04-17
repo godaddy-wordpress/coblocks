@@ -11,6 +11,14 @@ export default class Controls extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
+		this.updateAlignment = this.updateAlignment.bind( this );
+	}
+
+	updateAlignment( nextAlign ) {
+		const extraUpdatedAttributes = [ 'wide', 'full' ].indexOf( nextAlign ) !== -1 ?
+			{ width: undefined, height: undefined } :
+			{};
+		this.props.setAttributes( { ...extraUpdatedAttributes, align: nextAlign } );
 	}
 
 	render() {
@@ -26,7 +34,7 @@ export default class Controls extends Component {
 			<BlockControls key="controls">
 				<BlockAlignmentToolbar
 					value={ align }
-					onChange={ ( nextAlign ) => setAttributes( { align: nextAlign } ) }
+					onChange={ this.updateAlignment }
 				/>
 			</BlockControls>
 		);

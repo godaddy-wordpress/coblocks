@@ -1,7 +1,7 @@
 const icons = {};
 
 icons.giphy =
-<svg className="giphy__placeholder-logo" width="202px" height="22px" viewBox="0 0 202 22" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg className="wp-block-coblocks-gif__attribution" width="202px" height="22px" viewBox="0 0 202 22" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <polygon id="path-1" points="0.786 0.039 21.084 0.039 21.084 22 0.786 22"></polygon>
         <polygon id="path-3" points="0 22 201.762 22 201.762 0.039 0 0.039"></polygon>
