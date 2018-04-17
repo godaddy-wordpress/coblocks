@@ -148,6 +148,11 @@ function coblocks_render_social_block( $attributes ) {
  */
 function coblocks_register_social_block() {
 
+	// Return early if this function does not exist.
+	if ( ! function_exists( 'register_block_type' ) ) {
+		return;
+	}
+
 	register_block_type(
 		'coblocks/social', array(
 			'editor_script'   => 'coblocks-editor',

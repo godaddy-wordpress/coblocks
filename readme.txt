@@ -1,8 +1,8 @@
 === CoBlocks ===
-Author URI: https://coblocks.com
-Plugin URI: https://coblocks.com
-Contributors: richtabor, coblocks
-Donate link: https://coblocks.com
+Author URI: https://richtabor.com
+Plugin URI: https://richtabor.com/coblocks
+Contributors: richtabor
+Donate link: https://richtabor.com
 Tags: @@pkg.tags
 Requires at least: @@pkg.requires
 Tested up to: @@pkg.tested_up_to
@@ -11,13 +11,11 @@ Stable tag: @@pkg.version
 License: @@pkg.license
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-A Gutenberg block that lets you easily add a social sharing block to your posts.
+A suite of Gutenberg blocks for writers, publishers and content marketers.
 
 == Description ==
 
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is an upcoming suite of Gutenberg Blocks.
-
-This plugin is created and maintained by [Rich Tabor](https://richtabor.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=rich-tabor).
 
 == Screenshots ==
 
@@ -30,5 +28,5 @@ This plugin is created and maintained by [Rich Tabor](https://richtabor.com?utm_
 
 == Changelog ==
 
-= 1.0.0, April 11, 2017 =
+= 1.0.0, April 18, 2017 =
 * Initial release on WordPress.org. Enjoy!
