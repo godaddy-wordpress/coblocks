@@ -1,10 +1,10 @@
-import Inspector from './components/inspector';
-import Controls from './components/controls';
+// import Inspector from './components/inspector';
+// import Controls from './components/controls';
 import GifSize from './components/gif-size';
+import icons from './components/icons';
 
 import classnames from 'classnames';
 import ResizableBox from 're-resizable';
-import { noop } from 'lodash';
 
 import './styles/editor.scss';
 import './styles/style.scss';
@@ -15,15 +15,15 @@ const { Component } = wp.element;
 
 const { registerBlockType } = wp.blocks;
 
-const { Placeholder, Spinner } = wp.components;
+const { Placeholder, Spinner, Button } = wp.components;
 
 const { keycodes, viewPort } = wp.utils;
-
-const { ESCAPE } = keycodes;
 
 const GIPHY_URL = 'https://api.giphy.com/v1/gifs/search?api_key=w0o6fO8pv5gSM334gfqUlcdrVaaoiA81&limit=10&offset=0&rating=G&lang=en&q=';
 
 const MIN_SIZE = 20;
+
+const { ESCAPE } = keycodes;
 
 class GifBlock extends Component {
 
@@ -34,27 +34,24 @@ class GifBlock extends Component {
 			className,
 			isSelected,
 			setAttributes,
+			settings,
 			toggleSelection,
 		} = this.props;
 
 		const {
 			align,
 			alt,
-			caption,
 			height,
-			href,
 			id,
 			url,
 			width,
 		} = attributes;
 
-		const isResizable = [ 'wide', 'full' ].indexOf( align ) === -1 && ( ! viewPort.isExtraSmall() );
-
 		const figureStyle = width ? { width } : {};
-
+		const isResizable = [ 'wide', 'full' ].indexOf( align ) === -1 && ( ! viewPort.isExtraSmall() );
 		const classes = classnames( className, {
 			'is-resized': !! width,
-			'is-focused': !! focus,
+			'is-focused': isSelected,
 		} );
 
 		var results = [];
@@ -77,9 +74,7 @@ class GifBlock extends Component {
 		}, 1000 );
 
 		if ( url ) {
-
 			return [
-
 				<figure key="image" className={ classes } style={ figureStyle }>
 					<GifSize src={ url } dirtynessTrigger={ align }>
 						{ ( sizes ) => {
@@ -93,11 +88,11 @@ class GifBlock extends Component {
 							// Disable reason: Image itself is not meant to be
 							// interactive, but should direct focus to block
 							// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-							const img = <img src={ url }/>;
+							const img = <img src={ url } alt={ alt }/>;
 
-							// if ( ! isResizable || ! imageWidthWithinContainer ) {
-							// 	return img;
-							// }
+							if ( ! isResizable || ! imageWidthWithinContainer ) {
+								return img;
+							}
 
 							const currentWidth = width || imageWidthWithinContainer;
 							const currentHeight = height || imageHeightWithinContainer;
@@ -113,13 +108,15 @@ class GifBlock extends Component {
 										height: currentHeight,
 									} }
 									minWidth={ minWidth }
+									// maxWidth={ settings.maxWidth }
 									minHeight={ minHeight }
+									// maxHeight={ settings.maxWidth / ratio }
 									lockAspectRatio
 									handleClasses={ {
-										topRight: 'gutenkit-gif__resize-handler-top-right',
-										bottomRight: 'gutenkit-gif__resize-handler-bottom-right',
-										topLeft: 'gutenkit-gif__resize-handler-top-left',
-										bottomLeft: 'gutenkit-gif__resize-handler-bottom-left',
+										topRight: 'wp-block-image__resize-handler-top-right',
+ 										bottomRight: 'wp-block-image__resize-handler-bottom-right',
+ 										topLeft: 'wp-block-image__resize-handler-top-left',
+ 										bottomLeft: 'wp-block-image__resize-handler-bottom-left',
 									} }
 									enable={ { top: false, right: true, bottom: false, left: false, topRight: true, bottomRight: true, bottomLeft: true, topLeft: true } }
 									onResizeStart={ () => {
@@ -133,7 +130,7 @@ class GifBlock extends Component {
 										toggleSelection( true );
 									} }
 								>
-								{ img }
+									{ img }
 								</ResizableBox>
 							);
 						} }
@@ -158,12 +155,13 @@ class GifBlock extends Component {
 							setAttributes( { url: gif.images.original.url } );
 						}
 					}, gifImage );
+
 				} );
 			}
 
 			// If there is a giphy request happening, lets show a spinner.
 			if ( ! results.length && attributes.fetching ) {
-				results = <Spinner />;
+				results = <Spinner/>;
 			}
 
 			return [
@@ -171,24 +169,29 @@ class GifBlock extends Component {
 					key="placeholder"
 					icon="format-image"
 					label={ __( 'Gif' ) }
-					instructions={ __( 'Search for that perfect gif' ) }
-					className="giphy__placeholder">
-
+					instructions={ __( 'Search for that perfect gif on Giphy' ) }
+					className={ className }>
+					<form>
+						{ icons.giphy }
 						<input
-							type="search"
 							key="search-field"
+							type="text"
 							placeholder={ __( 'Search for gifs here…' ) }
-							onChange={ ( event ) => fetchGifs(  event.target.value ) }
+							onChange={ ( event ) => fetchGifs( event.target.value ) }
 							onKeyDown={ ( event ) => {
 								if ( event.keyCode === ESCAPE ) {
 									event.target.value = '';
 									setAttributes( { matches: [] } );
 								}
-							} } />
-
-						<div key="results-wrapper" className="giphy__results"> </div>
-
-						<ul key="results" className="" > { results }</ul>
+							} }
+						/>
+						<ul
+							key="results"
+							className={ `${ className }__results` }
+						>
+							{ results }
+						</ul>
+					</form>
 				</Placeholder>
 			]
 		}
@@ -224,20 +227,6 @@ registerBlockType( 'coblocks/gif', {
 			source: 'attribute',
 			type: 'string',
 		},
-		caption: {
-			selector: 'figcaption',
-			source: 'children',
-			type: 'array',
-		},
-		href: {
-			attribute: 'href',
-			selector: 'a',
-			source: 'attribute',
-			type: 'string',
-		},
-		id: {
-			type: 'number',
-		},
 		align: {
 			type: 'string',
 		},
@@ -261,17 +250,26 @@ registerBlockType( 'coblocks/gif', {
 		const {
 			url,
 			alt,
-			caption,
 			align,
-			href,
 			width,
 			height,
 		} = attributes;
 
-		const image  = <img src={ url } />;
+		const image = (
+			<img
+				src={ url }
+				alt={ alt }
+				width={ width }
+				height={ height }
+			/>
+		);
 
 		if ( url ) {
-			return ( image );
+			return (
+				<figure className={ align ? `align${ align }` : null }>
+					{ image }
+				</figure>
+			);
 		}
 
 		return null;

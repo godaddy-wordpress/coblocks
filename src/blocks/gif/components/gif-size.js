@@ -1,5 +1,3 @@
-import { noop } from 'lodash';
-
 const { Component } = wp.element;
 
 export default class GifSize extends Component {
@@ -35,31 +33,25 @@ export default class GifSize extends Component {
 		this.fetchImageSize();
 	}
 
-	componentWillUnmount() {
-		if ( this.image ) {
-			this.image.onload = noop;
-		}
-	}
-
 	fetchImageSize() {
-		this.image = new window.Image();
-		this.image.onload = this.calculateSize;
-		this.image.src = this.props.src;
+		this.gif = new window.Image();
+		this.gif.onload = this.calculateSize;
+		this.gif.src = this.props.src;
 	}
 
 	calculateSize() {
 		const maxWidth = this.container.clientWidth;
-		const exceedMaxWidth = this.image.width > maxWidth;
-		const ratio = this.image.height / this.image.width;
-		const width = exceedMaxWidth ? maxWidth : this.image.width;
-		const height = exceedMaxWidth ? maxWidth * ratio : this.image.height;
+		const exceedMaxWidth = this.gif.width > maxWidth;
+		const ratio = this.gif.height / this.gif.width;
+		const width = exceedMaxWidth ? maxWidth : this.gif.width;
+		const height = exceedMaxWidth ? maxWidth * ratio : this.gif.height;
 		this.setState( { width, height } );
 	}
 
 	render() {
 		const sizes = {
-			imageWidth: this.image && this.image.width,
-			imageHeight: this.image && this.image.height,
+			imageWidth: this.gif && this.gif.width,
+			imageHeight: this.gif && this.gif.height,
 			containerWidth: this.container && this.container.clientWidth,
 			containerHeight: this.container && this.container.clientHeight,
 			imageWidthWithinContainer: this.state.width,
