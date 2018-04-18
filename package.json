@@ -1,5 +1,5 @@
 {
-  "name": "coblocks-cgb-guten-block",
+  "name": "coblocks",
   "title": "CoBlocks",
   "prefix": "coblocks",
   "version": "1.0.0",
@@ -8,7 +8,9 @@
   "requires": "4.9",
   "tested_up_to": "4.9.5",
   "license": "GPL-3.0",
-  "description": "",
+  "copyright": "Copyright (c) 2018, CoBlocks of Inventionn LLC",
+  "downloadid": "",
+  "description": "A suite of content blocks for the upcoming WordPress block editor, also called Gutenberg.",
   "tags": "",
   "scripts": {
     "start": "cgb-scripts start",
@@ -18,17 +20,30 @@
   "dependencies": {
     "cgb-scripts": "1.9.4",
     "classnames": "2.2.5",
-    "md5": "^2.2.1",
     "lodash": "4.17.4",
+    "md5": "^2.2.1",
     "moment": "2.21.0",
+    "postcss": "^6.0.19",
     "querystringify": "1.0.0",
     "re-resizable": "4.0.3",
     "react": "16.2.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "striptags": "^3.1.1",
-    "postcss": "^6.0.19",
     "stylelint": "^9.1.1",
+    "stylelint-config-wordpress": "^13.0.0"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-cache": "^1.0.2",
+    "gulp-copy": "^1.0.1",
+    "gulp-notify": "^3.2.0",
+    "gulp-open": "^2.0.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace-task": "^0.11.0",
+    "gulp-run-command": "0.0.9",
+    "gulp-zip": "^4.0.0",
     "stylelint-config-wordpress": "^13.0.0"
   },
   "stylelint": {
