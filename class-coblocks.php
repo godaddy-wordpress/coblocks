@@ -24,6 +24,11 @@
  * @license   @@pkg.license
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Main @@pkg.title Class
  *
