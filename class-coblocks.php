@@ -1,14 +1,13 @@
 <?php
 /**
- * Plugin Name: CoBlocks
+ * Plugin Name: @@pkg.title
  * Plugin URI: https://coblocks.com
  * Description: @@pkg.description
  * Author: @@pkg.author
- * Author URI: https://coblocks.com
+ * Author URI: https://richtabor.com
  * Version: @@pkg.version
- * Text Domain: 'coblocks'
+ * Text Domain: '@@pkg.name'
  * Domain Path: languages
- * Requires at least: @@pkg.requires
  * Tested up to: @@pkg.tested_up_to
  *
  * @@pkg.title is distributed in the hope that it will be useful,
