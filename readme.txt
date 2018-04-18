@@ -1,8 +1,7 @@
 === CoBlocks ===
 Author URI: https://richtabor.com
 Plugin URI: https://richtabor.com/coblocks
-Contributors: richtabor
-Donate link: https://richtabor.com
+Contributors: richtabor, themebeans
 Tags: @@pkg.tags
 Requires at least: @@pkg.requires
 Tested up to: @@pkg.tested_up_to

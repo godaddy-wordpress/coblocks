@@ -1,10 +1,11 @@
 <?php
 /**
- * Plugin Name: @@pkg.title
+ * Plugin Name: CoBlocks
  * Plugin URI: https://coblocks.com
- * Description: @@pkg.description
- * Author: @@pkg.author
+ * Description: A suite of content blocks for the upcoming WordPress block editor, also called Gutenberg.
+ * Author: Rich Tabor from CoBlocks
  * Author URI: https://richtabor.com
+ * Tags: gutenberg, editor, block, layout, writing
  * Version: @@pkg.version
  * Text Domain: '@@pkg.name'
  * Domain Path: languages
@@ -88,7 +89,6 @@ class CoBlocks {
 		add_action( 'init', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
 		add_action( 'plugins_loaded', array( $this, 'load_dynamic_blocks' ) );
-
 	}
 
 	/**

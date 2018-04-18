@@ -1,7 +1,6 @@
 {
   "name": "coblocks",
   "title": "CoBlocks",
-  "prefix": "coblocks",
   "version": "1.0.0",
   "private": true,
   "author": "Rich Tabor from CoBlocks",
@@ -18,7 +17,7 @@
     "eject": "cgb-scripts eject"
   },
   "dependencies": {
-    "cgb-scripts": "1.9.4",
+    "cgb-scripts": "1.9.6",
     "classnames": "2.2.5",
     "lodash": "4.17.4",
     "md5": "^2.2.1",

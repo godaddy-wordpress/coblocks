@@ -106,7 +106,7 @@ gulp.task('build-notice', function(done) {
 	done();
 });
 
-gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'copy', 'variables', 'zip',  function(done) {
+gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npm-build', 'copy', 'variables', 'zip',  function(done) {
 	done();
 } ) );
 
