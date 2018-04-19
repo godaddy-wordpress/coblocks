@@ -1,13 +1,7 @@
-/**
- * #.# Editor Styles
- *
- * CSS for just Backend enqueued after style.scss
- * which makes it higher in priority.
- */
-
 .editor-block-list__block[data-type="coblocks/social"] {
 
 	p {
+		line-height: 1;
 		margin: 0;
 	}
 }

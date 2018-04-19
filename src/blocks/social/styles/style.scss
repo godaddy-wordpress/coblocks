@@ -1,24 +1,20 @@
-/**
- * #.# Styles
- *
- * CSS for both Frontend+Backend.
- */
-
 .wp-block-coblocks-social {
 
-	&__button {
-		background-size: cover;
-		box-shadow: none !important;
-		display: inline-block;
-		height: 28px;
-		padding: 0 !important;
-		position: relative;
-		text-decoration: none !important;
-		width: 28px;
+	p {
+		line-height: 1;
 	}
 
-	a {
+	&__button {
 		background-color: #222;
+		background-size: cover;
+		box-shadow: none;
+		display: inline-block;
+		height: 28px;
+		padding: 0;
+		position: relative;
+		text-decoration: none;
+		vertical-align: middle;
+		width: 28px;
 
 		&:first-of-type {
 			margin-left: 0;
