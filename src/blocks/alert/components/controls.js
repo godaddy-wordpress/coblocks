@@ -50,33 +50,31 @@ export default class Controls extends Component {
 			<BlockControls key="controls">
 				<Toolbar>
 					<DropdownMenu
-						icon={ icons.alert }
-						label={ __( 'Select Alert Type' ) }
+						label={ __( 'Alert Type' ) }
 						controls={ [
 							{
-								icon: icons.alert,
-								title: __( 'Standard (Gray)' ),
+								icon: icons.alertMenu,
+								title: __( 'Default' ),
 								onClick: () => { styles( '#e2e3e5' ) }, // Gray.
 							},
 							{
 								icon: 'info',
-								title: __( 'Notice (Blue)' ),
+								title: __( 'Info' ),
 								onClick: () => { styles( '#cce5ff' ) }, // Blue.
 							},
 							{
 								icon: icons.success,
-								title: __( 'Success (Green)' ),
+								title: __( 'Success' ),
 								onClick: () => { styles( '#d4edda' ) }, // Green.
 							},
 							{
 								icon: 'warning',
-								title: __( 'Warning (Yellow)' ),
+								title: __( 'Warning' ),
 								onClick: () => { styles( '#fff3cd' ) }, // Yellow.
 							},
-
 							{
 								icon: 'dismiss',
-								title: __( 'Error (Red)' ),
+								title: __( 'Error' ),
 								onClick: () => { styles( '#f8d7da' ) }, // Red.
 							},
 						] }
