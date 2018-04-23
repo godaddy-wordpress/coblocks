@@ -10,6 +10,9 @@ import Inspector from './inspector';
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 
+/**
+ * Block edit function
+ */
 export default class SocialBlock extends Component {
 
 	constructor() {

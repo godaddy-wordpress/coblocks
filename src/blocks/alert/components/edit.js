@@ -12,6 +12,9 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { RichText } = wp.blocks;
 
+/**
+ * Block edit function
+ */
 export default class AlertBlock extends Component {
 
 	constructor( props ) {

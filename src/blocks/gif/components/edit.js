@@ -28,6 +28,9 @@ const GIPHY_URL = 'https://api.giphy.com/v1/gifs/search?api_key=w0o6fO8pv5gSM334
 const MIN_SIZE = 20;
 const ESCAPE = keycodes;
 
+/**
+ * Block edit function
+ */
 export default class GifBlock extends Component {
 
 	constructor() {
