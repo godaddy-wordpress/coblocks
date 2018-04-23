@@ -14,7 +14,7 @@ import DynamicSeparatorBlock from './components/edit';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { registerBlockType, createBlock } = wp.blocks;
 
 /**
  * Block registration
@@ -51,6 +51,32 @@ registerBlockType( 'coblocks/dynamic-separator', {
 		color: {
 			type: 'string',
 		},
+	},
+
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: [ 'coblocks/spacer' ],
+				transform: ( { height } ) => (
+					createBlock( 'coblocks/spacer', { height: height } )
+				),
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/separator' ],
+				transform: () => createBlock( 'coblocks/dynamic-separator' ),
+			},
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: [ 'coblocks/spacer' ],
+				transform: ( { height } ) => (
+					createBlock( 'coblocks/spacer', { height: height } )
+				),
+			},
+		],
 	},
 
 	edit: DynamicSeparatorBlock,

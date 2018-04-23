@@ -10,7 +10,7 @@ import icons from './components/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { registerBlockType, createBlock } = wp.blocks;
 
 /**
  * Block registration
@@ -40,6 +40,32 @@ registerBlockType( 'coblocks/spacer', {
 			type: 'number',
 			default: 50,
 		},
+	},
+
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: [ 'coblocks/dynamic-separator' ],
+				transform: ( { height } ) => (
+					createBlock( 'coblocks/dynamic-separator', { height: height } )
+				),
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/separator' ],
+				transform: () => createBlock( 'coblocks/spacer' ),
+			},
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: [ 'coblocks/dynamic-separator' ],
+				transform: ( { height } ) => (
+					createBlock( 'coblocks/dynamic-separator', { height: height } )
+				),
+			},
+		],
 	},
 
 	edit: SpacerBlock,
