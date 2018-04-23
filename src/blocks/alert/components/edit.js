@@ -11,11 +11,12 @@ import Inspector from './inspector';
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { RichText } = wp.blocks;
+const { withState } = wp.components;
 
 /**
  * Block edit function
  */
-export default class AlertBlock extends Component {
+export default withState( { editable: 'content' } ) ( class AlertBlock extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -27,7 +28,11 @@ export default class AlertBlock extends Component {
 			attributes,
 			className,
 			isSelected,
+			editable,
+			onReplace,
+			setState,
 			setAttributes,
+			mergeBlocks,
 		} = this.props;
 
 		const {
@@ -41,6 +46,10 @@ export default class AlertBlock extends Component {
 			value,
 		} = attributes;
 
+		const onSetActiveEditable = ( newEditable ) => () => {
+			setState( { editable: newEditable } );
+		};
+
 		return [
 			isSelected && (
 				<Controls
@@ -53,34 +62,41 @@ export default class AlertBlock extends Component {
 				/>
 			),
 			<Alert { ...this.props }>
-				{ ( ( title && title.length > 0 ) || isSelected ) && (
+				{ title || isSelected ? (
 					<RichText
 						tagName="p"
-						placeholder={ __( 'Add optional title...' ) }
+						placeholder={ __( 'Add title...' ) }
 						value={ title }
 						className={ `${ className }__title` }
 						style={ {
 							color: titleColor,
 						} }
 						onChange={ ( value ) => setAttributes( { title: value } ) }
+						isSelected={ isSelected && editable === 'title' }
+						onFocus={ onSetActiveEditable( 'title' ) }
 						keepPlaceholderOnFocus
 					/>
-				) }
+				) : null }
+
 				<RichText
-					tagName="div"
 					multiline="p"
+					tagName="div"
 					placeholder={ __( 'Write alert...' ) }
 					value={ value }
-					isSelected={ isSelected }
+					onMerge={ mergeBlocks }
 					className={ `${ className }__text` }
-					style={ {
-						backgroundColor: backgroundColor,
-						borderColor: borderColor,
-					} }
 					onChange={ ( value ) => setAttributes( { value: value } ) }
+					isSelected={ isSelected && editable === 'content' }
+					onFocus={ onSetActiveEditable( 'content' ) }
+					onRemove={ ( forward ) => {
+						const hasEmptyTitle = ! title || title.length === 0;
+						if ( ! forward && hasEmptyTitle ) {
+							onReplace( [] );
+						}
+					} }
 					keepPlaceholderOnFocus
 				/>
 			</Alert>
 		];
 	}
-}
+} );
