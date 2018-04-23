@@ -21,7 +21,7 @@ const { registerBlockType, createBlock } = wp.blocks;
  */
 registerBlockType( 'coblocks/dynamic-separator', {
 
-	title: __( 'Separator (Dynamic)' ),
+	title: __( 'Dynamic HR' ),
 
 	description: __( 'Add a separator with custom spacing between other blocks.' ),
 
