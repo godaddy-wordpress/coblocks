@@ -29,7 +29,7 @@ registerBlockType( 'coblocks/gif', {
 
 	icon: 'format-image',
 
-	category: 'formatting',
+	category: 'common',
 
 	keywords: [
 		__( 'gif' ),
