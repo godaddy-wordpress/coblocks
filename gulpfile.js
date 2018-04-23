@@ -35,11 +35,27 @@ gulp.task('clean', function(done) {
 	done();
 });
 
-gulp.task( 'npm-build', run( 'npm run build' ) )
+gulp.task( 'npmBuild', run( 'npm run build' ) )
 
 gulp.task('copy', function(done) {
 	return gulp.src( buildFiles )
 	.pipe( copy( buildDestination ) );
+	done();
+});
+
+gulp.task( 'updateVersion', function(done) {
+	return gulp.src( './*.php' )
+
+	.pipe( replace( {
+		patterns: [
+			{
+				match: /(\d+\.+\d+\.+\d)/,
+				replacement: pkg.version
+			},
+		],
+		usePrefix: false
+	} ) )
+	.pipe( gulp.dest( './' ) );
 	done();
 });
 
@@ -106,7 +122,7 @@ gulp.task('build-notice', function(done) {
 	done();
 });
 
-gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npm-build', 'copy', 'variables', 'zip',  function(done) {
+gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npmBuild', 'updateVersion', 'copy', 'variables', 'zip',  function(done) {
 	done();
 } ) );
 
