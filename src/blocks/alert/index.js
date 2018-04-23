@@ -11,7 +11,7 @@ import icons from './components/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { registerBlockType, createBlock } = wp.blocks;
 
 /**
  * Block registration
@@ -24,7 +24,7 @@ registerBlockType( 'coblocks/alert', {
 
 	icon: icons.alert,
 
-	category: 'common',
+	category: 'formatting',
 
 	keywords: [
 		__( 'notice' ),
@@ -65,6 +65,34 @@ registerBlockType( 'coblocks/alert', {
 		textAlign: {
 			type: 'string',
 		},
+	},
+
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( { content } ) => {
+					return createBlock( 'coblocks/alert', { value: content } );
+				},
+			},
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( { value } ) => {
+					// transforming an empty alert
+					if ( ! value || ! value.length ) {
+						return createBlock( 'core/paragraph' );
+					}
+					// transforming an alert element with content
+					return ( value || [] ).map( item => createBlock( 'core/paragraph', {
+						content: value,
+					} ) );
+				},
+			},
+		],
 	},
 
 	getEditWrapperProps( attributes ) {
