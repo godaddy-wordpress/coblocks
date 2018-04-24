@@ -1,6 +1,6 @@
 === CoBlocks - Gutenberg Blocks for Publishers and Content Marketers ===
 Author URI: https://richtabor.com
-Plugin URI: https://richtabor.com/coblocks
+Plugin URI: https://coblocks.com
 Contributors: richtabor, coblocks, themebeans
 Tags: blocks, gutenberg, editor, page builder, gutenberg blocks
 Requires at least: 4.7.0
