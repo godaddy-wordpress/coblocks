@@ -82,7 +82,7 @@ registerBlockType( 'coblocks/alert', {
 				type: 'block',
 				blocks: [ 'core/paragraph' ],
 				transform: ( { value } ) => {
-					// transforming an empty alert
+					// transforming an empty alert element
 					if ( ! value || ! value.length ) {
 						return createBlock( 'core/paragraph' );
 					}
