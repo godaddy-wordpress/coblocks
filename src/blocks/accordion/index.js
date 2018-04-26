@@ -71,25 +71,30 @@ registerBlockType( 'coblocks/accordion', {
 
 		return (
 			<Accordion { ...props }>
-				<details open={ open }>
-					<summary
-						className={ 'wp-block-coblocks-accordion__title' }
-						style={ {
-							backgroundColor: titleBackgroundColor,
-							color: titleColor
-						} }
-					>
-						<p>{ title }</p>
-					</summary>
-					<div
-						className={ 'wp-block-coblocks-accordion__content' }
-						style={ {
-							borderColor: titleBackgroundColor
-						} }
-					>
-						<p className={ 'wp-block-coblocks-accordion__text' }>{ content }</p>
-					</div>
-				</details>
+
+				{ title && title.length > 0 && (
+					<details open={ open }>
+						<summary
+							className={ 'wp-block-coblocks-accordion__title' }
+							style={ {
+								backgroundColor: titleBackgroundColor,
+								color: titleColor
+							} }
+						>
+							<p>{ title }</p>
+						</summary>
+						{ content && content.length > 0 && (
+							<div
+								className={ 'wp-block-coblocks-accordion__content' }
+								style={ {
+									borderColor: titleBackgroundColor
+								} }
+							>
+								<p className={ 'wp-block-coblocks-accordion__text' }>{ content }</p>
+							</div>
+						) }
+					</details>
+				) }
 			</Accordion>
 		);
 	},
