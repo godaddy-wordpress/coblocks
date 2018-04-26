@@ -112,6 +112,13 @@ class CoBlocks {
 		$slug = $this->_slug;
 
 		register_block_type(
+			$slug . '/accordion', array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+		register_block_type(
 			$slug . '/alert', array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
