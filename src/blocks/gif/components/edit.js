@@ -22,7 +22,7 @@ import Inspector from './inspector';
 import Size from './size';
 
 /**
- * Module constants
+ * Block constants
  */
 const GIPHY_URL = 'https://api.giphy.com/v1/gifs/search?api_key=w0o6fO8pv5gSM334gfqUlcdrVaaoiA81&limit=10&offset=0&rating=G&lang=en&q=';
 const MIN_SIZE = 20;
