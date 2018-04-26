@@ -7,12 +7,11 @@ $gray: rgba(0, 0, 0, 0.52);
 $accordion-border-radius: 4px;
 $accordion-background: #eee;
 
-/**
- * Gutenberg Vars
- */
+// Gutenberg Vars.
+
 // Hugo's new WordPress shades of gray
 // from http://codepen.io/hugobaeta/pen/grJjVp
-$black: #000;
+$black: #222;
 $dark-gray-900: #191e23;
 $dark-gray-800: #23282d;
 $dark-gray-700: #32373c;
@@ -55,11 +54,6 @@ $alert-yellow: #f0b849;
 $alert-red: #d94f4f;
 $alert-green: #4ab866;
 
-
-/**
- * Often re-used variables
- */
-
 // Fonts & basics
 $default-font: -apple-system,blinkmacsystemfont,"Segoe UI",roboto,oxygen-sans,ubuntu,cantarell,"Helvetica Neue",sans-serif;
 $default-font-size: 13px;
@@ -70,7 +64,7 @@ $editor-font-size: 16px;
 $text-editor-font-size: 14px;
 $editor-line-height: 1.8;
 $big-font-size: 18px;
-$mobile-text-min-font-size: 16px;	// Any font size below 16px will cause Mobile Safari to "zoom in"
+$mobile-text-min-font-size: 16px; // Any font size below 16px will cause Mobile Safari to "zoom in"
 
 // Widths, heights & dimensions
 $item-spacing: 10px;
