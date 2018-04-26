@@ -1,9 +1,3 @@
-/**
- * Gutenberg Vars
- */
-/**
- * Often re-used variables
- */
 .editor-block-list__block[data-type="coblocks/accordion"] .wp-block-coblocks-accordion {
   margin-bottom: 0; }
   .editor-block-list__block[data-type="coblocks/accordion"] .wp-block-coblocks-accordion__title {
@@ -15,20 +9,8 @@
 
 .editor-block-list__block[data-type="coblocks/accordion"].is-selected .wp-block-coblocks-accordion__title {
   border-radius: 4px 4px 0 0; }
-/**
- * Gutenberg Vars
- */
-/**
- * Often re-used variables
- */
 .editor-block-list__block[data-type="coblocks/alert"] .wp-block-coblocks-alert {
   margin-bottom: 0; }
-/**
- * Gutenberg Vars
- */
-/**
- * Often re-used variables
- */
 .editor-block-list__block[data-type="coblocks/dynamic-separator"] .coblocks-spacer-control {
   margin-bottom: 0; }
   .editor-block-list__block[data-type="coblocks/dynamic-separator"] .coblocks-spacer-control::before {
@@ -51,12 +33,6 @@
 
 .editor-block-list__block[data-type="coblocks/dynamic-separator"] .wp-block-coblocks-dynamic-separator.hr-style--fullwidth::before {
   width: calc(100% - 10px); }
-/**
- * Gutenberg Vars
- */
-/**
- * Often re-used variables
- */
 .editor-block-list__block[data-type="coblocks/gif"] .wp-block-coblocks-gif {
   margin: 0;
   padding: 50px 0;
@@ -122,21 +98,9 @@
 .wp-block-image__resize-handler-bottom-left {
   display: block;
   z-index: z-index(".wp-block-image__resize-handlers"); }
-/**
- * Gutenberg Vars
- */
-/**
- * Often re-used variables
- */
 .editor-block-list__block[data-type="coblocks/social"] p {
   line-height: 1;
   margin: 0; }
-/**
- * Gutenberg Vars
- */
-/**
- * Often re-used variables
- */
 .editor-block-list__block[data-type="coblocks/spacer"] .coblocks-spacer-control {
   margin-bottom: 0; }
 
