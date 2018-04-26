@@ -50,7 +50,7 @@ export default withState( { editable: 'title' } ) ( class AccordionBlock extends
 			),
 			<Accordion { ...this.props }>
 				<RichText
-					tagName="summary"
+					tagName="p"
 					placeholder={ __( 'Add title...' ) }
 					value={ title }
 					className={ `${ className }__title` }
