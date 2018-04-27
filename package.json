@@ -25,7 +25,7 @@
     "postcss": "^6.0.19",
     "querystringify": "1.0.0",
     "re-resizable": "4.0.3",
-    "react": "16.2.0",
+    "react": "^16.2.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "striptags": "^3.1.1",
