@@ -78,24 +78,28 @@ export default withState( { editable: 'content' } ) ( class AlertBlock extends C
 					/>
 				) : null }
 
-				<RichText
-					multiline="p"
-					tagName="div"
-					placeholder={ __( 'Write alert...' ) }
-					value={ value }
-					onMerge={ mergeBlocks }
-					className={ `${ className }__text` }
-					onChange={ ( value ) => setAttributes( { value: value } ) }
-					isSelected={ isSelected && editable === 'content' }
-					onFocus={ onSetActiveEditable( 'content' ) }
-					onRemove={ ( forward ) => {
-						const hasEmptyTitle = ! title || title.length === 0;
-						if ( ! forward && hasEmptyTitle ) {
-							onReplace( [] );
-						}
-					} }
-					keepPlaceholderOnFocus
-				/>
+				<div className={ `${ className }__text` }>
+					<RichText
+						multiline="p"
+						tagName="p"
+						placeholder={ __( 'Write alert...' ) }
+						value={ value }
+						onMerge={ mergeBlocks }
+						style={ {
+							color: textColor,
+						} }
+						onChange={ ( value ) => setAttributes( { value: value } ) }
+						isSelected={ isSelected && editable === 'content' }
+						onFocus={ onSetActiveEditable( 'content' ) }
+						onRemove={ ( forward ) => {
+							const hasEmptyTitle = ! title || title.length === 0;
+							if ( ! forward && hasEmptyTitle ) {
+								onReplace( [] );
+							}
+						} }
+						keepPlaceholderOnFocus
+					/>
+				</div>
 			</Alert>
 		];
 	}

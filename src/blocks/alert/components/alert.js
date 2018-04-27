@@ -26,8 +26,6 @@ export default class Alert extends Component {
 			backgroundColor,
 			borderColor,
 			textAlign,
-			textColor,
-			title,
 		} = attributes;
 
 		return (
@@ -39,7 +37,6 @@ export default class Alert extends Component {
 				style={ {
 					backgroundColor: backgroundColor,
 					borderColor: borderColor,
-					color: textColor,
 					textAlign: textAlign,
 				} }
 			>
