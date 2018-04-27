@@ -2,9 +2,9 @@
 /**
  * Plugin Name: CoBlocks
  * Plugin URI: https://coblocks.com
- * Description: A suite of content blocks for the upcoming WordPress block editor, also called Gutenberg.
+ * Description: @@pkg.description
  * Author: Rich Tabor from CoBlocks
- * Author URI: https://richtabor.com
+ * Author URI: https://coblocks.com
  * Tags: gutenberg, editor, block, layout, writing
  * Version: 1.0.1
  * Text Domain: '@@pkg.name'
