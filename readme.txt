@@ -14,9 +14,9 @@ A suite of Gutenberg page builder blocks for writers, publishers and content mar
 
 == Description ==
 
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is a collection of Gutenberg blocks built by the folks at [ThemeBeans](https://themebeans.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks).
+[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is a collection of page builder Gutenberg blocks for content marketers, built by the fine folks at [ThemeBeans](https://themebeans.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks).
 
-## CoBlocks currently has the following Gutenberg blocks:
+= CoBlocks currently has the following Gutenberg blocks =
 
 * Accordion Block
 * Alert Block
@@ -52,12 +52,17 @@ This plugin is created and maintained by [Rich Tabor](https://richtabor.com?utm_
 
 == Changelog ==
 
+= 1.0.2, April 27, 2017 =
+* Add focus style for the Accordion block
+* Adjust font size for the Alert block title
+* Fix Alert block text color issue
+
 = 1.0.1, April 27, 2017 =
 * Add a content check before rendering the Alert block
 * Add accordion block
 * Add appropriate block transforms for the Alert, Spacer, and Dynamic HR blocks
-* Rename "Separator (Dynamic)" block to "Dynamic HR"
 * Refactor Alert block
+* Rename "Separator (Dynamic)" block to "Dynamic HR"
 * Update Alert block icon
 * Update Gif block category to "common"
 
