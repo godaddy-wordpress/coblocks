@@ -10,21 +10,28 @@ Stable tag: @@pkg.version
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-A suite of Gutenberg blocks for writers, publishers and content marketers.
+A suite of Gutenberg page builder blocks for writers, publishers and content marketers.
 
 == Description ==
 
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is a collection of Gutenberg blocks built by the folks at [ThemeBeans](https://themebeans.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks).
 
-Our vision has always been to create WordPress products that are entirely user-first. That deliver a first-rate experience, second to none.
+## CoBlocks currently has the following Gutenberg blocks:
 
-**CoBlocks delivers on all fronts.**
+* Accordion Block
+* Alert Block
+* Dynamic HR Block
+* Gif Block
+* Spacer Block
+* Social Sharing Block
 
 = A new way to WordPress =
 
 We built [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) for the next-generation block editor, codenamed Gutenberg. This new block editor absolutely empowers people to create rich content in such an intuitive fashion.
 
 Building on top of this new foundational change in content creation, CoBlocks leverages Gutenberg to add even more functionality to the block editor. Space out content, drop in social icons, add gifs — all of these, and more, are new blocks powered by CoBlocks.
+
+Our vision with CoBlocks is to create content blocks that deliver a first-rate experience for writers, content marketers and publishers.
 
 This plugin is created and maintained by [Rich Tabor](https://richtabor.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks).
 
@@ -44,6 +51,16 @@ This plugin is created and maintained by [Rich Tabor](https://richtabor.com?utm_
 3. Use CoBlocks blocks on your next page or post.
 
 == Changelog ==
+
+= 1.0.1, April 27, 2017 =
+* Add a content check before rendering the Alert block
+* Add accordion block
+* Add appropriate block transforms for the Alert, Spacer, and Dynamic HR blocks
+* Rename "Separator (Dynamic)" block to "Dynamic HR"
+* Refactor Alert block
+* Update Alert block icon
+* Update Gif block category to "common"
+
 
 = 1.0.0, April 19, 2017 =
 * Initial release on WordPress.org. Enjoy!
