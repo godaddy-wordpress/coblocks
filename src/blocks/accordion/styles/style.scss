@@ -28,6 +28,11 @@
 			background: rgba(#000, 0.0275);
 		}
 
+		&:focus {
+			outline: 1px dotted #aaa;
+			outline-offset: -4px;
+		}
+
 		p {
 			display: inline;
 
