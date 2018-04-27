@@ -23,7 +23,7 @@ registerBlockType( 'coblocks/dynamic-separator', {
 
 	title: __( 'Dynamic HR' ),
 
-	description: __( 'Add a separator with custom spacing between other blocks.' ),
+	description: __( 'Add a divider with custom spacing between other blocks.' ),
 
 	icon: 'minus',
 
