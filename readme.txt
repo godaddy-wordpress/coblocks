@@ -52,6 +52,9 @@ This plugin is created and maintained by [Rich Tabor](https://richtabor.com?utm_
 
 == Changelog ==
 
+= 1.0.4, April 30, 2017 =
+* Add new GitHub Gist block 🎉
+
 = 1.0.3, April 30, 2017 =
 * Remove wp-edit-blocks front-end dependency
 * Update readme.txt
