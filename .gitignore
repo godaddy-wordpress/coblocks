@@ -3,3 +3,5 @@
 *.sublime-project
 *.sublime-workspace
 *.cache
+.ftppass
+sftp.json
