@@ -140,6 +140,13 @@ class CoBlocks {
 			)
 		);
 		register_block_type(
+			$slug . '/gist', array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+		register_block_type(
 			$slug . '/spacer', array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
