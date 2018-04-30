@@ -22,6 +22,7 @@ A suite of Gutenberg page builder blocks for writers, publishers and content mar
 * Alert Block
 * Dynamic HR Block
 * Gif Block
+* GitHub Gist Block
 * Spacer Block
 * Social Sharing Block
 
