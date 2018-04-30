@@ -16,7 +16,7 @@ A suite of Gutenberg page builder blocks for writers, publishers and content mar
 
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is a collection of page builder Gutenberg blocks for content marketers, built by the fine folks at [ThemeBeans](https://themebeans.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks).
 
-= CoBlocks currently has the following Gutenberg blocks =
+= CoBlocks Gutenberg Blocks =
 
 * Accordion Block
 * Alert Block
@@ -47,10 +47,14 @@ This plugin is created and maintained by [Rich Tabor](https://richtabor.com?utm_
 
 1. Upload the `coblocks` folder to your `/wp-content/plugins/` directory or alternatively upload the coblocks.zip file via the plugin page of WordPress by clicking 'Add New' and selecting the zip from your computer.
 2. Install and activate the Gutenberg WordPress plugin.
-2. Activate the CoBlocks WordPress plugin through the 'Plugins' menu in WordPress.
-3. Use CoBlocks blocks on your next page or post.
+3. Activate the CoBlocks WordPress plugin through the 'Plugins' menu in WordPress.
+4. Use CoBlocks blocks on your next page or post.
 
 == Changelog ==
+
+= 1.0.3, April 30, 2017 =
+* Remove wp-edit-blocks front-end dependency
+* Update readme.txt
 
 = 1.0.2, April 27, 2017 =
 * Add focus style for the Accordion block
