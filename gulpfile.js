@@ -58,6 +58,8 @@ gulp.task( 'npmStart', run( 'npm run start' ) )
 
 gulp.task( 'npmBuild', run( 'npm run build' ) )
 
+gulp.task( 'npmInstall', run( 'npm install' ) )
+
 gulp.task('copy', function(done) {
 	return gulp.src( buildFiles )
 	.pipe( copy( buildDestination ) );
@@ -263,6 +265,13 @@ gulp.task(
 	'default',
 	gulp.series(
 		'npmStart', function(done) {
+	done();
+} ) );
+
+gulp.task(
+	'install',
+	gulp.series(
+		'npmInstall', function(done) {
 	done();
 } ) );
 
