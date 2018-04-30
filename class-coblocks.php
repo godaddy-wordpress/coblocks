@@ -170,7 +170,7 @@ class CoBlocks {
 		wp_register_style(
 			$this->_slug . '-frontend',
 			$this->_url . '/dist/blocks.style.build.css',
-			array( 'wp-edit-blocks' ),
+			array( 'wp-blocks' ),
 			$this->_version
 		);
 	}
