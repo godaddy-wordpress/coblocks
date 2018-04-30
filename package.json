@@ -38,6 +38,7 @@
     "gulp-cache": "^1.0.2",
     "gulp-copy": "^1.0.1",
     "gulp-notify": "^3.2.0",
+    "gulp-if": "^2.0.2",
     "gulp-open": "^2.0.0",
     "gulp-rename": "^1.2.0",
     "gulp-sftp": "^0.1.5",
