@@ -1,5 +1,7 @@
 **/node_modules/**
 **/build/**
+dist/**
+**/dist/**
 *.sublime-project
 *.sublime-workspace
 *.cache
