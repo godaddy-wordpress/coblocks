@@ -97,6 +97,20 @@ class CoBlocks {
 	}
 
 	/**
+	 * Check if lite is activated.
+	 *
+	 * @access public
+	 */
+	public function has_pro() {
+
+		if ( class_exists( 'CoBlocks_Pro' ) ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
 	 * Add actions to enqueue assets.
 	 *
 	 * @access public
@@ -105,6 +119,11 @@ class CoBlocks {
 
 		// Return early if this function does not exist.
 		if ( ! function_exists( 'register_block_type' ) ) {
+			return;
+		}
+
+		// Return early if CoBlocks Pro is active.
+		if ( $this->has_pro() ) {
 			return;
 		}
 
@@ -161,6 +180,12 @@ class CoBlocks {
 	 * @access public
 	 */
 	public function load_dynamic_blocks() {
+
+		// Return early if CoBlocks Pro is active.
+		if ( $this->has_pro() ) {
+			return;
+		}
+
 		foreach ( glob( dirname( __FILE__ ) . '/src/blocks/*/index.php' ) as $block_logic ) {
 			require $block_logic;
 		}
