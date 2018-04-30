@@ -1,0 +1,57 @@
+.gist {
+	margin-bottom: 1.75em;
+
+	tr {
+		border: none;
+	}
+
+	.gist-file {
+		margin-bottom: 0 !important;
+
+		a {
+
+			&,
+			&:hover {
+				box-shadow: none;
+			}
+		}
+
+		+ .gist-file {
+			margin-top: 5px !important;
+		}
+	}
+}
+
+.wp-block-coblocks-gist {
+
+	.gist {
+
+		.gist-file {
+			border-radius: $accordion-border-radius;
+			border-color: rgba(0, 0, 0, 0.125);
+		}
+
+		.gist-data {
+			border-radius: 3px 3px 0 0;
+		}
+
+		.gist-meta {
+			border-radius: 0 0 3px 3px;
+		}
+	}
+
+	&--no-meta {
+
+		.gist {
+
+			.gist-data {
+				border-bottom: 0;
+				border-radius: 3px;
+			}
+
+			.gist-meta {
+				display: none;
+			}
+		}
+	}
+}
