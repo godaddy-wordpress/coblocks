@@ -145,6 +145,20 @@ class CoBlocks {
 			)
 		);
 		register_block_type(
+			$slug . '/author', array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+		register_block_type(
+			$slug . '/click-to-tweet', array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+		register_block_type(
 			$slug . '/dynamic-separator', array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
