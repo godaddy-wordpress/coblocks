@@ -9,6 +9,10 @@
 			&::after {
 				display: none;
 			}
+
+			&:focus {
+				outline: none;
+			}
 		}
 
 		&--open .wp-block-coblocks-accordion__title {
