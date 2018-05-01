@@ -166,7 +166,8 @@
     position: relative;
     text-decoration: none;
     white-space: normal;
-    word-break: break-all; }
+    word-break: break-all;
+    text-decoration: none !important; }
     .wp-block-coblocks-author__content-button:hover {
       opacity: 0.6; }
     .wp-block-coblocks-author__content-button:active {
@@ -195,6 +196,105 @@
   15% {
     -webkit-transform: scale(0.95);
             transform: scale(0.95); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+.wp-block-coblocks-click-to-tweet {
+  border-radius: 4px;
+  margin-bottom: 1.9em;
+  position: relative;
+  border: 1px solid transparent; }
+  .wp-block-coblocks-click-to-tweet__text {
+    margin-bottom: 0;
+    padding-left: 40px;
+    position: relative; }
+    .wp-block-coblocks-click-to-tweet__text::before {
+      background-color: currentColor;
+      background-size: cover;
+      content: "";
+      display: inline-block;
+      height: 24px;
+      left: 0;
+      -webkit-mask-image: url(images/twitter.svg);
+              mask-image: url(images/twitter.svg);
+      opacity: 0.3;
+      position: absolute;
+      top: 5px;
+      width: 24px; }
+    .wp-block-coblocks-click-to-tweet__text.is-small-text {
+      font-size: 16px; }
+    .wp-block-coblocks-click-to-tweet__text.is-regular-text {
+      font-size: 18px; }
+    .wp-block-coblocks-click-to-tweet__text.is-large-text {
+      font-size: 26px; }
+    .wp-block-coblocks-click-to-tweet__text.is-larger-text {
+      font-size: 34px; }
+    .wp-block-coblocks-click-to-tweet__text a {
+      -webkit-box-shadow: none !important;
+              box-shadow: none !important;
+      text-decoration: none !important; }
+  .wp-block-coblocks-click-to-tweet__twitter-btn {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    background: #1da1f2;
+    border-radius: 4px;
+    border: none;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    color: #fff !important;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    height: 34px;
+    line-height: 34px;
+    margin-left: 40px;
+    margin-top: 10px;
+    padding: 0 1em;
+    position: relative;
+    text-decoration: none !important;
+    white-space: normal;
+    word-break: break-all; }
+    .wp-block-coblocks-click-to-tweet__twitter-btn::before {
+      background-color: #fff;
+      background-size: cover;
+      content: "";
+      display: inline-block;
+      height: 18px;
+      margin-right: 5px;
+      -webkit-mask-image: url(images/twitter.svg);
+              mask-image: url(images/twitter.svg);
+      position: relative;
+      top: 4px;
+      width: 18px; }
+    .wp-block-coblocks-click-to-tweet__twitter-btn:active::before {
+      -webkit-animation: pulse 200ms;
+              animation: pulse 200ms;
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+      -webkit-animation-fill-mode: none;
+              animation-fill-mode: none; }
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  15% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  15% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9); }
   100% {
     -webkit-transform: scale(1);
             transform: scale(1); } }
