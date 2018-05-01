@@ -1,0 +1,107 @@
+.wp-block-coblocks-author {
+	align-items: flex-start;
+	display: flex;
+	position: relative;
+	margin: 1.5em 0;
+	padding: 30px 20px;
+	background: $accordion-background;
+	border-radius: $accordion-border-radius;
+
+	@media (min-width: 600px) {
+		padding: 40px 30px;
+	}
+
+	&__avatar {
+		border-radius: 100%;
+		flex: 0 0 auto;
+		margin-right: 20px;
+
+		@media (min-width: 600px) {
+			margin-right: 30px;
+		}
+	}
+
+	&__avatar-img {
+		border-radius: 100%;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	&__avatar,
+	&__avatar-img {
+		height: 70px;
+		width: 70px;
+
+		@media (min-width: 600px) {
+			width: 150px;
+			height: 150px;
+		}
+	}
+
+	&__content {
+		flex: 1 1 auto;
+		line-height: 1.5;
+		padding-bottom: 1px;
+
+		&-heading p {
+			margin: 0 0 1em;
+		}
+
+		&-name h3 {
+			margin: 0 0 0.5em;
+		}
+
+		&-biography {
+			margin: 0 0 1em;
+
+			p {
+				margin: 0 0 1.2em;
+
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	&__content-button {
+		appearance: none;
+		border-radius: 4px;
+		border: 1px solid currentColor;
+		box-shadow: none !important;
+		cursor: pointer;
+		display: inline-block;
+		font-size: 14px;
+		font-weight: 400;
+		padding: 0.5em 1.25em;
+		position: relative;
+		text-decoration: none;
+		white-space: normal;
+		word-break: break-all;
+
+		&:hover {
+			opacity: 0.6;
+		}
+
+		&:active {
+			animation: littlePulse 200ms;
+			animation-timing-function: ease-out;
+			animation-fill-mode: none;
+		}
+	}
+
+	@keyframes littlePulse {
+
+		0% {
+			transform: scale(1);
+		}
+
+		15% {
+			transform: scale(0.95);
+		}
+
+		100% {
+			transform: scale(1);
+		}
+	}
+}

@@ -20,6 +20,7 @@ A suite of Gutenberg page builder blocks for writers, publishers and content mar
 
 * Accordion Block
 * Alert Block
+* Author Block
 * Dynamic HR Block
 * Gif Block
 * GitHub Gist Block
@@ -52,6 +53,9 @@ This plugin is created and maintained by [Rich Tabor](https://richtabor.com?utm_
 4. Use CoBlocks blocks on your next page or post.
 
 == Changelog ==
+
+= 1.0.5, May 1, 2017 =
+* Add new Author block 💥
 
 = 1.0.4, April 30, 2017 =
 * Add new GitHub Gist block 🎉
