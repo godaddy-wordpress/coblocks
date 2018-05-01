@@ -47,7 +47,6 @@ registerBlockType( 'coblocks/author', {
 		heading: {
 			type: 'string',
 			selector: '.wp-block-coblocks-author__content-heading',
-			default: __( 'Written by:' ),
 		},
 		imgId: {
 			type: 'number',
@@ -81,41 +80,52 @@ registerBlockType( 'coblocks/author', {
 			textAlign,
 		} = props.attributes;
 
-		return (
-			<Author { ...props }>
-				{ imgUrl && (
-					<div className={ 'wp-block-coblocks-author__avatar' }>
-						<img
-							class="wp-block-coblocks-author__avatar-img"
-							src={ imgUrl }
-							alt="avatar"
-						/>
-					</div>
-				) }
+		if ( name ) {
+			return (
+				<Author { ...props }>
 
-				<div className={ 'wp-block-coblocks-author__content' }>
-					{ heading && heading.length > 0 && (
-						<div className={ 'wp-block-coblocks-author__content-heading' }>
-							<p>{ heading }</p>
+					{ imgUrl && (
+						<div className={ 'wp-block-coblocks-author__avatar' }>
+							<img
+								class="wp-block-coblocks-author__avatar-img"
+								src={ imgUrl }
+								alt="avatar"
+							/>
 						</div>
 					) }
-					{ name && name.length > 0 && (
-						<div className={ 'wp-block-coblocks-author__content-name' }>
-							<h3>{ name }</h3>
-						</div>
-					) }
-					{ biography && biography.length > 0 && (
-						<div className={ 'wp-block-coblocks-author__content-biography' }>
-							<p>{ biography }</p>
-						</div>
-					) }
-					{ buttonText && buttonText.length > 0 && (
-						<a className={ 'wp-block-coblocks-author__content-button' } href={ buttonUrl }>
-							{ buttonText }
-						</a>
-					) }
-				</div>
-			</Author>
-		);
+
+					<div className={ 'wp-block-coblocks-author__content' }>
+
+						{ heading && heading.length > 0 && (
+							<div className={ 'wp-block-coblocks-author__content-heading' }>
+								<p>{ heading }</p>
+							</div>
+						) }
+
+						{ name && name.length > 0 && (
+							<div className={ 'wp-block-coblocks-author__content-name' }>
+								<h3>{ name }</h3>
+							</div>
+						) }
+
+						{ biography && biography.length > 0 && (
+							<div className={ 'wp-block-coblocks-author__content-biography' }>
+								<p>{ biography }</p>
+							</div>
+						) }
+
+						{ buttonText && buttonText.length > 0 && (
+							<a className={ 'wp-block-coblocks-author__content-button' } href={ buttonUrl }>
+								{ buttonText }
+							</a>
+						) }
+
+					</div>
+
+				</Author>
+			);
+		}
+
+		return null;
 	},
 } );
