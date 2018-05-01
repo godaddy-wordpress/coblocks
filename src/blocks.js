@@ -13,6 +13,7 @@ import './blocks/accordion/index.js';
 import './blocks/gist/index.js';
 import './blocks/alert/index.js';
 import './blocks/author/index.js';
+import './blocks/click-to-tweet/index.js';
 import './blocks/dynamic-separator/index.js';
 import './blocks/gif/index.js';
 import './blocks/social/index.js';

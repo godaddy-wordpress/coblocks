@@ -1,0 +1,39 @@
+.editor-block-list__block[data-type="coblocks/click-to-tweet"] {
+
+	// Resolves jumpy toolbar on input focus.
+	.components-toolbar {
+		transform: translate3d(0, 0, 0);
+	}
+
+	.wp-block-coblocks-click-to-tweet {
+		margin: 0;
+
+		a {
+			pointer-events: none;
+		}
+
+		&__twitter-btn {
+			line-height: 34px;
+
+			&:active::before {
+				animation: none;
+			}
+		}
+
+		&__via {
+			margin: 4px;
+			padding-top: 4px;
+			padding-bottom: 4px;
+		}
+
+		&__via-label {
+			align-items: center;
+			display: flex;
+			flex-basis: 0;
+			font-size: 12px;
+			padding-left: 5px;
+			padding-right: 2px;
+			white-space: nowrap;
+		}
+	}
+}
