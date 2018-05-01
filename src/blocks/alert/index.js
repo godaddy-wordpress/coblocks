@@ -24,7 +24,7 @@ registerBlockType( 'coblocks/alert', {
 
 	icon: icons.alert,
 
-	category: 'formatting',
+	category: 'common',
 
 	keywords: [
 		__( 'notice' ),
