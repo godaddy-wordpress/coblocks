@@ -9,9 +9,10 @@ import Controls from './controls';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, compose } = wp.element;
 const { RichText, MediaUpload, UrlInput } = wp.blocks;
 const { withState, Button, Dashicon, IconButton } = wp.components;
+const { withSelect } = wp.data;
 
 /**
  * Block edit function
@@ -89,10 +90,11 @@ export default withState( { editable: 'heading' } ) ( class AuthorBlock extends 
 
 
 				<div className={ `${ className }__content` }>
-					{ heading || isSelected ? (
+
+					{ ( ( heading && heading.length > 0 ) || isSelected ) && (
 						<RichText
 							tagName="p"
-							placeholder={ __( 'Add heading...' ) }
+							placeholder={ __( 'Heading...' ) }
 							value={ heading }
 							className={ `${ className }__content-heading` }
 							onChange={ ( value ) => setAttributes( { heading: value } ) }
@@ -100,12 +102,12 @@ export default withState( { editable: 'heading' } ) ( class AuthorBlock extends 
 							onFocus={ onSetActiveEditable( 'heading' ) }
 							keepPlaceholderOnFocus
 						/>
-					) : null }
+					) }
 
 					<div className={ `${ className }__content-name` }>
 						<RichText
 							tagName="h3"
-							placeholder={ __( 'Jane Doe' ) }
+							placeholder={ __( 'Author Name' ) }
 							value={ name }
 							onMerge={ mergeBlocks }
 							onChange={ ( value ) => setAttributes( { name: value } ) }
