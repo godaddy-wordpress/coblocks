@@ -67,27 +67,25 @@ export default withState( { editable: 'heading' } ) ( class AuthorBlock extends 
 			// ),
 			<Author { ...this.props }>
 
-
-					<div className={ `${ className }__avatar` }>
-						<MediaUpload
-							onSelect={ onSelectImage }
-							type="image"
-							value={ imgId }
-							render={ ( { open } ) => (
-								<Button onClick={ open }>
-									{ ! imgId ? <Dashicon icon="format-image" /> :
-										<img
-											className={ `${ className }__avatar-img` }
-											src={ imgUrl }
-											alt="avatar"
-										/>
-									}
-								</Button>
-							) }
-						>
-						</MediaUpload>
-					</div>
-
+				<div className={ `${ className }__avatar` }>
+					<MediaUpload
+						onSelect={ onSelectImage }
+						type="image"
+						value={ imgId }
+						render={ ( { open } ) => (
+							<Button onClick={ open }>
+								{ ! imgId ? <Dashicon icon="format-image" /> :
+									<img
+										className={ `${ className }__avatar-img` }
+										src={ imgUrl }
+										alt="avatar"
+									/>
+								}
+							</Button>
+						) }
+					>
+					</MediaUpload>
+				</div>
 
 				<div className={ `${ className }__content` }>
 
