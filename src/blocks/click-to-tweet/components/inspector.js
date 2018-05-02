@@ -27,7 +27,6 @@ export default class Inspector extends Component {
 		super( ...arguments );
 		this.getFontSize = this.getFontSize.bind( this );
 		this.setFontSize = this.setFontSize.bind( this );
-		this.setPaddingIfHasBackground = this.setPaddingIfHasBackground.bind( this );
 	}
 
 	getFontSize() {
@@ -60,17 +59,6 @@ export default class Inspector extends Component {
 		} );
 	}
 
-	setPaddingIfHasBackground( colorValue ) {
-
-		const { attributes, setAttributes } = this.props;
-
-		setAttributes( { backgroundColor: colorValue } )
-
-		if ( ! attributes.padding ) {
-			setAttributes( { padding: 20 } )
-		}
-	}
-
 	render() {
 
 		const {
@@ -82,13 +70,8 @@ export default class Inspector extends Component {
 		} = this.props;
 
 		const {
-			padding,
-			borderWidth,
-			borderRadius,
 			buttonColor,
-			backgroundColor,
 			textColor,
-			borderColor,
 		} = attributes;
 
 		const fontSize = this.getFontSize();
@@ -134,48 +117,6 @@ export default class Inspector extends Component {
 						afterIcon="editor-textcolor"
 					/>
 				</PanelBody>
-				<PanelBody title={ __( 'Display Settings' ) }>
-					<RangeControl
-						label={ __( 'Padding' ) }
-						value={ padding || '' }
-						initialPosition={ 0 }
-						onChange={ ( value ) => setAttributes( { padding: value } ) }
-						min={ 0 }
-						max={ 100 }
-					/>
-					{ ( ( backgroundColor ) || borderColor ) && (
-						<RangeControl
-							label={ __( 'Border Radius' ) }
-							value={ borderRadius || '' }
-							initialPosition={ 4 }
-							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-							min={ 0 }
-							max={ 30 }
-						/>
-					) }
-					{ borderColor &&
-						<RangeControl
-							label={ __( 'Border Width' ) }
-							value={ borderWidth || '' }
-							initialPosition={ 0 }
-							onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
-							min={ 0 }
-							max={ 10 }
-						/>
-					}
-				</PanelBody>
-				<PanelColor title={ __( 'Background Color' ) } colorValue={ backgroundColor } initialOpen={ false }>
-					<ColorPalette
-						value={ backgroundColor }
-						onChange={ ( colorValue ) => this.setPaddingIfHasBackground( colorValue ) }
-					/>
-				</PanelColor>
-				<PanelColor title={ __( 'Border Color' ) } colorValue={ borderColor } initialOpen={ false }>
-					<ColorPalette
-						value={ borderColor }
-						onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
-					/>
-				</PanelColor>
 				<PanelColor title={ __( 'Text Color' ) } colorValue={ textColor } initialOpen={ false }>
 					<ColorPalette
 						value={ textColor }

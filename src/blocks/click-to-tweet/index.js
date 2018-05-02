@@ -75,25 +75,7 @@ registerBlockType( 'coblocks/click-to-tweet', {
 		customFontSize: {
 			type: 'number',
 		},
-		padding: {
-			default: 0,
-			type: 'number',
-		},
-		borderRadius: {
-			default: 4,
-			type: 'number',
-		},
-		borderWidth: {
-			default: 0,
-			type: 'number',
-		},
 		buttonColor: {
-			type: 'string',
-		},
-		backgroundColor: {
-			type: 'string',
-		},
-		borderColor: {
 			type: 'string',
 		},
 		textColor: {

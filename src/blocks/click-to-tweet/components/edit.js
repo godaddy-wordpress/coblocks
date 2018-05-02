@@ -4,8 +4,6 @@
 import classnames from 'classnames';
 import pickBy from 'lodash/pickBy';
 import isUndefined from 'lodash/isUndefined';
-import { connect } from 'react-redux';
-import { stringify } from 'querystringify';
 
 /**
  * Internal dependencies
@@ -76,8 +74,6 @@ export default compose( applyWithSelect, withState( { editable: 'content' } ) ) 
 		} = this.props;
 
 		const {
-			backgroundColor,
-			borderColor,
 			buttonText,
 			content,
 			buttonColor,

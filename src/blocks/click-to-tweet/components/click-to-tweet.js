@@ -22,12 +22,7 @@ export default class ClickToTweet extends Component {
 		} = this.props;
 
 		const {
-			backgroundColor,
-			borderColor,
-			borderWidth,
-			borderRadius,
 			textAlign,
-			padding,
 		} = attributes;
 
 		return (
@@ -36,11 +31,6 @@ export default class ClickToTweet extends Component {
 					className,
 				) }
 				style={ {
-					backgroundColor: backgroundColor,
-					borderColor: borderColor,
-					borderWidth: borderWidth,
-					borderRadius: borderRadius,
-					padding: padding,
 					textAlign: textAlign,
 				} }
 			>
