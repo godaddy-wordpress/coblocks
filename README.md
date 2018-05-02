@@ -34,25 +34,25 @@ There are various ways you can contribute:
 2. Send a pull request with your bug fixes and/or new features
 3. Provide feedback and suggestions on [enhancements](https://github.com/thatplugincompany/coblocks/issues?direction=desc&labels=Enhancement&page=1&sort=created&state=open)
 
-## Screenshots ##
+## Screenshots
 
-### Spacer Block ###
+### Spacer Block
 [![CoBlocks Spacer Block](https://user-images.githubusercontent.com/1813435/39523967-6af49692-4de5-11e8-9d8a-06d3c2f611f3.jpg)](https://coblocks.com)
 ---
-### GitHub Gist Block ###
+### GitHub Gist Block
 [![CoBlocks GitHub Gist Block](https://user-images.githubusercontent.com/1813435/39524100-ecd7d606-4de5-11e8-8919-008428a8d25b.jpg)](https://coblocks.com)
-
-### Accordion Block ###
+---
+### Accordion Block
 [![CoBlocks Accordion Block](https://user-images.githubusercontent.com/1813435/39524121-f842a0b6-4de5-11e8-8e97-b341a3d45ee6.jpg)](https://coblocks.com)
-
-### Click to Tweet Block ###
+---
+### Click to Tweet Block
 [![CoBlocks Click to Tweet Block](https://user-images.githubusercontent.com/1813435/39524134-05fef79a-4de6-11e8-8571-f3ed6ffeeab4.jpg)](https://coblocks.com)
-
-### Giphy Search Block ###
+---
+### Giphy Search Block
 [![CoBlocks Giphy Search Block](https://user-images.githubusercontent.com/1813435/39524159-14cf91bc-4de6-11e8-9ac3-5f903e5a91c9.jpg)](https://coblocks.com)
-
-### Author Block ###
+---
+### Author Block
 [![CoBlocks Author Block](https://user-images.githubusercontent.com/1813435/39524081-e21fd862-4de5-11e8-8fa1-8df7b9bc712b.jpg)](https://coblocks.com)
-
-### Social Block ###
+---
+### Social Block
 [![CoBlocks Social Block](https://user-images.githubusercontent.com/1813435/39524073-d77df16e-4de5-11e8-82bb-713cf4a49cda.jpg)](https://coblocks.com)
