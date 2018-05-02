@@ -10,9 +10,6 @@
 2. [Download the latest release](https://github.com/thatplugincompany/coblocks/releases) from the GitHub repository, or..
 3. Download the plugin from the [WordPress plugin directory](https://wordpress.org/plugins/coblocks/).
 
-## Bugs ##
-If you find a 🐞 or an issue, [create an issue](https://github.com/thatplugincompany/coblocks/issues?state=open).
-
 ## Development ##
 1. Clone the GitHub repository: `https://github.com/richtabor/coblocks.git`
 2. Browse to the folder in the command line.
@@ -22,6 +19,9 @@ If you find a 🐞 or an issue, [create an issue](https://github.com/thatpluginc
 
 ## Support ##
 Need help? This is a developer's portal for CoBlocks and should not be used for general support. Please visit the [support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks) if you need help.
+
+## Bugs ##
+If you find a 🐞 or an issue, [create an issue](https://github.com/thatplugincompany/coblocks/issues?state=open).
 
 ## Contributions ##
 Anyone is welcome to contribute to the plugin. Please read the [guidelines for contributing](https://github.com/thatplugincompany/coblocks/blob/master/CONTRIBUTING.md) to this repository.
