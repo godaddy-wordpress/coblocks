@@ -20,7 +20,7 @@
 5. Run the `build` gulp task to process build files and generate a zip.
 
 ## Support ##
-Need help? This is a developer's portal for CoBlocks and should not be used for general support. Please visit the [support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks) if you need help.
+Need help? This is a developer's portal for CoBlocks and should not be used for general support and queries. Please visit the [CoBlocks support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks) if you need help using the plugin.
 
 ## Bugs ##
 If you find a 🐞 or an issue, [create an issue](https://github.com/thatplugincompany/coblocks/issues/new).
