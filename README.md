@@ -26,11 +26,11 @@ Need help? This is a developer's portal for CoBlocks and should not be used for 
 If you find a 🐞 or an issue, [create an issue](https://github.com/thatplugincompany/coblocks/issues/new).
 
 ## Contributions ##
-Anyone is welcome to contribute to the plugin. Please read the [guidelines for contributing](https://github.com/thatplugincompany/coblocks/blob/master/CONTRIBUTING.md) to this repository.
+Please read the [guidelines for contributing](https://github.com/thatplugincompany/coblocks/blob/master/CONTRIBUTING.md) to CoBlocks. Anyone is welcome to contribute!
 
 There are various ways you can contribute:
 
-1. Raise an [Issue](https://github.com/richtabor/coblocks/issues) on GitHub
+1. Raise an [Issue](https://github.com/thatplugincompany/coblocks/issues/new) on GitHub
 2. Send a pull request with your bug fixes and/or new features
 3. Provide feedback and suggestions on [enhancements](https://github.com/thatplugincompany/coblocks/issues?direction=desc&labels=Enhancement&page=1&sort=created&state=open)
 
