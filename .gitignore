@@ -7,3 +7,5 @@ dist/**
 *.cache
 .ftppass
 sftp.json
+.github/
+.github/issue_template.md
