@@ -10,7 +10,7 @@ Stable tag: @@pkg.version
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-A suite of Gutenberg page builder blocks for writers, publishers and content marketers.
+CoBlocks is a suite of page builder Gutenberg blocks for writers, publishers and content marketers.
 
 == Description ==
 
@@ -54,30 +54,30 @@ This plugin is created and maintained by [Rich Tabor](https://richtabor.com?utm_
 
 == Changelog ==
 
-= 1.0.5, May 1, 2017 =
-* Add new Author block 💥
+= 1.0.5, May 2, 2017 =
+* New: Add Author block 🎉
+* New: Add Click to Tweet block 🎉
+* Tweak: Adjust focus style for the Accordion block
 
 = 1.0.4, April 30, 2017 =
-* Add new GitHub Gist block 🎉
+* New: Add GitHub Gist block 🎉
 
 = 1.0.3, April 30, 2017 =
-* Remove wp-edit-blocks front-end dependency
-* Update readme.txt
+* Fix: Remove wp-edit-blocks front-end dependency
 
 = 1.0.2, April 27, 2017 =
-* Add focus style for the Accordion block
-* Adjust font size for the Alert block title
-* Fix Alert block text color issue
+* New: Add focus style for the Accordion block
+* Tweak: Adjust font size for the Alert block title
+* Fix: Alert block text color issue
 
 = 1.0.1, April 27, 2017 =
-* Add a content check before rendering the Alert block
-* Add accordion block
-* Add appropriate block transforms for the Alert, Spacer, and Dynamic HR blocks
-* Refactor Alert block
-* Rename "Separator (Dynamic)" block to "Dynamic HR"
-* Update Alert block icon
-* Update Gif block category to "common"
-
+* New: Accordion block 🎉
+* New: Add block transforms for the Alert, Spacer, and Dynamic HR blocks
+* New: Refactor Alert block
+* Tweak: a content check before rendering the Alert block
+* Tweak: Rename "Separator (Dynamic)" block to "Dynamic HR"
+* Tweak: Update Alert block icon
+* Tweak: Update Gif block category to "common"
 
 = 1.0.0, April 19, 2017 =
 * Initial release on WordPress.org. Enjoy!
