@@ -1,0 +1,23 @@
+.editor-block-list__block[data-type="coblocks/pricing-table"] {
+
+	.pricing-table__price {
+		display: flex !important;
+
+		.blocks-editable {
+			display: inline-block;
+		}
+	}
+
+	.pricing-table--right .pricing-table__price {
+		justify-content: flex-end;
+	}
+
+	.wp-block-button__link {
+		line-height: 26px;
+	}
+
+	.blocks-button__inline-link {
+		width: 100%;
+		margin-top: 14px;
+	}
+}
