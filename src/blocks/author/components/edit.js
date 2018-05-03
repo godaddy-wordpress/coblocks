@@ -9,7 +9,7 @@ import Controls from './controls';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component, compose } = wp.element;
+const { Component } = wp.element;
 const { RichText, MediaUpload, UrlInput } = wp.blocks;
 const { withState, Button, Dashicon, IconButton } = wp.components;
 const { withSelect } = wp.data;
