@@ -24,6 +24,7 @@ CoBlocks is a suite of page builder Gutenberg blocks for writers, publishers and
 * Dynamic HR Block
 * Gif Block
 * GitHub Gist Block
+* Pricing Table Block
 * Spacer Block
 * Social Sharing Block
 
@@ -83,23 +84,26 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
-= 1.0.5, May 2, 2017 =
+= 1.0.6, May 3, 2018 =
+* New: Add Pricing Table block 🎉
+
+= 1.0.5, May 2, 2018 =
 * New: Add Author block 🎉
 * New: Add Click to Tweet block 🎉
 * Tweak: Adjust focus style for the Accordion block
 
-= 1.0.4, April 30, 2017 =
+= 1.0.4, April 30, 2018 =
 * New: Add GitHub Gist block 🎉
 
-= 1.0.3, April 30, 2017 =
+= 1.0.3, April 30, 2018 =
 * Fix: Remove wp-edit-blocks front-end dependency
 
-= 1.0.2, April 27, 2017 =
+= 1.0.2, April 27, 2018 =
 * New: Add focus style for the Accordion block
 * Tweak: Adjust font size for the Alert block title
 * Fix: Alert block text color issue
 
-= 1.0.1, April 27, 2017 =
+= 1.0.1, April 27, 2018 =
 * New: Accordion block 🎉
 * New: Add block transforms for the Alert, Spacer, and Dynamic HR blocks
 * New: Refactor Alert block
@@ -108,5 +112,5 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 * Tweak: Update Alert block icon
 * Tweak: Update Gif block category to "common"
 
-= 1.0.0, April 19, 2017 =
+= 1.0.0, April 19, 2018 =
 * Initial release on WordPress.org. Enjoy!
