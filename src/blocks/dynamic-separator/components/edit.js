@@ -54,7 +54,6 @@ export default class DynamicSeparatorBlock extends Component {
 
 		const classes = classnames(
 			className,
-			'coblocks-dynamic-separator',
 			style ? `hr-style--${ style }` : `hr-style----dots`,
 		);
 
