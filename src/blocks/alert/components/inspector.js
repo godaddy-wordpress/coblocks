@@ -30,31 +30,13 @@ export default class Inspector extends Component {
 			borderColor,
 		} = attributes;
 
-		function styles( value ) {
-
-			setAttributes( { backgroundColor: value } )
-
-			if ( value == '#e2e3e5' ) {
-				setAttributes( { textColor: '#383d41', titleColor: '#383d41', borderColor: '#d6d8db' } )
-			} else if  ( value == '#cce5ff' ) {
-				setAttributes( { textColor: '#004085', titleColor: '#004085', borderColor: '#b8daff' } )
-			} else if  ( value == '#d4edda' ) {
-				setAttributes( { textColor: '#155724', titleColor: '#155724', borderColor: '#c3e6cb' } )
-			} else if  ( value == '#f8d7da' ) {
-				setAttributes( { textColor: '#721c24', titleColor: '#721c24', borderColor: '#f5c6cb' } )
-			} else if  ( value == '#fff3cd' ) {
-				setAttributes( { textColor: '#856404', titleColor: '#856404', borderColor: '#ffeeba' } )
-			}
-		}
-
 		return (
 			<InspectorControls key="inspector">
 				<PanelColor title={ __( 'Background Color' ) } colorValue={ backgroundColor } initialOpen={ false }>
 					<ColorPalette
 						label={ __( 'Background Color' ) }
 						value={ backgroundColor }
-						onChange={ ( value ) => styles( value ) }
-						colors={ ['#e2e3e5', '#cce5ff', '#d4edda', '#f8d7da', '#fff3cd'] }
+						onChange={ ( value ) => setAttributes( { backgroundColor: value } ) }
 					/>
 				</PanelColor>
 
@@ -63,7 +45,6 @@ export default class Inspector extends Component {
 						label={ __( 'Title Color' ) }
 						value={ titleColor }
 						onChange={ ( value ) => setAttributes( { titleColor: value } ) }
-						colors={ ['#383d41', '#004085', '#155724', '#721c24', '#856404'] }
 					/>
 				</PanelColor>
 
@@ -72,7 +53,6 @@ export default class Inspector extends Component {
 						label={ __( 'Background Color' ) }
 						value={ textColor }
 						onChange={ ( value ) => setAttributes( { textColor: value } ) }
-						colors={ ['#383d41', '#004085', '#155724', '#721c24', '#856404'] }
 					/>
 				</PanelColor>
 
@@ -81,7 +61,6 @@ export default class Inspector extends Component {
 						label={ __( 'Border Color' ) }
 						value={ textColor }
 						onChange={ ( value ) => setAttributes( { borderColor: value } ) }
-						colors={ ['#d6d8db', '#b8daff', '#c3e6cb', '#f5c6cb', '#ffeeba'] }
 					/>
 				</PanelColor>
 

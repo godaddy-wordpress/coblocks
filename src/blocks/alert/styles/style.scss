@@ -38,6 +38,10 @@
 
 	& &__text {
 
+		&:last-child {
+			margin-bottom: 0;
+		}
+
 		a {
 			box-shadow: 0 -1px 0 inset;
 			color: inherit;
@@ -47,10 +51,6 @@
 				box-shadow: 0 -2px 0 inset;
 				color: inherit;
 			}
-		}
-
-		p:last-child {
-			margin-bottom: 0;
 		}
 	}
 }

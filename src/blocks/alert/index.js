@@ -39,7 +39,7 @@ registerBlockType( 'coblocks/alert', {
 		},
 		value: {
 			type: 'array',
-			selector: '.wp-block-coblocks-alert__text p',
+			selector: '.wp-block-coblocks-alert__text',
 			source: 'children',
 		},
 		backgroundColor: {
@@ -125,15 +125,7 @@ registerBlockType( 'coblocks/alert', {
 					</div>
 				) }
 				{ value && (
-					<div
-						className={ 'wp-block-coblocks-alert__text' }
-						style={ {
-							backgroundColor: backgroundColor,
-							borderColor: borderColor
-						} }
-					>
-						<p style={ { color: textColor } }>{ value }</p>
-					</div>
+					<p className={ 'wp-block-coblocks-alert__text' } style={ { color: textColor } }>{ value }</p>
 				) }
 			</Alert>
 		);
