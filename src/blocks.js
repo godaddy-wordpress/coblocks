@@ -18,4 +18,3 @@ import './blocks/dynamic-separator/index.js';
 import './blocks/gif/index.js';
 import './blocks/pricing-table/index.js';
 import './blocks/social/index.js';
-import './blocks/spacer/index.js';

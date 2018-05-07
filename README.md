@@ -36,8 +36,6 @@ There are various ways you can contribute:
 
 ## Screenshots
 
-### Spacer Block
-[![CoBlocks Spacer Block](https://user-images.githubusercontent.com/1813435/39523967-6af49692-4de5-11e8-9d8a-06d3c2f611f3.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=spacer-screenshot)
 ---
 ### GitHub Gist Block
 [![CoBlocks GitHub Gist Block](https://user-images.githubusercontent.com/1813435/39524100-ecd7d606-4de5-11e8-8919-008428a8d25b.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=gist-screenshot)

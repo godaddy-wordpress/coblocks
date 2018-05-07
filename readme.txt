@@ -25,7 +25,6 @@ CoBlocks is a suite of page builder Gutenberg blocks for writers, publishers and
 * Gif Block
 * GitHub Gist Block
 * Pricing Table Block
-* Spacer Block
 * Social Sharing Block
 
 = A new way to WordPress =
