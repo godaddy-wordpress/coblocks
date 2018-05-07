@@ -83,6 +83,16 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.0.7, May 7, 2018 =
+* New: Gutenberg 2.8 compatibility! 🎊
+* Tweak: Change the name of the Dynamic HR block to Dynamic Separator
+* Tweak: Modify the edit component of the Dynamic Separator to resemble the core Spacer Block
+* Tweak: Change the Dynamic Separator's height range control to a number input
+* Fix: Adjust the pricing table button markup to match the core Button Block for Gutenberg 2.8
+* Fix: Remove custom color function for the Alert block
+* Fix: Remove the Spacer block as Gutenberg 2.8+ now has a Spacer Block
+* Fix: Resolve alert text editor error
+
 = 1.0.6, May 3, 2018 =
 * New: Add Pricing Table block 🎉
 
