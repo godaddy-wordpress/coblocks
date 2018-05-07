@@ -79,9 +79,11 @@ export default class PricingTable extends Component {
 				) }
 
 				{ this.props.button && this.props.button.length > 0 && (
-					<a className={ 'pricing-table__button wp-block-button__link' } href={ this.props.url } title={ this.props.button } style={ buttonStyle } >
-						{ this.props.button }
-					</a>
+					<div className={ 'wp-block-button' }>
+						<a className={ 'pricing-table__button wp-block-button__link' } href={ this.props.url } title={ this.props.button } style={ buttonStyle } >
+							{ this.props.button }
+						</a>
+					</div>
 				) }
 
 			</div>
