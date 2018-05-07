@@ -17,8 +17,8 @@
 		left: 0;
 		letter-spacing: 0.95em;
 		line-height: 1;
-		margin-left: auto;
 		margin-right: auto;
+		margin-left: 21px;
 		position: absolute;
 		right: 0;
 		text-align: center;
@@ -35,6 +35,7 @@
 		height: 1px;
 		display: block;
 		top: 50%;
+		margin-left: auto;
 	}
 
 	&.hr-style--fullwidth::before {

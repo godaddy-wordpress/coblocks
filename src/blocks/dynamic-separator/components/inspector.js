@@ -4,7 +4,7 @@
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { InspectorControls, ColorPalette } = wp.blocks;
-const { PanelBody, RangeControl, SelectControl, PanelColor } = wp.components;
+const { PanelBody, BaseControl, SelectControl, PanelColor } = wp.components;
 
 /**
  * Inspector controls
@@ -51,14 +51,21 @@ export default class Inspector extends Component {
 
 		return (
 			<InspectorControls key="inspector">
-				<PanelBody title={ __( 'Settings' ) }>
-					<RangeControl
-						label={ __( 'Height' ) }
-						value={ height || '' }
-						onChange={ this.updateHeight }
-						min={ 32 }
-						max={ 800 }
-					/>
+				<PanelBody title={ __( 'Dynamic Separator Settings' ) }>
+					<BaseControl label={ __( 'Height in pixels' ) }>
+						<input
+							type="number"
+							onChange={ ( event ) => {
+								setAttributes( {
+									height: parseInt( event.target.value, 10 ),
+								} );
+							} }
+							aria-label={ __( 'Height for the dynamic separator element in pixels.' ) }
+							value={ height }
+							min="20"
+							step="10"
+						/>
+					</BaseControl>
 					<SelectControl
 						label={ __( 'Style' ) }
 						value={ style }

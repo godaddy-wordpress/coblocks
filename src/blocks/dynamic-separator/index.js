@@ -21,7 +21,7 @@ const { registerBlockType, createBlock } = wp.blocks;
  */
 registerBlockType( 'coblocks/dynamic-separator', {
 
-	title: __( 'Dynamic HR' ),
+	title: __( 'Dynamic Separator' ),
 
 	description: __( 'Add a divider with custom spacing between other blocks.' ),
 
@@ -57,24 +57,15 @@ registerBlockType( 'coblocks/dynamic-separator', {
 		from: [
 			{
 				type: 'block',
-				blocks: [ 'coblocks/spacer' ],
+				blocks: [ 'core/spacer' ],
 				transform: ( { height } ) => (
-					createBlock( 'coblocks/spacer', { height: height } )
+					createBlock( 'core/spacer', { height: height } )
 				),
 			},
 			{
 				type: 'block',
 				blocks: [ 'core/separator' ],
 				transform: () => createBlock( 'coblocks/dynamic-separator' ),
-			},
-		],
-		to: [
-			{
-				type: 'block',
-				blocks: [ 'coblocks/spacer' ],
-				transform: ( { height } ) => (
-					createBlock( 'coblocks/spacer', { height: height } )
-				),
 			},
 		],
 	},

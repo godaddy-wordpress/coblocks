@@ -54,7 +54,7 @@ export default class DynamicSeparatorBlock extends Component {
 
 		const classes = classnames(
 			className,
-			'coblocks-spacer-control',
+			'coblocks-dynamic-separator',
 			style ? `hr-style--${ style }` : `hr-style----dots`,
 		);
 
@@ -68,24 +68,31 @@ export default class DynamicSeparatorBlock extends Component {
 				className={ classes }
 				style={ { color: this.defaultSeparatorColor( this.props.attributes ) } }
 				size={ {
-					width: '100%',
-					height: height,
+					height,
 				} }
-				minWidth= { '100%' }
-				maxWidth= { '100%' }
-				minHeight= { '100%' }
+				minHeight="20"
 				handleClasses={ {
-					bottomLeft: 'coblocks-block-spacer-control__resize-handle',
+					top: 'wp-block-spacer__resize-handler-top',
+					bottom: 'wp-block-spacer__resize-handler-bottom',
 				} }
-				enable={ { top: false, right: false, bottom: true, left: false, topRight: false, bottomRight: false, bottomLeft: true, topLeft: false } }
-				onResizeStart={ () => {
-					toggleSelection( false );
+				enable={ {
+					top: true,
+					right: false,
+					bottom: true,
+					left: false,
+					topRight: false,
+					bottomRight: false,
+					bottomLeft: false,
+					topLeft: false,
 				} }
 				onResizeStop={ ( event, direction, elt, delta ) => {
 					setAttributes( {
 						height: parseInt( height + delta.height, 10 ),
 					} );
 					toggleSelection( true );
+				} }
+				onResizeStart={ () => {
+					toggleSelection( false );
 				} }
 			>
 			</ResizableBox>
