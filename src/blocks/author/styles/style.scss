@@ -25,6 +25,7 @@
 		border-radius: 100%;
 		display: inline-block;
 		vertical-align: middle;
+		height: 100% !important;
 	}
 
 	&__avatar,
@@ -40,7 +41,6 @@
 
 	&__content {
 		flex: 1 1 auto;
-		line-height: 1.5;
 		padding-bottom: 1px;
 
 		&-heading p {
