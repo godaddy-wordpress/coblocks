@@ -247,7 +247,7 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 			</div>,
 			isSelected && ( editable === 'button' || editable === 'button_2' ) && (
 				<form
-					className="blocks-button__inline-link"
+					className="core-blocks-button__inline-link"
 					onSubmit={ ( event ) => event.preventDefault() }>
 					<Dashicon icon="admin-links" />
 
