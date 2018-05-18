@@ -11,13 +11,13 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { RichText, MediaUpload, UrlInput } = wp.editor;
-const { withState, Button, Dashicon, IconButton } = wp.components;
+const { Button, Dashicon, IconButton } = wp.components;
 const { withSelect } = wp.data;
 
 /**
  * Block edit function
  */
-export default withState( { editable: 'heading' } ) ( class AuthorBlock extends Component {
+export default class AuthorBlock extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -29,9 +29,7 @@ export default withState( { editable: 'heading' } ) ( class AuthorBlock extends 
 			attributes,
 			className,
 			isSelected,
-			editable,
 			onReplace,
-			setState,
 			setAttributes,
 			mergeBlocks,
 		} = this.props;
@@ -47,10 +45,6 @@ export default withState( { editable: 'heading' } ) ( class AuthorBlock extends 
 			name,
 			textAlign,
 		} = attributes;
-
-		const onSetActiveEditable = ( newEditable ) => () => {
-			setState( { editable: newEditable } );
-		};
 
 		const onSelectImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
 
@@ -154,4 +148,4 @@ export default withState( { editable: 'heading' } ) ( class AuthorBlock extends 
 			</Author>
 		];
 	}
-} );
+};

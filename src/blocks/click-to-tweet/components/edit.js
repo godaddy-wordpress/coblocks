@@ -19,7 +19,7 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { Component, compose } = wp.element;
 const { RichText } = wp.editor;
-const { withAPIData, withState } = wp.components;
+const { withAPIData } = wp.components;
 const { withSelect } = wp.data;
 
 /**
@@ -36,7 +36,7 @@ const applyWithSelect = withSelect( ( select ) => {
 /**
  * Block edit function
  */
-export default compose( applyWithSelect, withState( { editable: 'content' } ) ) ( class ClicktoTweetBlock extends Component {
+export default compose( applyWithSelect ) ( class ClicktoTweetBlock extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -70,10 +70,8 @@ export default compose( applyWithSelect, withState( { editable: 'content' } ) ) 
 		const {
 			attributes,
 			className,
-			editable,
 			isSelected,
 			setAttributes,
-			setState,
 		} = this.props;
 
 		const {

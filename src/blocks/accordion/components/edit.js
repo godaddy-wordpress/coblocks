@@ -11,31 +11,24 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { RichText } = wp.editor;
-const { withState } = wp.components;
 
 /**
  * Block edit function
  */
-export default withState( { editable: 'title' } ) ( class AccordionBlock extends Component {
+export default class AccordionBlock extends Component {
 
 	render() {
 
 		const {
 			attributes,
 			className,
-			editable,
 			isSelected,
 			mergeBlocks,
 			onReplace,
 			setAttributes,
-			setState,
 		} = this.props;
 
 		const { title, content, open, titleBackgroundColor, titleColor, textAlign } = attributes;
-
-		const onSetActiveEditable = ( newEditable ) => () => {
-			setState( { editable: newEditable } );
-		};
 
 		return [
 			isSelected && (
@@ -88,4 +81,4 @@ export default withState( { editable: 'title' } ) ( class AccordionBlock extends
 			</Accordion>
 		];
 	}
-} );
+};

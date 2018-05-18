@@ -27,9 +27,7 @@ export default class AlertBlock extends Component {
 			attributes,
 			className,
 			isSelected,
-			editable,
 			onReplace,
-			setState,
 			setAttributes,
 			mergeBlocks,
 		} = this.props;

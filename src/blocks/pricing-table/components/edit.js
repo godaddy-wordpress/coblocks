@@ -15,12 +15,12 @@ import Inspector from './inspector';
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { RichText, UrlInput } = wp.editor;
-const { Dashicon, IconButton, withState } = wp.components;
+const { Dashicon, IconButton } = wp.components;
 
 /**
  * Block edit function
  */
-export default withState( { editable: 'title' } ) ( class PricingTableBlock extends Component {
+export default class PricingTableBlock extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -32,8 +32,6 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 			attributes,
 			className,
 			isSelected,
-			editable,
-			setState,
 			setAttributes,
 			toggleSelection,
 		} = this.props;
@@ -59,10 +57,6 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 			url,
 			url_2,
 		} = attributes;
-
-		const onSetActiveEditable = ( newEditable ) => () => {
-			setState( { editable: newEditable } );
-		};
 
 		const formattingControls = [ 'bold', 'italic', 'strikethrough' ];
 
@@ -250,4 +244,4 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 			)
 		];
 	}
-} );
+};
