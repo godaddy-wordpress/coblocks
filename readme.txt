@@ -49,13 +49,11 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 
 3. Author block: Add an author profile to your posts
 
-4. Spacer block: Easily space out content
+4. Click to Tweet block: Let folks engage with your site via Click to Tweet
 
-5. Click to Tweet block: Let folks engage with your site via Click to Tweet
+5. Social block: Add a customizable social sharing components
 
-6. Social block: Add a customizable social sharing components
-
-7. Gif block: Search for relevant Giphy gifs and add them in seconds
+6. Gif block: Search for relevant Giphy gifs and add them in seconds
 
 == Installation ==
 
@@ -82,6 +80,13 @@ Yes! CoBlocks' core features are absolutely free.
 Please reach out via the official [support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+= 1.0.8, May 18, 2018 =
+* New: Gutenberg 2.9 compatibility! 🎊
+* Tweak: Improve UI of the Accordion block component toolbar
+* Tweak: Improve UI of the Pricing Table button links
+* Tweak: Improve UI of the Author block
+* Tweak: Ensure box shadow and text-decoration do not affect social icons
 
 = 1.0.7, May 7, 2018 =
 * New: Gutenberg 2.8 compatibility! 🎊
