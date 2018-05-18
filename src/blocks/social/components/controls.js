@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { BlockControls, BlockAlignmentToolbar } = wp.blocks;
+const { BlockControls, BlockAlignmentToolbar } = wp.editor;
 
 export default class Controls extends Component {
 
