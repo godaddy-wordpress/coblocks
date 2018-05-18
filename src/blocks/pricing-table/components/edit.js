@@ -14,7 +14,7 @@ import Inspector from './inspector';
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { RichText, UrlInput } = wp.blocks;
+const { RichText, UrlInput } = wp.editor;
 const { Dashicon, IconButton, withState } = wp.components;
 
 /**
@@ -89,8 +89,6 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 						style={ { color: tableColor } }
 						value={ title }
 						placeholder={ __( 'Plan A' ) }
-						isSelected={ isSelected && editable === 'title' }
-						onFocus={ onSetActiveEditable( 'title' ) }
 						formattingControls={ formattingControls }
 						keepPlaceholderOnFocus
 					/>
@@ -104,8 +102,6 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 							style={ { color: tableColor } }
 							value={ currency }
 							placeholder={ __( '$' ) }
-							isSelected={ isSelected && editable === 'currency' }
-							onFocus={ onSetActiveEditable( 'currency' ) }
 							formattingControls={ formattingControls }
 							keepPlaceholderOnFocus
 						/>
@@ -117,8 +113,6 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 							style={ { color: tableColor } }
 							value={ amount }
 							placeholder={ __( '99' ) }
-							isSelected={ isSelected && editable === 'amount' }
-							onFocus={ onSetActiveEditable( 'amount' ) }
 							formattingControls={ formattingControls }
 							keepPlaceholderOnFocus
 						/>
@@ -133,8 +127,6 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 						value={ features }
 						style={ { color: tableColor } }
 						placeholder={ __( 'Add features' ) }
-						isSelected={ isSelected && editable === 'features' }
-						onFocus={ onSetActiveEditable( 'features' ) }
 						keepPlaceholderOnFocus
 					/>
 
@@ -146,8 +138,6 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 								onChange={ ( nextButton ) => setAttributes( { button: nextButton } ) }
 								value={ button }
 								placeholder={ __( 'Buy Now' ) }
-								isSelected={ isSelected && editable === 'button' }
-								onFocus={ onSetActiveEditable( 'button' ) }
 								style={ {
 									backgroundColor: buttonBackground,
 									color: buttonColor,
@@ -172,8 +162,6 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 							style={ { color: tableColor } }
 							value={ title_2 }
 							placeholder={ __( 'Plan B' ) }
-							isSelected={ isSelected && editable === 'title_2' }
-							onFocus={ onSetActiveEditable( 'title_2' ) }
 							formattingControls={ formattingControls }
 							keepPlaceholderOnFocus
 						/>
@@ -187,8 +175,6 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 								style={ { color: tableColor } }
 								value={ currency_2 }
 								placeholder={ __( '$' ) }
-								isSelected={ isSelected && editable === 'currency_2' }
-								onFocus={ onSetActiveEditable( 'currency_2' ) }
 								formattingControls={ formattingControls }
 								keepPlaceholderOnFocus
 							/>
@@ -200,8 +186,6 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 								style={ { color: tableColor } }
 								value={ amount_2 }
 								placeholder={ __( '99' ) }
-								isSelected={ isSelected && editable === 'amount_2' }
-								onFocus={ onSetActiveEditable( 'amount_2' ) }
 								formattingControls={ formattingControls }
 								keepPlaceholderOnFocus
 							/>
@@ -216,8 +200,6 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 							value={ features_2 }
 							style={ { color: tableColor } }
 							placeholder={ __( 'Add features' ) }
-							isSelected={ isSelected && editable === 'features_2' }
-							onFocus={ onSetActiveEditable( 'features_2' ) }
 							keepPlaceholderOnFocus
 						/>
 
@@ -229,8 +211,6 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 									onChange={ ( nextButton ) => setAttributes( { button_2: nextButton } ) }
 									value={ button_2 }
 									placeholder={ __( 'Buy Now' ) }
-									isSelected={ isSelected && editable === 'button_2' }
-									onFocus={ onSetActiveEditable( 'button_2' ) }
 									style={ {
 										backgroundColor: buttonBackground,
 										color: buttonColor,
@@ -245,25 +225,26 @@ export default withState( { editable: 'title' } ) ( class PricingTableBlock exte
 				) }
 
 			</div>,
-			isSelected && ( editable === 'button' || editable === 'button_2' ) && (
+			isSelected && (
 				<form
 					className="core-blocks-button__inline-link"
-					onSubmit={ ( event ) => event.preventDefault() }>
+					onSubmit={ ( event ) => event.preventDefault() }
+				>
 					<Dashicon icon="admin-links" />
-
-					{ ( isSelected && editable === 'button' ) && (
+					<div>
 						<UrlInput
 							value={ url }
 							onChange={ ( value ) => setAttributes( { url: value } ) }
 						/>
-					) }
 
-					{ editable === 'button_2' && (
-						<UrlInput
-							value={ url_2 }
-							onChange={ ( value ) => setAttributes( { url_2: value } ) }
-						/>
-					) }
+						{ ( columns >= 2 ) && (
+							<UrlInput
+								value={ url_2 }
+								onChange={ ( value ) => setAttributes( { url_2: value } ) }
+							/>
+						) }
+					</div>
+
 					<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
 				</form>
 			)
