@@ -8,10 +8,12 @@ import ResizableBox from 're-resizable';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, compose } = wp.element;
 const { keycodes, viewPort, } = wp.utils;
 const { Placeholder, Spinner, Button } = wp.components;
-const { registerBlockType, withContext } = wp.blocks;
+const { registerBlockType } = wp.blocks;
+const { withViewportMatch } = wp.viewport;
+const { withSelect } = wp.data;
 
 /**
  * Internal dependencies
@@ -28,10 +30,19 @@ const GIPHY_URL = 'https://api.giphy.com/v1/gifs/search?api_key=w0o6fO8pv5gSM334
 const MIN_SIZE = 20;
 const ESCAPE = keycodes;
 
+const applyWithSelect = withSelect( ( select ) => {
+	const { getEditorSettings } = select( 'core/editor' );
+	const { maxWidth } = getEditorSettings();
+
+	return {
+		maxWidth,
+	};
+} );
+
 /**
  * Block edit function
  */
-export default class GifBlock extends Component {
+export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: 'medium' } ) ) ( class GifBlock extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -45,7 +56,9 @@ export default class GifBlock extends Component {
 			isSelected,
 			setAttributes,
 			settings,
+			isLargeViewport,
 			toggleSelection,
+			maxWidth,
 		} = this.props;
 
 		const {
@@ -58,7 +71,7 @@ export default class GifBlock extends Component {
 		} = attributes;
 
 		const figureStyle = width ? { width } : {};
-		const isResizable = [ 'wide', 'full' ].indexOf( align ) === -1 && ( ! viewPort.isExtraSmall() );
+		const isResizable = [ 'wide', 'full' ].indexOf( align ) === -1 && isLargeViewport;
 		const classes = classnames( className, {
 			'is-resized': !! width,
 			'is-focused': isSelected,
@@ -128,9 +141,9 @@ export default class GifBlock extends Component {
 										height: currentHeight,
 									} }
 									minWidth={ minWidth }
-									// maxWidth={ 608 }
+									maxWidth={ maxWidth }
 									minHeight={ minHeight }
-									// maxHeight={ }
+									maxHeight={ maxWidth / ratio }
 									lockAspectRatio
 									handleClasses={ {
 										topRight: 'wp-block-image__resize-handler-top-right',
@@ -216,4 +229,4 @@ export default class GifBlock extends Component {
 			]
 		}
 	}
-}
+} );
