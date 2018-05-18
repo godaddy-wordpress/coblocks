@@ -16,7 +16,7 @@ import FONT_SIZES from './font-sizes';
 const { __ } = wp.i18n;
 const { Component} = wp.element;
 const { InspectorControls, BlockAlignmentToolbar, ColorPalette, ContrastChecker } = wp.editor;
-const { PanelBody, PanelColor, ToggleControl, RangeControl, FontSizePicker, Button, ButtonGroup } = wp.components;
+const { PanelBody, PanelColor, ToggleControl, RangeControl, FontSizePicker } = wp.components;
 
 /**
  * Inspector controls
@@ -82,7 +82,7 @@ export default class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Text Settings' ) } className="blocks-font-size">
+				<PanelBody title={ __( 'Text Settings' ) }>
 					<FontSizePicker
 						fontSizes={ FONT_SIZES }
 						fallbackFontSize={ fallbackFontSize }

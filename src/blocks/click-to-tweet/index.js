@@ -12,7 +12,7 @@ import './styles/style.scss';
 import ClickToTweet from './components/click-to-tweet';
 import ClicktoTweetBlock from './components/edit';
 import icons from './components/icons';
-import fontSizes from './components/font-sizes';
+import FONT_SIZES from './components/font-sizes';
 
 /**
  * WordPress dependencies
@@ -223,7 +223,7 @@ registerBlockType( 'coblocks/click-to-tweet', {
 
 		const textClass = classnames( {
 			[ `wp-block-coblocks-click-to-tweet__text` ]: content,
-			[ `is-${ fontSize }-text` ]: fontSize && fontSizes[ fontSize ],
+			[ `is-${ fontSize }-text` ]: fontSize && FONT_SIZES[ fontSize ],
 		} );
 
 		const textStyle = {
