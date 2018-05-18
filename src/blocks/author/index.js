@@ -10,7 +10,7 @@ import AuthorBlock from './components/edit';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType, createBlock } = wp.blocks;
+const { registerBlockType } = wp.blocks;
 
 /**
  * Block registration

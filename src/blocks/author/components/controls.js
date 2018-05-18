@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls, MediaUpload } = wp.blocks;
+const { AlignmentToolbar, BlockControls, MediaUpload } = wp.editor;
 const { Toolbar, IconButton } = wp.components;
 
 export default class Controls extends Component {

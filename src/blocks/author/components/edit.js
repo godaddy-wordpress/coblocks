@@ -10,7 +10,7 @@ import Controls from './controls';
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { RichText, MediaUpload, UrlInput } = wp.blocks;
+const { RichText, MediaUpload, UrlInput } = wp.editor;
 const { withState, Button, Dashicon, IconButton } = wp.components;
 const { withSelect } = wp.data;
 
@@ -96,8 +96,6 @@ export default withState( { editable: 'heading' } ) ( class AuthorBlock extends 
 							value={ heading }
 							className={ `${ className }__content-heading` }
 							onChange={ ( value ) => setAttributes( { heading: value } ) }
-							isSelected={ isSelected && editable === 'heading' }
-							onFocus={ onSetActiveEditable( 'heading' ) }
 							keepPlaceholderOnFocus
 						/>
 					) }
@@ -109,8 +107,6 @@ export default withState( { editable: 'heading' } ) ( class AuthorBlock extends 
 							value={ name }
 							onMerge={ mergeBlocks }
 							onChange={ ( value ) => setAttributes( { name: value } ) }
-							isSelected={ isSelected && editable === 'name' }
-							onFocus={ onSetActiveEditable( 'name' ) }
 							keepPlaceholderOnFocus
 						/>
 					</div>
@@ -123,8 +119,6 @@ export default withState( { editable: 'heading' } ) ( class AuthorBlock extends 
 							value={ biography }
 							onMerge={ mergeBlocks }
 							onChange={ ( value ) => setAttributes( { biography: value } ) }
-							isSelected={ isSelected && editable === 'biography' }
-							onFocus={ onSetActiveEditable( 'biography' ) }
 							keepPlaceholderOnFocus
 						/>
 					</div>
@@ -139,16 +133,14 @@ export default withState( { editable: 'heading' } ) ( class AuthorBlock extends 
 								className={ `${ className }__content-button-link` }
 								formattingControls={ [] }
 								onChange={ ( value ) => setAttributes( { buttonText: value } ) }
-								isSelected={ isSelected && editable === 'button' }
-								onFocus={ onSetActiveEditable( 'button' ) }
 								keepPlaceholderOnFocus
 							/>
 						</span>
 					) }
 
-					{ ( isSelected && editable === 'button' ) && (
+					{ isSelected && (
 						<form
-							className="blocks-button__inline-link"
+							className="core-blocks-button__inline-link"
 							onSubmit={ ( event ) => event.preventDefault() }>
 							<Dashicon icon="admin-links" />
 							<UrlInput
