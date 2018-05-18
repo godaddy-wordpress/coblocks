@@ -8,7 +8,7 @@ import icons from './icons';
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { AlignmentToolbar, BlockControls, BlockAlignmentToolbar } = wp.blocks;
+const { AlignmentToolbar, BlockControls, BlockAlignmentToolbar } = wp.editor;
 const { Toolbar, DropdownMenu } = wp.components;
 
 export default class Controls extends Component {

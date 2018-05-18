@@ -10,13 +10,12 @@ import Inspector from './inspector';
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { RichText } = wp.blocks;
-const { withState } = wp.components;
+const { RichText } = wp.editor;
 
 /**
  * Block edit function
  */
-export default withState( { editable: 'content' } ) ( class AlertBlock extends Component {
+export default class AlertBlock extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -46,10 +45,6 @@ export default withState( { editable: 'content' } ) ( class AlertBlock extends C
 			value,
 		} = attributes;
 
-		const onSetActiveEditable = ( newEditable ) => () => {
-			setState( { editable: newEditable } );
-		};
-
 		return [
 			isSelected && (
 				<Controls
@@ -72,8 +67,6 @@ export default withState( { editable: 'content' } ) ( class AlertBlock extends C
 							color: titleColor,
 						} }
 						onChange={ ( value ) => setAttributes( { title: value } ) }
-						isSelected={ isSelected && editable === 'title' }
-						onFocus={ onSetActiveEditable( 'title' ) }
 						keepPlaceholderOnFocus
 					/>
 				) : null }
@@ -89,8 +82,6 @@ export default withState( { editable: 'content' } ) ( class AlertBlock extends C
 							color: textColor,
 						} }
 						onChange={ ( value ) => setAttributes( { value: value } ) }
-						isSelected={ isSelected && editable === 'content' }
-						onFocus={ onSetActiveEditable( 'content' ) }
 						onRemove={ ( forward ) => {
 							const hasEmptyTitle = ! title || title.length === 0;
 							if ( ! forward && hasEmptyTitle ) {
@@ -103,4 +94,4 @@ export default withState( { editable: 'content' } ) ( class AlertBlock extends C
 			</Alert>
 		];
 	}
-} );
+};
