@@ -8,15 +8,15 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-import fontSizes from './font-sizes';
+import FONT_SIZES from './font-sizes';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component} = wp.element;
-const { InspectorControls, BlockAlignmentToolbar, ColorPalette, ContrastChecker } = wp.blocks;
-const { PanelBody, PanelColor, ToggleControl, RangeControl, Button, ButtonGroup } = wp.components;
+const { InspectorControls, BlockAlignmentToolbar, ColorPalette, ContrastChecker } = wp.editor;
+const { PanelBody, PanelColor, ToggleControl, RangeControl, FontSizePicker, Button, ButtonGroup } = wp.components;
 
 /**
  * Inspector controls
@@ -31,8 +31,12 @@ export default class Inspector extends Component {
 
 	getFontSize() {
 		const { customFontSize, fontSize } = this.props.attributes;
+
 		if ( fontSize ) {
-			return fontSizes[ fontSize ];
+			const fontSizeObj = find( FONT_SIZES, { name: fontSize } );
+			if ( fontSizeObj ) {
+				return fontSizeObj.size;
+			}
 		}
 
 		if ( customFontSize ) {
@@ -44,7 +48,7 @@ export default class Inspector extends Component {
 
 		const { setAttributes } = this.props;
 
-		const thresholdFontSize = findKey( fontSizes, ( size ) => size === fontSizeValue );
+		const thresholdFontSize = find( FONT_SIZES, { size: fontSizeValue } );
 
 		if ( thresholdFontSize ) {
 			setAttributes( {
@@ -77,44 +81,13 @@ export default class Inspector extends Component {
 		const fontSize = this.getFontSize();
 
 		return (
-			<InspectorControls key="inspector">
+			<InspectorControls>
 				<PanelBody title={ __( 'Text Settings' ) } className="blocks-font-size">
-					<div className="blocks-font-size__main">
-						<ButtonGroup aria-label={ __( 'Font Size' ) }>
-							{ map( {
-								S: 'small',
-								M: 'regular',
-								L: 'large',
-								XL: 'larger',
-							}, ( size, label ) => (
-								<Button
-									key={ label }
-									isLarge
-									isPrimary={ fontSize === fontSizes[ size ] }
-									aria-pressed={ fontSize === fontSizes[ size ] }
-									onClick={ () => this.setFontSize( fontSizes[ size ] ) }
-								>
-									{ label }
-								</Button>
-							) ) }
-						</ButtonGroup>
-						<Button
-							isLarge
-							onClick={ () => this.setFontSize( undefined ) }
-						>
-							{ __( 'Reset' ) }
-						</Button>
-					</div>
-					<RangeControl
-						className="blocks-paragraph__custom-size-slider"
-						label={ __( 'Custom Size' ) }
-						value={ fontSize || '' }
-						initialPosition={ fallbackFontSize }
-						onChange={ ( value ) => this.setFontSize( value ) }
-						min={ 12 }
-						max={ 100 }
-						beforeIcon="editor-textcolor"
-						afterIcon="editor-textcolor"
+					<FontSizePicker
+						fontSizes={ FONT_SIZES }
+						fallbackFontSize={ fallbackFontSize }
+						value={ fontSize }
+						onChange={ this.setFontSize }
 					/>
 				</PanelBody>
 				<PanelColor title={ __( 'Text Color' ) } colorValue={ textColor } initialOpen={ false }>

@@ -9,7 +9,7 @@ import isUndefined from 'lodash/isUndefined';
  * Internal dependencies
  */
 import ClickToTweet from './click-to-tweet';
-import fontSizes from './font-sizes';
+import FONT_SIZES from './font-sizes';
 import Inspector from './inspector';
 import Controls from './controls';
 
@@ -18,7 +18,7 @@ import Controls from './controls';
  */
 const { __ } = wp.i18n;
 const { Component, compose } = wp.element;
-const { RichText } = wp.blocks;
+const { RichText } = wp.editor;
 const { withAPIData, withState } = wp.components;
 const { withSelect } = wp.data;
 
@@ -55,7 +55,10 @@ export default compose( applyWithSelect, withState( { editable: 'content' } ) ) 
 		const { customFontSize, fontSize } = this.props.attributes;
 
 		if ( fontSize ) {
-			return fontSizes[ fontSize ];
+			const fontSizeObj = find( FONT_SIZES, { name: fontSize } );
+			if ( fontSizeObj ) {
+				return fontSizeObj.size;
+			}
 		}
 
 		if ( customFontSize ) {
@@ -84,10 +87,6 @@ export default compose( applyWithSelect, withState( { editable: 'content' } ) ) 
 		} = attributes;
 
 		const fontSize = this.getFontSize();
-
-		const onSetActiveEditable = ( newEditable ) => () => {
-			setState( { editable: newEditable } );
-		};
 
 		return [
 			isSelected && (
@@ -118,8 +117,6 @@ export default compose( applyWithSelect, withState( { editable: 'content' } ) ) 
 							content: nextContent,
 						} );
 					} }
-					isSelected={ isSelected }
-					onFocus={ onSetActiveEditable( 'content' ) }
 					keepPlaceholderOnFocus
 				/>
 
@@ -134,8 +131,6 @@ export default compose( applyWithSelect, withState( { editable: 'content' } ) ) 
 						backgroundColor: buttonColor
 					} }
 					onChange={ ( value ) => setAttributes( { buttonText: value } ) }
-					isSelected={ isSelected && editable === 'button' }
-					onFocus={ onSetActiveEditable( 'button' ) }
 					keepPlaceholderOnFocus
 				/>
 			</ClickToTweet>

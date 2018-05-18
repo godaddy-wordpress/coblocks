@@ -1,8 +1,24 @@
-const fontSizes = {
-	small: 16,
-	regular: 18,
-	large: 26,
-	larger: 34,
-};
+const FONT_SIZES = [
+	{
+		name: 'small',
+		shortName: 'S',
+		size: 16,
+	},
+	{
+		name: 'regular',
+		shortName: 'M',
+		size: 18,
+	},
+	{
+		name: 'large',
+		shortName: 'L',
+		size: 26,
+	},
+	{
+		name: 'larger',
+		shortName: 'XL',
+		size: 34,
+	},
+];
 
-export default fontSizes;
+export default FONT_SIZES;
