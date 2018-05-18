@@ -16,7 +16,7 @@ import Gist from './gist';
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { PlainText } = wp.blocks;
+const { PlainText } = wp.editor;
 const { withState } = wp.components;
 
 /**
