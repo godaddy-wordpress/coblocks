@@ -10,7 +10,7 @@ import Controls from './controls';
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { RichText } = wp.blocks;
+const { RichText } = wp.editor;
 const { withState } = wp.components;
 
 /**
@@ -59,8 +59,6 @@ export default withState( { editable: 'title' } ) ( class AccordionBlock extends
 						color: titleColor,
 					} }
 					onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
-					isSelected={ isSelected && editable === 'title' }
-					onFocus={ onSetActiveEditable( 'title' ) }
 					keepPlaceholderOnFocus
 				/>
 				{ open || isSelected ? (
@@ -77,8 +75,6 @@ export default withState( { editable: 'title' } ) ( class AccordionBlock extends
 							className={ `${ className }__text` }
 							onMerge={ mergeBlocks }
 							onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
-							isSelected={ isSelected && editable === 'content' }
-							onFocus={ onSetActiveEditable( 'content' ) }
 							onRemove={ ( forward ) => {
 								const hasEmptyTitle = ! title || title.length === 0;
 								if ( ! forward && hasEmptyTitle ) {

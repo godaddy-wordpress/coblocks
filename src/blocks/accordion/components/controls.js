@@ -8,7 +8,7 @@ import icons from './icons';
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { AlignmentToolbar, BlockControls } = wp.blocks;
+const { AlignmentToolbar, BlockControls } = wp.editor;
 const { Toolbar, IconButton } = wp.components;
 
 export default class Controls extends Component {
@@ -37,7 +37,7 @@ export default class Controls extends Component {
 
 		return (
 			<BlockControls key="controls">
-				<Toolbar controls={ customControls } />
+				<Toolbar className="components-toolbar__coblocks-accordion" controls={ customControls } />
 				<AlignmentToolbar
 					value={ textAlign }
 					onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
