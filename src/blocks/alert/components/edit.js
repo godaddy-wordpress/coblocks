@@ -55,7 +55,8 @@ export default class AlertBlock extends Component {
 				/>
 			),
 			<Alert { ...this.props }>
-				{ title || isSelected ? (
+
+				{ ( ( title && title.length > 0 ) || isSelected ) && (
 					<RichText
 						tagName="p"
 						placeholder={ __( 'Add title...' ) }
@@ -67,7 +68,7 @@ export default class AlertBlock extends Component {
 						onChange={ ( value ) => setAttributes( { title: value } ) }
 						keepPlaceholderOnFocus
 					/>
-				) : null }
+				) }
 
 				<div className={ `${ className }__text` }>
 					<RichText
@@ -89,6 +90,7 @@ export default class AlertBlock extends Component {
 						keepPlaceholderOnFocus
 					/>
 				</div>
+
 			</Alert>
 		];
 	}
