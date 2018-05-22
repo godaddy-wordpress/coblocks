@@ -42,12 +42,12 @@ export default class Inspector extends Component {
 			<InspectorControls key="inspector">
 				<PanelBody title={ __( 'Gist Settings' ) }>
 					<TextControl
-						label={ __( 'GitHub Gist URL' ) }
+						label={ __( 'Gist URL' ) }
 						value={ url }
 						onChange={ this.updateURL }
 					/>
 					<TextControl
-						label={ __( 'Specific File' ) }
+						label={ __( 'Gist File' ) }
 						value={ file }
 						onChange={ this.updateFile }
 					/>

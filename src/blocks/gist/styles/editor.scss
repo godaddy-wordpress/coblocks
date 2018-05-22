@@ -3,4 +3,27 @@
 	.gist {
 		margin-bottom: 0;
 	}
+
+	.wp-block-coblocks-gist {
+
+		&__file {
+			margin: 4px;
+			padding-top: 4px;
+			padding-bottom: 4px;
+		}
+
+		&__file-label {
+			align-items: center;
+			display: flex;
+			flex-basis: 0;
+			font-size: 12px;
+			padding-left: 5px;
+			padding-right: 2px;
+			white-space: nowrap;
+
+			svg {
+				fill: #555d66;
+			}
+		}
+	}
 }

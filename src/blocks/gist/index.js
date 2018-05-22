@@ -45,7 +45,7 @@ registerBlockType( 'coblocks/gist', {
 		},
 		meta: {
 			type: 'boolean',
-			default: true,
+			default: false,
 		}
 	},
 

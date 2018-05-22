@@ -11,4 +11,9 @@ icons.github =
 </svg>
 ;
 
+icons.file =
+<svg aria-hidden role="img" focusable="false" className="dashicon" width="20px" height="20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+	<path d="M5 7h13v10h-16v-13h7l2 2h-7v9h1v-8z"></path>
+</svg>;
+
 export default icons;

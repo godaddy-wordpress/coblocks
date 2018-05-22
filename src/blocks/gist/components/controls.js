@@ -1,10 +1,15 @@
 /**
+ * Internal dependencies
+ */
+import icons from './icons';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { BlockControls } = wp.editor;
-const { Toolbar, IconButton } = wp.components;
+const { Toolbar, IconButton, TextControl } = wp.components;
 
 export default class Controls extends Component {
 
@@ -15,18 +20,22 @@ export default class Controls extends Component {
 	render() {
 
 		const {
+			className,
 			attributes,
 			preview,
 			setAttributes,
 			setState,
 		} = this.props;
 
-		const { meta } = attributes;
+		const {
+			file,
+			meta,
+		} = attributes;
 
 		const customControls = [
 			{
 				icon: 'info',
-				title: __( 'Display gist meta' ),
+				title: __( 'Display meta' ),
 				onClick: () => setAttributes( {  meta: ! meta } ),
 				isActive: meta === true,
 			}
@@ -52,9 +61,28 @@ export default class Controls extends Component {
 					) }
 				</Toolbar>
 
-				{ preview &&
+				{ preview ? (
 					<Toolbar controls={ customControls } />
-				}
+				) : (
+					<Toolbar>
+						<label
+							aria-label={ __( 'GitHub File' ) }
+							className={ `${ className }__file-label` }
+							htmlFor={ `${ className }__file` }
+						>
+							{ icons.file }
+						</label>
+						<input
+							aria-label={ __( 'GitHub File' ) }
+							className={ `${ className }__file` }
+							id={ `${ className }__file` }
+							onChange={ ( event ) => setAttributes( { file: event.target.value } ) }
+							placeholder={ __( 'File' ) }
+							type="text"
+							value={ file }
+						/>
+					</Toolbar>
+				) }
 
 			</BlockControls>
 		];
