@@ -11,16 +11,16 @@
 	&.is-selected .editor-block-list__block-edit {
 		outline: 1px dotted $lightgray;
 
-		.wp-block-spacer__resize-handler-top,
-		.wp-block-spacer__resize-handler-bottom {
+		.core-blocks-spacer__resize-handler-top,
+		.core-blocks-spacer__resize-handler-bottom {
 			display: block;
 		}
 
-		.wp-block-spacer__resize-handler-bottom {
+		.core-blocks-spacer__resize-handler-bottom {
 			margin-bottom: -4px;
 		}
 
-		.wp-block-spacer__resize-handler-top {
+		.core-blocks-spacer__resize-handler-top {
 			margin-top: -4px;
 		}
 	}
