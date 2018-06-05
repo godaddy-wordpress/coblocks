@@ -81,6 +81,15 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.0.9, June 5, 2018 =
+* New: Gutenberg 3.0 compatibility! 🎊
+* Tweak: Add a gist file TextControl block control
+* Tweak: Add default value to the buttonText attribute of the Author block
+* Tweak: Adjust the Dynamic Separator block resize handlers, which changed in Gutenberg 3.0
+* Fix: Assign proper src for custom block SVG icons per Gutenberg 3.0
+* Fix: Center Author block avatar uploader placeholder SVG
+* Fix: Check if isSelected before showing the alert block title
+
 = 1.0.8, May 18, 2018 =
 * New: Gutenberg 2.9 compatibility! 🎊
 * Tweak: Improve UI of the Accordion block component toolbar
