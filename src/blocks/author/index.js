@@ -40,6 +40,7 @@ registerBlockType( 'coblocks/author', {
 		buttonText: {
 			type: 'string',
 			selector: '.wp-block-coblocks-author__content-button',
+			default: __( 'Follow' ),
 		},
 		buttonUrl: {
 			type: 'string',
