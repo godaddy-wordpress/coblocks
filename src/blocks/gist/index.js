@@ -26,9 +26,11 @@ registerBlockType( 'coblocks/gist', {
 
 	description: __( 'Embed GitHub gists by adding the gist link.' ),
 
-	icon: icons.github,
+	icon: {
+		src: icons.github,
+	},
 
-	category: 'formatting',
+	category: 'common',
 
 	keywords: [
 		__( 'code' ),

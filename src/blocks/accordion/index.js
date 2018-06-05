@@ -22,7 +22,9 @@ registerBlockType( 'coblocks/accordion', {
 
 	description: __( 'Add an accordion.' ),
 
-	icon: icons.accordion,
+	icon: {
+		src: icons.accordion,
+	},
 
 	category: 'common',
 

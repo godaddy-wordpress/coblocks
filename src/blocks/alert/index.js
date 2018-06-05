@@ -22,7 +22,9 @@ registerBlockType( 'coblocks/alert', {
 
 	description: __( 'Provide contextual feedback messages.' ),
 
-	icon: icons.alert,
+	icon: {
+		src: icons.alert,
+	},
 
 	category: 'common',
 
