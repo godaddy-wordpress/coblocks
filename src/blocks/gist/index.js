@@ -63,6 +63,8 @@ registerBlockType( 'coblocks/gist', {
 
 		const src = file ? `${ url }.js?file=${ file }` : `${ url }.js`;
 
+		const noscriptSrc = file ? `${ url }#file-${ file.replace('.', '-') }` : `${ url }`;
+
 		return (
 			<div
 				className={ classnames(
@@ -71,6 +73,7 @@ registerBlockType( 'coblocks/gist', {
 				) }
 			>
 				<script src={ src }/>
+				<noscript><a href={ noscriptSrc }>{ __( 'View this gist on GitHub' ) }</a></noscript>
 			</div>
 
 		);
