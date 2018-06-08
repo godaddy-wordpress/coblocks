@@ -53,6 +53,7 @@ registerBlockType( 'coblocks/gist', {
 
 	supports: {
 		html: false,
+		align: [ 'wide' ],
 	},
 
 	edit: GistBlock,
