@@ -55,9 +55,8 @@ export default class Gist extends Component {
 	}
 
 	_getID () {
-		// Extract a string in form `username/uniqueValue`
-		// from the provided Gist url.
-		return (this.url).match(/(\.com\/)(.*?)([^#]+)/).pop()
+		// Extract a string in form `username/uniqueValue` from the provided Gist url.
+		return (this.url).match(/(\.com\/)(.*?)([^#]+)/).pop();
 	}
 
 	_getFile () {
@@ -82,6 +81,7 @@ export default class Gist extends Component {
 		// Construct a gist url that will allow us to redner the Gist into our page.
 		const id = this._getID()
 		const file = this._getFile()
+
 		return `https://gist.github.com/${id}.json?callback=${gistCallback}${file}`
 	}
 
@@ -93,7 +93,7 @@ export default class Gist extends Component {
 				loading: false,
 				gistContent: gist.div
 			});
-		 }
+		}
 
 		let gistScript = document.createElement('script');
 		gistScript.type = 'text/javascript';

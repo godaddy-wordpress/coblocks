@@ -22,6 +22,8 @@ const { withState } = wp.components;
 /**
  * Block edit function
  */
+
+ //
 export default withState( { preview: false } ) ( class GistBlock extends Component {
 
 	constructor() {
@@ -41,6 +43,16 @@ export default withState( { preview: false } ) ( class GistBlock extends Compone
 
 		if ( ! this.props.attributes.url ) {
 			this.props.setState( { preview: true } )
+		}
+
+		// Check for #file in the entered URL. If it's there, let's use it properly.
+		const file = (newURL).split('#file-').pop()
+
+		if ( newURL.match(/#file-*/) != null ) {
+			const newURLWithNoFile = newURL.replace( file , '' ).replace( '#file-' , '' );
+			console.log( newURLWithNoFile );
+			this.props.setAttributes( { url: newURLWithNoFile } );
+			this.props.setAttributes( { file: file.replace( /-([^-]*)$/, '.'+'$1' ) } );
 		}
 	}
 
