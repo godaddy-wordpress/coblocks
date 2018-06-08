@@ -88,11 +88,11 @@ export default class Gist extends Component {
 	_buildGist () {
 		const gistCallback = Gist.__nextGist()
 		window[gistCallback] = (gist) => {
-			 Gist.__addStylesheet(gist.stylesheet);
-			 this.setState({
-				 loading: false,
-				 gistContent: gist.div
-			 });
+			Gist.__addStylesheet(gist.stylesheet);
+			this.setState({
+				loading: false,
+				gistContent: gist.div
+			});
 		 }
 
 		let gistScript = document.createElement('script');
