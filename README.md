@@ -38,19 +38,19 @@ There are various ways you can contribute:
 
 ---
 ### GitHub Gist Block
-[![CoBlocks GitHub Gist Block](https://user-images.githubusercontent.com/1813435/39524100-ecd7d606-4de5-11e8-8919-008428a8d25b.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=gist-screenshot)
+[![CoBlocks GitHub Gist Block](https://user-images.githubusercontent.com/1813435/41250051-d196c97a-6d83-11e8-8567-0723d92fcbc4.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=gist-screenshot)
 ---
 ### Accordion Block
-[![CoBlocks Accordion Block](https://user-images.githubusercontent.com/1813435/39524121-f842a0b6-4de5-11e8-8e97-b341a3d45ee6.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=accordion-screenshot)
+[![CoBlocks Accordion Block](https://user-images.githubusercontent.com/1813435/41250059-dbf363ce-6d83-11e8-8115-f0556ad35c51.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=accordion-screenshot)
 ---
 ### Click to Tweet Block
-[![CoBlocks Click to Tweet Block](https://user-images.githubusercontent.com/1813435/39524134-05fef79a-4de6-11e8-8571-f3ed6ffeeab4.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=click-to-tweet-screenshot)
+[![CoBlocks Click to Tweet Block](https://user-images.githubusercontent.com/1813435/41250070-e5df5b72-6d83-11e8-93b4-af26d977033c.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=click-to-tweet-screenshot)
 ---
 ### Giphy Search Block
-[![CoBlocks Giphy Search Block](https://user-images.githubusercontent.com/1813435/39524159-14cf91bc-4de6-11e8-9ac3-5f903e5a91c9.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=gif-screenshot)
+[![CoBlocks Giphy Search Block](https://user-images.githubusercontent.com/1813435/41250094-f01ea930-6d83-11e8-9c60-5ea7eca383cf.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=gif-screenshot)
 ---
 ### Author Block
-[![CoBlocks Author Block](https://user-images.githubusercontent.com/1813435/39524081-e21fd862-4de5-11e8-8fa1-8df7b9bc712b.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=author-screenshot)
+[![CoBlocks Author Block](https://user-images.githubusercontent.com/1813435/41250109-fbe43fdc-6d83-11e8-9e72-568d4b51663f.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=author-screenshot)
 ---
 ### Social Block
-[![CoBlocks Social Block](https://user-images.githubusercontent.com/1813435/39524073-d77df16e-4de5-11e8-82bb-713cf4a49cda.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=social-screenshot)
+[![CoBlocks Social Block](https://user-images.githubusercontent.com/1813435/41250133-085d107c-6d84-11e8-8da4-da299027d937.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=social-screenshot)
