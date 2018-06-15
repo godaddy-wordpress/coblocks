@@ -1,0 +1,10 @@
+.editor-block-list__block[data-type="coblocks/highlight"] {
+
+	p {
+		margin: 0;
+	}
+
+	.wp-block-coblocks-highlight__content[data-is-placeholder-visible="true"] {
+		line-height: 1.4;
+	}
+}

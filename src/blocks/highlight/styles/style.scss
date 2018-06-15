@@ -1,0 +1,20 @@
+.wp-block-coblocks-highlight {
+	padding: 10px 0;
+
+	&:empty {
+		display: none;
+	}
+
+	& + & {
+		padding-top: 7px;
+	}
+
+	&__content {
+		position: relative;
+		padding: 2px 5px 2px 3px;
+	}
+
+	&__content:not(.has-background) {
+		background-color: #fff8e5;
+	}
+}
