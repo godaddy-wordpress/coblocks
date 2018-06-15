@@ -45,9 +45,12 @@
 		}
 	}
 
+	&__twitter-btn:not(.has-button-color) {
+		background: $twitter;
+	}
+
 	&__twitter-btn {
 		appearance: none;
-		background: $twitter;
 		border-radius: $accordion-border-radius;
 		border: none;
 		box-shadow: none !important;

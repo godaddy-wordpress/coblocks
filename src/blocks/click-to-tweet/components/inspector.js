@@ -8,25 +8,50 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
+import applyWithColors from './colors';
 import FONT_SIZES from './font-sizes';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component} = wp.element;
-const { InspectorControls, BlockAlignmentToolbar, ColorPalette, ContrastChecker } = wp.editor;
-const { PanelBody, PanelColor, ToggleControl, RangeControl, FontSizePicker } = wp.components;
+const { Component, compose } = wp.element;
+const { InspectorControls, BlockAlignmentToolbar, PanelColor, ContrastChecker } = wp.editor;
+const { PanelBody, ToggleControl, RangeControl, FontSizePicker, withFallbackStyles } = wp.components;
+
+/**
+ * Contrast checker
+ */
+const { getComputedStyle } = window;
+
+const ContrastCheckerWithFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+	const { textColor, buttonColor } = ownProps;
+	//avoid the use of querySelector if textColor color is known and verify if node is available.
+	const textNode = ! textColor && node ? node.querySelector( '[contenteditable="true"]' ) : null;
+	return {
+		fallbackButtonColor: buttonColor || ! node ? undefined : getComputedStyle( node ).buttonColor,
+		fallbackTextColor: textColor || ! textNode ? undefined : getComputedStyle( textNode ).color,
+	};
+} )( ContrastChecker );
 
 /**
  * Inspector controls
  */
-export default class Inspector extends Component {
+export default compose( applyWithColors ) ( class Inspector extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
+		this.nodeRef = null;
+		this.bindRef = this.bindRef.bind( this );
 		this.getFontSize = this.getFontSize.bind( this );
 		this.setFontSize = this.setFontSize.bind( this );
+	}
+
+	bindRef( node ) {
+		if ( ! node ) {
+			return;
+		}
+		this.nodeRef = node;
 	}
 
 	getFontSize() {
@@ -67,16 +92,15 @@ export default class Inspector extends Component {
 
 		const {
 			attributes,
+			buttonColor,
+			textColor,
 			setAttributes,
-			fallbackBackgroundColor,
+			setTextColor,
+			setButtonColor,
+			fallbackButtonColor,
 			fallbackTextColor,
 			fallbackFontSize,
 		} = this.props;
-
-		const {
-			buttonColor,
-			textColor,
-		} = attributes;
 
 		const fontSize = this.getFontSize();
 
@@ -90,19 +114,24 @@ export default class Inspector extends Component {
 						onChange={ this.setFontSize }
 					/>
 				</PanelBody>
-				<PanelColor title={ __( 'Text Color' ) } colorValue={ textColor } initialOpen={ false }>
-					<ColorPalette
-						value={ textColor }
-						onChange={ ( colorValue ) => setAttributes( { textColor: colorValue } ) }
-					/>
-				</PanelColor>
-				<PanelColor title={ __( 'Button Color' ) } colorValue={ buttonColor } initialOpen={ false }>
-					<ColorPalette
-						value={ buttonColor }
-						onChange={ ( colorValue ) => setAttributes( { buttonColor: colorValue } ) }
-					/>
-				</PanelColor>
+				<PanelColor
+					colorValue={ textColor.value }
+					title={ __( 'Text Color' ) }
+					onChange={ setTextColor }
+					initialOpen={ true }
+				/>
+				<PanelColor
+					colorValue={ buttonColor.value }
+					title={ __( 'Button Color' ) }
+					onChange={ setButtonColor }
+					initialOpen={ true }
+				/>
+				{ <ContrastCheckerWithFallbackStyles
+					node={ this.nodeRef }
+					textColor={ '#ffffff' }
+					backgroundColor={ buttonColor.value }
+				/> }
 			</InspectorControls>
 		);
 	}
-}
+} );

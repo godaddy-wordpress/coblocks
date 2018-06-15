@@ -20,23 +20,7 @@ import FONT_SIZES from './components/font-sizes';
 const { __ } = wp.i18n;
 const { registerBlockType, createBlock } = wp.blocks;
 const { withFallbackStyles } = wp.components;
-
-/**
- * Block constants
- */
-const { getComputedStyle } = window;
-
-const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
-	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
-	};
-} );
+const { RichText, getColorClass } = wp.editor;
 
 /**
  * Block registration
@@ -75,18 +59,24 @@ registerBlockType( 'coblocks/click-to-tweet', {
 		customFontSize: {
 			type: 'number',
 		},
-		buttonColor: {
-			type: 'string',
-		},
-		textColor: {
-			type: 'string',
-		},
 		via: {
 			type: 'string',
 		},
 		buttonText: {
 			type: 'string',
 			default: __( 'Click to Tweet' ),
+		},
+		buttonColor: {
+			type: 'string',
+		},
+		textColor: {
+			type: 'string',
+		},
+		customButtonColor: {
+			type: 'string',
+		},
+		customTextColor: {
+			type: 'string',
 		},
 	},
 
@@ -202,13 +192,15 @@ registerBlockType( 'coblocks/click-to-tweet', {
 		],
 	},
 
-	edit: FallbackStyles( ClicktoTweetBlock ),
+	edit: ClicktoTweetBlock,
 
 	save: function( props ) {
 
 		const {
 			buttonColor,
 			buttonText,
+			customButtonColor,
+			customTextColor,
 			content,
 			customFontSize,
 			fontSize,
@@ -221,27 +213,49 @@ registerBlockType( 'coblocks/click-to-tweet', {
 
 		const tweetUrl = `http://twitter.com/share?&text=${ encodeURIComponent( content ) }&url=${url}${viaUrl}`;
 
-		const textClass = classnames( {
-			[ `wp-block-coblocks-click-to-tweet__text` ]: content,
-			[ `is-${ fontSize }-text` ]: fontSize && FONT_SIZES[ fontSize ],
+		const textColorClass = getColorClass( 'color', textColor );
+
+		const textClasses = classnames( 'wp-block-coblocks-click-to-tweet__text', {
+			'has-text-color': textColor || customTextColor,
+			[ `is-${ fontSize }-text` ] : fontSize && FONT_SIZES[ fontSize ],
+			[ textColorClass ]: textColorClass,
 		} );
 
-		const textStyle = {
+		const textStyles = {
 			fontSize: ! fontSize && customFontSize ? customFontSize : undefined,
-			color: textColor,
+			color: textColorClass ? undefined : customTextColor,
+		};
+
+		const buttonColorClass = getColorClass( 'background-color', buttonColor );
+
+		const buttonClasses = classnames( 'wp-block-coblocks-click-to-tweet__twitter-btn', {
+			'has-button-color':  buttonColor || customButtonColor,
+			[ buttonColorClass ]: buttonColorClass,
+		} );
+
+		const buttonStyles = {
+			backgroundColor: buttonColorClass ? undefined : customButtonColor,
 		};
 
 		if ( content && content.length > 0 ) {
 			return (
 				<ClickToTweet { ...props }>
 
-					<p className={ textClass ? textClass : undefined } style={ textStyle }>
-						{ content }
-					</p>
+					<RichText.Content
+						tagName="p"
+						className={ textClasses }
+						style={ textStyles }
+						value={ content }
+					/>
 
-					<a className={ 'wp-block-coblocks-click-to-tweet__twitter-btn' } href={ tweetUrl } target="_blank" style={ { backgroundColor: buttonColor } }>
-						{ buttonText }
-					</a>
+					<RichText.Content
+						tagName="a"
+						className={ buttonClasses }
+						style={ buttonStyles }
+						value={ buttonText }
+						href={ tweetUrl }
+						target="_blank"
+					/>
 
 				</ClickToTweet>
 			);

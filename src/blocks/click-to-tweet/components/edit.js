@@ -8,6 +8,7 @@ import isUndefined from 'lodash/isUndefined';
 /**
  * Internal dependencies
  */
+import applyWithColors from './colors';
 import ClickToTweet from './click-to-tweet';
 import FONT_SIZES from './font-sizes';
 import Inspector from './inspector';
@@ -36,7 +37,7 @@ const applyWithSelect = withSelect( ( select ) => {
 /**
  * Block edit function
  */
-export default compose( applyWithSelect ) ( class ClicktoTweetBlock extends Component {
+export default compose( applyWithSelect, applyWithColors ) ( class ClicktoTweetBlock extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -69,17 +70,19 @@ export default compose( applyWithSelect ) ( class ClicktoTweetBlock extends Comp
 	render() {
 		const {
 			attributes,
+			buttonColor,
 			className,
 			isSelected,
 			setAttributes,
+			setButtonColor,
+			setTextColor,
+			textColor,
 		} = this.props;
 
 		const {
 			buttonText,
 			content,
-			buttonColor,
 			textAlign,
-			textColor,
 			url,
 			via,
 		} = attributes;
@@ -100,35 +103,39 @@ export default compose( applyWithSelect ) ( class ClicktoTweetBlock extends Comp
 			<ClickToTweet { ...this.props }>
 				<RichText
 					tagName="p"
-					key="editable"
 					multiline="false"
 					placeholder={ __( 'Add a quote to tweet...' ) }
 					value={ content }
-					className={ `${ className }__text` }
 					formattingControls={ [] }
+					className={ classnames(
+						`${ className }__text`, {
+							'has-text-color': textColor.value,
+							[ textColor.class ]: textColor.class,
+						}
+					) }
 					style={ {
-						color: textColor,
+						color: textColor.class ? undefined : textColor.value,
 						fontSize: fontSize ? fontSize + 'px' : undefined,
 					} }
-					onChange={ ( nextContent ) => {
-						setAttributes( {
-							content: nextContent,
-						} );
-					} }
+					onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
 					keepPlaceholderOnFocus
 				/>
 
 				<RichText
 					tagName="span"
-					key="editable-via"
 					placeholder={ __( 'Add button...' ) }
 					value={ buttonText }
-					className={ `${ className }__twitter-btn` }
 					formattingControls={ [] }
+					className={ classnames(
+						`${ className }__twitter-btn`, {
+							'has-button-color': buttonColor.value,
+							[ buttonColor.class ]: buttonColor.class,
+						}
+					) }
 					style={ {
-						backgroundColor: buttonColor
+						backgroundColor: buttonColor.class ? undefined : buttonColor.value,
 					} }
-					onChange={ ( value ) => setAttributes( { buttonText: value } ) }
+					onChange={ ( nextButtonText ) => setAttributes( { buttonText: nextButtonText } ) }
 					keepPlaceholderOnFocus
 				/>
 			</ClickToTweet>
