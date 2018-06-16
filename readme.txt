@@ -81,6 +81,14 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.1.0, June 18, 2018 =
+* New: Add Highlight block 🎉
+* New: Add wide alignment support for the GitHub Gist Block
+* New: Add <noscript> support to the GitHub Gist Block
+* Tweak: Add a check for #file in the GitHub Gist Block + store the file name properly if it's found
+* Tweak: Implement color classes for the Click to Tweet block
+* Fix: Set a max width for the Click to Tweet block's empty button placeholder
+
 = 1.0.9, June 5, 2018 =
 * New: Gutenberg 3.0 compatibility! 🎊
 * Tweak: Add a gist file TextControl block control

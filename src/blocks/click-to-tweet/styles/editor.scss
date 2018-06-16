@@ -20,6 +20,10 @@
 			&:active::before {
 				animation: none;
 			}
+
+			&[data-is-placeholder-visible=true] {
+				max-width: 128px;
+			}
 		}
 
 		&__via {
