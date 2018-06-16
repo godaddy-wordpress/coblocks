@@ -77,6 +77,9 @@ export default compose( applyWithSelect, applyWithColors ) ( class ClicktoTweetB
 			setButtonColor,
 			setTextColor,
 			textColor,
+			fallbackButtonColor,
+			fallbackTextColor,
+			fallbackFontSize,
 		} = this.props;
 
 		const {

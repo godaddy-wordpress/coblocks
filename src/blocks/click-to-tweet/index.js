@@ -46,18 +46,13 @@ registerBlockType( 'coblocks/click-to-tweet', {
 			type: 'array',
 			source: 'children',
 			selector: 'p',
+			default: [],
 		},
 		url: {
 			type: 'attribute',
 		},
 		textAlign: {
 			type: 'string',
-		},
-		fontSize: {
-			type: 'string',
-		},
-		customFontSize: {
-			type: 'number',
 		},
 		via: {
 			type: 'string',
@@ -77,6 +72,12 @@ registerBlockType( 'coblocks/click-to-tweet', {
 		},
 		customTextColor: {
 			type: 'string',
+		},
+		fontSize: {
+			type: 'string',
+		},
+		customFontSize: {
+			type: 'number',
 		},
 	},
 
@@ -213,16 +214,18 @@ registerBlockType( 'coblocks/click-to-tweet', {
 
 		const tweetUrl = `http://twitter.com/share?&text=${ encodeURIComponent( content ) }&url=${url}${viaUrl}`;
 
+		const fontSizeClass = fontSize && `is-${ fontSize }-text`;
+
 		const textColorClass = getColorClass( 'color', textColor );
 
 		const textClasses = classnames( 'wp-block-coblocks-click-to-tweet__text', {
 			'has-text-color': textColor || customTextColor,
-			[ `is-${ fontSize }-text` ] : fontSize && FONT_SIZES[ fontSize ],
+			[ fontSizeClass ]: fontSizeClass,
 			[ textColorClass ]: textColorClass,
 		} );
 
 		const textStyles = {
-			fontSize: ! fontSize && customFontSize ? customFontSize : undefined,
+			fontSize: fontSizeClass ? undefined : customFontSize,
 			color: textColorClass ? undefined : customTextColor,
 		};
 

@@ -24,34 +24,27 @@ const { PanelBody, ToggleControl, RangeControl, FontSizePicker, withFallbackStyl
  */
 const { getComputedStyle } = window;
 
-const ContrastCheckerWithFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { textColor, buttonColor } = ownProps;
-	//avoid the use of querySelector if textColor color is known and verify if node is available.
-	const textNode = ! textColor && node ? node.querySelector( '[contenteditable="true"]' ) : null;
+const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+	const { textColor, buttonColor, fontSize, customFontSize } = ownProps.attributes;
+	const editableNode = node.querySelector( '[contenteditable="true"]' );
+	//verify if editableNode is available, before using getComputedStyle.
+	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 	return {
-		fallbackButtonColor: buttonColor || ! node ? undefined : getComputedStyle( node ).buttonColor,
-		fallbackTextColor: textColor || ! textNode ? undefined : getComputedStyle( textNode ).color,
+		fallbackButtonColor: buttonColor || ! computedStyles ? undefined : computedStyles.buttonColor,
+		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
 	};
-} )( ContrastChecker );
+} );
 
 /**
  * Inspector controls
  */
-export default compose( applyWithColors ) ( class Inspector extends Component {
+export default compose( applyWithColors, FallbackStyles ) ( class Inspector extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
-		this.nodeRef = null;
-		this.bindRef = this.bindRef.bind( this );
 		this.getFontSize = this.getFontSize.bind( this );
 		this.setFontSize = this.setFontSize.bind( this );
-	}
-
-	bindRef( node ) {
-		if ( ! node ) {
-			return;
-		}
-		this.nodeRef = node;
 	}
 
 	getFontSize() {
@@ -106,7 +99,7 @@ export default compose( applyWithColors ) ( class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Text Settings' ) }>
+				<PanelBody title={ __( 'Text Settings' ) } className="blocks-font-size">
 					<FontSizePicker
 						fontSizes={ FONT_SIZES }
 						fallbackFontSize={ fallbackFontSize }
@@ -126,10 +119,14 @@ export default compose( applyWithColors ) ( class Inspector extends Component {
 					onChange={ setButtonColor }
 					initialOpen={ true }
 				/>
-				{ <ContrastCheckerWithFallbackStyles
-					node={ this.nodeRef }
+				{ <ContrastChecker
 					textColor={ '#ffffff' }
 					backgroundColor={ buttonColor.value }
+					{ ...{
+						fallbackButtonColor,
+						fallbackTextColor,
+					} }
+					isLargeText={ fontSize >= 18 }
 				/> }
 			</InspectorControls>
 		);
