@@ -1,7 +1,7 @@
 {
   "name": "coblocks",
   "title": "CoBlocks",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "private": true,
   "author": "Rich Tabor from CoBlocks",
   "requires": "4.9",
