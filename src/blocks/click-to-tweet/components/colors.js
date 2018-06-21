@@ -6,13 +6,9 @@ const { withColors } = wp.editor;
 /**
  * Generate block colors.
  */
-const applyWithColors = withColors( ( getColor, setColor, { attributes } ) => {
-	return {
-		buttonColor: getColor( attributes.buttonColor, attributes.customButtonColor, 'background-color' ),
-		setButtonColor: setColor( 'buttonColor', 'customButtonColor' ),
-		textColor: getColor( attributes.textColor, attributes.customTextColor, 'color' ),
-		setTextColor: setColor( 'textColor', 'customTextColor' ),
-	};
-} );
+const applyWithColors = withColors(
+	'backgroundColor',
+	{ textColor: 'color' },
+);
 
 export default applyWithColors;
