@@ -43,13 +43,13 @@ export default class Inspector extends Component {
 						onChange={ ( colorValue ) => setAttributes( { tableColor: colorValue } ) }
 					/>
 				</PanelColor>
-				<PanelColor title={ __( 'Button Color' ) } colorValue={ buttonBackground } initialOpen={ false }>
+				<PanelColor title={ __( 'Button Background' ) } colorValue={ buttonBackground } initialOpen={ false }>
 					<ColorPalette
 						value={ buttonBackground }
 						onChange={ ( colorValue ) => setAttributes( { buttonBackground: colorValue } ) }
 					/>
 				</PanelColor>
-				<PanelColor title={ __( 'Button Background' ) } colorValue={ buttonColor } initialOpen={ false }>
+				<PanelColor title={ __( 'Button Color' ) } colorValue={ buttonColor } initialOpen={ false }>
 					<ColorPalette
 						value={ buttonColor }
 						onChange={ ( colorValue ) => setAttributes( { buttonColor: colorValue } ) }
