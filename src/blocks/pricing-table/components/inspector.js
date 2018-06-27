@@ -1,10 +1,15 @@
 /**
+ * Internal dependencies
+ */
+import icons from './icons';
+
+/**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 const { Component } = wp.element;
 const { InspectorControls, ColorPalette } = wp.editor;
-const { PanelBody, PanelColor, RangeControl } = wp.components;
+const { PanelBody, Toolbar, PanelColor, RangeControl } = wp.components;
 
 /**
  * Inspector controls
@@ -24,6 +29,7 @@ export default class Inspector extends Component {
 
 		const {
 			buttonBackground,
+			columns,
 			tableBackground,
 			tableColor,
 			buttonColor,
@@ -31,6 +37,24 @@ export default class Inspector extends Component {
 
 		return (
 			<InspectorControls key="inspector">
+				<PanelBody title={ __( 'Block Settings' ) } className='coblocks__inspector-block-settings-panel-body'>
+					<p>{ __( 'Columns' ) }</p>
+					<Toolbar
+						controls={ '12'.split( '' ).map( ( count ) => ( {
+							icon: icons.blank,
+							// translators: %s: columns count e.g: "1", "2"
+							title: sprintf( __( '%s Columns' ), count ),
+							isActive: columns == count,
+							subscript: count,
+							onClick: () =>
+								setAttributes( {
+									columns: count,
+									align: count == 2 ? 'wide' : count == 3 ? 'full' : undefined,
+								} )
+						} ) ) }
+					/>
+				</PanelBody>
+
 				<PanelColor title={ __( 'Background Color' ) } colorValue={ tableBackground } initialOpen={ false }>
 					<ColorPalette
 						value={ tableBackground }
