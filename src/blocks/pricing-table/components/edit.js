@@ -77,13 +77,12 @@ export default class PricingTableBlock extends Component {
 			attributes,
 			className,
 			isSelected,
-			setState,
 			setAttributes,
+			setState,
 			toggleSelection,
 		} = this.props;
 
 		const {
-			align,
 			amount,
 			amount_2,
 			button,
@@ -91,6 +90,7 @@ export default class PricingTableBlock extends Component {
 			buttonBackground,
 			buttonColor,
 			columns,
+			contentAlign,
 			currency,
 			currency_2,
 			features,
@@ -119,7 +119,7 @@ export default class PricingTableBlock extends Component {
 					/>
 				) }
 
-				<div className={ className + ' pricing-table pricing-table--' + columns + ' pricing-table--' + align } style={ { textAlign: align } }>
+				<div className={ className + ' pricing-table pricing-table--' + columns + ' pricing-table--' + contentAlign } style={ { textAlign: contentAlign } }>
 
 					<div className={ 'pricing-table__item pricing-table__item--1' } style={ { backgroundColor: tableBackground } }>
 

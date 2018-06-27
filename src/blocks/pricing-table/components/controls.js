@@ -9,7 +9,7 @@ import icons from './icons';
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { AlignmentToolbar, BlockControls } = wp.editor;
-const { Toolbar, IconButton } = wp.components;
+const { Toolbar } = wp.components;
 
 export default class Controls extends Component {
 
@@ -24,7 +24,10 @@ export default class Controls extends Component {
 			setAttributes,
 		} = this.props;
 
-		const { columns } = attributes;
+		const {
+			columns,
+			contentAlign,
+		} = attributes;
 
 		return (
 			<Fragment>
@@ -41,6 +44,10 @@ export default class Controls extends Component {
 									columns: count
 								} )
 						} ) ) }
+					/>
+					<AlignmentToolbar
+						value={ contentAlign }
+						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
 					/>
 				</BlockControls>
 			</Fragment>

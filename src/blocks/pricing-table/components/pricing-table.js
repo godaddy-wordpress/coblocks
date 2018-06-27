@@ -22,7 +22,6 @@ export default class PricingTable extends Component {
 		} = this.props;
 
 		const {
-			align,
 			amount,
 			amount_2,
 			button,

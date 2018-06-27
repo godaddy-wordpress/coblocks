@@ -29,10 +29,10 @@ export default class Inspector extends Component {
 
 		const {
 			buttonBackground,
+			buttonColor,
 			columns,
 			tableBackground,
 			tableColor,
-			buttonColor,
 		} = attributes;
 
 		return (

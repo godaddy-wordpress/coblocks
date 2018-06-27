@@ -98,7 +98,7 @@ registerBlockType( 'coblocks/pricing-table', {
 		layout: {
 			type: 'string',
 		},
-		align: {
+		contentAlign: {
 			type: 'string',
 			default: 'center',
 		},
@@ -120,18 +120,22 @@ registerBlockType( 'coblocks/pricing-table', {
 		},
 	},
 
+	supports: {
+		align: [ 'wide', 'full', 'center' ],
+	},
+
 	edit: PricingTableBlock,
 
 	save: function( props ) {
 
 		const {
-			align,
 			amount,
 			amount_2,
 			button,
 			button_2,
 			buttonBackground,
 			buttonColor,
+			contentAlign,
 			columns,
 			currency,
 			currency_2,
@@ -149,10 +153,8 @@ registerBlockType( 'coblocks/pricing-table', {
 		return (
 
 			<div
-				className={ props.className + ' pricing-table pricing-table--' + columns + ' pricing-table--' + align }
-				style={ {
-					textAlign: align
-				} }
+				className={ props.className + ' pricing-table pricing-table--' + columns + ' pricing-table--' + contentAlign }
+				style={ { textAlign: contentAlign ? contentAlign : null } }
 			>
 				<PricingTable { ...props }
 					amount={ amount }
