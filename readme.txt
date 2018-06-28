@@ -26,6 +26,7 @@ CoBlocks is a suite of page builder Gutenberg blocks for writers, publishers and
 * GitHub Gist Block
 * Pricing Table Block
 * Social Sharing Block
+* Highlight Block
 
 = A new way to WordPress =
 
@@ -81,11 +82,22 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.1.1, June 28, 2018 =
+* New: Gutenberg 3.1.1 compatibility! 🎊
+* New: Add getColorClass support to the Pricing Table block
+* New: Add ContrastChecker support to the Pricing Table block
+* New: Add withFallbackStyles support to the Pricing Table block
+* Tweak: Add proper left/right/center alignment option for the Pricing Table block
+* Tweak: Implement RichText.Content front-end rendering within the Pricing Table block
+* Tweak: Set withColors for Gutenberg 3.1.0+ support
+* Tweak: Resolve Pricing Table block Inspector Panel typo
+* Tweak: Update the Pricing Table block UI for a more streamlined editing experience
+
 = 1.1.0, June 18, 2018 =
 * New: Add Highlight block 🎉
-* New: Add wide alignment support for the GitHub Gist Block
-* New: Add <noscript> support to the GitHub Gist Block
-* Tweak: Add a check for #file in the GitHub Gist Block + store the file name properly if it's found
+* New: Add wide alignment support for the GitHub Gist block
+* New: Add <noscript> support to the GitHub Gist block
+* Tweak: Add a check for #file in the GitHub Gist block + store the file name properly if it's found
 * Tweak: Implement color classes for the Click to Tweet block
 * Fix: Set a max width for the Click to Tweet block's empty button placeholder
 
@@ -108,11 +120,11 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 = 1.0.7, May 7, 2018 =
 * New: Gutenberg 2.8 compatibility! 🎊
 * Tweak: Change the name of the Dynamic HR block to Dynamic Separator
-* Tweak: Modify the edit component of the Dynamic Separator to resemble the core Spacer Block
+* Tweak: Modify the edit component of the Dynamic Separator to resemble the core Spacer block
 * Tweak: Change the Dynamic Separator's height range control to a number input
-* Fix: Adjust the pricing table button markup to match the core Button Block for Gutenberg 2.8
+* Fix: Adjust the pricing table button markup to match the core Button block for Gutenberg 2.8
 * Fix: Remove custom color function for the Alert block
-* Fix: Remove the Spacer block as Gutenberg 2.8+ now has a Spacer Block
+* Fix: Remove the Spacer block as Gutenberg 2.8+ now has a Spacer block
 * Fix: Resolve alert text editor error
 
 = 1.0.6, May 3, 2018 =
