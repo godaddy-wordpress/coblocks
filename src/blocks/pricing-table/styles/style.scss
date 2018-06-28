@@ -7,10 +7,13 @@
 	.pricing-table {
 
 		&__item {
-			background: #f0f0f0;
 			margin-bottom: 1rem;
 			padding: 4em 1.8em;
 			position: relative;
+
+			&:not(.has-background) {
+				background-color: #f0f0f0;
+			}
 		}
 
 		&__title {

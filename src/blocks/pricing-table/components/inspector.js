@@ -1,20 +1,43 @@
 /**
  * Internal dependencies
  */
+import Colors from './colors';
 import icons from './icons';
 
 /**
  * WordPress dependencies
  */
 const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { InspectorControls, ColorPalette } = wp.editor;
-const { PanelBody, Toolbar, PanelColor, RangeControl } = wp.components;
+const { Component, Fragment, compose } = wp.element;
+const { InspectorControls, PanelColor, ContrastChecker } = wp.editor;
+const { PanelBody, withFallbackStyles, Toolbar, RangeControl } = wp.components;
+
+const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+
+	const {
+		buttonBackground,
+		buttonColor,
+		tableBackground,
+		tableColor,
+	} = ownProps.attributes;
+
+	const editableNode = node.querySelector( '[contenteditable="true"]' );
+
+	//verify if editableNode is available, before using getComputedStyle.
+	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+
+	return {
+		fallbackButtonBackground: buttonBackground || ! computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackButtonColor: buttonColor || ! computedStyles ? undefined : computedStyles.color,
+		fallbackTableBackground: tableBackground || ! computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackTableColor: tableColor || ! computedStyles ? undefined : computedStyles.color,
+	};
+} );
 
 /**
  * Inspector controls
  */
-export default class Inspector extends Component {
+export default compose( Colors, FallbackStyles ) ( class Inspector extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -24,15 +47,23 @@ export default class Inspector extends Component {
 
 		const {
 			attributes,
-			setAttributes
+			setAttributes,
+			fallbackButtonBackground,
+			fallbackButtonColor,
+			fallbackTableBackground,
+			fallbackTableColor,
+			setButtonBackground,
+			setButtonColor,
+			setTableBackground,
+			setTableColor,
+			buttonBackground,
+			buttonColor,
+			tableBackground,
+			tableColor,
 		} = this.props;
 
 		const {
-			buttonBackground,
-			buttonColor,
 			columns,
-			tableBackground,
-			tableColor,
 		} = attributes;
 
 		return (
@@ -55,33 +86,46 @@ export default class Inspector extends Component {
 							} ) ) }
 						/>
 					</PanelBody>
-
-					<PanelColor title={ __( 'Background Color' ) } colorValue={ tableBackground } initialOpen={ false }>
-						<ColorPalette
-							value={ tableBackground }
-							onChange={ ( colorValue ) => setAttributes( { tableBackground: colorValue } ) }
-						/>
-					</PanelColor>
-					<PanelColor title={ __( 'Text Color' ) } colorValue={ tableColor } initialOpen={ false }>
-						<ColorPalette
-							value={ tableColor }
-							onChange={ ( colorValue ) => setAttributes( { tableColor: colorValue } ) }
-						/>
-					</PanelColor>
-					<PanelColor title={ __( 'Button Background' ) } colorValue={ buttonBackground } initialOpen={ false }>
-						<ColorPalette
-							value={ buttonBackground }
-							onChange={ ( colorValue ) => setAttributes( { buttonBackground: colorValue } ) }
-						/>
-					</PanelColor>
-					<PanelColor title={ __( 'Button Color' ) } colorValue={ buttonColor } initialOpen={ false }>
-						<ColorPalette
-							value={ buttonColor }
-							onChange={ ( colorValue ) => setAttributes( { buttonColor: colorValue } ) }
-						/>
-					</PanelColor>
+					<PanelColor
+						colorValue={ tableBackground.value }
+						title={ __( 'Background Color' ) }
+						onChange={ setTableBackground }
+					/>
+					<PanelColor
+						colorValue={ tableColor.value }
+						title={ __( 'Text Color' ) }
+						onChange={ setTableColor }
+					/>
+					{ <ContrastChecker
+						textColor={ tableColor.value }
+						backgroundColor={ tableBackground.value }
+						{ ...{
+							fallbackTableBackground,
+							fallbackTableColor,
+						} }
+					/> }
+					<PanelColor
+						colorValue={ buttonBackground.value }
+						title={ __( 'Button Background' ) }
+						onChange={ setButtonBackground }
+						initialOpen={ false }
+					/>
+					<PanelColor
+						colorValue={ buttonColor.value }
+						title={ __( 'Button Color' ) }
+						onChange={ setButtonColor }
+						initialOpen={ false }
+					/>
+					{ <ContrastChecker
+						textColor={ buttonColor.value }
+						backgroundColor={ buttonBackground.value }
+						{ ...{
+							fallbackButtonBackground,
+							fallbackButtonColor,
+						} }
+					/> }
 				</InspectorControls>
 			</Fragment>
 		);
 	}
-}
+} );

@@ -6,6 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
+import Colors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
 
@@ -20,7 +21,7 @@ const { Dashicon, IconButton } = wp.components;
 /**
  * Block edit function
  */
-export default class PricingTableBlock extends Component {
+export default compose( Colors ) ( class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -74,6 +75,14 @@ export default class PricingTableBlock extends Component {
 	render() {
 
 		const {
+			buttonBackground,
+			buttonColor,
+			tableBackground,
+			tableColor,
+			setButtonBackground,
+			setButtonColor,
+			setTableBackground,
+			setTableColor,
 			attributes,
 			className,
 			isSelected,
@@ -87,8 +96,6 @@ export default class PricingTableBlock extends Component {
 			amount_2,
 			button,
 			button_2,
-			buttonBackground,
-			buttonColor,
 			columns,
 			contentAlign,
 			currency,
@@ -96,8 +103,6 @@ export default class PricingTableBlock extends Component {
 			features,
 			features_2,
 			layout,
-			tableBackground,
-			tableColor,
 			title,
 			title_2,
 			url,
@@ -121,7 +126,20 @@ export default class PricingTableBlock extends Component {
 
 				<div className={ className + ' pricing-table pricing-table--' + columns + ' pricing-table--' + contentAlign } style={ { textAlign: contentAlign } }>
 
-					<div className={ 'pricing-table__item pricing-table__item--1' } style={ { backgroundColor: tableBackground } }>
+					<div
+						className={ classnames(
+							`pricing-table__item pricing-table__item--1`, {
+								'has-background': tableBackground.value,
+								[ tableBackground.class ]: tableBackground.class,
+								'has-text-color': tableColor.value,
+								[ tableColor.class ]: tableColor.class,
+							}
+						) }
+						style={ {
+							backgroundColor: tableBackground.class ? undefined : tableBackground.value,
+							color: tableColor.class ? undefined : tableColor.value,
+						} }
+					>
 
 						<RichText
 							tagName="h4"
@@ -198,7 +216,17 @@ export default class PricingTableBlock extends Component {
 
 					{ ( columns >= 2 ) && (
 
-						<div className={ 'pricing-table__item pricing-table__item--2' } style={ { backgroundColor: tableBackground } }>
+						<div
+							className={ classnames(
+								`pricing-table__item pricing-table__item--2`, {
+									'has-background': tableBackground.value,
+									[ tableBackground.class ]: tableBackground.class,
+								}
+							) }
+							style={ {
+								backgroundColor: tableBackground.class ? undefined : tableBackground.value,
+							} }
+						>
 
 							<RichText
 								tagName="h4"
@@ -307,4 +335,4 @@ export default class PricingTableBlock extends Component {
 			</Fragment>
 		];
 	}
-};
+} );

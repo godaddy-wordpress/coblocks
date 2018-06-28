@@ -4,7 +4,7 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 import PricingTable from './components/pricing-table';
-import PricingTableBlock from './components/edit';
+import Edit from './components/edit';
 import icons from './components/icons';
 
 /**
@@ -118,13 +118,25 @@ registerBlockType( 'coblocks/pricing-table', {
 		buttonColor: {
 			type: 'string',
 		},
+		customTableBackground: {
+			type: 'string',
+		},
+		customTableColor: {
+			type: 'string',
+		},
+		customButtonBackground: {
+			type: 'string',
+		},
+		custombButtonColor: {
+			type: 'string',
+		},
 	},
 
 	supports: {
 		align: [ 'wide', 'full', 'center' ],
 	},
 
-	edit: PricingTableBlock,
+	edit: Edit,
 
 	save: function( props ) {
 
@@ -135,6 +147,9 @@ registerBlockType( 'coblocks/pricing-table', {
 			button_2,
 			buttonBackground,
 			buttonColor,
+			customButtonColor,
+			customButtonBackground,
+			customTableColor,
 			contentAlign,
 			columns,
 			currency,
@@ -142,7 +157,6 @@ registerBlockType( 'coblocks/pricing-table', {
 			features,
 			features_2,
 			layout,
-			tableBackground,
 			tableColor,
 			title,
 			title_2,
