@@ -11,6 +11,7 @@ import AuthorBlock from './components/edit';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
+const { RichText } = wp.editor;
 
 /**
  * Block registration
@@ -99,26 +100,38 @@ registerBlockType( 'coblocks/author', {
 
 						{ heading && heading.length > 0 && (
 							<div className={ 'wp-block-coblocks-author__content-heading' }>
-								<p>{ heading }</p>
+								<RichText.Content
+									tagName="p"
+									value={ heading }
+								/>
 							</div>
 						) }
 
 						{ name && name.length > 0 && (
 							<div className={ 'wp-block-coblocks-author__content-name' }>
-								<h3>{ name }</h3>
+								<RichText.Content
+									tagName="h3"
+									value={ name }
+								/>
 							</div>
 						) }
 
 						{ biography && biography.length > 0 && (
 							<div className={ 'wp-block-coblocks-author__content-biography' }>
-								<p>{ biography }</p>
+								<RichText.Content
+									tagName="p"
+									value={ biography }
+								/>
 							</div>
 						) }
 
 						{ buttonText && buttonText.length > 0 && (
-							<a className={ 'wp-block-coblocks-author__content-button' } href={ buttonUrl }>
-								{ buttonText }
-							</a>
+							<RichText.Content
+								tagName="a"
+								className={ 'wp-block-coblocks-author__content-button' }
+								value={ buttonText }
+								href={ buttonUrl }
+							/>
 						) }
 
 					</div>
