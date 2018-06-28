@@ -117,7 +117,7 @@ export default compose( applyWithColors, FallbackStyles ) ( class Inspector exte
 					colorValue={ buttonColor.value }
 					title={ __( 'Button Color' ) }
 					onChange={ setButtonColor }
-					initialOpen={ falses }
+					initialOpen={ false }
 				/>
 				{ <ContrastChecker
 					textColor={ '#ffffff' }
