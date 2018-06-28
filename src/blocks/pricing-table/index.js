@@ -95,9 +95,6 @@ registerBlockType( 'coblocks/pricing-table', {
 			attribute: 'href',
 			selector: '.pricing-table__item--2 .pricing-table__button',
 		},
-		layout: {
-			type: 'string',
-		},
 		contentAlign: {
 			type: 'string',
 			default: 'center',
@@ -145,19 +142,12 @@ registerBlockType( 'coblocks/pricing-table', {
 			amount_2,
 			button,
 			button_2,
-			buttonBackground,
-			buttonColor,
-			customButtonColor,
-			customButtonBackground,
-			customTableColor,
 			contentAlign,
 			columns,
 			currency,
 			currency_2,
 			features,
 			features_2,
-			layout,
-			tableColor,
 			title,
 			title_2,
 			url,
@@ -167,7 +157,7 @@ registerBlockType( 'coblocks/pricing-table', {
 		return (
 
 			<div
-				className={ props.className + ' pricing-table pricing-table--' + columns + ' pricing-table--' + contentAlign }
+				className={ ' pricing-table pricing-table--' + columns + ' pricing-table--' + contentAlign }
 				style={ { textAlign: contentAlign ? contentAlign : null } }
 			>
 				<PricingTable { ...props }

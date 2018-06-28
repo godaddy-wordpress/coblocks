@@ -95,6 +95,7 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 						colorValue={ tableColor.value }
 						title={ __( 'Text Color' ) }
 						onChange={ setTableColor }
+						initialOpen={ false }
 					/>
 					{ <ContrastChecker
 						textColor={ tableColor.value }

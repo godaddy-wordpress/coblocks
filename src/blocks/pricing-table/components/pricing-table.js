@@ -23,33 +23,21 @@ export default class PricingTable extends Component {
 		} = this.props;
 
 		const {
-			amount,
-			amount_2,
-			button,
-			button_2,
 			buttonBackground,
 			buttonColor,
-			columns,
-			currency,
-			currency_2,
 			customButtonBackground,
 			customButtonColor,
 			customTableBackground,
 			customTableColor,
-			features,
-			features_2,
-			layout,
 			tableBackground,
 			tableColor,
-			title,
-			title_2,
-			url,
-			url_2,
 		} = attributes;
 
 		// Heading color class and styles.
 		const tableColorClass = getColorClass( 'color', tableColor );
 		const tableBackgroundClass = getColorClass( 'background-color', tableBackground );
+		const buttonColorClass = getColorClass( 'color', buttonColor );
+		const buttonBackgroundClass = getColorClass( 'background-color', buttonBackground );
 
 		// Background color class and styles.
 		const tableClasses = classnames(
@@ -75,9 +63,17 @@ export default class PricingTable extends Component {
 		};
 
 		// Button color class and styles.
-		const buttonStyle = {
-			backgroundColor: buttonBackground,
-			color: buttonColor,
+		const buttonClasses = classnames( {
+				'has-background': buttonBackground || customButtonBackground,
+				[ buttonBackgroundClass ]: buttonBackgroundClass,
+				'has-text-color': buttonColor || customButtonColor,
+				[ buttonColorClass ]: buttonColorClass,
+			}
+		);
+
+		const buttonStyles = {
+			backgroundColor: buttonBackgroundClass ? undefined : customButtonBackground,
+			color: buttonColorClass ? undefined : customButtonColor,
 		};
 
 		return (
@@ -124,9 +120,14 @@ export default class PricingTable extends Component {
 
 				{ this.props.button && this.props.button.length > 0 && (
 					<div className={ 'wp-block-button' }>
-						<a className={ 'pricing-table__button wp-block-button__link' } href={ this.props.url } title={ this.props.button } style={ buttonStyle } >
-							{ this.props.button }
-						</a>
+						<RichText.Content
+							tagName="a"
+							className={ classnames( 'pricing-table__button', 'wp-block-button__link', buttonClasses ) }
+							value={ this.props.button }
+							title={ this.props.button }
+							href={ this.props.url }
+							style={ buttonStyles }
+						/>
 					</div>
 				) }
 

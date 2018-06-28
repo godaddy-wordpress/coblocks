@@ -88,7 +88,6 @@ export default compose( Colors ) ( class Edit extends Component {
 			isSelected,
 			setAttributes,
 			setState,
-			toggleSelection,
 		} = this.props;
 
 		const {
@@ -102,7 +101,6 @@ export default compose( Colors ) ( class Edit extends Component {
 			currency_2,
 			features,
 			features_2,
-			layout,
 			title,
 			title_2,
 			url,
@@ -197,7 +195,18 @@ export default compose( Colors ) ( class Edit extends Component {
 							<span className={ 'wp-block-button' } title={ button }>
 								<RichText
 									tagName='span'
-									className="pricing-table__button wp-block-button__link"
+									className={ classnames(
+										`pricing-table__button wp-block-button__link`, {
+											'has-background': buttonBackground.value,
+											[ buttonBackground.class ]: buttonBackground.class,
+											'has-text-color': buttonColor.value,
+											[ buttonColor.class ]: buttonColor.class,
+										}
+									) }
+									style={ {
+										backgroundColor: buttonBackground.class ? undefined : buttonBackground.value,
+										color: buttonColor.class ? undefined : buttonColor.value,
+									} }
 									onChange={ ( nextButton ) => setAttributes( { button: nextButton } ) }
 									unstableOnFocus={ this.onFocusButton }
 									value={ button }
@@ -221,10 +230,13 @@ export default compose( Colors ) ( class Edit extends Component {
 								`pricing-table__item pricing-table__item--2`, {
 									'has-background': tableBackground.value,
 									[ tableBackground.class ]: tableBackground.class,
+									'has-text-color': tableColor.value,
+									[ tableColor.class ]: tableColor.class,
 								}
 							) }
 							style={ {
 								backgroundColor: tableBackground.class ? undefined : tableBackground.value,
+								color: tableColor.class ? undefined : tableColor.value,
 							} }
 						>
 
@@ -285,7 +297,18 @@ export default compose( Colors ) ( class Edit extends Component {
 								<span className={ 'wp-block-button' } title={ button_2 }>
 									<RichText
 										tagName='span'
-										className="pricing-table__button wp-block-button__link"
+										className={ classnames(
+											`pricing-table__button wp-block-button__link`, {
+												'has-background': buttonBackground.value,
+												[ buttonBackground.class ]: buttonBackground.class,
+												'has-text-color': buttonColor.value,
+												[ buttonColor.class ]: buttonColor.class,
+											}
+										) }
+										style={ {
+											backgroundColor: buttonBackground.class ? undefined : buttonBackground.value,
+											color: buttonColor.class ? undefined : buttonColor.value,
+										} }
 										onChange={ ( nextButton ) => setAttributes( { button_2: nextButton } ) }
 										unstableOnFocus={ this.onFocusButton_2 }
 										value={ button_2 }
