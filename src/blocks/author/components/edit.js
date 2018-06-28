@@ -21,6 +21,37 @@ export default class AuthorBlock extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
+
+		this.onFocusButton = this.onFocusButton.bind( this );
+		this.offFocusButton = this.offFocusButton.bind( this );
+
+		this.state = {
+			buttonFocused: false,
+		};
+	}
+
+	componentDidUpdate( prevProps ) {
+		if ( ! this.props.isSelected && prevProps.isSelected && this.state.buttonFocused ) {
+			this.setState( {
+				buttonFocused: false,
+			} );
+		}
+	}
+
+	onFocusButton() {
+		if ( ! this.state.buttonFocused ) {
+			this.setState( {
+				buttonFocused: true,
+			} );
+		}
+	}
+
+	offFocusButton() {
+		if ( this.state.buttonFocused ) {
+			this.setState( {
+				buttonFocused: false,
+			} );
+		}
 	}
 
 	render() {
@@ -30,6 +61,7 @@ export default class AuthorBlock extends Component {
 			className,
 			isSelected,
 			onReplace,
+			setState,
 			setAttributes,
 			mergeBlocks,
 		} = this.props;
@@ -54,11 +86,6 @@ export default class AuthorBlock extends Component {
 					{ ...this.props }
 				/>
 			),
-			// isSelected && (
-			// 	<Inspector
-			// 		{ ...this.props }
-			// 	/>
-			// ),
 			<Author { ...this.props }>
 
 				<div className={ `${ className }__avatar` }>
@@ -90,6 +117,7 @@ export default class AuthorBlock extends Component {
 							value={ heading }
 							className={ `${ className }__content-heading` }
 							onChange={ ( value ) => setAttributes( { heading: value } ) }
+							unstableOnFocus={ this.offFocusButton }
 							keepPlaceholderOnFocus
 						/>
 					) }
@@ -101,6 +129,7 @@ export default class AuthorBlock extends Component {
 							value={ name }
 							onMerge={ mergeBlocks }
 							onChange={ ( value ) => setAttributes( { name: value } ) }
+							unstableOnFocus={ this.offFocusButton }
 							keepPlaceholderOnFocus
 						/>
 					</div>
@@ -113,6 +142,7 @@ export default class AuthorBlock extends Component {
 							value={ biography }
 							onMerge={ mergeBlocks }
 							onChange={ ( value ) => setAttributes( { biography: value } ) }
+							unstableOnFocus={ this.offFocusButton }
 							keepPlaceholderOnFocus
 						/>
 					</div>
@@ -127,12 +157,13 @@ export default class AuthorBlock extends Component {
 								className={ `${ className }__content-button-link` }
 								formattingControls={ [] }
 								onChange={ ( value ) => setAttributes( { buttonText: value } ) }
+								unstableOnFocus={ this.onFocusButton }
 								keepPlaceholderOnFocus
 							/>
 						</span>
 					) }
 
-					{ isSelected && (
+					{ this.state.buttonFocused && isSelected && (
 						<form
 							className="core-blocks-button__inline-link"
 							onSubmit={ ( event ) => event.preventDefault() }>
