@@ -34,21 +34,29 @@ export default class Controls extends Component {
 						value={ textAlign }
 						onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
 					/>
-					<Toolbar>
-						<MediaUpload
-							onSelect={ onSelectImage }
-							type="image"
-							value={ imgId }
-							render={ ( { open } ) => (
-								<IconButton
-									className="components-toolbar__control"
-									label={ __( 'Edit image' ) }
-									icon="edit"
-									onClick={ open }
-								/>
-							) }
-						/>
-					</Toolbar>
+					{ imgUrl &&
+						<Toolbar>
+							<MediaUpload
+								onSelect={ onSelectImage }
+								type="image"
+								value={ imgId }
+								render={ ( { open } ) => (
+									<IconButton
+										className="components-toolbar__control"
+										label={ __( 'Edit image' ) }
+										icon="edit"
+										onClick={ open }
+									/>
+								) }
+							/>
+							<IconButton
+								className="components-toolbar__control"
+								label={ __( 'Remove image' ) }
+								icon="trash"
+								onClick={ () => setAttributes( { imgUrl: '', imgId: '' } ) }
+							/>
+						</Toolbar>
+					}
 				</BlockControls>
 			</Fragment>
 		);
