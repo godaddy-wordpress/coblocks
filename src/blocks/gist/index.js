@@ -30,7 +30,7 @@ registerBlockType( 'coblocks/gist', {
 		src: icons.github,
 	},
 
-	category: 'common',
+	category: 'coblocks',
 
 	keywords: [
 		__( 'code' ),

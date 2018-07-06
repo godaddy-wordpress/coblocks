@@ -24,7 +24,7 @@ registerBlockType( 'coblocks/pricing-table', {
 
 	icon: 'editor-table',
 
-	category: 'layout',
+	category: 'coblocks',
 
 	keywords: [
 		__( 'landing' ),

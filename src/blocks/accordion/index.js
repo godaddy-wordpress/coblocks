@@ -26,7 +26,7 @@ registerBlockType( 'coblocks/accordion', {
 		src: icons.accordion,
 	},
 
-	category: 'common',
+	category: 'coblocks',
 
 	keywords: [
 		__( 'tabs' ),

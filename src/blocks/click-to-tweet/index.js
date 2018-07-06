@@ -33,7 +33,7 @@ registerBlockType( 'coblocks/click-to-tweet', {
 
 	icon: 'twitter',
 
-	category: 'common',
+	category: 'coblocks',
 
 	keywords: [
 		__( 'social' ),

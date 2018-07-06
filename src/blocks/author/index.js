@@ -24,7 +24,7 @@ registerBlockType( 'coblocks/author', {
 
 	icon: 'admin-users',
 
-	category: 'common',
+	category: 'coblocks',
 
 	keywords: [
 		__( 'biography' ),

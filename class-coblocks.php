@@ -49,6 +49,7 @@ class CoBlocks {
 	public static function register() {
 		if ( null === self::$instance ) {
 			self::$instance = new CoBlocks();
+			self::$instance->includes();
 		}
 	}
 
@@ -94,6 +95,17 @@ class CoBlocks {
 		add_action( 'init', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
 		add_action( 'plugins_loaded', array( $this, 'load_dynamic_blocks' ) );
+	}
+
+	/**
+	 * Include required files.
+	 *
+	 * @access private
+	 * @since 1.1.1
+	 * @return void
+	 */
+	private function includes() {
+		require_once $this->_dir . 'includes/class-coblocks-block-category.php';
 	}
 
 	/**

@@ -27,7 +27,7 @@ registerBlockType( 'coblocks/dynamic-separator', {
 
 	icon: 'minus',
 
-	category: 'layout',
+	category: 'coblocks',
 
 	keywords: [
 		__( 'hr' ),

@@ -32,7 +32,7 @@ registerBlockType( 'coblocks/highlight', {
 		src: icons.highlight,
 	},
 
-	category: 'common',
+	category: 'coblocks',
 
 	keywords: [
 		__( 'text' ),

@@ -23,7 +23,7 @@ registerBlockType( 'coblocks/social', {
 
 	icon: 'share',
 
-	category: 'common',
+	category: 'coblocks',
 
 	keywords: [
 		__( 'share' ),
