@@ -15,7 +15,8 @@ import FONT_SIZES from './font-sizes';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component, compose } = wp.element;
+const { Component } = wp.element;
+const { compose } = wp.compose;
 const { InspectorControls, BlockAlignmentToolbar, PanelColor, ContrastChecker } = wp.editor;
 const { PanelBody, ToggleControl, RangeControl, FontSizePicker, withFallbackStyles } = wp.components;
 

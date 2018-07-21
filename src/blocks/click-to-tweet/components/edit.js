@@ -18,7 +18,8 @@ import Controls from './controls';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component, compose } = wp.element;
+const { Component } = wp.element;
+const { compose } = wp.compose;
 const { RichText } = wp.editor;
 const { withAPIData } = wp.components;
 const { withSelect } = wp.data;

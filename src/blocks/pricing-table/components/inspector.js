@@ -8,7 +8,8 @@ import icons from './icons';
  * WordPress dependencies
  */
 const { __, sprintf } = wp.i18n;
-const { Component, Fragment, compose } = wp.element;
+const { Component, Fragment } = wp.element;
+const { compose } = wp.compose;
 const { InspectorControls, PanelColor, ContrastChecker } = wp.editor;
 const { PanelBody, withFallbackStyles, Toolbar, RangeControl } = wp.components;
 

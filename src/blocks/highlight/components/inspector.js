@@ -7,7 +7,8 @@ import applyWithColors from './colors';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component, Fragment, compose } = wp.element;
+const { Component, Fragment } = wp.element;
+const { compose } = wp.compose;
 const { InspectorControls, PanelColor, ContrastChecker } = wp.editor;
 const { withFallbackStyles } = wp.components;
 

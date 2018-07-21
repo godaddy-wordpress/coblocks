@@ -15,7 +15,8 @@ import Inspector from './inspector';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component, compose } = wp.element;
+const { Component } = wp.element;
+const { compose } = wp.compose;
 const { RichText } = wp.editor;
 
 /**

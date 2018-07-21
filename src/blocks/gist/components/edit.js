@@ -17,7 +17,7 @@ import Gist from './gist';
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { PlainText } = wp.editor;
-const { withState } = wp.components;
+const { withState } = wp.compose;
 
 /**
  * Block edit function
