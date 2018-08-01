@@ -82,6 +82,11 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.1.2, August 1, 2018 =
+* New: Gutenberg 3.4 compatibility! 🎊
+* Fix: Update Gif block UI for the latest ResizableBox capabilities
+* Tweak: Move CoBlocks blocks into a separate block category
+
 = 1.1.1, June 28, 2018 =
 * New: Gutenberg 3.1.1 compatibility! 🎊
 * New: Add getColorClass support to the Pricing Table block

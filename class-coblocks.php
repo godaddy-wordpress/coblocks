@@ -95,6 +95,8 @@ class CoBlocks {
 		add_action( 'init', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
 		add_action( 'plugins_loaded', array( $this, 'load_dynamic_blocks' ) );
+		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'localization' ) );
 	}
 
 	/**
@@ -255,6 +257,35 @@ class CoBlocks {
 			array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
 			$this->_version
 		);
+	}
+
+	/**
+	 * Enqueue Jed-formatted localization data.
+	 *
+	 * @access public
+	 */
+	public function localization() {
+
+		// Check if this function exists.
+		if ( ! function_exists( 'gutenberg_get_jed_locale_data' ) ) {
+			return;
+		}
+
+		$locale  = gutenberg_get_jed_locale_data( $this->_slug );
+		$content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ' );';
+
+		wp_script_add_data( $this->_slug . '-editor', 'data', $content );
+	}
+
+	/**
+	 * Loads the plugin language files.
+	 *
+	 * @access public
+	 * @since 1.0.0
+	 * @return void
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain( '@@textdomain', false, dirname( plugin_basename( $this->_dir ) ) . '/languages/' );
 	}
 }
 

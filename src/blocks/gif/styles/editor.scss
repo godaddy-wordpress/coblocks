@@ -74,10 +74,9 @@
 	}
 }
 
-.wp-block-image__resize-handler-top-right,
-.wp-block-image__resize-handler-bottom-right,
-.wp-block-image__resize-handler-top-left,
-.wp-block-image__resize-handler-bottom-left {
+.wp-block-image__resize-handler-right,
+.wp-block-image__resize-handler-bottom,
+.wp-block-image__resize-handler-left {
 
 	.wp-block-coblocks-gif.is-focused & {
 		display: block;

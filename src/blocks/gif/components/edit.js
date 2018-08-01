@@ -10,7 +10,6 @@ import ResizableBox from 're-resizable';
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose } = wp.compose;
-const { keycodes, viewPort, } = wp.utils;
 const { Placeholder, Spinner, Button } = wp.components;
 const { registerBlockType } = wp.blocks;
 const { withViewportMatch } = wp.viewport;
@@ -29,7 +28,6 @@ import Size from './size';
  */
 const GIPHY_URL = 'https://api.giphy.com/v1/gifs/search?api_key=w0o6fO8pv5gSM334gfqUlcdrVaaoiA81&limit=10&offset=0&rating=G&lang=en&q=';
 const MIN_SIZE = 20;
-const ESCAPE = keycodes;
 
 const applyWithSelect = withSelect( ( select ) => {
 	const { getEditorSettings } = select( 'core/editor' );
@@ -147,12 +145,15 @@ export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: '
 									maxHeight={ maxWidth / ratio }
 									lockAspectRatio
 									handleClasses={ {
-										topRight: 'wp-block-image__resize-handler-top-right',
- 										bottomRight: 'wp-block-image__resize-handler-bottom-right',
- 										topLeft: 'wp-block-image__resize-handler-top-left',
- 										bottomLeft: 'wp-block-image__resize-handler-bottom-left',
+										right: 'wp-block-image__resize-handler-right',
+										bottom: 'wp-block-image__resize-handler-bottom',
+										left: 'wp-block-image__resize-handler-left',
 									} }
-									enable={ { top: false, right: true, bottom: false, left: false, topRight: true, bottomRight: true, bottomLeft: true, topLeft: true } }
+									enable={ {
+										top: false,
+										right: true,
+										bottom: true,
+									} }
 									onResizeStart={ () => {
 										toggleSelection( false );
 									} }
@@ -212,12 +213,6 @@ export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: '
 							type="text"
 							placeholder={ __( 'Search for gifs here…' ) }
 							onChange={ ( event ) => fetchGifs( event.target.value ) }
-							onKeyDown={ ( event ) => {
-								if ( event.keyCode === ESCAPE ) {
-									event.target.value = '';
-									setAttributes( { matches: [] } );
-								}
-							} }
 						/>
 						<ul
 							key="results"
