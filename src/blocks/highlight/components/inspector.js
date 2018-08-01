@@ -9,7 +9,7 @@ import applyWithColors from './colors';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, PanelColor, ContrastChecker } = wp.editor;
+const { InspectorControls, PanelColor, ContrastChecker, PanelColorSettings } = wp.editor;
 const { withFallbackStyles } = wp.components;
 
 /**
@@ -34,15 +34,6 @@ export default compose( applyWithColors ) ( class Inspector extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
-		this.nodeRef = null;
-		this.bindRef = this.bindRef.bind( this );
-	}
-
-	bindRef( node ) {
-		if ( ! node ) {
-			return;
-		}
-		this.nodeRef = node;
 	}
 
 	render() {
@@ -54,28 +45,38 @@ export default compose( applyWithColors ) ( class Inspector extends Component {
 			setBackgroundColor,
 			setTextColor,
 			setAttributes,
+			fallbackBackgroundColor,
+			fallbackTextColor,
 		} = this.props;
 
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelColor
-						colorValue={ backgroundColor.value }
-						title={ __( 'Background Color' ) }
-						onChange={ setBackgroundColor }
-						initialOpen={ false }
-					/>
-					<PanelColor
-						colorValue={ textColor.value }
-						title={ __( 'Text Color' ) }
-						onChange={ setTextColor }
-						initialOpen={ false }
-					/>
-					{ <ContrastCheckerWithFallbackStyles
-						node={ this.nodeRef }
-						textColor={ textColor.value }
-						backgroundColor={ backgroundColor.value }
-					/> }
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
+						initialOpen={ true }
+						colorSettings={ [
+							{
+								value: backgroundColor.value,
+								onChange: setBackgroundColor,
+								label: __( 'Background Color' ),
+							},
+							{
+								value: textColor.value,
+								onChange: setTextColor,
+								label: __( 'Text Color' ),
+							},
+						] }
+					>
+						<ContrastChecker
+							{ ...{
+								textColor: textColor.value,
+								backgroundColor: backgroundColor.value,
+								fallbackBackgroundColor,
+								fallbackTextColor,
+							} }
+						/>
+					</PanelColorSettings>
 				</InspectorControls>
 			</Fragment>
 		);
