@@ -118,7 +118,7 @@ export default compose( applyWithSelect, applyWithColors ) ( class ClicktoTweetB
 						}
 					) }
 					style={ {
-						color: textColor.class ? undefined : textColor.value,
+						color: textColor.value,
 						fontSize: fontSize ? fontSize + 'px' : undefined,
 					} }
 					onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
@@ -137,7 +137,7 @@ export default compose( applyWithSelect, applyWithColors ) ( class ClicktoTweetB
 						}
 					) }
 					style={ {
-						backgroundColor: buttonColor.class ? undefined : buttonColor.value,
+						backgroundColor: buttonColor.value,
 					} }
 					onChange={ ( nextButtonText ) => setAttributes( { buttonText: nextButtonText } ) }
 					keepPlaceholderOnFocus
