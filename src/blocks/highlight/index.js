@@ -121,18 +121,14 @@ registerBlockType( 'coblocks/highlight', {
 
 		return (
 			<Highlighter { ...props }>
-
 				{ content && content.length > 0 && (
-
 					<RichText.Content
 						tagName="mark"
 						className={ classes }
 						style={ styles }
 						value={ content }
 					/>
-
 				) }
-
 			</Highlighter>
 		);
 	},
