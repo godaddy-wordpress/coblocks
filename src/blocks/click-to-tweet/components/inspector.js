@@ -17,7 +17,7 @@ import FONT_SIZES from './font-sizes';
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, BlockAlignmentToolbar, PanelColor, ContrastChecker } = wp.editor;
+const { InspectorControls, BlockAlignmentToolbar, PanelColor, ContrastChecker, PanelColorSettings, } = wp.editor;
 const { PanelBody, ToggleControl, RangeControl, FontSizePicker, withFallbackStyles } = wp.components;
 
 /**
@@ -108,27 +108,31 @@ export default compose( applyWithColors, FallbackStyles ) ( class Inspector exte
 						onChange={ this.setFontSize }
 					/>
 				</PanelBody>
-				<PanelColor
-					colorValue={ textColor.value }
-					title={ __( 'Text Color' ) }
-					onChange={ setTextColor }
+				<PanelColorSettings
+					title={ __( 'Color Settings' ) }
 					initialOpen={ false }
-				/>
-				<PanelColor
-					colorValue={ buttonColor.value }
-					title={ __( 'Button Color' ) }
-					onChange={ setButtonColor }
-					initialOpen={ false }
-				/>
-				{ <ContrastChecker
-					textColor={ '#ffffff' }
-					backgroundColor={ buttonColor.value }
-					{ ...{
-						fallbackButtonColor,
-						fallbackTextColor,
-					} }
-					isLargeText={ fontSize >= 18 }
-				/> }
+					colorSettings={ [
+						{
+							value: textColor.value,
+							onChange: setTextColor,
+							label: __( 'Text Color' ),
+						},
+						{
+							value: buttonColor.value,
+							onChange: setButtonColor,
+							label: __( 'Button Color' ),
+						},
+					] }
+				>
+					<ContrastChecker
+						{ ...{
+							textColor: '#ffffff',
+							backgroundColor: buttonColor.value,
+							fallbackButtonColor,
+							fallbackTextColor,
+						} }
+					/>
+				</PanelColorSettings>
 			</InspectorControls>
 		);
 	}
