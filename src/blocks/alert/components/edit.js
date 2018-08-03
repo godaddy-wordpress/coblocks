@@ -52,6 +52,7 @@ export default compose( Colors ) ( class AlertBlock extends Component {
 			textAlign,
 			title,
 			value,
+			type,
 		} = attributes;
 
 		return [
@@ -69,6 +70,7 @@ export default compose( Colors ) ( class AlertBlock extends Component {
 			<div
 				className={ classnames(
 					className,
+					`is-${ type }-alert`,
 					`align${ align }`, {
 						'has-background': backgroundColor.value,
 						[ backgroundColor.class ]: backgroundColor.class,

@@ -34,15 +34,15 @@ export default class Controls extends Component {
 			setAttributes( { backgroundColor: value } )
 
 			if ( value == '#e2e3e5' ) {
-				setAttributes( { textColor: '#383d41', titleColor: '#383d41', borderColor: '#d6d8db' } )
+				setAttributes( { customTextColor: '#383d41', customTitleColor: '#383d41', customBorderColor: '#d6d8db' } )
 			} else if  ( value == '#cce5ff' ) {
-				setAttributes( { textColor: '#004085', titleColor: '#004085', borderColor: '#b8daff' } )
+				setAttributes( { customTextColor: '#004085', customTitleColor: '#004085', customBorderColor: '#b8daff' } )
 			} else if  ( value == '#d4edda' ) {
-				setAttributes( { textColor: '#155724', titleColor: '#155724', borderColor: '#c3e6cb' } )
+				setAttributes( { customTextColor: '#155724', customTitleColor: '#155724', customBorderColor: '#c3e6cb' } )
 			} else if  ( value == '#f8d7da' ) {
-				setAttributes( { textColor: '#721c24', titleColor: '#721c24', borderColor: '#f5c6cb' } )
+				setAttributes( { customTextColor: '#721c24', customTitleColor: '#721c24', customBorderColor: '#f5c6cb' } )
 			} else if  ( value == '#fff3cd' ) {
-				setAttributes( { textColor: '#856404', titleColor: '#856404', borderColor: '#ffeeba' } )
+				setAttributes( { customTextColor: '#856404', customTitleColor: '#856404', customBorderColor: '#ffeeba' } )
 			}
 		}
 

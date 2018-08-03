@@ -80,6 +80,10 @@ registerBlockType( 'coblocks/alert', {
 		textAlign: {
 			type: 'string',
 		},
+		type: {
+			type: 'string',
+			default: 'default',
+		},
 	},
 
 	transforms: {
@@ -128,6 +132,7 @@ registerBlockType( 'coblocks/alert', {
 			textAlign,
 			textColor,
 			title,
+			type,
 			titleColor,
 			customTextColor,
 			customTitleColor,
@@ -142,6 +147,7 @@ registerBlockType( 'coblocks/alert', {
 
 		const backgroundClasses = classnames(
 			props.className,
+			`is-${ type }-alert`,
 			`align${ align }`, {
 			'has-background': backgroundColor || customBackgroundColor,
 			[ backgroundClass ]: backgroundClass,
