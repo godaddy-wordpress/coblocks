@@ -82,10 +82,16 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
-= 1.1.2, August 1, 2018 =
+= 1.1.2, August 3, 2018 =
 * New: Gutenberg 3.4 compatibility! 🎊
+* New: Add support for translations
 * Fix: Update Gif block UI for the latest ResizableBox capabilities
 * Tweak: Move CoBlocks blocks into a separate block category
+* Tweak: Add support for color classes to the Alert and Highlight blocks
+* Tweak: Add a new "type" attribute for the Alert block
+* Tweak: Update blocks to use the new PanelColorSettings component
+* Tweak Use the RichText.Content component for the Author block
+* Tweak: Add a "Remove Image" button for the Author block
 
 = 1.1.1, June 28, 2018 =
 * New: Gutenberg 3.1.1 compatibility! 🎊
