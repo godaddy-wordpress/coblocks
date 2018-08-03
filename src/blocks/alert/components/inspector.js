@@ -1,15 +1,48 @@
 /**
+ * Internal dependencies
+ */
+import Colors from './colors';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { InspectorControls, ColorPalette } = wp.editor;
-const { PanelBody, PanelColor, FormToggle, RangeControl, SelectControl } = wp.components;
+const { compose } = wp.compose;
+const { InspectorControls, ColorPalette, PanelColor, PanelColorSettings } = wp.editor;
+const { PanelBody, FormToggle, RangeControl, SelectControl, withFallbackStyles } = wp.components;
+
+/**
+ * Contrast checker
+ */
+const { getComputedStyle } = window;
+
+const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+
+	const {
+		textColor,
+		titleColor,
+		backgroundColor,
+		borderColor
+	} = ownProps.attributes;
+
+	const editableNode = node.querySelector( '[contenteditable="true"]' );
+
+	//verify if editableNode is available, before using getComputedStyle.
+	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+
+	return {
+		fallbackTitleColor: titleColor || ! computedStyles ? undefined : computedStyles.color,
+		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackBorderColor: borderColor || ! computedStyles ? undefined : computedStyles.borderColor,
+	};
+} );
 
 /**
  * Inspector controls
  */
-export default class Inspector extends Component {
+export default compose( Colors, FallbackStyles ) ( class Inspector extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -18,53 +51,50 @@ export default class Inspector extends Component {
 	render() {
 
 		const {
-			attributes,
-			setAttributes,
-		} = this.props;
-
-		const {
-			textAlign,
 			backgroundColor,
+			borderColor,
 			textColor,
 			titleColor,
-			borderColor,
-		} = attributes;
+			fallbackBackgroundColor,
+			fallbackBorderColor,
+			fallbackTextColor,
+			fallbackTitleColor,
+			setBackgroundColor,
+			setBorderColor,
+			setTextColor,
+			setTitleColor,
+		} = this.props;
 
 		return (
-			<InspectorControls key="inspector">
-				<PanelColor title={ __( 'Background Color' ) } colorValue={ backgroundColor } initialOpen={ false }>
-					<ColorPalette
-						label={ __( 'Background Color' ) }
-						value={ backgroundColor }
-						onChange={ ( value ) => setAttributes( { backgroundColor: value } ) }
-					/>
-				</PanelColor>
-
-				<PanelColor title={ __( 'Title Color' ) } colorValue={ titleColor } initialOpen={ false }>
-					<ColorPalette
-						label={ __( 'Title Color' ) }
-						value={ titleColor }
-						onChange={ ( value ) => setAttributes( { titleColor: value } ) }
-					/>
-				</PanelColor>
-
-				<PanelColor title={ __( 'Text Color' ) } colorValue={ textColor } initialOpen={ false }>
-					<ColorPalette
-						label={ __( 'Background Color' ) }
-						value={ textColor }
-						onChange={ ( value ) => setAttributes( { textColor: value } ) }
-					/>
-				</PanelColor>
-
-				<PanelColor title={ __( 'Border Color' ) } colorValue={ textColor } initialOpen={ false }>
-					<ColorPalette
-						label={ __( 'Border Color' ) }
-						value={ textColor }
-						onChange={ ( value ) => setAttributes( { borderColor: value } ) }
-					/>
-				</PanelColor>
-
+			<InspectorControls>
+				<PanelColorSettings
+					title={ __( 'Color Settings' ) }
+					initialOpen={ true }
+					colorSettings={ [
+						{
+							value: backgroundColor.value,
+							onChange: setBackgroundColor,
+							label: __( 'Background Color' ),
+						},
+						{
+							value: titleColor.value,
+							onChange: setTitleColor,
+							label: __( 'Heading Color' ),
+						},
+						{
+							value: textColor.value,
+							onChange: setTextColor,
+							label: __( 'Text Color' ),
+						},
+						{
+							value: borderColor.value,
+							onChange: setBorderColor,
+							label: __( 'Border Color' ),
+						},
+					] }
+				>
+				</PanelColorSettings>
 			</InspectorControls>
 		);
 	}
-}
+} );

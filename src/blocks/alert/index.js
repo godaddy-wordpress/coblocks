@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Internal dependencies
  */
 import './styles/style.scss';
@@ -12,6 +17,7 @@ import icons from './components/icons';
  */
 const { __ } = wp.i18n;
 const { registerBlockType, createBlock } = wp.blocks;
+const { RichText, getColorClass } = wp.editor;
 
 /**
  * Block registration
@@ -42,23 +48,30 @@ registerBlockType( 'coblocks/alert', {
 		value: {
 			type: 'array',
 			selector: '.wp-block-coblocks-alert__text',
-			source: 'children',
 		},
 		backgroundColor: {
 			type: 'string',
-			default: '#e2e3e5'
 		},
 		borderColor: {
 			type: 'string',
-			default: '#d6d8db'
 		},
 		textColor: {
 			type: 'string',
-			default: '#383d41'
+		},
+		customTextColor: {
+			type: 'string',
+		},
+		customTitleColor: {
+			type: 'string',
+		},
+		customBackgroundColor: {
+			type: 'string',
+		},
+		customBorderColor: {
+			type: 'string',
 		},
 		titleColor: {
 			type: 'string',
-			default: '#383d41'
 		},
 		align: {
 			type: 'string',
@@ -116,20 +129,80 @@ registerBlockType( 'coblocks/alert', {
 			textColor,
 			title,
 			titleColor,
+			customTextColor,
+			customTitleColor,
+			customBorderColor,
+			customBackgroundColor,
 			value,
 		} = props.attributes;
 
+		// Background color class and styles.
+		const backgroundClass = getColorClass( 'background-color', backgroundColor );
+		const borderClass = getColorClass( 'border-color', borderColor );
+
+		const backgroundClasses = classnames(
+			props.className,
+			`align${ align }`, {
+			'has-background': backgroundColor || customBackgroundColor,
+			[ backgroundClass ]: backgroundClass,
+			[ borderClass ]: borderClass,
+		} );
+
+		const backgroundStyles = {
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			borderColor: borderClass ? undefined : customBorderColor,
+		};
+
+		// Title color class and styles.
+		const titleClass = getColorClass( 'color', titleColor );
+
+		const titleClasses = classnames(
+			props.className,
+			'wp-block-coblocks-alert__title', {
+			'has-text-color': titleColor || customTitleColor,
+			[ titleClass ]: titleClass,
+		} );
+
+		const titleStyles = {
+			color: titleClass ? undefined : customTitleColor,
+		};
+
+		// Text color class and styles.
+		const textClass = getColorClass( 'color', textColor );
+
+		const textClasses = classnames(
+			props.className,
+			'wp-block-coblocks-alert__text', {
+			'has-text-color': textColor || customTextColor,
+			[ textClass ]: textClass,
+		} );
+
+		const textStyles = {
+			color: textClass ? undefined : customTextColor,
+		};
+
 		return (
-			<Alert { ...props }>
+			<div
+				className={ backgroundClasses }
+				style={ backgroundStyles }
+			>
 				{ title && title.length > 0 && (
-					<div className={ 'wp-block-coblocks-alert__title' }>
-						<p style={ { color: titleColor } }>{ title }</p>
-					</div>
+					<RichText.Content
+						tagName="p"
+						className={ titleClasses }
+						value={ title }
+						style={ titleStyles }
+					/>
 				) }
 				{ value && (
-					<p className={ 'wp-block-coblocks-alert__text' } style={ { color: textColor } }>{ value }</p>
+					<RichText.Content
+						tagName="p"
+						className={ textClasses }
+						value={ value }
+						style={ textStyles }
+					/>
 				) }
-			</Alert>
+			</div>
 		);
 	},
 } );
