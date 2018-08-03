@@ -14,6 +14,16 @@ var buildDestinationFiles = './build/'+project+'/**/*';
 var sftpDemoFilesToUpload = ['./build/' + project + '/**/*', '!/build/' + project + '/src/', '!build/' + project + '/src/**/*'];
 var cleanSrcFiles	  = ['./build/'+project+'/src/'];
 
+// Translation.
+var text_domain             	= '@@textdomain';
+var destFile                	= project+'.pot';
+var packageName             	= pkg.title;
+var bugReport               	= pkg.author_uri;
+var lastTranslator          	= pkg.author;
+var team                    	= pkg.author_shop;
+var translatePath           	= './languages';
+var translatableFiles       	= ['./**/*.php'];
+
 /**
  * Load Plugins.
  */
@@ -28,6 +38,7 @@ var run                 = require('gulp-run-command').default;
 var sftp                = require("gulp-sftp");
 var open                = require("gulp-open");
 var gulpif              = require('gulp-if');
+var wpPot        = require('gulp-wp-pot');
 
 /**
  * Tasks.
@@ -130,6 +141,23 @@ gulp.task('variables', function(done) {
 	}))
 	.pipe(gulp.dest( buildDestination ));
 	done();
+});
+
+gulp.task( 'translate', function(done) {
+
+	gulp.src( translatableFiles )
+
+	.pipe( wpPot( {
+		domain        : text_domain,
+		destFile      : destFile,
+		package       : project,
+		bugReport     : bugReport,
+		lastTranslator: lastTranslator,
+		team          : team
+	} ))
+	.pipe( gulp.dest( translatePath ) )
+	done();
+
 });
 
 gulp.task('zip', function(done) {
