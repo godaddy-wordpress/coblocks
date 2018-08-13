@@ -8,6 +8,8 @@
 		form,
 		.components-placeholder__fieldset {
 			max-width: none;
+			width: auto;
+			display: block;
 
 			input {
 				max-width: 280px;
