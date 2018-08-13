@@ -82,6 +82,11 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.1.3, August 13, 2018 =
+* New: Gutenberg 3.5 compatibility! 🎊
+* Tweak: UI fix for the Gif block to support Gutenberg 3.5
+* Tweak: Minor style fixes for the Gif Block wide and full alignments
+
 = 1.1.2, August 3, 2018 =
 * New: Gutenberg 3.4 compatibility! 🎊
 * New: Add support for translations
