@@ -82,6 +82,9 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.1.4, August 16, 2018 =
+* Fix: Resolve an issue where the Author block would throw an error when the button is clicked
+
 = 1.1.3, August 13, 2018 =
 * New: Gutenberg 3.5 compatibility! 🎊
 * Tweak: UI fix for the Gif block to support Gutenberg 3.5
