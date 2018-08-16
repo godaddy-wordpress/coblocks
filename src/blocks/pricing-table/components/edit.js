@@ -16,7 +16,7 @@ import Inspector from './inspector';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText, UrlInput } = wp.editor;
+const { RichText, URLInput } = wp.editor;
 const { Dashicon, IconButton } = wp.components;
 
 /**
@@ -333,7 +333,7 @@ export default compose( Colors ) ( class Edit extends Component {
 					>
 						<Dashicon icon="admin-links" />
 						<div>
-							<UrlInput
+							<URLInput
 								value={ url }
 								onChange={ ( value ) => setAttributes( { url: value } ) }
 							/>
@@ -348,7 +348,7 @@ export default compose( Colors ) ( class Edit extends Component {
 					>
 						<Dashicon icon="admin-links" />
 						<div>
-							<UrlInput
+							<URLInput
 								value={ url_2 }
 								onChange={ ( value ) => setAttributes( { url_2: value } ) }
 							/>

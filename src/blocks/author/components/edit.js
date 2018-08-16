@@ -10,7 +10,7 @@ import Controls from './controls';
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { RichText, MediaUpload, UrlInput } = wp.editor;
+const { RichText, MediaUpload, URLInput } = wp.editor;
 const { Button, Dashicon, IconButton } = wp.components;
 const { withSelect } = wp.data;
 
@@ -168,7 +168,7 @@ export default class AuthorBlock extends Component {
 							className="core-blocks-button__inline-link"
 							onSubmit={ ( event ) => event.preventDefault() }>
 							<Dashicon icon="admin-links" />
-							<UrlInput
+							<URLInput
 								value={ buttonUrl }
 								onChange={ ( value ) => setAttributes( { buttonUrl: value } ) }
 							/>
