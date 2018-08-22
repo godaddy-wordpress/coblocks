@@ -54,7 +54,7 @@ export default compose( applyWithColors ) ( class Inspector extends Component {
 				<InspectorControls>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }
-						initialOpen={ true }
+						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.value,
