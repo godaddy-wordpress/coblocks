@@ -33,7 +33,7 @@ export default class Controls extends Component {
 
 		function styles( value ) {
 
-			setAttributes( { backgroundColor: value } )
+			setAttributes( { customBackgroundColor: value } )
 
 			if ( value == '#e2e3e5' ) {
 				setAttributes( { customTextColor: '#383d41', customTitleColor: '#383d41', customBorderColor: '#d6d8db' } )
