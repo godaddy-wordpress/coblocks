@@ -4,6 +4,7 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 import SocialBlock from './components/edit';
+import icons from './components/icons';
 
 /**
  * WordPress dependencies
@@ -21,7 +22,9 @@ registerBlockType( 'coblocks/social', {
 
 	description: __( 'Add a social sharing module.' ),
 
-	icon: 'share',
+	icon: {
+		src: icons.social,
+	},
 
 	category: 'coblocks',
 
