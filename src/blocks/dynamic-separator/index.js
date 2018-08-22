@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import './styles/editor.scss';
 import './styles/style.scss';
 import DynamicSeparatorBlock from './components/edit';
+import icons from './components/icons';
 
 /**
  * WordPress dependencies
@@ -25,7 +26,9 @@ registerBlockType( 'coblocks/dynamic-separator', {
 
 	description: __( 'Add a resizable spacer between other blocks.' ),
 
-	icon: 'minus',
+	icon: {
+		src: icons.hr,
+	},
 
 	category: 'coblocks',
 
@@ -66,6 +69,22 @@ registerBlockType( 'coblocks/dynamic-separator', {
 				type: 'block',
 				blocks: [ 'core/separator' ],
 				transform: () => createBlock( 'coblocks/dynamic-separator' ),
+			},
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: [ 'core/spacer' ],
+				transform: ( { height } ) => (
+					createBlock( 'core/spacer', { height: height } )
+				),
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/separator' ],
+				transform: () => (
+					createBlock( 'core/separator' )
+				),
 			},
 		],
 	},
