@@ -165,7 +165,7 @@ export default class AuthorBlock extends Component {
 
 					{ this.state.buttonFocused && isSelected && (
 						<form
-							className="core-blocks-button__inline-link"
+							className="block-library-button__inline-link"
 							onSubmit={ ( event ) => event.preventDefault() }>
 							<Dashicon icon="admin-links" />
 							<URLInput

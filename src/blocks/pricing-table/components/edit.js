@@ -328,7 +328,7 @@ export default compose( Colors ) ( class Edit extends Component {
 				</div>
 				{ this.state.buttonFocused && isSelected && (
 					<form
-						className="core-blocks-button__inline-link"
+						className="block-library-button__inline-link"
 						onSubmit={ ( event ) => event.preventDefault() }
 					>
 						<Dashicon icon="admin-links" />
@@ -343,7 +343,7 @@ export default compose( Colors ) ( class Edit extends Component {
 				) }
 				{ this.state.buttonFocused_2 && columns >= 2 && isSelected && (
 					<form
-						className="core-blocks-button__inline-link"
+						className="block-library-button__inline-link"
 						onSubmit={ ( event ) => event.preventDefault() }
 					>
 						<Dashicon icon="admin-links" />
