@@ -8,8 +8,7 @@ import classnames from 'classnames';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import Alert from './components/alert';
-import AlertBlock from './components/edit';
+import edit from './components/edit';
 import icons from './components/icons';
 
 /**
@@ -18,6 +17,55 @@ import icons from './components/icons';
 const { __ } = wp.i18n;
 const { registerBlockType, createBlock } = wp.blocks;
 const { RichText, getColorClass } = wp.editor;
+
+/**
+ * Block attributes
+ */
+const blockAttributes = {
+	title: {
+		type: 'string',
+		selector: '.wp-block-coblocks-alert__title',
+	},
+	value: {
+		type: 'array',
+		selector: '.wp-block-coblocks-alert__text',
+	},
+	backgroundColor: {
+		type: 'string',
+	},
+	borderColor: {
+		type: 'string',
+	},
+	textColor: {
+		type: 'string',
+	},
+	customTextColor: {
+		type: 'string',
+	},
+	customTitleColor: {
+		type: 'string',
+	},
+	customBackgroundColor: {
+		type: 'string',
+	},
+	customBorderColor: {
+		type: 'string',
+	},
+	titleColor: {
+		type: 'string',
+	},
+	align: {
+		type: 'string',
+		default: 'center',
+	},
+	textAlign: {
+		type: 'string',
+	},
+	type: {
+		type: 'string',
+		default: 'default',
+	},
+};
 
 /**
  * Block registration
@@ -40,50 +88,12 @@ registerBlockType( 'coblocks/alert', {
 		__( 'coblocks' ),
 	],
 
-	attributes: {
-		title: {
-			type: 'string',
-			selector: '.wp-block-coblocks-alert__title',
-		},
-		value: {
-			type: 'array',
-			selector: '.wp-block-coblocks-alert__text',
-		},
-		backgroundColor: {
-			type: 'string',
-		},
-		borderColor: {
-			type: 'string',
-		},
-		textColor: {
-			type: 'string',
-		},
-		customTextColor: {
-			type: 'string',
-		},
-		customTitleColor: {
-			type: 'string',
-		},
-		customBackgroundColor: {
-			type: 'string',
-		},
-		customBorderColor: {
-			type: 'string',
-		},
-		titleColor: {
-			type: 'string',
-		},
-		align: {
-			type: 'string',
-			default: 'center',
-		},
-		textAlign: {
-			type: 'string',
-		},
-		type: {
-			type: 'string',
-			default: 'default',
-		},
+	attributes: blockAttributes,
+
+	supports: {
+		align: true,
+		alignWide: false,
+		alignFull: false,
 	},
 
 	transforms: {
@@ -114,14 +124,7 @@ registerBlockType( 'coblocks/alert', {
 		],
 	},
 
-	getEditWrapperProps( attributes ) {
-		const { align } = attributes;
-		if ( 'left' === align || 'right' === align ) {
-			return { 'data-align': align };
-		}
-	},
-
-	edit: AlertBlock,
+	edit: edit,
 
 	save: function( props ) {
 
@@ -129,15 +132,15 @@ registerBlockType( 'coblocks/alert', {
 			align,
 			backgroundColor,
 			borderColor,
+			customBackgroundColor,
+			customBorderColor,
+			customTextColor,
+			customTitleColor,
 			textAlign,
 			textColor,
 			title,
-			type,
 			titleColor,
-			customTextColor,
-			customTitleColor,
-			customBorderColor,
-			customBackgroundColor,
+			type,
 			value,
 		} = props.attributes;
 
@@ -157,6 +160,7 @@ registerBlockType( 'coblocks/alert', {
 		const backgroundStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			borderColor: borderClass ? undefined : customBorderColor,
+			textAlign: textAlign,
 		};
 
 		// Title color class and styles.

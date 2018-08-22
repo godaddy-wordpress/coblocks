@@ -15,6 +15,35 @@ export default class Controls extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
+		this.styles = this.styles.bind( this );
+	}
+
+	componentDidMount() {
+
+		const { customBackgroundColor } = this.props.attributes;
+
+		if ( customBackgroundColor ) {
+			return;
+		}
+
+		this.styles( '#e2e3e5' )
+	}
+
+	styles( value ) {
+
+		this.props.setAttributes( { customBackgroundColor: value } )
+
+		if ( value == '#e2e3e5' ) {
+			this.props.setAttributes( { customTextColor: '#383d41', customTitleColor: '#383d41', customBorderColor: '#d6d8db' } )
+		} else if  ( value == '#cce5ff' ) {
+			this.props.setAttributes( { customTextColor: '#004085', customTitleColor: '#004085', customBorderColor: '#b8daff' } )
+		} else if  ( value == '#d4edda' ) {
+			this.props.setAttributes( { customTextColor: '#155724', customTitleColor: '#155724', customBorderColor: '#c3e6cb' } )
+		} else if  ( value == '#f8d7da' ) {
+			this.props.setAttributes( { customTextColor: '#721c24', customTitleColor: '#721c24', customBorderColor: '#f5c6cb' } )
+		} else if  ( value == '#fff3cd' ) {
+			this.props.setAttributes( { customTextColor: '#856404', customTitleColor: '#856404', customBorderColor: '#ffeeba' } )
+		}
 	}
 
 	render() {
@@ -30,23 +59,6 @@ export default class Controls extends Component {
 			customTextColor,
 			type,
 		} = attributes;
-
-		function styles( value ) {
-
-			setAttributes( { customBackgroundColor: value } )
-
-			if ( value == '#e2e3e5' ) {
-				setAttributes( { customTextColor: '#383d41', customTitleColor: '#383d41', customBorderColor: '#d6d8db' } )
-			} else if  ( value == '#cce5ff' ) {
-				setAttributes( { customTextColor: '#004085', customTitleColor: '#004085', customBorderColor: '#b8daff' } )
-			} else if  ( value == '#d4edda' ) {
-				setAttributes( { customTextColor: '#155724', customTitleColor: '#155724', customBorderColor: '#c3e6cb' } )
-			} else if  ( value == '#f8d7da' ) {
-				setAttributes( { customTextColor: '#721c24', customTitleColor: '#721c24', customBorderColor: '#f5c6cb' } )
-			} else if  ( value == '#fff3cd' ) {
-				setAttributes( { customTextColor: '#856404', customTitleColor: '#856404', customBorderColor: '#ffeeba' } )
-			}
-		}
 
 		function icon() {
 
@@ -73,35 +85,31 @@ export default class Controls extends Component {
 							{
 								icon: icons.alertMenu,
 								title: __( 'Default' ),
-								onClick: () => { styles( '#e2e3e5' ), setAttributes( { type: 'default' } ) },
+								onClick: () => { this.styles( '#e2e3e5' ), setAttributes( { type: 'default' } ) },
 							},
 							{
 								icon: 'info',
 								title: __( 'Info' ),
-								onClick: () => { styles( '#cce5ff' ), setAttributes( { type: 'info' } ) },
+								onClick: () => { this.styles( '#cce5ff' ), setAttributes( { type: 'info' } ) },
 							},
 							{
 								icon: icons.success,
 								title: __( 'Success' ),
-								onClick: () => { styles( '#d4edda' ), setAttributes( { type: 'success' } ) },
+								onClick: () => { this.styles( '#d4edda' ), setAttributes( { type: 'success' } ) },
 							},
 							{
 								icon: 'warning',
 								title: __( 'Warning' ),
-								onClick: () => { styles( '#fff3cd' ), setAttributes( { type: 'warning' } ) },
+								onClick: () => { this.styles( '#fff3cd' ), setAttributes( { type: 'warning' } ) },
 							},
 							{
 								icon: 'dismiss',
 								title: __( 'Error' ),
-								onClick: () => { styles( '#f8d7da' ), setAttributes( { type: 'error' } ) },
+								onClick: () => { this.styles( '#f8d7da' ), setAttributes( { type: 'error' } ) },
 							},
 						] }
 					/>
 				</Toolbar>
-				<BlockAlignmentToolbar
-					value={ align }
-					onChange={ ( nextAlign ) => setAttributes( { align: nextAlign } ) }
-				/>
 				<AlignmentToolbar
 					value={ textAlign }
 					onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }

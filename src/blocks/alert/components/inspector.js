@@ -53,8 +53,6 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 		const {
 			backgroundColor,
 			borderColor,
-			textColor,
-			titleColor,
 			fallbackBackgroundColor,
 			fallbackBorderColor,
 			fallbackTextColor,
@@ -63,13 +61,15 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 			setBorderColor,
 			setTextColor,
 			setTitleColor,
+			textColor,
+			titleColor,
 		} = this.props;
 
 		return (
 			<InspectorControls>
 				<PanelColorSettings
 					title={ __( 'Color Settings' ) }
-					initialOpen={ true }
+					initialOpen={ false }
 					colorSettings={ [
 						{
 							value: backgroundColor.value,

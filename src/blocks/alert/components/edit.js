@@ -6,7 +6,6 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import Alert from './alert';
 import Controls from './controls';
 import Inspector from './inspector';
 import Colors from './colors';
@@ -22,7 +21,7 @@ const { RichText } = wp.editor;
 /**
  * Block edit function
  */
-export default compose( Colors ) ( class AlertBlock extends Component {
+export default compose( Colors ) ( class edit extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -51,8 +50,8 @@ export default compose( Colors ) ( class AlertBlock extends Component {
 			align,
 			textAlign,
 			title,
-			value,
 			type,
+			value,
 		} = attributes;
 
 		return [
@@ -85,7 +84,7 @@ export default compose( Colors ) ( class AlertBlock extends Component {
 				{ ( ( title && title.length > 0 ) || isSelected ) && (
 					<RichText
 						tagName="p"
-						placeholder={ __( 'Add title...' ) }
+						placeholder={ __( 'Write title...' ) }
 						value={ title }
 						className={ classnames(
 							`${ className }__title`, {
