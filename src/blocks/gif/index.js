@@ -1,15 +1,10 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-import ResizableBox from 're-resizable';
-
-/**
  * Internal dependencies
  */
 import './styles/editor.scss';
 import './styles/style.scss';
 import GifBlock from './components/edit';
+import icons from './components/icons';
 
 /**
  * WordPress dependencies
@@ -27,13 +22,15 @@ registerBlockType( 'coblocks/gif', {
 
 	description: __( 'Pick a gif, any gif.' ),
 
-	icon: 'format-image',
+	icon: {
+		src: icons.gif,
+	},
 
 	category: 'coblocks',
 
 	keywords: [
 		__( 'gif' ),
-		__( 'giphy' ),
+		__( 'image' ),
 		__( 'coblocks' ),
 	],
 

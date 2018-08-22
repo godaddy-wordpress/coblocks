@@ -202,7 +202,7 @@ export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: '
 			return [
 				<Placeholder
 					key="placeholder"
-					icon="format-image"
+					icon={ icons.gif }
 					label={ __( 'Gif' ) }
 					instructions={ __( 'Search for that perfect gif on Giphy' ) }
 					className={ className }>
@@ -211,7 +211,7 @@ export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: '
 						<input
 							key="search-field"
 							type="text"
-							placeholder={ __( 'Search for gifs here…' ) }
+							placeholder={ __( 'Search for gifs' ) }
 							onChange={ ( event ) => fetchGifs( event.target.value ) }
 						/>
 						<ul
