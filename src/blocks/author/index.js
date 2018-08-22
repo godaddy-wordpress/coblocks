@@ -5,6 +5,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import Author from './components/author';
 import AuthorBlock from './components/edit';
+import icons from './components/icons';
 
 /**
  * WordPress dependencies
@@ -22,7 +23,9 @@ registerBlockType( 'coblocks/author', {
 
 	description: __( 'Add an author biography.' ),
 
-	icon: 'admin-users',
+	icon: {
+		src: icons.author,
+	},
 
 	category: 'coblocks',
 
