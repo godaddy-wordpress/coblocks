@@ -1,5 +1,13 @@
 .editor-block-list__block[data-type="coblocks/gif"] {
 
+	.components-placeholder.wp-block-coblocks-gif {
+
+		.dashicon {
+			position: relative;
+			top: -2px;
+		}
+	}
+
 	.wp-block-coblocks-gif {
 		margin: 0;
 		padding: 50px 0;
@@ -12,7 +20,7 @@
 			display: block;
 
 			input {
-				max-width: 280px;
+				max-width: 300px;
 			}
 		}
 
@@ -24,7 +32,6 @@
 			align-content: stretch;
 			list-style: none;
 			line-height: 1;
-			margin-top: 1.5em;
 			max-width: 430px;
 
 			li {
@@ -36,7 +43,15 @@
 				height: 86px;
 				overflow: hidden;
 				position: relative;
-				border-radius: 3px;
+				border-radius: 4px;
+
+				&:nth-child(1),
+				&:nth-child(2),
+				&:nth-child(3),
+				&:nth-child(4),
+				&:nth-child(5) {
+					margin-top: 1.5em;
+				}
 
 				img {
 					border-radius: 3px;
