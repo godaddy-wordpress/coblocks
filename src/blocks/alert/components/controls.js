@@ -27,6 +27,8 @@ export default class Controls extends Component {
 		const {
 			align,
 			textAlign,
+			customTextColor,
+			type,
 		} = attributes;
 
 		function styles( value ) {
@@ -46,36 +48,52 @@ export default class Controls extends Component {
 			}
 		}
 
+		function icon() {
+
+			if ( type == 'default' ) {
+				return icons.alertMenu;
+			} else if  ( type == 'info' ) {
+				return 'info';
+			} else if  ( type == 'success' ) {
+				return icons.success;
+			} else if  ( type == 'warning' ) {
+				return 'warning';
+			} else if  ( type == 'error' ) {
+				return 'dismiss';
+			}
+		}
+
 		return (
 			<BlockControls key="controls">
 				<Toolbar>
 					<DropdownMenu
+						icon= { icon() }
 						label={ __( 'Alert Type' ) }
 						controls={ [
 							{
 								icon: icons.alertMenu,
 								title: __( 'Default' ),
-								onClick: () => { styles( '#e2e3e5' ) }, // Gray.
+								onClick: () => { styles( '#e2e3e5' ), setAttributes( { type: 'default' } ) },
 							},
 							{
 								icon: 'info',
 								title: __( 'Info' ),
-								onClick: () => { styles( '#cce5ff' ) }, // Blue.
+								onClick: () => { styles( '#cce5ff' ), setAttributes( { type: 'info' } ) },
 							},
 							{
 								icon: icons.success,
 								title: __( 'Success' ),
-								onClick: () => { styles( '#d4edda' ) }, // Green.
+								onClick: () => { styles( '#d4edda' ), setAttributes( { type: 'success' } ) },
 							},
 							{
 								icon: 'warning',
 								title: __( 'Warning' ),
-								onClick: () => { styles( '#fff3cd' ) }, // Yellow.
+								onClick: () => { styles( '#fff3cd' ), setAttributes( { type: 'warning' } ) },
 							},
 							{
 								icon: 'dismiss',
 								title: __( 'Error' ),
-								onClick: () => { styles( '#f8d7da' ) }, // Red.
+								onClick: () => { styles( '#f8d7da' ), setAttributes( { type: 'error' } ) },
 							},
 						] }
 					/>
