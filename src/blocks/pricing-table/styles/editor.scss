@@ -14,19 +14,19 @@
 
 	.components-toolbar__control.components-button[data-subscript]::after {
 		font-size: 17px;
-		right: 14px;
-		bottom: 8px;
+		right: 13px;
+		bottom: 0.68em;
 	}
 
 	.components-toolbar__control.components-button[data-subscript="1"]::after {
-		right: 15px;
+		right: 14px;
 	}
 
 	.wp-block-button__link {
 		line-height: 26px;
 	}
 
-	.core-blocks-button__inline-link {
+	.block-library-button__inline-link {
 		width: 100%;
 		margin-top: 14px;
 
@@ -44,11 +44,11 @@
 
 	.components-toolbar__control.components-button[data-subscript]::after {
 		font-size: 17px;
-		right: 14px;
-		bottom: 8px;
+		right: 13px;
+		bottom: 0.68em;
 	}
 
 	.components-toolbar__control.components-button[data-subscript="1"]::after {
-		right: 15px;
+		right: 14px;
 	}
 }
