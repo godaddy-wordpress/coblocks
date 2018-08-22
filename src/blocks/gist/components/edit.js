@@ -115,7 +115,7 @@ export default withState( { preview: false } ) ( class GistBlock extends Compone
 					<PlainText
 						className="input-control"
 						value={ url }
-						placeholder={ __( 'Add GitHub Gist URL here…' ) }
+						placeholder={ __( 'Add GitHub Gist URL...' ) }
 						onChange={ this.updateURL }
 					/>
 				</div>
