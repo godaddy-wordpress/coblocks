@@ -4,6 +4,7 @@
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { BlockControls, BlockAlignmentToolbar } = wp.editor;
+const { Toolbar, IconButton } = wp.components;
 
 export default class Controls extends Component {
 
@@ -26,7 +27,10 @@ export default class Controls extends Component {
 			setAttributes
 		} = this.props;
 
-		const { align } = attributes;
+		const {
+			align,
+			url,
+		} = attributes;
 
 		return (
 			<BlockControls key="controls">
@@ -34,6 +38,16 @@ export default class Controls extends Component {
 					value={ align }
 					onChange={ this.updateAlignment }
 				/>
+				<Toolbar>
+					{ url &&
+						<IconButton
+							className="components-toolbar__control"
+							label={ __( 'Remove gif' ) }
+							icon="trash"
+							onClick={ () => setAttributes( { url: '', width: '', height: '', } ) }
+						/>
+					}
+				</Toolbar>
 			</BlockControls>
 		);
 	}
