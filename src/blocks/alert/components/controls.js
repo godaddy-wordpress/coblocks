@@ -63,15 +63,15 @@ export default class Controls extends Component {
 		function icon() {
 
 			if ( type == 'default' ) {
-				return icons.alertMenu;
+				return icons.alertFilled;
 			} else if  ( type == 'info' ) {
-				return 'info';
+				return icons.info;
 			} else if  ( type == 'success' ) {
 				return icons.success;
 			} else if  ( type == 'warning' ) {
-				return 'warning';
+				return icons.warning;
 			} else if  ( type == 'error' ) {
-				return 'dismiss';
+				return icons.error;
 			}
 		}
 
@@ -83,12 +83,12 @@ export default class Controls extends Component {
 						label={ __( 'Alert Type' ) }
 						controls={ [
 							{
-								icon: icons.alertMenu,
+								icon: icons.alertFilled,
 								title: __( 'Default' ),
 								onClick: () => { this.styles( '#e2e3e5' ), setAttributes( { type: 'default' } ) },
 							},
 							{
-								icon: 'info',
+								icon: icons.info,
 								title: __( 'Info' ),
 								onClick: () => { this.styles( '#cce5ff' ), setAttributes( { type: 'info' } ) },
 							},
@@ -98,12 +98,12 @@ export default class Controls extends Component {
 								onClick: () => { this.styles( '#d4edda' ), setAttributes( { type: 'success' } ) },
 							},
 							{
-								icon: 'warning',
+								icon: icons.warning,
 								title: __( 'Warning' ),
 								onClick: () => { this.styles( '#fff3cd' ), setAttributes( { type: 'warning' } ) },
 							},
 							{
-								icon: 'dismiss',
+								icon: icons.error,
 								title: __( 'Error' ),
 								onClick: () => { this.styles( '#f8d7da' ), setAttributes( { type: 'error' } ) },
 							},
