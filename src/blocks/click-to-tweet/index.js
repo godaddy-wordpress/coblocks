@@ -31,7 +31,9 @@ registerBlockType( 'coblocks/click-to-tweet', {
 
 	description: __( 'Add a quote for readers to tweet via Twitter.' ),
 
-	icon: 'twitter',
+	icon: {
+		src: icons.twitter,
+	},
 
 	category: 'coblocks',
 
