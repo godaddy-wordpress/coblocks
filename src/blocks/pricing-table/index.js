@@ -22,7 +22,9 @@ registerBlockType( 'coblocks/pricing-table', {
 
 	description: __( 'Add pricing tables.' ),
 
-	icon: 'editor-table',
+	icon: {
+		src: icons.pricing,
+	},
 
 	category: 'coblocks',
 
