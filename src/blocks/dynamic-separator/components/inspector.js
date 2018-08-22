@@ -51,7 +51,7 @@ export default class Inspector extends Component {
 
 		return (
 			<InspectorControls key="inspector">
-				<PanelBody title={ __( 'Dynamic Separator Settings' ) }>
+				<PanelBody title={ __( 'Dynamic HR Settings' ) }>
 					<BaseControl label={ __( 'Height in pixels' ) }>
 						<input
 							type="number"

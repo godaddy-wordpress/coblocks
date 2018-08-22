@@ -9,19 +9,11 @@
 	}
 
 	&.is-selected .editor-block-list__block-edit {
-		outline: 1px dotted $lightgray;
+		background: #f3f4f5;
 
-		.core-blocks-spacer__resize-handler-top,
-		.core-blocks-spacer__resize-handler-bottom {
+		.block-library-spacer__resize-handler-bottom {
 			display: block;
-		}
-
-		.core-blocks-spacer__resize-handler-bottom {
-			margin-bottom: -4px;
-		}
-
-		.core-blocks-spacer__resize-handler-top {
-			margin-top: -4px;
+			margin-bottom: -2px;
 		}
 	}
 }

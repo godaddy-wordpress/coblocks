@@ -71,11 +71,10 @@ export default class DynamicSeparatorBlock extends Component {
 				} }
 				minHeight="20"
 				handleClasses={ {
-					top: 'core-blocks-spacer__resize-handler-top',
-					bottom: 'core-blocks-spacer__resize-handler-bottom',
+					bottom: 'block-library-spacer__resize-handler-bottom',
 				} }
 				enable={ {
-					top: true,
+					top: false,
 					right: false,
 					bottom: true,
 					left: false,
