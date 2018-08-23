@@ -82,6 +82,14 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.1.5, August 23, 2018 =
+* New: Gutenberg 3.6.2 compatibility! 🎊
+* New: Add a "Delete Gif" control to the Gif block
+* New: Refactor the Alert block
+* Tweak: Adjust UI for Gutenberg 3.6+
+* Tweak: Update block icons to fit in better with the new icons in core Gutenberg
+* Tweak: Fix the Dynamic HR block rendering to resemble the core spacer block
+
 = 1.1.4, August 16, 2018 =
 * Fix: Resolve an issue where the Author block would throw an error when the button is clicked
 
