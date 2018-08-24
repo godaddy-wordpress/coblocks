@@ -108,7 +108,11 @@ class CoBlocks {
 	 */
 	private function includes() {
 		require_once $this->_dir . 'includes/class-coblocks-block-category.php';
-		require_once $this->_dir . 'includes/class-coblocks-notices.php';
+
+		if ( is_admin() ) {
+			require_once $this->_dir . 'includes/class-coblocks-notices.php';
+			require_once $this->_dir . 'includes/class-coblocks-feedback.php';
+		}
 	}
 
 	/**
