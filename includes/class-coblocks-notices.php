@@ -44,7 +44,7 @@ class CoBlocks_Notices {
 	 * @return void
 	 */
 	public function __construct() {
-		add_action( 'plugins_loaded', array( $this, 'theme_notice' ) );
+		add_action( 'plugins_loaded', array( $this, 'notices' ) );
 	}
 
 	/**
@@ -67,7 +67,7 @@ class CoBlocks_Notices {
 	 */
 	public function notices() {
 		add_action( 'admin_init', array( 'PAnD', 'init' ) );
-		add_action( 'admin_notices', array( $this, 'notice' ) );
+		add_action( 'admin_notices', array( $this, 'theme_notice' ) );
 	}
 
 	/**
@@ -84,6 +84,13 @@ class CoBlocks_Notices {
 
 		// Return if the CoBlocks theme is activated.
 		if ( array_key_exists( 'coblocks', wp_get_themes() ) && function_exists( 'coblocks_setup' ) ) {
+			return;
+		}
+
+		// Only display on the dashboard and plugins pages.
+		$screen = get_current_screen();
+
+		if ( isset( $screen->base ) && 'themes' !== $screen->base && 'plugins' !== $screen->base && 'dashboard' !== $screen->base ) {
 			return;
 		}
 
