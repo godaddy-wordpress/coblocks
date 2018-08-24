@@ -82,8 +82,9 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
-= 1.1.6, August XX, 2018 =
+= 1.1.6, August 24, 2018 =
 * New: Add a notice to install or activate the companion CoBlocks WordPress theme
+* New: Add a feedback request to display after a week
 
 = 1.1.5, August 23, 2018 =
 * New: Gutenberg 3.6.2 compatibility! 🎊
