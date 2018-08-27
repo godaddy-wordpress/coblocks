@@ -2,8 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import pickBy from 'lodash/pickBy';
-import isUndefined from 'lodash/isUndefined';
 
 /**
  * Internal dependencies
