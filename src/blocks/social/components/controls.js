@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { BlockControls, BlockAlignmentToolbar } = wp.editor;
 
 export default class Controls extends Component {
@@ -21,13 +21,15 @@ export default class Controls extends Component {
 		const { align } = attributes;
 
 		return (
-			<BlockControls key="controls">
-				<BlockAlignmentToolbar
-					value={ align }
-					onChange={ ( nextAlign ) => setAttributes( { align: nextAlign } ) }
-					controls={ [ 'left', 'center', 'right' ] }
-				/>
-			</BlockControls>
+			<Fragment>
+				<BlockControls>
+					<BlockAlignmentToolbar
+						value={ align }
+						onChange={ ( nextAlign ) => setAttributes( { align: nextAlign } ) }
+						controls={ [ 'left', 'center', 'right' ] }
+					/>
+				</BlockControls>
+			</Fragment>
 		);
 	}
 }

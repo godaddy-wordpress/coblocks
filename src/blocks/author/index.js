@@ -80,15 +80,14 @@ registerBlockType( 'coblocks/author', {
 			buttonText,
 			buttonUrl,
 			heading,
-			name,
 			imgUrl,
+			name,
 			textAlign,
 		} = props.attributes;
 
 		if ( name ) {
 			return (
 				<Author { ...props }>
-
 					{ imgUrl && (
 						<div className={ 'wp-block-coblocks-author__avatar' }>
 							<img
@@ -98,9 +97,7 @@ registerBlockType( 'coblocks/author', {
 							/>
 						</div>
 					) }
-
 					<div className={ 'wp-block-coblocks-author__content' }>
-
 						{ heading && heading.length > 0 && (
 							<div className={ 'wp-block-coblocks-author__content-heading' }>
 								<RichText.Content
@@ -109,7 +106,6 @@ registerBlockType( 'coblocks/author', {
 								/>
 							</div>
 						) }
-
 						{ name && name.length > 0 && (
 							<div className={ 'wp-block-coblocks-author__content-name' }>
 								<RichText.Content
@@ -118,7 +114,6 @@ registerBlockType( 'coblocks/author', {
 								/>
 							</div>
 						) }
-
 						{ biography && biography.length > 0 && (
 							<div className={ 'wp-block-coblocks-author__content-biography' }>
 								<RichText.Content
@@ -127,7 +122,6 @@ registerBlockType( 'coblocks/author', {
 								/>
 							</div>
 						) }
-
 						{ buttonText && buttonText.length > 0 && (
 							<RichText.Content
 								tagName="a"
@@ -136,13 +130,10 @@ registerBlockType( 'coblocks/author', {
 								href={ buttonUrl }
 							/>
 						) }
-
 					</div>
-
 				</Author>
 			);
 		}
-
 		return null;
 	},
 } );

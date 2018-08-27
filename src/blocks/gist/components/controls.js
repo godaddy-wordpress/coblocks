@@ -7,9 +7,9 @@ import icons from './icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { BlockControls } = wp.editor;
-const { Toolbar, IconButton, TextControl } = wp.components;
+const { Toolbar, IconButton } = wp.components;
 
 export default class Controls extends Component {
 
@@ -42,51 +42,50 @@ export default class Controls extends Component {
 		];
 
 		return [
-			<BlockControls key="controls">
-				<Toolbar>
-					{ preview ? (
-						<IconButton
-							className="components-icon-button components-toolbar__control"
-							label={ __( 'Edit Gist' ) }
-							onClick={ () => setState( { preview: false } ) }
-							icon="edit"
-						/>
-					) : (
-						<IconButton
-							className="components-icon-button components-toolbar__control"
-							label={ __( 'View Gist' ) }
-							onClick={ () => setState( { preview: true } ) }
-							icon="welcome-view-site"
-						/>
-					) }
-				</Toolbar>
-
-				{ preview ? (
-					<Toolbar controls={ customControls } />
-				) : (
+			<Fragment>
+				<BlockControls>
 					<Toolbar>
-						<label
-							aria-label={ __( 'GitHub File' ) }
-							className={ `${ className }__file-label` }
-							htmlFor={ `${ className }__file` }
-						>
-							{ icons.file }
-						</label>
-						<input
-							aria-label={ __( 'GitHub File' ) }
-							className={ `${ className }__file` }
-							id={ `${ className }__file` }
-							onChange={ ( event ) => setAttributes( { file: event.target.value } ) }
-							placeholder={ __( 'File' ) }
-							type="text"
-							value={ file }
-						/>
+						{ preview ? (
+							<IconButton
+								className="components-icon-button components-toolbar__control"
+								label={ __( 'Edit Gist' ) }
+								onClick={ () => setState( { preview: false } ) }
+								icon="edit"
+							/>
+						) : (
+							<IconButton
+								className="components-icon-button components-toolbar__control"
+								label={ __( 'View Gist' ) }
+								onClick={ () => setState( { preview: true } ) }
+								icon="welcome-view-site"
+							/>
+						) }
 					</Toolbar>
-				) }
 
-
-
-			</BlockControls>
+					{ preview ? (
+						<Toolbar controls={ customControls } />
+					) : (
+						<Toolbar>
+							<label
+								aria-label={ __( 'GitHub File' ) }
+								className={ `${ className }__file-label` }
+								htmlFor={ `${ className }__file` }
+							>
+								{ icons.file }
+							</label>
+							<input
+								aria-label={ __( 'GitHub File' ) }
+								className={ `${ className }__file` }
+								id={ `${ className }__file` }
+								onChange={ ( event ) => setAttributes( { file: event.target.value } ) }
+								placeholder={ __( 'File' ) }
+								type="text"
+								value={ file }
+							/>
+						</Toolbar>
+					) }
+				</BlockControls>
+			</Fragment>
 		];
 	}
 }

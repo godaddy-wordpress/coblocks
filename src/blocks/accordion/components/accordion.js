@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 export default class Accordion extends Component {
 
@@ -24,19 +24,21 @@ export default class Accordion extends Component {
 		const { title, content, open, titleBackgroundColor, backgroundColor, textColor, textAlign } = attributes;
 
 		return (
-			<div
-				style={ {
-					backgroundColor: backgroundColor,
-					textAlign: textAlign,
-					color: textColor,
-				} }
-				className={ classnames(
-					className,
-					open ? `${ className }--open` : null,
-				) }
-			>
-				{ this.props.children }
-			</div>
+			<Fragment>
+				<div
+					style={ {
+						backgroundColor: backgroundColor,
+						textAlign: textAlign,
+						color: textColor,
+					} }
+					className={ classnames(
+						className,
+						open ? `${ className }--open` : null,
+					) }
+				>
+					{ this.props.children }
+				</div>
+			</Fragment>
 		);
 	}
 }

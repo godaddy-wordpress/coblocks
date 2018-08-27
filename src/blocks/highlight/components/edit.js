@@ -15,7 +15,7 @@ import Inspector from './inspector';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { RichText } = wp.editor;
 
@@ -46,39 +46,41 @@ export default compose( applyWithColors ) ( class HighlighterBlock extends Compo
 		} = attributes;
 
 		return [
-			isSelected && (
-				<Controls
-					{ ...this.props }
-				/>
-			),
-			isSelected && (
-				<Inspector
-					{ ...this.props }
-				/>
-			),
-			<Highlighter { ...this.props }>
+			<Fragment>
+				{ isSelected && (
+					<Controls
+						{ ...this.props }
+					/>
+				) }
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
+				<Highlighter { ...this.props }>
 
-				<RichText
-					tagName="mark"
-					placeholder={ __( 'Add highlighted text...' ) }
-					value={ content }
-					onChange={ ( value ) => setAttributes( { content: value } ) }
-					className={ classnames(
-						`${ className }__content`, {
-							'has-background': backgroundColor.value,
-							[ backgroundColor.class ]: backgroundColor.class,
-							'has-text-color': textColor.value,
-							[ textColor.class ]: textColor.class,
-						}
-					) }
-					style={ {
-							backgroundColor: backgroundColor.value,
-							color: textColor.value,
-						} }
-					keepPlaceholderOnFocus
-				/>
+					<RichText
+						tagName="mark"
+						placeholder={ __( 'Add highlighted text...' ) }
+						value={ content }
+						onChange={ ( value ) => setAttributes( { content: value } ) }
+						className={ classnames(
+							`${ className }__content`, {
+								'has-background': backgroundColor.value,
+								[ backgroundColor.class ]: backgroundColor.class,
+								'has-text-color': textColor.value,
+								[ textColor.class ]: textColor.class,
+							}
+						) }
+						style={ {
+								backgroundColor: backgroundColor.value,
+								color: textColor.value,
+							} }
+						keepPlaceholderOnFocus
+					/>
 
-			</Highlighter>
+				</Highlighter>
+			</Fragment>
 		];
 	}
 } );

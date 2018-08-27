@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 export default class Highlighter extends Component {
 
@@ -21,14 +21,16 @@ export default class Highlighter extends Component {
 		} = attributes;
 
 		return (
-			<p
-				className={ className }
-				style={ {
-					textAlign: align,
-				} }
-			>
-				{ this.props.children }
-			</p>
+			<Fragment>
+				<p
+					className={ className }
+					style={ {
+						textAlign: align,
+					} }
+				>
+					{ this.props.children }
+				</p>
+			</Fragment>
 		);
 	}
 }

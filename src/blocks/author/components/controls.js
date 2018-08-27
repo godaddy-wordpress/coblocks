@@ -29,7 +29,7 @@ export default class Controls extends Component {
 
 		return (
 			<Fragment>
-				<BlockControls key="controls">
+				<BlockControls>
 					<AlignmentToolbar
 						value={ textAlign }
 						onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }

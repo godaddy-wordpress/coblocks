@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 export default class ClickToTweet extends Component {
 
@@ -26,16 +26,18 @@ export default class ClickToTweet extends Component {
 		} = attributes;
 
 		return (
-			<blockquote
-				className={ classnames(
-					className,
-				) }
-				style={ {
-					textAlign: textAlign,
-				} }
-			>
-				{ this.props.children }
-			</blockquote>
+			<Fragment>
+				<blockquote
+					className={ classnames(
+						className,
+					) }
+					style={ {
+						textAlign: textAlign,
+					} }
+				>
+					{ this.props.children }
+				</blockquote>
+			</Fragment>
 		);
 	}
 }

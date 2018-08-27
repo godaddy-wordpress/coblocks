@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { InspectorControls, ColorPalette } = wp.editor;
 const { PanelBody, BaseControl, SelectControl, PanelColor } = wp.components;
 
@@ -50,36 +50,38 @@ export default class Inspector extends Component {
 		];
 
 		return (
-			<InspectorControls key="inspector">
-				<PanelBody title={ __( 'Dynamic HR Settings' ) }>
-					<BaseControl label={ __( 'Height in pixels' ) }>
-						<input
-							type="number"
-							onChange={ ( event ) => {
-								setAttributes( {
-									height: parseInt( event.target.value, 10 ),
-								} );
-							} }
-							aria-label={ __( 'Height for the dynamic separator element in pixels.' ) }
-							value={ height }
-							min="20"
-							step="10"
+			<Fragment>
+				<InspectorControls>
+					<PanelBody title={ __( 'Dynamic HR Settings' ) }>
+						<BaseControl label={ __( 'Height in pixels' ) }>
+							<input
+								type="number"
+								onChange={ ( event ) => {
+									setAttributes( {
+										height: parseInt( event.target.value, 10 ),
+									} );
+								} }
+								aria-label={ __( 'Height for the dynamic separator element in pixels.' ) }
+								value={ height }
+								min="20"
+								step="10"
+							/>
+						</BaseControl>
+						<SelectControl
+							label={ __( 'Style' ) }
+							value={ style }
+							onChange={ this.updateStyle }
+							options={ styleOptions }
 						/>
-					</BaseControl>
-					<SelectControl
-						label={ __( 'Style' ) }
-						value={ style }
-						onChange={ this.updateStyle }
-						options={ styleOptions }
-					/>
-				</PanelBody>
-				<PanelColor title={ __( 'Color' ) } colorValue={ color }>
-					<ColorPalette
-						value={ color }
-						onChange={ this.updateColor }
-					/>
-				</PanelColor>
-			</InspectorControls>
+					</PanelBody>
+					<PanelColor title={ __( 'Color' ) } colorValue={ color }>
+						<ColorPalette
+							value={ color }
+							onChange={ this.updateColor }
+						/>
+					</PanelColor>
+				</InspectorControls>
+			</Fragment>
 		);
 	}
 }

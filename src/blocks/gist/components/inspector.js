@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { InspectorControls } = wp.editor;
 const { PanelBody, TextControl, ToggleControl } = wp.components;
 
@@ -39,25 +39,27 @@ export default class Inspector extends Component {
 		} = attributes;
 
 		return (
-			<InspectorControls key="inspector">
-				<PanelBody title={ __( 'Gist Settings' ) }>
-					<TextControl
-						label={ __( 'Gist URL' ) }
-						value={ url }
-						onChange={ this.updateURL }
-					/>
-					<TextControl
-						label={ __( 'Gist File' ) }
-						value={ file }
-						onChange={ this.updateFile }
-					/>
-					<ToggleControl
-						label={ __( 'Gist Meta' ) }
-						checked={ !! meta }
-						onChange={ () => setAttributes( {  meta: ! meta } ) }
-					/>
-				</PanelBody>
-			</InspectorControls>
+			<Fragment>
+				<InspectorControls>
+					<PanelBody title={ __( 'Gist Settings' ) }>
+						<TextControl
+							label={ __( 'Gist URL' ) }
+							value={ url }
+							onChange={ this.updateURL }
+						/>
+						<TextControl
+							label={ __( 'Gist File' ) }
+							value={ file }
+							onChange={ this.updateFile }
+						/>
+						<ToggleControl
+							label={ __( 'Gist Meta' ) }
+							checked={ !! meta }
+							onChange={ () => setAttributes( {  meta: ! meta } ) }
+						/>
+					</PanelBody>
+				</InspectorControls>
+			</Fragment>
 		);
 	}
 }

@@ -13,7 +13,7 @@ import Inspector from './inspector';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 /**
  * Block edit function
@@ -58,42 +58,44 @@ export default class DynamicSeparatorBlock extends Component {
 		);
 
 		return [
-			isSelected && (
-				<Inspector
-					{ ...this.props }
-				/>
-			),
-			<ResizableBox
-				className={ classes }
-				style={ { color: this.defaultSeparatorColor( this.props.attributes ) } }
-				size={ {
-					height,
-				} }
-				minHeight="20"
-				handleClasses={ {
-					bottom: 'block-library-spacer__resize-handler-bottom',
-				} }
-				enable={ {
-					top: false,
-					right: false,
-					bottom: true,
-					left: false,
-					topRight: false,
-					bottomRight: false,
-					bottomLeft: false,
-					topLeft: false,
-				} }
-				onResizeStop={ ( event, direction, elt, delta ) => {
-					setAttributes( {
-						height: parseInt( height + delta.height, 10 ),
-					} );
-					toggleSelection( true );
-				} }
-				onResizeStart={ () => {
-					toggleSelection( false );
-				} }
-			>
-			</ResizableBox>
+			<Fragment>
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
+				<ResizableBox
+					className={ classes }
+					style={ { color: this.defaultSeparatorColor( this.props.attributes ) } }
+					size={ {
+						height,
+					} }
+					minHeight="20"
+					handleClasses={ {
+						bottom: 'block-library-spacer__resize-handler-bottom',
+					} }
+					enable={ {
+						top: false,
+						right: false,
+						bottom: true,
+						left: false,
+						topRight: false,
+						bottomRight: false,
+						bottomLeft: false,
+						topLeft: false,
+					} }
+					onResizeStop={ ( event, direction, elt, delta ) => {
+						setAttributes( {
+							height: parseInt( height + delta.height, 10 ),
+						} );
+						toggleSelection( true );
+					} }
+					onResizeStart={ () => {
+						toggleSelection( false );
+					} }
+				>
+				</ResizableBox>
+			</Fragment>
 		];
 	}
 }

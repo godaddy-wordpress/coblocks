@@ -15,10 +15,10 @@ import FONT_SIZES from './font-sizes';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, BlockAlignmentToolbar, PanelColor, ContrastChecker, PanelColorSettings, } = wp.editor;
-const { PanelBody, ToggleControl, RangeControl, FontSizePicker, withFallbackStyles } = wp.components;
+const { InspectorControls, ContrastChecker, PanelColorSettings, } = wp.editor;
+const { PanelBody, FontSizePicker, withFallbackStyles } = wp.components;
 
 /**
  * Contrast checker
@@ -99,41 +99,43 @@ export default compose( applyWithColors, FallbackStyles ) ( class Inspector exte
 		const fontSize = this.getFontSize();
 
 		return (
-			<InspectorControls>
-				<PanelBody title={ __( 'Text Settings' ) } className="blocks-font-size">
-					<FontSizePicker
-						fontSizes={ FONT_SIZES }
-						fallbackFontSize={ fallbackFontSize }
-						value={ fontSize }
-						onChange={ this.setFontSize }
-					/>
-				</PanelBody>
-				<PanelColorSettings
-					title={ __( 'Color Settings' ) }
-					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: textColor.value,
-							onChange: setTextColor,
-							label: __( 'Text Color' ),
-						},
-						{
-							value: buttonColor.value,
-							onChange: setButtonColor,
-							label: __( 'Button Color' ),
-						},
-					] }
-				>
-					<ContrastChecker
-						{ ...{
-							textColor: '#ffffff',
-							backgroundColor: buttonColor.value,
-							fallbackButtonColor,
-							fallbackTextColor,
-						} }
-					/>
-				</PanelColorSettings>
-			</InspectorControls>
+			<Fragment>
+				<InspectorControls>
+					<PanelBody title={ __( 'Text Settings' ) } className="blocks-font-size">
+						<FontSizePicker
+							fontSizes={ FONT_SIZES }
+							fallbackFontSize={ fallbackFontSize }
+							value={ fontSize }
+							onChange={ this.setFontSize }
+						/>
+					</PanelBody>
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: textColor.value,
+								onChange: setTextColor,
+								label: __( 'Text Color' ),
+							},
+							{
+								value: buttonColor.value,
+								onChange: setButtonColor,
+								label: __( 'Button Color' ),
+							},
+						] }
+					>
+						<ContrastChecker
+							{ ...{
+								textColor: '#ffffff',
+								backgroundColor: buttonColor.value,
+								fallbackButtonColor,
+								fallbackTextColor,
+							} }
+						/>
+					</PanelColorSettings>
+				</InspectorControls>
+			</Fragment>
 		);
 	}
 } );

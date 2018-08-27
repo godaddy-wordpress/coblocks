@@ -15,15 +15,13 @@ import Gist from './gist';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { PlainText } = wp.editor;
 const { withState } = wp.compose;
 
 /**
  * Block edit function
  */
-
- //
 export default withState( { preview: false } ) ( class GistBlock extends Component {
 
 	constructor() {
@@ -75,51 +73,51 @@ export default withState( { preview: false } ) ( class GistBlock extends Compone
 		} = attributes;
 
 		return [
-			// Only show inspector controls if selected.
-			isSelected && (
-				<Inspector
-					{ ...this.props }
-				/>
-			),
-			// Only show block controls if there's an ID.
-			( url && url.length > 0 && isSelected ) && (
-				<Controls
-					{ ...this.props }
-				/>
-			),
-			preview ? (
-				url && (
+			<Fragment>
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
+				{ ( url && url.length > 0 && isSelected ) && (
+					<Controls
+						{ ...this.props }
+					/>
+				) }
+				{ preview ? (
+					url && (
+						<div
+							className={ classnames(
+								className,
+								meta ? null : `${ className }--no-meta`,
+							) }
+						>
+							<Gist
+								url={ url }
+								file={ file }
+							/>
+						</div>
+					)
+				) : (
 					<div
 						className={ classnames(
 							className,
-							meta ? null : `${ className }--no-meta`,
+							'wp-block-shortcode',
 						) }
 					>
-						<Gist
-							url={ url }
-							file={ file }
+						<label>
+							{ icons.github }
+							{ __( 'Gist URL' ) }
+						</label>
+						<PlainText
+							className="input-control"
+							value={ url }
+							placeholder={ __( 'Add GitHub Gist URL...' ) }
+							onChange={ this.updateURL }
 						/>
 					</div>
-				)
-			) : (
-				<div
-					className={ classnames(
-						className,
-						'wp-block-shortcode',
-					) }
-				>
-					<label>
-						{ icons.github }
-						{ __( 'Gist URL' ) }
-					</label>
-					<PlainText
-						className="input-control"
-						value={ url }
-						placeholder={ __( 'Add GitHub Gist URL...' ) }
-						onChange={ this.updateURL }
-					/>
-				</div>
-			)
+				) }
+			</Fragment>
 		];
 	}
 } );

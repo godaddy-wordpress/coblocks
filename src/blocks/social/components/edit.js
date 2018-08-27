@@ -8,7 +8,7 @@ import Inspector from './inspector';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 /**
  * Block edit function
@@ -48,59 +48,61 @@ export default class SocialBlock extends Component {
 		};
 
 		return [
-			isSelected && (
-				<Controls
-					{ ...this.props }
-				/>
-			),
-			isSelected && (
-				<Inspector
-					{ ...this.props }
-				/>
-			),
-			<div className={ className } style={ { textAlign: align } }>
-				<p>
-					{ twitter &&
-						<a className={ 'wp-block-coblocks-social__button button--twitter icon--coblocks' } style={ iconStyle }>
-							<span className={ 'screen-reader-text' }>
-								{ __( 'Share on Twitter' ) }
-							</span>
-						</a>
-					}
+			<Fragment>
+				{ isSelected && (
+					<Controls
+						{ ...this.props }
+					/>
+				) }
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
+				<div className={ className } style={ { textAlign: align } }>
+					<p>
+						{ twitter &&
+							<a className={ 'wp-block-coblocks-social__button button--twitter icon--coblocks' } style={ iconStyle }>
+								<span className={ 'screen-reader-text' }>
+									{ __( 'Share on Twitter' ) }
+								</span>
+							</a>
+						}
 
-					{ facebook &&
-						<a className={ 'wp-block-coblocks-social__button button--facebook icon--coblocks' } style={ iconStyle }>
-							<span className={ 'screen-reader-text' }>
-								{ __( 'Share on Facebook' ) }
-							</span>
-						</a>
-					}
+						{ facebook &&
+							<a className={ 'wp-block-coblocks-social__button button--facebook icon--coblocks' } style={ iconStyle }>
+								<span className={ 'screen-reader-text' }>
+									{ __( 'Share on Facebook' ) }
+								</span>
+							</a>
+						}
 
-					{ pinterest &&
-						<a className={ 'wp-block-coblocks-social__button button--pinterest icon--coblocks' } style={ iconStyle }>
-							<span className={ 'screen-reader-text' }>
-								{ __( 'Share on Pinterest' ) }
-							</span>
-						</a>
-					}
+						{ pinterest &&
+							<a className={ 'wp-block-coblocks-social__button button--pinterest icon--coblocks' } style={ iconStyle }>
+								<span className={ 'screen-reader-text' }>
+									{ __( 'Share on Pinterest' ) }
+								</span>
+							</a>
+						}
 
-					{ linkedin &&
-						<a className={ 'wp-block-coblocks-social__button button--linkedin icon--coblocks' } style={ iconStyle }>
-							<span className={ 'screen-reader-text' }>
-								{ __( 'Share on LinkedIn' ) }
-							</span>
-						</a>
-					}
+						{ linkedin &&
+							<a className={ 'wp-block-coblocks-social__button button--linkedin icon--coblocks' } style={ iconStyle }>
+								<span className={ 'screen-reader-text' }>
+									{ __( 'Share on LinkedIn' ) }
+								</span>
+							</a>
+						}
 
-					{ tumblr &&
-						<a className={ 'wp-block-coblocks-social__button button--tumblr icon--coblocks' } style={ iconStyle }>
-							<span className={ 'screen-reader-text' }>
-								{ __( 'Share on Tumblr' ) }
-							</span>
-						</a>
-					}
-				</p>
-			</div>
+						{ tumblr &&
+							<a className={ 'wp-block-coblocks-social__button button--tumblr icon--coblocks' } style={ iconStyle }>
+								<span className={ 'screen-reader-text' }>
+									{ __( 'Share on Tumblr' ) }
+								</span>
+							</a>
+						}
+					</p>
+				</div>
+			</Fragment>
 		];
 	}
 }

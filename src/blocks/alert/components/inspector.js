@@ -7,10 +7,10 @@ import Colors from './colors';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, ColorPalette, PanelColor, PanelColorSettings } = wp.editor;
-const { PanelBody, FormToggle, RangeControl, SelectControl, withFallbackStyles } = wp.components;
+const { InspectorControls, PanelColorSettings } = wp.editor;
+const { PanelBody, withFallbackStyles } = wp.components;
 
 /**
  * Contrast checker
@@ -66,35 +66,37 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 		} = this.props;
 
 		return (
-			<InspectorControls>
-				<PanelColorSettings
-					title={ __( 'Color Settings' ) }
-					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: backgroundColor.value,
-							onChange: setBackgroundColor,
-							label: __( 'Background Color' ),
-						},
-						{
-							value: titleColor.value,
-							onChange: setTitleColor,
-							label: __( 'Heading Color' ),
-						},
-						{
-							value: textColor.value,
-							onChange: setTextColor,
-							label: __( 'Text Color' ),
-						},
-						{
-							value: borderColor.value,
-							onChange: setBorderColor,
-							label: __( 'Border Color' ),
-						},
-					] }
-				>
-				</PanelColorSettings>
-			</InspectorControls>
+			<Fragment>
+				<InspectorControls>
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: backgroundColor.value,
+								onChange: setBackgroundColor,
+								label: __( 'Background Color' ),
+							},
+							{
+								value: titleColor.value,
+								onChange: setTitleColor,
+								label: __( 'Heading Color' ),
+							},
+							{
+								value: textColor.value,
+								onChange: setTextColor,
+								label: __( 'Text Color' ),
+							},
+							{
+								value: borderColor.value,
+								onChange: setBorderColor,
+								label: __( 'Border Color' ),
+							},
+						] }
+					>
+					</PanelColorSettings>
+				</InspectorControls>
+			</Fragment>
 		);
 	}
 } );

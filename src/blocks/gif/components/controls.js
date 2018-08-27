@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { BlockControls, BlockAlignmentToolbar } = wp.editor;
 const { Toolbar, IconButton } = wp.components;
 
@@ -33,22 +33,24 @@ export default class Controls extends Component {
 		} = attributes;
 
 		return (
-			<BlockControls key="controls">
-				<BlockAlignmentToolbar
-					value={ align }
-					onChange={ this.updateAlignment }
-				/>
-				<Toolbar>
-					{ url &&
-						<IconButton
-							className="components-toolbar__control"
-							label={ __( 'Remove gif' ) }
-							icon="trash"
-							onClick={ () => setAttributes( { url: '', width: '', height: '', } ) }
-						/>
-					}
-				</Toolbar>
-			</BlockControls>
+			<Fragment>
+				<BlockControls>
+					<BlockAlignmentToolbar
+						value={ align }
+						onChange={ this.updateAlignment }
+					/>
+					<Toolbar>
+						{ url &&
+							<IconButton
+								className="components-toolbar__control"
+								label={ __( 'Remove gif' ) }
+								icon="trash"
+								onClick={ () => setAttributes( { url: '', width: '', height: '', } ) }
+							/>
+						}
+					</Toolbar>
+				</BlockControls>
+			</Fragment>
 		);
 	}
 }

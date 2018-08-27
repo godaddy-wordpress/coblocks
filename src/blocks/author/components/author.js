@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 export default class Author extends Component {
 
@@ -26,16 +26,18 @@ export default class Author extends Component {
 		} = attributes;
 
 		return (
-			<div
-				className={ classnames(
-					className,
-				) }
-				style={ {
-					textAlign: textAlign,
-				} }
-			>
-				{ this.props.children }
-			</div>
+			<Fragment>
+				<div
+					className={ classnames(
+						className,
+					) }
+					style={ {
+						textAlign: textAlign,
+					} }
+				>
+					{ this.props.children }
+				</div>
+			</Fragment>
 		);
 	}
 }

@@ -8,7 +8,7 @@ import ResizableBox from 're-resizable';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { Placeholder, Spinner, Button } = wp.components;
 const { registerBlockType } = wp.blocks;
@@ -97,80 +97,82 @@ export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: '
 
 		if ( url ) {
 			return [
-				isSelected && (
-					<Controls
-						{ ...this.props }
-					/>
-				),
-				isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				),
-				<figure key="image" className={ classes } style={ figureStyle }>
-					<Size src={ url } dirtynessTrigger={ align }>
-						{ ( sizes ) => {
-							const {
-								imageWidthWithinContainer,
-								imageHeightWithinContainer,
-								imageWidth,
-								imageHeight,
-							} = sizes;
+				<Fragment>
+					{ isSelected && (
+						<Controls
+							{ ...this.props }
+						/>
+					) }
+					{ isSelected && (
+						<Inspector
+							{ ...this.props }
+						/>
+					) }
+					<figure key="image" className={ classes } style={ figureStyle }>
+						<Size src={ url } dirtynessTrigger={ align }>
+							{ ( sizes ) => {
+								const {
+									imageWidthWithinContainer,
+									imageHeightWithinContainer,
+									imageWidth,
+									imageHeight,
+								} = sizes;
 
-							// Disable reason: Image itself is not meant to be
-							// interactive, but should direct focus to block
-							// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-							const img = <img src={ url } alt={ alt }/>;
+								// Disable reason: Image itself is not meant to be
+								// interactive, but should direct focus to block
+								// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+								const img = <img src={ url } alt={ alt }/>;
 
-							if ( ! isResizable || ! imageWidthWithinContainer ) {
-								return img;
-							}
+								if ( ! isResizable || ! imageWidthWithinContainer ) {
+									return img;
+								}
 
-							const currentWidth = width || imageWidthWithinContainer;
-							const currentHeight = height || imageHeightWithinContainer;
+								const currentWidth = width || imageWidthWithinContainer;
+								const currentHeight = height || imageHeightWithinContainer;
 
-							const ratio = imageWidth / imageHeight;
-							const minWidth = imageWidth < imageHeight ? MIN_SIZE : MIN_SIZE * ratio;
-							const minHeight = imageHeight < imageWidth ? MIN_SIZE : MIN_SIZE / ratio;
+								const ratio = imageWidth / imageHeight;
+								const minWidth = imageWidth < imageHeight ? MIN_SIZE : MIN_SIZE * ratio;
+								const minHeight = imageHeight < imageWidth ? MIN_SIZE : MIN_SIZE / ratio;
 
-							return (
-								<ResizableBox
-									size={ {
-										width: currentWidth,
-										height: currentHeight,
-									} }
-									minWidth={ minWidth }
-									maxWidth={ maxWidth }
-									minHeight={ minHeight }
-									maxHeight={ maxWidth / ratio }
-									lockAspectRatio
-									handleClasses={ {
-										right: 'wp-block-image__resize-handler-right',
-										bottom: 'wp-block-image__resize-handler-bottom',
-										left: 'wp-block-image__resize-handler-left',
-									} }
-									enable={ {
-										top: false,
-										right: true,
-										bottom: true,
-									} }
-									onResizeStart={ () => {
-										toggleSelection( false );
-									} }
-									onResizeStop={ ( event, direction, elt, delta ) => {
-										setAttributes( {
-											width: parseInt( currentWidth + delta.width, 10 ),
-											height: parseInt( currentHeight + delta.height, 10 ),
-										} );
-										toggleSelection( true );
-									} }
-								>
-									{ img }
-								</ResizableBox>
-							);
-						} }
-					</Size>
-				</figure>,
+								return (
+									<ResizableBox
+										size={ {
+											width: currentWidth,
+											height: currentHeight,
+										} }
+										minWidth={ minWidth }
+										maxWidth={ maxWidth }
+										minHeight={ minHeight }
+										maxHeight={ maxWidth / ratio }
+										lockAspectRatio
+										handleClasses={ {
+											right: 'wp-block-image__resize-handler-right',
+											bottom: 'wp-block-image__resize-handler-bottom',
+											left: 'wp-block-image__resize-handler-left',
+										} }
+										enable={ {
+											top: false,
+											right: true,
+											bottom: true,
+										} }
+										onResizeStart={ () => {
+											toggleSelection( false );
+										} }
+										onResizeStop={ ( event, direction, elt, delta ) => {
+											setAttributes( {
+												width: parseInt( currentWidth + delta.width, 10 ),
+												height: parseInt( currentHeight + delta.height, 10 ),
+											} );
+											toggleSelection( true );
+										} }
+									>
+										{ img }
+									</ResizableBox>
+								);
+							} }
+						</Size>
+					</figure>,
+				</Fragment>
 			];
 
 		} else {
@@ -200,28 +202,30 @@ export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: '
 			}
 
 			return [
-				<Placeholder
-					key="placeholder"
-					icon={ icons.gif }
-					label={ __( 'Gif' ) }
-					instructions={ __( 'Search for that perfect gif on Giphy' ) }
-					className={ className }>
-					<form>
-						{ icons.giphy }
-						<input
-							key="search-field"
-							type="text"
-							placeholder={ __( 'Search for gifs' ) }
-							onChange={ ( event ) => fetchGifs( event.target.value ) }
-						/>
-						<ul
-							key="results"
-							className={ `${ className }__results` }
-						>
-							{ results }
-						</ul>
-					</form>
-				</Placeholder>
+				<Fragment>
+					<Placeholder
+						key="placeholder"
+						icon={ icons.gif }
+						label={ __( 'Gif' ) }
+						instructions={ __( 'Search for that perfect gif on Giphy' ) }
+						className={ className }>
+						<form>
+							{ icons.giphy }
+							<input
+								key="search-field"
+								type="text"
+								placeholder={ __( 'Search for gifs' ) }
+								onChange={ ( event ) => fetchGifs( event.target.value ) }
+							/>
+							<ul
+								key="results"
+								className={ `${ className }__results` }
+							>
+								{ results }
+							</ul>
+						</form>
+					</Placeholder>
+				</Fragment>
 			]
 		}
 	}

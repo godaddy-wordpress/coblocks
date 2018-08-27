@@ -16,7 +16,7 @@ import Controls from './controls';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { RichText } = wp.editor;
 const { withSelect } = wp.data;
@@ -90,55 +90,57 @@ export default compose( applyWithSelect, applyWithColors ) ( class ClicktoTweetB
 		const fontSize = this.getFontSize();
 
 		return [
-			isSelected && (
-				<Controls
-					{ ...this.props }
-				/>
-			),
-			isSelected && (
-				<Inspector
-					{ ...this.props }
-				/>
-			),
-			<ClickToTweet { ...this.props }>
-				<RichText
-					tagName="p"
-					multiline="false"
-					placeholder={ __( 'Add a quote to tweet...' ) }
-					value={ content }
-					formattingControls={ [] }
-					className={ classnames(
-						`${ className }__text`, {
-							'has-text-color': textColor.value,
-							[ textColor.class ]: textColor.class,
-						}
-					) }
-					style={ {
-						color: textColor.value,
-						fontSize: fontSize ? fontSize + 'px' : undefined,
-					} }
-					onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
-					keepPlaceholderOnFocus
-				/>
+			<Fragment>
+				{ isSelected && (
+					<Controls
+						{ ...this.props }
+					/>
+				) }
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
+				<ClickToTweet { ...this.props }>
+					<RichText
+						tagName="p"
+						multiline="false"
+						placeholder={ __( 'Add a quote to tweet...' ) }
+						value={ content }
+						formattingControls={ [] }
+						className={ classnames(
+							`${ className }__text`, {
+								'has-text-color': textColor.value,
+								[ textColor.class ]: textColor.class,
+							}
+						) }
+						style={ {
+							color: textColor.value,
+							fontSize: fontSize ? fontSize + 'px' : undefined,
+						} }
+						onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
+						keepPlaceholderOnFocus
+					/>
 
-				<RichText
-					tagName="span"
-					placeholder={ __( 'Add button...' ) }
-					value={ buttonText }
-					formattingControls={ [] }
-					className={ classnames(
-						`${ className }__twitter-btn`, {
-							'has-button-color': buttonColor.value,
-							[ buttonColor.class ]: buttonColor.class,
-						}
-					) }
-					style={ {
-						backgroundColor: buttonColor.value,
-					} }
-					onChange={ ( nextButtonText ) => setAttributes( { buttonText: nextButtonText } ) }
-					keepPlaceholderOnFocus
-				/>
-			</ClickToTweet>
+					<RichText
+						tagName="span"
+						placeholder={ __( 'Add button...' ) }
+						value={ buttonText }
+						formattingControls={ [] }
+						className={ classnames(
+							`${ className }__twitter-btn`, {
+								'has-button-color': buttonColor.value,
+								[ buttonColor.class ]: buttonColor.class,
+							}
+						) }
+						style={ {
+							backgroundColor: buttonColor.value,
+						} }
+						onChange={ ( nextButtonText ) => setAttributes( { buttonText: nextButtonText } ) }
+						keepPlaceholderOnFocus
+					/>
+				</ClickToTweet>
+			</Fragment>
 		];
 	}
 } );

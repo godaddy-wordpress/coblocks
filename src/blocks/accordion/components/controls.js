@@ -7,7 +7,7 @@ import icons from './icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { AlignmentToolbar, BlockControls } = wp.editor;
 const { Toolbar, IconButton } = wp.components;
 
@@ -24,7 +24,7 @@ export default class Controls extends Component {
 			setAttributes,
 		} = this.props;
 
-		const { title, content, open, textAlign } = attributes;
+		const { open, textAlign } = attributes;
 
 		const customControls = [
 			{
@@ -36,13 +36,15 @@ export default class Controls extends Component {
 		];
 
 		return (
-			<BlockControls key="controls">
-				<Toolbar className="components-toolbar__coblocks-accordion" controls={ customControls } />
-				<AlignmentToolbar
-					value={ textAlign }
-					onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
-				/>
-			</BlockControls>
+			<Fragment>
+				<BlockControls>
+					<Toolbar className="components-toolbar__coblocks-accordion" controls={ customControls } />
+					<AlignmentToolbar
+						value={ textAlign }
+						onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
+					/>
+				</BlockControls>
+			</Fragment>
 		);
 	}
 }
