@@ -87,6 +87,13 @@ class CoBlocks_Notices {
 			return;
 		}
 
+		// Return if the 'ThemeBeans' is the theme author.
+		$theme = wp_get_theme();
+
+		if ( 'ThemeBeans' === $theme->get( 'Author' ) ) {
+			return;
+		}
+
 		// Only display on the dashboard and plugins pages.
 		$screen = get_current_screen();
 
