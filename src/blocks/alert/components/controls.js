@@ -31,7 +31,13 @@ export default class Controls extends Component {
 
 	styles( value ) {
 
-		this.props.setAttributes( { customBackgroundColor: value } )
+		this.props.setAttributes( {
+			customBackgroundColor: value,
+			backgroundColor: '',
+			textColor: '',
+			titleColor: '',
+			borderColor: '',
+		} )
 
 		if ( value == '#e2e3e5' ) {
 			this.props.setAttributes( { customTextColor: '#383d41', customTitleColor: '#383d41', customBorderColor: '#d6d8db' } )
