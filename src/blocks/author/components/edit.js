@@ -11,7 +11,6 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { RichText, MediaUpload, URLInput, mediaUpload } = wp.editor;
 const { Button, Dashicon, IconButton, DropZone } = wp.components;
-const { withSelect } = wp.data;
 
 /**
  * Block edit function
@@ -74,14 +73,13 @@ export default class AuthorBlock extends Component {
 			attributes,
 			className,
 			isSelected,
-			onReplace,
-			setState,
-			setAttributes,
 			mergeBlocks,
+			onReplace,
+			setAttributes,
+			setState,
 		} = this.props;
 
 		const {
-			align,
 			biography,
 			buttonText,
 			buttonUrl,
@@ -89,7 +87,6 @@ export default class AuthorBlock extends Component {
 			imgId,
 			imgUrl,
 			name,
-			textAlign,
 		} = attributes;
 
 		const dropZone = (
