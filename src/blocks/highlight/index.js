@@ -10,7 +10,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
 import Highlighter from './components/highlight';
-import HighlighterBlock from './components/edit';
+import Edit from './components/edit';
 
 /**
  * WordPress dependencies
@@ -91,7 +91,7 @@ registerBlockType( 'coblocks/highlight', {
 		],
 	},
 
-	edit: HighlighterBlock,
+	edit: Edit,
 
 	save: function( props ) {
 

@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import DynamicSeparatorBlock from './components/edit';
+import Edit from './components/edit';
 import icons from './components/icons';
 
 /**
@@ -89,7 +89,7 @@ registerBlockType( 'coblocks/dynamic-separator', {
 		],
 	},
 
-	edit: DynamicSeparatorBlock,
+	edit: Edit,
 
 	save( { attributes, className } ) {
 

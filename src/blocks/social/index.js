@@ -3,7 +3,7 @@
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import SocialBlock from './components/edit';
+import Edit from './components/edit';
 import icons from './components/icons';
 
 /**
@@ -39,7 +39,7 @@ registerBlockType( 'coblocks/social', {
 		html: false,
 	},
 
-	edit: SocialBlock,
+	edit: Edit,
 
 	save() {
 		return null;

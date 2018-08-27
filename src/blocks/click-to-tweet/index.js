@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import './styles/editor.scss';
 import './styles/style.scss';
 import ClickToTweet from './components/click-to-tweet';
-import ClicktoTweetBlock from './components/edit';
+import Edit from './components/edit';
 import icons from './components/icons';
 import FONT_SIZES from './components/font-sizes';
 
@@ -166,7 +166,7 @@ registerBlockType( 'coblocks/click-to-tweet', {
 		],
 	},
 
-	edit: ClicktoTweetBlock,
+	edit: Edit,
 
 	save: function( props ) {
 

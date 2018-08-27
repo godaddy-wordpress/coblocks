@@ -3,7 +3,7 @@
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import GifBlock from './components/edit';
+import Edit from './components/edit';
 import icons from './components/icons';
 
 /**
@@ -70,7 +70,7 @@ registerBlockType( 'coblocks/gif', {
 		}
 	},
 
-	edit: GifBlock,
+	edit: Edit,
 
 	save( { attributes } ) {
 

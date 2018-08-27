@@ -4,7 +4,7 @@
 import './styles/style.scss';
 import './styles/editor.scss';
 import Author from './components/author';
-import AuthorBlock from './components/edit';
+import Edit from './components/edit';
 import icons from './components/icons';
 
 /**
@@ -71,7 +71,7 @@ registerBlockType( 'coblocks/author', {
 		},
 	},
 
-	edit: AuthorBlock,
+	edit: Edit,
 
 	save: function( props ) {
 

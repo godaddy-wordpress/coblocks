@@ -23,7 +23,7 @@ const { createBlock } = wp.blocks;
 /**
  * Block edit function
  */
-export default compose( applyWithColors ) ( class HighlighterBlock extends Component {
+export default compose( applyWithColors ) ( class Edit extends Component {
 
 	constructor( props ) {
 		super( ...arguments );

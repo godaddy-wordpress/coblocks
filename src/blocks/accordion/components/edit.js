@@ -15,7 +15,7 @@ const { RichText } = wp.editor;
 /**
  * Block edit function
  */
-export default class AccordionBlock extends Component {
+export default class Edit extends Component {
 
 	render() {
 

@@ -4,7 +4,7 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 import Accordion from './components/accordion';
-import AccordionBlock from './components/edit';
+import Edit from './components/edit';
 import icons from './components/icons';
 
 /**
@@ -65,7 +65,7 @@ registerBlockType( 'coblocks/accordion', {
 		},
 	},
 
-	edit: AccordionBlock,
+	edit: Edit,
 
 	save: function( props ) {
 

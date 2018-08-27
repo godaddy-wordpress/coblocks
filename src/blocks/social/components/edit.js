@@ -13,7 +13,7 @@ const { Component, Fragment } = wp.element;
 /**
  * Block edit function
  */
-export default class SocialBlock extends Component {
+export default class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );

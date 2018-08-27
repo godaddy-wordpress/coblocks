@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import './styles/editor.scss';
 import './styles/style.scss';
 import icons from './components/icons';
-import GistBlock from './components/edit';
+import Edit from './components/edit';
 
 /**
  * WordPress dependencies
@@ -56,7 +56,7 @@ registerBlockType( 'coblocks/gist', {
 		align: [ 'wide' ],
 	},
 
-	edit: GistBlock,
+	edit: Edit,
 
 	save( { attributes, className } ) {
 

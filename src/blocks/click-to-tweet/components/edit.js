@@ -35,7 +35,7 @@ const applyWithSelect = withSelect( ( select ) => {
 /**
  * Block edit function
  */
-export default compose( applyWithSelect, applyWithColors ) ( class ClicktoTweetBlock extends Component {
+export default compose( applyWithSelect, applyWithColors ) ( class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );

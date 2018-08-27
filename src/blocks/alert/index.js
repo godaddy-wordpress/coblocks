@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import edit from './components/edit';
+import Edit from './components/edit';
 import icons from './components/icons';
 
 /**
@@ -124,7 +124,7 @@ registerBlockType( 'coblocks/alert', {
 		],
 	},
 
-	edit: edit,
+	edit: Edit,
 
 	save: function( props ) {
 

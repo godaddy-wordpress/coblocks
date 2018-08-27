@@ -15,7 +15,7 @@ const { Button, Dashicon, IconButton, DropZone } = wp.components;
 /**
  * Block edit function
  */
-export default class AuthorBlock extends Component {
+export default class Edit extends Component {
 
 	constructor( props ) {
 		super( ...arguments );

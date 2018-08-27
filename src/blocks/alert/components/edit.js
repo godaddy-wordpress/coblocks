@@ -21,7 +21,7 @@ const { RichText } = wp.editor;
 /**
  * Block edit function
  */
-export default compose( Colors ) ( class edit extends Component {
+export default compose( Colors ) ( class Edit extends Component {
 
 	constructor( props ) {
 		super( ...arguments );

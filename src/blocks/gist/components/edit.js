@@ -22,7 +22,7 @@ const { withState } = wp.compose;
 /**
  * Block edit function
  */
-export default withState( { preview: false } ) ( class GistBlock extends Component {
+export default withState( { preview: false } ) ( class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );
