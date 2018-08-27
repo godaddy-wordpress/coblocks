@@ -18,6 +18,22 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 /**
+ * Block attributes
+ */
+const blockAttributes = {
+	url: {
+		type: 'string',
+	},
+	file: {
+		type: 'string',
+	},
+	meta: {
+		type: 'boolean',
+		default: false,
+	},
+};
+
+/**
  * Block registration
  */
 registerBlockType( 'coblocks/gist', {
@@ -38,18 +54,7 @@ registerBlockType( 'coblocks/gist', {
 		__( 'coblocks' ),
 	],
 
-	attributes: {
-		url: {
-			type: 'string',
-		},
-		file: {
-			type: 'string',
-		},
-		meta: {
-			type: 'boolean',
-			default: false,
-		}
-	},
+	attributes: blockAttributes,
 
 	supports: {
 		html: false,

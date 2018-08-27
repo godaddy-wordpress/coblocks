@@ -14,6 +14,33 @@ const { Component } = wp.element;
 const { registerBlockType } = wp.blocks;
 
 /**
+ * Block attributes
+ */
+const blockAttributes = {
+	url: {
+		attribute: 'src',
+		selector: 'img',
+		source: 'attribute',
+		type: 'string',
+	},
+	alt: {
+		attribute: 'alt',
+		selector: 'img',
+		source: 'attribute',
+		type: 'string',
+	},
+	align: {
+		type: 'string',
+	},
+	width: {
+		type: 'number',
+	},
+	height: {
+		type: 'number',
+	},
+};
+
+/**
  * Block registration
  */
 registerBlockType( 'coblocks/gif', {
@@ -34,29 +61,7 @@ registerBlockType( 'coblocks/gif', {
 		__( 'coblocks' ),
 	],
 
-	attributes: {
-		url: {
-			attribute: 'src',
-			selector: 'img',
-			source: 'attribute',
-			type: 'string',
-		},
-		alt: {
-			attribute: 'alt',
-			selector: 'img',
-			source: 'attribute',
-			type: 'string',
-		},
-		align: {
-			type: 'string',
-		},
-		width: {
-			type: 'number',
-		},
-		height: {
-			type: 'number',
-		},
-	},
+	attributes: blockAttributes,
 
 	supports: {
 		customClassName: false,

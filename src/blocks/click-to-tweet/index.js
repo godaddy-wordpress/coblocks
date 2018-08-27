@@ -22,6 +22,49 @@ const { registerBlockType, createBlock } = wp.blocks;
 const { RichText, getColorClass } = wp.editor;
 
 /**
+ * Block attributes
+ */
+const blockAttributes = {
+	content: {
+		type: 'array',
+		source: 'children',
+		selector: 'p',
+		default: [],
+	},
+	url: {
+		type: 'attribute',
+	},
+	textAlign: {
+		type: 'string',
+	},
+	via: {
+		type: 'string',
+	},
+	buttonText: {
+		type: 'string',
+		default: __( 'Click to Tweet' ),
+	},
+	buttonColor: {
+		type: 'string',
+	},
+	textColor: {
+		type: 'string',
+	},
+	customButtonColor: {
+		type: 'string',
+	},
+	customTextColor: {
+		type: 'string',
+	},
+	fontSize: {
+		type: 'string',
+	},
+	customFontSize: {
+		type: 'number',
+	},
+};
+
+/**
  * Block registration
  */
 registerBlockType( 'coblocks/click-to-tweet', {
@@ -42,45 +85,7 @@ registerBlockType( 'coblocks/click-to-tweet', {
 		__( 'coblocks' ),
 	],
 
-	attributes: {
-		content: {
-			type: 'array',
-			source: 'children',
-			selector: 'p',
-			default: [],
-		},
-		url: {
-			type: 'attribute',
-		},
-		textAlign: {
-			type: 'string',
-		},
-		via: {
-			type: 'string',
-		},
-		buttonText: {
-			type: 'string',
-			default: __( 'Click to Tweet' ),
-		},
-		buttonColor: {
-			type: 'string',
-		},
-		textColor: {
-			type: 'string',
-		},
-		customButtonColor: {
-			type: 'string',
-		},
-		customTextColor: {
-			type: 'string',
-		},
-		fontSize: {
-			type: 'string',
-		},
-		customFontSize: {
-			type: 'number',
-		},
-	},
+	attributes: blockAttributes,
 
 	transforms: {
 		from: [

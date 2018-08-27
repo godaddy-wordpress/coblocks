@@ -14,6 +14,106 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 /**
+ * Block attributes
+ */
+const blockAttributes = {
+	title: {
+		source: 'children',
+		selector: '.pricing-table__item--1 .pricing-table__title',
+	},
+	features: {
+		source: 'children',
+		selector: '.pricing-table__item--1 .pricing-table__features',
+		default: [],
+	},
+	currency: {
+		type: 'array',
+		source: 'children',
+		selector: '.pricing-table__item--1 .pricing-table__currency',
+	},
+	amount: {
+		type: 'array',
+		source: 'children',
+		selector: '.pricing-table__item--1 .pricing-table__amount',
+	},
+	button: {
+		type: 'array',
+		source: 'children',
+		selector: '.pricing-table__item--1 .pricing-table__button',
+	},
+	url: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'a',
+		attribute: 'href',
+		selector: '.pricing-table__item--1 .pricing-table__button',
+	},
+	title_2: {
+		source: 'children',
+		selector: '.pricing-table__item--2 .pricing-table__title',
+	},
+	features_2: {
+		source: 'children',
+		selector: '.pricing-table__item--2 .pricing-table__features',
+		default: [],
+	},
+	currency_2: {
+		type: 'array',
+		source: 'children',
+		selector: '.pricing-table__item--2 .pricing-table__currency',
+	},
+	amount_2: {
+		type: 'array',
+		source: 'children',
+		selector: '.pricing-table__item--2 .pricing-table__amount',
+	},
+	button_2: {
+		type: 'array',
+		source: 'children',
+		selector: '.pricing-table__item--2 .pricing-table__button',
+	},
+	url_2: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'a',
+		attribute: 'href',
+		selector: '.pricing-table__item--2 .pricing-table__button',
+	},
+	contentAlign: {
+		type: 'string',
+		default: 'center',
+	},
+	columns: {
+		type: 'number',
+		default: 2,
+	},
+	tableBackground: {
+		type: 'string',
+	},
+	tableColor: {
+		type: 'string',
+	},
+	buttonBackground: {
+		type: 'string',
+	},
+	buttonColor: {
+		type: 'string',
+	},
+	customTableBackground: {
+		type: 'string',
+	},
+	customTableColor: {
+		type: 'string',
+	},
+	customButtonBackground: {
+		type: 'string',
+	},
+	custombButtonColor: {
+		type: 'string',
+	},
+};
+
+/**
  * Block registration
  */
 registerBlockType( 'coblocks/pricing-table', {
@@ -34,102 +134,7 @@ registerBlockType( 'coblocks/pricing-table', {
 		__( 'coblocks' ),
 	],
 
-	attributes: {
-		title: {
-			source: 'children',
-			selector: '.pricing-table__item--1 .pricing-table__title',
-		},
-		features: {
-			source: 'children',
-			selector: '.pricing-table__item--1 .pricing-table__features',
-			default: [],
-		},
-		currency: {
-			type: 'array',
-			source: 'children',
-			selector: '.pricing-table__item--1 .pricing-table__currency',
-		},
-		amount: {
-			type: 'array',
-			source: 'children',
-			selector: '.pricing-table__item--1 .pricing-table__amount',
-		},
-		button: {
-			type: 'array',
-			source: 'children',
-			selector: '.pricing-table__item--1 .pricing-table__button',
-		},
-		url: {
-			type: 'string',
-			source: 'attribute',
-			selector: 'a',
-			attribute: 'href',
-			selector: '.pricing-table__item--1 .pricing-table__button',
-		},
-		title_2: {
-			source: 'children',
-			selector: '.pricing-table__item--2 .pricing-table__title',
-		},
-		features_2: {
-			source: 'children',
-			selector: '.pricing-table__item--2 .pricing-table__features',
-			default: [],
-		},
-		currency_2: {
-			type: 'array',
-			source: 'children',
-			selector: '.pricing-table__item--2 .pricing-table__currency',
-		},
-		amount_2: {
-			type: 'array',
-			source: 'children',
-			selector: '.pricing-table__item--2 .pricing-table__amount',
-		},
-		button_2: {
-			type: 'array',
-			source: 'children',
-			selector: '.pricing-table__item--2 .pricing-table__button',
-		},
-		url_2: {
-			type: 'string',
-			source: 'attribute',
-			selector: 'a',
-			attribute: 'href',
-			selector: '.pricing-table__item--2 .pricing-table__button',
-		},
-		contentAlign: {
-			type: 'string',
-			default: 'center',
-		},
-		columns: {
-			type: 'number',
-			default: 2,
-		},
-		tableBackground: {
-			type: 'string',
-		},
-		tableColor: {
-			type: 'string',
-		},
-		buttonBackground: {
-			type: 'string',
-		},
-		buttonColor: {
-			type: 'string',
-		},
-		customTableBackground: {
-			type: 'string',
-		},
-		customTableColor: {
-			type: 'string',
-		},
-		customButtonBackground: {
-			type: 'string',
-		},
-		custombButtonColor: {
-			type: 'string',
-		},
-	},
+	attributes: blockAttributes,
 
 	supports: {
 		align: [ 'wide', 'full', 'center' ],

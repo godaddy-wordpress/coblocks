@@ -18,6 +18,23 @@ const { __ } = wp.i18n;
 const { registerBlockType, createBlock } = wp.blocks;
 
 /**
+ * Block attributes
+ */
+const blockAttributes = {
+	height: {
+		type: 'number',
+		default: 50,
+	},
+	style: {
+		type: 'string',
+		default: 'dots',
+	},
+	color: {
+		type: 'string',
+	},
+};
+
+/**
  * Block registration
  */
 registerBlockType( 'coblocks/dynamic-separator', {
@@ -42,19 +59,7 @@ registerBlockType( 'coblocks/dynamic-separator', {
 		html: false,
 	},
 
-	attributes: {
-		height: {
-			type: 'number',
-			default: 50,
-		},
-		style: {
-			type: 'string',
-			default: 'dots',
-		},
-		color: {
-			type: 'string',
-		},
-	},
+	attributes: blockAttributes,
 
 	transforms: {
 		from: [

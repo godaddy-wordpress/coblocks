@@ -20,6 +20,32 @@ const { registerBlockType, createBlock } = wp.blocks;
 const { RichText, getColorClass } = wp.editor;
 
 /**
+ * Block attributes
+ */
+const blockAttributes = {
+	content: {
+		type: 'array',
+		source: 'children',
+		selector: 'mark',
+	},
+	align: {
+		type: 'string',
+	},
+	backgroundColor: {
+		type: 'string',
+	},
+	textColor: {
+		type: 'string',
+	},
+	customBackgroundColor: {
+		type: 'string',
+	},
+	customTextColor: {
+		type: 'string',
+	},
+};
+
+/**
  * Block registration
  */
 registerBlockType( 'coblocks/highlight', {
@@ -40,28 +66,7 @@ registerBlockType( 'coblocks/highlight', {
 		__( 'coblocks' ),
 	],
 
-	attributes: {
-		content: {
-			type: 'array',
-			source: 'children',
-			selector: 'mark',
-		},
-		align: {
-			type: 'string',
-		},
-		backgroundColor: {
-			type: 'string',
-		},
-		textColor: {
-			type: 'string',
-		},
-		customBackgroundColor: {
-			type: 'string',
-		},
-		customTextColor: {
-			type: 'string',
-		},
-	},
+	attributes: blockAttributes,
 
 	transforms: {
 		from: [

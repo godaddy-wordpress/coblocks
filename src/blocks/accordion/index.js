@@ -14,6 +14,40 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 /**
+ * Block attributes
+ */
+const blockAttributes = {
+	title: {
+		type: 'string',
+		selector: '.wp-block-coblocks-accordion__title',
+	},
+	content: {
+		type: 'array',
+		selector: '.wp-block-coblocks-accordion__text',
+		source: 'children',
+	},
+	open: {
+		type: 'boolean',
+		default: false,
+	},
+	backgroundColor: {
+		type: 'string',
+	},
+	textColor: {
+		type: 'string',
+	},
+	titleBackgroundColor: {
+		type: 'string',
+	},
+	titleColor: {
+		type: 'string',
+	},
+	textAlign: {
+		type: 'string',
+	},
+};
+
+/**
  * Block registration
  */
 registerBlockType( 'coblocks/accordion', {
@@ -34,36 +68,7 @@ registerBlockType( 'coblocks/accordion', {
 		__( 'coblocks' ),
 	],
 
-	attributes: {
-		title: {
-			type: 'string',
-			selector: '.wp-block-coblocks-accordion__title',
-		},
-		content: {
-			type: 'array',
-			selector: '.wp-block-coblocks-accordion__text',
-			source: 'children',
-		},
-		open: {
-			type: 'boolean',
-			default: false,
-		},
-		backgroundColor: {
-			type: 'string',
-		},
-		textColor: {
-			type: 'string',
-		},
-		titleBackgroundColor: {
-			type: 'string',
-		},
-		titleColor: {
-			type: 'string',
-		},
-		textAlign: {
-			type: 'string',
-		},
-	},
+	attributes: blockAttributes,
 
 	edit: Edit,
 
