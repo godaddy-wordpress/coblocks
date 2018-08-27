@@ -124,20 +124,6 @@ registerBlockType( 'coblocks/click-to-tweet', {
 					} ) : [] );
 				},
 			},
-			{
-				type: 'block',
-				blocks: [ 'coblocks/click-to-share' ],
-				transform: ( { content } ) => {
-					// transforming an empty click to share element
-					if ( ! content || ! content.length ) {
-						return createBlock( 'coblocks/click-to-tweet' );
-					}
-					// transforming a click to share element with content
-					return ( content || [] ).map( item => createBlock( 'coblocks/click-to-tweet', {
-						content: content,
-					} ) );
-				},
-			},
 		],
 		to: [
 			{
@@ -176,20 +162,6 @@ registerBlockType( 'coblocks/click-to-tweet', {
 							{ children: <p key="1">{ content }</p> },
 						],
 					} );
-				},
-			},
-			{
-				type: 'block',
-				blocks: [ 'coblocks/click-to-share' ],
-				transform: ( { content } ) => {
-					// transforming an empty click to share element
-					if ( ! content || ! content.length ) {
-						return createBlock( 'coblocks/click-to-share' );
-					}
-					// transforming a click to share element with content
-					return ( content || [] ).map( item => createBlock( 'coblocks/click-to-share', {
-						content: content,
-					} ) );
 				},
 			},
 		],
