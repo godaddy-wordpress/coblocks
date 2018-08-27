@@ -3,15 +3,14 @@
  */
 import Author from './author';
 import Controls from './controls';
-// import Inspector from './inspector';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { RichText, MediaUpload, URLInput } = wp.editor;
-const { Button, Dashicon, IconButton } = wp.components;
+const { RichText, MediaUpload, URLInput, mediaUpload } = wp.editor;
+const { Button, Dashicon, IconButton, DropZone } = wp.components;
 const { withSelect } = wp.data;
 
 /**
@@ -21,7 +20,8 @@ export default class AuthorBlock extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
-
+		this.addImage = this.addImage.bind( this );
+		this.onSelectImage = this.onSelectImage.bind( this );
 		this.onFocusButton = this.onFocusButton.bind( this );
 		this.offFocusButton = this.offFocusButton.bind( this );
 
@@ -54,6 +54,20 @@ export default class AuthorBlock extends Component {
 		}
 	}
 
+	onSelectImage( media ) {
+		if ( media && media.url ) {
+			this.props.setAttributes( { imgUrl: media.url, imgId: media.id } );
+		}
+	}
+
+	addImage( files ) {
+		mediaUpload( {
+			allowedType: 'image',
+			filesList: files,
+			onFileChange: ( [ media ] ) => this.onSelectImage( media ),
+		} );
+	}
+
 	render() {
 
 		const {
@@ -78,7 +92,14 @@ export default class AuthorBlock extends Component {
 			textAlign,
 		} = attributes;
 
-		const onSelectImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
+		const dropZone = (
+			<DropZone
+				onFilesDrop={ this.addImage }
+				label={ __( 'Add avatar' ) }
+			/>
+		);
+
+		const onUploadImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
 
 		return [
 			isSelected && (
@@ -87,10 +108,10 @@ export default class AuthorBlock extends Component {
 				/>
 			),
 			<Author { ...this.props }>
-
+				{ dropZone }
 				<div className={ `${ className }__avatar` }>
 					<MediaUpload
-						onSelect={ onSelectImage }
+						onSelect={ onUploadImage }
 						type="image"
 						value={ imgId }
 						render={ ( { open } ) => (
