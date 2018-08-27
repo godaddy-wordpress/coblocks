@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import icons from './components/icons';
+import icons from './../../utils/icons';
 import Highlighter from './components/highlight';
 import Edit from './components/edit';
 

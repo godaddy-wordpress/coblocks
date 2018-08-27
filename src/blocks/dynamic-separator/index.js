@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import './styles/editor.scss';
 import './styles/style.scss';
 import Edit from './components/edit';
-import icons from './components/icons';
+import icons from './../../utils/icons';
 
 /**
  * WordPress dependencies

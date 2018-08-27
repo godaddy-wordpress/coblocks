@@ -11,7 +11,7 @@ import './styles/editor.scss';
 import './styles/style.scss';
 import ClickToTweet from './components/click-to-tweet';
 import Edit from './components/edit';
-import icons from './components/icons';
+import icons from './../../utils/icons';
 import FONT_SIZES from './components/font-sizes';
 
 /**

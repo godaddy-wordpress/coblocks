@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import Colors from './colors';
-import icons from './icons';
+import icons from './../../../utils/icons';
 
 /**
  * WordPress dependencies

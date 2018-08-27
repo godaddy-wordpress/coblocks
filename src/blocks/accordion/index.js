@@ -5,7 +5,7 @@ import './styles/editor.scss';
 import './styles/style.scss';
 import Accordion from './components/accordion';
 import Edit from './components/edit';
-import icons from './components/icons';
+import icons from './../../utils/icons';
 
 /**
  * WordPress dependencies

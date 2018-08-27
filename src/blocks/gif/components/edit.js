@@ -19,7 +19,7 @@ const { withSelect } = wp.data;
  * Internal dependencies
  */
 import Controls from './controls';
-import icons from './icons';
+import icons from './../../../utils/icons';
 import Inspector from './inspector';
 import Size from './size';
 
