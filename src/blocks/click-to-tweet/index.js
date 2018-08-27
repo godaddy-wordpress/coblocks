@@ -19,7 +19,6 @@ import FONT_SIZES from './components/font-sizes';
  */
 const { __ } = wp.i18n;
 const { registerBlockType, createBlock } = wp.blocks;
-const { withFallbackStyles } = wp.components;
 const { RichText, getColorClass } = wp.editor;
 
 /**

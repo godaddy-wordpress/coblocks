@@ -21,7 +21,6 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose } = wp.compose;
 const { RichText } = wp.editor;
-const { withAPIData } = wp.components;
 const { withSelect } = wp.data;
 
 /**
@@ -86,7 +85,6 @@ export default compose( applyWithSelect, applyWithColors ) ( class ClicktoTweetB
 		const {
 			buttonText,
 			content,
-			textAlign,
 			url,
 			via,
 		} = attributes;
