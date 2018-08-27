@@ -8,32 +8,22 @@ import ResizableBox from 're-resizable';
  * Internal dependencies
  */
 import Inspector from './inspector';
+import Colors from './colors';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
+const { compose } = wp.compose;
 
 /**
  * Block edit function
  */
-export default class Edit extends Component {
+export default compose( Colors ) ( class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );
-		this.defaultSeparatorColor = this.defaultSeparatorColor.bind( this );
-	}
-
-	// Set the default separator color based on the style selected.
-	defaultSeparatorColor( attributes ) {
-		if ( attributes.color ) {
-			return attributes.color;
-		} else if ( 'line' === attributes.style || 'fullwidth' === attributes.style ) {
-			return 'rgba(0, 0, 0, .15)';
-		} else {
-			return 'rgba(0, 0, 0, .8)';
-		}
 	}
 
 	render() {
@@ -44,18 +34,13 @@ export default class Edit extends Component {
 			isSelected,
 			setAttributes,
 			toggleSelection,
+			setColor,
+			color,
 		} = this.props;
 
 		const {
-			color,
 			height,
-			style,
 		} = attributes;
-
-		const classes = classnames(
-			className,
-			style ? `hr-style--${ style }` : `hr-style----dots`,
-		);
 
 		return [
 			<Fragment>
@@ -65,8 +50,13 @@ export default class Edit extends Component {
 					/>
 				) }
 				<ResizableBox
-					className={ classes }
-					style={ { color: this.defaultSeparatorColor( this.props.attributes ) } }
+					className={ classnames(
+						className, {
+							'has-text-color': color.value,
+							[ color.class ]: color.class,
+						}
+					) }
+					style={ { color: color.value, } }
 					size={ {
 						height,
 					} }
@@ -98,4 +88,4 @@ export default class Edit extends Component {
 			</Fragment>
 		];
 	}
-}
+} );

@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import omit from 'lodash/omit';
 
 /**
  * Internal dependencies
@@ -16,6 +17,7 @@ import icons from './../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { registerBlockType, createBlock } = wp.blocks;
+const { getColorClass } = wp.editor;
 
 /**
  * Block attributes
@@ -25,11 +27,10 @@ const blockAttributes = {
 		type: 'number',
 		default: 50,
 	},
-	style: {
-		type: 'string',
-		default: 'dots',
-	},
 	color: {
+		type: 'string',
+	},
+	customColor: {
 		type: 'string',
 	},
 };
@@ -55,11 +56,13 @@ registerBlockType( 'coblocks/dynamic-separator', {
 		__( 'coblocks' ),
 	],
 
-	supports: {
-		html: false,
-	},
-
 	attributes: blockAttributes,
+
+	styles: [
+		{ name: 'dots', label: __( 'Dot' ), isDefault: true },
+		{ name: 'line', label: __( 'Line' ) },
+		{ name: 'fullwidth', label: __( 'Fullwidth' ) },
+	],
 
 	transforms: {
 		from: [
@@ -100,28 +103,25 @@ registerBlockType( 'coblocks/dynamic-separator', {
 
 		const {
 			color,
+			customColor,
 			height,
-			style,
 		} = attributes;
 
-		const classes = classnames(
-			className,
-			style ? `hr-style--${ style }` : `hr-style----dots`,
-		);
+		const colorClass = getColorClass( 'color', color );
 
-		// Set the default separator color based on the style selected.
-		function defaultSeparatorColor( attributes ) {
-			if ( attributes.color ) {
-				return attributes.color;
-			} else if ( 'line' === attributes.style || 'fullwidth' === attributes.style ) {
-				return 'rgba(0, 0, 0, .15)';
-			} else {
-				return 'rgba(0, 0, 0, .8)';
-			}
-		}
+		const classes = classnames(
+			className, {
+			'has-text-color': color || customColor,
+			[ colorClass ]: colorClass,
+		} );
+
+		const styles = {
+			color: colorClass ? undefined : customColor,
+			height: height ? height + 'px' : undefined,
+		};
 
 		return (
-			<hr className={ classes } style={ { height: height ? height + 'px' : undefined, color: defaultSeparatorColor( attributes ) } }></hr>
+			<hr className={ classes } style={ styles }></hr>
 		);
 	},
 } );

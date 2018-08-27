@@ -8,8 +8,6 @@
 	width: 100%;
 
 	&::before {
-		color: $black; // Fallback.
-		color: currentColor;
 		content: "...";
 		display: inline-block;
 		font-size: 22px;
@@ -25,10 +23,8 @@
 		top: calc(50% - 18px);
 	}
 
-	&.hr-style--line::before,
-	&.hr-style--fullwidth::before {
-		background: $lightgray; // Fallback.
-		background: currentColor;
+	&.is-style-line::before,
+	&.is-style-fullwidth::before {
 		content: "";
 		width: 15vw;
 		max-width: 120px;
@@ -38,8 +34,25 @@
 		margin-left: auto;
 	}
 
-	&.hr-style--fullwidth::before {
+	&.is-style-fullwidth::before {
 		max-width: 100%;
 		width: 100%;
+	}
+
+	&:not(.has-text-color) {
+
+		&::before {
+			color: $black;
+			color: currentColor;
+		}
+	}
+
+	&.is-style-line:not(.has-text-color),
+	&.is-style-fullwidth:not(.has-text-color) {
+
+		&::before {
+			background: $lightgray;
+			background: currentColor;
+		}
 	}
 }
