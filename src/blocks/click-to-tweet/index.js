@@ -128,6 +128,15 @@ registerBlockType( 'coblocks/click-to-tweet', {
 					} ) : [] );
 				},
 			},
+			{
+				type: 'raw',
+				selector: 'blockquote.wp-block-coblocks-click-to-tweet',
+				schema: {
+					blockquote: {
+						classes: [ 'wp-block-coblocks-click-to-tweet' ],
+					},
+				},
+			},
 		],
 		to: [
 			{
