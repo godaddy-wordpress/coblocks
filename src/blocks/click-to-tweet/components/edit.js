@@ -124,6 +124,7 @@ export default compose( applyWithSelect, applyWithColors ) ( class Edit extends 
 
 					<RichText
 						tagName="span"
+						multiline="false"
 						placeholder={ __( 'Add button...' ) }
 						value={ buttonText }
 						formattingControls={ [] }
