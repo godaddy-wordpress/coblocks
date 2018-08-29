@@ -15,7 +15,7 @@ import Edit from './components/edit';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { registerBlockType, createBlock } = wp.blocks;
 
 /**
  * Block attributes
@@ -55,6 +55,26 @@ registerBlockType( 'coblocks/gist', {
 	],
 
 	attributes: blockAttributes,
+
+	transforms: {
+		from: [
+			{
+				type: 'raw',
+				isMatch: ( node ) => node.nodeName === 'P' && /^\s*(https?:\/\/\S+)\s*$/i.test( node.textContent ) && node.textContent.match( /^https?:\/\/(www\.)?gist\.github\.com\/.+/i ),
+				transform: ( node ) => {
+
+					// Check for a file within the URL.
+					const file = ( node.textContent.trim() ).split( '#' ).pop();
+					const fileClean = file.replace('file-', '').replace('-', '.');
+
+					return createBlock( 'coblocks/gist', {
+						url: node.textContent.trim(),
+						file: file.match(/file*/) != null ? fileClean : undefined,
+					} );
+				},
+			},
+		],
+	},
 
 	supports: {
 		html: false,
