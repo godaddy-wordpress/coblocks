@@ -86,13 +86,13 @@ registerBlockType( 'coblocks/dynamic-separator', {
 						classes: [ 'wp-block-coblocks-dynamic-separator' ],
 					},
 				},
-				transform: ( { height, color, customColor } ) => (
-					createBlock( 'coblocks/dynamic-separator', {
-						height: height,
-						color: color,
-						customColor: customColor,
-					} )
-				),
+				transform: ( attributes ) => {
+					return createBlock( 'coblocks/dynamic-separator', {
+						height: attributes.height,
+						color: attributes.color,
+				 		customColor: attributes.customColor,
+					} );
+				},
 			},
 		],
 		to: [
