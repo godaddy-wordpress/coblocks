@@ -82,6 +82,14 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.1.7, August 29, 2018 =
+* New: Add transforms for improved copy/pasting of CoBlocks blocks
+* New: Add support for color classes in the Dynamic HR block
+* New: Add DropZone support for uploading the avatar within the Author block
+* Fix: Click to Tweet transforms now properly set
+* Tweak: Improve splitBlock functionality for an improved UX with the Highlight block
+* Tweak: Move Dynamic HR block style option to use the Gutenberg styles UI
+
 = 1.1.6, August 24, 2018 =
 * New: Add a notice to install or activate the companion CoBlocks WordPress theme
 * New: Add a feedback request to display after a week
