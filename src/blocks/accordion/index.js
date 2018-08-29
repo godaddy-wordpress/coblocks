@@ -70,6 +70,20 @@ registerBlockType( 'coblocks/accordion', {
 
 	attributes: blockAttributes,
 
+	transforms: {
+		from: [
+			{
+				type: 'raw',
+				selector: 'div.wp-block-coblocks-accordion',
+				schema: {
+					div: {
+						classes: [ 'wp-block-coblocks-accordion' ],
+					},
+				},
+			},
+		],
+	},
+
 	edit: Edit,
 
 	save: function( props ) {

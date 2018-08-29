@@ -140,6 +140,20 @@ registerBlockType( 'coblocks/pricing-table', {
 		align: [ 'wide', 'full', 'center' ],
 	},
 
+	transforms: {
+		from: [
+			{
+				type: 'raw',
+				selector: 'div.wp-block-coblocks-pricing-table',
+				schema: {
+					div: {
+						classes: [ 'wp-block-coblocks-pricing-table' ],
+					},
+				},
+			},
+		],
+	},
+
 	edit: Edit,
 
 	save: function( props ) {

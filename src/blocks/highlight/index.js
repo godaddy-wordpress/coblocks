@@ -77,6 +77,15 @@ registerBlockType( 'coblocks/highlight', {
 					return createBlock( 'coblocks/highlight', { content: content } );
 				},
 			},
+			{
+				type: 'raw',
+				selector: 'div.wp-block-coblocks-highlight',
+				schema: {
+					div: {
+						classes: [ 'wp-block-coblocks-highlight' ],
+					},
+				},
+			},
 		],
 		to: [
 			{

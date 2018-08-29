@@ -76,6 +76,20 @@ registerBlockType( 'coblocks/author', {
 
 	attributes: blockAttributes,
 
+	transforms: {
+		from: [
+			{
+				type: 'raw',
+				selector: 'div.wp-block-coblocks-author',
+				schema: {
+					div: {
+						classes: [ 'wp-block-coblocks-author' ],
+					},
+				},
+			},
+		],
+	},
+
 	edit: Edit,
 
 	save: function( props ) {

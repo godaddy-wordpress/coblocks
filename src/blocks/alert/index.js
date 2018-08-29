@@ -105,6 +105,15 @@ registerBlockType( 'coblocks/alert', {
 					return createBlock( 'coblocks/alert', { value: content } );
 				},
 			},
+			{
+				type: 'raw',
+				selector: 'div.wp-block-coblocks-alert',
+				schema: {
+					div: {
+						classes: [ 'wp-block-coblocks-alert' ],
+					},
+				},
+			},
 		],
 		to: [
 			{
