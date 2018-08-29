@@ -31,10 +31,11 @@ const MIN_SIZE = 20;
 
 const applyWithSelect = withSelect( ( select ) => {
 	const { getEditorSettings } = select( 'core/editor' );
-	const { maxWidth } = getEditorSettings();
+	const { maxWidth, isRTL } = getEditorSettings();
 
 	return {
 		maxWidth,
+		isRTL,
 	};
 } );
 
@@ -56,6 +57,7 @@ export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: '
 			setAttributes,
 			settings,
 			isLargeViewport,
+			isRTL,
 			toggleSelection,
 			maxWidth,
 		} = this.props;
@@ -134,6 +136,35 @@ export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: '
 								const minWidth = imageWidth < imageHeight ? MIN_SIZE : MIN_SIZE * ratio;
 								const minHeight = imageHeight < imageWidth ? MIN_SIZE : MIN_SIZE / ratio;
 
+								let showRightHandle = false;
+								let showLeftHandle = false;
+
+								/* eslint-disable no-lonely-if */
+								// See https://github.com/WordPress/gutenberg/issues/7584.
+								if ( align === 'center' ) {
+									// When the image is centered, show both handles.
+									showRightHandle = true;
+									showLeftHandle = true;
+								} else if ( isRTL ) {
+									// In RTL mode the image is on the right by default.
+									// Show the right handle and hide the left handle only when it is aligned left.
+									// Otherwise always show the left handle.
+									if ( align === 'left' ) {
+										showRightHandle = true;
+									} else {
+										showLeftHandle = true;
+									}
+								} else {
+									// Show the left handle and hide the right handle only when the image is aligned right.
+									// Otherwise always show the right handle.
+									if ( align === 'right' ) {
+										showLeftHandle = true;
+									} else {
+										showRightHandle = true;
+									}
+								}
+								/* eslint-enable no-lonely-if */
+
 								return (
 									<ResizableBox
 										size={ {
@@ -152,8 +183,9 @@ export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: '
 										} }
 										enable={ {
 											top: false,
-											right: true,
+											right: showRightHandle,
 											bottom: true,
+											left: showLeftHandle,
 										} }
 										onResizeStart={ () => {
 											toggleSelection( false );
@@ -171,7 +203,7 @@ export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: '
 								);
 							} }
 						</Size>
-					</figure>,
+					</figure>
 				</Fragment>
 			];
 
