@@ -22,6 +22,7 @@ CoBlocks is a suite of page builder Gutenberg blocks for writers, publishers and
 * Alert Block
 * Author Block
 * Dynamic HR Block
+* Click to Tweet Block
 * Gif Block
 * GitHub Gist Block
 * Pricing Table Block
