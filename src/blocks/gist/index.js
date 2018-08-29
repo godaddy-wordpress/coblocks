@@ -60,6 +60,7 @@ registerBlockType( 'coblocks/gist', {
 		from: [
 			{
 				type: 'raw',
+				priority: 1,
 				isMatch: ( node ) => node.nodeName === 'P' && /^\s*(https?:\/\/\S+)\s*$/i.test( node.textContent ) && node.textContent.match( /^https?:\/\/(www\.)?gist\.github\.com\/.+/i ),
 				transform: ( node ) => {
 
@@ -71,6 +72,15 @@ registerBlockType( 'coblocks/gist', {
 						url: node.textContent.trim(),
 						file: file.match(/file*/) != null ? fileClean : undefined,
 					} );
+				},
+			},
+			{
+				type: 'raw',
+				selector: 'div',
+				schema: {
+					div: {
+						classes: [ 'wp-block-coblocks-gist' ],
+					},
 				},
 			},
 		],
