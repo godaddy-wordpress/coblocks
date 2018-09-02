@@ -16,7 +16,7 @@ import icons from './../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { registerBlockType, createBlock } = wp.blocks;
-const { RichText, getColorClass } = wp.editor;
+const { RichText, getColorClassName } = wp.editor;
 
 /**
  * Block attributes
@@ -154,8 +154,8 @@ registerBlockType( 'coblocks/alert', {
 		} = props.attributes;
 
 		// Background color class and styles.
-		const backgroundClass = getColorClass( 'background-color', backgroundColor );
-		const borderClass = getColorClass( 'border-color', borderColor );
+		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+		const borderClass = getColorClassName( 'border-color', borderColor );
 
 		const backgroundClasses = classnames(
 			props.className,
@@ -173,7 +173,7 @@ registerBlockType( 'coblocks/alert', {
 		};
 
 		// Title color class and styles.
-		const titleClass = getColorClass( 'color', titleColor );
+		const titleClass = getColorClassName( 'color', titleColor );
 
 		const titleClasses = classnames(
 			props.className,
@@ -187,7 +187,7 @@ registerBlockType( 'coblocks/alert', {
 		};
 
 		// Text color class and styles.
-		const textClass = getColorClass( 'color', textColor );
+		const textClass = getColorClassName( 'color', textColor );
 
 		const textClasses = classnames(
 			props.className,

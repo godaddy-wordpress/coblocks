@@ -19,7 +19,7 @@ import FONT_SIZES from './components/font-sizes';
  */
 const { __ } = wp.i18n;
 const { registerBlockType, createBlock } = wp.blocks;
-const { RichText, getColorClass } = wp.editor;
+const { RichText, getColorClassName } = wp.editor;
 
 /**
  * Block attributes
@@ -203,7 +203,7 @@ registerBlockType( 'coblocks/click-to-tweet', {
 
 		const fontSizeClass = fontSize && `is-${ fontSize }-text`;
 
-		const textColorClass = getColorClass( 'color', textColor );
+		const textColorClass = getColorClassName( 'color', textColor );
 
 		const textClasses = classnames( 'wp-block-coblocks-click-to-tweet__text', {
 			'has-text-color': textColor || customTextColor,
@@ -216,7 +216,7 @@ registerBlockType( 'coblocks/click-to-tweet', {
 			color: textColorClass ? undefined : customTextColor,
 		};
 
-		const buttonColorClass = getColorClass( 'background-color', buttonColor );
+		const buttonColorClass = getColorClassName( 'background-color', buttonColor );
 
 		const buttonClasses = classnames( 'wp-block-coblocks-click-to-tweet__twitter-btn', {
 			'has-button-color':  buttonColor || customButtonColor,

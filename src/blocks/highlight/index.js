@@ -17,7 +17,7 @@ import Edit from './components/edit';
  */
 const { __ } = wp.i18n;
 const { registerBlockType, createBlock } = wp.blocks;
-const { RichText, getColorClass } = wp.editor;
+const { RichText, getColorClassName } = wp.editor;
 
 /**
  * Block attributes
@@ -117,9 +117,9 @@ registerBlockType( 'coblocks/highlight', {
 			textColor,
 		} = props.attributes;
 
-		const textClass = getColorClass( 'color', textColor );
+		const textClass = getColorClassName( 'color', textColor );
 
-		const backgroundClass = getColorClass( 'background-color', backgroundColor );
+		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames( 'wp-block-coblocks-highlight__content', {
 			'has-text-color': textColor || customTextColor,

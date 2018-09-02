@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { RichText, getColorClass } = wp.editor;
+const { RichText, getColorClassName } = wp.editor;
 
 export default class PricingTable extends Component {
 
@@ -34,10 +34,10 @@ export default class PricingTable extends Component {
 		} = attributes;
 
 		// Heading color class and styles.
-		const tableColorClass = getColorClass( 'color', tableColor );
-		const tableBackgroundClass = getColorClass( 'background-color', tableBackground );
-		const buttonColorClass = getColorClass( 'color', buttonColor );
-		const buttonBackgroundClass = getColorClass( 'background-color', buttonBackground );
+		const tableColorClass = getColorClassName( 'color', tableColor );
+		const tableBackgroundClass = getColorClassName( 'background-color', tableBackground );
+		const buttonColorClass = getColorClassName( 'color', buttonColor );
+		const buttonBackgroundClass = getColorClassName( 'background-color', buttonBackground );
 
 		// Background color class and styles.
 		const tableClasses = classnames(

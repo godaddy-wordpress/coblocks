@@ -17,7 +17,7 @@ import icons from './../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { registerBlockType, createBlock } = wp.blocks;
-const { getColorClass } = wp.editor;
+const { getColorClassName } = wp.editor;
 
 /**
  * Block attributes
@@ -116,7 +116,7 @@ registerBlockType( 'coblocks/dynamic-separator', {
 			height,
 		} = attributes;
 
-		const colorClass = getColorClass( 'color', color );
+		const colorClass = getColorClassName( 'color', color );
 
 		const classes = classnames(
 			className, {
