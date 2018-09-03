@@ -73,22 +73,22 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 						initialOpen={ false }
 						colorSettings={ [
 							{
-								value: backgroundColor.value,
+								value: backgroundColor.color,
 								onChange: setBackgroundColor,
 								label: __( 'Background Color' ),
 							},
 							{
-								value: titleColor.value,
+								value: titleColor.color,
 								onChange: setTitleColor,
 								label: __( 'Heading Color' ),
 							},
 							{
-								value: textColor.value,
+								value: textColor.color,
 								onChange: setTextColor,
 								label: __( 'Text Color' ),
 							},
 							{
-								value: borderColor.value,
+								value: borderColor.color,
 								onChange: setBorderColor,
 								label: __( 'Border Color' ),
 							},

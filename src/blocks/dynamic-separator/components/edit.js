@@ -52,11 +52,11 @@ export default compose( Colors ) ( class Edit extends Component {
 				<ResizableBox
 					className={ classnames(
 						className, {
-							'has-text-color': color.value,
+							'has-text-color': color.color,
 							[ color.class ]: color.class,
 						}
 					) }
-					style={ { color: color.value, } }
+					style={ { color: color.color } }
 					size={ {
 						height,
 					} }

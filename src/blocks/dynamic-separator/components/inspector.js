@@ -83,7 +83,7 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 						initialOpen={ false }
 						colorSettings={ [
 							{
-								value: color.value,
+								value: color.color,
 								onChange: setColor,
 								label: __( 'Color' ),
 							},

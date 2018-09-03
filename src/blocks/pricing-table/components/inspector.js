@@ -88,39 +88,39 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 						/>
 					</PanelBody>
 					<PanelColor
-						colorValue={ tableBackground.value }
+						colorValue={ tableBackground.color }
 						title={ __( 'Background Color' ) }
 						onChange={ setTableBackground }
 					/>
 					<PanelColor
-						colorValue={ tableColor.value }
+						colorValue={ tableColor.color }
 						title={ __( 'Text Color' ) }
 						onChange={ setTableColor }
 						initialOpen={ false }
 					/>
 					{ <ContrastChecker
-						textColor={ tableColor.value }
-						backgroundColor={ tableBackground.value }
+						textColor={ tableColor.color }
+						backgroundColor={ tableBackground.color }
 						{ ...{
 							fallbackTableBackground,
 							fallbackTableColor,
 						} }
 					/> }
 					<PanelColor
-						colorValue={ buttonBackground.value }
+						colorValue={ buttonBackground.color }
 						title={ __( 'Button Background' ) }
 						onChange={ setButtonBackground }
 						initialOpen={ false }
 					/>
 					<PanelColor
-						colorValue={ buttonColor.value }
+						colorValue={ buttonColor.color }
 						title={ __( 'Button Color' ) }
 						onChange={ setButtonColor }
 						initialOpen={ false }
 					/>
 					{ <ContrastChecker
-						textColor={ buttonColor.value }
-						backgroundColor={ buttonBackground.value }
+						textColor={ buttonColor.color }
+						backgroundColor={ buttonBackground.color }
 						{ ...{
 							fallbackButtonBackground,
 							fallbackButtonColor,

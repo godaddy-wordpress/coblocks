@@ -71,13 +71,13 @@ export default compose( Colors ) ( class Edit extends Component {
 						className,
 						`is-${ type }-alert`,
 						`align${ align }`, {
-							'has-background': backgroundColor.value,
+							'has-background': backgroundColor.color,
 							[ backgroundColor.class ]: backgroundColor.class,
 						}
 					) }
 					style={ {
-						backgroundColor: backgroundColor.value,
-						borderColor: borderColor.value,
+						backgroundColor: backgroundColor.color,
+						borderColor: borderColor.color,
 						textAlign: textAlign,
 					} }
 				>
@@ -88,12 +88,12 @@ export default compose( Colors ) ( class Edit extends Component {
 							value={ title }
 							className={ classnames(
 								`${ className }__title`, {
-									'has-text-color': titleColor.value,
+									'has-text-color': titleColor.color,
 									[ titleColor.class ]: titleColor.class,
 								}
 							) }
 							style={ {
-								color: titleColor.value,
+								color: titleColor.color,
 							} }
 							onChange={ ( value ) => setAttributes( { title: value } ) }
 							keepPlaceholderOnFocus
@@ -107,12 +107,12 @@ export default compose( Colors ) ( class Edit extends Component {
 						onMerge={ mergeBlocks }
 						className={ classnames(
 							`${ className }__text`, {
-								'has-text-color': textColor.value,
+								'has-text-color': textColor.color,
 								[ textColor.class ]: textColor.class,
 							}
 						) }
 						style={ {
-							color: textColor.value,
+							color: textColor.color,
 						} }
 						onChange={ ( value ) => setAttributes( { value: value } ) }
 						onRemove={ ( forward ) => {

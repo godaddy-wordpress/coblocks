@@ -128,15 +128,15 @@ export default compose( Colors ) ( class Edit extends Component {
 					<div
 						className={ classnames(
 							`pricing-table__item pricing-table__item--1`, {
-								'has-background': tableBackground.value,
+								'has-background': tableBackground.color,
 								[ tableBackground.class ]: tableBackground.class,
-								'has-text-color': tableColor.value,
+								'has-text-color': tableColor.color,
 								[ tableColor.class ]: tableColor.class,
 							}
 						) }
 						style={ {
-							backgroundColor: tableBackground.class ? undefined : tableBackground.value,
-							color: tableColor.class ? undefined : tableColor.value,
+							backgroundColor: tableBackground.class ? undefined : tableBackground.color,
+							color: tableColor.class ? undefined : tableColor.color,
 						} }
 					>
 
@@ -198,15 +198,15 @@ export default compose( Colors ) ( class Edit extends Component {
 									tagName='span'
 									className={ classnames(
 										`pricing-table__button wp-block-button__link`, {
-											'has-background': buttonBackground.value,
+											'has-background': buttonBackground.color,
 											[ buttonBackground.class ]: buttonBackground.class,
-											'has-text-color': buttonColor.value,
+											'has-text-color': buttonColor.color,
 											[ buttonColor.class ]: buttonColor.class,
 										}
 									) }
 									style={ {
-										backgroundColor: buttonBackground.class ? undefined : buttonBackground.value,
-										color: buttonColor.class ? undefined : buttonColor.value,
+										backgroundColor: buttonBackground.class ? undefined : buttonBackground.color,
+										color: buttonColor.class ? undefined : buttonColor.color,
 									} }
 									onChange={ ( nextButton ) => setAttributes( { button: nextButton } ) }
 									unstableOnFocus={ this.onFocusButton }
@@ -229,15 +229,15 @@ export default compose( Colors ) ( class Edit extends Component {
 						<div
 							className={ classnames(
 								`pricing-table__item pricing-table__item--2`, {
-									'has-background': tableBackground.value,
+									'has-background': tableBackground.color,
 									[ tableBackground.class ]: tableBackground.class,
-									'has-text-color': tableColor.value,
+									'has-text-color': tableColor.color,
 									[ tableColor.class ]: tableColor.class,
 								}
 							) }
 							style={ {
-								backgroundColor: tableBackground.class ? undefined : tableBackground.value,
-								color: tableColor.class ? undefined : tableColor.value,
+								backgroundColor: tableBackground.class ? undefined : tableBackground.color,
+								color: tableColor.class ? undefined : tableColor.color,
 							} }
 						>
 
@@ -300,15 +300,15 @@ export default compose( Colors ) ( class Edit extends Component {
 										tagName='span'
 										className={ classnames(
 											`pricing-table__button wp-block-button__link`, {
-												'has-background': buttonBackground.value,
+												'has-background': buttonBackground.color,
 												[ buttonBackground.class ]: buttonBackground.class,
-												'has-text-color': buttonColor.value,
+												'has-text-color': buttonColor.color,
 												[ buttonColor.class ]: buttonColor.class,
 											}
 										) }
 										style={ {
-											backgroundColor: buttonBackground.class ? undefined : buttonBackground.value,
-											color: buttonColor.class ? undefined : buttonColor.value,
+											backgroundColor: buttonBackground.class ? undefined : buttonBackground.color,
+											color: buttonColor.class ? undefined : buttonColor.color,
 										} }
 										onChange={ ( nextButton ) => setAttributes( { button_2: nextButton } ) }
 										unstableOnFocus={ this.onFocusButton_2 }

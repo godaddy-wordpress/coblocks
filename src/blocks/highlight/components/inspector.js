@@ -57,12 +57,12 @@ export default compose( applyWithColors ) ( class Inspector extends Component {
 						initialOpen={ false }
 						colorSettings={ [
 							{
-								value: backgroundColor.value,
+								value: backgroundColor.color,
 								onChange: setBackgroundColor,
 								label: __( 'Background Color' ),
 							},
 							{
-								value: textColor.value,
+								value: textColor.color,
 								onChange: setTextColor,
 								label: __( 'Text Color' ),
 							},
@@ -70,8 +70,8 @@ export default compose( applyWithColors ) ( class Inspector extends Component {
 					>
 						<ContrastChecker
 							{ ...{
-								textColor: textColor.value,
-								backgroundColor: backgroundColor.value,
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color,
 								fallbackBackgroundColor,
 								fallbackTextColor,
 							} }

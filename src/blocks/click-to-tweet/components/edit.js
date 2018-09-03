@@ -110,12 +110,12 @@ export default compose( applyWithSelect, applyWithColors ) ( class Edit extends 
 						formattingControls={ [] }
 						className={ classnames(
 							`${ className }__text`, {
-								'has-text-color': textColor.value,
+								'has-text-color': textColor.color,
 								[ textColor.class ]: textColor.class,
 							}
 						) }
 						style={ {
-							color: textColor.value,
+							color: textColor.color,
 							fontSize: fontSize ? fontSize + 'px' : undefined,
 						} }
 						onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
@@ -130,12 +130,12 @@ export default compose( applyWithSelect, applyWithColors ) ( class Edit extends 
 						formattingControls={ [] }
 						className={ classnames(
 							`${ className }__twitter-btn`, {
-								'has-button-color': buttonColor.value,
+								'has-button-color': buttonColor.color,
 								[ buttonColor.class ]: buttonColor.class,
 							}
 						) }
 						style={ {
-							backgroundColor: buttonColor.value,
+							backgroundColor: buttonColor.color,
 						} }
 						onChange={ ( nextButtonText ) => setAttributes( { buttonText: nextButtonText } ) }
 						keepPlaceholderOnFocus

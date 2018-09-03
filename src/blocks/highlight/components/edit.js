@@ -117,15 +117,15 @@ export default compose( applyWithColors ) ( class Edit extends Component {
 						onRemove={ () => onReplace( [] ) }
 						className={ classnames(
 							`${ className }__content`, {
-								'has-background': backgroundColor.value,
+								'has-background': backgroundColor.color,
 								[ backgroundColor.class ]: backgroundColor.class,
-								'has-text-color': textColor.value,
+								'has-text-color': textColor.color,
 								[ textColor.class ]: textColor.class,
 							}
 						) }
 						style={ {
-								backgroundColor: backgroundColor.value,
-								color: textColor.value,
+								backgroundColor: backgroundColor.color,
+								color: textColor.color,
 							} }
 						keepPlaceholderOnFocus
 					/>
