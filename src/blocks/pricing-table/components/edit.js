@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import Colors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
+import icons from './../../../utils/icons';
 
 /**
  * WordPress dependencies
@@ -17,7 +18,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { RichText, URLInput } = wp.editor;
-const { Dashicon, IconButton } = wp.components;
+const { IconButton } = wp.components;
 
 /**
  * Block edit function
@@ -331,7 +332,7 @@ export default compose( Colors ) ( class Edit extends Component {
 						className="block-library-button__inline-link"
 						onSubmit={ ( event ) => event.preventDefault() }
 					>
-						<Dashicon icon="admin-links" />
+						{ icons.pricingLinkOne }
 						<div>
 							<URLInput
 								value={ url }
@@ -346,7 +347,7 @@ export default compose( Colors ) ( class Edit extends Component {
 						className="block-library-button__inline-link"
 						onSubmit={ ( event ) => event.preventDefault() }
 					>
-						<Dashicon icon="admin-links" />
+						{ icons.pricingLinkTwo }
 						<div>
 							<URLInput
 								value={ url_2 }
