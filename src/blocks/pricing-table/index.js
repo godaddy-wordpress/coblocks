@@ -137,7 +137,7 @@ registerBlockType( 'coblocks/pricing-table', {
 	attributes: blockAttributes,
 
 	supports: {
-		align: [ 'wide', 'full', 'center' ],
+		align: [ 'wide', 'full' ],
 	},
 
 	transforms: {
