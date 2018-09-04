@@ -12,16 +12,6 @@
 		justify-content: flex-end;
 	}
 
-	.components-toolbar__control.components-button[data-subscript]::after {
-		font-size: 17px;
-		right: 13px;
-		bottom: 0.68em;
-	}
-
-	.components-toolbar__control.components-button[data-subscript="1"]::after {
-		right: 14px;
-	}
-
 	.wp-block-button__link {
 		line-height: 26px;
 	}
@@ -40,15 +30,15 @@
 	}
 }
 
-.coblocks__inspector-block-settings-panel-body {
+.coblocks__toolbar--numeral {
 
-	.components-toolbar__control.components-button[data-subscript]::after {
+	.components-button[data-subscript]::after {
 		font-size: 17px;
 		right: 13px;
 		bottom: 0.68em;
 	}
 
-	.components-toolbar__control.components-button[data-subscript="1"]::after {
+	.components-button[data-subscript="1"]::after {
 		right: 14px;
 	}
 }

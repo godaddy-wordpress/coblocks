@@ -33,6 +33,7 @@ export default class Controls extends Component {
 			<Fragment>
 				<BlockControls>
 					<Toolbar
+						className="coblocks__toolbar--numeral"
 						controls={ '12'.split( '' ).map( ( count ) => ( {
 							icon: icons.blank,
 							// translators: %s: columns count e.g: "1", "2", "3"

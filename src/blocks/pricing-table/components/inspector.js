@@ -73,6 +73,7 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 					<PanelBody title={ __( 'Block Settings' ) } className='coblocks__inspector-block-settings-panel-body'>
 						<p>{ __( 'Columns' ) }</p>
 						<Toolbar
+							className="coblocks__toolbar--numeral"
 							controls={ '12'.split( '' ).map( ( count ) => ( {
 								icon: icons.blank,
 								// translators: %s: columns count e.g: "1", "2"
