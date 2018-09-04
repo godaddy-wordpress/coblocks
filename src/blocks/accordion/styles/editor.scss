@@ -15,13 +15,10 @@
 			}
 		}
 
-		&--open .wp-block-coblocks-accordion__title {
+		&--open .wp-block-coblocks-accordion__title,
+		&.is-selected .wp-block-coblocks-accordion__title {
 			border-radius: $accordion-border-radius $accordion-border-radius 0 0;
 		}
-	}
-
-	&.is-selected .wp-block-coblocks-accordion__title {
-		border-radius: $accordion-border-radius $accordion-border-radius 0 0;
 	}
 
 	.components-toolbar__coblocks-accordion {

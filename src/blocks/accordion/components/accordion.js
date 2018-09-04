@@ -19,6 +19,7 @@ export default class Accordion extends Component {
 		const {
 			attributes,
 			className,
+			isSelected,
 		} = this.props;
 
 		const { title, content, open, titleBackgroundColor, backgroundColor, textColor, textAlign } = attributes;
@@ -33,7 +34,9 @@ export default class Accordion extends Component {
 					} }
 					className={ classnames(
 						className,
-						open ? `${ className }--open` : null,
+						open ? `${ className }--open` : null, {
+							'is-selected': isSelected,
+						}
 					) }
 				>
 					{ this.props.children }
