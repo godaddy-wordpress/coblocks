@@ -87,10 +87,20 @@ const blockAttributes = {
 		type: 'number',
 		default: 2,
 	},
+	featured: {
+		type: 'number',
+		default: 0,
+	},
 	tableBackground: {
 		type: 'string',
 	},
 	tableColor: {
+		type: 'string',
+	},
+	featuredTableBackground: {
+		type: 'string',
+	},
+	featuredTableColor: {
 		type: 'string',
 	},
 	buttonBackground: {
@@ -104,6 +114,14 @@ const blockAttributes = {
 	},
 	customTableColor: {
 		type: 'string',
+	},
+	customFeaturedTableBackground: {
+		type: 'string',
+		default: '#222222',
+	},
+	customFeaturedTableColor: {
+		type: 'string',
+		default: '#ffffff',
 	},
 	customButtonBackground: {
 		type: 'string',
@@ -122,9 +140,7 @@ registerBlockType( 'coblocks/pricing-table', {
 
 	description: __( 'Add pricing tables.' ),
 
-	icon: {
-		src: icons.pricing,
-	},
+	icon: icons.pricing,
 
 	category: 'coblocks',
 
@@ -169,6 +185,7 @@ registerBlockType( 'coblocks/pricing-table', {
 			currency_2,
 			features,
 			features_2,
+			featured,
 			title,
 			title_2,
 			url,
@@ -178,7 +195,7 @@ registerBlockType( 'coblocks/pricing-table', {
 		return (
 
 			<div
-				className={ ' pricing-table pricing-table--' + columns + ' pricing-table--' + contentAlign }
+				className={ ' pricing-table pricing-table--' + columns + ' pricing-table--feature-' + featured + ' pricing-table--' + contentAlign }
 				style={ { textAlign: contentAlign ? contentAlign : null } }
 			>
 				<PricingTable { ...props }
@@ -187,6 +204,7 @@ registerBlockType( 'coblocks/pricing-table', {
 					className={ 'pricing-table__item pricing-table__item--1' }
 					currency={ currency }
 					features={ features }
+					featured={ 1 }
 					title={ title }
 					url={ url }
 				>
@@ -198,6 +216,7 @@ registerBlockType( 'coblocks/pricing-table', {
 						className={ 'pricing-table__item pricing-table__item--2' }
 						currency={ currency_2 }
 						features={ features_2 }
+						featured={ 2 }
 						title={ title_2 }
 						url={ url_2 }
 					>

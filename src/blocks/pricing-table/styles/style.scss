@@ -12,7 +12,7 @@
 			position: relative;
 
 			&:not(.has-background) {
-				background-color: #f0f0f0;
+				background: hsla(240, 5%, 57%, 0.1);
 			}
 		}
 
@@ -67,7 +67,6 @@
 			flex-direction: row;
 			flex-wrap: wrap;
 			flex: 0 1 auto;
-			margin: -0.75rem;
 			position: relative;
 
 			.pricing-table__item {

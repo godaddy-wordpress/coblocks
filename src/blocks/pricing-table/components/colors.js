@@ -10,6 +10,8 @@ const Colors = withColors(
 	'backgroundColor',
 	{ buttonBackground: 'background-color' },
 	{ buttonColor: 'color' },
+	{ featuredTableBackground: 'background-color' },
+	{ featuredTableColor: 'color' },
 	{ tableBackground: 'background-color' },
 	{ tableColor: 'color' },
 );

@@ -10,14 +10,16 @@ import icons from './../../../utils/icons';
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, PanelColor, ContrastChecker } = wp.editor;
-const { PanelBody, withFallbackStyles, Toolbar, RangeControl } = wp.components;
+const { InspectorControls, PanelColor, ContrastChecker, PanelColorSettings } = wp.editor;
+const { PanelBody, withFallbackStyles, Toolbar, RangeControl, SelectControl } = wp.components;
 
 const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 
 	const {
 		buttonBackground,
 		buttonColor,
+		featuredTableBackground,
+		featuredTableColor,
 		tableBackground,
 		tableColor,
 	} = ownProps.attributes;
@@ -32,6 +34,8 @@ const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 		fallbackButtonColor: buttonColor || ! computedStyles ? undefined : computedStyles.color,
 		fallbackTableBackground: tableBackground || ! computedStyles ? undefined : computedStyles.backgroundColor,
 		fallbackTableColor: tableColor || ! computedStyles ? undefined : computedStyles.color,
+		fallbackFeaturedTableBackground: featuredTableBackground || ! computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackFeaturedTableColor: featuredTableColor || ! computedStyles ? undefined : computedStyles.color,
 	};
 } );
 
@@ -48,24 +52,39 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 
 		const {
 			attributes,
-			setAttributes,
-			fallbackButtonBackground,
-			fallbackButtonColor,
-			fallbackTableBackground,
-			fallbackTableColor,
-			setButtonBackground,
-			setButtonColor,
-			setTableBackground,
-			setTableColor,
 			buttonBackground,
 			buttonColor,
+			fallbackButtonBackground,
+			fallbackButtonColor,
+			fallbackFeaturedTableBackground,
+			fallbackFeaturedTableColor,
+			fallbackTableBackground,
+			fallbackTableColor,
+			featuredTableBackground,
+			featuredTableColor,
+			setAttributes,
+			setButtonBackground,
+			setButtonColor,
+			setFeaturedTableBackground,
+			setFeaturedTableColor,
+			setTableBackground,
+			setTableColor,
 			tableBackground,
 			tableColor,
 		} = this.props;
 
 		const {
+			title,
+			title_2,
 			columns,
+			featured,
 		} = attributes;
+
+		const linkOptions = [
+			{ value: 'none', label: __( 'None' ) },
+			{ value: 1, label: title && title.length ? title : __( 'Column 1' ) },
+			{ value: 2, label: title_2 && title_2.length ? title_2 : __( 'Column 2' ) },
+		];
 
 		return (
 			<Fragment>
@@ -87,46 +106,86 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 									} )
 							} ) ) }
 						/>
+						{ columns > 1 && (
+							<SelectControl
+								label={ __( 'Featured Column' ) }
+								value={ featured }
+								options={ linkOptions }
+								onChange={ ( nextFeatured ) => setAttributes( { featured: nextFeatured } ) }
+							/>
+						) }
 					</PanelBody>
-					<PanelColor
-						colorValue={ tableBackground.color }
-						title={ __( 'Background Color' ) }
-						onChange={ setTableBackground }
-					/>
-					<PanelColor
-						colorValue={ tableColor.color }
-						title={ __( 'Text Color' ) }
-						onChange={ setTableColor }
+					{ featured >= 1 && (
+						<PanelColorSettings
+							title={ __( 'Featured Settings' ) }
+							initialOpen={ false }
+							colorSettings={ [
+								{
+									value: featuredTableBackground.color,
+									onChange: setFeaturedTableBackground,
+									label: __( 'Background Color' ),
+								},
+								{
+									value: featuredTableColor.color,
+									onChange: setFeaturedTableColor,
+									label: __( 'Text Color' ),
+								},
+							] }
+						>
+							<ContrastChecker
+								{ ...{
+									textColor: featuredTableColor.color,
+									backgroundColor: featuredTableBackground.color,
+									fallbackFeaturedTableColor,
+									fallbackFeaturedTableBackground,
+								} }
+							/>
+						</PanelColorSettings>
+					) }
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
 						initialOpen={ false }
-					/>
-					{ <ContrastChecker
-						textColor={ tableColor.color }
-						backgroundColor={ tableBackground.color }
-						{ ...{
-							fallbackTableBackground,
-							fallbackTableColor,
-						} }
-					/> }
-					<PanelColor
-						colorValue={ buttonBackground.color }
-						title={ __( 'Button Background' ) }
-						onChange={ setButtonBackground }
-						initialOpen={ false }
-					/>
-					<PanelColor
-						colorValue={ buttonColor.color }
-						title={ __( 'Button Color' ) }
-						onChange={ setButtonColor }
-						initialOpen={ false }
-					/>
-					{ <ContrastChecker
-						textColor={ buttonColor.color }
-						backgroundColor={ buttonBackground.color }
-						{ ...{
-							fallbackButtonBackground,
-							fallbackButtonColor,
-						} }
-					/> }
+						colorSettings={ [
+							{
+								value: tableBackground.color,
+								onChange: setTableBackground,
+								label: __( 'Background Color' ),
+							},
+							{
+								value: tableColor.color,
+								onChange: setTableColor,
+								label: __( 'Text Color' ),
+								initialOpen: false,
+							},
+							{
+								value: buttonBackground.color,
+								onChange: setButtonBackground,
+								label: __( 'Button Background Color' ),
+							},
+							{
+								value: buttonColor.color,
+								onChange: setButtonColor,
+								label: __( 'Button Text Color' ),
+							},
+						] }
+					>
+						<ContrastChecker
+							{ ...{
+								textColor: tableColor.color,
+								backgroundColor: tableBackground.color,
+								fallbackTableColor,
+								fallbackTableBackground,
+							} }
+						/>
+						<ContrastChecker
+							{ ...{
+								textColor: buttonColor.color,
+								backgroundColor: buttonBackground.color,
+								fallbackButtonColor,
+								fallbackButtonBackground,
+							} }
+						/>
+					</PanelColorSettings>
 				</InspectorControls>
 			</Fragment>
 		);

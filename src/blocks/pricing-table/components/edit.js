@@ -31,6 +31,9 @@ export default compose( Colors ) ( class Edit extends Component {
 		this.onFocusButton = this.onFocusButton.bind( this );
 		this.offFocusButton = this.offFocusButton.bind( this );
 		this.onFocusButton_2 = this.onFocusButton_2.bind( this );
+		this.featuredClasses = this.featuredClasses.bind( this );
+		this.featuredStyles = this.featuredStyles.bind( this );
+		this.textStyles = this.textStyles.bind( this );
 
 		this.state = {
 			buttonFocused: false,
@@ -74,22 +77,76 @@ export default compose( Colors ) ( class Edit extends Component {
 		}
 	}
 
+	featuredClasses( column ) {
+		if ( this.props.attributes.featured == column ) {
+			return [
+				classnames( {
+					'is-featured': this.props.attributes.featured == column,
+					'has-background': this.props.featuredTableBackground.color,
+					'has-text-color': this.props.featuredTableColor.color,
+					[ this.props.featuredTableColor.class ]: this.props.featuredTableColor.class,
+					[ this.props.featuredTableBackground.class ]: this.props.featuredTableBackground.class,
+				} )
+			]
+		} else {
+			return [
+				classnames( {
+					'has-background': this.props.tableBackground.color,
+					'has-text-color': this.props.tableColor.color,
+					[ this.props.tableBackground.class ]: this.props.tableBackground.class,
+					[ this.props.tableColor.class ]: this.props.tableColor.class,
+				} )
+			]
+		}
+	}
+
+	featuredStyles( column ) {
+		if ( this.props.attributes.featured == column ) {
+			return {
+				backgroundColor: this.props.featuredTableBackground.color,
+				color: this.props.featuredTableColor.color,
+
+			}
+		} else {
+			return {
+				backgroundColor: this.props.tableBackground.color,
+				color: this.props.tableColor.color,
+			}
+		}
+	}
+
+	textStyles( column ) {
+		if ( this.props.attributes.featured == column ) {
+			return {
+				color: this.props.featuredTableColor.color,
+			}
+		} else {
+			return {
+				color: this.props.tableColor.color,
+			}
+		}
+	}
+
 	render() {
 
 		const {
+			attributes,
 			buttonBackground,
 			buttonColor,
-			tableBackground,
-			tableColor,
-			setButtonBackground,
-			setButtonColor,
-			setTableBackground,
-			setTableColor,
-			attributes,
 			className,
+			featuredTableBackground,
+			featuredTableColor,
 			isSelected,
 			setAttributes,
+			setButtonBackground,
+			setButtonColor,
+			setFeaturedTableBackground,
+			setFeaturedTableColor,
 			setState,
+			setTableBackground,
+			setTableColor,
+			tableBackground,
+			tableColor,
 		} = this.props;
 
 		const {
@@ -103,6 +160,7 @@ export default compose( Colors ) ( class Edit extends Component {
 			currency_2,
 			features,
 			features_2,
+			featured,
 			title,
 			title_2,
 			url,
@@ -123,56 +181,43 @@ export default compose( Colors ) ( class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-
-				<div className={ className + ' pricing-table pricing-table--' + columns + ' pricing-table--' + contentAlign } style={ { textAlign: contentAlign } }>
-
+				<div className={ className + ' pricing-table pricing-table--' + columns + ' pricing-table--feature-' + featured + ' pricing-table--' + contentAlign } style={ { textAlign: contentAlign } }>
 					<div
 						className={ classnames(
-							`pricing-table__item pricing-table__item--1`, {
-								'has-background': tableBackground.color,
-								[ tableBackground.class ]: tableBackground.class,
-								'has-text-color': tableColor.color,
-								[ tableColor.class ]: tableColor.class,
-							}
+							`pricing-table__item pricing-table__item--1`,
+							this.featuredClasses( 1 )
 						) }
-						style={ {
-							backgroundColor: tableBackground.class ? undefined : tableBackground.color,
-							color: tableColor.class ? undefined : tableColor.color,
-						} }
+						style={ this.featuredStyles( 1 ) }
 					>
-
 						<RichText
 							tagName="h4"
 							className={ 'pricing-table__title' }
 							onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
 							unstableOnFocus={ this.offFocusButton }
-							style={ { color: tableColor } }
+							style={ this.textStyles( 1 ) }
 							value={ title }
 							placeholder={ __( 'Plan A' ) }
 							formattingControls={ formattingControls }
 							keepPlaceholderOnFocus
 						/>
-
 						<div className={ 'pricing-table__price' }>
-
 							<RichText
 								tagName='span'
 								className={ 'pricing-table__currency' }
 								onChange={ ( nextCurrency ) => setAttributes( { currency: nextCurrency } ) }
 								unstableOnFocus={ this.offFocusButton }
-								style={ { color: tableColor } }
+								style={ this.textStyles( 1 ) }
 								value={ currency }
 								placeholder={ __( '$' ) }
 								formattingControls={ formattingControls }
 								keepPlaceholderOnFocus
 							/>
-
 							<RichText
 								tagName='h5'
 								className={ 'pricing-table__amount' }
 								onChange={ ( nextAmount ) => setAttributes( { amount: nextAmount } ) }
 								unstableOnFocus={ this.offFocusButton }
-								style={ { color: tableColor } }
+								style={ this.textStyles( 1 ) }
 								value={ amount }
 								placeholder={ __( '99' ) }
 								formattingControls={ formattingControls }
@@ -180,7 +225,6 @@ export default compose( Colors ) ( class Edit extends Component {
 							/>
 
 						</div>
-
 						<RichText
 							tagName='ul'
 							multiline='li'
@@ -188,11 +232,10 @@ export default compose( Colors ) ( class Edit extends Component {
 							onChange={ ( nextFeatures ) => setAttributes( { features: nextFeatures } ) }
 							unstableOnFocus={ this.offFocusButton }
 							value={ features }
-							style={ { color: tableColor } }
+							style={ this.textStyles( 1 ) }
 							placeholder={ __( 'Add features' ) }
 							keepPlaceholderOnFocus
 						/>
-
 						{ ( ( button && button.length > 0 ) || isSelected ) && (
 							<span className={ 'wp-block-button' } title={ button }>
 								<RichText
@@ -207,7 +250,7 @@ export default compose( Colors ) ( class Edit extends Component {
 									) }
 									style={ {
 										backgroundColor: buttonBackground.class ? undefined : buttonBackground.color,
-										color: buttonColor.class ? undefined : buttonColor.color,
+										color: buttonColor.color,
 									} }
 									onChange={ ( nextButton ) => setAttributes( { button: nextButton } ) }
 									unstableOnFocus={ this.onFocusButton }
@@ -222,67 +265,51 @@ export default compose( Colors ) ( class Edit extends Component {
 								/>
 							</span>
 						) }
-
 					</div>
-
 					{ ( columns >= 2 ) && (
-
 						<div
 							className={ classnames(
-								`pricing-table__item pricing-table__item--2`, {
-									'has-background': tableBackground.color,
-									[ tableBackground.class ]: tableBackground.class,
-									'has-text-color': tableColor.color,
-									[ tableColor.class ]: tableColor.class,
-								}
+								`pricing-table__item pricing-table__item--2`,
+								this.featuredClasses( 2 ),
 							) }
-							style={ {
-								backgroundColor: tableBackground.class ? undefined : tableBackground.color,
-								color: tableColor.class ? undefined : tableColor.color,
-							} }
+							style={ this.featuredStyles( 2 ) }
 						>
-
 							<RichText
 								tagName="h4"
 								multiline="false"
 								className={ 'pricing-table__title' }
 								onChange={ ( nextTitle ) => setAttributes( { title_2: nextTitle } ) }
 								unstableOnFocus={ this.offFocusButton }
-								style={ { color: tableColor } }
+								style={ this.textStyles( 2 ) }
 								value={ title_2 }
 								placeholder={ __( 'Plan B' ) }
 								formattingControls={ formattingControls }
 								keepPlaceholderOnFocus
 							/>
-
 							<div className={ 'pricing-table__price' }>
-
 								<RichText
 									tagName='span'
 									className={ 'pricing-table__currency' }
 									onChange={ ( nextCurrency ) => setAttributes( { currency_2: nextCurrency } ) }
 									unstableOnFocus={ this.offFocusButton }
-									style={ { color: tableColor } }
+									style={ this.textStyles( 2 ) }
 									value={ currency_2 }
 									placeholder={ __( '$' ) }
 									formattingControls={ formattingControls }
 									keepPlaceholderOnFocus
 								/>
-
 								<RichText
 									tagName='h5'
 									className={ 'pricing-table__amount' }
 									onChange={ ( nextAmount ) => setAttributes( { amount_2: nextAmount } ) }
 									unstableOnFocus={ this.offFocusButton }
-									style={ { color: tableColor } }
+									style={ this.textStyles( 2 ) }
 									value={ amount_2 }
 									placeholder={ __( '99' ) }
 									formattingControls={ formattingControls }
 									keepPlaceholderOnFocus
 								/>
-
 							</div>
-
 							<RichText
 								tagName='ul'
 								multiline='li'
@@ -290,11 +317,10 @@ export default compose( Colors ) ( class Edit extends Component {
 								onChange={ ( nextFeatures ) => setAttributes( { features_2: nextFeatures } ) }
 								unstableOnFocus={ this.offFocusButton }
 								value={ features_2 }
-								style={ { color: tableColor } }
+								style={ this.textStyles( 2 ) }
 								placeholder={ __( 'Add features' ) }
 								keepPlaceholderOnFocus
 							/>
-
 							{ ( ( button_2 && button_2.length > 0 ) || isSelected ) && (
 								<span className={ 'wp-block-button' } title={ button_2 }>
 									<RichText
@@ -308,8 +334,8 @@ export default compose( Colors ) ( class Edit extends Component {
 											}
 										) }
 										style={ {
-											backgroundColor: buttonBackground.class ? undefined : buttonBackground.color,
-											color: buttonColor.class ? undefined : buttonColor.color,
+											backgroundColor: buttonBackground.color,
+											color: buttonColor.color,
 										} }
 										onChange={ ( nextButton ) => setAttributes( { button_2: nextButton } ) }
 										unstableOnFocus={ this.onFocusButton_2 }

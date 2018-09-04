@@ -42,7 +42,8 @@ export default class Controls extends Component {
 							subscript: count,
 							onClick: () =>
 								setAttributes( {
-									columns: count
+									columns: count,
+									align: count == 2 ? 'wide' : count == 3 ? 'full' : undefined,
 								} )
 						} ) ) }
 					/>
