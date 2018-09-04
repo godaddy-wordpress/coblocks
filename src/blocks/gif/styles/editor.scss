@@ -78,14 +78,19 @@
 	&[data-align="center"] {
 
 		.wp-block-coblocks-gif {
-			margin-left: auto;
-			margin-right: auto;
+			margin-left: auto !important;
+			margin-right: auto !important;
 		}
 
 		&[data-resized="false"] .wp-block-coblocks-gif > div {
-			margin-left: auto;
-			margin-right: auto;
+			margin-left: auto !important;
+			margin-right: auto !important;
 		}
+	}
+
+	.editor-block-list__block-edit figure.is-resized {
+		margin: 0;
+		display: table;
 	}
 
 	figure.wp-block-coblocks-gif {
@@ -97,12 +102,12 @@
 	}
 }
 
-.wp-block-image__resize-handler-right,
-.wp-block-image__resize-handler-bottom,
-.wp-block-image__resize-handler-left {
+.block-library-image__resize-handler-right,
+.block-library-image__resize-handler-bottom,
+.block-library-image__resize-handler-left {
 
 	.wp-block-coblocks-gif.is-focused & {
 		display: block;
-		z-index: z-index(".wp-block-image__resize-handlers");
+		z-index: z-index(".block-library-image__resize-handlers");
 	}
 }

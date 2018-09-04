@@ -177,9 +177,9 @@ export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: '
 										maxHeight={ maxWidth / ratio }
 										lockAspectRatio
 										handleClasses={ {
-											right: 'wp-block-image__resize-handler-right',
-											bottom: 'wp-block-image__resize-handler-bottom',
-											left: 'wp-block-image__resize-handler-left',
+											right: 'block-library-image__resize-handler-right',
+											bottom: 'block-library-image__resize-handler-bottom',
+											left: 'block-library-image__resize-handler-left',
 										} }
 										enable={ {
 											top: false,

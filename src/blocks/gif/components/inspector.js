@@ -36,7 +36,7 @@ export default class Inspector extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( 'Gif Settings' ) }>
 						<TextareaControl
-							label={ __( 'Textual Alternative' ) }
+							label={ __( 'Alt Text (Alternative Text)' ) }
 							value={ alt }
 							onChange={ this.updateAlt }
 							help={ __( 'Describe the purpose of the image. Leave empty if the image is not a key part of the content.' ) }
