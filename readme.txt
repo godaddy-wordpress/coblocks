@@ -83,6 +83,18 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.1.8, September 12, 2018 =
+* New: Refactor Pricing Table block
+* New: Add Pricing Table Item child-block
+* New: Now add up to four pricing tables
+* Fix: Resolve Pricing Table block line height bug
+* Fix: Resolve left/right/center alignment bug in the Gif block
+* Fix: Resolve issue where the unified toolbar displayed some controls oddly
+* Tweak: Update icons to reflect Gutenberg's updated UI
+* Tweak: Update Pricing Table block icons to better represent each button URL field
+* Tweak: Resolve deprecated .value prop in color objects (for Gutenberg 3.9+)
+* Tweak: Update getColorClass to getColorClassName
+
 = 1.1.7, August 29, 2018 =
 * New: Add transforms for improved copy/pasting of CoBlocks blocks
 * New: Add support for color classes in the Dynamic HR block
