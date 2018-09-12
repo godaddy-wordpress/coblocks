@@ -7,7 +7,7 @@ import icons from './../../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { AlignmentToolbar, BlockControls } = wp.editor;
 const { Toolbar, DropdownMenu } = wp.components;
 
@@ -82,45 +82,47 @@ export default class Controls extends Component {
 		}
 
 		return (
-			<BlockControls key="controls">
-				<Toolbar>
-					<DropdownMenu
-						icon= { icon() }
-						label={ __( 'Alert Type' ) }
-						controls={ [
-							{
-								icon: icons.alertFilled,
-								title: __( 'Default' ),
-								onClick: () => { this.styles( '#e2e3e5' ), setAttributes( { type: 'default' } ) },
-							},
-							{
-								icon: icons.info,
-								title: __( 'Info' ),
-								onClick: () => { this.styles( '#cce5ff' ), setAttributes( { type: 'info' } ) },
-							},
-							{
-								icon: icons.success,
-								title: __( 'Success' ),
-								onClick: () => { this.styles( '#d4edda' ), setAttributes( { type: 'success' } ) },
-							},
-							{
-								icon: icons.warning,
-								title: __( 'Warning' ),
-								onClick: () => { this.styles( '#fff3cd' ), setAttributes( { type: 'warning' } ) },
-							},
-							{
-								icon: icons.error,
-								title: __( 'Error' ),
-								onClick: () => { this.styles( '#f8d7da' ), setAttributes( { type: 'error' } ) },
-							},
-						] }
+			<Fragment>
+				<BlockControls>
+					<Toolbar>
+						<DropdownMenu
+							icon= { icon() }
+							label={ __( 'Alert Type' ) }
+							controls={ [
+								{
+									icon: icons.alertFilled,
+									title: __( 'Default' ),
+									onClick: () => { this.styles( '#e2e3e5' ), setAttributes( { type: 'default' } ) },
+								},
+								{
+									icon: icons.info,
+									title: __( 'Info' ),
+									onClick: () => { this.styles( '#cce5ff' ), setAttributes( { type: 'info' } ) },
+								},
+								{
+									icon: icons.success,
+									title: __( 'Success' ),
+									onClick: () => { this.styles( '#d4edda' ), setAttributes( { type: 'success' } ) },
+								},
+								{
+									icon: icons.warning,
+									title: __( 'Warning' ),
+									onClick: () => { this.styles( '#fff3cd' ), setAttributes( { type: 'warning' } ) },
+								},
+								{
+									icon: icons.error,
+									title: __( 'Error' ),
+									onClick: () => { this.styles( '#f8d7da' ), setAttributes( { type: 'error' } ) },
+								},
+							] }
+						/>
+					</Toolbar>
+					<AlignmentToolbar
+						value={ textAlign }
+						onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
 					/>
-				</Toolbar>
-				<AlignmentToolbar
-					value={ textAlign }
-					onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
-				/>
-			</BlockControls>
+				</BlockControls>
+			</Fragment>
 		);
 	}
 }
