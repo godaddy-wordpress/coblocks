@@ -1,36 +1,33 @@
 .editor-block-list__block[data-type="coblocks/pricing-table"] {
 
-	.pricing-table__price {
-		display: flex !important;
+	.wp-block-coblocks-pricing-table {
 
-		.blocks-editable {
-			display: inline-block;
+		&__inner {
+			margin-left: 0 !important;
+			margin-right: 0  !important;
+		}
+
+		.editor-inner-blocks {
+			width: 100%;
+
+			> .editor-block-list__layout {
+				display: flex;
+				height: calc(100% - 36px);
+			}
 		}
 	}
 
-	.pricing-table--right .pricing-table__price {
-		justify-content: flex-end;
-	}
+	&[data-align="wide"],
+	&[data-align="full"] {
 
-	.wp-block-button__link {
-		line-height: 26px;
-	}
-
-	.block-library-button__inline-link {
-		width: 100%;
-		margin-top: 14px;
-
-		> div {
-			width: calc(100% - 72px);
-		}
-
-		.editor-url-input + .editor-url-input {
-			margin-top: 2px;
+		.editor-block-list__block {
+			max-width: none;
 		}
 	}
 }
 
 .coblocks__toolbar--numeral {
+	display: inline-flex;
 
 	.components-button[data-subscript]::after {
 		font-size: 17px;

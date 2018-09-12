@@ -25,31 +25,32 @@ export default class Controls extends Component {
 		} = this.props;
 
 		const {
-			columns,
+			count,
 			contentAlign,
 		} = attributes;
 
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar
-						className="coblocks__toolbar--numeral"
-						controls={ '12'.split( '' ).map( ( count ) => ( {
-							icon: icons.blank,
-							// translators: %s: columns count e.g: "1", "2", "3"
-							title: sprintf( __( '%s Columns' ), count ),
-							isActive: columns == count,
-							subscript: count,
-							onClick: () =>
-								setAttributes( {
-									columns: count,
-									align: count == 2 ? 'wide' : count == 3 ? 'full' : undefined,
-								} )
-						} ) ) }
-					/>
 					<AlignmentToolbar
 						value={ contentAlign }
 						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
+					/>
+					<Toolbar
+						className="coblocks__toolbar--numeral"
+						controls={ '123'.split( '' ).map( ( number ) => ( {
+							icon: icons.blank,
+							// translators: %s: tables count e.g: "1", "2", "3"
+							title: sprintf( __( '%s Tables' ), number ),
+							isActive: count == number,
+							subscript: number,
+							onClick: () =>
+								setAttributes( {
+									count: number,
+									align: number == 1 ? undefined : number == 2 ? 'wide' : number >= 3 ? 'full' : undefined,
+								} )
+							} )
+						) }
 					/>
 				</BlockControls>
 			</Fragment>

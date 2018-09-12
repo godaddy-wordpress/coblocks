@@ -1,0 +1,28 @@
+.editor-block-list__block[data-type="coblocks/pricing-table-item"] {
+	width: 100%;
+
+	.wp-block-coblocks-pricing-table-item {
+		margin: 0;
+	}
+
+	.pricing-table__price {
+		display: flex !important;
+
+		.blocks-editable {
+			display: inline-block;
+		}
+	}
+
+	.block-library-button__inline-link {
+		width: 100%;
+		margin-top: 14px;
+
+		> div {
+			width: calc(100% - 72px);
+		}
+
+		.editor-url-input + .editor-url-input {
+			margin-top: 2px;
+		}
+	}
+}

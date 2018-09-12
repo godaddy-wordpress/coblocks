@@ -18,4 +18,5 @@ import './blocks/gif/index.js';
 import './blocks/gist/index.js';
 import './blocks/highlight/index.js';
 import './blocks/pricing-table/index.js';
+import './blocks/pricing-table-item/index.js';
 import './blocks/social/index.js';

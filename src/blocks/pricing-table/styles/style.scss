@@ -1,75 +1,17 @@
 .wp-block-coblocks-pricing-table {
 
-	.wp-block-button {
-		margin-bottom: 0;
-	}
+	.wp-block-coblocks-pricing-table__inner {
 
-	.pricing-table {
-
-		&__item {
-			margin-bottom: 1rem;
-			padding: 4em 1.8em;
-			position: relative;
-
-			&:not(.has-background) {
-				background: hsla(240, 5%, 57%, 0.1);
-			}
-		}
-
-		&__title {
-			margin-top: 0;
-			margin-right: 0;
-			margin-left: 0;
-			padding: 0;
-		}
-
-		&__price {
-			line-height: 1;
-			position: relative;
-			display: flex;
-		}
-
-		&__currency {
-			font-size: 1em;
-		}
-
-		&__amount {
-			font-size: 5em;
-			letter-spacing: normal;
-			line-height: 1 !important;
-			margin: 0;
-			padding: 0;
-		}
-
-		&__features {
-			margin: 0;
-			padding: 0;
-
-			ul,
-			li {
-				list-style: none;
-				margin: 0;
-				padding: 0;
-			}
-		}
-
-		&__title,
-		&__price,
-		&__features {
-			margin-bottom: 2rem;
-		}
-	}
-
-	@media (min-width: 600px) {
-
-		&.pricing-table.pricing-table--2 {
+		@media (min-width: 600px) {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
 			flex: 0 1 auto;
 			position: relative;
+			margin-left: -0.75rem !important;
+			margin-right: -0.75rem !important;
 
-			.pricing-table__item {
+			.wp-block-coblocks-pricing-table-item {
 				flex-basis: 0;
 				flex-grow: 1;
 				margin: 0.75rem;
@@ -78,11 +20,13 @@
 		}
 	}
 
-	&.pricing-table--center .pricing-table__price {
-		justify-content: center;
-	}
+	@media (min-width: 600px) and (max-width: 1100px) {
 
-	&.pricing-table--right .pricing-table__price {
-		justify-content: flex-end;
+		&.has-4-columns {
+
+			.wp-block-coblocks-pricing-table-item {
+				flex-basis: 40%;
+			}
+		}
 	}
 }

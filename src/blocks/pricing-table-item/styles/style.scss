@@ -1,0 +1,70 @@
+.wp-block-coblocks-pricing-table-item {
+	margin-bottom: 1rem;
+	padding: 4em 1.8em;
+	position: relative;
+
+	&:not(.has-background) {
+		background: hsla(240, 5%, 57%, 0.1);
+	}
+
+	.pricing-table {
+
+		&__title {
+			margin-top: 0;
+			margin-right: 0;
+			margin-left: 0;
+			padding: 0;
+		}
+
+		&__price {
+			line-height: 1;
+			position: relative;
+			display: flex;
+		}
+
+		&__currency {
+			font-size: 1em;
+		}
+
+		&__amount {
+			font-size: 5em;
+			letter-spacing: normal;
+			line-height: 1 !important;
+			margin: 0;
+			padding: 0;
+		}
+
+		&__features {
+			margin: 0;
+			padding: 0;
+			max-width: none;
+
+			ul,
+			li {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+		}
+
+		&__title,
+		&__price,
+		&__features {
+			margin-bottom: 2rem;
+		}
+	}
+
+	.wp-block-button {
+		margin-bottom: 0;
+	}
+}
+
+
+.pricing-table--center .pricing-table__price {
+	justify-content: center;
+}
+
+.pricing-table--right .pricing-table__price {
+	justify-content: flex-end;
+}
+
