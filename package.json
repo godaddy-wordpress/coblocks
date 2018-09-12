@@ -21,6 +21,7 @@
   "dependencies": {
     "cgb-scripts": "1.9.6",
     "classnames": "2.2.5",
+    "memize": "^1.0.5",
     "lodash": "4.17.4",
     "md5": "^2.2.1",
     "moment": "2.21.0",
