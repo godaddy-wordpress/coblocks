@@ -55,7 +55,7 @@ export default class Edit extends Component {
 
 	onSelectImage( media ) {
 		if ( media && media.url ) {
-			this.props.setAttributes( { imgUrl: media.url, imgId: media.id } );
+			this.props.setAttributes( { imgUrl: media.url } );
 		}
 	}
 
@@ -111,10 +111,10 @@ export default class Edit extends Component {
 						<MediaUpload
 							onSelect={ onUploadImage }
 							type="image"
-							value={ imgId }
+							value={ imgUrl }
 							render={ ( { open } ) => (
 								<Button onClick={ open }>
-									{ ! imgId ? <Dashicon icon="format-image" /> :
+									{ ! imgUrl ? <Dashicon icon="format-image" /> :
 										<img
 											className={ `${ className }__avatar-img` }
 											src={ imgUrl }
