@@ -83,6 +83,12 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.1.9, September 17, 2018 =
+* Fix: Click to Tweet display bug on the unified toolbar
+* Fix: The Dynamic Separator is now editable when the unified toolbar is enabled
+* Tweak: Add proper RichText.isEmpty checks
+* Tweak: Add better defaults for the Alert block
+
 = 1.1.8, September 12, 2018 =
 * New: Refactor Pricing Table block
 * New: Add Pricing Table Item child-block
