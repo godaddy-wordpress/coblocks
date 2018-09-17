@@ -18,6 +18,19 @@
 	}
 }
 
+.has-fixed-toolbar {
+
+	.editor-block-list__block[data-type="coblocks/dynamic-separator"]:hover,
+	.wp-block-coblocks-dynamic-separator.is-active {
+		background: #f3f4f5;
+
+		.block-library-spacer__resize-handler-bottom {
+			display: block;
+			margin-bottom: -2px;
+		}
+	}
+}
+
 .editor-block-styles__item-preview {
 
 	.wp-block-coblocks-dynamic-separator {
