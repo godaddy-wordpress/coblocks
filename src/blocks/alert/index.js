@@ -56,10 +56,10 @@ const blockAttributes = {
 	},
 	align: {
 		type: 'string',
-		default: 'center',
 	},
 	textAlign: {
 		type: 'string',
+		default: 'left',
 	},
 	type: {
 		type: 'string',
@@ -205,7 +205,7 @@ registerBlockType( 'coblocks/alert', {
 				className={ backgroundClasses }
 				style={ backgroundStyles }
 			>
-				{ title && title.length > 0 && (
+				{ ! RichText.isEmpty( title ) && (
 					<RichText.Content
 						tagName="p"
 						className={ titleClasses }
@@ -213,7 +213,7 @@ registerBlockType( 'coblocks/alert', {
 						style={ titleStyles }
 					/>
 				) }
-				{ value && (
+				{ ! RichText.isEmpty( value ) && (
 					<RichText.Content
 						tagName="p"
 						className={ textClasses }

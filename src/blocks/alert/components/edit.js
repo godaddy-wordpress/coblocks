@@ -81,7 +81,7 @@ export default compose( Colors ) ( class Edit extends Component {
 						textAlign: textAlign,
 					} }
 				>
-					{ ( ( title && title.length > 0 ) || isSelected ) && (
+					{ ( ! RichText.isEmpty( title ) || isSelected ) && (
 						<RichText
 							tagName="p"
 							placeholder={ __( 'Write title...' ) }

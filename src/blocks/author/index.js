@@ -117,7 +117,7 @@ registerBlockType( 'coblocks/author', {
 						</div>
 					) }
 					<div className={ 'wp-block-coblocks-author__content' }>
-						{ heading && heading.length > 0 && (
+						{ ! RichText.isEmpty( heading ) && (
 							<div className={ 'wp-block-coblocks-author__content-heading' }>
 								<RichText.Content
 									tagName="p"
@@ -125,7 +125,7 @@ registerBlockType( 'coblocks/author', {
 								/>
 							</div>
 						) }
-						{ name && name.length > 0 && (
+						{ ! RichText.isEmpty( name ) && (
 							<div className={ 'wp-block-coblocks-author__content-name' }>
 								<RichText.Content
 									tagName="h3"
@@ -133,7 +133,7 @@ registerBlockType( 'coblocks/author', {
 								/>
 							</div>
 						) }
-						{ biography && biography.length > 0 && (
+						{ ! RichText.isEmpty( biography ) && (
 							<div className={ 'wp-block-coblocks-author__content-biography' }>
 								<RichText.Content
 									tagName="p"
@@ -141,7 +141,7 @@ registerBlockType( 'coblocks/author', {
 								/>
 							</div>
 						) }
-						{ buttonText && buttonText.length > 0 && (
+						{ ! RichText.isEmpty( buttonText ) && (
 							<RichText.Content
 								tagName="a"
 								className={ 'wp-block-coblocks-author__content-button' }

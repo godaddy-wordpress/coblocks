@@ -67,7 +67,7 @@ export default class PricingTable extends Component {
 				} ) }
 				style={ { backgroundColor: tableBackgroundClass ? undefined : this.props.attributes.customTableBackground } }
 			>
-				{ this.props.title && this.props.title.length > 0 && (
+				{ ! RichText.isEmpty( this.props.title ) && (
 					<RichText.Content
 						tagName="h4"
 						className={ classnames( 'pricing-table__title', textClasses ) }
@@ -76,9 +76,9 @@ export default class PricingTable extends Component {
 					/>
 				) }
 
-				{ this.props.amount && this.props.amount.length > 0 && (
+				{ ! RichText.isEmpty( this.props.amount ) && (
 					<div className={ 'pricing-table__price' }>
-						{ this.props.currency && this.props.currency.length > 0 && (
+						{ ! RichText.isEmpty( this.props.currency ) && (
 							<RichText.Content
 								tagName="span"
 								className={ classnames( 'pricing-table__currency', textClasses ) }
@@ -95,7 +95,7 @@ export default class PricingTable extends Component {
 					</div>
 				) }
 
-				{ this.props.features && this.props.features.length > 0 && (
+				{ ! RichText.isEmpty( this.props.features ) && (
 					<RichText.Content
 						tagName="ul"
 						className={ classnames( 'pricing-table__features', textClasses ) }
@@ -104,7 +104,7 @@ export default class PricingTable extends Component {
 					/>
 				) }
 
-				{ this.props.button && this.props.button.length > 0 && (
+				{ ! RichText.isEmpty( this.props.button ) && (
 					<div className={ 'wp-block-button' }>
 						<RichText.Content
 							tagName="a"

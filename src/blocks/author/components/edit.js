@@ -129,7 +129,7 @@ export default class Edit extends Component {
 
 					<div className={ `${ className }__content` }>
 
-						{ ( ( heading && heading.length > 0 ) || isSelected ) && (
+						{ ( ! RichText.isEmpty( heading ) || isSelected ) && (
 							<RichText
 								tagName="p"
 								placeholder={ __( 'Heading...' ) }
@@ -166,7 +166,7 @@ export default class Edit extends Component {
 							/>
 						</div>
 
-						{ ( ( buttonText && buttonText.length > 0 ) || isSelected ) && (
+						{ ( ! RichText.isEmpty( buttonText ) || isSelected ) && (
 							<span className={ `${ className }__content-button` }>
 								<RichText
 									tagName="span"

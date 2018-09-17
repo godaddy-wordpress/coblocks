@@ -135,7 +135,7 @@ registerBlockType( 'coblocks/highlight', {
 
 		return (
 			<Highlighter { ...props }>
-				{ content && content.length > 0 && (
+				{ ! RichText.isEmpty( content ) && (
 					<RichText.Content
 						tagName="mark"
 						className={ classes }
