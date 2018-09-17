@@ -12,6 +12,7 @@ import icons from './../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
+const { RichText } = wp.editor;
 
 /**
  * Block attributes
@@ -93,7 +94,7 @@ registerBlockType( 'coblocks/accordion', {
 		return (
 			<Accordion { ...props }>
 
-				{ title && title.length > 0 && (
+				{ ! RichText.isEmpty( title ) && (
 					<details open={ open }>
 						<summary
 							className={ 'wp-block-coblocks-accordion__title' }
@@ -102,16 +103,23 @@ registerBlockType( 'coblocks/accordion', {
 								color: titleColor
 							} }
 						>
-							<p>{ title }</p>
+							<RichText.Content
+								tagName="p"
+								value={ title }
+							/>
 						</summary>
-						{ content && content.length > 0 && (
+						{ ! RichText.isEmpty( content ) && (
 							<div
 								className={ 'wp-block-coblocks-accordion__content' }
 								style={ {
 									borderColor: titleBackgroundColor
 								} }
 							>
-								<p className={ 'wp-block-coblocks-accordion__text' }>{ content }</p>
+								<RichText.Content
+									tagName="p"
+									className="wp-block-coblocks-accordion__text"
+									value={ content }
+								/>
 							</div>
 						) }
 					</details>
