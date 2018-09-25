@@ -19,7 +19,7 @@ const { RichText } = wp.editor;
  */
 const blockAttributes = {
 	title: {
-		type: 'string',
+		type: 'array',
 		selector: '.wp-block-coblocks-accordion__title',
 	},
 	content: {
