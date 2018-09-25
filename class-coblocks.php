@@ -6,7 +6,7 @@
  * Author: Rich Tabor from CoBlocks
  * Author URI: https://richtabor.com
  * Tags: gutenberg, editor, block, layout, writing
- * Version: 1.1.9
+ * Version: 1.1.10
  * Text Domain: '@@pkg.name'
  * Domain Path: languages
  * Tested up to: @@pkg.tested_up_to
