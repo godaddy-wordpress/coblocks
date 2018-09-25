@@ -83,6 +83,11 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.1.10, September 25, 2018 =
+* New: Gutenberg 3.9 compatibility! 🎊
+* Fix: Resolve attribute issue with italized strings in the Accordion block
+* Fix: Resolve Pricing Table block display issue in Gutenberg 3.9
+
 = 1.1.9, September 17, 2018 =
 * Fix: Click to Tweet display bug on the unified toolbar
 * Fix: The Dynamic Separator is now editable when the unified toolbar is enabled
