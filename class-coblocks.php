@@ -116,7 +116,7 @@ class CoBlocks {
 	}
 
 	/**
-	 * Check if lite is activated.
+	 * Check if pro is activated.
 	 *
 	 * @access public
 	 */
