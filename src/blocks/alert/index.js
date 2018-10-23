@@ -28,7 +28,9 @@ const blockAttributes = {
 	},
 	value: {
 		type: 'array',
+		source: 'children',
 		selector: '.wp-block-coblocks-alert__text',
+		default: [],
 	},
 	backgroundColor: {
 		type: 'string',
@@ -190,7 +192,6 @@ registerBlockType( 'coblocks/alert', {
 		const textClass = getColorClassName( 'color', textColor );
 
 		const textClasses = classnames(
-			props.className,
 			'wp-block-coblocks-alert__text', {
 			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
@@ -205,22 +206,23 @@ registerBlockType( 'coblocks/alert', {
 				className={ backgroundClasses }
 				style={ backgroundStyles }
 			>
-				{ ! RichText.isEmpty( title ) && (
+				{ ! RichText.isEmpty( title ) &&
 					<RichText.Content
 						tagName="p"
 						className={ titleClasses }
 						value={ title }
 						style={ titleStyles }
 					/>
-				) }
-				{ ! RichText.isEmpty( value ) && (
+				}
+				{ ! RichText.isEmpty( value ) &&
 					<RichText.Content
 						tagName="p"
 						className={ textClasses }
 						value={ value }
 						style={ textStyles }
+						// multiline
 					/>
-				) }
+				}
 			</div>
 		);
 	},

@@ -83,7 +83,6 @@ export default compose( Colors ) ( class Edit extends Component {
 				>
 					{ ( ! RichText.isEmpty( title ) || isSelected ) && (
 						<RichText
-							tagName="p"
 							placeholder={ __( 'Write title...' ) }
 							value={ title }
 							className={ classnames(
@@ -100,13 +99,9 @@ export default compose( Colors ) ( class Edit extends Component {
 						/>
 					) }
 					<RichText
-						multiline="p"
-						tagName="p"
-						placeholder={ __( 'Write alert...' ) }
 						value={ value }
-						onMerge={ mergeBlocks }
 						className={ classnames(
-							`${ className }__text`, {
+							`wp-block-coblocks-alert__text`, {
 								'has-text-color': textColor.color,
 								[ textColor.class ]: textColor.class,
 							}
@@ -114,13 +109,12 @@ export default compose( Colors ) ( class Edit extends Component {
 						style={ {
 							color: textColor.color,
 						} }
-						onChange={ ( value ) => setAttributes( { value: value } ) }
-						onRemove={ ( forward ) => {
-							const hasEmptyTitle = ! title || title.length === 0;
-							if ( ! forward && hasEmptyTitle ) {
-								onReplace( [] );
-							}
-						} }
+						onChange={
+							( nextValue ) => setAttributes( {
+								value: nextValue,
+							} )
+						}
+						placeholder={ __( 'Write alert...' ) }
 						keepPlaceholderOnFocus
 					/>
 				</div>
