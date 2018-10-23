@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import ResizableBox from 're-resizable';
 
 /**
  * WordPress dependencies
@@ -10,7 +9,7 @@ import ResizableBox from 're-resizable';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { Placeholder, Spinner, Button } = wp.components;
+const { Placeholder, Spinner, Button, ResizableBox } = wp.components;
 const { registerBlockType } = wp.blocks;
 const { withViewportMatch } = wp.viewport;
 const { withSelect } = wp.data;
@@ -176,11 +175,6 @@ export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: '
 										minHeight={ minHeight }
 										maxHeight={ maxWidth / ratio }
 										lockAspectRatio
-										handleClasses={ {
-											right: 'block-library-image__resize-handler-right',
-											bottom: 'block-library-image__resize-handler-bottom',
-											left: 'block-library-image__resize-handler-left',
-										} }
 										enable={ {
 											top: false,
 											right: showRightHandle,

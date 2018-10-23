@@ -102,12 +102,10 @@
 	}
 }
 
-.block-library-image__resize-handler-right,
-.block-library-image__resize-handler-bottom,
-.block-library-image__resize-handler-left {
 
-	.wp-block-coblocks-gif.is-focused & {
-		display: block;
-		z-index: z-index(".block-library-image__resize-handlers");
-	}
+// Ensure the resize handles are visible when the image is focused.
+.wp-block-coblocks-gif.is-focused .components-resizable-box__handle {
+	display: block;
+	z-index: z-index(".block-library-image__resize-handlers");
 }
+
