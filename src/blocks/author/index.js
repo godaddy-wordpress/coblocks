@@ -20,8 +20,9 @@ const { RichText } = wp.editor;
 const blockAttributes = {
 	biography: {
 		type: 'array',
-		selector: '.wp-block-coblocks-author__content-biography p',
 		source: 'children',
+		selector: '.wp-block-coblocks-author__content-biography-text',
+		default: [],
 	},
 	buttonText: {
 		type: 'string',
@@ -138,6 +139,7 @@ registerBlockType( 'coblocks/author', {
 								<RichText.Content
 									tagName="p"
 									value={ biography }
+									className={ 'wp-block-coblocks-author__content-biography-text' }
 								/>
 							</div>
 						) }

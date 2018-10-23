@@ -110,7 +110,7 @@ export default class Edit extends Component {
 					<div className={ `${ className }__avatar` }>
 						<MediaUpload
 							onSelect={ onUploadImage }
-							type="image"
+							allowedTypes={ [ 'image' ] }
 							value={ imgUrl }
 							render={ ( { open } ) => (
 								<Button onClick={ open }>
@@ -131,6 +131,7 @@ export default class Edit extends Component {
 
 						{ ( ! RichText.isEmpty( heading ) || isSelected ) && (
 							<RichText
+								multiline="false"
 								tagName="p"
 								placeholder={ __( 'Heading...' ) }
 								value={ heading }
@@ -143,6 +144,7 @@ export default class Edit extends Component {
 
 						<div className={ `${ className }__content-name` }>
 							<RichText
+								multiline="false"
 								tagName="h3"
 								placeholder={ __( 'Author Name' ) }
 								value={ name }
@@ -155,14 +157,13 @@ export default class Edit extends Component {
 
 						<div className={ `${ className }__content-biography` }>
 							<RichText
-								multiline="p"
+								multiline="false"
 								tagName="p"
 								placeholder={ __( 'Write biography...' ) }
+								className={ `${ className }__content-biography-text` }
 								value={ biography }
-								onMerge={ mergeBlocks }
 								onChange={ ( value ) => setAttributes( { biography: value } ) }
 								unstableOnFocus={ this.offFocusButton }
-								keepPlaceholderOnFocus
 							/>
 						</div>
 

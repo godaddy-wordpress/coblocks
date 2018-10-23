@@ -38,7 +38,7 @@ export default class Controls extends Component {
 						<Toolbar>
 							<MediaUpload
 								onSelect={ onSelectImage }
-								type="image"
+								allowedTypes={ [ 'image' ] }
 								value={ imgId }
 								render={ ( { open } ) => (
 									<IconButton
