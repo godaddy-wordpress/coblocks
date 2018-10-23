@@ -61,7 +61,7 @@ export default class Edit extends Component {
 
 	addImage( files ) {
 		mediaUpload( {
-			allowedType: 'image',
+			allowedTypes: [ 'image' ],
 			filesList: files,
 			onFileChange: ( [ media ] ) => this.onSelectImage( media ),
 		} );
@@ -92,7 +92,7 @@ export default class Edit extends Component {
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.addImage }
-				label={ __( 'Add avatar' ) }
+				label={ __( 'Drop to add as avatar' ) }
 			/>
 		);
 
