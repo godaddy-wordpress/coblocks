@@ -83,6 +83,12 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.2.0, October 23, 2018 =
+* New: Gutenberg 4.0 compatibility! 🎊
+* Fix: Resolve missing resize handles for the Dynamic HR and Gif blocks
+* Fix: Resolve attribute source 4.0+ issue for the Author, Alert, and Accordion blocks
+* Tweak: Resolve line-height issue on the Pricing Table block buttons
+
 = 1.1.10, September 25, 2018 =
 * New: Gutenberg 3.9 compatibility! 🎊
 * Fix: Resolve attribute issue with italized strings in the Accordion block
