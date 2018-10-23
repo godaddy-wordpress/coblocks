@@ -19,13 +19,14 @@ const { RichText } = wp.editor;
  */
 const blockAttributes = {
 	title: {
-		type: 'array',
+		type: 'string',
 		selector: '.wp-block-coblocks-accordion__title',
 	},
 	content: {
 		type: 'array',
-		selector: '.wp-block-coblocks-accordion__text',
 		source: 'children',
+		selector: '.wp-block-coblocks-accordion__text',
+		default: [],
 	},
 	open: {
 		type: 'boolean',
