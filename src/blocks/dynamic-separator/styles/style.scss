@@ -32,6 +32,7 @@
 		display: block;
 		top: 50%;
 		margin-left: auto;
+		background: currentColor;
 	}
 
 	&.is-style-fullwidth::before {
@@ -43,7 +44,6 @@
 
 		&::before {
 			color: $black;
-			color: currentColor;
 		}
 	}
 
@@ -52,7 +52,6 @@
 
 		&::before {
 			background: $lightgray;
-			background: currentColor;
 		}
 	}
 }
