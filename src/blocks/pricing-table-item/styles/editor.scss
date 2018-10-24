@@ -29,6 +29,10 @@
 		.editor-url-input + .editor-url-input {
 			margin-top: 2px;
 		}
+
+		input[type=text] {
+			width: 100%;
+		}
 	}
 
 	.wp-block-button .editor-rich-text__tinymce {
