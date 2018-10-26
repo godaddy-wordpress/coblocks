@@ -41,68 +41,27 @@
 
 	&__content {
 		flex: 1 1 auto;
-		padding-bottom: 1px;
+	}
 
-		&-heading p {
-			margin: 0 0 1em;
-		}
+	&__heading {
+		margin: 0 0 0.5em;
+		padding: 0;
+	}
 
-		&-name h3 {
-			margin: 0 0 0.5em;
-		}
+	&__name {
+		margin: 0 0 0.5em;
+		padding: 0;
+	}
 
-		&-biography {
-			margin: 0 0 1em;
+	&__biography {
+		margin: 0 0 1em;
 
-			p {
-				margin: 0 0 1.2em;
-
-				&:last-of-type {
-					margin-bottom: 0;
-				}
-			}
+		&:last-of-type {
+			margin-bottom: 0;
 		}
 	}
 
-	&__content-button {
-		appearance: none;
-		border-radius: $accordion-border-radius;
-		border: 1px solid currentColor;
-		box-shadow: none !important;
-		cursor: pointer;
-		display: inline-block;
-		font-size: 14px;
-		font-weight: 400;
-		padding: 0.5em 1.25em;
-		position: relative;
-		text-decoration: none;
-		white-space: normal;
-		word-break: break-all;
-		text-decoration: none !important;
-
-		&:hover {
-			opacity: 0.6;
-		}
-
-		&:active {
-			animation: littlePulse 200ms;
-			animation-timing-function: ease-out;
-			animation-fill-mode: none;
-		}
-	}
-
-	@keyframes littlePulse {
-
-		0% {
-			transform: scale(1);
-		}
-
-		15% {
-			transform: scale(0.95);
-		}
-
-		100% {
-			transform: scale(1);
-		}
+	.wp-block-button {
+		margin: 1em 0 0 0;
 	}
 }

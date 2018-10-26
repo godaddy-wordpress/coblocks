@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Internal dependencies
  */
 import Author from './author';
@@ -9,8 +14,20 @@ import Controls from './controls';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText, MediaUpload, URLInput, mediaUpload } = wp.editor;
+const { RichText, MediaUpload, URLInput, mediaUpload, InnerBlocks } = wp.editor;
 const { Button, Dashicon, IconButton, DropZone } = wp.components;
+
+/**
+ * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
+ * The contents of the array should never change.
+ * The array should contain the name of each block that is allowed.
+ * In standout block, the only block we allow is 'core/list'.
+ *
+ * @constant
+ * @type {string[]}
+*/
+const ALLOWED_BLOCKS = [ 'core/button' ];
+const TEMPLATE = [ [ 'core/button', { text: 'Follow' }, ] ];
 
 /**
  * Block edit function
@@ -81,8 +98,6 @@ export default class Edit extends Component {
 
 		const {
 			biography,
-			buttonText,
-			buttonUrl,
 			heading,
 			imgId,
 			imgUrl,
@@ -128,73 +143,44 @@ export default class Edit extends Component {
 					</div>
 
 					<div className={ `${ className }__content` }>
-
 						{ ( ! RichText.isEmpty( heading ) || isSelected ) && (
 							<RichText
 								multiline="false"
 								tagName="p"
 								placeholder={ __( 'Heading...' ) }
 								value={ heading }
-								className={ `${ className }__content-heading` }
+								className={ `${ className }__heading` }
 								onChange={ ( value ) => setAttributes( { heading: value } ) }
 								unstableOnFocus={ this.offFocusButton }
 								keepPlaceholderOnFocus
 							/>
 						) }
-
-						<div className={ `${ className }__content-name` }>
-							<RichText
-								multiline="false"
-								tagName="h3"
-								placeholder={ __( 'Author Name' ) }
-								value={ name }
-								onMerge={ mergeBlocks }
-								onChange={ ( value ) => setAttributes( { name: value } ) }
-								unstableOnFocus={ this.offFocusButton }
-								keepPlaceholderOnFocus
+						<RichText
+							multiline="false"
+							tagName="h3"
+							placeholder={ __( 'Author Name' ) }
+							value={ name }
+							className={ `${ className }__name` }
+							onMerge={ mergeBlocks }
+							onChange={ ( value ) => setAttributes( { name: value } ) }
+							unstableOnFocus={ this.offFocusButton }
+							keepPlaceholderOnFocus
+						/>
+						<RichText
+							multiline="false"
+							tagName="p"
+							placeholder={ __( 'Write biography...' ) }
+							className={ `${ className }__biography` }
+							value={ biography }
+							onChange={ ( value ) => setAttributes( { biography: value } ) }
+							unstableOnFocus={ this.offFocusButton }
+							keepPlaceholderOnFocus
+						/>
+						<InnerBlocks
+							template={ TEMPLATE }
+							templateLock="all"
+							allowedBlocks={ ALLOWED_BLOCKS }
 							/>
-						</div>
-
-						<div className={ `${ className }__content-biography` }>
-							<RichText
-								multiline="false"
-								tagName="p"
-								placeholder={ __( 'Write biography...' ) }
-								className={ `${ className }__content-biography-text` }
-								value={ biography }
-								onChange={ ( value ) => setAttributes( { biography: value } ) }
-								unstableOnFocus={ this.offFocusButton }
-							/>
-						</div>
-
-						{ ( ! RichText.isEmpty( buttonText ) || isSelected ) && (
-							<span className={ `${ className }__content-button` }>
-								<RichText
-									tagName="span"
-									placeholder={ __( 'Add button...' ) }
-									value={ buttonText }
-									onMerge={ mergeBlocks }
-									className={ `${ className }__content-button-link` }
-									formattingControls={ [] }
-									onChange={ ( value ) => setAttributes( { buttonText: value } ) }
-									unstableOnFocus={ this.onFocusButton }
-									keepPlaceholderOnFocus
-								/>
-							</span>
-						) }
-
-						{ this.state.buttonFocused && isSelected && (
-							<form
-								className="block-library-button__inline-link"
-								onSubmit={ ( event ) => event.preventDefault() }>
-								<Dashicon icon="admin-links" />
-								<URLInput
-									value={ buttonUrl }
-									onChange={ ( value ) => setAttributes( { buttonUrl: value } ) }
-								/>
-								<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
-							</form>
-						) }
 					</div>
 				</Author>
 			</Fragment>

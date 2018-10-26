@@ -1,5 +1,13 @@
 .editor-block-list__block[data-type="coblocks/author"] {
 
+	.editor-inner-blocks {
+
+		.editor-block-list__block-edit {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	}
+
 	.wp-block-coblocks-author {
 		margin: 0;
 
@@ -33,14 +41,11 @@
 			}
 		}
 
-		&__content {
-
-			&-name h3 {
-				margin: 0.2em 0 0.1em 0;
-			}
+		&__name {
+			margin: 0.2em 0 0.1em 0;
 		}
 
-		&__content-button {
+		&__button {
 			cursor: text;
 
 			&:hover {
@@ -57,7 +62,12 @@
 		}
 
 		.block-library-button__inline-link {
-			margin-top: 10px;
+			margin-top: 5px;
+			width: 100%;
+
+			> .dashicon {
+				display: none;
+			}
 		}
 	}
 }

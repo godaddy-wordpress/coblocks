@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Internal dependencies
  */
 import './styles/style.scss';
@@ -12,7 +17,7 @@ import icons from './../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { RichText } = wp.editor;
+const { RichText, InnerBlocks } = wp.editor;
 
 /**
  * Block attributes
@@ -21,20 +26,17 @@ const blockAttributes = {
 	biography: {
 		type: 'array',
 		source: 'children',
-		selector: '.wp-block-coblocks-author__content-biography-text',
+		selector: '.wp-block-coblocks-author__biography',
 		default: [],
-	},
-	buttonText: {
-		type: 'string',
-		selector: '.wp-block-coblocks-author__content-button',
-		default: __( 'Follow' ),
-	},
-	buttonUrl: {
-		type: 'string',
 	},
 	heading: {
 		type: 'string',
-		selector: '.wp-block-coblocks-author__content-heading',
+		selector: '.wp-block-coblocks-author__heading',
+		default: __( 'Written by...' ),
+	},
+	name: {
+		type: 'string',
+		selector: '.wp-block-coblocks-author__name',
 	},
 	imgId: {
 		type: 'number',
@@ -44,10 +46,6 @@ const blockAttributes = {
 		source: 'attribute',
 		attribute: 'src',
 		selector: 'img',
-	},
-	name: {
-		type: 'string',
-		selector: '.wp-block-coblocks-author__content-name',
 	},
 	textAlign: {
 		type: 'string',
@@ -97,8 +95,6 @@ registerBlockType( 'coblocks/author', {
 
 		const {
 			biography,
-			buttonText,
-			buttonUrl,
 			heading,
 			imgUrl,
 			name,
@@ -119,38 +115,27 @@ registerBlockType( 'coblocks/author', {
 					) }
 					<div className={ 'wp-block-coblocks-author__content' }>
 						{ ! RichText.isEmpty( heading ) && (
-							<div className={ 'wp-block-coblocks-author__content-heading' }>
-								<RichText.Content
-									tagName="p"
-									value={ heading }
-								/>
-							</div>
-						) }
-						{ ! RichText.isEmpty( name ) && (
-							<div className={ 'wp-block-coblocks-author__content-name' }>
-								<RichText.Content
-									tagName="h3"
-									value={ name }
-								/>
-							</div>
-						) }
-						{ ! RichText.isEmpty( biography ) && (
-							<div className={ 'wp-block-coblocks-author__content-biography' }>
-								<RichText.Content
-									tagName="p"
-									value={ biography }
-									className={ 'wp-block-coblocks-author__content-biography-text' }
-								/>
-							</div>
-						) }
-						{ ! RichText.isEmpty( buttonText ) && (
 							<RichText.Content
-								tagName="a"
-								className={ 'wp-block-coblocks-author__content-button' }
-								value={ buttonText }
-								href={ buttonUrl }
+								tagName="p"
+								className="wp-block-coblocks-author__heading"
+								value={ heading }
 							/>
 						) }
+						{ ! RichText.isEmpty( name ) && (
+							<RichText.Content
+								tagName="h3"
+								className="wp-block-coblocks-author__name"
+								value={ name }
+							/>
+						) }
+						{ ! RichText.isEmpty( biography ) && (
+							<RichText.Content
+								tagName="p"
+								className="wp-block-coblocks-author__biography"
+								value={ biography }
+							/>
+						) }
+						<InnerBlocks.Content />
 					</div>
 				</Author>
 			);
