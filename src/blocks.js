@@ -10,6 +10,7 @@
  */
 
 import './blocks/accordion/index.js';
+import './blocks/accordion-item/index.js';
 import './blocks/alert/index.js';
 import './blocks/author/index.js';
 import './blocks/click-to-tweet/index.js';

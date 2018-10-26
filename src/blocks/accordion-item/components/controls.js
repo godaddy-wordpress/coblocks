@@ -8,10 +8,10 @@ import icons from './../../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls } = wp.editor;
-const { Toolbar, IconButton } = wp.components;
+const { BlockControls } = wp.editor;
+const { Toolbar } = wp.components;
 
-export default class Controls extends Component {
+class Controls extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -24,7 +24,11 @@ export default class Controls extends Component {
 			setAttributes,
 		} = this.props;
 
-		const { open, textAlign } = attributes;
+		const {
+			title,
+			content,
+			open,
+		} = attributes;
 
 		const customControls = [
 			{
@@ -38,13 +42,11 @@ export default class Controls extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar className="components-toolbar__coblocks-accordion" controls={ customControls } />
-					<AlignmentToolbar
-						value={ textAlign }
-						onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
-					/>
+					<Toolbar className="components-toolbar__block-coblocks-accordion" controls={ customControls } />
 				</BlockControls>
 			</Fragment>
 		);
 	}
 }
+
+export default Controls;

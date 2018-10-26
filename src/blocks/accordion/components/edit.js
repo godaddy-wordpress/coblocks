@@ -1,21 +1,48 @@
 /**
+ * External dependencies
+ */
+import times from 'lodash/times';
+import classnames from 'classnames';
+import memoize from 'memize';
+
+/**
  * Internal dependencies
  */
-import Accordion from './accordion';
 import Inspector from './inspector';
-import Controls from './controls';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText } = wp.editor;
+const { InnerBlocks } = wp.editor;
+
+/**
+ * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
+ * The contents of the array should never change.
+ * The array should contain the name of each block that is allowed.
+ * In standout block, the only block we allow is 'core/list'.
+ *
+ * @constant
+ * @type {string[]}
+*/
+const ALLOWED_BLOCKS = [ 'coblocks/accordion-item' ];
+
+/**
+ * Returns the layouts configuration for a given number of accordion items.
+ *
+ * @param {number} count Number of accordion items.
+ *
+ * @return {Object[]} Columns layout configuration.
+ */
+const getCount = memoize( ( count ) => {
+	return times( count, () => [ 'coblocks/accordion-item' ] );
+} );
 
 /**
  * Block edit function
  */
-export default class Edit extends Component {
+class Edit extends Component {
 
 	render() {
 
@@ -23,64 +50,29 @@ export default class Edit extends Component {
 			attributes,
 			className,
 			isSelected,
-			mergeBlocks,
-			onReplace,
 			setAttributes,
 		} = this.props;
 
-		const { title, content, open, titleBackgroundColor, titleColor, textAlign } = attributes;
+		const {
+			count,
+			contentAlign,
+		} = attributes;
 
 		return [
 			<Fragment>
-				{ isSelected && (
-					<Controls
-						{ ...this.props }
-					/>
-				) }
 				{ isSelected && (
 					<Inspector
 						{ ...this.props }
 					/>
 				) }
-				<Accordion { ...this.props }>
-					<RichText
-						tagName="p"
-						placeholder={ __( 'Add title...' ) }
-						value={ title }
-						className={ `${ className }__title` }
-						style={ {
-							backgroundColor: titleBackgroundColor,
-							color: titleColor,
-						} }
-						onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
-						keepPlaceholderOnFocus
-					/>
-					{ open || isSelected ? (
-						<div
-							className={ `${ className }__content` }
-							style={ {
-								borderColor: titleBackgroundColor,
-							} }
-						>
-							<RichText
-								tagName="p"
-								placeholder={ __( 'Write text...' ) }
-								value={ content }
-								className={ `${ className }__text` }
-								onMerge={ mergeBlocks }
-								onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
-								onRemove={ ( forward ) => {
-									const hasEmptyTitle = ! title || title.length === 0;
-									if ( ! forward && hasEmptyTitle ) {
-										onReplace( [] );
-									}
-								} }
-								keepPlaceholderOnFocus
-							/>
-						</div>
-					) : null }
-				</Accordion>
+				<div className={ className }>
+					<InnerBlocks
+						template={ getCount( count ) }
+						allowedBlocks={ ALLOWED_BLOCKS } />
+				</div>
 			</Fragment>
 		];
 	}
-};
+}
+
+export default Edit;

@@ -3,13 +3,14 @@
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, ColorPalette } = wp.editor;
-const { PanelBody, PanelColor, ToggleControl } = wp.components;
+const { compose } = wp.compose;
+const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
+const { PanelBody, RangeControl } = wp.components;
 
 /**
  * Inspector controls
  */
-export default class Inspector extends Component {
+class Inspector extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -19,51 +20,33 @@ export default class Inspector extends Component {
 
 		const {
 			attributes,
-			setAttributes
+			setAttributes,
 		} = this.props;
 
-		const { open, titleBackgroundColor, titleColor, backgroundColor, textColor } = attributes;
+		const {
+			count,
+		} = attributes;
 
 		return (
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Accordion Settings' ) }>
-						<ToggleControl
-							label={ __( 'Display Open' ) }
-							checked={ !! open }
-							onChange={ () => setAttributes( {  open: ! open } ) }
+						<RangeControl
+							label={ __( 'Accordion Items' ) }
+							value={ count }
+							onChange={ ( nextCount ) => {
+								setAttributes( {
+									count: nextCount,
+								} );
+							} }
+							min={ 1 }
+							max={ 10 }
 						/>
 					</PanelBody>
-					<PanelColor title={ __( 'Title Background Color' ) } colorValue={ titleBackgroundColor } initialOpen={ false }>
-						<ColorPalette
-							label={ __( 'Title Background Color' ) }
-							value={ titleBackgroundColor }
-							onChange={ ( colorValue ) => setAttributes( { titleBackgroundColor: colorValue } ) }
-						/>
-					</PanelColor>
-					<PanelColor title={ __( 'Title Color' ) } colorValue={ titleColor } initialOpen={ false }>
-						<ColorPalette
-							label={ __( 'Title Color' ) }
-							value={ titleColor }
-							onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
-						/>
-					</PanelColor>
-					<PanelColor title={ __( 'Background Color' ) } colorValue={ backgroundColor } initialOpen={ false }>
-						<ColorPalette
-							label={ __( 'Background Color' ) }
-							value={ backgroundColor }
-							onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
-						/>
-					</PanelColor>
-					<PanelColor title={ __( 'Text Color' ) } colorValue={ textColor } initialOpen={ false }>
-						<ColorPalette
-							label={ __( 'Text Color' ) }
-							value={ textColor }
-							onChange={ ( colorValue ) => setAttributes( { textColor: colorValue } ) }
-						/>
-					</PanelColor>
 				</InspectorControls>
 			</Fragment>
 		);
 	}
 }
+
+export default Inspector;

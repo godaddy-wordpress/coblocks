@@ -1,0 +1,24 @@
+.editor-block-list__block[data-type="coblocks/accordion-item"] {
+
+	.wp-block-coblocks-accordion-item {
+		margin-bottom: 0;
+
+		&__title {
+			cursor: inherit;
+			padding: 10px 15px !important;
+
+			&::after {
+				display: none;
+			}
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		&--open .wp-block-coblocks-accordion-item__title,
+		&.is-selected .wp-block-coblocks-accordion-item__title {
+			border-radius: $accordion-border-radius $accordion-border-radius 0 0;
+		}
+	}
+}

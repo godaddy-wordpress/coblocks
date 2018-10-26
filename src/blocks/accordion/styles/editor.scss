@@ -1,27 +1,29 @@
 .editor-block-list__block[data-type="coblocks/accordion"] {
 
-	.wp-block-coblocks-accordion {
-		margin-bottom: 0;
+	.editor-block-list__block[data-type="coblocks/accordion-item"] {
 
-		&__title {
-			cursor: inherit;
-
-			&::after {
-				display: none;
-			}
-
-			&:focus {
-				outline: none;
-			}
-		}
-
-		&--open .wp-block-coblocks-accordion__title,
-		&.is-selected .wp-block-coblocks-accordion__title {
-			border-radius: $accordion-border-radius $accordion-border-radius 0 0;
+		&:not(:last-child) {
+			margin-bottom: -20px;
 		}
 	}
 
-	.components-toolbar__coblocks-accordion {
-		border-left: 0;
+	&[data-align="wide"],
+	&[data-align="full"] {
+
+		.editor-block-list__block {
+			max-width: none;
+		}
+	}
+
+	&[data-align="full"] {
+
+		.wp-block-coblocks-accordion {
+			padding: 0 12px;
+		}
+	}
+
+	.block-list-appender {
+		padding: 18px;
+		padding-top: 0;
 	}
 }
