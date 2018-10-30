@@ -90,7 +90,7 @@ class CoBlocks_Notices {
 		// Return if the 'ThemeBeans' is the theme author.
 		$theme = wp_get_theme();
 
-		if ( 'ThemeBeans' === $theme->get( 'Author' ) ) {
+		if ( 'ThemeBeans' || '<a href="https://themebeans.com">ThemeBeans</a>' === $theme->get( 'Author' ) ) {
 			return;
 		}
 
