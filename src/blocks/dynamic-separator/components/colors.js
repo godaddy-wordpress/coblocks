@@ -6,8 +6,8 @@ const { withColors } = wp.editor;
 /**
  * Generate block colors.
  */
-const Colors = withColors(
+const applyWithColors = withColors(
 	{ color: 'color' },
 );
 
-export default Colors;
+export default applyWithColors;

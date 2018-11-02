@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import Colors from './colors';
+import applyWithColors from './colors';
 
 /**
  * WordPress dependencies
@@ -122,9 +122,9 @@ class Inspector extends Component {
 			</Fragment>
 		);
 	}
-}
+};
 
 export default compose( [
-	Colors,
+	applyWithColors,
 	applyFallbackStyles,
 ] )( Inspector );

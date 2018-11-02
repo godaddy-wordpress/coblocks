@@ -30,7 +30,7 @@ const ContrastCheckerWithFallbackStyles = withFallbackStyles( ( node, ownProps )
 /**
  * Inspector controls
  */
-export default compose( applyWithColors ) ( class Inspector extends Component {
+class Inspector extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -81,4 +81,8 @@ export default compose( applyWithColors ) ( class Inspector extends Component {
 			</Fragment>
 		);
 	}
-} );
+};
+
+export default compose( [
+	applyWithColors,
+] )( Inspector );

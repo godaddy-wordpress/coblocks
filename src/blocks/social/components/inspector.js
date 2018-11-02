@@ -9,7 +9,7 @@ const { PanelBody, RangeControl, PanelColor, ToggleControl } = wp.components;
 /**
  * Inspector controls
  */
-export default class Inspector extends Component {
+class Inspector extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -89,4 +89,6 @@ export default class Inspector extends Component {
 			</Fragment>
 		);
 	}
-}
+};
+
+export default Inspector;

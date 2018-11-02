@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import Colors from './colors';
+import applyWithColors from './colors';
 
 /**
  * WordPress dependencies
@@ -34,7 +34,7 @@ const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 /**
  * Inspector controls
  */
-export default compose( Colors, FallbackStyles ) ( class Inspector extends Component {
+class Inspector extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -94,4 +94,9 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 			</Fragment>
 		);
 	}
-} );
+}
+
+export default compose( [
+	applyWithColors,
+	applyFallbackStyles,
+] )( Inspector );

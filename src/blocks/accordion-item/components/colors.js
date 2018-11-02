@@ -6,12 +6,11 @@ const { withColors } = wp.editor;
 /**
  * Generate block colors.
  */
-const Colors = withColors(
+const applyWithColors = withColors(
 	'backgroundColor',
 	{ titleBackgroundColor: 'background-color' },
-	{ titleColor: 'color' },
 	{ titleColor: 'color' },
 	{ textColor: 'color' },
 );
 
-export default Colors;
+export default applyWithColors;

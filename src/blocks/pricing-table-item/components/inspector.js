@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import Colors from './colors';
+import applyWithColors from './colors';
 import icons from './../../../utils/icons';
 
 /**
@@ -15,10 +15,7 @@ const { PanelBody, withFallbackStyles, Toolbar, RangeControl, SelectControl } = 
 
 const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 
-	const {
-		tableBackground,
-		tableColor,
-	} = ownProps.attributes;
+	const { tableBackground, tableColor } = ownProps.attributes;
 
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 
@@ -34,7 +31,7 @@ const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 /**
  * Inspector controls
  */
-export default compose( Colors, FallbackStyles ) ( class Inspector extends Component {
+class Inspector extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -89,4 +86,9 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 			</Fragment>
 		);
 	}
-} );
+};
+
+export default compose( [
+	applyWithColors,
+	applyFallbackStyles,
+] )( Inspector );
