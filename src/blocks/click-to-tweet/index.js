@@ -204,6 +204,7 @@ const settings = {
 		const tweetUrl = `http://twitter.com/share?&text=${ encodeURIComponent( content ) }&url=${url}${viaUrl}`;
 
 		const textColorClass = getColorClassName( 'color', textColor );
+
 		const fontSizeClass = getFontSizeClass( fontSize );
 
 		const textClasses = classnames( 'wp-block-coblocks-click-to-tweet__text', {
