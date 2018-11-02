@@ -9,8 +9,8 @@ import applyWithColors from './colors';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, PanelColor, ContrastChecker, PanelColorSettings } = wp.editor;
-const { withFallbackStyles } = wp.components;
+const { InspectorControls, ContrastChecker, PanelColorSettings, FontSizePicker, withFontSizes } = wp.editor;
+const { PanelBody, withFallbackStyles } = wp.components;
 
 /**
  * Contrast checker
@@ -18,12 +18,13 @@ const { withFallbackStyles } = wp.components;
 const { getComputedStyle } = window;
 
 const ContrastCheckerWithFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { textColor, backgroundColor } = ownProps;
+	const { textColor, backgroundColor, fontSize, customFontSize } = ownProps;
 	//avoid the use of querySelector if textColor color is known and verify if node is available.
 	const textNode = ! textColor && node ? node.querySelector( '[contenteditable="true"]' ) : null;
 	return {
 		fallbackBackgroundColor: backgroundColor || ! node ? undefined : getComputedStyle( node ).backgroundColor,
 		fallbackTextColor: textColor || ! textNode ? undefined : getComputedStyle( textNode ).color,
+		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
 	};
 } )( ContrastChecker );
 
@@ -47,11 +48,21 @@ class Inspector extends Component {
 			setAttributes,
 			fallbackBackgroundColor,
 			fallbackTextColor,
+			setFontSize,
+			fallbackFontSize,
+			fontSize,
 		} = this.props;
 
 		return (
 			<Fragment>
 				<InspectorControls>
+					<PanelBody title={ __( 'Text Settings' ) } className="blocks-font-size">
+						<FontSizePicker
+							fallbackFontSize={ fallbackFontSize }
+							value={ fontSize.size }
+							onChange={ setFontSize }
+						/>
+					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }
 						initialOpen={ false }

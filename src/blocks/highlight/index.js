@@ -17,7 +17,7 @@ import Edit from './components/edit';
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { RichText, getColorClassName } = wp.editor;
+const { RichText, getColorClassName, getFontSizeClass } = wp.editor;
 
 /**
  * Block constants
@@ -54,6 +54,12 @@ const blockAttributes = {
 	},
 	customTextColor: {
 		type: 'string',
+	},
+	fontSize: {
+		type: 'string',
+	},
+	customFontSize: {
+		type: 'number',
 	},
 };
 
@@ -118,22 +124,28 @@ const settings = {
 			customBackgroundColor,
 			customTextColor,
 			textColor,
+			fontSize,
+			customFontSize,
 		} = props.attributes;
 
 		const textClass = getColorClassName( 'color', textColor );
 
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
+		const fontSizeClass = getFontSizeClass( fontSize );
+
 		const classes = classnames( 'wp-block-coblocks-highlight__content', {
 			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
 			'has-background': backgroundColor || customBackgroundColor,
 			[ backgroundClass ]: backgroundClass,
+			[ fontSizeClass ]: fontSizeClass,
 		} );
 
 		const styles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
+			fontSize: fontSizeClass ? undefined : customFontSize,
 		};
 
 		return (

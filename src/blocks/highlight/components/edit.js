@@ -17,7 +17,7 @@ import Inspector from './inspector';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText } = wp.editor;
+const { RichText, withFontSizes } = wp.editor;
 const { createBlock } = wp.blocks;
 
 /**
@@ -88,6 +88,8 @@ class Edit extends Component {
 			setBackgroundColor,
 			setTextColor,
 			textColor,
+			fallbackFontSize,
+			fontSize,
 		} = this.props;
 
 		const {
@@ -121,11 +123,13 @@ class Edit extends Component {
 								[ backgroundColor.class ]: backgroundColor.class,
 								'has-text-color': textColor.color,
 								[ textColor.class ]: textColor.class,
+								[ fontSize.class ]: fontSize.class,
 							}
 						) }
 						style={ {
 								backgroundColor: backgroundColor.color,
 								color: textColor.color,
+								fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 							} }
 						keepPlaceholderOnFocus
 					/>
@@ -137,4 +141,5 @@ class Edit extends Component {
 
 export default compose( [
 	applyWithColors,
+	withFontSizes( 'fontSize' ),
 ] )( Edit );
