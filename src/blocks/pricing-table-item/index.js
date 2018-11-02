@@ -11,11 +11,22 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
 
 /**
- * Block attributes
+ * Block constants
  */
+const name = 'pricing-table-item';
+
+const title = __( 'Pricing Table Item' );
+
+const icon = icons.accordion;
+
+const keywords = [
+	__( 'landing' ),
+	__( 'comparison' ),
+	__( 'coblocks' ),
+];
+
 const blockAttributes = {
 	title: {
 		source: 'children',
@@ -73,24 +84,17 @@ const blockAttributes = {
 	},
 };
 
-/**
- * Block registration
- */
-registerBlockType( 'coblocks/pricing-table-item', {
+const settings = {
 
-	title: __( 'Pricing Table Item' ),
+	title: title,
 
 	description: __( 'A column placed within the pricing table block.' ),
 
-	icon: icons.pricing,
+	icon: {
+		src: icon,
+	},
 
-	category: 'coblocks',
-
-	keywords: [
-		__( 'landing' ),
-		__( 'comparison' ),
-		__( 'coblocks' ),
-	],
+	keywords: keywords,
 
 	parent: [ 'coblocks/pricing-table' ],
 
@@ -136,4 +140,6 @@ registerBlockType( 'coblocks/pricing-table-item', {
 			</PricingTable>
 		);
 	},
-} );
+};
+
+export { name, title, icon, settings };

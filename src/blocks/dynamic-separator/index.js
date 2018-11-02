@@ -16,12 +16,24 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType, createBlock } = wp.blocks;
+const { createBlock } = wp.blocks;
 const { getColorClassName } = wp.editor;
 
 /**
- * Block attributes
+ * Block constants
  */
+const name = 'dynamic-separator';
+
+const title = __( 'Dynamic HR' );
+
+const icon = icons.hr;
+
+const keywords = [
+	__( 'hr' ),
+	__( 'separator' ),
+	__( 'coblocks' ),
+];
+
 const blockAttributes = {
 	height: {
 		type: 'number',
@@ -35,10 +47,7 @@ const blockAttributes = {
 	},
 };
 
-/**
- * Block registration
- */
-registerBlockType( 'coblocks/dynamic-separator', {
+const settings = {
 
 	title: __( 'Dynamic HR' ),
 
@@ -133,4 +142,7 @@ registerBlockType( 'coblocks/dynamic-separator', {
 			<hr className={ classes } style={ styles }></hr>
 		);
 	},
-} );
+};
+
+export { name, title, icon, settings };
+

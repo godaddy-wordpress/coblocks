@@ -10,7 +10,6 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { Placeholder, Spinner, Button, ResizableBox } = wp.components;
-const { registerBlockType } = wp.blocks;
 const { withViewportMatch } = wp.viewport;
 const { withSelect } = wp.data;
 

@@ -15,12 +15,24 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType, createBlock } = wp.blocks;
+const { createBlock } = wp.blocks;
 const { RichText, getColorClassName } = wp.editor;
 
 /**
- * Block attributes
+ * Block constants
  */
+const name = 'alert';
+
+const title = __( 'Alert' );
+
+const icon = icons.alert;
+
+const keywords = [
+	__( 'notice' ),
+	__( 'message' ),
+	__( 'coblocks' ),
+];
+
 const blockAttributes = {
 	title: {
 		type: 'string',
@@ -69,26 +81,17 @@ const blockAttributes = {
 	},
 };
 
-/**
- * Block registration
- */
-registerBlockType( 'coblocks/alert', {
+const settings = {
 
 	title: __( 'Alert' ),
 
 	description: __( 'Provide contextual feedback messages.' ),
 
 	icon: {
-		src: icons.alert,
+		src: icon,
 	},
 
-	category: 'coblocks',
-
-	keywords: [
-		__( 'notice' ),
-		__( 'message' ),
-		__( 'coblocks' ),
-	],
+	keywords: keywords,
 
 	attributes: blockAttributes,
 
@@ -220,10 +223,11 @@ registerBlockType( 'coblocks/alert', {
 						className={ textClasses }
 						value={ value }
 						style={ textStyles }
-						// multiline
 					/>
 				}
 			</div>
 		);
 	},
-} );
+};
+
+export { name, title, icon, settings };

@@ -27,3 +27,13 @@
 		padding-top: 0;
 	}
 }
+
+.coblocks-logo--svg {
+	fill: currentColor;
+	position: relative;
+
+	&.components-panel__icon {
+		margin-left: 7px;
+		top: 1px;
+	}
+}

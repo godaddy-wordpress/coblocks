@@ -1,23 +1,56 @@
 /**
- * @@pkg.title Blocks
- *
- * All blocks related JavaScript files should be imported here.
- * You can create a new block folder in this dir and include code
- * for that block here as well.
- *
- * All blocks should be included here since this is the file that
- * Webpack is compiling as the input file.
+ * WordPress dependencies
  */
+const { registerBlockType } = wp.blocks;
 
-import './blocks/accordion/index.js';
-import './blocks/accordion-item/index.js';
-import './blocks/alert/index.js';
-import './blocks/author/index.js';
-import './blocks/click-to-tweet/index.js';
-import './blocks/dynamic-separator/index.js';
-import './blocks/gif/index.js';
-import './blocks/gist/index.js';
-import './blocks/highlight/index.js';
-import './blocks/pricing-table/index.js';
-import './blocks/pricing-table-item/index.js';
-import './blocks/social/index.js';
+// Register block category.
+import icons from './utils/block-category';
+
+// Category slug and title.
+const category = {
+	slug: 'coblocks',
+	title: 'CoBlocks',
+};
+
+/**
+ * Register Blocks
+ */
+import * as accordion from './blocks/accordion';
+import * as accordionItem from './blocks/accordion-item';
+import * as alert from './blocks/alert';
+import * as author from './blocks/author';
+import * as clickToTweet from './blocks/click-to-tweet';
+import * as dynamicSeparator from './blocks/dynamic-separator';
+import * as gif from './blocks/gif';
+import * as gist from './blocks/gist';
+import * as highlight from './blocks/highlight';
+import * as pricingTable from './blocks/pricing-table';
+import * as pricingTableItem from './blocks/pricing-table-item';
+import * as social from './blocks/social';
+
+export function registerBlocks () {
+	[
+		accordion,
+		accordionItem,
+		alert,
+		author,
+		clickToTweet,
+		dynamicSeparator,
+		gif,
+		gist,
+		highlight,
+		pricingTable,
+		pricingTableItem,
+		social,
+	].forEach( ( block ) => {
+
+		if ( ! block ) {
+			return;
+		}
+
+		const { name, settings } = block;
+
+		registerBlockType( `coblocks/${ name }`, { category: category.slug, ...settings } );
+	} );
+};
+registerBlocks();

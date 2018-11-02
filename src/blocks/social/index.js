@@ -11,28 +11,33 @@ import icons from './../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { registerBlockType } = wp.blocks;
 
 /**
- * Block registration
+ * Block constants
  */
-registerBlockType( 'coblocks/social', {
+const name = 'social';
 
-	title: __( 'Social ' ),
+const title = __( 'Social' );
+
+const icon = icons.social;
+
+const keywords = [
+	__( 'share' ),
+	__( 'twitter' ),
+	__( 'coblocks' ),
+];
+
+const settings = {
+
+	title: title,
 
 	description: __( 'Add a social sharing module.' ),
 
 	icon: {
-		src: icons.social,
+		src: icon,
 	},
 
-	category: 'coblocks',
-
-	keywords: [
-		__( 'share' ),
-		__( 'twitter' ),
-		__( 'coblocks' ),
-	],
+	keywords: keywords,
 
 	supports: {
 		customClassName: false,
@@ -44,4 +49,6 @@ registerBlockType( 'coblocks/social', {
 	save() {
 		return null;
 	},
-} );
+};
+
+export { name, title, icon, settings };

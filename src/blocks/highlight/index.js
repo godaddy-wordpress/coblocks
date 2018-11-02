@@ -16,12 +16,24 @@ import Edit from './components/edit';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType, createBlock } = wp.blocks;
+const { createBlock } = wp.blocks;
 const { RichText, getColorClassName } = wp.editor;
 
 /**
- * Block attributes
+ * Block constants
  */
+const name = 'highlight';
+
+const title = __( 'Highlight' );
+
+const icon = icons.highlight;
+
+const keywords = [
+	__( 'text' ),
+	__( 'paragraph' ),
+	__( 'coblocks' ),
+];
+
 const blockAttributes = {
 	content: {
 		type: 'array',
@@ -45,26 +57,17 @@ const blockAttributes = {
 	},
 };
 
-/**
- * Block registration
- */
-registerBlockType( 'coblocks/highlight', {
+const settings = {
 
-	title: __( 'Highlight' ),
+	title: title,
 
 	description: __( 'Highlight text.' ),
 
 	icon: {
-		src: icons.highlight,
+		src: icon,
 	},
 
-	category: 'coblocks',
-
-	keywords: [
-		__( 'text' ),
-		__( 'paragraph' ),
-		__( 'coblocks' ),
-	],
+	keywords: keywords,
 
 	attributes: blockAttributes,
 
@@ -146,4 +149,6 @@ registerBlockType( 'coblocks/highlight', {
 			</Highlighter>
 		);
 	},
-} );
+};
+
+export { name, title, icon, settings };

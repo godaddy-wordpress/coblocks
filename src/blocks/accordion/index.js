@@ -15,12 +15,23 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
 const { InnerBlocks } = wp.editor;
 
 /**
- * Block attributes
+ * Block constants
  */
+const name = 'accordion';
+
+const title = __( 'Accordion' );
+
+const icon = icons.accordion;
+
+const keywords = [
+	__( 'tabs' ),
+	__( 'list' ),
+	__( 'coblocks' ),
+];
+
 const blockAttributes = {
 	count: {
 		type: 'number',
@@ -28,26 +39,17 @@ const blockAttributes = {
 	},
 };
 
-/**
- * Block registration
- */
-registerBlockType( 'coblocks/accordion', {
+const settings = {
 
-	title: __( 'Accordion' ),
+	title: title,
 
 	description: __( 'Add an accordion.' ),
 
 	icon: {
-		src: icons.accordion,
+		src: icon,
 	},
 
-	category: 'coblocks',
-
-	keywords: [
-		__( 'tabs' ),
-		__( 'list' ),
-		__( 'coblocks' ),
-	],
+	keywords: keywords,
 
 	attributes: blockAttributes,
 
@@ -65,4 +67,6 @@ registerBlockType( 'coblocks/accordion', {
 			</div>
 		);
 	},
-} );
+};
+
+export { name, title, icon, settings };

@@ -16,12 +16,23 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
 const { RichText, InnerBlocks } = wp.editor;
 
 /**
- * Block attributes
+ * Block constants
  */
+const name = 'author';
+
+const title = __( 'Author' );
+
+const icon = icons.author;
+
+const keywords = [
+	__( 'biography' ),
+	__( 'profile' ),
+	__( 'coblocks' ),
+];
+
 const blockAttributes = {
 	biography: {
 		type: 'array',
@@ -52,26 +63,17 @@ const blockAttributes = {
 	},
 };
 
-/**
- * Block registration
- */
-registerBlockType( 'coblocks/author', {
+const settings = {
 
-	title: __( 'Author' ),
+	title: title,
 
 	description: __( 'Add an author biography.' ),
 
 	icon: {
-		src: icons.author,
+		src: icon,
 	},
 
-	category: 'coblocks',
-
-	keywords: [
-		__( 'biography' ),
-		__( 'profile' ),
-		__( 'coblocks' ),
-	],
+	keywords: keywords,
 
 	attributes: blockAttributes,
 
@@ -142,4 +144,6 @@ registerBlockType( 'coblocks/author', {
 		}
 		return null;
 	},
-} );
+}
+
+export { name, title, icon, settings };

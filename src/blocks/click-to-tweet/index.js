@@ -18,12 +18,24 @@ import FONT_SIZES from './components/font-sizes';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType, createBlock } = wp.blocks;
+const { createBlock } = wp.blocks;
 const { RichText, getColorClassName } = wp.editor;
 
 /**
- * Block attributes
+ * Block constants
  */
+const name = 'click-to-tweet';
+
+const title = __( 'Click to Tweet' );
+
+const icon = icons.twitter;
+
+const keywords = [
+	__( 'social' ),
+	__( 'twitter' ),
+	__( 'coblocks' ),
+];
+
 const blockAttributes = {
 	content: {
 		type: 'array',
@@ -64,26 +76,17 @@ const blockAttributes = {
 	},
 };
 
-/**
- * Block registration
- */
-registerBlockType( 'coblocks/click-to-tweet', {
+const settings = {
 
-	title: __( 'Click to Tweet' ),
+	title: title,
 
 	description: __( 'Add a quote for readers to tweet via Twitter.' ),
 
 	icon: {
-		src: icons.twitter,
+		src: icon,
 	},
 
-	category: 'coblocks',
-
-	keywords: [
-		__( 'social' ),
-		__( 'twitter' ),
-		__( 'coblocks' ),
-	],
+	keywords: keywords,
 
 	attributes: blockAttributes,
 
@@ -253,4 +256,6 @@ registerBlockType( 'coblocks/click-to-tweet', {
 
 		return null;
 	},
-} );
+};
+
+export { name, title, icon, settings };

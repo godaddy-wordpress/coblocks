@@ -15,11 +15,23 @@ import Edit from './components/edit';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType, createBlock } = wp.blocks;
+const { createBlock } = wp.blocks;
 
 /**
- * Block attributes
+ * Block constants
  */
+const name = 'gist';
+
+const title = __( 'Gist' );
+
+const icon = icons.github;
+
+const keywords = [
+	__( 'code' ),
+	__( 'github' ),
+	__( 'coblocks' ),
+];
+
 const blockAttributes = {
 	url: {
 		type: 'string',
@@ -33,26 +45,17 @@ const blockAttributes = {
 	},
 };
 
-/**
- * Block registration
- */
-registerBlockType( 'coblocks/gist', {
+const settings = {
 
-	title: __( 'Gist' ),
+	title: title,
 
 	description: __( 'Embed GitHub gists by adding the gist link.' ),
 
 	icon: {
-		src: icons.github,
+		src: icon,
 	},
 
-	category: 'coblocks',
-
-	keywords: [
-		__( 'code' ),
-		__( 'github' ),
-		__( 'coblocks' ),
-	],
+	keywords: keywords,
 
 	attributes: blockAttributes,
 
@@ -114,4 +117,7 @@ registerBlockType( 'coblocks/gist', {
 
 		);
 	},
-} );
+};
+
+export { name, title, icon, settings };
+

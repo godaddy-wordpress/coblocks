@@ -10,12 +10,22 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
-const { registerBlockType } = wp.blocks;
 
 /**
- * Block attributes
+ * Block constants
  */
+const name = 'gif';
+
+const title = __( 'Gif' );
+
+const icon = icons.gif;
+
+const keywords = [
+	__( 'image' ),
+	__( 'animated' ),
+	__( 'coblocks' ),
+];
+
 const blockAttributes = {
 	url: {
 		attribute: 'src',
@@ -40,26 +50,17 @@ const blockAttributes = {
 	},
 };
 
-/**
- * Block registration
- */
-registerBlockType( 'coblocks/gif', {
+const settings = {
 
-	title: __( 'Gif ' ),
+	title: title,
 
 	description: __( 'Pick a gif, any gif.' ),
 
 	icon: {
-		src: icons.gif,
+		src: icon,
 	},
 
-	category: 'coblocks',
-
-	keywords: [
-		__( 'gif' ),
-		__( 'image' ),
-		__( 'coblocks' ),
-	],
+	keywords: keywords,
 
 	attributes: blockAttributes,
 
@@ -106,4 +107,7 @@ registerBlockType( 'coblocks/gif', {
 
 		return null;
 	},
-} );
+};
+
+export { name, title, icon, settings };
+

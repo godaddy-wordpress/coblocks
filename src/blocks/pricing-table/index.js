@@ -15,12 +15,23 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
 const { InnerBlocks } = wp.editor;
 
 /**
- * Block attributes
+ * Block constants
  */
+const name = 'pricing-table';
+
+const title = __( 'Pricing Table' );
+
+const icon = icons.pricing;
+
+const keywords = [
+	__( 'landing' ),
+	__( 'comparison' ),
+	__( 'coblocks' ),
+];
+
 const blockAttributes = {
 	count: {
 		type: 'number',
@@ -32,24 +43,17 @@ const blockAttributes = {
   	},
 };
 
-/**
- * Block registration
- */
-registerBlockType( 'coblocks/pricing-table', {
+const settings = {
 
-	title: __( 'Pricing Table' ),
+	title: title,
 
 	description: __( 'Add pricing tables.' ),
 
-	icon: icons.pricing,
+	icon: {
+		src: icon,
+	},
 
-	category: 'coblocks',
-
-	keywords: [
-		__( 'landing' ),
-		__( 'comparison' ),
-		__( 'coblocks' ),
-	],
+	keywords: keywords,
 
 	attributes: blockAttributes,
 
@@ -98,4 +102,7 @@ registerBlockType( 'coblocks/pricing-table', {
 			</div>
 		);
 	},
-} );
+};
+
+export { name, title, icon, settings };
+
