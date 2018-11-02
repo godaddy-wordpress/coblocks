@@ -86,6 +86,8 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 = 1.2.0, November XX, 2018 =
 * New: Gutenberg 4.2 compatibility! 🎊
 * New: Accordion block now uses InnerBlocks to generate multiple items
+* New: Add font size controls to the Highlight block
+* Tweak: Improved font size controls for the Click to Tweet block
 * Tweak: Add InnerBlocks button block support to the Author block
 * Tweak: Add InnerBlocks button block support to the Pricing Table block
 * Tweak: Add CoBlocks icon to the block category
