@@ -43,7 +43,7 @@ const getCount = memoize( ( count ) => {
 /**
  * Block edit function
  */
-export default class Edit extends Component {
+class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -97,3 +97,5 @@ export default class Edit extends Component {
 		];
 	}
 };
+
+export default Edit;

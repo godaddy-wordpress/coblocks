@@ -33,7 +33,7 @@ const TEMPLATE = [ [ 'core/button', { text: 'Buy Now' } ] ];
 /**
  * Block edit function
  */
-export default compose( Colors ) ( class Edit extends Component {
+class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -134,4 +134,8 @@ export default compose( Colors ) ( class Edit extends Component {
 			</Fragment>
 		];
 	}
-} );
+};
+
+export default compose( [
+	applyWithColors,
+] )( Edit );

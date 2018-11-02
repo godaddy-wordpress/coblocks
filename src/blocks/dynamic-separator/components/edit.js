@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import Inspector from './inspector';
-import Colors from './colors';
+import applyWithColors from './colors';
 
 /**
  * WordPress dependencies
@@ -20,7 +20,7 @@ const { ResizableBox } = wp.components;
 /**
  * Block edit function
  */
-export default compose( Colors ) ( class Edit extends Component {
+class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -88,4 +88,8 @@ export default compose( Colors ) ( class Edit extends Component {
 			</Fragment>
 		];
 	}
-} );
+};
+
+export default compose( [
+	applyWithColors,
+] )( Edit );

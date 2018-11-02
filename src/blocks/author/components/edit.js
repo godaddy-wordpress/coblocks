@@ -32,7 +32,7 @@ const TEMPLATE = [ [ 'core/button', { text: 'Follow' }, ] ];
 /**
  * Block edit function
  */
-export default class Edit extends Component {
+class Edit extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -187,3 +187,5 @@ export default class Edit extends Component {
 		];
 	}
 };
+
+export default Edit;

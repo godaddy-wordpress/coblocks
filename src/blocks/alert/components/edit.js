@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import Controls from './controls';
 import Inspector from './inspector';
-import Colors from './colors';
+import applyWithColors from './colors';
 
 /**
  * WordPress dependencies
@@ -21,7 +21,7 @@ const { RichText } = wp.editor;
 /**
  * Block edit function
  */
-export default compose( Colors ) ( class Edit extends Component {
+class Edit extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -121,4 +121,8 @@ export default compose( Colors ) ( class Edit extends Component {
 			</Fragment>
 		];
 	}
-} );
+};
+
+export default compose( [
+	applyWithColors,
+] )( Edit );

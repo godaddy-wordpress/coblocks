@@ -23,7 +23,7 @@ const { createBlock } = wp.blocks;
 /**
  * Block edit function
  */
-export default compose( applyWithColors ) ( class Edit extends Component {
+class Edit extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -133,4 +133,8 @@ export default compose( applyWithColors ) ( class Edit extends Component {
 			</Fragment>
 		];
 	}
-} );
+};
+
+export default compose( [
+	applyWithColors,
+] )( Edit );

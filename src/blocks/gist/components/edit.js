@@ -22,7 +22,7 @@ const { withState } = wp.compose;
 /**
  * Block edit function
  */
-export default withState( { preview: false } ) ( class Edit extends Component {
+class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -120,4 +120,8 @@ export default withState( { preview: false } ) ( class Edit extends Component {
 			</Fragment>
 		];
 	}
-} );
+};
+
+export default compose( [
+	withState( { preview: false } ),
+] )( Edit );

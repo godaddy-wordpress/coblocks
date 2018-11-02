@@ -40,7 +40,7 @@ const applyWithSelect = withSelect( ( select ) => {
 /**
  * Block edit function
  */
-export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: 'medium' } ) ) ( class Edit extends Component {
+class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -254,4 +254,9 @@ export default compose( applyWithSelect, withViewportMatch( { isLargeViewport: '
 			]
 		}
 	}
-} );
+};
+
+export default compose( [
+	applyWithSelect,
+	withViewportMatch( { isLargeViewport: 'medium' } ),
+] )( Edit );

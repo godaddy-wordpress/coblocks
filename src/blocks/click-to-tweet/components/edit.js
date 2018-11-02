@@ -34,7 +34,7 @@ const applyWithSelect = withSelect( ( select ) => {
 /**
  * Block edit function
  */
-export default compose( applyWithSelect, applyWithColors, withFontSizes( 'fontSize' ) ) ( class Edit extends Component {
+class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -127,4 +127,10 @@ export default compose( applyWithSelect, applyWithColors, withFontSizes( 'fontSi
 			</Fragment>
 		];
 	}
-} );
+};
+
+export default compose( [
+	applyWithSelect,
+	applyWithColors,
+	withFontSizes( 'fontSize' ),
+] )( Edit );

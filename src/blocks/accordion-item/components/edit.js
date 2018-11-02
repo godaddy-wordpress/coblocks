@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import Inspector from './inspector';
-import Colors from './colors';
+import applyWithColors from './colors';
 import Controls from './controls';
 
 /**
@@ -129,5 +129,5 @@ class Edit extends Component {
 }
 
 export default compose( [
-	Colors,
+	applyWithColors,
 ] )( Edit );
