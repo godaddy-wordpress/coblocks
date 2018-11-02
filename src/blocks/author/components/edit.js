@@ -14,7 +14,7 @@ import Controls from './controls';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText, MediaUpload, URLInput, mediaUpload, InnerBlocks } = wp.editor;
+const { RichText, MediaUpload, mediaUpload, InnerBlocks } = wp.editor;
 const { Button, Dashicon, IconButton, DropZone } = wp.components;
 
 /**
@@ -180,7 +180,7 @@ export default class Edit extends Component {
 							template={ TEMPLATE }
 							templateLock="all"
 							allowedBlocks={ ALLOWED_BLOCKS }
-							/>
+						/>
 					</div>
 				</Author>
 			</Fragment>
