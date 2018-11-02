@@ -107,7 +107,6 @@ class CoBlocks {
 	 * @return void
 	 */
 	private function includes() {
-		require_once $this->_dir . 'includes/class-coblocks-block-category.php';
 
 		if ( is_admin() ) {
 			require_once $this->_dir . 'includes/class-coblocks-notices.php';
