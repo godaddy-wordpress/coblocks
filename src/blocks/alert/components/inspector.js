@@ -16,8 +16,7 @@ const { PanelBody, withFallbackStyles } = wp.components;
  * Contrast checker
  */
 const { getComputedStyle } = window;
-
-const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 
 	const {
 		textColor,

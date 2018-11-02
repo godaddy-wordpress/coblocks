@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import Colors from './colors';
+import applyWithColors from './colors';
 import Inspector from './inspector';
 import icons from './../../../utils/icons';
 

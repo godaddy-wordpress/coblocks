@@ -15,6 +15,7 @@ import Gist from './gist';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
+const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { PlainText } = wp.editor;
 const { withState } = wp.compose;

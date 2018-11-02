@@ -13,7 +13,7 @@ const { compose } = wp.compose;
 const { InspectorControls, PanelColor, ContrastChecker, PanelColorSettings } = wp.editor;
 const { PanelBody, withFallbackStyles, Toolbar, RangeControl, SelectControl } = wp.components;
 
-const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 
 	const { tableBackground, tableColor } = ownProps.attributes;
 

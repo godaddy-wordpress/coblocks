@@ -17,7 +17,7 @@ const { PanelBody, BaseControl, withFallbackStyles } = wp.components;
  */
 const { getComputedStyle } = window;
 
-const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 
 	const { color } = ownProps.attributes;
 
