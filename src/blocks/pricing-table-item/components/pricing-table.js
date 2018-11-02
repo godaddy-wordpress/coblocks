@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { RichText, getColorClassName } = wp.editor;
+const { RichText, getColorClassName, InnerBlocks } = wp.editor;
 
 export default class PricingTable extends Component {
 
@@ -23,35 +23,15 @@ export default class PricingTable extends Component {
 		} = this.props;
 
 		const {
-			buttonBackground,
-			buttonColor,
-			customButtonBackground,
-			customButtonColor,
 			customTableBackground,
 			customTableColor,
 			tableBackground,
 			tableColor,
 		} = attributes;
 
-		// Heading color class and styles.
-		const buttonColorClass = getColorClassName( 'color', buttonColor );
-		const buttonBackgroundClass = getColorClassName( 'background-color', buttonBackground );
+		// Color class and styles.
 		const tableBackgroundClass = getColorClassName( 'background-color', tableBackground );
 		const tableColorClass = getColorClassName( 'color', tableColor );
-
-		// Button color class and styles.
-		const buttonClasses = classnames( {
-				'has-background': buttonBackground || customButtonBackground,
-				[ buttonBackgroundClass ]: buttonBackgroundClass,
-				'has-text-color': buttonColor || customButtonColor,
-				[ buttonColorClass ]: buttonColorClass,
-			}
-		);
-
-		const buttonStyles = {
-			backgroundColor: buttonBackgroundClass ? undefined : customButtonBackground,
-			color: buttonColorClass ? undefined : customButtonColor,
-		};
 
 		const textClasses = classnames( {
 				'has-text-color': this.props.attributes.tableColor || this.props.attributes.customTableColor,
@@ -75,7 +55,6 @@ export default class PricingTable extends Component {
 						style={ { color: tableColorClass ? undefined : this.props.attributes.customTableColor } }
 					/>
 				) }
-
 				{ ! RichText.isEmpty( this.props.amount ) && (
 					<div className={ 'pricing-table__price' }>
 						{ ! RichText.isEmpty( this.props.currency ) && (
@@ -94,7 +73,6 @@ export default class PricingTable extends Component {
 						/>
 					</div>
 				) }
-
 				{ ! RichText.isEmpty( this.props.features ) && (
 					<RichText.Content
 						tagName="ul"
@@ -103,20 +81,7 @@ export default class PricingTable extends Component {
 						style={ { color: tableColorClass ? undefined : this.props.attributes.customTableColor } }
 					/>
 				) }
-
-				{ ! RichText.isEmpty( this.props.button ) && (
-					<div className={ 'wp-block-button' }>
-						<RichText.Content
-							tagName="a"
-							className={ classnames( 'pricing-table__button', 'wp-block-button__link', buttonClasses ) }
-							value={ this.props.button }
-							title={ this.props.button }
-							href={ this.props.url }
-							style={ buttonStyles }
-						/>
-					</div>
-				) }
-
+				<InnerBlocks.Content />
 			</div>
 		);
 	}

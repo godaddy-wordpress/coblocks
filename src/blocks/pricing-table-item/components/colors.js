@@ -8,8 +8,6 @@ const { withColors } = wp.editor;
  */
 const Colors = withColors(
 	'backgroundColor',
-	{ buttonBackground: 'background-color' },
-	{ buttonColor: 'color' },
 	{ tableBackground: 'background-color' },
 	{ tableColor: 'color' },
 );

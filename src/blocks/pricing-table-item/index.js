@@ -46,40 +46,16 @@ const blockAttributes = {
 		source: 'children',
 		selector: '.pricing-table__amount',
 	},
-	button: {
-		type: 'array',
-		source: 'children',
-		selector: '.pricing-table__button',
-	},
-	url: {
-		type: 'string',
-		source: 'attribute',
-		selector: 'a',
-		attribute: 'href',
-		selector: '.pricing-table__button',
-	},
 	tableBackground: {
 		type: 'string',
 	},
 	tableColor: {
 		type: 'string',
 	},
-	buttonBackground: {
-		type: 'string',
-	},
-	buttonColor: {
-		type: 'string',
-	},
 	customTableBackground: {
 		type: 'string',
 	},
 	customTableColor: {
-		type: 'string',
-	},
-	customButtonBackground: {
-		type: 'string',
-	},
-	custombButtonColor: {
 		type: 'string',
 	},
 };
@@ -120,22 +96,18 @@ const settings = {
 
 		const {
 			amount,
-			button,
 			columns,
 			currency,
 			features,
 			title,
-			url,
 		} = props.attributes;
 
 		return (
 			<PricingTable { ...props }
 				amount={ amount }
-				button={ button }
 				currency={ currency }
 				features={ features }
 				title={ title }
-				url={ url }
 			>
 			</PricingTable>
 		);

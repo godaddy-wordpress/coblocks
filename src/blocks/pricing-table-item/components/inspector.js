@@ -16,8 +16,6 @@ const { PanelBody, withFallbackStyles, Toolbar, RangeControl, SelectControl } = 
 const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 
 	const {
-		buttonBackground,
-		buttonColor,
 		tableBackground,
 		tableColor,
 	} = ownProps.attributes;
@@ -28,8 +26,6 @@ const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 
 	return {
-		fallbackButtonBackground: buttonBackground || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackButtonColor: buttonColor || ! computedStyles ? undefined : computedStyles.color,
 		fallbackTableBackground: tableBackground || ! computedStyles ? undefined : computedStyles.backgroundColor,
 		fallbackTableColor: tableColor || ! computedStyles ? undefined : computedStyles.color,
 	};
@@ -48,15 +44,9 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 
 		const {
 			attributes,
-			buttonBackground,
-			buttonColor,
-			fallbackButtonBackground,
-			fallbackButtonColor,
 			fallbackTableBackground,
 			fallbackTableColor,
 			setAttributes,
-			setButtonBackground,
-			setButtonColor,
 			setTableBackground,
 			setTableColor,
 			tableBackground,
@@ -84,16 +74,6 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 								label: __( 'Text Color' ),
 								initialOpen: false,
 							},
-							{
-								value: buttonBackground.color,
-								onChange: setButtonBackground,
-								label: __( 'Button Background Color' ),
-							},
-							{
-								value: buttonColor.color,
-								onChange: setButtonColor,
-								label: __( 'Button Text Color' ),
-							},
 						] }
 					>
 						<ContrastChecker
@@ -102,14 +82,6 @@ export default compose( Colors, FallbackStyles ) ( class Inspector extends Compo
 								backgroundColor: tableBackground.color,
 								fallbackTableColor,
 								fallbackTableBackground,
-							} }
-						/>
-						<ContrastChecker
-							{ ...{
-								textColor: buttonColor.color,
-								backgroundColor: buttonBackground.color,
-								fallbackButtonColor,
-								fallbackButtonBackground,
 							} }
 						/>
 					</PanelColorSettings>

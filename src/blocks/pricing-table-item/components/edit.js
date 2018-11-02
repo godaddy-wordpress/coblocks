@@ -16,8 +16,19 @@ import icons from './../../../utils/icons';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText, URLInput } = wp.editor;
-const { IconButton } = wp.components;
+const { RichText, InnerBlocks } = wp.editor;
+
+/**
+ * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
+ * The contents of the array should never change.
+ * The array should contain the name of each block that is allowed.
+ * In standout block, the only block we allow is 'core/list'.
+ *
+ * @constant
+ * @type {string[]}
+*/
+const ALLOWED_BLOCKS = [ 'core/button' ];
+const TEMPLATE = [ [ 'core/button', { text: 'Buy Now' } ] ];
 
 /**
  * Block edit function
@@ -26,50 +37,15 @@ export default compose( Colors ) ( class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );
-
-		this.onFocusButton = this.onFocusButton.bind( this );
-		this.offFocusButton = this.offFocusButton.bind( this );
-
-		this.state = {
-			buttonFocused: false,
-		};
-	}
-
-	componentDidUpdate( prevProps ) {
-		if ( ! this.props.isSelected && prevProps.isSelected && this.state.buttonFocused ) {
-			this.setState( {
-				buttonFocused: false,
-			} );
-		}
-	}
-
-	onFocusButton() {
-		if ( ! this.state.buttonFocused ) {
-			this.setState( {
-				buttonFocused: true,
-			} );
-		}
-	}
-
-	offFocusButton() {
-		if ( this.state.buttonFocused ) {
-			this.setState( {
-				buttonFocused: false,
-			} );
-		}
 	}
 
 	render() {
 
 		const {
 			attributes,
-			buttonBackground,
-			buttonColor,
 			className,
 			isSelected,
 			setAttributes,
-			setButtonBackground,
-			setButtonColor,
 			setState,
 			setTableBackground,
 			setTableColor,
@@ -79,11 +55,9 @@ export default compose( Colors ) ( class Edit extends Component {
 
 		const {
 			amount,
-			button,
 			currency,
 			features,
 			title,
-			url,
 		} = attributes;
 
 		const formattingControls = [ 'bold', 'italic', 'strikethrough' ];
@@ -113,7 +87,6 @@ export default compose( Colors ) ( class Edit extends Component {
 						tagName="h4"
 						className={ 'pricing-table__title' }
 						onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
-						unstableOnFocus={ this.offFocusButton }
 						style={ { color: tableColor.color } }
 						value={ title }
 						placeholder={ __( 'Plan A' ) }
@@ -125,7 +98,6 @@ export default compose( Colors ) ( class Edit extends Component {
 							tagName='span'
 							className={ 'pricing-table__currency' }
 							onChange={ ( nextCurrency ) => setAttributes( { currency: nextCurrency } ) }
-							unstableOnFocus={ this.offFocusButton }
 							style={ { color: tableColor.color } }
 							value={ currency }
 							placeholder={ __( '$' ) }
@@ -136,65 +108,29 @@ export default compose( Colors ) ( class Edit extends Component {
 							tagName='h5'
 							className={ 'pricing-table__amount' }
 							onChange={ ( nextAmount ) => setAttributes( { amount: nextAmount } ) }
-							unstableOnFocus={ this.offFocusButton }
 							style={ { color: tableColor.color } }
 							value={ amount }
 							placeholder={ __( '99' ) }
 							formattingControls={ formattingControls }
 							keepPlaceholderOnFocus
 						/>
-
 					</div>
 					<RichText
 						tagName='ul'
 						multiline='li'
 						className={ 'pricing-table__features' }
 						onChange={ ( nextFeatures ) => setAttributes( { features: nextFeatures } ) }
-						unstableOnFocus={ this.offFocusButton }
 						value={ features }
 						style={ { color: tableColor.color } }
 						placeholder={ __( 'Add features' ) }
 						keepPlaceholderOnFocus
 					/>
-						<span className={ 'wp-block-button' } title={ button }>
-							<RichText
-								tagName='span'
-								className={ classnames(
-									`pricing-table__button wp-block-button__link`, {
-										'has-background': buttonBackground.color,
-										[ buttonBackground.class ]: buttonBackground.class,
-										'has-text-color': buttonColor.color,
-										[ buttonColor.class ]: buttonColor.class,
-									}
-								) }
-								style={ {
-									backgroundColor: buttonBackground.color,
-									color: buttonColor.color,
-								} }
-								onChange={ ( nextButton ) => setAttributes( { button: nextButton } ) }
-								unstableOnFocus={ this.onFocusButton }
-								value={ button }
-								placeholder={ __( 'Buy Now' ) }
-								formattingControls={ formattingControls }
-								keepPlaceholderOnFocus
-							/>
-						</span>
+					<InnerBlocks
+						template={ TEMPLATE }
+						templateLock="all"
+						allowedBlocks={ ALLOWED_BLOCKS }
+					/>
 				</div>
-				{ this.state.buttonFocused && isSelected && (
-					<form
-						className="block-library-button__inline-link"
-						onSubmit={ ( event ) => event.preventDefault() }
-					>
-						{ icons.link }
-						<div>
-							<URLInput
-								value={ url }
-								onChange={ ( value ) => setAttributes( { url: value } ) }
-							/>
-						</div>
-						<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
-					</form>
-				) }
 			</Fragment>
 		];
 	}
