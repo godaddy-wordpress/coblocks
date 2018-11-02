@@ -12,14 +12,13 @@ import './styles/style.scss';
 import ClickToTweet from './components/click-to-tweet';
 import Edit from './components/edit';
 import icons from './../../utils/icons';
-import FONT_SIZES from './components/font-sizes';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { RichText, getColorClassName } = wp.editor;
+const { RichText, getColorClassName, getFontSizeClass } = wp.editor;
 
 /**
  * Block constants
@@ -204,9 +203,8 @@ const settings = {
 
 		const tweetUrl = `http://twitter.com/share?&text=${ encodeURIComponent( content ) }&url=${url}${viaUrl}`;
 
-		const fontSizeClass = fontSize && `is-${ fontSize }-text`;
-
 		const textColorClass = getColorClassName( 'color', textColor );
+		const fontSizeClass = getFontSizeClass( fontSize );
 
 		const textClasses = classnames( 'wp-block-coblocks-click-to-tweet__text', {
 			'has-text-color': textColor || customTextColor,

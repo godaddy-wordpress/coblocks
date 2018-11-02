@@ -8,7 +8,6 @@ import classnames from 'classnames';
  */
 import applyWithColors from './colors';
 import ClickToTweet from './click-to-tweet';
-import FONT_SIZES from './font-sizes';
 import Inspector from './inspector';
 import Controls from './controls';
 
@@ -18,7 +17,7 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText } = wp.editor;
+const { RichText, withFontSizes } = wp.editor;
 const { withSelect } = wp.data;
 
 /**
@@ -35,11 +34,10 @@ const applyWithSelect = withSelect( ( select ) => {
 /**
  * Block edit function
  */
-export default compose( applyWithSelect, applyWithColors ) ( class Edit extends Component {
+export default compose( applyWithSelect, applyWithColors, withFontSizes( 'fontSize' ) ) ( class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );
-		this.getFontSize = this.getFontSize.bind( this );
 	}
 
 	componentWillReceiveProps( { postLink } ) {
@@ -47,21 +45,6 @@ export default compose( applyWithSelect, applyWithColors ) ( class Edit extends 
 			this.props.setAttributes( {
 				url: postLink
 			} );
-		}
-	}
-
-	getFontSize() {
-		const { customFontSize, fontSize } = this.props.attributes;
-
-		if ( fontSize ) {
-			const fontSizeObj = find( FONT_SIZES, { name: fontSize } );
-			if ( fontSizeObj ) {
-				return fontSizeObj.size;
-			}
-		}
-
-		if ( customFontSize ) {
-			return customFontSize;
 		}
 	}
 
@@ -78,6 +61,7 @@ export default compose( applyWithSelect, applyWithColors ) ( class Edit extends 
 			fallbackButtonColor,
 			fallbackTextColor,
 			fallbackFontSize,
+			fontSize,
 		} = this.props;
 
 		const {
@@ -86,8 +70,6 @@ export default compose( applyWithSelect, applyWithColors ) ( class Edit extends 
 			url,
 			via,
 		} = attributes;
-
-		const fontSize = this.getFontSize();
 
 		return [
 			<Fragment>
@@ -112,11 +94,12 @@ export default compose( applyWithSelect, applyWithColors ) ( class Edit extends 
 							`${ className }__text`, {
 								'has-text-color': textColor.color,
 								[ textColor.class ]: textColor.class,
+								[ fontSize.class ]: fontSize.class,
 							}
 						) }
 						style={ {
 							color: textColor.color,
-							fontSize: fontSize ? fontSize + 'px' : undefined,
+							fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 						} }
 						onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
 						keepPlaceholderOnFocus
