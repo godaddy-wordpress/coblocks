@@ -6,7 +6,7 @@ const { Component, Fragment } = wp.element;
 const { BlockControls, BlockAlignmentToolbar } = wp.editor;
 const { Toolbar, IconButton } = wp.components;
 
-export default class Controls extends Component {
+class Controls extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -53,4 +53,6 @@ export default class Controls extends Component {
 			</Fragment>
 		);
 	}
-}
+};
+
+export default Controls;

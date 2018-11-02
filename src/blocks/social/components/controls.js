@@ -5,7 +5,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { BlockControls, BlockAlignmentToolbar } = wp.editor;
 
-export default class Controls extends Component {
+class Controls extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -32,4 +32,6 @@ export default class Controls extends Component {
 			</Fragment>
 		);
 	}
-}
+};
+
+export default Controls;
