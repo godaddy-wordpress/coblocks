@@ -83,7 +83,7 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
-= 1.2.0, November XX, 2018 =
+= 1.3.0, November 02, 2018 =
 * New: Gutenberg 4.2 compatibility! 🎊
 * New: Accordion block now uses InnerBlocks to generate multiple items
 * New: Add font size controls to the Highlight block
