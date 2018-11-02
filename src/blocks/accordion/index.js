@@ -32,13 +32,6 @@ const keywords = [
 	__( 'coblocks' ),
 ];
 
-const blockAttributes = {
-	count: {
-		type: 'number',
-		default: 2,
-	},
-};
-
 const settings = {
 
 	title: title,
@@ -50,8 +43,6 @@ const settings = {
 	},
 
 	keywords: keywords,
-
-	attributes: blockAttributes,
 
 	supports: {
 		align: [ 'wide', 'full' ],

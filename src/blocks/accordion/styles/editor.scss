@@ -5,6 +5,10 @@
 		&:not(:last-child) {
 			margin-bottom: -20px;
 		}
+
+		.editor-block-list__insertion-point {
+			display: none;
+		}
 	}
 
 	&[data-align="wide"],

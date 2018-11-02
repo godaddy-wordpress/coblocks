@@ -1,9 +1,9 @@
 === CoBlocks - Gutenberg Blocks for Content Marketers ===
-Author URI: https://richtabor.com
+Author URI: https://richtabor.com/coblocks
 Plugin URI: https://coblocks.com
 Contributors: richtabor, coblocks, thatplugincompany, themebeans
 Tags: blocks, gutenberg, editor, page builder, gutenberg blocks
-Requires at least: 4.7.0
+Requires at least: 4.9.0
 Tested up to: @@pkg.tested_up_to
 Requires PHP: 5.2.4
 Stable tag: @@pkg.version
@@ -82,6 +82,15 @@ Yes! CoBlocks' core features are absolutely free.
 Please reach out via the official [support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+= 1.2.0, November XX, 2018 =
+* New: Gutenberg 4.2 compatibility! 🎊
+* New: Accordion block now uses InnerBlocks to generate multiple items
+* Tweak: Add InnerBlocks button block support to the Author block
+* Tweak: Add InnerBlocks button block support to the Pricing Table block
+* Tweak: Add CoBlocks icon to the block category
+* Tweak: Improve block category registration
+* Tweak: Improve how blocks are registered
 
 = 1.2.0, October 23, 2018 =
 * New: Gutenberg 4.0 compatibility! 🎊

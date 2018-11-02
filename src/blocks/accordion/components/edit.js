@@ -6,11 +6,6 @@ import classnames from 'classnames';
 import memoize from 'memize';
 
 /**
- * Internal dependencies
- */
-import Inspector from './inspector';
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -60,14 +55,9 @@ class Edit extends Component {
 
 		return [
 			<Fragment>
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
 				<div className={ className }>
 					<InnerBlocks
-						template={ getCount( count ) }
+						template={ getCount( 2 ) }
 						allowedBlocks={ ALLOWED_BLOCKS } />
 				</div>
 			</Fragment>
