@@ -83,7 +83,7 @@ class CoBlocks_Notices {
 	public function gutenberg_not_installed() {
 		echo '<div class="notice notice-error">';
 
-			echo '<p>' . sprintf( __( '%1$s requires %2$sGutenberg%3$s to be installed and activated.', '@@textdomain' ), esc_html( '@@pkg.title' ), '<strong>', '</strong>' ) . '</p>';
+			echo '<p>' . sprintf( __( '%1$s requires %2$sGutenberg%3$s to be installed and activated.', '@@textdomain' ), esc_html( '@@pkg.title', '@@textdomain' ), '<strong>', '</strong>' ) . '</p>';
 
 			echo '<p>';
 
