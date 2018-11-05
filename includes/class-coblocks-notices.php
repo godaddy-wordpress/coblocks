@@ -68,6 +68,44 @@ class CoBlocks_Notices {
 	public function notices() {
 		add_action( 'admin_init', array( 'PAnD', 'init' ) );
 		add_action( 'admin_notices', array( $this, 'theme_notice' ) );
+
+		if ( ! defined( 'GUTENBERG_VERSION' ) ) {
+			add_action( 'admin_notices', array( $this, 'gutenberg_not_installed' ) );
+		}
+	}
+
+	/**
+	 * Gutenberg is Not Installed Notice.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function gutenberg_not_installed() {
+		echo '<div class="notice notice-error">';
+
+			echo '<p>' . sprintf( __( '%1$s requires %2$sGutenberg%3$s to be installed and activated.', '@@textdomain' ), esc_html( '@@pkg.title', '@@textdomain' ), '<strong>', '</strong>' ) . '</p>';
+
+			echo '<p>';
+
+			if ( ! is_plugin_active( 'gutenberg/gutenberg.php' ) && current_user_can( 'activate_plugin', 'gutenberg/gutenberg.php' ) ) :
+
+				echo '<a href="' . esc_url( wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=gutenberg/gutenberg.php&plugin_status=active' ), 'activate-plugin_gutenberg/gutenberg.php' ) ) . '" class="button button-primary">' . esc_html__( 'Activate Gutenberg', '@@textdomain' ) . '</a>';
+
+			else:
+
+				if ( current_user_can( 'install_plugins' ) ) {
+					$url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=gutenberg' ), 'install-plugin_gutenberg' );
+				} else {
+					$url = 'https://wordpress.org/plugins/gutenberg/';
+				}
+
+				echo '<a href="' . esc_url( $url ) . '" class="button button-primary">' . esc_html__( 'Install Gutenberg', '@@textdomain' ) . '</a>';
+
+			endif;
+
+			echo '</p>';
+
+		echo '</div>';
 	}
 
 	/**
