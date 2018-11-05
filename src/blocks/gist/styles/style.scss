@@ -1,8 +1,13 @@
 .gist {
 	margin-bottom: 1.75em;
 
-	tr {
+	tr,
+	td {
 		border: none;
+	}
+
+	td {
+		border-right: 1px solid #ddd;
 	}
 
 	.gist-file {
