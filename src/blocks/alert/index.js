@@ -47,9 +47,6 @@ const blockAttributes = {
 	backgroundColor: {
 		type: 'string',
 	},
-	borderColor: {
-		type: 'string',
-	},
 	textColor: {
 		type: 'string',
 	},
@@ -60,9 +57,6 @@ const blockAttributes = {
 		type: 'string',
 	},
 	customBackgroundColor: {
-		type: 'string',
-	},
-	customBorderColor: {
 		type: 'string',
 	},
 	titleColor: {
@@ -145,9 +139,7 @@ const settings = {
 		const {
 			align,
 			backgroundColor,
-			borderColor,
 			customBackgroundColor,
-			customBorderColor,
 			customTextColor,
 			customTitleColor,
 			textAlign,
@@ -160,7 +152,6 @@ const settings = {
 
 		// Background color class and styles.
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-		const borderClass = getColorClassName( 'border-color', borderColor );
 
 		const backgroundClasses = classnames(
 			props.className,
@@ -168,12 +159,10 @@ const settings = {
 			`align${ align }`, {
 			'has-background': backgroundColor || customBackgroundColor,
 			[ backgroundClass ]: backgroundClass,
-			[ borderClass ]: borderClass,
 		} );
 
 		const backgroundStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			borderColor: borderClass ? undefined : customBorderColor,
 			textAlign: textAlign,
 		};
 

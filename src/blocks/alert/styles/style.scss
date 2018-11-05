@@ -1,6 +1,5 @@
 .wp-block-coblocks-alert {
 	border-radius: 0.25rem;
-	border: solid 1px #d6d8db;
 	margin-bottom: 1.5em;
 	padding: 1.1em 1.3em;
 	position: relative;
@@ -19,57 +18,13 @@
 		}
 	}
 
-	&.has-pale-pink-border-color {
-		border-color: #f78da7;
-	}
-
-	&.has-vivid-red-border-color {
-		border-color: #cf2e2e;
-	}
-
-	&.has-luminous-vivid-orange-border-color {
-		border-color: #ff6900;
-	}
-
-	&.has-luminous-vivid-amber-border-color {
-		border-color: #fcb900;
-	}
-
-	&.has-light-green-cyan-border-color {
-		border-color: #7bdcb5;
-	}
-
-	&.has-vivid-green-cyan-border-color {
-		border-color: #00d084;
-	}
-
-	&.has-pale-cyan-blue-border-color {
-		border-color: #8ed1fc;
-	}
-
-	&.has-vivid-cyan-blue-border-color {
-		border-color: #0693e3;
-	}
-
-	&.has-very-light-gray-border-color {
-		border-color: #eee;
-	}
-
-	&.has-cyan-bluish-gray-border-color {
-		border-color: #abb8c3;
-	}
-
-	&.has-very-dark-gray-border-color {
-		border-color: #313131;
-	}
-
 	&__title {
+		display: inline-block;
 		font-size: 1.2em;
 		font-weight: 400;
 		line-height: 1;
 		margin-bottom: 0.65em;
 		width: 100%;
-		display: inline-block;
 
 		p {
 			margin-bottom: 0;

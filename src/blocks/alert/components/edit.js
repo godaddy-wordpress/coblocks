@@ -32,14 +32,12 @@ class Edit extends Component {
 		const {
 			attributes,
 			backgroundColor,
-			borderColor,
 			className,
 			isSelected,
 			mergeBlocks,
 			onReplace,
 			setAttributes,
 			setBackgroundColor,
-			setBorderColor,
 			setTextColor,
 			setTitleColor,
 			textColor,
@@ -77,7 +75,6 @@ class Edit extends Component {
 					) }
 					style={ {
 						backgroundColor: backgroundColor.color,
-						borderColor: borderColor.color,
 						textAlign: textAlign,
 					} }
 				>
