@@ -83,6 +83,10 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.3.1, November XX, 2018 =
+* Tweak: Improve Gist block styling
+* Tweak: Add proper help text for the Gist block meta toggle
+
 = 1.3.0, November 02, 2018 =
 * New: Gutenberg 4.2 compatibility! 🎊
 * New: Accordion block now uses InnerBlocks to generate multiple items
