@@ -25,6 +25,10 @@ class Inspector extends Component {
 		this.props.setAttributes( { file: newFile } );
 	}
 
+	getGistMetaHelp( checked ) {
+		return checked ? __( 'Showing gist meta data.' ) : __( 'Toggle to show the gist meta data.' );
+	}
+
 	render() {
 
 		const {
@@ -56,6 +60,7 @@ class Inspector extends Component {
 							label={ __( 'Gist Meta' ) }
 							checked={ !! meta }
 							onChange={ () => setAttributes( {  meta: ! meta } ) }
+							help={ this.getGistMetaHelp }
 						/>
 					</PanelBody>
 				</InspectorControls>
