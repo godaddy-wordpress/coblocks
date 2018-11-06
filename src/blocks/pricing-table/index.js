@@ -77,15 +77,14 @@ const settings = {
 
 	edit: Edit,
 
-	save: function( props ) {
+	save( { attributes } ) {
 
 		const {
 			contentAlign,
 			count,
-		} = props.attributes;
+		} = attributes;
 
 		const classes = classnames(
-			props.className,
 			`has-${ count }-columns`,
 			`pricing-table--${ contentAlign }`,
 		);
