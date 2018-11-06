@@ -115,18 +115,18 @@ const settings = {
 
 	edit: Edit,
 
-	save: function( props ) {
+	save( { attributes } ) {
 
 		const {
 			backgroundColor,
 			content,
 			customBackgroundColor,
+			customFontSize,
 			customTextColor,
-			textColor,
 			fontSize,
 			textAlign,
-			customFontSize,
-		} = props.attributes;
+			textColor,
+		} = attributes;
 
 		const textClass = getColorClassName( 'color', textColor );
 
