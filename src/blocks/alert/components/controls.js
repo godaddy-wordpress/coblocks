@@ -36,19 +36,18 @@ class Controls extends Component {
 			backgroundColor: '',
 			textColor: '',
 			titleColor: '',
-			borderColor: '',
 		} )
 
 		if ( value == '#e2e3e5' ) {
-			this.props.setAttributes( { customTextColor: '#383d41', customTitleColor: '#383d41', customBorderColor: '#d6d8db' } )
+			this.props.setAttributes( { customTextColor: '#383d41', customTitleColor: '#383d41' } )
 		} else if  ( value == '#cce5ff' ) {
-			this.props.setAttributes( { customTextColor: '#004085', customTitleColor: '#004085', customBorderColor: '#b8daff' } )
+			this.props.setAttributes( { customTextColor: '#004085', customTitleColor: '#004085' } )
 		} else if  ( value == '#d4edda' ) {
-			this.props.setAttributes( { customTextColor: '#155724', customTitleColor: '#155724', customBorderColor: '#c3e6cb' } )
+			this.props.setAttributes( { customTextColor: '#155724', customTitleColor: '#155724' } )
 		} else if  ( value == '#f8d7da' ) {
-			this.props.setAttributes( { customTextColor: '#721c24', customTitleColor: '#721c24', customBorderColor: '#f5c6cb' } )
+			this.props.setAttributes( { customTextColor: '#721c24', customTitleColor: '#721c24' } )
 		} else if  ( value == '#fff3cd' ) {
-			this.props.setAttributes( { customTextColor: '#856404', customTitleColor: '#856404', customBorderColor: '#ffeeba' } )
+			this.props.setAttributes( { customTextColor: '#856404', customTitleColor: '#856404' } )
 		}
 	}
 

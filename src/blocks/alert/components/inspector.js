@@ -22,7 +22,6 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 		textColor,
 		titleColor,
 		backgroundColor,
-		borderColor
 	} = ownProps.attributes;
 
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
@@ -34,7 +33,6 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 		fallbackTitleColor: titleColor || ! computedStyles ? undefined : computedStyles.color,
 		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackBorderColor: borderColor || ! computedStyles ? undefined : computedStyles.borderColor,
 	};
 } );
 
@@ -51,9 +49,7 @@ class Inspector extends Component {
 
 		const {
 			backgroundColor,
-			borderColor,
 			fallbackBackgroundColor,
-			fallbackBorderColor,
 			fallbackTextColor,
 			fallbackTitleColor,
 			setBackgroundColor,
@@ -85,11 +81,6 @@ class Inspector extends Component {
 								value: textColor.color,
 								onChange: setTextColor,
 								label: __( 'Text Color' ),
-							},
-							{
-								value: borderColor.color,
-								onChange: setBorderColor,
-								label: __( 'Border Color' ),
 							},
 						] }
 					>
