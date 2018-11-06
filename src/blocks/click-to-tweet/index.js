@@ -9,7 +9,6 @@ import classnames from 'classnames';
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import ClickToTweet from './components/click-to-tweet';
 import Edit from './components/edit';
 import icons from './../../utils/icons';
 
@@ -184,7 +183,7 @@ const settings = {
 
 	edit: Edit,
 
-	save: function( props ) {
+	save( { attributes } ) {
 
 		const {
 			buttonColor,
@@ -195,9 +194,10 @@ const settings = {
 			customFontSize,
 			fontSize,
 			textColor,
+			textAlign,
 			url,
 			via,
-		} = props.attributes;
+		} = attributes;
 
 		const viaUrl = via ? `&via=${via}` : '';
 
@@ -231,8 +231,7 @@ const settings = {
 
 		if ( content && content.length > 0 ) {
 			return (
-				<ClickToTweet { ...props }>
-
+				<blockquote style={ { textAlign: textAlign } }>
 					<RichText.Content
 						tagName="p"
 						className={ textClasses }
@@ -248,8 +247,7 @@ const settings = {
 						href={ tweetUrl }
 						target="_blank"
 					/>
-
-				</ClickToTweet>
+				</blockquote>
 			);
 		}
 

@@ -7,7 +7,6 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import ClickToTweet from './click-to-tweet';
 import Inspector from './inspector';
 import Controls from './controls';
 
@@ -69,6 +68,7 @@ class Edit extends Component {
 			content,
 			url,
 			via,
+			textAlign,
 		} = attributes;
 
 		return [
@@ -83,7 +83,7 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<ClickToTweet { ...this.props }>
+				<blockquote className={ className } style={ { textAlign: textAlign } }>
 					<RichText
 						tagName="p"
 						multiline="false"
@@ -123,7 +123,7 @@ class Edit extends Component {
 						onChange={ ( nextButtonText ) => setAttributes( { buttonText: nextButtonText } ) }
 						keepPlaceholderOnFocus
 					/>
-				</ClickToTweet>
+				</blockquote>
 			</Fragment>
 		];
 	}
