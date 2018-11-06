@@ -9,7 +9,6 @@ import classnames from 'classnames';
 import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './../../utils/icons';
-import Highlighter from './components/highlight';
 import Edit from './components/edit';
 
 /**
@@ -125,6 +124,7 @@ const settings = {
 			customTextColor,
 			textColor,
 			fontSize,
+			textAlign,
 			customFontSize,
 		} = props.attributes;
 
@@ -149,7 +149,7 @@ const settings = {
 		};
 
 		return (
-			<Highlighter { ...props }>
+			<p style={ { textAlign: textAlign } }>
 				{ ! RichText.isEmpty( content ) && (
 					<RichText.Content
 						tagName="mark"
@@ -158,7 +158,7 @@ const settings = {
 						value={ content }
 					/>
 				) }
-			</Highlighter>
+			</p>
 		);
 	},
 };

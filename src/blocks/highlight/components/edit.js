@@ -8,7 +8,6 @@ import classnames from 'classnames';
  */
 import applyWithColors from './colors';
 import Controls from './controls';
-import Highlighter from './highlight';
 import Inspector from './inspector';
 
 /**
@@ -94,6 +93,7 @@ class Edit extends Component {
 
 		const {
 			content,
+			textAlign,
 		} = attributes;
 
 		return [
@@ -108,7 +108,7 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<Highlighter { ...this.props }>
+				<p className={ className } style={ { textAlign: textAlign } }>
 					<RichText
 						tagName="mark"
 						placeholder={ __( 'Add highlighted text...' ) }
@@ -130,10 +130,10 @@ class Edit extends Component {
 								backgroundColor: backgroundColor.color,
 								color: textColor.color,
 								fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
-							} }
+						} }
 						keepPlaceholderOnFocus
 					/>
-				</Highlighter>
+				</p>
 			</Fragment>
 		];
 	}
