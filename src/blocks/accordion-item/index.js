@@ -90,7 +90,7 @@ const settings = {
 
 	edit: Edit,
 
-	save: function( props ) {
+	save( { attributes } ) {
 
 		const {
 			backgroundColor,
@@ -104,7 +104,7 @@ const settings = {
 			titleBackgroundColor,
 			titleColor,
 			textColor,
-		} = props.attributes;
+		} = attributes;
 
 		// Background and text color class and styles.
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );

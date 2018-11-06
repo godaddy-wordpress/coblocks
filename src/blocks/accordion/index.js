@@ -50,10 +50,10 @@ const settings = {
 
 	edit: Edit,
 
-	save: function( props ) {
+	save() {
 
 		return (
-			<div className={ props.className } >
+			<div>
 				<InnerBlocks.Content />
 			</div>
 		);
