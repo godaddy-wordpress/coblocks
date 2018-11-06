@@ -6,7 +6,6 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import Author from './author';
 import Controls from './controls';
 
 /**
@@ -102,6 +101,7 @@ class Edit extends Component {
 			imgId,
 			imgUrl,
 			name,
+			textAlign,
 		} = attributes;
 
 		const dropZone = (
@@ -120,7 +120,7 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<Author { ...this.props }>
+				<div className={ className } style={ { textAlign: textAlign } }>
 					{ dropZone }
 					<div className={ `${ className }__avatar` }>
 						<MediaUpload
@@ -141,7 +141,6 @@ class Edit extends Component {
 						>
 						</MediaUpload>
 					</div>
-
 					<div className={ `${ className }__content` }>
 						{ ( ! RichText.isEmpty( heading ) || isSelected ) && (
 							<RichText
@@ -182,7 +181,7 @@ class Edit extends Component {
 							allowedBlocks={ ALLOWED_BLOCKS }
 						/>
 					</div>
-				</Author>
+				</div>
 			</Fragment>
 		];
 	}

@@ -8,7 +8,6 @@ import classnames from 'classnames';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import Author from './components/author';
 import Edit from './components/edit';
 import icons from './../../utils/icons';
 
@@ -93,7 +92,7 @@ const settings = {
 
 	edit: Edit,
 
-	save: function( props ) {
+	save( { attributes } ) {
 
 		const {
 			biography,
@@ -101,11 +100,11 @@ const settings = {
 			imgUrl,
 			name,
 			textAlign,
-		} = props.attributes;
+		} = attributes;
 
 		if ( name ) {
 			return (
-				<Author { ...props }>
+				<div style={ { textAlign: textAlign } }>
 					{ imgUrl && (
 						<div className={ 'wp-block-coblocks-author__avatar' }>
 							<img
@@ -139,7 +138,7 @@ const settings = {
 						) }
 						<InnerBlocks.Content />
 					</div>
-				</Author>
+				</div>
 			);
 		}
 		return null;
