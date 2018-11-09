@@ -87,6 +87,7 @@ class Edit extends Component {
 					<RichText
 						tagName="p"
 						multiline="false"
+						/* translators: the text of the click to tweet element */
 						placeholder={ __( 'Add a quote to tweet...' ) }
 						value={ content }
 						formattingControls={ [] } // disable controls
@@ -104,7 +105,6 @@ class Edit extends Component {
 						onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
 						keepPlaceholderOnFocus
 					/>
-
 					<RichText
 						tagName="span"
 						multiline="false"

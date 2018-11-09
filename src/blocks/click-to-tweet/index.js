@@ -18,6 +18,7 @@ import icons from './../../utils/icons';
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
 const { RichText, getColorClassName, getFontSizeClass } = wp.editor;
+const { join, split, create, toHTMLString } = wp.richText;
 
 /**
  * Block constants
@@ -36,8 +37,8 @@ const keywords = [
 
 const blockAttributes = {
 	content: {
-		type: 'array',
-		source: 'children',
+		type: 'string',
+		source: 'html',
 		selector: 'p',
 		default: [],
 	},
@@ -93,49 +94,36 @@ const settings = {
 			{
 				type: 'block',
 				blocks: [ 'core/paragraph' ],
-				transform: ( { content } ) => {
-					return createBlock( 'coblocks/click-to-tweet', { content: content } );
+				transform: ( { content } ) => createBlock( `coblocks/${ name }`, {
+					content: content,
+				} ),
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/pullquote' ],
+				transform: ( { value, ...attrs } ) => {
+
+					const pieces = split( create( { html: value, multilineTag: 'p' } ), '\u2028' );
+
+					return [
+						createBlock( `coblocks/${ name }`, {
+							content: toHTMLString( { value: pieces[ 0 ] } ),
+						} ),
+					];
 				},
 			},
 			{
 				type: 'block',
 				blocks: [ 'core/quote' ],
-				transform: ( { value, citation } ) => {
-					// transforming an empty click to share element
-					if ( ( ! value || ! value.length ) && ! citation ) {
-						return createBlock( 'coblocks/click-to-tweet' );
-					}
-					// transforming a click to share element with content
-					return ( value || [] ).map( item => createBlock( 'coblocks/click-to-tweet', {
-						content: [ get( item, 'children.props.children', '' ) ],
-					} ) ).concat( citation ? createBlock( 'core/paragraph', {
-						content: citation,
-					} ) : [] );
-				},
-			},
-			{
-				type: 'block',
-				blocks: [ 'core/pullquote' ],
-				transform: ( { value, citation } ) => {
-					// transforming an empty click to share element
-					if ( ( ! value || ! value.length ) && ! citation ) {
-						return createBlock( 'coblocks/click-to-tweet' );
-					}
-					// transforming a click to share element with content
-					return ( value || [] ).map( item => createBlock( 'coblocks/click-to-tweet', {
-						content: [ get( item, 'children.props.children', '' ) ],
-					} ) ).concat( citation ? createBlock( 'core/paragraph', {
-						content: citation,
-					} ) : [] );
-				},
-			},
-			{
-				type: 'raw',
-				selector: 'blockquote.wp-block-coblocks-click-to-tweet',
-				schema: {
-					blockquote: {
-						classes: [ 'wp-block-coblocks-click-to-tweet' ],
-					},
+				transform: ( { value, ...attrs } ) => {
+
+					const pieces = split( create( { html: value, multilineTag: 'p' } ), '\u2028' );
+
+					return [
+						createBlock( `coblocks/${ name }`, {
+							content: toHTMLString( { value: pieces[ 0 ] } ),
+						} ),
+					];
 				},
 			},
 		],
@@ -143,40 +131,23 @@ const settings = {
 			{
 				type: 'block',
 				blocks: [ 'core/paragraph' ],
-				transform: ( { content } ) => {
-					// transforming an empty click to share element
-					if ( ! content || ! content.length ) {
-						return createBlock( 'core/paragraph' );
-					}
-					// transforming a click to share element with content
-					return ( content || [] ).map( item => createBlock( 'core/paragraph', {
-						content: content,
-					} ) );
-				},
-			},
-			{
-				type: 'block',
-				blocks: [ 'core/quote' ],
-				transform: ( { content } ) => {
-					// transforming a click to share element with content
-					return createBlock( 'core/quote', {
-						value: [
-							{ children: <p key="1">{ content }</p> },
-						],
-					} );
-				},
+				transform: ( { content } ) => createBlock( 'core/paragraph', {
+					content: content,
+				} ),
 			},
 			{
 				type: 'block',
 				blocks: [ 'core/pullquote' ],
-				transform: ( { content } ) => {
-					// transforming a click to share element with content
-					return createBlock( 'core/pullquote', {
-						value: [
-							{ children: <p key="1">{ content }</p> },
-						],
-					} );
-				},
+				transform: ( { content } ) => createBlock( 'core/pullquote', {
+					value: `<p>${ content }</p>`,
+				} ),
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/quote' ],
+				transform: ( { content } ) => createBlock( 'core/quote', {
+					value: `<p>${ content }</p>`,
+				} ),
 			},
 		],
 	},
@@ -229,8 +200,8 @@ const settings = {
 			backgroundColor: buttonColorClass ? undefined : customButtonColor,
 		};
 
-		if ( content && content.length > 0 ) {
-			return (
+		return (
+			! RichText.isEmpty( content ) && (
 				<blockquote style={ { textAlign: textAlign } }>
 					<RichText.Content
 						tagName="p"
@@ -238,7 +209,6 @@ const settings = {
 						style={ textStyles }
 						value={ content }
 					/>
-
 					<RichText.Content
 						tagName="a"
 						className={ buttonClasses }
@@ -248,10 +218,8 @@ const settings = {
 						target="_blank"
 					/>
 				</blockquote>
-			);
-		}
-
-		return null;
+			)
+		);
 	},
 };
 
