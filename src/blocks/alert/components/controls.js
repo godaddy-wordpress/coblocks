@@ -18,17 +18,6 @@ class Controls extends Component {
 		this.styles = this.styles.bind( this );
 	}
 
-	componentDidMount() {
-
-		const { customBackgroundColor } = this.props.attributes;
-
-		if ( customBackgroundColor ) {
-			return;
-		}
-
-		this.styles( '#e2e3e5' )
-	}
-
 	styles( value ) {
 
 		this.props.setAttributes( {

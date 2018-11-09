@@ -4,47 +4,46 @@
 	.components-toolbar {
 		transform: translate3d(0, 0, 0);
 	}
+}
 
-	.wp-block-coblocks-click-to-tweet {
-		margin: 0;
+.wp-block-coblocks-click-to-tweet {
 
-		a {
-			pointer-events: none;
+	a {
+		pointer-events: none;
+	}
+
+	&__twitter-btn {
+		line-height: 34px;
+		margin-left: 40px;
+		margin-top: 15px;
+
+		&:active::before {
+			animation: none;
 		}
 
-		&__twitter-btn {
-			line-height: 34px;
-			margin-left: 40px;
-			margin-top: 15px;
-
-			&:active::before {
-				animation: none;
-			}
-
-			&[data-is-placeholder-visible="true"] {
-				max-width: 128px;
-			}
+		&[data-is-placeholder-visible="true"] {
+			max-width: 128px;
 		}
+	}
 
-		&__via {
-			margin: 4px;
-			padding-top: 4px;
-			padding-bottom: 4px;
-		}
+	&__via {
+		margin: 4px;
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
 
-		&__via-label {
-			align-items: center;
-			display: flex;
-			flex-basis: 0;
-			font-size: 12px;
-			padding-left: 5px;
-			padding-right: 2px;
-			white-space: nowrap;
+	&__via-label {
+		align-items: center;
+		display: flex;
+		flex-basis: 0;
+		font-size: 12px;
+		padding-left: 5px;
+		padding-right: 2px;
+		white-space: nowrap;
 
-			svg {
-				position: relative;
-				top: 1px;
-			}
+		svg {
+			position: relative;
+			top: 1px;
 		}
 	}
 }

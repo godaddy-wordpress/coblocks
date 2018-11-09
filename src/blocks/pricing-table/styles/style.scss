@@ -1,7 +1,24 @@
 .wp-block-coblocks-pricing-table {
 
-	.wp-block-coblocks-pricing-table__inner {
+	&.has-4-columns {
 
+		.wp-block-coblocks-pricing-table-item {
+			@media (min-width: 600px) and (max-width: 1100px) {
+				flex-basis: 40%;
+			}
+		}
+	}
+}
+
+.wp-block-coblocks-pricing-table-item {
+	@media (min-width: 600px) {
+		flex-basis: 0;
+		flex-grow: 1;
+		margin: 0.75rem;
+		max-width: 100%;
+	}
+
+	&__inner {
 		@media (min-width: 600px) {
 			display: flex;
 			flex-direction: row;
@@ -9,23 +26,6 @@
 			flex: 0 1 auto;
 			position: relative;
 			margin: -0.75rem !important;
-
-			.wp-block-coblocks-pricing-table-item {
-				flex-basis: 0;
-				flex-grow: 1;
-				margin: 0.75rem;
-				max-width: 100%;
-			}
-		}
-	}
-
-	@media (min-width: 600px) and (max-width: 1100px) {
-
-		&.has-4-columns {
-
-			.wp-block-coblocks-pricing-table-item {
-				flex-basis: 40%;
-			}
 		}
 	}
 }

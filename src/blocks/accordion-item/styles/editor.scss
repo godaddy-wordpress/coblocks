@@ -1,24 +1,21 @@
-.editor-block-list__block[data-type="coblocks/accordion-item"] {
+.wp-block-coblocks-accordion-item {
+	margin-bottom: 0;
 
-	.wp-block-coblocks-accordion-item {
-		margin-bottom: 0;
+	&__title {
+		cursor: inherit;
+		padding: 10px 15px !important;
 
-		&__title {
-			cursor: inherit;
-			padding: 10px 15px !important;
-
-			&::after {
-				display: none;
-			}
-
-			&:focus {
-				outline: none;
-			}
+		&::after {
+			display: none;
 		}
 
-		&--open .wp-block-coblocks-accordion-item__title,
-		&.is-selected .wp-block-coblocks-accordion-item__title {
-			border-radius: $accordion-border-radius $accordion-border-radius 0 0;
+		&:focus {
+			outline: none;
 		}
+	}
+
+	&--open &__title,
+	&.is-selected &__title {
+		border-radius: $accordion-border-radius $accordion-border-radius 0 0;
 	}
 }

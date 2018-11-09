@@ -18,10 +18,25 @@
 		}
 	}
 
+	// Fallback styles.
+	&.is-default-alert {
+
+		&:not(.has-background) {
+			background-color: #cce5ff;
+		}
+
+		.wp-block-coblocks-alert__text,
+		.wp-block-coblocks-alert__title {
+
+			&:not(.has-text-color) {
+				color: #004085;
+			}
+		}
+	}
+
 	&__title {
 		display: inline-block;
 		font-size: 1.2em;
-		font-weight: 400;
 		line-height: 1;
 		margin-bottom: 0.65em;
 		width: 100%;
