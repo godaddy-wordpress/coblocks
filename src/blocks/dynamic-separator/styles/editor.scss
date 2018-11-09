@@ -6,17 +6,10 @@
 		&::before {
 			transition: width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), max-width 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
 		}
-	}
 
-	&.is-selected .editor-block-list__block-edit {
-		background: #f3f4f5;
-	}
-}
-
-.has-fixed-toolbar {
-
-	.wp-block-coblocks-dynamic-separator.is-active {
-		background: #f3f4f5;
+		&.is-selected {
+			background: #f3f4f5;
+		}
 	}
 }
 
