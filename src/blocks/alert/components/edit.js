@@ -83,7 +83,7 @@ class Edit extends Component {
 							placeholder={ __( 'Write title...' ) }
 							value={ title }
 							className={ classnames(
-								`${ className }__title`, {
+								`wp-block-coblocks-alert__title`, {
 									'has-text-color': titleColor.color,
 									[ titleColor.class ]: titleColor.class,
 								}

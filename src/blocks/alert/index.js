@@ -176,7 +176,6 @@ const settings = {
 		const titleClass = getColorClassName( 'color', titleColor );
 
 		const titleClasses = classnames(
-			className,
 			'wp-block-coblocks-alert__title', {
 			'has-text-color': titleColor || customTitleColor,
 			[ titleClass ]: titleClass,
