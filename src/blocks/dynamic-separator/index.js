@@ -78,39 +78,28 @@ const settings = {
 			{
 				type: 'block',
 				blocks: [ 'core/spacer' ],
-				transform: ( { height } ) => (
-					createBlock( 'core/spacer', { height: height } )
-				),
+				transform: ( { height } ) => createBlock( `coblocks/${ name }`, {
+					height: height,
+				} ),
 			},
 			{
 				type: 'block',
 				blocks: [ 'core/separator' ],
-				transform: () => createBlock( 'coblocks/dynamic-separator' ),
-			},
-			{
-				type: 'raw',
-				selector: 'hr.wp-block-coblocks-dynamic-separator',
-				schema: {
-					hr: {
-						classes: [ 'wp-block-coblocks-dynamic-separator' ],
-					},
-				},
+				transform: () => createBlock( `coblocks/${ name }` ),
 			},
 		],
 		to: [
 			{
 				type: 'block',
 				blocks: [ 'core/spacer' ],
-				transform: ( { height } ) => (
-					createBlock( 'core/spacer', { height: height } )
-				),
+				transform: ( { height } ) => createBlock( 'core/spacer', {
+					height: height,
+				} ),
 			},
 			{
 				type: 'block',
 				blocks: [ 'core/separator' ],
-				transform: () => (
-					createBlock( 'core/separator' )
-				),
+				transform: () => createBlock( 'core/separator' ),
 			},
 		],
 	},
