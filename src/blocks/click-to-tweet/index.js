@@ -30,7 +30,7 @@ const title = __( 'Click to Tweet' );
 const icon = icons.twitter;
 
 const keywords = [
-	__( 'social' ),
+	__( 'share' ),
 	__( 'twitter' ),
 	__( 'coblocks' ),
 ];
