@@ -3,21 +3,13 @@
 	padding: 1.1em 1.3em 1em;
 	position: relative;
 
+	&:not(.has-background) {
+		background-color: #f5f5f5;
+	}
+
 	&.alignleft,
 	&.alignright {
 		max-width: 300px;
-	}
-
-	// Fallback styles.
-	&.is-default-alert {
-
-		&:not(.has-background) {
-			background-color: #cce5ff;
-		}
-
-		&:not(.has-text-color) {
-			color: #004085;
-		}
 	}
 
 	&__title {

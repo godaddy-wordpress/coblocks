@@ -26,16 +26,21 @@ class Controls extends Component {
 			textColor: '',
 		} )
 
-		if ( value == '#e2e3e5' ) {
-			this.props.setAttributes( { customTextColor: '#383d41' } )
-		} else if  ( value == '#cce5ff' ) {
-			this.props.setAttributes( { customTextColor: '#004085' } )
-		} else if  ( value == '#d4edda' ) {
-			this.props.setAttributes( { customTextColor: '#155724' } )
-		} else if  ( value == '#fff3cd' ) {
-			this.props.setAttributes( { customTextColor: '#856404' } )
-		} else if  ( value == '#f8d7da' ) {
-			this.props.setAttributes( { customTextColor: '#721c24' } )
+		// Info (Blue)
+		if  ( value == '#D6EFEE' ) {
+			this.props.setAttributes( { customTextColor: '#094264' } )
+
+		// Success (Green)
+		} else if  ( value == '#D0EAC4' ) {
+			this.props.setAttributes( { customTextColor: '#154a28' } )
+
+		// Warning (Orange)
+		} else if  ( value == '#FBE7DD' ) {
+			this.props.setAttributes( { customTextColor: '#8a4b30' } )
+
+		// Error (Red)
+		} else if  ( value == '#ffdede' ) {
+			this.props.setAttributes( { customTextColor: '#8b343c' } )
 		}
 	}
 
@@ -47,9 +52,8 @@ class Controls extends Component {
 		} = this.props;
 
 		const {
-			align,
-			textAlign,
 			customTextColor,
+			textAlign,
 			type,
 		} = attributes;
 
@@ -79,27 +83,27 @@ class Controls extends Component {
 								{
 									icon: icons.alertFilled,
 									title: __( 'Default' ),
-									onClick: () => { this.styles( '#e2e3e5' ), setAttributes( { type: 'default' } ) },
+									onClick: () => { setAttributes( { type: 'default', backgroundColor: '',  customBackgroundColor: '', customTextColor: '' } ) },
 								},
 								{
 									icon: icons.info,
 									title: __( 'Info' ),
-									onClick: () => { this.styles( '#cce5ff' ), setAttributes( { type: 'info' } ) },
+									onClick: () => { this.styles( '#D6EFEE' ), setAttributes( { type: 'info' } ) },
 								},
 								{
 									icon: icons.success,
 									title: __( 'Success' ),
-									onClick: () => { this.styles( '#d4edda' ), setAttributes( { type: 'success' } ) },
+									onClick: () => { this.styles( '#D0EAC4' ), setAttributes( { type: 'success' } ) },
 								},
 								{
 									icon: icons.warning,
 									title: __( 'Warning' ),
-									onClick: () => { this.styles( '#fff3cd' ), setAttributes( { type: 'warning' } ) },
+									onClick: () => { this.styles( '#FBE7DD' ), setAttributes( { type: 'warning' } ) },
 								},
 								{
 									icon: icons.error,
 									title: __( 'Error' ),
-									onClick: () => { this.styles( '#f8d7da' ), setAttributes( { type: 'error' } ) },
+									onClick: () => { this.styles( '#ffdede' ), setAttributes( { type: 'error' } ) },
 								},
 							] }
 						/>

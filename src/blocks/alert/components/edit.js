@@ -50,10 +50,6 @@ class Edit extends Component {
 			value,
 		} = attributes;
 
-		const textStyles = {
-			color: textColor.color,
-		};
-
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -93,7 +89,7 @@ class Edit extends Component {
 						/>
 					) }
 					<RichText
-						placeholder={ __( 'Write alert text...' ) }
+						placeholder={ __( 'Write text...' ) }
 						value={ value }
 						className='wp-block-coblocks-alert__text'
 						onChange={ ( value ) => setAttributes( { value: value } ) }
