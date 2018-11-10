@@ -24,7 +24,6 @@ class Controls extends Component {
 			customBackgroundColor: value,
 			backgroundColor: '',
 			textColor: '',
-			titleColor: '',
 		} )
 
 		if ( value == '#e2e3e5' ) {
@@ -35,8 +34,6 @@ class Controls extends Component {
 			this.props.setAttributes( { customTextColor: '#155724', customTitleColor: '#155724' } )
 		} else if  ( value == '#f8d7da' ) {
 			this.props.setAttributes( { customTextColor: '#721c24', customTitleColor: '#721c24' } )
-		} else if  ( value == '#fff3cd' ) {
-			this.props.setAttributes( { customTextColor: '#856404', customTitleColor: '#856404' } )
 		}
 	}
 

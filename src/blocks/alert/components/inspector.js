@@ -20,7 +20,6 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 
 	const {
 		textColor,
-		titleColor,
 		backgroundColor,
 	} = ownProps.attributes;
 
@@ -30,7 +29,6 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 
 	return {
-		fallbackTitleColor: titleColor || ! computedStyles ? undefined : computedStyles.color,
 		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
 	};
@@ -57,7 +55,6 @@ class Inspector extends Component {
 			setTextColor,
 			setTitleColor,
 			textColor,
-			titleColor,
 		} = this.props;
 
 		return (
@@ -71,11 +68,6 @@ class Inspector extends Component {
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
 								label: __( 'Background Color' ),
-							},
-							{
-								value: titleColor.color,
-								onChange: setTitleColor,
-								label: __( 'Heading Color' ),
 							},
 							{
 								value: textColor.color,

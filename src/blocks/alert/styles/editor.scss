@@ -1,3 +1,6 @@
-.wp-block-coblocks-alert__text p {
-	margin-bottom: 0;
+.wp-block-coblocks-alert {
+
+	&__title {
+		margin-bottom: 0.65em;
+	}
 }

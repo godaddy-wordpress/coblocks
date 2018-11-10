@@ -151,72 +151,42 @@ const settings = {
 			textAlign,
 			textColor,
 			title,
-			titleColor,
 			type,
 			value,
 		} = attributes;
 
-		// Background color class and styles.
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+		const textClass = getColorClassName( 'color', textColor );
 
-		const backgroundClasses = classnames(
-			className,
-			`is-${ type }-alert`,
-			`align${ align }`, {
+		const classes = classnames( `is-${ type }-alert`, {
+			'has-text-color': textColor || customTextColor,
+			[ textClass ]: textClass,
 			'has-background': backgroundColor || customBackgroundColor,
 			[ backgroundClass ]: backgroundClass,
 		} );
 
-		const backgroundStyles = {
+		const styles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			textAlign: textAlign,
-		};
-
-		// Title color class and styles.
-		const titleClass = getColorClassName( 'color', titleColor );
-
-		const titleClasses = classnames(
-			'wp-block-coblocks-alert__title', {
-			'has-text-color': titleColor || customTitleColor,
-			[ titleClass ]: titleClass,
-		} );
-
-		const titleStyles = {
-			color: titleClass ? undefined : customTitleColor,
-		};
-
-		// Text color class and styles.
-		const textClass = getColorClassName( 'color', textColor );
-
-		const textClasses = classnames(
-			'wp-block-coblocks-alert__text', {
-			'has-text-color': textColor || customTextColor,
-			[ textClass ]: textClass,
-		} );
-
-		const textStyles = {
-			color: textClass ? undefined : customTextColor,
+			textAlign: align ? align : null,
 		};
 
 		return (
 			<div
-				className={ backgroundClasses }
-				style={ backgroundStyles }
+				className={ classes }
+				style={ styles }
 			>
 				{ ! RichText.isEmpty( title ) &&
 					<RichText.Content
 						tagName="p"
-						className={ titleClasses }
+						className="wp-block-coblocks-alert__title"
 						value={ title }
-						style={ titleStyles }
 					/>
 				}
 				{ ! RichText.isEmpty( value ) &&
 					<RichText.Content
 						tagName="p"
-						className={ textClasses }
+						className="wp-block-coblocks-alert__text"
 						value={ value }
-						style={ textStyles }
 					/>
 				}
 			</div>

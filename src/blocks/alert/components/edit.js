@@ -41,7 +41,6 @@ class Edit extends Component {
 			setTextColor,
 			setTitleColor,
 			textColor,
-			titleColor,
 		} = this.props;
 
 		const {
@@ -51,6 +50,10 @@ class Edit extends Component {
 			type,
 			value,
 		} = attributes;
+
+		const textStyles = {
+			color: textColor.color,
+		};
 
 		return [
 			<Fragment>
@@ -70,11 +73,14 @@ class Edit extends Component {
 						`is-${ type }-alert`,
 						`align${ align }`, {
 							'has-background': backgroundColor.color,
+							'has-text-color': textColor.color,
 							[ backgroundColor.class ]: backgroundColor.class,
+							[ textColor.class ]: textColor.class,
 						}
 					) }
 					style={ {
 						backgroundColor: backgroundColor.color,
+						color: textColor.color,
 						textAlign: textAlign,
 					} }
 				>
@@ -82,36 +88,16 @@ class Edit extends Component {
 						<RichText
 							placeholder={ __( 'Write title...' ) }
 							value={ title }
-							className={ classnames(
-								`wp-block-coblocks-alert__title`, {
-									'has-text-color': titleColor.color,
-									[ titleColor.class ]: titleColor.class,
-								}
-							) }
-							style={ {
-								color: titleColor.color,
-							} }
+							className='wp-block-coblocks-alert__title'
 							onChange={ ( value ) => setAttributes( { title: value } ) }
 							keepPlaceholderOnFocus
 						/>
 					) }
 					<RichText
+						placeholder={ __( 'Write alert text...' ) }
 						value={ value }
-						className={ classnames(
-							`wp-block-coblocks-alert__text`, {
-								'has-text-color': textColor.color,
-								[ textColor.class ]: textColor.class,
-							}
-						) }
-						style={ {
-							color: textColor.color,
-						} }
-						onChange={
-							( nextValue ) => setAttributes( {
-								value: nextValue,
-							} )
-						}
-						placeholder={ __( 'Write alert...' ) }
+						className='wp-block-coblocks-alert__text'
+						onChange={ ( value ) => setAttributes( { value: value } ) }
 						keepPlaceholderOnFocus
 					/>
 				</div>

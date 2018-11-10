@@ -9,7 +9,6 @@ const { withColors } = wp.editor;
 const applyWithColors = withColors(
 	'backgroundColor',
 	{ textColor: 'color' },
-	{ titleColor: 'color' },
 );
 
 export default applyWithColors;
