@@ -27,13 +27,13 @@ class Controls extends Component {
 		} )
 
 		if ( value == '#e2e3e5' ) {
-			this.props.setAttributes( { customTextColor: '#383d41', customTitleColor: '#383d41' } )
+			this.props.setAttributes( { customTextColor: '#383d41' } )
 		} else if  ( value == '#cce5ff' ) {
-			this.props.setAttributes( { customTextColor: '#004085', customTitleColor: '#004085' } )
+			this.props.setAttributes( { customTextColor: '#004085' } )
 		} else if  ( value == '#d4edda' ) {
-			this.props.setAttributes( { customTextColor: '#155724', customTitleColor: '#155724' } )
+			this.props.setAttributes( { customTextColor: '#155724' } )
 		} else if  ( value == '#f8d7da' ) {
-			this.props.setAttributes( { customTextColor: '#721c24', customTitleColor: '#721c24' } )
+			this.props.setAttributes( { customTextColor: '#721c24' } )
 		}
 	}
 

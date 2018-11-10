@@ -147,7 +147,6 @@ const settings = {
 			backgroundColor,
 			customBackgroundColor,
 			customTextColor,
-			customTitleColor,
 			textAlign,
 			textColor,
 			title,

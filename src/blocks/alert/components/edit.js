@@ -39,7 +39,6 @@ class Edit extends Component {
 			setAttributes,
 			setBackgroundColor,
 			setTextColor,
-			setTitleColor,
 			textColor,
 		} = this.props;
 
