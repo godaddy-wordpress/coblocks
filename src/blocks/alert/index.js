@@ -62,12 +62,8 @@ const blockAttributes = {
 	titleColor: {
 		type: 'string',
 	},
-	align: {
-		type: 'string',
-	},
 	textAlign: {
 		type: 'string',
-		default: 'left',
 	},
 	type: {
 		type: 'string',
@@ -143,7 +139,6 @@ const settings = {
 	save( { attributes, className } ) {
 
 		const {
-			align,
 			backgroundColor,
 			customBackgroundColor,
 			customTextColor,
@@ -166,7 +161,8 @@ const settings = {
 
 		const styles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			textAlign: align ? align : null,
+			color: textClass ? undefined : customTextColor,
+			textAlign: textAlign ? textAlign : null,
 		};
 
 		return (
