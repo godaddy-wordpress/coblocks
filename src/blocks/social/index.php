@@ -16,6 +16,8 @@
  */
 function coblocks_render_social_block( $attributes ) {
 
+	global $post;
+
 	// Get the featured image.
 	if ( has_post_thumbnail() ) {
 		$thumbnail_id = get_post_thumbnail_id( $post->ID );
@@ -69,72 +71,94 @@ function coblocks_render_social_block( $attributes ) {
 
 	// Start the markup output.
 	$markup    = '';
-	$class     = 'wp-block-coblocks-social';
 	$alignment = is_array( $attributes ) && isset( $attributes['align'] ) ? "style=text-align:{$attributes['align']}" : false;
 
 	// Style options.
-	$color = is_array( $attributes ) && isset( $attributes['backgroundColor'] ) ? "background-color:{$attributes['backgroundColor']};" : false;
-	$size  = is_array( $attributes ) && isset( $attributes['size'] ) ? "height:{$attributes['size']}px;width:{$attributes['size']}px;" : false;
-	$space = is_array( $attributes ) && isset( $attributes['space'] ) ? "margin: 0 {$attributes['space']}px;" : false;
+	$has_backround = is_array( $attributes ) && isset( $attributes['hasColors'] ) && $attributes['hasColors'] ? 'has-background' : false;
+	$border_radius = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : false;
 
 	if ( isset( $attributes['twitter'] ) && $attributes['twitter'] ) {
 		$markup .= sprintf(
-			'<a href="%1$s" class="wp-block-coblocks-social__button button--twitter icon--coblocks" title="%2$s" style="%3$s%4$s%5$s"><span class="screen-reader-text">%2$s</span></a>',
+			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--twitter %3$s" title="%2$s" style="%4$s">
+				<span class="wp-block-coblocks-social__icon"></span>
+				<span class="wp-block-coblocks-social__text">%2$s</span>
+			</a></li>',
 			esc_url( $twitter_url ),
 			esc_html__( 'Share on Twitter', '@@textdomain' ),
-			esc_attr( $color ),
-			esc_attr( $size ),
-			esc_attr( $space )
+			esc_attr( $has_backround ),
+			esc_attr( $border_radius )
 		);
 	}
 
 	if ( isset( $attributes['facebook'] ) && $attributes['facebook'] ) {
 		$markup .= sprintf(
-			'<a href="%1$s" class="wp-block-coblocks-social__button button--facebook icon--coblocks" title="%2$s" style="%3$s%4$s%5$s"><span class="screen-reader-text">%2$s</span></a>',
+			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--facebook %3$s" title="%2$s" style="%4$s">
+				<span class="wp-block-coblocks-social__icon"></span>
+				<span class="wp-block-coblocks-social__text">%2$s</span>
+			</a></li>',
 			esc_url( $facebook_url ),
 			esc_html__( 'Share on Facebook', '@@textdomain' ),
-			esc_attr( $color ),
-			esc_attr( $size ),
-			esc_attr( $space )
+			esc_attr( $has_backround ),
+			esc_attr( $border_radius )
 		);
 	}
 
 	if ( isset( $attributes['pinterest'] ) && $attributes['pinterest'] ) {
 		$markup .= sprintf(
-			'<a href="%1$s" class="wp-block-coblocks-social__button button--pinterest icon--coblocks" title="%2$s" style="%3$s%4$s%5$s"><span class="screen-reader-text">%2$s</span></a>',
+			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--pinterest %3$s" title="%2$s" style="%4$s">
+				<span class="wp-block-coblocks-social__icon"></span>
+				<span class="wp-block-coblocks-social__text">%2$s</span>
+			</a></li>',
 			esc_url( $pinterest_url ),
 			esc_html__( 'Share on Pinterest', '@@textdomain' ),
-			esc_attr( $color ),
-			esc_attr( $size ),
-			esc_attr( $space )
+			esc_attr( $has_backround ),
+			esc_attr( $border_radius )
 		);
 	}
 
 	if ( isset( $attributes['linkedin'] ) && $attributes['linkedin'] ) {
 		$markup .= sprintf(
-			'<a href="%1$s" class="wp-block-coblocks-social__button button--linkedin icon--coblocks" title="%2$s" style="%3$s%4$s%5$s"><span class="screen-reader-text">%2$s</span></a>',
+			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--linkedin %3$s" title="%2$s" style="%4$s">
+				<span class="wp-block-coblocks-social__icon"></span>
+				<span class="wp-block-coblocks-social__text">%2$s</span>
+			</a></li>',
 			esc_url( $linkedin_url ),
 			esc_html__( 'Share on LinkedIn', '@@textdomain' ),
-			esc_attr( $color ),
-			esc_attr( $size ),
-			esc_attr( $space )
+			esc_attr( $has_backround ),
+			esc_attr( $border_radius )
 		);
 	}
 
 	if ( isset( $attributes['tumblr'] ) && $attributes['tumblr'] ) {
 		$markup .= sprintf(
-			'<a href="%1$s" class="wp-block-coblocks-social__button button--tumblr icon--coblocks" title="%2$s" style="%3$s%4$s%5$s"><span class="screen-reader-text">%2$s</span></a>',
+			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--tumblr %3$s" title="%2$s" style="%4$s">
+				<span class="wp-block-coblocks-social__icon"></span>
+				<span class="wp-block-coblocks-social__text">%2$s</span>
+			</a></li>',
 			esc_url( $tumblr_url ),
 			esc_html__( 'Share on Tumblr', '@@textdomain' ),
-			esc_attr( $color ),
-			esc_attr( $size ),
-			esc_attr( $space )
+			esc_attr( $has_backround ),
+			esc_attr( $border_radius )
 		);
+	}
+
+	$class = 'wp-block-coblocks-social';
+
+	if ( isset( $attributes['className'] ) ) {
+		$class .= ' ' . $attributes['className'];
+	}
+
+	if ( isset( $attributes['hasColors'] ) && $attributes['hasColors'] ) {
+		$class .= ' has-colors';
+	}
+
+	if ( isset( $attributes['size'] ) && 'med' !== $attributes['size'] ) {
+		$class .= ' has-button-size-' . $attributes['size'];
 	}
 
 	// Render block content.
 	$block_content = sprintf(
-		'<div class="%1$s" %2$s><p>%3$s</p></div>',
+		'<div class="%1$s" %2$s><ul>%3$s</ul></div>',
 		esc_attr( $class ),
 		esc_attr( $alignment ),
 		$markup
@@ -159,42 +183,44 @@ function coblocks_register_social_block() {
 			'editor_style'    => 'coblocks-editor',
 			'style'           => 'coblocks-frontend',
 			'attributes'      => array(
-				'twitter'         => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'facebook'        => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'pinterest'       => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'linkedin'        => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'tumblr'          => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'size'            => array(
-					'type'    => 'number',
-					'default' => 28,
-				),
-				'space'           => array(
-					'type'    => 'number',
-					'default' => 3,
-				),
-				'backgroundColor' => array(
+				'className'    => array(
 					'type' => 'string',
 				),
-				'align'           => array(
-					'type'    => 'string',
-					'default' => 'left',
+				'hasColors'    => array(
+					'type'    => 'boolean',
+					'default' => true,
 				),
-
+				'borderRadius' => array(
+					'type'    => 'number',
+					'default' => 40,
+				),
+				'size'         => array(
+					'type'    => 'string',
+					'default' => 'med',
+				),
+				'align'        => array(
+					'type' => 'string',
+				),
+				'twitter'      => array(
+					'type'    => 'boolean',
+					'default' => true,
+				),
+				'facebook'     => array(
+					'type'    => 'boolean',
+					'default' => true,
+				),
+				'pinterest'    => array(
+					'type'    => 'boolean',
+					'default' => true,
+				),
+				'linkedin'     => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'tumblr'       => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 			),
 			'render_callback' => 'coblocks_render_social_block',
 		)

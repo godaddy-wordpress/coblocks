@@ -23,7 +23,7 @@ const icon = icons.social;
 
 const keywords = [
 	__( 'share' ),
-	__( 'twitter' ),
+	__( 'icon' ),
 	__( 'coblocks' ),
 ];
 
@@ -31,7 +31,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Add a social sharing module.' ),
+	description: __( 'Add social sharing buttons to help you get likes and shares.' ),
 
 	icon: {
 		src: icon,
@@ -39,10 +39,12 @@ const settings = {
 
 	keywords: keywords,
 
-	supports: {
-		customClassName: false,
-		html: false,
-	},
+	styles: [
+		{ name: 'icon', label: __( 'Icon' ), isDefault: true },
+		// { name: 'mask', label: __( 'Mask' ), isDefault: true },
+		{ name: 'text', label: __( 'Text' ) },
+		{ name: 'icon-and-text', label: __( 'Icon & Text' ) },
+	],
 
 	edit: Edit,
 

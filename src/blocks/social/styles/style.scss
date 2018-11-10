@@ -1,68 +1,183 @@
+// Supported icons.
+$icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( linkedin, #0077b5 ), ( tumblr, #34465d );
+
 .wp-block-coblocks-social {
 
-	p {
-		line-height: 1;
+	ul,
+	li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		display: inline-block;
+		margin: 3px 6px 3px 0;
+	}
+
+	// Fallback color to match core button block.
+	.wp-block-button__link:not(.has-background) {
+		background-color: #31373c;
 	}
 
 	&__button {
-		background-color: #222;
-		background-size: cover;
+		align-items: center;
+		border: none;
 		box-shadow: none !important;
+		cursor: pointer;
 		display: inline-block;
-		height: 28px;
-		padding: 0;
-		position: relative;
+		display: inline-flex;
+		font-size: 15px;
+		justify-content: center;
+		line-height: 1;
+		padding: 10px 14px;
+		text-align: center;
 		text-decoration: none !important;
-		vertical-align: middle;
-		width: 28px;
+		white-space: normal;
+		word-break: break-all;
 
 		&:first-of-type {
-			margin-left: 0;
+			margin-left: 0 !important;
 		}
 
 		&:last-of-type {
-			margin-right: 0;
-		}
-
-		&:active {
-			animation: pulse 200ms;
-			animation-timing-function: ease-out;
-			animation-fill-mode: none;
+			margin-right: 0 !important;
 		}
 	}
 
-	.button--twitter {
-		mask-image: url(images/twitter.svg);
+	&__text {
+		position: relative;
+		top: 1px;
 	}
 
-	.button--facebook {
-		mask-image: url(images/facebook.svg);
+	&__icon + &__text {
+		margin-left: 8px;
 	}
 
-	.button--pinterest {
-		mask-image: url(images/pinterest.svg);
+	&__icon {
+		background-color: currentColor;
+		background-repeat: no-repeat;
+		background-size: cover;
+		display: inline-block;
+		height: 18px;
+		width: 18px;
 	}
 
-	.button--linkedin {
-		mask-image: url(images/linkedin.svg);
+	&__button--facebook &__icon + &__text,
+	&__button--linkedin &__icon + &__text {
+		margin-left: 9px;
 	}
 
-	.button--tumblr {
-		mask-image: url(images/tumblr.svg);
+	&__button--tumblr &__icon + &__text {
+		margin-left: 4px;
 	}
 
-	@keyframes pulse {
+	@each $icon, $color in $icons {
 
-		0% {
-			transform: scale(1);
+		&__button--#{$icon} &__icon {
+			mask-image: url(images/#{$icon}.svg);
+		}
+	}
+
+	// Social Colors.
+	&.has-colors {
+
+		@each $icon, $color in $icons {
+
+			.wp-block-coblocks-social__button--#{$icon} {
+				background-color: $color;
+			}
+		}
+	}
+
+	// Default style.
+	&:not(.is-style-text):not(.is-style-icon-and-text) {
+
+		.wp-block-coblocks-social__button {
+			padding: 11px 24px;
+
+			&:active {
+				animation: pulse 200ms;
+				animation-timing-function: ease-out;
+				animation-fill-mode: none;
+			}
 		}
 
-		15% {
-			transform: scale(0.9);
+		.wp-block-coblocks-social__text {
+			clip: rect(1px, 1px, 1px, 1px);
+			height: 1px;
+			overflow: hidden;
+			position: absolute;
+			width: 1px;
+			word-wrap: normal;
+		}
+	}
+
+	// Text only style.
+	&.is-style-text {
+
+		.wp-block-coblocks-social__icon {
+			display: none;
 		}
 
-		100% {
-			transform: scale(1);
+		.wp-block-coblocks-social__text {
+			margin-left: 0;
 		}
+	}
+
+	// Sizes.
+	&.has-button-size-sml {
+
+		li {
+			margin: 2px 4px 2px 0;
+		}
+
+		// Icon only style.
+		&:not(.is-style-text):not(.is-style-icon-and-text) .wp-block-coblocks-social__button {
+			padding: 8px 16px;
+		}
+
+		.wp-block-coblocks-social__icon {
+			height: 16px;
+			width: 16px;
+		}
+
+		.wp-block-coblocks-social__button {
+			font-size: 13px;
+			padding: 10px 12px;
+		}
+	}
+
+	&.has-button-size-lrg {
+
+		// Icon only style.
+		&:not(.is-style-text):not(.is-style-icon-and-text) .wp-block-coblocks-social__button {
+			padding: 14px 32px;
+		}
+
+		.wp-block-coblocks-social__icon {
+			height: 20px;
+			width: 20px;
+		}
+
+		.wp-block-coblocks-social__button {
+			font-size: 16px;
+			padding: 12px 16px;
+		}
+	}
+}
+
+@keyframes pulse {
+
+	0% {
+		transform: scale(1);
+	}
+
+	15% {
+		transform: scale(0.95);
+	}
+
+	100% {
+		transform: scale(1);
 	}
 }

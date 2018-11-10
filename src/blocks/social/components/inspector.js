@@ -2,9 +2,10 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
+const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, ColorPalette } = wp.editor;
-const { PanelBody, RangeControl, PanelColor, ToggleControl } = wp.components;
+const { InspectorControls } = wp.editor;
+const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
 
 /**
  * Inspector controls
@@ -15,28 +16,63 @@ class Inspector extends Component {
 		super( ...arguments );
 	}
 
+	getHasColorsHelp( checked ) {
+		return checked ? __( 'Social button colors are enabled.' ) : __( 'Toggle to use official colors from each social media platform.' );
+	}
+
 	render() {
 
 		const {
 			attributes,
-			setAttributes
+			setAttributes,
 		} = this.props;
 
 		const {
-			backgroundColor,
 			facebook,
+			hasColors,
 			linkedin,
 			pinterest,
-			size,
-			space,
+			borderRadius,
 			tumblr,
 			twitter,
+			size,
 		} = attributes;
+
+		const options = [
+			{ value: 'sml', label: __( 'Small' ) },
+			{ value: 'med', label: __( 'Medium' ) },
+			{ value: 'lrg', label: __( 'Large' ) },
+		];
 
 		return (
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Social Settings' ) }>
+						<ToggleControl
+							label={ __( 'Social Colors' ) }
+							checked={ !! hasColors }
+							onChange={ () => setAttributes( {  hasColors: ! hasColors } ) }
+							help={ this.getHasColorsHelp }
+						/>
+						<RangeControl
+							label={ __( 'Rounded Corners' ) }
+							value={ borderRadius }
+							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+							min={ 0 }
+							max={ 50 }
+						/>
+						<SelectControl
+							label={ __( 'Button Size' ) }
+							value={ size }
+							options={ options }
+							onChange={ ( value ) => setAttributes( { size: value } ) }
+							className="components-coblocks-inspector__social-button-size"
+						/>
+					</PanelBody>
+					<PanelBody
+						title={ __( 'Icon Settings' ) }
+					>
+						<p>{ __( ' Toggle the sharing links to display from the following social platforms.' ) }</p>
 						<ToggleControl
 							label={ __( 'Twitter' ) }
 							checked={ !! twitter }
@@ -48,14 +84,14 @@ class Inspector extends Component {
 							onChange={ () => setAttributes( {  facebook: ! facebook } ) }
 						/>
 						<ToggleControl
-							label={ __( 'LinkedIn' ) }
-							checked={ !! linkedin }
-							onChange={ () => setAttributes( {  linkedin: ! linkedin } ) }
-						/>
-						<ToggleControl
 							label={ __( 'Pinterest' ) }
 							checked={ !! pinterest }
 							onChange={ () => setAttributes( {  pinterest: ! pinterest } ) }
+						/>
+						<ToggleControl
+							label={ __( 'LinkedIn' ) }
+							checked={ !! linkedin }
+							onChange={ () => setAttributes( {  linkedin: ! linkedin } ) }
 						/>
 						<ToggleControl
 							label={ __( 'Tumblr' ) }
@@ -63,28 +99,6 @@ class Inspector extends Component {
 							onChange={ () => setAttributes( {  tumblr: ! tumblr } ) }
 						/>
 					</PanelBody>
-					<PanelBody title={ __( 'Icon Settings' ) }>
-						<RangeControl
-							label={ __( 'Size' ) }
-							value={ size || '' }
-							onChange={ ( value ) => setAttributes( { size: value } ) }
-							min={ 16 }
-							max={ 80 }
-						/>
-						<RangeControl
-							label={ __( 'Spacing' ) }
-							value={ space || '' }
-							onChange={ ( value ) => setAttributes( { space: value } ) }
-							min={ 5 }
-							max={ 20 }
-						/>
-					</PanelBody>
-					<PanelColor title={ __( 'Color' ) } colorValue={ backgroundColor }>
-						<ColorPalette
-							value={ backgroundColor }
-							onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
-						/>
-					</PanelColor>
 				</InspectorControls>
 			</Fragment>
 		);
