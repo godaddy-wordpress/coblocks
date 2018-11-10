@@ -9,28 +9,22 @@ import applyWithColors from './colors';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, PanelColorSettings } = wp.editor;
-const { PanelBody, withFallbackStyles } = wp.components;
+const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
+const { withFallbackStyles } = wp.components;
 
 /**
  * Contrast checker
  */
 const { getComputedStyle } = window;
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-
-	const {
-		textColor,
-		backgroundColor,
-	} = ownProps.attributes;
-
-	const editableNode = node.querySelector( '[contenteditable="true"]' );
-
-	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-
+	const { textColor, backgroundColor } = ownProps;
+	const backgroundColorValue = backgroundColor && backgroundColor.color;
+	const textColorValue = textColor && textColor.color;
+	//avoid the use of querySelector if textColor color is known and verify if node is available.
+	const textNode = ! textColorValue && node ? node.querySelector( '[contenteditable="true"]' ) : null;
 	return {
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackBackgroundColor: backgroundColorValue || ! node ? undefined : getComputedStyle( node ).backgroundColor,
+		fallbackTextColor: textColorValue || ! textNode ? undefined : getComputedStyle( textNode ).color,
 	};
 } );
 
@@ -49,11 +43,9 @@ class Inspector extends Component {
 			backgroundColor,
 			fallbackBackgroundColor,
 			fallbackTextColor,
-			fallbackTitleColor,
 			setBackgroundColor,
 			setBorderColor,
 			setTextColor,
-			setTitleColor,
 			textColor,
 		} = this.props;
 
@@ -76,6 +68,15 @@ class Inspector extends Component {
 							},
 						] }
 					>
+						<ContrastChecker
+							{ ...{
+								isLargeText: false,
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackBackgroundColor,
+								fallbackTextColor,
+							} }
+						/>
 					</PanelColorSettings>
 				</InspectorControls>
 			</Fragment>
