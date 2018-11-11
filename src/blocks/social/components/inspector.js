@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import includes from 'lodash/includes';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -23,6 +28,7 @@ class Inspector extends Component {
 	render() {
 
 		const {
+			className,
 			attributes,
 			setAttributes,
 		} = this.props;
@@ -44,6 +50,8 @@ class Inspector extends Component {
 			{ value: 'lrg', label: __( 'Large' ) },
 		];
 
+		const isMaskStyle = includes( className, 'is-style-mask' );
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -54,13 +62,15 @@ class Inspector extends Component {
 							onChange={ () => setAttributes( {  hasColors: ! hasColors } ) }
 							help={ this.getHasColorsHelp }
 						/>
-						<RangeControl
-							label={ __( 'Rounded Corners' ) }
-							value={ borderRadius }
-							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-							min={ 0 }
-							max={ 50 }
-						/>
+						{ ! isMaskStyle &&
+							<RangeControl
+								label={ __( 'Rounded Corners' ) }
+								value={ borderRadius }
+								onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+								min={ 0 }
+								max={ 50 }
+							/>
+						}
 						<SelectControl
 							label={ __( 'Button Size' ) }
 							value={ size }

@@ -40,8 +40,8 @@ const settings = {
 	keywords: keywords,
 
 	styles: [
+		{ name: 'mask', label: __( 'Mask' ) },
 		{ name: 'icon', label: __( 'Icon' ), isDefault: true },
-		// { name: 'mask', label: __( 'Mask' ), isDefault: true },
 		{ name: 'text', label: __( 'Text' ) },
 		{ name: 'icon-and-text', label: __( 'Icon & Text' ) },
 	],
