@@ -18,14 +18,14 @@ class Controls extends Component {
 			setAttributes
 		} = this.props;
 
-		const { align } = attributes;
+		const { textAlign } = attributes;
 
 		return (
 			<Fragment>
 				<BlockControls>
 					<AlignmentToolbar
-						value={ align }
-						onChange={ ( nextTextAlign ) => setAttributes( { align: nextTextAlign } ) }
+						value={ textAlign }
+						onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
 					/>
 				</BlockControls>
 			</Fragment>

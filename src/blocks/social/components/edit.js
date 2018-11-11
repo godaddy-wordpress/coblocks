@@ -35,7 +35,7 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
-			align,
+			textAlign,
 			facebook,
 			linkedin,
 			pinterest,
@@ -75,7 +75,7 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<div className={ classes } style={ { textAlign: align } }>
+				<div className={ classes } style={ { textAlign: textAlign } }>
 					<ul>
 					{ twitter &&
 						<li>

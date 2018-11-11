@@ -70,8 +70,7 @@ function coblocks_render_social_block( $attributes ) {
 	$tumblr_url    = apply_filters( 'coblocks_tumblr_share_url', $tumblr_url );
 
 	// Start the markup output.
-	$markup    = '';
-	$alignment = is_array( $attributes ) && isset( $attributes['align'] ) ? "style=text-align:{$attributes['align']}" : false;
+	$markup = '';
 
 	// Style options.
 	$has_backround = is_array( $attributes ) && isset( $attributes['hasColors'] ) && $attributes['hasColors'] ? 'has-background' : false;
@@ -142,6 +141,8 @@ function coblocks_render_social_block( $attributes ) {
 		);
 	}
 
+	$text_align = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "style=text-align:{$attributes['textAlign']}" : false;
+
 	$class = 'wp-block-coblocks-social';
 
 	if ( isset( $attributes['className'] ) ) {
@@ -160,7 +161,7 @@ function coblocks_render_social_block( $attributes ) {
 	$block_content = sprintf(
 		'<div class="%1$s" %2$s><ul>%3$s</ul></div>',
 		esc_attr( $class ),
-		esc_attr( $alignment ),
+		esc_attr( $text_align ),
 		$markup
 	);
 
@@ -198,7 +199,7 @@ function coblocks_register_social_block() {
 					'type'    => 'string',
 					'default' => 'med',
 				),
-				'align'        => array(
+				'textAlign'    => array(
 					'type' => 'string',
 				),
 				'twitter'      => array(
