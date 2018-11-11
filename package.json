@@ -53,7 +53,8 @@
   "stylelint": {
     "extends": "stylelint-config-wordpress/scss",
     "rules": {
-      "at-rule-empty-line-before": null
+      "at-rule-empty-line-before": null,
+      "no-descending-specificity": null
     }
   }
 }
