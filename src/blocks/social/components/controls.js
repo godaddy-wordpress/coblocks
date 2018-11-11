@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { BlockControls, BlockAlignmentToolbar } = wp.editor;
+const { BlockControls, AlignmentToolbar } = wp.editor;
 
 class Controls extends Component {
 
@@ -23,10 +23,9 @@ class Controls extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
-					<BlockAlignmentToolbar
+					<AlignmentToolbar
 						value={ align }
-						onChange={ ( nextAlign ) => setAttributes( { align: nextAlign } ) }
-						controls={ [ 'left', 'center', 'right' ] }
+						onChange={ ( nextTextAlign ) => setAttributes( { align: nextTextAlign } ) }
 					/>
 				</BlockControls>
 			</Fragment>
