@@ -49,12 +49,6 @@ const blockAttributes = {
 	backgroundColor: {
 		type: 'string',
 	},
-	titleBackgroundColor: {
-		type: 'string',
-	},
-	titleColor: {
-		type: 'string',
-	},
 	textColor: {
 		type: 'string',
 	},
@@ -62,12 +56,6 @@ const blockAttributes = {
 		type: 'string',
 	},
 	customTextColor: {
-		type: 'string',
-	},
-	customTitleBackgroundColor: {
-		type: 'string',
-	},
-	customTitleColor: {
 		type: 'string',
 	},
 };
@@ -97,71 +85,42 @@ const settings = {
 			content,
 			customBackgroundColor,
 			customTextColor,
-			customTitleBackgroundColor,
-			customTitleColor,
 			open,
-			title,
-			titleBackgroundColor,
-			titleColor,
 			textColor,
+			title,
 		} = attributes;
 
-		// Background and text color class and styles.
-		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-		const textClass = getColorClassName( 'color', textColor );
+		const backgroundColorClass = getColorClassName( 'background-color', backgroundColor );
+		const textColorClass = getColorClassName( 'color', textColor );
+		const borderColorClass = getColorClassName( 'color', backgroundColor );
 
 		const backgroundClasses = classnames(
 			'wp-block-coblocks-accordion-item',
-			open ? 'wp-block-coblocks-accordion-item--open' : null, {
-			'has-background': backgroundColor || customBackgroundColor,
-			[ backgroundClass ]: backgroundClass,
-			'has-text-color': textColor || customTextColor,
-			[ textClass ]: textClass,
-		} );
-
-		const backgroundStyles = {
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			color: textClass ? undefined : customTextColor,
-		};
-
-		// Title color class and styles.
-		const titleBackgroundColorClass = getColorClassName( 'background-color', titleBackgroundColor );
-		const titleBackgroundBorderColorClass = getColorClassName( 'color', titleBackgroundColor );
-		const titleColorClass = getColorClassName( 'color', titleColor );
+			open ? 'wp-block-coblocks-accordion-item--open' : null, {}
+		);
 
 		const titleClasses = classnames(
 			'wp-block-coblocks-accordion-item__title', {
-			'has-background': titleBackgroundColor || customTitleBackgroundColor,
-			[ titleBackgroundColorClass ]: titleBackgroundColorClass,
-			'has-text-color': titleColor || customTitleColor,
-			[ titleColorClass ]: titleColorClass,
+			'has-background': backgroundColor || customBackgroundColor,
+			[ backgroundColorClass ]: backgroundColorClass,
+			'has-text-color': textColor || customTextColor,
+			[ textColorClass ]: textColorClass,
 		} );
 
 		const titleStyles = {
-			backgroundColor: titleBackgroundColorClass ? undefined : customTitleBackgroundColor,
-			color: titleColorClass ? undefined : customTitleColor,
+			backgroundColor: backgroundColorClass ? undefined : customBackgroundColor,
+			color: textColorClass ? undefined : customTextColor,
 		};
-
-		// Content color class and styles.
-		const contentClass = getColorClassName( 'color', textColor );
 
 		const contentClasses = classnames(
-			'wp-block-coblocks-accordion-item__text', {
-				'has-text-color': textColor || customTextColor,
-				[ contentClass ]: contentClass,
-			}
-		);
-
-		const contentStyles = {
-			color: contentClass ? undefined : customTextColor,
-		};
+			'wp-block-coblocks-accordion-item__content', {
+			'has-text-color': borderColorClass || customBackgroundColor,
+			[ borderColorClass ]: borderColorClass,
+		} );
 
 		return (
-			<div
-				className={ backgroundClasses }
-				style={ backgroundStyles }
-			>
-				{ ! RichText.isEmpty( title ) && (
+			<div>
+				{ ! RichText.isEmpty( title ) &&
 					<details open={ open }>
 						<RichText.Content
 							tagName="summary"
@@ -171,18 +130,18 @@ const settings = {
 						/>
 						{ ! RichText.isEmpty( content ) && (
 							<div
-								className={ 'wp-block-coblocks-accordion-item__content' }
+								className={ contentClasses }
+								style={ { color: textColorClass ? undefined : customTextColor } }
 							>
 								<RichText.Content
 									tagName="p"
-									className={ contentClasses }
+									className="wp-block-coblocks-accordion-item__text"
 									value={ content }
-									style={ contentStyles }
 								/>
 							</div>
 						) }
 					</details>
-				) }
+				}
 			</div>
 		);
 	},

@@ -8,8 +8,6 @@ const { withColors } = wp.editor;
  */
 const applyWithColors = withColors(
 	'backgroundColor',
-	{ titleBackgroundColor: 'background-color' },
-	{ titleColor: 'color' },
 	{ textColor: 'color' },
 );
 

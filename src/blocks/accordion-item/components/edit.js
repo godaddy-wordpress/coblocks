@@ -28,15 +28,11 @@ class Edit extends Component {
 		const {
 			attributes,
 			backgroundColor,
-			borderColor,
 			className,
 			isSelected,
 			onReplace,
 			setAttributes,
 			textColor,
-			titleBackgroundBorderColor,
-			titleBackgroundColor,
-			titleColor,
 		} = this.props;
 
 		const {
@@ -60,65 +56,42 @@ class Edit extends Component {
 				className={ classnames(
 					className,
 					open ? `${ className }--open` : null, {
-						'has-text-color': textColor.color,
-						[ textColor.class ]: textColor.class,
-						'has-background': backgroundColor.color,
-						[ backgroundColor.class ]: backgroundColor.class,
 						'is-selected': isSelected,
 					}
 				) }
-
-				style={ {
-					backgroundColor: backgroundColor.color,
-					color: textColor.color,
-				} }
 			>
 				<RichText
 					tagName="p"
-					placeholder={ __( 'Add title...' ) }
+					placeholder={ __( 'Write accordion title...' ) }
 					value={ title }
-					className={ `${ className }__title` }
 					className={ classnames(
 						`${ className }__title`, {
-							'has-text-color': titleColor.color,
-							[ titleColor.class ]: titleColor.class,
-							'has-background': titleBackgroundColor.color,
-							[ titleBackgroundColor.class ]: titleBackgroundColor.class,
+							'has-text-color': textColor.color,
+							'has-background': backgroundColor.color,
 						}
 					) }
 					style={ {
-							backgroundColor: titleBackgroundColor.color,
-							color: titleColor.color,
-						} }
+						backgroundColor: backgroundColor.color,
+						color: textColor.color,
+					} }
 					onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
 					keepPlaceholderOnFocus
 				/>
 				{ open || isSelected ? (
 					<div
 						className={ classnames(
-							`${ className }__content`
+							`${ className }__content`, {
+								'has-text-color': textColor.color,
+							}
 						) }
+						style={ { borderColor: backgroundColor.color } }
 					>
 						<RichText
 							tagName="p"
 							placeholder={ __( 'Write text...' ) }
 							value={ content }
 							onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
-							onRemove={ ( forward ) => {
-								const hasEmptyTitle = ! title || title.length === 0;
-								if ( ! forward && hasEmptyTitle ) {
-									onReplace( [] );
-								}
-							} }
-							className={ classnames(
-								'wp-block-coblocks-accordion__content', {
-									'has-text-color': textColor.color,
-									[ textColor.class ]: textColor.class,
-								}
-							) }
-							style={ {
-								color: textColor.color,
-							} }
+							className={ `${ className }__text` }
 							keepPlaceholderOnFocus
 						/>
 					</div>

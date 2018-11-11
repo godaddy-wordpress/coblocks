@@ -1,5 +1,5 @@
 .wp-block-coblocks-accordion-item {
-	border-radius: 5px;
+	border-radius: $accordion-border-radius;
 	margin: 0 0 1em;
 	word-break: break-word;
 
@@ -53,13 +53,18 @@
 	&__content {
 		border-radius: 0 0 $accordion-border-radius $accordion-border-radius;
 		padding: 15px 20px;
-		box-shadow: inset 0 0 0 1px rgba(#000, 0.06);
+		border: 1px solid currentColor;
 		margin-top: -1px;
+
+		&:not(.has-text-color) {
+			color: $accordion-background;
+		}
 	}
 
 	&__text {
 		margin-top: 0;
 		margin-bottom: 0.25em;
+		color: #333;
 
 		&:last-of-type {
 			margin-bottom: 0;

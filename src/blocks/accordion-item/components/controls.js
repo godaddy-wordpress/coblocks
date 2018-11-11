@@ -25,8 +25,6 @@ class Controls extends Component {
 		} = this.props;
 
 		const {
-			title,
-			content,
 			open,
 		} = attributes;
 
