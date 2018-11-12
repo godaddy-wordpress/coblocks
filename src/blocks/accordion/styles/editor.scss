@@ -1,9 +1,10 @@
-.editor-block-list__block[data-type="coblocks/accordion"] {
+.wp-block[data-type="coblocks/accordion"] {
 
-	.editor-block-list__block[data-type="coblocks/accordion-item"] {
+	.wp-block[data-type="coblocks/accordion-item"] {
+		margin-top: 0 !important;
 
 		&:not(:last-child) {
-			margin-bottom: -20px;
+			margin-bottom: -20px !important;
 		}
 
 		.editor-block-list__insertion-point {
