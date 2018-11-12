@@ -149,7 +149,7 @@ const settings = {
 							/>
 						) }
 						<RichText.Content
-							tagName="h5"
+							tagName="span"
 							className="wp-block-coblocks-pricing-table-item__amount"
 							value={ amount }
 						/>

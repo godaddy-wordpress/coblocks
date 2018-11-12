@@ -103,7 +103,7 @@ class Edit extends Component {
 							keepPlaceholderOnFocus
 						/>
 						<RichText
-							tagName="h5"
+							tagName="span"
 							className="wp-block-coblocks-pricing-table-item__amount"
 							onChange={ ( nextAmount ) => setAttributes( { amount: nextAmount } ) }
 							value={ amount }
