@@ -81,7 +81,7 @@ class Edit extends Component {
 					<div
 						className={ classnames(
 							`${ className }__content`, {
-								'has-text-color': textColor.color,
+								'has-border-color': textColor.color,
 							}
 						) }
 						style={ { borderColor: backgroundColor.color } }

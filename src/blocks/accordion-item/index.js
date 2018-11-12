@@ -114,7 +114,7 @@ const settings = {
 
 		const contentClasses = classnames(
 			'wp-block-coblocks-accordion-item__content', {
-			'has-text-color': borderColorClass || customBackgroundColor,
+			'has-border-color': borderColorClass || customBackgroundColor,
 			[ borderColorClass ]: borderColorClass,
 		} );
 

@@ -14,10 +14,6 @@
 		}
 	}
 
-	&__text {
-		color: #191e23;
-	}
-
 	&--open &__title,
 	&.is-selected &__title {
 		border-radius: $accordion-border-radius $accordion-border-radius 0 0;

@@ -53,9 +53,6 @@ class Inspector extends Component {
 			open,
 		} = attributes;
 
-		//add checker to hide heading level
-		this.props.hideLevel = true;
-
 		return (
 			<Fragment>
 				<InspectorControls>
