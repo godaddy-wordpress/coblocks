@@ -35,15 +35,16 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
-			textAlign,
+			borderRadius,
 			facebook,
+			hasColors,
 			linkedin,
 			pinterest,
-			borderRadius,
+			reddit,
+			size,
+			textAlign,
 			tumblr,
 			twitter,
-			hasColors,
-			size,
 		} = attributes;
 
 		const classes = classnames( className, {
@@ -114,6 +115,14 @@ class Edit extends Component {
 							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--tumblr` ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon"></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Tumblr' ) }</span>
+							</a>
+						</li>
+					}
+					{ reddit &&
+						<li>
+							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--reddit` ) } style={ buttonStyles }>
+								<span className="wp-block-coblocks-social__icon"></span>
+								<span className="wp-block-coblocks-social__text">{ __( 'Share on Reddit' ) }</span>
 							</a>
 						</li>
 					}

@@ -42,6 +42,7 @@ class Inspector extends Component {
 			tumblr,
 			twitter,
 			size,
+			reddit,
 		} = attributes;
 
 		const options = [
@@ -107,6 +108,11 @@ class Inspector extends Component {
 							label={ __( 'Tumblr' ) }
 							checked={ !! tumblr }
 							onChange={ () => setAttributes( {  tumblr: ! tumblr } ) }
+						/>
+						<ToggleControl
+							label={ __( 'Reddit' ) }
+							checked={ !! reddit }
+							onChange={ () => setAttributes( {  reddit: ! reddit } ) }
 						/>
 					</PanelBody>
 				</InspectorControls>

@@ -62,6 +62,11 @@ function coblocks_render_social_block( $attributes ) {
 		&name=' . get_the_title() . '
 	';
 
+	// Generate the Reddit URL.
+	$reddit_url = 'https://www.reddit.com/submit?
+		url=' . get_the_permalink() . '
+	';
+
 	// Apply filters, so that they may be easily modified.
 	$twitter_url   = apply_filters( 'coblocks_twitter_share_url', $twitter_url );
 	$facebook_url  = apply_filters( 'coblocks_facebook_share_url', $facebook_url );
@@ -136,6 +141,19 @@ function coblocks_render_social_block( $attributes ) {
 			</a></li>',
 			esc_url( $tumblr_url ),
 			esc_html__( 'Share on Tumblr', '@@textdomain' ),
+			esc_attr( $has_backround ),
+			esc_attr( $border_radius )
+		);
+	}
+
+	if ( isset( $attributes['reddit'] ) && $attributes['reddit'] ) {
+		$markup .= sprintf(
+			'<li><a href="%1$s" target="_blank" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--reddit %3$s" title="%2$s" style="%4$s">
+				<span class="wp-block-coblocks-social__icon"></span>
+				<span class="wp-block-coblocks-social__text">%2$s</span>
+			</a></li>',
+			esc_url( $reddit_url ),
+			esc_html__( 'Share on Reddit', '@@textdomain' ),
 			esc_attr( $has_backround ),
 			esc_attr( $border_radius )
 		);
@@ -219,6 +237,10 @@ function coblocks_register_social_block() {
 					'default' => false,
 				),
 				'tumblr'       => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'reddit'       => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
