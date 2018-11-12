@@ -24,7 +24,7 @@ const name = 'pricing-table-item';
 
 const title = __( 'Pricing Table Item' );
 
-const icon = icons.accordion;
+const icon = icons.pricing;
 
 const keywords = [
 	__( 'landing' ),
