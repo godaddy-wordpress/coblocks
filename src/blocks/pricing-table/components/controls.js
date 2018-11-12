@@ -47,7 +47,6 @@ class Controls extends Component {
 							onClick: () =>
 								setAttributes( {
 									count: number,
-									align: number == 1 ? undefined : number == 2 ? 'wide' : number >= 3 ? 'full' : undefined,
 								} )
 							} )
 						) }

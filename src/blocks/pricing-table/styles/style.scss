@@ -8,15 +8,6 @@
 			}
 		}
 	}
-}
-
-.wp-block-coblocks-pricing-table-item {
-	@media (min-width: 600px) {
-		flex-basis: 0;
-		flex-grow: 1;
-		margin: 0.75rem;
-		max-width: 100%;
-	}
 
 	&__inner {
 		@media (min-width: 600px) {
@@ -25,7 +16,7 @@
 			flex-wrap: wrap;
 			flex: 0 1 auto;
 			position: relative;
-			margin: -0.75rem !important;
+			margin: -15px !important;
 		}
 	}
 }

@@ -4,7 +4,7 @@
 	.wp-block-coblocks-pricing-table-item {
 		margin: 0;
 
-		.pricing-table__price {
+		&__price {
 			display: flex !important;
 
 			.blocks-editable {
@@ -26,6 +26,11 @@
 		}
 	}
 
+	.editor-block-list__block[data-type="core/button"] .editor-block-list__block-edit {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
 	.block-library-button__inline-link {
 		margin-top: 5px;
 		width: 100%;
@@ -40,3 +45,10 @@
 	}
 }
 
+.has-left-content .wp-block-coblocks-pricing-table-item .wp-block[data-type="core/button"] {
+	margin-left: 0;
+}
+
+.has-right-content .wp-block-coblocks-pricing-table-item .wp-block[data-type="core/button"] {
+	margin-right: 0;
+}

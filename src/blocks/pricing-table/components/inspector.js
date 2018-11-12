@@ -23,9 +23,7 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
-			backgroundImg,
 			count,
-			align,
 		} = attributes;
 
 		return (
@@ -38,7 +36,6 @@ class Inspector extends Component {
 							onChange={ ( nextCount ) => {
 								setAttributes( {
 									count: nextCount,
-									align: nextCount == 1 ? undefined : nextCount == 2 ? 'wide' : nextCount >= 3 ? 'full' : undefined,
 								} );
 							} }
 							min={ 1 }

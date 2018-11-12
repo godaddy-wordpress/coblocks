@@ -86,7 +86,7 @@ const settings = {
 
 		const classes = classnames(
 			`has-${ count }-columns`,
-			`pricing-table--${ contentAlign }`,
+			`has-${ contentAlign }-content`,
 		);
 
 		return (

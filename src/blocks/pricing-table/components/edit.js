@@ -67,7 +67,7 @@ class Edit extends Component {
 		const classes = classnames(
 			className,
 			`has-${ count }-columns`,
-			`pricing-table--${ contentAlign }`,
+			`has-${ contentAlign }-content`,
 		);
 
 		return [
@@ -89,7 +89,7 @@ class Edit extends Component {
 					<div className={ `${ className }__inner` }>
 						<InnerBlocks
 							template={ getCount( count ) }
-							templateLock="all"
+							// templateLock="all"
 							allowedBlocks={ ALLOWED_BLOCKS } />
 					</div>
 				</div>

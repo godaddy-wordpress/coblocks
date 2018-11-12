@@ -85,7 +85,7 @@ class Edit extends Component {
 				>
 					<RichText
 						tagName="h4"
-						className={ 'pricing-table__title' }
+						className={ 'wp-block-coblocks-pricing-table-item__title' }
 						onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
 						style={ { color: tableColor.color } }
 						value={ title }
@@ -93,10 +93,10 @@ class Edit extends Component {
 						formattingControls={ formattingControls }
 						keepPlaceholderOnFocus
 					/>
-					<div className={ 'pricing-table__price' }>
+					<div className={ 'wp-block-coblocks-pricing-table-item__price-wrapper' }>
 						<RichText
 							tagName='span'
-							className={ 'pricing-table__currency' }
+							className={ 'wp-block-coblocks-pricing-table-item__currency' }
 							onChange={ ( nextCurrency ) => setAttributes( { currency: nextCurrency } ) }
 							style={ { color: tableColor.color } }
 							value={ currency }
@@ -106,7 +106,7 @@ class Edit extends Component {
 						/>
 						<RichText
 							tagName='h5'
-							className={ 'pricing-table__amount' }
+							className={ 'wp-block-coblocks-pricing-table-item__amount' }
 							onChange={ ( nextAmount ) => setAttributes( { amount: nextAmount } ) }
 							style={ { color: tableColor.color } }
 							value={ amount }
@@ -118,7 +118,7 @@ class Edit extends Component {
 					<RichText
 						tagName='ul'
 						multiline='li'
-						className={ 'pricing-table__features' }
+						className={ 'wp-block-coblocks-pricing-table-item__features' }
 						onChange={ ( nextFeatures ) => setAttributes( { features: nextFeatures } ) }
 						value={ features }
 						style={ { color: tableColor.color } }

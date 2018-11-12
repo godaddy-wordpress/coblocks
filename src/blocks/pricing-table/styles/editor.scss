@@ -11,10 +11,21 @@
 			width: 100%;
 
 			> .editor-block-list__layout {
-				display: flex;
-				height: calc(100% - 36px);
+
+				@media (min-width: 600px) {
+					display: flex;
+					height: calc(100% - 36px);
+					flex-direction: row;
+					flex-wrap: wrap;
+					flex: 0 1 auto;
+					position: relative;
+				}
 			}
 		}
+	}
+
+	.block-list-appender {
+		display: none;
 	}
 
 	&[data-align="wide"],
@@ -22,6 +33,14 @@
 
 		.editor-block-list__block {
 			max-width: none;
+		}
+	}
+
+	.wp-block[data-type="coblocks/pricing-table-item"] {
+		@media (min-width: 600px) {
+			flex-basis: 40%;
+			flex-grow: 1;
+			max-width: 100%;
 		}
 	}
 }

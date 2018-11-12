@@ -35,21 +35,21 @@ const keywords = [
 const blockAttributes = {
 	title: {
 		source: 'children',
-		selector: '.pricing-table__title',
+		selector: '.wp-block-coblocks-pricing-table-item__title',
 	},
 	features: {
 		source: 'children',
-		selector: '.pricing-table__features',
+		selector: '.wp-block-coblocks-pricing-table-item__features',
 	},
 	currency: {
 		type: 'array',
 		source: 'children',
-		selector: '.pricing-table__currency',
+		selector: '.wp-block-coblocks-pricing-table-item__currency',
 	},
 	amount: {
 		type: 'array',
 		source: 'children',
-		selector: '.pricing-table__amount',
+		selector: '.wp-block-coblocks-pricing-table-item__amount',
 	},
 	tableBackground: {
 		type: 'string',
@@ -143,24 +143,24 @@ const settings = {
 				{ ! RichText.isEmpty( title ) && (
 					<RichText.Content
 						tagName="h4"
-						className={ classnames( 'pricing-table__title', textClasses ) }
+						className={ classnames( 'wp-block-coblocks-pricing-table-item__title', textClasses ) }
 						value={ title }
 						style={ textStyle }
 					/>
 				) }
 				{ ! RichText.isEmpty( amount ) && (
-					<div className={ 'pricing-table__price' }>
+					<div className={ 'wp-block-coblocks-pricing-table-item__price-wrapper' }>
 						{ ! RichText.isEmpty( currency ) && (
 							<RichText.Content
 								tagName="span"
-								className={ classnames( 'pricing-table__currency', textClasses ) }
+								className={ classnames( 'wp-block-coblocks-pricing-table-item__currency', textClasses ) }
 								value={ currency }
 								style={ textStyle }
 							/>
 						) }
 						<RichText.Content
 							tagName="h5"
-							className={ classnames( 'pricing-table__amount', textClasses ) }
+							className={ classnames( 'wp-block-coblocks-pricing-table-item__amount', textClasses ) }
 							value={ amount }
 							style={ textStyle }
 						/>
@@ -169,7 +169,7 @@ const settings = {
 				{ ! RichText.isEmpty( features ) && (
 					<RichText.Content
 						tagName="ul"
-						className={ classnames( 'pricing-table__features', textClasses ) }
+						className={ classnames( 'wp-block-coblocks-pricing-table-item__features', textClasses ) }
 						value={ features }
 						style={ textStyle }
 					/>
