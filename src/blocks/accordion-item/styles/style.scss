@@ -1,11 +1,7 @@
 .wp-block-coblocks-accordion-item {
 	border-radius: $accordion-border-radius;
-	margin: 0 0 1em;
+	margin: 0 0 0.75em;
 	word-break: break-word;
-
-	& + & {
-		margin-top: -0.3em;
-	}
 
 	&__title {
 		border-radius: $accordion-border-radius;
