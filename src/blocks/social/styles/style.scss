@@ -3,6 +3,11 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 
 .wp-block-coblocks-social {
 
+	// Fallback color to match core button block.
+	.wp-block-button__link:not(.has-background) {
+		background-color: #31373c;
+	}
+
 	ul,
 	li {
 		list-style: none;
@@ -12,15 +17,8 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 
 	li {
 		display: inline-block;
-		margin: 3px 6px 3px 0;
+		margin: 3px 6px 3px 0 !important;
 	}
-
-	// &:not(.is-style-mask) {
-		// Fallback color to match core button block.
-		.wp-block-button__link:not(.has-background) {
-			background-color: #31373c;
-		}
-	// }
 
 	&__button {
 		align-items: center;
@@ -174,7 +172,7 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 	&.has-button-size-sml {
 
 		li {
-			margin: 2px 4px 2px 0;
+			margin: 2px 4px 2px 0 !important;
 		}
 
 		// Icon only style.
