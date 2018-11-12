@@ -28,7 +28,7 @@ const { RichText, InnerBlocks } = wp.editor;
  * @type {string[]}
 */
 const ALLOWED_BLOCKS = [ 'core/button' ];
-const TEMPLATE = [ [ 'core/button', { text: 'Buy Now' } ] ];
+const TEMPLATE = [ [ 'core/button', { text: __( 'Buy Now' ) } ] ];
 
 /**
  * Block edit function
