@@ -114,38 +114,29 @@ const settings = {
 		const tableBackgroundClass = getColorClassName( 'background-color', tableBackground );
 		const tableColorClass = getColorClassName( 'color', tableColor );
 
-		const tableClasses = classnames( {
+		const classes = classnames( {
 				'has-background': tableBackground || customTableBackground,
 				[ tableBackgroundClass ]: tableBackgroundClass,
-			}
-		);
-
-		const tableStyle = {
-			backgroundColor: tableBackgroundClass ? undefined : customTableBackground,
-			color: tableColorClass ? undefined : customTableColor,
-		};
-
-		const textClasses = classnames( {
 				'has-text-color': tableColor || customTableColor,
 				[ tableColorClass ]: tableColorClass,
 			}
 		);
 
-		const textStyle = {
+		const styles = {
+			backgroundColor: tableBackgroundClass ? undefined : customTableBackground,
 			color: tableColorClass ? undefined : customTableColor,
 		};
 
 		return (
 			<div
-				className={ tableClasses }
-				style={ tableStyle }
+				className={ classes }
+				style={ styles }
 			>
 				{ ! RichText.isEmpty( title ) && (
 					<RichText.Content
 						tagName="h4"
-						className={ classnames( 'wp-block-coblocks-pricing-table-item__title', textClasses ) }
+						className="wp-block-coblocks-pricing-table-item__title"
 						value={ title }
-						style={ textStyle }
 					/>
 				) }
 				{ ! RichText.isEmpty( amount ) && (
@@ -153,25 +144,22 @@ const settings = {
 						{ ! RichText.isEmpty( currency ) && (
 							<RichText.Content
 								tagName="span"
-								className={ classnames( 'wp-block-coblocks-pricing-table-item__currency', textClasses ) }
+								className="wp-block-coblocks-pricing-table-item__currency"
 								value={ currency }
-								style={ textStyle }
 							/>
 						) }
 						<RichText.Content
 							tagName="h5"
-							className={ classnames( 'wp-block-coblocks-pricing-table-item__amount', textClasses ) }
+							className="wp-block-coblocks-pricing-table-item__amount"
 							value={ amount }
-							style={ textStyle }
 						/>
 					</div>
 				) }
 				{ ! RichText.isEmpty( features ) && (
 					<RichText.Content
 						tagName="ul"
-						className={ classnames( 'wp-block-coblocks-pricing-table-item__features', textClasses ) }
+						className="wp-block-coblocks-pricing-table-item__features"
 						value={ features }
-						style={ textStyle }
 					/>
 				) }
 				<InnerBlocks.Content />

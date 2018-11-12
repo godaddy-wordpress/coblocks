@@ -23,6 +23,7 @@
 	&__title {
 		margin-top: 0;
 		padding: 0;
+		color: inherit;
 	}
 
 	&__price-wrapper {
@@ -33,6 +34,7 @@
 
 	&__currency {
 		font-size: 1em;
+		color: inherit;
 	}
 
 	&__amount {
@@ -41,6 +43,7 @@
 		line-height: 1 !important;
 		margin: 0;
 		padding: 0;
+		color: inherit;
 	}
 
 	& &__features {

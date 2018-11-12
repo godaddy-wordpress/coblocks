@@ -85,30 +85,27 @@ class Edit extends Component {
 				>
 					<RichText
 						tagName="h4"
-						className={ 'wp-block-coblocks-pricing-table-item__title' }
+						className="wp-block-coblocks-pricing-table-item__title"
 						onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
-						style={ { color: tableColor.color } }
 						value={ title }
 						placeholder={ __( 'Plan A' ) }
 						formattingControls={ formattingControls }
 						keepPlaceholderOnFocus
 					/>
-					<div className={ 'wp-block-coblocks-pricing-table-item__price-wrapper' }>
+					<div className="wp-block-coblocks-pricing-table-item__price-wrapper">
 						<RichText
-							tagName='span'
-							className={ 'wp-block-coblocks-pricing-table-item__currency' }
+							tagName="span"
+							className="wp-block-coblocks-pricing-table-item__currency"
 							onChange={ ( nextCurrency ) => setAttributes( { currency: nextCurrency } ) }
-							style={ { color: tableColor.color } }
 							value={ currency }
 							placeholder={ __( '$' ) }
 							formattingControls={ formattingControls }
 							keepPlaceholderOnFocus
 						/>
 						<RichText
-							tagName='h5'
-							className={ 'wp-block-coblocks-pricing-table-item__amount' }
+							tagName="h5"
+							className="wp-block-coblocks-pricing-table-item__amount"
 							onChange={ ( nextAmount ) => setAttributes( { amount: nextAmount } ) }
-							style={ { color: tableColor.color } }
 							value={ amount }
 							placeholder={ __( '99' ) }
 							formattingControls={ formattingControls }
@@ -116,12 +113,11 @@ class Edit extends Component {
 						/>
 					</div>
 					<RichText
-						tagName='ul'
-						multiline='li'
-						className={ 'wp-block-coblocks-pricing-table-item__features' }
+						tagName="ul"
+						multiline="li"
+						className="wp-block-coblocks-pricing-table-item__features"
 						onChange={ ( nextFeatures ) => setAttributes( { features: nextFeatures } ) }
 						value={ features }
-						style={ { color: tableColor.color } }
 						placeholder={ __( 'Add features' ) }
 						keepPlaceholderOnFocus
 					/>
