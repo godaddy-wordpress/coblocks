@@ -27,9 +27,18 @@
 	}
 
 	.block-list-appender {
-		padding: 18px;
-		padding-top: 0;
-		padding-bottom: 0;
+		padding: 0 16px;
+	}
+
+	.block-list-appender__toggle {
+		border-radius: $accordion-border-radius;
+		padding: 13px;
+		outline: none;
+		border: 1px dashed #8d96a0;
+
+		&:hover {
+			border-color: #555d66;
+		}
 	}
 }
 
