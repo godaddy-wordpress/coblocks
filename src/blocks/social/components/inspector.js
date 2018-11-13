@@ -43,6 +43,7 @@ class Inspector extends Component {
 			twitter,
 			size,
 			reddit,
+			email,
 		} = attributes;
 
 		const options = [
@@ -113,6 +114,11 @@ class Inspector extends Component {
 							label={ __( 'Reddit' ) }
 							checked={ !! reddit }
 							onChange={ () => setAttributes( {  reddit: ! reddit } ) }
+						/>
+						<ToggleControl
+							label={ __( 'Email' ) }
+							checked={ !! email }
+							onChange={ () => setAttributes( {  email: ! email } ) }
 						/>
 					</PanelBody>
 				</InspectorControls>
