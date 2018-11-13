@@ -125,6 +125,11 @@ class Inspector extends Component {
 							onChange={ () => setAttributes( {  linkedin: ! linkedin } ) }
 						/>
 						<ToggleControl
+							label={ __( 'Email' ) }
+							checked={ !! email }
+							onChange={ () => setAttributes( {  email: ! email } ) }
+						/>
+						<ToggleControl
 							label={ __( 'Tumblr' ) }
 							checked={ !! tumblr }
 							onChange={ () => setAttributes( {  tumblr: ! tumblr } ) }
@@ -133,11 +138,6 @@ class Inspector extends Component {
 							label={ __( 'Reddit' ) }
 							checked={ !! reddit }
 							onChange={ () => setAttributes( {  reddit: ! reddit } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Email' ) }
-							checked={ !! email }
-							onChange={ () => setAttributes( {  email: ! email } ) }
 						/>
 					</PanelBody>
 					{ ! hasColors &&
@@ -152,7 +152,7 @@ class Inspector extends Component {
 								},
 							] }
 						>
-					</PanelColorSettings>
+						</PanelColorSettings>
 					}
 				</InspectorControls>
 			</Fragment>
