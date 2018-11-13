@@ -64,6 +64,7 @@ class Inspector extends Component {
 			size,
 			reddit,
 			email,
+			google,
 			iconSize,
 		} = attributes;
 
@@ -146,6 +147,11 @@ class Inspector extends Component {
 							label={ __( 'Tumblr' ) }
 							checked={ !! tumblr }
 							onChange={ () => setAttributes( {  tumblr: ! tumblr } ) }
+						/>
+						<ToggleControl
+							label={ __( 'Google' ) }
+							checked={ !! google }
+							onChange={ () => setAttributes( {  google: ! google } ) }
 						/>
 						<ToggleControl
 							label={ __( 'Reddit' ) }

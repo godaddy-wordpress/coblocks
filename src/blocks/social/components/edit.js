@@ -50,6 +50,7 @@ class Edit extends Component {
 			twitter,
 			email,
 			iconSize,
+			google,
 		} = attributes;
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
@@ -137,6 +138,14 @@ class Edit extends Component {
 							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--tumblr` ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Tumblr' ) }</span>
+							</a>
+						</li>
+					}
+					{ google &&
+						<li>
+							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--google` ) } style={ buttonStyles }>
+								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
+								<span className="wp-block-coblocks-social__text">{ __( 'Share on Google' ) }</span>
 							</a>
 						</li>
 					}

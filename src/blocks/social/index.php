@@ -63,15 +63,23 @@ function coblocks_render_social_block( $attributes ) {
 	';
 
 	// Generate the Reddit URL.
-	$reddit_url = 'https://www.reddit.com/submit?
+	$reddit_url = '
+		https://www.reddit.com/submit?
 		url=' . get_the_permalink() . '
 	';
 
 	// Generate the Email URL.
-	$email_url = 'mailto:?subject=
-		' . get_the_title() . '
+	$email_url = '
+		mailto:
+		?subject=' . get_the_title() . '
 		&body=' . get_the_title() . '
 		&mdash;' . get_the_permalink() . '
+	';
+
+	// Generate the Google URL.
+	$google_url = '
+		https://plus.google.com/share
+		?url=' . get_the_permalink() . '
 	';
 
 	// Apply filters, so that the social URLs can be modified.
@@ -82,6 +90,7 @@ function coblocks_render_social_block( $attributes ) {
 	$email_url     = apply_filters( 'coblocks_email_share_url', $email_url );
 	$tumblr_url    = apply_filters( 'coblocks_tumblr_share_url', $tumblr_url );
 	$reddit_url    = apply_filters( 'coblocks_reddit_share_url', $reddit_url );
+	$google_url    = apply_filters( 'coblocks_google_share_url', $google_url );
 
 	// Attributes.
 	$text_align    = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "style=text-align:{$attributes['textAlign']}" : false;
@@ -90,6 +99,7 @@ function coblocks_render_social_block( $attributes ) {
 	$has_backround = '';
 	$color_class   = '';
 	$custom_color  = '';
+
 	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) !== false ) {
 		$has_backround = is_array( $attributes ) && isset( $attributes['hasColors'] ) && ( isset( $attributes['backgroundColor'] ) || isset( $attributes['customBackgroundColor'] ) ) && ( $attributes['hasColors'] || ( $attributes['backgroundColor'] || $attributes['customBackgroundColor'] ) ) ? 'has-text-color' : false;
 		$color_class   = is_array( $attributes ) && isset( $attributes['backgroundColor'] ) ? "has-{$attributes['backgroundColor']}-color" : false;
@@ -130,6 +140,10 @@ function coblocks_render_social_block( $attributes ) {
 		'tumblr'    => array(
 			'text' => esc_html__( 'Share on Tumblr', '@@textdomain' ),
 			'url'  => $tumblr_url,
+		),
+		'google'    => array(
+			'text' => esc_html__( 'Share on Google', '@@textdomain' ),
+			'url'  => $google_url,
 		),
 		'reddit'    => array(
 			'text' => esc_html__( 'Share on Reddit', '@@textdomain' ),
@@ -257,6 +271,10 @@ function coblocks_register_social_block() {
 					'default' => false,
 				),
 				'email'                 => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'google'                => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
