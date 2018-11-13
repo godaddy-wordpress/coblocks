@@ -74,137 +74,95 @@ function coblocks_render_social_block( $attributes ) {
 		&mdash;' . get_the_permalink() . '
 	';
 
-	// Apply filters, so that they may be easily modified.
+	// Apply filters, so that the social URLs can be modified.
 	$twitter_url   = apply_filters( 'coblocks_twitter_share_url', $twitter_url );
 	$facebook_url  = apply_filters( 'coblocks_facebook_share_url', $facebook_url );
 	$pinterest_url = apply_filters( 'coblocks_pinterest_share_url', $pinterest_url );
 	$linkedin_url  = apply_filters( 'coblocks_linkedin_share_url', $linkedin_url );
+	$email_url     = apply_filters( 'coblocks_email_share_url', $email_url );
 	$tumblr_url    = apply_filters( 'coblocks_tumblr_share_url', $tumblr_url );
 	$reddit_url    = apply_filters( 'coblocks_reddit_share_url', $reddit_url );
-	$email_url     = apply_filters( 'coblocks_email_share_url', $email_url );
 
-	// Style attributes.
-	$text_align              = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "style=text-align:{$attributes['textAlign']}" : false;
-	$has_backround           = is_array( $attributes ) && isset( $attributes['hasColors'] ) && ( isset( $attributes['backgroundColor'] ) || isset( $attributes['customBackgroundColor'] ) ) && ( $attributes['hasColors'] || ( $attributes['backgroundColor'] || $attributes['customBackgroundColor'] ) ) ? 'has-background' : false;
-	$border_radius           = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : false;
-	$custom_background_color = is_array( $attributes ) && isset( $attributes['customBackgroundColor'] ) ? "background-color: {$attributes['customBackgroundColor']};" : false;
+	// Attributes.
+	$text_align    = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "style=text-align:{$attributes['textAlign']}" : false;
+	$border_radius = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : false;
+
+	$has_backround = '';
+	$color_class   = '';
+	$custom_color  = '';
+	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) !== false ) {
+		$has_backround = is_array( $attributes ) && isset( $attributes['hasColors'] ) && ( isset( $attributes['backgroundColor'] ) || isset( $attributes['customBackgroundColor'] ) ) && ( $attributes['hasColors'] || ( $attributes['backgroundColor'] || $attributes['customBackgroundColor'] ) ) ? 'has-text-color' : false;
+		$color_class   = is_array( $attributes ) && isset( $attributes['backgroundColor'] ) ? "has-{$attributes['backgroundColor']}-color" : false;
+		$custom_color  = is_array( $attributes ) && isset( $attributes['customBackgroundColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] ) ? "color: {$attributes['customBackgroundColor']};" : false;
+	} else {
+		$has_backround = is_array( $attributes ) && isset( $attributes['hasColors'] ) && ( isset( $attributes['backgroundColor'] ) || isset( $attributes['customBackgroundColor'] ) ) && ( $attributes['hasColors'] || ( $attributes['backgroundColor'] || $attributes['customBackgroundColor'] ) ) ? 'has-background' : false;
+		$color_class   = is_array( $attributes ) && isset( $attributes['backgroundColor'] ) ? "has-{$attributes['backgroundColor']}-background-color" : false;
+		$custom_color  = is_array( $attributes ) && isset( $attributes['customBackgroundColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] ) ? "background-color: {$attributes['customBackgroundColor']};" : false;
+	}
 
 	$icon_size = '';
 	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) !== false ) {
 		$icon_size = is_array( $attributes ) && isset( $attributes['iconSize'] ) ? "height:{$attributes['iconSize']}px;width: {$attributes['iconSize']}px;" : false;
 	}
 
-	$background_color_class = is_array( $attributes ) && isset( $attributes['backgroundColor'] ) ? "has-{$attributes['backgroundColor']}-background-color" : false;
+	// Supported social media platforms.
+	$platforms = array(
+		'twitter'   => array(
+			'text' => esc_html__( 'Share on Twitter', '@@textdomain' ),
+			'url'  => $twitter_url,
+		),
+		'facebook'  => array(
+			'text' => esc_html__( 'Share on Facebook', '@@textdomain' ),
+			'url'  => $facebook_url,
+		),
+		'pinterest' => array(
+			'text' => esc_html__( 'Share on Pinterest', '@@textdomain' ),
+			'url'  => $pinterest_url,
+		),
+		'linkedin'  => array(
+			'text' => esc_html__( 'Share on Linkedin', '@@textdomain' ),
+			'url'  => $linkedin_url,
+		),
+		'email'     => array(
+			'text' => esc_html__( 'Share via Email', '@@textdomain' ),
+			'url'  => $email_url,
+		),
+		'tumblr'    => array(
+			'text' => esc_html__( 'Share on Tumblr', '@@textdomain' ),
+			'url'  => $tumblr_url,
+		),
+		'reddit'    => array(
+			'text' => esc_html__( 'Share on Reddit', '@@textdomain' ),
+			'url'  => $reddit_url,
+		),
+	);
 
-	// Start the markup output.
+	// Start markup.
 	$markup = '';
 
-	if ( isset( $attributes['twitter'] ) && $attributes['twitter'] ) {
-		$markup .= sprintf(
-			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--twitter %3$s %7$s" title="%2$s" style="%4$s%6$s">
-				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
-				<span class="wp-block-coblocks-social__text">%2$s</span>
-			</a></li>',
-			esc_url( $twitter_url ),
-			esc_html__( 'Share on Twitter', '@@textdomain' ),
-			esc_attr( $has_backround ),
-			esc_attr( $border_radius ),
-			esc_attr( $icon_size ),
-			esc_attr( $custom_background_color ),
-			esc_attr( $background_color_class )
-		);
+	foreach ( $platforms as $id => $platform ) {
+
+		if ( isset( $attributes[ $id ] ) && $attributes[ $id ] ) {
+			$markup .= sprintf(
+				'<li>
+					<a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--%8$s %3$s %7$s" title="%2$s" style="%4$s%6$s">
+						<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
+						<span class="wp-block-coblocks-social__text">%2$s</span>
+					</a>
+				</li>',
+				esc_url( $platform['url'] ),
+				esc_html( $platform['text'] ),
+				esc_attr( $has_backround ),
+				esc_attr( $border_radius ),
+				esc_attr( $icon_size ),
+				esc_attr( $custom_color ),
+				esc_attr( $color_class ),
+				esc_attr( $id )
+			);
+		}
 	}
 
-	if ( isset( $attributes['facebook'] ) && $attributes['facebook'] ) {
-		$markup .= sprintf(
-			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--facebook %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
-				<span class="wp-block-coblocks-social__text">%2$s</span>
-			</a></li>',
-			esc_url( $facebook_url ),
-			esc_html__( 'Share on Facebook', '@@textdomain' ),
-			esc_attr( $has_backround ),
-			esc_attr( $border_radius ),
-			esc_attr( $icon_size ),
-			esc_attr( $custom_background_color )
-		);
-	}
-
-	if ( isset( $attributes['pinterest'] ) && $attributes['pinterest'] ) {
-		$markup .= sprintf(
-			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--pinterest %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
-				<span class="wp-block-coblocks-social__text">%2$s</span>
-			</a></li>',
-			esc_url( $pinterest_url ),
-			esc_html__( 'Share on Pinterest', '@@textdomain' ),
-			esc_attr( $has_backround ),
-			esc_attr( $border_radius ),
-			esc_attr( $icon_size ),
-			esc_attr( $custom_background_color )
-		);
-	}
-
-	if ( isset( $attributes['linkedin'] ) && $attributes['linkedin'] ) {
-		$markup .= sprintf(
-			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--linkedin %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
-				<span class="wp-block-coblocks-social__text">%2$s</span>
-			</a></li>',
-			esc_url( $linkedin_url ),
-			esc_html__( 'Share on LinkedIn', '@@textdomain' ),
-			esc_attr( $has_backround ),
-			esc_attr( $border_radius ),
-			esc_attr( $icon_size ),
-			esc_attr( $custom_background_color )
-		);
-	}
-
-	if ( isset( $attributes['email'] ) && $attributes['email'] ) {
-		$markup .= sprintf(
-			'<li><a href="%1$s" target="_blank" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--email %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
-				<span class="wp-block-coblocks-social__text">%2$s</span>
-			</a></li>',
-			esc_url( $reddit_url ),
-			esc_html__( 'Share via Email', '@@textdomain' ),
-			esc_attr( $has_backround ),
-			esc_attr( $border_radius ),
-			esc_attr( $icon_size ),
-			esc_attr( $custom_background_color )
-		);
-	}
-
-	if ( isset( $attributes['tumblr'] ) && $attributes['tumblr'] ) {
-		$markup .= sprintf(
-			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--tumblr %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
-				<span class="wp-block-coblocks-social__text">%2$s</span>
-			</a></li>',
-			esc_url( $tumblr_url ),
-			esc_html__( 'Share on Tumblr', '@@textdomain' ),
-			esc_attr( $has_backround ),
-			esc_attr( $border_radius ),
-			esc_attr( $icon_size ),
-			esc_attr( $custom_background_color )
-		);
-	}
-
-	if ( isset( $attributes['reddit'] ) && $attributes['reddit'] ) {
-		$markup .= sprintf(
-			'<li><a href="%1$s" target="_blank" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--reddit %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
-				<span class="wp-block-coblocks-social__text">%2$s</span>
-			</a></li>',
-			esc_url( $reddit_url ),
-			esc_html__( 'Share on Reddit', '@@textdomain' ),
-			esc_attr( $has_backround ),
-			esc_attr( $border_radius ),
-			esc_attr( $icon_size ),
-			esc_attr( $custom_background_color )
-		);
-	}
-
+	// Build classes.
 	$class = 'wp-block-coblocks-social';
 
 	if ( isset( $attributes['className'] ) ) {
