@@ -14,8 +14,20 @@ import applyWithColors from './colors';
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, PanelColorSettings } = wp.editor;
-const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
+const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.editor;
+const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles } = wp.components;
+
+const { getComputedStyle } = window;
+
+const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+	const { backgroundColor } = ownProps;
+	const backgroundColorValue = backgroundColor && backgroundColor.color;
+	//avoid the use of querySelector if textColor color is known and verify if node is available.
+	const textNode = ! textColorValue && node ? node.querySelector( '[contenteditable="true"]' ) : null;
+	return {
+		fallbackBackgroundColor: backgroundColorValue || ! node ? undefined : getComputedStyle( node ).backgroundColor,
+	};
+} );
 
 /**
  * Inspector controls
@@ -38,6 +50,7 @@ class Inspector extends Component {
 			setAttributes,
 			setBackgroundColor,
 			backgroundColor,
+			fallbackBackgroundColor,
 		} = this.props;
 
 		const {
@@ -152,6 +165,14 @@ class Inspector extends Component {
 								},
 							] }
 						>
+							<ContrastChecker
+								{ ...{
+									isLargeText: true,
+									textColor: '#fff',
+									backgroundColor: backgroundColor.color,
+									fallbackBackgroundColor,
+								} }
+							/>
 						</PanelColorSettings>
 					}
 				</InspectorControls>
