@@ -84,14 +84,21 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 == Changelog ==
 
 = 1.3.1, November XX, 2018 =
-* New: Add ContrastChecker to Alert Block
+* New: Add ContrastChecker to Alert block
+* New: Add four new styles to the Social block
+* New: Add size, style and border radius options for the Social block
+* New: Add option to use social media colors on the Social block
+* New: Add Reddit share option to the Social block
+* New: Add Email share option to the Social block
+* New: Add Google Plus share option to the Social block
+* Tweak: Add ContrastChecker to the Social block
 * Tweak: Improve Gist block styling
 * Tweak: Add proper help text for the Gist block meta toggle
 * Tweak: Adjust inner blocks appender on Accordion block
 * Tweak: Improve Pricing Table item rendering within the editor and on the frontend
 * Tweak: Clean up editor styling for Dynamic HR block
 * Tweak: Clean editor styling for easier theme overrides
-* Tweak: Adjust Alert Block colors
+* Tweak: Adjust Alert block colors
 * Fix: Click to Tweet transforms function properly
 * Fix: Dynamic HR transforms
 
