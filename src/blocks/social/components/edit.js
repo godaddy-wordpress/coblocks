@@ -120,6 +120,14 @@ class Edit extends Component {
 							</a>
 						</li>
 					}
+					{ email &&
+						<li>
+							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--email` ) } style={ buttonStyles }>
+								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
+								<span className="wp-block-coblocks-social__text">{ __( 'Share via Email' ) }</span>
+							</a>
+						</li>
+					}
 					{ tumblr &&
 						<li>
 							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--tumblr` ) } style={ buttonStyles }>
@@ -133,14 +141,6 @@ class Edit extends Component {
 							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--reddit` ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Reddit' ) }</span>
-							</a>
-						</li>
-					}
-					{ email &&
-						<li>
-							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--email` ) } style={ buttonStyles }>
-								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
-								<span className="wp-block-coblocks-social__text">{ __( 'Share via Email' ) }</span>
 							</a>
 						</li>
 					}

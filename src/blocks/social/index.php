@@ -151,6 +151,20 @@ function coblocks_render_social_block( $attributes ) {
 		);
 	}
 
+	if ( isset( $attributes['email'] ) && $attributes['email'] ) {
+		$markup .= sprintf(
+			'<li><a href="%1$s" target="_blank" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--email %3$s" title="%2$s" style="%4$s">
+				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
+				<span class="wp-block-coblocks-social__text">%2$s</span>
+			</a></li>',
+			esc_url( $reddit_url ),
+			esc_html__( 'Share via Email', '@@textdomain' ),
+			esc_attr( $has_backround ),
+			esc_attr( $border_radius ),
+			esc_attr( $icon_size )
+		);
+	}
+
 	if ( isset( $attributes['tumblr'] ) && $attributes['tumblr'] ) {
 		$markup .= sprintf(
 			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--tumblr %3$s" title="%2$s" style="%4$s">
@@ -173,20 +187,6 @@ function coblocks_render_social_block( $attributes ) {
 			</a></li>',
 			esc_url( $reddit_url ),
 			esc_html__( 'Share on Reddit', '@@textdomain' ),
-			esc_attr( $has_backround ),
-			esc_attr( $border_radius ),
-			esc_attr( $icon_size )
-		);
-	}
-
-	if ( isset( $attributes['email'] ) && $attributes['email'] ) {
-		$markup .= sprintf(
-			'<li><a href="%1$s" target="_blank" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--email %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
-				<span class="wp-block-coblocks-social__text">%2$s</span>
-			</a></li>',
-			esc_url( $reddit_url ),
-			esc_html__( 'Share via Email', '@@textdomain' ),
 			esc_attr( $has_backround ),
 			esc_attr( $border_radius ),
 			esc_attr( $icon_size )
