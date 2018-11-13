@@ -9,6 +9,7 @@ import includes from 'lodash/includes';
  */
 import Controls from './controls';
 import Inspector from './inspector';
+import applyWithColors from './colors';
 
 /**
  * WordPress dependencies
@@ -33,6 +34,7 @@ class Edit extends Component {
 			className,
 			isSelected,
 			setAttributes,
+			backgroundColor,
 		} = this.props;
 
 		const {
@@ -61,12 +63,13 @@ class Edit extends Component {
 		const buttonClasses = classnames(
 			`wp-block-button__link`,
 			`wp-block-coblocks-social__button`, {
-				'has-background' : hasColors,
+				'has-background' : hasColors || backgroundColor.color,
 			}
 		);
 
 		const buttonStyles = {
 			borderRadius: borderRadius ? borderRadius + 'px' : undefined,
+			backgroundColor: ! hasColors ? backgroundColor.color : undefined,
 		};
 
 		const iconStyles = {
@@ -151,4 +154,6 @@ class Edit extends Component {
 	}
 };
 
-export default Edit;
+export default compose( [
+	applyWithColors,
+] )( Edit );

@@ -4,12 +4,17 @@
 import includes from 'lodash/includes';
 
 /**
+ * Internal dependencies
+ */
+import applyWithColors from './colors';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
-const { InspectorControls } = wp.editor;
+const { InspectorControls, PanelColorSettings } = wp.editor;
 const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
 
 /**
@@ -31,6 +36,8 @@ class Inspector extends Component {
 			className,
 			attributes,
 			setAttributes,
+			setBackgroundColor,
+			backgroundColor,
 		} = this.props;
 
 		const {
@@ -133,10 +140,26 @@ class Inspector extends Component {
 							onChange={ () => setAttributes( {  email: ! email } ) }
 						/>
 					</PanelBody>
+					{ ! hasColors &&
+						<PanelColorSettings
+							title={ __( 'Color Settings' ) }
+							initialOpen={ false }
+							colorSettings={ [
+								{
+									value: backgroundColor.color,
+									onChange: setBackgroundColor,
+									label: __( 'Background Color' ),
+								},
+							] }
+						>
+					</PanelColorSettings>
+					}
 				</InspectorControls>
 			</Fragment>
 		);
 	}
 };
 
-export default Inspector;
+export default compose( [
+	applyWithColors,
+] )( Inspector );

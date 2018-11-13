@@ -83,21 +83,25 @@ function coblocks_render_social_block( $attributes ) {
 	$reddit_url    = apply_filters( 'coblocks_reddit_share_url', $reddit_url );
 	$email_url     = apply_filters( 'coblocks_email_share_url', $email_url );
 
-	// Start the markup output.
-	$markup = '';
-
-	// Style options.
-	$has_backround = is_array( $attributes ) && isset( $attributes['hasColors'] ) && $attributes['hasColors'] ? 'has-background' : false;
-	$border_radius = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : false;
+	// Style attributes.
+	$text_align              = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "style=text-align:{$attributes['textAlign']}" : false;
+	$has_backround           = is_array( $attributes ) && isset( $attributes['hasColors'] ) && ( isset( $attributes['backgroundColor'] ) || isset( $attributes['customBackgroundColor'] ) ) && ( $attributes['hasColors'] || ( $attributes['backgroundColor'] || $attributes['customBackgroundColor'] ) ) ? 'has-background' : false;
+	$border_radius           = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : false;
+	$custom_background_color = is_array( $attributes ) && isset( $attributes['customBackgroundColor'] ) ? "background-color: {$attributes['customBackgroundColor']};" : false;
 
 	$icon_size = '';
 	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) !== false ) {
 		$icon_size = is_array( $attributes ) && isset( $attributes['iconSize'] ) ? "height:{$attributes['iconSize']}px;width: {$attributes['iconSize']}px;" : false;
 	}
 
+	$background_color_class = is_array( $attributes ) && isset( $attributes['backgroundColor'] ) ? "has-{$attributes['backgroundColor']}-background-color" : false;
+
+	// Start the markup output.
+	$markup = '';
+
 	if ( isset( $attributes['twitter'] ) && $attributes['twitter'] ) {
 		$markup .= sprintf(
-			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--twitter %3$s" title="%2$s" style="%4$s">
+			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--twitter %3$s %7$s" title="%2$s" style="%4$s%6$s">
 				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
 				<span class="wp-block-coblocks-social__text">%2$s</span>
 			</a></li>',
@@ -105,7 +109,9 @@ function coblocks_render_social_block( $attributes ) {
 			esc_html__( 'Share on Twitter', '@@textdomain' ),
 			esc_attr( $has_backround ),
 			esc_attr( $border_radius ),
-			esc_attr( $icon_size )
+			esc_attr( $icon_size ),
+			esc_attr( $custom_background_color ),
+			esc_attr( $background_color_class )
 		);
 	}
 
@@ -119,7 +125,8 @@ function coblocks_render_social_block( $attributes ) {
 			esc_html__( 'Share on Facebook', '@@textdomain' ),
 			esc_attr( $has_backround ),
 			esc_attr( $border_radius ),
-			esc_attr( $icon_size )
+			esc_attr( $icon_size ),
+			esc_attr( $custom_background_color )
 		);
 	}
 
@@ -133,7 +140,8 @@ function coblocks_render_social_block( $attributes ) {
 			esc_html__( 'Share on Pinterest', '@@textdomain' ),
 			esc_attr( $has_backround ),
 			esc_attr( $border_radius ),
-			esc_attr( $icon_size )
+			esc_attr( $icon_size ),
+			esc_attr( $custom_background_color )
 		);
 	}
 
@@ -147,7 +155,8 @@ function coblocks_render_social_block( $attributes ) {
 			esc_html__( 'Share on LinkedIn', '@@textdomain' ),
 			esc_attr( $has_backround ),
 			esc_attr( $border_radius ),
-			esc_attr( $icon_size )
+			esc_attr( $icon_size ),
+			esc_attr( $custom_background_color )
 		);
 	}
 
@@ -161,7 +170,8 @@ function coblocks_render_social_block( $attributes ) {
 			esc_html__( 'Share via Email', '@@textdomain' ),
 			esc_attr( $has_backround ),
 			esc_attr( $border_radius ),
-			esc_attr( $icon_size )
+			esc_attr( $icon_size ),
+			esc_attr( $custom_background_color )
 		);
 	}
 
@@ -175,7 +185,8 @@ function coblocks_render_social_block( $attributes ) {
 			esc_html__( 'Share on Tumblr', '@@textdomain' ),
 			esc_attr( $has_backround ),
 			esc_attr( $border_radius ),
-			esc_attr( $icon_size )
+			esc_attr( $icon_size ),
+			esc_attr( $custom_background_color )
 		);
 	}
 
@@ -189,11 +200,10 @@ function coblocks_render_social_block( $attributes ) {
 			esc_html__( 'Share on Reddit', '@@textdomain' ),
 			esc_attr( $has_backround ),
 			esc_attr( $border_radius ),
-			esc_attr( $icon_size )
+			esc_attr( $icon_size ),
+			esc_attr( $custom_background_color )
 		);
 	}
-
-	$text_align = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "style=text-align:{$attributes['textAlign']}" : false;
 
 	$class = 'wp-block-coblocks-social';
 
@@ -236,53 +246,59 @@ function coblocks_register_social_block() {
 			'editor_style'    => 'coblocks-editor',
 			'style'           => 'coblocks-frontend',
 			'attributes'      => array(
-				'className'    => array(
+				'className'             => array(
 					'type' => 'string',
 				),
-				'hasColors'    => array(
+				'hasColors'             => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'borderRadius' => array(
+				'borderRadius'          => array(
 					'type'    => 'number',
 					'default' => 40,
 				),
-				'size'         => array(
+				'size'                  => array(
 					'type'    => 'string',
 					'default' => 'med',
 				),
-				'iconSize'     => array(
+				'iconSize'              => array(
 					'type'    => 'number',
 					'default' => 30,
 				),
-				'textAlign'    => array(
+				'textAlign'             => array(
 					'type' => 'string',
 				),
-				'twitter'      => array(
+				'backgroundColor'       => array(
+					'type' => 'string',
+				),
+				'customBackgroundColor' => array(
+					'type' => 'string',
+				),
+				'twitter'               => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'facebook'     => array(
+				'facebook'              => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'pinterest'    => array(
+				'pinterest'             => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'linkedin'     => array(
+				'linkedin'              => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'tumblr'       => array(
+				'tumblr'                => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'reddit'       => array(
+				'reddit'                => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'email'        => array(
+				'email'                 => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
