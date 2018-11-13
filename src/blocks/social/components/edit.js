@@ -69,7 +69,8 @@ class Edit extends Component {
 
 		const buttonStyles = {
 			borderRadius: borderRadius ? borderRadius + 'px' : undefined,
-			backgroundColor: ! hasColors ? backgroundColor.color : undefined,
+			backgroundColor: ! hasColors && ! isMaskStyle ? backgroundColor.color : undefined,
+			color: ! hasColors && isMaskStyle ? backgroundColor.color : undefined,
 		};
 
 		const iconStyles = {
