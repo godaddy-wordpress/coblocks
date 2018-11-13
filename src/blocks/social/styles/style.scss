@@ -151,21 +151,6 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 		.wp-block-coblocks-social__text {
 			margin-left: 0;
 		}
-
-		.wp-block-coblocks-social__icon {
-			height: 32px;
-			width: 32px;
-		}
-
-		&.has-button-size-sml .wp-block-coblocks-social__icon {
-			height: 20px;
-			width: 20px;
-		}
-
-		&.has-button-size-lrg .wp-block-coblocks-social__icon {
-			height: 40px;
-			width: 40px;
-		}
 	}
 
 	// Sizes.

@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import includes from 'lodash/includes';
 
 /**
  * Internal dependencies
@@ -46,7 +47,10 @@ class Edit extends Component {
 			tumblr,
 			twitter,
 			email,
+			iconSize,
 		} = attributes;
+
+		const isMaskStyle = includes( className, 'is-style-mask' );
 
 		const classes = classnames( className, {
 				[ `has-button-size-${ size }` ] : size != 'med',
@@ -63,6 +67,11 @@ class Edit extends Component {
 
 		const buttonStyles = {
 			borderRadius: borderRadius ? borderRadius + 'px' : undefined,
+		};
+
+		const iconStyles = {
+			height: isMaskStyle && iconSize ? iconSize + 'px' : undefined,
+			width: isMaskStyle && iconSize ? iconSize + 'px' : undefined,
 		};
 
 		return [
@@ -82,7 +91,7 @@ class Edit extends Component {
 					{ twitter &&
 						<li>
 							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--twitter` ) } style={ buttonStyles }>
-								<span className="wp-block-coblocks-social__icon"></span>
+								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Twitter' ) }</span>
 							</a>
 						</li>
@@ -90,7 +99,7 @@ class Edit extends Component {
 					{ facebook &&
 						<li>
 							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--facebook` ) } style={ buttonStyles }>
-								<span className="wp-block-coblocks-social__icon"></span>
+								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Facebook' ) }</span>
 							</a>
 						</li>
@@ -98,7 +107,7 @@ class Edit extends Component {
 					{ pinterest &&
 						<li>
 							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--pinterest` ) } style={ buttonStyles }>
-								<span className="wp-block-coblocks-social__icon"></span>
+								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Pinterest' ) }</span>
 							</a>
 						</li>
@@ -106,7 +115,7 @@ class Edit extends Component {
 					{ linkedin &&
 						<li>
 							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--linkedin` ) } style={ buttonStyles }>
-								<span className="wp-block-coblocks-social__icon"></span>
+								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on LinkedIn' ) }</span>
 							</a>
 						</li>
@@ -114,7 +123,7 @@ class Edit extends Component {
 					{ tumblr &&
 						<li>
 							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--tumblr` ) } style={ buttonStyles }>
-								<span className="wp-block-coblocks-social__icon"></span>
+								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Tumblr' ) }</span>
 							</a>
 						</li>
@@ -122,7 +131,7 @@ class Edit extends Component {
 					{ reddit &&
 						<li>
 							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--reddit` ) } style={ buttonStyles }>
-								<span className="wp-block-coblocks-social__icon"></span>
+								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Reddit' ) }</span>
 							</a>
 						</li>
@@ -130,7 +139,7 @@ class Edit extends Component {
 					{ email &&
 						<li>
 							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--email` ) } style={ buttonStyles }>
-								<span className="wp-block-coblocks-social__icon"></span>
+								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share via Email' ) }</span>
 							</a>
 						</li>

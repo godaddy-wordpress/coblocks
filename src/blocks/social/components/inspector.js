@@ -44,6 +44,7 @@ class Inspector extends Component {
 			size,
 			reddit,
 			email,
+			iconSize,
 		} = attributes;
 
 		const options = [
@@ -73,13 +74,24 @@ class Inspector extends Component {
 								max={ 50 }
 							/>
 						}
-						<SelectControl
-							label={ __( 'Button Size' ) }
-							value={ size }
-							options={ options }
-							onChange={ ( value ) => setAttributes( { size: value } ) }
-							className="components-coblocks-inspector__social-button-size"
-						/>
+						{ isMaskStyle &&
+							<RangeControl
+								label={ __( 'Icon Size' ) }
+								value={ iconSize }
+								onChange={ ( value ) => setAttributes( { iconSize: value } ) }
+								min={ 16 }
+								max={ 60 }
+							/>
+						}
+						{ ! isMaskStyle &&
+							<SelectControl
+								label={ __( 'Button Size' ) }
+								value={ size }
+								options={ options }
+								onChange={ ( value ) => setAttributes( { size: value } ) }
+								className="components-coblocks-inspector__social-button-size"
+							/>
+						}
 					</PanelBody>
 					<PanelBody
 						title={ __( 'Icon Settings' ) }

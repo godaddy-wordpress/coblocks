@@ -90,94 +90,106 @@ function coblocks_render_social_block( $attributes ) {
 	$has_backround = is_array( $attributes ) && isset( $attributes['hasColors'] ) && $attributes['hasColors'] ? 'has-background' : false;
 	$border_radius = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : false;
 
+	$icon_size = '';
+	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) !== false ) {
+		$icon_size = is_array( $attributes ) && isset( $attributes['iconSize'] ) ? "height:{$attributes['iconSize']}px;width: {$attributes['iconSize']}px;" : false;
+	}
+
 	if ( isset( $attributes['twitter'] ) && $attributes['twitter'] ) {
 		$markup .= sprintf(
 			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--twitter %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon"></span>
+				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
 				<span class="wp-block-coblocks-social__text">%2$s</span>
 			</a></li>',
 			esc_url( $twitter_url ),
 			esc_html__( 'Share on Twitter', '@@textdomain' ),
 			esc_attr( $has_backround ),
-			esc_attr( $border_radius )
+			esc_attr( $border_radius ),
+			esc_attr( $icon_size )
 		);
 	}
 
 	if ( isset( $attributes['facebook'] ) && $attributes['facebook'] ) {
 		$markup .= sprintf(
 			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--facebook %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon"></span>
+				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
 				<span class="wp-block-coblocks-social__text">%2$s</span>
 			</a></li>',
 			esc_url( $facebook_url ),
 			esc_html__( 'Share on Facebook', '@@textdomain' ),
 			esc_attr( $has_backround ),
-			esc_attr( $border_radius )
+			esc_attr( $border_radius ),
+			esc_attr( $icon_size )
 		);
 	}
 
 	if ( isset( $attributes['pinterest'] ) && $attributes['pinterest'] ) {
 		$markup .= sprintf(
 			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--pinterest %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon"></span>
+				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
 				<span class="wp-block-coblocks-social__text">%2$s</span>
 			</a></li>',
 			esc_url( $pinterest_url ),
 			esc_html__( 'Share on Pinterest', '@@textdomain' ),
 			esc_attr( $has_backround ),
-			esc_attr( $border_radius )
+			esc_attr( $border_radius ),
+			esc_attr( $icon_size )
 		);
 	}
 
 	if ( isset( $attributes['linkedin'] ) && $attributes['linkedin'] ) {
 		$markup .= sprintf(
 			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--linkedin %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon"></span>
+				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
 				<span class="wp-block-coblocks-social__text">%2$s</span>
 			</a></li>',
 			esc_url( $linkedin_url ),
 			esc_html__( 'Share on LinkedIn', '@@textdomain' ),
 			esc_attr( $has_backround ),
-			esc_attr( $border_radius )
+			esc_attr( $border_radius ),
+			esc_attr( $icon_size )
 		);
 	}
 
 	if ( isset( $attributes['tumblr'] ) && $attributes['tumblr'] ) {
 		$markup .= sprintf(
 			'<li><a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--tumblr %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon"></span>
+				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
 				<span class="wp-block-coblocks-social__text">%2$s</span>
 			</a></li>',
 			esc_url( $tumblr_url ),
 			esc_html__( 'Share on Tumblr', '@@textdomain' ),
 			esc_attr( $has_backround ),
-			esc_attr( $border_radius )
+			esc_attr( $border_radius ),
+			esc_attr( $icon_size )
 		);
 	}
 
 	if ( isset( $attributes['reddit'] ) && $attributes['reddit'] ) {
 		$markup .= sprintf(
 			'<li><a href="%1$s" target="_blank" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--reddit %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon"></span>
+				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
 				<span class="wp-block-coblocks-social__text">%2$s</span>
 			</a></li>',
 			esc_url( $reddit_url ),
 			esc_html__( 'Share on Reddit', '@@textdomain' ),
 			esc_attr( $has_backround ),
-			esc_attr( $border_radius )
+			esc_attr( $border_radius ),
+			esc_attr( $icon_size )
 		);
 	}
 
 	if ( isset( $attributes['email'] ) && $attributes['email'] ) {
 		$markup .= sprintf(
 			'<li><a href="%1$s" target="_blank" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--email %3$s" title="%2$s" style="%4$s">
-				<span class="wp-block-coblocks-social__icon"></span>
+				<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
 				<span class="wp-block-coblocks-social__text">%2$s</span>
 			</a></li>',
 			esc_url( $reddit_url ),
 			esc_html__( 'Share via Email', '@@textdomain' ),
 			esc_attr( $has_backround ),
-			esc_attr( $border_radius )
+			esc_attr( $border_radius ),
+			esc_attr( $icon_size )
 		);
 	}
 
@@ -193,7 +205,7 @@ function coblocks_render_social_block( $attributes ) {
 		$class .= ' has-colors';
 	}
 
-	if ( isset( $attributes['size'] ) && 'med' !== $attributes['size'] ) {
+	if ( isset( $attributes['size'] ) && 'med' !== $attributes['size'] && ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) === false ) ) {
 		$class .= ' has-button-size-' . $attributes['size'];
 	}
 
@@ -238,6 +250,10 @@ function coblocks_register_social_block() {
 				'size'         => array(
 					'type'    => 'string',
 					'default' => 'med',
+				),
+				'iconSize'     => array(
+					'type'    => 'number',
+					'default' => 30,
 				),
 				'textAlign'    => array(
 					'type' => 'string',
