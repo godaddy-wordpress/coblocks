@@ -84,7 +84,7 @@ class Edit extends Component {
 					} }
 				>
 					<RichText
-						tagName="h4"
+						tagName="span"
 						className="wp-block-coblocks-pricing-table-item__title"
 						onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
 						value={ title }

@@ -134,7 +134,7 @@ const settings = {
 			>
 				{ ! RichText.isEmpty( title ) && (
 					<RichText.Content
-						tagName="h4"
+						tagName="span"
 						className="wp-block-coblocks-pricing-table-item__title"
 						value={ title }
 					/>

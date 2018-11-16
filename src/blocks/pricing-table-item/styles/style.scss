@@ -59,7 +59,11 @@
 		}
 	}
 
-	& &__title,
+	& &__title {
+		margin-bottom: 20px;
+		display: block;
+	}
+
 	& &__price-wrapper {
 		margin-bottom: 20px;
 	}
