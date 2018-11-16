@@ -156,7 +156,7 @@ class Edit extends Component {
 						) }
 						<RichText
 							multiline="false"
-							tagName="h3"
+							tagName="span"
 							placeholder={ __( 'Author Name' ) }
 							value={ name }
 							className={ `${ className }__name` }

@@ -124,7 +124,7 @@ const settings = {
 						) }
 						{ ! RichText.isEmpty( name ) && (
 							<RichText.Content
-								tagName="h3"
+								tagName="span"
 								className="wp-block-coblocks-author__name"
 								value={ name }
 							/>
