@@ -83,7 +83,8 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
-= 1.3.1, November XX, 2018 =
+= 1.4.0, November 15, 2018 =
+* New: Gutenberg 4.4 compatibility! 🎊
 * New: Add ContrastChecker to Alert block
 * New: Add four new styles to the Social block
 * New: Add size, style and border radius options for the Social block
