@@ -6,8 +6,12 @@
 		border: none;
 	}
 
-	td {
-		border-right: 1px solid #ddd;
+	td.blob-num {
+		padding: 1px 15px 1px 20px !important;
+	}
+
+	td.blob-code {
+		padding-left: 0 !important;
 	}
 
 	.gist-file {
