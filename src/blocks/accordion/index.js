@@ -46,6 +46,7 @@ const settings = {
 
 	supports: {
 		align: [ 'wide', 'full' ],
+		html: false,
 	},
 
 	edit: Edit,

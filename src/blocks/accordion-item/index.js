@@ -74,6 +74,11 @@ const settings = {
 
 	parent: [ 'coblocks/accordion' ],
 
+	supports: {
+		reusable: false,
+		html: false,
+	},
+
 	attributes: blockAttributes,
 
 	edit: Edit,
