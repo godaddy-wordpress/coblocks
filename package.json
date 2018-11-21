@@ -19,7 +19,7 @@
     "eject": "cgb-scripts eject"
   },
   "dependencies": {
-    "cgb-scripts": "1.9.6",
+    "cgb-scripts": "1.11.0",
     "classnames": "2.2.5",
     "memize": "^1.0.5",
     "lodash": "4.17.4",
