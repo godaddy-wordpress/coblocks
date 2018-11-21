@@ -234,7 +234,7 @@ class CoBlocks {
 		wp_register_style(
 			$this->_slug . '-frontend',
 			$this->_url . '/dist/blocks.style.build.css',
-			array( 'wp-blocks' ),
+			array(),
 			$this->_version
 		);
 	}
@@ -250,7 +250,7 @@ class CoBlocks {
 		wp_register_style(
 			$this->_slug . '-editor',
 			$this->_url . '/dist/blocks.editor.build.css',
-			array( 'wp-edit-blocks' ),
+			array(),
 			$this->_version
 		);
 
@@ -258,8 +258,9 @@ class CoBlocks {
 		wp_register_script(
 			$this->_slug . '-editor',
 			$this->_url . '/dist/blocks.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
-			$this->_version
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api' ),
+			$this->_version,
+			true
 		);
 	}
 
