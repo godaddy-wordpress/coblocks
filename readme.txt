@@ -83,6 +83,9 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.4.2, XX 20, 2018 =
+* Tweak: Remove unnessary padding from Highlight block
+
 = 1.4.1, November 20, 2018 =
 * New: Gutenberg 4.5 compatibility! 🎊
 
