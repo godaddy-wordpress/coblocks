@@ -25,6 +25,7 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 		align-items: center;
 		border: none;
 		box-shadow: none !important;
+		border-radius: 0;
 		cursor: pointer;
 		display: inline-flex;
 		font-size: 15px;
@@ -138,7 +139,8 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 	// Mask style.
 	&.is-style-mask {
 
-		li {
+		li,
+		&.has-button-size-sml li {
 			margin: 0 7px !important;
 		}
 
