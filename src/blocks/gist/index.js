@@ -15,7 +15,7 @@ import Edit from './components/edit';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
+const { createBlock, getBlockAttributes } = wp.blocks;
 
 /**
  * Block constants
@@ -45,6 +45,12 @@ const blockAttributes = {
 	},
 };
 
+const schema = {
+	div: {
+		classes: [ 'wp-block-coblocks-gist' ],
+	},
+};
+
 const settings = {
 
 	title: title,
@@ -67,6 +73,8 @@ const settings = {
 				isMatch: ( node ) => node.nodeName === 'P' && /^\s*(https?:\/\/\S+)\s*$/i.test( node.textContent ) && node.textContent.match( /^https?:\/\/(www\.)?gist\.github\.com\/.+/i ),
 				transform: ( node ) => {
 
+					console.log(node);
+
 					// Check for a file within the URL.
 					const file = ( node.textContent.trim() ).split( '#' ).pop();
 					const fileClean = file.replace('file-', '').replace('-', '.');
@@ -77,15 +85,23 @@ const settings = {
 					} );
 				},
 			},
-			{
-				type: 'raw',
-				selector: 'div',
-				schema: {
-					div: {
-						classes: [ 'wp-block-coblocks-gist' ],
-					},
-				},
-			},
+			// {
+			// 	type: 'raw',
+			// 	isMatch: ( node ) => node.nodeName === 'DIV',
+			// 	schema,
+			// 	transform: ( node ) => {
+			// 		const anchorElement = node.querySelector( 'a' );
+			// 		const url = anchorElement && anchorElement.href ? anchorElement.href : undefined;
+			// 		const attributes = getBlockAttributes( 'coblocks/gist', node.outerHTML, { url } );
+
+			// 		console.log( 'outerHTML' + node.outerHTML )
+			// 		console.log( 'nodeName ' + node.nodeName )
+			// 		console.log( 'className ' + node.className )
+			// 		console.log( 'anchor ' + anchorElement )
+
+			// 		return createBlock( 'coblocks/gist', attributes );
+			// 	},
+			// },
 		],
 	},
 
@@ -106,10 +122,11 @@ const settings = {
 
 		return (
 			<div
-				className={ classnames(
-					className,
-					meta ? null : `wp-block-coblocks-gist--no-meta`,
-				) }
+				className={
+					classnames(
+						className,
+						meta ? null : `wp-block-coblocks-gist--no-meta`,
+					) }
 			>
 				<script src={ src }/>
 				<noscript><a href={ noscriptSrc }>{ __( 'View this gist on GitHub' ) }</a></noscript>
