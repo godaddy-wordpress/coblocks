@@ -36,6 +36,10 @@ class Inspector extends Component {
 		super( ...arguments );
 	}
 
+	getDisplayOpenHelp( checked ) {
+		return checked ? __( 'Accordion item is open by default.' ) : __( 'Toggle to set this accordion item to be open by default.' );
+	}
+
 	render() {
 
 		const {
@@ -60,6 +64,7 @@ class Inspector extends Component {
 						<ToggleControl
 							label={ __( 'Display Open' ) }
 							checked={ !! open }
+							help={ this.getDisplayOpenHelp }
 							onChange={ () => setAttributes( {  open: ! open } ) }
 						/>
 					</PanelBody>
