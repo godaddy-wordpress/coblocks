@@ -18,6 +18,7 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 	li {
 		display: inline-block;
 		margin: 3px 6px 3px 0 !important;
+		vertical-align: middle;
 	}
 
 	&__button {
@@ -25,7 +26,6 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 		border: none;
 		box-shadow: none !important;
 		cursor: pointer;
-		display: inline-block;
 		display: inline-flex;
 		font-size: 15px;
 		justify-content: center;
@@ -46,12 +46,15 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 	}
 
 	&__text {
-		position: relative;
-		top: 1px;
+		color: #fff;
 	}
 
 	&__icon + &__text {
 		margin-left: 8px;
+	}
+
+	&:not(.is-style-mask) &__icon {
+		color: #fff;
 	}
 
 	&__icon {
@@ -85,14 +88,14 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 		@each $icon, $color in $icons {
 
 			.wp-block-coblocks-social__button--#{$icon} {
-				background-color: $color;
+				background-color: $color !important;
 			}
 		}
 
 		@each $icon, $color in $icons {
 
 			&.is-style-mask .wp-block-coblocks-social__button--#{$icon} {
-				color: $color;
+				color: $color !important;
 			}
 		}
 	}
@@ -136,21 +139,23 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 	&.is-style-mask {
 
 		li {
-			margin: 0 6px !important;
+			margin: 0 7px !important;
 		}
 
 		.wp-block-coblocks-social__button {
-			background: transparent;
+			background: transparent !important;
 			padding: 0 !important;
-		}
-
-		.wp-block-button__link:not(.has-background) {
-			color: #31373c;
+			display: block;
 		}
 
 		.wp-block-coblocks-social__text {
 			margin-left: 0;
 		}
+
+		&:not(.has-colors) .wp-block-button__link:not(.has-text-color) {
+			color: #31373c;
+		}
+
 	}
 
 	// Sizes.
