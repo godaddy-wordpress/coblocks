@@ -86,6 +86,8 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 = 1.4.2, November 30, 2018 =
 * Tweak: Remove unnessary padding from Highlight block
 * Tweak: Add help text to the Accordion item Display Open toggle
+* Tweak: Improve styling of social block for wider theme compatibility
+* Fix: Setting the social button radius to zero actually works now
 
 = 1.4.1, November 20, 2018 =
 * New: Gutenberg 4.5 compatibility! 🎊
