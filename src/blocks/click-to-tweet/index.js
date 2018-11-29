@@ -53,7 +53,7 @@ const blockAttributes = {
 	},
 	buttonText: {
 		type: 'string',
-		default: __( 'Click to Tweet' ),
+		default: __( 'Tweet' ),
 	},
 	buttonColor: {
 		type: 'string',
