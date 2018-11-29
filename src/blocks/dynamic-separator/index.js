@@ -49,21 +49,15 @@ const blockAttributes = {
 
 const settings = {
 
-	title: __( 'Dynamic HR' ),
+	title: title,
 
 	description: __( 'Add a resizable spacer between other blocks.' ),
 
 	icon: {
-		src: icons.hr,
+		src: icon,
 	},
 
-	category: 'coblocks',
-
-	keywords: [
-		__( 'hr' ),
-		__( 'separator' ),
-		__( 'coblocks' ),
-	],
+	keywords: keywords,
 
 	attributes: blockAttributes,
 
