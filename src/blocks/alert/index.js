@@ -103,7 +103,7 @@ const settings = {
 				type: 'block',
 				blocks: [ 'core/paragraph' ],
 				transform: ( { content } ) => {
-					return createBlock( 'coblocks/alert', { value: content } );
+					return createBlock( `coblocks/${ name }`, { value: content } );
 				},
 			},
 			{
@@ -113,6 +113,15 @@ const settings = {
 					div: {
 						classes: [ 'wp-block-coblocks-alert' ],
 					},
+				},
+			},
+			{
+				type: 'prefix',
+				prefix: ':alert',
+				transform: function( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+					} );
 				},
 			},
 		],

@@ -15,6 +15,7 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
+const { createBlock } = wp.blocks;
 const { RichText, InnerBlocks } = wp.editor;
 
 /**
@@ -85,6 +86,15 @@ const settings = {
 					div: {
 						classes: [ 'wp-block-coblocks-author' ],
 					},
+				},
+			},
+			{
+				type: 'prefix',
+				prefix: ':author',
+				transform: function( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+					} );
 				},
 			},
 		],

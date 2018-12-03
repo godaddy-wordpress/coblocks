@@ -82,7 +82,9 @@ const settings = {
 				type: 'block',
 				blocks: [ 'core/paragraph' ],
 				transform: ( { content } ) => {
-					return createBlock( 'coblocks/highlight', { content: content } );
+					return createBlock( `coblocks/${ name }`, {
+						content,
+					} );
 				},
 			},
 			{
@@ -92,6 +94,15 @@ const settings = {
 					div: {
 						classes: [ 'wp-block-coblocks-highlight' ],
 					},
+				},
+			},
+			{
+				type: 'prefix',
+				prefix: ':highlight',
+				transform: function( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+					} );
 				},
 			},
 		],

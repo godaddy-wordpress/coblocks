@@ -83,7 +83,14 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
-= 1.4.2, November 30, 2018 =
+= 1.4.2, December 03, 2018 =
+* New: Add support for custom text/icon colors in the Social block
+* New: Add ":alert" prefix transform for launching the Alert block
+* New: Add ":accordion" prefix transform for launching the Accordion block
+* New: Add ":author" prefix transform for launching the Author block
+* New: Add ":pricing" prefix transform for launching the Pricing block
+* New: Add ":author" prefix transform for launching the Author block
+* New: Add ":gist" prefix transform for launching the Gist block
 * Tweak: Remove unnessary padding from Highlight block
 * Tweak: Add help text to the Accordion item Display Open toggle
 * Tweak: Improve styling of social block for wider theme compatibility

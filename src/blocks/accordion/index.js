@@ -15,6 +15,7 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
+const { createBlock } = wp.blocks;
 const { InnerBlocks } = wp.editor;
 
 /**
@@ -47,6 +48,20 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
+	},
+
+	transforms: {
+		from: [
+			{
+				type: 'prefix',
+				prefix: ':accordion',
+				transform: function( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+					} );
+				},
+			},
+		],
 	},
 
 	edit: Edit,

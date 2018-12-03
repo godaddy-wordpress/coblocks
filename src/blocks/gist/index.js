@@ -41,7 +41,7 @@ const blockAttributes = {
 	},
 	meta: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 };
 
@@ -72,9 +72,6 @@ const settings = {
 				priority: 1,
 				isMatch: ( node ) => node.nodeName === 'P' && /^\s*(https?:\/\/\S+)\s*$/i.test( node.textContent ) && node.textContent.match( /^https?:\/\/(www\.)?gist\.github\.com\/.+/i ),
 				transform: ( node ) => {
-
-					console.log(node);
-
 					// Check for a file within the URL.
 					const file = ( node.textContent.trim() ).split( '#' ).pop();
 					const fileClean = file.replace('file-', '').replace('-', '.');
@@ -102,6 +99,15 @@ const settings = {
 			// 		return createBlock( 'coblocks/gist', attributes );
 			// 	},
 			// },
+			{
+				type: 'prefix',
+				prefix: ':gist',
+				transform: function( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+					} );
+				},
+			},
 		],
 	},
 
