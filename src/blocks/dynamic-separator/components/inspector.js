@@ -18,14 +18,10 @@ const { PanelBody, BaseControl, withFallbackStyles } = wp.components;
 const { getComputedStyle } = window;
 
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-
 	const { color } = ownProps.attributes;
-
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
-
 	//verify if editableNode is available, before using getComputedStyle.
 	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-
 	return {
 		fallbackColor: color || ! computedStyles ? undefined : computedStyles.color,
 	};
