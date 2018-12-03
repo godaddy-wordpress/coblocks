@@ -85,6 +85,7 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 = 1.4.2, December 03, 2018 =
 * New: Add support for custom text/icon colors in the Social block
+* New: Add caption support to the Gist block
 * New: Add ":alert" prefix transform for launching the Alert block
 * New: Add ":accordion" prefix transform for launching the Accordion block
 * New: Add ":author" prefix transform for launching the Author block
