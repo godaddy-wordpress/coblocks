@@ -20,12 +20,14 @@ const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyle
 const { getComputedStyle } = window;
 
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { backgroundColor } = ownProps;
+	const { backgroundColor, textColor } = ownProps;
 	const backgroundColorValue = backgroundColor && backgroundColor.color;
+	const textColorValue = textColor && textColor.color;
 	//avoid the use of querySelector if textColor color is known and verify if node is available.
 	const textNode = ! textColorValue && node ? node.querySelector( '[contenteditable="true"]' ) : null;
 	return {
 		fallbackBackgroundColor: backgroundColorValue || ! node ? undefined : getComputedStyle( node ).backgroundColor,
+		fallbackTextColor: textColor || ! textNode ? undefined : getComputedStyle( textNode ).color,
 	};
 } );
 
@@ -49,7 +51,10 @@ class Inspector extends Component {
 			attributes,
 			setAttributes,
 			setBackgroundColor,
+			setTextColor,
+			fallbackTextColor,
 			backgroundColor,
+			textColor,
 			fallbackBackgroundColor,
 		} = this.props;
 
@@ -72,6 +77,27 @@ class Inspector extends Component {
 			{ value: 'sml', label: __( 'Small' ) },
 			{ value: 'med', label: __( 'Medium' ) },
 			{ value: 'lrg', label: __( 'Large' ) },
+		];
+
+		const defaultColors = [
+			{
+				value: backgroundColor.color,
+				onChange: setBackgroundColor,
+				label: __( 'Background Color' ),
+			},
+			{
+				value: textColor.color,
+				onChange: setTextColor,
+				label: __( 'Text Color' ),
+			},
+		];
+
+		const maskColors = [
+			{
+				value: backgroundColor.color,
+				onChange: setBackgroundColor,
+				label: __( 'Background Color' ),
+			},
 		];
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
@@ -116,6 +142,7 @@ class Inspector extends Component {
 					</PanelBody>
 					<PanelBody
 						title={ __( 'Icon Settings' ) }
+						initialOpen={ false }
 					>
 						<p>{ __( ' Toggle the sharing links to display from the following social platforms.' ) }</p>
 						<ToggleControl
@@ -163,22 +190,19 @@ class Inspector extends Component {
 						<PanelColorSettings
 							title={ __( 'Color Settings' ) }
 							initialOpen={ false }
-							colorSettings={ [
-								{
-									value: backgroundColor.color,
-									onChange: setBackgroundColor,
-									label: __( 'Background Color' ),
-								},
-							] }
+							colorSettings={ ! isMaskStyle ? defaultColors : maskColors }
 						>
-							<ContrastChecker
-								{ ...{
-									isLargeText: true,
-									textColor: '#fff',
-									backgroundColor: backgroundColor.color,
-									fallbackBackgroundColor,
-								} }
-							/>
+							{ ! isMaskStyle &&
+								<ContrastChecker
+									{ ...{
+										isLargeText: true,
+										textColor: textColor.color,
+										backgroundColor: backgroundColor.color,
+										fallbackBackgroundColor,
+										fallbackTextColor,
+									} }
+								/>
+							}
 						</PanelColorSettings>
 					}
 				</InspectorControls>

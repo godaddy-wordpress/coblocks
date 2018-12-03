@@ -27,6 +27,16 @@ class Edit extends Component {
 		super( ...arguments );
 	}
 
+	getTextColor( isMaskStyle ) {
+
+		const {
+			backgroundColor,
+			textColor,
+		} = this.props;
+
+		return isMaskStyle ? backgroundColor.color : textColor.color;
+	}
+
 	render() {
 
 		const {
@@ -35,6 +45,7 @@ class Edit extends Component {
 			isSelected,
 			setAttributes,
 			backgroundColor,
+			textColor,
 		} = this.props;
 
 		const {
@@ -65,13 +76,15 @@ class Edit extends Component {
 			`wp-block-button__link`,
 			`wp-block-coblocks-social__button`, {
 				'has-background' : hasColors || backgroundColor.color,
+				'has-text-color' : hasColors || textColor.color,
+				[ textColor.class ]: textColor.class,
 			}
 		);
 
 		const buttonStyles = {
 			borderRadius: borderRadius ? borderRadius + 'px' : undefined,
 			backgroundColor: ! hasColors && ! isMaskStyle ? backgroundColor.color : undefined,
-			color: ! hasColors && isMaskStyle ? backgroundColor.color : undefined,
+			color: ! hasColors ? this.getTextColor( isMaskStyle ) : undefined,
 		};
 
 		const iconStyles = {
@@ -93,6 +106,7 @@ class Edit extends Component {
 				) }
 				<div className={ classes } style={ { textAlign: textAlign } }>
 					<ul>
+
 					{ twitter &&
 						<li>
 							<a className={ classnames( buttonClasses, `wp-block-coblocks-social__button--twitter` ) } style={ buttonStyles }>

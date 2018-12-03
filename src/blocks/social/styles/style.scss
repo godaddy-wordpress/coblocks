@@ -8,6 +8,11 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 		background-color: #31373c;
 	}
 
+	// Fallback icon color.
+	.wp-block-button__link:not(.has-text-color) {
+		color: #fff;
+	}
+
 	ul,
 	li {
 		list-style: none;
@@ -46,16 +51,15 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 		}
 	}
 
-	&__text {
-		color: #fff;
+	&__text,
+	&__text:hover,
+	&:not(.is-style-mask) &__icon,
+	&:not(.is-style-mask) &__icon:hover {
+		color: inherit;
 	}
 
 	&__icon + &__text {
 		margin-left: 8px;
-	}
-
-	&:not(.is-style-mask) &__icon {
-		color: #fff;
 	}
 
 	&__icon {
@@ -75,12 +79,16 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 	&__button--tumblr &__icon + &__text {
 		margin-left: 4px;
 	}
-
 	@each $icon, $color in $icons {
 
 		&__button--#{$icon} &__icon {
 			mask-image: url(images/#{$icon}.svg);
 		}
+	}
+
+	&.has-colors &__text,
+	&.has-colors:not(.is-style-mask) &__icon {
+		color: #fff;
 	}
 
 	// Social Colors.
