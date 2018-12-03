@@ -15,7 +15,7 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { RichText, getColorClassName, getFontSizeClass} = wp.editor;
+const { RichText, InnerBlocks, getColorClassName, getFontSizeClass} = wp.editor;
 
 /**
  * Block constants
@@ -133,18 +133,9 @@ const settings = {
 							value={ title }
 							style={ titleStyles }
 						/>
-						{ ! RichText.isEmpty( content ) && (
-							<div
-								className={ contentClasses }
-								style={ { color: textColorClass ? undefined : customTextColor } }
-							>
-								<RichText.Content
-									tagName="p"
-									className="wp-block-coblocks-accordion-item__text"
-									value={ content }
-								/>
-							</div>
-						) }
+						<div className={ contentClasses }>
+							<InnerBlocks.Content />
+						</div>
 					</details>
 				}
 			</div>

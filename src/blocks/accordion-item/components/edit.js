@@ -16,7 +16,9 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText } = wp.editor;
+const { InnerBlocks, RichText } = wp.editor;
+
+const ALLOWED_BLOCKS = [ 'core/image', 'core/paragraph' ];
 
 /**
  * Block edit function
@@ -55,6 +57,7 @@ class Edit extends Component {
 			<div
 				className={ classnames(
 					className,
+					isSelected ? `${ className }--open` : null,
 					open ? `${ className }--open` : null, {
 						'is-selected': isSelected,
 					}
@@ -66,13 +69,11 @@ class Edit extends Component {
 					value={ title }
 					className={ classnames(
 						`${ className }__title`, {
-							'has-text-color': textColor.color,
 							'has-background': backgroundColor.color,
 						}
 					) }
 					style={ {
 						backgroundColor: backgroundColor.color,
-						color: textColor.color,
 					} }
 					onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
 					keepPlaceholderOnFocus
@@ -80,20 +81,11 @@ class Edit extends Component {
 				{ open || isSelected ? (
 					<div
 						className={ classnames(
-							`${ className }__content`, {
-								'has-border-color': textColor.color,
-							}
+							`${ className }__content`, {}
 						) }
 						style={ { borderColor: backgroundColor.color } }
-					>
-						<RichText
-							tagName="p"
-							placeholder={ __( 'Write text...' ) }
-							value={ content }
-							onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
-							className={ `${ className }__text` }
-							keepPlaceholderOnFocus
-						/>
+						>
+						<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 					</div>
 				) : null }
 			</div>
