@@ -1,66 +1,64 @@
-.gist {
-	margin-bottom: 1.75em;
-
-	tr,
-	td {
-		border: none;
-	}
-
-	td.blob-num {
-		padding: 1px 15px 1px 20px !important;
-	}
-
-	td.blob-code {
-		padding-left: 0 !important;
-	}
-
-	.gist-file {
-		margin-bottom: 0 !important;
-
-		a {
-
-			&,
-			&:hover {
-				box-shadow: none;
-			}
-		}
-
-		+ .gist-file {
-			margin-top: 5px !important;
-		}
-	}
-}
-
 .wp-block-coblocks-gist {
 
 	.gist {
 
-		.gist-file {
-			border-radius: $accordion-border-radius;
-			border-color: rgba(0, 0, 0, 0.125);
+		&-file {
+			border-radius: $accordion-border-radius !important;
+			border-color: rgba(0, 0, 0, 0.125) !important;
+			margin-bottom: 0 !important;
+
+			a {
+
+				&,
+				&:hover {
+					box-shadow: none;
+				}
+			}
+
+			+ .gist-file {
+				margin-top: 5px !important;
+			}
 		}
 
-		.gist-data {
+		&-data {
 			border-radius: 3px 3px 0 0;
+
+			tr,
+			td {
+				border: none;
+			}
+
+			td.blob-num {
+				padding: 1px 15px 1px 20px !important;
+			}
+
+			td.blob-code {
+				padding-left: 0 !important;
+			}
 		}
 
-		.gist-meta {
+		&-meta {
 			border-radius: 0 0 3px 3px;
 		}
 	}
 
-	&--no-meta {
+	&.no-meta {
 
-		.gist {
-
-			.gist-data {
-				border-bottom: 0;
-				border-radius: 3px;
-			}
-
-			.gist-meta {
-				display: none;
-			}
+		.gist .gist-data {
+			border-bottom: 0;
+			border-radius: 3px;
 		}
+
+		.gist .gist-meta {
+			display: none;
+		}
+	}
+
+	figcaption {
+		color: #555d66;
+		font-size: 13px;
+		margin-bottom: 1em;
+		margin-top: 0.5em;
+		text-align: center;
 	}
 }

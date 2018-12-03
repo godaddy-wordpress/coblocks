@@ -15,7 +15,9 @@ import Edit from './components/edit';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
+const { Fragment } = wp.element;
 const { createBlock, getBlockAttributes } = wp.blocks;
+const { RichText } = wp.editor;
 
 /**
  * Block constants
@@ -42,6 +44,11 @@ const blockAttributes = {
 	meta: {
 		type: 'boolean',
 		default: true,
+	},
+	caption: {
+		type: 'string',
+		source: 'html',
+		selector: 'figcaption',
 	},
 };
 
@@ -120,26 +127,61 @@ const settings = {
 
 	save( { attributes, className } ) {
 
-		const { url, file, meta } = attributes;
+		const {
+			url,
+			file,
+			meta,
+			caption,
+		} = attributes;
+
+		const classes = classnames( {
+				[ 'no-meta' ] : ! meta,
+			}
+		);
 
 		const src = file ? `${ url }.js?file=${ file }` : `${ url }.js`;
 
 		const noscriptSrc = file ? `${ url }#file-${ file.replace('.', '-') }` : `${ url }`;
 
 		return (
-			<div
-				className={
-					classnames(
-						className,
-						meta ? null : `wp-block-coblocks-gist--no-meta`,
-					) }
-			>
+			<div className={ classes }>
 				<script src={ src }/>
 				<noscript><a href={ noscriptSrc }>{ __( 'View this gist on GitHub' ) }</a></noscript>
+				{ ! RichText.isEmpty( caption ) && <RichText.Content tagName="figcaption" value={ caption } /> }
 			</div>
 
 		);
 	},
+
+	deprecated: [
+		{
+			save( { attributes, className } ) {
+
+			const {
+				url,
+				file,
+				meta,
+			} = attributes;
+
+			const classes = classnames( {
+					[ 'wp-block-coblocks-gist--no-meta' ] : ! meta,
+				}
+			);
+
+			const src = file ? `${ url }.js?file=${ file }` : `${ url }.js`;
+
+			const noscriptSrc = file ? `${ url }#file-${ file.replace('.', '-') }` : `${ url }`;
+
+			return (
+				<div className={ classes }>
+					<script src={ src }/>
+					<noscript><a href={ noscriptSrc }>{ __( 'View this gist on GitHub' ) }</a></noscript>
+				</div>
+
+			);
+		},
+	}
+	],
 };
 
 export { name, title, icon, settings };

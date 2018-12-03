@@ -17,7 +17,7 @@ import Gist from './gist';
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
-const { PlainText } = wp.editor;
+const { PlainText, RichText } = wp.editor;
 const { withState } = wp.compose;
 
 /**
@@ -71,6 +71,7 @@ class Edit extends Component {
 			url,
 			file,
 			meta,
+			caption,
 		} = attributes;
 
 		return [
@@ -90,27 +91,37 @@ class Edit extends Component {
 						<div
 							className={ classnames(
 								className,
-								meta ? null : `${ className }--no-meta`,
+								meta ? null : `no-meta`,
 							) }
 						>
 							<Gist
 								url={ url }
 								file={ file }
 							/>
+							{ ( ! RichText.isEmpty( caption ) || isSelected ) && (
+								<RichText
+									tagName="figcaption"
+									placeholder={ __( 'Write caption…' ) }
+									value={ caption }
+									onChange={ ( value ) => setAttributes( { caption: value } ) }
+									keepPlaceholderOnFocus
+									inlineToolbar
+								/>
+							) }
 						</div>
 					)
 				) : (
 					<div
 						className={ classnames(
 							className,
-							'wp-block-shortcode',
+							'wp-block-shortcode', // Use the same styling as the core shortcode block.
 						) }
 					>
 						<label>
 							{ icons.github }
 							{ __( 'Gist URL' ) }
 						</label>
-						<PlainText
+						<input
 							className="input-control"
 							value={ url }
 							placeholder={ __( 'Add GitHub Gist URL...' ) }
