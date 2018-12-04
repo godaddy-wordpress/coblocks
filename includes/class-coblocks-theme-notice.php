@@ -17,12 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.3
  */
-class CoBlocks_Notices {
+class CoBlocks_Theme_Notice {
 
 	/**
 	 * This class's instance.
 	 *
-	 * @var CoBlocks_Notices
+	 * @var CoBlocks_Theme_Notice
 	 */
 	private static $instance;
 
@@ -31,7 +31,7 @@ class CoBlocks_Notices {
 	 */
 	public static function register() {
 		if ( null === self::$instance ) {
-			self::$instance = new CoBlocks_Notices();
+			self::$instance = new CoBlocks_Theme_Notice();
 			self::$instance->includes();
 		}
 	}
@@ -68,44 +68,52 @@ class CoBlocks_Notices {
 	public function notices() {
 		add_action( 'admin_init', array( 'PAnD', 'init' ) );
 		add_action( 'admin_notices', array( $this, 'theme_notice' ) );
-
-		if ( ! defined( 'GUTENBERG_VERSION' ) ) {
-			add_action( 'admin_notices', array( $this, 'gutenberg_not_installed' ) );
-		}
 	}
 
 	/**
-	 * Gutenberg is Not Installed Notice.
+	 * See if theme is activate or not.
 	 *
-	 * @access public
-	 * @return void
+	 * @since 1.5.0
+	 * @param string|array $theme Theme name or array of theme names to check.
+	 * @return boolean
 	 */
-	public function gutenberg_not_installed() {
-		echo '<div class="notice notice-error">';
+	public function is_active_theme( $theme ) {
+		return is_array( $theme ) ? in_array( get_template(), $theme, true ) : get_template() === $theme;
+	}
 
-			echo '<p>' . sprintf( __( '%1$s requires %2$sGutenberg%3$s to be installed and activated.', '@@textdomain' ), esc_html( '@@pkg.title', '@@textdomain' ), '<strong>', '</strong>' ) . '</p>';
+	/**
+	 * Themes to check for.
+	 *
+	 * @since 1.5.0
+	 * @return array
+	 */
+	public function themes() {
+		$themes = array(
+			'ava',
+			'bricks',
+			'charmed-pro',
+			'designer',
+			'emma',
+			'folo',
+			'forte',
+			'forte',
+			'grille',
+			'harbor',
+			'koi',
+			'mark',
+			'pinto',
+			'plate',
+			'spaces',
+			'stash',
+			'snazzy',
+			'tabor',
+			'trim',
+			'wonder',
+			'york-lite',
+			'york-pro',
+		);
 
-			echo '<p>';
-
-			if ( ! is_plugin_active( 'gutenberg/gutenberg.php' ) && current_user_can( 'activate_plugin', 'gutenberg/gutenberg.php' ) ) :
-
-				echo '<a href="' . esc_url( wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=gutenberg/gutenberg.php&plugin_status=active' ), 'activate-plugin_gutenberg/gutenberg.php' ) ) . '" class="button button-primary">' . esc_html__( 'Activate Gutenberg', '@@textdomain' ) . '</a>';
-
-			else:
-
-				if ( current_user_can( 'install_plugins' ) ) {
-					$url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=gutenberg' ), 'install-plugin_gutenberg' );
-				} else {
-					$url = 'https://wordpress.org/plugins/gutenberg/';
-				}
-
-				echo '<a href="' . esc_url( $url ) . '" class="button button-primary">' . esc_html__( 'Install Gutenberg', '@@textdomain' ) . '</a>';
-
-			endif;
-
-			echo '</p>';
-
-		echo '</div>';
+		return $themes;
 	}
 
 	/**
@@ -125,10 +133,8 @@ class CoBlocks_Notices {
 			return;
 		}
 
-		// Return if the 'ThemeBeans' is the theme author.
-		$theme = wp_get_theme();
-
-		if ( 'ThemeBeans' || '<a href="https://themebeans.com">ThemeBeans</a>' === $theme->get( 'Author' ) ) {
+		// Return if the activated theme is a ThemeBeans theme.
+		if ( $this->is_active_theme( $this->themes() ) ) {
 			return;
 		}
 
@@ -189,4 +195,4 @@ class CoBlocks_Notices {
 	}
 }
 
-CoBlocks_Notices::register();
+CoBlocks_Theme_Notice::register();
