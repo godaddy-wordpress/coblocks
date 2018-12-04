@@ -6,7 +6,7 @@
  * Author: Rich Tabor from CoBlocks
  * Author URI: https://richtabor.com
  * Tags: gutenberg, editor, block, layout, writing
- * Version: 1.4.1
+ * Version: 1.4.2
  * Text Domain: '@@pkg.name'
  * Domain Path: languages
  * Tested up to: @@pkg.tested_up_to
@@ -109,7 +109,8 @@ class CoBlocks {
 	private function includes() {
 
 		if ( is_admin() ) {
-			require_once $this->_dir . 'includes/class-coblocks-notices.php';
+			require_once $this->_dir . 'includes/class-coblocks-gutenberg-checker.php';
+			require_once $this->_dir . 'includes/class-coblocks-theme-notice.php';
 			require_once $this->_dir . 'includes/class-coblocks-feedback.php';
 		}
 	}
