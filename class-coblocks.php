@@ -109,7 +109,6 @@ class CoBlocks {
 	private function includes() {
 
 		if ( is_admin() ) {
-			require_once $this->_dir . 'includes/class-coblocks-gutenberg-checker.php';
 			require_once $this->_dir . 'includes/class-coblocks-theme-notice.php';
 			require_once $this->_dir . 'includes/class-coblocks-feedback.php';
 		}
