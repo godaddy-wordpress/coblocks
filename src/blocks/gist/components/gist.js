@@ -32,6 +32,7 @@ export default class Gist extends Component {
 	// Each time we request a new Gist, we have to provide a new
 	// global function name to serve as the JSONP callback.
 	static __gistCallbackId = 0 // Unique identifier of each JSONP callback.
+
 	static __nextGist () {
 		return "embed_gist_callback_" + Gist.__gistCallbackId++;
 	}

@@ -16,7 +16,14 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText } = wp.editor;
+const { InnerBlocks, RichText } = wp.editor;
+
+/**
+ * Constants
+ */
+const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/list', 'core/image', ];
+
+const TEMPLATE = [ [ 'core/paragraph', { placeholder: 'Add content...' } ] ];
 
 /**
  * Block edit function
@@ -36,7 +43,6 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
-			content,
 			open,
 			title,
 		} = attributes;
@@ -55,6 +61,7 @@ class Edit extends Component {
 			<div
 				className={ classnames(
 					className,
+					isSelected ? `${ className }--open` : null,
 					open ? `${ className }--open` : null, {
 						'is-selected': isSelected,
 					}
@@ -62,12 +69,12 @@ class Edit extends Component {
 			>
 				<RichText
 					tagName="p"
-					placeholder={ __( 'Write accordion title...' ) }
+					placeholder={ __( 'Add accordion title...' ) }
 					value={ title }
 					className={ classnames(
 						`${ className }__title`, {
-							'has-text-color': textColor.color,
 							'has-background': backgroundColor.color,
+							'has-text-color': textColor.color,
 						}
 					) }
 					style={ {
@@ -77,25 +84,15 @@ class Edit extends Component {
 					onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
 					keepPlaceholderOnFocus
 				/>
-				{ open || isSelected ? (
-					<div
-						className={ classnames(
-							`${ className }__content`, {
-								'has-border-color': textColor.color,
-							}
-						) }
-						style={ { borderColor: backgroundColor.color } }
+				<div
+					className={ `${ className }__content`  }
+					style={ { borderColor: backgroundColor.color } }
 					>
-						<RichText
-							tagName="p"
-							placeholder={ __( 'Write text...' ) }
-							value={ content }
-							onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
-							className={ `${ className }__text` }
-							keepPlaceholderOnFocus
-						/>
-					</div>
-				) : null }
+					<InnerBlocks
+						allowedBlocks={ ALLOWED_BLOCKS }
+						template={ TEMPLATE }
+					/>
+				</div>
 			</div>
 		];
 	}

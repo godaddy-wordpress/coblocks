@@ -4,14 +4,11 @@
 	word-break: break-word;
 
 	&__title {
+		background: $accordion-background;
 		border-radius: $accordion-border-radius;
 		cursor: pointer;
 		padding: 10px 15px;
 		position: relative;
-
-		&:not(.has-background) {
-			background: $accordion-background;
-		}
 
 		&::after {
 			border-radius: $accordion-border-radius;
@@ -49,18 +46,21 @@
 	&__content {
 		border-radius: 0 0 $accordion-border-radius $accordion-border-radius;
 		padding: 15px 20px;
-		border: 1px solid currentColor;
+		border: 1px solid $accordion-background;
 		margin-top: -1px;
 
-		&:not(.has-border-color) {
-			color: $accordion-background;
+		p.has-background {
+			padding: 20px 30px;
+		}
+
+		p:last-of-type {
+			margin-bottom: 0;
 		}
 	}
 
 	&__text {
 		margin-top: 0;
 		margin-bottom: 0.25em;
-		color: #191e23;
 
 		&:last-of-type {
 			margin-bottom: 0;

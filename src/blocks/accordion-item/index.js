@@ -15,7 +15,7 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { RichText, getColorClassName, getFontSizeClass} = wp.editor;
+const { RichText, InnerBlocks, getColorClassName } = wp.editor;
 
 /**
  * Block constants
@@ -37,11 +37,6 @@ const blockAttributes = {
 		type: 'string',
 		selector: '.wp-block-coblocks-accordion__title',
 	},
-	content: {
-		type: 'array',
-		selector: '.wp-block-coblocks-accordion-item__text',
-		source: 'children',
-	},
 	open: {
 		type: 'boolean',
 		default: false,
@@ -50,6 +45,9 @@ const blockAttributes = {
 		type: 'string',
 	},
 	textColor: {
+		type: 'string',
+	},
+	borderColor: {
 		type: 'string',
 	},
 	customBackgroundColor: {
@@ -87,17 +85,16 @@ const settings = {
 
 		const {
 			backgroundColor,
-			content,
 			customBackgroundColor,
 			customTextColor,
 			open,
 			textColor,
+			borderColor,
 			title,
 		} = attributes;
 
 		const backgroundColorClass = getColorClassName( 'background-color', backgroundColor );
 		const textColorClass = getColorClassName( 'color', textColor );
-		const borderColorClass = getColorClassName( 'color', backgroundColor );
 
 		const backgroundClasses = classnames(
 			'wp-block-coblocks-accordion-item',
@@ -117,11 +114,9 @@ const settings = {
 			color: textColorClass ? undefined : customTextColor,
 		};
 
-		const contentClasses = classnames(
-			'wp-block-coblocks-accordion-item__content', {
-			'has-border-color': borderColorClass || customBackgroundColor,
-			[ borderColorClass ]: borderColorClass,
-		} );
+		const borderStyle = {
+			borderColor: borderColor ? borderColor : customBackgroundColor,
+		}
 
 		return (
 			<div>
@@ -133,18 +128,9 @@ const settings = {
 							value={ title }
 							style={ titleStyles }
 						/>
-						{ ! RichText.isEmpty( content ) && (
-							<div
-								className={ contentClasses }
-								style={ { color: textColorClass ? undefined : customTextColor } }
-							>
-								<RichText.Content
-									tagName="p"
-									className="wp-block-coblocks-accordion-item__text"
-									value={ content }
-								/>
-							</div>
-						) }
+						<div className="wp-block-coblocks-accordion-item__content" style={ borderStyle }>
+							<InnerBlocks.Content />
+						</div>
 					</details>
 				}
 			</div>

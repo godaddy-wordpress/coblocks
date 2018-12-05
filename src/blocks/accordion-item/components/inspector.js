@@ -19,7 +19,6 @@ const { getComputedStyle } = window;
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	const { backgroundColor, textColor } = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	//verify if editableNode is available, before using getComputedStyle.
 	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 	return {
 		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
@@ -38,6 +37,15 @@ class Inspector extends Component {
 
 	getDisplayOpenHelp( checked ) {
 		return checked ? __( 'Accordion item is open by default.' ) : __( 'Toggle to set this accordion item to be open by default.' );
+	}
+
+	setBorderColor() {
+
+		this.props.setAttributes( {
+			borderColor: this.props.backgroundColor.color,
+		} )
+
+		return this.props.setBackgroundColor;
 	}
 
 	render() {
@@ -74,13 +82,13 @@ class Inspector extends Component {
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
-								onChange: setBackgroundColor,
+								onChange: this.setBorderColor(),
 								label: __( 'Background Color' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Title Text Color' ),
 							},
 						] }
 					>
