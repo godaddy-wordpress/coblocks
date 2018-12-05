@@ -37,11 +37,6 @@ const blockAttributes = {
 		type: 'string',
 		selector: '.wp-block-coblocks-accordion__title',
 	},
-	content: {
-		type: 'array',
-		selector: '.wp-block-coblocks-accordion-item__text',
-		source: 'children',
-	},
 	open: {
 		type: 'boolean',
 		default: false,
@@ -90,7 +85,6 @@ const settings = {
 
 		const {
 			backgroundColor,
-			content,
 			customBackgroundColor,
 			customTextColor,
 			open,

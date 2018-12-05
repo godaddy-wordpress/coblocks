@@ -38,7 +38,6 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
-			content,
 			open,
 			title,
 		} = attributes;
@@ -65,7 +64,7 @@ class Edit extends Component {
 			>
 				<RichText
 					tagName="p"
-					placeholder={ __( 'Write accordion title...' ) }
+					placeholder={ __( 'Add title...' ) }
 					value={ title }
 					className={ classnames(
 						`${ className }__title`, {
@@ -81,9 +80,7 @@ class Edit extends Component {
 					keepPlaceholderOnFocus
 				/>
 				<div
-					className={ classnames(
-						`${ className }__content`, {}
-					) }
+					className={ `${ className }__content`  }
 					style={ { borderColor: backgroundColor.color } }
 					>
 					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
