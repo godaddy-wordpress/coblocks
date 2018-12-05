@@ -15,7 +15,7 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { RichText, InnerBlocks, getColorClassName, getFontSizeClass} = wp.editor;
+const { RichText, InnerBlocks, getColorClassName } = wp.editor;
 
 /**
  * Block constants
@@ -50,6 +50,9 @@ const blockAttributes = {
 		type: 'string',
 	},
 	textColor: {
+		type: 'string',
+	},
+	borderColor: {
 		type: 'string',
 	},
 	customBackgroundColor: {
@@ -92,12 +95,12 @@ const settings = {
 			customTextColor,
 			open,
 			textColor,
+			borderColor,
 			title,
 		} = attributes;
 
 		const backgroundColorClass = getColorClassName( 'background-color', backgroundColor );
 		const textColorClass = getColorClassName( 'color', textColor );
-		const borderColorClass = getColorClassName( 'color', backgroundColor );
 
 		const backgroundClasses = classnames(
 			'wp-block-coblocks-accordion-item',
@@ -117,11 +120,9 @@ const settings = {
 			color: textColorClass ? undefined : customTextColor,
 		};
 
-		const contentClasses = classnames(
-			'wp-block-coblocks-accordion-item__content', {
-			'has-border-color': borderColorClass || customBackgroundColor,
-			[ borderColorClass ]: borderColorClass,
-		} );
+		const borderStyle = {
+			borderColor: borderColor ? borderColor : customBackgroundColor,
+		}
 
 		return (
 			<div>
@@ -133,7 +134,7 @@ const settings = {
 							value={ title }
 							style={ titleStyles }
 						/>
-						<div className={ contentClasses }>
+						<div className="wp-block-coblocks-accordion-item__content" style={ borderStyle }>
 							<InnerBlocks.Content />
 						</div>
 					</details>

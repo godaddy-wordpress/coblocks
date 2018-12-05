@@ -3,16 +3,23 @@
 
 	.editor-block-list__block-edit {
 		margin-top: 14px !important;
-		margin-bottom: 14px !important;
+		margin-bottom: 13px !important;
 	}
 
-	.editor-block-list__layout .editor-block-list__block>.editor-block-list__block-edit:before {
+	.editor-default-block-appender__content {
+		margin-top: 14px !important;
+		margin-bottom: 13px !important;
+	}
+
+	.editor-block-list__layout .editor-block-list__block > .editor-block-list__block-edit::before {
 		outline: none;
 	}
 
 	&__title {
+		border-radius: $accordion-border-radius $accordion-border-radius 0 0;
 		cursor: inherit;
 		padding: 10px 15px !important;
+		margin-bottom: 0 !important;
 
 		&::after {
 			display: none;
@@ -24,11 +31,6 @@
 	}
 
 	&__content {
-		padding: 0 13px;
-	}
-
-	&--open &__title,
-	&.is-selected &__title {
-		border-radius: $accordion-border-radius $accordion-border-radius 0 0;
+		padding: 0 20px;
 	}
 }

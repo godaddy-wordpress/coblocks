@@ -40,6 +40,15 @@ class Inspector extends Component {
 		return checked ? __( 'Accordion item is open by default.' ) : __( 'Toggle to set this accordion item to be open by default.' );
 	}
 
+	setBorderColor() {
+
+		this.props.setAttributes( {
+			borderColor: this.props.backgroundColor.color,
+		} )
+
+		return this.props.setBackgroundColor;
+	}
+
 	render() {
 
 		const {
@@ -74,13 +83,13 @@ class Inspector extends Component {
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
-								onChange: setBackgroundColor,
+								onChange: this.setBorderColor(),
 								label: __( 'Background Color' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Title Text Color' ),
 							},
 						] }
 					>

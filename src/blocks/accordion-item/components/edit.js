@@ -70,24 +70,24 @@ class Edit extends Component {
 					className={ classnames(
 						`${ className }__title`, {
 							'has-background': backgroundColor.color,
+							'has-text-color': textColor.color,
 						}
 					) }
 					style={ {
 						backgroundColor: backgroundColor.color,
+						color: textColor.color,
 					} }
 					onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
 					keepPlaceholderOnFocus
 				/>
-				{ open || isSelected ? (
-					<div
-						className={ classnames(
-							`${ className }__content`, {}
-						) }
-						style={ { borderColor: backgroundColor.color } }
-						>
-						<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
-					</div>
-				) : null }
+				<div
+					className={ classnames(
+						`${ className }__content`, {}
+					) }
+					style={ { borderColor: backgroundColor.color } }
+					>
+					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+				</div>
 			</div>
 		];
 	}

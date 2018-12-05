@@ -49,7 +49,11 @@
 		border: 1px solid $accordion-background;
 		margin-top: -1px;
 
-		p {
+		p.has-background {
+			padding: 20px 30px;
+		}
+
+		p:last-of-type {
 			margin-bottom: 0;
 		}
 	}
