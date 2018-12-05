@@ -183,7 +183,7 @@ gulp.task('build-notice', function(done) {
 	done();
 });
 
-gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npmBuild', 'npmMakePot', 'npmMakePotPHP', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'variables', 'zip',  function(done) {
+gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'variables', 'zip',  function(done) {
 	done();
 } ) );
 
