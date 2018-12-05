@@ -60,6 +60,7 @@ const settings = {
 
 	supports: {
 		align: [ 'wide', 'full' ],
+		html: false,
 	},
 
 	transforms: {
