@@ -18,7 +18,12 @@ const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InnerBlocks, RichText } = wp.editor;
 
-const ALLOWED_BLOCKS = [ 'core/image', 'core/paragraph' ];
+/**
+ * Constants
+ */
+const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/list', 'core/image', ];
+
+const TEMPLATE = [ [ 'core/paragraph', { placeholder: 'Add content...' } ] ];
 
 /**
  * Block edit function
@@ -64,7 +69,7 @@ class Edit extends Component {
 			>
 				<RichText
 					tagName="p"
-					placeholder={ __( 'Add title...' ) }
+					placeholder={ __( 'Add accordion title...' ) }
 					value={ title }
 					className={ classnames(
 						`${ className }__title`, {
@@ -83,7 +88,10 @@ class Edit extends Component {
 					className={ `${ className }__content`  }
 					style={ { borderColor: backgroundColor.color } }
 					>
-					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+					<InnerBlocks
+						allowedBlocks={ ALLOWED_BLOCKS }
+						template={ TEMPLATE }
+					/>
 				</div>
 			</div>
 		];
