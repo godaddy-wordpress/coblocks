@@ -83,6 +83,9 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.5.1, December 05, 2018 =
+* Tweak: Remove check for Gutenberg
+
 = 1.5.0, December 05, 2018 =
 * New: Refactor Accordion Item block to enable adding images, lists, headings and buttons
 * New: Add support for custom text/icon colors in the Social block
