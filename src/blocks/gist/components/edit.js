@@ -121,7 +121,7 @@ class Edit extends Component {
 							{ icons.github }
 							{ __( 'Gist URL' ) }
 						</label>
-						<input
+						<PlainText
 							className="input-control"
 							value={ url }
 							placeholder={ __( 'Add GitHub Gist URL...' ) }
