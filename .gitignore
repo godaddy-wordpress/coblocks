@@ -2,6 +2,7 @@
 **/build/**
 dist/**
 **/dist/**
+**/languages/**
 *.sublime-project
 *.sublime-workspace
 *.cache
