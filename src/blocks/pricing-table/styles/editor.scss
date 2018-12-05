@@ -24,6 +24,7 @@
 		}
 	}
 
+	.editor-block-mover,
 	.block-list-appender {
 		display: none;
 	}
@@ -34,6 +35,12 @@
 		.editor-block-list__block {
 			max-width: none;
 		}
+	}
+
+	.wp-block:nth-of-type(3),
+	.wp-block:nth-of-type(4) {
+		margin-top: 30px;
+		margin-bottom: 30px;
 	}
 
 	.wp-block[data-type="coblocks/pricing-table-item"] {
