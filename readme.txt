@@ -83,9 +83,15 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
-= 1.4.2, December 03, 2018 =
+= 1.5.0, December 05, 2018 =
+* New: Refactor Accordion Item block to enable adding images, lists, headings and buttons
 * New: Add support for custom text/icon colors in the Social block
 * New: Add caption support to the Gist block
+* New: Refactor Gif block based on the core Image block
+* New: Add caption support to the Gif block
+* New: Add translation strings in /languages/coblocks.pot
+* New: Add support for the WP 5.0 wp_set_script_translations() function
+* New: Add coblocks-translations.php for referencing PHP translatable strings
 * New: Add ":alert" prefix transform for launching the Alert block
 * New: Add ":accordion" prefix transform for launching the Accordion block
 * New: Add ":author" prefix transform for launching the Author block
@@ -95,7 +101,12 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 * Tweak: Remove unnessary padding from Highlight block
 * Tweak: Add help text to the Accordion item Display Open toggle
 * Tweak: Improve styling of social block for wider theme compatibility
+* Tweak: Improve pricing table structure within the editor and on the frontend
+* Tweak: Improve UI of the Author block within the editor
+* Tweak: Center the Gif Block loading spinner
 * Fix: Setting the social button radius to zero actually works now
+* Fix: Remove Gutenberg installation notice for WordPress 5.0
+* Fix: Pricing Table column selection now properly functions
 
 = 1.4.1, November 20, 2018 =
 * New: Gutenberg 4.5 compatibility! 🎊
