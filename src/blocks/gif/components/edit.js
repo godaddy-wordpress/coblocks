@@ -12,6 +12,7 @@ const { compose } = wp.compose;
 const { Placeholder, Spinner, Button, ResizableBox } = wp.components;
 const { withViewportMatch } = wp.viewport;
 const { withSelect } = wp.data;
+const { RichText } = wp.editor;
 
 /**
  * Internal dependencies
@@ -44,6 +45,36 @@ class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );
+		this.onFocusCaption = this.onFocusCaption.bind( this );
+		this.onImageClick = this.onImageClick.bind( this );
+
+		this.state = {
+			captionFocused: false,
+		};
+	}
+
+	componentDidUpdate( prevProps ) {
+		if ( ! this.props.isSelected && prevProps.isSelected && this.state.captionFocused ) {
+			this.setState( {
+				captionFocused: false,
+			} );
+		}
+	}
+
+	onFocusCaption() {
+		if ( ! this.state.captionFocused ) {
+			this.setState( {
+				captionFocused: true,
+			} );
+		}
+	}
+
+	onImageClick() {
+		if ( this.state.captionFocused ) {
+			this.setState( {
+				captionFocused: false,
+			} );
+		}
 	}
 
 	render() {
@@ -67,11 +98,12 @@ class Edit extends Component {
 			id,
 			url,
 			width,
+			caption,
 		} = attributes;
 
 		const figureStyle = width ? { width } : {};
 		const isResizable = [ 'wide', 'full' ].indexOf( align ) === -1 && isLargeViewport;
-		const classes = classnames( className, {
+		const classes = classnames( className, 'wp-block-image', {
 			'is-resized': !! width,
 			'is-focused': isSelected,
 		} );
@@ -104,7 +136,7 @@ class Edit extends Component {
 					<Inspector
 						{ ...this.props }
 					/>
-					<figure key="image" className={ classes } style={ figureStyle }>
+					<figure key="image" className={ classes }>
 						<Size src={ url } dirtynessTrigger={ align }>
 							{ ( sizes ) => {
 								const {
@@ -114,10 +146,17 @@ class Edit extends Component {
 									imageHeight,
 								} = sizes;
 
+								let defaultedAlt;
+								if ( alt ) {
+									defaultedAlt = alt;
+								} else {
+									defaultedAlt = __( 'This gif has an empty alt attribute' );
+								}
+
 								// Disable reason: Image itself is not meant to be
 								// interactive, but should direct focus to block
 								// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-								const img = <img src={ url } alt={ alt }/>;
+								const img = <img src={ url } alt={ defaultedAlt } onClick={ this.onImageClick }/>;
 
 								if ( ! isResizable || ! imageWidthWithinContainer ) {
 									return img;
@@ -129,6 +168,13 @@ class Edit extends Component {
 								const ratio = imageWidth / imageHeight;
 								const minWidth = imageWidth < imageHeight ? MIN_SIZE : MIN_SIZE * ratio;
 								const minHeight = imageHeight < imageWidth ? MIN_SIZE : MIN_SIZE / ratio;
+
+								// With the current implementation of ResizableBox, an image needs an explicit pixel value for the max-width.
+								// In absence of being able to set the content-width, this max-width is currently dictated by the vanilla editor style.
+								// The following variable adds a buffer to this vanilla style, so 3rd party themes have some wiggleroom.
+								// This does, in most cases, allow you to scale the image beyond the width of the main column, though not infinitely.
+								// @todo It would be good to revisit this once a content-width variable becomes available.
+								const maxWidthBuffer = maxWidth * 2.5;
 
 								let showRightHandle = false;
 								let showLeftHandle = false;
@@ -160,38 +206,53 @@ class Edit extends Component {
 								/* eslint-enable no-lonely-if */
 
 								return (
-									<ResizableBox
-										size={ {
-											width: currentWidth,
-											height: currentHeight,
-										} }
-										minWidth={ minWidth }
-										maxWidth={ maxWidth }
-										minHeight={ minHeight }
-										maxHeight={ maxWidth / ratio }
-										lockAspectRatio
-										enable={ {
-											top: false,
-											right: showRightHandle,
-											bottom: true,
-											left: showLeftHandle,
-										} }
-										onResizeStart={ () => {
-											toggleSelection( false );
-										} }
-										onResizeStop={ ( event, direction, elt, delta ) => {
-											setAttributes( {
-												width: parseInt( currentWidth + delta.width, 10 ),
-												height: parseInt( currentHeight + delta.height, 10 ),
-											} );
-											toggleSelection( true );
-										} }
-									>
-										{ img }
-									</ResizableBox>
+									<Fragment>
+										<ResizableBox
+											size={
+												width && height ? {
+													width,
+													height,
+												} : undefined
+											}
+											minWidth={ minWidth }
+											maxWidth={ maxWidthBuffer }
+											minHeight={ minHeight }
+											maxHeight={ maxWidthBuffer / ratio }
+											lockAspectRatio
+											enable={ {
+												top: false,
+												right: showRightHandle,
+												bottom: true,
+												left: showLeftHandle,
+											} }
+											onResizeStart={ () => {
+												toggleSelection( false );
+											} }
+											onResizeStop={ ( event, direction, elt, delta ) => {
+												setAttributes( {
+													width: parseInt( currentWidth + delta.width, 10 ),
+													height: parseInt( currentHeight + delta.height, 10 ),
+												} );
+												toggleSelection( true );
+											} }
+										>
+											{ img }
+										</ResizableBox>
+									</Fragment>
 								);
 							} }
 						</Size>
+						{ ( ! RichText.isEmpty( caption ) || isSelected ) && (
+							<RichText
+								tagName="figcaption"
+								placeholder={ __( 'Write caption…' ) }
+								value={ caption }
+								unstableOnFocus={ this.onFocusCaption }
+								onChange={ ( value ) => setAttributes( { caption: value } ) }
+								isSelected={ this.state.captionFocused }
+								inlineToolbar
+							/>
+						) }
 					</figure>
 				</Fragment>
 			];

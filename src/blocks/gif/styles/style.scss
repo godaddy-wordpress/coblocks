@@ -1,12 +1,4 @@
 .wp-block-coblocks-gif {
-	margin: 0 0 1.5em;
-	padding: 0;
-	width: fit-content;
-
-	img {
-		vertical-align: middle;
-		display: block;
-	}
 
 	&.alignfull,
 	&.alignwide {
@@ -15,12 +7,5 @@
 		img {
 			width: 100%;
 		}
-	}
-
-	&.aligncenter {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-		text-align: center;
 	}
 }
