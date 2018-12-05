@@ -89,7 +89,7 @@ class Edit extends Component {
 					<div className={ `${ className }__inner` }>
 						<InnerBlocks
 							template={ getCount( count ) }
-							// templateLock="all"
+							templateLock="all"
 							allowedBlocks={ ALLOWED_BLOCKS } />
 					</div>
 				</div>
