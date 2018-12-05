@@ -48,6 +48,7 @@ class Inspector extends Component {
 			setTableColor,
 			tableBackground,
 			tableColor,
+			isSelected,
 		} = this.props;
 
 		const {

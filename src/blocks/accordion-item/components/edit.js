@@ -48,52 +48,50 @@ class Edit extends Component {
 		} = attributes;
 
 		return [
-			isSelected && (
+			<Fragment>
 				<Controls
 					{ ...this.props }
 				/>
-			),
-			isSelected && (
 				<Inspector
 					{ ...this.props }
 				/>
-			),
-			<div
-				className={ classnames(
-					className,
-					isSelected ? `${ className }--open` : null,
-					open ? `${ className }--open` : null, {
-						'is-selected': isSelected,
-					}
-				) }
-			>
-				<RichText
-					tagName="p"
-					placeholder={ __( 'Add accordion title...' ) }
-					value={ title }
+				<div
 					className={ classnames(
-						`${ className }__title`, {
-							'has-background': backgroundColor.color,
-							'has-text-color': textColor.color,
+						className,
+						isSelected ? `${ className }--open` : null,
+						open ? `${ className }--open` : null, {
+							'is-selected': isSelected,
 						}
 					) }
-					style={ {
-						backgroundColor: backgroundColor.color,
-						color: textColor.color,
-					} }
-					onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
-					keepPlaceholderOnFocus
-				/>
-				<div
-					className={ `${ className }__content`  }
-					style={ { borderColor: backgroundColor.color } }
-					>
-					<InnerBlocks
-						allowedBlocks={ ALLOWED_BLOCKS }
-						template={ TEMPLATE }
+				>
+					<RichText
+						tagName="p"
+						placeholder={ __( 'Add accordion title...' ) }
+						value={ title }
+						className={ classnames(
+							`${ className }__title`, {
+								'has-background': backgroundColor.color,
+								'has-text-color': textColor.color,
+							}
+						) }
+						style={ {
+							backgroundColor: backgroundColor.color,
+							color: textColor.color,
+						} }
+						onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
+						keepPlaceholderOnFocus
 					/>
+					<div
+						className={ `${ className }__content`  }
+						style={ { borderColor: backgroundColor.color } }
+						>
+						<InnerBlocks
+							allowedBlocks={ ALLOWED_BLOCKS }
+							template={ TEMPLATE }
+						/>
+					</div>
 				</div>
-			</div>
+			</Fragment>
 		];
 	}
 }

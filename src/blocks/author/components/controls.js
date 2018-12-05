@@ -17,6 +17,7 @@ class Controls extends Component {
 		const {
 			attributes,
 			setAttributes,
+			isSelected,
 		} = this.props;
 
 		const {
@@ -28,37 +29,39 @@ class Controls extends Component {
 		const onSelectImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
 
 		return (
-			<Fragment>
-				<BlockControls>
-					<AlignmentToolbar
-						value={ textAlign }
-						onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
-					/>
-					{ imgUrl &&
-						<Toolbar>
-							<MediaUpload
-								onSelect={ onSelectImage }
-								allowedTypes={ [ 'image' ] }
-								value={ imgId }
-								render={ ( { open } ) => (
-									<IconButton
-										className="components-toolbar__control"
-										label={ __( 'Edit image' ) }
-										icon="edit"
-										onClick={ open }
-									/>
-								) }
-							/>
-							<IconButton
-								className="components-toolbar__control"
-								label={ __( 'Remove image' ) }
-								icon="trash"
-								onClick={ () => setAttributes( { imgUrl: '', imgId: '' } ) }
-							/>
-						</Toolbar>
-					}
-				</BlockControls>
-			</Fragment>
+			isSelected && (
+				<Fragment>
+					<BlockControls>
+						<AlignmentToolbar
+							value={ textAlign }
+							onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
+						/>
+						{ imgUrl &&
+							<Toolbar>
+								<MediaUpload
+									onSelect={ onSelectImage }
+									allowedTypes={ [ 'image' ] }
+									value={ imgId }
+									render={ ( { open } ) => (
+										<IconButton
+											className="components-toolbar__control"
+											label={ __( 'Edit image' ) }
+											icon="edit"
+											onClick={ open }
+										/>
+									) }
+								/>
+								<IconButton
+									className="components-toolbar__control"
+									label={ __( 'Remove image' ) }
+									icon="trash"
+									onClick={ () => setAttributes( { imgUrl: '', imgId: '' } ) }
+								/>
+							</Toolbar>
+						}
+					</BlockControls>
+				</Fragment>
+			)
 		);
 	}
 };

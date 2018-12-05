@@ -21,6 +21,7 @@ class Controls extends Component {
 
 		const {
 			attributes,
+			isSelected,
 			setAttributes,
 		} = this.props;
 
@@ -38,11 +39,13 @@ class Controls extends Component {
 		];
 
 		return (
-			<Fragment>
-				<BlockControls>
-					<Toolbar className="components-toolbar__block-coblocks-accordion" controls={ customControls } />
-				</BlockControls>
-			</Fragment>
+			isSelected && (
+				<Fragment>
+					<BlockControls>
+						<Toolbar className="components-toolbar__block-coblocks-accordion" controls={ customControls } />
+					</BlockControls>
+				</Fragment>
+			)
 		);
 	}
 }

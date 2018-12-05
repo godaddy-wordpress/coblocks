@@ -48,6 +48,7 @@ class Controls extends Component {
 
 		const {
 			attributes,
+			isSelected,
 			setAttributes,
 		} = this.props;
 
@@ -73,47 +74,49 @@ class Controls extends Component {
 		}
 
 		return (
-			<Fragment>
-				<BlockControls>
-					<Toolbar>
-						<DropdownMenu
-							icon= { icon() }
-							label={ __( 'Alert Type' ) }
-							controls={ [
-								{
-									icon: icons.alertFilled,
-									title: __( 'Default' ),
-									onClick: () => { setAttributes( { type: 'default', backgroundColor: '',  customBackgroundColor: '', customTextColor: '' } ) },
-								},
-								{
-									icon: icons.info,
-									title: __( 'Info' ),
-									onClick: () => { this.styles( '#D6EFEE' ), setAttributes( { type: 'info' } ) },
-								},
-								{
-									icon: icons.success,
-									title: __( 'Success' ),
-									onClick: () => { this.styles( '#D0EAC4' ), setAttributes( { type: 'success' } ) },
-								},
-								{
-									icon: icons.warning,
-									title: __( 'Warning' ),
-									onClick: () => { this.styles( '#FBE7DD' ), setAttributes( { type: 'warning' } ) },
-								},
-								{
-									icon: icons.error,
-									title: __( 'Error' ),
-									onClick: () => { this.styles( '#ffdede' ), setAttributes( { type: 'error' } ) },
-								},
-							] }
+			isSelected && (
+				<Fragment>
+					<BlockControls>
+						<Toolbar>
+							<DropdownMenu
+								icon= { icon() }
+								label={ __( 'Alert Type' ) }
+								controls={ [
+									{
+										icon: icons.alertFilled,
+										title: __( 'Default' ),
+										onClick: () => { setAttributes( { type: 'default', backgroundColor: '',  customBackgroundColor: '', customTextColor: '' } ) },
+									},
+									{
+										icon: icons.info,
+										title: __( 'Info' ),
+										onClick: () => { this.styles( '#D6EFEE' ), setAttributes( { type: 'info' } ) },
+									},
+									{
+										icon: icons.success,
+										title: __( 'Success' ),
+										onClick: () => { this.styles( '#D0EAC4' ), setAttributes( { type: 'success' } ) },
+									},
+									{
+										icon: icons.warning,
+										title: __( 'Warning' ),
+										onClick: () => { this.styles( '#FBE7DD' ), setAttributes( { type: 'warning' } ) },
+									},
+									{
+										icon: icons.error,
+										title: __( 'Error' ),
+										onClick: () => { this.styles( '#ffdede' ), setAttributes( { type: 'error' } ) },
+									},
+								] }
+							/>
+						</Toolbar>
+						<AlignmentToolbar
+							value={ textAlign }
+							onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
 						/>
-					</Toolbar>
-					<AlignmentToolbar
-						value={ textAlign }
-						onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
-					/>
-				</BlockControls>
-			</Fragment>
+					</BlockControls>
+				</Fragment>
+			)
 		);
 	}
 };

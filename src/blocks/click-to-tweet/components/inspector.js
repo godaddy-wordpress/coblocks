@@ -47,6 +47,7 @@ class Inspector extends Component {
 			fallbackFontSize,
 			fallbackTextColor,
 			fontSize,
+			isSelected,
 			setAttributes,
 			setButtonColor,
 			setFontSize,
@@ -55,42 +56,44 @@ class Inspector extends Component {
 		} = this.props;
 
 		return (
-			<Fragment>
-				<InspectorControls>
-					<PanelBody title={ __( 'Text Settings' ) } className="blocks-font-size">
-						<FontSizePicker
-							fallbackFontSize={ fallbackFontSize }
-							value={ fontSize.size }
-							onChange={ setFontSize }
-						/>
-					</PanelBody>
-					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: textColor.color,
-								onChange: setTextColor,
-								label: __( 'Text Color' ),
-							},
-							{
-								value: buttonColor.color,
-								onChange: setButtonColor,
-								label: __( 'Button Color' ),
-							},
-						] }
-					>
-						<ContrastChecker
-							{ ...{
-								textColor: '#ffffff',
-								backgroundColor: buttonColor.color,
-								fallbackButtonColor,
-								fallbackTextColor,
-							} }
-						/>
-					</PanelColorSettings>
-				</InspectorControls>
-			</Fragment>
+			isSelected && (
+				<Fragment>
+					<InspectorControls>
+						<PanelBody title={ __( 'Text Settings' ) } className="blocks-font-size">
+							<FontSizePicker
+								fallbackFontSize={ fallbackFontSize }
+								value={ fontSize.size }
+								onChange={ setFontSize }
+							/>
+						</PanelBody>
+						<PanelColorSettings
+							title={ __( 'Color Settings' ) }
+							initialOpen={ false }
+							colorSettings={ [
+								{
+									value: textColor.color,
+									onChange: setTextColor,
+									label: __( 'Text Color' ),
+								},
+								{
+									value: buttonColor.color,
+									onChange: setButtonColor,
+									label: __( 'Button Color' ),
+								},
+							] }
+						>
+							<ContrastChecker
+								{ ...{
+									textColor: '#ffffff',
+									backgroundColor: buttonColor.color,
+									fallbackButtonColor,
+									fallbackTextColor,
+								} }
+							/>
+						</PanelColorSettings>
+					</InspectorControls>
+				</Fragment>
+			)
 		);
 	}
 }

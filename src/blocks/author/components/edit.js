@@ -115,11 +115,9 @@ class Edit extends Component {
 
 		return [
 			<Fragment>
-				{ isSelected && (
-					<Controls
-						{ ...this.props }
-					/>
-				) }
+				<Controls
+					{ ...this.props }
+				/>
 				<div className={ className } style={ { textAlign: textAlign } }>
 					{ dropZone }
 					<div className={ `${ className }__avatar` }>

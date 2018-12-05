@@ -55,6 +55,7 @@ class Inspector extends Component {
 			setAttributes,
 			backgroundColor,
 			textColor,
+			isSelected,
 			fallbackBackgroundColor,
 			fallbackTextColor,
 			setBackgroundColor,
@@ -66,43 +67,45 @@ class Inspector extends Component {
 		} = attributes;
 
 		return (
-			<Fragment>
-				<InspectorControls>
-					<PanelBody title={ __( 'Accordion Item Settings' ) }>
-						<ToggleControl
-							label={ __( 'Display Open' ) }
-							checked={ !! open }
-							help={ this.getDisplayOpenHelp }
-							onChange={ () => setAttributes( {  open: ! open } ) }
+			isSelected && (
+				<Fragment>
+					<InspectorControls>
+						<PanelBody title={ __( 'Accordion Item Settings' ) }>
+							<ToggleControl
+								label={ __( 'Display Open' ) }
+								checked={ !! open }
+								help={ this.getDisplayOpenHelp }
+								onChange={ () => setAttributes( {  open: ! open } ) }
+							/>
+						</PanelBody>
+						<PanelColorSettings
+							title={ __( 'Color Settings' ) }
+							initialOpen={ false }
+							colorSettings={ [
+								{
+									value: backgroundColor.color,
+									onChange: this.setBorderColor(),
+									label: __( 'Background Color' ),
+								},
+								{
+									value: textColor.color,
+									onChange: setTextColor,
+									label: __( 'Title Text Color' ),
+								},
+							] }
+						>
+						<ContrastChecker
+							{ ...{
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackTextColor,
+								fallbackBackgroundColor,
+							} }
 						/>
-					</PanelBody>
-					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: backgroundColor.color,
-								onChange: this.setBorderColor(),
-								label: __( 'Background Color' ),
-							},
-							{
-								value: textColor.color,
-								onChange: setTextColor,
-								label: __( 'Title Text Color' ),
-							},
-						] }
-					>
-					<ContrastChecker
-						{ ...{
-							textColor: textColor.color,
-							backgroundColor: backgroundColor.color,
-							fallbackTextColor,
-							fallbackBackgroundColor,
-						} }
-					/>
-					</PanelColorSettings>
-				</InspectorControls>
-			</Fragment>
+						</PanelColorSettings>
+					</InspectorControls>
+				</Fragment>
+			)
 		);
 	}
 };

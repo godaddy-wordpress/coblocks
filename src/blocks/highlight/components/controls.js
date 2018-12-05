@@ -15,6 +15,7 @@ class Controls extends Component {
 
 		const {
 			attributes,
+			isSelected,
 			setAttributes,
 		} = this.props;
 
@@ -23,14 +24,16 @@ class Controls extends Component {
 		} = attributes;
 
 		return (
-			<Fragment>
-				<BlockControls>
-					<AlignmentToolbar
-						value={ align }
-						onChange={ ( nextAlign ) => setAttributes( { align: nextAlign } ) }
-					/>
-				</BlockControls>
-			</Fragment>
+			isSelected && (
+				<Fragment>
+					<BlockControls>
+						<AlignmentToolbar
+							value={ align }
+							onChange={ ( nextAlign ) => setAttributes( { align: nextAlign } ) }
+						/>
+					</BlockControls>
+				</Fragment>
+			)
 		);
 	}
 };
