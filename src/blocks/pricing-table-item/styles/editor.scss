@@ -22,7 +22,7 @@
 		margin-top: 12px;
 		height: 100%;
 
-		> div {
+		> div:not(.editor-block-contextual-toolbar) {
 			@media (min-width: 600px) {
 				height: 100%;
 				display: flex;
