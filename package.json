@@ -11,7 +11,7 @@
   "license": "GPL-3.0",
   "copyright": "Copyright (c) 2018, CoBlocks of Inventionn LLC",
   "downloadid": "",
-  "description": "CoBlocks is a suite of professional content blocks for the upcoming WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering content marketers, writers and publishers to write beautifully rich content in WordPress.",
+  "description": "CoBlocks is a suite of professional content blocks for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering content marketers, writers and publishers to write beautifully rich content in WordPress.",
   "tags": "",
   "scripts": {
     "start": "cgb-scripts start",
