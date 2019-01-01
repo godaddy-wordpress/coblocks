@@ -10,7 +10,7 @@ Stable tag: @@pkg.version
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-CoBlocks is a suite of page builder Gutenberg blocks for writers, publishers and content marketers.
+CoBlocks is a suite of professional page building content blocks for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
 
 == Description ==
 
@@ -82,6 +82,10 @@ Yes! CoBlocks' core features are absolutely free.
 Please reach out via the official [support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+= 1.5.2, January 01, 2019 =
+* New: Add support for column blocks to the Accordion Item
+* Fix: Resolve editor conflict when changing social block styles
 
 = 1.5.1, December 05, 2018 =
 * Tweak: Remove check for Gutenberg
