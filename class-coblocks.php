@@ -2,8 +2,8 @@
 /**
  * Plugin Name: CoBlocks
  * Plugin URI: https://coblocks.com
- * Description: @@pkg.description
- * Author: Rich Tabor from CoBlocks
+ * Description: CoBlocks is a suite of professional page building content blocks for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
+ * Author: CoBlocks
  * Author URI: https://richtabor.com
  * Tags: gutenberg, editor, block, layout, writing
  * Version: 1.5.1
