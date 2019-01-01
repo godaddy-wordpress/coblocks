@@ -55,7 +55,6 @@ class Inspector extends Component {
 			fallbackTextColor,
 			backgroundColor,
 			textColor,
-			isSelected,
 			fallbackBackgroundColor,
 		} = this.props;
 
@@ -104,112 +103,110 @@ class Inspector extends Component {
 		const isMaskStyle = includes( className, 'is-style-mask' );
 
 		return (
-			isSelected && (
-				<Fragment>
-					<InspectorControls>
-						<PanelBody title={ __( 'Social Settings' ) }>
-							<ToggleControl
-								label={ __( 'Social Colors' ) }
-								checked={ !! hasColors }
-								onChange={ () => setAttributes( {  hasColors: ! hasColors } ) }
-								help={ this.getHasColorsHelp }
+			<Fragment>
+				<InspectorControls>
+					<PanelBody title={ __( 'Social Settings' ) }>
+						<ToggleControl
+							label={ __( 'Social Colors' ) }
+							checked={ !! hasColors }
+							onChange={ () => setAttributes( {  hasColors: ! hasColors } ) }
+							help={ this.getHasColorsHelp }
+						/>
+						{ ! isMaskStyle &&
+							<RangeControl
+								label={ __( 'Rounded Corners' ) }
+								value={ borderRadius }
+								onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+								min={ 0 }
+								max={ 50 }
 							/>
-							{ ! isMaskStyle &&
-								<RangeControl
-									label={ __( 'Rounded Corners' ) }
-									value={ borderRadius }
-									onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-									min={ 0 }
-									max={ 50 }
-								/>
-							}
-							{ isMaskStyle &&
-								<RangeControl
-									label={ __( 'Icon Size' ) }
-									value={ iconSize }
-									onChange={ ( value ) => setAttributes( { iconSize: value } ) }
-									min={ 16 }
-									max={ 60 }
-								/>
-							}
-							{ ! isMaskStyle &&
-								<SelectControl
-									label={ __( 'Button Size' ) }
-									value={ size }
-									options={ options }
-									onChange={ ( value ) => setAttributes( { size: value } ) }
-									className="components-coblocks-inspector__social-button-size"
-								/>
-							}
-						</PanelBody>
-						<PanelBody
-							title={ __( 'Icon Settings' ) }
-							initialOpen={ false }
-						>
-							<p>{ __( ' Toggle the sharing links to display from the following social platforms.' ) }</p>
-							<ToggleControl
-								label={ __( 'Twitter' ) }
-								checked={ !! twitter }
-								onChange={ () => setAttributes( {  twitter: ! twitter } ) }
-							/>
-							<ToggleControl
-								label={ __( 'Facebook' ) }
-								checked={ !! facebook }
-								onChange={ () => setAttributes( {  facebook: ! facebook } ) }
-							/>
-							<ToggleControl
-								label={ __( 'Pinterest' ) }
-								checked={ !! pinterest }
-								onChange={ () => setAttributes( {  pinterest: ! pinterest } ) }
-							/>
-							<ToggleControl
-								label={ __( 'LinkedIn' ) }
-								checked={ !! linkedin }
-								onChange={ () => setAttributes( {  linkedin: ! linkedin } ) }
-							/>
-							<ToggleControl
-								label={ __( 'Email' ) }
-								checked={ !! email }
-								onChange={ () => setAttributes( {  email: ! email } ) }
-							/>
-							<ToggleControl
-								label={ __( 'Tumblr' ) }
-								checked={ !! tumblr }
-								onChange={ () => setAttributes( {  tumblr: ! tumblr } ) }
-							/>
-							<ToggleControl
-								label={ __( 'Google' ) }
-								checked={ !! google }
-								onChange={ () => setAttributes( {  google: ! google } ) }
-							/>
-							<ToggleControl
-								label={ __( 'Reddit' ) }
-								checked={ !! reddit }
-								onChange={ () => setAttributes( {  reddit: ! reddit } ) }
-							/>
-						</PanelBody>
-						{ ! hasColors &&
-							<PanelColorSettings
-								title={ __( 'Color Settings' ) }
-								initialOpen={ false }
-								colorSettings={ ! isMaskStyle ? defaultColors : maskColors }
-							>
-								{ ! isMaskStyle &&
-									<ContrastChecker
-										{ ...{
-											isLargeText: true,
-											textColor: textColor.color,
-											backgroundColor: backgroundColor.color,
-											fallbackBackgroundColor,
-											fallbackTextColor,
-										} }
-									/>
-								}
-							</PanelColorSettings>
 						}
-					</InspectorControls>
-				</Fragment>
-			)
+						{ isMaskStyle &&
+							<RangeControl
+								label={ __( 'Icon Size' ) }
+								value={ iconSize }
+								onChange={ ( value ) => setAttributes( { iconSize: value } ) }
+								min={ 16 }
+								max={ 60 }
+							/>
+						}
+						{ ! isMaskStyle &&
+							<SelectControl
+								label={ __( 'Button Size' ) }
+								value={ size }
+								options={ options }
+								onChange={ ( value ) => setAttributes( { size: value } ) }
+								className="components-coblocks-inspector__social-button-size"
+							/>
+						}
+					</PanelBody>
+					<PanelBody
+						title={ __( 'Icon Settings' ) }
+						initialOpen={ false }
+					>
+						<p>{ __( ' Toggle the sharing links to display from the following social platforms.' ) }</p>
+						<ToggleControl
+							label={ __( 'Twitter' ) }
+							checked={ !! twitter }
+							onChange={ () => setAttributes( {  twitter: ! twitter } ) }
+						/>
+						<ToggleControl
+							label={ __( 'Facebook' ) }
+							checked={ !! facebook }
+							onChange={ () => setAttributes( {  facebook: ! facebook } ) }
+						/>
+						<ToggleControl
+							label={ __( 'Pinterest' ) }
+							checked={ !! pinterest }
+							onChange={ () => setAttributes( {  pinterest: ! pinterest } ) }
+						/>
+						<ToggleControl
+							label={ __( 'LinkedIn' ) }
+							checked={ !! linkedin }
+							onChange={ () => setAttributes( {  linkedin: ! linkedin } ) }
+						/>
+						<ToggleControl
+							label={ __( 'Email' ) }
+							checked={ !! email }
+							onChange={ () => setAttributes( {  email: ! email } ) }
+						/>
+						<ToggleControl
+							label={ __( 'Tumblr' ) }
+							checked={ !! tumblr }
+							onChange={ () => setAttributes( {  tumblr: ! tumblr } ) }
+						/>
+						<ToggleControl
+							label={ __( 'Google' ) }
+							checked={ !! google }
+							onChange={ () => setAttributes( {  google: ! google } ) }
+						/>
+						<ToggleControl
+							label={ __( 'Reddit' ) }
+							checked={ !! reddit }
+							onChange={ () => setAttributes( {  reddit: ! reddit } ) }
+						/>
+					</PanelBody>
+					{ ! hasColors &&
+						<PanelColorSettings
+							title={ __( 'Color Settings' ) }
+							initialOpen={ false }
+							colorSettings={ ! isMaskStyle ? defaultColors : maskColors }
+						>
+							{ ! isMaskStyle &&
+								<ContrastChecker
+									{ ...{
+										isLargeText: true,
+										textColor: textColor.color,
+										backgroundColor: backgroundColor.color,
+										fallbackBackgroundColor,
+										fallbackTextColor,
+									} }
+								/>
+							}
+						</PanelColorSettings>
+					}
+				</InspectorControls>
+			</Fragment>
 		);
 	}
 };
