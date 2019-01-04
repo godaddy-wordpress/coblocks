@@ -69,9 +69,6 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 = How do I start using Gutenberg? =
 To get the full experience of the next-generation WordPress block editor,  you'll need a Gutenberg-ready WordPress theme, like [Tabor](https://themebeans.com/themes/tabor?utm_medium=coblocks-lite&utm_source=readme&utm_campaign=readme&utm_content=tabor). Then install the [Gutenberg](https://wordpress.org/plugins/gutenberg/) WordPress plugin. That's it! 💥
 
-= Should I use Gutenberg on my live site? =
-The new block editor is still very much in active development and is not recommended for production websites just yet.
-
 = What WordPress themes work with CoBlocks? =
 Any properly developed WordPress theme will work with CoBlocks, though if you're looking for an exceptional theme for writers and content marketers, check out [Tabor](https://themebeans.com/themes/tabor?utm_medium=coblocks-lite&utm_source=readme&utm_campaign=readme&utm_content=tabor). Developers are also able to apply minor style touch-ups to themes, to make the blocks fit in better with existing themes.
 
@@ -82,6 +79,9 @@ Yes! CoBlocks' core features are absolutely free.
 Please reach out via the official [support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+= 1.5.3, January 04, 2019 =
+* Fix: Resolve isSelected styles issue with the Dynamic HR block
 
 = 1.5.2, January 01, 2019 =
 * New: Add support for column blocks to the Accordion Item
