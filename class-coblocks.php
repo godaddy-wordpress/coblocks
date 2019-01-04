@@ -6,7 +6,7 @@
  * Author: CoBlocks
  * Author URI: https://richtabor.com
  * Tags: gutenberg, editor, block, layout, writing
- * Version: 1.5.2
+ * Version: 1.5.3
  * Text Domain: @@textdomain
  * Domain Path: /languages
  * Tested up to: @@pkg.tested_up_to
