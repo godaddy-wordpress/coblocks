@@ -44,9 +44,11 @@ class Edit extends Component {
 
 		return [
 			<Fragment>
-				<Inspector
-					{ ...this.props }
-				/>
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
 				<ResizableBox
 					className={ classnames(
 						className, {

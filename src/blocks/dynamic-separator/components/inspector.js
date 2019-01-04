@@ -57,40 +57,38 @@ class Inspector extends Component {
 		} = attributes;
 
 		return (
-			isSelected && (
-				<Fragment>
-					<InspectorControls>
-						<PanelBody title={ __( 'Dynamic HR Settings' ) }>
-							<BaseControl label={ __( 'Height in pixels' ) }>
-								<input
-									type="number"
-									onChange={ ( event ) => {
-										setAttributes( {
-											height: parseInt( event.target.value, 10 ),
-										} );
-									} }
-									aria-label={ __( 'Height for the dynamic separator element in pixels.' ) }
-									value={ height }
-									min="20"
-									step="10"
-								/>
-							</BaseControl>
-						</PanelBody>
-						<PanelColorSettings
-							title={ __( 'Color Settings' ) }
-							initialOpen={ false }
-							colorSettings={ [
-								{
-									value: color.color,
-									onChange: setColor,
-									label: __( 'Color' ),
-								},
-							] }
-						>
-						</PanelColorSettings>
-					</InspectorControls>
-				</Fragment>
-			)
+			<Fragment>
+				<InspectorControls>
+					<PanelBody title={ __( 'Dynamic HR Settings' ) }>
+						<BaseControl label={ __( 'Height in pixels' ) }>
+							<input
+								type="number"
+								onChange={ ( event ) => {
+									setAttributes( {
+										height: parseInt( event.target.value, 10 ),
+									} );
+								} }
+								aria-label={ __( 'Height for the dynamic separator element in pixels.' ) }
+								value={ height }
+								min="20"
+								step="10"
+							/>
+						</BaseControl>
+					</PanelBody>
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: color.color,
+								onChange: setColor,
+								label: __( 'Color' ),
+							},
+						] }
+					>
+					</PanelColorSettings>
+				</InspectorControls>
+			</Fragment>
 		);
 	}
 }
