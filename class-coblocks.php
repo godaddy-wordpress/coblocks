@@ -135,6 +135,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-footer.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-feedback.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-styles.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php';
@@ -231,7 +232,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @return void
 		 */
 		public function load_textdomain() {
-			load_plugin_textdomain( '@@textdomain', false, dirname( plugin_basename( untrailingslashit( plugin_dir_path( '/', __FILE__ ) ) ) ) . '/languages/' );
+			load_plugin_textdomain( '@@textdomain', false, dirname( plugin_basename( COBLOCKS_PLUGIN_DIR ) ) . '/languages/' );
 		}
 	}
 endif;
