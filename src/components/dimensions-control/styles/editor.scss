@@ -6,7 +6,7 @@
 		border-radius: 3px;
 		border: 1px solid #e2e4e7;
 		box-shadow: none;
-		color: #555d66;
+		color: $dark-gray-500;
 		display: none;
 		font-size: 10px;
 		height: 22px;
@@ -27,12 +27,12 @@
 
 		&:hover {
 			color: #191e23;
-			border-color: #555d66;
+			border-color: $dark-gray-500;
 		}
 
 		&:focus:enabled {
 			background: #fff !important;
-			border-color: #555d66;
+			border-color: $dark-gray-500;
 			box-shadow: 0 0 0;
 		}
 
@@ -149,20 +149,20 @@
 		position: relative;
 		top: -1px;
 		border: 1px solid #e2e4e7;
-		color: #555d66;
+		color: $dark-gray-500;
 		box-shadow: none;
 		background: #fff;
 
 		&:hover {
 			color: #191e23;
-			border-color: #555d66;
+			border-color: $dark-gray-500;
 		}
 
 		&:focus {
 			outline-offset: -2px;
 			background: #fff;
 			outline: 2px solid transparent;
-			box-shadow: 0 0 0 0 #555d66, inset 0 0 0 1px #fff;
+			box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
 		}
 	}
 
@@ -187,14 +187,14 @@
 
 			&:hover {
 				color: #191e23;
-				border-color: #555d66;
+				border-color: $dark-gray-500;
 			}
 
 			&:focus {
 				outline-offset: -2px;
-				background: #555d66;
+				background: $dark-gray-500;
 				outline: 2px solid transparent;
-				box-shadow: 0 0 0 0 #555d66, inset 0 0 0 1px #fff;
+				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
 			}
 
 			&:not(.is-primary):hover {
@@ -204,20 +204,20 @@
 			}
 
 			&.is-primary {
-				background: #555d66;
-				border-color: #555d66;
+				background: $dark-gray-500;
+				border-color: $dark-gray-500;
 				color: $white;
 				z-index: 1;
 				cursor: default;
 
 				&:focus {
-					background: #555d66;
-					box-shadow: 0 0 0 0 #555d66, inset 0 0 0 1px #fff;
+					background: $dark-gray-500;
+					box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
 				}
 
 				&:active:enabled {
-					background: #555d66;
-					border-color: #555d66;
+					background: $dark-gray-500;
+					border-color: $dark-gray-500;
 					box-shadow: none;
 				}
 			}
@@ -234,24 +234,24 @@
 		padding: 0;
 		text-shadow: none;
 		box-shadow: none;
-		color: #555d66;
+		color: $dark-gray-500;
 		width: 30px;
 		text-align: center;
 		justify-content: center;
 
 		svg {
-			fill: #555d66;
+			fill: $dark-gray-500;
 			width: 18px;
 			height: 18px;
 		}
 
 		&:focus {
-			background: #555d66 !important;
-			border-color: #555d66;
+			background: $dark-gray-500 !important;
+			border-color: $dark-gray-500;
 			color: #fff !important;
 			outline-offset: -2px;
 			outline: 2px solid transparent;
-			box-shadow: 0 0 0 0 #555d66, inset 0 0 0 1px #fff;
+			box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
 
 			svg {
 				fill: $white !important;
@@ -270,19 +270,19 @@
 
 		&:not(.is-primary):hover {
 			background: #fff;
-			border-color: #555d66;
+			border-color: $dark-gray-500;
 			box-shadow: none;
-			color: #555d66;
+			color: $dark-gray-500;
 			cursor: pointer;
 
 			svg {
-				fill: #555d66;
+				fill: $dark-gray-500;
 			}
 		}
 
 		&.is-primary {
-			background: #555d66;
-			border-color: #555d66;
+			background: $dark-gray-500;
+			border-color: $dark-gray-500;
 			color: $white !important;
 
 			svg {
@@ -290,12 +290,12 @@
 			}
 
 			&:focus {
-				background: #555d66;
+				background: $dark-gray-500;
 			}
 
 			&:active:enabled {
-				background: #555d66;
-				border-color: #555d66;
+				background: $dark-gray-500;
+				border-color: $dark-gray-500;
 				box-shadow: none;
 			}
 		}

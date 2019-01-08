@@ -59,7 +59,7 @@
 		width: 90px;
 
 		svg {
-			fill: #555d66;
+			fill: $dark-gray-500;
 		}
 
 		&:focus {
@@ -116,7 +116,7 @@
 				}
 
 				&.is-selected {
-					box-shadow: 0 0 0 2px #555d66;
+					box-shadow: 0 0 0 2px $dark-gray-500;
 				}
 			}
 
@@ -156,7 +156,7 @@
 			flex-shrink: 0;
 
 			&.is-selected {
-				box-shadow: 0 0 0 2px #555d66;
+				box-shadow: 0 0 0 2px $dark-gray-500;
 			}
 		}
 

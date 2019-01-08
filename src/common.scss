@@ -31,6 +31,7 @@ $block-padding: 10px;
 $border-width: 1px;
 $break-small: 600px;
 $grid-size-large: 11px;
+$dark-gray-500: #555d66; // Use this most of the time for dark items.
 
 @mixin break-small() {
 	@media (min-width: #{ ($break-small) }) {
