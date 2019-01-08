@@ -15,8 +15,9 @@
 	"tags": "",
 	"scripts": {
 		"start": "cgb-scripts start",
-		"build": "cgb-scripts build | babel src --ignore src/blocks/gist/components/gist.js",
+		"build": "cgb-scripts build",
 		"eject": "cgb-scripts eject",
+		"babel": "babel src --ignore src/blocks/gist/components/gist.js",
 		"makepot": "wp i18n make-pot . --merge=languages/coblocks-js.pot --skip-js",
 		"makepot:php": "npx pot-to-php languages/coblocks.pot languages/coblocks-translations.php coblocks"
 	},
