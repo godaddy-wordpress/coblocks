@@ -2,10 +2,10 @@
 /**
  * Plugin Name: CoBlocks
  * Plugin URI: https://coblocks.com/
- * Description: CoBlocks is a suite of professional page building content blocks for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
+ * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
  * Author: CoBlocks
  * Author URI: https://coblocks.com/
- * Version: 1.0.0
+ * Version: 1.5.3
  * Text Domain: '@@textdomain'
  * Domain Path: languages
  * Tested up to: @@pkg.tested_up_to
@@ -136,8 +136,8 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-footer.php';
-				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-feedback.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-styles.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-feedback.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-url-generator.php';
 			}
@@ -216,7 +216,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @access public
 		 */
 		public function is_pro() {
-
 			if ( class_exists( 'CoBlocks_Pro' ) ) {
 				return true;
 			} else {
