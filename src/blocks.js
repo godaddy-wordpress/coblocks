@@ -3,45 +3,30 @@
  */
 const { registerBlockType } = wp.blocks;
 
-// Register block category.
-import icons from './utils/block-category';
-
-// Category slug and title.
+// Category slug and title
 const category = {
 	slug: 'coblocks',
 	title: 'CoBlocks',
 };
 
-/**
- * Custom foreground icon color
- */
+// Custom foreground icon color based on the CoBlocks branding
 const iconColor = '#536dff';
 
-/**
- * Utility Editor and Frontend Styles
- */
+// Register block category
+import icons from './utils/block-category';
+
+// Editor and Frontend Styles
 import './styles/editor.scss';
 import './styles/style.scss';
 
-/**
- * Color Settings
- */
+// Extensions
 import './extensions/color-settings/inspector-control';
-
-/**
- * Inspector Control
- */
 import './extensions/inspector-control';
 
-/**
- * Register Formats
- */
+// Formats
 import './formats/';
 
-
-/**
- * Register Blocks
- */
+// Register Blocks
 import * as accordion from './blocks/accordion';
 import * as accordionItem from './blocks/accordion/accordion-item';
 import * as alert from './blocks/alert';
