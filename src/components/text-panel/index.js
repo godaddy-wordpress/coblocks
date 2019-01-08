@@ -149,7 +149,7 @@ class TypographyPanel extends Component {
 			setAttributes( { fontFamily: value } );
 
 			if( typeof googleFonts[ value ] !== 'undefined' && typeof googleFonts[ value ].weight !== 'undefined' ){
-				if( Object.values( googleFonts[ fontFamily ].weight ).indexOf( fontWeight ) < 0 ) {
+				if( fontWeight && Object.values( googleFonts[ fontFamily ].weight ).indexOf( fontWeight ) < 0 ) {
 					setAttributes( { fontWeight: '' } );
 				}
 			}
