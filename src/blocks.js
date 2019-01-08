@@ -33,6 +33,11 @@ import './components/color-settings/inspector-control';
  */
 import './components/inspector-control';
 
+/**
+ * Register Formats
+ */
+import './formats/';
+
 
 /**
  * Register Blocks
