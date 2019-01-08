@@ -2,24 +2,25 @@
 /**
  * Plugin Name: CoBlocks
  * Plugin URI: https://coblocks.com/
- * Description: CoBlocks is a suite of professional page building content blocks for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
+ * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
  * Author: CoBlocks
  * Author URI: https://coblocks.com/
- * Version: 1.0.0
+ * Version: 1.5.3
  * Text Domain: '@@textdomain'
  * Domain Path: languages
  * Tested up to: @@pkg.tested_up_to
  *
- * @@pkg.title is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
+ * CoBlocks is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * any later version.
  *
  * You should have received a copy of the GNU General Public License
- * along with @@pkg.title. If not, see <http://www.gnu.org/licenses/>.
+ * along with CoBlocks. If not, see <http://www.gnu.org/licenses/>.
  *
  * @package   @@pkg.title
  * @author    @@pkg.author
+ * @link      @@pkg.author_uri
  * @license   @@pkg.license
  */
 
@@ -132,12 +133,12 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		private function includes() {
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-assets.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-type.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-footer.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-feedback.php';
-				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-styles.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-url-generator.php';
 			}
@@ -150,18 +151,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		private function init() {
 			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 99 );
-			add_action( 'plugins_loaded', array( $this, 'load_dynamic_blocks' ), 99 );
-		}
-
-		/**
-		 * Register server-side code for individual blocks.
-		 *
-		 * @access public
-		 */
-		public function load_dynamic_blocks() {
-			foreach ( glob( dirname( __FILE__ ) . '/src/blocks/*/index.php' ) as $block_logic ) {
-				require $block_logic;
-			}
+			add_action( 'enqueue_block_editor_assets', array( $this, 'block_localization' ) );
 		}
 
 		/**
@@ -216,7 +206,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @access public
 		 */
 		public function is_pro() {
-
 			if ( class_exists( 'CoBlocks_Pro' ) ) {
 				return true;
 			} else {
@@ -232,7 +221,18 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @return void
 		 */
 		public function load_textdomain() {
-			load_plugin_textdomain( '@@textdomain', false, dirname( plugin_basename( COBLOCKS_PLUGIN_DIR ) ) . '/languages/' );
+			load_plugin_textdomain( 'coblocks', false, dirname( plugin_basename( COBLOCKS_PLUGIN_DIR ) ) . '/languages/' );
+		}
+
+		/**
+		 * Enqueue localization data for our blocks.
+		 *
+		 * @access public
+		 */
+		public function block_localization() {
+			if ( function_exists( 'wp_set_script_translations' ) ) {
+				wp_set_script_translations( 'coblocks-editor', 'coblocks' );
+			}
 		}
 	}
 endif;

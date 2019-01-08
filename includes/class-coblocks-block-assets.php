@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main @@pkg.title Class
+ * Load @@pkg.title block assets.
  *
  * @since 1.0.0
  */
@@ -77,7 +77,6 @@ class CoBlocks_Block_Assets {
 		add_action( 'init', array( $this, 'register_blocks' ), 99 );
 		add_action( 'init', array( $this, 'editor_assets' ) );
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'localization' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'fonts_loader' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'fonts_loader' ) );
 		// add_action( 'wp_enqueue_scripts', array( $this, 'google_map_assets' ) );
@@ -197,24 +196,6 @@ class CoBlocks_Block_Assets {
 			time(),
 			true
 		);
-	}
-
-	/**
-	 * Enqueue Jed-formatted localization data.
-	 *
-	 * @access public
-	 */
-	public function localization() {
-
-		// Check if this function exists.
-		if ( ! function_exists( 'gutenberg_get_jed_locale_data' ) ) {
-			return;
-		}
-
-		$locale  = gutenberg_get_jed_locale_data( $this->_slug );
-		$content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ' );';
-
-		wp_script_add_data( $this->_slug . '-editor', 'data', $content );
 	}
 
 	/**
