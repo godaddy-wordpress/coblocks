@@ -80,8 +80,8 @@ class CoBlocks_Block_Assets {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'localization' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'fonts_loader' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'fonts_loader' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'google_map_assets' ) );
-		add_action( 'init', array( $this, 'register_settings' ) );
+		// add_action( 'wp_enqueue_scripts', array( $this, 'google_map_assets' ) );
+		// add_action( 'init', array( $this, 'register_settings' ) );
 		add_action( 'wp_footer', array( $this, 'footer_assets' ) );
 	}
 

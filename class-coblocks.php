@@ -102,6 +102,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		private function includes() {
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-assets.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-type.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';
