@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import icons from './../../../utils/icons';
+import icons from './../../../../utils/icons';
 
 /**
  * WordPress dependencies
@@ -21,7 +21,6 @@ class Controls extends Component {
 
 		const {
 			attributes,
-			isSelected,
 			setAttributes,
 		} = this.props;
 
@@ -39,13 +38,11 @@ class Controls extends Component {
 		];
 
 		return (
-			isSelected && (
-				<Fragment>
-					<BlockControls>
-						<Toolbar className="components-toolbar__block-coblocks-accordion" controls={ customControls } />
-					</BlockControls>
-				</Fragment>
-			)
+			<Fragment>
+				<BlockControls>
+					<Toolbar className="components-toolbar__block-coblocks-accordion" controls={ customControls } />
+				</BlockControls>
+			</Fragment>
 		);
 	}
 }

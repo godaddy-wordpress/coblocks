@@ -49,12 +49,16 @@ class Edit extends Component {
 
 		return [
 			<Fragment>
-				<Controls
-					{ ...this.props }
-				/>
-				<Inspector
-					{ ...this.props }
-				/>
+				{ isSelected && (
+					<Controls
+						{ ...this.props }
+					/>
+				) }
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
 				<div
 					className={ classnames(
 						className,
@@ -80,6 +84,13 @@ class Edit extends Component {
 						} }
 						onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
 						keepPlaceholderOnFocus
+						onRemove={ ( forward ) => {
+							const hasEmptyTweet = typeof title == 'undefined' || ( typeof title != 'undefined' && title.length == 0 );
+
+							if ( ! forward && hasEmptyTweet ) {
+								onReplace( [] );
+							}
+						} }
 					/>
 					<div
 						className={ `${ className }__content`  }
