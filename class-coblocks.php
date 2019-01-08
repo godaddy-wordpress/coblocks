@@ -6,7 +6,7 @@
  * Author: CoBlocks
  * Author URI: https://coblocks.com/
  * Version: 1.5.3
- * Text Domain: '@@textdomain'
+ * Text Domain: coblocks
  * Domain Path: languages
  * Tested up to: @@pkg.tested_up_to
  *
