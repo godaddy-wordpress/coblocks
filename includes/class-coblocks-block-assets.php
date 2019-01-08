@@ -66,8 +66,8 @@ class CoBlocks_Block_Assets {
 		$this->_slug    = 'coblocks';
 		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
-		add_action( 'init', array( $this, 'editor_assets' ) );
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
+		add_action( 'init', array( $this, 'editor_assets' ) );
 	}
 
 	/**
