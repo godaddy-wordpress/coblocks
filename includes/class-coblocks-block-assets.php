@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main @@pkg.title Class
+ * Load @@pkg.title block assets.
  *
  * @since 1.0.0
  */
