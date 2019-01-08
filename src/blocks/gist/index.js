@@ -64,10 +64,6 @@ const settings = {
 
 	description: __( 'Embed GitHub gists by adding the gist link.' ),
 
-	icon: {
-		src: icon,
-	},
-
 	keywords: keywords,
 
 	attributes: blockAttributes,
@@ -89,23 +85,6 @@ const settings = {
 					} );
 				},
 			},
-			// {
-			// 	type: 'raw',
-			// 	isMatch: ( node ) => node.nodeName === 'DIV',
-			// 	schema,
-			// 	transform: ( node ) => {
-			// 		const anchorElement = node.querySelector( 'a' );
-			// 		const url = anchorElement && anchorElement.href ? anchorElement.href : undefined;
-			// 		const attributes = getBlockAttributes( 'coblocks/gist', node.outerHTML, { url } );
-
-			// 		console.log( 'outerHTML' + node.outerHTML )
-			// 		console.log( 'nodeName ' + node.nodeName )
-			// 		console.log( 'className ' + node.className )
-			// 		console.log( 'anchor ' + anchorElement )
-
-			// 		return createBlock( 'coblocks/gist', attributes );
-			// 	},
-			// },
 			{
 				type: 'prefix',
 				prefix: ':gist',

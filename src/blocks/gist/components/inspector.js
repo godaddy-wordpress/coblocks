@@ -34,7 +34,6 @@ class Inspector extends Component {
 		const {
 			attributes,
 			setAttributes,
-			isSelected,
 		} = this.props;
 
 		const {
@@ -44,30 +43,28 @@ class Inspector extends Component {
 		} = attributes;
 
 		return (
-			isSelected && (
-				<Fragment>
-					<InspectorControls>
-						<PanelBody title={ __( 'Gist Settings' ) }>
-							<TextControl
-								label={ __( 'Gist URL' ) }
-								value={ url }
-								onChange={ this.updateURL }
-							/>
-							<TextControl
-								label={ __( 'Gist File' ) }
-								value={ file }
-								onChange={ this.updateFile }
-							/>
-							<ToggleControl
-								label={ __( 'Gist Meta' ) }
-								checked={ !! meta }
-								onChange={ () => setAttributes( {  meta: ! meta } ) }
-								help={ this.getGistMetaHelp }
-							/>
-						</PanelBody>
-					</InspectorControls>
-				</Fragment>
-			)
+			<Fragment>
+				<InspectorControls>
+					<PanelBody title={ __( 'Gist Settings' ) }>
+						<TextControl
+							label={ __( 'Gist URL' ) }
+							value={ url }
+							onChange={ this.updateURL }
+						/>
+						<TextControl
+							label={ __( 'Gist File' ) }
+							value={ file }
+							onChange={ this.updateFile }
+						/>
+						<ToggleControl
+							label={ __( 'Gist Meta' ) }
+							checked={ !! meta }
+							onChange={ () => setAttributes( {  meta: ! meta } ) }
+							help={ this.getGistMetaHelp }
+						/>
+					</PanelBody>
+				</InspectorControls>
+			</Fragment>
 		);
 	}
 };
