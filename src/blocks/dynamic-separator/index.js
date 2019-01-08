@@ -53,10 +53,6 @@ const settings = {
 
 	description: __( 'Add a resizable spacer between other blocks.' ),
 
-	icon: {
-		src: icon,
-	},
-
 	keywords: keywords,
 
 	attributes: blockAttributes,
