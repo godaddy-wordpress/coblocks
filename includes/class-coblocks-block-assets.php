@@ -77,9 +77,6 @@ class CoBlocks_Block_Assets {
 		add_action( 'init', array( $this, 'register_blocks' ), 99 );
 		add_action( 'init', array( $this, 'editor_assets' ) );
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'fonts_loader' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'fonts_loader' ) );
-		add_action( 'wp_footer', array( $this, 'footer_assets' ) );
 	}
 
 	/**
@@ -196,129 +193,6 @@ class CoBlocks_Block_Assets {
 		);
 	}
 
-	/**
-	 * Load fonts.
-	 *
-	 * @access public
-	 */
-	public function fonts_loader() {
-		global $post;
-
-		if ( $post && isset( $post->ID ) ) {
-
-			$fonts = get_post_meta( $post->ID, '_coblocks_attr', true );
-
-			if ( ! empty( $fonts ) ) {
-				$fonts  = array_unique( explode( ',', $fonts ) );
-				$system = array(
-					'Arial',
-					'Tahoma',
-					'Verdana',
-					'Helvetica',
-					'Times New Roman',
-					'Trebuchet MS',
-					'Georgia',
-				);
-
-				$gfonts      = '';
-				$gfonts_attr = ':100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic';
-
-				foreach ( $fonts as $font ) {
-					if ( ! in_array( $font, $system, true ) && ! empty( $font ) ) {
-						$gfonts .= str_replace( ' ', '+', trim( $font ) ) . $gfonts_attr . '|';
-					}
-				}
-
-				if ( ! empty( $gfonts ) ) {
-					$query_args = array(
-						'family' => $gfonts,
-					);
-
-					wp_register_style(
-						'coblocks-plugin-fonts',
-						add_query_arg( $query_args, '//fonts.googleapis.com/css' ),
-						array(),
-						$this->_version
-					);
-
-					wp_enqueue_style( 'coblocks-plugin-fonts' );
-				}
-
-				// Reset.
-				$gfonts = '';
-			}
-		}
-	}
-
-
-	/**
-	 * Footer Styling
-	 *
-	 * @access public
-	 */
-	public function footer_assets() {
-		global $post;
-
-		if ( $post && isset( $post->ID ) ) {
-
-			$meta    = get_post_meta( $post->ID, '_coblocks_dimensions', true );
-			$desktop = array();
-			$tablet  = array();
-			$mobile  = array();
-
-			if ( $meta ) {
-				$meta = json_decode( $meta );
-				if ( ! empty( $meta ) ) {
-					echo '<!-- CoBlocks Styles -->';
-					echo '<style>';
-					foreach ( $meta as $k => $block ) {
-						echo '.' . $k . ' > div {';
-						if ( ! empty( $block ) ) {
-							foreach ( $block as $key => $style ) {
-								if ( ! empty( $style ) ) {
-									foreach ( $style as $ky => $value ) {
-										if ( strpos( $ky, 'Mobile' ) !== false ) {
-											$mobile[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Mobile', '', $ky ) ) ) . ':' . $value . ';';
-										} elseif ( strpos( $ky, 'Tablet' ) !== false ) {
-											$tablet[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Tablet', '', $ky ) ) ) . ':' . $value . ';';
-										} else {
-											echo strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', $ky ) ) . ':' . $value . ';';
-										}
-									}
-								}
-							}
-						}
-						echo '}';
-
-						if ( ! empty( $tablet ) ) {
-							echo '@media (max-width: ' . apply_filters( 'coblocks_tablet_breakpoint', '768px' ) . ') {';
-								echo '.' . $k . ' > div{';
-							foreach ( $tablet as $tab ) {
-								echo $tab;
-							}
-								echo '}';
-							echo '}';
-						}
-
-						if ( ! empty( $mobile ) ) {
-							echo '@media (max-width: ' . apply_filters( 'coblocks_desktop_breakpoint', '514px' ) . ') {';
-								echo '.' . $k . ' > div{';
-							foreach ( $mobile as $mobi ) {
-								echo $mobi;
-							}
-								echo '}';
-							echo '}';
-						}
-
-						// Reset media queries.
-						$tablet = array();
-						$mobile = array();
-					}
-					echo '</style><!-- End CoBlocks Styles -->';
-				}
-			}
-		}
-	}
 }
 
 CoBlocks_Block_Assets::register();

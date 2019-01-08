@@ -132,6 +132,8 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		private function includes() {
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-assets.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-footer-assets.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-font-loader.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-type.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 
