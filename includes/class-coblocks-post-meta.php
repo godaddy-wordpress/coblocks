@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * CoBlocks_Post_Type Class
+ * CoBlocks_Post_Meta Class
  *
  * @since 1.6.0
  */
-class CoBlocks_Post_Type {
+class CoBlocks_Post_Meta {
 
 	/**
 	 * Constructor
@@ -54,4 +54,4 @@ class CoBlocks_Post_Type {
 
 }
 
-return new CoBlocks_Post_Type();
+return new CoBlocks_Post_Meta();
