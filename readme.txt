@@ -108,6 +108,8 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 * New: Add new .has-{size}-margin and .has-{size}-padding utility classes for the Dimensions controls
 * New: Add support for the WP 5.0+ wp_set_script_translations() function
 * New: Add new uppercase formatting control for making text all caps
+* New: Add custom background color support to core Heading blocks
+* New: Add custom text color support to core Heading blocks
 * Tweak: Add CoBlocks color to icons for improved recognition and visibility between similarly named blocks
 * Tweak: Pricing table now using standard background color and text color attributes
 * Tweak: Accordion block now supports to following blocks: Alert, Social, Highlight, Row, Column, List, Heading and Button
