@@ -1,6 +1,6 @@
 <?php
 /**
- * Create @@pkg.title run on plugin install
+ * Run on plugin install
  *
  * @package   @@pkg.title
  * @author    @@pkg.author
@@ -28,9 +28,9 @@ class CoBlocks_Install {
 	/*
 	 * Register plugin defaults
 	 */
-	function register_defaults(){
-		if( is_admin() ){
-			if( !get_option( 'coblocks_date_installed' ) ){
+	function register_defaults() {
+		if ( is_admin() ) {
+			if ( ! get_option( 'coblocks_date_installed' ) ) {
 				add_option( 'coblocks_date_installed', date( 'Y-m-d h:i:s' ) );
 			}
 		}

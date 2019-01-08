@@ -19,6 +19,7 @@
 	// Prevent long unbroken words from overflowing.
 	word-break: break-word; // For back-compat.
 	overflow-wrap: break-word; // New standard.
+	position: relative;
 
 	p {
 		margin-top: 0;
