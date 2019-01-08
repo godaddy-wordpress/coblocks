@@ -45,18 +45,17 @@ function ColorSettings( props, options ) {
 		<Fragment>
 			<PanelColorSettings
 				title={ __( 'Color Settings' ) }
-				className="blocks-font-size"
 				initialOpen={ false }
 				colorSettings={ [
 					{
 						value: customBackgroundColor,
 						onChange: ( nextcustomBackgroundColor ) => setAttributes( {  customBackgroundColor: nextcustomBackgroundColor } ),
-						label: __( 'Background Colssor' ),
+						label: __( 'Background Color' ),
 					},
 					{
 						value: customTextColor,
 						onChange: ( nextcustomTextColor ) => setAttributes( {  customTextColor: nextcustomTextColor } ),
-						label: __( 'Text Cosslor' ),
+						label: __( 'Text Color' ),
 					},
 				] }
 			>
