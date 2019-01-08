@@ -219,7 +219,6 @@ class TypographyPanel extends Component {
 										min={ 1 }
 										max={ 100 }
 										step={ 1 }
-										allowReset={ true }
 										className="components-coblocks-typography-dropdown__inner--size"
 									/> : null
 								}
@@ -231,7 +230,6 @@ class TypographyPanel extends Component {
 										min={ 1 }
 										max={ 3 }
 										step={ .1 }
-										// allowReset={ true }
 										className="components-coblocks-typography-dropdown__inner--line-height"
 									/> : null
 								}
@@ -243,7 +241,6 @@ class TypographyPanel extends Component {
 										min={ -1 }
 										max={ 3 }
 										step={ .1 }
-										// allowReset={ true }
 										className="components-coblocks-typography-dropdown__inner--letter-spacing"
 									/> : null
 								}
@@ -253,13 +250,11 @@ class TypographyPanel extends Component {
 											label={ __( 'No Top Spacing' ) }
 											checked={ !! noTopSpacing }
 											onChange={ () => setAttributes( {  noTopSpacing: ! noTopSpacing } ) }
-											// help={ !! noTopSpacing ? '' : __( 'Remove any margin or padding applied to the bottom of this element.' ) }
 										/>
 										<ToggleControl
 											label={ __( 'No Bottom Spacing' ) }
 											checked={ !! noBottomSpacing }
 											onChange={ () => setAttributes( {  noBottomSpacing: ! noBottomSpacing } ) }
-											// help={ !! noBottomSpacing ? '' : __( 'Remove any margin or padding applied to the top of this element.' ) }
 										/>
 									</div>
 								}
