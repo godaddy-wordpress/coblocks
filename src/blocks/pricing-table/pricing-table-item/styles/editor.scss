@@ -30,6 +30,9 @@
 			}
 		}
 	}
+	.editor-block-list__breadcrumb{
+		display: none !important;
+	}
 
 	.editor-rich-text__tinymce[data-is-placeholder-visible="true"] + .editor-rich-text__tinymce {
 		padding-right: 0 !important;

@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import './styles/editor.scss';
 import './styles/style.scss';
 import Edit from './components/edit';
-import icons from './../../utils/icons';
+import icons from './../../../utils/icons';
 
 /**
  * WordPress dependencies
@@ -51,16 +51,16 @@ const blockAttributes = {
 		source: 'children',
 		selector: '.wp-block-coblocks-pricing-table-item__amount',
 	},
-	tableBackground: {
+	backgroundColor: {
 		type: 'string',
 	},
-	tableColor: {
+	customBackgroundColor: {
 		type: 'string',
 	},
-	customTableBackground: {
+	textColor: {
 		type: 'string',
 	},
-	customTableColor: {
+	customTextColor: {
 		type: 'string',
 	},
 };
@@ -71,13 +71,13 @@ const settings = {
 
 	description: __( 'A column placed within the pricing table block.' ),
 
-	icon: {
-		src: icon,
-	},
-
 	keywords: keywords,
 
 	parent: [ 'coblocks/pricing-table' ],
+
+	supports: {
+		inserter: false,
+	},
 
 	attributes: blockAttributes,
 
@@ -103,28 +103,28 @@ const settings = {
 			amount,
 			columns,
 			currency,
-			customTableBackground,
-			customTableColor,
+			customBackgroundColor,
+			customTextColor,
 			features,
-			tableBackground,
-			tableColor,
+			backgroundColor,
+			textColor,
 			title,
 		} = attributes;
 
-		const tableBackgroundClass = getColorClassName( 'background-color', tableBackground );
-		const tableColorClass = getColorClassName( 'color', tableColor );
+		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+		const textColorClass = getColorClassName( 'color', textColor );
 
 		const classes = classnames( {
-				'has-background': tableBackground || customTableBackground,
-				[ tableBackgroundClass ]: tableBackgroundClass,
-				'has-text-color': tableColor || customTableColor,
-				[ tableColorClass ]: tableColorClass,
+				'has-background': backgroundColor || customBackgroundColor,
+				[ backgroundClass ]: backgroundClass,
+				'has-text-color': textColor || customTextColor,
+				[ textColorClass ]: textColorClass,
 			}
 		);
 
 		const styles = {
-			backgroundColor: tableBackgroundClass ? undefined : customTableBackground,
-			color: tableColorClass ? undefined : customTableColor,
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			color: textColorClass ? undefined : customTextColor,
 		};
 
 		return (

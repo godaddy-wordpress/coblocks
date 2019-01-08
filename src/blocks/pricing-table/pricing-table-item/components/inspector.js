@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import icons from './../../../utils/icons';
+import icons from './../../../../utils/icons';
 
 /**
  * WordPress dependencies
@@ -15,7 +15,7 @@ const { PanelBody, withFallbackStyles, Toolbar, RangeControl, SelectControl } = 
 
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 
-	const { tableBackground, tableColor } = ownProps.attributes;
+	const { backgroundColor, textColor } = ownProps.attributes;
 
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 
@@ -23,8 +23,8 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 
 	return {
-		fallbackTableBackground: tableBackground || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackTableColor: tableColor || ! computedStyles ? undefined : computedStyles.color,
+		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 	};
 } );
 
@@ -41,13 +41,13 @@ class Inspector extends Component {
 
 		const {
 			attributes,
-			fallbackTableBackground,
-			fallbackTableColor,
+			fallbackBackgroundColor,
+			fallbackTextColor,
 			setAttributes,
-			setTableBackground,
-			setTableColor,
-			tableBackground,
-			tableColor,
+			setBackgroundColor,
+			setTextColor,
+			backgroundColor,
+			textColor,
 			isSelected,
 		} = this.props;
 
@@ -62,13 +62,13 @@ class Inspector extends Component {
 						initialOpen={ false }
 						colorSettings={ [
 							{
-								value: tableBackground.color,
-								onChange: setTableBackground,
+								value: backgroundColor.color,
+								onChange: setBackgroundColor,
 								label: __( 'Background Color' ),
 							},
 							{
-								value: tableColor.color,
-								onChange: setTableColor,
+								value: textColor.color,
+								onChange: setTextColor,
 								label: __( 'Text Color' ),
 								initialOpen: false,
 							},
@@ -76,10 +76,10 @@ class Inspector extends Component {
 					>
 						<ContrastChecker
 							{ ...{
-								textColor: tableColor.color,
-								backgroundColor: tableBackground.color,
-								fallbackTableColor,
-								fallbackTableBackground,
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackTextColor,
+								fallbackBackgroundColor,
 							} }
 						/>
 					</PanelColorSettings>
