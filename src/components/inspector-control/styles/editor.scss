@@ -1,0 +1,129 @@
+.editor-block-list__block[data-custom-fontsize="1"]{
+	.wp-block-heading{
+		h1, h2, h3, h4, h5, h6{
+			font-size: inherit !important;
+		}
+	}
+	.wp-block-button{
+		.wp-block-button__link{
+			font-size: inherit;
+		}
+	}
+	.editor-block-contextual-toolbar{
+		line-height: 0px;
+	}
+	.editor-rich-text{
+		.wp-block-cover-text{
+			font-size: inherit;
+		}
+	}
+}
+
+.editor-block-list__block[data-custom-fontfamily="1"]{
+	.wp-block-heading{
+		h1, h2, h3, h4, h5, h6{
+			font-family: inherit;
+		}
+	}
+	.wp-block-button{
+		.wp-block-button__link{
+			font-family: inherit;
+		}
+	}
+	.editor-rich-text{
+		.wp-block-cover-text, .wp-block-paragraph{
+			font-family: inherit;
+		}
+	}
+	.wp-block-pullquote, .wp-block-quote{
+		.editor-rich-text__tinymce{
+			&, p {
+				font-family: inherit;
+			}
+		}
+	}
+}
+
+.editor-block-list__block[data-custom-fontweight="1"]{
+	.wp-block-heading{
+		h1, h2, h3, h4, h5, h6{
+			font-weight: inherit;
+		}
+	}
+	.wp-block-button{
+		.wp-block-button__link{
+			font-weight: inherit;
+		}
+	}
+	.editor-rich-text{
+		.wp-block-cover-text, .wp-block-paragraph{
+			font-weight: inherit;
+		}
+	}
+	.wp-block-pullquote, .wp-block-quote{
+		.editor-rich-text__tinymce{
+			&, p {
+				font-weight: inherit;
+			}
+		}
+	}
+}
+
+.editor-block-list__block[data-custom-texttransform="1"]{
+	.wp-block-heading{
+		h1, h2, h3, h4, h5, h6{
+			text-transform: inherit;
+		}
+	}
+	.wp-block-button{
+		.wp-block-button__link{
+			text-transform: inherit;
+		}
+	}
+	.editor-rich-text{
+		.wp-block-cover-text, .wp-block-paragraph{
+			text-transform: inherit;
+		}
+	}
+	.wp-block-pullquote, .wp-block-quote{
+		.editor-rich-text__tinymce{
+			&, p {
+				text-transform: inherit;
+			}
+		}
+	}
+}
+
+.editor-block-list__block[data-custom-textcolor="1"]{
+	.wp-block-heading{
+		h1, h2, h3, h4, h5, h6{
+			color: inherit !important;
+		}
+	}
+}
+
+body{
+	.editor-block-list__block[data-custom-lineheight="1"]{
+		.wp-block-heading{
+			h1, h2, h3, h4, h5, h6{
+				line-height: inherit !important;
+			}
+		}
+		.wp-block-button{
+			.wp-block-button__link{
+				line-height: inherit;
+			}
+		}
+		.editor-rich-text{
+			p{
+				line-height: inherit !important;
+			}
+			.wp-block-cover-text{
+				font-family: inherit;
+			}
+		}
+		.editor-block-contextual-toolbar{
+			line-height: 0px;
+		}
+	}
+}

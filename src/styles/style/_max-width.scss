@@ -1,0 +1,32 @@
+// Utilities for controlling an element's padding and margin.
+.max-w {
+	// Mobile utilty classes.
+	@media (max-width: 699px) {
+
+		&-0 {
+			max-width: none !important;
+		}
+
+		@for $i from 1 through 20 {
+
+			&-#{ $i * 5 }--mobile {
+				max-width: #{ $i * 5 }em !important;
+			}
+		}
+	}
+
+	// Standard utility classes.
+	@media (min-width: 700px) {
+
+		&-0__mobile {
+			max-width: none !important;
+		}
+
+		@for $i from 1 through 20 {
+
+			&-#{ $i * 5 } {
+				max-width: #{ $i * 5 }em !important;
+			}
+		}
+	}
+}

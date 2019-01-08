@@ -1,0 +1,49 @@
+// Animation effect when a background image is uploaded
+@keyframes background_loading_fade {
+
+	0% {
+		opacity: 0.5;
+	}
+
+	50% {
+		opacity: 0.75;
+	}
+
+	100% {
+		opacity: 0.5;
+	}
+}
+
+@mixin background_loading_fade {
+	animation: background_loading_fade 1.6s ease-in-out infinite;
+}
+
+.is-background-image-transient > div {
+	z-index: 2;
+}
+
+.is-background-image-transient::after {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background: #fff;
+	content: "";
+	z-index: 1;
+	@include background_loading_fade;
+}
+
+.components-coblocks__toolbar-control--numerals {
+	display: inline-flex;
+
+	.components-button[data-subscript]::after {
+		bottom: 0.68em;
+		font-size: 17px;
+		right: 13px;
+	}
+
+	.components-button[data-subscript="1"]::after {
+		right: 14px;
+	}
+}

@@ -1,0 +1,13 @@
+.components-coblocks__toolbar-control--numerals {
+	display: inline-flex;
+
+	.components-button[data-subscript]::after {
+		bottom: 0.68em;
+		font-size: 17px;
+		right: 13px;
+	}
+
+	.components-button[data-subscript="1"]::after {
+		right: 14px;
+	}
+}

@@ -13,6 +13,28 @@ const category = {
 };
 
 /**
+ * Custom foreground icon color
+ */
+const iconColor = '#536DFF';
+
+/**
+ * Utility Editor and Frontend Styles
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
+
+/**
+ * Color Settings
+ */
+import './components/color-settings/inspector-control';
+
+/**
+ * Inspector Control
+ */
+import './components/inspector-control';
+
+
+/**
  * Register Blocks
  */
 import * as accordion from './blocks/accordion';

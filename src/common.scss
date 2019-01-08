@@ -1,12 +1,21 @@
 // Colors.
-$black: rgba(0, 0, 0, 0.8);
+$black: rgb(41, 41, 41);
+$black-000: #000;
+$gray: #555d66;
+$red: #d94f4f;
+$lightred: #f9e2e2;
+$lightgreen: #eff9f1;
+$darkgreen: #337f46;
+$darkred: #a00;
+$white: #fff;
 $lightgray: rgba(0, 0, 0, 0.15);
-$gray: rgba(0, 0, 0, 0.52);
-$twitter: #1da1f2;
 
 //Accordion.
 $accordion-border-radius: 4px;
 $accordion-background: #f0f0f0;
+
+// Social.
+$twitter: #1da1f2;
 
 // Gutenberg Vars.
 
@@ -102,6 +111,21 @@ $block-side-ui-padding: 36px;
 $block-side-ui-width: 28px; // The side UI max height matches a single line of text, 56px. 28px is half, allowing 2 mover arrows
 $block-side-ui-clearance: 2px;
 
+// Variables from core.
+$border-width: 1px;
+$break-small: 600px;
+$grid-size-large: 11px;
+
 // Buttons & UI Widgets
 $button-style__radius-roundrect: 4px;
 $button-style__radius-round: 50%;
+
+@mixin break-small() {
+	@media (min-width: #{ ($break-small) }) {
+		@content;
+	}
+}
+
+$gutter--small: 18px;
+$gutter--medium: 22px;
+$gutter--large: 33px;
