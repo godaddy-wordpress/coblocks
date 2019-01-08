@@ -7,9 +7,6 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import './styles/editor.scss';
-import TextPanelAttributes from './attributes';
-import TextPanelClasses from './classes';
-import TextTransforms from './transforms';
 import googleFonts from './../../components/font-family/fonts';
 import TypographyAttributes from './attributes';
 import TypograpyClasses from './classes';
@@ -54,7 +51,7 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 /**
  * Typography Component
  */
-class TypographyPanel extends Component {
+class TypographyControls extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -239,7 +236,7 @@ class TypographyPanel extends Component {
 										value={ parseFloat( letterSpacing ) || null }
 										onChange={ ( nextLetterSpacing ) => setAttributes( {  letterSpacing: nextLetterSpacing } ) }
 										min={ -1 }
-										max={ 3 }
+										max={ 3 }n
 										step={ .1 }
 										className="components-coblocks-typography-dropdown__inner--letter-spacing"
 									/> : null
@@ -269,4 +266,4 @@ class TypographyPanel extends Component {
 
 export default compose( [
 	applyFallbackStyles,
-] )( TypographyPanel );
+] )( TypographyControls );

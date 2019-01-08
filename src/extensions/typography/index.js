@@ -5,7 +5,7 @@ import './styles/editor.scss';
 import './styles/style.scss';
 import Controls from './controls';
 import applyStyle from './apply-style';
-import TypographyPanel, { TypographyAttributes } from '../../components/text-panel';
+import TypographyControls, { TypographyAttributes } from '../../components/typography-controls';
 
 /**
  * External Dependencies

@@ -2,7 +2,7 @@
 /**
  * Internal dependencies
  */
-import TypographyPanel, { TypographyAttributes, TypograpyClasses } from './../../components/text-panel';
+import TypographyControls, { TypographyAttributes, TypograpyClasses } from './../../components/typography-controls';
 
 /**
  * WordPress dependencies
@@ -48,7 +48,7 @@ class Controls extends Component {
 			<Fragment>
 				<BlockControls>
 					<Toolbar>
-						<TypographyPanel { ...this.props } />
+						<TypographyControls { ...this.props } />
 					</Toolbar>
 				</BlockControls>
 			</Fragment>
