@@ -24,7 +24,8 @@ const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InnerBlocks } = wp.editor;
-const { ResizableBox, ButtonGroup, Button, IconButton, Tooltip, Placeholder } = wp.components;
+const { ResizableBox, ButtonGroup, Button, IconButton, Tooltip, Placeholder, Spinner } = wp.components;
+const { isBlobURL } = wp.blob;
 
 /**
  * Allowed blocks constant is passed to InnerBlocks precisely as specified here.
@@ -279,8 +280,6 @@ class Edit extends Component {
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 				'has-margin': marginSize && marginSize != 'no',
 				[ `has-${ marginSize }-margin` ] : marginSize && marginSize != 'advanced',
-				'has-background': backgroundColor.color,
-				[ backgroundColor.class ]: backgroundColor.class,
 			}
 		);
 
@@ -315,6 +314,7 @@ class Edit extends Component {
 					style={ { color: textColor.color } }
 				>
 					<div className={ innerClasses } style={ innerStyles }>
+						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						<InnerBlocks
 							template={ TEMPLATE[ layout ] }
 							templateLock="all"

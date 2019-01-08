@@ -93,8 +93,6 @@ class Edit extends Component {
 				'has-margin': marginSize && marginSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 				[ `has-${ marginSize }-margin` ] : marginSize && marginSize != 'advanced',
-				'has-background': backgroundColor.color,
-				[ backgroundColor.class ]: backgroundColor.class,
 			}
 		);
 

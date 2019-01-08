@@ -21,7 +21,7 @@ function BackgroundClasses( attributes ) {
 		{ [ backgroundClass ]: backgroundClass },
 		{ 'has-parallax': attributes.backgroundImg && attributes.hasParallax },
 		{ 'has-background-image': attributes.backgroundImg },
-		{ 'is-background-image-transient': attributes.backgroundImg && 0 === attributes.backgroundImg.indexOf( 'blob:' ) },
+		{ 'is-transient': attributes.backgroundImg && 0 === attributes.backgroundImg.indexOf( 'blob:' ) },
 		{ [ `bg-${ attributes.backgroundRepeat }` ] : attributes.backgroundImg && attributes.backgroundRepeat },
 		{ [ `bg-${ attributes.backgroundPosition.split(' ').join('-') }` ] : attributes.backgroundImg && attributes.backgroundPosition },
 		{ [ `bg-${ backgroundSize }` ] : attributes.backgroundImg },
