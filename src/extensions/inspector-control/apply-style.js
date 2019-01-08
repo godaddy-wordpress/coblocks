@@ -25,8 +25,8 @@ function applyStyle( attributes, name ) {
 		style.color = attributes.customTextColor || null;
 	}
 
-	if( typeof attributes.customCoBlocksBackgroundColor !== 'undefined' ){
-		style.backgroundColor = attributes.customCoBlocksBackgroundColor || null;
+	if( typeof attributes.customBackgroundColor !== 'undefined' ){
+		style.backgroundColor = attributes.customBackgroundColor || null;
 	}
 
 	if( name == 'coblocks/column' && typeof attributes.width !== 'undefined' ){

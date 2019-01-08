@@ -9,7 +9,7 @@ const ColorSettingsAttributes = {
 	customTextColor: {
 		type: 'string',
 	},
-	customCoBlocksBackgroundColor: {
+	customBackgroundColor: {
 		type: 'string',
 	},
 };

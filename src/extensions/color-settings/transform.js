@@ -6,7 +6,7 @@ function ColorTransforms( props ) {
 
 	const transforms = {
 		textColor: props.textColor,
-		customCoBlocksBackgroundColor: props.customCoBlocksBackgroundColor,
+		customBackgroundColor: props.customBackgroundColor,
 	};
 
 	return transforms;

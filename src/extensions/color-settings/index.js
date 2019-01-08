@@ -38,7 +38,7 @@ function ColorSettings( props, options ) {
 
 	const {
 		customTextColor,
-		customCoBlocksBackgroundColor,
+		customBackgroundColor,
 	} = attributes;
 
 	return [
@@ -49,8 +49,8 @@ function ColorSettings( props, options ) {
 				initialOpen={ false }
 				colorSettings={ [
 					{
-						value: customCoBlocksBackgroundColor,
-						onChange: ( nextcustomBackgroundColor ) => setAttributes( {  customCoBlocksBackgroundColor: nextcustomBackgroundColor } ),
+						value: customBackgroundColor,
+						onChange: ( nextcustomBackgroundColor ) => setAttributes( {  customBackgroundColor: nextcustomBackgroundColor } ),
 						label: __( 'Background Colssor' ),
 					},
 					{
