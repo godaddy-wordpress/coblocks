@@ -1,10 +1,6 @@
-// Background classes
+// Background
 @import "style/background-classes";
-
-// Background overlay
 @import "style/background-overlay";
-
-// Background parallax
 @import "style/background-parallax";
 
 // Editor formatting
@@ -14,7 +10,3 @@
 @import "style/padding";
 @import "style/margin";
 @import "style/max-width";
-
-.has-shadow {
-	box-shadow: 0 1.5vw 3vw -0.7vw rgba(0, 0, 0, 0.125);
-}
