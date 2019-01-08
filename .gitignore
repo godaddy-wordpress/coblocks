@@ -10,10 +10,7 @@ dist/**
 sftp.json
 .github/
 .github/issue_template.md
-
 dist/blocks.build.js
-
 dist/blocks.editor.build.css
-
 dist/blocks.style.build.css
-src/.DS_Store
+.DS_Store
