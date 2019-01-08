@@ -35,6 +35,10 @@ CoBlocks is the last page builder you’ll ever need. With tens of custom blocks
 * Social Block
 
 
+## Deploy Custom Typography
+The breakthrough Typography Controls panel lets you design typography to your hearts content. Set fonts, sizes, weights, transformations and more, within <strong>core blocks</strong> and CoBlocks blocks.
+
+
 ## Breakthrough Block System
 CoBlocks features an innovative approach that allows you to make stunning web pages, and even entire websites with ease. Use our exceptional Row and Columns blocks to add dynamically generated content areas with specific responsive-controlled margin and padding tweaks that only CoBlocks can provide.
 
