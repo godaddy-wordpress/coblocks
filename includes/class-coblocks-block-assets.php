@@ -1,6 +1,6 @@
 <?php
 /**
- * Load @@pkg.title block assets.
+ * Load assets for our blocks.
  *
  * @package   @@pkg.title
  * @author    @@pkg.author
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Load @@pkg.title block assets.
+ * Load general assets for our blocks.
  *
  * @since 1.0.0
  */
@@ -311,10 +311,12 @@ class CoBlocks_Block_Assets {
 		global $post;
 
 		if ( $post && isset( $post->ID ) ) {
+
 			$meta    = get_post_meta( $post->ID, '_coblocks_dimensions', true );
 			$desktop = array();
 			$tablet  = array();
 			$mobile  = array();
+
 			if ( $meta ) {
 				$meta = json_decode( $meta );
 				if ( ! empty( $meta ) ) {
