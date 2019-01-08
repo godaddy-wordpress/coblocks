@@ -53,26 +53,4 @@ class CoBlocks_URL_Generator {
 	}
 }
 
-/**
- * The main function for that returns CoBlocks_URL_Generator
- *
- * The main function responsible for returning the one true CoBlocks_URL_Generator
- *
- * Use this function like you would a global variable, except without needing
- * to declare the global.
- *
- * Example: <?php $coblocks_url_generator = CoBlocks_URL_Generator(); ?>
- *
- * @since 1.0.0
- * @return object|CoBlocks_URL_Generator
- */
-function coblocks_url_generator() {
-	return new CoBlocks_URL_Generator();
-}
-
-// Get the plugin running. Load on plugins_loaded action to avoid issue on multisite.
-if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-	add_action( 'plugins_loaded', 'coblocks_url_generator', 90 );
-} else {
-	coblocks_url_generator();
-}
+return new CoBlocks_URL_Generator();

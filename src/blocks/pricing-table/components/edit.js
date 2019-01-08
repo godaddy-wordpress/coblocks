@@ -72,12 +72,16 @@ class Edit extends Component {
 
 		return [
 			<Fragment>
-				<Controls
-					{ ...this.props }
-				/>
-				<Inspector
-					{ ...this.props }
-				/>
+				{ isSelected && (
+					<Controls
+						{ ...this.props }
+					/>
+				) }
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
 				<div
 					className={ classes }
 					style={ { textAlign: contentAlign } }

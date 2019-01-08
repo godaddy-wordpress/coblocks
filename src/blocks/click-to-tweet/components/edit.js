@@ -61,6 +61,7 @@ class Edit extends Component {
 			fallbackTextColor,
 			fallbackFontSize,
 			fontSize,
+			onReplace,
 		} = this.props;
 
 		const {
@@ -73,12 +74,16 @@ class Edit extends Component {
 
 		return [
 			<Fragment>
-				<Controls
-					{ ...this.props }
-				/>
-				<Inspector
-					{ ...this.props }
-				/>
+				{ isSelected && (
+					<Controls
+						{ ...this.props }
+					/>
+				) }
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
 				<blockquote className={ className } style={ { textAlign: textAlign } }>
 					<RichText
 						tagName="p"
@@ -100,6 +105,13 @@ class Edit extends Component {
 						} }
 						onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
 						keepPlaceholderOnFocus
+						onRemove={ ( forward ) => {
+							const hasEmptyTweet = content.length === 0 || content.length === 1;
+
+							if ( ! forward && hasEmptyTweet ) {
+								onReplace( [] );
+							}
+						} }
 					/>
 					<RichText
 						tagName="span"

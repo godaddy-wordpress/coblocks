@@ -24,7 +24,6 @@ class Inspector extends Component {
 
 		const {
 			attributes,
-			isSelected,
 			setAttributes
 		} = this.props;
 
@@ -33,20 +32,18 @@ class Inspector extends Component {
 		} = attributes;
 
 		return (
-			isSelected && (
-				<Fragment>
-					<InspectorControls>
-						<PanelBody title={ __( 'Gif Settings' ) }>
-							<TextareaControl
-								label={ __( 'Alt Text (Alternative Text)' ) }
-								value={ alt }
-								onChange={ this.updateAlt }
-								help={ __( 'Describe the purpose of the image. Leave empty if the image is not a key part of the content.' ) }
-							/>
-						</PanelBody>
-					</InspectorControls>
-				</Fragment>
-			)
+			<Fragment>
+				<InspectorControls>
+					<PanelBody title={ __( 'Gif Settings' ) }>
+						<TextareaControl
+							label={ __( 'Alt Text (Alternative Text)' ) }
+							value={ alt }
+							onChange={ this.updateAlt }
+							help={ __( 'Describe the purpose of the image. Leave empty if the image is not a key part of the content.' ) }
+						/>
+					</PanelBody>
+				</InspectorControls>
+			</Fragment>
 		);
 	}
 };

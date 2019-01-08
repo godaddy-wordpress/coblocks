@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import applyWithColors from './colors';
 import Inspector from './inspector';
-import icons from './../../../utils/icons';
+import icons from './../../../../utils/icons';
 
 /**
  * WordPress dependencies
@@ -47,10 +47,10 @@ class Edit extends Component {
 			isSelected,
 			setAttributes,
 			setState,
-			setTableBackground,
-			setTableColor,
-			tableBackground,
-			tableColor,
+			setBackgroundColor,
+			setTextColor,
+			backgroundColor,
+			textColor,
 		} = this.props;
 
 		const {
@@ -72,15 +72,15 @@ class Edit extends Component {
 				<div
 					className={ classnames(
 						className, {
-							'has-background': tableBackground.color,
-							'has-text-color': tableColor.color,
-							[ tableBackground.class ]: tableBackground.class,
-							[ tableColor.class ]: tableColor.class,
+							'has-background': backgroundColor.color,
+							'has-text-color': textColor.color,
+							[ backgroundColor.class ]: backgroundColor.class,
+							[ textColor.class ]: textColor.class,
 						}
 					) }
 					style={ {
-						backgroundColor: tableBackground.color,
-						color: tableColor.color,
+						backgroundColor: backgroundColor.color,
+						color: textColor.color,
 					} }
 				>
 					<RichText

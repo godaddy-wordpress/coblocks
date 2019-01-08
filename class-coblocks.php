@@ -65,6 +65,33 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		}
 
 		/**
+		 * Throw error on object clone.
+		 *
+		 * The whole idea of the singleton design pattern is that there is a single
+		 * object therefore, we don't want the object to be cloned.
+		 *
+		 * @since 1.0.0
+		 * @access protected
+		 * @return void
+		 */
+		public function __clone() {
+			// Cloning instances of the class is forbidden.
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
+		}
+
+		/**
+		 * Disable unserializing of the class.
+		 *
+		 * @since 1.0.0
+		 * @access protected
+		 * @return void
+		 */
+		public function __wakeup() {
+			// Unserializing instances of the class is forbidden.
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
+		}
+
+		/**
 		 * Setup plugin constants.
 		 *
 		 * @access private
@@ -78,7 +105,9 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			$this->define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 			$this->define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 			$this->define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
+			$this->define( 'COBLOCKS_PLUGIN_BASE', plugin_basename( __FILE__ ) );
 			$this->define( 'COBLOCKS_SHOP_URL', 'https://coblocks.com/' );
+			$this->define( 'COBLOCKS_REVIEW_URL', 'https://wordpress.org/support/plugin/coblocks/reviews/' );
 		}
 
 		/**
@@ -106,7 +135,8 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';
-				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-notices.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-footer.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-feedback.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-styles.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-url-generator.php';
@@ -202,7 +232,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @return void
 		 */
 		public function load_textdomain() {
-			load_plugin_textdomain( '@@textdomain', false, dirname( plugin_basename( untrailingslashit( plugin_dir_path( '/', __FILE__ ) ) ) ) . '/languages/' );
+			load_plugin_textdomain( '@@textdomain', false, dirname( plugin_basename( COBLOCKS_PLUGIN_DIR ) ) . '/languages/' );
 		}
 	}
 endif;

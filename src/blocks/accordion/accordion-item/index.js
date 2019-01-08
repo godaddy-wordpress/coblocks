@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import './styles/editor.scss';
 import './styles/style.scss';
 import Edit from './components/edit';
-import icons from './../../utils/icons';
+import icons from './../../../utils/icons';
 
 /**
  * WordPress dependencies
@@ -64,10 +64,6 @@ const settings = {
 
 	description: __( 'Add an accordion item.' ),
 
-	icon: {
-		src: icon,
-	},
-
 	keywords: keywords,
 
 	parent: [ 'coblocks/accordion' ],
@@ -75,6 +71,7 @@ const settings = {
 	supports: {
 		reusable: false,
 		html: false,
+		inserter: false,
 	},
 
 	attributes: blockAttributes,

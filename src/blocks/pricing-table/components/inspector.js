@@ -18,7 +18,6 @@ class Inspector extends Component {
 	render() {
 
 		const {
-			isSelected,
 			attributes,
 			setAttributes,
 		} = this.props;
@@ -28,25 +27,23 @@ class Inspector extends Component {
 		} = attributes;
 
 		return (
-			isSelected && (
-				<Fragment>
-					<InspectorControls>
-						<PanelBody title={ __( 'Pricing Table Settings' ) } className='coblocks__inspector-block-settings-panel-body'>
-							<RangeControl
-								label={ __( 'Tables' ) }
-								value={ count }
-								onChange={ ( nextCount ) => {
-									setAttributes( {
-										count: nextCount,
-									} );
-								} }
-								min={ 1 }
-								max={ 4 }
-							/>
-						</PanelBody>
-					</InspectorControls>
-				</Fragment>
-			)
+			<Fragment>
+				<InspectorControls>
+					<PanelBody title={ __( 'Pricing Table Settings' ) } className='coblocks__inspector-block-settings-panel-body'>
+						<RangeControl
+							label={ __( 'Tables' ) }
+							value={ count }
+							onChange={ ( nextCount ) => {
+								setAttributes( {
+									count: nextCount,
+								} );
+							} }
+							min={ 1 }
+							max={ 4 }
+						/>
+					</PanelBody>
+				</InspectorControls>
+			</Fragment>
 		);
 	}
 };

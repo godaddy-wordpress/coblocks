@@ -51,37 +51,35 @@ class Inspector extends Component {
 		} = this.props;
 
 		return (
-			isSelected && (
-				<Fragment>
-					<InspectorControls>
-						<PanelColorSettings
-							title={ __( 'Color Settings' ) }
-							colorSettings={ [
-								{
-									value: backgroundColor.color,
-									onChange: setBackgroundColor,
-									label: __( 'Background Color' ),
-								},
-								{
-									value: textColor.color,
-									onChange: setTextColor,
-									label: __( 'Text Color' ),
-								},
-							] }
-						>
-							<ContrastChecker
-								{ ...{
-									isLargeText: false,
-									textColor: textColor.color,
-									backgroundColor: backgroundColor.color,
-									fallbackBackgroundColor,
-									fallbackTextColor,
-								} }
-							/>
-						</PanelColorSettings>
-					</InspectorControls>
-				</Fragment>
-			)
+			<Fragment>
+				<InspectorControls>
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
+						colorSettings={ [
+							{
+								value: backgroundColor.color,
+								onChange: setBackgroundColor,
+								label: __( 'Background Color' ),
+							},
+							{
+								value: textColor.color,
+								onChange: setTextColor,
+								label: __( 'Text Color' ),
+							},
+						] }
+					>
+						<ContrastChecker
+							{ ...{
+								isLargeText: false,
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackBackgroundColor,
+								fallbackTextColor,
+							} }
+						/>
+					</PanelColorSettings>
+				</InspectorControls>
+			</Fragment>
 		);
 	}
 };

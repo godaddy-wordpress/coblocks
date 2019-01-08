@@ -39,10 +39,6 @@ const settings = {
 
 	description: __( 'Add an accordion.' ),
 
-	icon: {
-		src: icon,
-	},
-
 	keywords: keywords,
 
 	supports: {

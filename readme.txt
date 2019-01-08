@@ -1,4 +1,4 @@
-=== CoBlocks -  Page Builder Blocks for Gutenberg ===
+=== CoBlocks - Page Builder Blocks for Gutenberg ===
 Author URI: https://coblocks.com
 Plugin URI: https://coblocks.com
 Contributors: coblocks, richtabor, phpbits
@@ -92,6 +92,13 @@ Yes! CoBlock's core features are absolutely free.
 Please reach out via the official [support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+= 1.5.3, January 04, 2019 =
+* Fix: Resolve isSelected styles issue with the Dynamic HR block
+
+= 1.5.2, January 01, 2019 =
+* New: Add support for column blocks to the Accordion Item
+* Fix: Resolve editor conflict when changing social block styles
 
 = 1.5.1, December 05, 2018 =
 * Tweak: Remove check for Gutenberg

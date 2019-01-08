@@ -249,7 +249,7 @@ class CoBlocks_Block_Assets {
 						$gfonts .= str_replace( ' ', '+', trim( $font ) ) . $gfonts_attr . '|';
 					}
 				}
-				
+
 				if ( ! empty( $gfonts ) ) {
 					$query_args = array(
 						'family' => $gfonts,
@@ -330,63 +330,61 @@ class CoBlocks_Block_Assets {
 		global $post;
 
 		if ( $post && isset( $post->ID ) ) {
-			$meta = get_post_meta( $post->ID, '_coblocks_dimensions', true );
+			$meta    = get_post_meta( $post->ID, '_coblocks_dimensions', true );
 			$desktop = array();
-			$tablet = array();
-			$mobile = array();
-			if( $meta ){
+			$tablet  = array();
+			$mobile  = array();
+			if ( $meta ) {
 				$meta = json_decode( $meta );
-				if( !empty( $meta ) ){
+				if ( ! empty( $meta ) ) {
 					echo '<!-- CoBlocks Styles -->';
 					echo '<style>';
 					foreach ( $meta as $k => $block ) {
-						echo '.' . $k . ' > div{';
-						if( !empty( $block ) ){
+						echo '.' . $k . ' > div {';
+						if ( ! empty( $block ) ) {
 							foreach ( $block as $key => $style ) {
-								if( !empty( $style ) ){
+								if ( ! empty( $style ) ) {
 									foreach ( $style as $ky => $value ) {
-										if( strpos( $ky, 'Mobile' ) !== false) {
-											$mobile[] = strtolower( preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Mobile', '', $ky ) ) ). ':' . $value .';';
-										}else if( strpos( $ky, 'Tablet' ) !== false){
-											$tablet[] = strtolower( preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Tablet', '', $ky ) ) ). ':' . $value .';';
-										}else{
-											echo strtolower( preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $ky) ). ':' . $value .';';
+										if ( strpos( $ky, 'Mobile' ) !== false ) {
+											$mobile[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Mobile', '', $ky ) ) ) . ':' . $value . ';';
+										} elseif ( strpos( $ky, 'Tablet' ) !== false ) {
+											$tablet[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Tablet', '', $ky ) ) ) . ':' . $value . ';';
+										} else {
+											echo strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', $ky ) ) . ':' . $value . ';';
 										}
-										
 									}
 								}
 							}
 						}
 						echo '}';
 
-						if( !empty( $tablet ) ){
-							echo '@media (max-width: '. apply_filters( 'coblocks_tablet_breakpoint', '768px' ) .') {';
+						if ( ! empty( $tablet ) ) {
+							echo '@media (max-width: ' . apply_filters( 'coblocks_tablet_breakpoint', '768px' ) . ') {';
 								echo '.' . $k . ' > div{';
-									foreach ( $tablet as $tab ) {
-										echo $tab;
-									}
+							foreach ( $tablet as $tab ) {
+								echo $tab;
+							}
 								echo '}';
 							echo '}';
 						}
 
-						if( !empty( $mobile ) ){
-							echo '@media (max-width: '. apply_filters( 'coblocks_desktop_breakpoint', '514px' ) .') {';
+						if ( ! empty( $mobile ) ) {
+							echo '@media (max-width: ' . apply_filters( 'coblocks_desktop_breakpoint', '514px' ) . ') {';
 								echo '.' . $k . ' > div{';
-									foreach ( $mobile as $mobi ) {
-										echo $mobi;
-									}
+							foreach ( $mobile as $mobi ) {
+								echo $mobi;
+							}
 								echo '}';
 							echo '}';
 						}
 
-						//reset media queries
+						// Reset media queries.
 						$tablet = array();
 						$mobile = array();
 					}
 					echo '</style><!-- End CoBlocks Styles -->';
 				}
 			}
-			
 		}
 	}
 }

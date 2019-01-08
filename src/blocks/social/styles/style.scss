@@ -82,7 +82,7 @@ $icons: ( twitter, #55acee ), ( facebook, #3b5999 ), ( pinterest, #bd081c ), ( l
 	@each $icon, $color in $icons {
 
 		&__button--#{$icon} &__icon {
-			mask-image: url(images/#{$icon}.svg);
+			mask-image: url(images/social/#{$icon}.svg);
 		}
 	}
 

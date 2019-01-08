@@ -55,7 +55,6 @@ class Inspector extends Component {
 			setAttributes,
 			backgroundColor,
 			textColor,
-			isSelected,
 			fallbackBackgroundColor,
 			fallbackTextColor,
 			setBackgroundColor,
@@ -67,45 +66,43 @@ class Inspector extends Component {
 		} = attributes;
 
 		return (
-			isSelected && (
-				<Fragment>
-					<InspectorControls>
-						<PanelBody title={ __( 'Accordion Item Settings' ) }>
-							<ToggleControl
-								label={ __( 'Display Open' ) }
-								checked={ !! open }
-								help={ this.getDisplayOpenHelp }
-								onChange={ () => setAttributes( {  open: ! open } ) }
-							/>
-						</PanelBody>
-						<PanelColorSettings
-							title={ __( 'Color Settings' ) }
-							initialOpen={ false }
-							colorSettings={ [
-								{
-									value: backgroundColor.color,
-									onChange: this.setBorderColor(),
-									label: __( 'Background Color' ),
-								},
-								{
-									value: textColor.color,
-									onChange: setTextColor,
-									label: __( 'Title Text Color' ),
-								},
-							] }
-						>
-						<ContrastChecker
-							{ ...{
-								textColor: textColor.color,
-								backgroundColor: backgroundColor.color,
-								fallbackTextColor,
-								fallbackBackgroundColor,
-							} }
+			<Fragment>
+				<InspectorControls>
+					<PanelBody title={ __( 'Accordion Item Settings' ) }>
+						<ToggleControl
+							label={ __( 'Display Open' ) }
+							checked={ !! open }
+							help={ this.getDisplayOpenHelp }
+							onChange={ () => setAttributes( {  open: ! open } ) }
 						/>
-						</PanelColorSettings>
-					</InspectorControls>
-				</Fragment>
-			)
+					</PanelBody>
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: backgroundColor.color,
+								onChange: this.setBorderColor(),
+								label: __( 'Background Color' ),
+							},
+							{
+								value: textColor.color,
+								onChange: setTextColor,
+								label: __( 'Title Text Color' ),
+							},
+						] }
+					>
+					<ContrastChecker
+						{ ...{
+							textColor: textColor.color,
+							backgroundColor: backgroundColor.color,
+							fallbackTextColor,
+							fallbackBackgroundColor,
+						} }
+					/>
+					</PanelColorSettings>
+				</InspectorControls>
+			</Fragment>
 		);
 	}
 };

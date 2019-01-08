@@ -50,10 +50,6 @@ const settings = {
 
 	description: __( 'Add pricing tables.' ),
 
-	icon: {
-		src: icon,
-	},
-
 	keywords: keywords,
 
 	attributes: blockAttributes,

@@ -130,12 +130,16 @@ class Edit extends Component {
 		if ( url ) {
 			return [
 				<Fragment>
-					<Controls
-						{ ...this.props }
-					/>
-					<Inspector
-						{ ...this.props }
-					/>
+					{ isSelected && (
+						<Controls
+							{ ...this.props }
+						/>
+					) }
+					{ isSelected && (
+						<Inspector
+							{ ...this.props }
+						/>
+					) }
 					<figure key="image" className={ classes }>
 						<Size src={ url } dirtynessTrigger={ align }>
 							{ ( sizes ) => {

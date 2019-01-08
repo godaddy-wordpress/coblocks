@@ -8,8 +8,8 @@ const { withColors } = wp.editor;
  */
 const applyWithColors = withColors(
 	'backgroundColor',
-	{ tableBackground: 'background-color' },
-	{ tableColor: 'color' },
+	{ backgroundColor: 'background-color' },
+	{ textColor: 'color' },
 );
 
 export default applyWithColors;
