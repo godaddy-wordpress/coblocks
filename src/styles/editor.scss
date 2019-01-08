@@ -1,6 +1,7 @@
 @import "../common";
 
 // Style Core Gutenberg Style Previews
+@import "editor/icons";
 @import "editor/style-previews";
 
 // Style various inspector region and block toolbar controls
@@ -14,68 +15,9 @@
 // Style Components
 @import "editor/resizable-spacer";
 
-// Misc (still to be organized)
-.components-coblocks__inspector-control--custom-colorpalette-label {
-	margin-top: 20px !important;
-	margin-bottom: 10px;
-}
-
-.components-coblocks__inspector-custom-control--colorpalette .components-color-palette__clear {
-	float: none !important;
-}
-
-.components-coblocks__inspector-control--heading-toolbar-label {
-	margin-bottom: 17px;
-}
-
-.components-coblocks__inspector--button-panel {
-
-	.components-font-size-picker__buttons {
-		display: none;
-	}
-}
-
 .coblocks__button {
 
 	&.editor-rich-text__tinymce.wp-coblocks__button {
 		line-height: 1.8;
 	}
 }
-
-.components-coblocks-inspector__background-remove-button {
-	justify-content: center;
-	line-height: 26px;
-	width: 100%;
-	display: none;
-}
-
-.coblocks-logo--svg {
-	color: #536dff;
-	position: relative;
-
-	&.components-panel__icon {
-		margin-left: 7px;
-		top: 1px;
-	}
-}
-
-
-// Style our custom colored icons like the default icons.
-.coblocks__svg {
-
-	.components-panel &,
-	.components-toolbar &,
-	.editor-block-navigation__item & {
-		color: #555d66;
-	}
-}
-
-.editor-block-icon.has-colors::after {
-	color: #555d66;
-}
-
-.edit-post-pinned-plugins .components-icon-button svg.coblocks-logo--svg--sidebar,
-.edit-post-pinned-plugins .components-icon-button svg.coblocks-logo--svg--sidebar * {
-	stroke: none !important;
-}
-
