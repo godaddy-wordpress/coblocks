@@ -40,7 +40,7 @@ class Controls extends Component {
 						className="coblocks__toolbar--numeral"
 						controls={ '123'.split( '' ).map( ( number ) => ( {
 							icon: icons.blank,
-							// translators: %s: tables count e.g: "1", "2", "3"
+							/* translators: %s: number of tables */
 							title: sprintf( __( '%s Tables' ), number ),
 							isActive: count == number,
 							subscript: number,
