@@ -140,32 +140,32 @@ class DimensionsControl extends Component {
 			let id = this.props.name.split('/').join('-') + '-' + this.props.attributes.coblocks.id;
 			let paddingUnit = block.attributes.paddingUnit;
 			let marginUnit = block.attributes.marginUnit;
-			let padding = {  
-				paddingTop: block.attributes.paddingTop + paddingUnit, 
-				paddingRight: block.attributes.paddingRight + paddingUnit, 
-				paddingBottom: block.attributes.paddingBottom + paddingUnit, 
-				paddingLeft: block.attributes.paddingLeft + paddingUnit, 
-				paddingTopTablet: block.attributes.paddingTopTablet + paddingUnit, 
-				paddingRightTablet: block.attributes.paddingRightTablet + paddingUnit, 
-				paddingBottomTablet: block.attributes.paddingBottomTablet + paddingUnit, 
-				paddingLeftTablet: block.attributes.paddingLeftTablet + paddingUnit, 
-				paddingTopMobile: block.attributes.paddingTopMobile + paddingUnit, 
-				paddingRightMobile: block.attributes.paddingRightMobile + paddingUnit, 
-				paddingBottomMobile: block.attributes.paddingBottomMobile + paddingUnit, 
-				paddingLeftMobile: block.attributes.paddingLeftMobile + paddingUnit, 
+			let padding = {
+				paddingTop: block.attributes.paddingTop + paddingUnit,
+				paddingRight: block.attributes.paddingRight + paddingUnit,
+				paddingBottom: block.attributes.paddingBottom + paddingUnit,
+				paddingLeft: block.attributes.paddingLeft + paddingUnit,
+				paddingTopTablet: block.attributes.paddingTopTablet + paddingUnit,
+				paddingRightTablet: block.attributes.paddingRightTablet + paddingUnit,
+				paddingBottomTablet: block.attributes.paddingBottomTablet + paddingUnit,
+				paddingLeftTablet: block.attributes.paddingLeftTablet + paddingUnit,
+				paddingTopMobile: block.attributes.paddingTopMobile + paddingUnit,
+				paddingRightMobile: block.attributes.paddingRightMobile + paddingUnit,
+				paddingBottomMobile: block.attributes.paddingBottomMobile + paddingUnit,
+				paddingLeftMobile: block.attributes.paddingLeftMobile + paddingUnit,
 			};
-			let margin = { 
-				marginTop: block.attributes.marginTop + marginUnit, 
-				marginRight: block.attributes.marginRight + marginUnit, 
-				marginBottom: block.attributes.marginBottom + marginUnit, 
+			let margin = {
+				marginTop: block.attributes.marginTop + marginUnit,
+				marginRight: block.attributes.marginRight + marginUnit,
+				marginBottom: block.attributes.marginBottom + marginUnit,
 				marginLeft: block.attributes.marginLeft + marginUnit,
-				marginTopTablet: block.attributes.marginTopTablet + marginUnit, 
-				marginRightTablet: block.attributes.marginRightTablet + marginUnit, 
-				marginBottomTablet: block.attributes.marginBottomTablet + marginUnit, 
+				marginTopTablet: block.attributes.marginTopTablet + marginUnit,
+				marginRightTablet: block.attributes.marginRightTablet + marginUnit,
+				marginBottomTablet: block.attributes.marginBottomTablet + marginUnit,
 				marginLeftTablet: block.attributes.marginLeftTablet + marginUnit,
-				marginTopMobile: block.attributes.marginTopMobile + marginUnit, 
-				marginRightMobile: block.attributes.marginRightMobile + marginUnit, 
-				marginBottomMobile: block.attributes.marginBottomMobile + marginUnit, 
+				marginTopMobile: block.attributes.marginTopMobile + marginUnit,
+				marginRightMobile: block.attributes.marginRightMobile + marginUnit,
+				marginBottomMobile: block.attributes.marginBottomMobile + marginUnit,
 				marginLeftMobile: block.attributes.marginLeftMobile + marginUnit,
 			};
 
@@ -255,7 +255,7 @@ class DimensionsControl extends Component {
 			if( typeof event.target.getAttribute('data-device-type') !== 'undefined' && typeof event.target.getAttribute('data-device-type') !== 'null' ){
 				device = event.target.getAttribute('data-device-type');
 			}
-			
+
 			if  ( this.props[ 'syncUnits' + device ] ) {
 				this.onChangeAll( Number( newValue ), device );
 			} else {
@@ -377,7 +377,7 @@ class DimensionsControl extends Component {
 				break;
 			}
 
-			//reset z-index
+			//Reset z-index
 			const buttons = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type }`);
 
 			for(var i = 0; i < buttons.length; i++) {
@@ -391,7 +391,7 @@ class DimensionsControl extends Component {
 				button[0].style.display = 'block';
 			}
 		};
-		
+
 		return (
 			<Fragment>
 				<div className={ classes }>

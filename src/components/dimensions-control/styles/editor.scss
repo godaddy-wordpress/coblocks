@@ -3,22 +3,22 @@
 
 	&__mobile-controls-item {
 		background: #fff;
-		border-radius: 3px;
-		border: 1px solid #e2e4e7;
+		border: 1px solid #8d96a0;
+		border-radius: 4px 0 0 4px;
 		box-shadow: none;
 		color: $dark-gray-500;
 		display: none;
 		font-size: 10px;
-		height: 22px;
+		height: 30px;
 		justify-content: center;
+		left: 0;
 		line-height: 20px;
 		padding: 0;
 		position: absolute;
-		right: 114px;
 		text-align: center;
 		text-shadow: none;
-		top: -3px;
-		width: 22px;
+		top: 23px;
+		width: 26px;
 		z-index: 1;
 
 		&.is-active {
@@ -26,8 +26,8 @@
 		}
 
 		&:hover {
-			color: #191e23;
 			border-color: $dark-gray-500;
+			color: #191e23;
 		}
 
 		&:focus:enabled {
@@ -41,20 +41,20 @@
 		}
 
 		&--default svg {
-			top: 2px;
+			top: 3px;
 		}
+
 		&--desktop svg {
-			top: 2px;
+			top: 3px;
 		}
 
 		&--tablet svg {
-			top: 2px;
+			top: 3px;
 		}
 
 		&--mobile svg {
-			top: 2px;
+			top: 3px;
 		}
-
 	}
 
 	.edit-post-settings-sidebar__panel-block & {
@@ -78,17 +78,16 @@
 		display: flex;
 	}
 
+	&__inputs {
+		margin-left: 25px;
+	}
+
 	input[type="number"].components-coblocks-dimensions-control__number {
 		border-radius: 0;
-		padding-right: 1px;
-		margin: 0 -1px 0 0;
-		width: 25%;
 		height: 30px;
-
-		&:first-of-type {
-			border-top-left-radius: 4px;
-			border-bottom-left-radius: 4px;
-		}
+		margin: 0 -1px 0 0;
+		padding-right: 1px;
+		width: 25%;
 
 		&:focus {
 			z-index: 1;
@@ -97,23 +96,23 @@
 
 	&__input-labels {
 		display: flex;
+		margin-left: 26px; // Same value as &__inputs + 1
 
 		span {
-			width: 25%;
 			text-align: center;
+			width: 25%;
 
 			&:last-of-type {
 				width: 30px;
 			}
 		}
-
 	}
 
 	&__number-label {
 		display: block;
 		font-size: 11px;
-		margin-top: 3px;
 		margin-bottom: 1px;
+		margin-top: 3px;
 		opacity: 0.66;
 	}
 
@@ -122,8 +121,8 @@
 	}
 
 	&__header {
-		margin-bottom: 1px;
 		justify-content: space-between;
+		margin-bottom: 1px;
 	}
 
 	&__actions {
@@ -141,6 +140,10 @@
 	}
 
 	.components-coblocks-dimensions-control__header .components-color-palette__clear {
+		background: #fff;
+		border: 1px solid #e2e4e7;
+		box-shadow: none;
+		color: $dark-gray-500;
 		height: 22px;
 		line-height: 20px;
 		margin-left: 12px;
@@ -148,26 +151,21 @@
 		padding-right: 6px;
 		position: relative;
 		top: -1px;
-		border: 1px solid #e2e4e7;
-		color: $dark-gray-500;
-		box-shadow: none;
-		background: #fff;
 
 		&:hover {
-			color: #191e23;
 			border-color: $dark-gray-500;
+			color: #191e23;
 		}
 
 		&:focus {
-			outline-offset: -2px;
 			background: #fff;
-			outline: 2px solid transparent;
 			box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
+			outline-offset: -2px;
+			outline: 2px solid transparent;
 		}
 	}
 
 	&__units {
-
 		.components-button {
 			background: #fff;
 			border-color: #e2e4e7;
