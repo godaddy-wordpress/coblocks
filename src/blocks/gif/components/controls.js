@@ -24,7 +24,6 @@ class Controls extends Component {
 
 		const {
 			attributes,
-			isSelected,
 			setAttributes
 		} = this.props;
 
@@ -34,26 +33,24 @@ class Controls extends Component {
 		} = attributes;
 
 		return (
-			isSelected && (
-				<Fragment>
-					<BlockControls>
-						<BlockAlignmentToolbar
-							value={ align }
-							onChange={ this.updateAlignment }
-						/>
-						<Toolbar>
-							{ url &&
-								<IconButton
-									className="components-toolbar__control"
-									label={ __( 'Remove gif' ) }
-									icon="trash"
-									onClick={ () => setAttributes( { url: '', width: '', height: '', } ) }
-								/>
-							}
-						</Toolbar>
-					</BlockControls>
-				</Fragment>
-			)
+			<Fragment>
+				<BlockControls>
+					<BlockAlignmentToolbar
+						value={ align }
+						onChange={ this.updateAlignment }
+					/>
+					<Toolbar>
+						{ url &&
+							<IconButton
+								className="components-toolbar__control"
+								label={ __( 'Remove gif' ) }
+								icon="trash"
+								onClick={ () => setAttributes( { url: '', width: '', height: '', } ) }
+							/>
+						}
+					</Toolbar>
+				</BlockControls>
+			</Fragment>
 		);
 	}
 };

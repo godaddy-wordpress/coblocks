@@ -69,10 +69,6 @@ const settings = {
 
 	description: __( 'Pick a gif, any gif.' ),
 
-	icon: {
-		src: icon,
-	},
-
 	keywords: keywords,
 
 	attributes: blockAttributes,
