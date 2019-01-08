@@ -41,7 +41,7 @@ class CoBlocks_Footer_Assets {
 	 * The Constructor.
 	 */
 	private function __construct() {
-		add_action( 'wp_footer', array( $this, 'footer_assets' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 	}
 
 	/**
@@ -49,7 +49,16 @@ class CoBlocks_Footer_Assets {
 	 *
 	 * @access public
 	 */
-	public function footer_assets() {
+	public function enqueue_styles() {
+		wp_add_inline_style( 'coblocks-frontend', $this->styles() );
+	}
+
+	/**
+	 * Footer Styling
+	 *
+	 * @access public
+	 */
+	public function styles() {
 		global $post;
 
 		if ( $post && isset( $post->ID ) ) {
@@ -65,8 +74,7 @@ class CoBlocks_Footer_Assets {
 
 				if ( ! empty( $meta ) ) {
 
-					$output = '<style>';
-
+					$output = '';
 					foreach ( $meta as $id => $block ) {
 
 						$output .= sprintf( '.%1$s > div {', esc_attr( $id ) );
@@ -114,10 +122,7 @@ class CoBlocks_Footer_Assets {
 						$mobile = array();
 					}
 
-					$output .= '</style>';
-
-					echo $output;
-
+					return wp_strip_all_tags( $output );
 				}
 			}
 		}
