@@ -20,8 +20,8 @@ import './styles/editor.scss';
 import './styles/style.scss';
 
 // Extensions
-import './extensions/color-settings/inspector-control';
-import './extensions/inspector-control';
+import './extensions/colors/inspector';
+import './extensions/typography';
 
 // Formats
 import './formats/';

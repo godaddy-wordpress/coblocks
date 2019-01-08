@@ -219,7 +219,7 @@ addFilter(
 
 addFilter(
 	'editor.BlockEdit',
-	'coblocks/inspector-control',
+	'coblocks/typography',
 	withControls
 );
 

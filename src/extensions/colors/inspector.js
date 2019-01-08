@@ -106,13 +106,13 @@ const enhance = compose(
 
 addFilter(
 	'blocks.registerBlockType',
-	'coblocks/color-settings/attributes',
+	'coblocks/colors/attributes',
 	addAttributes
 );
 
 
 addFilter(
 	'editor.BlockEdit',
-	'coblocks/color-settings',
+	'coblocks/colors',
 	withInspectorControl
 );
