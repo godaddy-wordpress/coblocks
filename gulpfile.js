@@ -24,7 +24,7 @@ var lastTranslator          	= pkg.author;
 var team                    	= pkg.author_shop;
 var translatePath           	= './languages';
 var translatableFiles       	= ['./**/*.php'];
-var jsPotFile	  	= [ './languages/'+project+'-js.pot', './build/languages/'+project+'-js.pot' ];
+var jsPotFile 			= [ './languages/'+project+'-js.pot', './build/languages/'+project+'-js.pot' ];
 
 /**
  * Load Plugins.
