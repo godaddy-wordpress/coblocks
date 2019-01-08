@@ -50,13 +50,13 @@
 			// Therefore it shouldn't add additional paddings and margins..
 			// so we reset these, and compensate for margins.
 			> .editor-block-list__block-edit > div > .editor-inner-blocks {
-				margin-top: -$block-padding - $block-padding;
 				margin-bottom: -$block-padding - $block-padding;
+				margin-top: -$block-padding - $block-padding;
 			}
 
 			> .editor-block-list__block-edit {
-				margin-top: 0;
 				margin-bottom: 0;
+				margin-top: 0;
 			}
 
 			> .editor-block-list__block-edit
@@ -320,6 +320,11 @@
 
 	> span > .components-resizable-box__handle {
 		z-index: 98;
+
+		&::before {
+			height: 15px;
+			width: 15px;
+		}
 
 		&-right {
 			height: calc(100% + 24px);
