@@ -43,19 +43,19 @@ import './formats/';
  * Register Blocks
  */
 import * as accordion from './blocks/accordion';
-import * as accordionItem from './blocks/accordion-item';
+import * as accordionItem from './blocks/accordion/accordion-item';
 import * as alert from './blocks/alert';
 import * as author from './blocks/author';
 import * as clickToTweet from './blocks/click-to-tweet';
+import * as column from './blocks/row/column';
 import * as dynamicSeparator from './blocks/dynamic-separator';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
 import * as highlight from './blocks/highlight';
 import * as pricingTable from './blocks/pricing-table';
-import * as pricingTableItem from './blocks/pricing-table-item';
-import * as social from './blocks/social';
+import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';
-import * as column from './blocks/row/column';
+import * as social from './blocks/social';
 
 export function registerBlocks () {
 	[
@@ -64,15 +64,15 @@ export function registerBlocks () {
 		alert,
 		author,
 		clickToTweet,
+		column,
 		dynamicSeparator,
 		gif,
 		gist,
 		highlight,
 		pricingTable,
 		pricingTableItem,
-		social,
 		row,
-		column,
+		social,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {
