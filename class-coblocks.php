@@ -133,6 +133,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		private function includes() {
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-assets.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-type.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';
@@ -150,18 +151,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		private function init() {
 			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 99 );
-			add_action( 'plugins_loaded', array( $this, 'load_dynamic_blocks' ), 99 );
-		}
-
-		/**
-		 * Register server-side code for individual blocks.
-		 *
-		 * @access public
-		 */
-		public function load_dynamic_blocks() {
-			foreach ( glob( dirname( __FILE__ ) . '/src/blocks/*/index.php' ) as $block_logic ) {
-				require $block_logic;
-			}
+			add_action( 'enqueue_block_editor_assets', array( $this, 'block_localization' ) );
 		}
 
 		/**
@@ -231,7 +221,18 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @return void
 		 */
 		public function load_textdomain() {
-			load_plugin_textdomain( '@@textdomain', false, dirname( plugin_basename( COBLOCKS_PLUGIN_DIR ) ) . '/languages/' );
+			load_plugin_textdomain( 'coblocks', false, dirname( plugin_basename( COBLOCKS_PLUGIN_DIR ) ) . '/languages/' );
+		}
+
+		/**
+		 * Enqueue localization data for our blocks.
+		 *
+		 * @access public
+		 */
+		public function block_localization() {
+			if ( function_exists( 'wp_set_script_translations' ) ) {
+				wp_set_script_translations( 'coblocks-editor', 'coblocks' );
+			}
 		}
 	}
 endif;
