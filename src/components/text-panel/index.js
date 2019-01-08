@@ -10,8 +10,6 @@ import './styles/editor.scss';
 import TextPanelAttributes from './attributes';
 import TextPanelClasses from './classes';
 import TextTransforms from './transforms';
-import FontSizes from './../../utils/font-sizes';
-import HeadingFontSizes from './../../utils/heading-font-sizes';
 import googleFonts from './../../components/font-family/fonts';
 import TypographyAttributes from './attributes';
 import TypograpyClasses from './classes';
@@ -170,7 +168,7 @@ class TypographyPanel extends Component {
 								onToggle();
 							}
 						};
-						
+
 						return (
 							<IconButton
 								className="components-dropdown-menu__toggle"

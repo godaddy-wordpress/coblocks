@@ -23,11 +23,6 @@ icons.accordion =
 	<g><path d="m.17126465 3.4956665h17.99999995v-2.991333h-17.99999995z" transform="translate(2.828735 10)"/><path d="m5.00511339 2.8941786 3.24188911 3.24188911 1.44197591-1.44197591-4.68386502-4.6940918-4.6940918 4.6940918 1.45220269 1.44197591zm-.01022678 14.2116428-3.24188911-3.2418891-1.44197591 1.4419759 4.68386502 4.6940918 4.6940918-4.6940918-1.45220269-1.4419759z" transform="translate(7 2)"/></g>
 </svg>;
 
-icons.backArrow =
-<svg className="coblocks__svg" aria-hidden role="img" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-	<g><path d="m.17126465 3.4956665h17.99999995v-2.991333h-17.99999995z" transform="translate(2.828735 10)"/><path d="m5.00511339 2.8941786 3.24188911 3.24188911 1.44197591-1.44197591-4.68386502-4.6940918-4.6940918 4.6940918 1.45220269 1.44197591zm-.01022678 14.2116428-3.24188911-3.2418891-1.44197591 1.4419759 4.68386502 4.6940918 4.6940918-4.6940918-1.45220269-1.4419759z" transform="translate(7 2)"/></g>
-</svg>;
-
 icons.actionGrid =
 <svg className="coblocks__svg" aria-hidden role="img" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 	<g fill="currentColor" fillRule="evenodd"><path d="m16 0h-14c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2zm0 14h-14v-12h14z" fillRule="nonzero" transform="translate(3 4)"/><path d="m11 6h2v12h-2z"/></g>
