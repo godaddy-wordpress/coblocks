@@ -20,7 +20,8 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { RichText, InnerBlocks, withFontSizes } = wp.editor;
-const { ResizableBox } = wp.components;
+const { ResizableBox, Spinner } = wp.components;
+const { isBlobURL } = wp.blob;
 
 /**
  * Block edit function
@@ -237,8 +238,8 @@ class Edit extends Component {
 						} }
 						>
 						<div className={ innerClasses } style={ innerStyles }>
-							<InnerBlocks
-								templateLock={ false }/>
+							{ isBlobURL( backgroundImg ) && <Spinner /> }
+							<InnerBlocks templateLock={ false }/>
 						</div>
 					</div>
 				</ResizableBox>
