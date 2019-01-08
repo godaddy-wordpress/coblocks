@@ -15,7 +15,7 @@ const category = {
 /**
  * Custom foreground icon color
  */
-const iconColor = '#536DFF';
+const iconColor = '#536dff';
 
 /**
  * Utility Editor and Frontend Styles
