@@ -41,6 +41,7 @@ var sftp                = require("gulp-sftp");
 var open                = require("gulp-open");
 var gulpif              = require('gulp-if');
 var wpPot 		= require('gulp-wp-pot');
+var deleteEmpty 	= require('delete-empty');
 
 /**
  * Tasks.
@@ -76,6 +77,8 @@ gulp.task( 'npmStart', run( 'npm run start' ) )
 gulp.task( 'npmBuild', run( 'npm run build' ) )
 
 gulp.task( 'npmInstall', run( 'npm install' ) )
+
+gulp.task( 'npmMakeBabel', run( 'npm run babel' ) )
 
 gulp.task( 'npmMakePot', run( 'npm run makepot' ) )
 
@@ -200,7 +203,7 @@ gulp.task('build-notice', function(done) {
 	done();
 });
 
-gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip',  function(done) {
+gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip',  function(done) {
 	done();
 } ) );
 
