@@ -16,15 +16,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Load footer assets for our blocks.
  *
- * @since 1.0.0
+ * @since 1.6.0
  */
-class CoBlocks_Footer_Assets {
+class CoBlocks_Generated_Styles {
 
 
 	/**
 	 * This plugin's instance.
 	 *
-	 * @var CoBlocks_Footer_Assets
+	 * @var CoBlocks_Generated_Styles
 	 */
 	private static $instance;
 
@@ -33,7 +33,7 @@ class CoBlocks_Footer_Assets {
 	 */
 	public static function register() {
 		if ( null === self::$instance ) {
-			self::$instance = new CoBlocks_Footer_Assets();
+			self::$instance = new CoBlocks_Generated_Styles();
 		}
 	}
 
@@ -129,4 +129,4 @@ class CoBlocks_Footer_Assets {
 	}
 }
 
-CoBlocks_Footer_Assets::register();
+CoBlocks_Generated_Styles::register();
