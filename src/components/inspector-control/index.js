@@ -19,8 +19,8 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { addFilter } = wp.hooks;
-const { Fragment }  = wp.element;
-const { InspectorAdvancedControls }  = wp.components;
+const { Fragment }	= wp.element;
+const { InspectorAdvancedControls }	= wp.components;
 const { compose, createHigherOrderComponent } = wp.compose;
 
 
@@ -49,12 +49,12 @@ function addAttributes( settings ) {
 }
 
 /**
- * Override the default edit UI to include a new block inspector control
+ * Override the default edit UI to include a new block toolbar control
  *
  * @param {function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
-const withInspectorControl = createHigherOrderComponent( (BlockEdit) => {
+const withControls = createHigherOrderComponent( (BlockEdit) => {
 	return ( props ) => {
 
 		const {
@@ -64,7 +64,7 @@ const withInspectorControl = createHigherOrderComponent( (BlockEdit) => {
 		} = props;
 
 		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'coblocks/row', 'coblocks/column' ];
-		const coBlocks 		= [ 'coblocks/row', 'coblocks/column' ];
+		const coBlocks = [ 'coblocks/row', 'coblocks/column' ];
 
 		if( typeof attributes.coblocks === 'undefined' ){
 			attributes.coblocks = [];
@@ -89,13 +89,13 @@ const withInspectorControl = createHigherOrderComponent( (BlockEdit) => {
 			</Fragment>
 		);
 	};
-}, 'withInspectorControl');
+}, 'withControls');
 
 /**
- * Override the default block element to add  wrapper props.
+ * Override the default block element to add	wrapper props.
  *
  * @param  {Function} BlockListBlock Original component
- * @return {Function}                Wrapped component
+ * @return {Function} Wrapped component
  */
 
 const enhance = compose(
@@ -181,19 +181,19 @@ function applyFontSettings(extraProps, blockType, attributes) {
 		const { customFontSize, fontFamily, lineHeight, fontWeight, textTransform, noBottomSpacing, noTopSpacing } = attributes;
 
 		if( customFontSize ){
-			extraProps.className = classnames( extraProps.className, 'has-custom-fontsize' );
+			extraProps.className = classnames( extraProps.className, 'has-custom-size' );
 		}
 
 		if( fontFamily ){
-			extraProps.className = classnames( extraProps.className, 'has-custom-fontfamily' );
+			extraProps.className = classnames( extraProps.className, 'has-custom-font' );
 		}
 
 		if( fontWeight ){
-			extraProps.className = classnames( extraProps.className, 'has-custom-fontweight' );
+			extraProps.className = classnames( extraProps.className, 'has-custom-weight' );
 		}
 
 		if( textTransform ){
-			extraProps.className = classnames( extraProps.className, 'has-custom-texttransform' );
+			extraProps.className = classnames( extraProps.className, 'has-custom-transform' );
 		}
 
 		if( lineHeight ){
@@ -218,18 +218,21 @@ addFilter(
 	'coblocks/inspector/attributes',
 	addAttributes
 );
+
 addFilter(
 	'editor.BlockEdit',
 	'coblocks/inspector-control',
-	withInspectorControl
+	withControls
 );
+
 addFilter(
-  'editor.BlockListBlock',
-  'coblocks/withFontSettings',
-  withFontSettings
+	'editor.BlockListBlock',
+	'coblocks/withFontSettings',
+	withFontSettings
 );
+
 addFilter(
-  'blocks.getSaveContent.extraProps',
-  'coblocks/applyFontSettings',
-  applyFontSettings
+	'blocks.getSaveContent.extraProps',
+	'coblocks/applyFontSettings',
+	applyFontSettings
 );
