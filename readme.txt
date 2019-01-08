@@ -1,4 +1,4 @@
-=== CoBlocks -  Page Builder Blocks for Gutenberg ===
+=== CoBlocks - Page Builder Blocks for Gutenberg ===
 Author URI: https://coblocks.com
 Plugin URI: https://coblocks.com
 Contributors: coblocks, richtabor, phpbits
