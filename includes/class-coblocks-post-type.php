@@ -15,6 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * CoBlocks_Post_Type Class
+ *
+ * @since 1.6.0
  */
 class CoBlocks_Post_Type {
 

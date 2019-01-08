@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Load google fonts for our blocks.
  *
- * @since 1.0.0
+ * @since 1.6.0
  */
 class CoBlocks_Font_Loader {
 
