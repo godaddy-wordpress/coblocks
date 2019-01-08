@@ -60,54 +60,64 @@ class CoBlocks_Footer_Assets {
 			$mobile  = array();
 
 			if ( $meta ) {
+
 				$meta = json_decode( $meta );
+
 				if ( ! empty( $meta ) ) {
-					echo '<!-- CoBlocks Styles -->';
-					echo '<style>';
-					foreach ( $meta as $k => $block ) {
-						echo '.' . $k . ' > div {';
+
+					$output = '<style>';
+
+					foreach ( $meta as $id => $block ) {
+
+						$output .= sprintf( '.%1$s > div {', esc_attr( $id ) );
+
 						if ( ! empty( $block ) ) {
 							foreach ( $block as $key => $style ) {
 								if ( ! empty( $style ) ) {
 									foreach ( $style as $ky => $value ) {
 										if ( strpos( $ky, 'Mobile' ) !== false ) {
-											$mobile[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Mobile', '', $ky ) ) ) . ':' . $value . ';';
+											$mobile[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Mobile', '', $ky ) ) ) . ':' . esc_attr( $value ) . ';';
 										} elseif ( strpos( $ky, 'Tablet' ) !== false ) {
-											$tablet[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Tablet', '', $ky ) ) ) . ':' . $value . ';';
+											$tablet[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Tablet', '', $ky ) ) ) . ':' . esc_attr( $value ) . ';';
 										} else {
-											echo strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', $ky ) ) . ':' . $value . ';';
+											$output .= strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', $ky ) ) . ':' . esc_attr( $value ) . ';';
 										}
 									}
 								}
 							}
 						}
-						echo '}';
+
+						$output .= '}';
 
 						if ( ! empty( $tablet ) ) {
-							echo '@media (max-width: ' . apply_filters( 'coblocks_tablet_breakpoint', '768px' ) . ') {';
-								echo '.' . $k . ' > div{';
-							foreach ( $tablet as $tab ) {
-								echo $tab;
+							$output .= '@media (max-width: ' . apply_filters( 'coblocks_tablet_breakpoint', '768px' ) . ') {';
+							$output .= sprintf( '.%1$s > div {', esc_attr( $id ) );
+							foreach ( $tablet as $tablet_setting ) {
+								$output .= $tablet_setting;
 							}
-								echo '}';
-							echo '}';
+							$output .= '}';
+							$output .= '}';
 						}
 
 						if ( ! empty( $mobile ) ) {
-							echo '@media (max-width: ' . apply_filters( 'coblocks_desktop_breakpoint', '514px' ) . ') {';
-								echo '.' . $k . ' > div{';
-							foreach ( $mobile as $mobi ) {
-								echo $mobi;
+							$output .= '@media (max-width: ' . apply_filters( 'coblocks_desktop_breakpoint', '514px' ) . ') {';
+							$output .= sprintf( '.%1$s > div {', esc_attr( $id ) );
+							foreach ( $mobile as $mobile_setting ) {
+								$output .= $mobile_setting;
 							}
-								echo '}';
-							echo '}';
+							$output .= '}';
+							$output .= '}';
 						}
 
 						// Reset media queries.
 						$tablet = array();
 						$mobile = array();
 					}
-					echo '</style><!-- End CoBlocks Styles -->';
+
+					$output .= '</style>';
+
+					echo $output;
+
 				}
 			}
 		}
