@@ -7,17 +7,9 @@
 // Style various inspector region and block toolbar controls
 @import "editor/delete-image-button";
 @import "editor/line-height-control";
-@import "editor/overlay-control";
 @import "editor/numerals-control";
 @import "editor/is-background-transient";
 @import "editor/inspector-tabs";
 
 // Style Components
 @import "editor/resizable-spacer";
-
-.coblocks__button {
-
-	&.editor-rich-text__tinymce.wp-coblocks__button {
-		line-height: 1.8;
-	}
-}
