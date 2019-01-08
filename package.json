@@ -76,6 +76,7 @@
 		"rules": {
 			"at-rule-empty-line-before": "always",
 			"at-rule-empty-line-before": null,
+			"no-descending-specificity": null,
 			"order/properties-alphabetical-order": true
 		}
 	},

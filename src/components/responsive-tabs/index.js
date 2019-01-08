@@ -1,6 +1,7 @@
 /**
  * Internal dependencies
  */
+import './styles/editor.scss';
 import icons from './../utils/icons';
 
 /**
@@ -37,19 +38,19 @@ class ResponsiveTabsControl extends Component {
 		return (
 			<Fragment>
 				<TabPanel
-					className="components-base-control components-coblocks-inspector__tabs"
+					className="components-base-control components-coblocks-responsive__tabs"
 					activeClass="is-active"
 					initialTabName="desk"
 					tabs={ [
 						{
 							name: 'desk',
 							title: icons.desktopChrome,
-							className: 'components-coblocks-inspector__tabs-item components-coblocks-inspector__tabs-item--desktop',
+							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--desktop',
 						},
 						{
 							name: 'mobile',
 							title: icons.mobile,
-							className: 'components-coblocks-inspector__tabs-item components-coblocks-inspector__tabs-item--mobile',
+							className: 'components-coblocks-responsive__tabs-item components-coblocks-responsive__tabs-item--mobile',
 						},
 					] }>
 					{

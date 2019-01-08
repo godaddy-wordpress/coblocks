@@ -1,8 +1,8 @@
-.components-coblocks-inspector__tabs {
-	position: relative;
+.components-coblocks-responsive__tabs {
+	align-items: center;
 	display: flex;
 	flex-direction: row-reverse;
-	align-items: center;
+	position: relative;
 
 	.components-base-control,
 	.components-base-control__field {
@@ -16,8 +16,8 @@
 	&-item {
 		appearance: none;
 		background: $white;
-		border-radius: 4px;
 		border: 1px solid #8d96a0;
+		border-radius: 4px;
 		color: #6c7781;
 		height: 28px;
 		line-height: 1;
@@ -39,8 +39,8 @@
 		&:focus {
 			border-color: #00a0d2 !important;
 			color: #00a0d2;
-			outline-offset: -2px;
 			outline: 2px solid transparent;
+			outline-offset: -2px;
 		}
 
 		&:not(.is-active):active:enabled {
@@ -69,8 +69,8 @@
 		}
 
 		&:first-of-type {
-			border-top-right-radius: 0;
 			border-bottom-right-radius: 0;
+			border-top-right-radius: 0;
 
 			&:not(.is-active) {
 				border-right: none;
@@ -78,8 +78,8 @@
 		}
 
 		&:last-of-type {
-			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
+			border-top-left-radius: 0;
 
 			&:not(.is-active) {
 				border-left: none;
@@ -89,8 +89,8 @@
 		svg {
 			height: 15px;
 			position: relative;
-			width: 15px;
 			top: 0.08em;
+			width: 15px;
 		}
 	}
 
