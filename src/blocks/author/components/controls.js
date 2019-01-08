@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls, MediaUpload } = wp.editor;
+const { AlignmentToolbar, BlockControls, MediaUpload, MediaUploadCheck } = wp.editor;
 const { Toolbar, IconButton } = wp.components;
 
 class Controls extends Component {
@@ -29,14 +29,14 @@ class Controls extends Component {
 		const onSelectImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
 
 		return (
-			isSelected && (
-				<Fragment>
-					<BlockControls>
-						<AlignmentToolbar
-							value={ textAlign }
-							onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
-						/>
-						{ imgUrl &&
+			<Fragment>
+				<BlockControls>
+					<AlignmentToolbar
+						value={ textAlign }
+						onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
+					/>
+					{ imgUrl &&
+						<MediaUploadCheck>
 							<Toolbar>
 								<MediaUpload
 									onSelect={ onSelectImage }
@@ -58,10 +58,10 @@ class Controls extends Component {
 									onClick={ () => setAttributes( { imgUrl: '', imgId: '' } ) }
 								/>
 							</Toolbar>
-						}
-					</BlockControls>
-				</Fragment>
-			)
+						</MediaUploadCheck>
+					}
+				</BlockControls>
+			</Fragment>
 		);
 	}
 };
