@@ -1,6 +1,6 @@
 <?php
 /**
- * Load footer assets for styling our blocks.
+ * Load generated styles for our blocks.
  *
  * @package   @@pkg.title
  * @author    @@pkg.author

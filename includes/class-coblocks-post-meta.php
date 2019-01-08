@@ -1,6 +1,6 @@
 <?php
 /**
- * Templates Post Type.
+ * Register post meta.
  *
  * @package   @@pkg.title
  * @author    @@pkg.author
