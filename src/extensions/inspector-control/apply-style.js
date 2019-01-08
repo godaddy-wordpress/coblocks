@@ -32,7 +32,7 @@ function applyStyle( attributes, name ) {
 	if( name == 'coblocks/column' && typeof attributes.width !== 'undefined' ){
 		style.width = attributes.width + '%';
 	}
-	
+
 	return style;
 }
 

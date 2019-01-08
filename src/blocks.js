@@ -26,12 +26,12 @@ import './styles/style.scss';
 /**
  * Color Settings
  */
-import './components/color-settings/inspector-control';
+import './extensions/color-settings/inspector-control';
 
 /**
  * Inspector Control
  */
-import './components/inspector-control';
+import './extensions/inspector-control';
 
 /**
  * Register Formats

@@ -24,20 +24,6 @@ export {
 };
 
 /**
- * Fallback styles
- */
-const { getComputedStyle } = window;
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { textColor } = ownProps.attributes;
-	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-	return {
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-	};
-} );
-
-/**
  * Color Settings
  */
 function ColorSettings( props, options ) {
@@ -65,12 +51,12 @@ function ColorSettings( props, options ) {
 					{
 						value: customCoBlocksBackgroundColor,
 						onChange: ( nextcustomBackgroundColor ) => setAttributes( {  customCoBlocksBackgroundColor: nextcustomBackgroundColor } ),
-						label: __( 'Background Color' ),
+						label: __( 'Background Colssor' ),
 					},
 					{
 						value: customTextColor,
 						onChange: ( nextcustomTextColor ) => setAttributes( {  customTextColor: nextcustomTextColor } ),
-						label: __( 'Text Color' ),
+						label: __( 'Text Cosslor' ),
 					},
 				] }
 			>
@@ -81,6 +67,4 @@ function ColorSettings( props, options ) {
 
 export default compose( [
 	withColors( { textColor: 'color' } ),
-	// withFontSizes( 'fontSize' ),
-	// applyFallbackStyles,
 ] )( ColorSettings );

@@ -1,5 +1,6 @@
-
-
+/**
+ * Apply styling
+ */
 function applyStyle( attributes, props ) {
 	const {
 		customTextColor,
@@ -18,7 +19,7 @@ function applyStyle( attributes, props ) {
 	if( typeof attributes.customCoBlocksBackgroundColor !== 'undefined' ){
 		style.backgroundColor = attributes.customCoBlocksBackgroundColor || null;
 	}
-	
+
 	return style;
 }
 

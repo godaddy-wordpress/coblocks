@@ -1,5 +1,5 @@
 /**
- * Set the attributes for the text panel
+ * Set attributes
  * @type {Object}
  */
 const ColorSettingsAttributes = {
