@@ -1,8 +1,8 @@
 .components-coblocks__resizablebox-spacer {
 	background: hsla(240, 5%, 57%, 0.1);
 	opacity: 0;
-	z-index: 999999;
 	transition: opacity 0.1s ease-in-out;
+	z-index: 999999;
 
 	&.is-horizontal {
 		display: inline-block;
@@ -24,14 +24,14 @@
 		display: block;
 
 		&::before {
-			width: 14px;
 			height: 14px;
+			width: 14px;
 		}
 	}
 
 	.components-resizable-box__handle-top {
-		top: -11px;
 		left: calc(50% - 12px);
+		top: -11px;
 	}
 
 	.components-resizable-box__handle-bottom {
