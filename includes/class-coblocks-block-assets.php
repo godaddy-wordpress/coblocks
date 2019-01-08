@@ -79,8 +79,6 @@ class CoBlocks_Block_Assets {
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'fonts_loader' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'fonts_loader' ) );
-		// add_action( 'wp_enqueue_scripts', array( $this, 'google_map_assets' ) );
-		// add_action( 'init', array( $this, 'register_settings' ) );
 		add_action( 'wp_footer', array( $this, 'footer_assets' ) );
 	}
 
@@ -252,55 +250,6 @@ class CoBlocks_Block_Assets {
 		}
 	}
 
-	/**
-	 * Enqueue front-end assets for blocks.
-	 *
-	 * @access public
-	 */
-	public function google_map_assets() {
-		global $post;
-		// Retrieve the Google Maps API key.
-		$key = get_option( 'coblocks_google_maps_api_key' );
-		// Define where the asset is loaded from.
-		$dir = CoBlocks()->asset_source( 'js' );
-		// Google Maps block.
-		if ( $key && ( $post && null !== $post->post_content && strpos( $post->post_content, 'wp-block-coblocks-google-map' ) ) ) {
-			wp_enqueue_script(
-				$this->_slug . '-google-maps',
-				$dir . $this->_slug . '-google-maps' . COBLOCKS_ASSET_SUFFIX . '.js',
-				array( 'jquery' ),
-				$this->_version,
-				true
-			);
-			wp_enqueue_script(
-				$this->_slug . '-google-maps-api',
-				'https://maps.googleapis.com/maps/api/js?key=' . $key,
-				array( $this->_slug . '-google-maps' ),
-				$this->_version,
-				true
-			);
-			wp_localize_script( $this->_slug . '-google-maps', 'baAtts', array( 'url' => $this->_url ) );
-		}
-	}
-
-	/**
-	 * Register block settings.
-	 *
-	 * @access public
-	 */
-	public function register_settings() {
-		register_setting(
-			'coblocks_google_maps_api_key',
-			'coblocks_google_maps_api_key',
-			array(
-				'type'              => 'string',
-				'description'       => __( 'Google Map API key for map rendering', '@@textdomain' ),
-				'sanitize_callback' => 'sanitize_text_field',
-				'show_in_rest'      => true,
-				'default'           => '',
-			)
-		);
-	}
 
 	/**
 	 * Footer Styling

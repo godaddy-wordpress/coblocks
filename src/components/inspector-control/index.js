@@ -201,11 +201,11 @@ function applyFontSettings(extraProps, blockType, attributes) {
 		}
 
 		if( typeof noBottomSpacing !== 'undefined' && noBottomSpacing ){
-			extraProps.className = classnames( extraProps.className, 'coblocks__heading--no-bottom-spacing' );
+			extraProps.className = classnames( extraProps.className, 'mb-0 pb-0' );
 		}
 
 		if( typeof noTopSpacing !== 'undefined' && noTopSpacing ){
-			extraProps.className = classnames( extraProps.className, 'coblocks__heading--no-top-spacing' );
+			extraProps.className = classnames( extraProps.className, 'mt-0 pt-0' );
 		}
 
 	}
