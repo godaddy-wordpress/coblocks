@@ -27,8 +27,6 @@ class Controls extends Component {
 
 		const allowedBlocks = [ 'core/heading', 'core/cover', 'core/button' ];
 
-	 	this.props.attributes.textPanelLabel    = __( 'Typography Settings' );
-
 		// Display on the allowedBlocks only.
 		if ( ! allowedBlocks.includes( this.props.name ) ){
 			this.props.attributes.textPanelHideSize = true;

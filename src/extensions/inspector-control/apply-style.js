@@ -17,19 +17,19 @@ function applyStyle( attributes, name ) {
 		letterSpacing: letterSpacing || null,
 	};
 
-	if( typeof attributes.customFontSize !== 'undefined' ){
+	if ( typeof attributes.customFontSize !== 'undefined' ) {
 		style.fontSize = attributes.customFontSize + 'px' || null;
 	}
 
-	if( typeof attributes.customTextColor !== 'undefined' ){
+	if ( typeof attributes.customTextColor !== 'undefined' ) {
 		style.color = attributes.customTextColor || null;
 	}
 
-	if( typeof attributes.customBackgroundColor !== 'undefined' ){
+	if ( typeof attributes.customBackgroundColor !== 'undefined' ) {
 		style.backgroundColor = attributes.customBackgroundColor || null;
 	}
 
-	if( name == 'coblocks/column' && typeof attributes.width !== 'undefined' ){
+	if ( name == 'coblocks/column' && typeof attributes.width !== 'undefined' ) {
 		style.width = attributes.width + '%';
 	}
 

@@ -5,12 +5,11 @@ import './styles/editor.scss';
 import './styles/style.scss';
 import Controls from './controls';
 import applyStyle from './apply-style';
-import TypographyPanel, { TypographyAttributes, TypograpyClasses, TypographyTransforms } from '../../components/text-panel';
+import TypographyPanel, { TypographyAttributes } from '../../components/text-panel';
 
 /**
  * External Dependencies
  */
-// import { assign } from 'lodash/assign';
 import classnames from 'classnames';
 
 /**
@@ -22,7 +21,6 @@ const { addFilter } = wp.hooks;
 const { Fragment }	= wp.element;
 const { InspectorAdvancedControls }	= wp.components;
 const { compose, createHigherOrderComponent } = wp.compose;
-
 
 /**
  * Filters registered block settings, extending attributes with settings
@@ -54,7 +52,7 @@ function addAttributes( settings ) {
  * @param {function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
-const withControls = createHigherOrderComponent( (BlockEdit) => {
+const withControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 
 		const {
@@ -171,43 +169,43 @@ const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
 function applyFontSettings(extraProps, blockType, attributes) {
 	const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'coblocks/row', 'coblocks/column' ];
 
-	if( allowedBlocks.includes( blockType.name ) ){
+	if ( allowedBlocks.includes( blockType.name ) ) {
+
 		if( typeof extraProps.style !== 'undefined' ){
 			extraProps.style = Object.assign( extraProps.style, applyStyle( attributes, blockType.name ) );
-		}else{
+		} else {
 			extraProps.style = applyStyle( attributes, blockType.name );
 		}
 
 		const { customFontSize, fontFamily, lineHeight, fontWeight, textTransform, noBottomSpacing, noTopSpacing } = attributes;
 
-		if( customFontSize ){
+		if ( customFontSize ) {
 			extraProps.className = classnames( extraProps.className, 'has-custom-size' );
 		}
 
-		if( fontFamily ){
+		if ( fontFamily ) {
 			extraProps.className = classnames( extraProps.className, 'has-custom-font' );
 		}
 
-		if( fontWeight ){
+		if ( fontWeight ) {
 			extraProps.className = classnames( extraProps.className, 'has-custom-weight' );
 		}
 
-		if( textTransform ){
+		if ( textTransform ) {
 			extraProps.className = classnames( extraProps.className, 'has-custom-transform' );
 		}
 
-		if( lineHeight ){
+		if ( lineHeight ) {
 			extraProps.className = classnames( extraProps.className, 'has-custom-lineheight' );
 		}
 
-		if( typeof noBottomSpacing !== 'undefined' && noBottomSpacing ){
+		if ( typeof noBottomSpacing !== 'undefined' && noBottomSpacing ) {
 			extraProps.className = classnames( extraProps.className, 'mb-0 pb-0' );
 		}
 
-		if( typeof noTopSpacing !== 'undefined' && noTopSpacing ){
+		if ( typeof noTopSpacing !== 'undefined' && noTopSpacing ) {
 			extraProps.className = classnames( extraProps.className, 'mt-0 pt-0' );
 		}
-
 	}
 
 	return extraProps;

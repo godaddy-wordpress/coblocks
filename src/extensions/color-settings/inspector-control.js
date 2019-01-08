@@ -21,8 +21,6 @@ const Inspector = props => {
  	const { attributes, setAttributes } = props;
  	const allowedBlocks = [ 'core/heading', 'core/cover', 'core/button' ];
 
- 	props.attributes.textPanelLabel    = __( 'Font Settings' );
-
 	// Display on the allowedBlocks only.
 	if ( ! allowedBlocks.includes( props.name ) ){
 		props.attributes.textPanelHideSize = true;
@@ -57,12 +55,12 @@ function addAttributes( settings ) {
 	if( allowedBlocks.includes( settings.name ) ){
 		settings.attributes = Object.assign( settings.attributes, ColorSettingsAttributes );
 	}
-	
+
 	return settings;
 }
 
 /**
- * Override the default edit UI to include a new block inspector control 
+ * Override the default edit UI to include a new block inspector control
  *
  * @param {function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
