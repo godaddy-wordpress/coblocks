@@ -1,21 +1,17 @@
 .wp-block-cover {
-
 	&.has-custom-size {
-
 		p {
 			font-size: inherit !important;
 		}
 	}
 
 	&.has-custom-font {
-
 		p {
 			font-family: inherit !important;
 		}
 	}
 
 	&.has-custom-lineheight {
-
 		p {
 			line-height: inherit !important;
 		}
@@ -23,23 +19,19 @@
 }
 
 .wp-block-button {
-
 	&.has-custom-lineheight {
-
 		.wp-block-button__link {
 			line-height: inherit;
 		}
 	}
 
 	&.has-custom-size {
-
 		.wp-block-button__link {
 			font-size: inherit;
 		}
 	}
 
 	&.has-custom-font {
-
 		.wp-block-button__link {
 			font-family: inherit !important;
 		}
