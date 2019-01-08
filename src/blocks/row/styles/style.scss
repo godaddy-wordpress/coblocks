@@ -1,0 +1,110 @@
+.wp-block-coblocks-row:not([data-columns="1"]) {
+	// Don't use flexbox if the row is 1 column, 100% wide.
+	.wp-block-coblocks-row__inner {
+		display: flex;
+	}
+}
+
+.wp-block-coblocks-column {
+	margin-bottom: $grid-size-large * 2;
+
+	// Beyond mobile, allow 2 columns.
+	@include break-small() {
+		margin-bottom: 0;
+	}
+
+	// Prevent the columns from growing wider than their distributed sizes.
+	min-width: 0;
+
+	// Prevent long unbroken words from overflowing.
+	word-break: break-word; // For back-compat.
+	overflow-wrap: break-word; // New standard.
+
+	p {
+		margin-top: 0;
+		margin-bottom: 2em;
+		padding: 0;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.has-small-gutter {
+
+	.wp-block-coblocks-column {
+
+		@include break-small() {
+
+			&:nth-child(odd) {
+				margin-right: $gutter--small;
+			}
+
+			&:nth-child(even) {
+				margin-left: $gutter--small;
+			}
+
+			&:not(:first-child) {
+				margin-left: $gutter--small;
+			}
+
+			&:not(:last-child) {
+				margin-right: $gutter--small;
+			}
+		}
+	}
+}
+
+.has-medium-gutter {
+
+	.wp-block-coblocks-column {
+
+		@include break-small() {
+
+			&:nth-child(odd) {
+				margin-right: $gutter--medium;
+			}
+
+			&:nth-child(even) {
+				margin-left: $gutter--medium;
+			}
+
+			&:not(:first-child) {
+				margin-left: $gutter--medium;
+			}
+
+			&:not(:last-child) {
+				margin-right: $gutter--medium;
+			}
+		}
+	}
+}
+
+.has-large-gutter {
+
+	.wp-block-coblocks-column {
+
+		@include break-small() {
+
+			&:nth-child(odd) {
+				margin-right: $gutter--large;
+			}
+
+			&:nth-child(even) {
+				margin-left: $gutter--large;
+			}
+
+			&:not(:first-child) {
+				margin-left: $gutter--large;
+			}
+
+			&:not(:last-child) {
+				margin-right: $gutter--large;
+			}
+		}
+	}
+}
+
+
+

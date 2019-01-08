@@ -49,6 +49,8 @@ import * as highlight from './blocks/highlight';
 import * as pricingTable from './blocks/pricing-table';
 import * as pricingTableItem from './blocks/pricing-table-item';
 import * as social from './blocks/social';
+import * as row from './blocks/row';
+import * as column from './blocks/row/column';
 
 export function registerBlocks () {
 	[
@@ -64,6 +66,8 @@ export function registerBlocks () {
 		pricingTable,
 		pricingTableItem,
 		social,
+		row,
+		column,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {
