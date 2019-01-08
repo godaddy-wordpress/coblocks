@@ -70,9 +70,9 @@ export function registerBlocks () {
 			return;
 		}
 
-		const { name, settings } = block;
+		const { name, icon, settings } = block;
 
-		registerBlockType( `coblocks/${ name }`, { category: category.slug, ...settings } );
+		registerBlockType( `coblocks/${ name }`, { category: category.slug, icon: { src: icon, foreground: iconColor, }, ...settings } );
 	} );
 };
 registerBlocks();

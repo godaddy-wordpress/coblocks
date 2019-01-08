@@ -1,14 +1,13 @@
 <?php
 /**
  * Plugin Name: CoBlocks
- * Plugin URI: https://coblocks.com
+ * Plugin URI: https://coblocks.com/
  * Description: CoBlocks is a suite of professional page building content blocks for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
  * Author: CoBlocks
- * Author URI: https://richtabor.com
- * Tags: gutenberg, editor, block, layout, writing
- * Version: 1.5.3
- * Text Domain: @@textdomain
- * Domain Path: /languages
+ * Author URI: https://coblocks.com/
+ * Version: 1.0.0
+ * Text Domain: '@@textdomain'
+ * Domain Path: languages
  * Tested up to: @@pkg.tested_up_to
  *
  * @@pkg.title is distributed in the hope that it will be useful,
@@ -29,268 +28,205 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( ! class_exists( 'CoBlocks' ) ) :
+	/**
+	 * Main CoBlocks Class.
+	 *
+	 * @since 1.0.0
+	 */
+	final class CoBlocks {
+		/**
+		 * This plugin's instance.
+		 *
+		 * @var CoBlocks
+		 * @since 1.0.0
+		 */
+		private static $instance;
+
+		/**
+		 * Main CoBlocks Instance.
+		 *
+		 * Insures that only one instance of CoBlocks exists in memory at any one
+		 * time. Also prevents needing to define globals all over the place.
+		 *
+		 * @since 1.0.0
+		 * @static
+		 * @return object|CoBlocks The one true CoBlocks
+		 */
+		public static function instance() {
+			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof CoBlocks ) ) {
+				self::$instance = new CoBlocks();
+				self::$instance->init();
+				self::$instance->constants();
+				self::$instance->asset_suffix();
+				self::$instance->includes();
+			}
+			return self::$instance;
+		}
+
+		/**
+		 * Setup plugin constants.
+		 *
+		 * @access private
+		 * @since 1.0.0
+		 * @return void
+		 */
+		private function constants() {
+			$this->define( 'COBLOCKS_DEBUG', true );
+			$this->define( 'COBLOCKS_VERSION', '@@pkg.version' );
+			$this->define( 'COBLOCKS_HAS_PRO', false );
+			$this->define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+			$this->define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+			$this->define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
+			$this->define( 'COBLOCKS_SHOP_URL', 'https://coblocks.com/' );
+		}
+
+		/**
+		 * Define constant if not already set.
+		 *
+		 * @param  string|string $name Name of the definition.
+		 * @param  string|bool   $value Default value.
+		 */
+		private function define( $name, $value ) {
+			if ( ! defined( $name ) ) {
+				define( $name, $value );
+			}
+		}
+
+		/**
+		 * Include required files.
+		 *
+		 * @access private
+		 * @since 1.0.0
+		 * @return void
+		 */
+		private function includes() {
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-assets.php';
+
+			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-notices.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-styles.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-url-generator.php';
+			}
+		}
+
+		/**
+		 * Load actions
+		 *
+		 * @return void
+		 */
+		private function init() {
+			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 99 );
+			add_action( 'plugins_loaded', array( $this, 'load_dynamic_blocks' ), 99 );
+		}
+
+		/**
+		 * Register server-side code for individual blocks.
+		 *
+		 * @access public
+		 */
+		public function load_dynamic_blocks() {
+			foreach ( glob( dirname( __FILE__ ) . '/src/blocks/*/index.php' ) as $block_logic ) {
+				require $block_logic;
+			}
+		}
+
+		/**
+		 * Change the plugin's minified or src file name, based on debug mode.
+		 *
+		 * @since 1.0.0
+		 */
+		public function asset_suffix() {
+			if ( true === COBLOCKS_DEBUG ) {
+				define( 'COBLOCKS_ASSET_SUFFIX', null );
+			} else {
+				define( 'COBLOCKS_ASSET_SUFFIX', '.min' );
+			}
+		}
+
+		/**
+		 * If debug is on, serve unminified source assets.
+		 *
+		 * @since 1.0.0
+		 * @param string|string $type The type of resource.
+		 * @param string|string $directory Any extra directories needed.
+		 */
+		public function asset_source( $type = 'js', $directory = null ) {
+
+			if ( 'js' === $type ) {
+				if ( true === COBLOCKS_DEBUG ) {
+					return COBLOCKS_PLUGIN_URL . 'src/' . $type . '/' . $directory;
+				} else {
+					return COBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
+				}
+			} else {
+				return COBLOCKS_PLUGIN_URL . 'dist/css/' . $directory;
+			}
+		}
+
+		/**
+		 * Check if pro exists.
+		 *
+		 * @access public
+		 */
+		public function has_pro() {
+			if ( true === COBLOCKS_HAS_PRO ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		/**
+		 * Check if pro is activated.
+		 *
+		 * @access public
+		 */
+		public function is_pro() {
+
+			if ( class_exists( 'CoBlocks_Pro' ) ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		/**
+		 * Loads the plugin language files.
+		 *
+		 * @access public
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function load_textdomain() {
+			load_plugin_textdomain( '@@textdomain', false, dirname( plugin_basename( untrailingslashit( plugin_dir_path( '/', __FILE__ ) ) ) ) . '/languages/' );
+		}
+	}
+endif;
+
 /**
- * Main @@pkg.title Class
+ * The main function for that returns CoBlocks
+ *
+ * The main function responsible for returning the one true CoBlocks
+ * Instance to functions everywhere.
+ *
+ * Use this function like you would a global variable, except without needing
+ * to declare the global.
+ *
+ * Example: <?php $coblocks = CoBlocks(); ?>
  *
  * @since 1.0.0
+ * @return object|CoBlocks The one true CoBlocks Instance.
  */
-class CoBlocks {
-
-	/**
-	 * This plugin's instance.
-	 *
-	 * @var CoBlocks
-	 */
-	private static $instance;
-
-	/**
-	 * Registers the plugin.
-	 */
-	public static function register() {
-		if ( null === self::$instance ) {
-			self::$instance = new CoBlocks();
-			self::$instance->includes();
-		}
-	}
-
-	/**
-	 * The base directory path (without trailing slash).
-	 *
-	 * @var string $_url
-	 */
-	private $_dir;
-
-	/**
-	 * The base URL path (without trailing slash).
-	 *
-	 * @var string $_url
-	 */
-	private $_url;
-
-	/**
-	 * The Plugin version.
-	 *
-	 * @var string $_version
-	 */
-	private $_version;
-
-	/**
-	 * The Plugin version.
-	 *
-	 * @var string $_slug
-	 */
-	private $_slug;
-
-	/**
-	 * The Constructor.
-	 */
-	private function __construct() {
-
-		$this->_version = '@@pkg.version';
-		$this->_slug    = 'coblocks';
-		$this->_dir     = untrailingslashit( plugin_dir_path( '/', __FILE__ ) );
-		$this->_url     = untrailingslashit( plugins_url( '/', __FILE__ ) );
-
-		add_action( 'init', array( $this, 'register_blocks' ) );
-		add_action( 'init', array( $this, 'block_assets' ) );
-		add_action( 'init', array( $this, 'editor_assets' ) );
-		add_action( 'plugins_loaded', array( $this, 'load_dynamic_blocks' ) );
-		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'localization' ) );
-	}
-
-	/**
-	 * Include required files.
-	 *
-	 * @access private
-	 * @since 1.1.1
-	 * @return void
-	 */
-	private function includes() {
-
-		if ( is_admin() ) {
-			require_once $this->_dir . 'includes/class-coblocks-feedback.php';
-		}
-	}
-
-	/**
-	 * Check if pro is activated.
-	 *
-	 * @access public
-	 */
-	public function has_pro() {
-
-		if ( class_exists( 'CoBlocks_Pro' ) ) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	/**
-	 * Add actions to enqueue assets.
-	 *
-	 * @access public
-	 */
-	public function register_blocks() {
-
-		// Return early if this function does not exist.
-		if ( ! function_exists( 'register_block_type' ) ) {
-			return;
-		}
-
-		// Return early if CoBlocks Pro is active.
-		if ( $this->has_pro() ) {
-			return;
-		}
-
-		// Shortcut for the slug.
-		$slug = $this->_slug;
-
-		register_block_type(
-			$slug . '/accordion', array(
-				'editor_script' => $slug . '-editor',
-				'editor_style'  => $slug . '-editor',
-				'style'         => $slug . '-frontend',
-			)
-		);
-		register_block_type(
-			$slug . '/alert', array(
-				'editor_script' => $slug . '-editor',
-				'editor_style'  => $slug . '-editor',
-				'style'         => $slug . '-frontend',
-			)
-		);
-		register_block_type(
-			$slug . '/author', array(
-				'editor_script' => $slug . '-editor',
-				'editor_style'  => $slug . '-editor',
-				'style'         => $slug . '-frontend',
-			)
-		);
-		register_block_type(
-			$slug . '/click-to-tweet', array(
-				'editor_script' => $slug . '-editor',
-				'editor_style'  => $slug . '-editor',
-				'style'         => $slug . '-frontend',
-			)
-		);
-		register_block_type(
-			$slug . '/dynamic-separator', array(
-				'editor_script' => $slug . '-editor',
-				'editor_style'  => $slug . '-editor',
-				'style'         => $slug . '-frontend',
-			)
-		);
-		register_block_type(
-			$slug . '/gif', array(
-				'editor_script' => $slug . '-editor',
-				'editor_style'  => $slug . '-editor',
-				'style'         => $slug . '-frontend',
-			)
-		);
-		register_block_type(
-			$slug . '/gist', array(
-				'editor_script' => $slug . '-editor',
-				'editor_style'  => $slug . '-editor',
-				'style'         => $slug . '-frontend',
-			)
-		);
-		register_block_type(
-			$slug . '/highlight', array(
-				'editor_script' => $slug . '-editor',
-				'editor_style'  => $slug . '-editor',
-				'style'         => $slug . '-frontend',
-			)
-		);
-	}
-
-	/**
-	 * Register server-side code for individual blocks.
-	 *
-	 * @access public
-	 */
-	public function load_dynamic_blocks() {
-
-		// Return early if CoBlocks Pro is active.
-		if ( $this->has_pro() ) {
-			return;
-		}
-
-		foreach ( glob( dirname( __FILE__ ) . '/src/blocks/*/index.php' ) as $block_logic ) {
-			require $block_logic;
-		}
-	}
-
-	/**
-	 * Enqueue block assets for use within Gutenberg.
-	 *
-	 * @access public
-	 */
-	public function block_assets() {
-
-		// Styles.
-		wp_register_style(
-			$this->_slug . '-frontend',
-			$this->_url . '/dist/blocks.style.build.css',
-			array(),
-			$this->_version
-		);
-	}
-
-	/**
-	 * Enqueue block assets for use within Gutenberg.
-	 *
-	 * @access public
-	 */
-	public function editor_assets() {
-
-		// Styles.
-		wp_register_style(
-			$this->_slug . '-editor',
-			$this->_url . '/dist/blocks.editor.build.css',
-			array(),
-			$this->_version
-		);
-
-		// Scripts.
-		wp_register_script(
-			$this->_slug . '-editor',
-			$this->_url . '/dist/blocks.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api' ),
-			$this->_version,
-			true
-		);
-	}
-
-	/**
-	 * Enqueue Jed-formatted localization data.
-	 *
-	 * @access public
-	 */
-	public function localization() {
-
-		// Check if this function exists.
-		if ( ! function_exists( 'gutenberg_get_jed_locale_data' ) ) {
-			return;
-		}
-
-		$locale  = gutenberg_get_jed_locale_data( $this->_slug );
-		$content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ' );';
-
-		wp_script_add_data( $this->_slug . '-editor', 'data', $content );
-	}
-
-	/**
-	 * Loads the plugin language files.
-	 *
-	 * @access public
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public function load_textdomain() {
-		load_plugin_textdomain( '@@textdomain', false, dirname( plugin_basename( $this->_dir ) ) . '/languages/' );
-	}
+function coblocks() {
+	return CoBlocks::instance();
 }
 
-CoBlocks::register();
+// Get the plugin running. Load on plugins_loaded action to avoid issue on multisite.
+if ( function_exists( 'is_multisite' ) && is_multisite() ) {
+	add_action( 'plugins_loaded', 'coblocks', 90 );
+} else {
+	coblocks();
+}
