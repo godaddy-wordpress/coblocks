@@ -2,7 +2,6 @@
 	display: block;
 
 	.wp-block-coblocks-row__inner.has-no-gutter {
-
 		> .editor-inner-blocks > .editor-block-list__layout > .wp-block > .editor-block-list__block-edit {
 			margin-left: -43px;
 			margin-right: -43px;
@@ -37,7 +36,6 @@
 
 			// Hide column dropzones if there is no room to drop background images.
 			&[data-background-dropzone="false"] {
-
 				> .editor-block-list__block-edit > div > .components-drop-zone {
 					display: none;
 				}
@@ -61,16 +59,41 @@
 				margin-bottom: 0;
 			}
 
-			> .editor-block-list__block-edit > div > .wp-block-coblocks-column > .wp-block-coblocks-column > .wp-block-coblocks-column__inner > .editor-inner-blocks > .editor-block-list__layout > .wp-block:first-of-type > .editor-block-list__block-edit {
+			> .editor-block-list__block-edit
+				> div
+				> .wp-block-coblocks-column
+				> .wp-block-coblocks-column
+				> .wp-block-coblocks-column__inner
+				> .editor-inner-blocks
+				> .editor-block-list__layout
+				> .wp-block:first-of-type
+				> .editor-block-list__block-edit {
 				margin-top: 0;
 			}
 
-			> .editor-block-list__block-edit > div > .wp-block-coblocks-column > .wp-block-coblocks-column > .wp-block-coblocks-column__inner > .editor-inner-blocks > .editor-block-list__layout > .wp-block > .editor-block-list__block-edit {
+			> .editor-block-list__block-edit
+				> div
+				> .wp-block-coblocks-column
+				> .wp-block-coblocks-column
+				> .wp-block-coblocks-column__inner
+				> .editor-inner-blocks
+				> .editor-block-list__layout
+				> .wp-block
+				> .editor-block-list__block-edit {
 				margin-bottom: 0;
 			}
 
 			// Zero out margin from the default block appender.
-			> .editor-block-list__block-edit > div > .wp-block-coblocks-column > .wp-block-coblocks-column > .wp-block-coblocks-column__inner > .editor-inner-blocks > .editor-block-list__layout > div > .editor-default-block-appender .editor-default-block-appender__content {
+			> .editor-block-list__block-edit
+				> div
+				> .wp-block-coblocks-column
+				> .wp-block-coblocks-column
+				> .wp-block-coblocks-column__inner
+				> .editor-inner-blocks
+				> .editor-block-list__layout
+				> div
+				> .editor-default-block-appender
+				.editor-default-block-appender__content {
 				margin-bottom: 0;
 				margin-top: 0;
 			}
@@ -93,11 +116,10 @@
 			min-width: 0;
 
 			// Prevent long unbroken words from overflowing.
-			word-break: break-word; // For back-compat.
 			overflow-wrap: break-word; // New standard.
+			word-break: break-word; // For back-compat.
 
 			&.is-selected {
-
 				.components-resizable-box__container.wp-block-coblocks-column {
 					z-index: 999;
 				}
@@ -118,8 +140,8 @@
 	// Width tag that pops up.
 	.coblocks-resizeable-width {
 		background: #0085ba;
-		border-radius: 4px;
 		border: 2px solid #fff;
+		border-radius: 4px;
 		color: #fff;
 		font-family: $default-font;
 		font-size: 10px;
@@ -137,14 +159,14 @@
 
 		&::after,
 		&::before {
-			top: 100%;
-			left: 50%;
 			border: solid transparent;
 			content: " ";
 			height: 0;
-			width: 0;
-			position: absolute;
+			left: 50%;
 			pointer-events: none;
+			position: absolute;
+			top: 100%;
+			width: 0;
 		}
 
 		&::before {
@@ -172,24 +194,19 @@
 
 // Make the column selected border dashed so we can tell it apart.
 .wp-block[data-type="coblocks/row"] {
-
 	&:not([data-layout="none"]) > .editor-block-list__block-edit::before {
 		outline-style: dashed !important;
 	}
 
 	> .editor-block-list__block-edit .components-drop-zone {
-		z-index: 9999999;
+		z-index: 159999;
 	}
 }
 
 .wp-block-coblocks-row {
-
 	.wp-block-coblocks-row__inner {
-
 		&.has-no-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
-
 			@include break-small() {
-
 				&:nth-child(odd) {
 					margin-right: 0;
 				}
@@ -209,9 +226,7 @@
 		}
 
 		&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
-
 			@include break-small() {
-
 				&:nth-child(odd) {
 					margin-right: $gutter--small - 16px;
 				}
@@ -231,9 +246,7 @@
 		}
 
 		&.has-medium-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
-
 			@include break-small() {
-
 				&:nth-child(odd) {
 					margin-right: $gutter--medium - 16px;
 				}
@@ -253,9 +266,7 @@
 		}
 
 		&.has-large-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
-
 			@include break-small() {
-
 				&:nth-child(odd) {
 					margin-right: $gutter--large - 16px;
 				}
@@ -278,13 +289,11 @@
 
 // Clean up Row > Column block UI
 .wp-block-coblocks-row [data-type="coblocks/column"] {
-
 	.editor-block-list__breadcrumb {
 		display: none;
 	}
 
 	&.is-hovered {
-
 		> .editor-block-list__block-edit::before {
 			content: none;
 		}
@@ -303,9 +312,7 @@
 
 // Improve UI/X of the resizable box handles
 .components-resizable-box__container.wp-block-coblocks-column {
-
 	&.is-selected-column {
-
 		> span > .components-resizable-box__handle {
 			display: block;
 		}
@@ -370,7 +377,6 @@
 	&.is-selected-column::after,
 	div[data-type="coblocks/row"].is-selected &::after,
 	div[data-type="coblocks/row"].is-resizing &::after {
-
 		.has-no-gutter & {
 			right: -4px;
 		}
@@ -391,10 +397,10 @@
 
 //fix last child hidden resizeable bar
 div[data-type="coblocks/row"].is-selected,
-div[data-type="coblocks/row"].is-resizing{
+div[data-type="coblocks/row"].is-resizing {
 	div[data-type="coblocks/column"]:last-child > div > div > {
 		.components-resizable-box__container.wp-block-coblocks-column > span > .components-resizable-box__handle,
-		.components-resizable-box__container.wp-block-coblocks-column::after{
+		.components-resizable-box__container.wp-block-coblocks-column::after {
 			display: none;
 		}
 	}
@@ -436,8 +442,8 @@ div[data-type="coblocks/row"].is-resizing .has-large-gutter .components-resizabl
 	right: -55px;
 }
 
-.wp-block[data-type="coblocks/row"][data-columns="1"]{
-	.editor-block-list__block{
+.wp-block[data-type="coblocks/row"][data-columns="1"] {
+	.editor-block-list__block {
 		max-width: 100% !important;
 	}
 }
