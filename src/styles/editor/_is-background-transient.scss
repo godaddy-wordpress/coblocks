@@ -1,6 +1,5 @@
 // Animation effect when a background image is uploaded
 @keyframes background_loading_fade {
-
 	0% {
 		opacity: 0.5;
 	}
@@ -23,13 +22,13 @@
 }
 
 .is-background-image-transient::after {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	left: 0;
 	background: #fff;
+	bottom: 0;
 	content: "";
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
 	z-index: 1;
 	@include background_loading_fade;
 }
