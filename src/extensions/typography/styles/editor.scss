@@ -155,6 +155,13 @@
 	}
 }
 
+.editor-block-list__block[data-custom-letterspacing="1"] {
+	.block-library-button__inline-link,
+	.editor-block-list__breadcrumb{
+		letter-spacing: normal;
+	}
+}
+
 body {
 	.editor-block-list__block[data-custom-lineheight="1"] {
 		.wp-block-heading {

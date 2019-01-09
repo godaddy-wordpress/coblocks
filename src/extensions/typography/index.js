@@ -122,28 +122,34 @@ const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
 		let blockName		= select( 'core/editor' ).getBlockName( props.clientId );
 
 		if( allowedBlocks.includes( blockName ) ){
-			if( attributes.customFontSize ){
+			const { customFontSize, fontFamily, lineHeight, fontWeight, letterSpacing, textTransform, customTextColor } = attributes;
+
+			if( customFontSize ){
 				customData = Object.assign( customData, { 'data-custom-fontsize': 1 } );
 			}
 
-			if( attributes.lineHeight ){
+			if( lineHeight ){
 				customData = Object.assign( customData, { 'data-custom-lineheight': 1 } );
 			}
 
-			if( attributes.fontFamily ){
+			if( fontFamily ){
 				customData = Object.assign( customData, { 'data-custom-fontfamily': 1 } );
 			}
 
-			if( attributes.fontWeight ){
+			if( fontWeight ){
 				customData = Object.assign( customData, { 'data-custom-fontweight': 1 } );
 			}
 
-			if( attributes.textTransform ){
+			if( textTransform ){
 				customData = Object.assign( customData, { 'data-custom-texttransform': 1 } );
 			}
 
-			if( attributes.customTextColor ){
+			if( customTextColor ){
 				customData = Object.assign( customData, { 'data-custom-textcolor': 1 } );
+			}
+
+			if ( letterSpacing ) {
+				customData = Object.assign( customData, { 'data-custom-letterspacing' : 1 } );
 			}
 
 			wrapperProps = {
@@ -176,7 +182,7 @@ function applyFontSettings(extraProps, blockType, attributes) {
 			extraProps.style = applyStyle( attributes, blockType.name );
 		}
 
-		const { customFontSize, fontFamily, lineHeight, fontWeight, textTransform, noBottomSpacing, noTopSpacing } = attributes;
+		const { customFontSize, fontFamily, lineHeight, fontWeight, letterSpacing, textTransform, noBottomSpacing, noTopSpacing } = attributes;
 
 		if ( customFontSize ) {
 			extraProps.className = classnames( extraProps.className, 'has-custom-size' );
@@ -196,6 +202,10 @@ function applyFontSettings(extraProps, blockType, attributes) {
 
 		if ( lineHeight ) {
 			extraProps.className = classnames( extraProps.className, 'has-custom-lineheight' );
+		}
+
+		if ( letterSpacing ) {
+			extraProps.className = classnames( extraProps.className, 'has-custom-letterspacing' );
 		}
 
 		if ( typeof noBottomSpacing !== 'undefined' && noBottomSpacing ) {
