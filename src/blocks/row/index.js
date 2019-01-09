@@ -76,6 +76,10 @@ const blockAttributes = {
 	customTextColor: {
 		type: 'string',
 	},
+	stacked: {
+		type: 'boolean',
+		default: true,
+	},
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 };
@@ -144,6 +148,7 @@ const settings = {
 			gutter,
 			id,
 			layout,
+			stacked,
 			marginBottom,
 			marginLeft,
 			marginRight,
@@ -184,6 +189,7 @@ const settings = {
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 			'has-margin': marginSize && marginSize != 'no',
 			[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
+			'is-stacked-on-mobile': stacked,
 		} );
 
 		const innerStyles = {

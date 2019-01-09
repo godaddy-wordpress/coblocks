@@ -2,6 +2,14 @@
 	// Don't use flexbox if the row is 1 column, 100% wide.
 	.wp-block-coblocks-row__inner {
 		display: flex;
+		@media (max-width: 600px){
+			&.is-stacked-on-mobile{
+				flex-direction: column;
+				> .wp-block-coblocks-column{
+					width: 100% !important;
+				}
+			}
+		}
 	}
 }
 

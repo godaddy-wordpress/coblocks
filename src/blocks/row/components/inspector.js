@@ -19,7 +19,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.editor;
-const { PanelBody, RangeControl, SelectControl, ButtonGroup, Button, Tooltip, Placeholder, withFallbackStyles } = wp.components;
+const { PanelBody, RangeControl, SelectControl, ToggleControl, ButtonGroup, Button, Tooltip, Placeholder, withFallbackStyles } = wp.components;
 
 /**
  * Fallback styles
@@ -70,6 +70,7 @@ class Inspector extends Component {
 			columns,
 			gutter,
 			layout,
+			stacked,
 			marginBottom,
 			marginLeft,
 			marginRight,
@@ -214,6 +215,12 @@ class Inspector extends Component {
 													onChange={ ( value ) => setAttributes( { gutter: value } ) }
 												/>
 											}
+
+											<ToggleControl
+												label={ __( 'Stack on mobile' ) }
+												checked={ !! stacked }
+												onChange={ () => setAttributes( {  stacked: ! stacked } ) }
+											/>
 									</PanelBody>
 									<PanelColorSettings
 										title={ __( 'Color Settings' ) }
