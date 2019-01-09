@@ -143,6 +143,12 @@
 	}
 }
 
+.editor-block-list__block[data-custom-fontweight="1"] {
+	.block-library-button__inline-link{
+		font-weight: normal;
+	}
+}
+
 body {
 	.editor-block-list__block[data-custom-lineheight="1"] {
 		.wp-block-heading {
