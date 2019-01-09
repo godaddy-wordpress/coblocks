@@ -25,7 +25,7 @@ class Controls extends Component {
 			setAttributes,
 		} = this.props;
 
-		const allowedBlocks = [ 'core/heading', 'core/cover', 'core/button' ];
+		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/button' ];
 
 		// Display on the allowedBlocks only.
 		if ( ! allowedBlocks.includes( this.props.name ) ){
