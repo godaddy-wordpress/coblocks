@@ -53,11 +53,11 @@ const DimensionsAttributes = {
 	},
 	paddingSyncUnitsTablet: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	paddingSyncUnitsMobile: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	marginTop: {
 		type: 'number',
