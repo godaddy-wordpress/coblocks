@@ -194,6 +194,8 @@
 
 // Make the column selected border dashed so we can tell it apart.
 .wp-block[data-type="coblocks/row"] {
+	background: transparent !important;
+
 	&:not([data-layout="none"]) > .editor-block-list__block-edit::before {
 		outline-style: dashed !important;
 	}
@@ -289,6 +291,8 @@
 
 // Clean up Row > Column block UI
 .wp-block-coblocks-row [data-type="coblocks/column"] {
+	background: transparent !important;
+	
 	.editor-block-list__breadcrumb {
 		display: none;
 	}
