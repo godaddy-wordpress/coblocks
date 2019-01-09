@@ -43,6 +43,7 @@ class DimensionsControl extends Component {
 		} else {
 			this.props.setAttributes( { [ 'marginTop' + device ]: value } );
 		}
+		this.saveMeta();
 
 	}
 
@@ -52,6 +53,7 @@ class DimensionsControl extends Component {
 		} else {
 			this.props.setAttributes( { [ 'marginRight' + device ]: value } );
 		}
+		this.saveMeta();
 
 	}
 
@@ -61,6 +63,7 @@ class DimensionsControl extends Component {
 		} else {
 			this.props.setAttributes( { [ 'marginBottom' + device ]: value } );
 		}
+		this.saveMeta();
 
 	}
 
@@ -70,6 +73,7 @@ class DimensionsControl extends Component {
 		} else {
 			this.props.setAttributes( { [ 'marginLeft' + device ]: value } );
 		}
+		this.saveMeta();
 
 	}
 
@@ -141,32 +145,32 @@ class DimensionsControl extends Component {
 			let paddingUnit = block.attributes.paddingUnit;
 			let marginUnit = block.attributes.marginUnit;
 			let padding = {
-				paddingTop: block.attributes.paddingTop + paddingUnit,
-				paddingRight: block.attributes.paddingRight + paddingUnit,
-				paddingBottom: block.attributes.paddingBottom + paddingUnit,
-				paddingLeft: block.attributes.paddingLeft + paddingUnit,
-				paddingTopTablet: block.attributes.paddingTopTablet + paddingUnit,
-				paddingRightTablet: block.attributes.paddingRightTablet + paddingUnit,
-				paddingBottomTablet: block.attributes.paddingBottomTablet + paddingUnit,
-				paddingLeftTablet: block.attributes.paddingLeftTablet + paddingUnit,
-				paddingTopMobile: block.attributes.paddingTopMobile + paddingUnit,
-				paddingRightMobile: block.attributes.paddingRightMobile + paddingUnit,
-				paddingBottomMobile: block.attributes.paddingBottomMobile + paddingUnit,
-				paddingLeftMobile: block.attributes.paddingLeftMobile + paddingUnit,
+				paddingTop: ( block.attributes.paddingTop ) ? block.attributes.paddingTop + paddingUnit : null,
+				paddingRight: ( block.attributes.paddingRight ) ? block.attributes.paddingRight + paddingUnit : null,
+				paddingBottom: ( block.attributes.paddingBottom ) ? block.attributes.paddingBottom + paddingUnit : null,
+				paddingLeft: ( block.attributes.paddingLeft ) ? block.attributes.paddingLeft + paddingUnit : null,
+				paddingTopTablet: ( block.attributes.paddingTopTablet ) ? block.attributes.paddingTopTablet + paddingUnit : null,
+				paddingRightTablet: ( block.attributes.paddingRightTablet ) ? block.attributes.paddingRightTablet + paddingUnit : null,
+				paddingBottomTablet: ( block.attributes.paddingBottomTablet ) ? block.attributes.paddingBottomTablet + paddingUnit : null,
+				paddingLeftTablet: ( block.attributes.paddingLeftTablet ) ? block.attributes.paddingLeftTablet + paddingUnit : null,
+				paddingTopMobile: ( block.attributes.paddingTopMobile ) ? block.attributes.paddingTopMobile + paddingUnit : null,
+				paddingRightMobile: ( block.attributes.paddingRightMobile ) ? block.attributes.paddingRightMobile + paddingUnit : null,
+				paddingBottomMobile: ( block.attributes.paddingBottomMobile ) ? block.attributes.paddingBottomMobile + paddingUnit : null,
+				paddingLeftMobile: ( block.attributes.paddingLeftMobile ) ? block.attributes.paddingLeftMobile + paddingUnit : null,
 			};
 			let margin = {
-				marginTop: block.attributes.marginTop + marginUnit,
-				marginRight: block.attributes.marginRight + marginUnit,
-				marginBottom: block.attributes.marginBottom + marginUnit,
-				marginLeft: block.attributes.marginLeft + marginUnit,
-				marginTopTablet: block.attributes.marginTopTablet + marginUnit,
-				marginRightTablet: block.attributes.marginRightTablet + marginUnit,
-				marginBottomTablet: block.attributes.marginBottomTablet + marginUnit,
-				marginLeftTablet: block.attributes.marginLeftTablet + marginUnit,
-				marginTopMobile: block.attributes.marginTopMobile + marginUnit,
-				marginRightMobile: block.attributes.marginRightMobile + marginUnit,
-				marginBottomMobile: block.attributes.marginBottomMobile + marginUnit,
-				marginLeftMobile: block.attributes.marginLeftMobile + marginUnit,
+				marginTop: ( block.attributes.marginTop ) ? block.attributes.marginTop + marginUnit : null,
+				marginRight: ( block.attributes.marginRight ) ? block.attributes.marginRight + marginUnit : null,
+				marginBottom: ( block.attributes.marginBottom ) ? block.attributes.marginBottom + marginUnit : null,
+				marginLeft: ( block.attributes.marginLeft ) ? block.attributes.marginLeft + marginUnit : null,
+				marginTopTablet: ( block.attributes.marginTopTablet ) ? block.attributes.marginTopTablet + marginUnit : null,
+				marginRightTablet: ( block.attributes.marginRightTablet ) ? block.attributes.marginRightTablet + marginUnit : null,
+				marginBottomTablet: ( block.attributes.marginBottomTablet ) ? block.attributes.marginBottomTablet + marginUnit : null,
+				marginLeftTablet: ( block.attributes.marginLeftTablet ) ? block.attributes.marginLeftTablet + marginUnit : null,
+				marginTopMobile: ( block.attributes.marginTopMobile ) ? block.attributes.marginTopMobile + marginUnit : null,
+				marginRightMobile: ( block.attributes.marginRightMobile ) ? block.attributes.marginRightMobile + marginUnit : null,
+				marginBottomMobile: ( block.attributes.marginBottomMobile ) ? block.attributes.marginBottomMobile + marginUnit : null,
+				marginLeftMobile: ( block.attributes.marginLeftMobile ) ? block.attributes.marginLeftMobile + marginUnit : null,
 			};
 
 			if ( typeof meta._coblocks_dimensions === 'undefined' || ( typeof meta._coblocks_dimensions !== 'undefined' && meta._coblocks_dimensions  == '' ) ){
