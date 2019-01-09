@@ -128,6 +128,11 @@
 			}
 		}
 	}
+
+	.block-library-button__inline-link,
+	.editor-block-list__breadcrumb{
+		text-transform: none;
+	}
 }
 
 .editor-block-list__block[data-custom-textcolor="1"] {
@@ -144,7 +149,8 @@
 }
 
 .editor-block-list__block[data-custom-fontweight="1"] {
-	.block-library-button__inline-link{
+	.block-library-button__inline-link,
+	.editor-block-list__breadcrumb{
 		font-weight: normal;
 	}
 }
