@@ -414,6 +414,14 @@ div[data-type="coblocks/row"].is-resizing {
 		}
 	}
 }
+div[data-type="coblocks/column"]:last-child{
+	.components-resizable-box__container.wp-block-coblocks-column.is-selected-column{
+		> span > .components-resizable-box__handle,
+		&::after{
+			display: none;
+		}
+	}
+}
 
 div[data-type="coblocks/row"].is-selected .has-no-gutter .components-resizable-box__container.wp-block-coblocks-column::after,
 div[data-type="coblocks/row"].is-resizing .has-no-gutter .components-resizable-box__container.wp-block-coblocks-column::after {
