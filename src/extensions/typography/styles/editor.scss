@@ -162,13 +162,20 @@ body {
 			}
 		}
 
+		.block-library-list{
+			ul,
+			li{
+				line-height: inherit;
+			}
+		}
+
 		.editor-rich-text {
 			p {
 				line-height: inherit !important;
 			}
 
 			.wp-block-cover-text {
-				font-family: inherit;
+				line-height: inherit;
 			}
 		}
 

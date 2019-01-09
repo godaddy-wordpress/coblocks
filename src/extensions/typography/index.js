@@ -22,7 +22,7 @@ const { Fragment }	= wp.element;
 const { InspectorAdvancedControls }	= wp.components;
 const { compose, createHigherOrderComponent } = wp.compose;
 
-const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'coblocks/row', 'coblocks/column' ];
+const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'coblocks/row', 'coblocks/column', 'core/list' ];
 
 /**
  * Filters registered block settings, extending attributes with settings

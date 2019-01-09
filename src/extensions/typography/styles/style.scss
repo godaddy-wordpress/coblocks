@@ -37,3 +37,22 @@
 		}
 	}
 }
+
+ul{
+	&.has-custom-lineheight {
+		li{
+			line-height: inherit;
+		}
+	}
+	&.has-custom-size {
+		li{
+			font-size: inherit;
+		}
+	}
+
+	&.has-custom-font {
+		li{
+			font-family: inherit;
+		}
+	}
+}
