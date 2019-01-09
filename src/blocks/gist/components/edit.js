@@ -76,12 +76,16 @@ class Edit extends Component {
 
 		return [
 			<Fragment>
-				<Inspector
-					{ ...this.props }
-				/>
-				<Controls
-					{ ...this.props }
-				/>
+				{ url && url.length > 0 && isSelected && (
+					<Controls
+						{ ...this.props }
+					/>
+				) }
+				{ url && url.length > 0 && isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
 				{ preview ? (
 					url && (
 						<div

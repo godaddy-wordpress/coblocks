@@ -1,0 +1,69 @@
+.bg {
+
+	// Background repeat
+	&-repeat {
+		background-repeat: repeat;
+	}
+
+	&-no-repeat {
+		background-repeat: no-repeat;
+	}
+
+	&-repeat-x {
+		background-repeat: repeat-x;
+	}
+
+	&-repeat-y {
+		background-repeat: repeat-y;
+	}
+
+	// Background size
+	&-cover {
+		background-size: cover;
+	}
+
+	&-auto {
+		background-size: auto;
+	}
+
+	&-contain {
+		background-size: contain;
+	}
+
+	// Background position
+	&-top-left {
+		background-position: top left;
+	}
+
+	&-top-center {
+		background-position: top center;
+	}
+
+	&-top-right {
+		background-position: top right;
+	}
+
+	&-center-left {
+		background-position: center left;
+	}
+
+	&-center-center {
+		background-position: center center;
+	}
+
+	&-center-right {
+		background-position: center right;
+	}
+
+	&-bottom-left {
+		background-position: bottom left;
+	}
+
+	&-bottom-center {
+		background-position: bottom center;
+	}
+
+	&-bottom-right {
+		background-position: bottom right;
+	}
+}

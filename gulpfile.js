@@ -12,7 +12,8 @@ var buildDestinationFiles = './build/'+project+'/**/*';
 
 // Release.
 var sftpDemoFilesToUpload = ['./build/' + project + '/**/*', '!/build/' + project + '/src/', '!build/' + project + '/src/**/*'];
-var cleanSrcFiles	  = ['./build/'+project+'/src/'];
+var cleanSrcFiles	  = [ './build/' + project + '/src/**/*.js', './build/' + project + '/src/**/*.scss', '!build/' + project + '/src/blocks/**/*.php' ];
+var srcDirectory	  = './build/' + project + '/src/';
 
 // Translation.
 var text_domain             	= '@@textdomain';
@@ -23,6 +24,7 @@ var lastTranslator          	= pkg.author;
 var team                    	= pkg.author_shop;
 var translatePath           	= './languages';
 var translatableFiles       	= ['./**/*.php'];
+var jsPotFile 			= [ './languages/'+project+'-js.pot', './build/languages/'+project+'-js.pot' ];
 
 /**
  * Load Plugins.
@@ -38,8 +40,8 @@ var run                 = require('gulp-run-command').default;
 var sftp                = require("gulp-sftp");
 var open                = require("gulp-open");
 var gulpif              = require('gulp-if');
-var wpPot        = require('gulp-wp-pot');
-var jsPotFile	  		= [ './languages/'+project+'-js.pot', './build/languages/'+project+'-js.pot' ];
+var wpPot 		= require('gulp-wp-pot');
+var deleteEmpty 	= require('delete-empty');
 
 /**
  * Tasks.
@@ -59,15 +61,14 @@ gulp.task( 'removeJSPotFile', function(done) {
 	done();
 });
 
-gulp.task('cleanSrc', function(done) {
-
-	if ( 'coblocks' == project ) {
-		done();
-		return;
-	}
-
+gulp.task( 'cleanSrc', function(done) {
 	return del( cleanSrcFiles );
+	done();
+});
 
+gulp.task( 'deleteEmptyDirectories', function(done) {
+	deleteEmpty.sync( srcDirectory );
+	console.log(deleteEmpty.sync(srcDirectory));
 	done();
 });
 
@@ -76,6 +77,8 @@ gulp.task( 'npmStart', run( 'npm run start' ) )
 gulp.task( 'npmBuild', run( 'npm run build' ) )
 
 gulp.task( 'npmInstall', run( 'npm install' ) )
+
+gulp.task( 'npmMakeBabel', run( 'npm run babel' ) )
 
 gulp.task( 'npmMakePot', run( 'npm run makepot' ) )
 
@@ -170,6 +173,23 @@ gulp.task( 'translate', function(done) {
 
 });
 
+// Ensures SLUG_DEBUG is set to false for all build files.
+gulp.task( 'debug_mode_off', function (done) {
+	return gulp.src( ['build/'+project+'/class-coblocks.php'] )
+
+	.pipe( replace( {
+		patterns: [
+		{
+			match: '_DEBUG\', true );',
+			replacement: '_DEBUG\', false );'
+		}
+		],
+		usePrefix: false
+	} ) )
+	.pipe( gulp.dest( buildDestination ) );
+	done();
+});
+
 gulp.task('zip', function(done) {
 	return gulp.src( buildDestination + '/**', { base: 'build' } )
 	.pipe( zip( project + '.zip' ) )
@@ -183,7 +203,7 @@ gulp.task('build-notice', function(done) {
 	done();
 });
 
-gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'variables', 'zip',  function(done) {
+gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip',  function(done) {
 	done();
 } ) );
 
@@ -194,88 +214,6 @@ gulp.task('build', gulp.series( 'build-process', 'build-notice', function(done) 
 /**
  * Release Tasks.
  */
-
-gulp.task( 'upload-to-sandbox', function(done) {
-
-	if ( 'coblocks-pro' == project ) {
-		done();
-		return;
-	}
-
-	var sftpFile;
-
-	try {
-		var sftpFile = require('./sftp.json');
-	} catch (error) {
-		done();
-	}
-
-	if (sftpFile) {
-		return gulp.src( sftpDemoFilesToUpload )
-		.pipe( sftp( {
-			host: sftpFile.sandboxHost,
-			authFile: '.ftppass',
-			auth: 'SandboxSFTP',
-			remotePath: sftpFile.sandboxRemotePath,
-			port: sftpFile.sandboxPort,
-		}))
-	}
-});
-
-gulp.task( 'open-sandbox', function(done){
-
-	if ( 'coblocks-pro' == project ) {
-		done();
-		return;
-	}
-
-	var sftpFile;
-
-	try {
-		var sftpFile = require('./sftp.json');
-	} catch (error) {
-		done();
-	}
-
-	if (sftpFile) {
-		gulp.src(__filename)
-		.pipe( open( { uri: sftpFile.sandboxURL } ) )
-		.pipe( notify( { message: 'You may now save the ' + title + ' Sandbox.', onLast: false } ) );
-	}
-
-	done();
-});
-
-gulp.task( 'sftp-upload-zip', function(done) {
-
-	if ( 'coblocks' == project ) {
-		done();
-		return;
-	}
-
-	var sftpFile;
-
-	try {
-		var sftpFile = require('./sftp.json');
-	} catch (error) {
-		done();
-	}
-
-	if (sftpFile) {
-		return gulp.src( './build/' + project + '.zip' )
-		.pipe( sftp( {
-			host: sftpFile.buildHost,
-			authFile: '.ftppass',
-			auth: 'CoBlocksSFTP',
-			remotePath: sftpFile.buildRemotePath,
-			port: sftpFile.buildPort,
-		}))
-		.pipe( notify( { message: 'The ' + title + ' zip has been uploaded.', onLast: false } ) );
-	}
-
-	done();
-});
-
 gulp.task( 'release-notice', function(done) {
 
 	var sftpFile;
@@ -317,9 +255,6 @@ gulp.task(
 	'release',
 	gulp.series(
 		'build-process',
-		'upload-to-sandbox',
-		'open-sandbox',
-		'sftp-upload-zip',
 		'release-notice', function(done) {
 	done();
 } ) );

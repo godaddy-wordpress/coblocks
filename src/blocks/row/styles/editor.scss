@@ -1,0 +1,461 @@
+.wp-block-coblocks-row {
+	display: block;
+
+	.wp-block-coblocks-row__inner.has-no-gutter {
+		> .editor-inner-blocks > .editor-block-list__layout > .wp-block > .editor-block-list__block-edit {
+			margin-left: -43px;
+			margin-right: -43px;
+		}
+	}
+
+	.wp-block[data-type="coblocks/row"][data-columns="1"] & &__inner {
+		display: inherit;
+
+		.editor-inner-blocks > .editor-block-list__layout {
+			display: inherit;
+		}
+	}
+
+	.wp-block-coblocks-row__inner > .editor-inner-blocks > .editor-block-list__layout {
+		display: flex;
+		margin-left: -15px;
+		margin-right: -15px;
+
+		@include break-small() {
+			flex-wrap: nowrap;
+		}
+
+		// Adjust the individual column block.
+		> [data-type="coblocks/column"] {
+			display: flex;
+			flex-direction: column;
+
+			.wp-block-coblocks-column {
+				margin: 0 !important;
+			}
+
+			// Hide column dropzones if there is no room to drop background images.
+			&[data-background-dropzone="false"] {
+				> .editor-block-list__block-edit > div > .components-drop-zone {
+					display: none;
+				}
+			}
+
+			// Ensure the column drop zone is properly indexed.
+			> .editor-block-list__block-edit > div > .components-drop-zone {
+				z-index: 9999;
+			}
+
+			// The Columns block is a child of the Row block and a passthrough.
+			// Therefore it shouldn't add additional paddings and margins..
+			// so we reset these, and compensate for margins.
+			> .editor-block-list__block-edit > div > .editor-inner-blocks {
+				margin-bottom: -$block-padding - $block-padding;
+				margin-top: -$block-padding - $block-padding;
+			}
+
+			> .editor-block-list__block-edit {
+				margin-bottom: 0;
+				margin-top: 0;
+			}
+
+			> .editor-block-list__block-edit
+				> div
+				> .wp-block-coblocks-column
+				> .wp-block-coblocks-column
+				> .wp-block-coblocks-column__inner
+				> .editor-inner-blocks
+				> .editor-block-list__layout
+				> .wp-block:first-of-type
+				> .editor-block-list__block-edit {
+				margin-top: 0;
+			}
+
+			> .editor-block-list__block-edit
+				> div
+				> .wp-block-coblocks-column
+				> .wp-block-coblocks-column
+				> .wp-block-coblocks-column__inner
+				> .editor-inner-blocks
+				> .editor-block-list__layout
+				> .wp-block
+				> .editor-block-list__block-edit {
+				margin-bottom: 0;
+			}
+
+			// Zero out margin from the default block appender.
+			> .editor-block-list__block-edit
+				> div
+				> .wp-block-coblocks-column
+				> .wp-block-coblocks-column
+				> .wp-block-coblocks-column__inner
+				> .editor-inner-blocks
+				> .editor-block-list__layout
+				> div
+				> .editor-default-block-appender
+				.editor-default-block-appender__content {
+				margin-bottom: 0;
+				margin-top: 0;
+			}
+
+			// Make the column selected border dashed so we can tell it apart.
+			> .editor-block-list__block-edit::before {
+				outline-style: dashed;
+			}
+
+			// Make the column selected border dashed so we can tell it apart.
+			&.is-resizing > .editor-block-list__block-edit::before {
+				outline-width: 0 !important;
+			}
+
+			> .editor-block-list__block-edit > .editor-block-contextual-toolbar {
+				margin-left: -$border-width;
+			}
+
+			// Prevent the columns from growing wider than their distributed sizes.
+			min-width: 0;
+
+			// Prevent long unbroken words from overflowing.
+			overflow-wrap: break-word; // New standard.
+			word-break: break-word; // For back-compat.
+
+			&.is-selected {
+				.components-resizable-box__container.wp-block-coblocks-column {
+					z-index: 999;
+				}
+			}
+		}
+	}
+
+	// Child blocks should be 100% wide.
+	.editor-inner-blocks {
+		width: 100%;
+	}
+
+	// This max-width is used to constrain the main editor column, not children.
+	.editor-block-list__block {
+		max-width: none;
+	}
+
+	// Width tag that pops up.
+	.coblocks-resizeable-width {
+		background: #0085ba;
+		border: 2px solid #fff;
+		border-radius: 4px;
+		color: #fff;
+		font-family: $default-font;
+		font-size: 10px;
+		line-height: 1;
+		opacity: 0;
+		padding: 4px 5px 5px;
+		position: absolute;
+		right: -16px;
+		text-align: center;
+		top: -31px;
+		transform: scale(0);
+		transition: opacity 50ms cubic-bezier(0.39, 0.575, 0.565, 1), transform 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
+		width: 46px;
+		z-index: 9999;
+
+		&::after,
+		&::before {
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			left: 50%;
+			pointer-events: none;
+			position: absolute;
+			top: 100%;
+			width: 0;
+		}
+
+		&::before {
+			border-color: rgba(255, 255, 255, 0);
+			border-top-color: #fff;
+			border-width: 6px;
+			margin-left: -6px;
+		}
+
+		&::after {
+			border-color: rgba(0, 133, 186, 0);
+			border-top-color: #0085ba;
+			border-width: 3px;
+			margin-left: -3px;
+		}
+
+		// Only show if the column is actively being resized.
+		&.is-resizing {
+			opacity: 1;
+			transform: scale(1);
+			transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1), transform 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
+		}
+	}
+}
+
+// Make the column selected border dashed so we can tell it apart.
+.wp-block[data-type="coblocks/row"] {
+	background: transparent !important;
+
+	&:not([data-layout="none"]) > .editor-block-list__block-edit::before {
+		outline-style: dashed !important;
+	}
+
+	> .editor-block-list__block-edit .components-drop-zone {
+		z-index: 159999;
+	}
+}
+
+.wp-block-coblocks-row {
+	.wp-block-coblocks-row__inner {
+		&.has-no-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+			@include break-small() {
+				&:nth-child(odd) {
+					margin-right: 0;
+				}
+
+				&:nth-child(even) {
+					margin-left: 0;
+				}
+
+				&:not(:first-child) {
+					margin-left: 0;
+				}
+
+				&:not(:last-child) {
+					margin-right: 0;
+				}
+			}
+		}
+
+		&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+			@include break-small() {
+				&:nth-child(odd) {
+					margin-right: $gutter--small - 16px;
+				}
+
+				&:nth-child(even) {
+					margin-left: $gutter--small - 16px;
+				}
+
+				&:not(:first-child) {
+					margin-left: $gutter--small - 16px;
+				}
+
+				&:not(:last-child) {
+					margin-right: $gutter--small - 16px;
+				}
+			}
+		}
+
+		&.has-medium-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+			@include break-small() {
+				&:nth-child(odd) {
+					margin-right: $gutter--medium - 16px;
+				}
+
+				&:nth-child(even) {
+					margin-left: $gutter--medium - 16px;
+				}
+
+				&:not(:first-child) {
+					margin-left: $gutter--medium - 16px;
+				}
+
+				&:not(:last-child) {
+					margin-right: $gutter--medium - 16px;
+				}
+			}
+		}
+
+		&.has-large-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+			@include break-small() {
+				&:nth-child(odd) {
+					margin-right: $gutter--large - 16px;
+				}
+
+				&:nth-child(even) {
+					margin-left: $gutter--large - 16px;
+				}
+
+				&:not(:first-child) {
+					margin-left: $gutter--large - 16px;
+				}
+
+				&:not(:last-child) {
+					margin-right: $gutter--large - 16px;
+				}
+			}
+		}
+	}
+}
+
+// Clean up Row > Column block UI
+.wp-block-coblocks-row [data-type="coblocks/column"] {
+	background: transparent !important;
+	
+	.editor-block-list__breadcrumb {
+		display: none;
+	}
+
+	&.is-hovered {
+		> .editor-block-list__block-edit::before {
+			content: none;
+		}
+
+		.editor-block-list__breadcrumb {
+			display: none;
+		}
+	}
+
+	// Hide the block mover if the column is selected.
+	&.is-selected .editor-block-mover {
+		display: none !important;
+		opacity: 0 !important;
+	}
+}
+
+// Improve UI/X of the resizable box handles
+.components-resizable-box__container.wp-block-coblocks-column {
+	&.is-selected-column {
+		> span > .components-resizable-box__handle {
+			display: block;
+		}
+	}
+
+	> span > .components-resizable-box__handle {
+		z-index: 98;
+
+		&::before {
+			height: 15px;
+			width: 15px;
+		}
+
+		&-right {
+			height: calc(100% + 24px);
+			top: -14px;
+		}
+
+		&-left {
+			bottom: -14px;
+			left: inherit;
+			pointer-events: none;
+			top: inherit;
+		}
+
+		.has-no-gutter & {
+			right: -13px;
+		}
+
+		.has-small-gutter & {
+			right: -28px;
+		}
+
+		.has-medium-gutter & {
+			right: -33px;
+		}
+
+		.has-large-gutter & {
+			right: -44px;
+		}
+
+		div[data-type="coblocks/row"].is-selected &,
+		div[data-type="coblocks/row"].is-resizing & {
+			display: block;
+		}
+	}
+
+	// Adds a vertical resize bar to the handle for improved UI.
+	// Let's view the resize handles when the parent row is selected as well.
+	&.is-selected-column::after,
+	div[data-type="coblocks/row"].is-selected &::after,
+	div[data-type="coblocks/row"].is-resizing &::after {
+		height: 100%;
+		width: 7px;
+		background: #0085ba;
+		cursor: inherit;
+		display: block;
+		content: "";
+		right: -21px;
+		top: 0;
+		bottom: 0;
+		position: absolute;
+		z-index: 97;
+		border: 2px solid #fff;
+	}
+
+	&.is-selected-column::after,
+	div[data-type="coblocks/row"].is-selected &::after,
+	div[data-type="coblocks/row"].is-resizing &::after {
+		.has-no-gutter & {
+			right: -4px;
+		}
+
+		.has-small-gutter & {
+			right: -19px;
+		}
+
+		.has-medium-gutter & {
+			right: -24px;
+		}
+
+		.has-large-gutter & {
+			right: -35px;
+		}
+	}
+}
+
+//fix last child hidden resizeable bar
+div[data-type="coblocks/row"].is-selected,
+div[data-type="coblocks/row"].is-resizing {
+	div[data-type="coblocks/column"]:last-child > div > div > {
+		.components-resizable-box__container.wp-block-coblocks-column > span > .components-resizable-box__handle,
+		.components-resizable-box__container.wp-block-coblocks-column::after {
+			display: none;
+		}
+	}
+}
+
+div[data-type="coblocks/row"].is-selected .has-no-gutter .components-resizable-box__container.wp-block-coblocks-column::after,
+div[data-type="coblocks/row"].is-resizing .has-no-gutter .components-resizable-box__container.wp-block-coblocks-column::after {
+	right: -4px;
+}
+
+div[data-type="coblocks/row"].is-selected .has-small-gutter .components-resizable-box__container.wp-block-coblocks-column::after,
+div[data-type="coblocks/row"].is-resizing .has-small-gutter .components-resizable-box__container.wp-block-coblocks-column::after {
+	right: -19px;
+}
+
+div[data-type="coblocks/row"].is-selected .has-medium-gutter .components-resizable-box__container.wp-block-coblocks-column::after,
+div[data-type="coblocks/row"].is-resizing .has-medium-gutter .components-resizable-box__container.wp-block-coblocks-column::after {
+	right: -24px;
+}
+
+div[data-type="coblocks/row"].is-selected .has-large-gutter .components-resizable-box__container.wp-block-coblocks-column::after,
+div[data-type="coblocks/row"].is-resizing .has-large-gutter .components-resizable-box__container.wp-block-coblocks-column::after {
+	right: -35px;
+}
+
+.has-no-gutter .coblocks-resizeable-width {
+	right: -24px;
+}
+
+.has-small-gutter .coblocks-resizeable-width {
+	right: -39px;
+}
+
+.has-medium-gutter .coblocks-resizeable-width {
+	right: -44px;
+}
+
+.has-large-gutter .coblocks-resizeable-width {
+	right: -55px;
+}
+
+.wp-block[data-type="coblocks/row"][data-columns="1"] {
+	.editor-block-list__block {
+		max-width: 100% !important;
+	}
+}
+
+// Import layout selector
+@import "_layout-selector";

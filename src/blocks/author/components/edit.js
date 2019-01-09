@@ -13,7 +13,7 @@ import Controls from './controls';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText, MediaUpload, mediaUpload, InnerBlocks } = wp.editor;
+const { RichText, MediaUpload, mediaUpload, MediaUploadCheck, InnerBlocks } = wp.editor;
 const { Button, Dashicon, IconButton, DropZone } = wp.components;
 
 /**
@@ -115,29 +115,33 @@ class Edit extends Component {
 
 		return [
 			<Fragment>
-				<Controls
-					{ ...this.props }
-				/>
+				{ isSelected && (
+					<Controls
+						{ ...this.props }
+					/>
+				) }
 				<div className={ className } style={ { textAlign: textAlign } }>
 					{ dropZone }
 					<div className={ `${ className }__avatar` }>
-						<MediaUpload
-							onSelect={ onUploadImage }
-							allowedTypes={ [ 'image' ] }
-							value={ imgUrl }
-							render={ ( { open } ) => (
-								<Button onClick={ open }>
-									{ ! imgUrl ? <Dashicon icon="format-image" /> :
-										<img
-											className={ `${ className }__avatar-img` }
-											src={ imgUrl }
-											alt="avatar"
-										/>
-									}
-								</Button>
-							) }
-						>
-						</MediaUpload>
+						<MediaUploadCheck>
+							<MediaUpload
+								onSelect={ onUploadImage }
+								allowedTypes={ [ 'image' ] }
+								value={ imgUrl }
+								render={ ( { open } ) => (
+									<Button onClick={ open }>
+										{ ! imgUrl ? <Dashicon icon="format-image" /> :
+											<img
+												className={ `${ className }__avatar-img` }
+												src={ imgUrl }
+												alt="avatar"
+											/>
+										}
+									</Button>
+								) }
+							>
+							</MediaUpload>
+						</MediaUploadCheck>
 					</div>
 					<div className={ `${ className }__content` }>
 						{ ( ! RichText.isEmpty( heading ) || isSelected ) && (

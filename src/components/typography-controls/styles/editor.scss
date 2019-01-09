@@ -1,0 +1,118 @@
+.components-coblocks-typography-dropdown {
+	padding: 0;
+
+	&__inner {
+		padding: 16px;
+
+		select {
+			appearance: none;
+			background: 0 0;
+			border-color: #ccc;
+			border-radius: 4px;
+			border: 1px solid #8d96a0;
+			box-shadow: 0 0 0 transparent;
+			color: #555;
+			cursor: pointer;
+			font-size: 13px !important;
+			height: 30px;
+			line-height: 28px;
+			padding: 0 12px 2px;
+			position: relative;
+			transition: box-shadow 0.1s linear;
+			vertical-align: top;
+			white-space: nowrap;
+			width: 130px;
+
+			&:hover {
+				background: #fafafa;
+				border-color: #999;
+				box-shadow: inset 0 -1px 0 #999;
+				color: #23282d;
+				text-decoration: none;
+			}
+
+			&:active:enabled {
+				background: #eee;
+				border-color: #999;
+				box-shadow: inset 0 1px 0 #999;
+			}
+
+			&:focus:enabled {
+				background: #fafafa;
+				border-color: #999;
+				box-shadow: inset 0 -1px 0 #999,0 0 0 2px #bfe7f3;
+				color: #23282d;
+				text-decoration: none;
+			}
+		}
+
+		.components-base-control {
+			margin-bottom: 5px;
+		}
+
+		.components-base-control__label {
+			margin-bottom: 0;
+		}
+
+		.components-select-control__input {
+			margin: 0;
+		}
+
+		.components-range-control__number {
+			margin: 0 0 0 15px;
+		}
+
+		.components-range-control__slider {
+			margin-top: 6px;
+		}
+
+		&--line-height {
+			margin-top: 10px;
+			margin-bottom: -2px !important;
+		}
+
+		&--letter-spacing {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	&__footer {
+		border-top: 1px solid #e2e4e7;
+		margin: 16px -16px -16px;
+		padding: 18px 16px 14px;
+
+		.components-base-control {
+			margin-bottom: 0;
+
+			&:last-of-type .components-base-control__field {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.components-base-control--with-flex {
+
+		.components-base-control__field {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
+			position: relative;
+
+			&::after {
+				border-left: 3px solid transparent;
+				border-right: 3px solid transparent;
+				border-top: 5px solid currentColor;
+				content: "";
+				display: block;
+				height: 0;
+				margin-left: 4px;
+				margin-right: 2px;
+				pointer-events: none;
+				position: absolute;
+				right: 8px;
+				top: 12px;
+				width: 0;
+			}
+		}
+	}
+}

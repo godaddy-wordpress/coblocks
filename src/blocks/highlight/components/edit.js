@@ -98,12 +98,16 @@ class Edit extends Component {
 
 		return [
 			<Fragment>
-				<Controls
-					{ ...this.props }
-				/>
-				<Inspector
-					{ ...this.props }
-				/>
+				{ isSelected && (
+					<Controls
+						{ ...this.props }
+					/>
+				) }
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
 				<p className={ className } style={ { textAlign: textAlign } }>
 					<RichText
 						tagName="mark"

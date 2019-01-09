@@ -1,15 +1,15 @@
-# CoBlocks Gutenberg Blocks for Content Marketers
+# CoBlocks — Page Builder Blocks for Gutenberg
 
 [![WordPress plugin](https://img.shields.io/wordpress/plugin/dt/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress](https://img.shields.io/wordpress/v/coblocks.svg?style=flat)]() [![License](https://img.shields.io/badge/license-GPL--3.0%2B-red.svg)](https://github.com/richtabor/coblocks/blob/master/license.txt)
 
-[![CoBlocks, an upcoming suite of Gutenberg Blocks for Content Marketers](https://user-images.githubusercontent.com/1813435/41249944-81eea564-6d83-11e8-87ef-9f87a2c8a077.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=banner)
+[![CoBlocks, an suite of page builder Gutenberg blocks](https://user-images.githubusercontent.com/1813435/41249944-81eea564-6d83-11e8-87ef-9f87a2c8a077.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=banner)
 
 > 💥 WordPress → [Download CoBlocks on WordPress.org](https://wordpress.org/plugins/coblocks/).
 
 ## Installation ##
 
-1. Install the offical [Gutenberg](https://wordpress.org/plugins/gutenberg/) plugin. Note that Gutenberg is not suggested for use on production sites.
-2. [Download the latest release](https://github.com/thatplugincompany/coblocks/releases) from the GitHub repository, or..
+1. If you are not running WordPress 5.0+, install the [Gutenberg](https://wordpress.org/plugins/gutenberg/) plugin.
+2. [Download the latest release of CoBlocks](https://github.com/thatplugincompany/coblocks/releases) from the GitHub repository, or..
 3. Download the plugin from the [WordPress plugin directory](https://wordpress.org/plugins/coblocks/).
 
 ## Development ##
@@ -20,7 +20,7 @@
 5. Run the `build` gulp task to process build files and generate a zip.
 
 ## Support ##
-Need help? This is a developer's portal for CoBlocks and should not be used for general support and queries. Please visit the [CoBlocks support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks) if you need help using the plugin.
+Need help? This is a developer's portal for CoBlocks and should not be used for general support and queries. Please visit the [CoBlocks support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks), or reach out to hello@coblocks.com if you need help using the plugin.
 
 ## Bugs ##
 If you find a 🐞 or an issue, [create an issue](https://github.com/thatplugincompany/coblocks/issues/new).

@@ -1,0 +1,48 @@
+.components-coblocks__resizablebox-spacer {
+	background: hsla(240, 5%, 57%, 0.1);
+	opacity: 0;
+	transition: opacity 0.1s ease-in-out;
+	z-index: 999999;
+
+	&.is-horizontal {
+		display: inline-block;
+		margin-left: 6px;
+		margin-right: 6px;
+		min-height: 30px !important;
+	}
+
+	&:hover,
+	&.is-active {
+		opacity: 1;
+	}
+
+	.has-background-image & {
+		background: hsla(240, 5%, 57%, 0.2);
+	}
+
+	.components-resizable-box__handle {
+		display: block;
+
+		&::before {
+			height: 14px;
+			width: 14px;
+		}
+	}
+
+	.components-resizable-box__handle-top {
+		left: calc(50% - 12px);
+		top: -11px;
+	}
+
+	.components-resizable-box__handle-bottom {
+		bottom: -13px;
+	}
+
+	.components-resizable-box__handle-left {
+		left: -11px;
+	}
+
+	.components-resizable-box__handle-right {
+		right: -13px;
+	}
+}

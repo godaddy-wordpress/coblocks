@@ -33,10 +33,6 @@ const settings = {
 
 	description: __( 'Add social sharing buttons to help you get likes and shares.' ),
 
-	icon: {
-		src: icon,
-	},
-
 	keywords: keywords,
 
 	styles: [

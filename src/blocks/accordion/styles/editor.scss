@@ -42,17 +42,7 @@
 		border: 1px dashed #8d96a0;
 
 		&:hover {
-			border-color: #555d66;
+			border-color: $dark-gray-500;
 		}
-	}
-}
-
-.coblocks-logo--svg {
-	fill: currentColor;
-	position: relative;
-
-	&.components-panel__icon {
-		margin-left: 7px;
-		top: 1px;
 	}
 }

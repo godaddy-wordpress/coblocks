@@ -1,0 +1,182 @@
+// Style the clickable areas for the column/layout placeholder.
+.components-coblocks-layout-selector {
+	text-align: center;
+
+	&.components-placeholder {
+
+		.components-placeholder__label svg {
+			position: relative;
+			top: -1px;
+		}
+
+		.components-placeholder__fieldset {
+			max-width: none;
+		}
+	}
+
+	.components-button-group {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		width: 100%;
+	}
+
+	&__button-wrapper {
+		border-radius: 6px;
+		cursor: pointer;
+		margin: 0;
+		padding: 4px;
+
+		&:hover {
+			background: rgba(139, 139, 150, 0.1);
+			color: #191e23;
+		}
+
+		&:focus {
+			box-shadow: 0 0 0 2px #00a0d2;
+			color: #191e23;
+			outline-offset: -2px;
+			outline: 2px solid transparent;
+		}
+	}
+
+	&__button.components-button.is-default {
+		align-items: center;
+		background: #fff;
+		border-radius: 4px !important;
+		border: 1px solid rgba(25, 30, 35, 0.2);
+		box-shadow: none;
+		display: flex;
+		flex-direction: column;
+		font-size: 14px;
+		height: 60px;
+		justify-content: center;
+		line-height: 1;
+		outline: 1px solid transparent;
+		padding: 0;
+		text-align: center;
+		width: 90px;
+
+		svg {
+			fill: $dark-gray-500;
+		}
+
+		&:focus {
+			box-shadow: 0 0 0 4px #f4f4f5, 0 0 0 6px #00a0d2;
+			color: #191e23;
+			outline-offset: -2px;
+			outline: 2px solid transparent;
+		}
+
+		&:active:enabled {
+			background: #fff;
+			border-color: rgba(25, 30, 35, 0.3);
+			box-shadow: 0 0 0 4px #f4f4f5, 0 0 0 6px #00a0d2;
+		}
+	}
+
+	&__back {
+		background: #fff;
+		margin-right: 4px;
+		border: 1px solid rgba(25, 30, 35, 0.2);
+
+		&:hover {
+			box-shadow: 0 0 0 4px rgba(139, 139, 150, 0.1) !important;
+			color: #191e23;
+		}
+	}
+
+	// Inspector control for the layout selector.
+	.edit-post-sidebar & {
+		text-align: left;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		.components-button-group {
+			justify-content: space-between;
+
+			.components-coblocks-layout-selector__button-wrapper {
+				width: calc(50% - 4px);
+				margin: 4px 0;
+				flex-shrink: 0;
+
+				&:focus,
+				&:active,
+				&.is-selected {
+					color: #191e23;
+					box-shadow: 0 0 0 2px #00a0d2;
+					outline: 2px solid transparent;
+					outline-offset: -2px;
+
+					&:hover {
+						background: none;
+					}
+				}
+
+				&.is-selected {
+					box-shadow: 0 0 0 2px $dark-gray-500;
+				}
+			}
+
+			.components-coblocks-layout-selector__button {
+				width: 100%;
+
+				&:active:enabled {
+					background: #fff !important;
+					border-color: none;
+					box-shadow: none !important;
+				}
+
+				&:focus {
+					color: #191e23;
+					box-shadow: none;
+					outline: 2px solid transparent;
+					outline-offset: -2px;
+				}
+			}
+		}
+	}
+
+	.components-dropdown-menu__popover & {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding: 12px 9px 9px;
+		text-align: left;
+
+		.components-button-group {
+			justify-content: space-between;
+		}
+
+		.components-coblocks-layout-selector__button-wrapper {
+			width: calc(50% - 8px);
+			margin: 0 4px 8px !important;
+			flex-shrink: 0;
+
+			&.is-selected {
+				box-shadow: 0 0 0 2px $dark-gray-500;
+			}
+		}
+
+		.components-coblocks-layout-selector__button {
+			margin-bottom: 0;
+			width: 100%;
+
+			&:focus {
+				box-shadow: none;
+			}
+		}
+	}
+}
+
+// Remove excess padding from toolbar icon on the DropdownLayout component.
+.components-coblocks-dropdown-layout {
+	padding: 0;
+}
+
+// Make the column width numer input wider to accommodate two decimal places.
+.components-panel__body--column-settings .components-range-control__number {
+	width: 63px;
+}

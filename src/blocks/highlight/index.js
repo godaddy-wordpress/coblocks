@@ -68,10 +68,6 @@ const settings = {
 
 	description: __( 'Highlight text.' ),
 
-	icon: {
-		src: icon,
-	},
-
 	keywords: keywords,
 
 	attributes: blockAttributes,

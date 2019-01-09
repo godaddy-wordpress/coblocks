@@ -81,10 +81,6 @@ const settings = {
 
 	description: __( 'Add a quote for readers to tweet via Twitter.' ),
 
-	icon: {
-		src: icon,
-	},
-
 	keywords: keywords,
 
 	attributes: blockAttributes,

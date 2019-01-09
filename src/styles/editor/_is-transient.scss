@@ -1,0 +1,25 @@
+.is-transient {
+	&::after {
+		background: #fff;
+		bottom: 0;
+		content: "";
+		left: 0;
+		opacity: 0.3;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 1;
+	}
+
+	> div {
+		z-index: 2;
+	}
+
+	.components-spinner {
+		left: 50%;
+		margin-left: -9px;
+		margin-top: -9px;
+		position: absolute;
+		top: 50%;
+	}
+}

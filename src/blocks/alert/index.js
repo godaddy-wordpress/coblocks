@@ -79,13 +79,9 @@ const blockAttributes = {
 
 const settings = {
 
-	title: __( 'Alert' ),
+	title: title,
 
 	description: __( 'Provide contextual feedback messages.' ),
-
-	icon: {
-		src: icon,
-	},
 
 	keywords: keywords,
 

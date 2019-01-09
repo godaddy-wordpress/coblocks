@@ -69,10 +69,6 @@ const settings = {
 
 	description: __( 'Add an author biography.' ),
 
-	icon: {
-		src: icon,
-	},
-
 	keywords: keywords,
 
 	attributes: blockAttributes,

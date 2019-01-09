@@ -32,34 +32,32 @@ class Controls extends Component {
 		} = attributes;
 
 		return (
-			isSelected && (
-				<Fragment>
-					<BlockControls>
-						<AlignmentToolbar
-							value={ textAlign }
-							onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
+			<Fragment>
+				<BlockControls>
+					<AlignmentToolbar
+						value={ textAlign }
+						onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
+					/>
+					<Toolbar>
+						<label
+							aria-label={ __( 'Twitter Username' ) }
+							className={ `${ className }__via-label` }
+							htmlFor={ `${ className }__via` }
+						>
+							{ icons.at }
+						</label>
+						<input
+							aria-label={ __( 'Twitter Username' ) }
+							className={ `${ className }__via` }
+							id={ `${ className }__via` }
+							onChange={ ( event ) => setAttributes( { via: event.target.value } ) }
+							placeholder={ __( 'Username' ) }
+							type="text"
+							value={ via }
 						/>
-						<Toolbar>
-							<label
-								aria-label={ __( 'Twitter Username' ) }
-								className={ `${ className }__via-label` }
-								htmlFor={ `${ className }__via` }
-							>
-								{ icons.at }
-							</label>
-							<input
-								aria-label={ __( 'Twitter Username' ) }
-								className={ `${ className }__via` }
-								id={ `${ className }__via` }
-								onChange={ ( event ) => setAttributes( { via: event.target.value } ) }
-								placeholder={ __( 'Username' ) }
-								type="text"
-								value={ via }
-							/>
-						</Toolbar>
-					</BlockControls>
-				</Fragment>
-			)
+					</Toolbar>
+				</BlockControls>
+			</Fragment>
 		);
 	}
 };

@@ -24,7 +24,6 @@ class Controls extends Component {
 			attributes,
 			preview,
 			setAttributes,
-			isSelected,
 			setState,
 		} = this.props;
 
@@ -44,52 +43,50 @@ class Controls extends Component {
 		];
 
 		return [
-			url && url.length > 0 && isSelected && (
-				<Fragment>
-					<BlockControls>
-						<Toolbar>
-							{ preview ? (
-								<IconButton
-									className="components-icon-button components-toolbar__control"
-									label={ __( 'Edit Gist' ) }
-									onClick={ () => setState( { preview: false } ) }
-									icon="edit"
-								/>
-							) : (
-								<IconButton
-									className="components-icon-button components-toolbar__control"
-									label={ __( 'View Gist' ) }
-									onClick={ () => setState( { preview: true } ) }
-									icon="welcome-view-site"
-								/>
-							) }
-						</Toolbar>
-
+			<Fragment>
+				<BlockControls>
+					<Toolbar>
 						{ preview ? (
-							<Toolbar controls={ customControls } />
+							<IconButton
+								className="components-icon-button components-toolbar__control"
+								label={ __( 'Edit Gist' ) }
+								onClick={ () => setState( { preview: false } ) }
+								icon="edit"
+							/>
 						) : (
-							<Toolbar>
-								<label
-									aria-label={ __( 'GitHub File' ) }
-									className={ `${ className }__file-label` }
-									htmlFor={ `${ className }__file` }
-								>
-									{ icons.file }
-								</label>
-								<input
-									aria-label={ __( 'GitHub File' ) }
-									className={ `${ className }__file` }
-									id={ `${ className }__file` }
-									onChange={ ( event ) => setAttributes( { file: event.target.value } ) }
-									placeholder={ __( 'File' ) }
-									type="text"
-									value={ file }
-								/>
-							</Toolbar>
+							<IconButton
+								className="components-icon-button components-toolbar__control"
+								label={ __( 'View Gist' ) }
+								onClick={ () => setState( { preview: true } ) }
+								icon="welcome-view-site"
+							/>
 						) }
-					</BlockControls>
-				</Fragment>
-			)
+					</Toolbar>
+
+					{ preview ? (
+						<Toolbar controls={ customControls } />
+					) : (
+						<Toolbar>
+							<label
+								aria-label={ __( 'GitHub File' ) }
+								className={ `${ className }__file-label` }
+								htmlFor={ `${ className }__file` }
+							>
+								{ icons.file }
+							</label>
+							<input
+								aria-label={ __( 'GitHub File' ) }
+								className={ `${ className }__file` }
+								id={ `${ className }__file` }
+								onChange={ ( event ) => setAttributes( { file: event.target.value } ) }
+								placeholder={ __( 'File' ) }
+								type="text"
+								value={ file }
+							/>
+						</Toolbar>
+					) }
+				</BlockControls>
+			</Fragment>
 		];
 	}
 };

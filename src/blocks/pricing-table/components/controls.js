@@ -20,7 +20,6 @@ class Controls extends Component {
 	render() {
 
 		const {
-			isSelected,
 			attributes,
 			setAttributes,
 		} = this.props;
@@ -31,31 +30,29 @@ class Controls extends Component {
 		} = attributes;
 
 		return (
-			isSelected && (
-				<Fragment>
-					<BlockControls>
-						<AlignmentToolbar
-							value={ contentAlign }
-							onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
-						/>
-						<Toolbar
-							className="coblocks__toolbar--numeral"
-							controls={ '123'.split( '' ).map( ( number ) => ( {
-								icon: icons.blank,
-								// translators: %s: tables count e.g: "1", "2", "3"
-								title: sprintf( __( '%s Tables' ), number ),
-								isActive: count == number,
-								subscript: number,
-								onClick: () =>
-									setAttributes( {
-										count: number,
-									} )
+			<Fragment>
+				<BlockControls>
+					<AlignmentToolbar
+						value={ contentAlign }
+						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
+					/>
+					<Toolbar
+						className="coblocks__toolbar--numeral"
+						controls={ '123'.split( '' ).map( ( number ) => ( {
+							icon: icons.blank,
+							/* translators: %s: number of tables */
+							title: sprintf( __( '%s Tables' ), number ),
+							isActive: count == number,
+							subscript: number,
+							onClick: () =>
+								setAttributes( {
+									count: number,
 								} )
-							) }
-						/>
-					</BlockControls>
-				</Fragment>
-			)
+							} )
+						) }
+					/>
+				</BlockControls>
+			</Fragment>
 		);
 	}
 };

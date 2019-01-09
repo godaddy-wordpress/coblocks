@@ -1,0 +1,29 @@
+// The icon that displays on the CoBlocks block inserter category.
+.coblocks-logo--svg {
+	fill: $coblocks;
+	position: relative;
+
+	&.components-panel__icon {
+		margin-left: 7px;
+		top: 1px;
+	}
+}
+
+// Style our custom colored icons like the default icons.
+.coblocks__svg {
+
+	.components-panel &,
+	.components-toolbar &,
+	.editor-block-navigation__item & {
+		color: $dark-gray-500;
+	}
+}
+
+.editor-block-icon.has-colors::after {
+	color: $dark-gray-500;
+}
+
+.edit-post-pinned-plugins .components-icon-button svg.coblocks-logo--svg--sidebar,
+.edit-post-pinned-plugins .components-icon-button svg.coblocks-logo--svg--sidebar * {
+	stroke: none !important;
+}
