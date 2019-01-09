@@ -22,6 +22,8 @@ const { Fragment }	= wp.element;
 const { InspectorAdvancedControls }	= wp.components;
 const { compose, createHigherOrderComponent } = wp.compose;
 
+const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'coblocks/row', 'coblocks/column' ];
+
 /**
  * Filters registered block settings, extending attributes with settings
  *
@@ -29,7 +31,6 @@ const { compose, createHigherOrderComponent } = wp.compose;
  * @return {Object} Filtered block settings.
  */
 function addAttributes( settings ) {
-	const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button' ];
 
 	// Add custom selector/id
 	if( typeof settings.attributes !== 'undefined' ){
@@ -61,7 +62,6 @@ const withControls = createHigherOrderComponent( ( BlockEdit ) => {
 			setAttributes,
 		} = props;
 
-		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'coblocks/row', 'coblocks/column' ];
 		const coBlocks = [ 'coblocks/row', 'coblocks/column' ];
 
 		if( typeof attributes.coblocks === 'undefined' ){
@@ -115,7 +115,7 @@ const enhance = compose(
 
 const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
 	return enhance( ( { selected, select, ...props } ) => {
-		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'coblocks/row', 'coblocks/column' ];
+		
 		let wrapperProps 	= props.wrapperProps;
 		let customData 	 	= {};
 		let attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
@@ -167,7 +167,6 @@ const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
  * @return {Object} Filtered props applied to save element.
  */
 function applyFontSettings(extraProps, blockType, attributes) {
-	const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'coblocks/row', 'coblocks/column' ];
 
 	if ( allowedBlocks.includes( blockType.name ) ) {
 

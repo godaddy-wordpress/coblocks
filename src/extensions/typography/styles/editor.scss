@@ -21,7 +21,8 @@
 	}
 
 	.editor-rich-text {
-		.wp-block-cover-text {
+		.wp-block-cover-text,
+		.wp-block-paragraph {
 			font-size: inherit;
 		}
 	}

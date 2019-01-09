@@ -25,7 +25,10 @@ class Controls extends Component {
 			setAttributes,
 		} = this.props;
 
-		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/button' ];
+		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/button', 'coblocks/row', 'coblocks/column' ];
+
+		this.props.attributes.textPanelHideColor = true;
+		this.props.attributes.textPanelShowSpacingControls = true;
 
 		// Display on the allowedBlocks only.
 		if ( ! allowedBlocks.includes( this.props.name ) ){
@@ -35,13 +38,15 @@ class Controls extends Component {
 		}
 
 		// Show line height on appropriate blocks.
-		if ( ! [ 'core/heading', 'core/paragraph', 'core/cover', 'core/button' ].includes( this.props.name ) ) {
+		if ( ! allowedBlocks.includes( this.props.name ) ) {
 			this.props.attributes.textPanelLineHeight = true;
 			this.props.attributes.textPanelLetterSpacing = true;
 		}
 
-		this.props.attributes.textPanelHideColor = true;
-		this.props.attributes.textPanelShowSpacingControls = true;
+		// Manage options for row and columns
+		if ( [ 'coblocks/row', 'coblocks/column' ].includes( this.props.name ) ) {
+			this.props.attributes.textPanelShowSpacingControls = false;
+		}
 
 
 		return (
