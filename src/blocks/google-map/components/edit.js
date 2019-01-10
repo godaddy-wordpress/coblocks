@@ -20,6 +20,7 @@ const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Placeholder, Button, Spinner, TextControl, ResizableBox } = wp.components;
 const { Fragment, Component } = wp.element;
+const { ENTER} = wp.keycodes;
 
 /**
  * Get settings.
@@ -118,6 +119,13 @@ class Edit extends Component {
 			} else {
 				this.setState( { hasError: true } );
 			}
+		}
+
+		const handleKeyDown = ( keyCode ) => {
+			if ( keyCode !== ENTER ) {
+				return;
+			}
+			renderMap();
 		}
 
 		const google = window.google;
@@ -248,6 +256,7 @@ class Edit extends Component {
 								value={ ( attributes.address ) ? attributes.address : '' }
 								placeholder={ __( 'Enter address…' ) }
 								onChange={ ( nextAddress ) => this.props.setAttributes( { address: nextAddress } ) }
+								onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
 							/>
 						}
 						<Button
