@@ -170,21 +170,25 @@ class Inspector extends Component {
 								label={ __( 'Map Type' ) }
 								checked={ !! mapTypeControl }
 								onChange={ () => setAttributes( {  mapTypeControl: ! mapTypeControl } ) }
+								help={ !! mapTypeControl ? __( 'Switching between standard and satellite map views is enabled.' ) : __( 'Toggle to enable switching between standard and satellite map views.' ) }
 							/>
 							<ToggleControl
 								label={ __( 'Zoom Controls' ) }
 								checked={ !! zoomControl }
 								onChange={ () => setAttributes( {  zoomControl: ! zoomControl } ) }
+								help={ !! zoomControl ? __( 'Showing map zoom controls.' ) : __( 'Toggle to show map zoom controls.' ) }
 							/>
 							<ToggleControl
 								label={ __( 'Street View' ) }
 								checked={ !! streetViewControl }
 								onChange={ () => setAttributes( {  streetViewControl: ! streetViewControl } ) }
+								help={ !! streetViewControl ? __( 'Showing the street view map control.' ) : __( 'Toggle to show the street view map control.' ) }
 							/>
 							<ToggleControl
 								label={ __( 'Fullscreen Toggle' ) }
 								checked={ !! fullscreenControl }
 								onChange={ () => setAttributes( {  fullscreenControl: ! fullscreenControl } ) }
+								help={ !! fullscreenControl ? __( 'Showing the fullscreen map control.' ) : __( 'Toggle to show the fullscreen map control.' ) }
 							/>
 						</PanelBody>
 					}
