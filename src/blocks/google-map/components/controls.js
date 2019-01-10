@@ -26,8 +26,8 @@ class Controls extends Component {
 
 		const {
 			address,
-		} = this.props;
-
+		} = attributes;
+		
 		return (
 			<Fragment>
 				{ address &&
