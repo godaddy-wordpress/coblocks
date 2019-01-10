@@ -77,8 +77,8 @@
 
 	&__back {
 		background: #fff;
-		margin-right: 4px;
 		border: 1px solid rgba(25, 30, 35, 0.2);
+		margin-right: 4px;
 
 		&:hover {
 			box-shadow: 0 0 0 4px rgba(139, 139, 150, 0.1) !important;
@@ -88,24 +88,24 @@
 
 	// Inspector control for the layout selector.
 	.edit-post-sidebar & {
-		text-align: left;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
+		text-align: left;
 
 		.components-button-group {
 			justify-content: space-between;
 
 			.components-coblocks-layout-selector__button-wrapper {
-				width: calc(50% - 4px);
-				margin: 4px 0;
 				flex-shrink: 0;
+				margin: 4px 0;
+				width: calc(50% - 4px);
 
 				&:focus,
 				&:active,
 				&.is-selected {
-					color: #191e23;
 					box-shadow: 0 0 0 2px #00a0d2;
+					color: #191e23;
 					outline: 2px solid transparent;
 					outline-offset: -2px;
 
@@ -123,14 +123,14 @@
 				width: 100%;
 
 				&:active:enabled {
-					background: #fff !important;
+					background: #fff;
 					border-color: none;
 					box-shadow: none !important;
 				}
 
 				&:focus {
-					color: #191e23;
 					box-shadow: none;
+					color: #191e23;
 					outline: 2px solid transparent;
 					outline-offset: -2px;
 				}

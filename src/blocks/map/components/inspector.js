@@ -16,7 +16,7 @@ import { styleOptions } from './styles'
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InspectorControls, ContrastChecker, ColorPalette } = wp.editor;
-const { PanelBody, ToggleControl, SelectControl, RangeControl, TextControl, TextareaControl, Button, ButtonGroup, Tooltip } = wp.components;
+const { PanelBody, ToggleControl, SelectControl, RangeControl, TextControl, TextareaControl, Button, ButtonGroup } = wp.components;
 
 /**
  * Get settings
@@ -123,22 +123,23 @@ class Inspector extends Component {
 			<Fragment>
 				<InspectorControls>
 					{ address && pinned &&
-						<PanelBody title={ __( 'Map Style' ) } className='block-coblocks__inspector-block-settings-panel-body' initialOpen={ false }>
+						<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
 							<div className="components-coblocks-layout-selector">
 								<ButtonGroup aria-label={ __( 'Select Map Style' ) }>
 								{ map( styleOptions, ( { label, value } ) => (
-									<Tooltip text={ label }>
-										<div className={ ( value == skin ) ? 'components-coblocks-layout-selector__button-wrapper components-button--${ value } is-selected' : 'components-coblocks-layout-selector__button-wrapper' }>
-											<Button
-												className={ ( value == skin ) ? `components-coblocks-layout-selector__button components-button--${ value } components-coblocks-layout-selector__button--selected` : `components-button--${ value } components-coblocks-layout-selector__button` }
-												isSmall
-												onClick={ () => {
-													setAttributes( { skin: value } );
-												} }
-											>
-											</Button>
+									<div className={ ( value == skin ) ? 'components-coblocks-layout-selector__button-wrapper components-button--${ value } is-selected' : 'components-coblocks-layout-selector__button-wrapper components-button--${ value }' }>
+										<Button
+											className={ ( value == skin ) ? `components-coblocks-layout-selector__button components-button--${ value } components-coblocks-layout-selector__button--selected` : `components-button--${ value } components-coblocks-layout-selector__button` }
+											isSmall
+											onClick={ () => {
+												setAttributes( { skin: value } );
+											} }
+										>
+										</Button>
+										<div class="editor-block-styles__item-label">
+											{ label }
 										</div>
-									</Tooltip>
+									</div>
 								) ) }
 								</ButtonGroup>
 							</div>
@@ -151,12 +152,6 @@ class Inspector extends Component {
 								value={ address }
 								placeholder={ __( 'Enter address…' ) }
 								onChange={ ( nextAddress ) => this.props.setAttributes( { address: nextAddress, pinned: false } ) }
-							/>
-							<SelectControl
-								label={ __( 'Style' ) }
-								value={ skin }
-								options={ styles }
-								onChange={ ( nextSkin ) => setAttributes( { skin: nextSkin } ) }
 							/>
 							<RangeControl
 								label={ __( 'Marker Size' ) }

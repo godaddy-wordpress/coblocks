@@ -46,6 +46,10 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 				background-position: center center;
 				background-repeat: no-repeat;
 				background-size: cover !important;
+
+				// &:active {
+				// 	background-image: url(images/map/#{$style}.jpg) !important;
+				// }
 			}
 		}
 	}
