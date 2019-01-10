@@ -1,7 +1,14 @@
 /**
+ * External dependencies
+ */
+import map from 'lodash/map';
+
+/**
  * Internal dependencies
  */
 import icons from './../../../utils/icons';
+import DropdownLayout from '../../../components/dropdown-layout/';
+import { styleOptions } from './styles'
 
 /**
  * WordPress dependencies
@@ -27,12 +34,24 @@ class Controls extends Component {
 		const {
 			address,
 		} = attributes;
-		
+
 		return (
 			<Fragment>
 				{ address &&
 					<BlockControls>
 						<Toolbar>
+							<DropdownLayout
+								icon={ icons.style }
+								label={ __( 'Map style' ) }
+								controls={ [
+									map( styleOptions, ( { value, label, image } ) => ({
+										icon: image,
+										title: label,
+										key: value,
+										onClick: () => { setAttributes( { skin: value } ) }
+									}) )
+								] }
+							/>
 							<DropdownMenu
 								icon= { icons.style }
 								label={ __( 'Map style' ) }
@@ -59,7 +78,7 @@ class Controls extends Component {
 										onClick: () => { setAttributes( { skin: 'dark' } ) },
 									},
 									{
-										icon: icons.mapStyleAubergine,
+										icon: icons.eggplant,
 										title: __( 'Aubergine' ),
 										onClick: () => { setAttributes( { skin: 'aubergine' } ) },
 									},
