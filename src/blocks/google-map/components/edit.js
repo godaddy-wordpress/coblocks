@@ -120,52 +120,6 @@ class Edit extends Component {
 			}
 		}
 
-		const renderStyles = () => {
-
-			var skinned = GMapStyles[ skin ];
-
-			if ( typeof skinned === 'undefined' ) {
-				skinned = [];
-			}
-
-			skinned.push({
-				"featureType": "administrative.land_parcel",
-				"elementType": "labels",
-				"stylers": [
-				{
-					"visibility": "off"
-				}
-				]
-			},
-			{
-				"featureType": "poi",
-				"elementType": "labels.text",
-				"stylers": [
-				{
-					"visibility": "off"
-				}
-				]
-			},
-			{
-				"featureType": "poi.business",
-				"stylers": [
-				{
-					"visibility": "off"
-				}
-				]
-			},
-			{
-				"featureType": "transit",
-				"stylers": [
-				{
-					"visibility": "off"
-				}
-				]
-			} );
-
-			return ( skinned );
-		}
-
 		const google = window.google;
 		const icon = { url: '/wp-content/plugins/coblocks/dist/images/markers/' + skin + '.svg', scaledSize: { width: iconSize, height: iconSize } };
 
@@ -213,7 +167,7 @@ class Edit extends Component {
 					defaultZoom={ props.props.attributes.zoom }
 					defaultCenter={ new window.google.maps.LatLng( props.coords ) }
 					defaultOptions={ {
-						styles: renderStyles(),
+						styles: GMapStyles[ skin ],
 						draggable: false,
 						mapTypeControl: mapTypeControl,
 						zoomControl: zoomControl,

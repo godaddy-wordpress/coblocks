@@ -161,6 +161,40 @@ GMapStyles['silver'] = [
         "color": "#9e9e9e"
       }
     ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "poi.business",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
   }
 ];
 
@@ -377,6 +411,40 @@ GMapStyles['retro'] = [
         "color": "#92998d"
       }
     ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "poi.business",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
   }
 ];
 
@@ -564,6 +632,40 @@ GMapStyles['dark'] = [
         "color": "#3d3d3d"
       }
     ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "poi.business",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
   }
 ];
 
@@ -725,6 +827,40 @@ GMapStyles['night'] = [
       {
         "color": "#17263c"
       }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "poi.business",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
     ]
   }
 ];
@@ -958,6 +1094,40 @@ GMapStyles['aubergine'] =  [
       {
         "color": "#4e6d70"
       }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "poi.business",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
     ]
   }
 ];
