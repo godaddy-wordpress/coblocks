@@ -81,7 +81,7 @@ class Controls extends Component {
 										icon: icon,
 										title: name,
 										key: key,
-										layout: layout,
+										value: layout,
 										onClick: () => {
 											let selectedWidth = key.toString().split('-');
 											let children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );

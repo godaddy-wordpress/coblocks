@@ -70,7 +70,7 @@ function DropdownLayout( {
 						<div className="components-button-group">
 							{ flatMap( controlSets, ( controlSet, indexOfSet ) => (
 								controlSet.map( ( control, indexOfControl ) => (
-									<div className={ ( control.key == control.layout ) ? 'components-coblocks-layout-selector__button-wrapper is-selected' : 'components-coblocks-layout-selector__button-wrapper' }>
+									<div className={ ( control.key == control.value ) ? 'components-coblocks-layout-selector__button-wrapper is-selected' : 'components-coblocks-layout-selector__button-wrapper' }>
 										<Button
 											key={ [ indexOfSet, indexOfControl ].join() }
 											onClick={ ( event ) => {
@@ -79,7 +79,6 @@ function DropdownLayout( {
 												if ( control.onClick ) {
 													control.onClick();
 												}
-												console.log( control.key + 'layout=' + control.layout );
 											} }
 											className={ classnames(
 												'is-default',

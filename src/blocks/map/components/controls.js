@@ -49,7 +49,7 @@ class Controls extends Component {
 										title: label,
 										label: label,
 										key: value,
-										layout: skin,
+										value: skin,
 										onClick: () => { setAttributes( { skin: value } ) }
 									}) )
 								] }

@@ -150,9 +150,9 @@
 		}
 
 		.components-coblocks-layout-selector__button-wrapper {
-			width: calc(50% - 8px);
-			margin: 0 4px 8px !important;
 			flex-shrink: 0;
+			margin: 0 4px 8px !important;
+			width: calc(50% - 8px);
 
 			&.is-selected {
 				box-shadow: 0 0 0 2px $dark-gray-500;
