@@ -76,6 +76,7 @@ class Inspector extends Component {
 			address,
 			height,
 			skin,
+			pinned,
 			zoom,
 			iconSize,
 			mapTypeControl,
@@ -110,11 +111,11 @@ class Inspector extends Component {
 				label: __( 'Aubergine' ),
 			},
 		];
-
+		
 		return (
 			<Fragment>
 				<InspectorControls>
-					{ address &&
+					{ address && pinned &&
 						<PanelBody title={ __( 'Map Settings' ) } className="block-coblocks__inspector-block-settings-panel-body">
 							<TextareaControl
 								label={ __( 'Address' ) }
@@ -161,30 +162,34 @@ class Inspector extends Component {
 							/>
 						</PanelBody>
 					}
-					{ address &&
+					{ address && pinned &&
 						<PanelBody
-							title={ __( 'Display Controls' ) }
+							title={ __( 'Display Settings' ) }
 							initialOpen={ false }
 						>
 							<ToggleControl
-								label={ __( 'Display Selector' ) }
+								label={ __( 'Map Type' ) }
 								checked={ !! mapTypeControl }
 								onChange={ () => setAttributes( {  mapTypeControl: ! mapTypeControl } ) }
+								help={ !! mapTypeControl ? __( 'Switching between standard and satellite map views is enabled.' ) : __( 'Toggle to enable switching between standard and satellite map views.' ) }
 							/>
 							<ToggleControl
 								label={ __( 'Zoom Controls' ) }
 								checked={ !! zoomControl }
 								onChange={ () => setAttributes( {  zoomControl: ! zoomControl } ) }
+								help={ !! zoomControl ? __( 'Showing map zoom controls.' ) : __( 'Toggle to show map zoom controls.' ) }
 							/>
 							<ToggleControl
-								label={ __( 'Street View Toggle' ) }
+								label={ __( 'Street View' ) }
 								checked={ !! streetViewControl }
 								onChange={ () => setAttributes( {  streetViewControl: ! streetViewControl } ) }
+								help={ !! streetViewControl ? __( 'Showing the street view map control.' ) : __( 'Toggle to show the street view map control.' ) }
 							/>
 							<ToggleControl
 								label={ __( 'Fullscreen Toggle' ) }
 								checked={ !! fullscreenControl }
 								onChange={ () => setAttributes( {  fullscreenControl: ! fullscreenControl } ) }
+								help={ !! fullscreenControl ? __( 'Showing the fullscreen map control.' ) : __( 'Toggle to show the fullscreen map control.' ) }
 							/>
 						</PanelBody>
 					}
@@ -197,6 +202,7 @@ class Inspector extends Component {
 							value={ this.state.apiKey }
 							onChange={ value => this.setState({ apiKey: value }) }
 							placeholder={ __('Enter Google API Key…') }
+							className="components-block-coblocks-map-api-key__custom-input"
 						/>
 						<Button
 							isPrimary
@@ -204,7 +210,7 @@ class Inspector extends Component {
 							// isBusy={ this.state.isSaving }
 							disabled={ this.state.apiKey === '' }
 						>
-							{ __('Update API Key') }
+							{ __('Update') }
 						</Button>
 					</PanelBody>
 				</InspectorControls>

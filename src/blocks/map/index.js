@@ -18,16 +18,16 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'google-map';
+const name = 'map';
 
-const title = __( 'Google Map' );
+const title = __( 'Map' );
 
 const icon = icons.googleMap;
 
 const keywords = [
 	__( 'address' ),
 	__( 'location' ),
-	__( 'coblocks' ),
+	__( 'google' ),
 ];
 
 const blockAttributes = {
@@ -49,7 +49,7 @@ const blockAttributes = {
 	},
 	height: {
 		type: 'number',
-		default: 250,
+		default: 400,
 	},
 	skin: {
 		type: 'string',
