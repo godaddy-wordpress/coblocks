@@ -205,7 +205,7 @@ class Inspector extends Component {
 							// isBusy={ this.state.isSaving }
 							disabled={ this.state.apiKey === '' }
 						>
-							{ __('Update API Key') }
+							{ __('Update') }
 						</Button>
 					</PanelBody>
 				</InspectorControls>
