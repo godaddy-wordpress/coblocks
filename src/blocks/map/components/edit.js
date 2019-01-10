@@ -160,7 +160,7 @@ class Edit extends Component {
 						} else {
 							this.props.props.setAttributes({
 								pinned: false,
-								hasError: __( 'Invalid API Key.' ),
+								hasError: __( 'Invalid API key, or too many requests' ),
 							});
 							console.log( 'Geocode was not successful for the following reason: ' + status );
 						}
@@ -267,7 +267,7 @@ class Edit extends Component {
 						</Button>
 
 						{ ( attributes.lng && attributes.hasError  ) ?
-							<span class="block-coblocks-invalid-api">{ attributes.hasError }</span>
+							<span class="invalid-google-maps-api-key">{ attributes.hasError }</span>
 						: null }
 
 						{ ( ! this.state.isSavedKey  ) ?

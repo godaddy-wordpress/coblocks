@@ -80,6 +80,10 @@ const blockAttributes = {
 		type: 'boolean',
 		default: true,
 	},
+	controls: {
+		type: 'boolean',
+		default: true,
+	},
 	hasError: {
 		type: 'string',
 	},

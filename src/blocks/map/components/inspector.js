@@ -6,8 +6,6 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-
-import icons from './../../../utils/icons';
 import { styleOptions } from './styles'
 
 /**
@@ -38,6 +36,7 @@ class Inspector extends Component {
 		super( ...arguments );
 
 		this.saveApiKey = this.saveApiKey.bind( this );
+		this.setControls = this.setControls.bind( this );
 
 		this.state = {
 			apiKey: '',
@@ -70,6 +69,22 @@ class Inspector extends Component {
 		});
 	}
 
+	setControls() {
+		const {
+			setAttributes,
+			attributes,
+		} = this.props;
+
+		const {
+			controls,
+		} = attributes;
+
+		controls ?
+			setAttributes( {  controls: ! controls, mapTypeControl: false, zoomControl: false, streetViewControl: false, fullscreenControl: false } )
+		:
+			setAttributes( {  controls: ! controls, mapTypeControl: true, zoomControl: true, streetViewControl: true, fullscreenControl: true } )
+	}
+
 	render() {
 
 		const {
@@ -84,6 +99,7 @@ class Inspector extends Component {
 			height,
 			skin,
 			pinned,
+			controls,
 			zoom,
 			iconSize,
 			mapTypeControl,
@@ -91,33 +107,6 @@ class Inspector extends Component {
 			streetViewControl,
 			fullscreenControl,
 		} = attributes;
-
-		const styles = [
-			{
-				value: 'standard',
-				label: __( 'Standard' ),
-			},
-			{
-				value: 'silver',
-				label: __( 'Minimal' ),
-			},
-			{
-				value: 'retro',
-				label: __( 'Retro' ),
-			},
-			{
-				value: 'dark',
-				label: __( 'Dark' ),
-			},
-			{
-				value: 'night',
-				label: __( 'Night' ),
-			},
-			{
-				value: 'aubergine',
-				label: __( 'Aubergine' ),
-			},
-		];
 
 		return (
 			<Fragment>
@@ -145,69 +134,74 @@ class Inspector extends Component {
 							</div>
 						</PanelBody>
 					}
-					{ address && pinned &&
 						<PanelBody title={ __( 'Map Settings' ) }>
 							<TextareaControl
 								label={ __( 'Address' ) }
 								value={ address }
 								placeholder={ __( 'Enter address…' ) }
-								onChange={ ( nextAddress ) => this.props.setAttributes( { address: nextAddress, pinned: false } ) }
+								onChange={ ( nextAddress ) => setAttributes( { address: nextAddress, pinned: false } ) }
 							/>
-							<RangeControl
-								label={ __( 'Marker Size' ) }
-								value={ iconSize }
-								onChange={ ( nextIconSize ) => setAttributes( {  iconSize: nextIconSize } ) }
-								className="components-block-coblocks-map-icon-size__custom-input"
-								min={ 20 }
-								max={ 100 }
-								step={ 2 }
-								beforeIcon={ 'location' }
-							/>
-							<RangeControl
-								label={ __( 'Zoom Level' ) }
-								value={ zoom }
-								onChange={ ( nextZoom ) => setAttributes( {  zoom: nextZoom } ) }
-								className="components-block-coblocks-map-zoom__custom-input"
-								min={ 5 }
-								max={ 20 }
-								step={ 1 }
-								beforeIcon={ 'plus' }
-							/>
-							<RangeControl
-								label={ __( 'Height in pixels' ) }
-								aria-label={ __( 'Height for the map in pixels' ) }
-								value={ height }
-								onChange={ ( ratio ) => setAttributes( {  height: parseInt( event.target.value, 10 ) } ) }
-								className="components-block-coblocks-height__custom-input"
-								min={ 200 }
-								max={ 1000 }
-								step={ 10 }
-								beforeIcon={ 'image-crop' }
-							/>
+							{ address && pinned &&
+								<Fragment>
+									<RangeControl
+										label={ __( 'Zoom Level' ) }
+										value={ zoom }
+										onChange={ ( nextZoom ) => setAttributes( {  zoom: nextZoom } ) }
+										className="components-block-coblocks-map-zoom__custom-input"
+										min={ 5 }
+										max={ 20 }
+										step={ 1 }
+									/>
+									<RangeControl
+										label={ __( 'Marker Size' ) }
+										value={ iconSize }
+										onChange={ ( nextIconSize ) => setAttributes( {  iconSize: nextIconSize } ) }
+										className="components-block-coblocks-map-icon-size__custom-input"
+										min={ 20 }
+										max={ 100 }
+										step={ 2 }
+									/>
+									<RangeControl
+										label={ __( 'Height in pixels' ) }
+										aria-label={ __( 'Height for the map in pixels' ) }
+										value={ height }
+										onChange={ ( ratio ) => setAttributes( {  height: parseInt( event.target.value, 10 ) } ) }
+										className="components-block-coblocks-height__custom-input"
+										min={ 200 }
+										max={ 1000 }
+										step={ 10 }
+									/>
+									<ToggleControl
+										label={ __( 'Map Controls' ) }
+										checked={ !! controls }
+										onChange={ () => this.setControls() }
+										help={ !! controls ? __( 'Fine control options are enabled.' ) : __( 'Toggle to enable map control options.' ) }
+									/>
+								</Fragment>
+							}
 						</PanelBody>
-					}
-					{ address && pinned &&
+					{ address && pinned && controls &&
 						<PanelBody
-							title={ __( 'Display Settings' ) }
+							title={ __( 'Map Controls' ) }
 							initialOpen={ false }
 						>
 							<ToggleControl
 								label={ __( 'Map Type' ) }
 								checked={ !! mapTypeControl }
 								onChange={ () => setAttributes( {  mapTypeControl: ! mapTypeControl } ) }
-								help={ !! mapTypeControl ? __( 'Switching between standard and satellite map views is enabled.' ) : __( 'Toggle to enable switching between standard and satellite map views.' ) }
+								help={ !! mapTypeControl ? __( 'Switching between standard and satellite map views is enabled.' ) : __( 'Toggle to enable switching between standard and satellite maps.' ) }
 							/>
 							<ToggleControl
 								label={ __( 'Zoom Controls' ) }
 								checked={ !! zoomControl }
 								onChange={ () => setAttributes( {  zoomControl: ! zoomControl } ) }
-								help={ !! zoomControl ? __( 'Showing map zoom controls.' ) : __( 'Toggle to show map zoom controls.' ) }
+								help={ !! zoomControl ? __( 'Showing map zoom controls.' ) : __( 'Toggle to enable zooming in and out on the map with zoom controls.' ) }
 							/>
 							<ToggleControl
 								label={ __( 'Street View' ) }
 								checked={ !! streetViewControl }
 								onChange={ () => setAttributes( {  streetViewControl: ! streetViewControl } ) }
-								help={ !! streetViewControl ? __( 'Showing the street view map control.' ) : __( 'Toggle to show the street view map control.' ) }
+								help={ !! streetViewControl ? __( 'Showing the street view map control.' ) : __( 'Toggle to show the street view control at the bottom right.' ) }
 							/>
 							<ToggleControl
 								label={ __( 'Fullscreen Toggle' ) }
@@ -231,7 +225,6 @@ class Inspector extends Component {
 						<Button
 							isPrimary
 							onClick={ this.saveApiKey }
-							// isBusy={ this.state.isSaving }
 							disabled={ this.state.apiKey === '' }
 						>
 							{ __('Update') }

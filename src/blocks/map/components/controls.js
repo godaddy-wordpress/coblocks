@@ -33,12 +33,13 @@ class Controls extends Component {
 
 		const {
 			address,
+			pinned,
 			skin,
 		} = attributes;
 
 		return (
 			<Fragment>
-				{ address &&
+				{ address && pinned &&
 					<BlockControls>
 						<Toolbar>
 							<DropdownLayout

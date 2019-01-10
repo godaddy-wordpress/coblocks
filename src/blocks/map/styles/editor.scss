@@ -1,4 +1,4 @@
-.editor-block-list__block[data-type="coblocks/google-map"] {
+.editor-block-list__block[data-type="coblocks/map"] {
 	.components-placeholder {
 		height: 100%;
 
@@ -24,9 +24,9 @@
 			}
 		}
 
-		.block-coblocks-invalid-api {
+		.invalid-google-maps-api-key {
 			clear: both;
-			color: #c92c2c !important;
+			color: $red !important;
 			display: block;
 			text-align: center;
 			width: 100%;
