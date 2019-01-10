@@ -25,7 +25,7 @@ class Controls extends Component {
 			setAttributes,
 		} = this.props;
 
-		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/click-to-tweet', 'coblocks/alert' ];
+		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/highlight' ];
 
 		this.props.attributes.textPanelHideColor = true;
 		this.props.attributes.textPanelShowSpacingControls = true;
