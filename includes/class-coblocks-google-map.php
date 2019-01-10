@@ -82,7 +82,7 @@ class CoBlocks_Block_GoogleMap {
 		// Define where the asset is loaded from.
 		$dir = CoBlocks()->asset_source( 'js' );
 		// Google Maps block.
-		if ( $key && ( $post && null !== $post->post_content && strpos( $post->post_content, 'wp-block-coblocks-google-map' ) ) ) {
+		if ( $key && ( $post && null !== $post->post_content && strpos( $post->post_content, 'wp-block-coblocks-map' ) ) ) {
 			wp_enqueue_script(
 				$this->_slug . '-google-maps',
 				$dir . $this->_slug . '-google-maps' . COBLOCKS_ASSET_SUFFIX . '.js',
