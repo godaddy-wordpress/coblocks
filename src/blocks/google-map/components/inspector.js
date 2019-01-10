@@ -163,11 +163,11 @@ class Inspector extends Component {
 					}
 					{ address &&
 						<PanelBody
-							title={ __( 'Display Controls' ) }
+							title={ __( 'Display Settings' ) }
 							initialOpen={ false }
 						>
 							<ToggleControl
-								label={ __( 'Display Selector' ) }
+								label={ __( 'Map Type' ) }
 								checked={ !! mapTypeControl }
 								onChange={ () => setAttributes( {  mapTypeControl: ! mapTypeControl } ) }
 							/>
@@ -177,7 +177,7 @@ class Inspector extends Component {
 								onChange={ () => setAttributes( {  zoomControl: ! zoomControl } ) }
 							/>
 							<ToggleControl
-								label={ __( 'Street View Toggle' ) }
+								label={ __( 'Street View' ) }
 								checked={ !! streetViewControl }
 								onChange={ () => setAttributes( {  streetViewControl: ! streetViewControl } ) }
 							/>
