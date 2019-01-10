@@ -41,6 +41,7 @@ import * as pricingTable from './blocks/pricing-table';
 import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';
 import * as social from './blocks/social';
+import * as googleMap from './blocks/google-map';
 
 export function registerBlocks () {
 	[
@@ -58,6 +59,7 @@ export function registerBlocks () {
 		pricingTableItem,
 		row,
 		social,
+		googleMap,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {

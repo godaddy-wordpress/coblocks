@@ -29,16 +29,15 @@
 		"classnames": "2.2.5",
 		"compose": "^0.1.2",
 		"delete-empty": "^2.0.0",
+		"eslint": "^4.19.1",
+		"eslint-config-wordpress": "^2.0.0",
 		"lodash": "4.17.4",
 		"memize": "^1.0.5",
+		"postcss": "^6.0.19",
 		"react": "^16.6.3",
 		"react-google-maps": "^9.4.5",
 		"redux": "^4.0.1",
-		"postcss": "^6.0.19",
-		"stylelint": "^9.1.1",
-		"eslint": "^4.19.1",
-		"eslint-config-wordpress": "^2.0.0",
-		"postcss": "^6.0.19"
+		"stylelint": "^9.1.1"
 	},
 	"devDependencies": {
 		"@wordpress/babel-plugin-makepot": "^2.1.2",
@@ -71,10 +70,14 @@
 		"stylelint-order": "^0.8.1"
 	},
 	"stylelint": {
-		"extends": ["stylelint-config-wordpress/scss", "stylelint-config-prettier"],
-		"plugins": ["stylelint-order"],
+		"extends": [
+			"stylelint-config-wordpress/scss",
+			"stylelint-config-prettier"
+		],
+		"plugins": [
+			"stylelint-order"
+		],
 		"rules": {
-			"at-rule-empty-line-before": "always",
 			"at-rule-empty-line-before": null,
 			"no-descending-specificity": null,
 			"order/properties-alphabetical-order": true

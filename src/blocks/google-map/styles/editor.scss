@@ -1,0 +1,92 @@
+.editor-block-list__block[data-type="coblocks/google-map"] {
+
+	.components-placeholder {
+		height: 100%;
+
+		.components-placeholder__fieldset {
+
+			span {
+				color: #555d66;
+			}
+
+			.components-button {
+				position: relative;
+				top: 1px;
+			}
+		}
+
+		.components-base-control__field {
+			margin-bottom: 12px;
+		}
+
+		.components-placeholder__label {
+
+			svg {
+				position: relative;
+				top: -1px;
+			}
+		}
+
+		.block-coblocks-invalid-api{
+			display: block;
+			color: #c92c2c !important;
+			text-align: center;
+			clear: both;
+	    	width: 100%;
+		}
+	}
+}
+
+.components-coblocks-map-style {
+	padding: 0;
+}
+
+.components-block-coblocks-map-zoom__custom-input {
+
+	svg {
+		position: relative;
+		top: -1px;
+	}
+
+	.components-range-control__slider + .dashicon {
+		width: 25px;
+		height: 25px;
+		top: -3px;
+	}
+}
+
+.components-block-coblocks-map-icon-size__custom-input {
+
+	.components-range-control__slider + .dashicon {
+		width: 26px;
+		height: 26px;
+	}
+}
+
+.components-block-coblocks-height__custom-input {
+
+	svg {
+		position: relative;
+		top: -1px;
+		width: 18px;
+		height: 18px;
+		right: -2px;
+	}
+}
+
+// Style the Block Controls dropdown icons.
+.coblocks-map-style--retro {
+	fill: #DFD2AE !important;
+}
+
+.coblocks-map-style--aubergine {
+	fill: #214057 !important;
+}
+
+.coblocks-map-style--silver {
+	fill: #C9C9C9 !important;
+}
+
+.coblocks-map-style--dark {
+	fill: #000000 !important;
+}
