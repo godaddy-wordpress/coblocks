@@ -188,7 +188,7 @@ class Inspector extends Component {
 							/>
 						</PanelBody>
 					}
-					<PanelBody title={ __( 'API Settings' ) } className='block-coblocks__inspector-block-settings-panel-body' initialOpen={ false }>
+					<PanelBody title={ __( 'API Key' ) } className='block-coblocks__inspector-block-settings-panel-body' initialOpen={ false }>
 						<p>{ __( 'Add your Google Maps API key to display a Google map. Updating this API key will set all your maps to use this new key.') }</p>
 						{ ( this.state.apiKey === ''  ) ?
 							<p><span><a href={ RETRIEVE_KEY_URL } target="_blank"> { __( 'Retrieve your key' ) }</a> | <a href={ HELP_URL } target="_blank">{ __( 'Need help?' ) }</a></span></p>
