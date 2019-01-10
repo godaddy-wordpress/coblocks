@@ -126,7 +126,7 @@ class Inspector extends Component {
 					{ ( columns && selectedRows >= 1 ) &&
 						<Fragment>
 							{ selectedRows > 1 &&
-								<PanelBody title={ __( 'Layout' ) } className='block-coblocks__inspector-block-settings-panel-body' initialOpen={ false }>
+								<PanelBody title={ __( 'Layout' ) } initialOpen={ false }>
 									<div className="components-coblocks-layout-selector">
 										<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
 										{ map( layoutOptions[ selectedRows ], ( { name, key, icon, cols } ) => (
@@ -160,7 +160,7 @@ class Inspector extends Component {
 							}
 							{ layout &&
 								<Fragment>
-									<PanelBody title={ __( 'Row Settings' ) } className='block-coblocks__inspector-block-settings-panel-body'>
+									<PanelBody title={ __( 'Row Settings' ) }>
 											<DimensionsControl { ...this.props }
 												type={ 'margin' }
 												label={ __( 'Margin' ) }
