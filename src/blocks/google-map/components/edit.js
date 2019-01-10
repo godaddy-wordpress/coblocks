@@ -269,9 +269,11 @@ class Edit extends Component {
 							toggleSelection( false );
 						} }
 					>
-						<GoogleMapRender
-							address={ address }
-						/>
+						{ this.state.apiKey &&
+							<GoogleMapRender
+								address={ address }
+							/>
+						}
 					</ResizableBox>
 				:
 					<Placeholder
@@ -301,7 +303,7 @@ class Edit extends Component {
 							{ __( 'Apply' ) }
 						</Button>
 
-						{ ( attributes.hasError  ) ?
+						{ ( attributes.lng && attributes.hasError  ) ?
 							<span class="block-coblocks-invalid-api">{ attributes.hasError }</span>
 						: null }
 
