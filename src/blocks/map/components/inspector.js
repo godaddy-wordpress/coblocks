@@ -19,8 +19,8 @@ wp.api.loadPromise.then( () => {
 	settings = new wp.api.models.Settings();
 });
 
-const RETRIEVE_KEY_URL = '';
-const HELP_URL = '';
+const RETRIEVE_KEY_URL = 'https://cloud.google.com/maps-platform';
+const HELP_URL = 'https://developers.google.com/maps/documentation/javascript/get-api-key';
 
 /**
  * Inspector controls
