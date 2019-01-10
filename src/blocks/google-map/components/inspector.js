@@ -76,6 +76,7 @@ class Inspector extends Component {
 			address,
 			height,
 			skin,
+			pinned,
 			zoom,
 			iconSize,
 			mapTypeControl,
@@ -110,11 +111,11 @@ class Inspector extends Component {
 				label: __( 'Aubergine' ),
 			},
 		];
-
+		
 		return (
 			<Fragment>
 				<InspectorControls>
-					{ address &&
+					{ address && pinned &&
 						<PanelBody title={ __( 'Map Settings' ) } className="block-coblocks__inspector-block-settings-panel-body">
 							<TextareaControl
 								label={ __( 'Address' ) }
@@ -161,7 +162,7 @@ class Inspector extends Component {
 							/>
 						</PanelBody>
 					}
-					{ address &&
+					{ address && pinned &&
 						<PanelBody
 							title={ __( 'Display Settings' ) }
 							initialOpen={ false }
