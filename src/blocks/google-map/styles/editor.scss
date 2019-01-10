@@ -74,6 +74,14 @@
 	}
 }
 
+.edit-post-settings-sidebar__panel-block .components-panel__body{
+	.components-base-control{
+		&.components-block-coblocks-map-api-key__custom-input{
+			margin-bottom: 5px;
+		}
+	}
+}
+
 // Style the Block Controls dropdown icons.
 .coblocks-map-style--retro {
 	fill: #DFD2AE !important;

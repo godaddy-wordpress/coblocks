@@ -197,6 +197,7 @@ class Inspector extends Component {
 							value={ this.state.apiKey }
 							onChange={ value => this.setState({ apiKey: value }) }
 							placeholder={ __('Enter Google API Key…') }
+							className="components-block-coblocks-map-api-key__custom-input"
 						/>
 						<Button
 							isPrimary
