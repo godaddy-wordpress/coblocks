@@ -26,8 +26,8 @@ wp.api.loadPromise.then( () => {
 	settings = new wp.api.models.Settings();
 });
 
-const RETRIEVE_KEY_URL = '';
-const HELP_URL = '';
+const RETRIEVE_KEY_URL = 'https://cloud.google.com/maps-platform';
+const HELP_URL = 'https://developers.google.com/maps/documentation/javascript/get-api-key';
 
 /**
  * Inspector controls
@@ -118,7 +118,7 @@ class Inspector extends Component {
 				label: __( 'Aubergine' ),
 			},
 		];
-		
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -145,7 +145,7 @@ class Inspector extends Component {
 						</PanelBody>
 					}
 					{ address && pinned &&
-						<PanelBody title={ __( 'Map Settings' ) } className="block-coblocks__inspector-block-settings-panel-body">
+						<PanelBody title={ __( 'Map Settings' ) }>
 							<TextareaControl
 								label={ __( 'Address' ) }
 								value={ address }
@@ -222,7 +222,7 @@ class Inspector extends Component {
 							/>
 						</PanelBody>
 					}
-					<PanelBody title={ __( 'API Key' ) } className='block-coblocks__inspector-block-settings-panel-body' initialOpen={ false }>
+					<PanelBody title={ __( 'Google Maps API Key' ) } initialOpen={ false }>
 						<p>{ __( 'Add your Google Maps API key. Updating this API key will set all your maps to use the new key.') }</p>
 						{ ( this.state.apiKey === ''  ) ?
 							<p><span><a href={ RETRIEVE_KEY_URL } target="_blank"> { __( 'Retrieve your key' ) }</a> | <a href={ HELP_URL } target="_blank">{ __( 'Need help?' ) }</a></span></p>

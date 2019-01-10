@@ -25,22 +25,19 @@
 		}
 
 		.block-coblocks-invalid-api {
-			display: block;
-			color: #c92c2c !important;
-			text-align: center;
 			clear: both;
+			color: #c92c2c !important;
+			display: block;
+			text-align: center;
 			width: 100%;
 		}
 	}
 }
 
-.components-coblocks-map-style {
-	padding: 0;
-}
-
 // Map styles.
 $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 
+// Style the VisualDropdown component buttons.
 .components-coblocks-layout-selector__button-wrapper {
 	.components-button {
 		@each $style in $styles {
@@ -54,6 +51,7 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 	}
 }
 
+// Inspector control panel UI tweaks
 .components-block-coblocks-map-zoom__custom-input {
 	svg {
 		position: relative;
@@ -61,26 +59,26 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 	}
 
 	.components-range-control__slider + .dashicon {
-		width: 25px;
 		height: 25px;
 		top: -3px;
+		width: 25px;
 	}
 }
 
 .components-block-coblocks-map-icon-size__custom-input {
 	.components-range-control__slider + .dashicon {
-		width: 26px;
 		height: 26px;
+		width: 26px;
 	}
 }
 
 .components-block-coblocks-height__custom-input {
 	svg {
+		height: 18px;
 		position: relative;
+		right: -2px;
 		top: -1px;
 		width: 18px;
-		height: 18px;
-		right: -2px;
 	}
 }
 
@@ -90,21 +88,4 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 			margin-bottom: 5px;
 		}
 	}
-}
-
-// Style the Block Controls dropdown icons.
-.coblocks-map-style--retro {
-	fill: #dfd2ae !important;
-}
-
-.coblocks-map-style--aubergine {
-	fill: #214057 !important;
-}
-
-.coblocks-map-style--silver {
-	fill: #c9c9c9 !important;
-}
-
-.coblocks-map-style--dark {
-	fill: #000000 !important;
 }

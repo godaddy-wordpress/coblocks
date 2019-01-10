@@ -29,7 +29,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Pricing Table Settings' ) } className='coblocks__inspector-block-settings-panel-body'>
+					<PanelBody title={ __( 'Pricing Table Settings' ) }>
 						<RangeControl
 							label={ __( 'Tables' ) }
 							value={ count }
