@@ -14,6 +14,7 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
+const { createBlock } = wp.blocks;
 
 /**
  * Block constants
@@ -97,6 +98,20 @@ const settings = {
 	},
 
 	attributes: blockAttributes,
+
+	transforms: {
+		from: [
+			{
+				type: 'prefix',
+				prefix: ':map',
+				transform: function( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+					} );
+				},
+			},
+		],
+	},
 
 	edit: Edit,
 
