@@ -96,6 +96,7 @@ const settings = {
 
 	supports: {
 		align: [ 'wide', 'full' ],
+		anchor: true,
 	},
 
 	transforms: {
