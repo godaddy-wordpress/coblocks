@@ -3,7 +3,7 @@
 var coblocks_maps = {
 	init: function() {
 		var self 		= this;
-		self.elem 		= jQuery('.wp-block-coblocks-google-map');
+		self.elem 		= jQuery('.wp-block-coblocks-map');
 
 		self.renderMap();
     },
