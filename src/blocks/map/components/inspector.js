@@ -1,7 +1,14 @@
 /**
+ * External dependencies
+ */
+import map from 'lodash/map';
+
+/**
  * Internal dependencies
  */
+
 import icons from './../../../utils/icons';
+import { styleOptions } from './styles'
 
 /**
  * WordPress dependencies
@@ -9,7 +16,7 @@ import icons from './../../../utils/icons';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InspectorControls, ContrastChecker, ColorPalette } = wp.editor;
-const { PanelBody, ToggleControl, SelectControl, RangeControl, TextControl, TextareaControl, Button } = wp.components;
+const { PanelBody, ToggleControl, SelectControl, RangeControl, TextControl, TextareaControl, Button, ButtonGroup, Tooltip } = wp.components;
 
 /**
  * Get settings
@@ -115,6 +122,28 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
+					{ address && pinned &&
+						<PanelBody title={ __( 'Map Style' ) } className='block-coblocks__inspector-block-settings-panel-body' initialOpen={ false }>
+							<div className="components-coblocks-layout-selector">
+								<ButtonGroup aria-label={ __( 'Select Map Style' ) }>
+								{ map( styleOptions, ( { label, value } ) => (
+									<Tooltip text={ label }>
+										<div className={ ( value == skin ) ? 'components-coblocks-layout-selector__button-wrapper components-button--${ value } is-selected' : 'components-coblocks-layout-selector__button-wrapper' }>
+											<Button
+												className={ ( value == skin ) ? `components-coblocks-layout-selector__button components-button--${ value } components-coblocks-layout-selector__button--selected` : `components-button--${ value } components-coblocks-layout-selector__button` }
+												isSmall
+												onClick={ () => {
+													setAttributes( { skin: value } );
+												} }
+											>
+											</Button>
+										</div>
+									</Tooltip>
+								) ) }
+								</ButtonGroup>
+							</div>
+						</PanelBody>
+					}
 					{ address && pinned &&
 						<PanelBody title={ __( 'Map Settings' ) } className="block-coblocks__inspector-block-settings-panel-body">
 							<TextareaControl
