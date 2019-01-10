@@ -127,36 +127,35 @@ class Inspector extends Component {
 						<Fragment>
 							{ selectedRows > 1 &&
 								<PanelBody title={ __( 'Layout' ) } className='block-coblocks__inspector-block-settings-panel-body' initialOpen={ false }>
+									<div className="components-coblocks-layout-selector">
+										<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
+										{ map( layoutOptions[ selectedRows ], ( { name, key, icon, cols } ) => (
+											<Tooltip text={ name }>
+												<div className={ ( key == layout ) ? 'components-coblocks-layout-selector__button-wrapper is-selected' : 'components-coblocks-layout-selector__button-wrapper' }>
+													<Button
+														className={ ( key == layout ) ? 'components-coblocks-layout-selector__button components-coblocks-layout-selector__button--selected' : 'components-coblocks-layout-selector__button' }
+														isSmall
+														onClick={ () => {
+															let selectedWidth = key.toString().split('-');
+															let children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
+															setAttributes( {
+																layout: key,
+															} );
 
-										<div className="components-coblocks-layout-selector">
-											<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
-											{ map( layoutOptions[ selectedRows ], ( { name, key, icon, cols } ) => (
-												<Tooltip text={ name }>
-													<div className={ ( key == layout ) ? 'components-coblocks-layout-selector__button-wrapper is-selected' : 'components-coblocks-layout-selector__button-wrapper' }>
-														<Button
-															className={ ( key == layout ) ? 'components-coblocks-layout-selector__button components-coblocks-layout-selector__button--selected' : 'components-coblocks-layout-selector__button' }
-															isSmall
-															onClick={ () => {
-																let selectedWidth = key.toString().split('-');
-																let children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
-																setAttributes( {
-																	layout: key,
-																} );
-
-																if ( typeof children[0].innerBlocks !== 'undefined' ) {
-																	map( children[0].innerBlocks, ( { clientId }, index ) => (
-																		wp.data.dispatch( 'core/editor' ).updateBlockAttributes( clientId, { width : selectedWidth[ index ] } )
-																	) );
-																}
-															} }
-														>
-															{ icon }
-														</Button>
-													</div>
-												</Tooltip>
-											) ) }
-											</ButtonGroup>
-										</div>
+															if ( typeof children[0].innerBlocks !== 'undefined' ) {
+																map( children[0].innerBlocks, ( { clientId }, index ) => (
+																	wp.data.dispatch( 'core/editor' ).updateBlockAttributes( clientId, { width : selectedWidth[ index ] } )
+																) );
+															}
+														} }
+													>
+														{ icon }
+													</Button>
+												</div>
+											</Tooltip>
+										) ) }
+										</ButtonGroup>
+									</div>
 								</PanelBody>
 							}
 							{ layout &&
