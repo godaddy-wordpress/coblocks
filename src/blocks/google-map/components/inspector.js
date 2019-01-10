@@ -91,7 +91,7 @@ class Inspector extends Component {
 			},
 			{
 				value: 'silver',
-				label: __( 'Silver' ),
+				label: __( 'Minimal' ),
 			},
 			{
 				value: 'retro',
