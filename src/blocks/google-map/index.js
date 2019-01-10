@@ -49,7 +49,7 @@ const blockAttributes = {
 	},
 	height: {
 		type: 'number',
-		default: 250,
+		default: 400,
 	},
 	skin: {
 		type: 'string',
