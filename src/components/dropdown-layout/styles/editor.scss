@@ -3,7 +3,6 @@
 	text-align: center;
 
 	&.components-placeholder {
-
 		.components-placeholder__label svg {
 			position: relative;
 			top: -1px;
@@ -179,4 +178,29 @@
 // Make the column width numer input wider to accommodate two decimal places.
 .components-panel__body--column-settings .components-range-control__number {
 	width: 63px;
+}
+
+.components-coblocks-dropdown-layout__popover {
+	.components-coblocks-layout-selector__button-wrapper:hover {
+		background: #f8f9f9;
+	}
+}
+
+.components-coblocks-dropdown-layout__popover:not(.is-mobile) {
+	.components-popover__content {
+		max-width: 340px;
+		min-width: 300px;
+
+		.editor-block-styles__item-label {
+			color: #555d66;
+		}
+
+		.components-coblocks-layout-selector__button-wrapper:hover {
+			background: #f8f9f9;
+
+			.editor-block-styles__item-label {
+				color: #191e23;
+			}
+		}
+	}
 }

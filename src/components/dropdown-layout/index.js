@@ -5,6 +5,11 @@ import classnames from 'classnames';
 import flatMap from 'lodash/flatMap';
 
 /**
+ * Internal dependencies
+ */
+import './styles/editor.scss';
+
+/**
  * WordPress dependencies
  */
 const { DOWN } = wp.keycodes;
@@ -13,6 +18,7 @@ const { Button, IconButton, Dropdown, NavigableMenu } = wp.components;
 function DropdownLayout( {
 	icon = 'menu',
 	label,
+	test,
 	menuLabel,
 	controls,
 	className,
@@ -30,7 +36,7 @@ function DropdownLayout( {
 	return (
 		<Dropdown
 			className={ classnames( 'components-dropdown-menu', 'components-coblocks-dropdown-layout', className ) }
-			contentClassName="components-dropdown-menu__popover"
+			contentClassName="components-dropdown-menu__popover components-coblocks-dropdown-layout__popover"
 			renderToggle={ ( { isOpen, onToggle } ) => {
 				const openOnArrowDown = ( event ) => {
 					if ( ! isOpen && event.keyCode === DOWN ) {
@@ -79,13 +85,22 @@ function DropdownLayout( {
 												'is-default',
 												'components-coblocks-layout-selector__button', {
 													'components-coblocks-layout-selector__button--selected': control.isActive,
+													[ `components-button--${ control.key }` ] : control.key,
 												},
 											) }
 											role="menuitem"
 											disabled={ control.isDisabled }
 										>
-											{ control.icon }
+											{ control.icon &&
+												control.icon
+											}
+
 										</Button>
+										{ control.label &&
+											<div class="editor-block-styles__item-label">
+												{ control.label }
+											</div>
+										}
 									</div>
 								) )
 							) ) }

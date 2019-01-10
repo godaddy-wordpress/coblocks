@@ -1,10 +1,8 @@
 .editor-block-list__block[data-type="coblocks/google-map"] {
-
 	.components-placeholder {
 		height: 100%;
 
 		.components-placeholder__fieldset {
-
 			span {
 				color: #555d66;
 			}
@@ -20,19 +18,18 @@
 		}
 
 		.components-placeholder__label {
-
 			svg {
 				position: relative;
 				top: -1px;
 			}
 		}
 
-		.block-coblocks-invalid-api{
+		.block-coblocks-invalid-api {
 			display: block;
 			color: #c92c2c !important;
 			text-align: center;
 			clear: both;
-	    	width: 100%;
+			width: 100%;
 		}
 	}
 }
@@ -41,8 +38,23 @@
 	padding: 0;
 }
 
-.components-block-coblocks-map-zoom__custom-input {
+// Map styles.
+$styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 
+.components-coblocks-layout-selector__button-wrapper {
+	.components-button {
+		@each $style in $styles {
+			&--#{$style} {
+				background-image: url(images/map/#{$style}.jpg) !important;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover !important;
+			}
+		}
+	}
+}
+
+.components-block-coblocks-map-zoom__custom-input {
 	svg {
 		position: relative;
 		top: -1px;
@@ -56,7 +68,6 @@
 }
 
 .components-block-coblocks-map-icon-size__custom-input {
-
 	.components-range-control__slider + .dashicon {
 		width: 26px;
 		height: 26px;
@@ -64,7 +75,6 @@
 }
 
 .components-block-coblocks-height__custom-input {
-
 	svg {
 		position: relative;
 		top: -1px;
@@ -74,9 +84,9 @@
 	}
 }
 
-.edit-post-settings-sidebar__panel-block .components-panel__body{
-	.components-base-control{
-		&.components-block-coblocks-map-api-key__custom-input{
+.edit-post-settings-sidebar__panel-block .components-panel__body {
+	.components-base-control {
+		&.components-block-coblocks-map-api-key__custom-input {
 			margin-bottom: 5px;
 		}
 	}
@@ -84,7 +94,7 @@
 
 // Style the Block Controls dropdown icons.
 .coblocks-map-style--retro {
-	fill: #DFD2AE !important;
+	fill: #dfd2ae !important;
 }
 
 .coblocks-map-style--aubergine {
@@ -92,7 +102,7 @@
 }
 
 .coblocks-map-style--silver {
-	fill: #C9C9C9 !important;
+	fill: #c9c9c9 !important;
 }
 
 .coblocks-map-style--dark {

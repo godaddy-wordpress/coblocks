@@ -292,7 +292,7 @@
 // Clean up Row > Column block UI
 .wp-block-coblocks-row [data-type="coblocks/column"] {
 	background: transparent !important;
-	
+
 	.editor-block-list__breadcrumb {
 		display: none;
 	}
@@ -414,10 +414,10 @@ div[data-type="coblocks/row"].is-resizing {
 		}
 	}
 }
-div[data-type="coblocks/column"]:last-child{
-	.components-resizable-box__container.wp-block-coblocks-column.is-selected-column{
+div[data-type="coblocks/column"]:last-child {
+	.components-resizable-box__container.wp-block-coblocks-column.is-selected-column {
 		> span > .components-resizable-box__handle,
-		&::after{
+		&::after {
 			display: none;
 		}
 	}
@@ -464,6 +464,3 @@ div[data-type="coblocks/row"].is-resizing .has-large-gutter .components-resizabl
 		max-width: 100% !important;
 	}
 }
-
-// Import layout selector
-@import "_layout-selector";

@@ -33,6 +33,7 @@ class Controls extends Component {
 
 		const {
 			address,
+			skin,
 		} = attributes;
 
 		return (
@@ -44,44 +45,13 @@ class Controls extends Component {
 								icon={ icons.style }
 								label={ __( 'Map style' ) }
 								controls={ [
-									map( styleOptions, ( { value, label, image } ) => ({
-										icon: image,
+									map( styleOptions, ( { value, label } ) => ({
 										title: label,
+										label: label,
 										key: value,
+										layout: skin,
 										onClick: () => { setAttributes( { skin: value } ) }
 									}) )
-								] }
-							/>
-							<DropdownMenu
-								icon= { icons.style }
-								label={ __( 'Map style' ) }
-								className="components-coblocks-map-style"
-								controls={ [
-									{
-										icon: icons.style,
-										title: __( 'Standard' ),
-										onClick: () => { setAttributes( { skin: 'standard' } ) },
-									},
-									{
-										icon: icons.mapStyleSilver,
-										title: __( 'Silver' ),
-										onClick: () => { setAttributes( { skin: 'silver' } ) },
-									},
-									{
-										icon: icons.mapStyleRetro,
-										title: __( 'Retro' ),
-										onClick: () => { setAttributes( { skin: 'retro' } ) },
-									},
-									{
-										icon: icons.mapStyleDark,
-										title: __( 'Dark' ),
-										onClick: () => { setAttributes( { skin: 'dark' } ) },
-									},
-									{
-										icon: icons.eggplant,
-										title: __( 'Aubergine' ),
-										onClick: () => { setAttributes( { skin: 'aubergine' } ) },
-									},
 								] }
 							/>
 						</Toolbar>
