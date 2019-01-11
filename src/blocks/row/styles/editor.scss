@@ -415,7 +415,7 @@ div[data-type="coblocks/row"].is-resizing {
 	}
 }
 div[data-type="coblocks/column"]:last-child {
-	.components-resizable-box__container.wp-block-coblocks-column.is-selected-column {
+	> div > div > .components-resizable-box__container.wp-block-coblocks-column.is-selected-column {
 		> span > .components-resizable-box__handle,
 		&::after {
 			display: none;
