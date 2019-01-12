@@ -20,7 +20,7 @@ This is the Gutenberg page builder you've been waiting for. We guarantee CoBlock
 
 
 ## One for all, all in one
-CoBlocks is the last page builder you’ll ever need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages. Have a look:
+CoBlocks is the last page builder you’ll need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages. Have a look:
 
 * Resizable Row/Columns Block (New)
 * Accordion Block
@@ -44,7 +44,7 @@ CoBlocks features an innovative approach that allows you to make stunning web pa
 
 Each block within CoBlocks has been precisely fined tuned to offer a familiar, yet powerful, customization experience. Tailor each element to your taste using our custom controls and settings. Change fonts, set margin and padding, pick colors and more.
 
-And with our quickly growing suite of Gutenberg blocks, you'll be sure to create beauitful web pages in minutes.
+And with our quickly growing suite of Gutenberg blocks, you'll be sure to create beautiful web pages in minutes.
 
 
 ## Runs on WordPress core
