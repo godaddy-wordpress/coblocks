@@ -15,7 +15,7 @@ import './styles/editor.scss';
 const { DOWN } = wp.keycodes;
 const { Button, IconButton, Dropdown, NavigableMenu } = wp.components;
 
-function DropdownLayout( {
+function VisualDropdown( {
 	icon = 'menu',
 	label,
 	test,
@@ -35,8 +35,8 @@ function DropdownLayout( {
 
 	return (
 		<Dropdown
-			className={ classnames( 'components-dropdown-menu', 'components-coblocks-dropdown-layout', className ) }
-			contentClassName="components-dropdown-menu__popover components-coblocks-dropdown-layout__popover"
+			className={ classnames( 'components-dropdown-menu', 'components-coblocks-visual-dropdown', className ) }
+			contentClassName="components-dropdown-menu__popover components-coblocks-visual-dropdown__popover"
 			renderToggle={ ( { isOpen, onToggle } ) => {
 				const openOnArrowDown = ( event ) => {
 					if ( ! isOpen && event.keyCode === DOWN ) {
@@ -111,4 +111,4 @@ function DropdownLayout( {
 	);
 }
 
-export default DropdownLayout;
+export default VisualDropdown;

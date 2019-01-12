@@ -7,7 +7,7 @@ import map from 'lodash/map';
  * Internal dependencies
  */
 import icons from './../../../utils/icons';
-import DropdownLayout from '../../../components/dropdown-layout/';
+import VisualDropdown from '../../../components/visual-dropdown/';
 import { styleOptions } from './styles'
 
 /**
@@ -42,7 +42,7 @@ class Controls extends Component {
 				{ address && pinned &&
 					<BlockControls>
 						<Toolbar>
-							<DropdownLayout
+							<VisualDropdown
 								icon={ icons.style }
 								label={ __( 'Map style' ) }
 								controls={ [

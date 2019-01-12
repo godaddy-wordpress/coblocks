@@ -170,8 +170,8 @@
 	}
 }
 
-// Remove excess padding from toolbar icon on the DropdownLayout component.
-.components-coblocks-dropdown-layout {
+// Remove excess padding from toolbar icon on the VisualDropdown component.
+.components-coblocks-visual-dropdown {
 	padding: 0;
 }
 
@@ -180,13 +180,13 @@
 	width: 63px;
 }
 
-.components-coblocks-dropdown-layout__popover {
+.components-coblocks-visual-dropdown__popover {
 	.components-coblocks-layout-selector__button-wrapper:hover {
 		background: #f8f9f9;
 	}
 }
 
-.components-coblocks-dropdown-layout__popover:not(.is-mobile) {
+.components-coblocks-visual-dropdown__popover:not(.is-mobile) {
 	.components-popover__content {
 		max-width: 340px;
 		min-width: 300px;

@@ -29,7 +29,7 @@ const icon = icons.accordion;
 
 const keywords = [
 	__( 'tabs' ),
-	__( 'list' ),
+	__( 'faq' ),
 	__( 'coblocks' ),
 ];
 

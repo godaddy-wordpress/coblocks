@@ -130,7 +130,8 @@
 		top: -2px;
 	}
 
-	&__units--Pixel {
+	&__units--Pixel,
+	&__units--Em {
 		border-radius: 3px !important;
 		margin-right: 2px;
 	}
