@@ -97,13 +97,13 @@ class CoBlocks_Font_Loader {
 					);
 
 					wp_register_style(
-						'coblocks-fonts',
+						'coblocks-block-fonts',
 						add_query_arg( $query_args, '//fonts.googleapis.com/css' ),
 						array(),
 						$this->_version
 					);
 
-					wp_enqueue_style( 'coblocks-fonts' );
+					wp_enqueue_style( 'coblocks-block-fonts' );
 				}
 
 				// Reset.
