@@ -14,51 +14,54 @@ CoBlocks is a suite of professional page building content blocks for the WordPre
 
 == Description ==
 
-Engineered with the most advanced web technology available, [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the most innovative collection of page building blocks for WordPress 5.0 and Gutenberg.
-
-This is the Gutenberg page builder you've been waiting for. We guarantee CoBlocks will make you rethink what WordPress is capable of.
+Engineered with the most advanced web technologies available, [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the most innovative collection of page building blocks for the new Gutenberg WordPress block editor.
+This is the Gutenberg page builder you've been waiting for. CoBlocks will make you rethink what WordPress is capable of.
 
 
 ## One for all, all in one
-CoBlocks is the last page builder you’ll ever need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages. Have a look:
+[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages. Have a look:
 
-* Resizable Row/Columns Block (New)
-* Accordion Block
-* Alert Block
-* Author Block
-* Click to Tweet Block
-* Dynamic Separator Block
-* Gif Block
-* GitHub Gist Block
-* Highlight Block
-* Pricing Table Block
-* Social Block
+* Resizable Row/Columns (New!)
+* Accordion
+* Alert
+* Author Profile
+* Click to Tweet
+* Dynamic Separator
+* Gif
+* GitHub Gist
+* Highlight
+* Pricing Table
+* Social Sharing
 
 
-## Deploy Custom Typography
-The breakthrough Typography Controls panel lets you design typography to your hearts content. Set fonts, sizes, weights, transformations and more, within <strong>core blocks</strong> and CoBlocks blocks.
+## Design with Custom Typography
+The CoBlocks breakthrough Typography Controls Panel lets you full-on design web pages with alluring typographic elements. Set fonts, sizes, weights, transformations and more, in our custom CoBlocks blocks, <em>and</em> in core WordPress blocks.
 
 
 ## Breakthrough Block System
-CoBlocks features an innovative approach that allows you to make stunning web pages, and even entire websites with ease. Use our exceptional Row and Columns blocks to add dynamically generated content areas with specific responsive-controlled margin and padding tweaks that only CoBlocks can provide.
+[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to make stunning web pages, and even entire websites without a single line of code.
 
-Each block within CoBlocks has been precisely fined tuned to offer a familiar, yet powerful, customization experience. Tailor each element to your taste using our custom controls and settings. Change fonts, set margin and padding, pick colors and more.
+Use the exceptional Row and Columns blocks to add dynamically generated content areas with specific responsive-controlled margin and padding settings that only CoBlocks provides.
+
+On top of that, each block within CoBlocks has been precisely fined tuned to offer a familiar, yet powerful, customization experience. Tailor each block to your taste using our custom controls and settings. Change fonts, set margin and padding, pick colors and more.
 
 And with our quickly growing suite of Gutenberg blocks, you'll be sure to create beauitful web pages in minutes.
-
-
-## Runs on WordPress core
-WordPress 5.0 powers CoBlocks. No dependancies. No third-parties. It lets you do things you simply can’t with other page builders.
-
-That’s because CoBlocks is designed specifically for WordPress core.
 
 
 ## Our Vision
 The vision for CoBlocks has always been to create a suite of blocks to help folks make beautiful websites. This newest release of CoBlocks is the ultimate expression of that vision. And we think we've nailed it.
 
+## Join us
+Join us in welcoming the future of WordPress.
+
+* [Visit the CoBlocks website](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks)
+* [Subscribe to the newsletter]()
+* [Join our new Community](https://facebook.com/groups/coblocks)
+* [Visit us on Facebook](https://www.facebook.com/coblocks/)
+* [Follow @CoBlocks on Twitter](https://twitter.com/coblocks)
 
 ## Built with developers in mind
-Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Click here](https://github.com/thatplugincompany/coblocks) to contribute to CoBlocks.
+Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks](https://github.com/thatplugincompany/coblocks) and join the party. 🎉
 
 
 ## From trusted developers
