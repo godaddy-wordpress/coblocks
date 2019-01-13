@@ -14,65 +14,65 @@ CoBlocks is a suite of professional page building content blocks for the WordPre
 
 == Description ==
 
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the most innovative collection of page building blocks for the new Gutenberg WordPress block editor. Hands down, CoBlocks is the Gutenberg page builder you've been waiting for; it will make you rethink what WordPress is capable of.
+Engineered with the most advanced web technology available, [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the most innovative collection of page building blocks for WordPress 5.0 and Gutenberg.
 
-
-= See for yourself =
-
-https://www.youtube.com/watch?v=SfWoVX_uJ0M
+This is the Gutenberg page builder you've been waiting for. We guarantee CoBlocks will make you rethink what WordPress is capable of.
 
 
 ## One for all, all in one
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages:
+CoBlocks is the last page builder you’ll need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages. Have a look:
 
-* Resizable Row/Columns (New!)
-* Accordion
-* Alert
-* Author Profile
-* Click to Tweet
-* Dynamic Separator
-* Gif
-* GitHub Gist
-* Highlight
-* Pricing Table
-* Social Sharing
+* Resizable Row/Columns Block (New)
+* Accordion Block
+* Alert Block
+* Author Block
+* Click to Tweet Block
+* Dynamic Separator Block
+* Gif Block
+* GitHub Gist Block
+* Highlight Block
+* Pricing Table Block
+* Social Block
 
 
-## Custom Typography Controls
-The breakthrough Typography Control Panel within CoBlocks lets you design web pages with alluring typographic elements. <strong>Set fonts, sizes, weights, transformations and more</strong>, in our CoBlocks blocks, <em>and</em> in core WordPress blocks.
+## Deploy Custom Typography
+The breakthrough Typography Controls panel lets you design typography to your hearts content. Set fonts, sizes, weights, transformations and more, within <strong>core blocks</strong> and CoBlocks blocks.
 
 
 ## Breakthrough Block System
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, without one line of code.
+CoBlocks features an innovative approach that allows you to make stunning web pages, and even entire websites with ease. Use our exceptional Row and Columns blocks to add dynamically generated content areas with specific responsive-controlled margin and padding tweaks that only CoBlocks can provide.
 
-Use the exceptional <strong>Row and Columns blocks</strong> to add dynamically generated content areas with specific <strong>responsive margin and padding settings</strong> that only CoBlocks provides.
+Each block within CoBlocks has been precisely fined tuned to offer a familiar, yet powerful, customization experience. Tailor each element to your taste using our custom controls and settings. Change fonts, set margin and padding, pick colors and more.
 
-On top of that, each block within CoBlocks has been precisely fined tuned to offer a familiar, yet powerful, customization experience. Tailor each block to your taste using our custom controls and settings. <strong>Change fonts, set margin and padding, pick colors and more.</strong>
+And with our quickly growing suite of Gutenberg blocks, you'll be sure to create beautiful web pages in minutes.
+
+
+## Runs on WordPress core
+WordPress 5.0 powers CoBlocks. No dependancies. No third-parties. It lets you do things you simply can’t with other page builders.
+
+That’s because CoBlocks is designed specifically for WordPress core.
 
 
 ## Our Vision
 The vision for CoBlocks has always been to create a suite of blocks to help folks make beautiful websites. This newest release of CoBlocks is the ultimate expression of that vision. And we think we've nailed it.
 
-<strong>Join us</strong> in welcoming the future of WordPress:
-
-* [Visit the CoBlocks website](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks)
-* [Subscribe to updates](http://eepurl.com/dfS16z)
-* [Follow on Twitter](https://twitter.com/coblocks)
-* [Join our new Community](https://facebook.com/groups/coblocks)
-* [Like us on Facebook](https://www.facebook.com/coblocks/)
-
 
 ## Built with developers in mind
-Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks](https://github.com/thatplugincompany/coblocks) and join the party. 🎉
+Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Click here](https://github.com/thatplugincompany/coblocks) to contribute to CoBlocks.
 
+
+## From trusted developers
+CoBlocks is built and maintained by [Rich Tabor](https://richtabor.com?utm_medium=wp.org&utm_source=coblocks&utm_campaign=readme&utm_content=richtabor) and [Jeffrey Carandang](https://phpbits.net?utm_medium=wp.org&utm_source=coblocks&utm_campaign=readme&utm_content=richtabor).
 
 == Screenshots ==
 
-1. Make beautiful websites with CoBlocks
-2. Build modular grid systems with the CoBlocks Row and Columns blocks
-4. Drag to resize and then nest CoBlocks Row blocks
-3. Design with the CoBlocks Typography Control Panel
-5. Add CoBlocks core blocks to pages
+1. CoBlocks: Most of our available page builder blocks
+2. Accordion block: Add accordions and set them to display as open or closed by default
+3. Gists block: Embed GitHub gists right within the block editor
+4. Author block: Add an author profile to your posts
+5. Click to Tweet block: Let folks engage with your site via Click to Tweet
+6. Social block: Add a customizable social sharing components
+7. Gif block: Search for relevant Giphy gifs and add them in seconds
 
 == Installation ==
 
@@ -83,19 +83,17 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 
 == Frequently Asked Questions ==
 
+= How do I start using Gutenberg? =
+To get the full experience of the next-generation WordPress block editor,  you'll need a Gutenberg-ready WordPress theme, like [Tabor](https://themebeans.com/themes/tabor?utm_medium=coblocks-lite&utm_source=readme&utm_campaign=readme&utm_content=tabor). Then install the either WordPress 5.0+, or the [Gutenberg WordPress plugin](https://wordpress.org/plugins/gutenberg/). That's it! 💥
+
+= What WordPress themes work with CoBlocks? =
+Any properly developed WordPress theme will work with CoBlocks, though if you're looking for an exceptional theme, check out [Tabor](https://themebeans.com/themes/tabor?utm_medium=coblocks-lite&utm_source=readme&utm_campaign=readme&utm_content=tabor). Developers are also able to apply minor style touch-ups to themes, to make the blocks fit in better with existing themes.
+
 = Is CoBlocks free? =
 Yes! CoBlock's core features are absolutely free.
 
-= How do I start using Gutenberg? =
-To get the full experience of the next-generation WordPress block editor, it helps to have a properly Gutenberg-optizied WordPress theme, like [this one](https://themebeans.com/themes/tabor?utm_medium=coblocks-lite&utm_source=readme&utm_campaign=readme&utm_content=tabor). Then install either WordPress 5.0+, or the offical Gutenberg [WordPress plugin](https://wordpress.org/plugins/gutenberg/).
-
-= What WordPress themes work with CoBlocks? =
-Any properly developed WordPress theme will work with CoBlocks, though if you're looking for an exceptional theme, check out [Tabor](https://themebeans.com/themes/tabor?utm_medium=coblocks-lite&utm_source=readme&utm_campaign=readme&utm_content=tabor).
-
-Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://coblocks.com).
-
-= Where can I get help? =
-Please reach out via the contact form at the bottom right of [our website](https://coblocks.com).
+= Where can I ask for help? =
+Please reach out via the official [support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
 
