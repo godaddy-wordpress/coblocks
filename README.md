@@ -5,6 +5,7 @@
 [![CoBlocks, an suite of page builder Gutenberg blocks](https://user-images.githubusercontent.com/1813435/41249944-81eea564-6d83-11e8-87ef-9f87a2c8a077.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=banner)
 
 > WordPress.org → [Download CoBlocks on WordPress.org](https://wordpress.org/plugins/coblocks/).
+
 > Join our Community → [Join the CoBlocks Community](https://facebook.com/groups/coblocks/).
 
 ## Installation
