@@ -68,13 +68,11 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 
 == Screenshots ==
 
-1. CoBlocks: Most of our available page builder blocks
-2. Accordion block: Add accordions and set them to display as open or closed by default
-3. Gists block: Embed GitHub gists right within the block editor
-4. Author block: Add an author profile to your posts
-5. Click to Tweet block: Let folks engage with your site via Click to Tweet
-6. Social block: Add a customizable social sharing components
-7. Gif block: Search for relevant Giphy gifs and add them in seconds
+1. Make beautiful websites with CoBlocks
+2. Build modular grid systems with the CoBlocks Row and Columns blocks
+4. Drag to resize and then nest CoBlocks Row blocks
+3. Design with the CoBlocks Typography Control Panel
+5. Add CoBlocks core blocks to pages
 
 == Installation ==
 
