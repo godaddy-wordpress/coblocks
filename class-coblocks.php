@@ -20,7 +20,7 @@
  *
  * @package   @@pkg.title
  * @author    @@pkg.author
- * @link      @@pkg.author_uri
+ * @link      https://coblocks.com
  * @license   @@pkg.license
  */
 

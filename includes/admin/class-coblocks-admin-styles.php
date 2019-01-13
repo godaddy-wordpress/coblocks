@@ -4,7 +4,7 @@
  *
  * @package   @@pkg.title
  * @author    @@pkg.author
- * @link      @@pkg.author_uri
+ * @link      https://coblocks.com
  * @license   @@pkg.license
  */
 
@@ -36,7 +36,7 @@ class CoBlocks_Admin_Styles {
 			'dashboard', // Dashboard Widget.
 			'coblocks', // All Templates View.
 			'edit-coblocks', // Single Edit Template.
-			'dashboard_page_coblocks--welcome', //Welcome Page
+			'dashboard_page_coblocks--welcome', // Welcome Page
 		);
 
 		return apply_filters( 'coblocks_screen_ids', $screen_ids );

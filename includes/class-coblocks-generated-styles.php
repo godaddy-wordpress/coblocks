@@ -4,7 +4,7 @@
  *
  * @package   @@pkg.title
  * @author    @@pkg.author
- * @link      @@pkg.author_uri
+ * @link      https://coblocks.com
  * @license   @@pkg.license
  */
 
@@ -83,8 +83,8 @@ class CoBlocks_Generated_Styles {
 							foreach ( $block as $key => $style ) {
 								if ( ! empty( $style ) ) {
 									foreach ( $style as $ky => $value ) {
-										if( !empty( $value ) ){
-											if (  strpos( $ky, 'Mobile' ) !== false ) {
+										if ( ! empty( $value ) ) {
+											if ( strpos( $ky, 'Mobile' ) !== false ) {
 												$mobile[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Mobile', '', $ky ) ) ) . ':' . esc_attr( $value ) . ';';
 											} elseif ( strpos( $ky, 'Tablet' ) !== false ) {
 												$tablet[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Tablet', '', $ky ) ) ) . ':' . esc_attr( $value ) . ';';
