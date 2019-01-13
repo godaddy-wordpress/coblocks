@@ -7,9 +7,7 @@
 [![CoBlocks, an suite of page builder Gutenberg blocks](https://user-images.githubusercontent.com/1813435/51091002-586ff480-1752-11e9-8514-1e2d0b75fd3d.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=banner)
 
 ## The Vision of CoBlocks
-The vision for CoBlocks has always been to create a suite of blocks to help folks make beautiful websites. This newest release of CoBlocks is the ultimate expression of that vision. And we think we've nailed it.
-
-<strong>Join us</strong> in welcoming the future of WordPress:
+The vision for CoBlocks has always been to create a suite of blocks to help folks make beautiful websites. This newest release of CoBlocks is the ultimate expression of that vision. And we think we've nailed it. Join us in welcoming the future of WordPress:
 
 * [Download CoBlocks on WordPress.org](https://wordpress.org/plugins/coblocks/)
 * [Visit the CoBlocks website](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks)
