@@ -127,13 +127,13 @@ class Inspector extends Component {
 						<Fragment>
 							{ selectedRows > 1 &&
 								<PanelBody title={ __( 'Layout' ) } initialOpen={ false }>
-									<div className="components-coblocks-layout-selector">
+									<div className="components-coblocks-visual-dropdown">
 										<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
 										{ map( layoutOptions[ selectedRows ], ( { name, key, icon, cols } ) => (
 											<Tooltip text={ name }>
-												<div className={ ( key == layout ) ? 'components-coblocks-layout-selector__button-wrapper is-selected' : 'components-coblocks-layout-selector__button-wrapper' }>
+												<div className={ ( key == layout ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
 													<Button
-														className={ ( key == layout ) ? 'components-coblocks-layout-selector__button components-coblocks-layout-selector__button--selected' : 'components-coblocks-layout-selector__button' }
+														className={ ( key == layout ) ? 'components-coblocks-visual-dropdown__button components-coblocks-visual-dropdown__button--selected' : 'components-coblocks-visual-dropdown__button' }
 														isSmall
 														onClick={ () => {
 															let selectedWidth = key.toString().split('-');

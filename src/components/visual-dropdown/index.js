@@ -63,14 +63,14 @@ function VisualDropdown( {
 			renderContent={ ( { onClose } ) => {
 				return (
 					<NavigableMenu
-						className="components-coblocks-layout-selector"
+						className="components-coblocks-visual-dropdown"
 						role="menu"
 						aria-label={ menuLabel }
 					>
 						<div className="components-button-group">
 							{ flatMap( controlSets, ( controlSet, indexOfSet ) => (
 								controlSet.map( ( control, indexOfControl ) => (
-									<div className={ ( control.key == control.value ) ? 'components-coblocks-layout-selector__button-wrapper is-selected' : 'components-coblocks-layout-selector__button-wrapper' }>
+									<div className={ ( control.key == control.value ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
 										<Button
 											key={ [ indexOfSet, indexOfControl ].join() }
 											onClick={ ( event ) => {
@@ -82,8 +82,8 @@ function VisualDropdown( {
 											} }
 											className={ classnames(
 												'is-default',
-												'components-coblocks-layout-selector__button', {
-													'components-coblocks-layout-selector__button--selected': control.isActive,
+												'components-coblocks-visual-dropdown__button', {
+													'components-coblocks-visual-dropdown__button--selected': control.isActive,
 													[ `components-button--${ control.key }` ] : control.key,
 												},
 											) }

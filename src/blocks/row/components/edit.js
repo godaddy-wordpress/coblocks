@@ -196,15 +196,15 @@ class Edit extends Component {
 						icon={ columns ? rowIcons.layout : rowIcons.row }
 						label={ columns ? __( 'Row Layout' ) : __( 'Row' ) }
 						instructions={ columns ? sprintf( __( 'Now select a layout for this %s column row.' ), this.numberToText( columns ) ) : __( 'Select the number of columns for this row.' ) }
-						className={ 'components-coblocks-layout-selector' }
+						className={ 'components-coblocks-visual-dropdown' }
 					>
 						{ ! columns ?
 							<ButtonGroup aria-label={ __( 'Select Row Columns' ) }>
 								{ map( columnOptions, ( { name, key, icon, columns } ) => (
 									<Tooltip text={ name }>
-										<div className="components-coblocks-layout-selector__button-wrapper">
+										<div className="components-coblocks-visual-dropdown__button-wrapper">
 											<Button
-												className="components-coblocks-layout-selector__button"
+												className="components-coblocks-visual-dropdown__button"
 												isSmall
 												onClick={ () => {
 													setAttributes( {
@@ -228,7 +228,7 @@ class Edit extends Component {
 								<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
 									<IconButton
 										icon="exit"
-										className="components-coblocks-layout-selector__back"
+										className="components-coblocks-visual-dropdown__back"
 										onClick={ () => {
 											setAttributes( {
 												columns: null,
@@ -239,10 +239,10 @@ class Edit extends Component {
 									/>
 									{ map( layoutOptions[ selectedRows ], ( { name, key, icon, cols } ) => (
 										<Tooltip text={ name }>
-											<div className="components-coblocks-layout-selector__button-wrapper">
+											<div className="components-coblocks-visual-dropdown__button-wrapper">
 												<Button
 													key={ key }
-													className="components-coblocks-layout-selector__button"
+													className="components-coblocks-visual-dropdown__button"
 													isSmall
 													onClick={ () => {
 														setAttributes( {

@@ -38,7 +38,7 @@
 $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 
 // Style the VisualDropdown component buttons.
-.components-coblocks-layout-selector__button-wrapper {
+.components-coblocks-visual-dropdown__button-wrapper {
 	.components-button {
 		@each $style in $styles {
 			&--#{$style} {

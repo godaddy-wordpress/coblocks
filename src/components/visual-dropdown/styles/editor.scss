@@ -1,5 +1,5 @@
 // Style the clickable areas for the column/layout placeholder.
-.components-coblocks-layout-selector {
+.components-coblocks-visual-dropdown {
 	text-align: center;
 
 	&.components-placeholder {
@@ -96,7 +96,7 @@
 		.components-button-group {
 			justify-content: space-between;
 
-			.components-coblocks-layout-selector__button-wrapper {
+			.components-coblocks-visual-dropdown__button-wrapper {
 				flex-shrink: 0;
 				margin: 4px 0;
 				width: calc(50% - 4px);
@@ -119,7 +119,7 @@
 				}
 			}
 
-			.components-coblocks-layout-selector__button {
+			.components-coblocks-visual-dropdown__button {
 				width: 100%;
 
 				&:active:enabled {
@@ -149,7 +149,7 @@
 			justify-content: space-between;
 		}
 
-		.components-coblocks-layout-selector__button-wrapper {
+		.components-coblocks-visual-dropdown__button-wrapper {
 			flex-shrink: 0;
 			margin: 0 4px 8px !important;
 			width: calc(50% - 8px);
@@ -159,7 +159,7 @@
 			}
 		}
 
-		.components-coblocks-layout-selector__button {
+		.components-coblocks-visual-dropdown__button {
 			margin-bottom: 0;
 			width: 100%;
 
@@ -181,7 +181,7 @@
 }
 
 .components-coblocks-visual-dropdown__popover {
-	.components-coblocks-layout-selector__button-wrapper:hover {
+	.components-coblocks-visual-dropdown__button-wrapper:hover {
 		background: #f8f9f9;
 	}
 }
@@ -195,7 +195,7 @@
 			color: #555d66;
 		}
 
-		.components-coblocks-layout-selector__button-wrapper:hover {
+		.components-coblocks-visual-dropdown__button-wrapper:hover {
 			background: #f8f9f9;
 
 			.editor-block-styles__item-label {
