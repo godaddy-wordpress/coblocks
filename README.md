@@ -2,6 +2,8 @@
 
 [![WordPress plugin](https://img.shields.io/wordpress/plugin/dt/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress](https://img.shields.io/wordpress/v/coblocks.svg?style=flat)]() [![License](https://img.shields.io/badge/license-GPL--3.0%2B-red.svg)](https://github.com/richtabor/coblocks/blob/master/license.txt)
 
+[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the most innovative collection of page building blocks for the new Gutenberg WordPress block editor. Hands down, CoBlocks is the Gutenberg page builder you've been waiting for; it will make you rethink what WordPress is capable of.
+
 [![CoBlocks, an suite of page builder Gutenberg blocks](https://user-images.githubusercontent.com/1813435/41249944-81eea564-6d83-11e8-87ef-9f87a2c8a077.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=banner)
 
 > WordPress.org → [Download CoBlocks on WordPress.org](https://wordpress.org/plugins/coblocks/).
