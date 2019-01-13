@@ -6,9 +6,17 @@
 
 [![CoBlocks, an suite of page builder Gutenberg blocks](https://user-images.githubusercontent.com/1813435/51091002-586ff480-1752-11e9-8514-1e2d0b75fd3d.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=banner)
 
-> WordPress.org → [Download CoBlocks on WordPress.org](https://wordpress.org/plugins/coblocks/).
+## The Vision of CoBlocks
+The vision for CoBlocks has always been to create a suite of blocks to help folks make beautiful websites. This newest release of CoBlocks is the ultimate expression of that vision. And we think we've nailed it.
 
-> Join our Community → [Join the CoBlocks Community](https://facebook.com/groups/coblocks/).
+<strong>Join us</strong> in welcoming the future of WordPress:
+
+* [Download CoBlocks on WordPress.org](https://wordpress.org/plugins/coblocks/)
+* [Visit the CoBlocks website](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks)
+* [Subscribe to updates](http://eepurl.com/dfS16z)
+* [Follow on Twitter](https://twitter.com/coblocks)
+* [Join our new Community](https://facebook.com/groups/coblocks)
+* [Like us on Facebook](https://www.facebook.com/coblocks/)
 
 ## Installation
 
@@ -29,13 +37,9 @@
 
 Need help? This is a developer's portal for CoBlocks and should not be used for general support and queries. Please reach out via the contact form at the bottom right of [our website](https://coblocks.com) or visit the [CoBlocks support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks).
 
-## Bugs & Contributions
+## Contributions
 
-Please read the [guidelines for contributing](https://github.com/thatplugincompany/coblocks/blob/master/CONTRIBUTING.md) to CoBlocks. Anyone is welcome to contribute.
-
-If you find a 🐞 or an issue, [create an issue](https://github.com/thatplugincompany/coblocks/issues/new).
-
-There are various ways you can contribute:
+Please read the [guidelines for contributing](https://github.com/thatplugincompany/coblocks/blob/master/CONTRIBUTING.md) to CoBlocks. Anyone is welcome to contribute. If you find a 🐞 or an issue, [create an issue](https://github.com/thatplugincompany/coblocks/issues/new). Here are ways to contribute:
 
 1. Raise an [Issue](https://github.com/thatplugincompany/coblocks/issues/new) on GitHub
 2. Send a pull request with your bug fixes and/or new features.
