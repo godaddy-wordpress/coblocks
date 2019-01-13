@@ -43,14 +43,10 @@ There are various ways you can contribute:
 
 ## Screenshots
 
-## [![CoBlocks GitHub Gist Block](https://user-images.githubusercontent.com/1813435/41250051-d196c97a-6d83-11e8-8567-0723d92fcbc4.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=gist-screenshot)
+## [![Build modular grid systems with the CoBlocks Row and Columns blocks](https://user-images.githubusercontent.com/1813435/51091007-6aea2e00-1752-11e9-8ac5-4e6cb307ef47.gif)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=screenshot-1.gif)
 
-## [![CoBlocks Accordion Block](https://user-images.githubusercontent.com/1813435/41250059-dbf363ce-6d83-11e8-8115-f0556ad35c51.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=accordion-screenshot)
+## [![Drag to resize and then nest CoBlocks Row blocks](https://user-images.githubusercontent.com/1813435/51091023-940abe80-1752-11e9-9a91-4c332c393ca9.gif)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=screenshot-3.gif)
 
-## [![CoBlocks Click to Tweet Block](https://user-images.githubusercontent.com/1813435/41250070-e5df5b72-6d83-11e8-93b4-af26d977033c.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=click-to-tweet-screenshot)
+## [![Design with the CoBlocks Typography Control Panel](https://user-images.githubusercontent.com/1813435/51091031-bc92b880-1752-11e9-943b-ebb5ca5682f2.gif)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=screenshot-4.gif)
 
-## [![CoBlocks Giphy Search Block](https://user-images.githubusercontent.com/1813435/41250094-f01ea930-6d83-11e8-9c60-5ea7eca383cf.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=gif-screenshot)
-
-## [![CoBlocks Author Block](https://user-images.githubusercontent.com/1813435/41250109-fbe43fdc-6d83-11e8-9e72-568d4b51663f.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=author-screenshot)
-
-[![CoBlocks Social Block](https://user-images.githubusercontent.com/1813435/41250133-085d107c-6d84-11e8-8da4-da299027d937.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=social-screenshot)
+## [![Add CoBlocks core blocks to pages](https://user-images.githubusercontent.com/1813435/51091036-ccaa9800-1752-11e9-9e9f-fed60a73024c.gif)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=screenshot-5.gif)
