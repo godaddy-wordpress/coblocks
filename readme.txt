@@ -22,7 +22,7 @@ CoBlocks is a suite of professional page building content blocks for the WordPre
 https://www.youtube.com/watch?v=SfWoVX_uJ0M
 
 
-= One for all, all in one =
+## One for all, all in one
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages:
 
 * Resizable Row/Columns (New!)
@@ -38,26 +38,22 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Social Sharing
 
 
-= Custom Typography Controls =
-The breakthrough Typography Control Panel within CoBlocks lets you design web pages with alluring typographic elements. Set fonts, sizes, weights, transformations and more, in our custom CoBlocks blocks, <em>and</em> in core WordPress blocks.
+## Custom Typography Controls
+The breakthrough Typography Control Panel within CoBlocks lets you design web pages with alluring typographic elements. <strong>Set fonts, sizes, weights, transformations and more</strong>, in our CoBlocks blocks, <em>and</em> in core WordPress blocks.
 
 
-= Breakthrough Block System =
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, without one single line of code.
+## Breakthrough Block System
+[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, without one line of code.
 
-Use the exceptional Row and Columns blocks to add dynamically generated content areas with specific responsive-controlled margin and padding settings that only CoBlocks provides.
+Use the exceptional <strong>Row and Columns blocks</strong> to add dynamically generated content areas with specific <strong>responsive margin and padding settings</strong> that only CoBlocks provides.
 
-On top of that, each block within CoBlocks has been precisely fined tuned to offer a familiar, yet powerful, customization experience. Tailor each block to your taste using our custom controls and settings. Change fonts, set margin and padding, pick colors and more.
-
-And with our quickly growing suite of Gutenberg blocks, you'll be sure to create beauitful web pages in minutes.
+On top of that, each block within CoBlocks has been precisely fined tuned to offer a familiar, yet powerful, customization experience. Tailor each block to your taste using our custom controls and settings. <strong>Change fonts, set margin and padding, pick colors and more.</strong>
 
 
-= Our Vision =
+## Our Vision
 The vision for CoBlocks has always been to create a suite of blocks to help folks make beautiful websites. This newest release of CoBlocks is the ultimate expression of that vision. And we think we've nailed it.
 
-
-= Join us =
-Join us in welcoming the future of WordPress.
+<strong>Join us</strong> in welcoming the future of WordPress:
 
 * [Visit the CoBlocks website](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks)
 * [Subscribe to updates](http://eepurl.com/dfS16z)
@@ -66,7 +62,7 @@ Join us in welcoming the future of WordPress.
 * [Like us on Facebook](https://www.facebook.com/coblocks/)
 
 
-= Built with developers in mind =
+## Built with developers in mind
 Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks](https://github.com/thatplugincompany/coblocks) and join the party. 🎉
 
 
