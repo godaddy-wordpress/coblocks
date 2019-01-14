@@ -3,7 +3,7 @@
  * Server-side rendering of the `coblocks/social` block.
  *
  * @package   @@pkg.title
- * @author    @@pkg.author
+ * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
  * @license   @@pkg.license
  */
 

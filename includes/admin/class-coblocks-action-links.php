@@ -3,7 +3,7 @@
  * Add links to @@pkg.title on the plugins admin page.
  *
  * @package   @@pkg.title
- * @author    @@pkg.author
+ * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
  * @link      https://coblocks.com
  * @license   @@pkg.license
  */

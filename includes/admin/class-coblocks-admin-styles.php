@@ -3,7 +3,7 @@
  * Add admin styles and scripts.
  *
  * @package   @@pkg.title
- * @author    @@pkg.author
+ * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
  * @link      https://coblocks.com
  * @license   @@pkg.license
  */
