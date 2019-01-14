@@ -1,0 +1,64 @@
+.wp-block[data-type="coblocks/features"] {
+
+	.wp-block-coblocks-features {
+		width: 100%;
+
+		> .editor-inner-blocks {
+
+			> .editor-block-list__layout {
+				display: flex;
+
+				> .wp-block > .editor-block-list__block-edit {
+					margin-top: 0;
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	.wp-block[data-type="core/heading"],
+	.wp-block[data-type="core/paragraph"] {
+
+		.editor-block-list__insertion-point {
+			display: none;
+			position: relative;
+		}
+	}
+
+	&[data-align="wide"],
+	&[data-align="full"] {
+
+		.editor-block-list__block {
+			max-width: none;
+		}
+	}
+
+	> .editor-block-mover,
+	> .block-list-appender {
+		display: none;
+	}
+
+	.wp-block[data-type="coblocks/feature"] {
+
+		@media (min-width: 600px) {
+			flex-basis: 40%;
+			flex-grow: 1;
+			max-width: 100%;
+		}
+
+		.editor-block-list__layout .editor-block-list__block > .editor-block-list__block-edit::before {
+			// outline: none;
+		}
+
+		.editor-default-block-appender {
+			display: none;
+		}
+
+		.wp-block-image figcaption {
+			display: none;
+		}
+		// .wp-block-image .components-placeholder__instructions {
+		// 	display: none;
+		// }
+	}
+}
