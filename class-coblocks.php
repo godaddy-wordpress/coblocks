@@ -19,7 +19,7 @@
  * along with CoBlocks. If not, see <http://www.gnu.org/licenses/>.
  *
  * @package   @@pkg.title
- * @author    @@pkg.author
+ * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
  * @link      https://coblocks.com
  * @license   @@pkg.license
  */
