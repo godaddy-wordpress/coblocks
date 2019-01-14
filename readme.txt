@@ -56,7 +56,7 @@ The vision for CoBlocks has always been to create a suite of blocks to help folk
 <strong>Join us</strong> in welcoming the future of WordPress:
 
 * [Visit the CoBlocks website](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks)
-* [Subscribe to updates](http://eepurl.com/dfS16z)
+* [Subscribe to updates](http://eepurl.com/gd1S8D)
 * [Follow on Twitter](https://twitter.com/coblocks)
 * [Join our new Community](https://facebook.com/groups/coblocks)
 * [Like us on Facebook](https://www.facebook.com/coblocks/)
