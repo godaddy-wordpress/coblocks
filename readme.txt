@@ -97,6 +97,10 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
+= 1.6.1 =
+* New: Add support for em units on Advanced dimensions controls
+* New: Add Map block with six built-in map styles, zoom, controls and marker size options
+
 = 1.6.0 =
 * New: Add drag and resizable Row and Columns blocks with support for dynamic layouts
 * New: Add controls to the Row and Columns blocks for adjusting margin and padding
