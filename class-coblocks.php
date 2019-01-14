@@ -18,10 +18,10 @@
  * You should have received a copy of the GNU General Public License
  * along with CoBlocks. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   @@pkg.title
+ * @package   CoBlocks
  * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
  * @link      https://coblocks.com
- * @license   @@pkg.license
+ * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
 // Exit if accessed directly.

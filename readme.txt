@@ -2,12 +2,12 @@
 Author URI: https://coblocks.com
 Plugin URI: https://coblocks.com
 Contributors: coblocks, richtabor, phpbits
-Tags: blocks, gutenberg, editor, page builder, gutenberg blocks
+Tags: blocks, gutenberg, editor, page builder, gutenberg blocks, templates, block,
 Requires at least: 5.0
 Tested up to: @@pkg.tested_up_to
 Requires PHP: 5.2.4
 Stable tag: @@pkg.version
-License: GPL-3.0
+License: GNU Version 2 or Any Later Version
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 CoBlocks is a suite of professional page building content blocks for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
