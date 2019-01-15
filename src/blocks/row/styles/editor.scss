@@ -425,6 +425,10 @@
 		.has-large-gutter & {
 			right: -35px;
 		}
+
+		.has-huge-gutter & {
+			right: -62px;
+		}
 	}
 }
 
@@ -488,7 +492,7 @@ div[data-type="coblocks/row"].is-resizing .has-huge-gutter .components-resizable
 	right: -55px;
 }
 
-.has-large-gutter .coblocks-resizeable-width {
+.has-huge-gutter .coblocks-resizeable-width {
 	right: -82px;
 }
 
