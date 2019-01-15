@@ -23,23 +23,28 @@ export const uppercase = {
 	className: 'uppercase',
 	edit( { isActive, value, onChange } ) {
 		const onToggle = () => onChange( toggleFormat( value, { type: name } ) );
+		const selectedBlock = wp.data.select( 'core/editor' ).getSelectedBlock();
+		if( ![ 'coblocks/click-to-tweet' ].includes( selectedBlock.name ) ){
+			return (
+				<Fragment>
+					<RichTextShortcut
+						type="access"
+						character="u"
+						onUse={ onToggle }
+					/>
+					<RichTextToolbarButton
+						icon={ icons.formatUppercase }
+						title={ __( 'Uppercase' ) }
+						onClick={ onToggle }
+						isActive={ isActive }
+						shortcutType="access"
+						shortcutCharacter="u"
+					/>
+				</Fragment>
+			);
+		}
 
-		return (
-			<Fragment>
-				<RichTextShortcut
-					type="access"
-					character="u"
-					onUse={ onToggle }
-				/>
-				<RichTextToolbarButton
-					icon={ icons.formatUppercase }
-					title={ __( 'Uppercase' ) }
-					onClick={ onToggle }
-					isActive={ isActive }
-					shortcutType="access"
-					shortcutCharacter="u"
-				/>
-			</Fragment>
-		);
+		return false;
+		
 	},
 };
