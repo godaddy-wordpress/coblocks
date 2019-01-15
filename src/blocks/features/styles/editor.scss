@@ -16,6 +16,15 @@
 				}
 			}
 
+			//hide first mover
+			[data-type="coblocks/feature"]{
+				.wp-block:first-child{
+					.editor-block-mover{
+						display: none !important;
+					}
+				}
+			}
+
 			&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/feature"] {
 				@include break-small() {
 					&:nth-child(odd) {
