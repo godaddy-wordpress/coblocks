@@ -126,7 +126,7 @@ const settings = {
 
 		const classes = classnames( 
 			className, {
-				// [ `coblocks-feature-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+				[ `coblocks-features-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
 		);
 

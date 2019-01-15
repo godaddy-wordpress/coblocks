@@ -87,7 +87,7 @@ class Edit extends Component {
 
 		const classes = classnames(
 			className, {
-				// [ `coblocks-features-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+				[ `coblocks-features-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
 		);
 
