@@ -43,8 +43,7 @@ const blockAttributes = {
 		type: 'number',
 	},
 	gutter: {
-		type: 'number',
-		default: 15,
+		type: 'string',
 	},
 	columns: {
 		type: 'number',
@@ -105,6 +104,7 @@ const settings = {
 			customHeadingFontSize,
 			customHeadingColor,
 			stacked,
+			gutter,
 			marginBottom,
 			marginLeft,
 			marginRight,
@@ -141,6 +141,7 @@ const settings = {
 			'has-margin': marginSize && marginSize != 'no',
 			[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
 			'is-stacked-on-mobile': stacked,
+			[ `has-${ gutter }-gutter` ] : gutter,
 		} );
 
 		const innerStyles = {
