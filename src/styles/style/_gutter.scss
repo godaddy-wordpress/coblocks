@@ -72,3 +72,28 @@
 		}
 	}
 }
+
+.has-huge-gutter {
+
+	> [class*="wp-block-coblocks-"] {
+
+		@include break-small() {
+
+			&:nth-child(odd) {
+				margin-right: $gutter--huge;
+			}
+
+			&:nth-child(even) {
+				margin-left: $gutter--huge;
+			}
+
+			&:not(:first-child) {
+				margin-left: $gutter--huge;
+			}
+
+			&:not(:last-child) {
+				margin-right: $gutter--huge;
+			}
+		}
+	}
+}
