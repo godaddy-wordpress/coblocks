@@ -2,10 +2,10 @@
 /**
  * Add admin styles and scripts.
  *
- * @package   @@pkg.title
- * @author    @@pkg.author
- * @link      @@pkg.author_uri
- * @license   @@pkg.license
+ * @package   CoBlocks
+ * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
+ * @link      https://coblocks.com
+ * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
 // Exit if accessed directly.
@@ -36,7 +36,7 @@ class CoBlocks_Admin_Styles {
 			'dashboard', // Dashboard Widget.
 			'coblocks', // All Templates View.
 			'edit-coblocks', // Single Edit Template.
-			'dashboard_page_coblocks--welcome', //Welcome Page
+			'dashboard_page_coblocks--welcome', // Welcome Page
 		);
 
 		return apply_filters( 'coblocks_screen_ids', $screen_ids );

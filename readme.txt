@@ -2,12 +2,12 @@
 Author URI: https://coblocks.com
 Plugin URI: https://coblocks.com
 Contributors: coblocks, richtabor, phpbits
-Tags: blocks, gutenberg, editor, page builder, gutenberg blocks
+Tags: blocks, gutenberg, editor, page builder, gutenberg blocks, templates, block,
 Requires at least: 5.0
 Tested up to: @@pkg.tested_up_to
 Requires PHP: 5.2.4
 Stable tag: @@pkg.version
-License: GPL-3.0
+License: GNU Version 2 or Any Later Version
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 CoBlocks is a suite of professional page building content blocks for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
@@ -20,7 +20,7 @@ This is the Gutenberg page builder you've been waiting for. We guarantee CoBlock
 
 
 ## One for all, all in one
-CoBlocks is the last page builder you’ll ever need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages. Have a look:
+CoBlocks is the last page builder you’ll need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages. Have a look:
 
 * Resizable Row/Columns Block (New)
 * Accordion Block
@@ -44,7 +44,7 @@ CoBlocks features an innovative approach that allows you to make stunning web pa
 
 Each block within CoBlocks has been precisely fined tuned to offer a familiar, yet powerful, customization experience. Tailor each element to your taste using our custom controls and settings. Change fonts, set margin and padding, pick colors and more.
 
-And with our quickly growing suite of Gutenberg blocks, you'll be sure to create beauitful web pages in minutes.
+And with our quickly growing suite of Gutenberg blocks, you'll be sure to create beautiful web pages in minutes.
 
 
 ## Runs on WordPress core
@@ -96,6 +96,10 @@ Yes! CoBlock's core features are absolutely free.
 Please reach out via the official [support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+= 1.6.1 =
+* New: Add support for em units on Advanced dimensions controls
+* New: Add Map block with six built-in map styles, zoom, controls and marker size options
 
 = 1.6.0 =
 * New: Add drag and resizable Row and Columns blocks with support for dynamic layouts
