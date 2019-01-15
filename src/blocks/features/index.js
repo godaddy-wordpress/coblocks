@@ -81,6 +81,7 @@ const settings = {
 	save( { attributes, className } ) {
 
 		const {
+			coblocks,
 			backgroundColor,
 			backgroundImg,
 			columns,
@@ -103,29 +104,56 @@ const settings = {
 			headingFontFamily,
 			customHeadingFontSize,
 			customHeadingColor,
+			stacked,
+			marginBottom,
+			marginLeft,
+			marginRight,
+			marginSize,
+			marginSyncUnits,
+			marginTop,
+			marginUnit,
+			paddingBottom,
+			paddingLeft,
+			paddingRight,
+			paddingSize,
+			paddingSyncUnits,
+			paddingTop,
+			paddingUnit,
 		} = attributes;
 
 		// Body color class and styles.
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
+		const classes = classnames( 
+			className, {
+				// [ `coblocks-feature-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+			}
+		);
 
-		const backgroundClasses = classnames(
-			className,
+		const innerClasses = classnames(
+			'wp-block-coblocks-features__inner',
 			`has-${ columns }-columns`,
 			...BackgroundClasses( attributes ), {
 			'has-background': backgroundColor || customBackgroundColor,
 			[ backgroundClass ]: backgroundClass,
+			'has-padding': paddingSize && paddingSize != 'no',
+			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
+			'has-margin': marginSize && marginSize != 'no',
+			[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
+			'is-stacked-on-mobile': stacked,
 		} );
 
-		const backgroundStyles = {
+		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
 			textAlign: contentAlign ? contentAlign : null,
 		};
 
 		return (
-			<div className={ backgroundClasses } style={ backgroundStyles }>
-				<InnerBlocks.Content />
+			<div className={ classes } data-columns={ columns } >
+				<div className={ innerClasses } style={ innerStyles }>
+					<InnerBlocks.Content />
+				</div>
 			</div>
 		);
 	},

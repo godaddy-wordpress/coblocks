@@ -3,14 +3,16 @@
 	.wp-block-coblocks-features {
 		width: 100%;
 
-		> .editor-inner-blocks {
+		&__inner{
+			> .editor-inner-blocks {
 
-			> .editor-block-list__layout {
-				display: flex;
+				> .editor-block-list__layout {
+					display: flex;
 
-				> .wp-block > .editor-block-list__block-edit {
-					margin-top: 0;
-					margin-bottom: 0;
+					> .wp-block > .editor-block-list__block-edit {
+						margin-top: 0;
+						margin-bottom: 0;
+					}
 				}
 			}
 		}
@@ -41,9 +43,15 @@
 	.wp-block[data-type="coblocks/feature"] {
 
 		@media (min-width: 600px) {
-			flex-basis: 40%;
-			flex-grow: 1;
-			max-width: 100%;
+			display: flex;
+			flex-direction: column;
+
+			// Prevent the columns from growing wider than their distributed sizes.
+			min-width: 0;
+
+			// Prevent long unbroken words from overflowing.
+			overflow-wrap: break-word; // New standard.
+			word-break: break-word; // For back-compat.
 		}
 
 		.editor-block-list__layout .editor-block-list__block > .editor-block-list__block-edit::before {

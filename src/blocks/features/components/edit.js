@@ -20,6 +20,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { RichText, InnerBlocks } = wp.editor;
+const { isBlobURL } = wp.blob;
 
 /**
  * Constants
@@ -57,9 +58,23 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
+			coblocks,
 			backgroundImg,
 			columns,
 			contentAlign,
+			gutter,
+			paddingTop,
+			paddingRight,
+			paddingBottom,
+			paddingLeft,
+			marginTop,
+			marginRight,
+			marginBottom,
+			marginLeft,
+			paddingUnit,
+			marginUnit,
+			marginSize,
+			paddingSize,
 		} = attributes;
 
 		const dropZone = (
@@ -69,6 +84,38 @@ class Edit extends Component {
 				label={ __( 'Add backround image' ) }
 			/>
 		);
+
+		const classes = classnames(
+			className, {
+				// [ `coblocks-features-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+			}
+		);
+
+		const innerClasses = classnames(
+			'wp-block-coblocks-features__inner',
+			`has-${ columns }-columns`,
+			...BackgroundClasses( attributes ), {
+				[ `has-${ gutter }-gutter` ] : gutter,
+				'has-padding': paddingSize && paddingSize != 'no',
+				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
+				'has-margin': marginSize && marginSize != 'no',
+				[ `has-${ marginSize }-margin` ] : marginSize && marginSize != 'advanced',
+			}
+		);
+
+		const innerStyles = {
+			backgroundColor: backgroundColor.color,
+			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			textAlign: contentAlign,
+			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
+			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
+			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
+			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+			marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
+			marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
+			marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
+			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
+		};
 
 		return [
 			<Fragment>
@@ -84,25 +131,15 @@ class Edit extends Component {
 					/>
 				) }
 				<div
-					className={ classnames(
-						className,
-						`has-${ columns }-columns`,
-						...BackgroundClasses( attributes ), {
-							'has-background': backgroundColor.color,
-							[ backgroundColor.class ]: backgroundColor.class,
-						}
-					) }
-					style={ {
-						backgroundColor: backgroundColor.color,
-						backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-						textAlign: contentAlign,
-					} }
+					className={ classes }
 				>
-					<InnerBlocks
-						template={ getCount( columns ) }
-						allowedBlocks={ ALLOWED_BLOCKS }
-						templateLock="all"
-					/>
+					<div className={ innerClasses } style={ innerStyles }>
+						{ isBlobURL( backgroundImg ) && <Spinner /> }
+						<InnerBlocks
+							template={ getCount( columns ) }
+							allowedBlocks={ ALLOWED_BLOCKS }
+							templateLock="all" />
+					</div>
 				</div>
 			</Fragment>
 		];
