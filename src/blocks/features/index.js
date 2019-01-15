@@ -39,9 +39,6 @@ const blockAttributes = {
 	maxWidth: {
 		type: 'number',
 	},
-	containerWidth: {
-		type: 'number',
-	},
 	gutter: {
 		type: 'string',
 	},
@@ -96,7 +93,6 @@ const settings = {
 			heading_3,
 			heading_4,
 			textColor,
-			containerWidth,
 			headingColor,
 			headingFontSize,
 			headingLineHeight,
