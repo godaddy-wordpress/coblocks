@@ -45,7 +45,7 @@ const blockAttributes = {
 	},
 	columns: {
 		type: 'number',
-		default: 4,
+		default: 3,
 	},
 	contentAlign: {
 		type: 'string',

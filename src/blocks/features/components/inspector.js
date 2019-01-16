@@ -111,7 +111,7 @@ class Inspector extends Component {
 						<p>{ __( 'Columns' ) }</p>
 						<Toolbar
 							className="components-coblocks__toolbar-control--numerals"
-							controls={ '1234'.split( '' ).map( ( count ) => ( {
+							controls={ '123'.split( '' ).map( ( count ) => ( {
 								icon: icons.blank,
 								// translators: %s: columns count e.g: "1", "2", "3"
 								title: sprintf( __( '%s Columns' ), count ),
