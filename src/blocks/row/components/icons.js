@@ -40,6 +40,12 @@ rowIcons.layout7525 =
 rowIcons.layout2575 =
 <svg className="dashicon" height="26" viewBox="0 0 50 26" width="50" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="m48.0833333 0h-46.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v22c0 1.1.8625 2 1.91666667 2h46.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-22c0-1.1-.8625-2-1.9166667-2zm0 24h-46.16666663v-22h46.16666663z" fill-rule="nonzero"/><path d="m14 2h2v22h-2z"/></g></svg>
 
+rowIcons.layout6633 =
+<svg className="dashicon" height="26" viewBox="0 0 50 26" width="50" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="m48.0833333 0h-46.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v22c0 1.1.8625 2 1.91666667 2h46.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-22c0-1.1-.8625-2-1.9166667-2zm0 24h-46.16666663v-22h46.16666663z" fill-rule="nonzero"/><path d="m32 2h2v22h-2z"/></g></svg>
+
+rowIcons.layout3366 =
+<svg className="dashicon" height="26" viewBox="0 0 50 26" width="50" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="m48.0833333 0h-46.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v22c0 1.1.8625 2 1.91666667 2h46.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-22c0-1.1-.8625-2-1.9166667-2zm0 24h-46.16666663v-22h46.16666663z" fill-rule="nonzero"/><path d="m16 2h2v22h-2z"/></g></svg>
+
 rowIcons.layout333333 =
 <svg className="dashicon" height="26" viewBox="0 0 50 26" width="50" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="m48.0833333 0h-46.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v22c0 1.1.8625 2 1.91666667 2h46.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-22c0-1.1-.8625-2-1.9166667-2zm0 24h-46.16666663v-22h46.16666663z" fill-rule="nonzero"/><path d="m32 2h2v22h-2z"/><path d="m16 2h2v22h-2z"/></g></svg>
 
@@ -73,6 +79,12 @@ rowIcons.smallLayout7525 =
 
 rowIcons.smallLayout2575 =
 <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fill-rule="nonzero"/><path d="m6 0h2v18h-2z"/></g></svg>
+
+rowIcons.smallLayout6633 =
+<svg className="dashicon" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fill-rule="nonzero"/><path d="m5 0h2v18h-2z"/></g></svg>
+
+rowIcons.smallLayout3366 =
+<svg className="dashicon" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fill-rule="nonzero"/><path d="m11 0h2v18h-2z"/></g></svg>
 
 rowIcons.smallLayout333333 =
 <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fill-rule="nonzero"/><path d="m5 0h2v18h-2z"/><path d="m11 0h2v18h-2z"/></g></svg>
