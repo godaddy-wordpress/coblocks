@@ -212,7 +212,6 @@ const settings = {
 
 			//dimension controls
 			paddingSize,
-			marginSize,
 		} = attributes;
 
 
@@ -229,8 +228,6 @@ const settings = {
 			...BackgroundClasses( attributes ), {
 			'has-padding': paddingSize && paddingSize != 'no',
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
-			'has-margin': marginSize && marginSize != 'no',
-			[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
 		} );
 
 		const innerStyles = {

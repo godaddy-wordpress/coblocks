@@ -113,28 +113,6 @@ class Inspector extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( 'Image Card Settings' ) } className='block-coblocks__inspector-block-settings-panel-body'>
 						<DimensionsControl { ...this.props }
-							type={ 'margin' }
-							label={ __( 'Margin' ) }
-							help={ __( 'Space around the container.' ) }
-							valueTop={ marginTop }
-							valueRight={ marginRight }
-							valueBottom={ marginBottom }
-							valueLeft={ marginLeft }
-							valueTopTablet={ marginTopTablet }
-							valueRightTablet={ marginRightTablet }
-							valueBottomTablet={ marginBottomTablet }
-							valueLeftTablet={ marginLeftTablet }
-							valueTopMobile={ marginTopMobile }
-							valueRightMobile={ marginRightMobile }
-							valueBottomMobile={ marginBottomMobile }
-							valueLeftMobile={ marginLeftMobile }
-							unit={ marginUnit }
-							syncUnits={ marginSyncUnits }
-							syncUnitsTablet={ marginSyncUnitsTablet }
-							syncUnitsMobile={ marginSyncUnitsMobile }
-							dimensionSize={ marginSize }
-						/>
-						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding' ) }
 							help={ __( 'Space inside of the container.' ) }

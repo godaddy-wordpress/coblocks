@@ -109,13 +109,7 @@ class Edit extends Component {
 			paddingRight,
 			paddingBottom,
 			paddingLeft,
-			marginTop,
-			marginRight,
-			marginBottom,
-			marginLeft,
 			paddingUnit,
-			marginUnit,
-			marginSize,
 			paddingSize,
 		} = attributes;
 
@@ -138,8 +132,6 @@ class Edit extends Component {
 			...BackgroundClasses( attributes ), {
 			'has-padding': paddingSize && paddingSize != 'no',
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
-			'has-margin': marginSize && marginSize != 'no',
-			[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
 		} );
 
 		const innerStyles = {
@@ -149,10 +141,6 @@ class Edit extends Component {
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-			marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
-			marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
-			marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
-			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 		};
 
 		return [
