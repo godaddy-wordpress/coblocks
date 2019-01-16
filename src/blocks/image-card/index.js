@@ -11,8 +11,7 @@ import './styles/editor.scss';
 import icons from './../../utils/icons';
 import Edit from './components/edit';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
-import ResizableSpacer, { ResizableSpacerTransforms } from '../../components/resizable-spacer/';;
-import ButtonPanel, { ButtonPanelAttributes, ButtonPanelClasses, ButtonTransforms } from '../../components/button-panel';
+import ResizableSpacer, { ResizableSpacerTransforms } from '../../components/resizable-spacer/';
 
 /**
  * WordPress dependencies
@@ -103,7 +102,6 @@ const blockAttributes = {
 		default: 13,
 	},
 	...BackgroundAttributes,
-	...ButtonPanelAttributes,
 };
 
 const settings = {
@@ -130,9 +128,6 @@ const settings = {
 
 						// General transforms used throughout our blocks
 						...BackgroundImageTransforms( attributes ),
-						...HeadingTransforms( attributes ),
-						...TypographyTransforms( attributes ),
-						...ResizableSpacerTransforms( attributes ),
 
 						// Override BackgroundImageTransforms
 						backgroundImg: attributes.imgUrl,
@@ -166,9 +161,6 @@ const settings = {
 
 						// General transforms used throughout our blocks.
 						...BackgroundImageTransforms( attributes ),
-						...HeadingTransforms( attributes ),
-						...TypographyTransforms( attributes ),
-						...ResizableSpacerTransforms( attributes ),
 
 						// RichText
 						heading: attributes.heading,
@@ -202,9 +194,6 @@ const settings = {
 
 						// General transforms used throughout our blocks
 						...BackgroundImageTransforms( attributes ),
-						...HeadingTransforms( attributes ),
-						...TypographyTransforms( attributes ),
-						...ResizableSpacerTransforms( attributes ),
 
 						// RichText
 						heading: attributes.heading,
