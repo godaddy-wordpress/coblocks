@@ -4,6 +4,7 @@
 import applyWithColors from './colors';
 import icons from './../../../utils/icons';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses } from '../../../components/background';
+import DimensionsControl from '../../../components/dimensions-control/';
 
 /**
  * WordPress dependencies
@@ -63,31 +64,97 @@ class Inspector extends Component {
 
 		const {
 			alt,
-			padding,
 			button,
 			buttonUrl,
 			buttonTitle,
 			hasImgShadow,
 			hasCardShadow,
 			imgUrl,
+
+			//dimension controls
+			marginBottom,
+			marginLeft,
+			marginRight,
+			marginSize,
+			marginTop,
+			marginBottomTablet,
+			marginLeftTablet,
+			marginRightTablet,
+			marginTopTablet,
+			marginBottomMobile,
+			marginLeftMobile,
+			marginRightMobile,
+			marginTopMobile,
+			marginSyncUnits,
+			marginSyncUnitsTablet,
+			marginSyncUnitsMobile,
+			marginUnit,
+			paddingBottom,
+			paddingLeft,
+			paddingRight,
+			paddingSize,
+			paddingTop,
+			paddingBottomTablet,
+			paddingLeftTablet,
+			paddingRightTablet,
+			paddingTopTablet,
+			paddingBottomMobile,
+			paddingLeftMobile,
+			paddingRightMobile,
+			paddingTopMobile,
+			paddingSyncUnits,
+			paddingSyncUnitsTablet,
+			paddingSyncUnitsMobile,
+			paddingUnit,
 		} = attributes;
 
 		return (
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Image Card Settings' ) } className='block-coblocks__inspector-block-settings-panel-body'>
-						<RangeControl
-							label={ __( 'Padding as a percentage' ) }
-							aria-label={ __( 'Padding for the main element as a percentage.' ) }
-							value={ padding }
-							onChange={ ( nextPadding ) => {
-								setAttributes( {
-									padding: nextPadding,
-								} );
-							} }
-							min={ 0 }
-							max={ 25 }
-							step={ 1 }
+						<DimensionsControl { ...this.props }
+							type={ 'margin' }
+							label={ __( 'Margin' ) }
+							help={ __( 'Space around the container.' ) }
+							valueTop={ marginTop }
+							valueRight={ marginRight }
+							valueBottom={ marginBottom }
+							valueLeft={ marginLeft }
+							valueTopTablet={ marginTopTablet }
+							valueRightTablet={ marginRightTablet }
+							valueBottomTablet={ marginBottomTablet }
+							valueLeftTablet={ marginLeftTablet }
+							valueTopMobile={ marginTopMobile }
+							valueRightMobile={ marginRightMobile }
+							valueBottomMobile={ marginBottomMobile }
+							valueLeftMobile={ marginLeftMobile }
+							unit={ marginUnit }
+							syncUnits={ marginSyncUnits }
+							syncUnitsTablet={ marginSyncUnitsTablet }
+							syncUnitsMobile={ marginSyncUnitsMobile }
+							dimensionSize={ marginSize }
+						/>
+						<DimensionsControl { ...this.props }
+							type={ 'padding' }
+							label={ __( 'Padding' ) }
+							help={ __( 'Space inside of the container.' ) }
+							valueTop={ paddingTop }
+							valueRight={ paddingRight }
+							valueBottom={ paddingBottom }
+							valueLeft={ paddingLeft }
+							valueTopTablet={ paddingTopTablet }
+							valueRightTablet={ paddingRightTablet }
+							valueBottomTablet={ paddingBottomTablet }
+							valueLeftTablet={ paddingLeftTablet }
+							valueTopMobile={ paddingTopMobile }
+							valueRightMobile={ paddingRightMobile }
+							valueBottomMobile={ paddingBottomMobile }
+							valueLeftMobile={ paddingLeftMobile }
+							unit={ paddingUnit }
+							syncUnits={ paddingSyncUnits }
+							syncUnitsTablet={ paddingSyncUnitsTablet }
+							syncUnitsMobile={ paddingSyncUnitsMobile }
+							dimensionSize={ paddingSize }
 						/>
 						<ToggleControl
 							label={ __( 'Image Shadow' ) }

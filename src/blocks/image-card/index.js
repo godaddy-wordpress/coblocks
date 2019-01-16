@@ -12,6 +12,7 @@ import icons from './../../utils/icons';
 import Edit from './components/edit';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
 import ResizableSpacer, { ResizableSpacerTransforms } from '../../components/resizable-spacer/';
+import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**
  * WordPress dependencies
@@ -75,10 +76,6 @@ const blockAttributes = {
 		type: 'boolean',
 		default: false,
 	},
-	padding: {
-		type: 'number',
-		default: 0,
-	},
 	cardBackgroundColor: {
 		type: 'string',
 	},
@@ -86,6 +83,7 @@ const blockAttributes = {
 		type: 'string',
 	},
 	...BackgroundAttributes,
+	...DimensionsAttributes,
 };
 
 const settings = {
@@ -200,6 +198,7 @@ const settings = {
 	save( { attributes, className } ) {
 
 		const {
+			coblocks,
 			alt,
 			backgroundColor,
 			backgroundImg,
@@ -210,7 +209,10 @@ const settings = {
 			hasCardShadow,
 			hasImgShadow,
 			imgUrl,
-			padding,
+
+			//dimension controls
+			paddingSize,
+			marginSize,
 		} = attributes;
 
 
@@ -218,14 +220,22 @@ const settings = {
 		const cardBackgroundClass = getColorClassName( 'background-color', cardBackgroundColor );
 
 		const backgroundClasses = classnames(
-			className,
-			...BackgroundClasses( attributes ), {
+			className,{
+				[ `coblocks-image-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 		} );
 
-		const backgroundStyles = {
+		const innerClasses = classnames(
+			'wp-block-coblocks-image-card__inner',
+			...BackgroundClasses( attributes ), {
+			'has-padding': paddingSize && paddingSize != 'no',
+			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
+			'has-margin': marginSize && marginSize != 'no',
+			[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
+		} );
+
+		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-			padding: padding ? padding + '%' : undefined,
 		};
 
 		const cardBackgroundClasses = classnames(
@@ -244,28 +254,29 @@ const settings = {
 
 			<div
 				className={ backgroundClasses }
-				style={ backgroundStyles }
 			>
-				<div className="wp-block-coblocks-image-card__intrinsic">
-					<div
-						className={ classnames(
-							'wp-block-coblocks-image-card__img-wrapper', {
-								'has-shadow': hasImgShadow,
-								'has-no-image': ! imgUrl || null,
+				<div className={ innerClasses } style={ innerStyles }>
+					<div className="wp-block-coblocks-image-card__intrinsic">
+						<div
+							className={ classnames(
+								'wp-block-coblocks-image-card__img-wrapper', {
+									'has-shadow': hasImgShadow,
+									'has-no-image': ! imgUrl || null,
+								}
+							) }
+						>
+							{ imgUrl &&
+								<img src={ imgUrl } alt={ alt } />
 							}
-						) }
-					>
-						{ imgUrl &&
-							<img src={ imgUrl } alt={ alt } />
-						}
+						</div>
 					</div>
-				</div>
-				<div className="wp-block-coblocks-image-card__card-wrapper">
-					<div
-						className={ cardBackgroundClasses }
-						style={ cardStyles }
-					>
-						<InnerBlocks.Content />
+					<div className="wp-block-coblocks-image-card__card-wrapper">
+						<div
+							className={ cardBackgroundClasses }
+							style={ cardStyles }
+						>
+							<InnerBlocks.Content />
+						</div>
 					</div>
 				</div>
 			</div>

@@ -95,6 +95,7 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
+			coblocks,
 			alt,
 			backgroundImg,
 			content,
@@ -104,7 +105,20 @@ class Edit extends Component {
 			hasImgShadow,
 			imgId,
 			imgUrl,
-			padding,
+
+			//dimension controls
+			paddingTop,
+			paddingRight,
+			paddingBottom,
+			paddingLeft,
+			marginTop,
+			marginRight,
+			marginBottom,
+			marginLeft,
+			paddingUnit,
+			marginUnit,
+			marginSize,
+			paddingSize,
 		} = attributes;
 
 		const dropZone = (
@@ -121,6 +135,28 @@ class Edit extends Component {
 			/>
 		);
 
+		const innerClasses = classnames(
+			'wp-block-coblocks-image-card__inner',
+			...BackgroundClasses( attributes ), {
+			'has-padding': paddingSize && paddingSize != 'no',
+			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
+			'has-margin': marginSize && marginSize != 'no',
+			[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
+		} );
+
+		const innerStyles = {
+			backgroundColor: backgroundColor.color,
+			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
+			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
+			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
+			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+			marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
+			marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
+			marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
+			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
+		};
+
 		return [
 			<Fragment>
 				{ dropZone }
@@ -136,76 +172,73 @@ class Edit extends Component {
 				) }
 				<div
 					className={ classnames(
-						className,
-						...BackgroundClasses( attributes ), {
+						className,{
 							'has-background': backgroundColor.color,
 							[ backgroundColor.class ]: backgroundColor.class,
+							[ `coblocks-image-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 						}
 					) }
-					style={ {
-						backgroundColor: backgroundColor.color,
-						backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-						padding: padding ? padding + '%' : undefined,
-					} }
 				>
-					<div className="wp-block-coblocks-image-card__intrinsic">
+					<div className={ innerClasses } style={ innerStyles } >
+						<div className="wp-block-coblocks-image-card__intrinsic">
 
-						<div
-							className={ classnames(
-								'wp-block-coblocks-image-card__img-wrapper', {
-									'has-no-image': ! imgUrl || null,
-									'has-shadow': hasImgShadow,
+							<div
+								className={ classnames(
+									'wp-block-coblocks-image-card__img-wrapper', {
+										'has-no-image': ! imgUrl || null,
+										'has-shadow': hasImgShadow,
+									}
+								) }
+							>
+								{ ! imgUrl ?
+									<MediaPlaceholder
+										icon={ 'format-image' }
+										labels={ {
+											title: __( 'Upload Image' ),
+											name: __( 'an image' ),
+										} }
+										onSelect={ this.onSelectImage }
+										accept="image/*"
+										allowedTypes={ ALLOWED_MEDIA_TYPES }
+									/>
+								:
+									<div>
+										{ imageDropZone }
+										<img src={ imgUrl } alt={ alt }/>
+										{ this.props.isSelected ?
+											<IconButton
+												className="components-coblocks__delete-image-button"
+												label={ __( 'Remove image' ) }
+												icon={ icons.trash }
+												onClick={ this.onRemoveImage }
+											/>
+										: null }
+									</div>
 								}
-							) }
-						>
-							{ ! imgUrl ?
-								<MediaPlaceholder
-									icon={ 'format-image' }
-									labels={ {
-										title: __( 'Upload Image' ),
-										name: __( 'an image' ),
-									} }
-									onSelect={ this.onSelectImage }
-									accept="image/*"
-									allowedTypes={ ALLOWED_MEDIA_TYPES }
-								/>
-							:
-								<div>
-									{ imageDropZone }
-									<img src={ imgUrl } alt={ alt }/>
-									{ this.props.isSelected ?
-										<IconButton
-											className="components-coblocks__delete-image-button"
-											label={ __( 'Remove image' ) }
-											icon={ icons.trash }
-											onClick={ this.onRemoveImage }
-										/>
-									: null }
-								</div>
-							}
+							</div>
 						</div>
-					</div>
-					<div className="wp-block-coblocks-image-card__card-wrapper">
-						<div
-							className={ classnames(
-								'wp-block-coblocks-image-card__card', {
-									'has-background': cardBackgroundColor.color,
-									[ cardBackgroundColor.class ]: cardBackgroundColor.class,
-									'has-shadow': hasCardShadow,
-								}
-							) }
-							style={ {
-								backgroundColor: cardBackgroundColor.color,
-								textAlign: contentAlign,
-							} }
-						>
-							{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
-								<InnerBlocks
-									template={ TEMPLATE }
-									allowedBlocks={ ALLOWED_BLOCKS }
-									templateLock={ false }
-								/>
-							) }
+						<div className="wp-block-coblocks-image-card__card-wrapper">
+							<div
+								className={ classnames(
+									'wp-block-coblocks-image-card__card', {
+										'has-background': cardBackgroundColor.color,
+										[ cardBackgroundColor.class ]: cardBackgroundColor.class,
+										'has-shadow': hasCardShadow,
+									}
+								) }
+								style={ {
+									backgroundColor: cardBackgroundColor.color,
+									textAlign: contentAlign,
+								} }
+							>
+								{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
+									<InnerBlocks
+										template={ TEMPLATE }
+										allowedBlocks={ ALLOWED_BLOCKS }
+										templateLock={ false }
+									/>
+								) }
+							</div>
 						</div>
 					</div>
 				</div>
