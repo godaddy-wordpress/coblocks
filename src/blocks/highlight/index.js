@@ -36,7 +36,7 @@ const keywords = [
 const blockAttributes = {
 	content: {
 		type: 'array',
-		source: 'children',
+		source: 'rich-text',
 		selector: 'mark',
 	},
 	align: {
