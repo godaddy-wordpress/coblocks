@@ -11,9 +11,7 @@ import './styles/editor.scss';
 import icons from './../../utils/icons';
 import Edit from './components/edit';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
-import ResizableSpacer, { ResizableSpacerTransforms } from '../../components/resizable-spacer/';
-import HeadingPanel, { HeadingPanelAttributes, HeadingPanelClasses, HeadingTransforms } from '../../components/heading-panel';
-import TypographyPanel, { TypographyAttributes, TypograpyClasses, TypographyTransforms } from '../../components/text-panel';
+import ResizableSpacer, { ResizableSpacerTransforms } from '../../components/resizable-spacer/';;
 import ButtonPanel, { ButtonPanelAttributes, ButtonPanelClasses, ButtonTransforms } from '../../components/button-panel';
 
 /**
@@ -105,8 +103,6 @@ const blockAttributes = {
 		default: 13,
 	},
 	...BackgroundAttributes,
-	...HeadingPanelAttributes,
-	...TypographyAttributes,
 	...ButtonPanelAttributes,
 };
 
