@@ -100,6 +100,7 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 = 1.6.1 =
 * New: Add support for em units on Advanced dimensions controls
 * New: Add Map block with six built-in map styles, zoom, controls and marker size options
+* Fix: Transforming paragrahs to/from highlights now properly transform child elements
 
 = 1.6.0 =
 * New: Add drag and resizable Row and Columns blocks with support for dynamic layouts
