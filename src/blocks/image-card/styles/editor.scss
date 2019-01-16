@@ -44,4 +44,10 @@
 		opacity: 1;
 		pointer-events: auto;
 	}
+
+	.wp-block-coblocks-image-card__card{
+		.wp-block.editor-default-block-appender{
+			display: none;
+		}
+	}
 }

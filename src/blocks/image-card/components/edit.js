@@ -32,7 +32,7 @@ const { IconButton, DropZone } = wp.components;
  * @type {string[]}
 */
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
-const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button' ];
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list' ];
 const TEMPLATE = [ 
 			[ 'core/heading', { placeholder: __( 'Add title...' ), content: __( 'Image Card' ), level: 3, noBottomSpacing: true, noTopSpacing: true } ],
 			[ 'core/spacer', { height: 15 } ],
@@ -203,6 +203,7 @@ class Edit extends Component {
 								<InnerBlocks
 									template={ TEMPLATE }
 									allowedBlocks={ ALLOWED_BLOCKS }
+									templateLock={ false }
 								/>
 							) }
 						</div>
