@@ -40,7 +40,7 @@ class Controls extends Component {
 					{ BackgroundImageToolbarControls( this.props ) }
 					<Toolbar
 						className="components-coblocks__toolbar-control--numerals"
-						controls={ '1234'.split( '' ).map( ( count ) => ( {
+						controls={ '123'.split( '' ).map( ( count ) => ( {
 							icon: icons.blank,
 							// translators: %s: columns count e.g: "1", "2", "3", "4"
 							title: sprintf( __( '%s Columns' ), count ),

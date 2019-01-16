@@ -34,11 +34,9 @@ const { IconButton, DropZone } = wp.components;
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list' ];
 const TEMPLATE = [ 
-			[ 'core/heading', { placeholder: __( 'Add title...' ), content: __( 'Image Card' ), level: 3, noBottomSpacing: true, noTopSpacing: true } ],
-			[ 'core/spacer', { height: 15 } ],
-			[ 'core/paragraph', { placeholder: __( 'Add feature content...' ), content: __( 'Showcase an image card with an offset text block.' ), noBottomSpacing: true, noTopSpacing: true } ],
-			[ 'core/spacer', { height: 15 } ],
-			[ 'core/button', { text: __( 'Buy Now' ), noBottomSpacing: true, noTopSpacing: true } ] 
+			[ 'core/heading', { placeholder: __( 'Add title...' ), content: __( 'Image Card' ), level: 3 } ],
+			[ 'core/paragraph', { placeholder: __( 'Add feature content...' ), content: __( 'Showcase an image card with an offset text block.' ) } ],
+			[ 'core/button', { text: __( 'Buy Now' ) } ] 
 		];
 
 /**

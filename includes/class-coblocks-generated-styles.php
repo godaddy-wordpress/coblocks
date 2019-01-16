@@ -100,7 +100,7 @@ class CoBlocks_Generated_Styles {
 						$output .= '}';
 
 						if ( ! empty( $tablet ) ) {
-							$output .= '@media (max-width: ' . apply_filters( 'coblocks_tablet_breakpoint', '768px' ) . ') {';
+							$output .= '@media only screen and (max-width: ' . apply_filters( 'coblocks_tablet_breakpoint', '768px' ) . ') {';
 							$output .= sprintf( '.%1$s > div {', esc_attr( $id ) );
 							foreach ( $tablet as $tablet_setting ) {
 								$output .= $tablet_setting;
@@ -110,7 +110,7 @@ class CoBlocks_Generated_Styles {
 						}
 
 						if ( ! empty( $mobile ) ) {
-							$output .= '@media (max-width: ' . apply_filters( 'coblocks_desktop_breakpoint', '514px' ) . ') {';
+							$output .= '@media only screen and (max-width: ' . apply_filters( 'coblocks_desktop_breakpoint', '514px' ) . ') {';
 							$output .= sprintf( '.%1$s > div {', esc_attr( $id ) );
 							foreach ( $mobile as $mobile_setting ) {
 								$output .= $mobile_setting;

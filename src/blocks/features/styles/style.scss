@@ -129,31 +129,5 @@
 				}
 			}
 		}
-
-		&.has-4-columns {
-
-			@media (min-width: 1100px) {
-				flex-wrap: nowrap;
-			}
-
-			.wp-block-coblocks-feature {
-
-				@media (min-width: 1100px) {
-					margin-bottom: 0;
-				}
-
-				@media (max-width: 1099px) {
-					flex: 50%;
-				}
-
-				@media (min-width: 600px) and (max-width: 1099px) {
-
-					&--3,
-					&--4 {
-						margin-bottom: 0;
-					}
-				}
-			}
-		}
 	}
 }
