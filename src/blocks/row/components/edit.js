@@ -54,6 +54,14 @@ const TEMPLATE = {
 		[ 'coblocks/column', { width: '75' } ],
 		[ 'coblocks/column', { width: '25' } ],
 	],
+	'66-33' : [
+		[ 'coblocks/column', { width: '66' } ],
+		[ 'coblocks/column', { width: '33' } ],
+	],
+	'33-66' : [
+		[ 'coblocks/column', { width: '33' } ],
+		[ 'coblocks/column', { width: '66' } ],
+	],
 	'33-33-33' : [
 		[ 'coblocks/column', { width: '33.33' } ],
 		[ 'coblocks/column', { width: '33.33' } ],
