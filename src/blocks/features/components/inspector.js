@@ -180,12 +180,6 @@ class Inspector extends Component {
 								onChange={ ( value ) => setAttributes( { gutter: value } ) }
 							/>
 						}
-
-						<ToggleControl
-							label={ __( 'Stack on mobile' ) }
-							checked={ !! stacked }
-							onChange={ () => setAttributes( {  stacked: ! stacked } ) }
-						/>
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }

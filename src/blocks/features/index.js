@@ -51,10 +51,6 @@ const blockAttributes = {
 		type: 'string',
 		default: 'center',
 	},
-	stacked: {
-		type: 'boolean',
-		default: true,
-	},
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 };
@@ -100,7 +96,6 @@ const settings = {
 			headingFontFamily,
 			customHeadingFontSize,
 			customHeadingColor,
-			stacked,
 			gutter,
 			marginBottom,
 			marginLeft,
@@ -137,7 +132,6 @@ const settings = {
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 			'has-margin': marginSize && marginSize != 'no',
 			[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
-			'is-stacked-on-mobile': stacked,
 			[ `has-${ gutter }-gutter` ] : gutter,
 		} );
 

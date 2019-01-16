@@ -1,0 +1,10 @@
+div{
+	@media (max-width: 600px){
+		&.is-stacked-on-mobile{
+			flex-direction: column;
+			> [class*="wp-block-coblocks-"]{
+				width: 100% !important;
+			}
+		}
+	}
+}
