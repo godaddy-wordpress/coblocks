@@ -27,6 +27,7 @@ class Controls extends Component {
 
 		const {
 			contentAlign,
+			columns,
 		} = attributes;
 
 		return (
@@ -43,11 +44,11 @@ class Controls extends Component {
 							icon: icons.blank,
 							// translators: %s: columns count e.g: "1", "2", "3", "4"
 							title: sprintf( __( '%s Columns' ), count ),
-							isActive: columns == count,
+							isActive: columns == parseInt( count ),
 							subscript: count,
 							onClick: () =>
 								setAttributes( {
-									columns: count,
+									columns: parseInt( count ),
 								} )
 							} )
 						) }

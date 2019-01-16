@@ -60,7 +60,6 @@ class Inspector extends Component {
 			gutter,
 			align,
 			maxWidth,
-			stacked,
 			marginBottom,
 			marginLeft,
 			marginRight,
@@ -120,7 +119,7 @@ class Inspector extends Component {
 								subscript: count,
 								onClick: () => {
 										setAttributes( {
-											columns: count,
+											columns: parseInt( count ),
 										} );
 										wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
 									}
