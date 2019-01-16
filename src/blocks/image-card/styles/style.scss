@@ -1,0 +1,114 @@
+.wp-block-coblocks-image-card {
+	position: relative;
+
+	@media (min-width: 700px) {
+		display: flex;
+	}
+
+	&__heading {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+
+	&__intrinsic {
+		max-width: initial;
+		overflow: visible;
+		position: relative;
+		width: 100%;
+
+		@media (min-width: 700px) {
+			width: 60%;
+		}
+
+		@media (min-width: 900px) {
+			width: 50%;
+		}
+	}
+
+	&__img-wrapper {
+		position: relative;
+
+		@media (min-width: 700px) {
+			width: 120%;
+		}
+
+		img {
+			height: auto;
+			position: static;
+			vertical-align: middle;
+			width: 100%;
+		}
+	}
+
+	&__card-wrapper {
+		align-items: center;
+		display: flex;
+		justify-content: flex-start;
+		margin-bottom: 1em;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: -25vw;
+		pointer-events: none;
+		position: relative;
+		width: 90%;
+		z-index: 2;
+
+		@media (min-width: 700px) {
+			width: 70%;
+			margin-top: inherit;
+			margin-bottom: 0;
+		}
+
+		@media (min-width: 900px) {
+			width: 50%;
+		}
+	}
+
+	&__card {
+		box-sizing: border-box;
+		padding: 12%;
+		pointer-events: auto;
+		width: 100%;
+		word-break: break-word;
+
+		&:not(.has-background) {
+			background-color: #fff;
+		}
+
+		p {
+			margin-bottom: 0;
+		}
+	}
+
+	&__button-wrapper {
+		display: inline-block;
+		margin-top: 10px;
+	}
+
+	&.is-style-right {
+		flex-direction: row-reverse;
+
+		.wp-block-coblocks-image-card__img-wrapper {
+			@media (min-width: 700px) {
+				left: -20%;
+			}
+		}
+
+		.wp-block-coblocks-image-card__card {
+			margin-right: 0%;
+		}
+	}
+
+	.has-no-image {
+		align-items: center;
+		background: hsla(240, 5%, 57%, 0.1);
+		display: flex;
+		height: 100vw;
+		justify-content: center;
+		max-height: 1024px;
+	}
+
+	&.has-background-image .has-no-image {
+		background: #f4f5f6;
+	}
+}

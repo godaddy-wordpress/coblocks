@@ -44,6 +44,7 @@ import * as social from './blocks/social';
 import * as map from './blocks/map';
 import * as feature from './blocks/features/feature';
 import * as features from './blocks/features';
+import * as imageCard from './blocks/image-card';
 
 export function registerBlocks () {
 	[
@@ -64,6 +65,7 @@ export function registerBlocks () {
 		map,
 		feature,
 		features,
+		imageCard,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {
