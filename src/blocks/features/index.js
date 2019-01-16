@@ -41,6 +41,7 @@ const blockAttributes = {
 	},
 	gutter: {
 		type: 'string',
+		default: 'medium',
 	},
 	columns: {
 		type: 'number',

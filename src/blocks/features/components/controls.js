@@ -10,6 +10,7 @@ import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../c
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { AlignmentToolbar, BlockControls } = wp.editor;
+const { Toolbar } = wp.components;
 
 class Controls extends Component {
 
@@ -36,6 +37,21 @@ class Controls extends Component {
 						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
 					/>
 					{ BackgroundImageToolbarControls( this.props ) }
+					<Toolbar
+						className="components-coblocks__toolbar-control--numerals"
+						controls={ '1234'.split( '' ).map( ( count ) => ( {
+							icon: icons.blank,
+							// translators: %s: columns count e.g: "1", "2", "3", "4"
+							title: sprintf( __( '%s Columns' ), count ),
+							isActive: columns == count,
+							subscript: count,
+							onClick: () =>
+								setAttributes( {
+									columns: count,
+								} )
+							} )
+						) }
+					/>
 				</BlockControls>
 			</Fragment>
 		);
