@@ -11,7 +11,6 @@ import Controls from './controls';
 import Inspector from './inspector';
 import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../components/background';
 import icons from './../../../utils/icons';
-import ResizableSpacer from '../../../components/resizable-spacer';
 
 /**
  * WordPress dependencies
@@ -33,8 +32,14 @@ const { IconButton, DropZone } = wp.components;
  * @type {string[]}
 */
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
-const ALLOWED_BLOCKS = [ 'core/button' ];
-const TEMPLATE = [ [ 'core/button', { text: __( 'Buy Now' ) } ] ];
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button' ];
+const TEMPLATE = [ 
+			[ 'core/heading', { placeholder: __( 'Add title...' ), content: __( 'Image Card' ), level: 3, noBottomSpacing: true, noTopSpacing: true } ],
+			[ 'core/spacer', { height: 15 } ],
+			[ 'core/paragraph', { placeholder: __( 'Add feature content...' ), content: __( 'Showcase an image card with an offset text block.' ), noBottomSpacing: true, noTopSpacing: true } ],
+			[ 'core/spacer', { height: 15 } ],
+			[ 'core/button', { text: __( 'Buy Now' ), noBottomSpacing: true, noTopSpacing: true } ] 
+		];
 
 /**
  * Block edit function
@@ -78,9 +83,6 @@ class Edit extends Component {
 		const {
 			attributes,
 			backgroundColor,
-			buttonBackground,
-			buttonColor,
-			buttonFontSize,
 			cardBackgroundColor,
 			className,
 			fontSize,
@@ -95,27 +97,15 @@ class Edit extends Component {
 		const {
 			alt,
 			backgroundImg,
-			button,
-			buttonTitle,
-			buttonUrl,
 			content,
 			contentAlign,
 			fontFamily,
 			hasCardShadow,
 			hasImgShadow,
-			heading,
-			headingFontFamily,
-			headingLevel,
-			headingLineHeight,
 			imgId,
 			imgUrl,
-			lineHeight,
 			padding,
-			spacerContent,
-			spacerHeading,
 		} = attributes;
-
-		const tagName = 'h' + headingLevel;
 
 		const dropZone = (
 			<BackgroundImageDropZone
@@ -209,71 +199,9 @@ class Edit extends Component {
 								textAlign: contentAlign,
 							} }
 						>
-							<RichText
-								tagName={ tagName }
-								multiline="false"
-								placeholder={ __( 'Write heading...' ) }
-								value={ heading }
-								onChange={ ( value ) => setAttributes( { heading: value } ) }
-								className={ classnames(
-									'wp-block-coblocks-image-card__heading', {
-										'has-text-color': headingColor.color,
-										[ headingColor.class ]: headingColor.class,
-										[ headingFontSize.class ]: headingFontSize.class,
-									}
-								) }
-								style={ {
-									color: headingColor.color,
-									fontSize: headingFontSize.size ? headingFontSize.size + 'px' : undefined,
-									fontFamily: headingFontFamily || null,
-									lineHeight: headingLineHeight || null,
-								} }
-								keepPlaceholderOnFocus
-							/>
-							{ ( ! RichText.isEmpty( heading ) && ! RichText.isEmpty( content ) ) && (
-								<ResizableSpacer { ...this.props }
-									type="heading"
-									attribute={ spacerHeading }
-									orientation="vertical"
-									minHeight="13"
-									maxHeight="100"
-								/>
-							) }
-							{ ( ! RichText.isEmpty( content ) || isSelected ) && (
-								<RichText
-									tagName="p"
-									placeholder={ __( 'Write content...' ) }
-									value={ content }
-									onChange={ ( value ) => setAttributes( { content: value } ) }
-									className={ classnames(
-										'wp-block-coblocks-image-card__content', {
-											'has-text-color': textColor.color,
-											[ textColor.class ]: textColor.class,
-											[ fontSize.class ]: fontSize.class,
-										}
-									) }
-									style={ {
-										color: textColor.color,
-										fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
-										fontFamily: fontFamily || null,
-										lineHeight: lineHeight || null,
-									} }
-									keepPlaceholderOnFocus
-								/>
-							) }
-							{ ( ! RichText.isEmpty( content ) && ! RichText.isEmpty( button ) ) && (
-								<ResizableSpacer { ...this.props }
-									type="content"
-									attribute={ spacerContent }
-									orientation="vertical"
-									minHeight="13"
-									maxHeight="100"
-								/>
-							) }
 							{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
 								<InnerBlocks
 									template={ TEMPLATE }
-									templateLock="all"
 									allowedBlocks={ ALLOWED_BLOCKS }
 								/>
 							) }

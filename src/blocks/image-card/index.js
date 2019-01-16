@@ -52,14 +52,6 @@ const keywords = [
 ];
 
 const blockAttributes = {
-	heading: {
-		source: 'children',
-		selector: '.wp-block-coblocks-image-card__heading',
-	},
-	content: {
-		source: 'children',
-		selector: '.wp-block-coblocks-image-card__content',
-	},
 	imgUrl: {
 		type: 'string',
 	},
@@ -93,14 +85,6 @@ const blockAttributes = {
 	customCardBackgroundColor: {
 		type: 'string',
 	},
-	spacerHeading: {
-		type: 'number',
-		default: 13,
-	},
-	spacerContent: {
-		type: 'number',
-		default: 13,
-	},
 	...BackgroundAttributes,
 };
 
@@ -132,13 +116,6 @@ const settings = {
 						// Override BackgroundImageTransforms
 						backgroundImg: attributes.imgUrl,
 
-						// RichText
-						heading: attributes.heading,
-						content: attributes.content,
-						button: attributes.button,
-						buttonUrl: attributes.buttonUrl,
-						buttonTitle: attributes.buttonTitle,
-
 						// Standard
 						align: attributes.align,
 						contentAlign: attributes.contentAlign,
@@ -147,9 +124,6 @@ const settings = {
 						backgroundColor: attributes.cardBackgroundColor,
 						customBackgroundColor: attributes.customCardBackgroundColor,
 
-						// Colors (other than typographic)
-						buttonColor: attributes.buttonColor,
-						customButtonColor: attributes.customButtonColor,
 					} );
 				},
 			},
@@ -162,13 +136,6 @@ const settings = {
 						// General transforms used throughout our blocks.
 						...BackgroundImageTransforms( attributes ),
 
-						// RichText
-						heading: attributes.heading,
-						content: attributes.content,
-						button: attributes.button,
-						buttonUrl: attributes.buttonUrl,
-						buttonTitle: attributes.buttonTitle,
-
 						// Standard
 						align: attributes.align,
 						contentAlign: attributes.contentAlign,
@@ -176,10 +143,6 @@ const settings = {
 						// Background
 						backgroundColor: attributes.cardBackgroundColor,
 						customBackgroundColor: attributes.customCardBackgroundColor,
-
-						// Colors
-						buttonColor: attributes.buttonColor,
-						customButtonColor: attributes.customButtonColor,
 
 						// Set custom attributes
 						...CustomTransformAttributes( attributes ),
@@ -195,12 +158,6 @@ const settings = {
 						// General transforms used throughout our blocks
 						...BackgroundImageTransforms( attributes ),
 
-						// RichText
-						heading: attributes.heading,
-						content: attributes.content,
-						button: attributes.button,
-						buttonUrl: attributes.buttonUrl,
-						buttonTitle: attributes.buttonTitle,
 
 						// Standard
 						align: attributes.align,
@@ -211,8 +168,6 @@ const settings = {
 						customBackgroundColor: attributes.customBackgroundColor,
 
 						// Colors (other than typographic)
-						buttonColor: attributes.buttonColor,
-						customButtonColor: attributes.customButtonColor,
 						boxBackgroundColor: attributes.cardBackgroundColor,
 						customBoxBackgroundColor: attributes.customCardBackgroundColor,
 
@@ -248,55 +203,19 @@ const settings = {
 			alt,
 			backgroundColor,
 			backgroundImg,
-			button,
-			buttonBackground,
-			buttonBorderRadius,
-			buttonColor,
-			buttonFontFamily,
-			buttonFontSize,
-			buttonLineHeight,
-			buttonTitle,
-			buttonUrl,
 			cardBackgroundColor,
-			content,
 			contentAlign,
 			customBackgroundColor,
-			customButtonBackground,
-			customButtonColor,
-			customButtonFontSize,
 			customCardBackgroundColor,
-			customFontSize,
-			customHeadingColor,
-			customHeadingFontSize,
-			customTextColor,
-			fontFamily,
-			fontSize,
 			hasCardShadow,
 			hasImgShadow,
-			heading,
-			headingColor,
-			headingFontFamily,
-			headingFontSize,
-			headingLevel,
-			headingLineHeight,
 			imgUrl,
-			lineHeight,
-			openTab,
 			padding,
-			spacerContent,
-			spacerHeading,
-			textColor,
 		} = attributes;
 
-		const tagName = 'h' + headingLevel;
 
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 		const cardBackgroundClass = getColorClassName( 'background-color', cardBackgroundColor );
-		const buttonBackgroundClass = getColorClassName( 'background-color', buttonBackground );
-		const headingClass = getColorClassName( 'color', headingColor );
-		const buttonClass = getColorClassName( 'color', buttonColor );
-		const buttonFontSizeClass = getFontSizeClass( buttonFontSize );
-		const headingFontSizeClass = getFontSizeClass( headingFontSize );
 
 		const backgroundClasses = classnames(
 			className,
@@ -320,60 +239,6 @@ const settings = {
 			backgroundColor: cardBackgroundClass ? undefined : customCardBackgroundColor,
 			textAlign: contentAlign ? contentAlign : null,
 		};
-
-		const headingClasses = classnames(
-			'wp-block-coblocks-image-card__heading', {
-				'has-text-color': headingColor || customHeadingColor,
-				[ headingClass ]: headingClass,
-			}
-		);
-
-		const headingStyles = {
-			color: headingClass ? undefined : customHeadingColor,
-			fontSize: headingFontSizeClass ? undefined : customHeadingFontSize,
-			fontFamily: headingFontFamily || null,
-			lineHeight: headingLineHeight || null,
-			marginBottom: spacerHeading ? spacerHeading + 'px' : undefined,
-		};
-
-		// Paragraph color class and styles.
-		const contentClass = getColorClassName( 'color', textColor );
-		const fontSizeClass = getFontSizeClass( fontSize );
-
-		const contentClasses = classnames(
-			'wp-block-coblocks-image-card__content', {
-				'has-text-color': textColor || customTextColor,
-				[ contentClass ]: contentClass,
-			}
-		);
-
-		const contentStyles = {
-			color: contentClass ? undefined : customTextColor,
-			fontSize: fontSizeClass ? undefined : customFontSize,
-			fontFamily: fontFamily || null,
-			lineHeight: lineHeight || null,
-			marginBottom: spacerContent ? spacerContent + 'px' : undefined,
-		};
-
-		const buttonClasses = classnames(
-			'wp-block-coblocks__button',
-			'block-coblocks__button', {
-			'has-text-color': buttonColor || customButtonColor,
-			[ buttonClass ]: buttonClass,
-			'has-background': buttonBackground || customButtonBackground,
-			[ buttonBackgroundClass ]: buttonBackgroundClass,
-		} );
-
-		const buttonStyles = {
-			backgroundColor: buttonBackgroundClass ? undefined : customButtonBackground,
-			color: buttonClass ? undefined : customButtonColor,
-			fontSize: buttonFontSizeClass ? undefined : customButtonFontSize,
-			fontFamily: buttonFontFamily || null,
-			lineHeight: buttonLineHeight || null,
-			borderRadius: buttonBorderRadius ? buttonBorderRadius + 'px' : null,
-		};
-
-		const buttonTarget = ( openTab ) ? '_blank' : null;
 
 		return (
 
@@ -400,22 +265,6 @@ const settings = {
 						className={ cardBackgroundClasses }
 						style={ cardStyles }
 					>
-						{ ! RichText.isEmpty( heading ) && (
-							<RichText.Content
-								tagName={ tagName }
-								className={ headingClasses }
-								value={ heading }
-								style={ headingStyles }
-							/>
-						) }
-						{ ! RichText.isEmpty( content ) && (
-							<RichText.Content
-								tagName="p"
-								className={ contentClasses }
-								value={ content }
-								style={ contentStyles }
-							/>
-						) }
 						<InnerBlocks.Content />
 					</div>
 				</div>
