@@ -50,15 +50,6 @@ class Edit extends Component {
 		this.addImage = this.addImage.bind( this );
 	}
 
-	componentDidMount() {
-
-		if ( this.props.wideControlsEnabled == true && ! this.props.attributes.align  ) {
-			this.props.setAttributes( {
-				align: 'wide',
-			} );
-		}
-	}
-
 	addImage( files ) {
 		mediaUpload( {
 			allowedTypes: ALLOWED_MEDIA_TYPES,
