@@ -89,7 +89,7 @@
 		margin-top: 10px;
 	}
 
-	&.is-style-right {
+	&.is-style-right &__inner {
 		flex-direction: row-reverse;
 
 		.wp-block-coblocks-image-card__img-wrapper {
