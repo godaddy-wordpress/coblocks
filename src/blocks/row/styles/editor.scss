@@ -26,6 +26,7 @@
 						}
 						&[data-align="full"]{
 							// width: 112.5%;
+							left: auto;
     						max-width: calc( 112.5% + 90px) !important;
 						}
 				}
