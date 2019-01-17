@@ -35,7 +35,7 @@ class Edit extends Component {
 		const {
 			className,
 		} = this.props;
-		
+
 		return [
 			<Fragment>
 				<div className={ className } >

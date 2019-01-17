@@ -103,7 +103,7 @@ class Inspector extends Component {
 			{ value: 'large', label: __( 'Large' ) },
 			{ value: 'huge', label: __( 'Huge' ) },
 		];
-		
+
 		return (
 			<Fragment>
 				<InspectorControls>

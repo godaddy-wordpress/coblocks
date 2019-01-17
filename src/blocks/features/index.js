@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import map from 'lodash/map';
 
 /**
  * Internal dependencies
@@ -59,7 +60,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Add up to four columns of features.' ),
+	description: __( 'Add up to three columns of features.' ),
 
 	keywords: keywords,
 
@@ -67,6 +68,40 @@ const settings = {
 
 	supports: {
 		align: [ 'wide', 'full' ],
+	},
+
+	transforms: {
+		from: [
+			{
+				type: 'prefix',
+				prefix: ':feature',
+				transform: function( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+						columns: 1
+					} );
+				},
+			},
+			{
+				type: 'prefix',
+				prefix: ':features',
+				transform: function( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+					} );
+				},
+			},
+			...[ 2, 3 ].map( ( columns ) => ( {
+				type: 'prefix',
+				prefix: Array( columns + 1 ).join( ':' ) + 'features',
+				transform( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+						columns,
+					} );
+				},
+			} ) ),
+		]
 	},
 
 	edit: Edit,
@@ -116,7 +151,7 @@ const settings = {
 		// Body color class and styles.
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-		const classes = classnames( 
+		const classes = classnames(
 			className, {
 				[ `coblocks-features-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
