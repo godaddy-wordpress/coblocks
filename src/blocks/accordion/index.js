@@ -45,7 +45,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Add an accordion.' ),
+	description: __( 'Organize content within collapsable accordion items.' ),
 
 	keywords: keywords,
 
