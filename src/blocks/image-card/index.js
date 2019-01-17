@@ -119,8 +119,6 @@ const settings = {
 			hasCardShadow,
 			hasImgShadow,
 			imgUrl,
-
-			//dimension controls
 			paddingSize,
 		} = attributes;
 
