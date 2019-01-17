@@ -135,14 +135,14 @@ class Inspector extends Component {
 							dimensionSize={ paddingSize }
 						/>
 						<ToggleControl
-							label={ __( 'Image Shadow' ) }
-							checked={ !! hasImgShadow }
-							onChange={ () => setAttributes( {  hasImgShadow: ! hasImgShadow } ) }
-						/>
-						<ToggleControl
 							label={ __( 'Card Shadow' ) }
 							checked={ !! hasCardShadow }
 							onChange={ () => setAttributes( {  hasCardShadow: ! hasCardShadow } ) }
+						/>
+						<ToggleControl
+							label={ __( 'Image Shadow' ) }
+							checked={ !! hasImgShadow }
+							onChange={ () => setAttributes( {  hasImgShadow: ! hasImgShadow } ) }
 						/>
 						{ imgUrl && (
 							<TextareaControl
