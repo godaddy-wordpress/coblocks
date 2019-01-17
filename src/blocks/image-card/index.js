@@ -153,10 +153,7 @@ const settings = {
 		};
 
 		return (
-
-			<div
-				className={ backgroundClasses }
-			>
+			<div className={ backgroundClasses }>
 				<div className={ innerClasses } style={ innerStyles }>
 					<div className="wp-block-coblocks-image-card__intrinsic">
 						<div
