@@ -62,7 +62,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Add an accordion item.' ),
+	description: __( 'Add collapsable accordion items to accordions.' ),
 
 	keywords: keywords,
 

@@ -33,10 +33,10 @@
 	}
 
 	.block-list-appender__toggle {
-		border-radius: $accordion-border-radius;
-		padding: 13px;
-		outline: none;
 		border: 1px dashed #8d96a0;
+		border-radius: $accordion-border-radius;
+		outline: none;
+		padding: 13px;
 
 		&:hover {
 			border-color: $dark-gray-500;

@@ -58,6 +58,7 @@ class Edit extends Component {
 				<div className={ className }>
 					<InnerBlocks
 						template={ getCount( count ) }
+						templateLock="all"
 						allowedBlocks={ ALLOWED_BLOCKS } />
 				</div>
 			</Fragment>
