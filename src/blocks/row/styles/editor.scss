@@ -14,6 +14,23 @@
 		.editor-inner-blocks > .editor-block-list__layout {
 			display: inherit;
 		}
+
+		.wp-block-coblocks-column__inner{
+			.editor-block-list__layout{
+				> .wp-block{
+					max-width: calc( 6 * (100vw / 12) ) !important;
+					margin-left: auto;
+    				margin-right: auto;
+						&[data-align="wide"]{
+							max-width: calc( 6 * (100vw / 8) ) !important;
+						}
+						&[data-align="full"]{
+							width: 112.5%;
+    						max-width: calc( 112.5% + 90px) !important;
+						}
+				}
+			}
+		}
 	}
 
 	.wp-block-coblocks-row__inner > .editor-inner-blocks > .editor-block-list__layout {
