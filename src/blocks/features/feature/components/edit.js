@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { RichText, InnerBlocks, withFontSizes } = wp.editor;
@@ -17,8 +17,8 @@ const { RichText, InnerBlocks, withFontSizes } = wp.editor;
 const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/image', 'coblocks/highlight', ];
 
 const TEMPLATE = [
-	[ 'core/heading', { placeholder: __( 'Add title...' ), content: __( 'Feature' ), level: 3 } ],
-	[ 'core/paragraph', { placeholder: __( 'Add feature content...' ), content: __( 'This is a feature block that you may use to highlight features.' ), } ]
+	[ 'core/heading', { placeholder: _x( 'Add feature title...', 'content placeholder' ), content: _x( 'Feature Title', 'content placeholder' ), level: 3 } ],
+	[ 'core/paragraph', { placeholder: _x( 'Add feature content', 'content placeholder' ), content: _x( 'This is a feature block that you can use to highlight features.', 'content placeholder' ), } ]
 ];
 
 /**
