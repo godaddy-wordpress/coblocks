@@ -17,6 +17,14 @@
     		&.alignfull{
     			max-width: 100%;
     		}
+
+    		&[data-columns="1"] {
+    			.wp-block-coblocks-column__inner{
+    				> :not([class*="wp-block-"]){
+						max-width: 100%;
+					}
+    			}
+			}
 		}
 		> :not([class*="wp-block-"]){
 			max-width: calc(6 * (100vw / 12) - 28px);

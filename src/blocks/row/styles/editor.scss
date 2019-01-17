@@ -9,10 +9,10 @@
 	}
 
 	.wp-block[data-type="coblocks/row"][data-columns="1"] & &__inner {
-		display: inherit;
+		// display: inherit;
 
 		.editor-inner-blocks > .editor-block-list__layout {
-			display: inherit;
+			// display: inherit;
 		}
 
 		.wp-block-coblocks-column__inner{
@@ -29,6 +29,11 @@
 							left: auto;
     						max-width: calc( 112.5% + 90px) !important;
 						}
+					&[data-type="coblocks/row"][data-columns="1"] {
+		    			.wp-block{
+	    					max-width: 100% !important;
+	    				}
+					}
 				}
 			}
 		}
