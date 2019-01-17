@@ -24,14 +24,16 @@
 		}
 	}
 
-	.components-placeholder {
-		background: transparent;
+	.wp-block-coblocks-image-card__inner {
+		.components-placeholder {
+			background: transparent;
 
-		&__instructions {
-			max-width: 260px;
+			&__instructions {
+				max-width: 260px;
 
-			@media (max-width: 960px) {
-				display: none;
+				@media (max-width: 960px) {
+					display: none;
+				}
 			}
 		}
 	}

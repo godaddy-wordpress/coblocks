@@ -15,7 +15,7 @@ import icons from './../../../utils/icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
@@ -32,12 +32,11 @@ const { IconButton, DropZone } = wp.components;
  * @type {string[]}
 */
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
-const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list' ];
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social' ];
 const TEMPLATE = [
-			[ 'core/heading', { placeholder: __( 'Add title...' ), content: __( 'Image Card' ), level: 3 } ],
-			[ 'core/paragraph', { placeholder: __( 'Add feature content...' ), content: __( 'Showcase an image card with an offset text block.' ) } ],
-			[ 'core/button', { text: __( 'Buy Now' ) } ]
-		];
+	[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Image Card', 'content placeholder' ) , level: 3 } ],
+	[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'Replace this default text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'content placeholder' ) } ],
+];
 
 /**
  * Block edit function
