@@ -18,6 +18,11 @@
     			max-width: 100%;
     		}
 		}
+		> :not([class*="wp-block-"]){
+			max-width: calc(6 * (100vw / 12) - 28px);
+    		margin-left: auto;
+    		margin-right: auto;
+		}
 	}
 }
 
