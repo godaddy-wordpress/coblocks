@@ -31,7 +31,7 @@ const title = __( 'Image Card' );
 const icon = icons.imageCard;
 
 const keywords = [
-	__( 'gallery' ),
+	__( 'image' ),
 	__( 'feature' ),
 	__( 'coblocks' ),
 ];
@@ -44,9 +44,6 @@ const blockAttributes = {
 		attribute: 'alt',
 		selector: 'img',
 		source: 'attribute',
-		type: 'string',
-	},
-	align: {
 		type: 'string',
 	},
 	contentAlign: {

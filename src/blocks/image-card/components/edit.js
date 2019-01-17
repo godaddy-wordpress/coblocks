@@ -33,10 +33,10 @@ const { IconButton, DropZone } = wp.components;
 */
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list' ];
-const TEMPLATE = [ 
+const TEMPLATE = [
 			[ 'core/heading', { placeholder: __( 'Add title...' ), content: __( 'Image Card' ), level: 3 } ],
 			[ 'core/paragraph', { placeholder: __( 'Add feature content...' ), content: __( 'Showcase an image card with an offset text block.' ) } ],
-			[ 'core/button', { text: __( 'Buy Now' ) } ] 
+			[ 'core/button', { text: __( 'Buy Now' ) } ]
 		];
 
 /**
@@ -192,12 +192,14 @@ class Edit extends Component {
 										{ imageDropZone }
 										<img src={ imgUrl } alt={ alt }/>
 										{ this.props.isSelected ?
-											<IconButton
-												className="components-coblocks__delete-image-button"
-												label={ __( 'Remove image' ) }
-												icon={ icons.trash }
-												onClick={ this.onRemoveImage }
-											/>
+											<div className="block-library-gallery-item__inline-menu">
+												<IconButton
+													className="blocks-gallery-item__remove"
+													label={ __( 'Remove image' ) }
+													icon="no-alt"
+													onClick={ this.onRemoveImage }
+												/>
+											</div>
 										: null }
 									</div>
 								}
