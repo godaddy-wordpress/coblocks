@@ -98,16 +98,26 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 == Changelog ==
 
 = 1.6.1 =
-* New: Add support for em units on Advanced dimensions controls
 * New: Add Map block with six built-in map styles, zoom, controls and marker size options
+* New: Add Image Card block for featuring images and text together
+* New: Add Features block with up to three pre-configured feature sections
+* New: Add support for em units on Advanced dimensions controls
 * New: Add new two column sidbar layouts (66%/33%) and (33%/66%) to the Row block
+* New: Add "Huge" option for the Row block gutter
+* New: Add :accordion text prefixes for faster block creation, where the number of ":" represents the number of accordion items
+* New: Add :feature text prefixes for adding a singular feature block
+* New: Add :features text prefixes, where the number of ":" represents the number of features to add
+* Tweak: Add descritive help text to the Row block "Stack on mobile" control
 * Fix: Transforming paragrahs to/from highlights now properly transform child elements
+* Fix: Row block width percentage tooltip now displays properly, regardless of the current browser
+* Fix: Nested Accordion blocks are now properly positioned
+* Fix: Fullwidth rows in the core TwentyNineteen theme now display better
 
 = 1.6.0 =
 * New: Add drag and resizable Row and Columns blocks with support for dynamic layouts
 * New: Add controls to the Row and Columns blocks for adjusting margin and padding
 * New: Add responsive media query controls to the Row and Columns blocks
-* New: Add :row text prefixs for faster block creation, where the number of ":" represents the number of columns
+* New: Add :row text prefixes for faster block creation, where the number of ":" represents the number of columns
 * New: Adjust row layouts from the row toolbar or inspector sidebar panel
 * New: Add support for Google fonts!
 * New: Add Typography Control Panel for selecting custom Google fonts
