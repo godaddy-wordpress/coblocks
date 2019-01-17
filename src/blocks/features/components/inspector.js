@@ -108,7 +108,7 @@ class Inspector extends Component {
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Features Settings' ) } className='block-coblocks__inspector-block-settings-panel-body'>
-						<p>{ __( 'Columns' ) }</p>
+						<p>{ __( 'Features' ) }</p>
 						<Toolbar
 							className="components-coblocks__toolbar-control--numerals"
 							controls={ '123'.split( '' ).map( ( count ) => ( {
@@ -175,7 +175,7 @@ class Inspector extends Component {
 								label={ __( 'Gutter' ) }
 								value={ gutter }
 								options={ gutterOptions }
-								help={ __( 'Space between each column.' ) }
+								help={ __( 'Space between each feature.' ) }
 								onChange={ ( value ) => setAttributes( { gutter: value } ) }
 							/>
 						}
