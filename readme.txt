@@ -60,7 +60,7 @@ The vision for CoBlocks has always been to create a suite of blocks to help folk
 * [Follow on Twitter](https://twitter.com/coblocks)
 * [Join our new Community](https://facebook.com/groups/coblocks)
 * [Like us on Facebook](https://www.facebook.com/coblocks/)
-
+* [Follow us on Instagram](https://www.instagram.com/coblockswp/)
 
 ## Built with developers in mind
 Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks](https://github.com/thatplugincompany/coblocks) and join the party. 🎉

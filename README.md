@@ -16,6 +16,7 @@ The vision for CoBlocks has always been to create a suite of blocks to help folk
 -   [Follow on Twitter](https://twitter.com/coblocks)
 -   [Join our new Community](https://facebook.com/groups/coblocks)
 -   [Like us on Facebook](https://www.facebook.com/coblocks/)
+-   [Follow us on Instagram](https://www.instagram.com/coblockswp/)
 
 ## Installation
 
