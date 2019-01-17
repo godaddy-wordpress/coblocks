@@ -108,7 +108,7 @@ class Inspector extends Component {
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Features Settings' ) } className='block-coblocks__inspector-block-settings-panel-body'>
-						<p>{ __( 'Features' ) }</p>
+						<p className="components-coblocks__toolbar-control--numerals-label">{ __( 'Features' ) }</p>
 						<Toolbar
 							className="components-coblocks__toolbar-control--numerals"
 							controls={ '123'.split( '' ).map( ( count ) => ( {

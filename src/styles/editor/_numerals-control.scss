@@ -1,6 +1,10 @@
 .components-coblocks__toolbar-control--numerals {
 	display: inline-flex;
 
+	&-label {
+		margin-bottom: 17px;
+	}
+
 	.components-button[data-subscript]::after {
 		bottom: 0.68em;
 		font-size: 17px;
