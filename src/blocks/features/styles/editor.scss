@@ -25,6 +25,13 @@
 				}
 			}
 
+			//single features fixes
+			&.has-1-columns{
+				.editor-inner-blocks{
+					width: 100%;
+				}
+			}
+
 			&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/feature"] {
 				@include break-small() {
 					&:nth-child(odd) {
