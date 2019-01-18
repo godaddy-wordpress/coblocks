@@ -1,4 +1,6 @@
 .wp-block[data-type="coblocks/features"] {
+	background: transparent !important;
+
 	.wp-block-coblocks-features {
 		width: 100%;
 
@@ -133,6 +135,23 @@
 
 		.wp-block-image figcaption {
 			display: none;
+		}
+
+		.wp-block-coblocks-feature{
+			> .editor-inner-blocks{
+				> .editor-block-list__layout{
+					> .wp-block{
+						.editor-block-list__block-edit{
+							margin-bottom: 0px;
+						}
+						&:first-child{
+							.editor-block-list__block-edit{
+								margin-top: 0px;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
