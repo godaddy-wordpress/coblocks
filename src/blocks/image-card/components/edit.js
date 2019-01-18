@@ -219,7 +219,7 @@ class Edit extends Component {
 									<InnerBlocks
 										template={ TEMPLATE }
 										allowedBlocks={ ALLOWED_BLOCKS }
-										templateLock={ false }
+										templateLock={ true }
 									/>
 								) }
 							</div>
