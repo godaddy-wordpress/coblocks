@@ -142,9 +142,10 @@ class Inspector extends Component {
 						/>
 						{ imgUrl && (
 							<TextareaControl
-								label={ __( 'Image Textual Alternative' ) }
+								label={ __( 'Alt Text (Alternative Text)' ) }
 								value={ alt }
 								onChange={ ( nextAlt ) => setAttributes( { alt: nextAlt } ) }
+								help={ __( 'Alternative text describes your image to people who can’t see it. Add a short description with its key details.' ) }
 							/>
 						) }
 					</PanelBody>
@@ -154,16 +155,15 @@ class Inspector extends Component {
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
-								onChange: ( nextBg ) => { 
-											setBackgroundColor( nextBg ); 
-											if( !paddingSize || paddingSize == 'no' ){
-												setAttributes( { paddingSize: 'medium' } );
-											}
-
-											if( !nextBg ){
-												setAttributes( { paddingSize: 'no' } );
-											}
-										},
+								onChange: ( nextBg ) => {
+									setBackgroundColor( nextBg );
+									if( !paddingSize || paddingSize == 'no' ){
+										setAttributes( { paddingSize: 'medium' } );
+									}
+									if( !nextBg ){
+										setAttributes( { paddingSize: 'no' } );
+									}
+								},
 								label: __( 'Background' ),
 							},
 						] }
