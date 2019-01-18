@@ -32,7 +32,16 @@ function BackgroundImageToolbarControls( props, options ) {
 			<MediaUploadCheck>
 				<Toolbar>
 					<MediaUpload
-						onSelect={ ( media ) => setAttributes( { backgroundImg: media.url } ) }
+						onSelect={ ( media ) => {
+							setAttributes( { backgroundImg: media.url } );
+							
+							//set padding when image selected
+							if( [ 'coblocks/image-card' ].includes( props.name ) ){
+								if( !attributes.paddingSize || attributes.paddingSize == 'no' ){
+									setAttributes( { paddingSize: 'medium' } );
+								}
+							}
+						} }
 						allowedTypes={ ALLOWED_MEDIA_TYPES }
 						value={ backgroundImg }
 						render={ ( { open } ) => (

@@ -158,7 +158,12 @@ class Inspector extends Component {
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
-								onChange: setBackgroundColor,
+								onChange: ( nextBg ) => { 
+											setBackgroundColor( nextBg ); 
+											if( !paddingSize || paddingSize == 'no' ){
+												setAttributes( { paddingSize: 'medium' } );
+											}
+										},
 								label: __( 'Background' ),
 							},
 							{
