@@ -18,11 +18,11 @@
 		.wp-block-coblocks-column__inner{
 			.editor-block-list__layout{
 				> .wp-block{
-					max-width: calc( 6 * (100vw / 12) ) !important;
+					max-width: calc( 6 * (100vw / 12.5 ) ) !important;
 					margin-left: auto;
     				margin-right: auto;
 						&[data-align="wide"]{
-							max-width: calc( 6 * (100vw / 8) ) !important;
+							max-width: calc( 6 * (100vw / 8.3) ) !important;
 						}
 						&[data-align="full"]{
 							// width: 112.5%;
