@@ -196,14 +196,6 @@ const settings = {
 		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-			// paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
-			// paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
-			// paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
-			// paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-			// marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
-			// marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
-			// marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
-			// marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 		};
 
 		return (
