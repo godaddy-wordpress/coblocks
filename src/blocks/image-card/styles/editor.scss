@@ -40,40 +40,47 @@
 		}
 	}
 
+	// Add border to the image if the block is selected.
 	&.is-selected .wp-block-coblocks-image-card__img-wrapper:not(.has-no-image) {
 		outline: 4px solid #0085ba;
 	}
 
+	// Remove image button.
 	.block-library-gallery-item__inline-menu {
 		right: -4px;
 		top: -4px;
-	}
 
-	.blocks-gallery-item__remove {
-		&:hover {
-			background-color: #0085ba !important;
-			box-shadow: none !important;
-			color: rgba($white, 0.66) !important;
+		.blocks-gallery-item__remove {
+			&:hover {
+				background-color: #0085ba !important;
+				box-shadow: none !important;
+				color: rgba($white, 0.66) !important;
+			}
 		}
 	}
 
+	.components-drop-zone {
+		z-index: 0;
+	}
+
+	// Remove editor margins that do not exist on the frontend.
 	.wp-block-coblocks-image-card__card {
-		> .editor-inner-blocks{
-			> .editor-block-list__layout{
-				> .wp-block{
-					&:first-child{
-						> .editor-block-list__block-edit{
-							margin-top: 0px;
-							margin-bottom: 0px;
+		> .editor-inner-blocks {
+			> .editor-block-list__layout {
+				> .wp-block {
+					&:first-child {
+						> .editor-block-list__block-edit {
+							margin-bottom: 0;
+							margin-top: 0;
 						}
-						> .editor-block-list__insertion-point{
+						> .editor-block-list__insertion-point {
 							display: none;
 						}
 					}
 				}
-				> div{
-					> .editor-default-block-appender{
-						display:none;
+				> div {
+					> .editor-default-block-appender {
+						display: none;
 					}
 				}
 			}
