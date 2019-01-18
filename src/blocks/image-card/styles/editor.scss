@@ -1,6 +1,6 @@
 .editor-block-list__block[data-type="coblocks/image-card"] {
 	background: transparent !important;
-	
+
 	.has-no-image {
 		height: 70vw;
 		max-height: 700px;
@@ -60,6 +60,20 @@
 	.wp-block-coblocks-image-card__card {
 		.wp-block.editor-default-block-appender {
 			display: none;
+		}
+		> .editor-inner-blocks{
+			> .editor-block-list__layout{
+				.wp-block:first-child{
+					.editor-block-list__block-edit{
+						margin-top: 0px;
+					}
+				}
+				.wp-block:last-child{
+					.editor-block-list__block-edit{
+						margin-bottom: 0px;
+					}
+				}
+			}
 		}
 	}
 }
