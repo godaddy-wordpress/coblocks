@@ -58,22 +58,22 @@
 	}
 
 	.wp-block-coblocks-image-card__card {
-		.wp-block.editor-default-block-appender {
-			display: none;
-		}
 		> .editor-inner-blocks{
 			> .editor-block-list__layout{
 				> .wp-block{
-					.editor-block-list__block-edit{
-						margin-bottom: 0px;
-					}
 					&:first-child{
-						.editor-block-list__block-edit{
+						> .editor-block-list__block-edit{
 							margin-top: 0px;
+							margin-bottom: 0px;
 						}
-						.editor-block-list__insertion-point{
+						> .editor-block-list__insertion-point{
 							display: none;
 						}
+					}
+				}
+				> div{
+					> .editor-default-block-appender{
+						display:none;
 					}
 				}
 			}

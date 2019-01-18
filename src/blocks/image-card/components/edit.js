@@ -32,10 +32,16 @@ const { IconButton, DropZone } = wp.components;
  * @type {string[]}
 */
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
-const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social' ];
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row' , 'coblocks/column' ];
 const TEMPLATE = [
-	[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Image Card', 'content placeholder' ) , level: 3 } ],
-	[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'Replace this default text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'content placeholder' ) } ],
+	[ 'coblocks/row', { columns: 1, layout: '100', paddingSize: 'medium' }, [
+        [ 'coblocks/column', { width: "100" },
+        	[
+        		[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Image Card', 'content placeholder' ) , level: 3 } ],
+				[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'Replace this default text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'content placeholder' ) } ],
+        	]
+        ],
+    ] ],
 ];
 
 /**
