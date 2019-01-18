@@ -164,6 +164,7 @@ class Edit extends Component {
 			marginUnit,
 			marginSize,
 			paddingSize,
+			hasAlignmentControls,
 		} = attributes;
 
 		const dropZone = (

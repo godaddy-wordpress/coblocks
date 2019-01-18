@@ -164,7 +164,7 @@ class Inspector extends Component {
 							{ layout &&
 								<Fragment>
 									<PanelBody title={ __( 'Row Settings' ) }>
-											{ hasMarginControl && 
+											{ hasMarginControl &&
 												<DimensionsControl { ...this.props }
 													type={ 'margin' }
 													label={ __( 'Margin' ) }
@@ -219,7 +219,7 @@ class Inspector extends Component {
 													onChange={ ( value ) => setAttributes( { gutter: value } ) }
 												/>
 											}
-											{ hasStackedControl && 
+											{ hasStackedControl &&
 												<ToggleControl
 													label={ __( 'Stack on mobile' ) }
 													checked={ !! stacked }
