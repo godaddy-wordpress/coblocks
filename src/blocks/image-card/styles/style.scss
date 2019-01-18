@@ -55,7 +55,7 @@
 		pointer-events: none;
 		position: relative;
 		width: 90%;
-		z-index: 999;
+		z-index: 29;
 
 		@media (min-width: 700px) {
 			margin-bottom: 0;
@@ -74,10 +74,6 @@
 		width: 100%;
 		word-break: break-word;
 
-		// &:not(.has-background) {
-		// 	background-color: #fff;
-		// }
-
 		p:last-of-type {
 			margin-bottom: 0;
 		}
@@ -88,6 +84,7 @@
 		margin-top: 10px;
 	}
 
+	// Right style option.
 	&.is-style-right &__inner {
 		flex-direction: row-reverse;
 
@@ -102,6 +99,7 @@
 		}
 	}
 
+	// Card image placeholder, if there is no image added.
 	.has-no-image {
 		align-items: center;
 		background: hsla(240, 5%, 57%, 0.1);
