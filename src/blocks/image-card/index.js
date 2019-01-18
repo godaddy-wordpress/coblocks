@@ -57,12 +57,6 @@ const blockAttributes = {
 		type: 'boolean',
 		default: false,
 	},
-	cardBackgroundColor: {
-		type: 'string',
-	},
-	customCardBackgroundColor: {
-		type: 'string',
-	},
 	...BackgroundAttributes,
 	...DimensionsAttributes,
 };
@@ -121,7 +115,6 @@ const settings = {
 
 
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-		const cardBackgroundClass = getColorClassName( 'background-color', cardBackgroundColor );
 
 		const backgroundClasses = classnames(
 			className,{
@@ -143,12 +136,10 @@ const settings = {
 		const cardBackgroundClasses = classnames(
 			'wp-block-coblocks-image-card__card', {
 			'has-background': cardBackgroundColor || customCardBackgroundColor,
-			[ cardBackgroundClass ]: cardBackgroundClass,
 			'has-shadow': hasCardShadow,
 		} );
 
 		const cardStyles = {
-			backgroundColor: cardBackgroundClass ? undefined : customCardBackgroundColor,
 			textAlign: contentAlign ? contentAlign : null,
 		};
 

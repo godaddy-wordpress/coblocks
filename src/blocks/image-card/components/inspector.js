@@ -20,7 +20,7 @@ const { PanelBody, withFallbackStyles, ToggleControl, TextControl, TextareaContr
  */
 const { getComputedStyle } = window;
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { backgroundColor, buttonBackground, buttonColor, cardBackgroundColor } = ownProps.attributes;
+	const { backgroundColor, buttonBackground, buttonColor } = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 	//verify if editableNode is available, before using getComputedStyle.
 	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
@@ -28,7 +28,6 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
 		fallbackButtonBackground: buttonBackground || ! computedStyles ? undefined : computedStyles.backgroundColor,
 		fallbackButtonColor: buttonColor || ! computedStyles ? undefined : computedStyles.color,
-		fallbackCardBackgroundColor: cardBackgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
 	};
 } );
 
@@ -48,9 +47,7 @@ class Inspector extends Component {
 			backgroundColor,
 			buttonColor,
 			buttonBackground,
-			cardBackgroundColor,
 			fallbackBackgroundColor,
-			fallbackCardBackgroundColor,
 			fallbackButtonBackground,
 			fallbackButtonColor,
 			fallbackHeadingColor,
@@ -59,7 +56,6 @@ class Inspector extends Component {
 			setBackgroundColor,
 			setButtonBackground,
 			setButtonColor,
-			setCardBackgroundColor,
 		} = this.props;
 
 		const {
@@ -165,11 +161,6 @@ class Inspector extends Component {
 											}
 										},
 								label: __( 'Background' ),
-							},
-							{
-								value: cardBackgroundColor.color,
-								onChange: setCardBackgroundColor,
-								label: __( 'Card Background' ),
 							},
 						] }
 					>
