@@ -19,8 +19,12 @@
 		opacity: 1 !important;
 	}
 
-	.editor-block-list__layout .editor-block-list__block > .editor-block-list__block-edit::before {
-		outline: none;
+	.editor-block-list__layout .editor-block-list__block{
+		> .editor-block-list__block-edit::before, .editor-block-list__block-edit::before {
+			outline: none !important;
+			outline-style: none !important;
+			outline-width: 0px !important;
+		}
 	}
 
 	&__title {
