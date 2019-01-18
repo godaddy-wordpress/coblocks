@@ -105,6 +105,8 @@ class Inspector extends Component {
 			paddingSyncUnitsTablet,
 			paddingSyncUnitsMobile,
 			paddingUnit,
+			hasMarginControl,
+			hasStackedControl,
 		} = attributes;
 
 		const gutterOptions = [
@@ -162,28 +164,30 @@ class Inspector extends Component {
 							{ layout &&
 								<Fragment>
 									<PanelBody title={ __( 'Row Settings' ) }>
-											<DimensionsControl { ...this.props }
-												type={ 'margin' }
-												label={ __( 'Margin' ) }
-												help={ __( 'Space around the container.' ) }
-												valueTop={ marginTop }
-												valueRight={ marginRight }
-												valueBottom={ marginBottom }
-												valueLeft={ marginLeft }
-												valueTopTablet={ marginTopTablet }
-												valueRightTablet={ marginRightTablet }
-												valueBottomTablet={ marginBottomTablet }
-												valueLeftTablet={ marginLeftTablet }
-												valueTopMobile={ marginTopMobile }
-												valueRightMobile={ marginRightMobile }
-												valueBottomMobile={ marginBottomMobile }
-												valueLeftMobile={ marginLeftMobile }
-												unit={ marginUnit }
-												syncUnits={ marginSyncUnits }
-												syncUnitsTablet={ marginSyncUnitsTablet }
-												syncUnitsMobile={ marginSyncUnitsMobile }
-												dimensionSize={ marginSize }
-											/>
+											{ hasMarginControl && 
+												<DimensionsControl { ...this.props }
+													type={ 'margin' }
+													label={ __( 'Margin' ) }
+													help={ __( 'Space around the container.' ) }
+													valueTop={ marginTop }
+													valueRight={ marginRight }
+													valueBottom={ marginBottom }
+													valueLeft={ marginLeft }
+													valueTopTablet={ marginTopTablet }
+													valueRightTablet={ marginRightTablet }
+													valueBottomTablet={ marginBottomTablet }
+													valueLeftTablet={ marginLeftTablet }
+													valueTopMobile={ marginTopMobile }
+													valueRightMobile={ marginRightMobile }
+													valueBottomMobile={ marginBottomMobile }
+													valueLeftMobile={ marginLeftMobile }
+													unit={ marginUnit }
+													syncUnits={ marginSyncUnits }
+													syncUnitsTablet={ marginSyncUnitsTablet }
+													syncUnitsMobile={ marginSyncUnitsMobile }
+													dimensionSize={ marginSize }
+												/>
+											}
 											<DimensionsControl { ...this.props }
 												type={ 'padding' }
 												label={ __( 'Padding' ) }
@@ -215,13 +219,14 @@ class Inspector extends Component {
 													onChange={ ( value ) => setAttributes( { gutter: value } ) }
 												/>
 											}
-
-											<ToggleControl
-												label={ __( 'Stack on mobile' ) }
-												checked={ !! stacked }
-												onChange={ () => setAttributes( {  stacked: ! stacked } ) }
-												help={ !! stacked ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
-											/>
+											{ hasStackedControl && 
+												<ToggleControl
+													label={ __( 'Stack on mobile' ) }
+													checked={ !! stacked }
+													onChange={ () => setAttributes( {  stacked: ! stacked } ) }
+													help={ !! stacked ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
+												/>
+											}
 									</PanelBody>
 									<PanelColorSettings
 										title={ __( 'Color Settings' ) }
