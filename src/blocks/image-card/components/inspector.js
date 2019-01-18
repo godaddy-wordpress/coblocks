@@ -159,6 +159,10 @@ class Inspector extends Component {
 											if( !paddingSize || paddingSize == 'no' ){
 												setAttributes( { paddingSize: 'medium' } );
 											}
+
+											if( !nextBg ){
+												setAttributes( { paddingSize: 'no' } );
+											}
 										},
 								label: __( 'Background' ),
 							},
