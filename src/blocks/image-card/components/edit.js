@@ -34,7 +34,7 @@ const { IconButton, DropZone } = wp.components;
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row' , 'coblocks/column' ];
 const TEMPLATE = [
-	[ 'coblocks/row', { columns: 1, layout: '100', paddingSize: 'medium', hasMarginControl: false, hasStackedControl: false }, [
+	[ 'coblocks/row', { columns: 1, layout: '100', paddingSize: 'huge', hasMarginControl: false, hasStackedControl: false }, [
         [ 'coblocks/column', { width: "100" },
         	[
         		[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Image Card', 'content placeholder' ) , level: 3 } ],
