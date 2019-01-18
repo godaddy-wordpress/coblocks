@@ -45,6 +45,10 @@
 		outline: 4px solid #0085ba;
 	}
 
+	.wp-block[data-type="coblocks/row"] .editor-block-list__block-edit::before {
+		outline-style: solid !important;
+	}
+
 	// Remove image button.
 	.block-library-gallery-item__inline-menu {
 		right: -4px;
@@ -143,5 +147,11 @@
 	.wp-block-coblocks-image-card__card {
 		height: 130px;
 		margin-top: 120px;
+	}
+}
+
+.wp-block-coblocks-image-card {
+	.editor-block-toolbar .components-toolbar:nth-child(2) {
+		display: none;
 	}
 }
