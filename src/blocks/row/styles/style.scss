@@ -6,6 +6,7 @@
 }
 
 .wp-block-coblocks-row[data-columns="1"] {
+
 	.wp-block-coblocks-column__inner{
 		> [class*="wp-block-"]{
 			max-width: calc( 6 * (100vw / 12.5) );
@@ -18,12 +19,12 @@
     			max-width: 100%;
     		}
 
-    		&[data-columns="1"] {
-    			.wp-block-coblocks-column__inner{
-    				> :not([class*="wp-block-"]){
+			&[data-columns="1"] {
+				.wp-block-coblocks-column__inner {
+					> :not([class*="wp-block-"]) {
 						max-width: 100%;
 					}
-    			}
+				}
 			}
 		}
 		> :not([class*="wp-block-"]){
@@ -46,13 +47,13 @@
 	min-width: 0;
 
 	// Prevent long unbroken words from overflowing.
-	word-break: break-word; // For back-compat.
 	overflow-wrap: break-word; // New standard.
 	position: relative;
+	word-break: break-word; // For back-compat.
 
 	p {
-		margin-top: 0;
 		margin-bottom: 2em;
+		margin-top: 0;
 		padding: 0;
 
 		&:last-of-type {
@@ -60,6 +61,3 @@
 		}
 	}
 }
-
-
-

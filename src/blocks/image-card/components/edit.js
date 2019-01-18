@@ -15,7 +15,7 @@ import icons from './../../../utils/icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
@@ -32,12 +32,11 @@ const { IconButton, DropZone } = wp.components;
  * @type {string[]}
 */
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
-const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list' ];
-const TEMPLATE = [ 
-			[ 'core/heading', { placeholder: __( 'Add title...' ), content: __( 'Image Card' ), level: 3 } ],
-			[ 'core/paragraph', { placeholder: __( 'Add feature content...' ), content: __( 'Showcase an image card with an offset text block.' ) } ],
-			[ 'core/button', { text: __( 'Buy Now' ) } ] 
-		];
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social' ];
+const TEMPLATE = [
+	[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Image Card', 'content placeholder' ) , level: 3 } ],
+	[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'Replace this default text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'content placeholder' ) } ],
+];
 
 /**
  * Block edit function
@@ -49,15 +48,6 @@ class Edit extends Component {
 		this.onSelectImage = this.onSelectImage.bind( this );
 		this.onRemoveImage = this.onRemoveImage.bind( this );
 		this.addImage = this.addImage.bind( this );
-	}
-
-	componentDidMount() {
-
-		if ( this.props.wideControlsEnabled == true && ! this.props.attributes.align  ) {
-			this.props.setAttributes( {
-				align: 'wide',
-			} );
-		}
 	}
 
 	addImage( files ) {
@@ -192,12 +182,14 @@ class Edit extends Component {
 										{ imageDropZone }
 										<img src={ imgUrl } alt={ alt }/>
 										{ this.props.isSelected ?
-											<IconButton
-												className="components-coblocks__delete-image-button"
-												label={ __( 'Remove image' ) }
-												icon={ icons.trash }
-												onClick={ this.onRemoveImage }
-											/>
+											<div className="block-library-gallery-item__inline-menu">
+												<IconButton
+													className="blocks-gallery-item__remove"
+													label={ __( 'Remove image' ) }
+													icon="no-alt"
+													onClick={ this.onRemoveImage }
+												/>
+											</div>
 										: null }
 									</div>
 								}

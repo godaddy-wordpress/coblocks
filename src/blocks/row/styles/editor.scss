@@ -29,10 +29,11 @@
 							left: auto;
     						max-width: calc( 112.5% + 90px) !important;
 						}
+						
 					&[data-type="coblocks/row"][data-columns="1"] {
-		    			.wp-block{
-	    					max-width: 100% !important;
-	    				}
+						.wp-block {
+							max-width: 100% !important;
+						}
 					}
 				}
 			}
@@ -166,18 +167,18 @@
 		border: 2px solid #fff;
 		border-radius: 4px;
 		color: #fff;
-		font-family: $default-font;
+		font-family: "Helvetica Neue", sans-serif;
 		font-size: 10px;
 		line-height: 1;
 		opacity: 0;
-		padding: 4px 5px 5px;
+		padding: 0.415em 0.5em 0.445em;
 		position: absolute;
 		right: -16px;
 		text-align: center;
 		top: -31px;
 		transform: scale(0);
 		transition: opacity 50ms cubic-bezier(0.39, 0.575, 0.565, 1), transform 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
-		width: 46px;
+		width: 45px;
 		z-index: 9999;
 
 		&::after,
@@ -500,23 +501,23 @@ div[data-type="coblocks/row"].is-resizing .has-huge-gutter .components-resizable
 }
 
 .has-no-gutter .coblocks-resizeable-width {
-	right: -24px;
+	right: -23px;
 }
 
 .has-small-gutter .coblocks-resizeable-width {
-	right: -39px;
+	right: -38px;
 }
 
 .has-medium-gutter .coblocks-resizeable-width {
-	right: -44px;
+	right: -43px;
 }
 
 .has-large-gutter .coblocks-resizeable-width {
-	right: -55px;
+	right: -54px;
 }
 
 .has-huge-gutter .coblocks-resizeable-width {
-	right: -82px;
+	right: -81px;
 }
 
 .wp-block[data-type="coblocks/row"][data-columns="1"] {

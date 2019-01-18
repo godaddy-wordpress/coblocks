@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import map from 'lodash/map';
 
 /**
  * Internal dependencies
@@ -33,13 +34,22 @@ const keywords = [
 	__( 'coblocks' ),
 ];
 
+const blockAttributes = {
+	count: {
+		type: 'number',
+		default: 2,
+	},
+};
+
 const settings = {
 
 	title: title,
 
-	description: __( 'Add an accordion.' ),
+	description: __( 'Organize content within collapsable accordion items.' ),
 
 	keywords: keywords,
+
+	attributes: blockAttributes,
 
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -57,7 +67,17 @@ const settings = {
 					} );
 				},
 			},
-		],
+			...[ 2, 3, 4, 5 ].map( ( count ) => ( {
+				type: 'prefix',
+				prefix: Array( count + 1 ).join( ':' ) + 'accordion',
+				transform( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+						count,
+					} );
+				},
+			} ) ),
+		]
 	},
 
 	edit: Edit,

@@ -1,7 +1,7 @@
 .wp-block-coblocks-image-card {
 	position: relative;
 
-	&__inner{
+	&__inner {
 		position: relative;
 
 		@media (min-width: 700px) {
@@ -58,9 +58,9 @@
 		z-index: 2;
 
 		@media (min-width: 700px) {
-			width: 70%;
-			margin-top: inherit;
 			margin-bottom: 0;
+			margin-top: inherit;
+			width: 70%;
 		}
 
 		@media (min-width: 900px) {
@@ -79,7 +79,7 @@
 			background-color: #fff;
 		}
 
-		p {
+		p:last-of-type {
 			margin-bottom: 0;
 		}
 	}
@@ -89,7 +89,7 @@
 		margin-top: 10px;
 	}
 
-	&.is-style-right {
+	&.is-style-right &__inner {
 		flex-direction: row-reverse;
 
 		.wp-block-coblocks-image-card__img-wrapper {

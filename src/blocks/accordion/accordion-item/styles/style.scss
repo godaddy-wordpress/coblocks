@@ -44,10 +44,10 @@
 	}
 
 	&__content {
-		border-radius: 0 0 $accordion-border-radius $accordion-border-radius;
-		padding: 15px 20px;
 		border: 1px solid $accordion-background;
+		border-radius: 0 0 $accordion-border-radius $accordion-border-radius;
 		margin-top: -1px;
+		padding: 15px 20px;
 
 		p.has-background {
 			padding: 20px 30px;
@@ -56,11 +56,15 @@
 		p:last-of-type {
 			margin-bottom: 0;
 		}
+
+		> .wp-block-coblocks-accordion {
+			margin-top: 0.95em;
+		}
 	}
 
 	&__text {
-		margin-top: 0;
 		margin-bottom: 0.25em;
+		margin-top: 0;
 
 		&:last-of-type {
 			margin-bottom: 0;

@@ -22,22 +22,6 @@ const { createBlock, getBlockType } = wp.blocks;
 const { RichText, getColorClassName, getFontSizeClass, InnerBlocks } = wp.editor;
 
 /**
- * Use either the block's imgUrl as a fallback if no backgroundImg is uploaded.
- * @type {Object}
- */
-function CustomTransformAttributes( attributes ) {
-	if ( attributes.backgroundImg ) {
-		return {
-			backgroundImg: attributes.backgroundImg,
-		};
-	} else {
-		return {
-			backgroundImg: attributes.imgUrl,
-		};
-	}
-};
-
-/**
  * Block constants
  */
 const name = 'image-card';
@@ -47,7 +31,7 @@ const title = __( 'Image Card' );
 const icon = icons.imageCard;
 
 const keywords = [
-	__( 'gallery' ),
+	__( 'image' ),
 	__( 'feature' ),
 	__( 'coblocks' ),
 ];
@@ -60,9 +44,6 @@ const blockAttributes = {
 		attribute: 'alt',
 		selector: 'img',
 		source: 'attribute',
-		type: 'string',
-	},
-	align: {
 		type: 'string',
 	},
 	contentAlign: {
@@ -100,93 +81,19 @@ const settings = {
 		align: [ 'wide', 'full' ],
 	},
 
-	transforms: ( getBlockType( 'coblocks/image-panel' ) ) ? {
-		to: [
-			{
-				type: 'block',
-				blocks: [ 'coblocks/image-panel' ],
-				transform: ( attributes ) => {
-					return createBlock( 'coblocks/image-panel', {
-
-						// General transforms used throughout our blocks
-						...BackgroundImageTransforms( attributes ),
-
-						// Override BackgroundImageTransforms
-						backgroundImg: attributes.imgUrl,
-
-						// Standard
-						align: attributes.align,
-						contentAlign: attributes.contentAlign,
-
-						// Background
-						backgroundColor: attributes.cardBackgroundColor,
-						customBackgroundColor: attributes.customCardBackgroundColor,
-
-					} );
-				},
-			},
-			{
-				type: 'block',
-				blocks: [ 'coblocks/call-to-action' ],
-				transform: ( attributes ) => {
-					return createBlock( 'coblocks/call-to-action', {
-
-						// General transforms used throughout our blocks.
-						...BackgroundImageTransforms( attributes ),
-
-						// Standard
-						align: attributes.align,
-						contentAlign: attributes.contentAlign,
-
-						// Background
-						backgroundColor: attributes.cardBackgroundColor,
-						customBackgroundColor: attributes.customCardBackgroundColor,
-
-						// Set custom attributes
-						...CustomTransformAttributes( attributes ),
-					} );
-				},
-			},
-			{
-				type: 'block',
-				blocks: [ 'coblocks/image-box' ],
-				transform: ( attributes ) => {
-					return createBlock( 'coblocks/image-box', {
-
-						// General transforms used throughout our blocks
-						...BackgroundImageTransforms( attributes ),
-
-
-						// Standard
-						align: attributes.align,
-						contentAlign: attributes.contentAlign,
-
-						// Background
-						backgroundColor: attributes.backgroundColor,
-						customBackgroundColor: attributes.customBackgroundColor,
-
-						// Colors (other than typographic)
-						boxBackgroundColor: attributes.cardBackgroundColor,
-						customBoxBackgroundColor: attributes.customCardBackgroundColor,
-
-						// Set custom attributes
-						...CustomTransformAttributes( attributes ),
-					} );
-				},
-			},
-		],
+	transforms: {
 		from: [
 			{
-				type: 'raw',
-				selector: 'div.wp-block-coblocks-image-card',
-				schema: {
-					div: {
-						classes: [ 'wp-block-coblocks-image-card' ],
-					},
+				type: 'prefix',
+				prefix: ':card',
+				transform: function( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+					} );
 				},
 			},
-		],
-	} : {},
+		]
+	},
 
 	styles: [
 		{ name: 'left', label: __( 'Left' ), isDefault: true },
@@ -209,8 +116,6 @@ const settings = {
 			hasCardShadow,
 			hasImgShadow,
 			imgUrl,
-
-			//dimension controls
 			paddingSize,
 		} = attributes;
 
@@ -248,10 +153,7 @@ const settings = {
 		};
 
 		return (
-
-			<div
-				className={ backgroundClasses }
-			>
+			<div className={ backgroundClasses }>
 				<div className={ innerClasses } style={ innerStyles }>
 					<div className="wp-block-coblocks-image-card__intrinsic">
 						<div

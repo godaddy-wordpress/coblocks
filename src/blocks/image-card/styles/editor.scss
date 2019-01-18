@@ -1,5 +1,4 @@
 .editor-block-list__block[data-type="coblocks/image-card"] {
-
 	.has-no-image {
 		height: 70vw;
 		max-height: 700px;
@@ -14,39 +13,50 @@
 	}
 
 	&[data-align="wide"] {
-
 		.has-no-image {
 			max-height: 900px;
 		}
 	}
 
 	&[data-align="full"] {
-
 		.has-no-image {
 			max-height: 1024px;
 		}
-
 	}
 
-	.components-placeholder {
-		background: transparent;
+	.wp-block-coblocks-image-card__intrinsic {
+		.components-placeholder {
+			background: transparent;
 
-		&__instructions {
-			max-width: 260px;
+			&__instructions {
+				max-width: 260px;
 
-			@media (max-width: 960px) {
-				display: none;
+				@media (max-width: 960px) {
+					display: none;
+				}
 			}
 		}
 	}
 
-	.wp-block-coblocks-image-card__img-wrapper:hover .components-coblocks__delete-image-button {
-		opacity: 1;
-		pointer-events: auto;
+	&.is-selected .wp-block-coblocks-image-card__img-wrapper:not(.has-no-image) {
+		outline: 4px solid #0085ba;
 	}
 
-	.wp-block-coblocks-image-card__card{
-		.wp-block.editor-default-block-appender{
+	.block-library-gallery-item__inline-menu {
+		right: -4px;
+		top: -4px;
+	}
+
+	.blocks-gallery-item__remove {
+		&:hover {
+			background-color: #0085ba !important;
+			box-shadow: none !important;
+			color: rgba($white, 0.66) !important;
+		}
+	}
+
+	.wp-block-coblocks-image-card__card {
+		.wp-block.editor-default-block-appender {
 			display: none;
 		}
 	}
