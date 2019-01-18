@@ -40,6 +40,11 @@
 		}
 	}
 
+	// Child blocks should not have a max-width.
+	.editor-inner-blocks .wp-block {
+		max-width: none;
+	}
+
 	// Add border to the image if the block is selected.
 	&.is-selected .wp-block-coblocks-image-card__img-wrapper:not(.has-no-image) {
 		outline: 4px solid #0085ba;
