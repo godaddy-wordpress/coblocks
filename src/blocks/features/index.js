@@ -37,9 +37,6 @@ const keywords = [
 ];
 
 const blockAttributes = {
-	maxWidth: {
-		type: 'number',
-	},
 	gutter: {
 		type: 'string',
 		default: 'medium',

@@ -59,7 +59,6 @@ class Inspector extends Component {
 			width,
 			gutter,
 			align,
-			maxWidth,
 			marginBottom,
 			marginLeft,
 			marginRight,
