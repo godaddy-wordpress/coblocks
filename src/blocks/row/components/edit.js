@@ -151,6 +151,7 @@ class Edit extends Component {
 			columns,
 			layout,
 			gutter,
+			stacked,
 			paddingTop,
 			paddingRight,
 			paddingBottom,
@@ -288,6 +289,7 @@ class Edit extends Component {
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 				'has-margin': marginSize && marginSize != 'no',
 				[ `has-${ marginSize }-margin` ] : marginSize && marginSize != 'advanced',
+				'is-stacked-on-mobile': stacked,
 			}
 		);
 
