@@ -62,7 +62,7 @@ const withControls = createHigherOrderComponent( ( BlockEdit ) => {
 			setAttributes,
 		} = props;
 
-		const coBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/image-card' ];
+		const coBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features' ];
 
 		if( typeof attributes.coblocks === 'undefined' ){
 			attributes.coblocks = [];
@@ -115,7 +115,7 @@ const enhance = compose(
 
 const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
 	return enhance( ( { selected, select, ...props } ) => {
-		
+
 		let wrapperProps 	= props.wrapperProps;
 		let customData 	 	= {};
 		let attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
