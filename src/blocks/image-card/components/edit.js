@@ -2,6 +2,8 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import get from 'lodash/get';
+import includes from 'lodash/includes';
 
 /**
  * Internal dependencies
@@ -11,6 +13,7 @@ import Controls from './controls';
 import Inspector from './inspector';
 import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../components/background';
 import icons from './../../../utils/icons';
+import MediaContainer from './media-container';
 
 /**
  * WordPress dependencies
@@ -19,7 +22,7 @@ const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
-const { RichText, URLInput, MediaUpload, MediaPlaceholder, mediaUpload, withFontSizes, InnerBlocks } = wp.editor;
+const { RichText, URLInput, MediaUpload, MediaPlaceholder, mediaUpload, InnerBlocks } = wp.editor;
 const { IconButton, DropZone } = wp.components;
 
 /**
@@ -37,7 +40,7 @@ const TEMPLATE = [
 	[ 'coblocks/row', { columns: 1, layout: '100', paddingSize: 'huge', hasMarginControl: false, hasStackedControl: false, hasAlignmentControls: false, customBackgroundColor: '#FFFFFF' }, [
         [ 'coblocks/column', { width: "100" },
         	[
-        		[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Image Card', 'content placeholder' ) , level: 3 } ],
+        		[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Media Card', 'content placeholder' ) , level: 3 } ],
 			[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'Replace this default text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'content placeholder' ) } ],
         	]
         ],
@@ -51,25 +54,76 @@ class Edit extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
-		this.onSelectImage = this.onSelectImage.bind( this );
-		this.onRemoveImage = this.onRemoveImage.bind( this );
-		this.addImage = this.addImage.bind( this );
+
+		this.onSelectMedia = this.onSelectMedia.bind( this );
+		this.onWidthChange = this.onWidthChange.bind( this );
+		this.commitWidthChange = this.commitWidthChange.bind( this );
+		this.state = {
+			mediaWidth: null,
+		};
 	}
 
-	addImage( files ) {
-		mediaUpload( {
-			allowedTypes: ALLOWED_MEDIA_TYPES,
-			filesList: files,
-			onFileChange: ( [ media ] ) => this.onSelectImage( media ),
+	onSelectMedia( media ) {
+		const { setAttributes } = this.props;
+
+		let mediaType;
+		let src;
+		// for media selections originated from a file upload.
+		if ( media.media_type ) {
+			if ( media.media_type === 'image' ) {
+				mediaType = 'image';
+			} else {
+				// only images and videos are accepted so if the media_type is not an image we can assume it is a video.
+				// video contain the media type of 'file' in the object returned from the rest api.
+				mediaType = 'video';
+			}
+		} else { // for media selections originated from existing files in the media library.
+			mediaType = media.type;
+		}
+
+		if ( mediaType === 'image' ) {
+			// Try the "large" size URL, falling back to the "full" size URL below.
+			src = get( media, [ 'sizes', 'large', 'url' ] ) || get( media, [ 'media_details', 'sizes', 'large', 'source_url' ] );
+		}
+
+		setAttributes( {
+			mediaAlt: media.alt,
+			mediaId: media.id,
+			mediaType,
+			mediaUrl: src || media.url,
 		} );
 	}
 
-	onRemoveImage() {
-		this.props.setAttributes( { imgUrl: '' } );
+	onWidthChange( width ) {
+		this.setState( {
+			mediaWidth: width,
+		} );
 	}
 
-	onSelectImage( media ) {
-		this.props.setAttributes( { imgUrl: media.url } );
+	commitWidthChange( width ) {
+		const { setAttributes } = this.props;
+
+		setAttributes( {
+			mediaWidth: width,
+		} );
+		this.setState( {
+			mediaWidth: null,
+		} );
+	}
+
+	renderMediaArea() {
+		const { attributes, className } = this.props;
+		const { mediaAlt, mediaId, mediaType, mediaUrl, mediaWidth, hasImgShadow } = attributes;
+
+		return (
+			<MediaContainer
+				className="wp-block-coblocks-image-card__media-container"
+				onSelectMedia={ this.onSelectMedia }
+				onWidthChange={ this.onWidthChange }
+				commitWidthChange={ this.commitWidthChange }
+				{ ...{ mediaAlt, mediaId, mediaType, mediaUrl, hasImgShadow, className, mediaWidth } }
+			/>
+		);
 	}
 
 	render() {
@@ -78,34 +132,26 @@ class Edit extends Component {
 			attributes,
 			backgroundColor,
 			className,
-			fontSize,
-			headingColor,
-			headingFontSize,
 			isSelected,
 			setAttributes,
-			setState,
-			textColor,
 		} = this.props;
 
 		const {
 			coblocks,
-			alt,
 			backgroundImg,
-			content,
 			contentAlign,
-			fontFamily,
 			hasCardShadow,
 			hasImgShadow,
-			imgId,
-			imgUrl,
-
-			//dimension controls
 			paddingTop,
 			paddingRight,
 			paddingBottom,
 			paddingLeft,
 			paddingUnit,
 			paddingSize,
+			mediaAlt,
+			mediaType,
+			mediaWidth,
+			mediaUrl,
 		} = attributes;
 
 		const dropZone = (
@@ -118,7 +164,7 @@ class Edit extends Component {
 		const imageDropZone = (
 			<DropZone
 				onFilesDrop={ this.addImage }
-				label={ __( 'Upload image' ) }
+				label={ __( 'Upload media' ) }
 			/>
 		);
 
@@ -129,7 +175,15 @@ class Edit extends Component {
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 		} );
 
+		const temporaryMediaWidth = this.state.mediaWidth;
+		const widthString = `${ temporaryMediaWidth || mediaWidth }%`;
+		const isStyleRight = includes( className, 'is-style-right' );
+		const mediaPosition = isStyleRight ? 'right' : 'left';
+
+		console.log( mediaPosition );
+
 		const innerStyles = {
+			gridTemplateColumns: 'right' === mediaPosition ? `auto ${ widthString }` : `${ widthString } auto`,
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
@@ -153,72 +207,32 @@ class Edit extends Component {
 				) }
 				<div
 					className={ classnames(
-						className,{
+						className, {
 							'has-background': backgroundColor.color,
 							[ backgroundColor.class ]: backgroundColor.class,
 							[ `coblocks-image-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+							'has-no-image': ! mediaUrl || null,
+							'is-selected': isSelected,
 						}
 					) }
 				>
 					<div className={ innerClasses } style={ innerStyles } >
-						<div className="wp-block-coblocks-image-card__intrinsic">
-
-							<div
-								className={ classnames(
-									'wp-block-coblocks-image-card__img-wrapper', {
-										'has-no-image': ! imgUrl || null,
-										'has-shadow': hasImgShadow,
-									}
-								) }
-							>
-								{ ! imgUrl ?
-									<MediaPlaceholder
-										icon={ 'format-image' }
-										labels={ {
-											title: __( 'Upload Image' ),
-											name: __( 'an image' ),
-										} }
-										onSelect={ this.onSelectImage }
-										accept="image/*"
-										allowedTypes={ ALLOWED_MEDIA_TYPES }
-									/>
-								:
-									<div>
-										{ imageDropZone }
-										<img src={ imgUrl } alt={ alt }/>
-										{ this.props.isSelected ?
-											<div className="block-library-gallery-item__inline-menu">
-												<IconButton
-													className="blocks-gallery-item__remove"
-													label={ __( 'Remove image' ) }
-													icon="no-alt"
-													onClick={ this.onRemoveImage }
-												/>
-											</div>
-										: null }
-									</div>
+						{ this.renderMediaArea() }
+						<div
+							className={ classnames(
+								'wp-block-coblocks-image-card__content', {
+									'has-shadow': hasCardShadow,
 								}
-							</div>
-						</div>
-						<div className="wp-block-coblocks-image-card__card-wrapper">
-							<div
-								className={ classnames(
-									'wp-block-coblocks-image-card__card', {
-										'has-shadow': hasCardShadow,
-									}
-								) }
-								style={ {
-									textAlign: contentAlign,
-								} }
-							>
-								{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
-									<InnerBlocks
-										template={ TEMPLATE }
-										allowedBlocks={ ALLOWED_BLOCKS }
-										templateLock={ true }
-									/>
-								) }
-							</div>
+							) }
+							style={ { textAlign: contentAlign } }
+						>
+							{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
+								<InnerBlocks
+									template={ TEMPLATE }
+									allowedBlocks={ ALLOWED_BLOCKS }
+									templateLock={ true }
+								/>
+							) }
 						</div>
 					</div>
 				</div>
@@ -229,7 +243,6 @@ class Edit extends Component {
 
 export default compose( [
 	applyWithColors,
-	withFontSizes( 'fontSize', 'headingFontSize', 'buttonFontSize' ),
 	withSelect( ( select ) => ( {
 		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
 	} ) ),

@@ -59,32 +59,15 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
-			alt,
 			button,
 			buttonUrl,
 			buttonTitle,
 			hasImgShadow,
 			hasCardShadow,
-			imgUrl,
+			mediaUrl,
+			mediaAlt,
 
 			//dimension controls
-			marginBottom,
-			marginLeft,
-			marginRight,
-			marginSize,
-			marginTop,
-			marginBottomTablet,
-			marginLeftTablet,
-			marginRightTablet,
-			marginTopTablet,
-			marginBottomMobile,
-			marginLeftMobile,
-			marginRightMobile,
-			marginTopMobile,
-			marginSyncUnits,
-			marginSyncUnitsTablet,
-			marginSyncUnitsMobile,
-			marginUnit,
 			paddingBottom,
 			paddingLeft,
 			paddingRight,
@@ -107,7 +90,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Image Card Settings' ) } className='block-coblocks__inspector-block-settings-panel-body'>
+					<PanelBody title={ __( 'Media Card Settings' ) } className='block-coblocks__inspector-block-settings-panel-body'>
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding' ) }
@@ -140,11 +123,11 @@ class Inspector extends Component {
 							checked={ !! hasImgShadow }
 							onChange={ () => setAttributes( {  hasImgShadow: ! hasImgShadow } ) }
 						/>
-						{ imgUrl && (
+						{ mediaUrl && (
 							<TextareaControl
 								label={ __( 'Alt Text (Alternative Text)' ) }
-								value={ alt }
-								onChange={ ( nextAlt ) => setAttributes( { alt: nextAlt } ) }
+								value={ mediaAlt }
+								onChange={ ( nextMediaAlt ) => setAttributes( { mediaAlt: nextMediaAlt } ) }
 								help={ __( 'Alternative text describes your image to people who can’t see it. Add a short description with its key details.' ) }
 							/>
 						) }

@@ -2,6 +2,8 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import noop from 'lodash/noop';
+import includes from 'lodash/includes';
 
 /**
  * Internal dependencies
@@ -26,7 +28,7 @@ const { RichText, getColorClassName, getFontSizeClass, InnerBlocks } = wp.editor
  */
 const name = 'image-card';
 
-const title = __( 'Image Card' );
+const title = __( 'Media Card' );
 
 const icon = icons.imageCard;
 
@@ -37,14 +39,28 @@ const keywords = [
 ];
 
 const blockAttributes = {
-	imgUrl: {
+	mediaAlt: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'figure img',
+		attribute: 'alt',
+		default: '',
+	},
+	mediaId: {
+		type: 'number',
+	},
+	mediaUrl: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'div div figure video, div div figure img',
+		attribute: 'src',
+	},
+	mediaType: {
 		type: 'string',
 	},
-	alt: {
-		attribute: 'alt',
-		selector: 'img',
-		source: 'attribute',
-		type: 'string',
+	mediaWidth: {
+		type: 'number',
+		default: 50,
 	},
 	contentAlign: {
 		type: 'string',
@@ -100,25 +116,39 @@ const settings = {
 
 		const {
 			coblocks,
-			alt,
 			backgroundColor,
 			backgroundImg,
-			cardBackgroundColor,
 			contentAlign,
 			customBackgroundColor,
-			customCardBackgroundColor,
 			hasCardShadow,
 			hasImgShadow,
-			imgUrl,
 			paddingSize,
+			mediaAlt,
+			mediaType,
+			mediaUrl,
+			mediaWidth,
+			mediaId,
 		} = attributes;
 
+		// Media.
+		const mediaTypeRenders = {
+			image: () => <img src={ mediaUrl } alt={ mediaAlt } className={ ( mediaId && mediaType === 'image' ) ? `wp-image-${ mediaId }` : null } />,
+			video: () => <video controls src={ mediaUrl } />,
+		};
+
+		const isStyleRight = includes( className, 'is-style-right' );
+		const mediaPosition = isStyleRight ? 'right' : 'left';
+
+		let gridTemplateColumns;
+		if ( mediaWidth !== 50 ) {
+			gridTemplateColumns = mediaPosition === 'right' ? `auto ${ mediaWidth }%` : `${ mediaWidth }% auto`;
+		}
 
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-		const backgroundClasses = classnames(
-			className,{
+		const classes = classnames( {
 				[ `coblocks-image-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+				'has-no-image': ! mediaUrl || null,
 		} );
 
 		const innerClasses = classnames(
@@ -129,13 +159,14 @@ const settings = {
 		} );
 
 		const innerStyles = {
+			gridTemplateColumns,
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+
 		};
 
 		const cardBackgroundClasses = classnames(
-			'wp-block-coblocks-image-card__card', {
-			'has-background': cardBackgroundColor || customCardBackgroundColor,
+			'wp-block-coblocks-image-card__content', {
 			'has-shadow': hasCardShadow,
 		} );
 
@@ -143,30 +174,20 @@ const settings = {
 			textAlign: contentAlign ? contentAlign : null,
 		};
 
+
 		return (
-			<div className={ backgroundClasses }>
+			<div className={ classes }>
 				<div className={ innerClasses } style={ innerStyles }>
-					<div className="wp-block-coblocks-image-card__intrinsic">
-						<div
-							className={ classnames(
-								'wp-block-coblocks-image-card__img-wrapper', {
-									'has-shadow': hasImgShadow,
-									'has-no-image': ! imgUrl || null,
-								}
-							) }
-						>
-							{ imgUrl &&
-								<img src={ imgUrl } alt={ alt } />
+					<figure className={ classnames(
+							'wp-block-coblocks-image-card__media', {
+								'has-shadow': hasImgShadow,
 							}
-						</div>
-					</div>
-					<div className="wp-block-coblocks-image-card__card-wrapper">
-						<div
-							className={ cardBackgroundClasses }
-							style={ cardStyles }
-						>
-							<InnerBlocks.Content />
-						</div>
+						) }
+					>
+						{ ( mediaTypeRenders[ mediaType ] || noop )() }
+					</figure>
+					<div className={ cardBackgroundClasses } style={ cardStyles }>
+						<InnerBlocks.Content />
 					</div>
 				</div>
 			</div>
