@@ -32,13 +32,6 @@ const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pu
  */
 function addAttributes( settings ) {
 
-	// Add custom selector/id
-	if( typeof settings.attributes !== 'undefined' ){
-		settings.attributes = Object.assign( settings.attributes, {
-			coblocks: { type: 'object' }
-		} );
-	}
-
 	// Use Lodash's assign to gracefully handle if attributes are undefined
 	if( allowedBlocks.includes( settings.name ) ){
 		settings.attributes = Object.assign( settings.attributes, TypographyAttributes );
@@ -61,24 +54,6 @@ const withControls = createHigherOrderComponent( ( BlockEdit ) => {
 			attributes,
 			setAttributes,
 		} = props;
-
-		const coBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/media-card' ];
-
-		if( typeof attributes.coblocks === 'undefined' ){
-			attributes.coblocks = [];
-		}
-
-		//add unique selector
-		if( coBlocks.includes( props.name ) && typeof attributes.coblocks.id === 'undefined' ){
-			let d = new Date();
-
-			if( typeof attributes.coblocks !== 'undefined' && typeof attributes.coblocks.id !== 'undefined' ){
-				delete attributes.coblocks.id;
-			}
-
-			const coblocks = Object.assign( { id: "" + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds() }, attributes.coblocks );
-			setAttributes( { coblocks: coblocks } );
-		}
 
 		return (
 			<Fragment>

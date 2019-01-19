@@ -22,6 +22,7 @@ import './styles/style.scss';
 // Extensions
 import './extensions/colors/inspector';
 import './extensions/typography';
+import './extensions/attributes';
 
 // Formats
 import './formats/';
