@@ -1,4 +1,4 @@
-=== CoBlocks - Page Builder Blocks for Gutenberg ===
+=== Page Builder Gutenberg Blocks – CoBlocks ===
 Author URI: https://coblocks.com
 Plugin URI: https://coblocks.com
 Contributors: coblocks, richtabor, phpbits
@@ -10,7 +10,7 @@ Stable tag: @@pkg.version
 License: GNU Version 2 or Any Later Version
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-CoBlocks is a suite of professional page building content blocks for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
+CoBlocks is a suite of page builder Gutenberg blocks, with 10+ new blocks and a true page builder experience with rows and columns.
 
 == Description ==
 
