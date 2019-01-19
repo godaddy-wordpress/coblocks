@@ -26,7 +26,7 @@ const { RichText, getColorClassName, getFontSizeClass, InnerBlocks } = wp.editor
 /**
  * Block constants
  */
-const name = 'image-card';
+const name = 'media-card';
 
 const title = __( 'Media Card' );
 
@@ -152,13 +152,13 @@ const settings = {
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames( {
-			[ `coblocks-image-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+			[ `coblocks-media-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			'has-no-image': ! mediaUrl || null,
 			'is-stacked-on-mobile': isStackedOnMobile,
 		} );
 
 		const innerClasses = classnames(
-			'wp-block-coblocks-image-card__inner',
+			'wp-block-coblocks-media-card__inner',
 			...BackgroundClasses( attributes ), {
 			'has-padding': paddingSize && paddingSize != 'no',
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
@@ -172,7 +172,7 @@ const settings = {
 		};
 
 		const cardBackgroundClasses = classnames(
-			'wp-block-coblocks-image-card__content', {
+			'wp-block-coblocks-media-card__content', {
 			'has-shadow': hasCardShadow,
 		} );
 
@@ -185,7 +185,7 @@ const settings = {
 			<div className={ classes }>
 				<div className={ innerClasses } style={ innerStyles }>
 					<figure className={ classnames(
-							'wp-block-coblocks-image-card__media', {
+							'wp-block-coblocks-media-card__media', {
 								'has-shadow': hasImgShadow,
 							}
 						) }

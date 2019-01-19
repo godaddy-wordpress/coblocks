@@ -118,7 +118,7 @@ class Edit extends Component {
 		return (
 			<MediaContainer
 				className={ className }
-				figureClass="wp-block-coblocks-image-card__media-container"
+				figureClass="wp-block-coblocks-media-card__media-container"
 				onSelectMedia={ this.onSelectMedia }
 				onWidthChange={ this.onWidthChange }
 				commitWidthChange={ this.commitWidthChange }
@@ -170,7 +170,7 @@ class Edit extends Component {
 		);
 
 		const innerClasses = classnames(
-			'wp-block-coblocks-image-card__inner',
+			'wp-block-coblocks-media-card__inner',
 			...BackgroundClasses( attributes ), {
 			'has-padding': paddingSize && paddingSize != 'no',
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
@@ -211,7 +211,7 @@ class Edit extends Component {
 						className, {
 							'has-background': backgroundColor.color,
 							[ backgroundColor.class ]: backgroundColor.class,
-							[ `coblocks-image-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+							[ `coblocks-media-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 							'has-no-image': ! mediaUrl || null,
 							'is-selected': isSelected,
 						}
@@ -221,7 +221,7 @@ class Edit extends Component {
 						{ this.renderMediaArea() }
 						<div
 							className={ classnames(
-								'wp-block-coblocks-image-card__content', {
+								'wp-block-coblocks-media-card__content', {
 									'has-shadow': hasCardShadow,
 								}
 							) }

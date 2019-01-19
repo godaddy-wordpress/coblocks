@@ -34,9 +34,9 @@ function BackgroundImageToolbarControls( props, options ) {
 					<MediaUpload
 						onSelect={ ( media ) => {
 							setAttributes( { backgroundImg: media.url } );
-							
+
 							//set padding when image selected
-							if( [ 'coblocks/image-card' ].includes( props.name ) ){
+							if( [ 'coblocks/media-card' ].includes( props.name ) ){
 								if( !attributes.paddingSize || attributes.paddingSize == 'no' ){
 									setAttributes( { paddingSize: 'medium' } );
 								}
@@ -62,7 +62,7 @@ function BackgroundImageToolbarControls( props, options ) {
 								setAttributes( { backgroundImg: '', backgroundOverlay: 0, } );
 
 								//set padding when image selected
-								if( [ 'coblocks/image-card' ].includes( props.name ) ){
+								if( [ 'coblocks/media-card' ].includes( props.name ) ){
 									if( attributes.paddingSize ){
 										setAttributes( { paddingSize: 'no' } );
 									}

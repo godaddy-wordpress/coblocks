@@ -35,7 +35,7 @@ class BackgroundImageDropZone extends Component {
 			this.props.setAttributes( { backgroundImg: media.url } );
 
 			//set padding when image selected
-			if( [ 'coblocks/image-card' ].includes( this.props.name ) ){
+			if( [ 'coblocks/media-card' ].includes( this.props.name ) ){
 				if( !this.props.attributes.paddingSize || this.props.attributes.paddingSize == 'no' ){
 					this.props.setAttributes( { paddingSize: 'medium' } );
 				}

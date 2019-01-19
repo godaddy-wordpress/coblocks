@@ -1,4 +1,4 @@
-.wp-block-coblocks-image-card {
+.wp-block-coblocks-media-card {
 	@media (min-width: #{ ($break-smallest) }) and (max-width: #{ ($break-small) }) {
 		overflow: hidden;
 	}
@@ -175,13 +175,13 @@
 	// &.is-style-right &__inner {
 	// 	flex-direction: row-reverse;
 
-	// 	.wp-block-coblocks-image-card__img-wrapper {
+	// 	.wp-block-coblocks-media-card__img-wrapper {
 	// 		@media (min-width: 700px) {
 	// 			left: -20%;
 	// 		}
 	// 	}
 
-	// 	.wp-block-coblocks-image-card__content {
+	// 	.wp-block-coblocks-media-card__content {
 	// 		margin-right: 0%;
 	// 	}
 	// }

@@ -1,11 +1,11 @@
-.wp-block-coblocks-image-card {
-	.editor-block-list__block[data-type="coblocks/image-card"] & &__inner {
+.wp-block-coblocks-media-card {
+	.editor-block-list__block[data-type="coblocks/media-card"] & &__inner {
 		grid-template-areas:
 			"media-text-media media-text-content"
 			"resizer resizer";
 	}
 
-	.editor-block-list__block[data-type="coblocks/image-card"] &.is-style-right &__inner {
+	.editor-block-list__block[data-type="coblocks/media-card"] &.is-style-right &__inner {
 		grid-template-areas:
 			"media-text-content media-text-media"
 			"resizer resizer";
@@ -85,7 +85,7 @@
 	}
 }
 
-.editor-block-list__block[data-type="coblocks/image-card"] {
+.editor-block-list__block[data-type="coblocks/media-card"] {
 	background: transparent !important;
 
 	// .has-no-image {
@@ -113,7 +113,7 @@
 	// 	}
 	// }
 
-	.wp-block-coblocks-image-card__img-wrapper {
+	.wp-block-coblocks-media-card__img-wrapper {
 		.components-placeholder {
 			background: transparent;
 
@@ -133,7 +133,7 @@
 	}
 
 	// Add border to the image if the block is selected.
-	&.is-selected .wp-block-coblocks-image-card__img-wrapper:not(.has-no-image) {
+	&.is-selected .wp-block-coblocks-media-card__img-wrapper:not(.has-no-image) {
 		outline: 4px solid #0085ba;
 	}
 
@@ -161,7 +161,7 @@
 	}
 
 	// Remove editor margins that do not exist on the frontend.
-	.wp-block-coblocks-image-card__content {
+	.wp-block-coblocks-media-card__content {
 		> .editor-inner-blocks {
 			> .editor-block-list__layout {
 				> .wp-block {
@@ -190,59 +190,59 @@
 // to style the previews to look better for now.
 // .editor-block-preview,
 // .editor-block-styles__item-preview {
-// 	.wp-block-coblocks-image-card__inner {
+// 	.wp-block-coblocks-media-card__inner {
 // 		display: flex;
 // 		padding: 0;
 // 	}
 
-// 	.wp-block-coblocks-image-card__img-wrapper {
+// 	.wp-block-coblocks-media-card__img-wrapper {
 // 		width: 120%;
 // 	}
 
-// 	.wp-block-coblocks-image-card__content-wrapper {
+// 	.wp-block-coblocks-media-card__content-wrapper {
 // 		margin-bottom: 0;
 // 		margin-top: inherit;
 // 		width: 70%;
 // 	}
 
-// 	.wp-block-coblocks-image-card__intrinsic {
+// 	.wp-block-coblocks-media-card__intrinsic {
 // 		width: 53%;
 // 	}
 
-// 	.wp-block-coblocks-image-card__content {
+// 	.wp-block-coblocks-media-card__content {
 // 		background: #535c65;
 // 		display: block;
 // 		height: 50px;
 // 		width: 100%;
 // 	}
 
-// 	.wp-block-coblocks-image-card,
-// 	.wp-block-coblocks-image-card__inner,
-// 	.wp-block-coblocks-image-card__img-wrapper {
+// 	.wp-block-coblocks-media-card,
+// 	.wp-block-coblocks-media-card__inner,
+// 	.wp-block-coblocks-media-card__img-wrapper {
 // 		height: 100px;
 // 	}
 
-// 	.is-style-right .wp-block-coblocks-image-card__inner {
+// 	.is-style-right .wp-block-coblocks-media-card__inner {
 // 		flex-direction: row-reverse;
 
-// 		.wp-block-coblocks-image-card__img-wrapper {
+// 		.wp-block-coblocks-media-card__img-wrapper {
 // 			left: -20%;
 // 		}
 
-// 		.wp-block-coblocks-image-card__content {
+// 		.wp-block-coblocks-media-card__content {
 // 			margin-right: 0%;
 // 		}
 // 	}
 // }
 
 // .editor-block-preview {
-// 	.wp-block-coblocks-image-card__content {
+// 	.wp-block-coblocks-media-card__content {
 // 		height: 130px;
 // 		margin-top: 120px;
 // 	}
 // }
 
-// .wp-block-coblocks-image-card {
+// .wp-block-coblocks-media-card {
 // 	.editor-block-toolbar .components-toolbar:nth-child(2) {
 // 		display: none;
 // 	}
