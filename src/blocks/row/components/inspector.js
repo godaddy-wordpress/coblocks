@@ -219,14 +219,6 @@ class Inspector extends Component {
 													onChange={ ( value ) => setAttributes( { gutter: value } ) }
 												/>
 											}
-											{ hasStackedControl &&
-												<ToggleControl
-													label={ __( 'Stack on mobile' ) }
-													checked={ !! stacked }
-													onChange={ () => setAttributes( {  stacked: ! stacked } ) }
-													help={ !! stacked ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
-												/>
-											}
 									</PanelBody>
 									<PanelColorSettings
 										title={ __( 'Color Settings' ) }
