@@ -1,5 +1,7 @@
 .wp-block-coblocks-image-card {
-	overflow: hidden;
+	@media (min-width: #{ ($break-smallest) }) and (max-width: #{ ($break-small) }) {
+		overflow: hidden;
+	}
 
 	&__inner {
 		align-items: center;
@@ -42,6 +44,7 @@
 	}
 
 	&.is-style-right &__content {
+		margin-left: 0;
 		margin-right: -50%;
 
 		@include break-smallest {
