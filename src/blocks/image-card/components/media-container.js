@@ -46,13 +46,11 @@ class MediaContainer extends Component {
 	renderImage() {
 		const { mediaAlt, mediaUrl, hasImgShadow, className } = this.props;
 
-		const mediaClass = className.replace( ' is-style-right', '' ).replace( ' is-style-left', '' );
-
 		return (
 			<Fragment>
 				{ this.renderToolbarEditButton() }
 				<figure className={ classnames(
-					`${ mediaClass }__media`, {
+					className, {
 						'has-shadow': hasImgShadow,
 					}
 				) } >
@@ -65,13 +63,11 @@ class MediaContainer extends Component {
 	renderVideo() {
 		const { mediaUrl, hasImgShadow, className } = this.props;
 
-		const mediaClass = className.replace( ' is-style-right', '' ).replace( ' is-style-left', '' );
-
 		return (
 			<Fragment>
 				{ this.renderToolbarEditButton() }
 				<figure className={ classnames(
-					`${ mediaClass }__media`, {
+					className, {
 						'has-shadow': hasImgShadow,
 					}
 				) } >
@@ -103,7 +99,7 @@ class MediaContainer extends Component {
 
 		const isStyleRight = includes( className, 'is-style-right' );
 		const mediaPosition = isStyleRight ? 'right' : 'left';
-		
+
 		if ( mediaType && mediaUrl ) {
 			const onResize = ( event, direction, elt ) => {
 				onWidthChange( parseInt( elt.style.width ) );
@@ -128,9 +124,9 @@ class MediaContainer extends Component {
 			return (
 				<ResizableBox
 					className="editor-media-container__resizer"
-					size={ { width: mediaWidth  } }
+					size={ { width: mediaWidth + '%' } }
 					// minWidth="10%"
-					// maxWidth="100"
+					// maxWidth="100%"
 					enable={ enablePositions }
 					onResize={ onResize }
 					onResizeStop={ onResizeStop }

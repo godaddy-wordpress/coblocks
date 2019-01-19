@@ -107,21 +107,21 @@ class Edit extends Component {
 			mediaWidth: width,
 		} );
 		this.setState( {
-			mediaWidth: width,
+			mediaWidth: null,
 		} );
 	}
 
 	renderMediaArea() {
-		const { attributes, className } = this.props;
+		const { attributes } = this.props;
 		const { mediaAlt, mediaId, mediaType, mediaUrl, mediaWidth, hasImgShadow } = attributes;
 
 		return (
 			<MediaContainer
-				// className="wp-block-coblocks-image-card__media-container"
+				className="wp-block-coblocks-image-card__media-container"
 				onSelectMedia={ this.onSelectMedia }
 				onWidthChange={ this.onWidthChange }
 				commitWidthChange={ this.commitWidthChange }
-				{ ...{ mediaAlt, mediaId, mediaType, mediaUrl, hasImgShadow, className, mediaWidth } }
+				{ ...{ mediaAlt, mediaId, mediaType, mediaUrl, hasImgShadow, mediaWidth } }
 			/>
 		);
 	}

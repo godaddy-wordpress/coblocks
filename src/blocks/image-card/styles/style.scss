@@ -1,9 +1,12 @@
 .wp-block-coblocks-image-card {
-	position: relative;
+	// position: relative;
+
+	&__inner {
+		display: grid;
+	}
 
 	&__inner {
 		align-items: center;
-		display: grid;
 		grid-template-areas: "media-text-media media-text-content";
 		grid-template-columns: 50% auto;
 		grid-template-rows: auto;
@@ -31,23 +34,23 @@
 		}
 	}
 
-	div > figure > img,
-	div > figure > video {
+	&__inner > figure > img,
+	&__inner > figure > video {
 		max-width: unset;
 		vertical-align: middle;
 		width: 100%;
 	}
 
-	@media (max-width: #{ ($break-small) }) {
-		&.is-stacked-on-mobile {
-			grid-template-areas: "media-text-media" "media-text-content";
-			grid-template-columns: 100% !important;
-		}
+	// @media (max-width: #{ ($break-small) }) {
+	// 	&.is-stacked-on-mobile {
+	// 		grid-template-areas: "media-text-media" "media-text-content";
+	// 		grid-template-columns: 100% !important;
+	// 	}
 
-		&.is-stacked-on-mobile.is-style-right {
-			grid-template-areas: "media-text-content" "media-text-media";
-		}
-	}
+	// 	&.is-stacked-on-mobile.is-style-right {
+	// 		grid-template-areas: "media-text-content" "media-text-media";
+	// 	}
+	// }
 
 	// &__intrinsic {
 	// 	max-width: initial;
