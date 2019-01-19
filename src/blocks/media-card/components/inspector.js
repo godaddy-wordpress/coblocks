@@ -5,7 +5,6 @@ import applyWithColors from './colors';
 import icons from './../../../utils/icons';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses } from '../../../components/background';
 import DimensionsControl from '../../../components/dimensions-control/';
-import './advanced.js';
 
 /**
  * WordPress dependencies
