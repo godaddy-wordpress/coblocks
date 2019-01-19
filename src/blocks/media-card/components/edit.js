@@ -153,6 +153,7 @@ class Edit extends Component {
 			mediaType,
 			mediaWidth,
 			mediaUrl,
+			isStackedOnMobile,
 		} = attributes;
 
 		const dropZone = (
@@ -214,6 +215,7 @@ class Edit extends Component {
 							[ `coblocks-media-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 							'has-no-image': ! mediaUrl || null,
 							'is-selected': isSelected,
+							'is-stacked-on-mobile': isStackedOnMobile,
 						}
 					) }
 				>

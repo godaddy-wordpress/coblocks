@@ -120,6 +120,12 @@ class Inspector extends Component {
 							onChange={ () => setAttributes( {  hasImgShadow: ! hasImgShadow } ) }
 							help={ !! hasCardShadow ? __( 'Showing image shadow.' ) : __( 'Toggle to add a shadow to the image.' ) }
 						/>
+						<ToggleControl
+							label={ __( 'Stack on mobile' ) }
+							checked={ !! isStackedOnMobile }
+							onChange={ () => setAttributes( {  isStackedOnMobile: ! isStackedOnMobile } ) }
+							help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
+						/>
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }
