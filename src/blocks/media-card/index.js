@@ -30,7 +30,7 @@ const name = 'media-card';
 
 const title = __( 'Media Card' );
 
-const icon = icons.imageCard;
+const icon = icons.mediaCard;
 
 const keywords = [
 	__( 'image' ),
