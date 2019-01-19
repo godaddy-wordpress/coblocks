@@ -116,7 +116,7 @@ class Inspector extends Component {
 							label={ __( 'Image Shadow' ) }
 							checked={ !! hasImgShadow }
 							onChange={ () => setAttributes( {  hasImgShadow: ! hasImgShadow } ) }
-							help={ !! hasCardShadow ? __( 'Showing image shadow.' ) : __( 'Toggle to add a shadow to the image.' ) }
+							help={ !! hasImgShadow ? __( 'Showing image shadow.' ) : __( 'Toggle to add a shadow to the image.' ) }
 						/>
 					</PanelBody>
 					<PanelColorSettings
