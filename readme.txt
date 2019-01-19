@@ -108,6 +108,7 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 * New: Add :feature text prefixes for adding a singular feature block
 * New: Add :features text prefixes, where the number of ":" represents the number of features to add
 * Tweak: Add descritive help text to the Row block "Stack on mobile" control
+* Tweak: Move the Row block "Stack on mobile" control to the block's Advanced panel
 * Tweak: Replace the Accordion and Accordion Item block icons with more identifying iconography
 * Fix: Transforming paragrahs to/from highlights now properly transform child elements
 * Fix: Row block width percentage tooltip now displays properly, regardless of the current browser

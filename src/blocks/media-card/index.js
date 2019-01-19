@@ -77,10 +77,6 @@ const blockAttributes = {
 		type: 'boolean',
 		default: false,
 	},
-	isStackedOnMobile: {
-		type: 'boolean',
-		default: true,
-	},
 	...BackgroundAttributes,
 	...DimensionsAttributes,
 };
@@ -97,6 +93,7 @@ const settings = {
 
 	supports: {
 		align: [ 'wide', 'full' ],
+		stackedOnMobile: true,
 	},
 
 	transforms: {
