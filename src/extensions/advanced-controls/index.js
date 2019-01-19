@@ -26,7 +26,7 @@ function addAttributes( settings ) {
 	if ( hasBlockSupport( settings, 'stackedOnMobile' ) ) {
 		if( typeof settings.attributes !== 'undefined' ){
 			settings.attributes = Object.assign( settings.attributes, {
-				isStackedOnMobile: { 
+				isStackedOnMobile: {
 					type: 'boolean',
 					default: true,
 				}
@@ -57,7 +57,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		const {
 			isStackedOnMobile,
 		} = attributes;
-		
+
 		const hasStackedControl = hasBlockSupport( name, 'stackedOnMobile' );
 
 		if ( hasStackedControl && isSelected ) {
