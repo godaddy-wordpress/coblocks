@@ -213,7 +213,7 @@ class Edit extends Component {
 							'has-background': backgroundColor.color,
 							[ backgroundColor.class ]: backgroundColor.class,
 							[ `coblocks-media-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
-							'has-no-image': ! mediaUrl || null,
+							'has-no-media': ! mediaUrl || null,
 							'is-selected': isSelected,
 							'is-stacked-on-mobile': isStackedOnMobile,
 						}

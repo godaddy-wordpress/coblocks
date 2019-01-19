@@ -88,11 +88,18 @@
 .editor-block-list__block[data-type="coblocks/media-card"] {
 	background: transparent !important;
 
-	.has-no-image .components-placeholder {
+	.has-no-media .components-placeholder {
 		height: 70vw;
 		margin-bottom: 0;
 		margin-top: 0;
 		max-height: 600px;
+	}
+
+	&[data-align="wide"],
+	&[data-align="full"] {
+		.has-no-media .components-placeholder {
+			max-height: 700px;
+		}
 	}
 
 	&[data-align="center"] {
@@ -100,13 +107,6 @@
 
 		.components-placeholder__instructions {
 			display: none;
-		}
-	}
-
-	&[data-align="wide"],
-	&[data-align="full"] {
-		.has-no-image .components-placeholder {
-			max-height: 700px;
 		}
 	}
 
@@ -128,7 +128,7 @@
 	}
 
 	// Add border to the image if the block is selected.
-	&.is-selected .wp-block-coblocks-media-card__img-wrapper:not(.has-no-image) {
+	&.is-selected .wp-block-coblocks-media-card__img-wrapper:not(.has-no-media) {
 		outline: 4px solid #0085ba;
 	}
 

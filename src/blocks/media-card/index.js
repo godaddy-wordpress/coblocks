@@ -154,7 +154,7 @@ const settings = {
 
 		const classes = classnames( {
 			[ `coblocks-media-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
-			'has-no-image': ! mediaUrl || null,
+			'has-no-media': ! mediaUrl || null,
 			'is-stacked-on-mobile': isStackedOnMobile,
 		} );
 
@@ -192,6 +192,8 @@ const settings = {
 						) }
 					>
 						{ ( mediaTypeRenders[ mediaType ] || noop )() }
+
+						{ ! mediaUrl ? icons.logo : null }
 					</figure>
 					<div className={ cardBackgroundClasses } style={ cardStyles }>
 						<InnerBlocks.Content />
