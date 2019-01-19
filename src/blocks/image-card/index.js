@@ -73,6 +73,10 @@ const blockAttributes = {
 		type: 'boolean',
 		default: false,
 	},
+	isStackedOnMobile: {
+		type: 'boolean',
+		default: true,
+	},
 	...BackgroundAttributes,
 	...DimensionsAttributes,
 };
@@ -128,6 +132,7 @@ const settings = {
 			mediaUrl,
 			mediaWidth,
 			mediaId,
+			isStackedOnMobile,
 		} = attributes;
 
 		// Media.
@@ -147,8 +152,9 @@ const settings = {
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames( {
-				[ `coblocks-image-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
-				'has-no-image': ! mediaUrl || null,
+			[ `coblocks-image-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+			'has-no-image': ! mediaUrl || null,
+			'is-stacked-on-mobile': isStackedOnMobile,
 		} );
 
 		const innerClasses = classnames(

@@ -20,14 +20,12 @@ const { PanelBody, withFallbackStyles, ToggleControl, TextControl, TextareaContr
  */
 const { getComputedStyle } = window;
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { backgroundColor, buttonBackground, buttonColor } = ownProps.attributes;
+	const { backgroundColor } = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 	//verify if editableNode is available, before using getComputedStyle.
 	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 	return {
 		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackButtonBackground: buttonBackground || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackButtonColor: buttonColor || ! computedStyles ? undefined : computedStyles.color,
 	};
 } );
 
@@ -45,29 +43,17 @@ class Inspector extends Component {
 		const {
 			attributes,
 			backgroundColor,
-			buttonColor,
-			buttonBackground,
 			fallbackBackgroundColor,
-			fallbackButtonBackground,
-			fallbackButtonColor,
-			fallbackHeadingColor,
-			fallbackTextColor,
 			setAttributes,
 			setBackgroundColor,
-			setButtonBackground,
-			setButtonColor,
 		} = this.props;
 
 		const {
-			button,
-			buttonUrl,
-			buttonTitle,
 			hasImgShadow,
 			hasCardShadow,
 			mediaUrl,
 			mediaAlt,
-
-			//dimension controls
+			isStackedOnMobile,
 			paddingBottom,
 			paddingLeft,
 			paddingRight,
@@ -114,6 +100,12 @@ class Inspector extends Component {
 							dimensionSize={ paddingSize }
 						/>
 						<ToggleControl
+							label={ __( 'Stack on mobile' ) }
+							checked={ !! isStackedOnMobile }
+							onChange={ () => setAttributes( {  isStackedOnMobile: ! isStackedOnMobile } ) }
+							help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
+						/>
+						<ToggleControl
 							label={ __( 'Card Shadow' ) }
 							checked={ !! hasCardShadow }
 							onChange={ () => setAttributes( {  hasCardShadow: ! hasCardShadow } ) }
@@ -147,7 +139,7 @@ class Inspector extends Component {
 										setAttributes( { paddingSize: 'no' } );
 									}
 								},
-								label: __( 'Background' ),
+								label: __( 'Background Color' ),
 							},
 						] }
 					>

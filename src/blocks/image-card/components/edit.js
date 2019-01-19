@@ -41,7 +41,7 @@ const TEMPLATE = [
         [ 'coblocks/column', { width: "100" },
         	[
         		[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Media Card', 'content placeholder' ) , level: 3 } ],
-			[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'Replace this default text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'content placeholder' ) } ],
+			[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'content placeholder' ) } ],
         	]
         ],
     ] ],

@@ -44,7 +44,7 @@ class MediaContainer extends Component {
 	}
 
 	renderImage() {
-		const { mediaAlt, mediaUrl, hasImgShadow, figureClass, className } = this.props;
+		const { mediaAlt, mediaUrl, hasImgShadow, figureClass } = this.props;
 
 		return (
 			<Fragment>
@@ -61,13 +61,13 @@ class MediaContainer extends Component {
 	}
 
 	renderVideo() {
-		const { mediaUrl, hasImgShadow, className } = this.props;
+		const { mediaUrl, hasImgShadow, figureClass } = this.props;
 
 		return (
 			<Fragment>
 				{ this.renderToolbarEditButton() }
 				<figure className={ classnames(
-					className, {
+					figureClass, {
 						'has-shadow': hasImgShadow,
 					}
 				) } >
@@ -78,7 +78,7 @@ class MediaContainer extends Component {
 	}
 
 	renderPlaceholder() {
-		const { onSelectMedia, className } = this.props;
+		const { onSelectMedia, figureClass } = this.props;
 
 		return (
 			<MediaPlaceholder
@@ -86,7 +86,7 @@ class MediaContainer extends Component {
 				labels={ {
 					title: __( 'Media' ),
 				} }
-				className={ className }
+				className={ figureClass }
 				onSelect={ onSelectMedia }
 				accept="image/*,video/*"
 				allowedTypes={ ALLOWED_MEDIA_TYPES }
@@ -125,8 +125,8 @@ class MediaContainer extends Component {
 				<ResizableBox
 					className="editor-media-container__resizer"
 					size={ { width: mediaWidth + '%' } }
-					minWidth="10%"
-					maxWidth="90%"
+					minWidth="30%"
+					maxWidth="100%"
 					enable={ enablePositions }
 					onResize={ onResize }
 					onResizeStop={ onResizeStop }

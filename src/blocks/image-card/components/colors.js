@@ -8,11 +8,6 @@ const { withColors } = wp.editor;
  */
 const applyWithColors = withColors(
 	'backgroundColor',
-	{ cardBackgroundColor: 'background-color' },
-	{ headingColor: 'color' },
-	{ textColor: 'color' },
-	{ buttonColor: 'color' },
-	{ buttonBackground: 'background-color' },
 );
 
 export default applyWithColors;

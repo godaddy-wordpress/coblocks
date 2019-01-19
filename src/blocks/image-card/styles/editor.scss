@@ -27,23 +27,31 @@
 		}
 	}
 
+	// ResizableBox component.
 	.editor-media-container__resizer {
 		align-self: center;
 		grid-area: media-text-media;
 		width: 100% !important;
 
+		// Moves the handles and creates a second one so we can manipulate the
+		// ResizableBox component with the content card over the middle of the image.
+		.components-resizable-box__handle-left,
 		.components-resizable-box__handle-right {
 			bottom: 0;
 			height: 100%;
-			right: -10px;
-			top: -10px;
+			top: 0;
 			z-index: 99;
+
+			&::before {
+				position: absolute;
+				top: -7px;
+			}
 
 			&::after {
 				background: #0085ba;
-				border-radius: 50%;
 				border: 2px solid #fff;
-				bottom: -17px;
+				border-radius: 50%;
+				bottom: -7px;
 				content: "";
 				cursor: inherit;
 				display: block;
@@ -62,18 +70,18 @@
 		display: none;
 	}
 
+	&.is-selected:not(.is-stacked-on-mobile) {
+		.editor-media-container__resizer .components-resizable-box__handle {
+			display: block;
+		}
+	}
+
 	@include break-small {
 		&.is-selected.is-style-right {
 			.editor-media-container__resizer .components-resizable-box__handle {
 				display: block;
 			}
 		}
-	}
-}
-
-.wp-block-coblocks-image-card.is-selected:not(.is-stacked-on-mobile) {
-	.editor-media-container__resizer .components-resizable-box__handle {
-		display: block;
 	}
 }
 

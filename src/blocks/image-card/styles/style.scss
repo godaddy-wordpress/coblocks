@@ -1,12 +1,9 @@
 .wp-block-coblocks-image-card {
-	// position: relative;
-
-	&__inner {
-		display: grid;
-	}
+	overflow: hidden;
 
 	&__inner {
 		align-items: center;
+		display: grid;
 		grid-template-areas: "media-text-media media-text-content";
 		grid-template-columns: 50% auto;
 		grid-template-rows: auto;
@@ -21,17 +18,38 @@
 	&__media {
 		grid-area: media-text-media;
 		margin: 0;
+		position: relative;
+		z-index: -1;
 	}
 
 	&__content {
 		grid-area: media-text-content;
+		margin-left: -50%;
 		word-break: break-word;
-		margin-left: 20px;
-		margin-right: 20px;
 		z-index: 1;
+
+		@include break-smallest {
+			margin-left: -20%;
+		}
+
+		@include break-small {
+			margin-left: -100px;
+		}
 
 		p:last-of-type {
 			margin-bottom: 0;
+		}
+	}
+
+	&.is-style-right &__content {
+		margin-right: -50%;
+
+		@include break-smallest {
+			margin-right: -20%;
+		}
+
+		@include break-small {
+			margin-right: -100px;
 		}
 	}
 
@@ -42,16 +60,59 @@
 		width: 100%;
 	}
 
-	// @media (max-width: #{ ($break-small) }) {
-	// 	&.is-stacked-on-mobile {
-	// 		grid-template-areas: "media-text-media" "media-text-content";
-	// 		grid-template-columns: 100% !important;
-	// 	}
+	@media (max-width: #{ ($break-small) }) {
+		&.is-stacked-on-mobile &__inner {
+			display: block;
+			grid-template-areas: "media-text-media" "media-text-content";
+			grid-template-columns: 100% !important;
+		}
 
-	// 	&.is-stacked-on-mobile.is-style-right {
-	// 		grid-template-areas: "media-text-content" "media-text-media";
-	// 	}
-	// }
+		&.is-stacked-on-mobile.is-style-right &__inner {
+			grid-template-areas: "media-text-content" "media-text-media";
+		}
+
+		&.is-stacked-on-mobile.is-style-right &__content {
+			@include break-smallest {
+				margin-left: 0;
+				margin-right: 20%;
+			}
+
+			@include break-small {
+				margin-right: -100px;
+			}
+		}
+
+		&.is-stacked-on-mobile &__media {
+			@include break-smallest {
+				position: absolute;
+			}
+
+			@include break-small {
+				position: inherit;
+			}
+		}
+
+		&.is-stacked-on-mobile &__content {
+			margin-left: 5%;
+			margin-right: 5%;
+			margin-top: -33%;
+
+			@include break-smallest {
+				margin-left: 20%;
+				margin-right: 0;
+				margin-top: 0;
+			}
+
+			@include break-small {
+				grid-area: media-text-content;
+				margin-left: -100px;
+			}
+
+			p:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+	}
 
 	// &__intrinsic {
 	// 	max-width: initial;
