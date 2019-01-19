@@ -5,6 +5,7 @@ import applyWithColors from './colors';
 import icons from './../../../utils/icons';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses } from '../../../components/background';
 import DimensionsControl from '../../../components/dimensions-control/';
+import './advanced.js';
 
 /**
  * WordPress dependencies
@@ -107,12 +108,6 @@ class Inspector extends Component {
 								help={ __( 'Alternative text describes your image to people who can’t see it. Add a short description with its key details.' ) }
 							/>
 						) }
-						<ToggleControl
-							label={ __( 'Stack on mobile' ) }
-							checked={ !! isStackedOnMobile }
-							onChange={ () => setAttributes( {  isStackedOnMobile: ! isStackedOnMobile } ) }
-							help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
-						/>
 						<ToggleControl
 							label={ __( 'Card Shadow' ) }
 							checked={ !! hasCardShadow }
