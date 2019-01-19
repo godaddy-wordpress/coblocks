@@ -99,6 +99,14 @@ class Inspector extends Component {
 							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
 						/>
+						{ mediaUrl && (
+							<TextareaControl
+								label={ __( 'Alt Text (Alternative Text)' ) }
+								value={ mediaAlt }
+								onChange={ ( nextMediaAlt ) => setAttributes( { mediaAlt: nextMediaAlt } ) }
+								help={ __( 'Alternative text describes your image to people who can’t see it. Add a short description with its key details.' ) }
+							/>
+						) }
 						<ToggleControl
 							label={ __( 'Stack on mobile' ) }
 							checked={ !! isStackedOnMobile }
@@ -109,20 +117,14 @@ class Inspector extends Component {
 							label={ __( 'Card Shadow' ) }
 							checked={ !! hasCardShadow }
 							onChange={ () => setAttributes( {  hasCardShadow: ! hasCardShadow } ) }
+							help={ !! hasCardShadow ? __( 'Showing card shadow.' ) : __( 'Toggle to add a shadow to the card.' ) }
 						/>
 						<ToggleControl
 							label={ __( 'Image Shadow' ) }
 							checked={ !! hasImgShadow }
 							onChange={ () => setAttributes( {  hasImgShadow: ! hasImgShadow } ) }
+							help={ !! hasCardShadow ? __( 'Showing image shadow.' ) : __( 'Toggle to add a shadow to the image.' ) }
 						/>
-						{ mediaUrl && (
-							<TextareaControl
-								label={ __( 'Alt Text (Alternative Text)' ) }
-								value={ mediaAlt }
-								onChange={ ( nextMediaAlt ) => setAttributes( { mediaAlt: nextMediaAlt } ) }
-								help={ __( 'Alternative text describes your image to people who can’t see it. Add a short description with its key details.' ) }
-							/>
-						) }
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }
