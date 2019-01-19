@@ -112,12 +112,13 @@ class Edit extends Component {
 	}
 
 	renderMediaArea() {
-		const { attributes } = this.props;
+		const { attributes, className } = this.props;
 		const { mediaAlt, mediaId, mediaType, mediaUrl, mediaWidth, hasImgShadow } = attributes;
 
 		return (
 			<MediaContainer
-				className="wp-block-coblocks-image-card__media-container"
+				className={ className }
+				figureClass="wp-block-coblocks-image-card__media-container"
 				onSelectMedia={ this.onSelectMedia }
 				onWidthChange={ this.onWidthChange }
 				commitWidthChange={ this.commitWidthChange }
