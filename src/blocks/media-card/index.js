@@ -62,6 +62,10 @@ const blockAttributes = {
 		type: 'number',
 		default: 50,
 	},
+	align: {
+		type: 'string',
+		default: 'wide',
+	},
 	contentAlign: {
 		type: 'string',
 	},
