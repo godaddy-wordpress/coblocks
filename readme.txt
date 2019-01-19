@@ -2,7 +2,7 @@
 Author URI: https://coblocks.com
 Plugin URI: https://coblocks.com
 Contributors: coblocks, richtabor, phpbits
-Tags: blocks, gutenberg, editor, page builder, gutenberg blocks, templates, block,
+Tags: page builder, gutenberg blocks, wordpress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: @@pkg.tested_up_to
 Requires PHP: 5.2.4
