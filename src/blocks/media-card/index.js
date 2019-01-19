@@ -60,7 +60,7 @@ const blockAttributes = {
 	},
 	mediaWidth: {
 		type: 'number',
-		default: 50,
+		default: 55,
 	},
 	align: {
 		type: 'string',
@@ -149,7 +149,7 @@ const settings = {
 		const mediaPosition = isStyleRight ? 'right' : 'left';
 
 		let gridTemplateColumns;
-		if ( mediaWidth !== 50 ) {
+		if ( mediaWidth !== 55 ) {
 			gridTemplateColumns = mediaPosition === 'right' ? `auto ${ mediaWidth }%` : `${ mediaWidth }% auto`;
 		}
 
