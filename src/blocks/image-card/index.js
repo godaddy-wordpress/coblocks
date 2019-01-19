@@ -34,7 +34,7 @@ const icon = icons.imageCard;
 
 const keywords = [
 	__( 'image' ),
-	__( 'feature' ),
+	__( 'video' ),
 	__( 'coblocks' ),
 ];
 
