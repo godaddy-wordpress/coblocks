@@ -22,7 +22,7 @@ const { Fragment }	= wp.element;
 const { InspectorAdvancedControls }	= wp.components;
 const { compose, createHigherOrderComponent } = wp.compose;
 
-const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features' ];
+const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features'];
 
 /**
  * Filters registered block settings, extending attributes with settings
@@ -62,7 +62,7 @@ const withControls = createHigherOrderComponent( ( BlockEdit ) => {
 			setAttributes,
 		} = props;
 
-		const coBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features' ];
+		const coBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/media-card' ];
 
 		if( typeof attributes.coblocks === 'undefined' ){
 			attributes.coblocks = [];
