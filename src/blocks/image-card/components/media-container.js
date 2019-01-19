@@ -103,7 +103,7 @@ class MediaContainer extends Component {
 
 		const isStyleRight = includes( className, 'is-style-right' );
 		const mediaPosition = isStyleRight ? 'right' : 'left';
-
+		
 		if ( mediaType && mediaUrl ) {
 			const onResize = ( event, direction, elt ) => {
 				onWidthChange( parseInt( elt.style.width ) );
@@ -128,9 +128,9 @@ class MediaContainer extends Component {
 			return (
 				<ResizableBox
 					className="editor-media-container__resizer"
-					size={ { width: mediaWidth + '%' } }
-					minWidth="10%"
-					maxWidth="100%"
+					size={ { width: mediaWidth  } }
+					// minWidth="10%"
+					// maxWidth="100"
 					enable={ enablePositions }
 					onResize={ onResize }
 					onResizeStop={ onResizeStop }

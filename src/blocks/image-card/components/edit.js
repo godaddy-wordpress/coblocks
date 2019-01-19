@@ -107,7 +107,7 @@ class Edit extends Component {
 			mediaWidth: width,
 		} );
 		this.setState( {
-			mediaWidth: null,
+			mediaWidth: width,
 		} );
 	}
 
@@ -117,7 +117,7 @@ class Edit extends Component {
 
 		return (
 			<MediaContainer
-				className="wp-block-coblocks-image-card__media-container"
+				// className="wp-block-coblocks-image-card__media-container"
 				onSelectMedia={ this.onSelectMedia }
 				onWidthChange={ this.onWidthChange }
 				commitWidthChange={ this.commitWidthChange }
