@@ -54,7 +54,6 @@ class Inspector extends Component {
 			hasCardShadow,
 			mediaUrl,
 			mediaAlt,
-			isStackedOnMobile,
 			paddingBottom,
 			paddingLeft,
 			paddingRight,
@@ -119,12 +118,6 @@ class Inspector extends Component {
 							checked={ !! hasImgShadow }
 							onChange={ () => setAttributes( {  hasImgShadow: ! hasImgShadow } ) }
 							help={ !! hasCardShadow ? __( 'Showing image shadow.' ) : __( 'Toggle to add a shadow to the image.' ) }
-						/>
-						<ToggleControl
-							label={ __( 'Stack on mobile' ) }
-							checked={ !! isStackedOnMobile }
-							onChange={ () => setAttributes( {  isStackedOnMobile: ! isStackedOnMobile } ) }
-							help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
 						/>
 					</PanelBody>
 					<PanelColorSettings

@@ -23,6 +23,7 @@ import './styles/style.scss';
 import './extensions/colors/inspector';
 import './extensions/typography';
 import './extensions/attributes';
+import './extensions/advanced-controls';
 
 // Formats
 import './formats/';
