@@ -22,6 +22,19 @@
 		margin: 0;
 		position: relative;
 		z-index: -1;
+
+		.has-no-image & {
+			background: rgba(139, 139, 150, 0.1); // Matches the .components-placeholder in core.
+			height: 70vw;
+			margin-bottom: 0;
+			margin-top: 0;
+			max-height: 600px;
+		}
+
+		.has-no-image.alignfull &,
+		.has-no-image.alignwide & {
+			max-height: 700px;
+		}
 	}
 
 	&__content {
