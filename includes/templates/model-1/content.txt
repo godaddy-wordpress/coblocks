@@ -1,0 +1,259 @@
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:paragraph {"align":"center","customTextColor":"#000000","customFontSize":39,"fontFamily":"PT Serif"} -->
+<p style="color:#000000;font-size:39px;text-align:center;font-family:PT Serif" class="has-text-color has-custom-fontsize has-custom-fontfamily">Introduce yourself. Nulla eu sapien eu nibh dapibus ornare. Vestibulum posuere rhoncus elementum.&nbsp;</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:image {"id":659,"align":"wide"} -->
+<figure class="wp-block-image alignwide"><img src="http://shiny-impala.w5.wpsandbox.pro/wp-content/uploads/2018/11/averie-woodard-319832-unsplash.jpg" alt="" class="wp-image-659"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:columns {"align":"wide"} -->
+<div class="wp-block-columns alignwide has-2-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"customFontSize":64,"fontFamily":"PT Serif","noTopSpacing":true} -->
+<h2 style="font-family:PT Serif;font-size:64px;margin-top:0px;padding-top:0px" class="has-custom-fontsize has-custom-fontfamily">About Me</h2>
+<!-- /wp:heading --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph -->
+<p>Here is a description of your company.&nbsp;Pellentesque habitant morbi tristique senectus et netus malesuada fames. Ullamcorper turpis, nec convallis metus nunc vel turpis.&nbsp;Augue justo ullamcorper turpis, nec convallis metus nunc vel turpis.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><a href="https://twitter.com/">Twitter</a>&nbsp; &nbsp; &nbsp; <a href="https://facebook.com/">Facebook</a>&nbsp; &nbsp; &nbsp; <a href="https://instagram.com/">Instagram</a></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:coblocks/container {"customBackgroundColor":"#f2f5f6","align":"full"} -->
+<div class="wp-block-coblocks-container alignfull has-background" style="background-color:#f2f5f6;padding:6%"><div class="container__inner"><!-- wp:columns {"align":"wide"} -->
+<div class="wp-block-columns alignwide has-2-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":1,"customFontSize":64,"fontFamily":"PT Serif","noTopSpacing":true} -->
+<h1 style="font-family:PT Serif;font-size:64px;margin-top:0px;padding-top:0px" class="has-custom-fontsize has-custom-fontfamily">Resume</h1>
+<!-- /wp:heading --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph -->
+<p>Add a description of your experience and accomplishments.&nbsp;Vestibulum posuere rhoncus elementum. Donec mattis luctus nisl non iaculis. Maecenas rhoncus augue nisi, id suscipit arcu luctus varius. Suspendisse est elit, malesuada ac ante ac, consequat tincidunt est.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"fontFamily":"PT Serif"} -->
+<h3 style="font-family:PT Serif" class="has-custom-fontfamily">Experience</h3>
+<!-- /wp:heading -->
+
+<!-- wp:columns -->
+<div class="wp-block-columns has-2-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph -->
+<p><strong>Top Model</strong><br>Reference Name<br>Jan 2010 to present</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Commercial Model</strong><br>Reference Name<br>Jan 2015 to present</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph -->
+<p><strong>Commercial Model</strong><br>Reference Name<br>Jan 2015 to present</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Top Model</strong><br>Reference Name<br>Jan 2010 to present</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:heading {"level":3,"fontFamily":"PT Serif"} -->
+<h3 style="font-family:PT Serif" class="has-custom-fontfamily">Education</h3>
+<!-- /wp:heading -->
+
+<!-- wp:columns -->
+<div class="wp-block-columns has-2-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph -->
+<p><strong>M.S. Psychology</strong><br>School Name<br>Fall 2016 to present<br></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph -->
+<p><strong>B.A Political Science</strong><br>School Name<br>Fall 2016 to present</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:heading {"level":3,"fontFamily":"PT Serif"} -->
+<h3 style="font-family:PT Serif" class="has-custom-fontfamily">Skills &amp; Languages</h3>
+<!-- /wp:heading -->
+
+<!-- wp:columns -->
+<div class="wp-block-columns has-2-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph -->
+<p>Organized</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Patient</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Communicative</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Collaborative</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph -->
+<p>English</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Spanish</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Mandarin</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:coblocks/container -->
+
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:columns {"align":"wide"} -->
+<div class="wp-block-columns alignwide has-2-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"customFontSize":64,"fontFamily":"PT Serif","noTopSpacing":true} -->
+<h2 style="font-family:PT Serif;font-size:64px;margin-top:0px;padding-top:0px" class="has-custom-fontsize has-custom-fontfamily">Services</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph -->
+<p>Add a description of your services.&nbsp;Aliquam at lorem tortor. Nulla eu sapien eu nibh dapibus ornare. Vestibulum posuere rhoncus elementum. Donec mattis luctus nisl non iaculis. Maecenas rhoncus augue nisi, id suscipit arcu luctus varius.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The rates below. Please contact me regarding rates for additional children.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li><strong>Full-time - $20/hr</strong></li><li><strong>Part-time - $25/hr</strong></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:button {"customBackgroundColor":"#ff5a6c","className":"is-style-squared"} -->
+<div class="wp-block-button is-style-squared"><a class="wp-block-button__link has-background" style="background-color:#ff5a6c">Book a Service Now</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:coblocks/container {"customBackgroundColor":"#f2f5f6","align":"full"} -->
+<div class="wp-block-coblocks-container alignfull has-background" style="background-color:#f2f5f6;padding:6%"><div class="container__inner"><!-- wp:columns {"align":"wide"} -->
+<div class="wp-block-columns alignwide has-2-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":1,"customFontSize":64,"fontFamily":"PT Serif","noTopSpacing":true} -->
+<h1 style="font-family:PT Serif;font-size:64px;margin-top:0px;padding-top:0px" class="has-custom-fontsize has-custom-fontfamily">Testimonials</h1>
+<!-- /wp:heading --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph {"customFontSize":21,"fontFamily":"PT Serif","noBottomSpacing":true} -->
+<p style="font-size:21px;font-family:PT Serif;margin-bottom:0px;padding-bottom:0px" class="has-custom-fontsize has-custom-fontfamily"><em>"Testimonial quote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis tincidunt arcu mollis eget turpis."</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"customFontSize":12,"noTopSpacing":true} -->
+<p style="font-size:12px;margin-top:0px;padding-top:0px" class="has-custom-fontsize">— Add Name Here</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:paragraph {"customFontSize":21,"fontFamily":"PT Serif","noBottomSpacing":true} -->
+<p style="font-size:21px;font-family:PT Serif;margin-bottom:0px;padding-bottom:0px" class="has-custom-fontsize has-custom-fontfamily"><em>"Testimonial quote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis tincidunt arcu mollis eget turpis."</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"customFontSize":12,"noTopSpacing":true} -->
+<p style="font-size:12px;margin-top:0px;padding-top:0px" class="has-custom-fontsize">— Add Name Here</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:paragraph {"customFontSize":21,"fontFamily":"PT Serif","noBottomSpacing":true} -->
+<p style="font-size:21px;font-family:PT Serif;margin-bottom:0px;padding-bottom:0px" class="has-custom-fontsize has-custom-fontfamily"><em>"Testimonial quote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis tincidunt arcu mollis eget turpis."</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"customFontSize":12,"noTopSpacing":true} -->
+<p style="font-size:12px;margin-top:0px;padding-top:0px" class="has-custom-fontsize">— Add Name Here</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:coblocks/container -->
+
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:heading {"level":1,"align":"center","customFontSize":64,"fontFamily":"PT Serif","noTopSpacing":true} -->
+<h1 style="text-align:center;font-family:PT Serif;font-size:64px;margin-top:0px;padding-top:0px" class="has-custom-fontsize has-custom-fontfamily">Gallery</h1>
+<!-- /wp:heading -->
+
+<!-- wp:gallery {"ids":[710,711,709,712],"align":"wide","className":"alignwide"} -->
+<ul class="wp-block-gallery alignwide columns-3 is-cropped"><li class="blocks-gallery-item"><figure><img src="http://shiny-impala.w5.wpsandbox.pro/wp-content/uploads/2018/11/anton-darius-thesollers-488208-unsplash.jpg" alt="" data-id="710" data-link="https://gutenberg.dev/2018/10/09/test-2/anton-darius-thesollers-488208-unsplash/" class="wp-image-710"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://shiny-impala.w5.wpsandbox.pro/wp-content/uploads/2018/11/averie-woodard-319832-unsplash.jpg" alt="" data-id="711" data-link="https://gutenberg.dev/2018/10/09/test-2/averie-woodard-319832-unsplash-2/" class="wp-image-711"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://shiny-impala.w5.wpsandbox.pro/wp-content/uploads/2018/11/fezbot2000-365718-unsplash.jpg" alt="" data-id="709" data-link="https://gutenberg.dev/2018/10/09/test-2/fezbot2000-365718-unsplash/" class="wp-image-709"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://shiny-impala.w5.wpsandbox.pro/wp-content/uploads/2018/11/ian-dooley-347962-unsplash.jpg" alt="" data-id="712" data-link="https://gutenberg.dev/2018/10/09/test-2/ian-dooley-347962-unsplash/" class="wp-image-712"/></figure></li></ul>
+<!-- /wp:gallery -->
+
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:coblocks/container {"customBackgroundColor":"#f2f5f6","align":"full"} -->
+<div class="wp-block-coblocks-container alignfull has-background" style="background-color:#f2f5f6;padding:6%"><div class="container__inner"><!-- wp:paragraph {"align":"center","customFontSize":28,"fontFamily":"PT Serif"} -->
+<p style="font-size:28px;text-align:center;font-family:PT Serif" class="has-custom-fontsize has-custom-fontfamily"><a href="https://instagram.com/"><strong>Instagram</strong></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://facebook.com/"><strong>Facebook</strong></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://twitter.com/"><strong>Twitter</strong></a></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:coblocks/container -->
