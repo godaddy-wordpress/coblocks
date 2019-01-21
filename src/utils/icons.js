@@ -19,9 +19,10 @@ icons.formatUppercase =
 </svg>
 
 icons.accordion =
-<svg className="coblocks__svg" aria-hidden role="img" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-	<g><path d="m.17126465 3.4956665h17.99999995v-2.991333h-17.99999995z" transform="translate(2.828735 10)"/><path d="m5.00511339 2.8941786 3.24188911 3.24188911 1.44197591-1.44197591-4.68386502-4.6940918-4.6940918 4.6940918 1.45220269 1.44197591zm-.01022678 14.2116428-3.24188911-3.2418891-1.44197591 1.4419759 4.68386502 4.6940918 4.6940918-4.6940918-1.45220269-1.4419759z" transform="translate(7 2)"/></g>
-</svg>;
+<svg className="coblocks__svg" aria-hidden role="img" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m16.0833333 12h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v2c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-2c0-1.1-.8625-2-1.9166667-2zm0 4h-14.16666663v-2h14.16666663zm0-16h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v6c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-6c0-1.1-.8625-2-1.9166667-2zm0 8h-14.16666663v-4h14.16666663z" transform="translate(3 3)"/></svg>
+
+icons.accordionItem =
+<svg className="coblocks__svg" aria-hidden role="img" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fill-rule="nonzero"/><path d="m1 1h16v5h-16z"/></g></svg>;
 
 icons.actionGrid =
 <svg className="coblocks__svg" aria-hidden role="img" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +67,7 @@ icons.imageBox =
 	<path d="m9 0h7c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2h-7-7c-1.1 0-2-.9-2-2v-14c0-1.1.9-2 2-2zm-6 5v8h12v-8z" transform="matrix(-1 0 0 -1 21 21)"/>
 </svg>;
 
-icons.imageCard =
+icons.mediaCard =
 <svg className="dashicon coblocks__svg" aria-hidden role="img" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 	<g transform="translate(3 3)"><path d="m10 0c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2h-8c-1.1 0-2-.9-2-2v-14c0-1.1.9-2 2-2zm2 2.5h-3c-1.80029297 0-2.81677246 1.20318604-3 2.4788208v8.1696777c0 1.2033081 1.70123291 2.3515015 2.49108887 2.3515015h3.50891113z"/><path d="m16 3.5c1.1 0 2 .9 2 2v7c0 1.1-.9 2-2 2h-7c-1.1 0-2-.9-2-2v-7c0-1.1.9-2 2-2zm0 9v-7h-7v7z" transform="matrix(0 1 -1 0 21.5 -3.5)"/></g>
 </svg>;

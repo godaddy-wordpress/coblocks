@@ -24,11 +24,11 @@ const name = 'accordion-item';
 
 const title = __( 'Accordion Item' );
 
-const icon = icons.accordion;
+const icon = icons.accordionItem;
 
 const keywords = [
 	__( 'tabs' ),
-	__( 'list' ),
+	__( 'faq' ),
 	__( 'coblocks' ),
 ];
 
@@ -62,7 +62,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Add an accordion item.' ),
+	description: __( 'Add collapsable accordion items to accordions.' ),
 
 	keywords: keywords,
 

@@ -330,6 +330,10 @@ class DimensionsControl extends Component {
 				unitValue: 'px',
 			},
 			{
+				name: __( 'Em' ),
+				unitValue: 'em',
+			},
+			{
 				name: __( 'Percentage' ),
 				unitValue: '%',
 			},

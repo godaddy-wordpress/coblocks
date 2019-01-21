@@ -32,7 +32,16 @@ function BackgroundImageToolbarControls( props, options ) {
 			<MediaUploadCheck>
 				<Toolbar>
 					<MediaUpload
-						onSelect={ ( media ) => setAttributes( { backgroundImg: media.url } ) }
+						onSelect={ ( media ) => {
+							setAttributes( { backgroundImg: media.url } );
+
+							//set padding when image selected
+							if( [ 'coblocks/media-card' ].includes( props.name ) ){
+								if( !attributes.paddingSize || attributes.paddingSize == 'no' ){
+									setAttributes( { paddingSize: 'medium' } );
+								}
+							}
+						} }
 						allowedTypes={ ALLOWED_MEDIA_TYPES }
 						value={ backgroundImg }
 						render={ ( { open } ) => (
@@ -49,7 +58,16 @@ function BackgroundImageToolbarControls( props, options ) {
 							className="components-toolbar__control"
 							label={ ( typeof options !== 'undefined' && typeof options.deleteLabel !== 'undefined' ) ? options.deleteLabel : __( 'Remove background image' ) }
 							icon={ icons.trash }
-							onClick={ () => setAttributes( { backgroundImg: '', backgroundOverlay: 0, } ) }
+							onClick={ () => {
+								setAttributes( { backgroundImg: '', backgroundOverlay: 0, } );
+
+								//set padding when image selected
+								if( [ 'coblocks/media-card' ].includes( props.name ) ){
+									if( attributes.paddingSize ){
+										setAttributes( { paddingSize: 'no' } );
+									}
+								}
+							} }
 						/>
 					}
 				</Toolbar>

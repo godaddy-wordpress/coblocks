@@ -2,13 +2,35 @@
 	// Don't use flexbox if the row is 1 column, 100% wide.
 	.wp-block-coblocks-row__inner {
 		display: flex;
-		@media (max-width: 600px){
-			&.is-stacked-on-mobile{
-				flex-direction: column;
-				> .wp-block-coblocks-column{
-					width: 100% !important;
+	}
+}
+
+.wp-block-coblocks-row[data-columns="1"] {
+
+	.wp-block-coblocks-column__inner{
+		> [class*="wp-block-"]{
+			max-width: calc( 6 * (100vw / 12.5) );
+    		margin-left: auto;
+    		margin-right: auto;
+    		&.alignwide{
+    			max-width: calc( 6 * (100vw / 8.5) );
+    		}
+    		&.alignfull{
+    			max-width: 100%;
+    		}
+
+			&[data-columns="1"] {
+				.wp-block-coblocks-column__inner {
+					> :not([class*="wp-block-"]) {
+						max-width: 100%;
+					}
 				}
 			}
+		}
+		> :not([class*="wp-block-"]){
+			max-width: calc( 6 * (100vw / 12) );
+    		margin-left: auto;
+    		margin-right: auto;
 		}
 	}
 }
@@ -25,13 +47,13 @@
 	min-width: 0;
 
 	// Prevent long unbroken words from overflowing.
-	word-break: break-word; // For back-compat.
 	overflow-wrap: break-word; // New standard.
 	position: relative;
+	word-break: break-word; // For back-compat.
 
 	p {
-		margin-top: 0;
 		margin-bottom: 2em;
+		margin-top: 0;
 		padding: 0;
 
 		&:last-of-type {
@@ -39,81 +61,3 @@
 		}
 	}
 }
-
-.has-small-gutter {
-
-	.wp-block-coblocks-column {
-
-		@include break-small() {
-
-			&:nth-child(odd) {
-				margin-right: $gutter--small;
-			}
-
-			&:nth-child(even) {
-				margin-left: $gutter--small;
-			}
-
-			&:not(:first-child) {
-				margin-left: $gutter--small;
-			}
-
-			&:not(:last-child) {
-				margin-right: $gutter--small;
-			}
-		}
-	}
-}
-
-.has-medium-gutter {
-
-	.wp-block-coblocks-column {
-
-		@include break-small() {
-
-			&:nth-child(odd) {
-				margin-right: $gutter--medium;
-			}
-
-			&:nth-child(even) {
-				margin-left: $gutter--medium;
-			}
-
-			&:not(:first-child) {
-				margin-left: $gutter--medium;
-			}
-
-			&:not(:last-child) {
-				margin-right: $gutter--medium;
-			}
-		}
-	}
-}
-
-.has-large-gutter {
-
-	.wp-block-coblocks-column {
-
-		@include break-small() {
-
-			&:nth-child(odd) {
-				margin-right: $gutter--large;
-			}
-
-			&:nth-child(even) {
-				margin-left: $gutter--large;
-			}
-
-			&:not(:first-child) {
-				margin-left: $gutter--large;
-			}
-
-			&:not(:last-child) {
-				margin-right: $gutter--large;
-			}
-		}
-	}
-}
-
-
-

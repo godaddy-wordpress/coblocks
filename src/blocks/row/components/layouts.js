@@ -11,6 +11,8 @@ import rowIcons from './icons';
 export const layoutOptions = {
 	2 : [
 		{ key: '50-50', name: __( '50/50' ), icon: rowIcons.layout5050, smallIcon: rowIcons.smallLayout5050 },
+		{ key: '66-33', name: __( '66/33' ), icon: rowIcons.layout6633, smallIcon: rowIcons.smallLayout6633 },
+		{ key: '33-66', name: __( '33/66' ), icon: rowIcons.layout3366, smallIcon: rowIcons.smallLayout3366 },
 		{ key: '75-25', name: __( '75/25' ), icon: rowIcons.layout7525, smallIcon: rowIcons.smallLayout7525 },
 		{ key: '25-75', name: __( '25/75' ), icon: rowIcons.layout2575, smallIcon: rowIcons.smallLayout2575 },
 	],

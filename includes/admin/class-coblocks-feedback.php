@@ -6,10 +6,10 @@
  * Heavily based on code by Rhys Wynne
  * https://winwar.co.uk/2014/10/ask-wordpress-plugin-reviews-week/
  *
- * @package   @@pkg.title
- * @author    @@pkg.author
- * @link      @@pkg.author_uri
- * @license   @@pkg.license
+ * @package   CoBlocks
+ * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
+ * @link      https://coblocks.com
+ * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
 // Exit if accessed directly.

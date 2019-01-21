@@ -35,8 +35,8 @@ const keywords = [
 
 const blockAttributes = {
 	content: {
-		type: 'array',
-		source: 'children',
+		type: 'string',
+		source: 'html',
 		selector: 'mark',
 	},
 	align: {
@@ -112,9 +112,9 @@ const settings = {
 						return createBlock( 'core/paragraph' );
 					}
 					// transforming a block with content
-					return ( content || [] ).map( item => createBlock( 'core/paragraph', {
+					return createBlock( 'core/paragraph', {
 						content: content,
-					} ) );
+					} );
 				},
 			},
 		],

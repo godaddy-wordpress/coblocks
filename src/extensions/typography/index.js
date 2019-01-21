@@ -22,7 +22,7 @@ const { Fragment }	= wp.element;
 const { InspectorAdvancedControls }	= wp.components;
 const { compose, createHigherOrderComponent } = wp.compose;
 
-const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'coblocks/row', 'coblocks/column', 'core/list' ];
+const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features'];
 
 /**
  * Filters registered block settings, extending attributes with settings
@@ -31,13 +31,6 @@ const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pu
  * @return {Object} Filtered block settings.
  */
 function addAttributes( settings ) {
-
-	// Add custom selector/id
-	if( typeof settings.attributes !== 'undefined' ){
-		settings.attributes = Object.assign( settings.attributes, {
-			coblocks: { type: 'object' }
-		} );
-	}
 
 	// Use Lodash's assign to gracefully handle if attributes are undefined
 	if( allowedBlocks.includes( settings.name ) ){
@@ -61,24 +54,6 @@ const withControls = createHigherOrderComponent( ( BlockEdit ) => {
 			attributes,
 			setAttributes,
 		} = props;
-
-		const coBlocks = [ 'coblocks/row', 'coblocks/column' ];
-
-		if( typeof attributes.coblocks === 'undefined' ){
-			attributes.coblocks = [];
-		}
-
-		//add unique selector
-		if( coBlocks.includes( props.name ) && typeof attributes.coblocks.id === 'undefined' ){
-			let d = new Date();
-
-			if( typeof attributes.coblocks !== 'undefined' && typeof attributes.coblocks.id !== 'undefined' ){
-				delete attributes.coblocks.id;
-			}
-
-			const coblocks = Object.assign( { id: "" + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds() }, attributes.coblocks );
-			setAttributes( { coblocks: coblocks } );
-		}
 
 		return (
 			<Fragment>
@@ -115,7 +90,7 @@ const enhance = compose(
 
 const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
 	return enhance( ( { selected, select, ...props } ) => {
-		
+
 		let wrapperProps 	= props.wrapperProps;
 		let customData 	 	= {};
 		let attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;

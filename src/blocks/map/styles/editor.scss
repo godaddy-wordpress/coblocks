@@ -1,0 +1,95 @@
+.editor-block-list__block[data-type="coblocks/map"] {
+	.components-placeholder {
+		height: 100%;
+
+		.components-placeholder__fieldset {
+			span {
+				color: #555d66;
+			}
+
+			.components-button {
+				position: relative;
+				top: 1px;
+			}
+		}
+
+		.components-base-control__field {
+			margin-bottom: 12px;
+		}
+
+		.components-placeholder__label {
+			svg {
+				position: relative;
+				top: -1px;
+			}
+		}
+
+		.invalid-google-maps-api-key {
+			clear: both;
+			color: $red !important;
+			display: block;
+			text-align: center;
+			width: 100%;
+		}
+	}
+}
+
+// Map styles.
+$styles: (standard), (silver), (retro), (dark), (night), (aubergine);
+
+// Style the VisualDropdown component buttons.
+.components-coblocks-visual-dropdown__button-wrapper {
+	.components-button {
+		@each $style in $styles {
+			&--#{$style} {
+				background-image: url(images/map/#{$style}.jpg) !important;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover !important;
+
+				// &:active {
+				// 	background-image: url(images/map/#{$style}.jpg) !important;
+				// }
+			}
+		}
+	}
+}
+
+// Inspector control panel UI tweaks
+.components-block-coblocks-map-zoom__custom-input {
+	svg {
+		position: relative;
+		top: -1px;
+	}
+
+	.components-range-control__slider + .dashicon {
+		height: 25px;
+		top: -3px;
+		width: 25px;
+	}
+}
+
+.components-block-coblocks-map-icon-size__custom-input {
+	.components-range-control__slider + .dashicon {
+		height: 26px;
+		width: 26px;
+	}
+}
+
+.components-block-coblocks-height__custom-input {
+	svg {
+		height: 18px;
+		position: relative;
+		right: -2px;
+		top: -1px;
+		width: 18px;
+	}
+}
+
+.edit-post-settings-sidebar__panel-block .components-panel__body {
+	.components-base-control {
+		&.components-block-coblocks-map-api-key__custom-input {
+			margin-bottom: 5px;
+		}
+	}
+}

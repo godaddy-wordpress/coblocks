@@ -18,10 +18,10 @@
  * You should have received a copy of the GNU General Public License
  * along with CoBlocks. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   @@pkg.title
- * @author    @@pkg.author
- * @link      @@pkg.author_uri
- * @license   @@pkg.license
+ * @package   CoBlocks
+ * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
+ * @link      https://coblocks.com
+ * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
 // Exit if accessed directly.
@@ -136,6 +136,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-generated-styles.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-font-loader.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-meta.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-google-map.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
