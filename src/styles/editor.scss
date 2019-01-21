@@ -1,8 +1,14 @@
 @import "../common";
 
-// Style Core Gutenberg Style Previews
+// Style icons
 @import "editor/icons";
-@import "editor/style-previews";
 
 // Style various inspector region and block toolbar controls
 @import "editor/is-transient";
+@import "editor/numerals-control";
+
+// Mobile classes
+@import "editor/stacked";
+
+// Adjust dropZone component labels for our blocks.
+@import "editor/dropzone";

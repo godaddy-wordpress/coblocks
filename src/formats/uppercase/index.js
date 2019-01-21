@@ -23,7 +23,7 @@ export const uppercase = {
 	className: 'uppercase',
 	edit( { isActive, value, onChange } ) {
 		const onToggle = () => onChange( toggleFormat( value, { type: name } ) );
-
+		
 		return (
 			<Fragment>
 				<RichTextShortcut
@@ -41,5 +41,6 @@ export const uppercase = {
 				/>
 			</Fragment>
 		);
+		
 	},
 };

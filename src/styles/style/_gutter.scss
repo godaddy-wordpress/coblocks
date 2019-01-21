@@ -1,0 +1,99 @@
+.has-small-gutter {
+
+	> [class*="wp-block-coblocks-"] {
+
+		@include break-small() {
+
+			&:nth-child(odd) {
+				margin-right: $gutter--small;
+			}
+
+			&:nth-child(even) {
+				margin-left: $gutter--small;
+			}
+
+			&:not(:first-child) {
+				margin-left: $gutter--small;
+			}
+
+			&:not(:last-child) {
+				margin-right: $gutter--small;
+			}
+		}
+	}
+}
+
+.has-medium-gutter {
+
+	> [class*="wp-block-coblocks-"] {
+
+		@include break-small() {
+
+			&:nth-child(odd) {
+				margin-right: $gutter--medium;
+			}
+
+			&:nth-child(even) {
+				margin-left: $gutter--medium;
+			}
+
+			&:not(:first-child) {
+				margin-left: $gutter--medium;
+			}
+
+			&:not(:last-child) {
+				margin-right: $gutter--medium;
+			}
+		}
+	}
+}
+
+.has-large-gutter {
+
+	> [class*="wp-block-coblocks-"] {
+
+		@include break-small() {
+
+			&:nth-child(odd) {
+				margin-right: $gutter--large;
+			}
+
+			&:nth-child(even) {
+				margin-left: $gutter--large;
+			}
+
+			&:not(:first-child) {
+				margin-left: $gutter--large;
+			}
+
+			&:not(:last-child) {
+				margin-right: $gutter--large;
+			}
+		}
+	}
+}
+
+.has-huge-gutter {
+
+	> [class*="wp-block-coblocks-"] {
+
+		@include break-small() {
+
+			&:nth-child(odd) {
+				margin-right: $gutter--huge;
+			}
+
+			&:nth-child(even) {
+				margin-left: $gutter--huge;
+			}
+
+			&:not(:first-child) {
+				margin-left: $gutter--huge;
+			}
+
+			&:not(:last-child) {
+				margin-right: $gutter--huge;
+			}
+		}
+	}
+}

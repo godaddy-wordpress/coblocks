@@ -25,7 +25,8 @@ class Controls extends Component {
 			setAttributes,
 		} = this.props;
 
-		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/button', 'coblocks/row', 'coblocks/column', 'core/list' ];
+		let hideToolbar = false;
+		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight', 'coblocks/features' ];
 
 		this.props.attributes.textPanelHideColor = true;
 		this.props.attributes.textPanelShowSpacingControls = true;
@@ -48,14 +49,27 @@ class Controls extends Component {
 			this.props.attributes.textPanelShowSpacingControls = false;
 		}
 
+		//do not show if there is no layout for row blocks yet
+		if ( [ 'coblocks/row' ].includes( this.props.name ) ){
+			if( !this.props.attributes.layout ){
+				hideToolbar = true;
+			}
+		}
+
+		if( !hideToolbar ){
+			return (
+				<Fragment>
+					<BlockControls>
+						<Toolbar>
+							<TypographyControls { ...this.props } />
+						</Toolbar>
+					</BlockControls>
+				</Fragment>
+			);
+		}
 
 		return (
 			<Fragment>
-				<BlockControls>
-					<Toolbar>
-						<TypographyControls { ...this.props } />
-					</Toolbar>
-				</BlockControls>
 			</Fragment>
 		);
 	}

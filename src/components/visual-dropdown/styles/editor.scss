@@ -1,9 +1,8 @@
 // Style the clickable areas for the column/layout placeholder.
-.components-coblocks-layout-selector {
+.components-coblocks-visual-dropdown {
 	text-align: center;
 
 	&.components-placeholder {
-
 		.components-placeholder__label svg {
 			position: relative;
 			top: -1px;
@@ -78,8 +77,8 @@
 
 	&__back {
 		background: #fff;
-		margin-right: 4px;
 		border: 1px solid rgba(25, 30, 35, 0.2);
+		margin-right: 4px;
 
 		&:hover {
 			box-shadow: 0 0 0 4px rgba(139, 139, 150, 0.1) !important;
@@ -89,24 +88,24 @@
 
 	// Inspector control for the layout selector.
 	.edit-post-sidebar & {
-		text-align: left;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
+		text-align: left;
 
 		.components-button-group {
 			justify-content: space-between;
 
-			.components-coblocks-layout-selector__button-wrapper {
-				width: calc(50% - 4px);
-				margin: 4px 0;
+			.components-coblocks-visual-dropdown__button-wrapper {
 				flex-shrink: 0;
+				margin: 4px 0;
+				width: calc(50% - 4px);
 
 				&:focus,
 				&:active,
 				&.is-selected {
-					color: #191e23;
 					box-shadow: 0 0 0 2px #00a0d2;
+					color: #191e23;
 					outline: 2px solid transparent;
 					outline-offset: -2px;
 
@@ -120,18 +119,18 @@
 				}
 			}
 
-			.components-coblocks-layout-selector__button {
+			.components-coblocks-visual-dropdown__button {
 				width: 100%;
 
 				&:active:enabled {
-					background: #fff !important;
+					background: #fff;
 					border-color: none;
 					box-shadow: none !important;
 				}
 
 				&:focus {
-					color: #191e23;
 					box-shadow: none;
+					color: #191e23;
 					outline: 2px solid transparent;
 					outline-offset: -2px;
 				}
@@ -150,17 +149,17 @@
 			justify-content: space-between;
 		}
 
-		.components-coblocks-layout-selector__button-wrapper {
-			width: calc(50% - 8px);
-			margin: 0 4px 8px !important;
+		.components-coblocks-visual-dropdown__button-wrapper {
 			flex-shrink: 0;
+			margin: 0 4px 8px !important;
+			width: calc(50% - 8px);
 
 			&.is-selected {
 				box-shadow: 0 0 0 2px $dark-gray-500;
 			}
 		}
 
-		.components-coblocks-layout-selector__button {
+		.components-coblocks-visual-dropdown__button {
 			margin-bottom: 0;
 			width: 100%;
 
@@ -171,12 +170,37 @@
 	}
 }
 
-// Remove excess padding from toolbar icon on the DropdownLayout component.
-.components-coblocks-dropdown-layout {
+// Remove excess padding from toolbar icon on the VisualDropdown component.
+.components-coblocks-visual-dropdown {
 	padding: 0;
 }
 
 // Make the column width numer input wider to accommodate two decimal places.
 .components-panel__body--column-settings .components-range-control__number {
 	width: 63px;
+}
+
+.components-coblocks-visual-dropdown__popover {
+	.components-coblocks-visual-dropdown__button-wrapper:hover {
+		background: #f8f9f9;
+	}
+}
+
+.components-coblocks-visual-dropdown__popover:not(.is-mobile) {
+	.components-popover__content {
+		max-width: 340px;
+		min-width: 300px;
+
+		.editor-block-styles__item-label {
+			color: #555d66;
+		}
+
+		.components-coblocks-visual-dropdown__button-wrapper:hover {
+			background: #f8f9f9;
+
+			.editor-block-styles__item-label {
+				color: #191e23;
+			}
+		}
+	}
 }

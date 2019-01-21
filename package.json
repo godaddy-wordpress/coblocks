@@ -8,7 +8,7 @@
 	"author_uri": "hello@coblocks.com",
 	"requires": "5.0",
 	"tested_up_to": "5.0.3",
-	"license": "GPL-3.0",
+	"license": "GPL-2.0",
 	"copyright": "Copyright (c) 2018, CoBlocks",
 	"downloadid": "",
 	"description": "CoBlocks is a suite of professional content blocks for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering content marketers, writers and publishers to write beautifully rich content in WordPress.",
@@ -29,16 +29,15 @@
 		"classnames": "2.2.5",
 		"compose": "^0.1.2",
 		"delete-empty": "^2.0.0",
+		"eslint": "^4.19.1",
+		"eslint-config-wordpress": "^2.0.0",
 		"lodash": "4.17.4",
 		"memize": "^1.0.5",
+		"postcss": "^6.0.19",
 		"react": "^16.6.3",
 		"react-google-maps": "^9.4.5",
 		"redux": "^4.0.1",
-		"postcss": "^6.0.19",
-		"stylelint": "^9.1.1",
-		"eslint": "^4.19.1",
-		"eslint-config-wordpress": "^2.0.0",
-		"postcss": "^6.0.19"
+		"stylelint": "^9.1.1"
 	},
 	"devDependencies": {
 		"@wordpress/babel-plugin-makepot": "^2.1.2",
@@ -74,7 +73,6 @@
 		"extends": ["stylelint-config-wordpress/scss", "stylelint-config-prettier"],
 		"plugins": ["stylelint-order"],
 		"rules": {
-			"at-rule-empty-line-before": "always",
 			"at-rule-empty-line-before": null,
 			"no-descending-specificity": null,
 			"order/properties-alphabetical-order": true

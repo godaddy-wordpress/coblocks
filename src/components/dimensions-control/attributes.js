@@ -115,6 +115,18 @@ const DimensionsAttributes = {
 		type: 'boolean',
 		default: false,
 	},
+	hasMarginControl: {
+		type: 'boolean',
+		default: true,
+	},
+	hasAlignmentControls: {
+		type: 'boolean',
+		default: true,
+	},
+	hasStackedControl: {
+		type: 'boolean',
+		default: true,
+	},
 };
 
 export default DimensionsAttributes;

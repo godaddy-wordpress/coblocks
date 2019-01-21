@@ -2,10 +2,10 @@
 /**
  * Load generated styles for our blocks.
  *
- * @package   @@pkg.title
- * @author    @@pkg.author
- * @link      @@pkg.author_uri
- * @license   @@pkg.license
+ * @package   CoBlocks
+ * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
+ * @link      https://coblocks.com
+ * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
 // Exit if accessed directly.
@@ -83,8 +83,8 @@ class CoBlocks_Generated_Styles {
 							foreach ( $block as $key => $style ) {
 								if ( ! empty( $style ) ) {
 									foreach ( $style as $ky => $value ) {
-										if( !empty( $value ) ){
-											if (  strpos( $ky, 'Mobile' ) !== false ) {
+										if ( ! empty( $value ) ) {
+											if ( strpos( $ky, 'Mobile' ) !== false ) {
 												$mobile[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Mobile', '', $ky ) ) ) . ':' . esc_attr( $value ) . ';';
 											} elseif ( strpos( $ky, 'Tablet' ) !== false ) {
 												$tablet[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Tablet', '', $ky ) ) ) . ':' . esc_attr( $value ) . ';';
@@ -100,7 +100,7 @@ class CoBlocks_Generated_Styles {
 						$output .= '}';
 
 						if ( ! empty( $tablet ) ) {
-							$output .= '@media (max-width: ' . apply_filters( 'coblocks_tablet_breakpoint', '768px' ) . ') {';
+							$output .= '@media only screen and (max-width: ' . apply_filters( 'coblocks_tablet_breakpoint', '768px' ) . ') {';
 							$output .= sprintf( '.%1$s > div {', esc_attr( $id ) );
 							foreach ( $tablet as $tablet_setting ) {
 								$output .= $tablet_setting;
@@ -110,7 +110,7 @@ class CoBlocks_Generated_Styles {
 						}
 
 						if ( ! empty( $mobile ) ) {
-							$output .= '@media (max-width: ' . apply_filters( 'coblocks_desktop_breakpoint', '514px' ) . ') {';
+							$output .= '@media only screen and (max-width: ' . apply_filters( 'coblocks_desktop_breakpoint', '514px' ) . ') {';
 							$output .= sprintf( '.%1$s > div {', esc_attr( $id ) );
 							foreach ( $mobile as $mobile_setting ) {
 								$output .= $mobile_setting;

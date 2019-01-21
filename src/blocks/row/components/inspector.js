@@ -105,6 +105,8 @@ class Inspector extends Component {
 			paddingSyncUnitsTablet,
 			paddingSyncUnitsMobile,
 			paddingUnit,
+			hasMarginControl,
+			hasStackedControl,
 		} = attributes;
 
 		const gutterOptions = [
@@ -112,6 +114,7 @@ class Inspector extends Component {
 			{ value: 'small', label: __( 'Small' ) },
 			{ value: 'medium', label: __( 'Medium' ) },
 			{ value: 'large', label: __( 'Large' ) },
+			{ value: 'huge', label: __( 'Huge' ) },
 		];
 
 		let selectedRows = 1;
@@ -126,64 +129,65 @@ class Inspector extends Component {
 					{ ( columns && selectedRows >= 1 ) &&
 						<Fragment>
 							{ selectedRows > 1 &&
-								<PanelBody title={ __( 'Layout' ) } className='block-coblocks__inspector-block-settings-panel-body' initialOpen={ false }>
+								<PanelBody title={ __( 'Layout' ) } initialOpen={ false }>
+									<div className="components-coblocks-visual-dropdown">
+										<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
+										{ map( layoutOptions[ selectedRows ], ( { name, key, icon, cols } ) => (
+											<Tooltip text={ name }>
+												<div className={ ( key == layout ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
+													<Button
+														className={ ( key == layout ) ? 'components-coblocks-visual-dropdown__button components-coblocks-visual-dropdown__button--selected' : 'components-coblocks-visual-dropdown__button' }
+														isSmall
+														onClick={ () => {
+															let selectedWidth = key.toString().split('-');
+															let children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
+															setAttributes( {
+																layout: key,
+															} );
 
-										<div className="components-coblocks-layout-selector">
-											<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
-											{ map( layoutOptions[ selectedRows ], ( { name, key, icon, cols } ) => (
-												<Tooltip text={ name }>
-													<div className={ ( key == layout ) ? 'components-coblocks-layout-selector__button-wrapper is-selected' : 'components-coblocks-layout-selector__button-wrapper' }>
-														<Button
-															className={ ( key == layout ) ? 'components-coblocks-layout-selector__button components-coblocks-layout-selector__button--selected' : 'components-coblocks-layout-selector__button' }
-															isSmall
-															onClick={ () => {
-																let selectedWidth = key.toString().split('-');
-																let children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
-																setAttributes( {
-																	layout: key,
-																} );
-
-																if ( typeof children[0].innerBlocks !== 'undefined' ) {
-																	map( children[0].innerBlocks, ( { clientId }, index ) => (
-																		wp.data.dispatch( 'core/editor' ).updateBlockAttributes( clientId, { width : selectedWidth[ index ] } )
-																	) );
-																}
-															} }
-														>
-															{ icon }
-														</Button>
-													</div>
-												</Tooltip>
-											) ) }
-											</ButtonGroup>
-										</div>
+															if ( typeof children[0].innerBlocks !== 'undefined' ) {
+																map( children[0].innerBlocks, ( { clientId }, index ) => (
+																	wp.data.dispatch( 'core/editor' ).updateBlockAttributes( clientId, { width : selectedWidth[ index ] } )
+																) );
+															}
+														} }
+													>
+														{ icon }
+													</Button>
+												</div>
+											</Tooltip>
+										) ) }
+										</ButtonGroup>
+									</div>
 								</PanelBody>
 							}
 							{ layout &&
 								<Fragment>
-									<PanelBody title={ __( 'Row Settings' ) } className='block-coblocks__inspector-block-settings-panel-body'>
-											<DimensionsControl { ...this.props }
-												type={ 'margin' }
-												label={ __( 'Margin' ) }
-												help={ __( 'Space around the container.' ) }
-												valueTop={ marginTop }
-												valueRight={ marginRight }
-												valueBottom={ marginBottom }
-												valueLeft={ marginLeft }
-												valueTopTablet={ marginTopTablet }
-												valueRightTablet={ marginRightTablet }
-												valueBottomTablet={ marginBottomTablet }
-												valueLeftTablet={ marginLeftTablet }
-												valueTopMobile={ marginTopMobile }
-												valueRightMobile={ marginRightMobile }
-												valueBottomMobile={ marginBottomMobile }
-												valueLeftMobile={ marginLeftMobile }
-												unit={ marginUnit }
-												syncUnits={ marginSyncUnits }
-												syncUnitsTablet={ marginSyncUnitsTablet }
-												syncUnitsMobile={ marginSyncUnitsMobile }
-												dimensionSize={ marginSize }
-											/>
+									<PanelBody title={ __( 'Row Settings' ) }>
+											{ hasMarginControl &&
+												<DimensionsControl { ...this.props }
+													type={ 'margin' }
+													label={ __( 'Margin' ) }
+													help={ __( 'Space around the container.' ) }
+													valueTop={ marginTop }
+													valueRight={ marginRight }
+													valueBottom={ marginBottom }
+													valueLeft={ marginLeft }
+													valueTopTablet={ marginTopTablet }
+													valueRightTablet={ marginRightTablet }
+													valueBottomTablet={ marginBottomTablet }
+													valueLeftTablet={ marginLeftTablet }
+													valueTopMobile={ marginTopMobile }
+													valueRightMobile={ marginRightMobile }
+													valueBottomMobile={ marginBottomMobile }
+													valueLeftMobile={ marginLeftMobile }
+													unit={ marginUnit }
+													syncUnits={ marginSyncUnits }
+													syncUnitsTablet={ marginSyncUnitsTablet }
+													syncUnitsMobile={ marginSyncUnitsMobile }
+													dimensionSize={ marginSize }
+												/>
+											}
 											<DimensionsControl { ...this.props }
 												type={ 'padding' }
 												label={ __( 'Padding' ) }
@@ -215,12 +219,6 @@ class Inspector extends Component {
 													onChange={ ( value ) => setAttributes( { gutter: value } ) }
 												/>
 											}
-
-											<ToggleControl
-												label={ __( 'Stack on mobile' ) }
-												checked={ !! stacked }
-												onChange={ () => setAttributes( {  stacked: ! stacked } ) }
-											/>
 									</PanelBody>
 									<PanelColorSettings
 										title={ __( 'Color Settings' ) }

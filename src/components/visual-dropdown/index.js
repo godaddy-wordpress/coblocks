@@ -5,14 +5,20 @@ import classnames from 'classnames';
 import flatMap from 'lodash/flatMap';
 
 /**
+ * Internal dependencies
+ */
+import './styles/editor.scss';
+
+/**
  * WordPress dependencies
  */
 const { DOWN } = wp.keycodes;
 const { Button, IconButton, Dropdown, NavigableMenu } = wp.components;
 
-function DropdownLayout( {
+function VisualDropdown( {
 	icon = 'menu',
 	label,
+	test,
 	menuLabel,
 	controls,
 	className,
@@ -29,8 +35,8 @@ function DropdownLayout( {
 
 	return (
 		<Dropdown
-			className={ classnames( 'components-dropdown-menu', 'components-coblocks-dropdown-layout', className ) }
-			contentClassName="components-dropdown-menu__popover"
+			className={ classnames( 'components-dropdown-menu', 'components-coblocks-visual-dropdown', className ) }
+			contentClassName="components-dropdown-menu__popover components-coblocks-visual-dropdown__popover"
 			renderToggle={ ( { isOpen, onToggle } ) => {
 				const openOnArrowDown = ( event ) => {
 					if ( ! isOpen && event.keyCode === DOWN ) {
@@ -57,14 +63,14 @@ function DropdownLayout( {
 			renderContent={ ( { onClose } ) => {
 				return (
 					<NavigableMenu
-						className="components-coblocks-layout-selector"
+						className="components-coblocks-visual-dropdown"
 						role="menu"
 						aria-label={ menuLabel }
 					>
 						<div className="components-button-group">
 							{ flatMap( controlSets, ( controlSet, indexOfSet ) => (
 								controlSet.map( ( control, indexOfControl ) => (
-									<div className={ ( control.key == control.layout ) ? 'components-coblocks-layout-selector__button-wrapper is-selected' : 'components-coblocks-layout-selector__button-wrapper' }>
+									<div className={ ( control.key == control.value ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
 										<Button
 											key={ [ indexOfSet, indexOfControl ].join() }
 											onClick={ ( event ) => {
@@ -73,19 +79,27 @@ function DropdownLayout( {
 												if ( control.onClick ) {
 													control.onClick();
 												}
-												console.log( control.key + 'layout=' + control.layout );
 											} }
 											className={ classnames(
 												'is-default',
-												'components-coblocks-layout-selector__button', {
-													'components-coblocks-layout-selector__button--selected': control.isActive,
+												'components-coblocks-visual-dropdown__button', {
+													'components-coblocks-visual-dropdown__button--selected': control.isActive,
+													[ `components-button--${ control.key }` ] : control.key,
 												},
 											) }
 											role="menuitem"
 											disabled={ control.isDisabled }
 										>
-											{ control.icon }
+											{ control.icon &&
+												control.icon
+											}
+
 										</Button>
+										{ control.label &&
+											<div class="editor-block-styles__item-label">
+												{ control.label }
+											</div>
+										}
 									</div>
 								) )
 							) ) }
@@ -97,4 +111,4 @@ function DropdownLayout( {
 	);
 }
 
-export default DropdownLayout;
+export default VisualDropdown;

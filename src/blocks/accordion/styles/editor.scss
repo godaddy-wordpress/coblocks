@@ -1,7 +1,6 @@
 .wp-block[data-type="coblocks/accordion"] {
-
-	.editor-block-list__layout .editor-block-list__block>.editor-block-list__block-edit:before {
-		outline: none;
+	.editor-block-list__layout .editor-block-list__block > .editor-block-list__block-edit::before {
+		// outline: none;
 	}
 
 	.wp-block[data-type="coblocks/accordion-item"] {
@@ -18,14 +17,12 @@
 
 	&[data-align="wide"],
 	&[data-align="full"] {
-
 		.editor-block-list__block {
 			max-width: none;
 		}
 	}
 
 	&[data-align="full"] {
-
 		.wp-block-coblocks-accordion {
 			padding: 0 12px;
 		}
@@ -36,10 +33,10 @@
 	}
 
 	.block-list-appender__toggle {
-		border-radius: $accordion-border-radius;
-		padding: 13px;
-		outline: none;
 		border: 1px dashed #8d96a0;
+		border-radius: $accordion-border-radius;
+		outline: none;
+		padding: 13px;
 
 		&:hover {
 			border-color: $dark-gray-500;

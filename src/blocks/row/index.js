@@ -76,10 +76,6 @@ const blockAttributes = {
 	customTextColor: {
 		type: 'string',
 	},
-	stacked: {
-		type: 'boolean',
-		default: true,
-	},
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 };
@@ -96,6 +92,8 @@ const settings = {
 
 	supports: {
 		align: [ 'wide', 'full' ],
+		anchor: true,
+		stackedOnMobile: true,
 	},
 
 	transforms: {
@@ -126,11 +124,15 @@ const settings = {
 	edit: Edit,
 
 	getEditWrapperProps( attributes ) {
-		const { id, layout, columns } = attributes;
+		const { id, layout, columns, hasAlignmentControls } = attributes;
 
 		// If no layout is seleted, return the following.
 		if ( ! layout ) {
 			return { 'data-id': id, 'data-columns': columns, 'data-layout': 'none' };
+		}
+
+		if ( hasAlignmentControls == false ) {
+			return { 'data-align': '' };
 		}
 
 		return { 'data-id': id, 'data-columns': columns, 'data-layout': layout };
@@ -148,7 +150,7 @@ const settings = {
 			gutter,
 			id,
 			layout,
-			stacked,
+			isStackedOnMobile,
 			marginBottom,
 			marginLeft,
 			marginRight,
@@ -189,20 +191,12 @@ const settings = {
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 			'has-margin': marginSize && marginSize != 'no',
 			[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
-			'is-stacked-on-mobile': stacked,
+			'is-stacked-on-mobile': isStackedOnMobile,
 		} );
 
 		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-			// paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
-			// paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
-			// paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
-			// paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-			// marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
-			// marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
-			// marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
-			// marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 		};
 
 		return (

@@ -9,7 +9,7 @@ import map from 'lodash/map';
 import { layoutOptions } from './layouts'
 import rowIcons from './icons';
 import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../components/background';
-import DropdownLayout from '../../../components/dropdown-layout/';
+import VisualDropdown from '../../../components/visual-dropdown/';
 
 /**
  * WordPress dependencies
@@ -73,7 +73,7 @@ class Controls extends Component {
 				{ ( columns && selectedRows > 1 ) &&
 					<BlockControls>
 						<Toolbar>
-							<DropdownLayout
+							<VisualDropdown
 								icon={ this.layoutIcon() }
 								label={ __( 'Change layout' ) }
 								controls={ [
@@ -81,7 +81,7 @@ class Controls extends Component {
 										icon: icon,
 										title: name,
 										key: key,
-										layout: layout,
+										value: layout,
 										onClick: () => {
 											let selectedWidth = key.toString().split('-');
 											let children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );

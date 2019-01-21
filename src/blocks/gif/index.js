@@ -28,7 +28,6 @@ const title = __( 'Gif' );
 const icon = icons.gif;
 
 const keywords = [
-	__( 'image' ),
 	__( 'animated' ),
 	__( 'coblocks' ),
 ];

@@ -56,3 +56,11 @@ ul{
 		}
 	}
 }
+
+.has-custom-transform{
+	&.wp-block-coblocks-click-to-tweet{
+		.wp-block-coblocks-click-to-tweet__twitter-btn{
+			text-transform: none;
+		}
+	}
+}
