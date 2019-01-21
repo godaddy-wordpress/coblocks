@@ -97,16 +97,12 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 
 == Changelog ==
 
-= 1.6.1 =
+= 1.7.0 =
 * New: Add Map block with six built-in map styles, zoom, controls and marker size options
-* New: Add Image Card block for featuring images and text together
-* New: Add Features block with up to three pre-configured feature sections
 * New: Add support for em units on Advanced dimensions controls
 * New: Add new two column sidbar layouts (66%/33%) and (33%/66%) to the Row block
 * New: Add "Huge" option for the Row block gutter
 * New: Add :accordion text prefixes for faster block creation, where the number of ":" represents the number of accordion items
-* New: Add :feature text prefixes for adding a singular feature block
-* New: Add :features text prefixes, where the number of ":" represents the number of features to add
 * Tweak: Add descritive help text to the Row block "Stack on mobile" control
 * Tweak: Move the Row block "Stack on mobile" control to the block's Advanced panel
 * Tweak: Replace the Accordion and Accordion Item block icons with more identifying iconography
