@@ -1,0 +1,7 @@
+<!-- wp:paragraph {"align":"center","customFontSize":40,"fontFamily":"Alegreya","lineHeight":1.2} -->
+<p style="font-size:40px;text-align:center;line-height:1.2;font-family:Alegreya" class="has-custom-fontsize has-custom-fontfamily has-custom-lineheight"><em>Let’s talk!</em><br/><em>Your first consultation is free.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:button {"customBackgroundColor":"#1e73be","customTextColor":"#ffffff","align":"center"} -->
+<div class="wp-block-button aligncenter"><a class="wp-block-button__link has-text-color has-background" style="background-color:#1e73be;color:#ffffff">Schedule Free Consultation</a></div>
+<!-- /wp:button -->

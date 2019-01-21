@@ -47,6 +47,7 @@ import * as map from './blocks/map';
 import * as feature from './blocks/features/feature';
 import * as features from './blocks/features';
 import * as mediaCard from './blocks/media-card';
+import * as inserter from './blocks/template-inserter';
 
 export function registerBlocks () {
 	[
@@ -68,6 +69,7 @@ export function registerBlocks () {
 		feature,
 		features,
 		mediaCard,
+		inserter,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {

@@ -1,0 +1,29 @@
+<!-- wp:coblocks/features -->
+<div class="wp-block-coblocks-features has-2-columns" style="text-align:center"><!-- wp:coblocks/feature -->
+<div class="wp-block-coblocks-feature"><!-- wp:heading {"level":3,"placeholder":"Add title...","fontFamily":"Fira Sans","noBottomSpacing":true} -->
+<h3 style="font-family:Fira Sans;" class="has-custom-fontfamily coblocks__heading--no-bottom-spacing">Developer-Centric</h3>
+<!-- /wp:heading -->
+
+<!-- wp:image {"id":4781,"align":"center","width":252,"height":174} -->
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="http://blockarchitect.dev/wp-content/uploads/2018/12/undraw_booking_33fn-1024x709.png" alt="" class="wp-image-4781" width="252" height="174"/></figure></div>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"placeholder":"Add feature content...","fontFamily":"Fira Sans"} -->
+<p style="font-family:Fira Sans" class="has-custom-fontfamily">Using CoBlock's platform means less maintenance for legacy systems and more focus on core customer and product&nbsp;experiences.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:coblocks/feature -->
+
+<!-- wp:coblocks/feature -->
+<div class="wp-block-coblocks-feature"><!-- wp:heading {"level":3,"placeholder":"Add title...","fontFamily":"Fira Sans","noBottomSpacing":true} -->
+<h3 style="font-family:Fira Sans;" class="has-custom-fontfamily coblocks__heading--no-bottom-spacing">User Friendly</h3>
+<!-- /wp:heading -->
+
+<!-- wp:image {"id":4782,"align":"center","width":263,"height":174} -->
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="http://blockarchitect.dev/wp-content/uploads/2018/12/undraw_user_flow_vr6w-1024x680.png" alt="" class="wp-image-4782" width="263" height="174"/></figure></div>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"placeholder":"Add feature content...","fontFamily":"Fira Sans"} -->
+<p style="font-family:Fira Sans" class="has-custom-fontfamily">Integrate the latest technologies with an innovative platform that’s always getting better and launching new features weekly.&nbsp;</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:coblocks/feature --></div>
+<!-- /wp:coblocks/features -->

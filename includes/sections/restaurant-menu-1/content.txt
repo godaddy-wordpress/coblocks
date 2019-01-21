@@ -1,0 +1,67 @@
+<!-- wp:coblocks/container {"customBackgroundColor":"#35281f","backgroundImg":"http://shiny-impala.w5.wpsandbox.pro/wp-content/uploads/2018/11/coffee-pastries-bg.png","backgroundSize":"cover","backgroundOverlay":80,"backgroundOverlayStyle":"background","align":"full"} -->
+<div class="wp-block-coblocks-container alignfull has-background-image has-background-no-repeat has-background-center-center has-background-cover has-background-overlay has-background-overlay-background has-background-overlay-80 has-background" style="background-color:#35281f;background-image:url(http://shiny-impala.w5.wpsandbox.pro/wp-content/uploads/2018/11/coffee-pastries-bg.png);background-position:center center;background-size:cover;padding:6%"><div class="container__inner"><!-- wp:paragraph {"align":"center","customTextColor":"#ffffff","customFontSize":42,"fontFamily":"Cormorant Garamond","noBottomSpacing":true} -->
+<p style="color:#ffffff;font-size:42px;text-align:center;font-family:Cormorant Garamond;" class="has-text-color has-custom-fontsize has-custom-fontfamily coblocks__heading--no-bottom-spacing"><em>– Select Coffees &amp; Pastries –</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:columns {"align":"wide"} -->
+<div class="wp-block-columns alignwide has-2-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph {"customTextColor":"#ffffff","customFontSize":18,"fontFamily":"Noto Serif","noBottomSpacing":true} -->
+<p style="color:#ffffff;font-size:18px;font-family:Noto Serif;" class="has-text-color has-custom-fontsize has-custom-fontfamily coblocks__heading--no-bottom-spacing"><strong>Flat White</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"customTextColor":"#ffffff","customFontSize":15,"fontFamily":"Noto Serif"} -->
+<p style="color:#ffffff;font-size:15px;font-family:Noto Serif" class="has-text-color has-custom-fontsize has-custom-fontfamily">Here is a description of your product. Integer lobortis maximus vestibulum. Nunc fermentum nisl a dictum fringilla.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"customTextColor":"#ffffff","customFontSize":18,"fontFamily":"Noto Serif","noBottomSpacing":true} -->
+<p style="color:#ffffff;font-size:18px;font-family:Noto Serif;" class="has-text-color has-custom-fontsize has-custom-fontfamily coblocks__heading--no-bottom-spacing"><strong>Cortado</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"customTextColor":"#ffffff","customFontSize":15,"fontFamily":"Noto Serif"} -->
+<p style="color:#ffffff;font-size:15px;font-family:Noto Serif" class="has-text-color has-custom-fontsize has-custom-fontfamily">Here is a description of your product. Integer lobortis maximus vestibulum. Nunc fermentum nisl a dictum fringilla.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"customTextColor":"#ffffff","customFontSize":18,"fontFamily":"Noto Serif","noBottomSpacing":true} -->
+<p style="color:#ffffff;font-size:18px;font-family:Noto Serif;" class="has-text-color has-custom-fontsize has-custom-fontfamily coblocks__heading--no-bottom-spacing"><strong>Ginger Latte</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"customTextColor":"#ffffff","customFontSize":15,"fontFamily":"Noto Serif"} -->
+<p style="color:#ffffff;font-size:15px;font-family:Noto Serif" class="has-text-color has-custom-fontsize has-custom-fontfamily">Here is a description of your product. Integer lobortis maximus vestibulum. Nunc fermentum nisl a dictum fringilla.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph {"customTextColor":"#ffffff","customFontSize":18,"fontFamily":"Noto Serif","noBottomSpacing":true} -->
+<p style="color:#ffffff;font-size:18px;font-family:Noto Serif;" class="has-text-color has-custom-fontsize has-custom-fontfamily coblocks__heading--no-bottom-spacing"><strong>Caramelia Cookie</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"customTextColor":"#ffffff","customFontSize":15,"fontFamily":"Noto Serif"} -->
+<p style="color:#ffffff;font-size:15px;font-family:Noto Serif" class="has-text-color has-custom-fontsize has-custom-fontfamily">Here is a description of your product. Integer lobortis maximus vestibulum. Nunc fermentum nisl a dictum fringilla.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"customTextColor":"#ffffff","customFontSize":18,"fontFamily":"Noto Serif","noBottomSpacing":true} -->
+<p style="color:#ffffff;font-size:18px;font-family:Noto Serif;" class="has-text-color has-custom-fontsize has-custom-fontfamily coblocks__heading--no-bottom-spacing"><strong>Black Forest Babka</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"customTextColor":"#ffffff","customFontSize":15,"fontFamily":"Noto Serif"} -->
+<p style="color:#ffffff;font-size:15px;font-family:Noto Serif" class="has-text-color has-custom-fontsize has-custom-fontfamily">Here is a description of your product. Integer lobortis maximus vestibulum. Nunc fermentum nisl a dictum fringilla.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"customTextColor":"#ffffff","customFontSize":18,"fontFamily":"Noto Serif","noBottomSpacing":true} -->
+<p style="color:#ffffff;font-size:18px;font-family:Noto Serif;" class="has-text-color has-custom-fontsize has-custom-fontfamily coblocks__heading--no-bottom-spacing"><strong>Peach Cobbler Crumb Cake</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"customTextColor":"#ffffff","customFontSize":15,"fontFamily":"Noto Serif"} -->
+<p style="color:#ffffff;font-size:15px;font-family:Noto Serif" class="has-text-color has-custom-fontsize has-custom-fontfamily">Here is a description of your product. Integer lobortis maximus vestibulum. Nunc fermentum nisl a dictum fringilla.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:paragraph {"align":"center","customTextColor":"#ffffff","customFontSize":42,"fontFamily":"Cormorant Garamond","noBottomSpacing":true,"noTopSpacing":true} -->
+<p style="color:#ffffff;font-size:42px;text-align:center;font-family:Cormorant Garamond;" class="has-text-color has-custom-fontsize has-custom-fontfamily coblocks__heading--no-bottom-spacing coblocks__heading--no-top-spacing"><em>~ ~ ~ ~</em></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:coblocks/container -->

@@ -1,0 +1,10 @@
+/*
+Template Name: About 1
+Template Type: Section
+Template URI: #
+Description: Build better about section using two columns with better information
+Version: 1.0
+Slug: about-1
+Tags: call to action, cta, heading, subheading, hero text
+Fonts: Barlow
+*/

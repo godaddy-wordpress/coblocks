@@ -1,0 +1,10 @@
+/*
+Template Name: Pricing 1
+Template Type: Section
+Template URI: #
+Description: Pricing table with container
+Version: 1.0
+Slug: pricing-1
+Tags: pricing table, pricing
+Fonts: Noto Serif
+*/

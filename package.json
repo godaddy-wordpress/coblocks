@@ -36,6 +36,7 @@
 		"postcss": "^6.0.19",
 		"react": "^16.6.3",
 		"react-google-maps": "^9.4.5",
+		"react-masonry-component": "^6.2.1",
 		"redux": "^4.0.1",
 		"stylelint": "^9.1.1"
 	},
@@ -70,8 +71,13 @@
 		"stylelint-order": "^0.8.1"
 	},
 	"stylelint": {
-		"extends": ["stylelint-config-wordpress/scss", "stylelint-config-prettier"],
-		"plugins": ["stylelint-order"],
+		"extends": [
+			"stylelint-config-wordpress/scss",
+			"stylelint-config-prettier"
+		],
+		"plugins": [
+			"stylelint-order"
+		],
 		"rules": {
 			"at-rule-empty-line-before": null,
 			"no-descending-specificity": null,

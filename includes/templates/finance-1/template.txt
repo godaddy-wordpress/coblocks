@@ -1,0 +1,10 @@
+/*
+Template Name: Finance Landing Page
+Template Type: Template
+Template URI: https://wordpress.org/plugins/health-check/
+Description: Elegant landing page for financial services
+Version: 1.0
+Slug: finance-1
+Tags: finance, landing page, financial
+Fonts: Alegreya
+*/

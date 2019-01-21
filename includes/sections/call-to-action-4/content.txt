@@ -1,0 +1,15 @@
+<!-- wp:paragraph {"customTextColor":"#707070","className":"has-regular-font-size","noBottomSpacing":true} -->
+<p style="color:#707070;" class="has-text-color has-regular-font-size coblocks__heading--no-bottom-spacing">BUILT FOR BETTER CONVERSION</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"customFontSize":45,"fontFamily":"Merriweather","noTopSpacing":true} -->
+<h2 style="font-family:Merriweather;font-size:45px;" class="has-custom-fontsize has-custom-fontfamily coblocks__heading--no-top-spacing">Custom Landing Page Design</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Here are directions to your business. Suspendisse venenatis bibendum nunc, et fermentum massa tristique sit amet.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:button {"customBackgroundColor":"#ff5a6c","customTextColor":"#ffffff","className":"is-style-squared"} -->
+<div class="wp-block-button is-style-squared"><a class="wp-block-button__link has-text-color has-background" style="background-color:#ff5a6c;color:#ffffff">Get Started</a></div>
+<!-- /wp:button -->

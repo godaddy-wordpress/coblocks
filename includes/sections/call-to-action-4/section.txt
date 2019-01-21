@@ -1,0 +1,10 @@
+/*
+Template Name: Call to Action 4
+Template Type: Section
+Template URI: #
+Description: Call to Action section with heading and subheading area
+Version: 1.0
+Slug: call-to-action-4
+Tags: call to action, cta, heading, subheading, hero text
+Fonts: Merriweather
+*/

@@ -1,0 +1,10 @@
+/*
+Template Name: Hero Text 1
+Template Type: Section
+Template URI: #
+Description: Adjustable hero text with Google fonts and spacer
+Version: 1.0
+Slug: hero-text-1
+Tags: hero, hero text, heading, large text
+Fonts: Cormorant Garamond
+*/
