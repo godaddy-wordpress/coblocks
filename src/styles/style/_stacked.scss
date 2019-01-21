@@ -5,6 +5,10 @@ div {
 
 			> [class*="wp-block-coblocks-"] {
 				width: 100% !important;
+
+				&.wp-block-coblocks-column:last-child{
+					margin-bottom: 0px;
+				}
 			}
 		}
 	}
