@@ -10,7 +10,7 @@ Stable tag: @@pkg.version
 License: GNU Version 2 or Any Later Version
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-CoBlocks is a suite of page builder Gutenberg blocks, with 10+ new blocks and a true page builder experience with rows and columns.
+CoBlocks is a suite of page builder WordPress blocks for Gutenberg, with 10+ new blocks and a true page builder experience with rows and columns.
 
 == Description ==
 
@@ -20,7 +20,7 @@ This is the Gutenberg page builder you've been waiting for. We guarantee CoBlock
 
 
 ## One for all, all in one
-CoBlocks is the last page builder you’ll need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages. Have a look:
+CoBlocks is the last page builder you’ll need. With tens of custom WordPress blocks, including the extraordinary row block, you have everything you need to make beautiful web pages. Have a look:
 
 * Resizable Row/Columns Block (New)
 * Map Block (New)
@@ -37,7 +37,7 @@ CoBlocks is the last page builder you’ll need. With tens of custom blocks, inc
 
 
 ## Deploy Custom Typography
-The breakthrough Typography Controls panel lets you design typography to your hearts content. Set fonts, sizes, weights, transformations and more, within <strong>core blocks</strong> and CoBlocks blocks.
+The breakthrough Typography Controls panel lets you design typography to your hearts content. Set fonts, sizes, weights, transformations and more, within <strong>core WordPress blocks</strong> and CoBlocks blocks.
 
 
 ## Breakthrough Block System
@@ -45,7 +45,7 @@ CoBlocks features an innovative approach that allows you to make stunning web pa
 
 Each block within CoBlocks has been precisely fined tuned to offer a familiar, yet powerful, customization experience. Tailor each element to your taste using our custom controls and settings. Change fonts, set margin and padding, pick colors and more.
 
-And with our quickly growing suite of Gutenberg blocks, you'll be sure to create beautiful web pages in minutes.
+And with our quickly growing suite of WordPress blocks, you'll be sure to create beautiful web pages in minutes.
 
 
 ## Runs on WordPress core
@@ -55,7 +55,7 @@ That’s because CoBlocks is designed specifically for WordPress core.
 
 
 ## Our Vision
-The vision for CoBlocks has always been to create a suite of blocks to help folks make beautiful websites. This newest release of CoBlocks is the ultimate expression of that vision. And we think we've nailed it.
+The vision for CoBlocks has always been to create a suite of WordPress blocks for Gutenberg to help folks make beautiful websites. This newest release of CoBlocks is the ultimate expression of that vision. And we think we've nailed it.
 
 
 ## Built with developers in mind
