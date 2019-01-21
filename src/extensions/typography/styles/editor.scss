@@ -39,11 +39,15 @@
 			font-family: inherit;
 		}
 	}
-	.wp-block-button {
-		.wp-block-button__link {
-			font-family: inherit;
+	
+	&:not([data-type="coblocks/pricing-table"]){
+		.wp-block-button {
+			.wp-block-button__link {
+				font-family: inherit;
+			}
 		}
 	}
+	
 	.editor-rich-text {
 		.wp-block-cover-text,
 		.wp-block-paragraph {
