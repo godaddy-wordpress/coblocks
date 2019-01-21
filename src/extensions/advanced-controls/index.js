@@ -34,6 +34,21 @@ function addAttributes( settings ) {
 		}
 	}
 
+	if ( hasBlockSupport( settings, 'withNoSpacingOptions' ) ) {
+		if( typeof settings.attributes !== 'undefined' ){
+			settings.attributes = Object.assign( settings.attributes, {
+				noBottomMargin: {
+					type: 'boolean',
+					default: false,
+				},
+				noTopMargin: {
+					type: 'boolean',
+					default: false,
+				}
+			} );
+		}
+	}
+
 	return settings;
 }
 
@@ -56,29 +71,78 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const {
 			isStackedOnMobile,
+			noBottomMargin,
+			noTopMargin,
 		} = attributes;
 
 		const hasStackedControl = hasBlockSupport( name, 'stackedOnMobile' );
+		const withNoSpacingOptions = hasBlockSupport( name, 'withNoSpacingOptions' );
 
-		if ( hasStackedControl && isSelected ) {
-			return (
-				<Fragment>
-					<BlockEdit {...props} />
+		return (
+			<Fragment>
+				<BlockEdit {...props} />
+				{ isSelected && 
 					<InspectorAdvancedControls>
-						<ToggleControl
-							label={ __( 'Stack on mobile' ) }
-							checked={ !! isStackedOnMobile }
-							onChange={ () => setAttributes( {  isStackedOnMobile: ! isStackedOnMobile } ) }
-							help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
-						/>
+						{ hasStackedControl &&  
+							<ToggleControl
+								label={ __( 'Stack on mobile' ) }
+								checked={ !! isStackedOnMobile }
+								onChange={ () => setAttributes( {  isStackedOnMobile: ! isStackedOnMobile } ) }
+								help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
+							/>
+						}
+						{ withNoSpacingOptions &&  
+							<ToggleControl
+								label={ __( 'No top spacing' ) }
+								checked={ !! noTopMargin }
+								onChange={ () => setAttributes( {  noTopMargin: ! noTopMargin } ) }
+								help={ !! noTopMargin ? __( 'Top margin is removed on this block.' ) : __( 'Toggle to remove any top margin applied to this block.' ) }
+							/>
+						}
+						{ withNoSpacingOptions &&
+							<ToggleControl
+								label={ __( 'No bottom spacing' ) }
+								checked={ !! noBottomMargin }
+								onChange={ () => setAttributes( {  noBottomMargin: ! noBottomMargin } ) }
+								help={ !! noBottomMargin ? __( 'Bottom margin is removed on this block.' ) : __( 'Toggle to remove any bottom margin applied to this block.' ) }
+							/>
+						}
 					</InspectorAdvancedControls>
-				</Fragment>
-			);
-		}
-
-		return <BlockEdit { ...props } />;
+				}
+				
+			</Fragment>
+		);
 	};
 }, 'withAdvancedControls');
+
+/**
+ * Override props assigned to save component to inject atttributes
+ *
+ * @param {Object} extraProps Additional props applied to save element.
+ * @param {Object} blockType  Block type.
+ * @param {Object} attributes Current block attributes.
+ *
+ * @return {Object} Filtered props applied to save element.
+ */
+function applySpacingClass(extraProps, blockType, attributes) {
+
+	const withNoSpacingOptions = hasBlockSupport( blockType.name, 'withNoSpacingOptions' );
+
+	if ( withNoSpacingOptions ) {
+
+		const { noBottomMargin, noTopMargin } = attributes;
+
+		if ( typeof noBottomMargin !== 'undefined' && noBottomMargin ) {
+			extraProps.className = classnames( extraProps.className, 'mb-0' );
+		}
+
+		if ( typeof noTopMargin !== 'undefined' && noTopMargin ) {
+			extraProps.className = classnames( extraProps.className, 'mt-0' );
+		}
+	}
+
+	return extraProps;
+}
 
 addFilter(
 	'blocks.registerBlockType',
@@ -91,4 +155,10 @@ addFilter(
 	'editor.BlockEdit',
 	'coblocks/advanced',
 	withAdvancedControls
+);
+
+addFilter(
+	'blocks.getSaveContent.extraProps',
+	'coblocks/applySpacingClass',
+	applySpacingClass
 );
