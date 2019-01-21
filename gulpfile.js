@@ -57,6 +57,30 @@ var gulpif              = require('gulp-if');
 var wpPot 		= require('gulp-wp-pot');
 var deleteEmpty 	= require('delete-empty');
 
+var sass         	= require('gulp-sass');
+var autoprefixer 	= require('gulp-autoprefixer');
+var rename       	= require('gulp-rename');
+var minifycss    	= require('gulp-uglifycss');
+var uglify       	= require('gulp-uglify');
+var lineec       	= require('gulp-line-ending-corrector');
+
+/**
+ * Browsers you care about for autoprefixing. https://github.com/ai/browserslist
+ */
+const AUTOPREFIXER_BROWSERS = [
+    'last 2 version',
+    '> 1%',
+    'ie >= 9',
+    'ie_mob >= 10',
+    'ff >= 30',
+    'chrome >= 34',
+    'safari >= 7',
+    'opera >= 23',
+    'ios >= 7',
+    'android >= 4',
+    'bb >= 10'
+];
+
 /**
  * Tasks.
  */
