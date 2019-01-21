@@ -25,6 +25,12 @@ import './extensions/typography';
 import './extensions/attributes';
 import './extensions/advanced-controls';
 
+/**
+ * Plugin Sidebars
+ */
+import './sidebars/save-template';
+
+
 // Formats
 import './formats/';
 

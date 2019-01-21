@@ -1,0 +1,116 @@
+.coblocks-sidebar {
+	display: block;
+	box-sizing: border-box;
+
+
+	a{
+		text-decoration: none;
+	}
+
+	.components-panel__body  {
+		border-bottom: 0;
+		// padding-left: 0;
+		// padding-right: 0;
+	}
+
+	.editor-block-inspector__card {
+		margin: 0;
+		margin-bottom: 2px;
+	}
+
+	&__template-count {
+		display: inline-block;
+		margin: 0 0 0 7px;
+
+		&-number {
+			color: $gray;
+		}
+
+		&-label {
+			margin-left: 2px;
+		}
+	}
+
+	.has-limit {
+
+		.components-base-control,
+		.coblocks-sidebar__template-count {
+			pointer-events: none;
+			opacity: 0.5;
+		}
+	}
+
+	.spinner {
+		float: none;
+		margin-top: -2px;
+	}
+
+	.coblocks-sidebar__save-button-wrapper {
+		display: inline-block;
+		margin-bottom: 5px;
+		margin-top: 10px;
+
+		.components-button {
+			vertical-align: initial !important;
+			color: $white !important;
+		}
+	}
+
+	.components-coblocks__sidebar-plugin--template-name-input {
+		margin-bottom: 15px;
+
+		&.has-error .components-text-control__input {
+			border-color: $red;
+			box-shadow: 0 0 0 1px $red;
+		}
+	}
+
+	.coblocks--notice {
+		border-radius: 4px;
+		display: block;
+		opacity: 1;
+		padding: 5px 11px 6px;
+		text-align: center;
+		text-decoration: none;
+
+		&--error {
+			background: $lightred;
+			color: $darkred;
+			margin: 13px 0 0;
+		}
+
+		&--success {
+			background: $lightgreen;
+			color: $darkgreen;
+			padding: 7px 11px 8px;
+		}
+
+		&--limit {
+			margin-top: 0;
+			margin-bottom: 15px;
+			padding: 9px 15px 10px;
+			text-align: left;
+		}
+	}
+	.coblocks-sidebar__converter-wrapper{
+		position: relative;
+		.components-base-control.components-toggle-control{
+			margin-top: 20px;
+			padding-right: 33px;
+		}
+		.components-spinner{
+			position: absolute;
+		    top: -5px;
+		    right: 0px;
+		}
+	}
+
+}
+
+.edit-post-pinned-plugins .components-icon-button .dashicon.coblocks--icon,
+.edit-post-pinned-plugins .components-icon-button .dashicon.coblocks--icon:hover,
+.edit-post-pinned-plugins .components-icon-button .dashicon.coblocks--icon * {
+	stroke: none !important;
+}
+
+

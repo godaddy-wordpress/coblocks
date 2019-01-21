@@ -10,6 +10,20 @@ var cleanFiles		  = ['./build/'+project+'/', './build/'+project+' 2/', './build/
 var buildDestination	  = './build/'+project+'/';
 var buildDestinationFiles = './build/'+project+'/**/*';
 
+// Styles.
+var styleDestination = './dist/css/';
+var styleAdminSRC    = './src/styles/admin.scss';
+var styleWelcomeSRC    = './src/styles/welcome.scss';
+var styleWatchFiles  = [ styleAdminSRC, styleWelcomeSRC, './src/styles/admin/*.scss' ];
+
+// Scripts.
+var scriptDestination = './dist/js/';
+var scriptModalSRC  = project +'-modal';
+var scriptModalSRCDirectory   = './src/js/'+ scriptModalSRC +'.js';
+
+var scriptMapsSRC  = project +'-google-maps';
+var scriptMapsSRCDirectory   = './src/js/'+ scriptMapsSRC +'.js';
+
 // Release.
 var sftpDemoFilesToUpload = ['./build/' + project + '/**/*', '!/build/' + project + '/src/', '!build/' + project + '/src/**/*'];
 var cleanSrcFiles	  = [ './build/' + project + '/src/**/*.js', './build/' + project + '/src/**/*.scss', '!build/' + project + '/src/blocks/**/*.php' ];
@@ -190,6 +204,78 @@ gulp.task( 'debug_mode_off', function (done) {
 	done();
 });
 
+gulp.task( 'welcomeStyles', function (done) {
+	gulp.src( styleWelcomeSRC, { allowEmpty: true } )
+
+	.pipe( sass( {
+		errLogToConsole: true,
+		outputStyle: 'expanded',
+		precision: 10
+	} ) )
+
+	.on( 'error', console.error.bind( console ) )
+
+	.pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
+
+	.pipe( rename( {
+		basename: 'coblocks-welcome',
+	} ) )
+
+	.pipe( gulp.dest( styleDestination ) )
+
+	.pipe( rename( {
+		suffix: '.min',
+	} ) )
+
+	.pipe( minifycss() )
+
+	.pipe( gulp.dest( styleDestination ) )
+
+	done();
+});
+
+gulp.task( 'adminStyles', function (done) {
+	gulp.src( styleAdminSRC )
+
+	.pipe( sass( {
+		errLogToConsole: true,
+		outputStyle: 'expanded',
+		precision: 10
+	} ) )
+
+	.on( 'error', console.error.bind( console ) )
+
+	.pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
+
+	.pipe( rename( {
+		basename: 'coblocks-admin',
+	} ) )
+
+	.pipe( gulp.dest( styleDestination ) )
+
+	.pipe( rename( {
+		suffix: '.min',
+	} ) )
+
+	.pipe( minifycss() )
+
+	.pipe( gulp.dest( styleDestination ) )
+
+	done();
+});
+
+gulp.task( 'adminScripts', function(done) {
+	return gulp.src( scriptModalSRCDirectory, { allowEmpty: true } )
+	.pipe( rename( {
+		basename: scriptModalSRC,
+		suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() )
+	.pipe( gulp.dest( scriptDestination ) )
+	done();
+});
+
 gulp.task('zip', function(done) {
 	return gulp.src( buildDestination + '/**', { base: 'build' } )
 	.pipe( zip( project + '.zip' ) )
@@ -203,7 +289,7 @@ gulp.task('build-notice', function(done) {
 	done();
 });
 
-gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip',  function(done) {
+gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'welcomeStyles', 'adminStyles', 'adminScripts', 'frontendScripts', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip',  function(done) {
 	done();
 } ) );
 
@@ -240,9 +326,13 @@ gulp.task( 'release-notice', function(done) {
 gulp.task(
 	'default',
 	gulp.series(
-		'npmStart', function(done) {
-	done();
-} ) );
+		'welcomeStyles', 'adminStyles', 'debug_mode_on', function(done) {
+			gulp.watch( styleWatchFiles, gulp.parallel( 'adminStyles' ) );
+			gulp.watch( styleWatchFiles, gulp.parallel( 'welcomeStyles' ) );
+			done();
+		}
+	)
+);
 
 gulp.task(
 	'install',
