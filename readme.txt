@@ -23,6 +23,7 @@ This is the Gutenberg page builder you've been waiting for. We guarantee CoBlock
 CoBlocks is the last page builder you’ll need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages. Have a look:
 
 * Resizable Row/Columns Block (New)
+* Map Block (New)
 * Accordion Block
 * Alert Block
 * Author Block
@@ -98,7 +99,7 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 == Changelog ==
 
 = 1.7.0 =
-* New: Add Map block with six built-in map styles, zoom, controls and marker size options
+* New: Add Map block with six built-in map styles, zoom, controls and marker size options 🎉
 * New: Add support for em units on Advanced dimensions controls
 * New: Add new two column sidbar layouts (66%/33%) and (33%/66%) to the Row block
 * New: Add "Huge" option for the Row block gutter
@@ -112,7 +113,7 @@ Please reach out via the official [support forum on WordPress.org](https://wordp
 * Fix: Fullwidth rows in the core TwentyNineteen theme now display better
 
 = 1.6.0 =
-* New: Add drag and resizable Row and Columns blocks with support for dynamic layouts
+* New: Add drag and resizable Row and Columns blocks with support for dynamic layouts 🎉
 * New: Add controls to the Row and Columns blocks for adjusting margin and padding
 * New: Add responsive media query controls to the Row and Columns blocks
 * New: Add :row text prefixes for faster block creation, where the number of ":" represents the number of columns
