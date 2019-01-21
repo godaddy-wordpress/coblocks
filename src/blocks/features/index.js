@@ -65,6 +65,7 @@ const settings = {
 
 	supports: {
 		align: [ 'wide', 'full' ],
+		withNoSpacingOptions: true,
 	},
 
 	transforms: {
