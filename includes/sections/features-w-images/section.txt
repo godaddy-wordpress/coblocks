@@ -1,9 +1,0 @@
-/*
-Template Name: Features with Images
-Template Type: Section
-Template URI: https://wordpress.org/plugins/health-check/
-Description: Checks the health of your WordPress install
-Version: 1.0.0
-Slug: features-w-images
-Fonts: Fira Sans
-*/

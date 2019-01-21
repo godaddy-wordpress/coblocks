@@ -1,8 +1,0 @@
-/*
-Template Name: Features
-Template Type: Section
-Template URI: https://wordpress.org/plugins/health-check/
-Description: Checks the health of your WordPress install
-Version: 0.1.0
-Slug: features
-*/

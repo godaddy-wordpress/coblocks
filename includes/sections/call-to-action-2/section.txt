@@ -1,9 +1,0 @@
-/*
-Template Name: Call to Action 2
-Template Type: Section
-Template URI: #
-Description: Call to action image card
-Version: 1.0
-Slug: call-to-action-2
-Tags: call to action, cta, image card, services
-*/
