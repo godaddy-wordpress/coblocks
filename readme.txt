@@ -10,11 +10,11 @@ Stable tag: @@pkg.version
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-CoBlocks is a suite of professional page building content blocks for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
+CoBlocks is a suite of page builder WordPress blocks for Gutenberg, with 10+ new blocks and a true page builder experience with rows and columns.
 
 == Description ==
 
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the most innovative collection of page building blocks for the new Gutenberg WordPress block editor. Hands down, CoBlocks is the Gutenberg page builder you've been waiting for; it will make you rethink what WordPress is capable of.
+[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the most innovative collection of page building WordPress blocks for the new Gutenberg WordPress block editor. Hands down, CoBlocks is the Gutenberg page builder you've been waiting for; it will make you rethink what WordPress is capable of.
 
 
 = See for yourself =
@@ -26,6 +26,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages:
 
 * Resizable Row/Columns (New!)
+* Map Block (New!)
 * Accordion
 * Alert
 * Author Profile
