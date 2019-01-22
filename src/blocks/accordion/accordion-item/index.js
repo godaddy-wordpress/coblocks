@@ -71,7 +71,6 @@ const settings = {
 	supports: {
 		reusable: false,
 		html: false,
-		inserter: false,
 	},
 
 	attributes: blockAttributes,
