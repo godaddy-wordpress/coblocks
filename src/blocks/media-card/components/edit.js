@@ -182,8 +182,6 @@ class Edit extends Component {
 		const isStyleRight = includes( className, 'is-style-right' );
 		const mediaPosition = isStyleRight ? 'right' : 'left';
 
-		console.log( mediaPosition );
-
 		const innerStyles = {
 			gridTemplateColumns: 'right' === mediaPosition ? `auto ${ widthString }` : `${ widthString } auto`,
 			backgroundColor: backgroundColor.color,
