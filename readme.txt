@@ -4,9 +4,9 @@ Plugin URI: https://coblocks.com
 Contributors: coblocks, richtabor, phpbits, thatplugincompany
 Tags: blocks, gutenberg, editor, page builder, gutenberg blocks
 Requires at least: 5.0
-Tested up to: 5.0.3
+Tested up to: @@pkg.tested_up_to
 Requires PHP: 5.2.4
-Stable tag: 1.6.0
+Stable tag: @@pkg.version
 License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -25,18 +25,17 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 ## One for all, all in one
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages:
 
-* Resizable Row/Columns Block (New!)
-* Map Block (New!)
-* Accordion Block
-* Alert Block
-* Author Profile Block
-* Click to Tweet Block
-* Dynamic Separator Block
-* Gif Block
-* GitHub Gist Block
-* Highlight Block
-* Pricing Table Block
-* Social Sharing Block
+* Resizable Row/Columns (New!)
+* Accordion
+* Alert
+* Author Profile
+* Click to Tweet
+* Dynamic Separator
+* Gif
+* GitHub Gist
+* Highlight
+* Pricing Table
+* Social Sharing
 
 
 ## Custom Typography Controls
@@ -57,7 +56,7 @@ The vision for CoBlocks has always been to create a suite of blocks to help folk
 <strong>Join us</strong> in welcoming the future of WordPress:
 
 * [Visit the CoBlocks website](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks)
-* [Subscribe to updates](http://eepurl.com/dfS16z)
+* [Subscribe to updates](http://eepurl.com/gd1S8D)
 * [Follow on Twitter](https://twitter.com/coblocks)
 * [Join our new Community](https://facebook.com/groups/coblocks)
 * [Like us on Facebook](https://www.facebook.com/coblocks/)
@@ -71,8 +70,8 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 
 1. Make beautiful websites with CoBlocks
 2. Build modular grid systems with the CoBlocks Row and Columns blocks
-4. Drag to resize and then nest CoBlocks Row blocks
-3. Design with the CoBlocks Typography Control Panel
+3. Drag to resize and then nest CoBlocks Row blocks
+4. Design with the CoBlocks Typography Control Panel
 5. Add CoBlocks core blocks to pages
 
 == Installation ==
