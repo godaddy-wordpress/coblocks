@@ -70,9 +70,16 @@
 		display: none;
 	}
 
-	&.is-selected:not(.is-stacked-on-mobile) {
+	&.is-selected{
 		.editor-media-container__resizer .components-resizable-box__handle {
 			display: block;
+		}
+		@media (max-width: 600px) {
+			&.is-stacked-on-mobile {
+				.editor-media-container__resizer .components-resizable-box__handle {
+					display: none;
+				}
+			}
 		}
 	}
 
