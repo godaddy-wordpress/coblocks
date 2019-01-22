@@ -128,9 +128,6 @@
 		}
 
 		&.is-stacked-on-mobile &__media {
-			@include break-smallest {
-				position: absolute;
-			}
 
 			@include break-small {
 				position: inherit;
@@ -141,12 +138,6 @@
 			margin-left: 5%;
 			margin-right: 5%;
 			margin-top: -33%;
-
-			@include break-smallest {
-				margin-left: 20%;
-				margin-right: 0;
-				margin-top: 0;
-			}
 
 			@include break-small {
 				grid-area: media-text-content;

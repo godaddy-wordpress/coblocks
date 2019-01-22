@@ -74,7 +74,7 @@
 		.editor-media-container__resizer .components-resizable-box__handle {
 			display: block;
 		}
-		@media (max-width: 600px) {
+		@media (max-width: $break-small) {
 			&.is-stacked-on-mobile {
 				.editor-media-container__resizer .components-resizable-box__handle {
 					display: none;
@@ -87,6 +87,17 @@
 		&.is-selected.is-style-right {
 			.editor-media-container__resizer .components-resizable-box__handle {
 				display: block;
+			}
+		}
+	}
+	@media (max-width: $break-small) {
+		&.is-stacked-on-mobile{
+			.wp-block-coblocks-media-card__inner{
+				.wp-block-coblocks-media-card__content{
+				    margin-left: 5%;
+				    margin-right: 5%;
+				    margin-top: -33%;
+				}
 			}
 		}
 	}
