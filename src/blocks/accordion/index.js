@@ -37,7 +37,7 @@ const keywords = [
 const blockAttributes = {
 	count: {
 		type: 'number',
-		default: 2,
+		default: 1,
 	},
 };
 
