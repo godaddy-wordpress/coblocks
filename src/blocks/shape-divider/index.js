@@ -99,6 +99,22 @@ const settings = {
 
 	transforms: {
 		from: [
+			...[ ':divider', ':top-divider' ].map( ( prefix ) => ( {
+				type: 'prefix',
+				prefix,
+				transform() {
+					return createBlock( `coblocks/${ name }` );
+				},
+			} ) ),
+			{
+				type: 'prefix',
+				prefix: ':bottom-divider',
+				transform: function() {
+					return createBlock( `coblocks/${ name }`, {
+						verticalFlip: true,
+					} );
+				},
+			},
 			{
 				type: 'block',
 				blocks: [ 'core/spacer' ],
