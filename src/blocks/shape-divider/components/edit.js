@@ -38,6 +38,7 @@ class Edit extends Component {
 		const isStyleAngled = includes( className, 'is-style-angled' );
 		const isStyleTriangle = includes( className, 'is-style-triangle' );
 		const isStylePointed = includes( className, 'is-style-pointed' );
+		const isStyleHills = includes( className, 'is-style-hills' );
 
 		let divdier = dividers.wavy;
 
@@ -55,6 +56,8 @@ class Edit extends Component {
 			divdier = dividers.waves;
 		} else if ( isStylePointed ) {
 			divdier = dividers.pointed;
+		} else if ( isStyleHills ) {
+			divdier = dividers.hills;
 		}
 
 		return divdier;

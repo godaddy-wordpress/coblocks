@@ -90,10 +90,11 @@ const settings = {
 
 	styles: [
 		{ name: 'wavy', label: __( 'Wavy' ), isDefault: true },
+		{ name: 'hills', label: __( 'Hills' ) },
 		{ name: 'waves', label: __( 'Waves' ) },
+		{ name: 'angled', label: __( 'Angled' ) },
 		{ name: 'sloped', label: __( 'Sloped' ) },
 		{ name: 'rounded', label: __( 'Rounded' ) },
-		{ name: 'angled', label: __( 'Angled' ) },
 		{ name: 'triangle', label: __( 'Triangle' ) },
 		{ name: 'pointed', label: __( 'Pointed' ) },
 	],
@@ -233,6 +234,26 @@ const settings = {
 				transform: function() {
 					return createBlock( `coblocks/${ name }`, {
 						className: 'is-style-pointed',
+						verticalFlip: true,
+					} );
+				},
+			},
+			// Hills.
+			...[ ':hills-divider', ':top-hills-divider' ].map( ( prefix ) => ( {
+				type: 'prefix',
+				prefix,
+				transform() {
+					return createBlock( `coblocks/${ name }`, {
+						className: 'is-style-hills',
+					} );
+				},
+			} ) ),
+			{
+				type: 'prefix',
+				prefix: ':bottom-hills-divider',
+				transform: function() {
+					return createBlock( `coblocks/${ name }`, {
+						className: 'is-style-hills',
 						verticalFlip: true,
 					} );
 				},
