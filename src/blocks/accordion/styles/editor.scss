@@ -43,3 +43,24 @@
 		}
 	}
 }
+
+// The "Add Accordion Item" button
+.components-coblocks-add-accordion-item {
+	&__button.components-button {
+		border-style: dashed;
+		box-shadow: none !important;
+		font-size: 14px;
+		height: 34px;
+		height: auto;
+		justify-content: center;
+		line-height: 31px;
+		padding: 0 9px 0 8px;
+		padding: 8px 15px;
+		text-align: center;
+		width: 100%;
+
+		svg {
+			margin-right: 5px;
+		}
+	}
+}

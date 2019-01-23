@@ -11,7 +11,7 @@ import memoize from 'memize';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.editor;
-const { Button } = wp.components;
+const { Button, IconButton } = wp.components;
 const { createBlock } = wp.blocks;
 
 /**
@@ -53,10 +53,9 @@ class Edit extends Component {
 
 		const {
 			count,
-			contentAlign,
 		} = attributes;
 
-		const items 	= wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
+		const items = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
 
 		return [
 			<Fragment>
@@ -64,45 +63,47 @@ class Edit extends Component {
 					<InnerBlocks
 						template={ getCount( count ) }
 						allowedBlocks={ ALLOWED_BLOCKS } />
-					<div className="components-coblocks-accordion-add__container" >
-						<Button
-							className="components-coblocks-add__button"
-							isSmall
-							onClick={ () => {
-								if( items[0].innerBlocks ){
-									let lastId 	= items[0].innerBlocks[ items[0].innerBlocks.length - 1 ].clientId;
-									let copyAttributes = {};
-									
-									if( lastId ){
-										const lastBlockClient 	= wp.data.select( 'core/editor' ).getBlockAttributes( lastId );
-										if( lastBlockClient.backgroundColor ){
-											copyAttributes = Object.assign( copyAttributes, {
-												backgroundColor: lastBlockClient.backgroundColor
-											} );
-										}
 
-										if( lastBlockClient.borderColor ){
-											copyAttributes = Object.assign( copyAttributes, {
-												borderColor: lastBlockClient.borderColor
-											} );
-										}
+						<div className="components-coblocks-add-accordion-item">
+							<IconButton
+								isLarge
+								className="components-coblocks-add-accordion-item__button"
+								label={ __( 'Add Accordion Item' ) }
+								icon="insert"
+								onClick={ () => {
+									if ( items[0].innerBlocks ) {
+										let lastId 	= items[0].innerBlocks[ items[0].innerBlocks.length - 1 ].clientId;
+										let copyAttributes = {};
+										
+										if( lastId ){
+											const lastBlockClient 	= wp.data.select( 'core/editor' ).getBlockAttributes( lastId );
+											if( lastBlockClient.backgroundColor ){
+												copyAttributes = Object.assign( copyAttributes, {
+													backgroundColor: lastBlockClient.backgroundColor
+												} );
+											}
 
-										if( lastBlockClient.customTextColor ){
-											copyAttributes = Object.assign( copyAttributes, {
-												customTextColor: lastBlockClient.customTextColor
-											} );
+											if( lastBlockClient.borderColor ){
+												copyAttributes = Object.assign( copyAttributes, {
+													borderColor: lastBlockClient.borderColor
+												} );
+											}
+
+											if( lastBlockClient.customTextColor ){
+												copyAttributes = Object.assign( copyAttributes, {
+													customTextColor: lastBlockClient.customTextColor
+												} );
+											}
 										}
+										
+
+										let created = createBlock( 'coblocks/accordion-item', copyAttributes );
+										wp.data.dispatch( 'core/editor' ).insertBlock( created , undefined, clientId );
 									}
-									
-
-									let created = createBlock( 'coblocks/accordion-item', copyAttributes );
-									wp.data.dispatch( 'core/editor' ).insertBlock( created , undefined, clientId );
-								}
-							} }
-						>
-							+
-						</Button>
-					</div>
+								} } >
+								{ __( 'Add Accordion Item' ) }
+							</IconButton>
+						</div>
 				</div>
 			</Fragment>
 		];
