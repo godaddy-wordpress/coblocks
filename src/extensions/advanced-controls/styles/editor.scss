@@ -1,4 +1,4 @@
-.editor-block-list__block[data-no-top-margin="1"] {
+.editor-block-list__block[data-no-top-margin="1"]:not(:first-child) {
 	margin-top: 0 !important;
 
 	// Ensure that blocks with custom margin settings using our dimensions control
@@ -14,7 +14,7 @@
 	}
 }
 
-.editor-block-list__block[data-no-bottom-margin="1"] {
+.editor-block-list__block[data-no-bottom-margin="1"]:not(:last-child) {
 	margin-bottom: 0 !important;
 
 	// Ensure that blocks with custom margin settings using our dimensions control
@@ -39,4 +39,3 @@
 		}
 	}
 }
-
