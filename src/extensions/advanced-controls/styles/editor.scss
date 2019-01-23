@@ -6,6 +6,10 @@
 			margin-top: 0 !important;
 		}
 	}
+
+	.editor-block-list__block-edit {
+		margin-top: 0 !important;
+	}
 }
 
 .editor-block-list__block[data-no-bottom-margin="1"] {
@@ -15,5 +19,9 @@
 		&.has-margin {
 			margin-bottom: 0 !important;
 		}
+	}
+
+	.editor-block-list__block-edit {
+		margin-bottom: 0 !important;
 	}
 }
