@@ -11,6 +11,7 @@
 	}
 }
 
+.editor-block-preview,
 .editor-block-styles__item-preview {
 	.wp-block-coblocks-shape-divider {
 		height: 60px !important;
@@ -62,6 +63,24 @@
 				left: -15%;
 				width: 130%;
 			}
+		}
+	}
+}
+
+.editor-block-preview {
+	.wp-block-coblocks-shape-divider {
+		transform: scale(1.12) !important;
+
+		&.is-vertically-flipped {
+			svg {
+				top: -13px !important;
+			}
+		}
+
+		svg {
+			left: 0 !important;
+			bottom: -6px !important;
+			width: 100% !important;
 		}
 	}
 }
