@@ -45,7 +45,6 @@ import * as row from './blocks/row';
 import * as social from './blocks/social';
 import * as map from './blocks/map';
 import * as mediaCard from './blocks/media-card';
-import * as shapeDivider from './blocks/shape-divider';
 
 export function registerBlocks () {
 	[
@@ -65,7 +64,6 @@ export function registerBlocks () {
 		social,
 		map,
 		mediaCard,
-		shapeDivider,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {
