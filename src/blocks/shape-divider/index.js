@@ -77,7 +77,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Add a shape divder between other blocks.' ),
+	description: __( 'Add a shape divider to visually distinquish page sections.' ),
 
 	keywords: keywords,
 
