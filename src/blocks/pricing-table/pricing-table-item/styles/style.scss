@@ -1,5 +1,5 @@
 .wp-block-coblocks-pricing-table-item {
-	margin: 0 0 15px;
+	margin: 0 0 30px;
 	padding: 4em 1.8em;
 	position: relative;
 
@@ -21,9 +21,9 @@
 	}
 
 	&__title {
+		color: inherit;
 		margin-top: 0;
 		padding: 0;
-		color: inherit;
 	}
 
 	&__price-wrapper {
@@ -33,17 +33,17 @@
 	}
 
 	&__currency {
-		font-size: 1em;
 		color: inherit;
+		font-size: 1em;
 	}
 
 	&__amount {
+		color: inherit;
 		font-size: 5em;
 		letter-spacing: normal;
 		line-height: 1 !important;
 		margin: 0;
 		padding: 0;
-		color: inherit;
 	}
 
 	& &__features {
@@ -60,8 +60,8 @@
 	}
 
 	& &__title {
-		margin-bottom: 20px;
 		display: block;
+		margin-bottom: 20px;
 	}
 
 	& &__price-wrapper {
