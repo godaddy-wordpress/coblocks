@@ -42,4 +42,16 @@
 		}
 	}
 
+	//Make sure block is on the top
+	.wp-block{
+		&.editor-block-list__block{
+			&.is-selected{
+				&[data-no-top-margin="1"],
+				&[data-no-bottom-margin="1"]{
+					z-index: 90;
+				}
+			}
+		}
+	}
+
 }

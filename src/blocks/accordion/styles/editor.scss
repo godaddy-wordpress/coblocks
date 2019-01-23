@@ -42,24 +42,4 @@
 			border-color: $dark-gray-500;
 		}
 	}
-	.wp-block-coblocks-accordion{
-		> .editor-inner-blocks{
-			> .editor-block-list__layout{
-				.block-list-appender{
-					display: none;
-				}
-			}
-		}
-	}
-	&.is-selected{
-		.wp-block-coblocks-accordion{
-			> .editor-inner-blocks{
-				> .editor-block-list__layout{
-					.block-list-appender{
-						display: block;
-					}
-				}
-			}
-		}
-	}
 }

@@ -77,7 +77,7 @@ const settings = {
 				transform: ( node ) => {
 					// Check for a file within the URL.
 					const file = ( node.textContent.trim() ).split( '#' ).pop();
-					const fileClean = file.replace('file-', '').replace('-', '.');
+					const fileClean = file.replace('file-', '#file-').replace('-', '.');
 
 					return createBlock( 'coblocks/gist', {
 						url: node.textContent.trim(),
