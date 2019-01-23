@@ -164,13 +164,6 @@ class Edit extends Component {
 			/>
 		);
 
-		const imageDropZone = (
-			<DropZone
-				onFilesDrop={ this.addImage }
-				label={ __( 'Upload media' ) }
-			/>
-		);
-
 		const temporaryMediaWidth = this.state.mediaWidth;
 		const widthString = `${ temporaryMediaWidth || mediaWidth }%`;
 		const isStyleRight = includes( className, 'is-style-right' );
