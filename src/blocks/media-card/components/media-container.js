@@ -9,8 +9,8 @@ import includes from 'lodash/includes';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { BlockControls, MediaPlaceholder, MediaUpload } = wp.editor;
-const { IconButton, ResizableBox, Toolbar } = wp.components;
+const { BlockControls, MediaPlaceholder, MediaUpload, mediaUpload } = wp.editor;
+const { IconButton, ResizableBox, Toolbar, DropZone } = wp.components;
 
 /**
  * Constants
@@ -18,6 +18,11 @@ const { IconButton, ResizableBox, Toolbar } = wp.components;
 const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
 
 class MediaContainer extends Component {
+
+	constructor() {
+		super( ...arguments );
+		this.addFile = this.addFile.bind( this );
+	}
 
 	renderToolbarEditButton() {
 		const { mediaId, onSelectMedia } = this.props;
@@ -94,11 +99,28 @@ class MediaContainer extends Component {
 		);
 	}
 
+	addFile( files ) {
+		const { onSelectMedia } = this.props;
+
+		mediaUpload( {
+			allowedTypes: ALLOWED_MEDIA_TYPES,
+			filesList: files,
+			onFileChange: ( [ media ] ) => onSelectMedia,
+		} );
+	}
+
 	render() {
-		const { className, mediaUrl, mediaType, mediaWidth, commitWidthChange, onWidthChange } = this.props;
+		const { className, mediaUrl, mediaType, mediaWidth, commitWidthChange, onWidthChange, onSelectMedia } = this.props;
 
 		const isStyleRight = includes( className, 'is-style-right' );
 		const mediaPosition = isStyleRight ? 'right' : 'left';
+
+		const imageDropZone = (
+			<DropZone
+				onFilesDrop={ this.addFile }
+				label={ __( 'Drop to replace media' ) }
+			/>
+		);
 
 		if ( mediaType && mediaUrl ) {
 			const onResize = ( event, direction, elt ) => {
@@ -132,6 +154,7 @@ class MediaContainer extends Component {
 					onResizeStop={ onResizeStop }
 					axis="x"
 				>
+					{ imageDropZone }
 					{ mediaElement }
 				</ResizableBox>
 			);
