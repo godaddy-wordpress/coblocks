@@ -102,7 +102,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 							<ToggleControl
 								label={ __( 'No top spacing' ) }
 								checked={ !! noTopMargin }
-								onChange={ () => setAttributes( {  noTopMargin: ! noTopMargin } ) }
+								onChange={ () => setAttributes( {  noTopMargin: ! noTopMargin, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } ) }
 								help={ !! noTopMargin ? __( 'Top margin is removed on this block.' ) : __( 'Toggle to remove any top margin applied to this block.' ) }
 							/>
 						}
@@ -110,7 +110,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 							<ToggleControl
 								label={ __( 'No bottom spacing' ) }
 								checked={ !! noBottomMargin }
-								onChange={ () => setAttributes( {  noBottomMargin: ! noBottomMargin } ) }
+								onChange={ () => setAttributes( {  noBottomMargin: ! noBottomMargin, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0  } ) }
 								help={ !! noBottomMargin ? __( 'Bottom margin is removed on this block.' ) : __( 'Toggle to remove any bottom margin applied to this block.' ) }
 							/>
 						}
