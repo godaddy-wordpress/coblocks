@@ -139,6 +139,7 @@ const settings = {
 			mediaId,
 			maxWidth,
 			isStackedOnMobile,
+			align,
 		} = attributes;
 
 		// Media.
@@ -181,7 +182,7 @@ const settings = {
 
 		const innerStyles = {
 			gridTemplateColumns,
-			maxWidth: maxWidth ? maxWidth : undefined,
+			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
 		};
 
 		const cardBackgroundClasses = classnames(

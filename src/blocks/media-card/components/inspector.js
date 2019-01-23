@@ -71,6 +71,7 @@ class Inspector extends Component {
 			paddingSyncUnitsMobile,
 			paddingUnit,
 			maxWidth,
+			align,
 		} = attributes;
 
 		return (
@@ -99,14 +100,16 @@ class Inspector extends Component {
 							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
 						/>
-						<RangeControl
-							label={ __( 'Max Width' ) }
-							value={ parseFloat( maxWidth ) }
-							onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: nextMaxWidth } ) }
-							min={ 400 }
-							max={ 2000 }
-							step={ 1 }
-						/>
+						{ ( 'full' == align || 'wide' == align ) && (
+							<RangeControl
+								label={ __( 'Max Width' ) }
+								value={ parseFloat( maxWidth ) }
+								onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: nextMaxWidth } ) }
+								min={ 400 }
+								max={ 2000 }
+								step={ 1 }
+							/>
+						) }
 						{ mediaUrl && (
 							<TextareaControl
 								label={ __( 'Alt Text (Alternative Text)' ) }
@@ -117,6 +120,7 @@ class Inspector extends Component {
 						) }
 						<ToggleControl
 							label={ __( 'Card Shadow' ) }
+							className="components-block-coblocks-media-card-maxwidth-range"
 							checked={ !! hasCardShadow }
 							onChange={ () => setAttributes( {  hasCardShadow: ! hasCardShadow } ) }
 							help={ !! hasCardShadow ? __( 'Showing card shadow.' ) : __( 'Toggle to add a shadow to the card.' ) }

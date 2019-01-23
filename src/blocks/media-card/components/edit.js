@@ -155,6 +155,7 @@ class Edit extends Component {
 			mediaUrl,
 			maxWidth,
 			isStackedOnMobile,
+			align,
 		} = attributes;
 
 		const dropZone = (
@@ -198,7 +199,7 @@ class Edit extends Component {
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-			maxWidth: maxWidth ? maxWidth : undefined,
+			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
 		};
 
 		return [
