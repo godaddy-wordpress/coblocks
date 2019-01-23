@@ -46,7 +46,7 @@ class Controls extends Component {
 							subscript: number,
 							onClick: () =>
 								setAttributes( {
-									count: number,
+									count: parseInt( number ),
 								} )
 							} )
 						) }
