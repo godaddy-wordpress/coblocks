@@ -1,0 +1,22 @@
+.wp-block-coblocks-shape-divider {
+	&.is-vertically-flipped svg {
+		transform: scaleY(-1);
+	}
+
+	&.is-horizontally-flipped svg {
+		transform: scaleX(-1);
+	}
+
+	&.is-horizontally-flipped.is-vertically-flipped svg {
+		transform: scaleX(-1) scaleY(-1);
+	}
+
+	.divider--waves {
+		path:nth-child(1) {
+			opacity: 0.15;
+		}
+		path:nth-child(2) {
+			opacity: 0.3;
+		}
+	}
+}
