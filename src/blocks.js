@@ -10,7 +10,7 @@ const category = {
 };
 
 // Custom foreground icon color based on the CoBlocks branding
-const iconColor = '#536dff';
+const iconColor = '#555eff';
 
 // Register block category
 import icons from './utils/block-category';
