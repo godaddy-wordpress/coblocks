@@ -1,7 +1,5 @@
 .editor-block-list__block[data-type="coblocks/pricing-table"] {
-
 	.wp-block-coblocks-pricing-table {
-
 		&__inner {
 			margin-left: 0 !important;
 			margin-right: 0 !important;
@@ -11,13 +9,12 @@
 			width: 100%;
 
 			> .editor-block-list__layout {
-
 				@media (min-width: 600px) {
 					display: flex;
-					height: calc(100% - 36px);
 					flex-direction: row;
 					flex-wrap: wrap;
 					flex: 0 1 auto;
+					height: calc(100% - 36px);
 					position: relative;
 				}
 			}
@@ -31,7 +28,6 @@
 
 	&[data-align="wide"],
 	&[data-align="full"] {
-
 		.editor-block-list__block {
 			max-width: none;
 		}
@@ -39,8 +35,8 @@
 
 	.wp-block:nth-of-type(3),
 	.wp-block:nth-of-type(4) {
-		margin-top: 30px;
 		margin-bottom: 30px;
+		margin-top: 30px;
 	}
 
 	.wp-block[data-type="coblocks/pricing-table-item"] {
@@ -56,9 +52,9 @@
 	display: inline-flex;
 
 	.components-button[data-subscript]::after {
+		bottom: 0.68em;
 		font-size: 17px;
 		right: 13px;
-		bottom: 0.68em;
 	}
 
 	.components-button[data-subscript="1"]::after {
