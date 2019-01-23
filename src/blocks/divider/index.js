@@ -35,6 +35,10 @@ const keywords = [
 ];
 
 const blockAttributes = {
+	align: {
+		type: 'string',
+		default: 'full',
+	},
 	height: {
 		type: 'number',
 		default: 50,
