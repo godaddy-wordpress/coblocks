@@ -128,7 +128,6 @@
 		}
 
 		&.is-stacked-on-mobile &__media {
-
 			@include break-small {
 				position: inherit;
 			}
