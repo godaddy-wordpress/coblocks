@@ -10,7 +10,7 @@ import omit from 'lodash/omit';
 import './styles/editor.scss';
 import './styles/style.scss';
 import Edit from './components/edit';
-import icons from './../../utils/icons';
+import icons from './components/icons';
 
 /**
  * WordPress dependencies
@@ -26,7 +26,7 @@ const name = 'shape-divider';
 
 const title = __( 'Shape Divider' );
 
-const icon = icons.hr;
+const icon = icons.shapeDivider;
 
 const keywords = [
 	__( 'hr' ),
