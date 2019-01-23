@@ -1,4 +1,5 @@
 .editor-block-list__block[data-no-top-margin="1"] {
+	margin-top: 0px !important;
 	[class*="wp-block-"]{
 		&.has-margin{
 			margin-top: 0px !important;
@@ -7,6 +8,7 @@
 }
 
 .editor-block-list__block[data-no-bottom-margin="1"] {
+	margin-bottom: 0px !important;
 	[class*="wp-block-"]{
 		&.has-margin{
 			margin-bottom: 0px !important;
