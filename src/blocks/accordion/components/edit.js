@@ -72,9 +72,9 @@ class Edit extends Component {
 								icon="insert"
 								onClick={ () => {
 									if ( items[0].innerBlocks ) {
-										let lastId 	= items[0].innerBlocks[ items[0].innerBlocks.length - 1 ].clientId;
+										let lastId 	   = items[0].innerBlocks[ items[0].innerBlocks.length - 1 ].clientId;
 										let copyAttributes = {};
-										
+
 										if( lastId ){
 											const lastBlockClient 	= wp.data.select( 'core/editor' ).getBlockAttributes( lastId );
 											if( lastBlockClient.backgroundColor ){
@@ -95,7 +95,6 @@ class Edit extends Component {
 												} );
 											}
 										}
-										
 
 										let created = createBlock( 'coblocks/accordion-item', copyAttributes );
 										wp.data.dispatch( 'core/editor' ).insertBlock( created , undefined, clientId );
