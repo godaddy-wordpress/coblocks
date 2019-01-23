@@ -57,6 +57,12 @@ const blockAttributes = {
 	customColor: {
 		type: 'string',
 	},
+	backgroundColor: {
+		type: 'string',
+	},
+	customBackgroundColor: {
+		type: 'string',
+	},
 };
 
 const settings = {
@@ -77,9 +83,9 @@ const settings = {
 		{ name: 'angled', label: __( 'Angled' ), isDefault: true },
 		{ name: 'sloped', label: __( 'Sloped' ) },
 		{ name: 'rounded', label: __( 'Rounded' ) },
-		{ name: 'waves', label: __( 'Waves' ) },
+		{ name: 'wavy', label: __( 'Wavy' ) },
 		{ name: 'triangle', label: __( 'Triangle' ) },
-		{ name: 'mountains', label: __( 'Mountains' ) },
+		{ name: 'waves', label: __( 'Waves' ) },
 	],
 
 	transforms: {
@@ -129,6 +135,8 @@ const settings = {
 	// 		height,
 			// verticalFlip,
 			// horizontalFlip,
+			// backgroundColor,
+			// customBackgroundColor,
 	// 	} = attributes;
 
 	// 	const colorClass = getColorClassName( 'color', color );

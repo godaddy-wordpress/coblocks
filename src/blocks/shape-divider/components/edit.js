@@ -31,26 +31,26 @@ class Edit extends Component {
 	getDividerFromStyles( className ) {
 
 		const isStyleAngled = includes( className, 'is-style-angled' );
-		const isStyleWaves = includes( className, 'is-style-waves' );
+		const isStyleWavy = includes( className, 'is-style-wavy' );
 		const isStyleSloped = includes( className, 'is-style-sloped' );
 		const isStyleTriangle = includes( className, 'is-style-triangle' );
 		const isStyleRounded = includes( className, 'is-style-rounded' );
-		const isStyleMountains = includes( className, 'is-style-mountains' );
+		const isStyleWaves = includes( className, 'is-style-waves' );
 
 		let divdier = dividers.angled;
 
 		if ( isStyleAngled ) {
 			divdier = dividers.angled;
-		} else if ( isStyleWaves ) {
-			divdier = dividers.waves;
+		} else if ( isStyleWavy ) {
+			divdier = dividers.wavy;
 		} else if ( isStyleSloped ) {
 			divdier = dividers.sloped;
 		} else if ( isStyleTriangle ) {
 			divdier = dividers.triangle;
 		} else if ( isStyleRounded ) {
 			divdier = dividers.rounded;
-		} else if ( isStyleMountains ) {
-			divdier = dividers.mountains;
+		} else if ( isStyleWaves ) {
+			divdier = dividers.waves;
 		}
 
 		return divdier;
@@ -64,7 +64,7 @@ class Edit extends Component {
 			isSelected,
 			setAttributes,
 			toggleSelection,
-			setColor,
+			backgroundColor,
 			color,
 		} = this.props;
 
@@ -87,11 +87,13 @@ class Edit extends Component {
 							'is-selected': isSelected,
 							'is-vertically-flipped' : verticalFlip,
 							'is-horizontally-flipped' : horizontalFlip,
+							'has-background': backgroundColor.color,
 							'has-text-color': color.color,
 							[ color.class ]: color.class,
 						}
 					) }
 					style={ {
+						backgroundColor: backgroundColor.color,
 						color: color.color,
 					} }
 					size={ {

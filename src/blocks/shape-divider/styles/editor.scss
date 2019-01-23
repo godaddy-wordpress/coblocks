@@ -48,7 +48,7 @@
 				width: 100%;
 			}
 
-			&.divider--waves {
+			&.divider--wavy {
 				bottom: 2px;
 				height: 36px;
 			}
@@ -58,7 +58,7 @@
 				width: 100%;
 			}
 
-			&.divider--mountains {
+			&.divider--waves {
 				height: 36px;
 				left: -15%;
 				width: 130%;
@@ -68,18 +68,18 @@
 }
 
 .editor-block-preview {
+	&__content {
+		overflow: hidden;
+	}
 	.wp-block-coblocks-shape-divider {
-		transform: scale(1.12) !important;
-
-		&.is-vertically-flipped {
-			svg {
-				top: -13px !important;
-			}
-		}
+		height: 80px !important;
+		overflow: hidden;
+		top: -14px !important;
+		transform: scaleX(1.12) scaleY(1.4) !important;
 
 		svg {
+			bottom: 0 !important;
 			left: 0 !important;
-			bottom: -6px !important;
 			width: 100% !important;
 		}
 	}
