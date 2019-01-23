@@ -70,6 +70,7 @@ class Inspector extends Component {
 			paddingSyncUnitsTablet,
 			paddingSyncUnitsMobile,
 			paddingUnit,
+			maxWidth,
 		} = attributes;
 
 		return (
@@ -97,6 +98,14 @@ class Inspector extends Component {
 							syncUnitsTablet={ paddingSyncUnitsTablet }
 							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
+						/>
+						<RangeControl
+							label={ __( 'Max Width' ) }
+							value={ parseFloat( maxWidth ) }
+							onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: nextMaxWidth } ) }
+							min={ 400 }
+							max={ 1000 }
+							step={ 1 }
 						/>
 						{ mediaUrl && (
 							<TextareaControl

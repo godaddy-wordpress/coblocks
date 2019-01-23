@@ -153,6 +153,7 @@ class Edit extends Component {
 			mediaType,
 			mediaWidth,
 			mediaUrl,
+			maxWidth,
 			isStackedOnMobile,
 		} = attributes;
 

@@ -69,6 +69,9 @@ const blockAttributes = {
 	contentAlign: {
 		type: 'string',
 	},
+	maxWidth: {
+		type: 'number',
+	},
 	hasImgShadow: {
 		type: 'boolean',
 		default: false,
@@ -134,6 +137,7 @@ const settings = {
 			mediaUrl,
 			mediaWidth,
 			mediaId,
+			maxWidth,
 			isStackedOnMobile,
 		} = attributes;
 
