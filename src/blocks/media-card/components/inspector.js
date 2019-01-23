@@ -9,7 +9,7 @@ import DimensionsControl from '../../../components/dimensions-control/';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
@@ -72,6 +72,7 @@ class Inspector extends Component {
 			paddingUnit,
 			maxWidth,
 			align,
+			mediaType,
 		} = attributes;
 
 		return (
@@ -123,13 +124,13 @@ class Inspector extends Component {
 							className="components-block-coblocks-media-card-maxwidth-range"
 							checked={ !! hasCardShadow }
 							onChange={ () => setAttributes( {  hasCardShadow: ! hasCardShadow } ) }
-							help={ !! hasCardShadow ? __( 'Showing card shadow.' ) : __( 'Toggle to add a shadow to the card.' ) }
+							help={ !! hasCardShadow ? __( 'Showing card shadow.' ) : __( 'Toggle to add a card shadow.' ) }
 						/>
 						<ToggleControl
-							label={ __( 'Image Shadow' ) }
+							label={ sprintf( __( ' %s Shadow' ), mediaType.charAt(0).toUpperCase() + mediaType.slice(1) ) }
 							checked={ !! hasImgShadow }
 							onChange={ () => setAttributes( {  hasImgShadow: ! hasImgShadow } ) }
-							help={ !! hasImgShadow ? __( 'Showing image shadow.' ) : __( 'Toggle to add a shadow to the image.' ) }
+							help={ !! hasImgShadow ? sprintf( __( 'Showing %s shadow.' ), mediaType ) : sprintf( __( 'Toggle to add an %s shadow' ), mediaType ) }
 						/>
 					</PanelBody>
 					<PanelColorSettings
