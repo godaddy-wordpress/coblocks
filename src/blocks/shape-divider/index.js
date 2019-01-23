@@ -63,6 +63,14 @@ const blockAttributes = {
 	customBackgroundColor: {
 		type: 'string',
 	},
+	noBottomMargin: {
+		type: 'boolean',
+		default: true,
+	},
+	noTopMargin: {
+		type: 'boolean',
+		default: true,
+	},
 };
 
 const settings = {
