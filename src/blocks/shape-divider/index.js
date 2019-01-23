@@ -104,6 +104,15 @@ const settings = {
 				transform: () => createBlock( `coblocks/${ name }` ),
 			},
 		],
+		to: [
+			{
+				type: 'block',
+				blocks: [ 'core/spacer' ],
+				transform: ( { height } ) => createBlock( 'core/spacer', {
+					height: height,
+				} ),
+			},
+		],
 	},
 
 	edit: Edit,
