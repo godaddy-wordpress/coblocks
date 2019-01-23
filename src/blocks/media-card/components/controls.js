@@ -1,15 +1,14 @@
 /**
  * Internal dependencies
  */
-import icons from './../../../utils/icons';
+import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { AlignmentToolbar, BlockControls } = wp.editor;
-const { Toolbar } = wp.components;
 
 class Controls extends Component {
 
@@ -25,7 +24,6 @@ class Controls extends Component {
 		} = this.props;
 
 		const {
-			count,
 			contentAlign,
 		} = attributes;
 
@@ -36,25 +34,11 @@ class Controls extends Component {
 						value={ contentAlign }
 						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
 					/>
-					<Toolbar
-						className="coblocks__toolbar--numeral"
-						controls={ '123'.split( '' ).map( ( number ) => ( {
-							icon: icons.blank,
-							/* translators: %s: number of tables */
-							title: sprintf( __( '%s Tables' ), number ),
-							isActive: count == number,
-							subscript: number,
-							onClick: () =>
-								setAttributes( {
-									count: parseInt( number ),
-								} )
-							} )
-						) }
-					/>
+					{ BackgroundImageToolbarControls( this.props ) }
 				</BlockControls>
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Controls;

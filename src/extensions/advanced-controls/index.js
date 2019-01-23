@@ -4,11 +4,18 @@
 import classnames from 'classnames';
 
 /**
+ * Internal Dependencies
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
+
+/**
  * WordPress Dependencies
  */
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
 const { Fragment }	= wp.element;
+const { withSelect } = wp.data;
 const { hasBlockSupport }	= wp.blocks;
 const { InspectorAdvancedControls }	= wp.editor;
 const { compose, createHigherOrderComponent } = wp.compose;
@@ -29,6 +36,21 @@ function addAttributes( settings ) {
 				isStackedOnMobile: {
 					type: 'boolean',
 					default: true,
+				}
+			} );
+		}
+	}
+
+	if ( hasBlockSupport( settings, 'coBlocksBlockSpacing' ) ) {
+		if( typeof settings.attributes !== 'undefined' ){
+			settings.attributes = Object.assign( settings.attributes, {
+				noBottomMargin: {
+					type: 'boolean',
+					default: false,
+				},
+				noTopMargin: {
+					type: 'boolean',
+					default: false,
 				}
 			} );
 		}
@@ -56,29 +78,134 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const {
 			isStackedOnMobile,
+			noBottomMargin,
+			noTopMargin,
 		} = attributes;
 
 		const hasStackedControl = hasBlockSupport( name, 'stackedOnMobile' );
+		const withBlockSpacing = hasBlockSupport( name, 'coBlocksBlockSpacing' );
 
-		if ( hasStackedControl && isSelected ) {
-			return (
-				<Fragment>
-					<BlockEdit {...props} />
+		return (
+			<Fragment>
+				<BlockEdit {...props} />
+				{ isSelected && 
 					<InspectorAdvancedControls>
-						<ToggleControl
-							label={ __( 'Stack on mobile' ) }
-							checked={ !! isStackedOnMobile }
-							onChange={ () => setAttributes( {  isStackedOnMobile: ! isStackedOnMobile } ) }
-							help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
-						/>
+						{ hasStackedControl &&  
+							<ToggleControl
+								label={ __( 'Stack on mobile' ) }
+								checked={ !! isStackedOnMobile }
+								onChange={ () => setAttributes( {  isStackedOnMobile: ! isStackedOnMobile } ) }
+								help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
+							/>
+						}
+						{ withBlockSpacing &&  
+							<ToggleControl
+								label={ __( 'No top spacing' ) }
+								checked={ !! noTopMargin }
+								onChange={ () => setAttributes( {  noTopMargin: ! noTopMargin, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } ) }
+								help={ !! noTopMargin ? __( 'Top margin is removed on this block.' ) : __( 'Toggle to remove any top margin applied to this block.' ) }
+							/>
+						}
+						{ withBlockSpacing &&
+							<ToggleControl
+								label={ __( 'No bottom spacing' ) }
+								checked={ !! noBottomMargin }
+								onChange={ () => setAttributes( {  noBottomMargin: ! noBottomMargin, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0  } ) }
+								help={ !! noBottomMargin ? __( 'Bottom margin is removed on this block.' ) : __( 'Toggle to remove any bottom margin applied to this block.' ) }
+							/>
+						}
 					</InspectorAdvancedControls>
-				</Fragment>
-			);
-		}
-
-		return <BlockEdit { ...props } />;
+				}
+				
+			</Fragment>
+		);
 	};
 }, 'withAdvancedControls');
+
+/**
+ * Override props assigned to save component to inject atttributes
+ *
+ * @param {Object} extraProps Additional props applied to save element.
+ * @param {Object} blockType  Block type.
+ * @param {Object} attributes Current block attributes.
+ *
+ * @return {Object} Filtered props applied to save element.
+ */
+function applySpacingClass(extraProps, blockType, attributes) {
+
+	const withBlockSpacing = hasBlockSupport( blockType.name, 'coBlocksBlockSpacing' );
+
+	if ( withBlockSpacing ) {
+
+		const { noBottomMargin, noTopMargin } = attributes;
+
+		if ( typeof noBottomMargin !== 'undefined' && noBottomMargin ) {
+			extraProps.className = classnames( extraProps.className, 'mb-0' );
+		}
+
+		if ( typeof noTopMargin !== 'undefined' && noTopMargin ) {
+			extraProps.className = classnames( extraProps.className, 'mt-0' );
+		}
+	}
+
+	return extraProps;
+}
+
+/**
+ * Override the default block element to add	wrapper props.
+ *
+ * @param  {Function} BlockListBlock Original component
+ * @return {Function} Wrapped component
+ */
+
+const enhance = compose(
+	/**
+	 * For blocks whose block type doesn't support `multiple`, provides the
+	 * wrapped component with `originalBlockClientId` -- a reference to the
+	 * first block of the same type in the content -- if and only if that
+	 * "original" block is not the current one. Thus, an inexisting
+	 * `originalBlockClientId` prop signals that the block is valid.
+	 *
+	 * @param {Component} WrappedBlockEdit A filtered BlockEdit instance.
+	 *
+	 * @return {Component} Enhanced component with merged state data props.
+	 */
+	withSelect( ( select, block ) => {
+		return { selected : select( 'core/editor' ).getSelectedBlock(), select: select };
+	} )
+);
+
+const addEditorBlockAttributes = createHigherOrderComponent( (BlockListBlock) => {
+	return enhance( ( { selected, select, ...props } ) => {
+
+		let wrapperProps 	= props.wrapperProps;
+		let customData 	 	= {};
+		let attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
+		let blockName		= select( 'core/editor' ).getBlockName( props.clientId );
+
+		const withBlockSpacing = hasBlockSupport( blockName, 'coBlocksBlockSpacing' );
+
+		if ( withBlockSpacing ) {
+
+			const { noBottomMargin, noTopMargin } = attributes;
+
+			if ( typeof noTopMargin !== 'undefined' && noTopMargin ) {
+				customData = Object.assign( customData, { 'data-no-top-margin': 1 } );
+			}
+
+			if ( typeof noBottomMargin !== 'undefined' && noBottomMargin ) {
+				customData = Object.assign( customData, { 'data-no-bottom-margin': 1 } );
+			}
+
+			wrapperProps = {
+				...wrapperProps,
+				...customData,
+			};
+		}
+
+		return <BlockListBlock {...props} wrapperProps={wrapperProps} />;
+	} );
+}, 'addEditorBlockAttributes');
 
 addFilter(
 	'blocks.registerBlockType',
@@ -86,9 +213,20 @@ addFilter(
 	addAttributes
 );
 
-
 addFilter(
 	'editor.BlockEdit',
 	'coblocks/advanced',
 	withAdvancedControls
+);
+
+addFilter(
+	'blocks.getSaveContent.extraProps',
+	'coblocks/applySpacingClass',
+	applySpacingClass
+);
+
+addFilter(
+	'editor.BlockListBlock',
+	'coblocks/addEditorBlockAttributes',
+	addEditorBlockAttributes
 );

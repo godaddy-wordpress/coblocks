@@ -44,7 +44,7 @@ import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';
 import * as social from './blocks/social';
 import * as map from './blocks/map';
-import * as shapeDivider from './blocks/shape-divider';
+import * as mediaCard from './blocks/media-card';
 
 export function registerBlocks () {
 	[
@@ -63,7 +63,7 @@ export function registerBlocks () {
 		row,
 		social,
 		map,
-		shapeDivider,
+		mediaCard,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {
