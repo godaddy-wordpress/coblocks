@@ -41,7 +41,7 @@ function addAttributes( settings ) {
 		}
 	}
 
-	if ( hasBlockSupport( settings, 'coBlocksBlockSpacing' ) ) {
+	if ( hasBlockSupport( settings, 'coBlocksSpacing' ) ) {
 		if( typeof settings.attributes !== 'undefined' ){
 			settings.attributes = Object.assign( settings.attributes, {
 				noBottomMargin: {
@@ -83,14 +83,14 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		} = attributes;
 
 		const hasStackedControl = hasBlockSupport( name, 'stackedOnMobile' );
-		const withBlockSpacing = hasBlockSupport( name, 'coBlocksBlockSpacing' );
+		const withBlockSpacing = hasBlockSupport( name, 'coBlocksSpacing' );
 
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
-				{ isSelected && 
+				{ isSelected &&
 					<InspectorAdvancedControls>
-						{ hasStackedControl &&  
+						{ hasStackedControl &&
 							<ToggleControl
 								label={ __( 'Stack on mobile' ) }
 								checked={ !! isStackedOnMobile }
@@ -98,7 +98,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 								help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
 							/>
 						}
-						{ withBlockSpacing &&  
+						{ withBlockSpacing &&
 							<ToggleControl
 								label={ __( 'No top spacing' ) }
 								checked={ !! noTopMargin }
@@ -116,7 +116,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 						}
 					</InspectorAdvancedControls>
 				}
-				
+
 			</Fragment>
 		);
 	};
@@ -133,7 +133,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
  */
 function applySpacingClass(extraProps, blockType, attributes) {
 
-	const withBlockSpacing = hasBlockSupport( blockType.name, 'coBlocksBlockSpacing' );
+	const withBlockSpacing = hasBlockSupport( blockType.name, 'coBlocksSpacing' );
 
 	if ( withBlockSpacing ) {
 
@@ -183,7 +183,7 @@ const addEditorBlockAttributes = createHigherOrderComponent( (BlockListBlock) =>
 		let attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
 		let blockName		= select( 'core/editor' ).getBlockName( props.clientId );
 
-		const withBlockSpacing = hasBlockSupport( blockName, 'coBlocksBlockSpacing' );
+		const withBlockSpacing = hasBlockSupport( blockName, 'coBlocksSpacing' );
 
 		if ( withBlockSpacing ) {
 
