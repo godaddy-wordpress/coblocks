@@ -1,0 +1,58 @@
+.editor-block-list__block[data-type="coblocks/divider"] {
+	.wp-block-coblocks-divider {
+		svg {
+			bottom: 0;
+			fill: currentColor;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			width: 100%;
+		}
+	}
+}
+
+.editor-block-styles__item-preview {
+	.wp-block-coblocks-divider {
+		height: 60px !important;
+		transform: scale(1.45);
+
+		svg {
+			bottom: 0;
+			height: 60px;
+			position: absolute;
+			width: 150%;
+			fill: currentColor;
+
+			&.divider--angled {
+				height: 36px;
+				width: 130%;
+			}
+
+			&.divider--sloped {
+				height: 30px;
+				width: 100%;
+			}
+
+			&.divider--rounded {
+				bottom: 2px;
+				height: 26px;
+				width: 100%;
+			}
+
+			&.divider--waves {
+				bottom: 2px;
+				height: 36px;
+			}
+
+			&.divider--triangle {
+				height: 30px;
+				width: 100%;
+			}
+
+			&.divider--mountains {
+				height: 36px;
+				width: 130%;
+			}
+		}
+	}
+}
