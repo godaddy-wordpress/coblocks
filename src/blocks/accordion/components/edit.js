@@ -11,7 +11,7 @@ import memoize from 'memize';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.editor;
-const { Button } = wp.components;
+const { Button, IconButton } = wp.components;
 const { createBlock } = wp.blocks;
 
 /**
@@ -53,10 +53,9 @@ class Edit extends Component {
 
 		const {
 			count,
-			contentAlign,
 		} = attributes;
 
-		const items 	= wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
+		const items = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
 
 		return [
 			<Fragment>
@@ -64,20 +63,21 @@ class Edit extends Component {
 					<InnerBlocks
 						template={ getCount( count ) }
 						allowedBlocks={ ALLOWED_BLOCKS } />
-					<div className="components-coblocks-accordion-add__container" >
-						<Button
-							className="components-coblocks-add__button"
-							isSmall
-							onClick={ () => {
-								if( items[0].innerBlocks ){
-									let created = createBlock( 'coblocks/accordion-item' );
-									wp.data.dispatch( 'core/editor' ).insertBlock( created , undefined, clientId );
-								}
-							} }
-						>
-							+
-						</Button>
-					</div>
+						<div className="components-coblocks-add-accordion-item">
+							<IconButton
+								isLarge
+								className="components-coblocks-add-accordion-item__button"
+								label={ __( 'Add Accordion Item' ) }
+								icon="insert"
+								onClick={ () => {
+									if ( items[0].innerBlocks ) {
+										let created = createBlock( 'coblocks/accordion-item' );
+										wp.data.dispatch( 'core/editor' ).insertBlock( created , undefined, clientId );
+									}
+								} } >
+								{ __( 'Add Accordion Item' ) }
+							</IconButton>
+						</div>
 				</div>
 			</Fragment>
 		];
