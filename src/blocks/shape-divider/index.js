@@ -22,16 +22,16 @@ const { getColorClassName } = wp.editor;
 /**
  * Block constants
  */
-const name = 'divider';
+const name = 'shape-divider';
 
-const title = __( 'Divider' );
+const title = __( 'Shape Divider' );
 
 const icon = icons.hr;
 
 const keywords = [
 	__( 'hr' ),
 	__( 'separator' ),
-	__( 'coblocks' ),
+	__( 'shape' ),
 ];
 
 const blockAttributes = {

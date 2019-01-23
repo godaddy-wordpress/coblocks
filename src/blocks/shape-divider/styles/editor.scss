@@ -1,5 +1,5 @@
-.editor-block-list__block[data-type="coblocks/divider"] {
-	.wp-block-coblocks-divider {
+.editor-block-list__block[data-type="coblocks/shape-divider"] {
+	.wp-block-coblocks-shape-divider {
 		svg {
 			bottom: 0;
 			fill: currentColor;
@@ -12,7 +12,7 @@
 }
 
 .editor-block-styles__item-preview {
-	.wp-block-coblocks-divider {
+	.wp-block-coblocks-shape-divider {
 		height: 60px !important;
 		transform: scale(1.45);
 
