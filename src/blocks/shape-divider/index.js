@@ -95,6 +95,7 @@ const settings = {
 		{ name: 'rounded', label: __( 'Rounded' ) },
 		{ name: 'angled', label: __( 'Angled' ) },
 		{ name: 'triangle', label: __( 'Triangle' ) },
+		{ name: 'pointed', label: __( 'Pointed' ) },
 	],
 
 	transforms: {
@@ -212,6 +213,26 @@ const settings = {
 				transform: function() {
 					return createBlock( `coblocks/${ name }`, {
 						className: 'is-style-triangle',
+						verticalFlip: true,
+					} );
+				},
+			},
+			// Pointed.
+			...[ ':pointed-divider', ':top-pointed-divider' ].map( ( prefix ) => ( {
+				type: 'prefix',
+				prefix,
+				transform() {
+					return createBlock( `coblocks/${ name }`, {
+						className: 'is-style-pointed',
+					} );
+				},
+			} ) ),
+			{
+				type: 'prefix',
+				prefix: ':bottom-pointed-divider',
+				transform: function() {
+					return createBlock( `coblocks/${ name }`, {
+						className: 'is-style-pointed',
 						verticalFlip: true,
 					} );
 				},

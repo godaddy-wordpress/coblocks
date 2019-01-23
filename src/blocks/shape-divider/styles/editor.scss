@@ -63,6 +63,12 @@
 				left: -15%;
 				width: 130%;
 			}
+
+			&.divider--pointed {
+				bottom: 2px;
+				height: 30px;
+				width: 100%;
+			}
 		}
 	}
 }

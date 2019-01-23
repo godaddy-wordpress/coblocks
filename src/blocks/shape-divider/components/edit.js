@@ -37,6 +37,7 @@ class Edit extends Component {
 		const isStyleRounded = includes( className, 'is-style-rounded' );
 		const isStyleAngled = includes( className, 'is-style-angled' );
 		const isStyleTriangle = includes( className, 'is-style-triangle' );
+		const isStylePointed = includes( className, 'is-style-pointed' );
 
 		let divdier = dividers.wavy;
 
@@ -52,6 +53,8 @@ class Edit extends Component {
 			divdier = dividers.rounded;
 		} else if ( isStyleWaves ) {
 			divdier = dividers.waves;
+		} else if ( isStylePointed ) {
+			divdier = dividers.pointed;
 		}
 
 		return divdier;

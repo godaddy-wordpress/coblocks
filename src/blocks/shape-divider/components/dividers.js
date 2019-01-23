@@ -27,5 +27,9 @@ dividers.angled =
 dividers.triangle =
 <svg className="divider--triangle" height="100%" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="m0 0 50 100 50-100z" fill-rule="evenodd" transform="matrix(1 0 0 -1 0 100)"/></svg>
 
+dividers.pointed =
+<svg className="divider--pointed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+	<path d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
+</svg>
 
 export default dividers;
