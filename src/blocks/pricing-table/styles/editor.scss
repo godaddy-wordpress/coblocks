@@ -11,10 +11,9 @@
 			> .editor-block-list__layout {
 				@media (min-width: 600px) {
 					display: flex;
+					flex: 0 1 auto;
 					flex-direction: row;
 					flex-wrap: wrap;
-					flex: 0 1 auto;
-					height: calc(100% - 36px);
 					position: relative;
 				}
 			}
