@@ -216,8 +216,8 @@
 		background: #535c65;
 		display: block;
 		height: 50px;
-		width: 100%;
 		margin-left: -15px;
+		width: 100%;
 	}
 
 	.wp-block-coblocks-media-card,
@@ -254,4 +254,8 @@
 	.editor-block-toolbar .components-toolbar:nth-child(2) {
 		display: none;
 	}
+}
+
+.components-block-coblocks-media-card-maxwidth-range {
+	margin-bottom: 0.7em;
 }

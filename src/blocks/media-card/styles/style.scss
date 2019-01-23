@@ -1,14 +1,13 @@
 .wp-block-coblocks-media-card {
-	@media (min-width: #{ ($break-smallest) }) and (max-width: #{ ($break-small) }) {
-		overflow: hidden;
-	}
-
 	&__inner {
 		align-items: center;
 		display: grid;
 		grid-template-areas: "media-text-media media-text-content";
 		grid-template-columns: 55% auto;
 		grid-template-rows: auto;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 0 !important;
 		position: relative;
 	}
 
@@ -21,7 +20,6 @@
 		grid-area: media-text-media;
 		margin: 0;
 		position: relative;
-		z-index: -1;
 
 		.has-no-media & {
 			align-items: center;
@@ -107,7 +105,6 @@
 
 	@media (max-width: #{ ($break-small) }) {
 		&.is-stacked-on-mobile &__inner {
-			display: block;
 			grid-template-areas: "media-text-media" "media-text-content";
 			grid-template-columns: 100% !important;
 		}
