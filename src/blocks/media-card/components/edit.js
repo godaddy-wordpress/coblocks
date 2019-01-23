@@ -21,8 +21,7 @@ import MediaContainer from './media-container';
 const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { withSelect } = wp.data;
-const { RichText, URLInput, MediaUpload, MediaPlaceholder, mediaUpload, InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.editor;
 const { IconButton, DropZone } = wp.components;
 
 /**
@@ -254,7 +253,4 @@ class Edit extends Component {
 
 export default compose( [
 	applyWithColors,
-	withSelect( ( select ) => ( {
-		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
-	} ) ),
 ] )( Edit );

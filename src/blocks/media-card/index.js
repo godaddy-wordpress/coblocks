@@ -13,7 +13,6 @@ import './styles/editor.scss';
 import icons from './../../utils/icons';
 import Edit from './components/edit';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
-import ResizableSpacer, { ResizableSpacerTransforms } from '../../components/resizable-spacer/';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**
@@ -21,7 +20,7 @@ import DimensionsAttributes from '../../components/dimensions-control/attributes
  */
 const { __ } = wp.i18n;
 const { createBlock, getBlockType } = wp.blocks;
-const { RichText, getColorClassName, getFontSizeClass, InnerBlocks } = wp.editor;
+const { getColorClassName, InnerBlocks } = wp.editor;
 
 /**
  * Block constants
