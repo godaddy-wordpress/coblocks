@@ -10,6 +10,12 @@
 	.editor-block-list__block-edit {
 		margin-top: 0 !important;
 	}
+
+	+ .editor-block-list__block[data-no-bottom-margin="1"] {
+		> .editor-block-list__insertion-point {
+			display: none;
+		}
+	}
 }
 
 .editor-block-list__block[data-no-bottom-margin="1"] {
