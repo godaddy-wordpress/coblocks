@@ -11,6 +11,8 @@ import memoize from 'memize';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.editor;
+const { Button } = wp.components;
+const { createBlock } = wp.blocks;
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -42,6 +44,7 @@ class Edit extends Component {
 	render() {
 
 		const {
+			clientId,
 			attributes,
 			className,
 			isSelected,
@@ -53,12 +56,28 @@ class Edit extends Component {
 			contentAlign,
 		} = attributes;
 
+		const items 	= wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
+
 		return [
 			<Fragment>
 				<div className={ className }>
 					<InnerBlocks
 						template={ getCount( count ) }
 						allowedBlocks={ ALLOWED_BLOCKS } />
+					<div className="components-coblocks-accordion-add__container" >
+						<Button
+							className="components-coblocks-add__button"
+							isSmall
+							onClick={ () => {
+								if( items[0].innerBlocks ){
+									let created = createBlock( 'coblocks/accordion-item' );
+									wp.data.dispatch( 'core/editor' ).insertBlock( created , undefined, clientId );
+								}
+							} }
+						>
+							+
+						</Button>
+					</div>
 				</div>
 			</Fragment>
 		];
