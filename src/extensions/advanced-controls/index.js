@@ -7,6 +7,7 @@ import classnames from 'classnames';
  * Internal Dependencies
  */
 import './styles/editor.scss';
+import './styles/style.scss';
 
 /**
  * WordPress Dependencies
