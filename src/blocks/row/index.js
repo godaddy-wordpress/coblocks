@@ -94,6 +94,7 @@ const settings = {
 		align: [ 'wide', 'full' ],
 		anchor: true,
 		stackedOnMobile: true,
+		coBlocksBlockSpacing: true,
 	},
 
 	transforms: {

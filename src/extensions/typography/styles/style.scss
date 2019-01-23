@@ -1,13 +1,46 @@
+//Custom font family block fixes
+.has-custom-font{
+	@at-root{
+		ul#{&}{
+			li{
+				font-family: inherit;
+			}
+		}
+		blockquote#{&}{
+			p, cite{
+				font-family: inherit !important;
+			}
+		}
+	}
+	&.wp-block-cover {
+		p {
+			font-family: inherit !important;
+		}
+	}
+	&.wp-block-button {
+		.wp-block-button__link {
+			font-family: inherit !important;
+		}
+	}
+	&.wp-block-coblocks-click-to-tweet{
+		.wp-block-coblocks-click-to-tweet__text{
+			font-family: inherit;
+		}
+	}
+	&.wp-block-coblocks-pricing-table{
+		.wp-block-coblocks-pricing-table__inner{
+			.wp-block-coblocks-pricing-table-item__title,
+			.wp-block-coblocks-pricing-table-item__amount{
+				font-family: inherit;
+			}
+		}
+	}
+}
+
 .wp-block-cover {
 	&.has-custom-size {
 		p {
 			font-size: inherit !important;
-		}
-	}
-
-	&.has-custom-font {
-		p {
-			font-family: inherit !important;
 		}
 	}
 
@@ -30,12 +63,6 @@
 			font-size: inherit;
 		}
 	}
-
-	&.has-custom-font {
-		.wp-block-button__link {
-			font-family: inherit !important;
-		}
-	}
 }
 
 ul{
@@ -47,12 +74,6 @@ ul{
 	&.has-custom-size {
 		li{
 			font-size: inherit;
-		}
-	}
-
-	&.has-custom-font {
-		li{
-			font-family: inherit;
 		}
 	}
 }

@@ -63,6 +63,12 @@
 			}
 		}
 	}
+	.wp-block-coblocks-pricing-table{
+		.wp-block-coblocks-pricing-table-item__title,
+		.wp-block-coblocks-pricing-table-item__amount{
+			font-family: inherit;
+		}
+	}
 }
 
 .editor-block-list__block[data-custom-fontweight="1"] {
