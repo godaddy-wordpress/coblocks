@@ -70,7 +70,32 @@ class Edit extends Component {
 							isSmall
 							onClick={ () => {
 								if( items[0].innerBlocks ){
-									let created = createBlock( 'coblocks/accordion-item' );
+									let lastId 	= items[0].innerBlocks[ items[0].innerBlocks.length - 1 ].clientId;
+									let copyAttributes = {};
+									
+									if( lastId ){
+										const lastBlockClient 	= wp.data.select( 'core/editor' ).getBlockAttributes( lastId );
+										if( lastBlockClient.backgroundColor ){
+											copyAttributes = Object.assign( copyAttributes, {
+												backgroundColor: lastBlockClient.backgroundColor
+											} );
+										}
+
+										if( lastBlockClient.borderColor ){
+											copyAttributes = Object.assign( copyAttributes, {
+												borderColor: lastBlockClient.borderColor
+											} );
+										}
+
+										if( lastBlockClient.customTextColor ){
+											copyAttributes = Object.assign( copyAttributes, {
+												customTextColor: lastBlockClient.customTextColor
+											} );
+										}
+									}
+									
+
+									let created = createBlock( 'coblocks/accordion-item', copyAttributes );
 									wp.data.dispatch( 'core/editor' ).insertBlock( created , undefined, clientId );
 								}
 							} }
