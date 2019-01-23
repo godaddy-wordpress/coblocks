@@ -10,6 +10,36 @@ div {
 					margin-bottom: 0;
 				}
 			}
+
+			//Assign gutter as margin 
+			&.has-small-gutter{
+				> [class*="wp-block-coblocks-"] {
+					&:not(:last-child) {
+						margin-bottom: $gutter--small;
+					}
+				}
+			}
+			&.has-medium-gutter{
+				> [class*="wp-block-coblocks-"] {
+					&:not(:last-child) {
+						margin-bottom: $gutter--medium;
+					}
+				}
+			}
+			&.has-large-gutter{
+				> [class*="wp-block-coblocks-"] {
+					&:not(:last-child) {
+						margin-bottom: $gutter--large;
+					}
+				}
+			}
+			&.has-huge-gutter{
+				> [class*="wp-block-coblocks-"] {
+					&:not(:last-child) {
+						margin-bottom: $gutter--huge;
+					}
+				}
+			}
 		}
 	}
 }
