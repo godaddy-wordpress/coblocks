@@ -163,18 +163,25 @@ const settings = {
 			'is-stacked-on-mobile': isStackedOnMobile,
 		} );
 
-		const innerClasses = classnames(
-			'wp-block-coblocks-media-card__inner',
+		const wrapperClasses = classnames(
+			'wp-block-coblocks-media-card__wrapper',
 			...BackgroundClasses( attributes ), {
+		} );
+
+		const wrapperStyles = {
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+		};
+
+		const innerClasses = classnames(
+			'wp-block-coblocks-media-card__inner', {
 			'has-padding': paddingSize && paddingSize != 'no',
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 		} );
 
 		const innerStyles = {
 			gridTemplateColumns,
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-
+			maxWidth: maxWidth ? maxWidth : undefined,
 		};
 
 		const cardBackgroundClasses = classnames(
@@ -186,22 +193,22 @@ const settings = {
 			textAlign: contentAlign ? contentAlign : null,
 		};
 
-
 		return (
 			<div className={ classes }>
-				<div className={ innerClasses } style={ innerStyles }>
-					<figure className={ classnames(
-							'wp-block-coblocks-media-card__media', {
-								'has-shadow': hasImgShadow,
-							}
-						) }
-					>
-						{ ( mediaTypeRenders[ mediaType ] || noop )() }
-
-						{ ! mediaUrl ? icons.logo : null }
-					</figure>
-					<div className={ cardBackgroundClasses } style={ cardStyles }>
-						<InnerBlocks.Content />
+				<div className={ wrapperClasses } style={ wrapperStyles } >
+					<div className={ innerClasses } style={ innerStyles }>
+						<figure className={ classnames(
+								'wp-block-coblocks-media-card__media', {
+									'has-shadow': hasImgShadow,
+								}
+							) }
+						>
+							{ ( mediaTypeRenders[ mediaType ] || noop )() }
+							{ ! mediaUrl ? icons.logo : null }
+						</figure>
+						<div className={ cardBackgroundClasses } style={ cardStyles }>
+							<InnerBlocks.Content />
+						</div>
 					</div>
 				</div>
 			</div>

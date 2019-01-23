@@ -171,26 +171,34 @@ class Edit extends Component {
 			/>
 		);
 
-		const innerClasses = classnames(
-			'wp-block-coblocks-media-card__inner',
-			...BackgroundClasses( attributes ), {
-			'has-padding': paddingSize && paddingSize != 'no',
-			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
-		} );
-
 		const temporaryMediaWidth = this.state.mediaWidth;
 		const widthString = `${ temporaryMediaWidth || mediaWidth }%`;
 		const isStyleRight = includes( className, 'is-style-right' );
 		const mediaPosition = isStyleRight ? 'right' : 'left';
 
-		const innerStyles = {
-			gridTemplateColumns: 'right' === mediaPosition ? `auto ${ widthString }` : `${ widthString } auto`,
+		const wrapperClasses = classnames(
+			'wp-block-coblocks-media-card__wrapper',
+			...BackgroundClasses( attributes ), {
+		} );
+
+		const wrapperStyles = {
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+		};
+
+		const innerClasses = classnames(
+			'wp-block-coblocks-media-card__inner', {
+			'has-padding': paddingSize && paddingSize != 'no',
+			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
+		} );
+
+		const innerStyles = {
+			gridTemplateColumns: 'right' === mediaPosition ? `auto ${ widthString }` : `${ widthString } auto`,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+			maxWidth: maxWidth ? maxWidth : undefined,
 		};
 
 		return [
@@ -209,8 +217,6 @@ class Edit extends Component {
 				<div
 					className={ classnames(
 						className, {
-							'has-background': backgroundColor.color,
-							[ backgroundColor.class ]: backgroundColor.class,
 							[ `coblocks-media-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 							'has-no-media': ! mediaUrl || null,
 							'is-selected': isSelected,
@@ -218,23 +224,25 @@ class Edit extends Component {
 						}
 					) }
 				>
-					<div className={ innerClasses } style={ innerStyles } >
-						{ this.renderMediaArea() }
-						<div
-							className={ classnames(
-								'wp-block-coblocks-media-card__content', {
-									'has-shadow': hasCardShadow,
-								}
-							) }
-							style={ { textAlign: contentAlign } }
-						>
-							{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
-								<InnerBlocks
-									template={ TEMPLATE }
-									allowedBlocks={ ALLOWED_BLOCKS }
-									templateLock={ true }
-								/>
-							) }
+					<div className={ wrapperClasses } style={ wrapperStyles } >
+						<div className={ innerClasses } style={ innerStyles } >
+							{ this.renderMediaArea() }
+							<div
+								className={ classnames(
+									'wp-block-coblocks-media-card__content', {
+										'has-shadow': hasCardShadow,
+									}
+								) }
+								style={ { textAlign: contentAlign } }
+							>
+								{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
+									<InnerBlocks
+										template={ TEMPLATE }
+										allowedBlocks={ ALLOWED_BLOCKS }
+										templateLock={ true }
+									/>
+								) }
+							</div>
 						</div>
 					</div>
 				</div>
