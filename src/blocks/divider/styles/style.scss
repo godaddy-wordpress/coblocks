@@ -1,57 +1,13 @@
-.wp-block-coblocks-dynamic-separator {
-	background: none;
-	border: 0;
-	margin: 0 0 1.5em;
-	opacity: 1;
-	padding: 0;
-	position: relative;
-	width: 100%;
-
-	&::before {
-		content: "...";
-		display: inline-block;
-		font-size: 22px;
-		font-weight: 400;
-		left: 0;
-		letter-spacing: 0.95em;
-		line-height: 1;
-		margin-right: auto;
-		margin-left: 21px;
-		position: absolute;
-		right: 0;
-		text-align: center;
-		top: calc(50% - 18px);
+.wp-block-coblocks-divider {
+	&.is-vertically-flipped svg {
+		transform: scaleY(-1);
 	}
 
-	&.is-style-line::before,
-	&.is-style-fullwidth::before {
-		content: "";
-		width: 15vw;
-		max-width: 120px;
-		height: 1px;
-		display: block;
-		top: 50%;
-		margin-left: auto;
-		background: currentColor;
+	&.is-horizontally-flipped svg {
+		transform: scaleX(-1);
 	}
 
-	&.is-style-fullwidth::before {
-		max-width: 100%;
-		width: 100%;
-	}
-
-	&:not(.has-text-color) {
-
-		&::before {
-			color: $black;
-		}
-	}
-
-	&.is-style-line:not(.has-text-color),
-	&.is-style-fullwidth:not(.has-text-color) {
-
-		&::before {
-			background: $lightgray;
-		}
+	&.is-horizontally-flipped.is-vertically-flipped svg {
+		transform: scaleX(-1) scaleY(-1);
 	}
 }

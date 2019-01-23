@@ -39,6 +39,14 @@ const blockAttributes = {
 		type: 'number',
 		default: 50,
 	},
+	verticalFlip: {
+		type: 'boolean',
+		default: false,
+	},
+	horizontalFlip: {
+		type: 'boolean',
+		default: false,
+	},
 	color: {
 		type: 'string',
 	},
@@ -113,6 +121,8 @@ const settings = {
 	// 		color,
 	// 		customColor,
 	// 		height,
+			// verticalFlip,
+			// horizontalFlip,
 	// 	} = attributes;
 
 	// 	const colorClass = getColorClassName( 'color', color );

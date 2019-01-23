@@ -70,6 +70,8 @@ class Edit extends Component {
 
 		const {
 			height,
+			verticalFlip,
+			horizontalFlip,
 		} = attributes;
 
 		return [
@@ -83,6 +85,8 @@ class Edit extends Component {
 					className={ classnames(
 						className, {
 							'is-selected': isSelected,
+							'is-vertically-flipped' : verticalFlip,
+							'is-horizontally-flipped' : horizontalFlip,
 							'has-text-color': color.color,
 							[ color.class ]: color.class,
 						}

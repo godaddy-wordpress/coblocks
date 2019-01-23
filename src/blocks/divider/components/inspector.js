@@ -10,7 +10,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, PanelColorSettings } = wp.editor;
-const { PanelBody, BaseControl, withFallbackStyles } = wp.components;
+const { PanelBody, BaseControl, withFallbackStyles, ToggleControl} = wp.components;
 
 /**
  * Contrast checker
@@ -53,13 +53,24 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
-			height,
+			horizontalFlip,
+			verticalFlip,
 		} = attributes;
 
 		return (
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Divider Settings' ) }>
+						<ToggleControl
+							label={ __( 'Horizontal Flip' ) }
+							checked={ !! horizontalFlip }
+							onChange={ () => setAttributes( {  horizontalFlip: ! horizontalFlip } ) }
+						/>
+						<ToggleControl
+							label={ __( 'Vertical Flip' ) }
+							checked={ !! verticalFlip }
+							onChange={ () => setAttributes( {  verticalFlip: ! verticalFlip } ) }
+						/>
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }

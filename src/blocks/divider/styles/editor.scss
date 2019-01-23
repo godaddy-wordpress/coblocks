@@ -16,15 +16,23 @@
 		height: 60px !important;
 		transform: scale(1.45);
 
+		&.is-vertically-flipped {
+			svg {
+				bottom: inherit;
+				top: 0;
+			}
+		}
+
 		svg {
 			bottom: 0;
+			fill: currentColor;
 			height: 60px;
 			position: absolute;
 			width: 150%;
-			fill: currentColor;
 
 			&.divider--angled {
 				height: 36px;
+				left: -15%;
 				width: 130%;
 			}
 
@@ -51,6 +59,7 @@
 
 			&.divider--mountains {
 				height: 36px;
+				left: -15%;
 				width: 130%;
 			}
 		}
