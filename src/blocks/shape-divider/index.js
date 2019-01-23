@@ -81,12 +81,12 @@ const settings = {
 	},
 
 	styles: [
-		{ name: 'angled', label: __( 'Angled' ), isDefault: true },
+		{ name: 'wavy', label: __( 'Wavy' ), isDefault: true },
+		{ name: 'waves', label: __( 'Waves' ) },
 		{ name: 'sloped', label: __( 'Sloped' ) },
 		{ name: 'rounded', label: __( 'Rounded' ) },
-		{ name: 'wavy', label: __( 'Wavy' ) },
+		{ name: 'angled', label: __( 'Angled' ) },
 		{ name: 'triangle', label: __( 'Triangle' ) },
-		{ name: 'waves', label: __( 'Waves' ) },
 	],
 
 	transforms: {

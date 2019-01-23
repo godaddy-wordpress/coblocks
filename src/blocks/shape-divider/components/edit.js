@@ -30,14 +30,15 @@ class Edit extends Component {
 
 	getDividerFromStyles( className ) {
 
-		const isStyleAngled = includes( className, 'is-style-angled' );
+		// Check for the block style.
 		const isStyleWavy = includes( className, 'is-style-wavy' );
-		const isStyleSloped = includes( className, 'is-style-sloped' );
-		const isStyleTriangle = includes( className, 'is-style-triangle' );
-		const isStyleRounded = includes( className, 'is-style-rounded' );
 		const isStyleWaves = includes( className, 'is-style-waves' );
+		const isStyleSloped = includes( className, 'is-style-sloped' );
+		const isStyleRounded = includes( className, 'is-style-rounded' );
+		const isStyleAngled = includes( className, 'is-style-angled' );
+		const isStyleTriangle = includes( className, 'is-style-triangle' );
 
-		let divdier = dividers.angled;
+		let divdier = dividers.wavy;
 
 		if ( isStyleAngled ) {
 			divdier = dividers.angled;
@@ -120,7 +121,7 @@ class Edit extends Component {
 						toggleSelection( false );
 					} }
 				>
-				{ this.getDividerFromStyles( className ) }
+					{ this.getDividerFromStyles( className ) }
 				</ResizableBox>
 			</Fragment>
 		];
