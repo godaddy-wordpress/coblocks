@@ -179,25 +179,25 @@ class Edit extends Component {
 		const wrapperClasses = classnames(
 			'wp-block-coblocks-media-card__wrapper',
 			...BackgroundClasses( attributes ), {
+				'has-padding': paddingSize && paddingSize != 'no',
+				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 		} );
 
 		const wrapperStyles = {
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-		};
-
-		const innerClasses = classnames(
-			'wp-block-coblocks-media-card__inner', {
-			'has-padding': paddingSize && paddingSize != 'no',
-			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
-		} );
-
-		const innerStyles = {
-			gridTemplateColumns: 'right' === mediaPosition ? `auto ${ widthString }` : `${ widthString } auto`,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+		};
+
+		const innerClasses = classnames(
+			'wp-block-coblocks-media-card__inner', {
+		} );
+
+		const innerStyles = {
+			gridTemplateColumns: 'right' === mediaPosition ? `auto ${ widthString }` : `${ widthString } auto`,
 			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
 		};
 

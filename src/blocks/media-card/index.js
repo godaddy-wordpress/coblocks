@@ -166,6 +166,8 @@ const settings = {
 		const wrapperClasses = classnames(
 			'wp-block-coblocks-media-card__wrapper',
 			...BackgroundClasses( attributes ), {
+				'has-padding': paddingSize && paddingSize != 'no',
+				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 		} );
 
 		const wrapperStyles = {
@@ -175,8 +177,6 @@ const settings = {
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-media-card__inner', {
-			'has-padding': paddingSize && paddingSize != 'no',
-			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 		} );
 
 		const innerStyles = {

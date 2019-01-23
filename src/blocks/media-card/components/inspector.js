@@ -126,12 +126,14 @@ class Inspector extends Component {
 							onChange={ () => setAttributes( {  hasCardShadow: ! hasCardShadow } ) }
 							help={ !! hasCardShadow ? __( 'Showing card shadow.' ) : __( 'Toggle to add a card shadow.' ) }
 						/>
-						<ToggleControl
-							label={ sprintf( __( ' %s Shadow' ), mediaType.charAt(0).toUpperCase() + mediaType.slice(1) ) }
-							checked={ !! hasImgShadow }
-							onChange={ () => setAttributes( {  hasImgShadow: ! hasImgShadow } ) }
-							help={ !! hasImgShadow ? sprintf( __( 'Showing %s shadow.' ), mediaType ) : sprintf( __( 'Toggle to add an %s shadow' ), mediaType ) }
-						/>
+						{ mediaType && (
+							<ToggleControl
+								label={ sprintf( __( ' %s Shadow' ), mediaType.charAt(0).toUpperCase() + mediaType.slice(1) ) }
+								checked={ !! hasImgShadow }
+								onChange={ () => setAttributes( {  hasImgShadow: ! hasImgShadow } ) }
+								help={ !! hasImgShadow ? sprintf( __( 'Showing %s shadow.' ), mediaType ) : sprintf( __( 'Toggle to add an %s shadow' ), mediaType ) }
+							/>
+						) }
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }
