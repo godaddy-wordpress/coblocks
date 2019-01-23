@@ -6,6 +6,15 @@ div[class*="wp-block-coblocks-"] {
 					flex-direction: column;
 					> .wp-block{
 						width: 100% !important;
+
+						//hide resizer on mobile
+						> .editor-block-list__block-edit{
+							> div{
+								> .components-resizable-box__handle{
+									display: none !important;
+								}
+							}
+						}
 					}
 				}
 			}
