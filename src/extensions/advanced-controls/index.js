@@ -4,11 +4,17 @@
 import classnames from 'classnames';
 
 /**
+ * Internal Dependencies
+ */
+import './styles/editor.scss';
+
+/**
  * WordPress Dependencies
  */
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
 const { Fragment }	= wp.element;
+const { withSelect } = wp.data;
 const { hasBlockSupport }	= wp.blocks;
 const { InspectorAdvancedControls }	= wp.editor;
 const { compose, createHigherOrderComponent } = wp.compose;
@@ -144,12 +150,67 @@ function applySpacingClass(extraProps, blockType, attributes) {
 	return extraProps;
 }
 
+/**
+ * Override the default block element to add	wrapper props.
+ *
+ * @param  {Function} BlockListBlock Original component
+ * @return {Function} Wrapped component
+ */
+
+const enhance = compose(
+	/**
+	 * For blocks whose block type doesn't support `multiple`, provides the
+	 * wrapped component with `originalBlockClientId` -- a reference to the
+	 * first block of the same type in the content -- if and only if that
+	 * "original" block is not the current one. Thus, an inexisting
+	 * `originalBlockClientId` prop signals that the block is valid.
+	 *
+	 * @param {Component} WrappedBlockEdit A filtered BlockEdit instance.
+	 *
+	 * @return {Component} Enhanced component with merged state data props.
+	 */
+	withSelect( ( select, block ) => {
+		return { selected : select( 'core/editor' ).getSelectedBlock(), select: select };
+	} )
+);
+
+const addEditorBlockAttributes = createHigherOrderComponent( (BlockListBlock) => {
+	return enhance( ( { selected, select, ...props } ) => {
+
+		let wrapperProps 	= props.wrapperProps;
+		let customData 	 	= {};
+		let attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
+		let blockName		= select( 'core/editor' ).getBlockName( props.clientId );
+
+		const withBlockSpacing = hasBlockSupport( blockName, 'blockSpacing' );
+
+		if ( withBlockSpacing ) {
+
+			const { noBottomMargin, noTopMargin } = attributes;
+
+			if ( typeof noTopMargin !== 'undefined' && noTopMargin ) {
+				customData = Object.assign( customData, { 'data-no-top-margin': 1 } );
+			}
+
+			if ( typeof noBottomMargin !== 'undefined' && noBottomMargin ) {
+				customData = Object.assign( customData, { 'data-no-bottom-margin': 1 } );
+			}
+
+			wrapperProps = {
+				...wrapperProps,
+				...customData,
+			};
+		}
+
+		return <BlockListBlock {...props} wrapperProps={wrapperProps} />;
+	} );
+}, 'addEditorBlockAttributes');
+
 addFilter(
 	'blocks.registerBlockType',
 	'coblocks/AdvancedControls/attributes',
 	addAttributes
 );
-
 
 addFilter(
 	'editor.BlockEdit',
@@ -161,4 +222,10 @@ addFilter(
 	'blocks.getSaveContent.extraProps',
 	'coblocks/applySpacingClass',
 	applySpacingClass
+);
+
+addFilter(
+	'editor.BlockListBlock',
+	'coblocks/addEditorBlockAttributes',
+	addEditorBlockAttributes
 );
