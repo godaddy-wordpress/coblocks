@@ -99,7 +99,7 @@ const settings = {
 
 	supports: {
 		align: [ 'wide', 'full' ],
-		blockSpacing: true,
+		coBlocksBlockSpacing: true,
 	},
 
 	attributes: blockAttributes,

@@ -41,7 +41,7 @@ function addAttributes( settings ) {
 		}
 	}
 
-	if ( hasBlockSupport( settings, 'blockSpacing' ) ) {
+	if ( hasBlockSupport( settings, 'coBlocksBlockSpacing' ) ) {
 		if( typeof settings.attributes !== 'undefined' ){
 			settings.attributes = Object.assign( settings.attributes, {
 				noBottomMargin: {
@@ -83,7 +83,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		} = attributes;
 
 		const hasStackedControl = hasBlockSupport( name, 'stackedOnMobile' );
-		const withBlockSpacing = hasBlockSupport( name, 'blockSpacing' );
+		const withBlockSpacing = hasBlockSupport( name, 'coBlocksBlockSpacing' );
 
 		return (
 			<Fragment>
@@ -133,7 +133,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
  */
 function applySpacingClass(extraProps, blockType, attributes) {
 
-	const withBlockSpacing = hasBlockSupport( blockType.name, 'blockSpacing' );
+	const withBlockSpacing = hasBlockSupport( blockType.name, 'coBlocksBlockSpacing' );
 
 	if ( withBlockSpacing ) {
 
@@ -183,7 +183,7 @@ const addEditorBlockAttributes = createHigherOrderComponent( (BlockListBlock) =>
 		let attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
 		let blockName		= select( 'core/editor' ).getBlockName( props.clientId );
 
-		const withBlockSpacing = hasBlockSupport( blockName, 'blockSpacing' );
+		const withBlockSpacing = hasBlockSupport( blockName, 'coBlocksBlockSpacing' );
 
 		if ( withBlockSpacing ) {
 
