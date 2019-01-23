@@ -70,7 +70,7 @@
 		display: none;
 	}
 
-	&.is-selected{
+	&.is-selected {
 		.editor-media-container__resizer .components-resizable-box__handle {
 			display: block;
 		}
@@ -91,12 +91,12 @@
 		}
 	}
 	@media (max-width: $break-small) {
-		&.is-stacked-on-mobile{
-			.wp-block-coblocks-media-card__inner{
-				.wp-block-coblocks-media-card__content{
-				    margin-left: 5%;
-				    margin-right: 5%;
-				    margin-top: -33%;
+		&.is-stacked-on-mobile {
+			.wp-block-coblocks-media-card__inner {
+				.wp-block-coblocks-media-card__content {
+					margin-left: 5%;
+					margin-right: 5%;
+					margin-top: -33%;
 				}
 			}
 		}
@@ -244,11 +244,12 @@
 		height: 130px;
 		margin-top: 120px;
 	}
-	.editor-styles-wrapper{
+	.editor-styles-wrapper {
 		overflow: hidden;
 	}
 }
 
+// Hide the wide and full alignment settings on the row.
 .wp-block-coblocks-media-card {
 	.editor-block-toolbar .components-toolbar:nth-child(2) {
 		display: none;
