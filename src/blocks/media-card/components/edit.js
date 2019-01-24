@@ -224,25 +224,24 @@ class Edit extends Component {
 						}
 					) }
 				>
-					<div className={ wrapperClasses } style={ wrapperStyles } >
-						<div className={ innerClasses } style={ innerStyles } >
-							{ this.renderMediaArea() }
-							<div
-								className={ classnames(
-									'wp-block-coblocks-media-card__content', {
-										'has-shadow': hasCardShadow,
-									}
-								) }
-								style={ { textAlign: contentAlign } }
-							>
-								{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
-									<InnerBlocks
-										template={ TEMPLATE }
-										allowedBlocks={ ALLOWED_BLOCKS }
-										templateLock={ true }
-									/>
-								) }
-							</div>
+					<div className={ innerClasses } style={ innerStyles } >
+						{ this.renderMediaArea() }
+						<div
+							className={ classnames(
+								'wp-block-coblocks-media-card__content', {
+									'has-shadow': hasCardShadow,
+								}
+							) }
+							style={ { textAlign: contentAlign } }
+						>
+							{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
+								<InnerBlocks
+									template={ TEMPLATE }
+									allowedBlocks={ ALLOWED_BLOCKS }
+									templateLock={ true }
+									templateInsertUpdatesSelection={ false }
+								/>
+							) }
 						</div>
 					</div>
 				</div>
