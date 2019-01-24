@@ -41,16 +41,42 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
-			horizontalFlip,
-			verticalFlip,
 			heightAlt,
 			height,
+			horizontalFlip,
+			verticalFlip,
 		} = attributes;
 
 		return (
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Divider Settings' ) }>
+						<BaseControl label={ __( 'Shape Height in pixels' ) }>
+							<input
+								type="number"
+								onChange={ ( event ) => {
+									setAttributes( {
+										height: parseInt( event.target.value, 10 ),
+									} );
+								} }
+								value={ height }
+								min="40"
+								step="1"
+							/>
+						</BaseControl>
+						<BaseControl label={ __( 'Divide Height in pixels' ) }>
+							<input
+								type="number"
+								onChange={ ( event ) => {
+									setAttributes( {
+										heightAlt: parseInt( event.target.value, 10 ),
+									} );
+								} }
+								value={ heightAlt }
+								min="10"
+								step="1"
+							/>
+						</BaseControl>
 						<ToggleControl
 							label={ __( 'Horizontal Flip' ) }
 							checked={ !! horizontalFlip }
@@ -60,22 +86,6 @@ class Inspector extends Component {
 							label={ __( 'Vertical Flip' ) }
 							checked={ !! verticalFlip }
 							onChange={ () => setAttributes( {  verticalFlip: ! verticalFlip } ) }
-						/>
-						<RangeControl
-							label={ __( 'Height' ) }
-							value={ height }
-							onChange={ ( nextZoom ) => setAttributes( {  height: parseInt( nextZoom ) } ) }
-							min={ 50 }
-							max={ 400 }
-							step={ 1 }
-						/>
-						<RangeControl
-							label={ __( 'Height, Alt' ) }
-							value={ heightAlt }
-							onChange={ ( nextZoom ) => setAttributes( {  heightAlt: parseInt( nextZoom ) } ) }
-							min={ 50 }
-							max={ 1000 }
-							step={ 1 }
 						/>
 					</PanelBody>
 					<PanelColorSettings
