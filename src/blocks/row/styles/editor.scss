@@ -3,8 +3,10 @@
 
 	.wp-block-coblocks-row__inner.has-no-gutter {
 		> .editor-inner-blocks > .editor-block-list__layout > .wp-block > .editor-block-list__block-edit {
-			margin-left: -43px;
-			margin-right: -43px;
+			@include break-small() {
+				margin-left: -43px;
+				margin-right: -43px;
+			}
 		}
 	}
 
