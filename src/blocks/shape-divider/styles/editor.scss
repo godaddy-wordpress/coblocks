@@ -64,6 +64,10 @@
 		height: 60px !important;
 		transform: scale(1.45);
 
+		&__alt-wrapper {
+			height: 20px !important;
+		}
+
 		&__svg-wrapper {
 			height: 60px !important;
 		}
@@ -71,12 +75,12 @@
 		&.is-vertically-flipped {
 			svg {
 				bottom: inherit;
-				top: 0;
+				top: -1px;
 			}
 		}
 
 		svg {
-			bottom: 0;
+			bottom: -1px;
 			fill: currentColor;
 			height: 60px;
 			position: absolute;
@@ -94,13 +98,11 @@
 			}
 
 			&.divider--rounded {
-				bottom: 2px;
 				height: 26px;
 				width: 100%;
 			}
 
 			&.divider--wavy {
-				bottom: 2px;
 				height: 36px;
 			}
 
@@ -116,13 +118,11 @@
 			}
 
 			&.divider--pointed {
-				bottom: 2px;
 				height: 30px;
 				width: 100%;
 			}
 
 			&.divider--hills {
-				bottom: 2px;
 				height: 36px;
 			}
 		}
@@ -135,8 +135,8 @@
 	}
 	.wp-block-coblocks-shape-divider {
 		height: 90px !important;
+		margin-top: -30px;
 		overflow: hidden;
-		margin-top: -14px;
 		transform: scaleX(1.12) scaleY(1.4) !important;
 
 		svg {
