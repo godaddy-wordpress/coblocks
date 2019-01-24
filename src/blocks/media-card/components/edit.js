@@ -155,7 +155,6 @@ class Edit extends Component {
 		const {
 			coblocks,
 			backgroundImg,
-			contentAlign,
 			hasCardShadow,
 			hasImgShadow,
 			paddingTop,
@@ -242,7 +241,6 @@ class Edit extends Component {
 										'has-shadow': hasCardShadow,
 									}
 								) }
-								style={ { textAlign: contentAlign } }
 							>
 								{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
 									<InnerBlocks

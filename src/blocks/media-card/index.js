@@ -69,9 +69,6 @@ const blockAttributes = {
 		type: 'string',
 		default: 'wide',
 	},
-	contentAlign: {
-		type: 'string',
-	},
 	maxWidth: {
 		type: 'number',
 	},
@@ -204,7 +201,6 @@ const settings = {
 			coblocks,
 			backgroundColor,
 			backgroundImg,
-			contentAlign,
 			customBackgroundColor,
 			hasCardShadow,
 			hasImgShadow,
@@ -261,14 +257,10 @@ const settings = {
 			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
 		};
 
-		const cardBackgroundClasses = classnames(
+		const cardClasses = classnames(
 			'wp-block-coblocks-media-card__content', {
 			'has-shadow': hasCardShadow,
 		} );
-
-		const cardStyles = {
-			textAlign: contentAlign ? contentAlign : null,
-		};
 
 		return (
 			<div className={ classes }>
@@ -283,7 +275,7 @@ const settings = {
 							{ ( mediaTypeRenders[ mediaType ] || noop )() }
 							{ ! mediaUrl ? icons.logo : null }
 						</figure>
-						<div className={ cardBackgroundClasses } style={ cardStyles }>
+						<div className={ cardClasses }>
 							<InnerBlocks.Content />
 						</div>
 					</div>

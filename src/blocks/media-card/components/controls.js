@@ -9,7 +9,7 @@ import icons from './icons';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls } = wp.editor;
+const { BlockControls } = wp.editor;
 const { Toolbar } = wp.components;
 
 class Controls extends Component {
@@ -26,7 +26,6 @@ class Controls extends Component {
 		} = this.props;
 
 		const {
-			contentAlign,
 			mediaPosition,
 		} = attributes;
 
@@ -47,10 +46,6 @@ class Controls extends Component {
 				<BlockControls>
 					<Toolbar
 						controls={ toolbarControls }
-					/>
-					<AlignmentToolbar
-						value={ contentAlign }
-						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
 					/>
 					{ BackgroundImageToolbarControls( this.props ) }
 				</BlockControls>
