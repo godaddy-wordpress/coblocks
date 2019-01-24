@@ -17,8 +17,8 @@ var srcDirectory	  = './build/' + project + '/src/';
 
 // JS.
 var scriptDestination 		= './dist/js/';
-var scriptGoogleMaps	  	= './coblocks-accordion-polyfill.js';
-var scriptAccordionPolyfill   	= './coblocks-google-maps.js';
+var scriptGoogleMaps	  	= 'coblocks-accordion-polyfill';
+var scriptAccordionPolyfill   	= 'coblocks-google-maps';
 
 // Translation.
 var text_domain             	= '@@textdomain';
@@ -55,7 +55,7 @@ var rename       	= require('gulp-rename');
  * Tasks.
  */
 gulp.task( 'scripts', function(done) {
-	gulp.src( './src/js/' + scriptGoogleMaps )
+	gulp.src( './src/js/' + scriptGoogleMaps +'.js' )
 	.pipe( rename( {
 		basename: scriptGoogleMaps,
 		suffix: '.min'
@@ -64,7 +64,7 @@ gulp.task( 'scripts', function(done) {
 	.pipe( lineec() )
 	.pipe( gulp.dest( scriptDestination ) );
 
-	gulp.src( './src/js/' + scriptAccordionPolyfill )
+	gulp.src( './src/js/' + scriptAccordionPolyfill +'.js' )
 	.pipe( rename( {
 		basename: scriptAccordionPolyfill,
 		suffix: '.min'
