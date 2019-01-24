@@ -104,11 +104,32 @@ const settings = {
 			{
 				type: 'prefix',
 				prefix: ':card',
-				transform: function( content ) {
-					return createBlock( `coblocks/${ name }`, {
-						content,
-					} );
+				transform: function() {
+					return createBlock( `coblocks/${ name }` );
 				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/image' ],
+				transform: ( { alt, url, id } ) => (
+					createBlock( `coblocks/${ name }`, {
+						mediaAlt: alt,
+						mediaId: id,
+						mediaUrl: url,
+						mediaType: 'image',
+					} )
+				),
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/video' ],
+				transform: ( { src, id } ) => (
+					createBlock( `coblocks/${ name }`, {
+						mediaId: id,
+						mediaUrl: src,
+						mediaType: 'video',
+					} )
+				),
 			},
 		]
 	},
