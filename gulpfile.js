@@ -15,6 +15,11 @@ var sftpDemoFilesToUpload = ['./build/' + project + '/**/*', '!/build/' + projec
 var cleanSrcFiles	  = [ './build/' + project + '/src/**/*.js', './build/' + project + '/src/**/*.scss', '!build/' + project + '/src/blocks/**/*.php' ];
 var srcDirectory	  = './build/' + project + '/src/';
 
+// JS.
+var scriptDestination 		= './dist/js/';
+var scriptGoogleMaps	  	= 'coblocks-accordion-polyfill';
+var scriptAccordionPolyfill   	= 'coblocks-google-maps';
+
 // Translation.
 var text_domain             	= '@@textdomain';
 var destFile                	= project+'.pot';
@@ -42,10 +47,35 @@ var open                = require("gulp-open");
 var gulpif              = require('gulp-if');
 var wpPot 		= require('gulp-wp-pot');
 var deleteEmpty 	= require('delete-empty');
+var uglify      	= require('gulp-uglify');
+var lineec       	= require('gulp-line-ending-corrector');
+var rename       	= require('gulp-rename');
 
 /**
  * Tasks.
  */
+gulp.task( 'scripts', function(done) {
+	gulp.src( './src/js/' + scriptGoogleMaps +'.js' )
+	.pipe( rename( {
+		basename: scriptGoogleMaps,
+		suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() )
+	.pipe( gulp.dest( scriptDestination ) );
+
+	gulp.src( './src/js/' + scriptAccordionPolyfill +'.js' )
+	.pipe( rename( {
+		basename: scriptAccordionPolyfill,
+		suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() )
+	.pipe( gulp.dest( scriptDestination ) );
+
+	done();
+});
+
 gulp.task('clearCache', function(done) {
 	cache.clearAll();
 	done();
@@ -203,7 +233,7 @@ gulp.task('build-notice', function(done) {
 	done();
 });
 
-gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip',  function(done) {
+gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'scripts', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip',  function(done) {
 	done();
 } ) );
 
