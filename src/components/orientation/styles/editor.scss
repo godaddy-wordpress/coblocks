@@ -70,6 +70,10 @@
 				outline: 2px solid transparent;
 				outline-offset: -2px;
 			}
+
+			&:active:enabled {
+				background: #0085ba !important;
+			}
 		}
 
 		&.is-button:first-child {
