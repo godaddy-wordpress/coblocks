@@ -26,6 +26,11 @@
 			}
 		}
 
+		// The core cover block has it's own margin added as well that we need to override.
+		.wp-block-cover {
+			margin-bottom: 0 !important;
+		}
+
 		> .editor-block-list__block-edit {
 			margin-bottom: 0 !important;
 		}
@@ -41,7 +46,7 @@
 		}
 	}
 
-	//Make sure block is on the top
+	//Make sure block is on the top z-index.
 	.wp-block {
 		&.editor-block-list__block {
 			&.is-selected {
