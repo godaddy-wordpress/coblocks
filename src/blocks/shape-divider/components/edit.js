@@ -26,6 +26,10 @@ class Edit extends Component {
 
 	constructor() {
 		super( ...arguments );
+
+		this.state = {
+			resizing: false,
+		}
 	}
 
 	getDividerFromStyles( className ) {
@@ -137,6 +141,7 @@ class Edit extends Component {
 					className={ classnames(
 						'wp-block-coblocks-shape-divider__alt-wrapper', {
 							'is-selected': isSelected,
+							'is-resizing' : this.state.resizingAlt,
 						}
 					) }
 					style={ {
@@ -162,9 +167,11 @@ class Edit extends Component {
 							heightAlt: parseInt( heightAlt + delta.height, 10 ),
 						} );
 						toggleSelection( true );
+						this.setState( { resizingAlt: false } );
 					} }
 					onResizeStart={ () => {
 						toggleSelection( false );
+						this.setState( { resizingAlt: true } );
 					} }
 				>
 				</ResizableBox>
