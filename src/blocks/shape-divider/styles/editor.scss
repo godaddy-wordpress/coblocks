@@ -44,8 +44,8 @@
 		left: 4px;
 		opacity: 0;
 		position: absolute;
-		width: calc(100% - 8px);
 		transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
+		width: calc(100% - 8px);
 	}
 
 	.wp-block-coblocks-shape-divider__alt-wrapper.is-resizing::after {
@@ -63,6 +63,10 @@
 	.wp-block-coblocks-shape-divider {
 		height: 60px !important;
 		transform: scale(1.45);
+
+		&__svg-wrapper {
+			height: 60px !important;
+		}
 
 		&.is-vertically-flipped {
 			svg {
@@ -130,9 +134,9 @@
 		overflow: hidden;
 	}
 	.wp-block-coblocks-shape-divider {
-		height: 80px !important;
+		height: 90px !important;
 		overflow: hidden;
-		top: -14px !important;
+		margin-top: -14px;
 		transform: scaleX(1.12) scaleY(1.4) !important;
 
 		svg {

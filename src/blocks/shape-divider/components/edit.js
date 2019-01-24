@@ -93,15 +93,19 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<div className={ classnames(
-					className, {
-						'is-vertically-flipped' : verticalFlip,
-						'is-horizontally-flipped' : horizontalFlip,
-						'has-background': backgroundColor.color,
-						'has-text-color': color.color,
-						[ color.class ]: color.class,
-					}
-				) } >
+				<div
+					className={ classnames(
+						className, {
+							'is-vertically-flipped' : verticalFlip,
+							'is-horizontally-flipped' : horizontalFlip,
+							'has-background': backgroundColor.color,
+							'has-text-color': color.color,
+						}
+					) }
+					style={ {
+						backgroundColor: backgroundColor.color,
+					} }
+					>
 				<ResizableBox
 					className={ classnames(
 						'wp-block-coblocks-shape-divider__svg-wrapper', {

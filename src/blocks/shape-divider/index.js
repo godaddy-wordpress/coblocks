@@ -45,7 +45,7 @@ const blockAttributes = {
 	},
 	heightAlt: {
 		type: 'number',
-		default: 30,
+		default: 50,
 	},
 	verticalFlip: {
 		type: 'boolean',
