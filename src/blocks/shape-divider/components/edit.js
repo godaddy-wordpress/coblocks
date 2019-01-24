@@ -139,14 +139,6 @@ class Edit extends Component {
 							'is-selected': isSelected,
 						}
 					) }
-
-					// className={ classnames(
-					// 	'test', {
-					// 		'is-selected': isSelected,
-					// 		'has-text-color': color.color,
-					// 		[ color.class ]: color.class,
-					// 	}
-					// ) }
 					style={ {
 						backgroundColor: color.color,
 					} }
