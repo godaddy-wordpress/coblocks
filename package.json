@@ -70,8 +70,13 @@
 		"stylelint-order": "^0.8.1"
 	},
 	"stylelint": {
-		"extends": ["stylelint-config-wordpress/scss", "stylelint-config-prettier"],
-		"plugins": ["stylelint-order"],
+		"extends": [
+			"stylelint-config-wordpress/scss",
+			"stylelint-config-prettier"
+		],
+		"plugins": [
+			"stylelint-order"
+		],
 		"rules": {
 			"at-rule-empty-line-before": null,
 			"no-descending-specificity": null,
