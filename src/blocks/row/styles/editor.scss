@@ -396,10 +396,6 @@
 	> span > .components-resizable-box__handle {
 		z-index: 98;
 
-		@media (max-width: #{ ($break-small) }) {
-			display: none !important;
-		}
-
 		&::before {
 			height: 15px;
 			width: 15px;
@@ -460,10 +456,6 @@
 		top: 0;
 		width: 7px;
 		z-index: 97;
-
-		@media (max-width: #{ ($break-small) }) {
-			display: none !important;
-		}
 	}
 
 	&.is-selected-column::after,

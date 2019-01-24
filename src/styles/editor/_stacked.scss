@@ -1,17 +1,27 @@
-div[class*="wp-block-coblocks-"] {
-	@media (max-width: $break-small) {
+@media (max-width: $break-small) {
+	div[class*="wp-block-coblocks-"] {
 		&.is-stacked-on-mobile {
-			> .editor-inner-blocks{
-				> .editor-block-list__layout{
+			> .editor-inner-blocks {
+				> .editor-block-list__layout {
 					flex-direction: column;
-					> .wp-block{
+
+					> .wp-block {
 						width: 100% !important;
 
-						//hide resizer on mobile
-						> .editor-block-list__block-edit{
-							> div{
-								> .components-resizable-box__handle{
-									display: none !important;
+						// Hide the vertical resizer on mobile
+						> .editor-block-list__block-edit {
+							> div {
+								.components-resizable-box__container {
+									> span,
+									& {
+										> .components-resizable-box__handle {
+											display: none !important;
+										}
+									}
+
+									&::after {
+										display: none !important;
+									}
 								}
 							}
 						}
