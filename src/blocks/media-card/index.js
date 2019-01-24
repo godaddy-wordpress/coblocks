@@ -29,7 +29,7 @@ const name = 'media-card';
 
 const title = __( 'Media Card' );
 
-const icon = icons.mediaCardRight;
+const icon = icons.mediaCard;
 
 const keywords = [
 	__( 'image' ),

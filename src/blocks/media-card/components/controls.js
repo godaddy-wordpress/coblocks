@@ -30,16 +30,16 @@ class Controls extends Component {
 		} = attributes;
 
 		const toolbarControls = [ {
-			icon: icons.mediaCardLeft,
-			title: __( 'Media on left' ),
-			isActive: mediaPosition === 'left',
-			onClick: () => setAttributes( { mediaPosition: 'left' } ),
-		}, {
 			icon: icons.mediaCardRight,
 			title: __( 'Media on right' ),
 			isActive: mediaPosition === 'right',
 			onClick: () => setAttributes( { mediaPosition: 'right' } ),
-		} ];
+		}, {
+			icon: icons.mediaCardLeft,
+			title: __( 'Media on left' ),
+			isActive: mediaPosition === 'left',
+			onClick: () => setAttributes( { mediaPosition: 'left' } ),
+		}, ];
 
 		return (
 			<Fragment>
