@@ -21,6 +21,8 @@ const { InspectorAdvancedControls }	= wp.editor;
 const { compose, createHigherOrderComponent } = wp.compose;
 const { ToggleControl } = wp.components;
 
+const blocksWithSpacingSupport = [ 'core/image', 'core/gallery', 'core/spacer', 'core/cover' ];
+
 /**
  * Filters registered block settings, extending attributes with settings
  *
@@ -41,6 +43,16 @@ function addAttributes( settings ) {
 		}
 	}
 
+	//Add CoBlocks spacing support
+	if( blocksWithSpacingSupport.includes( settings.name ) ){
+		if( !settings.supports ){
+			settings.supports = {};
+		}
+		settings.supports = Object.assign( settings.supports, {
+			coBlocksSpacing: true
+		} );
+	}
+	
 	if ( hasBlockSupport( settings, 'coBlocksSpacing' ) ) {
 		if( typeof settings.attributes !== 'undefined' ){
 			settings.attributes = Object.assign( settings.attributes, {
