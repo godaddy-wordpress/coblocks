@@ -95,6 +95,7 @@ const settings = {
 		anchor: true,
 		stackedOnMobile: true,
 		coBlocksSpacing: true,
+		coBlocksTypography: true,
 	},
 
 	transforms: {

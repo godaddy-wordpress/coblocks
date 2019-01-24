@@ -72,6 +72,10 @@ const settings = {
 
 	attributes: blockAttributes,
 
+	supports: {
+		coBlocksTypography: true,
+	},
+
 	transforms: {
 		from: [
 			{

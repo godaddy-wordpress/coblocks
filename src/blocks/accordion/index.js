@@ -54,6 +54,7 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
+		coBlocksTypography: true,
 	},
 
 	transforms: {

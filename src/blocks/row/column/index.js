@@ -56,6 +56,7 @@ const settings = {
 
 	supports: {
 		inserter: false,
+		coBlocksTypography: true,
 	},
 
 	edit: Edit,

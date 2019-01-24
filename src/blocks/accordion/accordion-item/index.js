@@ -72,6 +72,7 @@ const settings = {
 		reusable: false,
 		html: false,
 		inserter: false,
+		coBlocksTypography: true,
 	},
 
 	attributes: blockAttributes,

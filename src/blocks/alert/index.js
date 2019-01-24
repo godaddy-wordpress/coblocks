@@ -91,6 +91,7 @@ const settings = {
 		align: true,
 		alignWide: false,
 		alignFull: false,
+		coBlocksTypography: true,
 	},
 
 	transforms: {

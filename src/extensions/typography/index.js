@@ -23,7 +23,7 @@ const { InspectorAdvancedControls }	= wp.components;
 const { compose, createHigherOrderComponent } = wp.compose;
 const { hasBlockSupport }	= wp.blocks;
 
-const blocksWithTypographySupport = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features'];
+const blocksWithTypographySupport = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'core/list', 'coblocks/features'];
 
 /**
  * Filters registered block settings, extending attributes with settings
@@ -68,7 +68,7 @@ const withControls = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
-				{ props.isSelected && blocksWithTypographySupport.includes( props.name ) && <Controls {...{ ...props }} /> }
+				{ props.isSelected && hasBlockSupport( props.name, 'coBlocksTypography' ) && <Controls {...{ ...props }} /> }
 			</Fragment>
 		);
 	};
@@ -106,7 +106,7 @@ const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
 		let attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
 		let blockName		= select( 'core/editor' ).getBlockName( props.clientId );
 
-		if( blocksWithTypographySupport.includes( blockName ) ){
+		if ( hasBlockSupport( blockName, 'coBlocksTypography' ) ) {
 			const { customFontSize, fontFamily, lineHeight, fontWeight, letterSpacing, textTransform, customTextColor } = attributes;
 
 			if( customFontSize ){
@@ -159,7 +159,7 @@ const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
  */
 function applyFontSettings(extraProps, blockType, attributes) {
 
-	if ( blocksWithTypographySupport.includes( blockType.name ) ) {
+	if ( hasBlockSupport( blockType.name, 'coBlocksTypography' ) ) {
 
 		if( typeof extraProps.style !== 'undefined' ){
 			extraProps.style = Object.assign( extraProps.style, applyStyle( attributes, blockType.name ) );
