@@ -29,13 +29,3 @@ body {
 		}
 	}
 }
-
-//fix reset margin
-div{
-	> [class*="wp-block-coblocks-"] {
-		&.has-no-margin{
-			margin: 0px !important;
-		}
-	}
-
-}

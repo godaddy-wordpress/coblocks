@@ -21,13 +21,3 @@
 .has-huge-padding {
 	padding: 60px;
 }
-
-//fix reset padding
-div{
-	> [class*="wp-block-coblocks-"] {
-		&.has-no-padding{
-			padding: 0px !important;
-		}
-	}
-
-}
