@@ -52,7 +52,7 @@ class CoBlocks_Post_Meta {
 		);
 
 		register_meta(
-			'post', '_coblocks_legacy_support', array(
+			'post', '_coblocks_accordion_ie_support', array(
 				'show_in_rest'  => true,
 				'single'        => true,
 				'auth_callback' => function() {
@@ -61,7 +61,6 @@ class CoBlocks_Post_Meta {
 			)
 		);
 	}
-
 }
 
 return new CoBlocks_Post_Meta();

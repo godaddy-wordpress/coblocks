@@ -42,7 +42,7 @@ class Inspector extends Component {
 								// Save values to metadata.
 								wp.data.dispatch( 'core/editor' ).editPost({
 									meta: {
-										_coblocks_legacy_support: "'" + ! polyfill + "'",
+										_coblocks_accordion_ie_support: "'" + ! polyfill + "'",
 									}
 								});
 							} }

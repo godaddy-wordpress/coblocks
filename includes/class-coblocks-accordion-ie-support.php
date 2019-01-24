@@ -77,7 +77,7 @@ class CoBlocks_Accordion_IE_Support {
 	public function load_assets() {
 		global $post;
 
-		$legacy_support = get_post_meta( $post->ID, '_coblocks_legacy_support', true );
+		$legacy_support = get_post_meta( $post->ID, '_coblocks_accordion_ie_support', true );
 
 		if ( "'true'" === $legacy_support ) {
 			$dir = CoBlocks()->asset_source( 'js' );
