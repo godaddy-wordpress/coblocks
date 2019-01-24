@@ -21,8 +21,13 @@ import MediaContainer from './media-container';
 const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks, mediaUpload } = wp.editor;
 const { IconButton, DropZone } = wp.components;
+
+/**
+ * This block can recieve both image and video files.
+ */
+export const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -33,7 +38,6 @@ const { IconButton, DropZone } = wp.components;
  * @constant
  * @type {string[]}
 */
-const ALLOWED_MEDIA_TYPES = [ 'image' ];
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row' , 'coblocks/column' ];
 const TEMPLATE = [
 	[ 'coblocks/row', { columns: 1, layout: '100', paddingSize: 'huge', hasMarginControl: false, hasStackedControl: false, hasAlignmentControls: false, customBackgroundColor: '#FFFFFF' }, [
@@ -54,12 +58,21 @@ class Edit extends Component {
 	constructor( props ) {
 		super( ...arguments );
 
+		this.onDropMedia = this.onDropMedia.bind( this );
 		this.onSelectMedia = this.onSelectMedia.bind( this );
 		this.onWidthChange = this.onWidthChange.bind( this );
 		this.commitWidthChange = this.commitWidthChange.bind( this );
 		this.state = {
 			mediaWidth: null,
 		};
+	}
+
+	onDropMedia( files ) {
+		mediaUpload( {
+			allowedTypes: ALLOWED_MEDIA_TYPES,
+			filesList: files,
+			onFileChange: ( [ media ] ) => this.onSelectMedia( media ),
+		} );
 	}
 
 	onSelectMedia( media ) {
@@ -115,14 +128,17 @@ class Edit extends Component {
 		const { mediaAlt, mediaId, mediaType, mediaUrl, mediaWidth, hasImgShadow } = attributes;
 
 		return (
-			<MediaContainer
-				className={ className }
-				figureClass="wp-block-coblocks-media-card__media-container"
-				onSelectMedia={ this.onSelectMedia }
-				onWidthChange={ this.onWidthChange }
-				commitWidthChange={ this.commitWidthChange }
-				{ ...{ mediaAlt, mediaId, mediaType, mediaUrl, hasImgShadow, mediaWidth } }
-			/>
+			<Fragment>
+				<MediaContainer
+					className={ className }
+					figureClass="wp-block-coblocks-media-card__media-container"
+					onSelectMedia={ this.onSelectMedia }
+					onWidthChange={ this.onWidthChange }
+					commitWidthChange={ this.commitWidthChange }
+					onDropMedia={ this.onDropMedia }
+					{ ...{ mediaAlt, mediaId, mediaType, mediaUrl, hasImgShadow, mediaWidth } }
+				/>
+			</Fragment>
 		);
 	}
 
@@ -161,13 +177,6 @@ class Edit extends Component {
 			<BackgroundImageDropZone
 				{ ...this.props }
 				label={ __( 'Add backround image' ) }
-			/>
-		);
-
-		const imageDropZone = (
-			<DropZone
-				onFilesDrop={ this.addImage }
-				label={ __( 'Upload media' ) }
 			/>
 		);
 
@@ -240,6 +249,7 @@ class Edit extends Component {
 										template={ TEMPLATE }
 										allowedBlocks={ ALLOWED_BLOCKS }
 										templateLock={ true }
+										templateInsertUpdatesSelection={ false }
 									/>
 								) }
 							</div>
