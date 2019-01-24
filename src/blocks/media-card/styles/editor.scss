@@ -212,6 +212,14 @@
 	.wp-block-coblocks-media-card__inner {
 		display: flex;
 		padding: 0;
+
+		.components-placeholder {
+			height: 80px;
+		}
+
+		.components-placeholder > div {
+			display: none;
+		}
 	}
 
 	.wp-block-coblocks-media-card__img-wrapper {
@@ -229,7 +237,7 @@
 	.wp-block-coblocks-media-card,
 	.wp-block-coblocks-media-card__inner,
 	.wp-block-coblocks-media-card__img-wrapper {
-		height: 100px;
+		height: 60px;
 	}
 
 	.is-style-right .wp-block-coblocks-media-card__inner {
