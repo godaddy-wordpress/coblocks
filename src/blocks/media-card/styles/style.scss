@@ -16,6 +16,10 @@
 		grid-template-columns: auto 55%;
 	}
 
+	&__wrapper {
+		color: inherit !important;
+	}
+
 	&__media {
 		grid-area: media-text-media;
 		margin: 0;
