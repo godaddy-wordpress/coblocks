@@ -330,7 +330,8 @@ class Edit extends Component {
 						<InnerBlocks
 							template={ TEMPLATE[ layout ] }
 							templateLock="all"
-							allowedBlocks={ ALLOWED_BLOCKS } />
+							allowedBlocks={ ALLOWED_BLOCKS }
+							templateInsertUpdatesSelection={ false } />
 					</div>
 				</div>
 			</Fragment>

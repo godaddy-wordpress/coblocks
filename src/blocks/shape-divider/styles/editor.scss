@@ -9,6 +9,10 @@
 			width: 100%;
 		}
 	}
+
+	.components-resizable-box__handle {
+		z-index: 30;
+	}
 }
 
 .editor-block-preview,

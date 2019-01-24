@@ -13,7 +13,6 @@ import './styles/editor.scss';
 import icons from './../../utils/icons';
 import Edit from './components/edit';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
-import ResizableSpacer, { ResizableSpacerTransforms } from '../../components/resizable-spacer/';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**
@@ -21,7 +20,7 @@ import DimensionsAttributes from '../../components/dimensions-control/attributes
  */
 const { __ } = wp.i18n;
 const { createBlock, getBlockType } = wp.blocks;
-const { RichText, getColorClassName, getFontSizeClass, InnerBlocks } = wp.editor;
+const { getColorClassName, InnerBlocks } = wp.editor;
 
 /**
  * Block constants
@@ -69,6 +68,9 @@ const blockAttributes = {
 	contentAlign: {
 		type: 'string',
 	},
+	maxWidth: {
+		type: 'number',
+	},
 	hasImgShadow: {
 		type: 'boolean',
 		default: false,
@@ -85,7 +87,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Add an image card with an offset text block.' ),
+	description: __( 'Add an image or video with an offset card side-by-side.' ),
 
 	keywords: keywords,
 
@@ -134,7 +136,9 @@ const settings = {
 			mediaUrl,
 			mediaWidth,
 			mediaId,
+			maxWidth,
 			isStackedOnMobile,
+			align,
 		} = attributes;
 
 		// Media.
@@ -159,18 +163,25 @@ const settings = {
 			'is-stacked-on-mobile': isStackedOnMobile,
 		} );
 
-		const innerClasses = classnames(
-			'wp-block-coblocks-media-card__inner',
+		const wrapperClasses = classnames(
+			'wp-block-coblocks-media-card__wrapper',
 			...BackgroundClasses( attributes ), {
-			'has-padding': paddingSize && paddingSize != 'no',
-			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
+				'has-padding': paddingSize && paddingSize != 'no',
+				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
+		} );
+
+		const wrapperStyles = {
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+		};
+
+		const innerClasses = classnames(
+			'wp-block-coblocks-media-card__inner', {
 		} );
 
 		const innerStyles = {
 			gridTemplateColumns,
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-
+			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
 		};
 
 		const cardBackgroundClasses = classnames(
@@ -182,22 +193,22 @@ const settings = {
 			textAlign: contentAlign ? contentAlign : null,
 		};
 
-
 		return (
 			<div className={ classes }>
-				<div className={ innerClasses } style={ innerStyles }>
-					<figure className={ classnames(
-							'wp-block-coblocks-media-card__media', {
-								'has-shadow': hasImgShadow,
-							}
-						) }
-					>
-						{ ( mediaTypeRenders[ mediaType ] || noop )() }
-
-						{ ! mediaUrl ? icons.logo : null }
-					</figure>
-					<div className={ cardBackgroundClasses } style={ cardStyles }>
-						<InnerBlocks.Content />
+				<div className={ wrapperClasses } style={ wrapperStyles } >
+					<div className={ innerClasses } style={ innerStyles }>
+						<figure className={ classnames(
+								'wp-block-coblocks-media-card__media', {
+									'has-shadow': hasImgShadow,
+								}
+							) }
+						>
+							{ ( mediaTypeRenders[ mediaType ] || noop )() }
+							{ ! mediaUrl ? icons.logo : null }
+						</figure>
+						<div className={ cardBackgroundClasses } style={ cardStyles }>
+							<InnerBlocks.Content />
+						</div>
 					</div>
 				</div>
 			</div>

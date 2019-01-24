@@ -77,10 +77,11 @@ class Edit extends Component {
 
 		const {
 			height,
+			heightAlt,
 			verticalFlip,
 			horizontalFlip,
 		} = attributes;
-
+		
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -128,6 +129,44 @@ class Edit extends Component {
 					} }
 				>
 					{ this.getDividerFromStyles( className ) }
+				</ResizableBox>
+				<ResizableBox
+					className={ classnames(
+						'test', {
+							'is-selected': isSelected,
+							'has-text-color': color.color,
+							[ color.class ]: color.class,
+						}
+					) }
+					style={ {
+						backgroundColor: color.color,
+						color: color.color,
+					} }
+					size={ {
+						height: heightAlt,
+					} }
+					minWidth="100%"
+					minHeight="20"
+					enable={ {
+						top: false,
+						right: false,
+						bottom: true,
+						left: false,
+						topRight: false,
+						bottomRight: false,
+						bottomLeft: false,
+						topLeft: false,
+					} }
+					onResizeStop={ ( event, direction, elt, delta ) => {
+						setAttributes( {
+							heightAlt: parseInt( heightAlt + delta.height, 10 ),
+						} );
+						toggleSelection( true );
+					} }
+					onResizeStart={ () => {
+						toggleSelection( false );
+					} }
+				>
 				</ResizableBox>
 			</Fragment>
 		];
