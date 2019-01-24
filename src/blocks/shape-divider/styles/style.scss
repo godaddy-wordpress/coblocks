@@ -1,20 +1,28 @@
 .wp-block-coblocks-shape-divider {
+	display: flex;
+	flex-direction: column;
+
 	&__alt-wrapper {
 		background-color: currentColor;
-	}
-
-	&.is-vertically-flipped svg {
-		transform: scaleY(-1);
 	}
 
 	&.is-horizontally-flipped svg {
 		transform: scaleX(-1);
 	}
 
-	&.is-horizontally-flipped.is-vertically-flipped svg {
-		transform: scaleX(-1) scaleY(-1);
+	&.is-vertically-flipped {
+		flex-direction: column-reverse;
+
+		svg {
+			transform: scaleY(-1);
+		}
+
+		&.is-horizontally-flipped {
+			transform: scaleX(-1) scaleY(-1);
+		}
 	}
 
+	// Styling particular to the waves divider.
 	.divider--waves {
 		path:nth-child(1) {
 			opacity: 0.15;
