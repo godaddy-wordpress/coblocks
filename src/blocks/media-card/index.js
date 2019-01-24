@@ -10,7 +10,7 @@ import includes from 'lodash/includes';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import icons from './../../utils/icons';
+import icons from './components/icons';
 import Edit from './components/edit';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
@@ -29,7 +29,7 @@ const name = 'media-card';
 
 const title = __( 'Media Card' );
 
-const icon = icons.mediaCard;
+const icon = icons.mediaCardRight;
 
 const keywords = [
 	__( 'image' ),
@@ -38,6 +38,10 @@ const keywords = [
 ];
 
 const blockAttributes = {
+	mediaPosition: {
+		type: 'string',
+		default: 'left',
+	},
 	mediaAlt: {
 		type: 'string',
 		source: 'attribute',
@@ -211,6 +215,7 @@ const settings = {
 			mediaWidth,
 			mediaId,
 			maxWidth,
+			mediaPosition,
 			isStackedOnMobile,
 			align,
 		} = attributes;
@@ -221,9 +226,6 @@ const settings = {
 			video: () => <video controls src={ mediaUrl } />,
 		};
 
-		const isStyleRight = includes( className, 'is-style-right' );
-		const mediaPosition = isStyleRight ? 'right' : 'left';
-
 		let gridTemplateColumns;
 		if ( mediaWidth !== 55 ) {
 			gridTemplateColumns = mediaPosition === 'right' ? `auto ${ mediaWidth }%` : `${ mediaWidth }% auto`;
@@ -233,6 +235,7 @@ const settings = {
 
 		const classes = classnames( {
 			[ `coblocks-media-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+			[ `is-style-${ mediaPosition }` ] : mediaPosition,
 			'has-no-media': ! mediaUrl || null,
 			'is-stacked-on-mobile': isStackedOnMobile,
 		} );

@@ -171,6 +171,7 @@ class Edit extends Component {
 			maxWidth,
 			isStackedOnMobile,
 			align,
+			mediaPosition,
 		} = attributes;
 
 		const dropZone = (
@@ -182,8 +183,6 @@ class Edit extends Component {
 
 		const temporaryMediaWidth = this.state.mediaWidth;
 		const widthString = `${ temporaryMediaWidth || mediaWidth }%`;
-		const isStyleRight = includes( className, 'is-style-right' );
-		const mediaPosition = isStyleRight ? 'right' : 'left';
 
 		const wrapperClasses = classnames(
 			'wp-block-coblocks-media-card__wrapper',
@@ -227,6 +226,7 @@ class Edit extends Component {
 					className={ classnames(
 						className, {
 							[ `coblocks-media-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+							[ `is-style-${ mediaPosition }` ] : mediaPosition,
 							'has-no-media': ! mediaUrl || null,
 							'is-selected': isSelected,
 							'is-stacked-on-mobile': isStackedOnMobile,

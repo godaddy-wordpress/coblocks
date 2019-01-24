@@ -118,10 +118,7 @@ class MediaContainer extends Component {
 	}
 
 	render() {
-		const { className, mediaUrl, mediaType, mediaWidth, commitWidthChange, onWidthChange, onSelectMedia, onDropMedia } = this.props;
-
-		const isStyleRight = includes( className, 'is-style-right' );
-		const mediaPosition = isStyleRight ? 'right' : 'left';
+		const { className, mediaUrl, mediaType, mediaWidth, mediaPosition, commitWidthChange, onWidthChange, onSelectMedia, onDropMedia } = this.props;
 
 		const imageDropZone = (
 			<Fragment>
