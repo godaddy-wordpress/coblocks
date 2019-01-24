@@ -17,7 +17,7 @@
 			transform: scaleY(-1);
 		}
 
-		&.is-horizontally-flipped {
+		&.is-horizontally-flipped svg {
 			transform: scaleX(-1) scaleY(-1);
 		}
 	}

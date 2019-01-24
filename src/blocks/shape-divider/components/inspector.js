@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
+import OrientationControl from '../../../components/orientation/';
 
 /**
  * WordPress dependencies
@@ -19,11 +20,12 @@ class Inspector extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
-		this.updateHeight = this.updateHeight.bind( this );
+
+		this.setSizeControl = this.setSizeControl.bind( this );
 	}
 
-	updateHeight( newHeight ) {
-		this.props.setAttributes( { height: newHeight } );
+	setSizeControl( value ) {
+		this.props.setAttributes( { horizontalFlip: value } );
 	}
 
 	render() {
@@ -64,7 +66,7 @@ class Inspector extends Component {
 								step="1"
 							/>
 						</BaseControl>
-						<BaseControl label={ __( 'Divide Height in pixels' ) }>
+						<BaseControl label={ __( 'Divider Height in pixels' ) }>
 							<input
 								type="number"
 								onChange={ ( event ) => {
@@ -77,15 +79,13 @@ class Inspector extends Component {
 								step="1"
 							/>
 						</BaseControl>
-						<ToggleControl
-							label={ __( 'Horizontal Flip' ) }
-							checked={ !! horizontalFlip }
-							onChange={ () => setAttributes( {  horizontalFlip: ! horizontalFlip } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Vertical Flip' ) }
-							checked={ !! verticalFlip }
-							onChange={ () => setAttributes( {  verticalFlip: ! verticalFlip } ) }
+						<OrientationControl { ...this.props }
+							label={ __( 'Orientation' ) }
+							help={ __( 'Flip vertically and horizontally.' ) }
+							horizontalFlip={ horizontalFlip }
+							verticalFlip={ verticalFlip }
+							onHorizontalFlip={ () => setAttributes( {  horizontalFlip: ! horizontalFlip } ) }
+							onVerticalFlip={ () => setAttributes( {  verticalFlip: ! verticalFlip } ) }
 						/>
 					</PanelBody>
 					<PanelColorSettings
