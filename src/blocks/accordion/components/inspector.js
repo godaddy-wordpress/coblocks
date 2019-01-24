@@ -34,13 +34,11 @@ class Inspector extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( 'Accordion Settings' ) }>
 						<ToggleControl
-							label={ __( 'Support Legacy Browsers' ) }
+							label={ __( 'Internet Explorer Support' ) }
 							checked={ !! polyfill }
-							help={ ! polyfill ? __( 'Toggle to enable support for legacy browsers' ) : __( 'Supporting legacy browsers' ) }
+							help={ ! polyfill ? __( 'Add support for Internet Explorer by loading a JavaScript polyfill.' ) : __( 'Supporting Internet Explorer by loading a JavaScript polyfill on this page.' ) }
 							onChange={ () => {
-								
 								setAttributes( {  polyfill: ! polyfill } )
-
 								// Save values to metadata.
 								wp.data.dispatch( 'core/editor' ).editPost({
 									meta: {
