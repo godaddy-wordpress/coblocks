@@ -1,4 +1,10 @@
 .wp-block-coblocks-media-card {
+	&__inner {
+		@media (max-width: #{ ($break-small) }) {
+			display: block !important;
+		}
+	}
+
 	.editor-block-list__block[data-type="coblocks/media-card"] & &__inner {
 		grid-template-areas:
 			"media-text-media media-text-content"
