@@ -288,3 +288,21 @@
 .components-block-coblocks-media-card-maxwidth-range {
 	margin-bottom: 0.7em;
 }
+
+//Fix background color contrast issue
+body .editor-styles-wrapper{
+	.wp-block-coblocks-media-card {
+		&__content {
+			p,
+			a,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				color: inherit;
+			}
+		}
+	}
+}
