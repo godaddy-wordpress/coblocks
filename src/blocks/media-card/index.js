@@ -135,12 +135,13 @@ const settings = {
 			{
 				type: 'block',
 				blocks: [ 'core/media-text' ],
-				transform: ( { mediaAlt, mediaUrl, mediaId, mediaType } ) => (
+				transform: ( { mediaAlt, mediaUrl, mediaId, mediaType, mediaPosition } ) => (
 					createBlock( `coblocks/${ name }`, {
 						mediaAlt: mediaAlt,
 						mediaId: mediaId,
 						mediaUrl: mediaUrl,
 						mediaType: mediaType,
+						mediaPosition: mediaPosition,
 					} )
 				),
 			},
@@ -176,22 +177,18 @@ const settings = {
 			{
 				type: 'block',
 				blocks: [ 'core/media-text' ],
-				transform: ( { mediaAlt, mediaUrl, mediaId, mediaType } ) => (
+				transform: ( { mediaAlt, mediaUrl, mediaId, mediaType, mediaPosition } ) => (
 					createBlock( 'core/media-text', {
 						mediaAlt: mediaAlt,
 						mediaId: mediaId,
 						mediaUrl: mediaUrl,
 						mediaType: mediaType,
+						mediaPosition: mediaPosition,
 					} )
 				),
 			},
 		]
 	},
-
-	styles: [
-		{ name: 'left', label: __( 'Left' ), isDefault: true },
-		{ name: 'right', label: __( 'Right' ) },
-	],
 
 	edit: Edit,
 
