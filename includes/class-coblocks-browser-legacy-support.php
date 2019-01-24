@@ -76,22 +76,21 @@ class CoBlocks_Browser_Legacy_Support {
 	 */
 	public function load_assets() {
 		global $post;
-		
+
 		$legacy_support = get_post_meta( $post->ID, '_coblocks_legacy_support', true );
 
-		if( $legacy_support == "'true'" ){
+		if ( "'true'" === $legacy_support ) {
 			$dir = CoBlocks()->asset_source( 'js' );
 
 			wp_enqueue_script(
-				$this->_slug . '-details-polyfill',
-				$dir . $this->_slug . '-details-polyfill' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$this->_slug . '-accordion-polyfill',
+				$dir . $this->_slug . '-accordion-polyfill' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array(),
 				$this->_version,
 				true
 			);
 		}
 	}
-
 }
 
 CoBlocks_Browser_Legacy_Support::register();
