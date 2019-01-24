@@ -81,7 +81,7 @@ class Edit extends Component {
 			verticalFlip,
 			horizontalFlip,
 		} = attributes;
-		
+
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -89,19 +89,22 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
+				<div className={ classnames(
+					className, {
+						'is-vertically-flipped' : verticalFlip,
+						'is-horizontally-flipped' : horizontalFlip,
+						'has-background': backgroundColor.color,
+						'has-text-color': color.color,
+						[ color.class ]: color.class,
+					}
+				) } >
 				<ResizableBox
 					className={ classnames(
-						className, {
+						'wp-block-coblocks-shape-divider__svg-wrapper', {
 							'is-selected': isSelected,
-							'is-vertically-flipped' : verticalFlip,
-							'is-horizontally-flipped' : horizontalFlip,
-							'has-background': backgroundColor.color,
-							'has-text-color': color.color,
-							[ color.class ]: color.class,
 						}
 					) }
 					style={ {
-						backgroundColor: backgroundColor.color,
 						color: color.color,
 					} }
 					size={ {
@@ -132,15 +135,20 @@ class Edit extends Component {
 				</ResizableBox>
 				<ResizableBox
 					className={ classnames(
-						'test', {
+						'wp-block-coblocks-shape-divider__alt-wrapper', {
 							'is-selected': isSelected,
-							'has-text-color': color.color,
-							[ color.class ]: color.class,
 						}
 					) }
+
+					// className={ classnames(
+					// 	'test', {
+					// 		'is-selected': isSelected,
+					// 		'has-text-color': color.color,
+					// 		[ color.class ]: color.class,
+					// 	}
+					// ) }
 					style={ {
 						backgroundColor: color.color,
-						color: color.color,
 					} }
 					size={ {
 						height: heightAlt,
@@ -168,6 +176,7 @@ class Edit extends Component {
 					} }
 				>
 				</ResizableBox>
+				</div>
 			</Fragment>
 		];
 	}

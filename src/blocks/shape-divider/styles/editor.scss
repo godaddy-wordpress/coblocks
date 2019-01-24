@@ -8,6 +8,32 @@
 			position: absolute;
 			width: 100%;
 		}
+
+		&.is-style-pointed {
+			.wp-block-coblocks-shape-divider__svg-wrapper .components-resizable-box__handle {
+				left: calc(73.78% - 12px);
+			}
+		}
+	}
+
+	.wp-block-coblocks-shape-divider__alt-wrapper .components-resizable-box__handle {
+		left: 0;
+		right: 0;
+		width: 100%;
+
+		&::after {
+			background: #0085ba;
+			border: 2px solid #fff;
+			border-radius: 50%;
+			bottom: 4px;
+			content: "";
+			cursor: inherit;
+			display: block;
+			height: 16px;
+			position: absolute;
+			right: 4px;
+			width: 16px;
+		}
 	}
 
 	.components-resizable-box__handle {

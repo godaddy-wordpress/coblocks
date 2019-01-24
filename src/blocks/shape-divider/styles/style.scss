@@ -1,4 +1,8 @@
 .wp-block-coblocks-shape-divider {
+	&__alt-wrapper {
+		background-color: currentColor;
+	}
+
 	&.is-vertically-flipped svg {
 		transform: scaleY(-1);
 	}
