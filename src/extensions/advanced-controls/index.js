@@ -21,7 +21,7 @@ const { InspectorAdvancedControls }	= wp.editor;
 const { compose, createHigherOrderComponent } = wp.compose;
 const { ToggleControl } = wp.components;
 
-const blocksWithSpacingSupport = [ 'core/image', 'core/gallery', 'core/spacer' ];
+const blocksWithSpacingSupport = [ 'core/image', 'core/gallery', 'core/spacer', 'core/cover' ];
 
 /**
  * Filters registered block settings, extending attributes with settings
