@@ -253,6 +253,12 @@
 		}
 
 		&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--small * 2;
+				}
+			}
+
 			@include break-small() {
 				&:nth-child(odd) {
 					margin-right: $gutter--small - 16px;
@@ -273,6 +279,12 @@
 		}
 
 		&.has-medium-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--medium * 2;
+				}
+			}
+
 			@include break-small() {
 				&:nth-child(odd) {
 					margin-right: $gutter--medium - 16px;
@@ -293,6 +305,12 @@
 		}
 
 		&.has-large-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--large * 2;
+				}
+			}
+
 			@include break-small() {
 				&:nth-child(odd) {
 					margin-right: $gutter--large - 16px;
@@ -313,6 +331,12 @@
 		}
 
 		&.has-huge-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--huge * 2;
+				}
+			}
+
 			@include break-small() {
 				&:nth-child(odd) {
 					margin-right: $gutter--huge - 16px;
