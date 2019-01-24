@@ -21,8 +21,7 @@ import MediaContainer from './media-container';
 const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { withSelect } = wp.data;
-const { RichText, URLInput, MediaUpload, MediaPlaceholder, mediaUpload, InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.editor;
 const { IconButton, DropZone } = wp.components;
 
 /**
@@ -153,7 +152,9 @@ class Edit extends Component {
 			mediaType,
 			mediaWidth,
 			mediaUrl,
+			maxWidth,
 			isStackedOnMobile,
+			align,
 		} = attributes;
 
 		const dropZone = (
@@ -170,26 +171,34 @@ class Edit extends Component {
 			/>
 		);
 
-		const innerClasses = classnames(
-			'wp-block-coblocks-media-card__inner',
-			...BackgroundClasses( attributes ), {
-			'has-padding': paddingSize && paddingSize != 'no',
-			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
-		} );
-
 		const temporaryMediaWidth = this.state.mediaWidth;
 		const widthString = `${ temporaryMediaWidth || mediaWidth }%`;
 		const isStyleRight = includes( className, 'is-style-right' );
 		const mediaPosition = isStyleRight ? 'right' : 'left';
 
-		const innerStyles = {
-			gridTemplateColumns: 'right' === mediaPosition ? `auto ${ widthString }` : `${ widthString } auto`,
+		const wrapperClasses = classnames(
+			'wp-block-coblocks-media-card__wrapper',
+			...BackgroundClasses( attributes ), {
+				'has-padding': paddingSize && paddingSize != 'no',
+				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
+		} );
+
+		const wrapperStyles = {
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+		};
+
+		const innerClasses = classnames(
+			'wp-block-coblocks-media-card__inner', {
+		} );
+
+		const innerStyles = {
+			gridTemplateColumns: 'right' === mediaPosition ? `auto ${ widthString }` : `${ widthString } auto`,
+			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
 		};
 
 		return [
@@ -208,8 +217,6 @@ class Edit extends Component {
 				<div
 					className={ classnames(
 						className, {
-							'has-background': backgroundColor.color,
-							[ backgroundColor.class ]: backgroundColor.class,
 							[ `coblocks-media-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 							'has-no-media': ! mediaUrl || null,
 							'is-selected': isSelected,
@@ -232,6 +239,7 @@ class Edit extends Component {
 									template={ TEMPLATE }
 									allowedBlocks={ ALLOWED_BLOCKS }
 									templateLock={ true }
+									templateInsertUpdatesSelection={ false }
 								/>
 							) }
 						</div>
@@ -244,7 +252,4 @@ class Edit extends Component {
 
 export default compose( [
 	applyWithColors,
-	withSelect( ( select ) => ( {
-		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
-	} ) ),
 ] )( Edit );
