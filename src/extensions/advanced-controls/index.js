@@ -209,11 +209,11 @@ const addEditorBlockAttributes = createHigherOrderComponent( (BlockListBlock) =>
 			const { noBottomMargin, noTopMargin } = attributes;
 
 			if ( typeof noTopMargin !== 'undefined' && noTopMargin ) {
-				customData = Object.assign( customData, { 'data-no-top-margin': 1 } );
+				customData = Object.assign( customData, { 'data-coblocks-top-spacing': 1 } );
 			}
 
 			if ( typeof noBottomMargin !== 'undefined' && noBottomMargin ) {
-				customData = Object.assign( customData, { 'data-no-bottom-margin': 1 } );
+				customData = Object.assign( customData, { 'data-coblocks-bottom-spacing': 1 } );
 			}
 
 			wrapperProps = {

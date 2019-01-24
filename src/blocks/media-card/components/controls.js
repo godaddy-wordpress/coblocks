@@ -2,13 +2,15 @@
  * Internal dependencies
  */
 import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../components/background';
+import icons from './icons';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls } = wp.editor;
+const { BlockControls } = wp.editor;
+const { Toolbar } = wp.components;
 
 class Controls extends Component {
 
@@ -24,15 +26,26 @@ class Controls extends Component {
 		} = this.props;
 
 		const {
-			contentAlign,
+			mediaPosition,
 		} = attributes;
+
+		const toolbarControls = [ {
+			icon: icons.mediaCardRight,
+			title: __( 'Media on right' ),
+			isActive: mediaPosition === 'right',
+			onClick: () => setAttributes( { mediaPosition: 'right' } ),
+		}, {
+			icon: icons.mediaCardLeft,
+			title: __( 'Media on left' ),
+			isActive: mediaPosition === 'left',
+			onClick: () => setAttributes( { mediaPosition: 'left' } ),
+		}, ];
 
 		return (
 			<Fragment>
 				<BlockControls>
-					<AlignmentToolbar
-						value={ contentAlign }
-						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
+					<Toolbar
+						controls={ toolbarControls }
 					/>
 					{ BackgroundImageToolbarControls( this.props ) }
 				</BlockControls>

@@ -4,6 +4,7 @@
 import times from 'lodash/times';
 import classnames from 'classnames';
 import memoize from 'memize';
+import Inspector from './inspector';
 
 /**
  * WordPress dependencies
@@ -59,6 +60,11 @@ class Edit extends Component {
 
 		return [
 			<Fragment>
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
 				<div className={ className }>
 					<InnerBlocks
 						template={ getCount( count ) }
