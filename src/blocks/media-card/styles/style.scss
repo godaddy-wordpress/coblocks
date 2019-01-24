@@ -30,11 +30,6 @@
 			margin-bottom: 0;
 			margin-top: 0;
 			max-height: 600px;
-			width: 100%;
-
-			@include break-smallest {
-				width: 20%;
-			}
 
 			@include break-small {
 				width: 100%;
@@ -53,10 +48,6 @@
 			top: -30px;
 			width: 30px;
 
-			@include break-smallest {
-				top: 0;
-			}
-
 			@include break-small {
 				height: 50px;
 				width: 50px;
@@ -70,10 +61,6 @@
 		word-break: break-word;
 		z-index: 1;
 
-		@include break-smallest {
-			margin-left: -20%;
-		}
-
 		@include break-small {
 			margin-left: -100px;
 		}
@@ -86,10 +73,6 @@
 	&.is-style-right &__content {
 		margin-left: 0;
 		margin-right: -50%;
-
-		@include break-smallest {
-			margin-right: -20%;
-		}
 
 		@include break-small {
 			margin-right: -100px;
@@ -109,16 +92,7 @@
 			grid-template-columns: 100% !important;
 		}
 
-		&.is-stacked-on-mobile.is-style-right &__inner {
-			grid-template-areas: "media-text-content" "media-text-media";
-		}
-
 		&.is-stacked-on-mobile.is-style-right &__content {
-			@include break-smallest {
-				margin-left: 0;
-				margin-right: 20%;
-			}
-
 			@include break-small {
 				margin-right: -100px;
 			}

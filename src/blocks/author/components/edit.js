@@ -181,6 +181,7 @@ class Edit extends Component {
 							template={ TEMPLATE }
 							templateLock="all"
 							allowedBlocks={ ALLOWED_BLOCKS }
+							templateInsertUpdatesSelection={ false }
 						/>
 					</div>
 				</div>

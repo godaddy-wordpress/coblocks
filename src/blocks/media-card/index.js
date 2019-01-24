@@ -87,7 +87,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Add an image card with an offset text block.' ),
+	description: __( 'Add an image or video with an offset card side-by-side.' ),
 
 	keywords: keywords,
 
