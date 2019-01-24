@@ -27,6 +27,21 @@
 		}
 	}
 
+	// Centers the spinner component, when an image is being dropped and replaced.
+	.wp-block-coblocks-media-card__placeholder {
+		position: relative;
+
+		.components-spinner {
+			left: 0;
+			left: 50%;
+			margin-left: -9px;
+			margin-top: -9px;
+			position: absolute;
+			top: 50%;
+			z-index: 9999;
+		}
+	}
+
 	// ResizableBox component.
 	.editor-media-container__resizer {
 		align-self: center;

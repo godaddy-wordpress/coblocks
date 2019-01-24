@@ -25,6 +25,11 @@ const { InnerBlocks, mediaUpload } = wp.editor;
 const { IconButton, DropZone } = wp.components;
 
 /**
+ * This block can recieve both image and video files.
+ */
+export const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
+
+/**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
  * The contents of the array should never change.
  * The array should contain the name of each block that is allowed.
@@ -33,7 +38,6 @@ const { IconButton, DropZone } = wp.components;
  * @constant
  * @type {string[]}
 */
-const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row' , 'coblocks/column' ];
 const TEMPLATE = [
 	[ 'coblocks/row', { columns: 1, layout: '100', paddingSize: 'huge', hasMarginControl: false, hasStackedControl: false, hasAlignmentControls: false, customBackgroundColor: '#FFFFFF' }, [
@@ -124,15 +128,17 @@ class Edit extends Component {
 		const { mediaAlt, mediaId, mediaType, mediaUrl, mediaWidth, hasImgShadow } = attributes;
 
 		return (
-			<MediaContainer
-				className={ className }
-				figureClass="wp-block-coblocks-media-card__media-container"
-				onSelectMedia={ this.onSelectMedia }
-				onWidthChange={ this.onWidthChange }
-				commitWidthChange={ this.commitWidthChange }
-				onDropMedia={ this.onDropMedia }
-				{ ...{ mediaAlt, mediaId, mediaType, mediaUrl, hasImgShadow, mediaWidth } }
-			/>
+			<Fragment>
+				<MediaContainer
+					className={ className }
+					figureClass="wp-block-coblocks-media-card__media-container"
+					onSelectMedia={ this.onSelectMedia }
+					onWidthChange={ this.onWidthChange }
+					commitWidthChange={ this.commitWidthChange }
+					onDropMedia={ this.onDropMedia }
+					{ ...{ mediaAlt, mediaId, mediaType, mediaUrl, hasImgShadow, mediaWidth } }
+				/>
+			</Fragment>
 		);
 	}
 
