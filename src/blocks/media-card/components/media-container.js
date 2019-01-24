@@ -9,7 +9,7 @@ import includes from 'lodash/includes';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { BlockControls, MediaPlaceholder, MediaUpload, mediaUpload } = wp.editor;
+const { BlockControls, MediaPlaceholder, MediaUpload } = wp.editor;
 const { IconButton, ResizableBox, Toolbar, DropZone } = wp.components;
 
 /**
@@ -21,7 +21,6 @@ class MediaContainer extends Component {
 
 	constructor() {
 		super( ...arguments );
-		this.addFile = this.addFile.bind( this );
 	}
 
 	renderToolbarEditButton() {
@@ -99,25 +98,15 @@ class MediaContainer extends Component {
 		);
 	}
 
-	addFile( files ) {
-		const { onSelectMedia } = this.props;
-
-		mediaUpload( {
-			allowedTypes: ALLOWED_MEDIA_TYPES,
-			filesList: files,
-			onFileChange: ( [ media ] ) => onSelectMedia,
-		} );
-	}
-
 	render() {
-		const { className, mediaUrl, mediaType, mediaWidth, commitWidthChange, onWidthChange, onSelectMedia } = this.props;
+		const { className, mediaUrl, mediaType, mediaWidth, commitWidthChange, onWidthChange, onSelectMedia, onDropMedia } = this.props;
 
 		const isStyleRight = includes( className, 'is-style-right' );
 		const mediaPosition = isStyleRight ? 'right' : 'left';
 
 		const imageDropZone = (
 			<DropZone
-				onFilesDrop={ this.addFile }
+				onFilesDrop={ onDropMedia }
 				label={ __( 'Drop to replace media' ) }
 			/>
 		);

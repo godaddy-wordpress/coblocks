@@ -21,7 +21,7 @@ import MediaContainer from './media-container';
 const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks, mediaUpload } = wp.editor;
 const { IconButton, DropZone } = wp.components;
 
 /**
@@ -33,7 +33,7 @@ const { IconButton, DropZone } = wp.components;
  * @constant
  * @type {string[]}
 */
-const ALLOWED_MEDIA_TYPES = [ 'image' ];
+const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row' , 'coblocks/column' ];
 const TEMPLATE = [
 	[ 'coblocks/row', { columns: 1, layout: '100', paddingSize: 'huge', hasMarginControl: false, hasStackedControl: false, hasAlignmentControls: false, customBackgroundColor: '#FFFFFF' }, [
@@ -54,12 +54,21 @@ class Edit extends Component {
 	constructor( props ) {
 		super( ...arguments );
 
+		this.onDropMedia = this.onDropMedia.bind( this );
 		this.onSelectMedia = this.onSelectMedia.bind( this );
 		this.onWidthChange = this.onWidthChange.bind( this );
 		this.commitWidthChange = this.commitWidthChange.bind( this );
 		this.state = {
 			mediaWidth: null,
 		};
+	}
+
+	onDropMedia( files ) {
+		mediaUpload( {
+			allowedTypes: ALLOWED_MEDIA_TYPES,
+			filesList: files,
+			onFileChange: ( [ media ] ) => this.onSelectMedia( media ),
+		} );
 	}
 
 	onSelectMedia( media ) {
@@ -121,6 +130,7 @@ class Edit extends Component {
 				onSelectMedia={ this.onSelectMedia }
 				onWidthChange={ this.onWidthChange }
 				commitWidthChange={ this.commitWidthChange }
+				onDropMedia={ this.onDropMedia }
 				{ ...{ mediaAlt, mediaId, mediaType, mediaUrl, hasImgShadow, mediaWidth } }
 			/>
 		);
