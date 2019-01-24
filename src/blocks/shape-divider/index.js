@@ -60,6 +60,7 @@ const blockAttributes = {
 	},
 	customColor: {
 		type: 'string',
+		default: '#111',
 	},
 	backgroundColor: {
 		type: 'string',
