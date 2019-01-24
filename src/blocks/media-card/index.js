@@ -10,7 +10,7 @@ import includes from 'lodash/includes';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import icons from './../../utils/icons';
+import icons from './components/icons';
 import Edit from './components/edit';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
@@ -38,6 +38,10 @@ const keywords = [
 ];
 
 const blockAttributes = {
+	mediaPosition: {
+		type: 'string',
+		default: 'left',
+	},
 	mediaAlt: {
 		type: 'string',
 		source: 'attribute',
@@ -64,9 +68,6 @@ const blockAttributes = {
 	align: {
 		type: 'string',
 		default: 'wide',
-	},
-	contentAlign: {
-		type: 'string',
 	},
 	maxWidth: {
 		type: 'number',
@@ -134,12 +135,13 @@ const settings = {
 			{
 				type: 'block',
 				blocks: [ 'core/media-text' ],
-				transform: ( { mediaAlt, mediaUrl, mediaId, mediaType } ) => (
+				transform: ( { mediaAlt, mediaUrl, mediaId, mediaType, mediaPosition } ) => (
 					createBlock( `coblocks/${ name }`, {
 						mediaAlt: mediaAlt,
 						mediaId: mediaId,
 						mediaUrl: mediaUrl,
 						mediaType: mediaType,
+						mediaPosition: mediaPosition,
 					} )
 				),
 			},
@@ -175,22 +177,18 @@ const settings = {
 			{
 				type: 'block',
 				blocks: [ 'core/media-text' ],
-				transform: ( { mediaAlt, mediaUrl, mediaId, mediaType } ) => (
+				transform: ( { mediaAlt, mediaUrl, mediaId, mediaType, mediaPosition } ) => (
 					createBlock( 'core/media-text', {
 						mediaAlt: mediaAlt,
 						mediaId: mediaId,
 						mediaUrl: mediaUrl,
 						mediaType: mediaType,
+						mediaPosition: mediaPosition,
 					} )
 				),
 			},
 		]
 	},
-
-	styles: [
-		{ name: 'left', label: __( 'Left' ), isDefault: true },
-		{ name: 'right', label: __( 'Right' ) },
-	],
 
 	edit: Edit,
 
@@ -200,7 +198,6 @@ const settings = {
 			coblocks,
 			backgroundColor,
 			backgroundImg,
-			contentAlign,
 			customBackgroundColor,
 			hasCardShadow,
 			hasImgShadow,
@@ -211,6 +208,7 @@ const settings = {
 			mediaWidth,
 			mediaId,
 			maxWidth,
+			mediaPosition,
 			isStackedOnMobile,
 			align,
 		} = attributes;
@@ -221,9 +219,6 @@ const settings = {
 			video: () => <video controls src={ mediaUrl } />,
 		};
 
-		const isStyleRight = includes( className, 'is-style-right' );
-		const mediaPosition = isStyleRight ? 'right' : 'left';
-
 		let gridTemplateColumns;
 		if ( mediaWidth !== 55 ) {
 			gridTemplateColumns = mediaPosition === 'right' ? `auto ${ mediaWidth }%` : `${ mediaWidth }% auto`;
@@ -233,6 +228,7 @@ const settings = {
 
 		const classes = classnames( {
 			[ `coblocks-media-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+			[ `is-style-${ mediaPosition }` ] : mediaPosition,
 			'has-no-media': ! mediaUrl || null,
 			'is-stacked-on-mobile': isStackedOnMobile,
 		} );
@@ -258,14 +254,10 @@ const settings = {
 			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
 		};
 
-		const cardBackgroundClasses = classnames(
+		const cardClasses = classnames(
 			'wp-block-coblocks-media-card__content', {
 			'has-shadow': hasCardShadow,
 		} );
-
-		const cardStyles = {
-			textAlign: contentAlign ? contentAlign : null,
-		};
 
 		return (
 			<div className={ classes }>
@@ -280,7 +272,7 @@ const settings = {
 							{ ( mediaTypeRenders[ mediaType ] || noop )() }
 							{ ! mediaUrl ? icons.logo : null }
 						</figure>
-						<div className={ cardBackgroundClasses } style={ cardStyles }>
+						<div className={ cardClasses }>
 							<InnerBlocks.Content />
 						</div>
 					</div>
