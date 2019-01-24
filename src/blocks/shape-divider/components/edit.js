@@ -81,7 +81,7 @@ class Edit extends Component {
 			verticalFlip,
 			horizontalFlip,
 		} = attributes;
-
+		console.log( heightAlt );
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -143,7 +143,7 @@ class Edit extends Component {
 						color: color.color,
 					} }
 					size={ {
-						heightAlt,
+						height: heightAlt,
 					} }
 					minWidth="100%"
 					minHeight="20"
