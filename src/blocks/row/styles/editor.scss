@@ -370,6 +370,10 @@
 	> span > .components-resizable-box__handle {
 		z-index: 98;
 
+		@media (max-width: #{ ($break-small) }) {
+			display: none !important;
+		}
+
 		&::before {
 			height: 15px;
 			width: 15px;
@@ -418,18 +422,22 @@
 	&.is-selected-column::after,
 	div[data-type="coblocks/row"].is-selected &::after,
 	div[data-type="coblocks/row"].is-resizing &::after {
-		height: 100%;
-		width: 7px;
 		background: #0085ba;
+		border: 2px solid #fff;
+		bottom: 0;
+		content: "";
 		cursor: inherit;
 		display: block;
-		content: "";
+		height: 100%;
+		position: absolute;
 		right: -21px;
 		top: 0;
-		bottom: 0;
-		position: absolute;
+		width: 7px;
 		z-index: 97;
-		border: 2px solid #fff;
+
+		@media (max-width: #{ ($break-small) }) {
+			display: none !important;
+		}
 	}
 
 	&.is-selected-column::after,
