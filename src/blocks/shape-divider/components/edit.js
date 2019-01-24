@@ -81,7 +81,7 @@ class Edit extends Component {
 			verticalFlip,
 			horizontalFlip,
 		} = attributes;
-		console.log( heightAlt );
+		
 		return [
 			<Fragment>
 				{ isSelected && (
