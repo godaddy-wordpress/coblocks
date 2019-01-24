@@ -21,8 +21,9 @@ const { addFilter } = wp.hooks;
 const { Fragment }	= wp.element;
 const { InspectorAdvancedControls }	= wp.components;
 const { compose, createHigherOrderComponent } = wp.compose;
+const { hasBlockSupport }	= wp.blocks;
 
-const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features'];
+const blocksWithTypographySupport = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features'];
 
 /**
  * Filters registered block settings, extending attributes with settings
@@ -33,7 +34,16 @@ const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pu
 function addAttributes( settings ) {
 
 	// Use Lodash's assign to gracefully handle if attributes are undefined
-	if( allowedBlocks.includes( settings.name ) ){
+	if( blocksWithTypographySupport.includes( settings.name ) ){
+		if( !settings.supports ){
+			settings.supports = {};
+		}
+		settings.supports = Object.assign( settings.supports, {
+			coBlocksTypography: true
+		} );
+	}
+
+	if ( hasBlockSupport( settings, 'coBlocksTypography' ) ) {
 		settings.attributes = Object.assign( settings.attributes, TypographyAttributes );
 	}
 
@@ -58,7 +68,7 @@ const withControls = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
-				{ props.isSelected && allowedBlocks.includes( props.name ) && <Controls {...{ ...props }} /> }
+				{ props.isSelected && blocksWithTypographySupport.includes( props.name ) && <Controls {...{ ...props }} /> }
 			</Fragment>
 		);
 	};
@@ -96,7 +106,7 @@ const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
 		let attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
 		let blockName		= select( 'core/editor' ).getBlockName( props.clientId );
 
-		if( allowedBlocks.includes( blockName ) ){
+		if( blocksWithTypographySupport.includes( blockName ) ){
 			const { customFontSize, fontFamily, lineHeight, fontWeight, letterSpacing, textTransform, customTextColor } = attributes;
 
 			if( customFontSize ){
@@ -149,7 +159,7 @@ const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
  */
 function applyFontSettings(extraProps, blockType, attributes) {
 
-	if ( allowedBlocks.includes( blockType.name ) ) {
+	if ( blocksWithTypographySupport.includes( blockType.name ) ) {
 
 		if( typeof extraProps.style !== 'undefined' ){
 			extraProps.style = Object.assign( extraProps.style, applyStyle( attributes, blockType.name ) );
