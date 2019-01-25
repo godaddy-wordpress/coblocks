@@ -37,7 +37,11 @@ const keywords = [
 const blockAttributes = {
 	count: {
 		type: 'number',
-		default: 2,
+		default: 1,
+	},
+	polyfill: {
+		type: 'boolean',
+		default: false,
 	},
 };
 

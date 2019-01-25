@@ -116,6 +116,8 @@ class DimensionsControl extends Component {
 				this.props.setAttributes( { marginTop: size, marginRight: 0, marginBottom: size, marginLeft: 0, marginUnit: 'px' } );
 			}
 		}
+
+		this.saveMeta();
 	}
 
 	syncUnits( value, device ) {
@@ -200,6 +202,84 @@ class DimensionsControl extends Component {
 					_coblocks_dimensions: JSON.stringify( dimensions ),
 				}
 			});
+
+			//add CSS to head
+			let head 			= document.head || document.getElementsByTagName('head')[0],
+			responsiveCss		= '',
+		    style 				= document.createElement('style');
+		    style.type 			= 'text/css';
+
+		    //add responsive styling for tablet device
+		    responsiveCss += '@media only screen and (max-width: 768px) {';
+		   		responsiveCss += '.'+ id + ' > div{';
+		   		if( padding.paddingTopTablet ){
+		   			responsiveCss += 'padding-top: ' + padding.paddingTopTablet + ' !important;';
+		   		}
+		    	if( padding.paddingBottomTablet ){
+		    		responsiveCss += 'padding-bottom: ' + padding.paddingBottomTablet + ' !important;';
+		    	}
+		    	if( padding.paddingRightTablet ){
+		    		responsiveCss += 'padding-right: ' + padding.paddingRightTablet + ' !important;';
+		    	}
+		    	if( padding.paddingLeftTablet ){
+		    		responsiveCss += 'padding-left: ' + padding.paddingLeftTablet + ' !important;';
+		    	}
+
+		    	if( margin.marginTopTablet ){
+		   			responsiveCss += 'margin-top: ' + margin.marginTopTablet + ' !important;';
+		   		}
+		    	if( margin.marginBottomTablet ){
+		    		responsiveCss += 'margin-bottom: ' + margin.marginBottomTablet + ' !important;';
+		    	}
+		    	if( margin.marginRightTablet ){
+		    		responsiveCss += 'margin-right: ' + margin.marginRightTablet + ' !important;';
+		    	}
+		    	if( margin.marginleLtTablet ){
+		    		responsiveCss += 'margin-left: ' + margin.marginLeftTablet + ' !important;';
+		    	}
+		    	
+		    	responsiveCss += '}';
+		    responsiveCss += '}';
+
+		    responsiveCss += '@media only screen and (max-width: 514px) {';
+		   		responsiveCss += '.'+ id + ' > div{';
+		   		if( padding.paddingTopMobile ){
+		   			responsiveCss += 'padding-top: ' + padding.paddingTopMobile + ' !important;';
+		   		}
+		    	if( padding.paddingBottomMobile ){
+		    		responsiveCss += 'padding-bottom: ' + padding.paddingBottomMobile + ' !important;';
+		    	}
+		    	if( padding.paddingRightMobile ){
+		    		responsiveCss += 'padding-right: ' + padding.paddingRightMobile + ' !important;';
+		    	}
+		    	if( padding.paddingLeftMobile ){
+		    		responsiveCss += 'padding-left: ' + padding.paddingLeftMobile + ' !important;';
+		    	}
+
+		    	if( margin.marginTopMobile ){
+		   			responsiveCss += 'margin-top: ' + margin.marginTopMobile + ' !important;';
+		   		}
+		    	if( margin.marginBottomMobile ){
+		    		responsiveCss += 'margin-bottom: ' + margin.marginBottomMobile + ' !important;';
+		    	}
+		    	if( margin.marginRightMobile ){
+		    		responsiveCss += 'margin-right: ' + margin.marginRightMobile + ' !important;';
+		    	}
+		    	if( margin.marginleLtMobile ){
+		    		responsiveCss += 'margin-left: ' + margin.marginLeftMobile + ' !important;';
+		    	}
+		    	
+		    	
+		    	responsiveCss += '}';
+		    responsiveCss += '}';
+
+		    if ( style.styleSheet ){
+			  style.styleSheet.cssText = responsiveCss;
+			}else {
+			  style.appendChild( document.createTextNode(responsiveCss) );
+			}
+
+			head.appendChild(style);
 		}
 	}
 

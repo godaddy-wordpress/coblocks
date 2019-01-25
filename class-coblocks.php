@@ -5,7 +5,7 @@
  * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
  * Author: CoBlocks
  * Author URI: https://coblocks.com/
- * Version: 1.6.0
+ * Version: 1.7.0
  * Text Domain: coblocks
  * Domain Path: languages
  * Tested up to: @@pkg.tested_up_to
@@ -134,14 +134,16 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-assets.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-register-blocks.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-generated-styles.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-body-classes.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-font-loader.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-meta.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-google-map.php';
-			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-template-loader.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-type.php';
-			require_once COBLOCKS_PLUGIN_DIR . 'includes/template-inserter-ajax.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-modal.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-accordion-ie-support.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/template-inserter-ajax.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';

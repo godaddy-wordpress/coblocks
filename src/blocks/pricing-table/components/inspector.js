@@ -35,7 +35,7 @@ class Inspector extends Component {
 							value={ count }
 							onChange={ ( nextCount ) => {
 								setAttributes( {
-									count: nextCount,
+									count: parseInt( nextCount ),
 								} );
 							} }
 							min={ 1 }

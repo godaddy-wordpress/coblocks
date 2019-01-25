@@ -142,7 +142,7 @@ const settings = {
 								value={ biography }
 							/>
 						) }
-						<InnerBlocks.Content />
+						<InnerBlocks.Content/>
 					</div>
 				</div>
 			);

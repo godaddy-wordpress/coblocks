@@ -28,7 +28,7 @@
 	}
 }
 
-.editor-block-list__block[data-custom-fontfamily="1"] {
+.editor-block-list__block[data-coblocks-font="1"] {
 	.wp-block-heading {
 		h1,
 		h2,
@@ -39,11 +39,15 @@
 			font-family: inherit;
 		}
 	}
-	.wp-block-button {
-		.wp-block-button__link {
-			font-family: inherit;
+
+	&:not([data-type="coblocks/pricing-table"]) {
+		.wp-block-button {
+			.wp-block-button__link {
+				font-family: inherit;
+			}
 		}
 	}
+
 	.editor-rich-text {
 		.wp-block-cover-text,
 		.wp-block-paragraph {
@@ -57,6 +61,12 @@
 			p {
 				font-family: inherit;
 			}
+		}
+	}
+	.wp-block-coblocks-pricing-table {
+		.wp-block-coblocks-pricing-table-item__title,
+		.wp-block-coblocks-pricing-table-item__amount {
+			font-family: inherit;
 		}
 	}
 }
@@ -130,7 +140,7 @@
 	}
 
 	.block-library-button__inline-link,
-	.editor-block-list__breadcrumb{
+	.editor-block-list__breadcrumb {
 		text-transform: none;
 	}
 }
@@ -150,14 +160,14 @@
 
 .editor-block-list__block[data-custom-fontweight="1"] {
 	.block-library-button__inline-link,
-	.editor-block-list__breadcrumb{
+	.editor-block-list__breadcrumb {
 		font-weight: normal;
 	}
 }
 
 .editor-block-list__block[data-custom-letterspacing="1"] {
 	.block-library-button__inline-link,
-	.editor-block-list__breadcrumb{
+	.editor-block-list__breadcrumb {
 		letter-spacing: normal;
 	}
 }
@@ -181,9 +191,9 @@ body {
 			}
 		}
 
-		.block-library-list{
+		.block-library-list {
 			ul,
-			li{
+			li {
 				line-height: inherit;
 			}
 		}
@@ -193,7 +203,7 @@ body {
 				line-height: inherit !important;
 			}
 
-			.editor-rich-text__tinymce, 
+			.editor-rich-text__tinymce,
 			.wp-block-cover-text {
 				line-height: inherit;
 			}

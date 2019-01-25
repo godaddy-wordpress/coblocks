@@ -62,8 +62,7 @@ class Edit extends Component {
 				<div
 					className={ classnames(
 						className,
-						isSelected ? `${ className }--open` : null,
-						open ? `${ className }--open` : null, {
+						`${ className }--open`, {
 							'is-selected': isSelected,
 						}
 					) }
@@ -85,9 +84,9 @@ class Edit extends Component {
 						onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
 						keepPlaceholderOnFocus
 						onRemove={ ( forward ) => {
-							const hasEmptyTweet = typeof title == 'undefined' || ( typeof title != 'undefined' && title.length == 0 );
+							const hasEmptyTitle = typeof title == 'undefined' || ( typeof title != 'undefined' && title.length == 0 );
 
-							if ( ! forward && hasEmptyTweet ) {
+							if ( ! forward && hasEmptyTitle ) {
 								onReplace( [] );
 							}
 						} }
@@ -99,6 +98,7 @@ class Edit extends Component {
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ TEMPLATE }
+							templateInsertUpdatesSelection={ false }
 						/>
 					</div>
 				</div>

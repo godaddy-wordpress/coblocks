@@ -42,6 +42,7 @@ class CoBlocks_Generated_Styles {
 	 */
 	private function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 	}
 
 	/**
@@ -75,6 +76,12 @@ class CoBlocks_Generated_Styles {
 				if ( ! empty( $meta ) ) {
 
 					$output = '';
+					$important = '';
+
+					if( is_admin() ){
+						$important = ' !important';
+					}
+
 					foreach ( $meta as $id => $block ) {
 
 						$output .= sprintf( '.%1$s > div {', esc_attr( $id ) );
@@ -85,9 +92,9 @@ class CoBlocks_Generated_Styles {
 									foreach ( $style as $ky => $value ) {
 										if ( ! empty( $value ) ) {
 											if ( strpos( $ky, 'Mobile' ) !== false ) {
-												$mobile[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Mobile', '', $ky ) ) ) . ':' . esc_attr( $value ) . ';';
+												$mobile[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Mobile', '', $ky ) ) ) . ':' . esc_attr( $value ) . $important . ';';
 											} elseif ( strpos( $ky, 'Tablet' ) !== false ) {
-												$tablet[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Tablet', '', $ky ) ) ) . ':' . esc_attr( $value ) . ';';
+												$tablet[] = strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', str_replace( 'Tablet', '', $ky ) ) ) . ':' . esc_attr( $value ) . $important . ';';
 											} else {
 												$output .= strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', $ky ) ) . ':' . esc_attr( $value ) . ';';
 											}

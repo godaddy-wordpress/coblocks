@@ -1,10 +1,16 @@
 .wp-block-coblocks-row {
 	display: block;
 
+	.components-placeholder {
+		color: #191e23;
+	}
+
 	.wp-block-coblocks-row__inner.has-no-gutter {
 		> .editor-inner-blocks > .editor-block-list__layout > .wp-block > .editor-block-list__block-edit {
-			margin-left: -43px;
-			margin-right: -43px;
+			@include break-small() {
+				margin-left: -43px;
+				margin-right: -43px;
+			}
 		}
 	}
 
@@ -20,7 +26,10 @@
 				> .wp-block {
 					margin-left: auto;
 					margin-right: auto;
-					max-width: calc(6 * (100vw / 12.5)) !important;
+
+					&[data-coblocks-align-support="1"] {
+						max-width: calc(6 * (100vw / 12.5)) !important;
+					}
 
 					&[data-align="wide"] {
 						max-width: calc(6 * (100vw / 8.3)) !important;
@@ -31,7 +40,7 @@
 						max-width: calc(112.5% + 90px) !important;
 					}
 
-					&[data-type="coblocks/row"][data-columns="1"] {
+					&[data-type="coblocks/row"][data-columns="1"]:not( [data-coblocks-align-support="1"] ) {
 						.wp-block {
 							max-width: 100% !important;
 						}
@@ -253,6 +262,12 @@
 		}
 
 		&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--small * 2;
+				}
+			}
+
 			@include break-small() {
 				&:nth-child(odd) {
 					margin-right: $gutter--small - 16px;
@@ -273,6 +288,12 @@
 		}
 
 		&.has-medium-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--medium * 2;
+				}
+			}
+
 			@include break-small() {
 				&:nth-child(odd) {
 					margin-right: $gutter--medium - 16px;
@@ -293,6 +314,12 @@
 		}
 
 		&.has-large-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--large * 2;
+				}
+			}
+
 			@include break-small() {
 				&:nth-child(odd) {
 					margin-right: $gutter--large - 16px;
@@ -313,6 +340,12 @@
 		}
 
 		&.has-huge-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/column"] {
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--huge * 2;
+				}
+			}
+
 			@include break-small() {
 				&:nth-child(odd) {
 					margin-right: $gutter--huge - 16px;
@@ -418,18 +451,18 @@
 	&.is-selected-column::after,
 	div[data-type="coblocks/row"].is-selected &::after,
 	div[data-type="coblocks/row"].is-resizing &::after {
-		height: 100%;
-		width: 7px;
 		background: #0085ba;
+		border: 2px solid #fff;
+		bottom: 0;
+		content: "";
 		cursor: inherit;
 		display: block;
-		content: "";
+		height: 100%;
+		position: absolute;
 		right: -21px;
 		top: 0;
-		bottom: 0;
-		position: absolute;
+		width: 7px;
 		z-index: 97;
-		border: 2px solid #fff;
 	}
 
 	&.is-selected-column::after,

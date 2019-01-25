@@ -10,7 +10,7 @@ const category = {
 };
 
 // Custom foreground icon color based on the CoBlocks branding
-const iconColor = '#536dff';
+const iconColor = '#555eff';
 
 // Register block category
 import icons from './utils/block-category';
@@ -50,8 +50,6 @@ import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';
 import * as social from './blocks/social';
 import * as map from './blocks/map';
-import * as feature from './blocks/features/feature';
-import * as features from './blocks/features';
 import * as mediaCard from './blocks/media-card';
 import * as inserter from './blocks/template-inserter';
 
@@ -72,8 +70,6 @@ export function registerBlocks () {
 		row,
 		social,
 		map,
-		feature,
-		features,
 		mediaCard,
 		inserter,
 	].forEach( ( block ) => {

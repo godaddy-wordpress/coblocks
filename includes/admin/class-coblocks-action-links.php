@@ -76,7 +76,7 @@ class CoBlocks_Action_Links {
 		$support_url = $url_generator->get_store_url(
 			'/',
 			array(
-				'utm_medium'   => 'block-gallery-lite',
+				'utm_medium'   => 'coblocks-lite',
 				'utm_source'   => 'plugins-page',
 				'utm_campaign' => 'plugins-row',
 				'utm_content'  => 'help-and-faqs',
