@@ -246,10 +246,6 @@ const settings = {
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
 		};
 
-		const innerClasses = classnames(
-			'wp-block-coblocks-media-card__inner', {
-		} );
-
 		const innerStyles = {
 			gridTemplateColumns,
 			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
@@ -263,7 +259,7 @@ const settings = {
 		return (
 			<div className={ classes }>
 				<div className={ wrapperClasses } style={ wrapperStyles } >
-					<div className={ innerClasses } style={ innerStyles }>
+					<div className="wp-block-coblocks-media-card__inner" style={ innerStyles }>
 						<figure className={ classnames(
 								'wp-block-coblocks-media-card__media', {
 									'has-shadow': hasImgShadow,
