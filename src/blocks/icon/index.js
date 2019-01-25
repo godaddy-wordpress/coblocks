@@ -111,7 +111,7 @@ const settings = {
 		return (
 			<div className={ className }>
 				<div className={ classes } style={ styles }>
-					{ icon ? iconsSelection[ icon ] : iconsSelection.file }
+					{ icon ? iconsSelection[ icon ] : iconsSelection.logo }
 				</div>
 			</div>
 		);

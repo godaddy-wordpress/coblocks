@@ -102,7 +102,7 @@ class Edit extends Component {
 						toggleSelection( false );
 					} }
 				>
-					{ icon ? iconsSelection[ icon ] : iconsSelection.file }
+					{ icon ? iconsSelection[ icon ] : iconsSelection.logo }
 				</ResizableBox>
 			</Fragment>
 		];
