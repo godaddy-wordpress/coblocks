@@ -115,7 +115,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 								label={ __( 'No top spacing' ) }
 								checked={ !! noTopMargin }
 								onChange={ () => setAttributes( {  noTopMargin: ! noTopMargin, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } ) }
-								help={ !! noTopMargin ? __( 'Top margin is removed on this block.' ) : __( 'Toggle to remove any top margin applied to this block.' ) }
+								help={ !! noTopMargin ? __( 'Top margin is removed on this block.' ) : __( 'Toggle to remove any margin applied to the top of this block.' ) }
 							/>
 						}
 						{ withBlockSpacing &&
@@ -123,7 +123,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 								label={ __( 'No bottom spacing' ) }
 								checked={ !! noBottomMargin }
 								onChange={ () => setAttributes( {  noBottomMargin: ! noBottomMargin, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0  } ) }
-								help={ !! noBottomMargin ? __( 'Bottom margin is removed on this block.' ) : __( 'Toggle to remove any bottom margin applied to this block.' ) }
+								help={ !! noBottomMargin ? __( 'Bottom margin is removed on this block.' ) : __( 'Toggle to remove any margin applied to the bottom of this block.' ) }
 							/>
 						}
 					</InspectorAdvancedControls>
