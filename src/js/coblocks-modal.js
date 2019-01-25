@@ -5,7 +5,7 @@ var coblocks_trigger = false;
 var coblocks_modal = {
 	init: function() {
 		var self 		= this;
-		self.elem 		= jQuery('.blockcoblocks-default-ui');
+		self.elem 		= jQuery('.coblocks-default-ui');
 
 		self.appendModal();
 		self.navClick();
@@ -14,7 +14,7 @@ var coblocks_modal = {
 		self.typeSelection();
 		// self.liveSearch();
 
-		if( jQuery( '.blockcoblocks-default-ui' ).hasClass( 'coblocks-autoOpen' ) ){
+		if( jQuery( '.coblocks-default-ui' ).hasClass( 'coblocks-autoOpen' ) ){
 			jQuery( 'a.page-title-action' ).click();
 		}
     },
@@ -23,7 +23,7 @@ var coblocks_modal = {
 		var self = this;
 		if( self.elem.length > 0 ){
 			self.elem.find('.selected').removeClass('details selected');
-        	self.elem.appendTo('.blockcoblocks-default-ui-wrapper').hide();
+        	self.elem.appendTo('.coblocks-default-ui-wrapper').hide();
 		}
 
         coblocks_trigger = coblocks_frame = false;
@@ -31,7 +31,7 @@ var coblocks_modal = {
 
 	navClick: function(){
 		var self = this;
-		jQuery( document ).on( 'click', '.blockcoblocks-default-ui .media-router a', function(e){
+		jQuery( document ).on( 'click', '.coblocks-default-ui .media-router a', function(e){
 			e.preventDefault();
 		} );
 	},
@@ -58,7 +58,7 @@ var coblocks_modal = {
 			if( jQuery(this).hasClass('coblocks-saver') ){
 				e.stopImmediatePropagation();
 			}
-			
+
 			if( !jQuery(this).hasClass('disabled') ){
 				// display modal
 		        coblocks_frame = true;
@@ -75,7 +75,7 @@ var coblocks_modal = {
 				}else{
 					jQuery( '.coblocks-creation [name="coblocks_action"]' ).val( 'create_template' );
 				}
-				
+
 				self.elem.appendTo('body').show();
 			}
 
@@ -156,7 +156,7 @@ var coblocks_modal = {
 
     liveSearch: function(){
 		var self = this;
-		jQuery(document).on('keyup change', '.blockcoblocks-modal-component .blockcoblocks__modal-controls--search, .blockcoblocks-modal-component .blockcoblocks__modal-controls--category select', function(){
+		jQuery(document).on('keyup change', '.coblocks-modal-component .coblocks__modal-controls--search, .coblocks-modal-component .coblocks__modal-controls--category select', function(){
 			var s 		= jQuery( this ).val();
 			var el 		= jQuery( this ).closest('.components-tab-panel__tab-content').find( 'ul li' );
 			var results = el.filter(function(){

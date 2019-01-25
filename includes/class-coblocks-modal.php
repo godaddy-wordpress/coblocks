@@ -254,7 +254,7 @@ class CoBlocks_Modal {
 				'post_status'  => 'publish',
 				'meta_input'   => array(
 					'coblocks_library_type' => $type,
-					'_blocktemplate_id'           => $id,
+					'_coblocks_id'          => $id,
 					'_coblocks_attr'        => $fonts,
 				),
 			);
@@ -271,9 +271,9 @@ class CoBlocks_Modal {
 	 */
 	public function media_modal() {
 		global $post; ?>
-			<div class="blockcoblocks-default-ui-wrapper" style="display: none;">
+			<div class="coblocks-default-ui-wrapper" style="display: none;">
 
-				<div class="blockcoblocks-default-ui coblocks image-meta <?php echo ( isset( $_GET['add-new'] ) && sanitize_text_field( $_GET['add-new'] ) ) ? 'coblocks-autoOpen' : ''; ?>" data-post-id="<?php echo esc_attr( ( isset( $post->ID ) ) ? $post->ID : '' ); ?>">
+				<div class="coblocks-default-ui coblocks image-meta <?php echo ( isset( $_GET['add-new'] ) && sanitize_text_field( $_GET['add-new'] ) ) ? 'coblocks-autoOpen' : ''; ?>" data-post-id="<?php echo esc_attr( ( isset( $post->ID ) ) ? $post->ID : '' ); ?>">
 
 					<div class="media-modal wp-core-ui no-sidebar">
 

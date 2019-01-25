@@ -170,7 +170,7 @@ const settings = {
 
 				    	if( Object.keys( this.props.templates ).length > 0 ){
 							return (
-								<TabPanel className="blockcoblocks-tab-panel"
+								<TabPanel className="coblocks-tab-panel"
 									activeClass="active-tab"
 									tabs={ navtabs }>
 									{
@@ -181,11 +181,11 @@ const settings = {
 														this.state.templateItems = templates;
 													}
 													return[
-														<div className="blockcoblocks__modal-controls blockcoblocks__modal-controls--templates">
-															<input type="text" class="blockcoblocks__modal-controls--search" placeholder={ __( 'Search...' ) } onChange={ (evt) => this.filterList( evt, 'templates' ) } />
+														<div className="coblocks__modal-controls coblocks__modal-controls--templates">
+															<input type="text" class="coblocks__modal-controls--search" placeholder={ __( 'Search...' ) } onChange={ (evt) => this.filterList( evt, 'templates' ) } />
 														</div>,
 														<Masonry
-															className={ 'blockcoblocks-lists' }
+															className={ 'coblocks-lists' }
 															elementType={ 'ul' }
 															options={ masonryOptions }
 															disableImagesLoaded={ false }
@@ -200,7 +200,7 @@ const settings = {
 														var themes 	 = this.props.theme;
 														if( Object.keys( themes ).length > 0 ){
 															return(
-																<ul className='blockcoblocks-lists'>
+																<ul className='coblocks-lists'>
 																	{ Object.entries( themes ).map( template => this.renderListItem( template ) ) }
 																</ul>
 															);
@@ -212,13 +212,13 @@ const settings = {
 														var saved 	 = this.props.saved_templates;
 														if( Object.keys( saved ).length > 0 ){
 															return(
-																<ul className='blockcoblocks-lists'>
+																<ul className='coblocks-lists'>
 																	{ Object.entries( saved ).map( template => this.renderTableItem( template ) ) }
 																</ul>
 															);
 														}else{
 															return(
-																<div class="blockcoblocks-nolists">
+																<div class="coblocks-nolists">
 																{ [
 																	<h3>{ __( 'Create Your First Template' ) }</h3>,
 																	<p>{ __( 'Add templates and reuse them across your website.' ) }</p>,
@@ -275,7 +275,7 @@ const settings = {
 
 						if( Object.keys( sections ).length > 0 ){
 							return (
-								<TabPanel className="blockcoblocks-tab-panel"
+								<TabPanel className="coblocks-tab-panel"
 									activeClass="active-tab"
 									tabs={ navtabs }>
 									{
@@ -287,17 +287,17 @@ const settings = {
 													}
 
 													return[
-														<div className="blockcoblocks__modal-controls">
+														<div className="coblocks__modal-controls">
 															<SelectControl
 																value={ this.state.sectionCategory }
 																options={ sectionCategories }
 																onChange={ ( nextCategory ) => this.onCategoryChange( nextCategory, event ) }
-																className="blockcoblocks__modal-controls--category"
+																className="coblocks__modal-controls--category"
 															/>
-															<input type="text" class="blockcoblocks__modal-controls--search" placeholder={ __( 'Search...' ) } onChange={ (evt) => this.filterList( evt, 'sections' ) } />
+															<input type="text" class="coblocks__modal-controls--search" placeholder={ __( 'Search...' ) } onChange={ (evt) => this.filterList( evt, 'sections' ) } />
 														</div>,
 															<Masonry
-													                className={'blockcoblocks-lists'}
+													                className={'coblocks-lists'}
 													                elementType={'ul'}
 													                options={masonryOptions}
 													                disableImagesLoaded={false}
@@ -313,7 +313,7 @@ const settings = {
 														var theme_sections 	 = this.props.theme_sections;
 														if( Object.keys( theme_sections ).length > 0 ){
 															return(
-																<ul className='blockcoblocks-lists'>
+																<ul className='coblocks-lists'>
 																	{ Object.entries( theme_sections ).map( template => this.renderListItem( template ) ) }
 																</ul>
 															);
@@ -326,13 +326,13 @@ const settings = {
 														var saved 	 = this.props.saved_sections;
 														if( Object.keys( saved ).length > 0 ){
 															return(
-																<ul className='blockcoblocks-lists'>
+																<ul className='coblocks-lists'>
 																	{ Object.entries( saved ).map( template => this.renderTableItem( template ) ) }
 																</ul>
 															);
 														}else{
 															return(
-																<div class="blockcoblocks-nolists">
+																<div class="coblocks-nolists">
 																{ [
 																	<h3>{ __( 'Create Your First Section' ) }</h3>,
 																	<p>{ __( 'Add sections and reuse them across your website.' ) }</p>,
@@ -378,7 +378,7 @@ const settings = {
 							{ ( pro && typeof template[1].has_pro == "undefined" ) ?
 								<Button
 									isPrimary
-									href="https://wpblockcoblocks.com/"
+									href="https://wpcoblocks.com/"
 									className="coblocks-gopro"
 									target="_blank" >
 									{ __( 'Go Pro' ) }
@@ -466,7 +466,7 @@ const settings = {
 								//save new meta data for fonts
 								wp.data.dispatch( 'core/editor' ).editPost({
 									meta: {
-										_blockcoblocks_attr: ba,
+										_coblocks_attr: ba,
 									}
 								});
 
@@ -526,14 +526,14 @@ const settings = {
 							wp.data.dispatch( 'core/editor' ).multiSelect( toSelect[0], toSelect.reverse()[0] );
 							toSelect  = [];
 
-							if( typeof pmeta !== 'undefined' && typeof pmeta._blockcoblocks_attr !== 'undefined' ){
-								ba =  pmeta._blockcoblocks_attr;
+							if( typeof pmeta !== 'undefined' && typeof pmeta._coblocks_attr !== 'undefined' ){
+								ba =  pmeta._coblocks_attr;
 							}
 							ba = ba + ',' + obj.meta;
 							//save new meta data for fonts
 							wp.data.dispatch( 'core/editor' ).editPost({
 								meta: {
-									_blockcoblocks_attr: ba,
+									_coblocks_attr: ba,
 								}
 							});
 
@@ -637,7 +637,7 @@ const settings = {
 						</Button>
 						{ this.state.isOpen ?
 							<Modal
-								className= "blockcoblocks-modal-component"
+								className= "coblocks-modal-component"
 								title={ __( 'CoBlocks' ) }
 								onRequestClose={ this.closeModal }>
 								{ this.contentModal( this.contentType ) }
