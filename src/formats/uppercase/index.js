@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import icons from './../../utils/icons';
+import formatIcons from './../icons';
 
 /**
  * WordPress dependencies
@@ -23,7 +23,7 @@ export const uppercase = {
 	className: 'uppercase',
 	edit( { isActive, value, onChange } ) {
 		const onToggle = () => onChange( toggleFormat( value, { type: name } ) );
-		
+
 		return (
 			<Fragment>
 				<RichTextShortcut
@@ -32,7 +32,7 @@ export const uppercase = {
 					onUse={ onToggle }
 				/>
 				<RichTextToolbarButton
-					icon={ icons.formatUppercase }
+					icon={ formatIcons.uppercase }
 					title={ __( 'Uppercase' ) }
 					onClick={ onToggle }
 					isActive={ isActive }
@@ -41,6 +41,6 @@ export const uppercase = {
 				/>
 			</Fragment>
 		);
-		
+
 	},
 };
