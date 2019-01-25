@@ -71,9 +71,9 @@ class IconControls extends Component {
 			icon,
 		} = attributes;
 		
-		const filterList = ( event, onClose ) => {
+		const filterList = ( event, onToggle ) => {
 			var filtered = {};
-			
+
 			this.setState({ searchValue: event });
 
 		    var updatedList = Object.entries( icons ).filter(function(item){
@@ -118,13 +118,13 @@ class IconControls extends Component {
 							</IconButton>
 						);
 					} }
-					renderContent={ ( { onClose, isOpen } ) => (
+					renderContent={ ( { onClose, isOpen, onToggle } ) => (
 						<Fragment>
 							<div className="components-coblocks-icons-dropdown__inner">
 								<TextControl
 									label={ __( 'Search' ) }
 									value={ this.state.searchValue }
-									onChange={ (evt) => { filterList( evt, onClose ) } }
+									onChange={ (evt) => { filterList( evt, onToggle ) } }
 								/>
 								<ul role="list" className="editor-block-types-list">
 									{ Object.keys( this.state.filteredIcons ).map( ( keyName, i ) => {
