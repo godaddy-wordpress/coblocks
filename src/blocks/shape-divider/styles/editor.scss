@@ -13,6 +13,10 @@
 			.wp-block-coblocks-shape-divider__svg-wrapper .components-resizable-box__handle {
 				left: calc(73.78% - 12px);
 			}
+
+			&.is-horizontally-flipped .wp-block-coblocks-shape-divider__svg-wrapper .components-resizable-box__handle {
+				left: calc(26.2% - 12px);
+			}
 		}
 	}
 
