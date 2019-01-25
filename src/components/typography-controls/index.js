@@ -79,7 +79,7 @@ class TypographyControls extends Component {
 			className,
 			headerTitle,
 			icon = icons.typography,
-			label = __( 'Typography Settings' ),
+			label = __( 'Change typography' ),
 		} = this.props;
 
 		const {
