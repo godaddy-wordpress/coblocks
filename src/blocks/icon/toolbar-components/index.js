@@ -70,7 +70,7 @@ class IconControls extends Component {
 		const {
 			icon,
 		} = attributes;
-		
+
 		const filterList = ( event, onToggle ) => {
 			var filtered = {};
 
@@ -88,7 +88,7 @@ class IconControls extends Component {
 
 		    this.setState({ filteredIcons: filtered });
 		};
-		
+
 		return (
 			<Fragment>
 				<Dropdown
