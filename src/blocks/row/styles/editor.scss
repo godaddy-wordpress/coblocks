@@ -36,7 +36,7 @@
 						max-width: calc(112.5% + 90px) !important;
 					}
 
-					&[data-type="coblocks/row"][data-columns="1"] {
+					&[data-type="coblocks/row"][data-columns="1"]:not( [data-coblocks-align-support="1"] ) {
 						.wp-block {
 							max-width: 100% !important;
 						}
