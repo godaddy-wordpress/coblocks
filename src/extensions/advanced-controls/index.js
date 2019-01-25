@@ -52,7 +52,7 @@ function addAttributes( settings ) {
 			coBlocksSpacing: true
 		} );
 	}
-	
+
 	if ( hasBlockSupport( settings, 'coBlocksSpacing' ) ) {
 		if( typeof settings.attributes !== 'undefined' ){
 			settings.attributes = Object.assign( settings.attributes, {
@@ -104,26 +104,26 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 					<InspectorAdvancedControls>
 						{ hasStackedControl &&
 							<ToggleControl
-								label={ __( 'Stack on mobile' ) }
+								label={ __( 'Stack on Mobile' ) }
 								checked={ !! isStackedOnMobile }
 								onChange={ () => setAttributes( {  isStackedOnMobile: ! isStackedOnMobile } ) }
-								help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
+								help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to stack elements on top of each other on smaller viewports.' ) }
 							/>
 						}
 						{ withBlockSpacing &&
 							<ToggleControl
-								label={ __( 'No top spacing' ) }
+								label={ __( 'Remove Top Spacing' ) }
 								checked={ !! noTopMargin }
 								onChange={ () => setAttributes( {  noTopMargin: ! noTopMargin, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } ) }
-								help={ !! noTopMargin ? __( 'Top margin is removed on this block.' ) : __( 'Toggle to remove any top margin applied to this block.' ) }
+								help={ !! noTopMargin ? __( 'Top margin is removed on this block.' ) : __( 'Toggle to remove any margin applied to the top of this block.' ) }
 							/>
 						}
 						{ withBlockSpacing &&
 							<ToggleControl
-								label={ __( 'No bottom spacing' ) }
+								label={ __( 'Remove Bottom Spacing' ) }
 								checked={ !! noBottomMargin }
 								onChange={ () => setAttributes( {  noBottomMargin: ! noBottomMargin, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0  } ) }
-								help={ !! noBottomMargin ? __( 'Bottom margin is removed on this block.' ) : __( 'Toggle to remove any bottom margin applied to this block.' ) }
+								help={ !! noBottomMargin ? __( 'Bottom margin is removed on this block.' ) : __( 'Toggle to remove any margin applied to the bottom of this block.' ) }
 							/>
 						}
 					</InspectorAdvancedControls>

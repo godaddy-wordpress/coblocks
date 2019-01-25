@@ -331,7 +331,7 @@ class Edit extends Component {
 							template={ TEMPLATE[ layout ] }
 							templateLock="all"
 							allowedBlocks={ ALLOWED_BLOCKS }
-							templateInsertUpdatesSelection={ false } />
+							templateInsertUpdatesSelection={ columns === 1 ? true : false } />
 					</div>
 				</div>
 			</Fragment>
