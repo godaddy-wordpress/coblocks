@@ -108,7 +108,7 @@ const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
 			}
 
 			if( fontFamily ){
-				customData = Object.assign( customData, { 'data-custom-fontfamily': 1 } );
+				customData = Object.assign( customData, { 'data-coblocks-font': 1 } );
 			}
 
 			if( fontWeight ){
