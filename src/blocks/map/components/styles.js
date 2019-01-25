@@ -4,10 +4,8 @@
 const { __ } = wp.i18n;
 
 /**
- * Internal dependencies
+ * Map styles
  */
-import icons from './icons';
-
 export const styleOptions = [
 	{
 		value: 'standard',
