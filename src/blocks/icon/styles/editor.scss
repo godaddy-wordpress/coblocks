@@ -1,0 +1,8 @@
+.editor-block-list__block[data-type="coblocks/icon"] {
+	.wp-block-coblocks-icon__inner{
+		> svg{
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
