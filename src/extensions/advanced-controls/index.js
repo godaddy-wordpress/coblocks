@@ -196,6 +196,11 @@ const addEditorBlockAttributes = createHigherOrderComponent( (BlockListBlock) =>
 		let blockName		= select( 'core/editor' ).getBlockName( props.clientId );
 
 		const withBlockSpacing = hasBlockSupport( blockName, 'coBlocksSpacing' );
+		let withAlignSupport = hasBlockSupport( blockName, 'align' );
+
+		if( [ 'core/image' ].includes( blockName ) ){
+			withAlignSupport = true;
+		}
 
 		if ( withBlockSpacing ) {
 
@@ -209,6 +214,13 @@ const addEditorBlockAttributes = createHigherOrderComponent( (BlockListBlock) =>
 				customData = Object.assign( customData, { 'data-coblocks-bottom-spacing': 1 } );
 			}
 
+		}
+
+		if( withAlignSupport ){
+			customData = Object.assign( customData, { 'data-coblocks-align-support': 1 } );
+		}
+
+		if( withBlockSpacing || withAlignSupport ){
 			wrapperProps = {
 				...wrapperProps,
 				...customData,
