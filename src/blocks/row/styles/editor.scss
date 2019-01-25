@@ -1,6 +1,10 @@
 .wp-block-coblocks-row {
 	display: block;
 
+	.components-placeholder {
+		color: #191e23;
+	}
+
 	.wp-block-coblocks-row__inner.has-no-gutter {
 		> .editor-inner-blocks > .editor-block-list__layout > .wp-block > .editor-block-list__block-edit {
 			@include break-small() {
@@ -23,7 +27,7 @@
 					margin-left: auto;
 					margin-right: auto;
 
-					&[data-coblocks-align-support="1"]{
+					&[data-coblocks-align-support="1"] {
 						max-width: calc(6 * (100vw / 12.5)) !important;
 					}
 
