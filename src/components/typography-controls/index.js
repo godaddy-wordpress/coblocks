@@ -226,11 +226,11 @@ class TypographyControls extends Component {
 										onChange={ ( nextLineHeight ) => setAttributes( {  lineHeight: nextLineHeight } ) }
 										min={ 1 }
 										max={ 3 }
-										step={ .1 }
+										step={ .01 }
 										className="components-coblocks-typography-dropdown__inner--line-height"
 									/> : null
 								}
-								{ ( ( typeof attributes.textPanelLetterSpacing === 'undefined' || ( typeof attributes.textPanelLetterSpacing !== 'undefined'  && typeof attributes.textPanelLetterSpacing === 'undefined' ) ) ) ?
+								{ ( ( typeof attributes.textPannelLetterSpacing === 'undefined' || ( typeof attributes.textPanelLetterSpacing !== 'undefined'  && typeof attributes.textPanelLetterSpacing === 'undefined' ) ) ) ?
 									<RangeControl
 										label={ __( 'Letter Spacing' ) }
 										value={ parseFloat( letterSpacing ) || null }
