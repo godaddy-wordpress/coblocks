@@ -319,12 +319,12 @@ class CoBlocks_Modal {
 				<input type="hidden" name="coblocks[postid]" value="<?php echo esc_attr( ( isset( $post->ID ) ) ? $post->ID : '' ); ?>" />
 				<input type="hidden" name="coblocks_action" value="create_template" />
 				<p>
-					<label for="blocktemplate-name"><?php esc_html_e( 'Name of your Template', '@@textdomain' ); ?></label>
-					<input type="text" name="coblocks[name]" class="blocktemplate-required" id="blocktemplate-name" />
+					<label for="coblocks-name"><?php esc_html_e( 'Name of your Template', '@@textdomain' ); ?></label>
+					<input type="text" name="coblocks[name]" class="coblocks-required" id="coblocks-name" />
 				</p>
 				<p>
-					<label for="blocktemplate-type"><?php esc_html_e( 'Select Type', '@@textdomain' ); ?></label>
-					<select name="coblocks[type]" class="blocktemplate-required" id="blocktemplate-type">
+					<label for="coblocks-type"><?php esc_html_e( 'Select Type', '@@textdomain' ); ?></label>
+					<select name="coblocks[type]" class="coblocks-required" id="coblocks-type">
 						<option value="template"><?php esc_html_e( 'Page Template', '@@textdomain' ); ?></option>
 						<option value="section"><?php esc_html_e( 'Section', '@@textdomain' ); ?></option>
 					</select>
