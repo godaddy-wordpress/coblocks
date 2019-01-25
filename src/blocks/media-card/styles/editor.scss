@@ -219,65 +219,6 @@
 	}
 }
 
-// Style the core styles preview (#35).
-// As Gutenberg does not support innerBlocks content within the editor yet, we need
-// to style the previews to look better for now.
-.editor-block-preview,
-.editor-block-styles__item-preview {
-	.wp-block-coblocks-media-card__inner {
-		display: flex;
-		padding: 0;
-
-		.components-placeholder {
-			height: 80px;
-		}
-
-		.components-placeholder > div {
-			display: none;
-		}
-	}
-
-	.wp-block-coblocks-media-card__img-wrapper {
-		width: 120%;
-	}
-
-	.wp-block-coblocks-media-card__content {
-		background: #535c65;
-		display: block;
-		height: 50px;
-		margin-left: -15px;
-		width: 100%;
-	}
-
-	.wp-block-coblocks-media-card,
-	.wp-block-coblocks-media-card__inner,
-	.wp-block-coblocks-media-card__img-wrapper {
-		height: 60px;
-	}
-
-	.is-style-right .wp-block-coblocks-media-card__inner {
-		flex-direction: row-reverse;
-
-		.wp-block-coblocks-media-card__img-wrapper {
-			left: -20%;
-		}
-
-		.wp-block-coblocks-media-card__content {
-			margin-right: -15px;
-		}
-	}
-}
-
-.editor-block-preview {
-	.wp-block-coblocks-media-card__content {
-		height: 130px;
-		margin-top: 120px;
-	}
-	.editor-styles-wrapper {
-		overflow: hidden;
-	}
-}
-
 // Hide the wide and full alignment settings on the row.
 .wp-block-coblocks-media-card {
 	.editor-block-toolbar .components-toolbar:nth-child(2) {
