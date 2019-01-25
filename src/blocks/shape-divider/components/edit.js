@@ -29,6 +29,7 @@ class Edit extends Component {
 
 		this.state = {
 			resizing: false,
+			resizingAlt: false,
 		}
 	}
 
@@ -110,6 +111,7 @@ class Edit extends Component {
 					className={ classnames(
 						'wp-block-coblocks-shape-divider__svg-wrapper', {
 							'is-selected': isSelected,
+							'is-resizing' : this.state.resizing,
 						}
 					) }
 					style={ {
@@ -134,9 +136,11 @@ class Edit extends Component {
 							height: parseInt( height + delta.height, 10 ),
 						} );
 						toggleSelection( true );
+						this.setState( { resizing: false } );
 					} }
 					onResizeStart={ () => {
 						toggleSelection( false );
+						this.setState( { resizing: true } );
 					} }
 				>
 					{ this.getDividerFromStyles( className ) }
