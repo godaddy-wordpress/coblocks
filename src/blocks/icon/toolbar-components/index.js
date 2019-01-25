@@ -15,7 +15,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment, createRef } = wp.element;
 const { compose, withState } = wp.compose;
 const { BlockControls } = wp.editor;
-const { RangeControl, PanelBody, withFallbackStyles, FontSizePicker, ToggleControl, Button, Popover, Dropdown, IconButton, SelectControl } = wp.components;
+const { RangeControl, PanelBody, withFallbackStyles, FontSizePicker, ToggleControl, Button, Popover, Dropdown, IconButton, SelectControl, TextControl } = wp.components;
 
 
 
@@ -40,7 +40,8 @@ class IconControls extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
-		this.setState( { forceClose: false } );
+
+		this.state = { forceClose: false, filteredIcons : icons , searchValue: '' };
 	}
 
 	render() {
@@ -69,10 +70,25 @@ class IconControls extends Component {
 		const {
 			icon,
 		} = attributes;
+		
+		const filterList = ( event, onClose ) => {
+			var filtered = {};
+			
+			this.setState({ searchValue: event });
 
+		    var updatedList = Object.entries( icons ).filter(function(item){
+		    	var text = item[0];
+		      	return text.toLowerCase().search(
+		        event.toLowerCase()) !== -1;
+		    });
 
+		    updatedList.forEach(([key, value]) => {
+		    	filtered[ key ] = icons[key];
+			});
 
-
+		    this.setState({ filteredIcons: filtered });
+		};
+		
 		return (
 			<Fragment>
 				<Dropdown
@@ -102,18 +118,23 @@ class IconControls extends Component {
 							</IconButton>
 						);
 					} }
-					renderContent={ ( { onClose } ) => (
+					renderContent={ ( { onClose, isOpen } ) => (
 						<Fragment>
 							<div className="components-coblocks-icons-dropdown__inner">
+								<TextControl
+									label={ __( 'Search' ) }
+									value={ this.state.searchValue }
+									onChange={ (evt) => { filterList( evt, onClose ) } }
+								/>
 								<ul role="list" className="editor-block-types-list">
-									{ Object.keys(icons).map( ( keyName, i ) => {
+									{ Object.keys( this.state.filteredIcons ).map( ( keyName, i ) => {
 										return[
 											<li className="editor-block-types-list__list-item">
 												<Button
 													isLarge
 													onClick={ () => {
 														setAttributes({ icon: keyName });
-														onClose();
+														// onClose();
 													} }
 												>
 													{ icons[ keyName ] }
