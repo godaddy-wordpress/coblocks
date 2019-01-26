@@ -11,6 +11,7 @@ import includes from 'lodash/includes';
 import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
+import brandAssets from '../../utils/brand-assets';
 import Edit from './components/edit';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
@@ -245,10 +246,6 @@ const settings = {
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
 		};
 
-		const innerClasses = classnames(
-			'wp-block-coblocks-media-card__inner', {
-		} );
-
 		const innerStyles = {
 			gridTemplateColumns,
 			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
@@ -262,7 +259,7 @@ const settings = {
 		return (
 			<div className={ classes }>
 				<div className={ wrapperClasses } style={ wrapperStyles } >
-					<div className={ innerClasses } style={ innerStyles }>
+					<div className="wp-block-coblocks-media-card__inner" style={ innerStyles }>
 						<figure className={ classnames(
 								'wp-block-coblocks-media-card__media', {
 									'has-shadow': hasImgShadow,
@@ -270,7 +267,7 @@ const settings = {
 							) }
 						>
 							{ ( mediaTypeRenders[ mediaType ] || noop )() }
-							{ ! mediaUrl ? icons.logo : null }
+							{ ! mediaUrl ? brandAssets.logo : null }
 						</figure>
 						<div className={ cardClasses }>
 							<InnerBlocks.Content />

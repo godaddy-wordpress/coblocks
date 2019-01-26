@@ -125,7 +125,7 @@ class Edit extends Component {
 
 	renderMediaArea() {
 		const { attributes, className } = this.props;
-		const { mediaAlt, mediaId, mediaType, mediaUrl, mediaWidth, hasImgShadow } = attributes;
+		const { mediaAlt, mediaId, mediaType, mediaUrl, mediaWidth, mediaPosition, hasImgShadow } = attributes;
 
 		return (
 			<Fragment>
@@ -136,7 +136,7 @@ class Edit extends Component {
 					onWidthChange={ this.onWidthChange }
 					commitWidthChange={ this.commitWidthChange }
 					onDropMedia={ this.onDropMedia }
-					{ ...{ mediaAlt, mediaId, mediaType, mediaUrl, hasImgShadow, mediaWidth } }
+					{ ...{ mediaAlt, mediaId, mediaType, mediaUrl, mediaPosition, hasImgShadow, mediaWidth } }
 				/>
 			</Fragment>
 		);
@@ -199,10 +199,6 @@ class Edit extends Component {
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
 		};
 
-		const innerClasses = classnames(
-			'wp-block-coblocks-media-card__inner', {
-		} );
-
 		const innerStyles = {
 			gridTemplateColumns: 'right' === mediaPosition ? `auto ${ widthString }` : `${ widthString } auto`,
 			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
@@ -233,7 +229,7 @@ class Edit extends Component {
 					) }
 				>
 					<div className={ wrapperClasses } style={ wrapperStyles } >
-						<div className={ innerClasses } style={ innerStyles } >
+						<div className="wp-block-coblocks-media-card__inner" style={ innerStyles } >
 							{ this.renderMediaArea() }
 							<div
 								className={ classnames(

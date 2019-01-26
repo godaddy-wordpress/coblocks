@@ -16,6 +16,10 @@
 		grid-template-columns: auto 55%;
 	}
 
+	&__wrapper {
+		color: inherit !important;
+	}
+
 	&__media {
 		grid-area: media-text-media;
 		margin: 0;
@@ -116,6 +120,55 @@
 
 			p:last-of-type {
 				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+//Fix background color contrast issue
+body{
+	.entry .entry-content {
+		.wp-block-coblocks-media-card {
+			&__content {
+				p,
+				a,
+				h1,
+				h2,
+				h3,
+				h4,
+				h5,
+				h6 {
+					color: inherit;
+				}
+			}
+		}
+	}
+	&.is-twentynineteen{
+		.entry .entry-content{
+			.wp-block-coblocks-media-card {
+				&__content {
+					p,
+					a,
+					h1,
+					h2,
+					h3,
+					h4,
+					h5,
+					h6 {
+						&.has-primary-color{
+							color: #0073aa;
+						}
+						&.has-secondary-color{
+							color: #005177;
+						}
+						&.has-dark-gray-color{
+							color: #111;
+						}
+						&.has-light-gray-color{
+							color: #767676;
+						}
+					}
+				}
 			}
 		}
 	}

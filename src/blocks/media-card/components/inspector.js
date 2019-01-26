@@ -12,22 +12,8 @@ import DimensionsControl from '../../../components/dimensions-control/';
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
-const { PanelBody, withFallbackStyles, ToggleControl, TextControl, TextareaControl, RangeControl } = wp.components;
-
-/**
- * Fallback styles
- */
-const { getComputedStyle } = window;
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { backgroundColor } = ownProps.attributes;
-	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-	};
-} );
+const { InspectorControls, PanelColorSettings } = wp.editor;
+const { PanelBody, ToggleControl, TextareaControl, RangeControl } = wp.components;
 
 /**
  * Inspector controls
@@ -43,7 +29,6 @@ class Inspector extends Component {
 		const {
 			attributes,
 			backgroundColor,
-			fallbackBackgroundColor,
 			setAttributes,
 			setBackgroundColor,
 		} = this.props;
@@ -164,5 +149,4 @@ class Inspector extends Component {
 
 export default compose( [
 	applyWithColors,
-	applyFallbackStyles,
 ] )( Inspector );

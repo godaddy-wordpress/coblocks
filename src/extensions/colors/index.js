@@ -28,6 +28,7 @@ export {
 function ColorSettings( props, options ) {
 
 	const {
+		name,
 		attributes,
 		fallbackTextColor,
 		setAttributes,
@@ -40,23 +41,28 @@ function ColorSettings( props, options ) {
 		customBackgroundColor,
 	} = attributes;
 
+	let colorSettings = [];
+
+	if( ![ 'core/heading' ].includes( name ) ){
+		colorSettings.push({
+			value: customBackgroundColor,
+			onChange: ( nextcustomBackgroundColor ) => setAttributes( {  customBackgroundColor: nextcustomBackgroundColor } ),
+			label: __( 'Background Color' ),
+		});
+	}
+
+	colorSettings.push({
+		value: customTextColor,
+		onChange: ( nextcustomTextColor ) => setAttributes( {  customTextColor: nextcustomTextColor } ),
+		label: __( 'Text Color' ),
+	});
+
 	return [
 		<Fragment>
 			<PanelColorSettings
 				title={ __( 'Color Settings' ) }
 				initialOpen={ false }
-				colorSettings={ [
-					{
-						value: customBackgroundColor,
-						onChange: ( nextcustomBackgroundColor ) => setAttributes( {  customBackgroundColor: nextcustomBackgroundColor } ),
-						label: __( 'Background Color' ),
-					},
-					{
-						value: customTextColor,
-						onChange: ( nextcustomTextColor ) => setAttributes( {  customTextColor: nextcustomTextColor } ),
-						label: __( 'Text Color' ),
-					},
-				] }
+				colorSettings={ colorSettings }
 			>
 			</PanelColorSettings>
 		</Fragment>
