@@ -1,4 +1,8 @@
 .editor-block-list__block[data-type="coblocks/shape-divider"] {
+	.editor-block-list__block-edit::before {
+		display: none;
+	}
+
 	.wp-block-coblocks-shape-divider {
 		svg {
 			bottom: 0;
