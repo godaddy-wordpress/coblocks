@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import formatIcons from './../icons';
+import formatIcons from './icons';
 
 /**
  * WordPress dependencies
