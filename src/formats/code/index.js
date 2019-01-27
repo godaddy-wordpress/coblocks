@@ -20,7 +20,7 @@ export const code = {
 	name,
 	title: __( 'Code' ),
 	tagName: 'code',
-	className: 'code',
+	className: 'font-mono',
 	edit( { isActive, value, onChange } ) {
 		const onToggle = () => onChange( toggleFormat( value, { type: name } ) );
 
