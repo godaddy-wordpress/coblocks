@@ -1,0 +1,20 @@
+.is-style-checkbox {
+	li {
+		list-style-type: none !important;
+		padding-left: 10px;
+		position: relative;
+
+		&::before {
+			background-color: currentColor;
+			background-size: cover;
+			content: "";
+			display: inline-block;
+			height: 20px;
+			left: -20px;
+			mask-image: url(images/checkbox-rounded.svg);
+			position: absolute;
+			top: 8px;
+			width: 20px;
+		}
+	}
+}
