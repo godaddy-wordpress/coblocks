@@ -14,7 +14,8 @@ import icons from './icons';
 const { __ } = wp.i18n;
 const { Component, Fragment, createRef } = wp.element;
 const { compose, withState } = wp.compose;
-const { BlockControls } = wp.editor;
+const { BlockControls, RichText } = wp.editor;
+const { DOWN } = wp.keycodes;
 const { RangeControl, PanelBody, withFallbackStyles, FontSizePicker, ToggleControl, Button, Popover, Dropdown, IconButton, SelectControl, TextControl } = wp.components;
 
 
@@ -122,9 +123,22 @@ class IconControls extends Component {
 						<Fragment>
 							<div className="components-coblocks-icons-dropdown__inner">
 								<TextControl
+									type='text'
 									label={ __( 'Search' ) }
 									value={ this.state.searchValue }
-									onChange={ (evt) => { filterList( evt, onToggle ) } }
+									onChange={ (evt) => { 
+											console.log( evt );
+											filterList( evt, onToggle ); 
+										} 
+									}
+								/>
+								<RichText
+									value={ this.state.searchValue }
+									keepPlaceholderOnFocus
+									onChange={ (evt) => { 
+											console.log( evt );
+											filterList( evt, onToggle ); 
+									}  }
 								/>
 								<ul role="list" className="editor-block-types-list">
 									{ Object.keys( this.state.filteredIcons ).map( ( keyName, i ) => {
@@ -134,7 +148,7 @@ class IconControls extends Component {
 													isLarge
 													onClick={ () => {
 														setAttributes({ icon: keyName });
-														// onClose();
+														onClose();
 													} }
 												>
 													{ icons[ keyName ] }
