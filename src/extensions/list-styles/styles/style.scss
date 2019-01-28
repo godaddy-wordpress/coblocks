@@ -4,6 +4,10 @@
 		padding-left: 10px;
 		position: relative;
 
+		@include break-small {
+			padding-left: 12px;
+		}
+
 		&::before {
 			background-color: currentColor;
 			background-size: cover;
@@ -13,8 +17,18 @@
 			left: -20px;
 			mask-image: url(images/checkbox-rounded.svg);
 			position: absolute;
-			top: 8px;
+			top: 6px;
+			transform: scale(0.9);
 			width: 20px;
+
+			@include break-small {
+				top: 8px;
+				transform: 0;
+			}
+		}
+
+		li::before {
+			mask-image: url(images/checkbox-rounded-child.svg);
 		}
 	}
 }
