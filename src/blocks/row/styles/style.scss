@@ -55,10 +55,13 @@
 	p {
 		margin-bottom: 2em;
 		margin-top: 0;
-		padding: 0;
 
 		&:last-of-type {
 			margin-bottom: 0;
+		}
+
+		&:not(.has-background) {
+			padding: 0;
 		}
 	}
 }

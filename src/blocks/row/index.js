@@ -174,19 +174,15 @@ const settings = {
 
 		const classes = classnames( {
 				[ `coblocks-row--${ id }` ] : id,
-				'has-text-color': textColor || customTextColor,
-				[ textClass ]: textClass,
 				[ `coblocks-row-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
 		);
 
-		const styles = {
-			color: textClass ? undefined : customTextColor,
-		};
-
 		const innerClasses = classnames(
 			'wp-block-coblocks-row__inner',
 			...BackgroundClasses( attributes ), {
+			'has-text-color': textColor || customTextColor,
+			[ textClass ]: textClass,
 			[ `has-${ gutter }-gutter` ] : gutter,
 			'has-padding': paddingSize && paddingSize != 'no',
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
@@ -198,16 +194,102 @@ const settings = {
 		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			color: textClass ? undefined : customTextColor,
 		};
 
 		return (
-			<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } style={ styles } >
+			<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } >
 				<div className={ innerClasses } style={ innerStyles }>
 					<InnerBlocks.Content />
 				</div>
 			</div>
 		);
 	},
+
+	deprecated: [ {
+		attributes: {
+			isStackedOnMobile: {
+				type: 'boolean',
+				default: true,
+			},
+			...blockAttributes,
+		},
+
+		save( { attributes, className } ) {
+
+			const {
+				coblocks,
+				backgroundColor,
+				backgroundImg,
+				columns,
+				customBackgroundColor,
+				customTextColor,
+				gutter,
+				id,
+				layout,
+				isStackedOnMobile,
+				marginBottom,
+				marginLeft,
+				marginRight,
+				marginSize,
+				marginSyncUnits,
+				marginTop,
+				marginUnit,
+				paddingBottom,
+				paddingLeft,
+				paddingRight,
+				paddingSize,
+				paddingSyncUnits,
+				paddingTop,
+				paddingUnit,
+				textColor,
+			} = attributes;
+
+			const textClass = getColorClassName( 'color', textColor );
+			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
+			let classlist = {
+				[ `coblocks-row--${ id }` ] : id,
+				'has-text-color': textColor || customTextColor,
+				[ textClass ]: textClass,
+			};
+
+			if( coblocks && ( typeof coblocks.id != 'undefined' ) ) {
+				classlist = Object.assign( classlist, [ `coblocks-row-${ coblocks.id }` ] );
+			}
+
+			const classes = classnames( classlist );
+
+			const styles = {
+				color: textClass ? undefined : customTextColor,
+			};
+
+			const innerClasses = classnames(
+				'wp-block-coblocks-row__inner',
+				...BackgroundClasses( attributes ), {
+				[ `has-${ gutter }-gutter` ] : gutter,
+				'has-padding': paddingSize && paddingSize != 'no',
+				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
+				'has-margin': marginSize && marginSize != 'no',
+				[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
+				'is-stacked-on-mobile': isStackedOnMobile,
+			} );
+
+			const innerStyles = {
+				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+				backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			};
+
+			return (
+				<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } style={ styles } >
+					<div className={ innerClasses } style={ innerStyles }>
+						<InnerBlocks.Content />
+					</div>
+				</div>
+			);
+		},
+	},
+	],
 };
 
 export { name, title, icon, settings };

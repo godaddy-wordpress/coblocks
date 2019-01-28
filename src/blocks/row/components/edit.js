@@ -278,7 +278,6 @@ class Edit extends Component {
 		const classes = classnames(
 			'wp-block-coblocks-row', {
 				[ `coblocks-row--${ id }` ] : id,
-				'has-text-color': textColor.color,
 				[ `coblocks-row-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
 		);
@@ -286,6 +285,7 @@ class Edit extends Component {
 		const innerClasses = classnames(
 			'wp-block-coblocks-row__inner',
 			...BackgroundClasses( attributes ), {
+				'has-text-color': textColor.color,
 				[ `has-${ gutter }-gutter` ] : gutter,
 				'has-padding': paddingSize && paddingSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
@@ -298,6 +298,7 @@ class Edit extends Component {
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
@@ -321,10 +322,7 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<div
-					className={ classes }
-					style={ { color: textColor.color } }
-				>
+				<div className={ classes }>
 					<div className={ innerClasses } style={ innerStyles }>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						<InnerBlocks
