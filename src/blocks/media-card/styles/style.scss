@@ -1,5 +1,5 @@
 .wp-block-coblocks-media-card {
-	&__inner {
+	&__wrapper {
 		align-items: center;
 		display: grid;
 		grid-template-areas: "media-text-media media-text-content";
@@ -11,12 +11,12 @@
 		position: relative;
 	}
 
-	&.is-style-right &__inner {
+	&.is-style-right &__wrapper {
 		grid-template-areas: "media-text-content media-text-media";
 		grid-template-columns: auto 55%;
 	}
 
-	&__wrapper {
+	&__inner {
 		color: inherit !important;
 	}
 
@@ -83,15 +83,15 @@
 		}
 	}
 
-	&__inner > figure > img,
-	&__inner > figure > video {
+	&__wrapper > figure > img,
+	&__wrapper > figure > video {
 		max-width: unset;
 		vertical-align: middle;
 		width: 100%;
 	}
 
 	@media (max-width: #{ ($break-small) }) {
-		&.is-stacked-on-mobile &__inner {
+		&.is-stacked-on-mobile &__wrapper {
 			grid-template-areas: "media-text-media" "media-text-content";
 			grid-template-columns: 100% !important;
 		}
