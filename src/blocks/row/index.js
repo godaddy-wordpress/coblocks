@@ -244,13 +244,17 @@ const settings = {
 			const textClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-			const classes = classnames( {
-					[ `coblocks-row--${ id }` ] : id,
-					'has-text-color': textColor || customTextColor,
-					[ textClass ]: textClass,
-					[ `coblocks-row-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
-				}
-			);
+			let classlist = {
+				[ `coblocks-row--${ id }` ] : id,
+				'has-text-color': textColor || customTextColor,
+				[ textClass ]: textClass,
+			};
+
+			if( coblocks && ( typeof coblocks.id != 'undefined' ) ){
+				classlist = Object.assign( classlist, [ `coblocks-row-${ coblocks.id }` ] );
+			}
+
+			const classes = classnames( classlist );
 
 			const styles = {
 				color: textClass ? undefined : customTextColor,
