@@ -165,6 +165,33 @@
 					}
 				}
 			}
+
+			//responsive 
+			@media (max-width: #{ ($break-small-twentynineteen) }) {
+				&.is-stacked-on-mobile{
+					flex-direction: column;
+				}
+				&.is-stacked-on-mobile .wp-block-coblocks-media-card__wrapper {
+					grid-template-areas: "media-text-media" "media-text-content";
+					grid-template-columns: 100% !important;
+				}
+
+				&.is-stacked-on-mobile .wp-block-coblocks-media-card__media {
+					@include break-small {
+						position: inherit;
+					}
+				}
+
+				&.is-stacked-on-mobile .wp-block-coblocks-media-card__content {
+					margin-left: 5%;
+					margin-right: 5%;
+					margin-top: -33%;
+
+					p:last-of-type {
+						margin-bottom: 0;
+					}
+				}
+			}
 		}
 	}
 }
