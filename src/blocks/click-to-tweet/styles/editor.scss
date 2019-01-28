@@ -46,15 +46,26 @@
 
 	//Top toolbar styling for the Twitter username field
 	.edit-post-header-toolbar__block-toolbar &__via {
+		border-color: #8d96a0;
 		border-radius: 3px;
+		box-shadow: 0 0 0 transparent;
 		margin: 4px;
 		padding-bottom: 3px;
 		padding-top: 3px;
 
 		@media (min-width: 1080px) {
-			margin: 1px 4px;
+			border-radius: 4px;
+			margin: 2px 4px;
 			padding-left: 4px;
 			padding-right: 4px;
+		}
+
+		&:focus {
+			color: #191e23;
+			border-color: #00a0d2;
+			box-shadow: 0 0 0 1px #00a0d2;
+			outline: 2px solid transparent;
+			outline-offset: -2px;
 		}
 	}
 
