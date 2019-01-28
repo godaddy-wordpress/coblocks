@@ -114,6 +114,7 @@ Please reach out via the contact form at the bottom right of [our website](https
 * Tweak: Update the Uppercase formatting icon
 * Tweak: Move the “Stack on Mobile” control within the Row block to its Advanced sidebar panel
 * Tweak: Background color setting from the core Heading block
+* Tweak: Improve the UI of the Click to Tweet toolbar username field
 * Fix: Pricing Table blocks with four tables look better
 * Fix: Custom background colors within the Highlight block now properly resolve
 * Fix: Single column Row blocks now display properly
