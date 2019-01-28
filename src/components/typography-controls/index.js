@@ -230,7 +230,7 @@ class TypographyControls extends Component {
 										className="components-coblocks-typography-dropdown__inner--line-height"
 									/> : null
 								}
-								{ ( ( typeof attributes.textPannelLetterSpacing === 'undefined' || ( typeof attributes.textPanelLetterSpacing !== 'undefined'  && typeof attributes.textPanelLetterSpacing === 'undefined' ) ) ) ?
+								{ ( ( typeof attributes.textPanelLetterSpacing === 'undefined' || ( typeof attributes.textPanelLetterSpacing !== 'undefined'  && typeof attributes.textPanelLetterSpacing === 'undefined' ) ) ) ?
 									<RangeControl
 										label={ __( 'Letter Spacing' ) }
 										value={ parseFloat( letterSpacing ) || null }
