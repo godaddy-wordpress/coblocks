@@ -129,6 +129,8 @@ Please reach out via the contact form at the bottom right of [our website](https
 * Fix: Resolve issue where custom font selections may be overwritten by the CoBlocks theme
 * Fix: Dropzone labels within CoBlocks themes are now properly sized
 * Fix: Resolve issue where the Map block may not properly render on the front-end
+* Fix: Resolve issue where paragraph blocks with backgrounds did not have appropriate padding within Column blocks
+* Fix: Resolve issue where custom text colors would not properly resolve within Row blocks in TwentyNineteen
 
 = 1.7.0 =
 * New: Add Map block with six built-in map styles, zoom, controls and marker size options 🎉
