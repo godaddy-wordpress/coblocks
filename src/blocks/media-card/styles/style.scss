@@ -72,6 +72,17 @@
 		p:last-of-type {
 			margin-bottom: 0;
 		}
+
+		p,
+		a,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: inherit;
+		}
 	}
 
 	&.is-style-right &__content {
@@ -126,34 +137,31 @@
 }
 
 //Fix background color contrast issue
-body{
-	&.is-twentynineteen{
-		.entry .entry-content{
-			.wp-block-coblocks-media-card {
-				&__content {
-					p,
-					a,
-					h1,
-					h2,
-					h3,
-					h4,
-					h5,
-					h6 {
+.is-twentynineteen {
+	.entry .entry-content {
+		.wp-block-coblocks-media-card {
+			&__content {
+				p,
+				a,
+				h1,
+				h2,
+				h3,
+				h4,
+				h5,
+				h6 {
+					color: inherit;
 
-						color: inherit;
-
-						&.has-primary-color{
-							color: #0073aa;
-						}
-						&.has-secondary-color{
-							color: #005177;
-						}
-						&.has-dark-gray-color{
-							color: #111;
-						}
-						&.has-light-gray-color{
-							color: #767676;
-						}
+					&.has-primary-color {
+						color: #0073aa;
+					}
+					&.has-secondary-color {
+						color: #005177;
+					}
+					&.has-dark-gray-color {
+						color: #111;
+					}
+					&.has-light-gray-color {
+						color: #767676;
 					}
 				}
 			}
