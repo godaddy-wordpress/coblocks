@@ -235,7 +235,7 @@ const settings = {
 		} );
 
 		const wrapperClasses = classnames(
-			'wp-block-coblocks-media-card__wrapper',
+			'wp-block-coblocks-media-card__inner',
 			...BackgroundClasses( attributes ), {
 				'has-padding': paddingSize && paddingSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
@@ -259,7 +259,7 @@ const settings = {
 		return (
 			<div className={ classes }>
 				<div className={ wrapperClasses } style={ wrapperStyles } >
-					<div className="wp-block-coblocks-media-card__inner" style={ innerStyles }>
+					<div className="wp-block-coblocks-media-card__wrapper" style={ innerStyles }>
 						<figure className={ classnames(
 								'wp-block-coblocks-media-card__media', {
 									'has-shadow': hasImgShadow,
