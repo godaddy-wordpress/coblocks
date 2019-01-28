@@ -184,7 +184,7 @@ class Edit extends Component {
 		const widthString = `${ temporaryMediaWidth || mediaWidth }%`;
 
 		const wrapperClasses = classnames(
-			'wp-block-coblocks-media-card__wrapper',
+			'wp-block-coblocks-media-card__inner',
 			...BackgroundClasses( attributes ), {
 				'has-padding': paddingSize && paddingSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
@@ -229,7 +229,7 @@ class Edit extends Component {
 					) }
 				>
 					<div className={ wrapperClasses } style={ wrapperStyles } >
-						<div className="wp-block-coblocks-media-card__inner" style={ innerStyles } >
+						<div className="wp-block-coblocks-media-card__wrapper" style={ innerStyles } >
 							{ this.renderMediaArea() }
 							<div
 								className={ classnames(
