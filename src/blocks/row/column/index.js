@@ -131,6 +131,82 @@ const settings = {
 			</div>
 		);
 	},
+
+	deprecated: [ {
+		attributes: {
+			...blockAttributes,
+		},
+		save( { attributes, className } ) {
+
+			const {
+				id,
+				coblocks,
+				backgroundColor,
+				backgroundImg,
+				customBackgroundColor,
+				textColor,
+				customTextColor,
+				paddingTop,
+				paddingRight,
+				paddingBottom,
+				paddingLeft,
+				marginTop,
+				marginRight,
+				marginBottom,
+				marginLeft,
+				marginUnit,
+				paddingUnit,
+				paddingSyncUnits,
+				marginSyncUnits,
+				marginSize,
+				paddingSize,
+				contentAlign,
+			} = attributes;
+
+			const textClass = getColorClassName( 'color', textColor );
+			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
+			let classlist = {
+				[ `coblocks-row--${ id }` ] : id,
+				'has-text-color': textColor || customTextColor,
+				[ textClass ]: textClass,
+			};
+
+			if( coblocks && ( typeof coblocks.id != 'undefined' ) ) {
+				classlist = Object.assign( classlist, [ `coblocks-row-${ coblocks.id }` ] );
+			}
+
+			const classes = classnames( classlist );
+
+			const innerClasses = classnames(
+				'wp-block-coblocks-column__inner',
+				...BackgroundClasses( attributes ), {
+				'has-padding': paddingSize && paddingSize != 'no',
+				'has-margin': marginSize && marginSize != 'no',
+				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
+				[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
+			} );
+
+			const styles = {
+				color: textClass ? undefined : customTextColor,
+				textAlign: contentAlign ? contentAlign : null,
+			};
+
+			const innerStyles = {
+				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+				backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			};
+
+			return (
+				<div className={ classes } style={ styles } >
+					<div className={ innerClasses } style={ innerStyles }>
+						<InnerBlocks.Content />
+					</div>
+				</div>
+			);
+		},
+	},
+	],
 };
 
 export { name, title, icon, settings };
