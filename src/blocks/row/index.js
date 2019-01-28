@@ -250,7 +250,7 @@ const settings = {
 				[ textClass ]: textClass,
 			};
 
-			if( coblocks && ( typeof coblocks.id != 'undefined' ) ){
+			if( coblocks && ( typeof coblocks.id != 'undefined' ) ) {
 				classlist = Object.assign( classlist, [ `coblocks-row-${ coblocks.id }` ] );
 			}
 
