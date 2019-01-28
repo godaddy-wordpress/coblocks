@@ -25,18 +25,19 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 ## One for all, all in one
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages:
 
-* Resizable Row/Columns (New!)
+* Resizable Row/Columns Blocks (New!)
+* Media Card Block (New!)
 * Map Block (New!)
-* Accordion
-* Alert
-* Author Profile
-* Click to Tweet
-* Dynamic Separator
-* Gif
-* GitHub Gist
-* Highlight
-* Pricing Table
-* Social Sharing
+* Accordion Block
+* Alert Block
+* Author Profile Block
+* Click to Tweet Block
+* Dynamic Separator Block
+* Gif Block
+* GitHub Gist Block
+* Highlight Block
+* Pricing Table Block
+* Social Sharing Block
 
 
 ## Custom Typography Controls
