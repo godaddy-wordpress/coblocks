@@ -1,5 +1,4 @@
 .editor-block-list__block[data-type="coblocks/click-to-tweet"] {
-
 	// Resolves jumpy toolbar on input focus.
 	.components-toolbar {
 		transform: translate3d(0, 0, 0);
@@ -28,9 +27,7 @@
 	}
 
 	&__via {
-		margin: 4px;
-		padding-top: 4px;
-		padding-bottom: 4px;
+		margin: 3px;
 	}
 
 	&__via-label {
@@ -38,56 +35,41 @@
 		display: flex;
 		flex-basis: 0;
 		font-size: 12px;
-		padding-left: 5px;
-		padding-right: 2px;
+		padding-left: 6px;
+		padding-right: 4px;
 		white-space: nowrap;
 
 		svg {
-			position: relative;
-			top: 1px;
+			color: #555d66;
 		}
 	}
-}
 
-.has-fixed-toolbar {
+	//Top toolbar styling for the Twitter username field
+	.edit-post-header-toolbar__block-toolbar &__via {
+		border-radius: 3px;
+		margin: 4px;
+		padding-bottom: 3px;
+		padding-top: 3px;
 
-	.wp-block-coblocks-click-to-tweet {
-
-		&__via {
-			margin: 4px;
-		}
-
-		&__via-label {
-			align-items: center;
-			display: flex;
+		@media (min-width: 1080px) {
+			margin: 1px 4px;
+			padding-left: 4px;
 			padding-right: 4px;
-
-			svg {
-				position: relative;
-				top: 1px;
-			}
 		}
 	}
-}
 
-//Fixed toolbar input styling
-.edit-post-header{
-	.edit-post-header-toolbar__block-toolbar{
-		.components-toolbar{
-			input[class*="wp-block-coblocks"]{
-				&[type=text]{
-					font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-				    font-size: 13px;
-				    padding: 6px 8px;
-				    box-shadow: 0 0 0 transparent;
-				    transition: box-shadow .1s linear;
-				    border-radius: 4px;
-				    border: 1px solid #8d96a0;
-				    background-color: #fff;
-				    color: #32373c;
-				    outline: 0;
-				}
-			}
+	.edit-post-header-toolbar__block-toolbar &__via-label {
+		align-items: center;
+		display: flex;
+		padding-left: 6px;
+		padding-right: 2px;
+
+		@media (min-width: 1080px) {
+			padding-left: 4px;
+			padding-right: 4px;
+		}
+
+		svg {
 		}
 	}
 }
