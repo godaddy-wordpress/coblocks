@@ -35,7 +35,7 @@
 			margin-top: 0;
 			max-height: 600px;
 
-			@include break-small {
+			@include break-small-mediacard {
 				width: 100%;
 			}
 		}
@@ -52,7 +52,7 @@
 			top: -30px;
 			width: 30px;
 
-			@include break-small {
+			@include break-small-mediacard {
 				height: 50px;
 				width: 50px;
 			}
@@ -65,7 +65,7 @@
 		word-break: break-word;
 		z-index: 1;
 
-		@include break-small {
+		@include break-small-mediacard {
 			margin-left: -100px;
 		}
 
@@ -89,7 +89,7 @@
 		margin-left: 0;
 		margin-right: -50%;
 
-		@include break-small {
+		@include break-small-mediacard {
 			margin-right: -100px;
 		}
 	}
@@ -101,20 +101,20 @@
 		width: 100%;
 	}
 
-	@media (max-width: #{ ($break-small) }) {
+	@media (max-width: #{ ($break-small-mediacard) }) {
 		&.is-stacked-on-mobile &__wrapper {
 			grid-template-areas: "media-text-media" "media-text-content";
 			grid-template-columns: 100% !important;
 		}
 
 		&.is-stacked-on-mobile.is-style-right &__content {
-			@include break-small {
+			@include break-small-mediacard {
 				margin-right: -100px;
 			}
 		}
 
 		&.is-stacked-on-mobile &__media {
-			@include break-small {
+			@include break-small-mediacard {
 				position: inherit;
 			}
 		}
@@ -124,7 +124,7 @@
 			margin-right: 5%;
 			margin-top: -33%;
 
-			@include break-small {
+			@include break-small-mediacard {
 				grid-area: media-text-content;
 				margin-left: -100px;
 			}
@@ -166,18 +166,18 @@
 				}
 			}
 
-			//responsive 
-			@media (max-width: #{ ($break-small-twentynineteen) }) {
-				&.is-stacked-on-mobile{
+			@media (min-width: #{ ($break-small-twentynineteen--min) }) and (max-width: #{ ($break-small-twentynineteen) }) {
+				&.is-stacked-on-mobile {
 					flex-direction: column;
 				}
+
 				&.is-stacked-on-mobile .wp-block-coblocks-media-card__wrapper {
 					grid-template-areas: "media-text-media" "media-text-content";
 					grid-template-columns: 100% !important;
 				}
 
 				&.is-stacked-on-mobile .wp-block-coblocks-media-card__media {
-					@include break-small {
+					@include break-small-mediacard {
 						position: inherit;
 					}
 				}
