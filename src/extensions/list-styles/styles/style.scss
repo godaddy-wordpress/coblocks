@@ -15,7 +15,7 @@
 			display: inline-block;
 			height: 20px;
 			left: -20px;
-			mask-image: url(images/checkbox-rounded.svg);
+			mask-image: url(images/list/checkbox-rounded.svg);
 			position: absolute;
 			top: 6px;
 			transform: scale(0.9);
@@ -28,7 +28,7 @@
 		}
 
 		li::before {
-			mask-image: url(images/checkbox-rounded-child.svg);
+			mask-image: url(images/list/checkbox-rounded-child.svg);
 		}
 	}
 }
