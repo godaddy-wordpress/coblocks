@@ -105,6 +105,7 @@ Please reach out via the contact form at the bottom right of [our website](https
 * New: Add new advanced controls for turning off block margins
 * New: Add typography controls to the Accordion block
 * New: Add support for responsive Row blocks within the editor
+* New: Add a new toggle control with support for Internet Explorer accordions via polyfill
 * New: Add new accordions items with duplicated styling using the new “Add Accordion Item” button
 * Tweak: Row block gutters not properly execute on mobile
 * Tweak: Typography line height control now uses 0.01 steps for more flexibility.
@@ -126,7 +127,7 @@ Please reach out via the contact form at the bottom right of [our website](https
 * Fix: Removed additional spacing on the Pricing Table block
 * Fix: Resolve issue where custom font selections may be overwritten by the CoBlocks theme
 * Fix: Dropzone labels within CoBlocks themes are now properly sized
-* Fix: Gist block now properly resolves URLs with file hashes
+* Fix: Resolve issue where the Map block may not properly render on the front-end
 
 = 1.7.0 =
 * New: Add Map block with six built-in map styles, zoom, controls and marker size options 🎉
