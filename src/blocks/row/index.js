@@ -214,7 +214,6 @@ const settings = {
 			},
 			...blockAttributes,
 		},
-
 		save( { attributes, className } ) {
 
 			const {

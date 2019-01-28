@@ -40,7 +40,7 @@
 						max-width: calc(112.5% + 90px) !important;
 					}
 
-					&[data-type="coblocks/row"][data-columns="1"]:not( [data-coblocks-align-support="1"] ) {
+					&[data-type="coblocks/row"][data-columns="1"]:not([data-coblocks-align-support="1"]) {
 						.wp-block {
 							max-width: 100% !important;
 						}
@@ -557,5 +557,23 @@ div[data-type="coblocks/row"].is-resizing .has-huge-gutter .components-resizable
 .wp-block[data-type="coblocks/row"][data-columns="1"] {
 	.editor-block-list__block {
 		max-width: 100% !important;
+	}
+}
+
+//Fix background color contrast issue
+body {
+	.editor-styles-wrapper {
+		.wp-block-coblocks-column {
+			p,
+			a,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				color: inherit;
+			}
+		}
 	}
 }
