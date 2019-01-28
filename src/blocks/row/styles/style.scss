@@ -64,4 +64,33 @@
 			padding: 0;
 		}
 	}
+
+	p,
+	a,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: inherit;
+	}
+}
+
+//Fix background color contrast issue
+.is-twentynineteen {
+	.entry .entry-content {
+		.wp-block-coblocks-column {
+			p,
+			a,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				color: inherit;
+			}
+		}
+	}
 }
