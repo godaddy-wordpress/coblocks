@@ -99,14 +99,14 @@ const settings = {
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames({
-			'has-text-color': textColor || customTextColor,
-			[ textClass ]: textClass,
 			[ `coblocks-column-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 		} );
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-column__inner',
 			...BackgroundClasses( attributes ), {
+			'has-text-color': textColor || customTextColor,
+			[ textClass ]: textClass,
 			'has-padding': paddingSize && paddingSize != 'no',
 			'has-margin': marginSize && marginSize != 'no',
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
@@ -114,13 +114,13 @@ const settings = {
 		} );
 
 		const styles = {
-			color: textClass ? undefined : customTextColor,
 			textAlign: contentAlign ? contentAlign : null,
 		};
 
 		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			color: textClass ? undefined : customTextColor,
 		};
 
 		return (
