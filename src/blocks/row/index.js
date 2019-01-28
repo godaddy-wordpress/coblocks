@@ -174,19 +174,15 @@ const settings = {
 
 		const classes = classnames( {
 				[ `coblocks-row--${ id }` ] : id,
-				'has-text-color': textColor || customTextColor,
-				[ textClass ]: textClass,
 				[ `coblocks-row-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
 		);
 
-		const styles = {
-			color: textClass ? undefined : customTextColor,
-		};
-
 		const innerClasses = classnames(
 			'wp-block-coblocks-row__inner',
 			...BackgroundClasses( attributes ), {
+			'has-text-color': textColor || customTextColor,
+			[ textClass ]: textClass,
 			[ `has-${ gutter }-gutter` ] : gutter,
 			'has-padding': paddingSize && paddingSize != 'no',
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
@@ -198,10 +194,11 @@ const settings = {
 		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			color: textClass ? undefined : customTextColor,
 		};
 
 		return (
-			<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } style={ styles } >
+			<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } >
 				<div className={ innerClasses } style={ innerStyles }>
 					<InnerBlocks.Content />
 				</div>
