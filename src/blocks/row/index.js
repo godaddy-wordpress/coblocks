@@ -208,6 +208,10 @@ const settings = {
 
 	deprecated: [ {
 		attributes: {
+			isStackedOnMobile: {
+				type: 'boolean',
+				default: true,
+			},
 			...blockAttributes,
 		},
 
