@@ -82,7 +82,6 @@ class Edit extends Component {
 
 		const classes = classnames(
 			'wp-block-coblocks-column', {
-				'has-text-color': textColor.color,
 				[ `coblocks-column-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
 		);
@@ -90,6 +89,7 @@ class Edit extends Component {
 		const innerClasses = classnames(
 			'wp-block-coblocks-column__inner',
 			...BackgroundClasses( attributes ),{
+				'has-text-color': textColor.color,
 				'has-padding': paddingSize && paddingSize != 'no',
 				'has-margin': marginSize && marginSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
@@ -100,6 +100,7 @@ class Edit extends Component {
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
@@ -134,7 +135,6 @@ class Edit extends Component {
 						style={ {
 							backgroundColor: backgroundColor.color,
 							backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-							color: textColor.color,
 						} }
 						>
 						<div className="wp-block-coblocks-column">

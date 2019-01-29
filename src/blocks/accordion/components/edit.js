@@ -95,6 +95,12 @@ class Edit extends Component {
 												} );
 											}
 
+											if( lastBlockClient.textColor ){
+												copyAttributes = Object.assign( copyAttributes, {
+													textColor: lastBlockClient.textColor
+												} );
+											}
+
 											if( lastBlockClient.customTextColor ){
 												copyAttributes = Object.assign( copyAttributes, {
 													customTextColor: lastBlockClient.customTextColor
