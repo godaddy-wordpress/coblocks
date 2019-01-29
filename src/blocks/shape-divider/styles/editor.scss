@@ -1,5 +1,5 @@
 .editor-block-list__block[data-type="coblocks/shape-divider"] {
-	.editor-block-list__block-edit::before {
+	.has-fixed-toolbar & .editor-block-list__block-edit::before {
 		display: none;
 	}
 
