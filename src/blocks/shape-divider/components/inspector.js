@@ -3,6 +3,7 @@
  */
 import applyWithColors from './colors';
 import OrientationControl from '../../../components/orientation/';
+import ResponsiveBaseControl from '../../../components/responsive-base-control/';
 
 /**
  * WordPress dependencies
@@ -43,30 +44,45 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
-			heightAlt,
 			height,
+			heightTablet,
+			heightMobile,
+			heightAlt,
+			heightAltMobile,
+			heightAltTablet,
+			syncHeight,
 			horizontalFlip,
 			verticalFlip,
+			syncHeightAlt,
 		} = attributes;
 
 		return (
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Divider Settings' ) }>
-						<BaseControl label={ __( 'Shape Height in pixels' ) }>
-							<input
-								type="number"
-								onChange={ ( event ) => {
-									setAttributes( {
-										height: parseInt( event.target.value, 10 ),
-									} );
-								} }
-								value={ height }
-								min="40"
-								step="1"
-							/>
-						</BaseControl>
-						<BaseControl label={ __( 'Divider Height in pixels' ) }>
+						<ResponsiveBaseControl { ...this.props }
+							label={ __( 'Shape Height' ) }
+							height={ height }
+							heightTablet={ heightTablet }
+							heightMobile={ heightMobile }
+							onChange={ ( event ) => { setAttributes( { height: parseInt( event.target.value, 10 ) } ) } }
+							onChangeTablet={ ( event ) => { setAttributes( { heightTablet: parseInt( event.target.value, 10 ) } ) } }
+							onChangeMobile={ ( event ) => { setAttributes( { heightMobile: parseInt( event.target.value, 10 ) } ) } }
+							sync={ syncHeight }
+							min="40"
+						/>
+						<ResponsiveBaseControl { ...this.props }
+							label={ __( 'Background Height' ) }
+							height={ heightAlt }
+							heightTablet={ heightAltTablet }
+							heightMobile={ heightAltMobile }
+							onChange={ ( event ) => { setAttributes( { heightAlt: parseInt( event.target.value, 10 ) } ) } }
+							onChangeTablet={ ( event ) => { setAttributes( { heightAltTablet: parseInt( event.target.value, 10 ) } ) } }
+							onChangeMobile={ ( event ) => { setAttributes( { heightAltMobile: parseInt( event.target.value, 10 ) } ) } }
+							sync={ syncHeight }
+							min="10"
+						/>
+						<BaseControl label={ __( 'Background Height in pixels' ) }>
 							<input
 								type="number"
 								onChange={ ( event ) => {
@@ -95,7 +111,7 @@ class Inspector extends Component {
 							{
 								value: color.color,
 								onChange: setColor,
-								label: __( 'Divider Color' ),
+								label: __( 'Shape Color' ),
 							},
 							{
 								value: backgroundColor.color,

@@ -1,0 +1,52 @@
+.components-coblocks-responsive-base-control {
+	.components-coblocks-dimensions-control__inputs {
+		margin-left: 28px;
+	}
+
+	.components-base-control {
+		margin-bottom: 0 !important;
+		width: 100%;
+
+		.components-base-control__field {
+			margin-bottom: 0;
+		}
+
+		input {
+			border-bottom-left-radius: 0;
+			border-top-left-radius: 0;
+			height: 30px;
+			transition: box-shadow 0.05s linear;
+			width: 100%;
+		}
+	}
+
+	.component-coblocks-is-desktop {
+		input {
+			border-radius: 0;
+			position: relative;
+			width: calc(100% - 1px);
+
+			&:focus {
+				border-radius: 3px;
+				z-index: 9;
+			}
+		}
+
+		input:not(:focus) {
+			border-left-color: transparent;
+			border-right-color: transparent;
+		}
+	}
+
+	.components-coblocks-dimensions-control_sync.components-button.is-small {
+		height: 30px;
+		margin-top: 1px;
+		width: 34px;
+	}
+
+	.components-coblocks-dimensions-control__mobile-controls-item {
+		margin-top: 1px;
+		top: initial;
+		width: 30px;
+	}
+}

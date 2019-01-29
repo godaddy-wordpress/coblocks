@@ -11,6 +11,7 @@ import './styles/editor.scss';
 import './styles/style.scss';
 import Edit from './components/edit';
 import icons from './components/icons';
+import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 
 /**
  * WordPress dependencies
@@ -47,6 +48,16 @@ const blockAttributes = {
 		type: 'number',
 		default: 50,
 	},
+	heightAltMobile: {
+		type: 'number',
+	},
+	heightAltTablet: {
+		type: 'number',
+	},
+	syncHeightAlt: {
+		type: 'boolean',
+		default: true,
+	},
 	verticalFlip: {
 		type: 'boolean',
 		default: false,
@@ -76,6 +87,7 @@ const blockAttributes = {
 		type: 'boolean',
 		default: true,
 	},
+	...ResponsiveBaseControlAttributes,
 };
 
 const settings = {
