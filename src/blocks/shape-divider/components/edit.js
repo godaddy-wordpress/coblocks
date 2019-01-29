@@ -7,6 +7,7 @@ import includes from 'lodash/includes';
 /**
  * Internal dependencies
  */
+import Controls from './controls';
 import Inspector from './inspector';
 import applyWithColors from './colors';
 import dividers from './dividers';
@@ -91,6 +92,11 @@ class Edit extends Component {
 			<Fragment>
 				{ isSelected && (
 					<Inspector
+						{ ...this.props }
+					/>
+				) }
+				{ isSelected && (
+					<Controls
 						{ ...this.props }
 					/>
 				) }
