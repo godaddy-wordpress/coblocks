@@ -10,10 +10,10 @@ import includes from 'lodash/includes';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import icons from './../../utils/icons';
+import icons from './components/icons';
+import brandAssets from '../../utils/brand-assets';
 import Edit from './components/edit';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
-import ResizableSpacer, { ResizableSpacerTransforms } from '../../components/resizable-spacer/';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**
@@ -21,7 +21,7 @@ import DimensionsAttributes from '../../components/dimensions-control/attributes
  */
 const { __ } = wp.i18n;
 const { createBlock, getBlockType } = wp.blocks;
-const { RichText, getColorClassName, getFontSizeClass, InnerBlocks } = wp.editor;
+const { getColorClassName, InnerBlocks } = wp.editor;
 
 /**
  * Block constants
@@ -39,6 +39,10 @@ const keywords = [
 ];
 
 const blockAttributes = {
+	mediaPosition: {
+		type: 'string',
+		default: 'left',
+	},
 	mediaAlt: {
 		type: 'string',
 		source: 'attribute',
@@ -66,8 +70,8 @@ const blockAttributes = {
 		type: 'string',
 		default: 'wide',
 	},
-	contentAlign: {
-		type: 'string',
+	maxWidth: {
+		type: 'number',
 	},
 	hasImgShadow: {
 		type: 'boolean',
@@ -85,7 +89,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Add an image card with an offset text block.' ),
+	description: __( 'Add an image or video with an offset card side-by-side.' ),
 
 	keywords: keywords,
 
@@ -94,7 +98,7 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 		stackedOnMobile: true,
-		coBlocksBlockSpacing: true,
+		coBlocksSpacing: true,
 	},
 
 	transforms: {
@@ -102,19 +106,90 @@ const settings = {
 			{
 				type: 'prefix',
 				prefix: ':card',
-				transform: function( content ) {
-					return createBlock( `coblocks/${ name }`, {
-						content,
+				transform: function() {
+					return createBlock( `coblocks/${ name }` );
+				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/image' ],
+				transform: ( { alt, url, id } ) => (
+					createBlock( `coblocks/${ name }`, {
+						mediaAlt: alt,
+						mediaId: id,
+						mediaUrl: url,
+						mediaType: 'image',
+					} )
+				),
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/video' ],
+				transform: ( { src, id } ) => (
+					createBlock( `coblocks/${ name }`, {
+						mediaId: id,
+						mediaUrl: src,
+						mediaType: 'video',
+					} )
+				),
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/media-text' ],
+				transform: ( { mediaAlt, mediaUrl, mediaId, mediaType, mediaPosition } ) => (
+					createBlock( `coblocks/${ name }`, {
+						mediaAlt: mediaAlt,
+						mediaId: mediaId,
+						mediaUrl: mediaUrl,
+						mediaType: mediaType,
+						mediaPosition: mediaPosition,
+					} )
+				),
+			},
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: [ 'core/image' ],
+				isMatch: ( { mediaType, mediaUrl } ) => {
+					return ! mediaUrl || mediaType === 'image';
+				},
+				transform: ( { mediaAlt, mediaId, mediaUrl } ) => {
+					return createBlock( 'core/image', {
+						alt: mediaAlt,
+						id: mediaId,
+						url: mediaUrl,
 					} );
 				},
 			},
+			{
+				type: 'block',
+				blocks: [ 'core/video' ],
+				isMatch: ( { mediaType, mediaUrl } ) => {
+					return ! mediaUrl || mediaType === 'video';
+				},
+				transform: ( { mediaId, mediaUrl } ) => {
+					return createBlock( 'core/video', {
+						id: mediaId,
+						src: mediaUrl,
+					} );
+				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/media-text' ],
+				transform: ( { mediaAlt, mediaUrl, mediaId, mediaType, mediaPosition } ) => (
+					createBlock( 'core/media-text', {
+						mediaAlt: mediaAlt,
+						mediaId: mediaId,
+						mediaUrl: mediaUrl,
+						mediaType: mediaType,
+						mediaPosition: mediaPosition,
+					} )
+				),
+			},
 		]
 	},
-
-	styles: [
-		{ name: 'left', label: __( 'Left' ), isDefault: true },
-		{ name: 'right', label: __( 'Right' ) },
-	],
 
 	edit: Edit,
 
@@ -124,7 +199,6 @@ const settings = {
 			coblocks,
 			backgroundColor,
 			backgroundImg,
-			contentAlign,
 			customBackgroundColor,
 			hasCardShadow,
 			hasImgShadow,
@@ -134,7 +208,10 @@ const settings = {
 			mediaUrl,
 			mediaWidth,
 			mediaId,
+			maxWidth,
+			mediaPosition,
 			isStackedOnMobile,
+			align,
 		} = attributes;
 
 		// Media.
@@ -142,9 +219,6 @@ const settings = {
 			image: () => <img src={ mediaUrl } alt={ mediaAlt } className={ ( mediaId && mediaType === 'image' ) ? `wp-image-${ mediaId }` : null } />,
 			video: () => <video controls src={ mediaUrl } />,
 		};
-
-		const isStyleRight = includes( className, 'is-style-right' );
-		const mediaPosition = isStyleRight ? 'right' : 'left';
 
 		let gridTemplateColumns;
 		if ( mediaWidth !== 55 ) {
@@ -155,49 +229,49 @@ const settings = {
 
 		const classes = classnames( {
 			[ `coblocks-media-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+			[ `is-style-${ mediaPosition }` ] : mediaPosition,
 			'has-no-media': ! mediaUrl || null,
 			'is-stacked-on-mobile': isStackedOnMobile,
 		} );
 
-		const innerClasses = classnames(
+		const wrapperClasses = classnames(
 			'wp-block-coblocks-media-card__inner',
 			...BackgroundClasses( attributes ), {
-			'has-padding': paddingSize && paddingSize != 'no',
-			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
+				'has-padding': paddingSize && paddingSize != 'no',
+				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 		} );
+
+		const wrapperStyles = {
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+		};
 
 		const innerStyles = {
 			gridTemplateColumns,
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-
+			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
 		};
 
-		const cardBackgroundClasses = classnames(
+		const cardClasses = classnames(
 			'wp-block-coblocks-media-card__content', {
 			'has-shadow': hasCardShadow,
 		} );
 
-		const cardStyles = {
-			textAlign: contentAlign ? contentAlign : null,
-		};
-
-
 		return (
 			<div className={ classes }>
-				<div className={ innerClasses } style={ innerStyles }>
-					<figure className={ classnames(
-							'wp-block-coblocks-media-card__media', {
-								'has-shadow': hasImgShadow,
-							}
-						) }
-					>
-						{ ( mediaTypeRenders[ mediaType ] || noop )() }
-
-						{ ! mediaUrl ? icons.logo : null }
-					</figure>
-					<div className={ cardBackgroundClasses } style={ cardStyles }>
-						<InnerBlocks.Content />
+				<div className={ wrapperClasses } style={ wrapperStyles } >
+					<div className="wp-block-coblocks-media-card__wrapper" style={ innerStyles }>
+						<figure className={ classnames(
+								'wp-block-coblocks-media-card__media', {
+									'has-shadow': hasImgShadow,
+								}
+							) }
+						>
+							{ ( mediaTypeRenders[ mediaType ] || noop )() }
+							{ ! mediaUrl ? brandAssets.logo : null }
+						</figure>
+						<div className={ cardClasses }>
+							<InnerBlocks.Content />
+						</div>
 					</div>
 				</div>
 			</div>

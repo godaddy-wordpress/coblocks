@@ -99,14 +99,14 @@ const settings = {
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames({
-			'has-text-color': textColor || customTextColor,
-			[ textClass ]: textClass,
 			[ `coblocks-column-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 		} );
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-column__inner',
 			...BackgroundClasses( attributes ), {
+			'has-text-color': textColor || customTextColor,
+			[ textClass ]: textClass,
 			'has-padding': paddingSize && paddingSize != 'no',
 			'has-margin': marginSize && marginSize != 'no',
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
@@ -114,21 +114,13 @@ const settings = {
 		} );
 
 		const styles = {
-			color: textClass ? undefined : customTextColor,
 			textAlign: contentAlign ? contentAlign : null,
 		};
 
 		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-			// paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
-			// paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
-			// paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
-			// paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-			// marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
-			// marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
-			// marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
-			// marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
+			color: textClass ? undefined : customTextColor,
 		};
 
 		return (
@@ -139,6 +131,82 @@ const settings = {
 			</div>
 		);
 	},
+
+	deprecated: [ {
+		attributes: {
+			...blockAttributes,
+		},
+		save( { attributes, className } ) {
+
+			const {
+				id,
+				coblocks,
+				backgroundColor,
+				backgroundImg,
+				customBackgroundColor,
+				textColor,
+				customTextColor,
+				paddingTop,
+				paddingRight,
+				paddingBottom,
+				paddingLeft,
+				marginTop,
+				marginRight,
+				marginBottom,
+				marginLeft,
+				marginUnit,
+				paddingUnit,
+				paddingSyncUnits,
+				marginSyncUnits,
+				marginSize,
+				paddingSize,
+				contentAlign,
+			} = attributes;
+
+			const textClass = getColorClassName( 'color', textColor );
+			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
+			let classlist = {
+				[ `coblocks-row--${ id }` ] : id,
+				'has-text-color': textColor || customTextColor,
+				[ textClass ]: textClass,
+			};
+
+			if( coblocks && ( typeof coblocks.id != 'undefined' ) ) {
+				classlist = Object.assign( classlist, [ `coblocks-row-${ coblocks.id }` ] );
+			}
+
+			const classes = classnames( classlist );
+
+			const innerClasses = classnames(
+				'wp-block-coblocks-column__inner',
+				...BackgroundClasses( attributes ), {
+				'has-padding': paddingSize && paddingSize != 'no',
+				'has-margin': marginSize && marginSize != 'no',
+				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
+				[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
+			} );
+
+			const styles = {
+				color: textClass ? undefined : customTextColor,
+				textAlign: contentAlign ? contentAlign : null,
+			};
+
+			const innerStyles = {
+				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+				backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			};
+
+			return (
+				<div className={ classes } style={ styles } >
+					<div className={ innerClasses } style={ innerStyles }>
+						<InnerBlocks.Content />
+					</div>
+				</div>
+			);
+		},
+	},
+	],
 };
 
 export { name, title, icon, settings };

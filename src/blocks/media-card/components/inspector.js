@@ -9,25 +9,11 @@ import DimensionsControl from '../../../components/dimensions-control/';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
-const { PanelBody, withFallbackStyles, ToggleControl, TextControl, TextareaControl, RangeControl } = wp.components;
-
-/**
- * Fallback styles
- */
-const { getComputedStyle } = window;
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { backgroundColor } = ownProps.attributes;
-	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-	};
-} );
+const { InspectorControls, PanelColorSettings } = wp.editor;
+const { PanelBody, ToggleControl, TextareaControl, RangeControl } = wp.components;
 
 /**
  * Inspector controls
@@ -43,7 +29,6 @@ class Inspector extends Component {
 		const {
 			attributes,
 			backgroundColor,
-			fallbackBackgroundColor,
 			setAttributes,
 			setBackgroundColor,
 		} = this.props;
@@ -70,6 +55,9 @@ class Inspector extends Component {
 			paddingSyncUnitsTablet,
 			paddingSyncUnitsMobile,
 			paddingUnit,
+			maxWidth,
+			align,
+			mediaType,
 		} = attributes;
 
 		return (
@@ -98,7 +86,18 @@ class Inspector extends Component {
 							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
 						/>
-						{ mediaUrl && (
+						{ ( 'full' == align || 'wide' == align ) && (
+							<RangeControl
+								label={ __( 'Max Width' ) }
+								className="components-block-coblocks-media-card-maxwidth-range"
+								value={ parseFloat( maxWidth ) }
+								onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: nextMaxWidth } ) }
+								min={ 400 }
+								max={ 2000 }
+								step={ 1 }
+							/>
+						) }
+						{ mediaUrl && mediaType === 'image' && (
 							<TextareaControl
 								label={ __( 'Alt Text (Alternative Text)' ) }
 								value={ mediaAlt }
@@ -110,14 +109,16 @@ class Inspector extends Component {
 							label={ __( 'Card Shadow' ) }
 							checked={ !! hasCardShadow }
 							onChange={ () => setAttributes( {  hasCardShadow: ! hasCardShadow } ) }
-							help={ !! hasCardShadow ? __( 'Showing card shadow.' ) : __( 'Toggle to add a shadow to the card.' ) }
+							help={ !! hasCardShadow ? __( 'Showing card shadow.' ) : __( 'Toggle to add a card shadow.' ) }
 						/>
-						<ToggleControl
-							label={ __( 'Image Shadow' ) }
-							checked={ !! hasImgShadow }
-							onChange={ () => setAttributes( {  hasImgShadow: ! hasImgShadow } ) }
-							help={ !! hasImgShadow ? __( 'Showing image shadow.' ) : __( 'Toggle to add a shadow to the image.' ) }
-						/>
+						{ mediaType && (
+							<ToggleControl
+								label={ sprintf( __( ' %s Shadow' ), mediaType.charAt(0).toUpperCase() + mediaType.slice(1) ) }
+								checked={ !! hasImgShadow }
+								onChange={ () => setAttributes( {  hasImgShadow: ! hasImgShadow } ) }
+								help={ !! hasImgShadow ? sprintf( __( 'Showing %s shadow.' ), mediaType ) : sprintf( __( 'Toggle to add an %s shadow' ), mediaType ) }
+							/>
+						) }
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }
@@ -148,5 +149,4 @@ class Inspector extends Component {
 
 export default compose( [
 	applyWithColors,
-	applyFallbackStyles,
 ] )( Inspector );

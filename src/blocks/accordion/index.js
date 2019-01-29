@@ -39,6 +39,10 @@ const blockAttributes = {
 		type: 'number',
 		default: 1,
 	},
+	polyfill: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 const settings = {

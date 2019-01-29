@@ -1,11 +1,17 @@
 .wp-block-coblocks-media-card {
-	.editor-block-list__block[data-type="coblocks/media-card"] & &__inner {
+	&__wrapper {
+		@media (max-width: #{ ($break-small-mediacard) }) {
+			display: block !important;
+		}
+	}
+
+	.editor-block-list__block[data-type="coblocks/media-card"] & &__wrapper {
 		grid-template-areas:
 			"media-text-media media-text-content"
 			"resizer resizer";
 	}
 
-	.editor-block-list__block[data-type="coblocks/media-card"] &.is-style-right &__inner {
+	.editor-block-list__block[data-type="coblocks/media-card"] &.is-style-right &__wrapper {
 		grid-template-areas:
 			"media-text-content media-text-media"
 			"resizer resizer";
@@ -24,6 +30,21 @@
 		video {
 			vertical-align: middle;
 			width: 100%;
+		}
+	}
+
+	// Centers the spinner component, when an image is being dropped and replaced.
+	.wp-block-coblocks-media-card__placeholder {
+		position: relative;
+
+		.components-spinner {
+			left: 0;
+			left: 50%;
+			margin-left: -9px;
+			margin-top: -9px;
+			position: absolute;
+			top: 50%;
+			z-index: 9999;
 		}
 	}
 
@@ -74,7 +95,7 @@
 		.editor-media-container__resizer .components-resizable-box__handle {
 			display: block;
 		}
-		@media (max-width: $break-small) {
+		@media (max-width: $break-small-mediacard) {
 			&.is-stacked-on-mobile {
 				.editor-media-container__resizer .components-resizable-box__handle {
 					display: none;
@@ -83,16 +104,16 @@
 		}
 	}
 
-	@include break-small {
+	@include break-small-mediacard {
 		&.is-selected.is-style-right {
 			.editor-media-container__resizer .components-resizable-box__handle {
 				display: block;
 			}
 		}
 	}
-	@media (max-width: $break-small) {
+	@media (max-width: $break-small-mediacard) {
 		&.is-stacked-on-mobile {
-			.wp-block-coblocks-media-card__inner {
+			.wp-block-coblocks-media-card__wrapper {
 				.wp-block-coblocks-media-card__content {
 					margin-left: 5%;
 					margin-right: 5%;
@@ -198,60 +219,14 @@
 	}
 }
 
-// Style the core styles preview (#35).
-// As Gutenberg does not support innerBlocks content within the editor yet, we need
-// to style the previews to look better for now.
-.editor-block-preview,
-.editor-block-styles__item-preview {
-	.wp-block-coblocks-media-card__inner {
-		display: flex;
-		padding: 0;
-	}
-
-	.wp-block-coblocks-media-card__img-wrapper {
-		width: 120%;
-	}
-
-	.wp-block-coblocks-media-card__content {
-		background: #535c65;
-		display: block;
-		height: 50px;
-		width: 100%;
-		margin-left: -15px;
-	}
-
-	.wp-block-coblocks-media-card,
-	.wp-block-coblocks-media-card__inner,
-	.wp-block-coblocks-media-card__img-wrapper {
-		height: 100px;
-	}
-
-	.is-style-right .wp-block-coblocks-media-card__inner {
-		flex-direction: row-reverse;
-
-		.wp-block-coblocks-media-card__img-wrapper {
-			left: -20%;
-		}
-
-		.wp-block-coblocks-media-card__content {
-			margin-right: -15px;
-		}
-	}
-}
-
-.editor-block-preview {
-	.wp-block-coblocks-media-card__content {
-		height: 130px;
-		margin-top: 120px;
-	}
-	.editor-styles-wrapper {
-		overflow: hidden;
-	}
-}
-
 // Hide the wide and full alignment settings on the row.
 .wp-block-coblocks-media-card {
 	.editor-block-toolbar .components-toolbar:nth-child(2) {
 		display: none;
 	}
 }
+
+.components-block-coblocks-media-card-maxwidth-range {
+	margin-bottom: 0.7em;
+}
+

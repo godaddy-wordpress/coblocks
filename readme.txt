@@ -25,18 +25,19 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 ## One for all, all in one
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages:
 
-* Resizable Row/Columns (New!)
+* Resizable Row/Columns Blocks (New!)
+* Media Card Block (New!)
 * Map Block (New!)
-* Accordion
-* Alert
-* Author Profile
-* Click to Tweet
-* Dynamic Separator
-* Gif
-* GitHub Gist
-* Highlight
-* Pricing Table
-* Social Sharing
+* Accordion Block
+* Alert Block
+* Author Profile Block
+* Click to Tweet Block
+* Dynamic Separator Block
+* Gif Block
+* GitHub Gist Block
+* Highlight Block
+* Pricing Table Block
+* Social Sharing Block
 
 
 ## Custom Typography Controls
@@ -99,6 +100,38 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 Please reach out via the contact form at the bottom right of [our website](https://coblocks.com).
 
 == Changelog ==
+
+= 1.8.0 =
+* New: Add Media Card block for showcasing videos and imagery with an overlaid card
+* New: Add new advanced controls for turning off block margins
+* New: Add typography controls to the Accordion block
+* New: Add support for responsive Row blocks within the editor
+* New: Add a new toggle control with support for Internet Explorer accordions via polyfill
+* New: Add new accordions items with duplicated styling using the new “Add Accordion Item” button
+* Tweak: Row block gutters not properly execute on mobile
+* Tweak: Typography line height control now uses 0.01 steps for more flexibility.
+* Tweak: Click to Tweet Block uses rel=“noopener” now
+* Tweak: Buttons added to the a pricing table do not inherit custom fonts
+* Tweak: Update the Typography Panel icon
+* Tweak: Update the Uppercase formatting icon
+* Tweak: Move the “Stack on Mobile” control within the Row block to its Advanced sidebar panel
+* Tweak: Background color setting from the core Heading block
+* Tweak: Improve the UI of the Click to Tweet toolbar username field
+* Tweak: Change the `data-custom-fontfamily` attribute to `data-coblocks-font` within the editor
+* Fix: Pricing Table blocks with four tables look better
+* Fix: Custom background colors within the Highlight block now properly resolve
+* Fix: Single column Row blocks now display properly
+* Fix: Remove the Accordion Item focus applies within the editor
+* Fix: Border radius applied to an Accordion Item block is now properly styled
+* Fix: Resolve issue where advanced dimension control setting would not properly reset
+* Fix: Remove the vertical column resizer in the Row block on mobile
+* Fix: Row blocks added to Accordion Item blocks now properly display fullwidth
+* Fix: Removed additional spacing on the Pricing Table block
+* Fix: Resolve issue where custom font selections may be overwritten by the CoBlocks theme
+* Fix: Dropzone labels within CoBlocks themes are now properly sized
+* Fix: Resolve issue where the Map block may not properly render on the front-end
+* Fix: Resolve issue where paragraph blocks with backgrounds did not have appropriate padding within Column blocks
+* Fix: Resolve issue where custom text colors would not properly resolve within Row blocks in TwentyNineteen
 
 = 1.7.0 =
 * New: Add Map block with six built-in map styles, zoom, controls and marker size options 🎉

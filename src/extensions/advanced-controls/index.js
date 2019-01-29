@@ -21,6 +21,8 @@ const { InspectorAdvancedControls }	= wp.editor;
 const { compose, createHigherOrderComponent } = wp.compose;
 const { ToggleControl } = wp.components;
 
+const blocksWithSpacingSupport = [ 'core/image', 'core/gallery', 'core/spacer', 'core/cover' ];
+
 /**
  * Filters registered block settings, extending attributes with settings
  *
@@ -41,7 +43,17 @@ function addAttributes( settings ) {
 		}
 	}
 
-	if ( hasBlockSupport( settings, 'coBlocksBlockSpacing' ) ) {
+	//Add CoBlocks spacing support
+	if( blocksWithSpacingSupport.includes( settings.name ) ){
+		if( !settings.supports ){
+			settings.supports = {};
+		}
+		settings.supports = Object.assign( settings.supports, {
+			coBlocksSpacing: true
+		} );
+	}
+
+	if ( hasBlockSupport( settings, 'coBlocksSpacing' ) ) {
 		if( typeof settings.attributes !== 'undefined' ){
 			settings.attributes = Object.assign( settings.attributes, {
 				noBottomMargin: {
@@ -83,40 +95,40 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		} = attributes;
 
 		const hasStackedControl = hasBlockSupport( name, 'stackedOnMobile' );
-		const withBlockSpacing = hasBlockSupport( name, 'coBlocksBlockSpacing' );
+		const withBlockSpacing = hasBlockSupport( name, 'coBlocksSpacing' );
 
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
-				{ isSelected && 
+				{ isSelected &&
 					<InspectorAdvancedControls>
-						{ hasStackedControl &&  
+						{ hasStackedControl &&
 							<ToggleControl
-								label={ __( 'Stack on mobile' ) }
+								label={ __( 'Stack on Mobile' ) }
 								checked={ !! isStackedOnMobile }
 								onChange={ () => setAttributes( {  isStackedOnMobile: ! isStackedOnMobile } ) }
-								help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to enable responsiveness.' ) }
-							/>
-						}
-						{ withBlockSpacing &&  
-							<ToggleControl
-								label={ __( 'No top spacing' ) }
-								checked={ !! noTopMargin }
-								onChange={ () => setAttributes( {  noTopMargin: ! noTopMargin, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } ) }
-								help={ !! noTopMargin ? __( 'Top margin is removed on this block.' ) : __( 'Toggle to remove any top margin applied to this block.' ) }
+								help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to stack elements on top of each other on smaller viewports.' ) }
 							/>
 						}
 						{ withBlockSpacing &&
 							<ToggleControl
-								label={ __( 'No bottom spacing' ) }
+								label={ __( 'Remove Top Spacing' ) }
+								checked={ !! noTopMargin }
+								onChange={ () => setAttributes( {  noTopMargin: ! noTopMargin, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } ) }
+								help={ !! noTopMargin ? __( 'Top margin is removed on this block.' ) : __( 'Toggle to remove any margin applied to the top of this block.' ) }
+							/>
+						}
+						{ withBlockSpacing &&
+							<ToggleControl
+								label={ __( 'Remove Bottom Spacing' ) }
 								checked={ !! noBottomMargin }
 								onChange={ () => setAttributes( {  noBottomMargin: ! noBottomMargin, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0  } ) }
-								help={ !! noBottomMargin ? __( 'Bottom margin is removed on this block.' ) : __( 'Toggle to remove any bottom margin applied to this block.' ) }
+								help={ !! noBottomMargin ? __( 'Bottom margin is removed on this block.' ) : __( 'Toggle to remove any margin applied to the bottom of this block.' ) }
 							/>
 						}
 					</InspectorAdvancedControls>
 				}
-				
+
 			</Fragment>
 		);
 	};
@@ -133,7 +145,7 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
  */
 function applySpacingClass(extraProps, blockType, attributes) {
 
-	const withBlockSpacing = hasBlockSupport( blockType.name, 'coBlocksBlockSpacing' );
+	const withBlockSpacing = hasBlockSupport( blockType.name, 'coBlocksSpacing' );
 
 	if ( withBlockSpacing ) {
 
@@ -183,20 +195,32 @@ const addEditorBlockAttributes = createHigherOrderComponent( (BlockListBlock) =>
 		let attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
 		let blockName		= select( 'core/editor' ).getBlockName( props.clientId );
 
-		const withBlockSpacing = hasBlockSupport( blockName, 'coBlocksBlockSpacing' );
+		const withBlockSpacing = hasBlockSupport( blockName, 'coBlocksSpacing' );
+		let withAlignSupport = hasBlockSupport( blockName, 'align' );
+
+		if( [ 'core/image' ].includes( blockName ) ){
+			withAlignSupport = true;
+		}
 
 		if ( withBlockSpacing ) {
 
 			const { noBottomMargin, noTopMargin } = attributes;
 
 			if ( typeof noTopMargin !== 'undefined' && noTopMargin ) {
-				customData = Object.assign( customData, { 'data-no-top-margin': 1 } );
+				customData = Object.assign( customData, { 'data-coblocks-top-spacing': 1 } );
 			}
 
 			if ( typeof noBottomMargin !== 'undefined' && noBottomMargin ) {
-				customData = Object.assign( customData, { 'data-no-bottom-margin': 1 } );
+				customData = Object.assign( customData, { 'data-coblocks-bottom-spacing': 1 } );
 			}
 
+		}
+
+		if( withAlignSupport ){
+			customData = Object.assign( customData, { 'data-coblocks-align-support': 1 } );
+		}
+
+		if( withBlockSpacing || withAlignSupport ){
 			wrapperProps = {
 				...wrapperProps,
 				...customData,

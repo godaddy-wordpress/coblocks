@@ -5,19 +5,27 @@ import classnames from 'classnames';
 import includes from 'lodash/includes';
 
 /**
+ * Internal dependencies
+ */
+import { ALLOWED_MEDIA_TYPES } from './edit';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { BlockControls, MediaPlaceholder, MediaUpload } = wp.editor;
-const { IconButton, ResizableBox, Toolbar } = wp.components;
+const { IconButton, ResizableBox, Toolbar, DropZone, Spinner } = wp.components;
+const { isBlobURL } = wp.blob;
 
 /**
- * Constants
+ * MediaContainer component
  */
-const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
-
 class MediaContainer extends Component {
+
+	constructor() {
+		super( ...arguments );
+	}
 
 	renderToolbarEditButton() {
 		const { mediaId, onSelectMedia } = this.props;
@@ -78,27 +86,48 @@ class MediaContainer extends Component {
 	}
 
 	renderPlaceholder() {
-		const { onSelectMedia, figureClass } = this.props;
+		const { onSelectMedia, figureClass, mediaAlt, mediaUrl, hasImgShadow, } = this.props;
 
 		return (
-			<MediaPlaceholder
-				icon="format-image"
-				labels={ {
-					title: __( 'Media' ),
-				} }
-				className={ figureClass }
-				onSelect={ onSelectMedia }
-				accept="image/*,video/*"
-				allowedTypes={ ALLOWED_MEDIA_TYPES }
-			/>
+			<div className="wp-block-coblocks-media-card__placeholder">
+				{ isBlobURL( mediaUrl ) ?
+					<Fragment>
+						<Spinner />
+						<figure className={ classnames(
+							figureClass,
+							'is-transient', {}
+						) } >
+							<img src={ mediaUrl } alt={ mediaAlt } />
+						</figure>
+					</Fragment>
+				:
+					<MediaPlaceholder
+						icon="format-image"
+						labels={ {
+							title: __( 'Media' ),
+						} }
+						className={ figureClass }
+						onSelect={ onSelectMedia }
+						accept="image/*,video/*"
+						allowedTypes={ ALLOWED_MEDIA_TYPES }
+						>
+					</MediaPlaceholder>
+				}
+			</div>
 		);
 	}
 
 	render() {
-		const { className, mediaUrl, mediaType, mediaWidth, commitWidthChange, onWidthChange } = this.props;
+		const { className, mediaUrl, mediaType, mediaWidth, mediaPosition, commitWidthChange, onWidthChange, onSelectMedia, onDropMedia } = this.props;
 
-		const isStyleRight = includes( className, 'is-style-right' );
-		const mediaPosition = isStyleRight ? 'right' : 'left';
+		const imageDropZone = (
+			<Fragment>
+				<DropZone
+					onFilesDrop={ onDropMedia }
+					label={ __( 'Drop to replace media' ) }
+				/>
+			</Fragment>
+		);
 
 		if ( mediaType && mediaUrl ) {
 			const onResize = ( event, direction, elt ) => {
@@ -132,6 +161,7 @@ class MediaContainer extends Component {
 					onResizeStop={ onResizeStop }
 					axis="x"
 				>
+					{ imageDropZone }
 					{ mediaElement }
 				</ResizableBox>
 			);

@@ -1,5 +1,5 @@
 .editor-styles-wrapper {
-	.wp-block.editor-block-list__block[data-no-top-margin="1"]:not(:first-child) {
+	.wp-block.editor-block-list__block[data-coblocks-top-spacing="1"]:not(:first-child) {
 		margin-top: 0 !important;
 
 		// Ensure that blocks with custom margin settings using our dimensions control
@@ -15,7 +15,7 @@
 		}
 	}
 
-	.wp-block.editor-block-list__block[data-no-bottom-margin="1"]:not(:last-child) {
+	.wp-block.editor-block-list__block[data-coblocks-bottom-spacing="1"]:not(:last-child) {
 		margin-bottom: 0 !important;
 
 		// Ensure that blocks with custom margin settings using our dimensions control
@@ -26,6 +26,11 @@
 			}
 		}
 
+		// The core cover block has it's own margin added as well that we need to override.
+		.wp-block-cover {
+			margin-bottom: 0 !important;
+		}
+
 		> .editor-block-list__block-edit {
 			margin-bottom: 0 !important;
 		}
@@ -33,7 +38,7 @@
 		// Hide the inserter on blocks that follow a vertically resizable block
 		// that does not have margin bottom applied.
 		&[data-type="coblocks/map"] {
-			+ .editor-block-list__block[data-no-bottom-margin="1"] {
+			+ .editor-block-list__block[data-coblocks-bottom-spacing="1"] {
 				> .editor-block-list__insertion-point {
 					display: none;
 				}
@@ -41,13 +46,13 @@
 		}
 	}
 
-	//Make sure block is on the top
+	//Make sure block is on the top z-index.
 	.wp-block {
 		&.editor-block-list__block {
 			&.is-selected {
-				&[data-no-top-margin="1"],
-				&[data-no-bottom-margin="1"] {
-					z-index: 90;
+				&[data-coblocks-top-spacing="1"],
+				&[data-coblocks-bottom-spacing="1"] {
+					z-index: 29;
 				}
 			}
 		}

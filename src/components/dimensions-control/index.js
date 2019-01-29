@@ -116,6 +116,8 @@ class DimensionsControl extends Component {
 				this.props.setAttributes( { marginTop: size, marginRight: 0, marginBottom: size, marginLeft: 0, marginUnit: 'px' } );
 			}
 		}
+
+		this.saveMeta();
 	}
 
 	syncUnits( value, device ) {

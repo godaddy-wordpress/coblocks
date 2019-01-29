@@ -50,8 +50,17 @@ class CoBlocks_Post_Meta {
 				},
 			)
 		);
-	}
 
+		register_meta(
+			'post', '_coblocks_accordion_ie_support', array(
+				'show_in_rest'  => true,
+				'single'        => true,
+				'auth_callback' => function() {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
+	}
 }
 
 return new CoBlocks_Post_Meta();
