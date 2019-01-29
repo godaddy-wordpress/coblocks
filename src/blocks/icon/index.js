@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import icons from './../../utils/icons';
+import icons from './components/icons';
 import Edit from './components/edit';
 import iconsSelection from './toolbar-components/icons';
 
@@ -26,7 +26,7 @@ const name = 'icon';
 
 const title = __( 'Icon' );
 
-const icon = icons.highlight;
+const icon = icons.icon;
 
 const keywords = [
 	__( 'icon' ),
