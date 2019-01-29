@@ -138,7 +138,8 @@ class Edit extends Component {
 						<InnerBlocks
 							template={ getCount( columns ) }
 							allowedBlocks={ ALLOWED_BLOCKS }
-							templateLock="all" />
+							templateLock="all"
+							templateInsertUpdatesSelection={ false } />
 					</div>
 				</div>
 			</Fragment>

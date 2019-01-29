@@ -43,6 +43,7 @@ class Edit extends Component {
 						allowedBlocks={ ALLOWED_BLOCKS }
 						template={ TEMPLATE }
 						templateLock={ false }
+						templateInsertUpdatesSelection={ false }
 					/>
 				</div>
 			</Fragment>
