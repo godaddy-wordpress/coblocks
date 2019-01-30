@@ -10,7 +10,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
 import Edit from './components/edit';
-import iconsSelection from './toolbar-components/icons';
+import svg from './icons/icons';
 
 /**
  * WordPress dependencies
@@ -111,7 +111,7 @@ const settings = {
 		return (
 			<div className={ className }>
 				<div className={ classes } style={ styles }>
-					{ icon ? iconsSelection[ icon ] : iconsSelection.logo }
+					{ icon ? svg[ icon ] : svg.logo }
 				</div>
 			</div>
 		);

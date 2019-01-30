@@ -7,25 +7,40 @@
 	}
 }
 
-//Toolbar Styling
-.components-coblocks-icons-dropdown {
-	&__inner {
-		padding: 10px;
-	}
+//Icon Selector Styling
+.coblocks-icon-types-list{
+	height: 270px;
+   	overflow-y: scroll;
+	.editor-block-types-list__list-item{
+		.components-button{
+			background: transparent;
+			border-color: #ebecee;
+			box-shadow: none;
+			height: auto;
+			color: #555e66;
+			&:focus{
+				background: #f8faf9;
+				border-color: #ebecee;
+				outline: none;
+				box-shadow: none;
+			}
+			svg{
+				margin: 0px;
+    			padding: 0px;
+			}
+		}
+		.editor-block-types-list__item-icon{
+			padding: 14px 7px;
+			line-height: 0;
+		}
 
-	input[type="text"].components-text-control__input {
-		display: block;
-
-		padding: 11px 16px;
-		position: relative;
-		z-index: 1;
-		border-radius: 4px;
-		font-size: 13px;
-	}
-
-	.components-icon-button {
-		svg {
-			max-width: 20px;
+		&.selected-svg{
+			.components-button{
+				&, &:focus{
+					border-color: #00a2de;
+					background: transparent;
+				}
+			}
 		}
 	}
 }

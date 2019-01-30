@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import applyWithColors from './colors';
 import Inspector from './inspector';
-import iconsSelection from '../toolbar-components/icons';
+import svg from '../icons/icons';
 
 /**
  * WordPress dependencies
@@ -102,7 +102,7 @@ class Edit extends Component {
 						toggleSelection( false );
 					} }
 				>
-					{ icon ? iconsSelection[ icon ] : iconsSelection.logo }
+					{ icon ? svg[ icon ] : svg.logo }
 				</ResizableBox>
 			</Fragment>
 		];

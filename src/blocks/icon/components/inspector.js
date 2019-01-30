@@ -107,15 +107,18 @@ class Inspector extends Component {
 								} 
 							}
 						/>
-						<ul role="list" className="editor-block-types-list">
+						<ul role="list" className="editor-block-types-list coblocks-icon-types-list">
 							<li className="editor-block-types-list__list-item selected-svg">
 								<Button
 									isLarge
+									className="editor-block-list-item-button"
 									onClick={ () => {
-										return false
+										return false;
 									} }
 								>
-									{ svg[ icon ] }
+									<span className="editor-block-types-list__item-icon">
+										{ svg[ icon ] }
+									</span>
 								</Button>
 							</li>
 							{ Object.keys( this.state.filteredIcons ).map( ( keyName, i ) => {
@@ -127,11 +130,14 @@ class Inspector extends Component {
 									) }>
 										<Button
 											isLarge
+											className="editor-block-list-item-button"
 											onClick={ () => {
 												setAttributes({ icon: keyName });
 											} }
 										>
-											{ svg[ keyName ] }
+											<span className="editor-block-types-list__item-icon">
+												{ svg[ keyName ] }
+											</span>
 										</Button>
 									</li>
 								];
