@@ -130,7 +130,7 @@ const settings = {
 			textAlign: textAlign ? textAlign : undefined,
 			height: height,
 			width: width,
-			padding: borderRadius ? borderRadius + 'px' : undefined,
+			borderRadius: borderRadius ? borderRadius + 'px' : undefined,
 			padding: padding ? padding + 'px' : undefined,
 		};
 

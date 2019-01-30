@@ -1,7 +1,7 @@
 .editor-block-list__block[data-type="coblocks/icon"] {
 	.wp-block-coblocks-icon__inner {
 		align-items: center;
-		display: inline-block;
+		display: flex;
 		justify-content: center;
 
 		> svg {
