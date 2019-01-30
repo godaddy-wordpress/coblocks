@@ -101,7 +101,7 @@ class Inspector extends Component {
 		if( className.includes( 'is-style-outlined' ) ){
 			iconStyle = 'outlined';
 		}
-		
+
 		const filterList = ( event ) => {
 			var filtered = {};
 
@@ -186,7 +186,7 @@ class Inspector extends Component {
 									max={ 1000 }
 									step={ 1 }
 								/>
-							</Fragment> : 
+							</Fragment> :
 							<BaseControl id="textarea-1" label={ label } help={ help }>
 								<div className="components-font-size-picker__buttons">
 									<Dropdown
@@ -226,7 +226,6 @@ class Inspector extends Component {
 										className="components-color-palette__clear"
 										type="button"
 										onClick={ () => this.onChangeSize( 'advanced', '' ) }
-
 										isDefault
 										aria-label={ sprintf( __( 'Advanced %s settings' ), label.toLowerCase() ) }
 										isPrimary={ iconSize === 'advanced' }
@@ -239,16 +238,16 @@ class Inspector extends Component {
 						<TextControl
 							type='text'
 							autocomplete="off"
-							label={ __( 'Select Icon' ) }
+							label={ __( 'Icon Search' ) }
 							value={ this.state.searchValue }
-							placeholder={ __( 'Search for an icon' ) }
+							className="coblocks-icon-types-list__search"
 							onChange={ (evt) => {
 									filterList( evt );
 								}
 							}
 						/>
 						<ul role="list" className="editor-block-types-list coblocks-icon-types-list">
-							{ ! this.state.isSearching ? 
+							{ ! this.state.isSearching ?
 								<li className="editor-block-types-list__list-item selected-svg">
 									<Button
 										isLarge
@@ -261,14 +260,14 @@ class Inspector extends Component {
 											{ svg[ iconStyle ][ icon ].icon }
 										</span>
 									</Button>
-								</li> 
+								</li>
 								: null
 							}
 							{ Object.keys( this.state.filteredIcons[ iconStyle ] ).length > 0 ? Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
 								return[
 									<li className={ classnames(
 										'editor-block-types-list__list-item',{
-											[ 'selected-svg' ] : icon && ( icon == keyName )
+											[ 'is-selected' ] : icon && ( icon == keyName )
 										},
 									) }>
 										<Button
@@ -286,7 +285,7 @@ class Inspector extends Component {
 								];
 							}) : <p> { __( 'Nothing found' ) } </p> }
 						</ul>
-						{ ( backgroundColor.color ) ? 
+						{ ( backgroundColor.color ) ?
 							[ <RangeControl
 								label={ __( 'Border Radius' ) }
 								value={ borderRadius }
