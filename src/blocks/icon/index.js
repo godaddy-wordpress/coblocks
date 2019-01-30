@@ -122,7 +122,7 @@ const settings = {
 		const textClass = getColorClassName( 'color', textColor );
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-		const classes = classnames( 'wp-block-coblocks-icon__svg-wrapper', {
+		const classes = classnames( 'wp-block-coblocks-icon__inner', {
 			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
 			'has-background': backgroundColor || customBackgroundColor,
@@ -141,10 +141,8 @@ const settings = {
 
 		return (
 			<div className={ className } style={ { textAlign: contentAlign ? contentAlign : undefined } }>
-				<div className="wp-block-coblocks-icon__inner">
-					<div className={ classes } style={ styles }>
-						{ icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo }
-					</div>
+				<div className={ classes } style={ styles }>
+					{ icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo }
 				</div>
 			</div>
 		);

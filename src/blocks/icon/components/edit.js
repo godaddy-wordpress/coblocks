@@ -46,6 +46,7 @@ class Edit extends Component {
 			textColor,
 			toggleSelection,
 			isRTL,
+			maxWidth,
 		} = this.props;
 
 		const {
@@ -58,7 +59,7 @@ class Edit extends Component {
 			padding,
 		} = attributes;
 
-		const classes = classnames( 'wp-block-coblocks-icon__svg-wrapper', {
+		const classes = classnames( 'wp-block-coblocks-icon__inner', {
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			'has-text-color': textColor.color,
@@ -84,6 +85,15 @@ class Edit extends Component {
 
 		let selectedIcon = icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo;
 
+		// With the current implementation of ResizableBox, an image needs an explicit pixel value for the max-width.
+		// In absence of being able to set the content-width, this max-width is currently dictated by the vanilla editor style.
+		// The following variable adds a buffer to this vanilla style, so 3rd party themes have some wiggleroom.
+		// This does, in most cases, allow you to scale the image beyond the width of the main column, though not infinitely.
+		// @todo It would be good to revisit this once a content-width variable becomes available.
+		const maxWidthBuffer = maxWidth * 1.75;
+
+
+		// Show or hide handles based on the contentAlign attribute.
 		let showRightHandle = false;
 		let showLeftHandle = false;
 
@@ -123,34 +133,31 @@ class Edit extends Component {
 					/>
 				) }
 				<div className={ className } style={ { textAlign: contentAlign } } >
-					<div className="wp-block-coblocks-icon__inner">
-						<ResizableBox
-							className={ classes }
-							style={ styles }
-							size={ {
-								width,
-							} }
-							enable={ {
-								top: false,
-								right: showRightHandle,
-								bottom: true,
-								left: showLeftHandle,
-							} }
-							lockAspectRatio
-							onResizeStop={ ( event, direction, elt, delta ) => {
-								setAttributes( {
-									height: parseInt( width + delta.width, 10 ),
-									width: parseInt( width + delta.width, 10 ),
-								} );
-								toggleSelection( true );
-							} }
-							onResizeStart={ () => {
-								toggleSelection( false );
-							} }
-						>
-							{ selectedIcon }
-						</ResizableBox>
-					</div>
+					<ResizableBox
+						className={ classes }
+						style={ styles }
+						size={ { width } }
+						maxWidth={ maxWidthBuffer }
+						enable={ {
+							top: false,
+							right: showRightHandle,
+							bottom: true,
+							left: showLeftHandle,
+						} }
+						lockAspectRatio
+						onResizeStop={ ( event, direction, elt, delta ) => {
+							setAttributes( {
+								height: parseInt( width + delta.width, 10 ),
+								width: parseInt( width + delta.width, 10 ),
+							} );
+							toggleSelection( true );
+						} }
+						onResizeStart={ () => {
+							toggleSelection( false );
+						} }
+					>
+						{ selectedIcon }
+					</ResizableBox>
 				</div>
 			</Fragment>
 		];
