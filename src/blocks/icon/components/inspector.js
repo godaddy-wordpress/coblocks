@@ -72,6 +72,7 @@ class Inspector extends Component {
 	render() {
 
 		const {
+			clientId,
 			attributes,
 			setAttributes,
 			backgroundColor,
@@ -100,7 +101,7 @@ class Inspector extends Component {
 		if( className.includes( 'is-style-outlined' ) ){
 			iconStyle = 'outlined';
 		}
-
+		
 		const filterList = ( event ) => {
 			var filtered = {};
 
@@ -161,7 +162,12 @@ class Inspector extends Component {
 									<Button
 										className="components-color-palette__clear"
 										type="button"
-										onClick={ () => this.onChangeSize( 'no', 100 ) }
+										onClick={ () => {
+											//fix resizer issues
+											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';
+
+											this.onChangeSize( 'no', 100 );
+										} }
 										isSmall
 										isDefault
 										aria-label={ sprintf( __( 'Turn off advanced %s settings' ), label.toLowerCase() ) }
@@ -172,7 +178,12 @@ class Inspector extends Component {
 								<RangeControl
 									label={ __( 'Custom Size' ) }
 									value={ width }
-									onChange={ ( nextWidth ) => setAttributes( {  width: nextWidth, height: nextWidth } ) }
+									onChange={ ( nextWidth ) => {
+											//fix resizer issues
+											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';
+
+											setAttributes( {  width: nextWidth, height: nextWidth } )
+									} }
 									min={ 0 }
 									max={ 1000 }
 									step={ 1 }
