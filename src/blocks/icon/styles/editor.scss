@@ -4,6 +4,9 @@
 	overflow-y: scroll;
 
 	.editor-block-types-list__list-item {
+		display: inline-block;
+		width: auto;
+		
 		.components-button {
 			background: transparent;
 			border-color: #ebecee;
