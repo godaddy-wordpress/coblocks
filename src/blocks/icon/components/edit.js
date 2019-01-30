@@ -154,6 +154,7 @@ class Edit extends Component {
 						} }
 						onResizeStart={ () => {
 							toggleSelection( false );
+							setAttributes( {  iconSize: 'advanced' } )
 						} }
 					>
 						{ selectedIcon.icon }
