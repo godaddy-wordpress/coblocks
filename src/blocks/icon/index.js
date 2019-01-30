@@ -74,6 +74,10 @@ const blockAttributes = {
 		type: 'number',
 		default: 0,
 	},
+	iconSize: {
+		type: 'string',
+		default: 'no',
+	},
 };
 
 const settings = {
