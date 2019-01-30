@@ -14,8 +14,8 @@ const { __ } = wp.i18n;
 const icons = { outlined: {}, filled: {} };
 
 const keywords = {
-	circle_add : __( 'add minus circle insert plus round' ),
-	circle_remove : 'add minus circle insert plus round',
+	circle_add : __( 'add minus circle insert plus round math' ),
+	circle_remove : 'add minus circle insert plus round math',
 	data_usage : 'stats round circle pie chart graph',
 	emoticon : 'happy emotion emoticon smile fun joy',
 	functions : 'code greek math',
