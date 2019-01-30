@@ -104,7 +104,6 @@ class Inspector extends Component {
 		    this.setState({ filteredIcons: filtered });
 		};
 
-
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -156,22 +155,23 @@ class Inspector extends Component {
 								];
 							}) }
 						</ul>
-						<RangeControl
-							label={ __( 'Border Radius' ) }
-							value={ borderRadius }
-							onChange={ ( nextBorderRadius ) => setAttributes( {  borderRadius: nextBorderRadius } ) }
-							min={ 0 }
-							max={ 999 }
-							step={ 1 }
-						/>
-						<RangeControl
-							label={ __( 'Padding' ) }
-							value={ padding }
-							onChange={ ( nextPadding ) => setAttributes( {  padding: nextPadding } ) }
-							min={ 0 }
-							max={ 999 }
-							step={ 1 }
-						/>
+						{ ( backgroundColor.color ) ? 
+							[ <RangeControl
+								label={ __( 'Border Radius' ) }
+								value={ borderRadius }
+								onChange={ ( nextBorderRadius ) => setAttributes( {  borderRadius: nextBorderRadius } ) }
+								min={ 0 }
+								max={ 999 }
+								step={ 1 }
+							/>,
+							<RangeControl
+								label={ __( 'Padding' ) }
+								value={ padding }
+								onChange={ ( nextPadding ) => setAttributes( {  padding: nextPadding } ) }
+								min={ 0 }
+								max={ 999 }
+								step={ 1 }
+							/> ] : null }
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }
