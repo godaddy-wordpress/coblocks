@@ -109,8 +109,17 @@ const settings = {
 			padding,
 		} = attributes;
 
-		const textClass = getColorClassName( 'color', textColor );
+		let iconStyle = 'filled';
 
+		if( attributes.className ){
+			if( attributes.className.includes( 'is-style-outlined' ) ){
+				iconStyle = 'outlined';
+			} else if( attributes.className.includes( 'is-style-rounded' ) ){
+				iconStyle = 'rounded';
+			}
+		}
+
+		const textClass = getColorClassName( 'color', textColor );
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames( 'wp-block-coblocks-icon__inner', {
@@ -124,25 +133,14 @@ const settings = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
 			fill: textClass ? undefined : customTextColor,
-			textAlign: contentAlign ? contentAlign : undefined,
 			height: height,
 			width: width,
 			borderRadius: borderRadius ? borderRadius + 'px' : undefined,
 			padding: padding ? padding + 'px' : undefined,
 		};
 
-		let iconStyle = 'filled';
-
-		if( attributes.className ){
-			if( attributes.className.includes( 'is-style-outlined' ) ){
-				iconStyle = 'outlined';
-			}else if( attributes.className.includes( 'is-style-rounded' ) ){
-				iconStyle = 'rounded';
-			}
-		}
-
 		return (
-			<div className={ className }>
+			<div className={ className } style={ { textAlign: contentAlign ? contentAlign : undefined } }>
 				<div className={ classes } style={ styles }>
 					{ svg[ iconStyle ][ icon ].icon }
 				</div>

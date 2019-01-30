@@ -1,20 +1,8 @@
-.editor-block-list__block[data-type="coblocks/icon"] {
-	.wp-block-coblocks-icon__inner {
-		align-items: center;
-		display: flex;
-		justify-content: center;
-
-		> svg {
-			height: 100%;
-			width: 100%;
-		}
-	}
-}
-
-//Icon Selector Styling
+// Icon Search and Select
 .coblocks-icon-types-list {
 	max-height: 270px;
 	overflow-y: scroll;
+
 	.editor-block-types-list__list-item {
 		.components-button {
 			background: transparent;
@@ -29,7 +17,9 @@
 				box-shadow: none;
 				outline: none;
 			}
+
 			svg {
+				fill: #191e23;
 				margin: 0;
 				padding: 0;
 			}
@@ -51,17 +41,20 @@
 	}
 }
 
+// Editor style preview.
 .editor-block-styles__item-preview {
 	.wp-block-coblocks-icon__inner {
 		align-items: center;
 		display: flex;
 		height: 100% !important;
 		justify-content: center;
+		transform: scale(1.23);
 		width: 100% !important;
 
 		> svg {
-			height: 70%;
-			width: 70%;
+			fill: #191e23;
+			height: 24px;
+			width: 24px;
 		}
 	}
 }
