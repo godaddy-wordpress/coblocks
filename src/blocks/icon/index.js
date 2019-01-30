@@ -136,7 +136,7 @@ const settings = {
 		if( attributes.className ){
 			if( attributes.className.includes( 'is-style-outlined' ) ){
 				iconStyle = 'outlined';
-			}else if( attributes.className.includes( 'is-style-rounded' ) ){
+			} else if( attributes.className.includes( 'is-style-rounded' ) ){
 				iconStyle = 'rounded';
 			}
 		}
