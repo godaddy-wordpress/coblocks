@@ -150,7 +150,6 @@ class Inspector extends Component {
 		];
 
 		const currentSize = utilitySizes.find( ( utility ) => utility.slug === iconSize );
-		
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -265,7 +264,7 @@ class Inspector extends Component {
 								</li> 
 								: null
 							}
-							{ Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
+							{ Object.keys( this.state.filteredIcons[ iconStyle ] ).length > 0 ? Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
 								return[
 									<li className={ classnames(
 										'editor-block-types-list__list-item',{
@@ -285,7 +284,7 @@ class Inspector extends Component {
 										</Button>
 									</li>
 								];
-							}) }
+							}) : <p> { __( 'Nothing found' ) } </p> }
 						</ul>
 						{ ( backgroundColor.color ) ? 
 							[ <RangeControl
