@@ -6,7 +6,7 @@
 	.editor-block-types-list__list-item {
 		display: inline-block;
 		width: auto;
-		
+
 		.components-button {
 			background: transparent;
 			border-color: #ebecee;
@@ -47,12 +47,14 @@
 }
 
 // Editor style preview.
+.editor-block-preview,
 .editor-block-styles__item-preview {
 	.wp-block-coblocks-icon__inner {
 		align-items: center;
 		display: flex;
 		height: 100% !important;
 		justify-content: center;
+		margin-top: 16px;
 		transform: scale(1.23);
 		width: 100% !important;
 
@@ -61,5 +63,11 @@
 			height: 24px;
 			width: 24px;
 		}
+	}
+}
+
+.editor-block-preview {
+	.wp-block-coblocks-icon__inner {
+		margin-top: 3px;
 	}
 }
