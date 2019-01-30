@@ -51,3 +51,18 @@
 		}
 	}
 }
+
+.editor-block-styles__item-preview {
+	.wp-block-coblocks-icon__inner {
+		align-items: center;
+		display: flex;
+		height: 100% !important;
+		justify-content: center;
+		width: 100% !important;
+
+		> svg {
+			height: 70%;
+			width: 70%;
+		}
+	}
+}
