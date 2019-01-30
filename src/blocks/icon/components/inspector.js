@@ -156,14 +156,12 @@ class Inspector extends Component {
 					<PanelBody title={ __( 'Icon Settings' ) }>
 						{ iconSize === 'advanced' ?
 							<Fragment>
-								<div className='components-coblocks-dimensions-control__header'>
+								<div className='components-coblocks-icon-block--advanced-size'>
 									<Button
 										className="components-color-palette__clear"
 										type="button"
 										onClick={ () => {
-											//fix resizer issues
 											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';
-
 											this.onChangeSize( 'small', 100 );
 										} }
 										isSmall
@@ -172,20 +170,18 @@ class Inspector extends Component {
 									>
 										{ __( 'Reset' ) }
 									</Button>
-								</div>
-								<RangeControl
-									label={ __( 'Custom Size' ) }
-									value={ width }
-									onChange={ ( nextWidth ) => {
-											//fix resizer issues
+									<RangeControl
+										label={ __( 'Custom Size' ) }
+										value={ width }
+										onChange={ ( nextWidth ) => {
 											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';
-
 											setAttributes( {  width: nextWidth, height: nextWidth } )
-									} }
-									min={ 0 }
-									max={ 1000 }
-									step={ 1 }
-								/>
+										} }
+										min={ 0 }
+										max={ 400 }
+										step={ 1 }
+									/>
+								</div>
 							</Fragment> :
 							<BaseControl id="textarea-1" label={ label } help={ help }>
 								<div className="components-font-size-picker__buttons">
@@ -235,6 +231,25 @@ class Inspector extends Component {
 								</div>
 							</BaseControl>
 						}
+						{ ( backgroundColor.color ) ?
+							[ <RangeControl
+								label={ __( 'Rounded Corners' ) }
+								value={ borderRadius }
+								onChange={ ( nextBorderRadius ) => setAttributes( {  borderRadius: nextBorderRadius } ) }
+								min={ 0 }
+								max={ 200 }
+								step={ 1 }
+							/>,
+							<RangeControl
+								label={ __( 'Padding' ) }
+								value={ padding }
+								onChange={ ( nextPadding ) => setAttributes( {  padding: nextPadding } ) }
+								min={ 0 }
+								max={ 100 }
+								step={ 1 }
+							/>
+							]
+						: null }
 						<TextControl
 							type='text'
 							autocomplete="off"
@@ -287,23 +302,6 @@ class Inspector extends Component {
 								}) : <p> { __( 'Nothing found' ) } </p> }
 							</ul>
 						</div>
-						{ ( backgroundColor.color ) ?
-							[ <RangeControl
-								label={ __( 'Border Radius' ) }
-								value={ borderRadius }
-								onChange={ ( nextBorderRadius ) => setAttributes( {  borderRadius: nextBorderRadius } ) }
-								min={ 0 }
-								max={ 999 }
-								step={ 1 }
-							/>,
-							<RangeControl
-								label={ __( 'Padding' ) }
-								value={ padding }
-								onChange={ ( nextPadding ) => setAttributes( {  padding: nextPadding } ) }
-								min={ 0 }
-								max={ 999 }
-								step={ 1 }
-							/> ] : null }
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }

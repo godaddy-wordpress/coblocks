@@ -1,3 +1,22 @@
+.components-coblocks-icon-block--advanced-size {
+	position: relative;
+	margin-bottom: 1.5em;
+
+	.components-color-palette__clear {
+		bottom: 3px;
+		position: absolute;
+		right: 0;
+	}
+
+	.components-range-control {
+		width: calc(100% - 60px);
+
+		.components-range-control__number {
+			margin-left: 12px;
+		}
+	}
+}
+
 .coblocks-icon-types-list-wrapper {
 	height: 100%;
 	margin-left: -3px;
@@ -21,10 +40,6 @@
 
 	&__search {
 		margin-bottom: 0.75em !important;
-
-		input[type="text"] {
-			padding: 7px 8px;
-		}
 	}
 
 	.editor-block-types-list__list-item {
