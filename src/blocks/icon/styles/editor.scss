@@ -9,7 +9,7 @@
 
 //Icon Selector Styling
 .coblocks-icon-types-list{
-	height: 270px;
+	max-height: 270px;
    	overflow-y: scroll;
 	.editor-block-types-list__list-item{
 		.components-button{

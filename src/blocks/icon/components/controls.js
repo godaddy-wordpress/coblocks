@@ -26,7 +26,7 @@ class Controls extends Component {
 		const {
 			align,
 		} = attributes;
-		console.log( 'asdfads' );
+		
 		return (
 			<Fragment>
 				<IconControls { ...this.props } />

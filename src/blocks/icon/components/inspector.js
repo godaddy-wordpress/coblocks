@@ -94,8 +94,9 @@ class Inspector extends Component {
 		        event.toLowerCase()) !== -1;
 		    });
 
+		    filtered[ iconStyle ] = {};
 		    updatedList.forEach(([key, value]) => {
-		    	filtered[ key ] = svg[iconStyle][key];
+		    	filtered[iconStyle][ key ] = svg[iconStyle][key];
 			});
 
 		    this.setState({ filteredIcons: filtered });

@@ -76,6 +76,8 @@ class Edit extends Component {
 			iconStyle = 'rounded';
 		}
 
+		let selectedIcon = icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo
+
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -87,8 +89,7 @@ class Edit extends Component {
 					className={ classes }
 					style={ styles }
 					size={ {
-						height : width,
-						width : width,
+						width,
 					} }
 					enable={ {
 						top: false,
@@ -96,7 +97,7 @@ class Edit extends Component {
 						bottom: false,
 						left: false,
 						topRight: false,
-						bottomRight: false,
+						bottomRight: true,
 						bottomLeft: false,
 						topLeft: false,
 					} }
@@ -111,7 +112,7 @@ class Edit extends Component {
 						toggleSelection( false );
 					} }
 				>
-					{ icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo }
+					{ selectedIcon }
 				</ResizableBox>
 			</Fragment>
 		];
