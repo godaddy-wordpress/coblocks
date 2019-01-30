@@ -6,7 +6,7 @@ import materialIcons from './material';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Generate icons from material.js
