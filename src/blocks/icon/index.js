@@ -29,7 +29,6 @@ const title = __( 'Icon' );
 const icon = icons.icon;
 
 const keywords = [
-	__( 'icon' ),
 	__( 'icons' ),
 	__( 'coblocks' ),
 ];
@@ -72,7 +71,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Content and marketing icons.' ),
+	description: __( 'Add a stylized graphic symbol to communicate something more.' ),
 
 	keywords: keywords,
 
