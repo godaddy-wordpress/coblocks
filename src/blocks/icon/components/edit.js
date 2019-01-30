@@ -82,7 +82,7 @@ class Edit extends Component {
 		}
 
 		let selectedIcon = icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo;
-		
+
 		// With the current implementation of ResizableBox, an image needs an explicit pixel value for the max-width.
 		// In absence of being able to set the content-width, this max-width is currently dictated by the vanilla editor style.
 		// The following variable adds a buffer to this vanilla style, so 3rd party themes have some wiggleroom.

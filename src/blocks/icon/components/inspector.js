@@ -9,6 +9,7 @@ import svg from '../icons/icons';
  */
 import classnames from 'classnames';
 import map from 'lodash/map';
+import { DEFAULT_ICON_SIZE } from '.././';
 
 /**
  * WordPress dependencies
@@ -130,26 +131,27 @@ class Inspector extends Component {
 		const utilitySizes = [
 			{
 				name: __( 'Small' ),
-				size: 100,
+				size: DEFAULT_ICON_SIZE,
 				slug: 'small',
 			},
 			{
 				name: __( 'Medium' ),
-				size: 240,
+				size: 60,
 				slug: 'medium',
 			},
 			{
 				name: __( 'Large' ),
-				size: 340,
+				size: 120,
 				slug: 'large',
 			},{
 				name: __( 'Huge' ),
-				size: 600,
+				size: 200,
 				slug: 'huge',
 			},
 		];
 
 		const currentSize = utilitySizes.find( ( utility ) => utility.slug === iconSize );
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -162,7 +164,7 @@ class Inspector extends Component {
 										type="button"
 										onClick={ () => {
 											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';
-											this.onChangeSize( 'small', 100 );
+											this.onChangeSize( 'medium', DEFAULT_ICON_SIZE );
 										} }
 										isSmall
 										isDefault
@@ -177,7 +179,7 @@ class Inspector extends Component {
 											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';
 											setAttributes( {  width: nextWidth, height: nextWidth } )
 										} }
-										min={ 0 }
+										min={ 32 }
 										max={ 400 }
 										step={ 1 }
 									/>
