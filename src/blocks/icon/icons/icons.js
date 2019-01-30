@@ -4,7 +4,7 @@ import materialIcons from './material';
 /**
  * Custom icons
  */
-const icons = {};
+const icons = { outlined: {}, filled: {} };
 
 const keywords = {
 	heart : 'plus add circle insert',
@@ -14,50 +14,18 @@ const keywords = {
 	flag : 'plus add circle insert',
 };
 
-icons.filled = {
-	heart : {
-		icon: materialIcons.heart,
-		keywords : keywords.heart,
-	},
-	add_circle : {
-		icon: materialIcons.add_circle,
-		keywords : keywords.add_circle,
-	},
-	remove_circle : {
-		icon: materialIcons.remove_circle,
-		keywords : keywords.remove_circle,
-	},
-	gesture : {
-		icon: materialIcons.gesture,
-		keywords : keywords.gesture,
-	},
-	flag : {
-		icon: materialIcons.remove_circle,
-		keywords : keywords.remove_circle,
-	},
-}
-
-icons.outlined = {
-	heart : {
-		icon: materialIcons.heart_outline,
-		keywords : keywords.heart_outline,
-	},
-	add_circle : {
-		icon: materialIcons.add_circle_outline,
-		keywords : keywords.add_circle_outline,
-	},
-	remove_circle : {
-		icon: materialIcons.remove_circle_outline,
-		keywords : keywords.remove_circle_outline,
-	},
-	gesture : {
-		icon: materialIcons.gesture,
-		keywords : keywords.gesture,
-	},
-	flag : {
-		icon: materialIcons.remove_circle_outline,
-		keywords : keywords.remove_circle_outline,
-	},
-}
+Object.entries( materialIcons ).filter(function( item ){
+	if( item[0].includes( 'outline' ) ){
+		icons.outlined[ item[0] ] = {
+			icon: item[1],
+			keywords : keywords[ item[0] ],
+		}
+	}else{
+		icons.filled[ item[0] ] = {
+			icon: item[1],
+			keywords : keywords[ item[0] ],
+		}
+	}
+});
 
 export default icons;
