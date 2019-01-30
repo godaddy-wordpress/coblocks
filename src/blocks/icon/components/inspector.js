@@ -125,13 +125,8 @@ class Inspector extends Component {
 
 		const utilitySizes = [
 			{
-				name: __( 'None' ),
-				size: 100,
-				slug: 'no',
-			},
-			{
 				name: __( 'Small' ),
-				size: 140,
+				size: 100,
 				slug: 'small',
 			},
 			{
@@ -166,7 +161,7 @@ class Inspector extends Component {
 											//fix resizer issues
 											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';
 
-											this.onChangeSize( 'no', 100 );
+											this.onChangeSize( 'small', 100 );
 										} }
 										isSmall
 										isDefault

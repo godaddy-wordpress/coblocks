@@ -76,7 +76,7 @@ const blockAttributes = {
 	},
 	iconSize: {
 		type: 'string',
-		default: 'no',
+		default: 'small',
 	},
 };
 
