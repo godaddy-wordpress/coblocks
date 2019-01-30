@@ -160,6 +160,7 @@ class Inspector extends Component {
 						initialOpen={ false }
 						colorSettings={ [
 							{
+								isLargeText: true,
 								value: textColor.color,
 								onChange: setTextColor,
 								label: __( 'Icon Color' ),
