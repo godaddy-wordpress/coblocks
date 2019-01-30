@@ -36,7 +36,7 @@ const keywords = [
 const blockAttributes = {
 	icon: {
 		type: 'string',
-		default: 'book',
+		default: 'heart',
 	},
 	style: {
 		type: 'string',
