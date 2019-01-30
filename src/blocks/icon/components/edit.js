@@ -20,6 +20,7 @@ const { compose } = wp.compose;
 const { RichText, withFontSizes } = wp.editor;
 const { createBlock } = wp.blocks;
 const { ResizableBox } = wp.components;
+const { withSelect } = wp.data;
 
 /**
  * Block edit function
@@ -44,6 +45,7 @@ class Edit extends Component {
 			setTextColor,
 			textColor,
 			toggleSelection,
+			isRTL,
 		} = this.props;
 
 		const {
@@ -55,7 +57,6 @@ class Edit extends Component {
 			borderRadius,
 			padding,
 		} = attributes;
-
 
 		const classes = classnames( 'wp-block-coblocks-icon__svg-wrapper', {
 			'has-background': backgroundColor.color,
@@ -81,7 +82,33 @@ class Edit extends Component {
 			iconStyle = 'rounded';
 		}
 
-		let selectedIcon = icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo
+		let selectedIcon = icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo;
+
+		let showRightHandle = false;
+		let showLeftHandle = false;
+
+		if ( contentAlign === 'center' ) {
+			// When the image is centered, show both handles.
+			showRightHandle = true;
+			showLeftHandle = true;
+		} else if ( isRTL ) {
+			// In RTL mode the image is on the right by default.
+			// Show the right handle and hide the left handle only when it is aligned left.
+			// Otherwise always show the left handle.
+			if ( contentAlign === 'left' ) {
+				showRightHandle = true;
+			} else {
+				showLeftHandle = true;
+			}
+		} else {
+			// Show the left handle and hide the right handle only when the image is aligned right.
+			// Otherwise always show the right handle.
+			if ( contentAlign === 'right' ) {
+				showLeftHandle = true;
+			} else {
+				showRightHandle = true;
+			}
+		}
 
 		return [
 			<Fragment>
@@ -105,9 +132,9 @@ class Edit extends Component {
 							} }
 							enable={ {
 								top: false,
-								right: true,
+								right: showRightHandle,
 								bottom: true,
-								left: false,
+								left: showLeftHandle,
 							} }
 							lockAspectRatio
 							onResizeStop={ ( event, direction, elt, delta ) => {
@@ -132,4 +159,13 @@ class Edit extends Component {
 
 export default compose( [
 	applyWithColors,
+	withSelect( ( select, props ) => {
+		const { getEditorSettings } = select( 'core/editor' );
+		const { maxWidth, isRTL } = getEditorSettings();
+
+		return {
+			maxWidth,
+			isRTL,
+		};
+	} ),
 ] )( Edit );
