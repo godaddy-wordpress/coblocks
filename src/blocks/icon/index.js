@@ -66,6 +66,14 @@ const blockAttributes = {
 		type: 'number',
 		default: 100,
 	},
+	borderRadius: {
+		type: 'number',
+		default: 0,
+	},
+	padding: {
+		type: 'number',
+		default: 0,
+	},
 };
 
 const settings = {
@@ -97,6 +105,8 @@ const settings = {
 			textColor,
 			height,
 			width,
+			borderRadius,
+			padding,
 		} = attributes;
 
 		const textClass = getColorClassName( 'color', textColor );
@@ -117,6 +127,8 @@ const settings = {
 			textAlign: textAlign,
 			height: height,
 			width: width,
+			borderRadius: borderRadius + 'px',
+			padding: padding + 'px',
 		};
 
 		let iconStyle = 'filled';
