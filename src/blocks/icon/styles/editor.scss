@@ -1,12 +1,11 @@
 // Icon Search and Select
 .coblocks-icon-types-list {
-	max-height: 270px;
-	overflow-y: scroll;
-	padding: 0;
-	padding-top: 4px;
-	margin-left: -3px;
-	width: calc(100% + 6px);
+	margin-left: -4px;
 	margin-top: 0;
+	max-height: 216px;
+	overflow-y: scroll;
+	padding: 4px 0 0 0;
+	width: calc(100% + 8px);
 
 	&__search {
 		margin-bottom: 0.75em !important;
@@ -40,19 +39,21 @@
 				}
 			}
 
-			&:focus {
+			&:focus,
+			&:active:enabled {
 				background: #f8faf9;
 				box-shadow: none;
 				outline: none;
+				box-shadow: 0 0 0 3px #f8faf9;
 			}
 
 			svg {
 				fill: #3f464d;
 				height: 18px;
 				margin: 0;
+				overflow: hidden;
 				padding: 0;
 				width: 18px;
-				overflow: hidden;
 			}
 		}
 
