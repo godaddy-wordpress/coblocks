@@ -22,6 +22,14 @@ const keywords = {
 	gesture : _x( 'drawing doodle art creative type font pencil marker', 'icon search tags' ),
 	heart : _x( 'love shape valentine kiss', 'icon search tags' ),
 	scatter_plot : _x( 'stats round circle pie chart graph dots data', 'icon search tags' ),
+	desktop_mac : _x( 'computer apple montior device pc desk office', 'icon search tags' ),
+	device_hub : _x( 'usb connect hub social', 'icon search tags' ),
+	drafts : _x( 'email mail os read letter', 'icon search tags' ),
+	keyboard_voice : _x( 'microphone podcast computer device', 'icon search tags' ),
+	laptop_mac : _x( 'computer apple montior device pc desk office', 'icon search tags' ),
+	signal : _x( 'wifi radio waves', 'icon search tags' ),
+	tablet_mac : _x( 'computer ipad surface apple montior device pc desk office', 'icon search tags' ),
+	widgets : _x( 'blocks block square build foundation', 'icon search tags' ),
 };
 
 Object.entries( materialIcons ).filter(function( item ){
