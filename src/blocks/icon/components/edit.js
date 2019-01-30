@@ -97,11 +97,8 @@ class Edit extends Component {
 						right: true,
 						bottom: true,
 						left: false,
-						topRight: false,
-						bottomRight: true,
-						bottomLeft: false,
-						topLeft: false,
 					} }
+					lockAspectRatio
 					onResizeStop={ ( event, direction, elt, delta ) => {
 						setAttributes( {
 							height: parseInt( width + delta.width, 10 ),
