@@ -8,15 +8,16 @@ import svg from '../icons/icons';
  * External dependencies
  */
 import classnames from 'classnames';
+import map from 'lodash/map';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
-const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button } = wp.components;
+const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, NavigableMenu, Dropdown, ButtonGroup, Dashicon } = wp.components;
 
 /**
  * Fallback styles
@@ -41,6 +42,8 @@ class Inspector extends Component {
 		super( ...arguments );
 
 		this.state = { filteredIcons : svg , searchValue: '' };
+
+		this.onChangeSize = this.onChangeSize.bind( this );
 	}
 
 	getDisplayOpenHelp( checked ) {
@@ -56,6 +59,16 @@ class Inspector extends Component {
 		return this.props.setBackgroundColor;
 	}
 
+	onChangeSize( value, size ) {
+		this.props.setAttributes( { iconSize: value } );
+		if( size ){
+			if( size < 0 ){
+				size = '';
+			}
+			this.props.setAttributes( { height: size, width: size } );
+		}
+	}
+
 	render() {
 
 		const {
@@ -68,6 +81,8 @@ class Inspector extends Component {
 			setBackgroundColor,
 			setTextColor,
 			className,
+			label = __( 'Size' ),
+			help,
 		} = this.props;
 
 		const {
@@ -75,6 +90,9 @@ class Inspector extends Component {
 			style,
 			borderRadius,
 			padding,
+			iconSize,
+			width,
+			height,
 		} = attributes;
 
 		let iconStyle = 'filled';
@@ -104,10 +122,111 @@ class Inspector extends Component {
 		    this.setState({ filteredIcons: filtered });
 		};
 
+		const utilitySizes = [
+			{
+				name: __( 'None' ),
+				size: 100,
+				slug: 'no',
+			},
+			{
+				name: __( 'Small' ),
+				size: 140,
+				slug: 'small',
+			},
+			{
+				name: __( 'Medium' ),
+				size: 240,
+				slug: 'medium',
+			},
+			{
+				name: __( 'Large' ),
+				size: 340,
+				slug: 'large',
+			},{
+				name: __( 'Huge' ),
+				size: 600,
+				slug: 'huge',
+			},
+		];
+
+		const currentSize = utilitySizes.find( ( utility ) => utility.slug === iconSize );
+
 		return (
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Icon Settings' ) }>
+						{ iconSize === 'advanced' ?
+							<Fragment>
+								<div className='components-coblocks-dimensions-control__header'>
+									<Button
+										className="components-color-palette__clear"
+										type="button"
+										onClick={ () => this.onChangeSize( 'no', 100 ) }
+										isSmall
+										isDefault
+										aria-label={ sprintf( __( 'Turn off advanced %s settings' ), label.toLowerCase() ) }
+									>
+										{ __( 'Reset' ) }
+									</Button>
+								</div>
+								<RangeControl
+									label={ __( 'Custom Size' ) }
+									value={ width }
+									onChange={ ( nextWidth ) => setAttributes( {  width: nextWidth, height: nextWidth } ) }
+									min={ 0 }
+									max={ 1000 }
+									step={ 1 }
+								/>
+							</Fragment> : 
+							<BaseControl id="textarea-1" label={ label } help={ help }>
+								<div className="components-font-size-picker__buttons">
+									<Dropdown
+										className="components-font-size-picker__dropdown"
+										contentClassName="components-font-size-picker__dropdown-content components-coblocks-dimensions-control__dropdown-content"
+										position="bottom"
+										renderToggle={ ( { isOpen, onToggle } ) => (
+											<Button
+												className="components-font-size-picker__selector"
+												isLarge
+												onClick={ onToggle }
+												aria-expanded={ isOpen }
+												aria-label={ sprintf( __( 'Custom %s size' ), label.toLowerCase() ) }
+											>
+												{ ( currentSize && currentSize.name ) || ( ! iconSize && _x( 'Normal', 'size name' ) ) || _x( 'Custom', 'size name' ) }
+											</Button>
+										) }
+										renderContent={ () => (
+											<NavigableMenu>
+												{ map( utilitySizes, ( { name, size, slug } ) => (
+													<Button
+														key={ slug }
+														onClick={ () => this.onChangeSize( slug, size ) }
+														className={ `is-${ slug }-padding` }
+														role="menuitem"
+													>
+														{ ( iconSize === slug || ( ! iconSize && slug === 'normal' ) ) && <Dashicon icon="saved" /> }
+														<span className="components-font-size-picker__dropdown-text-size">
+															{ name }
+														</span>
+													</Button>
+												) ) }
+											</NavigableMenu>
+										) }
+									/>
+									<Button
+										className="components-color-palette__clear"
+										type="button"
+										onClick={ () => this.onChangeSize( 'advanced', '' ) }
+
+										isDefault
+										aria-label={ sprintf( __( 'Advanced %s settings' ), label.toLowerCase() ) }
+										isPrimary={ iconSize === 'advanced' }
+									>
+										{ __( 'Advanced' ) }
+									</Button>
+								</div>
+							</BaseControl>
+						}
 						<TextControl
 							type='text'
 							autocomplete="off"
