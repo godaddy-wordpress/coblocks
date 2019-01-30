@@ -113,9 +113,9 @@ class Inspector extends Component {
 							label={ __( 'Select Icon' ) }
 							value={ this.state.searchValue }
 							placeholder={ __( 'Search for an icon' ) }
-							onChange={ (evt) => { 
-									filterList( evt ); 
-								} 
+							onChange={ (evt) => {
+									filterList( evt );
+								}
 							}
 						/>
 						<ul role="list" className="editor-block-types-list coblocks-icon-types-list">
@@ -160,15 +160,16 @@ class Inspector extends Component {
 						initialOpen={ false }
 						colorSettings={ [
 							{
-								value: backgroundColor.color,
-								onChange: this.setBorderColor(),
-								label: __( 'Background Color' ),
-							},
-							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Title Text Color' ),
+								label: __( 'Icon Color' ),
 							},
+							{
+								value: backgroundColor.color,
+								onChange: setBackgroundColor,
+								label: __( 'Background Color' ),
+							},
+
 						] }
 					>
 					<ContrastChecker
