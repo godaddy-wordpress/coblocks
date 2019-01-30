@@ -144,7 +144,7 @@ const settings = {
 		return (
 			<div className={ className }>
 				<div className={ classes } style={ styles }>
-					{ icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo }
+					{ svg[ iconStyle ][ icon ].icon }
 				</div>
 			</div>
 		);

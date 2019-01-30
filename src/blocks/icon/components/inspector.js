@@ -89,7 +89,7 @@ class Inspector extends Component {
 			this.setState({ searchValue: event });
 
 		    var updatedList = Object.entries( svg[iconStyle] ).filter(function(item){
-		    	var text = item[0];
+		    	var text = item[0] + ' ' + item[1].keywords;
 		      	return text.toLowerCase().search(
 		        event.toLowerCase()) !== -1;
 		    });
@@ -129,7 +129,7 @@ class Inspector extends Component {
 									} }
 								>
 									<span className="editor-block-types-list__item-icon">
-										{ svg[ iconStyle ][ icon ] }
+										{ svg[ iconStyle ][ icon ].icon }
 									</span>
 								</Button>
 							</li>
@@ -148,7 +148,7 @@ class Inspector extends Component {
 											} }
 										>
 											<span className="editor-block-types-list__item-icon">
-												{ svg[ iconStyle ][ keyName ] }
+												{ svg[ iconStyle ][ keyName ].icon }
 											</span>
 										</Button>
 									</li>

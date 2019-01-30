@@ -83,7 +83,7 @@ class Edit extends Component {
 		}
 
 		let selectedIcon = icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo
-
+		
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -124,7 +124,7 @@ class Edit extends Component {
 						toggleSelection( false );
 					} }
 				>
-					{ selectedIcon }
+					{ selectedIcon.icon }
 				</ResizableBox>
 			</Fragment>
 		];
