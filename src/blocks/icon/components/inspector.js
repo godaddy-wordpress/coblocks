@@ -16,7 +16,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
-const { PanelBody, withFallbackStyles, ToggleControl, TextControl, Button } = wp.components;
+const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button } = wp.components;
 
 /**
  * Fallback styles
@@ -73,6 +73,8 @@ class Inspector extends Component {
 		const {
 			icon,
 			style,
+			borderRadius,
+			padding,
 		} = attributes;
 
 		let iconStyle = 'filled';
@@ -154,6 +156,22 @@ class Inspector extends Component {
 								];
 							}) }
 						</ul>
+						<RangeControl
+							label={ __( 'Border Radius' ) }
+							value={ borderRadius }
+							onChange={ ( nextBorderRadius ) => setAttributes( {  borderRadius: nextBorderRadius } ) }
+							min={ 0 }
+							max={ 999 }
+							step={ 1 }
+						/>
+						<RangeControl
+							label={ __( 'Padding' ) }
+							value={ padding }
+							onChange={ ( nextPadding ) => setAttributes( {  padding: nextPadding } ) }
+							min={ 0 }
+							max={ 999 }
+							step={ 1 }
+						/>
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }

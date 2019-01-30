@@ -51,6 +51,8 @@ class Edit extends Component {
 			textAlign,
 			height,
 			width,
+			borderRadius,
+			padding,
 		} = attributes;
 
 
@@ -67,6 +69,8 @@ class Edit extends Component {
 			color: textColor.color,
 			fill: textColor.color,
 			textAlign: textAlign,
+			borderRadius: borderRadius + 'px',
+			padding: padding + 'px',
 		};
 
 		let iconStyle = 'filled';
@@ -97,6 +101,10 @@ class Edit extends Component {
 						right: true,
 						bottom: true,
 						left: false,
+						topRight: false,
+						bottomRight: false,
+						bottomLeft: false,
+						topLeft: false,
 					} }
 					lockAspectRatio
 					onResizeStop={ ( event, direction, elt, delta ) => {
