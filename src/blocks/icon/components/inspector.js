@@ -79,8 +79,6 @@ class Inspector extends Component {
 
 		if( className.includes( 'is-style-outlined' ) ){
 			iconStyle = 'outlined';
-		}else if( className.includes( 'is-style-rounded' ) ){
-			iconStyle = 'rounded';
 		}
 
 		const filterList = ( event ) => {
@@ -94,9 +92,11 @@ class Inspector extends Component {
 		        event.toLowerCase()) !== -1;
 		    });
 
-		    filtered[ iconStyle ] = {};
+		    filtered[ 'filled' ] = {};
+		    filtered[ 'outlined' ] = {};
 		    updatedList.forEach(([key, value]) => {
-		    	filtered[iconStyle][ key ] = svg[iconStyle][key];
+		    	filtered[ 'filled' ][ key ] = svg[ 'filled' ][key];
+		    	filtered[ 'outlined' ][ key ] = svg[ 'outlined' ][key];
 			});
 
 		    this.setState({ filteredIcons: filtered });
