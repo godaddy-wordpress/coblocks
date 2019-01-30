@@ -65,7 +65,6 @@ class Edit extends Component {
 			textColor,
 			toggleSelection,
 			isRTL,
-			maxWidth,
 		} = this.props;
 
 		const {
@@ -101,14 +100,6 @@ class Edit extends Component {
 		}
 
 		let selectedIcon = icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo;
-
-		// With the current implementation of ResizableBox, an image needs an explicit pixel value for the max-width.
-		// In absence of being able to set the content-width, this max-width is currently dictated by the vanilla editor style.
-		// The following variable adds a buffer to this vanilla style, so 3rd party themes have some wiggleroom.
-		// This does, in most cases, allow you to scale the image beyond the width of the main column, though not infinitely.
-		// @todo It would be good to revisit this once a content-width variable becomes available.
-		const maxWidthBuffer = maxWidth * 1.75;
-
 
 		// Show or hide handles based on the contentAlign attribute.
 		let showRightHandle = false;
@@ -187,10 +178,9 @@ export default compose( [
 	applyWithColors,
 	withSelect( ( select, props ) => {
 		const { getEditorSettings } = select( 'core/editor' );
-		const { maxWidth, isRTL } = getEditorSettings();
+		const { isRTL } = getEditorSettings();
 
 		return {
-			maxWidth,
 			isRTL,
 		};
 	} ),
