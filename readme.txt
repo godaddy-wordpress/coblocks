@@ -100,6 +100,36 @@ Please reach out via the contact form at the bottom right of [our website](https
 
 == Changelog ==
 
+= 1.8.0 =
+* New: Add Media Card block for showcasing videos and imagery with an overlaid card
+* New: Add new advanced controls for turning off block margins
+* New: Add typography controls to the Accordion block
+* New: Add support for responsive Row blocks within the editor
+* New: Add a new toggle control with support for Internet Explorer accordions via polyfill
+* New: Add new accordions items with duplicated styling using the new “Add Accordion Item” button
+* Tweak: Row block gutters not properly execute on mobile
+* Tweak: Typography line height control now uses 0.01 steps for more flexibility.
+* Tweak: Click to Tweet Block uses rel=“noopener” now
+* Tweak: Buttons added to the a pricing table do not inherit custom fonts
+* Tweak: Update the Typography Panel icon
+* Tweak: Update the Uppercase formatting icon
+* Tweak: Move the “Stack on Mobile” control within the Row block to its Advanced sidebar panel
+* Tweak: Background color setting from the core Heading block
+* Tweak: Improve the UI of the Click to Tweet toolbar username field
+* Tweak: Change the `data-custom-fontfamily` attribute to `data-coblocks-font` within the editor
+* Fix: Pricing Table blocks with four tables look better
+* Fix: Custom background colors within the Highlight block now properly resolve
+* Fix: Single column Row blocks now display properly
+* Fix: Remove the Accordion Item focus applies within the editor
+* Fix: Border radius applied to an Accordion Item block is now properly styled
+* Fix: Resolve issue where advanced dimension control setting would not properly reset
+* Fix: Remove the vertical column resizer in the Row block on mobile
+* Fix: Row blocks added to Accordion Item blocks now properly display fullwidth
+* Fix: Removed additional spacing on the Pricing Table block
+* Fix: Resolve issue where custom font selections may be overwritten by the CoBlocks theme
+* Fix: Dropzone labels within CoBlocks themes are now properly sized
+* Fix: Resolve issue where the Map block may not properly render on the front-end
+
 = 1.7.0 =
 * New: Add Map block with six built-in map styles, zoom, controls and marker size options 🎉
 * New: Add support for em units on Advanced dimensions controls
