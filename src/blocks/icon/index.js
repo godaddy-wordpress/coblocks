@@ -83,7 +83,6 @@ const settings = {
 	styles: [
 		{ name: 'filled', label: __( 'Filled' ), isDefault: true },
 		{ name: 'outlined', label: __( 'Outlined' ) },
-		{ name: 'rounded', label: __( 'Rounded' ) },
 	],
 
 	save( { attributes, className } ) {
