@@ -1,10 +1,17 @@
 .wp-block-coblocks-icon {
-	.wp-block-coblocks-icon__inner{
+	&__inner {
 		display: inline-block;
 	}
-	svg {
-		fill: currentColor;
-		height: 100%;
-		width: 100%;
+
+	&__svg-wrapper {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+
+		> svg {
+			fill: currentColor;
+			height: 100%;
+			width: 100%;
+		}
 	}
 }

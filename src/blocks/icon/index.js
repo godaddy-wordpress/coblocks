@@ -109,28 +109,6 @@ const settings = {
 			padding,
 		} = attributes;
 
-		const textClass = getColorClassName( 'color', textColor );
-
-		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-
-		const classes = classnames( 'wp-block-coblocks-icon__inner', {
-			'has-text-color': textColor || customTextColor,
-			[ textClass ]: textClass,
-			'has-background': backgroundColor || customBackgroundColor,
-			[ backgroundClass ]: backgroundClass,
-		} );
-
-		const styles = {
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			color: textClass ? undefined : customTextColor,
-			fill: textClass ? undefined : customTextColor,
-			textAlign: contentAlign ? contentAlign : undefined,
-			height: height,
-			width: width,
-			padding: borderRadius ? borderRadius + 'px' : undefined,
-			padding: padding ? padding + 'px' : undefined,
-		};
-
 		let iconStyle = 'filled';
 
 		if( attributes.className ){
@@ -141,10 +119,32 @@ const settings = {
 			}
 		}
 
+		const textClass = getColorClassName( 'color', textColor );
+		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
+		const classes = classnames( 'wp-block-coblocks-icon__svg-wrapper', {
+			'has-text-color': textColor || customTextColor,
+			[ textClass ]: textClass,
+			'has-background': backgroundColor || customBackgroundColor,
+			[ backgroundClass ]: backgroundClass,
+		} );
+
+		const styles = {
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			color: textClass ? undefined : customTextColor,
+			fill: textClass ? undefined : customTextColor,
+			height: height,
+			width: width,
+			padding: borderRadius ? borderRadius + 'px' : undefined,
+			padding: padding ? padding + 'px' : undefined,
+		};
+
 		return (
-			<div className={ className }>
-				<div className={ classes } style={ styles }>
-					{ icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo }
+			<div className={ className } style={ { textAlign: contentAlign ? contentAlign : undefined } }>
+				<div className="wp-block-coblocks-icon__inner">
+					<div className={ classes } style={ styles }>
+						{ icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo }
+					</div>
 				</div>
 			</div>
 		);

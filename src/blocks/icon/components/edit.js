@@ -57,7 +57,7 @@ class Edit extends Component {
 		} = attributes;
 
 
-		const classes = classnames( 'wp-block-coblocks-icon__inner', {
+		const classes = classnames( 'wp-block-coblocks-icon__svg-wrapper', {
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			'has-text-color': textColor.color,
@@ -69,7 +69,6 @@ class Edit extends Component {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
 			fill: textColor.color,
-			textAlign: contentAlign,
 			borderRadius: borderRadius + 'px',
 			padding: padding + 'px',
 		};
@@ -96,36 +95,36 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<ResizableBox
-					className={ classes }
-					style={ styles }
-					size={ {
-						width,
-					} }
-					enable={ {
-						top: false,
-						right: true,
-						bottom: true,
-						left: false,
-						topRight: false,
-						bottomRight: false,
-						bottomLeft: false,
-						topLeft: false,
-					} }
-					lockAspectRatio
-					onResizeStop={ ( event, direction, elt, delta ) => {
-						setAttributes( {
-							height: parseInt( width + delta.width, 10 ),
-							width: parseInt( width + delta.width, 10 ),
-						} );
-						toggleSelection( true );
-					} }
-					onResizeStart={ () => {
-						toggleSelection( false );
-					} }
-				>
-					{ selectedIcon }
-				</ResizableBox>
+				<div className={ className } style={ { textAlign: contentAlign } } >
+					<div className="wp-block-coblocks-icon__inner">
+						<ResizableBox
+							className={ classes }
+							style={ styles }
+							size={ {
+								width,
+							} }
+							enable={ {
+								top: false,
+								right: true,
+								bottom: true,
+								left: false,
+							} }
+							lockAspectRatio
+							onResizeStop={ ( event, direction, elt, delta ) => {
+								setAttributes( {
+									height: parseInt( width + delta.width, 10 ),
+									width: parseInt( width + delta.width, 10 ),
+								} );
+								toggleSelection( true );
+							} }
+							onResizeStart={ () => {
+								toggleSelection( false );
+							} }
+						>
+							{ selectedIcon }
+						</ResizableBox>
+					</div>
+				</div>
 			</Fragment>
 		];
 	}

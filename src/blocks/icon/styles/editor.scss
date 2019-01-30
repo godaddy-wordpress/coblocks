@@ -1,17 +1,4 @@
-.editor-block-list__block[data-type="coblocks/icon"] {
-	.wp-block-coblocks-icon__inner {
-		align-items: center;
-		display: inline-block;
-		justify-content: center;
-
-		> svg {
-			height: 100%;
-			width: 100%;
-		}
-	}
-}
-
-//Icon Selector Styling
+// Icon Search and Select
 .coblocks-icon-types-list {
 	max-height: 270px;
 	overflow-y: scroll;
@@ -54,6 +41,7 @@
 	}
 }
 
+// Editor style preview.
 .editor-block-styles__item-preview {
 	.wp-block-coblocks-icon__inner {
 		align-items: center;
