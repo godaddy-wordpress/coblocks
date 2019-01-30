@@ -28,7 +28,7 @@ Object.entries( materialIcons ).filter(function( item ){
 	if( item[0].includes( 'outline' ) ){
 		icons.outlined[ item[0].replace( '_outline', '' ) ] = {
 			icon: item[1],
-			keywords : keywords[ item[0] ],
+			keywords : keywords[ item[0].replace( '_outline', '' ) ],
 		}
 	}else{
 		icons.filled[ item[0] ] = {
