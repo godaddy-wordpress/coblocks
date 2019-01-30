@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import materialIcons from './material';
+import materialIcons from './material-icons';
 
 /**
  * WordPress dependencies
@@ -11,7 +11,7 @@ const { _x } = wp.i18n;
 /**
  * Generate icons from material.js
  */
-const icons = { outlined: {}, filled: {} };
+const svgs = { outlined: {}, filled: {} };
 
 const keywords = {
 	circle_add : _x( 'add minus circle insert plus round math', 'icon search tags' ),
@@ -26,16 +26,16 @@ const keywords = {
 
 Object.entries( materialIcons ).filter(function( item ){
 	if( item[0].includes( 'outline' ) ){
-		icons.outlined[ item[0].replace( '_outline', '' ) ] = {
+		svgs.outlined[ item[0].replace( '_outline', '' ) ] = {
 			icon: item[1],
 			keywords : keywords[ item[0].replace( '_outline', '' ) ],
 		}
 	}else{
-		icons.filled[ item[0] ] = {
+		svgs.filled[ item[0] ] = {
 			icon: item[1],
 			keywords : keywords[ item[0] ],
 		}
 	}
 });
 
-export default icons;
+export default svgs;

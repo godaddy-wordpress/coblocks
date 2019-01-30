@@ -9,7 +9,7 @@ import map from 'lodash/map';
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import svg from '../icons/icons';
+import svg from './svgs';
 import { DEFAULT_ICON_SIZE } from '.././';
 import { MIN_ICON_SIZE, MAX_ICON_SIZE } from './edit';
 

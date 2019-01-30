@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 import Controls from './controls';
-import svg from '../icons/icons';
+import svgs from './svgs';
 
 /**
  * WordPress dependencies
@@ -99,7 +99,7 @@ class Edit extends Component {
 			iconStyle = 'outlined';
 		}
 
-		let selectedIcon = icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo;
+		let selectedIcon = icon ? svgs[ iconStyle ][ icon ] : svgs[ iconStyle ].logo;
 
 		// Show or hide handles based on the contentAlign attribute.
 		let showRightHandle = false;

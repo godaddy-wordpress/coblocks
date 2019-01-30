@@ -10,7 +10,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
 import Edit from './components/edit';
-import svg from './icons/icons';
+import svgs from './components/svgs';
 
 /**
  * WordPress dependencies
@@ -110,7 +110,6 @@ const settings = {
 
 		const {
 			icon,
-			style,
 			backgroundColor,
 			customBackgroundColor,
 			customTextColor,
@@ -155,7 +154,7 @@ const settings = {
 		return (
 			<div className={ className } style={ { textAlign: contentAlign ? contentAlign : undefined } }>
 				<div className={ classes } style={ styles }>
-					{ svg[ iconStyle ][ icon ].icon }
+					{ svgs[ iconStyle ][ icon ].icon }
 				</div>
 			</div>
 		);
