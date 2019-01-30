@@ -41,7 +41,7 @@ class Inspector extends Component {
 	constructor( props ) {
 		super( ...arguments );
 
-		this.state = { filteredIcons : svg , searchValue: '' };
+		this.state = { filteredIcons : svg , searchValue: '', isSearching: false };
 
 		this.onChangeSize = this.onChangeSize.bind( this );
 	}
@@ -105,7 +105,11 @@ class Inspector extends Component {
 		const filterList = ( event ) => {
 			var filtered = {};
 
-			this.setState({ searchValue: event });
+			this.setState({ searchValue: event, isSearching: true });
+
+			if( event == '' ){
+				this.setState({ isSearching: false });
+			}
 
 		    var updatedList = Object.entries( svg[iconStyle] ).filter(function(item){
 		    	var text = item[0] + ' ' + item[1].keywords;
@@ -122,7 +126,7 @@ class Inspector extends Component {
 
 		    this.setState({ filteredIcons: filtered });
 		};
-		
+
 		const utilitySizes = [
 			{
 				name: __( 'Small' ),
@@ -146,7 +150,7 @@ class Inspector extends Component {
 		];
 
 		const currentSize = utilitySizes.find( ( utility ) => utility.slug === iconSize );
-
+		
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -245,19 +249,22 @@ class Inspector extends Component {
 							}
 						/>
 						<ul role="list" className="editor-block-types-list coblocks-icon-types-list">
-							<li className="editor-block-types-list__list-item selected-svg">
-								<Button
-									isLarge
-									className="editor-block-list-item-button"
-									onClick={ () => {
-										return false;
-									} }
-								>
-									<span className="editor-block-types-list__item-icon">
-										{ svg[ iconStyle ][ icon ].icon }
-									</span>
-								</Button>
-							</li>
+							{ ! this.state.isSearching ? 
+								<li className="editor-block-types-list__list-item selected-svg">
+									<Button
+										isLarge
+										className="editor-block-list-item-button"
+										onClick={ () => {
+											return false;
+										} }
+									>
+										<span className="editor-block-types-list__item-icon">
+											{ svg[ iconStyle ][ icon ].icon }
+										</span>
+									</Button>
+								</li> 
+								: null
+							}
 							{ Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
 								return[
 									<li className={ classnames(
