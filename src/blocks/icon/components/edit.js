@@ -65,6 +65,7 @@ class Edit extends Component {
 		const styles = {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
+			fill: textColor.color,
 			textAlign: textAlign,
 		};
 

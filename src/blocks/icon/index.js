@@ -113,6 +113,7 @@ const settings = {
 		const styles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
+			fill: textClass ? undefined : customTextColor,
 			textAlign: textAlign,
 			height: height,
 			width: width,
