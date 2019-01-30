@@ -8,6 +8,7 @@ import classnames from 'classnames';
  */
 import applyWithColors from './colors';
 import Inspector from './inspector';
+import Controls from './controls';
 import svg from '../icons/icons';
 
 /**
@@ -48,7 +49,7 @@ class Edit extends Component {
 		const {
 			icon,
 			style,
-			textAlign,
+			contentAlign,
 			height,
 			width,
 			borderRadius,
@@ -68,7 +69,7 @@ class Edit extends Component {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
 			fill: textColor.color,
-			textAlign: textAlign,
+			textAlign: contentAlign,
 			borderRadius: borderRadius + 'px',
 			padding: padding + 'px',
 		};
@@ -87,6 +88,11 @@ class Edit extends Component {
 			<Fragment>
 				{ isSelected && (
 					<Inspector
+						{ ...this.props }
+					/>
+				) }
+				{ isSelected && (
+					<Controls
 						{ ...this.props }
 					/>
 				) }

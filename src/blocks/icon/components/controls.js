@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import IconControls from '../toolbar-components';
 
 /**
  * WordPress dependencies
@@ -24,12 +23,17 @@ class Controls extends Component {
 		} = this.props;
 
 		const {
-			align,
+			contentAlign,
 		} = attributes;
-		
+
 		return (
 			<Fragment>
-				<IconControls { ...this.props } />
+				<BlockControls>
+					<AlignmentToolbar
+						value={ contentAlign }
+						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
+					/>
+				</BlockControls>
 			</Fragment>
 		);
 	}

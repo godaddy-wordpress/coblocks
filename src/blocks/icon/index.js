@@ -42,8 +42,9 @@ const blockAttributes = {
 		type: 'string',
 		default: 'filled',
 	},
-	align: {
+	contentAlign: {
 		type: 'string',
+		default: 'center',
 	},
 	backgroundColor: {
 		type: 'string',
@@ -92,10 +93,6 @@ const settings = {
 		{ name: 'outlined', label: __( 'Outlined' ) },
 	],
 
-	supports: {
-		align: [ 'left', 'right', 'center' ],
-	},
-
 	save( { attributes, className } ) {
 
 		const {
@@ -104,7 +101,7 @@ const settings = {
 			backgroundColor,
 			customBackgroundColor,
 			customTextColor,
-			textAlign,
+			contentAlign,
 			textColor,
 			height,
 			width,
@@ -127,7 +124,7 @@ const settings = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
 			fill: textClass ? undefined : customTextColor,
-			textAlign: textAlign ? textAlign : undefined,
+			textAlign: contentAlign ? contentAlign : undefined,
 			height: height,
 			width: width,
 			padding: borderRadius ? borderRadius + 'px' : undefined,
