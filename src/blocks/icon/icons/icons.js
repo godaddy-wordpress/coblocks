@@ -14,14 +14,14 @@ const { __ } = wp.i18n;
 const icons = { outlined: {}, filled: {} };
 
 const keywords = {
-	circle_add : __( 'add minus circle insert plus round math' ),
-	circle_remove : 'add minus circle insert plus round math',
-	data_usage : 'stats round circle pie chart graph',
-	emoticon : 'happy emotion emoticon smile fun joy',
-	functions : 'code greek math',
-	gesture : 'drawing doodle art creative type font pencil marker',
-	heart : 'love shape valentine kiss',
-	scatter_plot : 'stats round circle pie chart graph dots data',
+	circle_add : _x( 'add minus circle insert plus round math', 'icon search tags' ),
+	circle_remove : _x( 'add minus circle insert plus round math', 'icon search tags' ),
+	data_usage : _x( 'stats round circle pie chart graph', 'icon search tags' ),
+	emoticon : _x( 'happy emotion emoticon smile fun joy', 'icon search tags' ),
+	functions : _x( 'code greek math', 'icon search tags' ),
+	gesture : _x( 'drawing doodle art creative type font pencil marker', 'icon search tags' ),
+	heart : _x( 'love shape valentine kiss', 'icon search tags' ),
+	scatter_plot : _x( 'stats round circle pie chart graph dots data', 'icon search tags' ),
 };
 
 Object.entries( materialIcons ).filter(function( item ){
