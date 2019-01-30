@@ -47,6 +47,7 @@ class Edit extends Component {
 
 		const {
 			icon,
+			style,
 			textAlign,
 			height,
 			width,
@@ -67,6 +68,14 @@ class Edit extends Component {
 			textAlign: textAlign,
 		};
 		
+		let iconStyle = 'filled';
+
+		if( className.includes( 'is-style-outlined' ) ){
+			iconStyle = 'outlined';
+		}else if( className.includes( 'is-style-rounded' ) ){
+			iconStyle = 'rounded';
+		}
+
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -102,7 +111,7 @@ class Edit extends Component {
 						toggleSelection( false );
 					} }
 				>
-					{ icon ? svg[ icon ] : svg.logo }
+					{ icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo }
 				</ResizableBox>
 			</Fragment>
 		];

@@ -67,25 +67,35 @@ class Inspector extends Component {
 			fallbackTextColor,
 			setBackgroundColor,
 			setTextColor,
+			className,
 		} = this.props;
 
 		const {
 			icon,
+			style,
 		} = attributes;
+
+		let iconStyle = 'filled';
+
+		if( className.includes( 'is-style-outlined' ) ){
+			iconStyle = 'outlined';
+		}else if( className.includes( 'is-style-rounded' ) ){
+			iconStyle = 'rounded';
+		}
 
 		const filterList = ( event ) => {
 			var filtered = {};
 
 			this.setState({ searchValue: event });
 
-		    var updatedList = Object.entries( svg ).filter(function(item){
+		    var updatedList = Object.entries( svg[iconStyle] ).filter(function(item){
 		    	var text = item[0];
 		      	return text.toLowerCase().search(
 		        event.toLowerCase()) !== -1;
 		    });
 
 		    updatedList.forEach(([key, value]) => {
-		    	filtered[ key ] = svg[key];
+		    	filtered[ key ] = svg[iconStyle][key];
 			});
 
 		    this.setState({ filteredIcons: filtered });
@@ -117,11 +127,11 @@ class Inspector extends Component {
 									} }
 								>
 									<span className="editor-block-types-list__item-icon">
-										{ svg[ icon ] }
+										{ svg[ iconStyle ][ icon ] }
 									</span>
 								</Button>
 							</li>
-							{ Object.keys( this.state.filteredIcons ).map( ( keyName, i ) => {
+							{ Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
 								return[
 									<li className={ classnames(
 										'editor-block-types-list__list-item',{
@@ -136,7 +146,7 @@ class Inspector extends Component {
 											} }
 										>
 											<span className="editor-block-types-list__item-icon">
-												{ svg[ keyName ] }
+												{ svg[ iconStyle ][ keyName ] }
 											</span>
 										</Button>
 									</li>

@@ -39,6 +39,10 @@ const blockAttributes = {
 		type: 'string',
 		default: 'logo',
 	},
+	style: {
+		type: 'string',
+		default: 'filled',
+	},
 	align: {
 		type: 'string',
 	},
@@ -76,10 +80,17 @@ const settings = {
 
 	edit: Edit,
 
+	styles: [
+		{ name: 'filled', label: __( 'Filled' ), isDefault: true },
+		{ name: 'outlined', label: __( 'Outlined' ) },
+		{ name: 'rounded', label: __( 'Rounded' ) },
+	],
+
 	save( { attributes, className } ) {
 
 		const {
 			icon,
+			style,
 			backgroundColor,
 			customBackgroundColor,
 			customTextColor,
@@ -108,10 +119,20 @@ const settings = {
 			width: width,
 		};
 
+		let iconStyle = 'filled';
+
+		if( attributes.className ){
+			if( attributes.className.includes( 'is-style-outlined' ) ){
+				iconStyle = 'outlined';
+			}else if( attributes.className.includes( 'is-style-rounded' ) ){
+				iconStyle = 'rounded';
+			}
+		}
+
 		return (
 			<div className={ className }>
 				<div className={ classes } style={ styles }>
-					{ icon ? svg[ icon ] : svg.logo }
+					{ icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo }
 				</div>
 			</div>
 		);
