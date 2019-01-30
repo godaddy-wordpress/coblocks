@@ -123,11 +123,11 @@ const settings = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
 			fill: textClass ? undefined : customTextColor,
-			textAlign: textAlign,
+			textAlign: textAlign ? textAlign : undefined,
 			height: height,
 			width: width,
-			borderRadius: borderRadius + 'px',
-			padding: padding + 'px',
+			padding: borderRadius ? borderRadius + 'px' : undefined,
+			padding: padding ? padding + 'px' : undefined,
 		};
 
 		let iconStyle = 'filled';
