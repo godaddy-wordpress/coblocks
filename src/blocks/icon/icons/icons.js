@@ -24,9 +24,5 @@ icons.accordion =
 icons.accordionItem =
 <svg className="coblocks__svg" aria-hidden role="img" height="100%" viewBox="0 0 24 24" width="100%" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fill-rule="nonzero"/><path d="m1 1h16v5h-16z"/></g></svg>;
 
-icons.actionGrid =
-<svg className="coblocks__svg" aria-hidden role="img" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-	<g fill="currentColor" fillRule="evenodd"><path d="m16 0h-14c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2zm0 14h-14v-12h14z" fillRule="nonzero" transform="translate(3 4)"/><path d="m11 6h2v12h-2z"/></g>
-</svg>;
 
 export default icons;

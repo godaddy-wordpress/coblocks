@@ -29,13 +29,7 @@ class Controls extends Component {
 		console.log( 'asdfads' );
 		return (
 			<Fragment>
-				<BlockControls>
-					<AlignmentToolbar
-						value={ align }
-						onChange={ ( nextAlign ) => setAttributes( { align: nextAlign } ) }
-					/>
-					<IconControls { ...this.props } />
-				</BlockControls>
+				<IconControls { ...this.props } />
 			</Fragment>
 		);
 	}

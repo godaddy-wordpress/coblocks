@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import Controls from './controls';
+import Inspector from './inspector';
 import iconsSelection from '../toolbar-components/icons';
 
 /**
@@ -70,7 +70,7 @@ class Edit extends Component {
 		return [
 			<Fragment>
 				{ isSelected && (
-					<Controls
+					<Inspector
 						{ ...this.props }
 					/>
 				) }
