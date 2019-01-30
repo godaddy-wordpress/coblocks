@@ -1,46 +1,67 @@
 .editor-block-list__block[data-type="coblocks/icon"] {
 	.wp-block-coblocks-icon__inner {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+
 		> svg {
-			width: 100%;
 			height: 100%;
+			width: 100%;
 		}
 	}
 }
 
 //Icon Selector Styling
-.coblocks-icon-types-list{
+.coblocks-icon-types-list {
 	max-height: 270px;
-   	overflow-y: scroll;
-	.editor-block-types-list__list-item{
-		.components-button{
+	overflow-y: scroll;
+	.editor-block-types-list__list-item {
+		.components-button {
 			background: transparent;
 			border-color: #ebecee;
 			box-shadow: none;
-			height: auto;
 			color: #555e66;
-			&:focus{
+			height: auto;
+
+			&:focus {
 				background: #f8faf9;
 				border-color: #ebecee;
-				outline: none;
 				box-shadow: none;
+				outline: none;
 			}
-			svg{
-				margin: 0px;
-    			padding: 0px;
+			svg {
+				margin: 0;
+				padding: 0;
 			}
 		}
-		.editor-block-types-list__item-icon{
-			padding: 14px 7px;
+		.editor-block-types-list__item-icon {
 			line-height: 0;
+			padding: 14px 7px;
 		}
 
-		&.selected-svg{
-			.components-button{
-				&, &:focus{
-					border-color: #00a2de;
+		&.selected-svg {
+			.components-button {
+				&,
+				&:focus {
 					background: transparent;
+					border-color: #00a2de;
 				}
 			}
+		}
+	}
+}
+
+.editor-block-styles__item-preview {
+	.wp-block-coblocks-icon__inner {
+		align-items: center;
+		display: flex;
+		height: 100% !important;
+		justify-content: center;
+		width: 100% !important;
+
+		> svg {
+			height: 70%;
+			width: 70%;
 		}
 	}
 }

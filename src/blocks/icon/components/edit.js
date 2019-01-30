@@ -67,7 +67,7 @@ class Edit extends Component {
 			color: textColor.color,
 			textAlign: textAlign,
 		};
-		
+
 		let iconStyle = 'filled';
 
 		if( className.includes( 'is-style-outlined' ) ){
@@ -94,7 +94,7 @@ class Edit extends Component {
 					enable={ {
 						top: false,
 						right: true,
-						bottom: false,
+						bottom: true,
 						left: false,
 						topRight: false,
 						bottomRight: true,
