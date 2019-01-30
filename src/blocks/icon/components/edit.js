@@ -79,12 +79,10 @@ class Edit extends Component {
 
 		if( className.includes( 'is-style-outlined' ) ){
 			iconStyle = 'outlined';
-		}else if( className.includes( 'is-style-rounded' ) ){
-			iconStyle = 'rounded';
 		}
 
 		let selectedIcon = icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo;
-
+		
 		// With the current implementation of ResizableBox, an image needs an explicit pixel value for the max-width.
 		// In absence of being able to set the content-width, this max-width is currently dictated by the vanilla editor style.
 		// The following variable adds a buffer to this vanilla style, so 3rd party themes have some wiggleroom.
@@ -157,7 +155,7 @@ class Edit extends Component {
 							setAttributes( {  iconSize: 'advanced' } )
 						} }
 					>
-						{ selectedIcon.icon }
+						{ selectedIcon ? selectedIcon.icon : null }
 					</ResizableBox>
 				</div>
 			</Fragment>

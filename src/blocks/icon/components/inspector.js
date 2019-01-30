@@ -122,7 +122,7 @@ class Inspector extends Component {
 
 		    this.setState({ filteredIcons: filtered });
 		};
-
+		
 		const utilitySizes = [
 			{
 				name: __( 'Small' ),
