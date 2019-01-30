@@ -1,11 +1,23 @@
-// Icon Search and Select
+.coblocks-icon-types-list-wrapper {
+	height: 100%;
+	margin-left: -3px;
+	overflow: hidden;
+	width: calc(100% + 6px);
+
+	> ul {
+		box-sizing: content-box; /* So the width will be 100% + 17px */
+		height: 100%;
+		overflow-y: scroll;
+		padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+		width: 100%;
+	}
+}
+
 .coblocks-icon-types-list {
-	margin-left: -4px;
 	margin-top: 0;
-	max-height: 216px;
+	max-height: 220px;
 	overflow-y: scroll;
 	padding: 4px 0 0 0;
-	width: calc(100% + 8px);
 
 	&__search {
 		margin-bottom: 0.75em !important;
@@ -18,6 +30,11 @@
 	.editor-block-types-list__list-item {
 		margin: 0 0 8px;
 		padding: 0 4px;
+		width: 29.9%;
+
+		@media screen and (max-width: 782px) {
+			width: 31.5%;
+		}
 
 		.components-button {
 			align-items: center;
@@ -28,7 +45,7 @@
 			display: flex;
 			height: auto;
 			justify-content: center;
-			padding: 13px 0;
+			padding: 14px 0;
 			width: 100%;
 
 			&:hover {

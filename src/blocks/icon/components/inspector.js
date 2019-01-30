@@ -246,45 +246,47 @@ class Inspector extends Component {
 								}
 							}
 						/>
-						<ul role="list" className="editor-block-types-list coblocks-icon-types-list">
-							{ ! this.state.isSearching ?
-								<li className="editor-block-types-list__list-item selected-svg">
-									<Button
-										isLarge
-										className="editor-block-list-item-button"
-										onClick={ () => {
-											return false;
-										} }
-									>
-										<span className="editor-block-types-list__item-icon">
-											{ svg[ iconStyle ][ icon ].icon }
-										</span>
-									</Button>
-								</li>
-								: null
-							}
-							{ Object.keys( this.state.filteredIcons[ iconStyle ] ).length > 0 ? Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
-								return[
-									<li className={ classnames(
-										'editor-block-types-list__list-item',{
-											[ 'is-selected' ] : icon && ( icon == keyName )
-										},
-									) }>
+						<div className="coblocks-icon-types-list-wrapper">
+							<ul role="list" className="editor-block-types-list coblocks-icon-types-list">
+								{ ! this.state.isSearching ?
+									<li className="editor-block-types-list__list-item selected-svg">
 										<Button
 											isLarge
 											className="editor-block-list-item-button"
 											onClick={ () => {
-												setAttributes({ icon: keyName });
+												return false;
 											} }
 										>
 											<span className="editor-block-types-list__item-icon">
-												{ svg[ iconStyle ][ keyName ].icon }
+												{ svg[ iconStyle ][ icon ].icon }
 											</span>
 										</Button>
 									</li>
-								];
-							}) : <p> { __( 'Nothing found' ) } </p> }
-						</ul>
+									: null
+								}
+								{ Object.keys( this.state.filteredIcons[ iconStyle ] ).length > 0 ? Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
+									return[
+										<li className={ classnames(
+											'editor-block-types-list__list-item',{
+												[ 'is-selected' ] : icon && ( icon == keyName )
+											},
+										) }>
+											<Button
+												isLarge
+												className="editor-block-list-item-button"
+												onClick={ () => {
+													setAttributes({ icon: keyName });
+												} }
+											>
+												<span className="editor-block-types-list__item-icon">
+													{ svg[ iconStyle ][ keyName ].icon }
+												</span>
+											</Button>
+										</li>
+									];
+								}) : <p> { __( 'Nothing found' ) } </p> }
+							</ul>
+						</div>
 						{ ( backgroundColor.color ) ?
 							[ <RangeControl
 								label={ __( 'Border Radius' ) }
