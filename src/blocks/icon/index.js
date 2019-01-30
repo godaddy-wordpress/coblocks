@@ -20,9 +20,9 @@ const { createBlock } = wp.blocks;
 const { RichText, getColorClassName, getFontSizeClass } = wp.editor;
 
 /**
- * Set the default value for icon size.
+ * Set default icon size equivalent to "Medium".
  */
-export const DEFAULT_ICON_SIZE = 40;
+export const DEFAULT_ICON_SIZE = 60;
 
 /**
  * Block constants
@@ -42,6 +42,10 @@ const blockAttributes = {
 	icon: {
 		type: 'string',
 		default: 'heart',
+	},
+	iconRand: {
+		type: 'boolean',
+		default: true,
 	},
 	iconSize: {
 		type: 'string',
@@ -69,11 +73,11 @@ const blockAttributes = {
 	},
 	height: {
 		type: 'number',
-		default: 60, // Medium
+		default: DEFAULT_ICON_SIZE,
 	},
 	width: {
 		type: 'number',
-		default: 60, // Medium
+		default: DEFAULT_ICON_SIZE,
 	},
 	borderRadius: {
 		type: 'number',

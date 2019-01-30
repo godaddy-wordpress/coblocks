@@ -23,12 +23,31 @@ const { ResizableBox } = wp.components;
 const { withSelect } = wp.data;
 
 /**
+ * Set and export block values.
+ */
+const MIN_ICON_SIZE = 32;
+const MAX_ICON_SIZE = 400;
+
+export { MIN_ICON_SIZE, MAX_ICON_SIZE };
+
+/**
  * Block edit function
  */
 class Edit extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
+	}
+
+	componentDidMount() {
+		// Randomized the default icon when first added.
+		const defaultIcons = [ 'heart', 'gesture', 'scatter_plot', 'circle_add', 'circle_remove' ];
+		const rand = defaultIcons[ Math.floor( Math.random() * defaultIcons.length ) ];
+
+		// CHeck if the icon is the default.
+		if ( this.props.attributes.iconRand === true ) {
+			this.props.setAttributes( { icon: rand, iconRand: false } )
+		}
 	}
 
 	render() {
@@ -135,7 +154,8 @@ class Edit extends Component {
 						className={ classes }
 						style={ styles }
 						size={ { width } }
-						maxWidth={ maxWidthBuffer }
+						minWidth={ MIN_ICON_SIZE }
+						maxWidth={ MAX_ICON_SIZE }
 						enable={ {
 							top: false,
 							right: showRightHandle,

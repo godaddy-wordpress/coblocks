@@ -1,15 +1,17 @@
-/**
- * Internal dependencies
- */
-import applyWithColors from './colors';
-import svg from '../icons/icons';
 
 /**
  * External dependencies
  */
 import classnames from 'classnames';
 import map from 'lodash/map';
+
+/**
+ * Internal dependencies
+ */
+import applyWithColors from './colors';
+import svg from '../icons/icons';
 import { DEFAULT_ICON_SIZE } from '.././';
+import { MIN_ICON_SIZE, MAX_ICON_SIZE } from './edit';
 
 /**
  * WordPress dependencies
@@ -131,12 +133,12 @@ class Inspector extends Component {
 		const utilitySizes = [
 			{
 				name: __( 'Small' ),
-				size: DEFAULT_ICON_SIZE,
+				size: 40,
 				slug: 'small',
 			},
 			{
 				name: __( 'Medium' ),
-				size: 60,
+				size: DEFAULT_ICON_SIZE,
 				slug: 'medium',
 			},
 			{
@@ -179,8 +181,8 @@ class Inspector extends Component {
 											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';
 											setAttributes( {  width: nextWidth, height: nextWidth } )
 										} }
-										min={ 32 }
-										max={ 400 }
+										min={ MIN_ICON_SIZE }
+										max={ MAX_ICON_SIZE }
 										step={ 1 }
 									/>
 								</div>
