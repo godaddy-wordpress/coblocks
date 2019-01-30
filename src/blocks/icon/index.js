@@ -92,6 +92,10 @@ const settings = {
 		{ name: 'outlined', label: __( 'Outlined' ) },
 	],
 
+	supports: {
+		align: [ 'left', 'right', 'center' ],
+	},
+
 	save( { attributes, className } ) {
 
 		const {

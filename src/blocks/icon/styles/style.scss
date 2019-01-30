@@ -1,4 +1,7 @@
 .wp-block-coblocks-icon {
+	.wp-block-coblocks-icon__inner{
+		display: inline-block;
+	}
 	svg {
 		fill: currentColor;
 		height: 100%;
