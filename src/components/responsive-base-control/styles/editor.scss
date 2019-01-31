@@ -22,7 +22,6 @@
 
 	.component-coblocks-is-desktop {
 		input {
-			border-radius: 0;
 			position: relative;
 			width: calc(100% - 1px);
 
@@ -30,11 +29,6 @@
 				border-radius: 3px;
 				z-index: 9;
 			}
-		}
-
-		input:not(:focus) {
-			border-left-color: transparent;
-			border-right-color: transparent;
 		}
 	}
 
