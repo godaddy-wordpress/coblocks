@@ -82,12 +82,13 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
+			coblocks,
 			shapeHeight,
 			backgroundHeight,
 			verticalFlip,
 			horizontalFlip,
 		} = attributes;
-		console.log( attributes );
+
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -107,6 +108,7 @@ class Edit extends Component {
 							'is-horizontally-flipped' : horizontalFlip,
 							'has-background': backgroundColor.color,
 							'has-text-color': color.color,
+							[ `coblocks-shape-divider-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 						}
 					) }
 					style={ {

@@ -34,44 +34,19 @@ class ResponsiveBaseControl extends Component {
 		let meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
 		let block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
 		let dimensions = {};
-
+		
 		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
 			let id = this.props.name.split('/').join('-') + '-' + this.props.attributes.coblocks.id;
-			let paddingUnit = block.attributes.paddingUnit;
-			let marginUnit = block.attributes.marginUnit;
-			let padding = {
-				paddingTop: ( block.attributes.paddingTop ) ? block.attributes.paddingTop + paddingUnit : null,
-				paddingRight: ( block.attributes.paddingRight ) ? block.attributes.paddingRight + paddingUnit : null,
-				paddingBottom: ( block.attributes.paddingBottom ) ? block.attributes.paddingBottom + paddingUnit : null,
-				paddingLeft: ( block.attributes.paddingLeft ) ? block.attributes.paddingLeft + paddingUnit : null,
-				paddingTopTablet: ( block.attributes.paddingTopTablet ) ? block.attributes.paddingTopTablet + paddingUnit : null,
-				paddingRightTablet: ( block.attributes.paddingRightTablet ) ? block.attributes.paddingRightTablet + paddingUnit : null,
-				paddingBottomTablet: ( block.attributes.paddingBottomTablet ) ? block.attributes.paddingBottomTablet + paddingUnit : null,
-				paddingLeftTablet: ( block.attributes.paddingLeftTablet ) ? block.attributes.paddingLeftTablet + paddingUnit : null,
-				paddingTopMobile: ( block.attributes.paddingTopMobile ) ? block.attributes.paddingTopMobile + paddingUnit : null,
-				paddingRightMobile: ( block.attributes.paddingRightMobile ) ? block.attributes.paddingRightMobile + paddingUnit : null,
-				paddingBottomMobile: ( block.attributes.paddingBottomMobile ) ? block.attributes.paddingBottomMobile + paddingUnit : null,
-				paddingLeftMobile: ( block.attributes.paddingLeftMobile ) ? block.attributes.paddingLeftMobile + paddingUnit : null,
-			};
-			let margin = {
-				marginTop: ( block.attributes.marginTop ) ? block.attributes.marginTop + marginUnit : null,
-				marginRight: ( block.attributes.marginRight ) ? block.attributes.marginRight + marginUnit : null,
-				marginBottom: ( block.attributes.marginBottom ) ? block.attributes.marginBottom + marginUnit : null,
-				marginLeft: ( block.attributes.marginLeft ) ? block.attributes.marginLeft + marginUnit : null,
-				marginTopTablet: ( block.attributes.marginTopTablet ) ? block.attributes.marginTopTablet + marginUnit : null,
-				marginRightTablet: ( block.attributes.marginRightTablet ) ? block.attributes.marginRightTablet + marginUnit : null,
-				marginBottomTablet: ( block.attributes.marginBottomTablet ) ? block.attributes.marginBottomTablet + marginUnit : null,
-				marginLeftTablet: ( block.attributes.marginLeftTablet ) ? block.attributes.marginLeftTablet + marginUnit : null,
-				marginTopMobile: ( block.attributes.marginTopMobile ) ? block.attributes.marginTopMobile + marginUnit : null,
-				marginRightMobile: ( block.attributes.marginRightMobile ) ? block.attributes.marginRightMobile + marginUnit : null,
-				marginBottomMobile: ( block.attributes.marginBottomMobile ) ? block.attributes.marginBottomMobile + marginUnit : null,
-				marginLeftMobile: ( block.attributes.marginLeftMobile ) ? block.attributes.marginLeftMobile + marginUnit : null,
+			let height = {
+				height: block.attributes[ this.props.type ],
+				heightTablet: block.attributes[ this.props.type + 'Tablet' ],
+				heightMobile: block.attributes[ this.props.type + 'Mobile' ],
 			};
 
-			if ( typeof meta._coblocks_dimensions === 'undefined' || ( typeof meta._coblocks_dimensions !== 'undefined' && meta._coblocks_dimensions  == '' ) ){
+			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height  == '' ) ){
 				dimensions = {};
 			} else {
-				dimensions = JSON.parse( meta._coblocks_dimensions );
+				dimensions = JSON.parse( meta._coblocks_responsive_height );
 			}
 
 			if ( typeof dimensions[ id ] === 'undefined' ) {
@@ -83,16 +58,12 @@ class ResponsiveBaseControl extends Component {
 				}
 			}
 
-			if ( this.props.dimensionSize == 'advanced' ) {
-				dimensions[ id ][ this.props.type ] = ( this.props.type == 'padding' ) ? padding : margin;
-			} else {
-				dimensions[ id ][ this.props.type ] = {};
-			}
-
+			dimensions[ id ][ this.props.type ] = height;
+			
 			// Save values to metadata.
 			wp.data.dispatch( 'core/editor' ).editPost({
 				meta: {
-					_coblocks_dimensions: JSON.stringify( dimensions ),
+					_coblocks_responsive_height: JSON.stringify( dimensions ),
 				}
 			});
 
@@ -101,68 +72,26 @@ class ResponsiveBaseControl extends Component {
 			responsiveCss		= '',
 		    style 				= document.createElement('style');
 		    style.type 			= 'text/css';
+		    let targetDiv 		= ( this.props.type == 'shapeHeight' ) ? '.wp-block-coblocks-shape-divider__svg-wrapper' : '.wp-block-coblocks-shape-divider__alt-wrapper';
 
 		    //add responsive styling for tablet device
 		    responsiveCss += '@media only screen and (max-width: 768px) {';
-		   		responsiveCss += '.'+ id + ' > div{';
-		   		if( padding.paddingTopTablet ){
-		   			responsiveCss += 'padding-top: ' + padding.paddingTopTablet + ' !important;';
+		   		responsiveCss += '.'+ id + ' '+ targetDiv +'{';
+		   		
+		   		if( height.heightTablet ){
+		   			responsiveCss += 'height: ' + height.heightTablet + 'px !important;';
 		   		}
-		    	if( padding.paddingBottomTablet ){
-		    		responsiveCss += 'padding-bottom: ' + padding.paddingBottomTablet + ' !important;';
-		    	}
-		    	if( padding.paddingRightTablet ){
-		    		responsiveCss += 'padding-right: ' + padding.paddingRightTablet + ' !important;';
-		    	}
-		    	if( padding.paddingLeftTablet ){
-		    		responsiveCss += 'padding-left: ' + padding.paddingLeftTablet + ' !important;';
-		    	}
-
-		    	if( margin.marginTopTablet ){
-		   			responsiveCss += 'margin-top: ' + margin.marginTopTablet + ' !important;';
-		   		}
-		    	if( margin.marginBottomTablet ){
-		    		responsiveCss += 'margin-bottom: ' + margin.marginBottomTablet + ' !important;';
-		    	}
-		    	if( margin.marginRightTablet ){
-		    		responsiveCss += 'margin-right: ' + margin.marginRightTablet + ' !important;';
-		    	}
-		    	if( margin.marginleLtTablet ){
-		    		responsiveCss += 'margin-left: ' + margin.marginLeftTablet + ' !important;';
-		    	}
-
+		    	
 		    	responsiveCss += '}';
 		    responsiveCss += '}';
 
 		    responsiveCss += '@media only screen and (max-width: 514px) {';
-		   		responsiveCss += '.'+ id + ' > div{';
-		   		if( padding.paddingTopMobile ){
-		   			responsiveCss += 'padding-top: ' + padding.paddingTopMobile + ' !important;';
-		   		}
-		    	if( padding.paddingBottomMobile ){
-		    		responsiveCss += 'padding-bottom: ' + padding.paddingBottomMobile + ' !important;';
-		    	}
-		    	if( padding.paddingRightMobile ){
-		    		responsiveCss += 'padding-right: ' + padding.paddingRightMobile + ' !important;';
-		    	}
-		    	if( padding.paddingLeftMobile ){
-		    		responsiveCss += 'padding-left: ' + padding.paddingLeftMobile + ' !important;';
-		    	}
+		   		responsiveCss += '.'+ id + ' '+ targetDiv +'{';	
 
-		    	if( margin.marginTopMobile ){
-		   			responsiveCss += 'margin-top: ' + margin.marginTopMobile + ' !important;';
-		   		}
-		    	if( margin.marginBottomMobile ){
-		    		responsiveCss += 'margin-bottom: ' + margin.marginBottomMobile + ' !important;';
-		    	}
-		    	if( margin.marginRightMobile ){
-		    		responsiveCss += 'margin-right: ' + margin.marginRightMobile + ' !important;';
-		    	}
-		    	if( margin.marginleLtMobile ){
-		    		responsiveCss += 'margin-left: ' + margin.marginLeftMobile + ' !important;';
-		    	}
-
-
+		   		if( height.heightMobile ){
+		   			responsiveCss += 'height: ' + height.heightMobile + 'px !important;';
+		   		}	    	
+		    	
 		    	responsiveCss += '}';
 		    responsiveCss += '}';
 
@@ -173,6 +102,7 @@ class ResponsiveBaseControl extends Component {
 			}
 
 			head.appendChild(style);
+
 		}
 	}
 
@@ -307,7 +237,10 @@ class ResponsiveBaseControl extends Component {
 													<BaseControl>
 														<input
 															type="number"
-															onChange={ onChangeMobile }
+															onChange={ ( newValue ) => {
+																onChangeMobile( newValue );
+																this.saveMeta();
+															} }
 															value={ heightMobile ? heightMobile : '' }
 															min={ min }
 															step={ step }
@@ -324,7 +257,10 @@ class ResponsiveBaseControl extends Component {
 													<BaseControl>
 														<input
 															type="number"
-															onChange={ onChangeTablet }
+															onChange={ ( newValue ) =>{
+																onChangeTablet( newValue );
+																this.saveMeta();
+															} }
 															value={ heightTablet ? heightTablet : '' }
 															min={ min }
 															step={ step }
@@ -341,7 +277,10 @@ class ResponsiveBaseControl extends Component {
 													<BaseControl>
 														<input
 															type="number"
-															onChange={ onChange }
+															onChange={ ( newValue ) => {
+																onChange( newValue );
+																this.saveMeta();
+															} }
 															value={ height ? height : '' }
 															min={ min }
 															step={ step }
