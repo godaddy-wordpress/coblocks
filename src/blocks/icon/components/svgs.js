@@ -42,12 +42,14 @@ Object.entries( materialIcons ).filter( function( item ) {
 	if ( item[0].includes( 'outline' ) ) {
 		svgs.outlined[ item[0].replace( '_outline', '' ) ] = {
 			icon: item[1],
-			keywords : keywords[ item[0].replace( '_outline', '' ) ],
+			label : ( keywords[ item[0].replace( '_outline', '' ) ] ) ? keywords[ item[0].replace( '_outline', '' ) ].label : null,
+			keywords : ( keywords[ item[0].replace( '_outline', '' ) ] ) ? keywords[ item[0].replace( '_outline', '' ) ].keywords : null,
 		}
 	} else {
 		svgs.filled[ item[0] ] = {
 			icon: item[1],
-			keywords : keywords[ item[0] ],
+			label : ( keywords[ item[0] ] ) ? keywords[ item[0] ].label : null,
+			keywords : ( keywords[ item[0] ] ) ? keywords[ item[0] ].keywords : null,
 		}
 	}
 });

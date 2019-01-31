@@ -290,7 +290,7 @@ class Inspector extends Component {
 												[ 'is-selected' ] : icon && ( icon == keyName )
 											},
 										) }>
-											<Tooltip text={ keyName }>
+											<Tooltip text={ ( svg[ iconStyle ][ keyName ].label ) ? svg[ iconStyle ][ keyName ].label : keyName }>
 												<Button
 													isLarge
 													className="editor-block-list-item-button"
