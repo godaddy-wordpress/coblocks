@@ -237,7 +237,7 @@ class Inspector extends Component {
 						}
 						{ ( backgroundColor.color ) ?
 							[ <RangeControl
-								label={ __( 'Rounded Corners' ) }
+								label={ __( 'Radius' ) }
 								value={ borderRadius }
 								onChange={ ( nextBorderRadius ) => setAttributes( {  borderRadius: nextBorderRadius } ) }
 								min={ 0 }
