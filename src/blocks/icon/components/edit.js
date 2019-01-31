@@ -69,7 +69,6 @@ class Edit extends Component {
 
 		const {
 			icon,
-			style,
 			contentAlign,
 			height,
 			width,

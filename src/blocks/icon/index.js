@@ -51,10 +51,6 @@ const blockAttributes = {
 		type: 'string',
 		default: 'medium',
 	},
-	style: {
-		type: 'string',
-		default: 'filled',
-	},
 	contentAlign: {
 		type: 'string',
 		default: 'center',

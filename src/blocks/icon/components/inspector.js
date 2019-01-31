@@ -91,7 +91,6 @@ class Inspector extends Component {
 
 		const {
 			icon,
-			style,
 			borderRadius,
 			padding,
 			iconSize,
