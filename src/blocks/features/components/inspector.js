@@ -167,7 +167,7 @@ class Inspector extends Component {
 								label={ __( 'Gutter' ) }
 								value={ gutter }
 								options={ gutterOptions }
-								help={ __( 'Space between each feature.' ) }
+								help={ __( 'Space between each column.' ) }
 								onChange={ ( value ) => setAttributes( { gutter: value } ) }
 							/>
 						}

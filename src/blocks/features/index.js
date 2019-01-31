@@ -105,18 +105,14 @@ const settings = {
 	edit: Edit,
 
 	getEditWrapperProps( attributes ) {
-		const { id, layout, columns, hasAlignmentControls } = attributes;
+		const { id, layout, columns } = attributes;
 
 		// If no layout is seleted, return the following.
 		if ( ! layout ) {
-			return { 'data-id': id, 'data-columns': columns, 'data-layout': 'none' };
+			return { 'data-id': id, 'data-columns': columns, };
 		}
 
-		if ( hasAlignmentControls == false ) {
-			return { 'data-align': '' };
-		}
-
-		return { 'data-id': id, 'data-columns': columns, 'data-layout': layout };
+		return { 'data-id': id, 'data-columns': columns };
 	},
 
 	save( { attributes, className } ) {
@@ -126,39 +122,13 @@ const settings = {
 			backgroundColor,
 			backgroundImg,
 			columns,
-			content,
-			content_2,
-			content_3,
-			content_4,
 			contentAlign,
 			customBackgroundColor,
 			customTextColor,
-			heading,
-			heading_2,
-			heading_3,
-			heading_4,
 			textColor,
-			headingColor,
-			headingFontSize,
-			headingLineHeight,
-			headingFontFamily,
-			customHeadingFontSize,
-			customHeadingColor,
 			gutter,
-			marginBottom,
-			marginLeft,
-			marginRight,
 			marginSize,
-			marginSyncUnits,
-			marginTop,
-			marginUnit,
-			paddingBottom,
-			paddingLeft,
-			paddingRight,
 			paddingSize,
-			paddingSyncUnits,
-			paddingTop,
-			paddingUnit,
 		} = attributes;
 
 		// Body color class and styles.
@@ -172,7 +142,6 @@ const settings = {
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-features__inner',
-			`has-${ columns }-columns`,
 			...BackgroundClasses( attributes ), {
 			'has-background': backgroundColor || customBackgroundColor,
 			[ backgroundClass ]: backgroundClass,

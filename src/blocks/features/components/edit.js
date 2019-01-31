@@ -92,7 +92,6 @@ class Edit extends Component {
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-features__inner',
-			`has-${ columns }-columns`,
 			...BackgroundClasses( attributes ), {
 				[ `has-${ gutter }-gutter` ] : gutter,
 				'has-padding': paddingSize && paddingSize != 'no',
