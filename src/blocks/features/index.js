@@ -39,11 +39,11 @@ const keywords = [
 const blockAttributes = {
 	gutter: {
 		type: 'string',
-		default: 'medium',
+		default: 'large',
 	},
 	columns: {
 		type: 'number',
-		default: 3,
+		default: 2,
 	},
 	contentAlign: {
 		type: 'string',
@@ -103,6 +103,21 @@ const settings = {
 	},
 
 	edit: Edit,
+
+	getEditWrapperProps( attributes ) {
+		const { id, layout, columns, hasAlignmentControls } = attributes;
+
+		// If no layout is seleted, return the following.
+		if ( ! layout ) {
+			return { 'data-id': id, 'data-columns': columns, 'data-layout': 'none' };
+		}
+
+		if ( hasAlignmentControls == false ) {
+			return { 'data-align': '' };
+		}
+
+		return { 'data-id': id, 'data-columns': columns, 'data-layout': layout };
+	},
 
 	save( { attributes, className } ) {
 
@@ -166,6 +181,7 @@ const settings = {
 			'has-margin': marginSize && marginSize != 'no',
 			[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
 			[ `has-${ gutter }-gutter` ] : gutter,
+			[ `has-${ contentAlign }-content` ]: contentAlign,
 		} );
 
 		const innerStyles = {

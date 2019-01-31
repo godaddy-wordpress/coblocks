@@ -80,7 +80,6 @@ class Edit extends Component {
 		const dropZone = (
 			<BackgroundImageDropZone
 				{ ...this.props }
-				// translators: %s: Lowercase block title
 				label={ __( 'Add backround image' ) }
 			/>
 		);
@@ -100,6 +99,7 @@ class Edit extends Component {
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 				'has-margin': marginSize && marginSize != 'no',
 				[ `has-${ marginSize }-margin` ] : marginSize && marginSize != 'advanced',
+				[ `has-${ contentAlign }-content` ]: contentAlign,
 			}
 		);
 
