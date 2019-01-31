@@ -144,7 +144,7 @@ class Edit extends Component {
 						className={ classes }
 						style={ styles }
 						size={ { width, width } }
-						minWidth={ MIN_ICON_SIZE }
+						minWidth={ padding ? MIN_ICON_SIZE + 28 : MIN_ICON_SIZE  }
 						maxWidth={ MAX_ICON_SIZE }
 						enable={ {
 							top: false,
