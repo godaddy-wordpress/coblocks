@@ -41,7 +41,7 @@ class Edit extends Component {
 
 	componentDidMount() {
 		// Randomized the default icon when first added.
-		const defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'signal', 'blocks', 'coblocks' ];
+		const defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks' ];
 		const rand = defaultIcons[ Math.floor( Math.random() * defaultIcons.length ) ];
 
 		// CHeck if the icon is the default.
