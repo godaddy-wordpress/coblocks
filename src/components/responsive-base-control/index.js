@@ -266,26 +266,6 @@ class ResponsiveBaseControl extends Component {
 
 		const id = `inspector-coblocks-dimensions-control-${ instanceId }`;
 
-		// The idea behind the sync button is:
-		// 1. It is set to true by default.
-		// 2. The Sync button only shows up on the desktop view
-		// 3. When a user changes the input value for tablet or mobile, it is set to false (as now all three values will no longer be synced)
-		// 4. If the sync button is turned back on, then the 'height' attribute (the main desktop one) takes precendence and all three will be set to it.
-		const syncButton = (
-			<Tooltip text={ !! sync ? __( 'Unsync' ) : __( 'Sync' ) } >
-				<Button
-					className="components-coblocks-dimensions-control_sync"
-					aria-label={ __( 'Sync Units' ) }
-					isPrimary={ sync ? sync : false }
-					aria-pressed={ sync ? sync : false }
-					// onClick={ ( value ) => this.syncUnits( value, 'Mobile' ) }
-					isSmall
-				>
-					{ !! sync ? icons.sync : icons.sync }
-				</Button>
-			</Tooltip>
-		);
-		// console.log( this.props );
 		return (
 			<Fragment>
 				<div className={ classes }>
@@ -368,7 +348,6 @@ class ResponsiveBaseControl extends Component {
 															max={ max }
 														/>
 													</BaseControl>
-													{ syncButton }
 												</div>
 											</Fragment>
 										)
