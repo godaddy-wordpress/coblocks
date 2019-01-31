@@ -24,16 +24,19 @@ class Controls extends Component {
 
 		const {
 			contentAlign,
+			hasContentAlign,
 		} = attributes;
 
 		return (
 			<Fragment>
-				<BlockControls>
-					<AlignmentToolbar
-						value={ contentAlign }
-						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
-					/>
-				</BlockControls>
+				{ hasContentAlign && (
+					<BlockControls>
+						<AlignmentToolbar
+							value={ contentAlign }
+							onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
+						/>
+					</BlockControls>
+				) }
 			</Fragment>
 		);
 	}
