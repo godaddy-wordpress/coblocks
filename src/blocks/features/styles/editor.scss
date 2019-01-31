@@ -142,16 +142,22 @@
 				> .editor-block-list__layout{
 					> .wp-block{
 						.editor-block-list__block-edit{
-							margin-bottom: 0px;
+							margin-bottom: 0;
 						}
 						&:first-child{
 							.editor-block-list__block-edit{
-								margin-top: 0px;
+								margin-top: 0;
 							}
 						}
 					}
 				}
 			}
 		}
+	}
+}
+
+.components-coblocks-block-sidebar--features {
+	.components-range-control {
+		margin-bottom: 0 !important;
 	}
 }
