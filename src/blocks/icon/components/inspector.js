@@ -320,7 +320,20 @@ class Inspector extends Component {
 							},
 							{
 								value: backgroundColor.color,
-								onChange: setBackgroundColor,
+								onChange: ( newBackground)   => {
+
+									//auto assign padding
+									if( padding == 0 ){
+										setAttributes( {  padding: 15 } );
+									}
+									
+									//reset padding with no color
+									if( !newBackground ){
+										setAttributes( {  padding: 0, borderRadius: 0 } );
+									}
+									
+									setBackgroundColor( newBackground );
+								},
 								label: __( 'Background Color' ),
 							},
 
