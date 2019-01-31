@@ -98,8 +98,8 @@ const settings = {
 	edit: Edit,
 
 	styles: [
-		{ name: 'filled', label: __( 'Filled' ), isDefault: true },
-		{ name: 'outlined', label: __( 'Outlined' ) },
+		{ name: 'outlined', label: __( 'Outlined' ), isDefault: true },
+		{ name: 'filled', label: __( 'Filled' ) },
 	],
 
 	save( { attributes, className } ) {

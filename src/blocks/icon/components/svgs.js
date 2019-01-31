@@ -211,14 +211,14 @@ const icons = {
 
 Object.entries( icons ).filter( function( item ) {
 
-	svgs.filled[ item[0] ] = {
-		icon: ( icons[ item[0] ] ) ? icons[ item[0] ].icon : null,
+	svgs.outlined[ item[0] ] = {
+		icon: ( icons[ item[0] ] && icons[ item[0] ].icon_outlined ) ? icons[ item[0] ].icon_outlined : icons[ item[0] ].icon,
 		label : ( icons[ item[0] ] ) ? icons[ item[0] ].label : null,
 		keywords : ( icons[ item[0] ] ) ? icons[ item[0] ].keywords : null,
 	}
 
-	svgs.outlined[ item[0] ] = {
-		icon: ( icons[ item[0] ] && icons[ item[0] ].icon_outlined ) ? icons[ item[0] ].icon_outlined : icons[ item[0] ].icon,
+	svgs.filled[ item[0] ] = {
+		icon: ( icons[ item[0] ] ) ? icons[ item[0] ].icon : null,
 		label : ( icons[ item[0] ] ) ? icons[ item[0] ].label : null,
 		keywords : ( icons[ item[0] ] ) ? icons[ item[0] ].keywords : null,
 	}

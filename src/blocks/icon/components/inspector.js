@@ -98,9 +98,9 @@ class Inspector extends Component {
 			height,
 		} = attributes;
 
-		let iconStyle = 'filled';
+		let iconStyle = 'outlined';
 
-		if( className.includes( 'is-style-outlined' ) ){
+		if ( className.includes( 'is-style-filled' ) ){
 			iconStyle = 'outlined';
 		}
 

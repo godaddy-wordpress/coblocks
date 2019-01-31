@@ -92,10 +92,10 @@ class Edit extends Component {
 			padding: padding + 'px',
 		};
 
-		let iconStyle = 'filled';
+		let iconStyle = 'outlined';
 
-		if( className.includes( 'is-style-outlined' ) ){
-			iconStyle = 'outlined';
+		if ( className.includes( 'is-style-filled' ) ) {
+			iconStyle = 'filled';
 		}
 
 		let selectedIcon = icon ? svgs[ iconStyle ][ icon ] : svgs[ iconStyle ].logo;
