@@ -1,16 +1,9 @@
 /**
- * Internal dependencies
- */
-
-/**
  * WordPress dependencies
  */
 const { _x } = wp.i18n;
 const { SVG, Path, G } = wp.components;
 
-/**
- * Generate icons from material.js
- */
 const svgs = {
 	outlined: {},
 	filled: {},
