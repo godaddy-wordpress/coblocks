@@ -58,13 +58,13 @@ const blockAttributes = {
 	backgroundColor: {
 		type: 'string',
 	},
-	textColor: {
+	iconColor: {
 		type: 'string',
 	},
 	customBackgroundColor: {
 		type: 'string',
 	},
-	customTextColor: {
+	customIconColor: {
 		type: 'string',
 	},
 	height: {
@@ -108,9 +108,9 @@ const settings = {
 			icon,
 			backgroundColor,
 			customBackgroundColor,
-			customTextColor,
+			customIconColor,
 			contentAlign,
-			textColor,
+			iconColor,
 			height,
 			width,
 			borderRadius,
@@ -127,11 +127,11 @@ const settings = {
 			}
 		}
 
-		const textClass = getColorClassName( 'color', textColor );
+		const textClass = getColorClassName( 'color', iconColor );
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames( 'wp-block-coblocks-icon__inner', {
-			'has-text-color': textColor || customTextColor,
+			'has-text-color': iconColor || customIconColor,
 			[ textClass ]: textClass,
 			'has-background': backgroundColor || customBackgroundColor,
 			[ backgroundClass ]: backgroundClass,
@@ -139,8 +139,8 @@ const settings = {
 
 		const styles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			color: textClass ? undefined : customTextColor,
-			fill: textClass ? undefined : customTextColor,
+			color: textClass ? undefined : customIconColor,
+			fill: textClass ? undefined : customIconColor,
 			height: height,
 			width: width,
 			borderRadius: borderRadius ? borderRadius + 'px' : undefined,

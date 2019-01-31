@@ -61,8 +61,8 @@ class Edit extends Component {
 			onReplace,
 			setAttributes,
 			setBackgroundColor,
-			setTextColor,
-			textColor,
+			setIconColor,
+			iconColor,
 			toggleSelection,
 			isRTL,
 		} = this.props;
@@ -79,15 +79,15 @@ class Edit extends Component {
 		const classes = classnames( 'wp-block-coblocks-icon__inner', {
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
-			'has-text-color': textColor.color,
-			[ textColor.class ]: textColor.class,
+			'has-text-color': iconColor.color,
+			[ iconColor.class ]: iconColor.class,
 			'is-selected': isSelected,
 		} );
 
 		const styles = {
 			backgroundColor: backgroundColor.color,
-			color: textColor.color,
-			fill: textColor.color,
+			color: iconColor.color,
+			fill: iconColor.color,
 			borderRadius: borderRadius + 'px',
 			padding: padding + 'px',
 		};

@@ -1,6 +1,6 @@
 .components-coblocks-icon-block--advanced-size {
-	position: relative;
 	margin-bottom: 1.5em;
+	position: relative;
 
 	.components-color-palette__clear {
 		bottom: 3px;
@@ -23,6 +23,7 @@
 	overflow: hidden;
 	width: calc(100% + 6px);
 
+	// Hides the vertical scroll-bar.
 	> ul {
 		box-sizing: content-box; /* So the width will be 100% + 17px */
 		height: 100%;

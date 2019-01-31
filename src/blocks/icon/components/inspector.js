@@ -27,12 +27,12 @@ const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseCo
  */
 const { getComputedStyle } = window;
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { backgroundColor, textColor } = ownProps.attributes;
+	const { backgroundColor, iconColor } = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 	return {
 		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+		fallbackIconColor: iconColor || ! computedStyles ? undefined : computedStyles.color,
 	};
 } );
 
@@ -79,11 +79,11 @@ class Inspector extends Component {
 			attributes,
 			setAttributes,
 			backgroundColor,
-			textColor,
+			iconColor,
 			fallbackBackgroundColor,
-			fallbackTextColor,
+			fallbackIconColor,
 			setBackgroundColor,
-			setTextColor,
+			setIconColor,
 			className,
 			label = __( 'Size' ),
 			help,
@@ -315,8 +315,8 @@ class Inspector extends Component {
 						colorSettings={ [
 							{
 								isLargeText: true,
-								value: textColor.color,
-								onChange: setTextColor,
+								value: iconColor.color,
+								onChange: setIconColor,
 								label: __( 'Icon Color' ),
 							},
 							{
@@ -342,9 +342,9 @@ class Inspector extends Component {
 					>
 					<ContrastChecker
 						{ ...{
-							textColor: textColor.color,
+							iconColor: iconColor.color,
 							backgroundColor: backgroundColor.color,
-							fallbackTextColor,
+							fallbackIconColor,
 							fallbackBackgroundColor,
 						} }
 					/>
