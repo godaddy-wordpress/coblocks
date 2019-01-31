@@ -514,7 +514,7 @@ class ResponsiveBaseControl extends Component {
 				</Button>
 			</Tooltip>
 		);
-
+		// console.log( this.props );
 		return (
 			<Fragment>
 				<div className={ classes }>

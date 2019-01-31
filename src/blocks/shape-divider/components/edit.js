@@ -82,12 +82,12 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
-			height,
+			shapeHeight,
 			heightAlt,
 			verticalFlip,
 			horizontalFlip,
 		} = attributes;
-
+		console.log( attributes );
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -124,7 +124,7 @@ class Edit extends Component {
 						color: color.color,
 					} }
 					size={ {
-						height,
+						height: shapeHeight,
 					} }
 					minHeight="40"
 					enable={ {
@@ -139,7 +139,7 @@ class Edit extends Component {
 					} }
 					onResizeStop={ ( event, direction, elt, delta ) => {
 						setAttributes( {
-							height: parseInt( height + delta.height, 10 ),
+							shapeHeight: parseInt( shapeHeight + delta.height, 10 ),
 						} );
 						toggleSelection( true );
 						this.setState( { resizing: false } );

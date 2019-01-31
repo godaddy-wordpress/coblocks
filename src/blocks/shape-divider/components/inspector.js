@@ -44,7 +44,7 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
-			height,
+			shapeHeight,
 			heightTablet,
 			heightMobile,
 			heightAlt,
@@ -62,13 +62,14 @@ class Inspector extends Component {
 					<PanelBody title={ __( 'Divider Settings' ) }>
 						<ResponsiveBaseControl { ...this.props }
 							label={ __( 'Shape Height' ) }
-							height={ height }
+							height={ shapeHeight }
 							heightTablet={ heightTablet }
 							heightMobile={ heightMobile }
-							onChange={ ( event ) => { setAttributes( { height: parseInt( event.target.value, 10 ) } ) } }
+							onChange={ ( event ) => { setAttributes( { shapeHeight: parseInt( event.target.value, 10 ) } ) } }
 							onChangeTablet={ ( event ) => { setAttributes( { heightTablet: parseInt( event.target.value, 10 ) } ) } }
 							onChangeMobile={ ( event ) => { setAttributes( { heightMobile: parseInt( event.target.value, 10 ) } ) } }
 							sync={ syncHeight }
+							type="shapeHeight"
 							min="40"
 						/>
 						<ResponsiveBaseControl { ...this.props }
@@ -80,6 +81,7 @@ class Inspector extends Component {
 							onChangeTablet={ ( event ) => { setAttributes( { heightAltTablet: parseInt( event.target.value, 10 ) } ) } }
 							onChangeMobile={ ( event ) => { setAttributes( { heightAltMobile: parseInt( event.target.value, 10 ) } ) } }
 							sync={ syncHeight }
+							type="backgroundHeight"
 							min="10"
 						/>
 						<BaseControl label={ __( 'Background Height in pixels' ) }>

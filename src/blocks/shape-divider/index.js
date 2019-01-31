@@ -44,6 +44,16 @@ const blockAttributes = {
 		type: 'number',
 		default: 100,
 	},
+	shapeHeight: {
+		type: 'number',
+		default: 100,
+	},
+	heighMobile: {
+		type: 'number',
+	},
+	heighTablet: {
+		type: 'number',
+	},
 	heightAlt: {
 		type: 'number',
 		default: 50,
