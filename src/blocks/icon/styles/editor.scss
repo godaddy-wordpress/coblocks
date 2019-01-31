@@ -1,5 +1,5 @@
 .components-coblocks-icon-block--advanced-size {
-	margin-bottom: 1.5em;
+	// margin-bottom: 1.5em;
 	position: relative;
 
 	.components-color-palette__clear {
@@ -27,6 +27,7 @@
 	> ul {
 		box-sizing: content-box; /* So the width will be 100% + 17px */
 		height: 100%;
+		margin-bottom: 0.5em;
 		overflow-y: scroll;
 		padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
 		width: 100%;
