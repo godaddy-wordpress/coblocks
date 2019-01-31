@@ -48,20 +48,20 @@ const blockAttributes = {
 		type: 'number',
 		default: 100,
 	},
-	heighMobile: {
+	shapeHeightMobile: {
 		type: 'number',
 	},
-	heighTablet: {
+	shapeHeightTablet: {
 		type: 'number',
 	},
-	heightAlt: {
+	backgroundHeight: {
 		type: 'number',
 		default: 50,
 	},
-	heightAltMobile: {
+	backgroundHeightMobile: {
 		type: 'number',
 	},
-	heightAltTablet: {
+	backgroundHeightTablet: {
 		type: 'number',
 	},
 	syncHeightAlt: {

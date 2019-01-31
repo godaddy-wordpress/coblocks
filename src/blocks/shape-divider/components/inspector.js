@@ -45,11 +45,11 @@ class Inspector extends Component {
 
 		const {
 			shapeHeight,
-			heightTablet,
-			heightMobile,
-			heightAlt,
-			heightAltMobile,
-			heightAltTablet,
+			shapeHeightTablet,
+			shapeHeightMobile,
+			backgroundHeight,
+			backgroundHeightMobile,
+			backgroundHeightTablet,
 			syncHeight,
 			horizontalFlip,
 			verticalFlip,
@@ -63,40 +63,28 @@ class Inspector extends Component {
 						<ResponsiveBaseControl { ...this.props }
 							label={ __( 'Shape Height' ) }
 							height={ shapeHeight }
-							heightTablet={ heightTablet }
-							heightMobile={ heightMobile }
+							heightTablet={ shapeHeightTablet }
+							heightMobile={ shapeHeightMobile }
 							onChange={ ( event ) => { setAttributes( { shapeHeight: parseInt( event.target.value, 10 ) } ) } }
-							onChangeTablet={ ( event ) => { setAttributes( { heightTablet: parseInt( event.target.value, 10 ) } ) } }
-							onChangeMobile={ ( event ) => { setAttributes( { heightMobile: parseInt( event.target.value, 10 ) } ) } }
+							onChangeTablet={ ( event ) => { setAttributes( { shapeHeightTablet: parseInt( event.target.value, 10 ) } ) } }
+							onChangeMobile={ ( event ) => { setAttributes( { shapeHeightMobile: parseInt( event.target.value, 10 ) } ) } }
 							sync={ syncHeight }
 							type="shapeHeight"
 							min="40"
 						/>
 						<ResponsiveBaseControl { ...this.props }
 							label={ __( 'Background Height' ) }
-							height={ heightAlt }
-							heightTablet={ heightAltTablet }
-							heightMobile={ heightAltMobile }
-							onChange={ ( event ) => { setAttributes( { heightAlt: parseInt( event.target.value, 10 ) } ) } }
-							onChangeTablet={ ( event ) => { setAttributes( { heightAltTablet: parseInt( event.target.value, 10 ) } ) } }
-							onChangeMobile={ ( event ) => { setAttributes( { heightAltMobile: parseInt( event.target.value, 10 ) } ) } }
+							height={ backgroundHeight }
+							heightTablet={ backgroundHeightTablet }
+							heightMobile={ backgroundHeightMobile }
+							onChange={ ( event ) => { setAttributes( { backgroundHeight: parseInt( event.target.value, 10 ) } ) } }
+							onChangeTablet={ ( event ) => { setAttributes( { backgroundHeightTablet: parseInt( event.target.value, 10 ) } ) } }
+							onChangeMobile={ ( event ) => { setAttributes( { backgroundHeightMobile: parseInt( event.target.value, 10 ) } ) } }
 							sync={ syncHeight }
 							type="backgroundHeight"
 							min="10"
 						/>
-						<BaseControl label={ __( 'Background Height in pixels' ) }>
-							<input
-								type="number"
-								onChange={ ( event ) => {
-									setAttributes( {
-										heightAlt: parseInt( event.target.value, 10 ),
-									} );
-								} }
-								value={ heightAlt }
-								min="10"
-								step="1"
-							/>
-						</BaseControl>
+						
 						<OrientationControl { ...this.props }
 							label={ __( 'Orientation' ) }
 							help={ __( 'Flip vertically and horizontally.' ) }

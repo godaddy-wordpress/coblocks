@@ -83,7 +83,7 @@ class Edit extends Component {
 
 		const {
 			shapeHeight,
-			heightAlt,
+			backgroundHeight,
 			verticalFlip,
 			horizontalFlip,
 		} = attributes;
@@ -162,7 +162,7 @@ class Edit extends Component {
 						backgroundColor: color.color,
 					} }
 					size={ {
-						height: heightAlt,
+						height: backgroundHeight,
 					} }
 					minWidth="100%"
 					minHeight="10"
@@ -178,7 +178,7 @@ class Edit extends Component {
 					} }
 					onResizeStop={ ( event, direction, elt, delta ) => {
 						setAttributes( {
-							heightAlt: parseInt( heightAlt + delta.height, 10 ),
+							backgroundHeight: parseInt( backgroundHeight + delta.height, 10 ),
 						} );
 						toggleSelection( true );
 						this.setState( { resizingAlt: false } );
