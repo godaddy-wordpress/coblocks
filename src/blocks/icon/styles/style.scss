@@ -1,0 +1,13 @@
+.wp-block-coblocks-icon {
+	&__inner {
+		display: inline-block;
+		vertical-align: middle;
+
+		> svg {
+			fill: currentColor;
+			height: 100%;
+			vertical-align: middle;
+			width: 100%;
+		}
+	}
+}
