@@ -1,15 +1,9 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
 const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { RichText, InnerBlocks, withFontSizes } = wp.editor;
+const { InnerBlocks } = wp.editor;
 
 /**
  * Constants
@@ -17,6 +11,7 @@ const { RichText, InnerBlocks, withFontSizes } = wp.editor;
 const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/image', 'coblocks/highlight', ];
 
 const TEMPLATE = [
+	[ 'coblocks/icon' ],
 	[ 'core/heading', { placeholder: _x( 'Add feature title...', 'content placeholder' ), content: _x( 'Feature Title', 'content placeholder' ), level: 4 } ],
 	[ 'core/paragraph', { placeholder: _x( 'Add feature content', 'content placeholder' ), content: _x( 'This is a feature block that you can use to highlight features.', 'content placeholder' ), } ]
 ];
