@@ -105,24 +105,18 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Features Settings' ) } className='block-coblocks__inspector-block-settings-panel-body'>
-						<p className="components-coblocks__toolbar-control--numerals-label">{ __( 'Features' ) }</p>
-						<Toolbar
-							className="components-coblocks__toolbar-control--numerals"
-							controls={ '123'.split( '' ).map( ( count ) => ( {
-								icon: icons.blank,
-								// translators: %s: columns count e.g: "1", "2", "3"
-								title: sprintf( __( '%s Columns' ), count ),
-								isActive: columns == count,
-								subscript: count,
-								onClick: () => {
-										setAttributes( {
-											columns: parseInt( count ),
-										} );
-										wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
-									}
-								} )
-							) }
+					<PanelBody title={ __( 'Features Settings' ) } className='components-coblocks-block-sidebar--features'>
+						<RangeControl
+							label={ __( 'Columns' ) }
+							value={ columns }
+							onChange={ ( nextCount ) => {
+								setAttributes( {
+									columns: parseInt( nextCount ),
+								} );
+								wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
+							} }
+							min={ 1 }
+							max={ 3 }
 						/>
 						<DimensionsControl { ...this.props }
 							type={ 'margin' }
