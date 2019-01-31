@@ -30,6 +30,13 @@
 		padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
 		width: 100%;
 	}
+
+	.no-results {
+		font-style: italic;
+		margin-bottom: 0;
+		margin-left: 4px;
+		margin-top: -8px;
+	}
 }
 
 .coblocks-icon-types-list {
@@ -39,7 +46,7 @@
 	padding: 4px 0 0 0;
 
 	&__search {
-		margin-bottom: 0.75em !important;
+		margin-bottom: 0.7em !important;
 	}
 
 	.editor-block-types-list__list-item {

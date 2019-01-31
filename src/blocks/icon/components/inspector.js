@@ -305,7 +305,7 @@ class Inspector extends Component {
 											</Tooltip>
 										</li>
 									];
-								}) : <p> { __( 'Nothing found' ) } </p> }
+								}) : <li className="no-results"> { __( 'No results found.' ) } </li> }
 							</ul>
 						</div>
 					</PanelBody>
