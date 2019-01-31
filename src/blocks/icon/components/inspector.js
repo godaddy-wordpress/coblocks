@@ -1,14 +1,17 @@
-/**
- * Internal dependencies
- */
-import applyWithColors from './colors';
-import svg from '../icons/icons';
 
 /**
  * External dependencies
  */
 import classnames from 'classnames';
 import map from 'lodash/map';
+
+/**
+ * Internal dependencies
+ */
+import applyWithColors from './colors';
+import svg from './svgs';
+import { DEFAULT_ICON_SIZE } from '.././';
+import { MIN_ICON_SIZE, MAX_ICON_SIZE } from './edit';
 
 /**
  * WordPress dependencies
@@ -131,41 +134,40 @@ class Inspector extends Component {
 		const utilitySizes = [
 			{
 				name: __( 'Small' ),
-				size: 100,
+				size: 40,
 				slug: 'small',
 			},
 			{
 				name: __( 'Medium' ),
-				size: 240,
+				size: DEFAULT_ICON_SIZE,
 				slug: 'medium',
 			},
 			{
 				name: __( 'Large' ),
-				size: 340,
+				size: 120,
 				slug: 'large',
 			},{
 				name: __( 'Huge' ),
-				size: 600,
+				size: 200,
 				slug: 'huge',
 			},
 		];
 
 		const currentSize = utilitySizes.find( ( utility ) => utility.slug === iconSize );
+
 		return (
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Icon Settings' ) }>
 						{ iconSize === 'advanced' ?
 							<Fragment>
-								<div className='components-coblocks-dimensions-control__header'>
+								<div className='components-coblocks-icon-block--advanced-size'>
 									<Button
 										className="components-color-palette__clear"
 										type="button"
 										onClick={ () => {
-											//fix resizer issues
 											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';
-
-											this.onChangeSize( 'small', 100 );
+											this.onChangeSize( 'medium', DEFAULT_ICON_SIZE );
 										} }
 										isSmall
 										isDefault
@@ -173,20 +175,18 @@ class Inspector extends Component {
 									>
 										{ __( 'Reset' ) }
 									</Button>
-								</div>
-								<RangeControl
-									label={ __( 'Custom Size' ) }
-									value={ width }
-									onChange={ ( nextWidth ) => {
-											//fix resizer issues
+									<RangeControl
+										label={ __( 'Custom Size' ) }
+										value={ width }
+										onChange={ ( nextWidth ) => {
 											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';
-
 											setAttributes( {  width: nextWidth, height: nextWidth } )
-									} }
-									min={ 0 }
-									max={ 1000 }
-									step={ 1 }
-								/>
+										} }
+										min={ MIN_ICON_SIZE }
+										max={ MAX_ICON_SIZE }
+										step={ 1 }
+									/>
+								</div>
 							</Fragment> :
 							<BaseControl id="textarea-1" label={ label } help={ help }>
 								<div className="components-font-size-picker__buttons">
@@ -236,6 +236,25 @@ class Inspector extends Component {
 								</div>
 							</BaseControl>
 						}
+						{ ( backgroundColor.color ) ?
+							[ <RangeControl
+								label={ __( 'Rounded Corners' ) }
+								value={ borderRadius }
+								onChange={ ( nextBorderRadius ) => setAttributes( {  borderRadius: nextBorderRadius } ) }
+								min={ 0 }
+								max={ 200 }
+								step={ 1 }
+							/>,
+							<RangeControl
+								label={ __( 'Padding' ) }
+								value={ padding }
+								onChange={ ( nextPadding ) => setAttributes( {  padding: nextPadding } ) }
+								min={ 0 }
+								max={ 100 }
+								step={ 1 }
+							/>
+							]
+						: null }
 						<TextControl
 							type='text'
 							autocomplete="off"
@@ -247,62 +266,47 @@ class Inspector extends Component {
 								}
 							}
 						/>
-						<ul role="list" className="editor-block-types-list coblocks-icon-types-list">
-							{ ! this.state.isSearching ?
-								<li className="editor-block-types-list__list-item selected-svg">
-									<Button
-										isLarge
-										className="editor-block-list-item-button"
-										onClick={ () => {
-											return false;
-										} }
-									>
-										<span className="editor-block-types-list__item-icon">
-											{ svg[ iconStyle ][ icon ].icon }
-										</span>
-									</Button>
-								</li>
-								: null
-							}
-							{ Object.keys( this.state.filteredIcons[ iconStyle ] ).length > 0 ? Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
-								return[
-									<li className={ classnames(
-										'editor-block-types-list__list-item',{
-											[ 'is-selected' ] : icon && ( icon == keyName )
-										},
-									) }>
+						<div className="coblocks-icon-types-list-wrapper">
+							<ul role="list" className="editor-block-types-list coblocks-icon-types-list">
+								{ ! this.state.isSearching ?
+									<li className="editor-block-types-list__list-item selected-svg">
 										<Button
 											isLarge
 											className="editor-block-list-item-button"
 											onClick={ () => {
-												setAttributes({ icon: keyName });
+												return false;
 											} }
 										>
 											<span className="editor-block-types-list__item-icon">
-												{ svg[ iconStyle ][ keyName ].icon }
+												{ svg[ iconStyle ][ icon ].icon }
 											</span>
 										</Button>
 									</li>
-								];
-							}) : <p> { __( 'Nothing found' ) } </p> }
-						</ul>
-						{ ( backgroundColor.color ) ?
-							[ <RangeControl
-								label={ __( 'Border Radius' ) }
-								value={ borderRadius }
-								onChange={ ( nextBorderRadius ) => setAttributes( {  borderRadius: nextBorderRadius } ) }
-								min={ 0 }
-								max={ 999 }
-								step={ 1 }
-							/>,
-							<RangeControl
-								label={ __( 'Padding' ) }
-								value={ padding }
-								onChange={ ( nextPadding ) => setAttributes( {  padding: nextPadding } ) }
-								min={ 0 }
-								max={ 999 }
-								step={ 1 }
-							/> ] : null }
+									: null
+								}
+								{ Object.keys( this.state.filteredIcons[ iconStyle ] ).length > 0 ? Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
+									return[
+										<li className={ classnames(
+											'editor-block-types-list__list-item',{
+												[ 'is-selected' ] : icon && ( icon == keyName )
+											},
+										) }>
+											<Button
+												isLarge
+												className="editor-block-list-item-button"
+												onClick={ () => {
+													setAttributes({ icon: keyName });
+												} }
+											>
+												<span className="editor-block-types-list__item-icon">
+													{ svg[ iconStyle ][ keyName ].icon }
+												</span>
+											</Button>
+										</li>
+									];
+								}) : <p> { __( 'Nothing found' ) } </p> }
+							</ul>
+						</div>
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }

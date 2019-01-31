@@ -10,7 +10,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
 import Edit from './components/edit';
-import svg from './icons/icons';
+import svgs from './components/svgs';
 
 /**
  * WordPress dependencies
@@ -18,6 +18,11 @@ import svg from './icons/icons';
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
 const { RichText, getColorClassName, getFontSizeClass } = wp.editor;
+
+/**
+ * Set default icon size equivalent to "Medium".
+ */
+export const DEFAULT_ICON_SIZE = 60;
 
 /**
  * Block constants
@@ -37,6 +42,14 @@ const blockAttributes = {
 	icon: {
 		type: 'string',
 		default: 'heart',
+	},
+	iconRand: {
+		type: 'boolean',
+		default: true,
+	},
+	iconSize: {
+		type: 'string',
+		default: 'medium',
 	},
 	style: {
 		type: 'string',
@@ -60,11 +73,11 @@ const blockAttributes = {
 	},
 	height: {
 		type: 'number',
-		default: 100,
+		default: DEFAULT_ICON_SIZE,
 	},
 	width: {
 		type: 'number',
-		default: 100,
+		default: DEFAULT_ICON_SIZE,
 	},
 	borderRadius: {
 		type: 'number',
@@ -73,10 +86,6 @@ const blockAttributes = {
 	padding: {
 		type: 'number',
 		default: 0,
-	},
-	iconSize: {
-		type: 'string',
-		default: 'small',
 	},
 };
 
@@ -101,7 +110,6 @@ const settings = {
 
 		const {
 			icon,
-			style,
 			backgroundColor,
 			customBackgroundColor,
 			customTextColor,
@@ -146,7 +154,7 @@ const settings = {
 		return (
 			<div className={ className } style={ { textAlign: contentAlign ? contentAlign : undefined } }>
 				<div className={ classes } style={ styles }>
-					{ svg[ iconStyle ][ icon ].icon }
+					{ svgs[ iconStyle ][ icon ].icon }
 				</div>
 			</div>
 		);

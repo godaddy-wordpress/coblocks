@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 import Controls from './controls';
-import svg from '../icons/icons';
+import svgs from './svgs';
 
 /**
  * WordPress dependencies
@@ -23,12 +23,31 @@ const { ResizableBox } = wp.components;
 const { withSelect } = wp.data;
 
 /**
+ * Set and export block values.
+ */
+const MIN_ICON_SIZE = 32;
+const MAX_ICON_SIZE = 400;
+
+export { MIN_ICON_SIZE, MAX_ICON_SIZE };
+
+/**
  * Block edit function
  */
 class Edit extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
+	}
+
+	componentDidMount() {
+		// Randomized the default icon when first added.
+		const defaultIcons = [ 'heart', 'gesture', 'scatter_plot', 'circle_add', 'circle_remove' ];
+		const rand = defaultIcons[ Math.floor( Math.random() * defaultIcons.length ) ];
+
+		// CHeck if the icon is the default.
+		if ( this.props.attributes.iconRand === true ) {
+			this.props.setAttributes( { icon: rand, iconRand: false } )
+		}
 	}
 
 	render() {
@@ -46,7 +65,6 @@ class Edit extends Component {
 			textColor,
 			toggleSelection,
 			isRTL,
-			maxWidth,
 		} = this.props;
 
 		const {
@@ -81,15 +99,7 @@ class Edit extends Component {
 			iconStyle = 'outlined';
 		}
 
-		let selectedIcon = icon ? svg[ iconStyle ][ icon ] : svg[ iconStyle ].logo;
-		
-		// With the current implementation of ResizableBox, an image needs an explicit pixel value for the max-width.
-		// In absence of being able to set the content-width, this max-width is currently dictated by the vanilla editor style.
-		// The following variable adds a buffer to this vanilla style, so 3rd party themes have some wiggleroom.
-		// This does, in most cases, allow you to scale the image beyond the width of the main column, though not infinitely.
-		// @todo It would be good to revisit this once a content-width variable becomes available.
-		const maxWidthBuffer = maxWidth * 1.75;
-
+		let selectedIcon = icon ? svgs[ iconStyle ][ icon ] : svgs[ iconStyle ].logo;
 
 		// Show or hide handles based on the contentAlign attribute.
 		let showRightHandle = false;
@@ -135,7 +145,8 @@ class Edit extends Component {
 						className={ classes }
 						style={ styles }
 						size={ { width } }
-						maxWidth={ maxWidthBuffer }
+						minWidth={ MIN_ICON_SIZE }
+						maxWidth={ MAX_ICON_SIZE }
 						enable={ {
 							top: false,
 							right: showRightHandle,
@@ -167,10 +178,9 @@ export default compose( [
 	applyWithColors,
 	withSelect( ( select, props ) => {
 		const { getEditorSettings } = select( 'core/editor' );
-		const { maxWidth, isRTL } = getEditorSettings();
+		const { isRTL } = getEditorSettings();
 
 		return {
-			maxWidth,
 			isRTL,
 		};
 	} ),

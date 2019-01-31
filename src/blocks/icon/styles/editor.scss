@@ -1,24 +1,55 @@
-// Icon Search and Select
-.coblocks-icon-types-list {
-	max-height: 270px;
-	overflow-y: scroll;
-	padding: 0;
-	padding-top: 4px;
+.components-coblocks-icon-block--advanced-size {
+	position: relative;
+	margin-bottom: 1.5em;
+
+	.components-color-palette__clear {
+		bottom: 3px;
+		position: absolute;
+		right: 0;
+	}
+
+	.components-range-control {
+		width: calc(100% - 60px);
+
+		.components-range-control__number {
+			margin-left: 12px;
+		}
+	}
+}
+
+.coblocks-icon-types-list-wrapper {
+	height: 100%;
 	margin-left: -3px;
+	overflow: hidden;
 	width: calc(100% + 6px);
+
+	> ul {
+		box-sizing: content-box; /* So the width will be 100% + 17px */
+		height: 100%;
+		overflow-y: scroll;
+		padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+		width: 100%;
+	}
+}
+
+.coblocks-icon-types-list {
 	margin-top: 0;
+	max-height: 220px;
+	overflow-y: scroll;
+	padding: 4px 0 0 0;
 
 	&__search {
 		margin-bottom: 0.75em !important;
-
-		input[type="text"] {
-			padding: 7px 8px;
-		}
 	}
 
 	.editor-block-types-list__list-item {
 		margin: 0 0 8px;
 		padding: 0 4px;
+		width: 29.9%;
+
+		@media screen and (max-width: 782px) {
+			width: 31.5%;
+		}
 
 		.components-button {
 			align-items: center;
@@ -29,7 +60,7 @@
 			display: flex;
 			height: auto;
 			justify-content: center;
-			padding: 13px 0;
+			padding: 14px 0;
 			width: 100%;
 
 			&:hover {
@@ -40,19 +71,21 @@
 				}
 			}
 
-			&:focus {
+			&:focus,
+			&:active:enabled {
 				background: #f8faf9;
 				box-shadow: none;
 				outline: none;
+				box-shadow: 0 0 0 3px #f8faf9;
 			}
 
 			svg {
 				fill: #3f464d;
 				height: 18px;
 				margin: 0;
+				overflow: hidden;
 				padding: 0;
 				width: 18px;
-				overflow: hidden;
 			}
 		}
 
