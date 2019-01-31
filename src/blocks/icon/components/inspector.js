@@ -20,7 +20,7 @@ const { __, _x, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
-const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, NavigableMenu, Dropdown, ButtonGroup, Dashicon } = wp.components;
+const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, NavigableMenu, Dropdown, ButtonGroup, Dashicon, Tooltip } = wp.components;
 
 /**
  * Fallback styles
@@ -248,7 +248,7 @@ class Inspector extends Component {
 								label={ __( 'Padding' ) }
 								value={ padding }
 								onChange={ ( nextPadding ) => setAttributes( {  padding: nextPadding } ) }
-								min={ 0 }
+								min={ 10 }
 								max={ 100 }
 								step={ 1 }
 							/>
@@ -290,17 +290,19 @@ class Inspector extends Component {
 												[ 'is-selected' ] : icon && ( icon == keyName )
 											},
 										) }>
-											<Button
-												isLarge
-												className="editor-block-list-item-button"
-												onClick={ () => {
-													setAttributes({ icon: keyName });
-												} }
-											>
-												<span className="editor-block-types-list__item-icon">
-													{ svg[ iconStyle ][ keyName ].icon }
-												</span>
-											</Button>
+											<Tooltip text={ keyName }>
+												<Button
+													isLarge
+													className="editor-block-list-item-button"
+													onClick={ () => {
+														setAttributes({ icon: keyName });
+													} }
+												>
+													<span className="editor-block-types-list__item-icon">
+														{ svg[ iconStyle ][ keyName ].icon }
+													</span>
+												</Button>
+											</Tooltip>
 										</li>
 									];
 								}) : <p> { __( 'Nothing found' ) } </p> }
@@ -321,16 +323,16 @@ class Inspector extends Component {
 								value: backgroundColor.color,
 								onChange: ( newBackground)   => {
 
-									//auto assign padding
+									// Auto assign padding.
 									if( padding == 0 ){
 										setAttributes( {  padding: 15 } );
 									}
-									
-									//reset padding with no color
-									if( !newBackground ){
+
+									// Reset padding when colors are cleared.
+									if( ! newBackground ){
 										setAttributes( {  padding: 0, borderRadius: 0 } );
 									}
-									
+
 									setBackgroundColor( newBackground );
 								},
 								label: __( 'Background Color' ),
