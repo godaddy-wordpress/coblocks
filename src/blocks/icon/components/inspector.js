@@ -113,6 +113,7 @@ class Inspector extends Component {
 
 		    var updatedList = Object.entries( svg[iconStyle] ).filter(function(item){
 		    	var text = item[0] + ' ' + item[1].keywords;
+		    	console.log( text );
 		      	return text.toLowerCase().search(
 		        event.toLowerCase()) !== -1;
 		    });

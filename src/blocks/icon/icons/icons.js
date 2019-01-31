@@ -1,3 +1,7 @@
+/**
+ * WordPress dependencies
+ */
+const { __ } = wp.i18n;
 
 import materialIcons from './material';
 
@@ -7,7 +11,7 @@ import materialIcons from './material';
 const icons = { outlined: {}, filled: {} };
 
 const keywords = {
-	heart : 'plus add circle insert',
+	heart : __( 'plus add circle insert' ),
 	add_circle : 'plus add circle insert',
 	remove_circle : 'plus add circle insert',
 	gesture : 'plus add circle insert',
