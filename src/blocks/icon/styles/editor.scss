@@ -130,6 +130,25 @@
 	}
 }
 
+//Add styling for resizableBox handles when a parent div is positioning the icon.
+.has-center-content .wp-block-coblocks-icon__inner.is-selected {
+	.components-resizable-box__handle-left,
+	.components-resizable-box__handle-right {
+		display: block !important;
+	}
+}
+
+.has-right-content .wp-block-coblocks-icon__inner.is-selected {
+
+	.components-resizable-box__handle-left {
+		display: block !important;
+	}
+
+	.components-resizable-box__handle-right {
+		display: none !important;
+	}
+}
+
 // Editor style preview.
 .editor-block-preview,
 .editor-block-styles__item-preview {
