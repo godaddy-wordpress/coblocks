@@ -74,6 +74,7 @@ class Edit extends Component {
 			width,
 			borderRadius,
 			padding,
+			hasContentAlign,
 		} = attributes;
 
 		const classes = classnames( 'wp-block-coblocks-icon__inner', {
@@ -126,6 +127,14 @@ class Edit extends Component {
 				showRightHandle = true;
 			}
 		}
+
+		// If the parent block has set this block to not display alignment controls.
+		// then we set them to true and hide them via CSS.
+		if ( hasContentAlign === false ) {
+			showRightHandle = true;
+			showLeftHandle = true;
+		}
+
 		return [
 			<Fragment>
 				{ isSelected && (
