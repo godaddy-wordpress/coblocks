@@ -53,7 +53,10 @@ const blockAttributes = {
 	},
 	contentAlign: {
 		type: 'string',
-		default: 'center',
+	},
+	hasContentAlign: {
+		type: 'boolean',
+		default: true,
 	},
 	backgroundColor: {
 		type: 'string',
