@@ -45,6 +45,7 @@ import * as row from './blocks/row';
 import * as social from './blocks/social';
 import * as map from './blocks/map';
 import * as mediaCard from './blocks/media-card';
+import * as icon from './blocks/icon';
 import * as feature from './blocks/features/feature';
 import * as features from './blocks/features';
 
@@ -66,6 +67,7 @@ export function registerBlocks () {
 		social,
 		map,
 		mediaCard,
+		icon,
 		feature,
 		features,
 	].forEach( ( block ) => {
