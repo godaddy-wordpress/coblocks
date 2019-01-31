@@ -21,6 +21,7 @@ const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { RichText, InnerBlocks } = wp.editor;
 const { isBlobURL } = wp.blob;
+const { Spinner } = wp.components;
 
 /**
  * Constants
