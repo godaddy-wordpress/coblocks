@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-// import icons from './material-icons';
 
 /**
  * WordPress dependencies
