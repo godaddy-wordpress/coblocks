@@ -5,6 +5,7 @@
 		width: 100%;
 
 		&__inner {
+
 			> .editor-inner-blocks {
 				> .editor-block-list__layout {
 					@media (min-width: 600px) {
@@ -93,6 +94,12 @@
 					}
 				}
 			}
+		}
+	}
+
+	.wp-block-coblocks-icon {
+		.components-resizable-box__handle-left {
+			display: none;
 		}
 	}
 
