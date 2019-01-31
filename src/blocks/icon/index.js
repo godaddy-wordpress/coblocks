@@ -117,13 +117,11 @@ const settings = {
 			padding,
 		} = attributes;
 
-		let iconStyle = 'filled';
+		let iconStyle = 'outlined';
 
-		if( attributes.className ){
-			if( attributes.className.includes( 'is-style-outlined' ) ){
-				iconStyle = 'outlined';
-			} else if( attributes.className.includes( 'is-style-rounded' ) ){
-				iconStyle = 'rounded';
+		if ( className ) {
+			if ( className.includes( 'is-style-filled' ) ) {
+				iconStyle = 'filled';
 			}
 		}
 
