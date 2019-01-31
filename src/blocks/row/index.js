@@ -51,9 +51,9 @@ const title = __( 'Row' );
 const icon = icons.row;
 
 const keywords = [
-	__( 'row' ),
-	__( 'column' ),
-	__( 'layout' ),
+	__( 'rows' ),
+	__( 'columns' ),
+	__( 'layouts' ),
 ];
 
 const blockAttributes = {
