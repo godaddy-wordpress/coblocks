@@ -38,21 +38,6 @@ class Controls extends Component {
 						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
 					/>
 					{ BackgroundImageToolbarControls( this.props ) }
-					<Toolbar
-						className="components-coblocks__toolbar-control--numerals"
-						controls={ '123'.split( '' ).map( ( count ) => ( {
-							icon: icons.blank,
-							// translators: %s: columns count e.g: "1", "2", "3",
-							title: sprintf( __( '%s Columns' ), count ),
-							isActive: columns == parseInt( count ),
-							subscript: count,
-							onClick: () =>
-								setAttributes( {
-									columns: parseInt( count ),
-								} )
-							} )
-						) }
-					/>
 				</BlockControls>
 			</Fragment>
 		);
