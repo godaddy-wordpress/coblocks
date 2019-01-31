@@ -143,7 +143,7 @@ class Edit extends Component {
 					<ResizableBox
 						className={ classes }
 						style={ styles }
-						size={ { width } }
+						size={ { width, width } }
 						minWidth={ MIN_ICON_SIZE }
 						maxWidth={ MAX_ICON_SIZE }
 						enable={ {
