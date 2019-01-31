@@ -25,18 +25,19 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 ## One for all, all in one
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages:
 
-* Resizable Row/Columns (New!)
+* Resizable Row/Columns Blocks (New!)
+* Media Card Block (New!)
 * Map Block (New!)
-* Accordion
-* Alert
-* Author Profile
-* Click to Tweet
-* Dynamic Separator
-* Gif
-* GitHub Gist
-* Highlight
-* Pricing Table
-* Social Sharing
+* Accordion Block
+* Alert Block
+* Author Profile Block
+* Click to Tweet Block
+* Dynamic Separator Block
+* Gif Block
+* GitHub Gist Block
+* Highlight Block
+* Pricing Table Block
+* Social Sharing Block
 
 
 ## Custom Typography Controls
@@ -129,6 +130,8 @@ Please reach out via the contact form at the bottom right of [our website](https
 * Fix: Resolve issue where custom font selections may be overwritten by the CoBlocks theme
 * Fix: Dropzone labels within CoBlocks themes are now properly sized
 * Fix: Resolve issue where the Map block may not properly render on the front-end
+* Fix: Resolve issue where paragraph blocks with backgrounds did not have appropriate padding within Column blocks
+* Fix: Resolve issue where custom text colors would not properly resolve within Row blocks in TwentyNineteen
 
 = 1.7.0 =
 * New: Add Map block with six built-in map styles, zoom, controls and marker size options 🎉

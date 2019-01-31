@@ -72,17 +72,6 @@
 		p:last-of-type {
 			margin-bottom: 0;
 		}
-
-		p,
-		a,
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			color: inherit;
-		}
 	}
 
 	&.is-style-right &__content {
@@ -150,19 +139,6 @@
 				h5,
 				h6 {
 					color: inherit;
-
-					&.has-primary-color {
-						color: #0073aa;
-					}
-					&.has-secondary-color {
-						color: #005177;
-					}
-					&.has-dark-gray-color {
-						color: #111;
-					}
-					&.has-light-gray-color {
-						color: #767676;
-					}
 				}
 			}
 
