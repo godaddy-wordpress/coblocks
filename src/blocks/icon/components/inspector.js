@@ -101,7 +101,7 @@ class Inspector extends Component {
 		let iconStyle = 'outlined';
 
 		if ( className.includes( 'is-style-filled' ) ){
-			iconStyle = 'outlined';
+			iconStyle = 'filled';
 		}
 
 		const filterList = ( event ) => {
@@ -113,21 +113,21 @@ class Inspector extends Component {
 				this.setState({ isSearching: false });
 			}
 
-		    var updatedList = Object.entries( svg[iconStyle] ).filter(function(item){
-		    	var text = item[0] + ' ' + item[1].keywords;
-		    	console.log( text );
-		      	return text.toLowerCase().search(
-		        event.toLowerCase()) !== -1;
-		    });
-
-		    filtered[ 'filled' ] = {};
-		    filtered[ 'outlined' ] = {};
-		    updatedList.forEach(([key, value]) => {
-		    	filtered[ 'filled' ][ key ] = svg[ 'filled' ][key];
-		    	filtered[ 'outlined' ][ key ] = svg[ 'outlined' ][key];
+			var updatedList = Object.entries( svg[iconStyle] ).filter(function(item){
+				var text = item[0] + ' ' + item[1].keywords;
+				console.log( text );
+				return text.toLowerCase().search(
+					event.toLowerCase()) !== -1;
 			});
 
-		    this.setState({ filteredIcons: filtered });
+			filtered[ 'outlined' ] = {};
+			filtered[ 'filled' ] = {};
+			updatedList.forEach(([key, value]) => {
+				filtered[ 'outlined' ][ key ] = svg[ 'outlined' ][key];
+				filtered[ 'filled' ][ key ] = svg[ 'filled' ][key];
+			});
+
+			this.setState( { filteredIcons: filtered } );
 		};
 
 		const utilitySizes = [
@@ -138,7 +138,7 @@ class Inspector extends Component {
 			},
 			{
 				name: __( 'Medium' ),
-				size: DEFAULT_ICON_SIZE,
+				size: padding ? DEFAULT_ICON_SIZE + 28 : DEFAULT_ICON_SIZE,
 				slug: 'medium',
 			},
 			{
@@ -181,7 +181,7 @@ class Inspector extends Component {
 											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';
 											setAttributes( {  width: nextWidth, height: nextWidth } )
 										} }
-										min={ MIN_ICON_SIZE }
+										min={ padding ? MIN_ICON_SIZE + 28 : MIN_ICON_SIZE  }
 										max={ MAX_ICON_SIZE }
 										step={ 1 }
 									/>
@@ -325,7 +325,7 @@ class Inspector extends Component {
 
 									// Auto assign padding.
 									if( padding == 0 ){
-										setAttributes( {  padding: 15 } );
+										setAttributes( {  padding: 10 } );
 									}
 
 									// Reset padding when colors are cleared.
