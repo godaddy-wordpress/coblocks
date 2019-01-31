@@ -1,5 +1,4 @@
 .components-coblocks-icon-block--advanced-size {
-	// margin-bottom: 1.5em;
 	position: relative;
 
 	.components-color-palette__clear {
@@ -63,8 +62,8 @@
 		.components-button {
 			align-items: center;
 			background: transparent;
-			border-radius: 3px;
 			border: 1px solid rgba(25, 30, 35, 0.2);
+			border-radius: 3px;
 			box-shadow: none;
 			display: flex;
 			height: auto;
@@ -83,9 +82,8 @@
 			&:focus,
 			&:active:enabled {
 				background: #f8faf9;
-				box-shadow: none;
-				outline: none;
 				box-shadow: 0 0 0 3px #f8faf9;
+				outline: none;
 			}
 
 			svg {
@@ -120,9 +118,7 @@
 				&,
 				&:focus {
 					background: transparent;
-					// border-color: #00a2de;
 					box-shadow: 0 0 0 2px #fff, 0 0 0 4px #555d66;
-					// border-color: #fff;
 				}
 			}
 		}
@@ -134,15 +130,17 @@
 .editor-block-styles__item-preview {
 	.wp-block-coblocks-icon__inner {
 		align-items: center;
+		background: transparent !important;
 		display: flex;
 		height: 100% !important;
 		justify-content: center;
 		margin-top: 16px;
+		padding: 0 !important;
 		transform: scale(1.23);
 		width: 100% !important;
 
 		> svg {
-			fill: #191e23;
+			fill: #3f464d;
 			height: 24px;
 			width: 24px;
 		}
