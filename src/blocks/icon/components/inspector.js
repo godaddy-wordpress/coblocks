@@ -47,19 +47,7 @@ class Inspector extends Component {
 		this.state = { filteredIcons : svg , searchValue: '', isSearching: false };
 
 		this.onChangeSize = this.onChangeSize.bind( this );
-	}
-
-	getDisplayOpenHelp( checked ) {
-		return checked ? __( 'Accordion item is open by default.' ) : __( 'Toggle to set this accordion item to be open by default.' );
-	}
-
-	setBorderColor() {
-
-		this.props.setAttributes( {
-			borderColor: this.props.backgroundColor.color,
-		} )
-
-		return this.props.setBackgroundColor;
+		this.generateMaxPadding = this.generateMaxPadding.bind( this );
 	}
 
 	onChangeSize( value, size ) {
@@ -69,6 +57,16 @@ class Inspector extends Component {
 				size = '';
 			}
 			this.props.setAttributes( { height: size, width: size } );
+		}
+	}
+
+	// Dynamically set the padding based on icon width.
+	// Prevents disapearing icons when the combined padding is more than than width of the icon.
+	generateMaxPadding( width ) {
+		if ( width <= 60 ) {
+			return 10;
+		} else {
+			return Math.round( width / 4 );
 		}
 	}
 
@@ -248,11 +246,10 @@ class Inspector extends Component {
 								label={ __( 'Padding' ) }
 								value={ padding }
 								onChange={ ( nextPadding ) => setAttributes( {  padding: nextPadding } ) }
-								min={ 10 }
-								max={ 100 }
+								min={ 5 }
+								max={ this.generateMaxPadding( width ) }
 								step={ 1 }
-							/>
-							]
+							/> ]
 						: null }
 						<TextControl
 							type='text'
