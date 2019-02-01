@@ -1,3 +1,8 @@
+// Hide the border when the fixed toolbar is in use.
+.has-fixed-toolbar .wp-block[data-type="coblocks/icon"] .editor-block-list__block-edit::before {
+	display: none;
+}
+
 .components-coblocks-icon-block--advanced-size {
 	margin-bottom: 1.5em;
 	position: relative;
