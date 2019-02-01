@@ -48,6 +48,8 @@ import * as map from './blocks/map';
 import * as mediaCard from './blocks/media-card';
 import * as shapeDivider from './blocks/shape-divider';
 import * as icon from './blocks/icon';
+import * as feature from './blocks/features/feature';
+import * as features from './blocks/features';
 
 export function registerBlocks () {
 	[
@@ -69,6 +71,8 @@ export function registerBlocks () {
 		mediaCard,
 		shapeDivider,
 		icon,
+		feature,
+		features,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {

@@ -47,11 +47,6 @@ icons.edit =
 	<path d="m10.330727 5.86705523.8149993.81499936-8.02597188 8.02597191h-.81499935v-.8149994zm3.1891279-5.33293055c.2303259 0 .4517931.07972819.6289669.25690197l2.0729331 2.07293314c.3454889.34548885.3454889.90358624 0 1.24907509l-1.62114 1.62114002-3.3220083-3.32200823 1.6211401-1.62114002c.1683151-.16831509.398641-.25690197.6201082-.25690197zm-3.1891279 2.82592167 3.3220082 3.32200824-9.79770962 9.79770961h-3.32200824v-3.3220082z" transform="translate(1.5 1.5)"/>
 </svg>;
 
-icons.feature =
-<svg className="coblocks__svg" aria-hidden role="img" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-	<g transform="translate(2.6 2.6)"><path d="m16.4 14.4v-2h-14v2z"/><path d="m18.4 10.4v-2h-18v2z"/><path d="m3.4 6.4h12v-2h-12z"/><path d="m5.4 2.4h8v-2h-8z"/><path d="m5.4 18.4h8v-2h-8z"/></g>
-</svg>;
-
 icons.googleMap =
 <svg className="dashicon coblocks__svg" aria-hidden role="img" focusable="false" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
 	<g fill="none" fillRule="evenodd"><path d="m0 0h24v24h-24z"/><path d="m20.5 3-.16.03-5.34 2.07-6-2.1-5.64 1.9c-.21.07-.36.25-.36.48v15.12c0 .28.22.5.5.5l.16-.03 5.34-2.07 6 2.1 5.64-1.9c.21-.07.36-.25.36-.48v-15.12c0-.28-.22-.5-.5-.5zm-10.5 2.47 4 1.4v11.66l-4-1.4zm-5 .99 3-1.01v11.7l-3 1.16zm14 11.08-3 1.01v-11.69l3-1.16z" fill="currentColor" fillRule="nonzero"/></g>
