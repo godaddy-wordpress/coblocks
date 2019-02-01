@@ -1,9 +1,15 @@
 .wp-block-coblocks-shape-divider {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 
 	svg{
-		fill: currentColor;
+	    bottom: 0;
+	    fill: currentColor;
+	    height: 100%;
+	    left: 0;
+	    position: absolute;
+	    width: 100%;
 	}
 
 	&__alt-wrapper {
