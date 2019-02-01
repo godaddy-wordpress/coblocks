@@ -20,7 +20,7 @@ const { __, _x, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
-const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, NavigableMenu, Dropdown, ButtonGroup, Dashicon, Tooltip } = wp.components;
+const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, NavigableMenu, Dropdown, ButtonGroup, Dashicon, Tooltip, ToggleControl } = wp.components;
 
 /**
  * Fallback styles
@@ -94,6 +94,8 @@ class Inspector extends Component {
 			iconSize,
 			width,
 			height,
+			linkUrl,
+			openNewTab,
 		} = attributes;
 
 		let iconStyle = 'outlined';
@@ -251,6 +253,25 @@ class Inspector extends Component {
 								step={ 1 }
 							/> ]
 						: null }
+						<TextControl
+							type='text'
+							autocomplete="off"
+							label={ __( 'Icon Link' ) }
+							value={ linkUrl }
+							placeholder={ 'https://' }
+							onChange={ ( newLink ) => {
+									setAttributes( {  linkUrl: newLink } )
+								}
+							}
+						/>
+						{ ( linkUrl ) ? 
+							<ToggleControl
+								label={ __( 'Open to New Window' ) }
+								checked={ !! openNewTab }
+								onChange={ () => setAttributes( {  openNewTab: ! openNewTab } ) }
+							/>
+						:null
+						}
 						<TextControl
 							type='text'
 							autocomplete="off"

@@ -86,6 +86,13 @@ const blockAttributes = {
 		type: 'number',
 		default: 0,
 	},
+	linkUrl: {
+		type: 'string',
+	},
+	openNewTab: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 const settings = {
@@ -118,6 +125,8 @@ const settings = {
 			width,
 			borderRadius,
 			padding,
+			linkUrl,
+			openNewTab,
 		} = attributes;
 
 		let iconStyle = 'outlined';
@@ -148,9 +157,17 @@ const settings = {
 			padding: padding ? padding + 'px' : undefined,
 		};
 
+		let newTab = '_self';
+		if( openNewTab ){
+			newTab = '_blank';
+		}
+
 		return (
 			<div className={ className } style={ { textAlign: contentAlign ? contentAlign : undefined } }>
 				<div className={ classes } style={ styles }>
+					{ linkUrl ? 
+						<a href={ linkUrl } target={ newTab }></a>
+					: null }
 					{ svgs[ iconStyle ][ icon ].icon }
 				</div>
 			</div>
