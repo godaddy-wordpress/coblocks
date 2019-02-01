@@ -2,6 +2,12 @@
 
 	> [class*="wp-block-coblocks-"] {
 
+		@media (max-width: #{ ($break-small) }) {
+			&:not(:last-child) {
+				margin-bottom: $gutter--small * 2;
+			}
+		}
+
 		@include break-small() {
 
 			&:nth-child(odd) {
@@ -26,6 +32,12 @@
 .has-medium-gutter {
 
 	> [class*="wp-block-coblocks-"] {
+
+		@media (max-width: #{ ($break-small) }) {
+			&:not(:last-child) {
+				margin-bottom: $gutter--medium * 2;
+			}
+		}
 
 		@include break-small() {
 
@@ -52,6 +64,12 @@
 
 	> [class*="wp-block-coblocks-"] {
 
+		@media (max-width: #{ ($break-small) }) {
+			&:not(:last-child) {
+				margin-bottom: $gutter--large * 2;
+			}
+		}
+
 		@include break-small() {
 
 			&:nth-child(odd) {
@@ -76,6 +94,12 @@
 .has-huge-gutter {
 
 	> [class*="wp-block-coblocks-"] {
+
+		@media (max-width: #{ ($break-small) }) {
+			&:not(:last-child) {
+				margin-bottom: $gutter--huge * 2;
+			}
+		}
 
 		@include break-small() {
 
