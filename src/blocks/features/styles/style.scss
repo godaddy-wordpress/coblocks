@@ -75,7 +75,7 @@
 		}
 	}
 
-	.has-text-color{
+	.has-text-color {
 		p,
 		a,
 		h1,
@@ -84,11 +84,11 @@
 		h4,
 		h5,
 		h6 {
-			color: inherit;
+			color: inherit !important;
 		}
 	}
 
-	.wp-block-coblocks-feature__inner{
+	.wp-block-coblocks-feature__inner {
 		> *{
 			position: relative;
 		}
