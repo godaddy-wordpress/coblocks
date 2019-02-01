@@ -15,6 +15,12 @@ const { Fragment } = wp.element;
 const { SelectControl, RangeControl, ToggleControl, PanelBody, Button } = wp.components;
 
 /**
+ * Module constants.
+ */
+export const ALLOWED_BG_MEDIA_TYPES = [ 'image' ];
+export const BLOCKS_WITH_AUTOPADDING = [ 'coblocks/media-card', 'coblocks/features', 'coblocks/feature' ];
+
+/**
  * Export
  */
 export {
