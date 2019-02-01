@@ -111,7 +111,7 @@
 						margin-bottom: $gutter--large * 2;
 					}
 				}
-				
+
 				@include break-small() {
 					&:nth-child(odd) {
 						margin-right: $gutter--large - 16px;
@@ -166,6 +166,7 @@
 	}
 
 	.wp-block[data-type="core/heading"],
+	.wp-block[data-type="coblocks/icon"],
 	.wp-block[data-type="core/paragraph"] {
 		.editor-block-list__insertion-point {
 			display: none;
@@ -217,17 +218,24 @@
 			display: none;
 		}
 
-		.wp-block-coblocks-feature{
-			> .editor-inner-blocks{
-				> .editor-block-list__layout{
-					> .wp-block{
-						.editor-block-list__block-edit{
-							margin-bottom: 0;
-						}
-						&:first-child{
-							.editor-block-list__block-edit{
+		// Remove editor margins that do not exist on the frontend.
+		.wp-block-coblocks-feature__inner {
+			> .editor-inner-blocks {
+				> .editor-block-list__layout {
+					> .wp-block {
+						&:first-child {
+							> .editor-block-list__block-edit {
+								margin-bottom: 0;
 								margin-top: 0;
 							}
+							> .editor-block-list__insertion-point {
+								display: none;
+							}
+						}
+					}
+					> div {
+						> .editor-default-block-appender {
+							display: none;
 						}
 					}
 				}
