@@ -129,7 +129,14 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 							<ToggleControl
 								label={ __( 'Remove Bottom Spacing' ) }
 								checked={ !! noBottomMargin }
-								onChange={ () => setAttributes( {  noBottomMargin: ! noBottomMargin, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0  } ) }
+								onChange={ () => {
+									setAttributes( {  noBottomMargin: ! noBottomMargin, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0  } );
+
+									let nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
+									if( nextBlockClientId && ! noBottomMargin ){
+										wp.data.dispatch( 'core/editor' ).updateBlockAttributes( nextBlockClientId, {  noTopMargin: ! noTopMargin, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } );
+									}
+								} }
 								help={ !! noBottomMargin ? __( 'Bottom margin is removed on this block.' ) : __( 'Toggle to remove any margin applied to the bottom of this block.' ) }
 							/>
 						}
