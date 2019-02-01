@@ -109,6 +109,19 @@ class Inspector extends Component {
 								setAttributes( {
 									columns: parseInt( nextCount ),
 								} );
+
+								if( parseInt( nextCount ) < 2 ){
+									setAttributes( {
+										gutter: 'no',
+									} );
+								}else{
+									if( gutter == 'no' ){
+										setAttributes( {
+											gutter: 'large',
+										} );
+									}
+								}
+
 								wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
 							} }
 							min={ 1 }
