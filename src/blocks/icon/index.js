@@ -34,6 +34,7 @@ const title = __( 'Icon' );
 const icon = icons.icon;
 
 const keywords = [
+	__( 'svg' ),
 	__( 'icons' ),
 	__( 'coblocks' ),
 ];
@@ -86,6 +87,24 @@ const blockAttributes = {
 		type: 'number',
 		default: 0,
 	},
+	href: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'div > div > a',
+		attribute: 'href',
+	},
+	rel: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'div > div > a',
+		attribute: 'rel',
+	},
+	linkTarget: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'div > div > a',
+		attribute: 'target',
+	},
 };
 
 const settings = {
@@ -118,6 +137,9 @@ const settings = {
 			width,
 			borderRadius,
 			padding,
+			href,
+			linkTarget,
+			rel,
 		} = attributes;
 
 		let iconStyle = 'outlined';
@@ -151,6 +173,9 @@ const settings = {
 		return (
 			<div className={ className } style={ { textAlign: contentAlign ? contentAlign : undefined } }>
 				<div className={ classes } style={ styles }>
+					{ href &&
+						<a href={ href } target={ linkTarget } rel={ rel }></a>
+					}
 					{ svgs[ iconStyle ][ icon ].icon }
 				</div>
 			</div>
