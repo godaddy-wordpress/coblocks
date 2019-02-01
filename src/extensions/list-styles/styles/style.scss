@@ -31,4 +31,8 @@
 			mask-image: url(images/list/checkbox-rounded-child.svg);
 		}
 	}
+
+	.is-twentynineteen & li::before {
+		top: 10px;
+	}
 }
