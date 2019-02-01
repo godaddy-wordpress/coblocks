@@ -109,12 +109,12 @@ class Inspector extends Component {
 									setBackgroundColor( nextBackground );
 
 									//add padding if there's none
-									if( !paddingSize || paddingSize == 'no' ){
-										setAttributes({ paddingSize: 'medium' });
+									if ( ! paddingSize || paddingSize == 'no' ) {
+										setAttributes( { paddingSize: 'medium' } );
 									}
 
 									//reset when cleared
-									if( !nextBackground ){
+									if ( ! nextBackground ) {
 										setAttributes( { paddingSize: 'no' } );
 									}
 								},
