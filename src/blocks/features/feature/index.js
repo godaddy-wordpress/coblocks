@@ -31,6 +31,12 @@ const blockAttributes = {
 	contentAlign: {
 		type: 'string',
 	},
+	textColor: {
+		type: 'string',
+	},
+	customTextColor: {
+		type: 'string',
+	},
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 };
@@ -54,6 +60,7 @@ const settings = {
 	save( { attributes, className } ) {
 
 		const {
+			coblocks,
 			backgroundColor,
 			backgroundImg,
 			contentAlign,
@@ -70,6 +77,7 @@ const settings = {
 		const classes = classnames(
 			className, {
 			[ `has-${ contentAlign }-content` ]: contentAlign,
+			[ `coblocks-feature-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 		} );
 
 		const innerClasses = classnames(

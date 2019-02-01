@@ -53,6 +53,7 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
+			coblocks,
 			backgroundImg,
 			contentAlign,
 			gutter,
@@ -71,6 +72,12 @@ class Edit extends Component {
 			/>
 		);
 
+		const classes = classnames(
+			className, {
+				[ `coblocks-feature-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+			}
+		);
+
 		const innerClasses = classnames(
 			'wp-block-coblocks-feature__inner',
 			...BackgroundClasses( attributes ), {
@@ -80,7 +87,7 @@ class Edit extends Component {
 				[ `has-${ contentAlign }-content` ]: contentAlign,
 			}
 		);
-
+		
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
@@ -105,7 +112,7 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<div className={ className }>
+				<div className={ classes }>
 					<div className={ innerClasses } style={ innerStyles }>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
