@@ -34,6 +34,7 @@ const title = __( 'Icon' );
 const icon = icons.icon;
 
 const keywords = [
+	__( 'svg' ),
 	__( 'icons' ),
 	__( 'coblocks' ),
 ];
@@ -86,12 +87,23 @@ const blockAttributes = {
 		type: 'number',
 		default: 0,
 	},
-	linkUrl: {
+	href: {
 		type: 'string',
+		source: 'attribute',
+		selector: 'div > div > a',
+		attribute: 'href',
 	},
-	openNewTab: {
-		type: 'boolean',
-		default: false,
+	rel: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'div > div > a',
+		attribute: 'rel',
+	},
+	linkTarget: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'div > div > a',
+		attribute: 'target',
 	},
 };
 
@@ -125,8 +137,9 @@ const settings = {
 			width,
 			borderRadius,
 			padding,
-			linkUrl,
-			openNewTab,
+			href,
+			linkTarget,
+			rel,
 		} = attributes;
 
 		let iconStyle = 'outlined';
@@ -157,17 +170,12 @@ const settings = {
 			padding: padding ? padding + 'px' : undefined,
 		};
 
-		let newTab = '_self';
-		if( openNewTab ){
-			newTab = '_blank';
-		}
-
 		return (
 			<div className={ className } style={ { textAlign: contentAlign ? contentAlign : undefined } }>
 				<div className={ classes } style={ styles }>
-					{ linkUrl ? 
-						<a href={ linkUrl } target={ newTab }></a>
-					: null }
+					{ href &&
+						<a href={ href } target={ linkTarget } rel={ rel }></a>
+					}
 					{ svgs[ iconStyle ][ icon ].icon }
 				</div>
 			</div>

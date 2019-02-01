@@ -2,21 +2,21 @@
 	position: relative;
 
 	&__inner {
-		position: relative;
 		display: inline-block;
+		position: relative;
 		vertical-align: middle;
 
-		> a{
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			border: 0px !important;
-			outline: none;
-			text-shadow: none;
+		a {
+			border: 0 !important;
 			box-shadow: none !important;
+			height: 100%;
+			outline: none;
+			position: absolute;
+			text-shadow: none;
+			width: 100%;
 		}
 
-		> svg {
+		svg {
 			fill: currentColor;
 			height: 100%;
 			vertical-align: middle;
