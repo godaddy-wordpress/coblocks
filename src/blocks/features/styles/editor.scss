@@ -118,6 +118,17 @@
 		}
 	}
 
+	//one column improvements
+	&[data-columns="1"]{
+		.wp-block-coblocks-features {
+			&__inner {
+				> .editor-inner-blocks{
+					width: 100%;
+				}
+			}
+		}
+	}
+
 	> .editor-block-mover,
 	> .block-list-appender {
 		display: none;
