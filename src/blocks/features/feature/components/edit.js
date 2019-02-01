@@ -87,7 +87,7 @@ class Edit extends Component {
 				[ `has-${ contentAlign }-content` ]: contentAlign,
 			}
 		);
-		
+
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
