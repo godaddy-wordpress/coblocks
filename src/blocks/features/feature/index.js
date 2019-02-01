@@ -27,15 +27,9 @@ const title = __( 'Feature' );
 
 const icon = icons.feature;
 
-const keywords = [
-	__( 'columns' ),
-	__( 'coblocks' ),
-];
-
 const blockAttributes = {
-	image: {
-		type: 'boolean',
-		default: false,
+	contentAlign: {
+		type: 'string',
 	},
 	...BackgroundAttributes,
 };
@@ -45,8 +39,6 @@ const settings = {
 	title: title,
 
 	description: __( 'A singular column within a parent Features block.' ),
-
-	keywords: keywords,
 
 	attributes: blockAttributes,
 
@@ -58,10 +50,19 @@ const settings = {
 
 	edit: Edit,
 
-	save() {
+	save( { attributes, className } ) {
+
+		const {
+			contentAlign,
+		} = attributes;
+
+		const classes = classnames(
+			className, {
+			[ `has-${ contentAlign }-content` ]: contentAlign,
+		} );
 
 		return (
-			<div>
+			<div className={ classes }>
 				<InnerBlocks.Content />
 			</div>
 		);

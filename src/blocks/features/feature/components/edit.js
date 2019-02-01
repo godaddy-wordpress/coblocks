@@ -1,4 +1,9 @@
 /**
+ * Internal dependencies
+ */
+import Controls from './controls';
+
+/**
  * WordPress dependencies
  */
 const { __, _x } = wp.i18n;
@@ -28,12 +33,23 @@ class Edit extends Component {
 	render() {
 
 		const {
+			isSelected,
 			className,
+			attributes,
 		} = this.props;
+
+		const {
+			contentAlign,
+		} = attributes;
 
 		return [
 			<Fragment>
-				<div className={ className } >
+				{ isSelected && (
+					<Controls
+						{ ...this.props }
+					/>
+				) }
+				<div className={ className } style={ { textAlign: contentAlign } } >
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
 						template={ TEMPLATE }
