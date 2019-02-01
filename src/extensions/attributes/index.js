@@ -61,7 +61,7 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 			const coblocks = Object.assign( { id: "" + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds() }, attributes.coblocks );
 			setAttributes( { coblocks: coblocks } );
 		}
-		
+
 		return (
 			<Fragment>
 				<BlockEdit {...props} />

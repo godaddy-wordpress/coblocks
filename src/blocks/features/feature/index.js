@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses } from '../../../components/background';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 import Edit from './components/edit';
-import icons from './../../../utils/icons';
+import icons from './components/icons';
 
 /**
  * WordPress dependencies
@@ -45,7 +45,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'A singular column within a parent Features block.' ),
+	description: __( 'A singular child column within a parent features block.' ),
 
 	attributes: blockAttributes,
 
