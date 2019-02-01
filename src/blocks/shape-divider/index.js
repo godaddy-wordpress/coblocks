@@ -23,6 +23,41 @@ const { createBlock } = wp.blocks;
 const { getColorClassName } = wp.editor;
 
 /**
+ * Return the appropriate SVG for the block style.
+ */
+export function getDividerFromStyle( className ) {
+
+	const angled = includes( className, 'is-style-angled' );
+	const hills = includes( className, 'is-style-hills' );
+	const pointed = includes( className, 'is-style-pointed' );
+	const rounded = includes( className, 'is-style-rounded' );
+	const sloped = includes( className, 'is-style-sloped' );
+	const triangle = includes( className, 'is-style-triangle' );
+	const waves = includes( className, 'is-style-waves' );
+	const wavy = includes( className, 'is-style-wavy' );
+
+	let divider = dividers.wavy;
+
+	if ( angled ) {
+		divider = dividers.angled;
+	} else if ( sloped ) {
+		divider = dividers.sloped;
+	} else if ( triangle ) {
+		divider = dividers.triangle;
+	} else if ( rounded ) {
+		divider = dividers.rounded;
+	} else if ( waves ) {
+		divider = dividers.waves;
+	} else if ( pointed ) {
+		divider = dividers.pointed;
+	} else if ( hills ) {
+		divider = dividers.hills;
+	}
+
+	return divider;
+}
+
+/**
  * Block constants
  */
 const name = 'shape-divider';
@@ -329,40 +364,6 @@ const settings = {
 			customBackgroundColor,
 		} = attributes;
 
-		// Check for the block style.
-		const getDividerFromStyles = () => {
-			const isStyleWavy = includes( attributes.className, 'is-style-wavy' );
-			const isStyleWaves = includes( attributes.className, 'is-style-waves' );
-			const isStyleSloped = includes( attributes.className, 'is-style-sloped' );
-			const isStyleRounded = includes( attributes.className, 'is-style-rounded' );
-			const isStyleAngled = includes( attributes.className, 'is-style-angled' );
-			const isStyleTriangle = includes( attributes.className, 'is-style-triangle' );
-			const isStylePointed = includes( attributes.className, 'is-style-pointed' );
-			const isStyleHills = includes( attributes.className, 'is-style-hills' );
-
-			let divider = dividers.wavy;
-
-			if ( isStyleAngled ) {
-				divider = dividers.angled;
-			} else if ( isStyleWavy ) {
-				divider = dividers.wavy;
-			} else if ( isStyleSloped ) {
-				divider = dividers.sloped;
-			} else if ( isStyleTriangle ) {
-				divider = dividers.triangle;
-			} else if ( isStyleRounded ) {
-				divider = dividers.rounded;
-			} else if ( isStyleWaves ) {
-				divider = dividers.waves;
-			} else if ( isStylePointed ) {
-				divider = dividers.pointed;
-			} else if ( isStyleHills ) {
-				divider = dividers.hills;
-			}
-
-			return divider;
-		}
-
 		const shapeClass = getColorClassName( 'color', color );
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
@@ -381,9 +382,9 @@ const settings = {
 		};
 
 		return (
-			<div className={ classes } style={ styles }>
+			<div className={ classes } style={ styles } aria-hidden="true">
 				<div className="wp-block-coblocks-shape-divider__svg-wrapper" style={ { height: shapeHeight } }>
-					{ getDividerFromStyles() }
+					{ getDividerFromStyle( attributes.className ) }
 				</div>
 				<div className="wp-block-coblocks-shape-divider__alt-wrapper" style={ { height: backgroundHeight } }></div>
 			</div>

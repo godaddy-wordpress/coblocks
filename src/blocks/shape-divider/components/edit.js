@@ -11,6 +11,7 @@ import Controls from './controls';
 import Inspector from './inspector';
 import applyWithColors from './colors';
 import dividers from './dividers';
+import { getDividerFromStyle } from '.././';
 
 /**
  * WordPress dependencies
@@ -47,41 +48,6 @@ class Edit extends Component {
 	}
 	componentWillUnmount(){
 		window.removeEventListener( 'resize', this.getBrowserWidth.bind(this) );
-	}
-
-	getDividerFromStyles( className ) {
-
-		// Check for the block style.
-		const isStyleWavy = includes( className, 'is-style-wavy' );
-		const isStyleWaves = includes( className, 'is-style-waves' );
-		const isStyleSloped = includes( className, 'is-style-sloped' );
-		const isStyleRounded = includes( className, 'is-style-rounded' );
-		const isStyleAngled = includes( className, 'is-style-angled' );
-		const isStyleTriangle = includes( className, 'is-style-triangle' );
-		const isStylePointed = includes( className, 'is-style-pointed' );
-		const isStyleHills = includes( className, 'is-style-hills' );
-
-		let divdier = dividers.wavy;
-
-		if ( isStyleAngled ) {
-			divdier = dividers.angled;
-		} else if ( isStyleWavy ) {
-			divdier = dividers.wavy;
-		} else if ( isStyleSloped ) {
-			divdier = dividers.sloped;
-		} else if ( isStyleTriangle ) {
-			divdier = dividers.triangle;
-		} else if ( isStyleRounded ) {
-			divdier = dividers.rounded;
-		} else if ( isStyleWaves ) {
-			divdier = dividers.waves;
-		} else if ( isStylePointed ) {
-			divdier = dividers.pointed;
-		} else if ( isStyleHills ) {
-			divdier = dividers.hills;
-		}
-
-		return divdier;
 	}
 
 	getBrowserWidth(){
@@ -263,7 +229,7 @@ class Edit extends Component {
 							this.setState( { resizing: true } );
 						} }
 					>
-						{ this.getDividerFromStyles( className ) }
+						{ getDividerFromStyle( className ) }
 					</ResizableBox>
 					<ResizableBox
 						className={ classnames(
