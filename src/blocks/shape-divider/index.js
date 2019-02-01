@@ -3,6 +3,7 @@
  */
 import classnames from 'classnames';
 import omit from 'lodash/omit';
+import includes from 'lodash/includes';
 
 /**
  * Internal dependencies
@@ -12,6 +13,7 @@ import './styles/style.scss';
 import Edit from './components/edit';
 import icons from './components/icons';
 import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
+import dividers from './components/dividers';
 
 /**
  * WordPress dependencies
@@ -309,39 +311,104 @@ const settings = {
 
 	edit: Edit,
 
-	save() {
-		return null;
+	save( { attributes, className } ) {
+
+		const {
+			coblocks,
+			shapeHeight,
+			shapeHeightTablet,
+			shapeHeightMobile,
+			backgroundHeight,
+			backgroundHeightTablet,
+			backgroundHeightMobile,
+			verticalFlip,
+			horizontalFlip,
+			backgroundColor,
+			color,
+			customColor,
+		} = attributes;
+
+		const getDividerFromStyles = () => {
+			// Check for the block style.
+			const isStyleWavy = includes( attributes.className, 'is-style-wavy' );
+			const isStyleWaves = includes( attributes.className, 'is-style-waves' );
+			const isStyleSloped = includes( attributes.className, 'is-style-sloped' );
+			const isStyleRounded = includes( attributes.className, 'is-style-rounded' );
+			const isStyleAngled = includes( attributes.className, 'is-style-angled' );
+			const isStyleTriangle = includes( attributes.className, 'is-style-triangle' );
+			const isStylePointed = includes( attributes.className, 'is-style-pointed' );
+			const isStyleHills = includes( attributes.className, 'is-style-hills' );
+
+			let divider = dividers.wavy;
+
+			if ( isStyleAngled ) {
+				divider = dividers.angled;
+			} else if ( isStyleWavy ) {
+				divider = dividers.wavy;
+			} else if ( isStyleSloped ) {
+				divider = dividers.sloped;
+			} else if ( isStyleTriangle ) {
+				divider = dividers.triangle;
+			} else if ( isStyleRounded ) {
+				divider = dividers.rounded;
+			} else if ( isStyleWaves ) {
+				divider = dividers.waves;
+			} else if ( isStylePointed ) {
+				divider = dividers.pointed;
+			} else if ( isStyleHills ) {
+				divider = dividers.hills;
+			}
+
+			return divider;
+		}
+
+		const colorClass = getColorClassName( 'color', color );
+
+		const classes = classnames(
+			className, {
+			[ colorClass ]: colorClass,
+			'is-vertically-flipped' : verticalFlip,
+			'is-horizontally-flipped' : horizontalFlip,
+			'has-background': backgroundColor,
+			'has-text-color': color || customColor,
+			[ `coblocks-shape-divider-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+		} );
+
+		const styles = {
+			backgroundColor: backgroundColor,
+		};
+		
+		return (
+			<div
+				className={ classes }
+				style={ styles }
+				>
+				<div className={ classnames(
+						'wp-block-coblocks-shape-divider__svg-wrapper', {
+							[ colorClass ]: colorClass,
+						}
+					) }
+					style={ {
+						color: color || customColor,
+						height: shapeHeight,
+					} }
+				>
+					{ getDividerFromStyles() }
+				</div>
+				<div className={ classnames(
+						'wp-block-coblocks-shape-divider__alt-wrapper', {
+							[ colorClass ]: colorClass,
+						}
+					) }
+					style={ {
+						backgroundColor: color || customColor,
+						height: backgroundHeight,
+					} } 
+				>
+				</div>
+			</div>
+		);
 	},
-
-	// save( { attributes, className } ) {
-
-	// 	const {
-	// 		color,
-	// 		customColor,
-	// 		height,
-			// verticalFlip,
-			// horizontalFlip,
-			// backgroundColor,
-			// customBackgroundColor,
-	// 	} = attributes;
-
-	// 	const colorClass = getColorClassName( 'color', color );
-
-	// 	const classes = classnames(
-	// 		className, {
-	// 		'has-text-color': color || customColor,
-	// 		[ colorClass ]: colorClass,
-	// 	} );
-
-	// 	const styles = {
-	// 		color: colorClass ? undefined : customColor,
-	// 		height: height ? height + 'px' : undefined,
-	// 	};
-
-	// 	return (
-	// 		<hr className={ classes } style={ styles }></hr>
-	// 	);
-	// },
 };
 
 export { name, title, icon, settings };
