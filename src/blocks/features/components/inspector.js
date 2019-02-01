@@ -95,7 +95,6 @@ class Inspector extends Component {
 			{ value: 'small', label: __( 'Small' ) },
 			{ value: 'medium', label: __( 'Medium' ) },
 			{ value: 'large', label: __( 'Large' ) },
-			{ value: 'huge', label: __( 'Huge' ) },
 		];
 
 		return (
