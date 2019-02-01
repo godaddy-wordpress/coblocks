@@ -44,7 +44,7 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 			setAttributes,
 		} = props;
 
-		const coBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/media-card' ];
+		const coBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/media-card', 'coblocks/shape-divider' ];
 
 		if( typeof attributes.coblocks === 'undefined' ){
 			attributes.coblocks = [];
