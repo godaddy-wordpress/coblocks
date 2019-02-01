@@ -117,7 +117,6 @@ class Inspector extends Component {
 						<DimensionsControl { ...this.props }
 							type={ 'margin' }
 							label={ __( 'Margin' ) }
-							help={ __( 'Space around the container.' ) }
 							valueTop={ marginTop }
 							valueRight={ marginRight }
 							valueBottom={ marginBottom }
@@ -139,7 +138,6 @@ class Inspector extends Component {
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding' ) }
-							help={ __( 'Space inside of the container.' ) }
 							valueTop={ paddingTop }
 							valueRight={ paddingRight }
 							valueBottom={ paddingBottom }

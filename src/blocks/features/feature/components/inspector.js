@@ -79,7 +79,6 @@ class Inspector extends Component {
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding' ) }
-							help={ __( 'Space inside of the container.' ) }
 							valueTop={ paddingTop }
 							valueRight={ paddingRight }
 							valueBottom={ paddingBottom }
