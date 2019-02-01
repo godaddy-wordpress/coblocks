@@ -22,6 +22,7 @@
 			// Fix color for headings.
 			p,
 			.wp-block-heading {
+				padding-top: 0 !important;
 
 				h1,
 				h2,
@@ -160,6 +161,8 @@
 	}
 
 	.wp-block-coblocks-icon {
+		margin-bottom:0;
+
 		.components-resizable-box__handle-left {
 			display: none;
 		}
@@ -231,6 +234,15 @@
 							> .editor-block-list__insertion-point {
 								display: none;
 							}
+						}
+
+						> .editor-block-list__block-edit {
+							margin-bottom: 0;
+							margin-top: 0;
+						}
+
+						&[data-type="core/paragraph"] {
+							margin-top: 0 !important;
 						}
 					}
 					> div {
