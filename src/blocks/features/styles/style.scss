@@ -87,6 +87,12 @@
 			color: inherit;
 		}
 	}
+
+	.wp-block-coblocks-feature__inner{
+		> *{
+			position: relative;
+		}
+	}
 }
 
 // [data-columns="3"] {
