@@ -147,6 +147,8 @@ class Edit extends Component {
 			shapeHeightTablet,
 			shapeHeightMobile,
 			backgroundHeight,
+			backgroundHeightTablet,
+			backgroundHeightMobile,
 			verticalFlip,
 			horizontalFlip,
 		} = attributes;
@@ -156,16 +158,31 @@ class Edit extends Component {
 			value  : shapeHeight 
 		};
 
+		let backgroundHeightResizer = {
+			target : 'shapeHeight',
+			value  : backgroundHeight 
+		};
+
 		if( this.state.innerWidth <= 768 && this.state.innerWidth > 514 ){
 			shapeHeightResizer = {
 				target : 'shapeHeightTablet',
 				value  : ( shapeHeightTablet ) ? shapeHeightTablet : shapeHeight,
 			};
 
+			backgroundHeightResizer = {
+				target : 'backgroundHeightTablet',
+				value  : ( backgroundHeightTablet ) ? backgroundHeightTablet : backgroundHeight,
+			};
+
 		}else if( this.state.innerWidth <= 514 ){
 			shapeHeightResizer = {
 				target : 'shapeHeightMobile',
 				value  : ( shapeHeightMobile ) ? shapeHeightMobile : shapeHeight, 
+			};
+
+			backgroundHeightResizer = {
+				target : 'backgroundHeightMobile',
+				value  : ( backgroundHeightMobile ) ? backgroundHeightMobile : backgroundHeight,
 			};
 
 		}
@@ -265,7 +282,7 @@ class Edit extends Component {
 						backgroundColor: color.color,
 					} }
 					size={ {
-						height: backgroundHeight,
+						height: backgroundHeightResizer.value,
 					} }
 					minWidth="100%"
 					minHeight="10"
@@ -280,9 +297,28 @@ class Edit extends Component {
 						topLeft: false,
 					} }
 					onResizeStop={ ( event, direction, elt, delta ) => {
-						setAttributes( {
-							backgroundHeight: parseInt( backgroundHeight + delta.height, 10 ),
-						} );
+
+						switch( backgroundHeightResizer.target ){
+							case 'backgroundHeightTablet':
+								setAttributes( {
+									backgroundHeightTablet : parseInt( backgroundHeightResizer.value + delta.height, 10 ),
+								} );
+							break;
+
+							case 'backgroundHeightMobile':
+								setAttributes( {
+									backgroundHeightMobile : parseInt( backgroundHeightResizer.value + delta.height, 10 ),
+								} );
+							break;
+
+							default:
+								setAttributes( {
+									backgroundHeight : parseInt( backgroundHeightResizer.value + delta.height, 10 ),
+								} );
+							break;
+						}
+
+
 						toggleSelection( true );
 						this.setState( { resizingAlt: false } );
 
