@@ -95,7 +95,6 @@ class Inspector extends Component {
 			{ value: 'small', label: __( 'Small' ) },
 			{ value: 'medium', label: __( 'Medium' ) },
 			{ value: 'large', label: __( 'Large' ) },
-			{ value: 'huge', label: __( 'Huge' ) },
 		];
 
 		return (
@@ -109,6 +108,19 @@ class Inspector extends Component {
 								setAttributes( {
 									columns: parseInt( nextCount ),
 								} );
+
+								if( parseInt( nextCount ) < 2 ){
+									setAttributes( {
+										gutter: 'no',
+									} );
+								}else{
+									if( gutter == 'no' ){
+										setAttributes( {
+											gutter: 'large',
+										} );
+									}
+								}
+
 								wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
 							} }
 							min={ 1 }
