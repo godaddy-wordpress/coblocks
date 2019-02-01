@@ -1,0 +1,178 @@
+.components-coblocks-icon-block--advanced-size {
+	margin-bottom: 1.5em;
+	position: relative;
+
+	.components-color-palette__clear {
+		bottom: 3px;
+		position: absolute;
+		right: 0;
+	}
+
+	.components-range-control {
+		width: calc(100% - 60px);
+
+		.components-range-control__number {
+			margin-left: 12px;
+		}
+	}
+}
+
+.coblocks-icon-types-list-wrapper {
+	height: 100%;
+	margin-left: -3px;
+	overflow: hidden;
+	width: calc(100% + 6px);
+
+	// Hides the vertical scroll-bar.
+	> ul {
+		box-sizing: content-box; /* So the width will be 100% + 17px */
+		height: 100%;
+		margin-bottom: 0.5em;
+		overflow-y: scroll;
+		padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+		width: 100%;
+	}
+
+	.no-results {
+		font-style: italic;
+		margin-bottom: 0;
+		margin-left: 4px;
+		margin-top: -8px;
+	}
+}
+
+.coblocks-icon-types-list {
+	margin-top: 0;
+	max-height: 170px;
+	overflow-y: scroll;
+	padding: 4px 0 0 0;
+
+	&__search {
+		margin-bottom: 0.7em !important;
+	}
+
+	.editor-block-types-list__list-item {
+		margin: 0 0 8px;
+		padding: 0 4px;
+		width: 29.9%;
+
+		@media screen and (max-width: 782px) {
+			width: 31.5%;
+		}
+
+		@media screen and (max-width: 600px) {
+			width: 31.1%;
+		}
+
+		.components-button {
+			align-items: center;
+			background: transparent;
+			border: 1px solid rgba(25, 30, 35, 0.2);
+			border-radius: 3px;
+			box-shadow: none;
+			display: flex;
+			height: auto;
+			justify-content: center;
+			padding: 14px 0;
+			width: 100%;
+
+			&:hover {
+				background: #f8f9f9;
+
+				svg {
+					fill: #191e23;
+				}
+			}
+
+			&:focus,
+			&:active:enabled {
+				background: #f8faf9;
+				box-shadow: 0 0 0 3px #f8faf9;
+				outline: none;
+			}
+
+			svg {
+				fill: #3f464d;
+				height: 20px;
+				margin: 0;
+				overflow: hidden;
+				padding: 0;
+				width: 20px;
+			}
+		}
+
+		.editor-block-types-list__item-icon {
+			line-height: 0;
+			padding: 0;
+		}
+
+		&.selected-svg {
+			.components-button {
+				background: #e3e4e7;
+				border-color: #e3e4e7;
+				pointer-events: none;
+
+				svg {
+					fill: #3f464d;
+				}
+			}
+		}
+
+		&.is-selected {
+			.components-button {
+				&,
+				&:focus {
+					background: transparent;
+					box-shadow: 0 0 0 2px #fff, 0 0 0 4px #555d66;
+				}
+			}
+		}
+	}
+}
+
+//Add styling for resizableBox handles when a parent div is positioning the icon.
+.has-center-content .wp-block-coblocks-icon__inner.is-selected {
+	.components-resizable-box__handle-left,
+	.components-resizable-box__handle-right {
+		display: block !important;
+	}
+}
+
+.has-right-content .wp-block-coblocks-icon__inner.is-selected {
+
+	.components-resizable-box__handle-left {
+		display: block !important;
+	}
+
+	.components-resizable-box__handle-right {
+		display: none !important;
+	}
+}
+
+// Editor style preview.
+.editor-block-preview,
+.editor-block-styles__item-preview {
+	.wp-block-coblocks-icon__inner {
+		align-items: center;
+		background: transparent !important;
+		display: flex;
+		height: 100% !important;
+		justify-content: center;
+		margin-top: 16px;
+		padding: 0 !important;
+		transform: scale(1.23);
+		width: 100% !important;
+
+		> svg {
+			fill: #3f464d;
+			height: 24px;
+			width: 24px;
+		}
+	}
+}
+
+.editor-block-preview {
+	.wp-block-coblocks-icon__inner {
+		margin-top: 3px;
+	}
+}

@@ -14,13 +14,13 @@ const { RichTextToolbarButton, RichTextShortcut } = wp.editor;
 /**
  * Block constants
  */
-const name = 'coblocks/uppercase';
+const name = 'coblocks/code';
 
-export const uppercase = {
+export const code = {
 	name,
-	title: __( 'Uppercase' ),
-	tagName: 'span',
-	className: 'uppercase',
+	title: __( 'Code' ),
+	tagName: 'code',
+	className: 'font-mono',
 	edit( { isActive, value, onChange } ) {
 		const onToggle = () => onChange( toggleFormat( value, { type: name } ) );
 
@@ -32,12 +32,12 @@ export const uppercase = {
 					onUse={ onToggle }
 				/>
 				<RichTextToolbarButton
-					icon={ formatIcons.uppercase }
-					title={ __( 'Uppercase' ) }
+					icon={ formatIcons.code }
+					title={ __( 'code' ) }
 					onClick={ onToggle }
 					isActive={ isActive }
 					shortcutType="access"
-					shortcutCharacter="u"
+					shortcutCharacter="x"
 				/>
 			</Fragment>
 		);

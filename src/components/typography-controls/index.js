@@ -21,6 +21,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment, createRef } = wp.element;
 const { compose, withState } = wp.compose;
 const { BlockControls } = wp.editor;
+const { DOWN } = wp.keycodes;
 const { RangeControl, PanelBody, withFallbackStyles, FontSizePicker, ToggleControl, Button, Popover, Dropdown, IconButton, SelectControl } = wp.components;
 
 

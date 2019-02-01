@@ -24,6 +24,7 @@ import './extensions/colors/inspector';
 import './extensions/typography';
 import './extensions/attributes';
 import './extensions/advanced-controls';
+import './extensions/list-styles';
 
 // Formats
 import './formats/';
@@ -46,6 +47,7 @@ import * as social from './blocks/social';
 import * as map from './blocks/map';
 import * as mediaCard from './blocks/media-card';
 import * as shapeDivider from './blocks/shape-divider';
+import * as icon from './blocks/icon';
 
 export function registerBlocks () {
 	[
@@ -66,6 +68,7 @@ export function registerBlocks () {
 		map,
 		mediaCard,
 		shapeDivider,
+		icon,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {
