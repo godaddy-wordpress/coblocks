@@ -46,6 +46,7 @@ class Edit extends Component {
 			attributes,
 			backgroundColor,
 			textColor,
+			customTextColor,
 			className,
 			isSelected,
 			setAttributes,
@@ -73,6 +74,7 @@ class Edit extends Component {
 		const innerClasses = classnames(
 			'wp-block-coblocks-feature__inner',
 			...BackgroundClasses( attributes ), {
+				'has-text-color': textColor.color,
 				'has-padding': paddingSize && paddingSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 				[ `has-${ contentAlign }-content` ]: contentAlign,

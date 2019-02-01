@@ -144,8 +144,6 @@ const settings = {
 		const innerClasses = classnames(
 			'wp-block-coblocks-features__inner',
 			...BackgroundClasses( attributes ), {
-			'has-background': backgroundColor || customBackgroundColor,
-			[ backgroundClass ]: backgroundClass,
 			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
 			'has-padding': paddingSize && paddingSize != 'no',
