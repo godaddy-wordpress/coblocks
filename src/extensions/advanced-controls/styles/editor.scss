@@ -13,6 +13,11 @@
 		> .editor-block-list__block-edit {
 			margin-top: 0 !important;
 		}
+
+		// The image block has margin-top that we need to override.
+		.wp-block-image {
+			margin-top: 0 !important;
+		}
 	}
 
 	.wp-block.editor-block-list__block[data-coblocks-bottom-spacing="1"]:not(:last-child) {
@@ -26,7 +31,8 @@
 			}
 		}
 
-		// The core cover block has it's own margin added as well that we need to override.
+		// The core image and cover blocks have it's own margin added as well that we need to override.
+		.wp-block-image,
 		.wp-block-cover {
 			margin-bottom: 0 !important;
 		}
