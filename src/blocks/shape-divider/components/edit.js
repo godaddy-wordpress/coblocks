@@ -28,10 +28,25 @@ class Edit extends Component {
 	constructor() {
 		super( ...arguments );
 
+		this.saveMeta = this.saveMeta.bind( this );
+		this.getBrowserWidth = this.getBrowserWidth.bind( this );
+
 		this.state = {
 			resizing: false,
 			resizingAlt: false,
+			innerWidth: this.getBrowserWidth(),
 		}
+	}
+
+	componentDidMount(){
+		this.getBrowserWidth();
+		window.addEventListener( 'resize', this.getBrowserWidth.bind(this) );
+	}
+	componentWillMount(){
+		this.getBrowserWidth();
+	}
+	componentWillUnmount(){
+		window.removeEventListener( 'resize', this.getBrowserWidth.bind(this) );
 	}
 
 	getDividerFromStyles( className ) {
@@ -69,6 +84,51 @@ class Edit extends Component {
 		return divdier;
 	}
 
+	getBrowserWidth(){
+		this.setState({ innerWidth : window.innerWidth });
+		return window.innerWidth;
+	}
+
+	saveMeta( type ){
+		let meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
+		let block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
+		let dimensions = {};
+
+		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
+			let id = this.props.name.split('/').join('-') + '-' + this.props.attributes.coblocks.id;
+			let height = {
+				height: block.attributes[ type ],
+				heightTablet: block.attributes[ type + 'Tablet' ],
+				heightMobile: block.attributes[ type + 'Mobile' ],
+			};
+
+			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height  == '' ) ){
+				dimensions = {};
+			} else {
+				dimensions = JSON.parse( meta._coblocks_responsive_height );
+			}
+
+			if ( typeof dimensions[ id ] === 'undefined' ) {
+				dimensions[ id ] = {};
+				dimensions[ id ][ type ] = {};
+			} else {
+				if ( typeof dimensions[ id ][ type ] === 'undefined' ){
+					dimensions[ id ][ type ] = {};
+				}
+			}
+
+			dimensions[ id ][ type ] = height;
+			
+			// Save values to metadata.
+			wp.data.dispatch( 'core/editor' ).editPost({
+				meta: {
+					_coblocks_responsive_height: JSON.stringify( dimensions ),
+				}
+			});
+
+		}
+	}
+
 	render() {
 
 		const {
@@ -84,11 +144,32 @@ class Edit extends Component {
 		const {
 			coblocks,
 			shapeHeight,
+			shapeHeightTablet,
+			shapeHeightMobile,
 			backgroundHeight,
 			verticalFlip,
 			horizontalFlip,
 		} = attributes;
 
+		let shapeHeightResizer = {
+			target : 'shapeHeight',
+			value  : shapeHeight 
+		};
+
+		if( this.state.innerWidth <= 768 && this.state.innerWidth > 514 ){
+			shapeHeightResizer = {
+				target : 'shapeHeightTablet',
+				value  : ( shapeHeightTablet ) ? shapeHeightTablet : shapeHeight,
+			};
+
+		}else if( this.state.innerWidth <= 514 ){
+			shapeHeightResizer = {
+				target : 'shapeHeightMobile',
+				value  : ( shapeHeightMobile ) ? shapeHeightMobile : shapeHeight, 
+			};
+
+		}
+		
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -126,9 +207,9 @@ class Edit extends Component {
 						color: color.color,
 					} }
 					size={ {
-						height: shapeHeight,
+						height: shapeHeightResizer.value,
 					} }
-					minHeight="40"
+					minHeight="10"
 					enable={ {
 						top: false,
 						right: false,
@@ -140,11 +221,31 @@ class Edit extends Component {
 						topLeft: false,
 					} }
 					onResizeStop={ ( event, direction, elt, delta ) => {
-						setAttributes( {
-							shapeHeight: parseInt( shapeHeight + delta.height, 10 ),
-						} );
+						switch( shapeHeightResizer.target ){
+							case 'shapeHeightTablet':
+								setAttributes( {
+									shapeHeightTablet : parseInt( shapeHeightResizer.value + delta.height, 10 ),
+								} );
+							break;
+
+							case 'shapeHeightMobile':
+								setAttributes( {
+									shapeHeightMobile : parseInt( shapeHeightResizer.value + delta.height, 10 ),
+								} );
+							break;
+
+							default:
+								setAttributes( {
+									shapeHeight : parseInt( shapeHeightResizer.value + delta.height, 10 ),
+								} );
+							break;
+						}
+						
 						toggleSelection( true );
 						this.setState( { resizing: false } );
+						
+						//update meta
+						this.saveMeta( 'shapeHeight' );
 					} }
 					onResizeStart={ () => {
 						toggleSelection( false );
@@ -184,6 +285,9 @@ class Edit extends Component {
 						} );
 						toggleSelection( true );
 						this.setState( { resizingAlt: false } );
+
+						//update meta
+						this.saveMeta( 'backgroundHeight' );
 					} }
 					onResizeStart={ () => {
 						toggleSelection( false );

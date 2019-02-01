@@ -67,42 +67,6 @@ class ResponsiveBaseControl extends Component {
 				}
 			});
 
-			//add CSS to head
-			let head 			= document.head || document.getElementsByTagName('head')[0],
-			responsiveCss		= '',
-		    style 				= document.createElement('style');
-		    style.type 			= 'text/css';
-		    let targetDiv 		= ( this.props.type == 'shapeHeight' ) ? '.wp-block-coblocks-shape-divider__svg-wrapper' : '.wp-block-coblocks-shape-divider__alt-wrapper';
-
-		    //add responsive styling for tablet device
-		    responsiveCss += '@media only screen and (max-width: 768px) {';
-		   		responsiveCss += '.'+ id + ' '+ targetDiv +'{';
-		   		
-		   		if( height.heightTablet ){
-		   			responsiveCss += 'height: ' + height.heightTablet + 'px !important;';
-		   		}
-		    	
-		    	responsiveCss += '}';
-		    responsiveCss += '}';
-
-		    responsiveCss += '@media only screen and (max-width: 514px) {';
-		   		responsiveCss += '.'+ id + ' '+ targetDiv +'{';	
-
-		   		if( height.heightMobile ){
-		   			responsiveCss += 'height: ' + height.heightMobile + 'px !important;';
-		   		}	    	
-		    	
-		    	responsiveCss += '}';
-		    responsiveCss += '}';
-
-		    if ( style.styleSheet ){
-			  style.styleSheet.cssText = responsiveCss;
-			}else {
-			  style.appendChild( document.createTextNode(responsiveCss) );
-			}
-
-			head.appendChild(style);
-
 		}
 	}
 
