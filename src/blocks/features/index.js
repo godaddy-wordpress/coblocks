@@ -12,7 +12,7 @@ import './styles/editor.scss';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import Edit from './components/edit';
-import icons from './../../utils/icons';
+import icons from './components/icons';
 
 /**
  * WordPress dependencies
@@ -28,7 +28,7 @@ const name = 'features';
 
 const title = __( 'Features' );
 
-const icon = icons.feature;
+const icon = icons.features;
 
 const keywords = [
 	__( 'icons' ),
