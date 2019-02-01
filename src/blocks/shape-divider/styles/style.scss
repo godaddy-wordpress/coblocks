@@ -28,9 +28,9 @@
 		flex-direction: column-reverse;
 
 		svg {
-			transform: scaleY(-1);
-			top: -1px; // Add a tiny bit of overlap so that there's not a line divider
 			bottom: 0;
+			top: -1px; // Add a tiny bit of overlap so that there's not a line divider
+			transform: scaleY(-1);
 		}
 
 		&.is-horizontally-flipped svg {
