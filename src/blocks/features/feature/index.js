@@ -44,7 +44,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Add up to four columns of features.' ),
+	description: __( 'A singular column within a parent Features block.' ),
 
 	keywords: keywords,
 

@@ -58,7 +58,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Add up to three columns of features.' ),
+	description: __( 'Add up to three columns of small notes for your product or service.' ),
 
 	keywords: keywords,
 
