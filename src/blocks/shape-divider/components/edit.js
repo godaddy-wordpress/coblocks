@@ -118,7 +118,7 @@ class Edit extends Component {
 			}
 
 			dimensions[ id ][ type ] = height;
-			
+
 			// Save values to metadata.
 			wp.data.dispatch( 'core/editor' ).editPost({
 				meta: {
@@ -155,12 +155,12 @@ class Edit extends Component {
 
 		let shapeHeightResizer = {
 			target : 'shapeHeight',
-			value  : shapeHeight 
+			value  : shapeHeight
 		};
 
 		let backgroundHeightResizer = {
 			target : 'shapeHeight',
-			value  : backgroundHeight 
+			value  : backgroundHeight
 		};
 
 		if( this.state.innerWidth <= 768 && this.state.innerWidth > 514 ){
@@ -177,7 +177,7 @@ class Edit extends Component {
 		}else if( this.state.innerWidth <= 514 ){
 			shapeHeightResizer = {
 				target : 'shapeHeightMobile',
-				value  : ( shapeHeightMobile ) ? shapeHeightMobile : shapeHeight, 
+				value  : ( shapeHeightMobile ) ? shapeHeightMobile : shapeHeight,
 			};
 
 			backgroundHeightResizer = {
@@ -186,7 +186,14 @@ class Edit extends Component {
 			};
 
 		}
-		
+
+		const classes = classnames(
+			className, {
+			[ `coblocks-shape-divider-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+			'is-vertically-flipped' : verticalFlip,
+			'is-horizontally-flipped' : horizontalFlip,
+		} );
+
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -200,137 +207,121 @@ class Edit extends Component {
 					/>
 				) }
 				<div
-					className={ classnames(
-						className, {
-							'is-vertically-flipped' : verticalFlip,
-							'is-horizontally-flipped' : horizontalFlip,
-							'has-background': backgroundColor.color,
-							'has-text-color': color.color,
-							[ `coblocks-shape-divider-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
-						}
-					) }
-					style={ {
-						backgroundColor: backgroundColor.color,
-					} }
+					className={ classes }
+					style={ { backgroundColor: backgroundColor.color, color: color.color } }
+				>
+					<ResizableBox
+						className={ classnames(
+							'wp-block-coblocks-shape-divider__svg-wrapper', {
+								'is-selected': isSelected,
+								'is-resizing' : this.state.resizing,
+							}
+						) }
+						size={ {
+							height: shapeHeightResizer.value,
+						} }
+						minHeight="10"
+						enable={ {
+							top: false,
+							right: false,
+							bottom: true,
+							left: false,
+							topRight: false,
+							bottomRight: false,
+							bottomLeft: false,
+							topLeft: false,
+						} }
+						onResizeStop={ ( event, direction, elt, delta ) => {
+							switch( shapeHeightResizer.target ){
+								case 'shapeHeightTablet':
+									setAttributes( {
+										shapeHeightTablet : parseInt( shapeHeightResizer.value + delta.height, 10 ),
+									} );
+								break;
+
+								case 'shapeHeightMobile':
+									setAttributes( {
+										shapeHeightMobile : parseInt( shapeHeightResizer.value + delta.height, 10 ),
+									} );
+								break;
+
+								default:
+									setAttributes( {
+										shapeHeight : parseInt( shapeHeightResizer.value + delta.height, 10 ),
+									} );
+								break;
+							}
+
+							toggleSelection( true );
+							this.setState( { resizing: false } );
+
+							//update meta
+							this.saveMeta( 'shapeHeight' );
+						} }
+						onResizeStart={ () => {
+							toggleSelection( false );
+							this.setState( { resizing: true } );
+						} }
 					>
-				<ResizableBox
-					className={ classnames(
-						'wp-block-coblocks-shape-divider__svg-wrapper', {
-							'is-selected': isSelected,
-							'is-resizing' : this.state.resizing,
-						}
-					) }
-					style={ {
-						color: color.color,
-					} }
-					size={ {
-						height: shapeHeightResizer.value,
-					} }
-					minHeight="10"
-					enable={ {
-						top: false,
-						right: false,
-						bottom: true,
-						left: false,
-						topRight: false,
-						bottomRight: false,
-						bottomLeft: false,
-						topLeft: false,
-					} }
-					onResizeStop={ ( event, direction, elt, delta ) => {
-						switch( shapeHeightResizer.target ){
-							case 'shapeHeightTablet':
-								setAttributes( {
-									shapeHeightTablet : parseInt( shapeHeightResizer.value + delta.height, 10 ),
-								} );
-							break;
+						{ this.getDividerFromStyles( className ) }
+					</ResizableBox>
+					<ResizableBox
+						className={ classnames(
+							'wp-block-coblocks-shape-divider__alt-wrapper', {
+								'is-selected': isSelected,
+								'is-resizing' : this.state.resizingAlt,
+							}
+						) }
+						size={ {
+							height: backgroundHeightResizer.value,
+						} }
+						minWidth="100%"
+						minHeight="10"
+						enable={ {
+							top: false,
+							right: false,
+							bottom: true,
+							left: false,
+							topRight: false,
+							bottomRight: false,
+							bottomLeft: false,
+							topLeft: false,
+						} }
+						onResizeStop={ ( event, direction, elt, delta ) => {
 
-							case 'shapeHeightMobile':
-								setAttributes( {
-									shapeHeightMobile : parseInt( shapeHeightResizer.value + delta.height, 10 ),
-								} );
-							break;
+							switch( backgroundHeightResizer.target ){
+								case 'backgroundHeightTablet':
+									setAttributes( {
+										backgroundHeightTablet : parseInt( backgroundHeightResizer.value + delta.height, 10 ),
+									} );
+								break;
 
-							default:
-								setAttributes( {
-									shapeHeight : parseInt( shapeHeightResizer.value + delta.height, 10 ),
-								} );
-							break;
-						}
-						
-						toggleSelection( true );
-						this.setState( { resizing: false } );
-						
-						//update meta
-						this.saveMeta( 'shapeHeight' );
-					} }
-					onResizeStart={ () => {
-						toggleSelection( false );
-						this.setState( { resizing: true } );
-					} }
-				>
-					{ this.getDividerFromStyles( className ) }
-				</ResizableBox>
-				<ResizableBox
-					className={ classnames(
-						'wp-block-coblocks-shape-divider__alt-wrapper', {
-							'is-selected': isSelected,
-							'is-resizing' : this.state.resizingAlt,
-						}
-					) }
-					style={ {
-						backgroundColor: color.color,
-					} }
-					size={ {
-						height: backgroundHeightResizer.value,
-					} }
-					minWidth="100%"
-					minHeight="10"
-					enable={ {
-						top: false,
-						right: false,
-						bottom: true,
-						left: false,
-						topRight: false,
-						bottomRight: false,
-						bottomLeft: false,
-						topLeft: false,
-					} }
-					onResizeStop={ ( event, direction, elt, delta ) => {
+								case 'backgroundHeightMobile':
+									setAttributes( {
+										backgroundHeightMobile : parseInt( backgroundHeightResizer.value + delta.height, 10 ),
+									} );
+								break;
 
-						switch( backgroundHeightResizer.target ){
-							case 'backgroundHeightTablet':
-								setAttributes( {
-									backgroundHeightTablet : parseInt( backgroundHeightResizer.value + delta.height, 10 ),
-								} );
-							break;
-
-							case 'backgroundHeightMobile':
-								setAttributes( {
-									backgroundHeightMobile : parseInt( backgroundHeightResizer.value + delta.height, 10 ),
-								} );
-							break;
-
-							default:
-								setAttributes( {
-									backgroundHeight : parseInt( backgroundHeightResizer.value + delta.height, 10 ),
-								} );
-							break;
-						}
+								default:
+									setAttributes( {
+										backgroundHeight : parseInt( backgroundHeightResizer.value + delta.height, 10 ),
+									} );
+								break;
+							}
 
 
-						toggleSelection( true );
-						this.setState( { resizingAlt: false } );
+							toggleSelection( true );
+							this.setState( { resizingAlt: false } );
 
-						//update meta
-						this.saveMeta( 'backgroundHeight' );
-					} }
-					onResizeStart={ () => {
-						toggleSelection( false );
-						this.setState( { resizingAlt: true } );
-					} }
-				>
-				</ResizableBox>
+							//update meta
+							this.saveMeta( 'backgroundHeight' );
+						} }
+						onResizeStart={ () => {
+							toggleSelection( false );
+							this.setState( { resizingAlt: true } );
+						} }
+					>
+					</ResizableBox>
 				</div>
 			</Fragment>
 		];

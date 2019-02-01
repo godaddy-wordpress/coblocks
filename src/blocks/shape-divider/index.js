@@ -326,10 +326,11 @@ const settings = {
 			backgroundColor,
 			color,
 			customColor,
+			customBackgroundColor,
 		} = attributes;
 
+		// Check for the block style.
 		const getDividerFromStyles = () => {
-			// Check for the block style.
 			const isStyleWavy = includes( attributes.className, 'is-style-wavy' );
 			const isStyleWaves = includes( attributes.className, 'is-style-waves' );
 			const isStyleSloped = includes( attributes.className, 'is-style-sloped' );
@@ -362,50 +363,29 @@ const settings = {
 			return divider;
 		}
 
-		const colorClass = getColorClassName( 'color', color );
+		const shapeClass = getColorClassName( 'color', color );
+		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames(
 			className, {
-			[ colorClass ]: colorClass,
+			[ `coblocks-shape-divider-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			'is-vertically-flipped' : verticalFlip,
 			'is-horizontally-flipped' : horizontalFlip,
-			'has-background': backgroundColor,
-			'has-text-color': color || customColor,
-			[ `coblocks-shape-divider-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+			[ shapeClass ]: shapeClass,
+			[ backgroundClass ]: backgroundClass,
 		} );
 
 		const styles = {
-			backgroundColor: backgroundColor,
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			color: shapeClass ? undefined : customColor,
 		};
-		
+
 		return (
-			<div
-				className={ classes }
-				style={ styles }
-				>
-				<div className={ classnames(
-						'wp-block-coblocks-shape-divider__svg-wrapper', {
-							[ colorClass ]: colorClass,
-						}
-					) }
-					style={ {
-						color: color || customColor,
-						height: shapeHeight,
-					} }
-				>
+			<div className={ classes } style={ styles }>
+				<div className="wp-block-coblocks-shape-divider__svg-wrapper" style={ { height: shapeHeight } }>
 					{ getDividerFromStyles() }
 				</div>
-				<div className={ classnames(
-						'wp-block-coblocks-shape-divider__alt-wrapper', {
-							[ colorClass ]: colorClass,
-						}
-					) }
-					style={ {
-						backgroundColor: color || customColor,
-						height: backgroundHeight,
-					} } 
-				>
-				</div>
+				<div className="wp-block-coblocks-shape-divider__alt-wrapper" style={ { height: backgroundHeight } }></div>
 			</div>
 		);
 	},
