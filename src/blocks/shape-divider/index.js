@@ -349,19 +349,15 @@ const settings = {
 	save( { attributes, className } ) {
 
 		const {
-			coblocks,
-			shapeHeight,
-			shapeHeightTablet,
-			shapeHeightMobile,
-			backgroundHeight,
-			backgroundHeightTablet,
-			backgroundHeightMobile,
-			verticalFlip,
-			horizontalFlip,
 			backgroundColor,
+			backgroundHeight,
+			coblocks,
 			color,
-			customColor,
 			customBackgroundColor,
+			customColor,
+			horizontalFlip,
+			shapeHeight,
+			verticalFlip,
 		} = attributes;
 
 		const shapeClass = getColorClassName( 'color', color );
