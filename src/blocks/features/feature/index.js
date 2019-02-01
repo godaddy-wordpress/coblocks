@@ -6,8 +6,8 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../../components/background';
-
+import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses } from '../../../components/background';
+import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 import Edit from './components/edit';
 import icons from './../../../utils/icons';
 
@@ -31,6 +31,7 @@ const blockAttributes = {
 	contentAlign: {
 		type: 'string',
 	},
+	...DimensionsAttributes,
 	...BackgroundAttributes,
 };
 
@@ -53,17 +54,46 @@ const settings = {
 	save( { attributes, className } ) {
 
 		const {
+			backgroundColor,
+			backgroundImg,
 			contentAlign,
+			customBackgroundColor,
+			customTextColor,
+			textColor,
+			paddingSize,
 		} = attributes;
+
+		// Body color class and styles.
+		const textClass = getColorClassName( 'color', textColor );
+		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames(
 			className, {
 			[ `has-${ contentAlign }-content` ]: contentAlign,
 		} );
 
+		const innerClasses = classnames(
+			'wp-block-coblocks-feature__inner',
+			...BackgroundClasses( attributes ), {
+			'has-background': backgroundColor || customBackgroundColor,
+			[ backgroundClass ]: backgroundClass,
+			'has-text-color': textColor || customTextColor,
+			[ textClass ]: textClass,
+			'has-padding': paddingSize && paddingSize != 'no',
+			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
+		} );
+
+		const innerStyles = {
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			color: textClass ? undefined : customTextColor,
+		};
+
 		return (
 			<div className={ classes }>
-				<InnerBlocks.Content />
+				<div className={ innerClasses } style={ innerStyles }>
+					<InnerBlocks.Content />
+				</div>
 			</div>
 		);
 	},

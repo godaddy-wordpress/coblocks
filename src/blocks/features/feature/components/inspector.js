@@ -2,8 +2,8 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import BackgroundImagePanel from '../../../components/background';
-import DimensionsControl from '../../../components/dimensions-control/';
+import BackgroundImagePanel from '../../../../components/background';
+import DimensionsControl from '../../../../components/dimensions-control/';
 
 /**
  * WordPress dependencies
@@ -41,7 +41,6 @@ class Inspector extends Component {
 	render() {
 
 		const {
-			clientId,
 			attributes,
 			backgroundColor,
 			fallbackBackgroundColor,
@@ -53,25 +52,7 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
-			columns,
-			gutter,
-			marginBottom,
-			marginLeft,
-			marginRight,
-			marginSize,
-			marginTop,
-			marginBottomTablet,
-			marginLeftTablet,
-			marginRightTablet,
-			marginTopTablet,
-			marginBottomMobile,
-			marginLeftMobile,
-			marginRightMobile,
-			marginTopMobile,
-			marginSyncUnits,
-			marginSyncUnitsTablet,
-			marginSyncUnitsMobile,
-			marginUnit,
+			width,
 			paddingBottom,
 			paddingLeft,
 			paddingRight,
@@ -91,51 +72,10 @@ class Inspector extends Component {
 			paddingUnit,
 		} = attributes;
 
-		const gutterOptions = [
-			{ value: 'small', label: __( 'Small' ) },
-			{ value: 'medium', label: __( 'Medium' ) },
-			{ value: 'large', label: __( 'Large' ) },
-			{ value: 'huge', label: __( 'Huge' ) },
-		];
-
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Features Settings' ) } className='components-coblocks-block-sidebar--features'>
-						<RangeControl
-							label={ __( 'Columns' ) }
-							value={ columns }
-							onChange={ ( nextCount ) => {
-								setAttributes( {
-									columns: parseInt( nextCount ),
-								} );
-								wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
-							} }
-							min={ 1 }
-							max={ 3 }
-						/>
-						<DimensionsControl { ...this.props }
-							type={ 'margin' }
-							label={ __( 'Margin' ) }
-							help={ __( 'Space around the container.' ) }
-							valueTop={ marginTop }
-							valueRight={ marginRight }
-							valueBottom={ marginBottom }
-							valueLeft={ marginLeft }
-							valueTopTablet={ marginTopTablet }
-							valueRightTablet={ marginRightTablet }
-							valueBottomTablet={ marginBottomTablet }
-							valueLeftTablet={ marginLeftTablet }
-							valueTopMobile={ marginTopMobile }
-							valueRightMobile={ marginRightMobile }
-							valueBottomMobile={ marginBottomMobile }
-							valueLeftMobile={ marginLeftMobile }
-							unit={ marginUnit }
-							syncUnits={ marginSyncUnits }
-							syncUnitsTablet={ marginSyncUnitsTablet }
-							syncUnitsMobile={ marginSyncUnitsMobile }
-							dimensionSize={ marginSize }
-						/>
+					<PanelBody title={ __( 'Feature Settings' ) } className='components-coblocks-block-sidebar--features'>
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding' ) }
@@ -158,15 +98,6 @@ class Inspector extends Component {
 							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
 						/>
-						{ columns >= 2 &&
-							<SelectControl
-								label={ __( 'Gutter' ) }
-								value={ gutter }
-								options={ gutterOptions }
-								help={ __( 'Space between each column.' ) }
-								onChange={ ( value ) => setAttributes( { gutter: value } ) }
-							/>
-						}
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }

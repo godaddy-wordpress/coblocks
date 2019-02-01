@@ -1,14 +1,24 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Internal dependencies
  */
 import Controls from './controls';
+import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../../components/background';
+import applyWithColors from './colors';
+import Inspector from './inspector';
 
 /**
  * WordPress dependencies
  */
 const { __, _x } = wp.i18n;
+const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.editor;
+const { Spinner } = wp.components;
 
 /**
  * Constants
@@ -33,33 +43,81 @@ class Edit extends Component {
 	render() {
 
 		const {
-			isSelected,
-			className,
 			attributes,
+			backgroundColor,
+			textColor,
+			className,
+			isSelected,
+			setAttributes,
 		} = this.props;
 
 		const {
+			backgroundImg,
 			contentAlign,
+			gutter,
+			paddingTop,
+			paddingRight,
+			paddingBottom,
+			paddingLeft,
+			paddingSize,
+			paddingUnit,
 		} = attributes;
+
+		const dropZone = (
+			<BackgroundImageDropZone
+				{ ...this.props }
+				label={ __( 'Add backround image' ) }
+			/>
+		);
+
+		const innerClasses = classnames(
+			'wp-block-coblocks-feature__inner',
+			...BackgroundClasses( attributes ), {
+				'has-padding': paddingSize && paddingSize != 'no',
+				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
+				[ `has-${ contentAlign }-content` ]: contentAlign,
+			}
+		);
+
+		const innerStyles = {
+			backgroundColor: backgroundColor.color,
+			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			color: textColor.color,
+			textAlign: contentAlign,
+			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
+			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
+			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
+			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+		};
 
 		return [
 			<Fragment>
+				{ dropZone }
 				{ isSelected && (
 					<Controls
 						{ ...this.props }
 					/>
 				) }
-				<div className={ className } style={ { textAlign: contentAlign } } >
-					<InnerBlocks
-						allowedBlocks={ ALLOWED_BLOCKS }
-						template={ TEMPLATE }
-						templateLock={ false }
-						templateInsertUpdatesSelection={ false }
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
 					/>
+				) }
+				<div className={ className }>
+					<div className={ innerClasses } style={ innerStyles }>
+						<InnerBlocks
+							allowedBlocks={ ALLOWED_BLOCKS }
+							template={ TEMPLATE }
+							templateLock={ false }
+							templateInsertUpdatesSelection={ false }
+						/>
+					</div>
 				</div>
 			</Fragment>
 		];
 	}
 }
 
-export default Edit;
+export default compose( [
+	applyWithColors,
+] )( Edit );

@@ -9,8 +9,7 @@ import map from 'lodash/map';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
-import ResizableSpacer, { ResizableSpacerTransforms } from '../../components/resizable-spacer/';
+import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import Edit from './components/edit';
 import icons from './../../utils/icons';
@@ -160,6 +159,7 @@ const settings = {
 		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			color: textClass ? undefined : customTextColor,
 		};
 
 		return (
