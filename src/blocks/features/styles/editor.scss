@@ -106,6 +106,32 @@
 					}
 				}
 			}
+
+			&.has-huge-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="coblocks/feature"] {
+				@media (max-width: #{ ($break-small) }) {
+					&:not(:last-child) {
+						margin-bottom: $gutter--huge * 2;
+					}
+				}
+
+				@include break-small() {
+					&:nth-child(odd) {
+						margin-right: $gutter--huge - 16px;
+					}
+
+					&:nth-child(even) {
+						margin-left: $gutter--huge - 16px;
+					}
+
+					&:not(:first-child) {
+						margin-left: $gutter--huge - 16px;
+					}
+
+					&:not(:last-child) {
+						margin-right: $gutter--huge - 16px;
+					}
+				}
+			}
 		}
 	}
 
