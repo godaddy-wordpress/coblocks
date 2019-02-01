@@ -3,7 +3,20 @@
 		position: relative;
 	}
 
+	.has-left-content {
+		text-align: left;
+	}
+
+	.has-center-content {
+		text-align: center;
+	}
+
+	.has-right-content {
+		text-align: right;
+	}
+
 	.wp-block-coblocks-feature {
+		background: #ff0;
 		display: flex;
 		flex-basis: 40%;
 		flex-direction: column;

@@ -160,7 +160,6 @@ const settings = {
 		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-			textAlign: contentAlign ? contentAlign : null,
 		};
 
 		return (
