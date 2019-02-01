@@ -134,6 +134,10 @@ const blockAttributes = {
 		type: 'boolean',
 		default: true,
 	},
+	justAdded: {
+		type: 'boolean',
+		default: true,
+	},
 	...ResponsiveBaseControlAttributes,
 };
 

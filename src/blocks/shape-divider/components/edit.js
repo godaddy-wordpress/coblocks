@@ -98,6 +98,7 @@ class Edit extends Component {
 	render() {
 
 		const {
+			clientId,
 			attributes,
 			className,
 			isSelected,
@@ -117,6 +118,7 @@ class Edit extends Component {
 			backgroundHeightMobile,
 			verticalFlip,
 			horizontalFlip,
+			justAdded,
 		} = attributes;
 
 		let shapeHeightResizer = {
@@ -151,6 +153,21 @@ class Edit extends Component {
 				value  : ( backgroundHeightMobile ) ? backgroundHeightMobile : backgroundHeight,
 			};
 
+		}
+
+		//modify blocks when added
+		if( justAdded ){
+			const prevBlockClientId = wp.data.select( 'core/editor' ).getPreviousBlockClientId( clientId );
+			const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
+
+			if( prevBlockClientId ){
+				wp.data.dispatch( 'core/editor' ).updateBlockAttributes( prevBlockClientId, {  noBottomMargin: true, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0 } );
+			}
+
+			if( nextBlockClientId ){
+				wp.data.dispatch( 'core/editor' ).updateBlockAttributes( nextBlockClientId, {  noTopMargin: true, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } );
+			}
+			setAttributes({ justAdded: false });
 		}
 
 		const classes = classnames(
