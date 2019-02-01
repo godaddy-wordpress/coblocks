@@ -36,7 +36,7 @@
 		}
 
 		.wp-block-coblocks-icon {
-			margin-bottom: 1.25em;
+			margin-bottom: 30px;
 		}
 
 		h1,
@@ -46,7 +46,7 @@
 		h5,
 		h6 {
 			margin: 0;
-			margin-bottom: .7em;
+			margin-bottom: 15px !important;
 			padding: 0;
 		}
 
@@ -55,6 +55,10 @@
 
 			&:not(.has-background) {
 				padding-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
 			}
 		}
 
