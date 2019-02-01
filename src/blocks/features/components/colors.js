@@ -8,6 +8,7 @@ const { withColors } = wp.editor;
  */
 const applyWithColors = withColors(
 	'backgroundColor',
+	{ textColor: 'color' },
 );
 
 export default applyWithColors;

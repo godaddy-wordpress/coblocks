@@ -51,6 +51,7 @@ class Inspector extends Component {
 			setAttributes,
 			setBackgroundColor,
 			textColor,
+			setTextColor,
 			headingColor,
 		} = this.props;
 
@@ -192,6 +193,10 @@ class Inspector extends Component {
 									}
 								},
 								label: __( 'Background Color' ),
+							},{
+								value: textColor.color,
+								onChange: setTextColor,
+								label: __( 'Text Color' ),
 							},
 						] }
 					>

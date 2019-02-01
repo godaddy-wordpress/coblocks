@@ -53,6 +53,7 @@ class Edit extends Component {
 		const {
 			attributes,
 			backgroundColor,
+			textColor,
 			className,
 			isSelected,
 			setAttributes,
@@ -106,6 +107,7 @@ class Edit extends Component {
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			color: textColor.color,
 			textAlign: contentAlign,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,

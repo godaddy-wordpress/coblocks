@@ -133,6 +133,7 @@ const settings = {
 		} = attributes;
 
 		// Body color class and styles.
+		const textClass = getColorClassName( 'color', textColor );
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames(
@@ -146,6 +147,8 @@ const settings = {
 			...BackgroundClasses( attributes ), {
 			'has-background': backgroundColor || customBackgroundColor,
 			[ backgroundClass ]: backgroundClass,
+			'has-text-color': textColor || customTextColor,
+			[ textClass ]: textClass,
 			'has-padding': paddingSize && paddingSize != 'no',
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 			'has-margin': marginSize && marginSize != 'no',
