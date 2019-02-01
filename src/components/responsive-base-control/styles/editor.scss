@@ -1,0 +1,38 @@
+.components-coblocks-responsive-base-control {
+	.components-coblocks-dimensions-control__inputs {
+		margin-left: 28px;
+	}
+
+	.components-base-control {
+		margin-bottom: 0 !important;
+		width: 100%;
+
+		.components-base-control__field {
+			margin-bottom: 0;
+		}
+
+		input {
+			height: 30px;
+			margin-left: 8px;
+			width: calc(100% - 8px);
+		}
+	}
+
+	.components-coblocks-dimensions-control__mobile-controls-item {
+		border-radius: 4px;
+		margin-top: 1px;
+		top: initial;
+		width: 30px;
+
+		&:focus {
+			background-color: #555d66 !important;
+			box-shadow:  inset 0 0 0 1px #fff;
+			outline: 2px solid transparent;
+			outline-offset: -2px;
+
+			svg {
+				fill: #fff;
+			}
+		}
+	}
+}

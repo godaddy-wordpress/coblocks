@@ -55,16 +55,23 @@ function addAttributes( settings ) {
 
 	if ( hasBlockSupport( settings, 'coBlocksSpacing' ) ) {
 		if( typeof settings.attributes !== 'undefined' ){
-			settings.attributes = Object.assign( settings.attributes, {
-				noBottomMargin: {
-					type: 'boolean',
-					default: false,
-				},
-				noTopMargin: {
-					type: 'boolean',
-					default: false,
-				}
-			} );
+
+			if( ! settings.attributes.noBottomMargin ){
+				settings.attributes = Object.assign( settings.attributes, {
+					noBottomMargin: {
+						type: 'boolean',
+						default: false,
+					}
+				} );
+			}
+			if( ! settings.attributes.noTopMargin ){
+				settings.attributes = Object.assign( settings.attributes, {
+					noTopMargin: {
+						type: 'boolean',
+						default: false,
+					}
+				} );
+			}
 		}
 	}
 
