@@ -4,7 +4,7 @@
 	position: relative;
 
 	svg {
-		bottom: 0;
+		bottom: -1px; // Add a tiny bit of overlap so that there's not a line divider
 		fill: currentColor;
 		height: 100%;
 		left: 0;
@@ -29,6 +29,8 @@
 
 		svg {
 			transform: scaleY(-1);
+			top: -1px; // Add a tiny bit of overlap so that there's not a line divider
+			bottom: 0;
 		}
 
 		&.is-horizontally-flipped svg {
