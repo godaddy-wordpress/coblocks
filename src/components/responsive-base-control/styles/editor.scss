@@ -12,35 +12,27 @@
 		}
 
 		input {
-			border-bottom-left-radius: 0;
-			border-top-left-radius: 0;
 			height: 30px;
-			transition: box-shadow 0.05s linear;
-			width: 100%;
+			margin-left: 8px;
+			width: calc(100% - 8px);
 		}
-	}
-
-	.component-coblocks-is-desktop {
-		input {
-			position: relative;
-			width: calc(100% - 1px);
-
-			&:focus {
-				border-radius: 3px;
-				z-index: 9;
-			}
-		}
-	}
-
-	.components-coblocks-dimensions-control_sync.components-button.is-small {
-		height: 30px;
-		margin-top: 1px;
-		width: 34px;
 	}
 
 	.components-coblocks-dimensions-control__mobile-controls-item {
+		border-radius: 4px;
 		margin-top: 1px;
 		top: initial;
 		width: 30px;
+
+		&:focus {
+			background-color: #555d66 !important;
+			box-shadow:  inset 0 0 0 1px #fff;
+			outline: 2px solid transparent;
+			outline-offset: -2px;
+
+			svg {
+				fill: #fff;
+			}
+		}
 	}
 }

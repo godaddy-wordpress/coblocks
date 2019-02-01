@@ -61,7 +61,7 @@ class Inspector extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( 'Divider Settings' ) }>
 						<ResponsiveBaseControl { ...this.props }
-							label={ __( 'Shape Height' ) }
+							label={ __( 'Shape Height in pixels' ) }
 							height={ shapeHeight }
 							heightTablet={ shapeHeightTablet }
 							heightMobile={ shapeHeightMobile }
@@ -73,7 +73,7 @@ class Inspector extends Component {
 							min="40"
 						/>
 						<ResponsiveBaseControl { ...this.props }
-							label={ __( 'Background Height' ) }
+							label={ __( 'Background Height in pixels' ) }
 							height={ backgroundHeight }
 							heightTablet={ backgroundHeightTablet }
 							heightMobile={ backgroundHeightMobile }
@@ -84,10 +84,8 @@ class Inspector extends Component {
 							type="backgroundHeight"
 							min="10"
 						/>
-						
 						<OrientationControl { ...this.props }
 							label={ __( 'Orientation' ) }
-							help={ __( 'Flip vertically and horizontally.' ) }
 							horizontalFlip={ horizontalFlip }
 							verticalFlip={ verticalFlip }
 							onHorizontalFlip={ () => setAttributes( {  horizontalFlip: ! horizontalFlip } ) }
