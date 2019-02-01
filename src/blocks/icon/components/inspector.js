@@ -20,7 +20,12 @@ const { __, _x, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
-const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, NavigableMenu, Dropdown, ButtonGroup, Dashicon, Tooltip } = wp.components;
+const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, NavigableMenu, Dropdown, ButtonGroup, Dashicon, Tooltip, ToggleControl } = wp.components;
+
+/**
+ * Module constants
+ */
+const NEW_TAB_REL = 'noreferrer noopener';
 
 /**
  * Fallback styles
@@ -48,6 +53,7 @@ class Inspector extends Component {
 
 		this.onChangeSize = this.onChangeSize.bind( this );
 		this.generateMaxPadding = this.generateMaxPadding.bind( this );
+		this.onSetNewTab = this.onSetNewTab.bind( this );
 	}
 
 	onChangeSize( value, size ) {
@@ -68,6 +74,23 @@ class Inspector extends Component {
 		} else {
 			return Math.round( width / 4 );
 		}
+	}
+
+	onSetNewTab( value ) {
+		const { rel } = this.props.attributes;
+		const linkTarget = value ? '_blank' : undefined;
+
+		let updatedRel = rel;
+		if ( linkTarget && ! rel ) {
+			updatedRel = NEW_TAB_REL;
+		} else if ( ! linkTarget && rel === NEW_TAB_REL ) {
+			updatedRel = undefined;
+		}
+
+		this.props.setAttributes( {
+			linkTarget,
+			rel: updatedRel,
+		} );
 	}
 
 	render() {
@@ -94,6 +117,9 @@ class Inspector extends Component {
 			iconSize,
 			width,
 			height,
+			href,
+			linkTarget,
+			rel,
 		} = attributes;
 
 		let iconStyle = 'outlined';
@@ -292,7 +318,7 @@ class Inspector extends Component {
 													isLarge
 													className="editor-block-list-item-button"
 													onClick={ () => {
-														setAttributes({ icon: keyName });
+														setAttributes( { icon: keyName } );
 													} }
 												>
 													<span className="editor-block-types-list__item-icon">
@@ -305,6 +331,24 @@ class Inspector extends Component {
 								}) : <li className="no-results"> { __( 'No results found.' ) } </li> }
 							</ul>
 						</div>
+					</PanelBody>
+					<PanelBody
+						title={ __( 'Link Settings' ) }
+						initialOpen={ false } >
+						<TextControl
+							label={ __( 'Link URL' ) }
+							value={ href || '' }
+							onChange={ value => setAttributes( { href: value } ) }
+							placeholder='https://'/>
+						<TextControl
+							label={ __( 'Link Rel' ) }
+							value={ rel || '' }
+							onChange={ value => setAttributes( { rel: value } ) }
+						/>
+						<ToggleControl
+							label={ !! linkTarget ? __( 'Opening in New Tab' ) : __( 'Open in New Tab' ) }
+							onChange={ this.onSetNewTab }
+							checked={ linkTarget === '_blank' } />
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }
