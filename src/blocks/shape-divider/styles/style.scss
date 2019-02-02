@@ -4,7 +4,7 @@
 	position: relative;
 
 	svg {
-		bottom: 0;
+		bottom: -1px; // Add a tiny bit of overlap so that there's not a line divider
 		fill: currentColor;
 		height: 100%;
 		left: 0;
@@ -28,6 +28,8 @@
 		flex-direction: column-reverse;
 
 		svg {
+			bottom: 0;
+			top: -1px; // Add a tiny bit of overlap so that there's not a line divider
 			transform: scaleY(-1);
 		}
 
