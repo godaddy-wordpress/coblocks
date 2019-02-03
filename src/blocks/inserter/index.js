@@ -1,14 +1,7 @@
 /**
- * External dependencies
- */
-import Masonry from 'react-masonry-component';
-import apiFetch from '@wordpress/api-fetch';
-
-/**
  * Internal dependencies
  */
 import './styles/editor.scss';
-import './components/api.js';
 import icons from './../../utils/icons';
 import Edit from './components/edit';
 
@@ -16,15 +9,9 @@ import Edit from './components/edit';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { SelectControl, Placeholder, Button, Dashicon, Spinner, Modal, withAPIData, TabPanel } = wp.components;
-const { Fragment, Component } = wp.element;
+const { Fragment } = wp.element;
 const { createBlock } = wp.blocks;
-const { registerStore, withSelect, } = wp.data;
-const { addQueryArgs } = wp.url;
 
-const masonryOptions = {
-	transitionDuration: 0,
-};
 
 /**
  * Block constants
