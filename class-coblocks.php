@@ -152,7 +152,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-url-generator.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-dashboard-columns.php';
-				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-dashboard-tabs.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-duplicate-template.php';
 			}
 		}
