@@ -28,7 +28,7 @@ const masonryOptions = {
 /**
  * Block constants
  */
-const name = 'template-inserter';
+const name = 'inserter';
 
 const title = __( 'CoBlocks' );
 
