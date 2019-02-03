@@ -1,15 +1,15 @@
 /**
+ * Internal dependencies
+ */
+import { ALLOWED_BG_MEDIA_TYPES, BLOCKS_WITH_AUTOPADDING } from './';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { mediaUpload } = wp.editor;
 const { DropZone } = wp.components;
-
-/**
- * Allowed media
- */
-const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
 /**
  * Gallery Drop Zone Component
@@ -24,7 +24,7 @@ class BackgroundImageDropZone extends Component {
 
 	addFile( files ) {
 		mediaUpload( {
-			allowedTypes: ALLOWED_MEDIA_TYPES,
+			allowedTypes: ALLOWED_BG_MEDIA_TYPES,
 			filesList: files,
 			onFileChange: ( [ media ] ) => this.onSelectFile( media ),
 		} );
@@ -34,8 +34,8 @@ class BackgroundImageDropZone extends Component {
 		if ( media && media.url ) {
 			this.props.setAttributes( { backgroundImg: media.url } );
 
-			//set padding when image selected
-			if( [ 'coblocks/media-card' ].includes( this.props.name ) ){
+			// Set padding when background image is added.
+			if ( BLOCKS_WITH_AUTOPADDING.includes( this.props.name ) ) {
 				if( !this.props.attributes.paddingSize || this.props.attributes.paddingSize == 'no' ){
 					this.props.setAttributes( { paddingSize: 'medium' } );
 				}

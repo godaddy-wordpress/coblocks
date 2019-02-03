@@ -44,7 +44,7 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 			setAttributes,
 		} = props;
 
-		const coBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/media-card' ];
+		const coBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/feature', , 'coblocks/media-card', 'coblocks/shape-divider' ];
 
 		if( typeof attributes.coblocks === 'undefined' ){
 			attributes.coblocks = [];
@@ -61,7 +61,7 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 			const coblocks = Object.assign( { id: "" + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds() }, attributes.coblocks );
 			setAttributes( { coblocks: coblocks } );
 		}
-		
+
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
