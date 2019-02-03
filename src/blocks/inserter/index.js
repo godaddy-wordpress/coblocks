@@ -88,12 +88,9 @@ const settings = {
 
 	edit:  withSelect( ( select ) => {
 		return {
-			templates: select( 'coblocks/templates' ).receiveTemplates(),
-			theme: select( 'coblocks/themes' ).receiveThemes(),
-			saved_sections: select( 'coblocks/saved_sections' ).receiveSaved(),
-			saved_templates: select( 'coblocks/saved_templates' ).receiveSaved(),
 			sections: select( 'coblocks/sections' ).receiveSections(),
 			theme_sections: select( 'coblocks/theme_sections' ).receiveThemeSections(),
+			saved_sections: select( 'coblocks/saved_sections' ).receiveSaved(),
 		};
 	} )( class extends Component {
 
@@ -140,109 +137,7 @@ const settings = {
 			];
 			switch( this.contentType ) {
 			    case 'templates':
-			       	if ( ! this.props.templates ) {
-				        return;
-				    }
-
-				    if( typeof this.props.templates != "undefined" ){
-				    	var templates = this.props.templates;
-				    	var navtabs   = [{
-											name: 'coblocks-library',
-											title: __( 'Template Library' ),
-											className: 'coblocks-library',
-										}];
-
-						//check if theme templates available
-						if( typeof this.props.theme != "undefined" ){
-							if( this.props.theme !== null && Object.keys( this.props.theme ).length > 0 ){
-								navtabs.push({
-									name: 'coblocks-theme',
-									title: __( 'Theme Templates' ),
-									className: 'coblocks-theme',
-								});
-							}
-						}
-
-						navtabs.push({
-							name: 'coblocks-my',
-							title: __( 'My Templates' )
-						});
-
-				    	if( Object.keys( this.props.templates ).length > 0 ){
-							return (
-								<TabPanel className="blockcoblocks-tab-panel"
-									activeClass="active-tab"
-									tabs={ navtabs }>
-									{
-										( tab ) => {
-											switch( tab.name ){
-												case 'coblocks-library':
-													if( !this.state.templateFiltered ){
-														this.state.templateItems = templates;
-													}
-													return[
-														<div className="blockcoblocks__modal-controls blockcoblocks__modal-controls--templates">
-															<input type="text" class="blockcoblocks__modal-controls--search" placeholder={ __( 'Search...' ) } onChange={ (evt) => this.filterList( evt, 'templates' ) } />
-														</div>,
-														<Masonry
-															className={ 'blockcoblocks-lists' }
-															elementType={ 'ul' }
-															options={ masonryOptions }
-															disableImagesLoaded={ false }
-															updateOnEachImageLoad={ false }
-														>
-															{ Object.entries( this.state.templateItems ).map( template => this.renderListItem( template ) ) }
-														</Masonry>,
-													];
-													break;
-												case 'coblocks-theme':
-													if( typeof this.props.theme != "undefined" ){
-														var themes 	 = this.props.theme;
-														if( Object.keys( themes ).length > 0 ){
-															return(
-																<ul className='blockcoblocks-lists'>
-																	{ Object.entries( themes ).map( template => this.renderListItem( template ) ) }
-																</ul>
-															);
-														}
-													}
-													break;
-												case 'coblocks-my':
-													if( typeof this.props.saved_templates != "undefined" ){
-														var saved 	 = this.props.saved_templates;
-														if( Object.keys( saved ).length > 0 ){
-															return(
-																<ul className='blockcoblocks-lists'>
-																	{ Object.entries( saved ).map( template => this.renderTableItem( template ) ) }
-																</ul>
-															);
-														}else{
-															return(
-																<div class="blockcoblocks-nolists">
-																{ [
-																	<h3>{ __( 'Create Your First Template' ) }</h3>,
-																	<p>{ __( 'Add templates and reuse them across your website.' ) }</p>,
-																	<Button
-																		isPrimary
-																		href={ addQueryArgs( 'edit.php',{ post_type: 'block-coblocks' } ) }
-																		target="_blank" >
-																		{ __( 'Add New Template' ) }
-																	</Button>,
-																] }
-																</div>
-															);
-														}
-													}
-													break;
-												default:
-			    									break;
-											}
-										}
-									}
-								</TabPanel>
-							);
-						}
-				    }
+			       	// do nothing for now
 			    break;
 			    case 'sections':
 			       	if ( ! this.props.sections ) {
@@ -403,11 +298,7 @@ const settings = {
 		}
 
 		renderTableItem( post ){
-			var type = 'template';
-
-			if ( this.contentType == 'sections' ) {
-				type = 'section';
-			}
+			var type = 'section';
 
 			if ( post[1].meta_value == type ) {
 				return (
@@ -526,14 +417,14 @@ const settings = {
 							wp.data.dispatch( 'core/editor' ).multiSelect( toSelect[0], toSelect.reverse()[0] );
 							toSelect  = [];
 
-							if( typeof pmeta !== 'undefined' && typeof pmeta._blockcoblocks_attr !== 'undefined' ){
-								ba =  pmeta._blockcoblocks_attr;
+							if( typeof pmeta !== 'undefined' && typeof pmeta._coblocks_attr !== 'undefined' ){
+								ba =  pmeta._coblocks_attr;
 							}
 							ba = ba + ',' + obj.meta;
 							//save new meta data for fonts
 							wp.data.dispatch( 'core/editor' ).editPost({
 								meta: {
-									_blockcoblocks_attr: ba,
+									_coblocks_attr: ba,
 								}
 							});
 
@@ -643,14 +534,6 @@ const settings = {
 								{ this.contentModal( this.contentType ) }
 							</Modal>
 						: null }
-						&nbsp;
-						<Button
-							isLarge
-							type="button"
-							onClick={ () => this.openModal('templates') }>
-								<Dashicon icon={ icons.templateInserter } />
-								{ __( 'Add Page Template' ) }
-						</Button>
 					</Placeholder>
 				</Fragment>
 			);
