@@ -65,7 +65,7 @@ const settings = {
 
 	supports: {
 		align: [ 'wide', 'full' ],
-		coBlocksBlockSpacing: true,
+		coBlocksSpacing: true,
 	},
 
 	transforms: {
