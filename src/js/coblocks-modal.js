@@ -14,7 +14,7 @@ var coblocks_modal = {
 		self.typeSelection();
 		// self.liveSearch();
 
-		if( jQuery( '.blockcoblocks-default-ui' ).hasClass( 'coblocks-autoOpen' ) ){
+		if( jQuery( '.coblocks-default-ui' ).hasClass( 'coblocks-autoOpen' ) ){
 			jQuery( 'a.page-title-action, .split-page-title-action a' ).click();
 		}
     },

@@ -93,8 +93,8 @@ class CoBlocks_Post_Type {
 	public function labels() {
 
 		$defaults = array(
-			'singular' => esc_html__( 'Template', '@@textdomain' ),
-			'plural'   => esc_html__( 'templates', '@@textdomain' ),
+			'singular' => esc_html__( 'Section', '@@textdomain' ),
+			'plural'   => esc_html__( 'sections', '@@textdomain' ),
 		);
 
 		return apply_filters( 'coblocks_default_labels', $defaults );
@@ -210,8 +210,6 @@ class CoBlocks_Post_Type {
 		}
 
 		$submenu['edit.php?post_type=coblocks'][] = array( esc_html__( 'Add New', '@@textdomain' ), 'manage_options', $add );
-		$submenu['edit.php?post_type=coblocks'][] = array( esc_html__( 'Page Templates', '@@textdomain' ), 'manage_options', $templates );
-		$submenu['edit.php?post_type=coblocks'][] = array( esc_html__( 'Sections', '@@textdomain' ), 'manage_options', $sections );
 	}
 
 	/**
