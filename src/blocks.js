@@ -26,11 +26,6 @@ import './extensions/attributes';
 import './extensions/advanced-controls';
 import './extensions/list-styles';
 
-/**
- * Plugin Sidebars
- */
-import './sidebars/save-template';
-
 
 // Formats
 import './formats/';
