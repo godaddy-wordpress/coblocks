@@ -101,6 +101,18 @@ Please reach out via the contact form at the bottom right of [our website](https
 
 == Changelog ==
 
+= 1.9.0 =
+* New: Add Features block for adding up to three columns of features/services
+* New: Add Icon block for searching and adding outline or filled styled icons
+* New: Add Shape Divider block with eight styles for to visually distinquish page sections
+* New: Add ability to apply text colors to the core List block
+* New: Add new "Checkbox" style to the core List block
+* New: Add new <code> formatting toolbar control
+* Tweak: The coBlocksSpacing feature now auto-toggles based on a Shape Divider block
+* Tweak: Padding it auto-applied when a Row block has a background color, or image, assigned
+* Tweak: Updated keywords for the Row block
+
+
 = 1.8.0 =
 * New: Add Media Card block for showcasing videos and imagery with an overlaid card
 * New: Add new advanced controls for turning off block margins
