@@ -106,7 +106,7 @@ class Edit extends Component {
 
 					if( Object.keys( sections ).length > 0 ){
 						return (
-							<TabPanel className="blockcoblocks-tab-panel"
+							<TabPanel className="coblocks-tab-panel"
 								activeClass="active-tab"
 								tabs={ navtabs }>
 								{
@@ -118,17 +118,17 @@ class Edit extends Component {
 												}
 
 												return[
-													<div className="blockcoblocks__modal-controls">
+													<div className="coblocks__modal-controls">
 														<SelectControl
 															value={ this.state.sectionCategory }
 															options={ sectionCategories }
 															onChange={ ( nextCategory ) => this.onCategoryChange( nextCategory, event ) }
-															className="blockcoblocks__modal-controls--category"
+															className="coblocks__modal-controls--category"
 														/>
-														<input type="text" class="blockcoblocks__modal-controls--search" placeholder={ __( 'Search...' ) } onChange={ (evt) => this.filterList( evt, 'sections' ) } />
+														<input type="text" class="coblocks__modal-controls--search" placeholder={ __( 'Search...' ) } onChange={ (evt) => this.filterList( evt, 'sections' ) } />
 													</div>,
 														<Masonry
-												                className={'blockcoblocks-lists'}
+												                className={'coblocks-lists'}
 												                elementType={'ul'}
 												                options={masonryOptions}
 												                disableImagesLoaded={false}
@@ -144,7 +144,7 @@ class Edit extends Component {
 													var theme_sections 	 = this.props.theme_sections;
 													if( Object.keys( theme_sections ).length > 0 ){
 														return(
-															<ul className='blockcoblocks-lists'>
+															<ul className='coblocks-lists'>
 																{ Object.entries( theme_sections ).map( template => this.renderListItem( template ) ) }
 															</ul>
 														);
@@ -157,13 +157,13 @@ class Edit extends Component {
 													var saved 	 = this.props.saved_sections;
 													if( Object.keys( saved ).length > 0 ){
 														return(
-															<ul className='blockcoblocks-lists'>
+															<ul className='coblocks-lists'>
 																{ Object.entries( saved ).map( template => this.renderTableItem( template ) ) }
 															</ul>
 														);
 													}else{
 														return(
-															<div class="blockcoblocks-nolists">
+															<div class="coblocks-nolists">
 															{ [
 																<h3>{ __( 'Create Your First Section' ) }</h3>,
 																<p>{ __( 'Add sections and reuse them across your website.' ) }</p>,
@@ -209,7 +209,7 @@ class Edit extends Component {
 						{ ( pro && typeof template[1].has_pro == "undefined" ) ?
 							<Button
 								isPrimary
-								href="https://wpblockcoblocks.com/"
+								href="https://coblocks.com/"
 								className="coblocks-gopro"
 								target="_blank" >
 								{ __( 'Go Pro' ) }
@@ -464,7 +464,7 @@ class Edit extends Component {
 					</Button>
 					{ this.state.isOpen ?
 						<Modal
-							className= "blockcoblocks-modal-component"
+							className= "coblocks-modal-component"
 							title={ __( 'CoBlocks' ) }
 							onRequestClose={ this.closeModal }>
 							{ this.contentModal( this.contentType ) }

@@ -5,7 +5,7 @@ var coblocks_trigger = false;
 var coblocks_modal = {
 	init: function() {
 		var self 		= this;
-		self.elem 		= jQuery('.blockcoblocks-default-ui');
+		self.elem 		= jQuery('.coblocks-default-ui');
 
 		self.appendModal();
 		self.navClick();
@@ -23,7 +23,7 @@ var coblocks_modal = {
 		var self = this;
 		if( self.elem.length > 0 ){
 			self.elem.find('.selected').removeClass('details selected');
-        	self.elem.appendTo('.blockcoblocks-default-ui-wrapper').hide();
+        	self.elem.appendTo('.coblocks-default-ui-wrapper').hide();
 		}
 
         coblocks_trigger = coblocks_frame = false;
@@ -31,7 +31,7 @@ var coblocks_modal = {
 
 	navClick: function(){
 		var self = this;
-		jQuery( document ).on( 'click', '.blockcoblocks-default-ui .media-router a', function(e){
+		jQuery( document ).on( 'click', '.coblocks-default-ui .media-router a', function(e){
 			e.preventDefault();
 		} );
 	},
@@ -58,7 +58,7 @@ var coblocks_modal = {
 			if( jQuery(this).hasClass('coblocks-saver') ){
 				e.stopImmediatePropagation();
 			}
-			
+
 			if( !jQuery(this).hasClass('disabled') ){
 				// display modal
 		        coblocks_frame = true;
@@ -67,7 +67,7 @@ var coblocks_modal = {
 				self.elem.find( '.coblocks-predesigned, .coblocks-templates, .coblocks-theme, .media-router a, .coblocks-spinner' ).hide();
 				self.elem.find( '.coblocks-new, .coblocks-create, .media-sidebar, .coblocks-meta-sidebar' ).show();
 				self.elem.find( '.media-frame-title h1' ).text( CoBlocksVars.create );
-				self.elem.addClass( 'creating-blocktemplate' );
+				self.elem.addClass( 'creating-coblocks' );
 
 				//if saving as template
 				if( jQuery( this ).hasClass( 'coblocks-saver' ) ){
@@ -75,7 +75,7 @@ var coblocks_modal = {
 				}else{
 					jQuery( '.coblocks-creation [name="coblocks_action"]' ).val( 'create_template' );
 				}
-				
+
 				self.elem.appendTo('body').show();
 			}
 
@@ -95,7 +95,7 @@ var coblocks_modal = {
 				return false;
 			}
 
-			jQuery(this).find( '.blocktemplate-required' ).each(function () {
+			jQuery(this).find( '.coblocks-required' ).each(function () {
 		        if ( jQuery(this).val() === '' ){
 		        	valid = false;
 		            jQuery(this).css({ border : '1px solid red' });
@@ -136,14 +136,14 @@ var coblocks_modal = {
 
 	typeSelection: function(){
 		var self = this;
-		self.elem.find( '#blocktemplate-type' ).on( 'change',function(){
+		self.elem.find( '#coblocks-type' ).on( 'change',function(){
 			switch( jQuery( this ).val() ){
 				case 'section':
-					jQuery( 'label[for="blocktemplate-name"]' ).text( CoBlocksVars.name_section );
+					jQuery( 'label[for="coblocks-name"]' ).text( CoBlocksVars.name_section );
 					jQuery( '.coblocks-creation .button-primary' ).val( CoBlocksVars.create_section );
 				break;
 				default:
-					jQuery( 'label[for="blocktemplate-name"]' ).text( CoBlocksVars.name_template );
+					jQuery( 'label[for="coblocks-name"]' ).text( CoBlocksVars.name_template );
 					jQuery( '.coblocks-creation .button-primary' ).val( CoBlocksVars.create_template );
 				break;
 			}
@@ -156,7 +156,7 @@ var coblocks_modal = {
 
     liveSearch: function(){
 		var self = this;
-		jQuery(document).on('keyup change', '.blockcoblocks-modal-component .blockcoblocks__modal-controls--search, .blockcoblocks-modal-component .blockcoblocks__modal-controls--category select', function(){
+		jQuery(document).on('keyup change', '.coblocks-modal-component .coblocks__modal-controls--search, .coblocks-modal-component .coblocks__modal-controls--category select', function(){
 			var s 		= jQuery( this ).val();
 			var el 		= jQuery( this ).closest('.components-tab-panel__tab-content').find( 'ul li' );
 			var results = el.filter(function(){

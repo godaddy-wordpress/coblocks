@@ -1,79 +1,83 @@
 //Modal template
-.creating-blocktemplate{
-	.media-frame-content{
+.creating-coblocks {
+	.media-frame-content {
 		bottom: 0px;
 	}
 }
-.coblocks-create{
+.coblocks-create {
 	padding: 30px;
-    position: absolute;
-    right: 300px;
-    left: 0px;
-    top: 0px;
-	label, input, select{
+	position: absolute;
+	right: 300px;
+	left: 0px;
+	top: 0px;
+	label,
+	input,
+	select {
 		display: block;
 		width: 100%;
 		padding: 10px 0px;
 		font-size: 15px !important;
 	}
-	label{
+	label {
 		font-weight: 500;
 		color: #555;
 	}
-	input{
+	input {
 		padding: 10px;
 	}
-	select{
+	select {
 		background: transparent;
 		height: 39px;
-   		padding: 5px;
+		padding: 5px;
 	}
-	.button{
+	.button {
 		padding: 15px 50px;
-	    font-size: 18px !important;
-	    line-height: 20px;
-	    height: 50px;
-	    margin-top: 15px;
-	    display: inline-block;
-    	width: auto;
+		font-size: 18px !important;
+		line-height: 20px;
+		height: 50px;
+		margin-top: 15px;
+		display: inline-block;
+		width: auto;
 	}
 }
 
 //Modal template
-.creating-blocktemplate{
-	.media-frame-content{
+.creating-coblocks {
+	.media-frame-content {
 		bottom: 0px;
 	}
 }
 
-.coblocks-create{
+.coblocks-create {
 	padding: 30px !important;
-    top: 0px !important;
-	label, input, select{
+	top: 0px !important;
+	label,
+	input,
+	select {
 		display: block;
 		width: 100%;
 		padding: 10px 0px;
 		font-size: 15px !important;
 	}
-	label{
+	label {
 		font-weight: 500;
 		color: #555;
 	}
-	input{
+	input {
 		padding: 10px;
 	}
-	select{
+	select {
 		background: transparent;
 		height: 39px;
-   		padding: 5px;
+		padding: 5px;
 	}
-	.button{
+	.button {
 		padding: 15px 50px;
-	    font-size: 18px !important;
-	    line-height: 20px;
-	    height: 50px;
-	    margin-top: 15px;
-	    display: inline-block;
-    	width: auto;
+		font-size: 18px !important;
+		line-height: 20px;
+		height: 50px;
+		margin-top: 15px;
+		display: inline-block;
+		width: auto;
 	}
 }

@@ -254,7 +254,7 @@ class CoBlocks_Modal {
 				'post_status'  => 'publish',
 				'meta_input'   => array(
 					'coblocks_library_type' => $type,
-					'_blocktemplate_id'           => $id,
+					'_coblocks_id'          => $id,
 					'_coblocks_attr'        => $fonts,
 				),
 			);
@@ -271,9 +271,9 @@ class CoBlocks_Modal {
 	 */
 	public function media_modal() {
 		global $post; ?>
-			<div class="blockcoblocks-default-ui-wrapper" style="display: none;">
+			<div class="coblocks-default-ui-wrapper" style="display: none;">
 
-				<div class="blockcoblocks-default-ui coblocks image-meta <?php echo ( isset( $_GET['add-new'] ) && sanitize_text_field( $_GET['add-new'] ) ) ? 'coblocks-autoOpen' : ''; ?>" data-post-id="<?php echo esc_attr( ( isset( $post->ID ) ) ? $post->ID : '' ); ?>">
+				<div class="coblocks-default-ui coblocks image-meta <?php echo ( isset( $_GET['add-new'] ) && sanitize_text_field( $_GET['add-new'] ) ) ? 'coblocks-autoOpen' : ''; ?>" data-post-id="<?php echo esc_attr( ( isset( $post->ID ) ) ? $post->ID : '' ); ?>">
 
 					<div class="media-modal wp-core-ui no-sidebar">
 
@@ -319,12 +319,12 @@ class CoBlocks_Modal {
 				<input type="hidden" name="coblocks[postid]" value="<?php echo esc_attr( ( isset( $post->ID ) ) ? $post->ID : '' ); ?>" />
 				<input type="hidden" name="coblocks_action" value="create_template" />
 				<p>
-					<label for="blocktemplate-name"><?php esc_html_e( 'Name of your Template', '@@textdomain' ); ?></label>
-					<input type="text" name="coblocks[name]" class="blocktemplate-required" id="blocktemplate-name" />
+					<label for="coblocks-name"><?php esc_html_e( 'Name of your Template', '@@textdomain' ); ?></label>
+					<input type="text" name="coblocks[name]" class="coblocks-required" id="coblocks-name" />
 				</p>
 				<p>
-					<label for="blocktemplate-type"><?php esc_html_e( 'Select Type', '@@textdomain' ); ?></label>
-					<select name="coblocks[type]" class="blocktemplate-required" id="blocktemplate-type">
+					<label for="coblocks-type"><?php esc_html_e( 'Select Type', '@@textdomain' ); ?></label>
+					<select name="coblocks[type]" class="coblocks-required" id="coblocks-type">
 						<option value="template"><?php esc_html_e( 'Page Template', '@@textdomain' ); ?></option>
 						<option value="section"><?php esc_html_e( 'Section', '@@textdomain' ); ?></option>
 					</select>

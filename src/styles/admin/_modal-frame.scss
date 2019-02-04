@@ -1,124 +1,128 @@
 //Modal template
-.creating-blocktemplate{
-	.media-frame-content{
+.creating-coblocks {
+	.media-frame-content {
 		bottom: 0px;
 		top: 52px;
 	}
 }
-.coblocks-create{
+.coblocks-create {
 	padding: 30px;
-    position: absolute;
-    right: 300px;
-    left: 0px;
-    top: 0px;
-	label, input, select{
+	position: absolute;
+	right: 300px;
+	left: 0px;
+	top: 0px;
+	label,
+	input,
+	select {
 		display: block;
 		width: 100%;
 		padding: 10px 0px;
 		font-size: 15px !important;
 	}
-	label{
+	label {
 		font-weight: 500;
 		color: #555;
 	}
-	input{
+	input {
 		padding: 10px;
 	}
-	select{
+	select {
 		background: transparent;
 		height: 39px;
-   		padding: 5px;
+		padding: 5px;
 	}
-	.button{
+	.button {
 		padding: 15px 50px;
-	    font-size: 18px !important;
-	    line-height: 20px;
-	    height: 50px;
-	    margin-top: 15px;
-	    display: inline-block;
-    	width: auto;
+		font-size: 18px !important;
+		line-height: 20px;
+		height: 50px;
+		margin-top: 15px;
+		display: inline-block;
+		width: auto;
 	}
-	.coblocks--notice{
+	.coblocks--notice {
 		margin-top: 20px;
 	}
 }
 
 //Modal template
-.creating-blocktemplate{
-	.media-frame-content{
+.creating-coblocks {
+	.media-frame-content {
 		bottom: 0px;
 	}
 }
 
-.coblocks-create{
+.coblocks-create {
 	padding: 30px !important;
-    top: 0px !important;
-	label, input, select{
+	top: 0px !important;
+	label,
+	input,
+	select {
 		display: block;
 		width: 100%;
 		padding: 10px 0px;
 		font-size: 15px !important;
 	}
-	label{
+	label {
 		font-weight: 500;
 		color: #555;
 	}
-	input{
+	input {
 		padding: 10px;
 	}
-	select{
+	select {
 		background: transparent;
 		height: 39px;
-   		padding: 5px;
+		padding: 5px;
 	}
-	.button{
+	.button {
 		padding: 15px 50px;
-	    font-size: 18px !important;
-	    line-height: 20px;
-	    height: 50px;
-	    margin-top: 15px;
-	    display: inline-block;
-    	width: auto;
+		font-size: 18px !important;
+		line-height: 20px;
+		height: 50px;
+		margin-top: 15px;
+		display: inline-block;
+		width: auto;
 	}
 }
 
 //add template
-.wp-admin{
-	&.edit-php{
-		&.post-type-coblocks{
-			.split-page-title-action{
-				.expander{
+.wp-admin {
+	&.edit-php {
+		&.post-type-coblocks {
+			.split-page-title-action {
+				.expander {
 					display: none;
 				}
 			}
 		}
 	}
 }
-.attachment{
-	.coblocks-details{
+.attachment {
+	.coblocks-details {
 		display: none;
 	}
 }
 
 //add limit
-.coblocks-limit{
+.coblocks-limit {
 	padding: 0px 10px;
-    font-size: 19px;
-    color: #7b7979;
+	font-size: 19px;
+	color: #7b7979;
 }
-.coblocks-create{
-	.coblocks-limit{
+.coblocks-create {
+	.coblocks-limit {
 		margin-top: 15px;
-	    display: inline-block;
-	    line-height: 50px;
+		display: inline-block;
+		line-height: 50px;
 	}
 }
-.coblocks-saved{
+.coblocks-saved {
 	background: #39b54a;
-    color: #fff;
-    padding: 10px 15px;
-    font-size: 14px;
-    border-radius: 4px;
-    float: left;
-    // margin-top: 15px;
+	color: #fff;
+	padding: 10px 15px;
+	font-size: 14px;
+	border-radius: 4px;
+	float: left;
+	// margin-top: 15px;
 }
