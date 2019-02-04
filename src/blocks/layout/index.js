@@ -23,7 +23,7 @@ const title = __( 'Layout' );
 const icon = icons.templateInserter;
 
 const keywords = [
-	__( 'layouts' ),
+	__( 'coblocks' ),
 	__( 'sections' ),
 	__( 'templates' ),
 ];
