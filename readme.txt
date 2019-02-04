@@ -106,8 +106,8 @@ Please reach out via the contact form at the bottom right of [our website](https
 * New: Add Icon block for searching and adding outline or filled styled icons
 * New: Add Shape Divider block with eight styles for to visually distinquish page sections
 * New: Add ability to apply text colors to the core List block
-* New: Add new "Checkbox" style to the core List block
-* New: Add new <code> formatting toolbar control
+* New: Add "Checkbox" style to the core List block
+* New: Add <code> text formatting toolbar control
 * Tweak: The coBlocksSpacing feature now auto-toggles based on a Shape Divider block
 * Tweak: Padding it auto-applied when a Row block has a background color, or image, assigned
 * Tweak: Updated keywords for the Row block
