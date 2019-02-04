@@ -138,8 +138,12 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-font-loader.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-meta.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-google-map.php';
-			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-template-loader.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-type.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-modal.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-accordion-ie-support.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/template-inserter-ajax.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';
@@ -147,6 +151,8 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-feedback.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-url-generator.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-dashboard-columns.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-duplicate-template.php';
 			}
 		}
 

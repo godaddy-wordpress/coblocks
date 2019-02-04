@@ -1,0 +1,39 @@
+.coblocks--notice {
+	border-radius: 4px;
+	display: block;
+	opacity: 1;
+	padding: 5px 11px 6px;
+	text-align: center;
+	text-decoration: none;
+
+	a{
+		text-decoration: none;
+		border: 0px;
+	}
+
+	&--error {
+		background: $lightred;
+		color: $darkred;
+		margin: 13px 0 0;
+		a, a:hover{
+			color: $darkred;
+		}
+	}
+
+	&--success {
+		background: $lightgreen;
+		color: $darkgreen;
+		padding: 7px 11px 8px;
+		a, a:hover{
+			color: $darkgreen;
+		}
+	}
+
+	&--limit {
+		margin-top: 0;
+		margin-bottom: 15px;
+		padding: 9px 15px 10px;
+		text-align: left;
+	}
+
+}

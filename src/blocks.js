@@ -26,6 +26,7 @@ import './extensions/attributes';
 import './extensions/advanced-controls';
 import './extensions/list-styles';
 
+
 // Formats
 import './formats/';
 
@@ -50,6 +51,7 @@ import * as shapeDivider from './blocks/shape-divider';
 import * as icon from './blocks/icon';
 import * as feature from './blocks/features/feature';
 import * as features from './blocks/features';
+import * as inserter from './blocks/inserter';
 
 export function registerBlocks () {
 	[
@@ -73,6 +75,7 @@ export function registerBlocks () {
 		icon,
 		feature,
 		features,
+		inserter,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {
