@@ -10,20 +10,6 @@ var cleanFiles		  = ['./build/'+project+'/', './build/'+project+' 2/', './build/
 var buildDestination	  = './build/'+project+'/';
 var buildDestinationFiles = './build/'+project+'/**/*';
 
-// Styles.
-var styleDestination = './dist/css/';
-var styleAdminSRC    = './src/styles/admin.scss';
-var styleWelcomeSRC    = './src/styles/welcome.scss';
-var styleWatchFiles  = [ styleAdminSRC, styleWelcomeSRC, './src/styles/admin/*.scss' ];
-
-// Scripts.
-var scriptDestination = './dist/js/';
-var scriptModalSRC  = project +'-modal';
-var scriptModalSRCDirectory   = './src/js/'+ scriptModalSRC +'.js';
-
-var scriptMapsSRC  = project +'-google-maps';
-var scriptMapsSRCDirectory   = './src/js/'+ scriptMapsSRC +'.js';
-
 // Release.
 var sftpDemoFilesToUpload = ['./build/' + project + '/**/*', '!/build/' + project + '/src/', '!build/' + project + '/src/**/*'];
 var cleanSrcFiles	  = [ './build/' + project + '/src/**/*.js', './build/' + project + '/src/**/*.scss', '!build/' + project + '/src/blocks/**/*.php' ];
@@ -33,6 +19,13 @@ var srcDirectory	  = './build/' + project + '/src/';
 var scriptDestination 		= './dist/js/';
 var scriptGoogleMaps	  	= 'coblocks-accordion-polyfill';
 var scriptAccordionPolyfill   	= 'coblocks-google-maps';
+var scriptModal   		= 'coblocks-modal';
+
+// Styles.
+var styleDestination = './dist/css/';
+var styleAdmin    = './src/styles/admin.scss';
+var styleWelcome    = './src/styles/welcome.scss';
+var styleWatchFiles  = [ styleAdmin, styleWelcome, './src/styles/admin/*.scss', './src/styles/welcome/*.scss' ];
 
 // Translation.
 var text_domain             	= '@@textdomain';
@@ -45,10 +38,28 @@ var translatePath           	= './languages';
 var translatableFiles       	= ['./**/*.php'];
 var jsPotFile 			= [ './languages/'+project+'-js.pot', './build/languages/'+project+'-js.pot' ];
 
+// Browsers you care about for autoprefixing. https://github.com/ai/browserslist
+const AUTOPREFIXER_BROWSERS = [
+	'last 2 version',
+	'> 1%',
+	'ie >= 9',
+	'ie_mob >= 10',
+	'ff >= 30',
+	'chrome >= 34',
+	'safari >= 7',
+	'opera >= 23',
+	'ios >= 7',
+	'android >= 4',
+	'bb >= 10'
+];
+
 /**
  * Load Plugins.
  */
 var gulp		= require('gulp');
+var sass		= require('gulp-sass');
+var autoprefixer 	= require('gulp-autoprefixer');
+var minifycss		= require('gulp-uglifycss');
 var del                 = require('del');
 var notify	   	= require('gulp-notify');
 var replace	  	= require('gulp-replace-task');
@@ -64,30 +75,6 @@ var deleteEmpty 	= require('delete-empty');
 var uglify      	= require('gulp-uglify');
 var lineec       	= require('gulp-line-ending-corrector');
 var rename       	= require('gulp-rename');
-
-var sass         	= require('gulp-sass');
-var autoprefixer 	= require('gulp-autoprefixer');
-var rename       	= require('gulp-rename');
-var minifycss    	= require('gulp-uglifycss');
-var uglify       	= require('gulp-uglify');
-var lineec       	= require('gulp-line-ending-corrector');
-
-/**
- * Browsers you care about for autoprefixing. https://github.com/ai/browserslist
- */
-const AUTOPREFIXER_BROWSERS = [
-    'last 2 version',
-    '> 1%',
-    'ie >= 9',
-    'ie_mob >= 10',
-    'ff >= 30',
-    'chrome >= 34',
-    'safari >= 7',
-    'opera >= 23',
-    'ios >= 7',
-    'android >= 4',
-    'bb >= 10'
-];
 
 /**
  * Tasks.
@@ -110,6 +97,40 @@ gulp.task( 'scripts', function(done) {
 	.pipe( uglify() )
 	.pipe( lineec() )
 	.pipe( gulp.dest( scriptDestination ) );
+
+	gulp.src( './src/js/' + scriptModal +'.js', { allowEmpty: true } )
+	.pipe( rename( {
+		basename: scriptModal,
+		suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() )
+	.pipe( gulp.dest( scriptDestination ) );
+
+	done();
+});
+
+gulp.task( 'welcomeStyles', function (done) {
+	gulp.src( styleWelcome, { allowEmpty: true } )
+
+	.pipe( sass( {
+		errLogToConsole: true,
+		outputStyle: 'expanded',
+		precision: 10
+	} ) )
+
+	.on( 'error', console.error.bind( console ) )
+
+	.pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
+
+	.pipe( rename( {
+		basename: 'coblocks-welcome',
+		suffix: '.min',
+	} ) )
+
+	.pipe( minifycss() )
+
+	.pipe( gulp.dest( styleDestination ) )
 
 	done();
 });
@@ -258,78 +279,6 @@ gulp.task( 'debug_mode_off', function (done) {
 	done();
 });
 
-gulp.task( 'welcomeStyles', function (done) {
-	gulp.src( styleWelcomeSRC, { allowEmpty: true } )
-
-	.pipe( sass( {
-		errLogToConsole: true,
-		outputStyle: 'expanded',
-		precision: 10
-	} ) )
-
-	.on( 'error', console.error.bind( console ) )
-
-	.pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
-
-	.pipe( rename( {
-		basename: 'coblocks-welcome',
-	} ) )
-
-	.pipe( gulp.dest( styleDestination ) )
-
-	.pipe( rename( {
-		suffix: '.min',
-	} ) )
-
-	.pipe( minifycss() )
-
-	.pipe( gulp.dest( styleDestination ) )
-
-	done();
-});
-
-gulp.task( 'adminStyles', function (done) {
-	gulp.src( styleAdminSRC )
-
-	.pipe( sass( {
-		errLogToConsole: true,
-		outputStyle: 'expanded',
-		precision: 10
-	} ) )
-
-	.on( 'error', console.error.bind( console ) )
-
-	.pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
-
-	.pipe( rename( {
-		basename: 'coblocks-admin',
-	} ) )
-
-	.pipe( gulp.dest( styleDestination ) )
-
-	.pipe( rename( {
-		suffix: '.min',
-	} ) )
-
-	.pipe( minifycss() )
-
-	.pipe( gulp.dest( styleDestination ) )
-
-	done();
-});
-
-gulp.task( 'adminScripts', function(done) {
-	return gulp.src( scriptModalSRCDirectory, { allowEmpty: true } )
-	.pipe( rename( {
-		basename: scriptModalSRC,
-		suffix: '.min'
-	}))
-	.pipe( uglify() )
-	.pipe( lineec() )
-	.pipe( gulp.dest( scriptDestination ) )
-	done();
-});
-
 gulp.task('zip', function(done) {
 	return gulp.src( buildDestination + '/**', { base: 'build' } )
 	.pipe( zip( project + '.zip' ) )
@@ -377,16 +326,14 @@ gulp.task( 'release-notice', function(done) {
 	done();
 });
 
+
 gulp.task(
 	'default',
 	gulp.series(
-		'welcomeStyles', 'adminStyles', 'debug_mode_on', function(done) {
-			gulp.watch( styleWatchFiles, gulp.parallel( 'adminStyles' ) );
-			gulp.watch( styleWatchFiles, gulp.parallel( 'welcomeStyles' ) );
-			done();
-		}
-	)
-);
+		'welcomeStyles', function(done) {
+		gulp.watch( styleWatchFiles, gulp.parallel( 'welcomeStyles' ) );
+	done();
+} ) );
 
 gulp.task(
 	'install',

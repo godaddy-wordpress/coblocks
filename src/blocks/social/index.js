@@ -23,7 +23,6 @@ const icon = icons.social;
 
 const keywords = [
 	__( 'share' ),
-	__( 'icon' ),
 	__( 'coblocks' ),
 ];
 

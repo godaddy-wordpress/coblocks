@@ -21,47 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CoBlocks_Template_Loader {
 
 	/**
-	 * Load the core plugin templates.
-	 *
-	 * @access public
-	 */
-	public function load_templates() {
-		$templates = array();
-
-		foreach ( glob( dirname( __DIR__ ) . '/includes/templates/*/template.txt' ) as $template ) {
-			$folder            = str_replace( '/template.txt', '/', $template );
-			$file_data         = get_file_data(
-				$template, array(
-					'name'        => 'Template Name',
-					'type'        => 'Template Type',
-					'description' => 'Description',
-					'version'     => 'Version',
-					'slug'        => 'Slug',
-					'uri'         => 'Template URI',
-					'tags'        => 'Tags',
-					'pro'         => 'Pro',
-					'fonts'       => 'Fonts',
-				)
-			);
-			$file_data['path'] = $folder;
-
-			// check if pro available and change template path
-			if ( CoBlocks()->has_pro() && $file_data['pro'] ) {
-				$file_data['has_pro'] = true;
-				$file_data['path']    = str_replace( '/coblocks/', '/coblocks-pro/', $folder );
-			}
-
-			$file_data['url']        = plugin_dir_url( $template );
-			$file_data['screenshot'] = $file_data['url'] . 'screenshot.jpg';
-
-			// Store to templates array.
-			$templates[ $file_data['slug'] ] = $file_data;
-		}
-
-		return $templates;
-	}
-
-	/**
 	 * Load the core plugin sections, which are collections of pre-designed blocks.
 	 *
 	 * @access public
@@ -100,42 +59,6 @@ class CoBlocks_Template_Loader {
 		}
 
 		return $sections;
-	}
-
-	/**
-	 * Load any templates included by a theme.
-	 *
-	 * @access public
-	 */
-	public function load_theme_templates() {
-		$templates = array();
-
-		foreach ( glob( get_stylesheet_directory() . '/coblocks/templates/*/template.txt' ) as $template ) {
-			$folder    = str_replace( '/template.txt', '/', $template );
-			$file_data = get_file_data(
-				$template, array(
-					'name'        => 'Template Name',
-					'type'        => 'Template Type',
-					'description' => 'Description',
-					'version'     => 'Version',
-					'slug'        => 'Slug',
-					'uri'         => 'Template URI',
-					'tags'        => 'Tags',
-					'pro'         => 'Pro',
-				)
-			);
-
-			$theme_folder            = str_replace( realpath( get_stylesheet_directory() ), '', $folder );
-			$file_data['type']       = 'theme';
-			$file_data['path']       = $folder;
-			$file_data['url']        = get_stylesheet_directory_uri( $template ) . $theme_folder;
-			$file_data['screenshot'] = $file_data['url'] . '/screenshot.jpg';
-
-			// Store to templates array.
-			$templates[ $file_data['slug'] ] = $file_data;
-		}
-
-		return $templates;
 	}
 
 	/**
@@ -218,15 +141,6 @@ class CoBlocks_Template_Loader {
 	 */
 	public function raw_data( $type ) {
 		switch ( $type ) {
-			case 'templates':
-				$templates = $this->load_templates();
-				return $templates;
-			break;
-
-			case 'theme':
-				$templates = $this->load_theme_templates();
-				return $templates;
-			break;
 
 			case 'sections':
 				$templates = $this->load_sections();

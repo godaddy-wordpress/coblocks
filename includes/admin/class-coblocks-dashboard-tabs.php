@@ -37,7 +37,7 @@ class CoBlocks_Dashboard_Tabs {
 
 		$active_class = ' nav-tab-active';
 
-		if ( ! empty( esc_html( $_REQUEST['coblocks_library_type'] ) ) ) {
+		if ( isset( $_REQUEST['coblocks_library_type'] ) && ! empty( esc_html( $_REQUEST['coblocks_library_type'] ) ) ) {
 			$current_type = esc_html( $_REQUEST['coblocks_library_type'] );
 			$active_class = '';
 		}
@@ -97,7 +97,7 @@ class CoBlocks_Dashboard_Tabs {
 			return;
 		}
 
-		if ( ! empty( esc_html( $_REQUEST['coblocks_library_type'] ) ) ) {
+		if ( isset( $_REQUEST['coblocks_library_type'] ) && ! empty( esc_html( $_REQUEST['coblocks_library_type'] ) ) ) {
 			$current_type = esc_html( $_REQUEST['coblocks_library_type'] );
 		}
 

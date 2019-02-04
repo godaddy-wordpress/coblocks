@@ -5,7 +5,7 @@
  * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
  * Author: CoBlocks
  * Author URI: https://coblocks.com/
- * Version: 1.7.0
+ * Version: 1.8.0
  * Text Domain: coblocks
  * Domain Path: languages
  * Tested up to: @@pkg.tested_up_to
@@ -152,7 +152,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-url-generator.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-dashboard-columns.php';
-				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-dashboard-tabs.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-duplicate-template.php';
 			}
 		}

@@ -1,0 +1,50 @@
+.wp-block-coblocks-shape-divider {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+
+	svg {
+		bottom: -1px; // Add a tiny bit of overlap so that there's not a line divider
+		fill: currentColor;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		width: 100%;
+	}
+
+	&__svg-wrapper {
+		position: relative;
+	}
+
+	&__alt-wrapper {
+		background-color: currentColor;
+	}
+
+	&.is-horizontally-flipped svg {
+		transform: scaleX(-1);
+	}
+
+	&.is-vertically-flipped {
+		flex-direction: column-reverse;
+
+		svg {
+			bottom: 0;
+			top: -1px; // Add a tiny bit of overlap so that there's not a line divider
+			transform: scaleY(-1);
+		}
+
+		&.is-horizontally-flipped svg {
+			transform: scaleX(-1) scaleY(-1);
+		}
+	}
+
+	// Styling particular to the waves divider.
+	.divider--waves {
+		path:nth-child(1) {
+			opacity: 0.15;
+		}
+		path:nth-child(2) {
+			opacity: 0.3;
+		}
+	}
+}
