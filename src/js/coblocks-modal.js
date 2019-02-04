@@ -149,24 +149,6 @@ var coblocks_modal = {
 			}
 		});
 	},
-
-    search_filter: function( el, val ){
-		return jQuery(el).text().toUpperCase().indexOf(val.toUpperCase()) >= 0;
-	},
-
-    liveSearch: function(){
-		var self = this;
-		jQuery(document).on('keyup change', '.coblocks-modal-component .coblocks__modal-controls--search, .coblocks-modal-component .coblocks__modal-controls--category select', function(){
-			var s 		= jQuery( this ).val();
-			var el 		= jQuery( this ).closest('.components-tab-panel__tab-content').find( 'ul li' );
-			var results = el.filter(function(){
-				return self.search_filter( this, s );
-			});
-			var not_res = el.not( results );
-			results.show();
-			not_res.hide();
-		});
-	},
 }
 
 jQuery(document).ready(function() {
