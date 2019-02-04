@@ -111,7 +111,7 @@ Please reach out via the contact form at the bottom right of [our website](https
 * Tweak: The coBlocksSpacing feature now auto-toggles based on a Shape Divider block
 * Tweak: Padding it auto-applied when a Row block has a background color, or image, assigned
 * Tweak: Updated keywords for the Row block
-
+* Tweak: Improved the reponsive nature of the Row block within the editor
 
 = 1.8.0 =
 * New: Add Media Card block for showcasing videos and imagery with an overlaid card
