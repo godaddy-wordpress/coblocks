@@ -438,7 +438,7 @@ class Edit extends Component {
 				<Fragment>
 					<Placeholder
 						icon={ icons.templateInserter }
-						label={  __( 'CoBlocks Inserter' ) }
+						label={  __( 'CoBlocks Layout' ) }
 						instructions={  __( 'Insert a CoBlocks pre-designed section.' ) }
 						className="block-coblocks-inserter"
 					>
@@ -452,7 +452,7 @@ class Edit extends Component {
 			<Fragment>
 				<Placeholder
 						icon={ icons.templateInserter }
-						label={  __( 'CoBlocks Inserter' ) }
+						label={  __( 'CoBlocks Layout' ) }
 						instructions={  __( 'Insert a CoBlocks pre-designed section.' ) }
 						className="block-coblocks-inserter"
 					>
@@ -465,7 +465,7 @@ class Edit extends Component {
 					{ this.state.isOpen ?
 						<Modal
 							className= "coblocks-modal-component"
-							title={ __( 'CoBlocks' ) }
+							title={ icons.templateInserter }
 							onRequestClose={ this.closeModal }>
 							{ this.contentModal( this.contentType ) }
 						</Modal>

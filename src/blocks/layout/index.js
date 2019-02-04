@@ -16,9 +16,9 @@ const { createBlock } = wp.blocks;
 /**
  * Block constants
  */
-const name = 'inserter';
+const name = 'layout';
 
-const title = __( 'CoBlocks' );
+const title = __( 'Layout' );
 
 const icon = icons.templateInserter;
 

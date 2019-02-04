@@ -1,4 +1,4 @@
-.editor-block-list__block[data-type="coblocks/inserter"] {
+.editor-block-list__block[data-type="coblocks/layout"] {
 
 	.components-placeholder__label {
 		svg {
@@ -54,6 +54,10 @@
 			h1 {
 				font-weight: 700;
 				font-size: 1rem;
+
+				svg{
+					fill: #536dff;
+				}
 			}
 		}
 
