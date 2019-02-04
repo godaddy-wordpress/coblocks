@@ -439,7 +439,7 @@ class Edit extends Component {
 					<Placeholder
 						icon={ icons.templateInserter }
 						label={  __( 'CoBlocks Inserter' ) }
-						instructions={  __( 'Insert a CoBlocks template or section.' ) }
+						instructions={  __( 'Insert a CoBlocks pre-designed section.' ) }
 						className="block-coblocks-inserter"
 					>
 						<Spinner />
@@ -453,7 +453,7 @@ class Edit extends Component {
 				<Placeholder
 						icon={ icons.templateInserter }
 						label={  __( 'CoBlocks Inserter' ) }
-						instructions={  __( 'Insert a CoBlocks page template or section.' ) }
+						instructions={  __( 'Insert a CoBlocks pre-designed section.' ) }
 						className="block-coblocks-inserter"
 					>
 					<Button

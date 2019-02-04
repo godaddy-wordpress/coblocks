@@ -32,7 +32,7 @@ const settings = {
 
 	title: title,
 
-	description : __( 'Add a saved CoBlocks section or template.' ),
+	description : __( 'Add a saved CoBlocks pre-designed section.' ),
 
 	icon: {
 		src: icon,
