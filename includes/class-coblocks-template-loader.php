@@ -81,6 +81,7 @@ class CoBlocks_Template_Loader {
 					'uri'         => 'Template URI',
 					'tags'        => 'Tags',
 					'pro'         => 'Pro',
+					'fonts'       => 'Fonts',
 				)
 			);
 			$theme_folder            = str_replace( realpath( get_stylesheet_directory() ), '', $folder );
