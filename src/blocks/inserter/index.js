@@ -34,12 +34,6 @@ const settings = {
 
 	description : __( 'Add a saved CoBlocks pre-designed section.' ),
 
-	icon: {
-		src: icon,
-		background: '#f9f9f9',
-		foreground: '#536DFF',
-	},
-
 	keywords: keywords,
 
 	transforms: {
