@@ -43,6 +43,8 @@
 	&.coblocks-modal-component {
 		max-width: 1000px;
 		width: 100%;
+		animation: none;
+		animation-fill-mode: none;
 
 		.components-modal__header {
 			margin-bottom: 0;
