@@ -15,7 +15,7 @@ var coblocks_modal = {
 		// self.liveSearch();
 
 		if( jQuery( '.blockcoblocks-default-ui' ).hasClass( 'coblocks-autoOpen' ) ){
-			jQuery( 'a.page-title-action' ).click();
+			jQuery( 'a.page-title-action, .split-page-title-action a' ).click();
 		}
     },
 
@@ -52,7 +52,7 @@ var coblocks_modal = {
 
 	createTemplate: function(){
 		var self 	= this;
-		jQuery(document).on('click', '.wp-admin.edit-php.post-type-coblocks a.page-title-action, #wp-admin-bar-new-coblocks a, .coblocks-saver, .coblocks-dashboard-widget__create .button', function(e){
+		jQuery(document).on('click', '.wp-admin.edit-php.post-type-coblocks a.page-title-action, .wp-admin.edit-php.post-type-coblocks .split-page-title-action a, #wp-admin-bar-new-coblocks a, .coblocks-saver, .coblocks-dashboard-widget__create .button', function(e){
 			e.preventDefault();
 
 			if( jQuery(this).hasClass('coblocks-saver') ){

@@ -199,7 +199,7 @@ class CoBlocks_Post_Type {
 
 		$permalink = admin_url( 'edit.php?post_type=coblocks' );
 
-		$add       = add_query_arg( 'add-new', 'template', $permalink );
+		$add       = add_query_arg( 'add-new', 'section', $permalink );
 		$templates = add_query_arg( 'coblocks_library_type', 'template', $permalink );
 		$sections  = add_query_arg( 'coblocks_library_type', 'section', $permalink );
 
