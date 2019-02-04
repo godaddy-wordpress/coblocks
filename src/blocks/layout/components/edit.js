@@ -169,7 +169,7 @@ class Edit extends Component {
 																<p>{ __( 'Add sections and reuse them across your website.' ) }</p>,
 																<Button
 																	isPrimary
-																	href={ addQueryArgs( 'edit.php',{ post_type: 'block-coblocks' } ) }
+																	href={ addQueryArgs( 'edit.php',{ post_type: 'coblocks', 'add-new': 'section' } ) }
 																	target="_blank" >
 																	{ __( 'Add New Section' ) }
 																</Button>,
