@@ -1,7 +1,7 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
 Author URI: https://coblocks.com
 Plugin URI: https://coblocks.com
-Contributors: coblocks, richtabor, phpbits, thatplugincompany
+Contributors: coblocks, richtabor, phpbits
 Tags: blocks, gutenberg, editor, page builder, gutenberg blocks
 Requires at least: 5.0
 Tested up to: @@pkg.tested_up_to
@@ -26,7 +26,10 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages:
 
 * Resizable Row/Columns Blocks (New!)
+* Shape Divider Block (New!)
+* Features Block (New!)
 * Media Card Block (New!)
+* Icon Block (New!)
 * Map Block (New!)
 * Accordion Block
 * Alert Block
@@ -102,9 +105,10 @@ Please reach out via the contact form at the bottom right of [our website](https
 == Changelog ==
 
 = 1.9.0 =
-* New: Add Features block for adding up to three columns of features/services
-* New: Add Icon block for searching and adding outline or filled styled icons
-* New: Add Shape Divider block with eight styles for to visually distinquish page sections
+* New: Add Features block for adding up to three columns of features/services 🎉
+* New: Add Icon block for searching and adding outline or filled styled icons 🎉
+* New: Add Shape Divider block with eight styles for to visually distinquish page sections 🎉
+* New: Add responsive controls to the Shape divider so folks can drag and resize on mobile, tablet and desktop views
 * New: Add ability to apply text colors to the core List block
 * New: Add "Checkbox" style to the core List block
 * New: Add <code> text formatting toolbar control
@@ -114,7 +118,7 @@ Please reach out via the contact form at the bottom right of [our website](https
 * Tweak: Improved the reponsive nature of the Row block within the editor
 
 = 1.8.0 =
-* New: Add Media Card block for showcasing videos and imagery with an overlaid card
+* New: Add Media Card block for showcasing videos and imagery with an overlaid card 🎉
 * New: Add new advanced controls for turning off block margins
 * New: Add typography controls to the Accordion block
 * New: Add support for responsive Row blocks within the editor
