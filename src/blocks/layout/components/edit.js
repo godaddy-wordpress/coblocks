@@ -465,7 +465,8 @@ class Edit extends Component {
 					{ this.state.isOpen ?
 						<Modal
 							className= "coblocks-modal-component"
-							title={ icons.templateInserter }
+							icon={ icons.templateInserter }
+							title={ __( 'Layouts' ) }
 							onRequestClose={ this.closeModal }>
 							{ this.contentModal( this.contentType ) }
 						</Modal>

@@ -50,14 +50,15 @@
 			margin-bottom: 0;
 			padding-left: 20px;
 			padding-right: 5px;
+			
+			.components-modal__icon-container{
+				padding-top: 4px;
+    			margin-right: 5px;
+			}
 
 			h1 {
 				font-weight: 700;
 				font-size: 1rem;
-
-				svg{
-					fill: #536dff;
-				}
 			}
 		}
 
