@@ -293,7 +293,7 @@ class Edit extends Component {
 							//save new meta data for fonts
 							wp.data.dispatch( 'core/editor' ).editPost({
 								meta: {
-									_blockcoblocks_attr: ba,
+									_coblocks_attr: ba,
 								}
 							});
 
