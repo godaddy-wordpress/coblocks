@@ -98,11 +98,13 @@ class Edit extends Component {
 						}
 					}
 
-					navtabs.push({
-						name: 'coblocks-saved',
-						title: __( 'My Sections' ),
-						className: 'coblocks-saved',
-					});
+					if( typeof this.props.saved_sections != "undefined" && this.props.saved_sections.length > 0 ){
+						navtabs.push({
+							name: 'coblocks-saved',
+							title: __( 'My Sections' ),
+							className: 'coblocks-saved',
+						});
+					}
 
 					if( Object.keys( sections ).length > 0 ){
 						return (
