@@ -200,3 +200,68 @@ const theme_section_store = registerStore( 'coblocks/theme_sections', {
     },
 
 } );
+
+//for theme name API
+const theme_name_actions = {
+    setThemeName( CoBlocksThemeName ) {
+        return {
+            type: 'SET_COBLOCKS_NAME_SECTIONS',
+            CoBlocksThemeName,
+        };
+    },
+
+    receiveThemeName( path ) {
+        return {
+            type: 'RECEIVE_COBLOCKS_NAME_SECTIONS',
+            path,
+        };
+    },
+
+    fetchFromAPI( path ) {
+        return {
+            type: 'FETCH_FROM_API',
+            path,
+        };
+    },
+};
+
+const theme_name_store = registerStore( 'coblocks/theme_name', {
+    reducer( state = { CoBlocksThemeName: {} }, action ) {
+
+        switch ( action.type ) {
+            case 'SET_COBLOCKS_NAME_SECTIONS':
+                return {
+                    ...state,
+                    CoBlocksThemeName: action.CoBlocksThemeName,
+                };
+            case 'RECEIVE_COBLOCKS_NAME_SECTIONS':
+                return action.CoBlocksThemeName;
+        }
+
+        return state;
+    },
+
+    theme_name_actions,
+
+    selectors: {
+        receiveThemeName( state ) {
+            const { CoBlocksThemeName } = state;
+            return CoBlocksThemeName;
+        },
+    },
+
+    controls: {
+        FETCH_FROM_API( action ) {
+            return apiFetch( { path: action.path } );
+        },
+    },
+
+    resolvers: {
+        * receiveThemeName( state ) {
+            const path = '/coblocks/v1/library/theme_name/1';
+            const CoBlocksThemeName = yield theme_name_actions.fetchFromAPI( path );
+            yield theme_name_actions.setThemeName( CoBlocksThemeName );
+        },
+    },
+
+} );

@@ -99,7 +99,7 @@ class CoBlocks_Modal {
 	public function api( $request ) {
 		$type   = $request->get_param( 'type' );
 		$return = array();
-		if ( in_array( $type, array( 'sections', 'templates', 'theme', 'template', 'saved', 'content', 'count', 'apiKey', 'theme_sections', 'template_type', 'convert', 'saved_templates', 'saved_sections' ) ) ) {
+		if ( in_array( $type, array( 'sections', 'templates', 'theme', 'template', 'saved', 'content', 'count', 'apiKey', 'theme_sections', 'template_type', 'convert', 'saved_templates', 'saved_sections', 'theme_name' ) ) ) {
 			$loader = new CoBlocks_Template_Loader();
 
 			switch ( $type ) {
@@ -224,6 +224,10 @@ class CoBlocks_Modal {
 
 				case 'apiKey':
 					return get_option( 'coblocks-map-apiKey' );
+					break;
+
+				case 'theme_name':
+					return wp_get_theme()->get('Name');
 					break;
 
 				default:

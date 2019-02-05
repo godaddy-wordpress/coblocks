@@ -90,11 +90,13 @@ class Edit extends Component {
 					//check if theme templates available
 					if( typeof this.props.theme_sections != "undefined" ){
 						if( this.props.theme_sections !== null && Object.keys( this.props.theme_sections ).length > 0 ){
-							navtabs.push({
-								name: 'coblocks-theme',
-								title: __( 'Theme Sections' ),
-								className: 'coblocks-theme',
-							});
+							if( this.props.theme_name ){
+								navtabs.push({
+									name: 'coblocks-theme',
+									title: __( this.props.theme_name ),
+									className: 'coblocks-theme',
+								});
+							}
 						}
 					}
 
@@ -484,5 +486,6 @@ export default withSelect( ( select ) => {
 		sections: select( 'coblocks/sections' ).receiveSections(),
 		theme_sections: select( 'coblocks/theme_sections' ).receiveThemeSections(),
 		saved_sections: select( 'coblocks/saved_sections' ).receiveSaved(),
+		theme_name: select( 'coblocks/theme_name' ).receiveThemeName(),
 	};
 } )( Edit );
