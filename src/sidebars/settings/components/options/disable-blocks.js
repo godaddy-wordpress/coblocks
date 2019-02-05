@@ -86,7 +86,7 @@ class DisableBlocks extends Component {
 		return (
 			<Fragment>
 				{ map( this.props.allBlocks, ( block ) => {
-					if( block.category == 'coblocks' && !block.parent ){
+					if( !block.parent ){
 						return (
 							<CheckboxControl
 								className="edit-post-options-modal__option"
