@@ -30,6 +30,11 @@ import './extensions/list-styles';
 // Formats
 import './formats/';
 
+/**
+ * Plugin Sidebars
+ */
+import './sidebars/settings';
+
 // Register Blocks
 import * as accordion from './blocks/accordion';
 import * as accordionItem from './blocks/accordion/accordion-item';
