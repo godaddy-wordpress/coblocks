@@ -61,7 +61,7 @@ class DisableBlocks extends Component {
 		const onChecked = ( key, checked ) => {
 			let settingsState = this.state.settings;
 			settingsState[ key ] = !checked;
-
+			
 			this.setState({ settings: settingsState });
 
 			this.saveSettings( settingsState );
