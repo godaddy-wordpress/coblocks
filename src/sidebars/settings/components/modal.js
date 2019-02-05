@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import classnames from 'classnames';
+import map from 'lodash/map';
 import apiFetch from '@wordpress/api-fetch';
 
 /**
@@ -17,7 +17,7 @@ const { __, sprintf } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { Button, Modal } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
-const { withSelect } = wp.data;
+const { getBlockTypes, unregisterBlockType } = wp.blocks;
 
 /**
  * Get settings.
@@ -44,6 +44,7 @@ class ModalSettings extends Component {
 			settings: '',
 			isSaving: false,
 			isLoaded: false,
+			allBlocks: getBlockTypes(),
 		}
 
 		// this.saveSettings = this.saveSettings.bind( this );
@@ -59,6 +60,13 @@ class ModalSettings extends Component {
 				optionSettings = {};
 			}else{
 				optionSettings = JSON.parse( optionSettings );
+
+				{ map( optionSettings, ( visible, block ) => {
+					if( visible ){
+						unregisterBlockType( block );
+					}
+				} ) }
+
 			}
 			this.setState({ settings: optionSettings });
 			this.setState({ isLoaded: true });
@@ -87,7 +95,7 @@ class ModalSettings extends Component {
 						closeLabel={ __( 'Close' ) }
 					>
 						<Section title={ __( 'Enable / Disable Blocks' ) }>
-							<DisableBlocks optionSettings={ this.state.settings } />
+							<DisableBlocks optionSettings={ this.state.settings } allBlocks={ this.state.allBlocks } />
 						</Section>
 					</Modal>
 				: null }

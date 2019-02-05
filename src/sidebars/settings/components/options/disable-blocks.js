@@ -11,7 +11,7 @@ const { __, sprintf } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { PanelBody,CheckboxControl } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
-const { getBlockTypes } = wp.blocks;
+const { getBlockTypes, unregisterBlockType, registerBlockType } = wp.blocks;
 
 /**
  * Get settings.
@@ -61,18 +61,32 @@ class DisableBlocks extends Component {
 		const onChecked = ( key, checked ) => {
 			let settingsState = this.state.settings;
 			settingsState[ key ] = !checked;
-			
+
+			//disable selected block
+			if( settingsState[ key ] ){
+				unregisterBlockType( key );
+			}else{
+				{ map( this.props.allBlocks, ( block ) => {
+					if( block.name == key ){
+						registerBlockType( key, block );
+
+						return;
+					}
+				} ) }
+				
+			}
+
 			this.setState({ settings: settingsState });
 
 			this.saveSettings( settingsState );
 		}
 
 		let savedSettings = this.state.settings;
-
+		// console.log( this.props.allBlocks );
 		return (
 			<Fragment>
-				{ map( getBlockTypes(), ( block ) => {
-					if( block.category == 'coblocks' ){
+				{ map( this.props.allBlocks, ( block ) => {
+					if( block.category == 'coblocks' && !block.parent ){
 						return (
 							<CheckboxControl
 								className="edit-post-options-modal__option"
