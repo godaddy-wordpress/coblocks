@@ -86,7 +86,7 @@ class ModalSettings extends Component {
 						onRequestClose={ () => closeModal() }
 						closeLabel={ __( 'Close' ) }
 					>
-						<Section title={ __( 'General' ) }>
+						<Section title={ __( 'Enable / Disable Blocks' ) }>
 							<DisableBlocks optionSettings={ this.state.settings } />
 						</Section>
 					</Modal>

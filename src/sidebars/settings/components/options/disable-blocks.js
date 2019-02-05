@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import classnames from 'classnames';
+import map from 'lodash/map';
 import apiFetch from '@wordpress/api-fetch';
 
 /**
@@ -9,9 +9,9 @@ import apiFetch from '@wordpress/api-fetch';
  */
 const { __, sprintf } = wp.i18n;
 const { Fragment, Component } = wp.element;
-const { CheckboxControl } = wp.components;
+const { PanelBody,CheckboxControl } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
-const { withSelect } = wp.data;
+const { getBlockTypes } = wp.blocks;
 
 /**
  * Get settings.
@@ -47,7 +47,7 @@ class DisableBlocks extends Component {
 		this.setState( { isSaving: true } );
 		const model = new wp.api.models.Settings( { coblocks_settings_api: JSON.stringify( settingsState ) } );
 		model.save().then( response => {
-			this.setState({ isSaving: false });
+			this.setState({ isSaving: false, settings: settingsState });
 		} );
 
 	}
@@ -60,7 +60,7 @@ class DisableBlocks extends Component {
 
 		const onChecked = ( key, checked ) => {
 			let settingsState = this.state.settings;
-			settingsState[ key ] = checked;
+			settingsState[ key ] = !checked;
 
 			this.setState({ settings: settingsState });
 
@@ -68,17 +68,24 @@ class DisableBlocks extends Component {
 		}
 
 		let savedSettings = this.state.settings;
+
 		return (
 			<Fragment>
-				<CheckboxControl
-					className="edit-post-options-modal__option"
-					label={ __( 'Test' ) }
-					checked={ ( savedSettings['test'] ) ? true : false }
-					value="test"
-					onChange={ ( checked ) => {
-						onChecked( 'test', checked );
-					} }
-				/>
+				{ map( getBlockTypes(), ( block ) => {
+					if( block.category == 'coblocks' ){
+						return (
+							<CheckboxControl
+								className="edit-post-options-modal__option"
+								label={ block.title }
+								checked={ ( !savedSettings[ block.name ] ) ? true : false }
+								value={ block.name }
+								onChange={ ( checked ) => {
+									onChecked( block.name , checked );
+								} }
+							/>		
+						);
+					}
+				} ) }
 			</Fragment>
 		);
 	}
