@@ -15,7 +15,7 @@ import Section from './../section';
  */
 const { __, sprintf } = wp.i18n;
 const { Fragment, Component } = wp.element;
-const { PanelBody,CheckboxControl, Button, Tooltip } = wp.components;
+const { PanelBody,CheckboxControl, Button, Tooltip, Popover } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
 const { getCategories, getBlockTypes, unregisterBlockType, registerBlockType } = wp.blocks;
 
@@ -40,9 +40,13 @@ class DisableBlocks extends Component {
 			settings: props.optionSettings,
 			isSaving: false,
 			isLoaded: false,
+			hasError: false,
+			targetX : null,
+			targetY : null,
 		}
 
 		this.saveSettings = this.saveSettings.bind( this );
+		this.disableBlock = this.disableBlock.bind( this );
 
 		settings.fetch().then( response => {
 			
@@ -58,36 +62,72 @@ class DisableBlocks extends Component {
 
 	}
 
+	disableBlock( key, category, clicked ){	
+		let settingsState = this.state.settings;
+
+		//get current blocks
+		let currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
+
+		//check block for editor match first
+		//avoid error while editing
+		let hasError = false;
+		this.setState({ hasError: false });
+
+		if( key == 'core/paragraph' ){
+			hasError = true;
+			this.setState({ hasError: true });
+		}
+
+		{ map( currentBlocks, ( editorBlock ) => {
+			if( editorBlock.name == key ){
+				hasError = true;
+				this.setState({ hasError: true });
+				return;
+			}
+		} ) }
+
+		//abort if block exists on current page
+		if( hasError ){
+			
+			let target = clicked.target.getBoundingClientRect();
+			this.setState({ targetX: target.left, targetY: target.top });
+
+			return;
+		}
+
+		if( settingsState[ key ] ){
+			settingsState[ key ] = !settingsState[ key ];
+		}else{
+			settingsState[ key ] = true;
+		}
+
+		//disable selected block
+		if( settingsState[ key ] ){
+			unregisterBlockType( key );
+		}else{
+			{ map( this.props.allBlocks[ category ]['blocks'], ( block ) => {
+				if( block.name == key ){
+					registerBlockType( key, block );
+					return;
+				}
+			} ) }
+			
+		}
+
+		this.setState({ settings: settingsState });
+
+		this.saveSettings( settingsState );
+	}
+
 	render() {
 
 		const closeModal = () => (
 			this.setState( { isOpen: false } )
 		);
 
-		const onChecked = ( key, category ) => {
-			let settingsState = this.state.settings;
-			if( settingsState[ key ] ){
-				settingsState[ key ] = !settingsState[ key ];
-			}else{
-				settingsState[ key ] = true;
-			}
-
-			//disable selected block
-			if( settingsState[ key ] ){
-				unregisterBlockType( key );
-			}else{
-				{ map( this.props.allBlocks[ category ]['blocks'], ( block ) => {
-					if( block.name == key ){
-						registerBlockType( key, block );
-						return;
-					}
-				} ) }
-				
-			}
-
-			this.setState({ settings: settingsState });
-
-			this.saveSettings( settingsState );
+		const onChecked = ( key, category, clicked ) => {
+			//disable blocks
+			this.disableBlock( key, category, clicked );
 		}
 
 		let savedSettings = this.state.settings;
@@ -99,6 +139,16 @@ class DisableBlocks extends Component {
 		
 		return (
 			<Fragment>
+				{ this.state.hasError ? 
+					<Popover style={ {
+						top: this.state.targetY + 'px',
+						left: ( this.state.targetX + 40 ) + 'px',
+					} }
+						className="coblocks-disable-block-warning"
+					>
+						{ __( 'Disabling failed! Block exists on the current page you are editing, please remove the block first then try again. ' ) }
+					</Popover>
+				: null }
 				{ map( allBlocks, ( category ) => {
 					if( category.slug && !category.slug.includes( 'reusable' ) ){
 						return(
@@ -116,7 +166,7 @@ class DisableBlocks extends Component {
 														} )
 													}
 													onClick={ ( value ) => {
-														onChecked( block.name, category.slug );
+														onChecked( block.name, category.slug, value );
 													} }
 												>
 													<span className="coblocks-disable-block-item--icon">

@@ -60,3 +60,12 @@
 		padding: 20px 0px 10px;
 	}
 }
+.coblocks-disable-block-warning{
+	max-height: auto !important;
+	.components-popover__content{
+		color: #b52727;
+		text-align: center;
+		padding: 8px;
+		min-height: 80px;
+	}
+}
