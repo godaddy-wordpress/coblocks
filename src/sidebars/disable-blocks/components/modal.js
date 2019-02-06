@@ -15,7 +15,7 @@ import DisableBlocks from './options/disable-blocks';
  */
 const { __, sprintf } = wp.i18n;
 const { Fragment, Component } = wp.element;
-const { Button, Modal } = wp.components;
+const { Button, Modal, TextControl } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
 const { getCategories, getBlockTypes, unregisterBlockType } = wp.blocks;
 
@@ -54,7 +54,10 @@ class ModalSettings extends Component {
 			isOpen: false,
 			isSaving: false,
 			isLoaded: false,
+			searchValue: '',
 			allBlocks: blocksPerCategory,
+			getBlockTypes: getBlockTypes(),
+			searchResults: {},
 		}
 
 		// this.saveSettings = this.saveSettings.bind( this );
@@ -89,6 +92,34 @@ class ModalSettings extends Component {
 			this.setState( { isOpen: false } )
 		);
 
+		const filterList = ( evt ) => {
+			this.setState( { searchValue: evt } );
+
+			var filtered = {};
+			var getAllBlocks = this.state.allBlocks;
+
+			var updatedList = Object.entries( this.state.getBlockTypes ).filter(function(item){
+				var text = item[0] + ' ' + item[1].title;
+				return text.toLowerCase().search(
+					evt.toLowerCase()) !== -1;
+			});
+
+			if( updatedList ){
+				updatedList.forEach(([key, value]) => {
+					if( !filtered[ value.category ] ){
+						filtered[ value.category ] = {
+							slug: value.category,
+							title: getAllBlocks[ value.category ].title,
+							blocks: {},
+						}
+					}
+					filtered[ value.category ]['blocks'][ value.name ] = value;
+				});
+			}
+
+			this.setState({ searchResults: filtered });
+		}
+
 		return (
 			<Fragment>
 				<PluginMoreMenuItem
@@ -105,7 +136,19 @@ class ModalSettings extends Component {
 						closeLabel={ __( 'Close' ) }
 						className='coblocks-modal-component coblocks-modal-component--disableBlocks'
 					>
-						<DisableBlocks optionSettings={ this.state.settings } allBlocks={ this.state.allBlocks } />
+						<div className="coblocks-modal-component--disableBlocks--search">
+							<TextControl
+								type='text'
+								autocomplete="off"
+								placeholder={ __( 'Search Block....' ) }
+								value={ this.state.searchValue }
+								onChange={ (evt) => {
+										filterList( evt );
+									}
+								}
+							/>
+						</div>
+						<DisableBlocks optionSettings={ this.state.settings } allBlocks={ this.state.allBlocks } keyword={ this.state.searchValue } searchResults={ this.state.searchResults } />
 					</Modal>
 				: null }
 			</Fragment>

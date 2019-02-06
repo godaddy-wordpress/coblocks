@@ -88,19 +88,23 @@ class DisableBlocks extends Component {
 			this.setState({ settings: settingsState });
 
 			this.saveSettings( settingsState );
-			console.log( settingsState );
 		}
 
 		let savedSettings = this.state.settings;
-		// console.log( this.props.allBlocks );
+		let allBlocks = this.props.allBlocks;
+
+		if( this.props.keyword && this.props.searchResults && Object.keys(this.props.searchResults).length > 0 ){
+			allBlocks = this.props.searchResults;
+		}
+		
 		return (
 			<Fragment>
-				{ map( this.props.allBlocks, ( category ) => {
-					if( !category.slug.includes( 'reusable' ) ){
+				{ map( allBlocks, ( category ) => {
+					if( category.slug && !category.slug.includes( 'reusable' ) ){
 						return(
 							<Section title={ category.title }>
 							{ map( category.blocks, ( block ) => {
-								if( !block.parent && !block.title.includes('deprecated') && !block.title.includes('Unrecognized') ){
+								if( !block.parent && block.title && !block.title.includes('deprecated') && !block.title.includes('Unrecognized') ){
 									return (
 										<li className="coblocks-disable-block-item-list--item">
 											<Tooltip text={ savedSettings[ block.name ] ? __( 'Enable ' + block.title ) : __( 'Disable ' + block.title ) }>
@@ -123,16 +127,7 @@ class DisableBlocks extends Component {
 													</span>
 												</Button>
 											</Tooltip>
-										</li>
-										// <CheckboxControl
-										// 	className="edit-post-options-modal__option"
-										// 	label={ block.title }
-										// 	checked={ ( !savedSettings[ block.name ] ) ? true : false }
-										// 	value={ block.name }
-										// 	onChange={ ( checked ) => {
-										// 		onChecked( block.name, category.slug , checked );
-										// 	} }
-										// />		
+										</li>	
 									);
 								}
 							} ) }		
