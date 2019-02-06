@@ -139,9 +139,9 @@ class ModalSettings extends Component {
 						onRequestClose={ () => closeModal() }
 						closeLabel={ __( 'Close' ) }
 						icon={ brandAssets.modalIcon }
-						className='coblocks-modal-component coblocks-modal-component--disableBlocks'
+						className='coblocks-modal-component components-modal--coblocks-block-manager'
 					>
-						<div className="coblocks-modal-component--disableBlocks--search">
+						<div className="coblocks-block-manager__search">
 							<TextControl
 								type='search'
 								autocomplete="off"

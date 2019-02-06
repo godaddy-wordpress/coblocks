@@ -1,10 +1,6 @@
-.coblocks-modal-component--disableBlocks{
+.components-modal--coblocks-block-manager{
 
-	// .components-base-control__field {
-	// 	display: none;
-	// }
-
-	&--search {
+	.coblocks-block-manager__search {
 		border-bottom: 1px solid #e2e4e7;
 
 		input[type="search"] {
@@ -22,14 +18,25 @@
 		}
 	}
 
-	.coblocks-disable-block-item-list{
+	// Block category wrappers.
+	.coblocks-block-manager__section {
+		border-bottom: 1px solid #e2e4e7;
+
+		&-title {
+			font-size: .9rem;
+			font-weight: 600;
+		}
+	}
+
+	// List of blocks within a category.
+	.coblocks-block-manager__list {
 		display: flex;
 		flex-wrap: wrap;
 		list-style: none;
 		overflow: hidden;
 		padding: 2px 0;
 
-		&--item{
+		&-item {
 			display: block;
 			margin: 0 0 25px;
 			padding: 0 4px;
@@ -37,51 +44,53 @@
 		}
 	}
 
-	.coblocks-disable-block-item{
+	// Individual toggleable buttons.
+	.coblocks-block-manager__button {
+		align-items: stretch;
+		background: transparent;
+		border: 1px solid rgba(25, 30, 35, 0.2);
+		border-radius: 4px;
+		box-shadow: none;
+		color: #32373c;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		font-size: 13px;
+		height: auto;
+		justify-content: center;
+		padding: 5px;
+		position: relative;
+		transition: all .05s ease-in-out;
+		width: 100%;
+		word-break: break-word;
 
-		&--button{
-			align-items: stretch;
+		&:hover {
+		}
+
+		&:active:enabled {
+		}
+
+		&:focus:enabled {
 			background: transparent;
-			border: 1px solid transparent;
-			border-radius: 4px;
-			color: #32373c;
-			cursor: pointer;
-			display: flex;
-			flex-direction: column;
-			font-size: 13px;
-			justify-content: center;
-			padding: 5px;
-			position: relative;
-			transition: all .05s ease-in-out;
-			width: 100%;
-			word-break: break-word;
-			height: auto;
-			box-shadow: none;
-			border: 1px solid rgba(25, 30, 35, 0.2);
+			border: 0;
+		}
 
-			&.block-disabled {
+		&.block-disabled {
+			opacity: 0.3;
 
-				opacity: 0.3;
-
-				&, &:focus:enabled{
-					background: #e3e4e7;
-					border-color: #e3e4e7;
-				}
-			}
-			&:focus:enabled{
-				background: transparent;
-				border: 0;
+			&,
+			&:focus:enabled {
+				background: #e3e4e7;
+				border-color: #e3e4e7;
 			}
 		}
 
-		&--icon{
-
-			svg{
-				max-height: 24px;
-				max-width: 24px;
-				min-height: 20px;
-				min-width: 20px;
-			}
+		// Block icons.
+		&-icon svg {
+			max-height: 24px;
+			max-width: 24px;
+			min-height: 20px;
+			min-width: 20px;
 		}
 	}
 }

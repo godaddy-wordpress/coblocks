@@ -163,26 +163,27 @@ class DisableBlocks extends Component {
 					</Popover>
 				: null }
 				{ map( allBlocks, ( category ) => {
-					if( category.slug && !category.slug.includes( 'reusable' ) ){
+					if ( category.slug && ! category.slug.includes( 'reusable' ) ) {
 						return(
-							<section className="edit-post-options-modal__section">
+							<section className="coblocks-block-manager__section">
+								<h2 className="coblocks-block-manager__section-title">{ category.title }</h2>
 								<ToggleControl
-									label={ category.title }
+									label={ savedSettings[ 'mainCategory-' + category.slug ] ? sprintf( __( 'Disable all %s blocks' ), category.title ) : __( 'Disable all ') }
 									checked={ savedSettings[ 'mainCategory-' + category.slug ] ? false : true }
 									onChange={ ( value ) => {
 										onToggle( 'mainCategory-' + category.slug );
 									} }
 								/>
-								<ul className="coblocks-disable-block-item-list">
+								<ul className="coblocks-block-manager__list">
 									{ map( category.blocks, ( block ) => {
-										if( !block.parent && block.title && !block.title.includes('deprecated') && !block.title.includes('Unrecognized') ){
+										if ( ! block.parent && block.title && ! block.title.includes( 'deprecated' ) && ! block.title.includes( 'Unrecognized' ) ) {
 											return (
-												<li className="coblocks-disable-block-item-list--item">
+												<li className="coblocks-block-manager__list-item">
 													<Tooltip text={ savedSettings[ block.name ] ? __( 'Enable ' + block.title ) : __( 'Disable ' + block.title ) }>
 														<Button
 															isLarge
 															className={
-																classnames( 'coblocks-disable-block-item--button', {
+																classnames( 'coblocks-block-manager__button', {
 																	'block-disabled': savedSettings[ block.name ],
 																} )
 															}
@@ -190,10 +191,10 @@ class DisableBlocks extends Component {
 																onChecked( block.name, category.slug, value );
 															} }
 														>
-															<span className="coblocks-disable-block-item--icon">
+															<span className="coblocks-block-manager__button-icon">
 																{ block.icon.src }
 															</span>
-															<span className="coblocks-block-manager-item--label">
+															<span className="coblocks-block-manager__button-label">
 																{ block.title }
 															</span>
 														</Button>
