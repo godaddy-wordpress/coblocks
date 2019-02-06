@@ -103,6 +103,7 @@ class ModalSettings extends Component {
 						title={ <span className="edit-post-options-modal__title">{ __( 'Disable Blocks' ) }</span> }
 						onRequestClose={ () => closeModal() }
 						closeLabel={ __( 'Close' ) }
+						className='coblocks-modal-component coblocks-modal-component--disableBlocks'
 					>
 						<DisableBlocks optionSettings={ this.state.settings } allBlocks={ this.state.allBlocks } />
 					</Modal>
