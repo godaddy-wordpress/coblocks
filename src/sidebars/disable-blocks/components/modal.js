@@ -143,9 +143,9 @@ class ModalSettings extends Component {
 					>
 						<div className="coblocks-modal-component--disableBlocks--search">
 							<TextControl
-								type='text'
+								type='search'
 								autocomplete="off"
-								placeholder={ __( 'Search Block....' ) }
+								placeholder={ __( 'Search for a block' ) }
 								value={ this.state.searchValue }
 								onChange={ (evt) => {
 										filterList( evt );
