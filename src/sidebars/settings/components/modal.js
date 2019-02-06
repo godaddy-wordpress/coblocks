@@ -17,7 +17,7 @@ const { __, sprintf } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { Button, Modal } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
-const { getBlockTypes, unregisterBlockType } = wp.blocks;
+const { getCategories, getBlockTypes, unregisterBlockType } = wp.blocks;
 
 /**
  * Get settings.
@@ -36,15 +36,25 @@ class ModalSettings extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
-		this.state   = {
-			isOpen: false,
-		}
+
+		//assign blocks per category
+		let blocksPerCategory = {};
+		{ map( getCategories(), ( category ) => {
+			blocksPerCategory[ category.slug ] = category;
+			blocksPerCategory[ category.slug ][ 'blocks' ] = {};
+		} ) }
+
+		{ map( getBlockTypes(), ( block ) => {
+			blocksPerCategory[ block.category ][ 'blocks' ][ block.name ] = block;
+
+		} ) }
 
 		this.state   = {
 			settings: '',
+			isOpen: false,
 			isSaving: false,
 			isLoaded: false,
-			allBlocks: getBlockTypes(),
+			allBlocks: blocksPerCategory,
 		}
 
 		// this.saveSettings = this.saveSettings.bind( this );
@@ -94,9 +104,7 @@ class ModalSettings extends Component {
 						onRequestClose={ () => closeModal() }
 						closeLabel={ __( 'Close' ) }
 					>
-						<Section title={ __( 'Enable / Disable Blocks' ) }>
-							<DisableBlocks optionSettings={ this.state.settings } allBlocks={ this.state.allBlocks } />
-						</Section>
+						<DisableBlocks optionSettings={ this.state.settings } allBlocks={ this.state.allBlocks } />
 					</Modal>
 				: null }
 			</Fragment>
