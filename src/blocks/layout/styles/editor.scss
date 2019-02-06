@@ -35,7 +35,12 @@
 	}
 }
 
-.components-modal__frame {
+.components-modal--coblocks-layouts {
+
+	.components-modal__header {
+		margin-bottom: 0;
+	}
+
 	.coblocks-tab-panel {
 		margin: 0 -16px;
 	}
@@ -45,22 +50,6 @@
 		width: 100%;
 		animation: none;
 		animation-fill-mode: none;
-
-		.components-modal__header {
-			margin-bottom: 0;
-			padding-left: 20px;
-			padding-right: 5px;
-
-			.components-modal__icon-container{
-				padding-top: 4px;
-    			margin-right: 5px;
-			}
-
-			h1 {
-				font-weight: 700;
-				font-size: 1rem;
-			}
-		}
 
 		.ba__template-type--sections {
 			display: none;
