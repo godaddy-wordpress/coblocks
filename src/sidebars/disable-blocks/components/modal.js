@@ -7,7 +7,6 @@ import apiFetch from '@wordpress/api-fetch';
 /**
  * Internal dependencies
  */
-import Section from './section';
 import DisableBlocks from './options/disable-blocks';
 
 /**
@@ -75,7 +74,7 @@ class ModalSettings extends Component {
 				optionSettings = JSON.parse( optionSettings );
 
 				{ map( optionSettings, ( visible, block ) => {
-					if( visible ){
+					if( visible && !block.includes( 'mainCategory-' ) ){
 						unregisterBlockType( block );
 					}
 				} ) }

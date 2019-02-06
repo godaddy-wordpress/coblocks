@@ -8,14 +8,14 @@ import apiFetch from '@wordpress/api-fetch';
 /**
  * Internal dependencies
  */
-import Section from './../section';
+// import Section from './../section';
 
 /**
  * WordPress dependencies
  */
 const { __, sprintf } = wp.i18n;
 const { Fragment, Component } = wp.element;
-const { PanelBody,CheckboxControl, Button, Tooltip, Popover } = wp.components;
+const { PanelBody,CheckboxControl, Button, Tooltip, Popover, ToggleControl } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
 const { getCategories, getBlockTypes, unregisterBlockType, registerBlockType } = wp.blocks;
 
@@ -130,13 +130,26 @@ class DisableBlocks extends Component {
 			this.disableBlock( key, category, clicked );
 		}
 
+		const onToggle = ( category ) => {
+			let settingsState = this.state.settings;
+
+			if( settingsState[ category ] ){
+				settingsState[ category ] = !settingsState[ category ];
+			}else{
+				settingsState[ category ] = true;
+			}
+
+			this.setState({ settings: settingsState });
+			this.saveSettings( settingsState );
+		}
+
 		let savedSettings = this.state.settings;
 		let allBlocks = this.props.allBlocks;
 
 		if( this.props.keyword && this.props.searchResults && Object.keys(this.props.searchResults).length > 0 ){
 			allBlocks = this.props.searchResults;
 		}
-		
+		console.log( savedSettings );
 		return (
 			<Fragment>
 				{ this.state.hasError ? 
@@ -152,36 +165,45 @@ class DisableBlocks extends Component {
 				{ map( allBlocks, ( category ) => {
 					if( category.slug && !category.slug.includes( 'reusable' ) ){
 						return(
-							<Section title={ category.title }>
-							{ map( category.blocks, ( block ) => {
-								if( !block.parent && block.title && !block.title.includes('deprecated') && !block.title.includes('Unrecognized') ){
-									return (
-										<li className="coblocks-disable-block-item-list--item">
-											<Tooltip text={ savedSettings[ block.name ] ? __( 'Enable ' + block.title ) : __( 'Disable ' + block.title ) }>
-												<Button
-													isLarge
-													className={
-														classnames( 'coblocks-disable-block-item--button', {
-															'block-disabled': savedSettings[ block.name ],
-														} )
-													}
-													onClick={ ( value ) => {
-														onChecked( block.name, category.slug, value );
-													} }
-												>
-													<span className="coblocks-disable-block-item--icon">
-														{ block.icon.src }
-													</span>
-													<span className="coblocks-disable-blocks-item--label">
-														{ block.title }
-													</span>
-												</Button>
-											</Tooltip>
-										</li>	
-									);
-								}
-							} ) }		
-							</Section>	
+							<section className="edit-post-options-modal__section">
+								<ToggleControl
+									label={ category.title }
+									checked={ savedSettings[ 'mainCategory-' + category.slug ] ? false : true }
+									onChange={ ( value ) => {
+										onToggle( 'mainCategory-' + category.slug );
+									} }
+								/>
+								<ul className="coblocks-disable-block-item-list">
+									{ map( category.blocks, ( block ) => {
+										if( !block.parent && block.title && !block.title.includes('deprecated') && !block.title.includes('Unrecognized') ){
+											return (
+												<li className="coblocks-disable-block-item-list--item">
+													<Tooltip text={ savedSettings[ block.name ] ? __( 'Enable ' + block.title ) : __( 'Disable ' + block.title ) }>
+														<Button
+															isLarge
+															className={
+																classnames( 'coblocks-disable-block-item--button', {
+																	'block-disabled': savedSettings[ block.name ],
+																} )
+															}
+															onClick={ ( value ) => {
+																onChecked( block.name, category.slug, value );
+															} }
+														>
+															<span className="coblocks-disable-block-item--icon">
+																{ block.icon.src }
+															</span>
+															<span className="coblocks-disable-blocks-item--label">
+																{ block.title }
+															</span>
+														</Button>
+													</Tooltip>
+												</li>	
+											);
+										}
+									} ) }
+								</ul>
+							</section>	
 						)
 					}
 				} ) }
