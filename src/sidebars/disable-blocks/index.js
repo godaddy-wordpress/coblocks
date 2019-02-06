@@ -13,7 +13,7 @@ const { registerPlugin } = wp.plugins;
 /**
  * Register Plugin
  */
-registerPlugin( 'coblocks-disable-blocks', {
+registerPlugin( 'coblocks-block-manager', {
 	icon: false,
 	render: ModalSettings,
 } );

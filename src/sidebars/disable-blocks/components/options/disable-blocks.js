@@ -49,7 +49,7 @@ class DisableBlocks extends Component {
 		this.disableBlock = this.disableBlock.bind( this );
 
 		settings.fetch().then( response => {
-			
+
 		});
 	}
 
@@ -62,7 +62,7 @@ class DisableBlocks extends Component {
 
 	}
 
-	disableBlock( key, category, clicked ){	
+	disableBlock( key, category, clicked ){
 		let settingsState = this.state.settings;
 
 		//get current blocks
@@ -88,7 +88,7 @@ class DisableBlocks extends Component {
 
 		//abort if block exists on current page
 		if( hasError ){
-			
+
 			let target = clicked.target.getBoundingClientRect();
 			this.setState({ targetX: target.left, targetY: target.top });
 
@@ -111,7 +111,7 @@ class DisableBlocks extends Component {
 					return;
 				}
 			} ) }
-			
+
 		}
 
 		this.setState({ settings: settingsState });
@@ -152,7 +152,7 @@ class DisableBlocks extends Component {
 		console.log( savedSettings );
 		return (
 			<Fragment>
-				{ this.state.hasError ? 
+				{ this.state.hasError ?
 					<Popover style={ {
 						top: this.state.targetY + 'px',
 						left: ( this.state.targetX + 40 ) + 'px',
@@ -193,17 +193,17 @@ class DisableBlocks extends Component {
 															<span className="coblocks-disable-block-item--icon">
 																{ block.icon.src }
 															</span>
-															<span className="coblocks-disable-blocks-item--label">
+															<span className="coblocks-block-manager-item--label">
 																{ block.title }
 															</span>
 														</Button>
 													</Tooltip>
-												</li>	
+												</li>
 											);
 										}
 									} ) }
 								</ul>
-							</section>	
+							</section>
 						)
 					}
 				} ) }
