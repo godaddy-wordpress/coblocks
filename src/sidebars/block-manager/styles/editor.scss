@@ -1,4 +1,5 @@
-.components-modal--coblocks-block-manager{
+.components-modal--coblocks-block-manager {
+	max-width: 550px;
 
 	.coblocks-block-manager__search {
 		border-bottom: 1px solid #e2e4e7;
@@ -22,9 +23,27 @@
 	.coblocks-block-manager__section {
 		border-bottom: 1px solid #e2e4e7;
 
+		&-header {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
+			padding: 1em 0;
+
+			.components-base-control__field {
+				flex-direction: row-reverse;
+				margin-bottom: 0;
+
+				.components-form-toggle {
+					margin-left: 16px;
+					margin-right: 0;
+				}
+			}
+		}
+
 		&-title {
 			font-size: .9rem;
 			font-weight: 600;
+			margin: 0;
 		}
 	}
 
@@ -33,22 +52,23 @@
 		display: flex;
 		flex-wrap: wrap;
 		list-style: none;
+		margin: 0 -6px;
 		overflow: hidden;
 		padding: 2px 0;
 
 		&-item {
 			display: block;
-			margin: 0 0 25px;
+			margin: 0 0 8px;
 			padding: 0 4px;
-			width: 120px;
+			width: 33.333%;
 		}
 	}
 
 	// Individual toggleable buttons.
 	.coblocks-block-manager__button {
 		align-items: stretch;
-		background: transparent;
-		border: 1px solid rgba(25, 30, 35, 0.2);
+		background: #f3f4f5;
+		border: 1px solid transparent;
 		border-radius: 4px;
 		box-shadow: none;
 		color: #32373c;
@@ -58,39 +78,97 @@
 		font-size: 13px;
 		height: auto;
 		justify-content: center;
-		padding: 5px;
+		padding: 0;
 		position: relative;
 		transition: all .05s ease-in-out;
 		width: 100%;
 		word-break: break-word;
 
-		&:hover {
-		}
-
-		&:active:enabled {
-		}
-
-		&:focus:enabled {
-			background: transparent;
-			border: 0;
-		}
-
 		&.block-disabled {
-			opacity: 0.3;
+			background: #fff;
 
-			&,
-			&:focus:enabled {
-				background: #e3e4e7;
-				border-color: #e3e4e7;
+			.coblocks-block-manager__button-icon,
+			.coblocks-block-manager__button-label {
+				color: #a2aab2;
+			}
+
+			&:hover,
+			&:active:enabled,
+			&:focus {
+				background: #fff;
+
+				.coblocks-block-manager__button-icon {
+					color: #32373c;
+				}
+
+				.coblocks-block-manager__button-label {
+					color: #32373c;
+				}
+			}
+
+			&:hover {
+				background: #f3f4f5; // Same color as hover::before.
 			}
 		}
 
+		&:not(.block-disabled):hover::before {
+			background: #edeff0;
+			border-radius: 4px;
+			bottom: 0;
+			content: "";
+			display: block;
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: -1;
+		}
+
+		&:hover,
+		&:active:enabled,
+		&:focus:enabled {
+			background: transparent;
+			border-color: transparent;
+			box-shadow: none;
+		}
+
+		&:focus:enabled,
+		&:active:enabled {
+			background: #f8f9f9; // Same color as hover::before.
+			box-shadow: 0 0 0 2px #00a0d2;
+			color: #191e23;
+			outline: 2px solid transparent;
+			outline-offset: -2px;
+
+		}
+
 		// Block icons.
-		&-icon svg {
-			max-height: 24px;
-			max-width: 24px;
-			min-height: 20px;
-			min-width: 20px;
+		&-icon {
+			border-radius: 4px;
+			padding: 12px 20px;
+			transition: all .05s ease-in-out;
+
+			.editor-block-icon {
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			svg {
+				fill: currentColor;
+				max-height: 24px;
+				max-width: 24px;
+				min-height: 20px;
+				min-width: 20px;
+				transition: all .1s ease-out;
+			}
+		}
+
+		// Block label.
+		&-label {
+			line-height: 1;
+			padding: 4px 2px 8px;
+			transition: all .15s ease-out;
+			color: #32373c;
 		}
 	}
 }

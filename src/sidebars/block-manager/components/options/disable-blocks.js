@@ -166,14 +166,16 @@ class DisableBlocks extends Component {
 					if ( category.slug && ! category.slug.includes( 'reusable' ) ) {
 						return(
 							<section className="coblocks-block-manager__section">
-								<h2 className="coblocks-block-manager__section-title">{ category.title }</h2>
-								<ToggleControl
-									label={ savedSettings[ 'mainCategory-' + category.slug ] ? sprintf( __( 'Disable all %s blocks' ), category.title ) : __( 'Disable all ') }
-									checked={ savedSettings[ 'mainCategory-' + category.slug ] ? false : true }
-									onChange={ ( value ) => {
-										onToggle( 'mainCategory-' + category.slug );
-									} }
-								/>
+								<div className="coblocks-block-manager__section-header">
+									<h2 className="coblocks-block-manager__section-title">{ category.title }</h2>
+									<ToggleControl
+										label={ savedSettings[ 'mainCategory-' + category.slug ] ? sprintf( __( 'All %s blocks disabled' ), category.title ) : __( 'Disable all' ) }
+										checked={ savedSettings[ 'mainCategory-' + category.slug ] ? true : false }
+										onChange={ ( value ) => {
+											onToggle( 'mainCategory-' + category.slug );
+										} }
+									/>
+								</div>
 								<ul className="coblocks-block-manager__list">
 									{ map( category.blocks, ( block ) => {
 										if ( ! block.parent && block.title && ! block.title.includes( 'deprecated' ) && ! block.title.includes( 'Unrecognized' ) ) {
@@ -192,7 +194,9 @@ class DisableBlocks extends Component {
 															} }
 														>
 															<span className="coblocks-block-manager__button-icon">
-																{ block.icon.src }
+																<span className="editor-block-icon has-colors">
+																	{ block.icon.src }
+																</span>
 															</span>
 															<span className="coblocks-block-manager__button-label">
 																{ block.title }
