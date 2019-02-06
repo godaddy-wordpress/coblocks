@@ -1,8 +1,19 @@
 .components-modal--coblocks-block-manager {
-	max-width: 550px;
+
+	@media (min-width: 600px) {
+		width: 550px;
+	}
+
+	.components-modal__icon-container {
+		margin-right: 0.7em;
+
+		svg {
+			position: relative;
+			top: 0.16em;
+		}
+	}
 
 	.coblocks-block-manager__search {
-		border-bottom: 1px solid #e2e4e7;
 
 		input[type="search"] {
 			border-radius: 4px;
@@ -21,7 +32,12 @@
 
 	// Block category wrappers.
 	.coblocks-block-manager__section {
-		border-bottom: 1px solid #e2e4e7;
+		border-top: 1px solid #e2e4e7;
+		margin-top: 1em;
+
+		&:first-of-type {
+			margin-top: 0;
+		}
 
 		&-header {
 			align-items: center;
@@ -52,7 +68,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		list-style: none;
-		margin: 0 -6px;
+		margin: 0 -6px -12px;
 		overflow: hidden;
 		padding: 2px 0;
 
