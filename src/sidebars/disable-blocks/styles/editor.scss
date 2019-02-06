@@ -1,0 +1,58 @@
+.coblocks-modal-component--disableBlocks{
+	.coblocks-disable-block-item-list{
+		display: flex;
+	    flex-wrap: wrap;
+	    list-style: none;
+	    overflow: hidden;
+	    padding: 2px 0;
+
+	    &--item{
+	    	display: block;
+		    margin: 0 0 25px;
+		    padding: 0 4px;
+		    width: 120px;
+	    }
+	}
+	.coblocks-disable-block-item{
+
+		&--button{
+			align-items: stretch;
+		    background: transparent;
+		    border: 1px solid transparent;
+		    border-radius: 4px;
+		    color: #32373c;
+		    cursor: pointer;
+		    display: flex;
+		    flex-direction: column;
+		    font-size: 13px;
+		    justify-content: center;
+		    padding: 5px;
+		    position: relative;
+		    transition: all .05s ease-in-out;
+		    width: 100%;
+		    word-break: break-word;
+		    height: auto;
+		    box-shadow: none;
+		    &.block-disabled{
+    			opacity: 0.3;
+    			&, &:focus:enabled{
+    				background: #e3e4e7;
+    				border-color: #e3e4e7;
+    			}
+		    }
+		    &:focus:enabled{
+		    	background: transparent;
+		    	border: 0px;
+		    }
+		}
+
+		&--icon{
+			svg{
+				max-height: 24px;
+			    max-width: 24px;
+			    min-height: 20px;
+			    min-width: 20px;
+			}
+		}
+	}
+}

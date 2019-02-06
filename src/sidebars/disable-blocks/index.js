@@ -1,6 +1,7 @@
 /**
  * Internal dependencies
  */
+import './styles/editor.scss';
 import icons from './../../utils/icons';
 import ModalSettings from './components/modal';
 

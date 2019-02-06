@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import classnames from 'classnames';
 import map from 'lodash/map';
 import apiFetch from '@wordpress/api-fetch';
 
@@ -14,7 +15,7 @@ import Section from './../section';
  */
 const { __, sprintf } = wp.i18n;
 const { Fragment, Component } = wp.element;
-const { PanelBody,CheckboxControl } = wp.components;
+const { PanelBody,CheckboxControl, Button, Tooltip } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
 const { getCategories, getBlockTypes, unregisterBlockType, registerBlockType } = wp.blocks;
 
@@ -63,9 +64,13 @@ class DisableBlocks extends Component {
 			this.setState( { isOpen: false } )
 		);
 
-		const onChecked = ( key, category, checked ) => {
+		const onChecked = ( key, category ) => {
 			let settingsState = this.state.settings;
-			settingsState[ key ] = !checked;
+			if( settingsState[ key ] ){
+				settingsState[ key ] = !settingsState[ key ];
+			}else{
+				settingsState[ key ] = true;
+			}
 
 			//disable selected block
 			if( settingsState[ key ] ){
@@ -83,6 +88,7 @@ class DisableBlocks extends Component {
 			this.setState({ settings: settingsState });
 
 			this.saveSettings( settingsState );
+			console.log( settingsState );
 		}
 
 		let savedSettings = this.state.settings;
@@ -90,25 +96,49 @@ class DisableBlocks extends Component {
 		return (
 			<Fragment>
 				{ map( this.props.allBlocks, ( category ) => {
-					return(
-						<Section title={ category.title }>
-						{ map( category.blocks, ( block ) => {
-							if( !block.parent ){
-								return (
-									<CheckboxControl
-										className="edit-post-options-modal__option"
-										label={ block.title }
-										checked={ ( !savedSettings[ block.name ] ) ? true : false }
-										value={ block.name }
-										onChange={ ( checked ) => {
-											onChecked( block.name, category.slug , checked );
-										} }
-									/>		
-								);
-							}
-						} ) }		
-						</Section>	
-					)
+					if( !category.slug.includes( 'reusable' ) ){
+						return(
+							<Section title={ category.title }>
+							{ map( category.blocks, ( block ) => {
+								if( !block.parent && !block.title.includes('deprecated') && !block.title.includes('Unrecognized') ){
+									return (
+										<li className="coblocks-disable-block-item-list--item">
+											<Tooltip text={ savedSettings[ block.name ] ? __( 'Enable ' + block.title ) : __( 'Disable ' + block.title ) }>
+												<Button
+													isLarge
+													className={
+														classnames( 'coblocks-disable-block-item--button', {
+															'block-disabled': savedSettings[ block.name ],
+														} )
+													}
+													onClick={ ( value ) => {
+														onChecked( block.name, category.slug );
+													} }
+												>
+													<span className="coblocks-disable-block-item--icon">
+														{ block.icon.src }
+													</span>
+													<span className="coblocks-disable-blocks-item--label">
+														{ block.title }
+													</span>
+												</Button>
+											</Tooltip>
+										</li>
+										// <CheckboxControl
+										// 	className="edit-post-options-modal__option"
+										// 	label={ block.title }
+										// 	checked={ ( !savedSettings[ block.name ] ) ? true : false }
+										// 	value={ block.name }
+										// 	onChange={ ( checked ) => {
+										// 		onChecked( block.name, category.slug , checked );
+										// 	} }
+										// />		
+									);
+								}
+							} ) }		
+							</Section>	
+						)
+					}
 				} ) }
 			</Fragment>
 		);
