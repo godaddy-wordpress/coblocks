@@ -33,7 +33,7 @@ import './formats/';
 /**
  * Plugin Sidebars
  */
-import './sidebars/settings';
+import './sidebars/disable-blocks';
 
 // Register Blocks
 import * as accordion from './blocks/accordion';

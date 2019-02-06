@@ -12,7 +12,7 @@ const { registerPlugin } = wp.plugins;
 /**
  * Register Plugin
  */
-registerPlugin( 'coblocks-sidebar-settings', {
+registerPlugin( 'coblocks-disable-blocks', {
 	icon: false,
 	render: ModalSettings,
 } );

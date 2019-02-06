@@ -96,11 +96,11 @@ class ModalSettings extends Component {
 						this.setState( { isOpen: true } );
 					} }
 				>
-					{ __( 'CoBlocks' ) }
+					{ __( 'Disable Blocks' ) }
 				</PluginMoreMenuItem>
 				{ this.state.isOpen ?
 					<Modal
-						title={ <span className="edit-post-options-modal__title">{ __( 'CoBlocks Settings' ) }</span> }
+						title={ <span className="edit-post-options-modal__title">{ __( 'Disable Blocks' ) }</span> }
 						onRequestClose={ () => closeModal() }
 						closeLabel={ __( 'Close' ) }
 					>
