@@ -99,7 +99,10 @@ class ModalSettings extends Component {
 			var getAllBlocks = this.state.allBlocks;
 
 			var updatedList = Object.entries( this.state.getBlockTypes ).filter(function(item){
-				var text = item[0] + ' ' + item[1].title;
+				var text = item[0] + ' ' + item[1].title  + ' ';
+				if( item[1].keywords ){
+					text += item[1].keywords.map( e => e ).join(' ');
+				}
 				return text.toLowerCase().search(
 					evt.toLowerCase()) !== -1;
 			});
