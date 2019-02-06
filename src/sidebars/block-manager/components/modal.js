@@ -135,7 +135,7 @@ class ModalSettings extends Component {
 				</PluginMoreMenuItem>
 				{ this.state.isOpen ?
 					<Modal
-						title={ <span className="edit-post-options-modal__title">{ __( 'Block Control Panel' ) }</span> }
+						title={ <span className="edit-post-options-modal__title">{ __( 'Block Manager' ) }</span> }
 						onRequestClose={ () => closeModal() }
 						closeLabel={ __( 'Close' ) }
 						icon={ brandAssets.modalIcon }
