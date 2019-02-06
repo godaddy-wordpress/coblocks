@@ -8,6 +8,7 @@ import apiFetch from '@wordpress/api-fetch';
  * Internal dependencies
  */
 import DisableBlocks from './options/disable-blocks';
+import brandAssets from '../../../utils/brand-assets';
 
 /**
  * WordPress dependencies
@@ -136,6 +137,7 @@ class ModalSettings extends Component {
 						title={ <span className="edit-post-options-modal__title">{ __( 'Disable Blocks' ) }</span> }
 						onRequestClose={ () => closeModal() }
 						closeLabel={ __( 'Close' ) }
+						icon={ brandAssets.modalIcon }
 						className='coblocks-modal-component coblocks-modal-component--disableBlocks'
 					>
 						<div className="coblocks-modal-component--disableBlocks--search">
