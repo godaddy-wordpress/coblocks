@@ -210,7 +210,7 @@ class DisableBlocks extends Component {
 										
 										{ ( !this.props.keyword && category.title ) ?
 											<ToggleControl
-												label={ savedSettings[ 'mainCategory-' + category.slug ] ? sprintf( __( 'All %s blocks disabled' ), category.title.replace( ' Blocks', '' ) ) : __( 'Disable all' ) }
+												label={ savedSettings[ 'mainCategory-' + category.slug ] ? __( 'Enable all' )  : __( 'Disable all' ) }
 												checked={ savedSettings[ 'mainCategory-' + category.slug ] ? true : false }
 												onChange={ ( value ) => {
 													onToggle( 'mainCategory-' + category.slug, category.slug );
