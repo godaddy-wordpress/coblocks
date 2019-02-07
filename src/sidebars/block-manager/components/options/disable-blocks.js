@@ -196,10 +196,10 @@ class DisableBlocks extends Component {
 					} }
 						className="coblocks-disable-block-warning"
 					>
-						{ __( 'Disabling failed! Block exists on the current page you are editing, please remove the block first then try again. ' ) }
+						{ __( 'This block is currently added to this page and cannot be disabled. Please remove the block.' ) }
 					</Popover>
 				: null }
-				{ Object.keys( allBlocks ).length > 0 ? 
+				{ Object.keys( allBlocks ).length > 0 ?
 					map( allBlocks, ( category ) => {
 						if ( category.slug && ! category.slug.includes( 'reusable' ) && category.blocks && Object.keys( category.blocks ).length > 0 ) {
 							return(
