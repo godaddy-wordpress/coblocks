@@ -184,10 +184,10 @@ class DisableBlocks extends Component {
 						return(
 							<section className="coblocks-block-manager__section">
 								<div className="coblocks-block-manager__section-header">
-									<h2 className="coblocks-block-manager__section-title">{ category.title }</h2>
+									<h2 className="coblocks-block-manager__section-title">{ category.title.replace( ' Blocks', '' ) }</h2>
 									{ ( !this.props.keyword ) ?
 										<ToggleControl
-											label={ savedSettings[ 'mainCategory-' + category.slug ] ? sprintf( __( 'All %s blocks disabled' ), category.title ) : __( 'Disable all' ) }
+											label={ savedSettings[ 'mainCategory-' + category.slug ] ? sprintf( __( 'All %s blocks disabled' ), category.title.replace( ' Blocks', '' ) ) : __( 'Disable all' ) }
 											checked={ savedSettings[ 'mainCategory-' + category.slug ] ? true : false }
 											onChange={ ( value ) => {
 												onToggle( 'mainCategory-' + category.slug, category.slug );
