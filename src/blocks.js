@@ -26,13 +26,10 @@ import './extensions/attributes';
 import './extensions/advanced-controls';
 import './extensions/list-styles';
 
-
 // Formats
 import './formats/';
 
-/**
- * Plugin Sidebars
- */
+// Sidebars
 import './sidebars/block-manager';
 
 // Register Blocks
