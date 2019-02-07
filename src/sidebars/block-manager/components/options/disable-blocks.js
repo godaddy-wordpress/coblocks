@@ -105,7 +105,12 @@ class DisableBlocks extends Component {
 
 		//disable selected block
 		if( settingsState[ key ] ){
-			unregisterBlockType( key );
+			//return if toggled and already enabled
+			if( all && !toggle ){
+				settingsState[ key ] = false;
+			}else{
+				unregisterBlockType( key );
+			}
 		}else{
 			//return if toggled and already disabled
 			if( all && toggle ){
