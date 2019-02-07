@@ -18,6 +18,8 @@ const { Fragment, Component } = wp.element;
 const { CheckboxControl, Button, Popover, ToggleControl } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
 const { getCategories, getBlockTypes, unregisterBlockType, registerBlockType } = wp.blocks;
+const { BlockIcon } = wp.editor;
+
 
 /**
  * Get settings.
@@ -231,9 +233,7 @@ class DisableBlocks extends Component {
 															} }
 														>
 															<span className="coblocks-block-manager__button-icon">
-																<span className="editor-block-icon has-colors">
-																	{ block.icon.src }
-																</span>
+																<BlockIcon icon={ block.icon.src } showColors />
 															</span>
 															<span className="coblocks-block-manager__button-label">
 																{ block.title }
