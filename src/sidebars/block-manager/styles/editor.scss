@@ -35,6 +35,7 @@
 			align-items: center;
 			display: flex;
 			justify-content: space-between;
+			min-height: 48px;
 			padding: 1em 0;
 
 			.components-base-control__field {
@@ -100,10 +101,8 @@
 				color: #a2aab2;
 			}
 
-			&:hover,
-			&:active:enabled,
-			&:focus {
-				background: #fff;
+			&:hover {
+				background: #f3f4f5;
 
 				.coblocks-block-manager__button-icon {
 					color: #32373c;
@@ -114,8 +113,12 @@
 				}
 			}
 
-			&:hover {
-				background: #f3f4f5; // Same color as hover::before.
+			&:active:enabled {
+				background: #fff;
+			}
+
+			&:focus:enabled {
+				background: #fff;
 			}
 		}
 
