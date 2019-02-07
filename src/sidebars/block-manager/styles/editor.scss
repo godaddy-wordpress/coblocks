@@ -88,6 +88,17 @@
 		}
 	}
 
+	.coblocks-block-manager__error {
+		background: #fff;
+		color: $red;
+		margin-top: -16px;
+		padding: 8px;
+		position: sticky;
+		text-align: center;
+		top: 112px;
+		z-index: 11;
+	}
+
 	// Individual toggleable buttons.
 	.coblocks-block-manager__button {
 		align-items: stretch;
@@ -238,15 +249,3 @@
 		}
 	}
 }
-
-.coblocks-disable-block-warning {
-	background: #fff;
-	color: $red;
-	margin-top: -16px;
-	padding: 8px;
-	position: sticky;
-	text-align: center;
-	top: 112px;
-	z-index: 11;
-}
-

@@ -189,8 +189,8 @@ class DisableBlocks extends Component {
 		return (
 			<Fragment>
 				{ this.state.hasError ?
-					<div className="coblocks-disable-block-warning">
-						{ __( 'This block is added to this page and currently cannot be disabled' ) }
+					<div className="coblocks-block-manager__error">
+						{ __( 'This block is added to the page and cannot currently be disabled' ) }
 					</div>
 				: null }
 				{ Object.keys( allBlocks ).length > 0 ?
