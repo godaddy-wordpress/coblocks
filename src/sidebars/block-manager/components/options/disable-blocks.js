@@ -15,7 +15,7 @@ import apiFetch from '@wordpress/api-fetch';
  */
 const { __, sprintf } = wp.i18n;
 const { Fragment, Component } = wp.element;
-const { PanelBody,CheckboxControl, Button, Tooltip, Popover, ToggleControl } = wp.components;
+const { PanelBody,CheckboxControl, Button, Popover, ToggleControl } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
 const { getCategories, getBlockTypes, unregisterBlockType, registerBlockType } = wp.blocks;
 
@@ -184,28 +184,26 @@ class DisableBlocks extends Component {
 										if ( ! block.parent && block.title && ! block.title.includes( 'deprecated' ) && ! block.title.includes( 'Unrecognized' ) ) {
 											return (
 												<li className="coblocks-block-manager__list-item">
-													<Tooltip text={ savedSettings[ block.name ] ? __( 'Enable ' + block.title ) : __( 'Disable ' + block.title ) }>
-														<Button
-															isLarge
-															className={
-																classnames( 'coblocks-block-manager__button', {
-																	'block-disabled': savedSettings[ block.name ],
-																} )
-															}
-															onClick={ ( value ) => {
-																onChecked( block.name, category.slug, value );
-															} }
-														>
-															<span className="coblocks-block-manager__button-icon">
-																<span className="editor-block-icon has-colors">
-																	{ block.icon.src }
-																</span>
+													<Button
+														isLarge
+														className={
+															classnames( 'coblocks-block-manager__button', {
+																'block-disabled': savedSettings[ block.name ],
+															} )
+														}
+														onClick={ ( value ) => {
+															onChecked( block.name, category.slug, value );
+														} }
+													>
+														<span className="coblocks-block-manager__button-icon">
+															<span className="editor-block-icon has-colors">
+																{ block.icon.src }
 															</span>
-															<span className="coblocks-block-manager__button-label">
-																{ block.title }
-															</span>
-														</Button>
-													</Tooltip>
+														</span>
+														<span className="coblocks-block-manager__button-label">
+															{ block.title }
+														</span>
+													</Button>
 												</li>
 											);
 										}
