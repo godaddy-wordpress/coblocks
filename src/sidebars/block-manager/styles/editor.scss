@@ -241,13 +241,13 @@
 }
 
 .coblocks-disable-block-warning {
-	max-height: auto !important;
-
-	.components-popover__content{
-		color: #b52727;
-		min-height: 80px;
-		padding: 8px;
-		text-align: center;
-	}
+	background: #fff;
+	color: $red;
+	margin-top: -16px;
+	padding: 8px;
+	position: sticky;
+	text-align: center;
+	top: 112px;
+	z-index: 11;
 }
 
