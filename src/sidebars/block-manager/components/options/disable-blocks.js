@@ -189,14 +189,9 @@ class DisableBlocks extends Component {
 		return (
 			<Fragment>
 				{ this.state.hasError ?
-					<Popover style={ {
-						top: this.state.targetY + 'px',
-						left: ( this.state.targetX + 40 ) + 'px',
-					} }
-						className="coblocks-disable-block-warning"
-					>
-						{ __( 'This block is added to this page and currently cannot be disabled.' ) }
-					</Popover>
+					<div className="coblocks-disable-block-warning">
+						{ __( 'This block is added to this page and currently cannot be disabled' ) }
+					</div>
 				: null }
 				{ Object.keys( allBlocks ).length > 0 ?
 					map( allBlocks, ( category ) => {
