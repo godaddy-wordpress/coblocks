@@ -145,6 +145,7 @@ class ModalSettings extends Component {
 							<TextControl
 								type='search'
 								autocomplete="off"
+								autofocus="autofocus"
 								placeholder={ __( 'Search for a block' ) }
 								value={ this.state.searchValue }
 								onChange={ (evt) => {
