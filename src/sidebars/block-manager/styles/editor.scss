@@ -34,8 +34,6 @@
 
 	// Block category wrappers.
 	.coblocks-block-manager__section {
-		border-top: 1px solid #e2e4e7;
-		margin-top: 2.1em;
 
 		&:first-of-type {
 			margin-top: 0;
@@ -67,6 +65,9 @@
 			font-size: .9rem;
 			font-weight: 600;
 			margin: 0;
+		}
+		.components-panel__row{
+			display: block;
 		}
 	}
 
