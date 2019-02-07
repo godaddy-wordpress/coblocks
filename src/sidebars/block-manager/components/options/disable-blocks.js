@@ -82,6 +82,7 @@ class DisableBlocks extends Component {
 			if( editorBlock.name == key ){
 				hasError = true;
 				this.setState({ hasError: true });
+				
 				return;
 			}
 		} ) }
@@ -108,6 +109,7 @@ class DisableBlocks extends Component {
 			//return if toggled and already enabled
 			if( all && !toggle ){
 				settingsState[ key ] = false;
+
 			}else{
 				unregisterBlockType( key );
 			}
@@ -119,6 +121,12 @@ class DisableBlocks extends Component {
 				{ map( this.props.allBlocks[ category ]['blocks'], ( block ) => {
 					if( block.name == key ){
 						registerBlockType( key, block );
+
+						//change toggle off when block enabled
+						if( settingsState[ 'mainCategory-' + category ] ){
+							settingsState[ 'mainCategory-' + category ] = false;
+						}
+
 						return;
 					}
 				} ) }
@@ -127,7 +135,6 @@ class DisableBlocks extends Component {
 		}
 
 		this.setState({ settings: settingsState });
-
 		this.saveSettings( settingsState );
 	}
 
@@ -171,7 +178,7 @@ class DisableBlocks extends Component {
 		if( this.props.keyword && this.props.searchResults && this.props.keyword.length > 0 ){
 			allBlocks = this.props.searchResults;
 		}
-		console.log( Object.keys( allBlocks ).length );
+		
 		return (
 			<Fragment>
 				{ this.state.hasError ?
@@ -190,8 +197,11 @@ class DisableBlocks extends Component {
 							return(
 								<section className="coblocks-block-manager__section">
 									<div className="coblocks-block-manager__section-header">
-										<h2 className="coblocks-block-manager__section-title">{ category.title.replace( ' Blocks', '' ) }</h2>
-										{ ( !this.props.keyword ) ?
+										{ category.title ? 
+											<h2 className="coblocks-block-manager__section-title">{ category.title.replace( ' Blocks', '' ) }</h2>
+										: null }
+										
+										{ ( !this.props.keyword && category.title ) ?
 											<ToggleControl
 												label={ savedSettings[ 'mainCategory-' + category.slug ] ? sprintf( __( 'All %s blocks disabled' ), category.title.replace( ' Blocks', '' ) ) : __( 'Disable all' ) }
 												checked={ savedSettings[ 'mainCategory-' + category.slug ] ? true : false }
