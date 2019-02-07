@@ -443,7 +443,7 @@ class Edit extends Component {
 				<Fragment>
 					<Placeholder
 						icon={ icons.templateInserter }
-						label={  __( 'CoBlocks Layout' ) }
+						label={  __( 'Add Layout' ) }
 						instructions={  __( 'Insert a CoBlocks pre-designed section.' ) }
 						className="block-coblocks-inserter"
 					>
@@ -457,7 +457,7 @@ class Edit extends Component {
 			<Fragment>
 				<Placeholder
 						icon={ icons.templateInserter }
-						label={  __( 'CoBlocks Layout' ) }
+						label={  __( 'Add Layout' ) }
 						instructions={  __( 'Insert a CoBlocks pre-designed section.' ) }
 						className="block-coblocks-inserter"
 					>
