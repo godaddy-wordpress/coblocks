@@ -89,9 +89,61 @@
 		justify-content: center;
 		padding: 0;
 		position: relative;
-		transition: all .05s ease-in-out;
+		// transition: all .05s ease-in-out;
 		width: 100%;
 		word-break: break-word;
+
+		.coblocks-block-manager__button-icon {
+			color: #555d66;
+		}
+
+		.coblocks-block-manager__button-label {
+			color: #32373c;
+		}
+
+		// Reset for button states.
+		&:hover,
+		&:active:enabled,
+		&:focus:enabled {
+			background: transparent;
+			border-color: transparent;
+			box-shadow: none;
+		}
+
+		&:not(.block-disabled) {
+
+			&:focus:enabled,
+			&:active:enabled,
+			&:active:enabled:hover {
+				background: #edeff0;
+
+				.coblocks-block-manager__button-icon {
+					color: #191e23;
+				}
+
+			}
+
+			&:hover {
+				background: #edeff0;
+
+				.coblocks-block-manager__button-icon {
+					color: #191e23;
+				}
+			}
+
+			&:active:enabled,
+			&:active:enabled:hover {
+				background: #f8f9f9;
+			}
+		}
+
+		&:focus:enabled,
+		&:active:enabled {
+			background: #f8f9f9;
+			box-shadow: 0 0 0 2px #00a0d2;
+			outline: 2px solid transparent;
+			outline-offset: -2px;
+		}
 
 		&.block-disabled {
 			background: #fff;
@@ -104,14 +156,13 @@
 			&:hover {
 				background: #f8f9f9;
 
-				.coblocks-block-manager__button-icon,
+				.coblocks-block-manager__button-icon {
+					color: #191e23;
+				}
+
 				.coblocks-block-manager__button-label {
 					color: #32373c;
 				}
-			}
-
-			&:active:enabled {
-				background: #f8f9f9;
 			}
 
 			&:focus:enabled {
@@ -124,35 +175,26 @@
 					}
 				}
 			}
-		}
 
-		&:not(.block-disabled):hover {
-			background: #edeff0;
-		}
+			&:active:enabled,
+			&:active:enabled:hover {
+				background: #f8f9f9;
 
-		&:hover,
-		&:active:enabled,
-		&:focus:enabled {
-			background: transparent;
-			border-color: transparent;
-			box-shadow: none;
-		}
+				.coblocks-block-manager__button-icon {
+					color: #191e23;
+				}
 
-		&:focus:enabled,
-		&:active:enabled {
-			background: #f8f9f9; // Same color as hover::before.
-			box-shadow: 0 0 0 2px #00a0d2;
-			color: #191e23;
-			outline: 2px solid transparent;
-			outline-offset: -2px;
-
+				.coblocks-block-manager__button-label {
+					color: #32373c;
+				}
+			}
 		}
 
 		// Block icons.
 		&-icon {
 			border-radius: 4px;
 			padding: 12px 20px;
-			transition: all .05s ease-in-out;
+			// transition: all .05s ease-in-out;
 
 			.editor-block-icon {
 				margin-left: auto;
@@ -165,7 +207,7 @@
 				max-width: 24px;
 				min-height: 20px;
 				min-width: 20px;
-				transition: all .1s ease-out;
+				// transition: all .15s ease-out;
 			}
 		}
 
@@ -173,8 +215,6 @@
 		&-label {
 			line-height: 1;
 			padding: 4px 2px 8px;
-			transition: all .15s ease-out;
-			color: #32373c;
 		}
 	}
 }
