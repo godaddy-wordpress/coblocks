@@ -180,7 +180,7 @@ class DisableBlocks extends Component {
 					</Popover>
 				: null }
 				{ map( allBlocks, ( category ) => {
-					if ( category.slug && ! category.slug.includes( 'reusable' ) ) {
+					if ( category.slug && ! category.slug.includes( 'reusable' ) && category.blocks && Object.keys( category.blocks ).length > 0 ) {
 						return(
 							<section className="coblocks-block-manager__section">
 								<div className="coblocks-block-manager__section-header">

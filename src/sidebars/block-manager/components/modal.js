@@ -36,7 +36,9 @@ class ModalSettings extends Component {
 		} ) }
 
 		{ map( getBlockTypes(), ( block ) => {
-			blocksPerCategory[ block.category ][ 'blocks' ][ block.name ] = block;
+			if( ![ 'core/paragraph' ].includes( block.name ) ){
+				blocksPerCategory[ block.category ][ 'blocks' ][ block.name ] = block;
+			}
 
 		} ) }
 
@@ -112,7 +114,9 @@ class ModalSettings extends Component {
 							blocks: {},
 						}
 					}
-					filtered[ value.category ]['blocks'][ value.name ] = value;
+					if( ![ 'core/paragraph' ].includes( value.name ) ){
+						filtered[ value.category ]['blocks'][ value.name ] = value;
+					}
 				});
 			}
 
