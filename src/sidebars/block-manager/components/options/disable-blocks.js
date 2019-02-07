@@ -82,8 +82,16 @@ class DisableBlocks extends Component {
 			if( editorBlock.name == key ){
 				hasError = true;
 				this.setState({ hasError: true });
-				
+
 				return;
+			}else if( editorBlock.innerBlocks ){
+				map( editorBlock.innerBlocks, ( innerBlock ) => {
+					if( innerBlock.name == key ){
+						hasError = true;
+						this.setState({ hasError: true });
+						return;
+					}
+				});
 			}
 		} ) }
 
