@@ -2,7 +2,7 @@
 	min-height: 91%;
 
 	@media (min-width: 600px) {
-		width: 550px;
+		width: 560px;
 	}
 
 	.coblocks-block-manager__search {
@@ -25,7 +25,7 @@
 	// Block category wrappers.
 	.coblocks-block-manager__section {
 		border-top: 1px solid #e2e4e7;
-		margin-top: 1em;
+		margin-top: 1.75em;
 
 		&:first-of-type {
 			margin-top: 0;
