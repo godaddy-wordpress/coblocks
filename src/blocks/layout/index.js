@@ -32,7 +32,7 @@ const settings = {
 
 	title: title,
 
-	description : __( 'Add a saved CoBlocks pre-designed section.' ),
+	description : __( 'Add a beautifully designed layout from your theme or the CoBlocks Layout Libary.' ),
 
 	keywords: keywords,
 

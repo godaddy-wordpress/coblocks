@@ -443,8 +443,8 @@ class Edit extends Component {
 				<Fragment>
 					<Placeholder
 						icon={ brandAssets.blockIcon }
-						label={  __( 'Add Layout' ) }
-						instructions={  __( 'Select a beautifully designed layout to add to this page.' ) }
+						label={  __( 'Add CoBlocks Layout' ) }
+						instructions={  __( 'Add a beautifully designed layout from your theme or the CoBlocks Layout Libary.' ) }
 						className="block-coblocks-inserter"
 					>
 						<Spinner />
@@ -457,8 +457,8 @@ class Edit extends Component {
 			<Fragment>
 				<Placeholder
 						icon={ brandAssets.blockIcon }
-						label={  __( 'Add Layout' ) }
-						instructions={  __( 'Insert a beautifully designed layout from CoBlocks or your theme.' ) }
+						label={  __( 'Add CoBlocks Layout' ) }
+						instructions={  __( 'Add a beautifully designed layout from your theme or the CoBlocks Layout Libary.' ) }
 						className="block-coblocks-inserter"
 					>
 					<Button

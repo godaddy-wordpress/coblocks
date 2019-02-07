@@ -4,8 +4,17 @@
 		svg {
 			margin-right: 0.5em;
 			position: relative;
-			top: -0.078em;
+			top: -0.075em;
 		}
+	}
+}
+
+.block-coblocks-inserter {
+
+	.components-button {
+		font-size: 13px;
+		height: 33px;
+		line-height: 30px;
 	}
 }
 
@@ -25,8 +34,8 @@
 
 	// Select field.
 	.components-select-control__input {
-		line-height: 30px;
 		height: 30px;
+		line-height: 30px;
 	}
 
 	&--search,
