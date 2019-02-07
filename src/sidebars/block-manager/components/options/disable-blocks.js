@@ -62,7 +62,7 @@ class DisableBlocks extends Component {
 
 	}
 
-	disableBlock( key, category, clicked ){
+	disableBlock( key, category, clicked, all = false, toggle = false ){
 		let settingsState = this.state.settings;
 
 		//get current blocks
@@ -89,8 +89,10 @@ class DisableBlocks extends Component {
 		//abort if block exists on current page
 		if( hasError ){
 
-			let target = clicked.target.getBoundingClientRect();
-			this.setState({ targetX: target.left, targetY: target.top });
+			if( clicked ){
+				let target = clicked.target.getBoundingClientRect();
+				this.setState({ targetX: target.left, targetY: target.top });
+			}
 
 			return;
 		}
@@ -105,12 +107,17 @@ class DisableBlocks extends Component {
 		if( settingsState[ key ] ){
 			unregisterBlockType( key );
 		}else{
-			{ map( this.props.allBlocks[ category ]['blocks'], ( block ) => {
-				if( block.name == key ){
-					registerBlockType( key, block );
-					return;
-				}
-			} ) }
+			//return if toggled and already disabled
+			if( all && toggle ){
+				settingsState[ key ] = true;
+			}else{
+				{ map( this.props.allBlocks[ category ]['blocks'], ( block ) => {
+					if( block.name == key ){
+						registerBlockType( key, block );
+						return;
+					}
+				} ) }
+			}
 
 		}
 
@@ -130,13 +137,23 @@ class DisableBlocks extends Component {
 			this.disableBlock( key, category, clicked );
 		}
 
-		const onToggle = ( category ) => {
+		const onToggle = ( category, slug ) => {
 			let settingsState = this.state.settings;
+			let allBlocks = this.props.allBlocks;
 
 			if( settingsState[ category ] ){
 				settingsState[ category ] = !settingsState[ category ];
 			}else{
 				settingsState[ category ] = true;
+			}
+
+			//disable blocks one by one
+			if( allBlocks[ slug ] && allBlocks[ slug ].blocks ){
+				{ map( allBlocks[ slug ].blocks, ( block ) => {
+					if( block.name ){
+						this.disableBlock( block.name, slug, false, true, settingsState[ category ] );
+					}
+				} ) }
 			}
 
 			this.setState({ settings: settingsState });
@@ -149,7 +166,7 @@ class DisableBlocks extends Component {
 		if( this.props.keyword && this.props.searchResults && Object.keys(this.props.searchResults).length > 0 ){
 			allBlocks = this.props.searchResults;
 		}
-		console.log( savedSettings );
+		
 		return (
 			<Fragment>
 				{ this.state.hasError ?
@@ -173,7 +190,7 @@ class DisableBlocks extends Component {
 											label={ savedSettings[ 'mainCategory-' + category.slug ] ? sprintf( __( 'All %s blocks disabled' ), category.title ) : __( 'Disable all' ) }
 											checked={ savedSettings[ 'mainCategory-' + category.slug ] ? true : false }
 											onChange={ ( value ) => {
-												onToggle( 'mainCategory-' + category.slug );
+												onToggle( 'mainCategory-' + category.slug, category.slug );
 											} }
 										/>
 										: null
