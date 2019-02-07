@@ -15,7 +15,7 @@ import apiFetch from '@wordpress/api-fetch';
  */
 const { __, sprintf } = wp.i18n;
 const { Fragment, Component } = wp.element;
-const { PanelBody,CheckboxControl, Button, Popover, ToggleControl } = wp.components;
+const { PanelBody,CheckboxControl, Button, Popover, ToggleControl, PanelRow } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
 const { getCategories, getBlockTypes, unregisterBlockType, registerBlockType } = wp.blocks;
 
@@ -202,12 +202,13 @@ class DisableBlocks extends Component {
 					map( allBlocks, ( category ) => {
 						if ( category.slug && ! category.slug.includes( 'reusable' ) && category.blocks && Object.keys( category.blocks ).length > 0 ) {
 							return(
-								<section className="coblocks-block-manager__section">
-									<div className="coblocks-block-manager__section-header">
-										{ category.title ?
-											<h2 className="coblocks-block-manager__section-title">{ category.title.replace( ' Blocks', '' ) }</h2>
-										: null }
-
+								<PanelBody
+									title={ category.title ? category.title.replace( ' Blocks', '' ) : null }
+									className="coblocks-block-manager__section"
+									initialOpen={ false }
+									opened={ this.props.keyword && this.props.keyword.length > 0 ? true : undefined }
+								>
+									<PanelRow>
 										{ ( !this.props.keyword && category.title ) ?
 											<ToggleControl
 												label={ savedSettings[ 'mainCategory-' + category.slug ] ? __( 'Disable all' )  : __( 'Disable all' ) }
@@ -218,38 +219,38 @@ class DisableBlocks extends Component {
 											/>
 											: null
 										}
-									</div>
-									<ul className="coblocks-block-manager__list">
-										{ map( category.blocks, ( block ) => {
-											if ( ! block.parent && block.title && ! block.title.includes( 'deprecated' ) && ! block.title.includes( 'Unrecognized' ) ) {
-												return (
-													<li className="coblocks-block-manager__list-item">
-														<Button
-															isLarge
-															className={
-																classnames( 'coblocks-block-manager__button', {
-																	'block-disabled': savedSettings[ block.name ],
-																} )
-															}
-															onClick={ ( value ) => {
-																onChecked( block.name, category.slug, value );
-															} }
-														>
-															<span className="coblocks-block-manager__button-icon">
-																<span className="editor-block-icon has-colors">
-																	{ block.icon.src }
+										<ul className="coblocks-block-manager__list">
+											{ map( category.blocks, ( block ) => {
+												if ( ! block.parent && block.title && ! block.title.includes( 'deprecated' ) && ! block.title.includes( 'Unrecognized' ) ) {
+													return (
+														<li className="coblocks-block-manager__list-item">
+															<Button
+																isLarge
+																className={
+																	classnames( 'coblocks-block-manager__button', {
+																		'block-disabled': savedSettings[ block.name ],
+																	} )
+																}
+																onClick={ ( value ) => {
+																	onChecked( block.name, category.slug, value );
+																} }
+															>
+																<span className="coblocks-block-manager__button-icon">
+																	<span className="editor-block-icon has-colors">
+																		{ block.icon.src }
+																	</span>
 																</span>
-															</span>
-															<span className="coblocks-block-manager__button-label">
-																{ block.title }
-															</span>
-														</Button>
-													</li>
-												);
-											}
-										} ) }
-									</ul>
-								</section>
+																<span className="coblocks-block-manager__button-label">
+																	{ block.title }
+																</span>
+															</Button>
+														</li>
+													);
+												}
+											} ) }
+										</ul>
+									</PanelRow>
+								</PanelBody>
 							)
 						}
 					} ) :
