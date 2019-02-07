@@ -1,11 +1,14 @@
 // The icon that displays on the CoBlocks block inserter category.
-.coblocks-logo--svg {
-	fill: $coblocks;
+.components-coblocks-logo-icon {
 	position: relative;
 
 	&.components-panel__icon {
-		margin-left: 7px;
-		top: 1px;
+		margin-left: .6em;
+		top: -0.06em;
+	}
+
+	&--blue {
+		fill: $coblocks;
 	}
 }
 
@@ -22,7 +25,7 @@
 	color: $dark-gray-500;
 }
 
-.edit-post-pinned-plugins .components-icon-button svg.coblocks-logo--svg--sidebar,
-.edit-post-pinned-plugins .components-icon-button svg.coblocks-logo--svg--sidebar * {
-	stroke: none !important;
-}
+// .edit-post-pinned-plugins .components-icon-button svg.coblocks-logo--svg--sidebar,
+// .edit-post-pinned-plugins .components-icon-button svg.coblocks-logo--svg--sidebar * {
+// 	stroke: none !important;
+// }

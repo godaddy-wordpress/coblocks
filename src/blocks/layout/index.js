@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import './styles/editor.scss';
-import icons from './../../utils/icons';
+import brandAssets from '../../utils/brand-assets';
 import Edit from './components/edit';
 
 /**
@@ -20,7 +20,7 @@ const name = 'layout';
 
 const title = __( 'Layout' );
 
-const icon = icons.templateInserter;
+const icon = brandAssets.blockIcon;
 
 const keywords = [
 	__( 'coblocks' ),
