@@ -189,8 +189,8 @@ class DisableBlocks extends Component {
 		return (
 			<Fragment>
 				{ this.state.hasError ?
-					<div className="coblocks-disable-block-warning">
-						{ __( 'This block is added to this page and currently cannot be disabled' ) }
+					<div className="coblocks-block-manager__error">
+						{ __( 'This block is added to the page and cannot currently be disabled' ) }
 					</div>
 				: null }
 				{ Object.keys( allBlocks ).length > 0 ?
@@ -205,7 +205,7 @@ class DisableBlocks extends Component {
 
 										{ ( !this.props.keyword && category.title ) ?
 											<ToggleControl
-												label={ savedSettings[ 'mainCategory-' + category.slug ] ? __( 'Toggle to enable all blocks' )  : __( 'Disable all' ) }
+												label={ __( 'Disable all' ) }
 												checked={ savedSettings[ 'mainCategory-' + category.slug ] ? true : false }
 												onChange={ ( value ) => {
 													onToggle( 'mainCategory-' + category.slug, category.slug );
