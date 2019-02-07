@@ -112,17 +112,6 @@
 
 		&:not(.block-disabled) {
 
-			&:focus:enabled,
-			&:active:enabled,
-			&:active:enabled:hover {
-				background: #edeff0;
-
-				.coblocks-block-manager__button-icon {
-					color: #191e23;
-				}
-
-			}
-
 			&:hover {
 				background: #edeff0;
 
@@ -131,9 +120,27 @@
 				}
 			}
 
+			&:focus:enabled {
+				background: #edeff0;
+
+				&:hover {
+					.coblocks-block-manager__button-icon {
+						color: #191e23;
+					}
+				}
+			}
+
 			&:active:enabled,
 			&:active:enabled:hover {
 				background: #f8f9f9;
+
+				.coblocks-block-manager__button-icon {
+					color: #191e23;
+				}
+
+				.coblocks-block-manager__button-label {
+					color: #32373c;
+				}
 			}
 		}
 
