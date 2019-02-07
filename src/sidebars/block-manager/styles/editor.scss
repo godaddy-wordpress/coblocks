@@ -41,6 +41,10 @@
 			margin-top: 0;
 		}
 
+		&:last-of-type {
+			margin-bottom: .45em;
+		}
+
 		&-header {
 			align-items: center;
 			display: flex;
