@@ -129,11 +129,6 @@ class DisableBlocks extends Component {
 					if( block.name == key ){
 						registerBlockType( key, block );
 
-						//change toggle off when block enabled
-						if( settingsState[ 'mainCategory-' + category ] ){
-							settingsState[ 'mainCategory-' + category ] = false;
-						}
-
 						return;
 					}
 				} ) }
