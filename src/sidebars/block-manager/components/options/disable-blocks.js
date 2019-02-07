@@ -129,6 +129,11 @@ class DisableBlocks extends Component {
 					if( block.name == key ){
 						registerBlockType( key, block );
 
+						//change toggle off when block enabled
+						if( settingsState[ 'mainCategory-' + category ] ){
+							settingsState[ 'mainCategory-' + category ] = false;
+						}
+
 						return;
 					}
 				} ) }
@@ -205,7 +210,7 @@ class DisableBlocks extends Component {
 										
 										{ ( !this.props.keyword && category.title ) ?
 											<ToggleControl
-												label={ savedSettings[ 'mainCategory-' + category.slug ] ? __( 'Enable all' )  : __( 'Disable all' ) }
+												label={ savedSettings[ 'mainCategory-' + category.slug ] ? __( 'Toggle to enable all blocks' )  : __( 'Disable all' ) }
 												checked={ savedSettings[ 'mainCategory-' + category.slug ] ? true : false }
 												onChange={ ( value ) => {
 													onToggle( 'mainCategory-' + category.slug, category.slug );
