@@ -8,6 +8,7 @@ import apiFetch from '@wordpress/api-fetch';
  * Internal dependencies
  */
 import DisableBlocks from './options/disable-blocks';
+import brandAssets from '../../../utils/brand-assets';
 
 /**
  * WordPress dependencies
@@ -125,24 +126,26 @@ class ModalSettings extends Component {
 		return (
 			<Fragment>
 				<PluginMoreMenuItem
+					icon={ brandAssets.sidebarIcon }
 					onClick={ () => {
 						this.setState( { isOpen: true } );
 					} }
 				>
-					{ __( 'Disable Blocks' ) }
+					{ __( 'Manage Blocks' ) }
 				</PluginMoreMenuItem>
 				{ this.state.isOpen ?
 					<Modal
-						title={ <span className="edit-post-options-modal__title">{ __( 'Disable Blocks' ) }</span> }
+						title={ __( 'Block Manager' ) }
 						onRequestClose={ () => closeModal() }
 						closeLabel={ __( 'Close' ) }
-						className='coblocks-modal-component coblocks-modal-component--disableBlocks'
+						icon={ brandAssets.modalIcon }
+						className='coblocks-modal-component components-modal--coblocks-block-manager'
 					>
-						<div className="coblocks-modal-component--disableBlocks--search">
+						<div className="coblocks-block-manager__search">
 							<TextControl
-								type='text'
+								type='search'
 								autocomplete="off"
-								placeholder={ __( 'Search Block....' ) }
+								placeholder={ __( 'Search for a block' ) }
 								value={ this.state.searchValue }
 								onChange={ (evt) => {
 										filterList( evt );

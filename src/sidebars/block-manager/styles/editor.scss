@@ -1,0 +1,185 @@
+.components-modal--coblocks-block-manager {
+	min-height: 80%;
+
+	@media (min-width: 600px) {
+		width: 550px;
+	}
+
+	.coblocks-block-manager__search {
+
+		input[type="search"] {
+			border-radius: 4px;
+			display: block;
+			font-size: 16px;
+			margin: 16px 0;
+			padding: 11px 16px;
+			position: relative;
+			z-index: 1;
+
+			@media (min-width: 600px) {
+				font-size: 13px;
+			}
+		}
+	}
+
+	// Block category wrappers.
+	.coblocks-block-manager__section {
+		border-top: 1px solid #e2e4e7;
+		margin-top: 1em;
+
+		&:first-of-type {
+			margin-top: 0;
+		}
+
+		&-header {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
+			padding: 1em 0;
+
+			.components-base-control__field {
+				flex-direction: row-reverse;
+				margin-bottom: 0;
+
+				.components-form-toggle {
+					margin-left: 16px;
+					margin-right: 0;
+				}
+			}
+		}
+
+		&-title {
+			font-size: .9rem;
+			font-weight: 600;
+			margin: 0;
+		}
+	}
+
+	// List of blocks within a category.
+	.coblocks-block-manager__list {
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+		margin: 0 -6px -12px;
+		overflow: hidden;
+		padding: 2px 0;
+
+		&-item {
+			display: block;
+			margin: 0 0 8px;
+			padding: 0 4px;
+			width: 33.333%;
+		}
+	}
+
+	// Individual toggleable buttons.
+	.coblocks-block-manager__button {
+		align-items: stretch;
+		background: #f3f4f5;
+		border: 1px solid transparent;
+		border-radius: 4px;
+		box-shadow: none;
+		color: #32373c;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		font-size: 13px;
+		height: auto;
+		justify-content: center;
+		padding: 0;
+		position: relative;
+		transition: all .05s ease-in-out;
+		width: 100%;
+		word-break: break-word;
+
+		&.block-disabled {
+			background: #fff;
+
+			.coblocks-block-manager__button-icon,
+			.coblocks-block-manager__button-label {
+				color: #a2aab2;
+			}
+
+			&:hover,
+			&:active:enabled,
+			&:focus {
+				background: #fff;
+
+				.coblocks-block-manager__button-icon {
+					color: #32373c;
+				}
+
+				.coblocks-block-manager__button-label {
+					color: #32373c;
+				}
+			}
+
+			&:hover {
+				background: #f3f4f5; // Same color as hover::before.
+			}
+		}
+
+		&:not(.block-disabled):hover {
+			background: #edeff0;
+		}
+
+		&:hover,
+		&:active:enabled,
+		&:focus:enabled {
+			background: transparent;
+			border-color: transparent;
+			box-shadow: none;
+		}
+
+		&:focus:enabled,
+		&:active:enabled {
+			background: #f8f9f9; // Same color as hover::before.
+			box-shadow: 0 0 0 2px #00a0d2;
+			color: #191e23;
+			outline: 2px solid transparent;
+			outline-offset: -2px;
+
+		}
+
+		// Block icons.
+		&-icon {
+			border-radius: 4px;
+			padding: 12px 20px;
+			transition: all .05s ease-in-out;
+
+			.editor-block-icon {
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			svg {
+				fill: currentColor;
+				max-height: 24px;
+				max-width: 24px;
+				min-height: 20px;
+				min-width: 20px;
+				transition: all .1s ease-out;
+			}
+		}
+
+		// Block label.
+		&-label {
+			line-height: 1;
+			padding: 4px 2px 8px;
+			transition: all .15s ease-out;
+			color: #32373c;
+		}
+	}
+}
+
+.coblocks-disable-block-warning {
+	max-height: auto !important;
+
+	.components-popover__content{
+		color: #b52727;
+		min-height: 80px;
+		padding: 8px;
+		text-align: center;
+	}
+}
+

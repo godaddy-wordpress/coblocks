@@ -10,6 +10,7 @@ import apiFetch from '@wordpress/api-fetch';
 import './../styles/editor.scss';
 import './api.js';
 import icons from './../../../utils/icons';
+import brandAssets from '../../../utils/brand-assets';
 
 /**
  * WordPress dependencies
@@ -468,8 +469,8 @@ class Edit extends Component {
 					</Button>
 					{ this.state.isOpen ?
 						<Modal
-							className= "coblocks-modal-component"
-							icon={ icons.templateInserter }
+							className='coblocks-modal-component components-modal--coblocks-layouts'
+							icon={ brandAssets.modalIcon }
 							title={ __( 'Sections' ) }
 							onRequestClose={ this.closeModal }>
 							{ this.contentModal( this.contentType ) }
