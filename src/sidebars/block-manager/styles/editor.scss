@@ -34,6 +34,8 @@
 
 	// Block category wrappers.
 	.coblocks-block-manager__section {
+		border-top: 1px solid #e2e4e7;
+		margin-top: 2.1em;
 
 		&:first-of-type {
 			margin-top: 0;
@@ -65,9 +67,6 @@
 			font-size: .9rem;
 			font-weight: 600;
 			margin: 0;
-		}
-		.components-panel__row{
-			display: block;
 		}
 	}
 
@@ -104,7 +103,7 @@
 		justify-content: center;
 		padding: 0;
 		position: relative;
-		transition: all .05s ease-in-out;
+		// transition: all .05s ease-in-out;
 		width: 100%;
 		word-break: break-word;
 
@@ -216,6 +215,7 @@
 		&-icon {
 			border-radius: 4px;
 			padding: 12px 20px;
+			// transition: all .05s ease-in-out;
 
 			.editor-block-icon {
 				margin-left: auto;
@@ -228,6 +228,7 @@
 				max-width: 24px;
 				min-height: 20px;
 				min-width: 20px;
+				// transition: all .15s ease-out;
 			}
 		}
 
@@ -240,13 +241,13 @@
 }
 
 .coblocks-disable-block-warning {
-	background: #fff;
-	color: $red;
-	margin-top: -16px;
-	padding: 8px;
-	position: sticky;
-	text-align: center;
-	top: 112px;
-	z-index: 11;
+	max-height: auto !important;
+
+	.components-popover__content{
+		color: #b52727;
+		min-height: 80px;
+		padding: 8px;
+		text-align: center;
+	}
 }
 
