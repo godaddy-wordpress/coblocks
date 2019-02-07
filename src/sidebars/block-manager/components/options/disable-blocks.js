@@ -168,10 +168,10 @@ class DisableBlocks extends Component {
 		let savedSettings = this.state.settings;
 		let allBlocks = this.props.allBlocks;
 
-		if( this.props.keyword && this.props.searchResults && Object.keys(this.props.searchResults).length > 0 ){
+		if( this.props.keyword && this.props.searchResults && this.props.keyword.length > 0 ){
 			allBlocks = this.props.searchResults;
 		}
-		
+		console.log( Object.keys( allBlocks ).length );
 		return (
 			<Fragment>
 				{ this.state.hasError ?
@@ -184,57 +184,62 @@ class DisableBlocks extends Component {
 						{ __( 'Disabling failed! Block exists on the current page you are editing, please remove the block first then try again. ' ) }
 					</Popover>
 				: null }
-				{ map( allBlocks, ( category ) => {
-					if ( category.slug && ! category.slug.includes( 'reusable' ) && category.blocks && Object.keys( category.blocks ).length > 0 ) {
-						return(
-							<section className="coblocks-block-manager__section">
-								<div className="coblocks-block-manager__section-header">
-									<h2 className="coblocks-block-manager__section-title">{ category.title.replace( ' Blocks', '' ) }</h2>
-									{ ( !this.props.keyword ) ?
-										<ToggleControl
-											label={ savedSettings[ 'mainCategory-' + category.slug ] ? sprintf( __( 'All %s blocks disabled' ), category.title.replace( ' Blocks', '' ) ) : __( 'Disable all' ) }
-											checked={ savedSettings[ 'mainCategory-' + category.slug ] ? true : false }
-											onChange={ ( value ) => {
-												onToggle( 'mainCategory-' + category.slug, category.slug );
-											} }
-										/>
-										: null
-									}
-								</div>
-								<ul className="coblocks-block-manager__list">
-									{ map( category.blocks, ( block ) => {
-										if ( ! block.parent && block.title && ! block.title.includes( 'deprecated' ) && ! block.title.includes( 'Unrecognized' ) ) {
-											return (
-												<li className="coblocks-block-manager__list-item">
-													<Button
-														isLarge
-														className={
-															classnames( 'coblocks-block-manager__button', {
-																'block-disabled': savedSettings[ block.name ],
-															} )
-														}
-														onClick={ ( value ) => {
-															onChecked( block.name, category.slug, value );
-														} }
-													>
-														<span className="coblocks-block-manager__button-icon">
-															<span className="editor-block-icon has-colors">
-																{ block.icon.src }
-															</span>
-														</span>
-														<span className="coblocks-block-manager__button-label">
-															{ block.title }
-														</span>
-													</Button>
-												</li>
-											);
+				{ Object.keys( allBlocks ).length > 0 ? 
+					map( allBlocks, ( category ) => {
+						if ( category.slug && ! category.slug.includes( 'reusable' ) && category.blocks && Object.keys( category.blocks ).length > 0 ) {
+							return(
+								<section className="coblocks-block-manager__section">
+									<div className="coblocks-block-manager__section-header">
+										<h2 className="coblocks-block-manager__section-title">{ category.title.replace( ' Blocks', '' ) }</h2>
+										{ ( !this.props.keyword ) ?
+											<ToggleControl
+												label={ savedSettings[ 'mainCategory-' + category.slug ] ? sprintf( __( 'All %s blocks disabled' ), category.title.replace( ' Blocks', '' ) ) : __( 'Disable all' ) }
+												checked={ savedSettings[ 'mainCategory-' + category.slug ] ? true : false }
+												onChange={ ( value ) => {
+													onToggle( 'mainCategory-' + category.slug, category.slug );
+												} }
+											/>
+											: null
 										}
-									} ) }
-								</ul>
-							</section>
-						)
-					}
-				} ) }
+									</div>
+									<ul className="coblocks-block-manager__list">
+										{ map( category.blocks, ( block ) => {
+											if ( ! block.parent && block.title && ! block.title.includes( 'deprecated' ) && ! block.title.includes( 'Unrecognized' ) ) {
+												return (
+													<li className="coblocks-block-manager__list-item">
+														<Button
+															isLarge
+															className={
+																classnames( 'coblocks-block-manager__button', {
+																	'block-disabled': savedSettings[ block.name ],
+																} )
+															}
+															onClick={ ( value ) => {
+																onChecked( block.name, category.slug, value );
+															} }
+														>
+															<span className="coblocks-block-manager__button-icon">
+																<span className="editor-block-icon has-colors">
+																	{ block.icon.src }
+																</span>
+															</span>
+															<span className="coblocks-block-manager__button-label">
+																{ block.title }
+															</span>
+														</Button>
+													</li>
+												);
+											}
+										} ) }
+									</ul>
+								</section>
+							)
+						}
+					} ) :
+					<section className="coblocks-block-manager__section coblocks-block-manager__section--noresults">
+						{ sprintf( __( 'No "%s" block found.' ), this.props.keyword )  }
+					</section>
+				}
 			</Fragment>
 		);
 	}
