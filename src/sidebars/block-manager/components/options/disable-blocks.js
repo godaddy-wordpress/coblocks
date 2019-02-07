@@ -185,7 +185,7 @@ class DisableBlocks extends Component {
 		if( this.props.keyword && this.props.searchResults && this.props.keyword.length > 0 ){
 			allBlocks = this.props.searchResults;
 		}
-		
+
 		return (
 			<Fragment>
 				{ this.state.hasError ?
@@ -204,10 +204,10 @@ class DisableBlocks extends Component {
 							return(
 								<section className="coblocks-block-manager__section">
 									<div className="coblocks-block-manager__section-header">
-										{ category.title ? 
+										{ category.title ?
 											<h2 className="coblocks-block-manager__section-title">{ category.title.replace( ' Blocks', '' ) }</h2>
 										: null }
-										
+
 										{ ( !this.props.keyword && category.title ) ?
 											<ToggleControl
 												label={ savedSettings[ 'mainCategory-' + category.slug ] ? sprintf( __( 'All %s blocks disabled' ), category.title.replace( ' Blocks', '' ) ) : __( 'Disable all' ) }
@@ -253,8 +253,8 @@ class DisableBlocks extends Component {
 							)
 						}
 					} ) :
-					<section className="coblocks-block-manager__section coblocks-block-manager__section--noresults">
-						{ sprintf( __( 'No "%s" block found.' ), this.props.keyword )  }
+					<section className="coblocks-block-manager__section coblocks-block-manager__section--noresults ">
+						<p className="editor-inserter__no-results">{ sprintf( __( 'No "%s" blocks found.' ), this.props.keyword )  }</p>
 					</section>
 				}
 			</Fragment>
