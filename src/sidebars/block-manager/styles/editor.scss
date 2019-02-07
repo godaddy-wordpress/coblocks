@@ -100,10 +100,8 @@
 				color: #a2aab2;
 			}
 
-			&:hover,
-			&:active:enabled,
-			&:focus {
-				background: #fff;
+			&:hover {
+				background: #f3f4f5;
 
 				.coblocks-block-manager__button-icon {
 					color: #32373c;
@@ -114,8 +112,12 @@
 				}
 			}
 
-			&:hover {
-				background: #f3f4f5; // Same color as hover::before.
+			&:active:enabled {
+				background: #fff;
+			}
+
+			&:focus:enabled {
+				background: #fff;
 			}
 		}
 
