@@ -19,15 +19,6 @@ const { Button, Modal, TextControl } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
 const { getCategories, getBlockTypes, unregisterBlockType } = wp.blocks;
 
-/**
- * Get settings.
- */
-
-let settings;
-wp.api.loadPromise.then( () => {
-	settings = new wp.api.models.Settings();
-});
-
 
 /**
  * Render plugin
@@ -60,29 +51,34 @@ class ModalSettings extends Component {
 			searchResults: {},
 		}
 
+		let settings;
+
 		// this.saveSettings = this.saveSettings.bind( this );
+		wp.api.loadPromise.then( () => {
+			settings = new wp.api.models.Settings();
 
-		settings.on( 'change:coblocks_settings_api', ( model ) => {
-			const getSettings = model.get( 'coblocks_settings_api' );
-			this.setState( { settings: settings.get( 'coblocks_settings_api' ) } );
-		});
+			settings.on( 'change:coblocks_settings_api', ( model ) => {
+				const getSettings = model.get( 'coblocks_settings_api' );
+				this.setState( { settings: settings.get( 'coblocks_settings_api' ) } );
+			});
 
-		settings.fetch().then( response => {
-			let optionSettings = response.coblocks_settings_api;
-			if( optionSettings.length < 1 ){
-				optionSettings = {};
-			}else{
-				optionSettings = JSON.parse( optionSettings );
+			settings.fetch().then( response => {
+				let optionSettings = response.coblocks_settings_api;
+				if( optionSettings.length < 1 ){
+					optionSettings = {};
+				}else{
+					optionSettings = JSON.parse( optionSettings );
 
-				{ map( optionSettings, ( visible, block ) => {
-					if( visible && !block.includes( 'mainCategory-' ) ){
-						unregisterBlockType( block );
-					}
-				} ) }
+					{ map( optionSettings, ( visible, block ) => {
+						if( visible && !block.includes( 'mainCategory-' ) ){
+							unregisterBlockType( block );
+						}
+					} ) }
 
-			}
-			this.setState({ settings: optionSettings });
-			this.setState({ isLoaded: true });
+				}
+				this.setState({ settings: optionSettings });
+				this.setState({ isLoaded: true });
+			});
 		});
 	}
 
