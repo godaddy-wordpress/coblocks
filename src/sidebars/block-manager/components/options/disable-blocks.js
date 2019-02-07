@@ -195,7 +195,7 @@ class DisableBlocks extends Component {
 					} }
 						className="coblocks-disable-block-warning"
 					>
-						{ __( 'This block is currently added to this page and cannot be disabled. Please remove the block.' ) }
+						{ __( 'This block is added to this page and currently cannot be disabled.' ) }
 					</Popover>
 				: null }
 				{ Object.keys( allBlocks ).length > 0 ?
