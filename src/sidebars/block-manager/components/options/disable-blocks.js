@@ -168,13 +168,16 @@ class DisableBlocks extends Component {
 							<section className="coblocks-block-manager__section">
 								<div className="coblocks-block-manager__section-header">
 									<h2 className="coblocks-block-manager__section-title">{ category.title }</h2>
-									<ToggleControl
-										label={ savedSettings[ 'mainCategory-' + category.slug ] ? sprintf( __( 'All %s blocks disabled' ), category.title ) : __( 'Disable all' ) }
-										checked={ savedSettings[ 'mainCategory-' + category.slug ] ? true : false }
-										onChange={ ( value ) => {
-											onToggle( 'mainCategory-' + category.slug );
-										} }
-									/>
+									{ ( !this.props.keyword ) ?
+										<ToggleControl
+											label={ savedSettings[ 'mainCategory-' + category.slug ] ? sprintf( __( 'All %s blocks disabled' ), category.title ) : __( 'Disable all' ) }
+											checked={ savedSettings[ 'mainCategory-' + category.slug ] ? true : false }
+											onChange={ ( value ) => {
+												onToggle( 'mainCategory-' + category.slug );
+											} }
+										/>
+										: null
+									}
 								</div>
 								<ul className="coblocks-block-manager__list">
 									{ map( category.blocks, ( block ) => {
