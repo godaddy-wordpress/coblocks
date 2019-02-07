@@ -25,7 +25,7 @@
 	// Block category wrappers.
 	.coblocks-block-manager__section {
 		border-top: 1px solid #e2e4e7;
-		margin-top: 1.75em;
+		margin-top: 2.1em;
 
 		&:first-of-type {
 			margin-top: 0;
@@ -35,8 +35,8 @@
 			align-items: center;
 			display: flex;
 			justify-content: space-between;
-			min-height: 48px;
-			padding: 1em 0;
+			min-height: 54.5px;
+			padding: 1.35em 0 1.2em;
 
 			.components-base-control__field {
 				flex-direction: row-reverse;
@@ -63,7 +63,7 @@
 		list-style: none;
 		margin: 0 -6px -12px;
 		overflow: hidden;
-		padding: 2px 0;
+		padding: 2px 0 0;
 
 		&-item {
 			display: block;
