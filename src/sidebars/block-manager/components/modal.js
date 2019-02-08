@@ -71,11 +71,41 @@ class ModalSettings extends Component {
 				}else{
 					optionSettings = JSON.parse( optionSettings );
 
-					{ map( optionSettings, ( visible, block ) => {
-						if( visible && !block.includes( 'mainCategory-' ) ){
+					//get current blocks
+					let currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
+					let blockNames	  = {};
+
+					//create list of current blocks on the editor
+					map( currentBlocks, ( currentBlock ) => {
+						if( !blockNames[ currentBlock.name ] ){
+							blockNames[ currentBlock.name ] = currentBlock.name;
+						}
+
+						//check inner blocks too
+						if( currentBlock.innerBlocks ){
+							map( currentBlock.innerBlocks, ( innerBlock ) => {
+								if( !blockNames[ innerBlock.name ] ){
+									blockNames[ innerBlock.name ] = innerBlock.name;
+								}
+
+								//third level innerblocks to make sure there will no error
+								if( innerBlock.innerBlocks ){
+									map( innerBlock.innerBlocks, ( childBlock ) => {
+										if( !blockNames[ childBlock.name ] ){
+											blockNames[ childBlock.name ] = childBlock.name;
+										}
+									} )
+								}
+
+							} )
+						}
+					} )
+					
+					map( optionSettings, ( visible, block ) => {
+						if( visible && !block.includes( 'mainCategory-' ) && !blockNames[ block ] ){
 							unregisterBlockType( block );
 						}
-					} ) }
+					} )
 
 				}
 				this.setState({ settings: optionSettings });
