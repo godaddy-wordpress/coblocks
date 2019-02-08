@@ -42,7 +42,7 @@
 		}
 
 		&:last-of-type {
-			margin-bottom: .45em;
+			margin-bottom: 0.45em;
 		}
 
 		&-header {
@@ -68,7 +68,7 @@
 		}
 
 		&-title {
-			font-size: .9rem;
+			font-size: 0.9rem;
 			font-weight: 600;
 			margin: 0;
 		}
@@ -103,7 +103,7 @@
 	}
 
 	// Individual toggleable buttons.
-	.coblocks-block-manager__button {
+	.coblocks-block-manager__button.components-button {
 		align-items: stretch;
 		background: #f3f4f5;
 		border: 1px solid transparent;
@@ -139,7 +139,6 @@
 		}
 
 		&:not(.block-disabled) {
-
 			&:hover {
 				background: #edeff0;
 
@@ -185,18 +184,18 @@
 
 			.coblocks-block-manager__button-icon,
 			.coblocks-block-manager__button-label {
-				color: #a2aab2;
+				color: #a2aab2 !important;
 			}
 
 			&:hover {
 				background: #f8f9f9;
 
 				.coblocks-block-manager__button-icon {
-					color: #191e23;
+					color: #191e23 !important;
 				}
 
 				.coblocks-block-manager__button-label {
-					color: #32373c;
+					color: #32373c !important;
 				}
 			}
 
@@ -206,7 +205,7 @@
 				&:hover {
 					.coblocks-block-manager__button-icon,
 					.coblocks-block-manager__button-label {
-						color: #a2aab2;
+						color: #a2aab2 !important;
 					}
 				}
 			}
@@ -216,41 +215,41 @@
 				background: #f8f9f9;
 
 				.coblocks-block-manager__button-icon {
-					color: #191e23;
+					color: #191e23 !important;
 				}
 
 				.coblocks-block-manager__button-label {
-					color: #32373c;
+					color: #32373c !important;
 				}
 			}
 		}
+	}
 
-		// Block icons.
-		&-icon {
-			border-radius: 4px;
-			padding: 12px 20px;
+	// Block icons.
+	.coblocks-block-manager__button-icon {
+		border-radius: 4px;
+		padding: 12px 20px;
 
-			.editor-block-icon {
-				margin-left: auto;
-				margin-right: auto;
+		.editor-block-icon {
+			margin-left: auto;
+			margin-right: auto;
 
-				svg {
-					fill: currentColor;
-				}
+			svg {
+				fill: currentColor;
 			}
 		}
+	}
 
-		// Block label.
-		&-label {
-			line-height: 1;
-			padding: 4px 2px 8px;
-		}
+	// Block label.
+	.coblocks-block-manager__button-label {
+		line-height: 1;
+		padding: 4px 2px 8px;
 	}
 }
 .coblocks-disable-block-warning {
 	max-height: auto !important;
 
-	.components-popover__content{
+	.components-popover__content {
 		color: #b52727;
 		min-height: 80px;
 		padding: 8px;
