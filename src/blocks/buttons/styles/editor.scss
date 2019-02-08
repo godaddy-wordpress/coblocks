@@ -1,0 +1,22 @@
+.wp-block[data-type="coblocks/buttons"] {
+	.wp-block-coblocks-buttons{
+		position: relative;
+
+		&__inner{
+			> .editor-inner-blocks{
+				> .editor-block-list__layout{
+					display: flex;
+				}
+			}
+			.editor-default-block-appender {
+				display: none;
+			}
+
+			//button block
+			.wp-block[data-type="core/button"] {
+				width: auto;
+			}
+
+		}
+	}
+}

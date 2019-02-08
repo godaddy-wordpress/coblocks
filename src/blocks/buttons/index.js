@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 // import './styles/style.scss';
-// import './styles/editor.scss';
+import './styles/editor.scss';
 import icons from './components/icons';
 import Edit from './components/edit';
 
