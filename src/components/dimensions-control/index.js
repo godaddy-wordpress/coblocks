@@ -237,7 +237,7 @@ class DimensionsControl extends Component {
 		    	if( margin.marginleLtTablet ){
 		    		responsiveCss += 'margin-left: ' + margin.marginLeftTablet + ' !important;';
 		    	}
-		    	
+
 		    	responsiveCss += '}';
 		    responsiveCss += '}';
 
@@ -268,8 +268,8 @@ class DimensionsControl extends Component {
 		    	if( margin.marginleLtMobile ){
 		    		responsiveCss += 'margin-left: ' + margin.marginLeftMobile + ' !important;';
 		    	}
-		    	
-		    	
+
+
 		    	responsiveCss += '}';
 		    responsiveCss += '}';
 
@@ -765,7 +765,7 @@ class DimensionsControl extends Component {
 												<Button
 													key={ slug }
 													onClick={ () => this.onChangeSize( slug, size ) }
-													className={ `is-${ slug }-padding` }
+													className={ `is-${ slug }-size` }
 													role="menuitem"
 												>
 													{ ( dimensionSize === slug || ( ! dimensionSize && slug === 'normal' ) ) && <Dashicon icon="saved" /> }

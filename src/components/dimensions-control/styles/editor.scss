@@ -305,30 +305,30 @@
 				}
 			}
 		}
+	}
+}
 
-		&__dropdown-content .components-button {
-			padding-bottom: 8px;
-			padding-top: 8px;
+.components-coblocks-dimensions-control__dropdown-content .components-button {
+	padding-bottom: 8px;
+	padding-top: 8px;
 
-			&.is-no-padding {
-				font-size: 12px;
-			}
+	&.is-no-size {
+		font-size: 12px;
+	}
 
-			&.is-small-padding {
-				font-size: 14px;
-			}
+	&.is-small-size {
+		font-size: 14px;
+	}
 
-			&.is-medium-padding {
-				font-size: 20px;
-			}
+	&.is-medium-size {
+		font-size: 20px;
+	}
 
-			&.is-large-padding {
-				font-size: 26px;
-			}
+	&.is-large-size {
+		font-size: 26px;
+	}
 
-			&.is-huge-padding {
-				font-size: 34px;
-			}
-		}
+	&.is-huge-size {
+		font-size: 34px;
 	}
 }
