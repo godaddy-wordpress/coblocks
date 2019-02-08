@@ -29,10 +29,10 @@
 	width: calc(100% + 6px);
 
 	// Hides the vertical scroll-bar.
-	> ul {
+	> .coblocks-icon-types-list.editor-block-types-list {
 		box-sizing: content-box; /* So the width will be 100% + 17px */
 		height: 100%;
-		margin-bottom: 0.5em;
+		margin-bottom: 0.3em;
 		overflow-y: scroll;
 		padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
 		width: 100%;
@@ -46,7 +46,7 @@
 	}
 }
 
-.coblocks-icon-types-list {
+.coblocks-icon-types-list.editor-block-types-list {
 	margin-top: 0;
 	max-height: 170px;
 	overflow-y: scroll;
@@ -144,7 +144,6 @@
 }
 
 .has-right-content .wp-block-coblocks-icon__inner.is-selected {
-
 	.components-resizable-box__handle-left {
 		display: block !important;
 	}
