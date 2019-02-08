@@ -92,6 +92,14 @@ class DisableBlocks extends Component {
 						hasError = true;
 						this.setState({ hasError: true });
 						return;
+					}else if( innerBlock.innerBlocks ){
+						map( innerBlock.innerBlocks, ( childBlock ) => {
+							if( childBlock.name == key ){
+								hasError = true;
+								this.setState({ hasError: true });
+								return;
+							}
+						});
 					}
 				});
 			}
