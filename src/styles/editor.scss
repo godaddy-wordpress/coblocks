@@ -12,3 +12,24 @@
 
 // Adjust dropZone component labels for our blocks.
 @import "editor/dropzone";
+
+// Global styles for our modals.
+.coblocks-modal-component {
+	// Position the CoBlocks icon in our modals a bit better.
+	.components-modal__icon-container {
+		margin-right: 0.7em;
+
+		svg {
+			fill: #23282d; // Same color as modal headings.
+			position: relative;
+			top: 0.16em;
+		}
+	}
+	// Use the same style as core, without the extra classes.
+	.components-modal__header {
+		h1 {
+			font-size: 1rem;
+			font-weight: 700;
+		}
+	}
+}

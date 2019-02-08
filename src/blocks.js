@@ -29,6 +29,9 @@ import './extensions/list-styles';
 // Formats
 import './formats/';
 
+// Sidebars
+import './sidebars/block-manager';
+
 // Register Blocks
 import * as accordion from './blocks/accordion';
 import * as accordionItem from './blocks/accordion/accordion-item';
