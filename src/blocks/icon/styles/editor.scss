@@ -21,7 +21,6 @@
 		}
 	}
 }
-
 .coblocks-icon-types-list-wrapper {
 	height: 100%;
 	margin-left: -3px;
@@ -46,15 +45,15 @@
 	}
 }
 
+.coblocks-icon-types-list__search.components-base-control {
+	margin-bottom: 0.7em !important;
+}
+
 .coblocks-icon-types-list.editor-block-types-list {
 	margin-top: 0;
 	max-height: 170px;
 	overflow-y: scroll;
 	padding: 4px 0 0 0;
-
-	&__search {
-		margin-bottom: 0.7em !important;
-	}
 
 	.editor-block-types-list__list-item {
 		margin: 0 0 8px;
