@@ -49,7 +49,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 And we're adding new Gutenberg blocks every week :)
 
 ## Breakthrough Page Builder System
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, with the new WordPress editor. 
+[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, with the new WordPress editor.
 
 You get the extra blocks you need <em>and</em> the layout and design functionality for a true page builder experience.
 
@@ -76,7 +76,7 @@ The vision for CoBlocks has always been to create a suite of Gutenberg blocks to
 * [Follow us on Instagram](https://www.instagram.com/coblockswp/)
 
 ## Built with developers in mind
-Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/thatplugincompany/coblocks) and join the party. 🎉
+Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/coblocks/coblocks) and join the party. 🎉
 
 
 == Screenshots ==
