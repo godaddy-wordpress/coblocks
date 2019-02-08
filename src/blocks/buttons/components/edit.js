@@ -2,6 +2,8 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import times from 'lodash/times';
+import memoize from 'lodash/memoize';
 
 /**
  * Internal dependencies
@@ -21,9 +23,16 @@ const { Spinner } = wp.components;
  */
 const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/image', 'coblocks/highlight', ];
 
-const TEMPLATE = [
-	[ 'coblocks/button', { hasContentAlign: false } ],
-];
+/**
+ * Returns the layouts configuration for a given number of feature items.
+ *
+ * @param {number} count Number of feature items.
+ *
+ * @return {Object[]} Columns layout configuration.
+ */
+const getCount = memoize( ( count ) => {
+	return times( count, () => [ 'core/button' ] );
+} );
 
 /**
  * Block edit function
@@ -38,22 +47,18 @@ class Edit extends Component {
 
 		const {
 			attributes,
-			backgroundColor,
-			textColor,
-			customTextColor,
 			className,
 			isSelected,
 			setAttributes,
 		} = this.props;
 
 		const {
-			coblocks,
 			gutter,
+			items,
 		} = attributes;
 
 		const classes = classnames(
 			className, {
-				[ `coblocks-buttons-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
 		);
 
@@ -70,7 +75,7 @@ class Edit extends Component {
 					<div className={ innerClasses } style={ innerStyles }>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
-							template={ TEMPLATE }
+							template={ getCount( items ) }
 							templateLock={ false }
 							templateInsertUpdatesSelection={ false }
 						/>

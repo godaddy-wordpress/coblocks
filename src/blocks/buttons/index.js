@@ -37,6 +37,11 @@ const keywords = [
 const blockAttributes = {
 	gutter: {
 		type: 'string',
+		default: 'large',
+	},
+	items: {
+		type: 'number',
+		default: 2,
 	},
 };
 
@@ -52,43 +57,8 @@ const settings = {
 
 	edit: Edit,
 
-	styles: [
-		{ name: 'outlined', label: __( 'Outlined' ), isDefault: true },
-		{ name: 'filled', label: __( 'Filled' ) },
-	],
-
 	save( { attributes, className } ) {
-
-		const {
-			coblocks,
-			gutter,
-		} = attributes;
-
-		// Body color class and styles.
-		const textClass = getColorClassName( 'color', textColor );
-		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-
-		const classes = classnames(
-			className, {
-			[ `coblocks-buttons-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
-		} );
-
-		const innerClasses = classnames(
-			'wp-block-coblocks-buttons__inner',{
-		} );
-
-		const innerStyles = {
-			// color: textClass ? undefined : customTextColor,
-		};
-
-		return (
-			<div className={ classes }>
-				<div className={ innerClasses } style={ innerStyles }>
-					<InnerBlocks.Content />
-				</div>
-			</div>
-		);
-		
+		return null;
 	},
 };
 
