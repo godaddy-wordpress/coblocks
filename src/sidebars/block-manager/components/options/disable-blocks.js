@@ -231,7 +231,11 @@ class DisableBlocks extends Component {
 															} }
 														>
 															<span className="coblocks-block-manager__button-icon">
-																<span className="editor-block-icon has-colors">
+																<span className="editor-block-icon has-colors" style={
+																	{
+																		color: block.icon.foreground ? block.icon.foreground : undefined,
+																	}
+																}>
 																	{ block.icon.src }
 																</span>
 															</span>
