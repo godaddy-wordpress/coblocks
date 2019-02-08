@@ -164,6 +164,12 @@
 				color: #191e23;
 			}
 
+			&:active:enabled {
+				border-color: #999;
+				background: #fff;
+				box-shadow: none;
+			}
+
 			&:focus {
 				background: #fff;
 				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
@@ -189,6 +195,7 @@
 				justify-content: center;
 				position: relative;
 				top: -1px;
+				box-shadow: none !important;
 
 				&:hover {
 					color: #191e23;
