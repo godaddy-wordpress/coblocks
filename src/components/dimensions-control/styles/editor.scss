@@ -1,4 +1,4 @@
-.components-coblocks-dimensions-control {
+.components-coblocks-dimensions-control.components-base-control {
 	position: relative;
 
 	&__mobile-controls-item {
@@ -224,33 +224,33 @@
 	}
 
 	&_sync.components-button.is-small {
-		height: auto;
-		border-radius: 0;
-		border-top-right-radius: 4px;
-		border-bottom-right-radius: 4px;
 		background: #fff;
 		border: 1px solid #8d96a0;
-		padding: 0;
-		text-shadow: none;
+		border-bottom-right-radius: 4px;
+		border-radius: 0;
+		border-top-right-radius: 4px;
 		box-shadow: none;
 		color: $dark-gray-500;
-		width: 30px;
-		text-align: center;
+		height: auto;
 		justify-content: center;
+		padding: 0;
+		text-align: center;
+		text-shadow: none;
+		width: 30px;
 
 		svg {
 			fill: $dark-gray-500;
-			width: 18px;
 			height: 18px;
+			width: 18px;
 		}
 
 		&:focus {
 			background: $dark-gray-500 !important;
 			border-color: $dark-gray-500;
+			box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
 			color: #fff !important;
 			outline-offset: -2px;
 			outline: 2px solid transparent;
-			box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
 
 			svg {
 				fill: $white !important;
@@ -263,8 +263,8 @@
 
 		&:not(.is-primary):active:enabled,
 		&:not(.is-primary):focus:enabled {
-			color: #fff !important;
 			box-shadow: none;
+			color: #fff !important;
 		}
 
 		&:not(.is-primary):hover {
