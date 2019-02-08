@@ -26,8 +26,8 @@
 }
 
 // The "Add Accordion Item" button
-.components-coblocks-add-accordion-item {
-	&__button.components-button {
+.wp-block-coblocks-accordion {
+	.components-coblocks-add-accordion-item__button.components-button {
 		border-style: dashed;
 		box-shadow: none !important;
 		font-size: 14px;
