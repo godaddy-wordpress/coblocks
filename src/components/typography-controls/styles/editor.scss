@@ -46,28 +46,28 @@
 		}
 
 		.components-base-control {
-			margin-bottom: 5px;
+			margin-bottom: 5px !important;
 		}
 
 		.components-base-control__label {
-			margin-bottom: 0;
+			margin-bottom: 0 !important;
 		}
 
 		.components-select-control__input {
-			margin: 0;
+			margin: 0 !important;
 		}
 
 		.components-range-control__number {
-			margin: 0 0 0 15px;
+			margin: 0 0 0 15px !important;
 		}
 
 		.components-range-control__slider {
-			margin-top: 6px;
+			margin-top: 6px !important;
 		}
 
 		&--line-height {
-			margin-top: 10px;
 			margin-bottom: -2px !important;
+			margin-top: 10px !important;
 		}
 
 		&--letter-spacing {
@@ -81,10 +81,10 @@
 		padding: 18px 16px 14px;
 
 		.components-base-control {
-			margin-bottom: 0;
+			margin-bottom: 0 !important;
 
 			&:last-of-type .components-base-control__field {
-				margin-bottom: 0;
+				margin-bottom: 0 !important;
 			}
 		}
 	}
