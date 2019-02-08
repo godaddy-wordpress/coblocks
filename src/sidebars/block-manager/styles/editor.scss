@@ -41,6 +41,10 @@
 			margin-top: 0;
 		}
 
+		&:last-of-type {
+			margin-bottom: .45em;
+		}
+
 		&-header {
 			align-items: center;
 			display: flex;
@@ -114,7 +118,6 @@
 		justify-content: center;
 		padding: 0;
 		position: relative;
-		// transition: all .05s ease-in-out;
 		width: 100%;
 		word-break: break-word;
 
@@ -226,20 +229,14 @@
 		&-icon {
 			border-radius: 4px;
 			padding: 12px 20px;
-			// transition: all .05s ease-in-out;
 
 			.editor-block-icon {
 				margin-left: auto;
 				margin-right: auto;
-			}
 
-			svg {
-				fill: currentColor;
-				max-height: 24px;
-				max-width: 24px;
-				min-height: 20px;
-				min-width: 20px;
-				// transition: all .15s ease-out;
+				svg {
+					fill: currentColor;
+				}
 			}
 		}
 

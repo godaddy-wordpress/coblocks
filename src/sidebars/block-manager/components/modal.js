@@ -126,7 +126,7 @@ class ModalSettings extends Component {
 		return (
 			<Fragment>
 				<PluginMoreMenuItem
-					icon={ brandAssets.sidebarIcon }
+					icon={ brandAssets.sidebarMoreMenuIcon }
 					onClick={ () => {
 						this.setState( { isOpen: true } );
 					} }

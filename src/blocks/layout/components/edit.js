@@ -442,9 +442,9 @@ class Edit extends Component {
 			return (
 				<Fragment>
 					<Placeholder
-						icon={ icons.templateInserter }
-						label={  __( 'CoBlocks Layout' ) }
-						instructions={  __( 'Insert a CoBlocks pre-designed section.' ) }
+						icon={ brandAssets.blockIcon }
+						label={  __( 'Add CoBlocks Layout' ) }
+						instructions={  __( 'Add a beautifully designed layout from your theme or the CoBlocks Layout Libary.' ) }
 						className="block-coblocks-inserter"
 					>
 						<Spinner />
@@ -456,9 +456,9 @@ class Edit extends Component {
 		return (
 			<Fragment>
 				<Placeholder
-						icon={ icons.templateInserter }
-						label={  __( 'CoBlocks Layout' ) }
-						instructions={  __( 'Insert a CoBlocks pre-designed section.' ) }
+						icon={ brandAssets.blockIcon }
+						label={  __( 'Add CoBlocks Layout' ) }
+						instructions={  __( 'Add a beautifully designed layout from your theme or the CoBlocks Layout Libary.' ) }
 						className="block-coblocks-inserter"
 					>
 					<Button
@@ -471,7 +471,7 @@ class Edit extends Component {
 						<Modal
 							className='coblocks-modal-component components-modal--coblocks-layouts'
 							icon={ brandAssets.modalIcon }
-							title={ __( 'Sections' ) }
+							title={ __( 'Section Layouts' ) }
 							onRequestClose={ this.closeModal }>
 							{ this.contentModal( this.contentType ) }
 						</Modal>
