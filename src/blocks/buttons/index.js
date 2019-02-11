@@ -43,6 +43,10 @@ const blockAttributes = {
 		type: 'number',
 		default: 2,
 	},
+	stacked: {
+		type: 'boolean',
+		default: false,
+	},
 	contentAlign: {
 		type: 'string',
 		default: 'center',
@@ -69,6 +73,7 @@ const settings = {
 		const {
 			gutter,
 			items,
+			stacked,
 			contentAlign,
 			isStackedOnMobile,
 		} = attributes;
@@ -83,6 +88,7 @@ const settings = {
 			'wp-block-coblocks-buttons__inner',{
 				[ `flex-align-${ contentAlign }` ] : contentAlign,
 				[ `has-${ gutter }-gutter` ] : gutter,
+				'is-stacked': stacked,
 				'is-stacked-on-mobile': isStackedOnMobile,
 			}
 		);

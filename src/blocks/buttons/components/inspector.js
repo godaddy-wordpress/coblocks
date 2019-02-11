@@ -31,9 +31,11 @@ class Inspector extends Component {
 		const {
 			items,
 			gutter,
+			stacked,
 		} = attributes;
 
 		const gutterOptions = [
+			{ value: 'no', label: __( 'None' ) },
 			{ value: 'small', label: __( 'Small' ) },
 			{ value: 'medium', label: __( 'Medium' ) },
 			{ value: 'large', label: __( 'Large' ) },
@@ -52,19 +54,19 @@ class Inspector extends Component {
 									items: parseInt( nextCount ),
 								} );
 
-								// if( parseInt( nextCount ) < 2 ){
-								// 	setAttributes( {
-								// 		gutter: 'no',
-								// 	} );
-								// }else{
-								// 	if( gutter == 'no' ){
-								// 		setAttributes( {
-								// 			gutter: 'large',
-								// 		} );
-								// 	}
-								// }
+								if( parseInt( nextCount ) < 2 ){
+									setAttributes( {
+										gutter: 'no',
+									} );
+								}else{
+									if( gutter == 'no' ){
+										setAttributes( {
+											gutter: 'medium',
+										} );
+									}
+								}
 
-								// wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
+								wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
 							} }
 							min={ 1 }
 							max={ 4 }
@@ -78,6 +80,11 @@ class Inspector extends Component {
 								onChange={ ( value ) => setAttributes( { gutter: value } ) }
 							/>
 						}
+						<ToggleControl
+							label={ __( 'Stack buttons' ) }
+							checked={ !! stacked }
+							onChange={ () => setAttributes( {  stacked: ! stacked } ) }
+							help={ !! stacked ? __( 'Aligning buttons in a single column.' ) : __( 'Toggle to align buttons in a column.' ) } />
 					</PanelBody>
 				</InspectorControls>
 			</Fragment>

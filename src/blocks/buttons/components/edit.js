@@ -57,6 +57,7 @@ class Edit extends Component {
 		const {
 			gutter,
 			items,
+			stacked,
 			contentAlign,
 			isStackedOnMobile,
 		} = attributes;
@@ -70,6 +71,7 @@ class Edit extends Component {
 			'wp-block-coblocks-buttons__inner',{
 				[ `flex-align-${ contentAlign }` ] : contentAlign,
 				[ `has-${ gutter }-gutter` ] : gutter,
+				'is-stacked': stacked,
 				'is-stacked-on-mobile': isStackedOnMobile,
 			}
 		);

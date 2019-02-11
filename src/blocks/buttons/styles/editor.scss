@@ -35,6 +35,7 @@
 					}
 				}
 			}
+
 			.editor-default-block-appender {
 				display: none;
 			}
@@ -53,6 +54,27 @@
 			}
 
 			//Add Gutter
+			&.has-no-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
+				padding-left: 28px;
+				padding-right: 28px;
+				@include break-small() {
+					&:nth-child(odd) {
+						margin-right: 0;
+					}
+
+					&:nth-child(even) {
+						margin-left: 0;
+					}
+
+					&:not(:first-child) {
+						margin-left: 0;
+					}
+
+					&:not(:last-child) {
+						margin-right: 0;
+					}
+				}
+			}
 			&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
 				@media (max-width: #{ ($break-small) }) {
 					&:not(:last-child) {
@@ -156,6 +178,47 @@
 					}
 				}
 			}
+
+
+			//Display button as stacked
+			&.is-stacked{
+				> .editor-inner-blocks{
+					> .editor-block-list__layout{
+						flex-direction: column;
+					}
+				}
+				.wp-block[data-type="core/button"] {
+					display:block;
+					width: 100% !important;
+					margin-left: 0px;
+    				margin-right: 0px;
+				}
+
+				&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
+					&:not(:last-child) {
+						margin-bottom: $gutter--small * 2;
+					}
+				}
+
+				&.has-medium-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
+					&:not(:last-child) {
+						margin-bottom: $gutter--medium * 2;
+					}
+				}
+
+				&.has-large-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
+					&:not(:last-child) {
+						margin-bottom: $gutter--large * 2;
+					}
+				}
+
+				&.has-huge-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
+					&:not(:last-child) {
+						margin-bottom: $gutter--huge * 2;
+					}
+				}
+			}
+
 
 		}
 		.block-list-appender{
