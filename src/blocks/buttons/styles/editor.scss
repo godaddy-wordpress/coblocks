@@ -6,6 +6,22 @@
 			> .editor-inner-blocks{
 				> .editor-block-list__layout{
 					display: flex;
+					align-items: center;
+ 					justify-content: center;
+				}
+			}
+			&.flex-align-left{
+				> .editor-inner-blocks{
+					> .editor-block-list__layout{
+						justify-content: flex-start;
+					}
+				}
+			}
+			&.flex-align-right{
+				> .editor-inner-blocks{
+					> .editor-block-list__layout{
+						justify-content: flex-end;
+					}
 				}
 			}
 			.editor-default-block-appender {

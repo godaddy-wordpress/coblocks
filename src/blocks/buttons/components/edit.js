@@ -8,6 +8,7 @@ import memoize from 'lodash/memoize';
 /**
  * Internal dependencies
  */
+import Controls from './controls';
 
 /**
  * WordPress dependencies
@@ -55,6 +56,7 @@ class Edit extends Component {
 		const {
 			gutter,
 			items,
+			contentAlign,
 		} = attributes;
 
 		const classes = classnames(
@@ -63,14 +65,22 @@ class Edit extends Component {
 		);
 
 		const innerClasses = classnames(
-			'wp-block-coblocks-buttons__inner'
+			'wp-block-coblocks-buttons__inner',{
+				[ `flex-align-${ contentAlign }` ] : contentAlign,
+			}
 		);
 
 		const innerStyles = {
+			// textAlign: contentAlign ? contentAlign : undefined
 		};
 
 		return [
 			<Fragment>
+				{ isSelected && (
+					<Controls
+						{ ...this.props }
+					/>
+				) }
 				<div className={ classes }>
 					<div className={ innerClasses } style={ innerStyles }>
 						<InnerBlocks

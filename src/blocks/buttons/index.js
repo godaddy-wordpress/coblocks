@@ -43,6 +43,10 @@ const blockAttributes = {
 		type: 'number',
 		default: 2,
 	},
+	contentAlign: {
+		type: 'string',
+		default: 'center',
+	},
 };
 
 const settings = {
