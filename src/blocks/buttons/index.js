@@ -59,6 +59,10 @@ const settings = {
 
 	attributes: blockAttributes,
 
+	supports: {
+		stackedOnMobile: true
+	},
+
 	edit: Edit,
 
 	save( { attributes, className } ) {

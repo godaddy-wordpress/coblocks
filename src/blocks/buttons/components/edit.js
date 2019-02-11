@@ -2,12 +2,13 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import memoize from 'memize';
 import times from 'lodash/times';
-import memoize from 'lodash/memoize';
 
 /**
  * Internal dependencies
  */
+import Inspector from './inspector';
 import Controls from './controls';
 
 /**
@@ -57,6 +58,7 @@ class Edit extends Component {
 			gutter,
 			items,
 			contentAlign,
+			isStackedOnMobile,
 		} = attributes;
 
 		const classes = classnames(
@@ -67,15 +69,22 @@ class Edit extends Component {
 		const innerClasses = classnames(
 			'wp-block-coblocks-buttons__inner',{
 				[ `flex-align-${ contentAlign }` ] : contentAlign,
+				[ `has-${ gutter }-gutter` ] : gutter,
+				'is-stacked-on-mobile': isStackedOnMobile,
 			}
 		);
 
 		const innerStyles = {
 			// textAlign: contentAlign ? contentAlign : undefined
 		};
-
+		console.log( items );
 		return [
 			<Fragment>
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
 				{ isSelected && (
 					<Controls
 						{ ...this.props }
@@ -86,7 +95,7 @@ class Edit extends Component {
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ getCount( items ) }
-							templateLock={ false }
+							templateLock="all"
 							templateInsertUpdatesSelection={ false }
 						/>
 					</div>
