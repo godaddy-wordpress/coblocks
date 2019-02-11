@@ -8,7 +8,7 @@ import apiFetch from '@wordpress/api-fetch';
 /**
  * Internal dependencies
  */
-// import Section from './../section';
+import MapInnerBlocks from './../map-innerblocks';
 
 /**
  * WordPress dependencies
@@ -69,6 +69,7 @@ class DisableBlocks extends Component {
 
 		//get current blocks
 		let currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
+		let blockNames	  = MapInnerBlocks( currentBlocks );
 
 		//check block for editor match first
 		//avoid error while editing
@@ -80,22 +81,15 @@ class DisableBlocks extends Component {
 			this.setState({ hasError: true });
 		}
 
-		{ map( currentBlocks, ( editorBlock ) => {
-			if( editorBlock.name == key ){
+		{ map( blockNames, ( blockName ) => {
+			if( blockName == key ){
 				hasError = true;
 				this.setState({ hasError: true });
 
 				return;
-			}else if( editorBlock.innerBlocks ){
-				map( editorBlock.innerBlocks, ( innerBlock ) => {
-					if( innerBlock.name == key ){
-						hasError = true;
-						this.setState({ hasError: true });
-						return;
-					}
-				});
 			}
 		} ) }
+
 
 		//abort if block exists on current page
 		if( hasError ){

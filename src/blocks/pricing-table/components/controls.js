@@ -37,7 +37,7 @@ class Controls extends Component {
 						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
 					/>
 					<Toolbar
-						className="coblocks__toolbar--numeral"
+						className="components-toolbar-coblocks-numeral-controls"
 						controls={ '123'.split( '' ).map( ( number ) => ( {
 							icon: icons.blank,
 							/* translators: %s: number of tables */

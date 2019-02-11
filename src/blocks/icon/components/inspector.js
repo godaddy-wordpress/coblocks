@@ -234,7 +234,7 @@ class Inspector extends Component {
 													<Button
 														key={ slug }
 														onClick={ () => this.onChangeSize( slug, size ) }
-														className={ `is-${ slug }-padding` }
+														className={ `is-${ slug }-size` }
 														role="menuitem"
 													>
 														{ ( iconSize === slug || ( ! iconSize && slug === 'normal' ) ) && <Dashicon icon="saved" /> }

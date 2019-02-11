@@ -1,7 +1,7 @@
 {
 	"name": "coblocks",
 	"title": "CoBlocks",
-	"version": "1.8.0",
+	"version": "1.9.0",
 	"private": false,
 	"author": "Rich Tabor & Jeffrey Carandang from CoBlocks",
 	"author_shop": "CoBlocks",
@@ -36,7 +36,6 @@
 		"postcss": "^6.0.23",
 		"react": "^16.6.3",
 		"react-google-maps": "^9.4.5",
-		"react-masonry-component": "^6.2.1",
 		"redux": "^4.0.1",
 		"stylelint": "^9.10.1"
 	},
