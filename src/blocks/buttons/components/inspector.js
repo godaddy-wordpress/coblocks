@@ -35,7 +35,6 @@ class Inspector extends Component {
 		} = attributes;
 
 		const gutterOptions = [
-			{ value: 'no', label: __( 'None' ) },
 			{ value: 'small', label: __( 'Small' ) },
 			{ value: 'medium', label: __( 'Medium' ) },
 			{ value: 'large', label: __( 'Large' ) },
@@ -53,18 +52,6 @@ class Inspector extends Component {
 								setAttributes( {
 									items: parseInt( nextCount ),
 								} );
-
-								if( parseInt( nextCount ) < 2 ){
-									setAttributes( {
-										gutter: 'no',
-									} );
-								}else{
-									if( gutter == 'no' ){
-										setAttributes( {
-											gutter: 'medium',
-										} );
-									}
-								}
 
 								wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
 							} }
