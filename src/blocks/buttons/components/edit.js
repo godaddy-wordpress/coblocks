@@ -77,7 +77,6 @@ class Edit extends Component {
 		const innerStyles = {
 			// textAlign: contentAlign ? contentAlign : undefined
 		};
-		console.log( items );
 		return [
 			<Fragment>
 				{ isSelected && (
