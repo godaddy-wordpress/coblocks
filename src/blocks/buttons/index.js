@@ -26,7 +26,7 @@ const name = 'buttons';
 
 const title = __( 'Buttons' );
 
-const icon = icons.features;
+const icon = icons.buttons;
 
 const keywords = [
 	__( 'button' ),
@@ -49,7 +49,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Add a stylized graphic symbol to communicate something more.' ),
+	description: __( 'Prompt visitors to take action with multiple buttons, side by side.' ),
 
 	keywords: keywords,
 

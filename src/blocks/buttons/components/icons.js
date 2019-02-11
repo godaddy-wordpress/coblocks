@@ -8,8 +8,8 @@ const { SVG, Path, G } = wp.components;
  */
 const icons = {};
 
-icons.features =
-<SVG className="components-coblocks-svg" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><G transform="translate(3.6 2)"><Path d="m2.4 12h12v-2h-12z"/><Path d="m.4 16h16v-2h-16z"/><Path d="m2.4 20h12v-2h-12z"/><Path d="m11.4 0v5.5l-3 3-3-3v-5.5zm-2 2h-2v2.67l1 1 1-1z"/></G></SVG>
+icons.buttons =
+<SVG className="dashicon components-coblocks-svg" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m16 0h-14c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-14v-4h14zm0 4h-14c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-14v-4h14zm-10-3v2h6v-2zm0-10h6v2h-6z" transform="translate(3 3)"/></SVG>
 
 export default icons;
 
