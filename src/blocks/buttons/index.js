@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-// import './styles/style.scss';
+import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
 import Edit from './components/edit';
@@ -37,7 +37,7 @@ const keywords = [
 const blockAttributes = {
 	gutter: {
 		type: 'string',
-		default: 'large',
+		default: 'medium',
 	},
 	items: {
 		type: 'number',
@@ -66,7 +66,38 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes, className } ) {
-		return null;
+		const {
+			gutter,
+			items,
+			contentAlign,
+			isStackedOnMobile,
+		} = attributes;
+
+		const classes = classnames(
+			className, {
+
+			}
+		);
+
+		const innerClasses = classnames(
+			'wp-block-coblocks-buttons__inner',{
+				[ `flex-align-${ contentAlign }` ] : contentAlign,
+				[ `has-${ gutter }-gutter` ] : gutter,
+				'is-stacked-on-mobile': isStackedOnMobile,
+			}
+		);
+
+		const innerStyles = {
+			
+		};
+
+		return (
+			<div className={ classes }>
+				<div className={ innerClasses } style={ innerStyles }>
+					<InnerBlocks.Content />
+				</div>
+			</div>
+		);
 	},
 };
 

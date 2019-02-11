@@ -1,0 +1,143 @@
+.wp-block-coblocks-buttons {
+	&, &__inner {
+		position: relative;
+	}
+	&__inner{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&.flex-align-left{
+			justify-content: flex-start;
+		}
+		&.flex-align-right{
+			justify-content: flex-end;
+		}
+	}
+
+	//Add separate Gutter CSS
+	.has-small-gutter {
+
+		> .wp-block-button {
+
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--small * 2;
+				}
+			}
+
+			@include break-small() {
+
+				&:nth-child(odd) {
+					margin-right: $gutter--small;
+				}
+
+				&:nth-child(even) {
+					margin-left: $gutter--small;
+				}
+
+				&:not(:first-child) {
+					margin-left: $gutter--small;
+				}
+
+				&:not(:last-child) {
+					margin-right: $gutter--small;
+				}
+			}
+		}
+	}
+
+	.has-medium-gutter {
+
+		> .wp-block-button {
+
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--medium * 2;
+				}
+			}
+
+			@include break-small() {
+
+				&:nth-child(odd) {
+					margin-right: $gutter--medium;
+				}
+
+				&:nth-child(even) {
+					margin-left: $gutter--medium;
+				}
+
+				&:not(:first-child) {
+					margin-left: $gutter--medium;
+				}
+
+				&:not(:last-child) {
+					margin-right: $gutter--medium;
+				}
+			}
+		}
+	}
+
+	.has-large-gutter {
+
+		> .wp-block-button {
+
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--large * 2;
+				}
+			}
+
+			@include break-small() {
+
+				&:nth-child(odd) {
+					margin-right: $gutter--large;
+				}
+
+				&:nth-child(even) {
+					margin-left: $gutter--large;
+				}
+
+				&:not(:first-child) {
+					margin-left: $gutter--large;
+				}
+
+				&:not(:last-child) {
+					margin-right: $gutter--large;
+				}
+			}
+		}
+	}
+
+	.has-huge-gutter {
+
+		> .wp-block-button {
+
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--huge * 2;
+				}
+			}
+
+			@include break-small() {
+
+				&:nth-child(odd) {
+					margin-right: $gutter--huge;
+				}
+
+				&:nth-child(even) {
+					margin-left: $gutter--huge;
+				}
+
+				&:not(:first-child) {
+					margin-left: $gutter--huge;
+				}
+
+				&:not(:last-child) {
+					margin-right: $gutter--huge;
+				}
+			}
+		}
+	}
+
+}
