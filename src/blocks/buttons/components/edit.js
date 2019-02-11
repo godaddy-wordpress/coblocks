@@ -22,7 +22,7 @@ const { Spinner } = wp.components;
 /**
  * Constants
  */
-const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/image', 'coblocks/highlight', ];
+const ALLOWED_BLOCKS = [ 'core/button' ];
 
 /**
  * Returns the layouts configuration for a given number of feature items.

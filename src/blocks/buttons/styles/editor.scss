@@ -8,6 +8,15 @@
 					display: flex;
 					align-items: center;
  					justify-content: center;
+
+ 					.wp-block{
+ 						.editor-block-list__block-edit{
+ 							.block-library-button__inline-link{
+ 								position: absolute;
+ 								box-shadow: 0 0 0 1px #ced2d6;
+ 							}
+ 						}
+ 					}
 				}
 			}
 			&.flex-align-left{
@@ -33,6 +42,9 @@
 				width: auto;
 			}
 
+		}
+		.block-list-appender{
+			display: none;
 		}
 	}
 }
