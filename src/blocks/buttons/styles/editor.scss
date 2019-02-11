@@ -14,6 +14,8 @@
  							.block-library-button__inline-link{
  								position: absolute;
  								box-shadow: 0 0 0 1px #ced2d6;
+ 								z-index: 99;
+ 								background: #fff;
  							}
  						}
  					}
@@ -42,6 +44,7 @@
 				width: auto !important;
 				margin-left: 0px;
 				margin-right: 0px;
+				text-align: center;
 
 				> .editor-block-list__block-edit{
 					margin-top: 0px !important;
