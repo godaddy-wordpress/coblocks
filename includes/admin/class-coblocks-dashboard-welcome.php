@@ -81,10 +81,13 @@ class CoBlocks_Dashboard_Welcome {
 
 		$selected = isset( $_GET['page'] ) ? $_GET['page'] : 'coblocks--welcome';
 		?>
+		<div class="coblocks--logo">
+			<a href="https://coblocks.com/"><img src="<?php echo COBLOCKS_PLUGIN_URL . '/dist/images/admin/logo.png'; ?>"></a>
+		</div>
 		<h1><?php echo esc_html__( 'Welcome to CoBlocks', '@@textdomain' ); ?></h1>
-		<!-- <div class="about-text">
+		<div class="about-text">
 			<?php echo esc_html__( 'We highly recommend you watch this instructions below to get started, then you will be up and running in no time.', '@@textdomain' ); ?>
-		</div> -->
+		</div>
 
 		<?php
 	}
@@ -97,7 +100,6 @@ class CoBlocks_Dashboard_Welcome {
 		<div class="wrap about-wrap coblocks--about-wrap">
 			<?php $this->header(); ?>
 			<div class="about-description">
-				<p><?php echo esc_html__( 'We highly recommend you watch this instructions below to get started, then you will be up and running in no time.', '@@textdomain' ); ?></p>
 				<div class="featured-video">
 					<iframe width="560" height="315" src="https://www.youtube.com/embed/0v9rXLDv-FM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 				</div>

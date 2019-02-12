@@ -1,28 +1,55 @@
 .coblocks--about-wrap{
+	max-width: 720px;
+	margin: 50px auto 25px;
+	color: #000;
+	background: #fff;
+    border: 1px solid #e1e1e1;
+    padding: 50px;
+    box-shadow: 1px 5px 15px rgba(0,0,0,0.02);
+    border-radius: 2px;
+    text-align: center;
+
+    .coblocks--logo{
+    	display: block;
+    	text-align: center;
+    	img{
+    		max-width: 80px;
+    	}
+    }
+
+    .about-text{
+    	margin: 0px;
+    	padding: 0px 50px;
+    }
+
     h1{
     	color: #000;
     	text-align: center;
     	font-size: 31px;
-    	margin: 60px 0px 30px;
+    	margin: 20px 0px 30px;
     }
     .about-description{
     	font-size: 16px;
-    	color: #000;
-    	background: #fff;
-	    border: 1px solid #e1e1e1;
-	    padding: 50px;
-	    box-shadow: 1px 5px 15px rgba(0,0,0,0.02);
-	    border-radius: 2px;
-	    text-align: center;
+    	
 	    .featured-video{
 	    	margin-top: 50px;
 	    }
 	    .button{
-	    	font-size: 16px;
+	    	font-size: 18px;
 	    	height: auto;
 	    	width: auto;
 	    	padding: 15px 30px;
 	    	margin: 10px;
+	    	background: #FFFFFF;
+	    	color: #1E35B9;
+	    	border: 2px solid #1E35B9;
+	    	text-shadow: none;
+	    	box-shadow: none;
+
+	    	&.button-primary{
+	    		background: #1E35B9;
+	    		color: #FFFFFF;
+	    	}
 	    }
     }
 }
