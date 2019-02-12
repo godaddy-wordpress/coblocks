@@ -162,6 +162,9 @@
 			//Display button as stacked
 			&.is-stacked{
 				> .editor-inner-blocks{
+					display: block;
+					width: 100%;
+					
 					> .editor-block-list__layout{
 						flex-direction: column;
 					}
@@ -175,25 +178,25 @@
 
 				&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
 					&:not(:last-child) {
-						margin-bottom: $gutter--small;
+						margin-bottom: $gutter--small !important;
 					}
 				}
 
 				&.has-medium-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
 					&:not(:last-child) {
-						margin-bottom: $gutter--medium;
+						margin-bottom: $gutter--medium !important;
 					}
 				}
 
 				&.has-large-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
 					&:not(:last-child) {
-						margin-bottom: $gutter--large;
+						margin-bottom: $gutter--large !important;
 					}
 				}
 
 				&.has-huge-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
 					&:not(:last-child) {
-						margin-bottom: $gutter--huge;
+						margin-bottom: $gutter--huge !important;
 					}
 				}
 			}
