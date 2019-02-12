@@ -67,11 +67,13 @@ class Inspector extends Component {
 								onChange={ ( value ) => setAttributes( { gutter: value } ) }
 							/>
 						}
-						<ToggleControl
+						{ items >= 2 &&
+							<ToggleControl
 							label={ __( 'Stack Buttons' ) }
 							checked={ !! stacked }
 							onChange={ () => setAttributes( {  stacked: ! stacked } ) }
 							help={ !! stacked ? __( 'Aligning buttons in a single column.' ) : __( 'Toggle to align buttons in a column.' ) } />
+						}
 					</PanelBody>
 				</InspectorControls>
 			</Fragment>
