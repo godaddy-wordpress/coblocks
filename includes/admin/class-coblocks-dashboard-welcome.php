@@ -31,21 +31,16 @@ class CoBlocks_Dashboard_Welcome {
 	 * Setup the admin menu.
 	 */
 	public function screen_page() {
-		add_dashboard_page(
-			__( 'CoBlocks', '@@textdomain' ),
-			__( 'CoBlocks', '@@textdomain' ),
+		add_submenu_page(
+			'edit.php?post_type=coblocks',
+			__( 'Welcome', '@@textdomain' ),
+			__( 'Welcome', '@@textdomain' ),
 			apply_filters( 'coblocks_welcome_screen_capability', 'manage_options' ),
 			'coblocks--welcome',
 			array( $this, 'content' )
 		);
 	}
 
-	/**
-	 * Remove the menu item from the admin.
-	 */
-	public function remove_menu() {
-		remove_submenu_page( 'index.php', 'coblocks--welcome' );
-	}
 
 	/**
 	 * Load Scripts
@@ -69,7 +64,7 @@ class CoBlocks_Dashboard_Welcome {
 		wp_register_style( 'coblocks-welcome', $dir . 'coblocks-welcome.min.css', COBLOCKS_VERSION, true );
 
 		// Only enqueue admin scripts and styles on relevant pages.
-		if ( in_array( $screen_id, array( 'dashboard_page_coblocks--welcome' ), true ) ) {
+		if ( in_array( $screen_id, array( 'coblocks_page_coblocks--welcome' ), true ) ) {
 			wp_enqueue_style( 'coblocks-welcome' );
 		}
 	}
