@@ -43,7 +43,7 @@ function ColorSettings( props, options ) {
 
 	let colorSettings = [];
 
-	if( ![ 'core/heading', 'core/list' ].includes( name ) ){
+	if( ![ 'core/heading', 'core/list', 'core/quote' ].includes( name ) ){
 		colorSettings.push({
 			value: customBackgroundColor,
 			onChange: ( nextcustomBackgroundColor ) => setAttributes( {  customBackgroundColor: nextcustomBackgroundColor } ),
