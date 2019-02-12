@@ -136,6 +136,7 @@ function BackgroundImagePanel( props, options ) {
 							url={ backgroundImg }
 							value={ focalPoint }
 							onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
+							className="components-focal-point-picker--coblocks"
 						/>
 					) }
 				</PanelBody>

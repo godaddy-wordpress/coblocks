@@ -33,3 +33,10 @@
 		}
 	}
 }
+
+// Hide the position display fields.
+.components-focal-point-picker--coblocks {
+	.components-focal-point-picker_position-display-container {
+		display: none;
+	}
+}
