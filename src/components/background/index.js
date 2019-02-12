@@ -132,7 +132,7 @@ function BackgroundImagePanel( props, options ) {
 					/>
 					{ ! hasParallax && (
 						<FocalPointPicker
-							label={ __( 'Focal Point Picker' ) }
+							label={ __( 'Focal Point' ) }
 							url={ backgroundImg }
 							value={ focalPoint }
 							onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
