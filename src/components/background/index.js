@@ -12,7 +12,7 @@ import BackgroundImageTransforms from './transforms';
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { SelectControl, RangeControl, ToggleControl, PanelBody, Button } = wp.components;
+const { SelectControl, RangeControl, ToggleControl, PanelBody, Button, FocalPointPicker } = wp.components;
 
 /**
  * Module constants.
@@ -48,6 +48,7 @@ function BackgroundImagePanel( props, options ) {
 		backgroundOverlay,
 		hasParallax,
 		backgroundImg,
+		focalPoint,
 	} = attributes;
 
 	const backgroundPositionOptions = [
@@ -129,6 +130,14 @@ function BackgroundImagePanel( props, options ) {
 						checked={ !! hasParallax }
 						onChange={ () => setAttributes( {  hasParallax: ! hasParallax } ) }
 					/>
+					{ ! hasParallax && (
+						<FocalPointPicker
+							label={ __( 'Focal Point Picker' ) }
+							url={ backgroundImg }
+							value={ focalPoint }
+							onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
+						/>
+					) }
 				</PanelBody>
 			</Fragment>
 		);
