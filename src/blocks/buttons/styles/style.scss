@@ -32,15 +32,6 @@
 			}
 
 			// Assign row gutters as margin on the frontend.
-			&.has-no-gutter {
-				.wp-block-button {
-					&:not(:last-child) {
-						margin-bottom: 0;
-					}
-				}
-			}
-
-			// Assign row gutters as margin on the frontend.
 			&.has-small-gutter {
 				.wp-block-button {
 					&:not(:last-child) {
