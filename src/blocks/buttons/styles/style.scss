@@ -44,7 +44,7 @@
 			&.has-small-gutter {
 				.wp-block-button {
 					&:not(:last-child) {
-						margin-bottom: $gutter--small * 2;
+						margin-bottom: $gutter--small;
 					}
 				}
 			}
@@ -52,21 +52,21 @@
 			&.has-medium-gutter {
 				.wp-block-button {
 					&:not(:last-child) {
-						margin-bottom: $gutter--medium * 2;
+						margin-bottom: $gutter--medium;
 					}
 				}
 			}
 			&.has-large-gutter {
 				.wp-block-button {
 					&:not(:last-child) {
-						margin-bottom: $gutter--large * 2;
+						margin-bottom: $gutter--large;
 					}
 				}
 			}
 			&.has-huge-gutter {
 				.wp-block-button {
 					&:not(:last-child) {
-						margin-bottom: $gutter--huge * 2;
+						margin-bottom: $gutter--huge;
 					}
 				}
 			}
@@ -80,26 +80,26 @@
 
 			@media (max-width: #{ ($break-small) }) {
 				&:not(:last-child) {
-					margin-bottom: $gutter--small * 2;
+					margin-bottom: $gutter--small / 2;
 				}
 			}
 
 			@include break-small() {
 
 				&:nth-child(odd) {
-					margin-right: $gutter--small;
+					margin-right: $gutter--small / 2;
 				}
 
 				&:nth-child(even) {
-					margin-left: $gutter--small;
+					margin-left: $gutter--small / 2;
 				}
 
 				&:not(:first-child) {
-					margin-left: $gutter--small;
+					margin-left: $gutter--small / 2;
 				}
 
 				&:not(:last-child) {
-					margin-right: $gutter--small;
+					margin-right: $gutter--small / 2;
 				}
 			}
 		}
@@ -111,26 +111,26 @@
 
 			@media (max-width: #{ ($break-small) }) {
 				&:not(:last-child) {
-					margin-bottom: $gutter--medium * 2;
+					margin-bottom: $gutter--medium / 2;
 				}
 			}
 
 			@include break-small() {
 
 				&:nth-child(odd) {
-					margin-right: $gutter--medium;
+					margin-right: $gutter--medium / 2;
 				}
 
 				&:nth-child(even) {
-					margin-left: $gutter--medium;
+					margin-left: $gutter--medium / 2;
 				}
 
 				&:not(:first-child) {
-					margin-left: $gutter--medium;
+					margin-left: $gutter--medium / 2;
 				}
 
 				&:not(:last-child) {
-					margin-right: $gutter--medium;
+					margin-right: $gutter--medium / 2;
 				}
 			}
 		}
@@ -142,26 +142,26 @@
 
 			@media (max-width: #{ ($break-small) }) {
 				&:not(:last-child) {
-					margin-bottom: $gutter--large * 2;
+					margin-bottom: $gutter--large / 2;
 				}
 			}
 
 			@include break-small() {
 
 				&:nth-child(odd) {
-					margin-right: $gutter--large;
+					margin-right: $gutter--large / 2;
 				}
 
 				&:nth-child(even) {
-					margin-left: $gutter--large;
+					margin-left: $gutter--large / 2;
 				}
 
 				&:not(:first-child) {
-					margin-left: $gutter--large;
+					margin-left: $gutter--large / 2;
 				}
 
 				&:not(:last-child) {
-					margin-right: $gutter--large;
+					margin-right: $gutter--large / 2;
 				}
 			}
 		}
@@ -173,26 +173,26 @@
 
 			@media (max-width: #{ ($break-small) }) {
 				&:not(:last-child) {
-					margin-bottom: $gutter--huge * 2;
+					margin-bottom: $gutter--huge / 2;
 				}
 			}
 
 			@include break-small() {
 
 				&:nth-child(odd) {
-					margin-right: $gutter--huge;
+					margin-right: $gutter--huge / 2;
 				}
 
 				&:nth-child(even) {
-					margin-left: $gutter--huge;
+					margin-left: $gutter--huge / 2;
 				}
 
 				&:not(:first-child) {
-					margin-left: $gutter--huge;
+					margin-left: $gutter--huge / 2;
 				}
 
 				&:not(:last-child) {
-					margin-right: $gutter--huge;
+					margin-right: $gutter--huge / 2;
 				}
 			}
 		}
