@@ -68,7 +68,7 @@ class Inspector extends Component {
 							/>
 						}
 						<ToggleControl
-							label={ __( 'Stack buttons' ) }
+							label={ __( 'Stack Buttons' ) }
 							checked={ !! stacked }
 							onChange={ () => setAttributes( {  stacked: ! stacked } ) }
 							help={ !! stacked ? __( 'Aligning buttons in a single column.' ) : __( 'Toggle to align buttons in a column.' ) } />
