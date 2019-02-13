@@ -68,6 +68,8 @@ const settings = {
 			customTextColor,
 			textColor,
 			paddingSize,
+			focalPoint,
+			hasParallax,
 		} = attributes;
 
 		// Body color class and styles.
@@ -92,6 +94,7 @@ const settings = {
 		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textClass ? undefined : customTextColor,
 		};
 
