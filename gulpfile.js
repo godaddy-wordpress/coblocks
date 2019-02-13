@@ -53,6 +53,9 @@ const AUTOPREFIXER_BROWSERS = [
 	'bb >= 10'
 ];
 
+// Build contents.
+var filesToUpload	= [ './build/coblocks/**/*' ] ;
+
 /**
  * Load Plugins.
  */
@@ -288,44 +291,102 @@ gulp.task('zip', function(done) {
 
 gulp.task('build-notice', function(done) {
 	return gulp.src( './' )
-	.pipe( notify( { message: 'Your build of ' + title + ' is complete.', onLast: false } ) );
+	.pipe( notify( { message: 'The test build of ' + title + ' ' + pkg.version + ' is complete and uploaded to the testing sandbox.', onLast: false } ) );
 	done();
 });
 
-gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'scripts', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip',  function(done) {
+gulp.task('release-notice', function(done) {
+	return gulp.src( './' )
+	.pipe( notify( { message: 'The release build of ' + title + ' ' + pkg.version + ' is complete and ready to be uploaded to WordPress.org.', onLast: false } ) );
+	done();
+});
+
+gulp.task( 'sftp-upload-to-testing-sandbox', function(done) {
+
+
+	var sandbox;
+
+	try {
+		var sandbox = require('./sandbox.json');
+	} catch (error) {
+		done();
+	}
+
+	if ( sandbox ) {
+		return gulp.src( filesToUpload )
+		.pipe( sftp( {
+			host: sandbox.host,
+			authFile: '.ftppass',
+			auth: 'testingSandboxSFTP',
+			remotePath: sandbox.remotePath,
+			port: sandbox.port,
+		}))
+	}
+
+	done();
+});
+
+// Open the sandbox.
+gulp.task( 'open-sandbox', function(done){
+
+	var sandbox;
+
+	try {
+		var sandbox = require('./sandbox.json');
+	} catch (error) {
+		done();
+	}
+
+	if ( sandbox ) {
+		gulp.src(__filename)
+		.pipe( open( { uri: sandbox.uri } ) );
+	}
+
+	done();
+});
+
+gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'scripts', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip' , 'sftp-upload-to-testing-sandbox', 'open-sandbox',  function(done) {
 	done();
 } ) );
 
-gulp.task('build', gulp.series( 'build-process', 'build-notice', function(done) {
+gulp.task('build-process-wo-translations', gulp.series( 'clearCache', 'clean', 'scripts', 'npmBuild', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip', 'sftp-upload-to-testing-sandbox', 'open-sandbox', function(done) {
 	done();
 } ) );
+
 
 /**
  * Release Tasks.
  */
 gulp.task( 'release-notice', function(done) {
 
-	var sftpFile;
+	var sandbox;
 
 	try {
-		var sftpFile = require('./sftp.json');
+		var sandbox = require('./sandbox.json');
 	} catch (error) {
 		done();
 	}
 
-	if (sftpFile) {
+	if ( sandbox ) {
 		return gulp.src( './' )
-		.pipe( notify( { message: 'The v' + pkg.version + ' release of ' + title + ' has been uploaded.', onLast: false } ) )
+		.pipe( notify( { message: 'Version ' + pkg.version + ' of ' + title + ' has been uploaded to the testing sandbox.', onLast: false } ) )
 		done();
 	} else {
 		return gulp.src( './' )
-		.pipe( notify( { message: 'The release was built, but not uploaded. You do not have proper permissions to do so.', onLast: true } ) )
+		.pipe( notify( { message: 'The ' + pkg.version + ' release was built but not uploaded to the testing sandbox. You do not have proper permissions to do so.', onLast: true } ) )
 		done();
 	}
 
 	done();
 });
 
+gulp.task('build', gulp.series( 'build-process-wo-translations', 'build-notice', function(done) {
+	done();
+} ) );
+
+gulp.task('release', gulp.series( 'build-process', 'release-notice', function(done) {
+	done();
+} ) );
 
 gulp.task(
 	'default',
@@ -339,13 +400,5 @@ gulp.task(
 	'install',
 	gulp.series(
 		'npmInstall', function(done) {
-	done();
-} ) );
-
-gulp.task(
-	'release',
-	gulp.series(
-		'build-process',
-		'release-notice', function(done) {
 	done();
 } ) );
