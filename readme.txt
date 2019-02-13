@@ -89,6 +89,7 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 3. Drag to resize and then nest CoBlocks Row blocks
 4. Design with the CoBlocks Typography Control Panel
 5. Add CoBlocks core blocks to pages
+6. Disable blocks with the Block Manager
 
 == Installation ==
 
