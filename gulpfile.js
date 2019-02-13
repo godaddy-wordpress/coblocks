@@ -337,7 +337,7 @@ gulp.task( 'open-sandbox', function(done){
  * Build & Release Tasks.
  */
 
-gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'scripts', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip' , 'sftp-upload-to-testing-sandbox', 'open-sandbox',  function(done) {
+gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'scripts', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip' , 'sftp-upload-to-testing-sandbox', 'open-sandbox',  function(done) {
 	done();
 } ) );
 
