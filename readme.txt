@@ -64,6 +64,7 @@ The breakthrough Typography Control Panel within CoBlocks lets you design web pa
 ## Turn off blocks with the Block Manager
 Easily toggle off any WordPress block in the Gutenberg editor with the new CoBlocks Block Manager. No more unnecessary WordPress Gutenberg blocks standing in the way for you, or your clients.
 
+= Watch it in action =
 https://www.youtube.com/watch?v=0v9rXLDv-FM
 
 ## Going beyond Gutenberg blocks
