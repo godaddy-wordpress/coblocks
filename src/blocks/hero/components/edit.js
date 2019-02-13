@@ -8,7 +8,7 @@ import times from 'lodash/times';
 /**
  * Internal dependencies
  */
-// import Inspector from './inspector';
+import Inspector from './inspector';
 // import Controls from './controls';
 
 /**
@@ -34,17 +34,22 @@ const { Spinner } = wp.components;
  * @type {string[]}
 */
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row' , 'coblocks/column', 'coblocks/buttons' ];
-const TEMPLATE = [
-	[ 'coblocks/row', { columns: 1, align: 'full', layout: '100', paddingSize: 'advanced', paddingUnit: '%', paddingTop: 8, paddingRight: 40, paddingBottom: 8, paddingLeft: 8, hasMarginControl: false, hasStackedControl: false, hasAlignmentControls: false, customBackgroundColor: '#f4e9e0' }, [
-        [ 'coblocks/column', { width: "100" },
-        	[
-        		[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Hero Block', 'content placeholder' ) , level: 2 } ],
-				[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'An introductory area of a page accompanied by a small amount of text and a call to action.', 'content placeholder' ) } ],
-				[ 'coblocks/buttons', { contentAlign: 'left', items: 2, gutter: 'medium' }],
-        	]
-        ],
-    ] ],
-];
+
+const getTemplate = memoize( ( props ) => {
+	let template = [
+		[ 'coblocks/row', { columns: 1, align: 'full', layout: '100', paddingSize: 'advanced', paddingUnit: '%', paddingTop: 8, paddingRight: 40, paddingBottom: 8, paddingLeft: 8, hasMarginControl: false, hasStackedControl: false, hasAlignmentControls: false, customBackgroundColor: '#f4e9e0' }, [
+	        [ 'coblocks/column', { width: "100" },
+	        	[
+	        		[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Hero Block', 'content placeholder' ) , level: 2 } ],
+					[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'An introductory area of a page accompanied by a small amount of text and a call to action.', 'content placeholder' ) } ],
+					[ 'coblocks/buttons', { contentAlign: 'left', items: 2, gutter: 'medium' }],
+	        	]
+	        ],
+	    ] ],
+	];
+
+	return template;
+} );
 
 /**
  * Block edit function
@@ -58,6 +63,7 @@ class Edit extends Component {
 	render() {
 
 		const {
+			clientId,
 			attributes,
 			className,
 			isSelected,
@@ -65,11 +71,7 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
-			gutter,
-			items,
-			stacked,
-			contentAlign,
-			isStackedOnMobile,
+			layout,
 		} = attributes;
 
 		const classes = classnames(
@@ -79,10 +81,7 @@ class Edit extends Component {
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-hero__inner',{
-				[ `flex-align-${ contentAlign }` ] : contentAlign,
-				[ `has-${ gutter }-gutter` ] : gutter,
-				'is-stacked': stacked,
-				'is-stacked-on-mobile': isStackedOnMobile,
+				[ `hero-${ layout }-align` ] : layout,
 			}
 		);
 
@@ -91,6 +90,11 @@ class Edit extends Component {
 		};
 		return [
 			<Fragment>
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
 				<div
 					className={ classnames(
 						className, {
@@ -101,9 +105,9 @@ class Edit extends Component {
 					<div className={ innerClasses } style={ innerStyles } >
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
 							<InnerBlocks
-								template={ TEMPLATE }
+								template={ getTemplate( this.props ) }
 								allowedBlocks={ ALLOWED_BLOCKS }
-								templateLock={ true }
+								templateLock="all"
 								templateInsertUpdatesSelection={ false }
 							/>
 						) }

@@ -43,6 +43,10 @@ const blockAttributes = {
 		type: 'string',
 		default: 'center',
 	},
+	layout: {
+		type: 'string',
+		default: 'center-left',
+	},
 };
 
 const settings = {
