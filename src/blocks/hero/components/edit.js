@@ -35,10 +35,10 @@ const { Spinner } = wp.components;
 */
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row' , 'coblocks/column', 'coblocks/buttons' ];
 const TEMPLATE = [
-	[ 'coblocks/row', { columns: 1, align: 'full', layout: '100', paddingSize: 'advanced', paddingUnit: '%', paddingTop: 5, paddingRight: 40, paddingBottom: 5, paddingLeft: 5, hasMarginControl: false, hasStackedControl: false, hasAlignmentControls: false, customBackgroundColor: '#FFFFFF' }, [
+	[ 'coblocks/row', { columns: 1, align: 'full', layout: '100', paddingSize: 'advanced', paddingUnit: '%', paddingTop: 8, paddingRight: 40, paddingBottom: 8, paddingLeft: 8, hasMarginControl: false, hasStackedControl: false, hasAlignmentControls: false, customBackgroundColor: '#f4e9e0' }, [
         [ 'coblocks/column', { width: "100" },
         	[
-        		[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Hero Block', 'content placeholder' ) , level: 3 } ],
+        		[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Hero Block', 'content placeholder' ) , level: 2 } ],
 				[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'An introductory area of a page accompanied by a small amount of text and a call to action.', 'content placeholder' ) } ],
 				[ 'coblocks/buttons', { contentAlign: 'left', items: 2, gutter: 'medium' }],
         	]
