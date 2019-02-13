@@ -120,6 +120,9 @@ Please reach out via the contact form at the bottom right of [our website](https
 
 == Changelog ==
 
+= 1.9.2 =
+* Fix: Add hot fix to resolve the core inserter conflict on empty paragraph blocks
+
 = 1.9.1 =
 * New: Disable any block (CoBlocks, core and other third-party blocks) with the new CoBlocks Block Manager 🎉
 * New: Add official support for Gutenberg 5.0 and the upcoming WordPress 5.1 release 🎊
