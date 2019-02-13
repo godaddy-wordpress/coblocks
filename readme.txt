@@ -120,7 +120,7 @@ Please reach out via the contact form at the bottom right of [our website](https
 
 = 1.9.1 =
 * New: Disable any block (CoBlocks, core and other third-party blocks) with the new CoBlocks Block Manager 🎉
-* New: Add official support for Gutenberg 5.0 and the upcoming WordPress 5.1 release
+* New: Add official support for Gutenberg 5.0 and the upcoming WordPress 5.1 release 🎊
 * Tweak: Update keywords for the Google Map block
 * Fix: Google Map block help links now properly resolve
 
