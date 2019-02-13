@@ -11,6 +11,8 @@ const { addFilter } = wp.hooks;
 const { Fragment }	= wp.element;
 const { compose, createHigherOrderComponent } = wp.compose;
 
+const allowedBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/feature', , 'coblocks/media-card', 'coblocks/shape-divider' ];
+
 /**
  * Filters registered block settings, extending attributes with settings
  *
@@ -20,7 +22,7 @@ const { compose, createHigherOrderComponent } = wp.compose;
 function addAttributes( settings ) {
 
 	// Add custom selector/id
-	if( typeof settings.attributes !== 'undefined' ){
+	if( allowedBlocks.includes( settings.name ) && typeof settings.attributes !== 'undefined' ) {
 		settings.attributes = Object.assign( settings.attributes, {
 			coblocks: { type: 'object' }
 		} );
@@ -44,14 +46,12 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 			setAttributes,
 		} = props;
 
-		const coBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/feature', , 'coblocks/media-card', 'coblocks/shape-divider' ];
-
-		if( typeof attributes.coblocks === 'undefined' ){
+		if ( typeof attributes.coblocks === 'undefined' ) {
 			attributes.coblocks = [];
 		}
 
 		//add unique selector
-		if( coBlocks.includes( props.name ) && typeof attributes.coblocks.id === 'undefined' ){
+		if( allowedBlocks.includes( props.name ) && typeof attributes.coblocks.id === 'undefined' ){
 			let d = new Date();
 
 			if( typeof attributes.coblocks !== 'undefined' && typeof attributes.coblocks.id !== 'undefined' ){
@@ -69,7 +69,6 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 		);
 	};
 }, 'withAttributes');
-
 
 addFilter(
 	'blocks.registerBlockType',
