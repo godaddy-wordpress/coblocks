@@ -27,7 +27,7 @@ const icon = icons.googleMap;
 
 const keywords = [
 	__( 'address' ),
-	__( 'location' ),
+	__( 'maps' ),
 	__( 'google' ),
 ];
 
