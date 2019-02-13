@@ -289,18 +289,6 @@ gulp.task('zip', function(done) {
 	done();
 });
 
-gulp.task('build-notice', function(done) {
-	return gulp.src( './' )
-	.pipe( notify( { message: 'The test build of ' + title + ' ' + pkg.version + ' is complete and uploaded to the testing sandbox.', onLast: false } ) );
-	done();
-});
-
-gulp.task('release-notice', function(done) {
-	return gulp.src( './' )
-	.pipe( notify( { message: 'The release build of ' + title + ' ' + pkg.version + ' is complete and ready to be uploaded to WordPress.org.', onLast: false } ) );
-	done();
-});
-
 gulp.task( 'sftp-upload-to-testing-sandbox', function(done) {
 
 
@@ -345,6 +333,10 @@ gulp.task( 'open-sandbox', function(done){
 	done();
 });
 
+/**
+ * Build & Release Tasks.
+ */
+
 gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'scripts', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip' , 'sftp-upload-to-testing-sandbox', 'open-sandbox',  function(done) {
 	done();
 } ) );
@@ -353,10 +345,29 @@ gulp.task('build-process-wo-translations', gulp.series( 'clearCache', 'clean', '
 	done();
 } ) );
 
+gulp.task( 'build-notice', function(done) {
 
-/**
- * Release Tasks.
- */
+	var sandbox;
+
+	try {
+		var sandbox = require('./sandbox.json');
+	} catch (error) {
+		done();
+	}
+
+	if ( sandbox ) {
+		return gulp.src( './' )
+		.pipe( notify( { message: 'The test build of ' + title + ' ' + pkg.version + ' is complete and uploaded to the sandbox for testing.', onLast: false } ) )
+		done();
+	} else {
+		return gulp.src( './' )
+		.pipe( notify( { message: 'The ' + pkg.version + ' release was built but not uploaded to the testing sandbox. You do not have proper permissions to do so.', onLast: true } ) )
+		done();
+	}
+
+	done();
+});
+
 gulp.task( 'release-notice', function(done) {
 
 	var sandbox;
@@ -369,7 +380,7 @@ gulp.task( 'release-notice', function(done) {
 
 	if ( sandbox ) {
 		return gulp.src( './' )
-		.pipe( notify( { message: 'Version ' + pkg.version + ' of ' + title + ' has been uploaded to the testing sandbox.', onLast: false } ) )
+		.pipe( notify( { message: 'The release build of ' + title + ' ' + pkg.version + ' is complete, uploaded to the sandbox, and ready to be uploaded to WordPress.org.', onLast: false } ) )
 		done();
 	} else {
 		return gulp.src( './' )
