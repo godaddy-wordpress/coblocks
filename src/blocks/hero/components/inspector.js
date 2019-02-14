@@ -1,6 +1,7 @@
 /**
- * Internal dependencies
+ * External dependencies
  */
+import map from 'lodash/map';
 
 /**
  * WordPress dependencies
@@ -56,6 +57,7 @@ class Inspector extends Component {
 			},
 			column:{
 				contentAlign: 'left',
+				align: 'left',
 			}
 		};
 
@@ -68,6 +70,7 @@ class Inspector extends Component {
 			},
 			column:{
 				contentAlign: 'center',
+				align: 'center',
 			}
 		};
 
@@ -80,6 +83,7 @@ class Inspector extends Component {
 			},
 			column:{
 				contentAlign: 'right',
+				align: 'right',
 			}
 		};
 
@@ -97,8 +101,15 @@ class Inspector extends Component {
 								setAttributes( { layout: value } );
 
 								dispatch( 'core/editor' ).updateBlockAttributes( getBlockContents.innerBlocks[0].clientId, layoutPadding[ value ].row );
-								dispatch( 'core/editor' ).updateBlockAttributes( getBlockContents.innerBlocks[0].innerBlocks[0].clientId, layoutPadding[ value ].column );
-								console.log( layoutPadding[ value ].column  );
+
+								//content alignment changes
+								if( getBlockContents.innerBlocks[0].innerBlocks[0].innerBlocks ){
+									map( getBlockContents.innerBlocks[0].innerBlocks[0].innerBlocks, ( innerBlock ) => {
+										if( innerBlock.clientId ){
+											dispatch( 'core/editor' ).updateBlockAttributes( innerBlock.clientId, layoutPadding[ value ].column );
+										}
+									} );
+								}
 							} }
 						/>
 					</PanelBody>
