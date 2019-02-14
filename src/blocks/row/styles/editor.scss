@@ -577,3 +577,43 @@ body {
 		}
 	}
 }
+
+// The "Add Accordion Item" button
+.wp-block-coblocks-column {
+	> .wp-block-coblocks-column__inner{
+		> .editor-inner-blocks{
+			> .editor-block-list__layout{
+				> div:not(.wp-block){
+					> .editor-default-block-appender{
+						> .editor-inserter{
+							position: relative;
+    						display: block;
+							.components-button {
+								opacity: 1;
+								display: block;
+								position: relative;
+								background: #f7f7f7;
+								border: 1px dashed #ccc;
+								border-radius: 3px;
+								box-shadow: none !important;
+								font-size: 14px;
+								height: 40px !important;
+								height: auto;
+								justify-content: center;
+								line-height: 31px;
+								padding: 0 9px 0 8px;
+								padding: 8px 15px;
+								text-align: center;
+								width: 100%;
+
+								svg {
+									display: inline-block;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
