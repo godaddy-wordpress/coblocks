@@ -5,7 +5,7 @@
  * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
  * Author: CoBlocks
  * Author URI: https://coblocks.com/
- * Version: 1.9.0
+ * Version: 1.9.2
  * Text Domain: coblocks
  * Domain Path: languages
  * Tested up to: @@pkg.tested_up_to
