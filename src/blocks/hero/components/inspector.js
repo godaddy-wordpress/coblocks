@@ -4,6 +4,12 @@
 import map from 'lodash/map';
 
 /**
+ * Internal dependencies
+ */
+import BackgroundImagePanel from '../../../components/background';
+import DimensionsControl from '../../../components/dimensions-control/';
+
+/**
  * WordPress dependencies
  */
 const { __, sprintf } = wp.i18n;
@@ -31,7 +37,14 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
-			layout
+			layout,
+			paddingTop,
+			paddingRight,
+			paddingBottom,
+			paddingLeft,
+			paddingUnit,
+			paddingSyncUnits,
+			paddingSize,
 		} = attributes;
 
 		/**
@@ -115,6 +128,19 @@ class Inspector extends Component {
 									} );
 								}
 							} }
+						/>
+
+						<DimensionsControl { ...this.props }
+							type={ 'padding' }
+							label={ __( 'Padding' ) }
+							help={ __( 'Space inside of the container.' ) }
+							valueTop={ paddingTop }
+							valueRight={ paddingRight }
+							valueBottom={ paddingBottom }
+							valueLeft={ paddingLeft }
+							unit={ paddingUnit }
+							syncUnits={ paddingSyncUnits }
+							dimensionSize={ paddingSize }
 						/>
 					</PanelBody>
 				</InspectorControls>

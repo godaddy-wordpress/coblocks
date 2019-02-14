@@ -10,6 +10,7 @@ import times from 'lodash/times';
  */
 import Inspector from './inspector';
 // import Controls from './controls';
+import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../components/background';
 
 /**
  * WordPress dependencies
