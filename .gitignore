@@ -22,3 +22,4 @@ dist/blocks.style.build.css
 .DS_Store
 includes/.DS_Store
 .DS_Store
+sandbox.json

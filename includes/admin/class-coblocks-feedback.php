@@ -271,11 +271,11 @@ class CoBlocks_Feedback {
 			<div class="coblocks-notice-inner">
 				<div class="coblocks-notice-icon">
 					<?php /* translators: 1. Name */ ?>
-					<img src="https://ps.w.org/coblocks/assets/icon-256x256.jpg" alt="<?php printf( esc_attr__( '%1$s WordPress Plugin', '@@textdomain' ), esc_attr( $this->name ) ); ?>" />
+					<img src="https://ps.w.org/coblocks/assets/icon-256x256.jpg" alt="<?php printf( esc_attr__( '%s WordPress Plugin', '@@textdomain' ), esc_attr( $this->name ) ); ?>" />
 				</div>
 				<div class="coblocks-notice-content">
 					<?php /* translators: 1. Name */ ?>
-					<h3><?php printf( esc_html__( 'Are you enjoying %1$s?', '@@textdomain' ), esc_html( $this->name ) ); ?></h3>
+					<h3><?php printf( esc_html__( 'Are you enjoying %s?', '@@textdomain' ), esc_html( $this->name ) ); ?></h3>
 					<p>
 						<?php /* translators: 1. Name, 2. Time */ ?>
 						<?php printf( esc_html__( 'You have been using %1$s for %2$s now! Mind leaving a quick review to let us know know what you think? I\'d really appreciate it!', '@@textdomain' ), esc_html( $this->name ), esc_html( $time ) ); ?>

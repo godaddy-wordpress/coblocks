@@ -22,7 +22,6 @@ CoBlocks is powerful but lightweight: it adds functionality to the WordPress edi
 
 
 = See for yourself =
-
 https://www.youtube.com/watch?v=SfWoVX_uJ0M
 
 
@@ -46,10 +45,10 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Pricing Table Block
 * Social Sharing Block
 
-And we're adding new Gutenberg blocks every week :)
+And we're adding new Gutenberg blocks nearly every week!
 
 ## Breakthrough Page Builder System
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, with the new WordPress editor. 
+[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, with the new WordPress editor.
 
 You get the extra blocks you need <em>and</em> the layout and design functionality for a true page builder experience.
 
@@ -62,9 +61,14 @@ Each of the WordPress blocks within CoBlocks have been precisely fined tuned to 
 ## Custom Typography Controls
 The breakthrough Typography Control Panel within CoBlocks lets you design web pages with alluring typographic elements. <strong>Set fonts, sizes, weights, transformations and more</strong>, in our CoBlocks blocks, <em>and</em> in core WordPress blocks.
 
+## Turn off blocks with the Block Manager
+Easily toggle off any WordPress block in the Gutenberg editor with the new CoBlocks Block Manager. No more unnecessary WordPress Gutenberg blocks standing in the way for you, or your clients.
 
-## Our Vision: going beyond Gutenberg blocks
-The vision for CoBlocks has always been to create a suite of Gutenberg blocks to help folks make beautiful websites. This newest release of CoBlocks is the ultimate expression of that vision. And we think we've nailed it.
+= Watch it in action =
+https://www.youtube.com/watch?v=0v9rXLDv-FM
+
+## Going beyond Gutenberg blocks
+The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks make beautiful websites easily. These newest releases of CoBlocks is the ultimate expression of that vision.
 
 <strong>Join us</strong> in welcoming the future of WordPress blocks:
 
@@ -76,7 +80,7 @@ The vision for CoBlocks has always been to create a suite of Gutenberg blocks to
 * [Follow us on Instagram](https://www.instagram.com/coblockswp/)
 
 ## Built with developers in mind
-Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/thatplugincompany/coblocks) and join the party. 🎉
+Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/coblocks/coblocks) and join the party. 🎉
 
 
 == Screenshots ==
@@ -86,6 +90,7 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 3. Drag to resize and then nest CoBlocks Row blocks
 4. Design with the CoBlocks Typography Control Panel
 5. Add CoBlocks core blocks to pages
+6. Disable blocks with the Block Manager
 
 == Installation ==
 
@@ -114,6 +119,15 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 Please reach out via the contact form at the bottom right of [our website](https://coblocks.com).
 
 == Changelog ==
+
+= 1.9.2 =
+* Fix: Add hot fix to resolve the core inserter conflict on empty paragraph blocks
+
+= 1.9.1 =
+* New: Disable any block (CoBlocks, core and other third-party blocks) with the new CoBlocks Block Manager 🎉
+* New: Add official support for Gutenberg 5.0 and the upcoming WordPress 5.1 release 🎊
+* Tweak: Update keywords for the Google Map block
+* Fix: Google Map block help links now properly resolve
 
 = 1.9.0 =
 * New: Add Features block for adding up to three columns of features/services 🎉
