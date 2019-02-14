@@ -34,6 +34,10 @@ class Inspector extends Component {
 			layout
 		} = attributes;
 
+		/**
+		 * Set layout options and padding controls for Row Blocks
+		 * This will make us of existing block instead of creating new one 
+		 */
 		const layoutOptions = [
 			// { value: 'top-left', label: __( 'Top Left' ) },
 			// { value: 'top-center', label: __( 'Top Center' ) },
