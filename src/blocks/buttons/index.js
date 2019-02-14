@@ -67,6 +67,20 @@ const settings = {
 		stackedOnMobile: true
 	},
 
+	transforms: {
+		from: [
+			{
+				type: 'prefix',
+				prefix: '::buttons',
+				transform: function( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+					} );
+				},
+			},
+		],
+	},
+
 	edit: Edit,
 
 	save( { attributes, className } ) {
