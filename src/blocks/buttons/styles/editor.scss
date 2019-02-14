@@ -171,9 +171,9 @@
 				}
 				.wp-block[data-type="core/button"] {
 					display:block;
-					width: 100% !important;
-					margin-left: 0px;
-    				margin-right: 0px;
+					// width: 100% !important;
+					margin-left: 0px !important;
+    				margin-right: 0px !important;
 				}
 
 				&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
