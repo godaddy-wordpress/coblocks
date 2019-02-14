@@ -83,10 +83,10 @@ class Edit extends Component {
 			    if( typeof this.props.sections != "undefined" ){
 			    	var sections = this.props.sections;
 			    	var navtabs   = [{
-										name: 'coblocks-sections',
-										title: __( 'Section Library' ),
-										className: 'coblocks-sections',
-									}];
+						name: 'coblocks-sections',
+						title: __( 'CoBlocks Library' ),
+						className: 'edit-post-sidebar__panel-tab coblocks-sections',
+					}];
 
 					//check if theme templates available
 					if( typeof this.props.theme_sections != "undefined" ){
@@ -95,7 +95,7 @@ class Edit extends Component {
 								navtabs.push({
 									name: 'coblocks-theme',
 									title: __( this.props.theme_name ),
-									className: 'coblocks-theme',
+									className: 'edit-post-sidebar__panel-tab coblocks-theme',
 								});
 							}
 						}
@@ -105,14 +105,15 @@ class Edit extends Component {
 						navtabs.push({
 							name: 'coblocks-saved',
 							title: __( 'My Sections' ),
-							className: 'coblocks-saved',
+							className: 'edit-post-sidebar__panel-tab coblocks-saved',
 						});
 					}
 
 					if( Object.keys( sections ).length > 0 ){
 						return (
-							<TabPanel className="coblocks-tab-panel"
-								activeClass="active-tab"
+							<TabPanel
+								className="coblocks-tab-panel"
+								activeClass="is-active"
 								tabs={ navtabs }>
 								{
 									( tab ) => {
@@ -444,8 +445,7 @@ class Edit extends Component {
 					<Placeholder
 						icon={ brandAssets.blockIcon }
 						label={  __( 'Add CoBlocks Layout' ) }
-						instructions={  __( 'Add a beautifully designed layout from your theme or the CoBlocks Layout Libary.' ) }
-						className="block-coblocks-inserter"
+						instructions={  __( 'Add a layout from your theme or the CoBlocks Layout Libary.' ) }
 					>
 						<Spinner />
 					</Placeholder>
@@ -457,21 +457,22 @@ class Edit extends Component {
 			<Fragment>
 				<Placeholder
 						icon={ brandAssets.blockIcon }
-						label={  __( 'Add CoBlocks Layout' ) }
-						instructions={  __( 'Add a beautifully designed layout from your theme or the CoBlocks Layout Libary.' ) }
+						label={  __( 'Add Layout' ) }
+						instructions={  __( 'Add a layout from your theme or the CoBlocks Layout Libary.' ) }
 						className="block-coblocks-inserter"
 					>
 					<Button
 						isLarge
 						type="button"
 						onClick={ () => this.openModal('sections') }>
-						{ __( 'Add Section' ) }
+						{ __( 'Add Section Layout' ) }
 					</Button>
 					{ this.state.isOpen ?
 						<Modal
 							className='coblocks-modal-component components-modal--coblocks-layouts'
 							icon={ brandAssets.modalIcon }
 							title={ __( 'Section Layouts' ) }
+							closeLabel={ __( 'Close Layouts' ) }
 							onRequestClose={ this.closeModal }>
 							{ this.contentModal( this.contentType ) }
 						</Modal>
