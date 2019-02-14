@@ -133,24 +133,24 @@ class Edit extends Component {
 														/>
 														<input type="text" class="coblocks__modal-controls--search" placeholder={ __( 'Search...' ) } onChange={ (evt) => this.filterList( evt, 'sections' ) } />
 													</div>,
-														<Masonry
-												                className={'coblocks-lists'}
-												                elementType={'ul'}
-												                options={masonryOptions}
-												                disableImagesLoaded={false}
-												                updateOnEachImageLoad={false}
-												            >
-												                { Object.entries( this.state.sectionItems ).map( post => this.renderListItem( post ) ) }
-											           		</Masonry>,
+													<Masonry
+														className={'coblocks-layouts__list'}
+														elementType={'ul'}
+														options={masonryOptions}
+														disableImagesLoaded={false}
+														updateOnEachImageLoad={false}
+													>
+														{ Object.entries( this.state.sectionItems ).map( post => this.renderListItem( post ) ) }
+													</Masonry>,
 												];
 												break;
 
 											case 'coblocks-theme':
 												if( typeof this.props.theme_sections != "undefined" ){
-													var theme_sections 	 = this.props.theme_sections;
-													if( Object.keys( theme_sections ).length > 0 ){
+													var theme_sections = this.props.theme_sections;
+													if ( Object.keys( theme_sections ).length > 0 ) {
 														return(
-															<ul className='coblocks-lists'>
+															<ul className='coblocks-layouts__list'>
 																{ Object.entries( theme_sections ).map( template => this.renderListItem( template ) ) }
 															</ul>
 														);
@@ -160,27 +160,12 @@ class Edit extends Component {
 
 											case 'coblocks-saved':
 												if( typeof this.props.saved_sections != "undefined" ){
-													var saved 	 = this.props.saved_sections;
-													if( Object.keys( saved ).length > 0 ){
+													var saved = this.props.saved_sections;
+													if ( Object.keys( saved ).length > 0 ) {
 														return(
-															<ul className='coblocks-lists'>
+															<ul className='coblocks-layouts__list'>
 																{ Object.entries( saved ).map( template => this.renderTableItem( template ) ) }
 															</ul>
-														);
-													}else{
-														return(
-															<div class="coblocks-nolists">
-															{ [
-																<h3>{ __( 'Create Your First Section' ) }</h3>,
-																<p>{ __( 'Add sections and reuse them across your website.' ) }</p>,
-																<Button
-																	isPrimary
-																	href={ addQueryArgs( 'edit.php',{ post_type: 'coblocks', 'add-new': 'section' } ) }
-																	target="_blank" >
-																	{ __( 'Add New Section' ) }
-																</Button>,
-															] }
-															</div>
 														);
 													}
 												}
