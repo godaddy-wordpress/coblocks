@@ -598,10 +598,9 @@ body {
 								box-shadow: none !important;
 								font-size: 14px;
 								height: 40px !important;
-								height: auto;
 								justify-content: center;
 								line-height: 31px;
-								padding: 0 9px 0 8px;
+								margin-left: 8px;
 								padding: 8px 15px;
 								text-align: center;
 								width: 100%;
@@ -615,5 +614,123 @@ body {
 				}
 			}
 		}
+	}
+
+	&.wp-block-coblocks-column-placeholder{
+		.editor-default-block-appender{
+			.editor-default-block-appender__content{
+				display:none;
+			}
+		}
+	}
+}
+
+//add new button when row is selected
+div[data-type="coblocks/row"].is-selected{
+	> .editor-block-list__block-edit{
+		> div{
+			> .wp-block-coblocks-row{
+				> .wp-block-coblocks-row__inner{
+					.wp-block-coblocks-column {
+						// &:not(.wp-block-coblocks-column-placeholder){
+							> .wp-block-coblocks-column__inner{
+								> .editor-inner-blocks{
+									> .editor-block-list__layout{
+										> div:nth-last-child(2){
+											padding-bottom: 40px;
+											> .editor-block-list__insertion-point{
+												top: auto;
+												bottom: 0px;
+												> .editor-block-list__insertion-point-inserter{
+													opacity: 1;
+													position: relative;
+							    					display: block;
+													.editor-inserter{
+														position: relative;
+							    						display: block;
+														.components-button {
+															opacity: 1;
+															display: block;
+															position: relative;
+															background: #f7f7f7;
+															border: 1px dashed #ccc;
+															border-radius: 3px;
+															box-shadow: none !important;
+															font-size: 14px;
+															height: 40px !important;
+															justify-content: center;
+															line-height: 31px;
+															padding: 8px 15px;
+															text-align: center;
+															width: 100%;
+															color: #555d66;
+
+															svg {
+																display: inline-block;
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						// }
+					}
+				}
+			}
+		}
+	}
+}
+
+// when column is selected
+div[data-type="coblocks/column"]{
+	.wp-block-coblocks-column {
+		// &:not(.wp-block-coblocks-column-placeholder){
+			> .wp-block-coblocks-column__inner{
+				> .editor-inner-blocks{
+					> .editor-block-list__layout{
+						> div:nth-last-child(2){
+							padding-bottom: 40px;
+							> .editor-block-list__insertion-point{
+								top: auto;
+								bottom: 0px;
+								> .editor-block-list__insertion-point-inserter{
+									opacity: 1;
+									position: relative;
+			    					display: block;
+									.editor-inserter{
+										position: relative;
+			    						display: block;
+										.components-button {
+											opacity: 1;
+											display: block;
+											position: relative;
+											background: #f7f7f7;
+											border: 1px dashed #ccc;
+											border-radius: 3px;
+											box-shadow: none !important;
+											font-size: 14px;
+											height: 40px !important;
+											justify-content: center;
+											line-height: 31px;
+											padding: 8px 15px;
+											text-align: center;
+											width: 100%;
+											color: #555d66;
+
+											svg {
+												display: inline-block;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		// }
 	}
 }

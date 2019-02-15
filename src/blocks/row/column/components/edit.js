@@ -73,16 +73,22 @@ class Edit extends Component {
 			contentAlign,
 		} = attributes;
 
+		const parentId = wp.data.select( 'core/editor' ).getBlockRootClientId( clientId );
+		const columnBlocks = wp.data.select( 'core/editor' ).getBlock( clientId );
+		const parentBlocks = wp.data.select( 'core/editor' ).getBlocksByClientId( parentId );
+		const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
+		const nextBlockClient = wp.data.select( 'core/editor' ).getBlock( nextBlockClientId );
 		const dropZone = (
 			<BackgroundImageDropZone
 				{ ...this.props }
 				label={ sprintf( __( 'Add backround image to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
 			/>
 		);
-
+		
 		const classes = classnames(
 			'wp-block-coblocks-column', {
 				[ `coblocks-column-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+				'wp-block-coblocks-column-placeholder' : columnBlocks && columnBlocks.innerBlocks && Object.keys( columnBlocks.innerBlocks ).length < 1,
 			}
 		);
 
@@ -110,11 +116,6 @@ class Edit extends Component {
 			marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
 			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 		};
-
-		const parentId = wp.data.select( 'core/editor' ).getBlockRootClientId( clientId );
-		const parentBlocks = wp.data.select( 'core/editor' ).getBlocksByClientId( parentId );
-		const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
-		const nextBlockClient = wp.data.select( 'core/editor' ).getBlock( nextBlockClientId );
 
 		if ( parseInt( width ) == 100 ) {
 			return [
