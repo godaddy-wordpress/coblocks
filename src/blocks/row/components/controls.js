@@ -70,8 +70,8 @@ class Controls extends Component {
 
 		return (
 			<Fragment>
-				{ ( columns && selectedRows > 1 ) &&
-					<BlockControls>
+				<BlockControls>
+					{ ( columns && selectedRows > 1 ) &&
 						<Toolbar>
 							<VisualDropdown
 								icon={ this.layoutIcon() }
@@ -98,11 +98,11 @@ class Controls extends Component {
 								] }
 							/>
 						</Toolbar>
-						{ layout &&
-							BackgroundImageToolbarControls( this.props )
-						}
-					</BlockControls>
-				}
+					}
+					{ layout &&
+						BackgroundImageToolbarControls( this.props )
+					}
+				</BlockControls>
 			</Fragment>
 		);
 	}
