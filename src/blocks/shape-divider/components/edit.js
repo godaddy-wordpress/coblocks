@@ -19,7 +19,7 @@ import { getDividerFromStyle } from '.././';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { ResizableBox } = wp.components;
+const { ResizableBox, ColorPalette } = wp.components;
 
 /**
  * Block edit function
@@ -203,7 +203,7 @@ class Edit extends Component {
 						size={ {
 							height: shapeHeightResizer.value,
 						} }
-						minHeight="10"
+						minHeight="20"
 						enable={ {
 							top: false,
 							right: false,
@@ -304,6 +304,14 @@ class Edit extends Component {
 							this.setState( { resizingAlt: true } );
 						} }
 					>
+					{ isSelected && (
+						<div className="components-coblocks-inline-palette">
+							<ColorPalette
+								value={ color.color }
+								onChange={ ( color ) => setAttributes( { color: null, customColor: color } ) }
+							/>
+						</div>
+					) }
 					</ResizableBox>
 				</div>
 			</Fragment>
