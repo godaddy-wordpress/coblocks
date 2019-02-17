@@ -65,32 +65,13 @@
 	}
 
 	.wp-block-coblocks-shape-divider__svg-wrapper::after {
+		width: 100%;
 		left: 0;
 		right: 0;
-		width: 100%;
 	}
 
 	.components-resizable-box__handle {
 		z-index: 30;
-	}
-
-	.components-coblocks-inline-palette {
-		bottom: 10px;
-		left: 25px;
-		position: absolute;
-
-		.components-color-palette__clear {
-			display: none;
-		}
-
-		.components-color-palette__item::after {
-			box-shadow: inset 0 0 0 1px #fff;
-		}
-	}
-
-	.wp-block-coblocks-shape-divider.is-vertically-flipped .components-coblocks-inline-palette {
-		bottom: inherit;
-		top: 20px;
 	}
 }
 
