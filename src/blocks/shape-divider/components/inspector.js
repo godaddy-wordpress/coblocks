@@ -82,7 +82,7 @@ class Inspector extends Component {
 							onChangeMobile={ ( event ) => { setAttributes( { backgroundHeightMobile: parseInt( event.target.value, 10 ) } ) } }
 							sync={ syncHeight }
 							type="backgroundHeight"
-							min="20"
+							min="10"
 						/>
 						<OrientationControl { ...this.props }
 							label={ __( 'Orientation' ) }
