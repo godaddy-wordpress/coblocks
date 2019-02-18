@@ -75,6 +75,14 @@
 	h6 {
 		color: inherit;
 	}
+
+	&__inner{
+		&.has-background-overlay{
+			> [class*="wp-block-"]{
+				position: relative;
+			}
+		}
+	}
 }
 
 //Fix background color contrast issue
