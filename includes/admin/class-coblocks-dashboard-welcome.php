@@ -96,11 +96,11 @@ class CoBlocks_Dashboard_Welcome {
 			<?php $this->header(); ?>
 			<div class="about-description">
 				<div class="featured-video">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/SfWoVX_uJ0M" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/EsIpvCcTKPw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 				</div>
 				<p>
 					<a href="" class="button button-primary"><?php echo esc_html__( 'Create Your First Page', '@@textdomain' ); ?></a>
-					<a href="" class="button button-secondary"><?php echo esc_html__( 'View Full Tutorials', '@@textdomain' ); ?></a>
+					<a href="https://www.youtube.com/channel/UCsOcD4k5eUBH_wWhcxPJZcA" target="_blank" class="button button-secondary"><?php echo esc_html__( 'View Full Tutorials', '@@textdomain' ); ?></a>
 				</p>
 			</div>
 
