@@ -6,7 +6,6 @@
 			> .editor-inner-blocks{
 				> .editor-block-list__layout{
 					display: flex;
-					align-items: center;
  					justify-content: center;
 
  					.wp-block{
@@ -25,6 +24,9 @@
 				> .editor-inner-blocks{
 					> .editor-block-list__layout{
 						justify-content: flex-start;
+						.wp-block[data-type="core/button"]{
+							text-align: left;
+						}
 					}
 				}
 			}
@@ -32,6 +34,9 @@
 				> .editor-inner-blocks{
 					> .editor-block-list__layout{
 						justify-content: flex-end;
+						.wp-block[data-type="core/button"]{
+							text-align: right;
+						}
 					}
 				}
 			}
