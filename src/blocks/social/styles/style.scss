@@ -24,6 +24,10 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 		display: inline-block;
 		margin: 3px 6px 3px 0 !important;
 		vertical-align: middle;
+		
+		&:before, &:after{
+			display: none !important;
+		}
 	}
 
 	&__button {
