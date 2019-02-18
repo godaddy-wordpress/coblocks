@@ -133,9 +133,9 @@
 			}
 
 			// Make the column selected border dashed so we can tell it apart.
-			> .editor-block-list__block-edit::before {
-				outline-style: dashed;
-			}
+			// > .editor-block-list__block-edit::before {
+			// 	outline-style: dashed;
+			// }
 
 			// Make the column selected border dashed so we can tell it apart.
 			&.is-resizing > .editor-block-list__block-edit::before {
@@ -230,9 +230,9 @@
 .wp-block[data-type="coblocks/row"] {
 	background: transparent !important;
 
-	&:not([data-layout="none"]) > .editor-block-list__block-edit::before {
-		outline-style: dashed !important;
-	}
+	// &:not([data-layout="none"]) > .editor-block-list__block-edit::before {
+	// 	outline-style: dashed !important;
+	// }
 
 	> .editor-block-list__block-edit .components-drop-zone {
 		z-index: 159999;
@@ -580,14 +580,14 @@ body {
 
 // The "Add Accordion Item" button
 .wp-block-coblocks-column {
-	> .wp-block-coblocks-column__inner{
-		> .editor-inner-blocks{
-			> .editor-block-list__layout{
-				> div:not(.wp-block){
-					> .editor-default-block-appender{
-						> .editor-inserter{
+	> .wp-block-coblocks-column__inner {
+		> .editor-inner-blocks {
+			> .editor-block-list__layout {
+				> div:not(.wp-block) {
+					> .editor-default-block-appender {
+						> .editor-inserter {
 							position: relative;
-    						display: none !important;
+							display: none !important;
 						}
 					}
 				}
@@ -595,50 +595,56 @@ body {
 		}
 	}
 
-	&.wp-block-coblocks-column-placeholder{
-		.editor-default-block-appender{
-			.editor-default-block-appender__content{
-				display:none;
+	&.wp-block-coblocks-column-placeholder {
+		.editor-default-block-appender {
+			.editor-default-block-appender__content {
+				display: none;
 			}
 		}
 	}
 }
 
-// when column is selected
-div[data-type="coblocks/column"]{
+// Block inserter within the Column block
+div[data-type="coblocks/column"] {
 	.wp-block-coblocks-column {
-		> .wp-block-coblocks-column__inner{
-			> .editor-inserter{
-				position: relative;
+		> .wp-block-coblocks-column__inner {
+			> .editor-inserter {
 				display: block;
+				position: relative;
+
 				.components-button {
-					opacity: 1;
-					display: block;
-					position: relative;
-					background: #f7f7f7;
-					border: 1px dashed #ccc;
-					border-radius: 3px;
+					background: #f3f4f5;
+					border-radius: 0;
+					border: 1px dashed #d3d5d8;
 					box-shadow: none !important;
+					color: #555d66;
+					display: block;
 					font-size: 14px;
 					height: 40px !important;
 					justify-content: center;
 					line-height: 31px;
-					padding: 8px 15px;
+					margin-top: 1.5em;
+					opacity: 1;
+					padding: 8px;
+					position: relative;
 					text-align: center;
 					width: 100%;
-					color: #555d66;
-					margin-top: 16px;
 
 					svg {
 						display: inline-block;
 					}
+
+					&:hover {
+						color: #191e23;
+					}
 				}
 			}
 		}
-		&.wp-block-coblocks-column-placeholder{
-			.editor-inserter{
+
+		&.wp-block-coblocks-column-placeholder {
+			.editor-inserter {
 				.components-button {
-					margin-top: 0px;
+					margin-top: 0;
 				}
 			}
 		}
