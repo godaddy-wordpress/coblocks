@@ -7,7 +7,11 @@
     padding: 50px;
     box-shadow: 1px 5px 15px rgba(0,0,0,0.02);
     border-radius: 2px;
-    text-align: center;
+    text-align: left;
+
+    .aligncenter{
+    	text-align: center;
+    }
 
     .coblocks--logo{
     	display: block;
@@ -33,6 +37,7 @@
     	
 	    .featured-video{
 	    	margin-top: 50px;
+	    	text-align: center;
 	    }
 	    .button{
 	    	font-size: 18px;

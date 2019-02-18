@@ -79,10 +79,10 @@ class CoBlocks_Dashboard_Welcome {
 		<div class="coblocks--logo">
 			<a href="https://coblocks.com/"><img src="<?php echo COBLOCKS_PLUGIN_URL . '/dist/images/admin/logo.png'; ?>"></a>
 		</div>
-		<h1><?php echo esc_html__( 'Welcome to CoBlocks', '@@textdomain' ); ?></h1>
-		<div class="about-text">
-			<?php echo esc_html__( 'We highly recommend you watch this instructions below to get started, then you will be up and running in no time.', '@@textdomain' ); ?>
-		</div>
+		<h1><?php echo esc_html__( 'Welcome to CoBlocks, the page builder for the new WordPress block editor', '@@textdomain' ); ?></h1>
+		<!-- <div class="about-text">
+			<?php //echo esc_html__( 'We highly recommend you watch this instructions below to get started, then you will be up and running in no time.', '@@textdomain' ); ?>
+		</div> -->
 
 		<?php
 	}
@@ -95,13 +95,22 @@ class CoBlocks_Dashboard_Welcome {
 		<div class="wrap about-wrap coblocks--about-wrap">
 			<?php $this->header(); ?>
 			<div class="about-description">
+				<p><?php echo sprintf( esc_html__( 'Thanks for installing CoBlocks! You\'ve just added both lots of extra useful blocks %sand%s a page builder system to the new WordPress block editor.', '@@textdomain' ), '<em>', '</em>' ); ?></p>
+				<p><?php echo sprintf( esc_html__( 'CoBlocks gives you a %sgame-changing combination of features%s: new blocks, a page-builder experience for Gutenberg, custom typography controls, and our new Block Manager for turning blocks on-and-off.', '@@textdomain' ), '<strong>', '</strong>' ); ?></p>
+				<p><?php echo esc_html__( 'Here\'s a quick getting started video which shows you what you can do with CoBlocks.', '@@textdomain' ); ?></p>
+
 				<div class="featured-video">
 					<iframe width="560" height="315" src="https://www.youtube.com/embed/EsIpvCcTKPw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 				</div>
-				<p>
-					<a href="" class="button button-primary"><?php echo esc_html__( 'Create Your First Page', '@@textdomain' ); ?></a>
-					<a href="https://www.youtube.com/channel/UCsOcD4k5eUBH_wWhcxPJZcA" target="_blank" class="button button-secondary"><?php echo esc_html__( 'View Full Tutorials', '@@textdomain' ); ?></a>
+
+				<p class="aligncenter">
+					<a href="https://coblocks.com/" target="_blank" class="button button-primary"><?php echo esc_html__( 'Get Started with CoBlocks', '@@textdomain' ); ?></a>
+					<a href="https://www.youtube.com/channel/UCsOcD4k5eUBH_wWhcxPJZcA" target="_blank" class="button button-secondary"><?php echo esc_html__( 'View More Tutorials', '@@textdomain' ); ?></a>
 				</p>
+
+				<p><?php echo sprintf( esc_html__( 'Thanks for using CoBlocks! If you have any queries or feedback, let us know on %sTwitter%s or through our  %sFacebook group %s. We are constantly adding new features, so if you want to see what\'s new %sjoin our mailing list%s.', '@@textdomain' ), '<a href="https://twitter.com/coblocks" target="_blank">', '</a>', '<a href="https://www.facebook.com/groups/coblocks" target="_blank">', '</a>', '<a href="https://coblocks.us20.list-manage.com/subscribe?u=fd78cec472f9f62b76fca64d1&id=62cbc3526f" target="_blank">', '</a>' ); ?></p>
+
+				<p><?php echo sprintf( esc_html__( 'Cheers! %sRich, Jeffrey, and Alex', '@@textdomain' ), '<br />' ); ?></p>
 			</div>
 
 		</div>
