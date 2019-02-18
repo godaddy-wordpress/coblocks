@@ -635,5 +635,12 @@ div[data-type="coblocks/column"]{
 				}
 			}
 		}
+		&.wp-block-coblocks-column-placeholder{
+			.editor-inserter{
+				.components-button {
+					margin-top: 0px;
+				}
+			}
+		}
 	}
 }
