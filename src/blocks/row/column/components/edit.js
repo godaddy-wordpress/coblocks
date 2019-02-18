@@ -19,8 +19,8 @@ import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText, InnerBlocks, withFontSizes } = wp.editor;
-const { ResizableBox, Spinner } = wp.components;
+const { RichText, InnerBlocks, withFontSizes, Inserter } = wp.editor;
+const { ResizableBox, Spinner, IconButton } = wp.components;
 const { isBlobURL } = wp.blob;
 
 /**
@@ -241,6 +241,7 @@ class Edit extends Component {
 						<div className={ innerClasses } style={ innerStyles }>
 							{ isBlobURL( backgroundImg ) && <Spinner /> }
 							<InnerBlocks templateLock={ false }/>
+							<Inserter rootClientId={ clientId } isAppender />
 						</div>
 					</div>
 				</ResizableBox>
