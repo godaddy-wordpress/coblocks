@@ -211,7 +211,7 @@ class Edit extends Component {
 						type="button"
 						className="coblocks-layouts__list-item-action-button"
 						onClick={ () => this.insertItem( template[1].path, ( typeof template[1].fonts != "undefined" ) ? template[1].fonts : '' ) }>
-						{ __( 'Insert' ) }
+						<Dashicon icon={ 'insert' } />
 					</Button>
 				}
 				<h3 className={ 'coblocks-layouts__list-item-title coblocks__template-type--' + this.contentType }>
