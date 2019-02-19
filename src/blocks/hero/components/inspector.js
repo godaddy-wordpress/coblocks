@@ -94,42 +94,42 @@ class Inspector extends Component {
 			// { value: 'bottom-right', label: __( 'Bottom Right' ) },
 		];
 
-		let layoutPadding = {};
+		let layoutAttributes = {};
 
-		layoutPadding[ 'center-left' ] = {
-			row: {
+		layoutAttributes[ 'center-left' ] = {
+			wrapper: {
 				paddingTop: 8, 
 				paddingRight: 40, 
 				paddingBottom: 8, 
 				paddingLeft: 8,
 			},
-			column:{
+			inner:{
 				contentAlign: 'left',
 				align: 'left',
 			}
 		};
 
-		layoutPadding[ 'center-center' ] = {
-			row: {
+		layoutAttributes[ 'center-center' ] = {
+			wrapper: {
 				paddingTop: 8, 
 				paddingRight: 20, 
 				paddingBottom: 8, 
 				paddingLeft: 20,
 			},
-			column:{
+			inner:{
 				contentAlign: 'center',
 				align: 'center',
 			}
 		};
 
-		layoutPadding[ 'center-right' ] = {
-			row: {
+		layoutAttributes[ 'center-right' ] = {
+			wrapper: {
 				paddingTop: 8, 
 				paddingRight: 8, 
 				paddingBottom: 8, 
 				paddingLeft: 40,
 			},
-			column:{
+			inner:{
 				contentAlign: 'right',
 				align: 'right',
 			}
@@ -148,13 +148,13 @@ class Inspector extends Component {
 							onChange={ ( value ) => {
 								setAttributes( { layout: value } );
 
-								dispatch( 'core/editor' ).updateBlockAttributes( getBlockContents.innerBlocks[0].clientId, layoutPadding[ value ].row );
+								dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
 
 								//content alignment changes
-								if( getBlockContents.innerBlocks[0].innerBlocks[0].innerBlocks ){
-									map( getBlockContents.innerBlocks[0].innerBlocks[0].innerBlocks, ( innerBlock ) => {
+								if( getBlockContents.innerBlocks ){
+									map( getBlockContents.innerBlocks, ( innerBlock ) => {
 										if( innerBlock.clientId ){
-											dispatch( 'core/editor' ).updateBlockAttributes( innerBlock.clientId, layoutPadding[ value ].column );
+											dispatch( 'core/editor' ).updateBlockAttributes( innerBlock.clientId, layoutAttributes[ value ].inner );
 										}
 									} );
 								}
