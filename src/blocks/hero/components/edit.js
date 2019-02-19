@@ -9,7 +9,7 @@ import times from 'lodash/times';
  * Internal dependencies
  */
 import Inspector from './inspector';
-// import Controls from './controls';
+import Controls from './controls';
 import applyWithColors from './colors';
 import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../components/background';
 
@@ -100,6 +100,11 @@ class Edit extends Component {
 			<Fragment>
 				{ isSelected && (
 					<Inspector
+						{ ...this.props }
+					/>
+				) }
+				{ isSelected && (
+					<Controls
 						{ ...this.props }
 					/>
 				) }
