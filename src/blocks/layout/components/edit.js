@@ -193,33 +193,29 @@ class Edit extends Component {
 		}
 
 		return (
-			<li key={ 'coblocks-' + template[0] } className={ pro ? 'coblocks-pro' : 'coblocks-default' }>
-				<div className="coblocks-default__inner">
-					<img src={ template[1].screenshot } />
-					<span>
-						{ ( pro && typeof template[1].has_pro == "undefined" ) ?
-							<Button
-								isPrimary
-								href="https://coblocks.com/"
-								className="coblocks-gopro"
-								target="_blank" >
-								{ __( 'Go Pro' ) }
-								<Dashicon icon={ 'external' } />
-							</Button> :
-							<Button
-								isPrimary
-								type="button"
-								 onClick={ () => this.insertItem( template[1].path, ( typeof template[1].fonts != "undefined" ) ? template[1].fonts : '' ) }>
-								{ __( 'Insert' ) }
-							</Button>
-						}
-
-					</span>
-					<div className={ 'coblocks__template-type--' + this.contentType }>
-						<h3>{ template[1].name }</h3>
-					</div>
-					<span class="hidden">{ template[1].tags }</span>
-				</div>
+			<li key={ 'coblocks-' + template[0] } className={ pro ? 'coblocks-layouts__list-item--pro' : 'coblocks-layouts__list-item' }>
+				<img className="coblocks-layouts__list-item-screenshot" src={ template[1].screenshot } />
+				{ ( pro && typeof template[1].has_pro == "undefined" ) ?
+					<Button
+						isPrimary
+						href="https://coblocks.com/"
+						className="coblocks-gopro"
+						target="_blank" >
+						{ __( 'Go Pro' ) }
+						<Dashicon icon={ 'external' } />
+					</Button> :
+					<Button
+						isPrimary
+						type="button"
+						className="coblocks-layouts__list-item-action-button"
+						onClick={ () => this.insertItem( template[1].path, ( typeof template[1].fonts != "undefined" ) ? template[1].fonts : '' ) }>
+						{ __( 'Insert' ) }
+					</Button>
+				}
+				<h3 className={ 'coblocks-layouts__list-item-title coblocks__template-type--' + this.contentType }>
+					{ template[1].name }
+				</h3>
+				<span class="coblocks-layouts__list-item-tags">{ template[1].tags }</span>
 			</li>
 		);
 	}
@@ -229,20 +225,18 @@ class Edit extends Component {
 
 		if ( post[1].meta_value == type ) {
 			return (
-				<li key={ 'coblocks-' + post[1].ID } className={ 'coblocks-' + type }>
-					{ post[1].thumbnail ? <img src={ post[1].thumbnail } /> : <div class="coblocks-placeholder"></div> }
-
-					<span>
-						<Button
-							isPrimary
-							type="button"
-							 onClick={ () => this.insertItemType( post[1].ID ) }>
-							{ __( 'Insert' ) }
-						</Button>
-					</span>
-					<div>
-						<h3>{ post[1].post_title }</h3>
-					</div>
+				<li key={ 'coblocks-' + post[1].ID } className={ 'coblocks-layouts__list-item coblocks-' + type }>
+					{ post[1].thumbnail ? <img className="coblocks-layouts__list-item-screenshot" src={ post[1].thumbnail } /> : <div class="coblocks-placeholder"></div> }
+					<Button
+						isPrimary
+						type="button"
+						className="coblocks-layouts__list-item-action-button"
+						onClick={ () => this.insertItemType( post[1].ID ) }>
+						{ __( 'Add Template' ) }
+					</Button>
+					<h3 className="coblocks-layouts__list-item-title">
+						{ post[1].post_title }
+					</h3>
 				</li>
 			);
 		}
@@ -456,7 +450,7 @@ class Edit extends Component {
 						<Modal
 							className='coblocks-modal-component components-modal--coblocks-layouts'
 							icon={ brandAssets.modalIcon }
-							title={ __( 'Section Layouts' ) }
+							title={ __( 'Layouts' ) }
 							closeLabel={ __( 'Close Layouts' ) }
 							onRequestClose={ this.closeModal }>
 							{ this.contentModal( this.contentType ) }
