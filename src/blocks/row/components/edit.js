@@ -276,6 +276,7 @@ class Edit extends Component {
 		}
 
 		const classes = classnames(
+			className, {
 				[ `coblocks-row--${ id }` ] : id,
 				[ `coblocks-row-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
