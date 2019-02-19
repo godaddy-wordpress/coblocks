@@ -1,0 +1,180 @@
+.wp-block-coblocks-buttons {
+	&,
+	&__inner {
+		position: relative;
+	}
+	&__inner {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		text-align: center;
+
+		&.flex-align-left {
+			justify-content: flex-start;
+			text-align: left;
+		}
+		&.flex-align-right {
+			justify-content: flex-end;
+			text-align: right;
+		}
+
+		// Display button as stacked.
+		&.is-stacked {
+			flex-direction: column;
+
+			.wp-block-button {
+				margin-left: 0 !important;
+				margin-right: 0 !important;
+				width: 100% !important;
+
+				&.wp-block-coblocks-column:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			// Assign row gutters as margin on the frontend.
+			&.has-small-gutter {
+				.wp-block-button {
+					&:not(:last-child) {
+						margin-bottom: $gutter--small;
+					}
+				}
+			}
+
+			&.has-medium-gutter {
+				.wp-block-button {
+					&:not(:last-child) {
+						margin-bottom: $gutter--medium;
+					}
+				}
+			}
+			&.has-large-gutter {
+				.wp-block-button {
+					&:not(:last-child) {
+						margin-bottom: $gutter--large;
+					}
+				}
+			}
+			&.has-huge-gutter {
+				.wp-block-button {
+					&:not(:last-child) {
+						margin-bottom: $gutter--huge;
+					}
+				}
+			}
+		}
+	}
+
+	//Add separate Gutter CSS
+	.has-small-gutter {
+		> .wp-block-button {
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--small / 2;
+				}
+			}
+
+			@include break-small() {
+				&:nth-child(odd) {
+					margin-right: $gutter--small / 2;
+				}
+
+				&:nth-child(even) {
+					margin-left: $gutter--small / 2;
+				}
+
+				&:not(:first-child) {
+					margin-left: $gutter--small / 2;
+				}
+
+				&:not(:last-child) {
+					margin-right: $gutter--small / 2;
+				}
+			}
+		}
+	}
+
+	.has-medium-gutter {
+		> .wp-block-button {
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--medium / 2;
+				}
+			}
+
+			@include break-small() {
+				&:nth-child(odd) {
+					margin-right: $gutter--medium / 2;
+				}
+
+				&:nth-child(even) {
+					margin-left: $gutter--medium / 2;
+				}
+
+				&:not(:first-child) {
+					margin-left: $gutter--medium / 2;
+				}
+
+				&:not(:last-child) {
+					margin-right: $gutter--medium / 2;
+				}
+			}
+		}
+	}
+
+	.has-large-gutter {
+		> .wp-block-button {
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--large / 2;
+				}
+			}
+
+			@include break-small() {
+				&:nth-child(odd) {
+					margin-right: $gutter--large / 2;
+				}
+
+				&:nth-child(even) {
+					margin-left: $gutter--large / 2;
+				}
+
+				&:not(:first-child) {
+					margin-left: $gutter--large / 2;
+				}
+
+				&:not(:last-child) {
+					margin-right: $gutter--large / 2;
+				}
+			}
+		}
+	}
+
+	.has-huge-gutter {
+		> .wp-block-button {
+			@media (max-width: #{ ($break-small) }) {
+				&:not(:last-child) {
+					margin-bottom: $gutter--huge / 2;
+				}
+			}
+
+			@include break-small() {
+				&:nth-child(odd) {
+					margin-right: $gutter--huge / 2;
+				}
+
+				&:nth-child(even) {
+					margin-left: $gutter--huge / 2;
+				}
+
+				&:not(:first-child) {
+					margin-left: $gutter--huge / 2;
+				}
+
+				&:not(:last-child) {
+					margin-right: $gutter--huge / 2;
+				}
+			}
+		}
+	}
+}
