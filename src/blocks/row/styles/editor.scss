@@ -15,12 +15,6 @@
 	}
 
 	.wp-block[data-type="coblocks/row"][data-columns="1"] & &__inner {
-		// display: inherit;
-
-		.editor-inner-blocks > .editor-block-list__layout {
-			// display: inherit;
-		}
-
 		.wp-block-coblocks-column__inner {
 			.editor-block-list__layout {
 				> .wp-block {
@@ -133,11 +127,6 @@
 			}
 
 			// Make the column selected border dashed so we can tell it apart.
-			// > .editor-block-list__block-edit::before {
-			// 	outline-style: dashed;
-			// }
-
-			// Make the column selected border dashed so we can tell it apart.
 			&.is-resizing > .editor-block-list__block-edit::before {
 				outline-width: 0 !important;
 			}
@@ -229,10 +218,6 @@
 // Make the column selected border dashed so we can tell it apart.
 .wp-block[data-type="coblocks/row"] {
 	background: transparent !important;
-
-	// &:not([data-layout="none"]) > .editor-block-list__block-edit::before {
-	// 	outline-style: dashed !important;
-	// }
 
 	> .editor-block-list__block-edit .components-drop-zone {
 		z-index: 159999;
@@ -578,7 +563,7 @@ body {
 	}
 }
 
-// The "Add Accordion Item" button
+// Our custom inserter.
 .wp-block-coblocks-column {
 	> .wp-block-coblocks-column__inner {
 		> .editor-inner-blocks {
@@ -586,8 +571,8 @@ body {
 				> div:not(.wp-block) {
 					> .editor-default-block-appender {
 						> .editor-inserter {
-							position: relative;
 							display: none !important;
+							position: relative;
 						}
 					}
 				}
@@ -614,8 +599,8 @@ div[data-type="coblocks/column"] {
 
 				.components-button {
 					background: #f3f4f5;
-					border-radius: 0;
 					border: 1px dashed #d3d5d8;
+					border-radius: 0;
 					box-shadow: none !important;
 					color: #555d66;
 					display: block;
