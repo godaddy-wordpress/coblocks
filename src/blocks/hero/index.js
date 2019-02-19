@@ -57,6 +57,35 @@ const blockAttributes = {
 	},
 	...DimensionsAttributes,
 	...BackgroundAttributes,
+
+	paddingSize: {
+		type: 'string',
+		default: 'advanced',
+	},
+	paddingUnit: {
+		type: 'string',
+		default: '%',
+	},
+	paddingTop: {
+		type: 'number',
+		default: 8,
+	},
+	paddingRight: {
+		type: 'number',
+		default: 40,
+	},
+	paddingBottom: {
+		type: 'number',
+		default: 8,
+	},
+	paddingLeft: {
+		type: 'number',
+		default: 8,
+	},
+	customBackgroundColor: {
+		type: 'string',
+		default: '#f4e9e0',
+	},
 };
 
 const settings = {
