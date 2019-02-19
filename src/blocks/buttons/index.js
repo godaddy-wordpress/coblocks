@@ -29,7 +29,7 @@ const title = __( 'Buttons' );
 const icon = icons.buttons;
 
 const keywords = [
-	__( 'button' ),
+	__( 'link' ),
 	__( 'cta' ),
 	__( 'coblocks' ),
 ];
@@ -107,13 +107,9 @@ const settings = {
 			}
 		);
 
-		const innerStyles = {
-			
-		};
-
 		return (
 			<div className={ classes }>
-				<div className={ innerClasses } style={ innerStyles }>
+				<div className={ innerClasses }>
 					<InnerBlocks.Content />
 				</div>
 			</div>
