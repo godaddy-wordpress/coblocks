@@ -1,40 +1,42 @@
 .wp-block[data-type="coblocks/buttons"] {
-	.wp-block-coblocks-buttons{
+	.wp-block-coblocks-buttons {
 		position: relative;
 
-		&__inner{
-			> .editor-inner-blocks{
-				> .editor-block-list__layout{
+		&__inner {
+			> .editor-inner-blocks {
+				> .editor-block-list__layout {
 					display: flex;
- 					justify-content: center;
+					justify-content: center;
 
- 					.wp-block{
- 						.editor-block-list__block-edit{
- 							.block-library-button__inline-link{
- 								position: absolute;
- 								box-shadow: 0 0 0 1px #ced2d6;
- 								z-index: 99;
- 								background: #fff;
- 							}
- 						}
- 					}
+					.wp-block {
+						.editor-block-list__block-edit {
+							.block-library-button__inline-link {
+								background: #fff;
+								box-shadow: 0 0 0 1px #ced2d6;
+								position: absolute;
+								z-index: 99;
+							}
+						}
+					}
 				}
 			}
-			&.flex-align-left{
-				> .editor-inner-blocks{
-					> .editor-block-list__layout{
+
+			&.flex-align-left {
+				> .editor-inner-blocks {
+					> .editor-block-list__layout {
 						justify-content: flex-start;
-						.wp-block[data-type="core/button"]{
+						.wp-block[data-type="core/button"] {
 							text-align: left;
 						}
 					}
 				}
 			}
-			&.flex-align-right{
-				> .editor-inner-blocks{
-					> .editor-block-list__layout{
+
+			&.flex-align-right {
+				> .editor-inner-blocks {
+					> .editor-block-list__layout {
 						justify-content: flex-end;
-						.wp-block[data-type="core/button"]{
+						.wp-block[data-type="core/button"] {
 							text-align: right;
 						}
 					}
@@ -47,14 +49,14 @@
 
 			//button block
 			.wp-block[data-type="core/button"] {
-				width: auto !important;
-				margin-left: 0px;
-				margin-right: 0px;
+				margin-left: 0;
+				margin-right: 0;
 				text-align: center;
+				width: auto !important;
 
-				> .editor-block-list__block-edit{
-					margin-top: 0px !important;
-					margin-bottom: 0px !important; 
+				> .editor-block-list__block-edit {
+					margin-bottom: 0 !important;
+					margin-top: 0 !important;
 				}
 			}
 
@@ -62,25 +64,25 @@
 			&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
 				@media (max-width: #{ ($break-small) }) {
 					&:not(:last-child) {
-						margin-bottom: ( $gutter--small / 2 );
+						margin-bottom: ($gutter--small / 2);
 					}
 				}
 
 				@include break-small() {
 					&:nth-child(odd) {
-						margin-right: ( $gutter--small / 2 ) - 16px;
+						margin-right: ($gutter--small / 2) - 16px;
 					}
 
 					&:nth-child(even) {
-						margin-left: ( $gutter--small / 2 ) - 16px;
+						margin-left: ($gutter--small / 2) - 16px;
 					}
 
 					&:not(:first-child) {
-						margin-left: ( $gutter--small / 2 ) - 16px;
+						margin-left: ($gutter--small / 2) - 16px;
 					}
 
 					&:not(:last-child) {
-						margin-right: ( $gutter--small / 2 ) - 16px;
+						margin-right: ($gutter--small / 2) - 16px;
 					}
 				}
 			}
@@ -88,25 +90,25 @@
 			&.has-medium-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
 				@media (max-width: #{ ($break-small) }) {
 					&:not(:last-child) {
-						margin-bottom: ( $gutter--medium / 2 );
+						margin-bottom: ($gutter--medium / 2);
 					}
 				}
 
 				@include break-small() {
 					&:nth-child(odd) {
-						margin-right: ( $gutter--medium / 2 ) - 16px;
+						margin-right: ($gutter--medium / 2) - 16px;
 					}
 
 					&:nth-child(even) {
-						margin-left: ( $gutter--medium / 2 ) - 16px;
+						margin-left: ($gutter--medium / 2) - 16px;
 					}
 
 					&:not(:first-child) {
-						margin-left: ( $gutter--medium / 2 ) - 16px;
+						margin-left: ($gutter--medium / 2) - 16px;
 					}
 
 					&:not(:last-child) {
-						margin-right: ( $gutter--medium / 2 ) - 16px;
+						margin-right: ($gutter--medium / 2) - 16px;
 					}
 				}
 			}
@@ -114,25 +116,25 @@
 			&.has-large-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
 				@media (max-width: #{ ($break-small) }) {
 					&:not(:last-child) {
-						margin-bottom: ( $gutter--large / 2 );
+						margin-bottom: ($gutter--large / 2);
 					}
 				}
 
 				@include break-small() {
 					&:nth-child(odd) {
-						margin-right: ( $gutter--large / 2 ) - 16px;
+						margin-right: ($gutter--large / 2) - 16px;
 					}
 
 					&:nth-child(even) {
-						margin-left: ( $gutter--large / 2 ) - 16px;
+						margin-left: ($gutter--large / 2) - 16px;
 					}
 
 					&:not(:first-child) {
-						margin-left: ( $gutter--large / 2 ) - 16px;
+						margin-left: ($gutter--large / 2) - 16px;
 					}
 
 					&:not(:last-child) {
-						margin-right: ( $gutter--large / 2 ) - 16px;
+						margin-right: ($gutter--large / 2) - 16px;
 					}
 				}
 			}
@@ -140,45 +142,43 @@
 			&.has-huge-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
 				@media (max-width: #{ ($break-small) }) {
 					&:not(:last-child) {
-						margin-bottom: ( $gutter--huge / 2 );
+						margin-bottom: ($gutter--huge / 2);
 					}
 				}
 
 				@include break-small() {
 					&:nth-child(odd) {
-						margin-right: ( $gutter--huge / 2 ) - 16px;
+						margin-right: ($gutter--huge / 2) - 16px;
 					}
 
 					&:nth-child(even) {
-						margin-left: ( $gutter--huge / 2 ) - 16px;
+						margin-left: ($gutter--huge / 2) - 16px;
 					}
 
 					&:not(:first-child) {
-						margin-left: ( $gutter--huge / 2 ) - 16px;
+						margin-left: ($gutter--huge / 2) - 16px;
 					}
 
 					&:not(:last-child) {
-						margin-right: ( $gutter--huge / 2 ) - 16px;
+						margin-right: ($gutter--huge / 2) - 16px;
 					}
 				}
 			}
 
-
 			//Display button as stacked
-			&.is-stacked{
-				> .editor-inner-blocks{
+			&.is-stacked {
+				> .editor-inner-blocks {
 					display: block;
 					width: 100%;
-					
-					> .editor-block-list__layout{
+
+					> .editor-block-list__layout {
 						flex-direction: column;
 					}
 				}
 				.wp-block[data-type="core/button"] {
-					display:block;
-					// width: 100% !important;
-					margin-left: 0px !important;
-    				margin-right: 0px !important;
+					display: block;
+					margin-left: 0 !important;
+					margin-right: 0 !important;
 				}
 
 				&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
@@ -205,12 +205,9 @@
 					}
 				}
 			}
-
-
 		}
-		.block-list-appender{
+		.block-list-appender {
 			display: none;
 		}
-
 	}
 }
