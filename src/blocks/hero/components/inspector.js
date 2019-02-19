@@ -6,6 +6,7 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
+import applyWithColors from './colors';
 import BackgroundImagePanel from '../../../components/background';
 import DimensionsControl from '../../../components/dimensions-control/';
 
@@ -14,9 +15,33 @@ import DimensionsControl from '../../../components/dimensions-control/';
  */
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, } = wp.editor;
+const { InspectorControls, PanelColorSettings } = wp.editor;
+const { compose } = wp.compose;
 const { dispatch, select } = wp.data;
-const { PanelBody, RangeControl, ToggleControl, SelectControl  } = wp.components;
+const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles  } = wp.components;
+
+/**
+ * Fallback styles
+ */
+const { getComputedStyle } = window;
+
+const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+
+	const {
+		backgroundColor,
+		textColor,
+	} = ownProps.attributes;
+
+	const editableNode = node.querySelector( '[contenteditable="true"]' );
+
+	//verify if editableNode is available, before using getComputedStyle.
+	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+
+	return {
+		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+	};
+} );
+
 
 
 /**
@@ -31,9 +56,15 @@ class Inspector extends Component {
 	render() {
 
 		const {
-			clientId,
 			attributes,
+			backgroundColor,
+			clientId,
+			customBackgroundColor,
+			fallbackBackgroundColor,
 			setAttributes,
+			setBackgroundColor,
+			setTextColor,
+			textColor,
 		} = this.props;
 
 		const {
@@ -143,10 +174,44 @@ class Inspector extends Component {
 							dimensionSize={ paddingSize }
 						/>
 					</PanelBody>
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: backgroundColor.color,
+								onChange: ( nextBackgroundColor ) => {
+
+									setBackgroundColor( nextBackgroundColor );
+
+									//add padding if there's none
+									if( !paddingSize || paddingSize == 'no' ){
+										setAttributes({ paddingSize: 'medium' });
+									}
+
+									//reset when cleared
+									if( !nextBackgroundColor ){
+										setAttributes( { paddingSize: 'no' } );
+									}
+								},
+								label: __( 'Background Color' ),
+							},
+							{
+								value: textColor.color,
+								onChange: setTextColor,
+								label: __( 'Text Color' ),
+							},
+						] }
+					>
+					</PanelColorSettings>
+					{ BackgroundImagePanel( this.props, { overlay: true } ) }
 				</InspectorControls>
 			</Fragment>
 		);
 	}
 }
 
-export default Inspector;
+export default compose( [
+	applyWithColors,
+	FallbackStyles,
+] )( Inspector );

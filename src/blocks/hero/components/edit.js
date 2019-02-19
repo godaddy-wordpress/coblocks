@@ -10,6 +10,7 @@ import times from 'lodash/times';
  */
 import Inspector from './inspector';
 // import Controls from './controls';
+import applyWithColors from './colors';
 import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../components/background';
 
 /**
@@ -36,20 +37,14 @@ const { Spinner } = wp.components;
 */
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row' , 'coblocks/column', 'coblocks/buttons' ];
 const TEMPLATE = [
-	[ 'coblocks/row', { columns: 1, layout: '100', paddingSize: 'advanced', paddingUnit: '%', paddingTop: 8, paddingRight: 40, paddingBottom: 8, paddingLeft: 8, hasMarginControl: false, hasStackedControl: false, hasAlignmentControls: false, customBackgroundColor: '#f4e9e0' }, [
-        [ 'coblocks/column', { width: "100" },
-        	[
-        		[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Hero Block', 'content placeholder' ) , level: 2 } ],
-				[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'An introductory area of a page accompanied by a small amount of text and a call to action.', 'content placeholder' ) } ],
-				[ 'coblocks/buttons', { contentAlign: 'left', items: 2, gutter: 'medium' },
-					[
-						[ 'core/button', { text: _x( 'Primary', 'content placeholder' ) } ],
-						[ 'core/button', { text: _x( 'Secondary', 'content placeholder' ), className: 'is-style-outline' } ],
-					]
-				],
-        	]
-        ],
-    ] ],
+	[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Hero Block', 'content placeholder' ) , level: 2 } ],
+	[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'An introductory area of a page accompanied by a small amount of text and a call to action.', 'content placeholder' ) } ],
+	[ 'coblocks/buttons', { contentAlign: 'left', items: 2, gutter: 'medium' },
+		[
+			[ 'core/button', { text: _x( 'Primary', 'content placeholder' ) } ],
+			[ 'core/button', { text: _x( 'Secondary', 'content placeholder' ), className: 'is-style-outline' } ],
+		]
+	],
 ];
 /**
  * Block edit function
@@ -68,25 +63,39 @@ class Edit extends Component {
 			className,
 			isSelected,
 			setAttributes,
+			backgroundColor,
+			textColor,
 		} = this.props;
 
 		const {
+			id,
+			coblocks,
 			layout,
+			backgroundImg,
+			paddingSize,
 		} = attributes;
 
 		const classes = classnames(
-			className, {
+			'wp-block-coblocks-hero', {
+				[ `coblocks-hero-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
 		);
 
 		const innerClasses = classnames(
-			'wp-block-coblocks-hero__inner',{
+			'wp-block-coblocks-hero__inner',
+			...BackgroundClasses( attributes ), {
 				[ `hero-${ layout }-align` ] : layout,
+				'has-text-color': textColor.color,
+				'has-padding': paddingSize && paddingSize != 'no',
+				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 			}
 		);
 
+
 		const innerStyles = {
-			// textAlign: contentAlign ? contentAlign : undefined
+			backgroundColor: backgroundColor.color,
+			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			color: textColor.color,
 		};
 		return [
 			<Fragment>
@@ -96,11 +105,7 @@ class Edit extends Component {
 					/>
 				) }
 				<div
-					className={ classnames(
-						className, {
-							
-						}
-					) }
+					className={ classes }
 				>
 					<div className={ innerClasses } style={ innerStyles } >
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
@@ -119,5 +124,5 @@ class Edit extends Component {
 }
 
 export default compose( [
-	// applyWithColors,
+	applyWithColors,
 ] )( Edit );

@@ -45,6 +45,12 @@ const blockAttributes = {
 		type: 'string',
 		default: 'center',
 	},
+	textColor: {
+		type: 'string',
+	},
+	customTextColor: {
+		type: 'string',
+	},
 	layout: {
 		type: 'string',
 		default: 'center-left',
