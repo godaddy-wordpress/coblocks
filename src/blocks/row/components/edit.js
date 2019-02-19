@@ -191,6 +191,7 @@ class Edit extends Component {
 		if ( ! layout && this.state.layoutSelection ) {
 			return [
 				<Fragment>
+					{ dropZone }
 					{ isSelected && (
 						<Controls
 							{ ...this.props }
@@ -275,7 +276,6 @@ class Edit extends Component {
 		}
 
 		const classes = classnames(
-			'wp-block-coblocks-row', {
 				[ `coblocks-row--${ id }` ] : id,
 				[ `coblocks-row-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
