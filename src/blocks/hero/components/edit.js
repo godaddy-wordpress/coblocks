@@ -73,6 +73,11 @@ class Edit extends Component {
 			layout,
 			backgroundImg,
 			paddingSize,
+			paddingTop,
+			paddingRight,
+			paddingBottom,
+			paddingLeft,
+			paddingUnit,
 		} = attributes;
 
 		const classes = classnames(
@@ -95,7 +100,12 @@ class Edit extends Component {
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
 			color: textColor.color,
+			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
+			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
+			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
+			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
 		};
+
 		return [
 			<Fragment>
 				{ isSelected && (

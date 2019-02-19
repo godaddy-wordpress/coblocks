@@ -58,6 +58,10 @@ const blockAttributes = {
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 
+	saveCoBlocksMeta: {
+		type: 'boolean',
+		default: true,
+	},
 	paddingSize: {
 		type: 'string',
 		default: 'advanced',
@@ -106,7 +110,58 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes, className } ) {
-		return null;
+		const {
+				coblocks,
+				layout,
+				backgroundImg,
+				paddingSize,
+				backgroundColor,
+				customBackgroundColor,
+				customTextColor,
+				textColor,
+			} = attributes;
+
+			const textClass = getColorClassName( 'color', textColor );
+			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
+			let classlist = {
+				'has-text-color': textColor || customTextColor,
+				[ textClass ]: textClass,
+				[ `coblocks-hero-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+			};
+
+			// if( coblocks && ( typeof coblocks.id != 'undefined' ) ) {
+			// 	classlist = Object.assign( classlist, [ `coblocks-hero-${ coblocks.id }` ] );
+			// }
+
+			const classes = classnames( classlist );
+			console.log( classes );
+			const styles = {
+				color: textClass ? undefined : customTextColor,
+			};
+
+			const innerClasses = classnames(
+				'wp-block-coblocks-hero__inner',
+				...BackgroundClasses( attributes ), {
+					[ `hero-${ layout }-align` ] : layout,
+					'has-text-color': textColor && textColor.color,
+					'has-padding': paddingSize && paddingSize != 'no',
+					[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
+			} );
+
+			const innerStyles = {
+				backgroundColor: backgroundColor ? backgroundColor.color : undefined,
+				backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+				color: textColor ? textColor.color : undefined,
+			};
+
+			return (
+				<div className={ classes } style={ styles } >
+					<div className={ innerClasses } style={ innerStyles }>
+						<InnerBlocks.Content />
+					</div>
+				</div>
+			);
 	},
 };
 

@@ -76,6 +76,7 @@ class Inspector extends Component {
 			paddingUnit,
 			paddingSyncUnits,
 			paddingSize,
+			saveCoBlocksMeta,
 		} = attributes;
 
 		/**
@@ -136,6 +137,7 @@ class Inspector extends Component {
 		};
 
 		let getBlockContents = select( 'core/editor' ).getBlock( clientId );
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -172,6 +174,7 @@ class Inspector extends Component {
 							unit={ paddingUnit }
 							syncUnits={ paddingSyncUnits }
 							dimensionSize={ paddingSize }
+							saveCoBlocksMeta={ saveCoBlocksMeta }
 						/>
 					</PanelBody>
 					<PanelColorSettings
