@@ -14,3 +14,10 @@
 
 // Mobile classes
 @import "style/stacked";
+
+.coblocks-section {
+	h1::before,
+	h2::before {
+		display: none !important;
+	}
+}
