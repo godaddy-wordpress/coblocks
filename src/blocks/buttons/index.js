@@ -29,7 +29,7 @@ const title = __( 'Buttons' );
 const icon = icons.buttons;
 
 const keywords = [
-	__( 'button' ),
+	__( 'link' ),
 	__( 'cta' ),
 	__( 'coblocks' ),
 ];
@@ -67,6 +67,20 @@ const settings = {
 		stackedOnMobile: true
 	},
 
+	transforms: {
+		from: [
+			{
+				type: 'prefix',
+				prefix: '::buttons',
+				transform: function( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+					} );
+				},
+			},
+		],
+	},
+
 	edit: Edit,
 
 	save( { attributes, className } ) {
@@ -93,13 +107,9 @@ const settings = {
 			}
 		);
 
-		const innerStyles = {
-			
-		};
-
 		return (
 			<div className={ classes }>
-				<div className={ innerClasses } style={ innerStyles }>
+				<div className={ innerClasses }>
 					<InnerBlocks.Content />
 				</div>
 			</div>

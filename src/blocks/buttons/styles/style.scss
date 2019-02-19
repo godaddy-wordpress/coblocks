@@ -1,30 +1,31 @@
 .wp-block-coblocks-buttons {
-	&, &__inner {
+	&,
+	&__inner {
 		position: relative;
 	}
-	&__inner{
-		display: flex;
+	&__inner {
 		align-items: center;
+		display: flex;
 		justify-content: center;
 		text-align: center;
 
-		&.flex-align-left{
+		&.flex-align-left {
 			justify-content: flex-start;
 			text-align: left;
 		}
-		&.flex-align-right{
+		&.flex-align-right {
 			justify-content: flex-end;
 			text-align: right;
 		}
 
-		//Display button as stacked
+		// Display button as stacked.
 		&.is-stacked {
 			flex-direction: column;
 
 			.wp-block-button {
+				margin-left: 0 !important;
+				margin-right: 0 !important;
 				width: 100% !important;
-				margin-left: 0px !important;
-				margin-right: 0px !important;
 
 				&.wp-block-coblocks-column:last-child {
 					margin-bottom: 0;
@@ -66,9 +67,7 @@
 
 	//Add separate Gutter CSS
 	.has-small-gutter {
-
 		> .wp-block-button {
-
 			@media (max-width: #{ ($break-small) }) {
 				&:not(:last-child) {
 					margin-bottom: $gutter--small / 2;
@@ -76,7 +75,6 @@
 			}
 
 			@include break-small() {
-
 				&:nth-child(odd) {
 					margin-right: $gutter--small / 2;
 				}
@@ -97,9 +95,7 @@
 	}
 
 	.has-medium-gutter {
-
 		> .wp-block-button {
-
 			@media (max-width: #{ ($break-small) }) {
 				&:not(:last-child) {
 					margin-bottom: $gutter--medium / 2;
@@ -107,7 +103,6 @@
 			}
 
 			@include break-small() {
-
 				&:nth-child(odd) {
 					margin-right: $gutter--medium / 2;
 				}
@@ -128,9 +123,7 @@
 	}
 
 	.has-large-gutter {
-
 		> .wp-block-button {
-
 			@media (max-width: #{ ($break-small) }) {
 				&:not(:last-child) {
 					margin-bottom: $gutter--large / 2;
@@ -138,7 +131,6 @@
 			}
 
 			@include break-small() {
-
 				&:nth-child(odd) {
 					margin-right: $gutter--large / 2;
 				}
@@ -159,9 +151,7 @@
 	}
 
 	.has-huge-gutter {
-
 		> .wp-block-button {
-
 			@media (max-width: #{ ($break-small) }) {
 				&:not(:last-child) {
 					margin-bottom: $gutter--huge / 2;
@@ -169,7 +159,6 @@
 			}
 
 			@include break-small() {
-
 				&:nth-child(odd) {
 					margin-right: $gutter--huge / 2;
 				}
@@ -188,5 +177,4 @@
 			}
 		}
 	}
-
 }

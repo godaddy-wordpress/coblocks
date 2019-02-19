@@ -76,9 +76,6 @@ class Edit extends Component {
 			}
 		);
 
-		const innerStyles = {
-			// textAlign: contentAlign ? contentAlign : undefined
-		};
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -92,7 +89,7 @@ class Edit extends Component {
 					/>
 				) }
 				<div className={ classes }>
-					<div className={ innerClasses } style={ innerStyles }>
+					<div className={ innerClasses }>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ getCount( items ) }
