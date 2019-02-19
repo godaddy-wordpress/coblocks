@@ -78,7 +78,7 @@
 
 	&__inner{
 		&.has-background-overlay{
-			> [class*="wp-block-"]{
+			> *{
 				position: relative;
 			}
 		}
