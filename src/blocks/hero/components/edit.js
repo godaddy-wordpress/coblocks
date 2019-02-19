@@ -91,7 +91,6 @@ class Edit extends Component {
 			}
 		);
 
-
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
