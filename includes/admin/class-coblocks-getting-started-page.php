@@ -1,6 +1,6 @@
 <?php
 /**
- * Create @@pkg.title dashboard welcome page after activation
+ * Create a Getting Started page that fires after plugin activation
  *
  * @package   @@pkg.title
  * @author    @@pkg.author
@@ -14,9 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * CoBlocks_Dashboard_Welcome Class
+ * CoBlocks_Getting_Started_Page Class
  */
-class CoBlocks_Dashboard_Welcome {
+class CoBlocks_Getting_Started_Page {
 
 	/**
 	 * Constructor
@@ -35,12 +35,11 @@ class CoBlocks_Dashboard_Welcome {
 			'edit.php?post_type=coblocks',
 			__( 'Getting Started', '@@textdomain' ),
 			__( 'Getting Started', '@@textdomain' ),
-			apply_filters( 'coblocks_welcome_screen_capability', 'manage_options' ),
-			'coblocks--welcome',
+			apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
+			'coblocks-getting-started',
 			array( $this, 'content' )
 		);
 	}
-
 
 	/**
 	 * Load Scripts
@@ -60,13 +59,14 @@ class CoBlocks_Dashboard_Welcome {
 		$dir    = CoBlocks()->asset_source( 'styles' );
 		$js_dir = CoBlocks()->asset_source( 'js' );
 
-		// Register styles.
-		wp_register_style( 'coblocks-welcome', $dir . 'coblocks-welcome.min.css', COBLOCKS_VERSION, true );
-
 		// Only enqueue admin scripts and styles on relevant pages.
-		if ( in_array( $screen_id, array( 'coblocks_page_coblocks--welcome' ), true ) ) {
-			wp_enqueue_style( 'coblocks-welcome' );
-
+		if ( in_array( $screen_id, array( 'coblocks_page_coblocks-getting-started' ), true ) ) {
+			wp_enqueue_style(
+				'coblocks-getting-started',
+				$dir . 'coblocks-getting-started.min.css',
+				COBLOCKS_VERSION,
+				true
+			);
 			wp_enqueue_script(
 				'coblocks-lity',
 				$js_dir . 'lity.min.js',
@@ -78,7 +78,7 @@ class CoBlocks_Dashboard_Welcome {
 	}
 
 	/**
-	 * Page content.
+	 * Render page content.
 	 */
 	public function content() {
 	?>
@@ -144,14 +144,14 @@ class CoBlocks_Dashboard_Welcome {
 	}
 
 	/**
-	 * Redirect to the welcome page upon plugin activation.
+	 * Redirect to the Getting Started page upon plugin activation.
 	 */
 	public function redirect( $plugin ) {
 		if ( ( $plugin == 'coblocks/class-coblocks.php' ) && ! isset( $_GET['activate-multi'] ) ) {
-			wp_safe_redirect( admin_url( 'index.php?page=coblocks--welcome' ) );
+			wp_safe_redirect( admin_url( 'index.php?page=coblocks-getting-started' ) );
 			die();
 		}
 	}
 }
 
-return new CoBlocks_Dashboard_Welcome();
+return new CoBlocks_Getting_Started_Page();
