@@ -53,6 +53,10 @@ class Edit extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
+
+		this.state = {
+			resizing: false,
+		}
 	}
 
 	render() {
@@ -111,12 +115,6 @@ class Edit extends Component {
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
 		};
 
-		const onResize = ( event, direction, elt ) => {
-			
-		};
-		const onResizeStop = ( event, direction, elt ) => {
-			
-		};
 		const enablePositions = {
 			top: false,
 			right: true,
@@ -147,12 +145,18 @@ class Edit extends Component {
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
 
 							<ResizableBox
-								className="wp-block-coblocks-hero__box editor-media-container__resizer"
+								className={ classnames(
+									'wp-block-coblocks-hero__box', 
+									'editor-media-container__resizer', {
+										'is-resizing' : this.state.resizing,
+									}
+								) }
 								size={ {  } }
 								minWidth="100"
 								maxWidth="2500"
 								enable={ enablePositions }
 								onResizeStart={ () => {
+									this.setState( { resizing: true } );
 									toggleSelection( false );
 								} }
 								onResizeStop={ ( event, direction, elt, delta ) => {
@@ -160,6 +164,7 @@ class Edit extends Component {
 										maxWidth: parseInt( maxWidth + delta.width, 10 ),
 									} );
 									toggleSelection( true );
+									this.setState( { resizing: false } );
 								} }
 							>
 								<InnerBlocks
