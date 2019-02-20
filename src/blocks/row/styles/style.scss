@@ -75,6 +75,14 @@
 	h6 {
 		color: inherit;
 	}
+
+	&__inner{
+		&.has-background-overlay{
+			> *{
+				position: relative;
+			}
+		}
+	}
 }
 
 //Fix background color contrast issue
