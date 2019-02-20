@@ -8,6 +8,7 @@ import times from 'lodash/times';
 /**
  * Internal dependencies
  */
+import { title } from '../'
 import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
@@ -16,7 +17,7 @@ import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
+const { __, _x, sprintf } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.editor;
@@ -88,6 +89,13 @@ class Edit extends Component {
 			mediaPosition,
 		} = attributes;
 
+		const dropZone = (
+			<BackgroundImageDropZone
+				{ ...this.props }
+				label={ sprintf( __( 'Add backround image to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
+			/>
+		);
+
 		const classes = classnames(
 			'wp-block-coblocks-hero', {
 				[ `coblocks-hero-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
@@ -128,6 +136,7 @@ class Edit extends Component {
 		
 		return [
 			<Fragment>
+				{ dropZone }
 				{ isSelected && (
 					<Inspector
 						{ ...this.props }
