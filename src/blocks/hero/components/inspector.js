@@ -189,7 +189,7 @@ class Inspector extends Component {
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Layout' ) } initialOpen={ false }>
-						<div className="components-coblocks-visual-dropdown">
+						<div className="components-coblocks-visual-dropdown components-coblocks-visual-dropdown__hero">
 							<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
 							{ map( layoutOptions, ( { label, value, icon } ) => (
 								<Tooltip text={ label }>
