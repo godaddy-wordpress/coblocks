@@ -10,6 +10,10 @@
 			height: 100vh;
 		}
 
+		.wp-block-coblocks-hero__box{
+			position: relative;
+		}
+
 		//grid alignment
 		&.hero-top-left-align{
 			> .wp-block-coblocks-hero__box{
