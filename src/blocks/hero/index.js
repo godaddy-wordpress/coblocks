@@ -107,6 +107,20 @@ const settings = {
 		coBlocksSpacing: true,
 	},
 
+	transforms: {
+		from: [
+			{
+				type: 'prefix',
+				prefix: '::hero',
+				transform: function( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+					} );
+				},
+			},
+		],
+	},
+
 	edit: Edit,
 
 	save( { attributes, className } ) {
@@ -149,7 +163,7 @@ const settings = {
 					[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 					[ backgroundClass ]: backgroundClass,
 			} );
-			console.log( customBackgroundColor );
+			
 			const innerStyles = {
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
