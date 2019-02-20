@@ -147,10 +147,11 @@ const settings = {
 					'has-text-color': textColor && textColor.color,
 					'has-padding': paddingSize && paddingSize != 'no',
 					[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
+					[ backgroundClass ]: backgroundClass,
 			} );
-
+			console.log( customBackgroundColor );
 			const innerStyles = {
-				backgroundColor: backgroundColor ? backgroundColor.color : undefined,
+				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
 				color: textColor ? textColor.color : undefined,
 			};
