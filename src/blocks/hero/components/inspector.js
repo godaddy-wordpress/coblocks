@@ -6,6 +6,7 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
+import icons from './icons';
 import applyWithColors from './colors';
 import BackgroundImagePanel from '../../../components/background';
 import DimensionsControl from '../../../components/dimensions-control/';
@@ -18,7 +19,7 @@ const { Component, Fragment } = wp.element;
 const { InspectorControls, PanelColorSettings } = wp.editor;
 const { compose } = wp.compose;
 const { dispatch, select } = wp.data;
-const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles  } = wp.components;
+const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles, Button, ButtonGroup, Tooltip  } = wp.components;
 
 /**
  * Fallback styles
@@ -86,15 +87,15 @@ class Inspector extends Component {
 		 * This will make us of existing block instead of creating new one 
 		 */
 		const layoutOptions = [
-			{ value: 'top-left', label: __( 'Top Left' ) },
-			{ value: 'top-center', label: __( 'Top Center' ) },
-			{ value: 'top-right', label: __( 'Top Right' ) },
-			{ value: 'center-left', label: __( 'Center Left' ) },
-			{ value: 'center-center', label: __( 'Center Center' ) },
-			{ value: 'center-right', label: __( 'Center Right' ) },
-			{ value: 'bottom-left', label: __( 'Bottom Left' ) },
-			{ value: 'bottom-center', label: __( 'Bottom Center' ) },
-			{ value: 'bottom-right', label: __( 'Bottom Right' ) },
+			{ value: 'top-left', label: __( 'Top Left' ), icon: icons.colOne },
+			{ value: 'top-center', label: __( 'Top Center' ), icon: icons.colTwo },
+			{ value: 'top-right', label: __( 'Top Right' ), icon: icons.colThree },
+			{ value: 'center-left', label: __( 'Center Left' ), icon: icons.colFour },
+			{ value: 'center-center', label: __( 'Center Center' ), icon: icons.colOne },
+			{ value: 'center-right', label: __( 'Center Right' ), icon: icons.colTwo },
+			{ value: 'bottom-left', label: __( 'Bottom Left' ), icon: icons.colThree },
+			{ value: 'bottom-center', label: __( 'Bottom Center' ), icon: icons.colFour },
+			{ value: 'bottom-right', label: __( 'Bottom Right' ), icon: icons.colOne },
 		];
 
 		let layoutAttributes = {};
@@ -187,6 +188,39 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
+					<PanelBody title={ __( 'Layout' ) } initialOpen={ false }>
+						<div className="components-coblocks-visual-dropdown">
+							<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
+							{ map( layoutOptions, ( { label, value, icon } ) => (
+								<Tooltip text={ label }>
+									<div className={ ( value == layout ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
+										<Button
+											className={ ( value == layout ) ? 'components-coblocks-visual-dropdown__button components-coblocks-visual-dropdown__button--selected' : 'components-coblocks-visual-dropdown__button' }
+											isSmall
+											onClick={ () => {
+												setAttributes( { layout: value } );
+												if( layoutAttributes[ value ].wrapper ){
+													dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+												}
+
+												//content alignment changes
+												if( getBlockContents.innerBlocks ){
+													map( getBlockContents.innerBlocks, ( innerBlock ) => {
+														if( innerBlock.clientId ){
+															dispatch( 'core/editor' ).updateBlockAttributes( innerBlock.clientId, layoutAttributes[ value ].inner );
+														}
+													} );
+												}
+											} }
+										>
+											{ icon }
+										</Button>
+									</div>
+								</Tooltip>
+							) ) }
+							</ButtonGroup>
+						</div>
+					</PanelBody>
 					<PanelBody title={ __( 'Hero Settings' ) } className='components-coblocks-block-sidebar--buttons'>
 						<SelectControl
 							label={ __( 'Layout' ) }
