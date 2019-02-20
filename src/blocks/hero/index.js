@@ -72,27 +72,7 @@ const blockAttributes = {
 	},
 	paddingSize: {
 		type: 'string',
-		default: 'advanced',
-	},
-	paddingUnit: {
-		type: 'string',
-		default: '%',
-	},
-	paddingTop: {
-		type: 'number',
-		default: 8,
-	},
-	paddingRight: {
-		type: 'number',
-		default: 8,
-	},
-	paddingBottom: {
-		type: 'number',
-		default: 8,
-	},
-	paddingLeft: {
-		type: 'number',
-		default: 8,
+		default: 'huge',
 	},
 	customBackgroundColor: {
 		type: 'string',
