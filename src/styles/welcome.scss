@@ -26,6 +26,7 @@
 	text-align: left;
 	width: calc(100% - 21px);
 	border-radius: 3px;
+	margin-bottom: 100px;
 
 	@media screen and (max-width: 782px) {
 		margin: -1px auto 0;
@@ -94,7 +95,6 @@
 			padding: 8px;
 			position: relative;
 			text-decoration: none;
-			display: none;
 
 			&:hover {
 				background-color: #fff;
@@ -112,30 +112,15 @@
 		}
 	}
 
-	.about-text {
-		margin: 0;
-		padding: 0 50px;
-
-		@media screen and (max-width: 782px) {
-			padding: 0 10px;
-		}
-	}
-
 	h1 {
-		color: #23282d;
-		font-size: 1rem;
-		font-weight: 700;
-		margin: 0;
-		margin-left: 10px;
-	}
-
-	h2 {
+		// border-bottom: 1px solid #e2e4e7;
 		color: #23282d;
 		font-size: 1.7em;
-		line-height: 1.45;
-		margin-bottom: 10px;
-		margin-top: 0;
 		font-weight: 700;
+		line-height: 1.48;
+		margin-bottom: 28px;
+		margin-top: 0;
+		// padding-bottom: 28px;
 	}
 
 	h3 {
@@ -148,11 +133,15 @@
 	}
 
 	p {
-		color: #444;
+		color: #333;
 		font-size: 16px;
 		font-weight: 400;
 		line-height: 1.6;
 		margin-bottom: 20px;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
 	}
 
 	a {
@@ -160,23 +149,56 @@
 	}
 
 	.about-description {
-		padding: 20px;
+		padding: 40px;
+
+		@media screen and (max-width: 600px) {
+			padding: 20px;
+		}
+	}
+
+	.logo-wrapper {
+		margin-bottom: 30px;
+
+		svg {
+			height: 30px;
+			width: 155px;
+		}
+	}
+
+	.hero-image {
+		margin: 10px -20px 20px;
+		max-width: calc(100% + 40px);
 	}
 
 	.video-frame {
 		display: block;
-		margin: 30px 0;
-		cursor: pointer;
+		margin: 24px -4px;
+
+		flex-wrap: wrap;
+
+		a {
+			padding: 4px;
+			display: block;
+			cursor: pointer;
+		}
 
 		img {
 			max-width: 100%;
 			vertical-align: middle;
 		}
 
-		&:focus {
+		a:focus {
 			box-shadow: none;
 			outline: 1px solid #fff;
 			outline-offset: -4px;
+		}
+
+		a:first-child {
+			width: 100%;
+		}
+
+		a:not(:first-child) {
+			flex: 1;
 		}
 	}
 
@@ -185,6 +207,7 @@
 		justify-content: space-between;
 		margin-bottom: 0;
 		margin-top: 30px;
+
 		display: none;
 
 		.button {
@@ -203,6 +226,15 @@
 				background: #1e35b9;
 				color: #fff;
 			}
+		}
+	}
+
+	.videos {
+		display: flex;
+		justify-content: space-between;
+
+		a {
+			width: 48%;
 		}
 	}
 }
