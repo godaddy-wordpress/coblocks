@@ -17,9 +17,42 @@
 						}
 					}
 				}
+
+				//resize handle
+				> span{
+					.components-resizable-box__handle{
+						display: block;
+						margin: 0px -10px;
+					}
+				}
 			}
 			&.is-fullscreen{
 				height: 100vh;
+			}
+
+			//resize handles
+			&.hero-top-left-align,
+			&.hero-center-left-align,
+			&.hero-bottom-left-align{
+				.wp-block-coblocks-hero__box{
+					> span{
+						.components-resizable-box__handle-left{
+							display: none;
+						}
+					}
+				}
+			}
+
+			&.hero-top-right-align,
+			&.hero-center-right-align,
+			&.hero-bottom-right-align{
+				.wp-block-coblocks-hero__box{
+					> span{
+						.components-resizable-box__handle-right{
+							display: none;
+						}
+					}
+				}
 			}
 
 		}

@@ -20,7 +20,7 @@ const { __, _x } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.editor;
-const { Spinner } = wp.components;
+const { ResizableBox } = wp.components;
 
 /**
  * Constants
@@ -65,6 +65,7 @@ class Edit extends Component {
 			setAttributes,
 			backgroundColor,
 			textColor,
+			toggleSelection,
 		} = this.props;
 
 		const {
@@ -80,6 +81,7 @@ class Edit extends Component {
 			paddingBottom,
 			paddingLeft,
 			paddingUnit,
+			mediaPosition,
 		} = attributes;
 
 		const classes = classnames(
@@ -109,6 +111,23 @@ class Edit extends Component {
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
 		};
 
+		const onResize = ( event, direction, elt ) => {
+			
+		};
+		const onResizeStop = ( event, direction, elt ) => {
+			
+		};
+		const enablePositions = {
+			top: false,
+			right: true,
+			bottom: false,
+			left: true,
+			topRight: false,
+			bottomRight: false,
+			bottomLeft: false,
+			topLeft: false,
+		};
+
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -126,9 +145,21 @@ class Edit extends Component {
 				>
 					<div className={ innerClasses } style={ innerStyles } >
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
-							<div className="wp-block-coblocks-hero__box" 
-								style={ {
-									width: maxWidth ? maxWidth + 'px' : undefined, 
+
+							<ResizableBox
+								className="wp-block-coblocks-hero__box editor-media-container__resizer"
+								size={ {  } }
+								minWidth="100"
+								maxWidth="2500"
+								enable={ enablePositions }
+								onResizeStart={ () => {
+									toggleSelection( false );
+								} }
+								onResizeStop={ ( event, direction, elt, delta ) => {
+									setAttributes( {
+										maxWidth: parseInt( maxWidth + delta.width, 10 ),
+									} );
+									toggleSelection( true );
 								} }
 							>
 								<InnerBlocks
@@ -137,7 +168,7 @@ class Edit extends Component {
 									templateLock={ false }
 									templateInsertUpdatesSelection={ false }
 								/>
-							</div>
+							</ResizableBox>
 						) }
 					</div>
 				</div>
