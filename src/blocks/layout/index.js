@@ -65,6 +65,15 @@ const settings = {
 					} );
 				},
 			},
+			{
+				type: 'prefix',
+				prefix: ':layout',
+				transform: function( content ) {
+					return createBlock( `coblocks/${ name }`, {
+						content,
+					} );
+				},
+			},
 		],
 	},
 
