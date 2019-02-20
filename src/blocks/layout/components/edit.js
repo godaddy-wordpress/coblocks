@@ -88,7 +88,6 @@ class Edit extends Component {
 						className: 'edit-post-sidebar__panel-tab coblocks-sections',
 					}];
 
-
 					//check if theme templates available
 					if( typeof this.props.theme_sections != "undefined" ){
 						if( this.props.theme_sections !== null && Object.keys( this.props.theme_sections ).length > 0 ){
@@ -152,7 +151,6 @@ class Edit extends Component {
 													if ( Object.keys( theme_sections ).length > 0 ) {
 														return(
 															<ul className='coblocks-layouts__list'>
-
 																{ Object.entries( theme_sections ).map( template => this.renderListItem( template ) ) }
 															</ul>
 														);
