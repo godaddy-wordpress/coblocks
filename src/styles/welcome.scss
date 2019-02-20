@@ -1,5 +1,3 @@
-//
-
 .coblocks_page_coblocks--welcome {
 	background: #f3f4f5;
 
@@ -16,98 +14,39 @@
 	}
 }
 
-.coblocks--about-wrap {
+.page--coblocks-getting-started {
 	background: #fff;
 	border: 1px solid #e2e4e7;
+	border-radius: 3px;
 	box-shadow: 0 2px 30px rgba(25, 30, 35, 0.05);
 	color: #000;
-	margin: 20px auto 0;
+	margin: 20px auto 80px;
 	max-width: 600px;
 	text-align: left;
 	width: calc(100% - 20px);
-	border-radius: 3px;
-	margin-bottom: 100px;
 
 	@media screen and (max-width: 782px) {
 		margin-top: 10px;
 	}
 
-	.aligncenter {
-		text-align: center;
-	}
-
-	.coblocks--logo {
-		border-radius: 3px 3px 0 0;
-		align-items: center;
-		background: #fff;
-		border-bottom: 1px solid #e2e4e7;
-		display: flex;
-		flex-direction: row;
-		height: 50px;
-		justify-content: space-between;
-		padding: 0 20px;
-		position: sticky;
-		top: 32px;
-		z-index: 10;
-
-		@media screen and (max-width: 782px) {
-			top: 46px;
-		}
+	.logo {
+		margin-bottom: 30px;
 
 		@media screen and (max-width: 600px) {
-			position: inherit;
-			padding: 0 10px;
+			margin-bottom: 20px;
 		}
 
-		> div {
-			align-items: center;
-			display: flex;
-			flex-direction: row;
-			flex-grow: 1;
-			justify-content: left;
-
-			svg {
-				fill: #23282d;
-				position: relative;
-				top: 1px;
-			}
+		svg {
+			height: 30px;
+			width: 155px;
 		}
+	}
 
-		a {
-			display: block;
-		}
+	.getting-started__content {
+		padding: 40px;
 
-		.components-button {
-			appearance: none;
-			align-items: center;
-			background: none;
-			border-radius: 4px;
-			border: 0;
-			border: none;
-			color: #555d66;
-			cursor: pointer;
-			display: flex;
-			display: inline-flex;
-			font-size: 13px;
-			margin: 0;
-			overflow: hidden;
-			padding: 8px;
-			position: relative;
-			text-decoration: none;
-
-			&:hover {
-				background-color: #fff;
-				box-shadow: inset 0 0 0 1px #e2e4e7, inset 0 0 0 2px #fff, 0 1px 1px rgba(25, 30, 35, 0.2);
-				color: #191e23;
-			}
-
-			&:focus {
-				background-color: #fff;
-				box-shadow: inset 0 0 0 1px #6c7781, inset 0 0 0 2px #fff;
-				color: #191e23;
-				outline: 2px solid transparent;
-				outline-offset: -2px;
-			}
+		@media screen and (max-width: 600px) {
+			padding: 30px;
 		}
 	}
 
@@ -136,96 +75,36 @@
 		}
 	}
 
-	a {
-		color: #1e35b9;
-	}
-
-	.about-description {
-		padding: 40px;
-
-		@media screen and (max-width: 600px) {
-			padding: 30px;
-		}
-	}
-
-	.logo-wrapper {
-		margin-bottom: 30px;
-
-		@media screen and (max-width: 600px) {
-			margin-bottom: 20px;
-		}
-
-		svg {
-			height: 30px;
-			width: 155px;
-		}
-	}
-
-	.video-frame {
+	.videos {
 		display: block;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
 		margin: 24px -4px;
 
-		flex-wrap: wrap;
-
 		a {
-			padding: 4px;
-			display: block;
 			cursor: pointer;
+			display: block;
+			padding: 4px;
+
+			&:first-child {
+				width: 100%;
+			}
+
+			&:not(:first-child) {
+				flex: 1;
+			}
+
+			&:focus {
+				box-shadow: none;
+				outline: 1px solid #fff;
+				outline-offset: -4px;
+			}
 		}
 
 		img {
 			max-width: 100%;
 			vertical-align: middle;
-		}
-
-		a:focus {
-			box-shadow: none;
-			outline: 1px solid #fff;
-			outline-offset: -4px;
-		}
-
-		a:first-child {
-			width: 100%;
-		}
-
-		a:not(:first-child) {
-			flex: 1;
-		}
-	}
-
-	.button-wrap {
-		display: flex;
-		justify-content: space-between;
-		margin-bottom: 0;
-		margin-top: 30px;
-
-		display: none;
-
-		.button {
-			background: #fff;
-			border: 2px solid #1e35b9;
-			box-shadow: none;
-			color: #1e35b9;
-			font-size: 17px;
-			height: auto;
-			padding: 12px 20px;
-			text-align: center;
-			text-shadow: none;
-			width: 48%;
-
-			&.button-primary {
-				background: #1e35b9;
-				color: #fff;
-			}
-		}
-	}
-
-	.videos {
-		display: flex;
-		justify-content: space-between;
-
-		a {
-			width: 48%;
 		}
 	}
 }
