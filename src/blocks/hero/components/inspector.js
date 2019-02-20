@@ -70,6 +70,7 @@ class Inspector extends Component {
 		const {
 			layout,
 			fullscreen,
+			maxWidth,
 			paddingTop,
 			paddingRight,
 			paddingBottom,
@@ -85,25 +86,49 @@ class Inspector extends Component {
 		 * This will make us of existing block instead of creating new one 
 		 */
 		const layoutOptions = [
-			// { value: 'top-left', label: __( 'Top Left' ) },
-			// { value: 'top-center', label: __( 'Top Center' ) },
-			// { value: 'top-right', label: __( 'Top Right' ) },
+			{ value: 'top-left', label: __( 'Top Left' ) },
+			{ value: 'top-center', label: __( 'Top Center' ) },
+			{ value: 'top-right', label: __( 'Top Right' ) },
 			{ value: 'center-left', label: __( 'Center Left' ) },
 			{ value: 'center-center', label: __( 'Center Center' ) },
 			{ value: 'center-right', label: __( 'Center Right' ) },
-			// { value: 'bottom-left', label: __( 'Bottom Left' ) },
-			// { value: 'bottom-center', label: __( 'Bottom Center' ) },
-			// { value: 'bottom-right', label: __( 'Bottom Right' ) },
+			{ value: 'bottom-left', label: __( 'Bottom Left' ) },
+			{ value: 'bottom-center', label: __( 'Bottom Center' ) },
+			{ value: 'bottom-right', label: __( 'Bottom Right' ) },
 		];
 
 		let layoutAttributes = {};
+		//top
+		layoutAttributes[ 'top-left' ] = {
+			wrapper: {
+			},
+			inner:{
+				contentAlign: 'left',
+				align: 'left',
+			}
+		};
 
+		layoutAttributes[ 'top-center' ] = {
+			wrapper: {
+			},
+			inner:{
+				contentAlign: 'center',
+				align: 'center',
+			}
+		};
+
+		layoutAttributes[ 'top-right' ] = {
+			wrapper: {
+			},
+			inner:{
+				contentAlign: 'right',
+				align: 'right',
+			}
+		};
+
+		//center
 		layoutAttributes[ 'center-left' ] = {
 			wrapper: {
-				paddingTop: 8, 
-				paddingRight: 40, 
-				paddingBottom: 8, 
-				paddingLeft: 8,
 			},
 			inner:{
 				contentAlign: 'left',
@@ -113,10 +138,6 @@ class Inspector extends Component {
 
 		layoutAttributes[ 'center-center' ] = {
 			wrapper: {
-				paddingTop: 8, 
-				paddingRight: 20, 
-				paddingBottom: 8, 
-				paddingLeft: 20,
 			},
 			inner:{
 				contentAlign: 'center',
@@ -126,10 +147,34 @@ class Inspector extends Component {
 
 		layoutAttributes[ 'center-right' ] = {
 			wrapper: {
-				paddingTop: 8, 
-				paddingRight: 8, 
-				paddingBottom: 8, 
-				paddingLeft: 40,
+			},
+			inner:{
+				contentAlign: 'right',
+				align: 'right',
+			}
+		};
+
+		//bottom
+		layoutAttributes[ 'bottom-left' ] = {
+			wrapper: {
+			},
+			inner:{
+				contentAlign: 'left',
+				align: 'left',
+			}
+		};
+
+		layoutAttributes[ 'bottom-center' ] = {
+			wrapper: {
+			},
+			inner:{
+				contentAlign: 'center',
+				align: 'center',
+			}
+		};
+
+		layoutAttributes[ 'bottom-right' ] = {
+			wrapper: {
 			},
 			inner:{
 				contentAlign: 'right',
@@ -163,6 +208,16 @@ class Inspector extends Component {
 								}
 							} }
 						/>
+
+						<RangeControl
+								label={ __( 'Content Width in Pixels' ) }
+								className="components-block-coblocks-hero-maxwidth-range"
+								value={ parseFloat( maxWidth ) }
+								onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: nextMaxWidth } ) }
+								min={ 100 }
+								max={ 1500 }
+								step={ 10 }
+							/>
 
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }

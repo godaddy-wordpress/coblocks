@@ -59,6 +59,10 @@ const blockAttributes = {
 		type: 'boolean',
 		default: false,
 	},
+	maxWidth: {
+		type: 'number',
+		default: 300,
+	},
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 
@@ -80,7 +84,7 @@ const blockAttributes = {
 	},
 	paddingRight: {
 		type: 'number',
-		default: 40,
+		default: 8,
 	},
 	paddingBottom: {
 		type: 'number',
@@ -132,6 +136,7 @@ const settings = {
 				coblocks,
 				layout,
 				fullscreen,
+				maxWidth,
 				backgroundImg,
 				paddingSize,
 				backgroundColor,
@@ -179,7 +184,13 @@ const settings = {
 			return (
 				<div className={ classes } style={ styles } >
 					<div className={ innerClasses } style={ innerStyles }>
-						<InnerBlocks.Content />
+						<div className="wp-block-coblocks-hero__box" 
+							style={ {
+								width: maxWidth ? maxWidth + 'px' : undefined, 
+							} }
+						>
+							<InnerBlocks.Content />
+						</div>
 					</div>
 				</div>
 			);

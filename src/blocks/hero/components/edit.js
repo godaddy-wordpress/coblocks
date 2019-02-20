@@ -72,6 +72,7 @@ class Edit extends Component {
 			coblocks,
 			layout,
 			fullscreen,
+			maxWidth,
 			backgroundImg,
 			paddingSize,
 			paddingTop,
@@ -125,12 +126,18 @@ class Edit extends Component {
 				>
 					<div className={ innerClasses } style={ innerStyles } >
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
-							<InnerBlocks
-								template={ TEMPLATE }
-								allowedBlocks={ ALLOWED_BLOCKS }
-								templateLock="all"
-								templateInsertUpdatesSelection={ false }
-							/>
+							<div className="wp-block-coblocks-hero__box" 
+								style={ {
+									width: maxWidth ? maxWidth + 'px' : undefined, 
+								} }
+							>
+								<InnerBlocks
+									template={ TEMPLATE }
+									allowedBlocks={ ALLOWED_BLOCKS }
+									templateLock="all"
+									templateInsertUpdatesSelection={ false }
+								/>
+							</div>
 						) }
 					</div>
 				</div>
