@@ -25,7 +25,6 @@
 
 		.wp-block-coblocks-hero__box{
 			position: relative;
-			margin: auto;
 		}
 
 		//grid alignment
@@ -113,6 +112,17 @@
 			h2:before {
 				margin-left: auto;
 				margin-right: auto;
+			}
+			> .wp-block-coblocks-hero__box{
+				margin: auto;
+			}
+		}
+
+		&.hero-top-right-align,
+		&.hero-center-right-align,
+		&.hero-bottom-right-align{
+			> .wp-block-coblocks-hero__box{
+				margin-left: auto;
 			}
 		}
 	}
