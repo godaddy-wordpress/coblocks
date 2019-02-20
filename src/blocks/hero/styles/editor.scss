@@ -5,11 +5,16 @@
 		width: 100%;
 
 		&__inner {
-			> .editor-inner-blocks{
-				> .editor-block-list__layout{
-					> .wp-block{
-						width: 100%;
-						max-width: none;
+			.wp-block-coblocks-hero__box{
+				> .editor-inner-blocks{
+					> .editor-block-list__layout{
+						> .wp-block{
+							width: 100%;
+							max-width: none;
+						}
+						> div:not(.wp-block){
+							display: none;
+						}
 					}
 				}
 			}
