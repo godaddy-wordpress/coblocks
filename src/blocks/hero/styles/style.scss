@@ -1,5 +1,18 @@
 .wp-block-coblocks-hero {
 	position: relative;
+
+	.has-left-content {
+		text-align: left;
+	}
+
+	.has-center-content {
+		text-align: center;
+	}
+
+	.has-right-content {
+		text-align: right;
+	}
+
 	&__inner{
 		position: relative;
 		display: grid;
@@ -12,6 +25,7 @@
 
 		.wp-block-coblocks-hero__box{
 			position: relative;
+			margin: auto;
 		}
 
 		//grid alignment

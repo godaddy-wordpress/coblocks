@@ -102,85 +102,58 @@ class Inspector extends Component {
 		//top
 		layoutAttributes[ 'top-left' ] = {
 			wrapper: {
-			},
-			inner:{
 				contentAlign: 'left',
-				align: 'left',
-			}
+			},
 		};
 
 		layoutAttributes[ 'top-center' ] = {
 			wrapper: {
-			},
-			inner:{
 				contentAlign: 'center',
-				align: 'center',
-			}
+			},
 		};
 
 		layoutAttributes[ 'top-right' ] = {
 			wrapper: {
-			},
-			inner:{
 				contentAlign: 'right',
-				align: 'right',
-			}
+			},
 		};
 
 		//center
 		layoutAttributes[ 'center-left' ] = {
 			wrapper: {
-			},
-			inner:{
 				contentAlign: 'left',
-				align: 'left',
-			}
+			},
 		};
 
 		layoutAttributes[ 'center-center' ] = {
 			wrapper: {
-			},
-			inner:{
 				contentAlign: 'center',
-				align: 'center',
-			}
+			},
 		};
 
 		layoutAttributes[ 'center-right' ] = {
 			wrapper: {
-			},
-			inner:{
 				contentAlign: 'right',
-				align: 'right',
-			}
+			},
 		};
 
 		//bottom
 		layoutAttributes[ 'bottom-left' ] = {
 			wrapper: {
-			},
-			inner:{
 				contentAlign: 'left',
-				align: 'left',
-			}
+			},
 		};
 
 		layoutAttributes[ 'bottom-center' ] = {
 			wrapper: {
-			},
-			inner:{
 				contentAlign: 'center',
-				align: 'center',
-			}
+			},
 		};
 
 		layoutAttributes[ 'bottom-right' ] = {
 			wrapper: {
-			},
-			inner:{
 				contentAlign: 'right',
-				align: 'right',
-			}
+			},
 		};
 
 		let getBlockContents = select( 'core/editor' ).getBlock( clientId );
@@ -202,15 +175,6 @@ class Inspector extends Component {
 												if( layoutAttributes[ value ].wrapper ){
 													dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
 												}
-
-												//content alignment changes
-												if( getBlockContents.innerBlocks ){
-													map( getBlockContents.innerBlocks, ( innerBlock ) => {
-														if( innerBlock.clientId ){
-															dispatch( 'core/editor' ).updateBlockAttributes( innerBlock.clientId, layoutAttributes[ value ].inner );
-														}
-													} );
-												}
 											} }
 										>
 											{ icon }
@@ -222,26 +186,6 @@ class Inspector extends Component {
 						</div>
 					</PanelBody>
 					<PanelBody title={ __( 'Hero Settings' ) } className='components-coblocks-block-sidebar--buttons'>
-						<SelectControl
-							label={ __( 'Layout' ) }
-							value={ layout }
-							options={ layoutOptions }
-							help={ __( 'Hero section layout.' ) }
-							onChange={ ( value ) => {
-								setAttributes( { layout: value } );
-
-								dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
-
-								//content alignment changes
-								if( getBlockContents.innerBlocks ){
-									map( getBlockContents.innerBlocks, ( innerBlock ) => {
-										if( innerBlock.clientId ){
-											dispatch( 'core/editor' ).updateBlockAttributes( innerBlock.clientId, layoutAttributes[ value ].inner );
-										}
-									} );
-								}
-							} }
-						/>
 
 						<RangeControl
 								label={ __( 'Content Width in Pixels' ) }

@@ -43,7 +43,6 @@ const blockAttributes = {
 	},
 	contentAlign: {
 		type: 'string',
-		default: 'center',
 	},
 	textColor: {
 		type: 'string',
@@ -123,6 +122,7 @@ const settings = {
 				customBackgroundColor,
 				customTextColor,
 				textColor,
+				contentAlign,
 			} = attributes;
 
 			const textClass = getColorClassName( 'color', textColor );
@@ -152,6 +152,7 @@ const settings = {
 					'has-padding': paddingSize && paddingSize != 'no',
 					[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 					[ backgroundClass ]: backgroundClass,
+					[ `has-${ contentAlign }-content` ]: contentAlign,
 					'is-fullscreen': fullscreen,
 			} );
 

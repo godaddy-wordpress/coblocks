@@ -87,6 +87,7 @@ class Edit extends Component {
 			paddingLeft,
 			paddingUnit,
 			mediaPosition,
+			contentAlign,
 		} = attributes;
 
 		const dropZone = (
@@ -109,6 +110,7 @@ class Edit extends Component {
 				'has-text-color': textColor.color,
 				'has-padding': paddingSize && paddingSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
+				[ `has-${ contentAlign }-content` ]: contentAlign,
 				'is-fullscreen': fullscreen,
 			}
 		);

@@ -62,6 +62,10 @@ class Controls extends Component {
 						] }
 					/>
 				</Toolbar>
+				<AlignmentToolbar
+					value={ contentAlign }
+					onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
+				/>
 					{ BackgroundImageToolbarControls( this.props ) }
 				</BlockControls>
 			</Fragment>
