@@ -108,7 +108,8 @@ class CoBlocks_Dashboard_Welcome {
 	 */
 	public function content() {
 	?>
-		<div class="coblocks--about-wrap">
+		<div class="coblocks--about-wrap-fixed">
+			<div class="coblocks--about-wrap">
 			<?php $this->header(); ?>
 			<div class="about-description">
 				<h2><?php echo esc_html__( 'Welcome to CoBlocks', '@@textdomain' ); ?></h2>
@@ -127,7 +128,7 @@ class CoBlocks_Dashboard_Welcome {
 				</p>
 
 			</div>
-
+			</div>
 		</div>
 	<?php
 	}
