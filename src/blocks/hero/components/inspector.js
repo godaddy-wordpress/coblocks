@@ -243,6 +243,16 @@ class Inspector extends Component {
 							} }
 						/>
 
+						<RangeControl
+								label={ __( 'Content Width in Pixels' ) }
+								className="components-block-coblocks-hero-maxwidth-range"
+								value={ parseFloat( maxWidth ) }
+								onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: nextMaxWidth } ) }
+								min={ 100 }
+								max={ 1500 }
+								step={ 10 }
+							/>
+
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding' ) }
