@@ -148,7 +148,7 @@ class CoBlocks_Getting_Started_Page {
 	 */
 	public function redirect( $plugin ) {
 		if ( ( $plugin == 'coblocks/class-coblocks.php' ) && ! isset( $_GET['activate-multi'] ) ) {
-			wp_safe_redirect( admin_url( 'index.php?page=coblocks-getting-started' ) );
+			wp_safe_redirect( admin_url( 'edit.php?post_type=coblocks&page=coblocks-getting-started' ) );
 			die();
 		}
 	}
