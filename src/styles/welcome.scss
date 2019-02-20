@@ -24,13 +24,12 @@
 	margin: 20px auto 0;
 	max-width: 600px;
 	text-align: left;
-	width: calc(100% - 21px);
+	width: calc(100% - 20px);
 	border-radius: 3px;
 	margin-bottom: 100px;
 
 	@media screen and (max-width: 782px) {
-		margin: -1px auto 0;
-		width: 100%;
+		margin-top: 10px;
 	}
 
 	.aligncenter {
@@ -113,23 +112,16 @@
 	}
 
 	h1 {
-		// border-bottom: 1px solid #e2e4e7;
 		color: #23282d;
 		font-size: 1.7em;
 		font-weight: 700;
 		line-height: 1.48;
 		margin-bottom: 28px;
 		margin-top: 0;
-		// padding-bottom: 28px;
-	}
 
-	h3 {
-		color: #23282d;
-		font-size: 1.3em;
-		font-weight: 600;
-		line-height: 1.5;
-		margin-bottom: 0;
-		margin-top: 0;
+		@media screen and (max-width: 600px) {
+			margin-bottom: 20px;
+		}
 	}
 
 	p {
@@ -152,22 +144,21 @@
 		padding: 40px;
 
 		@media screen and (max-width: 600px) {
-			padding: 20px;
+			padding: 30px;
 		}
 	}
 
 	.logo-wrapper {
 		margin-bottom: 30px;
 
+		@media screen and (max-width: 600px) {
+			margin-bottom: 20px;
+		}
+
 		svg {
 			height: 30px;
 			width: 155px;
 		}
-	}
-
-	.hero-image {
-		margin: 10px -20px 20px;
-		max-width: calc(100% + 40px);
 	}
 
 	.video-frame {
