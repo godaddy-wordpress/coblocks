@@ -71,6 +71,7 @@ class Edit extends Component {
 			id,
 			coblocks,
 			layout,
+			fullscreen,
 			backgroundImg,
 			paddingSize,
 			paddingTop,
@@ -93,6 +94,7 @@ class Edit extends Component {
 				'has-text-color': textColor.color,
 				'has-padding': paddingSize && paddingSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
+				'is-fullscreen': fullscreen,
 			}
 		);
 

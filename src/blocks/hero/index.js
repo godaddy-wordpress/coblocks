@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-// import './styles/style.scss';
+import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
 import Edit from './components/edit';
@@ -131,6 +131,7 @@ const settings = {
 		const {
 				coblocks,
 				layout,
+				fullscreen,
 				backgroundImg,
 				paddingSize,
 				backgroundColor,
@@ -153,7 +154,7 @@ const settings = {
 			// }
 
 			const classes = classnames( classlist );
-			console.log( classes );
+			
 			const styles = {
 				color: textClass ? undefined : customTextColor,
 			};
@@ -166,6 +167,7 @@ const settings = {
 					'has-padding': paddingSize && paddingSize != 'no',
 					[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 					[ backgroundClass ]: backgroundClass,
+					'is-fullscreen': fullscreen,
 			} );
 			
 			const innerStyles = {
