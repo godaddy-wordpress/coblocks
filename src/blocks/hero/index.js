@@ -55,6 +55,10 @@ const blockAttributes = {
 		type: 'string',
 		default: 'center-left',
 	},
+	fullscreen: {
+		type: 'boolean',
+		default: false,
+	},
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 

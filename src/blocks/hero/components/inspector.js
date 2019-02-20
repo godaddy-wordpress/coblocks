@@ -69,6 +69,7 @@ class Inspector extends Component {
 
 		const {
 			layout,
+			fullscreen,
 			paddingTop,
 			paddingRight,
 			paddingBottom,
@@ -176,6 +177,12 @@ class Inspector extends Component {
 							dimensionSize={ paddingSize }
 							saveCoBlocksMeta={ saveCoBlocksMeta }
 						/>
+
+						<ToggleControl
+							label={ !! fullscreen ? __( 'Displaying as fullscreen' ) : __( 'Display as fullscreen' ) }
+							checked={ !! fullscreen }
+							onChange={ () => setAttributes( {  fullscreen: ! fullscreen } ) }
+							help={ !! fullscreen ? __( 'Displaying as full height of the viewport.' ) : __( 'Toggle to display as full height of the viewport.' ) }  />
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }
