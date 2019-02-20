@@ -125,7 +125,7 @@ class Edit extends Component {
 			bottomLeft: false,
 			topLeft: false,
 		};
-
+		
 		return [
 			<Fragment>
 				{ isSelected && (
@@ -151,7 +151,7 @@ class Edit extends Component {
 										'is-resizing' : this.state.resizing,
 									}
 								) }
-								size={ {  } }
+								size={ { width: maxWidth } }
 								minWidth="100"
 								maxWidth="2500"
 								enable={ enablePositions }

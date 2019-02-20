@@ -184,7 +184,7 @@ class Inspector extends Component {
 		};
 
 		let getBlockContents = select( 'core/editor' ).getBlock( clientId );
-
+		
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -246,8 +246,8 @@ class Inspector extends Component {
 						<RangeControl
 								label={ __( 'Content Width in Pixels' ) }
 								className="components-block-coblocks-hero-maxwidth-range"
-								value={ parseFloat( maxWidth ) }
-								onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: nextMaxWidth } ) }
+								value={ parseInt( maxWidth ) }
+								onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: parseInt(nextMaxWidth) } ) }
 								min={ 100 }
 								max={ 1500 }
 								step={ 10 }
