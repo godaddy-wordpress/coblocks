@@ -1,8 +1,15 @@
 /**
+ * External dependencies
+ */
+import map from 'lodash/map';
+
+/**
  * Internal dependencies
  */
 import icons from './../../../utils/icons';
+import { layoutOptions } from './layouts'
 import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../components/background';
+import VisualDropdown from '../../../components/visual-dropdown/';
 
 /**
  * WordPress dependencies
@@ -21,18 +28,40 @@ class Controls extends Component {
 	render() {
 
 		const {
+			clientId,
 			attributes,
 			setAttributes,
 		} = this.props;
 
 		const {
 			contentAlign,
-			columns,
+			layout,
 		} = attributes;
 
 		return (
 			<Fragment>
 				<BlockControls>
+				<Toolbar>
+					<VisualDropdown
+						icon={ icons.hero }
+						label={ __( 'Change layout' ) }
+						controls={ [
+							map( layoutOptions, ( { value, label, icon } ) => ({
+								icon: icon,
+								title: label,
+								key: value,
+								value: layout,
+								onClick: () => {
+									let selectedWidth = value.toString().split('-');
+									let children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
+									setAttributes( {
+										layout: value,
+									} );
+								}
+							}) )
+						] }
+					/>
+				</Toolbar>
 					{ BackgroundImageToolbarControls( this.props ) }
 				</BlockControls>
 			</Fragment>

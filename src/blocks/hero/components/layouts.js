@@ -8,11 +8,14 @@ const { __ } = wp.i18n;
  */
 import icons from './icons';
 
-export const layoutOptions = {
-	{ key: '50-50', name: __( '50/50' ), icon: icons.colOne, smallIcon: icons.colOne },
-	{ key: '66-33', name: __( '66/33' ), icon: icons.colTwo, smallIcon: icons.colTwo },
-	{ key: '33-66', name: __( '33/66' ), icon: icons.colThree, smallIcon: icons.colThree },
-	{ key: '75-25', name: __( '75/25' ), icon: icons.colFour, smallIcon: icons.colFour },
-	{ key: '25-75', name: __( '25/75' ), icon: icons.colTwo, smallIcon: icons.colTwo },
-	{ key: '33-33-33', name: __( '33/33/33' ), icon: icons.colThree, smallIcon: icons.colThree },
-};
+export const layoutOptions = [
+	{ value: 'top-left', label: __( 'Top Left' ), icon: icons.colOne },
+	{ value: 'top-center', label: __( 'Top Center' ), icon: icons.colTwo },
+	{ value: 'top-right', label: __( 'Top Right' ), icon: icons.colThree },
+	{ value: 'center-left', label: __( 'Center Left' ), icon: icons.colFour },
+	{ value: 'center-center', label: __( 'Center Center' ), icon: icons.colOne },
+	{ value: 'center-right', label: __( 'Center Right' ), icon: icons.colTwo },
+	{ value: 'bottom-left', label: __( 'Bottom Left' ), icon: icons.colThree },
+	{ value: 'bottom-center', label: __( 'Bottom Center' ), icon: icons.colFour },
+	{ value: 'bottom-right', label: __( 'Bottom Right' ), icon: icons.colOne },
+];
