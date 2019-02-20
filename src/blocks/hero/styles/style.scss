@@ -73,5 +73,19 @@
     			grid-row: 3;
 			}
 		}
+
+		&:not( .is-fullscreen ){
+			&.hero-top-left-align,
+			&.hero-top-center-align,
+			&.hero-top-right-align,
+			&.hero-center-left-align,
+			&.hero-center-center-align,
+			&.hero-center-right-align,
+			&.hero-bottom-left-align,
+			&.hero-bottom-center-align,
+			&.hero-bottom-right-align{
+				grid-template-rows: auto;
+			}
+		}
 	}
 }
