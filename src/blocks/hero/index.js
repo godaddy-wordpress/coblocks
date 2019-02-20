@@ -119,7 +119,7 @@ const settings = {
 		from: [
 			{
 				type: 'prefix',
-				prefix: '::hero',
+				prefix: ':hero',
 				transform: function( content ) {
 					return createBlock( `coblocks/${ name }`, {
 						content,
@@ -159,7 +159,7 @@ const settings = {
 			// }
 
 			const classes = classnames( classlist );
-			
+
 			const styles = {
 				color: textClass ? undefined : customTextColor,
 			};
@@ -174,7 +174,7 @@ const settings = {
 					[ backgroundClass ]: backgroundClass,
 					'is-fullscreen': fullscreen,
 			} );
-			
+
 			const innerStyles = {
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
@@ -184,9 +184,9 @@ const settings = {
 			return (
 				<div className={ classes } style={ styles } >
 					<div className={ innerClasses } style={ innerStyles }>
-						<div className="wp-block-coblocks-hero__box" 
+						<div className="wp-block-coblocks-hero__box"
 							style={ {
-								width: maxWidth ? maxWidth + 'px' : undefined, 
+								width: maxWidth ? maxWidth + 'px' : undefined,
 							} }
 						>
 							<InnerBlocks.Content />
