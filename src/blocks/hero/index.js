@@ -12,6 +12,7 @@ import icons from './components/icons';
 import Edit from './components/edit';
 import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
+import CSSGridAttributes from '../../components/grid-control/attributes';
 
 /**
  * WordPress dependencies
@@ -50,18 +51,11 @@ const blockAttributes = {
 	customTextColor: {
 		type: 'string',
 	},
-	layout: {
-		type: 'string',
-		default: 'center-left',
-	},
-	fullscreen: {
-		type: 'boolean',
-		default: false,
-	},
 	maxWidth: {
 		type: 'number',
 		default: 560,
 	},
+	...CSSGridAttributes,
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 

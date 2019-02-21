@@ -11,6 +11,7 @@ import icons from './icons';
 import applyWithColors from './colors';
 import BackgroundImagePanel from '../../../components/background';
 import DimensionsControl from '../../../components/dimensions-control/';
+import CSSGridControl from '../../../components/grid-control/';
 
 /**
  * WordPress dependencies
@@ -192,49 +193,7 @@ class Inspector extends Component {
 							saveCoBlocksMeta={ saveCoBlocksMeta }
 						/>
 
-						<div className={ classes }>
-							<label className="components-base-control__label" >{ __( 'Layout' ) }</label>
-							<ButtonGroup aria-label={ __( 'Select Style' ) }>
-							{ map( layoutOptions, ( { label, value, icon } ) => (
-								<Tooltip text={ label }>
-									<div className={ ( value == layout ) ? 'is-selected' : null }>
-										<Button
-											isSmall
-											onClick={ () => {
-												setAttributes( { layout: value } );
-												if( layoutAttributes[ value ].wrapper ){
-													dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
-												}
-											} }
-										>
-										</Button>
-									</div>
-								</Tooltip>
-							) ) }
-							</ButtonGroup>
-						</div>
-
-						<ToggleControl
-							label={ __( 'Fullscreen' ) }
-							checked={ !! fullscreen }
-							onChange={ () => {
-								if( fullscreen ){
-									if( [ 'bottom-left', 'top-left' ].includes( layout ) ){
-										setAttributes( {  layout: 'center-left' } )
-									}
-
-									if( [ 'bottom-center', 'top-center' ].includes( layout ) ){
-										setAttributes( {  layout: 'center-center' } )
-									}
-
-									if( [ 'bottom-right', 'top-right' ].includes( layout ) ){
-										setAttributes( {  layout: 'center-right' } )
-									}
-								}
-								setAttributes( {  fullscreen: ! fullscreen } )
-							} }
-							help={ !! fullscreen ? __( 'Displaying as the height of the viewport.' ) : __( 'Toggle to enable fullscreen mode.' ) }
-						/>
+						<CSSGridControl { ...this.props } />
 
 						<RangeControl
 							label={ __( 'Content width in pixels' ) }
