@@ -18,7 +18,7 @@ const { dispatch, select } = wp.data;
 const { Component, Fragment } = wp.element;
 const { ButtonGroup, Button, Tooltip, ToggleControl } = wp.components;
 
-class CSSGridControl  extends Component {
+class CSSGridControl extends Component {
 
 	constructor( props ) {
 		super( ...arguments );
@@ -133,10 +133,10 @@ class CSSGridControl  extends Component {
 			<Fragment>
 				<div className={ classes }>
 					<label className="components-base-control__label" >{ __( 'Layout' ) }</label>
-					<ButtonGroup aria-label={ __( 'Select Style' ) }>
+					<ButtonGroup aria-label={ __( 'Select Layout' ) }>
 					{ map( layoutOptions, ( { label, value, icon } ) => {
 						 if( tooltip ){
-						 	return ( 
+						 	return (
 						 		<Tooltip text={ label }>
 									<div className={ ( value == layout ) ? 'is-selected' : null }>
 										<Button
@@ -150,7 +150,7 @@ class CSSGridControl  extends Component {
 										>
 										</Button>
 									</div>
-								</Tooltip> 
+								</Tooltip>
 							)
 						 }else{
 						 	return(
@@ -171,7 +171,6 @@ class CSSGridControl  extends Component {
 					} ) }
 					</ButtonGroup>
 				</div>
-
 				<ToggleControl
 					label={ __( 'Fullscreen' ) }
 					checked={ !! fullscreen }
@@ -191,7 +190,7 @@ class CSSGridControl  extends Component {
 						}
 						setAttributes( {  fullscreen: ! fullscreen } )
 					} }
-					help={ !! fullscreen ? __( 'Displaying as the height of the viewport.' ) : __( 'Toggle to enable fullscreen mode.' ) }
+					help={ !! fullscreen ? __( 'Fullscreen mode is enabled.' ) : __( 'Toggle to enable fullscreen mode.' ) }
 				/>
 			</Fragment>
 		);
