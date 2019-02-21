@@ -91,6 +91,12 @@
 			h6 {
 				color: inherit;
 			}
+
+			&__inner{
+				img{
+					max-width: 100% !important;
+				}
+			}
 		}
 	}
 }
