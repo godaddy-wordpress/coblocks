@@ -49,6 +49,10 @@
 			&:first-child {
 				display: block;
 			}
+
+			&:before, &:after{
+				display: none;
+			}
 		}
 
 		&__text {
