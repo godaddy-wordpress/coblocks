@@ -210,10 +210,10 @@ class Inspector extends Component {
 							initialPosition={ 560 }
 						/>
 						<ToggleControl
-							label={ !! fullscreen ? __( 'Displaying as fullscreen' ) : __( 'Display as fullscreen' ) }
+							label={ __( 'Fullscreen' ) }
 							checked={ !! fullscreen }
 							onChange={ () => setAttributes( {  fullscreen: ! fullscreen } ) }
-							help={ !! fullscreen ? __( 'Displaying as full height of the viewport.' ) : __( 'Toggle to display as full height of the viewport.' ) }  />
+							help={ !! fullscreen ? __( 'Displaying as the height of the viewport.' ) : __( 'Toggle to enable fullscreen mode.' ) }  />
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }
