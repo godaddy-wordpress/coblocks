@@ -19,8 +19,8 @@ import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText, InnerBlocks, withFontSizes } = wp.editor;
-const { ResizableBox, Spinner } = wp.components;
+const { RichText, InnerBlocks, withFontSizes, Inserter } = wp.editor;
+const { ResizableBox, Spinner, IconButton } = wp.components;
 const { isBlobURL } = wp.blob;
 
 /**
@@ -75,16 +75,22 @@ class Edit extends Component {
 			hasParallax,
 		} = attributes;
 
+		const parentId = wp.data.select( 'core/editor' ).getBlockRootClientId( clientId );
+		const columnBlocks = wp.data.select( 'core/editor' ).getBlock( clientId );
+		const parentBlocks = wp.data.select( 'core/editor' ).getBlocksByClientId( parentId );
+		const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
+		const nextBlockClient = wp.data.select( 'core/editor' ).getBlock( nextBlockClientId );
 		const dropZone = (
 			<BackgroundImageDropZone
 				{ ...this.props }
 				label={ sprintf( __( 'Add backround image to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
 			/>
 		);
-
+		
 		const classes = classnames(
 			'wp-block-coblocks-column', {
 				[ `coblocks-column-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+				'wp-block-coblocks-column-placeholder' : columnBlocks && columnBlocks.innerBlocks && Object.keys( columnBlocks.innerBlocks ).length < 1,
 			}
 		);
 
@@ -114,11 +120,6 @@ class Edit extends Component {
 			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 		};
 
-		const parentId = wp.data.select( 'core/editor' ).getBlockRootClientId( clientId );
-		const parentBlocks = wp.data.select( 'core/editor' ).getBlocksByClientId( parentId );
-		const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
-		const nextBlockClient = wp.data.select( 'core/editor' ).getBlock( nextBlockClientId );
-
 		if ( parseInt( width ) == 100 ) {
 			return [
 				<Fragment>
@@ -145,6 +146,7 @@ class Edit extends Component {
 								<InnerBlocks
 									templateLock={ false }
 								/>
+								<Inserter rootClientId={ clientId } isAppender />
 							</div>
 						</div>
 					</div>
@@ -243,6 +245,7 @@ class Edit extends Component {
 						<div className={ innerClasses } style={ innerStyles }>
 							{ isBlobURL( backgroundImg ) && <Spinner /> }
 							<InnerBlocks templateLock={ false }/>
+							<Inserter rootClientId={ clientId } isAppender />
 						</div>
 					</div>
 				</ResizableBox>
