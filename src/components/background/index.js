@@ -107,12 +107,14 @@ function BackgroundImagePanel( props, options ) {
 					initialOpen={ false }
 				>
 					{ overlaySelect() }
-					<SelectControl
-						label={ __( 'Position' ) }
-						value={ backgroundPosition ? backgroundPosition : 'center center' }
-						options={ backgroundPositionOptions }
-						onChange={ ( nextbackgroundPosition ) => setAttributes( { backgroundPosition: nextbackgroundPosition } ) }
-					/>
+					{ ! FocalPointPicker && (
+						<SelectControl
+							label={ __( 'Position' ) }
+							value={ backgroundPosition ? backgroundPosition : 'center center' }
+							options={ backgroundPositionOptions }
+							onChange={ ( nextbackgroundPosition ) => setAttributes( { backgroundPosition: nextbackgroundPosition } ) }
+						/>
+					) }
 					<SelectControl
 						label={ __( 'Repeat' ) }
 						value={ backgroundRepeat ? backgroundRepeat : 'no-repeat' }
