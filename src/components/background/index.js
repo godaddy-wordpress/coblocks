@@ -87,7 +87,7 @@ function BackgroundImagePanel( props, options ) {
 		if ( typeof options !== 'undefined' && typeof options.overlay !== 'undefined' && options.overlay ) {
 			return(
 				<RangeControl
-					label={ __( 'Image Overlay' ) }
+					label={ __( 'Background Opacity' ) }
 					value={ backgroundOverlay }
 					onChange={ ( nextBackgroundOverlay ) => setAttributes( {  backgroundOverlay: nextBackgroundOverlay } ) }
 					min={ 0 }
