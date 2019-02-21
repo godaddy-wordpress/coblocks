@@ -97,7 +97,7 @@ function BackgroundImagePanel( props, options ) {
 			);
 		}
 	}
-
+	
 	if ( backgroundImg ) {
 		const backgroundSizeDefault = ( typeof options !== 'undefined' && typeof options.backgroundSize !== 'undefined' ) ? options.backgroundSize : 'cover';
 		return(
@@ -130,7 +130,7 @@ function BackgroundImagePanel( props, options ) {
 						checked={ !! hasParallax }
 						onChange={ () => setAttributes( {  hasParallax: ! hasParallax } ) }
 					/>
-					{ ! hasParallax && (
+					{ ! hasParallax && FocalPointPicker && (
 						<FocalPointPicker
 							label={ __( 'Focal Point' ) }
 							url={ backgroundImg }
