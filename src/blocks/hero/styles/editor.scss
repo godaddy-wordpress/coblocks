@@ -21,7 +21,6 @@
 				//resize handle
 				> span{
 					.components-resizable-box__handle{
-						display: block;
 						margin: 0px -10px;
 						z-index: 90;
 					}
@@ -101,6 +100,17 @@
 				}
 			}
 
+		}
+	}
+
+	&.is-selected{
+		.wp-block-coblocks-hero__box{
+			//resize handle
+			> span{
+				.components-resizable-box__handle{
+					display: block;
+				}
+			}
 		}
 	}
 }
