@@ -5,64 +5,65 @@
 		width: 100%;
 
 		&__inner {
-			.wp-block-coblocks-hero__box{
-				> .editor-inner-blocks{
-					> .editor-block-list__layout{
-						> .wp-block{
+			.wp-block-coblocks-hero__box {
+				> .editor-inner-blocks {
+					> .editor-block-list__layout {
+						> .wp-block {
 							width: 100%;
 							max-width: none;
 						}
-						> div:not(.wp-block){
+						> div:not(.wp-block) {
 							display: none;
 						}
 					}
 				}
 
 				//resize handle
-				> span{
-					.components-resizable-box__handle{
+				> span {
+					.components-resizable-box__handle {
 						margin: 0px -10px;
 						z-index: 90;
 					}
 				}
 
-				&:before, 
-				&:after{
+				&:before,
+				&:after {
 					top: 0px;
-				    content: "";
-				    display: block;
-				    width: 3px;
-				    height: 100%;
-				    right: -12px;
-				    opacity: 0;
-				    background: #0085ba;
-				    position: absolute;
-				    -webkit-transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
-				    -o-transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
-				    transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
-				    z-index: 29;
+					content: "";
+					display: block;
+					width: 3px;
+					height: 100%;
+					right: -12px;
+					opacity: 0;
+					background: #0085ba;
+					position: absolute;
+					-webkit-transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
+					-o-transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
+					transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
+					z-index: 29;
 				}
-				&:before,{
+				&:before {
 					left: -12px;
 				}
 			}
-			&.is-fullscreen{
-				height: 100vh;
+			&.is-fullscreen {
+				// The 56px is the height of the editor header/top toolbar.
+				height: calc(100vh - 56px);
 			}
 
 			//resize handles
 			&.hero-top-left-align,
 			&.hero-center-left-align,
-			&.hero-bottom-left-align{
-				.wp-block-coblocks-hero__box{
-					> span{
-						.components-resizable-box__handle-left{
+			&.hero-bottom-left-align {
+				.wp-block-coblocks-hero__box {
+					> span {
+						.components-resizable-box__handle-left {
 							display: none;
 						}
 					}
 
-					&.is-resizing{
-						&:after{
+					&.is-resizing {
+						&:after {
 							opacity: 1;
 						}
 					}
@@ -71,11 +72,11 @@
 
 			&.hero-top-center-align,
 			&.hero-center-center-align,
-			&.hero-bottom-center-align{
-				.wp-block-coblocks-hero__box{
-					&.is-resizing{
+			&.hero-bottom-center-align {
+				.wp-block-coblocks-hero__box {
+					&.is-resizing {
 						&:before,
-						&:after{
+						&:after {
 							opacity: 1;
 						}
 					}
@@ -84,30 +85,29 @@
 
 			&.hero-top-right-align,
 			&.hero-center-right-align,
-			&.hero-bottom-right-align{
-				.wp-block-coblocks-hero__box{
-					> span{
-						.components-resizable-box__handle-right{
+			&.hero-bottom-right-align {
+				.wp-block-coblocks-hero__box {
+					> span {
+						.components-resizable-box__handle-right {
 							display: none;
 						}
 					}
 
-					&.is-resizing{
-						&:before{
+					&.is-resizing {
+						&:before {
 							opacity: 1;
 						}
 					}
 				}
 			}
-
 		}
 	}
 
-	&.is-selected{
-		.wp-block-coblocks-hero__box{
+	&.is-selected {
+		.wp-block-coblocks-hero__box {
 			//resize handle
-			> span{
-				.components-resizable-box__handle{
+			> span {
+				.components-resizable-box__handle {
 					display: block;
 				}
 			}
@@ -115,10 +115,10 @@
 	}
 }
 
-.edit-post-sidebar{
-	.components-coblocks-visual-dropdown.components-coblocks-visual-dropdown__hero{
+.edit-post-sidebar {
+	.components-coblocks-visual-dropdown.components-coblocks-visual-dropdown__hero {
 		.components-button-group {
-			.components-coblocks-visual-dropdown__button-wrapper{
+			.components-coblocks-visual-dropdown__button-wrapper {
 				margin: 0px;
 				width: 33%;
 			}
