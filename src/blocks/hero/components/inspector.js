@@ -161,31 +161,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Style' ) } initialOpen={ false }>
-						<div className="components-coblocks-visual-dropdown components-coblocks-visual-dropdown__hero">
-							<ButtonGroup aria-label={ __( 'Select Hero Style' ) }>
-							{ map( layoutOptions, ( { label, value, icon } ) => (
-								<Tooltip text={ label }>
-									<div className={ ( value == layout ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
-										<Button
-											className={ ( value == layout ) ? 'components-coblocks-visual-dropdown__button components-coblocks-visual-dropdown__button--selected' : 'components-coblocks-visual-dropdown__button' }
-											isSmall
-											onClick={ () => {
-												setAttributes( { layout: value } );
-												if( layoutAttributes[ value ].wrapper ){
-													dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
-												}
-											} }
-										>
-											{ icon }
-										</Button>
-									</div>
-								</Tooltip>
-							) ) }
-							</ButtonGroup>
-						</div>
-					</PanelBody>
-					<PanelBody title={ __( 'Hero Settings' ) } className='components-coblocks-block-sidebar--buttons'>
+					<PanelBody title={ __( 'Hero Settings' ) }>
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding' ) }
@@ -199,9 +175,38 @@ class Inspector extends Component {
 							dimensionSize={ paddingSize }
 							saveCoBlocksMeta={ saveCoBlocksMeta }
 						/>
+
+						<div className="components-base-control components-coblocks-css-grid-selector">
+							<label className="components-base-control__label" >{ __( 'Layout' ) }</label>
+							<ButtonGroup aria-label={ __( 'Select Style' ) }>
+							{ map( layoutOptions, ( { label, value, icon } ) => (
+								<Tooltip text={ label }>
+									<div className={ ( value == layout ) ? 'is-selected' : null }>
+										<Button
+											isSmall
+											onClick={ () => {
+												setAttributes( { layout: value } );
+												if( layoutAttributes[ value ].wrapper ){
+													dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+												}
+											} }
+										>
+										</Button>
+									</div>
+								</Tooltip>
+							) ) }
+							</ButtonGroup>
+						</div>
+
+						<ToggleControl
+							label={ __( 'Fullscreen' ) }
+							checked={ !! fullscreen }
+							onChange={ () => setAttributes( {  fullscreen: ! fullscreen } ) }
+							help={ !! fullscreen ? __( 'Displaying as the height of the viewport.' ) : __( 'Toggle to enable fullscreen mode.' ) }
+						/>
+
 						<RangeControl
-							label={ __( 'Content width in pixels' ) }
-							className="components-block-coblocks-hero-maxwidth-range"
+							label={ __( 'Content max width in pixels' ) }
 							value={ parseInt( maxWidth ) }
 							onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: parseInt(nextMaxWidth) } ) }
 							min={ 400 }
@@ -209,11 +214,6 @@ class Inspector extends Component {
 							step={ 10 }
 							initialPosition={ 560 }
 						/>
-						<ToggleControl
-							label={ __( 'Fullscreen' ) }
-							checked={ !! fullscreen }
-							onChange={ () => setAttributes( {  fullscreen: ! fullscreen } ) }
-							help={ !! fullscreen ? __( 'Displaying as the height of the viewport.' ) : __( 'Toggle to enable fullscreen mode.' ) }  />
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }
