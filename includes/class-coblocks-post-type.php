@@ -45,7 +45,7 @@ class CoBlocks_Post_Type {
 				'add_new_item'       => esc_html__( 'Add New %1$s', '@@textdomain' ),
 				'edit_item'          => esc_html__( 'Edit %1$s', '@@textdomain' ),
 				'new_item'           => esc_html__( 'New %1$s', '@@textdomain' ),
-				'all_items'          => esc_html__( 'My %1$ss', '@@textdomain' ),
+				'all_items'          => esc_html__( 'All Layouts', '@@textdomain' ),
 				'view_item'          => esc_html__( 'View %1$s', '@@textdomain' ),
 				'search_items'       => esc_html__( 'Search', '@@textdomain' ),
 				'not_found'          => esc_html__( 'No %2$s found', '@@textdomain' ),
