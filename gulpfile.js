@@ -24,8 +24,8 @@ var scriptModal   		= 'coblocks-modal';
 // Styles.
 var styleDestination = './dist/css/';
 var styleAdmin    = './src/styles/admin.scss';
-var styleWelcome    = './src/styles/welcome.scss';
-var styleWatchFiles  = [ styleAdmin, styleWelcome, './src/styles/admin/*.scss', './src/styles/welcome/*.scss' ];
+var styleGettingStarted    = './src/styles/getting-started.scss';
+var styleWatchFiles  = [ styleAdmin, styleGettingStarted, './src/styles/admin/*.scss' ];
 
 // Translation.
 var text_domain             	= '@@textdomain';
@@ -113,8 +113,8 @@ gulp.task( 'scripts', function(done) {
 	done();
 });
 
-gulp.task( 'welcomeStyles', function (done) {
-	gulp.src( styleWelcome, { allowEmpty: true } )
+gulp.task( 'gettingStartedStyles', function (done) {
+	gulp.src( styleGettingStarted, { allowEmpty: true } )
 
 	.pipe( sass( {
 		errLogToConsole: true,
@@ -127,7 +127,7 @@ gulp.task( 'welcomeStyles', function (done) {
 	.pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
 
 	.pipe( rename( {
-		basename: 'coblocks-welcome',
+		basename: 'coblocks-getting-started',
 		suffix: '.min',
 	} ) )
 
@@ -402,8 +402,8 @@ gulp.task('release', gulp.series( 'build-process', 'release-notice', function(do
 gulp.task(
 	'default',
 	gulp.series(
-		'welcomeStyles', function(done) {
-		gulp.watch( styleWatchFiles, gulp.parallel( 'welcomeStyles' ) );
+		'gettingStartedStyles', function(done) {
+		gulp.watch( styleWatchFiles, gulp.parallel( 'gettingStartedStyles' ) );
 	done();
 } ) );
 
