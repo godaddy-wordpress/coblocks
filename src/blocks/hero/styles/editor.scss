@@ -9,8 +9,8 @@
 				> .editor-inner-blocks {
 					> .editor-block-list__layout {
 						> .wp-block {
-							width: 100%;
 							max-width: none;
+							width: 100%;
 						}
 						> div:not(.wp-block) {
 							display: none;
@@ -18,31 +18,30 @@
 					}
 				}
 
-				//resize handle
+				// Resize handle.
 				> span {
 					.components-resizable-box__handle {
-						margin: 0px -10px;
+						margin: 0 -10px;
 						z-index: 90;
 					}
 				}
 
-				&:before,
-				&:after {
-					top: 0px;
+				&::before,
+				&::after {
+					background: #0085ba;
 					content: "";
 					display: block;
-					width: 3px;
 					height: 100%;
-					right: -12px;
 					opacity: 0;
-					background: #0085ba;
 					position: absolute;
-					-webkit-transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
-					-o-transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
+					right: -12px;
+					top: 0;
 					transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
+					width: 3px;
 					z-index: 29;
 				}
-				&:before {
+
+				&::before {
 					left: -12px;
 				}
 			}
@@ -51,7 +50,7 @@
 				height: calc(100vh - 56px);
 			}
 
-			//resize handles
+			// Resize handles.
 			&.hero-top-left-align,
 			&.hero-center-left-align,
 			&.hero-bottom-left-align {
@@ -63,7 +62,7 @@
 					}
 
 					&.is-resizing {
-						&:after {
+						&::after {
 							opacity: 1;
 						}
 					}
@@ -75,8 +74,8 @@
 			&.hero-bottom-center-align {
 				.wp-block-coblocks-hero__box {
 					&.is-resizing {
-						&:before,
-						&:after {
+						&::before,
+						&::after {
 							opacity: 1;
 						}
 					}
@@ -94,7 +93,7 @@
 					}
 
 					&.is-resizing {
-						&:before {
+						&::before {
 							opacity: 1;
 						}
 					}
@@ -103,9 +102,9 @@
 		}
 	}
 
+	// Show resize handle when the block is selected.
 	&.is-selected {
 		.wp-block-coblocks-hero__box {
-			//resize handle
 			> span {
 				.components-resizable-box__handle {
 					display: block;
@@ -115,11 +114,12 @@
 	}
 }
 
+// Block sidebar.
 .edit-post-sidebar {
 	.components-coblocks-visual-dropdown.components-coblocks-visual-dropdown__hero {
 		.components-button-group {
 			.components-coblocks-visual-dropdown__button-wrapper {
-				margin: 0px;
+				margin: 0;
 				width: 33%;
 			}
 		}
