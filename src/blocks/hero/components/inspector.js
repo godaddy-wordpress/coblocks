@@ -2,6 +2,7 @@
  * External dependencies
  */
 import map from 'lodash/map';
+import classnames from 'classnames';
 
 /**
  * Internal dependencies
@@ -166,6 +167,13 @@ class Inspector extends Component {
 
 		let getBlockContents = select( 'core/editor' ).getBlock( clientId );
 
+		const classes = classnames(
+			'components-base-control',
+			'components-coblocks-css-grid-selector', {
+				'is-fullscreen': fullscreen,
+			}
+		);
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -184,7 +192,7 @@ class Inspector extends Component {
 							saveCoBlocksMeta={ saveCoBlocksMeta }
 						/>
 
-						<div className="components-base-control components-coblocks-css-grid-selector">
+						<div className={ classes }>
 							<label className="components-base-control__label" >{ __( 'Layout' ) }</label>
 							<ButtonGroup aria-label={ __( 'Select Style' ) }>
 							{ map( layoutOptions, ( { label, value, icon } ) => (
@@ -214,7 +222,7 @@ class Inspector extends Component {
 						/>
 
 						<RangeControl
-							label={ __( 'Content max width in pixels' ) }
+							label={ __( 'Content width in pixels' ) }
 							value={ parseInt( maxWidth ) }
 							onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: parseInt(nextMaxWidth) } ) }
 							min={ 400 }

@@ -119,8 +119,8 @@
 	.components-button-group {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: repeat(3, 1fr);
-		margin-bottom: 1.9em;
+		grid-template-rows: repeat(1, 1fr);
+		margin-bottom: 2em;
 
 		div {
 			background: #fff;
@@ -167,6 +167,18 @@
 				background: #555d66;
 			}
 		}
+
+		div:nth-of-type(1) .components-button {
+			border-radius: 4px 0 0 4px !important;
+		}
+
+		div:nth-of-type(3) .components-button {
+			border-radius: 0 4px 4px 0 !important;
+		}
+	}
+
+	&.is-fullscreen .components-button-group {
+		grid-template-rows: repeat(3, 1fr);
 
 		div:nth-of-type(1) .components-button {
 			border-radius: 4px 0 0 0 !important;

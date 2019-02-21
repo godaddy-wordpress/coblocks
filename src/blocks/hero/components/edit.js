@@ -154,7 +154,6 @@ class Edit extends Component {
 				>
 					<div className={ innerClasses } style={ innerStyles } >
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
-
 							<ResizableBox
 								className={ classnames(
 									'wp-block-coblocks-hero__box',
@@ -163,8 +162,8 @@ class Edit extends Component {
 									}
 								) }
 								size={ { width: maxWidth } }
-								minWidth="100"
-								maxWidth="2500"
+								minWidth="400"
+								maxWidth="1000"
 								enable={ enablePositions }
 								onResizeStart={ () => {
 									this.setState( { resizing: true } );
