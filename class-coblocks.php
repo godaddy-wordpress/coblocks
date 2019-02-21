@@ -108,7 +108,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			$this->define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
 			$this->define( 'COBLOCKS_PLUGIN_BASE', plugin_basename( __FILE__ ) );
 			$this->define( 'COBLOCKS_SHOP_URL', 'https://coblocks.com/' );
-			$this->define( 'COBLOCKS_REVIEW_URL', 'https://wordpress.org/support/plugin/coblocks/reviews/' );
+			$this->define( 'COBLOCKS_REVIEW_URL', 'https://wordpress.org/support/plugin/coblocks/reviews/?filter=5' );
 		}
 
 		/**
@@ -147,6 +147,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-getting-started-page.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-footer.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-feedback.php';
