@@ -1,10 +1,13 @@
 // Style the clickable areas for the column/layout placeholder.
-.components-coblocks-visual-dropdown {
+.components-coblocks-grid-dropdown {
 	.components-coblocks-css-grid-selector{
 		width: 100%;
 
 		.components-base-control__label{
 			display: none;
 		}
+	}
+	.components-base-control__help{
+		display:none;
 	}
 }
