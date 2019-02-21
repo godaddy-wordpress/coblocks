@@ -217,7 +217,22 @@ class Inspector extends Component {
 						<ToggleControl
 							label={ __( 'Fullscreen' ) }
 							checked={ !! fullscreen }
-							onChange={ () => setAttributes( {  fullscreen: ! fullscreen } ) }
+							onChange={ () => {
+								if( fullscreen ){
+									if( [ 'bottom-left', 'top-left' ].includes( layout ) ){
+										setAttributes( {  layout: 'center-left' } )
+									}
+
+									if( [ 'bottom-center', 'top-center' ].includes( layout ) ){
+										setAttributes( {  layout: 'center-center' } )
+									}
+
+									if( [ 'bottom-right', 'top-right' ].includes( layout ) ){
+										setAttributes( {  layout: 'center-right' } )
+									}
+								}
+								setAttributes( {  fullscreen: ! fullscreen } )
+							} }
 							help={ !! fullscreen ? __( 'Displaying as the height of the viewport.' ) : __( 'Toggle to enable fullscreen mode.' ) }
 						/>
 
