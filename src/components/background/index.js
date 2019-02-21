@@ -100,13 +100,16 @@ function BackgroundImagePanel( props, options ) {
 
 	const onSelectRepeat = ( backgroundRepeat ) => {
 
-		setAttributes( {
-			backgroundRepeat: backgroundRepeat,  backgroundSize: 'contain',
-		} );
-
 		if ( backgroundRepeat === 'no-repeat' ) {
 			setAttributes( {
+				backgroundRepeat: backgroundRepeat,
 				backgroundSize: 'cover',
+			} );
+		} else {
+			setAttributes( {
+				backgroundRepeat: backgroundRepeat,
+				backgroundSize: 'contain',
+				focalPoint: undefined,
 			} );
 		}
 	}
@@ -125,7 +128,7 @@ function BackgroundImagePanel( props, options ) {
 						checked={ !! hasParallax }
 						onChange={ () => setAttributes( {  hasParallax: ! hasParallax } ) }
 					/>
-					{ ! hasParallax && FocalPointPicker && (
+					{ ! hasParallax && FocalPointPicker && backgroundRepeat !== 'repeat' && (
 						<FocalPointPicker
 							label={ __( 'Focal Point' ) }
 							url={ backgroundImg }
@@ -135,6 +138,15 @@ function BackgroundImagePanel( props, options ) {
 						/>
 					) }
 					{ overlaySelect() }
+
+					<SelectControl
+						label={ __( 'Repeat' ) }
+						className="components-background-display-select--coblocks"
+						value={ backgroundRepeat ? backgroundRepeat : 'no-repeat' }
+						options={ backgroundRepeatOptions }
+						onChange={ ( nextbackgroundRepeat ) => onSelectRepeat( nextbackgroundRepeat ) }
+					/>
+
 					{ ! FocalPointPicker && (
 						<SelectControl
 							label={ __( 'Position' ) }
@@ -143,13 +155,6 @@ function BackgroundImagePanel( props, options ) {
 							onChange={ ( nextbackgroundPosition ) => setAttributes( { backgroundPosition: nextbackgroundPosition } ) }
 						/>
 					) }
-					<SelectControl
-						label={ __( 'Repeat' ) }
-						className="components-background-display-select--coblocks"
-						value={ backgroundRepeat ? backgroundRepeat : 'no-repeat' }
-						options={ backgroundRepeatOptions }
-						onChange={ ( nextbackgroundRepeat ) => onSelectRepeat( nextbackgroundRepeat ) }
-					/>
 
 					{ backgroundRepeat == 'no-repeat' && (
 						<SelectControl
@@ -159,6 +164,32 @@ function BackgroundImagePanel( props, options ) {
 							onChange={ ( nextbackgroundSize ) => setAttributes( { backgroundSize: nextbackgroundSize } ) }
 						/>
 					) }
+
+					<Button
+						className="components-button--coblocks-remove-background-image"
+						type="button"
+						isDefault
+						label={ __( 'Remove background Image' ) }
+						onClick={ () => {
+							setAttributes( {
+								backgroundImg: '',
+								backgroundOverlay: 0,
+								backgroundRepeat: 'no-repeat',
+								backgroundPosition: '',
+								backgroundSize: 'cover',
+								hasParallax: false,
+							} );
+
+							// Remove padding when background image is removed.
+							if ( BLOCKS_WITH_AUTOPADDING.includes( props.name ) ){
+								if( attributes.paddingSize ){
+									setAttributes( { paddingSize: 'no' } );
+								}
+							}
+						} }
+					>
+						{ __( 'Remove Image' ) }
+					</Button>
 				</PanelBody>
 			</Fragment>
 		);
