@@ -193,7 +193,6 @@ class Edit extends Component {
 		if ( ! layout && this.state.layoutSelection ) {
 			return [
 				<Fragment>
-					{ dropZone }
 					{ isSelected && (
 						<Controls
 							{ ...this.props }
