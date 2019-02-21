@@ -24,8 +24,9 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 		display: inline-block;
 		margin: 3px 6px 3px 0 !important;
 		vertical-align: middle;
-		
-		&:before, &:after{
+
+		&::before,
+		&::after {
 			display: none !important;
 		}
 	}
@@ -33,8 +34,8 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 	&__button {
 		align-items: center;
 		border: none;
-		box-shadow: none !important;
 		border-radius: 0;
+		box-shadow: none !important;
 		cursor: pointer;
 		display: inline-flex;
 		font-size: 15px;
@@ -152,8 +153,8 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 
 		.wp-block-coblocks-social__button {
 			background: transparent !important;
-			padding: 0 !important;
 			display: block;
+			padding: 0 !important;
 		}
 
 		.wp-block-coblocks-social__text {
