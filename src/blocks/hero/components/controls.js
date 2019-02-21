@@ -1,0 +1,63 @@
+/**
+ * External dependencies
+ */
+import map from 'lodash/map';
+
+/**
+ * Internal dependencies
+ */
+import icons from './icons';
+import { layoutOptions } from './layouts'
+import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../components/background';
+import VisualDropdown from '../../../components/visual-dropdown/';
+import CSSGridToolbar from '../../../components/grid-control/toolbar';
+
+/**
+ * WordPress dependencies
+ */
+const { __, sprintf } = wp.i18n;
+const { Component, Fragment } = wp.element;
+const { AlignmentToolbar, BlockControls } = wp.editor;
+const { Toolbar } = wp.components;
+
+class Controls extends Component {
+
+	constructor( props ) {
+		super( ...arguments );
+	}
+
+	render() {
+
+		const {
+			clientId,
+			attributes,
+			setAttributes,
+		} = this.props;
+
+		const {
+			contentAlign,
+			layout,
+		} = attributes;
+
+		return (
+			<Fragment>
+				<BlockControls>
+				<Toolbar>
+					<CSSGridToolbar
+						icon={ icons.style }
+						label={ __( 'Change layout' ) }
+						props={ this.props }
+					/>
+				</Toolbar>
+				<AlignmentToolbar
+					value={ contentAlign }
+					onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
+				/>
+					{ BackgroundImageToolbarControls( this.props ) }
+				</BlockControls>
+			</Fragment>
+		);
+	}
+};
+
+export default Controls;

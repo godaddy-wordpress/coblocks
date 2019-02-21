@@ -139,6 +139,8 @@ class Edit extends Component {
 						style={ {
 							backgroundColor: backgroundColor.color,
 							backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+							color: textColor.color,
+							textAlign: contentAlign,
 						} }
 						>
 						<div className="wp-block-coblocks-column">

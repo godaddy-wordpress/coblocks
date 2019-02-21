@@ -1,0 +1,199 @@
+.wp-block[data-type="coblocks/hero"] {
+	background: transparent !important;
+
+	.wp-block-coblocks-hero {
+		width: 100%;
+
+		&__inner {
+			.wp-block-coblocks-hero__box {
+				> .editor-inner-blocks {
+					> .editor-block-list__layout {
+						> .wp-block {
+							max-width: none;
+							width: 100%;
+						}
+						> div:not(.wp-block) {
+							display: none;
+						}
+					}
+				}
+
+				// Resize handle.
+				> span {
+					.components-resizable-box__handle {
+						margin: 0 -10px;
+						z-index: 90;
+					}
+				}
+
+				&::before,
+				&::after {
+					background: #0085ba;
+					content: "";
+					display: block;
+					height: 100%;
+					opacity: 0;
+					position: absolute;
+					right: -12px;
+					top: 0;
+					transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
+					width: 3px;
+					z-index: 29;
+				}
+
+				&::before {
+					left: -12px;
+				}
+			}
+			&.is-fullscreen {
+				// The 56px is the height of the editor header/top toolbar.
+				height: calc(100vh - 56px);
+			}
+
+			// Resize handles.
+			&.hero-top-left-align,
+			&.hero-center-left-align,
+			&.hero-bottom-left-align {
+				.wp-block-coblocks-hero__box {
+					> span {
+						.components-resizable-box__handle-left {
+							display: none;
+						}
+					}
+
+					&.is-resizing {
+						&::after {
+							opacity: 1;
+						}
+					}
+				}
+			}
+
+			&.hero-top-center-align,
+			&.hero-center-center-align,
+			&.hero-bottom-center-align {
+				.wp-block-coblocks-hero__box {
+					&.is-resizing {
+						&::before,
+						&::after {
+							opacity: 1;
+						}
+					}
+				}
+			}
+
+			&.hero-top-right-align,
+			&.hero-center-right-align,
+			&.hero-bottom-right-align {
+				.wp-block-coblocks-hero__box {
+					> span {
+						.components-resizable-box__handle-right {
+							display: none;
+						}
+					}
+
+					&.is-resizing {
+						&::before {
+							opacity: 1;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Show resize handle when the block is selected.
+	&.is-selected {
+		.wp-block-coblocks-hero__box {
+			> span {
+				.components-resizable-box__handle {
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+// Block sidebar.
+.components-coblocks-css-grid-selector {
+	.components-button-group {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(1, 1fr);
+		margin-bottom: 2em;
+
+		div {
+			background: #fff;
+			padding: 1px;
+		}
+
+		.components-button {
+			background: #edeff0;
+			padding: 20px;
+			border: 0;
+			border-radius: 0 !important;
+			box-shadow: none;
+			height: 100%;
+			width: 100%;
+
+			svg {
+				display: none;
+			}
+
+			&:hover {
+				background: #e3e4e7;
+				box-shadow: inset 0 0 0 1px #555d66, inset 0 0 0 2px #fff;
+			}
+
+			&:active:enabled {
+				background: #e3e4e7;
+				box-shadow: inset 0 0 0 1px #555d66, inset 0 0 0 2px #fff;
+			}
+
+			&:focus:enabled {
+				background: #e3e4e7;
+				box-shadow: inset 0 0 0 1px #555d66, inset 0 0 0 2px #fff;
+			}
+		}
+
+		.is-selected {
+			z-index: 99;
+		}
+
+		.is-selected .components-button {
+			background: #555d66;
+
+			&:focus:enabled {
+				background: #555d66;
+			}
+		}
+
+		div:nth-of-type(1) .components-button {
+			border-radius: 4px 0 0 4px !important;
+		}
+
+		div:nth-of-type(3) .components-button {
+			border-radius: 0 4px 4px 0 !important;
+		}
+	}
+
+	&.is-fullscreen .components-button-group {
+		grid-template-rows: repeat(3, 1fr);
+
+		div:nth-of-type(1) .components-button {
+			border-radius: 4px 0 0 0 !important;
+		}
+
+		div:nth-of-type(3) .components-button {
+			border-radius: 0 4px 0 0 !important;
+		}
+
+		div:nth-last-of-type(1) .components-button {
+			border-radius: 0 0 4px 0 !important;
+		}
+
+		div:nth-last-of-type(3) .components-button {
+			border-radius: 0 0 0 4px !important;
+		}
+	}
+}
