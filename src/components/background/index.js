@@ -97,7 +97,7 @@ function BackgroundImagePanel( props, options ) {
 			);
 		}
 	}
-	
+
 	if ( backgroundImg ) {
 		const backgroundSizeDefault = ( typeof options !== 'undefined' && typeof options.backgroundSize !== 'undefined' ) ? options.backgroundSize : 'cover';
 		return(
