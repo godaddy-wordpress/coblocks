@@ -135,7 +135,7 @@ class Edit extends Component {
 			bottomLeft: false,
 			topLeft: false,
 		};
-		
+
 		return [
 			<Fragment>
 				{ dropZone }
@@ -157,7 +157,7 @@ class Edit extends Component {
 
 							<ResizableBox
 								className={ classnames(
-									'wp-block-coblocks-hero__box', 
+									'wp-block-coblocks-hero__box',
 									'editor-media-container__resizer', {
 										'is-resizing' : this.state.resizing,
 									}

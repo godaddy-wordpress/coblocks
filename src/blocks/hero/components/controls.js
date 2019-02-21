@@ -6,7 +6,7 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-import icons from './../../../utils/icons';
+import icons from './icons';
 import { layoutOptions } from './layouts'
 import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../components/background';
 import VisualDropdown from '../../../components/visual-dropdown/';
@@ -43,7 +43,7 @@ class Controls extends Component {
 				<BlockControls>
 				<Toolbar>
 					<VisualDropdown
-						icon={ icons.hero }
+						icon={ icons.style }
 						label={ __( 'Change layout' ) }
 						controls={ [
 							map( layoutOptions, ( { value, label, icon } ) => ({
