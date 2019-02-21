@@ -30,6 +30,7 @@ class CSSGridControl  extends Component {
 			attributes,
 			clientId,
 			setAttributes,
+			tooltip = true,
 		} = this.props;
 
 		const {
@@ -133,22 +134,41 @@ class CSSGridControl  extends Component {
 				<div className={ classes }>
 					<label className="components-base-control__label" >{ __( 'Layout' ) }</label>
 					<ButtonGroup aria-label={ __( 'Select Style' ) }>
-					{ map( layoutOptions, ( { label, value, icon } ) => (
-						<Tooltip text={ label }>
-							<div className={ ( value == layout ) ? 'is-selected' : null }>
-								<Button
-									isSmall
-									onClick={ () => {
-										setAttributes( { layout: value } );
-										if( layoutAttributes[ value ].wrapper ){
-											dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
-										}
-									} }
-								>
-								</Button>
-							</div>
-						</Tooltip>
-					) ) }
+					{ map( layoutOptions, ( { label, value, icon } ) => {
+						 if( tooltip ){
+						 	return ( 
+						 		<Tooltip text={ label }>
+									<div className={ ( value == layout ) ? 'is-selected' : null }>
+										<Button
+											isSmall
+											onClick={ () => {
+												setAttributes( { layout: value } );
+												if( layoutAttributes[ value ].wrapper ){
+													dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+												}
+											} }
+										>
+										</Button>
+									</div>
+								</Tooltip> 
+							)
+						 }else{
+						 	return(
+						 		<div className={ ( value == layout ) ? 'is-selected' : null }>
+									<Button
+										isSmall
+										onClick={ () => {
+											setAttributes( { layout: value } );
+											if( layoutAttributes[ value ].wrapper ){
+												dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+											}
+										} }
+									>
+									</Button>
+								</div>
+						 	)
+						 }
+					} ) }
 					</ButtonGroup>
 				</div>
 

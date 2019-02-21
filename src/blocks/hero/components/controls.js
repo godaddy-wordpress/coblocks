@@ -10,6 +10,7 @@ import icons from './icons';
 import { layoutOptions } from './layouts'
 import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../components/background';
 import VisualDropdown from '../../../components/visual-dropdown/';
+import CSSGridToolbar from '../../../components/grid-control/toolbar';
 
 /**
  * WordPress dependencies
@@ -42,24 +43,10 @@ class Controls extends Component {
 			<Fragment>
 				<BlockControls>
 				<Toolbar>
-					<VisualDropdown
+					<CSSGridToolbar
 						icon={ icons.style }
 						label={ __( 'Change layout' ) }
-						controls={ [
-							map( layoutOptions, ( { value, label, icon } ) => ({
-								icon: icon,
-								title: label,
-								key: value,
-								value: layout,
-								onClick: () => {
-									let selectedWidth = value.toString().split('-');
-									let children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
-									setAttributes( {
-										layout: value,
-									} );
-								}
-							}) )
-						] }
+						props={ this.props }
 					/>
 				</Toolbar>
 				<AlignmentToolbar
