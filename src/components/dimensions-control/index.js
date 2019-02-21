@@ -102,6 +102,13 @@ class DimensionsControl extends Component {
 	}
 
 	onChangeSize( value, size ) {
+
+		//fix reset for specific blocks
+		if( [ 'coblocks/hero' ].includes( this.props.name ) && value == 'no' ){
+			value = 'huge';
+			size  = 60;
+		}
+
 		if  ( this.props.type == 'padding' ) {
 			this.props.setAttributes( {  paddingSyncUnits: true } )
 			this.props.setAttributes( { paddingSize: value } );

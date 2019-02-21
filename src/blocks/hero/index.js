@@ -73,6 +73,26 @@ const blockAttributes = {
 		type: 'string',
 		default: 'huge',
 	},
+	paddingUnit: {
+		type: 'string',
+		default: 'px',
+	},
+	paddingTop: {
+		type: 'number',
+		default: 60,
+	},
+	paddingBottom: {
+		type: 'number',
+		default: 60,
+	},
+	paddingLeft: {
+		type: 'number',
+		default: 60,
+	},
+	paddingRight: {
+		type: 'number',
+		default: 60,
+	},
 	customBackgroundColor: {
 		type: 'string',
 		default: '#f4e9e0',
