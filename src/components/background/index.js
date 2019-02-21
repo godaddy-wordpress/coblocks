@@ -98,6 +98,19 @@ function BackgroundImagePanel( props, options ) {
 		}
 	}
 
+	const onSelectRepeat = ( backgroundRepeat ) => {
+
+		setAttributes( {
+			backgroundRepeat: backgroundRepeat,  backgroundSize: 'contain',
+		} );
+
+		if ( backgroundRepeat === 'no-repeat' ) {
+			setAttributes( {
+				backgroundSize: 'cover',
+			} );
+		}
+	}
+
 	if ( backgroundImg ) {
 		const backgroundSizeDefault = ( typeof options !== 'undefined' && typeof options.backgroundSize !== 'undefined' ) ? options.backgroundSize : 'cover';
 		return(
@@ -105,28 +118,8 @@ function BackgroundImagePanel( props, options ) {
 				<PanelBody
 					title={ ( typeof options !== 'undefined' && typeof options.label !== 'undefined' ) ? options.label : __( 'Background Settings' ) }
 					initialOpen={ false }
+					className="components-panel__body--coblocks-background-panel"
 				>
-					{ overlaySelect() }
-					{ ! FocalPointPicker && (
-						<SelectControl
-							label={ __( 'Position' ) }
-							value={ backgroundPosition ? backgroundPosition : 'center center' }
-							options={ backgroundPositionOptions }
-							onChange={ ( nextbackgroundPosition ) => setAttributes( { backgroundPosition: nextbackgroundPosition } ) }
-						/>
-					) }
-					<SelectControl
-						label={ __( 'Repeat' ) }
-						value={ backgroundRepeat ? backgroundRepeat : 'no-repeat' }
-						options={ backgroundRepeatOptions }
-						onChange={ ( nextbackgroundRepeat ) => setAttributes( { backgroundRepeat: nextbackgroundRepeat } ) }
-					/>
-					<SelectControl
-						label={ __( 'Display' ) }
-						value={ backgroundSize ? backgroundSize : backgroundSizeDefault }
-						options={ backgroundSizeOptions }
-						onChange={ ( nextbackgroundSize ) => setAttributes( { backgroundSize: nextbackgroundSize } ) }
-					/>
 					<ToggleControl
 						label={ __( 'Fixed Background' ) }
 						checked={ !! hasParallax }
@@ -139,6 +132,31 @@ function BackgroundImagePanel( props, options ) {
 							value={ focalPoint }
 							onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
 							className="components-focal-point-picker--coblocks"
+						/>
+					) }
+					{ overlaySelect() }
+					{ ! FocalPointPicker && (
+						<SelectControl
+							label={ __( 'Position' ) }
+							value={ backgroundPosition ? backgroundPosition : 'center center' }
+							options={ backgroundPositionOptions }
+							onChange={ ( nextbackgroundPosition ) => setAttributes( { backgroundPosition: nextbackgroundPosition } ) }
+						/>
+					) }
+					<SelectControl
+						label={ __( 'Repeat' ) }
+						className="components-background-display-select--coblocks"
+						value={ backgroundRepeat ? backgroundRepeat : 'no-repeat' }
+						options={ backgroundRepeatOptions }
+						onChange={ ( nextbackgroundRepeat ) => onSelectRepeat( nextbackgroundRepeat ) }
+					/>
+
+					{ backgroundRepeat == 'no-repeat' && (
+						<SelectControl
+							label={ __( 'Display' ) }
+							value={ backgroundSize ? backgroundSize : backgroundSizeDefault }
+							options={ backgroundSizeOptions }
+							onChange={ ( nextbackgroundSize ) => setAttributes( { backgroundSize: nextbackgroundSize } ) }
 						/>
 					) }
 				</PanelBody>
