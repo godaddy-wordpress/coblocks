@@ -187,7 +187,7 @@ const settings = {
 					<div className={ innerClasses } style={ innerStyles }>
 						<div className="wp-block-coblocks-hero__box"
 							style={ {
-								width: maxWidth ? maxWidth + 'px' : undefined,
+								maxWidth: maxWidth ? maxWidth + 'px' : undefined,
 							} }
 						>
 							<InnerBlocks.Content />
