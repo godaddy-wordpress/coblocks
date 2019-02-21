@@ -84,7 +84,7 @@ class Inspector extends Component {
 
 		/**
 		 * Set layout options and padding controls for Row Blocks
-		 * This will make us of existing block instead of creating new one 
+		 * This will make us of existing block instead of creating new one
 		 */
 		const layoutOptions = [
 			{ value: 'top-left', label: __( 'Top Left' ), icon: icons.colOne },
@@ -157,13 +157,13 @@ class Inspector extends Component {
 		};
 
 		let getBlockContents = select( 'core/editor' ).getBlock( clientId );
-		
+
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Layout' ) } initialOpen={ false }>
+					<PanelBody title={ __( 'Style' ) } initialOpen={ false }>
 						<div className="components-coblocks-visual-dropdown components-coblocks-visual-dropdown__hero">
-							<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
+							<ButtonGroup aria-label={ __( 'Select Hero Style' ) }>
 							{ map( layoutOptions, ( { label, value, icon } ) => (
 								<Tooltip text={ label }>
 									<div className={ ( value == layout ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
@@ -186,17 +186,6 @@ class Inspector extends Component {
 						</div>
 					</PanelBody>
 					<PanelBody title={ __( 'Hero Settings' ) } className='components-coblocks-block-sidebar--buttons'>
-
-						<RangeControl
-								label={ __( 'Content Width in Pixels' ) }
-								className="components-block-coblocks-hero-maxwidth-range"
-								value={ parseInt( maxWidth ) }
-								onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: parseInt(nextMaxWidth) } ) }
-								min={ 100 }
-								max={ 1500 }
-								step={ 10 }
-							/>
-
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding' ) }
@@ -210,7 +199,16 @@ class Inspector extends Component {
 							dimensionSize={ paddingSize }
 							saveCoBlocksMeta={ saveCoBlocksMeta }
 						/>
-
+						<RangeControl
+							label={ __( 'Content width in pixels' ) }
+							className="components-block-coblocks-hero-maxwidth-range"
+							value={ parseInt( maxWidth ) }
+							onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: parseInt(nextMaxWidth) } ) }
+							min={ 400 }
+							max={ 1000 }
+							step={ 10 }
+							initialPosition={ 560 }
+						/>
 						<ToggleControl
 							label={ !! fullscreen ? __( 'Displaying as fullscreen' ) : __( 'Display as fullscreen' ) }
 							checked={ !! fullscreen }
@@ -227,13 +225,13 @@ class Inspector extends Component {
 
 									setBackgroundColor( nextBackgroundColor );
 
-									//add padding if there's none
-									if( !paddingSize || paddingSize == 'no' ){
-										setAttributes({ paddingSize: 'medium' });
+									// Add padding if there's none.
+									if ( !paddingSize || paddingSize == 'no' ) {
+										setAttributes( { paddingSize: 'medium' } );
 									}
 
-									//reset when cleared
-									if( !nextBackgroundColor ){
+									// Reset when cleared.
+									if ( ! nextBackgroundColor ) {
 										setAttributes( { paddingSize: 'no' } );
 									}
 								},

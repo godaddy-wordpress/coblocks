@@ -60,7 +60,7 @@ const blockAttributes = {
 	},
 	maxWidth: {
 		type: 'number',
-		default: 300,
+		default: 560,
 	},
 	...DimensionsAttributes,
 	...BackgroundAttributes,
