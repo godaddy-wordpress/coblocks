@@ -143,6 +143,7 @@ class Edit extends Component {
 								<InnerBlocks
 									templateLock={ false }
 								/>
+								<Inserter rootClientId={ clientId } isAppender />
 							</div>
 						</div>
 					</div>
