@@ -171,6 +171,10 @@ class Edit extends Component {
 								onResizeStart={ () => {
 									this.setState( { resizing: true } );
 									toggleSelection( false );
+
+									let currentBlock = document.getElementById( 'block-' + clientId );
+									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = '';
+									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = maxWidth + 'px';
 								} }
 								onResizeStop={ ( event, direction, elt, delta ) => {
 									setAttributes( {
@@ -178,6 +182,10 @@ class Edit extends Component {
 									} );
 									toggleSelection( true );
 									this.setState( { resizing: false } );
+
+									let currentBlock = document.getElementById( 'block-' + clientId );
+									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
+									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
 								} }
 							>
 								<InnerBlocks
