@@ -88,6 +88,8 @@ class Edit extends Component {
 			paddingUnit,
 			mediaPosition,
 			contentAlign,
+			focalPoint,
+			hasParallax,
 		} = attributes;
 
 		const dropZone = (
@@ -123,6 +125,7 @@ class Edit extends Component {
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 		};
 
 		const enablePositions = {

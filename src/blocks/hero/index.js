@@ -137,6 +137,8 @@ const settings = {
 				customTextColor,
 				textColor,
 				contentAlign,
+				focalPoint,
+				hasParallax,
 			} = attributes;
 
 			const textClass = getColorClassName( 'color', textColor );
@@ -174,6 +176,7 @@ const settings = {
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
 				color: textColor ? textColor.color : undefined,
+				backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			};
 
 			return (
