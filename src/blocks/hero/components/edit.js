@@ -60,6 +60,12 @@ class Edit extends Component {
 		}
 	}
 
+	componentDidMount() {
+		let currentBlock = document.getElementById( 'block-' + this.props.clientId );
+		currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
+		currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = this.props.attributes.maxWidth + 'px';
+	}
+
 	render() {
 
 		const {
