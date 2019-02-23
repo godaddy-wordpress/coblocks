@@ -40,6 +40,7 @@
 		justify-content: flex-start;
 		position: sticky;
 		top: 56px;
+		z-index: 9;
 
 		.edit-post-sidebar__panel-tab {
 			margin-bottom: -1px;
@@ -62,11 +63,10 @@
 
 	&-item {
 		background-color: #fff;
-		border-radius: 2px;
 		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;
 		box-sizing: border-box;
 		margin: 10px;
-		padding: 8px;
+		padding: 6px;
 		position: relative;
 		transition: box-shadow 50ms ease-in-out;
 		width: calc(33.333% - 20px);
