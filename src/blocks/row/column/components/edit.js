@@ -73,6 +73,7 @@ class Edit extends Component {
 			contentAlign,
 			focalPoint,
 			hasParallax,
+			showInserter,
 		} = attributes;
 
 		const parentId = wp.data.select( 'core/editor' ).getBlockRootClientId( clientId );
@@ -148,7 +149,7 @@ class Edit extends Component {
 								<InnerBlocks
 									templateLock={ false }
 								/>
-								<Inserter rootClientId={ clientId } isAppender />
+								{ showInserter ? <Inserter rootClientId={ clientId } isAppender /> : null }
 							</div>
 						</div>
 					</div>
@@ -247,7 +248,7 @@ class Edit extends Component {
 						<div className={ innerClasses } style={ innerStyles }>
 							{ isBlobURL( backgroundImg ) && <Spinner /> }
 							<InnerBlocks templateLock={ false }/>
-							<Inserter rootClientId={ clientId } isAppender />
+							{ showInserter ? <Inserter rootClientId={ clientId } isAppender /> : null }
 						</div>
 					</div>
 				</ResizableBox>
