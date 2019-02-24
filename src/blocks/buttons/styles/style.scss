@@ -63,12 +63,21 @@
 				}
 			}
 		}
+
+		&.is-stacked-on-mobile {
+			.wp-block-button {
+				@media (max-width: #{ ($break-small) }) {
+					margin-left: 0 !important;
+					margin-right: 0 !important;
+				}
+			}
+		}
 	}
 
 	//Add separate Gutter CSS
 	.has-small-gutter {
 		> .wp-block-button {
-			&.is-stacked-on-mobile{
+			&.is-stacked-on-mobile {
 				@media (max-width: #{ ($break-small) }) {
 					&:not(:last-child) {
 						margin-bottom: $gutter--small / 2;
@@ -96,7 +105,7 @@
 
 	.has-medium-gutter {
 		> .wp-block-button {
-			&.is-stacked-on-mobile{
+			&.is-stacked-on-mobile {
 				@media (max-width: #{ ($break-small) }) {
 					&:not(:last-child) {
 						margin-bottom: $gutter--medium / 2;
@@ -124,7 +133,7 @@
 
 	.has-large-gutter {
 		> .wp-block-button {
-			&.is-stacked-on-mobile{
+			&.is-stacked-on-mobile {
 				@media (max-width: #{ ($break-small) }) {
 					&:not(:last-child) {
 						margin-bottom: $gutter--large / 2;
@@ -152,7 +161,7 @@
 
 	.has-huge-gutter {
 		> .wp-block-button {
-			&.is-stacked-on-mobile{
+			&.is-stacked-on-mobile {
 				@media (max-width: #{ ($break-small) }) {
 					&:not(:last-child) {
 						margin-bottom: $gutter--huge / 2;
