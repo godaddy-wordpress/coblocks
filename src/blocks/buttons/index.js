@@ -49,7 +49,7 @@ const blockAttributes = {
 	},
 	contentAlign: {
 		type: 'string',
-		default: 'center',
+		default: 'left',
 	},
 };
 
