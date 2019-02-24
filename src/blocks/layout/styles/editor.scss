@@ -58,23 +58,29 @@
 	clear: both;
 	display: flex;
 	flex-wrap: wrap;
-	margin: 0;
+	margin: -8px;
 	padding: 0;
+	width: calc(100% + 16px);
 
 	&-item {
 		background-color: #fff;
 		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;
 		box-sizing: border-box;
-		margin: 10px;
+		margin: 8px;
 		padding: 6px;
 		position: relative;
 		transition: box-shadow 50ms ease-in-out;
-		width: calc(33.333% - 20px);
+		width: calc(33.333% - 16px);
 
 		&:hover {
+			.coblocks-placeholder,
 			.coblocks-layouts__list-item-screenshot {
 				opacity: 0.3;
 			}
+		}
+
+		> div {
+			position: relative;
 		}
 	}
 
@@ -116,10 +122,28 @@
 
 	&-item-title {
 		display: none;
+		font-size: 12px;
+		margin-top: 6px;
+		padding: 2px 0;
+		text-align: center;
 	}
 
 	&-item-tags {
 		display: none;
+	}
+
+	.coblocks-custom-layout &-item-title {
+		display: block;
+	}
+
+	.coblocks-placeholder {
+		align-items: center;
+		background: #f3f4f5;
+		display: flex;
+		fill: #bebfc5;
+		height: 100px;
+		justify-content: center;
+		transition: opacity 200ms cubic-bezier(0.694, 0, 0.335, 1), visibility 300ms step-end;
 	}
 
 	// 				&:hover {

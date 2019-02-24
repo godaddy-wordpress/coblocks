@@ -211,30 +211,33 @@ class Edit extends Component {
 						<Dashicon icon={ 'insert' } />
 					</Button>
 				}
-				<h3 className={ 'coblocks-layouts__list-item-title coblocks__template-type--' + this.contentType }>
+				<div className={ 'coblocks-layouts__list-item-title coblocks__template-type--' + this.contentType }>
 					{ template[1].name }
-				</h3>
+				</div>
 				<span class="coblocks-layouts__list-item-tags">{ template[1].tags }</span>
 			</li>
 		);
 	}
 
+	// Custom layouts.
 	renderTableItem( post ){
 		var type = 'section';
 
 		if ( post[1].meta_value == type ) {
 			return (
-				<li key={ 'coblocks-' + post[1].ID } className={ 'coblocks-layouts__list-item coblocks-' + type }>
-					{ post[1].thumbnail ? <img className="coblocks-layouts__list-item-screenshot" src={ post[1].thumbnail } /> : <div class="coblocks-placeholder"></div> }
-					<Button
-						type="button"
-						className="coblocks-layouts__list-item-action-button"
-						onClick={ () => this.insertItemType( post[1].ID ) }>
-						<Dashicon icon={ 'insert' } />
-					</Button>
-					<h3 className="coblocks-layouts__list-item-title">
+				<li key={ 'coblocks-' + post[1].ID } className={ 'coblocks-layouts__list-item coblocks-custom-layout coblocks-' + type }>
+					<div>
+						{ post[1].thumbnail ? <img className="coblocks-layouts__list-item-screenshot" src={ post[1].thumbnail } /> : <div class="coblocks-placeholder">{ brandAssets.modalIcon }</div> }
+						<Button
+							type="button"
+							className="coblocks-layouts__list-item-action-button"
+							onClick={ () => this.insertItemType( post[1].ID ) }>
+							<Dashicon icon={ 'insert' } />
+						</Button>
+					</div>
+					<div className="coblocks-layouts__list-item-title">
 						{ post[1].post_title }
-					</h3>
+					</div>
 				</li>
 			);
 		}
