@@ -64,7 +64,7 @@ const settings = {
 	attributes: blockAttributes,
 
 	supports: {
-		stackedOnMobile: true
+		stackedOnMobile: false
 	},
 
 	transforms: {
