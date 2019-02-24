@@ -105,8 +105,12 @@ class DimensionsControl extends Component {
 
 		//fix reset for specific blocks
 		if( [ 'coblocks/hero' ].includes( this.props.name ) && value == 'no' ){
-			value = 'huge';
-			size  = 60;
+			if( size < 0 ){
+				value = 'huge';
+				size  = 60;
+			}else{
+				size  = -1;
+			}
 		}
 
 		if  ( this.props.type == 'padding' ) {

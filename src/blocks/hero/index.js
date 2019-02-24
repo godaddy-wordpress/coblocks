@@ -137,6 +137,8 @@ const settings = {
 				customTextColor,
 				textColor,
 				contentAlign,
+				focalPoint,
+				hasParallax,
 			} = attributes;
 
 			const textClass = getColorClassName( 'color', textColor );
@@ -147,10 +149,6 @@ const settings = {
 				[ textClass ]: textClass,
 				[ `coblocks-hero-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			};
-
-			// if( coblocks && ( typeof coblocks.id != 'undefined' ) ) {
-			// 	classlist = Object.assign( classlist, [ `coblocks-hero-${ coblocks.id }` ] );
-			// }
 
 			const classes = classnames( classlist );
 
@@ -174,6 +172,7 @@ const settings = {
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
 				color: textColor ? textColor.color : undefined,
+				backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			};
 
 			return (

@@ -60,6 +60,12 @@ class Edit extends Component {
 		}
 	}
 
+	componentDidMount() {
+		let currentBlock = document.getElementById( 'block-' + this.props.clientId );
+		currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
+		currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = this.props.attributes.maxWidth + 'px';
+	}
+
 	render() {
 
 		const {
@@ -88,6 +94,8 @@ class Edit extends Component {
 			paddingUnit,
 			mediaPosition,
 			contentAlign,
+			focalPoint,
+			hasParallax,
 		} = attributes;
 
 		const dropZone = (
@@ -123,6 +131,7 @@ class Edit extends Component {
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 		};
 
 		const enablePositions = {
@@ -168,6 +177,9 @@ class Edit extends Component {
 								onResizeStart={ () => {
 									this.setState( { resizing: true } );
 									toggleSelection( false );
+									let currentBlock = document.getElementById( 'block-' + clientId );
+									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = '';
+									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = maxWidth + 'px';
 								} }
 								onResizeStop={ ( event, direction, elt, delta ) => {
 									setAttributes( {
@@ -175,6 +187,9 @@ class Edit extends Component {
 									} );
 									toggleSelection( true );
 									this.setState( { resizing: false } );
+									let currentBlock = document.getElementById( 'block-' + clientId );
+									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
+									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
 								} }
 							>
 								<InnerBlocks
