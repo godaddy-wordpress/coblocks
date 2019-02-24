@@ -205,7 +205,6 @@ class Edit extends Component {
 						<Dashicon icon={ 'external' } />
 					</Button> :
 					<Button
-						isPrimary
 						type="button"
 						className="coblocks-layouts__list-item-action-button"
 						onClick={ () => this.insertItem( template[1].path, ( typeof template[1].fonts != "undefined" ) ? template[1].fonts : '' ) }>
@@ -228,11 +227,10 @@ class Edit extends Component {
 				<li key={ 'coblocks-' + post[1].ID } className={ 'coblocks-layouts__list-item coblocks-' + type }>
 					{ post[1].thumbnail ? <img className="coblocks-layouts__list-item-screenshot" src={ post[1].thumbnail } /> : <div class="coblocks-placeholder"></div> }
 					<Button
-						isPrimary
 						type="button"
 						className="coblocks-layouts__list-item-action-button"
 						onClick={ () => this.insertItemType( post[1].ID ) }>
-						{ __( 'Add Template' ) }
+						<Dashicon icon={ 'insert' } />
 					</Button>
 					<h3 className="coblocks-layouts__list-item-title">
 						{ post[1].post_title }

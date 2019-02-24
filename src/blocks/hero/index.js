@@ -150,10 +150,6 @@ const settings = {
 				[ `coblocks-hero-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			};
 
-			// if( coblocks && ( typeof coblocks.id != 'undefined' ) ) {
-			// 	classlist = Object.assign( classlist, [ `coblocks-hero-${ coblocks.id }` ] );
-			// }
-
 			const classes = classnames( classlist );
 
 			const styles = {
