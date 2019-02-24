@@ -69,15 +69,16 @@ const settings = {
 
 	transforms: {
 		from: [
-			{
+			...[ 1, 2, 3, 4 ].map( ( items ) => ( {
 				type: 'prefix',
-				prefix: '::buttons',
-				transform: function( content ) {
+				prefix: Array( items + 1 ).join( ':' ) + 'buttons',
+				transform( content ) {
 					return createBlock( `coblocks/${ name }`, {
 						content,
+						items,
 					} );
 				},
-			},
+			} ) ),
 		],
 	},
 
