@@ -23,11 +23,13 @@ class CoBlocks_Post_Type {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'setup_post_type' ), 1 );
-		add_action( 'admin_menu', array( $this, 'register_submenu' ), 1 );
 		add_filter( 'enter_title_here', array( $this, 'default_title' ) );
 		add_filter( 'post_updated_messages', array( $this, 'updated_messages' ) );
 		add_filter( 'bulk_post_updated_messages', array( $this, 'bulk_updated_messages' ), 10, 2 );
 		add_action( 'wp_before_admin_bar_render', array( $this, 'remove_new_item' ) );
+		add_action( 'save_post', array( $this, 'add_template_type' ), 10, 3 );
+		add_action( 'init', array( $this, 'template' ), 10, 3 );
+		// add_action( 'admin_menu', array( $this, 'register_submenu' ), 1 );
 	}
 
 	/**
@@ -93,8 +95,8 @@ class CoBlocks_Post_Type {
 	public function labels() {
 
 		$defaults = array(
-			'singular' => esc_html__( 'Section', '@@textdomain' ),
-			'plural'   => esc_html__( 'sections', '@@textdomain' ),
+			'singular' => esc_html__( 'Layout', '@@textdomain' ),
+			'plural'   => esc_html__( 'layouts', '@@textdomain' ),
 		);
 
 		return apply_filters( 'coblocks_default_labels', $defaults );
@@ -121,7 +123,7 @@ class CoBlocks_Post_Type {
 	}
 
 	/**
-	 * Change default "Enter title here" input.
+	 * Change default "Add title" input.
 	 *
 	 * @param string $title Default title placeholder text.
 	 */
@@ -130,7 +132,7 @@ class CoBlocks_Post_Type {
 		if ( ! is_admin() ) {
 			$label = $this->get_singular_label( true );
 			/* translators: Custom post type label */
-			$title = sprintf( esc_html__( '%s name here', '@@textdomain' ), $label );
+			$title = sprintf( esc_html__( '%s title', '@@textdomain' ), $label );
 			return $title;
 		}
 
@@ -139,7 +141,7 @@ class CoBlocks_Post_Type {
 		if ( 'coblocks' === $screen->post_type ) {
 			$label = $this->get_singular_label( true );
 			/* translators: Custom post type label */
-			$title = sprintf( esc_html__( 'Enter %s name here', '@@textdomain' ), $label );
+			$title = sprintf( esc_html__( 'Add %s title', '@@textdomain' ), $label );
 		}
 
 		return $title;
@@ -218,6 +220,42 @@ class CoBlocks_Post_Type {
 	public function remove_new_item() {
 		global $wp_admin_bar;
 		$wp_admin_bar->remove_menu( 'new-coblocks' );
+	}
+
+	/**
+	 * Add Post meta value for Layouts
+	 */
+	public function add_template_type( $post_id ) {
+		// If this is just a revision, don't send the email.
+		if ( wp_is_post_revision( $post_id ) ) {
+			return;
+		}
+
+		$post_type = get_post_type( $post_id );
+
+		// If this isn't a 'coblocks' post, don't update it.
+		if ( 'coblocks' !== $post_type ) {
+			return;
+		}
+
+		update_post_meta( $post_id, 'coblocks_library_type', 'section' );
+	}
+
+	/**
+	 * Add a template for the post type within the block editor.
+	 */
+	public function template() {
+
+		$post_type_object = get_post_type_object( 'coblocks' );
+
+		$post_type_object->template = array(
+			array(
+				'core/paragraph',
+				array(
+					'placeholder' => esc_html__( 'Add blocks to build your next layout', '@@textdomain' ),
+				),
+			),
+		);
 	}
 }
 
