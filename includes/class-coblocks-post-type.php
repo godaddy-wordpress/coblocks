@@ -23,12 +23,13 @@ class CoBlocks_Post_Type {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'setup_post_type' ), 1 );
-		// add_action( 'admin_menu', array( $this, 'register_submenu' ), 1 );
 		add_filter( 'enter_title_here', array( $this, 'default_title' ) );
 		add_filter( 'post_updated_messages', array( $this, 'updated_messages' ) );
 		add_filter( 'bulk_post_updated_messages', array( $this, 'bulk_updated_messages' ), 10, 2 );
 		add_action( 'wp_before_admin_bar_render', array( $this, 'remove_new_item' ) );
 		add_action( 'save_post', array( $this, 'add_template_type' ), 10, 3 );
+		add_action( 'init', array( $this, 'template' ), 10, 3 );
+		// add_action( 'admin_menu', array( $this, 'register_submenu' ), 1 );
 	}
 
 	/**
@@ -94,8 +95,8 @@ class CoBlocks_Post_Type {
 	public function labels() {
 
 		$defaults = array(
-			'singular' => esc_html__( 'Section', '@@textdomain' ),
-			'plural'   => esc_html__( 'sections', '@@textdomain' ),
+			'singular' => esc_html__( 'Layout', '@@textdomain' ),
+			'plural'   => esc_html__( 'layouts', '@@textdomain' ),
 		);
 
 		return apply_filters( 'coblocks_default_labels', $defaults );
@@ -233,11 +234,28 @@ class CoBlocks_Post_Type {
 		$post_type = get_post_type( $post_id );
 
 		// If this isn't a 'coblocks' post, don't update it.
-		if ( 'coblocks' != $post_type ) {
+		if ( 'coblocks' !== $post_type ) {
 			return;
 		}
 
 		update_post_meta( $post_id, 'coblocks_library_type', 'section' );
+	}
+
+	/**
+	 * Add a template for the post type within the block editor.
+	 */
+	public function template() {
+
+		$post_type_object = get_post_type_object( 'coblocks' );
+
+		$post_type_object->template = array(
+			array(
+				'core/paragraph',
+				array(
+					'placeholder' => esc_html__( 'Add blocks to build your next layout', '@@textdomain' ),
+				),
+			),
+		);
 	}
 }
 
