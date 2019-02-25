@@ -12,10 +12,12 @@
 		&.flex-align-left {
 			justify-content: flex-start;
 			text-align: left;
+			align-items: flex-start;
 		}
 		&.flex-align-right {
 			justify-content: flex-end;
 			text-align: right;
+			align-items: flex-end;
 		}
 
 		// Display button as stacked.
@@ -25,7 +27,7 @@
 			.wp-block-button {
 				margin-left: 0 !important;
 				margin-right: 0 !important;
-				width: 100% !important;
+				width: auto !important;
 
 				&.wp-block-coblocks-column:last-child {
 					margin-bottom: 0;
