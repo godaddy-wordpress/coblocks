@@ -1,0 +1,11 @@
+.wp-block-button.is-style-shadow {
+	.wp-block-button__link:hover {
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.11), 0 1px 3px rgba(0, 0, 0, 0.075);
+	}
+}
+
+.editor-block-styles__item-preview .editor-block-preview__content {
+	.wp-block-button {
+		margin-top: 3px;
+	}
+}
