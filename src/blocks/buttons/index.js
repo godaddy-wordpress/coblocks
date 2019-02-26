@@ -51,6 +51,10 @@ const blockAttributes = {
 		type: 'string',
 		default: 'left',
 	},
+	isStackedOnMobile: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 const settings = {
