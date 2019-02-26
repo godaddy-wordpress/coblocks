@@ -1,0 +1,81 @@
+<!-- wp:coblocks/shape-divider {"shapeHeight":97,"backgroundHeight":62,"customColor":"#cccccc","justAdded":false,"className":"is-style-angled","coblocks":{"id":"1261488981"}} -->
+<div class="wp-block-coblocks-shape-divider alignfull coblocks-shape-divider-1261488981 is-style-angled mb-0 mt-0" style="color:#cccccc" aria-hidden="true"><div class="wp-block-coblocks-shape-divider__svg-wrapper" style="height:97px"><svg class="divider--angled" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100" preserveaspectratio="none"><polygon points="0,100 100,0 100,100"></polygon></svg></div><div class="wp-block-coblocks-shape-divider__alt-wrapper" style="height:62px"></div></div>
+<!-- /wp:coblocks/shape-divider -->
+
+<!-- wp:coblocks/row {"columns":1,"layout":"100","paddingTop":14,"paddingRight":14,"paddingBottom":14,"paddingLeft":14,"paddingSyncUnits":true,"marginTop":0,"marginBottom":0,"marginTopTablet":0,"marginBottomTablet":0,"marginTopMobile":0,"marginBottomMobile":0,"customBackgroundColor":"#cccccc","align":"full","coblocks":{"id":"12614129978"},"noBottomMargin":true,"noTopMargin":true} -->
+<div class="wp-block-coblocks-row alignfull coblocks-row-12614129978 mb-0 mt-0" data-columns="1" data-layout="100" style="background-color:#cccccc"><div class="wp-block-coblocks-row__inner has-background has-medium-gutter has-no-padding has-no-margin is-stacked-on-mobile" style="background-color:#cccccc"><!-- wp:coblocks/column {"width":"100","showInserter":false,"coblocks":{"id":"1261413181"}} -->
+<div class="wp-block-coblocks-column coblocks-column-1261413181" style="width:100%"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"><!-- wp:coblocks/row {"columns":2,"layout":"50-50","align":"wide","coblocks":{"id":"12614133290"}} -->
+<div class="wp-block-coblocks-row alignwide coblocks-row-12614133290" data-columns="2" data-layout="50-50"><div class="wp-block-coblocks-row__inner has-medium-gutter has-no-padding has-no-margin is-stacked-on-mobile"><!-- wp:coblocks/column {"width":"50","showInserter":false,"coblocks":{"id":"12614136749"}} -->
+<div class="wp-block-coblocks-column coblocks-column-12614136749" style="width:50%"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"><!-- wp:heading -->
+<h2>Get Free Courses</h2>
+<!-- /wp:heading -->
+
+<!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:button {"align":"center"} -->
+<div class="wp-block-button aligncenter"><a class="wp-block-button__link">Get Your Free Courses</a></div>
+<!-- /wp:button --></div></div>
+<!-- /wp:coblocks/column -->
+
+<!-- wp:coblocks/column {"width":"50","showInserter":false,"coblocks":{"id":"12614136751"}} -->
+<div class="wp-block-coblocks-column coblocks-column-12614136751" style="width:50%"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"><!-- wp:heading -->
+<h2>Course Outline</h2>
+<!-- /wp:heading -->
+
+<!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:coblocks/accordion -->
+<div class="wp-block-coblocks-accordion"><!-- wp:coblocks/accordion-item {"title":"Introduction"} -->
+<div class="wp-block-coblocks-accordion-item"><details><summary class="wp-block-coblocks-accordion-item__title">Introduction</summary><div class="wp-block-coblocks-accordion-item__content"><!-- wp:paragraph {"placeholder":"Add content..."} -->
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<!-- /wp:paragraph --></div></details></div>
+<!-- /wp:coblocks/accordion-item -->
+
+<!-- wp:coblocks/accordion-item {"title":"Creating Page Layouts"} -->
+<div class="wp-block-coblocks-accordion-item"><details><summary class="wp-block-coblocks-accordion-item__title">Creating Page Layouts</summary><div class="wp-block-coblocks-accordion-item__content"><!-- wp:paragraph {"placeholder":"Add content..."} -->
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<!-- /wp:paragraph --></div></details></div>
+<!-- /wp:coblocks/accordion-item -->
+
+<!-- wp:coblocks/accordion-item {"title":"Building a Website with Gutenberg"} -->
+<div class="wp-block-coblocks-accordion-item"><details><summary class="wp-block-coblocks-accordion-item__title">Building a Website with Gutenberg</summary><div class="wp-block-coblocks-accordion-item__content"><!-- wp:paragraph {"placeholder":"Add content..."} -->
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<!-- /wp:paragraph --></div></details></div>
+<!-- /wp:coblocks/accordion-item -->
+
+<!-- wp:coblocks/accordion-item {"title":"Gutenberg in Production"} -->
+<div class="wp-block-coblocks-accordion-item"><details><summary class="wp-block-coblocks-accordion-item__title">Gutenberg in Production</summary><div class="wp-block-coblocks-accordion-item__content"><!-- wp:paragraph {"placeholder":"Add content..."} -->
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<!-- /wp:paragraph --></div></details></div>
+<!-- /wp:coblocks/accordion-item -->
+
+<!-- wp:coblocks/accordion-item {"title":"Bonus Material"} -->
+<div class="wp-block-coblocks-accordion-item"><details><summary class="wp-block-coblocks-accordion-item__title">Bonus Material</summary><div class="wp-block-coblocks-accordion-item__content"><!-- wp:paragraph {"placeholder":"Add content..."} -->
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<!-- /wp:paragraph --></div></details></div>
+<!-- /wp:coblocks/accordion-item --></div>
+<!-- /wp:coblocks/accordion --></div></div>
+<!-- /wp:coblocks/column --></div></div>
+<!-- /wp:coblocks/row --></div></div>
+<!-- /wp:coblocks/column --></div></div>
+<!-- /wp:coblocks/row -->
+
+<!-- wp:coblocks/shape-divider {"shapeHeight":97,"backgroundHeight":62,"verticalFlip":true,"horizontalFlip":true,"customColor":"#cccccc","justAdded":false,"className":"is-style-angled","coblocks":{"id":"1261488981"}} -->
+<div class="wp-block-coblocks-shape-divider alignfull coblocks-shape-divider-1261488981 is-vertically-flipped is-horizontally-flipped is-style-angled mb-0 mt-0" style="color:#cccccc" aria-hidden="true"><div class="wp-block-coblocks-shape-divider__svg-wrapper" style="height:97px"><svg class="divider--angled" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100" preserveaspectratio="none"><polygon points="0,100 100,0 100,100"></polygon></svg></div><div class="wp-block-coblocks-shape-divider__alt-wrapper" style="height:62px"></div></div>
+<!-- /wp:coblocks/shape-divider -->

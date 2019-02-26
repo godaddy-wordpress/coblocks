@@ -1,0 +1,29 @@
+<!-- wp:coblocks/row {"columns":2,"layout":"50-50","paddingTop":60,"paddingRight":60,"paddingBottom":60,"paddingLeft":60,"paddingSize":"huge","paddingSyncUnits":true,"customBackgroundColor":"#1e35b9","backgroundImg":"","backgroundPosition":"","backgroundSize":"cover","focalPoint":{"x":0.31797235023041476,"y":0.2544450431034483},"align":"full","coblocks":{"id":"125231744278"}} -->
+<div class="wp-block-coblocks-row alignfull coblocks-row-125231744278" data-columns="2" data-layout="50-50" style="background-color:#1e35b9"><div class="wp-block-coblocks-row__inner has-background has-medium-gutter has-padding has-huge-padding has-no-margin is-stacked-on-mobile" style="background-color:#1e35b9;background-position:31.797235023041477% 25.44450431034483%"><!-- wp:coblocks/column {"width":"50","coblocks":{"id":"125231744313"}} -->
+<div class="wp-block-coblocks-column coblocks-column-125231744313" style="width:50%"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"></div></div>
+<!-- /wp:coblocks/column -->
+
+<!-- wp:coblocks/column {"width":"50","paddingTop":60,"paddingRight":60,"paddingBottom":60,"paddingLeft":60,"paddingSize":"huge","paddingSyncUnits":true,"customBackgroundColor":"#ffffff","showInserter":false,"coblocks":{"id":"125231744315"}} -->
+<div class="wp-block-coblocks-column coblocks-column-125231744315" style="background-color:#ffffff;width:50%"><div class="wp-block-coblocks-column__inner has-background has-padding has-huge-padding has-no-margin" style="background-color:#ffffff"><!-- wp:heading -->
+<h2>We Create Meaningful Designs</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:coblocks/buttons -->
+<div class="wp-block-coblocks-buttons"><div class="wp-block-coblocks-buttons__inner flex-align-left has-medium-gutter is-stacked-on-mobile"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link">Primary</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link">Secondary</a></div>
+<!-- /wp:button --></div></div>
+<!-- /wp:coblocks/buttons --></div></div>
+<!-- /wp:coblocks/column --></div></div>
+<!-- /wp:coblocks/row -->
