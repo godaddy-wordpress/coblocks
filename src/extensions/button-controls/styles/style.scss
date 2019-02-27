@@ -1,0 +1,19 @@
+body{
+	.wp-block-button {
+		&.btn-is-full{
+			.wp-block-button__link{
+				width: 100%;
+			}
+		}
+	}
+
+	.wp-block-coblocks-buttons{
+		&__inner{
+			.wp-block-button {
+				&.btn-is-full{
+					width: 100% !important;
+				}
+			}
+		}
+	}
+}
