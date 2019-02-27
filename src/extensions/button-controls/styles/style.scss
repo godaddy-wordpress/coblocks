@@ -1,18 +1,14 @@
 body{
-	.wp-block-button {
-		&.w-100{
-			.wp-block-button__link{
-				width: 100%;
-			}
+	.w-100{
+		&, .wp-block-button__link{
+			width: 100%;
 		}
 	}
 
-	.wp-block-coblocks-buttons{
-		&__inner{
-			.wp-block-button {
-				&.w-100{
-					width: 100% !important;
-				}
+	div[class*="wp-block-"]{
+		> div[class*="wp-block-"]{
+			.w-100{
+				width: 100% !important;
 			}
 		}
 	}
