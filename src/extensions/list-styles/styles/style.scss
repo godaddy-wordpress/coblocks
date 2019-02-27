@@ -40,7 +40,7 @@
 .is-style-none {
 	&, li{
 		list-style-type: none !important;
-		padding-left: 0px !important;
+		padding-left: 0 !important;
 	}
 	li{
 		&::before {
