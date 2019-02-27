@@ -36,3 +36,15 @@
 		top: 10px;
 	}
 }
+
+.is-style-none {
+	&, li{
+		list-style-type: none !important;
+		padding-left: 0 !important;
+	}
+	li{
+		&::before {
+			content: "\200B";
+		}
+	}
+}
