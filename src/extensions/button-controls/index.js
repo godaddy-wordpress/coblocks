@@ -105,7 +105,7 @@ function applySpacingClass(extraProps, blockType, attributes) {
 		const { isFullwidth } = attributes;
 
 		if ( typeof isFullwidth !== 'undefined' && isFullwidth ) {
-			extraProps.className = classnames( extraProps.className, 'btn-is-full' );
+			extraProps.className = classnames( extraProps.className, 'w-100' );
 		}
 
 	}
