@@ -22,3 +22,9 @@ registerBlockStyle('core/list', {
 	label: __( 'Checkbox' ),
 	isDefault: false,
 });
+
+registerBlockStyle('core/list', {
+	name: 'none',
+	label: __( 'No Style' ),
+	isDefault: false,
+});
