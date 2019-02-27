@@ -44,7 +44,7 @@
 	}
 	li{
 		&::before {
-			display: none;
+			content: "\200B";
 		}
 	}
 }
