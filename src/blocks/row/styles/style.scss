@@ -60,7 +60,7 @@
 			margin-bottom: 0;
 		}
 
-		&:not(.has-background) {
+		&:not(.has-background):not(.wp-block-coblocks-click-to-tweet__text) {
 			padding: 0;
 		}
 	}
