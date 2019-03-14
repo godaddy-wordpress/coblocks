@@ -33,3 +33,22 @@
 		}
 	}
 }
+
+// Hide the position display fields.
+.components-focal-point-picker--coblocks {
+	margin-bottom: 1.9em !important;
+	.components-focal-point-picker_position-display-container {
+		display: none;
+	}
+}
+
+.components-background-display-select--coblocks {
+	margin-top: -1.05em !important;
+}
+
+.components-panel__body--coblocks-background-panel {
+	> .components-base-control:first-of-type {
+		margin-bottom: 1.3em !important;
+		margin-top: 0.7em !important;
+	}
+}

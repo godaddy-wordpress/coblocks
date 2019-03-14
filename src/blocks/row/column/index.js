@@ -40,6 +40,10 @@ const blockAttributes = {
 	customTextColor: {
 		type: 'string',
 	},
+	showInserter: {
+		type: 'boolean',
+		default: true,
+	},
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 };
@@ -94,6 +98,8 @@ const settings = {
 			marginSize,
 			paddingSize,
 			contentAlign,
+			focalPoint,
+			hasParallax,
 		} = attributes;
 		const textClass = getColorClassName( 'color', textColor );
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
@@ -120,6 +126,7 @@ const settings = {
 		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textClass ? undefined : customTextColor,
 		};
 

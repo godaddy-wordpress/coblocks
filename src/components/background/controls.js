@@ -58,7 +58,14 @@ function BackgroundImageToolbarControls( props, options ) {
 							label={ ( typeof options !== 'undefined' && typeof options.deleteLabel !== 'undefined' ) ? options.deleteLabel : __( 'Remove background image' ) }
 							icon={ icons.trash }
 							onClick={ () => {
-								setAttributes( { backgroundImg: '', backgroundOverlay: 0, } );
+								setAttributes( {
+									backgroundImg: '',
+									backgroundOverlay: 0,
+									backgroundRepeat: 'no-repeat',
+									backgroundPosition: '',
+									backgroundSize: 'cover',
+									hasParallax: false,
+								} );
 
 								// Remove padding when background image is removed.
 								if ( BLOCKS_WITH_AUTOPADDING.includes( props.name ) ){

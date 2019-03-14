@@ -31,6 +31,9 @@ const BackgroundAttributes = {
 		type: 'number',
 		default: 0,
 	},
+	focalPoint: {
+		type: 'object',
+	},
 };
 
 export default BackgroundAttributes;

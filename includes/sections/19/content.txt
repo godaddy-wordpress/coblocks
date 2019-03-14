@@ -1,0 +1,63 @@
+<!-- wp:coblocks/row {"columns":1,"layout":"100","align":"full","coblocks":{"id":"126221642571"}} -->
+<div class="wp-block-coblocks-row alignfull coblocks-row-126221642571" data-columns="1" data-layout="100"><div class="wp-block-coblocks-row__inner has-medium-gutter has-no-padding has-no-margin is-stacked-on-mobile"><!-- wp:coblocks/column {"width":"100","showInserter":false,"coblocks":{"id":"12622164477"}} -->
+<div class="wp-block-coblocks-column coblocks-column-12622164477" style="width:100%"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"><!-- wp:coblocks/row {"columns":1,"layout":"100","align":"wide","coblocks":{"id":"126221718248"}} -->
+<div class="wp-block-coblocks-row alignwide coblocks-row-126221718248" data-columns="1" data-layout="100"><div class="wp-block-coblocks-row__inner has-medium-gutter has-no-padding has-no-margin is-stacked-on-mobile"><!-- wp:coblocks/column {"width":"100","showInserter":false,"coblocks":{"id":"12622171964"}} -->
+<div class="wp-block-coblocks-column coblocks-column-12622171964" style="width:100%"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"><!-- wp:heading -->
+<h2>Design web pages in minutes, not days</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":40} -->
+<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer --></div></div>
+<!-- /wp:coblocks/column --></div></div>
+<!-- /wp:coblocks/row -->
+
+<!-- wp:coblocks/row {"columns":2,"layout":"50-50","paddingTop":14,"paddingRight":14,"paddingBottom":14,"paddingLeft":14,"paddingSize":"small","paddingSyncUnits":true,"align":"wide","coblocks":{"id":"126221653486"}} -->
+<div class="wp-block-coblocks-row alignwide coblocks-row-126221653486" data-columns="2" data-layout="50-50"><div class="wp-block-coblocks-row__inner has-medium-gutter has-padding has-small-padding has-no-margin is-stacked-on-mobile"><!-- wp:coblocks/column {"width":"50","showInserter":false,"coblocks":{"id":"12622172701"}} -->
+<div class="wp-block-coblocks-column coblocks-column-12622172701" style="width:50%"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"><!-- wp:heading {"level":3} -->
+<h3>Nemo enim ipsam voluptatem</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:coblocks/column -->
+
+<!-- wp:coblocks/column {"width":"50","showInserter":false,"coblocks":{"id":"12622172705"}} -->
+<div class="wp-block-coblocks-column coblocks-column-12622172705" style="width:50%"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"><!-- wp:heading {"level":3} -->
+<h3>Nemo enim ipsam voluptatem</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:coblocks/column --></div></div>
+<!-- /wp:coblocks/row -->
+
+<!-- wp:coblocks/row {"columns":2,"layout":"50-50","paddingTop":14,"paddingRight":14,"paddingBottom":14,"paddingLeft":14,"paddingSize":"small","paddingSyncUnits":true,"align":"wide","coblocks":{"id":"126222114537"}} -->
+<div class="wp-block-coblocks-row alignwide coblocks-row-126222114537" data-columns="2" data-layout="50-50"><div class="wp-block-coblocks-row__inner has-medium-gutter has-padding has-small-padding has-no-margin is-stacked-on-mobile"><!-- wp:coblocks/column {"width":"50","showInserter":false,"coblocks":{"id":"126222121608"}} -->
+<div class="wp-block-coblocks-column coblocks-column-126222121608" style="width:50%"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"><!-- wp:heading {"level":3} -->
+<h3>Nemo enim ipsam voluptatem</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:coblocks/column -->
+
+<!-- wp:coblocks/column {"width":"50","showInserter":false,"coblocks":{"id":"126222121610"}} -->
+<div class="wp-block-coblocks-column coblocks-column-126222121610" style="width:50%"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"><!-- wp:heading {"level":3} -->
+<h3>Nemo enim ipsam voluptatem</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:coblocks/column --></div></div>
+<!-- /wp:coblocks/row --></div></div>
+<!-- /wp:coblocks/column --></div></div>
+<!-- /wp:coblocks/row -->

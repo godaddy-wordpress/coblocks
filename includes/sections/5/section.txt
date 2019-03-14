@@ -1,0 +1,10 @@
+/*
+Template Name: 5
+Template Type: Section
+Template URI: #
+Description: Colored call to action section
+Version: 1.0.0
+Slug: 5
+Tags: call to action, cta, hero, home
+Fonts: Cormorant Garamond, Karla
+*/

@@ -15,9 +15,17 @@
 }
 
 .has-large-padding {
-	padding: 34px;
+	padding: 24px;
+
+	@include break-small() {
+		padding: 34px;
+	}
 }
 
 .has-huge-padding {
-	padding: 60px;
+	padding: 34px;
+
+	@include break-small() {
+		padding: 60px;
+	}
 }

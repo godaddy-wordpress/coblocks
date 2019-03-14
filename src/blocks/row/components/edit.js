@@ -166,6 +166,8 @@ class Edit extends Component {
 			paddingSize,
 			hasAlignmentControls,
 			isStackedOnMobile,
+			focalPoint,
+			hasParallax,
 		} = attributes;
 
 		const dropZone = (
@@ -297,6 +299,7 @@ class Edit extends Component {
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,

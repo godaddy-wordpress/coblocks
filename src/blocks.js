@@ -25,6 +25,7 @@ import './extensions/typography';
 import './extensions/attributes';
 import './extensions/advanced-controls';
 import './extensions/list-styles';
+import './extensions/button-controls';
 
 // Formats
 import './formats/';
@@ -54,6 +55,7 @@ import * as icon from './blocks/icon';
 import * as feature from './blocks/features/feature';
 import * as features from './blocks/features';
 import * as buttons from './blocks/buttons';
+import * as hero from './blocks/hero';
 
 export function registerBlocks () {
 	[
@@ -78,6 +80,7 @@ export function registerBlocks () {
 		feature,
 		features,
 		buttons,
+		hero,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {
