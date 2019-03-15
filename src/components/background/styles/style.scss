@@ -1,28 +1,26 @@
-.coblocks-video-background{
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 100%;
+.coblocks-video-background {
 	height: 100%;
+	left: 0;
 	overflow: hidden;
+	position: absolute;
+	top: 0;
+	width: 100%;
 
-	video{
+	video {
 		background-position: center;
-	    object-fit: cover;
-	    object-position: 50% 50%;
-	    filter: blur(0);
-	    height: 100%;
-	    transition: filter .35s ease-in-out;
-	    width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 50% 50%;
+		width: 100%;
 	}
 }
 
-.has-background-video{
-	&.has-background-overlay{
-		&::before{
+.has-background-video {
+	&.has-background-overlay {
+		&::before {
 			z-index: 1;
 		}
-		> :not(.coblocks-video-background){
+		> :not(.coblocks-video-background) {
 			z-index: 10;
 		}
 	}
