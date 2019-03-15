@@ -62,9 +62,9 @@
 	&__content {
 		grid-area: media-text-content;
 		margin-left: -50%;
+		position: relative;
 		word-break: break-word;
 		z-index: 1;
-		position: relative;
 
 		@include break-small-mediacard {
 			margin-left: -100px;
