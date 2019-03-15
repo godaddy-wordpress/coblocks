@@ -179,7 +179,7 @@ const settings = {
 			return (
 				<div className={ classes } style={ styles } >
 					<div className={ innerClasses } style={ innerStyles }>
-						{ backgroundType == 'video' ? 
+						{ backgroundType == 'video' ?
 							<div className="coblocks-video-background">
 								<video playsinline="" autoplay="" muted="" loop="" src={ backgroundImg } ></video>
 							</div>
