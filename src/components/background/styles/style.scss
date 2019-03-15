@@ -16,3 +16,14 @@
 	    width: 100%;
 	}
 }
+
+.has-background-video{
+	&.has-background-overlay{
+		&::before{
+			z-index: 1;
+		}
+		> :not(.coblocks-video-background){
+			z-index: 10;
+		}
+	}
+}
