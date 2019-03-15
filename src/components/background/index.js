@@ -17,7 +17,7 @@ const { SelectControl, RangeControl, ToggleControl, PanelBody, Button, FocalPoin
 /**
  * Module constants.
  */
-export const ALLOWED_BG_MEDIA_TYPES = [ 'image' ];
+export const ALLOWED_BG_MEDIA_TYPES = [ 'image', 'video' ];
 export const BLOCKS_WITH_AUTOPADDING = [ 'coblocks/row', 'coblocks/column', 'coblocks/media-card', 'coblocks/features', 'coblocks/feature' ];
 
 /**

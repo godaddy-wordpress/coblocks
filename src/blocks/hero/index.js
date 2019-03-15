@@ -131,6 +131,7 @@ const settings = {
 				fullscreen,
 				maxWidth,
 				backgroundImg,
+				backgroundType,
 				paddingSize,
 				backgroundColor,
 				customBackgroundColor,
@@ -170,7 +171,7 @@ const settings = {
 
 			const innerStyles = {
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-				backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+				backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 				color: textColor ? textColor.color : undefined,
 				backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			};
@@ -178,6 +179,11 @@ const settings = {
 			return (
 				<div className={ classes } style={ styles } >
 					<div className={ innerClasses } style={ innerStyles }>
+						{ backgroundType == 'video' ? 
+							<div className="coblocks-video-background">
+								<video playsinline="" autoplay="" muted="" loop="" src={ backgroundImg } ></video>
+							</div>
+						: null }
 						<div className="wp-block-coblocks-hero__box"
 							style={ {
 								maxWidth: maxWidth ? maxWidth + 'px' : undefined,

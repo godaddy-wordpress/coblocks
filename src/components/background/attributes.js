@@ -34,6 +34,10 @@ const BackgroundAttributes = {
 	focalPoint: {
 		type: 'object',
 	},
+	backgroundType: {
+		type: 'string',
+		default: 'image',
+	},
 };
 
 export default BackgroundAttributes;

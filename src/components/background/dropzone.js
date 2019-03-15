@@ -32,7 +32,7 @@ class BackgroundImageDropZone extends Component {
 
 	onSelectFile( media ) {
 		if ( media && media.url ) {
-			this.props.setAttributes( { backgroundImg: media.url } );
+			this.props.setAttributes( { backgroundImg: media.url, backgroundType: media.type } );
 
 			// Set padding when background image is added.
 			if ( BLOCKS_WITH_AUTOPADDING.includes( this.props.name ) ) {
