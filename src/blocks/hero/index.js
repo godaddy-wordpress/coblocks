@@ -184,11 +184,7 @@ const settings = {
 								<video playsinline="" autoplay="" muted="" loop="" src={ backgroundImg } ></video>
 							</div>
 						: null }
-						<div className="wp-block-coblocks-hero__box"
-							style={ {
-								maxWidth: maxWidth ? maxWidth + 'px' : undefined,
-							} }
-						>
+						<div className="wp-block-coblocks-hero__box" style={ { maxWidth: maxWidth ? maxWidth + 'px' : undefined } }>
 							<InnerBlocks.Content />
 						</div>
 					</div>
