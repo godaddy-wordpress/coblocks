@@ -13,11 +13,13 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 ### Our Blocks
 
 -   Resizable Row/Columns Blocks
+-   Hero Block
+-   Buttons Block
 -   Shape Divider Block
 -   Features Block
 -   Media Card Block
 -   Icon Block
--   Map Blockx
+-   Map Block
 -   Accordion Block
 -   Alert Block
 -   Author Profile Block
