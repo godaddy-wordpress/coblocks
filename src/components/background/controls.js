@@ -34,21 +34,6 @@ function BackgroundImageToolbarControls( props, options ) {
 		backgroundImg,
 	} = attributes;
 
-	/**
-	 * Map styles
-	 */
-	const styleOptions = [
-		{
-			icon: icons.edit,
-			label: __( 'Edit Background' ),
-		},
-		{
-			icon: icons.trash,
-			label: __( 'Remove Background' ),
-			onclick: { backgroundImg: '', backgroundOverlay: 0, backgroundRepeat: 'no-repeat', backgroundPosition: '', backgroundSize: 'cover', hasParallax: false, },
-		},
-	];
-
 	return (
 		<Fragment>
 			<MediaUploadCheck>
