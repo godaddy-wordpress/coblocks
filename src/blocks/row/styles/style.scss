@@ -65,43 +65,20 @@
 		}
 	}
 
-	p,
-	a,
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		color: inherit;
-	}
-
-	&__inner{
-		&.has-background-overlay{
-			> *{
+	&__inner {
+		&.has-background-overlay {
+			> * {
 				position: relative;
 			}
 		}
 	}
 }
 
-//Fix background color contrast issue
 .is-twentynineteen {
 	.entry .entry-content {
 		.wp-block-coblocks-column {
-			p,
-			a,
-			h1,
-			h2,
-			h3,
-			h4,
-			h5,
-			h6 {
-				color: inherit;
-			}
-
-			&__inner{
-				img{
+			&__inner {
+				img {
 					max-width: 100% !important;
 				}
 			}
