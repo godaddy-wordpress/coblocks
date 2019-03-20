@@ -89,7 +89,7 @@ const blockAttributes = {
 	},
 	customBackgroundColor: {
 		type: 'string',
-		default: '#f4e9e0',
+		default: '#f3f3f3',
 	},
 };
 
