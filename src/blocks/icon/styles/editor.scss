@@ -50,6 +50,10 @@
 }
 
 .coblocks-icon-types-list.editor-block-types-list {
+	list-style: none;
+	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
 	margin-top: 0;
 	max-height: 170px;
 	overflow-y: scroll;
@@ -59,6 +63,7 @@
 		margin: 0 0 8px;
 		padding: 0 4px;
 		width: 29.9%;
+		display: block;
 
 		@media screen and (max-width: 782px) {
 			width: 31.5%;
