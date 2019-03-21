@@ -12,7 +12,7 @@ icons.hero =
 <SVG className="dashicon components-coblocks-svg" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><Path d="m16 0h-14c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm0 16h-14v-3h14z" transform="translate(3 3)"/></SVG>
 
 icons.grid =
-<SVG height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><G transform="matrix(-1 0 0 1 18 2)"><Path d="m12 7h3.9566119v-6h-3.9566119z"/><Path d="m6 7h4v-6h-4z"/><Path d="m0 7h3.95661186v-6h-3.95661186z"/><Path d="m.02169407 15h3.95661186v-6h-3.95661186z"/><Path d="m6.02169407 15h4.00000003v-6h-4.00000003z"/><Path d="m12.0216941 15h3.9566118v-6h-3.9566118z"/></G></SVG>
+<svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m11.5 17h4v-2h-4zm4-12h2v-3h-2zm-15-3v13c0 1.1.9 2 2 2h9v-2h-9v-13h13v-2h-13c-1.1 0-2 .9-2 2zm15-2v2h2c0-1.1-.9-2-2-2zm-10 17h2v-16h-2zm-5-7v2h16v-2zm0-5v2h16v-2zm10 12h2v-16h-2zm5-2h2v-2h-2zm0-2h2v-8h-2zm0 4c1.1 0 2-.9 2-2h-2z" transform="matrix(0 1 -1 0 18.5 1)"/></svg>
 
 export default icons;
 
