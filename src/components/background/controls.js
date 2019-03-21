@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import icons from './../../utils/icons';
+import icons from './icons';
 import { ALLOWED_BG_MEDIA_TYPES, BLOCKS_WITH_AUTOPADDING } from './';
 
 /**
@@ -47,7 +47,7 @@ function BackgroundImageToolbarControls( props, options ) {
 							<IconButton
 								className="components-toolbar__control"
 								label={ backgroundImg ? ( typeof options !== 'undefined' && typeof options.editLabel !== 'undefined' ) ? options.editLabel : __( 'Edit background image' ) : ( typeof options !== 'undefined' && typeof options.addLabel !== 'undefined' ) ? options.addLabel : __( 'Add background image' ) }
-								icon={ backgroundImg ? icons.edit : icons.backgroundImage }
+								icon={ backgroundImg ? icons.edit : icons.background }
 								onClick={ open }
 							/>
 						) }
