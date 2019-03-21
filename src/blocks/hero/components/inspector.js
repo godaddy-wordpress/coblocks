@@ -45,8 +45,6 @@ const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
-
-
 /**
  * Inspector controls
  */
