@@ -165,7 +165,7 @@ class Edit extends Component {
 					className={ classes }
 				>
 					<div className={ innerClasses } style={ innerStyles } >
-						{ backgroundType == 'video' ? 
+						{ backgroundType == 'video' ?
 							<div className="coblocks-video-background">
 								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
 							</div>
