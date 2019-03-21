@@ -97,6 +97,8 @@ class Edit extends Component {
 			contentAlign,
 			focalPoint,
 			hasParallax,
+			videoMuted,
+			videoLoop,
 		} = attributes;
 
 		const dropZone = (
@@ -165,7 +167,7 @@ class Edit extends Component {
 					<div className={ innerClasses } style={ innerStyles } >
 						{ backgroundType == 'video' ? 
 							<div className="coblocks-video-background">
-								<video playsinline="" autoplay="" muted="" loop="" src={ backgroundImg } ></video>
+								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
 							</div>
 						: null }
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (

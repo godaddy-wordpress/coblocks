@@ -140,6 +140,8 @@ const settings = {
 				contentAlign,
 				focalPoint,
 				hasParallax,
+				videoMuted,
+				videoLoop,
 			} = attributes;
 
 			const textClass = getColorClassName( 'color', textColor );
@@ -181,7 +183,7 @@ const settings = {
 					<div className={ innerClasses } style={ innerStyles }>
 						{ backgroundType == 'video' ?
 							<div className="coblocks-video-background">
-								<video playsinline="" autoplay="" muted="" loop="" src={ backgroundImg } ></video>
+								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
 							</div>
 						: null }
 						<div className="wp-block-coblocks-hero__box" style={ { maxWidth: maxWidth ? maxWidth + 'px' : undefined } }>

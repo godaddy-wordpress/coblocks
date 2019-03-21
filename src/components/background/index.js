@@ -52,6 +52,8 @@ function BackgroundImagePanel( props, options ) {
 		backgroundImg,
 		backgroundType,
 		focalPoint,
+		videoMuted,
+		videoLoop,
 	} = attributes;
 
 	const backgroundPositionOptions = [
@@ -171,6 +173,22 @@ function BackgroundImagePanel( props, options ) {
 							value={ backgroundSize ? backgroundSize : backgroundSizeDefault }
 							options={ backgroundSizeOptions }
 							onChange={ ( nextbackgroundSize ) => setAttributes( { backgroundSize: nextbackgroundSize } ) }
+						/>
+					) }
+
+					{ backgroundType == 'video' && (
+						<ToggleControl
+							label={ __( 'Muted' ) }
+							checked={ !! videoMuted }
+							onChange={ () => setAttributes( {  videoMuted: ! videoMuted } ) }
+						/>
+					) }
+
+					{ backgroundType == 'video' && (
+						<ToggleControl
+							label={ __( 'Loop' ) }
+							checked={ !! videoLoop }
+							onChange={ () => setAttributes( {  videoLoop: ! videoLoop } ) }
 						/>
 					) }
 

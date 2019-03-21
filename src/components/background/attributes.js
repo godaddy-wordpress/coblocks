@@ -38,6 +38,14 @@ const BackgroundAttributes = {
 		type: 'string',
 		default: 'image',
 	},
+	videoMuted: {
+		type: 'boolean',
+		default: true,
+	},
+	videoLoop: {
+		type: 'boolean',
+		default: true,
+	},
 };
 
 export default BackgroundAttributes;
