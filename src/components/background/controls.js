@@ -74,7 +74,7 @@ function BackgroundImageToolbarControls( props, options ) {
 									>
 										<MediaUpload
 											onSelect={ ( media ) => {
-												setAttributes( { backgroundImg: media.url } );
+												setAttributes( { backgroundImg: media.url, backgroundType: media.type } );
 												// Set padding when background image is added.
 												if ( BLOCKS_WITH_AUTOPADDING.includes( props.name ) ){
 													if ( ! attributes.paddingSize || attributes.paddingSize == 'no' ) {
@@ -124,7 +124,7 @@ function BackgroundImageToolbarControls( props, options ) {
 					:
 						<MediaUpload
 							onSelect={ ( media ) => {
-								setAttributes( { backgroundImg: media.url } );
+								setAttributes( { backgroundImg: media.url, backgroundType: media.type  } );
 								// Set padding when background image is added.
 								if ( BLOCKS_WITH_AUTOPADDING.includes( props.name ) ){
 									if ( ! attributes.paddingSize || attributes.paddingSize == 'no' ) {

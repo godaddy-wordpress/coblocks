@@ -44,7 +44,7 @@ class Controls extends Component {
 				<BlockControls>
 				<Toolbar>
 					<CSSGridToolbar
-						icon={ icons.style }
+						icon={ icons.grid }
 						label={ __( 'Change layout' ) }
 						props={ this.props }
 					/>

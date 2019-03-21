@@ -45,8 +45,6 @@ const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
-
-
 /**
  * Inspector controls
  */
@@ -83,30 +81,6 @@ class Inspector extends Component {
 			paddingSize,
 			saveCoBlocksMeta,
 		} = attributes;
-
-		/**
-		 * Set layout options and padding controls for Row Blocks
-		 * This will make us of existing block instead of creating new one
-		 */
-		let layoutOptions = [
-			{ value: 'top-left', label: __( 'Top Left' ), icon: icons.colOne },
-			{ value: 'top-center', label: __( 'Top Center' ), icon: icons.colTwo },
-			{ value: 'top-right', label: __( 'Top Right' ), icon: icons.colThree },
-			{ value: 'center-left', label: __( 'Center Left' ), icon: icons.colFour },
-			{ value: 'center-center', label: __( 'Center Center' ), icon: icons.colOne },
-			{ value: 'center-right', label: __( 'Center Right' ), icon: icons.colTwo },
-			{ value: 'bottom-left', label: __( 'Bottom Left' ), icon: icons.colThree },
-			{ value: 'bottom-center', label: __( 'Bottom Center' ), icon: icons.colFour },
-			{ value: 'bottom-right', label: __( 'Bottom Right' ), icon: icons.colOne },
-		];
-
-		if( !fullscreen ){
-			layoutOptions = [
-				{ value: 'center-left', label: __( 'Center Left' ), icon: icons.colFour },
-				{ value: 'center-center', label: __( 'Center Center' ), icon: icons.colOne },
-				{ value: 'center-right', label: __( 'Center Right' ), icon: icons.colTwo },
-			];
-		}
 
 		let layoutAttributes = {};
 		//top
@@ -216,13 +190,8 @@ class Inspector extends Component {
 									setBackgroundColor( nextBackgroundColor );
 
 									// Add padding if there's none.
-									if ( !paddingSize || paddingSize == 'no' ) {
-										setAttributes( { paddingSize: 'medium' } );
-									}
-
-									// Reset when cleared.
-									if ( ! nextBackgroundColor ) {
-										setAttributes( { paddingSize: 'no' } );
+									if ( ! paddingSize || paddingSize == 'no' ) {
+										setAttributes( { paddingSize: 'huge' } );
 									}
 								},
 								label: __( 'Background Color' ),
