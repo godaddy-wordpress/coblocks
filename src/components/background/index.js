@@ -135,7 +135,7 @@ function BackgroundImagePanel( props, options ) {
 							onChange={ () => setAttributes( {  hasParallax: ! hasParallax } ) }
 						/>
 					) }
-					
+
 					{ ! hasParallax && FocalPointPicker && backgroundType == 'image' && backgroundRepeat !== 'repeat' && (
 						<FocalPointPicker
 							label={ __( 'Focal Point' ) }
@@ -145,6 +145,7 @@ function BackgroundImagePanel( props, options ) {
 							className="components-focal-point-picker--coblocks"
 						/>
 					) }
+
 					{ overlaySelect() }
 
 					{ backgroundType == 'image' && (
@@ -156,7 +157,7 @@ function BackgroundImagePanel( props, options ) {
 							onChange={ ( nextbackgroundRepeat ) => onSelectRepeat( nextbackgroundRepeat ) }
 						/>
 					) }
-					
+
 
 					{ ! FocalPointPicker && backgroundType == 'image' && (
 						<SelectControl
@@ -178,16 +179,18 @@ function BackgroundImagePanel( props, options ) {
 
 					{ backgroundType == 'video' && (
 						<ToggleControl
-							label={ __( 'Muted' ) }
+							label={ __( 'Mute Video' ) }
 							checked={ !! videoMuted }
 							onChange={ () => setAttributes( {  videoMuted: ! videoMuted } ) }
+							help={ videoMuted ? __( 'Muting the background video.' ) : __( 'Toggle to mute the video.' ) }
 						/>
 					) }
 
 					{ backgroundType == 'video' && (
 						<ToggleControl
-							label={ __( 'Loop' ) }
+							label={ __( 'Loop Video' ) }
 							checked={ !! videoLoop }
+							help={ videoLoop ? __( 'Looping the background video.' ) : __( 'Toggle to loop the video.' ) }
 							onChange={ () => setAttributes( {  videoLoop: ! videoLoop } ) }
 						/>
 					) }
