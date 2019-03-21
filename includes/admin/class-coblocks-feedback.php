@@ -170,7 +170,7 @@ class CoBlocks_Feedback {
 		$screen = get_current_screen();
 
 		if ( isset( $screen->base ) && 'plugins' === $screen->base ) {
-			$no_bug_url = wp_nonce_url( admin_url( '?' . $this->nobug_option . '=true' ), 'coblocks-feedback-nounce' );
+			$no_bug_url = wp_nonce_url( admin_url( 'plugins.php?' . $this->nobug_option . '=true' ), 'coblocks-feedback-nounce' );
 			$time       = $this->seconds_to_words( time() - get_site_option( $this->date_option ) );
 		?>
 
