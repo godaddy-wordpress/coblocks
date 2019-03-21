@@ -38,6 +38,9 @@ const keywords = [
 ];
 
 const blockAttributes = {
+	...CSSGridAttributes,
+	...DimensionsAttributes,
+	...BackgroundAttributes,
 	align: {
 		type: 'string',
 		default: 'full',
@@ -55,10 +58,6 @@ const blockAttributes = {
 		type: 'number',
 		default: 560,
 	},
-	...CSSGridAttributes,
-	...DimensionsAttributes,
-	...BackgroundAttributes,
-
 	saveCoBlocksMeta: {
 		type: 'boolean',
 		default: true,
