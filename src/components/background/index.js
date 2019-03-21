@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import './styles/style.scss';
+import './styles/editor.scss';
 import BackgroundAttributes from './attributes';
 import BackgroundClasses from './classes';
 import BackgroundImageToolbarControls from './controls';
@@ -196,7 +197,7 @@ function BackgroundImagePanel( props, options ) {
 							}
 						} }
 					>
-						{ __( 'Remove Background' ) }
+						{ __( 'Remove ' + backgroundType ) }
 					</Button>
 				</PanelBody>
 			</Fragment>
