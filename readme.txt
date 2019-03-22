@@ -133,6 +133,7 @@ Please reach out via the contact form at the bottom right of [our website](https
 * New: Add support for Gutenberg 5.2+ Focal Point pickers for background images
 * New: Add support for the Heebo Google font
 * New: Add new "None" style for the core List block
+* New: Add responsiveness to the CoBlocks margin and padding utility classes
 * Tweak: Improve the background image controls within Background Settings panels
 * Tweak: Add a new button within the Background Settings panel to remove applied media
 * Tweak: Improve the third Pricing Table Item block positioning
