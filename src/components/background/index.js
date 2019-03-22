@@ -135,7 +135,7 @@ function BackgroundImagePanel( props, options ) {
 							onChange={ () => setAttributes( {  hasParallax: ! hasParallax } ) }
 						/>
 					) }
-					
+
 					{ ! hasParallax && FocalPointPicker && backgroundType == 'image' && backgroundRepeat !== 'repeat' && (
 						<FocalPointPicker
 							label={ __( 'Focal Point' ) }
@@ -156,7 +156,6 @@ function BackgroundImagePanel( props, options ) {
 							onChange={ ( nextbackgroundRepeat ) => onSelectRepeat( nextbackgroundRepeat ) }
 						/>
 					) }
-					
 
 					{ ! FocalPointPicker && backgroundType == 'image' && (
 						<SelectControl
