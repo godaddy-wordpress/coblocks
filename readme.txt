@@ -47,7 +47,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Pricing Table Block
 * Social Sharing Block
 
-And we're adding new Gutenberg blocks nearly every week!
+And we're adding new Gutenberg blocks all the time!
 
 ## Breakthrough Page Builder System
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, with the new WordPress editor.
@@ -131,6 +131,8 @@ Please reach out via the contact form at the bottom right of [our website](https
 * New: Add 25 new icons to the Icon block
 * New: Add third party support for the CoBlocks Typography Control Panel
 * New: Add support for Gutenberg 5.2+ Focal Point pickers for background images
+* New: Add support for the Heebo Google font
+* New: Add new "None" style for the core List block
 * Tweak: Improve the background image controls within Background Settings panels
 * Tweak: Add a new button within the Background Settings panel to remove applied media
 * Tweak: Improve the third Pricing Table Item block positioning
@@ -141,6 +143,8 @@ Please reach out via the contact form at the bottom right of [our website](https
 * Tweak: Adjust the custom icon color for CoBlocks blocks
 * Fix: Click to Tweet block styles now properly render inside of Row/Column blocks
 * Fix: Media Card block now properly renders in Edge
+* Fix: Features block toolbar now renders properly when selected
+* Fix: Resolve issue where a single column Row block would not allow background images
 
 = 1.9.2 =
 * Fix: Add hot fix to resolve the core inserter conflict on empty paragraph blocks
