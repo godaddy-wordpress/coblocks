@@ -95,7 +95,7 @@ function BackgroundImageToolbarControls( props, options ) {
 							render={ ( { open } ) => (
 								<IconButton
 									className="components-toolbar__control"
-									label={ __( 'Add background' ) }
+									label={ __( 'Background' ) }
 									icon={ icons.background }
 									onClick={ open }
 								/>
