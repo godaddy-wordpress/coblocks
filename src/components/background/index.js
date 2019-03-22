@@ -145,7 +145,6 @@ function BackgroundImagePanel( props, options ) {
 							className="components-focal-point-picker--coblocks"
 						/>
 					) }
-
 					{ overlaySelect() }
 
 					{ backgroundType == 'image' && (
@@ -179,18 +178,16 @@ function BackgroundImagePanel( props, options ) {
 
 					{ backgroundType == 'video' && (
 						<ToggleControl
-							label={ __( 'Mute Video' ) }
+							label={ __( 'Muted' ) }
 							checked={ !! videoMuted }
 							onChange={ () => setAttributes( {  videoMuted: ! videoMuted } ) }
-							help={ videoMuted ? __( 'Muting the background video.' ) : __( 'Toggle to mute the video.' ) }
 						/>
 					) }
 
 					{ backgroundType == 'video' && (
 						<ToggleControl
-							label={ __( 'Loop Video' ) }
+							label={ __( 'Loop' ) }
 							checked={ !! videoLoop }
-							help={ videoLoop ? __( 'Looping the background video.' ) : __( 'Toggle to loop the video.' ) }
 							onChange={ () => setAttributes( {  videoLoop: ! videoLoop } ) }
 						/>
 					) }

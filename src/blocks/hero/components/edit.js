@@ -86,7 +86,6 @@ class Edit extends Component {
 			fullscreen,
 			maxWidth,
 			backgroundImg,
-			backgroundType,
 			paddingSize,
 			paddingTop,
 			paddingRight,
@@ -97,8 +96,6 @@ class Edit extends Component {
 			contentAlign,
 			focalPoint,
 			hasParallax,
-			videoMuted,
-			videoLoop,
 		} = attributes;
 
 		const dropZone = (
@@ -128,7 +125,7 @@ class Edit extends Component {
 
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
 			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
@@ -165,11 +162,6 @@ class Edit extends Component {
 					className={ classes }
 				>
 					<div className={ innerClasses } style={ innerStyles } >
-						{ backgroundType == 'video' ?
-							<div className="coblocks-video-background">
-								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
-							</div>
-						: null }
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
 							<ResizableBox
 								className={ classnames(
