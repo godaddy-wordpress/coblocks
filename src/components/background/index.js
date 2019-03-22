@@ -177,7 +177,8 @@ function BackgroundImagePanel( props, options ) {
 
 					{ backgroundType == 'video' && (
 						<ToggleControl
-							label={ __( 'Muted' ) }
+							label={ __( 'Mute Video' ) }
+							help={ videoMuted ? __( 'Muting the background video.' ) : __( 'Toggle to mute the video.' ) }
 							checked={ !! videoMuted }
 							onChange={ () => setAttributes( {  videoMuted: ! videoMuted } ) }
 						/>
@@ -185,7 +186,8 @@ function BackgroundImagePanel( props, options ) {
 
 					{ backgroundType == 'video' && (
 						<ToggleControl
-							label={ __( 'Loop' ) }
+							label={ __( 'Loop Video' ) }
+							help={ videoLoop ? __( 'Looping the background video.' ) : __( 'Toggle to loop the video.' ) }
 							checked={ !! videoLoop }
 							onChange={ () => setAttributes( {  videoLoop: ! videoLoop } ) }
 						/>
