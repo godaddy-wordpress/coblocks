@@ -44,6 +44,7 @@ function BackgroundImageToolbarControls( props, options ) {
 					{ openPopover && (
 						<Popover
 							position="bottom center"
+							className="components-coblocks__background-popover"
 						>
 							<MediaUpload
 								onSelect={ ( media ) => {
@@ -70,7 +71,7 @@ function BackgroundImageToolbarControls( props, options ) {
 							/>
 							<MenuItem
 								className="components-dropdown-menu__menu-item"
-								icon={ icons.trash }
+								icon="trash"
 								role="menuitem"
 								onClick={ () => {
 									setAttributes( {
@@ -95,12 +96,12 @@ function BackgroundImageToolbarControls( props, options ) {
 					) }
 					{ backgroundImg ?
 						<IconButton
-							className="components-dropdown-menu__toggle"
+							className="components-toolbar__control components-dropdown-menu__toggle"
 							icon={ icons.backgroundImage }
 							aria-haspopup="true"
-							label={ 'Edit background' }
-							tooltip={ 'Edit background' }
-							onClick={ () => setAttributes( { openPopover: !openPopover } ) }
+							label={ __( 'Edit Background' ) }
+							tooltip={ __( 'Edit Background' ) }
+							onClick={ () => setAttributes( { openPopover: ! openPopover } ) }
 						>
 							<span className="components-dropdown-menu__indicator" />
 						</IconButton>
@@ -111,7 +112,7 @@ function BackgroundImageToolbarControls( props, options ) {
 								// Set padding when background image is added.
 								if ( BLOCKS_WITH_AUTOPADDING.includes( props.name ) ){
 									if ( ! attributes.paddingSize || attributes.paddingSize == 'no' ) {
-										setAttributes( { paddingSize: 'medium' } );
+										setAttributes( { paddingSize: 'huge' } );
 									}
 								}
 							} }
