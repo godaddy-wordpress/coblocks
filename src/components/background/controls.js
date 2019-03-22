@@ -17,7 +17,7 @@ import { ALLOWED_BG_MEDIA_TYPES, BLOCKS_WITH_AUTOPADDING } from './';
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { AlignmentToolbar, MediaUpload, MediaUploadCheck } = wp.editor;
-const { Toolbar, IconButton, Button, DropdownMenu, ButtonGroup, Dropdown, NavigableMenu, Popover } = wp.components;
+const { Toolbar, IconButton, Button, DropdownMenu, ButtonGroup, Dropdown, NavigableMenu, Popover, MenuItem } = wp.components;
 const { DOWN } = wp.keycodes;
 
 /**
@@ -56,17 +56,17 @@ function BackgroundImageToolbarControls( props, options ) {
 								allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
 								value={ backgroundImg }
 								render={ ( { open } ) => (
-									<IconButton
+									<MenuItem
 										className="components-dropdown-menu__menu-item"
 										icon={ icons.edit }
 										role="menuitem"
 										onClick={ open } >
 											{ __( 'Edit Background' ) }
-									</IconButton>
+									</MenuItem>
 
 								) }
 							/>
-							<IconButton
+							<MenuItem
 								className="components-dropdown-menu__menu-item"
 								icon={ icons.trash }
 								role="menuitem"
@@ -88,7 +88,7 @@ function BackgroundImageToolbarControls( props, options ) {
 									}
 								} } >
 									{ __( 'Remove Background' ) }
-							</IconButton>
+							</MenuItem>
 						</Popover>
 					) }
 					{ backgroundImg ?
