@@ -96,7 +96,7 @@ function BackgroundImageToolbarControls( props, options ) {
 					) }
 					{ backgroundImg ?
 						<IconButton
-							className="components-toolbar__control components-dropdown-menu__toggle"
+							className="components-dropdown-menu__toggle"
 							icon={ icons.backgroundImage }
 							aria-haspopup="true"
 							label={ __( 'Edit Background' ) }
