@@ -1,8 +1,8 @@
 /**
  * Internal dependencies
  */
-// import './styles/style.scss';
-// import './styles/editor.scss';
+import './styles/style.scss';
+import './styles/editor.scss';
 import BackgroundAttributes from './attributes';
 import BackgroundClasses from './classes';
 import BackgroundImageToolbarControls from './controls';
@@ -156,7 +156,6 @@ function BackgroundImagePanel( props, options ) {
 							onChange={ ( nextbackgroundRepeat ) => onSelectRepeat( nextbackgroundRepeat ) }
 						/>
 					) }
-
 
 					{ ! FocalPointPicker && backgroundType == 'image' && (
 						<SelectControl

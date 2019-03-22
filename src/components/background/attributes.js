@@ -46,6 +46,10 @@ const BackgroundAttributes = {
 		type: 'boolean',
 		default: true,
 	},
+	openPopover: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default BackgroundAttributes;
