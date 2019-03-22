@@ -8,7 +8,7 @@ import flatMap from 'lodash/flatMap';
 /**
  * Internal dependencies
  */
-import icons from './../../utils/icons';
+import icons from './icons';
 import { ALLOWED_BG_MEDIA_TYPES, BLOCKS_WITH_AUTOPADDING } from './';
 
 /**
@@ -61,7 +61,7 @@ function BackgroundImageToolbarControls( props, options ) {
 								render={ ( { open } ) => (
 									<MenuItem
 										className="components-dropdown-menu__menu-item"
-										icon={ icons.edit }
+										icon='edit'
 										role="menuitem"
 										onClick={ open } >
 											{ __( 'Edit Background' ) }
@@ -97,7 +97,7 @@ function BackgroundImageToolbarControls( props, options ) {
 					{ backgroundImg ?
 						<IconButton
 							className="components-dropdown-menu__toggle"
-							icon={ icons.backgroundImage }
+							icon={ icons.background }
 							aria-haspopup="true"
 							label={ __( 'Edit Background' ) }
 							tooltip={ __( 'Edit Background' ) }
@@ -122,7 +122,7 @@ function BackgroundImageToolbarControls( props, options ) {
 								<IconButton
 									className="components-toolbar__control"
 									label={ __( 'Add background' ) }
-									icon={ icons.backgroundImage }
+									icon={ icons.background }
 									onClick={ open }
 								/>
 							) }
