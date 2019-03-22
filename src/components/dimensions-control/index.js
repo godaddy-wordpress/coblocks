@@ -16,6 +16,7 @@ import './styles/editor.scss';
  */
 const { __, _x, sprintf } = wp.i18n;
 const { withInstanceId } = wp.compose;
+const { dispatch } = wp.data;
 const { Component, Fragment } = wp.element;
 const { ButtonGroup, Dropdown, NavigableMenu, BaseControl, Button, Tooltip, Dashicon, TabPanel } = wp.components;
 
@@ -34,7 +35,10 @@ class DimensionsControl extends Component {
 		this.saveMeta = this.saveMeta.bind( this );
 
 		let meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		// console.log( props.attributes );
+		if( props.attributes.saveCoBlocksMeta ){
+			this.saveMeta();
+			dispatch( 'core/editor' ).updateBlockAttributes( props.attributes.clientId, { saveCoBlocksMeta: false } );
+		}
 	}
 
 	onChangeTop( value, device ) {
@@ -98,6 +102,17 @@ class DimensionsControl extends Component {
 	}
 
 	onChangeSize( value, size ) {
+
+		//fix reset for specific blocks
+		if( [ 'coblocks/hero' ].includes( this.props.name ) && value == 'no' ){
+			if( size < 0 ){
+				value = 'huge';
+				size  = 60;
+			}else{
+				size  = -1;
+			}
+		}
+
 		if  ( this.props.type == 'padding' ) {
 			this.props.setAttributes( {  paddingSyncUnits: true } )
 			this.props.setAttributes( { paddingSize: value } );

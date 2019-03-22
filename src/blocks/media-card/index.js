@@ -212,6 +212,8 @@ const settings = {
 			mediaPosition,
 			isStackedOnMobile,
 			align,
+			focalPoint,
+			hasParallax,
 		} = attributes;
 
 		// Media.
@@ -244,6 +246,7 @@ const settings = {
 		const wrapperStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 		};
 
 		const innerStyles = {

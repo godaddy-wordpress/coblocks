@@ -1,0 +1,23 @@
+.components-coblocks-grid-dropdown {
+	padding: 16px !important;
+
+	.components-coblocks-css-grid-selector {
+		width: 100%;
+
+		.components-button-group {
+			margin-bottom: 0;
+		}
+
+		.components-base-control__label {
+			display: none;
+		}
+	}
+
+	.components-toggle-control {
+		border-top: 1px solid #e2e4e7;
+		color: #555d66;
+		margin: 16px -16px -16px;
+		padding: 18px 16px 14px;
+		width: calc(100% + 32px);
+	}
+}

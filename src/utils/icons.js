@@ -14,9 +14,6 @@ icons.actionGrid =
 	<g fill="currentColor" fillRule="evenodd"><path d="m16 0h-14c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2zm0 14h-14v-12h14z" fillRule="nonzero" transform="translate(3 4)"/><path d="m11 6h2v12h-2z"/></g>
 </svg>;
 
-icons.backgroundImage =
-<svg className="dashicon" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" transform="translate(2.762573 2)"><path d="m5.00854034 15.4264789-4.30419126-4.3041913c-.67516726-.6751672-.67516726-1.68791813 0-2.36308539l5.48573395-5.31694214 5.40133807 5.40133805c.6751672.67516726.6751672 1.68791818 0 2.36308538l-4.30419127 4.3041913c-.59077135.5907713-1.60352224.5907713-2.27868949-.0843959z" stroke="currentColor" stroke-width="2"/><path d="m15.4736328 15.0888952c0 .928355-.7595632 1.6879182-1.6879181 1.6879182-.928355 0-1.6879182-.7595632-1.6879182-1.6879182 0-.9283549 1.6879182-3.3758362 1.6879182-3.3758362s1.6879181 2.4474813 1.6879181 3.3758362z" fill="currentColor"/><path d="m.28236954 10.0251408c0 .4219796.16879181.8439591.42197954 1.1815427l4.30419126 4.3041913c.67516725.6751672 1.68791814.6751672 2.36308539 0l4.30419127-4.3041913c.2531877-.3375836.4219795-.7595631.4219795-1.1815427z" fill="currentColor"/><path d="m3.23622629.48840332 6.66727666 6.66727666" stroke="currentColor" stroke-width="2"/></g></svg>
-
 icons.blank =
 <svg aria-hidden role="img" focusable="false" className="dashicon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"></svg>;
 

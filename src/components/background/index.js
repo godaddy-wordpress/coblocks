@@ -1,6 +1,8 @@
 /**
  * Internal dependencies
  */
+import './styles/style.scss';
+import './styles/editor.scss';
 import BackgroundAttributes from './attributes';
 import BackgroundClasses from './classes';
 import BackgroundImageToolbarControls from './controls';
@@ -12,12 +14,12 @@ import BackgroundImageTransforms from './transforms';
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { SelectControl, RangeControl, ToggleControl, PanelBody, Button } = wp.components;
+const { SelectControl, RangeControl, ToggleControl, PanelBody, Button, FocalPointPicker } = wp.components;
 
 /**
  * Module constants.
  */
-export const ALLOWED_BG_MEDIA_TYPES = [ 'image' ];
+export const ALLOWED_BG_MEDIA_TYPES = [ 'image', 'video' ];
 export const BLOCKS_WITH_AUTOPADDING = [ 'coblocks/row', 'coblocks/column', 'coblocks/media-card', 'coblocks/features', 'coblocks/feature' ];
 
 /**
@@ -48,6 +50,10 @@ function BackgroundImagePanel( props, options ) {
 		backgroundOverlay,
 		hasParallax,
 		backgroundImg,
+		backgroundType,
+		focalPoint,
+		videoMuted,
+		videoLoop,
 	} = attributes;
 
 	const backgroundPositionOptions = [
@@ -86,7 +92,7 @@ function BackgroundImagePanel( props, options ) {
 		if ( typeof options !== 'undefined' && typeof options.overlay !== 'undefined' && options.overlay ) {
 			return(
 				<RangeControl
-					label={ __( 'Image Overlay' ) }
+					label={ __( 'Background Opacity' ) }
 					value={ backgroundOverlay }
 					onChange={ ( nextBackgroundOverlay ) => setAttributes( {  backgroundOverlay: nextBackgroundOverlay } ) }
 					min={ 0 }
@@ -97,6 +103,22 @@ function BackgroundImagePanel( props, options ) {
 		}
 	}
 
+	const onSelectRepeat = ( backgroundRepeat ) => {
+
+		if ( backgroundRepeat === 'no-repeat' ) {
+			setAttributes( {
+				backgroundRepeat: backgroundRepeat,
+				backgroundSize: 'cover',
+			} );
+		} else {
+			setAttributes( {
+				backgroundRepeat: backgroundRepeat,
+				backgroundSize: 'contain',
+				focalPoint: undefined,
+			} );
+		}
+	}
+
 	if ( backgroundImg ) {
 		const backgroundSizeDefault = ( typeof options !== 'undefined' && typeof options.backgroundSize !== 'undefined' ) ? options.backgroundSize : 'cover';
 		return(
@@ -104,31 +126,98 @@ function BackgroundImagePanel( props, options ) {
 				<PanelBody
 					title={ ( typeof options !== 'undefined' && typeof options.label !== 'undefined' ) ? options.label : __( 'Background Settings' ) }
 					initialOpen={ false }
+					className="components-panel__body--coblocks-background-panel"
 				>
+					{ backgroundType == 'image' && (
+						<ToggleControl
+							label={ __( 'Fixed Background' ) }
+							checked={ !! hasParallax }
+							onChange={ () => setAttributes( {  hasParallax: ! hasParallax } ) }
+						/>
+					) }
+
+					{ ! hasParallax && FocalPointPicker && backgroundType == 'image' && backgroundRepeat !== 'repeat' && (
+						<FocalPointPicker
+							label={ __( 'Focal Point' ) }
+							url={ backgroundImg }
+							value={ focalPoint }
+							onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
+							className="components-focal-point-picker--coblocks"
+						/>
+					) }
 					{ overlaySelect() }
-					<SelectControl
-						label={ __( 'Position' ) }
-						value={ backgroundPosition ? backgroundPosition : 'center center' }
-						options={ backgroundPositionOptions }
-						onChange={ ( nextbackgroundPosition ) => setAttributes( { backgroundPosition: nextbackgroundPosition } ) }
-					/>
-					<SelectControl
-						label={ __( 'Repeat' ) }
-						value={ backgroundRepeat ? backgroundRepeat : 'no-repeat' }
-						options={ backgroundRepeatOptions }
-						onChange={ ( nextbackgroundRepeat ) => setAttributes( { backgroundRepeat: nextbackgroundRepeat } ) }
-					/>
-					<SelectControl
-						label={ __( 'Display' ) }
-						value={ backgroundSize ? backgroundSize : backgroundSizeDefault }
-						options={ backgroundSizeOptions }
-						onChange={ ( nextbackgroundSize ) => setAttributes( { backgroundSize: nextbackgroundSize } ) }
-					/>
-					<ToggleControl
-						label={ __( 'Fixed Background' ) }
-						checked={ !! hasParallax }
-						onChange={ () => setAttributes( {  hasParallax: ! hasParallax } ) }
-					/>
+
+					{ backgroundType == 'image' && (
+						<SelectControl
+							label={ __( 'Repeat' ) }
+							className="components-background-display-select--coblocks"
+							value={ backgroundRepeat ? backgroundRepeat : 'no-repeat' }
+							options={ backgroundRepeatOptions }
+							onChange={ ( nextbackgroundRepeat ) => onSelectRepeat( nextbackgroundRepeat ) }
+						/>
+					) }
+
+					{ ! FocalPointPicker && backgroundType == 'image' && (
+						<SelectControl
+							label={ __( 'Position' ) }
+							value={ backgroundPosition ? backgroundPosition : 'center center' }
+							options={ backgroundPositionOptions }
+							onChange={ ( nextbackgroundPosition ) => setAttributes( { backgroundPosition: nextbackgroundPosition } ) }
+						/>
+					) }
+
+					{ backgroundRepeat == 'no-repeat' && backgroundType == 'image' && (
+						<SelectControl
+							label={ __( 'Display' ) }
+							value={ backgroundSize ? backgroundSize : backgroundSizeDefault }
+							options={ backgroundSizeOptions }
+							onChange={ ( nextbackgroundSize ) => setAttributes( { backgroundSize: nextbackgroundSize } ) }
+						/>
+					) }
+
+					{ backgroundType == 'video' && (
+						<ToggleControl
+							label={ __( 'Mute Video' ) }
+							help={ videoMuted ? __( 'Muting the background video.' ) : __( 'Toggle to mute the video.' ) }
+							checked={ !! videoMuted }
+							onChange={ () => setAttributes( {  videoMuted: ! videoMuted } ) }
+						/>
+					) }
+
+					{ backgroundType == 'video' && (
+						<ToggleControl
+							label={ __( 'Loop Video' ) }
+							help={ videoLoop ? __( 'Looping the background video.' ) : __( 'Toggle to loop the video.' ) }
+							checked={ !! videoLoop }
+							onChange={ () => setAttributes( {  videoLoop: ! videoLoop } ) }
+						/>
+					) }
+
+					<Button
+						className="components-button--coblocks-remove-background-image"
+						type="button"
+						isDefault
+						label={ __( 'Remove background' ) }
+						onClick={ () => {
+							setAttributes( {
+								backgroundImg: '',
+								backgroundOverlay: 0,
+								backgroundRepeat: 'no-repeat',
+								backgroundPosition: '',
+								backgroundSize: 'cover',
+								hasParallax: false,
+							} );
+
+							// Remove padding when background image is removed.
+							if ( BLOCKS_WITH_AUTOPADDING.includes( props.name ) ){
+								if( attributes.paddingSize ){
+									setAttributes( { paddingSize: 'no' } );
+								}
+							}
+						} }
+					>
+						{ __( 'Remove ' + backgroundType ) }
+					</Button>
 				</PanelBody>
 			</Fragment>
 		);

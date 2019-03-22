@@ -199,7 +199,7 @@ class Inspector extends Component {
 										{ __( 'Reset' ) }
 									</Button>
 									<RangeControl
-										label={ __( 'Custom Size' ) }
+										label={ __( 'Size' ) }
 										value={ width }
 										onChange={ ( nextWidth ) => {
 											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';

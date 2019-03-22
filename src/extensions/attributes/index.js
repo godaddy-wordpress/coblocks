@@ -11,7 +11,7 @@ const { addFilter } = wp.hooks;
 const { Fragment }	= wp.element;
 const { compose, createHigherOrderComponent } = wp.compose;
 
-const allowedBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/feature', , 'coblocks/media-card', 'coblocks/shape-divider' ];
+const allowedBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/feature', 'coblocks/media-card', 'coblocks/shape-divider', 'coblocks/hero' ];
 
 /**
  * Filters registered block settings, extending attributes with settings

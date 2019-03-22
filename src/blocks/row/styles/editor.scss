@@ -15,12 +15,6 @@
 	}
 
 	.wp-block[data-type="coblocks/row"][data-columns="1"] & &__inner {
-		// display: inherit;
-
-		.editor-inner-blocks > .editor-block-list__layout {
-			// display: inherit;
-		}
-
 		.wp-block-coblocks-column__inner {
 			.editor-block-list__layout {
 				> .wp-block {
@@ -35,7 +29,6 @@
 						max-width: calc(6 * (100vw / 8.3)) !important;
 					}
 					&[data-align="full"] {
-						// width: 112.5%;
 						left: auto;
 						max-width: calc(112.5% + 90px) !important;
 					}
@@ -133,11 +126,6 @@
 			}
 
 			// Make the column selected border dashed so we can tell it apart.
-			> .editor-block-list__block-edit::before {
-				outline-style: dashed;
-			}
-
-			// Make the column selected border dashed so we can tell it apart.
 			&.is-resizing > .editor-block-list__block-edit::before {
 				outline-width: 0 !important;
 			}
@@ -229,10 +217,6 @@
 // Make the column selected border dashed so we can tell it apart.
 .wp-block[data-type="coblocks/row"] {
 	background: transparent !important;
-
-	&:not([data-layout="none"]) > .editor-block-list__block-edit::before {
-		outline-style: dashed !important;
-	}
 
 	> .editor-block-list__block-edit .components-drop-zone {
 		z-index: 159999;
@@ -573,6 +557,79 @@ body {
 			h5,
 			h6 {
 				color: inherit;
+			}
+		}
+	}
+}
+
+// Our custom inserter.
+.wp-block-coblocks-column {
+	> .wp-block-coblocks-column__inner {
+		> .editor-inner-blocks {
+			> .editor-block-list__layout {
+				> div:not(.wp-block) {
+					> .editor-default-block-appender {
+						> .editor-inserter {
+							display: none !important;
+							position: relative;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&.wp-block-coblocks-column-placeholder {
+		.editor-default-block-appender {
+			.editor-default-block-appender__content {
+				display: none;
+			}
+		}
+	}
+}
+
+// Block inserter within the Column block
+div[data-type="coblocks/column"] {
+	.wp-block-coblocks-column {
+		> .wp-block-coblocks-column__inner {
+			> .editor-inserter {
+				display: block;
+				position: relative;
+
+				.components-button {
+					background: rgba(139, 139, 150, 0.1);
+					border: 1px dashed #d3d5d8;
+					border-radius: 0;
+					box-shadow: none !important;
+					color: #555d66;
+					display: block;
+					font-size: 14px;
+					height: 40px !important;
+					justify-content: center;
+					line-height: 31px;
+					margin-top: 1.5em;
+					opacity: 1;
+					padding: 8px;
+					position: relative;
+					text-align: center;
+					width: 100%;
+
+					svg {
+						display: inline-block;
+					}
+
+					&:hover {
+						color: #191e23;
+					}
+				}
+			}
+		}
+
+		&.wp-block-coblocks-column-placeholder {
+			.editor-inserter {
+				.components-button {
+					margin-top: 0;
+				}
 			}
 		}
 	}

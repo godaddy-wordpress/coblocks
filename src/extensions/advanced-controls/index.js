@@ -34,12 +34,14 @@ function addAttributes( settings ) {
 	// Add custom attribute
 	if ( hasBlockSupport( settings, 'stackedOnMobile' ) ) {
 		if( typeof settings.attributes !== 'undefined' ){
-			settings.attributes = Object.assign( settings.attributes, {
-				isStackedOnMobile: {
-					type: 'boolean',
-					default: true,
-				}
-			} );
+			if( !settings.attributes.isStackedOnMobile ){
+				settings.attributes = Object.assign( settings.attributes, {
+					isStackedOnMobile: {
+						type: 'boolean',
+						default: true,
+					}
+				} );
+			}
 		}
 	}
 

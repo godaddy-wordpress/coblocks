@@ -16,9 +16,16 @@ registerBlockStyle('core/list', {
 	isDefault: true,
 });
 
-// Register custom styles for the core list block.
+registerBlockStyle('core/list', {
+	name: 'none',
+	label: __( 'None' ),
+	isDefault: false,
+});
+
 registerBlockStyle('core/list', {
 	name: 'checkbox',
 	label: __( 'Checkbox' ),
 	isDefault: false,
 });
+
+
