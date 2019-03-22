@@ -34,6 +34,22 @@ const BackgroundAttributes = {
 	focalPoint: {
 		type: 'object',
 	},
+	backgroundType: {
+		type: 'string',
+		default: 'image',
+	},
+	videoMuted: {
+		type: 'boolean',
+		default: true,
+	},
+	videoLoop: {
+		type: 'boolean',
+		default: true,
+	},
+	openPopover: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default BackgroundAttributes;
