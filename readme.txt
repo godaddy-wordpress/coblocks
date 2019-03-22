@@ -122,6 +122,26 @@ Please reach out via the contact form at the bottom right of [our website](https
 
 == Changelog ==
 
+= 1.9.3 =
+* New: Add official support for Gutenberg 5.3 and the upcoming WordPress 5.2 release 🎊
+* New: Add new Hero block 🎉
+* New: Add new Buttons block for displaying up to four buttons side by side 🎉
+* New: Add support for video backgrounds in all blocks
+* New: Add three new button styles to the core Button block: Circular, Shadow and 3D
+* New: Add 25 new icons to the Icon block
+* New: Add third party support for the CoBlocks Typography Control Panel
+* New: Add support for Gutenberg 5.2+ Focal Point pickers for background images
+* Tweak: Improve the background image controls within Background Settings panels
+* Tweak: Add a new button within the Background Settings panel to remove applied media
+* Tweak: Improve the third Pricing Table Item block positioning
+* Tweak: Update background media toolbar controls for improved UX
+* Tweak: Remove <code> custom formatting, as Gutenberg 5.3 aand WordPress 5.2 includes one
+* Tweak: Admin feedback notice now redirects to the admin plugins page
+* Tweak: Improve the icon for the "Uppercase" format
+* Tweak: Adjust the custom icon color for CoBlocks blocks
+* Fix: Click to Tweet block styles now properly render inside of Row/Column blocks
+* Fix: Media Card block now properly renders in Edge
+
 = 1.9.2 =
 * Fix: Add hot fix to resolve the core inserter conflict on empty paragraph blocks
 
