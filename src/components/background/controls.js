@@ -38,7 +38,9 @@ function BackgroundImageToolbarControls( props, options ) {
 	return (
 		<Fragment>
 			<MediaUploadCheck>
-				<Toolbar>
+				<Toolbar
+					className={ backgroundImg ? 'components-dropdown-menu' : '' }
+				>
 					{ openPopover && (
 						<Popover
 							position="bottom center"
@@ -100,6 +102,7 @@ function BackgroundImageToolbarControls( props, options ) {
 							tooltip={ 'Edit background' }
 							onClick={ () => setAttributes( { openPopover: !openPopover } ) }
 						>
+							<span className="components-dropdown-menu__indicator" />
 						</IconButton>
 					:
 						<MediaUpload
