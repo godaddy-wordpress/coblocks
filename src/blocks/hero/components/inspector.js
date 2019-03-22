@@ -45,6 +45,8 @@ const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
+
+
 /**
  * Inspector controls
  */
@@ -190,8 +192,13 @@ class Inspector extends Component {
 									setBackgroundColor( nextBackgroundColor );
 
 									// Add padding if there's none.
-									if ( ! paddingSize || paddingSize == 'no' ) {
-										setAttributes( { paddingSize: 'huge' } );
+									if ( !paddingSize || paddingSize == 'no' ) {
+										setAttributes( { paddingSize: 'medium' } );
+									}
+
+									// Reset when cleared.
+									if ( ! nextBackgroundColor ) {
+										setAttributes( { paddingSize: 'no' } );
 									}
 								},
 								label: __( 'Background Color' ),
