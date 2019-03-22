@@ -9,16 +9,15 @@ import flatMap from 'lodash/flatMap';
  * Internal dependencies
  */
 import icons from './icons';
-import { ALLOWED_BG_MEDIA_TYPES, BLOCKS_WITH_AUTOPADDING } from './';
+import { ALLOWED_BG_MEDIA_TYPES } from './';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { AlignmentToolbar, MediaUpload, MediaUploadCheck } = wp.editor;
-const { Toolbar, IconButton, Button, DropdownMenu, ButtonGroup, Dropdown, NavigableMenu, Popover, MenuItem } = wp.components;
-const { DOWN } = wp.keycodes;
+const { MediaUpload, MediaUploadCheck } = wp.editor;
+const { Toolbar, IconButton, Popover, MenuItem } = wp.components;
 
 /**
  * Background image block toolbar controls
@@ -38,24 +37,14 @@ function BackgroundImageToolbarControls( props, options ) {
 	return (
 		<Fragment>
 			<MediaUploadCheck>
-				<Toolbar
-					className={ backgroundImg ? 'components-dropdown-menu' : '' }
-				>
+				<Toolbar className={ backgroundImg ? 'components-dropdown-menu' : '' }>
 					{ openPopover && (
 						<Popover
 							position="bottom center"
 							className="components-coblocks__background-popover"
 						>
 							<MediaUpload
-								onSelect={ ( media ) => {
-									setAttributes( { backgroundImg: media.url, backgroundType: media.type, openPopover: !openPopover } );
-									// Set padding when background image is added.
-									if ( BLOCKS_WITH_AUTOPADDING.includes( props.name ) ){
-										if ( ! attributes.paddingSize || attributes.paddingSize == 'no' ) {
-											setAttributes( { paddingSize: 'medium' } );
-										}
-									}
-								} }
+								onSelect={ ( media ) => { setAttributes( { backgroundImg: media.url, backgroundType: media.type, openPopover: ! openPopover } ) } }
 								allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
 								value={ backgroundImg }
 								render={ ( { open } ) => (
@@ -66,7 +55,6 @@ function BackgroundImageToolbarControls( props, options ) {
 										onClick={ open } >
 											{ __( 'Edit Background' ) }
 									</MenuItem>
-
 								) }
 							/>
 							<MenuItem
@@ -81,14 +69,8 @@ function BackgroundImageToolbarControls( props, options ) {
 										backgroundPosition: '',
 										backgroundSize: 'cover',
 										hasParallax: false,
-										openPopover: !openPopover,
+										openPopover: ! openPopover,
 									} );
-									// Remove padding when background image is removed.
-									if ( BLOCKS_WITH_AUTOPADDING.includes( props.name ) ){
-										if( attributes.paddingSize ){
-											setAttributes( { paddingSize: 'no' } );
-										}
-									}
 								} } >
 									{ __( 'Remove Background' ) }
 							</MenuItem>
@@ -99,23 +81,15 @@ function BackgroundImageToolbarControls( props, options ) {
 							className="components-dropdown-menu__toggle"
 							icon={ icons.background }
 							aria-haspopup="true"
-							label={ __( 'Edit Background' ) }
-							tooltip={ __( 'Edit Background' ) }
+							label={ __( 'Background' ) }
+							tooltip={ __( 'Background' ) }
 							onClick={ () => setAttributes( { openPopover: ! openPopover } ) }
 						>
 							<span className="components-dropdown-menu__indicator" />
 						</IconButton>
 					:
 						<MediaUpload
-							onSelect={ ( media ) => {
-								setAttributes( { backgroundImg: media.url, backgroundType: media.type  } );
-								// Set padding when background image is added.
-								if ( BLOCKS_WITH_AUTOPADDING.includes( props.name ) ){
-									if ( ! attributes.paddingSize || attributes.paddingSize == 'no' ) {
-										setAttributes( { paddingSize: 'huge' } );
-									}
-								}
-							} }
+							onSelect={ ( media ) => { setAttributes( { backgroundImg: media.url, backgroundType: media.type  } ) } }
 							allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
 							value={ backgroundImg }
 							render={ ( { open } ) => (
@@ -133,7 +107,6 @@ function BackgroundImageToolbarControls( props, options ) {
 			</MediaUploadCheck>
 		</Fragment>
 	);
-
 }
 
 export default BackgroundImageToolbarControls;
