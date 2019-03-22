@@ -6,14 +6,14 @@ const { getCategories, setCategories } = wp.blocks;
 /**
  * Internal dependencies
  */
-import icons from './icons';
+import brandAssets from './brand-assets';
 
 setCategories( [
 	// Add a CoBlocks block category
 	{
 		slug: 'coblocks',
 		title: 'CoBlocks',
-		icon: icons.logo,
+		icon: brandAssets.categoryIcon,
 	},
 	...getCategories().filter( ( { slug } ) => slug !== 'coblocks' ),
 ] );

@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import icons from './../../utils/icons';
+import { ALLOWED_BG_MEDIA_TYPES, BLOCKS_WITH_AUTOPADDING } from './';
 
 /**
  * WordPress dependencies
@@ -10,8 +11,6 @@ const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { AlignmentToolbar, MediaUpload, MediaUploadCheck } = wp.editor;
 const { Toolbar, IconButton } = wp.components;
-
-const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
 /**
  * Background image block toolbar controls
@@ -35,14 +34,14 @@ function BackgroundImageToolbarControls( props, options ) {
 						onSelect={ ( media ) => {
 							setAttributes( { backgroundImg: media.url } );
 
-							//set padding when image selected
-							if( [ 'coblocks/media-card' ].includes( props.name ) ){
-								if( !attributes.paddingSize || attributes.paddingSize == 'no' ){
+							// Set padding when background image is added.
+							if ( BLOCKS_WITH_AUTOPADDING.includes( props.name ) ){
+								if ( ! attributes.paddingSize || attributes.paddingSize == 'no' ) {
 									setAttributes( { paddingSize: 'medium' } );
 								}
 							}
 						} }
-						allowedTypes={ ALLOWED_MEDIA_TYPES }
+						allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
 						value={ backgroundImg }
 						render={ ( { open } ) => (
 							<IconButton
@@ -59,10 +58,17 @@ function BackgroundImageToolbarControls( props, options ) {
 							label={ ( typeof options !== 'undefined' && typeof options.deleteLabel !== 'undefined' ) ? options.deleteLabel : __( 'Remove background image' ) }
 							icon={ icons.trash }
 							onClick={ () => {
-								setAttributes( { backgroundImg: '', backgroundOverlay: 0, } );
+								setAttributes( {
+									backgroundImg: '',
+									backgroundOverlay: 0,
+									backgroundRepeat: 'no-repeat',
+									backgroundPosition: '',
+									backgroundSize: 'cover',
+									hasParallax: false,
+								} );
 
-								//set padding when image selected
-								if( [ 'coblocks/media-card' ].includes( props.name ) ){
+								// Remove padding when background image is removed.
+								if ( BLOCKS_WITH_AUTOPADDING.includes( props.name ) ){
 									if( attributes.paddingSize ){
 										setAttributes( { paddingSize: 'no' } );
 									}

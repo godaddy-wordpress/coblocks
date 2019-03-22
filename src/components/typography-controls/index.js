@@ -21,6 +21,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment, createRef } = wp.element;
 const { compose, withState } = wp.compose;
 const { BlockControls } = wp.editor;
+const { DOWN } = wp.keycodes;
 const { RangeControl, PanelBody, withFallbackStyles, FontSizePicker, ToggleControl, Button, Popover, Dropdown, IconButton, SelectControl } = wp.components;
 
 
@@ -79,7 +80,7 @@ class TypographyControls extends Component {
 			className,
 			headerTitle,
 			icon = icons.typography,
-			label = __( 'Typography Settings' ),
+			label = __( 'Change typography' ),
 		} = this.props;
 
 		const {
@@ -226,7 +227,7 @@ class TypographyControls extends Component {
 										onChange={ ( nextLineHeight ) => setAttributes( {  lineHeight: nextLineHeight } ) }
 										min={ 1 }
 										max={ 3 }
-										step={ .1 }
+										step={ .01 }
 										className="components-coblocks-typography-dropdown__inner--line-height"
 									/> : null
 								}

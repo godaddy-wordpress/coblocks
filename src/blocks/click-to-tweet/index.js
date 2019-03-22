@@ -216,6 +216,7 @@ const settings = {
 						value={ buttonText }
 						href={ tweetUrl }
 						target="_blank"
+						rel="noopener noreferrer"
 					/>
 				</blockquote>
 			)

@@ -4,7 +4,7 @@
 $default-font: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen-sans, ubuntu, cantarell, "Helvetica Neue", sans-serif;
 
 // CoBlocks branding color.
-$coblocks: #555eff;
+$coblocks: #1e35b9;
 
 // Colors.
 $black: rgb(41, 41, 41);
@@ -26,6 +26,11 @@ $accordion-background: #f2f2f2;
 // Social.
 $twitter: #1da1f2;
 
+// Breakpoints.
+$break-small-twentynineteen: 1024px;
+$break-small-twentynineteen--min: 768px;
+$break-small-mediacard: 660px;
+
 // Variables from core.
 $block-padding: 10px;
 $border-width: 1px;
@@ -42,6 +47,12 @@ $dark-gray-500: #555d66; // Use this most of the time for dark items.
 
 @mixin break-smallest() {
 	@media (min-width: #{ ($break-smallest) }) {
+		@content;
+	}
+}
+
+@mixin break-small-mediacard() {
+	@media (min-width: #{ ($break-small-mediacard) }) {
 		@content;
 	}
 }

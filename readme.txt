@@ -1,8 +1,8 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
 Author URI: https://coblocks.com
 Plugin URI: https://coblocks.com
-Contributors: coblocks, richtabor, phpbits, thatplugincompany
-Tags: blocks, gutenberg, editor, page builder, gutenberg blocks
+Contributors: coblocks, richtabor, phpbits
+Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: @@pkg.tested_up_to
 Requires PHP: 5.2.4
@@ -14,47 +14,63 @@ CoBlocks is a suite of page builder WordPress blocks for Gutenberg, with 10+ new
 
 == Description ==
 
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the most innovative collection of page building WordPress blocks for the new Gutenberg WordPress block editor. Hands down, CoBlocks is the Gutenberg page builder you've been waiting for; it will make you rethink what WordPress is capable of.
+[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the most innovative collection of page building WordPress blocks for the new Gutenberg WordPress block editor.
+
+With additional blocks and true row and column building, CoBlocks gives you a true page builder experience for Gutenberg.
+
+CoBlocks is powerful but lightweight: it adds functionality to the WordPress editor without bloat. This is the plugin you've been waiting for, and it will make you rethink what WordPress is capable of.
 
 
 = See for yourself =
-
 https://www.youtube.com/watch?v=SfWoVX_uJ0M
 
 
-## One for all, all in one
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need. With tens of custom blocks, including the extraordinary row block, you have everything you need to make beautiful web pages:
+## Make beautiful web pages with Gutenberg, and CoBlocks
+[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
 
-* Resizable Row/Columns (New!)
+* Resizable Row/Columns Blocks (New!)
+* Shape Divider Block (New!)
+* Features Block (New!)
+* Media Card Block (New!)
+* Icon Block (New!)
 * Map Block (New!)
-* Accordion
-* Alert
-* Author Profile
-* Click to Tweet
-* Dynamic Separator
-* Gif
-* GitHub Gist
-* Highlight
-* Pricing Table
-* Social Sharing
+* Accordion Block
+* Alert Block
+* Author Profile Block
+* Click to Tweet Block
+* Dynamic Separator Block
+* Gif Block
+* GitHub Gist Block
+* Highlight Block
+* Pricing Table Block
+* Social Sharing Block
 
+And we're adding new Gutenberg blocks nearly every week!
+
+## Breakthrough Page Builder System
+[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, with the new WordPress editor.
+
+You get the extra blocks you need <em>and</em> the layout and design functionality for a true page builder experience.
+
+Use the exceptional <strong>Row and Columns blocks</strong> to add dynamically generated content areas with specific <strong>responsive margin and padding settings</strong> that only CoBlocks provides.
+
+Style these with innovative new blocks such as the Shape Divider, which lets you split up your content with beautiful dividers.
+
+Each of the WordPress blocks within CoBlocks have been precisely fined tuned to offer a familiar, yet powerful, customization experience. Tailor each block to your taste using our custom controls and settings. <strong>Change fonts, set margin and padding, pick colors and more.</strong>
 
 ## Custom Typography Controls
 The breakthrough Typography Control Panel within CoBlocks lets you design web pages with alluring typographic elements. <strong>Set fonts, sizes, weights, transformations and more</strong>, in our CoBlocks blocks, <em>and</em> in core WordPress blocks.
 
+## Turn off blocks with the Block Manager
+Easily toggle off any WordPress block in the Gutenberg editor with the new CoBlocks Block Manager. No more unnecessary WordPress Gutenberg blocks standing in the way for you, or your clients.
 
-## Breakthrough Block System
-[CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, without one line of code.
+= Watch it in action =
+https://www.youtube.com/watch?v=0v9rXLDv-FM
 
-Use the exceptional <strong>Row and Columns blocks</strong> to add dynamically generated content areas with specific <strong>responsive margin and padding settings</strong> that only CoBlocks provides.
+## Going beyond Gutenberg blocks
+The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks make beautiful websites easily. These newest releases of CoBlocks is the ultimate expression of that vision.
 
-On top of that, each block within CoBlocks has been precisely fined tuned to offer a familiar, yet powerful, customization experience. Tailor each block to your taste using our custom controls and settings. <strong>Change fonts, set margin and padding, pick colors and more.</strong>
-
-
-## Our Vision
-The vision for CoBlocks has always been to create a suite of blocks to help folks make beautiful websites. This newest release of CoBlocks is the ultimate expression of that vision. And we think we've nailed it.
-
-<strong>Join us</strong> in welcoming the future of WordPress:
+<strong>Join us</strong> in welcoming the future of WordPress blocks:
 
 * [Visit the CoBlocks website](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks)
 * [Subscribe to updates](http://eepurl.com/gd1S8D)
@@ -64,7 +80,7 @@ The vision for CoBlocks has always been to create a suite of blocks to help folk
 * [Follow us on Instagram](https://www.instagram.com/coblockswp/)
 
 ## Built with developers in mind
-Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks](https://github.com/thatplugincompany/coblocks) and join the party. 🎉
+Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/coblocks/coblocks) and join the party. 🎉
 
 
 == Screenshots ==
@@ -74,6 +90,7 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 3. Drag to resize and then nest CoBlocks Row blocks
 4. Design with the CoBlocks Typography Control Panel
 5. Add CoBlocks core blocks to pages
+6. Disable blocks with the Block Manager
 
 == Installation ==
 
@@ -90,6 +107,9 @@ Yes! CoBlock's core features are absolutely free.
 = How do I start using Gutenberg? =
 To get the full experience of the next-generation WordPress block editor, it helps to have a properly Gutenberg-optizied WordPress theme, like [this one](https://themebeans.com/themes/tabor?utm_medium=coblocks-lite&utm_source=readme&utm_campaign=readme&utm_content=tabor). Then install either WordPress 5.0+, or the offical Gutenberg [WordPress plugin](https://wordpress.org/plugins/gutenberg/).
 
+= How do I use my first CoBlocks Gutenberg blocks? =
+CoBlocks adds its Gutenberg blocks to the new WordPress editor, so you can use them exactly how you would any other WordPress blocks. Once the plugin is installed, create or edit a WordPress page or post, add a new block using the plus icon, and you'll find all of CoBlocks' WordPress blocks available.
+
 = What WordPress themes work with CoBlocks? =
 Any properly developed WordPress theme will work with CoBlocks, though if you're looking for an exceptional theme, check out [Tabor](https://themebeans.com/themes/tabor?utm_medium=coblocks-lite&utm_source=readme&utm_campaign=readme&utm_content=tabor).
 
@@ -99,6 +119,60 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 Please reach out via the contact form at the bottom right of [our website](https://coblocks.com).
 
 == Changelog ==
+
+= 1.9.2 =
+* Fix: Add hot fix to resolve the core inserter conflict on empty paragraph blocks
+
+= 1.9.1 =
+* New: Disable any block (CoBlocks, core and other third-party blocks) with the new CoBlocks Block Manager 🎉
+* New: Add official support for Gutenberg 5.0 and the upcoming WordPress 5.1 release 🎊
+* Tweak: Update keywords for the Google Map block
+* Fix: Google Map block help links now properly resolve
+
+= 1.9.0 =
+* New: Add Features block for adding up to three columns of features/services 🎉
+* New: Add Icon block for searching and adding outline or filled styled icons 🎉
+* New: Add Shape Divider block with eight styles for to visually distinquish page sections 🎉
+* New: Add responsive controls to the Shape divider so folks can drag and resize on mobile, tablet and desktop views
+* New: Add ability to apply text colors to the core List block
+* New: Add "Checkbox" style to the core List block
+* New: Add <code> text formatting toolbar control
+* Tweak: The coBlocksSpacing feature now auto-toggles based on a Shape Divider block
+* Tweak: Padding it auto-applied when a Row block has a background color, or image, assigned
+* Tweak: Updated keywords for the Row block
+* Tweak: Improved the reponsive nature of the Row block within the editor
+
+= 1.8.0 =
+* New: Add Media Card block for showcasing videos and imagery with an overlaid card 🎉
+* New: Add new advanced controls for turning off block margins
+* New: Add typography controls to the Accordion block
+* New: Add support for responsive Row blocks within the editor
+* New: Add a new toggle control with support for Internet Explorer accordions via polyfill
+* New: Add new accordions items with duplicated styling using the new “Add Accordion Item” button
+* Tweak: Row block gutters not properly execute on mobile
+* Tweak: Typography line height control now uses 0.01 steps for more flexibility.
+* Tweak: Click to Tweet Block uses rel=“noopener” now
+* Tweak: Buttons added to the a pricing table do not inherit custom fonts
+* Tweak: Update the Typography Panel icon
+* Tweak: Update the Uppercase formatting icon
+* Tweak: Move the “Stack on Mobile” control within the Row block to its Advanced sidebar panel
+* Tweak: Background color setting from the core Heading block
+* Tweak: Improve the UI of the Click to Tweet toolbar username field
+* Tweak: Change the `data-custom-fontfamily` attribute to `data-coblocks-font` within the editor
+* Fix: Pricing Table blocks with four tables look better
+* Fix: Custom background colors within the Highlight block now properly resolve
+* Fix: Single column Row blocks now display properly
+* Fix: Remove the Accordion Item focus applies within the editor
+* Fix: Border radius applied to an Accordion Item block is now properly styled
+* Fix: Resolve issue where advanced dimension control setting would not properly reset
+* Fix: Remove the vertical column resizer in the Row block on mobile
+* Fix: Row blocks added to Accordion Item blocks now properly display fullwidth
+* Fix: Removed additional spacing on the Pricing Table block
+* Fix: Resolve issue where custom font selections may be overwritten by the CoBlocks theme
+* Fix: Dropzone labels within CoBlocks themes are now properly sized
+* Fix: Resolve issue where the Map block may not properly render on the front-end
+* Fix: Resolve issue where paragraph blocks with backgrounds did not have appropriate padding within Column blocks
+* Fix: Resolve issue where custom text colors would not properly resolve within Row blocks in TwentyNineteen
 
 = 1.7.0 =
 * New: Add Map block with six built-in map styles, zoom, controls and marker size options 🎉

@@ -1,5 +1,5 @@
 .wp-block-coblocks-media-card {
-	&__inner {
+	&__wrapper {
 		align-items: center;
 		display: grid;
 		grid-template-areas: "media-text-media media-text-content";
@@ -11,9 +11,13 @@
 		position: relative;
 	}
 
-	&.is-style-right &__inner {
+	&.is-style-right &__wrapper {
 		grid-template-areas: "media-text-content media-text-media";
 		grid-template-columns: auto 55%;
+	}
+
+	&__inner {
+		color: inherit !important;
 	}
 
 	&__media {
@@ -31,7 +35,7 @@
 			margin-top: 0;
 			max-height: 600px;
 
-			@include break-small {
+			@include break-small-mediacard {
 				width: 100%;
 			}
 		}
@@ -48,7 +52,7 @@
 			top: -30px;
 			width: 30px;
 
-			@include break-small {
+			@include break-small-mediacard {
 				height: 50px;
 				width: 50px;
 			}
@@ -58,10 +62,11 @@
 	&__content {
 		grid-area: media-text-content;
 		margin-left: -50%;
+		position: relative;
 		word-break: break-word;
 		z-index: 1;
 
-		@include break-small {
+		@include break-small-mediacard {
 			margin-left: -100px;
 		}
 
@@ -74,32 +79,32 @@
 		margin-left: 0;
 		margin-right: -50%;
 
-		@include break-small {
+		@include break-small-mediacard {
 			margin-right: -100px;
 		}
 	}
 
-	&__inner > figure > img,
-	&__inner > figure > video {
+	&__wrapper > figure > img,
+	&__wrapper > figure > video {
 		max-width: unset;
 		vertical-align: middle;
 		width: 100%;
 	}
 
-	@media (max-width: #{ ($break-small) }) {
-		&.is-stacked-on-mobile &__inner {
+	@media (max-width: #{ ($break-small-mediacard) }) {
+		&.is-stacked-on-mobile &__wrapper {
 			grid-template-areas: "media-text-media" "media-text-content";
 			grid-template-columns: 100% !important;
 		}
 
 		&.is-stacked-on-mobile.is-style-right &__content {
-			@include break-small {
+			@include break-small-mediacard {
 				margin-right: -100px;
 			}
 		}
 
 		&.is-stacked-on-mobile &__media {
-			@include break-small {
+			@include break-small-mediacard {
 				position: inherit;
 			}
 		}
@@ -109,13 +114,60 @@
 			margin-right: 5%;
 			margin-top: -33%;
 
-			@include break-small {
+			@include break-small-mediacard {
 				grid-area: media-text-content;
 				margin-left: -100px;
 			}
 
 			p:last-of-type {
 				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+//Fix background color contrast issue
+.is-twentynineteen {
+	.entry .entry-content {
+		.wp-block-coblocks-media-card {
+			&__content {
+				p,
+				a,
+				h1,
+				h2,
+				h3,
+				h4,
+				h5,
+				h6 {
+					color: inherit;
+				}
+			}
+
+			@media (min-width: #{ ($break-small-twentynineteen--min) }) and (max-width: #{ ($break-small-twentynineteen) }) {
+				&.is-stacked-on-mobile {
+					flex-direction: column;
+				}
+
+				&.is-stacked-on-mobile .wp-block-coblocks-media-card__wrapper {
+					grid-template-areas: "media-text-media" "media-text-content";
+					grid-template-columns: 100% !important;
+				}
+
+				&.is-stacked-on-mobile .wp-block-coblocks-media-card__media {
+					@include break-small-mediacard {
+						position: inherit;
+					}
+				}
+
+				&.is-stacked-on-mobile .wp-block-coblocks-media-card__content {
+					margin-left: 5%;
+					margin-right: 5%;
+					margin-top: -33%;
+
+					p:last-of-type {
+						margin-bottom: 0;
+					}
+				}
 			}
 		}
 	}

@@ -17,7 +17,8 @@
 					position: relative;
 				}
 
-				.wp-block:nth-of-type(3) .wp-block-coblocks-pricing-table-item {
+				.wp-block:nth-of-type(3) .wp-block-coblocks-pricing-table-item,
+				.wp-block:nth-of-type(4) .wp-block-coblocks-pricing-table-item {
 					margin-top: 30px;
 				}
 			}
@@ -51,7 +52,7 @@
 	}
 }
 
-.coblocks__toolbar--numeral {
+.components-toolbar-coblocks-numeral-controls {
 	display: inline-flex;
 
 	.components-button[data-subscript]::after {

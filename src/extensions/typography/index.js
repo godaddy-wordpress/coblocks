@@ -23,7 +23,7 @@ const { InspectorAdvancedControls }	= wp.components;
 const { compose, createHigherOrderComponent } = wp.compose;
 const { hasBlockSupport }	= wp.blocks;
 
-const blocksWithTypographySupport = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'core/list', 'coblocks/features'];
+const blocksWithTypographySupport = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features' ];
 
 /**
  * Filters registered block settings, extending attributes with settings
@@ -118,7 +118,7 @@ const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
 			}
 
 			if( fontFamily ){
-				customData = Object.assign( customData, { 'data-custom-fontfamily': 1 } );
+				customData = Object.assign( customData, { 'data-coblocks-font': 1 } );
 			}
 
 			if( fontWeight ){

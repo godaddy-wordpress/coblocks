@@ -170,17 +170,17 @@ class CoBlocks_Feedback {
 		$screen = get_current_screen();
 
 		if ( isset( $screen->base ) && 'plugins' === $screen->base ) {
-			$no_bug_url = wp_nonce_url( admin_url( '?' . $this->nobug_option . '=true' ), 'coblocks-feedback-nounce' );
+			$no_bug_url = wp_nonce_url( admin_url( 'plugins.php?' . $this->nobug_option . '=true' ), 'coblocks-feedback-nounce' );
 			$time       = $this->seconds_to_words( time() - get_site_option( $this->date_option ) );
 		?>
 
 		<style>
 		.notice.coblocks-notice {
-			border-left-color: #595AFF !important;
+			border-left-color: #1e35b9 !important;
 			padding: 20px;
 		}
 		.rtl .notice.coblocks-notice {
-			border-right-color: #595AFF !important;
+			border-right-color: #1e35b9 !important;
 		}
 		.notice.notice.coblocks-notice .coblocks-notice-inner {
 			display: table;
@@ -194,7 +194,7 @@ class CoBlocks_Feedback {
 		}
 		.notice.coblocks-notice .coblocks-notice-icon {
 			color: #509ed2;
-			font-size: 50px;
+			font-size: 13px;
 			width: 60px;
 		}
 		.notice.coblocks-notice .coblocks-notice-icon img {
@@ -217,13 +217,13 @@ class CoBlocks_Feedback {
 			padding: 6px 50px;
 			height: auto;
 			line-height: 20px;
-			background: #595AFF;
-			border-color: #4848cd #4848cd #4848cd;
-			box-shadow: 0 1px 0 #4848cd;
-			text-shadow: 0 -1px 1px #4848cd, 1px 0 1px #4848cd, 0 1px 1px #4848cd, -1px 0 1px #4848cd;
+			background: #1e35b9;
+			border-color: #0d1f82 #0d1f82 #0d1f82;
+			box-shadow: 0 1px 0 #0d1f82;
+			text-shadow: 0 -1px 1px #0d1f82, 1px 0 1px #0d1f82, 0 1px 1px #0d1f82, -1px 0 1px #0d1f82;
 		}
 		.notice.coblocks-notice .coblocks-install-now .coblocks-install-button:hover {
-			background: #4a4cff;
+			background: #182b96;
 		}
 		.notice.coblocks-notice a.no-thanks {
 			display: block;
@@ -271,14 +271,14 @@ class CoBlocks_Feedback {
 			<div class="coblocks-notice-inner">
 				<div class="coblocks-notice-icon">
 					<?php /* translators: 1. Name */ ?>
-					<img src="https://ps.w.org/coblocks/assets/icon-256x256.jpg" alt="<?php printf( esc_attr__( '%1$s WordPress Plugin', '@@textdomain' ), esc_attr( $this->name ) ); ?>" />
+					<img src="https://ps.w.org/coblocks/assets/icon-256x256.jpg" alt="<?php printf( esc_attr__( '%s WordPress Plugin', '@@textdomain' ), esc_attr( $this->name ) ); ?>" />
 				</div>
 				<div class="coblocks-notice-content">
 					<?php /* translators: 1. Name */ ?>
-					<h3><?php printf( esc_html__( 'Are you enjoying %1$s?', '@@textdomain' ), esc_html( $this->name ) ); ?></h3>
+					<h3><?php printf( esc_html__( 'Are you enjoying %s?', '@@textdomain' ), esc_html( $this->name ) ); ?></h3>
 					<p>
 						<?php /* translators: 1. Name, 2. Time */ ?>
-						<?php printf( esc_html__( 'You have been using %1$s for %2$s now! Mind leaving a quick review to let us know know what you think? I\'d really appreciate it!', '@@textdomain' ), esc_html( $this->name ), esc_html( $time ) ); ?>
+						<?php printf( esc_html__( 'You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We\'d really appreciate it!', '@@textdomain' ), esc_html( $this->name ), esc_html( $time ) ); ?>
 					</p>
 				</div>
 				<div class="coblocks-install-now">

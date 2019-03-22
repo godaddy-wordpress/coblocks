@@ -1,0 +1,50 @@
+.is-style-checkbox {
+	li {
+		list-style-type: none !important;
+		padding-left: 10px;
+		position: relative;
+
+		@include break-small {
+			padding-left: 12px;
+		}
+
+		&::before {
+			background-color: currentColor;
+			background-size: cover;
+			content: "";
+			display: inline-block;
+			height: 20px;
+			left: -20px;
+			mask-image: url(images/list/checkbox-rounded.svg);
+			position: absolute;
+			top: 6px;
+			transform: scale(0.9);
+			width: 20px;
+
+			@include break-small {
+				top: 8px;
+				transform: 0;
+			}
+		}
+
+		li::before {
+			mask-image: url(images/list/checkbox-rounded-child.svg);
+		}
+	}
+
+	.is-twentynineteen & li::before {
+		top: 10px;
+	}
+}
+
+.is-style-none {
+	&, li{
+		list-style-type: none !important;
+		padding-left: 0 !important;
+	}
+	li{
+		&::before {
+			content: "\200B";
+		}
+	}
+}

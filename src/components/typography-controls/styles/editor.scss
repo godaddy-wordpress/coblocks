@@ -1,22 +1,21 @@
 .components-coblocks-typography-dropdown {
-	padding: 0;
+	padding: 0 !important;
 
 	&__inner {
 		padding: 16px;
 
-		select {
+		.components-select-control__input {
 			appearance: none;
 			background: 0 0;
-			border-color: #ccc;
-			border-radius: 4px;
 			border: 1px solid #8d96a0;
+			border-radius: 4px;
 			box-shadow: 0 0 0 transparent;
 			color: #555;
 			cursor: pointer;
 			font-size: 13px !important;
 			height: 30px;
 			line-height: 28px;
-			padding: 0 12px 2px;
+			padding: 0 9px 2px;
 			position: relative;
 			transition: box-shadow 0.1s linear;
 			vertical-align: top;
@@ -40,35 +39,35 @@
 			&:focus:enabled {
 				background: #fafafa;
 				border-color: #999;
-				box-shadow: inset 0 -1px 0 #999,0 0 0 2px #bfe7f3;
+				box-shadow: inset 0 -1px 0 #999, 0 0 0 2px #bfe7f3;
 				color: #23282d;
 				text-decoration: none;
 			}
 		}
 
 		.components-base-control {
-			margin-bottom: 5px;
+			margin-bottom: 5px !important;
 		}
 
 		.components-base-control__label {
-			margin-bottom: 0;
+			margin-bottom: 0 !important;
 		}
 
 		.components-select-control__input {
-			margin: 0;
+			margin: 0 !important;
 		}
 
 		.components-range-control__number {
-			margin: 0 0 0 15px;
+			margin: 0 0 0 15px !important;
 		}
 
 		.components-range-control__slider {
-			margin-top: 6px;
+			margin-top: 6px !important;
 		}
 
 		&--line-height {
-			margin-top: 10px;
 			margin-bottom: -2px !important;
+			margin-top: 10px !important;
 		}
 
 		&--letter-spacing {
@@ -82,16 +81,15 @@
 		padding: 18px 16px 14px;
 
 		.components-base-control {
-			margin-bottom: 0;
+			margin-bottom: 0 !important;
 
 			&:last-of-type .components-base-control__field {
-				margin-bottom: 0;
+				margin-bottom: 0 !important;
 			}
 		}
 	}
 
 	.components-base-control--with-flex {
-
 		.components-base-control__field {
 			align-items: center;
 			display: flex;

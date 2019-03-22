@@ -1,0 +1,26 @@
+.wp-block-coblocks-icon {
+	position: relative;
+
+	&__inner {
+		display: inline-block;
+		position: relative;
+		vertical-align: middle;
+
+		a {
+			border: 0 !important;
+			box-shadow: none !important;
+			height: 100%;
+			outline: none;
+			position: absolute;
+			text-shadow: none;
+			width: 100%;
+		}
+
+		svg {
+			fill: currentColor;
+			height: 100%;
+			vertical-align: middle;
+			width: 100%;
+		}
+	}
+}

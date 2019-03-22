@@ -19,8 +19,8 @@ import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText, InnerBlocks, withFontSizes } = wp.editor;
-const { ResizableBox, Spinner } = wp.components;
+const { RichText, InnerBlocks, withFontSizes, Inserter } = wp.editor;
+const { ResizableBox, Spinner, IconButton } = wp.components;
 const { isBlobURL } = wp.blob;
 
 /**
@@ -71,25 +71,34 @@ class Edit extends Component {
 			marginSize,
 			paddingSize,
 			contentAlign,
+			focalPoint,
+			hasParallax,
+			showInserter,
 		} = attributes;
 
+		const parentId = wp.data.select( 'core/editor' ).getBlockRootClientId( clientId );
+		const columnBlocks = wp.data.select( 'core/editor' ).getBlock( clientId );
+		const parentBlocks = wp.data.select( 'core/editor' ).getBlocksByClientId( parentId );
+		const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
+		const nextBlockClient = wp.data.select( 'core/editor' ).getBlock( nextBlockClientId );
 		const dropZone = (
 			<BackgroundImageDropZone
 				{ ...this.props }
 				label={ sprintf( __( 'Add backround image to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
 			/>
 		);
-
+		
 		const classes = classnames(
 			'wp-block-coblocks-column', {
-				'has-text-color': textColor.color,
 				[ `coblocks-column-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+				'wp-block-coblocks-column-placeholder' : columnBlocks && columnBlocks.innerBlocks && Object.keys( columnBlocks.innerBlocks ).length < 1,
 			}
 		);
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-column__inner',
 			...BackgroundClasses( attributes ),{
+				'has-text-color': textColor.color,
 				'has-padding': paddingSize && paddingSize != 'no',
 				'has-margin': marginSize && marginSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
@@ -100,6 +109,8 @@ class Edit extends Component {
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
@@ -109,11 +120,6 @@ class Edit extends Component {
 			marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
 			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 		};
-
-		const parentId = wp.data.select( 'core/editor' ).getBlockRootClientId( clientId );
-		const parentBlocks = wp.data.select( 'core/editor' ).getBlocksByClientId( parentId );
-		const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
-		const nextBlockClient = wp.data.select( 'core/editor' ).getBlock( nextBlockClientId );
 
 		if ( parseInt( width ) == 100 ) {
 			return [
@@ -135,6 +141,7 @@ class Edit extends Component {
 							backgroundColor: backgroundColor.color,
 							backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
 							color: textColor.color,
+							textAlign: contentAlign,
 						} }
 						>
 						<div className="wp-block-coblocks-column">
@@ -142,6 +149,7 @@ class Edit extends Component {
 								<InnerBlocks
 									templateLock={ false }
 								/>
+								{ showInserter ? <Inserter rootClientId={ clientId } isAppender /> : null }
 							</div>
 						</div>
 					</div>
@@ -240,6 +248,7 @@ class Edit extends Component {
 						<div className={ innerClasses } style={ innerStyles }>
 							{ isBlobURL( backgroundImg ) && <Spinner /> }
 							<InnerBlocks templateLock={ false }/>
+							{ showInserter ? <Inserter rootClientId={ clientId } isAppender /> : null }
 						</div>
 					</div>
 				</ResizableBox>

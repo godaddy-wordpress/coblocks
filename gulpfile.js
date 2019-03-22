@@ -15,6 +15,18 @@ var sftpDemoFilesToUpload = ['./build/' + project + '/**/*', '!/build/' + projec
 var cleanSrcFiles	  = [ './build/' + project + '/src/**/*.js', './build/' + project + '/src/**/*.scss', '!build/' + project + '/src/blocks/**/*.php' ];
 var srcDirectory	  = './build/' + project + '/src/';
 
+// JS.
+var scriptDestination 		= './dist/js/';
+var scriptGoogleMaps	  	= 'coblocks-accordion-polyfill';
+var scriptAccordionPolyfill   	= 'coblocks-google-maps';
+var scriptModal   		= 'coblocks-modal';
+
+// Styles.
+var styleDestination = './dist/css/';
+var styleAdmin    = './src/styles/admin.scss';
+var styleGettingStarted    = './src/styles/getting-started.scss';
+var styleWatchFiles  = [ styleAdmin, styleGettingStarted, './src/styles/admin/*.scss' ];
+
 // Translation.
 var text_domain             	= '@@textdomain';
 var destFile                	= project+'.pot';
@@ -26,10 +38,31 @@ var translatePath           	= './languages';
 var translatableFiles       	= ['./**/*.php'];
 var jsPotFile 			= [ './languages/'+project+'-js.pot', './build/languages/'+project+'-js.pot' ];
 
+// Browsers you care about for autoprefixing. https://github.com/ai/browserslist
+const AUTOPREFIXER_BROWSERS = [
+	'last 2 version',
+	'> 1%',
+	'ie >= 9',
+	'ie_mob >= 10',
+	'ff >= 30',
+	'chrome >= 34',
+	'safari >= 7',
+	'opera >= 23',
+	'ios >= 7',
+	'android >= 4',
+	'bb >= 10'
+];
+
+// Build contents.
+var filesToUpload	= [ './build/coblocks/**/*' ] ;
+
 /**
  * Load Plugins.
  */
 var gulp		= require('gulp');
+var sass		= require('gulp-sass');
+var autoprefixer 	= require('gulp-autoprefixer');
+var minifycss		= require('gulp-uglifycss');
 var del                 = require('del');
 var notify	   	= require('gulp-notify');
 var replace	  	= require('gulp-replace-task');
@@ -42,10 +75,69 @@ var open                = require("gulp-open");
 var gulpif              = require('gulp-if');
 var wpPot 		= require('gulp-wp-pot');
 var deleteEmpty 	= require('delete-empty');
+var uglify      	= require('gulp-uglify');
+var lineec       	= require('gulp-line-ending-corrector');
+var rename       	= require('gulp-rename');
 
 /**
  * Tasks.
  */
+gulp.task( 'scripts', function(done) {
+	gulp.src( './src/js/' + scriptGoogleMaps +'.js' )
+	.pipe( rename( {
+		basename: scriptGoogleMaps,
+		suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() )
+	.pipe( gulp.dest( scriptDestination ) );
+
+	gulp.src( './src/js/' + scriptAccordionPolyfill +'.js' )
+	.pipe( rename( {
+		basename: scriptAccordionPolyfill,
+		suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() )
+	.pipe( gulp.dest( scriptDestination ) );
+
+	gulp.src( './src/js/' + scriptModal +'.js', { allowEmpty: true } )
+	.pipe( rename( {
+		basename: scriptModal,
+		suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() )
+	.pipe( gulp.dest( scriptDestination ) );
+
+	done();
+});
+
+gulp.task( 'gettingStartedStyles', function (done) {
+	gulp.src( styleGettingStarted, { allowEmpty: true } )
+
+	.pipe( sass( {
+		errLogToConsole: true,
+		outputStyle: 'expanded',
+		precision: 10
+	} ) )
+
+	.on( 'error', console.error.bind( console ) )
+
+	.pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
+
+	.pipe( rename( {
+		basename: 'coblocks-getting-started',
+		suffix: '.min',
+	} ) )
+
+	.pipe( minifycss() )
+
+	.pipe( gulp.dest( styleDestination ) )
+
+	done();
+});
+
 gulp.task('clearCache', function(done) {
 	cache.clearAll();
 	done();
@@ -197,50 +289,121 @@ gulp.task('zip', function(done) {
 	done();
 });
 
-gulp.task('build-notice', function(done) {
-	return gulp.src( './' )
-	.pipe( notify( { message: 'Your build of ' + title + ' is complete.', onLast: false } ) );
-	done();
-});
+gulp.task( 'sftp-upload-to-testing-sandbox', function(done) {
 
-gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip',  function(done) {
-	done();
-} ) );
 
-gulp.task('build', gulp.series( 'build-process', 'build-notice', function(done) {
-	done();
-} ) );
-
-/**
- * Release Tasks.
- */
-gulp.task( 'release-notice', function(done) {
-
-	var sftpFile;
+	var sandbox;
 
 	try {
-		var sftpFile = require('./sftp.json');
+		var sandbox = require('./sandbox.json');
 	} catch (error) {
 		done();
 	}
 
-	if (sftpFile) {
+	if ( sandbox ) {
+		return gulp.src( filesToUpload )
+		.pipe( sftp( {
+			host: sandbox.host,
+			authFile: '.ftppass',
+			auth: 'testingSandboxSFTP',
+			remotePath: sandbox.remotePath,
+			port: sandbox.port,
+		}))
+	}
+
+	done();
+});
+
+// Open the sandbox.
+gulp.task( 'open-sandbox', function(done){
+
+	var sandbox;
+
+	try {
+		var sandbox = require('./sandbox.json');
+	} catch (error) {
+		done();
+	}
+
+	if ( sandbox ) {
+		gulp.src(__filename)
+		.pipe( open( { uri: sandbox.uri } ) );
+	}
+
+	done();
+});
+
+/**
+ * Build & Release Tasks.
+ */
+
+gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'scripts', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip' , 'sftp-upload-to-testing-sandbox', 'open-sandbox',  function(done) {
+	done();
+} ) );
+
+gulp.task('build-process-wo-translations', gulp.series( 'clearCache', 'clean', 'scripts', 'npmBuild', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip', 'sftp-upload-to-testing-sandbox', 'open-sandbox', function(done) {
+	done();
+} ) );
+
+gulp.task( 'build-notice', function(done) {
+
+	var sandbox;
+
+	try {
+		var sandbox = require('./sandbox.json');
+	} catch (error) {
+		done();
+	}
+
+	if ( sandbox ) {
 		return gulp.src( './' )
-		.pipe( notify( { message: 'The v' + pkg.version + ' release of ' + title + ' has been uploaded.', onLast: false } ) )
+		.pipe( notify( { message: 'The test build of ' + title + ' ' + pkg.version + ' is complete and uploaded to the sandbox for testing.', onLast: false } ) )
 		done();
 	} else {
 		return gulp.src( './' )
-		.pipe( notify( { message: 'The release was built, but not uploaded. You do not have proper permissions to do so.', onLast: true } ) )
+		.pipe( notify( { message: 'The ' + pkg.version + ' release was built but not uploaded to the testing sandbox. You do not have proper permissions to do so.', onLast: true } ) )
 		done();
 	}
 
 	done();
 });
 
+gulp.task( 'release-notice', function(done) {
+
+	var sandbox;
+
+	try {
+		var sandbox = require('./sandbox.json');
+	} catch (error) {
+		done();
+	}
+
+	if ( sandbox ) {
+		return gulp.src( './' )
+		.pipe( notify( { message: 'The release build of ' + title + ' ' + pkg.version + ' is complete, uploaded to the sandbox, and ready to be uploaded to WordPress.org.', onLast: false } ) )
+		done();
+	} else {
+		return gulp.src( './' )
+		.pipe( notify( { message: 'The ' + pkg.version + ' release was built but not uploaded to the testing sandbox. You do not have proper permissions to do so.', onLast: true } ) )
+		done();
+	}
+
+	done();
+});
+
+gulp.task('build', gulp.series( 'build-process-wo-translations', 'build-notice', function(done) {
+	done();
+} ) );
+
+gulp.task('release', gulp.series( 'build-process', 'release-notice', function(done) {
+	done();
+} ) );
+
 gulp.task(
 	'default',
 	gulp.series(
-		'npmStart', function(done) {
+		'gettingStartedStyles', function(done) {
+		gulp.watch( styleWatchFiles, gulp.parallel( 'gettingStartedStyles' ) );
 	done();
 } ) );
 
@@ -248,13 +411,5 @@ gulp.task(
 	'install',
 	gulp.series(
 		'npmInstall', function(done) {
-	done();
-} ) );
-
-gulp.task(
-	'release',
-	gulp.series(
-		'build-process',
-		'release-notice', function(done) {
 	done();
 } ) );

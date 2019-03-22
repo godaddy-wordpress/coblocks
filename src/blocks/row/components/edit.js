@@ -166,6 +166,8 @@ class Edit extends Component {
 			paddingSize,
 			hasAlignmentControls,
 			isStackedOnMobile,
+			focalPoint,
+			hasParallax,
 		} = attributes;
 
 		const dropZone = (
@@ -191,7 +193,6 @@ class Edit extends Component {
 		if ( ! layout && this.state.layoutSelection ) {
 			return [
 				<Fragment>
-					{ dropZone }
 					{ isSelected && (
 						<Controls
 							{ ...this.props }
@@ -278,7 +279,6 @@ class Edit extends Component {
 		const classes = classnames(
 			'wp-block-coblocks-row', {
 				[ `coblocks-row--${ id }` ] : id,
-				'has-text-color': textColor.color,
 				[ `coblocks-row-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
 		);
@@ -286,6 +286,7 @@ class Edit extends Component {
 		const innerClasses = classnames(
 			'wp-block-coblocks-row__inner',
 			...BackgroundClasses( attributes ), {
+				'has-text-color': textColor.color,
 				[ `has-${ gutter }-gutter` ] : gutter,
 				'has-padding': paddingSize && paddingSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
@@ -298,6 +299,8 @@ class Edit extends Component {
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
 			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
@@ -321,17 +324,14 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<div
-					className={ classes }
-					style={ { color: textColor.color } }
-				>
+				<div className={ classes }>
 					<div className={ innerClasses } style={ innerStyles }>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						<InnerBlocks
 							template={ TEMPLATE[ layout ] }
 							templateLock="all"
 							allowedBlocks={ ALLOWED_BLOCKS }
-							templateInsertUpdatesSelection={ false } />
+							templateInsertUpdatesSelection={ columns === 1 ? true : false } />
 					</div>
 				</div>
 			</Fragment>

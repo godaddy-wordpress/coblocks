@@ -1,0 +1,101 @@
+.wp-block-coblocks-features {
+	&,
+	&__inner {
+		position: relative;
+	}
+
+	.has-left-content {
+		text-align: left;
+	}
+
+	.has-center-content {
+		text-align: center;
+	}
+
+	.has-right-content {
+		text-align: right;
+	}
+
+	.wp-block-coblocks-feature {
+		display: flex;
+		flex-basis: 40%;
+		flex-direction: column;
+		flex-grow: 1;
+		justify-content: center;
+		margin: 0;
+		max-width: 100%;
+		position: relative;
+		width: 100%;
+		word-break: break-word;
+
+		&:nth-of-type(1) {
+			margin-left: 0;
+		}
+
+		&:nth-of-type(3) {
+			margin-right: 0;
+		}
+
+		.wp-block-coblocks-icon {
+			margin-bottom: 40px;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin: 0;
+			margin-bottom: 15px !important;
+			padding: 0;
+		}
+
+		p {
+			margin-top: 0;
+
+			&:not(.has-background) {
+				padding-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		> *:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__inner {
+		@media (min-width: 600px) {
+			align-items: flex-start;
+			display: flex;
+		}
+	}
+
+	.has-text-color {
+		p,
+		a,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: inherit !important;
+		}
+	}
+
+	.wp-block-coblocks-feature__inner {
+		// Add padding so the feature does not run into the viewport edge on mobile.
+		&.has-no-padding {
+			padding: 0 10px;
+		}
+
+		> * {
+			position: relative;
+		}
+	}
+}

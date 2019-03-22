@@ -10,7 +10,7 @@ const category = {
 };
 
 // Custom foreground icon color based on the CoBlocks branding
-const iconColor = '#555eff';
+const iconColor = '#1e35b9';
 
 // Register block category
 import icons from './utils/block-category';
@@ -24,9 +24,14 @@ import './extensions/colors/inspector';
 import './extensions/typography';
 import './extensions/attributes';
 import './extensions/advanced-controls';
+import './extensions/list-styles';
+import './extensions/button-controls';
 
 // Formats
 import './formats/';
+
+// Sidebars
+import './sidebars/block-manager';
 
 // Register Blocks
 import * as accordion from './blocks/accordion';
@@ -45,6 +50,12 @@ import * as row from './blocks/row';
 import * as social from './blocks/social';
 import * as map from './blocks/map';
 import * as mediaCard from './blocks/media-card';
+import * as shapeDivider from './blocks/shape-divider';
+import * as icon from './blocks/icon';
+import * as feature from './blocks/features/feature';
+import * as features from './blocks/features';
+import * as buttons from './blocks/buttons';
+import * as hero from './blocks/hero';
 
 export function registerBlocks () {
 	[
@@ -64,6 +75,12 @@ export function registerBlocks () {
 		social,
 		map,
 		mediaCard,
+		shapeDivider,
+		icon,
+		feature,
+		features,
+		buttons,
+		hero,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {
