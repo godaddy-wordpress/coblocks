@@ -1,6 +1,8 @@
 /**
  * Internal dependencies
  */
+import './styles/style.scss';
+import './styles/editor.scss';
 import BackgroundAttributes from './attributes';
 import BackgroundClasses from './classes';
 import BackgroundImageToolbarControls from './controls';
@@ -17,7 +19,7 @@ const { SelectControl, RangeControl, ToggleControl, PanelBody, Button, FocalPoin
 /**
  * Module constants.
  */
-export const ALLOWED_BG_MEDIA_TYPES = [ 'image' ];
+export const ALLOWED_BG_MEDIA_TYPES = [ 'image', 'video' ];
 export const BLOCKS_WITH_AUTOPADDING = [ 'coblocks/row', 'coblocks/column', 'coblocks/media-card', 'coblocks/features', 'coblocks/feature' ];
 
 /**
@@ -48,7 +50,10 @@ function BackgroundImagePanel( props, options ) {
 		backgroundOverlay,
 		hasParallax,
 		backgroundImg,
+		backgroundType,
 		focalPoint,
+		videoMuted,
+		videoLoop,
 	} = attributes;
 
 	const backgroundPositionOptions = [
@@ -123,12 +128,15 @@ function BackgroundImagePanel( props, options ) {
 					initialOpen={ false }
 					className="components-panel__body--coblocks-background-panel"
 				>
-					<ToggleControl
-						label={ __( 'Fixed Background' ) }
-						checked={ !! hasParallax }
-						onChange={ () => setAttributes( {  hasParallax: ! hasParallax } ) }
-					/>
-					{ ! hasParallax && FocalPointPicker && backgroundRepeat !== 'repeat' && (
+					{ backgroundType == 'image' && (
+						<ToggleControl
+							label={ __( 'Fixed Background' ) }
+							checked={ !! hasParallax }
+							onChange={ () => setAttributes( {  hasParallax: ! hasParallax } ) }
+						/>
+					) }
+
+					{ ! hasParallax && FocalPointPicker && backgroundType == 'image' && backgroundRepeat !== 'repeat' && (
 						<FocalPointPicker
 							label={ __( 'Focal Point' ) }
 							url={ backgroundImg }
@@ -139,15 +147,17 @@ function BackgroundImagePanel( props, options ) {
 					) }
 					{ overlaySelect() }
 
-					<SelectControl
-						label={ __( 'Repeat' ) }
-						className="components-background-display-select--coblocks"
-						value={ backgroundRepeat ? backgroundRepeat : 'no-repeat' }
-						options={ backgroundRepeatOptions }
-						onChange={ ( nextbackgroundRepeat ) => onSelectRepeat( nextbackgroundRepeat ) }
-					/>
+					{ backgroundType == 'image' && (
+						<SelectControl
+							label={ __( 'Repeat' ) }
+							className="components-background-display-select--coblocks"
+							value={ backgroundRepeat ? backgroundRepeat : 'no-repeat' }
+							options={ backgroundRepeatOptions }
+							onChange={ ( nextbackgroundRepeat ) => onSelectRepeat( nextbackgroundRepeat ) }
+						/>
+					) }
 
-					{ ! FocalPointPicker && (
+					{ ! FocalPointPicker && backgroundType == 'image' && (
 						<SelectControl
 							label={ __( 'Position' ) }
 							value={ backgroundPosition ? backgroundPosition : 'center center' }
@@ -156,7 +166,7 @@ function BackgroundImagePanel( props, options ) {
 						/>
 					) }
 
-					{ backgroundRepeat == 'no-repeat' && (
+					{ backgroundRepeat == 'no-repeat' && backgroundType == 'image' && (
 						<SelectControl
 							label={ __( 'Display' ) }
 							value={ backgroundSize ? backgroundSize : backgroundSizeDefault }
@@ -165,11 +175,29 @@ function BackgroundImagePanel( props, options ) {
 						/>
 					) }
 
+					{ backgroundType == 'video' && (
+						<ToggleControl
+							label={ __( 'Mute Video' ) }
+							help={ videoMuted ? __( 'Muting the background video.' ) : __( 'Toggle to mute the video.' ) }
+							checked={ !! videoMuted }
+							onChange={ () => setAttributes( {  videoMuted: ! videoMuted } ) }
+						/>
+					) }
+
+					{ backgroundType == 'video' && (
+						<ToggleControl
+							label={ __( 'Loop Video' ) }
+							help={ videoLoop ? __( 'Looping the background video.' ) : __( 'Toggle to loop the video.' ) }
+							checked={ !! videoLoop }
+							onChange={ () => setAttributes( {  videoLoop: ! videoLoop } ) }
+						/>
+					) }
+
 					<Button
 						className="components-button--coblocks-remove-background-image"
 						type="button"
 						isDefault
-						label={ __( 'Remove background Image' ) }
+						label={ __( 'Remove background' ) }
 						onClick={ () => {
 							setAttributes( {
 								backgroundImg: '',
@@ -188,7 +216,7 @@ function BackgroundImagePanel( props, options ) {
 							}
 						} }
 					>
-						{ __( 'Remove Image' ) }
+						{ __( 'Remove ' + backgroundType ) }
 					</Button>
 				</PanelBody>
 			</Fragment>

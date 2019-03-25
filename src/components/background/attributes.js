@@ -3,11 +3,9 @@
  * @type {Object}
  */
 const BackgroundAttributes = {
-	backgroundColor: {
+	backgroundType: {
 		type: 'string',
-	},
-	customBackgroundColor: {
-		type: 'string',
+		default: 'image',
 	},
 	backgroundImg: {
 		type: 'string',
@@ -23,16 +21,34 @@ const BackgroundAttributes = {
 	backgroundSize: {
 		type: 'string',
 	},
-	hasParallax: {
-		type: 'boolean',
-		default: false,
-	},
 	backgroundOverlay: {
 		type: 'number',
 		default: 0,
 	},
+	backgroundColor: {
+		type: 'string',
+	},
+	customBackgroundColor: {
+		type: 'string',
+	},
+	hasParallax: {
+		type: 'boolean',
+		default: false,
+	},
 	focalPoint: {
 		type: 'object',
+	},
+	videoMuted: {
+		type: 'boolean',
+		default: true,
+	},
+	videoLoop: {
+		type: 'boolean',
+		default: true,
+	},
+	openPopover: {
+		type: 'boolean',
+		default: false,
 	},
 };
 
