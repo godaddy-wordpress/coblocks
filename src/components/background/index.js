@@ -96,7 +96,7 @@ function BackgroundImagePanel( props, options ) {
 					value={ backgroundOverlay }
 					onChange={ ( nextBackgroundOverlay ) => setAttributes( {  backgroundOverlay: nextBackgroundOverlay } ) }
 					min={ 0 }
-					max={ 90 }
+					max={ 100 }
 					step={ 10 }
 				/>
 			);
