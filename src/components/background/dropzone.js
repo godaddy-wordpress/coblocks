@@ -14,7 +14,7 @@ const { DropZone } = wp.components;
 /**
  * Gallery Drop Zone Component
  */
-class BackgroundImageDropZone extends Component {
+class BackgroundDropZone extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -34,7 +34,7 @@ class BackgroundImageDropZone extends Component {
 		if ( media && media.url && media.mime_type ) {
 
 			var mediaType = 'image';
-			
+
 			if( media.mime_type.includes( 'video' ) ){
 				mediaType = 'video';
 			}
@@ -70,4 +70,4 @@ class BackgroundImageDropZone extends Component {
 	}
 }
 
-export default BackgroundImageDropZone;
+export default BackgroundDropZone;

@@ -11,7 +11,7 @@ import includes from 'lodash/includes';
 import applyWithColors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
-import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../components/background';
+import BackgroundImagePanel, { BackgroundClasses, BackgroundDropZone } from '../../../components/background';
 import icons from './../../../utils/icons';
 import MediaContainer from './media-container';
 
@@ -176,9 +176,9 @@ class Edit extends Component {
 		} = attributes;
 
 		const dropZone = (
-			<BackgroundImageDropZone
+			<BackgroundDropZone
 				{ ...this.props }
-				label={ __( 'Add backround image' ) }
+				label={ __( 'Add as backround' ) }
 			/>
 		);
 

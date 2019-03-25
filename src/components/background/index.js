@@ -6,7 +6,7 @@ import './styles/editor.scss';
 import BackgroundAttributes from './attributes';
 import BackgroundClasses from './classes';
 import BackgroundImageToolbarControls from './controls';
-import BackgroundImageDropZone from './dropzone';
+import BackgroundDropZone from './dropzone';
 import BackgroundImageTransforms from './transforms';
 
 /**
@@ -29,7 +29,7 @@ export {
 	BackgroundAttributes,
 	BackgroundClasses,
 	BackgroundImageToolbarControls,
-	BackgroundImageDropZone,
+	BackgroundDropZone,
 	BackgroundImageTransforms,
 };
 
