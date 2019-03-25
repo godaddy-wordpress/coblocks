@@ -76,13 +76,16 @@ class CoBlocks_Block_GoogleMap {
 	 * @access public
 	 */
 	public function map_assets() {
-		global $post;
+
 		// Retrieve the Google Maps API key.
 		$key = get_option( 'coblocks_google_maps_api_key' );
+
 		// Define where the asset is loaded from.
 		$dir = CoBlocks()->asset_source( 'js' );
+
 		// Google Maps block.
-		if ( $key && ( $post && null !== $post->post_content && strpos( $post->post_content, 'wp-block-coblocks-map' ) ) ) {
+		if ( has_block( 'coblocks/map' ) && $key ) {
+
 			wp_enqueue_script(
 				$this->_slug . '-google-maps',
 				$dir . $this->_slug . '-google-maps' . COBLOCKS_ASSET_SUFFIX . '.js',
@@ -90,13 +93,15 @@ class CoBlocks_Block_GoogleMap {
 				$this->_version,
 				true
 			);
+
 			wp_enqueue_script(
 				$this->_slug . '-google-maps-api',
-				'https://maps.googleapis.com/maps/api/js?key=' . $key,
+				'https://maps.googleapis.com/maps/api/js?key=' . esc_url( $key ),
 				array( $this->_slug . '-google-maps' ),
 				$this->_version,
 				true
 			);
+
 			wp_localize_script( $this->_slug . '-google-maps', 'baAtts', array( 'url' => $this->_url ) );
 		}
 	}
