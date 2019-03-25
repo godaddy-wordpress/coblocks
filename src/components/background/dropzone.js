@@ -34,7 +34,7 @@ class BackgroundImageDropZone extends Component {
 		if ( media && media.url && media.mime_type ) {
 
 			var mediaType = 'image';
-			
+
 			if( media.mime_type.includes( 'video' ) ){
 				mediaType = 'video';
 			}
