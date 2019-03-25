@@ -149,6 +149,7 @@ Please reach out via the contact form at the bottom right of [our website](https
 * Fix: Media Card block now properly renders in Edge
 * Fix: Features block toolbar now renders properly when selected
 * Fix: Resolve issue where a single column Row block would not allow background images
+* Fix: Resolve display issue of the Map block style selector in Gutenberg 5.3+
 
 = 1.9.2 =
 * Fix: Add hot fix to resolve the core inserter conflict on empty paragraph blocks
