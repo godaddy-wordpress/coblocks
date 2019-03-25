@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import Controls from './controls';
-import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../../components/background';
+import BackgroundImagePanel, { BackgroundClasses, BackgroundDropZone } from '../../../../components/background';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 
@@ -68,7 +68,7 @@ class Edit extends Component {
 		} = attributes;
 
 		const dropZone = (
-			<BackgroundImageDropZone
+			<BackgroundDropZone
 				{ ...this.props }
 				label={ __( 'Add as backround' ) }
 			/>

@@ -11,7 +11,7 @@ import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
 import { title, icon } from '../'
-import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../../components/background';
+import BackgroundImagePanel, { BackgroundClasses, BackgroundDropZone } from '../../../../components/background';
 
 /**
  * WordPress dependencies
@@ -82,7 +82,7 @@ class Edit extends Component {
 		const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
 		const nextBlockClient = wp.data.select( 'core/editor' ).getBlock( nextBlockClientId );
 		const dropZone = (
-			<BackgroundImageDropZone
+			<BackgroundDropZone
 				{ ...this.props }
 				label={ sprintf( __( 'Add backround to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
 			/>

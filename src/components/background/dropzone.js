@@ -14,7 +14,7 @@ const { DropZone } = wp.components;
 /**
  * Gallery Drop Zone Component
  */
-class BackgroundImageDropZone extends Component {
+class BackgroundDropZone extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -70,4 +70,4 @@ class BackgroundImageDropZone extends Component {
 	}
 }
 
-export default BackgroundImageDropZone;
+export default BackgroundDropZone;
