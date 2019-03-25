@@ -75,23 +75,23 @@ class CoBlocks_Accordion_IE_Support {
 	 * @access public
 	 */
 	public function load_assets() {
+
 		global $post;
 
-		//load only of post ID exists
-		if( isset( $post->ID ) ){
-			$legacy_support = get_post_meta( $post->ID, '_coblocks_accordion_ie_support', true );
+		$legacy_support = get_post_meta( $post->ID, '_coblocks_accordion_ie_support', true );
 
-			if ( "'true'" === $legacy_support ) {
-				$dir = CoBlocks()->asset_source( 'js' );
+		// Determine whether a $post contains an Accordion block.
+		if ( has_block( 'coblocks/accordion' ) && "'true'" === $legacy_support ) {
 
-				wp_enqueue_script(
-					$this->_slug . '-accordion-polyfill',
-					$dir . $this->_slug . '-accordion-polyfill' . COBLOCKS_ASSET_SUFFIX . '.js',
-					array(),
-					$this->_version,
-					true
-				);
-			}
+			$dir = CoBlocks()->asset_source( 'js' );
+
+			wp_enqueue_script(
+				$this->_slug . '-accordion-polyfill',
+				$dir . $this->_slug . '-accordion-polyfill' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array(),
+				$this->_version,
+				true
+			);
 		}
 	}
 }
