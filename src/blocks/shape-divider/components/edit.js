@@ -12,6 +12,7 @@ import Inspector from './inspector';
 import applyWithColors from './colors';
 import dividers from './dividers';
 import { getDividerFromStyle } from '.././';
+import InlineColorPicker from '../../../components/inline-color-picker/';
 
 /**
  * WordPress dependencies
@@ -19,7 +20,7 @@ import { getDividerFromStyle } from '.././';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { ResizableBox, ColorPalette } = wp.components;
+const { ResizableBox } = wp.components;
 
 /**
  * Block edit function
@@ -295,8 +296,6 @@ class Edit extends Component {
 
 							toggleSelection( true );
 							this.setState( { resizingAlt: false } );
-
-							//update meta
 							this.saveMeta( 'backgroundHeight' );
 						} }
 						onResizeStart={ () => {
@@ -305,12 +304,10 @@ class Edit extends Component {
 						} }
 					>
 					{ isSelected && (
-						<div className="components-coblocks-inline-palette">
-							<ColorPalette
-								value={ color.color }
-								onChange={ ( color ) => setAttributes( { color: null, customColor: color } ) }
-							/>
-						</div>
+						<InlineColorPicker
+							value={ color.color }
+							onChange={ ( color ) => setAttributes( { color: null, customColor: color } ) }
+						/>
 					) }
 					</ResizableBox>
 				</div>
