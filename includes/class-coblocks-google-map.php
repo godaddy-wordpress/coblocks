@@ -83,7 +83,7 @@ class CoBlocks_Block_GoogleMap {
 		// Define where the asset is loaded from.
 		$dir = CoBlocks()->asset_source( 'js' );
 
-		// Google Maps block.
+		// Determine whether a $post contains a Map block.
 		if ( has_block( 'coblocks/map' ) && $key ) {
 
 			wp_enqueue_script(
