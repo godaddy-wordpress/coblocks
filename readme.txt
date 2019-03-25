@@ -134,6 +134,7 @@ Please reach out via the contact form at the bottom right of [our website](https
 * New: Add support for the Heebo Google font
 * New: Add new "None" style for the core List block
 * New: Add responsiveness to the CoBlocks margin and padding utility classes
+* New: Add third-party support for the CoBlocks Typography Control Panel
 * Tweak: Improve the background image controls within Background Settings panels
 * Tweak: Add a new button within the Background Settings panel to remove applied media
 * Tweak: Improve the third Pricing Table Item block positioning
@@ -142,6 +143,8 @@ Please reach out via the contact form at the bottom right of [our website](https
 * Tweak: Admin feedback notice now redirects to the admin plugins page
 * Tweak: Improve the icon for the "Uppercase" format
 * Tweak: Adjust the custom icon color for CoBlocks blocks
+* Tweak: Use has_block() to determine whether a $post contains a specific block
+* Tweak: Background opacity value now goes from 0-100%
 * Fix: Click to Tweet block styles now properly render inside of Row/Column blocks
 * Fix: Media Card block now properly renders in Edge
 * Fix: Features block toolbar now renders properly when selected
