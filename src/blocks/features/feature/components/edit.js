@@ -70,7 +70,7 @@ class Edit extends Component {
 		const dropZone = (
 			<BackgroundImageDropZone
 				{ ...this.props }
-				label={ __( 'Add backround image' ) }
+				label={ __( 'Add as backround' ) }
 			/>
 		);
 

@@ -173,7 +173,7 @@ class Edit extends Component {
 		const dropZone = (
 			<BackgroundImageDropZone
 				{ ...this.props }
-				label={ sprintf( __( 'Add backround image to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
+				label={ sprintf( __( 'Add backround to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
 			/>
 		);
 
