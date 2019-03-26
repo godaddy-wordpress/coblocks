@@ -31,11 +31,11 @@ class BackgroundDropZone extends Component {
 	}
 
 	onSelectFile( media ) {
-		if ( media && media.url && media.mime_type ) {
+		if ( media && media.url ) {
 
 			var mediaType = 'image';
 
-			if( media.mime_type.includes( 'video' ) ){
+			if( media.mime_type && media.mime_type.includes( 'video' ) ){
 				mediaType = 'video';
 			}
 
