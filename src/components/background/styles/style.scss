@@ -16,6 +16,7 @@
 }
 
 .has-background-video {
+	position: relative;
 	&.has-background-overlay {
 		&::before {
 			z-index: 1;

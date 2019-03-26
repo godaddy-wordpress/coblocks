@@ -169,6 +169,9 @@ const settings = {
 			textColor,
 			focalPoint,
 			hasParallax,
+			backgroundType,
+			videoMuted,
+			videoLoop,
 		} = attributes;
 
 		const textClass = getColorClassName( 'color', textColor );
@@ -195,7 +198,7 @@ const settings = {
 
 		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textClass ? undefined : customTextColor,
 		};
@@ -203,6 +206,11 @@ const settings = {
 		return (
 			<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } >
 				<div className={ innerClasses } style={ innerStyles }>
+					{ backgroundType == 'video' ?
+						<div className="coblocks-video-background">
+							<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
+						</div>
+					: null }
 					<InnerBlocks.Content />
 				</div>
 			</div>

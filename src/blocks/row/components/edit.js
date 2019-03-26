@@ -168,6 +168,9 @@ class Edit extends Component {
 			isStackedOnMobile,
 			focalPoint,
 			hasParallax,
+			backgroundType,
+			videoMuted,
+			videoLoop,
 		} = attributes;
 
 		const dropZone = (
@@ -298,7 +301,7 @@ class Edit extends Component {
 
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
@@ -327,6 +330,13 @@ class Edit extends Component {
 				<div className={ classes }>
 					<div className={ innerClasses } style={ innerStyles }>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
+
+						{ backgroundType == 'video' ?
+							<div className="coblocks-video-background">
+								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
+							</div>
+						: null }
+
 						<InnerBlocks
 							template={ TEMPLATE[ layout ] }
 							templateLock="all"
