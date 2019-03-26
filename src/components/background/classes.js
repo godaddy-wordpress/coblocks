@@ -20,7 +20,7 @@ function BackgroundClasses( attributes ) {
 		{ 'has-background': attributes.backgroundColor || attributes.customBackgroundColor },
 		{ [ backgroundClass ]: backgroundClass },
 		{ 'has-parallax': attributes.backgroundImg && attributes.hasParallax },
-		{ 'has-background-image': attributes.backgroundImg },
+		{ [ `has-background-${ attributes.backgroundType }` ] : attributes.backgroundImg && attributes.backgroundType },
 		{ 'is-transient': attributes.backgroundImg && 0 === attributes.backgroundImg.indexOf( 'blob:' ) },
 		{ [ `bg-${ attributes.backgroundRepeat }` ] : attributes.backgroundImg && attributes.backgroundRepeat },
 		{ [ `bg-${ attributes.backgroundPosition.split(' ').join('-') }` ] : attributes.backgroundImg && attributes.backgroundPosition },

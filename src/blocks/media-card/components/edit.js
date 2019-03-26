@@ -11,7 +11,7 @@ import includes from 'lodash/includes';
 import applyWithColors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
-import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../components/background';
+import BackgroundImagePanel, { BackgroundClasses, BackgroundDropZone } from '../../../components/background';
 import icons from './../../../utils/icons';
 import MediaContainer from './media-container';
 
@@ -22,7 +22,8 @@ const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InnerBlocks, mediaUpload } = wp.editor;
-const { IconButton, DropZone } = wp.components;
+const { Spinner } = wp.components;
+const { isBlobURL } = wp.blob;
 
 /**
  * This block can recieve both image and video files.
@@ -176,9 +177,9 @@ class Edit extends Component {
 		} = attributes;
 
 		const dropZone = (
-			<BackgroundImageDropZone
+			<BackgroundDropZone
 				{ ...this.props }
-				label={ __( 'Add backround image' ) }
+				label={ __( 'Add as backround' ) }
 			/>
 		);
 
@@ -232,6 +233,7 @@ class Edit extends Component {
 					) }
 				>
 					<div className={ wrapperClasses } style={ wrapperStyles } >
+						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						<div className="wp-block-coblocks-media-card__wrapper" style={ innerStyles } >
 							{ this.renderMediaArea() }
 							<div
