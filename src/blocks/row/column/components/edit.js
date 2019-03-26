@@ -242,16 +242,11 @@ class Edit extends Component {
 				>
 					<div
 						className={ classes }
-						style={ {
-							color: textColor.color,
-							textAlign: contentAlign,
-						} }
+						style={ { color: textColor.color, textAlign: contentAlign } }
 						>
 						<div className={ innerClasses } style={ innerStyles }>
 							{ isBlobURL( backgroundImg ) && <Spinner /> }
-	
 							{ BackgroundVideo( attributes ) }
-
 							<InnerBlocks templateLock={ false }/>
 							{ showInserter ? <Inserter rootClientId={ clientId } isAppender /> : null }
 						</div>
