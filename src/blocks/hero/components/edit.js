@@ -67,7 +67,6 @@ class Edit extends Component {
 			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
 			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = this.props.attributes.maxWidth + 'px';
 		}
-		
 	}
 
 	render() {
