@@ -203,8 +203,8 @@ const settings = {
 
 		return (
 			<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } >
+				{ BackgroundVideo( attributes ) }
 				<div className={ innerClasses } style={ innerStyles }>
-					{ BackgroundVideo( attributes ) }
 					<InnerBlocks.Content />
 				</div>
 			</div>

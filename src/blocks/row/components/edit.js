@@ -326,9 +326,9 @@ class Edit extends Component {
 					/>
 				) }
 				<div className={ classes }>
+					{ isBlobURL( backgroundImg ) && <Spinner /> }
+					{ BackgroundVideo( attributes ) }
 					<div className={ innerClasses } style={ innerStyles }>
-						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						{ BackgroundVideo( attributes ) }
 						<InnerBlocks
 							template={ TEMPLATE[ layout ] }
 							templateLock="all"
