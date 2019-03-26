@@ -7,7 +7,7 @@ import BackgroundAttributes from './attributes';
 import BackgroundClasses from './classes';
 import BackgroundImageToolbarControls from './controls';
 import BackgroundDropZone from './dropzone';
-import BackgroundImageTransforms from './transforms';
+import BackgroundTransforms from './transforms';
 
 /**
  * WordPress dependencies
@@ -30,7 +30,7 @@ export {
 	BackgroundClasses,
 	BackgroundImageToolbarControls,
 	BackgroundDropZone,
-	BackgroundImageTransforms,
+	BackgroundTransforms,
 };
 
 /**
