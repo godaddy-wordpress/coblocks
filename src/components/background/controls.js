@@ -22,7 +22,7 @@ const { Toolbar, IconButton, Popover, MenuItem } = wp.components;
 /**
  * Background image block toolbar controls
  */
-function BackgroundImageToolbarControls( props, options ) {
+function BackgroundControls( props, options ) {
 
 	const {
 		attributes,
@@ -109,4 +109,4 @@ function BackgroundImageToolbarControls( props, options ) {
 	);
 }
 
-export default BackgroundImageToolbarControls;
+export default BackgroundControls;

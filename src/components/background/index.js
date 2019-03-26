@@ -5,7 +5,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import BackgroundAttributes from './attributes';
 import BackgroundClasses from './classes';
-import BackgroundImageToolbarControls from './controls';
+import BackgroundControls from './controls';
 import BackgroundDropZone from './dropzone';
 import BackgroundTransforms from './transforms';
 
@@ -28,7 +28,7 @@ export const BLOCKS_WITH_AUTOPADDING = [ 'coblocks/row', 'coblocks/column', 'cob
 export {
 	BackgroundAttributes,
 	BackgroundClasses,
-	BackgroundImageToolbarControls,
+	BackgroundControls,
 	BackgroundDropZone,
 	BackgroundTransforms,
 };

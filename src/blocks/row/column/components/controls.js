@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import BackgroundPanel, { BackgroundImageToolbarControls } from '../../../../components/background';
+import BackgroundPanel, { BackgroundControls } from '../../../../components/background';
 
 /**
  * WordPress dependencies
@@ -34,7 +34,7 @@ class Controls extends Component {
 						value={ contentAlign }
 						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
 					/>
-					{ BackgroundImageToolbarControls( this.props ) }
+					{ BackgroundControls( this.props ) }
 				</BlockControls>
 			</Fragment>
 		);

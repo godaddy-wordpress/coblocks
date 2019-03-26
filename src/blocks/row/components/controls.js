@@ -8,7 +8,7 @@ import map from 'lodash/map';
  */
 import { layoutOptions } from './layouts'
 import rowIcons from './icons';
-import BackgroundPanel, { BackgroundImageToolbarControls } from '../../../components/background';
+import BackgroundPanel, { BackgroundControls } from '../../../components/background';
 import VisualDropdown from '../../../components/visual-dropdown/';
 
 /**
@@ -100,7 +100,7 @@ class Controls extends Component {
 						</Toolbar>
 					}
 					{ layout &&
-						BackgroundImageToolbarControls( this.props )
+						BackgroundControls( this.props )
 					}
 				</BlockControls>
 			</Fragment>
