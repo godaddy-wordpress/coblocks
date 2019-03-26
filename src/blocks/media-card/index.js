@@ -13,7 +13,7 @@ import './styles/editor.scss';
 import icons from './components/icons';
 import brandAssets from '../../utils/brand-assets';
 import Edit from './components/edit';
-import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms } from '../../components/background';
+import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**

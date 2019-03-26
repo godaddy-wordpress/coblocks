@@ -8,7 +8,7 @@ import map from 'lodash/map';
  */
 import { layoutOptions } from './layouts'
 import rowIcons from './icons';
-import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../components/background';
+import BackgroundPanel, { BackgroundImageToolbarControls } from '../../../components/background';
 import VisualDropdown from '../../../components/visual-dropdown/';
 
 /**

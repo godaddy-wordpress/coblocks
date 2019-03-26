@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../../components/background';
+import BackgroundPanel, { BackgroundImageToolbarControls } from '../../../../components/background';
 
 /**
  * WordPress dependencies

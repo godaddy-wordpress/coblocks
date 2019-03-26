@@ -36,7 +36,7 @@ export {
 /**
  * Background Options Component
  */
-function BackgroundImagePanel( props, options ) {
+function BackgroundPanel( props, options ) {
 
 	const {
 		attributes,
@@ -224,4 +224,4 @@ function BackgroundImagePanel( props, options ) {
 	}
 }
 
-export default BackgroundImagePanel;
+export default BackgroundPanel;
