@@ -12,7 +12,7 @@ import { title } from '../'
 import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
-import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../components/background';
+import BackgroundImagePanel, { BackgroundClasses, BackgroundDropZone } from '../../../components/background';
 
 /**
  * WordPress dependencies
@@ -21,7 +21,8 @@ const { __, _x, sprintf } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.editor;
-const { ResizableBox } = wp.components;
+const { ResizableBox, Spinner } = wp.components;
+const { isBlobURL } = wp.blob;
 
 /**
  * Constants
@@ -62,8 +63,10 @@ class Edit extends Component {
 
 	componentDidMount() {
 		let currentBlock = document.getElementById( 'block-' + this.props.clientId );
-		currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
-		currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = this.props.attributes.maxWidth + 'px';
+		if( currentBlock ){
+			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
+			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = this.props.attributes.maxWidth + 'px';
+		}
 	}
 
 	render() {
@@ -86,6 +89,7 @@ class Edit extends Component {
 			fullscreen,
 			maxWidth,
 			backgroundImg,
+			backgroundType,
 			paddingSize,
 			paddingTop,
 			paddingRight,
@@ -96,12 +100,14 @@ class Edit extends Component {
 			contentAlign,
 			focalPoint,
 			hasParallax,
+			videoMuted,
+			videoLoop,
 		} = attributes;
 
 		const dropZone = (
-			<BackgroundImageDropZone
+			<BackgroundDropZone
 				{ ...this.props }
-				label={ sprintf( __( 'Add backround image to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
+				label={ sprintf( __( 'Add backround to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
 			/>
 		);
 
@@ -125,7 +131,7 @@ class Edit extends Component {
 
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
@@ -162,6 +168,12 @@ class Edit extends Component {
 					className={ classes }
 				>
 					<div className={ innerClasses } style={ innerStyles } >
+						{ isBlobURL( backgroundImg ) && <Spinner /> }
+						{ backgroundType == 'video' ?
+							<div className="coblocks-video-background">
+								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
+							</div>
+						: null }
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
 							<ResizableBox
 								className={ classnames(

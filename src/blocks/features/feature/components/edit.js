@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import Controls from './controls';
-import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../../components/background';
+import BackgroundImagePanel, { BackgroundClasses, BackgroundDropZone } from '../../../../components/background';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 
@@ -19,6 +19,7 @@ const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.editor;
 const { Spinner } = wp.components;
+const { isBlobURL } = wp.blob;
 
 /**
  * Constants
@@ -68,9 +69,9 @@ class Edit extends Component {
 		} = attributes;
 
 		const dropZone = (
-			<BackgroundImageDropZone
+			<BackgroundDropZone
 				{ ...this.props }
-				label={ __( 'Add backround image' ) }
+				label={ __( 'Add as backround' ) }
 			/>
 		);
 
@@ -117,6 +118,7 @@ class Edit extends Component {
 				) }
 				<div className={ classes }>
 					<div className={ innerClasses } style={ innerStyles }>
+						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ TEMPLATE }

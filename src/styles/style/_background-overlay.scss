@@ -1,5 +1,4 @@
 .has-background-overlay {
-
 	position: relative;
 
 	&::before {
@@ -14,8 +13,7 @@
 	}
 }
 
-@for $i from 1 through 9 {
-
+@for $i from 1 through 10 {
 	.has-background-overlay-#{ $i * 10 }::before {
 		opacity: $i * 0.1;
 	}

@@ -18,4 +18,13 @@
 			position: relative;
 		}
 	}
+
+	&.alignwide,
+	&.alignfull {
+		.wp-block-coblocks-pricing-table-item {
+			@media (min-width: 600px) {
+				flex-basis: inherit;
+			}
+		}
+	}
 }

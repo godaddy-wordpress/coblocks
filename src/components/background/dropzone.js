@@ -14,7 +14,7 @@ const { DropZone } = wp.components;
 /**
  * Gallery Drop Zone Component
  */
-class BackgroundImageDropZone extends Component {
+class BackgroundDropZone extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -32,8 +32,14 @@ class BackgroundImageDropZone extends Component {
 
 	onSelectFile( media ) {
 		if ( media && media.url ) {
-			this.props.setAttributes( { backgroundImg: media.url } );
 
+			var mediaType = 'image';
+
+			if( media.mime_type && media.mime_type.includes( 'video' ) ){
+				mediaType = 'video';
+			}
+
+			this.props.setAttributes( { backgroundImg: media.url, backgroundType: mediaType } );
 			// Set padding when background image is added.
 			if ( BLOCKS_WITH_AUTOPADDING.includes( this.props.name ) ) {
 				if( !this.props.attributes.paddingSize || this.props.attributes.paddingSize == 'no' ){
@@ -64,4 +70,4 @@ class BackgroundImageDropZone extends Component {
 	}
 }
 
-export default BackgroundImageDropZone;
+export default BackgroundDropZone;

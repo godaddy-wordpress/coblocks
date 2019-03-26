@@ -25,6 +25,7 @@ import './extensions/typography';
 import './extensions/attributes';
 import './extensions/advanced-controls';
 import './extensions/list-styles';
+import './extensions/button-styles';
 import './extensions/button-controls';
 
 // Formats
