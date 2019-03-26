@@ -21,7 +21,8 @@ const { __, _x, sprintf } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.editor;
-const { ResizableBox } = wp.components;
+const { ResizableBox, Spinner } = wp.components;
+const { isBlobURL } = wp.blob;
 
 /**
  * Constants
@@ -165,6 +166,7 @@ class Edit extends Component {
 					className={ classes }
 				>
 					<div className={ innerClasses } style={ innerStyles } >
+						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ backgroundType == 'video' ?
 							<div className="coblocks-video-background">
 								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
