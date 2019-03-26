@@ -144,8 +144,8 @@ const settings = {
 
 		let iconStyle = 'outlined';
 
-		if ( className ) {
-			if ( className.includes( 'is-style-filled' ) ) {
+		if ( attributes.className ) {
+			if ( attributes.className.includes( 'is-style-filled' ) ) {
 				iconStyle = 'filled';
 			}
 		}

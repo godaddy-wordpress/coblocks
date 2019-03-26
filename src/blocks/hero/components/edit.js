@@ -21,7 +21,8 @@ const { __, _x, sprintf } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.editor;
-const { ResizableBox } = wp.components;
+const { ResizableBox, Spinner } = wp.components;
+const { isBlobURL } = wp.blob;
 
 /**
  * Constants
@@ -62,8 +63,10 @@ class Edit extends Component {
 
 	componentDidMount() {
 		let currentBlock = document.getElementById( 'block-' + this.props.clientId );
-		currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
-		currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = this.props.attributes.maxWidth + 'px';
+		if( currentBlock ){
+			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
+			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = this.props.attributes.maxWidth + 'px';
+		}
 	}
 
 	render() {
@@ -163,6 +166,7 @@ class Edit extends Component {
 					className={ classes }
 				>
 					<div className={ innerClasses } style={ innerStyles } >
+						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
 							<ResizableBox
