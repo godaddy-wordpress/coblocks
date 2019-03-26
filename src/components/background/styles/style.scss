@@ -25,4 +25,8 @@
 			z-index: 10;
 		}
 	}
+
+	> :not(.coblocks-video-background) {
+		position: relative;
+	}
 }
