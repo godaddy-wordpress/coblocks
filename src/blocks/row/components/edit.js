@@ -15,7 +15,7 @@ import Controls from './controls';
 import applyWithColors from './colors';
 import rowIcons from './icons';
 import { title, icon } from '../'
-import BackgroundImagePanel, { BackgroundClasses, BackgroundDropZone } from '../../../components/background';
+import BackgroundImagePanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
 
 /**
  * WordPress dependencies
@@ -169,8 +169,6 @@ class Edit extends Component {
 			focalPoint,
 			hasParallax,
 			backgroundType,
-			videoMuted,
-			videoLoop,
 		} = attributes;
 
 		const dropZone = (
@@ -330,13 +328,7 @@ class Edit extends Component {
 				<div className={ classes }>
 					<div className={ innerClasses } style={ innerStyles }>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
-
-						{ backgroundType == 'video' ?
-							<div className="coblocks-video-background">
-								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
-							</div>
-						: null }
-
+						{ BackgroundVideo( attributes ) }
 						<InnerBlocks
 							template={ TEMPLATE[ layout ] }
 							templateLock="all"

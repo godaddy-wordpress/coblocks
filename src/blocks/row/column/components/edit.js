@@ -11,7 +11,7 @@ import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
 import { title, icon } from '../'
-import BackgroundImagePanel, { BackgroundClasses, BackgroundDropZone } from '../../../../components/background';
+import BackgroundImagePanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../../components/background';
 
 /**
  * WordPress dependencies
@@ -75,8 +75,6 @@ class Edit extends Component {
 			hasParallax,
 			showInserter,
 			backgroundType,
-			videoMuted,
-			videoLoop,
 		} = attributes;
 
 		const parentId = wp.data.select( 'core/editor' ).getBlockRootClientId( clientId );
@@ -149,11 +147,7 @@ class Edit extends Component {
 						>
 						<div className="wp-block-coblocks-column">
 							<div className={ innerClasses } style={ innerStyles }>
-								{ backgroundType == 'video' ?
-									<div className="coblocks-video-background">
-										<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
-									</div>
-								: null }
+								{ BackgroundVideo( attributes ) }
 								<InnerBlocks
 									templateLock={ false }
 								/>
@@ -256,11 +250,7 @@ class Edit extends Component {
 						<div className={ innerClasses } style={ innerStyles }>
 							{ isBlobURL( backgroundImg ) && <Spinner /> }
 	
-							{ backgroundType == 'video' ?
-								<div className="coblocks-video-background">
-									<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
-								</div>
-							: null }
+							{ BackgroundVideo( attributes ) }
 
 							<InnerBlocks templateLock={ false }/>
 							{ showInserter ? <Inserter rootClientId={ clientId } isAppender /> : null }

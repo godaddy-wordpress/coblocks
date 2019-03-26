@@ -11,7 +11,7 @@ import './styles/editor.scss';
 import './styles/style.scss';
 import Edit from './components/edit';
 import icons from './../../utils/icons';
-import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
+import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**
@@ -170,8 +170,6 @@ const settings = {
 			focalPoint,
 			hasParallax,
 			backgroundType,
-			videoMuted,
-			videoLoop,
 		} = attributes;
 
 		const textClass = getColorClassName( 'color', textColor );
@@ -206,11 +204,7 @@ const settings = {
 		return (
 			<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } >
 				<div className={ innerClasses } style={ innerStyles }>
-					{ backgroundType == 'video' ?
-						<div className="coblocks-video-background">
-							<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
-						</div>
-					: null }
+					{ BackgroundVideo( attributes ) }
 					<InnerBlocks.Content />
 				</div>
 			</div>
