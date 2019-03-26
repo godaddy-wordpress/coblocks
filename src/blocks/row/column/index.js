@@ -150,6 +150,7 @@ const settings = {
 			const {
 				id,
 				coblocks,
+				backgroundType,
 				backgroundColor,
 				backgroundImg,
 				customBackgroundColor,
@@ -203,11 +204,12 @@ const settings = {
 
 			const innerStyles = {
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-				backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+				backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			};
 
 			return (
 				<div className={ classes } style={ styles } >
+					{ BackgroundVideo( attributes ) }
 					<div className={ innerClasses } style={ innerStyles }>
 						<InnerBlocks.Content />
 					</div>
