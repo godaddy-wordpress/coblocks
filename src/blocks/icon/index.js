@@ -169,7 +169,7 @@ const settings = {
 			borderRadius: borderRadius ? borderRadius + 'px' : undefined,
 			padding: padding ? padding + 'px' : undefined,
 		};
-		
+
 		return (
 			<div className={ className } style={ { textAlign: contentAlign ? contentAlign : undefined } }>
 				<div className={ classes } style={ styles }>
