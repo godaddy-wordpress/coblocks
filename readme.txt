@@ -135,6 +135,7 @@ Please reach out via the contact form at the bottom right of [our website](https
 * New: Add new "None" style for the core List block
 * New: Add responsiveness to the CoBlocks margin and padding utility classes
 * New: Add third-party support for the CoBlocks Typography Control Panel
+* New: Add support for Ubunto in the Typography Control Panel
 * Tweak: Improve the background image controls within Background Settings panels
 * Tweak: Add a new button within the Background Settings panel to remove applied media
 * Tweak: Improve the third Pricing Table Item block positioning for wide and full alignments
