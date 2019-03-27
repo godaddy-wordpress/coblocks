@@ -11,6 +11,11 @@
 		}
 	}
 
+	> .coblocks-video-bg{
+		left: 0px;
+		top: 0px;
+	}
+
 	> :not(.coblocks-video-bg) {
 		position: relative;
 	}
