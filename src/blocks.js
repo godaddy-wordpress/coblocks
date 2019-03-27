@@ -57,6 +57,7 @@ import * as feature from './blocks/features/feature';
 import * as features from './blocks/features';
 import * as buttons from './blocks/buttons';
 import * as hero from './blocks/hero';
+import * as banner from './blocks/banner';
 
 export function registerBlocks () {
 	[
@@ -82,6 +83,7 @@ export function registerBlocks () {
 		features,
 		buttons,
 		hero,
+		banner,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {
