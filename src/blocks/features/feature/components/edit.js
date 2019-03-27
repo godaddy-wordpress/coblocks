@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import Controls from './controls';
-import BackgroundImagePanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../../components/background';
+import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../../components/background';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 

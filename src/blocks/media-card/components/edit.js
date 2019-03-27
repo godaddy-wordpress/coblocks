@@ -11,7 +11,7 @@ import includes from 'lodash/includes';
 import applyWithColors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
-import BackgroundImagePanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
+import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
 import icons from './../../../utils/icons';
 import MediaContainer from './media-container';
 

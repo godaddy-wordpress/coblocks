@@ -15,7 +15,7 @@ import Controls from './controls';
 import applyWithColors from './colors';
 import rowIcons from './icons';
 import { title, icon } from '../'
-import BackgroundImagePanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
+import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
 
 /**
  * WordPress dependencies

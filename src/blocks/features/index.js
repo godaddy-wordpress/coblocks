@@ -9,7 +9,7 @@ import map from 'lodash/map';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
+import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import Edit from './components/edit';
 import icons from './components/icons';
