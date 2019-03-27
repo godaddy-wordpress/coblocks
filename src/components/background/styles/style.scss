@@ -1,27 +1,17 @@
-.coblocks-video-background {
-	height: 100%;
-	left: 0;
-	overflow: hidden;
-	position: absolute;
-	top: 0;
-	width: 100%;
-
-	video {
-		background-position: center;
-		height: 100%;
-		object-fit: cover;
-		object-position: 50% 50%;
-		width: 100%;
-	}
-}
-
 .has-background-video {
+	position: relative;
+
 	&.has-background-overlay {
 		&::before {
 			z-index: 1;
 		}
-		> :not(.coblocks-video-background) {
+
+		> :not(.coblocks-video-bg) {
 			z-index: 10;
 		}
+	}
+
+	> :not(.coblocks-video-bg) {
+		position: relative;
 	}
 }

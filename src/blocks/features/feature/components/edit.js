@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import Controls from './controls';
-import BackgroundPanel, { BackgroundClasses, BackgroundDropZone } from '../../../../components/background';
+import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../../components/background';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 
@@ -66,6 +66,7 @@ class Edit extends Component {
 			paddingUnit,
 			focalPoint,
 			hasParallax,
+			backgroundType,
 		} = attributes;
 
 		const dropZone = (
@@ -93,7 +94,7 @@ class Edit extends Component {
 
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textColor.color,
 			textAlign: contentAlign,
@@ -119,6 +120,7 @@ class Edit extends Component {
 				<div className={ classes }>
 					<div className={ innerClasses } style={ innerStyles }>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
+						{ BackgroundVideo( attributes ) }
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ TEMPLATE }

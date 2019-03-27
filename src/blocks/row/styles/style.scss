@@ -1,3 +1,7 @@
+.wp-block-coblocks-row {
+	position: relative;
+}
+
 .wp-block-coblocks-row:not([data-columns="1"]) {
 	// Don't use flexbox if the row is 1 column, 100% wide.
 	.wp-block-coblocks-row__inner {
@@ -76,9 +80,9 @@
 		color: inherit;
 	}
 
-	&__inner{
-		&.has-background-overlay{
-			> *{
+	&__inner {
+		&.has-background-overlay {
+			> * {
 				position: relative;
 			}
 		}
@@ -100,8 +104,8 @@
 				color: inherit;
 			}
 
-			&__inner{
-				img{
+			&__inner {
+				img {
 					max-width: 100% !important;
 				}
 			}

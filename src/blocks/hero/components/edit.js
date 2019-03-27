@@ -12,7 +12,7 @@ import { title } from '../'
 import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
-import BackgroundPanel, { BackgroundClasses, BackgroundDropZone } from '../../../components/background';
+import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
 
 /**
  * WordPress dependencies
@@ -100,8 +100,6 @@ class Edit extends Component {
 			contentAlign,
 			focalPoint,
 			hasParallax,
-			videoMuted,
-			videoLoop,
 		} = attributes;
 
 		const dropZone = (
@@ -169,11 +167,7 @@ class Edit extends Component {
 				>
 					<div className={ innerClasses } style={ innerStyles } >
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						{ backgroundType == 'video' ?
-							<div className="coblocks-video-background">
-								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
-							</div>
-						: null }
+						{ BackgroundVideo( attributes ) }
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
 							<ResizableBox
 								className={ classnames(

@@ -9,7 +9,7 @@ import map from 'lodash/map';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import BackgroundPanel, { BackgroundAttributes, BackgroundClasses } from '../../components/background';
+import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import Edit from './components/edit';
 import icons from './components/icons';
@@ -131,6 +131,7 @@ const settings = {
 			paddingSize,
 			focalPoint,
 			hasParallax,
+			backgroundType,
 		} = attributes;
 
 		// Body color class and styles.
@@ -158,7 +159,7 @@ const settings = {
 
 		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textClass ? undefined : customTextColor,
 		};
@@ -166,6 +167,7 @@ const settings = {
 		return (
 			<div className={ classes } data-columns={ columns } >
 				<div className={ innerClasses } style={ innerStyles }>
+					{ BackgroundVideo( attributes ) }
 					<InnerBlocks.Content />
 				</div>
 			</div>

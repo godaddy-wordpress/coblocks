@@ -15,7 +15,7 @@ import Controls from './controls';
 import applyWithColors from './colors';
 import rowIcons from './icons';
 import { title, icon } from '../'
-import BackgroundPanel, { BackgroundClasses, BackgroundDropZone } from '../../../components/background';
+import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
 
 /**
  * WordPress dependencies
@@ -168,6 +168,7 @@ class Edit extends Component {
 			isStackedOnMobile,
 			focalPoint,
 			hasParallax,
+			backgroundType,
 		} = attributes;
 
 		const dropZone = (
@@ -298,7 +299,7 @@ class Edit extends Component {
 
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
@@ -325,8 +326,9 @@ class Edit extends Component {
 					/>
 				) }
 				<div className={ classes }>
+					{ isBlobURL( backgroundImg ) && <Spinner /> }
+					{ BackgroundVideo( attributes ) }
 					<div className={ innerClasses } style={ innerStyles }>
-						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						<InnerBlocks
 							template={ TEMPLATE[ layout ] }
 							templateLock="all"

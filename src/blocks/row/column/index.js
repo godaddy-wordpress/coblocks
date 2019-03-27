@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import Edit from './components/edit';
 import icons from './../../../utils/icons';
-import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms } from '../../../components/background';
+import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms, BackgroundVideo } from '../../../components/background';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 
 /**
@@ -100,6 +100,7 @@ const settings = {
 			contentAlign,
 			focalPoint,
 			hasParallax,
+			backgroundType,
 		} = attributes;
 		const textClass = getColorClassName( 'color', textColor );
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
@@ -125,7 +126,7 @@ const settings = {
 
 		const innerStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textClass ? undefined : customTextColor,
 		};
@@ -133,6 +134,7 @@ const settings = {
 		return (
 			<div className={ classes } style={ styles } >
 				<div className={ innerClasses } style={ innerStyles }>
+					{ BackgroundVideo( attributes ) }
 					<InnerBlocks.Content />
 				</div>
 			</div>
@@ -148,6 +150,7 @@ const settings = {
 			const {
 				id,
 				coblocks,
+				backgroundType,
 				backgroundColor,
 				backgroundImg,
 				customBackgroundColor,
@@ -201,11 +204,12 @@ const settings = {
 
 			const innerStyles = {
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-				backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+				backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			};
 
 			return (
 				<div className={ classes } style={ styles } >
+					{ BackgroundVideo( attributes ) }
 					<div className={ innerClasses } style={ innerStyles }>
 						<InnerBlocks.Content />
 					</div>

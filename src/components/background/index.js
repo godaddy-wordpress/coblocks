@@ -8,6 +8,7 @@ import BackgroundClasses from './classes';
 import BackgroundControls from './controls';
 import BackgroundDropZone from './dropzone';
 import BackgroundTransforms from './transforms';
+import BackgroundVideo from './video';
 
 /**
  * WordPress dependencies
@@ -31,6 +32,7 @@ export {
 	BackgroundControls,
 	BackgroundDropZone,
 	BackgroundTransforms,
+	BackgroundVideo,
 };
 
 /**

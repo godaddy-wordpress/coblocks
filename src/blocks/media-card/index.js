@@ -13,7 +13,7 @@ import './styles/editor.scss';
 import icons from './components/icons';
 import brandAssets from '../../utils/brand-assets';
 import Edit from './components/edit';
-import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms } from '../../components/background';
+import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**
@@ -214,6 +214,7 @@ const settings = {
 			align,
 			focalPoint,
 			hasParallax,
+			backgroundType,
 		} = attributes;
 
 		// Media.
@@ -245,7 +246,7 @@ const settings = {
 
 		const wrapperStyles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 		};
 
@@ -262,6 +263,7 @@ const settings = {
 		return (
 			<div className={ classes }>
 				<div className={ wrapperClasses } style={ wrapperStyles } >
+					{ BackgroundVideo( attributes ) }
 					<div className="wp-block-coblocks-media-card__wrapper" style={ innerStyles }>
 						<figure className={ classnames(
 								'wp-block-coblocks-media-card__media', {

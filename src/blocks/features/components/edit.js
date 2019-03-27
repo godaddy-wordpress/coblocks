@@ -8,7 +8,7 @@ import times from 'lodash/times';
 /**
  * Internal dependencies
  */
-import BackgroundPanel, { BackgroundClasses, BackgroundDropZone } from '../../../components/background';
+import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 import Controls from './controls';
@@ -79,6 +79,7 @@ class Edit extends Component {
 			paddingSize,
 			focalPoint,
 			hasParallax,
+			backgroundType,
 		} = attributes;
 
 		const dropZone = (
@@ -108,7 +109,7 @@ class Edit extends Component {
 
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textColor.color,
 			textAlign: contentAlign,
@@ -140,6 +141,7 @@ class Edit extends Component {
 				>
 					<div className={ innerClasses } style={ innerStyles }>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
+						{ BackgroundVideo( attributes ) }
 						<InnerBlocks
 							template={ getCount( columns ) }
 							allowedBlocks={ ALLOWED_BLOCKS }

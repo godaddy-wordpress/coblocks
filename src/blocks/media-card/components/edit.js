@@ -11,7 +11,7 @@ import includes from 'lodash/includes';
 import applyWithColors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
-import BackgroundPanel, { BackgroundClasses, BackgroundDropZone } from '../../../components/background';
+import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
 import icons from './../../../utils/icons';
 import MediaContainer from './media-container';
 
@@ -174,6 +174,7 @@ class Edit extends Component {
 			mediaPosition,
 			focalPoint,
 			hasParallax,
+			backgroundType,
 		} = attributes;
 
 		const dropZone = (
@@ -195,7 +196,7 @@ class Edit extends Component {
 
 		const wrapperStyles = {
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
@@ -234,6 +235,7 @@ class Edit extends Component {
 				>
 					<div className={ wrapperClasses } style={ wrapperStyles } >
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
+						{ BackgroundVideo( attributes ) }
 						<div className="wp-block-coblocks-media-card__wrapper" style={ innerStyles } >
 							{ this.renderMediaArea() }
 							<div

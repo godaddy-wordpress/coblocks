@@ -10,7 +10,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
 import Edit from './components/edit';
-import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms } from '../../components/background';
+import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import CSSGridAttributes from '../../components/grid-control/attributes';
 
@@ -180,11 +180,7 @@ const settings = {
 			return (
 				<div className={ classes } style={ styles } >
 					<div className={ innerClasses } style={ innerStyles }>
-						{ backgroundType == 'video' ?
-							<div className="coblocks-video-background">
-								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
-							</div>
-						: null }
+						{ BackgroundVideo( attributes ) }
 						<div className="wp-block-coblocks-hero__box" style={ { maxWidth: maxWidth ? maxWidth + 'px' : undefined } }>
 							<InnerBlocks.Content />
 						</div>

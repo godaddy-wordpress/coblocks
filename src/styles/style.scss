@@ -6,18 +6,52 @@
 // Editor formatting
 @import "style/formatting";
 
+// Mobile classes
+@import "style/stacked";
+
 // Utility classes
 @import "style/padding";
 @import "style/margin";
 @import "style/gutter";
 @import "style/shadow";
 
-// Mobile classes
-@import "style/stacked";
-
-.coblocks-section {
-	h1::before,
-	h2::before {
-		display: none !important;
-	}
+.h-full {
+	height: 100%;
 }
+
+.w-full {
+	width: 100%;
+}
+
+.pin-t {
+	top: 0;
+}
+
+.pin-r {
+	right: 0;
+}
+
+.pin-b {
+	bottom: 0;
+}
+
+.pin-l {
+	left: 0;
+}
+
+.overflow-hidden {
+	overflow: hidden;
+}
+
+.position-absolute {
+	position: absolute;
+}
+
+.object-cover {
+	object-fit: cover;
+}
+
+.object-position {
+	object-position: 50% 50%;
+}
+
