@@ -2,7 +2,7 @@
  * Set the attributes for the Background transformations
  * @type {Object}
  */
-function BackgroundImageTransforms( props ) {
+function BackgroundTransforms( props ) {
 
 	const transforms = {
 		backgroundColor: props.backgroundColor,
@@ -18,4 +18,4 @@ function BackgroundImageTransforms( props ) {
 	return transforms;
 }
 
-export default BackgroundImageTransforms;
+export default BackgroundTransforms;

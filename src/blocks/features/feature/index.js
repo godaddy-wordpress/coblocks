@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses } from '../../../components/background';
+import BackgroundPanel, { BackgroundAttributes, BackgroundClasses } from '../../../components/background';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 import Edit from './components/edit';
 import icons from './components/icons';

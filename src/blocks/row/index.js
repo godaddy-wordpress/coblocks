@@ -11,7 +11,7 @@ import './styles/editor.scss';
 import './styles/style.scss';
 import Edit from './components/edit';
 import icons from './../../utils/icons';
-import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
+import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**

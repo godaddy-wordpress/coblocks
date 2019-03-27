@@ -10,7 +10,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
 import Edit from './components/edit';
-import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
+import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import CSSGridAttributes from '../../components/grid-control/attributes';
 

@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../components/background';
+import BackgroundPanel, { BackgroundControls } from '../../../components/background';
 import icons from './icons';
 
 /**
@@ -47,7 +47,7 @@ class Controls extends Component {
 					<Toolbar
 						controls={ toolbarControls }
 					/>
-					{ BackgroundImageToolbarControls( this.props ) }
+					{ BackgroundControls( this.props ) }
 				</BlockControls>
 			</Fragment>
 		);

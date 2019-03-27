@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import BackgroundImagePanel from '../../../../components/background';
+import BackgroundPanel from '../../../../components/background';
 import DimensionsControl from '../../../../components/dimensions-control/';
 
 /**
@@ -126,7 +126,7 @@ class Inspector extends Component {
 						] }
 					>
 					</PanelColorSettings>
-					{ BackgroundImagePanel( this.props, { overlay: true } ) }
+					{ BackgroundPanel( this.props, { overlay: true } ) }
 				</InspectorControls>
 			</Fragment>
 		);
