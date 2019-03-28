@@ -36,6 +36,18 @@
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
-		text-align: center;
+		align-items: center;
+
+		&.banner-left-align,
+		&.banner-right-align{
+			flex-direction: initial;
+			> div{
+				flex: 1 0 50%;
+			}
+		}
+
+		&.banner-left-align{
+			flex-flow: row-reverse;
+		}
 	}
 }

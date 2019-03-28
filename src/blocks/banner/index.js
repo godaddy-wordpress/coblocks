@@ -39,6 +39,10 @@ const keywords = [
 const blockAttributes = {
 	...DimensionsAttributes,
 	...BackgroundAttributes,
+	layout: {
+		type: 'string',
+		default: 'full',
+	},
 	heading: {
 		type: 'string',
 		default: __( 'Ready to get started?' ),

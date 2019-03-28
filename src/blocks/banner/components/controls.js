@@ -36,13 +36,34 @@ class Controls extends Component {
 			layout,
 		} = attributes;
 
+		const toolbarControls = [ {
+			icon: icons.banner,
+			title: __( 'Buttons on middle' ),
+			isActive: layout === 'full',
+			onClick: () => setAttributes( { layout: 'full', contentAlign: 'center' } ),
+		},{
+			icon: icons.bannerRight,
+			title: __( 'Buttons on right' ),
+			isActive: layout === 'right',
+			onClick: () => setAttributes( { layout: 'right', contentAlign: 'right' } ),
+		}, {
+			icon: icons.bannerLeft,
+			title: __( 'Buttons on left' ),
+			isActive: layout === 'left',
+			onClick: () => setAttributes( { layout: 'left', contentAlign: 'left' } ),
+		}, ];
+
+
 		return (
 			<Fragment>
 				<BlockControls>
-				<AlignmentToolbar
-					value={ contentAlign }
-					onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
-				/>
+					<Toolbar
+						controls={ toolbarControls }
+					/>
+					<AlignmentToolbar
+						value={ contentAlign }
+						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
+					/>
 					{ BackgroundControls( this.props ) }
 				</BlockControls>
 			</Fragment>
