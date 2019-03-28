@@ -49,7 +49,7 @@ const blockAttributes = {
 	},
 	content: {
 		type: 'string',
-		default: __( 'Prompt visitors to take action with a call to action heading and button.' ),
+		default: __( 'Prompt visitors to take action with a call to action and a button.' ),
 	},
 	align: {
 		type: 'string',
@@ -108,7 +108,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Prompt visitors to take action with a call to action heading and button.' ),
+	description: __( 'Prompt visitors to take action with a call to action and a button.' ),
 
 	keywords: keywords,
 
@@ -154,7 +154,7 @@ const settings = {
 				videoLoop,
 			} = attributes;
 
-			
+
 
 			return null;
 	},
