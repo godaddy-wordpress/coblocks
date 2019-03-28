@@ -1,0 +1,23 @@
+.wp-block[data-type="coblocks/banner"] {
+	background: transparent !important;
+
+	.wp-block-coblocks-banner {
+		width: 100%;
+
+		&__inner {
+			> .editor-inner-blocks {
+				> .editor-block-list__layout {
+					> div:not(.wp-block) {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	&.is-selected {
+		.components-resizable-box__handle{
+			display: block;
+		}
+	}
+}

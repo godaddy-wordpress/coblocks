@@ -6,14 +6,13 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-// import './styles/style.scss';
-// import './styles/editor.scss';
+import './styles/style.scss';
+import './styles/editor.scss';
 import icons from './components/icons';
 import Edit from './components/edit';
 import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
-import CSSGridAttributes from '../../components/grid-control/attributes';
-
+import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 /**
  * WordPress dependencies
  */
@@ -38,12 +37,11 @@ const keywords = [
 ];
 
 const blockAttributes = {
-	...CSSGridAttributes,
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 	align: {
 		type: 'string',
-		default: 'full',
+		default: 'wide',
 	},
 	contentAlign: {
 		type: 'string',
@@ -54,10 +52,6 @@ const blockAttributes = {
 	},
 	customTextColor: {
 		type: 'string',
-	},
-	maxWidth: {
-		type: 'number',
-		default: 560,
 	},
 	saveCoBlocksMeta: {
 		type: 'boolean',
@@ -90,6 +84,11 @@ const blockAttributes = {
 	customBackgroundColor: {
 		type: 'string',
 		default: '#f3f3f3',
+	},
+	...ResponsiveBaseControlAttributes,
+	height: {
+		type: 'number',
+		default: 360,
 	},
 };
 
@@ -128,8 +127,6 @@ const settings = {
 		const {
 				coblocks,
 				layout,
-				fullscreen,
-				maxWidth,
 				backgroundImg,
 				backgroundType,
 				paddingSize,

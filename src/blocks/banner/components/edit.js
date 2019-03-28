@@ -9,7 +9,7 @@ import times from 'lodash/times';
  * Internal dependencies
  */
 import { title } from '../'
-// import Inspector from './inspector';
+import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
 import BackgroundPanel, { BackgroundClasses, BackgroundDropZone } from '../../../components/background';
@@ -56,8 +56,69 @@ class Edit extends Component {
 	constructor( props ) {
 		super( ...arguments );
 
+		this.saveMeta = this.saveMeta.bind( this );
+		this.getBrowserWidth = this.getBrowserWidth.bind( this );
+
 		this.state = {
 			resizing: false,
+			innerWidth: this.getBrowserWidth(),
+		}
+
+	}
+
+	componentDidMount(){
+		this.getBrowserWidth();
+		window.addEventListener( 'resize', this.getBrowserWidth.bind(this) );
+	}
+	componentWillMount(){
+		this.getBrowserWidth();
+	}
+	componentWillUnmount(){
+		window.removeEventListener( 'resize', this.getBrowserWidth.bind(this) );
+	}
+
+	getBrowserWidth(){
+		this.setState({ innerWidth : window.innerWidth });
+		return window.innerWidth;
+	}
+
+	saveMeta( type ){
+		let meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
+		let block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
+		let dimensions = {};
+
+		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
+			let id = this.props.name.split('/').join('-') + '-' + this.props.attributes.coblocks.id;
+			let height = {
+				height: block.attributes[ type ],
+				heightTablet: block.attributes[ type + 'Tablet' ],
+				heightMobile: block.attributes[ type + 'Mobile' ],
+			};
+
+			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height  == '' ) ){
+				dimensions = {};
+			} else {
+				dimensions = JSON.parse( meta._coblocks_responsive_height );
+			}
+
+			if ( typeof dimensions[ id ] === 'undefined' ) {
+				dimensions[ id ] = {};
+				dimensions[ id ][ type ] = {};
+			} else {
+				if ( typeof dimensions[ id ][ type ] === 'undefined' ){
+					dimensions[ id ][ type ] = {};
+				}
+			}
+
+			dimensions[ id ][ type ] = height;
+
+			// Save values to metadata.
+			wp.data.dispatch( 'core/editor' ).editPost({
+				meta: {
+					_coblocks_responsive_height: JSON.stringify( dimensions ),
+				}
+			});
+
 		}
 	}
 
@@ -78,8 +139,6 @@ class Edit extends Component {
 			id,
 			coblocks,
 			layout,
-			fullscreen,
-			maxWidth,
 			backgroundImg,
 			backgroundType,
 			paddingSize,
@@ -94,6 +153,9 @@ class Edit extends Component {
 			hasParallax,
 			videoMuted,
 			videoLoop,
+			height,
+			heightTablet,
+			heightMobile,
 		} = attributes;
 
 		const dropZone = (
@@ -117,7 +179,6 @@ class Edit extends Component {
 				'has-padding': paddingSize && paddingSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 				[ `has-${ contentAlign }-content` ]: contentAlign,
-				'is-fullscreen': fullscreen,
 			}
 		);
 
@@ -143,6 +204,25 @@ class Edit extends Component {
 			topLeft: false,
 		};
 
+		let heightResizer = {
+			target : 'height',
+			value  : height
+		};
+
+		if( this.state.innerWidth <= 768 && this.state.innerWidth > 514 ){
+			heightResizer = {
+				target : 'heightTablet',
+				value  : ( heightTablet ) ? heightTablet : height,
+			};
+
+		}else if( this.state.innerWidth <= 514 ){
+			heightResizer = {
+				target : 'heightMobile',
+				value  : ( heightMobile ) ? heightMobile : height,
+			};
+
+		}
+
 		return [
 			<Fragment>
 				{ dropZone }
@@ -151,23 +231,77 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
 				<div
 					className={ classes }
-				>
-					<div className={ innerClasses } style={ innerStyles } >
+				>	
+					<ResizableBox
+						className={ innerClasses } 
+						style={ innerStyles }
+						size={ {
+							height: heightResizer.value,
+						} }
+						minHeight="20"
+						enable={ {
+							top: false,
+							right: false,
+							bottom: true,
+							left: false,
+							topRight: false,
+							bottomRight: false,
+							bottomLeft: false,
+							topLeft: false,
+						} }
+						onResizeStop={ ( event, direction, elt, delta ) => {
+							switch( heightResizer.target ){
+								case 'heightTablet':
+									setAttributes( {
+										heightTablet : parseInt( heightResizer.value + delta.height, 10 ),
+									} );
+								break;
+
+								case 'heightMobile':
+									setAttributes( {
+										heightMobile : parseInt( heightResizer.value + delta.height, 10 ),
+									} );
+								break;
+
+								default:
+									setAttributes( {
+										height : parseInt( heightResizer.value + delta.height, 10 ),
+									} );
+								break;
+							}
+
+							toggleSelection( true );
+							this.setState( { resizing: false } );
+
+							//update meta
+							this.saveMeta( 'height' );
+						} }
+						onResizeStart={ () => {
+							toggleSelection( false );
+							this.setState( { resizing: true } );
+						} }
+					>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ backgroundType == 'video' ?
 							<div className="coblocks-video-background">
 								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
 							</div>
 						: null }
+
 						<InnerBlocks
 							template={ TEMPLATE }
 							allowedBlocks={ ALLOWED_BLOCKS }
 							templateLock={ false }
 							templateInsertUpdatesSelection={ false }
 						/>
-					</div>
+					</ResizableBox>
 				</div>
 			</Fragment>
 		];

@@ -1,0 +1,41 @@
+.wp-block-coblocks-banner {
+	position: relative;
+
+	.has-left-content {
+		text-align: left;
+	}
+
+	.has-center-content {
+		text-align: center;
+
+		.wp-block-coblocks-buttons__inner {
+			justify-content: center;
+		}
+
+		h1::before,
+		h2::before {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	.has-right-content {
+		text-align: right;
+
+		.wp-block-coblocks-buttons__inner {
+			justify-content: flex-end;
+		}
+
+		h1::before,
+		h2::before {
+			margin-left: auto;
+		}
+	}
+
+	&__inner{
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		text-align: center;
+	}
+}
