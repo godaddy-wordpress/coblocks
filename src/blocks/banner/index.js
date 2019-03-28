@@ -39,6 +39,14 @@ const keywords = [
 const blockAttributes = {
 	...DimensionsAttributes,
 	...BackgroundAttributes,
+	heading: {
+		type: 'string',
+		default: __( 'Ready to get started?' ),
+	},
+	content: {
+		type: 'string',
+		default: __( 'Prompt visitors to take action with a call to action heading and button.' ),
+	},
 	align: {
 		type: 'string',
 		default: 'wide',
