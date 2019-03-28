@@ -47,6 +47,7 @@ const blockAttributes = {
 	},
 	contentAlign: {
 		type: 'string',
+		default: 'center',
 	},
 	textColor: {
 		type: 'string',
