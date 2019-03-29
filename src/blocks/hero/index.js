@@ -92,6 +92,10 @@ const blockAttributes = {
 		type: 'string',
 		default: '#f3f3f3',
 	},
+	height: {
+		type: 'number',
+		default: 420,
+	},
 };
 
 const settings = {
@@ -143,6 +147,7 @@ const settings = {
 				hasParallax,
 				videoMuted,
 				videoLoop,
+				height,
 			} = attributes;
 
 			const textClass = getColorClassName( 'color', textColor );
@@ -177,6 +182,7 @@ const settings = {
 				backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 				color: textColor ? textColor.color : undefined,
 				backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+				height: height,
 			};
 
 			return (
