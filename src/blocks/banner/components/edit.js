@@ -298,23 +298,27 @@ class Edit extends Component {
 						: null }
 
 						<div className="wp-block-coblocks-banner__content">
-							<RichText
-								tagName="h2"
-								className="wp-block-coblocks-banner-title"
-								onChange={ ( nextTitle ) => setAttributes( { heading: nextTitle } ) }
-								value={ heading }
-								placeholder={ __( 'Add heading...' ) }
-								keepPlaceholderOnFocus
-							/>
+							{ ( ! RichText.isEmpty( heading ) || isSelected ) && (
+								<RichText
+									tagName="h2"
+									className="wp-block-coblocks-banner-title"
+									onChange={ ( nextTitle ) => setAttributes( { heading: nextTitle } ) }
+									value={ heading }
+									placeholder={ __( 'Add heading...' ) }
+									keepPlaceholderOnFocus
+								/>
+							) }
 
-							<RichText
-								tagName="p"
-								className="wp-block-coblocks-banner-content"
-								onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
-								value={ content }
-								placeholder={ __( 'Add content...' ) }
-								keepPlaceholderOnFocus
-							/>
+							{ ( ! RichText.isEmpty( content ) || isSelected ) && (
+								<RichText
+									tagName="p"
+									className="wp-block-coblocks-banner-content"
+									onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
+									value={ content }
+									placeholder={ __( 'Add content...' ) }
+									keepPlaceholderOnFocus
+								/>
+							) }
 						</div>
 
 						<div className="wp-block-coblocks-banner__buttons">
