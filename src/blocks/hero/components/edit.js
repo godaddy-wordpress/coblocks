@@ -141,7 +141,7 @@ class Edit extends Component {
 		const enablePositions = {
 			top: false,
 			right: true,
-			bottom: false,
+			bottom: fullscreen ? false : true,
 			left: true,
 			topRight: false,
 			bottomRight: false,

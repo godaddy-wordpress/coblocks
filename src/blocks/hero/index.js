@@ -13,6 +13,7 @@ import Edit from './components/edit';
 import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import CSSGridAttributes from '../../components/grid-control/attributes';
+import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 
 /**
  * WordPress dependencies
@@ -41,6 +42,7 @@ const blockAttributes = {
 	...CSSGridAttributes,
 	...DimensionsAttributes,
 	...BackgroundAttributes,
+	...ResponsiveBaseControlAttributes,
 	align: {
 		type: 'string',
 		default: 'full',
