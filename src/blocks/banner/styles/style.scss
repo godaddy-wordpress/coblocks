@@ -49,5 +49,14 @@
 		&.banner-left-align{
 			flex-flow: row-reverse;
 		}
+
+		.wp-block-coblocks-banner-title{
+			margin-top: 0px;
+			padding-top: 0px;
+		}
+
+		.wp-block-button{
+			margin-bottom: 0px;
+		}
 	}
 }

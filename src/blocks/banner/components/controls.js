@@ -54,7 +54,7 @@ class Controls extends Component {
 			title: __( 'Buttons on right' ),
 			isActive: layout === 'right',
 			onClick: () => {
-				setAttributes( { layout: 'right', contentAlign: 'right' } );
+				setAttributes( { layout: 'right', contentAlign: 'left' } );
 				if( getBlockContents.innerBlocks ){
 					dispatch( 'core/editor' ).updateBlockAttributes( getBlockContents.innerBlocks[0].clientId, { contentAlign: 'right' });
 				}
