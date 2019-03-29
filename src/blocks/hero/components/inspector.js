@@ -82,66 +82,6 @@ class Inspector extends Component {
 			saveCoBlocksMeta,
 		} = attributes;
 
-		let layoutAttributes = {};
-		//top
-		layoutAttributes[ 'top-left' ] = {
-			wrapper: {
-				contentAlign: 'left',
-			},
-		};
-
-		layoutAttributes[ 'top-center' ] = {
-			wrapper: {
-				contentAlign: 'center',
-			},
-		};
-
-		layoutAttributes[ 'top-right' ] = {
-			wrapper: {
-				contentAlign: 'right',
-			},
-		};
-
-		//center
-		layoutAttributes[ 'center-left' ] = {
-			wrapper: {
-				contentAlign: 'left',
-			},
-		};
-
-		layoutAttributes[ 'center-center' ] = {
-			wrapper: {
-				contentAlign: 'center',
-			},
-		};
-
-		layoutAttributes[ 'center-right' ] = {
-			wrapper: {
-				contentAlign: 'right',
-			},
-		};
-
-		//bottom
-		layoutAttributes[ 'bottom-left' ] = {
-			wrapper: {
-				contentAlign: 'left',
-			},
-		};
-
-		layoutAttributes[ 'bottom-center' ] = {
-			wrapper: {
-				contentAlign: 'center',
-			},
-		};
-
-		layoutAttributes[ 'bottom-right' ] = {
-			wrapper: {
-				contentAlign: 'right',
-			},
-		};
-
-		let getBlockContents = select( 'core/editor' ).getBlock( clientId );
-
 		const classes = classnames(
 			'components-base-control',
 			'components-coblocks-css-grid-selector', {
