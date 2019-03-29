@@ -113,19 +113,21 @@ class Inspector extends Component {
 						/>
 
 						<CSSGridControl { ...this.props } />
-
-						<ResponsiveBaseControl { ...this.props }
-							label={ __( 'Height in pixels' ) }
-							height={ height }
-							heightTablet={ heightTablet }
-							heightMobile={ heightMobile }
-							onChange={ ( event ) => { setAttributes( { height: parseInt( event.target.value, 10 ) } ) } }
-							onChangeTablet={ ( event ) => { setAttributes( { heightTablet: parseInt( event.target.value, 10 ) } ) } }
-							onChangeMobile={ ( event ) => { setAttributes( { heightMobile: parseInt( event.target.value, 10 ) } ) } }
-							sync={ syncHeight }
-							type="height"
-							min="40"
-						/>
+						{ ! fullscreen && (
+							<ResponsiveBaseControl { ...this.props }
+								label={ __( 'Height in pixels' ) }
+								height={ height }
+								heightTablet={ heightTablet }
+								heightMobile={ heightMobile }
+								onChange={ ( event ) => { setAttributes( { height: parseInt( event.target.value, 10 ) } ) } }
+								onChangeTablet={ ( event ) => { setAttributes( { heightTablet: parseInt( event.target.value, 10 ) } ) } }
+								onChangeMobile={ ( event ) => { setAttributes( { heightMobile: parseInt( event.target.value, 10 ) } ) } }
+								sync={ syncHeight }
+								type="height"
+								min="40"
+							/>
+						) }
+						
 
 						<RangeControl
 							label={ __( 'Content width in pixels' ) }

@@ -143,7 +143,7 @@ class CoBlocks_Generated_Styles {
 						foreach ( $dividerObj as $dividerElement => $dividerElObj ) {
 							$output .= '@media only screen and (max-width: ' . apply_filters( 'coblocks_tablet_breakpoint', '768px' ) . ') {';
 								if( $dividerElement == 'height' && isset( $dividerElObj->heightTablet ) ){
-									$output .= sprintf( '.%1$s > [class*="__inner"] {', esc_attr( $dividerKey ) );
+									$output .= sprintf( '.%1$s > [class*="__inner"]:not(.is-fullscreen) {', esc_attr( $dividerKey ) );
 										$output .= 'height:'. $dividerElObj->heightTablet . 'px !important';
 									$output .= '}';
 								}
@@ -172,7 +172,7 @@ class CoBlocks_Generated_Styles {
 									$output .= '}';
 								}
 								if( $dividerElement == 'height' && isset( $dividerElObj->heightMobile ) ){
-									$output .= sprintf( '.%1$s > [class*="__inner"] {', esc_attr( $dividerKey ) );
+									$output .= sprintf( '.%1$s > [class*="__inner"]:not(.is-fullscreen)  {', esc_attr( $dividerKey ) );
 										$output .= 'height:'. $dividerElObj->heightMobile . 'px !important';
 									$output .= '}';
 								}
