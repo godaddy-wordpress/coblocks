@@ -99,6 +99,16 @@
 					}
 				}
 			}
+
+			&.is-hero-resizing{
+				.wp-block-coblocks-hero__box {
+					&.is-resizing {
+						&::after {
+							opacity: 0;
+						}
+					}
+				}
+			}
 		}
 	}
 
