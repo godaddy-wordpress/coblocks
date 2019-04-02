@@ -234,6 +234,7 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
+
 				<div className={ classes }>
 					<ResizableBox
 						className={ innerClasses }
