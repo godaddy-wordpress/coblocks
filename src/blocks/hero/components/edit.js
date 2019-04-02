@@ -295,12 +295,12 @@ class Edit extends Component {
 						) }
 					</div> :
 					<ResizableBox
-						className={ innerClasses } 
+						className={ innerClasses }
 						style={ innerStyles }
 						size={ {
 							height: heightResizer.value,
 						} }
-						minHeight="20"
+						minHeight="500"
 						enable={ {
 							top: false,
 							right: false,
@@ -385,7 +385,6 @@ class Edit extends Component {
 						) }
 					</ResizableBox>
 				}
-					
 				</div>
 			</Fragment>
 		];
