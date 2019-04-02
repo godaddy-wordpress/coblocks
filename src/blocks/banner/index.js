@@ -13,13 +13,13 @@ import Edit from './components/edit';
 import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
+
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
 const { RichText, getColorClassName, getFontSizeClass, InnerBlocks } = wp.editor;
-
 
 /**
  * Block constants
@@ -49,7 +49,7 @@ const blockAttributes = {
 	},
 	content: {
 		type: 'string',
-		default: __( 'Prompt visitors to take action with a call to action heading and button.' ),
+		default: __( 'Prompt visitors to take action with a call to action and a button.' ),
 	},
 	align: {
 		type: 'string',
@@ -108,7 +108,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Prompt visitors to take action with a call to action heading and button.' ),
+	description: __( 'Prompt visitors to take action with a call to action and a button.' ),
 
 	keywords: keywords,
 

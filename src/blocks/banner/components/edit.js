@@ -25,10 +25,6 @@ const { ResizableBox, Spinner } = wp.components;
 const { isBlobURL } = wp.blob;
 
 /**
- * Constants
- */
-
-/**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
  * The contents of the array should never change.
  * The array should contain the name of each block that is allowed.
@@ -39,14 +35,12 @@ const { isBlobURL } = wp.blob;
 */
 const ALLOWED_BLOCKS = [ 'coblocks/buttons' ];
 const TEMPLATE = [
-	[ 'coblocks/buttons', { contentAlign: 'left', items: 2, gutter: 'medium' },
+	[ 'coblocks/buttons', { contentAlign: 'left', items: 1 },
 		[
-			[ 'core/button', { text: _x( 'Primary', 'content placeholder' ) } ],
-			[ 'core/button', { text: _x( 'Secondary', 'content placeholder' ), className: 'is-style-outline' } ],
+			[ 'core/button', { text: _x( 'Get Started', 'content placeholder' ) } ],
 		]
 	],
 ];
-
 
 /**
  * Block edit function
@@ -70,9 +64,11 @@ class Edit extends Component {
 		this.getBrowserWidth();
 		window.addEventListener( 'resize', this.getBrowserWidth.bind(this) );
 	}
+
 	componentWillMount(){
 		this.getBrowserWidth();
 	}
+
 	componentWillUnmount(){
 		window.removeEventListener( 'resize', this.getBrowserWidth.bind(this) );
 	}
@@ -238,11 +234,9 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<div
-					className={ classes }
-				>	
+				<div className={ classes }>
 					<ResizableBox
-						className={ innerClasses } 
+						className={ innerClasses }
 						style={ innerStyles }
 						size={ {
 							height: heightResizer.value,
