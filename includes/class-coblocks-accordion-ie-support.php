@@ -67,6 +67,7 @@ class CoBlocks_Accordion_IE_Support {
 		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
+		add_action( 'the_post', array( $this, 'load_assets' ) );
 	}
 
 	/**
