@@ -60,6 +60,7 @@ class Edit extends Component {
 		this.getBrowserWidth = this.getBrowserWidth.bind( this );
 
 		this.state = {
+			resizingInner: false,
 			resizing: false,
 			innerWidth: this.getBrowserWidth(),
 		}
@@ -186,6 +187,7 @@ class Edit extends Component {
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 				[ `has-${ contentAlign }-content` ]: contentAlign,
 				'is-fullscreen': fullscreen,
+				'is-hero-resizing' : this.state.resizingInner,
 			}
 		);
 
@@ -333,14 +335,14 @@ class Edit extends Component {
 							}
 
 							toggleSelection( true );
-							this.setState( { resizing: false } );
+							this.setState( { resizing: false, resizingInner: false } );
 
 							//update meta
 							this.saveMeta( 'height' );
 						} }
 						onResizeStart={ () => {
 							toggleSelection( false );
-							this.setState( { resizing: true } );
+							this.setState( { resizing: true, resizingInner: true } );
 						} }
 					>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
