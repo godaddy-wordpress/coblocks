@@ -241,7 +241,7 @@ class Edit extends Component {
 						size={ {
 							height: heightResizer.value,
 						} }
-						minHeight="20"
+						minHeight="350"
 						enable={ {
 							top: false,
 							right: false,
@@ -290,7 +290,6 @@ class Edit extends Component {
 								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
 							</div>
 						: null }
-
 						<div className="wp-block-coblocks-banner__content">
 							{ ( ! RichText.isEmpty( heading ) || isSelected ) && (
 								<RichText
@@ -314,7 +313,6 @@ class Edit extends Component {
 								/>
 							) }
 						</div>
-
 						<div className="wp-block-coblocks-banner__buttons">
 							<InnerBlocks
 								template={ TEMPLATE }
