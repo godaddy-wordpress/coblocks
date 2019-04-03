@@ -278,7 +278,7 @@ class Edit extends Component {
 		}
 
 		const classes = classnames(
-			'wp-block-coblocks-row', {
+			className, {
 				[ `coblocks-row--${ id }` ] : id,
 				[ `coblocks-row-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
