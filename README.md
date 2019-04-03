@@ -4,7 +4,7 @@
 
 [CoBlocks](https://coblocks.com?utm_medium=github&utm_source=github&utm_campaign=readme&utm_content=coblocks) is a suite of professional page building content blocks for the WordPress Gutenberg block editor. This the most innovative collection of page building WordPress blocks for the new Gutenberg block editor. We will make you rethink what WordPress is capable of.
 
-[![CoBlocks, an suite of page builder Gutenberg blocks](https://user-images.githubusercontent.com/1813435/51091002-586ff480-1752-11e9-8514-1e2d0b75fd3d.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=banner)
+[![CoBlocks, an suite of page builder Gutenberg blocks](https://user-images.githubusercontent.com/1813435/55430214-839cff80-555b-11e9-9624-fcd61fed398d.jpg)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=banner)
 
 ## Our Vision
 

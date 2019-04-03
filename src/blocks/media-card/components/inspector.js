@@ -13,7 +13,7 @@ const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, PanelColorSettings } = wp.editor;
-const { PanelBody, ToggleControl, TextareaControl, RangeControl } = wp.components;
+const { PanelBody, ToggleControl, TextareaControl, RangeControl, ExternalLink } = wp.components;
 
 /**
  * Inspector controls
@@ -102,7 +102,14 @@ class Inspector extends Component {
 								label={ __( 'Alt Text (Alternative Text)' ) }
 								value={ mediaAlt }
 								onChange={ ( nextMediaAlt ) => setAttributes( { mediaAlt: nextMediaAlt } ) }
-								help={ __( 'Alternative text describes your image to people who can’t see it. Add a short description with its key details.' ) }
+								help={ 
+									<Fragment>
+										<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
+											{ __( 'Describe the purpose of the image' ) }
+										</ExternalLink>
+										{ __( 'Leave empty if the image is purely decorative.' ) }
+									</Fragment>
+								}
 							/>
 						) }
 						<ToggleControl

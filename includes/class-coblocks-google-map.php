@@ -67,6 +67,7 @@ class CoBlocks_Block_GoogleMap {
 		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'map_assets' ) );
+		add_action( 'the_post', array( $this, 'map_assets' ) );
 		add_action( 'init', array( $this, 'register_settings' ) );
 	}
 
