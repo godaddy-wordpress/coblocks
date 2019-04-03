@@ -182,7 +182,7 @@ const settings = {
 				backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 				color: textColor ? textColor.color : undefined,
 				backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
-				height: fullscreen ? undefined : height,
+				minHeight: fullscreen ? undefined : height,
 			};
 
 			return (

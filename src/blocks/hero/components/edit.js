@@ -200,7 +200,7 @@ class Edit extends Component {
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
-			height: fullscreen ? undefined : height,
+			minHeight: fullscreen ? undefined : height,
 		};
 
 		const enablePositions = {
