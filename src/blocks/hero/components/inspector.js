@@ -12,6 +12,7 @@ import applyWithColors from './colors';
 import BackgroundPanel from '../../../components/background';
 import DimensionsControl from '../../../components/dimensions-control/';
 import CSSGridControl from '../../../components/grid-control/';
+import ResponsiveBaseControl from '../../../components/responsive-base-control/';
 
 /**
  * WordPress dependencies
@@ -80,67 +81,11 @@ class Inspector extends Component {
 			paddingSyncUnits,
 			paddingSize,
 			saveCoBlocksMeta,
+			height,
+			heightTablet,
+			heightMobile,
+			syncHeight,
 		} = attributes;
-
-		let layoutAttributes = {};
-		//top
-		layoutAttributes[ 'top-left' ] = {
-			wrapper: {
-				contentAlign: 'left',
-			},
-		};
-
-		layoutAttributes[ 'top-center' ] = {
-			wrapper: {
-				contentAlign: 'center',
-			},
-		};
-
-		layoutAttributes[ 'top-right' ] = {
-			wrapper: {
-				contentAlign: 'right',
-			},
-		};
-
-		//center
-		layoutAttributes[ 'center-left' ] = {
-			wrapper: {
-				contentAlign: 'left',
-			},
-		};
-
-		layoutAttributes[ 'center-center' ] = {
-			wrapper: {
-				contentAlign: 'center',
-			},
-		};
-
-		layoutAttributes[ 'center-right' ] = {
-			wrapper: {
-				contentAlign: 'right',
-			},
-		};
-
-		//bottom
-		layoutAttributes[ 'bottom-left' ] = {
-			wrapper: {
-				contentAlign: 'left',
-			},
-		};
-
-		layoutAttributes[ 'bottom-center' ] = {
-			wrapper: {
-				contentAlign: 'center',
-			},
-		};
-
-		layoutAttributes[ 'bottom-right' ] = {
-			wrapper: {
-				contentAlign: 'right',
-			},
-		};
-
-		let getBlockContents = select( 'core/editor' ).getBlock( clientId );
 
 		const classes = classnames(
 			'components-base-control',
@@ -166,9 +111,21 @@ class Inspector extends Component {
 							dimensionSize={ paddingSize }
 							saveCoBlocksMeta={ saveCoBlocksMeta }
 						/>
-
 						<CSSGridControl { ...this.props } />
-
+						{ ! fullscreen && (
+							<ResponsiveBaseControl { ...this.props }
+								label={ __( 'Height in pixels' ) }
+								height={ height }
+								heightTablet={ heightTablet }
+								heightMobile={ heightMobile }
+								onChange={ ( event ) => { setAttributes( { height: parseInt( event.target.value, 10 ) } ) } }
+								onChangeTablet={ ( event ) => { setAttributes( { heightTablet: parseInt( event.target.value, 10 ) } ) } }
+								onChangeMobile={ ( event ) => { setAttributes( { heightMobile: parseInt( event.target.value, 10 ) } ) } }
+								sync={ syncHeight }
+								type="height"
+								min="500"
+							/>
+						) }
 						<RangeControl
 							label={ __( 'Content width in pixels' ) }
 							value={ parseInt( maxWidth ) }

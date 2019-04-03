@@ -56,8 +56,13 @@ class Edit extends Component {
 	constructor( props ) {
 		super( ...arguments );
 
+		this.saveMeta = this.saveMeta.bind( this );
+		this.getBrowserWidth = this.getBrowserWidth.bind( this );
+
 		this.state = {
+			resizingInner: false,
 			resizing: false,
+			innerWidth: this.getBrowserWidth(),
 		}
 	}
 
@@ -66,6 +71,61 @@ class Edit extends Component {
 		if( currentBlock ){
 			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
 			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = this.props.attributes.maxWidth + 'px';
+		}
+
+		this.getBrowserWidth();
+		window.addEventListener( 'resize', this.getBrowserWidth.bind(this) );
+	}
+
+	componentWillMount(){
+		this.getBrowserWidth();
+	}
+	componentWillUnmount(){
+		window.removeEventListener( 'resize', this.getBrowserWidth.bind(this) );
+	}
+
+	getBrowserWidth(){
+		this.setState({ innerWidth : window.innerWidth });
+		return window.innerWidth;
+	}
+
+	saveMeta( type ){
+		let meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
+		let block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
+		let dimensions = {};
+
+		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
+			let id = this.props.name.split('/').join('-') + '-' + this.props.attributes.coblocks.id;
+			let height = {
+				height: block.attributes[ type ],
+				heightTablet: block.attributes[ type + 'Tablet' ],
+				heightMobile: block.attributes[ type + 'Mobile' ],
+			};
+
+			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height  == '' ) ){
+				dimensions = {};
+			} else {
+				dimensions = JSON.parse( meta._coblocks_responsive_height );
+			}
+
+			if ( typeof dimensions[ id ] === 'undefined' ) {
+				dimensions[ id ] = {};
+				dimensions[ id ][ type ] = {};
+			} else {
+				if ( typeof dimensions[ id ][ type ] === 'undefined' ){
+					dimensions[ id ][ type ] = {};
+				}
+			}
+
+			dimensions[ id ][ type ] = height;
+
+			// Save values to metadata.
+			wp.data.dispatch( 'core/editor' ).editPost({
+				meta: {
+					_coblocks_responsive_height: JSON.stringify( dimensions ),
+				}
+			});
+
 		}
 	}
 
@@ -100,6 +160,9 @@ class Edit extends Component {
 			contentAlign,
 			focalPoint,
 			hasParallax,
+			height,
+			heightTablet,
+			heightMobile,
 		} = attributes;
 
 		const dropZone = (
@@ -124,6 +187,7 @@ class Edit extends Component {
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 				[ `has-${ contentAlign }-content` ]: contentAlign,
 				'is-fullscreen': fullscreen,
+				'is-hero-resizing' : this.state.resizingInner,
 			}
 		);
 
@@ -136,6 +200,7 @@ class Edit extends Component {
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+			minHeight: fullscreen ? undefined : height,
 		};
 
 		const enablePositions = {
@@ -148,6 +213,25 @@ class Edit extends Component {
 			bottomLeft: false,
 			topLeft: false,
 		};
+
+		let heightResizer = {
+			target : 'height',
+			value  : height
+		};
+
+		if( this.state.innerWidth <= 768 && this.state.innerWidth > 514 ){
+			heightResizer = {
+				target : 'heightTablet',
+				value  : ( heightTablet ) ? heightTablet : height,
+			};
+
+		}else if( this.state.innerWidth <= 514 ){
+			heightResizer = {
+				target : 'heightMobile',
+				value  : ( heightMobile ) ? heightMobile : height,
+			};
+
+		}
 
 		return [
 			<Fragment>
@@ -165,7 +249,102 @@ class Edit extends Component {
 				<div
 					className={ classes }
 				>
+				{ fullscreen ?
 					<div className={ innerClasses } style={ innerStyles } >
+						{ isBlobURL( backgroundImg ) && <Spinner /> }
+						{ backgroundType == 'video' ?
+							<div className="coblocks-video-background">
+								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
+							</div>
+						: null }
+						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
+							<ResizableBox
+								className={ classnames(
+									'wp-block-coblocks-hero__box',
+									'editor-media-container__resizer', {
+										'is-resizing' : this.state.resizing,
+									}
+								) }
+								size={ { width: maxWidth } }
+								minWidth="400"
+								maxWidth="1000"
+								enable={ enablePositions }
+								onResizeStart={ () => {
+									this.setState( { resizing: true } );
+									toggleSelection( false );
+									let currentBlock = document.getElementById( 'block-' + clientId );
+									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = '';
+									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = maxWidth + 'px';
+								} }
+								onResizeStop={ ( event, direction, elt, delta ) => {
+									setAttributes( {
+										maxWidth: parseInt( maxWidth + delta.width, 10 ),
+									} );
+									toggleSelection( true );
+									this.setState( { resizing: false } );
+									let currentBlock = document.getElementById( 'block-' + clientId );
+									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
+									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
+								} }
+							>
+								<InnerBlocks
+									template={ TEMPLATE }
+									allowedBlocks={ ALLOWED_BLOCKS }
+									templateLock={ false }
+									templateInsertUpdatesSelection={ false }
+								/>
+							</ResizableBox>
+						) }
+					</div> :
+					<ResizableBox
+						className={ innerClasses }
+						style={ innerStyles }
+						size={ {
+							height: heightResizer.value,
+						} }
+						minHeight="500"
+						enable={ {
+							top: false,
+							right: false,
+							bottom: true,
+							left: false,
+							topRight: false,
+							bottomRight: false,
+							bottomLeft: false,
+							topLeft: false,
+						} }
+						onResizeStop={ ( event, direction, elt, delta ) => {
+							switch( heightResizer.target ){
+								case 'heightTablet':
+									setAttributes( {
+										heightTablet : parseInt( heightResizer.value + delta.height, 10 ),
+									} );
+								break;
+
+								case 'heightMobile':
+									setAttributes( {
+										heightMobile : parseInt( heightResizer.value + delta.height, 10 ),
+									} );
+								break;
+
+								default:
+									setAttributes( {
+										height : parseInt( heightResizer.value + delta.height, 10 ),
+									} );
+								break;
+							}
+
+							toggleSelection( true );
+							this.setState( { resizing: false, resizingInner: false } );
+
+							//update meta
+							this.saveMeta( 'height' );
+						} }
+						onResizeStart={ () => {
+							toggleSelection( false );
+							this.setState( { resizing: true, resizingInner: true } );
+						} }
+					>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
@@ -206,7 +385,8 @@ class Edit extends Component {
 								/>
 							</ResizableBox>
 						) }
-					</div>
+					</ResizableBox>
+				}
 				</div>
 			</Fragment>
 		];

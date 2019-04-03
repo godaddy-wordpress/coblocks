@@ -99,11 +99,22 @@
 					}
 				}
 			}
+
+			&.is-hero-resizing{
+				.wp-block-coblocks-hero__box {
+					&.is-resizing {
+						&::after {
+							opacity: 0;
+						}
+					}
+				}
+			}
 		}
 	}
 
 	// Show resize handle when the block is selected.
 	&.is-selected {
+		.wp-block-coblocks-hero__inner,
 		.wp-block-coblocks-hero__box {
 			> span {
 				.components-resizable-box__handle {
