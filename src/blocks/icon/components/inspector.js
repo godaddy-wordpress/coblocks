@@ -184,7 +184,7 @@ class Inspector extends Component {
 					<PanelBody title={ __( 'Icon Settings' ) }>
 						{ iconSize === 'advanced' ?
 							<Fragment>
-								<div className='components-coblocks-icon-block--advanced-size'>
+								<div className='components-base-control components-coblocks-icon-block--advanced-size'>
 									<Button
 										className="components-color-palette__clear"
 										type="button"
