@@ -4,7 +4,7 @@
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InspectorControls } = wp.editor;
-const { PanelBody, TextareaControl } = wp.components;
+const { PanelBody, TextareaControl, ExternalLink } = wp.components;
 
 /**
  * Inspector controls
@@ -39,7 +39,14 @@ class Inspector extends Component {
 							label={ __( 'Alt Text (Alternative Text)' ) }
 							value={ alt }
 							onChange={ this.updateAlt }
-							help={ __( 'Alternative text describes your image to people who can’t see it. Add a short description with its key details.' ) }
+							help={ 
+								<Fragment>
+									<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
+										{ __( 'Describe the purpose of the image' ) }
+									</ExternalLink>
+									{ __( 'Leave empty if the image is purely decorative.' ) }
+								</Fragment>
+							}
 						/>
 					</PanelBody>
 				</InspectorControls>

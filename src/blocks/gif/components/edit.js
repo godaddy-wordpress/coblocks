@@ -295,7 +295,6 @@ class Edit extends Component {
 						label={ __( 'Gif' ) }
 						instructions={ __( 'Search for that perfect gif on Giphy' ) }
 						className={ className }>
-						<form>
 							{ icons.giphy }
 							<input
 								key="search-field"
@@ -309,7 +308,6 @@ class Edit extends Component {
 							>
 								{ results }
 							</ul>
-						</form>
 					</Placeholder>
 				</Fragment>
 			]

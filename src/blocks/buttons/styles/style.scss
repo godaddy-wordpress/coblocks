@@ -3,6 +3,7 @@
 	&__inner {
 		position: relative;
 	}
+
 	&__inner {
 		align-items: center;
 		display: flex;
@@ -10,14 +11,15 @@
 		text-align: center;
 
 		&.flex-align-left {
+			align-items: flex-start;
 			justify-content: flex-start;
 			text-align: left;
-			align-items: flex-start;
 		}
+
 		&.flex-align-right {
+			align-items: flex-end;
 			justify-content: flex-end;
 			text-align: right;
-			align-items: flex-end;
 		}
 
 		// Display button as stacked.

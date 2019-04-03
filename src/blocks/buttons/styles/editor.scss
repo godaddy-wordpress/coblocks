@@ -84,6 +84,9 @@
 					&:not(:last-child) {
 						margin-right: ($gutter--small / 2) - 16px;
 					}
+					&:last-child {
+						margin-right: 0px;
+					}
 				}
 			}
 
@@ -109,6 +112,10 @@
 
 					&:not(:last-child) {
 						margin-right: ($gutter--medium / 2) - 16px;
+					}
+
+					&:last-child {
+						margin-right: 0px;
 					}
 				}
 			}
@@ -136,6 +143,10 @@
 					&:not(:last-child) {
 						margin-right: ($gutter--large / 2) - 16px;
 					}
+
+					&:last-child {
+						margin-right: 0px;
+					}
 				}
 			}
 
@@ -161,6 +172,10 @@
 
 					&:not(:last-child) {
 						margin-right: ($gutter--huge / 2) - 16px;
+					}
+
+					&:last-child {
+						margin-right: 0px;
 					}
 				}
 			}
