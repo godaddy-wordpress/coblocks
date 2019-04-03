@@ -111,7 +111,6 @@ class Inspector extends Component {
 							dimensionSize={ paddingSize }
 							saveCoBlocksMeta={ saveCoBlocksMeta }
 						/>
-
 						<CSSGridControl { ...this.props } />
 						{ ! fullscreen && (
 							<ResponsiveBaseControl { ...this.props }
@@ -124,11 +123,9 @@ class Inspector extends Component {
 								onChangeMobile={ ( event ) => { setAttributes( { heightMobile: parseInt( event.target.value, 10 ) } ) } }
 								sync={ syncHeight }
 								type="height"
-								min="40"
+								min="500"
 							/>
 						) }
-						
-
 						<RangeControl
 							label={ __( 'Content width in pixels' ) }
 							value={ parseInt( maxWidth ) }

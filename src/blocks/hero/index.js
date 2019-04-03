@@ -94,7 +94,7 @@ const blockAttributes = {
 	},
 	height: {
 		type: 'number',
-		default: 420,
+		default: 500,
 	},
 };
 
