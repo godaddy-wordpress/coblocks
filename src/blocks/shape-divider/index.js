@@ -383,10 +383,10 @@ const settings = {
 
 		return (
 			<div className={ classes } style={ styles } aria-hidden="true">
-				<div className="wp-block-coblocks-shape-divider__svg-wrapper" style={ { height: shapeHeight } }>
+				<div className="wp-block-coblocks-shape-divider__svg-wrapper" style={ { minHeight: shapeHeight } }>
 					{ getDividerFromStyle( attributes.className ) }
 				</div>
-				<div className="wp-block-coblocks-shape-divider__alt-wrapper" style={ { height: backgroundHeight } }></div>
+				<div className="wp-block-coblocks-shape-divider__alt-wrapper" style={ { minHeight: backgroundHeight } }></div>
 			</div>
 		);
 	},
