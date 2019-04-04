@@ -39,7 +39,7 @@ class CoBlocks_Getting_Started_Page {
 			__( 'CoBlocks', '@@textdomain' ),
 			__( 'CoBlocks', '@@textdomain' ),
 			apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
-			'coblocks_admin_menu',
+			'coblocks-getting-started',
 			array( $this, 'content' ),
 			'data:image/svg+xml;base64,' . base64_encode( $svg )
 		);
@@ -64,7 +64,7 @@ class CoBlocks_Getting_Started_Page {
 		$js_dir = CoBlocks()->asset_source( 'js' );
 
 		// Only enqueue admin scripts and styles on relevant pages.
-		if ( in_array( $screen_id, array( 'toplevel_page_coblocks_admin_menu', 'coblocks_page_coblocks-getting-started' ), true ) ) {
+		if ( in_array( $screen_id, array( 'toplevel_page_coblocks-getting-started', 'coblocks_page_coblocks-getting-started' ), true ) ) {
 			wp_enqueue_style(
 				'coblocks-getting-started',
 				$dir . 'coblocks-getting-started.min.css',
