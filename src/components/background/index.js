@@ -5,9 +5,10 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import BackgroundAttributes from './attributes';
 import BackgroundClasses from './classes';
-import BackgroundImageToolbarControls from './controls';
-import BackgroundImageDropZone from './dropzone';
-import BackgroundImageTransforms from './transforms';
+import BackgroundControls from './controls';
+import BackgroundDropZone from './dropzone';
+import BackgroundTransforms from './transforms';
+import BackgroundVideo from './video';
 
 /**
  * WordPress dependencies
@@ -28,15 +29,16 @@ export const BLOCKS_WITH_AUTOPADDING = [ 'coblocks/row', 'coblocks/column', 'cob
 export {
 	BackgroundAttributes,
 	BackgroundClasses,
-	BackgroundImageToolbarControls,
-	BackgroundImageDropZone,
-	BackgroundImageTransforms,
+	BackgroundControls,
+	BackgroundDropZone,
+	BackgroundTransforms,
+	BackgroundVideo,
 };
 
 /**
  * Background Options Component
  */
-function BackgroundImagePanel( props, options ) {
+function BackgroundPanel( props, options ) {
 
 	const {
 		attributes,
@@ -96,7 +98,7 @@ function BackgroundImagePanel( props, options ) {
 					value={ backgroundOverlay }
 					onChange={ ( nextBackgroundOverlay ) => setAttributes( {  backgroundOverlay: nextBackgroundOverlay } ) }
 					min={ 0 }
-					max={ 90 }
+					max={ 100 }
 					step={ 10 }
 				/>
 			);
@@ -224,4 +226,4 @@ function BackgroundImagePanel( props, options ) {
 	}
 }
 
-export default BackgroundImagePanel;
+export default BackgroundPanel;

@@ -15,7 +15,7 @@ import Controls from './controls';
 import applyWithColors from './colors';
 import rowIcons from './icons';
 import { title, icon } from '../'
-import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../components/background';
+import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
 
 /**
  * WordPress dependencies
@@ -168,12 +168,13 @@ class Edit extends Component {
 			isStackedOnMobile,
 			focalPoint,
 			hasParallax,
+			backgroundType,
 		} = attributes;
 
 		const dropZone = (
-			<BackgroundImageDropZone
+			<BackgroundDropZone
 				{ ...this.props }
-				label={ sprintf( __( 'Add backround image to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
+				label={ sprintf( __( 'Add backround to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
 			/>
 		);
 
@@ -277,7 +278,7 @@ class Edit extends Component {
 		}
 
 		const classes = classnames(
-			'wp-block-coblocks-row', {
+			className, {
 				[ `coblocks-row--${ id }` ] : id,
 				[ `coblocks-row-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 			}
@@ -298,7 +299,7 @@ class Edit extends Component {
 
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
@@ -325,8 +326,9 @@ class Edit extends Component {
 					/>
 				) }
 				<div className={ classes }>
+					{ isBlobURL( backgroundImg ) && <Spinner /> }
+					{ BackgroundVideo( attributes ) }
 					<div className={ innerClasses } style={ innerStyles }>
-						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						<InnerBlocks
 							template={ TEMPLATE[ layout ] }
 							templateLock="all"

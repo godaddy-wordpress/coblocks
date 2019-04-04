@@ -10,9 +10,10 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
 import Edit from './components/edit';
-import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
+import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import CSSGridAttributes from '../../components/grid-control/attributes';
+import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 
 /**
  * WordPress dependencies
@@ -41,6 +42,7 @@ const blockAttributes = {
 	...CSSGridAttributes,
 	...DimensionsAttributes,
 	...BackgroundAttributes,
+	...ResponsiveBaseControlAttributes,
 	align: {
 		type: 'string',
 		default: 'full',
@@ -89,6 +91,10 @@ const blockAttributes = {
 	customBackgroundColor: {
 		type: 'string',
 		default: '#f3f3f3',
+	},
+	height: {
+		type: 'number',
+		default: 500,
 	},
 };
 
@@ -141,6 +147,7 @@ const settings = {
 				hasParallax,
 				videoMuted,
 				videoLoop,
+				height,
 			} = attributes;
 
 			const textClass = getColorClassName( 'color', textColor );
@@ -175,16 +182,13 @@ const settings = {
 				backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 				color: textColor ? textColor.color : undefined,
 				backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+				minHeight: fullscreen ? undefined : height,
 			};
 
 			return (
 				<div className={ classes } style={ styles } >
 					<div className={ innerClasses } style={ innerStyles }>
-						{ backgroundType == 'video' ?
-							<div className="coblocks-video-background">
-								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
-							</div>
-						: null }
+						{ BackgroundVideo( attributes ) }
 						<div className="wp-block-coblocks-hero__box" style={ { maxWidth: maxWidth ? maxWidth + 'px' : undefined } }>
 							<InnerBlocks.Content />
 						</div>

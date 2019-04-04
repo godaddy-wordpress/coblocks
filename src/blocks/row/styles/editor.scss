@@ -390,11 +390,16 @@
 		&::before {
 			height: 15px;
 			width: 15px;
+			right: calc(50% - 7px);
 		}
 
 		&-right {
 			height: calc(100% + 24px);
 			top: -14px;
+
+			&::before {
+				top: 8px;
+			}
 		}
 
 		&-left {
@@ -402,6 +407,11 @@
 			left: inherit;
 			pointer-events: none;
 			top: inherit;
+
+			&::before {
+				top: auto;
+				bottom: 8px;
+			}
 		}
 
 		.has-no-gutter & {

@@ -11,7 +11,7 @@ import includes from 'lodash/includes';
 import applyWithColors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
-import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../components/background';
+import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
 import icons from './../../../utils/icons';
 import MediaContainer from './media-container';
 
@@ -22,7 +22,8 @@ const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InnerBlocks, mediaUpload } = wp.editor;
-const { IconButton, DropZone } = wp.components;
+const { Spinner } = wp.components;
+const { isBlobURL } = wp.blob;
 
 /**
  * This block can recieve both image and video files.
@@ -173,12 +174,13 @@ class Edit extends Component {
 			mediaPosition,
 			focalPoint,
 			hasParallax,
+			backgroundType,
 		} = attributes;
 
 		const dropZone = (
-			<BackgroundImageDropZone
+			<BackgroundDropZone
 				{ ...this.props }
-				label={ __( 'Add backround image' ) }
+				label={ __( 'Add as backround' ) }
 			/>
 		);
 
@@ -194,7 +196,7 @@ class Edit extends Component {
 
 		const wrapperStyles = {
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
@@ -232,6 +234,8 @@ class Edit extends Component {
 					) }
 				>
 					<div className={ wrapperClasses } style={ wrapperStyles } >
+						{ isBlobURL( backgroundImg ) && <Spinner /> }
+						{ BackgroundVideo( attributes ) }
 						<div className="wp-block-coblocks-media-card__wrapper" style={ innerStyles } >
 							{ this.renderMediaArea() }
 							<div
