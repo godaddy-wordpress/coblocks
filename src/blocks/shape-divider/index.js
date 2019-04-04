@@ -414,7 +414,6 @@ const settings = {
 
 				const classes = classnames(
 					className, {
-					[ `coblocks-shape-divider-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
 					'is-vertically-flipped' : verticalFlip,
 					'is-horizontally-flipped' : horizontalFlip,
 					[ shapeClass ]: shapeClass,
