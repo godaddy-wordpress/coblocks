@@ -31,8 +31,7 @@ class CoBlocks_Getting_Started_Page {
 	 * Setup the admin menu.
 	 */
 	public function screen_page() {
-		add_submenu_page(
-			'edit.php?post_type=coblocks',
+		add_dashboard_page(
 			__( 'Getting Started', '@@textdomain' ),
 			__( 'Getting Started', '@@textdomain' ),
 			apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
@@ -60,7 +59,7 @@ class CoBlocks_Getting_Started_Page {
 		$js_dir = CoBlocks()->asset_source( 'js' );
 
 		// Only enqueue admin scripts and styles on relevant pages.
-		if ( in_array( $screen_id, array( 'coblocks_page_coblocks-getting-started' ), true ) ) {
+		if ( in_array( $screen_id, array( 'dashboard_page_coblocks-getting-started' ), true ) ) {
 			wp_enqueue_style(
 				'coblocks-getting-started',
 				$dir . 'coblocks-getting-started.min.css',
@@ -148,7 +147,7 @@ class CoBlocks_Getting_Started_Page {
 	 */
 	public function redirect( $plugin ) {
 		if ( ( $plugin == 'coblocks/class-coblocks.php' ) && ! isset( $_GET['activate-multi'] ) ) {
-			wp_safe_redirect( admin_url( 'edit.php?post_type=coblocks&page=coblocks-getting-started' ) );
+			wp_safe_redirect( admin_url( 'index.php?page=coblocks-getting-started' ) );
 			die();
 		}
 	}
