@@ -28,12 +28,14 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 ## Make beautiful web pages with Gutenberg, and CoBlocks
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
 
-* Resizable Row/Columns Blocks (New!)
-* Shape Divider Block (New!)
-* Features Block (New!)
-* Media Card Block (New!)
-* Icon Block (New!)
-* Map Block (New!)
+* Resizable Row/Columns Blocks
+* Shape Divider Block
+* Hero Block (New!)
+* Buttons Block (New!)
+* Features Block
+* Media Card Block
+* Icon Block
+* Map Block
 * Accordion Block
 * Alert Block
 * Author Profile Block
@@ -45,7 +47,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Pricing Table Block
 * Social Sharing Block
 
-And we're adding new Gutenberg blocks nearly every week!
+And we're adding new Gutenberg blocks all the time!
 
 ## Breakthrough Page Builder System
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, with the new WordPress editor.
@@ -119,6 +121,38 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 Please reach out via the contact form at the bottom right of [our website](https://coblocks.com).
 
 == Changelog ==
+
+= 1.9.3 =
+* New: Add official support for Gutenberg 5.4 and the upcoming WordPress 5.2 release 🎊
+* New: Add new Hero block 🎉
+* New: Add new Buttons block for displaying up to four buttons side by side 🎉
+* New: Add support for video backgrounds in all blocks
+* New: Add three new button styles to the core Button block: Circular, Shadow and 3D
+* New: Add 25 new icons to the Icon block
+* New: Add third party support for the CoBlocks Typography Control Panel
+* New: Add support for Gutenberg 5.2+ Focal Point pickers for background images
+* New: Add support for the Heebo Google font
+* New: Add new "None" style for the core List block
+* New: Add responsiveness to the CoBlocks margin and padding utility classes
+* New: Add third-party support for the CoBlocks Typography Control Panel
+* New: Add support for Ubunto in the Typography Control Panel
+* Tweak: Improve the background image controls within Background Settings panels
+* Tweak: Add a new button within the Background Settings panel to remove applied media
+* Tweak: Improve the third Pricing Table Item block positioning for wide and full alignments
+* Tweak: Update background media toolbar controls for improved UX
+* Tweak: Remove <code> custom formatting, as Gutenberg 5.3 aand WordPress 5.2 includes one
+* Tweak: Admin feedback notice now redirects to the admin plugins page
+* Tweak: Improve the icon for the "Uppercase" format
+* Tweak: Adjust the custom icon color for CoBlocks blocks
+* Tweak: Use has_block() to determine whether a $post contains a specific block
+* Tweak: Background opacity value now goes from 0-100%
+* Tweak: Shape Divider block now uses min-Height, instead of Height
+* Fix: Resolve issue where the custom class would not show up in the editor for the Row block
+* Fix: Click to Tweet block styles now properly render inside of Row/Column blocks
+* Fix: Media Card block now properly renders in Edge
+* Fix: Features block toolbar now renders properly when selected
+* Fix: Resolve issue where a single column Row block would not allow background images
+* Fix: Resolve display issue of the Map block style selector in Gutenberg 5.3+
 
 = 1.9.2 =
 * Fix: Add hot fix to resolve the core inserter conflict on empty paragraph blocks
