@@ -38,19 +38,10 @@ class CoBlocks_Getting_Started_Page {
 		add_menu_page(
 			__( 'CoBlocks', '@@textdomain' ),
 			__( 'CoBlocks', '@@textdomain' ),
-			'manage_options',
+			apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
 			'coblocks_admin_menu',
 			array( $this, 'content' ),
 			'data:image/svg+xml;base64,' . base64_encode( $svg )
-		);
-
-		add_submenu_page(
-			'coblocks_admin_menu',
-			__( 'Getting Started', '@@textdomain' ),
-			__( 'Getting Started', '@@textdomain' ),
-			apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
-			'coblocks-getting-started',
-			array( $this, 'content' )
 		);
 	}
 
