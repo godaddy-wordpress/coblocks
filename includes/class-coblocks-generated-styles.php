@@ -133,7 +133,7 @@ class CoBlocks_Generated_Styles {
 				}
 			}
 
-			// add media query for shape divider height on frontend
+			// Add media query for responsive height controls on the front-end.
 			$responsive_height = get_post_meta( $post->ID, '_coblocks_responsive_height', true );
 			$responsive_height = json_decode( $responsive_height );
 
@@ -144,18 +144,18 @@ class CoBlocks_Generated_Styles {
 							$output .= '@media only screen and (max-width: ' . apply_filters( 'coblocks_tablet_breakpoint', '768px' ) . ') {';
 							if ( $dividerElement == 'height' && isset( $dividerElObj->heightTablet ) ) {
 								$output     .= sprintf( '.%1$s > [class*="__inner"]:not(.is-fullscreen) {', esc_attr( $dividerKey ) );
-									$output .= 'height:' . $dividerElObj->heightTablet . 'px !important';
+									$output .= 'min-height:' . $dividerElObj->heightTablet . 'px !important';
 								$output     .= '}';
 							}
 
 							if ( $dividerElement == 'shapeHeight' && isset( $dividerElObj->heightTablet ) ) {
 								$output     .= sprintf( '.%1$s > .wp-block-coblocks-shape-divider__svg-wrapper {', esc_attr( $dividerKey ) );
-									$output .= 'height:' . $dividerElObj->heightTablet . 'px !important';
+									$output .= 'min-height:' . $dividerElObj->heightTablet . 'px !important';
 								$output     .= '}';
 							}
 							if ( $dividerElement == 'backgroundHeight' && isset( $dividerElObj->heightTablet ) ) {
 								$output     .= sprintf( '.%1$s > .wp-block-coblocks-shape-divider__alt-wrapper {', esc_attr( $dividerKey ) );
-									$output .= 'height:' . $dividerElObj->heightTablet . 'px !important';
+									$output .= 'min-height:' . $dividerElObj->heightTablet . 'px !important';
 								$output     .= '}';
 							}
 							$output .= '}';
@@ -163,17 +163,17 @@ class CoBlocks_Generated_Styles {
 							$output .= '@media only screen and (max-width: ' . apply_filters( 'coblocks_desktop_breakpoint', '514px' ) . ') {';
 							if ( $dividerElement == 'shapeHeight' && isset( $dividerElObj->heightMobile ) ) {
 								$output     .= sprintf( '.%1$s > .wp-block-coblocks-shape-divider__svg-wrapper {', esc_attr( $dividerKey ) );
-									$output .= 'height:' . $dividerElObj->heightMobile . 'px !important';
+									$output .= 'min-height:' . $dividerElObj->heightMobile . 'px !important';
 								$output     .= '}';
 							}
 							if ( $dividerElement == 'backgroundHeight' && isset( $dividerElObj->heightMobile ) ) {
 								$output     .= sprintf( '.%1$s > .wp-block-coblocks-shape-divider__alt-wrapper {', esc_attr( $dividerKey ) );
-									$output .= 'height:' . $dividerElObj->heightMobile . 'px !important';
+									$output .= 'min-height:' . $dividerElObj->heightMobile . 'px !important';
 								$output     .= '}';
 							}
 							if ( $dividerElement == 'height' && isset( $dividerElObj->heightMobile ) ) {
 								$output     .= sprintf( '.%1$s > [class*="__inner"]:not(.is-fullscreen)  {', esc_attr( $dividerKey ) );
-									$output .= 'height:' . $dividerElObj->heightMobile . 'px !important';
+									$output .= 'min-height:' . $dividerElObj->heightMobile . 'px !important';
 								$output     .= '}';
 							}
 							$output .= '}';
