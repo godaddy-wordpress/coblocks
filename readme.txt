@@ -123,7 +123,7 @@ Please reach out via the contact form at the bottom right of [our website](https
 == Changelog ==
 
 = 1.9.3 =
-* New: Add official support for Gutenberg 5.3 and the upcoming WordPress 5.2 release 🎊
+* New: Add official support for Gutenberg 5.4 and the upcoming WordPress 5.2 release 🎊
 * New: Add new Hero block 🎉
 * New: Add new Buttons block for displaying up to four buttons side by side 🎉
 * New: Add support for video backgrounds in all blocks
@@ -146,6 +146,8 @@ Please reach out via the contact form at the bottom right of [our website](https
 * Tweak: Adjust the custom icon color for CoBlocks blocks
 * Tweak: Use has_block() to determine whether a $post contains a specific block
 * Tweak: Background opacity value now goes from 0-100%
+* Tweak: Shape Divider block now uses min-Height, instead of Height
+* Fix: Resolve issue where the custom class would not show up in the editor for the Row block
 * Fix: Click to Tweet block styles now properly render inside of Row/Column blocks
 * Fix: Media Card block now properly renders in Edge
 * Fix: Features block toolbar now renders properly when selected
