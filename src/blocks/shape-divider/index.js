@@ -392,6 +392,9 @@ const settings = {
 	},
 	deprecated: [
 		{
+			attributes: {
+				...blockAttributes,
+			},
 			save( { attributes, className } ) {
 
 				const {
