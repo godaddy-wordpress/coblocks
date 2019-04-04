@@ -129,7 +129,7 @@ Please reach out via the contact form at the bottom right of [our website](https
 * New: Add support for video backgrounds in all blocks
 * New: Add three new button styles to the core Button block: Circular, Shadow and 3D
 * New: Add 25 new icons to the Icon block
-* New: Add third party support for the CoBlocks Typography Control Panel
+* New: Add a new "Getting Started with CoBlocks" admin page with video guides
 * New: Add support for Gutenberg 5.2+ Focal Point pickers for background images
 * New: Add support for the Heebo Google font
 * New: Add new "None" style for the core List block
