@@ -32,7 +32,7 @@ import './extensions/button-controls';
 import './formats/';
 
 // Sidebars
-import './sidebars/block-manager';
+import './sidebars/block-manager/deprecated';
 
 // Register Blocks
 import * as accordion from './blocks/accordion';
