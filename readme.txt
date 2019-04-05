@@ -122,6 +122,9 @@ Please reach out via the contact form at the bottom right of [our website](https
 
 == Changelog ==
 
+= 1.9.4 =
+* Fix: Add proper escaping method for the Map block API key
+
 = 1.9.3 =
 * New: Add official support for Gutenberg 5.4 and the upcoming WordPress 5.2 release 🎊
 * New: Add new Hero block 🎉
@@ -133,6 +136,7 @@ Please reach out via the contact form at the bottom right of [our website](https
 * New: Add support for Gutenberg 5.2+ Focal Point pickers for background images
 * New: Add support for the Heebo Google font
 * New: Add new "None" style for the core List block
+* New: Add new Row block inserters for an improved experience using rows and columns
 * New: Add responsiveness to the CoBlocks margin and padding utility classes
 * New: Add third-party support for the CoBlocks Typography Control Panel
 * New: Add support for Ubunto in the Typography Control Panel
