@@ -97,7 +97,7 @@ class CoBlocks_Block_GoogleMap {
 
 			wp_enqueue_script(
 				$this->_slug . '-google-maps-api',
-				'https://maps.googleapis.com/maps/api/js?key=' . esc_url( $key ),
+				'https://maps.googleapis.com/maps/api/js?key=' . esc_attr( $key ),
 				array( $this->_slug . '-google-maps' ),
 				$this->_version,
 				true
