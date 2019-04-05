@@ -11,7 +11,6 @@ import MapInnerBlocks from './components/map-innerblocks';
 /**
  * WordPress dependencies
  */
-const { registerFormatType } = wp.richText;
 const { models, loadPromise } = wp.api;
 
 function deprecateBlockManager () {
