@@ -252,11 +252,7 @@ class Edit extends Component {
 				{ fullscreen ?
 					<div className={ innerClasses } style={ innerStyles } >
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						{ backgroundType == 'video' ?
-							<div className="coblocks-video-background">
-								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
-							</div>
-						: null }
+						{ BackgroundVideo( attributes ) }
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
 							<ResizableBox
 								className={ classnames(
