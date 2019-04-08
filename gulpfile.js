@@ -28,7 +28,7 @@ var styleGettingStarted    = './src/styles/getting-started.scss';
 var styleWatchFiles  = [ styleAdmin, styleGettingStarted, './src/styles/admin/*.scss' ];
 
 // Translation.
-var text_domain             	= '@@textdomain';
+var text_domain             	= 'coblocks';
 var destFile                	= project+'.pot';
 var packageName             	= pkg.title;
 var bugReport               	= pkg.author_uri;
