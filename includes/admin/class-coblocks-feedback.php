@@ -92,54 +92,54 @@ class CoBlocks_Feedback {
 		$years = ( intval( $seconds ) / YEAR_IN_SECONDS ) % 100;
 		if ( $years > 1 ) {
 			/* translators: Number of years */
-			return sprintf( __( '%s years', '@@textdomain' ), $years );
+			return sprintf( __( '%s years', 'coblocks' ), $years );
 		} elseif ( $years > 0 ) {
-			return __( 'a year', '@@textdomain' );
+			return __( 'a year', 'coblocks' );
 		}
 
 		// Get the weeks.
 		$weeks = ( intval( $seconds ) / WEEK_IN_SECONDS ) % 52;
 		if ( $weeks > 1 ) {
 			/* translators: Number of weeks */
-			return sprintf( __( '%s weeks', '@@textdomain' ), $weeks );
+			return sprintf( __( '%s weeks', 'coblocks' ), $weeks );
 		} elseif ( $weeks > 0 ) {
-			return __( 'a week', '@@textdomain' );
+			return __( 'a week', 'coblocks' );
 		}
 
 		// Get the days.
 		$days = ( intval( $seconds ) / DAY_IN_SECONDS ) % 7;
 		if ( $days > 1 ) {
 			/* translators: Number of days */
-			return sprintf( __( '%s days', '@@textdomain' ), $days );
+			return sprintf( __( '%s days', 'coblocks' ), $days );
 		} elseif ( $days > 0 ) {
-			return __( 'a day', '@@textdomain' );
+			return __( 'a day', 'coblocks' );
 		}
 
 		// Get the hours.
 		$hours = ( intval( $seconds ) / HOUR_IN_SECONDS ) % 24;
 		if ( $hours > 1 ) {
 			/* translators: Number of hours */
-			return sprintf( __( '%s hours', '@@textdomain' ), $hours );
+			return sprintf( __( '%s hours', 'coblocks' ), $hours );
 		} elseif ( $hours > 0 ) {
-			return __( 'an hour', '@@textdomain' );
+			return __( 'an hour', 'coblocks' );
 		}
 
 		// Get the minutes.
 		$minutes = ( intval( $seconds ) / MINUTE_IN_SECONDS ) % 60;
 		if ( $minutes > 1 ) {
 			/* translators: Number of minutes */
-			return sprintf( __( '%s minutes', '@@textdomain' ), $minutes );
+			return sprintf( __( '%s minutes', 'coblocks' ), $minutes );
 		} elseif ( $minutes > 0 ) {
-			return __( 'a minute', '@@textdomain' );
+			return __( 'a minute', 'coblocks' );
 		}
 
 		// Get the seconds.
 		$seconds = intval( $seconds ) % 60;
 		if ( $seconds > 1 ) {
 			/* translators: Number of seconds */
-			return sprintf( __( '%s seconds', '@@textdomain' ), $seconds );
+			return sprintf( __( '%s seconds', 'coblocks' ), $seconds );
 		} elseif ( $seconds > 0 ) {
-			return __( 'a second', '@@textdomain' );
+			return __( 'a second', 'coblocks' );
 		}
 	}
 
@@ -172,122 +172,123 @@ class CoBlocks_Feedback {
 		if ( isset( $screen->base ) && 'plugins' === $screen->base ) {
 			$no_bug_url = wp_nonce_url( admin_url( 'plugins.php?' . $this->nobug_option . '=true' ), 'coblocks-feedback-nounce' );
 			$time       = $this->seconds_to_words( time() - get_site_option( $this->date_option ) );
-		?>
+			?>
 
-		<style>
-		.notice.coblocks-notice {
-			border-left-color: #1e35b9 !important;
-			padding: 20px;
-		}
-		.rtl .notice.coblocks-notice {
-			border-right-color: #1e35b9 !important;
-		}
-		.notice.notice.coblocks-notice .coblocks-notice-inner {
-			display: table;
-			width: 100%;
-		}
-		.notice.coblocks-notice .coblocks-notice-inner .coblocks-notice-icon,
-		.notice.coblocks-notice .coblocks-notice-inner .coblocks-notice-content,
-		.notice.coblocks-notice .coblocks-notice-inner .coblocks-install-now {
-			display: table-cell;
-			vertical-align: middle;
-		}
-		.notice.coblocks-notice .coblocks-notice-icon {
-			color: #509ed2;
-			font-size: 13px;
-			width: 60px;
-		}
-		.notice.coblocks-notice .coblocks-notice-icon img {
-			width: 64px;
-		}
-		.notice.coblocks-notice .coblocks-notice-content {
-			padding: 0 40px 0 20px;
-		}
-		.notice.coblocks-notice p {
-			padding: 0;
-			margin: 0;
-		}
-		.notice.coblocks-notice h3 {
-			margin: 0 0 5px;
-		}
-		.notice.coblocks-notice .coblocks-install-now {
-			text-align: center;
-		}
-		.notice.coblocks-notice .coblocks-install-now .coblocks-install-button {
-			padding: 6px 50px;
-			height: auto;
-			line-height: 20px;
-			background: #1e35b9;
-			border-color: #0d1f82 #0d1f82 #0d1f82;
-			box-shadow: 0 1px 0 #0d1f82;
-			text-shadow: 0 -1px 1px #0d1f82, 1px 0 1px #0d1f82, 0 1px 1px #0d1f82, -1px 0 1px #0d1f82;
-		}
-		.notice.coblocks-notice .coblocks-install-now .coblocks-install-button:hover {
-			background: #182b96;
-		}
-		.notice.coblocks-notice a.no-thanks {
-			display: block;
-			margin-top: 10px;
-			color: #72777c;
-			text-decoration: none;
-		}
-
-		.notice.coblocks-notice a.no-thanks:hover {
-			color: #444;
-		}
-
-		@media (max-width: 767px) {
-
-			.notice.notice.coblocks-notice .coblocks-notice-inner {
-				display: block;
-			}
+			<style>
 			.notice.coblocks-notice {
-				padding: 20px !important;
+				border-left-color: #1e35b9 !important;
+				padding: 20px;
 			}
-			.notice.coblocks-noticee .coblocks-notice-inner {
-				display: block;
+			.rtl .notice.coblocks-notice {
+				border-right-color: #1e35b9 !important;
 			}
-			.notice.coblocks-notice .coblocks-notice-inner .coblocks-notice-content {
-				display: block;
-				padding: 0;
+			.notice.notice.coblocks-notice .coblocks-notice-inner {
+				display: table;
+				width: 100%;
 			}
-			.notice.coblocks-notice .coblocks-notice-inner .coblocks-notice-icon {
-				display: none;
-			}
-
+			.notice.coblocks-notice .coblocks-notice-inner .coblocks-notice-icon,
+			.notice.coblocks-notice .coblocks-notice-inner .coblocks-notice-content,
 			.notice.coblocks-notice .coblocks-notice-inner .coblocks-install-now {
-				margin-top: 20px;
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.notice.coblocks-notice .coblocks-notice-icon {
+				color: #509ed2;
+				font-size: 13px;
+				width: 60px;
+			}
+			.notice.coblocks-notice .coblocks-notice-icon img {
+				width: 64px;
+			}
+			.notice.coblocks-notice .coblocks-notice-content {
+				padding: 0 40px 0 20px;
+			}
+			.notice.coblocks-notice p {
+				padding: 0;
+				margin: 0;
+			}
+			.notice.coblocks-notice h3 {
+				margin: 0 0 5px;
+			}
+			.notice.coblocks-notice .coblocks-install-now {
+				text-align: center;
+			}
+			.notice.coblocks-notice .coblocks-install-now .coblocks-install-button {
+				padding: 6px 50px;
+				height: auto;
+				line-height: 20px;
+				background: #1e35b9;
+				border-color: #0d1f82 #0d1f82 #0d1f82;
+				box-shadow: 0 1px 0 #0d1f82;
+				text-shadow: 0 -1px 1px #0d1f82, 1px 0 1px #0d1f82, 0 1px 1px #0d1f82, -1px 0 1px #0d1f82;
+			}
+			.notice.coblocks-notice .coblocks-install-now .coblocks-install-button:hover {
+				background: #182b96;
+			}
+			.notice.coblocks-notice a.no-thanks {
 				display: block;
-				text-align: left;
+				margin-top: 10px;
+				color: #72777c;
+				text-decoration: none;
 			}
 
-			.notice.coblocks-notice .coblocks-notice-inner .no-thanks {
-				display: inline-block;
-				margin-left: 15px;
+			.notice.coblocks-notice a.no-thanks:hover {
+				color: #444;
 			}
-		}
-		</style>
-		<div class="notice updated coblocks-notice">
-			<div class="coblocks-notice-inner">
-				<div class="coblocks-notice-icon">
-					<?php /* translators: 1. Name */ ?>
-					<img src="https://ps.w.org/coblocks/assets/icon-256x256.jpg" alt="<?php printf( esc_attr__( '%s WordPress Plugin', '@@textdomain' ), esc_attr( $this->name ) ); ?>" />
-				</div>
-				<div class="coblocks-notice-content">
-					<?php /* translators: 1. Name */ ?>
-					<h3><?php printf( esc_html__( 'Are you enjoying %s?', '@@textdomain' ), esc_html( $this->name ) ); ?></h3>
-					<p>
-						<?php /* translators: 1. Name, 2. Time */ ?>
-						<?php printf( esc_html__( 'You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We\'d really appreciate it!', '@@textdomain' ), esc_html( $this->name ), esc_html( $time ) ); ?>
-					</p>
-				</div>
-				<div class="coblocks-install-now">
-					<?php printf( '<a href="%1$s" class="button button-primary coblocks-install-button" target="_blank">%2$s</a>', esc_url( 'https://wordpress.org/support/view/plugin-reviews/coblocks#new-post' ), esc_html__( 'Leave a Review', '@@textdomain' ) ); ?>
-					<a href="<?php echo esc_url( $no_bug_url ); ?>" class="no-thanks"><?php echo esc_html__( 'No thanks / I already have', '@@textdomain' ); ?></a>
+
+			@media (max-width: 767px) {
+
+				.notice.notice.coblocks-notice .coblocks-notice-inner {
+					display: block;
+				}
+				.notice.coblocks-notice {
+					padding: 20px !important;
+				}
+				.notice.coblocks-noticee .coblocks-notice-inner {
+					display: block;
+				}
+				.notice.coblocks-notice .coblocks-notice-inner .coblocks-notice-content {
+					display: block;
+					padding: 0;
+				}
+				.notice.coblocks-notice .coblocks-notice-inner .coblocks-notice-icon {
+					display: none;
+				}
+
+				.notice.coblocks-notice .coblocks-notice-inner .coblocks-install-now {
+					margin-top: 20px;
+					display: block;
+					text-align: left;
+				}
+
+				.notice.coblocks-notice .coblocks-notice-inner .no-thanks {
+					display: inline-block;
+					margin-left: 15px;
+				}
+			}
+			</style>
+			<div class="notice updated coblocks-notice">
+				<div class="coblocks-notice-inner">
+					<div class="coblocks-notice-icon">
+						<?php /* translators: 1. Name */ ?>
+						<img src="https://ps.w.org/coblocks/assets/icon-256x256.jpg" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'coblocks' ), esc_attr( $this->name ) ); ?>" />
+					</div>
+					<div class="coblocks-notice-content">
+						<?php /* translators: 1. Name */ ?>
+						<h3><?php printf( esc_html__( 'Are you enjoying %s?', 'coblocks' ), esc_html( $this->name ) ); ?></h3>
+						<p>
+							<?php /* translators: 1. Name, 2. Time */ ?>
+							<?php printf( esc_html__( 'You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We\'d really appreciate it!', 'coblocks' ), esc_html( $this->name ), esc_html( $time ) ); ?>
+						</p>
+					</div>
+					<div class="coblocks-install-now">
+						<?php printf( '<a href="%1$s" class="button button-primary coblocks-install-button" target="_blank">%2$s</a>', esc_url( 'https://wordpress.org/support/view/plugin-reviews/coblocks#new-post' ), esc_html__( 'Leave a Review', 'coblocks' ) ); ?>
+						<a href="<?php echo esc_url( $no_bug_url ); ?>" class="no-thanks"><?php echo esc_html__( 'No thanks / I already have', 'coblocks' ); ?></a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<?php
+
+			<?php
 		}
 	}
 
@@ -311,7 +312,7 @@ class CoBlocks_Feedback {
 new CoBlocks_Feedback(
 	array(
 		'slug'       => 'coblocks_plugin_feedback',
-		'name'       => __( 'CoBlocks', '@@textdomain' ),
+		'name'       => __( 'CoBlocks', 'coblocks' ),
 		'time_limit' => WEEK_IN_SECONDS,
 	)
 );
