@@ -36,12 +36,12 @@ class CoBlocks_Getting_Started_Page {
 		$svg = '<svg fill="#a0a5aa" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m4.26414583.01915857 7.65399957-.01909461c1.4476957-.0036116 1.9730418.14581421 2.5030049.42754356.5299632.28172936.9463642.69605707 1.2307358 1.22460786.2843716.5285508.4364185 1.0531452.4400359 2.50084368l.019125 7.65401434c.0036173 1.4476985-.1458061 1.973045-.4275329 2.503008-.2817267.5299631-.6960519.9463632-1.2246006 1.2307333-.5285486.28437-1.0531414.4364151-2.5008371.4400267l-7.6539996.0190946c-1.44769568.0036116-1.97304176-.1458142-2.50300491-.4275435-.52996316-.2817294-.94636416-.6960571-1.23073576-1.2246079s-.43641852-1.0531452-.44003586-2.5008437l-.019125-7.65401429c-.00361735-1.44769847.1458061-1.97304496.4275328-2.50300802.28172671-.52996305.69605197-.9463632 1.22460063-1.23073324.52854865-.28437005 1.05314144-.43641517 2.50083713-.44002678zm-.15303472 2.98084143c-.55228475 0-1 .44771525-1 1v8c0 .5522847.44771525 1 1 1h2c.55228475 0 1-.4477153 1-1v-8c0-.55228475-.44771525-1-1-1zm5.99999999 6c-.55228474 0-.99999999.44771525-.99999999 1v2c0 .5522847.44771525 1 .99999999 1h2c.5522848 0 1-.4477153 1-1v-2c0-.55228475-.4477152-1-1-1zm0-6c-.55228474 0-.99999999.44771525-.99999999 1v2c0 .55228475.44771525 1 .99999999 1h2c.5522848 0 1-.44771525 1-1v-2c0-.55228475-.4477152-1-1-1z" fill-rule="evenodd" transform="translate(1.888889 2)"/></svg>';
 
 		add_menu_page(
-			__( 'CoBlocks', '@@textdomain' ),
-			__( 'CoBlocks', '@@textdomain' ),
+			__( 'CoBlocks', 'coblocks' ),
+			__( 'CoBlocks', 'coblocks' ),
 			apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
 			'coblocks-getting-started',
 			array( $this, 'content' ),
-			'data:image/svg+xml;base64,' . base64_encode( $svg )
+			'data:image/svg+xml;base64,' . base64_encode( $svg ) // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions
 		);
 	}
 
@@ -85,7 +85,7 @@ class CoBlocks_Getting_Started_Page {
 	 * Render page content.
 	 */
 	public function content() {
-	?>
+		?>
 		<div class="page--coblocks-getting-started">
 
 			<div class="getting-started__content">
@@ -96,29 +96,31 @@ class CoBlocks_Getting_Started_Page {
 					</a>
 				</div>
 
-				<h1><?php echo esc_html__( 'Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor.', '@@textdomain' ); ?></h1>
+				<h1><?php echo esc_html__( 'Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor.', 'coblocks' ); ?></h1>
 
 				<p>
 					<?php
 					echo sprintf(
 						/* translators: 1: Opening <strong> tag, 2: Closing </strong> tag */
-						esc_html__( 'You\'ve just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks %2$s, a %1$s page-builder experience %2$s, %1$s typography controls %2$s and a new %1$s Block Manager %2$s for turning off blocks.', '@@textdomain' ), '<strong>', '</strong>'
+						esc_html__( 'You\'ve just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks %2$s, a %1$s page-builder experience %2$s, %1$s typography controls %2$s and a new %1$s Block Manager %2$s for turning off blocks.', 'coblocks' ),
+						'<strong>',
+						'</strong>'
 					);
 					?>
 				</p>
 
-				<p><strong><?php echo esc_html__( 'Here are a few videos to help you get started:', '@@textdomain' ); ?></strong></p>
+				<p><strong><?php echo esc_html__( 'Here are a few videos to help you get started:', 'coblocks' ); ?></strong></p>
 
 				<div class="videos">
 					<?php /* translators: CoBlocks plugin name */ ?>
-					<a data-lity href="https://youtube.com/watch?v=EsIpvCcTKPw" title="<?php echo sprintf( esc_attr__( 'Watch how to create your first page with %s', '@@textdomain' ), 'CoBlocks' ); ?>">
-						<img src="<?php echo esc_url( COBLOCKS_PLUGIN_URL . 'dist/images/admin/video.jpg' ); ?>" alt="<?php echo esc_attr__( 'Watch how to create your first page', '@@textdomain' ); ?>">
+					<a data-lity href="https://youtube.com/watch?v=EsIpvCcTKPw" title="<?php echo sprintf( esc_attr__( 'Watch how to create your first page with %s', 'coblocks' ), 'CoBlocks' ); ?>">
+						<img src="<?php echo esc_url( COBLOCKS_PLUGIN_URL . 'dist/images/admin/video.jpg' ); ?>" alt="<?php echo esc_attr__( 'Watch how to create your first page', 'coblocks' ); ?>">
 					</a>
-					<a data-lity href="https://youtube.com/watch?v=cAQC_L03Z70" title="<?php echo esc_attr__( 'Watch how to use the Row and Shape Divider blocks', '@@textdomain' ); ?>">
-						<img src="<?php echo esc_url( COBLOCKS_PLUGIN_URL . 'dist/images/admin/video-2.jpg' ); ?>" alt="<?php echo esc_attr__( 'Watch how to use the Row and Shape Divider blocks', '@@textdomain' ); ?>">
+					<a data-lity href="https://youtube.com/watch?v=cAQC_L03Z70" title="<?php echo esc_attr__( 'Watch how to use the Row and Shape Divider blocks', 'coblocks' ); ?>">
+						<img src="<?php echo esc_url( COBLOCKS_PLUGIN_URL . 'dist/images/admin/video-2.jpg' ); ?>" alt="<?php echo esc_attr__( 'Watch how to use the Row and Shape Divider blocks', 'coblocks' ); ?>">
 					</a>
-					<a data-lity href="https://youtube.com/watch?v=SZOMMtrd0nw" title="<?php echo esc_attr__( 'Watch how to use the Media Card block', '@@textdomain' ); ?>">
-						<img src="<?php echo esc_url( COBLOCKS_PLUGIN_URL . 'dist/images/admin/video-3.jpg' ); ?>" alt="<?php echo esc_attr__( 'Watch how to use the Media Card block', '@@textdomain' ); ?>">
+					<a data-lity href="https://youtube.com/watch?v=SZOMMtrd0nw" title="<?php echo esc_attr__( 'Watch how to use the Media Card block', 'coblocks' ); ?>">
+						<img src="<?php echo esc_url( COBLOCKS_PLUGIN_URL . 'dist/images/admin/video-3.jpg' ); ?>" alt="<?php echo esc_attr__( 'Watch how to use the Media Card block', 'coblocks' ); ?>">
 					</a>
 				</div>
 
@@ -126,7 +128,9 @@ class CoBlocks_Getting_Started_Page {
 					<?php
 					echo sprintf(
 						/* translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag */
-						esc_attr__( 'Like what you see? %1$sSubscribe to our YouTube channel%2$s and we\'ll let you know when new video tutorials are released.', '@@textdomain' ), '<a href="https://www.youtube.com/channel/UCsOcD4k5eUBH_wWhcxPJZcA" target="_blank">', '</a>'
+						esc_attr__( 'Like what you see? %1$sSubscribe to our YouTube channel%2$s and we\'ll let you know when new video tutorials are released.', 'coblocks' ),
+						'<a href="https://www.youtube.com/channel/UCsOcD4k5eUBH_wWhcxPJZcA" target="_blank">',
+						'</a>'
 					);
 					?>
 				</p>
@@ -135,23 +139,29 @@ class CoBlocks_Getting_Started_Page {
 					<?php
 					echo sprintf(
 						/* translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag */
-						esc_html__( 'If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what\'s new and upcoming at CoBlocks.', '@@textdomain' ), '<a href="https://twitter.com/coblocks" target="_blank">', '<a href="https://www.facebook.com/groups/coblocks" target="_blank">', '<a href="https://coblocks.us20.list-manage.com/subscribe?u=fd78cec472f9f62b76fca64d1&id=62cbc3526f" target="_blank">', '</a>'
+						esc_html__( 'If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what\'s new and upcoming at CoBlocks.', 'coblocks' ),
+						'<a href="https://twitter.com/coblocks" target="_blank">',
+						'<a href="https://www.facebook.com/groups/coblocks" target="_blank">',
+						'<a href="https://coblocks.us20.list-manage.com/subscribe?u=fd78cec472f9f62b76fca64d1&id=62cbc3526f" target="_blank">',
+						'</a>'
 					);
 					?>
 				</p>
 
-				<p><?php echo esc_html__( 'Enjoy!', '@@textdomain' ); ?></p>
+				<p><?php echo esc_html__( 'Enjoy!', 'coblocks' ); ?></p>
 			</div>
 
 		</div>
-	<?php
+		<?php
 	}
 
 	/**
 	 * Redirect to the Getting Started page upon plugin activation.
+	 *
+	 * @param string $plugin Path to the plugin file relative to the plugins directory.
 	 */
 	public function redirect( $plugin ) {
-		if ( ( $plugin == 'coblocks/class-coblocks.php' ) && ! isset( $_GET['activate-multi'] ) ) {
+		if ( ( 'coblocks/class-coblocks.php' === $plugin ) && ! isset( $_GET['activate-multi'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 			wp_safe_redirect( admin_url( 'admin.php?page=coblocks-getting-started' ) );
 			die();
 		}
