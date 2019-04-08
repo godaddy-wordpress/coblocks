@@ -11,6 +11,9 @@
 	<arg name="colors"/>
 	<arg value="sp"/>
 
+	<config name="ignore_warnings_on_exit" value="1"/>
+	<config name="ignore_errors_on_exit" value="1"/>
+
 	<!-- Include the WordPress-Extra standard. -->
 	<rule ref="WordPress-Extra">
 		<!--
