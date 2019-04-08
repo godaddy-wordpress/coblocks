@@ -77,7 +77,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		public function __clone() {
 			// Cloning instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', 'coblocks' ), '1.0' );
 		}
 
 		/**
@@ -89,7 +89,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		public function __wakeup() {
 			// Unserializing instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', 'coblocks' ), '1.0' );
 		}
 
 		/**
@@ -119,7 +119,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		private function define( $name, $value ) {
 			if ( ! defined( $name ) ) {
-				define( $name, $value );
+				define( $name, $value ); // phpcs:ignore
 			}
 		}
 
