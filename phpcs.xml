@@ -32,6 +32,7 @@
 		<exclude name="WordPress.WhiteSpace.ControlStructureSpacing"/>
 		<exclude name="WordPress.Security.EscapeOutput"/>
 		-->
+		<exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>
 	</rule>
 
 	<!-- Let's also check that everything is properly documented. -->
