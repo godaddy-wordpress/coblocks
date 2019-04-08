@@ -142,38 +142,38 @@ class CoBlocks_Generated_Styles {
 					if ( ! empty( $divider_object ) ) {
 						foreach ( $divider_object as $divider_element => $divider_element_object ) {
 							$output .= '@media only screen and (max-width: ' . apply_filters( 'coblocks_tablet_breakpoint', '768px' ) . ') {';
-							if ( 'height' === $divider_element && isset( $divider_element_object->heightTablet ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar
+							if ( 'height' === $divider_element && isset( $divider_element_object->heightTablet ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 								$output     .= sprintf( '.%1$s > [class*="__inner"]:not(.is-fullscreen) {', esc_attr( $divider_key ) );
-									$output .= 'min-height:' . $divider_element_object->heightTablet . 'px !important'; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar
+									$output .= 'min-height:' . $divider_element_object->heightTablet . 'px !important'; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 								$output     .= '}';
 							}
 
-							if ( 'shapeHeight' === $divider_element && isset( $divider_element_object->heightTablet ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar
+							if ( 'shapeHeight' === $divider_element && isset( $divider_element_object->heightTablet ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 								$output     .= sprintf( '.%1$s > .wp-block-coblocks-shape-divider__svg-wrapper {', esc_attr( $divider_key ) );
-									$output .= 'min-height:' . $divider_element_object->heightTablet . 'px !important'; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar
+									$output .= 'min-height:' . $divider_element_object->heightTablet . 'px !important'; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 								$output     .= '}';
 							}
-							if ( 'backgroundHeight' === $divider_element && isset( $divider_element_object->heightTablet ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar
+							if ( 'backgroundHeight' === $divider_element && isset( $divider_element_object->heightTablet ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 								$output     .= sprintf( '.%1$s > .wp-block-coblocks-shape-divider__alt-wrapper {', esc_attr( $divider_key ) );
-									$output .= 'min-height:' . $divider_element_object->heightTablet . 'px !important'; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar
+									$output .= 'min-height:' . $divider_element_object->heightTablet . 'px !important'; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 								$output     .= '}';
 							}
 							$output .= '}';
 
 							$output .= '@media only screen and (max-width: ' . apply_filters( 'coblocks_desktop_breakpoint', '514px' ) . ') {';
-							if ( 'shapeHeight' === $divider_element && isset( $divider_element_object->heightMobile ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar
+							if ( 'shapeHeight' === $divider_element && isset( $divider_element_object->heightMobile ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 								$output     .= sprintf( '.%1$s > .wp-block-coblocks-shape-divider__svg-wrapper {', esc_attr( $divider_key ) );
-									$output .= 'min-height:' . $divider_element_object->heightMobile . 'px !important'; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar
+									$output .= 'min-height:' . $divider_element_object->heightMobile . 'px !important'; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 								$output     .= '}';
 							}
-							if ( 'backgroundHeight' === $divider_element && isset( $divider_element_object->heightMobile ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar
+							if ( 'backgroundHeight' === $divider_element && isset( $divider_element_object->heightMobile ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 								$output     .= sprintf( '.%1$s > .wp-block-coblocks-shape-divider__alt-wrapper {', esc_attr( $divider_key ) );
-									$output .= 'min-height:' . $divider_element_object->heightMobile . 'px !important'; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar
+									$output .= 'min-height:' . $divider_element_object->heightMobile . 'px !important'; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 								$output     .= '}';
 							}
-							if ( 'height' === $divider_element && isset( $divider_element_object->heightMobile ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar
+							if ( 'height' === $divider_element && isset( $divider_element_object->heightMobile ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 								$output     .= sprintf( '.%1$s > [class*="__inner"]:not(.is-fullscreen)  {', esc_attr( $divider_key ) );
-									$output .= 'min-height:' . $divider_element_object->heightMobile . 'px !important'; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar
+									$output .= 'min-height:' . $divider_element_object->heightMobile . 'px !important'; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 								$output     .= '}';
 							}
 							$output .= '}';
