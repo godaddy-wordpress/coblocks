@@ -79,6 +79,10 @@ class CoBlocks_Accordion_IE_Support {
 
 		global $post;
 
+		if ( empty( $post->ID ) ) {
+			return;
+		}
+
 		$legacy_support = get_post_meta( $post->ID, '_coblocks_accordion_ie_support', true );
 
 		// Determine whether a $post contains an Accordion block.
