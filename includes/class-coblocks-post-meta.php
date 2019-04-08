@@ -32,44 +32,51 @@ class CoBlocks_Post_Meta {
 	 */
 	public function register_meta() {
 		register_meta(
-			'post', '_coblocks_attr', array(
+			'post',
+			'_coblocks_attr',
+			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'auth_callback' => function() {
-					return current_user_can( 'edit_posts' );
-				},
+				'auth_callback' => array( $this, 'auth_callback' ),
 			)
 		);
 
 		register_meta(
-			'post', '_coblocks_dimensions', array(
+			'post',
+			'_coblocks_dimensions',
+			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'auth_callback' => function() {
-					return current_user_can( 'edit_posts' );
-				},
+				'auth_callback' => array( $this, 'auth_callback' ),
 			)
 		);
 
 		register_meta(
-			'post', '_coblocks_responsive_height', array(
+			'post',
+			'_coblocks_responsive_height',
+			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'auth_callback' => function() {
-					return current_user_can( 'edit_posts' );
-				},
+				'auth_callback' => array( $this, 'auth_callback' ),
 			)
 		);
 
 		register_meta(
-			'post', '_coblocks_accordion_ie_support', array(
+			'post',
+			'_coblocks_accordion_ie_support',
+			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'auth_callback' => function() {
-					return current_user_can( 'edit_posts' );
-				},
+				'auth_callback' => array( $this, 'auth_callback' ),
 			)
 		);
+	}
+
+	/**
+	 * Authorization callback for register_meta.
+	 */
+	public function auth_callback() {
+		return current_user_can( 'edit_posts' );
 	}
 }
 
