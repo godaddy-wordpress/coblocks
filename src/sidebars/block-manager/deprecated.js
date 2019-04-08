@@ -13,6 +13,9 @@ import MapInnerBlocks from './components/map-innerblocks';
  */
 const { registerFormatType } = wp.richText;
 const { models, loadPromise } = wp.api;
+const { dispatch } = wp.data;
+
+const hideBlockTypes = dispatch( 'core/edit-post' ).hideBlockTypes;
 
 function deprecateBlockManager () {
 	let settings;
@@ -56,4 +59,7 @@ function deprecateBlockManager () {
 		});
 	});
 };
-deprecateBlockManager();
+
+if( typeof hideBlockTypes !== 'undefined' ){
+	deprecateBlockManager();
+}
