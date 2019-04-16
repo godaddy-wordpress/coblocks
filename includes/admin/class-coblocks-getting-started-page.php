@@ -158,7 +158,7 @@ class CoBlocks_Getting_Started_Page {
 
 		if ( defined('WP_CLI') && WP_CLI ) {
 			WP_CLI::log(
-				WP_CLI::colorize( "%b" . sprintf("🎉 %s %s", __('Get started with CoBlock here:', '@@textdomain'), admin_url( 'admin.php?page=coblocks-getting-started' ) ) . "%n" )
+				WP_CLI::colorize( "%b" . sprintf("🎉 %s %s", __('Get started with CoBlocks here:', '@@textdomain'), admin_url( 'admin.php?page=coblocks-getting-started' ) ) . "%n" )
 			);
 			return;
 		}
