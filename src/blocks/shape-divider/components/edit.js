@@ -260,7 +260,7 @@ class Edit extends Component {
 							height: backgroundHeightResizer.value,
 						} }
 						minWidth="100%"
-						minHeight="10"
+						minHeight="20"
 						enable={ {
 							top: false,
 							right: false,
