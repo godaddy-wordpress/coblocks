@@ -44,6 +44,9 @@ const blockAttributes = {
 		type: 'boolean',
 		default: true,
 	},
+	verticalAlignment: {
+		type: 'string',
+	},
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 };
@@ -101,12 +104,14 @@ const settings = {
 			focalPoint,
 			hasParallax,
 			backgroundType,
+			verticalAlignment,
 		} = attributes;
 		const textClass = getColorClassName( 'color', textColor );
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames({
 			[ `coblocks-column-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+			[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
 		} );
 
 		const innerClasses = classnames(

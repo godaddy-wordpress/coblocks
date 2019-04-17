@@ -8,7 +8,8 @@ import BackgroundPanel, { BackgroundControls } from '../../../../components/back
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls } = wp.editor;
+const { AlignmentToolbar } = wp.editor;
+const { BlockControls, BlockVerticalAlignmentToolbar } = wp.blockEditor;
 
 class Controls extends Component {
 
@@ -25,6 +26,7 @@ class Controls extends Component {
 
 		const {
 			contentAlign,
+			verticalAlignment,
 		} = attributes;
 
 		return (
@@ -33,6 +35,10 @@ class Controls extends Component {
 					<AlignmentToolbar
 						value={ contentAlign }
 						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
+					/>
+					<BlockVerticalAlignmentToolbar
+						onChange={ ( verticalAlignment ) => setAttributes( { verticalAlignment: verticalAlignment } ) }
+						value={ verticalAlignment }
 					/>
 					{ BackgroundControls( this.props ) }
 				</BlockControls>

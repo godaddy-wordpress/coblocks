@@ -75,6 +75,7 @@ class Edit extends Component {
 			hasParallax,
 			showInserter,
 			backgroundType,
+			verticalAlignment,
 		} = attributes;
 
 		const parentId = wp.data.select( 'core/editor' ).getBlockRootClientId( clientId );
@@ -104,6 +105,7 @@ class Edit extends Component {
 				'has-margin': marginSize && marginSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 				[ `has-${ marginSize }-margin` ] : marginSize && marginSize != 'advanced',
+				[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
 			}
 		);
 

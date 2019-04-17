@@ -1,5 +1,9 @@
 .wp-block-coblocks-row {
 	position: relative;
+
+	.__resizable_base__ {
+		width: auto !important;
+	}
 }
 
 .wp-block-coblocks-row:not([data-columns="1"]) {
@@ -42,6 +46,23 @@
 
 .wp-block-coblocks-column {
 	margin-bottom: $grid-size-large * 2;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+
+	&.is-vertically-aligned-top {
+		align-self: flex-start;
+	}
+
+	&.is-vertically-aligned-center {
+		align-self: center;
+	}
+
+	&.is-vertically-aligned-bottom {
+		align-self: flex-end;
+	}
 
 	// Beyond mobile, allow 2 columns.
 	@include break-small() {
