@@ -32,13 +32,13 @@ class Controls extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
-					<AlignmentToolbar
-						value={ contentAlign }
-						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
-					/>
 					<BlockVerticalAlignmentToolbar
 						onChange={ ( verticalAlignment ) => setAttributes( { verticalAlignment: verticalAlignment } ) }
 						value={ verticalAlignment }
+					/>
+					<AlignmentToolbar
+						value={ contentAlign }
+						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
 					/>
 					{ BackgroundControls( this.props ) }
 				</BlockControls>
