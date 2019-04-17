@@ -28,20 +28,26 @@
 // The "Add Accordion Item" button
 .wp-block-coblocks-accordion {
 	.components-coblocks-add-accordion-item__button.components-button {
-		border-style: dashed;
+		background: rgba(139, 139, 150, 0.1);
+		border-radius: 0;
+		border: 1px dashed #d3d5d8;
 		box-shadow: none !important;
+		color: #555d66;
 		font-size: 14px;
-		height: 34px;
-		height: auto;
+		height: 40px;
 		justify-content: center;
 		line-height: 31px;
-		padding: 0 9px 0 8px;
-		padding: 8px 15px;
+		padding: 0 8px 0 8px;
 		text-align: center;
+		transition: color 0.2s ease;
 		width: 100%;
 
 		svg {
 			margin-right: 5px;
+		}
+
+		&:hover {
+			color: #191e23;
 		}
 	}
 }
