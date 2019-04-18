@@ -173,7 +173,7 @@ class CoBlocks_Getting_Started_Page {
 
 			WP_CLI::log(
 				WP_CLI::colorize(
-					'%b' . sprintf( '🎉 %s %s', __( 'Get started with CoBlocks here:', 'coblocks' ), admin_url( 'admin.php?page=coblocks-getting-started' ) ) . '%n'
+					'%b' . sprintf( '🎉 %s %s', __( 'Get started with CoBlocks here:', '@@textdomain' ), admin_url( 'admin.php?page=coblocks-getting-started' ) ) . '%n'
 				)
 			);
 
