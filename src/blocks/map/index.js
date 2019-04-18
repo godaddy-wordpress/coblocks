@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
 import './styles/editor.scss';
@@ -93,7 +88,7 @@ const settings = {
 
 	title: title,
 
-	description : __( 'Add an address and drop a pin on a Google map.' ),
+	description: __( 'Add an address and drop a pin on a Google map.' ),
 
 	keywords: keywords,
 
@@ -120,8 +115,7 @@ const settings = {
 
 	edit: Edit,
 
-	save( { attributes, className } ) {
-
+	save( { attributes } ) {
 		const {
 			address,
 			apiKey,
@@ -142,30 +136,27 @@ const settings = {
 		};
 
 		const mapAttributes = {
-			address : address,
-			lat     : lat,
-			lng     : lng,
-			skin	: skin,
-			zoom	: zoom,
-			iconSize : iconSize,
-			mapTypeControl : mapTypeControl,
-			zoomControl : zoomControl,
-			streetViewControl : streetViewControl,
-			fullscreenControl : fullscreenControl,
+			address: address,
+			lat: lat,
+			lng: lng,
+			skin: skin,
+			zoom: zoom,
+			iconSize: iconSize,
+			mapTypeControl: mapTypeControl,
+			zoomControl: zoomControl,
+			streetViewControl: streetViewControl,
+			fullscreenControl: fullscreenControl,
 		};
 
-		let attr = Object
+		const attr = Object
+			.keys( mapAttributes )
+			.map( key => `/q${ key }/q:/q${ mapAttributes[ key ] }/q` )
+			.join( '||' );
 
-	        .keys( mapAttributes )
-	        .map( key => `/q${key}/q:/q${ mapAttributes[key] }/q` )
-	        .join( '||' );
-
-		const dataMap = { [`data-map-attr`] : attr };
+		const dataMap = { 'data-map-attr': attr };
 
 		return (
-			<div style={ backgroundStyles }
-				{ ...dataMap }
-			></div>
+			<div style={ backgroundStyles } { ...dataMap } />
 		);
 	},
 };
