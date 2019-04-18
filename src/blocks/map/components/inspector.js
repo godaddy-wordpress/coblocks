@@ -71,13 +71,15 @@ class Inspector extends Component {
 	}
 
 	removeApiKey() {
-		this.setState( { isSaving: true } );
 		this.setState( { apiKey: '' } );
-		const model = new wp.api.models.Settings( { coblocks_google_maps_api_key: '' } );
-		model.save().then( response => {
-			this.setState( { isSavedKey: false, isLoading: false, isSaving: false, keySaved: false } );
-			settings.fetch();
-		});
+		if(this.state.isSavedKey) {
+			this.setState({isSaving: true});
+			const model = new wp.api.models.Settings({coblocks_google_maps_api_key: ''});
+			model.save().then(response => {
+				this.setState({isSavedKey: false, isLoading: false, isSaving: false, keySaved: false});
+				settings.fetch();
+			});
+		}
 	}
 
 	setControls() {
