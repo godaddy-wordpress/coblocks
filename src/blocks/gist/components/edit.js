@@ -53,7 +53,7 @@ class Edit extends Component {
 
 		if ( newURL.match(/#file-*/) != null ) {
 			const newURLWithNoFile = newURL.replace( file , '' ).replace( '#file-' , '' );
-			
+
 			this.props.setAttributes( { url: newURLWithNoFile } );
 			this.props.setAttributes( { file: file.replace( /-([^-]*)$/, '.'+'$1' ) } );
 		}

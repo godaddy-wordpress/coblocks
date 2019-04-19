@@ -1,8 +1,12 @@
 .wp-block-coblocks-gist {
+	&.wp-block-shortcode {
+		display: flex;
+		flex-direction: row;
+	}
 
-	.input-control {
-		padding: 6px 8px;
-		width: 100%;
+	.block-editor-plain-text {
+		margin-left: 10px;
+		padding: 8px;
 	}
 
 	.gist {
@@ -10,9 +14,9 @@
 	}
 
 	&__file {
-		margin: 4px;
-		padding-top: 4px;
+		margin: 3px;
 		padding-bottom: 4px;
+		padding-top: 4px;
 	}
 
 	&__file-label {
