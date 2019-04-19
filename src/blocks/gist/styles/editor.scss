@@ -1,5 +1,17 @@
 .wp-block-coblocks-gist {
 
+	&.wp-block-shortcode {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.block-editor-plain-text {
+		margin-left: 10px;
+		height: 35px;
+		max-height: 35px;
+		padding: 10px 8px;
+	}
+
 	.input-control {
 		padding: 6px 8px;
 		width: 100%;
