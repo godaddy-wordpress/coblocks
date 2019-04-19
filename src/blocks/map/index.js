@@ -3,6 +3,7 @@
  */
 import './styles/editor.scss';
 import Edit from './components/edit';
+import Save from './components/save';
 import icons from './../../utils/icons';
 
 /**
@@ -36,8 +37,9 @@ const blockAttributes = {
 	lng: {
 		type: 'string',
 	},
-	apiKey: {
-		type: 'string',
+	hasApiKey: {
+		type: 'boolean',
+		default: false,
 	},
 	pinned: {
 		type: 'boolean',
@@ -115,50 +117,56 @@ const settings = {
 
 	edit: Edit,
 
-	save( { attributes } ) {
-		const {
-			address,
-			apiKey,
-			height,
-			lat,
-			lng,
-			skin,
-			zoom,
-			iconSize,
-			mapTypeControl,
-			zoomControl,
-			streetViewControl,
-			fullscreenControl,
-		} = attributes;
+	save: Save,
 
-		const backgroundStyles = {
-			minHeight: height ? height + 'px' : undefined,
-		};
+	deprecated: [
+		{
+			attributes: blockAttributes,
+			save( { attributes } ) {
+				const {
+					address,
+					height,
+					lat,
+					lng,
+					skin,
+					zoom,
+					iconSize,
+					mapTypeControl,
+					zoomControl,
+					streetViewControl,
+					fullscreenControl,
+				} = attributes;
 
-		const mapAttributes = {
-			address: address,
-			lat: lat,
-			lng: lng,
-			skin: skin,
-			zoom: zoom,
-			iconSize: iconSize,
-			mapTypeControl: mapTypeControl,
-			zoomControl: zoomControl,
-			streetViewControl: streetViewControl,
-			fullscreenControl: fullscreenControl,
-		};
+				const backgroundStyles = {
+					minHeight: height ? height + 'px' : undefined,
+				};
 
-		const attr = Object
-			.keys( mapAttributes )
-			.map( key => `/q${ key }/q:/q${ mapAttributes[ key ] }/q` )
-			.join( '||' );
+				const mapAttributes = {
+					address,
+					lat,
+					lng,
+					skin,
+					zoom,
+					iconSize,
+					mapTypeControl,
+					zoomControl,
+					streetViewControl,
+					fullscreenControl,
+				};
 
-		const dataMap = { 'data-map-attr': attr };
+				const attr = Object
+					.keys( mapAttributes )
+					.map( key => `/q${ key }/q:/q${ mapAttributes[ key ] }/q` )
+					.join( '||' );
 
-		return (
-			<div style={ backgroundStyles } { ...dataMap } />
-		);
-	},
+				const dataMap = { 'data-map-attr': attr };
+
+				return (
+					<div style={ backgroundStyles } { ...dataMap } />
+				);
+			},
+		},
+	],
 };
 
 export { name, title, icon, settings };

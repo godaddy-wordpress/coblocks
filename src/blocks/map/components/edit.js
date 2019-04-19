@@ -30,9 +30,6 @@ wp.api.loadPromise.then( () => {
 	settings = new wp.api.models.Settings();
 } );
 
-const RETRIEVE_KEY_URL = 'https://cloud.google.com/maps-platform';
-const HELP_URL = 'https://developers.google.com/maps/documentation/javascript/get-api-key';
-
 /**
  * Block edit function
  */
@@ -41,6 +38,7 @@ class Edit extends Component {
 		super( ...arguments );
 		this.state = {
 			apiKey: '',
+			address: this.props.attributes.address,
 			coords: null,
 			hasError: false,
 			isLoading: true,
@@ -48,8 +46,6 @@ class Edit extends Component {
 			isSaving: false,
 			keySaved: false,
 		};
-
-		this.saveApiKey = this.saveApiKey.bind( this );
 
 		settings.on( 'change:coblocks_google_maps_api_key', ( model ) => {
 			const apiKey = model.get( 'coblocks_google_maps_api_key' );
@@ -66,14 +62,43 @@ class Edit extends Component {
 		} );
 	}
 
-	saveApiKey() {
-		this.setState( { isSaving: true } );
-		const model = new wp.api.models.Settings( { coblocks_google_maps_api_key: this.state.apiKey } );
+	componentDidUpdate() {
+		if ( !! this.state.apiKey && ! this.props.attributes.hasApiKey ) {
+			this.props.setAttributes( { hasApiKey: true } );
+		}
+	}
+
+	updateApiKey = ( apiKey = this.state.apiKey ) => {
+		const {
+			attributes,
+			setAttributes,
+		} = this.props;
+
+		this.saveApiKey( apiKey );
+
+		if ( apiKey === '' ) {
+			setAttributes( { hasApiKey: false } );
+
+			if ( ! attributes.address ) {
+				setAttributes( { pinned: false } );
+			}
+
+			return;
+		}
+
+		if ( attributes.address ) {
+			setAttributes( { pinned: true } );
+		}
+	};
+
+	saveApiKey = ( apiKey = this.state.apiKey ) => {
+		this.setState( { apiKey, isSaving: true } );
+		const model = new wp.api.models.Settings( { coblocks_google_maps_api_key: apiKey } );
 		model.save().then( () => {
 			this.setState( { isSavedKey: true, isLoading: false, isSaving: false, keySaved: true } );
 			settings.fetch();
 		} );
-	}
+	};
 
 	render() {
 		const {
@@ -85,7 +110,6 @@ class Edit extends Component {
 
 		const {
 			address,
-			apiKey,
 			height,
 			iconSize,
 			pinned,
@@ -94,29 +118,24 @@ class Edit extends Component {
 			zoomControl,
 			streetViewControl,
 			fullscreenControl,
+			zoom,
 		} = attributes;
 
 		const renderMap = () => {
-			this.saveApiKey();
-
-			if ( !! this.state.apiKey ) {
-				setAttributes( { pinned: true } );
-				this.setState( { hasError: false } );
-			} else {
-				this.setState( { hasError: true } );
-			}
+			setAttributes( { address: this.state.address, pinned: true } );
 		};
 
 		const handleKeyDown = ( keyCode ) => {
 			if ( keyCode !== ENTER ) {
 				return;
 			}
+
 			renderMap();
 		};
 
 		const icon = { url: '/wp-content/plugins/coblocks/dist/images/markers/' + skin + '.svg', scaledSize: { width: iconSize, height: iconSize } };
 
-		const GoogleMapRender = compose(
+		const GoogleMapApiRender = compose(
 			withProps( {
 				googleMapURL: ( 'https://maps.googleapis.com/maps/api/js?key=' + this.state.apiKey + '&v=3.exp&libraries=geometry,drawing,places' ),
 				loadingElement: ( <div style={ { height: '100%' } } /> ),
@@ -131,23 +150,24 @@ class Edit extends Component {
 				componentDidMount() {
 					const geocoder = new window.google.maps.Geocoder();
 					geocoder.geocode( { address: address }, function( results, status ) {
-						if ( status === 'OK' ) {
-							this.setState( {
-								coords: results[ 0 ].geometry.location.toJSON(),
-							} );
-
-							this.props.props.setAttributes( {
-								lat: results[ 0 ].geometry.location.toJSON().lat.toString(),
-								lng: results[ 0 ].geometry.location.toJSON().lng.toString(),
-								hasError: '',
-							} );
-						} else {
+						if ( status !== 'OK' ) {
 							this.props.props.setAttributes( {
 								pinned: false,
 								hasError: __( 'Invalid API key, or too many requests' ),
 							} );
 							// console.log( 'Geocode was not successful for the following reason: ' + status );
+							return;
 						}
+
+						this.setState( {
+							coords: results[ 0 ].geometry.location.toJSON(),
+						} );
+
+						this.props.props.setAttributes( {
+							lat: results[ 0 ].geometry.location.toJSON().lat.toString(),
+							lng: results[ 0 ].geometry.location.toJSON().lng.toString(),
+							hasError: '',
+						} );
 					}.bind( this ) );
 				},
 			} )
@@ -172,16 +192,31 @@ class Edit extends Component {
 			]
 		);
 
+		const GoogleMapIframeRender = (
+			<Fragment>
+				<div style={ { width: '100%', height, position: 'absolute' } } />
+				<iframe
+					title={ __( 'Google Map' ) }
+					frameBorder="0"
+					style={ { width: '100%', minHeight: height + 'px' } }
+					src={ 'https://www.google.com/maps?q=' + encodeURIComponent( address ) + '&language=ja&output=embed&hl=%s&z=' + zoom }
+				/>
+			</Fragment>
+		);
+
 		return [
 			<Fragment>
 				{ isSelected && (
 					<Inspector
 						{ ...this.props }
+						apiKey={ this.state.apiKey }
+						updateApiKeyCallBack={ this.updateApiKey }
 					/>
 				) }
 				{ isSelected && (
 					<Controls
 						{ ...this.props }
+						apiKey={ this.state.apiKey }
 					/>
 				) }
 				{ pinned ?
@@ -214,46 +249,31 @@ class Edit extends Component {
 							toggleSelection( false );
 						} }
 					>
-						{ this.state.apiKey &&
-							<GoogleMapRender
-								address={ address }
-							/>
+						{ !! this.state.apiKey ?
+							<GoogleMapApiRender address={ address } /> :
+							GoogleMapIframeRender
 						}
 					</ResizableBox>				:
 					<Placeholder
 						icon={ icons.googleMap }
 						label={ __( 'Google Map' ) }
-						instructions={ ! this.state.isSavedKey ? __( 'Enter your Google API key to render a map.' ) : __( 'Enter an address to drop a pin on a Google map.' ) } >
-						{ ( ! this.state.isSavedKey ) ?
-							<TextControl
-								className="components-placeholder__input"
-								value={ this.state.apiKey }
-								onChange={ value => this.setState( { apiKey: value } ) }
-								placeholder={ __( 'Enter Google API key…' ) }
-								style={ ( this.state.hasError ) ? { border: '1px solid red' } : null }
-							/>						:
-							<TextControl
-								className="components-placeholder__input"
-								value={ ( attributes.address ) ? attributes.address : '' }
-								placeholder={ __( 'Enter address…' ) }
-								onChange={ ( nextAddress ) => this.props.setAttributes( { address: nextAddress } ) }
-								onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
-							/>
-						}
+						instructions={ __( 'Enter an address to drop a pin on a Google map.' ) } >
+						<TextControl
+							className="components-placeholder__input"
+							value={ this.state.address }
+							placeholder={ __( 'Enter address…' ) }
+							onChange={ nextAddress => this.setState( { address: nextAddress } ) }
+							onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
+						/>
 						<Button
 							isLarge
 							type="button"
-							onClick={ () => renderMap() }>
+							onClick={ renderMap }>
 							{ __( 'Apply' ) }
 						</Button>
 
-						{ ( attributes.lng && attributes.hasError ) ?
-							<span className="invalid-google-maps-api-key">{ attributes.hasError }</span> :
-							null }
-
-						{ ( ! this.state.isSavedKey ) ?
-							<span><a href={ RETRIEVE_KEY_URL } target="_blank" rel="noopener noreferrer"> { __( 'Retrieve your key' ) }</a> | <a href={ HELP_URL } target="_blank" rel="noopener noreferrer">{ __( 'Need help?' ) }</a></span> :
-							null }
+						{ ( attributes.lng && attributes.hasError ) &&
+							<span className="invalid-google-maps-api-key">{ attributes.hasError }</span> }
 					</Placeholder>
 				}
 			</Fragment>,

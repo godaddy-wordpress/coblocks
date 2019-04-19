@@ -17,36 +17,43 @@ const { __ } = wp.i18n;
 const { BlockControls } = wp.editor;
 const { Toolbar } = wp.components;
 
-function Controls( { attributes, setAttributes } ) {
+function Controls( { attributes, setAttributes, apiKey } ) {
 	const {
-		address,
 		pinned,
 		skin,
 	} = attributes;
 
-	if ( ! address || ! pinned ) {
-		return null;
-	}
+	const toolbarControls = [
+		{
+			icon: 'edit',
+			title: __( 'Edit' ),
+			isActive: ! pinned,
+			onClick: () => setAttributes( { pinned: ! pinned } ),
+		},
+	];
 
 	return (
 		<BlockControls>
-			<Toolbar>
-				<VisualDropdown
-					icon={ icons.style }
-					label={ __( 'Map style' ) }
-					controls={ [
-						map( styleOptions, ( { value, label } ) => ( {
-							title: label,
-							label: label,
-							key: value,
-							value: skin,
-							onClick: () => {
-								setAttributes( { skin: value } );
-							},
-						} ) ),
-					] }
-				/>
-			</Toolbar>
+			{ apiKey &&
+				<Toolbar>
+					<VisualDropdown
+						icon={ icons.style }
+						label={ __( 'Map style' ) }
+						controls={ [
+							map( styleOptions, ( { value, label } ) => ( {
+								title: label,
+								label: label,
+								key: value,
+								value: skin,
+								onClick: () => {
+									setAttributes( { skin: value } );
+								},
+							} ) ),
+						] }
+					/>
+				</Toolbar>
+			}
+			<Toolbar controls={ toolbarControls } />
 		</BlockControls>
 	);
 }
