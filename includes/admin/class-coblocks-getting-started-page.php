@@ -163,22 +163,17 @@ class CoBlocks_Getting_Started_Page {
 	public function redirect( $plugin ) {
 
 		if ( 'coblocks/class-coblocks.php' !== $plugin ) {
-
 			return;
-
 		}
 
 		$nonce          = filter_input( INPUT_GET, '_wpnonce', FILTER_SANITIZE_STRING );
 		$activate_multi = filter_input( INPUT_GET, 'activate-multi', FILTER_VALIDATE_BOOLEAN );
 
 		if ( ! $nonce ) {
-
 			return;
-
 		}
 
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
-
 			WP_CLI::log(
 				WP_CLI::colorize(
 					'%b' . sprintf( '🎉 %s %s', __( 'Get started with CoBlocks here:', '@@textdomain' ), admin_url( 'admin.php?page=coblocks-getting-started' ) ) . '%n'
@@ -186,19 +181,14 @@ class CoBlocks_Getting_Started_Page {
 			);
 
 			return;
-
 		}
 
 		if ( $activate_multi ) {
-
 			return;
-
 		}
 
 		wp_safe_redirect( admin_url( 'admin.php?page=coblocks-getting-started' ) );
-
 		die();
-
 	}
 }
 
