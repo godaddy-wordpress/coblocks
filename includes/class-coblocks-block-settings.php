@@ -80,7 +80,7 @@ class CoBlocks_Block_Settings {
 			'coblocks_settings_api',
 			array(
 				'type'              => 'string',
-				'description'       => __( 'Enable or disable blocks', 'coblocks' ),
+				'description'       => __( 'Enable or disable blocks', '@@textdomain' ),
 				'sanitize_callback' => 'sanitize_text_field',
 				'show_in_rest'      => true,
 				'default'           => '',

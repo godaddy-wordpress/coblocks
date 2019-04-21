@@ -77,7 +77,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		public function __clone() {
 			// Cloning instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', 'coblocks' ), '1.0' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
 		}
 
 		/**
@@ -89,7 +89,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		public function __wakeup() {
 			// Unserializing instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', 'coblocks' ), '1.0' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
 		}
 
 		/**
@@ -265,7 +265,7 @@ function coblocks() {
 
 // Get the plugin running. Load on plugins_loaded action to avoid issue on multisite.
 if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-	add_action( 'plugins_loaded', 'coblocks', 90 );
+	add_action( 'plugins_loaded', '@@textdomain', 90 );
 } else {
 	coblocks();
 }

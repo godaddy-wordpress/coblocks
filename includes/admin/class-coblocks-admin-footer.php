@@ -43,7 +43,7 @@ class CoBlocks_Admin_Footer {
 		if ( in_array( $pagenow, array( 'edit.php' ), true ) ) {
 			$rate_text = sprintf(
 				/* translators: 1: Link to plugin homepage, 2: Link to WordPress.org rating page. */
-				__( 'Thank you for using %1$s! Please <a href="%2$s" target="_blank">rate us on WordPress.org</a>.', 'coblocks' ),
+				__( 'Thank you for using %1$s! Please <a href="%2$s" target="_blank">rate us on WordPress.org</a>.', '@@textdomain' ),
 				'<a href="' . esc_url( COBLOCKS_SHOP_URL ) . '" target="_blank">CoBlocks</a>',
 				esc_url( COBLOCKS_REVIEW_URL )
 			);

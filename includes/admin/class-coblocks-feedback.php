@@ -92,54 +92,54 @@ class CoBlocks_Feedback {
 		$years = ( intval( $seconds ) / YEAR_IN_SECONDS ) % 100;
 		if ( $years > 1 ) {
 			/* translators: Number of years */
-			return sprintf( __( '%s years', 'coblocks' ), $years );
+			return sprintf( __( '%s years', '@@textdomain' ), $years );
 		} elseif ( $years > 0 ) {
-			return __( 'a year', 'coblocks' );
+			return __( 'a year', '@@textdomain' );
 		}
 
 		// Get the weeks.
 		$weeks = ( intval( $seconds ) / WEEK_IN_SECONDS ) % 52;
 		if ( $weeks > 1 ) {
 			/* translators: Number of weeks */
-			return sprintf( __( '%s weeks', 'coblocks' ), $weeks );
+			return sprintf( __( '%s weeks', '@@textdomain' ), $weeks );
 		} elseif ( $weeks > 0 ) {
-			return __( 'a week', 'coblocks' );
+			return __( 'a week', '@@textdomain' );
 		}
 
 		// Get the days.
 		$days = ( intval( $seconds ) / DAY_IN_SECONDS ) % 7;
 		if ( $days > 1 ) {
 			/* translators: Number of days */
-			return sprintf( __( '%s days', 'coblocks' ), $days );
+			return sprintf( __( '%s days', '@@textdomain' ), $days );
 		} elseif ( $days > 0 ) {
-			return __( 'a day', 'coblocks' );
+			return __( 'a day', '@@textdomain' );
 		}
 
 		// Get the hours.
 		$hours = ( intval( $seconds ) / HOUR_IN_SECONDS ) % 24;
 		if ( $hours > 1 ) {
 			/* translators: Number of hours */
-			return sprintf( __( '%s hours', 'coblocks' ), $hours );
+			return sprintf( __( '%s hours', '@@textdomain' ), $hours );
 		} elseif ( $hours > 0 ) {
-			return __( 'an hour', 'coblocks' );
+			return __( 'an hour', '@@textdomain' );
 		}
 
 		// Get the minutes.
 		$minutes = ( intval( $seconds ) / MINUTE_IN_SECONDS ) % 60;
 		if ( $minutes > 1 ) {
 			/* translators: Number of minutes */
-			return sprintf( __( '%s minutes', 'coblocks' ), $minutes );
+			return sprintf( __( '%s minutes', '@@textdomain' ), $minutes );
 		} elseif ( $minutes > 0 ) {
-			return __( 'a minute', 'coblocks' );
+			return __( 'a minute', '@@textdomain' );
 		}
 
 		// Get the seconds.
 		$seconds = intval( $seconds ) % 60;
 		if ( $seconds > 1 ) {
 			/* translators: Number of seconds */
-			return sprintf( __( '%s seconds', 'coblocks' ), $seconds );
+			return sprintf( __( '%s seconds', '@@textdomain' ), $seconds );
 		} elseif ( $seconds > 0 ) {
-			return __( 'a second', 'coblocks' );
+			return __( 'a second', '@@textdomain' );
 		}
 	}
 
@@ -271,19 +271,19 @@ class CoBlocks_Feedback {
 				<div class="coblocks-notice-inner">
 					<div class="coblocks-notice-icon">
 						<?php /* translators: 1. Name */ ?>
-						<img src="https://ps.w.org/coblocks/assets/icon-256x256.jpg" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'coblocks' ), esc_attr( $this->name ) ); ?>" />
+						<img src="https://ps.w.org/coblocks/assets/icon-256x256.jpg" alt="<?php printf( esc_attr__( '%s WordPress Plugin', '@@textdomain' ), esc_attr( $this->name ) ); ?>" />
 					</div>
 					<div class="coblocks-notice-content">
 						<?php /* translators: 1. Name */ ?>
-						<h3><?php printf( esc_html__( 'Are you enjoying %s?', 'coblocks' ), esc_html( $this->name ) ); ?></h3>
+						<h3><?php printf( esc_html__( 'Are you enjoying %s?', '@@textdomain' ), esc_html( $this->name ) ); ?></h3>
 						<p>
 							<?php /* translators: 1. Name, 2. Time */ ?>
-							<?php printf( esc_html__( 'You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We\'d really appreciate it!', 'coblocks' ), esc_html( $this->name ), esc_html( $time ) ); ?>
+							<?php printf( esc_html__( 'You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We\'d really appreciate it!', '@@textdomain' ), esc_html( $this->name ), esc_html( $time ) ); ?>
 						</p>
 					</div>
 					<div class="coblocks-install-now">
-						<?php printf( '<a href="%1$s" class="button button-primary coblocks-install-button" target="_blank">%2$s</a>', esc_url( 'https://wordpress.org/support/view/plugin-reviews/coblocks#new-post' ), esc_html__( 'Leave a Review', 'coblocks' ) ); ?>
-						<a href="<?php echo esc_url( $no_bug_url ); ?>" class="no-thanks"><?php echo esc_html__( 'No thanks / I already have', 'coblocks' ); ?></a>
+						<?php printf( '<a href="%1$s" class="button button-primary coblocks-install-button" target="_blank">%2$s</a>', esc_url( 'https://wordpress.org/support/view/plugin-reviews/coblocks#new-post' ), esc_html__( 'Leave a Review', '@@textdomain' ) ); ?>
+						<a href="<?php echo esc_url( $no_bug_url ); ?>" class="no-thanks"><?php echo esc_html__( 'No thanks / I already have', '@@textdomain' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -312,7 +312,7 @@ class CoBlocks_Feedback {
 new CoBlocks_Feedback(
 	array(
 		'slug'       => 'coblocks_plugin_feedback',
-		'name'       => __( 'CoBlocks', 'coblocks' ),
+		'name'       => __( 'CoBlocks', '@@textdomain' ),
 		'time_limit' => WEEK_IN_SECONDS,
 	)
 );
