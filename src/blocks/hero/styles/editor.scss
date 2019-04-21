@@ -109,6 +109,12 @@
 					}
 				}
 			}
+
+			&.has-background-video {
+				> span {
+					position: static;
+				}
+			}
 		}
 	}
 
