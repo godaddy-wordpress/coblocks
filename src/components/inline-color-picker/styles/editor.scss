@@ -1,10 +1,10 @@
 .components-coblocks-inline-color-picker {
-	opacity: 0.99;
-	z-index: 999;
 	bottom: 10px;
 	left: 25px;
+	opacity: 0.99;
 	position: absolute;
 	width: auto;
+	z-index: 9999;
 
 	.components-color-palette__custom-color {
 		margin: 0;
