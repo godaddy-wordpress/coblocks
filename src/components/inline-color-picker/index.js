@@ -18,7 +18,6 @@ export default function InlineColorPicker( { disableCustomColors = false, value,
 	function applyOrUnset( color ) {
 		return () => onChange( value === color ? undefined : color );
 	}
-	const customColorPickerLabel = __( 'Custom color picker' );
 	const classes = classnames( 'components-color-palette', 'components-coblocks-inline-color-picker', className );
 	return (
 		<div className={ classes }>
@@ -31,7 +30,7 @@ export default function InlineColorPicker( { disableCustomColors = false, value,
 							<Button
 								aria-expanded={ isOpen }
 								onClick={ onToggle }
-								aria-label={ customColorPickerLabel }
+								aria-label={ __( 'Custom color picker' ) }
 								isLink
 							>
 								<span class="components-color-palette__custom-color-gradient"></span>
