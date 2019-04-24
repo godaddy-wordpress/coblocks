@@ -19,6 +19,7 @@ const { Toolbar } = wp.components;
 
 function Controls( { attributes, setAttributes, apiKey } ) {
 	const {
+		address,
 		pinned,
 		skin,
 	} = attributes;
@@ -53,7 +54,9 @@ function Controls( { attributes, setAttributes, apiKey } ) {
 					/>
 				</Toolbar>
 			}
-			<Toolbar controls={ toolbarControls } />
+			{ address &&
+				<Toolbar controls={ toolbarControls } />
+			}
 		</BlockControls>
 	);
 }
