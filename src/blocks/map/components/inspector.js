@@ -197,7 +197,10 @@ class Inspector extends Component {
 							/>
 						</PanelBody>
 					}
-					<PanelBody title={ __( 'Google Maps API Key' ) } initialOpen={ false }>
+					<PanelBody
+						title={ __( 'Google Maps API Key' ) }
+						initialOpen={ address ? false : true }
+					>
 						<p>{ __( 'Add your Google Maps API key. Updating this API key will set all your maps to use the new key.' ) }</p>
 						{ apiKey === '' ?
 							<p><span><a href={ RETRIEVE_KEY_URL } target="_blank" rel="noopener noreferrer"> { __( 'Retrieve your key' ) }</a> | <a href={ HELP_URL } target="_blank" rel="noopener noreferrer">{ __( 'Need help?' ) }</a></span></p> :
