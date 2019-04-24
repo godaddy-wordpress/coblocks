@@ -195,12 +195,14 @@ class Edit extends Component {
 		const GoogleMapIframeRender = (
 			<Fragment>
 				<div style={ { width: '100%', height, position: 'absolute' } } />
-				<iframe
-					title={ __( 'Google Map' ) }
-					frameBorder="0"
-					style={ { width: '100%', minHeight: height + 'px' } }
-					src={ 'https://www.google.com/maps?q=' + encodeURIComponent( address ) + '&language=ja&output=embed&hl=%s&z=' + zoom }
-				/>
+				<div className="iframe__overflow-wrapper">
+					<iframe
+						title={ __( 'Google Map' ) }
+						frameBorder="0"
+						style={ { width: '100%', minHeight: height + 'px' } }
+						src={ 'https://www.google.com/maps?q=' + encodeURIComponent( address ) + '&language=ja&output=embed&hl=%s&z=' + zoom }
+					/>
+				</div>
 			</Fragment>
 		);
 

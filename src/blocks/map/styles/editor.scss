@@ -38,6 +38,11 @@
 	&.is-selected .components-resizable-box__handle {
 		z-index: 30;
 	}
+
+	.iframe__overflow-wrapper {
+		height: 100%;
+		overflow: hidden;
+	}
 }
 
 // Map styles.
@@ -94,7 +99,7 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 			margin-bottom: 5px;
 		}
 	}
-  	.components-block-coblocks-map-api-key-remove__button {
+	.components-block-coblocks-map-api-key-remove__button {
 		margin-left: 5px;
-  	}
+	}
 }
