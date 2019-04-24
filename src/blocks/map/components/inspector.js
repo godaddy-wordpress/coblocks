@@ -120,50 +120,52 @@ class Inspector extends Component {
 							</div>
 						</PanelBody>
 					}
-					<PanelBody title={ __( 'Map Settings' ) }>
-						<Fragment>
-							<RangeControl
-								label={ __( 'Zoom Level' ) }
-								value={ zoom }
-								onChange={ ( nextZoom ) => setAttributes( { zoom: nextZoom } ) }
-								className="components-block-coblocks-map-zoom__custom-input"
-								min={ 5 }
-								max={ 20 }
-								step={ 1 }
-							/>
-							{
-								!! apiKey &&
+					{ address &&
+						<PanelBody title={ __( 'Map Settings' ) }>
+							<Fragment>
 								<RangeControl
-									label={ __( 'Marker Size' ) }
-									value={ iconSize }
-									onChange={ ( nextIconSize ) => setAttributes( { iconSize: nextIconSize } ) }
-									className="components-block-coblocks-map-icon-size__custom-input"
-									min={ 20 }
-									max={ 100 }
-									step={ 2 }
+									label={ __( 'Zoom Level' ) }
+									value={ zoom }
+									onChange={ ( nextZoom ) => setAttributes( { zoom: nextZoom } ) }
+									className="components-block-coblocks-map-zoom__custom-input"
+									min={ 5 }
+									max={ 20 }
+									step={ 1 }
 								/>
-							}
-							<RangeControl
-								label={ __( 'Height in pixels' ) }
-								aria-label={ __( 'Height for the map in pixels' ) }
-								value={ height }
-								onChange={ () => setAttributes( { height: parseInt( event.target.value, 10 ) } ) }
-								className="components-block-coblocks-height__custom-input"
-								min={ 200 }
-								max={ 1000 }
-								step={ 10 }
-							/>
-							{
-								!! apiKey &&
-								<ToggleControl
-									label={ __( 'Map Controls' ) }
-									checked={ !! controls }
-									onChange={ this.setControls }
-									help={ !! controls ? __( 'Fine control options are enabled.' ) : __( 'Toggle to enable map control options.' ) }
+								{
+									!! apiKey &&
+									<RangeControl
+										label={ __( 'Marker Size' ) }
+										value={ iconSize }
+										onChange={ ( nextIconSize ) => setAttributes( { iconSize: nextIconSize } ) }
+										className="components-block-coblocks-map-icon-size__custom-input"
+										min={ 20 }
+										max={ 100 }
+										step={ 2 }
+									/>
+								}
+								<RangeControl
+									label={ __( 'Height in pixels' ) }
+									aria-label={ __( 'Height for the map in pixels' ) }
+									value={ height }
+									onChange={ () => setAttributes( { height: parseInt( event.target.value, 10 ) } ) }
+									className="components-block-coblocks-height__custom-input"
+									min={ 200 }
+									max={ 1000 }
+									step={ 10 }
 								/>
-							}
-						</Fragment>
-					</PanelBody>
+								{
+									!! apiKey &&
+									<ToggleControl
+										label={ __( 'Map Controls' ) }
+										checked={ !! controls }
+										onChange={ this.setControls }
+										help={ !! controls ? __( 'Fine control options are enabled.' ) : __( 'Toggle to enable map control options.' ) }
+									/>
+								}
+							</Fragment>
+						</PanelBody>
+					}
 					{ !! apiKey && address && pinned && controls &&
 						<PanelBody
 							title={ __( 'Map Controls' ) }
