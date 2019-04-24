@@ -26,8 +26,8 @@ function Controls( { attributes, setAttributes, apiKey } ) {
 
 	const toolbarControls = [
 		{
-			icon: 'edit',
-			title: __( 'Edit' ),
+			icon: icons.mapEdit,
+			title: __( 'Edit Location' ),
 			isActive: ! pinned,
 			onClick: () => setAttributes( { pinned: ! pinned } ),
 		},
