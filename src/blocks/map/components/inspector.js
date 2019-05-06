@@ -199,7 +199,7 @@ class Inspector extends Component {
 					}
 					<PanelBody
 						title={ __( 'Google Maps API Key' ) }
-						initialOpen={ address ? false : true }
+						initialOpen={ ! address }
 					>
 						<p>{ __( 'Add your Google Maps API key. Updating this API key will set all your maps to use the new key.' ) }</p>
 						{ apiKey === '' ?
