@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import icons from './../icons';
-import { BackgroundToolbar } from '../background';
 import * as helper from './../../../utils/helper';
 
 /**
@@ -62,7 +61,6 @@ class GlobalToolbar extends Component {
 						} }
 					/>
 				) }
-				<BackgroundToolbar { ...this.props }/>
 				{ !! images.length && (
 					<Toolbar>
 						<MediaUploadCheck>

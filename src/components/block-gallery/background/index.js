@@ -5,7 +5,6 @@ import BackgroundAttributes from './attributes';
 import BackgroundClasses from './classes';
 import BackgroundPanel from './panel';
 import BackgroundStyles from './styles';
-import BackgroundToolbar from './toolbar';
 import BackgroundTransforms from './transforms';
 
 /**
@@ -16,6 +15,5 @@ export {
 	BackgroundClasses,
 	BackgroundPanel,
 	BackgroundStyles,
-	BackgroundToolbar,
 	BackgroundTransforms,
 };
