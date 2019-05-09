@@ -2,12 +2,13 @@
  * Internal dependencies
  */
 import * as helper from './../../utils/helper';
+import MediaFilterControl from '../../components/media-filter-control';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { IconButton, Toolbar } = wp.components;
 const {
 	BlockControls,
@@ -45,25 +46,30 @@ class Controls extends Component {
 		return (
 			<BlockControls>
 				{ hasImages && (
-					<Toolbar>
-						<MediaUploadCheck>
-							<MediaUpload
-								onSelect={ this.onSelectImages }
-								allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
-								multiple
-								gallery
-								value={ images.map( ( img ) => img.id ) }
-								render={ ( { open } ) => (
-									<IconButton
-										className="components-toolbar__control"
-										label={ __( 'Edit gallery' ) }
-										icon="edit"
-										onClick={ open }
-									/>
-								) }
-							/>
-						</MediaUploadCheck>
-					</Toolbar>
+					<Fragment>
+						<Toolbar>
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={ this.onSelectImages }
+									allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
+									multiple
+									gallery
+									value={ images.map( ( img ) => img.id ) }
+									render={ ( { open } ) => (
+										<IconButton
+											className="components-toolbar__control"
+											label={ __( 'Edit gallery' ) }
+											icon="edit"
+											onClick={ open }
+										/>
+									) }
+								/>
+							</MediaUploadCheck>
+						</Toolbar>
+						<MediaFilterControl
+							{ ...this.props }
+						/>
+					</Fragment>
 				) }
 			</BlockControls>
 		)
