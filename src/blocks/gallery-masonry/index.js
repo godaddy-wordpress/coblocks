@@ -24,7 +24,7 @@ const { RichText } = wp.editor;
 /**
  * Block constants
  */
-const name = 'masonry';
+const name = 'gallery-masonry';
 
 const title = __( 'Masonry Gallery' );
 
@@ -65,7 +65,7 @@ const settings = {
 				type: 'block',
 				blocks: [ 'blockgallery/stacked' ],
 				transform: ( attributes ) => (
-					createBlock( `blockgallery/${ name }`, {
+					createBlock( `coblocks/${ name }`, {
 						...GlobalTransforms( attributes ),
 					} )
 				),
@@ -74,7 +74,7 @@ const settings = {
 				type: 'block',
 				blocks: [ 'blockgallery/carousel' ],
 				transform: ( attributes ) => (
-					createBlock( `blockgallery/${ name }`, {
+					createBlock( `coblocks/${ name }`, {
 						...GlobalTransforms( attributes ),
 					} )
 				),
@@ -83,7 +83,7 @@ const settings = {
 				type: 'block',
 				blocks: [ 'blockgallery/thumbnails' ],
 				transform: ( attributes ) => (
-					createBlock( `blockgallery/${ name }`, {
+					createBlock( `coblocks/${ name }`, {
 						...GlobalTransforms( attributes ),
 					} )
 				),
@@ -92,7 +92,7 @@ const settings = {
 				type: 'block',
 				blocks: [ 'blockgallery/offset' ],
 				transform: ( attributes ) => (
-					createBlock( `blockgallery/${ name }`, {
+					createBlock( `coblocks/${ name }`, {
 						...GlobalTransforms( attributes ),
 					} )
 				),
@@ -101,7 +101,7 @@ const settings = {
 				type: 'block',
 				blocks: [ 'blockgallery/auto-height' ],
 				transform: ( attributes ) => (
-					createBlock( `blockgallery/${ name }`, {
+					createBlock( `coblocks/${ name }`, {
 						...GlobalTransforms( attributes ),
 					} )
 				),
@@ -110,7 +110,7 @@ const settings = {
 				type: 'block',
 				blocks: [ 'core/gallery' ],
 				transform: ( attributes ) => (
-					createBlock( `blockgallery/${ name }`, {
+					createBlock( `coblocks/${ name }`, {
 						...GlobalTransforms( attributes ),
 					} )
 				),
@@ -122,19 +122,19 @@ const settings = {
 				transform: ( attributes ) => {
 					const validImages = filter( attributes, ( { id, url } ) => id && url );
 					if ( validImages.length > 0 ) {
-						return createBlock( `blockgallery/${ name }`, {
+						return createBlock( `coblocks/${ name }`, {
 							images: validImages.map( ( { id, url, alt, caption } ) => ( { id, url, alt, caption } ) ),
 							ids: validImages.map( ( { id } ) => id ),
 						} );
 					}
-					return createBlock( `blockgallery/${ name }` );
+					return createBlock( `coblocks/${ name }` );
 				},
 			},
 			{
 				type: 'prefix',
 				prefix: ':masonry',
 				transform: function( content ) {
-					return createBlock( `blockgallery/${ name }`, {
+					return createBlock( `coblocks/${ name }`, {
 						content,
 					} );
 				},

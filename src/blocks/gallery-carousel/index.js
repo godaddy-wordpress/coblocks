@@ -24,7 +24,7 @@ const { getColorClassName, RichText } = wp.editor;
 /**
  * Block constants
  */
-const name = 'carousel';
+const name = 'gallery-carousel';
 
 const title = __( 'Carousel Gallery' );
 
@@ -101,7 +101,7 @@ const settings = {
 				type: 'block',
 				blocks: [ 'blockgallery/stacked' ],
 				transform: ( attributes ) => (
-					createBlock( `blockgallery/${ name }`, {
+					createBlock( `coblocks/${ name }`, {
 						...GlobalTransforms( attributes ),
 						gridSize: 'lrg',
 					} )
@@ -111,7 +111,7 @@ const settings = {
 				type: 'block',
 				blocks: [ 'blockgallery/masonry' ],
 				transform: ( attributes ) => (
-					createBlock( `blockgallery/${ name }`, {
+					createBlock( `coblocks/${ name }`, {
 						...GlobalTransforms( attributes ),
 						gridSize: 'lrg',
 					} )
@@ -121,7 +121,7 @@ const settings = {
 				type: 'block',
 				blocks: [ 'blockgallery/thumbnails' ],
 				transform: ( attributes ) => (
-					createBlock( `blockgallery/${ name }`, {
+					createBlock( `coblocks/${ name }`, {
 						...GlobalTransforms( attributes ),
 						gridSize: 'lrg',
 					} )
@@ -131,7 +131,7 @@ const settings = {
 				type: 'block',
 				blocks: [ 'blockgallery/offset' ],
 				transform: ( attributes ) => (
-					createBlock( `blockgallery/${ name }`, {
+					createBlock( `coblocks/${ name }`, {
 						...GlobalTransforms( attributes ),
 						gridSize: 'lrg',
 					} )
@@ -141,7 +141,7 @@ const settings = {
 				type: 'block',
 				blocks: [ 'blockgallery/auto-height' ],
 				transform: ( attributes ) => (
-					createBlock( `blockgallery/${ name }`, {
+					createBlock( `coblocks/${ name }`, {
 						...GlobalTransforms( attributes ),
 						gridSize: 'lrg',
 					} )
@@ -151,7 +151,7 @@ const settings = {
 				type: 'block',
 				blocks: [ 'core/gallery' ],
 				transform: ( attributes ) => (
-					createBlock( `blockgallery/${ name }`, {
+					createBlock( `coblocks/${ name }`, {
 						...GlobalTransforms( attributes ),
 						gridSize: 'lrg',
 					} )
@@ -164,19 +164,19 @@ const settings = {
 				transform: ( attributes ) => {
 					const validImages = filter( attributes, ( { id, url } ) => id && url );
 					if ( validImages.length > 0 ) {
-						return createBlock( `blockgallery/${ name }`, {
+						return createBlock( `coblocks/${ name }`, {
 							images: validImages.map( ( { id, url, alt, caption } ) => ( { id, url, alt, caption } ) ),
 							ids: validImages.map( ( { id } ) => id ),
 						} );
 					}
-					return createBlock( `blockgallery/${ name }` );
+					return createBlock( `coblocks/${ name }` );
 				},
 			},
 			{
 				type: 'prefix',
 				prefix: ':carousel',
 				transform: function( content ) {
-					return createBlock( `blockgallery/${ name }`, {
+					return createBlock( `coblocks/${ name }`, {
 						content,
 					} );
 				},
