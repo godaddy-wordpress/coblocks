@@ -386,11 +386,33 @@
 
 	> span > .components-resizable-box__handle {
 		z-index: 98;
+		transform: none;
+		width: 25px;
 
 		&::before {
-			height: 15px;
+			display: block;
+			content: "";
 			width: 15px;
-			right: calc(50% - 7px);
+			height: 15px;
+			border: 2px solid #fff;
+			border-radius: 50%;
+			background: #0085ba;
+			cursor: inherit;
+			position: absolute;
+			top: calc(50% - 8px);
+			right: calc(50% - 8px);
+			opacity: 1;
+		}
+
+		&:after {
+			display: none;
+		}
+
+		&:hover:after,
+		&:hover:before,
+		&:active:after,
+		&:active:before {
+			animation: none;
 		}
 
 		&-right {
