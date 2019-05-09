@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import * as ratio from './../../../utils/helper';
+import * as helper from './../../../utils/helper';
 import { LightboxTransforms } from '../lightbox';
 import { BackgroundTransforms } from '../background';
 
