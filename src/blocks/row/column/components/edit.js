@@ -203,9 +203,10 @@ class Edit extends Component {
 					onResizeStop={ ( event, direction, elt, delta ) => {
 						let currentBlock = document.getElementById( 'block-' + this.props.clientId );
 
+						console.log( currentBlock.classList );
 						//Remove resizing class
 						currentBlock.classList.remove( 'is-resizing' );
-						// document.getElementById( 'block-' + parentId ).classList.remove( 'is-resizing' );
+						document.getElementById( 'block-' + parentId ).classList.remove( 'is-resizing' );
 
 						toggleSelection( true );
 						this.setState( { resizing: false } );
