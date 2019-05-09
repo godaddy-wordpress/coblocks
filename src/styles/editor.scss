@@ -1,3 +1,10 @@
+// Core Gutenberg modules
+@import "editor/core/colors";
+@import "editor/core/variables";
+@import "editor/core/breakpoints";
+@import "editor/core/mixins";
+
+// Common
 @import "../common";
 
 // Style icons
