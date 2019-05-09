@@ -7,14 +7,15 @@ import filter from 'lodash/filter';
 /**
  * Internal dependencies
  */
-import { title, icon } from '../'
+import { title, icon } from './'
 import Inspector from './inspector';
-import GalleryImage from '../../../components/block-gallery/gallery-image';
-import GalleryPlaceholder from '../../../components/block-gallery/gallery-placeholder';
-import GalleryDropZone from '../../../components/block-gallery/gallery-dropzone';
-import GalleryUpload from '../../../components/block-gallery/gallery-upload';
-import { BackgroundStyles } from '../../../components/block-gallery/background';
-import { GlobalClasses, GlobalToolbar } from '../../../components/block-gallery/global';
+import Controls from './controls';
+import GalleryImage from '../../components/block-gallery/gallery-image';
+import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
+import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
+import GalleryUpload from '../../components/block-gallery/gallery-upload';
+import { BackgroundStyles } from '../../components/block-gallery/background';
+import { GlobalClasses } from '../../components/block-gallery/global';
 
 /**
  * WordPress dependencies
@@ -26,17 +27,13 @@ const { withSelect } = wp.data;
 const { withNotices } = wp.components;
 const { withColors, withFontSizes } = wp.editor;
 
-/**
- * Block edit function
- */
-class Edit extends Component {
+class GalleryStackedEdit extends Component {
 	constructor() {
 		super( ...arguments );
 
 		this.onSelectImage = this.onSelectImage.bind( this );
 		this.onRemoveImage = this.onRemoveImage.bind( this );
 		this.setImageAttributes = this.setImageAttributes.bind( this );
-
 		this.state = {
 			selectedImage: null,
 		};
@@ -102,30 +99,25 @@ class Edit extends Component {
 			backgroundColor,
 			captionColor,
 			className,
+			fontSize,
 			isSelected,
 			noticeOperations,
 			noticeUI,
 			setAttributes,
-			fontSize,
 		} = this.props;
 
 		const {
 			align,
+			captions,
 			fullwidth,
 			gutter,
 			gutterMobile,
 			images,
 			linkTo,
 			shadow,
-			captions,
 		} = attributes;
 
-		const dropZone = (
-			<GalleryDropZone
-				{ ...this.props }
-				label={ sprintf( __( 'Drop to add to the %s gallery' ), title.toLowerCase() ) }
-			/>
-		);
+		const hasImages = !! images.length;
 
 		const wrapperClasses = classnames(
 			...GlobalClasses( attributes ), {
@@ -143,7 +135,7 @@ class Edit extends Component {
 			color: captionColor.color,
 		};
 
-		if ( images.length === 0 ) {
+		if ( ! hasImages ) {
 			return (
 				<GalleryPlaceholder
 					{ ...this.props }
@@ -155,16 +147,19 @@ class Edit extends Component {
 
 		return (
 			<Fragment>
-				<GlobalToolbar
-					{ ...this.props }
+				{ isSelected &&
+					<Controls
+						{ ...this.props }
+					/>
+				}
+				{ isSelected &&
+					<Inspector
+						{ ...this.props }
 				/>
-				<Inspector
-					{ ...this.props }
-				/>
+				}
 				{ noticeUI }
 				<div className={ className }>
 					<ul className={ wrapperClasses } style={ wrapperStyles }>
-						{ dropZone }
 						{ images.map( ( img, index ) => {
 							// translators: %1$d is the order number of the image, %2$d is the total number of images.
 							const ariaLabel = __( sprintf( 'image %1$d of %2$d in gallery', ( index + 1 ), images.length ) );
@@ -192,13 +187,7 @@ class Edit extends Component {
 								</li>
 							);
 						} ) }
-						{ isSelected && (
-							<GalleryUpload { ...this.props }
-								gutter={ gutter }
-								gutterMobile={ gutterMobile }
-								marginBottom={ true }
-							/>
-						) }
+						<GalleryPlaceholder { ...this.props } />
 					</ul>
 				</div>
 			</Fragment>
@@ -216,4 +205,4 @@ export default compose( [
 	withColors( { backgroundColor : 'background-color', captionColor : 'color' } ),
 	withFontSizes( 'fontSize' ),
 	withNotices,
-] )( Edit );
+] )( GalleryStackedEdit );

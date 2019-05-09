@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import * as helper from './../../../utils/helper';
-import { LightboxTransforms } from '../lightbox';
 import { BackgroundTransforms } from '../background';
 
 /**
@@ -33,7 +32,6 @@ function GlobalTransforms( props ) {
 		draggable: props.draggable,
 		fontSize: props.fontSize,
 		customFontSize: props.customFontSize,
-		...LightboxTransforms( props ),
 		...BackgroundTransforms( props ),
 	};
 

@@ -34,6 +34,9 @@ import './formats/';
 // Sidebars
 import './sidebars/block-manager';
 
+// Block Gallery
+import './components/block-gallery';
+
 // Register Blocks
 import * as accordion from './blocks/accordion';
 import * as accordionItem from './blocks/accordion/accordion-item';

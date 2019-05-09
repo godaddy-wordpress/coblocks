@@ -6,9 +6,9 @@ import * as helper from './../../utils/helper';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { MediaPlaceholder } = wp.editor;
+const { MediaPlaceholder, BlockIcon } = wp.editor;
 
 /**
  * Gallery Image Component
@@ -33,23 +33,31 @@ class GalleryPlaceholder extends Component {
 			className,
 			noticeOperations,
 			noticeUI,
+			isSelected,
 		} = this.props;
+
+		const { images } = attributes;
+
+		const hasImages = !! images.length;
 
 		return (
 			<Fragment>
 				<MediaPlaceholder
-					icon={ this.props.icon }
-					className={ className }
+					addToGallery={ hasImages }
+					isAppender={ hasImages }
+					dropZoneUIOnly={ hasImages && ! isSelected }
+					icon={ ! hasImages && <BlockIcon icon={ this.props.icon } /> }
 					labels={ {
-						title: this.props.label,
-						instructions: __( 'Drag images, upload new ones or select files from your library.' ),
+						title: ! hasImages && sprintf( __( '%s Gallery' ), this.props.label ),
+						instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.' ),
 					} }
 					onSelect={ this.onSelectImages }
 					accept="image/*"
 					allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
 					multiple
-					notices={ noticeUI }
+					value={ hasImages ? images : undefined }
 					onError={ noticeOperations.createErrorNotice }
+					notices={ hasImages ? undefined : noticeUI }
 				/>
 			</Fragment>
 		);

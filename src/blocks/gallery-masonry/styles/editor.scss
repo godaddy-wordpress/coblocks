@@ -1,5 +1,5 @@
 .editor-block-list__block[data-type="coblocks/gallery-masonry"] {
-	// Fixes an issue where figures are set to display 100% if alignfull is set.
+	// Fixes issue where figures are set to display 100% if alignfull is set.
 	.blockgallery--figure {
 		width: auto !important;
 
@@ -8,18 +8,17 @@
 		}
 	}
 
-	.components-blockgallery-gallery-item__upload {
-		min-height: 200px;
-		width: 100% !important;
+	// Fixes issue where the outline does not fully render due to the outside nature of the core outline style applied.
+	.is-appender {
+		left: 1px;
+		position: relative;
+		width: calc(100% - 1px);
+	}
 
-		@media (max-width: 700px) {
-			span {
-				display: none;
-			}
-
-			.dashicon {
-				margin-top: 0;
-			}
+	// Fixes issue with multiple dropzones displaying when dropping in an image.
+	.components-drop-zone.is-active {
+		+ ul li:last-child .components-drop-zone {
+			display: none;
 		}
 	}
 

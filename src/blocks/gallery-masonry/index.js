@@ -9,8 +9,8 @@ import filter from 'lodash/filter';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import icons from './components/icons';
-import edit from './components/edit';
+import icons from './icons';
+import edit from './edit';
 import { BackgroundStyles } from '../../components/block-gallery/background/';
 import { GlobalAttributes, GlobalTransforms, GlobalClasses, GlobalStyles } from '../../components/block-gallery/global/';
 
@@ -26,7 +26,7 @@ const { RichText } = wp.editor;
  */
 const name = 'gallery-masonry';
 
-const title = __( 'Masonry Gallery' );
+const title = __( 'Masonry' );
 
 const icon = icons.masonry;
 
@@ -166,13 +166,13 @@ const settings = {
 			captions,
 		} = attributes;
 
-		const wrapperClasses = classnames(
+		const innerClasses = classnames(
 			...GlobalClasses( attributes ), {
 				[ `has-gutter` ] : gutter > 0,
 			}
 		);
 
-		const wrapperStyles = {
+		const innerStyles = {
 			...BackgroundStyles( attributes ),
 		};
 
@@ -190,8 +190,8 @@ const settings = {
 		return (
 			<div className={ className }>
 				<div
-					className={ wrapperClasses }
-					style={ wrapperStyles }
+					className={ innerClasses }
+					style={ innerStyles }
 				>
 					<ul
 						className={ masonryClasses }

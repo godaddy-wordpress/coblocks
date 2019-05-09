@@ -8,14 +8,15 @@ import Flickity from 'react-flickity-component';
 /**
  * Internal dependencies
  */
-import { title, icon } from '../'
+import { title, icon } from './'
 import Inspector from './inspector';
-import GalleryImage from '../../../components/block-gallery/gallery-image';
-import GalleryPlaceholder from '../../../components/block-gallery/gallery-placeholder';
-import GalleryDropZone from '../../../components/block-gallery/gallery-dropzone';
-import GalleryUpload from '../../../components/block-gallery/gallery-upload';
-import { BackgroundStyles } from '../../../components/block-gallery/background/';
-import { GlobalClasses, GlobalToolbar } from '../../../components/block-gallery/global/';
+import Controls from './controls';
+import GalleryImage from '../../components/block-gallery/gallery-image';
+import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
+import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
+import GalleryUpload from '../../components/block-gallery/gallery-upload';
+import { BackgroundStyles } from '../../components/block-gallery/background/';
+import { GlobalClasses } from '../../components/block-gallery/global/';
 
 /**
  * WordPress dependencies
@@ -237,12 +238,16 @@ class Edit extends Component {
 
 		return (
 			<Fragment>
-				<GlobalToolbar
-					{ ...this.props }
-				/>
-				<Inspector
-					{ ...this.props }
-				/>
+				{ isSelected &&
+					<Controls
+						{ ...this.props }
+					/>
+				}
+				{ isSelected &&
+					<Inspector
+						{ ...this.props }
+					/>
+				}
 				{ noticeUI }
 				<ResizableBox
 						size={ {

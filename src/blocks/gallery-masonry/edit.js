@@ -8,14 +8,15 @@ import Masonry from 'react-masonry-component';
 /**
  * Internal dependencies
  */
-import { title, icon } from '../'
+import { title, icon } from './'
 import Inspector from './inspector';
-import GalleryImage from '../../../components/block-gallery/gallery-image';
-import GalleryPlaceholder from '../../../components/block-gallery/gallery-placeholder';
-import GalleryDropZone from '../../../components/block-gallery/gallery-dropzone';
-import GalleryUpload from '../../../components/block-gallery/gallery-upload';
-import { BackgroundStyles } from '../../../components/block-gallery/background/';
-import { GlobalClasses, GlobalToolbar, GlobalStyles } from '../../../components/block-gallery/global/';
+import Controls from './controls';
+import GalleryImage from '../../components/block-gallery/gallery-image';
+import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
+import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
+import GalleryUpload from '../../components/block-gallery/gallery-upload';
+import { BackgroundStyles } from '../../components/block-gallery/background/';
+import { GlobalClasses, GlobalStyles } from '../../components/block-gallery/global/';
 
 /**
  * WordPress dependencies
@@ -135,11 +136,13 @@ class Edit extends Component {
 			captions,
 		} = attributes;
 
+		const hasImages = !! images.length;
+
+		// An additional dropzone to wrap the entire gallery in.
 		const dropZone = (
 			<GalleryDropZone
 				{ ...this.props }
-				// translators: %s: Lowercase block title
-				label={ sprintf( __( 'Drop to add to the %s gallery' ), title.toLowerCase() ) }
+				// label={ sprintf( __( 'Drop to add to the %s gallery' ), title.toLowerCase() ) }
 			/>
 		);
 
@@ -169,12 +172,11 @@ class Edit extends Component {
 			color: captionColor.color,
 		};
 
-		if ( images.length === 0 ) {
+		if ( ! hasImages ) {
 			return (
 				<GalleryPlaceholder
 					{ ...this.props }
-					// translators: %s: Block title
-					label={ sprintf( __( '%s' ), title ) }
+					label={ title }
 					icon={ icon }
 				/>
 			);
@@ -182,19 +184,23 @@ class Edit extends Component {
 
 		return (
 			<Fragment>
-				<GlobalToolbar
-					{ ...this.props }
+				{ isSelected &&
+					<Controls
+						{ ...this.props }
+					/>
+				}
+				{ isSelected &&
+					<Inspector
+						{ ...this.props }
 				/>
-				<Inspector
-					{ ...this.props }
-				/>
+				}
 				{ noticeUI }
 				<div className={ className }>
 					<div
 						className={ wrapperClasses }
 						style={ wrapperStyles }
 					>
-						{ dropZone }
+					{ dropZone }
 						<Masonry
 							elementType={ 'ul' }
 							className={ masonryClasses }
@@ -225,11 +231,11 @@ class Edit extends Component {
 									</li>
 								);
 							} ) }
-							{ isSelected && (
-								<GalleryUpload
-									{ ...this.props }
-								/>
-							) }
+							<li className="blockgallery--item">
+								<div className="blockgallery--figure ">
+									<GalleryPlaceholder { ...this.props } />
+								</div>
+							</li>
 						</Masonry>
 					</div>
 				</div>

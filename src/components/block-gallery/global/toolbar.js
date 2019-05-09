@@ -53,78 +53,74 @@ class GlobalToolbar extends Component {
 		} = attributes;
 
 		return (
-			isSelected && (
-				<Fragment>
-					<BlockControls>
-						{ hasAlignmentToolbar && (
-							<AlignmentToolbar
-								value={ contentAlign }
-								onChange={ ( nextAlign ) => {
-									setAttributes( { contentAlign: nextAlign } );
-								} }
-							/>
-						) }
-						<BackgroundToolbar { ...this.props }/>
-						{ !! images.length && (
-							<Toolbar>
-								<MediaUploadCheck>
-									<MediaUpload
-										onSelect={ this.onSelectImages }
-										allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
-										multiple
-										gallery
-										value={ images.map( ( img ) => img.id ) }
-										render={ ( { open } ) => (
-											<IconButton
-												className="components-toolbar__control"
-												label={ __( 'Edit Gallery' ) }
-												icon="edit"
-												onClick={ open }
-											/>
-										) }
+			<BlockControls>
+				{ hasAlignmentToolbar && (
+					<AlignmentToolbar
+						value={ contentAlign }
+						onChange={ ( nextAlign ) => {
+							setAttributes( { contentAlign: nextAlign } );
+						} }
+					/>
+				) }
+				<BackgroundToolbar { ...this.props }/>
+				{ !! images.length && (
+					<Toolbar>
+						<MediaUploadCheck>
+							<MediaUpload
+								onSelect={ this.onSelectImages }
+								allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
+								multiple
+								gallery
+								value={ images.map( ( img ) => img.id ) }
+								render={ ( { open } ) => (
+									<IconButton
+										className="components-toolbar__control"
+										label={ __( 'Edit Gallery' ) }
+										icon="edit"
+										onClick={ open }
 									/>
-								</MediaUploadCheck>
-								<DropdownMenu
-									icon= { icons.imageFilter }
-									label={ __( 'Apply Filter' ) }_
-									controls={ [
-										{
-											icon: icons.imageFilterGrayscale,
-											title: __( 'Grayscale' ),
-											onClick: () => { setAttributes( { filter: 'grayscale' } ) },
-										},
-										{
-											icon: icons.imageFilterSepia,
-											title: __( 'Sepia' ),
-											onClick: () => { setAttributes( { filter: 'sepia' } ) },
-										},
-										{
-											icon: icons.imageFilterSaturation,
-											title: __( 'Saturation' ),
-											onClick: () => { setAttributes( { filter: 'saturation' } ) },
-										},
-										{
-											icon: icons.imageFilterDark,
-											title: __( 'Dark' ),
-											onClick: () => { setAttributes( { filter: 'dim' } ) },
-										},
-										{
-											icon: icons.imageFilterVintage,
-											title: __( 'Vintage' ),
-											onClick: () => { setAttributes( { filter: 'vintage' } ) },
-										},
-										{
-											icon: icons.image,
-											title: __( 'Original' ),
-											onClick: () => { setAttributes( { filter: 'none' } ) },
-										},
-									] }
-								/>
-							</Toolbar>
-						) }
-					</BlockControls>
-				</Fragment>
-			)
+								) }
+							/>
+						</MediaUploadCheck>
+						<DropdownMenu
+							icon= { icons.imageFilter }
+							label={ __( 'Apply Filter' ) }_
+							controls={ [
+								{
+									icon: icons.imageFilterGrayscale,
+									title: __( 'Grayscale' ),
+									onClick: () => { setAttributes( { filter: 'grayscale' } ) },
+								},
+								{
+									icon: icons.imageFilterSepia,
+									title: __( 'Sepia' ),
+									onClick: () => { setAttributes( { filter: 'sepia' } ) },
+								},
+								{
+									icon: icons.imageFilterSaturation,
+									title: __( 'Saturation' ),
+									onClick: () => { setAttributes( { filter: 'saturation' } ) },
+								},
+								{
+									icon: icons.imageFilterDark,
+									title: __( 'Dark' ),
+									onClick: () => { setAttributes( { filter: 'dim' } ) },
+								},
+								{
+									icon: icons.imageFilterVintage,
+									title: __( 'Vintage' ),
+									onClick: () => { setAttributes( { filter: 'vintage' } ) },
+								},
+								{
+									icon: icons.image,
+									title: __( 'Original' ),
+									onClick: () => { setAttributes( { filter: 'none' } ) },
+								},
+							] }
+						/>
+					</Toolbar>
+				) }
+			</BlockControls>
 		)
 	}
 }

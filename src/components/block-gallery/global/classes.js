@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import { LightboxClasses } from '../lightbox';
 import { BackgroundClasses } from '../background';
 
 /**
@@ -32,7 +31,6 @@ function GlobalClasses( attributes ) {
 		{ [ `has-filter-${ filter }` ] : filter != 'none' },
 		{ [ `has-caption-style-${ captionStyle }` ] : captionStyle != undefined },
 		{ 'has-caption-color': captionColorClass, },
-		...LightboxClasses( attributes ),
 		...BackgroundClasses( attributes ),
 		captionColorClass,
 	];

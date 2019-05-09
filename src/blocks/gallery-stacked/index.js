@@ -9,24 +9,24 @@ import filter from 'lodash/filter';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import edit from './components/edit';
-import icons from './components/icons';
-import { BackgroundStyles } from '../../components/block-gallery/background/';
+import edit from './edit';
+import icons from './icons';
 import { GlobalAttributes, GlobalTransforms, GlobalClasses, GlobalStyles } from '../../components/block-gallery/global/';
+import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { RichText, getFontSizeClass } = wp.editor;
+const { RichText, getFontSizeClass, getColorClassName } = wp.editor;
 
 /**
  * Block constants
  */
 const name = 'gallery-stacked';
 
-const title = __( 'Stacked Gallery' );
+const title = __( 'Stacked' );
 
 const icon = icons.stacked;
 
@@ -184,18 +184,32 @@ const settings = {
 			images,
 			linkTo,
 			shadow,
+			hasParallax,
+			backgroundType,
+			focalPoint,
+			backgroundImg,
+			customBackgroundColor,
+			backgroundColor,
 		} = attributes;
 
-		const wrapperClasses = classnames(
-			...GlobalClasses( attributes ), {
+		// Body color class and styles.
+		const textClass = getColorClassName( 'color', captionColor );
+		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
+		const innerClasses = classnames(
+			...GlobalClasses( attributes ),
+			...BackgroundClasses( attributes ), {
 				'has-fullwidth-images': fullwidth,
 				[ `has-margin` ] : gutter > 0,
 			}
 		);
 
-		const wrapperStyles = {
+		const innerStyles = {
 			...GlobalStyles( attributes ),
-			...BackgroundStyles( attributes ),
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
+			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+			color: textClass ? undefined : customCaptionColor,
 		};
 
 		const fontSizeClass = getFontSizeClass( fontSize );
@@ -218,7 +232,8 @@ const settings = {
 
 		return (
 			<div className={ className }>
-				<ul className={ wrapperClasses } style={ wrapperStyles }>
+				{ BackgroundVideo( attributes ) }
+				<ul className={ innerClasses } style={ innerStyles }>
 					{ images.map( ( image ) => {
 						let href;
 

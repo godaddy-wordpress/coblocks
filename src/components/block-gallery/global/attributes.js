@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import Lightbox, { LightboxAttributes } from '../lightbox';
 import BackgroundPanel, { BackgroundAttributes } from '../background';
 
 /**
@@ -95,7 +94,6 @@ const GlobalAttributes = {
 		source: 'children',
 		selector: '.blockgallery--primary-caption',
 	},
-	...LightboxAttributes,
 	...BackgroundAttributes,
 };
 

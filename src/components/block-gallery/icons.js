@@ -3,41 +3,6 @@
  */
 const icons = {};
 
-icons.masonry =
-<svg aria-hidden className="components-coblocks-svg dashicon" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-	<g transform="translate(3 3)"><path d="m6 0h-4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm0 16h-4v-14h4z"/><path d="m16 10h-4c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-4v-4h4z"/><path d="m16 0h-4c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-4v-4h4z"/></g>
-</svg>
-
-icons.stacked =
-<svg aria-hidden className="components-coblocks-svg dashicon" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-	<g transform="translate(3 3)"><path d="m16 0h-14c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2zm0 8h-14v-6h14z"/><path d="m16 12h-14c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2zm0 4h-14v-2h14z"/></g>
-</svg>
-
-icons.carousel =
-<svg aria-hidden className="components-coblocks-svg dashicon" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-	<g transform="translate(3 3)"><path d="m11 0h-4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm0 16h-4v-14h4z"/><path d="m18 0h-1c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h1s0-.9 0-2v-14c0-1.1 0-2 0-2zm0 16h-1v-14h1z"/><path d="m3 0h-1c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h1s0-.9 0-2v-14c0-1.1 0-2 0-2zm0 16h-1v-14h1z" transform="matrix(-1 0 0 1 3 0)"/></g>
-</svg>
-
-icons.thumbnails =
-<svg aria-hidden className="components-coblocks-svg dashicon" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-	<g fill-rule="evenodd" transform="translate(3 3)"><path d="m16 0h-14c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2zm0 10h-14v-8h14z" fill-rule="nonzero"/><rect height="4" rx=".5" width="5.33" x="12.67" y="14"/><rect height="4" rx=".5" width="5.33" x="6.335" y="14"/><rect height="4" rx=".5" width="5.33" y="14"/></g>
-</svg>
-
-icons.offset =
-<svg aria-hidden className="components-coblocks-svg dashicon" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-	<g transform="translate(3 3)"><path d="m16 10h-6c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-6v-4h6z"/><path d="m13.6666667 0h-9.33333337c-1.28333333 0-2.33333333.9-2.33333333 2v4c0 1.1 1.05 2 2.33333333 2h9.33333337c1.2833333 0 2.3333333-.9 2.3333333-2v-4c0-1.1-1.05-2-2.3333333-2zm0 6h-9.33333337v-4h9.33333337z"/><path d="m4 10h-2c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-2v-4h2z"/></g>
-</svg>
-
-icons.autoHeight =
-<svg aria-hidden className="components-coblocks-svg dashicon" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-	<g transform="translate(3 3)"><path d="m8.99488661 15.1058214-3.24188911-3.2418891-1.44197591 1.4419759 4.68386502 4.6940918 4.69409179-4.6940918-1.4522027-1.4419759z"/><path d="m16 0h-14c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2zm0 8h-14v-6h14z"/></g>
-</svg>
-
-icons.tiled =
-<svg aria-hidden className="components-coblocks-svg dashicon" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-	<g transform="translate(3 3)"><path d="m16 0h-5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h5c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-5v-4h5z"/><path d="m8 10h-6c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-6v-4h6z"/><path d="m5 0h-3c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h3c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-3v-4h3z"/><path d="m16 10h-2c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-2v-4h2z"/></g>
-</svg>
-
 icons.mobile =
 <svg aria-hidden className="dashicon" role="img" focusable="false" height="15" viewBox="0 0 15 15" width="15" xmlns="http://www.w3.org/2000/svg">
 	<path d="m8.25 0h-6c-.825 0-1.5.61363636-1.5 1.36363636v10.27272724c0 .75.675 1.3636364 1.5 1.3636364h6c.825 0 1.5-.6136364 1.5-1.3636364v-10.27272724c0-.75-.675-1.36363636-1.5-1.36363636zm-.5 11h-5v-9h5z" transform="translate(2.25 1)"/>
@@ -51,11 +16,6 @@ icons.desktopChrome =
 icons.backgroundImage =
 <svg className="dashicon" aria-hidden role="img" focusable="false" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
 	<g transform="translate(1 .665604)"><path d="m15.6111111 2.72328445v13.22222225h-13.22222221v-13.22222225zm0-1.88888889h-13.22222221c-1.03888889 0-1.88888889.85-1.88888889 1.88888889v13.22222225c0 1.0388889.85 1.8888889 1.88888889 1.8888889h13.22222221c1.0388889 0 1.8888889-.85 1.8888889-1.8888889v-13.22222225c0-1.03888889-.85-1.88888889-1.8888889-1.88888889z"/><path d="m10.7833333 10.3343956-2.49999997 3.01-1.78333333-2.0144445-2.5 3.0022222h10z"/></g>
-</svg>
-
-icons.editGallery =
-<svg aria-hidden className="dashicon" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-	<g fill="none" fill-rule="evenodd"><path d="m0 0h24v24h-24z"/><path d="m18 20h-14v-14h9v-2h-9c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-9h-2zm-7.79-3.17-1.96-2.36-2.75 3.53h11l-3.54-4.71zm9.79-12.83v-3h-2v3h-3c.01.01 0 2 0 2h3v2.99c.01.01 2 0 2 0v-2.99h3v-2z" fill="currentColor" fill-rule="nonzero"/></g>
 </svg>
 
 icons.imageFilter =
@@ -86,11 +46,6 @@ icons.imageFilterDark =
 icons.imageFilterSepia =
 <svg aria-hidden className="dashicon" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 	<g fill="none" fill-rule="evenodd" transform="translate(1.8 1.8)"><path d="m0 0h20.4v20.4h-20.4z"/><path d="m5.95 9.35h-5.1v1.7h5.1zm1.8445-2.754-1.802-1.802-1.1985 1.1985 1.802 1.802zm3.2555-5.746h-1.7v5.1h1.7zm4.556 5.1425-1.1985-1.1985-1.802 1.802 1.1985 1.1985zm-1.156 3.3575v1.7h5.1v-1.7zm-4.25-1.7c-1.411 0-2.55 1.139-2.55 2.55s1.139 2.55 2.55 2.55 2.55-1.139 2.55-2.55-1.139-2.55-2.55-2.55zm2.4055 6.154 1.802 1.802 1.1985-1.1985-1.802-1.802zm-7.8115.6035 1.1985 1.1985 1.802-1.802-1.1985-1.1985zm4.556 5.1425h1.7v-5.1h-1.7z" fill="currentColor" fill-rule="nonzero"/></g>
-</svg>
-
-icons.image =
-<svg aria-hidden className="dashicon" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-	<g fill="none" fill-rule="evenodd"><path d="m0 0h24v24h-24z"/><path d="m19 3h-14c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm0 16h-14v-14h14zm-5.04-6.71-2.75 3.54-1.96-2.36-2.75 3.53h11z" fill="currentColor" fill-rule="nonzero"/></g>
 </svg>
 
 icons.trash =
