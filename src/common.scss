@@ -18,6 +18,7 @@ $darkred: #a00;
 $green: #4ab866;
 $white: #fff;
 $lightgray: rgba(0, 0, 0, 0.15);
+$blue: #0085ba;
 
 // Accordion.
 $accordion-border-radius: 4px;
@@ -61,3 +62,15 @@ $gutter--small: 18px;
 $gutter--medium: 22px;
 $gutter--large: 33px;
 $gutter--huge: 60px;
+
+// Get all gallery blocks
+@mixin blockGalleryEditorBlocks {
+	.wp-block[data-type="coblocks/offset"],
+	.wp-block[data-type="coblocks/masonry"],
+	.wp-block[data-type="coblocks/stacked"],
+	.wp-block[data-type="coblocks/carousel"],
+	.wp-block[data-type="coblocks/thumbnails"],
+	.wp-block[data-type="coblocks/auto-height"] {
+		@content;
+	}
+}
