@@ -32,7 +32,6 @@ const icon = icons.carousel;
 
 const keywords = [
 	__( 'gallery' ),
-	__( 'images' ),
 	__( 'photos' ),
 ];
 

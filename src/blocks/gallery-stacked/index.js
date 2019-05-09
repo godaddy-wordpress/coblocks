@@ -32,7 +32,6 @@ const icon = icons.stacked;
 
 const keywords = [
 	__( 'gallery' ),
-	__( 'images' ),
 	__( 'photos' ),
 ];
 

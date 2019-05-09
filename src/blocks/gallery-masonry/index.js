@@ -32,7 +32,6 @@ const icon = icons.masonry;
 
 const keywords = [
 	__( 'gallery' ),
-	__( 'images' ),
 	__( 'photos' ),
 ];
 
