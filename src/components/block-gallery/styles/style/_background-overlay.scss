@@ -1,0 +1,26 @@
+.has-background-overlay {
+
+	position: relative;
+
+	&::before {
+		background-color: inherit;
+		bottom: 0;
+		content: "";
+		left: 0;
+		opacity: 0.5;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
+
+@for $i from 1 through 9 {
+
+	.has-background-overlay-#{ $i * 10 }::before {
+		opacity: $i * 0.1;
+	}
+}
+
+.has-background-overlay:not(.has-background) {
+	background-color: #000;
+}

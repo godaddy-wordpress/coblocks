@@ -1,0 +1,39 @@
+// Utility class for adding a border-radius to the figure elements.
+@for $i from 2 through 20 {
+
+	.has-border-radius-#{ $i } {
+
+		.blockgallery--figure::after {
+			border-radius: #{ $i }px;
+		}
+
+		.components-blockgallery-gallery-item__remove-button,
+		.components-blockgallery-gallery-item__remove-wrapper {
+			border-top-right-radius: #{ $i }px !important;
+			border-bottom-left-radius: #{ $i }px !important;
+		}
+
+		.components-blockgallery-gallery-item__upload.components-button {
+			border-radius: #{ $i }px;
+		}
+
+		figcaption {
+			border-bottom-right-radius: #{ $i - 4}px !important;
+			border-bottom-left-radius: #{ $i - 4 }px !important;
+		}
+	}
+}
+
+@for $i from 13 through 20 {
+
+	.has-border-radius-#{ $i } {
+
+		.components-blockgallery-gallery-item__remove-wrapper {
+			padding: 6px;
+
+			svg {
+				right: -1px;
+			}
+		}
+	}
+}

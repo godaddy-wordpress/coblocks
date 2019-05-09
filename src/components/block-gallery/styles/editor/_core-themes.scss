@@ -1,0 +1,141 @@
+.is-twentysixteen,
+.is-twentyseventeen,
+.is-twentythirteen,
+.is-twentytwelve {
+
+	.blockgallery--primary-caption.editor-rich-text__tinymce {
+		text-align: left;
+		font-style: italic;
+		margin-bottom: 0;
+	}
+}
+
+.is-twentynineteen {
+
+	@include blockGalleryEditorBlocks {
+		margin-bottom: 48px;
+		margin-top: 50px;
+	}
+
+	.blockgallery--primary-caption {
+		margin-bottom: -10px;
+	}
+}
+
+.is-twentyfifteen {
+
+	@include blockGalleryEditorBlocks {
+		margin-bottom: 42px;
+		margin-top: 42px;
+	}
+
+	.blockgallery--primary-caption.editor-rich-text__tinymce {
+		color: #707070;
+		font-family: "Noto Sans", sans-serif;
+		font-size: 12px;
+		line-height: 1.5;
+		margin-bottom: -5px;
+
+		@media screen and (min-width: 46.25em) {
+			font-size: 14px;
+		}
+
+		@media screen and (min-width: 55em) {
+			font-size: 16px;
+		}
+
+		@media screen and (min-width: 59.6875em) {
+			font-size: 12px;
+		}
+
+		@media screen and (min-width: 68.75em) {
+			font-size: 14px;
+		}
+
+		@media screen and (min-width: 77.5em) {
+			font-size: 16px;
+		}
+	}
+}
+
+.is-twentyfourteen {
+
+	.blockgallery--primary-caption.editor-rich-text__tinymce {
+		text-align: left;
+		font-style: italic;
+		margin-bottom: -7px;
+		padding: 0;
+		margin-top: 8px;
+	}
+}
+
+.is-twentythirteen {
+
+	@include blockGalleryEditorBlocks {
+		margin-bottom: 40px;
+		margin-top: 40px;
+	}
+
+	.blockgallery--primary-caption.editor-rich-text__tinymce {
+		padding: 0;
+		margin-top: 8px;
+	}
+}
+
+
+.is-twentytwelve {
+
+	// Override the theme's border radius behavior for our blocks.
+	.blockgallery:not([class*="border-radius"]) img {
+		border-radius: inherit;
+	}
+
+	.blockgallery--primary-caption.editor-rich-text__tinymce {
+		padding: 0;
+		margin-top: 1.1em;
+	}
+
+	.wp-block[data-type="blockgallery/stacked"] figcaption {
+		text-align: center !important;
+	}
+}
+
+.is-twentyeleven {
+
+	// Override the theme's padding/border effect on our blocks.
+	.blockgallery img {
+		border: 0;
+		padding: 0;
+		max-width: 100%;
+	}
+
+	.blockgallery--primary-caption.editor-rich-text__tinymce {
+		padding: 2px 0 0 40px;
+		margin-bottom: -5px;
+		text-align: left;
+		font-family: Georgia, serif;
+		font-size: 12px;
+
+		&::before {
+			color: #666;
+			content: "\2014";
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 600;
+			margin-right: 5px;
+			position: absolute;
+			left: 10px;
+			top: 0;
+		}
+	}
+
+	.wp-block[data-type="blockgallery/stacked"] figcaption {
+		text-align: center;
+		padding-left: 1em;
+		padding-right: 1em;
+
+		&::before {
+			display: none;
+		}
+	}
+}

@@ -1,0 +1,49 @@
+.blockgallery--item {
+	margin: 0;
+
+	figure:focus {
+		outline: none;
+	}
+
+	img:focus {
+		outline: none;
+		box-shadow: inset 0 0 0 4px #0085ba;
+	}
+
+	.is-selected {
+
+		&::after {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			box-shadow: inset 0 0 0 4px #0085ba;
+			z-index: 1;
+			content: "";
+		}
+	}
+
+	.is-transient img {
+		opacity: 0.3;
+	}
+
+	.editor-rich-text {
+		z-index: 2;
+	}
+
+	.components-spinner {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -9px;
+		margin-left: -9px;
+	}
+}
+
+.has-caption-color .blockgallery--caption {
+
+	a {
+		color: inherit !important;
+	}
+}

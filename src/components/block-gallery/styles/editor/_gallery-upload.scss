@@ -1,0 +1,19 @@
+.components-blockgallery-gallery-item__upload.components-button {
+	border-radius: 0;
+	border: none;
+	box-shadow: none !important;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 100px;
+	padding: 0 !important;
+
+	.dashicon {
+		margin-top: 10px;
+	}
+
+	&:hover,
+	&:focus {
+		border: $border-width solid $dark-gray-500;
+	}
+}

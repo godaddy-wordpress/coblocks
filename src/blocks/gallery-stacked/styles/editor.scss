@@ -1,0 +1,17 @@
+.editor-block-list__block[data-type="coblocks/gallery-stacked"] {
+	// Set a min-height for the "Upload an Image" trigger for this gallery.
+	.components-blockgallery-gallery-item__upload {
+		min-height: 100px;
+		width: 100% !important;
+	}
+
+	// Fix issue where selected images are not wider than the viewport.
+	.blockgallery--item:not(.blockgallery--item-uploader) .blockgallery--figure {
+		display: inline-block;
+		width: auto !important;
+	}
+
+	.has-fullwidth-images .blockgallery--item:not(.blockgallery--item-uploader) .blockgallery--figure {
+		width: 100% !important;
+	}
+}

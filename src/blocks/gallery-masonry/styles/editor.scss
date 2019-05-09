@@ -1,0 +1,83 @@
+.editor-block-list__block[data-type="coblocks/gallery-masonry"] {
+	// Fixes an issue where figures are set to display 100% if alignfull is set.
+	.blockgallery--figure {
+		width: auto !important;
+
+		img {
+			vertical-align: bottom;
+		}
+	}
+
+	.components-blockgallery-gallery-item__upload {
+		min-height: 200px;
+		width: 100% !important;
+
+		@media (max-width: 700px) {
+			span {
+				display: none;
+			}
+
+			.dashicon {
+				margin-top: 0;
+			}
+		}
+	}
+
+	// Captions.
+	.editor-rich-text {
+		bottom: 0;
+		left: 0;
+		max-height: 100%;
+		overflow-y: auto;
+		position: absolute;
+		right: 0;
+		width: 100%;
+
+		.editor-rich-text__tinymce {
+			color: inherit;
+
+			a {
+				color: inherit;
+			}
+
+			&:not(.mce-content-body) {
+				opacity: 0.6;
+			}
+
+			&:focus a[data-mce-selected] {
+				opacity: 0.2;
+			}
+		}
+	}
+
+	.editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
+		overflow: hidden;
+		position: relative !important;
+	}
+
+	.is-selected .editor-rich-text {
+		// IE calculates this incorrectly, so leave it to modern browsers.
+		@supports (position: sticky) {
+			bottom: 4px;
+			left: 4px;
+			margin-top: -4px;
+			right: 4px;
+			width: calc(100% - 8px);
+		}
+
+		figcaption {
+			padding-bottom: 6px !important;
+		}
+
+		// Override negative margins so this toolbar isn't hidden by overflow.
+		// Overflow is needed for long captions.
+		.editor-rich-text__inline-toolbar {
+			top: 0;
+		}
+
+		// Make extra space for the inline toolbar.
+		.editor-rich-text__tinymce {
+			padding-top: 48px;
+		}
+	}
+}

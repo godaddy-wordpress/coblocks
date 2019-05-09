@@ -1,0 +1,172 @@
+.is-twentynineteen {
+
+	.entry-content div[class*="wp-block-blockgallery"] {
+		margin-bottom: 46px;
+		margin-top: 46px;
+
+		.blockgallery--caption {
+			font-size: 0.71111em;
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+			line-height: 1.6;
+			margin: 0 0 -20px;
+			padding: 0.5rem;
+			text-align: center;
+		}
+	}
+
+	.wp-block-blockgallery-stacked figcaption:not([class*="font-size"]) {
+		font-size: 0.71111em;
+	}
+}
+
+.is-twentyseventeen {
+
+	.entry-content div[class*="wp-block-blockgallery"] {
+		margin-top: 1.65em;
+		margin-bottom: 1.75em;
+
+		.blockgallery--primary-caption {
+			font-style: italic;
+			margin-bottom: -10px;
+			margin-top: 1em;
+		}
+
+		&:not([class*="masonry"]) {
+
+			.blockgallery:not(.has-caption-color) figcaption {
+				color: #555d66;
+			}
+		}
+	}
+
+	.wp-block-blockgallery-masonry figcaption {
+		padding-bottom: 6px;
+	}
+}
+
+.is-twentysixteen {
+
+	.entry-content div[class*="wp-block-blockgallery"] {
+		margin-top: 2.3em;
+		margin-bottom: 2.3em;
+
+		.blockgallery--primary-caption {
+			margin-bottom: -10px;
+			margin-top: 0.6em;
+		}
+	}
+
+	.wp-block-blockgallery-masonry figcaption {
+		padding-bottom: 6px;
+	}
+}
+
+.is-twentyfifteen {
+
+	.entry-content div[class*="wp-block-blockgallery"] {
+		margin-top: 2.2em;
+		margin-bottom: 2.2em;
+
+		.blockgallery--primary-caption {
+			margin-top: 0.5em;
+			padding-bottom: 0;
+			margin-bottom: -15px;
+		}
+	}
+
+	.wp-block-blockgallery-masonry figcaption {
+		font-size: 13px !important;
+	}
+}
+
+.is-twentyfourteen {
+
+	.entry-content div[class*="wp-block-blockgallery"] {
+		margin-top: 30px;
+		margin-bottom: 30px;
+
+		.blockgallery--primary-caption {
+			text-align: left;
+			margin-bottom: -7px;
+		}
+	}
+}
+
+.is-twentythirteen {
+
+	.entry-content div[class*="wp-block-blockgallery"] {
+		margin-top: 34px;
+		margin-bottom: 30px;
+
+		.blockgallery--primary-caption {
+			margin-bottom: -10px;
+		}
+	}
+
+	.wp-block-blockgallery-masonry figcaption {
+		font-size: 13px !important;
+	}
+}
+
+.is-twentytwelve {
+
+	.entry-content div[class*="wp-block-blockgallery"] {
+		margin-top: 32px;
+		margin-bottom: 32px;
+
+		// Override the theme's border radius behavior for our blocks.
+		.blockgallery:not([class*="border-radius"]) img {
+			border-radius: inherit;
+		}
+
+		.blockgallery--primary-caption {
+			margin-bottom: -10px;
+		}
+	}
+
+	.wp-block-blockgallery-masonry figcaption {
+		padding-bottom: 6px;
+	}
+}
+
+.is-twentyeleven {
+
+	.entry-content div[class*="wp-block-blockgallery"] {
+		margin-top: 33px;
+		margin-bottom: 32px;
+
+		// Override the theme's padding/border effect on our blocks.
+		.blockgallery img {
+			border: 0;
+			padding: 0;
+			max-width: 100%;
+		}
+
+		.blockgallery--primary-caption {
+			margin-bottom: -15px;
+
+			&::before {
+				color: #666;
+				content: '\2014';
+				font-size: 14px;
+				font-style: normal;
+				font-weight: 600;
+				margin-right: 5px;
+				position: absolute;
+				left: 10px;
+				top: 0;
+			}
+		}
+	}
+
+	.wp-block-blockgallery-stacked figcaption {
+		text-align: center !important;
+		padding-left: 1em !important;
+		padding-right: 1em !important;
+
+		&::before {
+			display: none;
+			padding-left: 0;
+		}
+	}
+}

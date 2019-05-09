@@ -1,0 +1,52 @@
+.has-no-arrows {
+
+	.flickity-prev-next-button {
+		background-color: $blue;
+		border: none;
+		width: 38px;
+		height: 38px;
+		border-radius: 4px;
+		opacity: 1;
+		display: none;
+		transition: none;
+
+		&:hover {
+			background-color: #007eb1;
+		}
+
+		&:active {
+			background-color: #006a95;
+		}
+
+		.flickity-button-icon {
+			fill: $white;
+			top: 22.5%;
+			width: 55%;
+			height: 55%;
+		}
+
+		&.previous {
+			left: 15px;
+
+			.flickity-button-icon {
+				left: 27%;
+			}
+		}
+
+		&.next {
+			right: 15px;
+
+			.flickity-button-icon {
+				left: 20%;
+			}
+		}
+	}
+
+	&.blockgallery.is-selected .flickity-prev-next-button {
+		display: block;
+	}
+}
+
+.has-no-dots .flickity-page-dots {
+	display: none !important;
+}

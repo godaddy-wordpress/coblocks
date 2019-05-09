@@ -1,0 +1,12 @@
+// Style our custom colored icons like the default icons.
+.components-coblocks-svg {
+	.components-panel &,
+	.components-toolbar &,
+	.editor-block-navigation__item & {
+		color: $dark-gray-500;
+	}
+}
+
+.editor-block-icon.has-colors::after {
+	color: $dark-gray-500;
+}
