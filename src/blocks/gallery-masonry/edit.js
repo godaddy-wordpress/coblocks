@@ -142,7 +142,6 @@ class Edit extends Component {
 		const dropZone = (
 			<GalleryDropZone
 				{ ...this.props }
-				// label={ sprintf( __( 'Drop to add to the %s gallery' ), title.toLowerCase() ) }
 			/>
 		);
 
