@@ -12,7 +12,7 @@ import './styles/editor.scss';
 import icons from './icons';
 import edit from './edit';
 import { BackgroundStyles } from '../../components/block-gallery/background/';
-import { GlobalAttributes, GlobalTransforms, GlobalClasses } from '../../components/block-gallery/global/';
+import { GalleryAttributes, GlobalTransforms, GalleryClasses } from '../../components/block-gallery/';
 
 /**
  * WordPress dependencies
@@ -36,7 +36,7 @@ const keywords = [
 ];
 
 const blockAttributes = {
-	...GlobalAttributes,
+	...GalleryAttributes,
 
 	// Override global attributes.
 	gutter: {
@@ -217,7 +217,7 @@ const settings = {
 
 		const wrapperClasses = classnames(
 			'is-cropped',
-			...GlobalClasses( attributes ), {
+			...GalleryClasses( attributes ), {
 				[ `has-horizontal-gutter` ] : gutter > 0,
 			}
 		);

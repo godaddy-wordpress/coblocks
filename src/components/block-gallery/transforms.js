@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import * as helper from './../../../utils/helper';
+import * as helper from './../../utils/helper';
 import { BackgroundTransforms } from '../background';
 
 /**

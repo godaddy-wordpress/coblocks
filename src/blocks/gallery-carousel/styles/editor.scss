@@ -4,12 +4,20 @@
 		width: auto;
 	}
 
-	// Fullwidth upload image button.
-	.blockgallery--item-uploader {
-		.components-form-file-upload,
-		.components-blockgallery-gallery-item__upload {
-			height: 100%;
-			width: 100%;
+	.is-appender,
+	.components-form-file-upload {
+		height: 100%;
+		width: 100%;
+	}
+
+	.is-appender {
+		margin-bottom: 0;
+	}
+
+	// Fixes issue with multiple dropzones displaying when dropping in an image.
+	.components-drop-zone.is-active {
+		+ .wp-block-coblocks-gallery-carousel div div div div div:last-child .components-drop-zone {
+			display: none;
 		}
 	}
 

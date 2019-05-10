@@ -11,7 +11,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import edit from './edit';
 import icons from './icons';
-import { GlobalAttributes, GlobalTransforms, GlobalClasses, GlobalStyles } from '../../components/block-gallery/global/';
+import { GalleryAttributes, GlobalTransforms, GalleryClasses, GlobalStyles } from '../../components/block-gallery/';
 import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
 
 /**
@@ -36,7 +36,7 @@ const keywords = [
 ];
 
 const blockAttributes = {
-	...GlobalAttributes,
+	...GalleryAttributes,
 
 	// Block specific attributes and overrides.
 	align: {
@@ -197,7 +197,7 @@ const settings = {
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const innerClasses = classnames(
-			...GlobalClasses( attributes ),
+			...GalleryClasses( attributes ),
 			...BackgroundClasses( attributes ), {
 				'has-fullwidth-images': fullwidth,
 				[ `has-margin` ] : gutter > 0,

@@ -1,16 +1,21 @@
 .editor-block-list__block[data-type="coblocks/gallery-stacked"] {
 	// Fix issue where selected images are not wider than the viewport.
-	.blockgallery--item:not(.blockgallery--item-uploader) .blockgallery--figure {
+	.blockgallery--item:not(.is-appender) .blockgallery--figure {
 		display: inline-block;
-		width: auto !important;
+		// width: auto !important;
 	}
 
-	.has-fullwidth-images .blockgallery--item:not(.blockgallery--item-uploader) .blockgallery--figure {
+	.has-fullwidth-images .blockgallery--figure {
 		width: 100% !important;
 	}
 
 	.is-appender {
 		// Remove unnecessary margin applied to the core appender.
 		margin-bottom: 0;
+		width: 100%;
+	}
+
+	li:last-child .blockgallery--figure {
+		width: 100% !important;
 	}
 }

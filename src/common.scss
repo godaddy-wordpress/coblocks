@@ -1,5 +1,11 @@
 // This SCSS file loads per every instance of each block.
 
+// Core Gutenberg modules
+@import "styles/editor/core/colors";
+@import "styles/editor/core/variables";
+@import "styles/editor/core/breakpoints";
+@import "styles/editor/core/mixins";
+
 // Fonts & basics
 $default-font: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen-sans, ubuntu, cantarell, "Helvetica Neue", sans-serif;
 

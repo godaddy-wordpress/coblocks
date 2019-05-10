@@ -177,7 +177,7 @@ class SizeControl extends Component {
 
 		return (
 			<Fragment>
-				{ label && <p className={ 'components-blockgallery-inspector__size-control--label' }>{ label }</p> }
+				{ label && <p>{ label }</p> }
 				<div className={ classes }>
 					<ButtonGroup aria-label={ __( 'Select Size' ) }>
 						{ map( this.getSizes(), ( { size, shortName } ) => (

@@ -3,6 +3,7 @@
  */
 import * as helper from './../../utils/helper';
 import MediaFilterControl from '../../components/media-filter-control';
+import BackgroundPanel, { BackgroundControls } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -66,6 +67,7 @@ class Controls extends Component {
 								/>
 							</MediaUploadCheck>
 						</Toolbar>
+						{ BackgroundControls( this.props ) }
 						<MediaFilterControl
 							{ ...this.props }
 						/>

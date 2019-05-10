@@ -14,9 +14,8 @@ import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
-import GalleryUpload from '../../components/block-gallery/gallery-upload';
 import { BackgroundStyles } from '../../components/block-gallery/background/';
-import { GlobalClasses } from '../../components/block-gallery/global/';
+import { GalleryClasses } from '../../components/block-gallery/';
 
 /**
  * WordPress dependencies
@@ -45,10 +44,7 @@ const flickityOptions = {
 	},
 }
 
-/**
- * Block edit function
- */
-class Edit extends Component {
+class GalleryCarouselEdit extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -190,17 +186,16 @@ class Edit extends Component {
 			primaryCaption,
 		} = attributes;
 
+		// An additional dropzone to wrap the entire gallery in.
 		const dropZone = (
 			<GalleryDropZone
 				{ ...this.props }
-				// translators: %s: Lowercase block title
-				label={ sprintf( __( 'Drop to add to the %s' ), title.toLowerCase() ) }
 			/>
 		);
 
 		const wrapperClasses = classnames(
 			'is-cropped',
-			...GlobalClasses( attributes ), {
+			...GalleryClasses( attributes ), {
 				[ `align${ align }` ] : align,
 				[ `has-horizontal-gutter` ] : gutter > 0,
 				[ `has-no-dots` ] : ! pageDots,
@@ -229,8 +224,7 @@ class Edit extends Component {
 			return (
 				<GalleryPlaceholder
 					{ ...this.props }
-					// translators: %s: Block title
-					label={ sprintf( __( '%s Gallery' ), title ) }
+					label={ title }
 					icon={ icon }
 				/>
 			);
@@ -318,12 +312,15 @@ class Edit extends Component {
 									);
 								} ) }
 								{ isSelected && (
-									<GalleryUpload { ...this.props }
-										gutter={ gutter }
-										gutterMobile={ gutterMobile }
-										marginRight={ true }
-										marginLeft={ true }
-									/>
+									<div className="blockgallery--item">
+										<GalleryPlaceholder
+											{ ...this.props }
+											gutter={ gutter }
+											gutterMobile={ gutterMobile }
+											marginRight={ true }
+											marginLeft={ true }
+										/>
+									</div>
 								) }
 							</Flickity>
 						</div>
@@ -351,4 +348,4 @@ class Edit extends Component {
 export default compose( [
 	withColors( { backgroundColor : 'background-color', captionColor : 'color' } ),
 	withNotices,
-] )( Edit );
+] )( GalleryCarouselEdit );

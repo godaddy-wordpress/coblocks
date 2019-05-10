@@ -12,9 +12,6 @@ const {
 	Toolbar,
 	DropdownMenu,
 } = wp.components;
-const {
-	BlockControls,
-} = wp.editor;
 
 class MediaFilterControl extends Component {
 
@@ -26,7 +23,6 @@ class MediaFilterControl extends Component {
 
 		const {
 			attributes,
-			isSelected,
 			setAttributes,
 		} = this.props;
 

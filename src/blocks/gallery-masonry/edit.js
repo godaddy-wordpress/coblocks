@@ -14,9 +14,8 @@ import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
-import GalleryUpload from '../../components/block-gallery/gallery-upload';
 import { BackgroundStyles } from '../../components/block-gallery/background/';
-import { GlobalClasses, GlobalStyles } from '../../components/block-gallery/global/';
+import { GalleryClasses, GlobalStyles } from '../../components/block-gallery/';
 
 /**
  * WordPress dependencies
@@ -36,10 +35,7 @@ const masonryOptions = {
 	percentPosition: true,
 };
 
-/**
- * Block edit function
- */
-class Edit extends Component {
+class GalleryMasonryEdit extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -148,7 +144,7 @@ class Edit extends Component {
 		const sidebarIsOpened = editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
 
 		const wrapperClasses = classnames(
-			...GlobalClasses( attributes ),
+			...GalleryClasses( attributes ),
 			sidebarIsOpened, {
 				[ `align${ align }` ] : align,
 				[ `has-gutter` ] : gutter > 0,
@@ -231,9 +227,7 @@ class Edit extends Component {
 								);
 							} ) }
 							<li className="blockgallery--item">
-								<div className="blockgallery--figure ">
-									<GalleryPlaceholder { ...this.props } />
-								</div>
+								<GalleryPlaceholder { ...this.props } />
 							</li>
 						</Masonry>
 					</div>
@@ -252,4 +246,4 @@ export default compose( [
 	} ) ),
 	withColors( { backgroundColor : 'background-color', captionColor : 'color' } ),
 	withNotices,
-] )( Edit );
+] )( GalleryMasonryEdit );

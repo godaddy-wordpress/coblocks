@@ -6,7 +6,7 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-import autoPlayOptions from './autoplay-options';
+import autoPlayOptions from './options/autoplay-options';
 
 /**
  * WordPress dependencies

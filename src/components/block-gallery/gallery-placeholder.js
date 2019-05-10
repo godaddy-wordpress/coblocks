@@ -1,4 +1,9 @@
 /**
+ * External Dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Internal dependencies
  */
 import * as helper from './../../utils/helper';
@@ -31,17 +36,35 @@ class GalleryPlaceholder extends Component {
 		const {
 			attributes,
 			className,
+			gutter,
+			gutterMobile,
+			isSelected,
+			marginBottom,
+			marginLeft,
+			marginRight,
+			marginTop,
 			noticeOperations,
 			noticeUI,
-			isSelected,
 		} = this.props;
 
 		const { images } = attributes;
 
 		const hasImages = !! images.length;
 
+		const classes = classnames(
+			'blockgallery--figure', {
+			[ `has-margin-top-${ gutter }` ] : marginTop && gutter > 0,
+			[ `has-margin-top-mobile-${ gutterMobile }` ] : marginTop && gutterMobile > 0,
+			[ `has-margin-right-${ gutter }` ] : marginRight && gutter > 0,
+			[ `has-margin-right-mobile-${ gutterMobile }` ] : marginRight && gutterMobile > 0,
+			[ `has-margin-bottom-${ gutter }` ] : marginBottom && gutter > 0,
+			[ `has-margin-bottom-mobile-${ gutterMobile }` ] : marginBottom && gutterMobile > 0,
+			[ `has-margin-left-${ gutter }` ] : marginLeft && gutter > 0,
+			[ `has-margin-left-mobile-${ gutterMobile }` ] : marginLeft && gutterMobile > 0,
+		} );
+
 		return (
-			<Fragment>
+			<div className={ classes }>
 				<MediaPlaceholder
 					addToGallery={ hasImages }
 					isAppender={ hasImages }
@@ -59,7 +82,7 @@ class GalleryPlaceholder extends Component {
 					onError={ noticeOperations.createErrorNotice }
 					notices={ hasImages ? undefined : noticeUI }
 				/>
-			</Fragment>
+			</div>
 		);
 	}
 }

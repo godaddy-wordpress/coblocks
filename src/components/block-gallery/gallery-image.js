@@ -19,6 +19,7 @@ const { isBlobURL } = wp.blob;
  * Gallery Image Component
  */
 class GalleryImage extends Component {
+
 	constructor() {
 		super( ...arguments );
 

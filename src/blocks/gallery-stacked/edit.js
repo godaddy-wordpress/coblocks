@@ -13,9 +13,8 @@ import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
-import GalleryUpload from '../../components/block-gallery/gallery-upload';
 import { BackgroundStyles } from '../../components/block-gallery/background';
-import { GlobalClasses } from '../../components/block-gallery/global';
+import { GalleryClasses } from '../../components/block-gallery';
 
 /**
  * WordPress dependencies
@@ -34,6 +33,7 @@ class GalleryStackedEdit extends Component {
 		this.onSelectImage = this.onSelectImage.bind( this );
 		this.onRemoveImage = this.onRemoveImage.bind( this );
 		this.setImageAttributes = this.setImageAttributes.bind( this );
+
 		this.state = {
 			selectedImage: null,
 		};
@@ -120,7 +120,7 @@ class GalleryStackedEdit extends Component {
 		const hasImages = !! images.length;
 
 		const wrapperClasses = classnames(
-			...GlobalClasses( attributes ), {
+			...GalleryClasses( attributes ), {
 				'has-fullwidth-images': fullwidth,
 				[ `align${ align }` ] : align,
 				[ `has-margin` ] : gutter > 0,
@@ -187,7 +187,9 @@ class GalleryStackedEdit extends Component {
 								</li>
 							);
 						} ) }
-						<GalleryPlaceholder { ...this.props } />
+						<li className="blockgallery--item">
+							<GalleryPlaceholder { ...this.props } />
+						</li>
 					</ul>
 				</div>
 			</Fragment>

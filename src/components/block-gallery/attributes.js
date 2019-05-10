@@ -1,13 +1,10 @@
-/**
- * Internal dependencies
- */
 import BackgroundPanel, { BackgroundAttributes } from '../background';
 
 /**
  * Set global attributes that every block uses.
  * @type {Object}
  */
-const GlobalAttributes = {
+const GalleryAttributes = {
 	images: {
 		type: 'array',
 		default: [],
@@ -97,4 +94,4 @@ const GlobalAttributes = {
 	...BackgroundAttributes,
 };
 
-export default GlobalAttributes;
+export default GalleryAttributes;

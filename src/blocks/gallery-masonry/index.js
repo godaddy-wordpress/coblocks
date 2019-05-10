@@ -12,7 +12,7 @@ import './styles/editor.scss';
 import icons from './icons';
 import edit from './edit';
 import { BackgroundStyles } from '../../components/block-gallery/background/';
-import { GlobalAttributes, GlobalTransforms, GlobalClasses, GlobalStyles } from '../../components/block-gallery/global/';
+import { GalleryAttributes, GlobalTransforms, GalleryClasses, GlobalStyles } from '../../components/block-gallery/';
 
 /**
  * WordPress dependencies
@@ -36,7 +36,7 @@ const keywords = [
 ];
 
 const blockAttributes = {
-	...GlobalAttributes,
+	...GalleryAttributes,
 
 	// Block specific attributes.
 	gridSize: {
@@ -167,7 +167,7 @@ const settings = {
 		} = attributes;
 
 		const innerClasses = classnames(
-			...GlobalClasses( attributes ), {
+			...GalleryClasses( attributes ), {
 				[ `has-gutter` ] : gutter > 0,
 			}
 		);

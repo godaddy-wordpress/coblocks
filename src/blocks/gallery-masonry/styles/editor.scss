@@ -10,9 +10,12 @@
 
 	// Fixes issue where the outline does not fully render due to the outside nature of the core outline style applied.
 	.is-appender {
-		left: 1px;
-		position: relative;
-		width: calc(100% - 1px);
+		border: 1px dashed $dark-gray-150;
+		outline: none;
+
+		&:hover {
+			border-color: $dark-gray-500;
+		}
 	}
 
 	// Fixes issue with multiple dropzones displaying when dropping in an image.
