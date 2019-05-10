@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import filter from 'lodash/filter';
 
 /**
  * Internal dependencies
@@ -11,8 +10,9 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './icons';
 import edit from './edit';
+import transforms from './transforms';
 import { BackgroundStyles } from '../../components/block-gallery/background';
-import { GalleryAttributes, GalleryTransforms, GalleryClasses } from '../../components/block-gallery/shared';
+import { GalleryAttributes, GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
@@ -95,105 +95,7 @@ const settings = {
 		align: [ 'wide', 'full' ],
 	},
 
-	transforms: {
-		from: [
-			{
-				type: 'block',
-				blocks: [ 'blockgallery/stacked' ],
-				transform: ( attributes ) => (
-					createBlock( `coblocks/${ name }`, {
-						...GalleryTransforms( attributes ),
-						gridSize: 'lrg',
-					} )
-				),
-			},
-			{
-				type: 'block',
-				blocks: [ 'blockgallery/masonry' ],
-				transform: ( attributes ) => (
-					createBlock( `coblocks/${ name }`, {
-						...GalleryTransforms( attributes ),
-						gridSize: 'lrg',
-					} )
-				),
-			},
-			{
-				type: 'block',
-				blocks: [ 'blockgallery/thumbnails' ],
-				transform: ( attributes ) => (
-					createBlock( `coblocks/${ name }`, {
-						...GalleryTransforms( attributes ),
-						gridSize: 'lrg',
-					} )
-				),
-			},
-			{
-				type: 'block',
-				blocks: [ 'blockgallery/offset' ],
-				transform: ( attributes ) => (
-					createBlock( `coblocks/${ name }`, {
-						...GalleryTransforms( attributes ),
-						gridSize: 'lrg',
-					} )
-				),
-			},
-			{
-				type: 'block',
-				blocks: [ 'blockgallery/auto-height' ],
-				transform: ( attributes ) => (
-					createBlock( `coblocks/${ name }`, {
-						...GalleryTransforms( attributes ),
-						gridSize: 'lrg',
-					} )
-				),
-			},
-			{
-				type: 'block',
-				blocks: [ 'core/gallery' ],
-				transform: ( attributes ) => (
-					createBlock( `coblocks/${ name }`, {
-						...GalleryTransforms( attributes ),
-						gridSize: 'lrg',
-					} )
-				),
-			},
-			{
-				type: 'block',
-				isMultiBlock: true,
-				blocks: [ 'core/image' ],
-				transform: ( attributes ) => {
-					const validImages = filter( attributes, ( { id, url } ) => id && url );
-					if ( validImages.length > 0 ) {
-						return createBlock( `coblocks/${ name }`, {
-							images: validImages.map( ( { id, url, alt, caption } ) => ( { id, url, alt, caption } ) ),
-							ids: validImages.map( ( { id } ) => id ),
-						} );
-					}
-					return createBlock( `coblocks/${ name }` );
-				},
-			},
-			{
-				type: 'prefix',
-				prefix: ':carousel',
-				transform: function( content ) {
-					return createBlock( `coblocks/${ name }`, {
-						content,
-					} );
-				},
-			},
-		],
-		to: [
-			{
-				type: 'block',
-				blocks: [ 'core/gallery' ],
-				transform: ( attributes ) => (
-					createBlock( 'core/gallery', {
-						...GalleryTransforms( attributes ),
-					} )
-				),
-			},
-		],
-	},
+	transforms,
 
 	edit,
 
