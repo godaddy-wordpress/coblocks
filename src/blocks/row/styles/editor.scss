@@ -184,7 +184,7 @@
 		opacity: 0;
 		padding: 0.415em 0.5em 0.445em;
 		position: absolute;
-		right: -16px;
+		right: -17px;
 		text-align: center;
 		top: -17px;
 		transform: scale(0);
@@ -214,8 +214,8 @@
 		&::after {
 			border-color: rgba(0, 133, 186, 0);
 			border-top-color: #0085ba;
-			border-width: 3px;
-			margin-left: -3px;
+			border-width: 4px;
+			margin-left: -4px;
 		}
 
 		// Only show if the column is actively being resized.
@@ -402,55 +402,9 @@
 	}
 
 	> span > .components-resizable-box__handle {
-		z-index: 98;
-		transform: none;
-		width: 25px;
-
 		&::before {
-			display: block;
-			content: "";
-			width: 15px;
-			height: 15px;
-			border: 2px solid #fff;
-			border-radius: 50%;
-			background: #0085ba;
-			cursor: inherit;
-			position: absolute;
-			top: calc(50% - 8px);
-			right: calc(50% - 8px);
-			opacity: 1;
-		}
-
-		&:after {
-			display: none;
-		}
-
-		&:hover:after,
-		&:hover:before,
-		&:active:after,
-		&:active:before {
 			animation: none;
-		}
-
-		&-right {
-			height: calc(100% + 24px);
-			top: -14px;
-
-			&::before {
-				top: 8px;
-			}
-		}
-
-		&-left {
-			bottom: -14px;
-			left: inherit;
-			pointer-events: none;
-			top: inherit;
-
-			&::before {
-				top: auto;
-				bottom: 8px;
-			}
+			opacity: 1;
 		}
 
 		.has-no-gutter & {
@@ -476,49 +430,6 @@
 		div[data-type="coblocks/row"].is-selected &,
 		div[data-type="coblocks/row"].is-resizing & {
 			display: block;
-		}
-	}
-
-	// Adds a vertical resize bar to the handle for improved UI.
-	// Let's view the resize handles when the parent row is selected as well.
-	&.is-selected-column::after,
-	div[data-type="coblocks/row"].is-selected &::after,
-	div[data-type="coblocks/row"].is-resizing &::after {
-		background: #0085ba;
-		border: 2px solid #fff;
-		bottom: 0;
-		content: "";
-		cursor: inherit;
-		display: block;
-		height: 100%;
-		position: absolute;
-		right: -21px;
-		top: 0;
-		width: 7px;
-		z-index: 97;
-	}
-
-	&.is-selected-column::after,
-	div[data-type="coblocks/row"].is-selected &::after,
-	div[data-type="coblocks/row"].is-resizing &::after {
-		.has-no-gutter & {
-			right: -4px;
-		}
-
-		.has-small-gutter & {
-			right: -19px;
-		}
-
-		.has-medium-gutter & {
-			right: -24px;
-		}
-
-		.has-large-gutter & {
-			right: -35px;
-		}
-
-		.has-huge-gutter & {
-			right: -62px;
 		}
 	}
 }
@@ -568,23 +479,23 @@ div[data-type="coblocks/row"].is-resizing .has-huge-gutter .components-resizable
 }
 
 .has-no-gutter .coblocks-resizeable-width {
-	right: -23px;
+	right: -24px;
 }
 
 .has-small-gutter .coblocks-resizeable-width {
-	right: -38px;
+	right: -39px;
 }
 
 .has-medium-gutter .coblocks-resizeable-width {
-	right: -43px;
+	right: -44px;
 }
 
 .has-large-gutter .coblocks-resizeable-width {
-	right: -54px;
+	right: -55px;
 }
 
 .has-huge-gutter .coblocks-resizeable-width {
-	right: -81px;
+	right: -82px;
 }
 
 .wp-block[data-type="coblocks/row"][data-columns="1"] {
@@ -647,7 +558,7 @@ div[data-type="coblocks/column"] {
 
 				.components-button {
 					background: rgba(139, 139, 150, 0.1);
-					border: 1px dashed #d3d5d8;
+					border: 1px dashed #8d96a0;
 					border-radius: 0;
 					box-shadow: none !important;
 					color: #555d66;
@@ -669,6 +580,7 @@ div[data-type="coblocks/column"] {
 
 					&:hover {
 						color: #191e23;
+						border-color: #555d66;
 					}
 				}
 			}

@@ -182,19 +182,13 @@ class Edit extends Component {
 							'is-resizing' : this.state.resizing,
 						}
 					) }
-					style={ {
-
-					} }
-					size={ {
-
-					} }
 					maxWidth={ this.state.maxWidth }
 					minHeight="20"
 					enable={ {
 						top: false,
 						right: true,
 						bottom: false,
-						left: true,
+						left: false,
 						topRight: false,
 						bottomRight: false,
 						bottomLeft: false,
