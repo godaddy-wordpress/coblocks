@@ -4,7 +4,7 @@
 import { title } from './'
 import ResponsiveTabsControl from '../../components/block-gallery/responsive-tabs-control';
 import SizeControl from '../../components/block-gallery/size-control';
-import SliderPanel from '../../components/block-gallery/slider-panel';
+import SliderPanel from '../../components/slider-panel';
 import { BackgroundPanel } from '../../components/block-gallery/background';
 
 /**

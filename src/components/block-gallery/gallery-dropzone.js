@@ -11,9 +11,6 @@ const { DropZone } = wp.components;
  */
 import * as helper from './../../utils/helper';
 
-/**
- * Gallery Drop Zone Component
- */
 class GalleryDropZone extends Component {
 
 	constructor() {

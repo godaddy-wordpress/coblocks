@@ -15,9 +15,6 @@ const { withSelect } = wp.data;
 const { BACKSPACE, DELETE } = wp.keycodes;
 const { isBlobURL } = wp.blob;
 
-/**
- * Gallery Image Component
- */
 class GalleryImage extends Component {
 
 	constructor() {

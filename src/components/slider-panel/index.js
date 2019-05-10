@@ -6,7 +6,8 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-import autoPlayOptions from './options/autoplay-options';
+import autoPlayOptions from './autoplay-options';
+import './styles/editor.scss';
 
 /**
  * WordPress dependencies
@@ -28,7 +29,7 @@ class SliderPanel extends Component {
 		const time = ( speed > 1 ) ? __( 'seconds' ) : __( 'second' );
 
 		// translators: 1. Speed of the slider, 2: Time until the slide advances
-		return checked ? sprintf( __( 'Automatically advancing to the next gallery item after %1$d %2$s.' ), speed, time ) : __( 'Automatically advance to the next gallery item after a set duration.' );
+		return checked ? sprintf( __( 'Advancing after %1$d %2$s.' ), speed, time ) : __( 'Automatically advance to the next slide.' );
 	}
 
 	getDraggableHelp( checked ) {
@@ -62,7 +63,7 @@ class SliderPanel extends Component {
 			<Fragment>
 				<PanelBody title={ __( 'Slider Settings' ) } initialOpen={ false }>
 					<ToggleControl
-						label={ __( 'Autoplay Slides' ) }
+						label={ __( 'Autoplay' ) }
 						checked={ !! autoPlay }
 						onChange={ () => setAttributes( {  autoPlay: ! autoPlay } ) }
 						help={ this.getAutoPlayHelp }

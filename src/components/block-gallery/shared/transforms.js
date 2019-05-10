@@ -1,14 +1,14 @@
 /**
  * Internal dependencies
  */
-import * as helper from './../../utils/helper';
+import * as helper from './../../../utils/helper';
 import { BackgroundTransforms } from '../background';
 
 /**
  * Set global transforms that every block uses.
  * @type {Object}
  */
-function GlobalTransforms( props ) {
+function GalleryTransforms( props ) {
 
 	const transforms = {
 		align: props.align,
@@ -38,4 +38,4 @@ function GlobalTransforms( props ) {
 	return transforms;
 }
 
-export default GlobalTransforms;
+export default GalleryTransforms;

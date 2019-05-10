@@ -26,12 +26,11 @@
 		transition: box-shadow 0.1s linear;
 
 		&.is-primary {
-
 			&,
 			&:focus,
 			&:active {
-				border-color: #6c7781;
 				background: #6c7781;
+				border-color: #6c7781;
 				color: #fff;
 				cursor: default;
 			}
@@ -47,38 +46,3 @@
 	}
 }
 
-.components-blockgallery-inspector__lightbox-style {
-	margin-top: -0.75em !important;
-}
-
-.components-blockgallery-inspector__background-overlay-style-control {
-	margin-bottom: 1.8em !important;
-
-	.components-select-control__input {
-		margin-top: 0.5em;
-	}
-
-	label {
-		display: none;
-	}
-}
-
-.components-blockgallery-inspector__autoplayspeed-select {
-	margin-bottom: 1.75em !important;
-}
-
-.components-blockgallery-inspector__background-size {
-	margin-bottom: 2em !important;
-}
-
-.components-blockgallery-inspector__background-remove-button {
-	justify-content: center;
-	line-height: 26px;
-	width: 100%;
-	display: none;
-}
-
-.components-blockgallery-inspector__background-image-overlay {
-	margin-bottom: 0.7em !important;
-	margin-top: -0.7em !important;
-}

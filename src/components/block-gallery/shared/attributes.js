@@ -68,7 +68,7 @@ const GalleryAttributes = {
 	},
 	captions: {
 		type: 'boolean',
-		default: true,
+		default: false,
 	},
 	captionStyle: {
 		type: 'string',

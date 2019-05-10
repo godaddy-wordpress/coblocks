@@ -26,7 +26,6 @@ function BackgroundClasses( attributes ) {
 		{ [ `has-padding-mobile-${ attributes.backgroundPaddingMobile }` ]: attributes.backgroundPaddingMobile > 0 },
 		{ 'has-parallax': attributes.backgroundImg && attributes.hasParallax },
 		{ 'has-background-image': attributes.backgroundImg },
-		{ 'has-background-image-transient': attributes.backgroundImg && 0 === attributes.backgroundImg.indexOf( 'blob:' ) },
 		{ [ `has-background-${ attributes.backgroundRepeat }` ] : attributes.backgroundImg && attributes.backgroundRepeat },
 		{ [ `has-background-${ attributes.backgroundPosition.split(' ').join('-') }` ] : attributes.backgroundImg && attributes.backgroundPosition },
 		{ [ `has-background-${ backgroundSize }` ] : attributes.backgroundImg },

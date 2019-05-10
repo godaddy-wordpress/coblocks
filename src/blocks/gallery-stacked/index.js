@@ -11,7 +11,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import edit from './edit';
 import icons from './icons';
-import { GalleryAttributes, GlobalTransforms, GalleryClasses, GlobalStyles } from '../../components/block-gallery/';
+import { GalleryAttributes, GalleryTransforms, GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
 import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
 
 /**
@@ -81,7 +81,7 @@ const settings = {
 				blocks: [ 'blockgallery/masonry' ],
 				transform: ( attributes ) => (
 					createBlock( `coblocks/${ name }`, {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 					} )
 				),
 			},
@@ -90,7 +90,7 @@ const settings = {
 				blocks: [ 'blockgallery/carousel' ],
 				transform: ( attributes ) => (
 					createBlock( `coblocks/${ name }`, {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 					} )
 				),
 			},
@@ -99,7 +99,7 @@ const settings = {
 				blocks: [ 'blockgallery/thumbnails' ],
 				transform: ( attributes ) => (
 					createBlock( `coblocks/${ name }`, {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 					} )
 				),
 			},
@@ -108,7 +108,7 @@ const settings = {
 				blocks: [ 'blockgallery/offset' ],
 				transform: ( attributes ) => (
 					createBlock( `coblocks/${ name }`, {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 					} )
 				),
 			},
@@ -117,7 +117,7 @@ const settings = {
 				blocks: [ 'blockgallery/auto-height' ],
 				transform: ( attributes ) => (
 					createBlock( `coblocks/${ name }`, {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 					} )
 				),
 			},
@@ -126,7 +126,7 @@ const settings = {
 				blocks: [ 'core/gallery' ],
 				transform: ( attributes ) => (
 					createBlock( `coblocks/${ name }`, {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 					} )
 				),
 			},
@@ -161,7 +161,7 @@ const settings = {
 				blocks: [ 'core/gallery' ],
 				transform: ( attributes ) => (
 					createBlock( 'core/gallery', {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 					} )
 				),
 			},
@@ -205,7 +205,7 @@ const settings = {
 		);
 
 		const innerStyles = {
-			...GlobalStyles( attributes ),
+			...GalleryStyles( attributes ),
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,

@@ -6,7 +6,7 @@ const { getColorClassName } = wp.editor;
 /**
  * Background Classes
  */
-function GlobalStyles( attributes ) {
+function GalleryStyles( attributes ) {
 
 	const captionColorClass = getColorClassName( 'color', attributes.captionColor );
 
@@ -17,4 +17,4 @@ function GlobalStyles( attributes ) {
 	return styles;
 }
 
-export default GlobalStyles;
+export default GalleryStyles;

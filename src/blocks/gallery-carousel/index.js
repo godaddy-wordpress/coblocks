@@ -11,8 +11,8 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './icons';
 import edit from './edit';
-import { BackgroundStyles } from '../../components/block-gallery/background/';
-import { GalleryAttributes, GlobalTransforms, GalleryClasses } from '../../components/block-gallery/';
+import { BackgroundStyles } from '../../components/block-gallery/background';
+import { GalleryAttributes, GalleryTransforms, GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
@@ -102,7 +102,7 @@ const settings = {
 				blocks: [ 'blockgallery/stacked' ],
 				transform: ( attributes ) => (
 					createBlock( `coblocks/${ name }`, {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 						gridSize: 'lrg',
 					} )
 				),
@@ -112,7 +112,7 @@ const settings = {
 				blocks: [ 'blockgallery/masonry' ],
 				transform: ( attributes ) => (
 					createBlock( `coblocks/${ name }`, {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 						gridSize: 'lrg',
 					} )
 				),
@@ -122,7 +122,7 @@ const settings = {
 				blocks: [ 'blockgallery/thumbnails' ],
 				transform: ( attributes ) => (
 					createBlock( `coblocks/${ name }`, {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 						gridSize: 'lrg',
 					} )
 				),
@@ -132,7 +132,7 @@ const settings = {
 				blocks: [ 'blockgallery/offset' ],
 				transform: ( attributes ) => (
 					createBlock( `coblocks/${ name }`, {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 						gridSize: 'lrg',
 					} )
 				),
@@ -142,7 +142,7 @@ const settings = {
 				blocks: [ 'blockgallery/auto-height' ],
 				transform: ( attributes ) => (
 					createBlock( `coblocks/${ name }`, {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 						gridSize: 'lrg',
 					} )
 				),
@@ -152,7 +152,7 @@ const settings = {
 				blocks: [ 'core/gallery' ],
 				transform: ( attributes ) => (
 					createBlock( `coblocks/${ name }`, {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 						gridSize: 'lrg',
 					} )
 				),
@@ -188,7 +188,7 @@ const settings = {
 				blocks: [ 'core/gallery' ],
 				transform: ( attributes ) => (
 					createBlock( 'core/gallery', {
-						...GlobalTransforms( attributes ),
+						...GalleryTransforms( attributes ),
 					} )
 				),
 			},

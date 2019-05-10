@@ -1,34 +1,15 @@
-@import "editor/icons";
 @import "editor/gallery-item";
 @import "editor/remove-gallery-item-button";
-@import "editor/gallery-upload";
-@import "editor/inspector";
-@import "editor/inspector-tabs";
+@import "editor/size-control";
+@import "editor/responsive-tabs";
 @import "editor/radius";
-@import "editor/is-background-transient";
 @import "editor/flickity-arrows";
 @import "editor/core-themes";
-
-.components-toolbar {
-	.components-dropdown-menu {
-		padding: 0;
-	}
-}
 
 .blockgallery {
 	.components-resizable-box__handle {
 		z-index: 9999;
 	}
-}
-
-.components-blockgallery-inspector__lightbox {
-	display: none;
-}
-
-.editor-media-placeholder[class*="blockgallery"] .components-placeholder__label .dashicon {
-	margin-right: 0.7ch;
-	position: relative;
-	top: -2px;
 }
 
 .components-blockgallery-inspector__size-control--shadow {

@@ -1,11 +1,10 @@
 .blockgallery--item {
-
 	// We really don't want margin on the flickity items.
 	// Set 100% so the ResizableBox functions properly.
-	.wp-block-blockgallery-carousel &,
-	.wp-block-blockgallery-thumbnails & {
-		margin: 0 !important;
+	.wp-block-coblocks-gallery-carousel &,
+	.wp-block-coblocks-gallery-thumbnails & {
 		height: 100%;
+		margin: 0 !important;
 	}
 
 	.has-carousel-sml & {

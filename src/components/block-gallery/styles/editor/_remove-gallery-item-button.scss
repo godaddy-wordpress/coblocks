@@ -1,5 +1,4 @@
 .components-blockgallery-gallery-item__remove {
-
 	&-wrapper {
 		background-color: $blue;
 		display: inline-flex;
@@ -7,8 +6,8 @@
 		position: absolute;
 		right: 2px;
 		top: 2px;
-		z-index: 20;
 		transition: padding 0.1s linear;
+		z-index: 20;
 
 		svg {
 			position: relative;
@@ -17,8 +16,8 @@
 
 	&-button {
 		box-shadow: none !important;
-		padding: 0;
 		color: $white;
+		padding: 0;
 
 		&:hover {
 			background: $blue !important;
