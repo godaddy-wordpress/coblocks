@@ -84,6 +84,15 @@
 			> .editor-block-list__block-edit {
 				margin-bottom: 0;
 				margin-top: 0;
+
+				&::before {
+					top: -1px;
+				}
+
+				[data-block] {
+					margin-bottom: 0;
+					margin-top: 0 !important;
+				}
 			}
 
 			> .editor-block-list__block-edit
@@ -96,6 +105,10 @@
 				> .wp-block:first-of-type
 				> .editor-block-list__block-edit {
 				margin-top: 0;
+
+				p {
+					margin-top: 0;
+				}
 			}
 
 			> .editor-block-list__block-edit
@@ -220,6 +233,10 @@
 
 	> .editor-block-list__block-edit .components-drop-zone {
 		z-index: 159999;
+	}
+
+	> .editor-block-list__block-edit::before {
+		top: -1px;
 	}
 }
 
