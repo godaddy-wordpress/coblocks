@@ -2,9 +2,9 @@
  * Internal dependencies
  */
 import { title } from './'
-import ResponsiveTabsControl from '../../components/block-gallery/responsive-tabs-control';
+import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import linkOptions from '../../components/block-gallery/options/link-options';
-import SizeControl from '../../components/block-gallery/size-control';
+import SizeControl from '../../components/size-control';
 import { BackgroundPanel } from '../../components/block-gallery/background';
 
 /**
@@ -108,7 +108,7 @@ class Inspector extends Component {
 						value={ shadow }
 						label={ __( 'Box Shadow' ) }
 						reset={ false }
-						className={ 'components-blockgallery-inspector__size-control--shadow' }
+						className={ 'components-coblocks-size-control--shadow' }
 
 					/> }
 					<ToggleControl

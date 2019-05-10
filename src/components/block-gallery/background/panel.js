@@ -6,7 +6,7 @@ import isEmpty from 'lodash/isEmpty';
 /**
  * Internal dependencies
  */
-import ResponsiveTabsControl from '../responsive-tabs-control';
+import ResponsiveTabsControl from '../../../components/responsive-tabs-control';
 
 /**
  * WordPress dependencies

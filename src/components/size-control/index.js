@@ -5,6 +5,11 @@ import classnames from 'classnames';
 import map from 'lodash/map';
 
 /**
+ * Internal dependencies
+ */
+import './styles/editor.scss';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -170,7 +175,7 @@ class SizeControl extends Component {
 		} = this.props;
 
 		const classes = classnames(
-			'components-blockgallery-inspector__size-control', {
+			'components-coblocks-size-control', {
 				[ className ] : className,
 			}
 		);
