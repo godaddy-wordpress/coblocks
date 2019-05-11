@@ -132,6 +132,30 @@ class CoBlocks_Register_Blocks {
 				'style'         => $slug . '-frontend',
 			)
 		);
+		register_block_type(
+			$slug . '/gallery-carousel',
+			array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+		register_block_type(
+			$slug . '/gallery-masonry',
+			array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+		register_block_type(
+			$slug . '/gallery-stacked',
+			array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
 	}
 }
 
