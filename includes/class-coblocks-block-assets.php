@@ -45,14 +45,14 @@ class CoBlocks_Block_Assets {
 	private $_url;
 
 	/**
-	 * The Plugin version.
+	 * The plugin version.
 	 *
 	 * @var string $_version
 	 */
 	private $_version;
 
 	/**
-	 * The Plugin version.
+	 * The plugin version.
 	 *
 	 * @var string $_slug
 	 */
@@ -68,6 +68,8 @@ class CoBlocks_Block_Assets {
 
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
+		add_action( 'the_post', array( $this, 'frontend_scripts' ) );
 	}
 
 	/**
@@ -109,6 +111,43 @@ class CoBlocks_Block_Assets {
 			time(),
 			true
 		);
+	}
+
+	/**
+	 * Enqueue front-end assets for blocks.
+	 *
+	 * @access public
+	 * @since 1.9.5
+	 */
+	public function frontend_scripts() {
+
+		// Define where the asset is loaded from.
+		$dir = CoBlocks()->asset_source( 'js' );
+
+		// Define where the vendor asset is loaded from.
+		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
+
+		// Masonry block.
+		if ( has_block( $this->_slug . '/gallery-masonry' ) ) {
+			wp_enqueue_script(
+				$this->_slug . '-masonry',
+				$dir . $this->_slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery', 'masonry', 'imagesloaded' ),
+				$this->_version,
+				true
+			);
+		}
+
+		// Carousel block.
+		if ( has_block( $this->_slug . '/gallery-carousel' ) ) {
+			wp_enqueue_script(
+				$this->_slug . '-flickity',
+				$vendors_dir . '/flickity' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				$this->_version,
+				true
+			);
+		}
 	}
 
 }
