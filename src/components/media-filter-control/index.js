@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import icons from './icons';
+import './styles/editor.scss';
 
 /**
  * WordPress dependencies
@@ -73,8 +74,9 @@ class MediaFilterControl extends Component {
 			<Toolbar>
 				<DropdownMenu
 					icon= { icons.filter }
-					label={ __( 'Apply filter' ) }_
+					label={ __( 'Apply filter' ) }
 					controls={ filterControls }
+					className="components-coblocks-media-filter"
 				/>
 			</Toolbar>
 		)
