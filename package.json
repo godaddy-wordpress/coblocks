@@ -29,6 +29,7 @@
 		"classnames": "2.2.5",
 		"compose": "^0.1.2",
 		"delete-empty": "^2.0.0",
+		"email-validator": "2.0.4",
 		"eslint": "^4.19.1",
 		"eslint-config-wordpress": "^2.0.0",
 		"lodash": "4.17.11",

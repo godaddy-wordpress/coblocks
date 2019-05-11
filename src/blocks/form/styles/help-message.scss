@@ -1,0 +1,20 @@
+.coblocks-help-message {
+	display: flex;
+	font-size: 13px;
+	line-height: 1.4em;
+	margin-bottom: 1em;
+	margin-top: -0.5em;
+	svg {
+		margin-right: 5px;
+		min-width: 24px;
+	}
+	> span {
+		margin-top: 2px;
+	}
+	&.is-error {
+		color: #eb0001;
+		svg {
+			fill: #eb0001;
+		}
+	}
+}

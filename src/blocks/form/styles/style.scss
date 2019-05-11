@@ -1,0 +1,11 @@
+.wp-block-coblocks-gif {
+
+	&.alignfull,
+	&.alignwide {
+		width: inherit;
+
+		img {
+			width: 100%;
+		}
+	}
+}

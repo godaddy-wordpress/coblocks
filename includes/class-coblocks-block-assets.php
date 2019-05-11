@@ -109,6 +109,21 @@ class CoBlocks_Block_Assets {
 			time(),
 			true
 		);
+
+		$post_id     = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
+		$post_title  = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
+
+		wp_localize_script(
+			$this->_slug . '-editor',
+			'coblocksBlockData',
+			[
+				'form' => [
+					'adminEmail'   => get_option( 'admin_email' ),
+					'emailSubject' => $post_title,
+				],
+			]
+		);
+
 	}
 
 }
