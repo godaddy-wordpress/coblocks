@@ -52,7 +52,7 @@ Easily toggle off any WordPress block in the Gutenberg editor with the new CoBlo
 
 ## Development
 
-1. Clone the GitHub repository: `https://github.com/coblocks/coblocks.git`
+1. Clone the GitHub repository: `https://github.com/godaddy/coblocks.git`
 2. Browse to the folder in the command line.
 3. Run the `npm install` command to install the plugin's dependencies within a /node_modules/ folder.
 4. Run the `npm start` command for development.
@@ -60,7 +60,7 @@ Easily toggle off any WordPress block in the Gutenberg editor with the new CoBlo
 
 ## Support
 
-Need help? This is a developer's portal for CoBlocks and should not be used for general support and queries. Please reach out via the contact form at the bottom right of [our website](https://coblocks.com) or visit the [CoBlocks support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks).
+Need help? This is a developer's portal for CoBlocks and should not be used for general support and queries. Please visit the [CoBlocks support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks) for assistance.
 
 ## Contributions
 
