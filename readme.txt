@@ -1,5 +1,5 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
-Author URI: https://coblocks.com
+Author URI: https://godaddy.com
 Plugin URI: https://coblocks.com
 Contributors: coblocks, richtabor, phpbits
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
