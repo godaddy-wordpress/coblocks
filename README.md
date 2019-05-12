@@ -38,12 +38,9 @@ Easily toggle off any WordPress block in the Gutenberg editor with the new CoBlo
 ### Connect
 
 -   [Download on WordPress.org](https://wordpress.org/plugins/coblocks/)
--   [Visit our website](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks)
--   [Subscribe to updates](http://eepurl.com/gd1S8D)
 -   [Follow on Twitter](https://twitter.com/coblocks)
 -   [Join our Facebook Community](https://facebook.com/groups/coblocks)
 -   [Like us on Facebook](https://www.facebook.com/coblocks/)
--   [Follow us on Instagram](https://www.instagram.com/coblockswp/)
 
 ## Installation
 
