@@ -1,11 +1,56 @@
-.wp-block-coblocks-gif {
+.coblocks-form {
+	.clear-form {
+		clear: both;
+	}
 
-	&.alignfull,
-	&.alignwide {
-		width: inherit;
+	input::placeholder {
+		transition: opacity .3s ease-out;
+	}
+	input:hover::placeholder {
+		opacity: 0.5;
+	}
+	input:focus::placeholder {
+		opacity: 0.3;
+	}
 
-		img {
-			width: 100%;
+	input[type='text'],
+	input[type='email'] {
+		width: 300px;
+		max-width: 98%;
+		margin-bottom: 13px;
+	}
+
+	textarea {
+		height: 200px;
+		width: 80%;
+		float: none;
+		margin-bottom: 13px;
+	}
+
+	label {
+		margin-bottom: 3px;
+		float: none;
+		font-weight: bold;
+		display: block;
+
+		span {
+			color: #AAA;
+			margin-left: 4px;
+			font-weight: normal;
 		}
+	}
+
+	.coblocks-form-submission {
+		margin-bottom: 4em;
+		padding: 1.5em 1em;
+	}
+
+	.coblocks-form-submission p {
+		margin: 0 auto;
+		word-wrap: break-word;
+	}
+
+	.form-errors .form-error-message {
+		color: red;
 	}
 }
