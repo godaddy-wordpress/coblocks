@@ -8,6 +8,7 @@ import filter from 'lodash/filter';
  */
 import { name } from './'
 import { GalleryTransforms } from '../../components/block-gallery/shared';
+import { BackgroundTransforms } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -23,6 +24,7 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( `coblocks/${ name }`, {
 					...GalleryTransforms( attributes ),
+					...BackgroundTransforms( attributes ),
 					gridSize: 'lrg',
 				} )
 			),
@@ -33,6 +35,7 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( `coblocks/${ name }`, {
 					...GalleryTransforms( attributes ),
+					...BackgroundTransforms( attributes ),
 					gridSize: 'lrg',
 				} )
 			),
@@ -43,6 +46,7 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( `coblocks/${ name }`, {
 					...GalleryTransforms( attributes ),
+					...BackgroundTransforms( attributes ),
 					gridSize: 'lrg',
 				} )
 			),
@@ -53,6 +57,7 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( `coblocks/${ name }`, {
 					...GalleryTransforms( attributes ),
+					...BackgroundTransforms( attributes ),
 					gridSize: 'lrg',
 				} )
 			),
@@ -63,6 +68,7 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( `coblocks/${ name }`, {
 					...GalleryTransforms( attributes ),
+					...BackgroundTransforms( attributes ),
 					gridSize: 'lrg',
 				} )
 			),
@@ -73,6 +79,7 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( `coblocks/${ name }`, {
 					...GalleryTransforms( attributes ),
+					...BackgroundTransforms( attributes ),
 					gridSize: 'lrg',
 				} )
 			),
@@ -83,6 +90,7 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( `coblocks/${ name }`, {
 					...GalleryTransforms( attributes ),
+					...BackgroundTransforms( attributes ),
 					gridSize: 'lrg',
 				} )
 			),
@@ -93,6 +101,7 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( `coblocks/${ name }`, {
 					...GalleryTransforms( attributes ),
+					...BackgroundTransforms( attributes ),
 					gridSize: 'lrg',
 				} )
 			),
@@ -103,6 +112,7 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( `coblocks/${ name }`, {
 					...GalleryTransforms( attributes ),
+					...BackgroundTransforms( attributes ),
 					gridSize: 'lrg',
 				} )
 			),
@@ -113,6 +123,7 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( `coblocks/${ name }`, {
 					...GalleryTransforms( attributes ),
+					...BackgroundTransforms( attributes ),
 					gridSize: 'lrg',
 				} )
 			),
