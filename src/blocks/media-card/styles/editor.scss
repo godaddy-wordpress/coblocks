@@ -60,8 +60,7 @@
 		.components-resizable-box__handle-right {
 			bottom: 0;
 			height: 100%;
-			top: 0;
-			z-index: 99;
+			top: 7px;
 
 			&::before {
 				position: absolute;
