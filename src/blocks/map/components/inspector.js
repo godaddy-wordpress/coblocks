@@ -36,6 +36,7 @@ class Inspector extends Component {
 		super( ...arguments );
 
 		this.saveApiKey = this.saveApiKey.bind( this );
+		this.removeApiKey = this.removeApiKey.bind( this );
 		this.setControls = this.setControls.bind( this );
 
 		this.state = {
@@ -67,6 +68,18 @@ class Inspector extends Component {
 			this.setState( { isSavedKey: true, isLoading: false, isSaving: false, keySaved: true } );
 			settings.fetch();
 		});
+	}
+
+	removeApiKey() {
+		this.setState( { apiKey: '' } );
+		if(this.state.isSavedKey) {
+			this.setState({isSaving: true});
+			const model = new wp.api.models.Settings({coblocks_google_maps_api_key: ''});
+			model.save().then(response => {
+				this.setState({isSavedKey: false, isLoading: false, isSaving: false, keySaved: false});
+				settings.fetch();
+			});
+		}
 	}
 
 	setControls() {
@@ -228,6 +241,14 @@ class Inspector extends Component {
 							disabled={ this.state.apiKey === '' }
 						>
 							{ __('Update') }
+						</Button>
+						<Button
+							className="components-block-coblocks-map-api-key-remove__button"
+							isDefault
+							onClick={ this.removeApiKey }
+							disabled={ this.state.apiKey === '' }
+						>
+							{ __('Remove') }
 						</Button>
 					</PanelBody>
 				</InspectorControls>
