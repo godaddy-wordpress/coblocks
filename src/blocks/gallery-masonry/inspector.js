@@ -13,7 +13,7 @@ import { BackgroundPanel } from '../../components/background';
  */
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls } = wp.editor;
+const { InspectorControls, PanelColorSettings } = wp.editor;
 const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
 
 /**
@@ -27,6 +27,7 @@ class Inspector extends Component {
 		this.setLinkTo = this.setLinkTo.bind( this );
 		this.setRadiusTo = this.setRadiusTo.bind( this );
 		this.setCaptionStyleTo = this.setCaptionStyleTo.bind( this );
+		this.getColors = this.getColors.bind( this );
 	}
 
 	componentDidUpdate( prevProps ) {
@@ -57,6 +58,65 @@ class Inspector extends Component {
 		return checked ? __( 'Showing captions for each media item.' ) : __( 'Toggle to show media captions.' );
 	}
 
+	getColors() {
+
+		const {
+			attributes,
+			backgroundColor,
+			captionColor,
+			setBackgroundColor,
+			setCaptionColor,
+		} = this.props;
+
+		const {
+			backgroundImg,
+			backgroundPadding,
+			backgroundPaddingMobile,
+			captions,
+		} = attributes;
+
+		const background = [
+			{
+				value: backgroundColor.color,
+				onChange: ( nextBackgroundColor ) => {
+
+					setBackgroundColor( nextBackgroundColor );
+
+					// Add default padding, if they are not yet present.
+					if ( ! backgroundPadding && ! backgroundPaddingMobile  ) {
+						this.props.setAttributes( {
+							backgroundPadding: 30,
+							backgroundPaddingMobile: 30,
+						} );
+					}
+
+					// Reset when cleared.
+					if ( ! nextBackgroundColor && ! backgroundImg ) {
+						this.props.setAttributes( {
+							backgroundPadding: 0,
+							backgroundPaddingMobile: 0,
+						} );
+					}
+				},
+				label: __( 'Background Color' ),
+			},
+		];
+
+		const caption = [
+			{
+				value: captionColor.color,
+				onChange: setCaptionColor,
+				label: __( 'Caption Color' ),
+			},
+		];
+
+		if ( captions ) {
+			return background.concat( caption );
+		} else {
+			return background;
+		}
+	}
+
 	render() {
 
 		const {
@@ -66,6 +126,7 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
+			captions,
 			captionStyle,
 			gridSize,
 			gutter,
@@ -73,7 +134,6 @@ class Inspector extends Component {
 			lightbox,
 			linkTo,
 			radius,
-			captions,
 		} = attributes;
 
 		return (
@@ -127,6 +187,11 @@ class Inspector extends Component {
  					hasOverlay={ true }
  					hasGalleryControls={ true }
  				/>
+ 				<PanelColorSettings
+					title={ __( 'Color Settings' ) }
+					initialOpen={ false }
+					colorSettings={ this.getColors() }
+				/>
 			</InspectorControls>
 		)
 	}
