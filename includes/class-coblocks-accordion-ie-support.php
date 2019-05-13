@@ -79,8 +79,11 @@ class CoBlocks_Accordion_IE_Support {
 
 		global $post;
 
-		if ( empty( $post->ID ) ) {
+		// Validate Post ID
+		if ( ! isset( $post->ID ) || empty( $post->ID ) ) {
+
 			return;
+
 		}
 
 		$legacy_support = get_post_meta( $post->ID, '_coblocks_accordion_ie_support', true );
