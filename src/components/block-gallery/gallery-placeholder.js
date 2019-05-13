@@ -7,6 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import * as helper from './../../utils/helper';
+import GalleryUploader from './gallery-uploader';
 
 /**
  * WordPress dependencies
@@ -14,6 +15,7 @@ import * as helper from './../../utils/helper';
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { MediaPlaceholder, BlockIcon } = wp.editor;
+const { BlockVerticalAlignmentToolbar } = wp.blockEditor;
 
 class GalleryPlaceholder extends Component {
 
@@ -44,7 +46,9 @@ class GalleryPlaceholder extends Component {
 			noticeUI,
 		} = this.props;
 
-		const { images } = attributes;
+		const {
+			images,
+		} = attributes;
 
 		const hasImages = !! images.length;
 
@@ -62,23 +66,27 @@ class GalleryPlaceholder extends Component {
 
 		return (
 			<div className={ classes }>
-				<MediaPlaceholder
-					addToGallery={ hasImages }
-					isAppender={ hasImages }
-					dropZoneUIOnly={ hasImages && ! isSelected }
-					icon={ ! hasImages && <BlockIcon icon={ this.props.icon } /> }
-					labels={ {
-						title: ! hasImages && sprintf( __( '%s Gallery' ), this.props.label ),
-						instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.' ),
-					} }
-					onSelect={ this.onSelectImages }
-					accept="image/*"
-					allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
-					multiple
-					value={ hasImages ? images : undefined }
-					onError={ noticeOperations.createErrorNotice }
-					notices={ hasImages ? undefined : noticeUI }
-				/>
+				{ BlockVerticalAlignmentToolbar ?
+					<MediaPlaceholder
+						addToGallery={ hasImages }
+						isAppender={ hasImages }
+						dropZoneUIOnly={ hasImages && ! isSelected }
+						icon={ ! hasImages && <BlockIcon icon={ this.props.icon } /> }
+						labels={ {
+							title: ! hasImages && sprintf( __( '%s Gallery' ), this.props.label ),
+							instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.' ),
+						} }
+						onSelect={ this.onSelectImages }
+						accept="image/*"
+						allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
+						multiple
+						value={ hasImages ? images : undefined }
+						onError={ noticeOperations.createErrorNotice }
+						notices={ hasImages ? undefined : noticeUI }
+					/>
+				:
+					<GalleryUploader { ...this.props } />
+				}
 			</div>
 		);
 	}

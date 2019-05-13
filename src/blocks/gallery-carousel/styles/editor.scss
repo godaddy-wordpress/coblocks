@@ -17,9 +17,22 @@
 		}
 	}
 
-	// Set the appender to full height.
-	.coblocks-gallery--figure .components-form-file-upload {
+	// Set the appender to full height (second is the pre Gutenberg 5.6 method).
+	.coblocks-gallery--figure .components-form-file-upload,
+	.components-coblocks-gallery-uploader-wrapper {
 		height: 100%;
+	}
+
+	.components-coblocks-gallery-uploader {
+		border: 1px dashed $dark-gray-150;
+		height: 100%;
+		margin-bottom: 0;
+		outline: none;
+		width: 100%;
+
+		&:hover {
+			border-color: $dark-gray-500;
+		}
 	}
 
 	// Fixes issue with multiple dropzones displaying when dropping in an image.
