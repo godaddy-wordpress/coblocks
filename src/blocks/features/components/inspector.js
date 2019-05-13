@@ -206,7 +206,11 @@ class Inspector extends Component {
 						] }
 					>
 					</PanelColorSettings>
-					{ BackgroundPanel( this.props, { overlay: true } ) }
+					<BackgroundPanel { ...this.props }
+	 					hasCaption={ false }
+	 					hasOverlay={ true }
+	 					hasGalleryControls={ false }
+	 				/>
 				</InspectorControls>
 			</Fragment>
 		);

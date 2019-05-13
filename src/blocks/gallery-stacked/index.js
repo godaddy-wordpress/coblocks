@@ -12,7 +12,7 @@ import edit from './edit';
 import icons from './icons';
 import transforms from './transforms';
 import { GalleryAttributes, GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
-import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
+import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -36,6 +36,7 @@ const keywords = [
 
 const blockAttributes = {
 	...GalleryAttributes,
+	...BackgroundAttributes,
 
 	// Block specific attributes and overrides.
 	align: {
@@ -113,9 +114,7 @@ const settings = {
 
 		const innerStyles = {
 			...GalleryStyles( attributes ),
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+			...BackgroundStyles( attributes ),
 			color: textClass ? undefined : customCaptionColor,
 		};
 

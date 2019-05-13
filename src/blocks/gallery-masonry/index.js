@@ -12,7 +12,7 @@ import icons from './icons';
 import edit from './edit';
 import transforms from './transforms';
 import { GalleryAttributes, GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
-import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundTransforms, BackgroundVideo } from '../../components/background';
+import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies

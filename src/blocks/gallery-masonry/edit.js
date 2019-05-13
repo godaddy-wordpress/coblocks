@@ -15,7 +15,7 @@ import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import { GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
-import BackgroundPanel, { BackgroundClasses, BackgroundStyles, BackgroundDropZone, BackgroundVideo } from '../../components/background';
+import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies

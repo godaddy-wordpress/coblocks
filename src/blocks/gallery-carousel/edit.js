@@ -14,7 +14,7 @@ import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
-import { BackgroundStyles } from '../../components/block-gallery/background';
+import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -195,7 +195,8 @@ class GalleryCarouselEdit extends Component {
 
 		const wrapperClasses = classnames(
 			'is-cropped',
-			...GalleryClasses( attributes ), {
+			...GalleryClasses( attributes ),
+			...BackgroundClasses( attributes ), {
 				[ `align${ align }` ] : align,
 				[ `has-horizontal-gutter` ] : gutter > 0,
 				[ `has-no-dots` ] : ! pageDots,
@@ -273,6 +274,7 @@ class GalleryCarouselEdit extends Component {
 						} }
 					>
 					{ dropZone }
+					{ BackgroundVideo( attributes ) }
 					<div className={ className }>
 						<div
 							className={ wrapperClasses }

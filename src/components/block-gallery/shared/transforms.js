@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import * as helper from './../../../utils/helper';
-import { BackgroundTransforms } from '../background';
 
 /**
  * Set global transforms that every block uses.
@@ -32,7 +31,6 @@ function GalleryTransforms( props ) {
 		draggable: props.draggable,
 		fontSize: props.fontSize,
 		customFontSize: props.customFontSize,
-		...BackgroundTransforms( props ),
 	};
 
 	return transforms;

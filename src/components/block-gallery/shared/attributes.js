@@ -1,5 +1,3 @@
-import BackgroundPanel, { BackgroundAttributes } from '../background';
-
 /**
  * Set global attributes that every block uses.
  * @type {Object}
@@ -103,7 +101,6 @@ const GalleryAttributes = {
 		type: 'number',
 		default: 0,
 	},
-	...BackgroundAttributes,
 };
 
 export default GalleryAttributes;

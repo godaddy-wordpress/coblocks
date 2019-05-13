@@ -5,7 +5,7 @@ import { title } from './'
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import linkOptions from '../../components/block-gallery/options/link-options';
 import SizeControl from '../../components/size-control';
-import { BackgroundPanel } from '../../components/block-gallery/background';
+import { BackgroundPanel } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -136,8 +136,10 @@ class Inspector extends Component {
 					/>
 				</PanelBody> }
 				<BackgroundPanel { ...this.props }
-					hasCaption={ true }
-				/>
+ 					hasCaption={ true }
+ 					hasOverlay={ true }
+ 					hasGalleryControls={ true }
+ 				/>
 			</InspectorControls>
 		)
 	}

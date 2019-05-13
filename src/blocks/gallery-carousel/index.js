@@ -11,7 +11,7 @@ import './styles/editor.scss';
 import icons from './icons';
 import edit from './edit';
 import transforms from './transforms';
-import { BackgroundStyles } from '../../components/block-gallery/background';
+import { BackgroundStyles, BackgroundAttributes, BackgroundVideo, BackgroundClasses } from '../../components/background';
 import { GalleryAttributes, GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -37,6 +37,7 @@ const keywords = [
 
 const blockAttributes = {
 	...GalleryAttributes,
+	...BackgroundAttributes,
 
 	// Override global attributes.
 	gutter: {

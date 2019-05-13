@@ -38,56 +38,56 @@ import './sidebars/block-manager';
 import './components/block-gallery';
 
 // Register Blocks
-import * as accordion from './blocks/accordion';
-import * as accordionItem from './blocks/accordion/accordion-item';
-import * as alert from './blocks/alert';
-import * as author from './blocks/author';
-import * as clickToTweet from './blocks/click-to-tweet';
-import * as column from './blocks/row/column';
-import * as dynamicSeparator from './blocks/dynamic-separator';
-import * as gif from './blocks/gif';
-import * as gist from './blocks/gist';
-import * as highlight from './blocks/highlight';
-import * as pricingTable from './blocks/pricing-table';
-import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
-import * as row from './blocks/row';
-import * as social from './blocks/social';
-import * as map from './blocks/map';
+// import * as accordion from './blocks/accordion';
+// import * as accordionItem from './blocks/accordion/accordion-item';
+// import * as alert from './blocks/alert';
+// import * as author from './blocks/author';
+// import * as clickToTweet from './blocks/click-to-tweet';
+// import * as column from './blocks/row/column';
+// import * as dynamicSeparator from './blocks/dynamic-separator';
+// import * as gif from './blocks/gif';
+// import * as gist from './blocks/gist';
+// import * as highlight from './blocks/highlight';
+// import * as pricingTable from './blocks/pricing-table';
+// import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
+// import * as row from './blocks/row';
+// import * as social from './blocks/social';
+// import * as map from './blocks/map';
 import * as mediaCard from './blocks/media-card';
-import * as shapeDivider from './blocks/shape-divider';
-import * as icon from './blocks/icon';
-import * as feature from './blocks/features/feature';
-import * as features from './blocks/features';
-import * as buttons from './blocks/buttons';
-import * as hero from './blocks/hero';
+// import * as shapeDivider from './blocks/shape-divider';
+// import * as icon from './blocks/icon';
+// import * as feature from './blocks/features/feature';
+// import * as features from './blocks/features';
+// import * as buttons from './blocks/buttons';
+// import * as hero from './blocks/hero';
 import * as stacked from './blocks/gallery-stacked';
 import * as masonry from './blocks/gallery-masonry';
 import * as carousel from './blocks/gallery-carousel';
 
 export function registerBlocks () {
 	[
-		accordion,
-		accordionItem,
-		alert,
-		author,
-		clickToTweet,
-		column,
-		dynamicSeparator,
-		gif,
-		gist,
-		highlight,
-		pricingTable,
-		pricingTableItem,
-		row,
-		social,
-		map,
+		// accordion,
+		// accordionItem,
+		// alert,
+		// author,
+		// clickToTweet,
+		// column,
+		// dynamicSeparator,
+		// gif,
+		// gist,
+		// highlight,
+		// pricingTable,
+		// pricingTableItem,
+		// row,
+		// social,
+		// map,
 		mediaCard,
-		shapeDivider,
-		icon,
-		feature,
-		features,
-		buttons,
-		hero,
+		// shapeDivider,
+		// icon,
+		// feature,
+		// features,
+		// buttons,
+		// hero,
 		stacked,
 		carousel,
 		masonry,
