@@ -83,7 +83,7 @@
 
 			> .editor-block-list__block-edit {
 				margin-bottom: 0;
-				margin-top: 0;
+				margin-top: -12px;
 
 				&::before {
 					top: -1px;
@@ -233,10 +233,6 @@
 
 	> .editor-block-list__block-edit .components-drop-zone {
 		z-index: 159999;
-	}
-
-	> .editor-block-list__block-edit::before {
-		top: -1px;
 	}
 }
 
