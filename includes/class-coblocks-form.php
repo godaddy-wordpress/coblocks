@@ -21,6 +21,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CoBlocks_Form {
 
 	/**
+	 * Email content
+	 *
+	 * @var string
+	 */
+	private $email_content;
+
+	/**
+	 * Form hash
+	 *
+	 * @var string
+	 */
+	private $form_hash;
+
+	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
@@ -65,6 +79,11 @@ class CoBlocks_Form {
 			]
 		);
 
+		/**
+		 * Fires when the coblocks/form block and sub-blocks are registered
+		 */
+		do_action( 'coblocks_register_form_blocks' );
+
 	}
 
 	/**
@@ -73,34 +92,36 @@ class CoBlocks_Form {
 	 * @param  array $atts    Block attributes.
 	 * @param  mixed $content Block content.
 	 *
-	 * @return mixed Form markup
+	 * @return mixed Form markup or success message when form submits successfully.
 	 */
 	public function render_form( $atts, $content ) {
 
-		$post_id  = get_the_ID();
-		$page_url = set_url_scheme( get_the_permalink() );
+		$this->form_hash = sha1( json_encode( $atts ) . $content );
+		$submitted_hash  = filter_input( INPUT_POST, 'form-hash', FILTER_SANITIZE_STRING );
 
-		/**
-		 * Filter the form action URL.
-		 *
-		 * @param string {$page_url}#form-{$post_id} Form post URL.
-		 * @param object $GLOBALS['post']            Global post object.
-		 * @param int    $id                         Post ID.
-		 */
-		$form_url = apply_filters( 'coblocks_form_action_url', "{$page_url}#form-{$post_id}", $GLOBALS['post'], $post_id );
+		if ( $submitted_hash === $this->form_hash ) {
+
+			$submit_form = $this->process_form_submission( $atts );
+
+			if ( $submit_form ) {
+
+				return $this->success_message();
+
+			}
+		}
 
 		ob_start();
 
 		?>
 
-		<div id="<?php echo esc_attr( sprintf( 'coblocks-form-%s', $post_id ) ); ?>" class="coblocks-form">
-			<form action="<?php echo esc_url( $form_url ); ?>" method="post">
+		<div class="coblocks-form <?php echo esc_attr( get_the_ID() ); ?>">
+			<form action="<?php echo esc_url( set_url_scheme( get_the_permalink() ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); ?>
 				<p class="form-submit">
 					<?php $this->render_submit_button( $atts ); ?>
 					<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
-					<input type="hidden" name="form-id" value="<?php echo esc_attr( $post_id ); ?>">
 					<input type="hidden" name="action" value="coblocks-form-submit">
+					<input type="hidden" name="form-hash" value="<?php echo esc_attr( sha1( json_encode( $atts ) . $content ) ); ?>">
 				</p>
 			</form>
 		</div>
@@ -131,7 +152,7 @@ class CoBlocks_Form {
 
 		?>
 
-		<input type="text" id="<?php echo esc_attr( $label_slug ); ?>" name="<?php echo esc_attr( $label_slug ); ?>" <?php echo esc_attr( $required_attr ); ?> />
+		<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
 
@@ -149,7 +170,7 @@ class CoBlocks_Form {
 	 */
 	public function render_field_email( $atts, $content ) {
 
-		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Name', 'coblocks' );
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Email', 'coblocks' );
 		$label_slug    = sanitize_title( $label );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
@@ -159,7 +180,7 @@ class CoBlocks_Form {
 
 		?>
 
-		<input type="email" id="<?php echo esc_attr( $label_slug ); ?>" name="<?php echo esc_attr( $label_slug ); ?>" <?php echo esc_attr( $required_attr ); ?> />
+		<input type="email" id="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
 
@@ -187,7 +208,7 @@ class CoBlocks_Form {
 
 		?>
 
-		<textarea name="<?php echo esc_attr( $label_slug ); ?>" id="<?php echo esc_attr( $label_slug ); ?>" rows="20"></textarea>
+		<textarea name="field-<?php echo esc_attr( $label_slug ); ?>[value]" id="<?php echo esc_attr( $label_slug ); ?>" rows="20"></textarea>
 
 		<?php
 
@@ -219,6 +240,7 @@ class CoBlocks_Form {
 		?>
 
 		<label for="<?php echo esc_attr( $label_slug ); ?>"><?php echo esc_html( $label ); ?><?php echo $required_label; ?></label>
+		<input type="hidden" name="field-<?php echo esc_attr( $label_slug ); ?>[label]" value="<?php echo esc_html( $label ); ?>">
 
 		<?php
 
@@ -260,6 +282,145 @@ class CoBlocks_Form {
 		<button type="submit" class="<?php echo esc_attr( $btn_class ); ?>"<?php echo $styles; ?>><?php echo esc_html( $btn_text ); ?></button>
 
 		<?php
+
+	}
+
+	/**
+	 * Process the form submission
+	 *
+	 * @return null
+	 */
+	public function process_form_submission( $atts ) {
+
+		$form_submission = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+
+		if ( ! $form_submission || 'coblocks-form-submit' !== $form_submission ) {
+
+			return;
+
+		}
+
+		$nonce = filter_input( INPUT_POST, 'form-submit', FILTER_SANITIZE_STRING );
+
+		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'coblocks-form-submit' ) ) {
+
+			return;
+
+		}
+
+		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
+		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
+
+		$to      = isset( $atts['to'] ) ? sanitize_email( $atts['to'] ) : get_option( 'admin_email' );
+		$subject = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : $post_title;
+
+		unset( $_POST['form-submit'], $_POST['_wp_http_referer'], $_POST['action'], $_POST['form-hash'] );
+
+		$this->email_content = '<ul>';
+
+		foreach ( $_POST as $key => $data ) {
+
+			$this->email_content .= '<li>' . sanitize_text_field( $data['label'] ) . ': ' . sanitize_text_field( $data['value'] ) . '</li>';
+
+		}
+
+		$this->email_content .= '</ul>';
+
+		/**
+		 * Filter the email to
+		 *
+		 * @param string  $to      Email to.
+		 * @param array   $_POST   Submitted form data.
+		 * @param integer $post_id Current post ID.
+		 */
+		$to = apply_filters( 'coblocks_form_email_to', $to, $_POST, $post_id );
+
+		/**
+		 * Filter the email subject
+		 *
+		 * @param string  $subject Email subject.
+		 * @param array   $_POST   Submitted form data.
+		 * @param integer $post_id Current post ID.
+		 */
+		$subject = apply_filters( 'coblocks_form_email_subject', $subject, $_POST, $post_id );
+
+		/**
+		 * Filter the form email content.
+		 *
+		 * @param string  $this->email_content Email content.
+		 * @param array   $_POST               Submitted form data.
+		 * @param integer $post_id             Current post ID.
+		 */
+		$email_content = apply_filters( 'coblocks_form_email_content', $this->email_content, $_POST, $post_id );
+
+		add_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
+
+		$email = wp_mail( $to, $subject, $email_content );
+
+		remove_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
+
+		/**
+		 * Fires when a form is submitted.
+		 *
+		 * @param array   $_POST User submitted form data.
+		 * @param array   $atts  Form block attributes.
+		 * @param boolean $email True when email sends, else false.
+		 */
+		do_action( 'coblocks_form_submit', $_POST, $atts, $email );
+
+		return $email;
+
+	}
+
+	/**
+	 * Enable HTML emails
+	 *
+	 * @return string HTML content type header
+	 */
+	public function enable_html_email() {
+
+		return 'text/html';
+
+	}
+
+	/**
+	 * Display the form success data
+	 *
+	 * @return mixed Markup for a preview of the submitted data
+	 */
+	public function success_message() {
+
+		/**
+		 * Filter the success message after a form submission
+		 *
+		 * @param mixed   Success message markup.
+		 * @param integer Current post ID.
+		 */
+		$success_message = apply_filters(
+			'coblocks_form_email_content',
+			sprintf(
+				'<blockquote>%s</blockquote>',
+				wp_kses_post( $this->email_content )
+			),
+			get_the_ID()
+		);
+
+		ob_start();
+
+		echo wp_kses_post( $success_message );
+
+		// Prevent a page refresh form resubmitting the form
+		?>
+
+		<script type="text/javascript">
+		if ( window.history.replaceState ) {
+			window.history.replaceState( null, null, window.location.href );
+		}
+		</script>
+
+		<?php
+
+		return ob_get_clean();
 
 	}
 
