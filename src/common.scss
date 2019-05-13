@@ -70,7 +70,7 @@ $gutter--large: 33px;
 $gutter--huge: 60px;
 
 // Get all gallery blocks
-@mixin blockGalleryEditorBlocks {
+@mixin coblocksGalleryEditorBlocks {
 	.wp-block[data-type="coblocks/offset"],
 	.wp-block[data-type="coblocks/masonry"],
 	.wp-block[data-type="coblocks/stacked"],

@@ -33,10 +33,8 @@
 	}
 
 	&.is-cropped {
-
 		.blockgallery--item,
 		.blockgallery--item-thumbnail {
-
 			a,
 			img {
 				// IE11 doesn't support object-fit, so just make sure images aren't skewed.
@@ -57,7 +55,6 @@
 
 .alignfull,
 .alignwide {
-
 	ul.blockgallery {
 		max-width: 100%;
 	}
@@ -91,7 +88,6 @@ figcaption.blockgallery--primary-caption {
 
 // Front-end modules
 @import "style/grid";
-@import "style/bricks";
 @import "style/gutter";
 @import "style/horizontal-gutter";
 @import "style/carousel";
@@ -102,13 +98,8 @@ figcaption.blockgallery--primary-caption {
 @import "style/margin-right-negative";
 @import "style/margin-left-negative";
 @import "style/padding";
-@import "style/shadow";
 @import "style/radius";
-@import "style/filters";
 @import "style/captions";
-@import "style/background-classes";
-@import "style/background-overlay";
-@import "style/background-parallax";
 @import "style/background-radius";
 @import "style/flickity";
 @import "style/core-themes";

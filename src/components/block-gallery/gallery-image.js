@@ -175,11 +175,11 @@ class GalleryImage extends Component {
 		return (
 			<figure className={ 'blockgallery--figure ' + className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
 				{ isSelected &&
-					<div className="components-blockgallery-gallery-item__remove-wrapper">
+					<div className="components-coblocks-remove-gallery-item-button-wrapper">
 						<IconButton
 							icon="no-alt"
 							onClick={ onRemove }
-							className="components-blockgallery-gallery-item__remove-button"
+							className="components-coblocks-remove-gallery-item-button-button"
 							label={ __( 'Remove Image' ) }
 						/>
 					</div>

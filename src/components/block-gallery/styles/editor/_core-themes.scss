@@ -2,17 +2,15 @@
 .is-twentyseventeen,
 .is-twentythirteen,
 .is-twentytwelve {
-
 	.blockgallery--primary-caption.editor-rich-text__tinymce {
-		text-align: left;
 		font-style: italic;
 		margin-bottom: 0;
+		text-align: left;
 	}
 }
 
 .is-twentynineteen {
-
-	@include blockGalleryEditorBlocks {
+	@include coblocksGalleryEditorBlocks {
 		margin-bottom: 48px;
 		margin-top: 50px;
 	}
@@ -23,8 +21,7 @@
 }
 
 .is-twentyfifteen {
-
-	@include blockGalleryEditorBlocks {
+	@include coblocksGalleryEditorBlocks {
 		margin-bottom: 42px;
 		margin-top: 42px;
 	}
@@ -59,40 +56,36 @@
 }
 
 .is-twentyfourteen {
-
 	.blockgallery--primary-caption.editor-rich-text__tinymce {
-		text-align: left;
 		font-style: italic;
 		margin-bottom: -7px;
-		padding: 0;
 		margin-top: 8px;
+		padding: 0;
+		text-align: left;
 	}
 }
 
 .is-twentythirteen {
-
-	@include blockGalleryEditorBlocks {
+	@include coblocksGalleryEditorBlocks {
 		margin-bottom: 40px;
 		margin-top: 40px;
 	}
 
 	.blockgallery--primary-caption.editor-rich-text__tinymce {
-		padding: 0;
 		margin-top: 8px;
+		padding: 0;
 	}
 }
 
-
 .is-twentytwelve {
-
 	// Override the theme's border radius behavior for our blocks.
 	.blockgallery:not([class*="border-radius"]) img {
 		border-radius: inherit;
 	}
 
 	.blockgallery--primary-caption.editor-rich-text__tinymce {
-		padding: 0;
 		margin-top: 1.1em;
+		padding: 0;
 	}
 
 	.wp-block[data-type="blockgallery/stacked"] figcaption {
@@ -101,20 +94,19 @@
 }
 
 .is-twentyeleven {
-
 	// Override the theme's padding/border effect on our blocks.
 	.blockgallery img {
 		border: 0;
-		padding: 0;
 		max-width: 100%;
+		padding: 0;
 	}
 
 	.blockgallery--primary-caption.editor-rich-text__tinymce {
-		padding: 2px 0 0 40px;
-		margin-bottom: -5px;
-		text-align: left;
 		font-family: Georgia, serif;
 		font-size: 12px;
+		margin-bottom: -5px;
+		padding: 2px 0 0 40px;
+		text-align: left;
 
 		&::before {
 			color: #666;
@@ -122,17 +114,17 @@
 			font-size: 14px;
 			font-style: normal;
 			font-weight: 600;
+			left: 10px;
 			margin-right: 5px;
 			position: absolute;
-			left: 10px;
 			top: 0;
 		}
 	}
 
 	.wp-block[data-type="blockgallery/stacked"] figcaption {
-		text-align: center;
 		padding-left: 1em;
 		padding-right: 1em;
+		text-align: center;
 
 		&::before {
 			display: none;

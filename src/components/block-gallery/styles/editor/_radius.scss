@@ -5,14 +5,10 @@
 			border-radius: #{$i}px;
 		}
 
-		.components-blockgallery-gallery-item__remove-button,
-		.components-blockgallery-gallery-item__remove-wrapper {
+		.components-coblocks-remove-gallery-item-button-button,
+		.components-coblocks-remove-gallery-item-button-wrapper {
 			border-bottom-left-radius: #{$i}px !important;
 			border-top-right-radius: #{$i}px !important;
-		}
-
-		.components-blockgallery-gallery-item__upload.components-button {
-			border-radius: #{$i}px;
 		}
 
 		figcaption {
@@ -24,7 +20,7 @@
 
 @for $i from 13 through 20 {
 	.has-border-radius-#{ $i } {
-		.components-blockgallery-gallery-item__remove-wrapper {
+		.components-coblocks-remove-gallery-item-button-wrapper {
 			padding: 6px;
 
 			svg {
