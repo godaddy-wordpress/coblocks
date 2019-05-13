@@ -69,56 +69,88 @@ class CoBlocks_Register_Blocks {
 		$slug = $this->_slug;
 
 		register_block_type(
-			$slug . '/accordion', array(
+			$slug . '/accordion',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/alert', array(
+			$slug . '/alert',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/author', array(
+			$slug . '/author',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/click-to-tweet', array(
+			$slug . '/click-to-tweet',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/dynamic-separator', array(
+			$slug . '/dynamic-separator',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/gif', array(
+			$slug . '/gif',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/gist', array(
+			$slug . '/gist',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/highlight', array(
+			$slug . '/highlight',
+			array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+		register_block_type(
+			$slug . '/gallery-carousel',
+			array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+		register_block_type(
+			$slug . '/gallery-masonry',
+			array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+		register_block_type(
+			$slug . '/gallery-stacked',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',

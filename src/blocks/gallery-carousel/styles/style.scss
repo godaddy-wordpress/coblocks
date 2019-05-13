@@ -1,0 +1,11 @@
+.wp-block-coblocks-gallery-carousel {
+	&,
+	.coblocks-gallery {
+		height: 100%;
+		position: relative;
+	}
+
+	.coblocks-gallery--figure {
+		height: 100%;
+	}
+}

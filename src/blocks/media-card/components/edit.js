@@ -11,7 +11,7 @@ import includes from 'lodash/includes';
 import applyWithColors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
-import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
+import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../../components/background';
 import icons from './../../../utils/icons';
 import MediaContainer from './media-container';
 
@@ -187,24 +187,23 @@ class Edit extends Component {
 		const temporaryMediaWidth = this.state.mediaWidth;
 		const widthString = `${ temporaryMediaWidth || mediaWidth }%`;
 
-		const wrapperClasses = classnames(
+		const innerClasses = classnames(
 			'wp-block-coblocks-media-card__inner',
 			...BackgroundClasses( attributes ), {
 				'has-padding': paddingSize && paddingSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 		} );
 
-		const wrapperStyles = {
+		const innerStyles = {
+			...BackgroundStyles( attributes ),
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
 		};
 
-		const innerStyles = {
+		const wrapperStyles = {
 			gridTemplateColumns: 'right' === mediaPosition ? `auto ${ widthString }` : `${ widthString } auto`,
 			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
 		};
@@ -233,10 +232,10 @@ class Edit extends Component {
 						}
 					) }
 				>
-					<div className={ wrapperClasses } style={ wrapperStyles } >
+					<div className={ innerClasses } style={ innerStyles } >
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }
-						<div className="wp-block-coblocks-media-card__wrapper" style={ innerStyles } >
+						<div className="wp-block-coblocks-media-card__wrapper" style={ wrapperStyles } >
 							{ this.renderMediaArea() }
 							<div
 								className={ classnames(

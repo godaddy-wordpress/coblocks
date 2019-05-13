@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import icons from './../../../utils/icons';
-import BackgroundPanel, { BackgroundControls } from '../../../components/background';
+import { BackgroundControls } from '../../../components/background';
 
 /**
  * WordPress dependencies

@@ -1,0 +1,27 @@
+.editor-block-list__block[data-type="coblocks/gallery-stacked"] {
+	// Fix issue where selected images are not wider than the viewport.
+	.coblocks-gallery--item:not(.is-appender) .coblocks-gallery--figure {
+		display: inline-block;
+	}
+
+	.has-fullwidth-images .coblocks-gallery--figure {
+		width: 100% !important;
+	}
+
+	// Fixes issue where the outline does not fully render due to the outside nature of the core outline style applied.
+	.is-appender,
+	.components-coblocks-gallery-uploader {
+		border: 1px dashed $dark-gray-150;
+		margin-bottom: 0; // Remove unnecessary margin applied to the core appender.
+		outline: none;
+		width: 100%;
+
+		&:hover {
+			border-color: $dark-gray-500;
+		}
+	}
+
+	li:last-child .coblocks-gallery--figure {
+		width: 100% !important;
+	}
+}

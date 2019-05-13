@@ -13,7 +13,7 @@ import './styles/editor.scss';
 import icons from './components/icons';
 import brandAssets from '../../utils/brand-assets';
 import Edit from './components/edit';
-import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms, BackgroundVideo } from '../../components/background';
+import { BackgroundStyles, BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**
@@ -237,20 +237,18 @@ const settings = {
 			'is-stacked-on-mobile': isStackedOnMobile,
 		} );
 
-		const wrapperClasses = classnames(
+		const innerClasses = classnames(
 			'wp-block-coblocks-media-card__inner',
 			...BackgroundClasses( attributes ), {
 				'has-padding': paddingSize && paddingSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 		} );
 
-		const wrapperStyles = {
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+		const innerStyles = {
+			...BackgroundStyles( attributes ),
 		};
 
-		const innerStyles = {
+		const wrapperStyles = {
 			gridTemplateColumns,
 			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
 		};
@@ -262,9 +260,9 @@ const settings = {
 
 		return (
 			<div className={ classes }>
-				<div className={ wrapperClasses } style={ wrapperStyles } >
+				<div className={ innerClasses } style={ innerStyles } >
 					{ BackgroundVideo( attributes ) }
-					<div className="wp-block-coblocks-media-card__wrapper" style={ innerStyles }>
+					<div className="wp-block-coblocks-media-card__wrapper" style={ wrapperStyles }>
 						<figure className={ classnames(
 								'wp-block-coblocks-media-card__media', {
 									'has-shadow': hasImgShadow,
