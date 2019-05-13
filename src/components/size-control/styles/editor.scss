@@ -17,7 +17,7 @@
 		margin-top: 2em;
 	}
 
-	.components-button {
+	.components-button-group .components-button {
 		background: none;
 		border: 1px solid #8d96a0;
 		box-shadow: 0 0 0 transparent;
@@ -29,8 +29,8 @@
 			&,
 			&:focus,
 			&:active {
-				background: #6c7781;
-				border-color: #6c7781;
+				background: #555d66;
+				border-color: #555d66;
 				color: #fff;
 				cursor: default;
 			}
