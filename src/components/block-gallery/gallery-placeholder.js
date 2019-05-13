@@ -49,7 +49,7 @@ class GalleryPlaceholder extends Component {
 		const hasImages = !! images.length;
 
 		const classes = classnames(
-			'blockgallery--figure', {
+			'coblocks-gallery--figure', {
 			[ `has-margin-top-${ gutter }` ] : marginTop && gutter > 0,
 			[ `has-margin-top-mobile-${ gutterMobile }` ] : marginTop && gutterMobile > 0,
 			[ `has-margin-right-${ gutter }` ] : marginRight && gutter > 0,

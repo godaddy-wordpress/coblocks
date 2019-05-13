@@ -2,7 +2,7 @@
 .is-twentyseventeen,
 .is-twentythirteen,
 .is-twentytwelve {
-	.blockgallery--primary-caption.editor-rich-text__tinymce {
+	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
 		font-style: italic;
 		margin-bottom: 0;
 		text-align: left;
@@ -15,7 +15,7 @@
 		margin-top: 50px;
 	}
 
-	.blockgallery--primary-caption {
+	.coblocks-gallery--primary-caption {
 		margin-bottom: -10px;
 	}
 }
@@ -26,7 +26,7 @@
 		margin-top: 42px;
 	}
 
-	.blockgallery--primary-caption.editor-rich-text__tinymce {
+	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
 		color: #707070;
 		font-family: "Noto Sans", sans-serif;
 		font-size: 12px;
@@ -56,7 +56,7 @@
 }
 
 .is-twentyfourteen {
-	.blockgallery--primary-caption.editor-rich-text__tinymce {
+	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
 		font-style: italic;
 		margin-bottom: -7px;
 		margin-top: 8px;
@@ -71,7 +71,7 @@
 		margin-top: 40px;
 	}
 
-	.blockgallery--primary-caption.editor-rich-text__tinymce {
+	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
 		margin-top: 8px;
 		padding: 0;
 	}
@@ -79,29 +79,29 @@
 
 .is-twentytwelve {
 	// Override the theme's border radius behavior for our blocks.
-	.blockgallery:not([class*="border-radius"]) img {
+	.coblocks-gallery:not([class*="border-radius"]) img {
 		border-radius: inherit;
 	}
 
-	.blockgallery--primary-caption.editor-rich-text__tinymce {
+	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
 		margin-top: 1.1em;
 		padding: 0;
 	}
 
-	.wp-block[data-type="blockgallery/stacked"] figcaption {
+	.wp-block[data-type="coblocks-gallery/stacked"] figcaption {
 		text-align: center !important;
 	}
 }
 
 .is-twentyeleven {
 	// Override the theme's padding/border effect on our blocks.
-	.blockgallery img {
+	.coblocks-gallery img {
 		border: 0;
 		max-width: 100%;
 		padding: 0;
 	}
 
-	.blockgallery--primary-caption.editor-rich-text__tinymce {
+	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
 		font-family: Georgia, serif;
 		font-size: 12px;
 		margin-bottom: -5px;
@@ -121,7 +121,7 @@
 		}
 	}
 
-	.wp-block[data-type="blockgallery/stacked"] figcaption {
+	.wp-block[data-type="coblocks-gallery/stacked"] figcaption {
 		padding-left: 1em;
 		padding-right: 1em;
 		text-align: center;

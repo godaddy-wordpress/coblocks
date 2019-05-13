@@ -121,14 +121,14 @@ const settings = {
 		const fontSizeClass = getFontSizeClass( fontSize );
 
 		const figureClasses = classnames(
-			'blockgallery--figure', {
+			'coblocks-gallery--figure', {
 				[ `has-margin-bottom-${ gutter }` ] : gutter > 0,
 				[ `has-margin-bottom-mobile-${ gutterMobile }` ] : gutterMobile > 0,
 				[ fontSizeClass ]: fontSizeClass,
 		} );
 
 		const captionClasses = classnames(
-			'blockgallery--caption', {
+			'coblocks-gallery--caption', {
 				[ fontSizeClass ]: fontSizeClass,
 		} );
 
@@ -160,7 +160,7 @@ const settings = {
 						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ imgClasses } />;
 
 						return (
-							<li key={ image.id || image.url } className="blockgallery--item">
+							<li key={ image.id || image.url } className="coblocks-gallery--item">
 								<figure className={ figureClasses }>
 									{ href ? <a href={ href }>{ img }</a> : img }
 									{ captions && image.caption && image.caption.length > 0 && (

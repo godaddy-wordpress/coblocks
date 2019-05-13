@@ -1,4 +1,4 @@
-.blockgallery {
+.coblocks-gallery {
 	list-style: none !important;
 	margin-left: auto !important;
 	margin-right: auto !important;
@@ -21,8 +21,8 @@
 	}
 
 	& &--item figcaption {
-		margin: 0 !important;
 		color: inherit;
+		margin: 0 !important;
 	}
 
 	&:not(.has-padding) {
@@ -34,8 +34,8 @@
 	}
 
 	&.is-cropped {
-		.blockgallery--item,
-		.blockgallery--item-thumbnail {
+		.coblocks-gallery--item,
+		.coblocks-gallery--item-thumbnail {
 			a,
 			img {
 				// IE11 doesn't support object-fit, so just make sure images aren't skewed.
@@ -56,12 +56,12 @@
 
 .alignfull,
 .alignwide {
-	ul.blockgallery {
+	ul.coblocks-gallery {
 		max-width: 100%;
 	}
 }
 
-.blockgallery--item-thumbnail {
+.coblocks-gallery--item-thumbnail {
 	list-style: none !important;
 	margin: 0;
 	padding: 0;
@@ -76,7 +76,7 @@
 	}
 }
 
-figcaption.blockgallery--primary-caption {
+figcaption.coblocks-gallery--primary-caption {
 	font-size: 13px;
 	margin-bottom: 1em;
 	margin-top: 1.2em;

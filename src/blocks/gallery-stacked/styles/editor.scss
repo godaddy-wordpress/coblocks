@@ -1,11 +1,11 @@
 .editor-block-list__block[data-type="coblocks/gallery-stacked"] {
 	// Fix issue where selected images are not wider than the viewport.
-	.blockgallery--item:not(.is-appender) .blockgallery--figure {
+	.coblocks-gallery--item:not(.is-appender) .coblocks-gallery--figure {
 		display: inline-block;
 		// width: auto !important;
 	}
 
-	.has-fullwidth-images .blockgallery--figure {
+	.has-fullwidth-images .coblocks-gallery--figure {
 		width: 100% !important;
 	}
 
@@ -15,7 +15,7 @@
 		width: 100%;
 	}
 
-	li:last-child .blockgallery--figure {
+	li:last-child .coblocks-gallery--figure {
 		width: 100% !important;
 	}
 }

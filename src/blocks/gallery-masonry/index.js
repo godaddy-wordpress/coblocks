@@ -124,11 +124,11 @@ const settings = {
 							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
 
 							return (
-								<li key={ image.id || image.url } className="blockgallery--item">
-									<figure className="blockgallery--figure">
+								<li key={ image.id || image.url } className="coblocks-gallery--item">
+									<figure className="coblocks-gallery--figure">
 										{ href ? <a href={ href }>{ img }</a> : img }
 										{ captions && image.caption && image.caption.length > 0 && (
-											<RichText.Content tagName="figcaption" className="blockgallery--caption" value={ image.caption } />
+											<RichText.Content tagName="figcaption" className="coblocks-gallery--caption" value={ image.caption } />
 										) }
 									</figure>
 								</li>

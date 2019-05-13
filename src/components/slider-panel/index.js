@@ -74,7 +74,7 @@ class SliderPanel extends Component {
 						onChange={ this.setAutoPlaySpeedTo }
 						onChange={ ( value ) => setAttributes( { autoPlaySpeed: value } ) }
 						options={ autoPlayOptions }
-						className='components-blockgallery-inspector__autoplayspeed-select'
+						className='components-coblocks-gallery-inspector__autoplayspeed-select'
 					/> }
 					<ToggleControl
 						label={ __( 'Draggable' ) }

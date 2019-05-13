@@ -1,6 +1,6 @@
 .editor-block-list__block[data-type="coblocks/gallery-masonry"] {
 	// Fixes issue where figures are set to display 100% if alignfull is set.
-	.blockgallery--figure {
+	.coblocks-gallery--figure {
 		width: auto !important;
 
 		img {

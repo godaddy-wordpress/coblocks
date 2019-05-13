@@ -170,7 +170,7 @@ class GalleryStackedEdit extends Component {
 							const ariaLabel = __( sprintf( 'image %1$d of %2$d in gallery', ( index + 1 ), images.length ) );
 
 							return (
-								<li className="blockgallery--item" key={ img.id || img.url }>
+								<li className="coblocks-gallery--item" key={ img.id || img.url }>
 									<GalleryImage
 										url={ img.url }
 										alt={ img.alt }
@@ -192,7 +192,7 @@ class GalleryStackedEdit extends Component {
 								</li>
 							);
 						} ) }
-						<li className="blockgallery--item">
+						<li className="coblocks-gallery--item">
 							<GalleryPlaceholder { ...this.props } />
 						</li>
 					</ul>

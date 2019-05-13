@@ -7,7 +7,7 @@ const GalleryAttributes = {
 		type: 'array',
 		default: [],
 		source: 'query',
-		selector: '.blockgallery--item',
+		selector: '.coblocks-gallery--item',
 		query: {
 			url: {
 				source: 'attribute',
@@ -87,7 +87,7 @@ const GalleryAttributes = {
 	primaryCaption: {
 		type: 'array',
 		source: 'children',
-		selector: '.blockgallery--primary-caption',
+		selector: '.coblocks-gallery--primary-caption',
 	},
 	backgroundRadius: {
 		type: 'number',

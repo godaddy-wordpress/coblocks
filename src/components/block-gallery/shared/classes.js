@@ -22,7 +22,7 @@ function GalleryClasses( attributes ) {
 	} = attributes;
 
 	return [
-		'blockgallery',
+		'coblocks-gallery',
 		{ 'has-no-alignment' : ! align },
 		{ [ `has-border-radius-${ radius }` ] : radius > 0 },
 		{ [ `has-filter-${ filter }` ] : filter != 'none' },

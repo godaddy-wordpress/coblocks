@@ -7,7 +7,7 @@
 
 		container.imagesLoaded(function(){
 			container.masonry( {
-				itemSelector: '.blockgallery--item',
+				itemSelector: '.coblocks-gallery--item',
 				transitionDuration: '0.2s',
 				percentPosition: true,
 			} );

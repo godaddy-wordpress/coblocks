@@ -139,7 +139,7 @@ const settings = {
 		};
 
 		const figureClasses = classnames(
-			'blockgallery--figure', {
+			'coblocks-gallery--figure', {
 				[ `has-margin-left-${ gutter }` ] : gutter > 0,
 				[ `has-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
 				[ `has-margin-right-${ gutter }` ] : gutter > 0,
@@ -164,8 +164,8 @@ const settings = {
 		const captionColorClass = getColorClassName( 'color', captionColor );
 
 		const captionClasses = classnames(
-			'blockgallery--caption',
-			'blockgallery--primary-caption',
+			'coblocks-gallery--caption',
+			'coblocks-gallery--primary-caption',
 			captionColorClass, {
 				'has-caption-color': captionColorClass,
 
@@ -197,7 +197,7 @@ const settings = {
 							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
 
 							return (
-								<div key={ image.id || image.url } className="blockgallery--item">
+								<div key={ image.id || image.url } className="coblocks-gallery--item">
 									<figure className={ figureClasses }>
 										{ img }
 									</figure>

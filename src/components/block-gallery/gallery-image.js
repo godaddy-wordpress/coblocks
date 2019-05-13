@@ -173,7 +173,7 @@ class GalleryImage extends Component {
 		// Disable reason: Each block can be selected by clicking on it and we should keep the same saved markup
 		/* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/onclick-has-role, jsx-a11y/click-events-have-key-events */
 		return (
-			<figure className={ 'blockgallery--figure ' + className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
+			<figure className={ 'coblocks-gallery--figure ' + className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
 				{ isSelected &&
 					<div className="components-coblocks-remove-gallery-item-button-wrapper">
 						<IconButton
@@ -189,7 +189,7 @@ class GalleryImage extends Component {
 					<RichText
 						tagName="figcaption"
 						placeholder={ __( 'Write caption…' ) }
-						className="blockgallery--caption"
+						className="coblocks-gallery--caption"
 						style={ captionStyles }
 						value={ caption }
 						isSelected={ this.state.captionSelected }

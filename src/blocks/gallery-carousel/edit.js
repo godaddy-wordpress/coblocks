@@ -298,7 +298,7 @@ class GalleryCarouselEdit extends Component {
 									const ariaLabel = __( sprintf( 'image %1$d of %2$d in gallery', ( index + 1 ), images.length ) );
 
 									return (
-										<div className="blockgallery--item" key={ img.id || img.url } onClick={ this.onItemClick }>
+										<div className="coblocks-gallery--item" key={ img.id || img.url } onClick={ this.onItemClick }>
 											<GalleryImage
 												url={ img.url }
 												alt={ img.alt }
@@ -319,7 +319,7 @@ class GalleryCarouselEdit extends Component {
 									);
 								} ) }
 								{ isSelected && (
-									<div className="blockgallery--item">
+									<div className="coblocks-gallery--item">
 										<GalleryPlaceholder
 											{ ...this.props }
 											gutter={ gutter }
@@ -338,7 +338,7 @@ class GalleryCarouselEdit extends Component {
 						tagName="figcaption"
 						placeholder={ __( 'Write caption…' ) }
 						value={ primaryCaption }
-						className="blockgallery--caption blockgallery--primary-caption"
+						className="coblocks-gallery--caption coblocks-gallery--primary-caption"
 						style={ captionStyles }
 						unstableOnFocus={ this.onFocusCaption }
 						onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }

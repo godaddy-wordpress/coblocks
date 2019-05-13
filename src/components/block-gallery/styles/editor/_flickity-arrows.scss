@@ -1,14 +1,13 @@
 .has-no-arrows {
-
 	.flickity-prev-next-button {
 		background-color: $blue;
-		border: none;
-		width: 38px;
-		height: 38px;
 		border-radius: 4px;
-		opacity: 1;
+		border: none;
 		display: none;
+		height: 38px;
+		opacity: 1;
 		transition: none;
+		width: 38px;
 
 		&:hover {
 			background-color: #007eb1;
@@ -20,9 +19,9 @@
 
 		.flickity-button-icon {
 			fill: $white;
+			height: 55%;
 			top: 22.5%;
 			width: 55%;
-			height: 55%;
 		}
 
 		&.previous {
@@ -42,7 +41,7 @@
 		}
 	}
 
-	&.blockgallery.is-selected .flickity-prev-next-button {
+	&.coblocks-gallery.is-selected .flickity-prev-next-button {
 		display: block;
 	}
 }

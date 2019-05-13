@@ -1,5 +1,4 @@
-.has-grid-sml .blockgallery--item {
-
+.has-grid-sml .coblocks-gallery--item {
 	@media (min-width: 250px) {
 		width: 1 / 2 * 100%;
 	}
@@ -25,8 +24,7 @@
 	}
 }
 
-.has-grid-med .blockgallery--item {
-
+.has-grid-med .coblocks-gallery--item {
 	@media (min-width: 350px) {
 		width: 1 / 2 * 100%;
 	}
@@ -50,8 +48,7 @@
 	}
 }
 
-.has-grid-lrg .blockgallery--item {
-
+.has-grid-lrg .coblocks-gallery--item {
 	@media (min-width: 400px) {
 		width: 1 / 2 * 100%;
 	}
@@ -71,8 +68,7 @@
 	}
 }
 
-.has-grid-xlrg .blockgallery--item {
-
+.has-grid-xlrg .coblocks-gallery--item {
 	@media (min-width: 400px) {
 		width: 1 / 2 * 100%;
 	}
@@ -88,8 +84,7 @@
 	}
 }
 
-.has-no-alignment .has-grid-lrg .blockgallery--item {
-
+.has-no-alignment .has-grid-lrg .coblocks-gallery--item {
 	@media (min-width: 400px) {
 		width: 1 / 2 * 100%;
 	}

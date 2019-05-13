@@ -1,5 +1,4 @@
-.blockgallery {
-
+.coblocks-gallery {
 	&.has-gutter {
 		overflow: hidden;
 	}
@@ -14,20 +13,17 @@
 @media (min-width: 700px) {
 	// Add negative margin to the parent ul to offset the gutter.
 	@for $i from 1 through 10 {
-
 		.has-gutter-#{ $i * 5 } {
-			margin: -#{ round($i * 5 / 2) }px !important;
-			max-width: calc(100% + #{ round($i * 5) }px) !important;
+			margin: -#{round($i * 5 / 2)}px !important;
+			max-width: calc(100% + #{round($i * 5)}px) !important;
 		}
 	}
 
 	// Add gutter margin to the figure elements.
 	@for $i from 1 through 10 {
-
 		.has-gutter-#{ $i * 5 } {
-
-			.blockgallery--figure {
-				margin: #{ round($i * 5 / 2) }px;
+			.coblocks-gallery--figure {
+				margin: #{round($i * 5 / 2)}px;
 			}
 		}
 	}
@@ -37,13 +33,12 @@
 @media (max-width: 699px) {
 	// Add gutter margin to the figure elements.
 	@for $i from 1 through 10 {
-
 		.has-gutter-mobile-#{ $i * 5 } {
-			margin: -#{ round($i * 5 / 2) }px !important;
-			max-width: calc(100% + #{ round($i * 5) }px) !important;
+			margin: -#{round($i * 5 / 2)}px !important;
+			max-width: calc(100% + #{round($i * 5)}px) !important;
 
-			.blockgallery--figure {
-				margin: #{ round($i * 5 / 2) }px;
+			.coblocks-gallery--figure {
+				margin: #{round($i * 5 / 2)}px;
 			}
 		}
 	}

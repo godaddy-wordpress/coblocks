@@ -1,4 +1,4 @@
-.blockgallery--item {
+.coblocks-gallery--item {
 	margin: 0;
 
 	figure:focus {
@@ -6,21 +6,20 @@
 	}
 
 	img:focus {
-		outline: none;
 		box-shadow: inset 0 0 0 4px #0085ba;
+		outline: none;
 	}
 
 	.is-selected {
-
 		&::after {
-			position: absolute;
-			top: 0;
-			right: 0;
 			bottom: 0;
-			left: 0;
 			box-shadow: inset 0 0 0 4px #0085ba;
-			z-index: 1;
 			content: "";
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: 1;
 		}
 	}
 
@@ -33,16 +32,15 @@
 	}
 
 	.components-spinner {
+		left: 50%;
+		margin-left: -9px;
+		margin-top: -9px;
 		position: absolute;
 		top: 50%;
-		left: 50%;
-		margin-top: -9px;
-		margin-left: -9px;
 	}
 }
 
-.has-caption-color .blockgallery--caption {
-
+.has-caption-color .coblocks-gallery--caption {
 	a {
 		color: inherit !important;
 	}
