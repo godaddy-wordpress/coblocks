@@ -23,8 +23,9 @@ const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
-const { withNotices } = wp.components;
+const { withNotices, Spinner } = wp.components;
 const { withColors, withFontSizes } = wp.editor;
+const { isBlobURL } = wp.blob;
 
 class GalleryStackedEdit extends Component {
 	constructor() {
@@ -115,6 +116,7 @@ class GalleryStackedEdit extends Component {
 			images,
 			linkTo,
 			shadow,
+			backgroundImg,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -160,6 +162,7 @@ class GalleryStackedEdit extends Component {
 				}
 				{ noticeUI }
 				<div className={ className }>
+					{ isBlobURL( backgroundImg ) && <Spinner /> }
 					{ BackgroundVideo( attributes ) }
 					<ul className={ wrapperClasses } style={ wrapperStyles }>
 						{ images.map( ( img, index ) => {

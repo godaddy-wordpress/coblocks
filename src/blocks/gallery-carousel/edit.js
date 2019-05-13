@@ -24,8 +24,9 @@ const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
-const { withNotices, ResizableBox } = wp.components;
+const { withNotices, ResizableBox, Spinner } = wp.components;
 const { withColors, RichText } = wp.editor;
+const { isBlobURL } = wp.blob;
 
 /**
  * Block consts.
@@ -184,7 +185,10 @@ class GalleryCarouselEdit extends Component {
 			pageDots,
 			prevNextButtons,
 			primaryCaption,
+			backgroundImg,
 		} = attributes;
+
+		const hasImages = !! images.length;
 
 		// An additional dropzone to wrap the entire gallery in.
 		const dropZone = (
@@ -221,7 +225,7 @@ class GalleryCarouselEdit extends Component {
 			`has-carousel-${ gridSize }`, {}
 		);
 
-		if ( images.length === 0 ) {
+		if ( ! hasImages ) {
 			return (
 				<GalleryPlaceholder
 					{ ...this.props }
@@ -274,6 +278,7 @@ class GalleryCarouselEdit extends Component {
 						} }
 					>
 					{ dropZone }
+					{ isBlobURL( backgroundImg ) && <Spinner /> }
 					{ BackgroundVideo( attributes ) }
 					<div className={ className }>
 						<div

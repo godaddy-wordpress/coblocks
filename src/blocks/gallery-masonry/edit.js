@@ -24,8 +24,9 @@ const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
-const { withNotices } = wp.components;
+const { withNotices, Spinner } = wp.components;
 const { withColors } = wp.editor;
+const { isBlobURL } = wp.blob;
 
 /**
  * Block consts
@@ -123,13 +124,14 @@ class GalleryMasonryEdit extends Component {
 
 		const {
 			align,
+			backgroundImg,
+			captions,
 			customBackgroundColor,
 			gridSize,
 			gutter,
 			gutterMobile,
 			images,
 			linkTo,
-			captions,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -197,6 +199,7 @@ class GalleryMasonryEdit extends Component {
 						style={ innerStyles }
 					>
 						{ dropZone }
+						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }
 						<Masonry
 							elementType={ 'ul' }
