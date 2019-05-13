@@ -13,8 +13,8 @@ import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
-import { BackgroundStyles } from '../../components/background';
 import { GalleryClasses } from '../../components/block-gallery/shared';
+import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -120,7 +120,8 @@ class GalleryStackedEdit extends Component {
 		const hasImages = !! images.length;
 
 		const wrapperClasses = classnames(
-			...GalleryClasses( attributes ), {
+			...GalleryClasses( attributes ),
+			...BackgroundClasses( attributes ), {
 				'has-fullwidth-images': fullwidth,
 				[ `align${ align }` ] : align,
 				[ `has-margin` ] : gutter > 0,
@@ -159,6 +160,7 @@ class GalleryStackedEdit extends Component {
 				}
 				{ noticeUI }
 				<div className={ className }>
+					{ BackgroundVideo( attributes ) }
 					<ul className={ wrapperClasses } style={ wrapperStyles }>
 						{ images.map( ( img, index ) => {
 							// translators: %1$d is the order number of the image, %2$d is the total number of images.
