@@ -187,14 +187,14 @@ class Edit extends Component {
 		const temporaryMediaWidth = this.state.mediaWidth;
 		const widthString = `${ temporaryMediaWidth || mediaWidth }%`;
 
-		const wrapperClasses = classnames(
+		const innerClasses = classnames(
 			'wp-block-coblocks-media-card__inner',
 			...BackgroundClasses( attributes ), {
 				'has-padding': paddingSize && paddingSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 		} );
 
-		const wrapperStyles = {
+		const innerStyles = {
 			...BackgroundStyles( attributes ),
 			backgroundColor: backgroundColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
@@ -203,7 +203,7 @@ class Edit extends Component {
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
 		};
 
-		const innerStyles = {
+		const wrapperStyles = {
 			gridTemplateColumns: 'right' === mediaPosition ? `auto ${ widthString }` : `${ widthString } auto`,
 			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
 		};
@@ -232,10 +232,10 @@ class Edit extends Component {
 						}
 					) }
 				>
-					<div className={ wrapperClasses } style={ wrapperStyles } >
+					<div className={ innerClasses } style={ innerStyles } >
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }
-						<div className="wp-block-coblocks-media-card__wrapper" style={ innerStyles } >
+						<div className="wp-block-coblocks-media-card__wrapper" style={ wrapperStyles } >
 							{ this.renderMediaArea() }
 							<div
 								className={ classnames(

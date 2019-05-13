@@ -118,14 +118,14 @@ const settings = {
 			primaryCaption,
 		} = attributes;
 
-		const wrapperClasses = classnames(
+		const innerClasses = classnames(
 			'is-cropped',
 			...GalleryClasses( attributes ), {
 				[ `has-horizontal-gutter` ] : gutter > 0,
 			}
 		);
 
-		const wrapperStyles = {
+		const innerStyles = {
 			...BackgroundStyles( attributes ),
 		};
 
@@ -184,8 +184,8 @@ const settings = {
 		return (
 			<div className={ className }>
 				<div
-					className={ wrapperClasses }
-					style={ wrapperStyles }
+					className={ innerClasses }
+					style={ innerStyles }
 				>
 					<div
 						className={ flickityClasses }

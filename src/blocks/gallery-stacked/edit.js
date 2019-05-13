@@ -121,7 +121,7 @@ class GalleryStackedEdit extends Component {
 
 		const hasImages = !! images.length;
 
-		const wrapperClasses = classnames(
+		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
 			...BackgroundClasses( attributes ), {
 				'has-fullwidth-images': fullwidth,
@@ -132,7 +132,7 @@ class GalleryStackedEdit extends Component {
 			}
 		);
 
-		const wrapperStyles = {
+		const innerStyles = {
 			...BackgroundStyles( attributes ),
 			backgroundColor: backgroundColor.color,
 			color: captionColor.color,
@@ -164,7 +164,7 @@ class GalleryStackedEdit extends Component {
 				<div className={ className }>
 					{ isBlobURL( backgroundImg ) && <Spinner /> }
 					{ BackgroundVideo( attributes ) }
-					<ul className={ wrapperClasses } style={ wrapperStyles }>
+					<ul className={ innerClasses } style={ innerStyles }>
 						{ images.map( ( img, index ) => {
 							// translators: %1$d is the order number of the image, %2$d is the total number of images.
 							const ariaLabel = __( sprintf( 'image %1$d of %2$d in gallery', ( index + 1 ), images.length ) );

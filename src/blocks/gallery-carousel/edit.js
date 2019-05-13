@@ -197,7 +197,7 @@ class GalleryCarouselEdit extends Component {
 			/>
 		);
 
-		const wrapperClasses = classnames(
+		const innerClasses = classnames(
 			'is-cropped',
 			...GalleryClasses( attributes ),
 			...BackgroundClasses( attributes ), {
@@ -210,7 +210,7 @@ class GalleryCarouselEdit extends Component {
 			}
 		);
 
-		const wrapperStyles = {
+		const innerStyles = {
 			...BackgroundStyles( attributes ),
 			backgroundColor: backgroundColor.color,
 			'is-selected': isSelected,
@@ -282,8 +282,8 @@ class GalleryCarouselEdit extends Component {
 					{ BackgroundVideo( attributes ) }
 					<div className={ className }>
 						<div
-							className={ wrapperClasses }
-							style={ wrapperStyles }
+							className={ innerClasses }
+							style={ innerStyles }
 						>
 							<Flickity
 								className={ flickityClasses }
