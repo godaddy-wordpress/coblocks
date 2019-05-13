@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import isEmpty from 'lodash/isEmpty';
+
+/**
  * Internal dependencies
  */
 import './styles/style.scss';
@@ -7,8 +12,10 @@ import BackgroundAttributes from './attributes';
 import BackgroundClasses from './classes';
 import BackgroundControls from './controls';
 import BackgroundDropZone from './dropzone';
+import BackgroundStyles from './styles';
 import BackgroundTransforms from './transforms';
 import BackgroundVideo from './video';
+import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 
 /**
  * WordPress dependencies
@@ -17,15 +24,9 @@ const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { SelectControl, RangeControl, ToggleControl, PanelBody, Button, FocalPointPicker } = wp.components;
 
-/**
- * Module constants.
- */
 export const ALLOWED_BG_MEDIA_TYPES = [ 'image', 'video' ];
 export const BLOCKS_WITH_AUTOPADDING = [ 'coblocks/row', 'coblocks/column', 'coblocks/media-card', 'coblocks/features', 'coblocks/feature' ];
 
-/**
- * Export
- */
 export {
 	BackgroundAttributes,
 	BackgroundClasses,
@@ -33,6 +34,7 @@ export {
 	BackgroundDropZone,
 	BackgroundTransforms,
 	BackgroundVideo,
+	BackgroundStyles,
 };
 
 /**
@@ -51,8 +53,11 @@ function BackgroundPanel( props, options ) {
 		backgroundSize,
 		backgroundOverlay,
 		hasParallax,
+		backgroundPadding,
+		backgroundRadius,
+		backgroundPaddingMobile,
 		backgroundImg,
-		backgroundType,
+		backgroundType = 'image',
 		focalPoint,
 		videoMuted,
 		videoLoop,
@@ -105,6 +110,43 @@ function BackgroundPanel( props, options ) {
 		}
 	}
 
+	function setBackgroundPaddingTo( value ) {
+		setAttributes( { backgroundPadding: value } );
+
+		if ( backgroundPadding <= 0 ) {
+			setAttributes( {
+				backgroundRadius: 0,
+			} );
+		}
+
+	}
+
+	const galleryBackgroundControls = () => {
+		return (
+			<Fragment>
+				<ResponsiveTabsControl { ...props }
+					label={ __( 'Padding' ) }
+					value={ backgroundPadding }
+					valueMobile={ backgroundPaddingMobile }
+					onChange={ setBackgroundPaddingTo( backgroundPadding ) }
+					onChangeMobile={ ( nextBackgroundPaddingMobile ) => setAttributes( {  backgroundPaddingMobile: nextBackgroundPaddingMobile } ) }
+					min={ 5 }
+					max={ 100 }
+				/>
+				{ ( ( ! isEmpty( backgroundImg ) || ! isEmpty( backgroundColor.color ) ) && backgroundPadding > 0 ) && align != 'full' &&
+					<RangeControl
+						label={ __( 'Rounded Corners' ) }
+						value={ backgroundRadius }
+						onChange={ ( nextBackgroundRadius ) => setAttributes( {  backgroundRadius: nextBackgroundRadius } ) }
+						min={ 0 }
+						max={ 20 }
+						step={ 1 }
+					/>
+				}
+			</Fragment>
+		);
+	}
+
 	const onSelectRepeat = ( backgroundRepeat ) => {
 
 		if ( backgroundRepeat === 'no-repeat' ) {
@@ -148,7 +190,7 @@ function BackgroundPanel( props, options ) {
 						/>
 					) }
 					{ overlaySelect() }
-
+					{ galleryBackgroundControls() }
 					{ backgroundType == 'image' && (
 						<SelectControl
 							label={ __( 'Repeat' ) }

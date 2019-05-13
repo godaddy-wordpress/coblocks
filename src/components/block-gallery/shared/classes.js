@@ -1,9 +1,4 @@
 /**
- * Internal dependencies
- */
-import { BackgroundClasses } from '../background';
-
-/**
  * WordPress dependencies
  */
 const { getColorClassName } = wp.editor;
@@ -31,8 +26,11 @@ function GalleryClasses( attributes ) {
 		{ [ `has-filter-${ filter }` ] : filter != 'none' },
 		{ [ `has-caption-style-${ captionStyle }` ] : captionStyle != undefined },
 		{ 'has-caption-color': captionColorClass, },
-		...BackgroundClasses( attributes ),
 		captionColorClass,
+		{ [ `has-background-border-radius-${ attributes.backgroundRadius }` ] : attributes.backgroundRadius > 0 },
+		{ 'has-padding': attributes.backgroundPadding > 0 },
+		{ [ `has-padding-${ attributes.backgroundPadding }` ] : attributes.backgroundPadding > 0 },
+		{ [ `has-padding-mobile-${ attributes.backgroundPaddingMobile }` ]: attributes.backgroundPaddingMobile > 0 },
 	];
 }
 

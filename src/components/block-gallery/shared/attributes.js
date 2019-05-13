@@ -91,6 +91,18 @@ const GalleryAttributes = {
 		source: 'children',
 		selector: '.blockgallery--primary-caption',
 	},
+	backgroundRadius: {
+		type: 'number',
+		default: 0,
+	},
+	backgroundPadding: {
+		type: 'number',
+		default: 0,
+	},
+	backgroundPaddingMobile: {
+		type: 'number',
+		default: 0,
+	},
 	...BackgroundAttributes,
 };
 

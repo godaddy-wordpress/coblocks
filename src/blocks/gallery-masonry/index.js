@@ -11,8 +11,8 @@ import './styles/editor.scss';
 import icons from './icons';
 import edit from './edit';
 import transforms from './transforms';
-import { BackgroundStyles } from '../../components/block-gallery/background/';
 import { GalleryAttributes, GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
+import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundTransforms, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -37,6 +37,7 @@ const keywords = [
 
 const blockAttributes = {
 	...GalleryAttributes,
+	...BackgroundAttributes,
 
 	// Block specific attributes.
 	gridSize: {
@@ -72,10 +73,12 @@ const settings = {
 			gutterMobile,
 			images,
 			linkTo,
+			focalPoint,
 		} = attributes;
 
 		const innerClasses = classnames(
-			...GalleryClasses( attributes ), {
+			...GalleryClasses( attributes ),
+			...BackgroundClasses( attributes ), {
 				[ `has-gutter` ] : gutter > 0,
 			}
 		);
@@ -101,6 +104,7 @@ const settings = {
 					className={ innerClasses }
 					style={ innerStyles }
 				>
+					{ BackgroundVideo( attributes ) }
 					<ul
 						className={ masonryClasses }
 						style={ masonryStyles }

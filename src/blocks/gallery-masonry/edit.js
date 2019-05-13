@@ -14,8 +14,8 @@ import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
-import { BackgroundStyles } from '../../components/block-gallery/background/';
 import { GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
+import BackgroundPanel, { BackgroundClasses, BackgroundStyles, BackgroundDropZone, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -143,15 +143,16 @@ class GalleryMasonryEdit extends Component {
 
 		const sidebarIsOpened = editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
 
-		const wrapperClasses = classnames(
+		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
+			...BackgroundClasses( attributes ),
 			sidebarIsOpened, {
 				[ `align${ align }` ] : align,
 				[ `has-gutter` ] : gutter > 0,
 			}
 		);
 
-		const wrapperStyles = {
+		const innerStyles = {
 			...BackgroundStyles( attributes ),
 			backgroundColor: backgroundColor.color,
 		};
@@ -192,10 +193,11 @@ class GalleryMasonryEdit extends Component {
 				{ noticeUI }
 				<div className={ className }>
 					<div
-						className={ wrapperClasses }
-						style={ wrapperStyles }
+						className={ innerClasses }
+						style={ innerStyles }
 					>
-					{ dropZone }
+						{ dropZone }
+						{ BackgroundVideo( attributes ) }
 						<Masonry
 							elementType={ 'ul' }
 							className={ masonryClasses }
