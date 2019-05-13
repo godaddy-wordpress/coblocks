@@ -70,6 +70,16 @@ const transforms = {
 		},
 		{
 			type: 'block',
+			blocks: [ 'blockgallery/stacked' ],
+			transform: ( attributes ) => (
+				createBlock( `coblocks/${ name }`, {
+					...GalleryTransforms( attributes ),
+					...BackgroundTransforms( attributes ),
+				} )
+			),
+		},
+		{
+			type: 'block',
 			blocks: [ 'blockgallery/masonry' ],
 			transform: ( attributes ) => (
 				createBlock( `coblocks/${ name }`, {
@@ -81,36 +91,6 @@ const transforms = {
 		{
 			type: 'block',
 			blocks: [ 'blockgallery/carousel' ],
-			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
-					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/thumbnails' ],
-			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
-					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/offset' ],
-			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
-					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/auto-height' ],
 			transform: ( attributes ) => (
 				createBlock( `coblocks/${ name }`, {
 					...GalleryTransforms( attributes ),

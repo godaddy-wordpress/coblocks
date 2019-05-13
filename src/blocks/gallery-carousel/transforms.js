@@ -97,29 +97,7 @@ const transforms = {
 		},
 		{
 			type: 'block',
-			blocks: [ 'blockgallery/thumbnails' ],
-			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
-					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
-					gridSize: 'lrg',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/offset' ],
-			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
-					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
-					gridSize: 'lrg',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/auto-height' ],
+			blocks: [ 'blockgallery/carousel' ],
 			transform: ( attributes ) => (
 				createBlock( `coblocks/${ name }`, {
 					...GalleryTransforms( attributes ),
