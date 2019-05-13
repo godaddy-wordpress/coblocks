@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import BackgroundPanel from '../../../components/background';
+import { BackgroundPanel } from '../../../components/background';
 import DimensionsControl from '../../../components/dimensions-control/';
 
 /**

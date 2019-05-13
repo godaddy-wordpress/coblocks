@@ -3,7 +3,7 @@
  */
 import * as helper from './../../utils/helper';
 import MediaFilterControl from '../../components/media-filter-control';
-import BackgroundPanel, { BackgroundControls } from '../../components/background';
+import { BackgroundControls } from '../../components/background';
 
 /**
  * WordPress dependencies

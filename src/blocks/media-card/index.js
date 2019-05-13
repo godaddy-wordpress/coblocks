@@ -13,7 +13,7 @@ import './styles/editor.scss';
 import icons from './components/icons';
 import brandAssets from '../../utils/brand-assets';
 import Edit from './components/edit';
-import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundTransforms, BackgroundVideo } from '../../components/background';
+import { BackgroundStyles, BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**
@@ -245,9 +245,7 @@ const settings = {
 		} );
 
 		const wrapperStyles = {
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+			...BackgroundStyles( attributes ),
 		};
 
 		const innerStyles = {

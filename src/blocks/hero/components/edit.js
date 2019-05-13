@@ -12,7 +12,7 @@ import { title } from '../'
 import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
-import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
+import { BackgroundStyles, BackgroundAttributes, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../../components/background';
 
 /**
  * WordPress dependencies
@@ -192,14 +192,12 @@ class Edit extends Component {
 		);
 
 		const innerStyles = {
-			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
+			...BackgroundStyles( attributes ),
 			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			minHeight: fullscreen ? undefined : height,
 		};
 

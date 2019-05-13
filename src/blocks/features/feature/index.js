@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import BackgroundPanel, { BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../../components/background';
+import { BackgroundStyles, BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../../components/background';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 import Edit from './components/edit';
 import icons from './components/icons';
@@ -93,9 +93,7 @@ const settings = {
 		} );
 
 		const innerStyles = {
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+			...BackgroundStyles( attributes ),
 			color: textClass ? undefined : customTextColor,
 		};
 

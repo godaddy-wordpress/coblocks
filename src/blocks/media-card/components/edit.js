@@ -11,7 +11,7 @@ import includes from 'lodash/includes';
 import applyWithColors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
-import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
+import { BackgroundStyles, BackgroundAttributes, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../../components/background';
 import icons from './../../../utils/icons';
 import MediaContainer from './media-container';
 
@@ -195,9 +195,8 @@ class Edit extends Component {
 		} );
 
 		const wrapperStyles = {
+			...BackgroundStyles( attributes ),
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,

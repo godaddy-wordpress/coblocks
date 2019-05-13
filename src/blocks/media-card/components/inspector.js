@@ -3,7 +3,7 @@
  */
 import applyWithColors from './colors';
 import icons from './../../../utils/icons';
-import BackgroundPanel, { BackgroundAttributes, BackgroundClasses } from '../../../components/background';
+import { BackgroundPanel } from '../../../components/background';
 import DimensionsControl from '../../../components/dimensions-control/';
 
 /**
@@ -102,7 +102,7 @@ class Inspector extends Component {
 								label={ __( 'Alt Text (Alternative Text)' ) }
 								value={ mediaAlt }
 								onChange={ ( nextMediaAlt ) => setAttributes( { mediaAlt: nextMediaAlt } ) }
-								help={ 
+								help={
 									<Fragment>
 										<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
 											{ __( 'Describe the purpose of the image' ) }
@@ -147,7 +147,9 @@ class Inspector extends Component {
 						] }
 					>
 					</PanelColorSettings>
-					{ BackgroundPanel( this.props, { overlay: true } ) }
+					<BackgroundPanel { ...this.props }
+		 				hasOverlay={ true }
+		 			/>
 				</InspectorControls>
 			</Fragment>
 		);

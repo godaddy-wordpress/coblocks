@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import Controls from './controls';
-import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../../components/background';
+import { BackgroundStyles, BackgroundAttributes, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../../../components/background';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 
@@ -93,9 +93,7 @@ class Edit extends Component {
 		);
 
 		const innerStyles = {
-			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+			...BackgroundStyles( attributes ),
 			color: textColor.color,
 			textAlign: contentAlign,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
