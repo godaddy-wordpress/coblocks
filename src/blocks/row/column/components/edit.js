@@ -11,7 +11,7 @@ import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
 import { title, icon } from '../'
-import { BackgroundStyles, BackgroundAttributes, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../../../components/background';
+import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../../../components/background';
 
 /**
  * WordPress dependencies
