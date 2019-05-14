@@ -7,7 +7,7 @@
  * Author URI: https://www.godaddy.com
  * Version: 1.9.4
  * Text Domain: coblocks
- * Domain Path: languages
+ * Domain Path: /languages
  * Tested up to: @@pkg.tested_up_to
  *
  * CoBlocks is free software: you can redistribute it and/or modify
@@ -74,7 +74,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		public function __clone() {
 			// Cloning instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', 'coblocks' ), '1.0' );
 		}
 
 		/**
@@ -86,7 +86,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		public function __wakeup() {
 			// Unserializing instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', 'coblocks' ), '1.0' );
 		}
 
 		/**

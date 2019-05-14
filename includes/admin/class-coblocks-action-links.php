@@ -49,7 +49,7 @@ class CoBlocks_Action_Links {
 			)
 		);
 
-		$links['go_pro'] = sprintf( '<a href="%1$s" target="_blank" class="coblocks-plugins-gopro" style="color: #39b54a;font-weight: 700;">%2$s</a>', esc_url( $url ), esc_html__( 'Go Pro', '@@textdomain' ) );
+		$links['go_pro'] = sprintf( '<a href="%1$s" target="_blank" class="coblocks-plugins-gopro" style="color: #39b54a;font-weight: 700;">%2$s</a>', esc_url( $url ), esc_html__( 'Go Pro', 'coblocks' ) );
 
 		return $links;
 	}
@@ -82,8 +82,8 @@ class CoBlocks_Action_Links {
 
 		if ( COBLOCKS_PLUGIN_BASE === $plugin_file ) {
 			$row_meta = [
-				'docs'   => '<a href="' . esc_url( $support_url ) . '" aria-label="' . esc_attr( __( 'View CoBlocks Documentation', '@@textdomain' ) ) . '" target="_blank">' . __( 'Help & FAQs', '@@textdomain' ) . '</a>',
-				'review' => '<a href="' . esc_url( COBLOCKS_REVIEW_URL ) . '" aria-label="' . esc_attr( __( 'Review CoBlocks on WordPress.org', '@@textdomain' ) ) . '" target="_blank">' . __( 'Leave a Review', '@@textdomain' ) . '</a>',
+				'docs'   => '<a href="' . esc_url( $support_url ) . '" aria-label="' . esc_attr( __( 'View CoBlocks Documentation', 'coblocks' ) ) . '" target="_blank">' . __( 'Help & FAQs', 'coblocks' ) . '</a>',
+				'review' => '<a href="' . esc_url( COBLOCKS_REVIEW_URL ) . '" aria-label="' . esc_attr( __( 'Review CoBlocks on WordPress.org', 'coblocks' ) ) . '" target="_blank">' . __( 'Leave a Review', 'coblocks' ) . '</a>',
 			];
 
 			$plugin_meta = array_merge( $plugin_meta, $row_meta );
