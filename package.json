@@ -23,7 +23,7 @@
 		"@wordpress/api-fetch": "^2.2.8",
 		"@wordpress/plugins": "^1.0.4",
 		"@wordpress/redux-routine": "^3.1.0",
-		"cgb-scripts": "^1.15.0",
+		"cgb-scripts": "^1.17.0",
 		"classnames": "2.2.5",
 		"compose": "^0.1.2",
 		"delete-empty": "^2.0.0",
