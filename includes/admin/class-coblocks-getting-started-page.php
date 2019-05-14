@@ -2,10 +2,7 @@
 /**
  * Create a Getting Started page that fires after plugin activation
  *
- * @package   @@pkg.title
- * @author    @@pkg.author
- * @link      @@pkg.author_uri
- * @license   @@pkg.license
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
