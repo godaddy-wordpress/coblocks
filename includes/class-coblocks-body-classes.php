@@ -2,10 +2,7 @@
 /**
  * Add body classes to particular themes to help style them.
  *
- * @package   @@pkg.title
- * @author    @@pkg.author
- * @link      @@pkg.author_uri
- * @license   @@pkg.license
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
