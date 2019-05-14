@@ -56,21 +56,21 @@ class CoBlocks_Getting_Started_Page {
 		$screen    = get_current_screen();
 		$screen_id = $screen ? $screen->id : '';
 
-		// Define where the asset is loaded from.
-		$dir    = CoBlocks()->asset_source( 'styles' );
-		$js_dir = CoBlocks()->asset_source( 'js' );
+		// Define where the assets are loaded from.
+		$dir         = CoBlocks()->asset_source( 'styles' );
+		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
 
 		// Only enqueue admin scripts and styles on relevant pages.
 		if ( in_array( $screen_id, array( 'toplevel_page_coblocks-getting-started', 'coblocks_page_coblocks-getting-started' ), true ) ) {
 			wp_enqueue_style(
 				'coblocks-getting-started',
-				$dir . 'coblocks-getting-started.min.css',
+				$dir . 'coblocks-getting-started' . COBLOCKS_ASSET_SUFFIX . '.css',
 				COBLOCKS_VERSION,
 				true
 			);
 			wp_enqueue_script(
 				'coblocks-lity',
-				$js_dir . 'lity.min.js',
+				$vendors_dir . '/lity' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array(),
 				COBLOCKS_VERSION,
 				true
@@ -82,7 +82,7 @@ class CoBlocks_Getting_Started_Page {
 	 * Render page content.
 	 */
 	public function content() {
-	?>
+		?>
 		<div class="page--coblocks-getting-started">
 
 			<div class="getting-started__content">
@@ -141,7 +141,7 @@ class CoBlocks_Getting_Started_Page {
 			</div>
 
 		</div>
-	<?php
+		<?php
 	}
 
 	/**
