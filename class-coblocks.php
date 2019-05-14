@@ -97,7 +97,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @return void
 		 */
 		private function constants() {
-			$this->define( 'COBLOCKS_DEBUG', true );
 			$this->define( 'COBLOCKS_VERSION', '1.9.4' );
 			$this->define( 'COBLOCKS_HAS_PRO', false );
 			$this->define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
@@ -165,11 +164,10 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @since 1.0.0
 		 */
 		public function asset_suffix() {
-			if ( true === COBLOCKS_DEBUG ) {
-				define( 'COBLOCKS_ASSET_SUFFIX', null );
-			} else {
-				define( 'COBLOCKS_ASSET_SUFFIX', '.min' );
-			}
+
+			$suffix = SCRIPT_DEBUG ? null : '.min';
+
+			$this->define( 'COBLOCKS_ASSET_SUFFIX', $suffix );
 		}
 
 		/**
@@ -182,7 +180,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		public function asset_source( $type = 'js', $directory = null ) {
 
 			if ( 'js' === $type ) {
-				if ( true === COBLOCKS_DEBUG ) {
+				if ( SCRIPT_DEBUG ) {
 					return COBLOCKS_PLUGIN_URL . 'src/' . $type . '/' . $directory;
 				} else {
 					return COBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
