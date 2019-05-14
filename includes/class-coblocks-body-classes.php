@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main @@pkg.title Class
+ * Generate theme-specific body and admin classes.
  *
  * @since 1.0.0
  */

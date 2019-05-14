@@ -1,6 +1,6 @@
 <?php
 /**
- * Add links to @@pkg.title on the plugins admin page.
+ * Add links to CoBlocks on the plugins admin page.
  *
  * @package CoBlocks
  */
