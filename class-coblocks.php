@@ -8,7 +8,7 @@
  * Version: 1.9.4
  * Text Domain: coblocks
  * Domain Path: /languages
- * Tested up to: @@pkg.tested_up_to
+ * Tested up to: 5.1.1
  *
  * CoBlocks is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -98,7 +98,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		private function constants() {
 			$this->define( 'COBLOCKS_DEBUG', true );
-			$this->define( 'COBLOCKS_VERSION', '@@pkg.version' );
+			$this->define( 'COBLOCKS_VERSION', '1.9.4' );
 			$this->define( 'COBLOCKS_HAS_PRO', false );
 			$this->define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 			$this->define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

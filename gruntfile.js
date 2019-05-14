@@ -118,8 +118,16 @@ module.exports = function( grunt ) {
 						to: '@since$1' + pkg.version
 					},
 					{
-						from: /VERSION(\s*?)=(\s*?['"])[a-zA-Z0-9\.\-\+]+/mg,
-						to: 'VERSION$1=$2' + pkg.version
+						from: /Version:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
+						to: 'Version:$1' + pkg.version
+					},
+					{
+						from: /_VERSION\',(\s*?)\'[a-zA-Z0-9\.\-\+]+$/m,
+						to: '_VERSION\', \'$1' + pkg.version
+					},
+					{
+						from: /Tested up to:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
+						to: 'Tested up to:$1' + pkg.tested_up_to
 					}
 				]
 			},
@@ -130,9 +138,13 @@ module.exports = function( grunt ) {
 					{
 						from: /^(\*\*|)Stable tag:(\*\*|)(\s*?)[a-zA-Z0-9.-]+(\s*?)$/mi,
 						to: '$1Stable tag:$2$3<%= pkg.version %>$4'
+					},
+					{
+						from: /Tested up to:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
+						to: 'Tested up to:$1' + pkg.tested_up_to
 					}
 				]
-			}
+			},
 		},
 
 		shell: {
