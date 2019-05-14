@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main @@pkg.title Feedback Notice Class
+ * Feedback Notice Class
  */
 class CoBlocks_Feedback {
 
@@ -169,7 +169,7 @@ class CoBlocks_Feedback {
 		if ( isset( $screen->base ) && 'plugins' === $screen->base ) {
 			$no_bug_url = wp_nonce_url( admin_url( 'plugins.php?' . $this->nobug_option . '=true' ), 'coblocks-feedback-nounce' );
 			$time       = $this->seconds_to_words( time() - get_site_option( $this->date_option ) );
-		?>
+			?>
 
 		<style>
 		.notice.coblocks-notice {
@@ -284,7 +284,7 @@ class CoBlocks_Feedback {
 				</div>
 			</div>
 		</div>
-		<?php
+			<?php
 		}
 	}
 
