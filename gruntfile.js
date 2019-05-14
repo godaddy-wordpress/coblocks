@@ -187,7 +187,7 @@ module.exports = function( grunt ) {
 				options: {
 					assets_dir: 'wp-org-assets/',
 					build_dir: 'build/',
-					plugin_main_file: pkg.name + '.php',
+					plugin_main_file: 'class-' + pkg.name + '.php',
 					plugin_slug: pkg.name,
 					svn_user: grunt.file.exists( 'svn-username' ) ? grunt.file.read( 'svn-username' ).trim() : false
 				}
