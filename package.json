@@ -58,7 +58,7 @@
 		"gulp-rename": "^1.4.0",
 		"gulp-replace-task": "^0.11.0",
 		"gulp-run-command": "0.0.9",
-		"gulp-sass": "^3.2.1",
+		"gulp-sass": "^4.0.2",
 		"gulp-sftp": "^0.1.5",
 		"gulp-uglify": "^1.5.3",
 		"gulp-uglifycss": "^1.0.8",
