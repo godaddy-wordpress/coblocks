@@ -175,7 +175,7 @@ module.exports = function( grunt ) {
 
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
-	grunt.registerTask( 'default',    [ 'cssmin', 'uglify', 'imagemin', 'shell:cgb_start' ] );
+	grunt.registerTask( 'default',    [ 'cssmin', 'uglify', 'shell:cgb_start' ] );
 	grunt.registerTask( 'check',      [ 'devUpdate' ] );
 	grunt.registerTask( 'build',      [ 'shell:cgb_build', 'cssmin', 'uglify', 'imagemin', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
 	grunt.registerTask( 'deploy',     [ 'build', 'wp_deploy', 'clean:build' ] );
