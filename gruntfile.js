@@ -118,13 +118,6 @@ module.exports = function( grunt ) {
 				files: [ 'src/styles/**/*.scss' ],
 				tasks: [ 'sass', 'cssmin' ]
 			},
-			images: {
-				files: [
-					'dist/images/**/*.{gif,jpeg,jpg,png,svg}',
-					'wp-org-assets/**/*.{gif,jpeg,jpg,png,svg}'
-				],
-				tasks: [ 'imagemin' ]
-			},
 			js: {
 				files: [ 'src/js/**/*.js' ],
 				tasks: [ 'uglify' ]
