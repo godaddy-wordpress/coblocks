@@ -122,8 +122,8 @@ module.exports = function( grunt ) {
 						to: 'Version:$1' + pkg.version
 					},
 					{
-						from: /_VERSION\',(\s*?)\'[a-zA-Z0-9\.\-\+]+$/m,
-						to: '_VERSION\', \'$1' + pkg.version
+						from: /define\(\s*'COBLOCKS_VERSION',\s*'(.*)'\s*\);/,
+						to: "define( 'COBLOCKS_VERSION', '<%= pkg.version %>' );"
 					},
 					{
 						from: /Tested up to:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
