@@ -1,18 +1,16 @@
 {
 	"name": "coblocks",
 	"title": "CoBlocks",
+	"description": "CoBlocks is a suite of professional page building blocks for the WordPress Gutenberg block editor.",
 	"version": "1.9.4",
-	"private": false,
-	"author": "Rich Tabor & Jeffrey Carandang from CoBlocks",
-	"author_shop": "CoBlocks",
-	"author_uri": "hello@coblocks.com",
-	"requires": "5.0",
-	"tested_up_to": "5.1.1",
+	"author": "GoDaddy",
 	"license": "GPL-2.0",
-	"copyright": "Copyright (c) 2018, CoBlocks",
-	"downloadid": "",
-	"description": "CoBlocks is a suite of professional content blocks for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering content marketers, writers and publishers to write beautifully rich content in WordPress.",
-	"tags": "",
+	"repository": "godaddy/coblocks",
+	"homepage": "https://wordpress.org/plugins/coblocks/",
+	"bugs": {
+		"url": "https://github.com/godaddy/coblocks/issues"
+	},
+	"tested_up_to": "5.1.1",
 	"scripts": {
 		"start": "cgb-scripts start",
 		"build": "cgb-scripts build",
