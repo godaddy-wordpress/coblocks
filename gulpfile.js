@@ -30,10 +30,10 @@ var styleWatchFiles  = [ styleAdmin, styleGettingStarted, './src/styles/admin/*.
 // Translation.
 var text_domain             	= '@@textdomain';
 var destFile                	= project+'.pot';
-var packageName             	= pkg.title;
-var bugReport               	= pkg.author_uri;
+var packageName             	= title;
+var bugReport               	= 'plugins@godaddy.com';
 var lastTranslator          	= pkg.author;
-var team                    	= pkg.author_shop;
+var team                    	= pkg.author;
 var translatePath           	= './languages';
 var translatableFiles       	= ['./**/*.php'];
 var jsPotFile 			= [ './languages/'+project+'-js.pot', './build/languages/'+project+'-js.pot' ];
@@ -207,36 +207,16 @@ gulp.task('variables', function(done) {
 			replacement: project
 		},
 		{
-			match: 'pkg.title',
-			replacement: pkg.title
-		},
-		{
 			match: 'pkg.version',
 			replacement: pkg.version
-		},
-		{
-			match: 'pkg.author',
-			replacement: pkg.author
 		},
 		{
 			match: 'pkg.license',
 			replacement: pkg.license
 		},
 		{
-			match: 'pkg.copyright',
-			replacement: pkg.copyright
-		},
-		{
 			match: 'textdomain',
 			replacement: pkg.name
-		},
-		{
-			match: 'pkg.downloadid',
-			replacement: pkg.downloadid
-		},
-		{
-			match: 'pkg.description',
-			replacement: pkg.description
 		},
 		{
 			match: 'pkg.tested_up_to',
