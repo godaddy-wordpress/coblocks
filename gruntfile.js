@@ -51,6 +51,18 @@ module.exports = function( grunt ) {
 			}
 		},
 
+		sass: {
+			options: {
+				implementation: require('node-sass'),
+				sourceMap: false
+			},
+			getting_started: {
+				files: {
+					'dist/css/coblocks-getting-started.css' : 'src/styles/getting-started.scss'
+				}
+			}
+		},
+
 		cssmin: {
 			options: {
 				processImport: false,
@@ -61,8 +73,8 @@ module.exports = function( grunt ) {
 				files: [
 					{
 						expand: true,
-						cwd: 'src/styles/',
-						src: 'coblocks-getting-started.scss',
+						cwd: 'dist/css/',
+						src: 'coblocks-getting-started.css',
 						dest: 'dist/css/',
 						ext: '.min.css'
 					}
@@ -99,6 +111,24 @@ module.exports = function( grunt ) {
 				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
 				dest: 'wp-org-assets/'
 			}
+		},
+
+		watch: {
+			css: {
+				files: [ 'src/styles/**/*.scss' ],
+				tasks: [ 'sass', 'cssmin' ]
+			},
+			images: {
+				files: [
+					'dist/images/**/*.{gif,jpeg,jpg,png,svg}',
+					'wp-org-assets/**/*.{gif,jpeg,jpg,png,svg}'
+				],
+				tasks: [ 'imagemin' ]
+			},
+			js: {
+				files: [ 'src/js/**/*.js' ],
+				tasks: [ 'uglify' ]
+			},
 		},
 
 		replace: {
@@ -175,9 +205,9 @@ module.exports = function( grunt ) {
 
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
-	grunt.registerTask( 'default',    [ 'cssmin', 'uglify', 'shell:cgb_start' ] );
+	grunt.registerTask( 'default',    [ 'sass', 'cssmin', 'uglify', 'shell:cgb_start' ] );
 	grunt.registerTask( 'check',      [ 'devUpdate' ] );
-	grunt.registerTask( 'build',      [ 'shell:cgb_build', 'cssmin', 'uglify', 'imagemin', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
+	grunt.registerTask( 'build',      [ 'shell:cgb_build', 'sass', 'cssmin', 'uglify', 'imagemin', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
 	grunt.registerTask( 'deploy',     [ 'build', 'wp_deploy', 'clean:build' ] );
 	grunt.registerTask( 'update-pot', [ 'shell:translations' ] );
 	grunt.registerTask( 'version',    [ 'replace' ] );
