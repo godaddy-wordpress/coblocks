@@ -16,10 +16,13 @@ var cleanSrcFiles	  = [ './build/' + project + '/src/**/*.js', './build/' + proj
 var srcDirectory	  = './build/' + project + '/src/';
 
 // JS.
-var scriptDestination 		= './dist/js/';
-var scriptGoogleMaps	  	= 'coblocks-accordion-polyfill';
-var scriptAccordionPolyfill   	= 'coblocks-google-maps';
-var scriptModal   		= 'coblocks-modal';
+var scriptDestination 		  = './dist/js/';
+var scriptVendorDestination       = './dist/js/vendors';
+var scriptGoogleMaps	          = 'coblocks-accordion-polyfill';
+var scriptAccordionPolyfill       = 'coblocks-google-maps';
+var scriptModal   		  = 'coblocks-modal';
+var scriptMasonry                 = 'coblocks-masonry';
+var scriptFlickityVendor          = 'flickity';
 
 // Styles.
 var styleDestination = './dist/css/';
@@ -101,6 +104,15 @@ gulp.task( 'scripts', function(done) {
 	.pipe( lineec() )
 	.pipe( gulp.dest( scriptDestination ) );
 
+	gulp.src( './src/js/' + scriptMasonry +'.js', { allowEmpty: true } )
+	.pipe( rename( {
+		basename: scriptMasonry,
+		suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() )
+	.pipe( gulp.dest( scriptDestination ) )
+
 	gulp.src( './src/js/' + scriptModal +'.js', { allowEmpty: true } )
 	.pipe( rename( {
 		basename: scriptModal,
@@ -110,6 +122,18 @@ gulp.task( 'scripts', function(done) {
 	.pipe( lineec() )
 	.pipe( gulp.dest( scriptDestination ) );
 
+	done();
+});
+
+gulp.task( 'vendorsScripts', function(done) {
+	return gulp.src( './src/js/vendors/' + scriptFlickityVendor +'.js', { allowEmpty: true } )
+	.pipe( rename( {
+		basename: scriptFlickityVendor,
+		suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() )
+	.pipe( gulp.dest( scriptVendorDestination ) )
 	done();
 });
 
@@ -317,11 +341,11 @@ gulp.task( 'open-sandbox', function(done){
  * Build & Release Tasks.
  */
 
-gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'scripts', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip' , 'sftp-upload-to-testing-sandbox', 'open-sandbox',  function(done) {
+gulp.task('build-process', gulp.series( 'clearCache', 'clean', 'scripts', 'vendorsScripts', 'npmMakeBabel', 'npmBuild', 'npmMakePot', 'removeJSPotFile', 'removeJSPotFile', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip' , 'sftp-upload-to-testing-sandbox', 'open-sandbox',  function(done) {
 	done();
 } ) );
 
-gulp.task('build-process-wo-translations', gulp.series( 'clearCache', 'clean', 'scripts', 'npmBuild', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip', 'sftp-upload-to-testing-sandbox', 'open-sandbox', function(done) {
+gulp.task('build-process-wo-translations', gulp.series( 'clearCache', 'clean', 'scripts', 'npmBuild', 'vendorsScripts', 'updateVersion', 'copy', 'cleanSrc', 'deleteEmptyDirectories', 'variables', 'debug_mode_off', 'zip', 'sftp-upload-to-testing-sandbox', 'open-sandbox', function(done) {
 	done();
 } ) );
 
