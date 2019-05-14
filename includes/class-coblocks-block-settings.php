@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Load general assets for our Google Map blocks.
+ * Registers setting for the CoBlocks Block Manager.
  *
  * @since 1.0.0
  */

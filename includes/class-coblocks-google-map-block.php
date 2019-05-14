@@ -11,17 +11,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Load general assets for our Google Map blocks.
+ * Load assets and settings for the Google Map block.
  *
  * @since 1.0.0
  */
-class CoBlocks_Block_GoogleMap {
+class CoBlocks_Google_Map_Block {
 
 
 	/**
 	 * This plugin's instance.
 	 *
-	 * @var CoBlocks_Block_GoogleMap
+	 * @var CoBlocks_Google_Map_Block
 	 */
 	private static $instance;
 
@@ -30,7 +30,7 @@ class CoBlocks_Block_GoogleMap {
 	 */
 	public static function register() {
 		if ( null === self::$instance ) {
-			self::$instance = new CoBlocks_Block_GoogleMap();
+			self::$instance = new CoBlocks_Google_Map_Block();
 		}
 	}
 
@@ -125,4 +125,4 @@ class CoBlocks_Block_GoogleMap {
 
 }
 
-CoBlocks_Block_GoogleMap::register();
+CoBlocks_Google_Map_Block::register();
