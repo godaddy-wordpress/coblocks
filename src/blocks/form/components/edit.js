@@ -315,9 +315,8 @@ class Edit extends Component {
 					{ this.getfieldEmailError( fieldEmailError ) }
 				</HelpMessage>
 				<TextControl
-					label={ __( 'Email subject line' ) }
+					label={ __( 'Subject' ) }
 					value={ ( subject || '' === subject ) ? subject : coblocksBlockData.form.emailSubject }
-					placeholder={ __( "Let's work together" ) }
 					onChange={ this.onChangeSubject }
 				/>
 			</Fragment>
