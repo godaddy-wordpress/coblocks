@@ -18,7 +18,6 @@ function CoblocksFieldName( {
 	required,
 	label,
 	setAttributes,
-	defaultValue,
 	placeholder,
 	hasLastName,
 	id,
@@ -58,17 +57,13 @@ function CoblocksFieldName( {
 				}
 			</div>
 			<InspectorControls>
-				<PanelBody title={ __( 'Field Settings' ) }>
+				<PanelBody title={ __( 'Name Field Settings' ) }>
 					<ToggleControl
-						label={ __( 'Last name' ) }
+						label={ __( 'Last Name' ) }
 						className="coblocks-field-label__required"
 						checked={ hasLastName }
 						onChange={ value => setAttributes( { hasLastName: value } ) }
-					/>
-					<TextControl
-						label={ __( 'Default Value' ) }
-						value={ defaultValue }
-						onChange={ value => setAttributes( { defaultValue: value } ) }
+						help={ !! hasLastName ? __( 'Showing both first and last name fields.' ) : __( 'Toggle to add a last name field.' ) }
 					/>
 					<TextControl
 						label={ __( 'ID' ) }

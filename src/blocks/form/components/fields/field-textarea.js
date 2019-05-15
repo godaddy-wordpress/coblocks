@@ -32,7 +32,7 @@ function CoblocksFieldTextarea( {
 				<TextareaControl/>
 			</div>
 			<InspectorControls>
-				<PanelBody title={ __( 'Field Settings' ) }>
+				<PanelBody title={ __( 'Textarea Field Settings' ) }>
 					<TextControl
 						label={ __( 'Default Value' ) }
 						value={ defaultValue }
