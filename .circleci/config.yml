@@ -4,65 +4,17 @@ workflows:
     jobs:
       # Support PHP Versions
       # http://php.net/supported-versions.php
-      # - php56-build # Will be depreacted on 31 Dec 2018
-      # - php70-build # Will be deprecated on 3 Dec 2018
       - php71-build # Will be deprecated on 1 Dec 2019
       # - php72-build # Will be deprecated on 30 Nov 2020
       # - acceptance-tests
       # - deploy:
       #     requires:
-      #       - php56-build
-      #       - php70-build
       #       - php71-build
       #       - php72-build
       #       - acceptance-tests
 
 version: 2
 jobs:
-  php56-build:
-    docker:
-      - image: circleci/php:5.6
-      - image: circleci/mysql:5.7
-    steps:
-      - checkout
-      - run:
-          name: "Setup Environment Variables"
-          command: |
-            echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $BASH_ENV
-            source /home/circleci/.bashrc
-      - run:
-          name: "Install Dependencies"
-          command: bash .dev/bin/install-dependencies.sh
-      - run:
-          name: "Run PHPCS"
-          command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
-
-  php70-build:
-    docker:
-      - image: circleci/php:7.0
-      - image: circleci/mysql:5.7
-    steps:
-      - checkout
-      - run:
-          name: "Setup Environment Variables"
-          command: |
-            echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $BASH_ENV
-            source /home/circleci/.bashrc
-      - run:
-          name: "Install Dependencies"
-          command: bash .dev/bin/install-dependencies.sh
-      - run:
-          name: "Run PHPCS"
-          command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
-      - run:
-          name: "Run PHPUnit - Single Site"
-          command: |
-            bash .dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
-            phpunit
-      - run:
-          name: "Run PHPUnit - Multi Site"
-          command: WP_MULTISITE=1 phpunit
-
   php71-build:
     docker:
       - image: circleci/php:7.1
@@ -78,7 +30,6 @@ jobs:
           name: "Install Dependencies"
           command: |
             bash .dev/bin/install-dependencies.sh
-            wget -O ~/codacy-coverage.phar $(curl https://api.github.com/repos/codacy/php-codacy-coverage/releases/latest | jq -r '.assets[0].browser_download_url')
       - run:
           name: "Run PHPCS"
           command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
@@ -87,10 +38,6 @@ jobs:
           command: |
             bash .dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
             phpunit --coverage-html=/tmp/artifacts/code-coverage/html --coverage-clover=/tmp/artifacts/code-coverage/clover
-      - run:
-          name: "Report Code Coverage to Codacy"
-          command: |
-            php ~/codacy-coverage.phar clover /tmp/artifacts/code-coverage/clover -vvv
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/html
       - run:
@@ -197,23 +144,23 @@ jobs:
       #     name: "Start Chromedriver"
       #     command: chromedriver --url-base=/wd/hub --ignore-certificate-errors
       #     background: true
-      - run:
-          name: "Run Acceptance Tests"
-          command: bash .dev/bin/run-acceptance-tests.sh
-      - run:
-          name: "Setup screenshots"
-          when: always
-          command: bash .dev/bin/setup-screenshot-directories.sh
-      - run:
-          name: "Deploy screenshots"
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ./.dev/bin/deploy-screenshots.sh live
-            else
-              ./.dev/bin/deploy-screenshots.sh --dry-run
-            fi
-      - store_artifacts:
-          path: /tmp/artifacts
+      # - run:
+      #     name: "Run Acceptance Tests"
+      #     command: bash .dev/bin/run-acceptance-tests.sh
+      # - run:
+      #     name: "Setup screenshots"
+      #     when: always
+      #     command: bash .dev/bin/setup-screenshot-directories.sh
+      # - run:
+      #     name: "Deploy screenshots"
+      #     command: |
+      #       if [ "${CIRCLE_BRANCH}" == "master" ]; then
+      #         ./.dev/bin/deploy-screenshots.sh live
+      #       else
+      #         ./.dev/bin/deploy-screenshots.sh --dry-run
+      #       fi
+      # - store_artifacts:
+      #     path: /tmp/artifacts
 
   deploy:
     docker:
