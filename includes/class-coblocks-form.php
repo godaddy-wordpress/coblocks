@@ -237,10 +237,18 @@ class CoBlocks_Form {
 		$required_attr  = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 		$required_label = empty( $required_attr ) ? '' : sprintf( ' <span class="required">%s</span>', $required_text );
 
+		/*
+		 * Format an array of allowed HTML tags and attributes for the $copyrighttext value.
+		 *
+		 * @link https://codex.wordpress.org/Function_Reference/wp_kses
+		 */
+		$allowed_html = array(
+			'span' => array( 'class' => array() ),
+		);
 		?>
 
-		<label for="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-label"><?php echo esc_html( $label ); ?><?php echo $required_label; ?></label>
-		<input type="hidden" name="field-<?php echo esc_attr( $label_slug ); ?>[label]" value="<?php echo esc_html( $label ); ?>">
+		<label for="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-label"><?php echo esc_html( $label ); ?><?php echo wp_kses( $required_label, $allowed_html ); ?></label>
+		<input type="hidden" name="field-<?php echo esc_attr( $label_slug ); ?>[label]" value="<?php echo esc_attr( $label ); ?>">
 
 		<?php
 
