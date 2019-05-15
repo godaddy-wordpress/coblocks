@@ -29,27 +29,8 @@ import HelpMessage from './help-message';
 /**
  * Block constants
  */
-const ALLOWED_BLOCKS = [
-	'jetpack/markdown',
-	'core/paragraph',
-	'core/image',
-	'core/heading',
-	'core/gallery',
-	'core/list',
-	'core/quote',
-	'core/shortcode',
-	'core/audio',
-	'core/code',
-	'core/cover',
-	'core/file',
-	'core/html',
-	'core/separator',
-	'core/spacer',
-	'core/subhead',
 	'core/table',
-	'core/verse',
-	'core/video',
-];
+const ALLOWED_BLOCKS = [];
 
 const FieldDefaults = {
 	category: 'coblocks',
