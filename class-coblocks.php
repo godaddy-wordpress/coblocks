@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: CoBlocks
- * Plugin URI: https://coblocks.com/
+ * Plugin URI: https://coblocks.com
  * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
- * Author: CoBlocks
- * Author URI: https://coblocks.com/
+ * Author: GoDaddy
+ * Author URI: https://www.godaddy.com
  * Version: 1.9.4
  * Text Domain: coblocks
  * Domain Path: languages
@@ -18,10 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with CoBlocks. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   CoBlocks
- * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
- * @link      https://coblocks.com
- * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
@@ -138,9 +135,9 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-form.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-font-loader.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-meta.php';
-			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-google-map.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-google-map-block.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-accordion-ie-support.php';
-			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-settings.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-settings.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {

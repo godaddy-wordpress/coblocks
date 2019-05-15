@@ -34,6 +34,9 @@ import './formats/';
 // Sidebars
 import './sidebars/block-manager';
 
+// Block Gallery
+import './components/block-gallery';
+
 // Register Blocks
 import * as accordion from './blocks/accordion';
 import * as accordionItem from './blocks/accordion/accordion-item';
@@ -58,6 +61,9 @@ import * as feature from './blocks/features/feature';
 import * as features from './blocks/features';
 import * as buttons from './blocks/buttons';
 import * as hero from './blocks/hero';
+import * as stacked from './blocks/gallery-stacked';
+import * as masonry from './blocks/gallery-masonry';
+import * as carousel from './blocks/gallery-carousel';
 
 export function registerBlocks () {
 	[
@@ -84,6 +90,9 @@ export function registerBlocks () {
 		features,
 		buttons,
 		hero,
+		stacked,
+		carousel,
+		masonry,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {

@@ -6,10 +6,7 @@
  * Heavily based on code by Rhys Wynne
  * https://winwar.co.uk/2014/10/ask-wordpress-plugin-reviews-week/
  *
- * @package   CoBlocks
- * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
- * @link      https://coblocks.com
- * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
@@ -18,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main @@pkg.title Feedback Notice Class
+ * Feedback Notice Class
  */
 class CoBlocks_Feedback {
 
@@ -172,7 +169,7 @@ class CoBlocks_Feedback {
 		if ( isset( $screen->base ) && 'plugins' === $screen->base ) {
 			$no_bug_url = wp_nonce_url( admin_url( 'plugins.php?' . $this->nobug_option . '=true' ), 'coblocks-feedback-nounce' );
 			$time       = $this->seconds_to_words( time() - get_site_option( $this->date_option ) );
-		?>
+			?>
 
 		<style>
 		.notice.coblocks-notice {
@@ -287,7 +284,7 @@ class CoBlocks_Feedback {
 				</div>
 			</div>
 		</div>
-		<?php
+			<?php
 		}
 	}
 

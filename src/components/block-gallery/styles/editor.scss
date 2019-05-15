@@ -1,0 +1,16 @@
+@import "editor/gallery-item";
+@import "editor/remove-gallery-item-button";
+@import "editor/uploader";
+@import "editor/radius";
+@import "editor/flickity-arrows";
+@import "editor/core-themes";
+
+.coblocks-gallery {
+	.components-resizable-box__handle {
+		z-index: 9999;
+	}
+}
+
+.components-coblocks-size-control--shadow {
+	margin-bottom: 2.85em;
+}

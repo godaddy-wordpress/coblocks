@@ -2,9 +2,7 @@
 /**
  * Server-side rendering of the `coblocks/social` block.
  *
- * @package   CoBlocks
- * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
- * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @package CoBlocks
  */
 
 /**
