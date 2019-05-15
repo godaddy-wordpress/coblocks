@@ -222,7 +222,8 @@ function coblocks_register_social_block() {
 	}
 
 	register_block_type(
-		'coblocks/social', array(
+		'coblocks/social',
+		array(
 			'editor_script'   => 'coblocks-editor',
 			'editor_style'    => 'coblocks-editor',
 			'style'           => 'coblocks-frontend',
@@ -299,4 +300,3 @@ function coblocks_register_social_block() {
 	);
 }
 add_action( 'init', 'coblocks_register_social_block' );
-

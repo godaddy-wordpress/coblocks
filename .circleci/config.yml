@@ -29,14 +29,14 @@ jobs:
       - run:
           name: "Install Dependencies"
           command: |
-            bash .dev/install-dependencies.sh
+            bash .dev/bin/install-dependencies.sh
       - run:
           name: "Run PHPCS"
           command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
           command: |
-            bash .dev/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
+            bash .dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
             phpunit --coverage-html=/tmp/artifacts/code-coverage/html --coverage-clover=/tmp/artifacts/code-coverage/clover
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/html
@@ -57,14 +57,14 @@ jobs:
             source /home/circleci/.bashrc
       - run:
           name: "Install Dependencies"
-          command: bash .dev/install-dependencies.sh
+          command: bash .dev/bin/install-dependencies.sh
       - run:
           name: "Run PHPCS"
           command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
       - run:
           name: "Run PHPUnit - Single Site"
           command: |
-            bash .dev/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
+            bash .dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
             phpunit
       - run:
           name: "Run PHPUnit - Multisite"
@@ -118,7 +118,7 @@ jobs:
       - run:
           name: "Setup apache conf"
           command: |
-            sudo cp .dev/tests/apache-ci.conf /etc/apache2/sites-available/apache-ci.conf
+            sudo cp .dev/bin/tests/apache-ci.conf /etc/apache2/sites-available/apache-ci.conf
             sudo a2ensite apache-ci
             sudo a2enmod rewrite
             sudo service apache2 start
@@ -127,15 +127,15 @@ jobs:
           command: echo '127.0.0.1 acceptance.localhost' | sudo tee -a /etc/hosts
       - run:
           name: "Install Acceptance Test Dependencies"
-          command: bash .dev/install-acceptance-tests.sh
+          command: bash .dev/bin/install-acceptance-tests.sh
       - run:
           name: "Import Demo Site Database"
           command: |
             php /tmp/wp-cli.phar db reset --yes --path=/tmp/wordpress_acceptance
-            php /tmp/wp-cli.phar db import .dev/files/demo-site/demo-site.db --skip-optimization --path=/tmp/wordpress_acceptance
+            php /tmp/wp-cli.phar db import .dev/bin/files/demo-site/demo-site.db --skip-optimization --path=/tmp/wordpress_acceptance
             php /tmp/wp-cli.phar theme install stackable --activate --force --path=/tmp/wordpress_acceptance
-            cp .dev/files/demo-site/.htaccess /tmp/wordpress_acceptance
-            mkdir /tmp/wordpress_acceptance/wp-content/mu-plugins && cp .dev/files/demo-site/overrides.php /tmp/wordpress_acceptance/wp-content/mu-plugins
+            cp .dev/bin/files/demo-site/.htaccess /tmp/wordpress_acceptance
+            mkdir /tmp/wordpress_acceptance/wp-content/mu-plugins && cp .dev/bin/files/demo-site/overrides.php /tmp/wordpress_acceptance/wp-content/mu-plugins
       # - run:
       #     name: "Start Selenium"
       #     command: selenium-server-standalone
@@ -146,18 +146,18 @@ jobs:
       #     background: true
       # - run:
       #     name: "Run Acceptance Tests"
-      #     command: bash .dev/run-acceptance-tests.sh
+      #     command: bash .dev/bin/run-acceptance-tests.sh
       # - run:
       #     name: "Setup screenshots"
       #     when: always
-      #     command: bash .dev/setup-screenshot-directories.sh
+      #     command: bash .dev/bin/setup-screenshot-directories.sh
       # - run:
       #     name: "Deploy screenshots"
       #     command: |
       #       if [ "${CIRCLE_BRANCH}" == "master" ]; then
-      #         ./.dev/deploy-screenshots.sh live
+      #         ./.dev/bin/deploy-screenshots.sh live
       #       else
-      #         ./.dev/deploy-screenshots.sh --dry-run
+      #         ./.dev/bin/deploy-screenshots.sh --dry-run
       #       fi
       # - store_artifacts:
       #     path: /tmp/artifacts
@@ -195,9 +195,9 @@ jobs:
           name: Deploy the plugin
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ./.dev/deploy.sh live
+              ./.dev/bin/deploy.sh live
             else
-              ./.dev/deploy.sh --dry-run
+              ./.dev/bin/deploy.sh --dry-run
             fi
       - store_artifacts:
           path: /tmp/artifacts

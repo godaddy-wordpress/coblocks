@@ -16,7 +16,6 @@
 			<directory>./</directory>
 			<exclude>
 				<directory suffix=".php">./build</directory>
-				<file>./lib/constants.php</file>
 			</exclude>
 		</whitelist>
 	</filter>

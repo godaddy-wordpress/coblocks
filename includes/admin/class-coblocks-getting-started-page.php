@@ -99,7 +99,9 @@ class CoBlocks_Getting_Started_Page {
 					<?php
 					echo sprintf(
 						/* translators: 1: Opening <strong> tag, 2: Closing </strong> tag */
-						esc_html__( 'You\'ve just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks %2$s, a %1$s page-builder experience %2$s, %1$s typography controls %2$s and a new %1$s Block Manager %2$s for turning off blocks.', 'coblocks' ), '<strong>', '</strong>'
+						esc_html__( 'You\'ve just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks %2$s, a %1$s page-builder experience %2$s, %1$s typography controls %2$s and a new %1$s Block Manager %2$s for turning off blocks.', 'coblocks' ),
+						'<strong>',
+						'</strong>'
 					);
 					?>
 				</p>
@@ -123,7 +125,9 @@ class CoBlocks_Getting_Started_Page {
 					<?php
 					echo sprintf(
 						/* translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag */
-						esc_attr__( 'Like what you see? %1$sSubscribe to our YouTube channel%2$s and we\'ll let you know when new video tutorials are released.', 'coblocks' ), '<a href="https://www.youtube.com/channel/UCsOcD4k5eUBH_wWhcxPJZcA" target="_blank">', '</a>'
+						esc_attr__( 'Like what you see? %1$sSubscribe to our YouTube channel%2$s and we\'ll let you know when new video tutorials are released.', 'coblocks' ),
+						'<a href="https://www.youtube.com/channel/UCsOcD4k5eUBH_wWhcxPJZcA" target="_blank">',
+						'</a>'
 					);
 					?>
 				</p>
@@ -132,7 +136,11 @@ class CoBlocks_Getting_Started_Page {
 					<?php
 					echo sprintf(
 						/* translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag */
-						esc_html__( 'If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what\'s new and upcoming at CoBlocks.', 'coblocks' ), '<a href="https://twitter.com/coblocks" target="_blank">', '<a href="https://www.facebook.com/groups/coblocks" target="_blank">', '<a href="https://coblocks.us20.list-manage.com/subscribe?u=fd78cec472f9f62b76fca64d1&id=62cbc3526f" target="_blank">', '</a>'
+						esc_html__( 'If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what\'s new and upcoming at CoBlocks.', 'coblocks' ),
+						'<a href="https://twitter.com/coblocks" target="_blank">',
+						'<a href="https://www.facebook.com/groups/coblocks" target="_blank">',
+						'<a href="https://coblocks.us20.list-manage.com/subscribe?u=fd78cec472f9f62b76fca64d1&id=62cbc3526f" target="_blank">',
+						'</a>'
 					);
 					?>
 				</p>
