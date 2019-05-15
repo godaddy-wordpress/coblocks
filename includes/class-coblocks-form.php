@@ -117,12 +117,12 @@ class CoBlocks_Form {
 		<div class="coblocks-form <?php echo esc_attr( get_the_ID() ); ?>">
 			<form action="<?php echo esc_url( set_url_scheme( get_the_permalink() ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); ?>
-				<p class="form-submit">
+				<div class="form-submit">
 					<?php $this->render_submit_button( $atts ); ?>
 					<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
 					<input type="hidden" name="action" value="coblocks-form-submit">
 					<input type="hidden" name="form-hash" value="<?php echo esc_attr( sha1( json_encode( $atts ) . $content ) ); ?>">
-				</p>
+				</div>
 			</form>
 		</div>
 
@@ -152,7 +152,7 @@ class CoBlocks_Form {
 
 		?>
 
-		<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" <?php echo esc_attr( $required_attr ); ?> />
+		<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--name" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
 
@@ -180,7 +180,7 @@ class CoBlocks_Form {
 
 		?>
 
-		<input type="email" id="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" <?php echo esc_attr( $required_attr ); ?> />
+		<input type="email" id="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--email" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
 
@@ -208,7 +208,7 @@ class CoBlocks_Form {
 
 		?>
 
-		<textarea name="field-<?php echo esc_attr( $label_slug ); ?>[value]" id="<?php echo esc_attr( $label_slug ); ?>" rows="20"></textarea>
+		<textarea name="field-<?php echo esc_attr( $label_slug ); ?>[value]" id="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-field coblocks-textarea" rows="20"></textarea>
 
 		<?php
 
@@ -239,7 +239,7 @@ class CoBlocks_Form {
 
 		?>
 
-		<label class="coblocks-label" for="<?php echo esc_attr( $label_slug ); ?>"><?php echo esc_html( $label ); ?><?php echo $required_label; ?></label>
+		<label for="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-label"><?php echo esc_html( $label ); ?><?php echo $required_label; ?></label>
 		<input type="hidden" name="field-<?php echo esc_attr( $label_slug ); ?>[label]" value="<?php echo esc_html( $label ); ?>">
 
 		<?php

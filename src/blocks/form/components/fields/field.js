@@ -31,7 +31,9 @@ function CoblocksField( {
 					setAttributes={ setAttributes }
 					isSelected={ isSelected }
 				/>
-				<TextControl type={ type }/>
+				<TextControl
+					type={ type }
+				/>
 			</div>
 			<InspectorControls>
 				<PanelBody title={ __( 'Field Settings' ) }>
