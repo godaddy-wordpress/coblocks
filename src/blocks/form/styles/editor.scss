@@ -1,9 +1,17 @@
 @import "help-message.scss";
 
 .editor-block-list__block[data-type="coblocks/form"] {
-	.coblocks-field-label {
+	.coblocks-field-label__input-wrapper {
 		display: flex;
 		flex-direction: row;
+		justify-content: flex-start;
+	}
+
+	.coblocks-field-label {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
 
 		.components-base-control {
 			margin-bottom: -3px;
@@ -17,32 +25,14 @@
 				}
 
 				.components-toggle-control__label {
+					margin-bottom: 0;
 					word-break: normal;
 				}
 			}
 		}
 
-		.required {
-			color: $alert-red;
-			word-break: normal;
-		}
-
 		.components-toggle-control .components-base-control__field {
 			margin-bottom: 0;
-		}
-	}
-
-	.coblocks-field-label__input {
-		border: 0;
-		border-radius: 0;
-		flex-grow: 1;
-		margin: 0;
-		min-height: unset;
-		padding: 0;
-		width: auto;
-
-		&:focus {
-			box-shadow: none;
 		}
 	}
 
@@ -71,5 +61,11 @@
 			font-weight: 400;
 			padding-left: 10px;
 		}
+	}
+}
+
+.coblocks-form {
+	.required {
+		color: $alert-red;
 	}
 }
