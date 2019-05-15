@@ -79,7 +79,6 @@ const settings = {
 	supports: {
 		reusable: false,
 		html: false,
-		align: [ 'wide' ],
 	},
 
 	className: false,
