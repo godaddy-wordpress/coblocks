@@ -29,14 +29,14 @@ jobs:
       - run:
           name: "Install Dependencies"
           command: |
-            bash .dev/bin/install-dependencies.sh
+            bash .dev/install-dependencies.sh
       - run:
           name: "Run PHPCS"
           command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
           command: |
-            bash .dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
+            bash .dev/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
             phpunit --coverage-html=/tmp/artifacts/code-coverage/html --coverage-clover=/tmp/artifacts/code-coverage/clover
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/html
@@ -57,14 +57,14 @@ jobs:
             source /home/circleci/.bashrc
       - run:
           name: "Install Dependencies"
-          command: bash .dev/bin/install-dependencies.sh
+          command: bash .dev/install-dependencies.sh
       - run:
           name: "Run PHPCS"
           command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
       - run:
           name: "Run PHPUnit - Single Site"
           command: |
-            bash .dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
+            bash .dev/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
             phpunit
       - run:
           name: "Run PHPUnit - Multisite"
@@ -127,7 +127,7 @@ jobs:
           command: echo '127.0.0.1 acceptance.localhost' | sudo tee -a /etc/hosts
       - run:
           name: "Install Acceptance Test Dependencies"
-          command: bash .dev/bin/install-acceptance-tests.sh
+          command: bash .dev/install-acceptance-tests.sh
       - run:
           name: "Import Demo Site Database"
           command: |
@@ -146,18 +146,18 @@ jobs:
       #     background: true
       # - run:
       #     name: "Run Acceptance Tests"
-      #     command: bash .dev/bin/run-acceptance-tests.sh
+      #     command: bash .dev/run-acceptance-tests.sh
       # - run:
       #     name: "Setup screenshots"
       #     when: always
-      #     command: bash .dev/bin/setup-screenshot-directories.sh
+      #     command: bash .dev/setup-screenshot-directories.sh
       # - run:
       #     name: "Deploy screenshots"
       #     command: |
       #       if [ "${CIRCLE_BRANCH}" == "master" ]; then
-      #         ./.dev/bin/deploy-screenshots.sh live
+      #         ./.dev/deploy-screenshots.sh live
       #       else
-      #         ./.dev/bin/deploy-screenshots.sh --dry-run
+      #         ./.dev/deploy-screenshots.sh --dry-run
       #       fi
       # - store_artifacts:
       #     path: /tmp/artifacts
@@ -195,9 +195,9 @@ jobs:
           name: Deploy the plugin
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ./.dev/bin/deploy.sh live
+              ./.dev/deploy.sh live
             else
-              ./.dev/bin/deploy.sh --dry-run
+              ./.dev/deploy.sh --dry-run
             fi
       - store_artifacts:
           path: /tmp/artifacts
