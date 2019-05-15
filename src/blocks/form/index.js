@@ -46,9 +46,15 @@ const blockAttributes = {
 		type: 'string',
 		default: __( 'Submit' ),
 	},
-	customBackgroundButtonColor: { type: 'string' },
-	customTextButtonColor: { type: 'string' },
-	submitButtonClasses: { type: 'string' },
+	customBackgroundButtonColor: {
+		type: 'string',
+	},
+	customTextButtonColor: {
+		type: 'string',
+	},
+	submitButtonClasses: {
+		type: 'string',
+	},
 	hasFormSettingsSet: {
 		type: 'string',
 		default: null,
