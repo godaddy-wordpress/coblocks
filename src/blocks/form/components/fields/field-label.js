@@ -15,7 +15,7 @@ const CoblocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, req
 					resetFocus && resetFocus();
 					setAttributes( { label: value } );
 				} }
-				placeholder={ __( 'Write label…' ) }
+				placeholder={ __( 'Add label…' ) }
 			/>
 			{ isSelected && (
 				<ToggleControl
