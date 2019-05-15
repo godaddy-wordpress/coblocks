@@ -368,7 +368,9 @@ class Edit extends Component {
 									},
 								],
 								[
-									'coblocks/field-textarea', {}
+									'coblocks/field-textarea', {
+										required: true,
+									},
 								],
 							]
 						}
