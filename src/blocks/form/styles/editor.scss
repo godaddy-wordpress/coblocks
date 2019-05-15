@@ -47,21 +47,6 @@
 			pointer-events: none;
 		}
 	}
-
-	.coblocks-field-checkbox .components-base-control__label {
-		align-items: center;
-		display: flex;
-
-		.coblocks-field-label {
-			flex-grow: 1;
-		}
-
-		.coblocks-field-label__input {
-			font-size: 13px;
-			font-weight: 400;
-			padding-left: 10px;
-		}
-	}
 }
 
 .coblocks-form {
