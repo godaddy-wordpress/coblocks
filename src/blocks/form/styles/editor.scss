@@ -37,6 +37,10 @@
 	}
 
 	.coblocks-field {
+		input {
+			margin-bottom: 0;
+		}
+
 		.components-text-control__input.components-text-control__input {
 			width: 100%;
 		}
