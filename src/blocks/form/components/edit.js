@@ -11,11 +11,11 @@ const { registerBlockType, getBlockType, createBlock } = wp.blocks;
 const { Button, PanelBody, Placeholder, ResizableBox, Spinner, TextControl } = wp.components;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
-const { RichText, InspectorControls, InnerBlocks } = wp.editor;
+const { RichText, InspectorControls, InnerBlocks, InspectorAdvancedControls } = wp.editor;
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
 const { withViewportMatch } = wp.viewport;
-
+const { applyFilters } = wp.hooks;
 /**
  * Internal dependencies
  */
@@ -370,6 +370,9 @@ class Edit extends Component {
 					<PanelBody title={ __( 'Form Settings' ) }>
 						{ this.renderToAndSubjectFields() }
 					</PanelBody>
+					<InspectorAdvancedControls>
+						{ applyFilters( 'coblocks.advanced_forms_cta' ) }
+					</InspectorAdvancedControls>
 				</InspectorControls>
 				<div>
 					<InnerBlocks
