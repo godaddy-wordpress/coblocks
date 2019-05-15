@@ -361,6 +361,11 @@ class Edit extends Component {
 			caption,
 		} = attributes;
 
+		const classes = classnames(
+ 			className,
+ 			'coblocks-form',
+		);
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -371,7 +376,7 @@ class Edit extends Component {
 						{ applyFilters( 'coblocks.advanced_forms_cta' ) }
 					</InspectorAdvancedControls>
 				</InspectorControls>
-				<div>
+				<div className={ classes }>
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
 						templateLock={ false }

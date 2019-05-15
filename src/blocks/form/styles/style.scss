@@ -3,10 +3,6 @@
 		display: block;
 		float: none;
 		margin-bottom: 3px;
-
-		span {
-			color: $alert-red;
-		}
 	}
 
 	input[type="text"],
@@ -35,5 +31,10 @@
 
 	.form-errors .form-error-message {
 		color: $alert-red;
+	}
+
+	.required {
+		color: $alert-red;
+		margin-left: 5px;
 	}
 }

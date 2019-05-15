@@ -1,4 +1,4 @@
-@import "help-message.scss";
+@import "help-message";
 
 .editor-block-list__block[data-type="coblocks/form"] {
 	.coblocks-field-label__input-wrapper {
@@ -46,11 +46,5 @@
 			padding: 10px 8px;
 			pointer-events: none;
 		}
-	}
-}
-
-.coblocks-form {
-	.required {
-		color: $alert-red;
 	}
 }
