@@ -183,14 +183,6 @@ class Edit extends Component {
 		};
 	}
 
-	componentDidUpdate( prevProps ) {
-		if ( ! this.props.isSelected && prevProps.isSelected && this.state.captionFocused ) {
-			this.setState( {
-				captionFocused: false,
-			} );
-		}
-	}
-
 	onChangeSubject( subject ) {
 		this.props.setAttributes( { subject } );
 	}
