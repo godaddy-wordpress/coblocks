@@ -54,6 +54,7 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 } );
 
 class SubmitButton extends Component {
+
 	componentDidUpdate( prevProps ) {
 		if (
 			! isEqual( this.props.textButtonColor, prevProps.textButtonColor ) ||
@@ -63,18 +64,25 @@ class SubmitButton extends Component {
 			this.props.setAttributes( { submitButtonClasses: buttonClasses } );
 		}
 	}
+
 	getButtonClasses() {
+
 		const { textButtonColor, backgroundButtonColor } = this.props;
+
 		const textClass = get( textButtonColor, 'class' );
+
 		const backgroundClass = get( backgroundButtonColor, 'class' );
+
 		return classnames( 'wp-block-button__link', {
-			'has-text-color': textButtonColor,
-			[ textClass ]: textClass,
 			'has-background': backgroundButtonColor,
 			[ backgroundClass ]: backgroundClass,
+			'has-text-color': textButtonColor,
+			[ textClass ]: textClass,
 		} );
 	}
+
 	render() {
+
 		const {
 			attributes,
 			fallbackBackgroundColor,
@@ -85,8 +93,11 @@ class SubmitButton extends Component {
 		} = this.props;
 
 		const backgroundColor = attributes.customBackgroundButtonColor || fallbackBackgroundColor;
+
 		const color = attributes.customTextButtonColor || fallbackTextColor;
+
 		const buttonStyle = { border: 'none', backgroundColor, color };
+
 		const buttonClasses = this.getButtonClasses();
 
 		return (
@@ -98,8 +109,8 @@ class SubmitButton extends Component {
 						onChange={ nextValue => setAttributes( { submitButtonText: nextValue } ) }
 						className={ buttonClasses }
 						style={ buttonStyle }
+						formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
 						keepPlaceholderOnFocus
-						formattingControls={ [] }
 					/>
 				</div>
 				<InspectorControls>
