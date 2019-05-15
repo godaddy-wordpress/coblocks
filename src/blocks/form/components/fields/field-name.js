@@ -4,7 +4,7 @@
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
-import { InspectorControls } from '@wordpress/editor';
+import { InspectorControls, RichText } from '@wordpress/editor';
 import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 
 /**
@@ -20,6 +20,8 @@ function CoblocksFieldName( {
 	setAttributes,
 	placeholder,
 	hasLastName,
+	labelFirstName,
+	labelLastName,
 	id,
 } ) {
 	return (
@@ -42,13 +44,29 @@ function CoblocksFieldName( {
 						<div>
 							<TextControl/>
 							<span className="first-name">
-								<small>{ __( 'First' ) }</small>
+								<RichText
+									tagName="small"
+									value={ labelFirstName }
+									onChange={ value => {
+										resetFocus && resetFocus();
+										setAttributes( { labelFirstName: value } );
+									} }
+									placeholder={ __( 'Add label…' ) }
+								/>
 							</span>
 						</div>
 						<div>
 							<TextControl/>
 							<span className="first-name">
-								<small>{ __( 'Last' ) }</small>
+								<RichText
+									tagName="small"
+									value={ labelLastName }
+									onChange={ value => {
+										resetFocus && resetFocus();
+										setAttributes( { labelLastName: value } );
+									} }
+									placeholder={ __( 'Add label…' ) }
+								/>
 							</span>
 						</div>
 					</div>

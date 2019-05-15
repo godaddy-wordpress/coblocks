@@ -60,13 +60,21 @@ const FieldDefaults = {
 			type: 'string',
 			default: '',
 		},
+		id: {
+			type: 'string',
+			default: '',
+		},
 		hasLastName: {
 			type: 'boolean',
 			default: false,
 		},
-		id: {
+		labelFirstName: {
 			type: 'string',
-			default: '',
+			default: __( 'First' ),
+		},
+		labelLastName: {
+			type: 'string',
+			default: __( 'Last' ),
 		},
 	},
 	transforms: {
@@ -123,6 +131,8 @@ export const childBlocks = [
 				<CoblocksFieldName
 					type={ 'name' }
 					label={ getFieldLabel( props ) }
+					labelFirstName={ props.attributes.labelFirstName }
+					labelLastName={ props.attributes.labelLastName }
 					required={ props.attributes.required }
 					hasLastName={ props.attributes.hasLastName }
 					setAttributes={ props.setAttributes }

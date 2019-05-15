@@ -61,8 +61,9 @@
 	.last-name,
 	.first-name {
 		display: block;
-		opacity: 0.75;
+		line-height: 1;
 		margin-bottom: -0.3rem;
-		margin-top: -0.66rem;
+		margin-top: -0.3rem;
+		opacity: 0.66;
 	}
 }

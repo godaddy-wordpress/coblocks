@@ -16,6 +16,7 @@
 		.components-base-control {
 			&.coblocks-field-label__required {
 				color: $dark-gray-500;
+				margin-top: -5px;
 
 				.components-form-toggle {
 					margin: 2px 8px 0 0;
@@ -35,6 +36,10 @@
 
 	.components-base-control {
 		margin-bottom: 0;
+
+		.components-base-control__field {
+			margin-bottom: 15px;
+		}
 	}
 
 	.coblocks-field {
