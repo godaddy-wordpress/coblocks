@@ -104,7 +104,8 @@ class SubmitButton extends Component {
 				</div>
 				<InspectorControls>
 					<PanelColorSettings
-						title={ __( 'Button Color Settings' ) }
+						title={ __( 'Color Settings' ) }
+						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor,
@@ -112,7 +113,7 @@ class SubmitButton extends Component {
 									setBackgroundButtonColor( nextColour );
 									setAttributes( { customBackgroundButtonColor: nextColour } );
 								},
-								label: __( 'Background Color' ),
+								label: __( 'Button Color' ),
 							},
 							{
 								value: color,
@@ -120,7 +121,7 @@ class SubmitButton extends Component {
 									setTextButtonColor( nextColour );
 									setAttributes( { customTextButtonColor: nextColour } );
 								},
-								label: __( 'Text Color' ),
+								label: __( 'Button Text Color' ),
 							},
 						] }
 					/>
