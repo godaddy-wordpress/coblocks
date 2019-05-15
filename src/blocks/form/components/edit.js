@@ -375,6 +375,7 @@ class Edit extends Component {
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
 						templateLock={ false }
+						templateInsertUpdatesSelection={ false }
 						template={ [
 							[
 								'coblocks/field-name',
