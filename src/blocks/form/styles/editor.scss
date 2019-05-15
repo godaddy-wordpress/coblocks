@@ -37,7 +37,9 @@
 	}
 
 	.coblocks-field {
-		input {
+		input,
+		textarea,
+		[data-block] {
 			margin-bottom: 0;
 		}
 
