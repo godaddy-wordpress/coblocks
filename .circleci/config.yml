@@ -6,21 +6,10 @@ workflows:
       # http://php.net/supported-versions.php
       - php71-build # Will be deprecated on 1 Dec 2019
       - php72-build # Will be deprecated on 30 Nov 2020
-      - hold:
-          type: approval
-          requires:
-            - php71-build
-            - php72-build
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              ignore: /.*/
       - deploy:
           requires:
             - php71-build
             - php72-build
-            - hold
           filters:
             tags:
               only: /.*/
