@@ -14,9 +14,6 @@
 		justify-content: space-between;
 
 		.components-base-control {
-			margin-bottom: -3px;
-			margin-top: -1px;
-
 			&.coblocks-field-label__required {
 				color: $dark-gray-500;
 
@@ -36,6 +33,10 @@
 		}
 	}
 
+	.components-base-control {
+		margin-bottom: 0;
+	}
+
 	.coblocks-field {
 		input,
 		textarea,
@@ -51,6 +52,12 @@
 		.components-textarea-control__input {
 			padding: 10px 8px;
 			pointer-events: none;
+		}
+	}
+
+	.coblocks-field--name__inner {
+		.components-base-control {
+			width: 100%;
 		}
 	}
 }

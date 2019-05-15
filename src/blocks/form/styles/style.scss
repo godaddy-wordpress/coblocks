@@ -38,3 +38,31 @@
 		margin-left: 5px;
 	}
 }
+
+.coblocks-field--name {
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+
+		> div {
+			width: 100%;
+		}
+
+		> div:first-of-type {
+			margin-right: 5px;
+		}
+
+		> div:last-of-type {
+			margin-left: 5px;
+		}
+	}
+
+	.last-name,
+	.first-name {
+		display: block;
+		opacity: 0.75;
+		margin-bottom: -0.3rem;
+		margin-top: -0.66rem;
+	}
+}

@@ -23,6 +23,7 @@ const { applyFilters } = wp.hooks;
 import icons from './../icons';
 import SubmitButton from './submit-button';
 import CoblocksField from './fields/field';
+import CoblocksFieldName from './fields/field-name';
 import CoblocksFieldTextarea from './fields/field-textarea';
 import HelpMessage from './help-message';
 
@@ -58,6 +59,10 @@ const FieldDefaults = {
 		placeholder: {
 			type: 'string',
 			default: '',
+		},
+		hasLastName: {
+			type: 'boolean',
+			default: false,
 		},
 		id: {
 			type: 'string',
@@ -114,7 +119,18 @@ export const childBlocks = [
 			title: __( 'Name' ),
 			description: __( 'Add an input field for folks to add their name.' ),
 			icon: icons.name,
-			edit: editField( 'text' ),
+			edit: props => (
+				<CoblocksFieldName
+					type={ 'name' }
+					label={ getFieldLabel( props ) }
+					required={ props.attributes.required }
+					hasLastName={ props.attributes.hasLastName }
+					setAttributes={ props.setAttributes }
+					isSelected={ props.isSelected }
+					defaultValue={ props.attributes.defaultValue }
+					id={ props.attributes.id }
+				/>
+			),
 		},
 	},
 	{
