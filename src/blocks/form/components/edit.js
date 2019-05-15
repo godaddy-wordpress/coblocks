@@ -372,21 +372,25 @@ class Edit extends Component {
 						allowedBlocks={ ALLOWED_BLOCKS }
 						templateLock={ false }
 						templateInsertUpdatesSelection={ false }
-						template={ [
+						template={
 							[
-								'coblocks/field-name',
-								{
-									required: true,
-								},
-							],
-							[
-								'coblocks/field-email',
-								{
-									required: true,
-								},
-							],
-							[ 'coblocks/field-textarea', {} ],
-						] }
+								[
+									'coblocks/field-name',
+									{
+										required: false,
+									},
+								],
+								[
+									'coblocks/field-email',
+									{
+										required: true,
+									},
+								],
+								[
+									'coblocks/field-textarea', {}
+								],
+							]
+						}
 					/>
 					<SubmitButton { ...this.props } />
 				</div>
