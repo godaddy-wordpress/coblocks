@@ -1,43 +1,27 @@
 .coblocks-form {
-	.clear-form {
-		clear: both;
+	label {
+		display: block;
+		float: none;
+		margin-bottom: 3px;
+
+		span {
+			color: #aaa;
+			margin-left: 4px;
+		}
 	}
 
-	input::placeholder {
-		transition: opacity .3s ease-out;
-	}
-	input:hover::placeholder {
-		opacity: 0.5;
-	}
-	input:focus::placeholder {
-		opacity: 0.3;
-	}
-
-	input[type='text'],
-	input[type='email'] {
-		width: 300px;
-		max-width: 98%;
-		margin-bottom: 13px;
+	input[type="text"],
+	input[type="email"] {
+		margin: 0 0 1rem 0;
+		width: 80%;
 	}
 
 	textarea {
+		float: none;
 		height: 200px;
-		width: 80%;
-		float: none;
-		margin-bottom: 13px;
-	}
-
-	label {
-		margin-bottom: 3px;
-		float: none;
-		font-weight: bold;
-		display: block;
-
-		span {
-			color: #AAA;
-			margin-left: 4px;
-			font-weight: normal;
-		}
+		margin: 0 0 1rem 0;
+		resize: vertical;
+		width: 100%;
 	}
 
 	.coblocks-form-submission {
@@ -51,6 +35,6 @@
 	}
 
 	.form-errors .form-error-message {
-		color: red;
+		color: $alert-red;
 	}
 }
