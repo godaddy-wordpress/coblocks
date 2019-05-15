@@ -211,10 +211,6 @@ class Edit extends Component {
 		}
 	}
 
-	getEmailHelpMessage() {
-		return __( 'You can enter multiple email addresses separated by commas.' );
-	}
-
 	onChangeSubject( subject ) {
 		this.props.setAttributes( { subject } );
 	}
@@ -318,10 +314,6 @@ class Edit extends Component {
 				<HelpMessage isError id={ `contact-form-${ instanceId }-email-error` }>
 					{ this.getfieldEmailError( fieldEmailError ) }
 				</HelpMessage>
-				<HelpMessage id={ `contact-form-${ instanceId }-email-help` }>
-					{ this.getEmailHelpMessage() }
-				</HelpMessage>
-
 				<TextControl
 					label={ __( 'Email subject line' ) }
 					value={ ( subject || '' === subject ) ? subject : coblocksBlockData.form.emailSubject }
