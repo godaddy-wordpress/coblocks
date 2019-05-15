@@ -352,6 +352,7 @@ class Edit extends Component {
 						allowedBlocks={ ALLOWED_BLOCKS }
 						templateLock={ true }
 						templateInsertUpdatesSelection={ false }
+						renderAppender={ () => ( null ) }
 						template={
 							[
 								[
