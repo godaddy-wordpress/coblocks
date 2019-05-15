@@ -350,7 +350,7 @@ class Edit extends Component {
 				<div className={ classes }>
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
-						templateLock={ false }
+						templateLock={ true }
 						templateInsertUpdatesSelection={ false }
 						template={
 							[
