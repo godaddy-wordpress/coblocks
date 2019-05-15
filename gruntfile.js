@@ -45,7 +45,22 @@ module.exports = function( grunt ) {
 							'languages/*.{mo,pot}',
 							'!**/*.{ai,eps,psd}'
 						],
-						dest: 'build/'
+						dest: 'build/<%= pkg.name %>'
+					}
+				]
+			}
+		},
+
+		compress: {
+			coblocks: {
+				options: {
+					archive: 'build/coblocks-v<%= pkg.version %>.zip'
+				},
+				files: [
+					{
+						cwd: 'build/<%= pkg.name %>/',
+						dest: '<%= pkg.name %>/',
+						src: [ '**' ]
 					}
 				]
 			}
@@ -103,7 +118,7 @@ module.exports = function( grunt ) {
 				expand: true,
 				cwd: 'dist/images/',
 				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
-				dest: 'build/dist/images/'
+				dest: 'build/<%= pkg.name %>/dist/images/'
 			},
 			wp_org_assets: {
 				expand: true,
@@ -186,7 +201,7 @@ module.exports = function( grunt ) {
 			plugin: {
 				options: {
 					assets_dir: 'wp-org-assets/',
-					build_dir: 'build/',
+					build_dir: 'build/<%= pkg.name %>/',
 					plugin_main_file: 'class-' + pkg.name + '.php',
 					plugin_slug: pkg.name,
 					svn_user: grunt.file.exists( 'svn-username' ) ? grunt.file.read( 'svn-username' ).trim() : false

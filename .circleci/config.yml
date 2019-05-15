@@ -5,13 +5,19 @@ workflows:
       # Support PHP Versions
       # http://php.net/supported-versions.php
       - php71-build # Will be deprecated on 1 Dec 2019
-      # - php72-build # Will be deprecated on 30 Nov 2020
-      # - acceptance-tests
-      # - deploy:
-      #     requires:
-      #       - php71-build
-      #       - php72-build
-      #       - acceptance-tests
+      - php72-build # Will be deprecated on 30 Nov 2020
+      - hold:
+          type: approval
+          requires:
+            - php72-build
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy:
+          requires:
+            - php71-build
+            - php72-build
+            - hold
 
 version: 2
 jobs:
@@ -70,105 +76,10 @@ jobs:
           name: "Run PHPUnit - Multisite"
           command: WP_MULTISITE=1 phpunit
 
-  acceptance-tests:
-    docker:
-      - image: circleci/php:7.3.2-apache-stretch-browsers
-      - image: circleci/mysql:5.7
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "4a:a6:bb:90:52:5a:ed:f7:d8:9d:23:97:96:31:71:b4"
-      - checkout
-
-      # LambdaTest.com
-      - run:
-          name: "Downloading and Extracting LambdaTest tunnel binary"
-          command: |
-            wget https://s3.amazonaws.com/lambda-tunnel/LT_Linux.zip
-            unzip LT_Linux.zip
-
-      - run:
-          name: "Executing tunnel binary"
-          background: true
-          command: |
-            ./LT -user ${LAMBDATEST_EMAIL} -key ${LAMBDATEST_ACCESS_TOKEN}
-            sleep 30
-
-      - run:
-          name: "Setup custom environment variables"
-          command: |
-            echo 'export LT_USERNAME="${LAMBDATEST_USERNAME}"' >> $BASH_ENV
-            echo 'export LT_ACCESS_KEY="${LAMBDATEST_ACCESS_TOKEN}"' >> $BASH_ENV
-
-      - run:
-          name: "Setup Environment Variables"
-          command: |
-            echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $BASH_ENV
-            source /home/circleci/.bashrc
-      - run:
-          name: "Install Dependencies"
-          command: |
-            composer install
-            sudo sh -c "printf '\ndeb http://ftp.us.debian.org/debian sid main\n' >> /etc/apt/sources.list"
-            sudo apt-get update
-            sudo apt-get install subversion
-            sudo apt-get install -y xvfb fontconfig
-            sudo apt-get install mysql-client-5.7
-            sudo -E docker-php-ext-install mysqli
-      - run:
-          name: "Setup apache conf"
-          command: |
-            sudo cp .dev/bin/tests/apache-ci.conf /etc/apache2/sites-available/apache-ci.conf
-            sudo a2ensite apache-ci
-            sudo a2enmod rewrite
-            sudo service apache2 start
-      - run:
-          name: "Update host file"
-          command: echo '127.0.0.1 acceptance.localhost' | sudo tee -a /etc/hosts
-      - run:
-          name: "Install Acceptance Test Dependencies"
-          command: bash .dev/bin/install-acceptance-tests.sh
-      - run:
-          name: "Import Demo Site Database"
-          command: |
-            php /tmp/wp-cli.phar db reset --yes --path=/tmp/wordpress_acceptance
-            php /tmp/wp-cli.phar db import .dev/bin/files/demo-site/demo-site.db --skip-optimization --path=/tmp/wordpress_acceptance
-            php /tmp/wp-cli.phar theme install stackable --activate --force --path=/tmp/wordpress_acceptance
-            cp .dev/bin/files/demo-site/.htaccess /tmp/wordpress_acceptance
-            mkdir /tmp/wordpress_acceptance/wp-content/mu-plugins && cp .dev/bin/files/demo-site/overrides.php /tmp/wordpress_acceptance/wp-content/mu-plugins
-      # - run:
-      #     name: "Start Selenium"
-      #     command: selenium-server-standalone
-      #     background: true
-      # - run:
-      #     name: "Start Chromedriver"
-      #     command: chromedriver --url-base=/wd/hub --ignore-certificate-errors
-      #     background: true
-      # - run:
-      #     name: "Run Acceptance Tests"
-      #     command: bash .dev/bin/run-acceptance-tests.sh
-      # - run:
-      #     name: "Setup screenshots"
-      #     when: always
-      #     command: bash .dev/bin/setup-screenshot-directories.sh
-      # - run:
-      #     name: "Deploy screenshots"
-      #     command: |
-      #       if [ "${CIRCLE_BRANCH}" == "master" ]; then
-      #         ./.dev/bin/deploy-screenshots.sh live
-      #       else
-      #         ./.dev/bin/deploy-screenshots.sh --dry-run
-      #       fi
-      # - store_artifacts:
-      #     path: /tmp/artifacts
-
   deploy:
     docker:
       - image: circleci/php:latest-node-browsers-legacy
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "4a:a6:bb:90:52:5a:ed:f7:d8:9d:23:97:96:31:71:b4"
       - checkout
       - run:
           name: Update npm
@@ -188,16 +99,12 @@ jobs:
       - run:
           name: Build the plugin
           command: |
-            grunt "Bundle the plugin into the /build directory."
             mkdir -p /tmp/artifacts
-            cp -a build/*.zip /tmp/artifacts
+            grunt build
+            grunt compress
+            mv build/*zip /tmp/artifacts
       - deploy:
           name: Deploy the plugin
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ./.dev/bin/deploy.sh live
-            else
-              ./.dev/bin/deploy.sh --dry-run
-            fi
+          command: grunt deploy
       - store_artifacts:
           path: /tmp/artifacts
