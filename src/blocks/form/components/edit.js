@@ -16,15 +16,12 @@ const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
 const { withViewportMatch } = wp.viewport;
 const { applyFilters } = wp.hooks;
+
 /**
  * Internal dependencies
  */
-import icons from './../../../utils/icons';
+import icons from './../icons';
 import SubmitButton from './submit-button';
-
-/**
- * Fields
- */
 import CoblocksField from './fields/field';
 import CoblocksFieldTextarea from './fields/field-textarea';
 import HelpMessage from './help-message';
@@ -136,7 +133,7 @@ export const childBlocks = [
 			...FieldDefaults,
 			title: __( 'Name' ),
 			description: __( 'Add an input field for folks to add their name.' ),
-			icon: <svg className="components-coblocks-svg" aria-hidden role="img" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fullRule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fullRule="nonzero"/><path d="m1 1h16v5h-16z"/></g></svg>,
+			icon: icons.name,
 			edit: editField( 'text' ),
 		},
 	},
@@ -147,7 +144,7 @@ export const childBlocks = [
 			title: __( 'Email' ),
 			keywords: [ __( 'e-mail' ), __( 'mail' ), 'email' ],
 			description: __( 'Add an email address field to reply back.' ),
-			icon: <svg className="components-coblocks-svg" aria-hidden role="img" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fullRule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fullRule="nonzero"/><path d="m1 1h16v5h-16z"/></g></svg>,
+			icon:icons.email,
 			edit: editField( 'email' ),
 		},
 	},
@@ -158,7 +155,7 @@ export const childBlocks = [
 			title: __( 'Message' ),
 			keywords: [ __( 'Textarea' ), 'textarea', __( 'Multiline text' ) ],
 			description: __( 'Add a text box is for longer responses.' ),
-			icon: <svg className="components-coblocks-svg" aria-hidden role="img" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fullRule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fullRule="nonzero"/><path d="m1 1h16v5h-16z"/></g></svg>,
+			icon: icons.textarea,
 			edit: props => (
 				<CoblocksFieldTextarea
 					label={ getFieldLabel( props ) }
