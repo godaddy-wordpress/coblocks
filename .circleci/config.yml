@@ -9,6 +9,7 @@ workflows:
       - hold:
           type: approval
           requires:
+            - php71-build
             - php72-build
           filters:
             tags:
@@ -87,6 +88,15 @@ jobs:
       - run:
           name: Install Grunt.js
           command: sudo npm install -g grunt-cli
+      - run:
+          name: Install SVN
+          command: sudo apt-get update && sudo apt-get install subversion
+      - run:
+          name: Install WPCLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
@@ -102,9 +112,9 @@ jobs:
             mkdir -p /tmp/artifacts
             grunt build
             grunt compress
-            mv build/*zip /tmp/artifacts
+            mv build/*.zip /tmp/artifacts
       - deploy:
           name: Deploy the plugin
-          command: grunt deploy
+          command: bash .dev/bin/deploy-plugin.sh
       - store_artifacts:
           path: /tmp/artifacts
