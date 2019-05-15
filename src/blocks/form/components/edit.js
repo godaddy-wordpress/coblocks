@@ -315,11 +315,6 @@ class Edit extends Component {
 			className,
 			isSelected,
 			setAttributes,
-			settings,
-			isLargeViewport,
-			isRTL,
-			toggleSelection,
-			maxWidth,
 		} = this.props;
 
 		const {
