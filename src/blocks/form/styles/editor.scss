@@ -10,6 +10,8 @@
 			margin-top: -1px;
 
 			&.coblocks-field-label__required {
+				color: $dark-gray-500;
+
 				.components-form-toggle {
 					margin: 2px 8px 0 0;
 				}
@@ -31,22 +33,15 @@
 	}
 
 	.coblocks-field-label__input {
-		flex-grow: 1;
-		min-height: unset;
-		padding: 0;
-	}
-
-	.coblocks-field-label__input.coblocks-field-label__input.coblocks-field-label__input {
-		border-color: $white;
+		border: 0;
 		border-radius: 0;
-		font-weight: 600;
+		flex-grow: 1;
 		margin: 0;
-		margin-bottom: 2px;
+		min-height: unset;
 		padding: 0;
 		width: auto;
 
 		&:focus {
-			border-color: $white;
 			box-shadow: none;
 		}
 	}

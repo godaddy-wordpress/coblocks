@@ -25,21 +25,13 @@ function CoblocksField( {
 	return (
 		<Fragment>
 			<div className={ classNames( 'coblocks-field', { 'is-selected': isSelected } ) }>
-				<TextControl
-					type={ type }
-					label={
-						<CoblocksFieldLabel
-							required={ required }
-							label={ label }
-							setAttributes={ setAttributes }
-							isSelected={ isSelected }
-						/>
-					}
-					placeholder={ placeholder }
-					value={ placeholder }
-					onChange={ value => setAttributes( { placeholder: value } ) }
-					title={ __( 'Set the placeholder text' ) }
+				<CoblocksFieldLabel
+					required={ required }
+					label={ label }
+					setAttributes={ setAttributes }
+					isSelected={ isSelected }
 				/>
+				<TextControl type={ type }/>
 			</div>
 			<InspectorControls>
 				<PanelBody title={ __( 'Field Settings' ) }>

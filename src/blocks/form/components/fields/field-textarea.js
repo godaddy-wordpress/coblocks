@@ -23,20 +23,13 @@ function CoblocksFieldTextarea( {
 	return (
 		<Fragment>
 			<div className="coblocks-field">
-				<TextareaControl
-					label={
-						<CoblocksFieldLabel
-							required={ required }
-							label={ label }
-							setAttributes={ setAttributes }
-							isSelected={ isSelected }
-						/>
-					}
-					placeholder={ placeholder }
-					value={ placeholder }
-					onChange={ value => setAttributes( { placeholder: value } ) }
-					title={ __( 'Set the placeholder text' ) }
+				<CoblocksFieldLabel
+					required={ required }
+					label={ label }
+					setAttributes={ setAttributes }
+					isSelected={ isSelected }
 				/>
+				<TextareaControl/>
 			</div>
 			<InspectorControls>
 				<PanelBody title={ __( 'Field Settings' ) }>
