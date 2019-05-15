@@ -13,7 +13,9 @@ workflows:
             - php72-build
           filters:
             tags:
-              only: /^v.*/
+              only: /.*/
+            branches:
+              ignore: /.*/
       - deploy:
           requires:
             - php71-build
