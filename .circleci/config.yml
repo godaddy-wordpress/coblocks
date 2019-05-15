@@ -21,6 +21,11 @@ workflows:
             - php71-build
             - php72-build
             - hold
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
 
 version: 2
 jobs:
