@@ -16,7 +16,6 @@ import icons from './icons';
  */
 const { __ } = wp.i18n;
 const { InnerBlocks } = wp.editor;
-const { Fragment } = wp.element;
 
 /**
  * Block constants
