@@ -29,7 +29,6 @@ import HelpMessage from './help-message';
 /**
  * Block constants
  */
-	'core/table',
 const ALLOWED_BLOCKS = [];
 
 const FieldDefaults = {
