@@ -313,19 +313,8 @@ class Edit extends Component {
 		const {
 			attributes,
 			className,
-			isSelected,
 			setAttributes,
 		} = this.props;
-
-		const {
-			align,
-			alt,
-			height,
-			id,
-			url,
-			width,
-			caption,
-		} = attributes;
 
 		const classes = classnames(
  			className,
