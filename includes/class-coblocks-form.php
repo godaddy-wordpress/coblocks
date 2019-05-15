@@ -239,7 +239,7 @@ class CoBlocks_Form {
 
 		?>
 
-		<label for="<?php echo esc_attr( $label_slug ); ?>"><?php echo esc_html( $label ); ?><?php echo $required_label; ?></label>
+		<label class="coblocks-label" for="<?php echo esc_attr( $label_slug ); ?>"><?php echo esc_html( $label ); ?><?php echo $required_label; ?></label>
 		<input type="hidden" name="field-<?php echo esc_attr( $label_slug ); ?>[label]" value="<?php echo esc_html( $label ); ?>">
 
 		<?php

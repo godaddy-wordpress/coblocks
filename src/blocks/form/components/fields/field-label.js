@@ -11,7 +11,7 @@ const CoblocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, req
 			<div className="coblocks-field-label__input-wrapper">
 				<RichText
 					tagName="label"
-					className="coblocks-field-label__input"
+					className="coblocks-label coblocks-field-label__input"
 					value={ label }
 					onChange={ value => {
 						resetFocus && resetFocus();
