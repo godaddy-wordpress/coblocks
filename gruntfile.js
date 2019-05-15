@@ -195,19 +195,7 @@ module.exports = function( grunt ) {
 			translations: [
 				'npm run babel:build && rm languages/coblocks-js.pot'
 			].join( ' && ' ),
-		},
-
-		wp_deploy: {
-			plugin: {
-				options: {
-					assets_dir: 'wp-org-assets/',
-					build_dir: 'build/<%= pkg.name %>/',
-					plugin_main_file: 'class-' + pkg.name + '.php',
-					plugin_slug: pkg.name,
-					svn_user: grunt.file.exists( 'svn-username' ) ? grunt.file.read( 'svn-username' ).trim() : false
-				}
-			}
-		},
+		}
 
 	} );
 
@@ -216,7 +204,6 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'default',    [ 'sass', 'cssmin', 'uglify', 'shell:cgb_start' ] );
 	grunt.registerTask( 'check',      [ 'devUpdate' ] );
 	grunt.registerTask( 'build',      [ 'shell:cgb_build', 'sass', 'cssmin', 'uglify', 'imagemin', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
-	grunt.registerTask( 'deploy',     [ 'build', 'wp_deploy', 'clean:build' ] );
 	grunt.registerTask( 'update-pot', [ 'shell:translations' ] );
 	grunt.registerTask( 'version',    [ 'replace' ] );
 
