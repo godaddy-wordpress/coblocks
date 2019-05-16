@@ -22,7 +22,6 @@ function CoblocksFieldName( {
 	hasLastName,
 	labelFirstName,
 	labelLastName,
-	id,
 } ) {
 	return (
 		<Fragment>
@@ -84,11 +83,6 @@ function CoblocksFieldName( {
 						checked={ hasLastName }
 						onChange={ value => setAttributes( { hasLastName: value } ) }
 						help={ !! hasLastName ? __( 'Showing both first and last name fields.' ) : __( 'Toggle to add a last name field.' ) }
-					/>
-					<TextControl
-						label={ __( 'ID' ) }
-						value={ id }
-						onChange={ value => setAttributes( { id: value } ) }
 					/>
 				</PanelBody>
 			</InspectorControls>

@@ -20,7 +20,6 @@ function CoblocksField( {
 	setAttributes,
 	defaultValue,
 	placeholder,
-	id,
 } ) {
 	return (
 		<Fragment>
@@ -41,11 +40,6 @@ function CoblocksField( {
 						label={ __( 'Default Value' ) }
 						value={ defaultValue }
 						onChange={ value => setAttributes( { defaultValue: value } ) }
-					/>
-					<TextControl
-						label={ __( 'ID' ) }
-						value={ id }
-						onChange={ value => setAttributes( { id: value } ) }
 					/>
 				</PanelBody>
 			</InspectorControls>
