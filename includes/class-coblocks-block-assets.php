@@ -109,8 +109,8 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
-		$post_id     = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
-		$post_title  = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
+		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
+		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
 
 		wp_localize_script(
 			$this->_slug . '-editor',
