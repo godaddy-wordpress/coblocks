@@ -48,14 +48,6 @@ const FieldDefaults = {
 			type: 'boolean',
 			default: false,
 		},
-		options: {
-			type: 'array',
-			default: [],
-		},
-		placeholder: {
-			type: 'string',
-			default: '',
-		},
 		hasLastName: {
 			type: 'boolean',
 			default: false,
@@ -68,28 +60,6 @@ const FieldDefaults = {
 			type: 'string',
 			default: __( 'Last' ),
 		},
-	},
-	transforms: {
-		to: [
-			{
-				type: 'block',
-				blocks: [ 'coblocks/field-name' ],
-				isMatch: ( { options } ) => ! options.length,
-				transform: attributes => createBlock( 'coblocks/field-name', attributes ),
-			},
-			{
-				type: 'block',
-				blocks: [ 'coblocks/field-email' ],
-				isMatch: ( { options } ) => ! options.length,
-				transform: attributes => createBlock( 'coblocks/field-email', attributes ),
-			},
-			{
-				type: 'block',
-				blocks: [ 'coblocks/field-textarea' ],
-				isMatch: ( { options } ) => ! options.length,
-				transform: attributes => createBlock( 'coblocks/field-textarea', attributes ),
-			},
-		],
 	},
 	save: () => null,
 };
