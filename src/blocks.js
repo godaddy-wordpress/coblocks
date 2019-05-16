@@ -45,6 +45,7 @@ import * as author from './blocks/author';
 import * as clickToTweet from './blocks/click-to-tweet';
 import * as column from './blocks/row/column';
 import * as dynamicSeparator from './blocks/dynamic-separator';
+import * as form from './blocks/form';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
 import * as highlight from './blocks/highlight';
@@ -73,6 +74,7 @@ export function registerBlocks () {
 		clickToTweet,
 		column,
 		dynamicSeparator,
+		form,
 		gif,
 		gist,
 		highlight,

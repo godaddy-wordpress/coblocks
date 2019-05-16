@@ -7,7 +7,7 @@ icons.accordion =
 <svg className="components-coblocks-svg" aria-hidden role="img" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m16.0833333 12h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v2c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-2c0-1.1-.8625-2-1.9166667-2zm0 4h-14.16666663v-2h14.16666663zm0-16h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v6c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-6c0-1.1-.8625-2-1.9166667-2zm0 8h-14.16666663v-4h14.16666663z" transform="translate(3 3)"/></svg>
 
 icons.accordionItem =
-<svg className="components-coblocks-svg" aria-hidden role="img" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fill-rule="nonzero"/><path d="m1 1h16v5h-16z"/></g></svg>;
+<svg className="components-coblocks-svg" aria-hidden role="img" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fillRule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fillRule="nonzero"/><path d="m1 1h16v5h-16z"/></g></svg>;
 
 icons.actionGrid =
 <svg className="components-coblocks-svg" aria-hidden role="img" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -62,12 +62,12 @@ icons.open =
 </svg>;
 
 icons.alert =
-<svg class="dashicon components-coblocks-svg" aria-hidden role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<svg className="dashicon components-coblocks-svg" aria-hidden role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 	<g transform="translate(3.75 1.62321)"><path d="m6.42583333 18.3425c0 1.0083333.81583334 1.8241667 1.82416667 1.8241667s1.8241667-.8158334 1.8241667-1.8241667z"/><path d="m8.25 4.58333333c2.53 0 4.5833333 2.05333334 4.5833333 4.58333334v6.41666663h-9.16666663v-6.41666663c0-2.53 2.05333333-4.58333334 4.58333333-4.58333334zm0-4.125c-.76083333 0-1.375.61416667-1.375 1.375v1.0725c-2.87833333.62333334-5.04166667 3.19-5.04166667 6.26083334v5.50000003l-1.83333333 1.8333333v.9166667h16.5v-.9166667l-1.8333333-1.8333333v-5.50000003c0-3.07083334-2.1633334-5.6375-5.0416667-6.26083334v-1.0725c0-.76083333-.61416667-1.375-1.375-1.375z"/></g>
 </svg>;
 
 icons.alertFilled =
-<svg class="dashicon components-coblocks-svg" aria-hidden role="img" focusable="false" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+<svg className="dashicon components-coblocks-svg" aria-hidden role="img" focusable="false" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
 	<g transform="translate(3.75 1.62321)"><g><path d="m6.42583333 18.3425c0 1.0083333.81583334 1.8241667 1.82416667 1.8241667s1.8241667-.8158334 1.8241667-1.8241667z"/><path d="m8.25 4.58333333c2.53 0 4.5833333 2.05333334 4.5833333 4.58333334v6.41666663h-9.16666663v-6.41666663c0-2.53 2.05333333-4.58333334 4.58333333-4.58333334zm0-4.125c-.76083333 0-1.375.61416667-1.375 1.375v1.0725c-2.87833333.62333334-5.04166667 3.19-5.04166667 6.26083334v5.50000003l-1.83333333 1.8333333v.9166667h16.5v-.9166667l-1.8333333-1.8333333v-5.50000003c0-3.07083334-2.1633334-5.6375-5.0416667-6.26083334v-1.0725c0-.76083333-.61416667-1.375-1.375-1.375z"/></g><g><path d="m6.42583333 18.3425c0 1.0083333.81583334 1.8241667 1.82416667 1.8241667s1.8241667-.8158334 1.8241667-1.8241667z"/><path d="m6.875 1.83333333v1.0725c-2.87833333.62333334-5.04166667 3.19-5.04166667 6.26083334v5.50000003l-1.83333333 1.8333333v.9166667h16.5v-.9166667l-1.8333333-1.8333333v-5.50000003c0-3.07083334-2.1633334-5.6375-5.0416667-6.26083334v-1.0725c0-.76083333-.61416667-1.375-1.375-1.375s-1.375.61416667-1.375 1.375z"/></g></g>
 </svg>;
 
@@ -92,14 +92,14 @@ icons.info =
 </svg>;
 
 icons.author =
-<svg class="dashicon components-coblocks-svg" aria-hidden role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<svg className="dashicon components-coblocks-svg" aria-hidden role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 	<g transform="translate(3 2)"><path d="m16 0h-14c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h4l3 3 3-3h4c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm0 16h-4-.83l-.59.59-1.58 1.58-1.59-1.59-.58-.58h-.83-4v-14h14z"/><path d="m9 9c1.65 0 3-1.35 3-3s-1.35-3-3-3-3 1.35-3 3 1.35 3 3 3zm0-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/><path d="m15 13.58c0-2.5-3.97-3.58-6-3.58s-6 1.08-6 3.58v1.42h12zm-9.52-.58c.74-.51 2.23-1 3.52-1s2.78.49 3.52 1z"/></g>
 </svg>;
 
 icons.at =
 <svg aria-hidden role="img" focusable="false" className="dashicon" width="20px" height="20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-		<g fill="currentColor" fill-rule="nonzero">
+	<g stroke="none" stroke-width="1" fill="none" fillRule="evenodd">
+		<g fill="currentColor" fillRule="nonzero">
 			<g transform="translate(2.000000, 2.000000)">
 				<path d="M8.02520581,0 L7.98776317,0 C5.86277332,-2.33459646e-05 3.82535953,0.846680002 2.32628237,2.35278409 C0.827205206,3.85888818 -0.00996089005,5.90023931 8.13151629e-20,8.02520581 C0.0199694079,12.4084909 3.69683664,15.9755263 8.19494578,15.9755263 L8.48699837,15.9755263 C9.03843834,15.9755263 9.48546877,15.5284959 9.48546877,14.9770559 C9.48546877,14.425616 9.03843834,13.9785856 8.48699837,13.9785856 L8.19494578,13.9785856 C4.7926579,13.9785856 2.01191785,11.3026849 1.99694079,8.01522111 C1.98963664,6.42160411 2.61758479,4.89075151 3.74187457,3.76130874 C4.86616435,2.63186597 6.39412944,1.99692405 7.98776317,1.99694079 L8.01522111,1.99694079 C11.3026849,2.01191785 13.9785856,4.7926579 13.9785856,8.19494578 L13.9785856,10.4839392 C13.9785856,11.0353791 13.5315551,11.4824096 12.9801152,11.4824096 C12.4286752,11.4824096 11.9816448,11.0353791 11.9816448,10.4839392 L11.9816448,7.98776317 C11.9878239,6.15815454 10.7537205,4.55679866 8.98291101,4.09664686 C7.21210152,3.63649505 5.35452376,4.43446543 4.46920407,6.03562594 C3.58388438,7.63678645 3.89577006,9.63430471 5.22705151,10.8893727 C6.55833296,12.1444407 8.57075026,12.3381632 10.1170013,11.3600969 C10.5524576,12.776278 11.9578409,13.6613354 13.4231625,13.4421927 C14.8884842,13.22305 15.9734432,11.9655554 15.9755263,10.4839392 L15.9755263,8.19494578 C15.9755263,3.69683664 12.4084909,0.0199694079 8.02520581,0 Z M7.98776317,9.98470397 C6.88488323,9.98470397 5.99082238,9.09064312 5.99082238,7.98776317 C5.99082238,6.88488323 6.88488323,5.99082238 7.98776317,5.99082238 C9.09064312,5.99082238 9.98470397,6.88488323 9.98470397,7.98776317 C9.98470397,9.09064312 9.09064312,9.98470397 7.98776317,9.98470397 Z"></path>
 			</g>
@@ -108,26 +108,26 @@ icons.at =
 </svg>;
 
 icons.hr =
-<svg class="dashicon components-coblocks-svg" aria-hidden role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<svg className="dashicon components-coblocks-svg" aria-hidden role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 	<path d="m5.11338976 2.8941786 3.2418891 3.24188911 1.44197591-1.44197591-4.68386501-4.6940918-4.6940918 4.6940918 1.45220269 1.44197591zm0 12.6198459-3.24188911-3.2418891-1.44197591 1.4419759 4.68386502 4.6940918 4.69409179-4.6940918-1.45220269-1.4419759z" transform="translate(6.88661 2.795898)"/>
 </svg>;
 
 icons.gif =
-<svg aria-hidden class="dashicon components-coblocks-svg" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<svg aria-hidden className="dashicon components-coblocks-svg" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 	<path d="m16 11v7h-14v-14h5.02c.05-.71.22-1.38.48-2h-5.5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5zm-1.5 5h-11l2.75-3.53 1.96 2.36 2.75-3.54zm2.8-9.11c.44-.7.7-1.51.7-2.39 0-2.49-2.01-4.5-4.5-4.5s-4.5 2.01-4.5 4.5 2.01 4.5 4.49 4.5c.88 0 1.7-.26 2.39-.7l3.12 3.12 1.42-1.42zm-3.8.11c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" transform="translate(3 2)"/>
 </svg>;
 
 icons.row =
-<svg aria-hidden class="dashicon components-coblocks-svg" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<svg aria-hidden className="dashicon components-coblocks-svg" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 	<path d="m16 0h-14c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-14v-4h14zm0 4h-14c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-14v-4h14z" transform="translate(3 3)"/>
 </svg>;
 
 icons.column =
-<svg aria-hidden class="dashicon components-coblocks-svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16zm0-11.47L17.74 9 12 13.47 6.26 9 12 4.53z"></path></svg>
+<svg aria-hidden className="dashicon components-coblocks-svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16zm0-11.47L17.74 9 12 13.47 6.26 9 12 4.53z"></path></svg>
 
 icons.highlight =
-<svg class="components-coblocks-svg" aria-hidden role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-	<g fill="none" fill-rule="evenodd"><path d="m0 0h24v24h-24z"/><g fill="currentColor" fill-rule="nonzero" transform="translate(3 1.399292)"><path d="m3 12 3 3v5h6v-5l3-3v-5h-12zm2-3h8v2.17l-3 3v3.83h-2v-3.83l-3-3z"/><path d="m8 0h2v3h-2z"/><path d="m1.270148 2.72698h1.999981v2.999972h-1.999981z" transform="matrix(.70680671 -.70740672 .70740672 .70680671 -2.324595 2.845229)"/><path d="m14.22778 3.230139h2.999972v1.999981h-2.999972z" transform="matrix(.70760661 -.70660659 .70660659 .70760661 1.609657 12.350205)"/></g></g>
+<svg className="components-coblocks-svg" aria-hidden role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+	<g fill="none" fillRule="evenodd"><path d="m0 0h24v24h-24z"/><g fill="currentColor" fillRule="nonzero" transform="translate(3 1.399292)"><path d="m3 12 3 3v5h6v-5l3-3v-5h-12zm2-3h8v2.17l-3 3v3.83h-2v-3.83l-3-3z"/><path d="m8 0h2v3h-2z"/><path d="m1.270148 2.72698h1.999981v2.999972h-1.999981z" transform="matrix(.70680671 -.70740672 .70740672 .70680671 -2.324595 2.845229)"/><path d="m14.22778 3.230139h2.999972v1.999981h-2.999972z" transform="matrix(.70760661 -.70660659 .70660659 .70760661 1.609657 12.350205)"/></g></g>
 </svg>
 
 icons.giphy =
@@ -136,7 +136,7 @@ icons.giphy =
         <polygon id="path-1" points="0.786 0.039 21.084 0.039 21.084 22 0.786 22"></polygon>
         <polygon id="path-3" points="0 22 201.762 22 201.762 0.039 0 0.039"></polygon>
     </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.3">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fillRule="evenodd" opacity="0.3">
         <g id="Vector-Smart-Object">
             <g id="Group-19" transform="translate(0.000000, 4.961200)" fill="currentColor">
                 <path d="M1.5944,6.3768 L4.6154,6.3768 C7.2504,6.3768 7.2364,2.3888 4.6154,2.3888 L1.5944,2.3888 L1.5944,6.3768 Z M1.5944,7.8448 L1.5944,10.9068 L0.0004,10.9068 L0.0004,0.9348 C1.5234,0.9348 3.0904,0.9208 4.6154,0.9208 C9.3734,0.9208 9.3884,7.8148 4.6154,7.8448 L1.5944,7.8448 Z" id="Fill-1"></path>
@@ -171,7 +171,7 @@ icons.giphy =
 </svg>;
 
 icons.github =
-<svg aria-hidden class="dashicon components-coblocks-svg" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<svg aria-hidden className="dashicon components-coblocks-svg" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 	<path d="m9.91141337.24530748c-5.47605589 0-9.91141337 4.43783534-9.91141337 9.91141342 0 4.3800187 2.83961993 8.0943209 6.77692889 9.4034534.49557067.0933325.67727992-.2130954.67727992-.4765738 0-.2353961-.00825951-.8589892-.01238927-1.6849403-2.75702482.5979886-3.3384944-1.3297813-3.3384944-1.3297813-.45096931-1.1439423-1.10264474-1.4495442-1.10264474-1.4495442-.89780886-.6145076.06937989-.6021183.06937989-.6021183.99527109.0693799 1.51809815 1.0208755 1.51809815 1.0208755.88376769 1.5156203 2.32009668 1.0778662 2.88669915.8242993.08920272-.6409381.34442161-1.0778663.62772284-1.3256516-2.20115972-.2477853-4.51464879-1.1001669-4.51464879-4.8978901 0-1.08199596.38406727-1.96576365 1.02004963-2.65956258-.1115034-.25026319-.4460136-1.25792355.08672486-2.62322074 0 0 .83008087-.26595626 2.72563868 1.01591987.79291307-.22052895 1.63538321-.3295545 2.47785334-.3345102.84247015.0049557 1.68494025.11398125 2.47785335.3345102 1.8831685-1.28187613 2.7132494-1.01591987 2.7132494-1.01591987.5327385 1.36529719.1982283 2.37295755.0991141 2.62322074.6318526.69379893 1.0159199 1.57756662 1.0159199 2.65956258 0 3.8076346-2.3167929 4.645975-4.5220823 4.8896306.3468994.2973424.6690204.9052424.6690204 1.8336115 0 1.3264775-.0123893 2.3919544-.0123893 2.7140753 0 .2601746.1734497.5699063.6814097.4707922 3.9653913-1.3000471 6.8025333-5.0168271 6.8025333-9.3902382 0-5.47357808-4.4378353-9.91141342-9.91141333-9.91141342" transform="translate(2.086212 2.086212)"/>
 </svg>;
 
@@ -228,6 +228,6 @@ icons.trash =
 icons.social =
 <svg className="components-coblocks-svg" aria-hidden role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 	<g fill="none" fillRule="evenodd"><path d="m0 0h24v24h-24z"/><path d="m15 14.08c-.76 0-1.44.3-1.96.77l-7.13-4.15c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7l-7.05 4.11c-.54-.5-1.25-.81-2.04-.81-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92zm0-12.08c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-12 9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" fill="currentColor" fillRule="nonzero" transform="translate(3 2)"/></g>
-</svg>
+</svg>;
 
 export default icons;
