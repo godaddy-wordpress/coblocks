@@ -2,10 +2,7 @@
 /**
  * Add body classes to particular themes to help style them.
  *
- * @package   @@pkg.title
- * @author    @@pkg.author
- * @link      @@pkg.author_uri
- * @license   @@pkg.license
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
@@ -14,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main @@pkg.title Class
+ * Generate theme-specific body and admin classes.
  *
  * @since 1.0.0
  */

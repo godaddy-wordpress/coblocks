@@ -1,13 +1,13 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
-Author URI: https://coblocks.com
-Plugin URI: https://coblocks.com
+Author URI: https://www.godaddy.com
+Plugin URI: https://www.coblocks.com
 Contributors: coblocks, richtabor, phpbits
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
-Tested up to: @@pkg.tested_up_to
+Tested up to: 5.2
 Requires PHP: 5.2.4
-Stable tag: @@pkg.version
-License: GPL-3.0
+Stable tag: 1.9.4
+License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 CoBlocks is a suite of page builder WordPress blocks for Gutenberg, with 10+ new blocks and a true page builder experience with rows and columns.
@@ -82,7 +82,7 @@ The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks m
 * [Follow us on Instagram](https://www.instagram.com/coblockswp/)
 
 ## Built with developers in mind
-Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/coblocks/coblocks) and join the party. 🎉
+Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/godaddy/coblocks) and join the party. 🎉
 
 
 == Screenshots ==
