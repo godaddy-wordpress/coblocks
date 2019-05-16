@@ -115,7 +115,7 @@ class CoBlocks_Google_Map_Block {
 			'coblocks_google_maps_api_key',
 			array(
 				'type'              => 'string',
-				'description'       => __( 'Google Map API key for map rendering', '@@textdomain' ),
+				'description'       => __( 'Google Map API key for map rendering', 'coblocks' ),
 				'sanitize_callback' => 'sanitize_text_field',
 				'show_in_rest'      => true,
 				'default'           => '',

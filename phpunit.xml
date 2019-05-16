@@ -1,0 +1,25 @@
+<phpunit
+	bootstrap=".dev/tests/phpunit/bootstrap.php"
+	backupGlobals="false"
+	colors="true"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	>
+	<testsuites>
+		<testsuite>
+			<directory prefix="test-" suffix=".php">./.dev/tests/phpunit/</directory>
+		</testsuite>
+	</testsuites>
+	<filter>
+		<whitelist addUncoveredFilesFromWhitelist="true">
+			<directory>./</directory>
+			<exclude>
+				<directory suffix=".php">./build</directory>
+			</exclude>
+		</whitelist>
+	</filter>
+	<php>
+		<const name="PHPUNIT_PLUGIN_TEST" value="true"/>
+	</php>
+</phpunit>
