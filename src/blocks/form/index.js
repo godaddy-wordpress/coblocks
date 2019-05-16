@@ -29,7 +29,7 @@ const icon = icons.form;
 const keywords = [
 	__( 'email' ),
 	__( 'about' ),
-	__( 'feedback' ),
+	__( 'contact' ),
 ];
 
 const blockAttributes = {
