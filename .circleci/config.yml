@@ -76,6 +76,7 @@ jobs:
   deploy:
     docker:
       - image: circleci/php:latest-node-browsers-legacy
+      - image: circleci/golang:1.12
     steps:
       - checkout
       - run:
@@ -87,6 +88,14 @@ jobs:
       - run:
           name: Install SVN
           command: sudo apt-get update && sudo apt-get install subversion
+      - run:
+          name: Install golang and ghr
+          command: |
+            wget -c https://storage.googleapis.com/golang/go1.7.3.linux-amd64.tar.gz
+            sudo tar -C /usr/local -xvzf go1.7.3.linux-amd64.tar.gz
+            export  PATH=$PATH:/usr/local/go/bin
+            export GOPATH="$HOME/go_projects"
+            export GOBIN="$GOPATH/bin"
       - run:
           name: Install WPCLI
           command: |
