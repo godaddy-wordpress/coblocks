@@ -14,7 +14,7 @@ workflows:
             tags:
               only: /.*/
             branches:
-              ignore: /.*/
+              only: master
 
 version: 2
 jobs:
