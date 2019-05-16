@@ -127,14 +127,16 @@ Please reach out via the contact form at the bottom right of [our website](https
 == Changelog ==
 
 = 1.9.5 =
+* New: Add new Form block 🎉
 * New: Add new Masonry gallery block 🎉
 * New: Add new Stacked gallery block 🎉
 * New: Add new Carousel gallery block 🎉
+* New: Add official support for Gutenberg 5.7 🎊
 * Tweak: Respect prefers-reduced-motion for fixed backgrounds
-* Tweak: Adjust Row block UI for WordPress 5.2/Gutenberg 5.6
+* Tweak: Adjust Row block UI for WordPress 5.2/Gutenberg 5.7
 * Tweak: Check if Google Maps API Key is saved before calling
 * Tweak: Add a button to remove the saved Google Maps API key
-* Tweak: Update the Gist block UI for Gutenberg 5.6
+* Tweak: Update the Gist block UI for Gutenberg 5.7
 * Tweak: Switch build tasks to use Grunt instead of Gulp
 * Fix: Prevent redirection in WP-CLI and show log message for those users
 * Fix: Video background + background opacity now works properly on the Row block
