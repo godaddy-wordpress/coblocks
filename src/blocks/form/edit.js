@@ -293,10 +293,8 @@ class FormEdit extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( 'Form Settings' ) }>
 						{ this.renderToAndSubjectFields() }
-					</PanelBody>
-					<InspectorAdvancedControls>
 						{ applyFilters( 'coblocks.advanced_forms_cta' ) }
-					</InspectorAdvancedControls>
+					</PanelBody>
 				</InspectorControls>
 				<div className={ classes }>
 					<InnerBlocks
