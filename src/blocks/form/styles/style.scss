@@ -42,6 +42,20 @@
 				padding-left: 10px;
 			}
 		}
+
+		@media only screen and (max-width : 535px) {
+			display: block;
+
+			.wrap {
+				width: 100%;
+
+				&:first-child,
+				&:last-child {
+					margin: 0 0 1.15rem 0;
+					padding: 0;
+				}
+			}
+		}
 	}
 
 	.subtext {
@@ -50,9 +64,6 @@
 		margin-bottom: -0.3rem;
 		margin-top: 0.3rem;
 		opacity: 0.66;
-	}
-
-	.coblocks-form__submitted {
 	}
 
 	.form-submit {

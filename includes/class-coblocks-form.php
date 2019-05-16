@@ -456,7 +456,7 @@ class CoBlocks_Form {
 			sprintf(
 				'<div class="coblocks-form__submitted">%s %s</div>',
 				wp_kses_post( $sent_notice ),
-				wp_kses_post( $this->email_content ),
+				wp_kses_post( $this->email_content )
 			),
 			get_the_ID()
 		);
