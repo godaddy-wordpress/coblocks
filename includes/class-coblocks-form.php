@@ -440,6 +440,11 @@ class CoBlocks_Form {
 	public function success_message() {
 
 		/**
+		 * Filter the sent notice above the success message.
+		 */
+		$sent_notice = apply_filters( 'coblocks_form_sent_notice', __( 'Your message was sent:', 'coblocks' ) );
+
+		/**
 		 * Filter the success message after a form submission
 		 *
 		 * @param mixed   Success message markup.
@@ -448,7 +453,8 @@ class CoBlocks_Form {
 		$success_message = apply_filters(
 			'coblocks_form_email_content',
 			sprintf(
-				'Your message was sent: <div class="coblocks-form__submitted">%s</div>',
+				'<div class="coblocks-form__submitted">%s %s</div>',
+				wp_kses_post( $sent_notice ),
 				wp_kses_post( $this->email_content ),
 			),
 			get_the_ID()
