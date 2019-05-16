@@ -1,6 +1,6 @@
 # CoBlocks: Page Builder Blocks for Gutenberg
 
-[![CircleCI](https://circleci.com/gh/godaddy/coblocks.svg?style=svg)](https://circleci.com/gh/godaddy/coblocks) [![WordPress plugin](https://img.shields.io/wordpress/plugin/dt/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress](https://img.shields.io/wordpress/v/coblocks.svg?style=flat)]() [![License](https://img.shields.io/badge/license-GPL--3.0%2B-red.svg)](https://github.com/richtabor/coblocks/blob/master/license.txt)
+[![CircleCI](https://circleci.com/gh/godaddy/coblocks.svg?style=svg)](https://circleci.com/gh/godaddy/coblocks) [![WordPress plugin](https://img.shields.io/wordpress/plugin/dt/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress](https://img.shields.io/wordpress/v/coblocks.svg?style=flat)]() [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://github.com/richtabor/coblocks/blob/master/license.txt)
 
 [CoBlocks](https://coblocks.com?utm_medium=github&utm_source=github&utm_campaign=readme&utm_content=coblocks) is a suite of professional page building content blocks for the WordPress Gutenberg block editor. This the most innovative collection of page building WordPress blocks for the new Gutenberg block editor. We will make you rethink what WordPress is capable of.
 
@@ -12,24 +12,28 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 
 ### Our Blocks
 
--   Resizable Row/Columns Blocks
--   Hero Block
--   Buttons Block
--   Shape Divider Block
--   Features Block
--   Media Card Block
--   Icon Block
--   Map Block
 -   Accordion Block
 -   Alert Block
 -   Author Profile Block
+-   Buttons Block
+-   Carousel Gallery Block (New!)
 -   Click to Tweet Block
 -   Dynamic Separator Block
+-   Features Block
+-   Form Block (New!)
 -   Gif Block
 -   GitHub Gist Block
+-   Hero Block
 -   Highlight Block
+-   Icon Block
+-   Map Block
+-   Masonry Gallery Block (New!)
+-   Media Card Block
 -   Pricing Table Block
+-   Resizable Row/Columns Blocks
+-   Shape Divider Block
 -   Social Sharing Block
+-   Stacked Gallery Block (New!)
 
 ### Our Block Manager
 
