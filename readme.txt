@@ -28,24 +28,28 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 ## Make beautiful web pages with Gutenberg, and CoBlocks
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
 
-* Resizable Row/Columns Blocks
-* Shape Divider Block
-* Hero Block (New!)
-* Buttons Block (New!)
-* Features Block
-* Media Card Block
-* Icon Block
-* Map Block
 * Accordion Block
 * Alert Block
 * Author Profile Block
+* Buttons Block
+* Carousel Gallery Block (New!)
 * Click to Tweet Block
 * Dynamic Separator Block
+* Features Block
+* Form Block (New!)
 * Gif Block
 * GitHub Gist Block
+* Hero Block
 * Highlight Block
+* Icon Block
+* Map Block
+* Masonry Gallery Block (New!)
+* Media Card Block
 * Pricing Table Block
+* Resizable Row/Columns Blocks
+* Shape Divider Block
 * Social Sharing Block
+* Stacked Gallery Block (New!)
 
 And we're adding new Gutenberg blocks all the time!
 
@@ -121,6 +125,26 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 Please reach out via the contact form at the bottom right of [our website](https://coblocks.com).
 
 == Changelog ==
+
+= 1.9.5 =
+* New: Add new Form block 🎉
+* New: Add new Masonry gallery block 🎉
+* New: Add new Stacked gallery block 🎉
+* New: Add new Carousel gallery block 🎉
+* New: Add official support for Gutenberg 5.7 🎊
+* Tweak: Respect prefers-reduced-motion for fixed backgrounds
+* Tweak: Adjust Row block UI for WordPress 5.2/Gutenberg 5.7
+* Tweak: Check if Google Maps API Key is saved before calling
+* Tweak: Add a button to remove the saved Google Maps API key
+* Tweak: Update the Gist block UI for Gutenberg 5.7
+* Tweak: Switch build tasks to use Grunt instead of Gulp
+* Fix: Prevent redirection in WP-CLI and show log message for those users
+* Fix: Video background + background opacity now works properly on the Row block
+* Fix: Resolve issue where fullscreen + video bgs did not play well together
+* Fix: Resolve Shape Divider block color palette UI issue for Gutenberg 5.6
+* Fix: Adjust Media Card resizable UI for WordPress 5.2/Gutenberg 5.6
+* Fix: Resolve issue where a custom background color applied to a Button block filled the entire block content area
+* Fix: Add check for post before attempting to retrieve post meta
 
 = 1.9.4 =
 * Fix: Add proper escaping method for the Map block API key

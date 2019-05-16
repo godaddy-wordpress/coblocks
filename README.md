@@ -12,24 +12,28 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 
 ### Our Blocks
 
--   Resizable Row/Columns Blocks
--   Hero Block
--   Buttons Block
--   Shape Divider Block
--   Features Block
--   Media Card Block
--   Icon Block
--   Map Block
 -   Accordion Block
 -   Alert Block
 -   Author Profile Block
+-   Buttons Block
+-   Carousel Gallery Block (New!)
 -   Click to Tweet Block
 -   Dynamic Separator Block
+-   Features Block
+-   Form Block (New!)
 -   Gif Block
 -   GitHub Gist Block
+-   Hero Block
 -   Highlight Block
+-   Icon Block
+-   Map Block
+-   Masonry Gallery Block (New!)
+-   Media Card Block
 -   Pricing Table Block
+-   Resizable Row/Columns Blocks
+-   Shape Divider Block
 -   Social Sharing Block
+-   Stacked Gallery Block (New!)
 
 ### Our Block Manager
 
