@@ -8,7 +8,7 @@
 	input[type="text"],
 	input[type="email"] {
 		margin: 0 0 1.15rem 0;
-		width: 80%;
+		width: 100%;
 	}
 
 	textarea {
@@ -17,6 +17,38 @@
 		margin: 0 0 1.15rem 0;
 		resize: vertical;
 		width: 100%;
+	}
+
+	blockquote {
+		padding: 12px 5px;
+
+		ul {
+			margin: 0;
+		}
+	}
+
+	.name-wrap {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+
+		.wrap {
+			width: 50%;
+			margin: 0 0 1.15rem 0;
+
+			input[type="text"] {
+				width: 100%;
+				margin-bottom: 3px;
+			}
+
+			&:first-child {
+				padding-right: 10px;
+			}
+
+			&:last-child {
+				padding-left: 10px;
+			}
+		}
 	}
 
 	.coblocks-form-submission {

@@ -99,31 +99,41 @@ class CoBlocks_Form {
 		$this->form_hash = sha1( json_encode( $atts ) . $content );
 		$submitted_hash  = filter_input( INPUT_POST, 'form-hash', FILTER_SANITIZE_STRING );
 
-		if ( $submitted_hash === $this->form_hash ) {
-
-			$submit_form = $this->process_form_submission( $atts );
-
-			if ( $submit_form ) {
-
-				return $this->success_message();
-
-			}
-		}
-
 		ob_start();
 
 		?>
 
-		<div class="coblocks-form <?php echo esc_attr( get_the_ID() ); ?>">
-			<form action="<?php echo esc_url( set_url_scheme( get_the_permalink() ) ); ?>" method="post">
+		<div class="coblocks-form" id="<?php echo esc_attr( $this->form_hash ); ?>">
+
+			<?php
+
+			if ( $submitted_hash === $this->form_hash ) {
+
+				$submit_form = $this->process_form_submission( $atts );
+
+				if ( $submit_form ) {
+
+					$this->success_message();
+
+					print( '</div>' );
+
+					return ob_get_clean();
+
+				}
+			}
+
+			?>
+
+			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( untrailingslashit( get_the_permalink() ) ), $this->form_hash ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); ?>
 				<div class="form-submit">
 					<?php $this->render_submit_button( $atts ); ?>
 					<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
 					<input type="hidden" name="action" value="coblocks-form-submit">
-					<input type="hidden" name="form-hash" value="<?php echo esc_attr( sha1( json_encode( $atts ) . $content ) ); ?>">
+					<input type="hidden" name="form-hash" value="<?php echo esc_attr( $this->form_hash ); ?>">
 				</div>
 			</form>
+
 		</div>
 
 		<?php
@@ -145,10 +155,33 @@ class CoBlocks_Form {
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Name', 'coblocks' );
 		$label_slug    = sanitize_title( $label );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
+		$has_last_name = ( isset( $atts['hasLastName'] ) && $atts['hasLastName'] );
 
 		ob_start();
 
 		$this->render_field_label( $atts, $label );
+
+		if ( $has_last_name ) {
+
+			?>
+
+			<div class="name-wrap">
+				<div class="wrap">
+					<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="coblocks-field coblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
+					<small class="subtext">First</small>
+				</div>
+
+				<div class="wrap">
+					<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
+					<small class="subtext">Last</small>
+				</div>
+			</div>
+
+			<?php
+
+			return ob_get_clean();
+
+		}
 
 		?>
 
@@ -328,6 +361,12 @@ class CoBlocks_Form {
 
 		foreach ( $_POST as $key => $data ) {
 
+			if ( is_array( $data['value'] ) ) {
+
+				$data['value'] = implode( ' ', $data['value'] );
+
+			}
+
 			$this->email_content .= '<li>' . sanitize_text_field( $data['label'] ) . ': ' . sanitize_text_field( $data['value'] ) . '</li>';
 
 		}
@@ -413,22 +452,18 @@ class CoBlocks_Form {
 			get_the_ID()
 		);
 
-		ob_start();
-
 		echo wp_kses_post( $success_message );
 
-		// Prevent a page refresh form resubmitting the form
 		?>
 
 		<script type="text/javascript">
-		if ( window.history.replaceState ) {
-			window.history.replaceState( null, null, window.location.href );
+		if ( window.history.replaceState && window.location.hash ) {
+			document.getElementById( window.location.hash.substring( 1 ) ).scrollIntoView();
+			window.history.replaceState( null, null, ' ' );
 		}
 		</script>
 
 		<?php
-
-		return ob_get_clean();
 
 	}
 
