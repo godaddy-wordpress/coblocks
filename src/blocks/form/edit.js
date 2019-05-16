@@ -83,6 +83,9 @@ export const childBlocks = [
 			title: __( 'Name' ),
 			description: __( 'A text field for names.' ),
 			icon: icons.name,
+			supports: {
+				inserter: false,
+			},
 			edit: props => (
 				<CoBlocksFieldName
 					type={ 'name' }
@@ -105,6 +108,9 @@ export const childBlocks = [
 			keywords: [ __( 'e-mail' ), __( 'mail' ), 'email' ],
 			description: __( 'An email address field.' ),
 			icon:icons.email,
+			supports: {
+				inserter: false,
+			},
 			edit: editField( 'email' ),
 		},
 	},
@@ -116,6 +122,9 @@ export const childBlocks = [
 			keywords: [ __( 'Textarea' ), 'textarea', __( 'Multiline text' ) ],
 			description: __( 'A text box for longer responses.' ),
 			icon: icons.textarea,
+			supports: {
+				inserter: false,
+			},
 			edit: props => (
 				<CoBlocksFieldTextarea
 					label={ getFieldLabel( props ) }
