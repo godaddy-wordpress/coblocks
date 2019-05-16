@@ -29,9 +29,13 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
 
 * Resizable Row/Columns Blocks
+* Form Block (New!)
 * Shape Divider Block
-* Hero Block (New!)
-* Buttons Block (New!)
+* Hero Block
+* Masonry Gallery Block (New!)
+* Carousel Gallery Block (New!)
+* Stacked Gallery Block (New!)
+* Buttons Block
 * Features Block
 * Media Card Block
 * Icon Block
