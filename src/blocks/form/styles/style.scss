@@ -5,9 +5,8 @@
 		margin-bottom: 3px;
 	}
 
-	input[type="text"],
-	input[type="email"] {
-		margin: 0 0 1.15rem 0;
+	.coblocks-field {
+		margin: 0 0 1.25rem 0;
 		width: 100%;
 	}
 
@@ -86,3 +85,19 @@
 	}
 }
 
+.is-twentysixteen,
+.is-twentynineteen {
+	.coblocks-form__submit {
+		margin-top: 1.5em;
+	}
+}
+
+.is-twentyseventeen {
+	.coblocks-field {
+		margin-bottom: 1.75rem;
+	}
+
+	.coblocks-form__submit .wp-block-button__link {
+		margin-top: 0.1em;
+	}
+}

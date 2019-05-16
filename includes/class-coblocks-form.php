@@ -322,7 +322,7 @@ class CoBlocks_Form {
 
 		?>
 
-		<button type="submit" class="<?php echo esc_attr( $btn_class ); ?>"<?php echo $styles; ?>><?php echo esc_html( $btn_text ); ?></button>
+		<button type="submit" class="wp-block-button__link <?php echo esc_attr( $btn_class ); ?>"<?php echo $styles; ?>><?php echo esc_html( $btn_text ); ?></button>
 
 		<?php
 

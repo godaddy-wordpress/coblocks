@@ -11,6 +11,10 @@
 		flex-direction: row;
 		justify-content: space-between;
 
+		label {
+			cursor: text;
+		}
+
 		.components-base-control {
 			&.coblocks-field-label__required {
 				color: $dark-gray-500;
@@ -77,15 +81,51 @@
 }
 
 // Core themes.
-.is-twentynineteen .coblocks-form {
-	.components-text-control__input,
-	.components-textarea-control__input {
-		border-color: #ccc;
-		border-radius: 0;
-		padding: 1.2rem 0;
+.is-twentynineteen {
+	.coblocks-form {
+		.components-text-control__input,
+		.components-textarea-control__input {
+			border-color: #ccc;
+			border-radius: 0;
+			padding: 1.2rem 0;
+		}
+	}
+
+	.coblocks-form__submit.wp-block-button {
+		margin-top: 0;
+	}
+}
+
+.is-twentyseventeen {
+	.coblocks-label {
+		font-weight: 800;
 	}
 
 	.coblocks-form__submit {
+		margin-top: -0.75em;
+	}
+}
+
+.is-twentysixteen {
+	.coblocks-form {
+		.components-text-control__input,
+		.components-textarea-control__input {
+			background-color: #f7f7f7;
+			border-color: #d1d1d1;
+			border-radius: 2px;
+			padding: 0.75rem 0;
+		}
+
+		.components-base-control {
+			margin-bottom: 0;
+
+			.components-base-control__field {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.coblocks-form__submit.wp-block-button {
 		margin-top: 0;
 	}
 }
