@@ -118,7 +118,7 @@ class CoBlocks_Block_Assets {
 		 * @param string  $to      Admin email.
 		 * @param integer $post_id Current post ID.
 		 */
-		$email_to = apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), $post_id );
+		$email_to = (string) apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), $post_id );
 
 		wp_localize_script(
 			$this->_slug . '-editor',

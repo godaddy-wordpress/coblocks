@@ -268,7 +268,7 @@ class CoBlocks_Form {
 		 *
 		 * @param string $field_label Form field label text.
 		 */
-		$required_text  = apply_filters( 'coblocks_form_label_required_text', '&#42;', $field_label );
+		$required_text  = (string) apply_filters( 'coblocks_form_label_required_text', '&#42;', $field_label );
 		$required_attr  = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 		$required_label = empty( $required_attr ) ? '' : sprintf( ' <span class="required">%s</span>', $required_text );
 
@@ -382,7 +382,7 @@ class CoBlocks_Form {
 		 * @param array   $_POST   Submitted form data.
 		 * @param integer $post_id Current post ID.
 		 */
-		$to = apply_filters( 'coblocks_form_email_to', $to, $_POST, $post_id );
+		$to = (string) apply_filters( 'coblocks_form_email_to', $to, $_POST, $post_id );
 
 		/**
 		 * Filter the email subject
@@ -391,7 +391,7 @@ class CoBlocks_Form {
 		 * @param array   $_POST   Submitted form data.
 		 * @param integer $post_id Current post ID.
 		 */
-		$subject = apply_filters( 'coblocks_form_email_subject', $subject, $_POST, $post_id );
+		$subject = (string) apply_filters( 'coblocks_form_email_subject', $subject, $_POST, $post_id );
 
 		/**
 		 * Filter the form email content.
@@ -400,7 +400,7 @@ class CoBlocks_Form {
 		 * @param array   $_POST               Submitted form data.
 		 * @param integer $post_id             Current post ID.
 		 */
-		$email_content = apply_filters( 'coblocks_form_email_content', $this->email_content, $_POST, $post_id );
+		$email_content = (string) apply_filters( 'coblocks_form_email_content', $this->email_content, $_POST, $post_id );
 
 		add_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
 
@@ -442,7 +442,7 @@ class CoBlocks_Form {
 		/**
 		 * Filter the sent notice above the success message.
 		 */
-		$sent_notice = apply_filters( 'coblocks_form_sent_notice', __( 'Your message was sent:', 'coblocks' ) );
+		$sent_notice = (string) apply_filters( 'coblocks_form_sent_notice', __( 'Your message was sent:', 'coblocks' ) );
 
 		/**
 		 * Filter the success message after a form submission
@@ -451,7 +451,7 @@ class CoBlocks_Form {
 		 * @param string  Sent notice.
 		 * @param integer Current post ID.
 		 */
-		$success_message = apply_filters(
+		$success_message = (string) apply_filters(
 			'coblocks_form_success_message',
 			sprintf(
 				'<div class="coblocks-form__submitted">%s %s</div>',
