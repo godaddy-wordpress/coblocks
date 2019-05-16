@@ -4,13 +4,13 @@ workflows:
     jobs:
       # Support PHP Versions
       # http://php.net/supported-versions.php
-      - php71-build # Will be deprecated on 1 Dec 2019
+      - php71-build: # Will be deprecated on 1 Dec 2019
           filters:
             tags:
               only: /.*/
             branches:
               only: /.*/
-      - php72-build # Will be deprecated on 30 Nov 2020
+      - php72-build: # Will be deprecated on 30 Nov 2020
           filters:
             tags:
               only: /.*/
