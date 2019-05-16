@@ -126,7 +126,7 @@ class CoBlocks_Form {
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( untrailingslashit( get_the_permalink() ) ), $this->form_hash ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); ?>
-				<div class="form-submit">
+				<div class="form-submit wp-block-button">
 					<?php $this->render_submit_button( $atts ); ?>
 					<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
 					<input type="hidden" name="action" value="coblocks-form-submit">
