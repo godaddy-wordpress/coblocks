@@ -28,28 +28,28 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 ## Make beautiful web pages with Gutenberg, and CoBlocks
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) is the last page builder you’ll ever need: you get a winning mix of additional WordPress blocks, and page builder functionality. With CoBlocks you have everything you need to make beautiful web pages with the new block editor:
 
-* Resizable Row/Columns Blocks
-* Form Block (New!)
-* Shape Divider Block
-* Hero Block
-* Masonry Gallery Block (New!)
-* Carousel Gallery Block (New!)
-* Stacked Gallery Block (New!)
-* Buttons Block
-* Features Block
-* Media Card Block
-* Icon Block
-* Map Block
 * Accordion Block
 * Alert Block
 * Author Profile Block
+* Buttons Block
+* Carousel Gallery Block (New!)
 * Click to Tweet Block
 * Dynamic Separator Block
+* Features Block
+* Form Block (New!)
 * Gif Block
 * GitHub Gist Block
+* Hero Block
 * Highlight Block
+* Icon Block
+* Map Block
+* Masonry Gallery Block (New!)
+* Media Card Block
 * Pricing Table Block
+* Resizable Row/Columns Blocks
+* Shape Divider Block
 * Social Sharing Block
+* Stacked Gallery Block (New!)
 
 And we're adding new Gutenberg blocks all the time!
 
