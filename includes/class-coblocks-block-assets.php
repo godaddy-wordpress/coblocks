@@ -112,12 +112,20 @@ class CoBlocks_Block_Assets {
 		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
 
+		/**
+		 * Filter the default block email address value
+		 *
+		 * @param string  $to      Admin email.
+		 * @param integer $post_id Current post ID.
+		 */
+		$email_to = apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), $post_id );
+
 		wp_localize_script(
 			$this->_slug . '-editor',
 			'coblocksBlockData',
 			[
 				'form' => [
-					'adminEmail'   => get_option( 'admin_email' ),
+					'adminEmail'   => $email_to,
 					'emailSubject' => $post_title,
 				],
 			]
