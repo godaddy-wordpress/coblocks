@@ -448,10 +448,11 @@ class CoBlocks_Form {
 		 * Filter the success message after a form submission
 		 *
 		 * @param mixed   Success message markup.
+		 * @param string  Sent notice.
 		 * @param integer Current post ID.
 		 */
 		$success_message = apply_filters(
-			'coblocks_form_email_content',
+			'coblocks_form_success_message',
 			sprintf(
 				'<div class="coblocks-form__submitted">%s %s</div>',
 				wp_kses_post( $sent_notice ),
