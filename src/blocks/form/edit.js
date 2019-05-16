@@ -81,7 +81,7 @@ export const childBlocks = [
 		settings: {
 			...FieldDefaults,
 			title: __( 'Name' ),
-			description: __( 'Add an input field for folks to add their name.' ),
+			description: __( 'A text field for names.' ),
 			icon: icons.name,
 			edit: props => (
 				<CoblocksFieldName
@@ -103,7 +103,7 @@ export const childBlocks = [
 			...FieldDefaults,
 			title: __( 'Email' ),
 			keywords: [ __( 'e-mail' ), __( 'mail' ), 'email' ],
-			description: __( 'Add an email address field to reply back.' ),
+			description: __( 'An email address field.' ),
 			icon:icons.email,
 			edit: editField( 'email' ),
 		},
@@ -114,7 +114,7 @@ export const childBlocks = [
 			...FieldDefaults,
 			title: __( 'Message' ),
 			keywords: [ __( 'Textarea' ), 'textarea', __( 'Multiline text' ) ],
-			description: __( 'Add a text box is for longer responses.' ),
+			description: __( 'A text box for longer responses.' ),
 			icon: icons.textarea,
 			edit: props => (
 				<CoblocksFieldTextarea
