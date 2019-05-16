@@ -51,7 +51,6 @@ function CoblocksFieldName( {
 									) }
 									value={ labelFirstName }
 									onChange={ value => {
-										resetFocus && resetFocus();
 										setAttributes( { labelFirstName: value } );
 									} }
 									placeholder={ __( 'Add label…' ) }
@@ -67,7 +66,6 @@ function CoblocksFieldName( {
 								) }
 								value={ labelLastName }
 								onChange={ value => {
-									resetFocus && resetFocus();
 									setAttributes( { labelLastName: value } );
 								} }
 								placeholder={ __( 'Add label…' ) }
