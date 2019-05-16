@@ -14,4 +14,7 @@ cp -a wp-org-assets/* $HOME/coblocks/assets/
 # Deploy Coblocks to WordPress.org
 cd $HOME/coblocks
 svn add * --force
-svn ci --no-auth-cache --username $WP_ORG_USERNAME --password $WP_ORG_PASSWORD -m "Deploy new version of Coblocks"
+svn ci --no-auth-cache --username ${WP_ORG_USERNAME} --password ${WP_ORG_PASSWORD} -m "Deploy new version of Coblocks"
+
+# Deploy a Coblocks Github release
+ghr -t ${GH_ACCESS_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} /tmp/artifacts
