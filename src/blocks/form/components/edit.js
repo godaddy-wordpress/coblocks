@@ -105,7 +105,6 @@ const editField = type => props => (
 		required={ props.attributes.required }
 		setAttributes={ props.setAttributes }
 		isSelected={ props.isSelected }
-		placeholder={ props.attributes.placeholder }
 	/>
 );
 
@@ -156,7 +155,6 @@ export const childBlocks = [
 					required={ props.attributes.required }
 					setAttributes={ props.setAttributes }
 					isSelected={ props.isSelected }
-					placeholder={ props.attributes.placeholder }
 				/>
 			),
 		},

@@ -28,9 +28,7 @@ function CoblocksField( {
 					setAttributes={ setAttributes }
 					isSelected={ isSelected }
 				/>
-				<TextControl
-					type={ type }
-				/>
+				<TextControl type={ type } />
 			</div>
 		</Fragment>
 	);

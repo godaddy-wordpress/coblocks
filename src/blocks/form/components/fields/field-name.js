@@ -18,7 +18,6 @@ function CoblocksFieldName( {
 	required,
 	label,
 	setAttributes,
-	placeholder,
 	hasLastName,
 	labelFirstName,
 	labelLastName,

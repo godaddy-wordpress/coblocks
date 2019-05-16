@@ -15,7 +15,6 @@ function CoblocksFieldTextarea( {
 	label,
 	setAttributes,
 	isSelected,
-	placeholder,
 } ) {
 	return (
 		<Fragment>
