@@ -19,26 +19,19 @@
 		width: 100%;
 	}
 
-	blockquote {
-		padding: 12px 5px;
-
-		ul {
-			margin: 0;
-		}
-	}
-
 	.name-wrap {
+		align-items: center;
 		display: flex;
 		flex-flow: row wrap;
-		align-items: center;
+		margin-bottom: 1.15rem;
 
 		.wrap {
+			margin-bottom: 0.15rem;
 			width: 50%;
-			margin: 0 0 1.15rem 0;
 
 			input[type="text"] {
-				width: 100%;
 				margin-bottom: 3px;
+				width: 100%;
 			}
 
 			&:first-child {
@@ -49,6 +42,18 @@
 				padding-left: 10px;
 			}
 		}
+	}
+
+	.subtext {
+		display: block;
+		line-height: 1;
+		margin-bottom: -0.3rem;
+		margin-top: 0.3rem;
+		opacity: 0.66;
+	}
+
+	.form-submit {
+		margin-top: 1.5rem;
 	}
 
 	.coblocks-form-submission {
@@ -68,34 +73,5 @@
 	.required {
 		color: $alert-red;
 		margin-left: 5px;
-	}
-}
-
-.coblocks-field--name {
-	&__inner {
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
-
-		> div {
-			width: 100%;
-		}
-
-		> div:first-of-type {
-			margin-right: 5px;
-		}
-
-		> div:last-of-type {
-			margin-left: 5px;
-		}
-	}
-
-	.last-name,
-	.first-name {
-		display: block;
-		line-height: 1;
-		margin-bottom: -0.3rem;
-		margin-top: -0.3rem;
-		opacity: 0.66;
 	}
 }

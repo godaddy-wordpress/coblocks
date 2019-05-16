@@ -52,17 +52,28 @@
 		.components-text-control__input.components-text-control__input {
 			width: 100%;
 		}
-
-		.components-text-control__input,
-		.components-textarea-control__input {
-			padding: 10px 8px;
-			pointer-events: none;
-		}
 	}
 
-	.coblocks-field--name__inner {
-		.components-base-control {
-			width: 100%;
+	.components-text-control__input,
+	.components-textarea-control__input {
+		padding: 10px 8px;
+		pointer-events: none;
+	}
+
+	.subtext {
+		margin-top: -0.5rem;
+	}
+
+	.name-wrap .wrap {
+		margin: 0 0 0.15rem;
+	}
+
+	.is-twentynineteen & {
+		.components-text-control__input,
+		.components-textarea-control__input {
+			border-color: #ccc;
+			border-radius: 0;
+			padding: 1.2rem 0;
 		}
 	}
 }

@@ -168,12 +168,12 @@ class CoBlocks_Form {
 			<div class="name-wrap">
 				<div class="wrap">
 					<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="coblocks-field coblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="subtext">First</small>
+					<small class="name-wrap__first subtext">First</small>
 				</div>
 
 				<div class="wrap">
 					<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="subtext">Last</small>
+					<small class="name-wrap__last subtext">Last</small>
 				</div>
 			</div>
 

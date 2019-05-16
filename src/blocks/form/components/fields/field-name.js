@@ -40,12 +40,15 @@ function CoblocksFieldName( {
 					isSelected={ isSelected }
 				/>
 				{ hasLastName ?
-					<div className="coblocks-field--name__inner">
-						<div>
-							<TextControl/>
-							<span className="first-name">
+					<div className="name-wrap">
+						<div className="wrap">
+							<TextControl className="coblocks-field"/>
 								<RichText
 									tagName="small"
+									className={ classnames(
+										'subtext',
+										`name-wrap__first`,
+									) }
 									value={ labelFirstName }
 									onChange={ value => {
 										resetFocus && resetFocus();
@@ -53,21 +56,22 @@ function CoblocksFieldName( {
 									} }
 									placeholder={ __( 'Add label…' ) }
 								/>
-							</span>
 						</div>
-						<div>
-							<TextControl/>
-							<span className="first-name">
-								<RichText
-									tagName="small"
-									value={ labelLastName }
-									onChange={ value => {
-										resetFocus && resetFocus();
-										setAttributes( { labelLastName: value } );
-									} }
-									placeholder={ __( 'Add label…' ) }
-								/>
-							</span>
+						<div className="wrap">
+							<TextControl className="coblocks-field"/>
+							<RichText
+								tagName="small"
+								className={ classnames(
+									'subtext',
+									`name-wrap__first`,
+								) }
+								value={ labelLastName }
+								onChange={ value => {
+									resetFocus && resetFocus();
+									setAttributes( { labelLastName: value } );
+								} }
+								placeholder={ __( 'Add label…' ) }
+							/>
 						</div>
 					</div>
 				:
