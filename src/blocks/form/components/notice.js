@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import icons from './../icons';
 
 export default ( { children = null, isError = false, ...props } ) => {
-	const classes = classnames( 'coblocks-help-message', {
+	const classes = classnames( 'coblocks-form__notice', {
 		'is-error': isError,
 	} );
 

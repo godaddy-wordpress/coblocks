@@ -126,7 +126,7 @@ class CoBlocks_Form {
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( untrailingslashit( get_the_permalink() ) ), $this->form_hash ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); ?>
-				<div class="form-submit wp-block-button">
+				<div class="coblocks-form__submit wp-block-button">
 					<?php $this->render_submit_button( $atts ); ?>
 					<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
 					<input type="hidden" name="action" value="coblocks-form-submit">
@@ -167,15 +167,15 @@ class CoBlocks_Form {
 
 			?>
 
-			<div class="name-wrap">
-				<div class="wrap">
+			<div class="coblocks-form__inline-fields">
+				<div class="coblocks-form__inline-field">
 					<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="coblocks-field coblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="name-wrap__first subtext"><?php echo esc_html( $label_first_name ); ?></small>
+					<small class="coblocks-form__subtext"><?php echo esc_html( $label_first_name ); ?></small>
 				</div>
 
-				<div class="wrap">
+				<div class="coblocks-form__inline-field">
 					<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="name-wrap__last subtext"><?php echo esc_html( $label_last_name ); ?></small>
+					<small class="coblocks-form__subtext"><?php echo esc_html( $label_last_name ); ?></small>
 				</div>
 			</div>
 

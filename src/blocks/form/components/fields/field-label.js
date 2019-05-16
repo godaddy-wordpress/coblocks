@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { ToggleControl } from '@wordpress/components';
 const { RichText } = wp.editor;
 
-const CoblocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, required } ) => {
+const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, required } ) => {
 	return (
 		<div className="coblocks-field-label">
 			<div className="coblocks-field-label__input-wrapper">
@@ -35,4 +35,4 @@ const CoblocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, req
 	);
 };
 
-export default CoblocksFieldLabel;
+export default CoBlocksFieldLabel;

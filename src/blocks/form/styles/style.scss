@@ -19,13 +19,18 @@
 		width: 100%;
 	}
 
-	.name-wrap {
+	.required {
+		color: $alert-red;
+		margin-left: 5px;
+	}
+
+	.coblocks-form__inline-fields {
 		align-items: center;
 		display: flex;
 		flex-flow: row wrap;
 		margin-bottom: 1.15rem;
 
-		.wrap {
+		.coblocks-form__inline-field {
 			margin-bottom: 0.15rem;
 			width: 50%;
 
@@ -43,10 +48,10 @@
 			}
 		}
 
-		@media only screen and (max-width : 535px) {
+		@media only screen and (max-width: 535px) {
 			display: block;
 
-			.wrap {
+			.coblocks-form__inline-field {
 				width: 100%;
 
 				&:first-child,
@@ -58,7 +63,7 @@
 		}
 	}
 
-	.subtext {
+	&__subtext {
 		display: block;
 		line-height: 1;
 		margin-bottom: -0.3rem;
@@ -66,26 +71,18 @@
 		opacity: 0.66;
 	}
 
-	.form-submit {
-		margin-top: 1.5rem;
-	}
-
 	.coblocks-form-submission {
 		margin-bottom: 4em;
 		padding: 1.5em 1em;
-	}
 
-	.coblocks-form-submission p {
-		margin: 0 auto;
-		word-wrap: break-word;
+		p {
+			margin: 0 auto;
+			word-wrap: break-word;
+		}
 	}
 
 	.form-errors .form-error-message {
 		color: $alert-red;
 	}
-
-	.required {
-		color: $alert-red;
-		margin-left: 5px;
-	}
 }
+

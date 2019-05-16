@@ -8,11 +8,11 @@ import emailValidator from 'email-validator';
  * Internal dependencies
  */
 import icons from './icons';
+import CoBlocksField from './components/fields/field';
+import CoBlocksFieldName from './components/fields/field-name';
+import CoBlocksFieldTextarea from './components/fields/field-textarea';
+import Notice from './components/notice';
 import SubmitButton from './components/submit-button';
-import CoblocksField from './components/fields/field';
-import CoblocksFieldName from './components/fields/field-name';
-import CoblocksFieldTextarea from './components/fields/field-textarea';
-import HelpMessage from './components/help-message';
 
 /**
  * WordPress dependencies
@@ -66,7 +66,7 @@ const getFieldLabel = ( { attributes, name: blockName } ) => {
 };
 
 const editField = type => props => (
-	<CoblocksField
+	<CoBlocksField
 		type={ type }
 		label={ getFieldLabel( props ) }
 		required={ props.attributes.required }
@@ -84,7 +84,7 @@ export const childBlocks = [
 			description: __( 'A text field for names.' ),
 			icon: icons.name,
 			edit: props => (
-				<CoblocksFieldName
+				<CoBlocksFieldName
 					type={ 'name' }
 					label={ getFieldLabel( props ) }
 					labelFirstName={ props.attributes.labelFirstName }
@@ -117,7 +117,7 @@ export const childBlocks = [
 			description: __( 'A text box for longer responses.' ),
 			icon: icons.textarea,
 			edit: props => (
-				<CoblocksFieldTextarea
+				<CoBlocksFieldTextarea
 					label={ getFieldLabel( props ) }
 					required={ props.attributes.required }
 					setAttributes={ props.setAttributes }
@@ -258,9 +258,9 @@ class FormEdit extends Component {
 					onBlur={ this.onBlurTo }
 					onChange={ this.onChangeTo }
 				/>
-				<HelpMessage isError id={ `contact-form-${ instanceId }-email-error` }>
+				<Notice isError id={ `contact-form-${ instanceId }-email-error` }>
 					{ this.getfieldEmailError( fieldEmailError ) }
-				</HelpMessage>
+				</Notice>
 				<TextControl
 					label={ __( 'Subject' ) }
 					value={ ( subject || '' === subject ) ? subject : coblocksBlockData.form.emailSubject }

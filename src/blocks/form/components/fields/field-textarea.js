@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import CoblocksFieldLabel from './field-label';
+import CoBlocksFieldLabel from './field-label';
 
 /**
  * WordPress dependencies
@@ -9,7 +9,7 @@ import CoblocksFieldLabel from './field-label';
 const { Fragment } = wp.element;
 const { TextareaControl } = wp.components;
 
-function CoblocksFieldTextarea( {
+function CoBlocksFieldTextarea( {
 	required,
 	label,
 	setAttributes,
@@ -18,7 +18,7 @@ function CoblocksFieldTextarea( {
 	return (
 		<Fragment>
 			<div className="coblocks-field">
-				<CoblocksFieldLabel
+				<CoBlocksFieldLabel
 					required={ required }
 					label={ label }
 					setAttributes={ setAttributes }
@@ -30,4 +30,4 @@ function CoblocksFieldTextarea( {
 	);
 }
 
-export default CoblocksFieldTextarea;
+export default CoBlocksFieldTextarea;

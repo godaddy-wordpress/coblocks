@@ -105,7 +105,7 @@ class SubmitButton extends Component {
 
 		return (
 			<Fragment>
-				<div className="wp-block-button coblocks-submit-button">
+				<div className="coblocks-form__submit wp-block-button">
 					<RichText
 						placeholder={ __( 'Add text…' ) }
 						value={ attributes.submitButtonText }

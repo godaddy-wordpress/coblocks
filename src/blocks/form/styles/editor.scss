@@ -1,5 +1,3 @@
-@import "help-message";
-
 .editor-block-list__block[data-type="coblocks/form"] {
 	.coblocks-field-label__input-wrapper {
 		display: flex;
@@ -60,26 +58,34 @@
 		pointer-events: none;
 	}
 
-	.subtext {
+	.coblocks-form__subtext {
 		margin-top: -0.5rem;
 	}
 
-	.name-wrap .wrap {
+	.coblocks-form__inline-fields .coblocks-form__inline-field {
 		margin: 0 0 0.15rem;
-	}
-
-	.is-twentynineteen & {
-		.components-text-control__input,
-		.components-textarea-control__input {
-			border-color: #ccc;
-			border-radius: 0;
-			padding: 1.2rem 0;
-		}
 	}
 }
 
+@import "notice";
+
+// Advanced forms filter.
 .components-coblocks-advanced-forms-cta {
 	h3 {
 		margin-bottom: 0.5em;
+	}
+}
+
+// Core themes.
+.is-twentynineteen .coblocks-form {
+	.components-text-control__input,
+	.components-textarea-control__input {
+		border-color: #ccc;
+		border-radius: 0;
+		padding: 1.2rem 0;
+	}
+
+	.coblocks-form__submit {
+		margin-top: 0;
 	}
 }

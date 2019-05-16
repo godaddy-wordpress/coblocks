@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import CoblocksFieldLabel from './field-label';
+import CoBlocksFieldLabel from './field-label';
 
 /**
  * WordPress dependencies
@@ -16,7 +16,7 @@ const { Fragment } = wp.element;
 const { InspectorControls, RichText } = wp.editor;
 const { PanelBody, TextControl, ToggleControl } = wp.components;
 
-function CoblocksFieldName( {
+function CoBlocksFieldName( {
 	isSelected,
 	type,
 	required,
@@ -35,37 +35,31 @@ function CoblocksFieldName( {
 					{ 'is-selected': isSelected }
 				) }
 			>
-				<CoblocksFieldLabel
+				<CoBlocksFieldLabel
 					required={ required }
 					label={ label }
 					setAttributes={ setAttributes }
 					isSelected={ isSelected }
 				/>
 				{ hasLastName ?
-					<div className="name-wrap">
-						<div className="wrap">
-							<TextControl className="coblocks-field"/>
-								<RichText
-									tagName="small"
-									className={ classnames(
-										'subtext',
-										`name-wrap__first`,
-									) }
-									value={ labelFirstName }
-									onChange={ value => {
-										setAttributes( { labelFirstName: value } );
-									} }
-									placeholder={ __( 'Add label…' ) }
-								/>
-						</div>
-						<div className="wrap">
+					<div className="coblocks-form__inline-fields">
+						<div className="coblocks-form__inline-field">
 							<TextControl className="coblocks-field"/>
 							<RichText
 								tagName="small"
-								className={ classnames(
-									'subtext',
-									`name-wrap__first`,
-								) }
+								className="coblocks-form__subtext"
+								value={ labelFirstName }
+								onChange={ value => {
+									setAttributes( { labelFirstName: value } );
+								} }
+								placeholder={ __( 'Add label…' ) }
+							/>
+						</div>
+						<div className="coblocks-form__inline-field">
+							<TextControl className="coblocks-field"/>
+							<RichText
+								tagName="small"
+								className="coblocks-form__subtext"
 								value={ labelLastName }
 								onChange={ value => {
 									setAttributes( { labelLastName: value } );
@@ -93,4 +87,4 @@ function CoblocksFieldName( {
 	);
 }
 
-export default CoblocksFieldName;
+export default CoBlocksFieldName;
