@@ -54,10 +54,6 @@ const blockAttributes = {
 	submitButtonClasses: {
 		type: 'string',
 	},
-	hasFormSettingsSet: {
-		type: 'string',
-		default: null,
-	},
 };
 
 const settings = {

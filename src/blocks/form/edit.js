@@ -150,7 +150,6 @@ class FormEdit extends Component {
 		this.onBlurTo = this.onBlurTo.bind( this );
 		this.onChangeTo = this.onChangeTo.bind( this );
 		this.onChangeSubmit = this.onChangeSubmit.bind( this );
-		this.onFormSettingsSet = this.onFormSettingsSet.bind( this );
 		this.getToValidationError = this.getToValidationError.bind( this );
 		this.renderToAndSubjectFields = this.renderToAndSubjectFields.bind( this );
 		this.preventEnterSubmittion = this.preventEnterSubmittion.bind( this );
@@ -207,15 +206,6 @@ class FormEdit extends Component {
 
 	onChangeSubmit( submitButtonText ) {
 		this.props.setAttributes( { submitButtonText } );
-	}
-
-	onFormSettingsSet( event ) {
-		event.preventDefault();
-		if ( this.state.toError ) {
-			// don't submit the form if there are errors.
-			return;
-		}
-		this.props.setAttributes( { hasFormSettingsSet: 'yes' } );
 	}
 
 	getfieldEmailError( errors ) {
