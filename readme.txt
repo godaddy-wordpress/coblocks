@@ -4,7 +4,7 @@ Plugin URI: https://www.coblocks.com
 Contributors: coblocks, richtabor, phpbits
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.1.1
+Tested up to: 5.2
 Requires PHP: 5.2.4
 Stable tag: 1.9.4
 License: GPL-2.0
