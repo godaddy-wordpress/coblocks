@@ -3,8 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
-import { InspectorControls } from '@wordpress/editor';
-import { PanelBody, TextareaControl, TextControl } from '@wordpress/components';
+import { TextareaControl } from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -16,7 +15,6 @@ function CoblocksFieldTextarea( {
 	label,
 	setAttributes,
 	isSelected,
-	defaultValue,
 	placeholder,
 } ) {
 	return (
@@ -30,15 +28,6 @@ function CoblocksFieldTextarea( {
 				/>
 				<TextareaControl/>
 			</div>
-			<InspectorControls>
-				<PanelBody title={ __( 'Textarea Field Settings' ) }>
-					<TextControl
-						label={ __( 'Default Value' ) }
-						value={ defaultValue }
-						onChange={ value => setAttributes( { defaultValue: value } ) }
-					/>
-				</PanelBody>
-			</InspectorControls>
 		</Fragment>
 	);
 }

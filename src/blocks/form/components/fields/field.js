@@ -4,8 +4,7 @@
 import classNames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
-import { InspectorControls } from '@wordpress/editor';
-import { PanelBody, TextControl } from '@wordpress/components';
+import { TextControl } from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -18,7 +17,6 @@ function CoblocksField( {
 	required,
 	label,
 	setAttributes,
-	defaultValue,
 	placeholder,
 } ) {
 	return (
@@ -34,15 +32,6 @@ function CoblocksField( {
 					type={ type }
 				/>
 			</div>
-			<InspectorControls>
-				<PanelBody title={ __( 'Field Settings' ) }>
-					<TextControl
-						label={ __( 'Default Value' ) }
-						value={ defaultValue }
-						onChange={ value => setAttributes( { defaultValue: value } ) }
-					/>
-				</PanelBody>
-			</InspectorControls>
 		</Fragment>
 	);
 }

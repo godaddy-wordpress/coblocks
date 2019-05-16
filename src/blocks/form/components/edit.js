@@ -52,10 +52,6 @@ const FieldDefaults = {
 			type: 'array',
 			default: [],
 		},
-		defaultValue: {
-			type: 'string',
-			default: '',
-		},
 		placeholder: {
 			type: 'string',
 			default: '',
@@ -109,7 +105,6 @@ const editField = type => props => (
 		required={ props.attributes.required }
 		setAttributes={ props.setAttributes }
 		isSelected={ props.isSelected }
-		defaultValue={ props.attributes.defaultValue }
 		placeholder={ props.attributes.placeholder }
 	/>
 );
@@ -132,7 +127,6 @@ export const childBlocks = [
 					hasLastName={ props.attributes.hasLastName }
 					setAttributes={ props.setAttributes }
 					isSelected={ props.isSelected }
-					defaultValue={ props.attributes.defaultValue }
 				/>
 			),
 		},
@@ -162,7 +156,6 @@ export const childBlocks = [
 					required={ props.attributes.required }
 					setAttributes={ props.setAttributes }
 					isSelected={ props.isSelected }
-					defaultValue={ props.attributes.defaultValue }
 					placeholder={ props.attributes.placeholder }
 				/>
 			),
