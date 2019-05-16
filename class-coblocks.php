@@ -7,8 +7,8 @@
  * Author URI: https://www.godaddy.com
  * Version: 1.9.4
  * Text Domain: coblocks
- * Domain Path: languages
- * Tested up to: @@pkg.tested_up_to
+ * Domain Path: /languages
+ * Tested up to: 5.1.1
  *
  * CoBlocks is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -74,7 +74,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		public function __clone() {
 			// Cloning instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', 'coblocks' ), '1.0' );
 		}
 
 		/**
@@ -86,7 +86,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		public function __wakeup() {
 			// Unserializing instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', 'coblocks' ), '1.0' );
 		}
 
 		/**
@@ -97,8 +97,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @return void
 		 */
 		private function constants() {
-			$this->define( 'COBLOCKS_DEBUG', true );
-			$this->define( 'COBLOCKS_VERSION', '@@pkg.version' );
+			$this->define( 'COBLOCKS_VERSION', '1.9.4' );
 			$this->define( 'COBLOCKS_HAS_PRO', false );
 			$this->define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 			$this->define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -166,11 +165,10 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @since 1.0.0
 		 */
 		public function asset_suffix() {
-			if ( true === COBLOCKS_DEBUG ) {
-				define( 'COBLOCKS_ASSET_SUFFIX', null );
-			} else {
-				define( 'COBLOCKS_ASSET_SUFFIX', '.min' );
-			}
+
+			$suffix = SCRIPT_DEBUG ? null : '.min';
+
+			$this->define( 'COBLOCKS_ASSET_SUFFIX', $suffix );
 		}
 
 		/**
@@ -183,7 +181,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		public function asset_source( $type = 'js', $directory = null ) {
 
 			if ( 'js' === $type ) {
-				if ( true === COBLOCKS_DEBUG ) {
+				if ( SCRIPT_DEBUG ) {
 					return COBLOCKS_PLUGIN_URL . 'src/' . $type . '/' . $directory;
 				} else {
 					return COBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;

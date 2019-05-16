@@ -124,35 +124,35 @@ function coblocks_render_social_block( $attributes ) {
 	// Supported social media platforms.
 	$platforms = array(
 		'twitter'   => array(
-			'text' => esc_html__( 'Share on Twitter', '@@textdomain' ),
+			'text' => esc_html__( 'Share on Twitter', 'coblocks' ),
 			'url'  => $twitter_url,
 		),
 		'facebook'  => array(
-			'text' => esc_html__( 'Share on Facebook', '@@textdomain' ),
+			'text' => esc_html__( 'Share on Facebook', 'coblocks' ),
 			'url'  => $facebook_url,
 		),
 		'pinterest' => array(
-			'text' => esc_html__( 'Share on Pinterest', '@@textdomain' ),
+			'text' => esc_html__( 'Share on Pinterest', 'coblocks' ),
 			'url'  => $pinterest_url,
 		),
 		'linkedin'  => array(
-			'text' => esc_html__( 'Share on Linkedin', '@@textdomain' ),
+			'text' => esc_html__( 'Share on Linkedin', 'coblocks' ),
 			'url'  => $linkedin_url,
 		),
 		'email'     => array(
-			'text' => esc_html__( 'Share via Email', '@@textdomain' ),
+			'text' => esc_html__( 'Share via Email', 'coblocks' ),
 			'url'  => $email_url,
 		),
 		'tumblr'    => array(
-			'text' => esc_html__( 'Share on Tumblr', '@@textdomain' ),
+			'text' => esc_html__( 'Share on Tumblr', 'coblocks' ),
 			'url'  => $tumblr_url,
 		),
 		'google'    => array(
-			'text' => esc_html__( 'Share on Google', '@@textdomain' ),
+			'text' => esc_html__( 'Share on Google', 'coblocks' ),
 			'url'  => $google_url,
 		),
 		'reddit'    => array(
-			'text' => esc_html__( 'Share on Reddit', '@@textdomain' ),
+			'text' => esc_html__( 'Share on Reddit', 'coblocks' ),
 			'url'  => $reddit_url,
 		),
 	);
@@ -222,7 +222,8 @@ function coblocks_register_social_block() {
 	}
 
 	register_block_type(
-		'coblocks/social', array(
+		'coblocks/social',
+		array(
 			'editor_script'   => 'coblocks-editor',
 			'editor_style'    => 'coblocks-editor',
 			'style'           => 'coblocks-frontend',
@@ -299,4 +300,3 @@ function coblocks_register_social_block() {
 	);
 }
 add_action( 'init', 'coblocks_register_social_block' );
-

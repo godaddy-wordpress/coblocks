@@ -29,7 +29,9 @@ class CoBlocks_Post_Meta {
 	 */
 	public function register_meta() {
 		register_meta(
-			'post', '_coblocks_attr', array(
+			'post',
+			'_coblocks_attr',
+			array(
 				'show_in_rest'  => true,
 				'single'        => true,
 				'auth_callback' => function() {
@@ -39,7 +41,9 @@ class CoBlocks_Post_Meta {
 		);
 
 		register_meta(
-			'post', '_coblocks_dimensions', array(
+			'post',
+			'_coblocks_dimensions',
+			array(
 				'show_in_rest'  => true,
 				'single'        => true,
 				'auth_callback' => function() {
@@ -49,7 +53,9 @@ class CoBlocks_Post_Meta {
 		);
 
 		register_meta(
-			'post', '_coblocks_responsive_height', array(
+			'post',
+			'_coblocks_responsive_height',
+			array(
 				'show_in_rest'  => true,
 				'single'        => true,
 				'auth_callback' => function() {
@@ -59,7 +65,9 @@ class CoBlocks_Post_Meta {
 		);
 
 		register_meta(
-			'post', '_coblocks_accordion_ie_support', array(
+			'post',
+			'_coblocks_accordion_ie_support',
+			array(
 				'show_in_rest'  => true,
 				'single'        => true,
 				'auth_callback' => function() {
