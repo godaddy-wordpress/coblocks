@@ -448,8 +448,8 @@ class CoBlocks_Form {
 		$success_message = apply_filters(
 			'coblocks_form_email_content',
 			sprintf(
-				'<blockquote>%s</blockquote>',
-				wp_kses_post( $this->email_content )
+				'Your message was sent: <div class="coblocks-form__submitted">%s</div>',
+				wp_kses_post( $this->email_content ),
 			),
 			get_the_ID()
 		);
