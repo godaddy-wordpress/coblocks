@@ -1,19 +1,22 @@
 /**
  * External dependencies
  */
-import { __ } from '@wordpress/i18n';
+import { isEqual, get } from 'lodash';
 import classnames from 'classnames';
-import { Component, Fragment } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
-import { withFallbackStyles } from '@wordpress/components';
-import {
-	InspectorControls,
+
+/**
+ * WordPress dependencies
+ */
+const { __ } = wp.i18n;
+const { Component, Fragment } = wp.element;
+const { compose } = wp.compose;
+const { withFallbackStyles } = wp.components;
+const { InspectorControls,
 	PanelColorSettings,
 	ContrastChecker,
 	RichText,
 	withColors,
-} from '@wordpress/editor';
-import { isEqual, get } from 'lodash';
+} = wp.editor;
 
 const { getComputedStyle } = window;
 

@@ -2,15 +2,19 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { __ } from '@wordpress/i18n';
-import { Fragment } from '@wordpress/element';
-import { InspectorControls, RichText } from '@wordpress/editor';
-import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
 import CoblocksFieldLabel from './field-label';
+
+/**
+ * WordPress dependencies
+ */
+const { __ } = wp.i18n;
+const { Fragment } = wp.element;
+const { InspectorControls, RichText } = wp.editor;
+const { PanelBody, TextControl, ToggleControl } = wp.components;
 
 function CoblocksFieldName( {
 	isSelected,

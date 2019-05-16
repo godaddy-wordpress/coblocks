@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import Edit from './components/edit';
+import edit from './edit';
 import icons from './icons';
 
 /**
@@ -60,12 +60,6 @@ const blockAttributes = {
 	},
 };
 
-const schema = {
-	div: {
-		classes: [ 'wp-block-coblocks-form' ],
-	},
-};
-
 const settings = {
 
 	title: title,
@@ -83,7 +77,7 @@ const settings = {
 
 	className: false,
 
-	edit: Edit,
+	edit: edit,
 
 	save: InnerBlocks.Content,
 

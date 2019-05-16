@@ -1,15 +1,18 @@
 /**
  * External dependencies
  */
-import classNames from 'classnames';
-import { __ } from '@wordpress/i18n';
-import { Fragment } from '@wordpress/element';
-import { TextControl } from '@wordpress/components';
+import classnames from 'classnames';
 
 /**
  * Internal dependencies
  */
 import CoblocksFieldLabel from './field-label';
+
+/**
+ * WordPress dependencies
+ */
+const { Fragment } = wp.element;
+const { TextControl } = wp.components;
 
 function CoblocksField( {
 	isSelected,
@@ -17,11 +20,10 @@ function CoblocksField( {
 	required,
 	label,
 	setAttributes,
-	placeholder,
 } ) {
 	return (
 		<Fragment>
-			<div className={ classNames( 'coblocks-field', { 'is-selected': isSelected } ) }>
+			<div className={ classnames( 'coblocks-field', { 'is-selected': isSelected } ) }>
 				<CoblocksFieldLabel
 					required={ required }
 					label={ label }

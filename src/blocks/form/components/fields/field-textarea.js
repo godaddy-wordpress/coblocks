@@ -1,14 +1,13 @@
 /**
- * External dependencies
- */
-import { __ } from '@wordpress/i18n';
-import { Fragment } from '@wordpress/element';
-import { TextareaControl } from '@wordpress/components';
-
-/**
  * Internal dependencies
  */
 import CoblocksFieldLabel from './field-label';
+
+/**
+ * WordPress dependencies
+ */
+const { Fragment } = wp.element;
+const { TextareaControl } = wp.components;
 
 function CoblocksFieldTextarea( {
 	required,

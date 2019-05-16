@@ -5,27 +5,24 @@ import classnames from 'classnames';
 import emailValidator from 'email-validator';
 
 /**
- * WordPress dependencies
- */
-const { registerBlockType, getBlockType, createBlock } = wp.blocks;
-const { Button, PanelBody, Placeholder, ResizableBox, Spinner, TextControl } = wp.components;
-const { compose } = wp.compose;
-const { withSelect } = wp.data;
-const { RichText, InspectorControls, InnerBlocks, InspectorAdvancedControls } = wp.editor;
-const { Component, Fragment } = wp.element;
-const { __ } = wp.i18n;
-const { withViewportMatch } = wp.viewport;
-const { applyFilters } = wp.hooks;
-
-/**
  * Internal dependencies
  */
-import icons from './../icons';
-import SubmitButton from './submit-button';
-import CoblocksField from './fields/field';
-import CoblocksFieldName from './fields/field-name';
-import CoblocksFieldTextarea from './fields/field-textarea';
-import HelpMessage from './help-message';
+import icons from './icons';
+import SubmitButton from './components/submit-button';
+import CoblocksField from './components/fields/field';
+import CoblocksFieldName from './components/fields/field-name';
+import CoblocksFieldTextarea from './components/fields/field-textarea';
+import HelpMessage from './components/help-message';
+
+/**
+ * WordPress dependencies
+ */
+const { __ } = wp.i18n;
+const { Component, Fragment } = wp.element;
+const { registerBlockType, getBlockType, createBlock } = wp.blocks;
+const { Button, PanelBody, TextControl } = wp.components;
+const { RichText, InspectorControls, InnerBlocks, InspectorAdvancedControls } = wp.editor;
+const { applyFilters } = wp.hooks;
 
 /**
  * Block constants
@@ -135,13 +132,11 @@ childBlocks.forEach( childBlock =>
 	registerBlockType( `coblocks/${ childBlock.name }`, childBlock.settings )
 );
 
-/**
- * Block edit function
- */
-class Edit extends Component {
+class FormEdit extends Component {
 
 	constructor() {
 		super( ...arguments );
+
 		this.onChangeSubject = this.onChangeSubject.bind( this );
 		this.onBlurTo = this.onBlurTo.bind( this );
 		this.onChangeTo = this.onChangeTo.bind( this );
@@ -339,4 +334,4 @@ class Edit extends Component {
 	}
 };
 
-export default Edit;
+export default FormEdit;
