@@ -152,12 +152,12 @@ class CoBlocks_Form {
 	 */
 	public function render_field_name( $atts, $content ) {
 
-		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Name', 'coblocks' );
-		$label_slug    = sanitize_title( $label );
-		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
-		$has_last_name = ( isset( $atts['hasLastName'] ) && $atts['hasLastName'] );
+		$label            = isset( $atts['label'] ) ? $atts['label'] : __( 'Name', 'coblocks' );
+		$label_slug       = sanitize_title( $label );
+		$required_attr    = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
+		$has_last_name    = ( isset( $atts['hasLastName'] ) && $atts['hasLastName'] );
 		$label_first_name = isset( $atts['labelFirstName'] ) ? $atts['labelFirstName'] : __( 'First', 'coblocks' );
-		$label_last_name = isset( $atts['labelLastName'] ) ? $atts['labelLastName'] : __( 'Last', 'coblocks' );
+		$label_last_name  = isset( $atts['labelLastName'] ) ? $atts['labelLastName'] : __( 'Last', 'coblocks' );
 
 		ob_start();
 
