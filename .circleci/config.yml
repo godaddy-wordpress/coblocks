@@ -94,7 +94,7 @@ jobs:
           name: Install SVN
           command: sudo apt-get update && sudo apt-get install subversion
       - run:
-          name: Install golang and ghr
+          name: Install golang
           command: |
             curl -O https://storage.googleapis.com/golang/go1.11.2.linux-amd64.tar.gz
             tar -xvf go1.11.2.linux-amd64.tar.gz
@@ -102,6 +102,10 @@ jobs:
             export GOPATH=$HOME/work
             export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
             source ~/.profile
+            rm -rf go1.11.2.linux-amd64.tar.gz
+      - run:
+          name: Install ghr
+          command: |
             go get -u github.com/tcnksm/ghr
       - run:
           name: Install WPCLI
