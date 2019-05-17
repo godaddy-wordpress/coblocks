@@ -14,6 +14,7 @@ import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
+import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import { BackgroundStyles, BackgroundClasses, BackgroundVideo } from '../../components/background';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
@@ -320,8 +321,7 @@ class GalleryCarouselEdit extends Component {
 								} ) }
 								{ isSelected && (
 									<div className="coblocks-gallery--item">
-										<GalleryPlaceholder
-											{ ...this.props }
+										<GalleryUploader { ...this.props }
 											gutter={ gutter }
 											gutterMobile={ gutterMobile }
 											marginRight={ true }

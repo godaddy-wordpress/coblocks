@@ -13,6 +13,7 @@ import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
+import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
@@ -193,7 +194,7 @@ class GalleryStackedEdit extends Component {
 							);
 						} ) }
 						<li className="coblocks-gallery--item">
-							<GalleryPlaceholder { ...this.props } />
+							<GalleryUploader { ...this.props } />
 						</li>
 					</ul>
 				</div>

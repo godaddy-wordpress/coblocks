@@ -15,7 +15,6 @@ import GalleryUploader from './gallery-uploader';
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { MediaPlaceholder, BlockIcon } = wp.editor;
-const { BlockVerticalAlignmentToolbar } = wp.blockEditor;
 
 class GalleryPlaceholder extends Component {
 
@@ -66,27 +65,23 @@ class GalleryPlaceholder extends Component {
 
 		return (
 			<div className={ classes }>
-				{ BlockVerticalAlignmentToolbar ?
-					<MediaPlaceholder
-						addToGallery={ hasImages }
-						isAppender={ hasImages }
-						dropZoneUIOnly={ hasImages && ! isSelected }
-						icon={ ! hasImages && <BlockIcon icon={ this.props.icon } /> }
-						labels={ {
-							title: ! hasImages && sprintf( __( '%s Gallery' ), this.props.label ),
-							instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.' ),
-						} }
-						onSelect={ this.onSelectImages }
-						accept="image/*"
-						allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
-						multiple
-						value={ hasImages ? images : undefined }
-						onError={ noticeOperations.createErrorNotice }
-						notices={ hasImages ? undefined : noticeUI }
-					/>
-				:
-					<GalleryUploader { ...this.props } />
-				}
+				<MediaPlaceholder
+					addToGallery={ hasImages }
+					isAppender={ hasImages }
+					dropZoneUIOnly={ hasImages && ! isSelected }
+					icon={ ! hasImages && <BlockIcon icon={ this.props.icon } /> }
+					labels={ {
+						title: ! hasImages && sprintf( __( '%s Gallery' ), this.props.label ),
+						instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.' ),
+					} }
+					onSelect={ this.onSelectImages }
+					accept="image/*"
+					allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
+					multiple
+					value={ hasImages ? images : undefined }
+					onError={ noticeOperations.createErrorNotice }
+					notices={ hasImages ? undefined : noticeUI }
+				/>
 			</div>
 		);
 	}
