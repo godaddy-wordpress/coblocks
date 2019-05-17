@@ -126,6 +126,9 @@ Please reach out via the contact form at the bottom right of [our website](https
 
 == Changelog ==
 
+= 1.9.6 =
+* Fix: Resolve issue with missing Gutenberg component
+
 = 1.9.5 =
 * New: Add new Form block 🎉
 * New: Add new Masonry gallery block 🎉
