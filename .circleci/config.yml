@@ -94,6 +94,9 @@ jobs:
           name: Install SVN
           command: sudo apt-get update && sudo apt-get install subversion
       - run:
+          name: Install PHP
+          command: sudo apt-get install php libapache2-mod-php
+      - run:
           name: Install WPCLI
           command: |
             curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
