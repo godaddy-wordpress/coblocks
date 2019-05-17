@@ -53,7 +53,7 @@ class GalleryUploader extends Component {
 
 		return (
 			<Fragment>
-				<div className="components-coblocks-gallery-uploader-wrapper">
+				<div className="coblocks-gallery--figure components-coblocks-gallery-uploader-wrapper">
 					<FormFileUpload
 						multiple
 						isLarge
