@@ -1,5 +1,4 @@
 .coblocks-dashboard-widget {
-
 	&__header {
 		display: table;
 		width: 100%;
@@ -29,9 +28,7 @@
 	}
 
 	&__feed {
-
 		@media screen and (min-width: 355px) {
-
 			&--content {
 				display: table-row;
 				float: left;
@@ -105,14 +102,6 @@
 
 				&:last-child {
 					border-right: 0;
-				}
-
-				&.is-pro {
-
-					a {
-						color: $green;
-						font-weight: 600;
-					}
 				}
 			}
 		}
