@@ -68,6 +68,7 @@ function BackgroundControls( props, options ) {
 										backgroundRepeat: 'no-repeat',
 										backgroundPosition: '',
 										backgroundSize: 'cover',
+										backgroundSizePercent: '',
 										hasParallax: false,
 										openPopover: ! openPopover,
 									} );

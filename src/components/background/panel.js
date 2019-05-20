@@ -78,6 +78,7 @@ class BackgroundPanel extends Component {
 			backgroundRadius,
 			backgroundRepeat,
 			backgroundSize,
+			backgroundSizePercent,
 			backgroundType = 'image',
 			focalPoint,
 			hasParallax,

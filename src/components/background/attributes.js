@@ -21,6 +21,10 @@ const BackgroundAttributes = {
 	backgroundSize: {
 		type: 'string',
 	},
+	backgroundSizePercent: {
+		type: 'number',
+		default: 100,
+	},
 	backgroundOverlay: {
 		type: 'number',
 		default: 0,
