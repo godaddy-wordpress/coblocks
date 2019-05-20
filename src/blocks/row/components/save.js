@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { BackgroundClasses, BackgroundVideo } from '../../../components/background';
+import { BackgroundStyles, BackgroundClasses, BackgroundVideo } from '../../../components/background';
 
 const { getColorClassName, InnerBlocks } = wp.editor;
 
@@ -7,9 +7,7 @@ function Save( { attributes } ) {
 	const {
 		coblocks,
 		backgroundColor,
-		backgroundImg,
 		columns,
-		customBackgroundColor,
 		customTextColor,
 		gutter,
 		id,
@@ -18,13 +16,9 @@ function Save( { attributes } ) {
 		marginSize,
 		paddingSize,
 		textColor,
-		focalPoint,
-		hasParallax,
-		backgroundType,
 	} = attributes;
 
 	const textClass = getColorClassName( 'color', textColor );
-	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 	const classes = classnames( {
 		[ `coblocks-row--${ id }` ]: id,
@@ -45,9 +39,7 @@ function Save( { attributes } ) {
 		} );
 
 	const innerStyles = {
-		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-		backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
-		backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+		...BackgroundStyles( attributes ),
 		color: textClass ? undefined : customTextColor,
 	};
 

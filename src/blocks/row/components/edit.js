@@ -13,7 +13,7 @@ import Controls from './controls';
 import applyWithColors from './colors';
 import rowIcons from './icons';
 import { title } from '../';
-import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
+import { BackgroundStyles, BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
 
 /**
  * WordPress dependencies
@@ -159,9 +159,6 @@ class Edit extends Component {
 			marginSize,
 			paddingSize,
 			isStackedOnMobile,
-			focalPoint,
-			hasParallax,
-			backgroundType,
 		} = attributes;
 
 		const dropZone = (
@@ -290,9 +287,8 @@ class Edit extends Component {
 		);
 
 		const innerStyles = {
+			...BackgroundStyles( attributes ),
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
