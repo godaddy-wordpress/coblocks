@@ -1,11 +1,8 @@
 <?php
 /**
- * Register settings to enable and disable blocks
+ * Register settings to enable and disable blocks.
  *
- * @package   CoBlocks
- * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
- * @link      https://coblocks.com
- * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
@@ -14,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Load general assets for our Google Map blocks.
+ * Registers setting for the CoBlocks Block Manager.
  *
  * @since 1.0.0
  */
@@ -80,7 +77,7 @@ class CoBlocks_Block_Settings {
 			'coblocks_settings_api',
 			array(
 				'type'              => 'string',
-				'description'       => __( 'Enable or disable blocks', '@@textdomain' ),
+				'description'       => __( 'Enable or disable blocks', 'coblocks' ),
 				'sanitize_callback' => 'sanitize_text_field',
 				'show_in_rest'      => true,
 				'default'           => '',

@@ -13,6 +13,10 @@ function BackgroundTransforms( props ) {
 		backgroundRepeat: props.backgroundRepeat,
 		backgroundSize: props.backgroundSize,
 		hasParallax: props.hasParallax,
+		backgroundPadding: props.backgroundPadding,
+		backgroundPaddingMobile: props.backgroundPaddingMobile,
+		backgroundRadius: props.backgroundRadius,
+		captionStyle: props.captionStyle,
 	};
 
 	return transforms;

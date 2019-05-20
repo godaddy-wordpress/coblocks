@@ -1,0 +1,129 @@
+workflows:
+  version: 2
+  main:
+    jobs:
+      # Support PHP Versions
+      # http://php.net/supported-versions.php
+      - php71-build: # Will be deprecated on 1 Dec 2019
+          filters:
+            tags:
+              only: /.*/
+      - php72-build: # Will be deprecated on 30 Nov 2020
+          filters:
+            tags:
+              only: /.*/
+      - deploy:
+          requires:
+            - php71-build
+            - php72-build
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
+
+version: 2
+jobs:
+  php71-build:
+    docker:
+      - image: circleci/php:7.1
+      - image: circleci/mysql:5.7
+    steps:
+      - checkout
+      - run:
+          name: "Setup Environment Variables"
+          command: |
+            echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $BASH_ENV
+            source /home/circleci/.bashrc
+      - run:
+          name: "Install Dependencies"
+          command: |
+            bash .dev/bin/install-dependencies.sh
+      - run:
+          name: "Run PHPCS"
+          command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
+      - run:
+          name: "Run PHPUnit - Single Site - Generate Coverage Reports"
+          command: |
+            bash .dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
+            phpunit --coverage-html=/tmp/artifacts/code-coverage/html --coverage-clover=/tmp/artifacts/code-coverage/clover
+      - store_artifacts:
+          path: /tmp/artifacts/code-coverage/html
+      - run:
+          name: "Run PHPUnit - Multi Site"
+          command: WP_MULTISITE=1 phpunit
+
+  php72-build:
+    docker:
+      - image: circleci/php:7.2
+      - image: circleci/mysql:5.7
+    steps:
+      - checkout
+      - run:
+          name: "Setup Environment Variables"
+          command: |
+            echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $BASH_ENV
+            source /home/circleci/.bashrc
+      - run:
+          name: "Install Dependencies"
+          command: bash .dev/bin/install-dependencies.sh
+      - run:
+          name: "Run PHPCS"
+          command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
+      - run:
+          name: "Run PHPUnit - Single Site"
+          command: |
+            bash .dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
+            phpunit
+      - run:
+          name: "Run PHPUnit - Multisite"
+          command: WP_MULTISITE=1 phpunit
+
+  deploy:
+    docker:
+      - image: circleci/golang:latest-node-browsers-legacy
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - run:
+          name: Install Grunt.js
+          command: sudo npm install -g grunt-cli
+      - run:
+          name: Install SVN
+          command: sudo apt-get update && sudo apt-get install subversion
+      - run:
+          name: Install PHP
+          command: sudo apt-get install php libapache2-mod-php php-mbstring
+      - run:
+          name: Install WPCLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
+          name: Install ghr
+          command: |
+            go get -u github.com/tcnksm/ghr
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Build the plugin
+          command: |
+            mkdir -p /tmp/artifacts
+            grunt build
+            grunt compress
+            mv build/*.zip /tmp/artifacts
+      - deploy:
+          name: Deploy the plugin
+          command: bash .dev/bin/deploy-plugin.sh
+      - store_artifacts:
+          path: /tmp/artifacts

@@ -60,8 +60,7 @@
 		.components-resizable-box__handle-right {
 			bottom: 0;
 			height: 100%;
-			top: 0;
-			z-index: 99;
+			top: 7px;
 
 			&::before {
 				position: absolute;
@@ -196,6 +195,11 @@
 
 	// Remove editor margins that do not exist on the frontend.
 	.wp-block-coblocks-media-card__content {
+		[data-block] {
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+
 		> .editor-inner-blocks {
 			> .editor-block-list__layout {
 				> .wp-block {
@@ -229,4 +233,3 @@
 .components-block-coblocks-media-card-maxwidth-range {
 	margin-bottom: 0.7em;
 }
-

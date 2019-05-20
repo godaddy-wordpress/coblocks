@@ -9,7 +9,7 @@ import classnames from 'classnames';
  */
 import icons from './icons';
 import applyWithColors from './colors';
-import BackgroundPanel from '../../../components/background';
+import { BackgroundPanel } from '../../../components/background';
 import DimensionsControl from '../../../components/dimensions-control/';
 import CSSGridControl from '../../../components/grid-control/';
 import ResponsiveBaseControl from '../../../components/responsive-base-control/';
@@ -161,7 +161,9 @@ class Inspector extends Component {
 						] }
 					>
 					</PanelColorSettings>
-					{ BackgroundPanel( this.props, { overlay: true } ) }
+					<BackgroundPanel { ...this.props }
+		 				hasOverlay={ true }
+		 			/>
 				</InspectorControls>
 			</Fragment>
 		);
