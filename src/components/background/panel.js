@@ -109,6 +109,7 @@ class BackgroundPanel extends Component {
 			{ value: 'auto', label: __( 'Auto' ) },
 			{ value: 'cover', label: __( 'Cover' ) },
 			{ value: 'contain', label: __( 'Contain' ) },
+			{ value: 'percent', label: __( 'Custom' ) },
 		];
 
 		const overlayStyleOptions = [
@@ -200,6 +201,16 @@ class BackgroundPanel extends Component {
 								value={ backgroundSize ? backgroundSize : backgroundSizeDefault }
 								options={ backgroundSizeOptions }
 								onChange={ ( nextbackgroundSize ) => setAttributes( { backgroundSize: nextbackgroundSize } ) }
+							/>
+						) }
+						{ backgroundSize == 'percent' && backgroundType == 'image' && (
+							<RangeControl
+								label={ __( 'Custom Size' ) }
+								value={ backgroundSizePercent }
+								onChange={ ( nextBackgroundSizePercent ) => setAttributes( { backgroundSizePercent: nextBackgroundSizePercent } ) }
+								min={ 0 }
+								max={ 100 }
+								step={ 1 }
 							/>
 						) }
 						{ backgroundType == 'video' && (
