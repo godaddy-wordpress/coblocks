@@ -241,7 +241,7 @@ class Edit extends Component {
 					<Placeholder
 						icon={ icons.googleMap }
 						label={  __( 'Google Map' ) }
-						instructions={ ! this.state.isSavedKey ? __( 'Enter your Google API key to render a map.' ) : __( 'Search for a place or address.' ) } >
+						instructions={ ! this.state.isSavedKey ? __( 'Enter your Google API key to render a map.' ) : __( 'Enter an address to drop a pin on a Google map.' ) } >
 						{ ( ! this.state.isSavedKey  ) ?
 							<TextControl
 								className="components-placeholder__input"
@@ -254,7 +254,7 @@ class Edit extends Component {
 							<TextControl
 								className="components-placeholder__input"
 								value={ ( attributes.address ) ? attributes.address : '' }
-								placeholder={ __( 'Enter location name or address…' ) }
+								placeholder={ __( 'Search for a place or address…' ) }
 								onChange={ ( nextAddress ) => this.props.setAttributes( { address: nextAddress } ) }
 								onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
 							/>

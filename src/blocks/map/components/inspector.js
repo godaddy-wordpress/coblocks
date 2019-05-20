@@ -151,7 +151,7 @@ class Inspector extends Component {
 							<TextareaControl
 								label={ __( 'Address' ) }
 								value={ address }
-								placeholder={ __( 'Enter location name or address…' ) }
+								placeholder={ __( 'Search for a place or address…' ) }
 								onChange={ ( nextAddress ) => setAttributes( { address: nextAddress, pinned: false } ) }
 							/>
 							{ address && pinned &&
