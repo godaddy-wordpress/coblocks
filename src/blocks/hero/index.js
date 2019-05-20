@@ -10,7 +10,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
 import Edit from './components/edit';
-import { BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
+import { BackgroundStyles, BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import CSSGridAttributes from '../../components/grid-control/attributes';
 import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
@@ -135,16 +135,11 @@ const settings = {
 				layout,
 				fullscreen,
 				maxWidth,
-				backgroundImg,
-				backgroundType,
 				paddingSize,
 				backgroundColor,
-				customBackgroundColor,
 				customTextColor,
 				textColor,
 				contentAlign,
-				focalPoint,
-				hasParallax,
 				videoMuted,
 				videoLoop,
 				height,
@@ -178,10 +173,8 @@ const settings = {
 			} );
 
 			const innerStyles = {
-				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-				backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
+				...BackgroundStyles( attributes ),
 				color: textColor ? textColor.color : undefined,
-				backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 				minHeight: fullscreen ? undefined : height,
 			};
 
