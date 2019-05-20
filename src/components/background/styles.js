@@ -6,14 +6,15 @@ const { getColorClassName } = wp.editor;
 /**
  * Background Classes
  */
-function BackgroundStyles( attributes ) {
+function BackgroundStyles( { backgroundImg, backgroundType, backgroundColor, customBackgroundColor, focalPoint, hasParallax, backgroundSize, backgroundSizePercent } ) {
 
-	const backgroundClass = getColorClassName( 'background-color', attributes.backgroundColor );
+	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 	const styles = {
-		backgroundImage: attributes.backgroundImg && attributes.backgroundType == 'image' ? `url(${ attributes.backgroundImg })` : undefined,
-		backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
-		backgroundPosition:  attributes.focalPoint && !  attributes.hasParallax ? `${  attributes.focalPoint.x * 100 }% ${  attributes.focalPoint.y * 100 }%` : undefined,
+		backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
+		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+		backgroundPosition: backgroundImg && focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+		backgroundSize: backgroundImg && ['auto', 'cover', 'contain'].indexOf(backgroundSize) === -1 && ( backgroundSizePercent || backgroundSizePercent === 0 ) ? `${ backgroundSizePercent }%` : undefined,
 	};
 
 	return styles;
