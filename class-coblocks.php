@@ -192,32 +192,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		}
 
 		/**
-		 * Check if pro exists.
-		 *
-		 * @access public
-		 */
-		public function has_pro() {
-			if ( true === COBLOCKS_HAS_PRO ) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-
-		/**
-		 * Check if pro is activated.
-		 *
-		 * @access public
-		 */
-		public function is_pro() {
-			if ( class_exists( 'CoBlocks_Pro' ) ) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-
-		/**
 		 * Loads the plugin language files.
 		 *
 		 * @access public
