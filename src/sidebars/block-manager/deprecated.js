@@ -16,29 +16,25 @@ const { dispatch } = wp.data;
 
 const hideBlockTypes = dispatch( 'core/edit-post' ).hideBlockTypes;
 
-function deprecateBlockManager () {
+function deprecateBlockManager() {
 	let settings;
 
 	loadPromise.then( () => {
-
 		settings = new models.Settings();
 
 		settings.fetch().then( response => {
-
 			let optionSettings = response.coblocks_settings_api;
 
 			if ( optionSettings.length > 0 ) {
 				optionSettings = JSON.parse( optionSettings );
 
 				if ( typeof optionSettings.deprecated === 'undefined' ) {
-
-					// Get current blocks
-					let currentBlocks  = wp.data.select( 'core/editor' ).getBlocks();
-					let blockNames	   = MapInnerBlocks( currentBlocks );
-					let hideBlockTypes = [];
+					const currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
+					const blockNames = MapInnerBlocks( currentBlocks );
+					const hideBlockTypes = [];
 
 					map( optionSettings, ( visible, block ) => {
-						if( visible && ! block.includes( 'mainCategory-' ) && ! blockNames[ block ] ) {
+						if ( visible && ! block.includes( 'mainCategory-' ) && ! blockNames[ block ] ) {
 							hideBlockTypes.push( block );
 						}
 					} );
@@ -60,10 +56,10 @@ function deprecateBlockManager () {
 					}
 				}
 			}
-		});
-	});
-};
+		} );
+	} );
+}
 
-if( typeof hideBlockTypes !== 'undefined' ){
+if ( typeof hideBlockTypes !== 'undefined' ) {
 	deprecateBlockManager();
 }
