@@ -1,14 +1,14 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.9.5\n"
+"Project-Id-Version: CoBlocks 1.9.6\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-05-16T21:36:34+00:00\n"
+"POT-Creation-Date: 2019-05-20T23:20:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: coblocks\n"
@@ -1133,7 +1133,7 @@ msgstr ""
 
 #: src/blocks/map/components/edit.js:257
 #: src/blocks/map/components/inspector.js:154
-msgid "Enter address…"
+msgid "Search for a place or address…"
 msgstr ""
 
 #: src/blocks/map/components/edit.js:266
@@ -1896,11 +1896,11 @@ msgstr ""
 msgid "Remove Image"
 msgstr ""
 
-#: src/components/block-gallery/gallery-placeholder.js:76
+#: src/components/block-gallery/gallery-placeholder.js:74
 msgid "%s Gallery"
 msgstr ""
 
-#: src/components/block-gallery/gallery-placeholder.js:77
+#: src/components/block-gallery/gallery-placeholder.js:75
 msgid "Drag images, upload new ones or select files from your library."
 msgstr ""
 
