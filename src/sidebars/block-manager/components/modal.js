@@ -74,7 +74,6 @@ class ModalSettings extends Component {
 					//get current blocks
 					let currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
 					let blockNames	  = MapInnerBlocks( currentBlocks );
-					
 
 					map( optionSettings, ( visible, block ) => {
 						if( visible && !block.includes( 'mainCategory-' ) && !blockNames[ block ] ){
