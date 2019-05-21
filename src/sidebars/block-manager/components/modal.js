@@ -20,7 +20,6 @@ const { Button, Modal, TextControl } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
 const { getCategories, getBlockTypes, unregisterBlockType } = wp.blocks;
 
-
 /**
  * Render plugin
  */
@@ -75,7 +74,7 @@ class ModalSettings extends Component {
 					//get current blocks
 					let currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
 					let blockNames	  = MapInnerBlocks( currentBlocks );
-					
+
 					map( optionSettings, ( visible, block ) => {
 						if( visible && !block.includes( 'mainCategory-' ) && !blockNames[ block ] ){
 							unregisterBlockType( block );
@@ -127,7 +126,7 @@ class ModalSettings extends Component {
 
 			this.setState({ searchResults: filtered });
 		}
-		
+
 		return (
 			<Fragment>
 				<PluginMoreMenuItem
