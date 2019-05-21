@@ -254,7 +254,7 @@ class Edit extends Component {
 							<TextControl
 								className="components-placeholder__input"
 								value={ ( attributes.address ) ? attributes.address : '' }
-								placeholder={ __( 'Enter address…' ) }
+								placeholder={ __( 'Search for a place or address…' ) }
 								onChange={ ( nextAddress ) => this.props.setAttributes( { address: nextAddress } ) }
 								onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
 							/>

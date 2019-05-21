@@ -8,10 +8,10 @@ When contributing please ensure you follow the guidelines below so that we can k
 
 ## Getting Started
 
--   **Do not report potential security vulnerabilities here. Email them privately to me at [hello at coblocks dot com](mailto:hello@coblocks.com)**
+-   **Do not report potential security vulnerabilities here. Email them privately to our team at [plugins@godaddy.com](mailto:plugins@godaddy.com)**
 -   Before submitting a ticket, please be sure to replicate the behavior with no other plugins active and on a base theme like Twenty Seventeen.
 -   Submit a ticket for your issue, assuming one does not already exist.
-    -   Raise it on our [Issue Tracker](https://github.com/coblocks/coblocks/issues)
+    -   Raise it on our [Issue Tracker](https://github.com/godaddy/coblocks/issues)
     -   Clearly describe the issue including steps to reproduce the bug.
     -   Make sure you fill in the earliest version that you know has the issue as well as the version of WordPress you're using.
 

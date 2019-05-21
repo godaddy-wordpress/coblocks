@@ -12,7 +12,7 @@ import { title } from '../'
 import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
-import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
+import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../../components/background';
 
 /**
  * WordPress dependencies
@@ -192,14 +192,12 @@ class Edit extends Component {
 		);
 
 		const innerStyles = {
-			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
+			...BackgroundStyles( attributes ),
 			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
 			paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			minHeight: fullscreen ? undefined : height,
 		};
 
@@ -252,11 +250,7 @@ class Edit extends Component {
 				{ fullscreen ?
 					<div className={ innerClasses } style={ innerStyles } >
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						{ backgroundType == 'video' ?
-							<div className="coblocks-video-background">
-								<video playsinline="" autoplay="" muted={ videoMuted } loop={ videoLoop } src={ backgroundImg } ></video>
-							</div>
-						: null }
+						{ BackgroundVideo( attributes ) }
 						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
 							<ResizableBox
 								className={ classnames(

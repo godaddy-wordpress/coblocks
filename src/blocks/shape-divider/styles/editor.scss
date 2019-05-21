@@ -24,7 +24,7 @@
 		}
 	}
 
-	.wp-block-coblocks-shape-divider__alt-wrapper .components-resizable-box__handle {
+	.wp-block-coblocks-shape-divider__alt-wrapper.components-resizable-box__handle {
 		left: 0;
 		right: 0;
 		width: 100%;
@@ -50,11 +50,11 @@
 		content: "";
 		display: block;
 		height: 3px;
-		left: 4px;
+		left: 0;
 		opacity: 0;
 		position: absolute;
 		transition: opacity 100ms cubic-bezier(0.39, 0.575, 0.565, 1);
-		width: calc(100% - 8px);
+		width: 100%;
 		z-index: 29;
 	}
 

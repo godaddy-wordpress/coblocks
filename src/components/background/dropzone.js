@@ -11,9 +11,6 @@ const { Component, Fragment } = wp.element;
 const { mediaUpload } = wp.editor;
 const { DropZone } = wp.components;
 
-/**
- * Gallery Drop Zone Component
- */
 class BackgroundDropZone extends Component {
 
 	constructor() {

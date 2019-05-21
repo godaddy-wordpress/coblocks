@@ -35,6 +35,9 @@ import './formats/';
 import './sidebars/block-manager';
 import './sidebars/block-manager/deprecated';
 
+// Block Gallery
+import './components/block-gallery';
+
 // Register Blocks
 import * as accordion from './blocks/accordion';
 import * as accordionItem from './blocks/accordion/accordion-item';
@@ -43,6 +46,7 @@ import * as author from './blocks/author';
 import * as clickToTweet from './blocks/click-to-tweet';
 import * as column from './blocks/row/column';
 import * as dynamicSeparator from './blocks/dynamic-separator';
+import * as form from './blocks/form';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
 import * as highlight from './blocks/highlight';
@@ -58,6 +62,9 @@ import * as feature from './blocks/features/feature';
 import * as features from './blocks/features';
 import * as buttons from './blocks/buttons';
 import * as hero from './blocks/hero';
+import * as stacked from './blocks/gallery-stacked';
+import * as masonry from './blocks/gallery-masonry';
+import * as carousel from './blocks/gallery-carousel';
 
 export function registerBlocks () {
 	[
@@ -68,6 +75,7 @@ export function registerBlocks () {
 		clickToTweet,
 		column,
 		dynamicSeparator,
+		form,
 		gif,
 		gist,
 		highlight,
@@ -83,6 +91,9 @@ export function registerBlocks () {
 		features,
 		buttons,
 		hero,
+		stacked,
+		carousel,
+		masonry,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {

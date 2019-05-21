@@ -1,0 +1,45 @@
+.coblocks-gallery {
+	&.has-gutter {
+		overflow: hidden;
+	}
+
+	&:not(.has-gutter) {
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+}
+
+// For desktop.
+@media (min-width: 700px) {
+	// Add negative margin to the parent ul to offset the gutter.
+	@for $i from 1 through 10 {
+		.has-gutter-#{ $i * 5 } {
+			margin: -#{round($i * 5 / 2)}px !important;
+			max-width: calc(100% + #{round($i * 5)}px) !important;
+		}
+	}
+
+	// Add gutter margin to the figure elements.
+	@for $i from 1 through 10 {
+		.has-gutter-#{ $i * 5 } {
+			.coblocks-gallery--figure {
+				margin: #{round($i * 5 / 2)}px;
+			}
+		}
+	}
+}
+
+// For desktop.
+@media (max-width: 699px) {
+	// Add gutter margin to the figure elements.
+	@for $i from 1 through 10 {
+		.has-gutter-mobile-#{ $i * 5 } {
+			margin: -#{round($i * 5 / 2)}px !important;
+			max-width: calc(100% + #{round($i * 5)}px) !important;
+
+			.coblocks-gallery--figure {
+				margin: #{round($i * 5 / 2)}px;
+			}
+		}
+	}
+}

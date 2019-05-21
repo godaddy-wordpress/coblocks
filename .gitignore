@@ -6,7 +6,6 @@
 **/dist/blocks.editor.build.css
 **/dist/*.css
 **/build/**
-**/languages/**
 *.sublime-project
 *.sublime-workspace
 *.cache

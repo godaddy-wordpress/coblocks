@@ -1,11 +1,8 @@
 <?php
 /**
- * Load assets and meta for browser legacy support
+ * Load assets and meta for browser legacy support.
  *
- * @package   CoBlocks
- * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
- * @link      https://coblocks.com
- * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
@@ -78,6 +75,13 @@ class CoBlocks_Accordion_IE_Support {
 	public function load_assets() {
 
 		global $post;
+
+		// Validate Post ID
+		if ( ! isset( $post->ID ) || empty( $post->ID ) ) {
+
+			return;
+
+		}
 
 		$legacy_support = get_post_meta( $post->ID, '_coblocks_accordion_ie_support', true );
 

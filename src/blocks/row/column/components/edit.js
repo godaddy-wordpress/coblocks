@@ -11,7 +11,7 @@ import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
 import { title, icon } from '../'
-import BackgroundPanel, { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../../components/background';
+import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../../../components/background';
 
 /**
  * WordPress dependencies
@@ -108,9 +108,8 @@ class Edit extends Component {
 		);
 
 		const innerStyles = {
+			...BackgroundStyles( attributes ),
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg && backgroundType == 'image' ? `url(${ backgroundImg })` : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
@@ -182,19 +181,13 @@ class Edit extends Component {
 							'is-resizing' : this.state.resizing,
 						}
 					) }
-					style={ {
-
-					} }
-					size={ {
-
-					} }
 					maxWidth={ this.state.maxWidth }
 					minHeight="20"
 					enable={ {
 						top: false,
 						right: true,
 						bottom: false,
-						left: true,
+						left: false,
 						topRight: false,
 						bottomRight: false,
 						bottomLeft: false,
@@ -205,7 +198,7 @@ class Edit extends Component {
 
 						//Remove resizing class
 						currentBlock.classList.remove( 'is-resizing' );
-						// document.getElementById( 'block-' + parentId ).classList.remove( 'is-resizing' );
+						document.getElementById( 'block-' + parentId ).classList.remove( 'is-resizing' );
 
 						toggleSelection( true );
 						this.setState( { resizing: false } );
