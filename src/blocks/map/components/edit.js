@@ -255,15 +255,16 @@ class Edit extends Component {
 							<GoogleMapApiRender address={ address } /> :
 							GoogleMapIframeRender
 						}
-					</ResizableBox>				:
+					</ResizableBox>
+				:
 					<Placeholder
 						icon={ icons.googleMap }
 						label={ __( 'Google Map' ) }
-						instructions={ __( 'Enter an address to drop a pin on a Google map.' ) } >
+						instructions={ __( 'Enter a location or address to drop a pin on a Google map.' ) } >
 						<TextControl
 							className="components-placeholder__input"
 							value={ this.state.address }
-							placeholder={ __( 'Enter address…' ) }
+							placeholder={ __( 'Search for a place or address…' ) }
 							onChange={ nextAddress => this.setState( { address: nextAddress } ) }
 							onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
 						/>

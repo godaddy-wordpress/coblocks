@@ -42,7 +42,7 @@
 		white-space: nowrap;
 
 		svg {
-			color: #555d66;
+			color: $dark-gray-500;
 		}
 	}
 
@@ -52,7 +52,7 @@
 
 	//Top toolbar styling for the Twitter username field
 	.edit-post-header-toolbar__block-toolbar &__via {
-		border-color: #8d96a0;
+		border-color: $dark-gray-150;
 		border-radius: 3px;
 		box-shadow: 0 0 0 transparent;
 		margin: 4px;
@@ -67,9 +67,9 @@
 		}
 
 		&:focus {
-			border-color: #00a0d2;
-			box-shadow: 0 0 0 1px #00a0d2;
-			color: #191e23;
+			border-color: $blue-medium-500;
+			box-shadow: 0 0 0 1px $blue-medium-500;
+			color: $dark-gray-900;
 			outline-offset: -2px;
 			outline: 2px solid transparent;
 		}

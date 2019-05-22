@@ -15,8 +15,8 @@
 }
 
 .page--coblocks-getting-started {
-	background: #fff;
-	border: 1px solid #e2e4e7;
+	background: $white;
+	border: 1px solid $light-gray-500;
 	border-radius: 3px;
 	box-shadow: 0 2px 30px rgba(25, 30, 35, 0.05);
 	color: #000;
@@ -51,7 +51,7 @@
 	}
 
 	h1 {
-		color: #23282d;
+		color: $dark-gray-800;
 		font-size: 1.7em;
 		font-weight: 700;
 		line-height: 1.48;
@@ -97,7 +97,7 @@
 
 			&:focus {
 				box-shadow: none;
-				outline: 1px solid #fff;
+				outline: 1px solid $white;
 				outline-offset: -4px;
 			}
 		}
@@ -159,7 +159,7 @@
 }
 
 .lity-loader {
-	color: #fff;
+	color: $white;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	margin-top: -0.8em;
@@ -218,7 +218,7 @@
 	background: none;
 	border: 0;
 	box-shadow: none;
-	color: #fff;
+	color: $white;
 	cursor: pointer;
 	font-family: Arial, Baskerville, monospace;
 	font-size: 35px;
@@ -248,7 +248,7 @@
 		background: none;
 		border: 0;
 		box-shadow: none;
-		color: #fff;
+		color: $white;
 		font-family: Arial, Baskerville, monospace;
 		font-size: 35px;
 		font-style: normal;

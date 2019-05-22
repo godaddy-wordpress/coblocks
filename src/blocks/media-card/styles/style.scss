@@ -27,7 +27,7 @@
 
 		.has-no-media & {
 			align-items: center;
-			background: rgba(139, 139, 150, 0.1); // Matches the .components-placeholder in core.
+			background: $dark-opacity-light-200;
 			display: flex;
 			height: 70vw;
 			justify-content: center;

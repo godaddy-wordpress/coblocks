@@ -7,14 +7,15 @@
 		.components-select-control__input {
 			appearance: none;
 			background: 0 0;
-			border: 1px solid #8d96a0;
 			border-radius: 4px;
+			border: 1px solid $dark-gray-150;
 			box-shadow: 0 0 0 transparent;
-			color: #555;
+			color: $dark-gray-500;
 			cursor: pointer;
 			font-size: 13px !important;
 			height: 30px;
 			line-height: 28px;
+			margin: 0 !important;
 			padding: 0 9px 2px;
 			position: relative;
 			transition: box-shadow 0.1s linear;
@@ -23,10 +24,10 @@
 			width: 130px;
 
 			&:hover {
-				background: #fafafa;
+				background: $light-gray-100;
 				border-color: #999;
 				box-shadow: inset 0 -1px 0 #999;
-				color: #23282d;
+				color: $dark-gray-800;
 				text-decoration: none;
 			}
 
@@ -37,10 +38,10 @@
 			}
 
 			&:focus:enabled {
-				background: #fafafa;
+				background: $light-gray-100;
 				border-color: #999;
-				box-shadow: inset 0 -1px 0 #999, 0 0 0 2px #bfe7f3;
-				color: #23282d;
+				box-shadow: inset 0 -1px 0 #999, 0 0 0 2px $blue-medium-200;
+				color: $dark-gray-800;
 				text-decoration: none;
 			}
 		}
@@ -51,10 +52,6 @@
 
 		.components-base-control__label {
 			margin-bottom: 0 !important;
-		}
-
-		.components-select-control__input {
-			margin: 0 !important;
 		}
 
 		.components-range-control__number {
@@ -76,7 +73,7 @@
 	}
 
 	&__footer {
-		border-top: 1px solid #e2e4e7;
+		border-top: 1px solid $light-gray-500;
 		margin: 16px -16px -16px;
 		padding: 18px 16px 14px;
 
