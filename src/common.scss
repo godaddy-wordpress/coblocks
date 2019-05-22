@@ -1,72 +1,36 @@
-// This SCSS file loads per every instance of each block.
-
 // Core Gutenberg modules
 @import "styles/editor/core/colors";
 @import "styles/editor/core/variables";
 @import "styles/editor/core/breakpoints";
 @import "styles/editor/core/mixins";
 
-// Fonts & basics
-$default-font: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen-sans, ubuntu, cantarell, "Helvetica Neue", sans-serif;
-
-// CoBlocks branding color.
-$coblocks: #1e35b9;
-
 // Colors.
-$black: rgb(41, 41, 41);
-$black-000: #000;
-$gray: #555d66;
-$red: #c92c2c;
-$lightred: #f9e2e2;
-$lightgreen: #eff9f1;
-$darkgreen: #337f46;
-$darkred: #a00;
-$green: #4ab866;
-$white: #fff;
-$lightgray: rgba(0, 0, 0, 0.15);
+$coblocks: #1e35b9;
+$blue: #0085ba;
 
-// Accordion.
+// Gutters
+$gutter--small: 18px;
+$gutter--medium: 22px;
+$gutter--large: 33px;
+$gutter--huge: 60px;
+
+// Accordion
 $accordion-border-radius: 4px;
 $accordion-background: #f2f2f2;
 
-// Social.
+// Click to Tweet
 $twitter: #1da1f2;
 
-// Breakpoints.
+// Media Card
 $break-small-twentynineteen: 1024px;
 $break-small-twentynineteen--min: 768px;
 $break-small-mediacard: 660px;
-
-// Variables from core.
-$block-padding: 10px;
-$border-width: 1px;
-$break-small: 600px;
-$break-smallest: 420px;
-$grid-size-large: 11px;
-$dark-gray-500: #555d66; // Use this most of the time for dark items.
-
-@mixin break-small() {
-	@media (min-width: #{ ($break-small) }) {
-		@content;
-	}
-}
-
-@mixin break-smallest() {
-	@media (min-width: #{ ($break-smallest) }) {
-		@content;
-	}
-}
 
 @mixin break-small-mediacard() {
 	@media (min-width: #{ ($break-small-mediacard) }) {
 		@content;
 	}
 }
-
-$gutter--small: 18px;
-$gutter--medium: 22px;
-$gutter--large: 33px;
-$gutter--huge: 60px;
 
 // Get all gallery blocks
 @mixin coblocksGalleryEditorBlocks {

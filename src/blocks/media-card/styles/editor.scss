@@ -68,8 +68,8 @@
 			}
 
 			&::after {
-				background: #0085ba;
-				border: 2px solid #fff;
+				background: $blue;
+				border: 2px solid $white;
 				border-radius: 50%;
 				bottom: -7px;
 				content: "";
@@ -167,7 +167,7 @@
 
 	// Add border to the image if the block is selected.
 	&.is-selected .wp-block-coblocks-media-card__img-wrapper:not(.has-no-media) {
-		outline: 4px solid #0085ba;
+		outline: 4px solid $blue;
 	}
 
 	.wp-block[data-type="coblocks/row"] .editor-block-list__block-edit::before {
@@ -181,7 +181,7 @@
 
 		.blocks-gallery-item__remove {
 			&:hover {
-				background-color: #0085ba !important;
+				background-color: $blue !important;
 				box-shadow: none !important;
 				color: rgba($white, 0.66) !important;
 			}

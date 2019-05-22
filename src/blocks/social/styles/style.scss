@@ -10,7 +10,7 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 
 	// Fallback icon color.
 	.wp-block-button__link:not(.has-text-color) {
-		color: #fff;
+		color: $white;
 	}
 
 	ul,
@@ -93,7 +93,7 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 
 	&.has-colors &__text,
 	&.has-colors:not(.is-style-mask) &__icon {
-		color: #fff;
+		color: $white;
 	}
 
 	// Social Colors.

@@ -15,8 +15,8 @@
 		left: 0;
 		letter-spacing: 0.95em;
 		line-height: 1;
-		margin-right: auto;
 		margin-left: 21px;
+		margin-right: auto;
 		position: absolute;
 		right: 0;
 		text-align: center;
@@ -25,14 +25,14 @@
 
 	&.is-style-line::before,
 	&.is-style-fullwidth::before {
-		content: "";
-		width: 15vw;
-		max-width: 120px;
-		height: 1px;
-		display: block;
-		top: 50%;
-		margin-left: auto;
 		background: currentColor;
+		content: "";
+		display: block;
+		height: 1px;
+		margin-left: auto;
+		max-width: 120px;
+		top: 50%;
+		width: 15vw;
 	}
 
 	&.is-style-fullwidth::before {
@@ -41,17 +41,15 @@
 	}
 
 	&:not(.has-text-color) {
-
 		&::before {
-			color: $black;
+			color: rgb(41, 41, 41);
 		}
 	}
 
 	&.is-style-line:not(.has-text-color),
 	&.is-style-fullwidth:not(.has-text-color) {
-
 		&::before {
-			background: $lightgray;
+			background: rgba(0, 0, 0, 0.15);
 		}
 	}
 }
