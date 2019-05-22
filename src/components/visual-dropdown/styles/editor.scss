@@ -32,7 +32,7 @@
 		padding: 4px;
 
 		&:hover {
-			background: rgba(139, 139, 150, 0.1);
+			background: $dark-opacity-light-200;
 			color: #191e23;
 		}
 
@@ -90,7 +90,7 @@
 		margin-right: 4px;
 
 		&:hover {
-			box-shadow: 0 0 0 4px rgba(139, 139, 150, 0.1) !important;
+			box-shadow: 0 0 0 4px $dark-opacity-light-200 !important;
 			color: #191e23;
 		}
 	}

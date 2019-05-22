@@ -28,7 +28,7 @@
 // The "Add Accordion Item" button
 .wp-block-coblocks-accordion {
 	.components-coblocks-add-accordion-item__button.components-button {
-		background: rgba(139, 139, 150, 0.1);
+		background: $dark-opacity-light-200;
 		border-radius: 0;
 		border: 1px dashed #d3d5d8;
 		box-shadow: none !important;

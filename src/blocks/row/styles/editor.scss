@@ -553,8 +553,8 @@ div[data-type="coblocks/column"] {
 				position: relative;
 
 				.components-button {
-					background: rgba(139, 139, 150, 0.1);
-					border: 1px dashed #8d96a0;
+					background: $dark-opacity-light-200;
+					border: 1px dashed $dark-gray-150;
 					border-radius: 0;
 					box-shadow: none !important;
 					color: #555d66;
