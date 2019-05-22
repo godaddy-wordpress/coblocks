@@ -66,7 +66,7 @@
 		}
 
 		&:focus {
-			box-shadow: 0 0 0 4px $light-gray-200, 0 0 0 6px theme(primary);
+			box-shadow: 0 0 0 4px $light-gray-200, 0 0 0 6px theme(toggle);
 			color: $dark-gray-900;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
@@ -75,7 +75,7 @@
 		&:active:enabled {
 			background: $white;
 			border-color: rgba(25, 30, 35, 0.3);
-			box-shadow: 0 0 0 4px $light-gray-200, 0 0 0 6px theme(primary);
+			box-shadow: 0 0 0 4px $light-gray-200, 0 0 0 6px theme(toggle);
 		}
 	}
 
@@ -113,7 +113,7 @@
 				&:focus,
 				&:active,
 				&.is-selected {
-					box-shadow: 0 0 0 2px theme(primary);
+					box-shadow: 0 0 0 2px theme(toggle);
 					color: $dark-gray-900;
 					outline: 2px solid transparent;
 					outline-offset: -2px;
@@ -124,7 +124,7 @@
 				}
 
 				&.is-selected {
-					box-shadow: 0 0 0 2px theme(primary);
+					box-shadow: 0 0 0 2px theme(toggle);
 				}
 			}
 
@@ -164,7 +164,7 @@
 			width: calc(50% - 8px);
 
 			&.is-selected {
-				box-shadow: 0 0 0 2px theme(primary);
+				box-shadow: 0 0 0 2px theme(toggle);
 			}
 		}
 
@@ -173,11 +173,11 @@
 			width: 100% !important;
 
 			&:focus {
-				box-shadow: 0 0 0 4px $white, 0 0 0 6px $blue-medium-500;
+				box-shadow: 0 0 0 4px $white, 0 0 0 6px theme(toggle);
 			}
 
 			&:active:enabled {
-				box-shadow: 0 0 0 4px $white, 0 0 0 6px $blue-medium-500;
+				box-shadow: 0 0 0 4px $white, 0 0 0 6px theme(toggle);
 			}
 		}
 	}
