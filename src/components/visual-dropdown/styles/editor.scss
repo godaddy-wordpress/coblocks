@@ -46,7 +46,7 @@
 
 	& &__button.components-button.is-default {
 		align-items: center;
-		background: #fff;
+		background: $white;
 		border: 1px solid rgba(25, 30, 35, 0.2);
 		border-radius: 4px !important;
 		box-shadow: none;
@@ -73,7 +73,7 @@
 		}
 
 		&:active:enabled {
-			background: #fff;
+			background: $white;
 			border-color: rgba(25, 30, 35, 0.3);
 			box-shadow: 0 0 0 4px #f4f4f5, 0 0 0 6px #00a0d2;
 		}
@@ -85,7 +85,7 @@
 	}
 
 	&__back.components-icon-button {
-		background: #fff;
+		background: $white;
 		border: 1px solid rgba(25, 30, 35, 0.2);
 		margin-right: 4px;
 
@@ -132,7 +132,7 @@
 				width: 100%;
 
 				&:active:enabled {
-					background: #fff;
+					background: $white;
 					border-color: none;
 					box-shadow: none !important;
 				}

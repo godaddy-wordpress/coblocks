@@ -175,9 +175,9 @@
 	// Width tag that pops up.
 	.coblocks-resizeable-width {
 		background: #0085ba;
-		border: 2px solid #fff;
+		border: 2px solid $white;
 		border-radius: 4px;
-		color: #fff;
+		color: $white;
 		font-family: "Helvetica Neue", sans-serif;
 		font-size: 10px;
 		line-height: 1;
@@ -206,7 +206,7 @@
 
 		&::before {
 			border-color: rgba(255, 255, 255, 0);
-			border-top-color: #fff;
+			border-top-color: $white;
 			border-width: 6px;
 			margin-left: -6px;
 		}

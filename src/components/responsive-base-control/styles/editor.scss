@@ -26,12 +26,12 @@
 
 		&:focus {
 			background-color: #555d66 !important;
-			box-shadow:  inset 0 0 0 1px #fff;
+			box-shadow: inset 0 0 0 1px $white;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
 
 			svg {
-				fill: #fff;
+				fill: $white;
 			}
 		}
 	}

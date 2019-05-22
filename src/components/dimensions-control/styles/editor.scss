@@ -3,7 +3,7 @@
 		position: relative;
 
 		&__mobile-controls-item {
-			background: #fff;
+			background: $white;
 			border: 1px solid $dark-gray-150;
 			border-radius: 4px 0 0 4px;
 			box-shadow: none;
@@ -38,7 +38,7 @@
 				box-shadow: inset 0 0 0 1px $white;
 
 				svg {
-					fill: #fff;
+					fill: $white;
 				}
 			}
 
@@ -147,7 +147,7 @@
 		}
 
 		.components-coblocks-dimensions-control__header .components-color-palette__clear {
-			background: #fff;
+			background: $white;
 			border: 1px solid #e2e4e7;
 			box-shadow: none;
 			color: $dark-gray-500;
@@ -166,13 +166,13 @@
 
 			&:active:enabled {
 				border-color: #999;
-				background: #fff;
+				background: $white;
 				box-shadow: none;
 			}
 
 			&:focus {
-				background: #fff;
-				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
+				background: $white;
+				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
 				outline-offset: -2px;
 				outline: 2px solid transparent;
 			}
@@ -180,7 +180,7 @@
 
 		&__units {
 			.components-button {
-				background: #fff;
+				background: $white;
 				border-color: #e2e4e7;
 				box-shadow: none !important;
 				box-shadow: none;
@@ -206,11 +206,11 @@
 					outline-offset: -2px;
 					background: $dark-gray-500;
 					outline: 2px solid transparent;
-					box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
+					box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
 				}
 
 				&:not(.is-primary):hover {
-					background: #fff;
+					background: $white;
 					color: #191e23;
 					box-shadow: none;
 				}
@@ -224,7 +224,7 @@
 
 					&:focus {
 						background: $dark-gray-500;
-						box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
+						box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
 					}
 
 					&:active:enabled {
@@ -237,7 +237,7 @@
 		}
 
 		&_sync.components-button.is-small {
-			background: #fff;
+			background: $white;
 			border: 1px solid $dark-gray-150;
 			border-radius: 0;
 			border-bottom-right-radius: 4px;
@@ -260,7 +260,7 @@
 			&:focus {
 				background: $dark-gray-500 !important;
 				border-color: $dark-gray-500;
-				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
+				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
 				color: #fff !important;
 				outline-offset: -2px;
 				outline: 2px solid transparent;
@@ -281,7 +281,7 @@
 			}
 
 			&:not(.is-primary):hover {
-				background: #fff;
+				background: $white;
 				border-color: $dark-gray-500;
 				box-shadow: none;
 				color: $dark-gray-500;

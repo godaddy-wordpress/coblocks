@@ -53,7 +53,7 @@
 		&:focus:enabled {
 			background: $dark-gray-500 !important;
 			border-color: $dark-gray-500;
-			box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
+			box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
 			color: $white !important;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
@@ -67,7 +67,7 @@
 
 			&:focus,
 			&:active:enabled {
-				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
+				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
 				outline: 2px solid transparent;
 				outline-offset: -2px;
 			}

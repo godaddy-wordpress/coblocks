@@ -6,7 +6,7 @@
 	}
 
 	.coblocks-block-manager__search {
-		background: #fff;
+		background: $white;
 		margin: -16px -16px 0;
 		padding: 16px;
 		position: sticky;
@@ -92,7 +92,7 @@
 	}
 
 	.coblocks-block-manager__error {
-		background: #fff;
+		background: $white;
 		color: $alert-red;
 		margin-top: -16px;
 		padding: 8px;
@@ -180,7 +180,7 @@
 		}
 
 		&.block-disabled {
-			background: #fff;
+			background: $white;
 
 			.coblocks-block-manager__button-icon,
 			.coblocks-block-manager__button-label {
@@ -200,7 +200,7 @@
 			}
 
 			&:focus:enabled {
-				background: #fff;
+				background: $white;
 
 				&:hover {
 					.coblocks-block-manager__button-icon,
