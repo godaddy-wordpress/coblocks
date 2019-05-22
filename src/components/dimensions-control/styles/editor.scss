@@ -261,7 +261,7 @@
 				background: $dark-gray-500 !important;
 				border-color: $dark-gray-500;
 				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
-				color: #fff !important;
+				color: $white !important;
 				outline-offset: -2px;
 				outline: 2px solid transparent;
 
@@ -277,7 +277,7 @@
 			&:not(.is-primary):active:enabled,
 			&:not(.is-primary):focus:enabled {
 				box-shadow: none;
-				color: #fff !important;
+				color: $white !important;
 			}
 
 			&:not(.is-primary):hover {
