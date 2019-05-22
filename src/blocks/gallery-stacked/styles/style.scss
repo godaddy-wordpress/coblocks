@@ -3,7 +3,7 @@
 	text-align: center;
 
 	&:not(.has-caption-color) {
-		color: #333 !important;
+		color: $dark-gray-500 !important;
 	}
 
 	.coblocks-gallery--item {
