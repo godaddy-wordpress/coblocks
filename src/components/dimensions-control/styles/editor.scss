@@ -21,7 +21,6 @@
 			top: 23px;
 			width: 26px;
 			z-index: 1;
-			display: none;
 
 			&.is-active {
 				display: block;
@@ -148,7 +147,7 @@
 
 		.components-coblocks-dimensions-control__header .components-color-palette__clear {
 			background: $white;
-			border: 1px solid #e2e4e7;
+			border: 1px solid $light-gray-500;
 			box-shadow: none;
 			color: $dark-gray-500;
 			height: 22px;
@@ -165,25 +164,24 @@
 			}
 
 			&:active:enabled {
-				border-color: #999;
 				background: $white;
+				border-color: #999;
 				box-shadow: none;
 			}
 
 			&:focus {
 				background: $white;
 				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
-				outline-offset: -2px;
 				outline: 2px solid transparent;
+				outline-offset: -2px;
 			}
 		}
 
 		&__units {
 			.components-button {
 				background: $white;
-				border-color: #e2e4e7;
+				border-color: $light-gray-500;
 				box-shadow: none !important;
-				box-shadow: none;
 				color: $dark-gray-300;
 				font-size: 10px;
 				height: 22px;
@@ -198,29 +196,29 @@
 				width: 22px;
 
 				&:hover {
-					color: $dark-gray-900;
 					border-color: $dark-gray-500;
+					color: $dark-gray-900;
 				}
 
 				&:focus {
-					outline-offset: -2px;
 					background: $dark-gray-500;
-					outline: 2px solid transparent;
 					box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
+					outline: 2px solid transparent;
+					outline-offset: -2px;
 				}
 
 				&:not(.is-primary):hover {
 					background: $white;
-					color: $dark-gray-900;
 					box-shadow: none;
+					color: $dark-gray-900;
 				}
 
 				&.is-primary {
 					background: $dark-gray-500;
 					border-color: $dark-gray-500;
 					color: $white;
-					z-index: 1;
 					cursor: default;
+					z-index: 1;
 
 					&:focus {
 						background: $dark-gray-500;
@@ -239,8 +237,8 @@
 		&_sync.components-button.is-small {
 			background: $white;
 			border: 1px solid $dark-gray-150;
-			border-radius: 0;
 			border-bottom-right-radius: 4px;
+			border-radius: 0;
 			border-top-right-radius: 4px;
 			box-shadow: none;
 			color: $dark-gray-500;
@@ -262,8 +260,8 @@
 				border-color: $dark-gray-500;
 				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
 				color: $white !important;
-				outline-offset: -2px;
 				outline: 2px solid transparent;
+				outline-offset: -2px;
 
 				svg {
 					fill: $white !important;

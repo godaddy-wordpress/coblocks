@@ -16,7 +16,7 @@
 
 .page--coblocks-getting-started {
 	background: $white;
-	border: 1px solid #e2e4e7;
+	border: 1px solid $light-gray-500;
 	border-radius: 3px;
 	box-shadow: 0 2px 30px rgba(25, 30, 35, 0.05);
 	color: #000;
@@ -51,7 +51,7 @@
 	}
 
 	h1 {
-		color: #23282d;
+		color: $dark-gray-800;
 		font-size: 1.7em;
 		font-weight: 700;
 		line-height: 1.48;
