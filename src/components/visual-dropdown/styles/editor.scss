@@ -33,12 +33,12 @@
 
 		&:hover {
 			background: $dark-opacity-light-200;
-			color: #191e23;
+			color: $dark-gray-900;
 		}
 
 		&:focus {
 			box-shadow: 0 0 0 2px $blue-medium-500;
-			color: #191e23;
+			color: $dark-gray-900;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
 		}
@@ -67,7 +67,7 @@
 
 		&:focus {
 			box-shadow: 0 0 0 4px #f4f4f5, 0 0 0 6px $blue-medium-500;
-			color: #191e23;
+			color: $dark-gray-900;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
 		}
@@ -91,7 +91,7 @@
 
 		&:hover {
 			box-shadow: 0 0 0 4px $dark-opacity-light-200 !important;
-			color: #191e23;
+			color: $dark-gray-900;
 		}
 	}
 
@@ -114,7 +114,7 @@
 				&:active,
 				&.is-selected {
 					box-shadow: 0 0 0 2px $blue-medium-500;
-					color: #191e23;
+					color: $dark-gray-900;
 					outline: 2px solid transparent;
 					outline-offset: -2px;
 
@@ -139,7 +139,7 @@
 
 				&:focus {
 					box-shadow: none;
-					color: #191e23;
+					color: $dark-gray-900;
 					outline: 2px solid transparent;
 					outline-offset: -2px;
 				}
@@ -217,7 +217,7 @@
 			background: #f8f9f9;
 
 			.editor-block-styles__item-label {
-				color: #191e23;
+				color: $dark-gray-900;
 			}
 		}
 	}
