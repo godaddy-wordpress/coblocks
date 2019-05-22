@@ -69,7 +69,7 @@
 		&:focus {
 			border-color: $blue-medium-500;
 			box-shadow: 0 0 0 1px $blue-medium-500;
-			color: #191e23;
+			color: $dark-gray-900;
 			outline-offset: -2px;
 			outline: 2px solid transparent;
 		}

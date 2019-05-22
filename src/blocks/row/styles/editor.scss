@@ -2,7 +2,7 @@
 	display: block;
 
 	.components-placeholder {
-		color: #191e23;
+		color: $dark-gray-900;
 	}
 
 	.wp-block-coblocks-row__inner.has-no-gutter {
@@ -575,7 +575,7 @@ div[data-type="coblocks/column"] {
 					}
 
 					&:hover {
-						color: #191e23;
+						color: $dark-gray-900;
 						border-color: #555d66;
 					}
 				}

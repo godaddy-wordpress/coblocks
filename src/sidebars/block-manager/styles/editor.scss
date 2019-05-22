@@ -140,19 +140,19 @@
 
 		&:not(.block-disabled) {
 			&:hover {
-				background: #edeff0;
+				background: $light-gray-300;
 
 				.coblocks-block-manager__button-icon {
-					color: #191e23;
+					color: $dark-gray-900;
 				}
 			}
 
 			&:focus:enabled {
-				background: #edeff0;
+				background: $light-gray-300;
 
 				&:hover {
 					.coblocks-block-manager__button-icon {
-						color: #191e23;
+						color: $dark-gray-900;
 					}
 				}
 			}
@@ -162,7 +162,7 @@
 				background: #f8f9f9;
 
 				.coblocks-block-manager__button-icon {
-					color: #191e23;
+					color: $dark-gray-900;
 				}
 
 				.coblocks-block-manager__button-label {
@@ -191,7 +191,7 @@
 				background: #f8f9f9;
 
 				.coblocks-block-manager__button-icon {
-					color: #191e23 !important;
+					color: $dark-gray-900 !important;
 				}
 
 				.coblocks-block-manager__button-label {
@@ -215,7 +215,7 @@
 				background: #f8f9f9;
 
 				.coblocks-block-manager__button-icon {
-					color: #191e23 !important;
+					color: $dark-gray-900 !important;
 				}
 
 				.coblocks-block-manager__button-label {

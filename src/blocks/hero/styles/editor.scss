@@ -145,12 +145,12 @@
 		}
 
 		.components-button {
-			background: #edeff0;
-			padding: 20px;
 			border: 0;
+			background: $light-gray-300;
 			border-radius: 0 !important;
 			box-shadow: none;
 			height: 100%;
+			padding: 20px;
 			width: 100%;
 
 			svg {

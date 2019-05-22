@@ -42,7 +42,7 @@
 		&:hover {
 			border-color: $dark-gray-500;
 			box-shadow: none;
-			color: #191e23;
+			color: $dark-gray-900;
 		}
 
 		&:active:enabled {
