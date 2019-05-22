@@ -6,14 +6,14 @@
 	}
 
 	img:focus {
-		box-shadow: inset 0 0 0 4px #0085ba;
+		box-shadow: inset 0 0 0 4px theme(primary);
 		outline: none;
 	}
 
 	.is-selected {
 		&::after {
 			bottom: 0;
-			box-shadow: inset 0 0 0 4px #0085ba;
+			box-shadow: inset 0 0 0 4px theme(primary);
 			content: "";
 			left: 0;
 			position: absolute;

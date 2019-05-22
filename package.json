@@ -25,6 +25,7 @@
 	"dependencies": {
 		"@wordpress/api-fetch": "^2.2.8",
 		"@wordpress/plugins": "^1.0.4",
+		"@wordpress/postcss-themes": "^2.1.0",
 		"@wordpress/redux-routine": "^3.1.0",
 		"cgb-scripts": "^1.17.0",
 		"classnames": "2.2.5",
