@@ -29,17 +29,17 @@
 .wp-block-coblocks-accordion {
 	.components-coblocks-add-accordion-item__button.components-button {
 		background: $dark-opacity-light-200;
+		border: 1px dashed $dark-gray-150;
 		border-radius: 0;
-		border: 1px dashed #d3d5d8;
 		box-shadow: none !important;
 		color: $dark-gray-500;
 		font-size: 14px;
-		height: 40px;
+		height: 46px;
 		justify-content: center;
 		line-height: 31px;
-		padding: 0 8px 0 8px;
+		padding: 0 5px;
 		text-align: center;
-		transition: color 0.2s ease;
+		transition: all 0.2s ease;
 		width: 100%;
 
 		svg {
@@ -47,7 +47,8 @@
 		}
 
 		&:hover {
-			color: $dark-gray-900;
+			border-color: $dark-gray-900;
+			color: $dark-gray-800;
 		}
 	}
 }
