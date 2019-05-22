@@ -16,7 +16,7 @@
 		"build": "node .dev/scripts/build.js",
 		"version": "grunt version && git add -A .",
 		"postversion": "git push && git push --tags",
-		"makepot": "wp i18n make-pot . --merge=languages/coblocks-js.pot --skip-js --skip-audit --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy/coblocks/issues\"}' --file-comment='Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.'",
+		"makepot": "wp i18n make-pot . --merge=languages/coblocks-js.pot --skip-audit --exclude=build --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy/coblocks/issues\"}' --file-comment='Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.'",
 		"babel": "babel src --ignore src/blocks/gist/components/gist.js",
 		"babel:json": "wp i18n make-json languages",
 		"babel:build": "npm run babel && npm run makepot && npm run babel:json"
@@ -116,51 +116,5 @@
 	},
 	"eslintConfig": {
 		"extends": "wordpress"
-	},
-	"babel": {
-		"presets": [
-			[
-				"env",
-				{
-					"modules": false,
-					"targets": {
-						"browsers": [
-							"last 2 Chrome versions",
-							"last 2 Firefox versions",
-							"last 2 Safari versions",
-							"last 2 iOS versions",
-							"last 1 Android version",
-							"last 1 ChromeAndroid version",
-							"ie 11"
-						]
-					}
-				}
-			]
-		],
-		"plugins": [
-			[
-				"transform-object-rest-spread"
-			],
-			[
-				"transform-object-rest-spread",
-				{
-					"useBuiltIns": true
-				}
-			],
-			[
-				"transform-react-jsx",
-				{
-					"pragma": "wp.element.createElement"
-				}
-			],
-			[
-				"transform-runtime",
-				{
-					"helpers": false,
-					"polyfill": false,
-					"regenerator": true
-				}
-			]
-		]
 	}
 }
