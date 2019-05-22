@@ -557,7 +557,7 @@ div[data-type="coblocks/column"] {
 					border: 1px dashed $dark-gray-150;
 					border-radius: 0;
 					box-shadow: none !important;
-					color: #555d66;
+					color: $dark-gray-500;
 					display: block;
 					font-size: 14px;
 					height: 40px !important;
@@ -576,7 +576,7 @@ div[data-type="coblocks/column"] {
 
 					&:hover {
 						color: $dark-gray-900;
-						border-color: #555d66;
+						border-color: $dark-gray-500;
 					}
 				}
 			}
