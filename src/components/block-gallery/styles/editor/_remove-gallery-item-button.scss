@@ -1,6 +1,6 @@
 .components-coblocks-remove-gallery-item-button {
 	&-wrapper {
-		background-color: $blue;
+		background-color: theme(primary);
 		display: inline-flex;
 		padding: 2px;
 		position: absolute;
@@ -20,8 +20,8 @@
 		padding: 0;
 
 		&:hover {
-			background: $blue !important;
-			border-color: $blue !important;
+			background: theme(primary) !important;
+			border-color: theme(primary) !important;
 			color: #fff !important;
 			opacity: 0.75;
 		}
