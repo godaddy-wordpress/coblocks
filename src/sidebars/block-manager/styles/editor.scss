@@ -174,7 +174,7 @@
 		&:focus:enabled,
 		&:active:enabled {
 			background: #f8f9f9;
-			box-shadow: 0 0 0 2px #00a0d2;
+			box-shadow: 0 0 0 2px $blue-medium-500;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
 		}

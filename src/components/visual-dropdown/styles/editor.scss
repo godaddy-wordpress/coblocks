@@ -37,7 +37,7 @@
 		}
 
 		&:focus {
-			box-shadow: 0 0 0 2px #00a0d2;
+			box-shadow: 0 0 0 2px $blue-medium-500;
 			color: #191e23;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
@@ -66,7 +66,7 @@
 		}
 
 		&:focus {
-			box-shadow: 0 0 0 4px #f4f4f5, 0 0 0 6px #00a0d2;
+			box-shadow: 0 0 0 4px #f4f4f5, 0 0 0 6px $blue-medium-500;
 			color: #191e23;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
@@ -75,7 +75,7 @@
 		&:active:enabled {
 			background: $white;
 			border-color: rgba(25, 30, 35, 0.3);
-			box-shadow: 0 0 0 4px #f4f4f5, 0 0 0 6px #00a0d2;
+			box-shadow: 0 0 0 4px #f4f4f5, 0 0 0 6px $blue-medium-500;
 		}
 	}
 
@@ -113,7 +113,7 @@
 				&:focus,
 				&:active,
 				&.is-selected {
-					box-shadow: 0 0 0 2px #00a0d2;
+					box-shadow: 0 0 0 2px $blue-medium-500;
 					color: #191e23;
 					outline: 2px solid transparent;
 					outline-offset: -2px;
@@ -177,11 +177,11 @@
 			// }
 
 			&:focus {
-				box-shadow: 0 0 0 4px #fff, 0 0 0 6px #00a0d2;
+				box-shadow: 0 0 0 4px #fff, 0 0 0 6px $blue-medium-500;
 			}
 
 			&:active:enabled {
-				box-shadow: 0 0 0 4px #fff, 0 0 0 6px #00a0d2;
+				box-shadow: 0 0 0 4px #fff, 0 0 0 6px $blue-medium-500;
 			}
 		}
 	}
