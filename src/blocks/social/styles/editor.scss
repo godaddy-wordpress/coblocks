@@ -17,8 +17,8 @@
 
 		&.is-style-mask {
 			.wp-block-coblocks-social__icon {
-				position: relative;
-				top: 4px;
+				height: 32px !important;
+				width: 32px !important;
 			}
 		}
 
@@ -29,15 +29,38 @@
 			}
 		}
 
+		&.is-style-text {
+			.wp-block-coblocks-social__button {
+				position: relative;
+				top: -2px;
+			}
+		}
+
 		&.is-style-icon-and-text {
 			.wp-block-coblocks-social__text {
 				margin-left: 4px;
+				position: relative;
+				top: 1px;
 			}
+		}
+
+		&.is-style-circular {
+			.wp-block-coblocks-social__icon {
+				height: 18px !important;
+				width: 18px !important;
+			}
+			.wp-block-coblocks-social__button {
+				padding: 14px !important;
+			}
+		}
+
+		ul {
+			margin: 0;
 		}
 
 		li {
 			display: none;
-			margin: 0;
+			margin: 0 !important;
 
 			&:first-child {
 				display: block;

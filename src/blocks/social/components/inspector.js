@@ -123,7 +123,7 @@ class Inspector extends Component {
 								max={ 50 }
 							/>
 						}
-						{ isMaskStyle || isCircularStyle &&
+						{ ( isMaskStyle || isCircularStyle ) &&
 							<RangeControl
 								label={ __( 'Icon Size' ) }
 								value={ iconSize }
