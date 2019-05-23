@@ -128,7 +128,7 @@ class TypographyControls extends Component {
 				label: __( 'Capitalize' ),
 			},
 			{
-				value: 'normal',
+				value: 'initial',
 				label: __( 'Normal' ),
 			},
 		];
