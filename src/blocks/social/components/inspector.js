@@ -101,6 +101,7 @@ class Inspector extends Component {
 		];
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
+		const isCircularStyle = includes( className, 'is-style-circular' );
 
 		return (
 			<Fragment>
@@ -112,7 +113,7 @@ class Inspector extends Component {
 							onChange={ () => setAttributes( {  hasColors: ! hasColors } ) }
 							help={ this.getHasColorsHelp }
 						/>
-						{ ! isMaskStyle &&
+						{ ! isMaskStyle && ! isCircularStyle &&
 							<RangeControl
 								label={ __( 'Rounded Corners' ) }
 								value={ borderRadius }

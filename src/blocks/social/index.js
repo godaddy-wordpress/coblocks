@@ -39,6 +39,7 @@ const settings = {
 		{ name: 'icon', label: __( 'Icon' ), isDefault: true },
 		{ name: 'text', label: __( 'Text' ) },
 		{ name: 'icon-and-text', label: __( 'Icon & Text' ) },
+		{ name: 'circular', label: __( 'Circular' ) },
 	],
 
 	edit: Edit,

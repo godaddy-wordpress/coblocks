@@ -173,7 +173,7 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 		}
 
 		// Icon only style.
-		&:not(.is-style-text):not(.is-style-icon-and-text) .wp-block-coblocks-social__button {
+		&:not(.is-style-text):not(.is-style-icon-and-text):not(.is-style-circular) .wp-block-coblocks-social__button {
 			padding: 8px 16px;
 		}
 
@@ -190,7 +190,7 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 
 	&.has-button-size-lrg {
 		// Icon only style.
-		&:not(.is-style-text):not(.is-style-icon-and-text) .wp-block-coblocks-social__button {
+		&:not(.is-style-text):not(.is-style-icon-and-text):not(.is-style-circular) .wp-block-coblocks-social__button {
 			padding: 14px 32px;
 		}
 
@@ -202,6 +202,22 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 		.wp-block-coblocks-social__button {
 			font-size: 16px;
 			padding: 12px 16px;
+		}
+	}
+
+	// Circular style.
+	&.is-style-circular {
+		.wp-block-coblocks-social__button {
+			border-radius: 100%;
+			padding: 14px !important;
+		}
+
+		&.has-button-size-sml .wp-block-coblocks-social__button {
+			padding: 10px !important;
+		}
+
+		&.has-button-size-lrg .wp-block-coblocks-social__button {
+			padding: 20px !important;
 		}
 	}
 }
