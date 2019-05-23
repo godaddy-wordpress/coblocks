@@ -209,15 +209,10 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 	&.is-style-circular {
 		.wp-block-coblocks-social__button {
 			border-radius: 100%;
+		}
+
+		.wp-block-coblocks-social__button:not(.has-padding) {
 			padding: 14px !important;
-		}
-
-		&.has-button-size-sml .wp-block-coblocks-social__button {
-			padding: 10px !important;
-		}
-
-		&.has-button-size-lrg .wp-block-coblocks-social__button {
-			padding: 20px !important;
 		}
 	}
 }

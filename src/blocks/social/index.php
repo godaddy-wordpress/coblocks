@@ -93,6 +93,7 @@ function coblocks_render_social_block( $attributes ) {
 	// Attributes.
 	$text_align    = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "style=text-align:{$attributes['textAlign']}" : false;
 	$border_radius = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : false;
+	$has_padding   = is_array( $attributes ) && isset( $attributes['padding'] ) ? 'has-padding' : false;
 
 	$has_backround           = '';
 	$background_color_class  = '';
@@ -100,6 +101,8 @@ function coblocks_render_social_block( $attributes ) {
 	$has_color               = '';
 	$text_color_class        = '';
 	$custom_text_color       = '';
+	$icon_size               = '';
+	$padding                 = '';
 
 	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) !== false ) {
 		$has_backround           = is_array( $attributes ) && isset( $attributes['hasColors'] ) && ( isset( $attributes['backgroundColor'] ) || isset( $attributes['customBackgroundColor'] ) ) && ( $attributes['hasColors'] || ( $attributes['backgroundColor'] || $attributes['customBackgroundColor'] ) ) ? 'has-text-color' : false;
@@ -116,9 +119,12 @@ function coblocks_render_social_block( $attributes ) {
 		$custom_text_color = is_array( $attributes ) && isset( $attributes['customTextColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['textColor'] ) ) ? "color: {$attributes['customTextColor']};" : false;
 	}
 
-	$icon_size = '';
-	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) !== false ) {
+	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) || strpos( $attributes['className'], 'is-style-circular' ) !== false ) {
 		$icon_size = is_array( $attributes ) && isset( $attributes['iconSize'] ) ? "height:{$attributes['iconSize']}px;width: {$attributes['iconSize']}px;" : false;
+	}
+
+	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-circular' ) !== false ) {
+		$padding = is_array( $attributes ) && isset( $attributes['padding'] ) ? "padding:{$attributes['padding']}px;" : false;
 	}
 
 	// Supported social media platforms.
@@ -165,7 +171,7 @@ function coblocks_render_social_block( $attributes ) {
 		if ( isset( $attributes[ $id ] ) && $attributes[ $id ] ) {
 			$markup .= sprintf(
 				'<li>
-					<a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--%8$s %3$s %7$s %9$s %10$s" title="%2$s" style="%4$s%6$s%11$s">
+					<a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--%8$s %3$s %7$s %9$s %10$s %13$s" title="%2$s" style="%4$s%6$s%11$s%12$s">
 						<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
 						<span class="wp-block-coblocks-social__text">%2$s</span>
 					</a>
@@ -180,7 +186,9 @@ function coblocks_render_social_block( $attributes ) {
 				esc_attr( $id ),
 				esc_attr( $has_color ),
 				esc_attr( $text_color_class ),
-				esc_attr( $custom_text_color )
+				esc_attr( $custom_text_color ),
+				esc_attr( $padding ),
+				esc_attr( $has_padding )
 			);
 		}
 	}
@@ -245,7 +253,11 @@ function coblocks_register_social_block() {
 				),
 				'iconSize'              => array(
 					'type'    => 'number',
-					'default' => 30,
+					'default' => 22,
+				),
+				'padding'               => array(
+					'type' => 'number',
+					'default' => 16,
 				),
 				'textAlign'             => array(
 					'type' => 'string',
