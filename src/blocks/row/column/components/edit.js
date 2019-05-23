@@ -19,6 +19,7 @@ import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZon
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
+const { withSelect } = wp.data;
 const { RichText, InnerBlocks, withFontSizes, Inserter } = wp.editor;
 const { ResizableBox, Spinner, IconButton } = wp.components;
 const { isBlobURL } = wp.blob;
@@ -52,6 +53,7 @@ class Edit extends Component {
 			setAttributes,
 			backgroundColor,
 			textColor,
+			hasInnerBlocks,
 		} = this.props
 
 		const {
@@ -73,7 +75,6 @@ class Edit extends Component {
 			contentAlign,
 			focalPoint,
 			hasParallax,
-			showInserter,
 			backgroundType,
 		} = attributes;
 
@@ -149,8 +150,8 @@ class Edit extends Component {
 								{ BackgroundVideo( attributes ) }
 								<InnerBlocks
 									templateLock={ false }
+									renderAppender={ ! hasInnerBlocks && InnerBlocks.ButtonBlockAppender }
 								/>
-								{ showInserter ? <Inserter rootClientId={ clientId } isAppender /> : null }
 							</div>
 						</div>
 					</div>
@@ -240,8 +241,10 @@ class Edit extends Component {
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }
 						<div className={ innerClasses } style={ innerStyles }>
-							<InnerBlocks templateLock={ false }/>
-							{ showInserter ? <Inserter rootClientId={ clientId } isAppender /> : null }
+							<InnerBlocks
+								templateLock={ false }
+								renderAppender={ ! hasInnerBlocks && InnerBlocks.ButtonBlockAppender }
+							/>
 						</div>
 					</div>
 				</ResizableBox>
@@ -252,4 +255,16 @@ class Edit extends Component {
 
 export default compose( [
 	applyWithColors,
+
+	withSelect( ( select, { clientId } ) => {
+		const {
+			getBlock,
+		} = select( 'core/block-editor' );
+
+		const block = getBlock( clientId );
+
+		return {
+			hasInnerBlocks: !! ( block && block.innerBlocks.length ),
+		};
+	} ),
 ] )( Edit );

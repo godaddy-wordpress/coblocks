@@ -40,10 +40,6 @@ const blockAttributes = {
 	customTextColor: {
 		type: 'string',
 	},
-	showInserter: {
-		type: 'boolean',
-		default: true,
-	},
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 };
