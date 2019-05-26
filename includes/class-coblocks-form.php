@@ -126,6 +126,7 @@ class CoBlocks_Form {
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( untrailingslashit( get_the_permalink() ) ), $this->form_hash ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); ?>
+				<input type="hidden" name="coblocks-spam-check" value="">
 				<div class="coblocks-form__submit wp-block-button">
 					<?php $this->render_submit_button( $atts ); ?>
 					<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
@@ -346,6 +347,14 @@ class CoBlocks_Form {
 		$nonce = filter_input( INPUT_POST, 'form-submit', FILTER_SANITIZE_STRING );
 
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'coblocks-form-submit' ) ) {
+
+			return;
+
+		}
+
+		$spam_check = filter_input( INPUT_POST, 'coblocks-spam-check', FILTER_SANITIZE_STRING );
+
+		if ( ! empty( $spam_check ) ) {
 
 			return;
 
