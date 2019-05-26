@@ -356,6 +356,17 @@ class CoBlocks_Form {
 
 		if ( ! empty( $spam_check ) ) {
 
+			?>
+
+			<script type="text/javascript">
+			if ( window.history.replaceState && window.location.hash ) {
+				document.getElementById( window.location.hash.substring( 1 ) ).scrollIntoView();
+				window.history.replaceState( null, null, ' ' );
+			}
+			</script>
+
+			<?php
+
 			return;
 
 		}
