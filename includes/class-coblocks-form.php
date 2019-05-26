@@ -126,7 +126,7 @@ class CoBlocks_Form {
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( untrailingslashit( get_the_permalink() ) ), $this->form_hash ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); ?>
-				<input class="coblocks-field honey" type="text" name="coblocks-honey-name" autocomplete="off" placeholder="<?php esc_attr_e( 'Name', 'coblocks' ); ?>">
+				<input class="coblocks-field verify" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>">
 				<div class="coblocks-form__submit wp-block-button">
 					<?php $this->render_submit_button( $atts ); ?>
 					<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
@@ -352,7 +352,7 @@ class CoBlocks_Form {
 
 		}
 
-		$spam_check = filter_input( INPUT_POST, 'coblocks-honey-name', FILTER_SANITIZE_STRING );
+		$spam_check = filter_input( INPUT_POST, 'coblocks-verify-email', FILTER_SANITIZE_STRING );
 
 		if ( ! empty( $spam_check ) ) {
 
@@ -366,7 +366,7 @@ class CoBlocks_Form {
 		$to      = isset( $atts['to'] ) ? sanitize_email( $atts['to'] ) : get_option( 'admin_email' );
 		$subject = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : $post_title;
 
-		unset( $_POST['form-submit'], $_POST['_wp_http_referer'], $_POST['action'], $_POST['form-hash'], $_POST['coblocks-honey-name'] );
+		unset( $_POST['form-submit'], $_POST['_wp_http_referer'], $_POST['action'], $_POST['form-hash'], $_POST['coblocks-verify-email'] );
 
 		$this->email_content = '<ul>';
 
