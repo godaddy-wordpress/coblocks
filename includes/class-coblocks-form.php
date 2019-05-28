@@ -35,6 +35,13 @@ class CoBlocks_Form {
 	private $form_hash;
 
 	/**
+	 * Google Recaptcha v3 verify endpoint
+	 *
+	 * @var string
+	 */
+	const GCAPTCHA_VERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify';
+
+	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
@@ -91,7 +98,7 @@ class CoBlocks_Form {
 
 			wp_enqueue_script(
 				'google-recaptcha',
-				'https://www.google.com/recaptcha/api.js?onload=googleRecaptchaCallback&render=' . esc_attr( $recaptcha_site_key ),
+				'https://www.google.com/recaptcha/api.js?render=' . esc_attr( $recaptcha_site_key ),
 				array( 'jquery' ),
 				'3.0.0',
 				true
@@ -170,9 +177,10 @@ class CoBlocks_Form {
 	 */
 	public function render_form( $atts, $content ) {
 
-		$this->form_hash    = sha1( json_encode( $atts ) . $content );
-		$submitted_hash     = filter_input( INPUT_POST, 'form-hash', FILTER_SANITIZE_STRING );
-		$recaptcha_site_key = get_option( 'coblocks_google_recaptcha_site_key' );
+		$this->form_hash      = sha1( json_encode( $atts ) . $content );
+		$submitted_hash       = filter_input( INPUT_POST, 'form-hash', FILTER_SANITIZE_STRING );
+		$recaptcha_site_key   = get_option( 'coblocks_google_recaptcha_site_key' );
+		$recaptcha_secret_key = get_option( 'coblocks_google_recaptcha_secret_key' );
 
 		ob_start();
 
@@ -208,9 +216,9 @@ class CoBlocks_Form {
 					<input type="hidden" name="action" value="coblocks-form-submit">
 					<input type="hidden" name="form-hash" value="<?php echo esc_attr( $this->form_hash ); ?>">
 					<?php
-					if ( $recaptcha_site_key ) {
+					if ( $recaptcha_site_key && $recaptcha_secret_key ) {
 						?>
-						<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
+						<input type="hidden" class="g-recaptcha-token" name="g-recaptcha-token" />
 						<?php
 					}
 					?>
@@ -455,9 +463,15 @@ class CoBlocks_Form {
 
 		unset( $_POST['form-submit'], $_POST['_wp_http_referer'], $_POST['action'], $_POST['form-hash'], $_POST['coblocks-verify-email'] );
 
-		if ( isset( $_POST['g-recaptcha-response'] ) ) {
+		if ( isset( $_POST['g-recaptcha-token'] ) ) {
 
-			unset( $_POST['g-recaptcha-response'] );
+			if ( ! $this->verify_recaptcha( $_POST['g-recaptcha-token'] ) ) {
+
+				wp_die( 'error' );
+
+			}
+
+			unset( $_POST['g-recaptcha-token'] );
 
 		}
 
@@ -584,6 +598,48 @@ class CoBlocks_Form {
 		</script>
 
 		<?php
+
+	}
+
+	/**
+	 * Verify recaptcha to prevent spam
+	 */
+	private function verify_recaptcha( $recaptcha_token ) {
+
+		$verify_token_request = wp_remote_post(
+			self::GCAPTCHA_VERIFY_URL,
+			[
+				'timeout' => 30,
+				'body'    => [
+					'secret'   => get_option( 'coblocks_google_recaptcha_secret_key' ),
+					'response' => $recaptcha_token,
+				],
+			]
+		);
+
+		if ( is_wp_error( $verify_token_request ) ) {
+
+			return false;
+
+		}
+
+		$response = wp_remote_retrieve_body( $verify_token_request );
+
+		if ( is_wp_error( $response ) ) {
+
+			return false;
+
+		}
+
+		$response = json_decode( $response, true );
+
+		if ( ! isset( $response['success'] ) ) {
+
+			return false;
+
+		}
+
+		return $response['success'];
 
 	}
 }
