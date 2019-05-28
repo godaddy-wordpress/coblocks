@@ -14,7 +14,7 @@ import { styleOptions } from './styles';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InspectorControls } = wp.editor;
-const { PanelBody, ToggleControl, RangeControl, TextControl, Button, ButtonGroup } = wp.components;
+const { PanelBody, ToggleControl, RangeControl, TextControl, Button, ButtonGroup, ExternalLink } = wp.components;
 const { ENTER } = wp.keycodes;
 
 const RETRIEVE_KEY_URL = 'https://cloud.google.com/maps-platform';
@@ -202,9 +202,12 @@ class Inspector extends Component {
 						initialOpen={ ! address }
 					>
 						<p>{ __( 'Add your Google Maps API key. Updating this API key will set all your maps to use the new key.' ) }</p>
-						{ apiKey === '' ?
-							<p><span><a href={ RETRIEVE_KEY_URL } target="_blank" rel="noopener noreferrer"> { __( 'Retrieve your key' ) }</a> | <a href={ HELP_URL } target="_blank" rel="noopener noreferrer">{ __( 'Need help?' ) }</a></span></p> :
-							null }
+						{ apiKey === '' &&
+							<p>
+								<ExternalLink href={ RETRIEVE_KEY_URL }>{ __( 'Retrieve your key' ) }</ExternalLink>|
+								<ExternalLink href={ HELP_URL }>{ __( 'Need help?' ) }</ExternalLink>
+							</p>
+						}
 						<TextControl
 							value={ this.state.apiKey }
 							onChange={ value => this.setState( { apiKey: value } ) }
