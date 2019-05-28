@@ -48,8 +48,7 @@ class CoBlocks_Form {
 
 		add_action( 'init', [ $this, 'register_settings' ] );
 
-		add_action( 'enqueue_block_editor_assets', [ $this, 'form_recaptcha_assets' ] );
-		add_action( 'the_post', [ $this, 'form_recaptcha_assets' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'form_recaptcha_assets' ] );
 
 		$this->register_form_blocks();
 
