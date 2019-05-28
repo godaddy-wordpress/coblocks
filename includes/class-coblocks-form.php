@@ -603,6 +603,10 @@ class CoBlocks_Form {
 
 	/**
 	 * Verify recaptcha to prevent spam
+	 *
+	 * @param string $recaptcha_token The recaptcha token submitted with the form
+	 *
+	 * @return bool True when token is valid, else false
 	 */
 	private function verify_recaptcha( $recaptcha_token ) {
 
