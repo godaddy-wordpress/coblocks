@@ -9,7 +9,7 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { IconButton, Spinner } = wp.components;
+const { IconButton, Spinner, TextControl } = wp.components;
 const { RichText } = wp.editor;
 const { withSelect } = wp.data;
 const { BACKSPACE, DELETE } = wp.keycodes;
@@ -113,6 +113,7 @@ class GalleryImage extends Component {
 			url,
 			captions,
 			'aria-label': ariaLabel,
+			imgLink,
 		} = this.props;
 
 		let href;
@@ -127,7 +128,7 @@ class GalleryImage extends Component {
 		}
 
 		const imgClasses = classnames( {
-			[ `has-shadow-${ shadow }` ] : shadow != 'none' || shadow != undefined,
+			[ `has-shadow-${ shadow }` ] : shadow !== 'none' || shadow !== undefined,
 		} );
 
 		// Disable reason: Image itself is not meant to be
@@ -143,6 +144,7 @@ class GalleryImage extends Component {
 					className={ imgClasses }
 					alt={ alt }
 					data-id={ id }
+					data-imglink={ imgLink }
 					onClick={ this.onImageClick }
 					tabIndex="0"
 					onKeyDown={ this.onImageClick }
@@ -175,14 +177,23 @@ class GalleryImage extends Component {
 		return (
 			<figure className={ 'coblocks-gallery--figure ' + className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
 				{ isSelected &&
-					<div className="components-coblocks-remove-gallery-item-button-wrapper">
-						<IconButton
-							icon="no-alt"
-							onClick={ onRemove }
-							className="components-coblocks-remove-gallery-item-button-button"
-							label={ __( 'Remove Image' ) }
+					<Fragment>
+						<div className="components-coblocks-remove-gallery-item-button-wrapper">
+							<IconButton
+								icon="no-alt"
+								onClick={ onRemove }
+								className="components-coblocks-remove-gallery-item-button-button"
+								label={ __( 'Remove Image' ) }
+							/>
+						</div>
+						<TextControl
+							label={ __( 'Img Link' ) }
+							value={ imgLink }
+							onChange={ ( newImgLink ) => setAttributes( { imgLink: newImgLink } ) }
+							className="components-coblocks-image-link"
+							// @todo - Add a target option here.
 						/>
-					</div>
+					</Fragment>
 				}
 				{ href ? <a href={ href }>{ img }</a> : img }
 				{ ( supportsCaption === true ) && ( ! RichText.isEmpty( caption ) || isSelected ) && captions ? (

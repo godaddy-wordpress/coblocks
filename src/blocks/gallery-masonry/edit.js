@@ -220,6 +220,8 @@ class GalleryMasonryEdit extends Component {
 											url={ img.url }
 											alt={ img.alt }
 											id={ img.id }
+											imgLink={ img.imgLink }
+											// @todo - Add a target option here.
 											isSelected={ isSelected && this.state.selectedImage === index }
 											onRemove={ this.onRemoveImage( index ) }
 											onSelect={ this.onSelectImage( index ) }

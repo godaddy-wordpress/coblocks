@@ -121,7 +121,13 @@ const settings = {
 									break;
 							}
 
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+							// If an image has a custom link, override the linkTo selection.
+							// @todo - Add a target option here.
+							if ( image.imgLink ) {
+								href = image.imgLink;
+							}
+
+							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
 
 							return (
 								<li key={ image.id || image.url } className="coblocks-gallery--item">

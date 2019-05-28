@@ -19,6 +19,11 @@ const GalleryAttributes = {
 				selector: 'img',
 				attribute: 'data-link',
 			},
+			imgLink: {
+				source: 'attribute',
+				selector: 'img',
+				attribute: 'data-imglink',
+			},
 			alt: {
 				source: 'attribute',
 				selector: 'img',
