@@ -218,9 +218,9 @@ class Inspector extends Component {
 						<Button
 							isPrimary
 							onClick={ this.updateApiKey }
-							disabled={ this.state.apiKey === this.props.apiKey }
+							disabled={ (this.state.apiKey === '') || (this.state.apiKey === this.props.apiKey) }
 						>
-							{ __( 'Update' ) }
+							{ this.props.attributes.hasApiKey ? __( 'Saved' ) : __( 'Save' ) }
 						</Button>
 						<Button
 							className="components-block-coblocks-map-api-key-remove__button"
