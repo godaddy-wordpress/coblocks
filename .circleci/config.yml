@@ -103,7 +103,9 @@ jobs:
             - node_modules
       - run:
           name: Run jest tests
-          command: npm run test
+          command: npm run test --coverage
+      - store_artifacts:
+          path: ${CIRCLE_WORKING_DIRECTORY}/coverage
 
   deploy:
     docker:

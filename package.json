@@ -91,5 +91,9 @@
 	},
 	"eslintConfig": {
 		"extends": "wordpress"
+	},
+	"jest": {
+		"collectCoverage": true,
+		"coverageReporters": [ "html" ]
 	}
 }
