@@ -95,10 +95,13 @@ class GalleryImage extends Component {
 		const {
 			alt,
 			caption,
+			captions,
 			fontSize,
 			gutter,
 			gutterMobile,
 			id,
+			isFirstItem,
+			isLastItem,
 			isSelected,
 			link,
 			linkTo,
@@ -106,12 +109,15 @@ class GalleryImage extends Component {
 			marginLeft,
 			marginRight,
 			marginTop,
+			onMoveBackward,
+			onMoveForward,
 			onRemove,
 			setAttributes,
 			shadow,
 			supportsCaption,
+			supportsMoving = true,
+			verticalMoving = false,
 			url,
-			captions,
 			'aria-label': ariaLabel,
 		} = this.props;
 
@@ -175,14 +181,37 @@ class GalleryImage extends Component {
 		return (
 			<figure className={ 'coblocks-gallery--figure ' + className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
 				{ isSelected &&
-					<div className="components-coblocks-remove-gallery-item-button-wrapper">
-						<IconButton
-							icon="no-alt"
-							onClick={ onRemove }
-							className="components-coblocks-remove-gallery-item-button-button"
-							label={ __( 'Remove Image' ) }
-						/>
-					</div>
+					<Fragment>
+						{ supportsMoving &&
+							<div className="components-coblocks-gallery-item__move-menu">
+								<IconButton
+									icon={ verticalMoving ? "arrow-up" : "arrow-left" }
+									onClick={ isFirstItem ? undefined : onMoveBackward }
+									className="coblocks-gallery-item__button"
+									label={ __( 'Move Image Backward' ) }
+									aria-disabled={ isFirstItem }
+									disabled={ ! isSelected }
+								/>
+								<IconButton
+									icon={ verticalMoving ? "arrow-down" : "arrow-right" }
+									onClick={ isLastItem ? undefined : onMoveForward }
+									className="coblocks-gallery-item__button"
+									label={ __( 'Move Image Forward' ) }
+									aria-disabled={ isLastItem }
+									disabled={ ! isSelected }
+								/>
+							</div>
+						}
+						<div className="components-coblocks-gallery-item__remove-menu">
+							<IconButton
+								icon="no-alt"
+								onClick={ onRemove }
+								className="coblocks-gallery-item__button"
+								label={ __( 'Remove Image' ) }
+								disabled={ ! isSelected }
+							/>
+						</div>
+					</Fragment>
 				}
 				{ href ? <a href={ href }>{ img }</a> : img }
 				{ ( supportsCaption === true ) && ( ! RichText.isEmpty( caption ) || isSelected ) && captions ? (

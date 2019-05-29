@@ -315,6 +315,7 @@ class GalleryCarouselEdit extends Component {
 												caption={ img.caption }
 												aria-label={ ariaLabel }
 												supportsCaption={ false }
+												supportsMoving={ false }
 											/>
 										</div>
 									);
