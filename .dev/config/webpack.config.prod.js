@@ -23,7 +23,7 @@
 const paths = require( './paths' );
 const webpack = require( 'webpack' );
 const externals = require( './externals' );
-const postcssOptions = require( './postcss' );
+const postcssOptions = require( './post-css-config' );
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
