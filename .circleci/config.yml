@@ -105,7 +105,7 @@ jobs:
           name: Run jest tests
           command: npm run test --coverage
       - store_artifacts:
-          path: ${HOME}/project/coverage
+          path: "${HOME}/project/coverage"
 
   deploy:
     docker:
