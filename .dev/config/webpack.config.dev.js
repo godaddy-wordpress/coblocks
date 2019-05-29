@@ -22,7 +22,7 @@
 
 const paths = require( './paths' );
 const externals = require( './externals' );
-const postcssOptions = require( './postcss' );
+const postcssOptions = require( './post-css-config' );
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
 // Extract style.css for both editor and frontend styles.
