@@ -1,5 +1,7 @@
 {
-	"presets": ["@wordpress/babel-preset-default"],
+	"presets": [
+		"@wordpress/babel-preset-default"
+	],
 	"plugins": [
 		[
 			"@wordpress/babel-plugin-makepot",
@@ -7,5 +9,8 @@
 				"output": "languages/coblocks-js.pot"
 			}
 		]
+	],
+	"test": [
+		"jest"
 	]
 }

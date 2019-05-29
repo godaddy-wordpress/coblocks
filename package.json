@@ -20,7 +20,8 @@
 		"makepot": "wp i18n make-pot . --merge=languages/coblocks-js.pot --skip-js --skip-audit --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy/coblocks/issues\"}' --file-comment='Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.'",
 		"babel": "babel src --ignore src/blocks/gist/components/gist.js",
 		"babel:json": "wp i18n make-json languages",
-		"babel:build": "npm run babel && npm run makepot && npm run babel:json"
+		"babel:build": "npm run babel && npm run makepot && npm run babel:json",
+		"test": "jest"
 	},
 	"dependencies": {
 		"@wordpress/api-fetch": "^2.2.8",
@@ -52,8 +53,8 @@
 		"babel-loader": "^7.1.4",
 		"grunt": "^1.0.3",
 		"grunt-contrib-clean": "^1.0.0",
-		"grunt-contrib-copy": "^1.0.0",
 		"grunt-contrib-compress": "^1.4.1",
+		"grunt-contrib-copy": "^1.0.0",
 		"grunt-contrib-cssmin": "^2.0.0",
 		"grunt-contrib-imagemin": "^3.1.0",
 		"grunt-contrib-jshint": "^1.1.0",
@@ -66,6 +67,7 @@
 		"grunt-text-replace": "^0.4.0",
 		"grunt-wp-i18n": "^1.0.2",
 		"grunt-wp-readme-to-markdown": "^2.0.1",
+		"jest": "^24.8.0",
 		"matchdep": "^2.0.0",
 		"node-sass": "^4.12.0",
 		"prettier-stylelint": "^0.4.2",

@@ -12,10 +12,15 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - jest: # Will be deprecated on 30 Nov 2020
+          filters:
+            tags:
+              only: /.*/
       - deploy:
           requires:
             - php71-build
             - php72-build
+            - jest
           filters:
             tags:
               only: /.*/
@@ -78,6 +83,27 @@ jobs:
       - run:
           name: "Run PHPUnit - Multisite"
           command: WP_MULTISITE=1 phpunit
+
+  jest:
+    docker:
+      - image: circleci/node:latest-browsers-legacy
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Run jest tests
+          command: npm run test
 
   deploy:
     docker:
