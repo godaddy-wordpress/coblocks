@@ -13,19 +13,6 @@
 	}
 }
 
-.coblocks-gallery-item__button {
-	box-shadow: none !important;
-	color: $white;
-	padding: 0;
-
-	&:not(:disabled):not([aria-disabled="true"]):hover {
-		background: $blue !important;
-		border-color: $blue !important;
-		color: $white !important;
-		opacity: 0.75;
-	}
-}
-
 .components-coblocks-gallery-item__move-menu {
 	display: inline-flex;
 	left: 2px;
@@ -48,5 +35,18 @@
 		.components-button:focus {
 			color: inherit;
 		}
+	}
+}
+
+.coblocks-gallery-item__button {
+	box-shadow: none !important;
+	color: $white;
+	padding: 0;
+
+	&:not(:disabled):not([aria-disabled="true"]):hover {
+		background: $blue !important;
+		border-color: $blue !important;
+		color: $white !important;
+		opacity: 0.75;
 	}
 }
