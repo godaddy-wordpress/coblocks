@@ -15,8 +15,8 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { addFilter } = wp.hooks;
-const { Fragment }	= wp.element;
-const { InspectorAdvancedControls }	= wp.editor;
+const { Fragment } = wp.element;
+const { InspectorAdvancedControls } = wp.editor;
 const { ToggleControl }	= wp.components;
 const { compose, createHigherOrderComponent } = wp.compose;
 
@@ -69,19 +69,16 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<Fragment>
 				<BlockEdit {...props} />
-				{ isSelected &&
-					<InspectorAdvancedControls>
-						{ hasFullwidth &&
-							<ToggleControl
-								label={ __( 'Display Fullwidth' ) }
-								checked={ !! isFullwidth }
-								onChange={ () => setAttributes( {  isFullwidth: ! isFullwidth } ) }
-								help={ !! isFullwidth ? __( 'Displaying as full width.' ) : __( 'Toggle to display button as full width.' ) }
-							/>
-						}
-					</InspectorAdvancedControls>
-				}
-
+					{ hasFullwidth &&
+						<InspectorAdvancedControls>
+						<ToggleControl
+							label={ __( 'Display Fullwidth' ) }
+							checked={ !! isFullwidth }
+							onChange={ () => setAttributes( {  isFullwidth: ! isFullwidth } ) }
+							help={ !! isFullwidth ? __( 'Displaying as full width.' ) : __( 'Toggle to display button as full width.' ) }
+						/>
+						</InspectorAdvancedControls>
+					}
 			</Fragment>
 		);
 	};
