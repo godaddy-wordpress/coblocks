@@ -5,10 +5,9 @@
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
-    options: {
         ident: 'postcss',
         plugins: [
-            require('@wordpress/postcss-themes')({
+            require( '@wordpress/postcss-themes' ) ( {
                 defaults: {
                     primary: '#0085ba',
                     secondary: '#11a0d2',
@@ -67,16 +66,15 @@ module.exports = {
                         outlines: '#837425',
                     },
                 },
-            }),
-            autoprefixer({
+            } ),
+            autoprefixer( {
                 browsers: [
                     '>1%',
                     'last 4 versions',
                     'Firefox ESR',
-                    'not ie < 9', // React doesn't support IE8 anyway
+                    'not ie < 9',
                 ],
                 flexbox: 'no-2009',
-            }),
+            } ),
         ],
-    }
 };
