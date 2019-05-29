@@ -158,8 +158,8 @@ class Edit extends Component {
 
 		//modify blocks when added
 		if( justAdded ){
-			const prevBlockClientId = wp.data.select( 'core/editor' ).getPreviousBlockClientId( clientId );
-			const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
+			const prevBlockClientId = wp.data.select( 'core/block-editor' ).getPreviousBlockClientId( clientId );
+			const nextBlockClientId = wp.data.select( 'core/block-editor' ).getNextBlockClientId( clientId );
 
 			if( prevBlockClientId ){
 				wp.data.dispatch( 'core/editor' ).updateBlockAttributes( prevBlockClientId, {  noBottomMargin: true, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0 } );
