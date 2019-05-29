@@ -74,7 +74,7 @@
 		"no-eval": "error",
 		"no-extra-semi": "error",
 		"no-fallthrough": "error",
-		"no-lonely-if": "error",
+		"no-lonely-if": "off",
 		"no-mixed-operators": "error",
 		"no-mixed-spaces-and-tabs": "error",
 		"no-multiple-empty-lines": ["error", { "max": 1 }],
@@ -138,7 +138,7 @@
 				"message": "Translate function arguments must be string literals."
 			}
 		],
-		"no-shadow": "error",
+		"no-shadow": "off",
 		"no-undef": "error",
 		"no-undef-init": "error",
 		"no-unreachable": "error",
