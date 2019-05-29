@@ -170,6 +170,10 @@
 		outline: 4px solid $blue;
 	}
 
+	.wp-block[data-type="coblocks/row"] .editor-block-mover {
+		display: none;
+	}
+
 	.wp-block[data-type="coblocks/row"] .editor-block-list__block-edit::before {
 		outline-style: solid !important;
 	}
