@@ -38,6 +38,11 @@
 	&.is-selected .components-resizable-box__handle {
 		z-index: 30;
 	}
+
+	.iframe__overflow-wrapper {
+		height: 100%;
+		overflow: hidden;
+	}
 }
 
 // Map styles.
