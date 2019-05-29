@@ -29,14 +29,13 @@ const allowedBlocks = [ 'core/button' ];
  * @return {Object} Filtered block settings.
  */
 function addAttributes( settings ) {
-
 	// Use Lodash's assign to gracefully handle if attributes are undefined
-	if( allowedBlocks.includes( settings.name ) ){
+	if ( allowedBlocks.includes( settings.name ) ) {
 		settings.attributes = Object.assign( settings.attributes, {
 			isFullwidth: {
 				type: 'boolean',
 				default: false,
-			}
+			},
 		} );
 	}
 
@@ -51,13 +50,10 @@ function addAttributes( settings ) {
  */
 const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-
 		const {
 			name,
-			clientId,
 			attributes,
 			setAttributes,
-			isSelected,
 		} = props;
 
 		const {
@@ -68,21 +64,21 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 
 		return (
 			<Fragment>
-				<BlockEdit {...props} />
-					{ hasFullwidth &&
-						<InspectorAdvancedControls>
+				<BlockEdit { ...props } />
+				{ hasFullwidth &&
+					<InspectorAdvancedControls>
 						<ToggleControl
 							label={ __( 'Display Fullwidth' ) }
 							checked={ !! isFullwidth }
-							onChange={ () => setAttributes( {  isFullwidth: ! isFullwidth } ) }
+							onChange={ () => setAttributes( { isFullwidth: ! isFullwidth } ) }
 							help={ !! isFullwidth ? __( 'Displaying as full width.' ) : __( 'Toggle to display button as full width.' ) }
 						/>
-						</InspectorAdvancedControls>
-					}
+					</InspectorAdvancedControls>
+				}
 			</Fragment>
 		);
 	};
-}, 'withAdvancedControls');
+}, 'withAdvancedControls' );
 
 /**
  * Override props assigned to save component to inject atttributes
@@ -93,25 +89,21 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
  *
  * @return {Object} Filtered props applied to save element.
  */
-function applySpacingClass(extraProps, blockType, attributes) {
-
+function applySpacingClass( extraProps, blockType, attributes ) {
 	const hasFullwidth = allowedBlocks.includes( blockType.name );
 
 	if ( hasFullwidth ) {
-
 		const { isFullwidth } = attributes;
 
 		if ( typeof isFullwidth !== 'undefined' && isFullwidth ) {
 			extraProps.className = classnames( extraProps.className, 'w-100' );
 		}
-
 	}
-
 	return extraProps;
 }
 
 /**
- * Override the default block element to add	wrapper props.
+ * Override the default block element to add wrapper props.
  *
  * @param  {Function} BlockListBlock Original component
  * @return {Function} Wrapped component
@@ -129,42 +121,38 @@ const enhance = compose(
 	 *
 	 * @return {Component} Enhanced component with merged state data props.
 	 */
-	withSelect( ( select, block ) => {
-		return { selected : select( 'core/editor' ).getSelectedBlock(), select: select };
+	withSelect( ( select ) => {
+		return { selected: select( 'core/editor' ).getSelectedBlock(), select: select };
 	} )
 );
 
-const addEditorBlockAttributes = createHigherOrderComponent( (BlockListBlock) => {
-	return enhance( ( { selected, select, ...props } ) => {
-
+const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
+	return enhance( ( { select, ...props } ) => {
 		let wrapperProps 	= props.wrapperProps;
 		let customData 	 	= {};
-		let attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
-		let blockName		= select( 'core/editor' ).getBlockName( props.clientId );
+		const attributes 	= select( 'core/editor' ).getBlock( props.clientId ).attributes;
+		const blockName		= select( 'core/editor' ).getBlockName( props.clientId );
 
 		const hasFullwidth = allowedBlocks.includes( blockName );
 
-
 		if ( hasFullwidth ) {
-
 			const { isFullwidth } = attributes;
 
 			if ( typeof isFullwidth !== 'undefined' && isFullwidth ) {
 				customData = Object.assign( customData, { 'data-coblocks-button-fullwidth': 1 } );
 			}
-
 		}
 
-		if( hasFullwidth ){
+		if ( hasFullwidth ) {
 			wrapperProps = {
 				...wrapperProps,
 				...customData,
 			};
 		}
 
-		return <BlockListBlock {...props} wrapperProps={wrapperProps} />;
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
 	} );
-}, 'addEditorBlockAttributes');
+}, 'addEditorBlockAttributes' );
 
 addFilter(
 	'blocks.registerBlockType',
