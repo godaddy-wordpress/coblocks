@@ -17,7 +17,7 @@ const { withSelect } = wp.data;
 const { addFilter } = wp.hooks;
 const { Fragment } = wp.element;
 const { InspectorAdvancedControls } = wp.editor;
-const { ToggleControl }	= wp.components;
+const { ToggleControl } = wp.components;
 const { compose, createHigherOrderComponent } = wp.compose;
 
 const allowedBlocks = [ 'core/button' ];
@@ -122,7 +122,7 @@ const enhance = compose(
 	 * @return {Component} Enhanced component with merged state data props.
 	 */
 	withSelect( ( select ) => {
-		return { selected: select( 'core/editor' ).getSelectedBlock(), select: select };
+		return { selected: select( 'core/block-editor' ).getSelectedBlock(), select: select };
 	} )
 );
 
@@ -130,8 +130,8 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 	return enhance( ( { select, ...props } ) => {
 		let wrapperProps 	= props.wrapperProps;
 		let customData 	 	= {};
-		const attributes 	= select( 'core/editor' ).getBlock( props.clientId ).attributes;
-		const blockName		= select( 'core/editor' ).getBlockName( props.clientId );
+		const attributes 	= select( 'core/block-editor' ).getBlock( props.clientId ).attributes;
+		const blockName		= select( 'core/block-editor' ).getBlockName( props.clientId );
 
 		const hasFullwidth = allowedBlocks.includes( blockName );
 
@@ -150,7 +150,9 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 			};
 		}
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+		return (
+			<BlockListBlock { ...props } wrapperProps={ wrapperProps } />
+		);
 	} );
 }, 'addEditorBlockAttributes' );
 
