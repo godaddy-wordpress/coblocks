@@ -12,7 +12,7 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - jest: # Will be deprecated on 30 Nov 2020
+      - jest:
           filters:
             tags:
               only: /.*/
