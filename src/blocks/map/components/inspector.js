@@ -204,7 +204,7 @@ class Inspector extends Component {
 						<p>{ __( 'Add your Google Maps API key. Updating this API key will set all your maps to use the new key.' ) }</p>
 						{ apiKey === '' &&
 							<p>
-								<ExternalLink href={ RETRIEVE_KEY_URL }>{ __( 'Retrieve your key' ) }</ExternalLink>|
+								<ExternalLink href={ RETRIEVE_KEY_URL }>{ __( 'Retrieve your key' ) }</ExternalLink>|&nbsp;
 								<ExternalLink href={ HELP_URL }>{ __( 'Need help?' ) }</ExternalLink>
 							</p>
 						}
