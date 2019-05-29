@@ -6,6 +6,7 @@
 			{
 				"output": "languages/coblocks-js.pot"
 			}
-		]
+		],
+		["transform-class-properties"]
 	]
 }

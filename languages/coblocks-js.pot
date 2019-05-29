@@ -1,17 +1,7 @@
-# Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.9.6\n"
-"Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"Last-Translator: plugins@godaddy.com\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-05-29T20:18:42+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.2.0\n"
-"X-Domain: coblocks\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
 
 #: src/blocks/pricing-table/pricing-table-item/components/edit.js:110
 msgid "99"
@@ -545,8 +535,6 @@ msgstr ""
 
 #: src/blocks/form/edit.js:107
 #: src/blocks/social/components/inspector.js:169
-#: includes/class-coblocks-form.php:208
-#: build/coblocks/includes/class-coblocks-form.php:208
 msgid "Email"
 msgstr ""
 
@@ -563,8 +551,6 @@ msgid "An email address field."
 msgstr ""
 
 #: src/blocks/form/edit.js:121
-#: includes/class-coblocks-form.php:236
-#: build/coblocks/includes/class-coblocks-form.php:236
 msgid "Message"
 msgstr ""
 
@@ -609,20 +595,14 @@ msgid "Form Settings"
 msgstr ""
 
 #: src/blocks/form/edit.js:54
-#: includes/class-coblocks-form.php:159
-#: build/coblocks/includes/class-coblocks-form.php:159
 msgid "First"
 msgstr ""
 
 #: src/blocks/form/edit.js:58
-#: includes/class-coblocks-form.php:160
-#: build/coblocks/includes/class-coblocks-form.php:160
 msgid "Last"
 msgstr ""
 
 #: src/blocks/form/edit.js:83
-#: includes/class-coblocks-form.php:155
-#: build/coblocks/includes/class-coblocks-form.php:155
 msgid "Name"
 msgstr ""
 
@@ -647,8 +627,6 @@ msgid "contact"
 msgstr ""
 
 #: src/blocks/form/index.js:46
-#: includes/class-coblocks-form.php:301
-#: build/coblocks/includes/class-coblocks-form.php:301
 msgid "Submit"
 msgstr ""
 
@@ -987,7 +965,9 @@ msgid "Bottom Right"
 msgstr ""
 
 #: src/blocks/hero/index.js:105
-msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
+msgid ""
+"An introductory area of a page accompanied by a small amount of text and a "
+"call to action."
 msgstr ""
 
 #: src/blocks/hero/index.js:31
@@ -1225,7 +1205,9 @@ msgid "Google Maps API Key"
 msgstr ""
 
 #: src/blocks/map/components/inspector.js:204
-msgid "Add your Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgid ""
+"Add your Google Maps API key. Updating this API key will set all your maps "
+"to use the new key."
 msgstr ""
 
 #: src/blocks/map/components/inspector.js:207
@@ -1586,7 +1568,9 @@ msgid "layouts"
 msgstr ""
 
 #: src/blocks/row/index.js:93
-msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
+msgid ""
+"Add a structured wrapper for column blocks, then add content blocks you’d "
+"like to the columns."
 msgstr ""
 
 #: src/blocks/shape-divider/components/controls.js:34
@@ -1660,20 +1644,14 @@ msgid "Shape Divider"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:114
-#: build/coblocks/src/blocks/social/index.php:127
-#: src/blocks/social/index.php:127
 msgid "Share on Twitter"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:122
-#: build/coblocks/src/blocks/social/index.php:131
-#: src/blocks/social/index.php:131
 msgid "Share on Facebook"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:130
-#: build/coblocks/src/blocks/social/index.php:135
-#: src/blocks/social/index.php:135
 msgid "Share on Pinterest"
 msgstr ""
 
@@ -1682,26 +1660,18 @@ msgid "Share on LinkedIn"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:146
-#: build/coblocks/src/blocks/social/index.php:143
-#: src/blocks/social/index.php:143
 msgid "Share via Email"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:154
-#: build/coblocks/src/blocks/social/index.php:147
-#: src/blocks/social/index.php:147
 msgid "Share on Tumblr"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:162
-#: build/coblocks/src/blocks/social/index.php:151
-#: src/blocks/social/index.php:151
 msgid "Share on Google"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:170
-#: build/coblocks/src/blocks/social/index.php:155
-#: src/blocks/social/index.php:155
 msgid "Share on Reddit"
 msgstr ""
 
@@ -2333,7 +2303,9 @@ msgstr ""
 
 #: src/blocks/hero/components/edit.js:43
 msgctxt "content placeholder"
-msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
+msgid ""
+"An introductory area of a page accompanied by a small amount of text and a "
+"call to action."
 msgstr ""
 
 #: src/blocks/hero/components/edit.js:46
@@ -2353,7 +2325,9 @@ msgstr ""
 
 #: src/blocks/media-card/components/edit.js:48
 msgctxt "content placeholder"
-msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
+msgid ""
+"Replace this text with descriptive copy to go along with the card image. "
+"Then add more blocks to this card, such as buttons, lists or images."
 msgstr ""
 
 #: src/blocks/icon/components/inspector.js:228
@@ -2885,7 +2859,9 @@ msgstr ""
 
 #: src/blocks/icon/components/svgs.js:43
 msgctxt "tags"
-msgid "microphone podcast computer device music microphone song artist creative media audio"
+msgid ""
+"microphone podcast computer device music microphone song artist creative "
+"media audio"
 msgstr ""
 
 #: src/blocks/icon/components/svgs.js:49
@@ -2910,7 +2886,9 @@ msgstr ""
 
 #: src/blocks/icon/components/svgs.js:73
 msgctxt "tags"
-msgid "video videography director producer media creative camera photographer photography aperture"
+msgid ""
+"video videography director producer media creative camera photographer "
+"photography aperture"
 msgstr ""
 
 #: src/blocks/icon/components/svgs.js:85
@@ -2926,220 +2904,4 @@ msgstr ""
 #: src/blocks/icon/components/svgs.js:97
 msgctxt "tags"
 msgid "palette design colors artist creative media paint paintbrush"
-msgstr ""
-
-#. Plugin Name of the plugin
-#: includes/admin/class-coblocks-feedback.php:311
-#: includes/admin/class-coblocks-getting-started-page.php:36
-#: includes/admin/class-coblocks-getting-started-page.php:37
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:311
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:36
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:37
-msgid "CoBlocks"
-msgstr ""
-
-#. Plugin URI of the plugin
-msgid "https://coblocks.com"
-msgstr ""
-
-#. Description of the plugin
-msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
-msgstr ""
-
-#. Author of the plugin
-msgid "GoDaddy"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "https://www.godaddy.com"
-msgstr ""
-
-#: includes/class-coblocks-google-map-block.php:118
-#: build/coblocks/includes/class-coblocks-google-map-block.php:118
-msgid "Google Map API key for map rendering"
-msgstr ""
-
-#. translators: 1: Link to plugin homepage, 2: Link to WordPress.org rating page.
-#: includes/admin/class-coblocks-admin-footer.php:43
-#: build/coblocks/includes/admin/class-coblocks-admin-footer.php:43
-msgid "Thank you for using %1$s! Please <a href=\"%2$s\" target=\"_blank\">rate us on WordPress.org</a>."
-msgstr ""
-
-#. translators: Number of years
-#: includes/admin/class-coblocks-feedback.php:92
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:92
-msgid "%s years"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:94
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:94
-msgid "a year"
-msgstr ""
-
-#. translators: Number of weeks
-#: includes/admin/class-coblocks-feedback.php:101
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:101
-msgid "%s weeks"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:103
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:103
-msgid "a week"
-msgstr ""
-
-#. translators: Number of days
-#: includes/admin/class-coblocks-feedback.php:110
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:110
-msgid "%s days"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:112
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:112
-msgid "a day"
-msgstr ""
-
-#. translators: Number of hours
-#: includes/admin/class-coblocks-feedback.php:119
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:119
-msgid "%s hours"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:121
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:121
-msgid "an hour"
-msgstr ""
-
-#. translators: Number of minutes
-#: includes/admin/class-coblocks-feedback.php:128
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:128
-msgid "%s minutes"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:130
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:130
-msgid "a minute"
-msgstr ""
-
-#. translators: Number of seconds
-#: includes/admin/class-coblocks-feedback.php:137
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:137
-msgid "%s seconds"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:139
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:139
-msgid "a second"
-msgstr ""
-
-#. translators: 1. Name
-#: includes/admin/class-coblocks-feedback.php:271
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:271
-msgid "%s WordPress Plugin"
-msgstr ""
-
-#. translators: 1. Name
-#: includes/admin/class-coblocks-feedback.php:275
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:275
-msgid "Are you enjoying %s?"
-msgstr ""
-
-#. translators: 1. Name, 2. Time
-#: includes/admin/class-coblocks-feedback.php:278
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:278
-msgid "You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We'd really appreciate it!"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:282
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:282
-msgid "Leave a Review"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:283
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:283
-msgid "No thanks / I already have"
-msgstr ""
-
-#: includes/admin/class-coblocks-getting-started-page.php:96
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:96
-msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
-msgstr ""
-
-#. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
-#: includes/admin/class-coblocks-getting-started-page.php:102
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:102
-msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks %2$s, a %1$s page-builder experience %2$s, %1$s typography controls %2$s and a new %1$s Block Manager %2$s for turning off blocks."
-msgstr ""
-
-#: includes/admin/class-coblocks-getting-started-page.php:109
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:109
-msgid "Here are a few videos to help you get started:"
-msgstr ""
-
-#. translators: CoBlocks plugin name
-#: includes/admin/class-coblocks-getting-started-page.php:113
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:113
-msgid "Watch how to create your first page with %s"
-msgstr ""
-
-#: includes/admin/class-coblocks-getting-started-page.php:114
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:114
-msgid "Watch how to create your first page"
-msgstr ""
-
-#: includes/admin/class-coblocks-getting-started-page.php:116
-#: includes/admin/class-coblocks-getting-started-page.php:117
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:116
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:117
-msgid "Watch how to use the Row and Shape Divider blocks"
-msgstr ""
-
-#: includes/admin/class-coblocks-getting-started-page.php:119
-#: includes/admin/class-coblocks-getting-started-page.php:120
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:119
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:120
-msgid "Watch how to use the Media Card block"
-msgstr ""
-
-#. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:128
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:128
-msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
-msgstr ""
-
-#. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:139
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:139
-msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
-msgstr ""
-
-#: includes/admin/class-coblocks-getting-started-page.php:148
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:148
-msgid "Enjoy!"
-msgstr ""
-
-#: includes/admin/class-coblocks-getting-started-page.php:181
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:181
-msgid "Get started with CoBlocks here:"
-msgstr ""
-
-#: includes/class-coblocks-form.php:445
-#: build/coblocks/includes/class-coblocks-form.php:445
-msgid "Your message was sent:"
-msgstr ""
-
-#: includes/class-coblocks-block-settings.php:80
-#: build/coblocks/includes/class-coblocks-block-settings.php:80
-msgid "Enable or disable blocks"
-msgstr ""
-
-#: class-coblocks.php:77
-#: class-coblocks.php:89
-#: build/coblocks/class-coblocks.php:77
-#: build/coblocks/class-coblocks.php:89
-msgid "Cheating huh?"
-msgstr ""
-
-#: build/coblocks/src/blocks/social/index.php:139
-#: src/blocks/social/index.php:139
-msgid "Share on Linkedin"
 msgstr ""
