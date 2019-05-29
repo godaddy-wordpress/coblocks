@@ -104,6 +104,9 @@ jobs:
       - run:
           name: Run jest tests
           command: npm run test --coverage
+      - run:
+          name: Run eslint
+          command: grunt eslint
       - store_artifacts:
           path: coverage
           destination: jest-coverage

@@ -61,6 +61,7 @@
 		"grunt-contrib-uglify": "^2.0.0",
 		"grunt-contrib-watch": "^1.1.0",
 		"grunt-dev-update": "^2.3.0",
+		"grunt-eslint": "^21.0.0",
 		"grunt-potomo": "^3.5.0",
 		"grunt-sass": "^3.0.2",
 		"grunt-shell": "^2.1.0",
@@ -94,6 +95,8 @@
 	},
 	"jest": {
 		"collectCoverage": true,
-		"coverageReporters": [ "html" ]
+		"coverageReporters": [
+			"html"
+		]
 	}
 }
