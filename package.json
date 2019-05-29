@@ -55,6 +55,7 @@
 		"node-sass": "^4.7.2",
 		"ora": "^1.3.0",
 		"postcss": "7.0.13",
+		"postcss-color-function": "^4.1.0",
 		"postcss-loader": "^2.0.10",
 		"raw-loader": "^0.5.1",
 		"react": "^16.8.4",
