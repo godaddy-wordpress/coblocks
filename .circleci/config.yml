@@ -92,6 +92,9 @@ jobs:
       - run:
           name: Update npm
           command: sudo npm install -g npm@latest
+      - run:
+          name: Install Grunt.js
+          command: sudo npm install -g grunt-cli
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
@@ -102,11 +105,11 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: Run jest tests
-          command: npm run test --coverage
-      - run:
           name: Run eslint
           command: grunt eslint
+      - run:
+          name: Run jest tests
+          command: npm run test --coverage
       - store_artifacts:
           path: coverage
           destination: jest-coverage
