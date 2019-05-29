@@ -387,23 +387,21 @@ class FormEdit extends Component {
 						{ this.renderToAndSubjectFields() }
 						{ applyFilters( 'coblocks.advanced_forms_cta' ) }
 					</PanelBody>
-					<PanelBody title={ __( 'Google reCaptcha Keys' ) } initialOpen={ false }>
-						<p>{ __( 'Add your Google reCaptcha v3 keys.') }</p>
+					<PanelBody title={ __( 'Google reCAPTCHA' ) } initialOpen={ false }>
+						<p>{ __( 'Add your Google reCAPTCHA v3 site and secret keys to protect your form from spam and abuse.') }</p>
 						{ ( this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === ''  ) ?
 							<p><span><a href={ RETRIEVE_KEY_URL } target="_blank"> { __( 'Retrieve your keys' ) }</a> | <a href={ HELP_URL } target="_blank">{ __( 'Need help?' ) }</a></span></p>
 						: null }
 						<TextControl
-							label={ __('Google reCaptcha Site Key')}
+							label={ __('Site Key')}
 							value={ this.state.recaptchaSiteKey }
 							onChange={ value => this.setState({ recaptchaSiteKey: value }) }
-							placeholder={ __('Enter reCaptcha v3 site Key…') }
 							className="components-block-coblocks-form-recaptcha-key__custom-input"
 						/>
 						<TextControl
-							label={ __('Google reCaptcha Secret Key')}
+							label={ __('Secret Key')}
 							value={ this.state.recaptchaSecretKey }
 							onChange={ value => this.setState({ recaptchaSecretKey: value }) }
-							placeholder={ __('Enter reCaptcha v3 secret Key…') }
 							className="components-block-coblocks-form-recaptcha-key__custom-input"
 						/>
 						<Button
