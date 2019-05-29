@@ -103,13 +103,3 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 		margin-left: 5px;
 	}
 }
-
-.components-block-coblocks-map-settings-sidebar {
-	.components-external-link {
-		color: theme(outlines);
-
-		&:hover {
-			color: color(theme(outlines) shade(25%));
-		}
-	}
-}
