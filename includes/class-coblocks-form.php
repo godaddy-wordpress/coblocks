@@ -466,7 +466,9 @@ class CoBlocks_Form {
 
 			if ( ! $this->verify_recaptcha( $_POST['g-recaptcha-token'] ) ) {
 
-				wp_die( 'error' );
+				$this->remove_url_form_hash();
+
+				return;
 
 			}
 
