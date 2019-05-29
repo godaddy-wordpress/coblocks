@@ -106,7 +106,7 @@ jobs:
           command: npm run test --coverage
       - store_artifacts:
           path: coverage
-          destination: coverage
+          destination: jest-coverage
 
   deploy:
     docker:
