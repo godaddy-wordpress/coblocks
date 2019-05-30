@@ -126,6 +126,19 @@ Please reach out via the contact form at the bottom right of [our website](https
 
 == Changelog ==
 
+= 1.10.0 =
+* New: Add easy mode to the Google Map block without an API key requirement
+* New: Add reCAPCHTA support to the Form block
+* New: Add admin color scheme support for UI elements within CoBlocks
+* New: Add image reordering to gallery blocks
+* New: Add new "Circular" style to the Social block
+* New: Add official support for Gutenberg 5.8 🎊
+* Tweak: Clean up SASS variables
+* Tweak: Remove block mover from the Media Card block
+* Fix: Resolve Pricing Table outlines issue in Gutenberg 5.7+
+* Fix: Resolve Hero block layout issue
+* Fix: Resolve "normal" text transform issue within the editor
+
 = 1.9.6 =
 * Fix: Resolve issue with missing Gutenberg component
 
