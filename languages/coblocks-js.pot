@@ -566,32 +566,74 @@ msgstr ""
 msgid "A text box for longer responses."
 msgstr ""
 
-#: src/blocks/form/edit.js:215
+#: src/blocks/form/edit.js:274
 msgid "%s is not a valid email address."
 msgstr ""
 
-#: src/blocks/form/edit.js:222
+#: src/blocks/form/edit.js:281
 msgid "%s and %s are not a valid email address."
 msgstr ""
 
-#: src/blocks/form/edit.js:229
+#: src/blocks/form/edit.js:288
 msgid "%s are not a valid email address."
 msgstr ""
 
-#: src/blocks/form/edit.js:253
+#: src/blocks/form/edit.js:344
 msgid "Email address"
 msgstr ""
 
-#: src/blocks/form/edit.js:254
+#: src/blocks/form/edit.js:345
 msgid "name@example.com"
 msgstr ""
 
-#: src/blocks/form/edit.js:264
+#: src/blocks/form/edit.js:355
 msgid "Subject"
 msgstr ""
 
-#: src/blocks/form/edit.js:293
+#: src/blocks/form/edit.js:384
 msgid "Form Settings"
+msgstr ""
+
+#: src/blocks/form/edit.js:388
+msgid "Google reCAPTCHA"
+msgstr ""
+
+#: src/blocks/form/edit.js:389
+msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
+msgstr ""
+
+#: src/blocks/form/edit.js:392
+msgid "Generate keys"
+msgstr ""
+
+#: src/blocks/form/edit.js:392
+msgid "My keys"
+msgstr ""
+
+#: src/blocks/form/edit.js:393
+msgid "Get help"
+msgstr ""
+
+#: src/blocks/form/edit.js:397
+msgid "Site Key"
+msgstr ""
+
+#: src/blocks/form/edit.js:403
+msgid "Secret Key"
+msgstr ""
+
+#: src/blocks/form/edit.js:414
+msgid "Saving"
+msgstr ""
+
+#: src/blocks/form/edit.js:414
+#: src/blocks/map/components/inspector.js:223
+msgid "Save"
+msgstr ""
+
+#: src/blocks/form/edit.js:425
+#: src/blocks/map/components/inspector.js:231
+msgid "Remove"
 msgstr ""
 
 #: src/blocks/form/edit.js:54
@@ -1095,24 +1137,28 @@ msgstr ""
 msgid "Map style"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:156
+#: src/blocks/map/components/edit.js:131
+msgid "Please enter a location or address."
+msgstr ""
+
+#: src/blocks/map/components/edit.js:163
 msgid "Invalid API key, or too many requests"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:262
+#: src/blocks/map/components/edit.js:269
 #: src/blocks/map/components/save.js:48
 msgid "Google Map"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:263
+#: src/blocks/map/components/edit.js:270
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/components/edit.js:267
+#: src/blocks/map/components/edit.js:276
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:275
+#: src/blocks/map/components/edit.js:284
 msgid "Apply"
 msgstr ""
 
@@ -1224,14 +1270,6 @@ msgstr ""
 
 #: src/blocks/map/components/inspector.js:223
 msgid "Saved"
-msgstr ""
-
-#: src/blocks/map/components/inspector.js:223
-msgid "Save"
-msgstr ""
-
-#: src/blocks/map/components/inspector.js:231
-msgid "Remove"
 msgstr ""
 
 #: src/blocks/map/components/styles.js:12
