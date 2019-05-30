@@ -22,3 +22,4 @@ dist/blocks.style.build.css
 includes/.DS_Store
 .DS_Store
 sandbox.json
+languages/coblocks-js.pot

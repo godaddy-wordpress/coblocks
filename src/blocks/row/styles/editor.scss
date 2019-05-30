@@ -174,7 +174,7 @@
 
 	// Width tag that pops up.
 	.coblocks-resizeable-width {
-		background: $blue;
+		background: theme(primary);
 		border: 2px solid $white;
 		border-radius: 4px;
 		color: $white;
@@ -213,7 +213,7 @@
 
 		&::after {
 			border-color: rgba(0, 133, 186, 0);
-			border-top-color: $blue;
+			border-top-color: theme(primary);
 			border-width: 4px;
 			margin-left: -4px;
 		}
