@@ -85,15 +85,15 @@ class Edit extends Component {
 		);
 
 		const buttonStyles = {
-			borderRadius: borderRadius ? borderRadius + 'px' : undefined,
-			backgroundColor: ! hasColors && ! isMaskStyle ? backgroundColor.color : undefined,
-			color: ! hasColors ? this.getTextColor( isMaskStyle ) : undefined,
-			padding: isCircularStyle && padding ? padding + 'px' : undefined,
+			borderRadius: borderRadius && borderRadius + 'px',
+			backgroundColor: ( ! hasColors && ! isMaskStyle ) && backgroundColor.color,
+			color: ! hasColors && this.getTextColor( isMaskStyle ),
+			padding: isCircularStyle && padding + 'px',
 		};
 
 		const iconStyles = {
-			height: isMaskStyle || isCircularStyle && iconSize ? iconSize + 'px' : undefined,
-			width: isMaskStyle || isCircularStyle && iconSize ? iconSize + 'px' : undefined,
+			height: ( isMaskStyle || isCircularStyle ) && iconSize + 'px',
+			width: ( isMaskStyle || isCircularStyle ) && iconSize + 'px',
 		};
 
 		return [
