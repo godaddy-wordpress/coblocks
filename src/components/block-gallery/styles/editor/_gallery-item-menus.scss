@@ -1,5 +1,5 @@
 .components-coblocks-gallery-item__remove-menu {
-	background-color: $blue;
+	background-color: theme(primary);
 	display: inline-flex;
 	padding: 2px;
 	position: absolute;
@@ -26,7 +26,7 @@
 	}
 
 	.is-selected & {
-		background-color: $blue;
+		background-color: theme(primary);
 
 		.components-button {
 			color: $white;
@@ -44,8 +44,8 @@
 	padding: 0;
 
 	&:not(:disabled):not([aria-disabled="true"]):hover {
-		background: $blue !important;
-		border-color: $blue !important;
+		background: theme(primary) !important;
+		border-color: theme(primary) !important;
 		color: $white !important;
 		opacity: 0.75;
 	}
