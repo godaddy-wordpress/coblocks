@@ -13,7 +13,7 @@ const category = {
 const iconColor = '#1e35b9';
 
 // Register block category
-import icons from './utils/block-category';
+import './utils/block-category';
 
 // Editor and Frontend Styles
 import './styles/editor.scss';
