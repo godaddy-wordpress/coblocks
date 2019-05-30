@@ -8,9 +8,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-05-29T21:40:47+00:00\n"
+"POT-Creation-Date: 2019-05-30T18:22:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.2.0\n"
+"X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: coblocks\n"
 
 #: src/blocks/pricing-table/pricing-table-item/components/edit.js:110
@@ -168,7 +168,7 @@ msgstr ""
 
 #: src/blocks/alert/components/controls.js:86
 #: src/components/font-family/index.js:20
-#: src/components/typography-controls/index.js:116
+#: src/components/typography-controls/index.js:92
 #: src/extensions/list-styles/index.js:15
 msgid "Default"
 msgstr ""
@@ -545,7 +545,8 @@ msgstr ""
 
 #: src/blocks/form/edit.js:107
 #: src/blocks/social/components/inspector.js:169
-#: includes/class-coblocks-form.php:208
+#: includes/class-coblocks-form.php:211
+#: includes/class-coblocks-form.php:298
 msgid "Email"
 msgstr ""
 
@@ -562,7 +563,7 @@ msgid "An email address field."
 msgstr ""
 
 #: src/blocks/form/edit.js:121
-#: includes/class-coblocks-form.php:236
+#: includes/class-coblocks-form.php:326
 msgid "Message"
 msgstr ""
 
@@ -578,46 +579,88 @@ msgstr ""
 msgid "A text box for longer responses."
 msgstr ""
 
-#: src/blocks/form/edit.js:215
+#: src/blocks/form/edit.js:274
 msgid "%s is not a valid email address."
 msgstr ""
 
-#: src/blocks/form/edit.js:222
+#: src/blocks/form/edit.js:281
 msgid "%s and %s are not a valid email address."
 msgstr ""
 
-#: src/blocks/form/edit.js:229
+#: src/blocks/form/edit.js:288
 msgid "%s are not a valid email address."
 msgstr ""
 
-#: src/blocks/form/edit.js:253
+#: src/blocks/form/edit.js:344
 msgid "Email address"
 msgstr ""
 
-#: src/blocks/form/edit.js:254
+#: src/blocks/form/edit.js:345
 msgid "name@example.com"
 msgstr ""
 
-#: src/blocks/form/edit.js:264
+#: src/blocks/form/edit.js:355
 msgid "Subject"
 msgstr ""
 
-#: src/blocks/form/edit.js:293
+#: src/blocks/form/edit.js:384
 msgid "Form Settings"
 msgstr ""
 
+#: src/blocks/form/edit.js:389
+msgid "Google reCAPTCHA"
+msgstr ""
+
+#: src/blocks/form/edit.js:393
+msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
+msgstr ""
+
+#: src/blocks/form/edit.js:396
+msgid "Generate keys"
+msgstr ""
+
+#: src/blocks/form/edit.js:396
+msgid "My keys"
+msgstr ""
+
+#: src/blocks/form/edit.js:397
+msgid "Get help"
+msgstr ""
+
+#: src/blocks/form/edit.js:401
+msgid "Site Key"
+msgstr ""
+
+#: src/blocks/form/edit.js:407
+msgid "Secret Key"
+msgstr ""
+
+#: src/blocks/form/edit.js:418
+msgid "Saving"
+msgstr ""
+
+#: src/blocks/form/edit.js:418
+#: src/blocks/map/components/inspector.js:224
+msgid "Save"
+msgstr ""
+
+#: src/blocks/form/edit.js:429
+#: src/blocks/map/components/inspector.js:232
+msgid "Remove"
+msgstr ""
+
 #: src/blocks/form/edit.js:54
-#: includes/class-coblocks-form.php:159
+#: includes/class-coblocks-form.php:249
 msgid "First"
 msgstr ""
 
 #: src/blocks/form/edit.js:58
-#: includes/class-coblocks-form.php:160
+#: includes/class-coblocks-form.php:250
 msgid "Last"
 msgstr ""
 
 #: src/blocks/form/edit.js:83
-#: includes/class-coblocks-form.php:155
+#: includes/class-coblocks-form.php:245
 msgid "Name"
 msgstr ""
 
@@ -642,7 +685,7 @@ msgid "contact"
 msgstr ""
 
 #: src/blocks/form/index.js:46
-#: includes/class-coblocks-form.php:301
+#: includes/class-coblocks-form.php:391
 msgid "Submit"
 msgstr ""
 
@@ -691,7 +734,7 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:131
 #: src/blocks/icon/components/inspector.js:202
-#: src/components/typography-controls/index.js:214
+#: src/components/typography-controls/index.js:190
 msgid "Size"
 msgstr ""
 
@@ -1236,14 +1279,6 @@ msgstr ""
 
 #: src/blocks/map/components/inspector.js:224
 msgid "Saved"
-msgstr ""
-
-#: src/blocks/map/components/inspector.js:224
-msgid "Save"
-msgstr ""
-
-#: src/blocks/map/components/inspector.js:232
-msgid "Remove"
 msgstr ""
 
 #: src/blocks/map/components/styles.js:12
@@ -2136,104 +2171,104 @@ msgstr ""
 msgid "Dot Navigation"
 msgstr ""
 
-#: src/components/typography-controls/index.js:109
+#: src/components/typography-controls/index.js:100
+msgid "Lowercase"
+msgstr ""
+
+#: src/components/typography-controls/index.js:104
+msgid "Capitalize"
+msgstr ""
+
+#: src/components/typography-controls/index.js:108
+msgid "Normal"
+msgstr ""
+
+#: src/components/typography-controls/index.js:165
+msgid "Font"
+msgstr ""
+
+#: src/components/typography-controls/index.js:172
+msgid "Weight"
+msgstr ""
+
+#: src/components/typography-controls/index.js:181
+msgid "Transform"
+msgstr ""
+
+#: src/components/typography-controls/index.js:201
+msgid "Line Height"
+msgstr ""
+
+#: src/components/typography-controls/index.js:212
+msgid "Letter Spacing"
+msgstr ""
+
+#: src/components/typography-controls/index.js:224
+msgid "No Top Spacing"
+msgstr ""
+
+#: src/components/typography-controls/index.js:229
+msgid "No Bottom Spacing"
+msgstr ""
+
+#: src/components/typography-controls/index.js:59
+msgid "Change typography"
+msgstr ""
+
+#: src/components/typography-controls/index.js:85
 msgid "Bold"
 msgstr ""
 
-#: src/components/typography-controls/index.js:120
+#: src/components/typography-controls/index.js:96
 #: src/formats/uppercase/index.js:36
 msgid "Uppercase"
 msgstr ""
 
-#: src/components/typography-controls/index.js:124
-msgid "Lowercase"
-msgstr ""
-
-#: src/components/typography-controls/index.js:128
-msgid "Capitalize"
-msgstr ""
-
-#: src/components/typography-controls/index.js:132
-msgid "Normal"
-msgstr ""
-
-#: src/components/typography-controls/index.js:189
-msgid "Font"
-msgstr ""
-
-#: src/components/typography-controls/index.js:196
-msgid "Weight"
-msgstr ""
-
-#: src/components/typography-controls/index.js:205
-msgid "Transform"
-msgstr ""
-
-#: src/components/typography-controls/index.js:225
-msgid "Line Height"
-msgstr ""
-
-#: src/components/typography-controls/index.js:236
-msgid "Letter Spacing"
-msgstr ""
-
-#: src/components/typography-controls/index.js:248
-msgid "No Top Spacing"
-msgstr ""
-
-#: src/components/typography-controls/index.js:253
-msgid "No Bottom Spacing"
-msgstr ""
-
-#: src/components/typography-controls/index.js:83
-msgid "Change typography"
-msgstr ""
-
-#: src/extensions/advanced-controls/index.js:116
+#: src/extensions/advanced-controls/index.js:113
 msgid "Stack on Mobile"
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:119
+#: src/extensions/advanced-controls/index.js:116
 msgid "Responsiveness is enabled."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:119
+#: src/extensions/advanced-controls/index.js:116
 msgid "Toggle to stack elements on top of each other on smaller viewports."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:124
+#: src/extensions/advanced-controls/index.js:121
 msgid "Remove Top Spacing"
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:127
+#: src/extensions/advanced-controls/index.js:124
 msgid "Top margin is removed on this block."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:127
+#: src/extensions/advanced-controls/index.js:124
 msgid "Toggle to remove any margin applied to the top of this block."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:132
+#: src/extensions/advanced-controls/index.js:129
 msgid "Remove Bottom Spacing"
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:142
+#: src/extensions/advanced-controls/index.js:139
 msgid "Bottom margin is removed on this block."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:142
+#: src/extensions/advanced-controls/index.js:139
 msgid "Toggle to remove any margin applied to the bottom of this block."
 msgstr ""
 
-#: src/extensions/button-controls/index.js:76
+#: src/extensions/button-controls/index.js:71
 msgid "Display Fullwidth"
 msgstr ""
 
-#: src/extensions/button-controls/index.js:79
+#: src/extensions/button-controls/index.js:74
 msgid "Displaying as full width."
 msgstr ""
 
-#: src/extensions/button-controls/index.js:79
+#: src/extensions/button-controls/index.js:74
 msgid "Toggle to display button as full width."
 msgstr ""
 
@@ -3074,7 +3109,15 @@ msgstr ""
 msgid "Get started with CoBlocks here:"
 msgstr ""
 
-#: includes/class-coblocks-form.php:445
+#: includes/class-coblocks-form.php:68
+msgid "Google reCaptcha site key for form spam protection"
+msgstr ""
+
+#: includes/class-coblocks-form.php:80
+msgid "Google reCaptcha secret key for form spam protection"
+msgstr ""
+
+#: includes/class-coblocks-form.php:562
 msgid "Your message was sent:"
 msgstr ""
 
