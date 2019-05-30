@@ -34,6 +34,9 @@ class GalleryStackedEdit extends Component {
 
 		this.onSelectImage = this.onSelectImage.bind( this );
 		this.onRemoveImage = this.onRemoveImage.bind( this );
+		this.onMove = this.onMove.bind( this );
+		this.onMoveForward = this.onMoveForward.bind( this );
+		this.onMoveBackward = this.onMoveBackward.bind( this );
 		this.setImageAttributes = this.setImageAttributes.bind( this );
 
 		this.state = {
@@ -65,6 +68,32 @@ class GalleryStackedEdit extends Component {
 					selectedImage: index,
 				} );
 			}
+		};
+	}
+
+	onMove( oldIndex, newIndex ) {
+		const images = [ ...this.props.attributes.images ];
+		images.splice( newIndex, 1, this.props.attributes.images[ oldIndex ] );
+		images.splice( oldIndex, 1, this.props.attributes.images[ newIndex ] );
+		this.setState( { selectedImage: newIndex } );
+		this.props.setAttributes( { images } );
+	}
+
+	onMoveForward( oldIndex ) {
+		return () => {
+			if ( oldIndex === this.props.attributes.images.length - 1 ) {
+				return;
+			}
+			this.onMove( oldIndex, oldIndex + 1 );
+		};
+	}
+
+	onMoveBackward( oldIndex ) {
+		return () => {
+			if ( oldIndex === 0 ) {
+				return;
+			}
+			this.onMove( oldIndex, oldIndex - 1 );
 		};
 	}
 
@@ -180,7 +209,11 @@ class GalleryStackedEdit extends Component {
 										gutterMobile={ gutterMobile }
 										marginBottom={ true }
 										shadow={ shadow }
+										isFirstItem={ index === 0 }
+										isLastItem={ ( index + 1 ) === images.length }
 										isSelected={ isSelected && this.state.selectedImage === index }
+										onMoveBackward={ this.onMoveBackward( index ) }
+										onMoveForward={ this.onMoveForward( index ) }
 										onRemove={ this.onRemoveImage( index ) }
 										onSelect={ this.onSelectImage( index ) }
 										setAttributes={ ( attrs ) => this.setImageAttributes( index, attrs ) }
@@ -188,6 +221,7 @@ class GalleryStackedEdit extends Component {
 										aria-label={ ariaLabel }
 										captions={ captions }
 										supportsCaption={ true }
+										verticalMoving={ true }
 										fontSize={ fontSize.size }
 									/>
 								</li>

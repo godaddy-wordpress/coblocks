@@ -1,13 +1,9 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
 import './styles/editor.scss';
 import Edit from './components/edit';
+import Save from './components/save';
 import icons from './../../utils/icons';
 
 /**
@@ -41,8 +37,9 @@ const blockAttributes = {
 	lng: {
 		type: 'string',
 	},
-	apiKey: {
-		type: 'string',
+	hasApiKey: {
+		type: 'boolean',
+		default: false,
 	},
 	pinned: {
 		type: 'boolean',
@@ -93,7 +90,7 @@ const settings = {
 
 	title: title,
 
-	description : __( 'Add an address and drop a pin on a Google map.' ),
+	description: __( 'Add an address and drop a pin on a Google map.' ),
 
 	keywords: keywords,
 
@@ -120,54 +117,56 @@ const settings = {
 
 	edit: Edit,
 
-	save( { attributes, className } ) {
+	save: Save,
 
-		const {
-			address,
-			apiKey,
-			height,
-			lat,
-			lng,
-			skin,
-			zoom,
-			iconSize,
-			mapTypeControl,
-			zoomControl,
-			streetViewControl,
-			fullscreenControl,
-		} = attributes;
+	deprecated: [
+		{
+			attributes: blockAttributes,
+			save( { attributes } ) {
+				const {
+					address,
+					height,
+					lat,
+					lng,
+					skin,
+					zoom,
+					iconSize,
+					mapTypeControl,
+					zoomControl,
+					streetViewControl,
+					fullscreenControl,
+				} = attributes;
 
-		const backgroundStyles = {
-			minHeight: height ? height + 'px' : undefined,
-		};
+				const backgroundStyles = {
+					minHeight: height ? height + 'px' : undefined,
+				};
 
-		const mapAttributes = {
-			address : address,
-			lat     : lat,
-			lng     : lng,
-			skin	: skin,
-			zoom	: zoom,
-			iconSize : iconSize,
-			mapTypeControl : mapTypeControl,
-			zoomControl : zoomControl,
-			streetViewControl : streetViewControl,
-			fullscreenControl : fullscreenControl,
-		};
+				const mapAttributes = {
+					address,
+					lat,
+					lng,
+					skin,
+					zoom,
+					iconSize,
+					mapTypeControl,
+					zoomControl,
+					streetViewControl,
+					fullscreenControl,
+				};
 
-		let attr = Object
+				const attr = Object
+					.keys( mapAttributes )
+					.map( key => `/q${ key }/q:/q${ mapAttributes[ key ] }/q` )
+					.join( '||' );
 
-	        .keys( mapAttributes )
-	        .map( key => `/q${key}/q:/q${ mapAttributes[key] }/q` )
-	        .join( '||' );
+				const dataMap = { 'data-map-attr': attr };
 
-		const dataMap = { [`data-map-attr`] : attr };
-
-		return (
-			<div style={ backgroundStyles }
-				{ ...dataMap }
-			></div>
-		);
-	},
+				return (
+					<div style={ backgroundStyles } { ...dataMap } />
+				);
+			},
+		},
+	],
 };
 
 export { name, title, icon, settings };

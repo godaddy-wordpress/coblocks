@@ -17,11 +17,11 @@ import SubmitButton from './components/submit-button';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { registerBlockType, getBlockType, createBlock } = wp.blocks;
-const { Button, PanelBody, TextControl } = wp.components;
-const { RichText, InspectorControls, InnerBlocks, InspectorAdvancedControls } = wp.editor;
+const { registerBlockType, getBlockType } = wp.blocks;
+const { Button, PanelBody, TextControl, ExternalLink } = wp.components;
+const { InspectorControls, InnerBlocks } = wp.editor;
 const { applyFilters } = wp.hooks;
 
 /**
@@ -107,7 +107,7 @@ export const childBlocks = [
 			title: __( 'Email' ),
 			keywords: [ __( 'e-mail' ), __( 'mail' ), 'email' ],
 			description: __( 'An email address field.' ),
-			icon:icons.email,
+			icon: icons.email,
 			supports: {
 				inserter: false,
 			},
@@ -141,8 +141,38 @@ childBlocks.forEach( childBlock =>
 	registerBlockType( `coblocks/${ childBlock.name }`, childBlock.settings )
 );
 
-class FormEdit extends Component {
+/**
+ * Get settings
+ */
+let settings;
+wp.api.loadPromise.then( () => {
+	settings = new wp.api.models.Settings();
+} );
 
+const FORM_TEMPLATE = [
+	[
+		'coblocks/field-name',
+		{
+			required: false,
+		},
+	],
+	[
+		'coblocks/field-email',
+		{
+			required: true,
+		},
+	],
+	[
+		'coblocks/field-textarea', {
+			required: true,
+		},
+	],
+];
+
+const RETRIEVE_KEY_URL = 'https://g.co/recaptcha/v3';
+const HELP_URL = 'https://developers.google.com/recaptcha/docs/v3';
+
+class FormEdit extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -154,6 +184,16 @@ class FormEdit extends Component {
 		this.renderToAndSubjectFields = this.renderToAndSubjectFields.bind( this );
 		this.preventEnterSubmittion = this.preventEnterSubmittion.bind( this );
 		this.hasEmailError = this.hasEmailError.bind( this );
+		this.saveRecaptchaKey = this.saveRecaptchaKey.bind( this );
+		this.removeRecaptchaKey = this.removeRecaptchaKey.bind( this );
+
+		this.state = {
+			toError: error && error.length ? error : null,
+			siteKey: '',
+			isSavedKey: false,
+			isSaving: false,
+			keySaved: false,
+		};
 
 		const to = arguments[ 0 ].attributes.to ? arguments[ 0 ].attributes.to : '';
 		const error = to
@@ -161,9 +201,29 @@ class FormEdit extends Component {
 			.map( this.getToValidationError )
 			.filter( Boolean );
 
-		this.state = {
-			toError: error && error.length ? error : null,
-		};
+		settings.on( 'change:coblocks_google_recaptcha_site_key', ( model ) => {
+			const recaptchaSiteKey = model.get( 'coblocks_google_recaptcha_site_key' );
+			this.setState( { recaptchaSiteKey: settings.get( 'coblocks_google_recaptcha_site_key' ), isSavedKey: ( recaptchaSiteKey === '' ) ? false : true } );
+		} );
+
+		settings.on( 'change:coblocks_google_recaptcha_secret_key', ( model ) => {
+			const recaptchaSecretKey = model.get( 'coblocks_google_recaptcha_secret_key' );
+			this.setState( { recaptchaSecretKey: settings.get( 'coblocks_google_recaptcha_secret_key' ), isSavedKey: ( recaptchaSecretKey === '' ) ? false : true } );
+		} );
+
+		settings.fetch().then( response => {
+			this.setState( { recaptchaSiteKey: response.coblocks_google_recaptcha_site_key } );
+			if ( this.state.recaptchaSiteKey && this.state.recaptchaSiteKey !== '' ) {
+				this.setState( { isSavedKey: true } );
+			}
+		} );
+
+		settings.fetch().then( response => {
+			this.setState( { recaptchaSecretKey: response.coblocks_google_recaptcha_secret_key } );
+			if ( this.state.recaptchaSecretKey && this.state.recaptchaSecretKey !== '' ) {
+				this.setState( { isSavedKey: true } );
+			}
+		} );
 	}
 
 	onChangeSubject( subject ) {
@@ -188,7 +248,6 @@ class FormEdit extends Component {
 			.filter( Boolean );
 		if ( error && error.length ) {
 			this.setState( { toError: error } );
-			return;
 		}
 	}
 
@@ -237,6 +296,38 @@ class FormEdit extends Component {
 		if ( event.key === 'Enter' ) {
 			event.preventDefault();
 			event.stopPropagation();
+		}
+	}
+
+	saveRecaptchaKey() {
+		this.setState( { isSaving: true } );
+
+		const model = new wp.api.models.Settings( {
+			coblocks_google_recaptcha_site_key: this.state.recaptchaSiteKey,
+			coblocks_google_recaptcha_secret_key: this.state.recaptchaSecretKey,
+		} );
+		model.save().then( response => {
+			this.setState( { isSavedKey: true, keySaved: true } );
+			setTimeout( () => { this.setState( { isSaving: false } ) }, 1000 );
+			settings.fetch();
+		} );
+	}
+
+	removeRecaptchaKey() {
+		this.setState( {
+			recaptchaSiteKey: '',
+			recaptchaSecretKey: '',
+		} );
+		if ( this.state.isSavedKey ) {
+			this.setState( { isSaving: true } );
+			const model = new wp.api.models.Settings( {
+				coblocks_google_recaptcha_site_key: '',
+				coblocks_google_recaptcha_secret_key: '',
+			} );
+			model.save().then( response => {
+				this.setState( { isSavedKey: false, isSaving: false, keySaved: false } );
+				settings.fetch();
+			} );
 		}
 	}
 
@@ -294,6 +385,53 @@ class FormEdit extends Component {
 						{ this.renderToAndSubjectFields() }
 						{ applyFilters( 'coblocks.advanced_forms_cta' ) }
 					</PanelBody>
+					<PanelBody
+						title={ __( 'Google reCAPTCHA' ) }
+						initialOpen={ this.state.recaptchaSecretKey ? false : true }
+						className="components-coblocks-block-settings-sidebar"
+					>
+						<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.') }</p>
+						<p>
+							<Fragment>
+								<ExternalLink href={ RETRIEVE_KEY_URL }>{ this.state.recaptchaSiteKey === '' && this.state.recaptchaSecretKey === '' ? __( 'Generate keys' ) : __( 'My keys' ) }</ExternalLink>|&nbsp;
+								<ExternalLink href={ HELP_URL }>{ __( 'Get help' ) }</ExternalLink>
+							</Fragment>
+						</p>
+						<TextControl
+							label={ __( 'Site Key' ) }
+							value={ this.state.recaptchaSiteKey }
+							onChange={ value => this.setState({ recaptchaSiteKey: value }) }
+							className="components-block-coblocks-form-recaptcha-key__custom-input"
+						/>
+						<TextControl
+							label={ __( 'Secret Key' ) }
+							value={ this.state.recaptchaSecretKey }
+							onChange={ value => this.setState({ recaptchaSecretKey: value }) }
+							className="components-block-coblocks-form-recaptcha-key__custom-input"
+						/>
+						<div className="components-base-control components-block-coblocks-form-recaptcha-buttons">
+							<Button
+								isPrimary
+								onClick={ this.saveRecaptchaKey }
+								disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
+							>
+								{ this.state.isSaving ? __( 'Saving' ) : __( 'Save' ) }
+							</Button>
+							{ this.state.recaptchaSiteKey !== '' && this.state.recaptchaSecretKey !== '' &&
+								<Fragment>
+									&nbsp;
+									<Button
+										className="components-block-coblocks-form-recaptcha-key-remove__button"
+										isDefault
+										onClick={ this.removeRecaptchaKey }
+										disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
+									>
+										{ __('Remove') }
+									</Button>
+								</Fragment>
+							}
+						</div>
+					</PanelBody>
 				</InspectorControls>
 				<div className={ classes }>
 					<InnerBlocks
@@ -301,27 +439,7 @@ class FormEdit extends Component {
 						templateLock={ true }
 						templateInsertUpdatesSelection={ false }
 						renderAppender={ () => ( null ) }
-						template={
-							[
-								[
-									'coblocks/field-name',
-									{
-										required: false,
-									},
-								],
-								[
-									'coblocks/field-email',
-									{
-										required: true,
-									},
-								],
-								[
-									'coblocks/field-textarea', {
-										required: true,
-									},
-								],
-							]
-						}
+						template={ FORM_TEMPLATE }
 					/>
 					<SubmitButton { ...this.props } />
 				</div>
