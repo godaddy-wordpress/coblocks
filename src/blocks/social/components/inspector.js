@@ -137,8 +137,8 @@ class Inspector extends Component {
 								label={ __( 'Circle Size' ) }
 								value={ padding }
 								onChange={ ( value ) => setAttributes( { padding: value } ) }
-								min={ 5 }
-								max={ 60 }
+								min={ 10 }
+								max={ 50 }
 							/>
 						}
 						{ ! isMaskStyle && ! isCircularStyle &&
