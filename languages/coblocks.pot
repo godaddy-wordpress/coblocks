@@ -1152,24 +1152,28 @@ msgstr ""
 msgid "Map style"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:156
+#: src/blocks/map/components/edit.js:131
+msgid "Please enter a location or address."
+msgstr ""
+
+#: src/blocks/map/components/edit.js:163
 msgid "Invalid API key, or too many requests"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:262
+#: src/blocks/map/components/edit.js:269
 #: src/blocks/map/components/save.js:48
 msgid "Google Map"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:263
+#: src/blocks/map/components/edit.js:270
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/components/edit.js:267
+#: src/blocks/map/components/edit.js:276
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:275
+#: src/blocks/map/components/edit.js:284
 msgid "Apply"
 msgstr ""
 
