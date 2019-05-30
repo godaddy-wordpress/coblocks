@@ -206,7 +206,7 @@ class Edit extends Component {
 			</Fragment>
 		);
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Inspector
@@ -279,8 +279,8 @@ class Edit extends Component {
 							<span className="invalid-google-maps-api-key">{ attributes.hasError }</span> }
 					</Placeholder>
 				}
-			</Fragment>,
-		];
+			</Fragment>
+		);
 	}
 }
 
