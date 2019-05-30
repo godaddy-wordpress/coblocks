@@ -15,7 +15,7 @@ import svgs from './components/svgs';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { createBlock } = wp.blocks;
 const { RichText, getColorClassName, getFontSizeClass } = wp.editor;
 
@@ -120,8 +120,8 @@ const settings = {
 	edit: Edit,
 
 	styles: [
-		{ name: 'outlined', label: __( 'Outlined' ), isDefault: true },
-		{ name: 'filled', label: __( 'Filled' ) },
+		{ name: 'outlined', label: _x( 'Outlined', 'block style' ), isDefault: true },
+		{ name: 'filled', label: _x( 'Filled', 'block style' ) },
 	],
 
 	save( { attributes, className } ) {

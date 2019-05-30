@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-05-30T18:22:00+00:00\n"
+"POT-Creation-Date: 2019-05-30T20:13:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: coblocks\n"
@@ -402,7 +402,7 @@ msgstr ""
 #: src/blocks/dynamic-separator/components/inspector.js:48
 #: src/blocks/gallery-carousel/inspector.js:149
 #: src/blocks/hero/components/inspector.js:117
-#: src/blocks/map/components/inspector.js:148
+#: src/blocks/map/components/inspector.js:136
 msgid "Height in pixels"
 msgstr ""
 
@@ -430,18 +430,6 @@ msgstr ""
 
 #: src/blocks/dynamic-separator/index.js:54
 msgid "Add a resizable spacer between other blocks."
-msgstr ""
-
-#: src/blocks/dynamic-separator/index.js:61
-msgid "Dot"
-msgstr ""
-
-#: src/blocks/dynamic-separator/index.js:62
-msgid "Line"
-msgstr ""
-
-#: src/blocks/dynamic-separator/index.js:63
-msgid "Fullwidth"
 msgstr ""
 
 #: src/blocks/features/components/edit.js:88
@@ -699,10 +687,10 @@ msgstr ""
 msgid "Edit gallery"
 msgstr ""
 
-#: src/blocks/gallery-carousel/edit.js:339
+#: src/blocks/gallery-carousel/edit.js:340
 #: src/blocks/gif/components/edit.js:252
 #: src/blocks/gist/components/edit.js:108
-#: src/components/block-gallery/gallery-image.js:191
+#: src/components/block-gallery/gallery-image.js:218
 msgid "Write caption…"
 msgstr ""
 
@@ -1126,16 +1114,7 @@ msgstr ""
 msgid "Add a stylized graphic symbol to communicate something more."
 msgstr ""
 
-#: src/blocks/icon/index.js:123
-msgid "Outlined"
-msgstr ""
-
-#: src/blocks/icon/index.js:124
-msgid "Filled"
-msgstr ""
-
 #: src/blocks/icon/index.js:32
-#: src/blocks/social/index.js:39
 msgid "Icon"
 msgstr ""
 
@@ -1152,28 +1131,24 @@ msgstr ""
 msgid "Map style"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:131
-msgid "Please enter a location or address."
-msgstr ""
-
-#: src/blocks/map/components/edit.js:163
+#: src/blocks/map/components/edit.js:161
 msgid "Invalid API key, or too many requests"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:269
+#: src/blocks/map/components/edit.js:267
 #: src/blocks/map/components/save.js:48
 msgid "Google Map"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:270
+#: src/blocks/map/components/edit.js:268
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/components/edit.js:276
+#: src/blocks/map/components/edit.js:274
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:284
+#: src/blocks/map/components/edit.js:283
 msgid "Apply"
 msgstr ""
 
@@ -1193,12 +1168,12 @@ msgstr ""
 msgid "Zoom Level"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:138
-msgid "Marker Size"
+#: src/blocks/map/components/inspector.js:137
+msgid "Height for the map in pixels"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:149
-msgid "Height for the map in pixels"
+#: src/blocks/map/components/inspector.js:148
+msgid "Marker Size"
 msgstr ""
 
 #: src/blocks/map/components/inspector.js:163
@@ -1656,38 +1631,6 @@ msgstr ""
 msgid "Add a shape divider to visually distinquish page sections."
 msgstr ""
 
-#: src/blocks/shape-divider/index.js:160
-msgid "Wavy"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:161
-msgid "Hills"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:162
-msgid "Waves"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:163
-msgid "Angled"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:164
-msgid "Sloped"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:165
-msgid "Rounded"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:166
-msgid "Triangle"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:167
-msgid "Pointed"
-msgstr ""
-
 #: src/blocks/shape-divider/index.js:65
 msgid "Shape Divider"
 msgstr ""
@@ -1795,18 +1738,6 @@ msgstr ""
 msgid "Add social sharing buttons to help you get likes and shares."
 msgstr ""
 
-#: src/blocks/social/index.js:38
-msgid "Mask"
-msgstr ""
-
-#: src/blocks/social/index.js:40
-msgid "Text"
-msgstr ""
-
-#: src/blocks/social/index.js:41
-msgid "Icon & Text"
-msgstr ""
-
 #: src/components/background/controls.js:56
 msgid "Edit Background"
 msgstr ""
@@ -1912,7 +1843,15 @@ msgstr ""
 msgid "Remove "
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:183
+#: src/components/block-gallery/gallery-image.js:189
+msgid "Move Image Backward"
+msgstr ""
+
+#: src/components/block-gallery/gallery-image.js:197
+msgid "Move Image Forward"
+msgstr ""
+
+#: src/components/block-gallery/gallery-image.js:208
 msgid "Remove Image"
 msgstr ""
 
@@ -2318,6 +2257,91 @@ msgstr ""
 
 #: src/sidebars/block-manager/components/options/disable-blocks.js:250
 msgid "No \"%s\" blocks found."
+msgstr ""
+
+#: src/blocks/dynamic-separator/index.js:61
+msgctxt "block style"
+msgid "Dot"
+msgstr ""
+
+#: src/blocks/dynamic-separator/index.js:62
+msgctxt "block style"
+msgid "Line"
+msgstr ""
+
+#: src/blocks/dynamic-separator/index.js:63
+msgctxt "block style"
+msgid "Fullwidth"
+msgstr ""
+
+#: src/blocks/icon/index.js:123
+msgctxt "block style"
+msgid "Outlined"
+msgstr ""
+
+#: src/blocks/icon/index.js:124
+msgctxt "block style"
+msgid "Filled"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:160
+msgctxt "block style"
+msgid "Wavy"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:161
+msgctxt "block style"
+msgid "Hills"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:162
+msgctxt "block style"
+msgid "Waves"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:163
+msgctxt "block style"
+msgid "Angled"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:164
+msgctxt "block style"
+msgid "Sloped"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:165
+msgctxt "block style"
+msgid "Rounded"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:166
+msgctxt "block style"
+msgid "Triangle"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:167
+msgctxt "block style"
+msgid "Pointed"
+msgstr ""
+
+#: src/blocks/social/index.js:38
+msgctxt "block style"
+msgid "Mask"
+msgstr ""
+
+#: src/blocks/social/index.js:39
+msgctxt "block style"
+msgid "Icon"
+msgstr ""
+
+#: src/blocks/social/index.js:40
+msgctxt "block style"
+msgid "Text"
+msgstr ""
+
+#: src/blocks/social/index.js:41
+msgctxt "block style"
+msgid "Icon & Text"
 msgstr ""
 
 #: src/blocks/features/feature/components/edit.js:31

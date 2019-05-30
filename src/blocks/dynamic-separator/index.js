@@ -15,7 +15,7 @@ import icons from './../../utils/icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { createBlock } = wp.blocks;
 const { getColorClassName } = wp.editor;
 
@@ -58,9 +58,9 @@ const settings = {
 	attributes: blockAttributes,
 
 	styles: [
-		{ name: 'dots', label: __( 'Dot' ), isDefault: true },
-		{ name: 'line', label: __( 'Line' ) },
-		{ name: 'fullwidth', label: __( 'Fullwidth' ) },
+		{ name: 'dots', label: _x( 'Dot', 'block style' ), isDefault: true },
+		{ name: 'line', label: _x( 'Line', 'block style' ) },
+		{ name: 'fullwidth', label: _x( 'Fullwidth', 'block style' ) },
 	],
 
 	transforms: {
