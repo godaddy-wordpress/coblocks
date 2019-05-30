@@ -41,6 +41,5 @@ export const uppercase = {
 				/>
 			</Fragment>
 		);
-
 	},
 };
