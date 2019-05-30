@@ -119,7 +119,7 @@ function coblocks_render_social_block( $attributes ) {
 		$custom_text_color = is_array( $attributes ) && isset( $attributes['customTextColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['textColor'] ) ) ? "color: {$attributes['customTextColor']};" : false;
 	}
 
-	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) || strpos( $attributes['className'], 'is-style-circular' ) !== false ) {
+	if ( isset( $attributes['className'] ) && ( strpos( $attributes['className'], 'is-style-mask' ) !== false || strpos( $attributes['className'], 'is-style-circular' ) !== false ) ) {
 		$icon_size = is_array( $attributes ) && isset( $attributes['iconSize'] ) ? "height:{$attributes['iconSize']}px;width: {$attributes['iconSize']}px;" : false;
 	}
 
