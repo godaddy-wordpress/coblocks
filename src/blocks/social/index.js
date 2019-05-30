@@ -39,6 +39,7 @@ const settings = {
 		{ name: 'icon', label: _x( 'Icon', 'block style' ) , isDefault: true },
 		{ name: 'text', label: _x( 'Text', 'block style' ) },
 		{ name: 'icon-and-text', label: _x( 'Icon & Text', 'block style' ) },
+		{ name: 'circular', label: _x( 'Circular', 'block style' ) },
 	],
 
 	edit: Edit,
