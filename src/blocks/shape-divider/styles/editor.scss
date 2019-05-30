@@ -30,7 +30,7 @@
 		width: 100%;
 
 		&::after {
-			background: $blue;
+			background: theme(primary);
 			border: 2px solid $white;
 			border-radius: 50%;
 			bottom: 4px;
@@ -60,7 +60,7 @@
 
 	.wp-block-coblocks-shape-divider__svg-wrapper.is-resizing::after,
 	.wp-block-coblocks-shape-divider__alt-wrapper.is-resizing::after {
-		background: $blue;
+		background: theme(primary);
 		opacity: 1;
 	}
 
