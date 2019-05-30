@@ -178,20 +178,6 @@
 		outline-style: solid !important;
 	}
 
-	// Remove image button.
-	.block-library-gallery-item__inline-menu {
-		right: -4px;
-		top: -4px;
-
-		.blocks-gallery-item__remove {
-			&:hover {
-				background-color: $blue !important;
-				box-shadow: none !important;
-				color: rgba($white, 0.66) !important;
-			}
-		}
-	}
-
 	// Fixes dropZone component z-index (#31).
 	.components-drop-zone {
 		z-index: 0;
