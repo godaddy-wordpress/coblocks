@@ -256,7 +256,7 @@ function coblocks_register_social_block() {
 					'default' => 22,
 				),
 				'padding'               => array(
-					'type' => 'number',
+					'type'    => 'number',
 					'default' => 16,
 				),
 				'textAlign'             => array(
