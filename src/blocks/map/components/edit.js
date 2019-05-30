@@ -18,7 +18,7 @@ import icons from './../../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
-const { Placeholder, Button, TextControl, ResizableBox } = wp.components;
+const { Placeholder, Button, TextControl, ResizableBox, withNotices } = wp.components;
 const { Fragment, Component } = wp.element;
 const { ENTER } = wp.keycodes;
 
@@ -106,6 +106,8 @@ class Edit extends Component {
 			toggleSelection,
 			setAttributes,
 			isSelected,
+			noticeOperations,
+			noticeUI,
 		} = this.props;
 
 		const {
@@ -122,7 +124,12 @@ class Edit extends Component {
 		} = attributes;
 
 		const renderMap = () => {
-			setAttributes( { address: this.state.address, pinned: true } );
+			noticeOperations.removeAllNotices();
+			if ( typeof this.state.address !== 'undefined' && !! this.state.address.trim() ) {
+				setAttributes( { address: this.state.address, pinned: true } );
+			} else {
+				noticeOperations.createErrorNotice( 'Please enter a location or address.' );
+			}
 		};
 
 		const handleKeyDown = ( keyCode ) => {
@@ -260,7 +267,9 @@ class Edit extends Component {
 					<Placeholder
 						icon={ icons.googleMap }
 						label={ __( 'Google Map' ) }
-						instructions={ __( 'Enter a location or address to drop a pin on a Google map.' ) } >
+						instructions={ __( 'Enter a location or address to drop a pin on a Google map.' ) }
+						notices={ noticeUI }
+					>
 						<TextControl
 							className="components-placeholder__input"
 							value={ this.state.address }
@@ -284,4 +293,4 @@ class Edit extends Component {
 	}
 }
 
-export default Edit;
+export default compose( [ withNotices ] )( Edit );
