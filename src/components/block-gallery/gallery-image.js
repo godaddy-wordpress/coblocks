@@ -186,7 +186,7 @@ class GalleryImage extends Component {
 							<div className="components-coblocks-gallery-item__move-menu">
 								<IconButton
 									icon={ verticalMoving ? "arrow-up" : "arrow-left" }
-									onClick={ isFirstItem ? undefined : onMoveBackward }
+									onClick={ ! isFirstItem && onMoveBackward }
 									className="coblocks-gallery-item__button"
 									label={ __( 'Move Image Backward' ) }
 									aria-disabled={ isFirstItem }
@@ -194,7 +194,7 @@ class GalleryImage extends Component {
 								/>
 								<IconButton
 									icon={ verticalMoving ? "arrow-down" : "arrow-right" }
-									onClick={ isLastItem ? undefined : onMoveForward }
+									onClick={ ! isLastItem && onMoveForward }
 									className="coblocks-gallery-item__button"
 									label={ __( 'Move Image Forward' ) }
 									aria-disabled={ isLastItem }
