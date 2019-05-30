@@ -5,10 +5,11 @@ import * as helper from './../../../utils/helper';
 
 /**
  * Set global transforms that every block uses.
- * @type {Object}
+ *
+ * @param {Object} props The passed props.
+ * @returns {Object} The transforms.
  */
 function GalleryTransforms( props ) {
-
 	const transforms = {
 		align: props.align,
 		gutter: props.gutter,

@@ -4,10 +4,12 @@
 const { getColorClassName } = wp.editor;
 
 /**
- * Background Classes
+ * Background Classes.
+ *
+ * @param {Object} attributes The passed attributes.
+ * @returns {Object} the styles.
  */
 function GalleryStyles( attributes ) {
-
 	const captionColorClass = getColorClassName( 'color', attributes.captionColor );
 
 	const styles = {

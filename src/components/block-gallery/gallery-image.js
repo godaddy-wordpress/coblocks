@@ -16,7 +16,6 @@ const { BACKSPACE, DELETE } = wp.keycodes;
 const { isBlobURL } = wp.blob;
 
 class GalleryImage extends Component {
-
 	constructor() {
 		super( ...arguments );
 
@@ -91,7 +90,6 @@ class GalleryImage extends Component {
 	}
 
 	render() {
-
 		const {
 			alt,
 			caption,
@@ -127,7 +125,7 @@ class GalleryImage extends Component {
 		}
 
 		const imgClasses = classnames( {
-			[ `has-shadow-${ shadow }` ] : shadow != 'none' || shadow != undefined,
+			[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
 		} );
 
 		// Disable reason: Image itself is not meant to be
@@ -156,14 +154,14 @@ class GalleryImage extends Component {
 		const className = classnames( {
 			'is-selected': isSelected,
 			'is-transient': url && 0 === url.indexOf( 'blob:' ),
-			[ `has-margin-top-${ gutter }` ] : marginTop && gutter > 0,
-			[ `has-margin-top-mobile-${ gutterMobile }` ] : marginTop && gutterMobile > 0,
-			[ `has-margin-right-${ gutter }` ] : marginRight && gutter > 0,
-			[ `has-margin-right-mobile-${ gutterMobile }` ] : marginRight && gutterMobile > 0,
-			[ `has-margin-bottom-${ gutter }` ] : marginBottom && gutter > 0,
-			[ `has-margin-bottom-mobile-${ gutterMobile }` ] : marginBottom && gutterMobile > 0,
-			[ `has-margin-left-${ gutter }` ] : marginLeft && gutter > 0,
-			[ `has-margin-left-mobile-${ gutterMobile }` ] : marginLeft && gutterMobile > 0,
+			[ `has-margin-top-${ gutter }` ]: marginTop && gutter > 0,
+			[ `has-margin-top-mobile-${ gutterMobile }` ]: marginTop && gutterMobile > 0,
+			[ `has-margin-right-${ gutter }` ]: marginRight && gutter > 0,
+			[ `has-margin-right-mobile-${ gutterMobile }` ]: marginRight && gutterMobile > 0,
+			[ `has-margin-bottom-${ gutter }` ]: marginBottom && gutter > 0,
+			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: marginBottom && gutterMobile > 0,
+			[ `has-margin-left-${ gutter }` ]: marginLeft && gutter > 0,
+			[ `has-margin-left-mobile-${ gutterMobile }` ]: marginLeft && gutterMobile > 0,
 		} );
 
 		const captionStyles = {
