@@ -28,7 +28,7 @@
 
 				&::before,
 				&::after {
-					background: $blue;
+					background: theme(primary);
 					content: "";
 					display: block;
 					height: 100%;
