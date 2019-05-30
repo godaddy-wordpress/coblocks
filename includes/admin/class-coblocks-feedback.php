@@ -268,7 +268,7 @@ class CoBlocks_Feedback {
 			<div class="coblocks-notice-inner">
 				<div class="coblocks-notice-icon">
 					<?php /* translators: 1. Name */ ?>
-					<img src="https://ps.w.org/coblocks/assets/icon-256x256.jpg" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'coblocks' ), esc_attr( $this->name ) ); ?>" />
+					<img src="<?php echo esc_url( COBLOCKS_PLUGIN_URL . 'dist/images/admin/icon-notice.jpg' ); ?>" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'coblocks' ), esc_attr( $this->name ) ); ?>" />
 				</div>
 				<div class="coblocks-notice-content">
 					<?php /* translators: 1. Name */ ?>
