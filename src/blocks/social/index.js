@@ -9,7 +9,7 @@ import icons from './../../utils/icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component } = wp.element;
 
 /**
@@ -35,10 +35,10 @@ const settings = {
 	keywords: keywords,
 
 	styles: [
-		{ name: 'mask', label: __( 'Mask' ) },
-		{ name: 'icon', label: __( 'Icon' ), isDefault: true },
-		{ name: 'text', label: __( 'Text' ) },
-		{ name: 'icon-and-text', label: __( 'Icon & Text' ) },
+		{ name: 'mask', label: _x( 'Mask', 'block style' ) },
+		{ name: 'icon', label: _x( 'Icon', 'block style' ) , isDefault: true },
+		{ name: 'text', label: _x( 'Text', 'block style' ) },
+		{ name: 'icon-and-text', label: _x( 'Icon & Text', 'block style' ) },
 	],
 
 	edit: Edit,
