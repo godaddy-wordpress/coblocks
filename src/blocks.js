@@ -66,7 +66,7 @@ import * as stacked from './blocks/gallery-stacked';
 import * as masonry from './blocks/gallery-masonry';
 import * as carousel from './blocks/gallery-carousel';
 
-export function registerBlocks () {
+export function registerBlocks() {
 	[
 		accordion,
 		accordionItem,
@@ -94,15 +94,18 @@ export function registerBlocks () {
 		stacked,
 		carousel,
 		masonry,
-	].forEach( ( block ) => {
-
+	].forEach( block => {
 		if ( ! block ) {
 			return;
 		}
 
 		const { name, icon, settings } = block;
 
-		registerBlockType( `coblocks/${ name }`, { category: category.slug, icon: { src: icon, foreground: iconColor, }, ...settings } );
+		registerBlockType( `coblocks/${ name }`, {
+			category: category.slug,
+			icon: { src: icon, foreground: iconColor },
+			...settings,
+		} );
 	} );
-};
+}
 registerBlocks();
