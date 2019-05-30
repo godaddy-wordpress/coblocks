@@ -128,7 +128,7 @@ class Edit extends Component {
 			if ( typeof this.state.address !== 'undefined' && !! this.state.address.trim() ) {
 				setAttributes( { address: this.state.address, pinned: true } );
 			} else {
-				noticeOperations.createErrorNotice( 'Please enter a location or address.' );
+				noticeOperations.createErrorNotice( __( 'Please enter a location or address.' ) );
 			}
 		};
 
