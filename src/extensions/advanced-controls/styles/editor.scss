@@ -64,8 +64,11 @@
 
 	// Remove top and bottom margin from Gutenberg 5.8+ [data-block] margin
 	.wp-block[data-coblocks-top-spacing="1"] .editor-block-list__block-edit > [data-block] {
-		margin-bottom: 0;
 		margin-top: 0;
+	}
+
+	.wp-block[data-coblocks-bottom-spacing="1"] .editor-block-list__block-edit > [data-block] {
+		margin-bottom: 0;
 	}
 
 	//Make sure block is on the top z-index.
