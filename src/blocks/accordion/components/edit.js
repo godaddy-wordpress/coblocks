@@ -56,7 +56,7 @@ class Edit extends Component {
 			count,
 		} = attributes;
 
-		const items = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
+		const items = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
 
 		return [
 			<Fragment>
