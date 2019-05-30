@@ -60,10 +60,23 @@
 				top: -7px;
 			}
 		}
+
+		// Moves the handles and creates a second one so we can manipulate the
+		// ResizableBox component with the content card over the middle of the image.
+		.components-resizable-box__handle-right:not(.components-resizable-box__side-handle) {
+			bottom: 0;
+			height: 100%;
+			top: -7px;
+
+			&::before {
+				position: absolute;
+				top: 0;
+			}
+		}
 	}
 
 	// Create a fake circular handle point.
-	.wp-block-coblocks-media-card__media-container {
+	&:not(.has-no-media) .wp-block-coblocks-media-card__media-container {
 		&::after {
 			background: theme(primary);
 			border: 2px solid $white;
