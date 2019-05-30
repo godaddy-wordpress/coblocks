@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { SVG, Path, G } = wp.components;
+const { SVG, Path } = wp.components;
 
 /**
  * Custom icons
