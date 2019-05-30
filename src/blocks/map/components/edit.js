@@ -18,7 +18,7 @@ import icons from './../../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
-const { Placeholder, Button, TextControl, ResizableBox } = wp.components;
+const { Placeholder, Button, TextControl, ResizableBox, withNotices } = wp.components;
 const { Fragment, Component } = wp.element;
 const { ENTER } = wp.keycodes;
 
@@ -106,6 +106,7 @@ class Edit extends Component {
 			toggleSelection,
 			setAttributes,
 			isSelected,
+			noticeUI,
 		} = this.props;
 
 		const {
@@ -121,8 +122,12 @@ class Edit extends Component {
 			zoom,
 		} = attributes;
 
+		const hasAddress = ( typeof this.state.address !== 'undefined' && !! this.state.address.trim() );
+
 		const renderMap = () => {
-			setAttributes( { address: this.state.address, pinned: true } );
+			if ( hasAddress ) {
+				setAttributes( { address: this.state.address, pinned: true } );
+			}
 		};
 
 		const handleKeyDown = ( keyCode ) => {
@@ -206,7 +211,7 @@ class Edit extends Component {
 			</Fragment>
 		);
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Inspector
@@ -260,7 +265,9 @@ class Edit extends Component {
 					<Placeholder
 						icon={ icons.googleMap }
 						label={ __( 'Google Map' ) }
-						instructions={ __( 'Enter a location or address to drop a pin on a Google map.' ) } >
+						instructions={ __( 'Enter a location or address to drop a pin on a Google map.' ) }
+						notices={ noticeUI }
+					>
 						<TextControl
 							className="components-placeholder__input"
 							value={ this.state.address }
@@ -271,7 +278,8 @@ class Edit extends Component {
 						<Button
 							isLarge
 							type="button"
-							onClick={ renderMap }>
+							onClick={ renderMap }
+							disabled={ ! hasAddress }>
 							{ __( 'Apply' ) }
 						</Button>
 
@@ -279,9 +287,9 @@ class Edit extends Component {
 							<span className="invalid-google-maps-api-key">{ attributes.hasError }</span> }
 					</Placeholder>
 				}
-			</Fragment>,
-		];
+			</Fragment>
+		);
 	}
 }
 
-export default Edit;
+export default compose( [ withNotices ] )( Edit );
