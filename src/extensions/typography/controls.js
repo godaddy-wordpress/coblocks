@@ -2,61 +2,54 @@
 /**
  * Internal dependencies
  */
-import TypographyControls, { TypographyAttributes, TypograpyClasses } from './../../components/typography-controls';
+import TypographyControls from './../../components/typography-controls';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls } = wp.editor;
+const { BlockControls } = wp.editor;
 const { Toolbar } = wp.components;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
+			name,
 			attributes,
-			setAttributes,
 		} = this.props;
 
 		let hideToolbar = false;
 		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight', 'coblocks/features' ];
 
-		this.props.attributes.textPanelHideColor = true;
-		this.props.attributes.textPanelShowSpacingControls = true;
+		attributes.textPanelHideColor = true;
+		attributes.textPanelShowSpacingControls = true;
 
 		// Display on the allowedBlocks only.
-		if ( ! allowedBlocks.includes( this.props.name ) ){
-			this.props.attributes.textPanelHideSize = true;
+		if ( ! allowedBlocks.includes( name ) ) {
+			attributes.textPanelHideSize = true;
 		} else {
-			this.props.attributes.textPanelHeadingFontSizes = true;
+			attributes.textPanelHeadingFontSizes = true;
 		}
 
 		// Show line height on appropriate blocks.
-		if ( ! allowedBlocks.includes( this.props.name ) ) {
-			this.props.attributes.textPanelLineHeight = true;
-			this.props.attributes.textPanelLetterSpacing = true;
+		if ( ! allowedBlocks.includes( name ) ) {
+			attributes.textPanelLineHeight = true;
+			attributes.textPanelLetterSpacing = true;
 		}
 
 		// Manage options for row and columns
-		if ( [ 'coblocks/row', 'coblocks/column' ].includes( this.props.name ) ) {
-			this.props.attributes.textPanelShowSpacingControls = false;
+		if ( [ 'coblocks/row', 'coblocks/column' ].includes( name ) ) {
+			attributes.textPanelShowSpacingControls = false;
 		}
 
 		//do not show if there is no layout for row blocks yet
-		if ( [ 'coblocks/row' ].includes( this.props.name ) ){
-			if( !this.props.attributes.layout ){
+		if ( [ 'coblocks/row' ].includes( name ) ) {
+			if ( ! attributes.layout ) {
 				hideToolbar = true;
 			}
 		}
 
-		if( !hideToolbar ){
+		if ( ! hideToolbar ) {
 			return (
 				<Fragment>
 					<BlockControls>

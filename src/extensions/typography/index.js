@@ -5,7 +5,7 @@ import './styles/editor.scss';
 import './styles/style.scss';
 import Controls from './controls';
 import applyStyle from './apply-style';
-import TypographyControls, { TypographyAttributes } from '../../components/typography-controls';
+import { TypographyAttributes } from '../../components/typography-controls';
 
 /**
  * External Dependencies
@@ -15,11 +15,9 @@ import classnames from 'classnames';
 /**
  * WordPress Dependencies
  */
-const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { addFilter } = wp.hooks;
 const { Fragment }	= wp.element;
-const { InspectorAdvancedControls }	= wp.components;
 const { compose, createHigherOrderComponent } = wp.compose;
 
 const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features' ];
@@ -31,9 +29,8 @@ const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pu
  * @return {Object} Filtered block settings.
  */
 function addAttributes( settings ) {
-
 	// Use Lodash's assign to gracefully handle if attributes are undefined
-	if( allowedBlocks.includes( settings.name ) ){
+	if ( allowedBlocks.includes( settings.name ) ) {
 		settings.attributes = Object.assign( settings.attributes, TypographyAttributes );
 	}
 
@@ -48,21 +45,14 @@ function addAttributes( settings ) {
  */
 const withControls = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-
-		const {
-			clientId,
-			attributes,
-			setAttributes,
-		} = props;
-
 		return (
 			<Fragment>
-				<BlockEdit {...props} />
-				{ props.isSelected && allowedBlocks.includes( props.name ) && <Controls {...{ ...props }} /> }
+				<BlockEdit { ...props } />
+				{ props.isSelected && allowedBlocks.includes( props.name ) && <Controls { ...{ ...props } } /> }
 			</Fragment>
 		);
 	};
-}, 'withControls');
+}, 'withControls' );
 
 /**
  * Override the default block element to add	wrapper props.
@@ -83,48 +73,47 @@ const enhance = compose(
 	 *
 	 * @return {Component} Enhanced component with merged state data props.
 	 */
-	withSelect( ( select, block ) => {
-		return { selected : select( 'core/editor' ).getSelectedBlock(), select: select };
+	withSelect( ( select ) => {
+		return { selected: select( 'core/editor' ).getSelectedBlock(), select: select };
 	} )
 );
 
-const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
-	return enhance( ( { selected, select, ...props } ) => {
-
+const withFontSettings = createHigherOrderComponent( ( BlockListBlock ) => {
+	return enhance( ( { select, ...props } ) => {
 		let wrapperProps 	= props.wrapperProps;
 		let customData 	 	= {};
-		let attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
-		let blockName		= select( 'core/editor' ).getBlockName( props.clientId );
+		const attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
+		const blockName		= select( 'core/editor' ).getBlockName( props.clientId );
 
-		if( allowedBlocks.includes( blockName ) ){
+		if ( allowedBlocks.includes( blockName ) ) {
 			const { customFontSize, fontFamily, lineHeight, fontWeight, letterSpacing, textTransform, customTextColor } = attributes;
 
-			if( customFontSize ){
+			if ( customFontSize ) {
 				customData = Object.assign( customData, { 'data-custom-fontsize': 1 } );
 			}
 
-			if( lineHeight ){
+			if ( lineHeight ) {
 				customData = Object.assign( customData, { 'data-custom-lineheight': 1 } );
 			}
 
-			if( fontFamily ){
+			if ( fontFamily ) {
 				customData = Object.assign( customData, { 'data-coblocks-font': 1 } );
 			}
 
-			if( fontWeight ){
+			if ( fontWeight ) {
 				customData = Object.assign( customData, { 'data-custom-fontweight': 1 } );
 			}
 
-			if( textTransform ){
+			if ( textTransform ) {
 				customData = Object.assign( customData, { 'data-custom-texttransform': 1 } );
 			}
 
-			if( customTextColor ){
+			if ( customTextColor ) {
 				customData = Object.assign( customData, { 'data-custom-textcolor': 1 } );
 			}
 
 			if ( letterSpacing ) {
-				customData = Object.assign( customData, { 'data-custom-letterspacing' : 1 } );
+				customData = Object.assign( customData, { 'data-custom-letterspacing': 1 } );
 			}
 
 			wrapperProps = {
@@ -134,9 +123,9 @@ const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
 			};
 		}
 
-		return <BlockListBlock {...props} wrapperProps={wrapperProps} />;
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
 	} );
-}, 'withFontSettings');
+}, 'withFontSettings' );
 
 /**
  * Override props assigned to save component to inject atttributes
@@ -147,11 +136,9 @@ const withFontSettings = createHigherOrderComponent( (BlockListBlock) => {
  *
  * @return {Object} Filtered props applied to save element.
  */
-function applyFontSettings(extraProps, blockType, attributes) {
-
+function applyFontSettings( extraProps, blockType, attributes ) {
 	if ( allowedBlocks.includes( blockType.name ) ) {
-
-		if( typeof extraProps.style !== 'undefined' ){
+		if ( typeof extraProps.style !== 'undefined' ) {
 			extraProps.style = Object.assign( extraProps.style, applyStyle( attributes, blockType.name ) );
 		} else {
 			extraProps.style = applyStyle( attributes, blockType.name );

@@ -9,7 +9,7 @@ import ColorTransforms from './transform';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
+const { Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withColors, PanelColorSettings } = wp.editor;
 
@@ -22,18 +22,11 @@ export {
 	ColorTransforms,
 };
 
-/**
- * Color Settings
- */
-function ColorSettings( props, options ) {
-
+function ColorSettings( props ) {
 	const {
 		name,
 		attributes,
-		fallbackTextColor,
 		setAttributes,
-		setTextColor,
-		textColor,
 	} = props;
 
 	const {
@@ -41,23 +34,23 @@ function ColorSettings( props, options ) {
 		customBackgroundColor,
 	} = attributes;
 
-	let colorSettings = [];
+	const colorSettings = [];
 
-	if( ![ 'core/heading', 'core/list', 'core/quote' ].includes( name ) ){
-		colorSettings.push({
+	if ( ! [ 'core/heading', 'core/list', 'core/quote' ].includes( name ) ) {
+		colorSettings.push( {
 			value: customBackgroundColor,
-			onChange: ( nextcustomBackgroundColor ) => setAttributes( {  customBackgroundColor: nextcustomBackgroundColor } ),
+			onChange: ( nextcustomBackgroundColor ) => setAttributes( { customBackgroundColor: nextcustomBackgroundColor } ),
 			label: __( 'Background Color' ),
-		});
+		} );
 	}
 
-	colorSettings.push({
+	colorSettings.push( {
 		value: customTextColor,
-		onChange: ( nextcustomTextColor ) => setAttributes( {  customTextColor: nextcustomTextColor } ),
+		onChange: ( nextcustomTextColor ) => setAttributes( { customTextColor: nextcustomTextColor } ),
 		label: __( 'Text Color' ),
-	});
+	} );
 
-	return [
+	return (
 		<Fragment>
 			<PanelColorSettings
 				title={ __( 'Color Settings' ) }
@@ -66,7 +59,7 @@ function ColorSettings( props, options ) {
 			>
 			</PanelColorSettings>
 		</Fragment>
-	];
+	);
 }
 
 export default compose( [
