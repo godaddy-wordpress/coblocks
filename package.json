@@ -52,6 +52,7 @@
 		"babel-core": "^6.25.0",
 		"babel-loader": "^7.1.4",
 		"eslint-plugin-wordpress": "^0.1.0",
+		"babel-plugin-transform-class-properties": "^6.24.1",
 		"grunt": "^1.0.3",
 		"grunt-contrib-clean": "^1.0.0",
 		"grunt-contrib-compress": "^1.4.1",

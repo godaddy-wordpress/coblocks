@@ -10,7 +10,5 @@
 			}
 		]
 	],
-	"test": [
-		"jest"
-	]
+	"test": [ "jest", "transform-class-properties" ]
 }
