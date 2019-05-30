@@ -14,11 +14,9 @@ import Controls from './controls';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.editor;
-const { Spinner } = wp.components;
 
 /**
  * Constants
@@ -40,18 +38,11 @@ const getCount = memoize( ( count ) => {
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			className,
 			isSelected,
-			setAttributes,
 		} = this.props;
 
 		const {
@@ -68,15 +59,15 @@ class Edit extends Component {
 		);
 
 		const innerClasses = classnames(
-			'wp-block-coblocks-buttons__inner',{
-				[ `flex-align-${ contentAlign }` ] : contentAlign,
-				[ `has-${ gutter }-gutter` ] : gutter,
+			'wp-block-coblocks-buttons__inner', {
+				[ `flex-align-${ contentAlign }` ]: contentAlign,
+				[ `has-${ gutter }-gutter` ]: gutter,
 				'is-stacked': stacked,
 				'is-stacked-on-mobile': isStackedOnMobile,
 			}
 		);
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Inspector
@@ -99,7 +90,7 @@ class Edit extends Component {
 					</div>
 				</div>
 			</Fragment>
-		];
+		);
 	}
 }
 

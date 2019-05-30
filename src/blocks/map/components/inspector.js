@@ -20,15 +20,12 @@ const { ENTER } = wp.keycodes;
 const RETRIEVE_KEY_URL = 'https://cloud.google.com/maps-platform';
 const HELP_URL = 'https://developers.google.com/maps/documentation/javascript/get-api-key';
 
-/**
- * Inspector controls
- */
 class Inspector extends Component {
 	constructor( props ) {
 		super( ...arguments );
 
 		this.state = {
-			apiKey: this.props.apiKey,
+			apiKey: props.apiKey,
 			isSavedKey: false,
 			isLoading: true,
 			isSaving: false,
@@ -148,7 +145,7 @@ class Inspector extends Component {
 									label={ __( 'Height in pixels' ) }
 									aria-label={ __( 'Height for the map in pixels' ) }
 									value={ height }
-									onChange={ () => setAttributes( { height: parseInt( event.target.value, 10 ) } ) }
+									onChange={ ( event ) => setAttributes( { height: parseInt( event.target.value, 10 ) } ) }
 									className="components-block-coblocks-height__custom-input"
 									min={ 200 }
 									max={ 1000 }
@@ -218,7 +215,7 @@ class Inspector extends Component {
 						<Button
 							isPrimary
 							onClick={ this.updateApiKey }
-							disabled={ (this.state.apiKey === '') || (this.state.apiKey === this.props.apiKey) }
+							disabled={ ( this.state.apiKey === '' ) || ( this.state.apiKey === this.props.apiKey ) }
 						>
 							{ this.props.attributes.hasApiKey ? __( 'Saved' ) : __( 'Save' ) }
 						</Button>

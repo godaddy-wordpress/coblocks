@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import map from 'lodash/map';
 
 /**
  * Internal dependencies
@@ -10,25 +9,24 @@ import map from 'lodash/map';
 import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
-import { title, icon } from '../'
+import { title } from '../';
 import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText, InnerBlocks, withFontSizes, Inserter } = wp.editor;
-const { ResizableBox, Spinner, IconButton } = wp.components;
+const { InnerBlocks, Inserter } = wp.editor;
+const { ResizableBox, Spinner } = wp.components;
 const { isBlobURL } = wp.blob;
 
 /**
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.state = {
@@ -38,11 +36,10 @@ class Edit extends Component {
 			nextBlockWidth: 0,
 			maxWidth: 999999999,
 			resizing: false,
-		}
+		};
 	}
 
 	render() {
-
 		const {
 			clientId,
 			attributes,
@@ -52,7 +49,7 @@ class Edit extends Component {
 			setAttributes,
 			backgroundColor,
 			textColor,
-		} = this.props
+		} = this.props;
 
 		const {
 			coblocks,
@@ -71,15 +68,11 @@ class Edit extends Component {
 			marginSize,
 			paddingSize,
 			contentAlign,
-			focalPoint,
-			hasParallax,
 			showInserter,
-			backgroundType,
 		} = attributes;
 
 		const parentId = wp.data.select( 'core/editor' ).getBlockRootClientId( clientId );
 		const columnBlocks = wp.data.select( 'core/editor' ).getBlock( clientId );
-		const parentBlocks = wp.data.select( 'core/editor' ).getBlocksByClientId( parentId );
 		const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
 		const nextBlockClient = wp.data.select( 'core/editor' ).getBlock( nextBlockClientId );
 		const dropZone = (
@@ -91,19 +84,19 @@ class Edit extends Component {
 
 		const classes = classnames(
 			'wp-block-coblocks-column', {
-				[ `coblocks-column-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
-				'wp-block-coblocks-column-placeholder' : columnBlocks && columnBlocks.innerBlocks && Object.keys( columnBlocks.innerBlocks ).length < 1,
+				[ `coblocks-column-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
+				'wp-block-coblocks-column-placeholder': columnBlocks && columnBlocks.innerBlocks && Object.keys( columnBlocks.innerBlocks ).length < 1,
 			}
 		);
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-column__inner',
-			...BackgroundClasses( attributes ),{
+			...BackgroundClasses( attributes ), {
 				'has-text-color': textColor.color,
-				'has-padding': paddingSize && paddingSize != 'no',
-				'has-margin': marginSize && marginSize != 'no',
-				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
-				[ `has-${ marginSize }-margin` ] : marginSize && marginSize != 'advanced',
+				'has-padding': paddingSize && paddingSize !== 'no',
+				'has-margin': marginSize && marginSize !== 'no',
+				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
 			}
 		);
 
@@ -121,8 +114,8 @@ class Edit extends Component {
 			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 		};
 
-		if ( parseInt( width ) == 100 ) {
-			return [
+		if ( parseInt( width ) === 100 ) {
+			return (
 				<Fragment>
 					{ dropZone }
 					{ isSelected && (
@@ -143,7 +136,7 @@ class Edit extends Component {
 							color: textColor.color,
 							textAlign: contentAlign,
 						} }
-						>
+					>
 						<div className="wp-block-coblocks-column">
 							<div className={ innerClasses } style={ innerStyles }>
 								{ BackgroundVideo( attributes ) }
@@ -155,10 +148,10 @@ class Edit extends Component {
 						</div>
 					</div>
 				</Fragment>
-			];
+			);
 		}
 
-		return [
+		return (
 			<Fragment>
 				{ dropZone }
 				{ isSelected && (
@@ -171,14 +164,14 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<span className={ classnames( 'coblocks-resizeable-width', { 'is-resizing' : this.state.resizing } ) }>
-					{ ( isSelected && this.state.selectedBlockWidth > 0 ) ? parseFloat( this.state.selectedBlockWidth ).toFixed(1) : parseFloat( width ).toFixed(1) }%
+				<span className={ classnames( 'coblocks-resizeable-width', { 'is-resizing': this.state.resizing } ) }>
+					{ ( isSelected && this.state.selectedBlockWidth > 0 ) ? parseFloat( this.state.selectedBlockWidth ).toFixed( 1 ) : parseFloat( width ).toFixed( 1 ) }%
 				</span>
 				<ResizableBox
 					className={ classnames(
 						className, {
 							'is-selected-column': isSelected,
-							'is-resizing' : this.state.resizing,
+							'is-resizing': this.state.resizing,
 						}
 					) }
 					maxWidth={ this.state.maxWidth }
@@ -193,8 +186,8 @@ class Edit extends Component {
 						bottomLeft: false,
 						topLeft: false,
 					} }
-					onResizeStop={ ( event, direction, elt, delta ) => {
-						let currentBlock = document.getElementById( 'block-' + this.props.clientId );
+					onResizeStop={ () => {
+						const currentBlock = document.getElementById( 'block-' + this.props.clientId );
 
 						//Remove resizing class
 						currentBlock.classList.remove( 'is-resizing' );
@@ -203,32 +196,30 @@ class Edit extends Component {
 						toggleSelection( true );
 						this.setState( { resizing: false } );
 					} }
-					onResize={ ( event, direction, elt, delta ) => {
-
-						let parentBlockClientRect 	= document.getElementById( 'block-' + parentId ).getElementsByClassName( 'wp-block-coblocks-row__inner' )[0].getBoundingClientRect();
-						let currentBlockWidth 		= this.state.selectedWidth + ( delta.width );
-						let currentBlockWidthPercent = ( currentBlockWidth /parentBlockClientRect.width ) * 100;
-						let diff =  parseFloat( width ) - currentBlockWidthPercent;
-						let nextBlockWidth = parseFloat( nextBlockClient.attributes.width ) + diff;
+					onResize={ ( _event, _direction, _elt, delta ) => {
+						const parentBlockClientRect = document.getElementById( 'block-' + parentId ).getElementsByClassName( 'wp-block-coblocks-row__inner' )[ 0 ].getBoundingClientRect();
+						const currentBlockWidth = this.state.selectedWidth + ( delta.width );
+						const currentBlockWidthPercent = ( currentBlockWidth / parentBlockClientRect.width ) * 100;
+						const diff = parseFloat( width ) - currentBlockWidthPercent;
+						const nextBlockWidth = parseFloat( nextBlockClient.attributes.width ) + diff;
 
 						document.getElementById( 'block-' + parentId ).classList.add( 'is-resizing' );
-						document.getElementById( 'block-' + this.props.clientId ).getElementsByClassName( 'wp-block-coblocks-column' )[0].style.width = 'auto';
+						document.getElementById( 'block-' + this.props.clientId ).getElementsByClassName( 'wp-block-coblocks-column' )[ 0 ].style.width = 'auto';
 
-						if( nextBlockWidth > 10 && currentBlockWidthPercent > 10 ){
-							wp.data.dispatch( 'core/editor' ).updateBlockAttributes( nextBlockClientId, { width : parseFloat( nextBlockWidth ).toFixed(2) } );
-							setAttributes( {  width: parseFloat( currentBlockWidthPercent ).toFixed(2) } );
+						if ( nextBlockWidth > 10 && currentBlockWidthPercent > 10 ) {
+							wp.data.dispatch( 'core/editor' ).updateBlockAttributes( nextBlockClientId, { width: parseFloat( nextBlockWidth ).toFixed( 2 ) } );
+							setAttributes( { width: parseFloat( currentBlockWidthPercent ).toFixed( 2 ) } );
 						}
-
 					} }
-					onResizeStart={ ( event, direction, elt, delta ) => {
-						let currentBlock 	= document.getElementById( 'block-' + this.props.clientId );
-						let currentBlockClientRect 	= currentBlock.getBoundingClientRect();
+					onResizeStart={ () => {
+						const currentBlock = document.getElementById( 'block-' + this.props.clientId );
+						const currentBlockClientRect = currentBlock.getBoundingClientRect();
 
 						//Add resizing class
 						currentBlock.classList.add( 'is-resizing' );
 						document.getElementById( 'block-' + parentId ).classList.add( 'is-resizing' );
 
-						this.setState({ 'selectedWidth' : currentBlockClientRect.width });
+						this.setState( { selectedWidth: currentBlockClientRect.width } );
 						this.setState( { resizing: true } );
 						toggleSelection( false );
 					} }
@@ -236,19 +227,19 @@ class Edit extends Component {
 					<div
 						className={ classes }
 						style={ { color: textColor.color, textAlign: contentAlign } }
-						>
+					>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }
 						<div className={ innerClasses } style={ innerStyles }>
-							<InnerBlocks templateLock={ false }/>
+							<InnerBlocks templateLock={ false } />
 							{ showInserter ? <Inserter rootClientId={ clientId } isAppender /> : null }
 						</div>
 					</div>
 				</ResizableBox>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

@@ -16,8 +16,7 @@ import svgs from './components/svgs';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
-const { RichText, getColorClassName, getFontSizeClass } = wp.editor;
+const { getColorClassName } = wp.editor;
 
 /**
  * Set default icon size equivalent to "Medium".
@@ -125,7 +124,6 @@ const settings = {
 	],
 
 	save( { attributes, className } ) {
-
 		const {
 			icon,
 			backgroundColor,
@@ -173,10 +171,9 @@ const settings = {
 		return (
 			<div className={ className } style={ { textAlign: contentAlign ? contentAlign : undefined } }>
 				<div className={ classes } style={ styles }>
-					{ href &&
-						<a href={ href } target={ linkTarget } rel={ rel }></a>
-					}
-					{ svgs[ iconStyle ][ icon ].icon }
+					{ href && <a href={ href } target={ linkTarget } rel={ rel }>
+						{ svgs[ iconStyle ][ icon ].icon }
+					</a> }
 				</div>
 			</div>
 		);

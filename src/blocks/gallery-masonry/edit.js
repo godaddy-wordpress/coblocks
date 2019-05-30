@@ -8,14 +8,14 @@ import Masonry from 'react-masonry-component';
 /**
  * Internal dependencies
  */
-import { title, icon } from './'
+import { title, icon } from './';
 import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import GalleryUploader from '../../components/block-gallery/gallery-uploader';
-import { GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
+import { GalleryClasses } from '../../components/block-gallery/shared';
 import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
 /**
@@ -51,11 +51,10 @@ class GalleryMasonryEdit extends Component {
 	}
 
 	componentDidMount() {
-
-		if ( this.props.wideControlsEnabled == true && ! this.props.attributes.align && this.props.attributes.gridSize == 'xlrg' ) {
+		if ( this.props.wideControlsEnabled === true && ! this.props.attributes.align && this.props.attributes.gridSize === 'xlrg' ) {
 			this.props.setAttributes( {
 				align: 'wide',
-				gridSize: 'lrg'
+				gridSize: 'lrg',
 			} );
 		}
 	}
@@ -82,8 +81,7 @@ class GalleryMasonryEdit extends Component {
 
 	onRemoveImage( index ) {
 		return () => {
-			const images = filter( this.props.attributes.images, ( img, i ) => index !== i );
-			const { gridSize } = this.props.attributes;
+			const images = filter( this.props.attributes.images, ( _img, i ) => index !== i );
 			this.setState( { selectedImage: null } );
 			this.props.setAttributes( {
 				images,
@@ -115,11 +113,9 @@ class GalleryMasonryEdit extends Component {
 			className,
 			editorSidebarOpened,
 			isSelected,
-			noticeOperations,
 			noticeUI,
 			pluginSidebarOpened,
 			publishSidebarOpened,
-			setAttributes,
 			captionColor,
 		} = this.props;
 
@@ -127,12 +123,10 @@ class GalleryMasonryEdit extends Component {
 			align,
 			backgroundImg,
 			captions,
-			customBackgroundColor,
 			gridSize,
 			gutter,
 			gutterMobile,
 			images,
-			linkTo,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -150,8 +144,8 @@ class GalleryMasonryEdit extends Component {
 			...GalleryClasses( attributes ),
 			...BackgroundClasses( attributes ),
 			sidebarIsOpened, {
-				[ `align${ align }` ] : align,
-				[ `has-gutter` ] : gutter > 0,
+				[ `align${ align }` ]: align,
+				'has-gutter': gutter > 0,
 			}
 		);
 
@@ -162,8 +156,8 @@ class GalleryMasonryEdit extends Component {
 
 		const masonryClasses = classnames(
 			`has-grid-${ gridSize }`, {
-				[ `has-gutter-${ gutter }` ] : gutter > 0,
-				[ `has-gutter-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-gutter-${ gutter }` ]: gutter > 0,
+				[ `has-gutter-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
 
@@ -191,7 +185,7 @@ class GalleryMasonryEdit extends Component {
 				{ isSelected &&
 					<Inspector
 						{ ...this.props }
-				/>
+					/>
 				}
 				{ noticeUI }
 				<div className={ className }>
@@ -212,7 +206,7 @@ class GalleryMasonryEdit extends Component {
 						>
 							{ images.map( ( img, index ) => {
 								// translators: %1$d is the order number of the image, %2$d is the total number of images
-								const ariaLabel = __( sprintf( 'image %1$d of %2$d in gallery', ( index + 1 ), images.length ) );
+								const ariaLabel = sprintf( __( 'image %1$d of %2$d in gallery' ), ( index + 1 ), images.length );
 
 								return (
 									<li className="coblocks-gallery--item" key={ img.id || img.url }>
@@ -250,6 +244,6 @@ export default compose( [
 		publishSidebarOpened: select( 'core/edit-post' ).isPublishSidebarOpened(),
 		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
 	} ) ),
-	withColors( { backgroundColor : 'background-color', captionColor : 'color' } ),
+	withColors( { backgroundColor: 'background-color', captionColor: 'color' } ),
 	withNotices,
 ] )( GalleryMasonryEdit );

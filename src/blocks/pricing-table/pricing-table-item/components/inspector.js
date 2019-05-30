@@ -2,19 +2,17 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import icons from './../../../../utils/icons';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
-const { PanelBody, withFallbackStyles, Toolbar, RangeControl, SelectControl } = wp.components;
+const { withFallbackStyles } = wp.components;
 
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-
 	const { backgroundColor, textColor } = ownProps.attributes;
 
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
@@ -32,27 +30,15 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
-			attributes,
 			fallbackBackgroundColor,
 			fallbackTextColor,
-			setAttributes,
 			setBackgroundColor,
 			setTextColor,
 			backgroundColor,
 			textColor,
-			isSelected,
 		} = this.props;
-
-		const {
-		} = attributes;
 
 		return (
 			<Fragment>
@@ -86,7 +72,7 @@ class Inspector extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

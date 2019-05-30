@@ -10,8 +10,7 @@ const { PanelBody, TextControl, ToggleControl } = wp.components;
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.updateURL = this.updateURL.bind( this );
 		this.updateFile = this.updateFile.bind( this );
@@ -30,7 +29,6 @@ class Inspector extends Component {
 	}
 
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -39,7 +37,7 @@ class Inspector extends Component {
 		const {
 			url,
 			file,
-			meta
+			meta,
 		} = attributes;
 
 		return (
@@ -59,7 +57,7 @@ class Inspector extends Component {
 						<ToggleControl
 							label={ __( 'Gist Meta' ) }
 							checked={ !! meta }
-							onChange={ () => setAttributes( {  meta: ! meta } ) }
+							onChange={ () => setAttributes( { meta: ! meta } ) }
 							help={ this.getGistMetaHelp }
 						/>
 					</PanelBody>
@@ -67,6 +65,6 @@ class Inspector extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Inspector;

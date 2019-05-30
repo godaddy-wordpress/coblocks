@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import omit from 'lodash/omit';
 
 /**
  * Internal dependencies
@@ -97,7 +96,6 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes, className } ) {
-
 		const {
 			color,
 			customColor,
@@ -108,9 +106,9 @@ const settings = {
 
 		const classes = classnames(
 			className, {
-			'has-text-color': color || customColor,
-			[ colorClass ]: colorClass,
-		} );
+				'has-text-color': color || customColor,
+				[ colorClass ]: colorClass,
+			} );
 
 		const styles = {
 			color: colorClass ? undefined : customColor,

@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import map from 'lodash/map';
 
 /**
  * Internal dependencies
@@ -18,7 +17,7 @@ import icons from './components/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock, getBlockType } = wp.blocks;
+const { createBlock } = wp.blocks;
 const { InnerBlocks, getColorClassName } = wp.editor;
 
 /**
@@ -76,7 +75,7 @@ const settings = {
 				transform: function( content ) {
 					return createBlock( `coblocks/${ name }`, {
 						content,
-						columns: 1
+						columns: 1,
 					} );
 				},
 			},
@@ -99,7 +98,7 @@ const settings = {
 					} );
 				},
 			} ) ),
-		]
+		],
 	},
 
 	edit: Edit,
@@ -109,53 +108,45 @@ const settings = {
 
 		// If no layout is seleted, return the following.
 		if ( ! layout ) {
-			return { 'data-id': id, 'data-columns': columns, };
+			return { 'data-id': id, 'data-columns': columns };
 		}
 
 		return { 'data-id': id, 'data-columns': columns };
 	},
 
 	save( { attributes, className } ) {
-
 		const {
 			coblocks,
-			backgroundColor,
-			backgroundImg,
 			columns,
 			contentAlign,
-			customBackgroundColor,
 			customTextColor,
 			textColor,
 			gutter,
 			marginSize,
 			paddingSize,
-			focalPoint,
-			hasParallax,
-			backgroundType,
 		} = attributes;
 
 		// Body color class and styles.
 		const textClass = getColorClassName( 'color', textColor );
-		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames(
 			className, {
-				[ `coblocks-features-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+				[ `coblocks-features-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
 			}
 		);
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-features__inner',
 			...BackgroundClasses( attributes ), {
-			'has-text-color': textColor || customTextColor,
-			[ textClass ]: textClass,
-			'has-padding': paddingSize && paddingSize != 'no',
-			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
-			'has-margin': marginSize && marginSize != 'no',
-			[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
-			[ `has-${ gutter }-gutter` ] : gutter,
-			[ `has-${ contentAlign }-content` ]: contentAlign,
-		} );
+				'has-text-color': textColor || customTextColor,
+				[ textClass ]: textClass,
+				'has-padding': paddingSize && paddingSize !== 'no',
+				[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
+				'has-margin': marginSize && marginSize !== 'no',
+				[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
+				[ `has-${ gutter }-gutter` ]: gutter,
+				[ `has-${ contentAlign }-content` ]: contentAlign,
+			} );
 
 		const innerStyles = {
 			...BackgroundStyles( attributes ),

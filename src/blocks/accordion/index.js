@@ -1,8 +1,3 @@
-/**
- * External dependencies
- */
-import classnames from 'classnames';
-import map from 'lodash/map';
 
 /**
  * Internal dependencies
@@ -81,13 +76,12 @@ const settings = {
 					} );
 				},
 			} ) ),
-		]
+		],
 	},
 
 	edit: Edit,
 
 	save() {
-
 		return (
 			<div>
 				<InnerBlocks.Content />

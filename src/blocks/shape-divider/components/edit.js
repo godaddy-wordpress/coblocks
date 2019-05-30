@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import includes from 'lodash/includes';
 
 /**
  * Internal dependencies
@@ -10,14 +9,12 @@ import includes from 'lodash/includes';
 import Controls from './controls';
 import Inspector from './inspector';
 import applyWithColors from './colors';
-import dividers from './dividers';
 import { getDividerFromStyle } from '.././';
 import InlineColorPicker from '../../../components/inline-color-picker/';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { ResizableBox } = wp.components;
@@ -26,7 +23,6 @@ const { ResizableBox } = wp.components;
  * Block edit function
  */
 class Edit extends Component {
-
 	constructor() {
 		super( ...arguments );
 
@@ -37,39 +33,40 @@ class Edit extends Component {
 			resizing: false,
 			resizingAlt: false,
 			innerWidth: this.getBrowserWidth(),
-		}
+		};
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 		this.getBrowserWidth();
-		window.addEventListener( 'resize', this.getBrowserWidth.bind(this) );
-	}
-	componentWillMount(){
-		this.getBrowserWidth();
-	}
-	componentWillUnmount(){
-		window.removeEventListener( 'resize', this.getBrowserWidth.bind(this) );
+		window.addEventListener( 'resize', this.getBrowserWidth.bind( this ) );
 	}
 
-	getBrowserWidth(){
-		this.setState({ innerWidth : window.innerWidth });
+	componentWillMount() {
+		this.getBrowserWidth();
+	}
+	componentWillUnmount() {
+		window.removeEventListener( 'resize', this.getBrowserWidth.bind( this ) );
+	}
+
+	getBrowserWidth() {
+		this.setState( { innerWidth: window.innerWidth } );
 		return window.innerWidth;
 	}
 
-	saveMeta( type ){
-		let meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		let block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
+	saveMeta( type ) {
+		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
+		const block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
 		let dimensions = {};
 
 		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
-			let id = this.props.name.split('/').join('-') + '-' + this.props.attributes.coblocks.id;
-			let height = {
+			const id = this.props.name.split( '/' ).join( '-' ) + '-' + this.props.attributes.coblocks.id;
+			const height = {
 				height: block.attributes[ type ],
 				heightTablet: block.attributes[ type + 'Tablet' ],
 				heightMobile: block.attributes[ type + 'Mobile' ],
 			};
 
-			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height  == '' ) ){
+			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height === '' ) ) {
 				dimensions = {};
 			} else {
 				dimensions = JSON.parse( meta._coblocks_responsive_height );
@@ -79,7 +76,7 @@ class Edit extends Component {
 				dimensions[ id ] = {};
 				dimensions[ id ][ type ] = {};
 			} else {
-				if ( typeof dimensions[ id ][ type ] === 'undefined' ){
+				if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
 					dimensions[ id ][ type ] = {};
 				}
 			}
@@ -87,17 +84,15 @@ class Edit extends Component {
 			dimensions[ id ][ type ] = height;
 
 			// Save values to metadata.
-			wp.data.dispatch( 'core/editor' ).editPost({
+			wp.data.dispatch( 'core/editor' ).editPost( {
 				meta: {
 					_coblocks_responsive_height: JSON.stringify( dimensions ),
-				}
-			});
-
+				},
+			} );
 		}
 	}
 
 	render() {
-
 		const {
 			clientId,
 			attributes,
@@ -123,62 +118,60 @@ class Edit extends Component {
 		} = attributes;
 
 		let shapeHeightResizer = {
-			target : 'shapeHeight',
-			value  : shapeHeight
+			target: 'shapeHeight',
+			value: shapeHeight,
 		};
 
 		let backgroundHeightResizer = {
-			target : 'shapeHeight',
-			value  : backgroundHeight
+			target: 'shapeHeight',
+			value: backgroundHeight,
 		};
 
-		if( this.state.innerWidth <= 768 && this.state.innerWidth > 514 ){
+		if ( this.state.innerWidth <= 768 && this.state.innerWidth > 514 ) {
 			shapeHeightResizer = {
-				target : 'shapeHeightTablet',
-				value  : ( shapeHeightTablet ) ? shapeHeightTablet : shapeHeight,
+				target: 'shapeHeightTablet',
+				value: ( shapeHeightTablet ) ? shapeHeightTablet : shapeHeight,
 			};
 
 			backgroundHeightResizer = {
-				target : 'backgroundHeightTablet',
-				value  : ( backgroundHeightTablet ) ? backgroundHeightTablet : backgroundHeight,
+				target: 'backgroundHeightTablet',
+				value: ( backgroundHeightTablet ) ? backgroundHeightTablet : backgroundHeight,
 			};
-
-		}else if( this.state.innerWidth <= 514 ){
+		} else if ( this.state.innerWidth <= 514 ) {
 			shapeHeightResizer = {
-				target : 'shapeHeightMobile',
-				value  : ( shapeHeightMobile ) ? shapeHeightMobile : shapeHeight,
+				target: 'shapeHeightMobile',
+				value: ( shapeHeightMobile ) ? shapeHeightMobile : shapeHeight,
 			};
 
 			backgroundHeightResizer = {
-				target : 'backgroundHeightMobile',
-				value  : ( backgroundHeightMobile ) ? backgroundHeightMobile : backgroundHeight,
+				target: 'backgroundHeightMobile',
+				value: ( backgroundHeightMobile ) ? backgroundHeightMobile : backgroundHeight,
 			};
-
 		}
 
 		//modify blocks when added
-		if( justAdded ){
+		if ( justAdded ) {
 			const prevBlockClientId = wp.data.select( 'core/editor' ).getPreviousBlockClientId( clientId );
 			const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
 
-			if( prevBlockClientId ){
-				wp.data.dispatch( 'core/editor' ).updateBlockAttributes( prevBlockClientId, {  noBottomMargin: true, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0 } );
+			if ( prevBlockClientId ) {
+				wp.data.dispatch( 'core/editor' ).updateBlockAttributes( prevBlockClientId, { noBottomMargin: true, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0 } );
 			}
 
-			if( nextBlockClientId ){
-				wp.data.dispatch( 'core/editor' ).updateBlockAttributes( nextBlockClientId, {  noTopMargin: true, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } );
+			if ( nextBlockClientId ) {
+				wp.data.dispatch( 'core/editor' ).updateBlockAttributes( nextBlockClientId, { noTopMargin: true, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } );
 			}
-			setAttributes({ justAdded: false });
+			setAttributes( { justAdded: false } );
 		}
 
 		const classes = classnames(
 			className, {
-			[ `coblocks-shape-divider-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
-			'is-vertically-flipped' : verticalFlip,
-			'is-horizontally-flipped' : horizontalFlip,
-		} );
+				[ `coblocks-shape-divider-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
+				'is-vertically-flipped': verticalFlip,
+				'is-horizontally-flipped': horizontalFlip,
+			} );
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Inspector
@@ -198,7 +191,7 @@ class Edit extends Component {
 						className={ classnames(
 							'wp-block-coblocks-shape-divider__svg-wrapper', {
 								'is-selected': isSelected,
-								'is-resizing' : this.state.resizing,
+								'is-resizing': this.state.resizing,
 							}
 						) }
 						size={ {
@@ -215,25 +208,25 @@ class Edit extends Component {
 							bottomLeft: false,
 							topLeft: false,
 						} }
-						onResizeStop={ ( event, direction, elt, delta ) => {
-							switch( shapeHeightResizer.target ){
+						onResizeStop={ ( _event, _direction, _elt, delta ) => {
+							switch ( shapeHeightResizer.target ) {
 								case 'shapeHeightTablet':
 									setAttributes( {
-										shapeHeightTablet : parseInt( shapeHeightResizer.value + delta.height, 10 ),
+										shapeHeightTablet: parseInt( shapeHeightResizer.value + delta.height, 10 ),
 									} );
-								break;
+									break;
 
 								case 'shapeHeightMobile':
 									setAttributes( {
-										shapeHeightMobile : parseInt( shapeHeightResizer.value + delta.height, 10 ),
+										shapeHeightMobile: parseInt( shapeHeightResizer.value + delta.height, 10 ),
 									} );
-								break;
+									break;
 
 								default:
 									setAttributes( {
-										shapeHeight : parseInt( shapeHeightResizer.value + delta.height, 10 ),
+										shapeHeight: parseInt( shapeHeightResizer.value + delta.height, 10 ),
 									} );
-								break;
+									break;
 							}
 
 							toggleSelection( true );
@@ -253,7 +246,7 @@ class Edit extends Component {
 						className={ classnames(
 							'wp-block-coblocks-shape-divider__alt-wrapper', {
 								'is-selected': isSelected,
-								'is-resizing' : this.state.resizingAlt,
+								'is-resizing': this.state.resizingAlt,
 							}
 						) }
 						size={ {
@@ -271,28 +264,26 @@ class Edit extends Component {
 							bottomLeft: false,
 							topLeft: false,
 						} }
-						onResizeStop={ ( event, direction, elt, delta ) => {
-
-							switch( backgroundHeightResizer.target ){
+						onResizeStop={ ( _event, _direction, _elt, delta ) => {
+							switch ( backgroundHeightResizer.target ) {
 								case 'backgroundHeightTablet':
 									setAttributes( {
-										backgroundHeightTablet : parseInt( backgroundHeightResizer.value + delta.height, 10 ),
+										backgroundHeightTablet: parseInt( backgroundHeightResizer.value + delta.height, 10 ),
 									} );
-								break;
+									break;
 
 								case 'backgroundHeightMobile':
 									setAttributes( {
-										backgroundHeightMobile : parseInt( backgroundHeightResizer.value + delta.height, 10 ),
+										backgroundHeightMobile: parseInt( backgroundHeightResizer.value + delta.height, 10 ),
 									} );
-								break;
+									break;
 
 								default:
 									setAttributes( {
-										backgroundHeight : parseInt( backgroundHeightResizer.value + delta.height, 10 ),
+										backgroundHeight: parseInt( backgroundHeightResizer.value + delta.height, 10 ),
 									} );
-								break;
+									break;
 							}
-
 
 							toggleSelection( true );
 							this.setState( { resizingAlt: false } );
@@ -303,18 +294,18 @@ class Edit extends Component {
 							this.setState( { resizingAlt: true } );
 						} }
 					>
-					{ isSelected && (
-						<InlineColorPicker
-							value={ color.color }
-							onChange={ ( color ) => setAttributes( { color: null, customColor: color } ) }
-						/>
-					) }
+						{ isSelected && (
+							<InlineColorPicker
+								value={ color.color }
+								onChange={ ( color ) => setAttributes( { color: null, customColor: color } ) }
+							/>
+						) }
 					</ResizableBox>
 				</div>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

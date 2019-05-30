@@ -13,13 +13,7 @@ const { BlockControls } = wp.editor;
 const { Toolbar } = wp.components;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -39,7 +33,7 @@ class Controls extends Component {
 			title: __( 'Media on left' ),
 			isActive: mediaPosition === 'left',
 			onClick: () => setAttributes( { mediaPosition: 'left' } ),
-		}, ];
+		} ];
 
 		return (
 			<Fragment>

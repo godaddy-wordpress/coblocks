@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import icons from './../../../utils/icons';
 import { BackgroundPanel } from '../../../components/background';
 import DimensionsControl from '../../../components/dimensions-control/';
 
@@ -19,13 +18,7 @@ const { PanelBody, ToggleControl, TextareaControl, RangeControl, ExternalLink } 
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			backgroundColor,
@@ -63,7 +56,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Media Card Settings' ) } className='block-coblocks__inspector-block-settings-panel-body'>
+					<PanelBody title={ __( 'Media Card Settings' ) } className="block-coblocks__inspector-block-settings-panel-body">
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding' ) }
@@ -86,12 +79,12 @@ class Inspector extends Component {
 							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
 						/>
-						{ ( 'full' == align || 'wide' == align ) && (
+						{ ( 'full' === align || 'wide' === align ) && (
 							<RangeControl
 								label={ __( 'Max Width' ) }
 								className="components-block-coblocks-media-card-maxwidth-range"
 								value={ parseFloat( maxWidth ) }
-								onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: nextMaxWidth } ) }
+								onChange={ ( nextMaxWidth ) => setAttributes( { maxWidth: nextMaxWidth } ) }
 								min={ 400 }
 								max={ 2000 }
 								step={ 1 }
@@ -115,14 +108,14 @@ class Inspector extends Component {
 						<ToggleControl
 							label={ __( 'Card Shadow' ) }
 							checked={ !! hasCardShadow }
-							onChange={ () => setAttributes( {  hasCardShadow: ! hasCardShadow } ) }
+							onChange={ () => setAttributes( { hasCardShadow: ! hasCardShadow } ) }
 							help={ !! hasCardShadow ? __( 'Showing card shadow.' ) : __( 'Toggle to add a card shadow.' ) }
 						/>
 						{ mediaType && (
 							<ToggleControl
-								label={ sprintf( __( ' %s Shadow' ), mediaType.charAt(0).toUpperCase() + mediaType.slice(1) ) }
+								label={ sprintf( __( ' %s Shadow' ), mediaType.charAt( 0 ).toUpperCase() + mediaType.slice( 1 ) ) }
 								checked={ !! hasImgShadow }
-								onChange={ () => setAttributes( {  hasImgShadow: ! hasImgShadow } ) }
+								onChange={ () => setAttributes( { hasImgShadow: ! hasImgShadow } ) }
 								help={ !! hasImgShadow ? sprintf( __( 'Showing %s shadow.' ), mediaType ) : sprintf( __( 'Toggle to add an %s shadow' ), mediaType ) }
 							/>
 						) }
@@ -135,10 +128,10 @@ class Inspector extends Component {
 								value: backgroundColor.color,
 								onChange: ( nextBg ) => {
 									setBackgroundColor( nextBg );
-									if( !paddingSize || paddingSize == 'no' ){
+									if ( ! paddingSize || paddingSize === 'no' ) {
 										setAttributes( { paddingSize: 'medium' } );
 									}
-									if( !nextBg ){
+									if ( ! nextBg ) {
 										setAttributes( { paddingSize: 'no' } );
 									}
 								},
@@ -148,8 +141,8 @@ class Inspector extends Component {
 					>
 					</PanelColorSettings>
 					<BackgroundPanel { ...this.props }
-		 				hasOverlay={ true }
-		 			/>
+						hasOverlay={ true }
+					/>
 				</InspectorControls>
 			</Fragment>
 		);

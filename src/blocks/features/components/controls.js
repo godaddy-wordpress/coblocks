@@ -1,25 +1,16 @@
 /**
  * Internal dependencies
  */
-import icons from './../../../utils/icons';
 import { BackgroundControls } from '../../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { AlignmentToolbar, BlockControls } = wp.editor;
-const { Toolbar } = wp.components;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -27,7 +18,6 @@ class Controls extends Component {
 
 		const {
 			contentAlign,
-			columns,
 		} = attributes;
 
 		return (
@@ -42,6 +32,6 @@ class Controls extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Controls;

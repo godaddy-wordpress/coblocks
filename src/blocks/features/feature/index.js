@@ -15,8 +15,7 @@ import icons from './components/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock, getBlockType } = wp.blocks;
-const { RichText, InnerBlocks, getColorClassName } = wp.editor;
+const { InnerBlocks, getColorClassName } = wp.editor;
 
 /**
  * Block constants
@@ -58,39 +57,31 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes, className } ) {
-
 		const {
 			coblocks,
-			backgroundColor,
-			backgroundImg,
 			contentAlign,
-			customBackgroundColor,
 			customTextColor,
 			textColor,
 			paddingSize,
-			focalPoint,
-			hasParallax,
-			backgroundType,
 		} = attributes;
 
 		// Body color class and styles.
 		const textClass = getColorClassName( 'color', textColor );
-		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames(
 			className, {
-			[ `has-${ contentAlign }-content` ]: contentAlign,
-			[ `coblocks-feature-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
-		} );
+				[ `has-${ contentAlign }-content` ]: contentAlign,
+				[ `coblocks-feature-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
+			} );
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-feature__inner',
 			...BackgroundClasses( attributes ), {
-			'has-text-color': textColor || customTextColor,
-			[ textClass ]: textClass,
-			'has-padding': paddingSize && paddingSize != 'no',
-			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
-		} );
+				'has-text-color': textColor || customTextColor,
+				[ textClass ]: textClass,
+				'has-padding': paddingSize && paddingSize !== 'no',
+				[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
+			} );
 
 		const innerStyles = {
 			...BackgroundStyles( attributes ),

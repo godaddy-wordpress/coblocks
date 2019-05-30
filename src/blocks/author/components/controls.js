@@ -7,17 +7,10 @@ const { AlignmentToolbar, BlockControls, MediaUpload, MediaUploadCheck } = wp.ed
 const { Toolbar, IconButton } = wp.components;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
-			isSelected,
 		} = this.props;
 
 		const {
@@ -64,6 +57,6 @@ class Controls extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Controls;

@@ -1,3 +1,5 @@
+/*global coblocksBlockData*/
+
 /**
  * External dependencies
  */
@@ -306,9 +308,11 @@ class FormEdit extends Component {
 			coblocks_google_recaptcha_site_key: this.state.recaptchaSiteKey,
 			coblocks_google_recaptcha_secret_key: this.state.recaptchaSecretKey,
 		} );
-		model.save().then( response => {
+		model.save().then( () => {
 			this.setState( { isSavedKey: true, keySaved: true } );
-			setTimeout( () => { this.setState( { isSaving: false } ) }, 1000 );
+			setTimeout( () => {
+				this.setState( { isSaving: false } );
+			}, 1000 );
 			settings.fetch();
 		} );
 	}
@@ -324,7 +328,7 @@ class FormEdit extends Component {
 				coblocks_google_recaptcha_site_key: '',
 				coblocks_google_recaptcha_secret_key: '',
 			} );
-			model.save().then( response => {
+			model.save().then( () => {
 				this.setState( { isSavedKey: false, isSaving: false, keySaved: false } );
 				settings.fetch();
 			} );
@@ -366,16 +370,11 @@ class FormEdit extends Component {
 	}
 
 	render() {
-
-		const {
-			attributes,
-			className,
-			setAttributes,
-		} = this.props;
+		const { className } = this.props;
 
 		const classes = classnames(
- 			className,
- 			'coblocks-form',
+			className,
+			'coblocks-form',
 		);
 
 		return (
@@ -386,7 +385,7 @@ class FormEdit extends Component {
 						{ applyFilters( 'coblocks.advanced_forms_cta' ) }
 					</PanelBody>
 					<PanelBody title={ __( 'Google reCAPTCHA' ) } initialOpen={ this.state.recaptchaSecretKey ? false : true }>
-						<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.') }</p>
+						<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.' ) }</p>
 						<p>
 							<Fragment>
 								<ExternalLink href={ RETRIEVE_KEY_URL }>{ this.state.recaptchaSiteKey === '' && this.state.recaptchaSecretKey === '' ? __( 'Generate keys' ) : __( 'My keys' ) }</ExternalLink>|&nbsp;
@@ -396,13 +395,13 @@ class FormEdit extends Component {
 						<TextControl
 							label={ __( 'Site Key' ) }
 							value={ this.state.recaptchaSiteKey }
-							onChange={ value => this.setState({ recaptchaSiteKey: value }) }
+							onChange={ value => this.setState( { recaptchaSiteKey: value } ) }
 							className="components-block-coblocks-form-recaptcha-key__custom-input"
 						/>
 						<TextControl
 							label={ __( 'Secret Key' ) }
 							value={ this.state.recaptchaSecretKey }
-							onChange={ value => this.setState({ recaptchaSecretKey: value }) }
+							onChange={ value => this.setState( { recaptchaSecretKey: value } ) }
 							className="components-block-coblocks-form-recaptcha-key__custom-input"
 						/>
 						<div className="components-base-control components-block-coblocks-form-recaptcha-buttons">
@@ -414,17 +413,17 @@ class FormEdit extends Component {
 								{ this.state.isSaving ? __( 'Saving' ) : __( 'Save' ) }
 							</Button>
 							{ this.state.recaptchaSiteKey !== '' && this.state.recaptchaSecretKey !== '' &&
-								<Fragment>
-									&nbsp;
-									<Button
-										className="components-block-coblocks-form-recaptcha-key-remove__button"
-										isDefault
-										onClick={ this.removeRecaptchaKey }
-										disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
-									>
-										{ __('Remove') }
-									</Button>
-								</Fragment>
+							<Fragment>
+								&nbsp;
+								<Button
+									className="components-block-coblocks-form-recaptcha-key-remove__button"
+									isDefault
+									onClick={ this.removeRecaptchaKey }
+									disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
+								>
+									{ __( 'Remove' ) }
+								</Button>
+							</Fragment>
 							}
 						</div>
 					</PanelBody>
@@ -441,8 +440,7 @@ class FormEdit extends Component {
 				</div>
 			</Fragment>
 		);
-
 	}
-};
+}
 
 export default FormEdit;

@@ -12,7 +12,6 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { ResizableBox } = wp.components;
@@ -21,20 +20,13 @@ const { ResizableBox } = wp.components;
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			className,
 			isSelected,
 			setAttributes,
 			toggleSelection,
-			setColor,
 			color,
 		} = this.props;
 
@@ -42,7 +34,7 @@ class Edit extends Component {
 			height,
 		} = attributes;
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Inspector
@@ -74,7 +66,7 @@ class Edit extends Component {
 						bottomLeft: false,
 						topLeft: false,
 					} }
-					onResizeStop={ ( event, direction, elt, delta ) => {
+					onResizeStop={ ( _event, _direction, _elt, delta ) => {
 						setAttributes( {
 							height: parseInt( height + delta.height, 10 ),
 						} );
@@ -86,9 +78,9 @@ class Edit extends Component {
 				>
 				</ResizableBox>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

@@ -123,7 +123,6 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes } ) {
-
 		const {
 			backgroundColor,
 			content,

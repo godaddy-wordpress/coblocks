@@ -8,7 +8,6 @@ import classnames from 'classnames';
  */
 import applyWithColors from './colors';
 import Inspector from './inspector';
-import icons from './../../../../utils/icons';
 
 /**
  * WordPress dependencies
@@ -34,21 +33,12 @@ const TEMPLATE = [ [ 'core/button', { text: __( 'Buy Now' ) } ] ];
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			className,
 			isSelected,
 			setAttributes,
-			setState,
-			setBackgroundColor,
-			setTextColor,
 			backgroundColor,
 			textColor,
 		} = this.props;
@@ -62,7 +52,7 @@ class Edit extends Component {
 
 		const formattingControls = [ 'bold', 'italic', 'strikethrough' ];
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Inspector
@@ -129,9 +119,9 @@ class Edit extends Component {
 					/>
 				</div>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

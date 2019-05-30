@@ -131,7 +131,7 @@ const settings = {
 						return createBlock( 'core/paragraph' );
 					}
 					// transforming an alert element with content
-					return ( value || [] ).map( item => createBlock( 'core/paragraph', {
+					return ( value || [] ).map( () => createBlock( 'core/paragraph', {
 						content: value,
 					} ) );
 				},
@@ -141,8 +141,7 @@ const settings = {
 
 	edit: Edit,
 
-	save( { attributes, className } ) {
-
+	save( { attributes } ) {
 		const {
 			backgroundColor,
 			customBackgroundColor,
@@ -206,7 +205,6 @@ const settings = {
 			},
 
 			save( { attributes, className } ) {
-
 				const {
 					align,
 					backgroundColor,
@@ -231,10 +229,10 @@ const settings = {
 					className,
 					`is-${ type }-alert`,
 					`align${ align }`, {
-					'has-background': backgroundColor || customBackgroundColor,
-					[ backgroundClass ]: backgroundClass,
-					[ borderClass ]: borderClass,
-				} );
+						'has-background': backgroundColor || customBackgroundColor,
+						[ backgroundClass ]: backgroundClass,
+						[ borderClass ]: borderClass,
+					} );
 
 				const backgroundStyles = {
 					backgroundColor: backgroundClass ? undefined : customBackgroundColor,
@@ -248,9 +246,9 @@ const settings = {
 				const titleClasses = classnames(
 					className,
 					'wp-block-coblocks-alert__title', {
-					'has-text-color': titleColor || customTitleColor,
-					[ titleClass ]: titleClass,
-				} );
+						'has-text-color': titleColor || customTitleColor,
+						[ titleClass ]: titleClass,
+					} );
 
 				const titleStyles = {
 					color: titleClass ? undefined : customTitleColor,
@@ -261,9 +259,9 @@ const settings = {
 
 				const textClasses = classnames(
 					'wp-block-coblocks-alert__text', {
-					'has-text-color': textColor || customTextColor,
-					[ textClass ]: textClass,
-				} );
+						'has-text-color': textColor || customTextColor,
+						[ textClass ]: textClass,
+					} );
 
 				const textStyles = {
 					color: textClass ? undefined : customTextColor,
@@ -293,7 +291,7 @@ const settings = {
 					</div>
 				);
 			},
-		}
+		},
 	],
 };
 

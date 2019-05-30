@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import omit from 'lodash/omit';
 import includes from 'lodash/includes';
 
 /**
@@ -24,9 +23,11 @@ const { getColorClassName } = wp.editor;
 
 /**
  * Return the appropriate SVG for the block style.
+ *
+ * @param {Array} className The class names.
+ * @returns {String} The divider.
  */
 export function getDividerFromStyle( className ) {
-
 	const angled = includes( className, 'is-style-angled' );
 	const hills = includes( className, 'is-style-hills' );
 	const pointed = includes( className, 'is-style-pointed' );
@@ -34,7 +35,6 @@ export function getDividerFromStyle( className ) {
 	const sloped = includes( className, 'is-style-sloped' );
 	const triangle = includes( className, 'is-style-triangle' );
 	const waves = includes( className, 'is-style-waves' );
-	const wavy = includes( className, 'is-style-wavy' );
 
 	let divider = dividers.wavy;
 
@@ -351,7 +351,6 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes, className } ) {
-
 		const {
 			backgroundColor,
 			backgroundHeight,
@@ -369,12 +368,12 @@ const settings = {
 
 		const classes = classnames(
 			className, {
-			[ `coblocks-shape-divider-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
-			'is-vertically-flipped' : verticalFlip,
-			'is-horizontally-flipped' : horizontalFlip,
-			[ shapeClass ]: shapeClass,
-			[ backgroundClass ]: backgroundClass,
-		} );
+				[ `coblocks-shape-divider-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
+				'is-vertically-flipped': verticalFlip,
+				'is-horizontally-flipped': horizontalFlip,
+				[ shapeClass ]: shapeClass,
+				[ backgroundClass ]: backgroundClass,
+			} );
 
 		const styles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
@@ -396,11 +395,9 @@ const settings = {
 				...blockAttributes,
 			},
 			save( { attributes, className } ) {
-
 				const {
 					backgroundColor,
 					backgroundHeight,
-					coblocks,
 					color,
 					customBackgroundColor,
 					customColor,
@@ -414,11 +411,11 @@ const settings = {
 
 				const classes = classnames(
 					className, {
-					'is-vertically-flipped' : verticalFlip,
-					'is-horizontally-flipped' : horizontalFlip,
-					[ shapeClass ]: shapeClass,
-					[ backgroundClass ]: backgroundClass,
-				} );
+						'is-vertically-flipped': verticalFlip,
+						'is-horizontally-flipped': horizontalFlip,
+						[ shapeClass ]: shapeClass,
+						[ backgroundClass ]: backgroundClass,
+					} );
 
 				const styles = {
 					backgroundColor: backgroundClass ? undefined : customBackgroundColor,
@@ -434,7 +431,7 @@ const settings = {
 					</div>
 				);
 			},
-		}
+		},
 	],
 };
 

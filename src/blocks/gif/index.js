@@ -87,7 +87,6 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes } ) {
-
 		const {
 			url,
 			alt,

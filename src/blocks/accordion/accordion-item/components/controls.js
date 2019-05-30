@@ -12,13 +12,7 @@ const { BlockControls } = wp.editor;
 const { Toolbar } = wp.components;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -32,9 +26,9 @@ class Controls extends Component {
 			{
 				icon: icons.open,
 				title: __( 'Display open' ),
-				onClick: () => setAttributes( {  open: ! open } ),
+				onClick: () => setAttributes( { open: ! open } ),
 				isActive: open === true,
-			}
+			},
 		];
 
 		return (

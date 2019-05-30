@@ -6,18 +6,11 @@ import { BackgroundControls } from '../../../../components/background';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { AlignmentToolbar, BlockControls } = wp.editor;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,

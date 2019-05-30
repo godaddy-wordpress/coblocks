@@ -1,3 +1,5 @@
+/*global $*/
+
 /**
  * External dependencies
  */
@@ -9,7 +11,7 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { Placeholder, Spinner, Button, ResizableBox } = wp.components;
+const { Placeholder, Spinner, ResizableBox } = wp.components;
 const { withViewportMatch } = wp.viewport;
 const { withSelect } = wp.data;
 const { RichText } = wp.editor;
@@ -42,7 +44,6 @@ const applyWithSelect = withSelect( ( select ) => {
  * Block edit function
  */
 class Edit extends Component {
-
 	constructor() {
 		super( ...arguments );
 		this.onFocusCaption = this.onFocusCaption.bind( this );
@@ -78,13 +79,11 @@ class Edit extends Component {
 	}
 
 	render() {
-
 		const {
 			attributes,
 			className,
 			isSelected,
 			setAttributes,
-			settings,
 			isLargeViewport,
 			isRTL,
 			toggleSelection,
@@ -95,23 +94,20 @@ class Edit extends Component {
 			align,
 			alt,
 			height,
-			id,
 			url,
 			width,
 			caption,
 		} = attributes;
 
-		const figureStyle = width ? { width } : {};
 		const isResizable = [ 'wide', 'full' ].indexOf( align ) === -1 && isLargeViewport;
 		const classes = classnames( className, 'wp-block-image', {
 			'is-resized': !! width,
 			'is-focused': isSelected,
 		} );
 
-		var results = [];
+		let results = [];
 
-		var fetchGifs = _.debounce( function fetchGifs( search ) {
-
+		const fetchGifs = _.debounce( function fetchGifs( search ) {
 			if ( attributes.fetching ) {
 				return;
 			}
@@ -128,7 +124,7 @@ class Edit extends Component {
 		}, 1000 );
 
 		if ( url ) {
-			return [
+			return (
 				<Fragment>
 					{ isSelected && (
 						<Controls
@@ -160,7 +156,7 @@ class Edit extends Component {
 								// Disable reason: Image itself is not meant to be
 								// interactive, but should direct focus to block
 								// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-								const img = <img src={ url } alt={ defaultedAlt } onClick={ this.onImageClick }/>;
+								const img = <img src={ url } alt={ defaultedAlt } onClick={ this.onImageClick } />;
 
 								if ( ! isResizable || ! imageWidthWithinContainer ) {
 									return img;
@@ -232,7 +228,7 @@ class Edit extends Component {
 											onResizeStart={ () => {
 												toggleSelection( false );
 											} }
-											onResizeStop={ ( event, direction, elt, delta ) => {
+											onResizeStop={ ( _event, _direction, _elt, delta ) => {
 												setAttributes( {
 													width: parseInt( currentWidth + delta.width, 10 ),
 													height: parseInt( currentHeight + delta.height, 10 ),
@@ -259,61 +255,56 @@ class Edit extends Component {
 						) }
 					</figure>
 				</Fragment>
-			];
-
-		} else {
-			// If there are results, create thumbnails to select from.
-			if ( attributes.matches && attributes.matches.length ) {
-
-				results = _.map( attributes.matches, function mapSearchResults( gif ) {
-
-					var gifImage = wp.element.createElement( 'img', {
-						key: gif.id + '-img',
-						src: gif.images.fixed_height_small.url,
-					} );
-
-					return wp.element.createElement( 'li', {
-						key: gif.id,
-						onClick: function onClickFetchedGif() {
-							setAttributes( { url: gif.images.original.url } );
-						}
-					}, gifImage );
-
-				} );
-			}
-
-			// If there is a giphy request happening, lets show a spinner.
-			if ( ! results.length && attributes.fetching ) {
-				results = <Spinner/>;
-			}
-
-			return [
-				<Fragment>
-					<Placeholder
-						key="placeholder"
-						icon={ icons.gif }
-						label={ __( 'Gif' ) }
-						instructions={ __( 'Search for that perfect gif on Giphy' ) }
-						className={ className }>
-							{ icons.giphy }
-							<input
-								key="search-field"
-								type="text"
-								placeholder={ __( 'Search for gifs' ) }
-								onChange={ ( event ) => fetchGifs( event.target.value ) }
-							/>
-							<ul
-								key="results"
-								className={ `${ className }__results` }
-							>
-								{ results }
-							</ul>
-					</Placeholder>
-				</Fragment>
-			]
+			);
 		}
+		// If there are results, create thumbnails to select from.
+		if ( attributes.matches && attributes.matches.length ) {
+			results = _.map( attributes.matches, function mapSearchResults( gif ) {
+				const gifImage = wp.element.createElement( 'img', {
+					key: gif.id + '-img',
+					src: gif.images.fixed_height_small.url,
+				} );
+
+				return wp.element.createElement( 'li', {
+					key: gif.id,
+					onClick: function onClickFetchedGif() {
+						setAttributes( { url: gif.images.original.url } );
+					},
+				}, gifImage );
+			} );
+		}
+
+		// If there is a giphy request happening, lets show a spinner.
+		if ( ! results.length && attributes.fetching ) {
+			results = <Spinner />;
+		}
+
+		return (
+			<Fragment>
+				<Placeholder
+					key="placeholder"
+					icon={ icons.gif }
+					label={ __( 'Gif' ) }
+					instructions={ __( 'Search for that perfect gif on Giphy' ) }
+					className={ className }>
+					{ icons.giphy }
+					<input
+						key="search-field"
+						type="text"
+						placeholder={ __( 'Search for gifs' ) }
+						onChange={ ( event ) => fetchGifs( event.target.value ) }
+					/>
+					<ul
+						key="results"
+						className={ `${ className }__results` }
+					>
+						{ results }
+					</ul>
+				</Placeholder>
+			</Fragment>
+		);
 	}
-};
+}
 
 export default compose( [
 	applyWithSelect,

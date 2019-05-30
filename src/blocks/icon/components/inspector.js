@@ -20,7 +20,7 @@ const { __, _x, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
-const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, NavigableMenu, Dropdown, ButtonGroup, Dashicon, Tooltip, ToggleControl } = wp.components;
+const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, NavigableMenu, Dropdown, Dashicon, Tooltip, ToggleControl } = wp.components;
 
 /**
  * Module constants
@@ -45,11 +45,10 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
-		this.state = { filteredIcons : svg , searchValue: '', isSearching: false };
+		this.state = { filteredIcons: svg, searchValue: '', isSearching: false };
 
 		this.onChangeSize = this.onChangeSize.bind( this );
 		this.generateMaxPadding = this.generateMaxPadding.bind( this );
@@ -58,8 +57,8 @@ class Inspector extends Component {
 
 	onChangeSize( value, size ) {
 		this.props.setAttributes( { iconSize: value } );
-		if( size ){
-			if( size < 0 ){
+		if ( size ) {
+			if ( size < 0 ) {
 				size = '';
 			}
 			this.props.setAttributes( { height: size, width: size } );
@@ -71,9 +70,8 @@ class Inspector extends Component {
 	generateMaxPadding( width ) {
 		if ( width <= 60 ) {
 			return 10;
-		} else {
-			return Math.round( width / 4 );
 		}
+		return Math.round( width / 4 );
 	}
 
 	onSetNewTab( value ) {
@@ -94,7 +92,6 @@ class Inspector extends Component {
 	}
 
 	render() {
-
 		const {
 			clientId,
 			attributes,
@@ -116,7 +113,6 @@ class Inspector extends Component {
 			padding,
 			iconSize,
 			width,
-			height,
 			href,
 			linkTarget,
 			rel,
@@ -124,32 +120,31 @@ class Inspector extends Component {
 
 		let iconStyle = 'outlined';
 
-		if ( className.includes( 'is-style-filled' ) ){
+		if ( className.includes( 'is-style-filled' ) ) {
 			iconStyle = 'filled';
 		}
 
 		const filterList = ( event ) => {
-			var filtered = {};
+			const filtered = {};
 
-			this.setState({ searchValue: event, isSearching: true });
+			this.setState( { searchValue: event, isSearching: true } );
 
-			if( event == '' ){
-				this.setState({ isSearching: false });
+			if ( event === '' ) {
+				this.setState( { isSearching: false } );
 			}
 
-			var updatedList = Object.entries( svg[iconStyle] ).filter(function(item){
-				var text = item[0] + ' ' + item[1].keywords;
-				console.log( text );
+			const updatedList = Object.entries( svg[ iconStyle ] ).filter( function( item ) {
+				const text = item[ 0 ] + ' ' + item[ 1 ].keywords;
 				return text.toLowerCase().search(
-					event.toLowerCase()) !== -1;
-			});
+					event.toLowerCase() ) !== -1;
+			} );
 
-			filtered[ 'outlined' ] = {};
-			filtered[ 'filled' ] = {};
-			updatedList.forEach(([key, value]) => {
-				filtered[ 'outlined' ][ key ] = svg[ 'outlined' ][key];
-				filtered[ 'filled' ][ key ] = svg[ 'filled' ][key];
-			});
+			filtered.outlined = {};
+			filtered.filled = {};
+			updatedList.forEach( ( [ key, value ] ) => {
+				filtered.outlined[ key ] = svg.outlined[ key ];
+				filtered.filled[ key ] = svg.filled[ key ];
+			} );
 
 			this.setState( { filteredIcons: filtered } );
 		};
@@ -169,7 +164,7 @@ class Inspector extends Component {
 				name: __( 'Large' ),
 				size: 120,
 				slug: 'large',
-			},{
+			}, {
 				name: __( 'Huge' ),
 				size: 200,
 				slug: 'huge',
@@ -184,12 +179,12 @@ class Inspector extends Component {
 					<PanelBody title={ __( 'Icon Settings' ) }>
 						{ iconSize === 'advanced' ?
 							<Fragment>
-								<div className='components-base-control components-coblocks-icon-block--advanced-size'>
+								<div className="components-base-control components-coblocks-icon-block--advanced-size">
 									<Button
 										className="components-color-palette__clear"
 										type="button"
 										onClick={ () => {
-											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';
+											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[ 0 ].style.height = 'auto';
 											this.onChangeSize( 'medium', DEFAULT_ICON_SIZE );
 										} }
 										isSmall
@@ -202,10 +197,10 @@ class Inspector extends Component {
 										label={ __( 'Size' ) }
 										value={ width }
 										onChange={ ( nextWidth ) => {
-											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[0].style.height = 'auto';
-											setAttributes( {  width: nextWidth, height: nextWidth } )
+											document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[ 0 ].style.height = 'auto';
+											setAttributes( { width: nextWidth, height: nextWidth } );
 										} }
-										min={ padding ? MIN_ICON_SIZE + 28 : MIN_ICON_SIZE  }
+										min={ padding ? MIN_ICON_SIZE + 28 : MIN_ICON_SIZE }
 										max={ MAX_ICON_SIZE }
 										step={ 1 }
 									/>
@@ -259,37 +254,38 @@ class Inspector extends Component {
 								</div>
 							</BaseControl>
 						}
-						{ ( backgroundColor.color ) ?
-							[ <RangeControl
-								label={ __( 'Radius' ) }
-								value={ borderRadius }
-								onChange={ ( nextBorderRadius ) => setAttributes( {  borderRadius: nextBorderRadius } ) }
-								min={ 0 }
-								max={ 200 }
-								step={ 1 }
-							/>,
-							<RangeControl
-								label={ __( 'Padding' ) }
-								value={ padding }
-								onChange={ ( nextPadding ) => setAttributes( {  padding: nextPadding } ) }
-								min={ 5 }
-								max={ this.generateMaxPadding( width ) }
-								step={ 1 }
-							/> ]
-						: null }
+						{ backgroundColor.color &&
+							<Fragment>
+								<RangeControl
+									label={ __( 'Radius' ) }
+									value={ borderRadius }
+									onChange={ ( nextBorderRadius ) => setAttributes( { borderRadius: nextBorderRadius } ) }
+									min={ 0 }
+									max={ 200 }
+									step={ 1 }
+								/>
+								<RangeControl
+									label={ __( 'Padding' ) }
+									value={ padding }
+									onChange={ ( nextPadding ) => setAttributes( { padding: nextPadding } ) }
+									min={ 5 }
+									max={ this.generateMaxPadding( width ) }
+									step={ 1 }
+								/>
+							</Fragment>
+						}
 						<TextControl
-							type='text'
+							type="text"
 							autocomplete="off"
 							label={ __( 'Icon Search' ) }
 							value={ this.state.searchValue }
 							className="coblocks-icon-types-list__search"
-							onChange={ (evt) => {
-									filterList( evt );
-								}
-							}
+							onChange={ ( evt ) => {
+								filterList( evt );
+							} }
 						/>
 						<div className="coblocks-icon-types-list-wrapper">
-							<ul role="list" className="editor-block-types-list coblocks-icon-types-list">
+							<ul className="editor-block-types-list coblocks-icon-types-list">
 								{ ! this.state.isSearching ?
 									<li className="editor-block-types-list__list-item selected-svg">
 										<Button
@@ -303,32 +299,35 @@ class Inspector extends Component {
 												{ svg[ iconStyle ][ icon ].icon }
 											</span>
 										</Button>
-									</li>
-									: null
+									</li> :
+									null
 								}
-								{ Object.keys( this.state.filteredIcons[ iconStyle ] ).length > 0 ? Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
-									return[
-										<li className={ classnames(
-											'editor-block-types-list__list-item',{
-												[ 'is-selected' ] : icon && ( icon == keyName )
-											},
-										) }>
-											<Tooltip text={ ( svg[ iconStyle ][ keyName ].label ) ? svg[ iconStyle ][ keyName ].label : keyName }>
-												<Button
-													isLarge
-													className="editor-block-list-item-button"
-													onClick={ () => {
-														setAttributes( { icon: keyName } );
-													} }
-												>
-													<span className="editor-block-types-list__item-icon">
-														{ svg[ iconStyle ][ keyName ].icon }
-													</span>
-												</Button>
-											</Tooltip>
-										</li>
-									];
-								}) : <li className="no-results"> { __( 'No results found.' ) } </li> }
+								{ Object.keys( this.state.filteredIcons[ iconStyle ] ).length > 0 ?
+									Object.keys( this.state.filteredIcons[ iconStyle ] ).map( ( keyName, i ) => {
+										return (
+											<li key={ `editor-pblock-types-list-item-${ i }` } className={ classnames(
+												'editor-block-types-list__list-item', {
+													'is-selected': icon && ( icon === keyName ),
+												},
+											) }>
+												<Tooltip text={ ( svg[ iconStyle ][ keyName ].label ) ? svg[ iconStyle ][ keyName ].label : keyName }>
+													<Button
+														isLarge
+														className="editor-block-list-item-button"
+														onClick={ () => {
+															setAttributes( { icon: keyName } );
+														} }
+													>
+														<span className="editor-block-types-list__item-icon">
+															{ svg[ iconStyle ][ keyName ].icon }
+														</span>
+													</Button>
+												</Tooltip>
+											</li>
+										);
+									} ) :
+									<li className="no-results"> { __( 'No results found.' ) } </li>
+								}
 							</ul>
 						</div>
 					</PanelBody>
@@ -339,7 +338,7 @@ class Inspector extends Component {
 							label={ __( 'Link URL' ) }
 							value={ href || '' }
 							onChange={ value => setAttributes( { href: value } ) }
-							placeholder='https://'/>
+							placeholder="https://" />
 						<TextControl
 							label={ __( 'Link Rel' ) }
 							value={ rel || '' }
@@ -362,16 +361,15 @@ class Inspector extends Component {
 							},
 							{
 								value: backgroundColor.color,
-								onChange: ( newBackground)   => {
-
+								onChange: ( newBackground ) => {
 									// Auto assign padding.
-									if( padding == 0 ){
-										setAttributes( {  padding: 10 } );
+									if ( padding === 0 ) {
+										setAttributes( { padding: 10 } );
 									}
 
 									// Reset padding when colors are cleared.
-									if( ! newBackground ){
-										setAttributes( {  padding: 0, borderRadius: 0 } );
+									if ( ! newBackground ) {
+										setAttributes( { padding: 0, borderRadius: 0 } );
 									}
 
 									setBackgroundColor( newBackground );
@@ -381,20 +379,20 @@ class Inspector extends Component {
 
 						] }
 					>
-					<ContrastChecker
-						{ ...{
-							iconColor: iconColor.color,
-							backgroundColor: backgroundColor.color,
-							fallbackIconColor,
-							fallbackBackgroundColor,
-						} }
-					/>
+						<ContrastChecker
+							{ ...{
+								iconColor: iconColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackIconColor,
+								fallbackBackgroundColor,
+							} }
+						/>
 					</PanelColorSettings>
 				</InspectorControls>
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

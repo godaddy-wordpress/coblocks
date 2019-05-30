@@ -22,23 +22,13 @@ const { RichText } = wp.editor;
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			backgroundColor,
 			className,
 			isSelected,
-			mergeBlocks,
-			onReplace,
 			setAttributes,
-			setBackgroundColor,
-			setTextColor,
 			textColor,
 		} = this.props;
 
@@ -50,7 +40,7 @@ class Edit extends Component {
 			value,
 		} = attributes;
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Controls
@@ -83,7 +73,7 @@ class Edit extends Component {
 						<RichText
 							placeholder={ __( 'Write title...' ) }
 							value={ title }
-							className='wp-block-coblocks-alert__title'
+							className="wp-block-coblocks-alert__title"
 							onChange={ ( value ) => setAttributes( { title: value } ) }
 							keepPlaceholderOnFocus
 						/>
@@ -91,15 +81,15 @@ class Edit extends Component {
 					<RichText
 						placeholder={ __( 'Write text...' ) }
 						value={ value }
-						className='wp-block-coblocks-alert__text'
+						className="wp-block-coblocks-alert__text"
 						onChange={ ( value ) => setAttributes( { value: value } ) }
 						keepPlaceholderOnFocus
 					/>
 				</div>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

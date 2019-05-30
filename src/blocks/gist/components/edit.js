@@ -24,7 +24,6 @@ const { withState } = wp.compose;
  * Block edit function
  */
 class Edit extends Component {
-
 	constructor() {
 		super( ...arguments );
 		this.updateURL = this.updateURL.bind( this );
@@ -32,43 +31,39 @@ class Edit extends Component {
 
 	componentDidMount() {
 		if ( this.props.attributes.url ) {
-			this.props.setState( { preview: true } )
+			this.props.setState( { preview: true } );
 		}
 	}
 
 	updateURL( newURL ) {
-
 		this.props.setAttributes( { url: newURL } );
 
 		if ( ! this.props.attributes.url ) {
-			this.props.setState( { preview: true } )
+			this.props.setState( { preview: true } );
 		}
 
 		// Check for #file in the entered URL. If it's there, let's use it properly.
-		let file = (newURL).split('#file-').pop();
+		let file = ( newURL ).split( '#file-' ).pop();
 
-		if( file ){
+		if ( file ) {
 			file = '#file-' + file;
 		}
 
-		if ( newURL.match(/#file-*/) != null ) {
-			const newURLWithNoFile = newURL.replace( file , '' ).replace( '#file-' , '' );
+		if ( newURL.match( /#file-*/ ) !== null ) {
+			const newURLWithNoFile = newURL.replace( file, '' ).replace( '#file-', '' );
 
 			this.props.setAttributes( { url: newURLWithNoFile } );
-			this.props.setAttributes( { file: file.replace( /-([^-]*)$/, '.'+'$1' ) } );
+			this.props.setAttributes( { file: file.replace( /-([^-]*)$/, '.' + '$1' ) } );
 		}
 	}
 
 	render() {
-
 		const {
 			attributes,
 			className,
 			isSelected,
 			preview,
 			setAttributes,
-			setState,
-			toggleSelection,
 		} = this.props;
 
 		const {
@@ -78,7 +73,7 @@ class Edit extends Component {
 			caption,
 		} = attributes;
 
-		return [
+		return (
 			<Fragment>
 				{ url && url.length > 0 && isSelected && (
 					<Controls
@@ -95,7 +90,7 @@ class Edit extends Component {
 						<div
 							className={ classnames(
 								className,
-								meta ? null : `no-meta`,
+								meta ? null : 'no-meta',
 							) }
 						>
 							<Gist
@@ -134,9 +129,9 @@ class Edit extends Component {
 					</div>
 				) }
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default compose( [
 	withState( { preview: false } ),

@@ -2,13 +2,11 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import memoize from 'memize';
-import times from 'lodash/times';
 
 /**
  * Internal dependencies
  */
-import { title } from '../'
+import { title } from '../';
 import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
@@ -37,23 +35,22 @@ const { isBlobURL } = wp.blob;
  * @constant
  * @type {string[]}
 */
-const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row' , 'coblocks/column', 'coblocks/buttons' ];
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row', 'coblocks/column', 'coblocks/buttons' ];
 const TEMPLATE = [
-	[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Hero Block', 'content placeholder' ) , level: 2 } ],
+	[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Hero Block', 'content placeholder' ), level: 2 } ],
 	[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'An introductory area of a page accompanied by a small amount of text and a call to action.', 'content placeholder' ) } ],
 	[ 'coblocks/buttons', { contentAlign: 'left', items: 2, gutter: 'medium' },
 		[
 			[ 'core/button', { text: _x( 'Primary', 'content placeholder' ) } ],
 			[ 'core/button', { text: _x( 'Secondary', 'content placeholder' ), className: 'is-style-outline' } ],
-		]
+		],
 	],
 ];
 /**
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.saveMeta = this.saveMeta.bind( this );
@@ -63,46 +60,46 @@ class Edit extends Component {
 			resizingInner: false,
 			resizing: false,
 			innerWidth: this.getBrowserWidth(),
-		}
+		};
 	}
 
 	componentDidMount() {
-		let currentBlock = document.getElementById( 'block-' + this.props.clientId );
-		if( currentBlock ){
-			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
-			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = this.props.attributes.maxWidth + 'px';
+		const currentBlock = document.getElementById( 'block-' + this.props.clientId );
+		if ( currentBlock ) {
+			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[ 0 ].style.width = 'auto';
+			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[ 0 ].style.maxWidth = this.props.attributes.maxWidth + 'px';
 		}
 
 		this.getBrowserWidth();
-		window.addEventListener( 'resize', this.getBrowserWidth.bind(this) );
+		window.addEventListener( 'resize', this.getBrowserWidth.bind( this ) );
 	}
 
-	componentWillMount(){
+	componentWillMount() {
 		this.getBrowserWidth();
 	}
-	componentWillUnmount(){
-		window.removeEventListener( 'resize', this.getBrowserWidth.bind(this) );
+	componentWillUnmount() {
+		window.removeEventListener( 'resize', this.getBrowserWidth.bind( this ) );
 	}
 
-	getBrowserWidth(){
-		this.setState({ innerWidth : window.innerWidth });
+	getBrowserWidth() {
+		this.setState( { innerWidth: window.innerWidth } );
 		return window.innerWidth;
 	}
 
-	saveMeta( type ){
-		let meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		let block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
+	saveMeta( type ) {
+		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
+		const block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
 		let dimensions = {};
 
 		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
-			let id = this.props.name.split('/').join('-') + '-' + this.props.attributes.coblocks.id;
-			let height = {
+			const id = this.props.name.split( '/' ).join( '-' ) + '-' + this.props.attributes.coblocks.id;
+			const height = {
 				height: block.attributes[ type ],
 				heightTablet: block.attributes[ type + 'Tablet' ],
 				heightMobile: block.attributes[ type + 'Mobile' ],
 			};
 
-			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height  == '' ) ){
+			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height === '' ) ) {
 				dimensions = {};
 			} else {
 				dimensions = JSON.parse( meta._coblocks_responsive_height );
@@ -112,7 +109,7 @@ class Edit extends Component {
 				dimensions[ id ] = {};
 				dimensions[ id ][ type ] = {};
 			} else {
-				if ( typeof dimensions[ id ][ type ] === 'undefined' ){
+				if ( typeof dimensions[ id ][ type ] === 'undefined' ) {
 					dimensions[ id ][ type ] = {};
 				}
 			}
@@ -120,46 +117,37 @@ class Edit extends Component {
 			dimensions[ id ][ type ] = height;
 
 			// Save values to metadata.
-			wp.data.dispatch( 'core/editor' ).editPost({
+			wp.data.dispatch( 'core/editor' ).editPost( {
 				meta: {
 					_coblocks_responsive_height: JSON.stringify( dimensions ),
-				}
-			});
-
+				},
+			} );
 		}
 	}
 
 	render() {
-
 		const {
 			clientId,
 			attributes,
-			className,
 			isSelected,
 			setAttributes,
-			backgroundColor,
 			textColor,
 			toggleSelection,
 		} = this.props;
 
 		const {
-			id,
 			coblocks,
 			layout,
 			fullscreen,
 			maxWidth,
 			backgroundImg,
-			backgroundType,
 			paddingSize,
 			paddingTop,
 			paddingRight,
 			paddingBottom,
 			paddingLeft,
 			paddingUnit,
-			mediaPosition,
 			contentAlign,
-			focalPoint,
-			hasParallax,
 			height,
 			heightTablet,
 			heightMobile,
@@ -174,20 +162,20 @@ class Edit extends Component {
 
 		const classes = classnames(
 			'wp-block-coblocks-hero', {
-				[ `coblocks-hero-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+				[ `coblocks-hero-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
 			}
 		);
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-hero__inner',
 			...BackgroundClasses( attributes ), {
-				[ `hero-${ layout }-align` ] : layout,
+				[ `hero-${ layout }-align` ]: layout,
 				'has-text-color': textColor.color,
-				'has-padding': paddingSize && paddingSize != 'no',
-				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
+				'has-padding': paddingSize && paddingSize !== 'no',
+				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
 				[ `has-${ contentAlign }-content` ]: contentAlign,
 				'is-fullscreen': fullscreen,
-				'is-hero-resizing' : this.state.resizingInner,
+				'is-hero-resizing': this.state.resizingInner,
 			}
 		);
 
@@ -213,25 +201,23 @@ class Edit extends Component {
 		};
 
 		let heightResizer = {
-			target : 'height',
-			value  : height
+			target: 'height',
+			value: height,
 		};
 
-		if( this.state.innerWidth <= 768 && this.state.innerWidth > 514 ){
+		if ( this.state.innerWidth <= 768 && this.state.innerWidth > 514 ) {
 			heightResizer = {
-				target : 'heightTablet',
-				value  : ( heightTablet ) ? heightTablet : height,
+				target: 'heightTablet',
+				value: ( heightTablet ) ? heightTablet : height,
 			};
-
-		}else if( this.state.innerWidth <= 514 ){
+		} else if ( this.state.innerWidth <= 514 ) {
 			heightResizer = {
-				target : 'heightMobile',
-				value  : ( heightMobile ) ? heightMobile : height,
+				target: 'heightMobile',
+				value: ( heightMobile ) ? heightMobile : height,
 			};
-
 		}
 
-		return [
+		return (
 			<Fragment>
 				{ dropZone }
 				{ isSelected && (
@@ -247,143 +233,143 @@ class Edit extends Component {
 				<div
 					className={ classes }
 				>
-				{ fullscreen ?
-					<div className={ innerClasses } style={ innerStyles } >
-						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						{ BackgroundVideo( attributes ) }
-						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
-							<ResizableBox
-								className={ classnames(
-									'wp-block-coblocks-hero__box',
-									'editor-media-container__resizer', {
-										'is-resizing' : this.state.resizing,
-									}
-								) }
-								size={ { width: maxWidth } }
-								minWidth="400"
-								maxWidth="1000"
-								enable={ enablePositions }
-								onResizeStart={ () => {
-									this.setState( { resizing: true } );
-									toggleSelection( false );
-									let currentBlock = document.getElementById( 'block-' + clientId );
-									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = '';
-									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = maxWidth + 'px';
-								} }
-								onResizeStop={ ( event, direction, elt, delta ) => {
-									setAttributes( {
-										maxWidth: parseInt( maxWidth + delta.width, 10 ),
-									} );
-									toggleSelection( true );
-									this.setState( { resizing: false } );
-									let currentBlock = document.getElementById( 'block-' + clientId );
-									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
-									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
-								} }
-							>
-								<InnerBlocks
-									template={ TEMPLATE }
-									allowedBlocks={ ALLOWED_BLOCKS }
-									templateLock={ false }
-									templateInsertUpdatesSelection={ false }
-								/>
-							</ResizableBox>
-						) }
-					</div> :
-					<ResizableBox
-						className={ innerClasses }
-						style={ innerStyles }
-						size={ {
-							height: heightResizer.value,
-						} }
-						minHeight="500"
-						enable={ {
-							top: false,
-							right: false,
-							bottom: true,
-							left: false,
-							topRight: false,
-							bottomRight: false,
-							bottomLeft: false,
-							topLeft: false,
-						} }
-						onResizeStop={ ( event, direction, elt, delta ) => {
-							switch( heightResizer.target ){
-								case 'heightTablet':
-									setAttributes( {
-										heightTablet : parseInt( heightResizer.value + delta.height, 10 ),
-									} );
-								break;
+					{ fullscreen ?
+						<div className={ innerClasses } style={ innerStyles } >
+							{ isBlobURL( backgroundImg ) && <Spinner /> }
+							{ BackgroundVideo( attributes ) }
+							{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
+								<ResizableBox
+									className={ classnames(
+										'wp-block-coblocks-hero__box',
+										'editor-media-container__resizer', {
+											'is-resizing': this.state.resizing,
+										}
+									) }
+									size={ { width: maxWidth } }
+									minWidth="400"
+									maxWidth="1000"
+									enable={ enablePositions }
+									onResizeStart={ () => {
+										this.setState( { resizing: true } );
+										toggleSelection( false );
+										const currentBlock = document.getElementById( 'block-' + clientId );
+										currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[ 0 ].style.maxWidth = '';
+										currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[ 0 ].style.width = maxWidth + 'px';
+									} }
+									onResizeStop={ ( _event, _direction, _elt, delta ) => {
+										setAttributes( {
+											maxWidth: parseInt( maxWidth + delta.width, 10 ),
+										} );
+										toggleSelection( true );
+										this.setState( { resizing: false } );
+										const currentBlock = document.getElementById( 'block-' + clientId );
+										currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[ 0 ].style.width = 'auto';
+										currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[ 0 ].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
+									} }
+								>
+									<InnerBlocks
+										template={ TEMPLATE }
+										allowedBlocks={ ALLOWED_BLOCKS }
+										templateLock={ false }
+										templateInsertUpdatesSelection={ false }
+									/>
+								</ResizableBox>
+							) }
+						</div> :
+						<ResizableBox
+							className={ innerClasses }
+							style={ innerStyles }
+							size={ {
+								height: heightResizer.value,
+							} }
+							minHeight="500"
+							enable={ {
+								top: false,
+								right: false,
+								bottom: true,
+								left: false,
+								topRight: false,
+								bottomRight: false,
+								bottomLeft: false,
+								topLeft: false,
+							} }
+							onResizeStop={ ( _event, _direction, _elt, delta ) => {
+								switch ( heightResizer.target ) {
+									case 'heightTablet':
+										setAttributes( {
+											heightTablet: parseInt( heightResizer.value + delta.height, 10 ),
+										} );
+										break;
 
-								case 'heightMobile':
-									setAttributes( {
-										heightMobile : parseInt( heightResizer.value + delta.height, 10 ),
-									} );
-								break;
+									case 'heightMobile':
+										setAttributes( {
+											heightMobile: parseInt( heightResizer.value + delta.height, 10 ),
+										} );
+										break;
 
-								default:
-									setAttributes( {
-										height : parseInt( heightResizer.value + delta.height, 10 ),
-									} );
-								break;
-							}
+									default:
+										setAttributes( {
+											height: parseInt( heightResizer.value + delta.height, 10 ),
+										} );
+										break;
+								}
 
-							toggleSelection( true );
-							this.setState( { resizing: false, resizingInner: false } );
+								toggleSelection( true );
+								this.setState( { resizing: false, resizingInner: false } );
 
-							//update meta
-							this.saveMeta( 'height' );
-						} }
-						onResizeStart={ () => {
-							toggleSelection( false );
-							this.setState( { resizing: true, resizingInner: true } );
-						} }
-					>
-						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						{ BackgroundVideo( attributes ) }
-						{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
-							<ResizableBox
-								className={ classnames(
-									'wp-block-coblocks-hero__box',
-									'editor-media-container__resizer', {
-										'is-resizing' : this.state.resizing,
-									}
-								) }
-								size={ { width: maxWidth } }
-								minWidth="400"
-								maxWidth="1000"
-								enable={ enablePositions }
-								onResizeStart={ () => {
-									this.setState( { resizing: true } );
-									toggleSelection( false );
-									let currentBlock = document.getElementById( 'block-' + clientId );
-									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = '';
-									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = maxWidth + 'px';
-								} }
-								onResizeStop={ ( event, direction, elt, delta ) => {
-									setAttributes( {
-										maxWidth: parseInt( maxWidth + delta.width, 10 ),
-									} );
-									toggleSelection( true );
-									this.setState( { resizing: false } );
-									let currentBlock = document.getElementById( 'block-' + clientId );
-									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.width = 'auto';
-									currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[0].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
-								} }
-							>
-								<InnerBlocks
-									template={ TEMPLATE }
-									allowedBlocks={ ALLOWED_BLOCKS }
-									templateLock={ false }
-									templateInsertUpdatesSelection={ false }
-								/>
-							</ResizableBox>
-						) }
-					</ResizableBox>
-				}
+								//update meta
+								this.saveMeta( 'height' );
+							} }
+							onResizeStart={ () => {
+								toggleSelection( false );
+								this.setState( { resizing: true, resizingInner: true } );
+							} }
+						>
+							{ isBlobURL( backgroundImg ) && <Spinner /> }
+							{ BackgroundVideo( attributes ) }
+							{ ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
+								<ResizableBox
+									className={ classnames(
+										'wp-block-coblocks-hero__box',
+										'editor-media-container__resizer', {
+											'is-resizing': this.state.resizing,
+										}
+									) }
+									size={ { width: maxWidth } }
+									minWidth="400"
+									maxWidth="1000"
+									enable={ enablePositions }
+									onResizeStart={ () => {
+										this.setState( { resizing: true } );
+										toggleSelection( false );
+										const currentBlock = document.getElementById( 'block-' + clientId );
+										currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[ 0 ].style.maxWidth = '';
+										currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[ 0 ].style.width = maxWidth + 'px';
+									} }
+									onResizeStop={ ( _event, _direction, _elt, delta ) => {
+										setAttributes( {
+											maxWidth: parseInt( maxWidth + delta.width, 10 ),
+										} );
+										toggleSelection( true );
+										this.setState( { resizing: false } );
+										const currentBlock = document.getElementById( 'block-' + clientId );
+										currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[ 0 ].style.width = 'auto';
+										currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__box' )[ 0 ].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
+									} }
+								>
+									<InnerBlocks
+										template={ TEMPLATE }
+										allowedBlocks={ ALLOWED_BLOCKS }
+										templateLock={ false }
+										templateInsertUpdatesSelection={ false }
+									/>
+								</ResizableBox>
+							) }
+						</ResizableBox>
+					}
 				</div>
 			</Fragment>
-		];
+		);
 	}
 }
 

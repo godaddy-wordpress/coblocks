@@ -57,7 +57,6 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 } );
 
 class SubmitButton extends Component {
-
 	componentDidUpdate( prevProps ) {
 		if (
 			! isEqual( this.props.textButtonColor, prevProps.textButtonColor ) ||
@@ -69,7 +68,6 @@ class SubmitButton extends Component {
 	}
 
 	getButtonClasses() {
-
 		const { textButtonColor, backgroundButtonColor } = this.props;
 
 		const textClass = get( textButtonColor, 'class' );
@@ -85,7 +83,6 @@ class SubmitButton extends Component {
 	}
 
 	render() {
-
 		const {
 			attributes,
 			fallbackBackgroundColor,

@@ -18,7 +18,6 @@ import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVi
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
 const { RichText } = wp.editor;
 
 /**
@@ -65,7 +64,6 @@ const settings = {
 	edit,
 
 	save( { attributes, className } ) {
-
 		const {
 			captions,
 			gridSize,
@@ -73,13 +71,12 @@ const settings = {
 			gutterMobile,
 			images,
 			linkTo,
-			focalPoint,
 		} = attributes;
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
 			...BackgroundClasses( attributes ), {
-				[ `has-gutter` ] : gutter > 0,
+				'has-gutter': gutter > 0,
 			}
 		);
 
@@ -89,8 +86,8 @@ const settings = {
 
 		const masonryClasses = classnames(
 			`has-grid-${ gridSize }`, {
-				[ `has-gutter-${ gutter }` ] : gutter > 0,
-				[ `has-gutter-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-gutter-${ gutter }` ]: gutter > 0,
+				[ `has-gutter-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
 
@@ -108,7 +105,7 @@ const settings = {
 					<ul
 						className={ masonryClasses }
 						style={ masonryStyles }
-						>
+					>
 						{ images.map( ( image ) => {
 							let href;
 

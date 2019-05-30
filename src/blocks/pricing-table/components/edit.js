@@ -10,12 +10,10 @@ import memoize from 'memize';
  */
 import Controls from './controls';
 import Inspector from './inspector';
-import icons from './../../../utils/icons';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.editor;
 
@@ -44,19 +42,11 @@ const getCount = memoize( ( count ) => {
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			className,
 			isSelected,
-			setAttributes,
-			setState,
 		} = this.props;
 
 		const {
@@ -70,7 +60,7 @@ class Edit extends Component {
 			`has-${ contentAlign }-content`,
 		);
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Controls
@@ -94,8 +84,8 @@ class Edit extends Component {
 					</div>
 				</div>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default Edit;

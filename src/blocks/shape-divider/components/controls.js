@@ -12,13 +12,7 @@ const { BlockControls } = wp.editor;
 const { Toolbar } = wp.components;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -39,12 +33,12 @@ class Controls extends Component {
 			title: __( 'Flip vertically' ),
 			isActive: !! horizontalFlip,
 			onClick: () => setAttributes( { horizontalFlip: ! horizontalFlip } ),
-		}, ];
+		} ];
 
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar controls={ toolbarControls }/>
+					<Toolbar controls={ toolbarControls } />
 				</BlockControls>
 			</Fragment>
 		);

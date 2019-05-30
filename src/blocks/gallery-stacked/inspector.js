@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { title } from './'
+import { title } from './';
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import linkOptions from '../../components/block-gallery/options/link-options';
 import SizeControl from '../../components/size-control';
@@ -21,8 +21,7 @@ const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.setLinkTo = this.setLinkTo.bind( this );
@@ -57,7 +56,6 @@ class Inspector extends Component {
 	}
 
 	getColors() {
-
 		const {
 			attributes,
 			backgroundColor,
@@ -77,11 +75,10 @@ class Inspector extends Component {
 			{
 				value: backgroundColor.color,
 				onChange: ( nextBackgroundColor ) => {
-
 					setBackgroundColor( nextBackgroundColor );
 
 					// Add default padding, if they are not yet present.
-					if ( ! backgroundPadding && ! backgroundPaddingMobile  ) {
+					if ( ! backgroundPadding && ! backgroundPaddingMobile ) {
 						this.props.setAttributes( {
 							backgroundPadding: 30,
 							backgroundPaddingMobile: 30,
@@ -110,24 +107,20 @@ class Inspector extends Component {
 
 		if ( captions ) {
 			return background.concat( caption );
-		} else {
-			return background;
 		}
+		return background;
 	}
 
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
-			isSelected,
 			setFontSize,
 			fontSize,
 			wideControlsEnabled = false,
 		} = this.props;
 
 		const {
-			align,
 			images,
 			linkTo,
 			gutter,
@@ -136,24 +129,23 @@ class Inspector extends Component {
 			radius,
 			shadow,
 			captions,
-			backgroundPadding,
 		} = attributes;
 
 		return (
 			<InspectorControls>
 				<PanelBody title={ sprintf( __( '%s Settings' ), title ) }>
 					{ wideControlsEnabled &&
-						<ToggleControl
-							label={ images.length > 1 ? __( 'Fullwidth Images' ) : __( 'Fullwidth Image' ) }
-							checked={ !! fullwidth }
-							help={ this.getFullwidthImagesHelp }
-							onChange={ this.setFullwidthTo }
-						/>
+					<ToggleControl
+						label={ images.length > 1 ? __( 'Fullwidth Images' ) : __( 'Fullwidth Image' ) }
+						checked={ !! fullwidth }
+						help={ this.getFullwidthImagesHelp }
+						onChange={ this.setFullwidthTo }
+					/>
 					}
 					{ images.length > 1 &&
-						<ResponsiveTabsControl { ...this.props }
-							label={ __( 'Gutter' ) }
-						/>
+					<ResponsiveTabsControl { ...this.props }
+						label={ __( 'Gutter' ) }
+					/>
 					}
 					{ gutter > 0 && <RangeControl
 						label={ __( 'Rounded Corners' ) }
@@ -174,20 +166,20 @@ class Inspector extends Component {
 					<ToggleControl
 						label={ __( 'Captions' ) }
 						checked={ !! captions }
-						onChange={ () => setAttributes( {  captions: ! captions } ) }
+						onChange={ () => setAttributes( { captions: ! captions } ) }
 						help={ this.getCaptionsHelp }
 					/>
 					{ captions &&
-						<FontSizePicker
-							value={ fontSize.size }
-							onChange={ setFontSize }
-						/>
+					<FontSizePicker
+						value={ fontSize.size }
+						onChange={ setFontSize }
+					/>
 					}
 				</PanelBody>
 				{ ! lightbox && <PanelBody
 					title={ __( 'Link Settings' ) }
 					initialOpen={ false }
-					>
+				>
 					<SelectControl
 						label={ __( 'Link To' ) }
 						value={ linkTo }
@@ -196,19 +188,19 @@ class Inspector extends Component {
 					/>
 				</PanelBody> }
 				<BackgroundPanel { ...this.props }
- 					hasCaption={ true }
- 					hasOverlay={ true }
- 					hasGalleryControls={ true }
- 				/>
- 				<PanelColorSettings
+					hasCaption={ true }
+					hasOverlay={ true }
+					hasGalleryControls={ true }
+				/>
+				<PanelColorSettings
 					title={ __( 'Color Settings' ) }
 					initialOpen={ false }
 					colorSettings={ this.getColors() }
 				/>
 			</InspectorControls>
-		)
+		);
 	}
-};
+}
 
 export default compose( [
 	withSelect( ( select ) => ( {

@@ -1,7 +1,3 @@
-/**
- * External dependencies
- */
-import classnames from 'classnames';
 
 /**
  * Internal dependencies
@@ -14,7 +10,7 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { RichText, MediaUpload, mediaUpload, MediaUploadCheck, InnerBlocks } = wp.editor;
-const { Button, Dashicon, IconButton, DropZone } = wp.components;
+const { Button, Dashicon, DropZone } = wp.components;
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -26,14 +22,13 @@ const { Button, Dashicon, IconButton, DropZone } = wp.components;
  * @type {string[]}
 */
 const ALLOWED_BLOCKS = [ 'core/button' ];
-const TEMPLATE = [ [ 'core/button', { text: 'Follow' }, ] ];
+const TEMPLATE = [ [ 'core/button', { text: 'Follow' } ] ];
 
 /**
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.addImage = this.addImage.bind( this );
 		this.onSelectImage = this.onSelectImage.bind( this );
@@ -84,21 +79,17 @@ class Edit extends Component {
 	}
 
 	render() {
-
 		const {
 			attributes,
 			className,
 			isSelected,
 			mergeBlocks,
-			onReplace,
 			setAttributes,
-			setState,
 		} = this.props;
 
 		const {
 			biography,
 			heading,
-			imgId,
 			imgUrl,
 			name,
 			textAlign,
@@ -113,7 +104,7 @@ class Edit extends Component {
 
 		const onUploadImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Controls
@@ -130,9 +121,9 @@ class Edit extends Component {
 								value={ imgUrl }
 								render={ ( { open } ) => (
 									<Button onClick={ open }>
-										{ ! imgUrl ? <Dashicon icon="format-image" /> :
-											<img
-												className={ `${ className }__avatar-img` }
+										{ ! imgUrl ?
+											<Dashicon icon="format-image" /> :
+											<img className={ `${ className }__avatar-img` }
 												src={ imgUrl }
 												alt="avatar"
 											/>
@@ -186,8 +177,8 @@ class Edit extends Component {
 					</div>
 				</div>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default Edit;
