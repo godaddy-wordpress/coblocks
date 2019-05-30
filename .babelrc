@@ -1,14 +1,8 @@
 {
-	"presets": [
-		"@wordpress/babel-preset-default"
-	],
+	"presets": [ "@wordpress/babel-preset-default" ],
 	"plugins": [
-		[
-			"@wordpress/babel-plugin-makepot",
-			{
-				"output": "languages/coblocks-js.pot"
-			}
-		]
+		[ "@wordpress/babel-plugin-makepot", { "output": "languages/coblocks-js.pot" } ],
+		[ "transform-class-properties" ]
 	],
-	"test": [ "jest", "transform-class-properties" ]
+
 }
