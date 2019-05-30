@@ -1250,26 +1250,34 @@ msgstr ""
 msgid "Google Maps API Key"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:204
+#: src/blocks/map/components/inspector.js:205
 msgid ""
 "Add your Google Maps API key. Updating this API key will set all your maps "
 "to use the new key."
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:207
+#: src/blocks/map/components/inspector.js:208
 msgid "Retrieve your key"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:208
+#: src/blocks/map/components/inspector.js:209
 msgid "Need help?"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:214
+#: src/blocks/map/components/inspector.js:215
 msgid "Enter Google API Key…"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:223
+#: src/blocks/map/components/inspector.js:224
 msgid "Saved"
+msgstr ""
+
+#: src/blocks/map/components/inspector.js:224
+msgid "Save"
+msgstr ""
+
+#: src/blocks/map/components/inspector.js:232
+msgid "Remove"
 msgstr ""
 
 #: src/blocks/map/components/styles.js:12

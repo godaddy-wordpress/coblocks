@@ -200,6 +200,7 @@ class Inspector extends Component {
 					<PanelBody
 						title={ __( 'Google Maps API Key' ) }
 						initialOpen={ false }
+						className="components-coblocks-block-settings-sidebar"
 					>
 						<p>{ __( 'Add your Google Maps API key. Updating this API key will set all your maps to use the new key.' ) }</p>
 						{ apiKey === '' &&

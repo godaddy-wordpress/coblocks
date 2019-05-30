@@ -65,23 +65,9 @@
 			padding-left: 28px !important;
 			padding-right: 4px;
 		}
-
-		&:focus {
-			border-color: $blue-medium-500;
-			box-shadow: 0 0 0 1px $blue-medium-500;
-			color: $dark-gray-900;
-			outline-offset: -2px;
-			outline: 2px solid transparent;
-		}
 	}
 
 	.edit-post-header-toolbar__block-toolbar &__via-label {
 		padding-left: 2px;
-
-		@media (min-width: 1080px) {
-		}
-
-		svg {
-		}
 	}
 }

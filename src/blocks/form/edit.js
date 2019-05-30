@@ -385,7 +385,11 @@ class FormEdit extends Component {
 						{ this.renderToAndSubjectFields() }
 						{ applyFilters( 'coblocks.advanced_forms_cta' ) }
 					</PanelBody>
-					<PanelBody title={ __( 'Google reCAPTCHA' ) } initialOpen={ this.state.recaptchaSecretKey ? false : true }>
+					<PanelBody
+						title={ __( 'Google reCAPTCHA' ) }
+						initialOpen={ this.state.recaptchaSecretKey ? false : true }
+						className="components-coblocks-block-settings-sidebar"
+					>
 						<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.') }</p>
 						<p>
 							<Fragment>
