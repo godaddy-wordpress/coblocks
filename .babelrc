@@ -9,8 +9,5 @@
 				"output": "languages/coblocks-js.pot"
 			}
 		]
-	],
-	"test": [
-		"jest"
 	]
 }
