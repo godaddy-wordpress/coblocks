@@ -65,3 +65,13 @@
 .components-coblocks-icon-menu-dropdown {
 	padding: 3px;
 }
+
+.components-coblocks-block-settings-sidebar {
+	.components-external-link {
+		color: theme(outlines);
+
+		&:hover {
+			color: color(theme(outlines) shade(25%));
+		}
+	}
+}
