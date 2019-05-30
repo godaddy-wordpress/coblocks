@@ -17,7 +17,7 @@ const { Component } = wp.element;
  */
 const name = 'social';
 
-const title = __( 'Social' );
+const title = __( 'Share' );
 
 const icon = icons.social;
 
