@@ -106,7 +106,6 @@ class Edit extends Component {
 			toggleSelection,
 			setAttributes,
 			isSelected,
-			noticeOperations,
 			noticeUI,
 		} = this.props;
 
@@ -123,12 +122,11 @@ class Edit extends Component {
 			zoom,
 		} = attributes;
 
+		const hasAddress = ( typeof this.state.address !== 'undefined' && !! this.state.address.trim() );
+
 		const renderMap = () => {
-			noticeOperations.removeAllNotices();
-			if ( typeof this.state.address !== 'undefined' && !! this.state.address.trim() ) {
+			if ( hasAddress ) {
 				setAttributes( { address: this.state.address, pinned: true } );
-			} else {
-				noticeOperations.createErrorNotice( __( 'Please enter a location or address.' ) );
 			}
 		};
 
@@ -280,7 +278,8 @@ class Edit extends Component {
 						<Button
 							isLarge
 							type="button"
-							onClick={ renderMap }>
+							onClick={ renderMap }
+							disabled={ ! hasAddress }>
 							{ __( 'Apply' ) }
 						</Button>
 
