@@ -1,10 +1,9 @@
 /* global module, require */
 
 module.exports = function( grunt ) {
-
 	'use strict';
 
-	var pkg = grunt.file.readJSON( 'package.json' );
+	const pkg = grunt.file.readJSON( 'package.json' );
 
 	grunt.initConfig( {
 
@@ -16,18 +15,18 @@ module.exports = function( grunt ) {
 					packageJson: null,
 					packages: {
 						devDependencies: true,
-						dependencies: false
+						dependencies: false,
 					},
 					reportOnlyPkgs: [],
 					reportUpdated: false,
 					semver: true,
-					updateType: 'force'
-				}
-			}
+					updateType: 'force',
+				},
+			},
 		},
 
 		clean: {
-			build: [ 'build/' ]
+			build: [ 'build/' ],
 		},
 
 		copy: {
@@ -44,46 +43,53 @@ module.exports = function( grunt ) {
 							'includes/**',
 							'languages/*.{mo,pot}',
 							'!languages/coblocks-js.pot',
-							'!**/*.{ai,eps,psd}'
+							'!**/*.{ai,eps,psd}',
 						],
-						dest: 'build/<%= pkg.name %>'
-					}
-				]
-			}
+						dest: 'build/<%= pkg.name %>',
+					},
+				],
+			},
+		},
+
+		eslint: {
+			target: [
+				'src/**/*.js',
+				'!src/js/vendors/**/*.js',
+			],
 		},
 
 		compress: {
 			coblocks: {
 				options: {
-					archive: 'build/coblocks-v<%= pkg.version %>.zip'
+					archive: 'build/coblocks-v<%= pkg.version %>.zip',
 				},
 				files: [
 					{
 						cwd: 'build/<%= pkg.name %>/',
 						dest: '<%= pkg.name %>/',
-						src: [ '**' ]
-					}
-				]
-			}
+						src: [ '**' ],
+					},
+				],
+			},
 		},
 
 		sass: {
 			options: {
-				implementation: require('node-sass'),
-				sourceMap: false
+				implementation: require( 'node-sass' ),
+				sourceMap: false,
 			},
 			getting_started: {
 				files: {
-					'dist/css/coblocks-getting-started.css' : 'src/styles/getting-started.scss'
-				}
-			}
+					'dist/css/coblocks-getting-started.css': 'src/styles/getting-started.scss',
+				},
+			},
 		},
 
 		cssmin: {
 			options: {
 				processImport: false,
 				roundingPrecision: -1,
-				shorthandCompacting: false
+				shorthandCompacting: false,
 			},
 			getting_started: {
 				files: [
@@ -92,51 +98,51 @@ module.exports = function( grunt ) {
 						cwd: 'dist/css/',
 						src: 'coblocks-getting-started.css',
 						dest: 'dist/css/',
-						ext: '.min.css'
-					}
-				]
+						ext: '.min.css',
+					},
+				],
 			},
 		},
 
 		uglify: {
 			options: {
-				ASCIIOnly: true
+				ASCIIOnly: true,
 			},
 			all: {
 				expand: true,
 				cwd: 'src/js/',
 				src: '**/*.js',
 				dest: 'dist/js/',
-				ext: '.min.js'
-			}
+				ext: '.min.js',
+			},
 		},
 
 		imagemin: {
 			options: {
-				optimizationLevel: 3
+				optimizationLevel: 3,
 			},
 			assets: {
 				expand: true,
 				cwd: 'dist/images/',
 				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
-				dest: 'build/<%= pkg.name %>/dist/images/'
+				dest: 'build/<%= pkg.name %>/dist/images/',
 			},
 			wp_org_assets: {
 				expand: true,
 				cwd: 'wp-org-assets/',
 				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
-				dest: 'wp-org-assets/'
-			}
+				dest: 'wp-org-assets/',
+			},
 		},
 
 		watch: {
 			css: {
 				files: [ 'src/styles/**/*.scss' ],
-				tasks: [ 'sass', 'cssmin' ]
+				tasks: [ 'sass', 'cssmin' ],
 			},
 			js: {
 				files: [ 'src/js/**/*.js' ],
-				tasks: [ 'uglify' ]
+				tasks: [ 'uglify' ],
 			},
 		},
 
@@ -144,31 +150,31 @@ module.exports = function( grunt ) {
 			php: {
 				src: [
 					'class-' + pkg.name + '.php',
-					'includes/**/*.php'
+					'includes/**/*.php',
 				],
 				overwrite: true,
 				replacements: [
 					{
 						from: /Version:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
-						to: 'Version:$1' + pkg.version
+						to: 'Version:$1' + pkg.version,
 					},
 					{
 						from: /@since(.*?)NEXT/mg,
-						to: '@since$1' + pkg.version
+						to: '@since$1' + pkg.version,
 					},
 					{
 						from: /Version:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
-						to: 'Version:$1' + pkg.version
+						to: 'Version:$1' + pkg.version,
 					},
 					{
 						from: /define\(\s*'COBLOCKS_VERSION',\s*'(.*)'\s*\);/,
-						to: "define( 'COBLOCKS_VERSION', '<%= pkg.version %>' );"
+						to: 'define( \'COBLOCKS_VERSION\', \'<%= pkg.version %>\' );',
 					},
 					{
 						from: /Tested up to:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
-						to: 'Tested up to:$1' + pkg.tested_up_to
-					}
-				]
+						to: 'Tested up to:$1' + pkg.tested_up_to,
+					},
+				],
 			},
 			readme: {
 				src: 'readme.*',
@@ -176,36 +182,35 @@ module.exports = function( grunt ) {
 				replacements: [
 					{
 						from: /^(\*\*|)Stable tag:(\*\*|)(\s*?)[a-zA-Z0-9.-]+(\s*?)$/mi,
-						to: '$1Stable tag:$2$3<%= pkg.version %>$4'
+						to: '$1Stable tag:$2$3<%= pkg.version %>$4',
 					},
 					{
 						from: /Tested up to:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
-						to: 'Tested up to:$1' + pkg.tested_up_to
-					}
-				]
+						to: 'Tested up to:$1' + pkg.tested_up_to,
+					},
+				],
 			},
 		},
 
 		shell: {
 			cgb_start: [
-				'npm run start'
+				'npm run start',
 			].join( ' && ' ),
 			cgb_build: [
-				'npm run build'
+				'npm run build',
 			].join( ' && ' ),
 			translations: [
-				'npm run babel:build'
+				'npm run babel:build',
 			].join( ' && ' ),
-		}
+		},
 
 	} );
 
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
-	grunt.registerTask( 'default',    [ 'sass', 'cssmin', 'uglify', 'shell:cgb_start' ] );
-	grunt.registerTask( 'check',      [ 'devUpdate' ] );
-	grunt.registerTask( 'build',      [ 'shell:cgb_build', 'sass', 'cssmin', 'uglify', 'imagemin', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
+	grunt.registerTask( 'default', [ 'sass', 'cssmin', 'uglify', 'shell:cgb_start' ] );
+	grunt.registerTask( 'check', [ 'devUpdate' ] );
+	grunt.registerTask( 'build', [ 'shell:cgb_build', 'sass', 'cssmin', 'uglify', 'imagemin', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
 	grunt.registerTask( 'update-pot', [ 'shell:translations' ] );
-	grunt.registerTask( 'version',    [ 'replace' ] );
-
+	grunt.registerTask( 'version', [ 'replace' ] );
 };
