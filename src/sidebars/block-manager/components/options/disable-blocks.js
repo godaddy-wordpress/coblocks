@@ -3,7 +3,6 @@
  */
 import classnames from 'classnames';
 import map from 'lodash/map';
-import apiFetch from '@wordpress/api-fetch';
 
 /**
  * Internal dependencies
@@ -15,11 +14,9 @@ import MapInnerBlocks from './../map-innerblocks';
  */
 const { __, sprintf } = wp.i18n;
 const { Fragment, Component } = wp.element;
-const { CheckboxControl, Button, Popover, ToggleControl } = wp.components;
-const { PluginMoreMenuItem } = wp.editPost;
-const { getCategories, getBlockTypes, unregisterBlockType, registerBlockType } = wp.blocks;
+const { Button, ToggleControl } = wp.components;
+const { unregisterBlockType, registerBlockType } = wp.blocks;
 const { BlockIcon } = wp.editor;
-
 
 /**
  * Get settings.
@@ -28,157 +25,141 @@ const { BlockIcon } = wp.editor;
 let settings;
 wp.api.loadPromise.then( () => {
 	settings = new wp.api.models.Settings();
-});
+} );
 
 /**
  * Render plugin
  */
 class DisableBlocks extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
 
-		this.state   = {
+		this.state = {
 			settings: props.optionSettings,
 			isSaving: false,
 			isLoaded: false,
 			hasError: false,
-			targetX : null,
-			targetY : null,
-		}
+			targetX: null,
+			targetY: null,
+		};
 
 		this.saveSettings = this.saveSettings.bind( this );
 		this.disableBlock = this.disableBlock.bind( this );
 
-		settings.fetch().then( response => {
-
-		});
+		settings.fetch();
 	}
 
 	saveSettings( settingsState ) {
 		this.setState( { isSaving: true } );
 		const model = new wp.api.models.Settings( { coblocks_settings_api: JSON.stringify( settingsState ) } );
-		model.save().then( response => {
-			this.setState({ isSaving: false, settings: settingsState });
+		model.save().then( () => {
+			this.setState( { isSaving: false, settings: settingsState } );
 		} );
-
 	}
 
-	disableBlock( key, category, clicked, all = false, toggle = false ){
-		let settingsState = this.state.settings;
+	disableBlock( key, category, clicked, all = false, toggle = false ) {
+		const settingsState = this.state.settings;
 
 		//get current blocks
-		let currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
-		let blockNames	  = MapInnerBlocks( currentBlocks );
+		const currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
+		const blockNames = MapInnerBlocks( currentBlocks );
 
 		//check block for editor match first
 		//avoid error while editing
 		let hasError = false;
-		this.setState({ hasError: false });
+		this.setState( { hasError: false } );
 
-		if( key == 'core/paragraph' ){
+		if ( key === 'core/paragraph' ) {
 			hasError = true;
-			this.setState({ hasError: true });
+			this.setState( { hasError: true } );
 		}
 
 		{ map( blockNames, ( blockName ) => {
-			if( blockName == key ){
+			if ( blockName === key ) {
 				hasError = true;
-				this.setState({ hasError: true });
-
-				return;
+				this.setState( { hasError: true } );
 			}
-		} ) }
-
+		} ); }
 
 		//abort if block exists on current page
-		if( hasError ){
-
-			if( clicked ){
-				let target = clicked.target.getBoundingClientRect();
-				this.setState({ targetX: target.left, targetY: target.top });
+		if ( hasError ) {
+			if ( clicked ) {
+				const target = clicked.target.getBoundingClientRect();
+				this.setState( { targetX: target.left, targetY: target.top } );
 			}
 
 			return;
 		}
 
-		if( settingsState[ key ] ){
-			settingsState[ key ] = !settingsState[ key ];
-		}else{
+		if ( settingsState[ key ] ) {
+			settingsState[ key ] = ! settingsState[ key ];
+		} else {
 			settingsState[ key ] = true;
 		}
 
 		//disable selected block
-		if( settingsState[ key ] ){
+		if ( settingsState[ key ] ) {
 			//return if toggled and already enabled
-			if( all && !toggle ){
+			if ( all && ! toggle ) {
 				settingsState[ key ] = false;
-			}else{
+			} else {
 				unregisterBlockType( key );
 			}
-		}else{
+		} else {
 			//return if toggled and already disabled
-			if( all && toggle ){
+			if ( all && toggle ) {
 				settingsState[ key ] = true;
-			}else{
-				{ map( this.props.allBlocks[ category ]['blocks'], ( block ) => {
-					if( block.name == key ){
+			} else {
+				{ map( this.props.allBlocks[ category ].blocks, ( block ) => {
+					if ( block.name === key ) {
 						registerBlockType( key, block );
 
 						//change toggle off when block enabled
-						if( settingsState[ 'mainCategory-' + category ] ){
+						if ( settingsState[ 'mainCategory-' + category ] ) {
 							settingsState[ 'mainCategory-' + category ] = false;
 						}
-
-						return;
 					}
-				} ) }
+				} ); }
 			}
-
 		}
 
-		this.setState({ settings: settingsState });
+		this.setState( { settings: settingsState } );
 		this.saveSettings( settingsState );
 	}
 
 	render() {
-
-		const closeModal = () => (
-			this.setState( { isOpen: false } )
-		);
-
 		const onChecked = ( key, category, clicked ) => {
 			//disable blocks
 			this.disableBlock( key, category, clicked );
-		}
+		};
 
 		const onToggle = ( category, slug ) => {
-			let settingsState = this.state.settings;
-			let allBlocks = this.props.allBlocks;
+			const settingsState = this.state.settings;
+			const allBlocks = this.props.allBlocks;
 
-			if( settingsState[ category ] ){
-				settingsState[ category ] = !settingsState[ category ];
-			}else{
+			if ( settingsState[ category ] ) {
+				settingsState[ category ] = ! settingsState[ category ];
+			} else {
 				settingsState[ category ] = true;
 			}
 
 			//disable blocks one by one
-			if( allBlocks[ slug ] && allBlocks[ slug ].blocks ){
+			if ( allBlocks[ slug ] && allBlocks[ slug ].blocks ) {
 				{ map( allBlocks[ slug ].blocks, ( block ) => {
-					if( block.name ){
+					if ( block.name ) {
 						this.disableBlock( block.name, slug, false, true, settingsState[ category ] );
 					}
-				} ) }
+				} ); }
 			}
 
-			this.setState({ settings: settingsState });
+			this.setState( { settings: settingsState } );
 			this.saveSettings( settingsState );
-		}
+		};
 
-		let savedSettings = this.state.settings;
+		const savedSettings = this.state.settings;
 		let allBlocks = this.props.allBlocks;
 
-		if( this.props.keyword && this.props.searchResults && this.props.keyword.length > 0 ){
+		if ( this.props.keyword && this.props.searchResults && this.props.keyword.length > 0 ) {
 			allBlocks = this.props.searchResults;
 		}
 
@@ -187,27 +168,27 @@ class DisableBlocks extends Component {
 				{ this.state.hasError ?
 					<div className="coblocks-block-manager__error">
 						{ __( 'This block is added to the page and cannot currently be disabled' ) }
-					</div>
-				: null }
+					</div> :
+					null }
 				{ Object.keys( allBlocks ).length > 0 ?
 					map( allBlocks, ( category ) => {
 						if ( category.slug && ! category.slug.includes( 'reusable' ) && category.blocks && Object.keys( category.blocks ).length > 0 ) {
-							return(
+							return (
 								<section className="coblocks-block-manager__section">
 									<div className="coblocks-block-manager__section-header">
 										{ category.title ?
-											<h2 className="coblocks-block-manager__section-title">{ category.title.replace( ' Blocks', '' ) }</h2>
-										: null }
+											<h2 className="coblocks-block-manager__section-title">{ category.title.replace( ' Blocks', '' ) }</h2> :
+											null }
 
-										{ ( !this.props.keyword && category.title ) ?
+										{ ( ! this.props.keyword && category.title ) ?
 											<ToggleControl
 												label={ __( 'Disable all' ) }
 												checked={ savedSettings[ 'mainCategory-' + category.slug ] ? true : false }
-												onChange={ ( value ) => {
+												onChange={ () => {
 													onToggle( 'mainCategory-' + category.slug, category.slug );
 												} }
-											/>
-											: null
+											/> :
+											null
 										}
 									</div>
 									<ul className="coblocks-block-manager__list">
@@ -243,16 +224,16 @@ class DisableBlocks extends Component {
 										} ) }
 									</ul>
 								</section>
-							)
+							);
 						}
 					} ) :
 					<section className="coblocks-block-manager__section coblocks-block-manager__section--noresults ">
-						<p className="editor-inserter__no-results">{ sprintf( __( 'No "%s" blocks found.' ), this.props.keyword )  }</p>
+						<p className="editor-inserter__no-results">{ sprintf( __( 'No "%s" blocks found.' ), this.props.keyword ) }</p>
 					</section>
 				}
 			</Fragment>
 		);
 	}
-};
+}
 
 export default DisableBlocks;
