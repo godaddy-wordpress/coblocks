@@ -104,7 +104,7 @@ class Edit extends Component {
 					<ul>
 						{ twitter &&
 						<li>
-							<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--twitter' ) } style={ buttonStyles }>
+							<a href="#!" className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--twitter' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Twitter' ) }</span>
 							</a>
@@ -112,7 +112,7 @@ class Edit extends Component {
 						}
 						{ facebook &&
 							<li>
-								<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--facebook' ) } style={ buttonStyles }>
+								<a href="#!" className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--facebook' ) } style={ buttonStyles }>
 									<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 									<span className="wp-block-coblocks-social__text">{ __( 'Share on Facebook' ) }</span>
 								</a>
@@ -120,7 +120,7 @@ class Edit extends Component {
 						}
 						{ pinterest &&
 							<li>
-								<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--pinterest' ) } style={ buttonStyles }>
+								<a href="#!" className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--pinterest' ) } style={ buttonStyles }>
 									<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 									<span className="wp-block-coblocks-social__text">{ __( 'Share on Pinterest' ) }</span>
 								</a>
@@ -128,7 +128,7 @@ class Edit extends Component {
 						}
 						{ linkedin &&
 							<li>
-								<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--linkedin' ) } style={ buttonStyles }>
+								<a href="#!" className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--linkedin' ) } style={ buttonStyles }>
 									<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 									<span className="wp-block-coblocks-social__text">{ __( 'Share on LinkedIn' ) }</span>
 								</a>
@@ -136,7 +136,7 @@ class Edit extends Component {
 						}
 						{ email &&
 							<li>
-								<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--email' ) } style={ buttonStyles }>
+								<a href="#!" className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--email' ) } style={ buttonStyles }>
 									<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 									<span className="wp-block-coblocks-social__text">{ __( 'Share via Email' ) }</span>
 								</a>
@@ -144,7 +144,7 @@ class Edit extends Component {
 						}
 						{ tumblr &&
 							<li>
-								<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--tumblr' ) } style={ buttonStyles }>
+								<a href="#!" className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--tumblr' ) } style={ buttonStyles }>
 									<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 									<span className="wp-block-coblocks-social__text">{ __( 'Share on Tumblr' ) }</span>
 								</a>
@@ -152,7 +152,7 @@ class Edit extends Component {
 						}
 						{ google &&
 							<li>
-								<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--google' ) } style={ buttonStyles }>
+								<a href="#!" className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--google' ) } style={ buttonStyles }>
 									<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 									<span className="wp-block-coblocks-social__text">{ __( 'Share on Google' ) }</span>
 								</a>
@@ -160,7 +160,7 @@ class Edit extends Component {
 						}
 						{ reddit &&
 							<li>
-								<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--reddit' ) } style={ buttonStyles }>
+								<a href="#!" className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--reddit' ) } style={ buttonStyles }>
 									<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 									<span className="wp-block-coblocks-social__text">{ __( 'Share on Reddit' ) }</span>
 								</a>
