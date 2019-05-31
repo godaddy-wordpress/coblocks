@@ -62,9 +62,11 @@ class Edit extends Component {
 			email,
 			iconSize,
 			google,
+			padding,
 		} = attributes;
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
+		const isCircularStyle = includes( className, 'is-style-circular' );
 
 		const classes = classnames( className, {
 				[ `has-button-size-${ size }` ] : size != 'med',
@@ -77,19 +79,21 @@ class Edit extends Component {
 			`wp-block-coblocks-social__button`, {
 				'has-background' : hasColors || backgroundColor.color,
 				'has-text-color' : hasColors || textColor.color,
+				'has-padding' : padding,
 				[ textColor.class ]: textColor.class,
 			}
 		);
 
 		const buttonStyles = {
-			borderRadius: borderRadius ? borderRadius + 'px' : undefined,
-			backgroundColor: ! hasColors && ! isMaskStyle ? backgroundColor.color : undefined,
-			color: ! hasColors ? this.getTextColor( isMaskStyle ) : undefined,
+			borderRadius: borderRadius && borderRadius + 'px',
+			backgroundColor: ( ! hasColors && ! isMaskStyle ) && backgroundColor.color,
+			color: ! hasColors && this.getTextColor( isMaskStyle ),
+			padding: isCircularStyle && padding + 'px',
 		};
 
 		const iconStyles = {
-			height: isMaskStyle && iconSize ? iconSize + 'px' : undefined,
-			width: isMaskStyle && iconSize ? iconSize + 'px' : undefined,
+			height: ( isMaskStyle || isCircularStyle ) && iconSize + 'px',
+			width: ( isMaskStyle || isCircularStyle ) && iconSize + 'px',
 		};
 
 		return [

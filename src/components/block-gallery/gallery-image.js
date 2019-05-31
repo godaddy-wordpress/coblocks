@@ -16,7 +16,6 @@ const { BACKSPACE, DELETE } = wp.keycodes;
 const { isBlobURL } = wp.blob;
 
 class GalleryImage extends Component {
-
 	constructor() {
 		super( ...arguments );
 
@@ -91,14 +90,16 @@ class GalleryImage extends Component {
 	}
 
 	render() {
-
 		const {
 			alt,
 			caption,
+			captions,
 			fontSize,
 			gutter,
 			gutterMobile,
 			id,
+			isFirstItem,
+			isLastItem,
 			isSelected,
 			link,
 			linkTo,
@@ -106,12 +107,15 @@ class GalleryImage extends Component {
 			marginLeft,
 			marginRight,
 			marginTop,
+			onMoveBackward,
+			onMoveForward,
 			onRemove,
 			setAttributes,
 			shadow,
 			supportsCaption,
+			supportsMoving = true,
+			verticalMoving = false,
 			url,
-			captions,
 			'aria-label': ariaLabel,
 			imgLink,
 		} = this.props;
@@ -128,7 +132,7 @@ class GalleryImage extends Component {
 		}
 
 		const imgClasses = classnames( {
-			[ `has-shadow-${ shadow }` ] : shadow !== 'none' || shadow !== undefined,
+			[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
 		} );
 
 		// Disable reason: Image itself is not meant to be
@@ -158,14 +162,14 @@ class GalleryImage extends Component {
 		const className = classnames( {
 			'is-selected': isSelected,
 			'is-transient': url && 0 === url.indexOf( 'blob:' ),
-			[ `has-margin-top-${ gutter }` ] : marginTop && gutter > 0,
-			[ `has-margin-top-mobile-${ gutterMobile }` ] : marginTop && gutterMobile > 0,
-			[ `has-margin-right-${ gutter }` ] : marginRight && gutter > 0,
-			[ `has-margin-right-mobile-${ gutterMobile }` ] : marginRight && gutterMobile > 0,
-			[ `has-margin-bottom-${ gutter }` ] : marginBottom && gutter > 0,
-			[ `has-margin-bottom-mobile-${ gutterMobile }` ] : marginBottom && gutterMobile > 0,
-			[ `has-margin-left-${ gutter }` ] : marginLeft && gutter > 0,
-			[ `has-margin-left-mobile-${ gutterMobile }` ] : marginLeft && gutterMobile > 0,
+			[ `has-margin-top-${ gutter }` ]: marginTop && gutter > 0,
+			[ `has-margin-top-mobile-${ gutterMobile }` ]: marginTop && gutterMobile > 0,
+			[ `has-margin-right-${ gutter }` ]: marginRight && gutter > 0,
+			[ `has-margin-right-mobile-${ gutterMobile }` ]: marginRight && gutterMobile > 0,
+			[ `has-margin-bottom-${ gutter }` ]: marginBottom && gutter > 0,
+			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: marginBottom && gutterMobile > 0,
+			[ `has-margin-left-${ gutter }` ]: marginLeft && gutter > 0,
+			[ `has-margin-left-mobile-${ gutterMobile }` ]: marginLeft && gutterMobile > 0,
 		} );
 
 		const captionStyles = {
@@ -178,12 +182,33 @@ class GalleryImage extends Component {
 			<figure className={ 'coblocks-gallery--figure ' + className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
 				{ isSelected &&
 					<Fragment>
-						<div className="components-coblocks-remove-gallery-item-button-wrapper">
+						{ supportsMoving &&
+							<div className="components-coblocks-gallery-item__move-menu">
+								<IconButton
+									icon={ verticalMoving ? 'arrow-up' : 'arrow-left' }
+									onClick={ ! isFirstItem && onMoveBackward }
+									className="coblocks-gallery-item__button"
+									label={ __( 'Move Image Backward' ) }
+									aria-disabled={ isFirstItem }
+									disabled={ ! isSelected }
+								/>
+								<IconButton
+									icon={ verticalMoving ? 'arrow-down' : 'arrow-right' }
+									onClick={ ! isLastItem && onMoveForward }
+									className="coblocks-gallery-item__button"
+									label={ __( 'Move Image Forward' ) }
+									aria-disabled={ isLastItem }
+									disabled={ ! isSelected }
+								/>
+							</div>
+						}
+						<div className="components-coblocks-gallery-item__remove-menu">
 							<IconButton
 								icon="no-alt"
 								onClick={ onRemove }
-								className="components-coblocks-remove-gallery-item-button-button"
+								className="coblocks-gallery-item__button"
 								label={ __( 'Remove Image' ) }
+								disabled={ ! isSelected }
 							/>
 						</div>
 						<TextControl

@@ -71,6 +71,7 @@ class Inspector extends Component {
 			email,
 			google,
 			iconSize,
+			padding,
 		} = attributes;
 
 		const options = [
@@ -101,6 +102,7 @@ class Inspector extends Component {
 		];
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
+		const isCircularStyle = includes( className, 'is-style-circular' );
 
 		return (
 			<Fragment>
@@ -112,7 +114,7 @@ class Inspector extends Component {
 							onChange={ () => setAttributes( {  hasColors: ! hasColors } ) }
 							help={ this.getHasColorsHelp }
 						/>
-						{ ! isMaskStyle &&
+						{ ! isMaskStyle && ! isCircularStyle &&
 							<RangeControl
 								label={ __( 'Rounded Corners' ) }
 								value={ borderRadius }
@@ -121,7 +123,7 @@ class Inspector extends Component {
 								max={ 50 }
 							/>
 						}
-						{ isMaskStyle &&
+						{ ( isMaskStyle || isCircularStyle ) &&
 							<RangeControl
 								label={ __( 'Icon Size' ) }
 								value={ iconSize }
@@ -130,7 +132,16 @@ class Inspector extends Component {
 								max={ 60 }
 							/>
 						}
-						{ ! isMaskStyle &&
+						{ isCircularStyle &&
+							<RangeControl
+								label={ __( 'Circle Size' ) }
+								value={ padding }
+								onChange={ ( value ) => setAttributes( { padding: value } ) }
+								min={ 10 }
+								max={ 50 }
+							/>
+						}
+						{ ! isMaskStyle && ! isCircularStyle &&
 							<SelectControl
 								label={ __( 'Button Size' ) }
 								value={ size }
