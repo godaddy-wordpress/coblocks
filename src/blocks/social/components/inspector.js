@@ -7,6 +7,7 @@ import includes from 'lodash/includes';
  * Internal dependencies
  */
 import applyWithColors from './colors';
+import { shareableMediums } from './shareable-mediums';
 
 /**
  * WordPress dependencies
@@ -131,52 +132,23 @@ class Inspector extends Component {
 							/>
 						}
 					</PanelBody>
+
 					<PanelBody
 						title={ __( 'Icon Settings' ) }
-						initialOpen={ false }
-					>
-						<p>{ __( ' Toggle the sharing links to display from the following social platforms.' ) }</p>
-						<ToggleControl
-							label={ __( 'Twitter' ) }
-							checked={ !! twitter }
-							onChange={ () => setAttributes( { twitter: ! twitter } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Facebook' ) }
-							checked={ !! facebook }
-							onChange={ () => setAttributes( { facebook: ! facebook } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Pinterest' ) }
-							checked={ !! pinterest }
-							onChange={ () => setAttributes( { pinterest: ! pinterest } ) }
-						/>
-						<ToggleControl
-							label={ __( 'LinkedIn' ) }
-							checked={ !! linkedin }
-							onChange={ () => setAttributes( { linkedin: ! linkedin } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Email' ) }
-							checked={ !! email }
-							onChange={ () => setAttributes( { email: ! email } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Tumblr' ) }
-							checked={ !! tumblr }
-							onChange={ () => setAttributes( { tumblr: ! tumblr } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Google' ) }
-							checked={ !! google }
-							onChange={ () => setAttributes( { google: ! google } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Reddit' ) }
-							checked={ !! reddit }
-							onChange={ () => setAttributes( { reddit: ! reddit } ) }
-						/>
+						initialOpen={ false }>
+
+						<p>{ __( 'Toggle the sharing links to display from the following social platforms.' ) }</p>
+
+						{ Object.entries( shareableMediums ).map( ( [ slug, label ] ) => (
+							<ToggleControl
+								key={ `shareable-medium-${ slug }` }
+								label={ label }
+								checked={ !! attributes[ slug ] }
+								onChange={ () => setAttributes( { [ slug ]: ! attributes[ slug ] } ) }
+							/>
+						) ) }
 					</PanelBody>
+
 					{ ! hasColors &&
 						<PanelColorSettings
 							title={ __( 'Color Settings' ) }
