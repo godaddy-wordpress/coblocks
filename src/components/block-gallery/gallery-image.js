@@ -9,8 +9,8 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { IconButton, Spinner, TextControl } = wp.components;
-const { RichText } = wp.editor;
+const { IconButton, Spinner, TextControl, Dashicon } = wp.components;
+const { RichText, URLInput } = wp.editor;
 const { withSelect } = wp.data;
 const { BACKSPACE, DELETE } = wp.keycodes;
 const { isBlobURL } = wp.blob;
@@ -211,13 +211,18 @@ class GalleryImage extends Component {
 								disabled={ ! isSelected }
 							/>
 						</div>
-						<TextControl
-							label={ __( 'Img Link' ) }
-							value={ imgLink }
-							onChange={ ( newImgLink ) => setAttributes( { imgLink: newImgLink } ) }
-							className="components-coblocks-image-link"
+						<form
 							// @todo - Add a target option here.
-						/>
+							className="components-coblocks-gallery-item__image-link"
+							onSubmit={ ( event ) => event.preventDefault() }>
+							<Dashicon icon="admin-links" />
+							<URLInput
+								value={ imgLink }
+								onChange={ ( value ) => setAttributes( { imgLink: value } ) }
+							/>
+							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+						</form>
+
 					</Fragment>
 				}
 				{ href ? <a href={ href }>{ img }</a> : img }
