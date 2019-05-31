@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 
-const shareableMediums = {
+export const shareableMediums = {
 	twitter: __( 'Twitter' ),
 	facebook: __( 'Facebook' ),
 	pinterest: __( 'Pinterest' ),
@@ -10,5 +10,3 @@ const shareableMediums = {
 	google: __( 'Google' ),
 	reddit: __( 'Reddit' ),
 };
-
-export default shareableMediums;
