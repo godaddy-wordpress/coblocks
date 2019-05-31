@@ -152,6 +152,12 @@ const settings = {
 								break;
 						}
 
+						// If an image has a custom link, override the linkTo selection.
+						// @todo - Add a target option here.
+						if ( image.imgLink ) {
+							href = image.imgLink;
+						}
+
 						const imgClasses = classnames(
 							image.id ? [ `wp-image-${ image.id }` ] : null, {
 								[ `has-shadow-${ shadow }` ] : shadow != 'none' || shadow != undefined ,
