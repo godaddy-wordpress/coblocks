@@ -306,6 +306,11 @@ function coblocks_register_social_block() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+
+				'enabledMediums'        => array(
+					'type'    => 'array',
+					'default' => array( 'twitter', 'facebook', 'pinterest' ),
+				),
 			),
 			'render_callback' => 'coblocks_render_social_block',
 		)

@@ -3,34 +3,195 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/social/components/edit.js:109
+#: src/blocks/social/components/edit.js:110
 msgid "Share on Twitter"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:117
+#: src/blocks/social/components/edit.js:118
 msgid "Share on Facebook"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:125
+#: src/blocks/social/components/edit.js:126
 msgid "Share on Pinterest"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:133
+#: src/blocks/social/components/edit.js:134
 msgid "Share on LinkedIn"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:141
+#: src/blocks/social/components/edit.js:142
 msgid "Share via Email"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:149
+#: src/blocks/social/components/edit.js:150
 msgid "Share on Tumblr"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:157
+#: src/blocks/social/components/edit.js:158
 msgid "Share on Google"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:165
+#: src/blocks/social/components/edit.js:166
 msgid "Share on Reddit"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:108
+msgid "Icon Size"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:117
+msgid "Circle Size"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:126
+msgid "Button Size"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:135
+msgid "Icon Settings"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:138
+msgid " Toggle the sharing links to display from the following social platforms."
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:140
+#: src/blocks/social/components/inspector.js:141
+#: src/blocks/social/components/inspector.js:142
+#: src/blocks/social/components/shareable-mediums.js:4
+msgid "Twitter"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:145
+#: src/blocks/social/components/inspector.js:146
+#: src/blocks/social/components/inspector.js:147
+#: src/blocks/social/components/shareable-mediums.js:5
+msgid "Facebook"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:150
+#: src/blocks/social/components/inspector.js:151
+#: src/blocks/social/components/inspector.js:152
+#: src/blocks/social/components/shareable-mediums.js:6
+msgid "Pinterest"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:155
+#: src/blocks/social/components/inspector.js:156
+#: src/blocks/social/components/inspector.js:157
+#: src/blocks/social/components/shareable-mediums.js:7
+msgid "LinkedIn"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:160
+#: src/blocks/social/components/inspector.js:161
+#: src/blocks/social/components/inspector.js:162
+#: src/blocks/social/components/shareable-mediums.js:8
+msgid "Email"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:165
+#: src/blocks/social/components/inspector.js:166
+#: src/blocks/social/components/inspector.js:167
+#: src/blocks/social/components/shareable-mediums.js:9
+msgid "Tumblr"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:170
+#: src/blocks/social/components/inspector.js:171
+#: src/blocks/social/components/inspector.js:172
+#: src/blocks/social/components/shareable-mediums.js:10
+msgid "Google"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:175
+#: src/blocks/social/components/inspector.js:176
+#: src/blocks/social/components/inspector.js:177
+#: src/blocks/social/components/shareable-mediums.js:11
+msgid "Reddit"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:182
+msgid "Color Settings"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:25
+msgid "Social button colors are enabled."
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:25
+msgid "Toggle to use official colors from each social media platform."
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:58
+msgid "Small"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:59
+msgid "Medium"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:60
+msgid "Large"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:72
+msgid "Text Color"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:80
+msgid "Background Color"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:90
+msgid "Social Settings"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:92
+msgid "Social Colors"
+msgstr ""
+
+#: src/blocks/social/components/inspector.js:99
+msgid "Rounded Corners"
+msgstr ""
+
+#: src/blocks/social/index.js:20
+msgid "Social"
+msgstr ""
+
+#: src/blocks/social/index.js:25
+msgid "share"
+msgstr ""
+
+#: src/blocks/social/index.js:26
+msgid "coblocks"
+msgstr ""
+
+#: src/blocks/social/index.js:33
+msgid "Add social sharing buttons to help you get likes and shares."
+msgstr ""
+
+#: src/blocks/social/index.js:38
+msgctxt "block style"
+msgid "Mask"
+msgstr ""
+
+#: src/blocks/social/index.js:39
+msgctxt "block style"
+msgid "Icon"
+msgstr ""
+
+#: src/blocks/social/index.js:40
+msgctxt "block style"
+msgid "Text"
+msgstr ""
+
+#: src/blocks/social/index.js:41
+msgctxt "block style"
+msgid "Icon & Text"
+msgstr ""
+
+#: src/blocks/social/index.js:42
+msgctxt "block style"
+msgid "Circular"
 msgstr ""
