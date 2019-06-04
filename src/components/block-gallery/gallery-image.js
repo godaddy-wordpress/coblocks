@@ -120,17 +120,6 @@ class GalleryImage extends Component {
 			imgLink,
 		} = this.props;
 
-		let href;
-
-		switch ( linkTo ) {
-			case 'media':
-				href = url;
-				break;
-			case 'attachment':
-				href = link;
-				break;
-		}
-
 		const imgClasses = classnames( {
 			[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
 		} );
@@ -211,21 +200,22 @@ class GalleryImage extends Component {
 								disabled={ ! isSelected }
 							/>
 						</div>
-						<form
-							// @todo - Add a target option here.
-							className="components-coblocks-gallery-item__image-link"
-							onSubmit={ ( event ) => event.preventDefault() }>
-							<Dashicon icon="admin-links" />
-							<URLInput
-								value={ imgLink }
-								onChange={ ( value ) => setAttributes( { imgLink: value } ) }
-							/>
-							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
-						</form>
-
+						{ linkTo === 'custom' &&
+							<form
+								// @todo - Add a target option here.
+								className="components-coblocks-gallery-item__image-link"
+								onSubmit={ ( event ) => event.preventDefault() }>
+								<Dashicon icon="admin-links" />
+								<URLInput
+									value={ imgLink }
+									onChange={ ( value ) => setAttributes( { imgLink: value } ) }
+								/>
+								<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+							</form>
+						}
 					</Fragment>
 				}
-				{ href ? <a href={ href }>{ img }</a> : img }
+				{ img }
 				{ ( supportsCaption === true ) && ( ! RichText.isEmpty( caption ) || isSelected ) && captions ? (
 					<RichText
 						tagName="figcaption"
