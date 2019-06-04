@@ -98,6 +98,8 @@ const settings = {
 			backgroundImg,
 			customBackgroundColor,
 			backgroundColor,
+			target,
+			rel,
 		} = attributes;
 
 		// Body color class and styles.
@@ -167,7 +169,7 @@ const settings = {
 						return (
 							<li key={ image.id || image.url } className="coblocks-gallery--item">
 								<figure className={ figureClasses }>
-									{ href ? <a href={ href }>{ img }</a> : img }
+									{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 									{ captions && image.caption && image.caption.length > 0 && (
 										<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } styles={ captionStyles }/>
 									) }
