@@ -251,7 +251,6 @@ class GalleryMasonryEdit extends Component {
 											id={ img.id }
 											imgLink={ img.imgLink }
 											linkTo={ linkTo }
-											// @todo - Add a target option here.
 											isFirstItem={ index === 0 }
 											isLastItem={ ( index + 1 ) === images.length }
 											isSelected={ isSelected && this.state.selectedImage === index }

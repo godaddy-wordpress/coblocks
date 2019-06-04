@@ -205,6 +205,8 @@ class GalleryStackedEdit extends Component {
 										url={ img.url }
 										alt={ img.alt }
 										id={ img.id }
+										imgLink={ img.imgLink }
+										linkTo={ linkTo }
 										gutter={ gutter }
 										gutterMobile={ gutterMobile }
 										marginBottom={ true }
