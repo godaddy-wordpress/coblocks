@@ -8,9 +8,9 @@ const { __ } = wp.i18n;
  */
 const linkOptions = [
 	{ value: 'none', label: __( 'None' ) },
-	{ value: 'attachment', label: __( 'Attachment Page' ) },
 	{ value: 'media', label: __( 'Media File' ) },
-	{ value: 'custom', label: __( 'Custom' ) },
+	{ value: 'attachment', label: __( 'Attachment Page' ) },
+	{ value: 'custom', label: __( 'Custom URL' ) },
 
 ];
 
