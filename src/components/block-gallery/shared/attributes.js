@@ -46,6 +46,12 @@ const GalleryAttributes = {
 		type: 'string',
 		default: 'none',
 	},
+	target: {
+		type: 'string',
+	},
+	rel: {
+		type: 'string',
+	},
 	align: {
 		type: 'string',
 	},

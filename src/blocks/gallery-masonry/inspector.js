@@ -14,7 +14,7 @@ import { BackgroundPanel } from '../../components/background';
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InspectorControls, PanelColorSettings } = wp.editor;
-const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
+const { PanelBody, RangeControl, ToggleControl, SelectControl, TextControl } = wp.components;
 
 /**
  * Inspector controls
@@ -27,6 +27,7 @@ class Inspector extends Component {
 		this.setLinkTo = this.setLinkTo.bind( this );
 		this.setRadiusTo = this.setRadiusTo.bind( this );
 		this.setCaptionStyleTo = this.setCaptionStyleTo.bind( this );
+		this.setNewTab = this.setNewTab.bind( this );
 		this.getColors = this.getColors.bind( this );
 	}
 
@@ -36,6 +37,23 @@ class Inspector extends Component {
 				radius: 0,
 			} );
 		}
+	}
+
+	setNewTab( value ) {
+		const { rel } = this.props.attributes;
+		const target = value ? '_blank' : undefined;
+
+		let updatedRel = rel;
+		if ( target && ! rel ) {
+			updatedRel = 'noreferrer noopener';
+		} else if ( ! target && rel === 'noreferrer noopener' ) {
+			updatedRel = undefined;
+		}
+
+		this.props.setAttributes( {
+			target,
+			rel: updatedRel,
+		} );
 	}
 
 	setLinkTo( value ) {
@@ -134,6 +152,8 @@ class Inspector extends Component {
 			lightbox,
 			linkTo,
 			radius,
+			target,
+			rel,
 		} = attributes;
 
 		return (
@@ -171,17 +191,33 @@ class Inspector extends Component {
 						/>
 					}
 				</PanelBody>
-				{ ! lightbox && <PanelBody
-					title={ __( 'Link Settings' ) }
-					initialOpen={ false }
+				{ ! lightbox &&
+					<PanelBody
+						title={ __( 'Link Settings' ) }
+						initialOpen={ false }
 					>
-					<SelectControl
-						label={ __( 'Link To' ) }
-						value={ linkTo }
-						options={ linkOptions }
-						onChange={ this.setLinkTo }
-					/>
-				</PanelBody> }
+						<SelectControl
+							label={ __( 'Link To' ) }
+							value={ linkTo }
+							options={ linkOptions }
+							onChange={ this.setLinkTo }
+						/>
+						{ linkTo !== 'none' &&
+							<Fragment>
+								<ToggleControl
+									label={ __( 'Open in New Tab' ) }
+									onChange={ this.setNewTab }
+									checked={ target === '_blank' }
+								/>
+								<TextControl
+									label={ __( 'Link Rel' ) }
+									value={ rel || '' }
+									onChange={ ( value ) => setAttributes( { rel: value } ) }
+								/>
+							</Fragment>
+						}
+				</PanelBody>
+				}
 				<BackgroundPanel { ...this.props }
  					hasCaption={ true }
  					hasOverlay={ true }

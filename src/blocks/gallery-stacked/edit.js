@@ -147,6 +147,7 @@ class GalleryStackedEdit extends Component {
 			linkTo,
 			shadow,
 			backgroundImg,
+			target,
 		} = attributes;
 
 		const hasImages = !! images.length;
