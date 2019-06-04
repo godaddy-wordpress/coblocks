@@ -122,7 +122,6 @@ const settings = {
 							}
 
 							// If an image has a custom link, override the linkTo selection.
-							// @todo - Add a target option here.
 							if ( image.imgLink ) {
 								href = image.imgLink;
 							}

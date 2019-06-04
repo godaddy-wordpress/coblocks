@@ -202,7 +202,6 @@ class GalleryImage extends Component {
 						</div>
 						{ linkTo === 'custom' &&
 							<form
-								// @todo - Add a target option here.
 								className="components-coblocks-gallery-item__image-link"
 								onSubmit={ ( event ) => event.preventDefault() }>
 								<Dashicon icon="admin-links" />
