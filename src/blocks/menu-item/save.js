@@ -11,7 +11,7 @@ export default function save( { attributes } ) {
 					<img src={ attributes.itemImage } alt={ '' } />
 				</figure>
 			) }
-			<RichText.Content tagName="p" value={ attributes.itemName } />
+			<RichText.Content tagName="h4" value={ attributes.itemName } />
 			<RichText.Content tagName="p" value={ attributes.itemDescription } />
 			<RichText.Content tagName="p" value={ attributes.itemCost } />
 		</div>

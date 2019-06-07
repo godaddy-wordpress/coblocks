@@ -1,0 +1,26 @@
+.wp-block-coblocks-menu {
+	display: block;
+}
+
+.wp-block-coblocks-menu .block-editor-block-list__layout {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	flex-flow: row wrap;
+
+	.block-list-appender,
+	.wp-block[data-type="core/heading"] {
+		flex: 1 100%;
+	}
+
+	.wp-block[data-type="coblocks/menu-item"] {
+		flex: 1 50%;
+	}
+}
+
+/* On small screens, we are no longer using row direction but column */
+@media all and (max-width: 514px) {
+	.wp-block-coblocks-menu .block-editor-block-list__layout {
+		flex-direction: column;
+	}
+}
