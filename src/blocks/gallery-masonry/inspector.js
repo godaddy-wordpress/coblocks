@@ -1,63 +1,39 @@
 /**
  * Internal dependencies
  */
-import { title } from './'
+import { title } from './';
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
-import linkOptions from '../../components/block-gallery/options/link-options';
 import captionOptions from '../../components/block-gallery/options/caption-options';
 import SizeControl from '../../components/size-control';
 import { BackgroundPanel } from '../../components/background';
+import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 
 /**
  * WordPress dependencies
  */
 const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
+const { Component } = wp.element;
 const { InspectorControls, PanelColorSettings } = wp.editor;
-const { PanelBody, RangeControl, ToggleControl, SelectControl, TextControl } = wp.components;
+const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
 
 /**
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.setSizeControl = this.setSizeControl.bind( this );
-		this.setLinkTo = this.setLinkTo.bind( this );
 		this.setRadiusTo = this.setRadiusTo.bind( this );
 		this.setCaptionStyleTo = this.setCaptionStyleTo.bind( this );
-		this.setNewTab = this.setNewTab.bind( this );
 		this.getColors = this.getColors.bind( this );
 	}
 
-	componentDidUpdate( prevProps ) {
+	componentDidUpdate() {
 		if ( this.props.attributes.gutter <= 0 ) {
 			this.props.setAttributes( {
 				radius: 0,
 			} );
 		}
-	}
-
-	setNewTab( value ) {
-		const { rel } = this.props.attributes;
-		const target = value ? '_blank' : undefined;
-
-		let updatedRel = rel;
-		if ( target && ! rel ) {
-			updatedRel = 'noreferrer noopener';
-		} else if ( ! target && rel === 'noreferrer noopener' ) {
-			updatedRel = undefined;
-		}
-
-		this.props.setAttributes( {
-			target,
-			rel: updatedRel,
-		} );
-	}
-
-	setLinkTo( value ) {
-		this.props.setAttributes( { linkTo: value } );
 	}
 
 	setRadiusTo( value ) {
@@ -77,7 +53,6 @@ class Inspector extends Component {
 	}
 
 	getColors() {
-
 		const {
 			attributes,
 			backgroundColor,
@@ -97,11 +72,10 @@ class Inspector extends Component {
 			{
 				value: backgroundColor.color,
 				onChange: ( nextBackgroundColor ) => {
-
 					setBackgroundColor( nextBackgroundColor );
 
 					// Add default padding, if they are not yet present.
-					if ( ! backgroundPadding && ! backgroundPaddingMobile  ) {
+					if ( ! backgroundPadding && ! backgroundPaddingMobile ) {
 						this.props.setAttributes( {
 							backgroundPadding: 30,
 							backgroundPaddingMobile: 30,
@@ -130,17 +104,15 @@ class Inspector extends Component {
 
 		if ( captions ) {
 			return background.concat( caption );
-		} else {
-			return background;
 		}
+
+		return background;
 	}
 
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
-			isSelected,
 		} = this.props;
 
 		const {
@@ -148,12 +120,7 @@ class Inspector extends Component {
 			captionStyle,
 			gridSize,
 			gutter,
-			images,
-			lightbox,
-			linkTo,
 			radius,
-			target,
-			rel,
 		} = attributes;
 
 		return (
@@ -166,7 +133,7 @@ class Inspector extends Component {
 						value={ gridSize }
 						resetValue={ 'xlrg' }
 					/>
-					<ResponsiveTabsControl { ...this.props }/>
+					<ResponsiveTabsControl { ...this.props } />
 					{ gutter > 0 && <RangeControl
 						label={ __( 'Rounded Corners' ) }
 						aria-label={ __( 'Add rounded corners to the gallery items.' ) }
@@ -179,7 +146,7 @@ class Inspector extends Component {
 					<ToggleControl
 						label={ __( 'Captions' ) }
 						checked={ !! captions }
-						onChange={ () => setAttributes( {  captions: ! captions } ) }
+						onChange={ () => setAttributes( { captions: ! captions } ) }
 						help={ this.getCaptionsHelp }
 					/>
 					{ captions &&
@@ -191,46 +158,20 @@ class Inspector extends Component {
 						/>
 					}
 				</PanelBody>
-				{ ! lightbox &&
-					<PanelBody
-						title={ __( 'Link Settings' ) }
-						initialOpen={ false }
-					>
-						<SelectControl
-							label={ __( 'Link To' ) }
-							value={ linkTo }
-							options={ linkOptions }
-							onChange={ this.setLinkTo }
-						/>
-						{ linkTo !== 'none' &&
-							<Fragment>
-								<ToggleControl
-									label={ __( 'Open in New Tab' ) }
-									onChange={ this.setNewTab }
-									checked={ target === '_blank' }
-								/>
-								<TextControl
-									label={ __( 'Link Rel' ) }
-									value={ rel || '' }
-									onChange={ ( value ) => setAttributes( { rel: value } ) }
-								/>
-							</Fragment>
-						}
-				</PanelBody>
-				}
+				<GalleryLinkSettings { ...this.props } />
 				<BackgroundPanel { ...this.props }
- 					hasCaption={ true }
- 					hasOverlay={ true }
- 					hasGalleryControls={ true }
- 				/>
- 				<PanelColorSettings
+					hasCaption={ true }
+					hasOverlay={ true }
+					hasGalleryControls={ true }
+				/>
+				<PanelColorSettings
 					title={ __( 'Color Settings' ) }
 					initialOpen={ false }
 					colorSettings={ this.getColors() }
 				/>
 			</InspectorControls>
-		)
+		);
 	}
-};
+}
 
 export default Inspector;
