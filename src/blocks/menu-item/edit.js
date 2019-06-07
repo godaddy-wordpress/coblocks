@@ -3,10 +3,24 @@
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { PanelBody, ToggleControl } = wp.components;
-const { InspectorControls, RichText } = wp.editor;
+const { PanelBody, ToggleControl, IconButton, Toolbar } = wp.components;
+const {
+	InspectorControls,
+	RichText,
+	MediaPlaceholder,
+	MediaUpload,
+	BlockControls,
+} = wp.editor;
 
 class MenuItem extends Component {
+
+	componentDidMount() {
+		const { attributes, setAttributes } = this.props;
+		if ( !! attributes.itemImage ) {
+			setAttributes( { showImage: true } );
+		}
+	}
+
 	renderInspectorControls() {
 		const { attributes, setAttributes } = this.props;
 		return (
@@ -27,6 +41,48 @@ class MenuItem extends Component {
 		);
 	}
 
+	renderImage() {
+		const { attributes } = this.props;
+		return (
+			<Fragment>
+				{ this.renderToolbarEditButton() }
+				<figure>
+					<img src={ attributes.itemImage } alt={ '' } />
+				</figure>
+			</Fragment>
+		);
+	}
+
+	renderPlaceholder() {
+		const { setAttributes } = this.props;
+		return (
+			<MediaPlaceholder
+				allowedTypes={ [ 'image' ] }
+				onSelect={ el => setAttributes( { itemImage: el.url } ) }
+			/>
+		);
+	}
+
+	renderToolbarEditButton() {
+		return (
+			<BlockControls>
+				<Toolbar>
+					<MediaUpload
+						allowedTypes={ [ 'image' ] }
+						render={ ( { open } ) => (
+							<IconButton
+								className="components-toolbar__control"
+								label={ __( 'Edit media' ) }
+								icon="edit"
+								onClick={ open }
+							/>
+						) }
+					/>
+				</Toolbar>
+			</BlockControls>
+		);
+	}
+
 	render() {
 		const { className, attributes, setAttributes } = this.props;
 
@@ -39,6 +95,10 @@ class MenuItem extends Component {
 			<Fragment>
 				{ this.renderInspectorControls() }
 				<div className={ className }>
+					{ attributes.showImage &&
+						( attributes.itemImage ?
+							this.renderImage() :
+							this.renderPlaceholder() ) }
 					<RichText
 						value={ attributes.itemName }
 						tagName="h4"
