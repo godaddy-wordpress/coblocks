@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies.
  */
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks } = wp.editor;
 
 export default function save( { attributes } ) {
 	return (
