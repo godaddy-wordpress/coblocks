@@ -164,7 +164,7 @@ const settings = {
 								[ `has-shadow-${ shadow }` ] : shadow != 'none' || shadow != undefined ,
 						} );
 
-						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ imgClasses } />;
+						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
 
 						return (
 							<li key={ image.id || image.url } className="coblocks-gallery--item">
