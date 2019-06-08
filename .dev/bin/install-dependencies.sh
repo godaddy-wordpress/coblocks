@@ -10,6 +10,6 @@ composer global require wp-coding-standards/wpcs
 
 phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
 
-./install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
+.dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
 
 cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
