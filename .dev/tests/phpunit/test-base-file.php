@@ -183,7 +183,7 @@ class Base_File_Tests extends WP_UnitTestCase {
 	 */
 	public function test_js_asset_source() {
 
-		$this->assertNotFalse( strpos( coblocks()->asset_source( 'js' ), '/wp-content/plugins/coblocks/dist/js/' ) );
+		$this->assertRegexp( '/\/wp-content\/plugins\/coblocks\/dist\/js\//', coblocks()->asset_source( 'js' ) );
 
 	}
 
@@ -192,7 +192,7 @@ class Base_File_Tests extends WP_UnitTestCase {
 	 */
 	public function test_css_asset_source() {
 
-		$this->assertNotFalse( strpos( coblocks()->asset_source( 'css' ), '/wp-content/plugins/coblocks/dist/css/' ) );
+		$this->assertRegexp( '/\/wp-content\/plugins\/coblocks\/dist\/css\//', coblocks()->asset_source( 'css' ) );
 
 	}
 
@@ -201,7 +201,7 @@ class Base_File_Tests extends WP_UnitTestCase {
 	 */
 	public function test_custom_css_asset_source() {
 
-		$this->assertNotFalse( strpos( coblocks()->asset_source( 'css', 'custom' ), '/wp-content/plugins/coblocks/dist/css/custom' ) );
+		$this->assertRegexp( '/\/wp-content\/plugins\/coblocks\/dist\/css\/custom/', coblocks()->asset_source( 'css', 'custom' ) );
 
 	}
 
