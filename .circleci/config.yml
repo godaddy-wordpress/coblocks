@@ -54,6 +54,7 @@ jobs:
             phpunit --coverage-html=/tmp/artifacts/code-coverage/html --coverage-clover=/tmp/artifacts/code-coverage/clover
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/html
+          destination: phpunit-coverage
       - run:
           name: "Run PHPUnit - Multi Site"
           command: WP_MULTISITE=1 phpunit
