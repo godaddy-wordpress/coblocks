@@ -49,15 +49,15 @@ jobs:
           command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
-          command: |
-            bash .dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
-            phpunit --coverage-html=/tmp/artifacts/code-coverage/html --coverage-clover=/tmp/artifacts/code-coverage/clover
+          command: phpunit --coverage-html=/tmp/artifacts/code-coverage/html --coverage-clover=/tmp/artifacts/code-coverage/clover
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/html
           destination: phpunit-coverage
       - run:
           name: "Run PHPUnit - Multi Site"
           command: WP_MULTISITE=1 phpunit
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
   php72-build:
     docker:
@@ -78,12 +78,12 @@ jobs:
           command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
       - run:
           name: "Run PHPUnit - Single Site"
-          command: |
-            bash .dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
-            phpunit
+          command: phpunit
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: "Run PHPUnit - Multisite"
           command: WP_MULTISITE=1 phpunit
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
   jest:
     docker:
