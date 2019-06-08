@@ -7,7 +7,7 @@
 	convertWarningsToExceptions="true"
 	>
 	<testsuites>
-		<testsuite>
+		<testsuite name="CoBlocks Test Suite">
 			<directory prefix="test-" suffix=".php">./.dev/tests/phpunit/</directory>
 		</testsuite>
 	</testsuites>
@@ -15,6 +15,7 @@
 		<whitelist addUncoveredFilesFromWhitelist="true">
 			<directory>./</directory>
 			<exclude>
+				<directory suffix=".php">./node_modules</directory>
 				<directory suffix=".php">./build</directory>
 			</exclude>
 		</whitelist>

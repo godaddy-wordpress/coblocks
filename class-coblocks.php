@@ -32,7 +32,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 	 *
 	 * @since 1.0.0
 	 */
-	final class CoBlocks {
+	class CoBlocks {
 		/**
 		 * This plugin's instance.
 		 *

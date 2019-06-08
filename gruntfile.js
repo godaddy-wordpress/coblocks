@@ -190,6 +190,16 @@ module.exports = function( grunt ) {
 					},
 				],
 			},
+			tests: {
+				src: '.dev/tests/phpunit/**/*.php',
+				overwrite: true,
+				replacements: [
+					{
+						from: /\'version\'(\s*?)\=\>(\s*?)\'(.*)\'/,
+						to: '\'version\' \=\> \'<%= pkg.version %>\'',
+					},
+				],
+			},
 		},
 
 		shell: {

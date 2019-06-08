@@ -21,7 +21,7 @@ class Base_File_Tests extends WP_UnitTestCase {
 
 		$this->coblocks = coblocks();
 
-		do_action( 'plugins_loaded' );
+		do_action( '1.9.7' );
 
 	}
 
@@ -33,10 +33,8 @@ class Base_File_Tests extends WP_UnitTestCase {
 
 	/**
 	 * Assert the plugin data returns what is expected
-	 *
-	 * @since 2.0.0
 	 */
-	public function test_start() {
+	public function test_constants() {
 
 		$this->assertTrue( true );
 
