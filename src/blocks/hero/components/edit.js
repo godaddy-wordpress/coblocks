@@ -74,7 +74,7 @@ class Edit extends Component {
 		window.addEventListener( 'resize', this.getBrowserWidth.bind( this ) );
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() { // eslint-disable-line camelcase
 		this.getBrowserWidth();
 	}
 	componentWillUnmount() {

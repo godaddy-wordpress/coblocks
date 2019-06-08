@@ -20,7 +20,7 @@ import DimensionsAttributes from '../../components/dimensions-control/attributes
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { getColorClassName, InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.editor;
 
 /**
  * Block constants

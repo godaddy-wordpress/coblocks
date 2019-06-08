@@ -114,7 +114,7 @@ class TypographyControls extends Component {
 		];
 
 		if ( typeof googleFonts[ fontFamily ] !== 'undefined' && typeof googleFonts[ fontFamily ].weight !== 'undefined' ) {
-			googleFonts[ fontFamily ].weight.map( ( k, v ) => {
+			googleFonts[ fontFamily ].weight.map( ( k ) => {
 				weight.push(
 					{ value: k, label: k }
 				);

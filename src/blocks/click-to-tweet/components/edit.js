@@ -34,7 +34,7 @@ const applyWithSelect = withSelect( ( select ) => {
  * Block edit function
  */
 class Edit extends Component {
-	componentWillReceiveProps( { postLink } ) {
+	UNSAFE_componentWillReceiveProps( { postLink } ) { // eslint-disable-line camelcase
 		if ( postLink ) {
 			this.props.setAttributes( {
 				url: postLink,

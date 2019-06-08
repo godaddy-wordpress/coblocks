@@ -21,7 +21,7 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 	];
 
 	//Add Google Fonts
-	Object.keys( googleFonts ).map( ( k, v ) => {
+	Object.keys( googleFonts ).map( ( k ) => {
 		fonts.push(
 			{ value: k, label: k }
 		);

@@ -11,6 +11,7 @@ const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
 const { withFallbackStyles } = wp.components;
+const { getComputedStyle } = window;
 
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	const { backgroundColor, textColor } = ownProps.attributes;

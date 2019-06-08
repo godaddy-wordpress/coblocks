@@ -141,7 +141,7 @@ class Inspector extends Component {
 
 			filtered.outlined = {};
 			filtered.filled = {};
-			updatedList.forEach( ( [ key, value ] ) => {
+			updatedList.forEach( ( [ key ] ) => {
 				filtered.outlined[ key ] = svg.outlined[ key ];
 				filtered.filled[ key ] = svg.filled[ key ];
 			} );
