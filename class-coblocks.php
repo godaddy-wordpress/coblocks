@@ -32,7 +32,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 	 *
 	 * @since 1.0.0
 	 */
-	class CoBlocks {
+	final class CoBlocks {
 		/**
 		 * This plugin's instance.
 		 *
@@ -181,11 +181,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		public function asset_source( $type = 'js', $directory = null ) {
 
 			if ( 'js' === $type ) {
-				if ( SCRIPT_DEBUG ) {
-					return COBLOCKS_PLUGIN_URL . 'src/' . $type . '/' . $directory;
-				} else {
-					return COBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
-				}
+				return SCRIPT_DEBUG ? COBLOCKS_PLUGIN_URL . 'src/' . $type . '/' . $directory : COBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
 			} else {
 				return COBLOCKS_PLUGIN_URL . 'dist/css/' . $directory;
 			}

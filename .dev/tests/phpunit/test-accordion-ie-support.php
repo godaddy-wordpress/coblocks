@@ -39,7 +39,7 @@ class Accordion_IE_Support_Tests extends WP_UnitTestCase {
 		$expected = [
 			'version' => '1.9.6',
 			'slug'    => 'coblocks',
-			// 'url'     => '/wp-content/plugins/coblocks',
+			'url'     => str_replace( '/.dev/tests', '', untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) ) ), // Fix inconsistencies path between plugin and unit tests
 		];
 
 		$version = $reflection->getProperty( '_version' );
@@ -53,7 +53,7 @@ class Accordion_IE_Support_Tests extends WP_UnitTestCase {
 		$check = [
 			'version' => $version->getValue( $new_reflection ),
 			'slug'    => $slug->getValue( $new_reflection ),
-			// 'url'     => $url->getValue( $new_reflection ),
+			'url'     => $url->getValue( $new_reflection ),
 		];
 
 		$this->assertEquals( $expected, $check );
