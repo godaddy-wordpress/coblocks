@@ -8,13 +8,6 @@
 
 class Base_File_Tests extends WP_UnitTestCase {
 
-	/**
-	 * Plugin instance
-	 *
-	 * @var object
-	 */
-	private $coblocks;
-
 	public function setUp() {
 
 		parent::setUp();
