@@ -112,7 +112,14 @@ class Body_Classes_Tests extends WP_UnitTestCase {
 	 */
 	public function test_theme_slug() {
 
-		$this->markTestSkipped( 'Todo: Write tests theme slug.' );
+		add_filter(
+			'template',
+			function( $theme ) {
+				return 'twentynineteen';
+			}
+		);
+
+		$this->assertEquals( 'twentynineteen', $this->coblocks_body_classes->theme_slug() );
 
 	}
 
@@ -121,16 +128,43 @@ class Body_Classes_Tests extends WP_UnitTestCase {
 	 */
 	public function test_body_class() {
 
-		$this->markTestSkipped( 'Todo: Write tests for theme slug body class.' );
+		add_filter(
+			'template',
+			function( $theme ) {
+				return 'twentynineteen';
+			}
+		);
+
+		$this->assertEquals( $this->coblocks_body_classes->body_class( [ 'existing' ] ), [ 'existing', 'is-twentynineteen' ] );
 
 	}
 
 	/**
-	 * Test the admin body class is set properly
+	 * Test the admin body class returns properly when not in the dashboard
+	 */
+	public function test_non_admin_body_class() {
+
+		$this->assertEquals( $this->coblocks_body_classes->admin_body_class( [ 'existing' ] ), [ 'existing' ] );
+
+	}
+
+	/**
+	 * Test the admin body class returns properly when in the dashboard
 	 */
 	public function test_admin_body_class() {
 
-		$this->markTestSkipped( 'Todo: Write tests for the admin body class.' );
+		global $pagenow;
+
+		$pagenow = 'post.php';
+
+		add_filter(
+			'template',
+			function( $theme ) {
+				return 'twentynineteen';
+			}
+		);
+
+		$this->assertEquals( $this->coblocks_body_classes->admin_body_class( 'existing' ), 'existing is-twentynineteen' );
 
 	}
 }
