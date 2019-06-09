@@ -48,4 +48,89 @@ class Body_Classes_Tests extends WP_UnitTestCase {
 		$this->assertTrue( true );
 
 	}
+
+	/**
+	 * Test the active theme is correct
+	 */
+	public function test_is_active_theme() {
+
+		$this->assertTrue( $this->coblocks_body_classes->is_active_theme( 'default' ) );
+
+	}
+
+	/**
+	 * Test the themes array returns as expected
+	 */
+	public function test_themes() {
+
+		$expected = [
+			'twentynineteen',
+			'twentyseventeen',
+			'twentysixteen',
+			'twentyfifteen',
+			'twentyfourteen',
+			'twentythirteen',
+			'twentyeleven',
+			'twentytwelve',
+		];
+
+		$this->assertEquals( $expected, $this->coblocks_body_classes->themes() );
+
+	}
+
+	/**
+	 * Test the themes array returns as expected
+	 */
+	public function test_filtered_themes() {
+
+		$expected = [
+			'twentynineteen',
+			'twentyseventeen',
+			'twentysixteen',
+			'twentyfifteen',
+			'twentyfourteen',
+			'twentythirteen',
+			'twentyeleven',
+			'twentytwelve',
+			'test',
+		];
+
+		add_filter(
+			'coblocks_theme_body_classes',
+			function( $themes ) {
+				$themes[] = 'test';
+				return $themes;
+			}
+		);
+
+		$this->assertEquals( $expected, $this->coblocks_body_classes->themes() );
+
+	}
+
+	/**
+	 * Test the theme slug returns as expected
+	 */
+	public function test_theme_slug() {
+
+		$this->markTestSkipped( 'Todo: Write tests theme slug.' );
+
+	}
+
+	/**
+	 * Test the body class matches the theme
+	 */
+	public function test_body_class() {
+
+		$this->markTestSkipped( 'Todo: Write tests for theme slug body class.' );
+
+	}
+
+	/**
+	 * Test the admin body class is set properly
+	 */
+	public function test_admin_body_class() {
+
+		$this->markTestSkipped( 'Todo: Write tests for the admin body class.' );
+
+	}
 }
