@@ -26,6 +26,9 @@ class Block_Assets_Tests extends WP_UnitTestCase {
 
 	}
 
+	/**
+	 * Test the register method
+	 */
 	public function test_register() {
 
 		$reflection     = new ReflectionClass( $this->coblocks_block_assets );
@@ -74,7 +77,7 @@ class Block_Assets_Tests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test the constructor constants are set correctly
+	 * Test the constructor actions
 	 */
 	public function test_construct_actions() {
 
