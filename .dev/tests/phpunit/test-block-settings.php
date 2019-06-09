@@ -110,5 +110,7 @@ class Block_Settings_Tests extends WP_UnitTestCase {
 
 		$this->coblocks_block_settings->register_settings();
 
+		$this->assertArrayHasKey( 'coblocks_settings_api', get_registered_settings() );
+
 	}
 }
