@@ -1,11 +1,9 @@
 <?php
 /**
- * Test WPIcons Pro base plugin file
+ * Test includes/class-coblocks-block-assets.php
  *
- * @package WPIcons Pro Pro
- * @since 2.0.0
+ * @package CoBlocks
  */
-
 class Block_Assets_Tests extends WP_UnitTestCase {
 
 	private $coblocks_block_assets;

@@ -1,11 +1,9 @@
 <?php
 /**
- * Test WPIcons Pro base plugin file
+ * Test includes/class-coblocks-accordion-ie-support.php
  *
- * @package WPIcons Pro Pro
- * @since 2.0.0
+ * @package CoBlocks
  */
-
 class Accordion_IE_Support_Tests extends WP_UnitTestCase {
 
 	public function setUp() {

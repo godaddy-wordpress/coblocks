@@ -1,11 +1,9 @@
 <?php
 /**
- * Test WPIcons Pro base plugin file
+ * Test class-coblocks.php
  *
- * @package WPIcons Pro Pro
- * @since 2.0.0
+ * @package CoBlocks
  */
-
 class Base_File_Tests extends WP_UnitTestCase {
 
 	public function setUp() {
