@@ -172,7 +172,7 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 
 		$wp_scripts = wp_scripts();
 
-		$this->assertRegExp( '/var baAtts = {"url":"http:\/\/example.org\/wp-content\/plugins\/Users\/eherman\/Desktop\/Sites\/gutenberg\/wp-content\/plugins\/coblocks"};/', stripslashes_deep( $wp_scripts->registered['coblocks-google-maps']->extra['data'] ) );
+		$this->assertRegExp( '/var baAtts = {"url":"http:\/\/example.org\/wp-content\/plugins/', stripslashes_deep( $wp_scripts->registered['coblocks-google-maps']->extra['data'] ) );
 
 	}
 
