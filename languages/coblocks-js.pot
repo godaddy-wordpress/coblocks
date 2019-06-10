@@ -3,70 +3,34 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/menu-item/edit.js:106
-msgid "Add menu item..."
-msgstr ""
-
-#: src/blocks/menu-item/edit.js:113
-msgid "Add description..."
-msgstr ""
-
-#: src/blocks/menu-item/edit.js:120
-msgid "$0.00"
-msgstr ""
-
-#: src/blocks/menu-item/edit.js:28
-#: src/blocks/menu/edit.js:77
-msgid "Menu Settings"
-msgstr ""
-
-#: src/blocks/menu-item/edit.js:30
-#: src/blocks/menu/edit.js:79
-msgid "Images"
-msgstr ""
-
-#: src/blocks/menu-item/edit.js:33
-msgid "Showing image for this item"
-msgstr ""
-
-#: src/blocks/menu-item/edit.js:34
-msgid "Toggle to show image for this item."
-msgstr ""
-
-#: src/blocks/menu-item/edit.js:75
+#: src/blocks/menu-item/edit.js:132
 msgid "Edit media"
 msgstr ""
 
-#: src/blocks/menu/edit.js:18
-msgid "Bread Sticks"
+#: src/blocks/menu-item/edit.js:162
+msgid "Add menu item..."
 msgstr ""
 
-#: src/blocks/menu/edit.js:27
-msgid "Onion Rings"
+#: src/blocks/menu-item/edit.js:169
+msgid "Add description..."
 msgstr ""
 
-#: src/blocks/menu/edit.js:36
-msgid "Nachos Supreme"
+#: src/blocks/menu-item/edit.js:176
+msgid "$0.00"
 msgstr ""
 
-#: src/blocks/menu/edit.js:45
-msgid "Jalepeno Poppers"
+#: src/blocks/menu-item/edit.js:85
+msgid "Menu Settings"
 msgstr ""
 
-#: src/blocks/menu/edit.js:46
-msgid ""
-"Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis "
-"vestibulum."
+#: src/blocks/menu-item/edit.js:87
+msgid "Images"
 msgstr ""
 
-#: src/blocks/menu/edit.js:47
-msgid "$4.75"
+#: src/blocks/menu-item/edit.js:90
+msgid "Showing image for this item"
 msgstr ""
 
-#: src/blocks/menu/edit.js:82
-msgid "Showing images for each item"
-msgstr ""
-
-#: src/blocks/menu/edit.js:83
-msgid "Toggle to show images for each item."
+#: src/blocks/menu-item/edit.js:91
+msgid "Toggle to show image for this item."
 msgstr ""

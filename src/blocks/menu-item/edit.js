@@ -4,6 +4,7 @@
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { PanelBody, ToggleControl, IconButton, Toolbar } = wp.components;
+const { dispatch, select } = wp.data;
 const {
 	InspectorControls,
 	RichText,
@@ -12,12 +13,68 @@ const {
 	BlockControls,
 } = wp.editor;
 
-class MenuItem extends Component {
+/**
+ * Handle creation and removal of placeholder elements so that we always have one available to use.
+ *
+ * @param {Integer} childClientId The child block's ClientId.
+ */
+const handlePlaceholderPlacement = childClientId => {
+	const menuClientId = select( 'core/editor' ).getBlockRootClientId(
+		childClientId
+	);
 
+	const menuItems = select( 'core/editor' ).getBlocksByClientId( menuClientId )[ 0 ]
+		.innerBlocks;
+
+	const placeholders = menuItems.filter(
+		item => item.name === 'coblocks/menu-item' && isEmpty( item )
+	);
+
+	// Add a placeholder if there are none. Remove trailing placholders if there are more than one.
+	if ( placeholders.length === 0 ) {
+		const newMenuItem = wp.blocks.createBlock( 'coblocks/menu-item', {} );
+		dispatch( 'core/editor' ).insertBlocks(
+			newMenuItem,
+			menuItems.length,
+			menuClientId,
+			false
+		);
+	} else if ( placeholders.length > 1 ) {
+		const extraPlaceholders = placeholders.filter(
+			item => item.clientId !== childClientId
+		);
+		dispatch( 'core/editor' ).removeBlocks(
+			extraPlaceholders.map( item => item.clientId ),
+			false
+		);
+	}
+};
+
+/**
+ * Determine if the props of a Menu-Item block are empty.
+ *
+ * @param {Object} props The block props to check.
+ * @returns {Boolean} The empty state of the props passed.
+ */
+const isEmpty = props => {
+	return ! (
+		!! props.attributes.itemName ||
+		!! props.attributes.itemDescription ||
+		!! props.attributes.itemCost
+	);
+};
+
+class MenuItem extends Component {
 	componentDidMount() {
 		const { attributes, setAttributes } = this.props;
 		if ( !! attributes.itemImage ) {
 			setAttributes( { showImage: true } );
+		}
+	}
+
+	componentDidUpdate( prevProps ) {
+		if ( isEmpty( prevProps ) !== isEmpty( this.props ) ) {
+			handlePlaceholderPlacement( this.props.clientId );
 		}
 	}
 
