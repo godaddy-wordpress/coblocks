@@ -35,7 +35,7 @@ class CoBlocks_Admin_Footer {
 	 * @return string The content that will be printed.
 	 */
 	public function admin_footer_text( $footer_text ) {
-		global $pagenow, $post_type;
+		global $pagenow;
 
 		if ( in_array( $pagenow, array( 'edit.php' ), true ) ) {
 			$rate_text = sprintf(
@@ -47,6 +47,8 @@ class CoBlocks_Admin_Footer {
 
 			return $rate_text;
 		}
+
+		return $footer_text;
 	}
 }
 

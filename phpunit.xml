@@ -17,6 +17,7 @@
 			<exclude>
 				<directory suffix=".php">./node_modules</directory>
 				<directory suffix=".php">./build</directory>
+				<file>./includes/get-dynamic-blocks.php</file>
 			</exclude>
 		</whitelist>
 	</filter>

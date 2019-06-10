@@ -34,9 +34,7 @@ class CoBlocks_Post_Meta {
 			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'auth_callback' => function() {
-					return current_user_can( 'edit_posts' );
-				},
+				'auth_callback' => [ $this, 'auth_callback' ],
 			)
 		);
 
@@ -46,9 +44,7 @@ class CoBlocks_Post_Meta {
 			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'auth_callback' => function() {
-					return current_user_can( 'edit_posts' );
-				},
+				'auth_callback' => [ $this, 'auth_callback' ],
 			)
 		);
 
@@ -58,9 +54,7 @@ class CoBlocks_Post_Meta {
 			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'auth_callback' => function() {
-					return current_user_can( 'edit_posts' );
-				},
+				'auth_callback' => [ $this, 'auth_callback' ],
 			)
 		);
 
@@ -70,11 +64,20 @@ class CoBlocks_Post_Meta {
 			array(
 				'show_in_rest'  => true,
 				'single'        => true,
-				'auth_callback' => function() {
-					return current_user_can( 'edit_posts' );
-				},
+				'auth_callback' => [ $this, 'auth_callback' ],
 			)
 		);
+	}
+
+	/**
+	 * Determine if the current user can edit posts
+	 *
+	 * @return bool True when can edit posts, else false.
+	 */
+	private function auth_callback() {
+
+		return current_user_can( 'edit_posts' );
+
 	}
 }
 
