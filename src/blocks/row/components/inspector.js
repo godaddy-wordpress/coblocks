@@ -116,7 +116,7 @@ class Inspector extends Component {
 					{ ( columns && selectedRows >= 1 ) &&
 						<Fragment>
 							{ selectedRows > 1 &&
-								<PanelBody title={ __( 'Style' ) } initialOpen={ false }>
+								<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
 									<div className="components-coblocks-visual-dropdown">
 										<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
 											{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
