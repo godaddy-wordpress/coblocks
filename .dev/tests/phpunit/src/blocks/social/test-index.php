@@ -26,7 +26,7 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 
 		if ( ! empty( $this->thumbnail_id ) ) {
 
-			wp_delete_post( $this->thumbnail_id, true );
+			wp_delete_attachment( $this->thumbnail_id, true );
 
 		}
 
@@ -144,7 +144,7 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 			'pinterest' => true,
 		];
 
-		$this->assertRegExp( '/<a href="https:\/\/pinterest.com\/pin\/create\/button\/\?&#038;url=http:\/\/example.org\/\?p=17&#038;description=CoBlocks%20Social&#038;media=http:\/\/example.org\/wp-content\/uploads\/2019\/06\/cat-pet-animal-domestic[-0-9]+-1024x680.jpeg" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--pinterest    " title="Share on Pinterest" style="">/', coblocks_render_social_block( $attributes ) );
+		$this->assertRegExp( '/<a href="https:\/\/pinterest.com\/pin\/create\/button\/\?&#038;url=http:\/\/example.org\/\?p=17&#038;description=CoBlocks%20Social&#038;media=http:\/\/example.org\/wp-content\/uploads\/2019\/06\/[a-zA-Z0-9-]+.jpeg" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--pinterest    " title="Share on Pinterest" style="">/', coblocks_render_social_block( $attributes ) );
 
 	}
 
