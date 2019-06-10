@@ -36,7 +36,7 @@ module.exports = function( grunt ) {
 					{
 						expand: true,
 						src: [
-							'class-' + pkg.name + '.php',
+							pkg.name + '.php',
 							'LICENSE',
 							'readme.txt',
 							'src/**',
@@ -143,7 +143,7 @@ module.exports = function( grunt ) {
 		replace: {
 			php: {
 				src: [
-					'class-' + pkg.name + '.php',
+					pkg.name + '.php',
 					'includes/**/*.php'
 				],
 				overwrite: true,
