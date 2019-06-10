@@ -268,7 +268,7 @@ class CoBlocks_Feedback {
 			<div class="coblocks-notice-inner">
 				<div class="coblocks-notice-icon">
 					<?php /* translators: 1. Name */ ?>
-					<img src="<?php echo esc_url( COBLOCKS_PLUGIN_URL . 'dist/images/admin/icon-notice.jpg' ); ?>" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'coblocks' ), esc_attr( $this->name ) ); ?>" />
+					<img src="<?php echo esc_url( coblocks()->plugin_url() . '/dist/images/admin/icon-notice.jpg' ); ?>" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'coblocks' ), esc_attr( $this->name ) ); ?>" />
 				</div>
 				<div class="coblocks-notice-content">
 					<?php /* translators: 1. Name */ ?>
@@ -307,8 +307,8 @@ class CoBlocks_Feedback {
 */
 new CoBlocks_Feedback(
 	array(
-		'slug'       => 'coblocks_plugin_feedback',
+		'slug'       => 'coblocks_plusdsfdfgin_feedback',
 		'name'       => __( 'CoBlocks', 'coblocks' ),
-		'time_limit' => WEEK_IN_SECONDS,
+		'time_limit' => MINUTE_IN_SECONDS,
 	)
 );

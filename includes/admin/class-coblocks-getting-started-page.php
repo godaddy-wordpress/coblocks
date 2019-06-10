@@ -111,13 +111,13 @@ class CoBlocks_Getting_Started_Page {
 				<div class="videos">
 					<?php /* translators: CoBlocks plugin name */ ?>
 					<a data-lity href="https://youtube.com/watch?v=EsIpvCcTKPw" title="<?php echo sprintf( esc_attr__( 'Watch how to create your first page with %s', 'coblocks' ), 'CoBlocks' ); ?>">
-						<img src="<?php echo esc_url( COBLOCKS_PLUGIN_URL . 'dist/images/admin/video.jpg' ); ?>" alt="<?php echo esc_attr__( 'Watch how to create your first page', 'coblocks' ); ?>">
+						<img src="<?php echo esc_url( coblocks()->plugin_url() . '/dist/images/admin/video.jpg' ); ?>" alt="<?php echo esc_attr__( 'Watch how to create your first page', 'coblocks' ); ?>">
 					</a>
 					<a data-lity href="https://youtube.com/watch?v=cAQC_L03Z70" title="<?php echo esc_attr__( 'Watch how to use the Row and Shape Divider blocks', 'coblocks' ); ?>">
-						<img src="<?php echo esc_url( COBLOCKS_PLUGIN_URL . 'dist/images/admin/video-2.jpg' ); ?>" alt="<?php echo esc_attr__( 'Watch how to use the Row and Shape Divider blocks', 'coblocks' ); ?>">
+						<img src="<?php echo esc_url( coblocks()->plugin_url() . '/dist/images/admin/video-2.jpg' ); ?>" alt="<?php echo esc_attr__( 'Watch how to use the Row and Shape Divider blocks', 'coblocks' ); ?>">
 					</a>
 					<a data-lity href="https://youtube.com/watch?v=SZOMMtrd0nw" title="<?php echo esc_attr__( 'Watch how to use the Media Card block', 'coblocks' ); ?>">
-						<img src="<?php echo esc_url( COBLOCKS_PLUGIN_URL . 'dist/images/admin/video-3.jpg' ); ?>" alt="<?php echo esc_attr__( 'Watch how to use the Media Card block', 'coblocks' ); ?>">
+						<img src="<?php echo esc_url( coblocks()->plugin_url() . '/dist/images/admin/video-3.jpg' ); ?>" alt="<?php echo esc_attr__( 'Watch how to use the Media Card block', 'coblocks' ); ?>">
 					</a>
 				</div>
 
