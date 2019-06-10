@@ -4,7 +4,7 @@
  *
  * @package CoBlocks
  */
-class Base_File_Tests extends WP_UnitTestCase {
+class CoBlocks_Tests extends WP_UnitTestCase {
 
 	public function setUp() {
 

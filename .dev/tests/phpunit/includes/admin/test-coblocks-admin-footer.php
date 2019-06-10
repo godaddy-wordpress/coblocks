@@ -4,7 +4,7 @@
  *
  * @package CoBlocks
  */
-class Admin_Footer_Tests extends WP_UnitTestCase {
+class CoBlocks_Admin_Footer_Tests extends WP_UnitTestCase {
 
 	private $coblocks_admin_footer;
 

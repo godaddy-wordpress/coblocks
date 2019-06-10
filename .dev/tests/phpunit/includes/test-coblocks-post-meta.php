@@ -4,7 +4,7 @@
  *
  * @package CoBlocks
  */
-class Post_Meta_Tests extends WP_Test_REST_TestCase {
+class CoBlocks_Post_Meta_Tests extends WP_Test_REST_TestCase {
 
 	private $coblocks_post_meta;
 

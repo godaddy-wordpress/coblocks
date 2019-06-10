@@ -4,7 +4,7 @@
  *
  * @package CoBlocks
  */
-class Block_Settings_Tests extends WP_UnitTestCase {
+class CoBlocks_Block_Settings_Tests extends WP_UnitTestCase {
 
 	private $coblocks_block_settings;
 

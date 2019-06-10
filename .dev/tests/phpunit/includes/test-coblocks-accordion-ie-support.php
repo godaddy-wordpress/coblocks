@@ -4,7 +4,7 @@
  *
  * @package CoBlocks
  */
-class Accordion_IE_Support_Tests extends WP_UnitTestCase {
+class CoBlocks_Accordion_IE_Support_Tests extends WP_UnitTestCase {
 
 	public function setUp() {
 

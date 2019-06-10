@@ -4,7 +4,7 @@
  *
  * @package CoBlocks
  */
-class Google_Map_Block_Tests extends WP_UnitTestCase {
+class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 
 	private $coblocks_google_map_block;
 

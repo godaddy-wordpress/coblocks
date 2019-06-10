@@ -4,7 +4,7 @@
  *
  * @package CoBlocks
  */
-class Register_Blocks_Tests extends WP_UnitTestCase {
+class CoBlocks_Register_Blocks_Tests extends WP_UnitTestCase {
 
 	private $coblocks_register_blocks;
 

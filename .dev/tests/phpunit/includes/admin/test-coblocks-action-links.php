@@ -4,7 +4,7 @@
  *
  * @package CoBlocks
  */
-class Action_Links_Tests extends WP_UnitTestCase {
+class CoBlocks_Action_Links_Tests extends WP_UnitTestCase {
 
 	private $coblocks_action_links;
 

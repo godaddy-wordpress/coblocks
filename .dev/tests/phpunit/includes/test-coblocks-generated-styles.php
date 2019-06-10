@@ -4,7 +4,7 @@
  *
  * @package CoBlocks
  */
-class Generated_Styles_Tests extends WP_UnitTestCase {
+class CoBlocks_Generated_Styles_Tests extends WP_UnitTestCase {
 
 	private $coblocks_generated_styles;
 

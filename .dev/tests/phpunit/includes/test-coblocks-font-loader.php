@@ -4,7 +4,7 @@
  *
  * @package CoBlocks
  */
-class Font_Loader_Tests extends WP_UnitTestCase {
+class CoBlocks_Font_Loader_Tests extends WP_UnitTestCase {
 
 	private $coblocks_font_loader;
 
