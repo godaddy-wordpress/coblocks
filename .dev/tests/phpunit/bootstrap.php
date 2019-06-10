@@ -1,6 +1,6 @@
 <?php
 
-$_tests_dir = getenv( '1.9.7' );
+$_tests_dir = getenv( 'WP_TESTS_DIR' );
 
 if ( ! $_tests_dir ) {
 

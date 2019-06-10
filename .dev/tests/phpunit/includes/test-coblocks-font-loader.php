@@ -1,6 +1,6 @@
 <?php
 /**
- * Test includes/class-coblocks-body-classes.php
+ * Test includes/class-coblocks-font-loader.php
  *
  * @package CoBlocks
  */
@@ -22,6 +22,8 @@ class Font_Loader_Tests extends WP_UnitTestCase {
 
 		parent::tearDown();
 
+		unset( $GLOBALS['current_screen'] );
+
 	}
 
 	/**
@@ -36,7 +38,7 @@ class Font_Loader_Tests extends WP_UnitTestCase {
 		$instance->setAccessible( true );
 		$instance->setValue( null, null );
 
-		$object = $new_reflection::register();
+		$new_reflection::register();
 
 		$this->assertTrue( is_a( $instance->getValue( 'instance' ), 'CoBlocks_Font_Loader' ) );
 

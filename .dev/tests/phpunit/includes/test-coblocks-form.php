@@ -1,6 +1,6 @@
 <?php
 /**
- * Test includes/class-coblocks-body-classes.php
+ * Test includes/class-coblocks-form.php
  *
  * @package CoBlocks
  */
@@ -21,6 +21,8 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	public function tearDown() {
 
 		parent::tearDown();
+
+		unset( $GLOBALS['current_screen'] );
 
 	}
 

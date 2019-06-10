@@ -22,6 +22,8 @@ class Body_Classes_Tests extends WP_UnitTestCase {
 
 		parent::tearDown();
 
+		unset( $GLOBALS['current_screen'] );
+
 	}
 
 	/**

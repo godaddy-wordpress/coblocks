@@ -27,6 +27,8 @@ class Base_File_Tests extends WP_UnitTestCase {
 
 		parent::tearDown();
 
+		unset( $GLOBALS['current_screen'] );
+
 	}
 
 	public function test_coblocks() {
@@ -71,8 +73,8 @@ class Base_File_Tests extends WP_UnitTestCase {
 			'has_pro'     => false,
 			'plugin_dir'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_path( __FILE__ ) ),
 			'plugin_url'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_url( __FILE__ ) ),
-			'plugin_file' => str_replace( '.dev/tests/phpunit/test-base-file.php', 'class-coblocks.php', __FILE__ ),
-			'plugin_base' => str_replace( '.dev/tests/phpunit/test-base-file.php', 'class-coblocks.php', plugin_basename( __FILE__ ) ),
+			'plugin_file' => str_replace( '.dev/tests/phpunit/test-class-coblocks.php', 'class-coblocks.php', __FILE__ ),
+			'plugin_base' => str_replace( '.dev/tests/phpunit/test-class-coblocks.php', 'class-coblocks.php', plugin_basename( __FILE__ ) ),
 			'shop_url'    => 'https://coblocks.com/',
 			'review_url'  => 'https://wordpress.org/support/plugin/coblocks/reviews/?filter=5',
 		];
