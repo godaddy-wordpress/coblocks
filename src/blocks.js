@@ -53,7 +53,7 @@ import * as highlight from './blocks/highlight';
 import * as pricingTable from './blocks/pricing-table';
 import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';
-import * as social from './blocks/social';
+import * as share from './blocks/share';
 import * as map from './blocks/map';
 import * as mediaCard from './blocks/media-card';
 import * as shapeDivider from './blocks/shape-divider';
@@ -82,7 +82,7 @@ export function registerBlocks () {
 		pricingTable,
 		pricingTableItem,
 		row,
-		social,
+		share,
 		map,
 		mediaCard,
 		shapeDivider,
