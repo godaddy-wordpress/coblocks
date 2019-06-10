@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.2.4
-Stable tag: 1.9.6
+Stable tag: 1.10.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -125,6 +125,19 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 Please reach out via the contact form at the bottom right of [our website](https://coblocks.com).
 
 == Changelog ==
+
+= 1.10.0 =
+* New: Add easy mode to the Google Map block without an API key requirement
+* New: Add reCAPCHTA support to the Form block
+* New: Add admin color scheme support for UI elements within CoBlocks
+* New: Add image reordering to gallery blocks
+* New: Add new "Circular" style to the Social block
+* New: Add official support for Gutenberg 5.8 🎊
+* Tweak: Clean up SASS variables
+* Tweak: Remove block mover from the Media Card block
+* Fix: Resolve Pricing Table outlines issue in Gutenberg 5.7+
+* Fix: Resolve Hero block layout issue
+* Fix: Resolve "normal" text transform issue within the editor
 
 = 1.9.6 =
 * Fix: Resolve issue with missing Gutenberg component
