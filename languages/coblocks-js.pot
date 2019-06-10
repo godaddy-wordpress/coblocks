@@ -3,34 +3,34 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/menu-item/edit.js:132
+#: src/blocks/menu-item/edit.js:136
 msgid "Edit media"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:162
+#: src/blocks/menu-item/edit.js:169
 msgid "Add menu item..."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:169
+#: src/blocks/menu-item/edit.js:176
 msgid "Add description..."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:176
+#: src/blocks/menu-item/edit.js:183
 msgid "$0.00"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:85
+#: src/blocks/menu-item/edit.js:89
 msgid "Menu Settings"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:87
+#: src/blocks/menu-item/edit.js:91
 msgid "Images"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:90
+#: src/blocks/menu-item/edit.js:94
 msgid "Showing image for this item"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:91
+#: src/blocks/menu-item/edit.js:95
 msgid "Toggle to show image for this item."
 msgstr ""

@@ -73,7 +73,10 @@ class MenuItem extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		if ( isEmpty( prevProps ) !== isEmpty( this.props ) ) {
+		if (
+			isEmpty( prevProps ) !== isEmpty( this.props ) ||
+			( ! prevProps.isSelected && this.props.isSelected )
+		) {
 			handlePlaceholderPlacement( this.props.clientId );
 		}
 	}
