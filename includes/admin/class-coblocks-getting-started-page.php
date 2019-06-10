@@ -159,7 +159,7 @@ class CoBlocks_Getting_Started_Page {
 	 */
 	public function redirect( $plugin ) {
 
-		if ( 'coblocks/class-coblocks.php' !== $plugin ) {
+		if ( 'coblocks/coblocks.php' !== $plugin ) {
 
 			return;
 
