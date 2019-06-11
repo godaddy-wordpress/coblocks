@@ -60,7 +60,7 @@
 		"grunt-contrib-cssmin": "^2.0.0",
 		"grunt-contrib-imagemin": "^3.1.0",
 		"grunt-contrib-jshint": "^1.1.0",
-		"grunt-contrib-uglify": "^2.0.0",
+		"grunt-contrib-uglify-es": "github:gruntjs/grunt-contrib-uglify#harmony",
 		"grunt-contrib-watch": "^1.1.0",
 		"grunt-dev-update": "^2.3.0",
 		"grunt-eslint": "^21.0.0",
