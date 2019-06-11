@@ -1,4 +1,9 @@
 /**
+ * Internal dependencies.
+ */
+import { hasEmptyAttributes } from '../../utils/block-helpers';
+
+/**
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
@@ -27,7 +32,8 @@ const handlePlaceholderPlacement = childClientId => {
 		.innerBlocks;
 
 	const placeholders = menuItems.filter(
-		item => item.name === 'coblocks/menu-item' && isEmpty( item )
+		item =>
+			item.name === 'coblocks/menu-item' && hasEmptyAttributes( item.attributes )
 	);
 
 	// Add a placeholder if there are none. Remove trailing placholders if there are more than one.
@@ -50,20 +56,6 @@ const handlePlaceholderPlacement = childClientId => {
 	}
 };
 
-/**
- * Determine if the props of a Menu-Item block are empty.
- *
- * @param {Object} props The block props to check.
- * @returns {Boolean} The empty state of the props passed.
- */
-const isEmpty = props => {
-	return ! (
-		!! props.attributes.itemName ||
-		!! props.attributes.itemDescription ||
-		!! props.attributes.itemCost
-	);
-};
-
 class MenuItem extends Component {
 	componentDidMount() {
 		const { attributes, setAttributes } = this.props;
@@ -74,7 +66,8 @@ class MenuItem extends Component {
 
 	componentDidUpdate( prevProps ) {
 		if (
-			isEmpty( prevProps ) !== isEmpty( this.props ) ||
+			hasEmptyAttributes( prevProps.attributes ) !==
+				hasEmptyAttributes( this.props.attributes ) ||
 			( ! prevProps.isSelected && this.props.isSelected )
 		) {
 			handlePlaceholderPlacement( this.props.clientId );

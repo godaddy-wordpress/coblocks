@@ -1,21 +1,24 @@
 /**
+ * Internal dependencies.
+ */
+import { hasEmptyAttributes } from '../../utils/block-helpers';
+
+/**
  * WordPress dependencies.
  */
 const { RichText } = wp.editor;
 
 export default function save( { attributes } ) {
-	return attributes.itemName ||
-		attributes.itemDescription ||
-		attributes.itemCost ? (
-			<div className={ attributes.className }>
-				{ attributes.showImage && attributes.itemImage && (
-					<figure>
-						<img src={ attributes.itemImage } alt={ '' } />
-					</figure>
-				) }
-				<RichText.Content tagName="h4" value={ attributes.itemName } />
-				<RichText.Content tagName="p" value={ attributes.itemDescription } />
-				<RichText.Content tagName="p" value={ attributes.itemCost } />
-			</div>
-		) : null;
+	return hasEmptyAttributes( attributes ) ? null : (
+		<div className={ attributes.className }>
+			{ attributes.showImage && attributes.itemImage && (
+				<figure>
+					<img src={ attributes.itemImage } alt={ '' } />
+				</figure>
+			) }
+			<RichText.Content tagName="h4" value={ attributes.itemName } />
+			<RichText.Content tagName="p" value={ attributes.itemDescription } />
+			<RichText.Content tagName="p" value={ attributes.itemCost } />
+		</div>
+	);
 }
