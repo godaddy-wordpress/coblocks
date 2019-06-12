@@ -3,34 +3,86 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/menu-item/edit.js:128
-msgid "Edit media"
+#: src/blocks/menu/edit.js:148
+msgid "Styles"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:158
-msgid "Add menu item..."
-msgstr ""
-
-#: src/blocks/menu-item/edit.js:165
-msgid "Add description..."
-msgstr ""
-
-#: src/blocks/menu-item/edit.js:172
-msgid "$0.00"
-msgstr ""
-
-#: src/blocks/menu-item/edit.js:81
+#: src/blocks/menu/edit.js:181
 msgid "Menu Settings"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:83
+#: src/blocks/menu/edit.js:183
 msgid "Images"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:86
-msgid "Showing image for this item"
+#: src/blocks/menu/edit.js:186
+msgid "Showing images for each item"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:87
-msgid "Toggle to show image for this item."
+#: src/blocks/menu/edit.js:187
+msgid "Toggle to show images for each item."
+msgstr ""
+
+#: src/blocks/menu/edit.js:26
+msgid "Bread Sticks"
+msgstr ""
+
+#: src/blocks/menu/edit.js:37
+msgid "Onion Rings"
+msgstr ""
+
+#: src/blocks/menu/edit.js:48
+msgid "Nachos Supreme"
+msgstr ""
+
+#: src/blocks/menu/edit.js:59
+msgid "Jalepeno Poppers"
+msgstr ""
+
+#: src/blocks/menu/edit.js:60
+msgid ""
+"Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis "
+"vestibulum."
+msgstr ""
+
+#: src/blocks/menu/edit.js:63
+msgid "$4.75"
+msgstr ""
+
+#: src/blocks/menu/edit.js:70
+#: src/blocks/menu/edit.js:72
+#: src/blocks/menu/index.js:56
+msgid "Grid"
+msgstr ""
+
+#: src/blocks/menu/edit.js:71
+#: src/blocks/menu/edit.js:88
+#: src/blocks/menu/index.js:57
+msgid "Justified Grid"
+msgstr ""
+
+#: src/blocks/menu/edit.js:72
+#: src/blocks/menu/edit.js:103
+#: src/blocks/menu/index.js:58
+msgid "List"
+msgstr ""
+
+#: src/blocks/menu/index.js:20
+msgid "Menu"
+msgstr ""
+
+#: src/blocks/menu/index.js:40
+msgid "restaurant"
+msgstr ""
+
+#: src/blocks/menu/index.js:40
+msgid "food"
+msgstr ""
+
+#: src/blocks/menu/index.js:40
+msgid "services"
+msgstr ""
+
+#: src/blocks/menu/index.js:49
+msgid "Display a menu or price list."
 msgstr ""
