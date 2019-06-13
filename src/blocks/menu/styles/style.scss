@@ -1,13 +1,17 @@
 .wp-block-coblocks-menu {
 	display: flex;
 	flex-flow: row wrap;
-	// flex-wrap: nowrap;
 	justify-content: space-between;
 	padding: 20px;
 
-	> h3 {
+	> h1,
+	> h2,
+	> h3,
+	> h4,
+	> h5,
+	> h6 {
 		flex: 1 100%;
-		padding: 20px;
+		padding: 25px;
 	}
 
 	.wp-block-coblocks-menu-item,
