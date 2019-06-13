@@ -18,10 +18,16 @@
 				margin-top: 0 !important;
 			}
 		}
+	}
+
+	&.is-style-list {
+		.block-editor-block-list__layout {
+			flex-direction: column;
+		}
 
 		.wp-block[data-type="coblocks/menu-item"] {
-			flex: 1 50%;
-			max-width: calc(50% - 10px);
+			flex: 1 100%;
+			max-width: 100% !important;
 		}
 	}
 

@@ -2,7 +2,6 @@
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
-	padding: 20px;
 
 	/* On small screens, we are no longer using row direction but column */
 	@media all and (max-width: 514px) {
@@ -33,6 +32,7 @@
 
 	&.is-style-list {
 		.wp-block-coblocks-menu-item {
+			display: flex;
 			flex: 1 100%;
 			max-width: 100%;
 		}
