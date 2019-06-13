@@ -26,13 +26,16 @@ A clear and concise description of what you expected to happen.
 **Isolating the problem (mark completed items with an [x]):**
 
 -   [ ] I have deactivated other plugins and confirmed this bug occurs when only CoBlocks plugin is active.
--   [ ] This bug happens with a default WordPress theme active
+-   [ ] This bug happens with a default WordPress theme active.
+-   [ ] This bug happens without the Gutenberg plugin active.
 -   [ ] I can reproduce this bug consistently using the steps above.
 
 **WordPress Environment**
 
 <details>
 ```
-What version of WordPress are you using? Running the Gutenberg plugin?
+What version of WordPress are you using?
+What version of the Gutenberg plugin are you using? (If any)
 ```
 </details>
+```
