@@ -50,6 +50,10 @@
 			outline: 1px dashed $dark-gray-500;
 		}
 	}
+
+	&:not(.child-selected) .wp-block[data-type="coblocks/menu-item"] .is-empty {
+		display: none;
+	}
 }
 
 /* On small screens, we are no longer using row direction but column */

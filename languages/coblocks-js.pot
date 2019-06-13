@@ -7,15 +7,15 @@ msgstr ""
 msgid "Edit media"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:179
+#: src/blocks/menu-item/edit.js:183
 msgid "Add menu item..."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:186
+#: src/blocks/menu-item/edit.js:190
 msgid "Add description..."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:195
+#: src/blocks/menu-item/edit.js:199
 msgid "$0.00"
 msgstr ""
 

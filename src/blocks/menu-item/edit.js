@@ -4,16 +4,16 @@
 import { hasEmptyAttributes } from '../../utils/block-helpers';
 
 /**
+ * External dependencies.
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const {
-	PanelBody,
-	ToggleControl,
-	IconButton,
-	Toolbar,
-} = wp.components;
+const { PanelBody, ToggleControl, IconButton, Toolbar } = wp.components;
 const { dispatch, select } = wp.data;
 const {
 	InspectorControls,
@@ -167,7 +167,11 @@ class MenuItem extends Component {
 		return (
 			<Fragment>
 				{ this.renderInspectorControls() }
-				<div className={ className }>
+				<div
+					className={ classnames( className, {
+						'is-empty': isEmpty( attributes ),
+					} ) }
+				>
 					{ attributes.showImage &&
 						( attributes.itemImage ?
 							this.renderImage() :
