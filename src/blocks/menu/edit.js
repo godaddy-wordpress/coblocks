@@ -222,7 +222,7 @@ class Menu extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
+					<PanelBody title={ __( 'Styles' ) } initialOpen={ true }>
 						<div className="editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
 							{ layoutOptions.map( style => (
 								<div
