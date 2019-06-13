@@ -33,7 +33,7 @@ const TEMPLATE = [
 			itemDescription: __(
 				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
 			),
-			itemCost: __( '$4.75' ),
+			itemPrice: __( '$4.75' ),
 		},
 	],
 	[
@@ -44,7 +44,7 @@ const TEMPLATE = [
 			itemDescription: __(
 				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
 			),
-			itemCost: __( '$4.75' ),
+			itemPrice: __( '$4.75' ),
 		},
 	],
 	[
@@ -55,7 +55,7 @@ const TEMPLATE = [
 			itemDescription: __(
 				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
 			),
-			itemCost: __( '$4.75' ),
+			itemPrice: __( '$4.75' ),
 		},
 	],
 	[
@@ -66,7 +66,7 @@ const TEMPLATE = [
 			itemDescription: __(
 				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
 			),
-			itemCost: __( '$4.75' ),
+			itemPrice: __( '$4.75' ),
 		},
 	],
 	[ 'coblocks/menu-item' ],
@@ -148,13 +148,13 @@ class Menu extends Component {
 		this.updateInnerAttributes( 'coblocks/menu-item', { showImage: showImages } );
 	};
 
-	toggleCosts = () => {
+	togglePrices = () => {
 		const { attributes, setAttributes } = this.props;
 
-		const showCosts = ! attributes.showCosts;
-		setAttributes( { showCosts } );
+		const showPrices = ! attributes.showPrices;
+		setAttributes( { showPrices } );
 
-		this.updateInnerAttributes( 'coblocks/menu-item', { showCost: showCosts } );
+		this.updateInnerAttributes( 'coblocks/menu-item', { showPrice: showPrices } );
 	};
 
 	updateStyle = style => {
@@ -181,7 +181,7 @@ class Menu extends Component {
 				blockName,
 				Object.assign( {}, blockAttributes, {
 					showImage: attributes.showImages,
-					showCost: attributes.showCosts,
+					showPrice: attributes.showPrices,
 				} )
 			)
 		);
@@ -254,14 +254,14 @@ class Menu extends Component {
 							onChange={ this.toggleImages }
 						/>
 						<ToggleControl
-							label={ __( 'Costs' ) }
+							label={ __( 'Prices' ) }
 							help={
-								attributes.showCosts ?
-									__( 'Showing cost for each item' ) :
-									__( 'Toggle to show cost for each item.' )
+								attributes.showPrices ?
+									__( 'Showing the price of each item' ) :
+									__( 'Toggle to show the price of each item.' )
 							}
-							checked={ attributes.showCosts }
-							onChange={ this.toggleCosts }
+							checked={ attributes.showPrices }
+							onChange={ this.togglePrices }
 						/>
 					</PanelBody>
 				</InspectorControls>

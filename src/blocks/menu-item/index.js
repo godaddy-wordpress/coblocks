@@ -32,11 +32,11 @@ const keywords = [];
 
 const attributes = {
 	showImage: { type: 'boolean', default: false },
-	showCost: { type: 'boolean', default: true },
+	showPrice: { type: 'boolean', default: true },
 	itemImage: { type: 'string', default: '' },
 	itemName: { type: 'string', default: '' },
 	itemDescription: { type: 'string', default: '' },
-	itemCost: { type: 'string', default: '' },
+	itemPrice: { type: 'string', default: '' },
 };
 
 const settings = {
