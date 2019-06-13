@@ -7,9 +7,8 @@
 
 	.block-editor-block-list__layout {
 		display: flex;
-		flex-wrap: nowrap;
-		justify-content: space-between;
 		flex-flow: row wrap;
+		justify-content: space-between;
 
 		.wp-block[data-type="core/heading"] {
 			flex: 1 100%;
@@ -26,18 +25,18 @@
 	}
 
 	.coblocks-list-appender__toggle {
-		display: flex;
 		align-items: center;
+		background: rgba(139, 139, 150, 0.1) !important;
+		color: $dark-gray-500;
+		display: flex;
 		justify-content: center;
+		outline: 1px dashed $dark-gray-150;
 		padding: 16px;
-		outline: 1px dashed #8d96a0;
 		width: 100%;
-		color: #555d66;
-		background: #f1f2f3 !important;
 
 		&:hover {
-			outline: 1px dashed #555d66;
-			box-shadow: inset 0 0 0 1px #e2e4e7, 0 1px 1px rgba(#191e23, 0.2) !important;
+			box-shadow: inset 0 0 0 1px $light-gray-500, 0 1px 1px rgba($dark-gray-900, 0.2) !important;
+			outline: 1px dashed $dark-gray-500;
 		}
 	}
 }
