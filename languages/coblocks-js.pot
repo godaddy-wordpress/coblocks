@@ -3,6 +3,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+#: src/blocks/media-card/components/media-container.js:127
+msgid "Drop to replace media"
+msgstr ""
+
+#: src/blocks/media-card/components/media-container.js:43
 #: src/blocks/menu-item/edit.js:148
 msgid "Edit media"
 msgstr ""
@@ -41,6 +46,10 @@ msgstr ""
 
 #: src/blocks/menu-item/index.js:45
 msgid "A menu item within the menu block."
+msgstr ""
+
+#: src/blocks/menu/components/menu-appender.js:22
+msgid "Add Menu Section"
 msgstr ""
 
 #: src/blocks/menu/edit.js:225

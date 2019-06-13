@@ -78,15 +78,15 @@ const layoutOptions = [
 	{
 		name: 'grid',
 		label: __( 'Grid' ),
-		'icon':
-		<svg height="26" viewBox="0 0 56 26" width="56" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="m0 0h24v14h-24z"/><path d="m3 16h18v.8785807 1.1214193h-18z"/><path d="m1 20h22v.8785807 1.1214193h-22z"/><path d="m4 24h16v.8785807 1.1214193h-16z"/><path d="m32 0h24v14h-24z"/><path d="m35 16h18v.8785807 1.1214193h-18z"/><path d="m33 20h22v.8785807 1.1214193h-22z"/><path d="m36 24h16v.8785807 1.1214193h-16z"/></g></svg>,
-isDefault: true,
+		icon: <svg height="26" viewBox="0 0 56 26" width="56" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" fill-rule="evenodd"><path d="m5 6h13v.87858073 1.12141927h-13z"/><path d="m8 18h6v.8785807 1.1214193h-6z"/><path d="m0 10h23v.8785807 1.1214193h-23z"/><path d="m3 14h17v.8785807 1.1214193h-17z"/><path d="m38 6h13v.87858073 1.12141927h-13z"/><path d="m41 18h6v.8785807 1.1214193h-6z"/><path d="m33 10h23v.8785807 1.1214193h-23z"/><path d="m36 14h17v.8785807 1.1214193h-17z"/></g></svg>,
+		iconWithImages: <svg height="26" viewBox="0 0 56 26" width="56" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="m0 0h24v14h-24z"/><path d="m3 16h18v.8785807 1.1214193h-18z"/><path d="m1 20h22v.8785807 1.1214193h-22z"/><path d="m4 24h16v.8785807 1.1214193h-16z"/><path d="m32 0h24v14h-24z"/><path d="m35 16h18v.8785807 1.1214193h-18z"/><path d="m33 20h22v.8785807 1.1214193h-22z"/><path d="m36 24h16v.8785807 1.1214193h-16z"/></g></svg>,
+		isDefault: true,
 	},
 	{
 		name: 'list',
 		label: __( 'List' ),
-		'icon':
-		<svg height="26" viewBox="0 0 56 26" width="56" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" fill-rule="evenodd"><g transform="translate(10)"><path d="m0 0h10v10h-10z"/><path d="m12 0h14v.87858073 1.12141927h-14z"/><path d="m12 4h22v.87858073 1.12141927h-22z"/><path d="m12 8h16v.87858073 1.12141927h-16z"/></g><path d="m10 16h10v10h-10z"/><path d="m22 16h14v.8785807 1.1214193h-14z"/><path d="m22 20h22v.8785807 1.1214193h-22z"/><path d="m22 24h16v.8785807 1.1214193h-16z"/></g></svg>,
+		icon: <svg height="26" viewBox="0 0 56 26" width="56" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" fill-rule="evenodd"><path d="m14 0h18v.87858073 1.12141927h-18z"/><path d="m14 4h28v.87858073 1.12141927h-28z"/><path d="m14 8h20v.87858073 1.12141927h-20z"/><path d="m14 16h18v.8785807 1.1214193h-18z"/><path d="m14 20h28v.8785807 1.1214193h-28z"/><path d="m14 24h20v.8785807 1.1214193h-20z"/></g></svg>,
+		iconWithImages: <svg height="26" viewBox="0 0 56 26" width="56" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" fill-rule="evenodd"><path d="m10 0h10v10h-10z"/><path d="m22 0h14v.87858073 1.12141927h-14z"/><path d="m22 4h22v.87858073 1.12141927h-22z"/><path d="m22 8h16v.87858073 1.12141927h-16z"/><path d="m10 16h10v10h-10z"/><path d="m22 16h14v.8785807 1.1214193h-14z"/><path d="m22 20h22v.8785807 1.1214193h-22z"/><path d="m22 24h16v.8785807 1.1214193h-16z"/></g></svg>,
 },
 ];
 
@@ -245,7 +245,7 @@ class Menu extends Component {
 									aria-label={ style.label || style.name }
 								>
 									<div className="editor-block-styles__item-preview block-editor-block-styles__item-preview">
-										{ style.icon }
+										{ attributes.showImages ? style.iconWithImages : style.icon }
 									</div>
 									<div className="editor-block-styles__item-label block-editor-block-styles__item-label">
 										{ style.label || style.name }
