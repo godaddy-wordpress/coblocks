@@ -3,35 +3,35 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/menu-item/edit.js:143
+#: src/blocks/menu-item/edit.js:148
 msgid "Edit media"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:175
+#: src/blocks/menu-item/edit.js:179
 msgid "Add menu item..."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:182
+#: src/blocks/menu-item/edit.js:186
 msgid "Add description..."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:191
+#: src/blocks/menu-item/edit.js:195
 msgid "$0.00"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:86
+#: src/blocks/menu-item/edit.js:91
 msgid "Menu Item Settings"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:88
+#: src/blocks/menu-item/edit.js:93
 msgid "Image"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:91
+#: src/blocks/menu-item/edit.js:96
 msgid "Showing image for this item"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:92
+#: src/blocks/menu-item/edit.js:97
 msgid "Toggle to show image for this item."
 msgstr ""
 
@@ -43,36 +43,36 @@ msgstr ""
 msgid "A menu item within the menu block."
 msgstr ""
 
-#: src/blocks/menu/edit.js:213
+#: src/blocks/menu/edit.js:212
 msgid "Styles"
 msgstr ""
 
-#: src/blocks/menu/edit.js:246
+#: src/blocks/menu/edit.js:245
 msgid "Menu Settings"
 msgstr ""
 
-#: src/blocks/menu/edit.js:248
+#: src/blocks/menu/edit.js:247
 msgid "Images"
 msgstr ""
 
-#: src/blocks/menu/edit.js:251
+#: src/blocks/menu/edit.js:250
 msgid "Showing images for each item"
 msgstr ""
 
-#: src/blocks/menu/edit.js:252
+#: src/blocks/menu/edit.js:251
 msgid "Toggle to show images for each item."
 msgstr ""
 
-#: src/blocks/menu/edit.js:258
-msgid "Costs"
+#: src/blocks/menu/edit.js:257
+msgid "Prices"
+msgstr ""
+
+#: src/blocks/menu/edit.js:260
+msgid "Showing the price of each item"
 msgstr ""
 
 #: src/blocks/menu/edit.js:261
-msgid "Showing cost for each item"
-msgstr ""
-
-#: src/blocks/menu/edit.js:262
-msgid "Toggle to show cost for each item."
+msgid "Toggle to show the price of each item."
 msgstr ""
 
 #: src/blocks/menu/edit.js:27

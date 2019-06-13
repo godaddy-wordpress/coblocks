@@ -8,7 +8,12 @@ import { hasEmptyAttributes } from '../../utils/block-helpers';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { PanelBody, ToggleControl, IconButton, Toolbar, Dashicon } = wp.components;
+const {
+	PanelBody,
+	ToggleControl,
+	IconButton,
+	Toolbar,
+} = wp.components;
 const { dispatch, select } = wp.data;
 const {
 	InspectorControls,
@@ -60,7 +65,7 @@ const isEmpty = attributes => {
 		'itemImage',
 		'itemName',
 		'itemDescription',
-		'itemCost',
+		'itemPrice',
 	];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
@@ -166,8 +171,7 @@ class MenuItem extends Component {
 					{ attributes.showImage &&
 						( attributes.itemImage ?
 							this.renderImage() :
-							this.renderPlaceholder() )
-					}
+							this.renderPlaceholder() ) }
 					<div className="wp-block-coblocks-menu__content">
 						<RichText
 							value={ attributes.itemName }
@@ -183,13 +187,13 @@ class MenuItem extends Component {
 							onChange={ itemDescription => setAttributes( { itemDescription } ) }
 							{ ...richTextAttributes }
 						/>
-						{ attributes.showCost && ( attributes.itemCost || isSelected ) && (
+						{ attributes.showPrice && ( attributes.itemPrice || isSelected ) && (
 							<RichText
-								value={ attributes.itemCost }
+								value={ attributes.itemPrice }
 								tagName="p"
 								className="wp-block-coblocks-menu__price"
 								placeholder={ __( '$0.00' ) }
-								onChange={ itemCost => setAttributes( { itemCost } ) }
+								onChange={ itemPrice => setAttributes( { itemPrice } ) }
 								{ ...richTextAttributes }
 							/>
 						) }

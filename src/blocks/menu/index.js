@@ -10,7 +10,7 @@ import save from './save';
 /**
  * WordPress dependencies.
  */
-const { __, _x } = wp.i18n;
+const { __ } = wp.i18n;
 
 /**
  * Block constants.
@@ -42,7 +42,7 @@ const keywords = [ __( 'restaurant' ), __( 'food' ), __( 'services' ) ];
 
 const attributes = {
 	showImages: { type: 'boolean', default: false },
-	showCosts: { type: 'boolean', default: true },
+	showPrices: { type: 'boolean', default: true },
 };
 
 const settings = {
