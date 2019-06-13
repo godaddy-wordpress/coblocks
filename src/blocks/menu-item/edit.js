@@ -116,22 +116,24 @@ class MenuItem extends Component {
 		return (
 			<MediaPlaceholder
 				allowedTypes={ [ 'image' ] }
-				multiple = { false }
-				labels = {
-					{ instructions: '' }
-				}
+				multiple={ false }
+				labels={ { instructions: '' } }
 				onSelect={ el => setAttributes( { itemImage: el.sizes.large.url } ) }
 			/>
 		);
 	}
 
 	renderToolbarEditButton() {
+		const { setAttributes } = this.props;
 		return (
 			<BlockControls>
 				<Toolbar>
 					<MediaUpload
 						allowedTypes={ [ 'image' ] }
 						multiple={ false }
+						onSelect={ media =>
+							setAttributes( { itemImage: media.sizes.large.url } )
+						}
 						render={ ( { open } ) => (
 							<IconButton
 								className="components-toolbar__control"
