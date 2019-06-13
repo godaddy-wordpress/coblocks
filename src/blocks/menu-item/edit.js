@@ -99,6 +99,16 @@ class MenuItem extends Component {
 						checked={ attributes.showImage }
 						onChange={ () => setAttributes( { showImage: ! attributes.showImage } ) }
 					/>
+					<ToggleControl
+						label={ __( 'Price' ) }
+						help={
+							attributes.showPrice ?
+								__( 'Showing the price for this item' ) :
+								__( 'Toggle to show the price for this item.' )
+						}
+						checked={ attributes.showPrice }
+						onChange={ () => setAttributes( { showPrice: ! attributes.showPrice } ) }
+					/>
 				</PanelBody>
 			</InspectorControls>
 		);
