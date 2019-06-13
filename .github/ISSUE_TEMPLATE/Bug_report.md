@@ -1,6 +1,6 @@
 ---
 name: "\U0001F41E Bug report"
-about: Report a bug if something isn't working as expected in the core CoBlocks plugin.
+about: Report a bug if something isn't working as expected in CoBlocks.
 title: ""
 labels: ""
 assignees: ""
@@ -23,12 +23,13 @@ If applicable, add screenshots to help explain your problem.
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Isolating the problem (mark completed items with an [x]):**
+**Isolating the problem:**
+Mark completed items with an [x].
 
--   [ ] I have deactivated other plugins and confirmed this bug occurs when only CoBlocks plugin is active.
--   [ ] This bug happens with a default WordPress theme active.
--   [ ] This bug happens without the Gutenberg plugin active.
--   [ ] I can reproduce this bug consistently using the steps above.
+-   [ ] This bug happens with no other plugins activated
+-   [ ] This bug happens with a default WordPress theme active
+-   [ ] This bug happens without the Gutenberg plugin active
+-   [ ] I can reproduce this bug consistently using the steps above
 
 **WordPress Environment**
 
