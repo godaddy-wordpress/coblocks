@@ -3,9 +3,9 @@
  */
 const { InnerBlocks } = wp.editor;
 
-export default function save( { attributes } ) {
+export default function save( { className } ) {
 	return (
-		<div className={ attributes.className }>
+		<div className={ className }>
 			<InnerBlocks.Content />
 		</div>
 	);

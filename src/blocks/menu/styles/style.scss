@@ -9,6 +9,27 @@
 		flex: 1 100%;
 		padding: 20px;
 	}
+
+	.wp-block-coblocks-menu-item,
+	&.is-style-grid {
+		.wp-block[data-type="coblocks/menu-item"],
+		.wp-block-coblocks-menu-item {
+			text-align: center;
+		}
+	}
+	&.is-style-grid-justify {
+		.wp-block[data-type="coblocks/menu-item"],
+		.wp-block-coblocks-menu-item {
+			text-align: left;
+		}
+	}
+	&.is-style-list {
+		.wp-block[data-type="coblocks/menu-item"],
+		.wp-block-coblocks-menu-item {
+			flex: 1 100%;
+			max-width: 100%;
+		}
+	}
 }
 
 /* On small screens, we are no longer using row direction but column */

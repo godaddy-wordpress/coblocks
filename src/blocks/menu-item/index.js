@@ -31,10 +31,11 @@ const icon = (
 const keywords = [];
 
 const attributes = {
-	itemImage: { type: 'string' },
-	itemName: { type: 'string' },
-	itemDescription: { type: 'string' },
-	itemCost: { type: 'string' },
+	showImage: { type: 'boolean', default: false },
+	itemImage: { type: 'string', default: '' },
+	itemName: { type: 'string', default: '' },
+	itemDescription: { type: 'string', default: '' },
+	itemCost: { type: 'string', default: '' },
 };
 
 const settings = {

@@ -1,9 +1,15 @@
 /**
+ * Internal dependencies.
+ */
+import { hasEmptyAttributes } from '../../utils/block-helpers';
+
+/**
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { PanelBody, ToggleControl, IconButton, Toolbar } = wp.components;
+const { dispatch, select } = wp.data;
 const {
 	InspectorControls,
 	RichText,
@@ -12,12 +18,64 @@ const {
 	BlockControls,
 } = wp.editor;
 
-class MenuItem extends Component {
+/**
+ * Handle creation and removal of placeholder elements so that we always have one available to use.
+ *
+ * @param {Integer} childClientId The child block's ClientId.
+ */
+const handlePlaceholderPlacement = childClientId => {
+	const menuClientId = select( 'core/editor' ).getBlockRootClientId(
+		childClientId
+	);
 
-	componentDidMount() {
-		const { attributes, setAttributes } = this.props;
-		if ( !! attributes.itemImage ) {
-			setAttributes( { showImage: true } );
+	const menuItems = select( 'core/editor' ).getBlocksByClientId( menuClientId )[ 0 ]
+		.innerBlocks;
+
+	const placeholders = menuItems.filter(
+		item => item.name === 'coblocks/menu-item' && isEmpty( item.attributes )
+	);
+
+	// Add a placeholder if there are none. Remove trailing placholders if there are more than one.
+	if ( placeholders.length === 0 ) {
+		const newMenuItem = wp.blocks.createBlock( 'coblocks/menu-item', {} );
+		dispatch( 'core/editor' ).insertBlocks(
+			newMenuItem,
+			menuItems.length,
+			menuClientId,
+			false
+		);
+	} else if ( placeholders.length > 1 ) {
+		const extraPlaceholders = placeholders.filter(
+			item => item.clientId !== childClientId
+		);
+		dispatch( 'core/editor' ).removeBlocks(
+			extraPlaceholders.map( item => item.clientId ),
+			false
+		);
+	}
+};
+
+const isEmpty = attributes => {
+	const attributesToCheck = [
+		'itemImage',
+		'itemName',
+		'itemDescription',
+		'itemCost',
+	];
+	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
+		attributesToCheck.includes( key )
+	);
+
+	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
+};
+
+class MenuItem extends Component {
+	componentDidUpdate( prevProps ) {
+		if (
+			isEmpty( prevProps.attributes ) !== isEmpty( this.props.attributes ) ||
+			( ! prevProps.isSelected && this.props.isSelected )
+		) {
+			handlePlaceholderPlacement( this.props.clientId );
 		}
 	}
 
@@ -62,7 +120,7 @@ class MenuItem extends Component {
 				labels = {
 					{ instructions: '' }
 				}
-				onSelect={ el => setAttributes( { itemImage: el.url } ) }
+				onSelect={ el => setAttributes( { itemImage: el.sizes.large.url } ) }
 			/>
 		);
 	}
@@ -73,6 +131,7 @@ class MenuItem extends Component {
 				<Toolbar>
 					<MediaUpload
 						allowedTypes={ [ 'image' ] }
+						multiple={ false }
 						render={ ( { open } ) => (
 							<IconButton
 								className="components-toolbar__control"

@@ -1,10 +1,15 @@
 /**
+ * Internal dependencies.
+ */
+import { hasEmptyAttributes } from '../../utils/block-helpers';
+
+/**
  * WordPress dependencies.
  */
 const { RichText } = wp.editor;
 
 export default function save( { attributes } ) {
-	return (
+	return hasEmptyAttributes( attributes ) ? null : (
 		<div className={ attributes.className }>
 			{ attributes.showImage && attributes.itemImage && (
 				<figure>
