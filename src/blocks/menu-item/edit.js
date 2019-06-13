@@ -183,7 +183,7 @@ class MenuItem extends Component {
 							onChange={ itemDescription => setAttributes( { itemDescription } ) }
 							{ ...richTextAttributes }
 						/>
-						{ ( attributes.itemCost || isSelected ) && (
+						{ attributes.showCost && ( attributes.itemCost || isSelected ) && (
 							<RichText
 								value={ attributes.itemCost }
 								tagName="p"

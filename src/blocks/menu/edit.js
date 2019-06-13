@@ -148,6 +148,15 @@ class Menu extends Component {
 		this.updateInnerAttributes( 'coblocks/menu-item', { showImage: showImages } );
 	};
 
+	toggleCosts = () => {
+		const { attributes, setAttributes } = this.props;
+
+		const showCosts = ! attributes.showCosts;
+		setAttributes( { showCosts } );
+
+		this.updateInnerAttributes( 'coblocks/menu-item', { showCost: showCosts } );
+	};
+
 	updateStyle = style => {
 		const { className, attributes, setAttributes } = this.props;
 
@@ -170,7 +179,10 @@ class Menu extends Component {
 		const innerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
 			wp.blocks.createBlock(
 				blockName,
-				Object.assign( {}, blockAttributes, { showImage: attributes.showImages } )
+				Object.assign( {}, blockAttributes, {
+					showImage: attributes.showImages,
+					showCost: attributes.showCosts,
+				} )
 			)
 		);
 
@@ -240,6 +252,16 @@ class Menu extends Component {
 							}
 							checked={ attributes.showImages }
 							onChange={ this.toggleImages }
+						/>
+						<ToggleControl
+							label={ __( 'Costs' ) }
+							help={
+								attributes.showCosts ?
+									__( 'Showing cost for each item' ) :
+									__( 'Toggle to show cost for each item.' )
+							}
+							checked={ attributes.showCosts }
+							onChange={ this.toggleCosts }
 						/>
 					</PanelBody>
 				</InspectorControls>
