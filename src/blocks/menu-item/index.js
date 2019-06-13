@@ -48,7 +48,7 @@ const settings = {
 	attributes,
 
 	supports: {
-		// inserter: false,
+		inserter: false,
 	},
 
 	parent: [ 'coblocks/menu' ],
