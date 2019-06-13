@@ -12,11 +12,15 @@
 
 		.wp-block[data-type="core/heading"] {
 			flex: 1 100%;
+
+			.block-editor-block-list__block-edit {
+				margin-bottom: 10px !important;
+			}
 		}
 
 		.wp-block[data-type="coblocks/menu-item"] {
 			flex: 1 50%;
-			max-width: 50%;
+			max-width: calc(50% - 10px);
 		}
 	}
 
