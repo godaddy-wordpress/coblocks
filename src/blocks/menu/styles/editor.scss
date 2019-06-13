@@ -11,7 +11,6 @@
 		justify-content: space-between;
 		flex-flow: row wrap;
 
-		.block-list-appender,
 		.wp-block[data-type="core/heading"] {
 			flex: 1 100%;
 		}
@@ -19,6 +18,26 @@
 		.wp-block[data-type="coblocks/menu-item"] {
 			flex: 1 50%;
 			max-width: 50%;
+		}
+	}
+
+	.coblocks-list-appender {
+		flex: 1 100%;
+	}
+
+	.coblocks-list-appender__toggle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 16px;
+		outline: 1px dashed #8d96a0;
+		width: 100%;
+		color: #555d66;
+		background: #f1f2f3 !important;
+
+		&:hover {
+			outline: 1px dashed #555d66;
+			box-shadow: inset 0 0 0 1px #e2e4e7, 0 1px 1px rgba(#191e23, 0.2) !important;
 		}
 	}
 }

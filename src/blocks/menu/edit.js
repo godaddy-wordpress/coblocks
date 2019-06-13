@@ -1,4 +1,9 @@
 /**
+ * Internal dependencies.
+ */
+import MenuAppender from './components/menu-appender';
+
+/**
  * External dependencies.
  */
 import { find } from 'lodash';
@@ -119,6 +124,14 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 }
 
 class Menu extends Component {
+	componentDidMount() {
+		const { attributes, setAttributes } = this.props;
+		setAttributes( { showImages: attributes.showImages } );
+		this.updateInnerAttributes( 'coblocks/menu-item', {
+			showImage: attributes.showImages,
+		} );
+	}
+
 	updateInnerAttributes = ( blockName, newAttributes ) => {
 		const innerItems = select( 'core/editor' ).getBlocksByClientId(
 			this.props.clientId
@@ -154,6 +167,16 @@ class Menu extends Component {
 		);
 
 		setAttributes( { className: updatedClassName } );
+	};
+
+	insertNewMenu = () => {
+		const { clientId, attributes } = this.props;
+
+		const blockOrder = select( 'core/editor' ).getBlockOrder();
+		const insertAtIndex = blockOrder.indexOf( clientId ) + 1;
+
+		const newMenu = wp.blocks.createBlock( 'coblocks/menu', attributes );
+		dispatch( 'core/editor' ).insertBlock( newMenu, insertAtIndex );
 	};
 
 	render() {
@@ -212,6 +235,7 @@ class Menu extends Component {
 				</InspectorControls>
 				<div className={ className }>
 					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } template={ TEMPLATE } />
+					<MenuAppender onClick={ this.insertNewMenu } />
 				</div>
 			</Fragment>
 		);
