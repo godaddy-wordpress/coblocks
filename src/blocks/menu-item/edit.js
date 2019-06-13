@@ -149,7 +149,7 @@ class MenuItem extends Component {
 	}
 
 	render() {
-		const { className, attributes, setAttributes } = this.props;
+		const { className, attributes, setAttributes, isSelected } = this.props;
 
 		const richTextAttributes = {
 			keepPlaceholderOnFocus: true,
@@ -180,14 +180,16 @@ class MenuItem extends Component {
 							onChange={ itemDescription => setAttributes( { itemDescription } ) }
 							{ ...richTextAttributes }
 						/>
-						<RichText
-							value={ attributes.itemCost }
-							tagName="p"
-							className="wp-block-coblocks-menu__price"
-							placeholder={ __( '$0.00' ) }
-							onChange={ itemCost => setAttributes( { itemCost } ) }
-							{ ...richTextAttributes }
-						/>
+						{ ( attributes.itemCost || isSelected ) && (
+							<RichText
+								value={ attributes.itemCost }
+								tagName="p"
+								className="wp-block-coblocks-menu__price"
+								placeholder={ __( '$0.00' ) }
+								onChange={ itemCost => setAttributes( { itemCost } ) }
+								{ ...richTextAttributes }
+							/>
+						) }
 					</div>
 				</div>
 			</Fragment>

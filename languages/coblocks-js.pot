@@ -3,19 +3,19 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/menu-item/edit.js:138
+#: src/blocks/menu-item/edit.js:140
 msgid "Edit media"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:168
+#: src/blocks/menu-item/edit.js:170
 msgid "Add menu item..."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:175
+#: src/blocks/menu-item/edit.js:177
 msgid "Add description..."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:183
+#: src/blocks/menu-item/edit.js:186
 msgid "$0.00"
 msgstr ""
 
@@ -98,29 +98,9 @@ msgid "Grid"
 msgstr ""
 
 #: src/blocks/menu/edit.js:77
-msgid "Justified Grid"
+msgid "Justified"
 msgstr ""
 
 #: src/blocks/menu/edit.js:78
 msgid "List"
-msgstr ""
-
-#: src/blocks/menu/index.js:20
-msgid "Menu"
-msgstr ""
-
-#: src/blocks/menu/index.js:41
-msgid "restaurant"
-msgstr ""
-
-#: src/blocks/menu/index.js:41
-msgid "food"
-msgstr ""
-
-#: src/blocks/menu/index.js:41
-msgid "services"
-msgstr ""
-
-#: src/blocks/menu/index.js:50
-msgid "Display a menu or price list."
 msgstr ""
