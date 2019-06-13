@@ -3,23 +3,51 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/menu/edit.js:148
-msgid "Styles"
+#: src/blocks/menu-item/edit.js:129
+msgid "Edit media"
 msgstr ""
 
-#: src/blocks/menu/edit.js:181
+#: src/blocks/menu-item/edit.js:159
+msgid "Add menu item..."
+msgstr ""
+
+#: src/blocks/menu-item/edit.js:166
+msgid "Add description..."
+msgstr ""
+
+#: src/blocks/menu-item/edit.js:173
+msgid "$0.00"
+msgstr ""
+
+#: src/blocks/menu-item/edit.js:82
+#: src/blocks/menu-item/edit.js:84
+#: src/blocks/menu/edit.js:203
 msgid "Menu Settings"
 msgstr ""
 
-#: src/blocks/menu/edit.js:183
+#: src/blocks/menu-item/edit.js:84
+#: src/blocks/menu-item/edit.js:86
+#: src/blocks/menu/edit.js:205
 msgid "Images"
 msgstr ""
 
-#: src/blocks/menu/edit.js:186
+#: src/blocks/menu-item/edit.js:87
+msgid "Showing image for this item"
+msgstr ""
+
+#: src/blocks/menu-item/edit.js:88
+msgid "Toggle to show image for this item."
+msgstr ""
+
+#: src/blocks/menu/edit.js:170
+msgid "Styles"
+msgstr ""
+
+#: src/blocks/menu/edit.js:208
 msgid "Showing images for each item"
 msgstr ""
 
-#: src/blocks/menu/edit.js:187
+#: src/blocks/menu/edit.js:209
 msgid "Toggle to show images for each item."
 msgstr ""
 

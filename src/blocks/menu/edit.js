@@ -119,35 +119,47 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 }
 
 class Menu extends Component {
-	toggleImages = () => {
-		const { clientId, attributes, setAttributes } = this.props;
+	updateInnerAttributes = ( blockName, newAttributes ) => {
+		const innerItems = select( 'core/editor' ).getBlocksByClientId(
+			this.props.clientId
+		)[ 0 ].innerBlocks;
 
-		const showImages = ! attributes.showImages;
-
-		setAttributes( { showImages } );
-
-		const menuItems = select( 'core/editor' ).getBlocksByClientId( clientId )[ 0 ]
-			.innerBlocks;
-
-		menuItems.map( item => {
-			dispatch( 'core/editor' ).updateBlockAttributes( item.clientId, {
-				showImage: showImages,
-			} );
+		innerItems.map( item => {
+			if ( item.name === blockName ) {
+				dispatch( 'core/editor' ).updateBlockAttributes(
+					item.clientId,
+					newAttributes
+				);
+			}
 		} );
 	};
 
-	render() {
+	toggleImages = () => {
+		const { attributes, setAttributes } = this.props;
+
+		const showImages = ! attributes.showImages;
+		setAttributes( { showImages } );
+
+		this.updateInnerAttributes( 'coblocks/menu-item', { showImage: showImages } );
+	};
+
+	updateStyle = style => {
 		const { className, attributes, setAttributes } = this.props;
 
 		const activeStyle = getActiveStyle( layoutOptions, className );
-		function updateClassName( style ) {
-			const updatedClassName = replaceActiveStyle(
-				attributes.className,
-				activeStyle,
-				style
-			);
-			setAttributes( { className: updatedClassName } );
-		}
+		const updatedClassName = replaceActiveStyle(
+			attributes.className,
+			activeStyle,
+			style
+		);
+
+		setAttributes( { className: updatedClassName } );
+	};
+
+	render() {
+		const { className, attributes } = this.props;
+
+		const activeStyle = getActiveStyle( layoutOptions, className );
 
 		return (
 			<Fragment>
@@ -163,11 +175,11 @@ class Menu extends Component {
 											'is-active': activeStyle === style,
 										}
 									) }
-									onClick={ () => updateClassName( style ) }
+									onClick={ () => this.updateStyle( style ) }
 									onKeyDown={ event => {
 										if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
 											event.preventDefault();
-											updateClassName( style );
+											this.updateStyle( style );
 										}
 									} }
 									role="button"
