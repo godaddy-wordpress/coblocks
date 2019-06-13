@@ -26,7 +26,7 @@ const { RichText } = wp.editor;
  */
 const name = 'gallery-masonry';
 
-const title = __( 'Masonry' );
+const title = __( 'Masonry Gallery' );
 
 const icon = icons.masonry;
 

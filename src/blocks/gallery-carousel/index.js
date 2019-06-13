@@ -26,7 +26,7 @@ const { getColorClassName, RichText } = wp.editor;
  */
 const name = 'gallery-carousel';
 
-const title = __( 'Carousel' );
+const title = __( 'Carousel Gallery' );
 
 const icon = icons.carousel;
 

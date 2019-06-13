@@ -25,7 +25,7 @@ const { RichText, getFontSizeClass, getColorClassName } = wp.editor;
  */
 const name = 'gallery-stacked';
 
-const title = __( 'Stacked' );
+const title = __( 'Stacked Gallery' );
 
 const icon = icons.stacked;
 
