@@ -163,29 +163,32 @@ class MenuItem extends Component {
 					{ attributes.showImage &&
 						( attributes.itemImage ?
 							this.renderImage() :
-							this.renderPlaceholder() ) }
-					<RichText
-						value={ attributes.itemName }
-						tagName="h4"
-						placeholder={ __( 'Add menu item...' ) }
-						onChange={ itemName => setAttributes( { itemName } ) }
-						{ ...richTextAttributes }
-					/>
-					<RichText
-						value={ attributes.itemDescription }
-						tagName="p"
-						placeholder={ __( 'Add description...' ) }
-						onChange={ itemDescription => setAttributes( { itemDescription } ) }
-						{ ...richTextAttributes }
-					/>
-					<RichText
-						value={ attributes.itemCost }
-						tagName="p"
-						className="wp-block-coblocks-menu__price"
-						placeholder={ __( '$0.00' ) }
-						onChange={ itemCost => setAttributes( { itemCost } ) }
-						{ ...richTextAttributes }
-					/>
+							this.renderPlaceholder() )
+					}
+					<div className="wp-block-coblocks-menu__content">
+						<RichText
+							value={ attributes.itemName }
+							tagName="h4"
+							placeholder={ __( 'Add menu item...' ) }
+							onChange={ itemName => setAttributes( { itemName } ) }
+							{ ...richTextAttributes }
+						/>
+						<RichText
+							value={ attributes.itemDescription }
+							tagName="p"
+							placeholder={ __( 'Add description...' ) }
+							onChange={ itemDescription => setAttributes( { itemDescription } ) }
+							{ ...richTextAttributes }
+						/>
+						<RichText
+							value={ attributes.itemCost }
+							tagName="p"
+							className="wp-block-coblocks-menu__price"
+							placeholder={ __( '$0.00' ) }
+							onChange={ itemCost => setAttributes( { itemCost } ) }
+							{ ...richTextAttributes }
+						/>
+					</div>
 				</div>
 			</Fragment>
 		);

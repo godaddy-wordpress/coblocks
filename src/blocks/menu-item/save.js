@@ -16,9 +16,11 @@ export default function save( { attributes } ) {
 					<img src={ attributes.itemImage } alt={ '' } />
 				</figure>
 			) }
-			<RichText.Content tagName="h4" value={ attributes.itemName } />
-			<RichText.Content tagName="p" value={ attributes.itemDescription } />
-			<RichText.Content tagName="p" className="wp-block-coblocks-menu__price" value={ attributes.itemCost } />
+			<div className="wp-block-coblocks-menu__content">
+				<RichText.Content tagName="h4" value={ attributes.itemName } />
+				<RichText.Content tagName="p" value={ attributes.itemDescription } />
+				<RichText.Content tagName="p" className="wp-block-coblocks-menu__price" value={ attributes.itemCost } />
+			</div>
 		</div>
 	);
 }
