@@ -127,6 +127,7 @@ class MenuItem extends Component {
 				<Toolbar>
 					<MediaUpload
 						allowedTypes={ [ 'image' ] }
+						multiple={ false }
 						render={ ( { open } ) => (
 							<IconButton
 								className="components-toolbar__control"
