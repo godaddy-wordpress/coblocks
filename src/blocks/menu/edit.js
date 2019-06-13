@@ -265,7 +265,11 @@ class Menu extends Component {
 						/>
 					</PanelBody>
 				</InspectorControls>
-				<div className={ className }>
+				<div
+					className={ classnames( className, {
+						'child-selected': isSelected || clientId === selectedParentClientId,
+					} ) }
+				>
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
 						template={ TEMPLATE }
