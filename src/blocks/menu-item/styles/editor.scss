@@ -27,8 +27,8 @@
 
 .is-style-list .wp-block-coblocks-menu-item {
 	.editor-media-placeholder {
-		height: 150px;
-		min-height: 150px;
+		height: 130px;
+		min-height: 130px;
 		position: relative;
 
 		.components-placeholder__label {
@@ -42,10 +42,10 @@
 
 		// Restyle the Media Gallery button to be overlaid over the component.
 		&__button {
-			background: transparent;
+			background: transparent !important;
 			border: 0;
 			bottom: 0;
-			box-shadow: none;
+			box-shadow: none !important;
 			height: 100%;
 			left: 0;
 			position: absolute;
