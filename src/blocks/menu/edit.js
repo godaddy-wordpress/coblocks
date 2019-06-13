@@ -74,7 +74,6 @@ const TEMPLATE = [
 
 const layoutOptions = [
 	{ name: 'grid', label: __( 'Grid' ), isDefault: true },
-	{ name: 'justified', label: __( 'Justified' ) },
 	{ name: 'list', label: __( 'List' ) },
 ];
 

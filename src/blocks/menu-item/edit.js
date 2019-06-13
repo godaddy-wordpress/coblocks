@@ -8,7 +8,7 @@ import { hasEmptyAttributes } from '../../utils/block-helpers';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { PanelBody, ToggleControl, IconButton, Toolbar } = wp.components;
+const { PanelBody, ToggleControl, IconButton, Toolbar, Dashicon } = wp.components;
 const { dispatch, select } = wp.data;
 const {
 	InspectorControls,
@@ -117,7 +117,10 @@ class MenuItem extends Component {
 			<MediaPlaceholder
 				allowedTypes={ [ 'image' ] }
 				multiple={ false }
-				labels={ { instructions: '' } }
+				icon="format-image"
+				labels={ {
+					title: ' ',
+				} }
 				onSelect={ el => setAttributes( { itemImage: el.sizes.large.url } ) }
 			/>
 		);

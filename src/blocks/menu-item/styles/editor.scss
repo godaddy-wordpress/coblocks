@@ -4,9 +4,13 @@
 	margin-bottom: 0 !important;
 	padding: 0 !important;
 
-	.block-editor-media-placeholder {
+	.editor-media-placeholder {
 		margin: 0 0 2em;
 		padding: 0;
+
+		.dashicon {
+			margin: 0;
+		}
 
 		.components-placeholder__label,
 		.components-placeholder__instructions {
@@ -17,6 +21,38 @@
 			.components-button {
 				margin-bottom: 0 !important;
 			}
+		}
+	}
+}
+
+.is-style-list .wp-block-coblocks-menu-item {
+	.editor-media-placeholder {
+		height: 150px;
+		min-height: 150px;
+		position: relative;
+
+		.components-placeholder__label {
+			display: block;
+		}
+
+		// Hide the Upload button.
+		.components-form-file-upload .editor-media-placeholder__button {
+			display: none;
+		}
+
+		// Restyle the Media Gallery button to be overlaid over the component.
+		&__button {
+			background: transparent;
+			border: 0;
+			bottom: 0;
+			box-shadow: none;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			right: 0;
+			text-indent: -999em;
+			top: 0;
+			width: 100%;
 		}
 	}
 }
