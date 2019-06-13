@@ -233,7 +233,11 @@ class Menu extends Component {
 					</PanelBody>
 				</InspectorControls>
 				<div className={ className }>
-					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } template={ TEMPLATE } />
+					<InnerBlocks
+						allowedBlocks={ ALLOWED_BLOCKS }
+						template={ TEMPLATE }
+						templateInsertUpdatesSelection={ false }
+					/>
 					{ ( isSelected || clientId === selectedParentClientId ) && (
 						<MenuAppender onClick={ this.insertNewMenu } />
 					) }
