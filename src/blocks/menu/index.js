@@ -42,6 +42,7 @@ const keywords = [ __( 'restaurant' ), __( 'food' ), __( 'services' ) ];
 
 const attributes = {
 	showImages: { type: 'boolean', default: false },
+	showCosts: { type: 'boolean', default: true },
 };
 
 const settings = {

@@ -3,19 +3,19 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/menu-item/edit.js:140
+#: src/blocks/menu-item/edit.js:143
 msgid "Edit media"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:170
+#: src/blocks/menu-item/edit.js:175
 msgid "Add menu item..."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:177
+#: src/blocks/menu-item/edit.js:182
 msgid "Add description..."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:186
+#: src/blocks/menu-item/edit.js:191
 msgid "$0.00"
 msgstr ""
 
@@ -39,28 +39,40 @@ msgstr ""
 msgid "Menu Item"
 msgstr ""
 
-#: src/blocks/menu-item/index.js:44
+#: src/blocks/menu-item/index.js:45
 msgid "A menu item within the menu block."
 msgstr ""
 
-#: src/blocks/menu/edit.js:201
+#: src/blocks/menu/edit.js:213
 msgid "Styles"
 msgstr ""
 
-#: src/blocks/menu/edit.js:234
+#: src/blocks/menu/edit.js:246
 msgid "Menu Settings"
 msgstr ""
 
-#: src/blocks/menu/edit.js:236
+#: src/blocks/menu/edit.js:248
 msgid "Images"
 msgstr ""
 
-#: src/blocks/menu/edit.js:239
+#: src/blocks/menu/edit.js:251
 msgid "Showing images for each item"
 msgstr ""
 
-#: src/blocks/menu/edit.js:240
+#: src/blocks/menu/edit.js:252
 msgid "Toggle to show images for each item."
+msgstr ""
+
+#: src/blocks/menu/edit.js:258
+msgid "Costs"
+msgstr ""
+
+#: src/blocks/menu/edit.js:261
+msgid "Showing cost for each item"
+msgstr ""
+
+#: src/blocks/menu/edit.js:262
+msgid "Toggle to show cost for each item."
 msgstr ""
 
 #: src/blocks/menu/edit.js:27
@@ -98,9 +110,25 @@ msgid "Grid"
 msgstr ""
 
 #: src/blocks/menu/edit.js:77
-msgid "Justified"
+msgid "List"
 msgstr ""
 
-#: src/blocks/menu/edit.js:78
-msgid "List"
+#: src/blocks/menu/index.js:20
+msgid "Menu"
+msgstr ""
+
+#: src/blocks/menu/index.js:41
+msgid "restaurant"
+msgstr ""
+
+#: src/blocks/menu/index.js:41
+msgid "food"
+msgstr ""
+
+#: src/blocks/menu/index.js:41
+msgid "services"
+msgstr ""
+
+#: src/blocks/menu/index.js:51
+msgid "Display a menu or price list."
 msgstr ""
