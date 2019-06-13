@@ -14,21 +14,19 @@
 		padding: 25px;
 	}
 
-	.wp-block-coblocks-menu-item,
-	&.is-style-grid {
-		.wp-block[data-type="coblocks/menu-item"],
+	&:not(.is-style-justify):not(.is-style-list) {
 		.wp-block-coblocks-menu-item {
 			text-align: center;
 		}
 	}
-	&.is-style-grid-justify {
-		.wp-block[data-type="coblocks/menu-item"],
+
+	&.is-style-justify {
 		.wp-block-coblocks-menu-item {
 			text-align: left;
 		}
 	}
+
 	&.is-style-list {
-		.wp-block[data-type="coblocks/menu-item"],
 		.wp-block-coblocks-menu-item {
 			flex: 1 100%;
 			max-width: 100%;
