@@ -4,6 +4,11 @@
 	justify-content: space-between;
 	padding: 20px;
 
+	/* On small screens, we are no longer using row direction but column */
+	@media all and (max-width: 514px) {
+		flex-direction: column;
+	}
+
 	> h1,
 	> h2,
 	> h3,
@@ -31,12 +36,5 @@
 			flex: 1 100%;
 			max-width: 100%;
 		}
-	}
-}
-
-/* On small screens, we are no longer using row direction but column */
-@media all and (max-width: 514px) {
-	.wp-block-coblocks-menu {
-		flex-direction: column;
 	}
 }
