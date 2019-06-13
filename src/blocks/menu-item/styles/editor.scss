@@ -1,4 +1,19 @@
 .block-editor-block-list__block-edit .wp-block-coblocks-menu-item {
 	display: block;
 	flex: 1 100%;
+
+	.block-editor-media-placeholder {
+		outline: 1px dashed #8d96a0;
+
+		.components-placeholder__label,
+		.components-placeholder__instructions {
+			display: none;
+		}
+
+		.components-placeholder__fieldset {
+			.components-button {
+				margin-bottom: 0 !important;
+			}
+		}
+	}
 }
