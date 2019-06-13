@@ -15,7 +15,8 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { PanelBody, ToggleControl } = wp.components;
-const { dispatch, select } = wp.data;
+const { compose } = wp.compose;
+const { withSelect, dispatch, select } = wp.data;
 const { InspectorControls, InnerBlocks } = wp.editor;
 const { ENTER, SPACE } = wp.keycodes;
 const TokenList = wp.tokenList;
@@ -172,7 +173,13 @@ class Menu extends Component {
 	};
 
 	render() {
-		const { className, attributes } = this.props;
+		const {
+			className,
+			attributes,
+			isSelected,
+			clientId,
+			selectedParentClientId,
+		} = this.props;
 
 		const activeStyle = getActiveStyle( layoutOptions, className );
 
@@ -227,11 +234,24 @@ class Menu extends Component {
 				</InspectorControls>
 				<div className={ className }>
 					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } template={ TEMPLATE } />
-					<MenuAppender onClick={ this.insertNewMenu } />
+					{ ( isSelected || clientId === selectedParentClientId ) && (
+						<MenuAppender onClick={ this.insertNewMenu } />
+					) }
 				</div>
 			</Fragment>
 		);
 	}
 }
 
-export default Menu;
+const applyWithSelect = withSelect( () => {
+	const selectedClientId = select( 'core/editor' ).getBlockSelectionStart();
+	const parentClientId = select( 'core/editor' ).getBlockRootClientId(
+		selectedClientId
+	);
+
+	return {
+		selectedParentClientId: parentClientId,
+	};
+} );
+
+export default compose( applyWithSelect )( Menu );
