@@ -10,7 +10,7 @@ const { InspectorControls, InnerBlocks } = wp.editor;
 const ALLOWED_BLOCKS = [ 'coblocks/menu-item' ];
 
 const TEMPLATE = [
-	[ 'core/heading', { level: 3, content: 'Appetizers', align: 'center' } ],
+	[ 'core/heading', { level: 3, content: __( 'Appetizers' ), align: 'center' } ],
 	[
 		'coblocks/menu-item',
 		{

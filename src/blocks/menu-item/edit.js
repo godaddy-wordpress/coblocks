@@ -25,9 +25,9 @@ class MenuItem extends Component {
 		const { attributes, setAttributes } = this.props;
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Menu Settings' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Menu Item Settings' ) } initialOpen={ true }>
 					<ToggleControl
-						label={ __( 'Images' ) }
+						label={ __( 'Image' ) }
 						help={
 							attributes.showImage ?
 								__( 'Showing image for this item' ) :
@@ -58,6 +58,10 @@ class MenuItem extends Component {
 		return (
 			<MediaPlaceholder
 				allowedTypes={ [ 'image' ] }
+				multiple = { false }
+				labels = {
+					{ instructions: '' }
+				}
 				onSelect={ el => setAttributes( { itemImage: el.url } ) }
 			/>
 		);
