@@ -116,7 +116,7 @@ class MenuItem extends Component {
 		return (
 			<MediaPlaceholder
 				allowedTypes={ [ 'image' ] }
-				onSelect={ el => setAttributes( { itemImage: el.url } ) }
+				onSelect={ el => setAttributes( { itemImage: el.sizes.large.url } ) }
 			/>
 		);
 	}
