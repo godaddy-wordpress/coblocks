@@ -18,7 +18,7 @@ export default function save( { attributes } ) {
 			) }
 			<RichText.Content tagName="h4" value={ attributes.itemName } />
 			<RichText.Content tagName="p" value={ attributes.itemDescription } />
-			<RichText.Content tagName="p" value={ attributes.itemCost } />
+			<RichText.Content tagName="p" className="wp-block-coblocks-menu__price" value={ attributes.itemCost } />
 		</div>
 	);
 }

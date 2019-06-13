@@ -179,6 +179,7 @@ class MenuItem extends Component {
 					<RichText
 						value={ attributes.itemCost }
 						tagName="p"
+						className="wp-block-coblocks-menu__price"
 						placeholder={ __( '$0.00' ) }
 						onChange={ itemCost => setAttributes( { itemCost } ) }
 						{ ...richTextAttributes }
