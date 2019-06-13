@@ -35,6 +35,14 @@ msgstr ""
 msgid "Toggle to show image for this item."
 msgstr ""
 
+#: src/blocks/menu-item/index.js:20
+msgid "Menu Item"
+msgstr ""
+
+#: src/blocks/menu-item/index.js:44
+msgid "A menu item within the menu block."
+msgstr ""
+
 #: src/blocks/menu/edit.js:201
 msgid "Styles"
 msgstr ""
