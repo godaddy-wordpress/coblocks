@@ -73,7 +73,7 @@ const TEMPLATE = [
 ];
 
 const layoutOptions = [
-	{ name: 'grid', label: __( 'Grid' ), isDefault: true },
+	{ name: 'grid', label: __( 'Grid' ), isDefault: true, 'icon': <svg height="26" viewBox="0 0 50 26" width="50" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="m48.0833333 0h-46.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v22c0 1.1.8625 2 1.91666667 2h46.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-22c0-1.1-.8625-2-1.9166667-2zm0 24h-46.16666663v-22h46.16666663z" fill-rule="nonzero"/><path d="m32 2h2v22h-2z"/></g></svg> },
 	{ name: 'list', label: __( 'List' ) },
 ];
 
@@ -210,7 +210,7 @@ class Menu extends Component {
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
-						<div className="editor-block-styles block-editor-block-styles">
+						<div className="editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
 							{ layoutOptions.map( style => (
 								<div
 									key={ `menu-style-${ style.name }` }
