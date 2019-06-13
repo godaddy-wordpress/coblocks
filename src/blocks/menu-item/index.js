@@ -31,6 +31,7 @@ const icon = (
 const keywords = [];
 
 const attributes = {
+	showImage: { type: 'boolean', default: false },
 	itemImage: { type: 'string', default: '' },
 	itemName: { type: 'string', default: '' },
 	itemDescription: { type: 'string', default: '' },

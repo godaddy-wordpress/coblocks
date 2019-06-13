@@ -57,13 +57,6 @@ const handlePlaceholderPlacement = childClientId => {
 };
 
 class MenuItem extends Component {
-	componentDidMount() {
-		const { attributes, setAttributes } = this.props;
-		if ( !! attributes.itemImage ) {
-			setAttributes( { showImage: true } );
-		}
-	}
-
 	componentDidUpdate( prevProps ) {
 		if (
 			hasEmptyAttributes( prevProps.attributes ) !==

@@ -124,14 +124,6 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 }
 
 class Menu extends Component {
-	componentDidMount() {
-		const { attributes, setAttributes } = this.props;
-		setAttributes( { showImages: attributes.showImages } );
-		this.updateInnerAttributes( 'coblocks/menu-item', {
-			showImage: attributes.showImages,
-		} );
-	}
-
 	updateInnerAttributes = ( blockName, newAttributes ) => {
 		const innerItems = select( 'core/editor' ).getBlocksByClientId(
 			this.props.clientId
