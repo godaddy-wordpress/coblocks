@@ -32,7 +32,7 @@ const handlePlaceholderPlacement = childClientId => {
 		.innerBlocks;
 
 	const placeholders = menuItems.filter(
-		item => item.name === 'coblocks/menu-item' && hasEmptyAttributes( item.attributes )
+		item => item.name === 'coblocks/menu-item' && isEmpty( item.attributes )
 	);
 
 	// Add a placeholder if there are none. Remove trailing placholders if there are more than one.
@@ -55,11 +55,24 @@ const handlePlaceholderPlacement = childClientId => {
 	}
 };
 
+const isEmpty = attributes => {
+	const attributesToCheck = [
+		'itemImage',
+		'itemName',
+		'itemDescription',
+		'itemCost',
+	];
+	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
+		attributesToCheck.includes( key )
+	);
+
+	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
+};
+
 class MenuItem extends Component {
 	componentDidUpdate( prevProps ) {
 		if (
-			this.isEmpty( prevProps.attributes ) !==
-				this.isEmpty( this.props.attributes ) ||
+			isEmpty( prevProps.attributes ) !== isEmpty( this.props.attributes ) ||
 			( ! prevProps.isSelected && this.props.isSelected )
 		) {
 			handlePlaceholderPlacement( this.props.clientId );
@@ -106,20 +119,6 @@ class MenuItem extends Component {
 				onSelect={ el => setAttributes( { itemImage: el.url } ) }
 			/>
 		);
-	}
-
-	isEmpty( attributes ) {
-		const attributesToCheck = [
-			'itemImage',
-			'itemName',
-			'itemDescription',
-			'itemCost',
-		];
-		const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
-			attributesToCheck.includes( key )
-		);
-
-		return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 	}
 
 	renderToolbarEditButton() {
