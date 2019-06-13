@@ -43,40 +43,40 @@ msgstr ""
 msgid "A menu item within the menu block."
 msgstr ""
 
-#: src/blocks/menu/edit.js:212
+#: src/blocks/menu/edit.js:225
 msgid "Styles"
 msgstr ""
 
-#: src/blocks/menu/edit.js:245
+#: src/blocks/menu/edit.js:258
 msgid "Menu Settings"
 msgstr ""
 
-#: src/blocks/menu/edit.js:247
+#: src/blocks/menu/edit.js:260
 msgid "Images"
 msgstr ""
 
-#: src/blocks/menu/edit.js:250
+#: src/blocks/menu/edit.js:263
 msgid "Showing images for each item"
 msgstr ""
 
-#: src/blocks/menu/edit.js:251
+#: src/blocks/menu/edit.js:264
 msgid "Toggle to show images for each item."
-msgstr ""
-
-#: src/blocks/menu/edit.js:257
-msgid "Prices"
-msgstr ""
-
-#: src/blocks/menu/edit.js:260
-msgid "Showing the price of each item"
-msgstr ""
-
-#: src/blocks/menu/edit.js:261
-msgid "Toggle to show the price of each item."
 msgstr ""
 
 #: src/blocks/menu/edit.js:27
 msgid "Appetizers"
+msgstr ""
+
+#: src/blocks/menu/edit.js:270
+msgid "Prices"
+msgstr ""
+
+#: src/blocks/menu/edit.js:273
+msgid "Showing the price of each item"
+msgstr ""
+
+#: src/blocks/menu/edit.js:274
+msgid "Toggle to show the price of each item."
 msgstr ""
 
 #: src/blocks/menu/edit.js:32
@@ -91,25 +91,25 @@ msgstr ""
 msgid "Nachos Supreme"
 msgstr ""
 
-#: src/blocks/menu/edit.js:65
+#: src/blocks/menu/edit.js:67
 msgid "Jalepeno Poppers"
 msgstr ""
 
-#: src/blocks/menu/edit.js:66
+#: src/blocks/menu/edit.js:68
 msgid ""
 "Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis "
 "vestibulum."
 msgstr ""
 
-#: src/blocks/menu/edit.js:69
+#: src/blocks/menu/edit.js:71
 msgid "$4.75"
 msgstr ""
 
-#: src/blocks/menu/edit.js:76
+#: src/blocks/menu/edit.js:80
 msgid "Grid"
 msgstr ""
 
-#: src/blocks/menu/edit.js:77
+#: src/blocks/menu/edit.js:87
 msgid "List"
 msgstr ""
 
