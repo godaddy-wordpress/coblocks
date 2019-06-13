@@ -18,7 +18,7 @@ const { Fragment } = wp.element;
 const { withSelect } = wp.data;
 const { hasBlockSupport } = wp.blocks;
 const { ToggleControl } = wp.components;
-const { InspectorAdvancedControls } = wp.editor;
+const { InspectorAdvancedControls } = wp.blockEditor;
 const { compose, createHigherOrderComponent } = wp.compose;
 
 const blocksWithSpacingSupport = [ 'core/image', 'core/gallery', 'core/spacer', 'core/cover' ];

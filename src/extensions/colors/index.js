@@ -11,7 +11,7 @@ import ColorTransforms from './transform';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { withColors, PanelColorSettings } = wp.editor;
+const { withColors, PanelColorSettings } = wp.blockEditor;
 
 /**
  * Export

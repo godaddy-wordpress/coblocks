@@ -19,7 +19,7 @@ import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVi
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 /**
  * Block constants

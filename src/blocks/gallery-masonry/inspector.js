@@ -13,7 +13,7 @@ import { BackgroundPanel } from '../../components/background';
  */
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, PanelColorSettings } = wp.editor;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
 
 /**

@@ -18,7 +18,7 @@ import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVi
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { RichText, getFontSizeClass, getColorClassName } = wp.editor;
+const { RichText, getFontSizeClass, getColorClassName } = wp.blockEditor;
 
 /**
  * Block constants
