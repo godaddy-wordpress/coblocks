@@ -126,7 +126,7 @@ class MenuItem extends Component {
 				labels={ {
 					title: ' ',
 				} }
-				onSelect={ el => setAttributes( { itemImage: el.sizes.large.url } ) }
+				onSelect={ el => setAttributes( { itemImage: el.url } ) }
 			/>
 		);
 	}
@@ -140,7 +140,7 @@ class MenuItem extends Component {
 						allowedTypes={ [ 'image' ] }
 						multiple={ false }
 						onSelect={ media =>
-							setAttributes( { itemImage: media.sizes.large.url } )
+							setAttributes( { itemImage: media.url } )
 						}
 						render={ ( { open } ) => (
 							<IconButton
