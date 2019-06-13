@@ -62,6 +62,8 @@ const TEMPLATE = [
 		'coblocks/menu-item',
 		{
 			itemImage: '',
+
+
 			itemName: __( 'Jalepeno Poppers' ),
 			itemDescription: __(
 				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
@@ -73,8 +75,19 @@ const TEMPLATE = [
 ];
 
 const layoutOptions = [
-	{ name: 'grid', label: __( 'Grid' ), isDefault: true, 'icon': <svg height="26" viewBox="0 0 50 26" width="50" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="m48.0833333 0h-46.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v22c0 1.1.8625 2 1.91666667 2h46.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-22c0-1.1-.8625-2-1.9166667-2zm0 24h-46.16666663v-22h46.16666663z" fill-rule="nonzero"/><path d="m32 2h2v22h-2z"/></g></svg> },
-	{ name: 'list', label: __( 'List' ) },
+	{
+		name: 'grid',
+		label: __( 'Grid' ),
+		'icon':
+		<svg height="26" viewBox="0 0 56 26" width="56" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="m0 0h24v14h-24z"/><path d="m3 16h18v.8785807 1.1214193h-18z"/><path d="m1 20h22v.8785807 1.1214193h-22z"/><path d="m4 24h16v.8785807 1.1214193h-16z"/><path d="m32 0h24v14h-24z"/><path d="m35 16h18v.8785807 1.1214193h-18z"/><path d="m33 20h22v.8785807 1.1214193h-22z"/><path d="m36 24h16v.8785807 1.1214193h-16z"/></g></svg>,
+isDefault: true,
+	},
+	{
+		name: 'list',
+		label: __( 'List' ),
+		'icon':
+		<svg height="26" viewBox="0 0 56 26" width="56" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" fill-rule="evenodd"><g transform="translate(10)"><path d="m0 0h10v10h-10z"/><path d="m12 0h14v.87858073 1.12141927h-14z"/><path d="m12 4h22v.87858073 1.12141927h-22z"/><path d="m12 8h16v.87858073 1.12141927h-16z"/></g><path d="m10 16h10v10h-10z"/><path d="m22 16h14v.8785807 1.1214193h-14z"/><path d="m22 20h22v.8785807 1.1214193h-22z"/><path d="m22 24h16v.8785807 1.1214193h-16z"/></g></svg>,
+},
 ];
 
 /**

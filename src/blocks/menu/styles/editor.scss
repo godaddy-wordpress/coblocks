@@ -63,4 +63,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	svg {
+		fill: $dark-gray-500;
+	}
 }
