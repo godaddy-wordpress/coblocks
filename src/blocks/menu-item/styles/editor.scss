@@ -8,10 +8,6 @@
 		margin: 0 0 2em;
 		padding: 0;
 
-		.dashicon {
-			margin: 10px 0 0 0;
-		}
-
 		.components-placeholder__label,
 		.components-placeholder__instructions {
 			display: none;
@@ -30,6 +26,10 @@
 		height: 130px;
 		min-height: 130px;
 		position: relative;
+
+		.dashicon {
+			margin: 10px 0 0 0;
+		}
 
 		.components-placeholder__label {
 			display: block;
