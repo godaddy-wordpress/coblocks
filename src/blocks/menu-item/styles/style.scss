@@ -1,3 +1,29 @@
 .wp-block-coblocks-menu-item {
 	flex: 1 50%;
+	margin-bottom: 2.5em;
+
+	&:nth-child(even) {
+		padding-right: 15px;
+	}
+
+	&:nth-child(odd) {
+		padding-left: 15px;
+	}
+
+	figure {
+		margin: 0 0 1.25em;
+
+		img {
+			vertical-align: middle;
+		}
+	}
+
+	h4 {
+		margin: 0 0 0.25em;
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
 }

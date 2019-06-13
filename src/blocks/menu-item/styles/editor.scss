@@ -3,7 +3,9 @@
 	flex: 1 100%;
 
 	.block-editor-media-placeholder {
+		margin: 0 0 1em;
 		outline: 1px dashed #8d96a0;
+		padding: 0;
 
 		.components-placeholder__label,
 		.components-placeholder__instructions {
@@ -17,11 +19,3 @@
 		}
 	}
 }
-
-.wp-block-coblocks-menu-item {
-	figure {
-		margin: 0;
-		padding: 0;
-	}
-}
-

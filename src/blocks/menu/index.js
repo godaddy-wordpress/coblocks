@@ -53,12 +53,6 @@ const settings = {
 
 	attributes,
 
-	styles: [
-		{ name: 'one', label: _x( 'Style 1', 'block style' ), isDefault: true },
-		{ name: 'two', label: _x( 'Style 2', 'block style' ) },
-		{ name: 'three', label: _x( 'Style 3', 'block style' ) },
-	],
-
 	edit,
 
 	save,
