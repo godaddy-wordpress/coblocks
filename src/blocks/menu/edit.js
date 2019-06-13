@@ -168,7 +168,19 @@ class Menu extends Component {
 		const blockOrder = select( 'core/editor' ).getBlockOrder();
 		const insertAtIndex = blockOrder.indexOf( clientId ) + 1;
 
-		const newMenu = wp.blocks.createBlock( 'coblocks/menu', attributes );
+		const innerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
+			wp.blocks.createBlock(
+				blockName,
+				Object.assign( {}, blockAttributes, { showImage: attributes.showImages } )
+			)
+		);
+
+		const newMenu = wp.blocks.createBlock(
+			'coblocks/menu',
+			attributes,
+			innerBlocks
+		);
+
 		dispatch( 'core/editor' ).insertBlock( newMenu, insertAtIndex );
 	};
 
