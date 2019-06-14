@@ -3,74 +3,74 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/menu/components/edit.js:224
-msgid "Styles"
-msgstr ""
-
-#: src/blocks/menu/components/edit.js:257
-msgid "Menu Settings"
-msgstr ""
-
-#: src/blocks/menu/components/edit.js:259
-msgid "Images"
-msgstr ""
-
-#: src/blocks/menu/components/edit.js:262
-msgid "Showing images for each item"
-msgstr ""
-
-#: src/blocks/menu/components/edit.js:263
-msgid "Toggle to show images for each item."
-msgstr ""
-
-#: src/blocks/menu/components/edit.js:269
-msgid "Prices"
-msgstr ""
-
-#: src/blocks/menu/components/edit.js:272
-msgid "Showing the price of each item"
-msgstr ""
-
-#: src/blocks/menu/components/edit.js:273
-msgid "Toggle to show the price of each item."
-msgstr ""
-
-#: src/blocks/menu/components/edit.js:28
+#: src/blocks/menu/components/edit.js:27
 msgid "Appetizers"
 msgstr ""
 
-#: src/blocks/menu/components/edit.js:33
+#: src/blocks/menu/components/edit.js:32
 msgid "Bread Sticks"
 msgstr ""
 
-#: src/blocks/menu/components/edit.js:44
+#: src/blocks/menu/components/edit.js:43
 msgid "Onion Rings"
 msgstr ""
 
-#: src/blocks/menu/components/edit.js:55
+#: src/blocks/menu/components/edit.js:54
 msgid "Nachos Supreme"
 msgstr ""
 
-#: src/blocks/menu/components/edit.js:66
+#: src/blocks/menu/components/edit.js:65
 msgid "Jalepeno Poppers"
 msgstr ""
 
-#: src/blocks/menu/components/edit.js:67
+#: src/blocks/menu/components/edit.js:66
 msgid ""
 "Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis "
 "vestibulum."
 msgstr ""
 
-#: src/blocks/menu/components/edit.js:70
+#: src/blocks/menu/components/edit.js:69
 msgid "$4.75"
 msgstr ""
 
-#: src/blocks/menu/components/edit.js:79
+#: src/blocks/menu/components/edit.js:78
 msgid "Grid"
 msgstr ""
 
-#: src/blocks/menu/components/edit.js:86
+#: src/blocks/menu/components/edit.js:85
 msgid "List"
+msgstr ""
+
+#: src/blocks/menu/components/inspector.js:26
+msgid "Styles"
+msgstr ""
+
+#: src/blocks/menu/components/inspector.js:59
+msgid "Menu Settings"
+msgstr ""
+
+#: src/blocks/menu/components/inspector.js:61
+msgid "Images"
+msgstr ""
+
+#: src/blocks/menu/components/inspector.js:64
+msgid "Showing images for each item"
+msgstr ""
+
+#: src/blocks/menu/components/inspector.js:65
+msgid "Toggle to show images for each item."
+msgstr ""
+
+#: src/blocks/menu/components/inspector.js:71
+msgid "Prices"
+msgstr ""
+
+#: src/blocks/menu/components/inspector.js:74
+msgid "Showing the price of each item"
+msgstr ""
+
+#: src/blocks/menu/components/inspector.js:75
+msgid "Toggle to show the price of each item."
 msgstr ""
 
 #: src/blocks/menu/index.js:21
