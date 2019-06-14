@@ -23,3 +23,25 @@
 		width: 4vw;
 	}
 }
+
+.block-editor-block-preview {
+	.block-list-appender {
+		display: none !important;
+	}
+
+	.wp-block-coblocks-dynamic-separator {
+		height: 90px !important;
+
+		&::before {
+			top: 56% !important;
+		}
+
+		&.is-style-line::before {
+			top: 71% !important;
+		}
+
+		&.is-style-fullwidth::before {
+			top: 71% !important;
+		}
+	}
+}
