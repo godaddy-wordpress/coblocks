@@ -14,7 +14,7 @@ const Inspector = props => {
 					label={ __( 'Image' ) }
 					help={
 						attributes.showImage ?
-							__( 'Showing image for this item' ) :
+							__( 'Showing image for this item.' ) :
 							__( 'Toggle to show image for this item.' )
 					}
 					checked={ attributes.showImage }
@@ -24,7 +24,7 @@ const Inspector = props => {
 					label={ __( 'Price' ) }
 					help={
 						attributes.showPrice ?
-							__( 'Showing the price for this item' ) :
+							__( 'Showing the price for this item.' ) :
 							__( 'Toggle to show the price for this item.' )
 					}
 					checked={ attributes.showPrice }
