@@ -47,28 +47,6 @@ const TEMPLATE = [
 			itemPrice: __( '$4.75' ),
 		},
 	],
-	[
-		'coblocks/menu-item',
-		{
-			imageUrl: '',
-			title: __( 'Nachos Supreme' ),
-			description: __(
-				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
-			),
-			itemPrice: __( '$4.75' ),
-		},
-	],
-	[
-		'coblocks/menu-item',
-		{
-			imageUrl: '',
-			title: __( 'Jalepeno Poppers' ),
-			description: __(
-				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
-			),
-			itemPrice: __( '$4.75' ),
-		},
-	],
 	[ 'coblocks/menu-item' ],
 ];
 
