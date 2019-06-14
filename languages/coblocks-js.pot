@@ -118,7 +118,7 @@ msgid "Image"
 msgstr ""
 
 #: src/blocks/menu/menu-item/components/inspector.js:17
-msgid "Showing image for this item"
+msgid "Showing image for this item."
 msgstr ""
 
 #: src/blocks/menu/menu-item/components/inspector.js:18
@@ -130,7 +130,7 @@ msgid "Price"
 msgstr ""
 
 #: src/blocks/menu/menu-item/components/inspector.js:27
-msgid "Showing the price for this item"
+msgid "Showing the price for this item."
 msgstr ""
 
 #: src/blocks/menu/menu-item/components/inspector.js:28
