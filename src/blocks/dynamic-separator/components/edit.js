@@ -75,13 +75,10 @@ class Edit extends Component {
 						topLeft: false,
 					} }
 					onResizeStop={ ( event, direction, elt, delta ) => {
+						const spacerHeight = parseInt( height + delta.height, 10 );
 						setAttributes( {
-							height: parseInt( height + delta.height, 10 ),
+							height: spacerHeight,
 						} );
-						toggleSelection( true );
-					} }
-					onResizeStart={ () => {
-						toggleSelection( false );
 					} }
 				>
 				</ResizableBox>
