@@ -14,9 +14,11 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { IconButton, Toolbar } = wp.components;
+const { IconButton, Toolbar, DropZone, Spinner } = wp.components;
 const { dispatch, select } = wp.data;
 const { RichText, MediaPlaceholder, MediaUpload, BlockControls } = wp.blockEditor;
+const { mediaUpload } = wp.editor;
+const { isBlobURL } = wp.blob;
 
 /**
  * Handle creation and removal of placeholder elements so that we always have one available to use.
@@ -71,6 +73,13 @@ const isEmpty = attributes => {
 };
 
 class MenuItem extends Component {
+
+	constructor() {
+		super( ...arguments );
+
+		this.replaceImage = this.replaceImage.bind( this );
+	}
+
 	componentDidUpdate( prevProps ) {
 		if (
 			isEmpty( prevProps.attributes ) !== isEmpty( this.props.attributes ) ||
@@ -84,12 +93,34 @@ class MenuItem extends Component {
 		}
 	}
 
+	replaceImage( files ) {
+		mediaUpload( {
+			allowedTypes: [ 'image' ],
+			filesList: files,
+			onFileChange: ( [ media ] ) => this.props.setAttributes( { imageUrl: media.url } )
+		} );
+	}
+
 	renderImage() {
 		const { attributes } = this.props;
+
+		const classes = classnames( {
+			'is-transient': isBlobURL( attributes.imageUrl ),
+		} );
+
+		const dropZone = (
+			<DropZone
+				onFilesDrop={ this.replaceImage }
+				label={ __( 'Drop file to replace' ) }
+			/>
+		);
+
 		return (
 			<Fragment>
 				{ this.renderToolbarEditButton() }
-				<figure>
+				<figure className={ classes }>
+					{ dropZone }
+					{ isBlobURL( attributes.imageUrl ) && <Spinner /> }
 					<img src={ attributes.imageUrl } alt={ '' } />
 				</figure>
 			</Fragment>
