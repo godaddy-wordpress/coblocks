@@ -1,8 +1,10 @@
 .wp-block-coblocks-menu-item {
 	flex: 1 50%;
-	margin-bottom: 2.5em;
+	margin-bottom: 1.5em;
 
 	.wp-block-coblocks-menu:not(.is-style-list) & {
+		margin-bottom: 2.5em;
+
 		&:nth-child(even) {
 			padding-right: 25px;
 		}
