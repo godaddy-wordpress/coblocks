@@ -51,7 +51,7 @@ import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
 import * as highlight from './blocks/highlight';
 import * as menu from './blocks/menu';
-import * as menuItem from './blocks/menu-item';
+import * as menuItem from './blocks/menu/menu-item';
 import * as pricingTable from './blocks/pricing-table';
 import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';

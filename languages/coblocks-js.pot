@@ -3,124 +3,46 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/menu-item/edit.js:101
+#: src/blocks/menu/menu-item/edit.js:101
 msgid "Menu Item Settings"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:103
+#: src/blocks/menu/menu-item/edit.js:103
 msgid "Image"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:106
+#: src/blocks/menu/menu-item/edit.js:106
 msgid "Showing image for this item"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:107
+#: src/blocks/menu/menu-item/edit.js:107
 msgid "Toggle to show image for this item."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:113
+#: src/blocks/menu/menu-item/edit.js:113
 msgid "Price"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:116
+#: src/blocks/menu/menu-item/edit.js:116
 msgid "Showing the price for this item"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:117
+#: src/blocks/menu/menu-item/edit.js:117
 msgid "Toggle to show the price for this item."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:166
+#: src/blocks/menu/menu-item/edit.js:166
 msgid "Edit media"
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:201
+#: src/blocks/menu/menu-item/edit.js:201
 msgid "Add menu item..."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:208
+#: src/blocks/menu/menu-item/edit.js:208
 msgid "Add description..."
 msgstr ""
 
-#: src/blocks/menu-item/edit.js:217
+#: src/blocks/menu/menu-item/edit.js:217
 msgid "$0.00"
-msgstr ""
-
-#: src/blocks/menu-item/index.js:20
-msgid "Menu Item"
-msgstr ""
-
-#: src/blocks/menu-item/index.js:45
-msgid "A menu item within the menu block."
-msgstr ""
-
-#: src/blocks/menu/edit.js:223
-msgid "Styles"
-msgstr ""
-
-#: src/blocks/menu/edit.js:256
-msgid "Menu Settings"
-msgstr ""
-
-#: src/blocks/menu/edit.js:258
-msgid "Images"
-msgstr ""
-
-#: src/blocks/menu/edit.js:261
-msgid "Showing images for each item"
-msgstr ""
-
-#: src/blocks/menu/edit.js:262
-msgid "Toggle to show images for each item."
-msgstr ""
-
-#: src/blocks/menu/edit.js:268
-msgid "Prices"
-msgstr ""
-
-#: src/blocks/menu/edit.js:27
-msgid "Appetizers"
-msgstr ""
-
-#: src/blocks/menu/edit.js:271
-msgid "Showing the price of each item"
-msgstr ""
-
-#: src/blocks/menu/edit.js:272
-msgid "Toggle to show the price of each item."
-msgstr ""
-
-#: src/blocks/menu/edit.js:32
-msgid "Bread Sticks"
-msgstr ""
-
-#: src/blocks/menu/edit.js:43
-msgid "Onion Rings"
-msgstr ""
-
-#: src/blocks/menu/edit.js:54
-msgid "Nachos Supreme"
-msgstr ""
-
-#: src/blocks/menu/edit.js:65
-msgid "Jalepeno Poppers"
-msgstr ""
-
-#: src/blocks/menu/edit.js:66
-msgid ""
-"Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis "
-"vestibulum."
-msgstr ""
-
-#: src/blocks/menu/edit.js:69
-msgid "$4.75"
-msgstr ""
-
-#: src/blocks/menu/edit.js:78
-msgid "Grid"
-msgstr ""
-
-#: src/blocks/menu/edit.js:85
-msgid "List"
 msgstr ""

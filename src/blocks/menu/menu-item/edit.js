@@ -1,7 +1,7 @@
 /**
  * Internal dependencies.
  */
-import { hasEmptyAttributes } from '../../utils/block-helpers';
+import { hasEmptyAttributes } from '../../../utils/block-helpers';
 
 /**
  * External dependencies.
