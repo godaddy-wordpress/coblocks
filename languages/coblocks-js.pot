@@ -93,48 +93,48 @@ msgstr ""
 msgid "Display a menu or price list."
 msgstr ""
 
-#: src/blocks/menu/menu-item/components/edit.js:101
-msgid "Menu Item Settings"
-msgstr ""
-
-#: src/blocks/menu/menu-item/components/edit.js:103
-msgid "Image"
-msgstr ""
-
-#: src/blocks/menu/menu-item/components/edit.js:106
-msgid "Showing image for this item"
-msgstr ""
-
-#: src/blocks/menu/menu-item/components/edit.js:107
-msgid "Toggle to show image for this item."
-msgstr ""
-
-#: src/blocks/menu/menu-item/components/edit.js:113
-msgid "Price"
-msgstr ""
-
-#: src/blocks/menu/menu-item/components/edit.js:116
-msgid "Showing the price for this item"
-msgstr ""
-
-#: src/blocks/menu/menu-item/components/edit.js:117
-msgid "Toggle to show the price for this item."
-msgstr ""
-
-#: src/blocks/menu/menu-item/components/edit.js:166
+#: src/blocks/menu/menu-item/components/edit.js:126
 msgid "Edit media"
 msgstr ""
 
-#: src/blocks/menu/menu-item/components/edit.js:201
+#: src/blocks/menu/menu-item/components/edit.js:161
 msgid "Add menu item..."
 msgstr ""
 
-#: src/blocks/menu/menu-item/components/edit.js:208
+#: src/blocks/menu/menu-item/components/edit.js:168
 msgid "Add description..."
 msgstr ""
 
-#: src/blocks/menu/menu-item/components/edit.js:217
+#: src/blocks/menu/menu-item/components/edit.js:177
 msgid "$0.00"
+msgstr ""
+
+#: src/blocks/menu/menu-item/components/inspector.js:12
+msgid "Menu Item Settings"
+msgstr ""
+
+#: src/blocks/menu/menu-item/components/inspector.js:14
+msgid "Image"
+msgstr ""
+
+#: src/blocks/menu/menu-item/components/inspector.js:17
+msgid "Showing image for this item"
+msgstr ""
+
+#: src/blocks/menu/menu-item/components/inspector.js:18
+msgid "Toggle to show image for this item."
+msgstr ""
+
+#: src/blocks/menu/menu-item/components/inspector.js:24
+msgid "Price"
+msgstr ""
+
+#: src/blocks/menu/menu-item/components/inspector.js:27
+msgid "Showing the price for this item"
+msgstr ""
+
+#: src/blocks/menu/menu-item/components/inspector.js:28
+msgid "Toggle to show the price for this item."
 msgstr ""
 
 #: src/blocks/menu/menu-item/index.js:21

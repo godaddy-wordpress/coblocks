@@ -2,6 +2,7 @@
  * Internal dependencies.
  */
 import { hasEmptyAttributes } from '../../../../utils/block-helpers';
+import InspectorControls from './inspector';
 
 /**
  * External dependencies.
@@ -13,15 +14,9 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { PanelBody, ToggleControl, IconButton, Toolbar } = wp.components;
+const { IconButton, Toolbar } = wp.components;
 const { dispatch, select } = wp.data;
-const {
-	InspectorControls,
-	RichText,
-	MediaPlaceholder,
-	MediaUpload,
-	BlockControls,
-} = wp.editor;
+const { RichText, MediaPlaceholder, MediaUpload, BlockControls } = wp.editor;
 
 /**
  * Handle creation and removal of placeholder elements so that we always have one available to use.
@@ -67,12 +62,7 @@ const handlePlaceholderPlacement = (
 };
 
 const isEmpty = attributes => {
-	const attributesToCheck = [
-		'imageUrl',
-		'title',
-		'description',
-		'itemPrice',
-	];
+	const attributesToCheck = [ 'imageUrl', 'title', 'description', 'itemPrice' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
 	);
@@ -92,36 +82,6 @@ class MenuItem extends Component {
 				showPrice,
 			} );
 		}
-	}
-
-	renderInspectorControls() {
-		const { attributes, setAttributes } = this.props;
-		return (
-			<InspectorControls>
-				<PanelBody title={ __( 'Menu Item Settings' ) } initialOpen={ true }>
-					<ToggleControl
-						label={ __( 'Image' ) }
-						help={
-							attributes.showImage ?
-								__( 'Showing image for this item' ) :
-								__( 'Toggle to show image for this item.' )
-						}
-						checked={ attributes.showImage }
-						onChange={ () => setAttributes( { showImage: ! attributes.showImage } ) }
-					/>
-					<ToggleControl
-						label={ __( 'Price' ) }
-						help={
-							attributes.showPrice ?
-								__( 'Showing the price for this item' ) :
-								__( 'Toggle to show the price for this item.' )
-						}
-						checked={ attributes.showPrice }
-						onChange={ () => setAttributes( { showPrice: ! attributes.showPrice } ) }
-					/>
-				</PanelBody>
-			</InspectorControls>
-		);
 	}
 
 	renderImage() {
@@ -184,7 +144,7 @@ class MenuItem extends Component {
 
 		return (
 			<Fragment>
-				{ this.renderInspectorControls() }
+				<InspectorControls { ...this.props } />
 				<div
 					className={ classnames( className, {
 						'is-empty': isEmpty( attributes ),
