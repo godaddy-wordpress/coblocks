@@ -33,9 +33,9 @@ const keywords = [];
 const attributes = {
 	showImage: { type: 'boolean', default: false },
 	showPrice: { type: 'boolean', default: true },
-	itemImage: { type: 'string', default: '' },
-	itemName: { type: 'string', default: '' },
-	itemDescription: { type: 'string', default: '' },
+	imageUrl: { type: 'string', default: '' },
+	title: { type: 'string', default: '' },
+	description: { type: 'string', default: '' },
 	itemPrice: { type: 'string', default: '' },
 };
 

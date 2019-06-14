@@ -28,9 +28,9 @@ const TEMPLATE = [
 	[
 		'coblocks/menu-item',
 		{
-			itemImage: '',
-			itemName: __( 'Bread Sticks' ),
-			itemDescription: __(
+			imageUrl: '',
+			title: __( 'Bread Sticks' ),
+			description: __(
 				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
 			),
 			itemPrice: __( '$4.75' ),
@@ -39,9 +39,9 @@ const TEMPLATE = [
 	[
 		'coblocks/menu-item',
 		{
-			itemImage: '',
-			itemName: __( 'Onion Rings' ),
-			itemDescription: __(
+			imageUrl: '',
+			title: __( 'Onion Rings' ),
+			description: __(
 				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
 			),
 			itemPrice: __( '$4.75' ),
@@ -50,9 +50,9 @@ const TEMPLATE = [
 	[
 		'coblocks/menu-item',
 		{
-			itemImage: '',
-			itemName: __( 'Nachos Supreme' ),
-			itemDescription: __(
+			imageUrl: '',
+			title: __( 'Nachos Supreme' ),
+			description: __(
 				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
 			),
 			itemPrice: __( '$4.75' ),
@@ -61,9 +61,9 @@ const TEMPLATE = [
 	[
 		'coblocks/menu-item',
 		{
-			itemImage: '',
-			itemName: __( 'Jalepeno Poppers' ),
-			itemDescription: __(
+			imageUrl: '',
+			title: __( 'Jalepeno Poppers' ),
+			description: __(
 				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
 			),
 			itemPrice: __( '$4.75' ),

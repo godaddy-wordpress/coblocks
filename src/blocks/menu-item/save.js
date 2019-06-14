@@ -11,14 +11,14 @@ const { RichText } = wp.editor;
 export default function save( { attributes } ) {
 	return hasEmptyAttributes( attributes ) ? null : (
 		<div className={ attributes.className }>
-			{ attributes.showImage && attributes.itemImage && (
+			{ attributes.showImage && attributes.imageUrl && (
 				<figure>
-					<img src={ attributes.itemImage } alt={ '' } />
+					<img src={ attributes.imageUrl } alt={ '' } />
 				</figure>
 			) }
 			<div className="wp-block-coblocks-menu__content">
-				<RichText.Content tagName="h4" value={ attributes.itemName } />
-				<RichText.Content tagName="p" value={ attributes.itemDescription } />
+				<RichText.Content tagName="h4" value={ attributes.title } />
+				<RichText.Content tagName="p" value={ attributes.description } />
 				{ attributes.showPrice && (
 					<RichText.Content
 						tagName="p"

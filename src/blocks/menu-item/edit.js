@@ -68,9 +68,9 @@ const handlePlaceholderPlacement = (
 
 const isEmpty = attributes => {
 	const attributesToCheck = [
-		'itemImage',
-		'itemName',
-		'itemDescription',
+		'imageUrl',
+		'title',
+		'description',
 		'itemPrice',
 	];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
@@ -130,7 +130,7 @@ class MenuItem extends Component {
 			<Fragment>
 				{ this.renderToolbarEditButton() }
 				<figure>
-					<img src={ attributes.itemImage } alt={ '' } />
+					<img src={ attributes.imageUrl } alt={ '' } />
 				</figure>
 			</Fragment>
 		);
@@ -146,7 +146,7 @@ class MenuItem extends Component {
 				labels={ {
 					title: ' ',
 				} }
-				onSelect={ el => setAttributes( { itemImage: el.url } ) }
+				onSelect={ el => setAttributes( { imageUrl: el.url } ) }
 			/>
 		);
 	}
@@ -159,7 +159,7 @@ class MenuItem extends Component {
 					<MediaUpload
 						allowedTypes={ [ 'image' ] }
 						multiple={ false }
-						onSelect={ media => setAttributes( { itemImage: media.url } ) }
+						onSelect={ media => setAttributes( { imageUrl: media.url } ) }
 						render={ ( { open } ) => (
 							<IconButton
 								className="components-toolbar__control"
@@ -191,22 +191,22 @@ class MenuItem extends Component {
 					} ) }
 				>
 					{ attributes.showImage &&
-						( attributes.itemImage ?
+						( attributes.imageUrl ?
 							this.renderImage() :
 							this.renderPlaceholder() ) }
 					<div className="wp-block-coblocks-menu__content">
 						<RichText
-							value={ attributes.itemName }
+							value={ attributes.title }
 							tagName="h4"
 							placeholder={ __( 'Add menu item...' ) }
-							onChange={ itemName => setAttributes( { itemName } ) }
+							onChange={ title => setAttributes( { title } ) }
 							{ ...richTextAttributes }
 						/>
 						<RichText
-							value={ attributes.itemDescription }
+							value={ attributes.description }
 							tagName="p"
 							placeholder={ __( 'Add description...' ) }
-							onChange={ itemDescription => setAttributes( { itemDescription } ) }
+							onChange={ description => setAttributes( { description } ) }
 							{ ...richTextAttributes }
 						/>
 						{ attributes.showPrice && ( attributes.itemPrice || isSelected ) && (
