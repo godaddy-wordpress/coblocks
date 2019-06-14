@@ -4,8 +4,8 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 
-import edit from './edit';
-import save from './save';
+import edit from './components/edit';
+import save from './components/save';
 
 /**
  * WordPress dependencies.

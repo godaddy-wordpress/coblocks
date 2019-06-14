@@ -1,7 +1,7 @@
 /**
  * Internal dependencies.
  */
-import MenuAppender from './components/menu-appender';
+import MenuAppender from './menu-appender';
 
 /**
  * External dependencies.
