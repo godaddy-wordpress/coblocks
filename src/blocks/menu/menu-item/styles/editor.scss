@@ -5,8 +5,14 @@
 	padding: 0 !important;
 
 	.editor-media-placeholder {
-		margin: 0 0 2em;
+		margin: 0 0 1.65em;
+		outline: 1px dashed $dark-gray-150;
 		padding: 0;
+		position: relative;
+
+		&:hover {
+			outline: 1px dashed $dark-gray-500;
+		}
 
 		.components-placeholder__label,
 		.components-placeholder__instructions {
@@ -18,6 +24,21 @@
 				margin-bottom: 0 !important;
 			}
 		}
+
+		.components-drop-zone {
+			bottom: -1px;
+			left: -1px;
+			right: -1px;
+			top: -1px;
+		}
+	}
+
+	&__heading.block-editor-rich-text__editable {
+		margin: 0 0 0.4em;
+	}
+
+	p.block-editor-rich-text__editable {
+		margin: 0 0 0.6em;
 	}
 }
 
@@ -59,7 +80,7 @@
 
 .wp-block[data-type="coblocks/menu-item"] {
 	flex: 1 50%;
-	max-width: calc(50% - 10px) !important;
 	margin-left: 5px;
 	margin-right: 5px;
+	max-width: calc(50% - 10px) !important;
 }

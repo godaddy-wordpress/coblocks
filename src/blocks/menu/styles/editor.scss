@@ -10,6 +10,11 @@
 		flex-flow: row wrap;
 		justify-content: space-between;
 
+		// On small screens, we are no longer using row direction but column.
+		@media all and (max-width: 514px) {
+			flex-direction: column;
+		}
+
 		.wp-block[data-type="core/heading"] {
 			flex: 1 100%;
 
@@ -56,13 +61,7 @@
 	}
 }
 
-/* On small screens, we are no longer using row direction but column */
-@media all and (max-width: 514px) {
-	.wp-block-coblocks-menu .block-editor-block-list__layout {
-		flex-direction: column;
-	}
-}
-
+// Adjust the editor preview to display our icons properly.
 .coblocks-editor-block-styles .editor-block-styles__item-preview {
 	align-items: center;
 	display: flex;

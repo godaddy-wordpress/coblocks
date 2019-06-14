@@ -16,13 +16,13 @@ export default function save( { attributes } ) {
 					<img src={ attributes.imageUrl } alt={ '' } />
 				</figure>
 			) }
-			<div className="wp-block-coblocks-menu__content">
+			<div className="wp-block-coblocks-menu-item__content">
 				<RichText.Content tagName="h4" value={ attributes.title } />
 				<RichText.Content tagName="p" value={ attributes.description } />
 				{ attributes.showPrice && (
 					<RichText.Content
 						tagName="p"
-						className="wp-block-coblocks-menu__price"
+						className="wp-block-coblocks-menu-item__price"
 						value={ attributes.itemPrice }
 					/>
 				) }

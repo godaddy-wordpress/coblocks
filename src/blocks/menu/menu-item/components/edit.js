@@ -154,10 +154,11 @@ class MenuItem extends Component {
 						( attributes.imageUrl ?
 							this.renderImage() :
 							this.renderPlaceholder() ) }
-					<div className="wp-block-coblocks-menu__content">
+					<div className="wp-block-coblocks-menu-item__content">
 						<RichText
 							value={ attributes.title }
 							tagName="h4"
+							className="wp-block-coblocks-menu-item__heading"
 							placeholder={ __( 'Add menu item...' ) }
 							onChange={ title => setAttributes( { title } ) }
 							{ ...richTextAttributes }
@@ -173,7 +174,7 @@ class MenuItem extends Component {
 							<RichText
 								value={ attributes.itemPrice }
 								tagName="p"
-								className="wp-block-coblocks-menu__price"
+								className="wp-block-coblocks-menu-item__price"
 								placeholder={ __( '$0.00' ) }
 								onChange={ itemPrice => setAttributes( { itemPrice } ) }
 								{ ...richTextAttributes }
