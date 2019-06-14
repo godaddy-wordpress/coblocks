@@ -8,7 +8,7 @@
 		margin: 0 0 1.65em;
 		min-height: 264px;
 		outline: 1px dashed $dark-gray-150;
-		padding: 0;
+		padding: 100% 0 0 0;
 		position: relative;
 
 		&:hover {
@@ -21,6 +21,13 @@
 		}
 
 		.components-placeholder__fieldset {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			align-items: center;
+
 			.components-button {
 				margin-bottom: 0 !important;
 			}
