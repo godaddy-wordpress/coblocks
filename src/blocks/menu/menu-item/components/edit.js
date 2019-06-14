@@ -16,7 +16,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { IconButton, Toolbar } = wp.components;
 const { dispatch, select } = wp.data;
-const { RichText, MediaPlaceholder, MediaUpload, BlockControls } = wp.editor;
+const { RichText, MediaPlaceholder, MediaUpload, BlockControls } = wp.blockEditor;
 
 /**
  * Handle creation and removal of placeholder elements so that we always have one available to use.

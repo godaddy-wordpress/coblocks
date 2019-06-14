@@ -6,7 +6,7 @@ import { hasEmptyAttributes } from '../../../../utils/block-helpers';
 /**
  * WordPress dependencies.
  */
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 export default function save( { attributes } ) {
 	return hasEmptyAttributes( attributes ) ? null : (

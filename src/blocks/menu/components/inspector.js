@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { PanelBody, ToggleControl } = wp.components;
-const { InspectorControls } = wp.editor;
+const { InspectorControls } = wp.blockEditor;
 const { ENTER, SPACE } = wp.keycodes;
 
 const Inspector = props => {

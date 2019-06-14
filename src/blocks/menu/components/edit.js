@@ -18,7 +18,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect, dispatch, select } = wp.data;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 const TokenList = wp.tokenList;
 
 const ALLOWED_BLOCKS = [ 'coblocks/menu-item' ];
@@ -247,8 +247,8 @@ class Menu extends Component {
 }
 
 const applyWithSelect = withSelect( () => {
-	const selectedClientId = select( 'core/editor' ).getBlockSelectionStart();
-	const parentClientId = select( 'core/editor' ).getBlockRootClientId(
+	const selectedClientId = select( 'core/block-editor' ).getBlockSelectionStart();
+	const parentClientId = select( 'core/block-editor' ).getBlockRootClientId(
 		selectedClientId
 	);
 

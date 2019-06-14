@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { PanelBody, ToggleControl } = wp.components;
-const { InspectorControls } = wp.editor;
+const { InspectorControls } = wp.blockEditor;
 
 const Inspector = props => {
 	const { attributes, setAttributes } = props;
