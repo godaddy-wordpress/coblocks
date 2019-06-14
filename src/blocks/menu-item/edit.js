@@ -27,8 +27,14 @@ const {
  * Handle creation and removal of placeholder elements so that we always have one available to use.
  *
  * @param {Integer} childClientId The child block's ClientId.
+ * @param {String} blockName The block to insert.
+ * @param {Object} blockAttributes The attributes for the placeholder block.
  */
-const handlePlaceholderPlacement = childClientId => {
+const handlePlaceholderPlacement = (
+	childClientId,
+	blockName,
+	blockAttributes = {}
+) => {
 	const menuClientId = select( 'core/editor' ).getBlockRootClientId(
 		childClientId
 	);
@@ -37,12 +43,12 @@ const handlePlaceholderPlacement = childClientId => {
 		.innerBlocks;
 
 	const placeholders = menuItems.filter(
-		item => item.name === 'coblocks/menu-item' && isEmpty( item.attributes )
+		item => item.name === blockName && isEmpty( item.attributes )
 	);
 
 	// Add a placeholder if there are none. Remove trailing placholders if there are more than one.
 	if ( placeholders.length === 0 ) {
-		const newMenuItem = wp.blocks.createBlock( 'coblocks/menu-item', {} );
+		const newMenuItem = wp.blocks.createBlock( blockName, blockAttributes );
 		dispatch( 'core/editor' ).insertBlocks(
 			newMenuItem,
 			menuItems.length,
@@ -80,7 +86,11 @@ class MenuItem extends Component {
 			isEmpty( prevProps.attributes ) !== isEmpty( this.props.attributes ) ||
 			( ! prevProps.isSelected && this.props.isSelected )
 		) {
-			handlePlaceholderPlacement( this.props.clientId );
+			const { showImage, showPrice } = this.props.attributes;
+			handlePlaceholderPlacement( this.props.clientId, 'coblocks/menu-item', {
+				showImage,
+				showPrice,
+			} );
 		}
 	}
 
@@ -149,9 +159,7 @@ class MenuItem extends Component {
 					<MediaUpload
 						allowedTypes={ [ 'image' ] }
 						multiple={ false }
-						onSelect={ media =>
-							setAttributes( { itemImage: media.url } )
-						}
+						onSelect={ media => setAttributes( { itemImage: media.url } ) }
 						render={ ( { open } ) => (
 							<IconButton
 								className="components-toolbar__control"
