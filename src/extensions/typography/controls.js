@@ -9,7 +9,7 @@ import TypographyControls, { TypographyAttributes, TypograpyClasses } from './..
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls } = wp.editor;
+const { AlignmentToolbar, BlockControls } = wp.blockEditor;
 const { Toolbar } = wp.components;
 
 class Controls extends Component {

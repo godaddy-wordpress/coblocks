@@ -17,7 +17,7 @@ import transforms from './transforms';
  * WordPress dependencies
  */
 const { __, _x } = wp.i18n;
-const { getColorClassName } = wp.editor;
+const { getColorClassName } = wp.blockEditor;
 
 /**
  * Block constants

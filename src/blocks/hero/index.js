@@ -20,7 +20,7 @@ import ResponsiveBaseControlAttributes from '../../components/responsive-base-co
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { RichText, getColorClassName, getFontSizeClass, InnerBlocks } = wp.editor;
+const { RichText, getColorClassName, getFontSizeClass, InnerBlocks } = wp.blockEditor;
 
 
 /**

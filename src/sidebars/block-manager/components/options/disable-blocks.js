@@ -18,7 +18,7 @@ const { Fragment, Component } = wp.element;
 const { CheckboxControl, Button, Popover, ToggleControl } = wp.components;
 const { PluginMoreMenuItem } = wp.editPost;
 const { getCategories, getBlockTypes, unregisterBlockType, registerBlockType } = wp.blocks;
-const { BlockIcon } = wp.editor;
+const { BlockIcon } = wp.blockEditor;
 
 
 /**

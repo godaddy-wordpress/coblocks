@@ -19,7 +19,7 @@ import { MIN_ICON_SIZE, MAX_ICON_SIZE } from './edit';
 const { __, _x, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
+const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, NavigableMenu, Dropdown, ButtonGroup, Dashicon, Tooltip, ToggleControl } = wp.components;
 
 /**
