@@ -16,8 +16,7 @@ const { PanelBody, BaseControl } = wp.components;
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.updateHeight = this.updateHeight.bind( this );
 	}
@@ -27,14 +26,11 @@ class Inspector extends Component {
 	}
 
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
 			setColor,
 			color,
-			fallbackColor,
-			isSelected,
 		} = this.props;
 
 		const {
