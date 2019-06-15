@@ -78,7 +78,7 @@ class GalleryLinkSettings extends Component {
 								/>
 								<TextControl
 									label={ __( 'Link Rel' ) }
-									value={ rel || '' }
+									value={ rel }
 									onChange={ ( value ) => setAttributes( { rel: value } ) }
 								/>
 							</Fragment>
