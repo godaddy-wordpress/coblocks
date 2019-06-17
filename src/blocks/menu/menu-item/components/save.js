@@ -19,7 +19,7 @@ export default function save( { attributes } ) {
 			<div className="wp-block-coblocks-menu-item__content">
 				<RichText.Content
 					tagName="h4"
-					className="wp-block-coblocks-menu-item__title"
+					className="wp-block-coblocks-menu-item__heading"
 					value={ attributes.title }
 				/>
 				<RichText.Content

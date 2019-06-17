@@ -16,7 +16,12 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { IconButton, Toolbar, DropZone, Spinner } = wp.components;
 const { dispatch, select } = wp.data;
-const { RichText, MediaPlaceholder, MediaUpload, BlockControls } = wp.blockEditor;
+const {
+	RichText,
+	MediaPlaceholder,
+	MediaUpload,
+	BlockControls,
+} = wp.blockEditor;
 const { mediaUpload } = wp.editor;
 const { isBlobURL } = wp.blob;
 
@@ -73,7 +78,6 @@ const isEmpty = attributes => {
 };
 
 class MenuItem extends Component {
-
 	constructor() {
 		super( ...arguments );
 
@@ -97,14 +101,15 @@ class MenuItem extends Component {
 		mediaUpload( {
 			allowedTypes: [ 'image' ],
 			filesList: files,
-			onFileChange: ( [ media ] ) => this.props.setAttributes( { imageUrl: media.url } )
+			onFileChange: ( [ media ] ) =>
+				this.props.setAttributes( { imageUrl: media.url } ),
 		} );
 	}
 
 	renderImage() {
 		const { attributes } = this.props;
 
-		const classes = classnames( {
+		const classes = classnames( 'wp-block-coblocks-menu-item__image', {
 			'is-transient': isBlobURL( attributes.imageUrl ),
 		} );
 
@@ -197,6 +202,7 @@ class MenuItem extends Component {
 						<RichText
 							value={ attributes.description }
 							tagName="p"
+							className="wp-block-coblocks-menu-item__description"
 							placeholder={ __( 'Add description...' ) }
 							onChange={ description => setAttributes( { description } ) }
 							{ ...richTextAttributes }
