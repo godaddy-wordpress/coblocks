@@ -12,6 +12,14 @@
 		&:nth-child(odd) {
 			padding-left: 25px;
 		}
+
+		.wp-block-coblocks-menu-item__content {
+			display: block;
+		}
+
+		&__price {
+			text-align: center;
+		}
 	}
 
 	figure {
@@ -23,16 +31,29 @@
 		}
 	}
 
-	&__heading {
-		margin: 0 0 0.25em;
+	.wp-block-coblocks-menu-item__content {
+		display: flex;
+		flex-wrap: wrap;
+		flex: 1 100%;
 	}
 
-	p {
+	&__heading {
+		margin: 0 0 0.25em;
+		order: 1;
+		flex: 1 85%;
+	}
+
+	&__description {
 		margin: 0 0 0.6em;
+		order: 3;
+		flex: 1 100%;
 	}
 
 	&__price {
+		text-align: right;
 		margin: 0;
 		opacity: 0.7;
+		order: 2;
+		flex: 1 15%;
 	}
 }
