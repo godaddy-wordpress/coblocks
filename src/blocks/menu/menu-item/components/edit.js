@@ -107,10 +107,11 @@ class MenuItem extends Component {
 	}
 
 	renderImage() {
-		const { attributes } = this.props;
+		const { attributes, setAttributes, isSelected } = this.props;
 
 		const classes = classnames( 'wp-block-coblocks-menu-item__image', {
 			'is-transient': isBlobURL( attributes.imageUrl ),
+			'is-selected': isSelected,
 		} );
 
 		const dropZone = (
@@ -124,6 +125,17 @@ class MenuItem extends Component {
 			<Fragment>
 				{ this.renderToolbarEditButton() }
 				<figure className={ classes }>
+					{ isSelected && (
+						<div className="wp-block-coblocks-menu-item__remove-menu">
+							<IconButton
+								icon="no-alt"
+								onClick={ () => setAttributes( { imageUrl: '' } ) }
+								className="coblocks-gallery-item__button"
+								label={ __( 'Remove Image' ) }
+								disabled={ ! isSelected }
+							/>
+						</div>
+					) }
 					{ dropZone }
 					{ isBlobURL( attributes.imageUrl ) && <Spinner /> }
 					<img src={ attributes.imageUrl } alt={ '' } />

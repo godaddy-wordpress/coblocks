@@ -44,6 +44,36 @@
 		z-index: 9;
 	}
 
+	&__image {
+		.wp-block-coblocks-menu-item__remove-menu {
+			background-color: theme(primary);
+			display: inline-flex;
+			padding: 2px;
+			position: absolute;
+			right: 2px;
+			top: 2px;
+			transition: padding 0.1s linear;
+			z-index: 20;
+
+			svg {
+				position: relative;
+			}
+		}
+
+		&.is-selected {
+			&::after {
+				bottom: 0;
+				box-shadow: inset 0 0 0 4px theme(primary);
+				content: "";
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+				z-index: 1;
+			}
+		}
+	}
+
 	&__heading.block-editor-rich-text__editable {
 		margin: 0 0 0.4em;
 	}
