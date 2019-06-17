@@ -61,11 +61,29 @@
 		position: relative;
 
 		.dashicon {
-			margin: 10px 0 0 0;
+			margin: 0;
 		}
 
 		.components-placeholder__label {
 			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -10px 0 0 -10px;
+		}
+
+		.components-drop-zone__content {
+			.dashicon {
+				margin: 0 auto 5px;
+				width: 20px;
+				height: 20px;
+			}
+
+			.components-drop-zone__content-text {
+				font-size: 12px;
+				max-width: 80%;
+				margin: 0 auto;
+			}
 		}
 
 		// Hide the Upload button.
