@@ -56,8 +56,7 @@
 		figure,
 		.components-placeholder {
 			flex: 0 0 auto;
-			margin-bottom: 0;
-			margin-right: 20px;
+			margin: 0 20px 0 0 !important;
 			max-width: 130px;
 			max-height: 130px;
 			padding-top: 130px;
