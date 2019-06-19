@@ -24,7 +24,7 @@ export default function save( { attributes } ) {
 			itemScope
 			itemType="http://schema.org/MenuItem"
 		>
-			{ attributes.showImage && attributes.imageUrl && (
+			{ !! attributes.showImage && attributes.imageUrl && (
 				<figure className="wp-block-coblocks-menu-item__image">
 					<img
 						src={ attributes.imageUrl }
@@ -46,7 +46,7 @@ export default function save( { attributes } ) {
 					value={ attributes.description }
 					itemprop="description"
 				/>
-				{ attributes.showPrice && (
+				{ !! attributes.showPrice && attributes.itemPrice && (
 					<p
 						className="wp-block-coblocks-menu-item__price"
 						itemProp="offers"

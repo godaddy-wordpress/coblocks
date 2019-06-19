@@ -200,7 +200,7 @@ class MenuItem extends Component {
 						'is-empty': isEmpty( attributes ),
 					} ) }
 				>
-					{ attributes.showImage &&
+					{ !! attributes.showImage &&
 						( attributes.imageUrl ?
 							this.renderImage() :
 							this.renderPlaceholder() ) }
@@ -221,7 +221,7 @@ class MenuItem extends Component {
 							onChange={ description => setAttributes( { description } ) }
 							{ ...richTextAttributes }
 						/>
-						{ attributes.showPrice && ( attributes.itemPrice || isSelected ) && (
+						{ !! attributes.showPrice && ( attributes.itemPrice || isSelected ) && (
 							<RichText
 								value={ attributes.itemPrice }
 								tagName="p"

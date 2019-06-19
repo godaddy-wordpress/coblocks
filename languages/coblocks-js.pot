@@ -31,6 +31,6 @@ msgstr ""
 msgid "Menu Item"
 msgstr ""
 
-#: src/blocks/menu/menu-item/index.js:68
+#: src/blocks/menu/menu-item/index.js:79
 msgid "A menu item within the menu block."
 msgstr ""
