@@ -102,7 +102,7 @@ class MenuItem extends Component {
 			allowedTypes: [ 'image' ],
 			filesList: files,
 			onFileChange: ( [ media ] ) =>
-				this.props.setAttributes( { imageUrl: media.url } ),
+				this.props.setAttributes( { imageUrl: media.url, imageAlt: media.alt } ),
 		} );
 	}
 
@@ -154,7 +154,7 @@ class MenuItem extends Component {
 				labels={ {
 					title: ' ',
 				} }
-				onSelect={ el => setAttributes( { imageUrl: el.url } ) }
+				onSelect={ el => setAttributes( { imageUrl: el.url, imageAlt: el.alt } ) }
 			/>
 		);
 	}
@@ -167,7 +167,9 @@ class MenuItem extends Component {
 					<MediaUpload
 						allowedTypes={ [ 'image' ] }
 						multiple={ false }
-						onSelect={ media => setAttributes( { imageUrl: media.url } ) }
+						onSelect={ media =>
+							setAttributes( { imageUrl: media.url, imageAlt: media.alt } )
+						}
 						render={ ( { open } ) => (
 							<IconButton
 								className="components-toolbar__control"

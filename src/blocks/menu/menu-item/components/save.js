@@ -26,7 +26,11 @@ export default function save( { attributes } ) {
 		>
 			{ attributes.showImage && attributes.imageUrl && (
 				<figure className="wp-block-coblocks-menu-item__image">
-					<img src={ attributes.imageUrl } alt={ '' } itemProp="image" />
+					<img
+						src={ attributes.imageUrl }
+						alt={ attributes.imageAlt }
+						itemProp="image"
+					/>
 				</figure>
 			) }
 			<div className="wp-block-coblocks-menu-item__content">

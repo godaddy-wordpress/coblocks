@@ -11,18 +11,26 @@ msgstr ""
 msgid "Remove Image"
 msgstr ""
 
-#: src/blocks/menu/menu-item/components/edit.js:174
+#: src/blocks/menu/menu-item/components/edit.js:176
 msgid "Edit media"
 msgstr ""
 
-#: src/blocks/menu/menu-item/components/edit.js:210
+#: src/blocks/menu/menu-item/components/edit.js:212
 msgid "Add menu item..."
 msgstr ""
 
-#: src/blocks/menu/menu-item/components/edit.js:218
+#: src/blocks/menu/menu-item/components/edit.js:220
 msgid "Add description..."
 msgstr ""
 
-#: src/blocks/menu/menu-item/components/edit.js:227
+#: src/blocks/menu/menu-item/components/edit.js:229
 msgid "$0.00"
+msgstr ""
+
+#: src/blocks/menu/menu-item/index.js:21
+msgid "Menu Item"
+msgstr ""
+
+#: src/blocks/menu/menu-item/index.js:68
+msgid "A menu item within the menu block."
 msgstr ""

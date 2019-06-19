@@ -34,6 +34,13 @@ const attributes = {
 		attribute: 'src',
 		default: '',
 	},
+	imageAlt: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'img',
+		attribute: 'alt',
+		default: '',
+	},
 	title: {
 		type: 'string',
 		source: 'html',
