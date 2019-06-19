@@ -3,40 +3,26 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/menu/components/edit.js:27
-msgid "Appetizers"
+#: src/blocks/menu/menu-item/components/edit.js:120
+msgid "Drop file to replace"
 msgstr ""
 
-#: src/blocks/menu/components/edit.js:32
-msgid "Bread Sticks"
+#: src/blocks/menu/menu-item/components/edit.js:134
+msgid "Remove Image"
 msgstr ""
 
-#: src/blocks/menu/components/edit.js:43
-msgid "Onion Rings"
+#: src/blocks/menu/menu-item/components/edit.js:174
+msgid "Edit media"
 msgstr ""
 
-#: src/blocks/menu/components/edit.js:44
-msgid ""
-"Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis "
-"vestibulum."
+#: src/blocks/menu/menu-item/components/edit.js:210
+msgid "Add menu item..."
 msgstr ""
 
-#: src/blocks/menu/components/edit.js:47
-msgid "$4.75"
+#: src/blocks/menu/menu-item/components/edit.js:218
+msgid "Add description..."
 msgstr ""
 
-#: src/blocks/menu/components/edit.js:56
-msgid "Grid"
-msgstr ""
-
-#: src/blocks/menu/components/edit.js:63
-msgid "List"
-msgstr ""
-
-#: src/blocks/menu/menu-item/index.js:21
-msgid "Menu Item"
-msgstr ""
-
-#: src/blocks/menu/menu-item/index.js:61
-msgid "A menu item within the menu block."
+#: src/blocks/menu/menu-item/components/edit.js:227
+msgid "$0.00"
 msgstr ""

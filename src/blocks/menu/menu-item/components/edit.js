@@ -48,21 +48,21 @@ const handlePlaceholderPlacement = (
 		item => item.name === blockName && isEmpty( item.attributes )
 	);
 
-	// Add a placeholder if there are none. Remove trailing placholders if there are more than one.
+	// Remove trailing placholders if there are more than one.
+	dispatch( 'core/editor' ).removeBlocks(
+		placeholders
+			.filter( ( item, index ) => item.clientId !== childClientId && index !== 0 )
+			.map( item => item.clientId ),
+		false
+	);
+
+	// Add a placeholder if there are none.
 	if ( placeholders.length === 0 ) {
 		const newMenuItem = wp.blocks.createBlock( blockName, blockAttributes );
 		dispatch( 'core/editor' ).insertBlocks(
 			newMenuItem,
 			menuItems.length,
 			menuClientId,
-			false
-		);
-	} else if ( placeholders.length > 1 ) {
-		const extraPlaceholders = placeholders.filter(
-			item => item.clientId !== childClientId
-		);
-		dispatch( 'core/editor' ).removeBlocks(
-			extraPlaceholders.map( item => item.clientId ),
 			false
 		);
 	}
