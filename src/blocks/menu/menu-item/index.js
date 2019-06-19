@@ -27,10 +27,32 @@ const keywords = [];
 const attributes = {
 	showImage: { type: 'boolean', default: false },
 	showPrice: { type: 'boolean', default: true },
-	imageUrl: { type: 'string', default: '' },
-	title: { type: 'string', default: '' },
-	description: { type: 'string', default: '' },
-	itemPrice: { type: 'string', default: '' },
+	imageUrl: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'img',
+		attribute: 'src',
+		default: '',
+	},
+	title: {
+		type: 'string',
+		source: 'html',
+		selector: '.wp-block-coblocks-menu-item__heading',
+		default: '',
+	},
+	description: {
+		type: 'string',
+		source: 'html',
+		selector: '.wp-block-coblocks-menu-item__description',
+		default: '',
+	},
+
+	itemPrice: {
+		type: 'string',
+		source: 'html',
+		selector: '.wp-block-coblocks-menu-item__price span',
+		default: '',
+	},
 };
 
 const settings = {
