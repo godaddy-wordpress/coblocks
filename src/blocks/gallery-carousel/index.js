@@ -64,6 +64,14 @@ const blockAttributes = {
 		type: 'boolean',
 		default: false,
 	},
+	thumbnails: {
+		type: 'boolean',
+		default: false,
+	},
+	responsiveHeight: {
+		type: 'boolean',
+		default: false,
+	},
 	prevNextButtons: {
 		type: 'boolean',
 		default: true,
@@ -80,6 +88,15 @@ const blockAttributes = {
 		type: 'boolean',
 		default: true,
 	},
+	radiusThumbs: {
+		type: 'number',
+		default: 0,
+	},
+	thumbSize: {
+		type: 'string',
+		default: 'med',
+	},
+
 };
 
 const settings = {
@@ -112,8 +129,12 @@ const settings = {
 			gutter,
 			gutterMobile,
 			height,
+			radiusThumbs,
+			thumbSize,
 			images,
 			pageDots,
+			thumbnails,
+			responsiveHeight,
 			prevNextButtons,
 			primaryCaption,
 		} = attributes;
@@ -124,6 +145,12 @@ const settings = {
 				[ `has-horizontal-gutter` ] : gutter > 0,
 			}
 		);
+
+		let responsiveHeightClass = '';
+
+		if (responsiveHeight) {
+			responsiveHeightClass = 'responsive-height';
+		}
 
 		const innerStyles = {
 			...BackgroundStyles( attributes ),
@@ -151,6 +178,8 @@ const settings = {
 			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
 			draggable: draggable,
 			pageDots: pageDots,
+			thumbnails: thumbnails,
+			responsiveHeight: responsiveHeight,
 			prevNextButtons: prevNextButtons,
 			wrapAround: true,
 			arrowShape: {
@@ -172,6 +201,41 @@ const settings = {
 			}
 		);
 
+		const navClasses = classnames(
+			'carousel-nav',
+			`has-thumbnails-${ thumbSize }`, {
+				[ `has-border-radius-${ radiusThumbs }` ] : radiusThumbs > 0,
+				[ `has-margin-top-${ gutter }` ] : gutter > 0,
+				[ `has-margin-top-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-negative-margin-left-${ gutter }` ] : gutter > 0,
+				[ `has-negative-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-negative-margin-right-${ gutter }` ] : gutter > 0,
+				[ `has-negative-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+			}
+		);
+
+		const navFigureClasses = classnames(
+			'blockgallery--figure', {
+				[ `has-margin-left-${ gutter }` ] : gutter > 0,
+				[ `has-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-margin-right-${ gutter }` ] : gutter > 0,
+				[ `has-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+			}
+		);
+
+		const navOptions = {
+			asNavFor: '.has-carousel',
+			autoPlay: false,
+			contain: true,
+			cellAlign: 'left',
+			pageDots: false,
+			thumbnails: false,
+			responsiveHeight: false,
+			draggable: draggable,
+			prevNextButtons: false,
+			wrapAround: false,
+		};
+
 		const captionStyles = {
 			color: captionColorClass ? undefined : customCaptionColor,
 		};
@@ -182,7 +246,7 @@ const settings = {
 		}
 
 		return (
-			<div className={ className }>
+			<div className={ `${responsiveHeightClass} ${ className }` }>
 				<div
 					className={ innerClasses }
 					style={ innerStyles }
@@ -205,6 +269,23 @@ const settings = {
 							);
 						} ) }
 					</div>
+					{ thumbnails ?
+						<div
+							className={ navClasses }
+							data-flickity={ JSON.stringify( navOptions ) }
+						>
+							{ images.map( ( image ) => {
+								const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
+								return (
+									<div key={ image.id || image.url } className="blockgallery--item-thumbnail">
+										<figure className={ navFigureClasses }>
+											{ img }
+										</figure>
+									</div>
+								);
+							} ) }
+						</div> : null
+					}
 				</div>
 				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles }/> }
 			</div>

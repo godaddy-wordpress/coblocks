@@ -1,11 +1,67 @@
 .wp-block-coblocks-gallery-carousel {
-	&,
-	.coblocks-gallery {
-		height: 100%;
-		position: relative;
-	}
+  &,
+  .coblocks-gallery {
+    height: 100%;
+    position: relative;
+  }
 
-	.coblocks-gallery--figure {
-		height: 100%;
-	}
+  .coblocks-gallery--figure {
+    height: 100%;
+  }
+
+  @for $i from 2 through 20 {
+
+    .carousel-nav.has-border-radius-#{ $i } {
+
+      img {
+        border-radius: #{ $i }px;
+      }
+    }
+  }
+
+  .carousel-nav {
+    height: auto;
+    width: 1280px;
+    margin: 0 auto !important;
+
+    .flickity-viewport {
+      height: 80px !important;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .blockgallery--item-thumbnail {
+      height: 80px;
+      width: 100px;
+      opacity: 0.4;
+      transition: opacity 350ms ease;
+
+      &.is-selected {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.editor-block-list__block-edit {
+
+  .carousel-nav {
+    width: 100% !important;
+    margin: 3px -3px !important;
+  }
+}
+
+.responsive-height {
+  .has-carousel {
+    height: auto !important;
+    padding-bottom: 56.25%;
+    position: relative;
+
+    .flickity-viewport {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  }
 }

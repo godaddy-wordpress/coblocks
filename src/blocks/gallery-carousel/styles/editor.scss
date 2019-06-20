@@ -46,4 +46,19 @@
 		height: 100% !important;
 		position: inherit;
 	}
+
+	.carousel-nav {
+
+		.blockgallery--item-thumbnail {
+			opacity: 0.4;
+		}
+
+		.blockgallery--item-thumbnail:first-of-type {
+			opacity: 1;
+		}
+	}
+
+	.wp-block-blockgallery-thumbnails {
+		overflow: visible;
+	}
 }
