@@ -30,6 +30,7 @@
 		"cgb-scripts": "^1.17.0",
 		"classnames": "2.2.5",
 		"compose": "^0.1.2",
+		"core-js": "^2.6.9",
 		"delete-empty": "^2.0.0",
 		"email-validator": "2.0.4",
 		"eslint": "^4.19.1",
