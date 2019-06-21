@@ -21,7 +21,7 @@
 		"babel": "babel src --ignore src/blocks/gist/components/gist.js",
 		"babel:json": "wp i18n make-json languages",
 		"babel:build": "npm run babel && npm run makepot && npm run babel:json",
-		"test": "jest"
+		"test": "jest --config .dev/tests/jest/jest.config.js"
 	},
 	"dependencies": {
 		"@wordpress/api-fetch": "^2.2.8",
