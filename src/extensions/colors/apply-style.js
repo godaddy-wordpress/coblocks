@@ -1,20 +1,22 @@
 function applyStyle( attributes ) {
 	const {
+		color,
+		backgroundColor,
 		customTextColor,
 		customBackgroundColor,
 	} = attributes;
 
 	const style = {
-		color: customTextColor || null,
-		backgroundColor: customBackgroundColor || null,
+		color: color || null,
+		backgroundColor: backgroundColor || null,
 	};
 
-	if ( typeof attributes.customTextColor !== 'undefined' ) {
-		style.color = attributes.customTextColor || null;
+	if ( typeof customTextColor !== 'undefined' ) {
+		style.color = customTextColor || null;
 	}
 
-	if ( typeof attributes.customBackgroundColor !== 'undefined' ) {
-		style.backgroundColor = attributes.customBackgroundColor || null;
+	if ( typeof customBackgroundColor !== 'undefined' ) {
+		style.backgroundColor = customBackgroundColor || null;
 	}
 
 	return style;
