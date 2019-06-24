@@ -43,10 +43,13 @@ export default function save( { attributes } ) {
 						value={ attributes.title }
 						itemprop="name"
 					/>
-					{ ( !! attributes.glutenFree || !! attributes.vegetarian || !! attributes.spicy ) && (
+					{ ( !! attributes.spicy || !! attributes.vegetarian || !! attributes.glutenFree ) && (
 						<div className="wp-block-coblocks-menu-item__attributes">
 							{ !! attributes.spicy &&
 								<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy" />
+							}
+							{ !! attributes.hot &&
+								<Icon icon={ icons.hot } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--hot" />
 							}
 							{ !! attributes.vegetarian &&
 								<Icon icon={ icons.vegetarian } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--veg" />

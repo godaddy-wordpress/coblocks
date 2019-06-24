@@ -83,6 +83,7 @@ class MenuItem extends Component {
 		super( ...arguments );
 
 		this.replaceImage = this.replaceImage.bind( this );
+		this.setSpicyTo = this.setSpicyTo.bind( this );
 	}
 
 	componentDidUpdate( prevProps ) {
@@ -105,6 +106,16 @@ class MenuItem extends Component {
 			onFileChange: ( [ media ] ) =>
 				this.props.setAttributes( { imageUrl: media.url, imageAlt: media.alt } ),
 		} );
+	}
+
+	setSpicyTo( value ) {
+		const { attributes, setAttributes } = this.props;
+
+		if ( !! attributes.hot ) {
+			setAttributes( { hot: ! attributes.hot  } );
+		}
+
+		setAttributes( { spicy: ! attributes.spicy  } );
 	}
 
 	renderImage() {
@@ -195,7 +206,9 @@ class MenuItem extends Component {
 
 		return (
 			<Fragment>
-				<InspectorControls { ...this.props } />
+				<InspectorControls { ...this.props }
+					setSpicyTo={ this.setSpicyTo}
+				/>
 				<div
 					className={ classnames( className, {
 						'is-empty': isEmpty( attributes ),
@@ -220,7 +233,7 @@ class MenuItem extends Component {
 									<IconButton
 										icon={ icons.spicy }
 										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy"
-										onClick={ () => setAttributes( { spicy: ! attributes.spicy } ) }
+										onClick={ this.setSpicyTo }
 										label={ __( 'Spicy' ) }
 										isToggled={ attributes.spicy }
 									/> :
@@ -229,12 +242,25 @@ class MenuItem extends Component {
 										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy"
 									/>
 								}
+								{ isSelected && attributes.title && !! attributes.spicy ?
+									<IconButton
+										icon={ icons.spicy }
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--hot"
+										onClick={ () => setAttributes( { hot: ! attributes.hot } ) }
+										label={ __( 'Hot' ) }
+										isToggled={ attributes.hot }
+									/> :
+									!! attributes.hot && <Icon
+										icon={ icons.spicy }
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--hot"
+									/>
+								}
 								{ isSelected && attributes.title ?
 									<IconButton
 										icon={ icons.vegetarian }
 										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegetarian"
 										onClick={ () => setAttributes( { vegetarian: ! attributes.vegetarian } ) }
-										label={ __( 'Spicy' ) }
+										label={ __( 'Vegetarian' ) }
 										isToggled={ attributes.vegetarian }
 									/> :
 									!! attributes.vegetarian && <Icon

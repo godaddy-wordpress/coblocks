@@ -70,13 +70,16 @@ const attributes = {
 		selector: '.wp-block-coblocks-menu-item__price span',
 		default: '',
 	},
-	glutenFree: {
+	spicy: {
+		type: 'boolean',
+	},
+	hot: {
 		type: 'boolean',
 	},
 	vegetarian: {
 		type: 'boolean',
 	},
-	spicy: {
+	glutenFree: {
 		type: 'boolean',
 	},
 };

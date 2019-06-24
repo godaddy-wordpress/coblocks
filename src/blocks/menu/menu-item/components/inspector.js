@@ -12,10 +12,16 @@ const { PanelBody, ToggleControl, CheckboxControl } = wp.components;
 const { InspectorControls, BlockIcon } = wp.blockEditor;
 
 const Inspector = props => {
-	const { attributes, setAttributes } = props;
+
+	const {
+		attributes,
+		setAttributes,
+		setSpicyTo,
+	} = props;
+
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Menu Item Settings' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Item Settings' ) } initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Image' ) }
 					help={
@@ -37,13 +43,21 @@ const Inspector = props => {
 					onChange={ () => setAttributes( { showPrice: ! attributes.showPrice } ) }
 				/>
 				<div className='components-menu-item-attributes'>
-				<p className='components-menu-item-attributes__label'>{ __( 'Attributes' ) }</p>
-				<p className='components-base-control__help'>{ __( 'Duis mollis, est non commodo luctus.' ) }</p>
+					<p className='components-menu-item-attributes__label'>
+						{ __( 'Item Attributes' ) }
+					</p>
 					<CheckboxControl
 						label={ __( 'Spicy' ) }
 						checked={ attributes.spicy }
-						onChange={ () => setAttributes( { spicy: ! attributes.spicy } ) }
+						onChange={ setSpicyTo }
 					/>
+					{  attributes.spicy &&
+						<CheckboxControl
+							label={ __( 'Hot' ) }
+							checked={ attributes.spicy }
+							onChange={ () => setAttributes( { spicy: ! attributes.spicy } ) }
+						/>
+					}
 					<CheckboxControl
 						label={ __( 'Vegetarian' ) }
 						checked={ attributes.vegetarian }
@@ -55,8 +69,6 @@ const Inspector = props => {
 						onChange={ () => setAttributes( { glutenFree: ! attributes.glutenFree } ) }
 					/>
 				</div>
-
-
 			</PanelBody>
 		</InspectorControls>
 	);
