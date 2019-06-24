@@ -43,7 +43,7 @@ export default function save( { attributes } ) {
 						value={ attributes.title }
 						itemprop="name"
 					/>
-					{ ( !! attributes.spicy || !! attributes.vegetarian || !! attributes.glutenFree || !! attributes.pescatarian ) && (
+					{ ( !! attributes.spicy || !! attributes.vegetarian || !! attributes.glutenFree || !! attributes.pescatarian || !! attributes.vegan ) && (
 						<div className="wp-block-coblocks-menu-item__attributes">
 							{ !! attributes.spicy &&
 								<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy" />
@@ -58,7 +58,10 @@ export default function save( { attributes } ) {
 								<Icon icon={ icons.glutenFree } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf" />
 							}
 							{ !! attributes.pescatarian &&
-								<Icon icon={ icons.pescatarian } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf" />
+								<Icon icon={ icons.pescatarian } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--pescatarian" />
+							}
+							{ !! attributes.vegan &&
+								<Icon icon={ icons.vegan } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegan" />
 							}
 						</div>
 					) }

@@ -68,6 +68,11 @@ const Inspector = props => {
 						onChange={ setHotTo }
 					/>
 					<CheckboxControl
+						label={ __( 'Vegan' ) }
+						checked={ attributes.vegan }
+						onChange={ () => setAttributes( { vegan: ! attributes.vegan } ) }
+					/>
+					<CheckboxControl
 						label={ __( 'Vegetarian' ) }
 						checked={ attributes.vegetarian }
 						onChange={ () => setAttributes( { vegetarian: ! attributes.vegetarian } ) }

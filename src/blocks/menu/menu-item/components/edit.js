@@ -280,7 +280,7 @@ class MenuItem extends Component {
 										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegetarian"
 									/>
 								}
-								{ isSelected && attributes.title ?
+								{ isSelected && attributes.title && ( ! attributes.pescatarian && ! attributes.vegan ) ?
 									<IconButton
 										icon={ icons.glutenFree }
 										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf"
@@ -291,6 +291,34 @@ class MenuItem extends Component {
 									!! attributes.glutenFree && <Icon
 										icon={ icons.glutenFree }
 										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf"
+									/>
+								}
+								{ isSelected && !! attributes.pescatarian ?
+									// Only renders if the option is checked within the Settings sidebar.
+									<IconButton
+										icon={ icons.pescatarian }
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--pescatarian"
+										onClick={ () => setAttributes( { pescatarian: ! attributes.pescatarian } ) }
+										label={ __( 'Pescatarian' ) }
+										isToggled={ attributes.pescatarian }
+									/> :
+									!! attributes.pescatarian && <Icon
+										icon={ icons.pescatarian }
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--pescatarian"
+									/>
+								}
+								{ isSelected && !! attributes.vegan ?
+									// Only renders if the option is checked within the Settings sidebar.
+									<IconButton
+										icon={ icons.vegan }
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegan"
+										onClick={ () => setAttributes( { vegan: ! attributes.vegan } ) }
+										label={ __( 'Pescatarian' ) }
+										isToggled={ attributes.vegan }
+									/> :
+									!! attributes.vegan && <Icon
+										icon={ icons.vegan }
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegan"
 									/>
 								}
 							</div>
