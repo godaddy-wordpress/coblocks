@@ -15,7 +15,8 @@
 	> h5,
 	> h6 {
 		flex: 1 100%;
-		padding: 25px;
+		margin: 0 0 1.5em;
+		padding: 0;
 	}
 
 	figure {
@@ -52,6 +53,7 @@
 
 	&.is-style-list {
 		.wp-block-coblocks-menu-item {
+			align-items: center;
 			display: flex;
 			flex: 1 100%;
 			max-width: 100%;
@@ -65,9 +67,9 @@
 		.components-placeholder {
 			flex: 0 0 auto;
 			margin: 0 20px 0 0 !important;
-			max-height: 130px;
-			max-width: 130px;
-			padding-top: 130px;
+			max-height: 100px;
+			max-width: 100px;
+			padding-top: 100px;
 		}
 	}
 }

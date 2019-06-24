@@ -108,8 +108,8 @@
 
 .is-style-list .wp-block-coblocks-menu-item {
 	.editor-media-placeholder {
-		height: 130px;
-		min-height: 130px;
+		height: 100px;
+		min-height: 100px;
 		position: relative;
 
 		.dashicon {
@@ -174,10 +174,6 @@
 
 .components-menu-item-attributes__label {
 	margin-bottom: 6px;
-}
-
-.components-menu-item-attributes .components-base-control__help {
-	font-style: italic;
 }
 
 .edit-post-settings-sidebar__panel-block .components-menu-item-attributes {

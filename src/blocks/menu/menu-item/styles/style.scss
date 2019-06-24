@@ -1,6 +1,6 @@
 .wp-block-coblocks-menu-item {
 	flex: 1 50%;
-	margin-bottom: 1.5em;
+	margin-bottom: 2em;
 
 	.wp-block-coblocks-menu:not(.is-style-list) & {
 		margin-bottom: 2.5em;
@@ -76,13 +76,13 @@
 
 	&__description {
 		flex: 1 100%;
-		margin: 0 0 0.6em;
+		margin: 0;
 		order: 3;
 	}
 
 	&__price {
 		flex: 1 15%;
-		margin: 0;
+		margin: 0.5em 0 0 0;
 		opacity: 0.7;
 		order: 2;
 		text-align: right;
