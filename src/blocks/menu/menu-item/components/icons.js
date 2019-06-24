@@ -18,7 +18,7 @@ icons.menuItem = (
 	>
 		<G
 			fill="none"
-			fill-rule="evenodd"
+			fillRule="evenodd"
 			transform="translate(-.296875)"
 		>
 			<Path d="m0 0h14v14h-14z" />
