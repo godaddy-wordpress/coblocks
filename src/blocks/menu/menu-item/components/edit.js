@@ -84,6 +84,7 @@ class MenuItem extends Component {
 
 		this.replaceImage = this.replaceImage.bind( this );
 		this.setSpicyTo = this.setSpicyTo.bind( this );
+		this.setHotTo = this.setHotTo.bind( this );
 	}
 
 	componentDidUpdate( prevProps ) {
@@ -116,6 +117,16 @@ class MenuItem extends Component {
 		}
 
 		setAttributes( { spicy: ! attributes.spicy  } );
+	}
+
+	setHotTo( value ) {
+		const { attributes, setAttributes } = this.props;
+
+		if ( ! attributes.spicy ) {
+			setAttributes( { spicy: ! attributes.hot  } );
+		}
+
+		setAttributes( { hot: ! attributes.hot  } );
 	}
 
 	renderImage() {
@@ -208,6 +219,7 @@ class MenuItem extends Component {
 			<Fragment>
 				<InspectorControls { ...this.props }
 					setSpicyTo={ this.setSpicyTo}
+					setHotTo={ this.setHotTo }
 				/>
 				<div
 					className={ classnames( className, {

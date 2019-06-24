@@ -17,6 +17,7 @@ const Inspector = props => {
 		attributes,
 		setAttributes,
 		setSpicyTo,
+		setHotTo,
 	} = props;
 
 	return (
@@ -47,24 +48,29 @@ const Inspector = props => {
 						{ __( 'Item Attributes' ) }
 					</p>
 					<CheckboxControl
+						label={ __( 'Gluten Free' ) }
+						checked={ attributes.glutenFree }
+						onChange={ () => setAttributes( { glutenFree: ! attributes.glutenFree } ) }
+					/>
+					<CheckboxControl
+						label={ __( 'Pescatarian' ) }
+						checked={ attributes.pescatarian }
+						onChange={ () => setAttributes( { pescatarian: ! attributes.pescatarian } ) }
+					/>
+					<CheckboxControl
 						label={ __( 'Spicy' ) }
 						checked={ attributes.spicy }
 						onChange={ setSpicyTo }
 					/>
 					<CheckboxControl
-						label={ __( 'Hot' ) }
+						label={ __( 'Spicier' ) }
 						checked={ attributes.hot }
-						onChange={ () => setAttributes( { hot: ! attributes.hot, spicy: ! attributes.hot } ) }
+						onChange={ setHotTo }
 					/>
 					<CheckboxControl
 						label={ __( 'Vegetarian' ) }
 						checked={ attributes.vegetarian }
 						onChange={ () => setAttributes( { vegetarian: ! attributes.vegetarian } ) }
-					/>
-					<CheckboxControl
-						label={ __( 'Gluten Free' ) }
-						checked={ attributes.glutenFree }
-						onChange={ () => setAttributes( { glutenFree: ! attributes.glutenFree } ) }
 					/>
 				</div>
 			</PanelBody>
