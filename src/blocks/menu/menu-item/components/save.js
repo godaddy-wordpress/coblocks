@@ -2,11 +2,13 @@
  * Internal dependencies.
  */
 import { hasEmptyAttributes } from '../../../../utils/block-helpers';
+import icons from './icons';
 
 /**
  * WordPress dependencies.
  */
 const { RichText } = wp.blockEditor;
+const { Icon } = wp.components;
 
 const isEmpty = attributes => {
 	const attributesToCheck = [ 'imageUrl', 'title', 'description', 'itemPrice' ];
@@ -34,12 +36,27 @@ export default function save( { attributes } ) {
 				</figure>
 			) }
 			<div className="wp-block-coblocks-menu-item__content">
-				<RichText.Content
-					tagName="h4"
-					className="wp-block-coblocks-menu-item__heading"
-					value={ attributes.title }
-					itemprop="name"
-				/>
+				<div className="wp-block-coblocks-menu-item__heading-wrapper">
+					<RichText.Content
+						tagName="h4"
+						className="wp-block-coblocks-menu-item__heading"
+						value={ attributes.title }
+						itemprop="name"
+					/>
+					{ ( !! attributes.glutenFree || !! attributes.vegetarian || !! attributes.spicy ) && (
+						<div className="wp-block-coblocks-menu-item__attributes">
+							{ !! attributes.spicy &&
+								<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy" />
+							}
+							{ !! attributes.vegetarian &&
+								<Icon icon={ icons.vegetarian } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--veg" />
+							}
+							{ !! attributes.glutenFree &&
+								<Icon icon={ icons.glutenFree } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf" />
+							}
+						</div>
+					) }
+				</div>
 				<RichText.Content
 					tagName="p"
 					className="wp-block-coblocks-menu-item__description"

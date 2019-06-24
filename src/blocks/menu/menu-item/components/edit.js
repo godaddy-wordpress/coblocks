@@ -3,6 +3,7 @@
  */
 import { hasEmptyAttributes } from '../../../../utils/block-helpers';
 import InspectorControls from './inspector';
+import icons from './icons';
 
 /**
  * External dependencies.
@@ -14,7 +15,7 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { IconButton, Toolbar, DropZone, Spinner } = wp.components;
+const { IconButton, Toolbar, DropZone, Spinner, Icon } = wp.components;
 const { dispatch, select } = wp.data;
 const {
 	RichText,
@@ -205,14 +206,29 @@ class MenuItem extends Component {
 							this.renderImage() :
 							this.renderPlaceholder() ) }
 					<div className="wp-block-coblocks-menu-item__content">
-						<RichText
-							value={ attributes.title }
-							tagName="h4"
-							wrapperClassName="wp-block-coblocks-menu-item__heading"
-							placeholder={ __( 'Add menu item...' ) }
-							onChange={ title => setAttributes( { title } ) }
-							{ ...richTextAttributes }
-						/>
+						<div className="wp-block-coblocks-menu-item__heading-wrapper">
+							<RichText
+								value={ attributes.title }
+								tagName="h4"
+								wrapperClassName="wp-block-coblocks-menu-item__heading"
+								placeholder={ __( 'Add menu item...' ) }
+								onChange={ title => setAttributes( { title } ) }
+								{ ...richTextAttributes }
+							/>
+							{ ( !! attributes.glutenFree || !! attributes.vegetarian || !! attributes.spicy ) && (
+								<div className="wp-block-coblocks-menu-item__attributes">
+									{ !! attributes.spicy &&
+										<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy" />
+									}
+									{ !! attributes.vegetarian &&
+										<Icon icon={ icons.vegetarian } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--veg" />
+									}
+									{ !! attributes.glutenFree &&
+										<Icon icon={ icons.glutenFree } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf" />
+									}
+								</div>
+							) }
+						</div>
 						<RichText
 							value={ attributes.description }
 							tagName="p"

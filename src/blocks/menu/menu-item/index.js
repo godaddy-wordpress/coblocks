@@ -4,7 +4,7 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 
-import icons from '../components/icons';
+import icons from './components/icons';
 import edit from './components/edit';
 import save from './components/save';
 
@@ -20,7 +20,7 @@ const name = 'menu-item';
 
 const title = __( 'Menu Item' );
 
-const icon = icons.menu;
+const icon = icons.menuItem;
 
 const keywords = [];
 
@@ -64,12 +64,20 @@ const attributes = {
 		selector: '.wp-block-coblocks-menu-item__description',
 		default: '',
 	},
-
 	itemPrice: {
 		type: 'string',
 		source: 'html',
 		selector: '.wp-block-coblocks-menu-item__price span',
 		default: '',
+	},
+	glutenFree: {
+		type: 'boolean',
+	},
+	vegetarian: {
+		type: 'boolean',
+	},
+	spicy: {
+		type: 'boolean',
 	},
 };
 

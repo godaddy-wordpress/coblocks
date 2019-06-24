@@ -20,12 +20,12 @@
 		}
 
 		.components-placeholder__fieldset {
+			align-items: center;
+			height: 100%;
+			left: 0;
 			position: absolute;
 			top: 0;
-			left: 0;
 			width: 100%;
-			height: 100%;
-			align-items: center;
 
 			.components-button {
 				margin-bottom: 0 !important;
@@ -95,23 +95,23 @@
 
 		.components-placeholder__label {
 			display: block;
-			position: absolute;
-			top: 50%;
 			left: 50%;
 			margin: -10px 0 0 -10px;
+			position: absolute;
+			top: 50%;
 		}
 
 		.components-drop-zone__content {
 			.dashicon {
+				height: 20px;
 				margin: 0 auto 5px;
 				width: 20px;
-				height: 20px;
 			}
 
 			.components-drop-zone__content-text {
 				font-size: 12px;
-				max-width: 80%;
 				margin: 0 auto;
+				max-width: 80%;
 			}
 		}
 
@@ -144,7 +144,21 @@
 	max-width: calc(50% - 10px) !important;
 
 	.block-editor-block-list__block-edit {
-		margin-top: 0;
 		margin-bottom: 0;
+		margin-top: 0;
+	}
+}
+
+.components-menu-item-attributes__label {
+	margin-bottom: 6px;
+}
+
+.components-menu-item-attributes .components-base-control__help {
+	font-style: italic;
+}
+
+.edit-post-settings-sidebar__panel-block .components-menu-item-attributes {
+	.components-base-control {
+		margin-bottom: 8px;
 	}
 }

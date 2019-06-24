@@ -20,23 +20,27 @@
 
 	figure {
 		display: flex;
-		width: 100%;
+		overflow: hidden;
 		padding-top: 100%;
 		position: relative;
-		overflow: hidden;
+		width: 100%;
 
 		img {
+			height: 100%;
+			object-fit: cover;
 			position: absolute;
 			top: 0;
 			width: 100%;
-			height: 100%;
-			object-fit: cover;
 		}
 	}
 
 	&:not(.is-style-justify):not(.is-style-list) {
 		.wp-block-coblocks-menu-item {
 			text-align: center;
+		}
+
+		.wp-block-coblocks-menu-item__heading-wrapper {
+			justify-content: center;
 		}
 	}
 
@@ -53,12 +57,16 @@
 			max-width: 100%;
 		}
 
+		.wp-block-coblocks-menu-item__attributes {
+			margin-left: 0.6em;
+		}
+
 		figure,
 		.components-placeholder {
 			flex: 0 0 auto;
 			margin: 0 20px 0 0 !important;
-			max-width: 130px;
 			max-height: 130px;
+			max-width: 130px;
 			padding-top: 130px;
 		}
 	}
