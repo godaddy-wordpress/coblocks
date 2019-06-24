@@ -118,7 +118,7 @@ class MenuItem extends Component {
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.replaceImage }
-				label={ __( 'Drop file to replace' ) }
+				label={ __( 'Drop image to replace' ) }
 			/>
 		);
 
@@ -223,8 +223,8 @@ class MenuItem extends Component {
 										onClick={ () => setAttributes( { spicy: ! attributes.spicy } ) }
 										label={ __( 'Spicy' ) }
 										isToggled={ attributes.spicy }
-									/>
-									: !! attributes.spicy && <Icon
+									/> :
+									!! attributes.spicy && <Icon
 										icon={ icons.spicy }
 										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy"
 									/>
@@ -236,8 +236,8 @@ class MenuItem extends Component {
 										onClick={ () => setAttributes( { vegetarian: ! attributes.vegetarian } ) }
 										label={ __( 'Spicy' ) }
 										isToggled={ attributes.vegetarian }
-									/>
-									: !! attributes.vegetarian && <Icon
+									/> :
+									!! attributes.vegetarian && <Icon
 										icon={ icons.vegetarian }
 										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegetarian"
 									/>
@@ -249,8 +249,8 @@ class MenuItem extends Component {
 										onClick={ () => setAttributes( { glutenFree: ! attributes.glutenFree } ) }
 										label={ __( 'Gluten Free' ) }
 										isToggled={ attributes.glutenFree }
-									/>
-									: !! attributes.glutenFree && <Icon
+									/> :
+									!! attributes.glutenFree && <Icon
 										icon={ icons.glutenFree }
 										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf"
 									/>
