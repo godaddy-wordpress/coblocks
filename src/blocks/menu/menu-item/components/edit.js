@@ -215,19 +215,47 @@ class MenuItem extends Component {
 								onChange={ title => setAttributes( { title } ) }
 								{ ...richTextAttributes }
 							/>
-							{ ( !! attributes.glutenFree || !! attributes.vegetarian || !! attributes.spicy ) && (
-								<div className="wp-block-coblocks-menu-item__attributes">
-									{ !! attributes.spicy &&
-										<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy" />
-									}
-									{ !! attributes.vegetarian &&
-										<Icon icon={ icons.vegetarian } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--veg" />
-									}
-									{ !! attributes.glutenFree &&
-										<Icon icon={ icons.glutenFree } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf" />
-									}
-								</div>
-							) }
+							<div className="wp-block-coblocks-menu-item__attributes">
+								{ isSelected && attributes.title ?
+									<IconButton
+										icon={ icons.spicy }
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy"
+										onClick={ () => setAttributes( { spicy: ! attributes.spicy } ) }
+										label={ __( 'Spicy' ) }
+										isToggled={ attributes.spicy }
+									/>
+									: !! attributes.spicy && <Icon
+										icon={ icons.spicy }
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy"
+									/>
+								}
+								{ isSelected && attributes.title ?
+									<IconButton
+										icon={ icons.vegetarian }
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegetarian"
+										onClick={ () => setAttributes( { vegetarian: ! attributes.vegetarian } ) }
+										label={ __( 'Spicy' ) }
+										isToggled={ attributes.vegetarian }
+									/>
+									: !! attributes.vegetarian && <Icon
+										icon={ icons.vegetarian }
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegetarian"
+									/>
+								}
+								{ isSelected && attributes.title ?
+									<IconButton
+										icon={ icons.glutenFree }
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf"
+										onClick={ () => setAttributes( { glutenFree: ! attributes.glutenFree } ) }
+										label={ __( 'Gluten Free' ) }
+										isToggled={ attributes.glutenFree }
+									/>
+									: !! attributes.glutenFree && <Icon
+										icon={ icons.glutenFree }
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf"
+									/>
+								}
+							</div>
 						</div>
 						<RichText
 							value={ attributes.description }
