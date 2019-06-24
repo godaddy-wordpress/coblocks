@@ -33,7 +33,6 @@ const TEMPLATE = [
 			description: __(
 				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
 			),
-			itemPrice: __( '$4.75' ),
 		},
 	],
 	[
@@ -44,7 +43,6 @@ const TEMPLATE = [
 			description: __(
 				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
 			),
-			itemPrice: __( '$4.75' ),
 		},
 	],
 	[ 'coblocks/menu-item' ],
