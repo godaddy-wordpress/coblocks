@@ -48,8 +48,8 @@ export default function save( { attributes } ) {
 							{ !! attributes.spicy &&
 								<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy" />
 							}
-							{ !! attributes.hot && !! attributes.spicy &&
-								<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--hot" />
+							{ !! attributes.spicier && !! attributes.spicy &&
+								<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicier" />
 							}
 							{ !! attributes.vegetarian &&
 								<Icon icon={ icons.vegetarian } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--veg" />

@@ -112,8 +112,8 @@ class MenuItem extends Component {
 	setSpicyTo( value ) {
 		const { attributes, setAttributes } = this.props;
 
-		if ( !! attributes.hot ) {
-			setAttributes( { hot: ! attributes.hot  } );
+		if ( !! attributes.spicier ) {
+			setAttributes( { spicier: ! attributes.spicier  } );
 		}
 
 		setAttributes( { spicy: ! attributes.spicy  } );
@@ -123,10 +123,10 @@ class MenuItem extends Component {
 		const { attributes, setAttributes } = this.props;
 
 		if ( ! attributes.spicy ) {
-			setAttributes( { spicy: ! attributes.hot  } );
+			setAttributes( { spicy: ! attributes.spicier  } );
 		}
 
-		setAttributes( { hot: ! attributes.hot  } );
+		setAttributes( { spicier: ! attributes.spicier  } );
 	}
 
 	renderImage() {
@@ -257,14 +257,14 @@ class MenuItem extends Component {
 								{ isSelected && attributes.title && !! attributes.spicy ?
 									<IconButton
 										icon={ icons.spicy }
-										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--hot"
-										onClick={ () => setAttributes( { hot: ! attributes.hot } ) }
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicier"
+										onClick={ () => setAttributes( { spicier: ! attributes.spicier } ) }
 										label={ __( 'Hot' ) }
-										isToggled={ attributes.hot }
+										isToggled={ attributes.spicier }
 									/> :
-									!! attributes.hot && <Icon
+									!! attributes.spicier && <Icon
 										icon={ icons.spicy }
-										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--hot"
+										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicier"
 									/>
 								}
 								{ isSelected && attributes.title ?

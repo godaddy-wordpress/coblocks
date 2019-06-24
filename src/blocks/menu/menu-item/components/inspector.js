@@ -64,7 +64,7 @@ const Inspector = props => {
 					/>
 					<CheckboxControl
 						label={ __( 'Spicier' ) }
-						checked={ attributes.hot }
+						checked={ attributes.spicier }
 						onChange={ setHotTo }
 					/>
 					<CheckboxControl
