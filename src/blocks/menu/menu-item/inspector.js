@@ -1,9 +1,4 @@
 /**
- * Internal dependencies.
- */
-import icons from '../../components/icons';
-
-/**
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;

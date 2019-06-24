@@ -4,9 +4,9 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 
-import icons from './components/icons';
-import edit from './components/edit';
-import save from './components/save';
+import icons from './icons';
+import edit from './edit';
+import save from './save';
 
 /**
  * WordPress dependencies.
