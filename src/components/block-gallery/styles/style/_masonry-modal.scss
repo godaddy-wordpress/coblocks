@@ -1,0 +1,97 @@
+.masonry-modal-wrapper {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.7);
+
+  .wrapper-background {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    background-size: cover;
+    filter: blur(40px) brightness(50%);
+    transition: all 250ms ease-in-out 0s;
+  }
+
+  .modal-heading {
+    position: absolute;
+    width: 76%;
+    left: 50%;
+    top: 48px;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+  }
+
+  .image-container {
+    z-index: 2;
+
+    img {
+      max-width: 70vw;
+      max-height: 70vh;
+    }
+  }
+
+  .arrow-right-container {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 40px;
+    margin: 0 3%;
+    border-radius: 50%;
+    background-color: rgba(22, 22, 22, 0.5);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .arrow-left-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    padding: 40px;
+    margin: 0 3%;
+    border-radius: 50%;
+    background-color: rgba(22, 22, 22, 0.5);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .arrow-left {
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    -webkit-mask-image: url(images/masonry-modal/arrow-left.svg);
+    mask-image: url(images/masonry-modal/arrow-left.svg);
+  }
+
+  .arrow-right {
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    -webkit-mask-image: url(images/masonry-modal/arrow-right.svg);
+    mask-image: url(images/masonry-modal/arrow-right.svg);
+  }
+
+  .close {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    -webkit-mask-image: url(images/masonry-modal/close.svg);
+    mask-image: url(images/masonry-modal/close.svg);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+}
