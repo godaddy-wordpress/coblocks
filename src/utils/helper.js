@@ -13,7 +13,7 @@ export function overlayToClass( ratio ) {
 
 // Pick image media attributes.
 export const pickRelevantMediaFiles = ( image ) => {
-	const imageProps = pick( image, [ 'alt', 'id', 'link', 'caption' ] );
+	const imageProps = pick( image, [ 'alt', 'id', 'link', 'caption', 'imgLink' ] );
 	imageProps.url = get( image, [ 'sizes', 'large', 'url' ] ) || get( image, [ 'media_details', 'sizes', 'large', 'source_url' ] ) || image.url;
 	return imageProps;
 };
