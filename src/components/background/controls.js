@@ -16,7 +16,7 @@ import { ALLOWED_BG_MEDIA_TYPES } from './';
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { MediaUpload, MediaUploadCheck } = wp.editor;
+const { MediaUpload, MediaUploadCheck } = wp.blockEditor;
 const { Toolbar, IconButton, Popover, MenuItem } = wp.components;
 
 /**

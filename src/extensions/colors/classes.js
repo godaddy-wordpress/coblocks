@@ -3,7 +3,7 @@
  */
 function ColorSettingsClasses( props ) {
 	return [
-		{ 'has-text-color': props.attributes.textColor || props.attributes.customTextColor  },
+		{ 'has-text-color': props.attributes.textColor || props.attributes.customTextColor },
 	];
 }
 

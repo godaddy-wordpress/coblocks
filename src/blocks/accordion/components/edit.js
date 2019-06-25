@@ -11,7 +11,7 @@ import Inspector from './inspector';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 const { Button, IconButton } = wp.components;
 const { createBlock } = wp.blocks;
 

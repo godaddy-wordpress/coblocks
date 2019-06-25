@@ -19,7 +19,7 @@ import ResponsiveBaseControl from '../../../components/responsive-base-control/'
  */
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, PanelColorSettings } = wp.editor;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { compose } = wp.compose;
 const { dispatch, select } = wp.data;
 const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles, Button, ButtonGroup, Tooltip  } = wp.components;

@@ -26,7 +26,7 @@ const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
 const { withNotices, Spinner } = wp.components;
-const { withColors } = wp.editor;
+const { withColors } = wp.blockEditor;
 const { isBlobURL } = wp.blob;
 
 /**

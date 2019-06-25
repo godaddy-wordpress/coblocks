@@ -13,7 +13,7 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
  */
 const { __, sprintf } = wp.i18n;
 const { Component } = wp.element;
-const { InspectorControls, PanelColorSettings } = wp.editor;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
 
 /**

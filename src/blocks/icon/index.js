@@ -17,7 +17,7 @@ import svgs from './components/svgs';
  */
 const { __, _x } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { RichText, getColorClassName, getFontSizeClass } = wp.editor;
+const { RichText, getColorClassName, getFontSizeClass } = wp.blockEditor;
 
 /**
  * Set default icon size equivalent to "Medium".

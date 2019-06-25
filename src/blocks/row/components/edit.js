@@ -21,7 +21,7 @@ import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../..
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 const { ButtonGroup, Button, IconButton, Tooltip, Placeholder, Spinner } = wp.components;
 const { isBlobURL } = wp.blob;
 

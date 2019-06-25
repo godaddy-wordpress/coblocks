@@ -16,7 +16,7 @@ const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { SelectControl, RangeControl, ToggleControl, PanelBody, Button, FocalPointPicker } = wp.components;
-const { withColors, ColorPalette, PanelColorSettings } = wp.editor;
+const { withColors, ColorPalette, PanelColorSettings } = wp.blockEditor;
 
 class BackgroundPanel extends Component {
 
