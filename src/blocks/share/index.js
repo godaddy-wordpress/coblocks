@@ -17,12 +17,13 @@ const { Component } = wp.element;
  */
 const name = 'social';
 
-const title = __( 'Social' );
+const title = __( 'Share' );
 
 const icon = icons.social;
 
 const keywords = [
-	__( 'share' ),
+	__( 'social' ),
+	__( 'icons' ),
 	__( 'coblocks' ),
 ];
 
@@ -30,7 +31,7 @@ const settings = {
 
 	title: title,
 
-	description: __( 'Add social sharing buttons to help you get likes and shares.' ),
+	description: __( 'Add social sharing links to help you get likes and shares.' ),
 
 	keywords: keywords,
 

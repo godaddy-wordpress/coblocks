@@ -9,8 +9,8 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { IconButton, Spinner } = wp.components;
-const { RichText } = wp.editor;
+const { IconButton, Spinner, Dashicon } = wp.components;
+const { RichText, URLInput } = wp.blockEditor;
 const { withSelect } = wp.data;
 const { BACKSPACE, DELETE } = wp.keycodes;
 const { isBlobURL } = wp.blob;
@@ -23,10 +23,12 @@ class GalleryImage extends Component {
 		this.onSelectCaption = this.onSelectCaption.bind( this );
 		this.onKeyDown = this.onKeyDown.bind( this );
 		this.bindContainer = this.bindContainer.bind( this );
+		this.saveCustomLink = this.saveCustomLink.bind( this );
 
 		this.state = {
 			captionSelected: false,
 			captionFocused: false,
+			isSaved: false,
 		};
 	}
 
@@ -70,8 +72,12 @@ class GalleryImage extends Component {
 		}
 	}
 
+	saveCustomLink() {
+		this.setState( { isSaved: true } );
+	}
+
 	componentDidUpdate( prevProps ) {
-		const { isSelected, image, url } = this.props;
+		const { isSelected, image, url, imgLink } = this.props;
 		if ( image && ! url ) {
 			this.props.setAttributes( {
 				url: image.source_url,
@@ -86,6 +92,10 @@ class GalleryImage extends Component {
 				captionSelected: false,
 				captionFocused: false,
 			} );
+		}
+
+		if ( imgLink && ! isSelected && prevProps.isSelected ) {
+			this.setState( { isSaved: false } );
 		}
 	}
 
@@ -117,18 +127,8 @@ class GalleryImage extends Component {
 			verticalMoving = false,
 			url,
 			'aria-label': ariaLabel,
+			imgLink,
 		} = this.props;
-
-		let href;
-
-		switch ( linkTo ) {
-			case 'media':
-				href = url;
-				break;
-			case 'attachment':
-				href = link;
-				break;
-		}
 
 		const imgClasses = classnames( {
 			[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
@@ -147,6 +147,7 @@ class GalleryImage extends Component {
 					className={ imgClasses }
 					alt={ alt }
 					data-id={ id }
+					data-imglink={ imgLink }
 					onClick={ this.onImageClick }
 					tabIndex="0"
 					onKeyDown={ this.onImageClick }
@@ -209,9 +210,21 @@ class GalleryImage extends Component {
 								disabled={ ! isSelected }
 							/>
 						</div>
+						{ linkTo === 'custom' &&
+							<form
+								className="components-coblocks-gallery-item__image-link"
+								onSubmit={ ( event ) => event.preventDefault() }>
+								<Dashicon icon="admin-links" />
+								<URLInput
+									value={ imgLink }
+									onChange={ ( value ) => setAttributes( { imgLink: value } ) }
+								/>
+								<IconButton icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving' ) : __( 'Apply' ) } onClick={ this.saveCustomLink } type="submit" />
+							</form>
+						}
 					</Fragment>
 				}
-				{ href ? <a href={ href }>{ img }</a> : img }
+				{ img }
 				{ ( supportsCaption === true ) && ( ! RichText.isEmpty( caption ) || isSelected ) && captions ? (
 					<RichText
 						tagName="figcaption"

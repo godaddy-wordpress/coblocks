@@ -67,12 +67,6 @@ Each of the WordPress blocks within CoBlocks have been precisely fined tuned to 
 ## Custom Typography Controls
 The breakthrough Typography Control Panel within CoBlocks lets you design web pages with alluring typographic elements. <strong>Set fonts, sizes, weights, transformations and more</strong>, in our CoBlocks blocks, <em>and</em> in core WordPress blocks.
 
-## Turn off blocks with the Block Manager
-Easily toggle off any WordPress block in the Gutenberg editor with the new CoBlocks Block Manager. No more unnecessary WordPress Gutenberg blocks standing in the way for you, or your clients.
-
-= Watch it in action =
-https://www.youtube.com/watch?v=0v9rXLDv-FM
-
 ## Going beyond Gutenberg blocks
 The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks make beautiful websites easily. These newest releases of CoBlocks is the ultimate expression of that vision.
 
@@ -96,7 +90,6 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 3. Drag to resize and then nest CoBlocks Row blocks
 4. Design with the CoBlocks Typography Control Panel
 5. Add CoBlocks core blocks to pages
-6. Disable blocks with the Block Manager
 
 == Installation ==
 

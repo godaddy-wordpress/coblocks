@@ -14,7 +14,7 @@ import applyWithColors from './colors';
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.editor;
+const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.blockEditor;
 const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles } = wp.components;
 
 const { getComputedStyle } = window;
@@ -41,7 +41,7 @@ class Inspector extends Component {
 	}
 
 	getHasColorsHelp( checked ) {
-		return checked ? __( 'Social button colors are enabled.' ) : __( 'Toggle to use official colors from each social media platform.' );
+		return checked ? __( 'Share button colors are enabled.' ) : __( 'Toggle to use official colors from each social media platform.' );
 	}
 
 	render() {
@@ -107,7 +107,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Social Settings' ) }>
+					<PanelBody title={ __( 'Share Settings' ) }>
 						<ToggleControl
 							label={ __( 'Social Colors' ) }
 							checked={ !! hasColors }

@@ -20,7 +20,7 @@ import dividers from './components/dividers';
  */
 const { __, _x } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { getColorClassName } = wp.editor;
+const { getColorClassName } = wp.blockEditor;
 
 /**
  * Return the appropriate SVG for the block style.

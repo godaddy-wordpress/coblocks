@@ -16,7 +16,7 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText, withFontSizes } = wp.editor;
+const { RichText, withFontSizes } = wp.blockEditor;
 const { withSelect } = wp.data;
 
 /**
