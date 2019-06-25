@@ -15,10 +15,9 @@ setCategories( [
 		title: 'CoBlocks',
 		icon: brandAssets.categoryIcon,
 	},
-	...getCategories().filter( ( { slug } ) => slug !== 'coblocks' ),
 	{
 		slug: 'coblocks-galleries',
-		title: __( 'Gallery Blocks' ),
+		title: sprintf( __( '%s Galleries' ), 'CoBlocks' ),
 		icon: brandAssets.categoryIcon,
 	},
 	...getCategories().filter( ( { slug } ) => slug !== 'coblocks-galleries' ),
