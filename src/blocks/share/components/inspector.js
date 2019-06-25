@@ -41,7 +41,7 @@ class Inspector extends Component {
 	}
 
 	getHasColorsHelp( checked ) {
-		return checked ? __( 'Social button colors are enabled.' ) : __( 'Toggle to use official colors from each social media platform.' );
+		return checked ? __( 'Share button colors are enabled.' ) : __( 'Toggle to use official colors from each social media platform.' );
 	}
 
 	render() {
@@ -107,7 +107,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Social Settings' ) }>
+					<PanelBody title={ __( 'Share Settings' ) }>
 						<ToggleControl
 							label={ __( 'Social Colors' ) }
 							checked={ !! hasColors }
