@@ -1,0 +1,23 @@
+.coblocks-blog-post--item {
+  border: 1px solid #8d96a0;
+  margin-right: 10px;
+  background-color: #fff;
+
+  // We really don't want margin on the flickity items.
+  // Set 100% so the ResizableBox functions properly.
+  .wp-block-coblocks-gallery-carousel &,
+  .wp-block-coblocks-gallery-thumbnails & {
+	height: 100%;
+	margin: 0 !important;
+  }
+
+  .has-no-alignment .has-carousel-lrg & {
+	@media (min-width: 1300px) {
+	  width: 70%;
+	}
+  }
+
+  .has-no-alignment .has-carousel-xlrg & {
+	width: 100%;
+  }
+}
