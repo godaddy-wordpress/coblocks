@@ -51,6 +51,8 @@ const settings = {
 
 	description: __( 'Display multiple images in an organized masonry gallery.' ),
 
+	category: 'coblocks-galleries',
+
 	keywords: keywords,
 
 	attributes: blockAttributes,

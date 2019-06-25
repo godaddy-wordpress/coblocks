@@ -66,6 +66,8 @@ const settings = {
 
 	description: __( 'Display multiple images in an single column stacked gallery.' ),
 
+	category: 'coblocks-galleries',
+
 	keywords: keywords,
 
 	attributes: blockAttributes,
