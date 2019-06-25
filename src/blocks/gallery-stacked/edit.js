@@ -25,7 +25,7 @@ const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
 const { withNotices, Spinner } = wp.components;
-const { withColors, withFontSizes } = wp.editor;
+const { withColors, withFontSizes } = wp.blockEditor;
 const { isBlobURL } = wp.blob;
 
 class GalleryStackedEdit extends Component {
@@ -147,6 +147,7 @@ class GalleryStackedEdit extends Component {
 			linkTo,
 			shadow,
 			backgroundImg,
+			target,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -205,6 +206,8 @@ class GalleryStackedEdit extends Component {
 										url={ img.url }
 										alt={ img.alt }
 										id={ img.id }
+										imgLink={ img.imgLink }
+										linkTo={ linkTo }
 										gutter={ gutter }
 										gutterMobile={ gutterMobile }
 										marginBottom={ true }

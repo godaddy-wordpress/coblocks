@@ -10,7 +10,7 @@ import icons from './../../../../utils/icons';
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
+const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, withFallbackStyles, Toolbar, RangeControl, SelectControl } = wp.components;
 
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {

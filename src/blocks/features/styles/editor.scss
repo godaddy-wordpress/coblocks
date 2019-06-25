@@ -5,7 +5,6 @@
 		width: 100%;
 
 		&__inner {
-
 			> .editor-inner-blocks {
 				> .editor-block-list__layout {
 					@media (min-width: 600px) {
@@ -160,14 +159,6 @@
 		}
 	}
 
-	.wp-block-coblocks-icon {
-		margin-bottom:0;
-
-		.components-resizable-box__handle-left {
-			display: none;
-		}
-	}
-
 	.wp-block[data-type="core/heading"],
 	.wp-block[data-type="coblocks/icon"],
 	.wp-block[data-type="core/paragraph"] {
@@ -185,10 +176,10 @@
 	}
 
 	//one column improvements
-	&[data-columns="1"]{
+	&[data-columns="1"] {
 		.wp-block-coblocks-features {
 			&__inner {
-				> .editor-inner-blocks{
+				> .editor-inner-blocks {
 					width: 100%;
 				}
 			}
@@ -213,12 +204,25 @@
 			word-break: break-word;
 		}
 
+		[data-block] {
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+
 		.editor-default-block-appender {
 			display: none;
 		}
 
 		.wp-block-image figcaption {
 			display: none;
+		}
+
+		.wp-block-coblocks-icon {
+			margin-bottom: 30px;
+
+			.components-resizable-box__handle-left {
+				display: none;
+			}
 		}
 
 		// Remove editor margins that do not exist on the frontend.

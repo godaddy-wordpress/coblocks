@@ -3,7 +3,6 @@
  * @type {Object}
  */
 function ColorTransforms( props ) {
-
 	const transforms = {
 		textColor: props.textColor,
 		customBackgroundColor: props.customBackgroundColor,

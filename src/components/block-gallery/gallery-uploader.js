@@ -20,7 +20,7 @@ const {
 const {
 	MediaPlaceholder,
 	mediaUpload,
-} = wp.editor;
+} = wp.blockEditor;
 
 class GalleryUploader extends Component {
 

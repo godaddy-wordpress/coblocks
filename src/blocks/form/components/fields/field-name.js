@@ -13,7 +13,7 @@ import CoBlocksFieldLabel from './field-label';
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { InspectorControls, RichText } = wp.editor;
+const { InspectorControls, RichText } = wp.blockEditor;
 const { PanelBody, TextControl, ToggleControl } = wp.components;
 
 function CoBlocksFieldName( {

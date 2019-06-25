@@ -19,7 +19,7 @@ import icons from './components/icons';
  */
 const { __ } = wp.i18n;
 const { createBlock, getBlockType } = wp.blocks;
-const { InnerBlocks, getColorClassName } = wp.editor;
+const { InnerBlocks, getColorClassName } = wp.blockEditor;
 
 /**
  * Block constants

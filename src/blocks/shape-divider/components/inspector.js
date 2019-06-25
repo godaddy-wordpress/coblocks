@@ -11,7 +11,7 @@ import ResponsiveBaseControl from '../../../components/responsive-base-control/'
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, PanelColorSettings } = wp.editor;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, BaseControl, ToggleControl, RangeControl } = wp.components;
 
 /**

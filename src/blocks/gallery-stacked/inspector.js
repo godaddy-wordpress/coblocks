@@ -6,6 +6,7 @@ import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import linkOptions from '../../components/block-gallery/options/link-options';
 import SizeControl from '../../components/size-control';
 import { BackgroundPanel } from '../../components/background';
+import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 
 /**
  * WordPress dependencies
@@ -14,7 +15,7 @@ const { __, sprintf } = wp.i18n;
 const { Component } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
-const { InspectorControls, FontSizePicker, withFontSizes, PanelColorSettings } = wp.editor;
+const { InspectorControls, FontSizePicker, withFontSizes, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
 
 /**
@@ -184,17 +185,7 @@ class Inspector extends Component {
 						/>
 					}
 				</PanelBody>
-				{ ! lightbox && <PanelBody
-					title={ __( 'Link Settings' ) }
-					initialOpen={ false }
-					>
-					<SelectControl
-						label={ __( 'Link To' ) }
-						value={ linkTo }
-						options={ linkOptions }
-						onChange={ this.setLinkTo }
-					/>
-				</PanelBody> }
+				<GalleryLinkSettings { ...this.props } />
 				<BackgroundPanel { ...this.props }
  					hasCaption={ true }
  					hasOverlay={ true }

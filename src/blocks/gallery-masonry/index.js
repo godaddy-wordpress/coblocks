@@ -18,8 +18,7 @@ import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVi
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 /**
  * Block constants
@@ -52,6 +51,8 @@ const settings = {
 
 	description: __( 'Display multiple images in an organized masonry gallery.' ),
 
+	category: 'coblocks-galleries',
+
 	keywords: keywords,
 
 	attributes: blockAttributes,
@@ -65,7 +66,6 @@ const settings = {
 	edit,
 
 	save( { attributes, className } ) {
-
 		const {
 			captions,
 			gridSize,
@@ -73,13 +73,14 @@ const settings = {
 			gutterMobile,
 			images,
 			linkTo,
-			focalPoint,
+			rel,
+			target,
 		} = attributes;
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
 			...BackgroundClasses( attributes ), {
-				[ `has-gutter` ] : gutter > 0,
+				'has-gutter': gutter > 0,
 			}
 		);
 
@@ -89,8 +90,8 @@ const settings = {
 
 		const masonryClasses = classnames(
 			`has-grid-${ gridSize }`, {
-				[ `has-gutter-${ gutter }` ] : gutter > 0,
-				[ `has-gutter-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-gutter-${ gutter }` ]: gutter > 0,
+				[ `has-gutter-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
 
@@ -108,7 +109,7 @@ const settings = {
 					<ul
 						className={ masonryClasses }
 						style={ masonryStyles }
-						>
+					>
 						{ images.map( ( image ) => {
 							let href;
 
@@ -121,12 +122,17 @@ const settings = {
 									break;
 							}
 
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+							// If an image has a custom link, override the linkTo selection.
+							if ( image.imgLink ) {
+								href = image.imgLink;
+							}
+
+							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
 
 							return (
 								<li key={ image.id || image.url } className="coblocks-gallery--item">
 									<figure className="coblocks-gallery--figure">
-										{ href ? <a href={ href }>{ img }</a> : img }
+										{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 										{ captions && image.caption && image.caption.length > 0 && (
 											<RichText.Content tagName="figcaption" className="coblocks-gallery--caption" value={ image.caption } />
 										) }

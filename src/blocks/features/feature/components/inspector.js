@@ -12,7 +12,7 @@ const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
-const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.editor;
+const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.blockEditor;
 const { PanelBody, RangeControl, ToggleControl, Toolbar, SelectControl, withFallbackStyles } = wp.components;
 
 /**

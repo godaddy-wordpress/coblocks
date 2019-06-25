@@ -12,7 +12,7 @@ const { compose } = wp.compose;
 const { Placeholder, Spinner, Button, ResizableBox } = wp.components;
 const { withViewportMatch } = wp.viewport;
 const { withSelect } = wp.data;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 /**
  * Internal dependencies
