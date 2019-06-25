@@ -240,7 +240,7 @@ class Edit extends Component {
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }
 						<div className={ innerClasses } style={ innerStyles }>
-							<InnerBlocks templateLock={ false }/>
+							<InnerBlocks templateLock={ false } renderAppender={ () => ( null ) }/>
 							{ showInserter ? <Inserter rootClientId={ clientId } isAppender /> : null }
 						</div>
 					</div>
