@@ -148,15 +148,23 @@ class CoBlocks_Block_Assets {
 		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
 
 		// Masonry block.
-		if ( has_block( $this->_slug . '/gallery-masonry' ) ) {
-			wp_enqueue_script(
-				$this->_slug . '-masonry',
-				$dir . $this->_slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
-				array( 'jquery', 'masonry', 'imagesloaded' ),
-				$this->_version,
-				true
-			);
-		}
+        if ( has_block( $this->_slug . '/gallery-masonry' ) ) {
+            wp_enqueue_script(
+                $this->_slug . '-expand-image',
+                $dir . $this->_slug . '-expand-image' . COBLOCKS_ASSET_SUFFIX . '.js',
+                array( 'jquery' ),
+                $this->_version,
+                true
+            );
+
+            wp_enqueue_script(
+                $this->_slug . '-masonry',
+                $dir . $this->_slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
+                array( 'jquery', 'masonry', 'imagesloaded' ),
+                $this->_version,
+                true
+            );
+        }
 
 		// Carousel block.
 		if ( has_block( $this->_slug . '/gallery-carousel' ) ) {

@@ -13,6 +13,7 @@ import edit from './edit';
 import transforms from './transforms';
 import { GalleryAttributes, GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
 import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
+import {Fragment} from "react";
 
 /**
  * WordPress dependencies
@@ -73,6 +74,7 @@ const settings = {
 			gutterMobile,
 			images,
 			linkTo,
+			lightbox,
 			focalPoint,
 		} = attributes;
 
@@ -109,7 +111,7 @@ const settings = {
 						className={ masonryClasses }
 						style={ masonryStyles }
 						>
-						{ images.map( ( image ) => {
+						{ images.map( ( image, index ) => {
 							let href;
 
 							switch ( linkTo ) {
@@ -121,7 +123,7 @@ const settings = {
 									break;
 							}
 
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } data-url={ image.url } data-index={ index } className={ image.id ? `wp-image-${ image.id }` : null } />;
 
 							return (
 								<li key={ image.id || image.url } className="coblocks-gallery--item">

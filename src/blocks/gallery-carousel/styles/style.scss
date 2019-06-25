@@ -30,6 +30,11 @@
       margin-right: 0;
     }
 
+    .blockgallery-figure {
+      width: 100%;
+      height: 100%;
+    }
+
     .blockgallery--item-thumbnail {
       height: 80px;
       width: 100px;
@@ -64,4 +69,8 @@
       width: 100%;
     }
   }
+}
+
+.blockgallery--figure {
+  margin: 16px 3px !important;
 }

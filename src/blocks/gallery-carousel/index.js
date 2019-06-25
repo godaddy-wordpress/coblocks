@@ -142,15 +142,9 @@ const settings = {
 		const innerClasses = classnames(
 			'is-cropped',
 			...GalleryClasses( attributes ), {
-				[ `has-horizontal-gutter` ] : gutter > 0,
+				[ `has-horizontal-gutter` ] : gutter > 0
 			}
 		);
-
-		let responsiveHeightClass = '';
-
-		if (responsiveHeight) {
-			responsiveHeightClass = 'responsive-height';
-		}
 
 		const innerStyles = {
 			...BackgroundStyles( attributes ),
@@ -230,7 +224,6 @@ const settings = {
 			cellAlign: 'left',
 			pageDots: false,
 			thumbnails: false,
-			responsiveHeight: false,
 			draggable: draggable,
 			prevNextButtons: false,
 			wrapAround: false,
@@ -246,7 +239,7 @@ const settings = {
 		}
 
 		return (
-			<div className={ `${responsiveHeightClass} ${ className }` }>
+			<div className={ className } >
 				<div
 					className={ innerClasses }
 					style={ innerStyles }

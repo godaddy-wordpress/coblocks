@@ -44,6 +44,8 @@ const flickityOptions = {
 		x2: 65, y2: 45,
 		x3: 20
 	},
+	thumbnails: false,
+	responsiveHeight: true,
 };
 
 const navOptions = {
@@ -224,7 +226,6 @@ class GalleryCarouselEdit extends Component {
 				[ `has-no-thumbnails` ] : ! thumbnails,
 				[ `has-no-arrows` ] : ! prevNextButtons,
 				'is-selected': isSelected,
-
 			}
 		);
 
@@ -276,12 +277,6 @@ class GalleryCarouselEdit extends Component {
 			);
 		}
 
-		let responsiveHeightClass = '';
-
-		if (responsiveHeight) {
-			responsiveHeightClass = 'responsive-height';
-		}
-
 		return (
 			<Fragment>
 				{ isSelected &&
@@ -327,7 +322,7 @@ class GalleryCarouselEdit extends Component {
 					{ dropZone }
 					{ isBlobURL( backgroundImg ) && <Spinner /> }
 					{ BackgroundVideo( attributes ) }
-					<div className={`${responsiveHeightClass} ${className} `}>
+					<div className={ className }>
 						<div
 							className={ innerClasses }
 							style={ innerStyles }

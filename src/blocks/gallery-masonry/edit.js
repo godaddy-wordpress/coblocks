@@ -162,6 +162,7 @@ class GalleryMasonryEdit extends Component {
 			gutterMobile,
 			images,
 			linkTo,
+			lightbox,
 		} = attributes;
 
 		const hasImages = !! images.length;
