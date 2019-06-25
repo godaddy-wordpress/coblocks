@@ -1,33 +1,44 @@
 .wp-block-coblocks-menu-item {
 	flex: 1 50%;
-	margin-bottom: 2em;
+	margin-top: 2.75em;
 
 	.wp-block-coblocks-menu:not(.is-style-list) & {
-		margin-bottom: 2.5em;
-
 		&:nth-child(even) {
-			padding-right: 25px;
+			padding-right: 20px;
+
+			@media all and (max-width: 514px) {
+				padding-right: 0;
+			}
 		}
 
 		&:nth-child(odd) {
-			padding-left: 25px;
+			padding-left: 20px;
+
+			@media all and (max-width: 514px) {
+				padding-left: 0;
+			}
 		}
 
 		.wp-block-coblocks-menu-item__content {
 			display: block;
 		}
-
-		&__price {
-			text-align: center;
-		}
 	}
 
-	figure {
+	&__figure {
+		display: flex;
 		margin: 0 0 1.25em;
+		overflow: hidden;
+		padding-top: 100%;
 		position: relative;
+		width: 100%;
 
 		img {
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
 			vertical-align: middle;
+			width: 100%;
 		}
 	}
 
@@ -85,6 +96,5 @@
 		margin: 0.5em 0 0 0;
 		opacity: 0.7;
 		order: 2;
-		text-align: right;
 	}
 }

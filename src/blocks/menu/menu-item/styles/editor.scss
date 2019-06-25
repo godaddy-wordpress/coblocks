@@ -44,7 +44,7 @@
 		z-index: 9;
 	}
 
-	&__image {
+	&__figure {
 		.wp-block-coblocks-menu-item__remove-menu {
 			background-color: theme(primary);
 			display: inline-flex;
@@ -74,12 +74,14 @@
 		}
 	}
 
+	h4.block-editor-rich-text__editable, // Gutenberg 5.9+
 	&__heading.block-editor-rich-text__editable {
-		margin: 0 0 0.4em;
+		margin: 0;
 	}
 
+	p.block-editor-rich-text__editable, // Gutenberg 5.9+ Fix
 	&__description.block-editor-rich-text__editable {
-		margin: 0 0 0.6em;
+		margin: 0;
 	}
 
 	&__attribute.components-icon-button {
@@ -111,6 +113,11 @@
 		height: 100px;
 		min-height: 100px;
 		position: relative;
+
+		@media all and (max-width: 514px) {
+			height: 75px;
+			min-height: 75px;
+		}
 
 		.dashicon {
 			margin: 0;
@@ -168,6 +175,14 @@
 
 	.block-editor-block-list__block-edit {
 		margin-bottom: 0;
+		margin-top: 0;
+	}
+
+	.wp-block-coblocks-menu:not(.is-style-list) &:nth-child(-n + 3) .wp-block-coblocks-menu-item {
+		margin-top: 0;
+	}
+
+	.wp-block-coblocks-menu.is-style-list &:nth-child(-n + 2) .wp-block-coblocks-menu-item {
 		margin-top: 0;
 	}
 }

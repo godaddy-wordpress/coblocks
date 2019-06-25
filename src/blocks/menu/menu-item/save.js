@@ -27,7 +27,7 @@ export default function save( { attributes } ) {
 			itemType="http://schema.org/MenuItem"
 		>
 			{ !! attributes.showImage && attributes.imageUrl && (
-				<figure className="wp-block-coblocks-menu-item__image">
+				<figure className="wp-block-coblocks-menu-item__figure">
 					<img
 						src={ attributes.imageUrl }
 						alt={ attributes.imageAlt }

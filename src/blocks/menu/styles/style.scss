@@ -8,6 +8,10 @@
 		flex-direction: column;
 	}
 
+	+ .wp-block-coblocks-menu {
+		margin-top: 3em;
+	}
+
 	> h1,
 	> h2,
 	> h3,
@@ -15,24 +19,8 @@
 	> h5,
 	> h6 {
 		flex: 1 100%;
-		margin: 0 0 1.5em;
+		margin: 0;
 		padding: 0;
-	}
-
-	figure {
-		display: flex;
-		overflow: hidden;
-		padding-top: 100%;
-		position: relative;
-		width: 100%;
-
-		img {
-			height: 100%;
-			object-fit: cover;
-			position: absolute;
-			top: 0;
-			width: 100%;
-		}
 	}
 
 	&:not(.is-style-justify):not(.is-style-list) {
@@ -56,6 +44,7 @@
 			align-items: center;
 			display: flex;
 			flex: 1 100%;
+			margin-top: 1.5em;
 			max-width: 100%;
 		}
 
@@ -70,6 +59,12 @@
 			max-height: 100px;
 			max-width: 100px;
 			padding-top: 100px;
+
+			@media all and (max-width: 514px) {
+				max-height: 75px;
+				max-width: 75px;
+				padding-top: 75px;
+			}
 		}
 	}
 }

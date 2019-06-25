@@ -132,7 +132,7 @@ class MenuItem extends Component {
 	renderImage() {
 		const { attributes, setAttributes, isSelected } = this.props;
 
-		const classes = classnames( 'wp-block-coblocks-menu-item__image', {
+		const classes = classnames( 'wp-block-coblocks-menu-item__figure', {
 			'is-transient': isBlobURL( attributes.imageUrl ),
 			'is-selected': isSelected,
 		} );
