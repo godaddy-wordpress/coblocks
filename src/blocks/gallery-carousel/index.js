@@ -19,7 +19,7 @@ import { GalleryAttributes, GalleryClasses } from '../../components/block-galler
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { getColorClassName, RichText } = wp.editor;
+const { getColorClassName, RichText } = wp.blockEditor;
 
 /**
  * Block constants
@@ -87,6 +87,8 @@ const settings = {
 	title: title,
 
 	description: __( 'Display multiple images in a beautiful carousel gallery.' ),
+
+	category: 'coblocks-galleries',
 
 	keywords: keywords,
 

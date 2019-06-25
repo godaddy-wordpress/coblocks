@@ -1,22 +1,22 @@
 /**
  * Apply styling
  */
-function applyStyle( attributes, props ) {
+function applyStyle( attributes ) {
 	const {
 		customTextColor,
 		customBackgroundColor,
 	} = attributes;
 
-	let style = {
+	const style = {
 		color: customTextColor || null,
 		backgroundColor: customBackgroundColor || null,
 	};
 
-	if( typeof attributes.customTextColor !== 'undefined' ){
+	if ( typeof attributes.customTextColor !== 'undefined' ) {
 		style.color = attributes.customTextColor || null;
 	}
 
-	if( typeof attributes.customBackgroundColor !== 'undefined' ){
+	if ( typeof attributes.customBackgroundColor !== 'undefined' ) {
 		style.backgroundColor = attributes.customBackgroundColor || null;
 	}
 

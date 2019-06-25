@@ -18,7 +18,7 @@ import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVi
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { RichText, getFontSizeClass, getColorClassName } = wp.editor;
+const { RichText, getFontSizeClass, getColorClassName } = wp.blockEditor;
 
 /**
  * Block constants
@@ -66,6 +66,8 @@ const settings = {
 
 	description: __( 'Display multiple images in an single column stacked gallery.' ),
 
+	category: 'coblocks-galleries',
+
 	keywords: keywords,
 
 	attributes: blockAttributes,
@@ -98,6 +100,8 @@ const settings = {
 			backgroundImg,
 			customBackgroundColor,
 			backgroundColor,
+			target,
+			rel,
 		} = attributes;
 
 		// Body color class and styles.
@@ -152,17 +156,22 @@ const settings = {
 								break;
 						}
 
+						// If an image has a custom link, override the linkTo selection.
+						if ( image.imgLink ) {
+							href = image.imgLink;
+						}
+
 						const imgClasses = classnames(
 							image.id ? [ `wp-image-${ image.id }` ] : null, {
 								[ `has-shadow-${ shadow }` ] : shadow != 'none' || shadow != undefined ,
 						} );
 
-						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ imgClasses } />;
+						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
 
 						return (
 							<li key={ image.id || image.url } className="coblocks-gallery--item">
 								<figure className={ figureClasses }>
-									{ href ? <a href={ href }>{ img }</a> : img }
+									{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 									{ captions && image.caption && image.caption.length > 0 && (
 										<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } styles={ captionStyles }/>
 									) }

@@ -17,7 +17,7 @@ import Edit from './components/edit';
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { createBlock, getBlockAttributes } = wp.blocks;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 /**
  * Block constants

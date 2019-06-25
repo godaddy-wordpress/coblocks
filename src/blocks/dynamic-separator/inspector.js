@@ -9,15 +9,14 @@ import applyWithColors from './colors';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, PanelColorSettings } = wp.editor;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, BaseControl } = wp.components;
 
 /**
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.updateHeight = this.updateHeight.bind( this );
 	}
@@ -27,14 +26,11 @@ class Inspector extends Component {
 	}
 
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
 			setColor,
 			color,
-			fallbackColor,
-			isSelected,
 		} = this.props;
 
 		const {

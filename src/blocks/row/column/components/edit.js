@@ -19,7 +19,7 @@ import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZon
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText, InnerBlocks, withFontSizes, Inserter } = wp.editor;
+const { RichText, InnerBlocks, withFontSizes, Inserter } = wp.blockEditor;
 const { ResizableBox, Spinner, IconButton } = wp.components;
 const { isBlobURL } = wp.blob;
 
@@ -240,7 +240,7 @@ class Edit extends Component {
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }
 						<div className={ innerClasses } style={ innerStyles }>
-							<InnerBlocks templateLock={ false }/>
+							<InnerBlocks templateLock={ false } renderAppender={ () => ( null ) }/>
 							{ showInserter ? <Inserter rootClientId={ clientId } isAppender /> : null }
 						</div>
 					</div>
