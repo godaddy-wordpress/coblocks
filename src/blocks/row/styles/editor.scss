@@ -54,8 +54,7 @@
 
 		// Adjust the individual column block.
 		> [data-type="coblocks/column"] {
-			display: flex;
-			flex-direction: column;
+			margin-left: 0;
 
 			.wp-block-coblocks-column {
 				margin: 0 !important;
@@ -83,11 +82,7 @@
 
 			> .editor-block-list__block-edit {
 				margin-bottom: 0;
-				margin-top: -12px;
-
-				&::before {
-					top: -1px;
-				}
+				margin-top: 0;
 
 				> [data-block] {
 					margin-bottom: 0;

@@ -83,4 +83,9 @@
 			padding-top: 48px;
 		}
 	}
+
+	// Tweak the position of the figcaption if Custom URL is set.
+	.components-coblocks-gallery-item__image-link + img + .editor-rich-text {
+		margin-bottom: 34px;
+	}
 }

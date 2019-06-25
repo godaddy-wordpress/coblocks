@@ -325,7 +325,8 @@ class Edit extends Component {
 							template={ TEMPLATE[ layout ] }
 							templateLock="all"
 							allowedBlocks={ ALLOWED_BLOCKS }
-							templateInsertUpdatesSelection={ columns === 1 } />
+							templateInsertUpdatesSelection={ columns === 1 }
+							renderAppender={ () => ( null ) } />
 					</div>
 				</div>
 			</Fragment>,
