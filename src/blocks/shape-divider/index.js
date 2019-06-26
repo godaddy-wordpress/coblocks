@@ -74,75 +74,6 @@ const keywords = [
 	__( 'svg' ),
 ];
 
-const blockAttributes = {
-	align: {
-		type: 'string',
-		default: 'full',
-	},
-	height: {
-		type: 'number',
-		default: 100,
-	},
-	shapeHeight: {
-		type: 'number',
-		default: 100,
-	},
-	shapeHeightMobile: {
-		type: 'number',
-	},
-	shapeHeightTablet: {
-		type: 'number',
-	},
-	backgroundHeight: {
-		type: 'number',
-		default: 50,
-	},
-	backgroundHeightMobile: {
-		type: 'number',
-	},
-	backgroundHeightTablet: {
-		type: 'number',
-	},
-	syncHeightAlt: {
-		type: 'boolean',
-		default: true,
-	},
-	verticalFlip: {
-		type: 'boolean',
-		default: false,
-	},
-	horizontalFlip: {
-		type: 'boolean',
-		default: false,
-	},
-	color: {
-		type: 'string',
-	},
-	customColor: {
-		type: 'string',
-		default: '#111',
-	},
-	backgroundColor: {
-		type: 'string',
-	},
-	customBackgroundColor: {
-		type: 'string',
-	},
-	noBottomMargin: {
-		type: 'boolean',
-		default: true,
-	},
-	noTopMargin: {
-		type: 'boolean',
-		default: true,
-	},
-	justAdded: {
-		type: 'boolean',
-		default: true,
-	},
-	...ResponsiveBaseControlAttributes,
-};
-
 
 const settings = {
 
@@ -152,7 +83,7 @@ const settings = {
 
 	keywords: keywords,
 
-	attributes: blockAttributes,
+	attributes: {attributes, ...ResponsiveBaseControlAttributes},
 
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -179,5 +110,5 @@ const settings = {
 	deprecated: Deprecated,
 };
 
-export { name, title, icon, settings, blockAttributes as attributes, metadata };
+export { name, title, icon, settings, attributes, metadata };
 
