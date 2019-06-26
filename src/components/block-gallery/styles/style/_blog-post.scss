@@ -2,6 +2,22 @@
   border: 1px solid #8d96a0;
   margin-right: 10px;
   background-color: #fff;
+  height:100%;
+
+  .coblocks-blog-post--item-inner {
+	height: 100%;
+
+	.wp-block-coblocks-blog__post-info {
+	  height: auto;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: space-between;
+
+	  &.full-height {
+		height: 100%;
+	  }
+	}
+  }
 
   // We really don't want margin on the flickity items.
   // Set 100% so the ResizableBox functions properly.
