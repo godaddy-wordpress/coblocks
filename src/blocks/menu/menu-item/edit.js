@@ -236,7 +236,7 @@ class MenuItem extends Component {
 								value={ attributes.title }
 								tagName="h4"
 								wrapperClassName="wp-block-coblocks-menu-item__heading"
-								placeholder={ __( 'Add menu item...' ) }
+								placeholder={ __( 'Add title...' ) }
 								onChange={ title => setAttributes( { title } ) }
 								{ ...richTextAttributes }
 							/>
