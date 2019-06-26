@@ -65,7 +65,6 @@ var coblocks_maps = {
 				streetViewControl : ( gmapAttr.streetViewControl  == 'true' ) ? true : false,
 				fullscreenControl : ( gmapAttr.fullscreenControl  == 'true' ) ? true : false,
     		});
-    		console.log( gmapAttr.mapTypeControl );
 
     		new google.maps.Marker({
 				position: new google.maps.LatLng( gmapAttr.lat, gmapAttr.lng ),
