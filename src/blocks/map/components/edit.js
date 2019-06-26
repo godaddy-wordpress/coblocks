@@ -183,6 +183,7 @@ class Edit extends Component {
 						isMarkerShown={ true }
 						defaultZoom={ props.props.attributes.zoom }
 						defaultCenter={ new window.google.maps.LatLng( props.coords ) }
+						onDoubleClick={() => setAttributes( { pinned: ! pinned } )}
 						defaultOptions={ {
 							styles: GMapStyles[ skin ],
 							draggable: false,
@@ -199,7 +200,7 @@ class Edit extends Component {
 
 		const GoogleMapIframeRender = (
 			<Fragment>
-				<div style={ { width: '100%', height, position: 'absolute' } } />
+				<div style={ { width: '100%', height, position: 'absolute' } } onDoubleClick={() => setAttributes( { pinned: ! pinned } )} />
 				<div className="iframe__overflow-wrapper">
 					<iframe
 						title={ __( 'Google Map' ) }
