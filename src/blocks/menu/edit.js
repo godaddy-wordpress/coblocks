@@ -24,27 +24,8 @@ const TokenList = wp.tokenList;
 const ALLOWED_BLOCKS = [ 'coblocks/menu-item' ];
 
 const TEMPLATE = [
-	[ 'core/heading', { level: 3, content: __( 'Appetizers' ), align: 'center' } ],
-	[
-		'coblocks/menu-item',
-		{
-			imageUrl: '',
-			title: __( 'Bread Sticks' ),
-			description: __(
-				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
-			),
-		},
-	],
-	[
-		'coblocks/menu-item',
-		{
-			imageUrl: '',
-			title: __( 'Onion Rings' ),
-			description: __(
-				'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.'
-			),
-		},
-	],
+	[ 'core/heading', { level: 3, placeholder: __( 'Write menu title...' ), align: 'center' } ],
+	[ 'coblocks/menu-item' ],
 	[ 'coblocks/menu-item' ],
 ];
 
