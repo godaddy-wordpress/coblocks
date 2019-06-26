@@ -75,6 +75,10 @@
 	&:not(.child-selected) .wp-block[data-type="coblocks/menu-item"]:nth-child(-n + 3) .is-empty {
 		display: block;
 	}
+
+	&.is-style-list:not(.child-selected) .wp-block[data-type="coblocks/menu-item"]:nth-child(-n + 3) .is-empty {
+		display: flex;
+	}
 }
 
 // Adjust the editor preview to display our icons properly.
