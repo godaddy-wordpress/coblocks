@@ -44,7 +44,20 @@ const flickityOptions = {
 		x2: 65, y2: 45,
 		x3: 20
 	},
-}
+	thumbnails: false,
+	responsiveHeight: true,
+};
+
+const navOptions = {
+	asNavFor: '.has-carousel',
+	draggable: false,
+	pageDots: true,
+	prevNextButtons: false,
+	wrapAround: true,
+	autoPlay: false,
+	thumbnails: false,
+	cellAlign: 'left',
+};
 
 class GalleryCarouselEdit extends Component {
 	constructor() {
@@ -92,6 +105,7 @@ class GalleryCarouselEdit extends Component {
 		if ( this.props.attributes.gutter <= 0 ) {
 			this.props.setAttributes( {
 				radius: 0,
+				radiusThumbs: 0,
 			} );
 		}
 
@@ -182,8 +196,12 @@ class GalleryCarouselEdit extends Component {
 			gutter,
 			gutterMobile,
 			height,
+			radiusThumbs,
+			thumbSize,
 			images,
 			pageDots,
+			thumbnails,
+			responsiveHeight,
 			prevNextButtons,
 			primaryCaption,
 			backgroundImg,
@@ -205,9 +223,9 @@ class GalleryCarouselEdit extends Component {
 				[ `align${ align }` ] : align,
 				[ `has-horizontal-gutter` ] : gutter > 0,
 				[ `has-no-dots` ] : ! pageDots,
+				[ `has-no-thumbnails` ] : ! thumbnails,
 				[ `has-no-arrows` ] : ! prevNextButtons,
 				'is-selected': isSelected,
-
 			}
 		);
 
@@ -225,6 +243,29 @@ class GalleryCarouselEdit extends Component {
 			'has-carousel',
 			`has-carousel-${ gridSize }`, {}
 		);
+
+		const navClasses = classnames(
+			'carousel-nav',
+			`has-thumbnails-${ thumbSize }`, {
+				[ `has-border-radius-${ radiusThumbs }` ] : radiusThumbs > 0,
+				[ `has-margin-top-${ gutter }` ] : gutter > 0,
+				[ `has-margin-top-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-negative-margin-left-${ gutter }` ] : gutter > 0,
+				[ `has-negative-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-negative-margin-right-${ gutter }` ] : gutter > 0,
+				[ `has-negative-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+			}
+		);
+
+		const navFigureClasses = classnames(
+			'blockgallery--figure', {
+				[ `has-margin-left-${ gutter }` ] : gutter > 0,
+				[ `has-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-margin-right-${ gutter }` ] : gutter > 0,
+				[ `has-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+			}
+		);
+
 
 		if ( ! hasImages ) {
 			return (
@@ -334,6 +375,31 @@ class GalleryCarouselEdit extends Component {
 						</div>
 					</div>
 				</ResizableBox>
+				<div className={ className }>
+					<div
+						className={ innerClasses }
+						style={ innerStyles }
+					>
+						<Flickity
+							className={ navClasses }
+							options={ navOptions }
+							disableImagesLoaded={ false }
+							flickityRef={ c => this.flkty = c }
+							reloadOnUpdate={ true }
+							updateOnEachImageLoad={ true }
+						>
+							{ images.map( ( image ) => {
+								return (
+									<div className="blockgallery--item-thumbnail" key={ image.id || image.url }>
+										<figure className={ navFigureClasses }>
+											<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
+										</figure>
+									</div>
+								);
+							} ) }
+						</Flickity>
+					</div>
+				</div>
 				{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
 					<RichText
 						tagName="figcaption"

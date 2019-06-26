@@ -13,7 +13,7 @@ import { BackgroundPanel } from '../../components/background';
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InspectorControls, PanelColorSettings } = wp.blockEditor;
-const { PanelBody, RangeControl } = wp.components;
+const { PanelBody, RangeControl, ToggleControl } = wp.components;
 
 /**
  * Inspector controls
@@ -38,6 +38,15 @@ class Inspector extends Component {
 
 	setHeightTo( value ) {
 		this.props.setAttributes( { height: value } );
+	}
+
+	getThumbnailNavigationHelp( checked ) {
+		return checked ? __( 'Showing thumbnail navigation.' ) : __( 'Toggle to show thumbnails.' );
+	}
+
+
+	getResponsiveHeightHelp( checked ) {
+		return checked ? __( 'Percentage based height is activated.' ) : __( 'Toggle for percentage based height.' );
 	}
 
 	getColors() {
@@ -114,6 +123,8 @@ class Inspector extends Component {
 			height,
 			images,
 			radius,
+			thumbnails,
+			responsiveHeight,
 		} = attributes;
 
 		return (
@@ -145,14 +156,16 @@ class Inspector extends Component {
 									max={ 20 }
 								/>
 							}
-							<RangeControl
-								label={ __( 'Height in pixels' ) }
-								value={ height }
-								onChange={ this.setHeightTo }
-								min={ 200 }
-								max={ 1000 }
-								step={ 1 }
-							/>
+							{ !responsiveHeight &&
+								<RangeControl
+									label={ __( 'Height in pixels' ) }
+									value={ height }
+									onChange={ this.setHeightTo }
+									min={ 200 }
+									max={ 1000 }
+									step={ 1 }
+								/>
+							}
 							{ gutter > 0 && <RangeControl
 								label={ __( 'Rounded Corners' ) }
 								value={ radius }
@@ -161,6 +174,18 @@ class Inspector extends Component {
 								max={ 20 }
 								step={ 1 }
 							/> }
+							<ToggleControl
+								label={ __( 'Responsive Height' ) }
+								checked={ !! responsiveHeight }
+								onChange={ () => setAttributes( { responsiveHeight: ! responsiveHeight, className: !responsiveHeight ? 'responsive-height' : '' } ) }
+								help={ this.getResponsiveHeightHelp }
+							/>
+							<ToggleControl
+								label={ __( 'Thumbnail Navigation' ) }
+								checked={ !! thumbnails }
+								onChange={ () => setAttributes( { thumbnails: ! thumbnails } ) }
+								help={ this.getThumbnailNavigationHelp }
+							/>
 						</PanelBody>
 						<SliderPanel { ...this.props } />
 						<BackgroundPanel { ...this.props }

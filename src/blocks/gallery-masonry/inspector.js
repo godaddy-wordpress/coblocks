@@ -52,6 +52,10 @@ class Inspector extends Component {
 		return checked ? __( 'Showing captions for each media item.' ) : __( 'Toggle to show media captions.' );
 	}
 
+	getModalHelp( checked ) {
+		return checked ? __( 'Showing modal for each media item.' ) : __( 'Toggle to show media modal.' );
+	}
+
 	getColors() {
 		const {
 			attributes,
@@ -157,6 +161,12 @@ class Inspector extends Component {
 							options={ captionOptions }
 						/>
 					}
+					<ToggleControl
+						label={ __( 'Lightbox' ) }
+						checked={ !! lightbox }
+						onChange={ () => setAttributes( { lightbox: ! lightbox, className: !lightbox ? 'expandable-image' : '' } ) }
+						help={ this.getModalHelp }
+					/>
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
 				<BackgroundPanel { ...this.props }
