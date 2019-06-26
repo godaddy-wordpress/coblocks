@@ -68,9 +68,12 @@
 	}
 
 	// Hides the menu item placeholder if it's not the first two blocks.
-	&:not(.child-selected) .wp-block[data-type="coblocks/menu-item"]:nth-child(n + 2) .is-empty {
-		background: red;
-		// display: none;
+	&:not(.child-selected) .wp-block[data-type="coblocks/menu-item"] .is-empty {
+		display: none;
+	}
+
+	&:not(.child-selected) .wp-block[data-type="coblocks/menu-item"]:nth-child(-n + 3) .is-empty {
+		display: block;
 	}
 }
 
