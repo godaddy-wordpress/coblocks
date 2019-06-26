@@ -66,6 +66,10 @@ class Edit extends Component {
 		if ( !! this.state.apiKey && ! this.props.attributes.hasApiKey ) {
 			this.props.setAttributes( { hasApiKey: true } );
 		}
+
+		if ( ! this.props.isSelected && Object.keys( this.state.address ).length ) {
+			this.props.setAttributes( { pinned: true } );
+		}
 	}
 
 	updateApiKey = ( apiKey = this.state.apiKey ) => {
