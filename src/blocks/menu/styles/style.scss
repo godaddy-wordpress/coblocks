@@ -39,19 +39,27 @@
 
 	&.is-style-list {
 		.wp-block-coblocks-menu-item {
-			align-items: center;
 			display: flex;
 			flex: 1 100%;
 			margin-top: 1.5em;
 			max-width: 100%;
+
+			@media all and (min-width: 515px) {
+				align-items: center;
+			}
 		}
 
 		.wp-block-coblocks-menu-item__attributes {
 			margin-left: 0.6em;
 		}
 
+		.wp-block-coblocks-menu-item__description {
+			max-width: calc(100% - 50px);
+		}
+
 		.wp-block-coblocks-menu-item__price {
 			margin-top: 0;
+			text-align: right;
 		}
 
 		figure,
