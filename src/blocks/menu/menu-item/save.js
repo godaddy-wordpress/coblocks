@@ -7,6 +7,7 @@ import icons from './icons';
 /**
  * WordPress dependencies.
  */
+const { __ } = wp.i18n;
 const { RichText } = wp.blockEditor;
 const { Icon } = wp.components;
 
@@ -46,22 +47,34 @@ export default function save( { attributes } ) {
 					{ ( !! attributes.spicy || !! attributes.vegetarian || !! attributes.glutenFree || !! attributes.pescatarian || !! attributes.vegan ) && (
 						<div className="wp-block-coblocks-menu-item__attributes">
 							{ !! attributes.spicy &&
-								<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy" />
+								<span className="hint--top" aria-label={ __( 'Spicy' ) } >
+									<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy" />
+								</span>
 							}
 							{ !! attributes.spicier && !! attributes.spicy &&
-								<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicier" />
+								<span className="hint--top" aria-label={ __( 'Spicier' ) } >
+									<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicier" />
+								</span>
 							}
 							{ !! attributes.vegetarian &&
-								<Icon icon={ icons.vegetarian } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--veg" />
+								<span className="hint--top" aria-label={ __( 'Vegetarian' ) } >
+									<Icon icon={ icons.vegetarian } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--veg" />
+								</span>
 							}
 							{ !! attributes.glutenFree &&
-								<Icon icon={ icons.glutenFree } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf" />
+								<span className="hint--top" aria-label={ __( 'Gluten Free' ) } >
+									<Icon icon={ icons.glutenFree } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf" />
+								</span>
 							}
 							{ !! attributes.pescatarian &&
-								<Icon icon={ icons.pescatarian } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--pescatarian" />
+								<span className="hint--top" aria-label={ __( 'Pescatarian' ) } >
+									<Icon icon={ icons.pescatarian } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--pescatarian" />
+								</span>
 							}
 							{ !! attributes.vegan &&
-								<Icon icon={ icons.vegan } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegan" />
+								<span className="hint--top" aria-label={ __( 'Vegan' ) } >
+									<Icon icon={ icons.vegan } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegan" />
+								</span>
 							}
 						</div>
 					) }
