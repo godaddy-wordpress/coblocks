@@ -83,7 +83,7 @@ const settings = {
 
 	keywords: keywords,
 
-	attributes: {attributes, ...ResponsiveBaseControlAttributes},
+	attributes: {...attributes, ...ResponsiveBaseControlAttributes},
 
 	supports: {
 		align: [ 'wide', 'full' ],
