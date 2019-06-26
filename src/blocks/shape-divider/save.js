@@ -1,4 +1,9 @@
-export const save = ( { attributes, className } ) => {
+import { getDividerFromStyle } from './'
+import classnames from 'classnames';
+
+const { getColorClassName } = wp.blockEditor;
+
+export function Save ( { attributes, className } ) {
 
 		const {
 			backgroundColor,
@@ -31,10 +36,10 @@ export const save = ( { attributes, className } ) => {
 
 		return (
 			<div className={ classes } style={ styles } aria-hidden="true">
-				<div className="wp-block-coblocks-shape-divider__svg-wrapper" style={ { minHeight: shapeHeight } }>
+				<div className="wp-block-coblocks-shape-divider__svg-wrapper" style={ { minHeight: parseInt(shapeHeight) } }>
 					{ getDividerFromStyle( attributes.className ) }
 				</div>
-				<div className="wp-block-coblocks-shape-divider__alt-wrapper" style={ { minHeight: backgroundHeight } }></div>
+				<div className="wp-block-coblocks-shape-divider__alt-wrapper" style={ { minHeight: parseInt(backgroundHeight) } }></div>
 			</div>
 		);
 	}

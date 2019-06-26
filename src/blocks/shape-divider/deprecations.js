@@ -1,7 +1,9 @@
+import { getDividerFromStyle, attributes } from './'
+
 export const deprecated = [
 		{
 			attributes: {
-				...blockAttributes,
+				...attributes,
 			},
 			save( { attributes, className } ) {
 

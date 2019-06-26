@@ -1,6 +1,6 @@
 const name = 'shape-divider';
 
-import blockAttributes from './'
+import attributes from './'
 
 export const Transforms = {
 		from: [

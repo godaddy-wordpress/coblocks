@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-import classnames from 'classnames';
 import omit from 'lodash/omit';
 import includes from 'lodash/includes';
 
@@ -16,14 +15,14 @@ import ResponsiveBaseControlAttributes from '../../components/responsive-base-co
 import dividers from './dividers';
 import Transforms from './transformations';
 import Deprecated from './deprecations';
-import Save from './save';
+import { Save } from './save';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
 const { __, _x } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { getColorClassName } = wp.blockEditor;
 
 /**
  * Return the appropriate SVG for the block style.
@@ -63,7 +62,7 @@ export function getDividerFromStyle( className ) {
 /**
  * Block constants
  */
-const name = 'shape-divider';
+const { name, attributes } = metadata;
 
 const title = __( 'Shape Divider' );
 
@@ -75,74 +74,6 @@ const keywords = [
 	__( 'svg' ),
 ];
 
-const blockAttributes = {
-	align: {
-		type: 'string',
-		default: 'full',
-	},
-	height: {
-		type: 'number',
-		default: 100,
-	},
-	shapeHeight: {
-		type: 'number',
-		default: 100,
-	},
-	shapeHeightMobile: {
-		type: 'number',
-	},
-	shapeHeightTablet: {
-		type: 'number',
-	},
-	backgroundHeight: {
-		type: 'number',
-		default: 50,
-	},
-	backgroundHeightMobile: {
-		type: 'number',
-	},
-	backgroundHeightTablet: {
-		type: 'number',
-	},
-	syncHeightAlt: {
-		type: 'boolean',
-		default: true,
-	},
-	verticalFlip: {
-		type: 'boolean',
-		default: false,
-	},
-	horizontalFlip: {
-		type: 'boolean',
-		default: false,
-	},
-	color: {
-		type: 'string',
-	},
-	customColor: {
-		type: 'string',
-		default: '#111',
-	},
-	backgroundColor: {
-		type: 'string',
-	},
-	customBackgroundColor: {
-		type: 'string',
-	},
-	noBottomMargin: {
-		type: 'boolean',
-		default: true,
-	},
-	noTopMargin: {
-		type: 'boolean',
-		default: true,
-	},
-	justAdded: {
-		type: 'boolean',
-		default: true,
-	},
-	...ResponsiveBaseControlAttributes,
-};
 
 const settings = {
 
@@ -152,7 +83,7 @@ const settings = {
 
 	keywords: keywords,
 
-	attributes: blockAttributes,
+	attributes: {attributes, ...ResponsiveBaseControlAttributes},
 
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -171,10 +102,13 @@ const settings = {
 	],
 
 	transforms: Transforms,
+
 	edit: Edit,
+
 	save: Save,
+
 	deprecated: Deprecated,
 };
 
-export { name, title, icon, settings, blockAttributes };
+export { name, title, icon, settings, attributes, metadata };
 
