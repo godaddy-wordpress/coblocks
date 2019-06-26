@@ -107,7 +107,14 @@ EOL;
 			);
 		}
 
-		$list_items_markup .= '<div class="wp-block-coblocks-blog__post-info">';
+		$item_info_class = 'wp-block-coblocks-blog__post-info ';
+		if ($post['thumbnailURL'] === null || !$post['thumbnailURL']) {
+			$item_info_class .= 'full-height ';
+		}
+		$list_items_markup .= sprintf(
+			'<div class="%1$s"</div>',
+			$item_info_class
+		);
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 			$list_items_markup .= sprintf(
@@ -319,10 +326,6 @@ function register_block_blog() {
 					'type'    => 'string',
 					'default' => 'left',
 				),
-				'height'			  => array(
-					'type'    => 'number',
-					'default' => 400,
-				),
 				'align'                   => array(
 					'type'    => 'string',
 					'default' => 'wide',
@@ -400,10 +403,6 @@ function register_block_blog() {
 				'visibleItems'	  => array(
 					'type'	  => 'number',
 					'default' => 2
-				),
-				'importRSS'		  => array(
-					'type'	  => 'boolean',
-					'default' => false
 				)
 			),
 			'render_callback' => 'render_block_blog',
