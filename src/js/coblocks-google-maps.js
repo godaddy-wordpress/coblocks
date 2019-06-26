@@ -18,9 +18,10 @@ var coblocks_maps = {
 		self.elem.each( function ( index, Element ) {
 
 			var mapAttributes = jQuery(this).attr( 'data-map-attr' );
-			    mapAttributes = mapAttributes.replace(/\/q/g, '"').split( '||' ),
-			    gmapAttr      = JSON.parse( '{' + mapAttributes + '}'),
-			    skin          = self.mapStyles( gmapAttr.skin );
+			    mapAttributes = mapAttributes.replace(/\/q/g, '"').split( '||' );
+
+			var gmapAttr = JSON.parse( '{' + mapAttributes + '}'),
+			    skin     = self.mapStyles( gmapAttr.skin );
 
 				if( typeof skin === 'undefined' ){
 
