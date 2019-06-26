@@ -22,8 +22,8 @@ const Inspector = props => {
 					label={ __( 'Image' ) }
 					help={
 						attributes.showImage ?
-							__( 'Showing image for this item.' ) :
-							__( 'Toggle to show image for this item.' )
+							__( 'Showing an image for this item.' ) :
+							__( 'Toggle to show an image for this item.' )
 					}
 					checked={ attributes.showImage }
 					onChange={ () => setAttributes( { showImage: ! attributes.showImage } ) }
