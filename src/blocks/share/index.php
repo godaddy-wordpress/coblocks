@@ -12,7 +12,7 @@
  *
  * @return string Returns the block content.
  */
-function coblocks_render_social_block( $attributes ) {
+function coblocks_render_share_block( $attributes ) {
 
 	global $post;
 
@@ -222,7 +222,7 @@ function coblocks_render_social_block( $attributes ) {
 /**
  * Registers the block on server.
  */
-function coblocks_register_social_block() {
+function coblocks_register_share_block() {
 
 	// Return early if this function does not exist.
 	if ( ! function_exists( 'register_block_type' ) ) {
@@ -307,8 +307,8 @@ function coblocks_register_social_block() {
 					'default' => false,
 				),
 			),
-			'render_callback' => 'coblocks_render_social_block',
+			'render_callback' => 'coblocks_render_share_block',
 		)
 	);
 }
-add_action( 'init', 'coblocks_register_social_block' );
+add_action( 'init', 'coblocks_register_share_block' );

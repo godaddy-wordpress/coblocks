@@ -35,10 +35,6 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Social Sharing Block
 -   Stacked Gallery Block (New!)
 
-### Our Block Manager
-
-Easily toggle off any WordPress block in the Gutenberg editor with the new CoBlocks Block Manager. No more unnecessary WordPress Gutenberg blocks standing in the way for you, or your clients.
-
 ### Connect
 
 -   [Download on WordPress.org](https://wordpress.org/plugins/coblocks/)

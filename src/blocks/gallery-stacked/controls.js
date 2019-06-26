@@ -15,7 +15,7 @@ const {
 	BlockControls,
 	MediaUpload,
 	MediaUploadCheck,
-} = wp.editor;
+} = wp.blockEditor;
 
 class Controls extends Component {
 

@@ -24,4 +24,9 @@
 	li:last-child .coblocks-gallery--figure {
 		width: 100% !important;
 	}
+
+	// Tweak the position of the figcaption if Custom URL is set.
+	.components-coblocks-gallery-item__image-link + img + .editor-rich-text {
+		margin-bottom: 35px;
+	}
 }

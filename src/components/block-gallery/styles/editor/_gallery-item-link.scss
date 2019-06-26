@@ -1,0 +1,64 @@
+.components-coblocks-gallery-item__image-link {
+	align-items: center;
+	background: theme(primary);
+	bottom: 0;
+	display: flex;
+	flex-wrap: wrap;
+	font-family: $default-font;
+	font-size: 13px;
+	left: 0;
+	line-height: 1.4;
+	position: absolute;
+	right: 0;
+	z-index: 20;
+
+	.dashicon {
+		color: $white;
+	}
+
+	.dashicons-admin-links {
+		margin-left: 11px;
+		margin-right: 9px;
+		width: 16px;
+	}
+
+	.dashicons-editor-break {
+		margin-right: 4px;
+		width: 16px;
+	}
+
+	.components-icon-button {
+		margin-left: 1px;
+		margin-right: 3px;
+		padding: 6px;
+
+		&:not(:disabled):not([aria-disabled="true"]):hover {
+			background: theme(primary) !important;
+			box-shadow: none;
+			color: $white !important;
+			opacity: 0.75;
+		}
+
+		&:focus,
+		&:active {
+			box-shadow: none !important;
+
+			.dashicon {
+				color: $dark-gray-900 !important;
+			}
+		}
+	}
+
+	.block-editor-url-input {
+		flex-grow: 1;
+		padding: 2px;
+		position: relative;
+		width: calc(100% - 73px);
+
+		input[type="text"] {
+			border-radius: 3px;
+			padding: 8px;
+			width: 100%;
+		}
+	}
+}

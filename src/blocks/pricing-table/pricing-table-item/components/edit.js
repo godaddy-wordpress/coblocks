@@ -16,7 +16,7 @@ import icons from './../../../../utils/icons';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText, InnerBlocks } = wp.editor;
+const { RichText, InnerBlocks } = wp.blockEditor;
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
