@@ -37,7 +37,7 @@ class CoBlocks_Getting_Started_Page {
 		 *
 		 * @var string
 		 */
-		$submenu_parent_slug = (string) apply_filters( 'coblocks_getting_submenu_parent_slug', '' );
+		$submenu_parent_slug = (string) apply_filters( 'coblocks_getting_started_submenu_parent_slug', '' );
 
 		if ( '' !== $submenu_parent_slug ) {
 
