@@ -257,7 +257,9 @@ class Edit extends Component {
 						} }
 					>
 						{ !! this.state.apiKey ?
-							<GoogleMapApiRender address={ address } /> :
+							<div style={ { width: '100%', height, position: 'absolute' } } onDoubleClick={ () => setAttributes( { pinned: ! pinned } ) }>
+								<GoogleMapApiRender address={ address } />
+							</div> :
 							GoogleMapIframeRender
 						}
 					</ResizableBox>
