@@ -70,7 +70,7 @@ const handlePlaceholderPlacement = (
 };
 
 const isEmpty = attributes => {
-	const attributesToCheck = [ 'imageUrl', 'title', 'description', 'itemPrice' ];
+	const attributesToCheck = [ 'url', 'title', 'description', 'price' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
 	);
@@ -105,7 +105,7 @@ class MenuItem extends Component {
 			allowedTypes: [ 'image' ],
 			filesList: files,
 			onFileChange: ( [ media ] ) =>
-				this.props.setAttributes( { imageUrl: media.url, imageAlt: media.alt } ),
+				this.props.setAttributes( { url: media.url, alt: media.alt } ),
 		} );
 	}
 
@@ -133,7 +133,7 @@ class MenuItem extends Component {
 		const { attributes, setAttributes, isSelected } = this.props;
 
 		const classes = classnames( 'wp-block-coblocks-menu-item__figure', {
-			'is-transient': isBlobURL( attributes.imageUrl ),
+			'is-transient': isBlobURL( attributes.url ),
 			'is-selected': isSelected,
 		} );
 
@@ -152,7 +152,7 @@ class MenuItem extends Component {
 						<div className="wp-block-coblocks-menu-item__remove-menu">
 							<IconButton
 								icon="no-alt"
-								onClick={ () => setAttributes( { imageUrl: '' } ) }
+								onClick={ () => setAttributes( { url: '' } ) }
 								className="coblocks-gallery-item__button"
 								label={ __( 'Remove Image' ) }
 								disabled={ ! isSelected }
@@ -160,8 +160,8 @@ class MenuItem extends Component {
 						</div>
 					) }
 					{ dropZone }
-					{ isBlobURL( attributes.imageUrl ) && <Spinner /> }
-					<img src={ attributes.imageUrl } alt={ attributes.imageAlt } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined, }}/>
+					{ isBlobURL( attributes.url ) && <Spinner /> }
+					<img src={ attributes.url } alt={ attributes.alt } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined, }}/>
 				</figure>
 			</Fragment>
 		);
@@ -177,7 +177,7 @@ class MenuItem extends Component {
 				labels={ {
 					title: ' ',
 				} }
-				onSelect={ el => setAttributes( { imageUrl: el.url, imageAlt: el.alt } ) }
+				onSelect={ el => setAttributes( { url: el.url, alt: el.alt } ) }
 			/>
 		);
 	}
@@ -191,7 +191,7 @@ class MenuItem extends Component {
 						allowedTypes={ [ 'image' ] }
 						multiple={ false }
 						onSelect={ media =>
-							setAttributes( { imageUrl: media.url, imageAlt: media.alt } )
+							setAttributes( { url: media.url, alt: media.alt } )
 						}
 						render={ ( { open } ) => (
 							<IconButton
@@ -227,7 +227,7 @@ class MenuItem extends Component {
 					} ) }
 				>
 					{ !! attributes.showImage &&
-						( attributes.imageUrl ?
+						( attributes.url ?
 							this.renderImage() :
 							this.renderPlaceholder() ) }
 					<div className="wp-block-coblocks-menu-item__content">
@@ -343,13 +343,13 @@ class MenuItem extends Component {
 							onChange={ description => setAttributes( { description } ) }
 							{ ...richTextAttributes }
 						/>
-						{ !! attributes.showPrice && ( attributes.itemPrice || isSelected ) && (
+						{ !! attributes.showPrice && ( attributes.price || isSelected ) && (
 							<RichText
-								value={ attributes.itemPrice }
+								value={ attributes.price }
 								tagName="p"
 								wrapperClassName="wp-block-coblocks-menu-item__price"
 								placeholder={ __( '$0.00' ) }
-								onChange={ itemPrice => setAttributes( { itemPrice } ) }
+								onChange={ price => setAttributes( { price } ) }
 								{ ...richTextAttributes }
 							/>
 						) }

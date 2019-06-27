@@ -25,33 +25,6 @@ const icon = icons.menuItem;
 const keywords = [];
 
 const attributes = {
-	showImage: {
-		type: 'boolean',
-		source: 'attribute',
-		selector: 'img',
-		attribute: 'src',
-		default: false,
-	},
-	showPrice: {
-		type: 'boolean',
-		source: 'html',
-		selector: '.wp-block-coblocks-menu-item__price span',
-		default: true,
-	},
-	imageUrl: {
-		type: 'string',
-		source: 'attribute',
-		selector: 'img',
-		attribute: 'src',
-		default: '',
-	},
-	imageAlt: {
-		type: 'string',
-		source: 'attribute',
-		selector: 'img',
-		attribute: 'alt',
-		default: '',
-	},
 	title: {
 		type: 'string',
 		source: 'html',
@@ -64,10 +37,24 @@ const attributes = {
 		selector: '.wp-block-coblocks-menu-item__description',
 		default: '',
 	},
-	itemPrice: {
+	price: {
 		type: 'string',
 		source: 'html',
 		selector: '.wp-block-coblocks-menu-item__price span',
+		default: '',
+	},
+	url: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'img',
+		attribute: 'src',
+		default: '',
+	},
+	alt: {
+		type: 'string',
+		source: 'attribute',
+		selector: 'img',
+		attribute: 'alt',
 		default: '',
 	},
 	focalPoint: {
@@ -90,6 +77,19 @@ const attributes = {
 	},
 	vegan: {
 		type: 'boolean',
+	},
+	showImage: {
+		type: 'boolean',
+		source: 'attribute',
+		selector: 'img',
+		attribute: 'src',
+		default: false,
+	},
+	showPrice: {
+		type: 'boolean',
+		source: 'html',
+		selector: '.wp-block-coblocks-menu-item__price span',
+		default: true,
 	},
 };
 

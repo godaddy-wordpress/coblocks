@@ -12,7 +12,7 @@ const { RichText } = wp.blockEditor;
 const { Icon } = wp.components;
 
 const isEmpty = attributes => {
-	const attributesToCheck = [ 'imageUrl', 'title', 'description', 'itemPrice' ];
+	const attributesToCheck = [ 'url', 'title', 'description', 'price' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
 	);
@@ -27,11 +27,11 @@ export default function save( { attributes } ) {
 			itemScope
 			itemType="http://schema.org/MenuItem"
 		>
-			{ !! attributes.showImage && attributes.imageUrl && (
+			{ !! attributes.showImage && attributes.url && (
 				<figure className="wp-block-coblocks-menu-item__figure">
 					<img
-						src={ attributes.imageUrl }
-						alt={ attributes.imageAlt }
+						src={ attributes.url }
+						alt={ attributes.alt }
 						itemProp="image"
 						style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined } }
 					/>
@@ -86,7 +86,7 @@ export default function save( { attributes } ) {
 					value={ attributes.description }
 					itemprop="description"
 				/>
-				{ !! attributes.showPrice && attributes.itemPrice && (
+				{ !! attributes.showPrice && attributes.price && (
 					<p
 						className="wp-block-coblocks-menu-item__price"
 						itemProp="offers"
@@ -95,7 +95,7 @@ export default function save( { attributes } ) {
 					>
 						<RichText.Content
 							tagName="span"
-							value={ attributes.itemPrice }
+							value={ attributes.price }
 							itemprop="price"
 						/>
 					</p>

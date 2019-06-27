@@ -74,12 +74,12 @@ const Inspector = props => {
 					/>
 				</div>
 			</PanelBody>
-			{ attributes.imageUrl &&
+			{ attributes.url &&
 				<PanelBody title={ __( 'Image Settings' ) } initialOpen={ false }>
 					<TextareaControl
 						label={ __( 'Alt Text (Alternative Text)' ) }
-						value={ attributes.imageAlt }
-						onChange={ ( value ) => setAttributes( { imageAlt: value } ) }
+						value={ attributes.alt }
+						onChange={ ( value ) => setAttributes( { alt: value } ) }
 						help={
 							<Fragment>
 								<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
@@ -91,7 +91,7 @@ const Inspector = props => {
 					/>
 					<FocalPointPicker
 						label={ __( 'Focal Point' ) }
-						url={ attributes.imageUrl }
+						url={ attributes.url }
 						value={ attributes.focalPoint }
 						onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
 					/>
