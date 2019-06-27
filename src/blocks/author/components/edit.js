@@ -13,7 +13,8 @@ import Controls from './controls';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText, MediaUpload, mediaUpload, MediaUploadCheck, InnerBlocks } = wp.blockEditor;
+const { RichText, MediaUpload, MediaUploadCheck, InnerBlocks } = wp.blockEditor;
+const { mediaUpload } = wp.editor;
 const { Button, Dashicon, IconButton, DropZone } = wp.components;
 
 /**
