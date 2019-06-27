@@ -1,22 +1,22 @@
 {
-	"name": "menu-item",
+	"name": "food-item",
 	"attributes": {
 		"title": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-menu-item__heading",
+			"selector": ".wp-block-coblocks-food-item__heading",
 			"default": ""
 		},
 		"description": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-menu-item__description",
+			"selector": ".wp-block-coblocks-food-item__description",
 			"default": ""
 		},
 		"price": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-menu-item__price span",
+			"selector": ".wp-block-coblocks-food-item__price span",
 			"default": ""
 		},
 		"url": {
@@ -64,7 +64,7 @@
 		"showImage": {
 			"type": "boolean",
 			"source": "html",
-			"selector": ".wp-block-coblocks-menu-item__price span",
+			"selector": ".wp-block-coblocks-food-item__price span",
 			"default": "true"
 		}
 	}

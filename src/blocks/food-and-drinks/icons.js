@@ -8,7 +8,7 @@ const { SVG, Path, G } = wp.components;
  */
 const icons = {};
 
-icons.menu = (
+icons.foodAndDrinks = (
 	<SVG
 		className="components-coblocks-svg"
 		viewBox="0 0 24 24"

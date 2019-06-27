@@ -9,7 +9,7 @@ import { noop } from 'lodash';
 const { __ } = wp.i18n;
 const { IconButton } = wp.components;
 
-const MenuAppender = ( { onClick = noop } ) => {
+const CustomAppender = ( { onClick = noop } ) => {
 	return (
 		<div className="coblocks-list-appender">
 			<IconButton
@@ -25,4 +25,4 @@ const MenuAppender = ( { onClick = noop } ) => {
 	);
 };
 
-export default MenuAppender;
+export default CustomAppender;

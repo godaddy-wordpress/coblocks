@@ -1,8 +1,8 @@
-.wp-block-coblocks-menu-item {
+.wp-block-coblocks-food-item {
 	flex: 1 50%;
 	margin-top: 2.75em;
 
-	.wp-block-coblocks-menu:not(.is-style-list) & {
+	.wp-block-coblocks-food-and-drinks:not(.is-style-list) & {
 		&:nth-child(even) {
 			padding-right: 20px;
 
@@ -19,7 +19,7 @@
 			}
 		}
 
-		.wp-block-coblocks-menu-item__content {
+		.wp-block-coblocks-food-item__content {
 			display: block;
 		}
 	}

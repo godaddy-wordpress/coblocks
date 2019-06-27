@@ -1,4 +1,4 @@
-.wp-block-coblocks-menu-item {
+.wp-block-coblocks-food-item {
 	display: block;
 	flex: 1 100%;
 	padding: 0 !important;
@@ -45,7 +45,7 @@
 	}
 
 	&__figure {
-		.wp-block-coblocks-menu-item__remove-menu {
+		.wp-block-coblocks-food-item__remove-menu {
 			background-color: theme(primary);
 			display: inline-flex;
 			padding: 2px;
@@ -108,7 +108,7 @@
 	}
 }
 
-.is-style-list .wp-block-coblocks-menu-item {
+.is-style-list .wp-block-coblocks-food-item {
 	.editor-media-placeholder {
 		height: 100px;
 		min-height: 100px;
@@ -167,7 +167,7 @@
 	}
 }
 
-.wp-block[data-type="coblocks/menu-item"] {
+.wp-block[data-type="coblocks/food-item"] {
 	flex: 1 50%;
 	margin-left: 5px;
 	margin-right: 5px;
@@ -183,27 +183,27 @@
 	}
 
 	@media all and (max-width: 514px) {
-		.wp-block-coblocks-menu:not(.is-style-list) &:nth-child(-n + 2) .wp-block-coblocks-menu-item {
+		.wp-block-coblocks-food-and-drinks:not(.is-style-list) &:nth-child(-n + 2) .wp-block-coblocks-food-item {
 			margin-top: 0;
 		}
 	}
 
 	@media all and (min-width: 515px) {
-		.wp-block-coblocks-menu:not(.is-style-list) &:nth-child(-n + 3) .wp-block-coblocks-menu-item {
+		.wp-block-coblocks-food-and-drinks:not(.is-style-list) &:nth-child(-n + 3) .wp-block-coblocks-food-item {
 			margin-top: 0;
 		}
 	}
 
-	.wp-block-coblocks-menu.is-style-list &:nth-child(-n + 2) .wp-block-coblocks-menu-item {
+	.wp-block-coblocks-food-and-drinks.is-style-list &:nth-child(-n + 2) .wp-block-coblocks-food-item {
 		margin-top: 0;
 	}
 }
 
-.components-menu-item-attributes__label {
+.components-food-item-attributes__label {
 	margin-bottom: 6px;
 }
 
-.edit-post-settings-sidebar__panel-block .components-menu-item-attributes {
+.edit-post-settings-sidebar__panel-block .components-food-item-attributes {
 	.components-base-control {
 		margin-bottom: 8px;
 	}

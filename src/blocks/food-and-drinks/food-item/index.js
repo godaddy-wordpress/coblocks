@@ -16,11 +16,11 @@ const { __ } = wp.i18n;
 /**
  * Block constants.
  */
-const name = 'menu-item';
+const name = 'food-item';
 
-const title = __( 'Menu Item' );
+const title = __( 'Food Item' );
 
-const icon = icons.menuItem;
+const icon = icons.foodItem;
 
 const keywords = [];
 
@@ -28,19 +28,19 @@ const attributes = {
 	title: {
 		type: 'string',
 		source: 'html',
-		selector: '.wp-block-coblocks-menu-item__heading',
+		selector: '.wp-block-coblocks-food-item__heading',
 		default: '',
 	},
 	description: {
 		type: 'string',
 		source: 'html',
-		selector: '.wp-block-coblocks-menu-item__description',
+		selector: '.wp-block-coblocks-food-item__description',
 		default: '',
 	},
 	price: {
 		type: 'string',
 		source: 'html',
-		selector: '.wp-block-coblocks-menu-item__price span',
+		selector: '.wp-block-coblocks-food-item__price span',
 		default: '',
 	},
 	url: {
@@ -88,7 +88,7 @@ const attributes = {
 	showPrice: {
 		type: 'boolean',
 		source: 'html',
-		selector: '.wp-block-coblocks-menu-item__price span',
+		selector: '.wp-block-coblocks-food-item__price span',
 		default: true,
 	},
 };
@@ -96,7 +96,7 @@ const attributes = {
 const settings = {
 	title,
 
-	description: __( 'A menu item within the menu block.' ),
+	description: __( 'A food and drink item within the Food & Drinks block.' ),
 
 	keywords,
 
@@ -109,7 +109,7 @@ const settings = {
 		html: false,
 	},
 
-	parent: [ 'coblocks/menu' ],
+	parent: [ 'coblocks/food-and-drinks' ],
 
 	edit,
 	save,

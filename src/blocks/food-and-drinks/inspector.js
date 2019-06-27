@@ -27,7 +27,7 @@ const Inspector = props => {
 				<div className="editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
 					{ layoutOptions.map( style => (
 						<div
-							key={ `menu-style-${ style.name }` }
+							key={ `style-${ style.name }` }
 							className={ classnames(
 								'editor-block-styles__item block-editor-block-styles__item',
 								{
@@ -56,7 +56,7 @@ const Inspector = props => {
 				</div>
 			</PanelBody>
 
-			<PanelBody title={ __( 'Menu Settings' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Food & Drinks Settings' ) } initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Images' ) }
 					help={

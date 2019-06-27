@@ -1,4 +1,4 @@
-.wp-block-coblocks-menu {
+.wp-block-coblocks-food-and-drinks {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
@@ -8,7 +8,7 @@
 		flex-direction: column;
 	}
 
-	+ .wp-block-coblocks-menu {
+	+ .wp-block-coblocks-food-and-drinks {
 		margin-top: 3em;
 	}
 
@@ -24,13 +24,13 @@
 	}
 
 	&:not(.is-style-list) {
-		.wp-block-coblocks-menu-item {
+		.wp-block-coblocks-food-item {
 			@media all and (min-width: 515px) {
 				text-align: center;
 			}
 		}
 
-		.wp-block-coblocks-menu-item__heading-wrapper {
+		.wp-block-coblocks-food-item__heading-wrapper {
 			@media all and (min-width: 515px) {
 				justify-content: center;
 			}
@@ -38,7 +38,7 @@
 	}
 
 	&.is-style-list {
-		.wp-block-coblocks-menu-item {
+		.wp-block-coblocks-food-item {
 			display: flex;
 			flex: 1 100%;
 			margin-top: 1.5em;
@@ -49,15 +49,15 @@
 			}
 		}
 
-		.wp-block-coblocks-menu-item__attributes {
+		.wp-block-coblocks-food-item__attributes {
 			margin-left: 0.6em;
 		}
 
-		.wp-block-coblocks-menu-item__description {
+		.wp-block-coblocks-food-item__description {
 			max-width: calc(100% - 50px);
 		}
 
-		.wp-block-coblocks-menu-item__price {
+		.wp-block-coblocks-food-item__price {
 			margin-top: 0;
 			text-align: right;
 		}

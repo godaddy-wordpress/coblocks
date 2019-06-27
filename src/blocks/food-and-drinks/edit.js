@@ -1,7 +1,7 @@
 /**
  * Internal dependencies.
  */
-import MenuAppender from './menu-appender';
+import CustomAppender from './appender';
 import InspectorControls from './inspector';
 import icons from './icons';
 
@@ -21,12 +21,12 @@ const { withSelect, dispatch, select } = wp.data;
 const { InnerBlocks } = wp.blockEditor;
 const TokenList = wp.tokenList;
 
-const ALLOWED_BLOCKS = [ 'coblocks/menu-item' ];
+const ALLOWED_BLOCKS = [ 'coblocks/food-item' ];
 
 const TEMPLATE = [
 	[ 'core/heading', { level: 3, placeholder: __( 'Menu title...' ), align: 'center' } ],
-	[ 'coblocks/menu-item' ],
-	[ 'coblocks/menu-item' ],
+	[ 'coblocks/food-item' ],
+	[ 'coblocks/food-item' ],
 ];
 
 const layoutOptions = [
@@ -91,7 +91,7 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 	return list.value;
 }
 
-class Menu extends Component {
+class FoodItem extends Component {
 	updateInnerAttributes = ( blockName, newAttributes ) => {
 		const innerItems = select( 'core/editor' ).getBlocksByClientId(
 			this.props.clientId
@@ -113,7 +113,7 @@ class Menu extends Component {
 		const showImages = ! attributes.showImages;
 		setAttributes( { showImages } );
 
-		this.updateInnerAttributes( 'coblocks/menu-item', { showImage: showImages } );
+		this.updateInnerAttributes( 'coblocks/food-item', { showImage: showImages } );
 	};
 
 	togglePrices = () => {
@@ -122,7 +122,7 @@ class Menu extends Component {
 		const showPrices = ! attributes.showPrices;
 		setAttributes( { showPrices } );
 
-		this.updateInnerAttributes( 'coblocks/menu-item', { showPrice: showPrices } );
+		this.updateInnerAttributes( 'coblocks/food-item', { showPrice: showPrices } );
 	};
 
 	updateStyle = style => {
@@ -138,7 +138,7 @@ class Menu extends Component {
 		setAttributes( { className: updatedClassName } );
 	};
 
-	insertNewMenu = () => {
+	insertNewItem = () => {
 		const { clientId, attributes } = this.props;
 
 		const blockOrder = select( 'core/editor' ).getBlockOrder();
@@ -154,13 +154,13 @@ class Menu extends Component {
 			)
 		);
 
-		const newMenu = wp.blocks.createBlock(
-			'coblocks/menu',
+		const newItem = wp.blocks.createBlock(
+			'coblocks/food-and-drinks',
 			attributes,
 			innerBlocks
 		);
 
-		dispatch( 'core/editor' ).insertBlock( newMenu, insertAtIndex );
+		dispatch( 'core/editor' ).insertBlock( newItem, insertAtIndex );
 	};
 
 	render() {
@@ -195,7 +195,7 @@ class Menu extends Component {
 						templateInsertUpdatesSelection={ false }
 					/>
 					{ ( isSelected || clientId === selectedParentClientId ) && (
-						<MenuAppender onClick={ this.insertNewMenu } />
+						<CustomAppender onClick={ this.insertNewItem } />
 					) }
 				</div>
 			</Fragment>
@@ -214,4 +214,4 @@ const applyWithSelect = withSelect( () => {
 	};
 } );
 
-export default compose( applyWithSelect )( Menu );
+export default compose( applyWithSelect )( FoodItem );

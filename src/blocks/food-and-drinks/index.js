@@ -19,12 +19,12 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const icon = icons.menu;
+const icon = icons.foodAndDrinks;
 
 const settings = {
-	title: __( 'Menu' ),
+	title: __( 'Food & Drinks' ),
 	description: __( 'Display a menu or price list.' ),
-	keywords: [ __( 'restaurant' ), __( 'food' ), __( 'menu' ) ],
+	keywords: [ __( 'restaurant' ), __( 'menu' ) ],
 	edit,
 	save,
 };

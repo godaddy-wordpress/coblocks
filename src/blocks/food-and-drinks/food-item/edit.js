@@ -17,10 +17,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { IconButton, DropZone, Spinner, Icon } = wp.components;
 const { dispatch, select } = wp.data;
-const {
-	RichText,
-	MediaPlaceholder,
-} = wp.blockEditor;
+const { RichText, MediaPlaceholder } = wp.blockEditor;
 const { mediaUpload } = wp.editor;
 const { isBlobURL } = wp.blob;
 
@@ -36,14 +33,14 @@ const handlePlaceholderPlacement = (
 	blockName,
 	blockAttributes = {}
 ) => {
-	const menuClientId = select( 'core/block-editor' ).getBlockRootClientId(
+	const itemClientId = select( 'core/block-editor' ).getBlockRootClientId(
 		childClientId
 	);
 
-	const menuItems = select( 'core/block-editor' ).getBlocksByClientId( menuClientId )[ 0 ]
+	const foodItems = select( 'core/block-editor' ).getBlocksByClientId( itemClientId )[ 0 ]
 		.innerBlocks;
 
-	const placeholders = menuItems.filter(
+	const placeholders = foodItems.filter(
 		item => item.name === blockName && isEmpty( item.attributes )
 	);
 
@@ -57,11 +54,11 @@ const handlePlaceholderPlacement = (
 
 	// Add a placeholder if there are none.
 	if ( placeholders.length === 0 ) {
-		const newMenuItem = wp.blocks.createBlock( blockName, blockAttributes );
+		const newFoodItem = wp.blocks.createBlock( blockName, blockAttributes );
 		dispatch( 'core/editor' ).insertBlocks(
-			newMenuItem,
-			menuItems.length,
-			menuClientId,
+			newFoodItem,
+			foodItems.length,
+			itemClientId,
 			false
 		);
 	}
@@ -76,7 +73,7 @@ const isEmpty = attributes => {
 	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 };
 
-class MenuItem extends Component {
+class FoodAndDrinksEdit extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -91,7 +88,7 @@ class MenuItem extends Component {
 			( ! prevProps.isSelected && this.props.isSelected )
 		) {
 			const { showImage, showPrice } = this.props.attributes;
-			handlePlaceholderPlacement( this.props.clientId, 'coblocks/menu-item', {
+			handlePlaceholderPlacement( this.props.clientId, 'coblocks/food-item', {
 				showImage,
 				showPrice,
 			} );
@@ -130,7 +127,7 @@ class MenuItem extends Component {
 	renderImage() {
 		const { attributes, setAttributes, isSelected } = this.props;
 
-		const classes = classnames( 'wp-block-coblocks-menu-item__figure', {
+		const classes = classnames( 'wp-block-coblocks-food-item__figure', {
 			'is-transient': isBlobURL( attributes.url ),
 			'is-selected': isSelected,
 		} );
@@ -146,7 +143,7 @@ class MenuItem extends Component {
 			<Fragment>
 				<figure className={ classes }>
 					{ isSelected && (
-						<div className="wp-block-coblocks-menu-item__remove-menu">
+						<div className="wp-block-coblocks-food-item__remove-menu">
 							<IconButton
 								icon="no-alt"
 								onClick={ () => setAttributes( { url: '' } ) }
@@ -202,22 +199,22 @@ class MenuItem extends Component {
 						( attributes.url ?
 							this.renderImage() :
 							this.renderPlaceholder() ) }
-					<div className="wp-block-coblocks-menu-item__content">
-						<div className="wp-block-coblocks-menu-item__heading-wrapper">
+					<div className="wp-block-coblocks-food-item__content">
+						<div className="wp-block-coblocks-food-item__heading-wrapper">
 							<RichText
 								value={ attributes.title }
 								tagName="h4"
-								wrapperClassName="wp-block-coblocks-menu-item__heading"
+								wrapperClassName="wp-block-coblocks-food-item__heading"
 								placeholder={ __( 'Add title...' ) }
 								onChange={ title => setAttributes( { title } ) }
 								{ ...richTextAttributes }
 							/>
-							<div className="wp-block-coblocks-menu-item__attributes">
+							<div className="wp-block-coblocks-food-item__attributes">
 								{ isSelected && attributes.title ?
 									<span>
 										<IconButton
 											icon={ icons.spicy }
-											className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy"
+											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicy"
 											onClick={ this.setSpicyTo }
 											label={ __( 'Spicy' ) }
 											isToggled={ attributes.spicy }
@@ -225,14 +222,14 @@ class MenuItem extends Component {
 									</span> :
 									!! attributes.spicy && <Icon
 										icon={ icons.spicy }
-										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy"
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicy"
 									/>
 								}
 								{ isSelected && attributes.title && !! attributes.spicy ?
 									<span>
 										<IconButton
 											icon={ icons.spicy }
-											className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicier"
+											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicier"
 											onClick={ () => setAttributes( { spicier: ! attributes.spicier } ) }
 											label={ __( 'Hot' ) }
 											isToggled={ attributes.spicier }
@@ -240,14 +237,14 @@ class MenuItem extends Component {
 									</span> :
 									!! attributes.spicier && <Icon
 										icon={ icons.spicy }
-										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicier"
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicier"
 									/>
 								}
 								{ isSelected && attributes.title ?
 									<span>
 										<IconButton
 											icon={ icons.vegetarian }
-											className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegetarian"
+											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegetarian"
 											onClick={ () => setAttributes( { vegetarian: ! attributes.vegetarian } ) }
 											label={ __( 'Vegetarian' ) }
 											isToggled={ attributes.vegetarian }
@@ -255,14 +252,14 @@ class MenuItem extends Component {
 									</span> :
 									!! attributes.vegetarian && <Icon
 										icon={ icons.vegetarian }
-										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegetarian"
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegetarian"
 									/>
 								}
 								{ isSelected && attributes.title && ( ! attributes.pescatarian && ! attributes.vegan ) ?
 									<span>
 										<IconButton
 											icon={ icons.glutenFree }
-											className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf"
+											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--gf"
 											onClick={ () => setAttributes( { glutenFree: ! attributes.glutenFree } ) }
 											label={ __( 'Gluten Free' ) }
 											isToggled={ attributes.glutenFree }
@@ -270,7 +267,7 @@ class MenuItem extends Component {
 									</span> :
 									!! attributes.glutenFree && <Icon
 										icon={ icons.glutenFree }
-										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf"
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--gf"
 									/>
 								}
 								{ isSelected && !! attributes.pescatarian ?
@@ -278,7 +275,7 @@ class MenuItem extends Component {
 									<span>
 										<IconButton
 											icon={ icons.pescatarian }
-											className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--pescatarian"
+											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--pescatarian"
 											onClick={ () => setAttributes( { pescatarian: ! attributes.pescatarian } ) }
 											label={ __( 'Pescatarian' ) }
 											isToggled={ attributes.pescatarian }
@@ -286,7 +283,7 @@ class MenuItem extends Component {
 									</span> :
 									!! attributes.pescatarian && <Icon
 										icon={ icons.pescatarian }
-										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--pescatarian"
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--pescatarian"
 									/>
 								}
 								{ isSelected && !! attributes.vegan ?
@@ -294,7 +291,7 @@ class MenuItem extends Component {
 									<span>
 										<IconButton
 											icon={ icons.vegan }
-											className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegan"
+											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegan"
 											onClick={ () => setAttributes( { vegan: ! attributes.vegan } ) }
 											label={ __( 'Vegan' ) }
 											isToggled={ attributes.vegan }
@@ -302,7 +299,7 @@ class MenuItem extends Component {
 									</span> :
 									!! attributes.vegan && <Icon
 										icon={ icons.vegan }
-										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegan"
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegan"
 									/>
 								}
 							</div>
@@ -310,7 +307,7 @@ class MenuItem extends Component {
 						<RichText
 							value={ attributes.description }
 							tagName="p"
-							wrapperClassName="wp-block-coblocks-menu-item__description"
+							wrapperClassName="wp-block-coblocks-food-item__description"
 							placeholder={ __( 'Add description...' ) }
 							onChange={ description => setAttributes( { description } ) }
 							{ ...richTextAttributes }
@@ -319,7 +316,7 @@ class MenuItem extends Component {
 							<RichText
 								value={ attributes.price }
 								tagName="p"
-								wrapperClassName="wp-block-coblocks-menu-item__price"
+								wrapperClassName="wp-block-coblocks-food-item__price"
 								placeholder={ __( '$0.00' ) }
 								onChange={ price => setAttributes( { price } ) }
 								{ ...richTextAttributes }
@@ -332,4 +329,4 @@ class MenuItem extends Component {
 	}
 }
 
-export default MenuItem;
+export default FoodAndDrinksEdit;

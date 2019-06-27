@@ -28,7 +28,7 @@ export default function save( { attributes } ) {
 			itemType="http://schema.org/MenuItem"
 		>
 			{ !! attributes.showImage && attributes.url && (
-				<figure className="wp-block-coblocks-menu-item__figure">
+				<figure className="wp-block-coblocks-food-item__figure">
 					<img
 						src={ attributes.url }
 						alt={ attributes.alt }
@@ -37,44 +37,44 @@ export default function save( { attributes } ) {
 					/>
 				</figure>
 			) }
-			<div className="wp-block-coblocks-menu-item__content">
-				<div className="wp-block-coblocks-menu-item__heading-wrapper">
+			<div className="wp-block-coblocks-food-item__content">
+				<div className="wp-block-coblocks-food-item__heading-wrapper">
 					<RichText.Content
 						tagName="h4"
-						className="wp-block-coblocks-menu-item__heading"
+						className="wp-block-coblocks-food-item__heading"
 						value={ attributes.title }
 						itemprop="name"
 					/>
 					{ ( !! attributes.spicy || !! attributes.vegetarian || !! attributes.glutenFree || !! attributes.pescatarian || !! attributes.vegan ) && (
-						<div className="wp-block-coblocks-menu-item__attributes">
+						<div className="wp-block-coblocks-food-item__attributes">
 							{ !! attributes.spicy &&
 								<span className="hint--top" aria-label={ __( 'Spicy' ) } >
-									<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy" />
+									<Icon icon={ icons.spicy } className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicy" />
 								</span>
 							}
 							{ !! attributes.spicier && !! attributes.spicy &&
 								<span className="hint--top" aria-label={ __( 'Spicier' ) } >
-									<Icon icon={ icons.spicy } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicier" />
+									<Icon icon={ icons.spicy } className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicier" />
 								</span>
 							}
 							{ !! attributes.vegetarian &&
 								<span className="hint--top" aria-label={ __( 'Vegetarian' ) } >
-									<Icon icon={ icons.vegetarian } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--veg" />
+									<Icon icon={ icons.vegetarian } className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--veg" />
 								</span>
 							}
 							{ !! attributes.glutenFree &&
 								<span className="hint--top" aria-label={ __( 'Gluten Free' ) } >
-									<Icon icon={ icons.glutenFree } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--gf" />
+									<Icon icon={ icons.glutenFree } className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--gf" />
 								</span>
 							}
 							{ !! attributes.pescatarian &&
 								<span className="hint--top" aria-label={ __( 'Pescatarian' ) } >
-									<Icon icon={ icons.pescatarian } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--pescatarian" />
+									<Icon icon={ icons.pescatarian } className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--pescatarian" />
 								</span>
 							}
 							{ !! attributes.vegan &&
 								<span className="hint--top" aria-label={ __( 'Vegan' ) } >
-									<Icon icon={ icons.vegan } className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--vegan" />
+									<Icon icon={ icons.vegan } className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegan" />
 								</span>
 							}
 						</div>
@@ -82,13 +82,13 @@ export default function save( { attributes } ) {
 				</div>
 				<RichText.Content
 					tagName="p"
-					className="wp-block-coblocks-menu-item__description"
+					className="wp-block-coblocks-food-item__description"
 					value={ attributes.description }
 					itemprop="description"
 				/>
 				{ !! attributes.showPrice && attributes.price && (
 					<p
-						className="wp-block-coblocks-menu-item__price"
+						className="wp-block-coblocks-food-item__price"
 						itemProp="offers"
 						itemScope
 						itemType="http://schema.org/Offer"

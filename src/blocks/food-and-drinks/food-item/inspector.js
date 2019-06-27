@@ -37,8 +37,8 @@ const Inspector = props => {
 					checked={ attributes.showPrice }
 					onChange={ () => setAttributes( { showPrice: ! attributes.showPrice } ) }
 				/>
-				<div className="components-menu-item-attributes">
-					<p className="components-menu-item-attributes__label">
+				<div className="components-food-item-attributes">
+					<p className="components-food-item-attributes__label">
 						{ __( 'Item Attributes' ) }
 					</p>
 					<CheckboxControl
