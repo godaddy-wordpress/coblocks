@@ -3,11 +3,11 @@
 	"attributes": {
 		"showImages": {
 			"type": "boolean",
-			"default": "false"
+			"default": false
 		},
 		"showPrices": {
 			"type": "boolean",
-			"default": "true"
+			"default": true
 		}
 	}
 }

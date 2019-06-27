@@ -80,15 +80,10 @@ const attributes = {
 	},
 	showImage: {
 		type: 'boolean',
-		source: 'attribute',
-		selector: 'img',
-		attribute: 'src',
 		default: false,
 	},
 	showPrice: {
 		type: 'boolean',
-		source: 'html',
-		selector: '.wp-block-coblocks-food-item__price span',
 		default: true,
 	},
 };
