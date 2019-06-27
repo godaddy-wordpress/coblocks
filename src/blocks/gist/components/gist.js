@@ -27,6 +27,7 @@ export default class Gist extends Component {
 			loading: true, // We have not fetched the Gist yet.
 			gistContent: '' // Raw HTML of the Gist.
 		}
+		this._handleScriptError = this._handleScriptError.bind(this);
 	}
 
 	// Each time we request a new Gist, we have to provide a new
@@ -88,7 +89,15 @@ export default class Gist extends Component {
 		return `https://gist.github.com/${id}.json?callback=${gistCallback}${file}`
 	}
 
+	_handleScriptError () {
+	  this.setState({
+			loading: false,
+			gistContent: __('Error Loading Gist! URL does not resolve to a valid Gist.')
+		})
+	}
+
 	_buildGist () {
+		const { _handleScriptError } = this;
 		const gistCallback = Gist.__nextGist()
 		window[gistCallback] = (gist) => {
 			Gist.__addStylesheet(gist.stylesheet);
@@ -101,6 +110,9 @@ export default class Gist extends Component {
 		let gistScript = document.createElement('script');
 		gistScript.type = 'text/javascript';
 		gistScript.src = this._tranformedURL(gistCallback);
+		gistScript.onerror = function (err) {
+		  _handleScriptError();
+		}
 		document.head.appendChild(gistScript);
 	}
 
