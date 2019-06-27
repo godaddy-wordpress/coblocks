@@ -68,7 +68,7 @@ class Edit extends Component {
 		}
 
 		if ( ! this.props.isSelected && ! this.props.attributes.pinned && this.state.address && Object.keys( this.state.address ).length ) {
-			this.props.setAttributes( { pinned: true } );
+			this.props.setAttributes( { address: this.state.address, pinned: true } );
 		}
 	}
 
