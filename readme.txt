@@ -36,6 +36,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Click to Tweet Block
 * Dynamic Separator Block
 * Features Block
+* Food & Drinks Block (New!)
 * Form Block (New!)
 * Gif Block
 * GitHub Gist Block
