@@ -27,7 +27,6 @@ export default class Gist extends Component {
 			loading: true, // We have not fetched the Gist yet.
 			gistContent: '' // Raw HTML of the Gist.
 		}
-		this._handleScriptError = this._handleScriptError.bind(this);
 	}
 
 	// Each time we request a new Gist, we have to provide a new
@@ -52,7 +51,6 @@ export default class Gist extends Component {
 			this.stylesheetAdded = true;
 		}
 	}
-
 
 	componentDidMount () {
 		// Request the Gist iframe.
@@ -91,30 +89,19 @@ export default class Gist extends Component {
 	}
 
 	_buildGist () {
-		const { _handleScriptError } = this;
-
 		const gistCallback = Gist.__nextGist()
-			window[gistCallback] = (gist) => {
+		window[gistCallback] = (gist) => {
 			Gist.__addStylesheet(gist.stylesheet);
 			this.setState({
 				loading: false,
 				gistContent: gist.div
 			});
 		}
+
 		let gistScript = document.createElement('script');
 		gistScript.type = 'text/javascript';
 		gistScript.src = this._tranformedURL(gistCallback);
-		gistScript.onerror = function (err) {
-			_handleScriptError();
-		}
-			document.head.appendChild(gistScript);
-	}
-
-	_handleScriptError () {
-		this.setState({
-			loading: false,
-			gistContent: `Error Loading Gist! \nURL does not resolve to a valid Gist.`
-		})
+		document.head.appendChild(gistScript);
 	}
 
 	render () {
