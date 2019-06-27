@@ -66,6 +66,10 @@ class Edit extends Component {
 		if ( !! this.state.apiKey && ! this.props.attributes.hasApiKey ) {
 			this.props.setAttributes( { hasApiKey: true } );
 		}
+
+		if ( ! this.props.isSelected && Object.keys( this.state.address ).length ) {
+			this.props.setAttributes( { pinned: true } );
+		}
 	}
 
 	updateApiKey = ( apiKey = this.state.apiKey ) => {
@@ -199,7 +203,7 @@ class Edit extends Component {
 
 		const GoogleMapIframeRender = (
 			<Fragment>
-				<div style={ { width: '100%', height, position: 'absolute' } } />
+				<div style={ { width: '100%', height, position: 'absolute' } } onDoubleClick={ () => setAttributes( { pinned: false } ) } />
 				<div className="iframe__overflow-wrapper">
 					<iframe
 						title={ __( 'Google Map' ) }
@@ -257,7 +261,9 @@ class Edit extends Component {
 						} }
 					>
 						{ !! this.state.apiKey ?
-							<GoogleMapApiRender address={ address } /> :
+							<div style={ { width: '100%', height, position: 'absolute' } } onDoubleClick={ () => setAttributes( { pinned: false } ) }>
+								<GoogleMapApiRender address={ address } />
+							</div> :
 							GoogleMapIframeRender
 						}
 					</ResizableBox>
