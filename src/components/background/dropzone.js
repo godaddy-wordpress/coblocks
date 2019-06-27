@@ -8,7 +8,7 @@ import { ALLOWED_BG_MEDIA_TYPES, BLOCKS_WITH_AUTOPADDING } from './';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { mediaUpload } = wp.editor;
+const { mediaUpload } = wp.blockEditor;
 const { DropZone } = wp.components;
 
 class BackgroundDropZone extends Component {

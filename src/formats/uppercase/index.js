@@ -9,7 +9,7 @@ import formatIcons from './icons';
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { toggleFormat } = wp.richText;
-const { RichTextToolbarButton, RichTextShortcut } = wp.editor;
+const { RichTextToolbarButton, RichTextShortcut } = wp.blockEditor;
 
 /**
  * Block constants

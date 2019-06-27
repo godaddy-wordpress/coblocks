@@ -16,7 +16,7 @@ import VisualDropdown from '../../../components/visual-dropdown/';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { BlockControls } = wp.editor;
+const { BlockControls } = wp.blockEditor;
 const { Toolbar, DropdownMenu } = wp.components;
 
 class Controls extends Component {

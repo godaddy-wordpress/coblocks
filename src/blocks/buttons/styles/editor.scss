@@ -1,4 +1,9 @@
 .wp-block[data-type="coblocks/buttons"] {
+	[data-block] {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+
 	.wp-block-coblocks-buttons {
 		position: relative;
 

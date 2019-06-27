@@ -17,7 +17,7 @@ import Controls from './controls';
 const { __, _x } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 const { Spinner } = wp.components;
 
 /**
