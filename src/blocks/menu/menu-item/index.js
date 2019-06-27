@@ -105,6 +105,8 @@ const settings = {
 	supports: {
 		inserter: false,
 		customClassName: false,
+		reusable: false,
+		html: false,
 	},
 
 	parent: [ 'coblocks/menu' ],
