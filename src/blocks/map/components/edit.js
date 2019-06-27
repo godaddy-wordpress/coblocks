@@ -67,7 +67,7 @@ class Edit extends Component {
 			this.props.setAttributes( { hasApiKey: true } );
 		}
 
-		if ( ! this.props.isSelected && Object.keys( this.state.address ).length ) {
+		if ( ! this.props.isSelected && ! this.props.attributes.pinned && this.state.address && Object.keys( this.state.address ).length ) {
 			this.props.setAttributes( { pinned: true } );
 		}
 	}
