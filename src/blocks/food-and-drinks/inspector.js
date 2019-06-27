@@ -56,14 +56,8 @@ const Inspector = props => {
 					) ) }
 				</div>
 			</PanelBody>
+
 			<PanelBody title={ __( 'Food & Drinks Settings' ) } initialOpen={ true }>
-				<RangeControl
-					label={ __( 'Columns' ) }
-					value={ attributes.columns }
-					onChange={ onSetColumns }
-					min={ 2 }
-					max={ 3 }
-				/>
 				<ToggleControl
 					label={ __( 'Images' ) }
 					help={
