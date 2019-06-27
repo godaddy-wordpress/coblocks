@@ -107,24 +107,24 @@ class MenuItem extends Component {
 		} );
 	}
 
-	setSpicyTo( value ) {
+	setSpicyTo() {
 		const { attributes, setAttributes } = this.props;
 
 		if ( !! attributes.spicier ) {
-			setAttributes( { spicier: ! attributes.spicier  } );
+			setAttributes( { spicier: ! attributes.spicier } );
 		}
 
-		setAttributes( { spicy: ! attributes.spicy  } );
+		setAttributes( { spicy: ! attributes.spicy } );
 	}
 
 	setHotTo() {
 		const { attributes, setAttributes } = this.props;
 
 		if ( ! attributes.spicy ) {
-			setAttributes( { spicy: ! attributes.spicier  } );
+			setAttributes( { spicy: ! attributes.spicier } );
 		}
 
-		setAttributes( { spicier: ! attributes.spicier  } );
+		setAttributes( { spicier: ! attributes.spicier } );
 	}
 
 	renderImage() {
@@ -158,7 +158,7 @@ class MenuItem extends Component {
 					) }
 					{ dropZone }
 					{ isBlobURL( attributes.url ) && <Spinner /> }
-					<img src={ attributes.url } alt={ attributes.alt } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined, }}/>
+					<img src={ attributes.url } alt={ attributes.alt } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined } } />
 				</figure>
 			</Fragment>
 		);
@@ -190,7 +190,7 @@ class MenuItem extends Component {
 		return (
 			<Fragment>
 				<InspectorControls { ...this.props }
-					setSpicyTo={ this.setSpicyTo}
+					setSpicyTo={ this.setSpicyTo }
 					setHotTo={ this.setHotTo }
 				/>
 				<div
@@ -216,12 +216,12 @@ class MenuItem extends Component {
 								{ isSelected && attributes.title ?
 									<span>
 										<IconButton
-										icon={ icons.spicy }
-										className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy"
-										onClick={ this.setSpicyTo }
-										label={ __( 'Spicy' ) }
-										isToggled={ attributes.spicy }
-									/>
+											icon={ icons.spicy }
+											className="wp-block-coblocks-menu-item__attribute wp-block-coblocks-menu-item__attribute--spicy"
+											onClick={ this.setSpicyTo }
+											label={ __( 'Spicy' ) }
+											isToggled={ attributes.spicy }
+										/>
 									</span> :
 									!! attributes.spicy && <Icon
 										icon={ icons.spicy }

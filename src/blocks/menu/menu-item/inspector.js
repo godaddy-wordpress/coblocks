@@ -4,10 +4,9 @@
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { PanelBody, ToggleControl, CheckboxControl, FocalPointPicker, ExternalLink, TextareaControl } = wp.components;
-const { InspectorControls, BlockIcon } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 
 const Inspector = props => {
-
 	const {
 		attributes,
 		setAttributes,
@@ -38,8 +37,8 @@ const Inspector = props => {
 					checked={ attributes.showPrice }
 					onChange={ () => setAttributes( { showPrice: ! attributes.showPrice } ) }
 				/>
-				<div className='components-menu-item-attributes'>
-					<p className='components-menu-item-attributes__label'>
+				<div className="components-menu-item-attributes">
+					<p className="components-menu-item-attributes__label">
 						{ __( 'Item Attributes' ) }
 					</p>
 					<CheckboxControl
