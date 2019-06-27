@@ -1,20 +1,6 @@
 .wp-block-coblocks-accordion-item {
-	margin-bottom: 0;
-
-	.editor-block-list__block-edit {
-		margin-bottom: 13px !important;
-		margin-top: 14px !important;
-	}
-
-	.editor-inner-blocks {
-		margin-left: -2px;
-	}
-
+	// Remove hover and focus, as the title is now a text field.
 	&__title {
-		cursor: inherit;
-		margin-bottom: 0 !important;
-		padding: 10px 15px !important;
-
 		&::after {
 			display: none;
 		}
@@ -28,7 +14,12 @@
 		border-radius: $accordion-border-radius $accordion-border-radius 0 0;
 	}
 
-	&__content {
-		padding: 0 20px;
+	// Set proper margin for the first and last item within the accordion item.
+	.wp-block:first-of-type .editor-block-list__block-edit {
+		margin-top: 4px;
+	}
+
+	.wp-block:nth-last-child(2) .editor-block-list__block-edit {
+		margin-bottom: 4px;
 	}
 }
