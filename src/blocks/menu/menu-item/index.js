@@ -70,6 +70,9 @@ const attributes = {
 		selector: '.wp-block-coblocks-menu-item__price span',
 		default: '',
 	},
+	focalPoint: {
+		type: 'object',
+	},
 	glutenFree: {
 		type: 'boolean',
 	},

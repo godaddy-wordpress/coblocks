@@ -33,6 +33,7 @@ export default function save( { attributes } ) {
 						src={ attributes.imageUrl }
 						alt={ attributes.imageAlt }
 						itemProp="image"
+						style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined } }
 					/>
 				</figure>
 			) }

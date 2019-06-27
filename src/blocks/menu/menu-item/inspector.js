@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { PanelBody, ToggleControl, CheckboxControl } = wp.components;
+const { PanelBody, ToggleControl, CheckboxControl, FocalPointPicker } = wp.components;
 const { InspectorControls, BlockIcon } = wp.blockEditor;
 
 const Inspector = props => {
@@ -73,6 +73,14 @@ const Inspector = props => {
 						onChange={ () => setAttributes( { vegetarian: ! attributes.vegetarian } ) }
 					/>
 				</div>
+				{ attributes.imageUrl &&
+					<FocalPointPicker
+						label={ __( 'Focal Point' ) }
+						url={ attributes.imageUrl }
+						value={ attributes.focalPoint }
+						onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
+					/>
+				}
 			</PanelBody>
 		</InspectorControls>
 	);
