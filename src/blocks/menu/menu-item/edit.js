@@ -36,11 +36,11 @@ const handlePlaceholderPlacement = (
 	blockName,
 	blockAttributes = {}
 ) => {
-	const menuClientId = select( 'core/editor' ).getBlockRootClientId(
+	const menuClientId = select( 'core/block-editor' ).getBlockRootClientId(
 		childClientId
 	);
 
-	const menuItems = select( 'core/editor' ).getBlocksByClientId( menuClientId )[ 0 ]
+	const menuItems = select( 'core/block-editor' ).getBlocksByClientId( menuClientId )[ 0 ]
 		.innerBlocks;
 
 	const placeholders = menuItems.filter(
@@ -48,7 +48,7 @@ const handlePlaceholderPlacement = (
 	);
 
 	// Remove trailing placholders if there are more than one.
-	dispatch( 'core/editor' ).removeBlocks(
+	dispatch( 'core/block-editor' ).removeBlocks(
 		placeholders
 			.filter( ( item, index ) => item.clientId !== childClientId && index !== 0 )
 			.map( item => item.clientId ),
