@@ -9,13 +9,13 @@ import includes from 'lodash/includes';
  */
 import './editor.scss';
 import './style.scss';
-import Edit from './edit';
+import edit from './edit';
 import icons from './icons';
 import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 import dividers from './dividers';
-import Transforms from './transformations';
-import Deprecated from './deprecations';
-import { Save } from './save';
+import transforms from './transformations';
+import deprecated from './deprecations';
+import { save } from './save';
 import metadata from './block.json';
 
 /**
@@ -77,11 +77,11 @@ const keywords = [
 
 const settings = {
 
-	title: title,
+	title,
 
 	description: __( 'Add a shape divider to visually distinquish page sections.' ),
 
-	keywords: keywords,
+	keywords,
 
 	attributes: {...attributes, ...ResponsiveBaseControlAttributes},
 
@@ -101,13 +101,13 @@ const settings = {
 		{ name: 'pointed', label: _x( 'Pointed', 'block style' ) },
 	],
 
-	transforms: Transforms,
+	transforms,
 
-	edit: Edit,
+	edit,
 
-	save: Save,
+	save,
 
-	deprecated: Deprecated,
+	deprecated,
 };
 
 export { name, title, icon, settings, attributes, metadata };

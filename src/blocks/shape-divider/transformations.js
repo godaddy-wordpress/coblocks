@@ -2,7 +2,7 @@ const name = 'shape-divider';
 
 import attributes from './'
 
-export const Transforms = {
+export const transforms = {
 		from: [
 			// Default.
 			...[ ':divider', ':top-divider' ].map( ( prefix ) => ( {

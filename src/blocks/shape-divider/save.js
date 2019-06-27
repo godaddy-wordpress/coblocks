@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 const { getColorClassName } = wp.blockEditor;
 
-export function Save ( { attributes, className } ) {
+export function save ( { attributes, className } ) {
 
 		const {
 			backgroundColor,
