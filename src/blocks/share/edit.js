@@ -21,7 +21,7 @@ const { Component, Fragment } = wp.element;
 /**
  * Block edit function
  */
-class Edit extends Component {
+class edit extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -184,4 +184,4 @@ class Edit extends Component {
 
 export default compose( [
 	applyWithColors,
-] )( Edit );
+] )( edit );
