@@ -15,7 +15,7 @@ const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.blockEditor;
-const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles } = wp.components;
+const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles, CheckboxControl } = wp.components;
 
 const { getComputedStyle } = window;
 
@@ -150,53 +150,49 @@ class Inspector extends Component {
 								className="components-coblocks-inspector__social-button-size"
 							/>
 						}
-					</PanelBody>
-					<PanelBody
-						title={ __( 'Icon Settings' ) }
-						initialOpen={ false }
-					>
 						<p>{ __( ' Toggle the sharing links to display from the following social platforms.' ) }</p>
-						<ToggleControl
+						<CheckboxControl
 							label={ __( 'Twitter' ) }
 							checked={ !! twitter }
 							onChange={ () => setAttributes( {  twitter: ! twitter } ) }
 						/>
-						<ToggleControl
+						<CheckboxControl
 							label={ __( 'Facebook' ) }
 							checked={ !! facebook }
 							onChange={ () => setAttributes( {  facebook: ! facebook } ) }
 						/>
-						<ToggleControl
+						<CheckboxControl
 							label={ __( 'Pinterest' ) }
 							checked={ !! pinterest }
 							onChange={ () => setAttributes( {  pinterest: ! pinterest } ) }
 						/>
-						<ToggleControl
+						<CheckboxControl
 							label={ __( 'LinkedIn' ) }
 							checked={ !! linkedin }
 							onChange={ () => setAttributes( {  linkedin: ! linkedin } ) }
 						/>
-						<ToggleControl
+						<CheckboxControl
 							label={ __( 'Email' ) }
 							checked={ !! email }
 							onChange={ () => setAttributes( {  email: ! email } ) }
 						/>
-						<ToggleControl
+						<CheckboxControl
 							label={ __( 'Tumblr' ) }
 							checked={ !! tumblr }
 							onChange={ () => setAttributes( {  tumblr: ! tumblr } ) }
 						/>
-						<ToggleControl
+						<CheckboxControl
 							label={ __( 'Google' ) }
 							checked={ !! google }
 							onChange={ () => setAttributes( {  google: ! google } ) }
 						/>
-						<ToggleControl
+						<CheckboxControl
 							label={ __( 'Reddit' ) }
 							checked={ !! reddit }
 							onChange={ () => setAttributes( {  reddit: ! reddit } ) }
 						/>
 					</PanelBody>
+
 					{ ! hasColors &&
 						<PanelColorSettings
 							title={ __( 'Color Settings' ) }
