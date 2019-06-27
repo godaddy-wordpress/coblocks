@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { PanelBody, ToggleControl, CheckboxControl, FocalPointPicker } = wp.components;
+const { PanelBody, ToggleControl, CheckboxControl, FocalPointPicker, ExternalLink, TextareaControl } = wp.components;
 const { InspectorControls, BlockIcon } = wp.blockEditor;
 
 const Inspector = props => {
@@ -73,15 +73,30 @@ const Inspector = props => {
 						onChange={ () => setAttributes( { vegetarian: ! attributes.vegetarian } ) }
 					/>
 				</div>
-				{ attributes.imageUrl &&
+			</PanelBody>
+			{ attributes.imageUrl &&
+				<PanelBody title={ __( 'Image Settings' ) } initialOpen={ false }>
+					<TextareaControl
+						label={ __( 'Alt Text (Alternative Text)' ) }
+						value={ attributes.imageAlt }
+						onChange={ ( value ) => setAttributes( { imageAlt: value } ) }
+						help={
+							<Fragment>
+								<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
+									{ __( 'Describe the purpose of the image' ) }
+								</ExternalLink>
+								{ __( 'Leave empty if the image is purely decorative.' ) }
+							</Fragment>
+						}
+					/>
 					<FocalPointPicker
 						label={ __( 'Focal Point' ) }
 						url={ attributes.imageUrl }
 						value={ attributes.focalPoint }
 						onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
 					/>
-				}
-			</PanelBody>
+				</PanelBody>
+			}
 		</InspectorControls>
 	);
 };

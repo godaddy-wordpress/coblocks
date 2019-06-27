@@ -161,7 +161,7 @@ class MenuItem extends Component {
 					) }
 					{ dropZone }
 					{ isBlobURL( attributes.imageUrl ) && <Spinner /> }
-					<img src={ attributes.imageUrl } alt={ '' } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined, }}/>
+					<img src={ attributes.imageUrl } alt={ attributes.imageAlt } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined, }}/>
 				</figure>
 			</Fragment>
 		);
