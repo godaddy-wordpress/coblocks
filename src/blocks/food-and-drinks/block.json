@@ -8,6 +8,10 @@
 		"showPrices": {
 			"type": "boolean",
 			"default": true
+		},
+		"columns": {
+			"type": "number",
+			"default": 2
 		}
 	}
 }

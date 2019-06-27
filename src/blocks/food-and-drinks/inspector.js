@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
-const { PanelBody, ToggleControl } = wp.components;
+const { PanelBody, ToggleControl, RangeControl } = wp.components;
 const { InspectorControls } = wp.blockEditor;
 const { ENTER, SPACE } = wp.keycodes;
 
@@ -19,6 +19,7 @@ const Inspector = props => {
 		onToggleImages,
 		onTogglePrices,
 		onUpdateStyle,
+		onSetColumns,
 	} = props;
 
 	return (
@@ -55,8 +56,14 @@ const Inspector = props => {
 					) ) }
 				</div>
 			</PanelBody>
-
 			<PanelBody title={ __( 'Food & Drinks Settings' ) } initialOpen={ true }>
+				<RangeControl
+					label={ __( 'Columns' ) }
+					value={ attributes.columns }
+					onChange={ onSetColumns }
+					min={ 2 }
+					max={ 3 }
+				/>
 				<ToggleControl
 					label={ __( 'Images' ) }
 					help={

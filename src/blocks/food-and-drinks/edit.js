@@ -125,6 +125,12 @@ class FoodItem extends Component {
 		this.updateInnerAttributes( 'coblocks/food-item', { showPrice: showPrices } );
 	};
 
+	setColumns = ( value ) => {
+		const { attributes, setAttributes } = this.props;
+
+		setAttributes( { columns: parseInt( value ) } );
+	};
+
 	updateStyle = style => {
 		const { className, attributes, setAttributes } = this.props;
 
@@ -183,6 +189,7 @@ class FoodItem extends Component {
 					onToggleImages={ this.toggleImages }
 					onTogglePrices={ this.togglePrices }
 					onUpdateStyle={ this.updateStyle }
+					onSetColumns={ this.setColumns }
 				/>
 				<div
 					className={ classnames( className, {
