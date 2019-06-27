@@ -15,13 +15,11 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { IconButton, Toolbar, DropZone, Spinner, Icon } = wp.components;
+const { IconButton, DropZone, Spinner, Icon } = wp.components;
 const { dispatch, select } = wp.data;
 const {
 	RichText,
 	MediaPlaceholder,
-	MediaUpload,
-	BlockControls,
 } = wp.blockEditor;
 const { mediaUpload } = wp.editor;
 const { isBlobURL } = wp.blob;
@@ -119,7 +117,7 @@ class MenuItem extends Component {
 		setAttributes( { spicy: ! attributes.spicy  } );
 	}
 
-	setHotTo( value ) {
+	setHotTo() {
 		const { attributes, setAttributes } = this.props;
 
 		if ( ! attributes.spicy ) {
@@ -146,7 +144,6 @@ class MenuItem extends Component {
 
 		return (
 			<Fragment>
-				{ this.renderToolbarEditButton() }
 				<figure className={ classes }>
 					{ isSelected && (
 						<div className="wp-block-coblocks-menu-item__remove-menu">
@@ -179,31 +176,6 @@ class MenuItem extends Component {
 				} }
 				onSelect={ el => setAttributes( { url: el.url, alt: el.alt } ) }
 			/>
-		);
-	}
-
-	renderToolbarEditButton() {
-		const { setAttributes } = this.props;
-		return (
-			<BlockControls>
-				<Toolbar>
-					<MediaUpload
-						allowedTypes={ [ 'image' ] }
-						multiple={ false }
-						onSelect={ media =>
-							setAttributes( { url: media.url, alt: media.alt } )
-						}
-						render={ ( { open } ) => (
-							<IconButton
-								className="components-toolbar__control"
-								label={ __( 'Edit media' ) }
-								icon="edit"
-								onClick={ open }
-							/>
-						) }
-					/>
-				</Toolbar>
-			</BlockControls>
 		);
 	}
 
