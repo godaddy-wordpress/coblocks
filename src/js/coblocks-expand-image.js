@@ -30,7 +30,7 @@
 		$.each(images, function( i, img ) {
 			imagePreloader['img-' + i] = new Image();
 			imagePreloader['img-' + i].src = img.attributes[ 4 ].value;
-		})
+		});
 
 		index = Number( e.target.attributes[ 5 ].value );
 		wrapper.css( 'display', 'flex' );
@@ -64,8 +64,8 @@
 	function changeImage(index) {
 		$.each(images, function( i, img ) {
 			if ( img.attributes[ 5 ].value == index ) {
-				wrapperBackground.css( 'background', 'url(' + img.attributes[ 4 ].value + ')' );
-				image.attr( 'src', img.attributes[ 4 ].value );
+				wrapperBackground.css( 'background', 'url(' + imagePreloader['img-' + i].src + ')' );
+				image.attr( 'src', imagePreloader['img-' + i].src );
 				counter.html( ( Number( img.attributes[ 5 ].value ) + 1 ) + ' / ' + images.length );
 			}
 		});
