@@ -1,0 +1,13 @@
+{
+	"name": "menu",
+	"attributes": {
+		"showImages": {
+			"type": "boolean",
+			"default": "false"
+		},
+		"showPrices": {
+			"type": "boolean",
+			"default": "true"
+		}
+	}
+}

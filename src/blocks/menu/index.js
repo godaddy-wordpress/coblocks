@@ -4,8 +4,9 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 
-import icons from './icons';
 import edit from './edit';
+import icons from './icons';
+import metadata from './block.json';
 import save from './save';
 
 /**
@@ -16,31 +17,16 @@ const { __ } = wp.i18n;
 /**
  * Block constants.
  */
-const name = 'menu';
-
-const title = __( 'Menu' );
+const { name } = metadata;
 
 const icon = icons.menu;
 
-const keywords = [ __( 'restaurant' ), __( 'food' ), __( 'services' ) ];
-
-const attributes = {
-	showImages: { type: 'boolean', default: false },
-	showPrices: { type: 'boolean', default: true },
-};
-
 const settings = {
-	title,
-
+	title: __( 'Menu' ),
 	description: __( 'Display a menu or price list.' ),
-
-	keywords,
-
-	attributes,
-
+	keywords: [ __( 'restaurant' ), __( 'food' ), __( 'menu' ) ],
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { metadata, name, icon, settings };
