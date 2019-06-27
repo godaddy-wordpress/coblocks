@@ -26,6 +26,12 @@ const settings = {
 	description: __( 'Display a menu or price list.' ),
 	keywords: [ __( 'restaurant' ), __( 'menu' ) ],
 	attributes: metadata.attributes,
+	supports: {
+		align: [ 'wide' ],
+	},
+	getEditWrapperProps( attributes ) {
+		return { 'data-columns': attributes.columns };
+	},
 	edit,
 	save,
 };
