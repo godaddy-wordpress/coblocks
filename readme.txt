@@ -119,6 +119,20 @@ Please reach out via the contact form at the bottom right of [our website](https
 
 == Changelog ==
 
+= 1.11.0 =
+* New: Support for Gutenberg 6.0 🎊
+* New: Add new Food & Drinks block for restaurants and eateries to create menus with
+* New: Add support for individual gallery links for images [Stacked and Masonry blocks]
+* New: Add support for opening gallery links in a new tab [Stacked and Masonry blocks]
+* New: Add new category in the block inserter for gallery blocks
+* New: Add filter to nest Getting Started page in an admin parent menu
+* New: Add support for double-clicking a rendered map to bring up the location editor [Map block]
+* Tweak: Improve Gallery Block Icons
+* Tweak: Rename the "Social" block to the "Share" block [Share block]
+* Tweak: Update Facebook icon to new brand guidelines [Share block]
+* Tweak: Improved Row Block selected state in older versions of Gutenberg
+* Fix: Resole duplicate Google map script enqueued in editor [Map block]
+
 = 1.10.0 =
 * New: Add easy mode to the Google Map block without an API key requirement
 * New: Add reCAPCHTA support to the Form block
