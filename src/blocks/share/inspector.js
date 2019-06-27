@@ -150,7 +150,7 @@ class Inspector extends Component {
 								className="components-coblocks-inspector__social-button-size"
 							/>
 						}
-						<p>{ __( ' Toggle the sharing links to display from the following social platforms.' ) }</p>
+						<p>{ __( 'Icons' ) }</p>
 						<CheckboxControl
 							label={ __( 'Twitter' ) }
 							checked={ !! twitter }
