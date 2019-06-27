@@ -56,15 +56,10 @@
 		},
 		"showImage": {
 			"type": "boolean",
-			"source": "attribute",
-			"selector": "img",
-			"attribute": "src",
 			"default": "false"
 		},
-		"showImage": {
+		"showPrice": {
 			"type": "boolean",
-			"source": "html",
-			"selector": ".wp-block-coblocks-menu-item__price span",
 			"default": "true"
 		}
 	}

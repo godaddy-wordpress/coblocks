@@ -25,6 +25,7 @@ const settings = {
 	title: __( 'Menu' ),
 	description: __( 'Display a menu or price list.' ),
 	keywords: [ __( 'restaurant' ), __( 'food' ), __( 'menu' ) ],
+	attributes: metadata.attributes,
 	edit,
 	save,
 };
