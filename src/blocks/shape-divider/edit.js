@@ -11,8 +11,8 @@ import Controls from './controls';
 import Inspector from './inspector';
 import applyWithColors from './colors';
 import dividers from './dividers';
-import { getDividerFromStyle } from '.././';
-import InlineColorPicker from '../../../components/inline-color-picker/';
+import { getDividerFromStyle } from './';
+import InlineColorPicker from '../../components/inline-color-picker/';
 
 /**
  * WordPress dependencies
@@ -25,7 +25,7 @@ const { ResizableBox } = wp.components;
 /**
  * Block edit function
  */
-class Edit extends Component {
+class edit extends Component {
 
 	constructor() {
 		super( ...arguments );
@@ -318,4 +318,4 @@ class Edit extends Component {
 
 export default compose( [
 	applyWithColors,
-] )( Edit );
+] )( edit );

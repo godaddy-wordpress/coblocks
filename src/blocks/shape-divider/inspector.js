@@ -2,8 +2,8 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import OrientationControl from '../../../components/orientation/';
-import ResponsiveBaseControl from '../../../components/responsive-base-control/';
+import OrientationControl from '../../components/orientation';
+import ResponsiveBaseControl from '../../components/responsive-base-control';
 
 /**
  * WordPress dependencies

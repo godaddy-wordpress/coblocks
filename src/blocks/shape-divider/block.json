@@ -1,0 +1,71 @@
+{
+    "name": "shape-divider",
+    "category": "layout",
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "full"
+        },
+        "height": {
+            "type": "number",
+            "default": 100
+        },
+        "shapeHeight": {
+            "type": "number",
+            "default": 100
+        },
+        "shapeHeightMobile": {
+            "type": "number"
+        },
+        "shapeHeightTablet": {
+            "type": "number"
+        },
+        "backgroundHeight": {
+            "type": "number",
+            "default": 50
+        },
+        "backgroundHeightMobile": {
+            "type": "number"
+        },
+        "backgroundHeightTablet": {
+            "type": "number"
+        },
+        "syncHeightAlt": {
+            "type": "boolean",
+            "default": true
+        },
+        "verticalFlip": {
+            "type": "boolean",
+            "default": false
+        },
+        "horizontalFlip": {
+            "type": "boolean",
+            "default": false
+        },
+        "color": {
+            "type": "string"
+        },
+        "customColor": {
+            "type": "string",
+            "default": "#111"
+        },
+        "backgroundColor": {
+            "type": "string"
+        },
+        "customBackgroundColor": {
+            "type": "string"
+        },
+        "noBottomMargin": {
+            "type": "boolean",
+            "default": true
+        },
+        "noTopMargin": {
+            "type": "boolean",
+            "default": true
+        },
+        "justAdded": {
+            "type": "boolean",
+            "default": true
+        }
+    }
+}
