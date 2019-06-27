@@ -56,11 +56,11 @@
 		},
 		"showImage": {
 			"type": "boolean",
-			"default": "false"
+			"default": false
 		},
 		"showPrice": {
 			"type": "boolean",
-			"default": "true"
+			"default": true
 		}
 	}
 }
