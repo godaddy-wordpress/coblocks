@@ -1,4 +1,4 @@
-import { getDividerFromStyle, attributes } from './';
+import { getDividerFromStyle, attributes } from './'
 
 export const deprecated = [
 		{

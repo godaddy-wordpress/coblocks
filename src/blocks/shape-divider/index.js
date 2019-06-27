@@ -9,13 +9,13 @@ import includes from 'lodash/includes';
  */
 import './editor.scss';
 import './style.scss';
-import edit from './edit';
+import Edit from './edit';
 import icons from './icons';
 import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 import dividers from './dividers';
-import transforms from './transformations';
-import deprecated from './deprecations';
-import { save } from './save';
+import Transforms from './transformations';
+import Deprecated from './deprecations';
+import { Save } from './save';
 import metadata from './block.json';
 
 /**
@@ -62,10 +62,7 @@ export function getDividerFromStyle( className ) {
 /**
  * Block constants
  */
-const { name } = metadata;
-
-let { attributes } = metadata;
-attributes = { ...attributes, ...ResponsiveBaseControlAttributes }
+const { name, attributes } = metadata;
 
 const title = __( 'Shape Divider' );
 
@@ -80,13 +77,13 @@ const keywords = [
 
 const settings = {
 
-	title,
+	title: title,
 
 	description: __( 'Add a shape divider to visually distinquish page sections.' ),
 
-	keywords,
+	keywords: keywords,
 
-	attributes,
+	attributes: {attributes, ...ResponsiveBaseControlAttributes},
 
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -104,13 +101,13 @@ const settings = {
 		{ name: 'pointed', label: _x( 'Pointed', 'block style' ) },
 	],
 
-	transforms,
+	transforms: Transforms,
 
-	edit,
+	edit: Edit,
 
-	save,
+	save: Save,
 
-	deprecated,
+	deprecated: Deprecated,
 };
 
 export { name, title, icon, settings, attributes, metadata };
