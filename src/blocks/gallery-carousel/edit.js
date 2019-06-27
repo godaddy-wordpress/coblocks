@@ -214,7 +214,6 @@ class GalleryCarouselEdit extends Component {
 		const innerStyles = {
 			...BackgroundStyles( attributes ),
 			backgroundColor: backgroundColor.color,
-			'is-selected': isSelected,
 		};
 
 		const captionStyles = {

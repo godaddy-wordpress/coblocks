@@ -21,7 +21,8 @@ import MediaContainer from './media-container';
 const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InnerBlocks, mediaUpload } = wp.blockEditor;
+const { InnerBlocks } = wp.blockEditor;
+const { mediaUpload } = wp.editor;
 const { Spinner } = wp.components;
 const { isBlobURL } = wp.blob;
 
