@@ -62,7 +62,10 @@ export function getDividerFromStyle( className ) {
 /**
  * Block constants
  */
-const { name, attributes } = metadata;
+const { name } = metadata;
+
+let { attributes } = metadata;
+attributes = { ...attributes, ...ResponsiveBaseControlAttributes }
 
 const title = __( 'Shape Divider' );
 
@@ -83,7 +86,7 @@ const settings = {
 
 	keywords,
 
-	attributes: {...attributes, ...ResponsiveBaseControlAttributes},
+	attributes,
 
 	supports: {
 		align: [ 'wide', 'full' ],
