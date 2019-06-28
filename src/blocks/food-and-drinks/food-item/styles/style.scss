@@ -1,0 +1,134 @@
+.wp-block-coblocks-food-item {
+	flex: 1 50%;
+	margin-top: 2.75em;
+
+	[data-columns="3"] & {
+		flex: 1 33.33%;
+	}
+
+	.wp-block-coblocks-food-and-drinks[data-columns="2"]:not(.is-style-list) & {
+		&:nth-child(even) {
+			padding-right: 20px;
+
+			@media all and (max-width: 514px) {
+				padding-right: 0;
+			}
+		}
+
+		&:nth-child(odd) {
+			padding-left: 20px;
+
+			@media all and (max-width: 514px) {
+				padding-left: 0;
+			}
+		}
+	}
+
+	.wp-block-coblocks-food-and-drinks[data-columns="3"]:not(.is-style-list) & {
+		&:nth-child(3n - 1) {
+			padding-right: 12px;
+
+			@media all and (max-width: 514px) {
+				padding-right: 0;
+			}
+		}
+
+		&:nth-child(3n + 3) {
+			padding-left: 8px;
+			padding-right: 8px;
+
+			@media all and (max-width: 514px) {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+
+		&:nth-child(3n + 1) {
+			padding-left: 12px;
+
+			@media all and (max-width: 514px) {
+				padding-left: 0;
+			}
+		}
+	}
+
+	.wp-block-coblocks-food-and-drinks:not(.is-style-list) & {
+		.wp-block-coblocks-food-item__content {
+			display: block;
+		}
+	}
+
+	&__figure {
+		display: flex;
+		margin: 0.35em 0 1.25em;
+		overflow: hidden;
+		padding-top: 100%;
+		position: relative;
+		width: 100%;
+
+		img {
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			vertical-align: middle;
+			width: 100%;
+		}
+	}
+
+	&__heading-wrapper {
+		align-items: center;
+		display: flex;
+		flex: 1 85%;
+		margin: 0 0 0.25em;
+		order: 1;
+	}
+
+	&__heading {
+		margin: 0;
+		padding: 0;
+	}
+
+	&__content {
+		align-content: flex-start;
+		display: flex;
+		flex: 1 100%;
+		flex-wrap: wrap;
+	}
+
+	&__attributes {
+		display: flex;
+		margin-left: 0.4em;
+
+		svg {
+			fill: currentColor;
+			height: 18px;
+			width: 18px;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
+
+	&__attribute {
+		margin-right: 0.2em !important;
+
+		&--spicier {
+			margin-left: -0.38em !important;
+		}
+	}
+
+	&__description {
+		flex: 1 100%;
+		margin: 0;
+		order: 3;
+	}
+
+	&__price {
+		flex: 1 15%;
+		margin: 0.5em 0 0 0;
+		opacity: 0.7;
+		order: 2;
+	}
+}

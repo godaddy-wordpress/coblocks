@@ -1,0 +1,233 @@
+.wp-block-coblocks-food-item {
+	display: block;
+	flex: 1 100%;
+	padding: 0 !important;
+
+	.editor-media-placeholder {
+		margin: 0 0 1.65em !important;
+		min-height: 264px;
+		outline: 1px dashed $dark-gray-150;
+		padding: 100% 0 0 0;
+		position: relative;
+
+		&:hover {
+			outline: 1px dashed $dark-gray-500;
+		}
+
+		.components-placeholder__label,
+		.components-placeholder__instructions {
+			display: none;
+		}
+
+		.components-placeholder__fieldset {
+			align-items: center;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+
+			.components-button {
+				margin-bottom: 0 !important;
+			}
+		}
+
+		.components-drop-zone {
+			bottom: -1px;
+			left: -1px;
+			right: -1px;
+			top: -1px;
+		}
+	}
+
+	.components-spinner {
+		z-index: 9;
+	}
+
+	&__figure {
+		.wp-block-coblocks-food-item__remove-menu {
+			background-color: theme(primary);
+			display: inline-flex;
+			padding: 2px;
+			position: absolute;
+			right: 2px;
+			top: 2px;
+			transition: padding 0.1s linear;
+			z-index: 20;
+
+			svg {
+				position: relative;
+			}
+		}
+
+		&.is-selected {
+			&::after {
+				bottom: 0;
+				box-shadow: inset 0 0 0 4px theme(primary);
+				content: "";
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+				z-index: 1;
+			}
+		}
+	}
+
+	h4.block-editor-rich-text__editable, // Gutenberg 5.9+
+	&__heading.block-editor-rich-text__editable {
+		margin: 0;
+	}
+
+	p.block-editor-rich-text__editable, // Gutenberg 5.9+ Fix
+	&__description.block-editor-rich-text__editable {
+		margin: 0;
+	}
+
+	&__attribute.components-icon-button {
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+		color: inherit;
+		font-size: inherit;
+		line-height: 1;
+		overflow: visible;
+		padding: 0;
+
+		&:not(:disabled):not([aria-disabled="true"]):not(.is-default):hover {
+			box-shadow: none;
+		}
+
+		&:not(.is-toggled):hover {
+			opacity: 0.725;
+		}
+
+		&:not(.is-toggled) {
+			opacity: 0.55;
+		}
+	}
+}
+
+.is-style-list .wp-block-coblocks-food-item {
+	.editor-media-placeholder {
+		height: 100px;
+		min-height: 100px;
+		position: relative;
+
+		@media all and (max-width: 514px) {
+			height: 75px;
+			min-height: 75px;
+		}
+
+		.dashicon {
+			margin: 0;
+		}
+
+		.components-placeholder__label {
+			display: block;
+			left: 50%;
+			margin: -10px 0 0 -10px;
+			position: absolute;
+			top: 50%;
+		}
+
+		.components-drop-zone__content {
+			.dashicon {
+				height: 20px;
+				margin: 0 auto 5px;
+				width: 20px;
+			}
+
+			.components-drop-zone__content-text {
+				font-size: 12px;
+				margin: 0 auto;
+				max-width: 80%;
+			}
+		}
+
+		// Hide the Upload button.
+		.components-form-file-upload .editor-media-placeholder__button {
+			display: none;
+		}
+
+		// Restyle the Media Gallery button to be overlaid over the component.
+		&__button {
+			background: transparent !important;
+			border: 0;
+			bottom: 0;
+			box-shadow: none !important;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			right: 0;
+			text-indent: -999em;
+			top: 0;
+			width: 100%;
+		}
+	}
+}
+
+.wp-block[data-type="coblocks/food-item"] {
+	flex: 1 50%;
+	margin-left: 5px;
+	margin-right: 5px;
+	max-width: calc(50% - 10px) !important;
+
+	@media all and (max-width: 514px) {
+		max-width: 100% !important;
+	}
+
+	[data-columns="3"] & {
+		flex: 1 33.33%;
+		max-width: calc(33.33% - 10px) !important;
+
+		@media all and (max-width: 514px) {
+			max-width: 100% !important;
+		}
+	}
+
+	.block-editor-block-list__block-edit {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+
+	// Two columns.
+	@media all and (max-width: 514px) {
+		[data-columns="2"] .wp-block-coblocks-food-and-drinks:not(.is-style-list) &:nth-child(-n + 2) .wp-block-coblocks-food-item {
+			margin-top: 0;
+		}
+	}
+
+	@media all and (min-width: 515px) {
+		[data-columns="2"] .wp-block-coblocks-food-and-drinks:not(.is-style-list) &:nth-child(-n + 3) .wp-block-coblocks-food-item {
+			margin-top: 0;
+		}
+	}
+
+	// Three columns.
+	@media all and (max-width: 514px) {
+		[data-columns="3"] .wp-block-coblocks-food-and-drinks:not(.is-style-list) &:nth-child(-n + 3) .wp-block-coblocks-food-item {
+			margin-top: 0;
+		}
+	}
+
+	@media all and (min-width: 515px) {
+		[data-columns="3"] .wp-block-coblocks-food-and-drinks:not(.is-style-list) &:nth-child(-n + 4) .wp-block-coblocks-food-item {
+			margin-top: 0;
+		}
+	}
+
+	.wp-block-coblocks-food-and-drinks.is-style-list &:nth-child(-n + 2) .wp-block-coblocks-food-item {
+		margin-top: 0;
+	}
+}
+
+.components-food-item-attributes__label {
+	margin-bottom: 6px;
+}
+
+.edit-post-settings-sidebar__panel-block .components-food-item-attributes {
+	.components-base-control {
+		margin-bottom: 8px;
+	}
+}
