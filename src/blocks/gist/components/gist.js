@@ -115,7 +115,6 @@ export default class Gist extends Component {
 	  	document.head.appendChild(gistScript);
 	}
 
-
 	render () {
 		if ( this.state.loading ) {
 			return [
