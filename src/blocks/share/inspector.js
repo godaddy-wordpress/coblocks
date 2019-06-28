@@ -150,47 +150,49 @@ class Inspector extends Component {
 								className="components-coblocks-inspector__social-button-size"
 							/>
 						}
-						<p>{ __( 'Icons' ) }</p>
-						<CheckboxControl
-							label={ __( 'Twitter' ) }
-							checked={ !! twitter }
-							onChange={ () => setAttributes( {  twitter: ! twitter } ) }
-						/>
-						<CheckboxControl
-							label={ __( 'Facebook' ) }
-							checked={ !! facebook }
-							onChange={ () => setAttributes( {  facebook: ! facebook } ) }
-						/>
-						<CheckboxControl
-							label={ __( 'Pinterest' ) }
-							checked={ !! pinterest }
-							onChange={ () => setAttributes( {  pinterest: ! pinterest } ) }
-						/>
-						<CheckboxControl
-							label={ __( 'LinkedIn' ) }
-							checked={ !! linkedin }
-							onChange={ () => setAttributes( {  linkedin: ! linkedin } ) }
-						/>
-						<CheckboxControl
-							label={ __( 'Email' ) }
-							checked={ !! email }
-							onChange={ () => setAttributes( {  email: ! email } ) }
-						/>
-						<CheckboxControl
-							label={ __( 'Tumblr' ) }
-							checked={ !! tumblr }
-							onChange={ () => setAttributes( {  tumblr: ! tumblr } ) }
-						/>
-						<CheckboxControl
-							label={ __( 'Google' ) }
-							checked={ !! google }
-							onChange={ () => setAttributes( {  google: ! google } ) }
-						/>
-						<CheckboxControl
-							label={ __( 'Reddit' ) }
-							checked={ !! reddit }
-							onChange={ () => setAttributes( {  reddit: ! reddit } ) }
-						/>
+						<div className="components-share-item-attributes">
+							<p className="components-share-item-attributes__label">{__('Icons')}</p>
+							<CheckboxControl
+								label={__('Twitter')}
+								checked={!!twitter}
+								onChange={() => setAttributes({ twitter: !twitter })}
+							/>
+							<CheckboxControl
+								label={__('Facebook')}
+								checked={!!facebook}
+								onChange={() => setAttributes({ facebook: !facebook })}
+							/>
+							<CheckboxControl
+								label={__('Pinterest')}
+								checked={!!pinterest}
+								onChange={() => setAttributes({ pinterest: !pinterest })}
+							/>
+							<CheckboxControl
+								label={__('LinkedIn')}
+								checked={!!linkedin}
+								onChange={() => setAttributes({ linkedin: !linkedin })}
+							/>
+							<CheckboxControl
+								label={__('Email')}
+								checked={!!email}
+								onChange={() => setAttributes({ email: !email })}
+							/>
+							<CheckboxControl
+								label={__('Tumblr')}
+								checked={!!tumblr}
+								onChange={() => setAttributes({ tumblr: !tumblr })}
+							/>
+							<CheckboxControl
+								label={__('Google')}
+								checked={!!google}
+								onChange={() => setAttributes({ google: !google })}
+							/>
+							<CheckboxControl
+								label={__('Reddit')}
+								checked={!!reddit}
+								onChange={() => setAttributes({ reddit: !reddit })}
+							/>
+						</div>
 					</PanelBody>
 
 					{ ! hasColors &&
