@@ -103,7 +103,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			$this->define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 			$this->define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
 			$this->define( 'COBLOCKS_PLUGIN_BASE', plugin_basename( __FILE__ ) );
-			$this->define( 'COBLOCKS_SHOP_URL', 'https://coblocks.com/' );
 			$this->define( 'COBLOCKS_REVIEW_URL', 'https://wordpress.org/support/plugin/coblocks/reviews/?filter=5' );
 		}
 
