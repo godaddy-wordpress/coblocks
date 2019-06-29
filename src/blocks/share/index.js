@@ -11,7 +11,6 @@ import metadata from './block.json';
  * WordPress dependencies
  */
 const { __, _x } = wp.i18n;
-const { Component } = wp.element;
 
 /**
  * Block constants
@@ -20,7 +19,6 @@ const { name } = metadata;
 const title = __( 'Share' );
 
 const icon = icons.social;
-
 
 const keywords = [
 	__( 'social' ),
@@ -38,7 +36,7 @@ const settings = {
 
 	styles: [
 		{ name: 'mask', label: _x( 'Mask', 'block style' ) },
-		{ name: 'icon', label: _x( 'Icon', 'block style' ) , isDefault: true },
+		{ name: 'icon', label: _x( 'Icon', 'block style' ), isDefault: true },
 		{ name: 'text', label: _x( 'Text', 'block style' ) },
 		{ name: 'icon-and-text', label: _x( 'Icon & Text', 'block style' ) },
 		{ name: 'circular', label: _x( 'Circular', 'block style' ) },

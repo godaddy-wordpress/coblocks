@@ -35,7 +35,6 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Inspector controls
  */
 class Inspector extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
 	}
@@ -45,7 +44,6 @@ class Inspector extends Component {
 	}
 
 	render() {
-
 		const {
 			className,
 			attributes,
@@ -111,7 +109,7 @@ class Inspector extends Component {
 						<ToggleControl
 							label={ __( 'Social Colors' ) }
 							checked={ !! hasColors }
-							onChange={ () => setAttributes( {  hasColors: ! hasColors } ) }
+							onChange={ () => setAttributes( { hasColors: ! hasColors } ) }
 							help={ this.getHasColorsHelp }
 						/>
 						{ ! isMaskStyle && ! isCircularStyle &&
@@ -150,47 +148,47 @@ class Inspector extends Component {
 								className="components-coblocks-inspector__social-button-size"
 							/>
 						}
-						<div className="components-share-item-attributes">
-							<p className="components-share-item-attributes__label">{__('Icons')}</p>
+						<div className="components-social-icons-list">
+							<p className="components-social-icons-list__label">{ __( 'Icons' ) }</p>
 							<CheckboxControl
-								label={__('Twitter')}
-								checked={!!twitter}
-								onChange={() => setAttributes({ twitter: !twitter })}
+								label={ __( 'Twitter' ) }
+								checked={ !! twitter }
+								onChange={ () => setAttributes( { twitter: ! twitter } ) }
 							/>
 							<CheckboxControl
-								label={__('Facebook')}
-								checked={!!facebook}
-								onChange={() => setAttributes({ facebook: !facebook })}
+								label={ __( 'Facebook' ) }
+								checked={ !! facebook }
+								onChange={ () => setAttributes( { facebook: ! facebook } ) }
 							/>
 							<CheckboxControl
-								label={__('Pinterest')}
-								checked={!!pinterest}
-								onChange={() => setAttributes({ pinterest: !pinterest })}
+								label={ __( 'Pinterest' ) }
+								checked={ !! pinterest }
+								onChange={ () => setAttributes( { pinterest: ! pinterest } ) }
 							/>
 							<CheckboxControl
-								label={__('LinkedIn')}
-								checked={!!linkedin}
-								onChange={() => setAttributes({ linkedin: !linkedin })}
+								label={ __( 'LinkedIn' ) }
+								checked={ !! linkedin }
+								onChange={ () => setAttributes( { linkedin: ! linkedin } ) }
 							/>
 							<CheckboxControl
-								label={__('Email')}
-								checked={!!email}
-								onChange={() => setAttributes({ email: !email })}
+								label={ __( 'Email' ) }
+								checked={ !! email }
+								onChange={ () => setAttributes( { email: ! email } ) }
 							/>
 							<CheckboxControl
-								label={__('Tumblr')}
-								checked={!!tumblr}
-								onChange={() => setAttributes({ tumblr: !tumblr })}
+								label={ __( 'Tumblr' ) }
+								checked={ !! tumblr }
+								onChange={ () => setAttributes( { tumblr: ! tumblr } ) }
 							/>
 							<CheckboxControl
-								label={__('Google')}
-								checked={!!google}
-								onChange={() => setAttributes({ google: !google })}
+								label={ __( 'Google' ) }
+								checked={ !! google }
+								onChange={ () => setAttributes( { google: ! google } ) }
 							/>
 							<CheckboxControl
-								label={__('Reddit')}
-								checked={!!reddit}
-								onChange={() => setAttributes({ reddit: !reddit })}
+								label={ __( 'Reddit' ) }
+								checked={ !! reddit }
+								onChange={ () => setAttributes( { reddit: ! reddit } ) }
 							/>
 						</div>
 					</PanelBody>
@@ -218,7 +216,7 @@ class Inspector extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

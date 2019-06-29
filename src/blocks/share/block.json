@@ -1,6 +1,6 @@
 {
     "name": "social",
-    "category": "frontend",
+    "category": "coblocks",
     "attributes": {
         "className": {
             "type": "string"
