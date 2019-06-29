@@ -110,7 +110,6 @@ class edit extends Component {
 
 						{ twitter &&
 						<li>
-							{ /* eslint-disable-next-line jsx-a11y/anchor-is-valid*/ }
 							<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--twitter' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Twitter' ) }</span>
@@ -119,7 +118,6 @@ class edit extends Component {
 						}
 						{ facebook &&
 						<li>
-							{ /* eslint-disable-next-line jsx-a11y/anchor-is-valid*/ }
 							<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--facebook' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Facebook' ) }</span>
@@ -128,7 +126,6 @@ class edit extends Component {
 						}
 						{ pinterest &&
 						<li>
-							{ /* eslint-disable-next-line jsx-a11y/anchor-is-valid*/ }
 							<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--pinterest' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Pinterest' ) }</span>
@@ -137,7 +134,6 @@ class edit extends Component {
 						}
 						{ linkedin &&
 						<li>
-							{ /* eslint-disable-next-line jsx-a11y/anchor-is-valid*/ }
 							<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--linkedin' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on LinkedIn' ) }</span>
@@ -146,7 +142,6 @@ class edit extends Component {
 						}
 						{ email &&
 						<li>
-							{ /* eslint-disable-next-line jsx-a11y/anchor-is-valid*/ }
 							<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--email' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share via Email' ) }</span>
@@ -155,7 +150,6 @@ class edit extends Component {
 						}
 						{ tumblr &&
 						<li>
-							{ /* eslint-disable-next-line jsx-a11y/anchor-is-valid*/ }
 							<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--tumblr' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Tumblr' ) }</span>
@@ -164,7 +158,6 @@ class edit extends Component {
 						}
 						{ google &&
 						<li>
-							{ /* eslint-disable-next-line jsx-a11y/anchor-is-valid*/ }
 							<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--google' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Google' ) }</span>
@@ -173,7 +166,6 @@ class edit extends Component {
 						}
 						{ reddit &&
 						<li>
-							{ /* eslint-disable-next-line jsx-a11y/anchor-is-valid*/ }
 							<a className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--reddit' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Reddit' ) }</span>
