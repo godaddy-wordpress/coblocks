@@ -1,0 +1,80 @@
+.wp-block-coblocks-food-and-drinks {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+
+	// On small screens, we are no longer using row direction but column.
+	@media all and (max-width: 514px) {
+		flex-direction: column;
+	}
+
+	+ .wp-block-coblocks-food-and-drinks {
+		margin-top: 3em;
+	}
+
+	> h1,
+	> h2,
+	> h3,
+	> h4,
+	> h5,
+	> h6 {
+		flex: 1 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+	&:not(.is-style-list) {
+		.wp-block-coblocks-food-item {
+			@media all and (min-width: 515px) {
+				text-align: center;
+			}
+		}
+
+		.wp-block-coblocks-food-item__heading-wrapper {
+			@media all and (min-width: 515px) {
+				justify-content: center;
+			}
+		}
+	}
+
+	&.is-style-list {
+		.wp-block-coblocks-food-item {
+			display: flex;
+			flex: 1 100%;
+			margin-top: 1.5em;
+			max-width: 100%;
+
+			@media all and (min-width: 515px) {
+				align-items: center;
+			}
+		}
+
+		.wp-block-coblocks-food-item__attributes {
+			margin-left: 0.6em;
+		}
+
+		.wp-block-coblocks-food-item__description {
+			max-width: calc(100% - 50px);
+		}
+
+		.wp-block-coblocks-food-item__price {
+			margin-top: 0;
+			text-align: right;
+		}
+
+		figure,
+		.components-placeholder {
+			flex: 0 0 auto;
+			margin: 0 20px 0 0 !important;
+			max-height: 100px;
+			max-width: 100px;
+			padding-top: 100px;
+
+			@media all and (max-width: 514px) {
+				max-height: 75px;
+				max-width: 75px;
+				padding-top: 75px;
+			}
+		}
+	}
+}

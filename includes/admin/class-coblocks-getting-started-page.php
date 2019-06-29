@@ -47,7 +47,7 @@ class CoBlocks_Getting_Started_Page {
 				__( 'CoBlocks', 'coblocks' ),
 				apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
 				'coblocks-getting-started',
-				array( $this, 'content' ),
+				array( $this, 'content' )
 			);
 
 			return;
