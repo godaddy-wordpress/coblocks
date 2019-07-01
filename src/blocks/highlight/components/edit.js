@@ -16,7 +16,7 @@ import Inspector from './inspector';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText, withFontSizes } = wp.editor;
+const { RichText, withFontSizes } = wp.blockEditor;
 const { createBlock } = wp.blocks;
 
 /**

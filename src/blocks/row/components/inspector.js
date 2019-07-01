@@ -148,95 +148,130 @@ class Inspector extends Component {
 						}
 						{ layout &&
 						<Fragment>
-							<PanelBody title={ __( 'Row Settings' ) }>
-								{ hasMarginControl &&
-								<DimensionsControl { ...this.props }
-									type={ 'margin' }
-									label={ __( 'Margin' ) }
-									help={ __( 'Space around the container.' ) }
-									valueTop={ marginTop }
-									valueRight={ marginRight }
-									valueBottom={ marginBottom }
-									valueLeft={ marginLeft }
-									valueTopTablet={ marginTopTablet }
-									valueRightTablet={ marginRightTablet }
-									valueBottomTablet={ marginBottomTablet }
-									valueLeftTablet={ marginLeftTablet }
-									valueTopMobile={ marginTopMobile }
-									valueRightMobile={ marginRightMobile }
-									valueBottomMobile={ marginBottomMobile }
-									valueLeftMobile={ marginLeftMobile }
-									unit={ marginUnit }
-									syncUnits={ marginSyncUnits }
-									syncUnitsTablet={ marginSyncUnitsTablet }
-									syncUnitsMobile={ marginSyncUnitsMobile }
-									dimensionSize={ marginSize }
-								/>
-								}
-								<DimensionsControl { ...this.props }
-									type={ 'padding' }
-									label={ __( 'Padding' ) }
-									help={ __( 'Space inside of the container.' ) }
-									valueTop={ paddingTop }
-									valueRight={ paddingRight }
-									valueBottom={ paddingBottom }
-									valueLeft={ paddingLeft }
-									valueTopTablet={ paddingTopTablet }
-									valueRightTablet={ paddingRightTablet }
-									valueBottomTablet={ paddingBottomTablet }
-									valueLeftTablet={ paddingLeftTablet }
-									valueTopMobile={ paddingTopMobile }
-									valueRightMobile={ paddingRightMobile }
-									valueBottomMobile={ paddingBottomMobile }
-									valueLeftMobile={ paddingLeftMobile }
-									unit={ paddingUnit }
-									syncUnits={ paddingSyncUnits }
-									syncUnitsTablet={ paddingSyncUnitsTablet }
-									syncUnitsMobile={ paddingSyncUnitsMobile }
-									dimensionSize={ paddingSize }
-								/>
-								{ selectedRows >= 2 &&
-								<SelectControl
-									label={ __( 'Gutter' ) }
-									value={ gutter }
-									options={ gutterOptions }
-									help={ __( 'Space between each column.' ) }
-									onChange={ ( value ) => setAttributes( { gutter: value } ) }
-								/>
-								}
-							</PanelBody>
-							<PanelColorSettings
-								title={ __( 'Color Settings' ) }
-								initialOpen={ false }
-								colorSettings={ [
-									{
-										value: backgroundColor.color,
-										onChange: ( nextBackgroundColor ) => {
-											setBackgroundColor( nextBackgroundColor );
+							{ selectedRows > 1 &&
+								<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
+									<div className="components-coblocks-visual-dropdown">
+										<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
+											{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
+												<Tooltip text={ name }>
+													<div className={ ( key === layout ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
+														<Button
+															className={ ( key === layout ) ? 'components-coblocks-visual-dropdown__button components-coblocks-visual-dropdown__button--selected' : 'components-coblocks-visual-dropdown__button' }
+															isSmall
+															onClick={ () => {
+																const selectedWidth = key.toString().split( '-' );
+																const children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
+																setAttributes( {
+																	layout: key,
+																} );
 
-											//add padding if there's none
-											if ( ! paddingSize || paddingSize === 'no' ) {
-												setAttributes( { paddingSize: 'medium' } );
-											}
+																if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
+																	map( children[ 0 ].innerBlocks, ( { childrenClientId }, index ) => (
+																		wp.data.dispatch( 'core/editor' ).updateBlockAttributes( childrenClientId, { width: selectedWidth[ index ] } )
+																	) );
+																}
+															} }
+														>
+															{ icon }
+														</Button>
+													</div>
+												</Tooltip>
+											) ) }
+										</ButtonGroup>
+									</div>
+								</PanelBody>
+							}
+							{ layout &&
+								<Fragment>
+									<PanelBody title={ __( 'Row Settings' ) }>
+										{ hasMarginControl &&
+											<DimensionsControl { ...this.props }
+												type={ 'margin' }
+												label={ __( 'Margin' ) }
+												help={ __( 'Space around the container.' ) }
+												valueTop={ marginTop }
+												valueRight={ marginRight }
+												valueBottom={ marginBottom }
+												valueLeft={ marginLeft }
+												valueTopTablet={ marginTopTablet }
+												valueRightTablet={ marginRightTablet }
+												valueBottomTablet={ marginBottomTablet }
+												valueLeftTablet={ marginLeftTablet }
+												valueTopMobile={ marginTopMobile }
+												valueRightMobile={ marginRightMobile }
+												valueBottomMobile={ marginBottomMobile }
+												valueLeftMobile={ marginLeftMobile }
+												unit={ marginUnit }
+												syncUnits={ marginSyncUnits }
+												syncUnitsTablet={ marginSyncUnitsTablet }
+												syncUnitsMobile={ marginSyncUnitsMobile }
+												dimensionSize={ marginSize }
+											/>
+										}
+										<DimensionsControl { ...this.props }
+											type={ 'padding' }
+											label={ __( 'Padding' ) }
+											help={ __( 'Space inside of the container.' ) }
+											valueTop={ paddingTop }
+											valueRight={ paddingRight }
+											valueBottom={ paddingBottom }
+											valueLeft={ paddingLeft }
+											valueTopTablet={ paddingTopTablet }
+											valueRightTablet={ paddingRightTablet }
+											valueBottomTablet={ paddingBottomTablet }
+											valueLeftTablet={ paddingLeftTablet }
+											valueTopMobile={ paddingTopMobile }
+											valueRightMobile={ paddingRightMobile }
+											valueBottomMobile={ paddingBottomMobile }
+											valueLeftMobile={ paddingLeftMobile }
+											unit={ paddingUnit }
+											syncUnits={ paddingSyncUnits }
+											syncUnitsTablet={ paddingSyncUnitsTablet }
+											syncUnitsMobile={ paddingSyncUnitsMobile }
+											dimensionSize={ paddingSize }
+										/>
+										{ selectedRows >= 2 &&
+											<SelectControl
+												label={ __( 'Gutter' ) }
+												value={ gutter }
+												options={ gutterOptions }
+												help={ __( 'Space between each column.' ) }
+												onChange={ ( value ) => setAttributes( { gutter: value } ) }
+											/>
+										}
+									</PanelBody>
+									<PanelColorSettings
+										title={ __( 'Color Settings' ) }
+										initialOpen={ false }
+										colorSettings={ [
+											{
+												value: backgroundColor.color,
+												onChange: ( nextBackgroundColor ) => {
+													setBackgroundColor( nextBackgroundColor );
 
-											//reset when cleared
-											if ( ! nextBackgroundColor ) {
-												setAttributes( { paddingSize: 'no' } );
-											}
-										},
-										label: __( 'Background Color' ),
-									},
-									{
-										value: textColor.color,
-										onChange: setTextColor,
-										label: __( 'Text Color' ),
-									},
-								] }
-							>
-							</PanelColorSettings>
-							<BackgroundPanel { ...this.props }
-								hasOverlay={ true }
-							/>
+													if ( ! paddingSize || paddingSize === 'no' ) {
+														setAttributes( { paddingSize: 'medium' } );
+													}
+
+													if ( ! nextBackgroundColor ) {
+														setAttributes( { paddingSize: 'no' } );
+													}
+												},
+												label: __( 'Background Color' ),
+											},
+											{
+												value: textColor.color,
+												onChange: setTextColor,
+												label: __( 'Text Color' ),
+											},
+										] }
+									>
+									</PanelColorSettings>
+									<BackgroundPanel { ...this.props }
+										hasOverlay={ true }
+									/>
+								</Fragment>
+							}
 						</Fragment>
 						}
 					</Fragment>

@@ -8,9 +8,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-05-29T20:18:42+00:00\n"
+"POT-Creation-Date: 2019-05-30T20:13:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.2.0\n"
+"X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: coblocks\n"
 
 #: src/blocks/pricing-table/pricing-table-item/components/edit.js:110
@@ -168,7 +168,7 @@ msgstr ""
 
 #: src/blocks/alert/components/controls.js:86
 #: src/components/font-family/index.js:20
-#: src/components/typography-controls/index.js:116
+#: src/components/typography-controls/index.js:92
 #: src/extensions/list-styles/index.js:15
 msgid "Default"
 msgstr ""
@@ -402,7 +402,7 @@ msgstr ""
 #: src/blocks/dynamic-separator/components/inspector.js:48
 #: src/blocks/gallery-carousel/inspector.js:149
 #: src/blocks/hero/components/inspector.js:117
-#: src/blocks/map/components/inspector.js:148
+#: src/blocks/map/components/inspector.js:136
 msgid "Height in pixels"
 msgstr ""
 
@@ -430,18 +430,6 @@ msgstr ""
 
 #: src/blocks/dynamic-separator/index.js:54
 msgid "Add a resizable spacer between other blocks."
-msgstr ""
-
-#: src/blocks/dynamic-separator/index.js:61
-msgid "Dot"
-msgstr ""
-
-#: src/blocks/dynamic-separator/index.js:62
-msgid "Line"
-msgstr ""
-
-#: src/blocks/dynamic-separator/index.js:63
-msgid "Fullwidth"
 msgstr ""
 
 #: src/blocks/features/components/edit.js:88
@@ -545,8 +533,8 @@ msgstr ""
 
 #: src/blocks/form/edit.js:107
 #: src/blocks/social/components/inspector.js:169
-#: includes/class-coblocks-form.php:208
-#: build/coblocks/includes/class-coblocks-form.php:208
+#: includes/class-coblocks-form.php:211
+#: includes/class-coblocks-form.php:298
 msgid "Email"
 msgstr ""
 
@@ -563,8 +551,7 @@ msgid "An email address field."
 msgstr ""
 
 #: src/blocks/form/edit.js:121
-#: includes/class-coblocks-form.php:236
-#: build/coblocks/includes/class-coblocks-form.php:236
+#: includes/class-coblocks-form.php:326
 msgid "Message"
 msgstr ""
 
@@ -580,49 +567,88 @@ msgstr ""
 msgid "A text box for longer responses."
 msgstr ""
 
-#: src/blocks/form/edit.js:215
+#: src/blocks/form/edit.js:274
 msgid "%s is not a valid email address."
 msgstr ""
 
-#: src/blocks/form/edit.js:222
+#: src/blocks/form/edit.js:281
 msgid "%s and %s are not a valid email address."
 msgstr ""
 
-#: src/blocks/form/edit.js:229
+#: src/blocks/form/edit.js:288
 msgid "%s are not a valid email address."
 msgstr ""
 
-#: src/blocks/form/edit.js:253
+#: src/blocks/form/edit.js:344
 msgid "Email address"
 msgstr ""
 
-#: src/blocks/form/edit.js:254
+#: src/blocks/form/edit.js:345
 msgid "name@example.com"
 msgstr ""
 
-#: src/blocks/form/edit.js:264
+#: src/blocks/form/edit.js:355
 msgid "Subject"
 msgstr ""
 
-#: src/blocks/form/edit.js:293
+#: src/blocks/form/edit.js:384
 msgid "Form Settings"
 msgstr ""
 
+#: src/blocks/form/edit.js:389
+msgid "Google reCAPTCHA"
+msgstr ""
+
+#: src/blocks/form/edit.js:393
+msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
+msgstr ""
+
+#: src/blocks/form/edit.js:396
+msgid "Generate keys"
+msgstr ""
+
+#: src/blocks/form/edit.js:396
+msgid "My keys"
+msgstr ""
+
+#: src/blocks/form/edit.js:397
+msgid "Get help"
+msgstr ""
+
+#: src/blocks/form/edit.js:401
+msgid "Site Key"
+msgstr ""
+
+#: src/blocks/form/edit.js:407
+msgid "Secret Key"
+msgstr ""
+
+#: src/blocks/form/edit.js:418
+msgid "Saving"
+msgstr ""
+
+#: src/blocks/form/edit.js:418
+#: src/blocks/map/components/inspector.js:224
+msgid "Save"
+msgstr ""
+
+#: src/blocks/form/edit.js:429
+#: src/blocks/map/components/inspector.js:232
+msgid "Remove"
+msgstr ""
+
 #: src/blocks/form/edit.js:54
-#: includes/class-coblocks-form.php:159
-#: build/coblocks/includes/class-coblocks-form.php:159
+#: includes/class-coblocks-form.php:249
 msgid "First"
 msgstr ""
 
 #: src/blocks/form/edit.js:58
-#: includes/class-coblocks-form.php:160
-#: build/coblocks/includes/class-coblocks-form.php:160
+#: includes/class-coblocks-form.php:250
 msgid "Last"
 msgstr ""
 
 #: src/blocks/form/edit.js:83
-#: includes/class-coblocks-form.php:155
-#: build/coblocks/includes/class-coblocks-form.php:155
+#: includes/class-coblocks-form.php:245
 msgid "Name"
 msgstr ""
 
@@ -647,8 +673,7 @@ msgid "contact"
 msgstr ""
 
 #: src/blocks/form/index.js:46
-#: includes/class-coblocks-form.php:301
-#: build/coblocks/includes/class-coblocks-form.php:301
+#: includes/class-coblocks-form.php:391
 msgid "Submit"
 msgstr ""
 
@@ -662,10 +687,10 @@ msgstr ""
 msgid "Edit gallery"
 msgstr ""
 
-#: src/blocks/gallery-carousel/edit.js:339
+#: src/blocks/gallery-carousel/edit.js:340
 #: src/blocks/gif/components/edit.js:252
 #: src/blocks/gist/components/edit.js:108
-#: src/components/block-gallery/gallery-image.js:191
+#: src/components/block-gallery/gallery-image.js:218
 msgid "Write caption…"
 msgstr ""
 
@@ -697,7 +722,7 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:131
 #: src/blocks/icon/components/inspector.js:202
-#: src/components/typography-controls/index.js:214
+#: src/components/typography-controls/index.js:190
 msgid "Size"
 msgstr ""
 
@@ -1089,16 +1114,7 @@ msgstr ""
 msgid "Add a stylized graphic symbol to communicate something more."
 msgstr ""
 
-#: src/blocks/icon/index.js:123
-msgid "Outlined"
-msgstr ""
-
-#: src/blocks/icon/index.js:124
-msgid "Filled"
-msgstr ""
-
 #: src/blocks/icon/index.js:32
-#: src/blocks/social/index.js:39
 msgid "Icon"
 msgstr ""
 
@@ -1115,24 +1131,24 @@ msgstr ""
 msgid "Map style"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:156
+#: src/blocks/map/components/edit.js:161
 msgid "Invalid API key, or too many requests"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:262
+#: src/blocks/map/components/edit.js:267
 #: src/blocks/map/components/save.js:48
 msgid "Google Map"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:263
+#: src/blocks/map/components/edit.js:268
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/components/edit.js:267
+#: src/blocks/map/components/edit.js:274
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:275
+#: src/blocks/map/components/edit.js:283
 msgid "Apply"
 msgstr ""
 
@@ -1152,12 +1168,12 @@ msgstr ""
 msgid "Zoom Level"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:138
-msgid "Marker Size"
+#: src/blocks/map/components/inspector.js:137
+msgid "Height for the map in pixels"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:149
-msgid "Height for the map in pixels"
+#: src/blocks/map/components/inspector.js:148
+msgid "Marker Size"
 msgstr ""
 
 #: src/blocks/map/components/inspector.js:163
@@ -1224,32 +1240,24 @@ msgstr ""
 msgid "Google Maps API Key"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:204
+#: src/blocks/map/components/inspector.js:205
 msgid "Add your Google Maps API key. Updating this API key will set all your maps to use the new key."
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:207
+#: src/blocks/map/components/inspector.js:208
 msgid "Retrieve your key"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:208
+#: src/blocks/map/components/inspector.js:209
 msgid "Need help?"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:214
+#: src/blocks/map/components/inspector.js:215
 msgid "Enter Google API Key…"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:223
+#: src/blocks/map/components/inspector.js:224
 msgid "Saved"
-msgstr ""
-
-#: src/blocks/map/components/inspector.js:223
-msgid "Save"
-msgstr ""
-
-#: src/blocks/map/components/inspector.js:231
-msgid "Remove"
 msgstr ""
 
 #: src/blocks/map/components/styles.js:12
@@ -1623,56 +1631,21 @@ msgstr ""
 msgid "Add a shape divider to visually distinquish page sections."
 msgstr ""
 
-#: src/blocks/shape-divider/index.js:160
-msgid "Wavy"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:161
-msgid "Hills"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:162
-msgid "Waves"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:163
-msgid "Angled"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:164
-msgid "Sloped"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:165
-msgid "Rounded"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:166
-msgid "Triangle"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:167
-msgid "Pointed"
-msgstr ""
-
 #: src/blocks/shape-divider/index.js:65
 msgid "Shape Divider"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:114
-#: build/coblocks/src/blocks/social/index.php:127
 #: src/blocks/social/index.php:127
 msgid "Share on Twitter"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:122
-#: build/coblocks/src/blocks/social/index.php:131
 #: src/blocks/social/index.php:131
 msgid "Share on Facebook"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:130
-#: build/coblocks/src/blocks/social/index.php:135
 #: src/blocks/social/index.php:135
 msgid "Share on Pinterest"
 msgstr ""
@@ -1682,25 +1655,21 @@ msgid "Share on LinkedIn"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:146
-#: build/coblocks/src/blocks/social/index.php:143
 #: src/blocks/social/index.php:143
 msgid "Share via Email"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:154
-#: build/coblocks/src/blocks/social/index.php:147
 #: src/blocks/social/index.php:147
 msgid "Share on Tumblr"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:162
-#: build/coblocks/src/blocks/social/index.php:151
 #: src/blocks/social/index.php:151
 msgid "Share on Google"
 msgstr ""
 
 #: src/blocks/social/components/edit.js:170
-#: build/coblocks/src/blocks/social/index.php:155
 #: src/blocks/social/index.php:155
 msgid "Share on Reddit"
 msgstr ""
@@ -1767,18 +1736,6 @@ msgstr ""
 
 #: src/blocks/social/index.js:33
 msgid "Add social sharing buttons to help you get likes and shares."
-msgstr ""
-
-#: src/blocks/social/index.js:38
-msgid "Mask"
-msgstr ""
-
-#: src/blocks/social/index.js:40
-msgid "Text"
-msgstr ""
-
-#: src/blocks/social/index.js:41
-msgid "Icon & Text"
 msgstr ""
 
 #: src/components/background/controls.js:56
@@ -1886,7 +1843,15 @@ msgstr ""
 msgid "Remove "
 msgstr ""
 
-#: src/components/block-gallery/gallery-image.js:183
+#: src/components/block-gallery/gallery-image.js:189
+msgid "Move Image Backward"
+msgstr ""
+
+#: src/components/block-gallery/gallery-image.js:197
+msgid "Move Image Forward"
+msgstr ""
+
+#: src/components/block-gallery/gallery-image.js:208
 msgid "Remove Image"
 msgstr ""
 
@@ -2149,104 +2114,104 @@ msgstr ""
 msgid "Dot Navigation"
 msgstr ""
 
-#: src/components/typography-controls/index.js:109
+#: src/components/typography-controls/index.js:100
+msgid "Lowercase"
+msgstr ""
+
+#: src/components/typography-controls/index.js:104
+msgid "Capitalize"
+msgstr ""
+
+#: src/components/typography-controls/index.js:108
+msgid "Normal"
+msgstr ""
+
+#: src/components/typography-controls/index.js:165
+msgid "Font"
+msgstr ""
+
+#: src/components/typography-controls/index.js:172
+msgid "Weight"
+msgstr ""
+
+#: src/components/typography-controls/index.js:181
+msgid "Transform"
+msgstr ""
+
+#: src/components/typography-controls/index.js:201
+msgid "Line Height"
+msgstr ""
+
+#: src/components/typography-controls/index.js:212
+msgid "Letter Spacing"
+msgstr ""
+
+#: src/components/typography-controls/index.js:224
+msgid "No Top Spacing"
+msgstr ""
+
+#: src/components/typography-controls/index.js:229
+msgid "No Bottom Spacing"
+msgstr ""
+
+#: src/components/typography-controls/index.js:59
+msgid "Change typography"
+msgstr ""
+
+#: src/components/typography-controls/index.js:85
 msgid "Bold"
 msgstr ""
 
-#: src/components/typography-controls/index.js:120
+#: src/components/typography-controls/index.js:96
 #: src/formats/uppercase/index.js:36
 msgid "Uppercase"
 msgstr ""
 
-#: src/components/typography-controls/index.js:124
-msgid "Lowercase"
-msgstr ""
-
-#: src/components/typography-controls/index.js:128
-msgid "Capitalize"
-msgstr ""
-
-#: src/components/typography-controls/index.js:132
-msgid "Normal"
-msgstr ""
-
-#: src/components/typography-controls/index.js:189
-msgid "Font"
-msgstr ""
-
-#: src/components/typography-controls/index.js:196
-msgid "Weight"
-msgstr ""
-
-#: src/components/typography-controls/index.js:205
-msgid "Transform"
-msgstr ""
-
-#: src/components/typography-controls/index.js:225
-msgid "Line Height"
-msgstr ""
-
-#: src/components/typography-controls/index.js:236
-msgid "Letter Spacing"
-msgstr ""
-
-#: src/components/typography-controls/index.js:248
-msgid "No Top Spacing"
-msgstr ""
-
-#: src/components/typography-controls/index.js:253
-msgid "No Bottom Spacing"
-msgstr ""
-
-#: src/components/typography-controls/index.js:83
-msgid "Change typography"
-msgstr ""
-
-#: src/extensions/advanced-controls/index.js:116
+#: src/extensions/advanced-controls/index.js:113
 msgid "Stack on Mobile"
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:119
+#: src/extensions/advanced-controls/index.js:116
 msgid "Responsiveness is enabled."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:119
+#: src/extensions/advanced-controls/index.js:116
 msgid "Toggle to stack elements on top of each other on smaller viewports."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:124
+#: src/extensions/advanced-controls/index.js:121
 msgid "Remove Top Spacing"
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:127
+#: src/extensions/advanced-controls/index.js:124
 msgid "Top margin is removed on this block."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:127
+#: src/extensions/advanced-controls/index.js:124
 msgid "Toggle to remove any margin applied to the top of this block."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:132
+#: src/extensions/advanced-controls/index.js:129
 msgid "Remove Bottom Spacing"
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:142
+#: src/extensions/advanced-controls/index.js:139
 msgid "Bottom margin is removed on this block."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:142
+#: src/extensions/advanced-controls/index.js:139
 msgid "Toggle to remove any margin applied to the bottom of this block."
 msgstr ""
 
-#: src/extensions/button-controls/index.js:76
+#: src/extensions/button-controls/index.js:71
 msgid "Display Fullwidth"
 msgstr ""
 
-#: src/extensions/button-controls/index.js:79
+#: src/extensions/button-controls/index.js:74
 msgid "Displaying as full width."
 msgstr ""
 
-#: src/extensions/button-controls/index.js:79
+#: src/extensions/button-controls/index.js:74
 msgid "Toggle to display button as full width."
 msgstr ""
 
@@ -2292,6 +2257,91 @@ msgstr ""
 
 #: src/sidebars/block-manager/components/options/disable-blocks.js:250
 msgid "No \"%s\" blocks found."
+msgstr ""
+
+#: src/blocks/dynamic-separator/index.js:61
+msgctxt "block style"
+msgid "Dot"
+msgstr ""
+
+#: src/blocks/dynamic-separator/index.js:62
+msgctxt "block style"
+msgid "Line"
+msgstr ""
+
+#: src/blocks/dynamic-separator/index.js:63
+msgctxt "block style"
+msgid "Fullwidth"
+msgstr ""
+
+#: src/blocks/icon/index.js:123
+msgctxt "block style"
+msgid "Outlined"
+msgstr ""
+
+#: src/blocks/icon/index.js:124
+msgctxt "block style"
+msgid "Filled"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:160
+msgctxt "block style"
+msgid "Wavy"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:161
+msgctxt "block style"
+msgid "Hills"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:162
+msgctxt "block style"
+msgid "Waves"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:163
+msgctxt "block style"
+msgid "Angled"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:164
+msgctxt "block style"
+msgid "Sloped"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:165
+msgctxt "block style"
+msgid "Rounded"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:166
+msgctxt "block style"
+msgid "Triangle"
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:167
+msgctxt "block style"
+msgid "Pointed"
+msgstr ""
+
+#: src/blocks/social/index.js:38
+msgctxt "block style"
+msgid "Mask"
+msgstr ""
+
+#: src/blocks/social/index.js:39
+msgctxt "block style"
+msgid "Icon"
+msgstr ""
+
+#: src/blocks/social/index.js:40
+msgctxt "block style"
+msgid "Text"
+msgstr ""
+
+#: src/blocks/social/index.js:41
+msgctxt "block style"
+msgid "Icon & Text"
 msgstr ""
 
 #: src/blocks/features/feature/components/edit.js:31
@@ -2932,9 +2982,6 @@ msgstr ""
 #: includes/admin/class-coblocks-feedback.php:311
 #: includes/admin/class-coblocks-getting-started-page.php:36
 #: includes/admin/class-coblocks-getting-started-page.php:37
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:311
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:36
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:37
 msgid "CoBlocks"
 msgstr ""
 
@@ -2955,191 +3002,162 @@ msgid "https://www.godaddy.com"
 msgstr ""
 
 #: includes/class-coblocks-google-map-block.php:118
-#: build/coblocks/includes/class-coblocks-google-map-block.php:118
 msgid "Google Map API key for map rendering"
 msgstr ""
 
 #. translators: 1: Link to plugin homepage, 2: Link to WordPress.org rating page.
 #: includes/admin/class-coblocks-admin-footer.php:43
-#: build/coblocks/includes/admin/class-coblocks-admin-footer.php:43
 msgid "Thank you for using %1$s! Please <a href=\"%2$s\" target=\"_blank\">rate us on WordPress.org</a>."
 msgstr ""
 
 #. translators: Number of years
 #: includes/admin/class-coblocks-feedback.php:92
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:92
 msgid "%s years"
 msgstr ""
 
 #: includes/admin/class-coblocks-feedback.php:94
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:94
 msgid "a year"
 msgstr ""
 
 #. translators: Number of weeks
 #: includes/admin/class-coblocks-feedback.php:101
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:101
 msgid "%s weeks"
 msgstr ""
 
 #: includes/admin/class-coblocks-feedback.php:103
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:103
 msgid "a week"
 msgstr ""
 
 #. translators: Number of days
 #: includes/admin/class-coblocks-feedback.php:110
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:110
 msgid "%s days"
 msgstr ""
 
 #: includes/admin/class-coblocks-feedback.php:112
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:112
 msgid "a day"
 msgstr ""
 
 #. translators: Number of hours
 #: includes/admin/class-coblocks-feedback.php:119
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:119
 msgid "%s hours"
 msgstr ""
 
 #: includes/admin/class-coblocks-feedback.php:121
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:121
 msgid "an hour"
 msgstr ""
 
 #. translators: Number of minutes
 #: includes/admin/class-coblocks-feedback.php:128
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:128
 msgid "%s minutes"
 msgstr ""
 
 #: includes/admin/class-coblocks-feedback.php:130
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:130
 msgid "a minute"
 msgstr ""
 
 #. translators: Number of seconds
 #: includes/admin/class-coblocks-feedback.php:137
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:137
 msgid "%s seconds"
 msgstr ""
 
 #: includes/admin/class-coblocks-feedback.php:139
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:139
 msgid "a second"
 msgstr ""
 
 #. translators: 1. Name
 #: includes/admin/class-coblocks-feedback.php:271
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:271
 msgid "%s WordPress Plugin"
 msgstr ""
 
 #. translators: 1. Name
 #: includes/admin/class-coblocks-feedback.php:275
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:275
 msgid "Are you enjoying %s?"
 msgstr ""
 
 #. translators: 1. Name, 2. Time
 #: includes/admin/class-coblocks-feedback.php:278
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:278
 msgid "You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We'd really appreciate it!"
 msgstr ""
 
 #: includes/admin/class-coblocks-feedback.php:282
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:282
 msgid "Leave a Review"
 msgstr ""
 
 #: includes/admin/class-coblocks-feedback.php:283
-#: build/coblocks/includes/admin/class-coblocks-feedback.php:283
 msgid "No thanks / I already have"
 msgstr ""
 
 #: includes/admin/class-coblocks-getting-started-page.php:96
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:96
 msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
 msgstr ""
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
 #: includes/admin/class-coblocks-getting-started-page.php:102
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:102
 msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks %2$s, a %1$s page-builder experience %2$s, %1$s typography controls %2$s and a new %1$s Block Manager %2$s for turning off blocks."
 msgstr ""
 
 #: includes/admin/class-coblocks-getting-started-page.php:109
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:109
 msgid "Here are a few videos to help you get started:"
 msgstr ""
 
 #. translators: CoBlocks plugin name
 #: includes/admin/class-coblocks-getting-started-page.php:113
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:113
 msgid "Watch how to create your first page with %s"
 msgstr ""
 
 #: includes/admin/class-coblocks-getting-started-page.php:114
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:114
 msgid "Watch how to create your first page"
 msgstr ""
 
 #: includes/admin/class-coblocks-getting-started-page.php:116
 #: includes/admin/class-coblocks-getting-started-page.php:117
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:116
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:117
 msgid "Watch how to use the Row and Shape Divider blocks"
 msgstr ""
 
 #: includes/admin/class-coblocks-getting-started-page.php:119
 #: includes/admin/class-coblocks-getting-started-page.php:120
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:119
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:120
 msgid "Watch how to use the Media Card block"
 msgstr ""
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:128
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:128
 msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
 msgstr ""
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:139
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:139
 msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
 msgstr ""
 
 #: includes/admin/class-coblocks-getting-started-page.php:148
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:148
 msgid "Enjoy!"
 msgstr ""
 
 #: includes/admin/class-coblocks-getting-started-page.php:181
-#: build/coblocks/includes/admin/class-coblocks-getting-started-page.php:181
 msgid "Get started with CoBlocks here:"
 msgstr ""
 
-#: includes/class-coblocks-form.php:445
-#: build/coblocks/includes/class-coblocks-form.php:445
+#: includes/class-coblocks-form.php:68
+msgid "Google reCaptcha site key for form spam protection"
+msgstr ""
+
+#: includes/class-coblocks-form.php:80
+msgid "Google reCaptcha secret key for form spam protection"
+msgstr ""
+
+#: includes/class-coblocks-form.php:562
 msgid "Your message was sent:"
 msgstr ""
 
 #: includes/class-coblocks-block-settings.php:80
-#: build/coblocks/includes/class-coblocks-block-settings.php:80
 msgid "Enable or disable blocks"
 msgstr ""
 
 #: class-coblocks.php:77
 #: class-coblocks.php:89
-#: build/coblocks/class-coblocks.php:77
-#: build/coblocks/class-coblocks.php:89
 msgid "Cheating huh?"
 msgstr ""
 
-#: build/coblocks/src/blocks/social/index.php:139
 #: src/blocks/social/index.php:139
 msgid "Share on Linkedin"
 msgstr ""

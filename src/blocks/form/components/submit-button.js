@@ -16,7 +16,7 @@ const { InspectorControls,
 	ContrastChecker,
 	RichText,
 	withColors,
-} = wp.editor;
+} = wp.blockEditor;
 
 const { getComputedStyle } = window;
 

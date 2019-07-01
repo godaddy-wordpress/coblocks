@@ -16,7 +16,7 @@ const { createBlock } = wp.blocks;
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
- * The contents of the array should never change.
+ * The contents of the array should never change. HEAD
  * The array should contain the name of each block that is allowed.
  * In standout block, the only block we allow is 'core/list'.
  *
@@ -52,7 +52,7 @@ class Edit extends Component {
 			count,
 		} = attributes;
 
-		const items = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
+		const items = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
 
 		return (
 			<Fragment>

@@ -9,7 +9,7 @@ import applyWithColors from './colors';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
+const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, withFallbackStyles, ToggleControl } = wp.components;
 
 /**

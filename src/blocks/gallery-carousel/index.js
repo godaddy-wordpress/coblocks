@@ -87,6 +87,8 @@ const settings = {
 
 	description: __( 'Display multiple images in a beautiful carousel gallery.' ),
 
+	category: 'coblocks-galleries',
+
 	keywords: keywords,
 
 	attributes: blockAttributes,

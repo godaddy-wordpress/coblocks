@@ -11,13 +11,18 @@ const { addFilter } = wp.hooks;
 const { Fragment } = wp.element;
 const { createHigherOrderComponent } = wp.compose;
 
+/**
+ * Inspector.
+ *
+ * @param {Object} props Block props.
+ * @return {Object} Settings for the Settings Sidebar.
+ */
 const Inspector = props => {
-	const { name, attributes } = props;
 	const allowedBlocks = [ 'core/heading', 'core/cover', 'core/button', 'core/list', 'core/quote' ];
 
 	// Display on the allowedBlocks only.
-	if ( ! allowedBlocks.includes( name ) ) {
-		attributes.textPanelHideSize = true;
+	if ( ! allowedBlocks.includes( props.name ) ) {
+		props.attributes.textPanelHideSize = true;
 	} else {
 		attributes.textPanelHeadingFontSizes = true;
 	}
@@ -32,7 +37,7 @@ const Inspector = props => {
 
 	return (
 		<InspectorControls>
-			{ ColorSettings( props ) }
+			<ColorSettings { ...props } />
 		</InspectorControls>
 	);
 };
@@ -65,7 +70,7 @@ const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />
-				{ props.isSelected && allowedBlocks.includes( props.name ) && <Inspector { ...{ ...props } } /> }
+				{ props.isSelected && allowedBlocks.includes( props.name ) && <Inspector { ... { ...props } } /> }
 			</Fragment>
 		);
 	};

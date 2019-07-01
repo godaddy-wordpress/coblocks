@@ -1,12 +1,12 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
 Author URI: https://www.godaddy.com
 Plugin URI: https://www.coblocks.com
-Contributors: coblocks, richtabor, phpbits
+Contributors: coblocks, godaddy, richtabor, phpbits, eherman24, jonathanbardo, jrtashjian, sbalakr2, dmatuszak
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.2.4
-Stable tag: 1.9.6
+Stable tag: 1.11.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -36,6 +36,7 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Click to Tweet Block
 * Dynamic Separator Block
 * Features Block
+* Food & Drinks Block (New!)
 * Form Block (New!)
 * Gif Block
 * GitHub Gist Block
@@ -67,12 +68,6 @@ Each of the WordPress blocks within CoBlocks have been precisely fined tuned to 
 ## Custom Typography Controls
 The breakthrough Typography Control Panel within CoBlocks lets you design web pages with alluring typographic elements. <strong>Set fonts, sizes, weights, transformations and more</strong>, in our CoBlocks blocks, <em>and</em> in core WordPress blocks.
 
-## Turn off blocks with the Block Manager
-Easily toggle off any WordPress block in the Gutenberg editor with the new CoBlocks Block Manager. No more unnecessary WordPress Gutenberg blocks standing in the way for you, or your clients.
-
-= Watch it in action =
-https://www.youtube.com/watch?v=0v9rXLDv-FM
-
 ## Going beyond Gutenberg blocks
 The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks make beautiful websites easily. These newest releases of CoBlocks is the ultimate expression of that vision.
 
@@ -96,7 +91,6 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 3. Drag to resize and then nest CoBlocks Row blocks
 4. Design with the CoBlocks Typography Control Panel
 5. Add CoBlocks core blocks to pages
-6. Disable blocks with the Block Manager
 
 == Installation ==
 
@@ -125,6 +119,33 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 Please reach out via the contact form at the bottom right of [our website](https://coblocks.com).
 
 == Changelog ==
+
+= 1.11.0 =
+* New: Support for Gutenberg 6.0 🎊
+* New: Add new Food & Drinks block for restaurants and eateries to create menus with
+* New: Add support for individual gallery links for images [Stacked and Masonry blocks]
+* New: Add support for opening gallery links in a new tab [Stacked and Masonry blocks]
+* New: Add new category in the block inserter for gallery blocks
+* New: Add filter to nest Getting Started page in an admin parent menu
+* New: Add support for double-clicking a rendered map to bring up the location editor [Map block]
+* Tweak: Improve Gallery Block Icons
+* Tweak: Rename the "Social" block to the "Share" block [Share block]
+* Tweak: Update Facebook icon to new brand guidelines [Share block]
+* Tweak: Improved Row Block selected state in older versions of Gutenberg
+* Fix: Resole duplicate Google map script enqueued in editor [Map block]
+
+= 1.10.0 =
+* New: Add easy mode to the Google Map block without an API key requirement
+* New: Add reCAPCHTA support to the Form block
+* New: Add admin color scheme support for UI elements within CoBlocks
+* New: Add image reordering to gallery blocks
+* New: Add new "Circular" style to the Social block
+* New: Add official support for Gutenberg 5.8 🎊
+* Tweak: Clean up SASS variables
+* Tweak: Remove block mover from the Media Card block
+* Fix: Resolve Pricing Table outlines issue in Gutenberg 5.7+
+* Fix: Resolve Hero block layout issue
+* Fix: Resolve "normal" text transform issue within the editor
 
 = 1.9.6 =
 * Fix: Resolve issue with missing Gutenberg component

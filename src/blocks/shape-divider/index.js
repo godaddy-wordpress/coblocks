@@ -17,9 +17,9 @@ import dividers from './components/dividers';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { getColorClassName } = wp.editor;
+const { getColorClassName } = wp.blockEditor;
 
 /**
  * Return the appropriate SVG for the block style.
@@ -157,14 +157,14 @@ const settings = {
 	},
 
 	styles: [
-		{ name: 'wavy', label: __( 'Wavy' ), isDefault: true },
-		{ name: 'hills', label: __( 'Hills' ) },
-		{ name: 'waves', label: __( 'Waves' ) },
-		{ name: 'angled', label: __( 'Angled' ) },
-		{ name: 'sloped', label: __( 'Sloped' ) },
-		{ name: 'rounded', label: __( 'Rounded' ) },
-		{ name: 'triangle', label: __( 'Triangle' ) },
-		{ name: 'pointed', label: __( 'Pointed' ) },
+		{ name: 'wavy', label: _x( 'Wavy', 'block style' ), isDefault: true },
+		{ name: 'hills', label: _x( 'Hills', 'block style' ) },
+		{ name: 'waves', label: _x( 'Waves', 'block style' ) },
+		{ name: 'angled', label: _x( 'Angled', 'block style' ) },
+		{ name: 'sloped', label: _x( 'Sloped', 'block style' ) },
+		{ name: 'rounded', label: _x( 'Rounded', 'block style' ) },
+		{ name: 'triangle', label: _x( 'Triangle', 'block style' ) },
+		{ name: 'pointed', label: _x( 'Pointed', 'block style' ) },
 	],
 
 	transforms: {

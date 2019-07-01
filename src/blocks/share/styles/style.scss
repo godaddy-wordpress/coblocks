@@ -1,0 +1,232 @@
+// Supported icons.
+$icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin, #0077b5), (tumblr, #34465d), (reddit, #ff5700), (email, #2880e5),
+	(google, #dd4b39);
+
+.wp-block-coblocks-social {
+	// Fallback color to match core button block.
+	.wp-block-button__link:not(.has-background) {
+		background-color: #31373c;
+	}
+
+	// Fallback icon color.
+	.wp-block-button__link:not(.has-text-color) {
+		color: $white;
+	}
+
+	ul,
+	li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		display: inline-block;
+		margin: 3px 6px 3px 0 !important;
+		vertical-align: middle;
+
+		&::before,
+		&::after {
+			display: none !important;
+		}
+	}
+
+	&__button {
+		align-items: center;
+		border: none;
+		border-radius: 0;
+		box-shadow: none !important;
+		cursor: pointer;
+		display: inline-flex;
+		font-size: 15px;
+		justify-content: center;
+		line-height: 1;
+		padding: 10px 14px;
+		text-align: center;
+		text-decoration: none !important;
+		white-space: normal;
+		word-break: break-all;
+
+		&:first-of-type {
+			margin-left: 0 !important;
+		}
+
+		&:last-of-type {
+			margin-right: 0 !important;
+		}
+	}
+
+	&__text,
+	&__text:hover,
+	&:not(.is-style-mask) &__icon,
+	&:not(.is-style-mask) &__icon:hover {
+		color: inherit;
+	}
+
+	&__icon + &__text {
+		margin-left: 8px;
+	}
+
+	&__icon {
+		background-color: currentColor;
+		background-repeat: no-repeat;
+		background-size: cover;
+		display: inline-block;
+		height: 18px;
+		width: 18px;
+	}
+
+	&__button--facebook &__icon + &__text,
+	&__button--linkedin &__icon + &__text {
+		margin-left: 9px;
+	}
+
+	&__button--tumblr &__icon + &__text {
+		margin-left: 4px;
+	}
+
+	@each $icon, $color in $icons {
+		&__button--#{$icon} &__icon {
+			mask-image: url(images/social/#{$icon}.svg);
+		}
+	}
+
+	&.has-colors &__text,
+	&.has-colors:not(.is-style-mask) &__icon {
+		color: $white;
+	}
+
+	// Social Colors.
+	&.has-colors {
+		@each $icon, $color in $icons {
+			.wp-block-coblocks-social__button--#{$icon} {
+				background-color: $color !important;
+			}
+		}
+
+		@each $icon, $color in $icons {
+			&.is-style-mask .wp-block-coblocks-social__button--#{$icon} {
+				color: $color !important;
+			}
+		}
+	}
+
+	// Default style.
+	&:not(.is-style-text):not(.is-style-icon-and-text) {
+		.wp-block-coblocks-social__button {
+			padding: 11px 24px;
+
+			&:active {
+				animation: pulse 200ms;
+				animation-timing-function: ease-out;
+				animation-fill-mode: none;
+			}
+		}
+
+		.wp-block-coblocks-social__text {
+			clip: rect(1px, 1px, 1px, 1px);
+			height: 1px;
+			overflow: hidden;
+			position: absolute;
+			width: 1px;
+			word-wrap: normal;
+		}
+	}
+
+	// Text only style.
+	&.is-style-text {
+		.wp-block-coblocks-social__icon {
+			display: none;
+		}
+
+		.wp-block-coblocks-social__text {
+			margin-left: 0;
+		}
+	}
+
+	// Mask style.
+	&.is-style-mask {
+		li,
+		&.has-button-size-sml li {
+			margin: 0 7px !important;
+		}
+
+		.wp-block-coblocks-social__button {
+			background: transparent !important;
+			display: block;
+			padding: 0 !important;
+		}
+
+		.wp-block-coblocks-social__text {
+			margin-left: 0;
+		}
+
+		&:not(.has-colors) .wp-block-button__link:not(.has-text-color) {
+			color: #31373c;
+		}
+	}
+
+	// Sizes.
+	&.has-button-size-sml {
+		li {
+			margin: 2px 4px 2px 0 !important;
+		}
+
+		// Icon only style.
+		&:not(.is-style-text):not(.is-style-icon-and-text):not(.is-style-circular) .wp-block-coblocks-social__button {
+			padding: 8px 16px;
+		}
+
+		.wp-block-coblocks-social__icon {
+			height: 16px;
+			width: 16px;
+		}
+
+		.wp-block-coblocks-social__button {
+			font-size: 13px;
+			padding: 10px 12px;
+		}
+	}
+
+	&.has-button-size-lrg {
+		// Icon only style.
+		&:not(.is-style-text):not(.is-style-icon-and-text):not(.is-style-circular) .wp-block-coblocks-social__button {
+			padding: 14px 32px;
+		}
+
+		.wp-block-coblocks-social__icon {
+			height: 20px;
+			width: 20px;
+		}
+
+		.wp-block-coblocks-social__button {
+			font-size: 16px;
+			padding: 12px 16px;
+		}
+	}
+
+	// Circular style.
+	&.is-style-circular {
+		.wp-block-coblocks-social__button {
+			border-radius: 100%;
+		}
+
+		.wp-block-coblocks-social__button:not(.has-padding) {
+			padding: 14px !important;
+		}
+	}
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+	}
+
+	15% {
+		transform: scale(0.95);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}

@@ -74,7 +74,7 @@ const enhance = compose(
 	 * @return {Component} Enhanced component with merged state data props.
 	 */
 	withSelect( ( select ) => {
-		return { selected: select( 'core/editor' ).getSelectedBlock(), select: select };
+		return { selected: select( 'core/block-editor' ).getSelectedBlock(), select: select };
 	} )
 );
 
@@ -82,8 +82,8 @@ const withFontSettings = createHigherOrderComponent( ( BlockListBlock ) => {
 	return enhance( ( { select, ...props } ) => {
 		let wrapperProps 	= props.wrapperProps;
 		let customData 	 	= {};
-		const attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
-		const blockName		= select( 'core/editor' ).getBlockName( props.clientId );
+		const attributes 	= select( 'core/block-editor' ).getBlock( props.clientId ).attributes;
+		const blockName		= select( 'core/block-editor' ).getBlockName( props.clientId );
 
 		if ( allowedBlocks.includes( blockName ) ) {
 			const { customFontSize, fontFamily, lineHeight, fontWeight, letterSpacing, textTransform, customTextColor } = attributes;

@@ -25,7 +25,7 @@ const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withNotices, ResizableBox, Spinner } = wp.components;
-const { withColors, RichText } = wp.editor;
+const { withColors, RichText } = wp.blockEditor;
 const { isBlobURL } = wp.blob;
 
 /**
@@ -208,7 +208,6 @@ class GalleryCarouselEdit extends Component {
 		const innerStyles = {
 			...BackgroundStyles( attributes ),
 			backgroundColor: backgroundColor.color,
-			'is-selected': isSelected,
 		};
 
 		const captionStyles = {
@@ -309,6 +308,7 @@ class GalleryCarouselEdit extends Component {
 												caption={ img.caption }
 												aria-label={ ariaLabel }
 												supportsCaption={ false }
+												supportsMoving={ false }
 											/>
 										</div>
 									);

@@ -92,13 +92,17 @@ class CoBlocks_Google_Map_Block {
 				true
 			);
 
-			wp_enqueue_script(
-				$this->_slug . '-google-maps-api',
-				'https://maps.googleapis.com/maps/api/js?key=' . esc_attr( $key ),
-				array( $this->_slug . '-google-maps' ),
-				$this->_version,
-				true
-			);
+			if ( ! is_admin() ) {
+
+				wp_enqueue_script(
+					$this->_slug . '-google-maps-api',
+					'https://maps.googleapis.com/maps/api/js?key=' . esc_attr( $key ),
+					array( $this->_slug . '-google-maps' ),
+					$this->_version,
+					true
+				);
+
+			}
 
 			wp_localize_script( $this->_slug . '-google-maps', 'baAtts', array( 'url' => $this->_url ) );
 		}

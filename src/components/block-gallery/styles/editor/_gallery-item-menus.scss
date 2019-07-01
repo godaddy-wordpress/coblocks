@@ -1,0 +1,52 @@
+.components-coblocks-gallery-item__remove-menu {
+	background-color: theme(primary);
+	display: inline-flex;
+	padding: 2px;
+	position: absolute;
+	right: 2px;
+	top: 2px;
+	transition: padding 0.1s linear;
+	z-index: 20;
+
+	svg {
+		position: relative;
+	}
+}
+
+.components-coblocks-gallery-item__move-menu {
+	display: inline-flex;
+	left: 2px;
+	padding: 2px;
+	position: absolute;
+	top: 2px;
+	z-index: 20;
+
+	.components-button {
+		color: transparent;
+	}
+
+	.is-selected & {
+		background-color: theme(primary);
+
+		.components-button {
+			color: $white;
+		}
+
+		.components-button:focus {
+			color: inherit;
+		}
+	}
+}
+
+.coblocks-gallery-item__button {
+	box-shadow: none !important;
+	color: $white;
+	padding: 0;
+
+	&:not(:disabled):not([aria-disabled="true"]):hover {
+		background: theme(primary) !important;
+		border-color: theme(primary) !important;
+		color: $white !important;
+		opacity: 0.75;
+	}
+}

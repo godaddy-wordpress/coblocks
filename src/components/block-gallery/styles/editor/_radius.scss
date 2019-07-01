@@ -5,10 +5,14 @@
 			border-radius: #{$i}px;
 		}
 
-		.components-coblocks-remove-gallery-item-button-button,
-		.components-coblocks-remove-gallery-item-button-wrapper {
+		.components-coblocks-gallery-item__remove-menu {
 			border-bottom-left-radius: #{$i}px !important;
 			border-top-right-radius: #{$i}px !important;
+		}
+
+		.components-coblocks-gallery-item__move-menu {
+			border-bottom-right-radius: #{$i}px !important;
+			border-top-left-radius: #{$i}px !important;
 		}
 
 		.coblocks-gallery--figure .is-appender,
@@ -25,7 +29,8 @@
 
 @for $i from 13 through 20 {
 	.has-border-radius-#{ $i } {
-		.components-coblocks-remove-gallery-item-button-wrapper {
+		.components-coblocks-gallery-item__remove-menu,
+		.components-coblocks-gallery-item__move-menu {
 			padding: 6px;
 
 			svg {

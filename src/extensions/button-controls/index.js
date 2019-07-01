@@ -15,9 +15,9 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { addFilter } = wp.hooks;
-const { Fragment }	= wp.element;
-const { InspectorAdvancedControls }	= wp.editor;
-const { ToggleControl }	= wp.components;
+const { Fragment } = wp.element;
+const { InspectorAdvancedControls } = wp.blockEditor;
+const { ToggleControl } = wp.components;
 const { compose, createHigherOrderComponent } = wp.compose;
 
 const allowedBlocks = [ 'core/button' ];
@@ -54,7 +54,6 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 			name,
 			attributes,
 			setAttributes,
-			isSelected,
 		} = props;
 
 		const {
@@ -66,19 +65,16 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />
-				{ isSelected &&
+				{ hasFullwidth &&
 					<InspectorAdvancedControls>
-						{ hasFullwidth &&
-							<ToggleControl
-								label={ __( 'Display Fullwidth' ) }
-								checked={ !! isFullwidth }
-								onChange={ () => setAttributes( { isFullwidth: ! isFullwidth } ) }
-								help={ !! isFullwidth ? __( 'Displaying as full width.' ) : __( 'Toggle to display button as full width.' ) }
-							/>
-						}
+						<ToggleControl
+							label={ __( 'Display Fullwidth' ) }
+							checked={ !! isFullwidth }
+							onChange={ () => setAttributes( { isFullwidth: ! isFullwidth } ) }
+							help={ !! isFullwidth ? __( 'Displaying as full width.' ) : __( 'Toggle to display button as full width.' ) }
+						/>
 					</InspectorAdvancedControls>
 				}
-
 			</Fragment>
 		);
 	};
@@ -103,12 +99,11 @@ function applySpacingClass( extraProps, blockType, attributes ) {
 			extraProps.className = classnames( extraProps.className, 'w-100' );
 		}
 	}
-
 	return extraProps;
 }
 
 /**
- * Override the default block element to add	wrapper props.
+ * Override the default block element to add wrapper props.
  *
  * @param  {Function} BlockListBlock Original component
  * @return {Function} Wrapped component
@@ -127,7 +122,7 @@ const enhance = compose(
 	 * @return {Component} Enhanced component with merged state data props.
 	 */
 	withSelect( ( select ) => {
-		return { selected: select( 'core/editor' ).getSelectedBlock(), select: select };
+		return { selected: select( 'core/block-editor' ).getSelectedBlock(), select: select };
 	} )
 );
 
@@ -135,8 +130,8 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 	return enhance( ( { select, ...props } ) => {
 		let wrapperProps 	= props.wrapperProps;
 		let customData 	 	= {};
-		const attributes 		= select( 'core/editor' ).getBlock( props.clientId ).attributes;
-		const blockName		= select( 'core/editor' ).getBlockName( props.clientId );
+		const attributes 	= select( 'core/block-editor' ).getBlock( props.clientId ).attributes;
+		const blockName		= select( 'core/block-editor' ).getBlockName( props.clientId );
 
 		const hasFullwidth = allowedBlocks.includes( blockName );
 
@@ -155,7 +150,9 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 			};
 		}
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+		return (
+			<BlockListBlock { ...props } wrapperProps={ wrapperProps } />
+		);
 	} );
 }, 'addEditorBlockAttributes' );
 

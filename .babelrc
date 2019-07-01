@@ -1,8 +1,55 @@
 {
-	"presets": [ "@wordpress/babel-preset-default" ],
-	"plugins": [
-		[ "@wordpress/babel-plugin-makepot", { "output": "languages/coblocks-js.pot" } ],
-		[ "transform-class-properties" ]
+	"presets": [
+		[
+			"env",
+				{
+					"modules": false,
+					"targets": {
+					"browsers": [
+						"last 2 Chrome versions",
+						"last 2 Firefox versions",
+						"last 2 Safari versions",
+						"last 2 iOS versions",
+						"last 1 Android version",
+						"last 1 ChromeAndroid version",
+						"ie 11"
+					]
+				}
+			}
+		],
+		[
+			"@wordpress/babel-preset-default"
+		]
 	],
-
+	"plugins": [
+		[
+			"@wordpress/babel-plugin-makepot",
+			{
+				"output": "languages/coblocks-js.pot"
+			}
+		],
+		[
+			"transform-class-properties"
+		],
+		[
+			"transform-object-rest-spread",
+			{
+				"useBuiltIns": true
+			}
+		],
+		[
+			"transform-react-jsx",
+			{
+				"pragma": "wp.element.createElement"
+			}
+		],
+		[
+			"transform-runtime",
+			{
+				"helpers": false,
+				"polyfill": false,
+				"regenerator": true
+			}
+		]
+	]
 }

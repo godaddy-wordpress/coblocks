@@ -3,10 +3,10 @@
  */
 import { title } from './';
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
-import linkOptions from '../../components/block-gallery/options/link-options';
 import captionOptions from '../../components/block-gallery/options/caption-options';
 import SizeControl from '../../components/size-control';
 import { BackgroundPanel } from '../../components/background';
+import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 
 /**
  * WordPress dependencies
@@ -23,7 +23,6 @@ class Inspector extends Component {
 	constructor() {
 		super( ...arguments );
 		this.setSizeControl = this.setSizeControl.bind( this );
-		this.setLinkTo = this.setLinkTo.bind( this );
 		this.setRadiusTo = this.setRadiusTo.bind( this );
 		this.setCaptionStyleTo = this.setCaptionStyleTo.bind( this );
 		this.getColors = this.getColors.bind( this );
@@ -35,10 +34,6 @@ class Inspector extends Component {
 				radius: 0,
 			} );
 		}
-	}
-
-	setLinkTo( value ) {
-		this.props.setAttributes( { linkTo: value } );
 	}
 
 	setRadiusTo( value ) {
@@ -164,17 +159,7 @@ class Inspector extends Component {
 					/>
 					}
 				</PanelBody>
-				{ ! lightbox && <PanelBody
-					title={ __( 'Link Settings' ) }
-					initialOpen={ false }
-				>
-					<SelectControl
-						label={ __( 'Link To' ) }
-						value={ linkTo }
-						options={ linkOptions }
-						onChange={ this.setLinkTo }
-					/>
-				</PanelBody> }
+				<GalleryLinkSettings { ...this.props } />
 				<BackgroundPanel { ...this.props }
 					hasCaption={ true }
 					hasOverlay={ true }

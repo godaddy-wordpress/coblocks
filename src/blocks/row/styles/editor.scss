@@ -54,8 +54,7 @@
 
 		// Adjust the individual column block.
 		> [data-type="coblocks/column"] {
-			display: flex;
-			flex-direction: column;
+			margin-left: 0;
 
 			.wp-block-coblocks-column {
 				margin: 0 !important;
@@ -83,11 +82,7 @@
 
 			> .editor-block-list__block-edit {
 				margin-bottom: 0;
-				margin-top: -12px;
-
-				&::before {
-					top: -1px;
-				}
+				margin-top: 0;
 
 				> [data-block] {
 					margin-bottom: 0;
@@ -174,7 +169,7 @@
 
 	// Width tag that pops up.
 	.coblocks-resizeable-width {
-		background: $blue;
+		background: theme(primary);
 		border: 2px solid $white;
 		border-radius: 4px;
 		color: $white;
@@ -213,7 +208,7 @@
 
 		&::after {
 			border-color: rgba(0, 133, 186, 0);
-			border-top-color: $blue;
+			border-top-color: theme(primary);
 			border-width: 4px;
 			margin-left: -4px;
 		}

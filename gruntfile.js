@@ -129,10 +129,10 @@ module.exports = function( grunt ) {
 			},
 			wp_org_assets: {
 				expand: true,
-				cwd: 'wp-org-assets/',
+				cwd: '.wordpress-org/',
 				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
-				dest: 'wp-org-assets/',
-			},
+				dest: '.wordpress-org/',
+			}
 		},
 
 		watch: {

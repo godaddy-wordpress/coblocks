@@ -51,11 +51,6 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Typography Component
  */
 class TypographyControls extends Component {
-	constructor() {
-		super( ...arguments );
-		this.setState( { forceClose: false } );
-	}
-
 	render() {
 		const {
 			attributes,

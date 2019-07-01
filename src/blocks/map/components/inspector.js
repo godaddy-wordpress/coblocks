@@ -13,7 +13,7 @@ import { styleOptions } from './styles';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls } = wp.editor;
+const { InspectorControls } = wp.blockEditor;
 const { PanelBody, ToggleControl, RangeControl, TextControl, Button, ButtonGroup, ExternalLink } = wp.components;
 const { ENTER } = wp.keycodes;
 
@@ -129,6 +129,16 @@ class Inspector extends Component {
 									max={ 20 }
 									step={ 1 }
 								/>
+								<RangeControl
+									label={ __( 'Height in pixels' ) }
+									aria-label={ __( 'Height for the map in pixels' ) }
+									value={ height }
+									onChange={ () => setAttributes( { height: parseInt( event.target.value, 10 ) } ) }
+									className="components-block-coblocks-height__custom-input"
+									min={ 200 }
+									max={ 1000 }
+									step={ 10 }
+								/>
 								{
 									!! apiKey &&
 									<RangeControl
@@ -141,16 +151,6 @@ class Inspector extends Component {
 										step={ 2 }
 									/>
 								}
-								<RangeControl
-									label={ __( 'Height in pixels' ) }
-									aria-label={ __( 'Height for the map in pixels' ) }
-									value={ height }
-									onChange={ ( event ) => setAttributes( { height: parseInt( event.target.value, 10 ) } ) }
-									className="components-block-coblocks-height__custom-input"
-									min={ 200 }
-									max={ 1000 }
-									step={ 10 }
-								/>
 								{
 									!! apiKey &&
 									<ToggleControl
@@ -197,6 +197,7 @@ class Inspector extends Component {
 					<PanelBody
 						title={ __( 'Google Maps API Key' ) }
 						initialOpen={ false }
+						className="components-coblocks-block-settings-sidebar"
 					>
 						<p>{ __( 'Add your Google Maps API key. Updating this API key will set all your maps to use the new key.' ) }</p>
 						{ apiKey === '' &&

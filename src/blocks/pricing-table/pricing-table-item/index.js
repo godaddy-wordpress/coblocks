@@ -15,7 +15,7 @@ import icons from './../../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { RichText, getColorClassName, InnerBlocks } = wp.editor;
+const { RichText, getColorClassName, InnerBlocks } = wp.blockEditor;
 
 /**
  * Block constants

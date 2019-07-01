@@ -6,7 +6,7 @@
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { BlockControls, AlignmentToolbar } = wp.editor;
+const { BlockControls, AlignmentToolbar } = wp.blockEditor;
 
 class Controls extends Component {
 	render() {

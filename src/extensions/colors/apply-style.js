@@ -1,22 +1,23 @@
+/**
+ * Apply styling
+ *
+ * @param {Object} attributes the passed attributes.
+ * @returns {Object} the style object.
+ */
 function applyStyle( attributes ) {
-	const {
-		color,
-		backgroundColor,
-		customTextColor,
-		customBackgroundColor,
-	} = attributes;
+	const { customTextColor, customBackgroundColor } = attributes;
 
 	const style = {
-		color: color || null,
-		backgroundColor: backgroundColor || null,
+		color: customTextColor || null,
+		backgroundColor: customBackgroundColor || null,
 	};
 
-	if ( typeof customTextColor !== 'undefined' ) {
-		style.color = customTextColor || null;
+	if ( typeof attributes.customTextColor !== 'undefined' ) {
+		style.color = attributes.customTextColor || null;
 	}
 
-	if ( typeof customBackgroundColor !== 'undefined' ) {
-		style.backgroundColor = customBackgroundColor || null;
+	if ( typeof attributes.customBackgroundColor !== 'undefined' ) {
+		style.backgroundColor = attributes.customBackgroundColor || null;
 	}
 
 	return style;
