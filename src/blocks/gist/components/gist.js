@@ -35,8 +35,8 @@ export default class Gist extends Component {
 		return 0;
 	}
 
-	static __nextGist () {
-		return "embed_gist_callback_" + this.__gistCallbackId++;
+	static __nextGist() {
+		return 'embed_gist_callback_' + this.__gistCallbackId++;
 	}
 
 	// The Gist JSON data includes a stylesheet file.

@@ -126,7 +126,7 @@ class FoodItem extends Component {
 	};
 
 	setColumns = ( value ) => {
-		const { attributes, setAttributes } = this.props;
+		const { setAttributes } = this.props;
 
 		setAttributes( { columns: parseInt( value ) } );
 	};

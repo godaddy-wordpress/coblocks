@@ -24,16 +24,16 @@ const Inspector = props => {
 	if ( ! allowedBlocks.includes( props.name ) ) {
 		props.attributes.textPanelHideSize = true;
 	} else {
-		attributes.textPanelHeadingFontSizes = true;
+		props.attributes.textPanelHeadingFontSizes = true;
 	}
 
 	// Show line height on appropriate blocks.
-	if ( ! [ 'core/heading', 'core/paragraph', 'core/cover', 'core/button' ].includes( name ) ) {
-		attributes.textPanelLineHeight = true;
+	if ( ! [ 'core/heading', 'core/paragraph', 'core/cover', 'core/button' ].includes( props.name ) ) {
+		props.attributes.textPanelLineHeight = true;
 	}
 
-	attributes.textPanelHideColor = true;
-	attributes.textPanelShowSpacingControls = true;
+	props.attributes.textPanelHideColor = true;
+	props.attributes.textPanelShowSpacingControls = true;
 
 	return (
 		<InspectorControls>

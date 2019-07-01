@@ -91,6 +91,8 @@ const settings = {
 			gutter,
 			gutterMobile,
 			images,
+			target,
+			rel,
 			linkTo,
 			shadow,
 		} = attributes;

@@ -133,7 +133,7 @@ class Inspector extends Component {
 									label={ __( 'Height in pixels' ) }
 									aria-label={ __( 'Height for the map in pixels' ) }
 									value={ height }
-									onChange={ () => setAttributes( { height: parseInt( event.target.value, 10 ) } ) }
+									onChange={ ( event ) => setAttributes( { height: parseInt( event.target.value, 10 ) } ) }
 									className="components-block-coblocks-height__custom-input"
 									min={ 200 }
 									max={ 1000 }

@@ -3,7 +3,6 @@
  */
 import { title } from './';
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
-import linkOptions from '../../components/block-gallery/options/link-options';
 import SizeControl from '../../components/size-control';
 import { BackgroundPanel } from '../../components/background';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
@@ -16,7 +15,7 @@ const { Component } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
 const { InspectorControls, FontSizePicker, withFontSizes, PanelColorSettings } = wp.blockEditor;
-const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
+const { PanelBody, RangeControl, ToggleControl } = wp.components;
 
 /**
  * Inspector controls
@@ -123,9 +122,7 @@ class Inspector extends Component {
 
 		const {
 			images,
-			linkTo,
 			gutter,
-			lightbox,
 			fullwidth,
 			radius,
 			shadow,

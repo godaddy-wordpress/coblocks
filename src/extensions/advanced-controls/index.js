@@ -89,21 +89,11 @@ function addAttributes( settings ) {
  * @param {function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
-const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
-		const {
-			name,
-			clientId,
-			attributes,
-			setAttributes,
-			isSelected,
-		} = props;
+const withAdvancedControls = createHigherOrderComponent( BlockEdit => {
+	return props => {
+		const { name, clientId, attributes, setAttributes, isSelected } = props;
 
-		const {
-			isStackedOnMobile,
-			noBottomMargin,
-			noTopMargin,
-		} = attributes;
+		const { isStackedOnMobile, noBottomMargin, noTopMargin } = attributes;
 
 		const hasStackedControl = hasBlockSupport( name, 'stackedOnMobile' );
 		const withBlockSpacing = hasBlockSupport( name, 'coBlocksSpacing' );
@@ -111,22 +101,43 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />
-				{ isSelected &&
+				{ isSelected && (
 					<InspectorAdvancedControls>
 						{ hasStackedControl && (
 							<ToggleControl
 								label={ __( 'Stack on Mobile' ) }
 								checked={ !! isStackedOnMobile }
-								onChange={ () => setAttributes( { isStackedOnMobile: ! isStackedOnMobile } ) }
-								help={ !! isStackedOnMobile ? __( 'Responsiveness is enabled.' ) : __( 'Toggle to stack elements on top of each other on smaller viewports.' ) }
+								onChange={ () =>
+									setAttributes( { isStackedOnMobile: ! isStackedOnMobile } )
+								}
+								help={
+									!! isStackedOnMobile ?
+										__( 'Responsiveness is enabled.' ) :
+										__(
+											'Toggle to stack elements on top of each other on smaller viewports.'
+										)
+								}
 							/>
 						) }
 						{ withBlockSpacing && (
 							<ToggleControl
 								label={ __( 'Remove Top Spacing' ) }
 								checked={ !! noTopMargin }
-								onChange={ () => setAttributes( { noTopMargin: ! noTopMargin, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } ) }
-								help={ !! noTopMargin ? __( 'Top margin is removed on this block.' ) : __( 'Toggle to remove any margin applied to the top of this block.' ) }
+								onChange={ () =>
+									setAttributes( {
+										noTopMargin: ! noTopMargin,
+										marginTop: 0,
+										marginTopTablet: 0,
+										marginTopMobile: 0,
+									} )
+								}
+								help={
+									!! noTopMargin ?
+										__( 'Top margin is removed on this block.' ) :
+										__(
+											'Toggle to remove any margin applied to the top of this block.'
+										)
+								}
 							/>
 						) }
 						{ withBlockSpacing && (
@@ -134,17 +145,33 @@ const withAdvancedControls = createHigherOrderComponent( ( BlockEdit ) => {
 								label={ __( 'Remove Bottom Spacing' ) }
 								checked={ !! noBottomMargin }
 								onChange={ () => {
-									setAttributes( { noBottomMargin: ! noBottomMargin, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0 } );
+									setAttributes( {
+										noBottomMargin: ! noBottomMargin,
+										marginBottom: 0,
+										marginBottomTablet: 0,
+										marginBottomMobile: 0,
+									} );
 
-									const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
+									const nextBlockClientId = wp.data
+										.select( 'core/editor' )
+										.getNextBlockClientId( clientId );
 									if ( nextBlockClientId && ! noBottomMargin ) {
-										wp.data.dispatch( 'core/editor' ).updateBlockAttributes( nextBlockClientId, { noTopMargin: ! noTopMargin, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } );
+										wp.data
+											.dispatch( 'core/editor' )
+											.updateBlockAttributes( nextBlockClientId, {
+												noTopMargin: ! noTopMargin,
+												marginTop: 0,
+												marginTopTablet: 0,
+												marginTopMobile: 0,
+											} );
 									}
 								} }
 								help={
 									!! noBottomMargin ?
 										__( 'Bottom margin is removed on this block.' ) :
-										__( 'Toggle to remove any margin applied to the bottom of this block.' )
+										__(
+											'Toggle to remove any margin applied to the bottom of this block.'
+										)
 								}
 							/>
 						) }
@@ -201,17 +228,21 @@ const enhance = compose(
 	 *
 	 * @return {Component} Enhanced component with merged state data props.
 	 */
-	withSelect( ( select ) => {
-		return { selected: select( 'core/block-editor' ).getSelectedBlock(), select: select };
+	withSelect( select => {
+		return {
+			selected: select( 'core/block-editor' ).getSelectedBlock(),
+			select: select,
+		};
 	} )
 );
 
-const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
+const addEditorBlockAttributes = createHigherOrderComponent( BlockListBlock => {
 	return enhance( ( { select, ...props } ) => {
-		let wrapperProps 	= props.wrapperProps;
-		let customData 	 	= {};
-		const attributes 	= select( 'core/block-editor' ).getBlock( props.clientId ).attributes;
-		const blockName		= select( 'core/block-editor' ).getBlockName( props.clientId );
+		let wrapperProps = props.wrapperProps;
+		let customData = {};
+		const attributes = select( 'core/block-editor' ).getBlock( props.clientId )
+			.attributes;
+		const blockName = select( 'core/block-editor' ).getBlockName( props.clientId );
 
 		const withBlockSpacing = hasBlockSupport( blockName, 'coBlocksSpacing' );
 		let withAlignSupport = hasBlockSupport( blockName, 'align' );
@@ -237,7 +268,9 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 		}
 
 		if ( withAlignSupport ) {
-			customData = Object.assign( customData, { 'data-coblocks-align-support': 1 } );
+			customData = Object.assign( customData, {
+				'data-coblocks-align-support': 1,
+			} );
 		}
 
 		if ( withBlockSpacing || withAlignSupport ) {
