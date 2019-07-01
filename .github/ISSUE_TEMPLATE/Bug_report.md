@@ -28,15 +28,11 @@ Mark completed items with an [x].
 
 -   [ ] This bug happens with no other plugins activated
 -   [ ] This bug happens with a default WordPress theme active
--   [ ] This bug happens without the Gutenberg plugin active
+-   [ ] This bug happens **without** the Gutenberg plugin active
 -   [ ] I can reproduce this bug consistently using the steps above
 
-**WordPress Environment**
-
-<details>
-```
+**WordPress Version**
 What version of WordPress are you using?
+
+**Gutenberg Version**
 What version of the Gutenberg plugin are you using? (If any)
-```
-</details>
-```
