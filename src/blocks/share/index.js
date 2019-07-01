@@ -16,6 +16,7 @@ const { __, _x } = wp.i18n;
  * Block constants
  */
 const { name } = metadata;
+
 const title = __( 'Share' );
 
 const icon = icons.social;
@@ -43,10 +44,6 @@ const settings = {
 	],
 
 	edit,
-
-	save() {
-		return null;
-	},
 };
 
 export { name, title, icon, settings, metadata };
