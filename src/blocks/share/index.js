@@ -43,6 +43,10 @@ const settings = {
 	],
 
 	edit,
+
+	save() {
+		return null;
+	},
 };
 
 export { name, title, icon, settings, metadata };
