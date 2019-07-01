@@ -31,7 +31,6 @@ const title = __( 'Features' );
 const icon = icons.features;
 
 const keywords = [
-	__( 'icons' ),
 	__( 'services' ),
 	__( 'coblocks' ),
 ];
