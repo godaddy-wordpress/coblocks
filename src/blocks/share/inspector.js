@@ -17,28 +17,10 @@ const { Component, Fragment } = wp.element;
 const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.blockEditor;
 const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles, CheckboxControl } = wp.components;
 
-const { getComputedStyle } = window;
-
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { backgroundColor, textColor } = ownProps;
-	const backgroundColorValue = backgroundColor && backgroundColor.color;
-	const textColorValue = textColor && textColor.color;
-	//avoid the use of querySelector if textColor color is known and verify if node is available.
-	const textNode = ! textColorValue && node ? node.querySelector( '[contenteditable="true"]' ) : null;
-	return {
-		fallbackBackgroundColor: backgroundColorValue || ! node ? undefined : getComputedStyle( node ).backgroundColor,
-		fallbackTextColor: textColor || ! textNode ? undefined : getComputedStyle( textNode ).color,
-	};
-} );
-
 /**
  * Inspector controls
  */
 class Inspector extends Component {
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	getHasColorsHelp( checked ) {
 		return checked ? __( 'Share button colors are enabled.' ) : __( 'Toggle to use official colors from each social media platform.' );
 	}
