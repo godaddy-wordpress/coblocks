@@ -3005,11 +3005,6 @@ msgstr ""
 msgid "Google Map API key for map rendering"
 msgstr ""
 
-#. translators: 1: Link to plugin homepage, 2: Link to WordPress.org rating page.
-#: includes/admin/class-coblocks-admin-footer.php:43
-msgid "Thank you for using %1$s! Please <a href=\"%2$s\" target=\"_blank\">rate us on WordPress.org</a>."
-msgstr ""
-
 #. translators: Number of years
 #: includes/admin/class-coblocks-feedback.php:92
 msgid "%s years"
