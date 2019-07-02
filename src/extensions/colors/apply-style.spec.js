@@ -6,12 +6,12 @@ import applyStyle from './apply-style';
 describe( 'colors/applyStyle', () => {
 	it( 'returns style attributes for block', () => {
 		const attributes = {
-			color: 'white',
-			backgroundColor: 'black',
+			customTextColor: 'white',
+			customBackgroundColor: 'black',
 		};
 		const expected = {
-			color: attributes.color,
-			backgroundColor: attributes.backgroundColor,
+			color: attributes.customTextColor,
+			backgroundColor: attributes.customBackgroundColor,
 		};
 
 		expect( applyStyle( attributes ) ).toMatchObject( expected );
