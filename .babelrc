@@ -1,10 +1,10 @@
 {
 	"presets": [
 		[
-			"env",
-				{
-					"modules": false,
-					"targets": {
+			"@babel/preset-env",
+			{
+				"modules": false,
+				"targets": {
 					"browsers": [
 						"last 2 Chrome versions",
 						"last 2 Firefox versions",
@@ -18,7 +18,7 @@
 			}
 		],
 		[
-			"@wordpress/babel-preset-default"
+			"@wordpress/default"
 		]
 	],
 	"plugins": [
@@ -29,25 +29,13 @@
 			}
 		],
 		[
-			"transform-class-properties"
+			"@babel/plugin-proposal-class-properties"
 		],
 		[
-			"transform-object-rest-spread",
-			{
-				"useBuiltIns": true
-			}
-		],
-		[
-			"transform-react-jsx",
-			{
-				"pragma": "wp.element.createElement"
-			}
-		],
-		[
-			"transform-runtime",
+			"@babel/plugin-transform-runtime",
 			{
 				"helpers": false,
-				"polyfill": false,
+				"corejs": 2,
 				"regenerator": true
 			}
 		]
