@@ -127,10 +127,8 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 			COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-getting-started-page.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php',
-			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-footer.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-feedback.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php',
-			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-url-generator.php',
 		];
 
 		$this->assertTrue( ! empty( array_intersect( $check_files, get_included_files() ) ) );
