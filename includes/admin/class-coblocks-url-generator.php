@@ -44,7 +44,7 @@ class CoBlocks_URL_Generator {
 
 		$params = array_merge( $params, $id );
 
-		$url = trailingslashit( COBLOCKS_SHOP_URL . $path ) . '?' . http_build_query( $params, '', '&#038;' );
+		$url = trailingslashit( 'https://coblocks.com/' . $path ) . '?' . http_build_query( $params, '', '&#038;' );
 
 		return $url;
 	}

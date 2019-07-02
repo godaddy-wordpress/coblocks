@@ -17,10 +17,8 @@ const {
 	IconButton,
 	FormFileUpload,
 } = wp.components;
-const {
-	MediaPlaceholder,
-	mediaUpload,
-} = wp.blockEditor;
+const { MediaPlaceholder } = wp.blockEditor;
+const { mediaUpload } = wp.editor;
 
 class GalleryUploader extends Component {
 
