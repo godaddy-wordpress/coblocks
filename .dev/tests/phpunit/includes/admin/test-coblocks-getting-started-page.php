@@ -126,7 +126,10 @@ class CoBlocks_Getting_Started_Page_Tests extends WP_UnitTestCase {
 	 */
 	public function test_content() {
 
-		$this->expectOutputRegex( '/You&#039;ve just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: <strong> tens of blocks <\/strong>, a <strong> page-builder experience <\/strong>, <strong> typography controls <\/strong> and a new <strong> Block Manager <\/strong> for turning off blocks./', $this->coblocks_getting_started_page->content() );
+		$this->expectOutputRegex(
+			'/You&#039;ve just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: <strong> tens of blocks<\/strong>, a <strong> page-builder experience <\/strong> and <strong> custom typography controls<\/strong>./',
+			$this->coblocks_getting_started_page->content()
+		);
 
 	}
 

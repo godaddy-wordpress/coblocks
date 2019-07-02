@@ -53,7 +53,7 @@ class CoBlocks_Font_Loader_Tests extends WP_UnitTestCase {
 		$new_reflection = new CoBlocks_Font_Loader();
 
 		$expected = [
-			'version' => '1.9.6',
+			'version' => '1.11.0',
 		];
 
 		$version = $reflection->getProperty( '_version' );

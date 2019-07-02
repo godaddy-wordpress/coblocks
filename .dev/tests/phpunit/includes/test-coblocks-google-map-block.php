@@ -53,7 +53,7 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 		$new_reflection = new CoBlocks_Google_Map_Block();
 
 		$expected = [
-			'version' => '1.9.6',
+			'version' => '1.11.0',
 			'slug'    => 'coblocks',
 			'url'     => str_replace( '/.dev/tests/phpunit', '', untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) ) ), // Fix inconsistencies path between plugin and unit tests
 		];
@@ -107,6 +107,7 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 	 */
 	public function test_map_assets() {
 
+		unset( $GLOBALS['current_screen'] );
 		update_option( 'coblocks_google_maps_api_key', '123' );
 
 		$post_id = wp_insert_post(

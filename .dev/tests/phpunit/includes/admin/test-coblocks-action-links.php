@@ -15,7 +15,6 @@ class CoBlocks_Action_Links_Tests extends WP_UnitTestCase {
 		set_current_screen( 'dashboard' );
 
 		include_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';
-		include_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-url-generator.php';
 
 		$this->coblocks_action_links = new CoBlocks_Action_Links();
 

@@ -12,7 +12,7 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 
 		parent::setUp();
 
-		include_once COBLOCKS_PLUGIN_DIR . 'src/blocks/social/index.php';
+		include_once COBLOCKS_PLUGIN_DIR . 'src/blocks/share/index.php';
 
 		set_current_screen( 'edit-post' );
 
@@ -38,7 +38,7 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 	public function test_file_actions() {
 
 		$actions = [
-			[ 'init', 'coblocks_register_social_block' ],
+			[ 'init', 'coblocks_register_share_block' ],
 		];
 
 		foreach ( $actions as $action_data ) {
@@ -59,7 +59,7 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 	/**
 	 * Test the social block markup returns correctly
 	 */
-	public function test_coblocks_render_social_block() {
+	public function test_coblocks_render_share_block() {
 
 		$attributes = [
 			'className' => 'test-class-name',
@@ -67,41 +67,41 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 			'hasColors' => true,
 		];
 
-		$this->assertEquals( '<div class="wp-block-coblocks-social test-class-name has-colors has-button-size-large" ><ul></ul></div>', coblocks_render_social_block( $attributes ) );
+		$this->assertEquals( '<div class="wp-block-coblocks-social test-class-name has-colors has-button-size-large" ><ul></ul></div>', coblocks_render_share_block( $attributes ) );
 
 	}
 
 	/**
 	 * Test the social block markup returns correctly with style mask enabled
 	 */
-	public function test_coblocks_render_social_block_style_mask() {
+	public function test_coblocks_render_share_block_style_mask() {
 
 		$attributes = [
 			'className' => 'test-class-name is-style-mask',
 			'hasColors' => true,
 		];
 
-		$this->assertEquals( '<div class="wp-block-coblocks-social test-class-name is-style-mask has-colors" ><ul></ul></div>', coblocks_render_social_block( $attributes ) );
+		$this->assertEquals( '<div class="wp-block-coblocks-social test-class-name is-style-mask has-colors" ><ul></ul></div>', coblocks_render_share_block( $attributes ) );
 
 	}
 
 	/**
 	 * Test the social block markup returns correctly when platforms are specified
 	 */
-	public function test_coblocks_render_social_block_platforms() {
+	public function test_coblocks_render_share_block_platforms() {
 
 		$attributes = [
 			'twitter' => true,
 		];
 
-		$this->assertRegExp( '/<a href="http:\/\/twitter.com\/share\?text=&#038;url=" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--twitter    " title="Share on Twitter" style="">/', coblocks_render_social_block( $attributes ) );
+		$this->assertRegExp( '/<a href="http:\/\/twitter.com\/share\?text=&#038;url=" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--twitter     " title="Share on Twitter" style="">/', coblocks_render_share_block( $attributes ) );
 
 	}
 
 	/**
 	 * Test the social block markup returns correctly when platforms are specified
 	 */
-	public function test_coblocks_render_social_block_filter_twitter_share_url() {
+	public function test_coblocks_render_share_block_filter_twitter_share_url() {
 
 		$attributes = [
 			'twitter' => true,
@@ -114,14 +114,14 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 			}
 		);
 
-		$this->assertRegExp( '/<a href="https:\/\/www.custom-share-url.com" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--twitter    " title="Share on Twitter" style="">/', coblocks_render_social_block( $attributes ) );
+		$this->assertRegExp( '/<a href="https:\/\/www.custom-share-url.com" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--twitter     " title="Share on Twitter" style="">/', coblocks_render_share_block( $attributes ) );
 
 	}
 
 	/**
 	 * Test the social block markup when a thumbnail is set
 	 */
-	public function test_coblocks_render_social_block_with_thumbnail() {
+	public function test_coblocks_render_share_block_with_thumbnail() {
 
 		$post_id = wp_insert_post(
 			[
@@ -144,18 +144,18 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 			'pinterest' => true,
 		];
 
-		$this->assertRegExp( '/<a href="https:\/\/pinterest.com\/pin\/create\/button\/\?&#038;url=http:\/\/example.org\/\?p=17&#038;description=CoBlocks%20Social&#038;media=http:\/\/example.org\/wp-content\/uploads\/2019\/06\/[a-zA-Z0-9-]+.jpeg" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--pinterest    " title="Share on Pinterest" style="">/', coblocks_render_social_block( $attributes ) );
+		$this->assertRegExp( '/<a href="https:\/\/pinterest.com\/pin\/create\/button\/\?&#038;url=http:\/\/example.org\/\?p=17&#038;description=CoBlocks%20Social&#038;media=http:\/\/example.org\/wp-content\/uploads\/[0-9]{4}\/[0-9]{2}\/[a-zA-Z0-9-]+.jpeg" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--pinterest     " title="Share on Pinterest" style="">/', coblocks_render_share_block( $attributes ) );
 
 	}
 
 	/**
-	 * Test the social block is registered
+	 * Test the share block is registered
 	 *
 	 * @expectedIncorrectUsage WP_Block_Type_Registry::register
 	 */
-	public function test_coblocks_register_social_block() {
+	public function test_coblocks_register_share_block() {
 
-		coblocks_register_social_block();
+		coblocks_register_share_block();
 
 		$expected_registered_blocks = [
 			'coblocks/social',

@@ -69,13 +69,12 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 		$reflection_method->invoke( coblocks() );
 
 		$expected = [
-			'version'     => '1.9.6',
+			'version' => '1.11.0',
 			'has_pro'     => false,
 			'plugin_dir'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_path( __FILE__ ) ),
 			'plugin_url'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_url( __FILE__ ) ),
 			'plugin_file' => str_replace( '.dev/tests/phpunit/test-class-coblocks.php', 'class-coblocks.php', __FILE__ ),
 			'plugin_base' => str_replace( '.dev/tests/phpunit/test-class-coblocks.php', 'class-coblocks.php', plugin_basename( __FILE__ ) ),
-			'shop_url'    => 'https://coblocks.com/',
 			'review_url'  => 'https://wordpress.org/support/plugin/coblocks/reviews/?filter=5',
 		];
 
@@ -86,7 +85,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 			'plugin_url'  => COBLOCKS_PLUGIN_URL,
 			'plugin_file' => COBLOCKS_PLUGIN_FILE,
 			'plugin_base' => COBLOCKS_PLUGIN_BASE,
-			'shop_url'    => COBLOCKS_SHOP_URL,
 			'review_url'  => COBLOCKS_REVIEW_URL,
 		];
 
