@@ -85,6 +85,8 @@ export const childBlocks = [
 			icon: icons.name,
 			supports: {
 				inserter: false,
+				html: false,
+				reusable: false,
 			},
 			edit: props => (
 				<CoBlocksFieldName
@@ -110,6 +112,8 @@ export const childBlocks = [
 			icon: icons.email,
 			supports: {
 				inserter: false,
+				html: false,
+				reusable: false,
 			},
 			edit: editField( 'email' ),
 		},
@@ -124,6 +128,8 @@ export const childBlocks = [
 			icon: icons.textarea,
 			supports: {
 				inserter: false,
+				html: false,
+				reusable: false,
 			},
 			edit: props => (
 				<CoBlocksFieldTextarea
