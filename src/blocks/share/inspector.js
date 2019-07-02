@@ -15,37 +15,17 @@ const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.blockEditor;
-const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles } = wp.components;
-
-const { getComputedStyle } = window;
-
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { backgroundColor, textColor } = ownProps;
-	const backgroundColorValue = backgroundColor && backgroundColor.color;
-	const textColorValue = textColor && textColor.color;
-	//avoid the use of querySelector if textColor color is known and verify if node is available.
-	const textNode = ! textColorValue && node ? node.querySelector( '[contenteditable="true"]' ) : null;
-	return {
-		fallbackBackgroundColor: backgroundColorValue || ! node ? undefined : getComputedStyle( node ).backgroundColor,
-		fallbackTextColor: textColor || ! textNode ? undefined : getComputedStyle( textNode ).color,
-	};
-} );
+const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles, CheckboxControl } = wp.components;
 
 /**
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	getHasColorsHelp( checked ) {
 		return checked ? __( 'Share button colors are enabled.' ) : __( 'Toggle to use official colors from each social media platform.' );
 	}
 
 	render() {
-
 		const {
 			className,
 			attributes,
@@ -111,7 +91,7 @@ class Inspector extends Component {
 						<ToggleControl
 							label={ __( 'Social Colors' ) }
 							checked={ !! hasColors }
-							onChange={ () => setAttributes( {  hasColors: ! hasColors } ) }
+							onChange={ () => setAttributes( { hasColors: ! hasColors } ) }
 							help={ this.getHasColorsHelp }
 						/>
 						{ ! isMaskStyle && ! isCircularStyle &&
@@ -150,53 +130,51 @@ class Inspector extends Component {
 								className="components-coblocks-inspector__social-button-size"
 							/>
 						}
+						<div className="components-social-icons-list">
+							<p className="components-social-icons-list__label">{ __( 'Icons' ) }</p>
+							<CheckboxControl
+								label={ __( 'Twitter' ) }
+								checked={ !! twitter }
+								onChange={ () => setAttributes( { twitter: ! twitter } ) }
+							/>
+							<CheckboxControl
+								label={ __( 'Facebook' ) }
+								checked={ !! facebook }
+								onChange={ () => setAttributes( { facebook: ! facebook } ) }
+							/>
+							<CheckboxControl
+								label={ __( 'Pinterest' ) }
+								checked={ !! pinterest }
+								onChange={ () => setAttributes( { pinterest: ! pinterest } ) }
+							/>
+							<CheckboxControl
+								label={ __( 'LinkedIn' ) }
+								checked={ !! linkedin }
+								onChange={ () => setAttributes( { linkedin: ! linkedin } ) }
+							/>
+							<CheckboxControl
+								label={ __( 'Email' ) }
+								checked={ !! email }
+								onChange={ () => setAttributes( { email: ! email } ) }
+							/>
+							<CheckboxControl
+								label={ __( 'Tumblr' ) }
+								checked={ !! tumblr }
+								onChange={ () => setAttributes( { tumblr: ! tumblr } ) }
+							/>
+							<CheckboxControl
+								label={ __( 'Google' ) }
+								checked={ !! google }
+								onChange={ () => setAttributes( { google: ! google } ) }
+							/>
+							<CheckboxControl
+								label={ __( 'Reddit' ) }
+								checked={ !! reddit }
+								onChange={ () => setAttributes( { reddit: ! reddit } ) }
+							/>
+						</div>
 					</PanelBody>
-					<PanelBody
-						title={ __( 'Icon Settings' ) }
-						initialOpen={ false }
-					>
-						<p>{ __( ' Toggle the sharing links to display from the following social platforms.' ) }</p>
-						<ToggleControl
-							label={ __( 'Twitter' ) }
-							checked={ !! twitter }
-							onChange={ () => setAttributes( {  twitter: ! twitter } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Facebook' ) }
-							checked={ !! facebook }
-							onChange={ () => setAttributes( {  facebook: ! facebook } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Pinterest' ) }
-							checked={ !! pinterest }
-							onChange={ () => setAttributes( {  pinterest: ! pinterest } ) }
-						/>
-						<ToggleControl
-							label={ __( 'LinkedIn' ) }
-							checked={ !! linkedin }
-							onChange={ () => setAttributes( {  linkedin: ! linkedin } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Email' ) }
-							checked={ !! email }
-							onChange={ () => setAttributes( {  email: ! email } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Tumblr' ) }
-							checked={ !! tumblr }
-							onChange={ () => setAttributes( {  tumblr: ! tumblr } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Google' ) }
-							checked={ !! google }
-							onChange={ () => setAttributes( {  google: ! google } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Reddit' ) }
-							checked={ !! reddit }
-							onChange={ () => setAttributes( {  reddit: ! reddit } ) }
-						/>
-					</PanelBody>
+
 					{ ! hasColors &&
 						<PanelColorSettings
 							title={ __( 'Color Settings' ) }
@@ -220,7 +198,7 @@ class Inspector extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,
