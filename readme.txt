@@ -120,6 +120,9 @@ Please reach out via the contact form at the bottom right of [our website](https
 
 == Changelog ==
 
+= 1.11.1 =
+* Fix: Resolve duplicate registered block issue
+
 = 1.11.0 =
 * New: Support for Gutenberg 6.0 🎊
 * New: Add new Food & Drinks block for restaurants and eateries to create menus with
