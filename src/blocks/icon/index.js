@@ -171,9 +171,12 @@ const settings = {
 		return (
 			<div className={ className } style={ { textAlign: contentAlign ? contentAlign : undefined } }>
 				<div className={ classes } style={ styles }>
-					{ href && <a href={ href } target={ linkTarget } rel={ rel }>
-						{ svgs[ iconStyle ][ icon ].icon }
-					</a> }
+					{ href ?
+						( <a href={ href } target={ linkTarget } rel={ rel }>
+							{ svgs[ iconStyle ][ icon ].icon }
+						</a> ) :
+						svgs[ iconStyle ][ icon ].icon
+					}
 				</div>
 			</div>
 		);
