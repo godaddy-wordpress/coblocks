@@ -39,19 +39,22 @@ class edit extends Component {
 
 		const {
 			borderRadius,
-			facebook,
 			hasColors,
 			linkedin,
 			pinterest,
 			reddit,
 			size,
 			textAlign,
-			tumblr,
-			twitter,
-			email,
 			iconSize,
-			google,
 			padding,
+			houzz,
+			yelp,
+			youtube,
+			linkedin,
+			instagram,
+			pinterest,
+			facebook,
+			twitter,
 		} = attributes;
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
