@@ -9,7 +9,7 @@ cp -a build/coblocks/* $HOME/coblocks/trunk/
 
 # Copy the WordPress.org assets over
 rm -rf $HOME/coblocks/assets/*
-cp -a wordpress-org/* $HOME/coblocks/assets/
+cp -a .wordpress-org/* $HOME/coblocks/assets/
 
 # Deploy Coblocks to WordPress.org
 cd $HOME/coblocks
