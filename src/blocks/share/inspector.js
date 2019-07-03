@@ -87,7 +87,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Share Settings' ) }>
+					<PanelBody title={ __( 'Icon Settings' ) }>
 						<ToggleControl
 							label={ __( 'Social Colors' ) }
 							checked={ !! hasColors }
