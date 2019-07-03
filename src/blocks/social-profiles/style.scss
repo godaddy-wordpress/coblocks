@@ -1,8 +1,9 @@
 // Supported icons.
-$icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin, #0077b5), (tumblr, #34465d), (reddit, #ff5700), (email, #2880e5),
+$icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c),
+	(linkedin, #0077b5), (tumblr, #34465d), (reddit, #ff5700), (email, #2880e5),
 	(google, #dd4b39);
 
-.wp-block-coblocks-social {
+.wp-block-coblocks-social-profiles {
 	// Fallback color to match core button block.
 	.wp-block-button__link:not(.has-background) {
 		background-color: #31373c;
@@ -87,7 +88,7 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 
 	@each $icon, $color in $icons {
 		&__button--#{$icon} &__icon {
-			mask-image: url(images/social/#{$icon}.svg);
+			mask-image: url(images/social-profiles/#{$icon}.svg);
 		}
 	}
 
@@ -96,16 +97,16 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 		color: $white;
 	}
 
-	// Social Colors.
+	// social-profiles Colors.
 	&.has-colors {
 		@each $icon, $color in $icons {
-			.wp-block-coblocks-social__button--#{$icon} {
+			.wp-block-coblocks-social-profiles__button--#{$icon} {
 				background-color: $color !important;
 			}
 		}
 
 		@each $icon, $color in $icons {
-			&.is-style-mask .wp-block-coblocks-social__button--#{$icon} {
+			&.is-style-mask .wp-block-coblocks-social-profiles__button--#{$icon} {
 				color: $color !important;
 			}
 		}
@@ -113,7 +114,7 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 
 	// Default style.
 	&:not(.is-style-text):not(.is-style-icon-and-text) {
-		.wp-block-coblocks-social__button {
+		.wp-block-coblocks-social-profiles__button {
 			padding: 11px 24px;
 
 			&:active {
@@ -123,7 +124,7 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 			}
 		}
 
-		.wp-block-coblocks-social__text {
+		.wp-block-coblocks-social-profiles__text {
 			clip: rect(1px, 1px, 1px, 1px);
 			height: 1px;
 			overflow: hidden;
@@ -135,11 +136,11 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 
 	// Text only style.
 	&.is-style-text {
-		.wp-block-coblocks-social__icon {
+		.wp-block-coblocks-social-profiles__icon {
 			display: none;
 		}
 
-		.wp-block-coblocks-social__text {
+		.wp-block-coblocks-social-profiles__text {
 			margin-left: 0;
 		}
 	}
@@ -151,13 +152,13 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 			margin: 0 7px !important;
 		}
 
-		.wp-block-coblocks-social__button {
+		.wp-block-coblocks-social-profiles__button {
 			background: transparent !important;
 			display: block;
 			padding: 0 !important;
 		}
 
-		.wp-block-coblocks-social__text {
+		.wp-block-coblocks-social-profiles__text {
 			margin-left: 0;
 		}
 
@@ -173,16 +174,17 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 		}
 
 		// Icon only style.
-		&:not(.is-style-text):not(.is-style-icon-and-text):not(.is-style-circular) .wp-block-coblocks-social__button {
+		&:not(.is-style-text):not(.is-style-icon-and-text):not(.is-style-circular)
+			.wp-block-coblocks-social-profiles__button {
 			padding: 8px 16px;
 		}
 
-		.wp-block-coblocks-social__icon {
+		.wp-block-coblocks-social-profiles__icon {
 			height: 16px;
 			width: 16px;
 		}
 
-		.wp-block-coblocks-social__button {
+		.wp-block-coblocks-social-profiles__button {
 			font-size: 13px;
 			padding: 10px 12px;
 		}
@@ -190,16 +192,17 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 
 	&.has-button-size-lrg {
 		// Icon only style.
-		&:not(.is-style-text):not(.is-style-icon-and-text):not(.is-style-circular) .wp-block-coblocks-social__button {
+		&:not(.is-style-text):not(.is-style-icon-and-text):not(.is-style-circular)
+			.wp-block-coblocks-social-profiles__button {
 			padding: 14px 32px;
 		}
 
-		.wp-block-coblocks-social__icon {
+		.wp-block-coblocks-social-profiles__icon {
 			height: 20px;
 			width: 20px;
 		}
 
-		.wp-block-coblocks-social__button {
+		.wp-block-coblocks-social-profiles__button {
 			font-size: 16px;
 			padding: 12px 16px;
 		}
@@ -207,11 +210,11 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #bd081c), (linkedin
 
 	// Circular style.
 	&.is-style-circular {
-		.wp-block-coblocks-social__button {
+		.wp-block-coblocks-social-profiles__button {
 			border-radius: 100%;
 		}
 
-		.wp-block-coblocks-social__button:not(.has-padding) {
+		.wp-block-coblocks-social-profiles__button:not(.has-padding) {
 			padding: 14px !important;
 		}
 	}

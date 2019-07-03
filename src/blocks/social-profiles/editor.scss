@@ -1,4 +1,4 @@
-.wp-block-coblocks-social {
+.wp-block-coblocks-social-profiles {
 	&__button {
 		&:active {
 			animation: none !important;
@@ -7,7 +7,7 @@
 }
 
 .block-editor-block-preview__content {
-	.wp-block-coblocks-social {
+	.wp-block-coblocks-social-profiles {
 		align-content: center;
 		align-items: center;
 		display: flex;
@@ -16,7 +16,7 @@
 		text-align: center !important;
 
 		&.is-style-mask {
-			.wp-block-coblocks-social__icon {
+			.wp-block-coblocks-social-profiles__icon {
 				height: 32px !important;
 				width: 32px !important;
 			}
@@ -24,17 +24,17 @@
 
 		&.is-style-text,
 		&.is-style-icon-and-text {
-			.wp-block-coblocks-social__button {
+			.wp-block-coblocks-social-profiles__button {
 				width: 75%;
 			}
 		}
 
 		&.is-style-circular {
-			.wp-block-coblocks-social__icon {
+			.wp-block-coblocks-social-profiles__icon {
 				height: 18px !important;
 				width: 18px !important;
 			}
-			.wp-block-coblocks-social__button {
+			.wp-block-coblocks-social-profiles__button {
 				padding: 14px !important;
 			}
 		}
@@ -74,10 +74,10 @@
 	}
 
 	// Gutenberg 5.9+ tweaks.
-	[data-type="coblocks/social"] [data-block] {
+	[data-type="coblocks/social-profiles"] [data-block] {
 		margin-bottom: 0;
 
-		.wp-block-coblocks-social {
+		.wp-block-coblocks-social-profiles {
 			margin-top: 10px;
 
 			&.is-style-icon {
@@ -95,7 +95,7 @@
 	margin-top: -13px !important;
 }
 
-.components-social-icons-list__label {
+.components-social-profiles-icons-list__label {
 	margin-bottom: 6px;
 }
 

@@ -17,20 +17,16 @@ const { __, _x } = wp.i18n;
  */
 const { name } = metadata;
 
-const title = __( 'Share' );
+const title = __( 'Social Profiles' );
 
-const icon = icons.social;
+const icon = icons.socialProfiles;
 
-const keywords = [
-	__( 'social' ),
-	__( 'coblocks' ),
-];
+const keywords = [ __( 'social' ), __( 'coblocks' ), __( 'profile' ) ];
 
 const settings = {
-
 	title,
 
-	description: __( 'Add social sharing links to help you get likes and shares.' ),
+	description: __( 'Add social profile links to build your brand.' ),
 
 	keywords,
 
