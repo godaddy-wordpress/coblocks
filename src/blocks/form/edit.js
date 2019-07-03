@@ -35,6 +35,7 @@ const FieldDefaults = {
 	supports: {
 		reusable: false,
 		html: false,
+		inserter: false,
 	},
 	attributes: {
 		label: {
@@ -83,11 +84,6 @@ export const childBlocks = [
 			title: __( 'Name' ),
 			description: __( 'A text field for names.' ),
 			icon: icons.name,
-			supports: {
-				inserter: false,
-				html: false,
-				reusable: false,
-			},
 			edit: props => (
 				<CoBlocksFieldName
 					type={ 'name' }
@@ -110,11 +106,6 @@ export const childBlocks = [
 			keywords: [ __( 'e-mail' ), __( 'mail' ), 'email' ],
 			description: __( 'An email address field.' ),
 			icon: icons.email,
-			supports: {
-				inserter: false,
-				html: false,
-				reusable: false,
-			},
 			edit: editField( 'email' ),
 		},
 	},
@@ -126,11 +117,6 @@ export const childBlocks = [
 			keywords: [ __( 'Textarea' ), 'textarea', __( 'Multiline text' ) ],
 			description: __( 'A text box for longer responses.' ),
 			icon: icons.textarea,
-			supports: {
-				inserter: false,
-				html: false,
-				reusable: false,
-			},
 			edit: props => (
 				<CoBlocksFieldTextarea
 					label={ getFieldLabel( props ) }
@@ -312,9 +298,11 @@ class FormEdit extends Component {
 			coblocks_google_recaptcha_site_key: this.state.recaptchaSiteKey,
 			coblocks_google_recaptcha_secret_key: this.state.recaptchaSecretKey,
 		} );
-		model.save().then( response => {
+		model.save().then( () => {
 			this.setState( { isSavedKey: true, keySaved: true } );
-			setTimeout( () => { this.setState( { isSaving: false } ) }, 1000 );
+			setTimeout( () => {
+				this.setState( { isSaving: false } );
+			}, 1000 );
 			settings.fetch();
 		} );
 	}
@@ -330,7 +318,7 @@ class FormEdit extends Component {
 				coblocks_google_recaptcha_site_key: '',
 				coblocks_google_recaptcha_secret_key: '',
 			} );
-			model.save().then( response => {
+			model.save().then( () => {
 				this.setState( { isSavedKey: false, isSaving: false, keySaved: false } );
 				settings.fetch();
 			} );
@@ -372,16 +360,13 @@ class FormEdit extends Component {
 	}
 
 	render() {
-
 		const {
-			attributes,
 			className,
-			setAttributes,
 		} = this.props;
 
 		const classes = classnames(
- 			className,
- 			'coblocks-form',
+			className,
+			'coblocks-form',
 		);
 
 		return (
@@ -396,7 +381,7 @@ class FormEdit extends Component {
 						initialOpen={ this.state.recaptchaSecretKey ? false : true }
 						className="components-coblocks-block-settings-sidebar"
 					>
-						<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.') }</p>
+						<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.' ) }</p>
 						<p>
 							<Fragment>
 								<ExternalLink href={ RETRIEVE_KEY_URL }>{ this.state.recaptchaSiteKey === '' && this.state.recaptchaSecretKey === '' ? __( 'Generate keys' ) : __( 'My keys' ) }</ExternalLink>|&nbsp;
@@ -406,13 +391,13 @@ class FormEdit extends Component {
 						<TextControl
 							label={ __( 'Site Key' ) }
 							value={ this.state.recaptchaSiteKey }
-							onChange={ value => this.setState({ recaptchaSiteKey: value }) }
+							onChange={ value => this.setState( { recaptchaSiteKey: value } ) }
 							className="components-block-coblocks-form-recaptcha-key__custom-input"
 						/>
 						<TextControl
 							label={ __( 'Secret Key' ) }
 							value={ this.state.recaptchaSecretKey }
-							onChange={ value => this.setState({ recaptchaSecretKey: value }) }
+							onChange={ value => this.setState( { recaptchaSecretKey: value } ) }
 							className="components-block-coblocks-form-recaptcha-key__custom-input"
 						/>
 						<div className="components-base-control components-block-coblocks-form-recaptcha-buttons">
@@ -432,7 +417,7 @@ class FormEdit extends Component {
 										onClick={ this.removeRecaptchaKey }
 										disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
 									>
-										{ __('Remove') }
+										{ __( 'Remove' ) }
 									</Button>
 								</Fragment>
 							}
@@ -451,8 +436,7 @@ class FormEdit extends Component {
 				</div>
 			</Fragment>
 		);
-
 	}
-};
+}
 
 export default FormEdit;
