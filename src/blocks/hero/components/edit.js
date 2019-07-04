@@ -39,8 +39,8 @@ const { isBlobURL } = wp.blob;
 */
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row' , 'coblocks/column', 'coblocks/buttons' ];
 const TEMPLATE = [
-	[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder' ), content: _x( 'Hero Block', 'content placeholder' ) , level: 2 } ],
-	[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder' ), content: _x( 'An introductory area of a page accompanied by a small amount of text and a call to action.', 'content placeholder' ) } ],
+	[ 'core/heading', { placeholder: _x( 'Hero Block', 'content placeholder' ), level: 2 } ],
+	[ 'core/paragraph', { placeholder: _x( 'An introductory area of a page accompanied by a small amount of text and a call to action.', 'content placeholder' ) } ],
 	[ 'coblocks/buttons', { contentAlign: 'left', items: 2, gutter: 'medium' },
 		[
 			[ 'core/button', { text: _x( 'Primary', 'content placeholder' ) } ],
