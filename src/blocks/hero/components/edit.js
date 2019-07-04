@@ -193,6 +193,7 @@ class Edit extends Component {
 
 		const innerStyles = {
 			...BackgroundStyles( attributes ),
+			backgroundColor: backgroundColor.color,
 			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
