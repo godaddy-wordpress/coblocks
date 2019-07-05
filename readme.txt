@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.2.4
-Stable tag: 1.11.0
+Stable tag: 1.11.1
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -119,6 +119,9 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 Please reach out via the contact form at the bottom right of [our website](https://coblocks.com).
 
 == Changelog ==
+
+= 1.11.1 =
+* Fix: Resolve duplicate registered block issue
 
 = 1.11.0 =
 * New: Support for Gutenberg 6.0 🎊
