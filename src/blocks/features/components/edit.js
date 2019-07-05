@@ -108,8 +108,7 @@ class Edit extends Component {
 		);
 
 		const innerStyles = {
-			...BackgroundStyles( attributes ),
-			backgroundColor: backgroundColor.color,
+			...BackgroundStyles( attributes, backgroundColor ),
 			color: textColor.color,
 			textAlign: contentAlign,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
