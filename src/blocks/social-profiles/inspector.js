@@ -59,12 +59,12 @@ class Inspector extends Component {
 			linkedin,
 			pinterest,
 			borderRadius,
-			tumblr,
+			// tumblr,
 			twitter,
 			size,
-			reddit,
-			email,
-			google,
+			// reddit,
+			// email,
+			// google,
 			iconSize,
 			padding,
 			houzz,
@@ -154,14 +154,14 @@ class Inspector extends Component {
 							<p className="components-social-icons-list__label">
 								{ __( 'Icons' ) }
 							</p>
-							<TextControl label="Facebook" value={ facebook } />
-							<TextControl label="Twitter" value={ twitter } />
-							<TextControl label="Instagram" value={ instagram } />
-							<TextControl label="Pintrest" value={ pinterest } />
-							<TextControl label="Linkedin" value={ linkedin } />
-							<TextControl label="YouTube" value={ youtube } />
-							<TextControl label="Yelp" value={ yelp } />
-							<TextControl label="Houze" value={ houzz } />
+							<TextControl label="Facebook" value={ facebook } onChange={ value => setAttributes( { facebook: value } ) } />
+							<TextControl label="Twitter" value={ twitter } onChange={ value => setAttributes( { twitter: value } ) } />
+							<TextControl label="Instagram" value={ instagram } onChange={ value => setAttributes( { instagram: value } ) } />
+							<TextControl label="Pintrest" value={ pinterest } onChange={ value => setAttributes( { pinterest: value } ) } />
+							<TextControl label="Linkedin" value={ linkedin } onChange={ value => setAttributes( { linkedin: value } ) } />
+							<TextControl label="YouTube" value={ youtube } onChange={ value => setAttributes( { youtube: value } ) } />
+							<TextControl label="Yelp" value={ yelp } onChange={ value => setAttributes( { yelp: value } ) } />
+							<TextControl label="Houzz" value={ houzz } onChange={ value => setAttributes( { houzz: value } ) } />
 						</div>
 					</PanelBody>
 

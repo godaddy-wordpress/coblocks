@@ -40,9 +40,6 @@ class edit extends Component {
 		const {
 			borderRadius,
 			hasColors,
-			linkedin,
-			pinterest,
-			reddit,
 			size,
 			textAlign,
 			iconSize,
@@ -55,6 +52,7 @@ class edit extends Component {
 			pinterest,
 			facebook,
 			twitter,
+			reddit,
 		} = attributes;
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
@@ -171,63 +169,6 @@ class edit extends Component {
 								</span>
 							</li>
 						) }
-						{ email && (
-							<li>
-								<span
-									className={ classnames(
-										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--email'
-									) }
-									style={ buttonStyles }
-								>
-									<span
-										className="wp-block-coblocks-social-profiles__icon"
-										style={ iconStyles }
-									/>
-									<span className="wp-block-coblocks-social-profiles__text">
-										{ __( 'Share via Email' ) }
-									</span>
-								</span>
-							</li>
-						) }
-						{ tumblr && (
-							<li>
-								<span
-									className={ classnames(
-										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--tumblr'
-									) }
-									style={ buttonStyles }
-								>
-									<span
-										className="wp-block-coblocks-social-profiles__icon"
-										style={ iconStyles }
-									/>
-									<span className="wp-block-coblocks-social-profiles__text">
-										{ __( 'Share on Tumblr' ) }
-									</span>
-								</span>
-							</li>
-						) }
-						{ google && (
-							<li>
-								<span
-									className={ classnames(
-										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--google'
-									) }
-									style={ buttonStyles }
-								>
-									<span
-										className="wp-block-coblocks-social-profiles__icon"
-										style={ iconStyles }
-									/>
-									<span className="wp-block-coblocks-social-profiles__text">
-										{ __( 'Share on Google' ) }
-									</span>
-								</span>
-							</li>
-						) }
 						{ reddit && (
 							<li>
 								<span
@@ -243,6 +184,82 @@ class edit extends Component {
 									/>
 									<span className="wp-block-coblocks-social-profiles__text">
 										{ __( 'Share on Reddit' ) }
+									</span>
+								</span>
+							</li>
+						) }
+						{ youtube && (
+							<li>
+								<span
+									className={ classnames(
+										buttonClasses,
+										'wp-block-coblocks-social-profiles__button--youtube'
+									) }
+									style={ buttonStyles }
+								>
+									<span
+										className="wp-block-coblocks-social-profiles__icon"
+										style={ iconStyles }
+									/>
+									<span className="wp-block-coblocks-social-profiles__text">
+										{ __( 'Share on Youtube' ) }
+									</span>
+								</span>
+							</li>
+						) }
+						{ yelp && (
+							<li>
+								<span
+									className={ classnames(
+										buttonClasses,
+										'wp-block-coblocks-social-profiles__button--yelp'
+									) }
+									style={ buttonStyles }
+								>
+									<span
+										className="wp-block-coblocks-social-profiles__icon"
+										style={ iconStyles }
+									/>
+									<span className="wp-block-coblocks-social-profiles__text">
+										{ __( 'Rate us on Yelp' ) }
+									</span>
+								</span>
+							</li>
+						) }
+						{ instagram && (
+							<li>
+								<span
+									className={ classnames(
+										buttonClasses,
+										'wp-block-coblocks-social-profiles__button--reddit'
+									) }
+									style={ buttonStyles }
+								>
+									<span
+										className="wp-block-coblocks-social-profiles__icon"
+										style={ iconStyles }
+									/>
+									<span className="wp-block-coblocks-social-profiles__text">
+										{ __( 'See us on Instagram' ) }
+									</span>
+								</span>
+							</li>
+						) }
+						{ houzz && (
+							<li>
+								<span
+									className={ classnames(
+										buttonClasses,
+										'wp-block-coblocks-social-profiles__button--houzz'
+									) }
+									style={ buttonStyles }
+								>
+									<span
+										className="wp-block-coblocks-social-profiles__icon"
+										style={ iconStyles }
+									/>
+									<span className="wp-block-coblocks-social-profiles__text">
+										{ __( 'Rate us on Houzz' ) }
 									</span>
 								</span>
 							</li>
