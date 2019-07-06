@@ -24,8 +24,6 @@ const {
 	RangeControl,
 	ToggleControl,
 	SelectControl,
-	withFallbackStyles,
-	CheckboxControl,
 	TextControl,
 } = wp.components;
 
@@ -45,7 +43,6 @@ class Inspector extends Component {
 			className,
 			attributes,
 			setAttributes,
-			setState,
 			setBackgroundColor,
 			setTextColor,
 			fallbackTextColor,

@@ -26,7 +26,7 @@ const keywords = [ __( 'social' ), __( 'coblocks' ), __( 'profile' ) ];
 const settings = {
 	title,
 
-	description: __( 'Add social profile links to build your brand.' ),
+	description: __( 'Add social profile links to help build your brand.' ),
 
 	keywords,
 

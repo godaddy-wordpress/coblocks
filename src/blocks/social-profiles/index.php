@@ -68,29 +68,19 @@ function coblocks_render_social_profiles_block($attributes)
 		url=' . get_the_permalink() . '
 	';
 
-	// Generate the Email URL.
-	$email_url = '
-		mailto:
-		?subject=' . get_the_title() . '
-		&body=' . get_the_title() . '
-		&mdash;' . get_the_permalink() . '
-	';
+	$instagram_url = 
+		
 
-	// Generate the Google URL.
-	$google_url = '
-		https://plus.google.com/share
-		?url=' . get_the_permalink() . '
-	';
 
 	// Apply filters, so that the social URLs can be modified.
-	$twitter_url   = apply_filters('coblocks_twitter_share_url', $twitter_url);
-	$facebook_url  = apply_filters('coblocks_facebook_share_url', $facebook_url);
-	$pinterest_url = apply_filters('coblocks_pinterest_share_url', $pinterest_url);
-	$linkedin_url  = apply_filters('coblocks_linkedin_share_url', $linkedin_url);
-	$email_url     = apply_filters('coblocks_email_share_url', $email_url);
-	$tumblr_url    = apply_filters('coblocks_tumblr_share_url', $tumblr_url);
-	$reddit_url    = apply_filters('coblocks_reddit_share_url', $reddit_url);
-	$google_url    = apply_filters('coblocks_google_share_url', $google_url);
+	$twitter_url   = apply_filters('coblocks_twitter_social_profile_url', $twitter_url);
+	$facebook_url  = apply_filters('coblocks_facebook_social_profile_url', $facebook_url);
+	$pinterest_url = apply_filters('coblocks_pinterest_social_profile_url', $pinterest_url);
+	$linkedin_url  = apply_filters('coblocks_linkedin_social_profile_url', $linkedin_url);
+	$email_url     = apply_filters('coblocks_email_social_profile_url', $email_url);
+	$tumblr_url    = apply_filters('coblocks_tumblr_social_profile_url', $tumblr_url);
+	$reddit_url    = apply_filters('coblocks_reddit_social_profile_url', $reddit_url);
+	$google_url    = apply_filters('coblocks_google_social_profile_url', $google_url);
 
 	// Attributes.
 	$text_align    = is_array($attributes) && isset($attributes['textAlign']) ? "style=text-align:{$attributes['textAlign']}" : '';
@@ -153,19 +143,23 @@ function coblocks_render_social_profiles_block($attributes)
 		),
 		'Instagram' => array(
 			'text' => esc_html__('See us on Instagram', 'coblocks'),
-			'url'  => $instagram_url,
+			'url' => 'https://google.com',
+			// 'url'  => $instagram_url,
 		),
 		'youtube'   => array(
 			'text' => esc_html__('Watch us on YouTube', 'coblocks'),
-			'url'  => $youtube_url,
+			'url' => 'https://google.com',
+			// 'url'  => $youtube_url,
 		),
 		'yelp'      => array(
 			'text' => esc_html__('Rate us on Yelp', 'coblocks'),
-			'url'  => $yelp_url,
+			'url' => 'https://google.com',
+			// 'url'  => $yelp_url,
 		),
 		'houzz'     => array(
 			'text' => esc_html__('Rate us on Houzz', 'coblocks'),
-			'url'  => $houzz_url,
+			'url' => 'https://google.com',
+			// 'url'  => $houzz_url,
 		),
 
 	);
@@ -178,9 +172,9 @@ function coblocks_render_social_profiles_block($attributes)
 		if (isset($attributes[$id]) && $attributes[$id]) {
 			$markup .= sprintf(
 				'<li>
-					<a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--%8$s %3$s %7$s %9$s %10$s %13$s" title="%2$s" style="%4$s%6$s%11$s%12$s">
-						<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
-						<span class="wp-block-coblocks-social__text">%2$s</span>
+					<a href="%1$s" class="wp-block-button__link wp-block-coblocks-social-profiles__button wp-block-coblocks-social-profiles__button--%8$s %3$s %7$s %9$s %10$s %13$s" title="%2$s" style="%4$s%6$s%11$s%12$s">
+						<span class="wp-block-coblocks-social-profiles__icon" style="%5$s"></span>
+						<span class="wp-block-coblocks-social-profiles__text">%2$s</span>
 					</a>
 				</li>',
 				esc_url($platform['url']),

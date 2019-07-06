@@ -44,15 +44,14 @@ class edit extends Component {
 			textAlign,
 			iconSize,
 			padding,
-			houzz,
-			yelp,
-			youtube,
-			linkedin,
-			instagram,
-			pinterest,
 			facebook,
 			twitter,
-			reddit,
+			instagram,
+			pinterest,
+			linkedin,
+			youtube,
+			yelp,
+			houzz,
 		} = attributes;
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
@@ -93,6 +92,25 @@ class edit extends Component {
 				{ isSelected && <Inspector { ...this.props } /> }
 				<div className={ classes } style={ { textAlign: textAlign } }>
 					<ul>
+						{ facebook && (
+							<li>
+								<span
+									className={ classnames(
+										buttonClasses,
+										'wp-block-coblocks-social-profiles__button--facebook'
+									) }
+									style={ buttonStyles }
+								>
+									<span
+										className="wp-block-coblocks-social-profiles__icon"
+										style={ iconStyles }
+									/>
+									<span className="wp-block-coblocks-social-profiles__text">
+										{ __( 'Share on Facebook' ) }
+									</span>
+								</span>
+							</li>
+						) }
 						{ twitter && (
 							<li>
 								<span
@@ -112,12 +130,12 @@ class edit extends Component {
 								</span>
 							</li>
 						) }
-						{ facebook && (
+						{ instagram && (
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--facebook'
+										'wp-block-coblocks-social-profiles__button--instagram'
 									) }
 									style={ buttonStyles }
 								>
@@ -126,7 +144,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social-profiles__text">
-										{ __( 'Share on Facebook' ) }
+										{ __( 'See us on Instagram' ) }
 									</span>
 								</span>
 							</li>
@@ -169,25 +187,6 @@ class edit extends Component {
 								</span>
 							</li>
 						) }
-						{ reddit && (
-							<li>
-								<span
-									className={ classnames(
-										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--reddit'
-									) }
-									style={ buttonStyles }
-								>
-									<span
-										className="wp-block-coblocks-social-profiles__icon"
-										style={ iconStyles }
-									/>
-									<span className="wp-block-coblocks-social-profiles__text">
-										{ __( 'Share on Reddit' ) }
-									</span>
-								</span>
-							</li>
-						) }
 						{ youtube && (
 							<li>
 								<span
@@ -202,7 +201,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social-profiles__text">
-										{ __( 'Share on Youtube' ) }
+										{ __( 'See us on Youtube' ) }
 									</span>
 								</span>
 							</li>
@@ -222,25 +221,6 @@ class edit extends Component {
 									/>
 									<span className="wp-block-coblocks-social-profiles__text">
 										{ __( 'Rate us on Yelp' ) }
-									</span>
-								</span>
-							</li>
-						) }
-						{ instagram && (
-							<li>
-								<span
-									className={ classnames(
-										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--reddit'
-									) }
-									style={ buttonStyles }
-								>
-									<span
-										className="wp-block-coblocks-social-profiles__icon"
-										style={ iconStyles }
-									/>
-									<span className="wp-block-coblocks-social-profiles__text">
-										{ __( 'See us on Instagram' ) }
 									</span>
 								</span>
 							</li>
