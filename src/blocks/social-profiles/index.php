@@ -115,47 +115,43 @@ function coblocks_render_social_profiles_block($attributes)
 	if (isset($attributes['className']) && strpos($attributes['className'], 'is-style-circular') !== false) {
 		$padding = is_array($attributes) && isset($attributes['padding']) ? "padding:{$attributes['padding']}px;" : '';
 	}
-
+	
 	// Supported social media platforms.
 	$platforms = array(
 
 		
 		'facebook'  => array(
 			'text' => esc_html__('Share on Facebook', 'coblocks'),
-			'url'  => $facebook_url,
+			'url'  => $attributes['facebook'],
 		),
 		'twitter'   => array(
 			'text' => esc_html__('Share on Twitter', 'coblocks'),
-			'url'  => $twitter_url,
+			'url'  => $attributes['twitter'],
 		),
-		'Instagram' => array(
+		'instagram' => array(
 			'text' => esc_html__('See us on Instagram', 'coblocks'),
-			'url' => 'https://google.com',
-			// 'url'  => $instagram_url,
+			'url' => $attributes['instagram'],
 		),
 		'pinterest' => array(
 			'text' => esc_html__('Share on Pinterest', 'coblocks'),
-			'url'  => $pinterest_url,
+			'url'  => $attributes['pinterest'],
 		),
 		'linkedin'  => array(
 			'text' => esc_html__('Share on Linkedin', 'coblocks'),
-			'url'  => $linkedin_url,
+			'url'  => $attributes['linkedin'],
 		),
 		
 		'youtube'   => array(
 			'text' => esc_html__('Watch us on YouTube', 'coblocks'),
-			'url' => 'https://google.com',
-			// 'url'  => $youtube_url,
+			'url' => $attributes['youtube'],
 		),
 		'yelp'      => array(
 			'text' => esc_html__('Rate us on Yelp', 'coblocks'),
-			'url' => 'https://google.com',
-			// 'url'  => $yelp_url,
+			'url' => $attributes['yelp'],
 		),
 		'houzz'     => array(
 			'text' => esc_html__('Rate us on Houzz', 'coblocks'),
-			'url' => 'https://google.com',
-			// 'url'  => $houzz_url,
+			'url' => $attributes['houzz'],
 		),
 
 	);

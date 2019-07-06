@@ -143,10 +143,9 @@ class Inspector extends Component {
 								className="components-coblocks-inspector__social-button-size"
 							/>
 						) }
-						<div className="components-social-icons-list">
-							<p className="components-social-icons-list__label">
-								{ __( 'Icons' ) }
-							</p>
+					</PanelBody>
+					<PanelBody title={ __( 'Link Settings' ) }>
+						<div className="components-social-links-list">
 							<TextControl label="Facebook" value={ facebook } onChange={ value => setAttributes( { facebook: value } ) } />
 							<TextControl label="Twitter" value={ twitter } onChange={ value => setAttributes( { twitter: value } ) } />
 							<TextControl label="Instagram" value={ instagram } onChange={ value => setAttributes( { instagram: value } ) } />
