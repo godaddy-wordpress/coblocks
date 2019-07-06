@@ -53,22 +53,18 @@ class Inspector extends Component {
 
 		const {
 			hasColors,
-			linkedin,
-			pinterest,
 			borderRadius,
-			// tumblr,
-			twitter,
 			size,
-			// reddit,
-			// email,
-			// google,
 			iconSize,
 			padding,
-			houzz,
-			yelp,
-			youtube,
-			instagram,
 			facebook,
+			twitter,
+			instagram,
+			pinterest,
+			linkedin,
+			youtube,
+			yelp,
+			houzz,
 		} = attributes;
 
 		const options = [

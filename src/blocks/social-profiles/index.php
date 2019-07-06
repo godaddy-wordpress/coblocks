@@ -77,10 +77,8 @@ function coblocks_render_social_profiles_block($attributes)
 	$facebook_url  = apply_filters('coblocks_facebook_social_profile_url', $facebook_url);
 	$pinterest_url = apply_filters('coblocks_pinterest_social_profile_url', $pinterest_url);
 	$linkedin_url  = apply_filters('coblocks_linkedin_social_profile_url', $linkedin_url);
-	$email_url     = apply_filters('coblocks_email_social_profile_url', $email_url);
 	$tumblr_url    = apply_filters('coblocks_tumblr_social_profile_url', $tumblr_url);
 	$reddit_url    = apply_filters('coblocks_reddit_social_profile_url', $reddit_url);
-	$google_url    = apply_filters('coblocks_google_social_profile_url', $google_url);
 
 	// Attributes.
 	$text_align    = is_array($attributes) && isset($attributes['textAlign']) ? "style=text-align:{$attributes['textAlign']}" : '';
@@ -121,13 +119,19 @@ function coblocks_render_social_profiles_block($attributes)
 	// Supported social media platforms.
 	$platforms = array(
 
+		
+		'facebook'  => array(
+			'text' => esc_html__('Share on Facebook', 'coblocks'),
+			'url'  => $facebook_url,
+		),
 		'twitter'   => array(
 			'text' => esc_html__('Share on Twitter', 'coblocks'),
 			'url'  => $twitter_url,
 		),
-		'facebook'  => array(
-			'text' => esc_html__('Share on Facebook', 'coblocks'),
-			'url'  => $facebook_url,
+		'Instagram' => array(
+			'text' => esc_html__('See us on Instagram', 'coblocks'),
+			'url' => 'https://google.com',
+			// 'url'  => $instagram_url,
 		),
 		'pinterest' => array(
 			'text' => esc_html__('Share on Pinterest', 'coblocks'),
@@ -137,15 +141,7 @@ function coblocks_render_social_profiles_block($attributes)
 			'text' => esc_html__('Share on Linkedin', 'coblocks'),
 			'url'  => $linkedin_url,
 		),
-		'reddit'    => array(
-			'text' => esc_html__('See us on Reddit', 'coblocks'),
-			'url'  => $reddit_url,
-		),
-		'Instagram' => array(
-			'text' => esc_html__('See us on Instagram', 'coblocks'),
-			'url' => 'https://google.com',
-			// 'url'  => $instagram_url,
-		),
+		
 		'youtube'   => array(
 			'text' => esc_html__('Watch us on YouTube', 'coblocks'),
 			'url' => 'https://google.com',
@@ -276,19 +272,19 @@ function coblocks_register_social_profiles_block()
 				'customTextColor'       => array(
 					'type' => 'string',
 				),
-				'twitter'               => array(
-					'type'    => 'string',
-					'default' => '',
-				),
 				'facebook'              => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'pinterest'             => array(
+				'twitter'               => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'Instagram'              => array(
+				'instagram'              => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'pinterest'             => array(
 					'type'    => 'string',
 					'default' => '',
 				),
