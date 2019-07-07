@@ -1,76 +1,76 @@
 {
-    "name": "social",
-    "category": "coblocks",
-    "attributes": {
-        "className": {
-            "type": "string"
-        },
-        "hasColors": {
-            "type": "boolean",
-            "default": true
-        },
-        "borderRadius": {
-            "type": "number",
-            "default": 40
-        },
-        "size": {
-            "type": "string",
-            "default": "med"
-        },
-        "iconSize": {
-            "type": "number",
-            "default": 22
-        },
-        "padding": {
-            "type": "number",
-            "default": 16
-        },
-        "textAlign": {
-            "type": "string"
-        },
-        "backgroundColor": {
-            "type": "string"
-        },
-        "customBackgroundColor": {
-            "type": "string"
-        },
-        "textColor": {
-            "type": "string"
-        },
-        "customTextColor": {
-            "type": "string"
-        },
-        "twitter": {
-            "type": "boolean",
-            "default": true
-        },
-        "facebook": {
-            "type": "boolean",
-            "default": true
-        },
-        "pinterest": {
-            "type": "boolean",
-            "default": true
-        },
-        "linkedin": {
-            "type": "boolean",
-            "default": false
-        },
-        "tumblr": {
-            "type": "boolean",
-            "default": false
-        },
-        "reddit": {
-            "type": "boolean",
-            "default": false
-        },
-        "email": {
-            "type": "boolean",
-            "default": false
-        },
-        "google": {
-            "type": "boolean",
-            "default": false
-        }
-    }
+	"name": "social",
+	"category": "coblocks",
+	"attributes": {
+		"className": {
+			"type": "string"
+		},
+		"hasColors": {
+			"type": "boolean",
+			"default": true
+		},
+		"borderRadius": {
+			"type": "number",
+			"default": 40
+		},
+		"size": {
+			"type": "string",
+			"default": "med"
+		},
+		"iconSize": {
+			"type": "number",
+			"default": 22
+		},
+		"padding": {
+			"type": "number",
+			"default": 16
+		},
+		"textAlign": {
+			"type": "string"
+		},
+		"backgroundColor": {
+			"type": "string"
+		},
+		"customBackgroundColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"customTextColor": {
+			"type": "string"
+		},
+		"facebook": {
+			"type": "string",
+			"default": ""
+		},
+		"twitter": {
+			"type": "string",
+			"default": ""
+		},
+		"instagram": {
+			"type": "string",
+			"default": ""
+		},
+		"pinterest": {
+			"type": "string",
+			"default": ""
+		},
+		"linkedin": {
+			"type": "string",
+			"default": ""
+		},
+		"youtube": {
+			"type": "string",
+			"default": ""
+		},
+		"yelp": {
+			"type": "string",
+			"default": ""
+		},
+		"houzz": {
+			"type": "string",
+			"default": ""
+		}
+	}
 }
