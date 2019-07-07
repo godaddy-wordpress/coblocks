@@ -88,4 +88,3 @@ class GalleryPlaceholder extends Component {
 }
 
 export default GalleryPlaceholder;
-
