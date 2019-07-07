@@ -10,6 +10,7 @@ import includes from 'lodash/includes';
 import Controls from './controls';
 import Inspector from './inspector';
 import applyWithColors from './colors';
+// import Placeholder from './placeholder';
 
 /**
  * WordPress dependencies
@@ -85,6 +86,17 @@ class edit extends Component {
 			width: ( isMaskStyle || isCircularStyle ) && iconSize + 'px',
 		};
 
+		const placeholder = ! (
+			facebook ||
+			twitter ||
+			instagram ||
+			pinterest ||
+			linkedin ||
+			youtube ||
+			yelp ||
+			houzz
+		);
+
 		return [
 			// eslint-disable-next-line react/jsx-key
 			<Fragment>
@@ -92,7 +104,7 @@ class edit extends Component {
 				{ isSelected && <Inspector { ...this.props } /> }
 				<div className={ classes } style={ { textAlign: textAlign } }>
 					<ul>
-						{ facebook && (
+						{ ( facebook || placeholder ) && (
 							<li>
 								<span
 									className={ classnames(
@@ -111,7 +123,7 @@ class edit extends Component {
 								</span>
 							</li>
 						) }
-						{ twitter && (
+						{ ( twitter || placeholder ) && (
 							<li>
 								<span
 									className={ classnames(
@@ -130,7 +142,7 @@ class edit extends Component {
 								</span>
 							</li>
 						) }
-						{ instagram && (
+						{ ( instagram || placeholder ) && (
 							<li>
 								<span
 									className={ classnames(
@@ -149,7 +161,7 @@ class edit extends Component {
 								</span>
 							</li>
 						) }
-						{ pinterest && (
+						{ ( pinterest || placeholder ) && (
 							<li>
 								<span
 									className={ classnames(
@@ -168,7 +180,7 @@ class edit extends Component {
 								</span>
 							</li>
 						) }
-						{ linkedin && (
+						{ ( linkedin || placeholder ) && (
 							<li>
 								<span
 									className={ classnames(
@@ -187,7 +199,7 @@ class edit extends Component {
 								</span>
 							</li>
 						) }
-						{ youtube && (
+						{ ( youtube || placeholder ) && (
 							<li>
 								<span
 									className={ classnames(
@@ -206,7 +218,7 @@ class edit extends Component {
 								</span>
 							</li>
 						) }
-						{ yelp && (
+						{ ( yelp || placeholder ) && (
 							<li>
 								<span
 									className={ classnames(
@@ -225,7 +237,7 @@ class edit extends Component {
 								</span>
 							</li>
 						) }
-						{ houzz && (
+						{ ( houzz || placeholder ) && (
 							<li>
 								<span
 									className={ classnames(
