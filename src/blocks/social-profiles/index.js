@@ -6,6 +6,7 @@ import './style.scss';
 import edit from './edit';
 import icons from './../../utils/icons';
 import metadata from './block.json';
+import { transforms } from './transforms';
 
 /**
  * WordPress dependencies
@@ -39,6 +40,8 @@ const settings = {
 	],
 
 	edit,
+
+	transforms,
 
 	save() {
 		return null;
