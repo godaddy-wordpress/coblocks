@@ -52,13 +52,19 @@ class CoBlocks_Crop_System
             return null;
         }
 
+        $nR = (360 - round($rotate)) % 360;
         $sz = $imageEditor->get_size();
+
+        if ($nR !== 0 && $nR !== 180) {
+            $originalWidth = $sz['width'];
+            $sz['width']   = $sz['height'];
+            $sz['height']  = $originalWidth;
+        }
 
         $nX = round($sz['width'] * $offsetX / 100);
         $nY = round($sz['height'] * $offsetY / 100);
         $nW = round($sz['width'] * $width / 100);
         $nH = round($sz['height'] * $height / 100);
-        $nR = round($rotate);
 
         $newName  = 'crop-'.$nX.'-'.$nY.'-'.$nW.'-'.$nH.'-'.$nR.'-'.basename($filePath);
         $filename = rtrim(dirname($filePath), '/').'/'.$newName;
