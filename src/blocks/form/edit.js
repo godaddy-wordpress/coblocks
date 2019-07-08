@@ -37,6 +37,7 @@ const FieldDefaults = {
 	supports: {
 		reusable: false,
 		html: false,
+		inserter: false,
 	},
 	attributes: {
 		label: {
@@ -87,9 +88,6 @@ export const childBlocks = [
 			title: __( 'Name' ),
 			description: __( 'A text field for names.' ),
 			icon: icons.name,
-			supports: {
-				inserter: false,
-			},
 			edit: props => (
 				<CoBlocksFieldName
 					type={ 'name' }
@@ -112,9 +110,6 @@ export const childBlocks = [
 			keywords: [ __( 'e-mail' ), __( 'mail' ), 'email' ],
 			description: __( 'An email address field.' ),
 			icon: icons.email,
-			supports: {
-				inserter: false,
-			},
 			edit: editField( 'email' ),
 		},
 	},
@@ -126,9 +121,6 @@ export const childBlocks = [
 			keywords: [ __( 'Textarea' ), 'textarea', __( 'Multiline text' ) ],
 			description: __( 'A text box for longer responses.' ),
 			icon: icons.textarea,
-			supports: {
-				inserter: false,
-			},
 			edit: props => (
 				<CoBlocksFieldTextarea
 					label={ getFieldLabel( props ) }
@@ -397,9 +389,14 @@ class FormEdit extends Component {
 	}
 
 	render() {
-		const { className } = this.props;
+		const {
+			className,
+		} = this.props;
 
-		const classes = classnames( className, 'coblocks-form' );
+		const classes = classnames(
+			className,
+			'coblocks-form',
+		);
 
 		return (
 			<Fragment>
@@ -412,11 +409,7 @@ class FormEdit extends Component {
 						title={ __( 'Google reCAPTCHA' ) }
 						initialOpen={ this.state.recaptchaSecretKey ? false : true }
 					>
-						<p>
-							{ __(
-								'Add your reCAPTCHA site and secret keys to protect your form from spam.'
-							) }
-						</p>
+						<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.' ) }</p>
 						<p>
 							<Fragment>
 								<ExternalLink href={ RETRIEVE_KEY_URL }>
