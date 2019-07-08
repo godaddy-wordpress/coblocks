@@ -29,6 +29,25 @@ export const transforms = {
 	],
 	from: [
 		{
+			type: 'raw',
+			selector: 'div.wp-block-coblocks-social',
+			schema: {
+				div: {
+					classes: [ 'wp-block-coblocks-social' ],
+				},
+			},
+		},
+		{
+			type: 'prefix',
+			prefix: ':share',
+			transform: function( content ) {
+				console.log( content );
+				return createBlock( 'coblocks/social-profiles', {
+					content,
+				} );
+			},
+		},
+		{
 			type: 'block',
 			blocks: [ 'coblocks/social' ],
 			transform: ( { attributes } ) => {
@@ -38,14 +57,14 @@ export const transforms = {
 				} );
 			},
 		},
-		{
-			type: 'raw',
-			selector: 'div.wp-block-coblocks-social-profiles',
-			schema: {
-				div: {
-					classes: [ 'wp-block-coblocks-social-profiles' ],
-				},
-			},
-		},
+		// {
+		// 	type: 'raw',
+		// 	selector: 'div.wp-block-coblocks-social-profiles',
+		// 	schema: {
+		// 		div: {
+		// 			classes: [ 'wp-block-coblocks-social-profiles' ],
+		// 		},
+		// 	},
+		// },
 	],
 };
