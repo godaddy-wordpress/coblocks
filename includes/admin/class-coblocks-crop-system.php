@@ -53,13 +53,13 @@ class CoBlocks_Crop_System
         http_response_code(200);
 
         if ($newId !== null) {
-            json_encode([
+            echo json_encode([
                 'success' => true,
                 'id'      => $newId,
                 'url'     => wp_get_attachment_image_url($newId, 'original'),
             ]);
         } else {
-            json_encode([
+            echo json_encode([
                 'success' => false,
             ]);
         }

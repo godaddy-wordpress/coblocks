@@ -63,6 +63,42 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
 
             const {cropX, cropY, cropWidth, cropHeight, cropRotation} = attributes;
 
+            const applyAttributes = function (changeAttributes) {
+                setAttributes(changeAttributes);
+
+                const finalAttributes = _.extend({}, attributes, changeAttributes);
+
+                jQuery.post(ajaxurl, {
+                    'action': 'coblocks_system_crop',
+                    'id': finalAttributes.id,
+                    'cropX': finalAttributes.cropX,
+                    'cropY': finalAttributes.cropY,
+                    'cropWidth': finalAttributes.cropWidth,
+                    'cropHeight': finalAttributes.cropHeight,
+                    'cropRotation': finalAttributes.cropRotation
+                }, function (response) {
+                    if (!response) {
+                        return;
+                    }
+
+                    const data = JSON.parse(response);
+
+                    if (!data || !data.success) {
+                        return;
+                    }
+
+                    console.log({
+                        id: data.id,
+                        url: data.url
+                    });
+
+                    setAttributes({
+                        id: data.id,
+                        url: data.url
+                    });
+                });
+            };
+
             return (
                 <Fragment>
                     <BlockEdit {...props} />
@@ -74,7 +110,7 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                                 type={'number'}
                                 min={0}
                                 max={100}
-                                onChange={(val) => setAttributes({cropX: val})}
+                                onChange={(val) => applyAttributes({cropX: parseInt(val)})}
                             />
                             <TextControl
                                 label={__('Offset Y (%)')}
@@ -82,7 +118,7 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                                 type={'number'}
                                 min={0}
                                 max={100}
-                                onChange={(val) => setAttributes({cropY: val})}
+                                onChange={(val) => applyAttributes({cropY: parseInt(val)})}
                             />
                             <TextControl
                                 label={__('Width (%)')}
@@ -90,7 +126,7 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                                 type={'number'}
                                 min={0}
                                 max={100}
-                                onChange={(val) => setAttributes({cropWidth: val})}
+                                onChange={(val) => applyAttributes({cropWidth: parseInt(val)})}
                             />
                             <TextControl
                                 label={__('Height (%)')}
@@ -98,34 +134,34 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                                 type={'number'}
                                 min={0}
                                 max={100}
-                                onChange={(val) => setAttributes({cropHeight: val})}
+                                onChange={(val) => applyAttributes({cropHeight: parseInt(val)})}
                             />
                             <ButtonGroup>
                                 <Button
                                     isDefault
                                     isPrimary={cropRotation === 0}
-                                    onClick={() => setAttributes({cropRotation: 0})}
+                                    onClick={() => applyAttributes({cropRotation: 0})}
                                 >
                                     0°
                                 </Button>
                                 <Button
                                     isDefault
                                     isPrimary={cropRotation === 90}
-                                    onClick={() => setAttributes({cropRotation: 90})}
+                                    onClick={() => applyAttributes({cropRotation: 90})}
                                 >
                                     90°
                                 </Button>
                                 <Button
                                     isDefault
                                     isPrimary={cropRotation === 180}
-                                    onClick={() => setAttributes({cropRotation: 180})}
+                                    onClick={() => applyAttributes({cropRotation: 180})}
                                 >
                                     180°
                                 </Button>
                                 <Button
                                     isDefault
                                     isPrimary={cropRotation === 270}
-                                    onClick={() => setAttributes({cropRotation: 270})}
+                                    onClick={() => applyAttributes({cropRotation: 270})}
                                 >
                                     270°
                                 </Button>
