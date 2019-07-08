@@ -69,7 +69,7 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                     <InspectorControls>
                         <PanelBody title={__('Crop Settings')} initialOpen={false}>
                             <TextControl
-                                label={__('Offset X')}
+                                label={__('Offset X (%)')}
                                 value={cropX}
                                 type={'number'}
                                 min={0}
@@ -77,7 +77,7 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                                 onChange={(val) => setAttributes({cropX: val})}
                             />
                             <TextControl
-                                label={__('Offset Y')}
+                                label={__('Offset Y (%)')}
                                 value={cropY}
                                 type={'number'}
                                 min={0}
@@ -85,7 +85,7 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                                 onChange={(val) => setAttributes({cropY: val})}
                             />
                             <TextControl
-                                label={__('Width')}
+                                label={__('Width (%)')}
                                 value={cropWidth}
                                 type={'number'}
                                 min={0}
@@ -93,7 +93,7 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                                 onChange={(val) => setAttributes({cropWidth: val})}
                             />
                             <TextControl
-                                label={__('Height')}
+                                label={__('Height (%)')}
                                 value={cropHeight}
                                 type={'number'}
                                 min={0}
