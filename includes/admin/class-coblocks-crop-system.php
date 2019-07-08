@@ -143,7 +143,7 @@ class CoBlocks_Crop_System
         ), $filename, 0);
 
         $metadata                          = wp_generate_attachment_metadata($attachmentId, $filename);
-        $metadata[self::ORIGINAL_META_KEY] = $id;
+        $metadata[self::ORIGINAL_META_KEY] = $originalImageId;
         $metadata[self::CROP_META_KEY]     = array(
             'offsetX'  => $offsetX,
             'offsetY'  => $offsetY,
