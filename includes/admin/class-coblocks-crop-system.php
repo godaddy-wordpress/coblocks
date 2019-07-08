@@ -29,6 +29,44 @@ class CoBlocks_Crop_System
         return self::$instance;
     }
 
+    public function registerEndpoints()
+    {
+        add_action('wp_ajax_coblocks_system_crop', array($this, 'apiCrop'));
+    }
+
+    public function apiCrop()
+    {
+        if (!isset($_POST['id']) || !isset($_POST['cropX']) || !isset($_POST['cropY']) || !isset($_POST['cropWidth']) || !isset($_POST['cropHeight']) || !isset($_POST['cropRotation'])) {
+            http_response_code(400);
+            die();
+        }
+
+        $newId = $this->imageMediaCrop(
+            intval($_POST['id']),
+            floatval($_POST['cropX']),
+            floatval($_POST['cropY']),
+            floatval($_POST['cropWidth']),
+            floatval($_POST['cropHeight']),
+            floatval($_POST['cropRotation'])
+        );
+
+        http_response_code(200);
+
+        if ($newId !== null) {
+            json_encode([
+                'success' => true,
+                'id'      => $newId,
+                'url'     => wp_get_attachment_image_url($newId, 'original'),
+            ]);
+        } else {
+            json_encode([
+                'success' => false,
+            ]);
+        }
+
+        die();
+    }
+
     public function imageMediaCrop($id, $offsetX, $offsetY, $width, $height, $rotate)
     {
         require_once(ABSPATH.'wp-admin/includes/image.php');
@@ -115,3 +153,4 @@ class CoBlocks_Crop_System
     }
 }
 
+CoBlocks_Crop_System::instance()->registerEndpoints();
