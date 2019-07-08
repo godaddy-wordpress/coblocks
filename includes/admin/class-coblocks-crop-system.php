@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 class CoBlocks_Crop_System
 {
     const ORIGINAL_META_KEY = 'original-image-id';
-    const CROP_META_KEY = 'original-image-id';
+    const CROP_META_KEY = 'crop-image-data';
 
     private static $instance;
 
@@ -71,7 +71,11 @@ class CoBlocks_Crop_System
     {
         require_once(ABSPATH.'wp-admin/includes/image.php');
 
-        $originalImageId = get_post_meta($id, self::ORIGINAL_META_KEY, true);
+        $attachmentMeta = wp_get_attachment_metadata($id);
+
+        if (isset($attachmentMeta[self::ORIGINAL_META_KEY])) {
+            $originalImageId = $attachmentMeta[self::ORIGINAL_META_KEY];
+        }
 
         if (empty($originalImageId)) {
             $originalImageId = $id;
@@ -141,10 +145,11 @@ class CoBlocks_Crop_System
         $metadata                          = wp_generate_attachment_metadata($attachmentId, $filename);
         $metadata[self::ORIGINAL_META_KEY] = $id;
         $metadata[self::CROP_META_KEY]     = array(
-            'offsetX' => $offsetX,
-            'offsetY' => $offsetY,
-            'width'   => $width,
-            'height'  => $height,
+            'offsetX'  => $offsetX,
+            'offsetY'  => $offsetY,
+            'width'    => $width,
+            'height'   => $height,
+            'rotation' => $rotate,
         );
 
         wp_update_attachment_metadata($attachmentId, $metadata);
