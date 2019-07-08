@@ -38,6 +38,22 @@ const blockAttributes = {
 		type: 'boolean',
 		default: false,
 	},
+	align: {
+		type: 'string',
+		default: 'wide',
+	},
+	fullwidth: {
+		type: 'boolean',
+		default: true,
+	},
+	height: {
+		type: 'number',
+		default: 100,
+	},
+	width: {
+		type: 'number',
+		default: 300,
+	},
 };
 
 const settings = {
@@ -47,6 +63,8 @@ const settings = {
 	description: __( 'Add a set of logos or badges' ),
 
 	keywords: keywords,
+
+	category: 'coblocks-galleries',
 
 	supports: {
 		align: [ 'wide', 'full' ],
