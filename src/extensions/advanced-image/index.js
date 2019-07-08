@@ -87,11 +87,6 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                         return;
                     }
 
-                    console.log({
-                        id: data.id,
-                        url: data.url
-                    });
-
                     setAttributes({
                         id: data.id,
                         url: data.url
