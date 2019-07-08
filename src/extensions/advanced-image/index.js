@@ -7,6 +7,8 @@ const {PanelBody} = wp.components;
 const {PanelRow} = wp.components;
 const {PanelColumn} = wp.components;
 const {TextControl} = wp.components;
+const {ButtonGroup} = wp.components;
+const {Button} = wp.components;
 const {addFilter} = wp.hooks;
 const {__} = wp.i18n;
 
@@ -19,14 +21,12 @@ const addPositioningControl = (settings, name) => {
         return settings;
     }
 
-    console.log(settings);
-
     settings.attributes = assign(settings.attributes, {
-        offsetX: {
+        cropX: {
             type: 'number',
             default: 0,
         },
-        offsetY: {
+        cropY: {
             type: 'number',
             default: 0,
         },
@@ -37,6 +37,10 @@ const addPositioningControl = (settings, name) => {
         cropHeight: {
             type: 'number',
             default: 100,
+        },
+        cropRotation: {
+            type: 'number',
+            default: 0,
         }
     });
 
@@ -52,7 +56,12 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                 );
             }
 
-            const {offsetX, offsetY, cropWidth, cropHeight} = props.attributes;
+            const {
+                attributes,
+                setAttributes
+            } = props;
+
+            const {cropX, cropY, cropWidth, cropHeight, cropRotation} = attributes;
 
             return (
                 <Fragment>
@@ -61,17 +70,19 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                         <PanelBody title={__('Crop Settings')} initialOpen={false}>
                             <TextControl
                                 label={__('Offset X')}
-                                value={offsetX}
+                                value={cropX}
                                 type={'number'}
                                 min={0}
                                 max={100}
+                                onChange={(val) => setAttributes({cropX: val})}
                             />
                             <TextControl
                                 label={__('Offset Y')}
-                                value={offsetY}
+                                value={cropY}
                                 type={'number'}
                                 min={0}
                                 max={100}
+                                onChange={(val) => setAttributes({cropY: val})}
                             />
                             <TextControl
                                 label={__('Width')}
@@ -79,6 +90,7 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                                 type={'number'}
                                 min={0}
                                 max={100}
+                                onChange={(val) => setAttributes({cropWidth: val})}
                             />
                             <TextControl
                                 label={__('Height')}
@@ -86,7 +98,38 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                                 type={'number'}
                                 min={0}
                                 max={100}
+                                onChange={(val) => setAttributes({cropHeight: val})}
                             />
+                            <ButtonGroup>
+                                <Button
+                                    isDefault
+                                    isPrimary={cropRotation === 0}
+                                    onClick={() => setAttributes({cropRotation: 0})}
+                                >
+                                    0°
+                                </Button>
+                                <Button
+                                    isDefault
+                                    isPrimary={cropRotation === 90}
+                                    onClick={() => setAttributes({cropRotation: 90})}
+                                >
+                                    90°
+                                </Button>
+                                <Button
+                                    isDefault
+                                    isPrimary={cropRotation === 180}
+                                    onClick={() => setAttributes({cropRotation: 180})}
+                                >
+                                    180°
+                                </Button>
+                                <Button
+                                    isDefault
+                                    isPrimary={cropRotation === 270}
+                                    onClick={() => setAttributes({cropRotation: 270})}
+                                >
+                                    270°
+                                </Button>
+                            </ButtonGroup>
                         </PanelBody>
                     </InspectorControls>
                 </Fragment>
