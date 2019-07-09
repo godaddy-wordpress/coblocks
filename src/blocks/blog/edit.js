@@ -103,7 +103,6 @@ class LatestPostsEdit extends Component {
 			displayPostContent,
 			displayPostDate,
 			displayPostLink,
-			displayCategories,
 			postLink,
 			postFeedType,
 			externalRssUrl,
@@ -114,6 +113,7 @@ class LatestPostsEdit extends Component {
 			postsToShow,
 			excerptLength,
 			listPosition,
+			infiniteSlide,
 			prevNextButtons,
 			visibleItems,
 			draggable,
@@ -139,12 +139,6 @@ class LatestPostsEdit extends Component {
 					checked={ displayPostContent }
 					help={ __( 'Showing the post excerpt.' ) }
 					onChange={ ( value ) => setAttributes( { displayPostContent: value } ) }
-				/>
-				<ToggleControl
-					label={ __( 'Display Categories' ) }
-					checked={ displayCategories }
-					help={ __( 'Showing posts categories.' ) }
-					onChange={ ( value ) => setAttributes( { displayCategories: value } ) }
 				/>
 				{ displayPostContent &&
 					<RangeControl
@@ -224,7 +218,7 @@ class LatestPostsEdit extends Component {
 			);
 		}
 
-		const displayPosts = latestPosts.length > postsToShow ?
+		const displayPosts = Array.isArray( latestPosts ) && latestPosts.length > postsToShow ?
 			latestPosts.slice( 0, postsToShow ) :
 			latestPosts;
 
@@ -245,7 +239,7 @@ class LatestPostsEdit extends Component {
 			autoPlaySpeed: autoPlaySpeed,
 			dots: false,
 			arrows: prevNextButtons,
-			infinite: true,
+			infinite: infiniteSlide,
 			draggable: draggable,
 			adaptiveHeight: false,
 			speed: 500,
@@ -327,7 +321,9 @@ class LatestPostsEdit extends Component {
 						excerptElement.innerHTML = excerpt;
 						excerpt = excerptElement.textContent || excerptElement.innerText || '';
 						return (
-							<li key={ i }>
+							<li className={ classnames( {
+								'list-center': isGridStyle && !featuredImageUrl,
+							} ) } key={ i }>
 								{ featuredImageUrl &&
 								<div className="wp-block-coblocks-blog__post-image-wrapper"
 									 style={ { backgroundImage: featuredImageStyle } }></div>

@@ -59,7 +59,7 @@ msgstr ""
 #: src/blocks/row/column/components/inspector.js:142
 #: src/blocks/row/components/inspector.js:224
 #: src/blocks/shape-divider/components/inspector.js:96
-#: src/blocks/social/components/inspector.js:191
+#: src/blocks/share/components/inspector.js:191
 #: src/extensions/colors/index.js:63
 msgid "Color Settings"
 msgstr ""
@@ -79,7 +79,7 @@ msgstr ""
 #: src/blocks/row/column/components/inspector.js:148
 #: src/blocks/row/components/inspector.js:243
 #: src/blocks/shape-divider/components/inspector.js:107
-#: src/blocks/social/components/inspector.js:99
+#: src/blocks/share/components/inspector.js:99
 #: src/components/background/panel.js:117
 #: src/extensions/colors/index.js:50
 msgid "Background Color"
@@ -118,7 +118,7 @@ msgstr ""
 #: src/blocks/media-card/index.js:38
 #: src/blocks/pricing-table/index.js:33
 #: src/blocks/pricing-table/pricing-table-item/index.js:32
-#: src/blocks/social/index.js:26
+#: src/blocks/share/index.js:26
 msgid "coblocks"
 msgstr ""
 
@@ -198,7 +198,7 @@ msgstr ""
 #: src/blocks/pricing-table/pricing-table-item/components/inspector.js:71
 #: src/blocks/row/column/components/inspector.js:153
 #: src/blocks/row/components/inspector.js:248
-#: src/blocks/social/components/inspector.js:91
+#: src/blocks/share/components/inspector.js:91
 #: src/extensions/colors/index.js:57
 msgid "Text Color"
 msgstr ""
@@ -267,7 +267,7 @@ msgstr ""
 #: src/blocks/features/components/inspector.js:95
 #: src/blocks/icon/components/inspector.js:159
 #: src/blocks/row/components/inspector.js:114
-#: src/blocks/social/components/inspector.js:77
+#: src/blocks/share/components/inspector.js:77
 #: src/components/dimensions-control/index.js:444
 #: src/components/size-control/index.js:120
 msgid "Small"
@@ -277,7 +277,7 @@ msgstr ""
 #: src/blocks/features/components/inspector.js:96
 #: src/blocks/icon/components/inspector.js:164
 #: src/blocks/row/components/inspector.js:115
-#: src/blocks/social/components/inspector.js:78
+#: src/blocks/share/components/inspector.js:78
 #: src/components/dimensions-control/index.js:449
 #: src/components/size-control/index.js:124
 msgid "Medium"
@@ -287,7 +287,7 @@ msgstr ""
 #: src/blocks/features/components/inspector.js:97
 #: src/blocks/icon/components/inspector.js:169
 #: src/blocks/row/components/inspector.js:116
-#: src/blocks/social/components/inspector.js:79
+#: src/blocks/share/components/inspector.js:79
 #: src/components/dimensions-control/index.js:454
 #: src/components/size-control/index.js:67
 msgid "Large"
@@ -379,7 +379,7 @@ msgid "Click to Tweet"
 msgstr ""
 
 #: src/blocks/click-to-tweet/index.js:33
-#: src/blocks/social/index.js:25
+#: src/blocks/share/index.js:25
 msgid "share"
 msgstr ""
 
@@ -532,7 +532,7 @@ msgid "Button Text Color"
 msgstr ""
 
 #: src/blocks/form/edit.js:107
-#: src/blocks/social/components/inspector.js:169
+#: src/blocks/share/components/inspector.js:169
 #: includes/class-coblocks-form.php:211
 #: includes/class-coblocks-form.php:298
 msgid "Email"
@@ -729,7 +729,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:157
 #: src/blocks/gallery-masonry/inspector.js:151
 #: src/blocks/gallery-stacked/inspector.js:159
-#: src/blocks/social/components/inspector.js:117
+#: src/blocks/share/components/inspector.js:117
 #: src/components/background/panel.js:169
 msgid "Rounded Corners"
 msgstr ""
@@ -1048,7 +1048,7 @@ msgid "Highlight text."
 msgstr ""
 
 #: src/blocks/icon/components/inspector.js:184
-#: src/blocks/social/components/inspector.js:144
+#: src/blocks/share/components/inspector.js:108
 msgid "Icon Settings"
 msgstr ""
 
@@ -1635,106 +1635,103 @@ msgstr ""
 msgid "Shape Divider"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:114
-#: src/blocks/social/index.php:127
+#: src/blocks/share/components/edit.js:114
+#: src/blocks/share/index.php:127
 msgid "Share on Twitter"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:122
-#: src/blocks/social/index.php:131
+#: src/blocks/share/components/edit.js:122
+#: src/blocks/share/index.php:131
 msgid "Share on Facebook"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:130
-#: src/blocks/social/index.php:135
+#: src/blocks/share/components/edit.js:130
+#: src/blocks/share/index.php:135
 msgid "Share on Pinterest"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:138
+#: src/blocks/share/components/edit.js:138
 msgid "Share on LinkedIn"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:146
-#: src/blocks/social/index.php:143
+#: src/blocks/share/components/edit.js:146
+#: src/blocks/share/index.php:143
 msgid "Share via Email"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:154
-#: src/blocks/social/index.php:147
+#: src/blocks/share/components/edit.js:154
+#: src/blocks/share/index.php:147
 msgid "Share on Tumblr"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:162
-#: src/blocks/social/index.php:151
+#: src/blocks/share/components/edit.js:162
+#: src/blocks/share/index.php:151
 msgid "Share on Google"
 msgstr ""
 
-#: src/blocks/social/components/edit.js:170
-#: src/blocks/social/index.php:155
+#: src/blocks/share/components/edit.js:170
+#: src/blocks/share/index.php:155
 msgid "Share on Reddit"
 msgstr ""
 
-#: src/blocks/social/components/inspector.js:108
-msgid "Social Settings"
-msgstr ""
 
-#: src/blocks/social/components/inspector.js:110
+#: src/blocks/share/components/inspector.js:110
 msgid "Social Colors"
 msgstr ""
 
-#: src/blocks/social/components/inspector.js:126
+#: src/blocks/share/components/inspector.js:126
 msgid "Icon Size"
 msgstr ""
 
-#: src/blocks/social/components/inspector.js:135
+#: src/blocks/share/components/inspector.js:135
 msgid "Button Size"
 msgstr ""
 
-#: src/blocks/social/components/inspector.js:147
+#: src/blocks/share/components/inspector.js:147
 msgid " Toggle the sharing links to display from the following social platforms."
 msgstr ""
 
-#: src/blocks/social/components/inspector.js:149
+#: src/blocks/share/components/inspector.js:149
 msgid "Twitter"
 msgstr ""
 
-#: src/blocks/social/components/inspector.js:154
+#: src/blocks/share/components/inspector.js:154
 msgid "Facebook"
 msgstr ""
 
-#: src/blocks/social/components/inspector.js:159
+#: src/blocks/share/components/inspector.js:159
 msgid "Pinterest"
 msgstr ""
 
-#: src/blocks/social/components/inspector.js:164
+#: src/blocks/share/components/inspector.js:164
 msgid "LinkedIn"
 msgstr ""
 
-#: src/blocks/social/components/inspector.js:174
+#: src/blocks/share/components/inspector.js:174
 msgid "Tumblr"
 msgstr ""
 
-#: src/blocks/social/components/inspector.js:179
+#: src/blocks/share/components/inspector.js:179
 msgid "Google"
 msgstr ""
 
-#: src/blocks/social/components/inspector.js:184
+#: src/blocks/share/components/inspector.js:184
 msgid "Reddit"
 msgstr ""
 
-#: src/blocks/social/components/inspector.js:44
+#: src/blocks/share/components/inspector.js:44
 msgid "Social button colors are enabled."
 msgstr ""
 
-#: src/blocks/social/components/inspector.js:44
+#: src/blocks/share/components/inspector.js:44
 msgid "Toggle to use official colors from each social media platform."
 msgstr ""
 
-#: src/blocks/social/index.js:20
+#: src/blocks/share/index.js:20
 msgid "Social"
 msgstr ""
 
-#: src/blocks/social/index.js:33
+#: src/blocks/share/index.js:33
 msgid "Add social sharing buttons to help you get likes and shares."
 msgstr ""
 
@@ -2324,22 +2321,22 @@ msgctxt "block style"
 msgid "Pointed"
 msgstr ""
 
-#: src/blocks/social/index.js:38
+#: src/blocks/share/index.js:38
 msgctxt "block style"
 msgid "Mask"
 msgstr ""
 
-#: src/blocks/social/index.js:39
+#: src/blocks/share/index.js:39
 msgctxt "block style"
 msgid "Icon"
 msgstr ""
 
-#: src/blocks/social/index.js:40
+#: src/blocks/share/index.js:40
 msgctxt "block style"
 msgid "Text"
 msgstr ""
 
-#: src/blocks/social/index.js:41
+#: src/blocks/share/index.js:41
 msgctxt "block style"
 msgid "Icon & Text"
 msgstr ""
@@ -3005,11 +3002,6 @@ msgstr ""
 msgid "Google Map API key for map rendering"
 msgstr ""
 
-#. translators: 1: Link to plugin homepage, 2: Link to WordPress.org rating page.
-#: includes/admin/class-coblocks-admin-footer.php:43
-msgid "Thank you for using %1$s! Please <a href=\"%2$s\" target=\"_blank\">rate us on WordPress.org</a>."
-msgstr ""
-
 #. translators: Number of years
 #: includes/admin/class-coblocks-feedback.php:92
 msgid "%s years"
@@ -3158,6 +3150,6 @@ msgstr ""
 msgid "Cheating huh?"
 msgstr ""
 
-#: src/blocks/social/index.php:139
+#: src/blocks/share/index.php:139
 msgid "Share on Linkedin"
 msgstr ""
