@@ -1,9 +1,4 @@
 .wp-block-coblocks-buttons {
-	&,
-	&__inner {
-		position: relative;
-	}
-
 	&__inner {
 		align-items: center;
 		display: flex;
@@ -30,5 +25,9 @@
 				}
 			}
 		}
+	}
+
+	.wp-block-button + .wp-block-button {
+		margin-left: 1.4em;
 	}
 }
