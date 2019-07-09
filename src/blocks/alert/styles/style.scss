@@ -13,11 +13,8 @@
 	}
 
 	&__title {
-		color: inherit;
-		display: inline-block;
-		line-height: 1;
-		width: 100%;
-		margin-bottom: 0.75em;
+		display: block;
+		margin-bottom: 0.5em;
 
 		&:empty {
 			display: none;
@@ -25,7 +22,7 @@
 	}
 
 	&__text {
-		color: inherit;
 		margin-bottom: 0;
+		margin-top: 0;
 	}
 }
