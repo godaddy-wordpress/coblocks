@@ -55,7 +55,6 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
-			gutter,
 			items,
 			stacked,
 			contentAlign,
@@ -70,7 +69,6 @@ class Edit extends Component {
 		const innerClasses = classnames(
 			'wp-block-coblocks-buttons__inner',{
 				[ `flex-align-${ contentAlign }` ] : contentAlign,
-				[ `has-${ gutter }-gutter` ] : gutter,
 				'is-stacked': stacked,
 				'is-stacked-on-mobile': isStackedOnMobile,
 			}

@@ -35,10 +35,6 @@ const keywords = [
 ];
 
 const blockAttributes = {
-	gutter: {
-		type: 'string',
-		default: 'medium',
-	},
 	items: {
 		type: 'number',
 		default: 2,
@@ -90,7 +86,6 @@ const settings = {
 
 	save( { attributes, className } ) {
 		const {
-			gutter,
 			items,
 			stacked,
 			contentAlign,
@@ -106,7 +101,6 @@ const settings = {
 		const innerClasses = classnames(
 			'wp-block-coblocks-buttons__inner',{
 				[ `flex-align-${ contentAlign }` ] : contentAlign,
-				[ `has-${ gutter }-gutter` ] : gutter,
 				'is-stacked': stacked,
 				'is-stacked-on-mobile': isStackedOnMobile,
 			}

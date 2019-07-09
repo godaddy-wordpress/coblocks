@@ -30,16 +30,8 @@ class Inspector extends Component {
 
 		const {
 			items,
-			gutter,
 			stacked,
 		} = attributes;
-
-		const gutterOptions = [
-			{ value: 'small', label: __( 'Small' ) },
-			{ value: 'medium', label: __( 'Medium' ) },
-			{ value: 'large', label: __( 'Large' ) },
-			{ value: 'huge', label: __( 'Huge' ) },
-		];
 
 		return (
 			<Fragment>
@@ -58,15 +50,6 @@ class Inspector extends Component {
 							min={ 1 }
 							max={ 4 }
 						/>
-						{ items >= 2 &&
-							<SelectControl
-								label={ __( 'Gutter' ) }
-								value={ gutter }
-								options={ gutterOptions }
-								help={ __( 'Space between each button.' ) }
-								onChange={ ( value ) => setAttributes( { gutter: value } ) }
-							/>
-						}
 						{ items >= 2 &&
 							<ToggleControl
 							label={ __( 'Stack Buttons' ) }
