@@ -56,7 +56,6 @@ class Edit extends Component {
 
 		const {
 			items,
-			stacked,
 			contentAlign,
 			isStackedOnMobile,
 		} = attributes;
@@ -69,7 +68,6 @@ class Edit extends Component {
 		const innerClasses = classnames(
 			'wp-block-coblocks-buttons__inner',{
 				[ `flex-align-${ contentAlign }` ] : contentAlign,
-				'is-stacked': stacked,
 				'is-stacked-on-mobile': isStackedOnMobile,
 			}
 		);

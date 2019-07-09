@@ -30,7 +30,6 @@ class Inspector extends Component {
 
 		const {
 			items,
-			stacked,
 		} = attributes;
 
 		return (
@@ -50,13 +49,6 @@ class Inspector extends Component {
 							min={ 1 }
 							max={ 4 }
 						/>
-						{ items >= 2 &&
-							<ToggleControl
-							label={ __( 'Stack Buttons' ) }
-							checked={ !! stacked }
-							onChange={ () => setAttributes( {  stacked: ! stacked } ) }
-							help={ !! stacked ? __( 'Aligning buttons in a single column.' ) : __( 'Toggle to align buttons in a column.' ) } />
-						}
 					</PanelBody>
 				</InspectorControls>
 			</Fragment>

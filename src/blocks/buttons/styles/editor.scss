@@ -52,7 +52,6 @@
 				display: none;
 			}
 
-			//button block
 			.wp-block[data-type="core/button"] {
 				margin-left: 0;
 				margin-right: 0;
@@ -64,24 +63,8 @@
 					margin-top: 0 !important;
 				}
 			}
-
-			//Display button as stacked
-			&.is-stacked {
-				> .editor-inner-blocks {
-					display: block;
-					width: 100%;
-
-					> .editor-block-list__layout {
-						flex-direction: column;
-					}
-				}
-				.wp-block[data-type="core/button"] {
-					display: block;
-					margin-left: 0 !important;
-					margin-right: 0 !important;
-				}
-			}
 		}
+
 		.block-list-appender {
 			display: none;
 		}

@@ -39,10 +39,6 @@ const blockAttributes = {
 		type: 'number',
 		default: 2,
 	},
-	stacked: {
-		type: 'boolean',
-		default: false,
-	},
 	contentAlign: {
 		type: 'string',
 		default: 'left',
@@ -87,7 +83,6 @@ const settings = {
 	save( { attributes, className } ) {
 		const {
 			items,
-			stacked,
 			contentAlign,
 			isStackedOnMobile,
 		} = attributes;
@@ -101,7 +96,6 @@ const settings = {
 		const innerClasses = classnames(
 			'wp-block-coblocks-buttons__inner',{
 				[ `flex-align-${ contentAlign }` ] : contentAlign,
-				'is-stacked': stacked,
 				'is-stacked-on-mobile': isStackedOnMobile,
 			}
 		);

@@ -22,21 +22,6 @@
 			text-align: right;
 		}
 
-		// Display button as stacked.
-		&.is-stacked {
-			flex-direction: column;
-
-			.wp-block-button {
-				margin-left: 0 !important;
-				margin-right: 0 !important;
-				width: auto !important;
-
-				&.wp-block-coblocks-column:last-child {
-					margin-bottom: 0;
-				}
-			}
-		}
-
 		&.is-stacked-on-mobile {
 			.wp-block-button {
 				@media (max-width: #{ ($break-small) }) {
