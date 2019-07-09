@@ -68,12 +68,12 @@ function coblocks_render_social_profiles_block($attributes)
 		url=' . get_the_permalink() . '
 	';
 
-	$instagram_url = 
-		
+	$instagram_url =
 
 
-	// Apply filters, so that the social URLs can be modified.
-	$twitter_url   = apply_filters('coblocks_twitter_social_profile_url', $twitter_url);
+
+		// Apply filters, so that the social URLs can be modified.
+		$twitter_url   = apply_filters('coblocks_twitter_social_profile_url', $twitter_url);
 	$facebook_url  = apply_filters('coblocks_facebook_social_profile_url', $facebook_url);
 	$pinterest_url = apply_filters('coblocks_pinterest_social_profile_url', $pinterest_url);
 	$linkedin_url  = apply_filters('coblocks_linkedin_social_profile_url', $linkedin_url);
@@ -115,11 +115,11 @@ function coblocks_render_social_profiles_block($attributes)
 	if (isset($attributes['className']) && strpos($attributes['className'], 'is-style-circular') !== false) {
 		$padding = is_array($attributes) && isset($attributes['padding']) ? "padding:{$attributes['padding']}px;" : '';
 	}
-	
+
 	// Supported social media platforms.
 	$platforms = array(
 
-		
+
 		'facebook'  => array(
 			'text' => esc_html__('Share on Facebook', 'coblocks'),
 			'url'  => $attributes['facebook'],
@@ -140,7 +140,7 @@ function coblocks_render_social_profiles_block($attributes)
 			'text' => esc_html__('Share on Linkedin', 'coblocks'),
 			'url'  => $attributes['linkedin'],
 		),
-		
+
 		'youtube'   => array(
 			'text' => esc_html__('Watch us on YouTube', 'coblocks'),
 			'url' => $attributes['youtube'],
@@ -153,7 +153,6 @@ function coblocks_render_social_profiles_block($attributes)
 			'text' => esc_html__('Rate us on Houzz', 'coblocks'),
 			'url' => $attributes['houzz'],
 		),
-
 	);
 
 	// Start markup.
@@ -300,6 +299,10 @@ function coblocks_register_social_profiles_block()
 					'type'    => 'string',
 					'default' => '',
 				),
+				'socialProfileAttributes'		=> array(
+					'type'	  => 'string',
+					'default' => '',
+				)
 			),
 			'render_callback' => 'coblocks_render_social_profiles_block',
 		)

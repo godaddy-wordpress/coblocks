@@ -1,11 +1,25 @@
 const { createBlock } = wp.blocks;
 
+function getTransformedAttributes( blockName, attributeName, attributes ) {
+	if ( blockName === 'share' ) {
+		if ( attributes.shareAttributes ) {
+			return attributes.shareAttributes[ attributeName ];
+		}
+		return attributes[ attributeName ] ? true : false;
+	} else if ( blockName === 'social-profiles' ) {
+		if ( attributes.socialProfileAttributes ) {
+			return attributes.socialProfileAttributes[ attributeName ];
+		}
+		return attributes[ attributeName ] ? true : false;
+	}
+}
+
 export const transforms = {
 	to: [
 		{
 			type: 'block',
 			blocks: [ 'coblocks/social' ],
-			transform: ( { attributes } ) => {
+			transform: attributes => {
 				console.log( attributes );
 				// transforming an empty social element
 				// if ( ! value || ! value.length ) {
@@ -13,58 +27,66 @@ export const transforms = {
 				// }
 				// transforming an social element with content
 				return createBlock( 'coblocks/social', {
-					content: attributes,
+					shareAttributes: JSON.stringify( attributes ),
+					facebook: getTransformedAttributes( 'share', 'facebook', attributes ),
+					twitter: getTransformedAttributes( 'share', 'twitter', attributes ),
+					pinterest: getTransformedAttributes( 'share', 'pinterest', attributes ),
+					linkedin: getTransformedAttributes( 'share', 'linkedin', attributes ),
+					email: getTransformedAttributes( 'share', 'email', attributes ),
+					tumblr: getTransformedAttributes( 'share', 'tumblr', attributes ),
+					google: getTransformedAttributes( 'share', 'google', attributes ),
+					reddit: getTransformedAttributes( 'share', 'reddit', attributes ),
 				} );
-			},
-		},
-		{
-			type: 'raw',
-			selector: 'div.wp-block-coblocks-social-profiles',
-			schema: {
-				div: {
-					classes: [ 'wp-block-coblocks-social-profiles' ],
-				},
 			},
 		},
 	],
 	from: [
 		{
-			type: 'raw',
-			selector: 'div.wp-block-coblocks-social',
-			schema: {
-				div: {
-					classes: [ 'wp-block-coblocks-social' ],
-				},
-			},
-		},
-		{
-			type: 'prefix',
-			prefix: ':share',
-			transform: function( content ) {
-				console.log( content );
-				return createBlock( 'coblocks/social-profiles', {
-					content,
-				} );
-			},
-		},
-		{
 			type: 'block',
 			blocks: [ 'coblocks/social' ],
-			transform: ( { attributes } ) => {
+			transform: attributes => {
 				console.log( attributes );
 				return createBlock( 'coblocks/social-profiles', {
-					value: attributes,
+					socialProfileAttributes: JSON.stringify( attributes ),
+					facebook: getTransformedAttributes(
+						'social-profiles',
+						'facebook',
+						attributes
+					),
+					twitter: getTransformedAttributes(
+						'social-profiles',
+						'twitter',
+						attributes
+					),
+					pinterest: getTransformedAttributes(
+						'social-profiles',
+						'pinterest',
+						attributes
+					),
+					linkedin: getTransformedAttributes(
+						'social-profiles',
+						'linkedin',
+						attributes
+					),
+					instagram: getTransformedAttributes(
+						'social-profiles',
+						'instagram',
+						attributes
+					),
+					houzz: getTransformedAttributes(
+						'social-profiles',
+						'houzz',
+						attributes
+					),
+					yelp: getTransformedAttributes( 'social-profiles', 'yelp', attributes ),
+					youtube: getTransformedAttributes(
+						'social-profiles',
+						'youtube',
+						attributes
+					),
+					attributes,
 				} );
 			},
 		},
-		// {
-		// 	type: 'raw',
-		// 	selector: 'div.wp-block-coblocks-social-profiles',
-		// 	schema: {
-		// 		div: {
-		// 			classes: [ 'wp-block-coblocks-social-profiles' ],
-		// 		},
-		// 	},
-		// },
 	],
 };
