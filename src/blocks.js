@@ -52,6 +52,8 @@ import * as form from './blocks/form';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
 import * as highlight from './blocks/highlight';
+import * as foodAndDrinks from './blocks/food-and-drinks';
+import * as foodItem from './blocks/food-and-drinks/food-item';
 import * as pricingTable from './blocks/pricing-table';
 import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';
@@ -75,28 +77,30 @@ export function registerBlocks () {
 		alert,
 		author,
 		blog,
+		buttons,
+		carousel,
 		clickToTweet,
 		column,
 		dynamicSeparator,
+		feature,
+		features,
+		foodAndDrinks,
+		foodItem,
 		form,
 		gif,
 		gist,
+		hero,
 		highlight,
+		icon,
+		map,
+		masonry,
+		mediaCard,
 		pricingTable,
 		pricingTableItem,
 		row,
-		share,
-		map,
-		mediaCard,
 		shapeDivider,
-		icon,
-		feature,
-		features,
-		buttons,
-		hero,
+		share,
 		stacked,
-		carousel,
-		masonry,
 	].forEach( ( block ) => {
 
 		if ( ! block ) {
