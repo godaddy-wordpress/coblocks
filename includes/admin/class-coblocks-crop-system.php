@@ -75,10 +75,10 @@ class CoBlocks_Crop_System
 
         if (isset($attachmentMeta[self::ORIGINAL_META_KEY])) {
             $originalImageId = $attachmentMeta[self::ORIGINAL_META_KEY];
-        }
-
-        if (empty($originalImageId)) {
+            $deleteOld       = true;
+        } else {
             $originalImageId = $id;
+            $deleteOld       = false;
         }
 
         $filePath = get_attached_file($originalImageId);
@@ -153,6 +153,10 @@ class CoBlocks_Crop_System
         );
 
         wp_update_attachment_metadata($attachmentId, $metadata);
+
+        if ($deleteOld) {
+            wp_delete_attachment($attachmentId, true);
+        }
 
         return $attachmentId;
     }
