@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { chunk } from 'lodash';
 
 /**
  * Internal dependencies
@@ -11,6 +12,7 @@ import GalleryPlaceholder from '../../../components/block-gallery/gallery-placeh
 import GalleryDropZone from '../../../components/block-gallery/gallery-dropzone';
 import GalleryUploader from '../../../components/block-gallery/gallery-uploader';
 import GalleryImage from '../../../components/block-gallery/gallery-image';
+import Logos from './logos';
 import { GalleryClasses } from '../../../components/block-gallery/shared';
 import { title, icon } from '../'
 
@@ -129,6 +131,8 @@ class Edit extends Component {
 			);
 		}
 
+		var imageChunks = chunk( images, 4 );
+
 		return (
 			<Fragment>
 				<Controls
@@ -139,71 +143,12 @@ class Edit extends Component {
 				/>
 				{ noticeUI }
 				<div className={ className }>
-					{ images.map( ( img, index ) => {
+					{ Object.keys( imageChunks ).map( keyOuter => {
 						return (
-							<ResizableBox
-								key={ img.id || img.url }
-								size={ { width, width } }
-								className={ classnames(
-									className, {
-										'is-selected-column': isSelected,
-										'is-resizing' : false,
-									}
-								) }
-								maxWidth={ this.state.maxWidth }
-								minHeight="20"
-								enable={ {
-									top: false,
-									right: true,
-									bottom: false,
-									left: true,
-									topRight: false,
-									bottomRight: false,
-									bottomLeft: false,
-									topLeft: false,
-								} }
-								onResizeStop={ ( event, direction, elt, delta ) => {
-									let currentBlock = document.getElementById( 'block-' + this.props.clientId );
-
-									//Remove resizing class
-									currentBlock.classList.remove( 'is-resizing' );
-									document.getElementById( 'block-' + parentId ).classList.remove( 'is-resizing' );
-
-									toggleSelection( true );
-									this.setState( { resizing: false } );
-								} }
-								onResize={ ( event, direction, elt, delta ) => {
-
-									let parentBlockClientRect = document.getElementById( 'block-' + parentId ).getElementsByClassName( 'wp-block-coblocks-row__inner' )[0].getBoundingClientRect();
-									let currentBlockWidth = this.state.selectedWidth + ( delta.width );
-									let currentBlockWidthPercent = ( currentBlockWidth /parentBlockClientRect.width ) * 100;
-									let diff =  parseFloat( width ) - currentBlockWidthPercent;
-									let nextBlockWidth = parseFloat( nextBlockClient.attributes.width ) + diff;
-
-									document.getElementById( 'block-' + parentId ).classList.add( 'is-resizing' );
-									document.getElementById( 'block-' + this.props.clientId ).getElementsByClassName( 'wp-block-coblocks-column' )[0].style.width = 'auto';
-
-									if( nextBlockWidth > 10 && currentBlockWidthPercent > 10 ){
-										wp.data.dispatch( 'core/editor' ).updateBlockAttributes( nextBlockClientId, { width : parseFloat( nextBlockWidth ).toFixed(2) } );
-										setAttributes( {  width: parseFloat( currentBlockWidthPercent ).toFixed(2) } );
-									}
-
-								} }
-								onResizeStart={ ( event, direction, elt, delta ) => {
-									let currentBlock 	= document.getElementById( 'block-' + this.props.clientId );
-									let currentBlockClientRect 	= currentBlock.getBoundingClientRect();
-
-									//Add resizing class
-									currentBlock.classList.add( 'is-resizing' );
-									document.getElementById( 'block-' + parentId ).classList.add( 'is-resizing' );
-
-									this.setState({ 'selectedWidth' : currentBlockClientRect.width });
-									this.setState( { resizing: true } );
-									toggleSelection( false );
-								} }
-							>
-								<img src={ img.url } alt={ img.alt } />
-							</ResizableBox>
+							<Logos
+								{ ...this.props }
+								images={ imageChunks[ keyOuter ] }
+							/>
 						);
 					} ) }
 					<GalleryUploader { ...this.props } />

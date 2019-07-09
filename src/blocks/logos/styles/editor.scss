@@ -1,3 +1,51 @@
-.placeholder1 {
-  display: none;
+.wp-block-coblocks-logo {
+
+  .wrapper {
+    /* Use flexbox */
+    display: inline-flex;
+    flex-direction: row;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+     user-select: none;
+  }
+
+  .box {
+    padding: 20px;
+
+    /* Use box-sizing so that element's outerwidth will match width property */
+    box-sizing: border-box;
+
+    /* Allow box to grow and shrink, and ensure they are all equally sized */
+    flex: 1 1 auto;
+  }
+
+  .resize {
+    position: relative;
+  }
+
+  .resize.selected {
+    .handler {
+      display: block;
+      width: 16px;
+      padding: 0;
+      cursor: ew-resize;
+      position: absolute;
+      top: 40%;
+      right: -10px;
+
+      &:before {
+        position: relative;
+        z-index: 999;
+        display: block;
+        content: "";
+        width: 16px;
+        height: 16px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        background: #0085ba;
+        cursor: inherit;
+      }
+    }
+  }
 }
