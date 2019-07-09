@@ -16,7 +16,7 @@ import icons from './../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { RichText, getColorClassName, getFontSizeClass } = wp.editor;
+const { RichText, getColorClassName, getFontSizeClass } = wp.blockEditor;
 const { split, create, toHTMLString } = wp.richText;
 
 /**

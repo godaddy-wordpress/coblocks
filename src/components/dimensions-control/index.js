@@ -34,7 +34,7 @@ class DimensionsControl extends Component {
 
 		if ( props.attributes.saveCoBlocksMeta ) {
 			this.saveMeta();
-			dispatch( 'core/editor' ).updateBlockAttributes( props.attributes.clientId, { saveCoBlocksMeta: false } );
+			dispatch( 'core/block-editor' ).updateBlockAttributes( props.attributes.clientId, { saveCoBlocksMeta: false } );
 		}
 	}
 
@@ -144,7 +144,7 @@ class DimensionsControl extends Component {
 
 	saveMeta() {
 		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		const block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
+		const block = wp.data.select( 'core/block-editor' ).getBlock( this.props.clientId );
 		let dimensions = {};
 
 		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {

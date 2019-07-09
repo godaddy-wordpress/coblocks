@@ -26,7 +26,7 @@ class ResponsiveBaseControl extends Component {
 
 	saveMeta() {
 		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		const block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
+		const block = wp.data.select( 'core/block-editor' ).getBlock( this.props.clientId );
 		let dimensions = {};
 
 		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {

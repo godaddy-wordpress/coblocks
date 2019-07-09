@@ -16,7 +16,7 @@ import svgs from './components/svgs';
  * WordPress dependencies
  */
 const { __, _x } = wp.i18n;
-const { getColorClassName } = wp.editor;
+const { getColorClassName } = wp.blockEditor;
 
 /**
  * Set default icon size equivalent to "Medium".

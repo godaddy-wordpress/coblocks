@@ -15,7 +15,7 @@ import DimensionsAttributes from '../../../components/dimensions-control/attribu
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { InnerBlocks, getColorClassName } = wp.editor;
+const { InnerBlocks, getColorClassName } = wp.blockEditor;
 
 /**
  * Block constants

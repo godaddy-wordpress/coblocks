@@ -17,7 +17,7 @@ import DimensionsControl from '../../../components/dimensions-control/';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, PanelColorSettings } = wp.editor;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, SelectControl, ButtonGroup, Button, Tooltip, withFallbackStyles } = wp.components;
 
 /**
@@ -125,14 +125,14 @@ class Inspector extends Component {
 													isSmall
 													onClick={ () => {
 														const selectedWidth = key.toString().split( '-' );
-														const children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
+														const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
 														setAttributes( {
 															layout: key,
 														} );
 
 														if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
 															map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
-																wp.data.dispatch( 'core/editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
+																wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
 															) );
 														}
 													} }
@@ -160,14 +160,14 @@ class Inspector extends Component {
 															isSmall
 															onClick={ () => {
 																const selectedWidth = key.toString().split( '-' );
-																const children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
+																const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
 																setAttributes( {
 																	layout: key,
 																} );
 
 																if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
 																	map( children[ 0 ].innerBlocks, ( { childrenClientId }, index ) => (
-																		wp.data.dispatch( 'core/editor' ).updateBlockAttributes( childrenClientId, { width: selectedWidth[ index ] } )
+																		wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( childrenClientId, { width: selectedWidth[ index ] } )
 																	) );
 																}
 															} }

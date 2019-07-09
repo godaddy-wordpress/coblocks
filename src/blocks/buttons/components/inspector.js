@@ -7,7 +7,7 @@
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls } = wp.editor;
+const { InspectorControls } = wp.blockEditor;
 const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
 
 /**
@@ -46,7 +46,7 @@ class Inspector extends Component {
 									items: parseInt( nextCount ),
 								} );
 
-								wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
+								wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );
 							} }
 							min={ 1 }
 							max={ 4 }

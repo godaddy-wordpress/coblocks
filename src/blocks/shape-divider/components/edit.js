@@ -55,7 +55,7 @@ class Edit extends Component {
 
 	saveMeta( type ) {
 		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		const block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
+		const block = wp.data.select( 'core/block-editor' ).getBlock( this.props.clientId );
 		let dimensions = {};
 
 		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
@@ -151,15 +151,15 @@ class Edit extends Component {
 
 		//modify blocks when added
 		if ( justAdded ) {
-			const prevBlockClientId = wp.data.select( 'core/editor' ).getPreviousBlockClientId( clientId );
-			const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
+			const prevBlockClientId = wp.data.select( 'core/block-editor' ).getPreviousBlockClientId( clientId );
+			const nextBlockClientId = wp.data.select( 'core/block-editor' ).getNextBlockClientId( clientId );
 
 			if ( prevBlockClientId ) {
-				wp.data.dispatch( 'core/editor' ).updateBlockAttributes( prevBlockClientId, { noBottomMargin: true, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0 } );
+				wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( prevBlockClientId, { noBottomMargin: true, marginBottom: 0, marginBottomTablet: 0, marginBottomMobile: 0 } );
 			}
 
 			if ( nextBlockClientId ) {
-				wp.data.dispatch( 'core/editor' ).updateBlockAttributes( nextBlockClientId, { noTopMargin: true, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } );
+				wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( nextBlockClientId, { noTopMargin: true, marginTop: 0, marginTopTablet: 0, marginTopMobile: 0 } );
 			}
 			setAttributes( { justAdded: false } );
 		}

@@ -66,10 +66,10 @@ class Inspector extends Component {
 			paddingSize,
 		} = attributes;
 
-		const parentId = wp.data.select( 'core/editor' ).getBlockRootClientId( clientId );
-		const parentBlocks = wp.data.select( 'core/editor' ).getBlocksByClientId( parentId );
-		const nextBlockClientId = wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
-		const nextBlockClient = wp.data.select( 'core/editor' ).getBlock( nextBlockClientId );
+		const parentId = wp.data.select( 'core/block-editor' ).getBlockRootClientId( clientId );
+		const parentBlocks = wp.data.select( 'core/block-editor' ).getBlocksByClientId( parentId );
+		const nextBlockClientId = wp.data.select( 'core/block-editor' ).getNextBlockClientId( clientId );
+		const nextBlockClient = wp.data.select( 'core/block-editor' ).getBlock( nextBlockClientId );
 		const lastId = ( parentBlocks[ 0 ].innerBlocks !== 'undefined' ) ? parentBlocks[ 0 ].innerBlocks[ parentBlocks[ 0 ].innerBlocks.length - 1 ].clientId : clientId;
 
 		const onChangeWidth = ( newWidth ) => {
@@ -78,7 +78,7 @@ class Inspector extends Component {
 
 			if ( nextBlockWidth > 9 ) {
 				setAttributes( { width: parseFloat( newWidth ).toFixed( 2 ) } );
-				wp.data.dispatch( 'core/editor' ).updateBlockAttributes( nextBlockClientId, { width: parseFloat( nextBlockWidth ).toFixed( 2 ) } );
+				wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( nextBlockClientId, { width: parseFloat( nextBlockWidth ).toFixed( 2 ) } );
 			}
 		};
 

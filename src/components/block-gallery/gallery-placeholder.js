@@ -13,7 +13,7 @@ import * as helper from './../../utils/helper';
  */
 const { __, sprintf } = wp.i18n;
 const { Component } = wp.element;
-const { MediaPlaceholder, BlockIcon } = wp.editor;
+const { MediaPlaceholder, BlockIcon } = wp.blockEditor;
 
 class GalleryPlaceholder extends Component {
 	constructor() {

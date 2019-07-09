@@ -93,13 +93,13 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 
 class FoodItem extends Component {
 	updateInnerAttributes = ( blockName, newAttributes ) => {
-		const innerItems = select( 'core/editor' ).getBlocksByClientId(
+		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
 			this.props.clientId
 		)[ 0 ].innerBlocks;
 
 		innerItems.map( item => {
 			if ( item.name === blockName ) {
-				dispatch( 'core/editor' ).updateBlockAttributes(
+				dispatch( 'core/block-editor' ).updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
@@ -147,7 +147,7 @@ class FoodItem extends Component {
 	insertNewItem = () => {
 		const { clientId, attributes } = this.props;
 
-		const blockOrder = select( 'core/editor' ).getBlockOrder();
+		const blockOrder = select( 'core/block-editor' ).getBlockOrder();
 		const insertAtIndex = blockOrder.indexOf( clientId ) + 1;
 
 		const innerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>

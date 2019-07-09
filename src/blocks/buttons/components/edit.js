@@ -16,7 +16,7 @@ import Controls from './controls';
  */
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Constants

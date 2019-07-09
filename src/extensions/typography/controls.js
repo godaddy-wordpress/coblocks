@@ -8,7 +8,7 @@ import TypographyControls from './../../components/typography-controls';
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { BlockControls } = wp.editor;
+const { BlockControls } = wp.blockEditor;
 const { Toolbar } = wp.components;
 
 class Controls extends Component {

@@ -131,7 +131,7 @@ class CSSGridControl extends Component {
 												onClick={ () => {
 													setAttributes( { layout: value } );
 													if ( layoutAttributes[ value ].wrapper ) {
-														dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+														dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
 													}
 												} }
 											>
@@ -147,7 +147,7 @@ class CSSGridControl extends Component {
 										onClick={ () => {
 											setAttributes( { layout: value } );
 											if ( layoutAttributes[ value ].wrapper ) {
-												dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+												dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
 											}
 										} }
 									>

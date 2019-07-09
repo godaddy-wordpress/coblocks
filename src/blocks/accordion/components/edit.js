@@ -10,7 +10,7 @@ import Inspector from './inspector';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 const { IconButton } = wp.components;
 const { createBlock } = wp.blocks;
 
@@ -78,7 +78,7 @@ class Edit extends Component {
 									let copyAttributes = {};
 
 									if ( lastId ) {
-										const lastBlockClient 	= wp.data.select( 'core/editor' ).getBlockAttributes( lastId );
+										const lastBlockClient 	= wp.data.select( 'core/block-editor' ).getBlockAttributes( lastId );
 										if ( lastBlockClient.backgroundColor ) {
 											copyAttributes = Object.assign( copyAttributes, {
 												backgroundColor: lastBlockClient.backgroundColor,
@@ -105,7 +105,7 @@ class Edit extends Component {
 									}
 
 									const created = createBlock( 'coblocks/accordion-item', copyAttributes );
-									wp.data.dispatch( 'core/editor' ).insertBlock( created, undefined, clientId );
+									wp.data.dispatch( 'core/block-editor' ).insertBlock( created, undefined, clientId );
 								}
 							} } >
 							{ __( 'Add Accordion Item' ) }

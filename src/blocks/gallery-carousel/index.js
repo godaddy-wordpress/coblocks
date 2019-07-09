@@ -18,7 +18,7 @@ import { GalleryAttributes, GalleryClasses } from '../../components/block-galler
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { getColorClassName, RichText } = wp.editor;
+const { getColorClassName, RichText } = wp.blockEditor;
 
 /**
  * Block constants

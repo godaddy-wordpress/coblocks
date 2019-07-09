@@ -7,7 +7,7 @@ import { BackgroundControls } from '../../../components/background';
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls } = wp.editor;
+const { AlignmentToolbar, BlockControls } = wp.blockEditor;
 
 class Controls extends Component {
 	render() {

@@ -11,7 +11,7 @@ import DimensionsControl from '../../../components/dimensions-control/';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, PanelColorSettings } = wp.editor;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, RangeControl, SelectControl, withFallbackStyles } = wp.components;
 
 /**
@@ -112,7 +112,7 @@ class Inspector extends Component {
 									}
 								}
 
-								wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
+								wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );
 							} }
 							min={ 1 }
 							max={ 3 }

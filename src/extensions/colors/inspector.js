@@ -6,7 +6,7 @@ import ColorSettings, { ColorSettingsAttributes } from './index';
 /**
  * WordPress dependencies
  */
-const { InspectorControls } = wp.editor;
+const { InspectorControls } = wp.blockEditor;
 const { addFilter } = wp.hooks;
 const { Fragment } = wp.element;
 const { createHigherOrderComponent } = wp.compose;

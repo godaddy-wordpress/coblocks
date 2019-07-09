@@ -16,7 +16,7 @@ const { __, sprintf } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { Button, ToggleControl } = wp.components;
 const { unregisterBlockType, registerBlockType } = wp.blocks;
-const { BlockIcon } = wp.editor;
+const { BlockIcon } = wp.blockEditor;
 
 /**
  * Get settings.

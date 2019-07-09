@@ -23,7 +23,7 @@ import {
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InnerBlocks, Inserter } = wp.editor;
+const { InnerBlocks, Inserter } = wp.blockEditor;
 const { ResizableBox, Spinner } = wp.components;
 const { isBlobURL } = wp.blob;
 
@@ -77,14 +77,14 @@ class Edit extends Component {
 		} = attributes;
 
 		const parentId = wp.data
-			.select( 'core/editor' )
+			.select( 'core/block-editor' )
 			.getBlockRootClientId( clientId );
-		const columnBlocks = wp.data.select( 'core/editor' ).getBlock( clientId );
+		const columnBlocks = wp.data.select( 'core/block-editor' ).getBlock( clientId );
 		const nextBlockClientId = wp.data
-			.select( 'core/editor' )
+			.select( 'core/block-editor' )
 			.getNextBlockClientId( clientId );
 		const nextBlockClient = wp.data
-			.select( 'core/editor' )
+			.select( 'core/block-editor' )
 			.getBlock( nextBlockClientId );
 		const dropZone = (
 			<BackgroundDropZone
@@ -253,7 +253,7 @@ class Edit extends Component {
 
 						if ( nextBlockWidth > 10 && currentBlockWidthPercent > 10 ) {
 							wp.data
-								.dispatch( 'core/editor' )
+								.dispatch( 'core/block-editor' )
 								.updateBlockAttributes( nextBlockClientId, {
 									width: parseFloat( nextBlockWidth ).toFixed( 2 ),
 								} );

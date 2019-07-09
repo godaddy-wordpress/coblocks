@@ -16,7 +16,7 @@ import VisualDropdown from '../../../components/visual-dropdown/';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { BlockControls } = wp.editor;
+const { BlockControls } = wp.blockEditor;
 const { Toolbar } = wp.components;
 
 class Controls extends Component {
@@ -77,13 +77,13 @@ class Controls extends Component {
 										value: layout,
 										onClick: () => {
 											const selectedWidth = key.toString().split( '-' );
-											const children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
+											const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
 											setAttributes( {
 												layout: key,
 											} );
 											if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
 												map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
-													wp.data.dispatch( 'core/editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
+													wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
 												) );
 											}
 										},
