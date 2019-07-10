@@ -8,6 +8,9 @@ function getTransformedAttributes( blockName, attributeName, attributes ) {
 		}
 		return attributes[ attributeName ] ? true : false;
 	} else if ( blockName === 'social-profiles' ) {
+		if ( attributes[ attributeName ] === false ) {
+			return '';
+		}
 		if ( attributes.socialProfileAttributes ) {
 			const spa = JSON.parse( attributes.socialProfileAttributes );
 			return spa[ attributeName ];
@@ -31,14 +34,10 @@ export const transforms = {
 			type: 'block',
 			blocks: [ 'coblocks/social' ],
 			transform: attributes => {
-				console.log( 'these are the attributes passed to share' );
-				console.log( attributes );
-				// transforming an empty social element
-				// if ( ! value || ! value.length ) {
-				// 	return createBlock( 'coblocks/social' );
-				// }
-				// transforming an social element with content
+				// console.log( 'these are the attributes passed to share' );
+				// console.log( attributes );
 				return createBlock( 'coblocks/social', {
+					...attributes,
 					socialProfileAttributes: getPreviousAttributes( 'share', attributes ),
 					facebook: getTransformedAttributes( 'share', 'facebook', attributes ),
 					twitter: getTransformedAttributes( 'share', 'twitter', attributes ),
@@ -48,7 +47,7 @@ export const transforms = {
 					tumblr: getTransformedAttributes( 'share', 'tumblr', attributes ),
 					google: getTransformedAttributes( 'share', 'google', attributes ),
 					reddit: getTransformedAttributes( 'share', 'reddit', attributes ),
-					...attributes,
+
 				} );
 			},
 		},
@@ -58,9 +57,8 @@ export const transforms = {
 			type: 'block',
 			blocks: [ 'coblocks/social' ],
 			transform: attributes => {
-				console.log( 'these are the attributes passed to social-profiles' );
-				console.log( attributes );
 				return createBlock( 'coblocks/social-profiles', {
+					...attributes,
 					shareAttributes: getPreviousAttributes( 'social-profiles', attributes ),
 					facebook: getTransformedAttributes(
 						'social-profiles',
@@ -98,7 +96,6 @@ export const transforms = {
 						'youtube',
 						attributes
 					),
-					...attributes,
 				} );
 			},
 		},
