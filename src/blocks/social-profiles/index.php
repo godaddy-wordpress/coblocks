@@ -130,7 +130,7 @@ function coblocks_render_social_profiles_block($attributes)
 		),
 		'instagram' => array(
 			'text' => esc_html__('See us on Instagram', 'coblocks'),
-			'url' => $attributes['instagram'],
+			'url'  => $attributes['instagram'],
 		),
 		'pinterest' => array(
 			'text' => esc_html__('Share on Pinterest', 'coblocks'),
@@ -143,15 +143,15 @@ function coblocks_render_social_profiles_block($attributes)
 
 		'youtube'   => array(
 			'text' => esc_html__('Watch us on YouTube', 'coblocks'),
-			'url' => $attributes['youtube'],
+			'url'  => $attributes['youtube'],
 		),
 		'yelp'      => array(
 			'text' => esc_html__('Rate us on Yelp', 'coblocks'),
-			'url' => $attributes['yelp'],
+			'url'  => $attributes['yelp'],
 		),
 		'houzz'     => array(
 			'text' => esc_html__('Rate us on Houzz', 'coblocks'),
-			'url' => $attributes['houzz'],
+			'url'  => $attributes['houzz'],
 		),
 	);
 
@@ -230,7 +230,7 @@ function coblocks_register_social_profiles_block()
 			'style'           => 'coblocks-frontend',
 			'attributes'      => array(
 				'className'             => array(
-					'type' => 'string',
+					'type'    => 'string',
 				),
 				'hasColors'             => array(
 					'type'    => 'boolean',
@@ -253,19 +253,19 @@ function coblocks_register_social_profiles_block()
 					'default' => 16,
 				),
 				'textAlign'             => array(
-					'type' => 'string',
+					'type'    => 'string',
 				),
 				'backgroundColor'       => array(
-					'type' => 'string',
+					'type'    => 'string',
 				),
 				'customBackgroundColor' => array(
-					'type' => 'string',
+					'type'    => 'string',
 				),
 				'textColor'             => array(
-					'type' => 'string',
+					'type'    => 'string',
 				),
 				'customTextColor'       => array(
-					'type' => 'string',
+					'type'    => 'string',
 				),
 				'facebook'              => array(
 					'type'    => 'string',

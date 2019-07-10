@@ -40,37 +40,41 @@
 		"customTextColor": {
 			"type": "string"
 		},
-		"twitter": {
-			"type": "boolean",
-			"default": true
-		},
 		"facebook": {
-			"type": "boolean",
-			"default": true
+			"type": "string",
+			"default": ""
+		},
+		"twitter": {
+			"type": "string",
+			"default": ""
+		},
+		"instagram": {
+			"type": "string",
+			"default": ""
 		},
 		"pinterest": {
-			"type": "boolean",
-			"default": true
+			"type": "string",
+			"default": ""
 		},
 		"linkedin": {
-			"type": "boolean",
-			"default": false
+			"type": "string",
+			"default": ""
 		},
-		"tumblr": {
-			"type": "boolean",
-			"default": false
+		"youtube": {
+			"type": "string",
+			"default": ""
 		},
-		"reddit": {
-			"type": "boolean",
-			"default": false
+		"yelp": {
+			"type": "string",
+			"default": ""
 		},
-		"email": {
-			"type": "boolean",
-			"default": false
+		"houzz": {
+			"type": "string",
+			"default": ""
 		},
-		"google": {
-			"type": "boolean",
-			"default": false
+		"shareAttributes": {
+			"type": "string",
+			"default": ""
 		}
 	}
 }

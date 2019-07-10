@@ -34,8 +34,6 @@ export const transforms = {
 			type: 'block',
 			blocks: [ 'coblocks/social' ],
 			transform: attributes => {
-				// console.log( 'these are the attributes passed to share' );
-				// console.log( attributes );
 				return createBlock( 'coblocks/social', {
 					...attributes,
 					socialProfileAttributes: getPreviousAttributes( 'share', attributes ),
@@ -47,7 +45,6 @@ export const transforms = {
 					tumblr: getTransformedAttributes( 'share', 'tumblr', attributes ),
 					google: getTransformedAttributes( 'share', 'google', attributes ),
 					reddit: getTransformedAttributes( 'share', 'reddit', attributes ),
-
 				} );
 			},
 		},

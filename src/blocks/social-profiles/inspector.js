@@ -28,7 +28,6 @@ const {
 	TextControl,
 } = wp.components;
 
-// Text control docs : https://github.com/WordPress/gutenberg/tree/master/packages/components/src/text-control
 /**
  * Inspector controls
  */

@@ -10,7 +10,6 @@ import includes from 'lodash/includes';
 import Controls from './controls';
 import Inspector from './inspector';
 import applyWithColors from './colors';
-// import Placeholder from './placeholder';
 
 /**
  * WordPress dependencies
