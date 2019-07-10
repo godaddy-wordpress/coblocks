@@ -27,7 +27,6 @@ class Controls extends Component {
 
 		const {
 			contentAlign,
-			columns,
 		} = attributes;
 
 		return (

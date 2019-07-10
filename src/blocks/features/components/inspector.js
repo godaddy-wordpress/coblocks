@@ -53,8 +53,6 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
-			columns,
-			gutter,
 			marginBottom,
 			marginLeft,
 			marginRight,
@@ -91,41 +89,10 @@ class Inspector extends Component {
 			paddingUnit,
 		} = attributes;
 
-		const gutterOptions = [
-			{ value: 'small', label: __( 'Small' ) },
-			{ value: 'medium', label: __( 'Medium' ) },
-			{ value: 'large', label: __( 'Large' ) },
-		];
-
 		return (
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( 'Features Settings' ) } className='components-coblocks-block-sidebar--features'>
-						<RangeControl
-							label={ __( 'Columns' ) }
-							value={ columns }
-							onChange={ ( nextCount ) => {
-								setAttributes( {
-									columns: parseInt( nextCount ),
-								} );
-
-								if( parseInt( nextCount ) < 2 ){
-									setAttributes( {
-										gutter: 'no',
-									} );
-								}else{
-									if( gutter == 'no' ){
-										setAttributes( {
-											gutter: 'large',
-										} );
-									}
-								}
-
-								wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
-							} }
-							min={ 1 }
-							max={ 3 }
-						/>
 						<DimensionsControl { ...this.props }
 							type={ 'margin' }
 							label={ __( 'Margin' ) }
@@ -168,15 +135,6 @@ class Inspector extends Component {
 							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
 						/>
-						{ columns >= 2 &&
-							<SelectControl
-								label={ __( 'Gutter' ) }
-								value={ gutter }
-								options={ gutterOptions }
-								help={ __( 'Space between each column.' ) }
-								onChange={ ( value ) => setAttributes( { gutter: value } ) }
-							/>
-						}
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }

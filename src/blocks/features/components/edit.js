@@ -62,9 +62,9 @@ class Edit extends Component {
 		const {
 			coblocks,
 			backgroundImg,
-			columns,
+			coblockColumns,
 			contentAlign,
-			gutter,
+			coblockGutter,
 			paddingTop,
 			paddingRight,
 			paddingBottom,
@@ -98,7 +98,7 @@ class Edit extends Component {
 		const innerClasses = classnames(
 			'wp-block-coblocks-features__inner',
 			...BackgroundClasses( attributes ), {
-				[ `has-${ gutter }-gutter` ] : gutter,
+				[ `has-${ coblockGutter }-gutter` ] : coblockGutter,
 				'has-padding': paddingSize && paddingSize != 'no',
 				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
 				'has-margin': marginSize && marginSize != 'no',
@@ -141,7 +141,7 @@ class Edit extends Component {
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }
 						<InnerBlocks
-							template={ getCount( columns ) }
+							template={ getCount( coblockColumns ) }
 							allowedBlocks={ ALLOWED_BLOCKS }
 							templateLock="all"
 							templateInsertUpdatesSelection={ false } />

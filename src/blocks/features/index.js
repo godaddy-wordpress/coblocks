@@ -36,14 +36,6 @@ const keywords = [
 ];
 
 const blockAttributes = {
-	gutter: {
-		type: 'string',
-		default: 'large',
-	},
-	columns: {
-		type: 'number',
-		default: 2,
-	},
 	contentAlign: {
 		type: 'string',
 		default: 'center',
@@ -65,6 +57,7 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
+		coblockColumns: true,
 	},
 
 	transforms: {
@@ -104,14 +97,14 @@ const settings = {
 	edit: Edit,
 
 	getEditWrapperProps( attributes ) {
-		const { id, layout, columns } = attributes;
+		const { id, layout, coblockColumns } = attributes;
 
 		// If no layout is seleted, return the following.
 		if ( ! layout ) {
-			return { 'data-id': id, 'data-columns': columns, };
+			return { 'data-id': id, 'data-columns': coblockColumns };
 		}
 
-		return { 'data-id': id, 'data-columns': columns };
+		return { 'data-id': id, 'data-columns': coblockColumns };
 	},
 
 	save( { attributes, className } ) {
@@ -120,12 +113,12 @@ const settings = {
 			coblocks,
 			backgroundColor,
 			backgroundImg,
-			columns,
+			coblockColumns,
 			contentAlign,
 			customBackgroundColor,
 			customTextColor,
 			textColor,
-			gutter,
+			coblockGutter,
 			marginSize,
 			paddingSize,
 			focalPoint,
@@ -152,7 +145,7 @@ const settings = {
 			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
 			'has-margin': marginSize && marginSize != 'no',
 			[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
-			[ `has-${ gutter }-gutter` ] : gutter,
+			[ `has-${ coblockGutter }-gutter` ] : coblockGutter,
 			[ `has-${ contentAlign }-content` ]: contentAlign,
 		} );
 
@@ -162,7 +155,7 @@ const settings = {
 		};
 
 		return (
-			<div className={ classes } data-columns={ columns } >
+			<div className={ classes } data-columns={ coblockColumns } >
 				<div className={ innerClasses } style={ innerStyles }>
 					{ BackgroundVideo( attributes ) }
 					<InnerBlocks.Content />
