@@ -49,7 +49,7 @@ const addPositioningControl = (settings, name) => {
 
 const updateDebounce = _.debounce(function (callback) {
     callback();
-}, 1000);
+}, 1500);
 
 const positioningControl = createHigherOrderComponent((BlockEdit) => {
         return (props) => {
