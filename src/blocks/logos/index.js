@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import './styles/editor.scss';
+import './styles/style.scss';
 import Edit from './components/edit';
 import Save from './components/save';
 import icons from './../../utils/icons';

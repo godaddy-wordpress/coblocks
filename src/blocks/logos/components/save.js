@@ -19,7 +19,6 @@ export default function save( { attributes, className } ) {
 	const hasImages = !! images.length;
 
 	if ( ! hasImages ) {
-
 		return (
 			null
 		);

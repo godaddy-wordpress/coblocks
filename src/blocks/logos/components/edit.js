@@ -90,8 +90,8 @@ class Edit extends Component {
 					{ Object.keys( imageChunks ).map( keyOuter => {
 						return (
 							<Logos
-								{ ...this.props }
 								images={ imageChunks[ keyOuter ] }
+								{ ...this.props }
 							/>
 						);
 					} ) }
