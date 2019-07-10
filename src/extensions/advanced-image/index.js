@@ -47,6 +47,10 @@ const addPositioningControl = (settings, name) => {
     return settings;
 };
 
+const updateDebounce = _.debounce(function (callback) {
+    callback();
+}, 1000);
+
 const positioningControl = createHigherOrderComponent((BlockEdit) => {
         return (props) => {
             // Do nothing if it's another block than our defined ones.
@@ -62,20 +66,17 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
             } = props;
 
             const {cropX, cropY, cropWidth, cropHeight, cropRotation} = attributes;
+            let currentAttributes = _.extend({}, attributes);
 
-            const applyAttributes = function (changeAttributes) {
-                setAttributes(changeAttributes);
-
-                const finalAttributes = _.extend({}, attributes, changeAttributes);
-
+            const updateImage = function () {
                 jQuery.post(ajaxurl, {
                     'action': 'coblocks_system_crop',
-                    'id': finalAttributes.id,
-                    'cropX': finalAttributes.cropX,
-                    'cropY': finalAttributes.cropY,
-                    'cropWidth': finalAttributes.cropWidth,
-                    'cropHeight': finalAttributes.cropHeight,
-                    'cropRotation': finalAttributes.cropRotation
+                    'id': currentAttributes.id,
+                    'cropX': currentAttributes.cropX,
+                    'cropY': currentAttributes.cropY,
+                    'cropWidth': currentAttributes.cropWidth,
+                    'cropHeight': currentAttributes.cropHeight,
+                    'cropRotation': currentAttributes.cropRotation
                 }, function (response) {
                     if (!response) {
                         return;
@@ -92,6 +93,12 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                         url: data.url
                     });
                 });
+            };
+
+            const applyAttributes = function (changeAttributes) {
+                setAttributes(changeAttributes);
+                currentAttributes = _.extend({}, currentAttributes, changeAttributes);
+                updateDebounce(updateImage);
             };
 
             return (
