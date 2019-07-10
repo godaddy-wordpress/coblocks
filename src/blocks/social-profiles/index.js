@@ -1,8 +1,8 @@
 /**
  * Internal dependencies
  */
-import './editor.scss';
-import './style.scss';
+import './styles/editor.scss';
+import './styles/style.scss';
 import edit from './edit';
 import icons from './../../utils/icons';
 import metadata from './block.json';
