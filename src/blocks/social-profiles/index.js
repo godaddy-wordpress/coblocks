@@ -21,12 +21,12 @@ const title = __( 'Social Profiles' );
 
 const icon = icons.socialProfiles;
 
-const keywords = [ __( 'social' ), __( 'coblocks' ), __( 'profile' ) ];
+const keywords = [ __( 'share' ), __( 'links' ), __( 'icons' ) ];
 
 const settings = {
 	title,
 
-	description: __( 'Add social profile links to help build your brand.' ),
+	description: __( 'Display links to social media profiles.' ),
 
 	keywords,
 
