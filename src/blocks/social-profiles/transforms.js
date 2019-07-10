@@ -3,14 +3,25 @@ const { createBlock } = wp.blocks;
 function getTransformedAttributes( blockName, attributeName, attributes ) {
 	if ( blockName === 'share' ) {
 		if ( attributes.shareAttributes ) {
-			return attributes.shareAttributes[ attributeName ];
+			const sa = JSON.parse( attributes.shareAttributes );
+			return sa[ attributeName ];
 		}
 		return attributes[ attributeName ] ? true : false;
 	} else if ( blockName === 'social-profiles' ) {
 		if ( attributes.socialProfileAttributes ) {
-			return attributes.socialProfileAttributes[ attributeName ];
+			const spa = JSON.parse( attributes.socialProfileAttributes );
+			return spa[ attributeName ];
 		}
-		return attributes[ attributeName ] ? true : false;
+		return attributes[ attributeName ];
+	}
+}
+
+function getPreviousAttributes( blockName, attributes ) {
+	if ( blockName === 'share' ) {
+		return JSON.stringify( { ...attributes, socialProfileAttributes: '' } );
+	}
+	if ( blockName === 'social-profiles' ) {
+		return JSON.stringify( { ...attributes, shareAttributes: '' } );
 	}
 }
 
@@ -20,6 +31,7 @@ export const transforms = {
 			type: 'block',
 			blocks: [ 'coblocks/social' ],
 			transform: attributes => {
+				console.log( 'these are the attributes passed to share' );
 				console.log( attributes );
 				// transforming an empty social element
 				// if ( ! value || ! value.length ) {
@@ -27,7 +39,7 @@ export const transforms = {
 				// }
 				// transforming an social element with content
 				return createBlock( 'coblocks/social', {
-					shareAttributes: JSON.stringify( attributes ),
+					socialProfileAttributes: getPreviousAttributes( 'share', attributes ),
 					facebook: getTransformedAttributes( 'share', 'facebook', attributes ),
 					twitter: getTransformedAttributes( 'share', 'twitter', attributes ),
 					pinterest: getTransformedAttributes( 'share', 'pinterest', attributes ),
@@ -36,6 +48,7 @@ export const transforms = {
 					tumblr: getTransformedAttributes( 'share', 'tumblr', attributes ),
 					google: getTransformedAttributes( 'share', 'google', attributes ),
 					reddit: getTransformedAttributes( 'share', 'reddit', attributes ),
+					...attributes,
 				} );
 			},
 		},
@@ -45,9 +58,10 @@ export const transforms = {
 			type: 'block',
 			blocks: [ 'coblocks/social' ],
 			transform: attributes => {
+				console.log( 'these are the attributes passed to social-profiles' );
 				console.log( attributes );
 				return createBlock( 'coblocks/social-profiles', {
-					socialProfileAttributes: JSON.stringify( attributes ),
+					shareAttributes: getPreviousAttributes( 'social-profiles', attributes ),
 					facebook: getTransformedAttributes(
 						'social-profiles',
 						'facebook',
@@ -84,7 +98,7 @@ export const transforms = {
 						'youtube',
 						attributes
 					),
-					attributes,
+					...attributes,
 				} );
 			},
 		},

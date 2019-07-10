@@ -308,7 +308,7 @@ function coblocks_register_share_block()
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'shareAttributes'		=> array(
+				'socialProfileAttributes'		=> array(
 					'type'	  => 'string',
 					'default' => '',
 				)

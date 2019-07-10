@@ -299,7 +299,7 @@ function coblocks_register_social_profiles_block()
 					'type'    => 'string',
 					'default' => '',
 				),
-				'socialProfileAttributes'		=> array(
+				'shareAttributes'		=> array(
 					'type'	  => 'string',
 					'default' => '',
 				)
