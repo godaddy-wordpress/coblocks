@@ -31,6 +31,9 @@ import './extensions/button-controls';
 // Formats
 import './formats/';
 
+// Hooks
+import './hooks/columns';
+
 // Sidebars
 import './sidebars/block-manager';
 import './sidebars/block-manager/deprecated';
