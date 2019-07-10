@@ -5,7 +5,6 @@ import './styles/editor.scss';
 import './styles/style.scss';
 import edit from './edit';
 import icons from './../../utils/icons';
-import metadata from './block.json';
 import { transforms } from './transforms';
 
 /**
@@ -16,7 +15,7 @@ const { __, _x } = wp.i18n;
 /**
  * Block constants
  */
-const { name } = metadata;
+const name = 'social-profiles';
 
 const title = __( 'Social Profiles' );
 
@@ -48,4 +47,4 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings, metadata };
+export { name, title, icon, settings };

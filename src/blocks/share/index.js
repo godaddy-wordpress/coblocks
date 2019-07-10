@@ -5,7 +5,6 @@ import './styles/editor.scss';
 import './styles/style.scss';
 import edit from './edit';
 import icons from './../../utils/icons';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -15,19 +14,15 @@ const { __, _x } = wp.i18n;
 /**
  * Block constants
  */
-const { name } = metadata;
+const name = 'social';
 
 const title = __( 'Share' );
 
 const icon = icons.social;
 
-const keywords = [
-	__( 'social' ),
-	__( 'coblocks' ),
-];
+const keywords = [ __( 'social' ), __( 'coblocks' ) ];
 
 const settings = {
-
 	title,
 
 	description: __( 'Add social sharing links to help you get likes and shares.' ),
@@ -49,4 +44,4 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings, metadata };
+export { name, title, icon, settings };
