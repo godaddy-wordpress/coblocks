@@ -144,7 +144,7 @@ class Inspector extends Component {
 							/>
 						) }
 					</PanelBody>
-					<PanelBody title={ __( 'Link Settings' ) }>
+					<PanelBody title={ __( 'Profile Links' ) } initialOpen={ false }>
 						<div className="components-social-links-list">
 							<TextControl
 								label="Facebook"

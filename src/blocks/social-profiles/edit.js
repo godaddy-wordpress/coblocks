@@ -17,11 +17,28 @@ import applyWithColors from './colors';
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
+const { Dashicon, Popover, TextControl } = wp.components;
 
 /**
  * Block edit function
  */
 class edit extends Component {
+	constructor() {
+		super( ...arguments );
+
+		this.state = {
+			currentIcon: '',
+		};
+	}
+
+	componentDidUpdate( prevProps ) {
+		if ( ! this.props.isSelected && prevProps.isSelected && this.state.currentIcon ) {
+			this.setState( {
+				currentIcon: '',
+			} );
+		}
+	}
+
 	getTextColor( isMaskStyle ) {
 		const { backgroundColor, textColor } = this.props;
 
@@ -35,6 +52,7 @@ class edit extends Component {
 			isSelected,
 			backgroundColor,
 			textColor,
+			setAttributes,
 		} = this.props;
 
 		const {
@@ -101,16 +119,20 @@ class edit extends Component {
 			<Fragment>
 				{ isSelected && <Controls { ...this.props } /> }
 				{ isSelected && <Inspector { ...this.props } /> }
+
 				<div className={ classes } style={ { textAlign: textAlign } }>
 					<ul>
-						{ ( facebook || placeholder ) && (
+						{ ( facebook || isSelected ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--facebook'
+										'wp-block-coblocks-social-profiles__button--facebook', {
+											'is-empty': ! facebook,
+										}
 									) }
 									style={ buttonStyles }
+									onClick={ () => this.setState( { currentIcon: 'facebook' } ) }
 								>
 									<span
 										className="wp-block-coblocks-social-profiles__icon"
@@ -120,35 +142,76 @@ class edit extends Component {
 										{ __( 'Share on Facebook' ) }
 									</span>
 								</span>
+								{ this.state.currentIcon === 'facebook' && (
+									<Popover>
+										<form
+											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
+											onSubmit={ ( event ) => event.preventDefault() }>
+											<Dashicon icon="admin-links" />
+											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+												<TextControl
+													value={ facebook }
+													/* eslint-disable jsx-a11y/no-autofocus */
+													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
+													placeholder={ __( 'https://facebook.com/' ) }
+													/* eslint-enable jsx-a11y/no-autofocus */
+													onChange={ value => setAttributes( { facebook: value } ) }
+												/>
+											</div>
+										</form>
+									</Popover>
+								) }
 							</li>
-						) }
-						{ ( twitter || placeholder ) && (
+						}
+						{ ( twitter || isSelected ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--twitter'
+										'wp-block-coblocks-social-profiles__button--twitter', {
+											'is-empty': ! twitter,
+										}
 									) }
 									style={ buttonStyles }
+									onClick={ () => this.setState( { currentIcon: 'twitter' } ) }
 								>
-									<span
-										className="wp-block-coblocks-social-profiles__icon"
-										style={ iconStyles }
-									/>
+								<span className="wp-block-coblocks-social-profiles__icon" style={ iconStyles } />
 									<span className="wp-block-coblocks-social-profiles__text">
 										{ __( 'Share on Twitter' ) }
 									</span>
 								</span>
+								{ this.state.currentIcon === 'twitter' && (
+									<Popover>
+										<form
+											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
+											onSubmit={ ( event ) => event.preventDefault() }>
+											<Dashicon icon="admin-links" />
+											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+												<TextControl
+													value={ twitter }
+													/* eslint-disable jsx-a11y/no-autofocus */
+													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
+													placeholder={ __( 'https://twitter.com/' ) }
+													/* eslint-enable jsx-a11y/no-autofocus */
+													onChange={ value => setAttributes( { twitter: value } ) }
+												/>
+											</div>
+										</form>
+									</Popover>
+								) }
 							</li>
-						) }
-						{ ( instagram || placeholder ) && (
+						}
+						{ ( instagram || isSelected ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--instagram'
+										'wp-block-coblocks-social-profiles__button--instagram', {
+											'is-empty': ! instagram,
+										}
 									) }
 									style={ buttonStyles }
+									onClick={ () => this.setState( { currentIcon: 'instagram' } ) }
 								>
 									<span
 										className="wp-block-coblocks-social-profiles__icon"
@@ -158,16 +221,38 @@ class edit extends Component {
 										{ __( 'See us on Instagram' ) }
 									</span>
 								</span>
+								{ this.state.currentIcon === 'instagram' && (
+									<Popover>
+										<form
+											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
+											onSubmit={ ( event ) => event.preventDefault() }>
+											<Dashicon icon="admin-links" />
+											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+												<TextControl
+													value={ instagram }
+													/* eslint-disable jsx-a11y/no-autofocus */
+													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
+													placeholder={ __( 'https://instagram.com/' ) }
+													/* eslint-enable jsx-a11y/no-autofocus */
+													onChange={ value => setAttributes( { instagram: value } ) }
+												/>
+											</div>
+										</form>
+									</Popover>
+								) }
 							</li>
-						) }
-						{ ( pinterest || placeholder ) && (
+						}
+						{ ( pinterest || isSelected ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--pinterest'
+										'wp-block-coblocks-social-profiles__button--pinterest', {
+											'is-empty': ! pinterest,
+										}
 									) }
 									style={ buttonStyles }
+									onClick={ () => this.setState( { currentIcon: 'pinterest' } ) }
 								>
 									<span
 										className="wp-block-coblocks-social-profiles__icon"
@@ -177,16 +262,38 @@ class edit extends Component {
 										{ __( 'Share on Pinterest' ) }
 									</span>
 								</span>
+								{ this.state.currentIcon === 'pinterest' && (
+									<Popover>
+										<form
+											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
+											onSubmit={ ( event ) => event.preventDefault() }>
+											<Dashicon icon="admin-links" />
+											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+												<TextControl
+													value={ pinterest }
+													/* eslint-disable jsx-a11y/no-autofocus */
+													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
+													placeholder={ __( 'https://pinterest.com/' ) }
+													/* eslint-enable jsx-a11y/no-autofocus */
+													onChange={ value => setAttributes( { pinterest: value } ) }
+												/>
+											</div>
+										</form>
+									</Popover>
+								) }
 							</li>
-						) }
-						{ ( linkedin || placeholder ) && (
+						}
+						{ ( linkedin || isSelected ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--linkedin'
+										'wp-block-coblocks-social-profiles__button--linkedin', {
+											'is-empty': ! linkedin,
+										}
 									) }
 									style={ buttonStyles }
+									onClick={ () => this.setState( { currentIcon: 'linkedin' } ) }
 								>
 									<span
 										className="wp-block-coblocks-social-profiles__icon"
@@ -196,16 +303,38 @@ class edit extends Component {
 										{ __( 'Share on LinkedIn' ) }
 									</span>
 								</span>
+								{ this.state.currentIcon === 'linkedin' && (
+									<Popover>
+										<form
+											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
+											onSubmit={ ( event ) => event.preventDefault() }>
+											<Dashicon icon="admin-links" />
+											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+												<TextControl
+													value={ linkedin }
+													/* eslint-disable jsx-a11y/no-autofocus */
+													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
+													placeholder={ __( 'https://linkedin.com/' ) }
+													/* eslint-enable jsx-a11y/no-autofocus */
+													onChange={ value => setAttributes( { linkedin: value } ) }
+												/>
+											</div>
+										</form>
+									</Popover>
+								) }
 							</li>
-						) }
-						{ ( youtube || placeholder ) && (
+						}
+						{ ( youtube || isSelected ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--youtube'
+										'wp-block-coblocks-social-profiles__button--youtube', {
+											'is-empty': ! youtube,
+										}
 									) }
 									style={ buttonStyles }
+									onClick={ () => this.setState( { currentIcon: 'youtube' } ) }
 								>
 									<span
 										className="wp-block-coblocks-social-profiles__icon"
@@ -215,16 +344,38 @@ class edit extends Component {
 										{ __( 'See us on Youtube' ) }
 									</span>
 								</span>
+								{ this.state.currentIcon === 'youtube' && (
+									<Popover>
+										<form
+											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
+											onSubmit={ ( event ) => event.preventDefault() }>
+											<Dashicon icon="admin-links" />
+											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+												<TextControl
+													value={ youtube }
+													/* eslint-disable jsx-a11y/no-autofocus */
+													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
+													placeholder={ __( 'https://youtube.com/' ) }
+													/* eslint-enable jsx-a11y/no-autofocus */
+													onChange={ value => setAttributes( { youtube: value } ) }
+												/>
+											</div>
+										</form>
+									</Popover>
+								) }
 							</li>
-						) }
-						{ ( yelp || placeholder ) && (
+						}
+						{ ( yelp || isSelected ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--yelp'
+										'wp-block-coblocks-social-profiles__button--yelp', {
+											'is-empty': ! yelp,
+										}
 									) }
 									style={ buttonStyles }
+									onClick={ () => this.setState( { currentIcon: 'yelp' } ) }
 								>
 									<span
 										className="wp-block-coblocks-social-profiles__icon"
@@ -234,16 +385,38 @@ class edit extends Component {
 										{ __( 'Rate us on Yelp' ) }
 									</span>
 								</span>
+								{ this.state.currentIcon === 'yelp' && (
+									<Popover>
+										<form
+											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
+											onSubmit={ ( event ) => event.preventDefault() }>
+											<Dashicon icon="admin-links" />
+											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+												<TextControl
+													value={ yelp }
+													/* eslint-disable jsx-a11y/no-autofocus */
+													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
+													placeholder={ __( 'https://yelp.com/' ) }
+													/* eslint-enable jsx-a11y/no-autofocus */
+													onChange={ value => setAttributes( { yelp: value } ) }
+												/>
+											</div>
+										</form>
+									</Popover>
+								) }
 							</li>
-						) }
-						{ ( houzz || placeholder ) && (
+						}
+						{ ( houzz || isSelected ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--houzz'
+										'wp-block-coblocks-social-profiles__button--houzz', {
+											'is-empty': ! houzz,
+										}
 									) }
 									style={ buttonStyles }
+									onClick={ () => this.setState( { currentIcon: 'houzz' } ) }
 								>
 									<span
 										className="wp-block-coblocks-social-profiles__icon"
@@ -253,8 +426,27 @@ class edit extends Component {
 										{ __( 'Rate us on Houzz' ) }
 									</span>
 								</span>
+								{ this.state.currentIcon === 'houzz' && (
+									<Popover>
+										<form
+											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
+											onSubmit={ ( event ) => event.preventDefault() }>
+											<Dashicon icon="admin-links" />
+											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
+												<TextControl
+													value={ houzz }
+													/* eslint-disable jsx-a11y/no-autofocus */
+													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
+													placeholder={ __( 'https://houzz.com/' ) }
+													/* eslint-enable jsx-a11y/no-autofocus */
+													onChange={ value => setAttributes( { houzz: value } ) }
+												/>
+											</div>
+										</form>
+									</Popover>
+								) }
 							</li>
-						) }
+						}
 					</ul>
 				</div>
 			</Fragment>,

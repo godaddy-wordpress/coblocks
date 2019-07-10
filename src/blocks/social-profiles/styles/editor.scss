@@ -3,6 +3,16 @@
 		&:active {
 			animation: none !important;
 		}
+
+		&.is-empty {
+			opacity: 0.4;
+		}
+
+		&:focus {
+			box-shadow: 0 0 0 1px #fff, 0 0 0 3px #00a0d2 !important;
+			outline: 2px solid transparent;
+			outline-offset: -2px;
+		}
 	}
 }
 
@@ -102,5 +112,16 @@
 .edit-post-settings-sidebar__panel-block .components-social-links-list {
 	.components-base-control {
 		margin-bottom: 8px;
+	}
+}
+
+.block-library-button__inline-link--coblocks {
+	margin-top: 0;
+	width: 338px;
+}
+
+.editor-url-input--coblocks {
+	.components-base-control__field {
+		margin-bottom: 0;
 	}
 }
