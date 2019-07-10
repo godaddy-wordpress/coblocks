@@ -23,22 +23,19 @@ class Logos extends Component {
 				return false;
 			}
 
-			var wrapper = target.closest( '.resize' );
+			var wrapper = target.closest( '.wrapper' ),
+			    resize  = target.closest( '.resize' );
 
 			// Get offset
 			var containerOffsetLeft = wrapper.offsetLeft;
 
+			console.log( containerOffsetLeft );
+
 			// Get x-coordinate of pointer relative to container
 			var pointerRelativeXpos = e.clientX - containerOffsetLeft;
 
-			// Arbitrary minimum width set on box A, otherwise its inner content will collapse to width of 0
-			var boxAminWidth = 60;
-
-			// Resize box A
-			// * 8px is the left/right spacing between .handler and its inner pseudo-element
-			// * Set flex-grow to 0 to prevent it from growing
-			wrapper.style.width = Math.max( boxAminWidth, pointerRelativeXpos ) + 'px';
-			wrapper.style.flexGrow = 0;
+			resize.style.width = Math.max( 60, pointerRelativeXpos ) + 'px'
+			resize.style.flexGrow = 0;
 		} );
 
 		document.addEventListener( 'mouseup', function( e ) {

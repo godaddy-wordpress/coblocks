@@ -22,22 +22,14 @@ import { title, icon } from '../'
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { registerBlockType, getBlockType } = wp.blocks;
-const { PanelBody, withNotices, ResizableBox } = wp.components;
-const { InnerBlocks } = wp.blockEditor;
-const { applyFilters } = wp.hooks;
+const { withNotices } = wp.components;
 
 class Edit extends Component {
 	constructor() {
 		super( ...arguments );
-
-		this.state = {
-			selectedImage: null,
-		};
 	}
 
 	componentDidMount() {
-
 		if ( ! this.props.attributes.align ) {
 			this.props.setAttributes( {
 				align: 'wide',
@@ -46,58 +38,10 @@ class Edit extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		// Deselect images when deselecting the block
-		if ( ! this.props.isSelected && prevProps.isSelected ) {
-			this.setState( {
-				selectedImage: null,
-			} );
+		var newImages = this.props.attributes.images;
+		if ( prevProps.attributes.images !== newImages ) {
+			this.props.setAttributes( { images: newImages } );
 		}
-	}
-
-	onSelectImage( index ) {
-		return () => {
-			if ( this.state.selectedImage !== index ) {
-				this.setState( {
-					selectedImage: index,
-				} );
-			}
-		};
-	}
-
-	onMove( oldIndex, newIndex ) {
-		const images = [ ...this.props.attributes.images ];
-		images.splice( newIndex, 1, this.props.attributes.images[ oldIndex ] );
-		images.splice( oldIndex, 1, this.props.attributes.images[ newIndex ] );
-		this.setState( { selectedImage: newIndex } );
-		this.props.setAttributes( { images } );
-	}
-
-	onMoveForward( oldIndex ) {
-		return () => {
-			if ( oldIndex === this.props.attributes.images.length - 1 ) {
-				return;
-			}
-			this.onMove( oldIndex, oldIndex + 1 );
-		};
-	}
-
-	onMoveBackward( oldIndex ) {
-		return () => {
-			if ( oldIndex === 0 ) {
-				return;
-			}
-			this.onMove( oldIndex, oldIndex - 1 );
-		};
-	}
-
-	onRemoveImage( index ) {
-		return () => {
-			const images = filter( this.props.attributes.images, ( img, i ) => index !== i );
-			this.setState( { selectedImage: null } );
-			this.props.setAttributes( {
-				images,
-			} );
-		};
 	}
 
 	render() {

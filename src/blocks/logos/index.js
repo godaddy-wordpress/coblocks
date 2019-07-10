@@ -31,8 +31,6 @@ const blockAttributes = {
 	images: {
 		type: 'array',
 		default: [],
-		source: 'query',
-		selector: '.coblocks-logos--item',
 	},
 	blackAndWhite: {
 		type: 'boolean',
