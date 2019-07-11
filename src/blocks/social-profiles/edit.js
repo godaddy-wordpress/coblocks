@@ -148,7 +148,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'Share on Facebook' ) }
+										{ __( 'Facebook' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'facebook' && (
@@ -194,7 +194,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'Share on Twitter' ) }
+										{ __( 'Twitter' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'twitter' && (
@@ -240,7 +240,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'See us on Instagram' ) }
+										{ __( 'Instagram' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'instagram' && (
@@ -288,7 +288,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'Share on Pinterest' ) }
+										{ __( 'Pinterest' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'pinterest' && (
@@ -336,7 +336,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'Share on LinkedIn' ) }
+										{ __( 'LinkedIn' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'linkedin' && (
@@ -382,7 +382,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'See us on Youtube' ) }
+										{ __( 'YouTube' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'youtube' && (
@@ -428,7 +428,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'Rate us on Yelp' ) }
+										{ __( 'Yelp' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'yelp' && (
@@ -474,7 +474,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'Rate us on Houzz' ) }
+										{ __( 'Houzz' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'houzz' && (

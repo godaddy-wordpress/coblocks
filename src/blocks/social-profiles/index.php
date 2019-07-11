@@ -67,36 +67,36 @@ function coblocks_render_social_profiles_block($attributes)
 
 
 		'facebook'  => array(
-			'text' => esc_html__('Share on Facebook', 'coblocks'),
+			'text' => esc_html__('Facebook', 'coblocks'),
 			'url'  => $attributes['facebook'],
 		),
 		'twitter'   => array(
-			'text' => esc_html__('Share on Twitter', 'coblocks'),
+			'text' => esc_html__('Twitter', 'coblocks'),
 			'url'  => $attributes['twitter'],
 		),
 		'instagram' => array(
-			'text' => esc_html__('See us on Instagram', 'coblocks'),
+			'text' => esc_html__('Instagram', 'coblocks'),
 			'url'  => $attributes['instagram'],
 		),
 		'pinterest' => array(
-			'text' => esc_html__('Share on Pinterest', 'coblocks'),
+			'text' => esc_html__('Pinterest', 'coblocks'),
 			'url'  => $attributes['pinterest'],
 		),
 		'linkedin'  => array(
-			'text' => esc_html__('Share on Linkedin', 'coblocks'),
+			'text' => esc_html__('Linkedin', 'coblocks'),
 			'url'  => $attributes['linkedin'],
 		),
 
 		'youtube'   => array(
-			'text' => esc_html__('Watch us on YouTube', 'coblocks'),
+			'text' => esc_html__('YouTube', 'coblocks'),
 			'url'  => $attributes['youtube'],
 		),
 		'yelp'      => array(
-			'text' => esc_html__('Rate us on Yelp', 'coblocks'),
+			'text' => esc_html__('Yelp', 'coblocks'),
 			'url'  => $attributes['yelp'],
 		),
 		'houzz'     => array(
-			'text' => esc_html__('Rate us on Houzz', 'coblocks'),
+			'text' => esc_html__('Houzz', 'coblocks'),
 			'url'  => $attributes['houzz'],
 		),
 	);
