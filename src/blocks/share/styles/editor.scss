@@ -6,34 +6,6 @@
 	}
 }
 
-.wp-block-coblocks-social-profiles {
-	&__button {
-		transition: opacity 0.2s ease;
-
-		&:active {
-			animation: none !important;
-		}
-
-		&.is-empty {
-			opacity: 0.4;
-		}
-
-		&.is-selected {
-			opacity: 1;
-		}
-
-		&:not(.is-selected):hover {
-			opacity: 100;
-		}
-
-		&:focus {
-			box-shadow: 0 0 0 1px #fff, 0 0 0 3px #00a0d2 !important;
-			outline: 2px solid transparent;
-			outline-offset: -2px;
-		}
-	}
-}
-
 .block-editor-block-preview__content {
 	.wp-block-coblocks-social {
 		align-content: center;
@@ -102,22 +74,7 @@
 	}
 
 	// Gutenberg 5.9+ tweaks.
-	[data-type="coblocks/social"] [data-block] {
-		margin-bottom: 0;
-
-		.wp-block-coblocks-social {
-			margin-top: 10px;
-
-			&.is-style-icon {
-				margin-top: 8px;
-			}
-
-			&.is-style-circular {
-				margin-top: 5px;
-			}
-		}
-	}
-
+	[data-type="coblocks/social"] [data-block],
 	[data-type="coblocks/social-profiles"] [data-block] {
 		margin-bottom: 0;
 
@@ -149,8 +106,3 @@
 	}
 }
 
-.editor-url-input--coblocks {
-	.components-base-control__field {
-		margin-bottom: 0;
-	}
-}
