@@ -162,12 +162,12 @@ class Inspector extends Component {
 								onChange={ value => setAttributes( { instagram: escape( value ) } ) }
 							/>
 							<TextControl
-								label="Pintrest"
+								label="Pinterest"
 								value={ pinterest }
 								onChange={ value => setAttributes( { pinterest: escape( value ) } ) }
 							/>
 							<TextControl
-								label="Linkedin"
+								label="LinkedIn"
 								value={ linkedin }
 								onChange={ value => setAttributes( { linkedin: escape( value ) } ) }
 							/>
