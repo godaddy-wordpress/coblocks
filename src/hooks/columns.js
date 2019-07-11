@@ -42,15 +42,16 @@ export function addAttribute( settings ) {
 export const withInspectorControls = createHigherOrderComponent(
 	BlockEdit => props => {
 		const { name: blockName, attributes, setAttributes } = props;
+		const blockSupport = getBlockSupport( blockName, SUPPORTS_NAME );
 		return [
-			getBlockSupport( blockName, SUPPORTS_NAME ) && (
+			blockSupport && (
 				<InspectorControls>
 					<PanelBody title={ __( 'Column Settings' ) }>
 						<RangeControl
 							label={ __( 'Columns' ) }
 							value={ attributes.coblockColumns }
-							min={ 1 }
-							max={ 3 }
+							min={ blockSupport.min || 1 }
+							max={ blockSupport.max || 3 }
 							onChange={ coblockColumns => setAttributes( { coblockColumns } ) }
 						/>
 						{ attributes.coblockColumns > 1 && (
