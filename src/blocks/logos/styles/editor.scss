@@ -12,6 +12,8 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     max-width: 100%;
   }
@@ -26,29 +28,45 @@
     }
   }
 
-  .resize.selected {
-    position: relative;
+  .resize {
+    text-align: center;
 
-    .handler {
+    .holder {
       display: block;
-      width: 16px;
-      padding: 0;
-      cursor: ew-resize;
-      position: absolute;
-      top: 40%;
-      right: -10px;
+      margin: 0 auto;
+      position: relative;
+    }
 
-      &:before {
-        position: relative;
+    &.selected {
+      position: relative;
+
+      .handle {
         z-index: 999;
         display: block;
-        content: "";
         width: 16px;
-        height: 16px;
-        border: 2px solid #fff;
-        border-radius: 50%;
-        background: #0085ba;
-        cursor: inherit;
+        padding: 0;
+        cursor: ew-resize;
+        position: absolute;
+        top: 50%;
+        transform: translateY( -50% );
+        right: -10px;
+
+        &:before {
+          position: relative;
+          z-index: 999;
+          display: block;
+          content: "";
+          width: 16px;
+          height: 16px;
+          border: 2px solid #fff;
+          border-radius: 50%;
+          background: #0085ba;
+          cursor: inherit;
+        }
+
+        &:first-child {
+          right: calc( 100% - 10px );
+        }
       }
     }
   }

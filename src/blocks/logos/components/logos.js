@@ -1,39 +1,60 @@
-const { Component } = wp.element;
+/**
+ * External dependencies
+ */
+import classnames from 'classnames';
 import { flatten } from 'lodash';
+
+/**
+ * Internal dependencies
+ */
+const { Component } = wp.element;
 
 class Logos extends Component {
 	constructor() {
 		super( ...arguments );
+
+		this.state = {
+			selectedImage: null,
+		};
 	}
 
 	componentDidMount () {
-		var handler           = document.querySelector( '.handler' );
-		var position          = 0;
-		var isHandlerDragging = false;
-		var target            = false;
+		var position         = 0;
+		var isHandleDragging = false;
+		var target           = false;
+		var originalWidth;
 
 		document.addEventListener( 'mousedown', ( e ) => {
-			if ( $( e.target ).hasClass( 'handler' ) ) {
-				target            = e.target;
-				isHandlerDragging = true;
-				position          = e.pageX;
+			if ( $( e.target ).hasClass( 'handle' ) ) {
+				target              = e.target;
+				isHandleDragging   = true;
+				originalWidth       = $( target ).closest( '.holder' ).outerWidth();
+				position            = e.pageX;
+			}
+
+			if ( $( e.target ).parents( '.resize' ).hasClass( 'resize' ) ) {
+				this.setState( {
+					selectedImage: $( e.target ).parents( '.resize' ).find( 'img.logo' ).attr( 'src' ),
+				} )
 			}
 		} );
 
 		document.addEventListener( 'mousemove', ( e ) => {
-			if ( ! isHandlerDragging ) {
+			if ( ! isHandleDragging ) {
 				return false;
 			}
 
 			var wrapper    = target.closest( '.wrapper' ),
 			    resize     = target.closest( '.resize' ),
-			    newWidth   = parseFloat( parseInt( $( resize ).outerWidth() ) + ( e.clientX - position ) ),
-			    newPercent = ( parseFloat( newWidth / $( wrapper ).outerWidth() ) * 100 );
+			    holder     = target.closest( '.holder' ),
+			    pixelDiff  = ( e.clientX - position ),
+			    newWidth   = $( target ).hasClass( 'left' ) ? ( originalWidth - pixelDiff ) : ( originalWidth + pixelDiff ),
+			    newPercent = ( parseFloat( newWidth / originalWidth ) * 100 );
 
-			newPercent = ( newPercent <= 10 ) ? 10 : ( ( newPercent >= 80 ) ? 80 : newPercent );
+			newPercent = ( newPercent <= 25 ) ? 25 : ( ( newPercent >= 100 ) ? 100 : newPercent );
 
-			resize.style.width    = newPercent + '%';
-			resize.style.flexGrow = 0;
+			$( holder ).css( 'width', newPercent + '%' );
+			$( holder ).css( 'flexGrow', 0 )
 
 			this.props.images[ $( wrapper ).index() ][ $( resize ).index() ].width = newPercent + '%';
 
@@ -43,25 +64,48 @@ class Logos extends Component {
 		}, false );
 
 		document.addEventListener( 'mouseup', function( e ) {
-			isHandlerDragging = false;
+			isHandleDragging = false;
 		} );
+
+		this.setState( { selectedImage: null } );
+	}
+
+	componentDidUpdate( prevProps ) {
+
+		// Deselect image when deselecting the block.
+		if ( ! this.props.isSelected && prevProps.isSelected ) {
+			this.setState( {
+				selectedImage: null,
+			} );
+		}
+
 	}
 
 	render() {
-		let images  = this.props.images[ this.props.imageKey ];
-		var classes = 'resize' + ( ( this.props.isSelected ) ? ' selected' : '' );
+		let images = this.props.images[ this.props.imageKey ];
 
 		return (
 			<div className="wrapper">
 				{ images.map( ( img, index ) => {
-					var width = ( 100 / images.length );
-					var styles = {
-						width: img.width ? img.width : width + '%',
+					var resizeStyles = {
+						width: ( 100 / images.length ) + '%',
 					};
+					var holderStyles = {
+						width: img.width ? img.width : 100 + '%',
+					}
+					var classes = classnames(
+						'resize',
+						{
+							'selected': ( img.url === this.state.selectedImage ),
+						}
+					);
 					return (
-						<div className={ classes } key={ img.id || img.url } style={ styles }>
-							<img src={ img.url } alt={ img.alt } className="box" />
-							<div className="handler"></div>
+						<div className={ classes } key={ img.id || img.url } style={ resizeStyles }>
+							<div className="holder" style={ holderStyles }>
+								<div className="handle left"></div>
+								<img src={ img.url } alt={ img.alt } className="logo" />
+								<div className="handle right"></div>
+							</div>
 						</div>
 					);
 				} ) }

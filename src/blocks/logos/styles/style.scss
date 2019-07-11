@@ -1,5 +1,10 @@
 .wp-block-coblocks-logo {
 
+  .holder {
+    display: block;
+    margin: 0 auto;
+  }
+
   &.greyscale img {
     -webkit-filter: grayscale( 100% );
     filter: grayscale( 100% );
@@ -12,8 +17,10 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-     user-select: none;
-     width: 100%;
-     max-width: 100%;
+    user-select: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
   }
 }
