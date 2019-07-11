@@ -125,8 +125,6 @@ class edit extends Component {
 				{ isSelected && <Controls { ...this.props } /> }
 				{ isSelected && <Inspector { ...this.props } /> }
 
-				{ console.log( placeholder ) }
-
 				<div className={ classes } style={ { textAlign: textAlign } }>
 					<ul>
 						{ ( placeholder || ( facebook || isSelected ) ) && (
