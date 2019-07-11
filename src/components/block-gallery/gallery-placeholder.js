@@ -71,7 +71,7 @@ class GalleryPlaceholder extends Component {
 					dropZoneUIOnly={ hasImages && ! isSelected }
 					icon={ ! hasImages && <BlockIcon icon={ this.props.icon } /> }
 					labels={ {
-						title: this.props.title ? this.props.title : ( ! hasImages && sprintf( __( '%s Gallery' ), this.props.label ) ),
+						title: ! hasImages && sprintf( __( '%s Gallery' ), this.props.label ),
 						instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.' ),
 					} }
 					onSelect={ this.onSelectImages }

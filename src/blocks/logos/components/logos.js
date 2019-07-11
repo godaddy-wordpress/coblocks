@@ -1,4 +1,5 @@
 const { Component } = wp.element;
+import { flatten } from 'lodash';
 
 class Logos extends Component {
 	constructor() {
@@ -6,14 +7,16 @@ class Logos extends Component {
 	}
 
 	componentDidMount () {
-		var handler = document.querySelector( '.handler' );
+		var handler           = document.querySelector( '.handler' );
+		var position          = 0;
 		var isHandlerDragging = false;
-		var target = false;
+		var target            = false;
 
-		document.addEventListener( 'mousedown', function( e ) {
+		document.addEventListener( 'mousedown', ( e ) => {
 			if ( $( e.target ).hasClass( 'handler' ) ) {
-				target = e.target;
+				target            = e.target;
 				isHandlerDragging = true;
+				position          = e.pageX;
 			}
 		} );
 
@@ -22,19 +25,20 @@ class Logos extends Component {
 				return false;
 			}
 
-			var wrapper     = target.closest( '.wrapper' ),
-			    resize      = target.closest( '.resize' ),
-			    resizeIndex = $( resize ).index(),
-			    resizeWidth = Math.max( 60, e.clientX ),
-			    newWidth    = ( parseFloat( resizeWidth / $( wrapper ).outerWidth() ) * 100 ) + '%';
+			var wrapper    = target.closest( '.wrapper' ),
+			    resize     = target.closest( '.resize' ),
+			    newWidth   = parseFloat( parseInt( $( resize ).outerWidth() ) + ( e.clientX - position ) ),
+			    newPercent = ( parseFloat( newWidth / $( wrapper ).outerWidth() ) * 100 );
 
-			resize.style.width = newWidth;
+			newPercent = ( newPercent <= 10 ) ? 10 : ( ( newPercent >= 80 ) ? 80 : newPercent );
+
+			resize.style.width    = newPercent + '%';
 			resize.style.flexGrow = 0;
 
-			this.props.images[ resizeIndex ].width = newWidth;
+			this.props.images[ $( wrapper ).index() ][ $( resize ).index() ].width = newPercent + '%';
 
 			this.props.setAttributes( {
-				images: this.props.images,
+				images: flatten( this.props.images ),
 			} );
 		}, false );
 
@@ -44,8 +48,7 @@ class Logos extends Component {
 	}
 
 	render() {
-		let images = this.props.images;
-
+		let images  = this.props.images[ this.props.imageKey ];
 		var classes = 'resize' + ( ( this.props.isSelected ) ? ' selected' : '' );
 
 		return (

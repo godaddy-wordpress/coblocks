@@ -1,6 +1,7 @@
 /**
  * WordPress dependencies.
  */
+import classnames from 'classnames';
 import { chunk } from 'lodash';
 
 /**
@@ -18,6 +19,13 @@ export default function save( { attributes, className } ) {
 
 	const hasImages = !! images.length;
 
+	const classes = classnames(
+		className,
+		{
+			'greyscale' : blackAndWhite,
+		}
+	);
+
 	if ( ! hasImages ) {
 		return (
 			null
@@ -27,11 +35,12 @@ export default function save( { attributes, className } ) {
 	var imageChunks = chunk( images, 4 );
 
 	return (
-		<div className={ className }>
+		<div className={ classes }>
 			{ Object.keys( imageChunks ).map( keyOuter => {
 				return (
 					<Logos
-						images={ imageChunks[ keyOuter ] }
+						images={ imageChunks }
+						imageKey={ keyOuter }
 					/>
 				);
 			} ) }

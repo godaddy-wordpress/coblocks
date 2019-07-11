@@ -1,5 +1,10 @@
 .wp-block-coblocks-logo {
 
+  &.greyscale img {
+    -webkit-filter: grayscale( 100% );
+    filter: grayscale( 100% );
+  }
+
   .wrapper {
     /* Use flexbox */
     display: inline-flex;

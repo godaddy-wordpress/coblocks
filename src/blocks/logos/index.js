@@ -41,18 +41,6 @@ const blockAttributes = {
 		type: 'string',
 		default: 'wide',
 	},
-	fullwidth: {
-		type: 'boolean',
-		default: true,
-	},
-	height: {
-		type: 'number',
-		default: 100,
-	},
-	width: {
-		type: 'number',
-		default: 300,
-	},
 };
 
 const settings = {

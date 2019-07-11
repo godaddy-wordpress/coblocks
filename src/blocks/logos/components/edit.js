@@ -7,11 +7,10 @@ import { chunk } from 'lodash';
 /**
  * Internal dependencies
  */
+import * as helper from './../../../utils/helper';
 import Controls from './controls';
-import GalleryPlaceholder from '../../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../../components/block-gallery/gallery-dropzone';
 import GalleryUploader from '../../../components/block-gallery/gallery-uploader';
-import GalleryImage from '../../../components/block-gallery/gallery-image';
 import Logos from './logos';
 import { GalleryClasses } from '../../../components/block-gallery/shared';
 import { title, icon } from '../'
@@ -23,10 +22,12 @@ const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withNotices } = wp.components;
+const { MediaPlaceholder, BlockIcon } = wp.blockEditor;
 
 class Edit extends Component {
 	constructor() {
 		super( ...arguments );
+		this.onSelectImages = this.onSelectImages.bind( this );
 	}
 
 	componentDidMount() {
@@ -37,11 +38,10 @@ class Edit extends Component {
 		}
 	}
 
-	componentDidUpdate( prevProps ) {
-		var newImages = this.props.attributes.images;
-		if ( prevProps.attributes.images !== newImages ) {
-			this.props.setAttributes( { images: newImages } );
-		}
+	onSelectImages( images ) {
+		this.props.setAttributes( {
+			images: images.map( ( image ) => helper.pickRelevantMediaFiles( image ) ),
+		} );
 	}
 
 	render() {
@@ -58,19 +58,33 @@ class Edit extends Component {
 			images,
 			blackAndWhite,
 			align,
-			fullwidth,
-			height,
-			width,
 		} = attributes;
 
 		const hasImages = !! images.length;
 
+		const classes = classnames(
+			className,
+			{
+				'greyscale' : blackAndWhite,
+			}
+		);
+
 		if ( ! hasImages ) {
 			return (
-				<GalleryPlaceholder
+				<MediaPlaceholder
 					{ ...this.props }
-					title={ title }
-					icon={ icon }
+					icon={ ! hasImages && <BlockIcon icon={ icon } /> }
+					labels={ {
+						title: ! hasImages && title,
+						instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.' ),
+					} }
+					multiple
+					accept="image/*"
+					allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
+					value={ hasImages ? images : undefined }
+					onError={ noticeOperations.createErrorNotice }
+					notices={ hasImages ? undefined : noticeUI }
+					onSelect={ this.onSelectImages }
 				/>
 			);
 		}
@@ -86,16 +100,33 @@ class Edit extends Component {
 					{ ...this.props }
 				/>
 				{ noticeUI }
-				<div className={ className }>
+				<div className={ classes }>
 					{ Object.keys( imageChunks ).map( keyOuter => {
 						return (
 							<Logos
-								images={ imageChunks[ keyOuter ] }
-								{ ...this.props }
+								{...this.props}
+								images={ imageChunks }
+								imageKey={ keyOuter }
 							/>
 						);
 					} ) }
-					<GalleryUploader { ...this.props } />
+					{ isSelected && (
+						<MediaPlaceholder
+							{ ...this.props }
+							icon={ ! hasImages && <BlockIcon icon={ icon } /> }
+							labels={ {
+								title: ' ',
+								instructions: ' ',
+							} }
+							multiple
+							accept="image/*"
+							allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
+							value={ hasImages ? images : undefined }
+							onError={ noticeOperations.createErrorNotice }
+							notices={ hasImages ? undefined : noticeUI }
+							onSelect={ this.onSelectImages }
+						/>
+					) }
 				</div>
 			</Fragment>
 		);

@@ -1,32 +1,34 @@
 .wp-block-coblocks-logo {
 
+  &.greyscale img {
+    -webkit-filter: grayscale( 100% );
+    filter: grayscale( 100% );
+  }
+
   .wrapper {
-    /* Use flexbox */
     display: inline-flex;
     flex-direction: row;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-     user-select: none;
-     width: 100%;
-     max-width: 100%;
+    user-select: none;
+    width: 100%;
+    max-width: 100%;
   }
 
-  .box {
-    padding: 20px;
+  .components-placeholder.block-editor-media-placeholder {
+    border: 1px dashed #bfbfbf;
+    min-height: 115px;
 
-    /* Use box-sizing so that element's outerwidth will match width property */
-    box-sizing: border-box;
-
-    /* Allow box to grow and shrink, and ensure they are all equally sized */
-    flex: 1 1 auto;
-  }
-
-  .resize {
-    position: relative;
+    .components-placeholder__label,
+    .components-placeholder__instructions {
+      display: none;
+    }
   }
 
   .resize.selected {
+    position: relative;
+
     .handler {
       display: block;
       width: 16px;
