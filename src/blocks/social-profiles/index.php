@@ -207,7 +207,7 @@ function coblocks_render_social_profiles_block($attributes)
 		esc_attr($text_align),
 		$markup
 	);
-	echo esc_attr($block_content);
+
 	return $block_content;
 }
 
