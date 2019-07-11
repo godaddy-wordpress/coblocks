@@ -22,7 +22,7 @@ export default function save( { attributes, className } ) {
 	const classes = classnames(
 		className,
 		{
-			'greyscale' : blackAndWhite,
+			'has-filter-grayscale' : blackAndWhite,
 		}
 	);
 
