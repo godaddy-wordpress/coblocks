@@ -81,9 +81,9 @@ class edit extends Component {
 
 		const classes = classnames( className,
 			'wp-block-coblocks-social', {
-			[ `has-button-size-${ size }` ]: size !== 'med',
-			'has-colors': hasColors,
-		} );
+				[ `has-button-size-${ size }` ]: size !== 'med',
+				'has-colors': hasColors,
+			} );
 
 		const buttonClasses = classnames(
 			'wp-block-button__link',
@@ -129,7 +129,7 @@ class edit extends Component {
 					<ul>
 						{ ( placeholder || ( facebook || isSelected ) ) && (
 							<li>
-								<span
+								<button
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--facebook',
@@ -148,7 +148,7 @@ class edit extends Component {
 									<span className="wp-block-coblocks-social__text">
 										{ __( 'Share on Facebook' ) }
 									</span>
-								</span>
+								</button>
 								{ this.state.currentIcon === 'facebook' && (
 									<Popover>
 										<form
@@ -173,7 +173,7 @@ class edit extends Component {
 						) }
 						{ ( placeholder || ( twitter || isSelected ) ) && (
 							<li>
-								<span
+								<button
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--twitter',
@@ -192,7 +192,7 @@ class edit extends Component {
 									<span className="wp-block-coblocks-social__text">
 										{ __( 'Share on Twitter' ) }
 									</span>
-								</span>
+								</button>
 								{ this.state.currentIcon === 'twitter' && (
 									<Popover>
 										<form
@@ -217,7 +217,7 @@ class edit extends Component {
 						) }
 						{ ( placeholder || ( instagram || isSelected ) ) && (
 							<li>
-								<span
+								<button
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--instagram',
@@ -236,7 +236,7 @@ class edit extends Component {
 									<span className="wp-block-coblocks-social__text">
 										{ __( 'See us on Instagram' ) }
 									</span>
-								</span>
+								</button>
 								{ this.state.currentIcon === 'instagram' && (
 									<Popover>
 										<form
@@ -263,7 +263,7 @@ class edit extends Component {
 						) }
 						{ ( placeholder || ( pinterest || isSelected ) ) && (
 							<li>
-								<span
+								<button
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--pinterest',
@@ -282,7 +282,7 @@ class edit extends Component {
 									<span className="wp-block-coblocks-social__text">
 										{ __( 'Share on Pinterest' ) }
 									</span>
-								</span>
+								</button>
 								{ this.state.currentIcon === 'pinterest' && (
 									<Popover>
 										<form
@@ -309,7 +309,7 @@ class edit extends Component {
 						) }
 						{ ( placeholder || ( linkedin || isSelected ) ) && (
 							<li>
-								<span
+								<button
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--linkedin',
@@ -328,7 +328,7 @@ class edit extends Component {
 									<span className="wp-block-coblocks-social__text">
 										{ __( 'Share on LinkedIn' ) }
 									</span>
-								</span>
+								</button>
 								{ this.state.currentIcon === 'linkedin' && (
 									<Popover>
 										<form
@@ -353,7 +353,7 @@ class edit extends Component {
 						) }
 						{ ( placeholder || ( youtube || isSelected ) ) && (
 							<li>
-								<span
+								<button
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--youtube',
@@ -372,7 +372,7 @@ class edit extends Component {
 									<span className="wp-block-coblocks-social__text">
 										{ __( 'See us on Youtube' ) }
 									</span>
-								</span>
+								</button>
 								{ this.state.currentIcon === 'youtube' && (
 									<Popover>
 										<form
@@ -397,7 +397,7 @@ class edit extends Component {
 						) }
 						{ ( placeholder || ( yelp || isSelected ) ) && (
 							<li>
-								<span
+								<button
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--yelp',
@@ -416,7 +416,7 @@ class edit extends Component {
 									<span className="wp-block-coblocks-social__text">
 										{ __( 'Rate us on Yelp' ) }
 									</span>
-								</span>
+								</button>
 								{ this.state.currentIcon === 'yelp' && (
 									<Popover>
 										<form
@@ -441,7 +441,7 @@ class edit extends Component {
 						) }
 						{ ( placeholder || ( houzz || isSelected ) ) && (
 							<li>
-								<span
+								<button
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--houzz',
@@ -460,7 +460,7 @@ class edit extends Component {
 									<span className="wp-block-coblocks-social__text">
 										{ __( 'Rate us on Houzz' ) }
 									</span>
-								</span>
+								</button>
 								{ this.state.currentIcon === 'houzz' && (
 									<Popover>
 										<form
