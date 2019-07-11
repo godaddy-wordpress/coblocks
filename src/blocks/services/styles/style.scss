@@ -1,0 +1,24 @@
+.wp-block-coblocks-services {
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+
+	> .wp-block-coblocks-service {
+		margin: 0 15px;
+	}
+
+	> .wp-block-coblocks-service {
+		flex: 1 100%;
+		max-width: 100%;
+	}
+
+	&[data-columns="2"] > .wp-block-coblocks-service {
+		flex: 1 calc(100% / 2);
+		max-width: calc(100% / 2);
+	}
+
+	&[data-columns="3"] > .wp-block-coblocks-service {
+		flex: 1 calc(100% / 3);
+		max-width: calc(100% / 3);
+	}
+}
