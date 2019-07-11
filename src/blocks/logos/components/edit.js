@@ -65,7 +65,7 @@ class Edit extends Component {
 		const classes = classnames(
 			className,
 			{
-				'greyscale' : blackAndWhite,
+				'has-filter-grayscale' : blackAndWhite,
 			}
 		);
 
