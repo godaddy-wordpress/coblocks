@@ -1,0 +1,27 @@
+.wp-block-coblocks-service {
+	figure {
+		display: flex;
+		overflow: hidden;
+		padding-top: calc(9 / 16 * 100%);
+		position: relative;
+		width: 100%;
+
+		.is-style-circle & {
+			padding-top: 100%;
+			border-radius: 100%;
+		}
+
+		.is-style-square & {
+			padding-top: 100%;
+		}
+
+		> img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			vertical-align: middle;
+		}
+	}
+}
