@@ -126,14 +126,6 @@ class Inspector extends Component {
 		return (
 			<InspectorControls>
 				<PanelBody title={ sprintf( __( '%s Settings' ), title ) }>
-					<SizeControl { ...this.props }
-						type={ 'grid' }
-						label={ __( 'Column Size' ) }
-						onChange={ this.setSizeControl }
-						value={ gridSize }
-						resetValue={ 'xlrg' }
-					/>
-					<ResponsiveTabsControl { ...this.props } />
 					{ gutter > 0 && <RangeControl
 						label={ __( 'Rounded Corners' ) }
 						aria-label={ __( 'Add rounded corners to the gallery items.' ) }

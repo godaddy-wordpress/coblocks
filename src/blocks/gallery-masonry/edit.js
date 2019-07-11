@@ -71,6 +71,34 @@ class GalleryMasonryEdit extends Component {
 				captionSelected: false,
 			} );
 		}
+
+		const { attributes, setAttributes } = this.props;
+		if ( ! attributes.coblockColumns !== prevProps.attributes.coblockColumns ) {
+			if ( attributes.coblockColumns === 2 ) {
+				setAttributes( { gridSize: 'xlrg' } );
+			}
+			if ( attributes.coblockColumns === 3 ) {
+				setAttributes( { gridSize: 'lrg' } );
+			}
+			if ( attributes.coblockColumns === 4 ) {
+				setAttributes( { gridSize: 'med' } );
+			}
+		}
+
+		if ( ! attributes.coblockGutter !== prevProps.attributes.coblockGutter ) {
+			if ( attributes.coblockGutter === 'none' ) {
+				setAttributes( { gutter: 0 } );
+			}
+			if ( attributes.coblockGutter === 'small' ) {
+				setAttributes( { gutter: 15 } );
+			}
+			if ( attributes.coblockGutter === 'medium' ) {
+				setAttributes( { gutter: 25 } );
+			}
+			if ( attributes.coblockGutter === 'large' ) {
+				setAttributes( { gutter: 50 } );
+			}
+		}
 	}
 
 	onSelectImage( index ) {

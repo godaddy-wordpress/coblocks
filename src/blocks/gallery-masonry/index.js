@@ -59,6 +59,7 @@ const settings = {
 
 	supports: {
 		align: [ 'wide', 'full' ],
+		coblockColumns: { min: 2, max: 4 },
 	},
 
 	transforms,
