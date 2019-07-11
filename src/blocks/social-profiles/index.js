@@ -1,3 +1,5 @@
+import './styles/editor.scss';
+
 /**
  * Internal dependencies
  */

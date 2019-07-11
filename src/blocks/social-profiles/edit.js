@@ -79,7 +79,8 @@ class edit extends Component {
 		const isMaskStyle = includes( className, 'is-style-mask' );
 		const isCircularStyle = includes( className, 'is-style-circular' );
 
-		const classes = classnames( className, {
+		const classes = classnames( className,
+			'wp-block-coblocks-social', {
 			[ `has-button-size-${ size }` ]: size !== 'med',
 			'has-colors': hasColors,
 		} );

@@ -186,7 +186,7 @@ function coblocks_render_social_profiles_block($attributes)
 	}
 
 	// Build classes.
-	$class = 'wp-block-coblocks-social';
+	$class = 'wp-block-coblocks-social wp-block-coblocks-social-profiles';
 
 	if (isset($attributes['className'])) {
 		$class .= ' ' . $attributes['className'];
