@@ -14,6 +14,11 @@ function getTransformedAttributes( blockName, attributeName, attributes ) {
 		if ( attributes.socialProfileAttributes ) {
 			const spa = JSON.parse( attributes.socialProfileAttributes );
 			return spa[ attributeName ];
+		} else if (
+			! attributes.socialProfileAttributes &&
+			attributes[ attributeName ] === true
+		) {
+			return '';
 		}
 		return attributes[ attributeName ];
 	}

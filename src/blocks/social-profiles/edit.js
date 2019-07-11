@@ -32,7 +32,11 @@ class edit extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		if ( ! this.props.isSelected && prevProps.isSelected && this.state.currentIcon ) {
+		if (
+			! this.props.isSelected &&
+			prevProps.isSelected &&
+			this.state.currentIcon
+		) {
 			this.setState( {
 				currentIcon: '',
 			} );
@@ -82,7 +86,7 @@ class edit extends Component {
 
 		const buttonClasses = classnames(
 			'wp-block-button__link',
-			'wp-block-coblocks-social-profiles__button',
+			'wp-block-coblocks-social__button',
 			{
 				'has-background': hasColors || backgroundColor.color,
 				'has-text-color': hasColors || textColor.color,
@@ -124,12 +128,13 @@ class edit extends Component {
 
 				<div className={ classes } style={ { textAlign: textAlign } }>
 					<ul>
-						{ ( placeholder || ( facebook || isSelected ) ) &&
+						{ ( placeholder || ( facebook || isSelected ) ) && (
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--facebook', {
+										'wp-block-coblocks-social__button--facebook',
+										{
 											'is-empty': ! facebook,
 											'is-selected': this.state.currentIcon === 'facebook',
 										}
@@ -138,10 +143,10 @@ class edit extends Component {
 									onClick={ () => this.setState( { currentIcon: 'facebook' } ) }
 								>
 									<span
-										className="wp-block-coblocks-social-profiles__icon"
+										className="wp-block-coblocks-social__icon"
 										style={ iconStyles }
 									/>
-									<span className="wp-block-coblocks-social-profiles__text">
+									<span className="wp-block-coblocks-social__text">
 										{ __( 'Share on Facebook' ) }
 									</span>
 								</span>
@@ -149,7 +154,8 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ ( event ) => event.preventDefault() }>
+											onSubmit={ event => event.preventDefault() }
+										>
 											<Dashicon icon="admin-links" />
 											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
@@ -165,13 +171,14 @@ class edit extends Component {
 									</Popover>
 								) }
 							</li>
-						}
-						{ ( placeholder || ( twitter || isSelected ) )&&
+						) }
+						{ ( placeholder || ( twitter || isSelected ) ) && (
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--twitter', {
+										'wp-block-coblocks-social__button--twitter',
+										{
 											'is-empty': ! twitter,
 											'is-selected': this.state.currentIcon === 'twitter',
 										}
@@ -179,8 +186,11 @@ class edit extends Component {
 									style={ buttonStyles }
 									onClick={ () => this.setState( { currentIcon: 'twitter' } ) }
 								>
-								<span className="wp-block-coblocks-social-profiles__icon" style={ iconStyles } />
-									<span className="wp-block-coblocks-social-profiles__text">
+									<span
+										className="wp-block-coblocks-social__icon"
+										style={ iconStyles }
+									/>
+									<span className="wp-block-coblocks-social__text">
 										{ __( 'Share on Twitter' ) }
 									</span>
 								</span>
@@ -188,7 +198,8 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ ( event ) => event.preventDefault() }>
+											onSubmit={ event => event.preventDefault() }
+										>
 											<Dashicon icon="admin-links" />
 											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
@@ -204,13 +215,14 @@ class edit extends Component {
 									</Popover>
 								) }
 							</li>
-						}
-						{ ( placeholder || ( instagram || isSelected ) ) &&
+						) }
+						{ ( placeholder || ( instagram || isSelected ) ) && (
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--instagram', {
+										'wp-block-coblocks-social__button--instagram',
+										{
 											'is-empty': ! instagram,
 											'is-selected': this.state.currentIcon === 'instagram',
 										}
@@ -219,10 +231,10 @@ class edit extends Component {
 									onClick={ () => this.setState( { currentIcon: 'instagram' } ) }
 								>
 									<span
-										className="wp-block-coblocks-social-profiles__icon"
+										className="wp-block-coblocks-social__icon"
 										style={ iconStyles }
 									/>
-									<span className="wp-block-coblocks-social-profiles__text">
+									<span className="wp-block-coblocks-social__text">
 										{ __( 'See us on Instagram' ) }
 									</span>
 								</span>
@@ -230,7 +242,8 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ ( event ) => event.preventDefault() }>
+											onSubmit={ event => event.preventDefault() }
+										>
 											<Dashicon icon="admin-links" />
 											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
@@ -239,20 +252,23 @@ class edit extends Component {
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
 													placeholder={ __( 'https://instagram.com/' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
-													onChange={ value => setAttributes( { instagram: value } ) }
+													onChange={ value =>
+														setAttributes( { instagram: value } )
+													}
 												/>
 											</div>
 										</form>
 									</Popover>
 								) }
 							</li>
-						}
-						{ ( placeholder || ( pinterest || isSelected ) ) &&
+						) }
+						{ ( placeholder || ( pinterest || isSelected ) ) && (
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--pinterest', {
+										'wp-block-coblocks-social__button--pinterest',
+										{
 											'is-empty': ! pinterest,
 											'is-selected': this.state.currentIcon === 'pinterest',
 										}
@@ -261,10 +277,10 @@ class edit extends Component {
 									onClick={ () => this.setState( { currentIcon: 'pinterest' } ) }
 								>
 									<span
-										className="wp-block-coblocks-social-profiles__icon"
+										className="wp-block-coblocks-social__icon"
 										style={ iconStyles }
 									/>
-									<span className="wp-block-coblocks-social-profiles__text">
+									<span className="wp-block-coblocks-social__text">
 										{ __( 'Share on Pinterest' ) }
 									</span>
 								</span>
@@ -272,7 +288,8 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ ( event ) => event.preventDefault() }>
+											onSubmit={ event => event.preventDefault() }
+										>
 											<Dashicon icon="admin-links" />
 											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
@@ -281,20 +298,23 @@ class edit extends Component {
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
 													placeholder={ __( 'https://pinterest.com/' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
-													onChange={ value => setAttributes( { pinterest: value } ) }
+													onChange={ value =>
+														setAttributes( { pinterest: value } )
+													}
 												/>
 											</div>
 										</form>
 									</Popover>
 								) }
 							</li>
-						}
-						{ ( placeholder || ( linkedin || isSelected ) ) &&
+						) }
+						{ ( placeholder || ( linkedin || isSelected ) ) && (
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--linkedin', {
+										'wp-block-coblocks-social__button--linkedin',
+										{
 											'is-empty': ! linkedin,
 											'is-selected': this.state.currentIcon === 'linkedin',
 										}
@@ -303,10 +323,10 @@ class edit extends Component {
 									onClick={ () => this.setState( { currentIcon: 'linkedin' } ) }
 								>
 									<span
-										className="wp-block-coblocks-social-profiles__icon"
+										className="wp-block-coblocks-social__icon"
 										style={ iconStyles }
 									/>
-									<span className="wp-block-coblocks-social-profiles__text">
+									<span className="wp-block-coblocks-social__text">
 										{ __( 'Share on LinkedIn' ) }
 									</span>
 								</span>
@@ -314,7 +334,8 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ ( event ) => event.preventDefault() }>
+											onSubmit={ event => event.preventDefault() }
+										>
 											<Dashicon icon="admin-links" />
 											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
@@ -330,13 +351,14 @@ class edit extends Component {
 									</Popover>
 								) }
 							</li>
-						}
-						{ ( placeholder || ( youtube || isSelected ) ) &&
+						) }
+						{ ( placeholder || ( youtube || isSelected ) ) && (
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--youtube', {
+										'wp-block-coblocks-social__button--youtube',
+										{
 											'is-empty': ! youtube,
 											'is-selected': this.state.currentIcon === 'youtube',
 										}
@@ -345,10 +367,10 @@ class edit extends Component {
 									onClick={ () => this.setState( { currentIcon: 'youtube' } ) }
 								>
 									<span
-										className="wp-block-coblocks-social-profiles__icon"
+										className="wp-block-coblocks-social__icon"
 										style={ iconStyles }
 									/>
-									<span className="wp-block-coblocks-social-profiles__text">
+									<span className="wp-block-coblocks-social__text">
 										{ __( 'See us on Youtube' ) }
 									</span>
 								</span>
@@ -356,7 +378,8 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ ( event ) => event.preventDefault() }>
+											onSubmit={ event => event.preventDefault() }
+										>
 											<Dashicon icon="admin-links" />
 											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
@@ -372,13 +395,14 @@ class edit extends Component {
 									</Popover>
 								) }
 							</li>
-						}
-						{ ( placeholder || ( yelp || isSelected ) ) &&
+						) }
+						{ ( placeholder || ( yelp || isSelected ) ) && (
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--yelp', {
+										'wp-block-coblocks-social__button--yelp',
+										{
 											'is-empty': ! yelp,
 											'is-selected': this.state.currentIcon === 'yelp',
 										}
@@ -387,10 +411,10 @@ class edit extends Component {
 									onClick={ () => this.setState( { currentIcon: 'yelp' } ) }
 								>
 									<span
-										className="wp-block-coblocks-social-profiles__icon"
+										className="wp-block-coblocks-social__icon"
 										style={ iconStyles }
 									/>
-									<span className="wp-block-coblocks-social-profiles__text">
+									<span className="wp-block-coblocks-social__text">
 										{ __( 'Rate us on Yelp' ) }
 									</span>
 								</span>
@@ -398,7 +422,8 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ ( event ) => event.preventDefault() }>
+											onSubmit={ event => event.preventDefault() }
+										>
 											<Dashicon icon="admin-links" />
 											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
@@ -414,13 +439,14 @@ class edit extends Component {
 									</Popover>
 								) }
 							</li>
-						}
-						{ ( placeholder || ( houzz || isSelected ) ) &&
+						) }
+						{ ( placeholder || ( houzz || isSelected ) ) && (
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
-										'wp-block-coblocks-social-profiles__button--houzz', {
+										'wp-block-coblocks-social__button--houzz',
+										{
 											'is-empty': ! houzz,
 											'is-selected': this.state.currentIcon === 'houzz',
 										}
@@ -429,10 +455,10 @@ class edit extends Component {
 									onClick={ () => this.setState( { currentIcon: 'houzz' } ) }
 								>
 									<span
-										className="wp-block-coblocks-social-profiles__icon"
+										className="wp-block-coblocks-social__icon"
 										style={ iconStyles }
 									/>
-									<span className="wp-block-coblocks-social-profiles__text">
+									<span className="wp-block-coblocks-social__text">
 										{ __( 'Rate us on Houzz' ) }
 									</span>
 								</span>
@@ -440,7 +466,8 @@ class edit extends Component {
 									<Popover>
 										<form
 											className="block-library-button__inline-link block-library-button__inline-link--coblocks"
-											onSubmit={ ( event ) => event.preventDefault() }>
+											onSubmit={ event => event.preventDefault() }
+										>
 											<Dashicon icon="admin-links" />
 											<div className="editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
@@ -456,7 +483,7 @@ class edit extends Component {
 									</Popover>
 								) }
 							</li>
-						}
+						) }
 					</ul>
 				</div>
 			</Fragment>,
