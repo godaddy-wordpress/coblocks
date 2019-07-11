@@ -1,13 +1,9 @@
 .wp-block-coblocks-logo {
 	.wrapper {
-		/* Use flexbox */
 		display: inline-flex;
 		flex-direction: row;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
+		max-width: 100%;
 		user-select: none;
 		width: 100%;
-		max-width: 100%;
 	}
 }

@@ -2,12 +2,9 @@
 	.wrapper {
 		display: inline-flex;
 		flex-direction: row;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
+		max-width: 100%;
 		user-select: none;
 		width: 100%;
-		max-width: 100%;
 	}
 
 	.components-placeholder.block-editor-media-placeholder {
@@ -24,25 +21,25 @@
 		position: relative;
 
 		.handler {
-			display: block;
-			width: 16px;
-			padding: 0;
 			cursor: ew-resize;
+			display: block;
+			padding: 0;
 			position: absolute;
-			top: 40%;
 			right: -10px;
+			top: 40%;
+			width: 16px;
 
-			&:before {
-				position: relative;
-				z-index: 999;
-				display: block;
-				content: "";
-				width: 16px;
-				height: 16px;
-				border: 2px solid #fff;
+			&::before {
+				background: theme(primary);
+				border: 2px solid $white;
 				border-radius: 50%;
-				background: #0085ba;
+				content: "";
 				cursor: inherit;
+				display: block;
+				height: 16px;
+				position: relative;
+				width: 16px;
+				z-index: 999;
 			}
 		}
 	}
