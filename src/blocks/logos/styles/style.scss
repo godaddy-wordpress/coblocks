@@ -1,19 +1,13 @@
 .wp-block-coblocks-logo {
-
-  &.greyscale img {
-    -webkit-filter: grayscale( 100% );
-    filter: grayscale( 100% );
-  }
-
-  .wrapper {
-    /* Use flexbox */
-    display: inline-flex;
-    flex-direction: row;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-     user-select: none;
-     width: 100%;
-     max-width: 100%;
-  }
+	.wrapper {
+		/* Use flexbox */
+		display: inline-flex;
+		flex-direction: row;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		width: 100%;
+		max-width: 100%;
+	}
 }
