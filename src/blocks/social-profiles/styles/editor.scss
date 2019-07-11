@@ -1,11 +1,21 @@
 .wp-block-coblocks-social-profiles {
 	&__button {
+		transition: opacity 0.2s ease;
+
 		&:active {
 			animation: none !important;
 		}
 
 		&.is-empty {
 			opacity: 0.4;
+		}
+
+		&.is-selected {
+			opacity: 1;
+		}
+
+		&:not(.is-selected):hover {
+			opacity: 100;
 		}
 
 		&:focus {

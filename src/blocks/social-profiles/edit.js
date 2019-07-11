@@ -120,15 +120,18 @@ class edit extends Component {
 				{ isSelected && <Controls { ...this.props } /> }
 				{ isSelected && <Inspector { ...this.props } /> }
 
+				{ console.log( placeholder ) }
+
 				<div className={ classes } style={ { textAlign: textAlign } }>
 					<ul>
-						{ ( facebook || isSelected ) &&
+						{ ( placeholder || ( facebook || isSelected ) ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social-profiles__button--facebook', {
 											'is-empty': ! facebook,
+											'is-selected': this.state.currentIcon === 'facebook',
 										}
 									) }
 									style={ buttonStyles }
@@ -163,13 +166,14 @@ class edit extends Component {
 								) }
 							</li>
 						}
-						{ ( twitter || isSelected ) &&
+						{ ( placeholder || ( twitter || isSelected ) )&&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social-profiles__button--twitter', {
 											'is-empty': ! twitter,
+											'is-selected': this.state.currentIcon === 'twitter',
 										}
 									) }
 									style={ buttonStyles }
@@ -201,13 +205,14 @@ class edit extends Component {
 								) }
 							</li>
 						}
-						{ ( instagram || isSelected ) &&
+						{ ( placeholder || ( instagram || isSelected ) ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social-profiles__button--instagram', {
 											'is-empty': ! instagram,
+											'is-selected': this.state.currentIcon === 'instagram',
 										}
 									) }
 									style={ buttonStyles }
@@ -242,13 +247,14 @@ class edit extends Component {
 								) }
 							</li>
 						}
-						{ ( pinterest || isSelected ) &&
+						{ ( placeholder || ( pinterest || isSelected ) ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social-profiles__button--pinterest', {
 											'is-empty': ! pinterest,
+											'is-selected': this.state.currentIcon === 'pinterest',
 										}
 									) }
 									style={ buttonStyles }
@@ -283,13 +289,14 @@ class edit extends Component {
 								) }
 							</li>
 						}
-						{ ( linkedin || isSelected ) &&
+						{ ( placeholder || ( linkedin || isSelected ) ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social-profiles__button--linkedin', {
 											'is-empty': ! linkedin,
+											'is-selected': this.state.currentIcon === 'linkedin',
 										}
 									) }
 									style={ buttonStyles }
@@ -324,13 +331,14 @@ class edit extends Component {
 								) }
 							</li>
 						}
-						{ ( youtube || isSelected ) &&
+						{ ( placeholder || ( youtube || isSelected ) ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social-profiles__button--youtube', {
 											'is-empty': ! youtube,
+											'is-selected': this.state.currentIcon === 'youtube',
 										}
 									) }
 									style={ buttonStyles }
@@ -365,13 +373,14 @@ class edit extends Component {
 								) }
 							</li>
 						}
-						{ ( yelp || isSelected ) &&
+						{ ( placeholder || ( yelp || isSelected ) ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social-profiles__button--yelp', {
 											'is-empty': ! yelp,
+											'is-selected': this.state.currentIcon === 'yelp',
 										}
 									) }
 									style={ buttonStyles }
@@ -406,13 +415,14 @@ class edit extends Component {
 								) }
 							</li>
 						}
-						{ ( houzz || isSelected ) &&
+						{ ( placeholder || ( houzz || isSelected ) ) &&
 							<li>
 								<span
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social-profiles__button--houzz', {
 											'is-empty': ! houzz,
+											'is-selected': this.state.currentIcon === 'houzz',
 										}
 									) }
 									style={ buttonStyles }
