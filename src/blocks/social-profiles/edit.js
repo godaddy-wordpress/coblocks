@@ -130,6 +130,8 @@ class edit extends Component {
 						{ ( placeholder || ( facebook || isSelected ) ) && (
 							<li>
 								<button
+									aria-expanded={ this.state.currentIcon === 'facebook' }
+									aria-label={ __( 'Add Facebook Profile' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--facebook',
@@ -174,6 +176,8 @@ class edit extends Component {
 						{ ( placeholder || ( twitter || isSelected ) ) && (
 							<li>
 								<button
+									aria-expanded={ this.state.currentIcon === 'twitter' }
+									aria-label={ __( 'Add Twitter Profile' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--twitter',
@@ -218,6 +222,8 @@ class edit extends Component {
 						{ ( placeholder || ( instagram || isSelected ) ) && (
 							<li>
 								<button
+									aria-expanded={ this.state.currentIcon === 'instagram' }
+									aria-label={ __( 'Add Instagram Profile' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--instagram',
@@ -264,6 +270,8 @@ class edit extends Component {
 						{ ( placeholder || ( pinterest || isSelected ) ) && (
 							<li>
 								<button
+									aria-expanded={ this.state.currentIcon === 'pinterest' }
+									aria-label={ __( 'Add Pinterest Profile' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--pinterest',
@@ -310,6 +318,8 @@ class edit extends Component {
 						{ ( placeholder || ( linkedin || isSelected ) ) && (
 							<li>
 								<button
+									aria-expanded={ this.state.currentIcon === 'linkedin' }
+									aria-label={ __( 'Add LinkedIn Profile' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--linkedin',
@@ -354,6 +364,8 @@ class edit extends Component {
 						{ ( placeholder || ( youtube || isSelected ) ) && (
 							<li>
 								<button
+									aria-expanded={ this.state.currentIcon === 'youtube' }
+									aria-label={ __( 'Add YouTube Profile' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--youtube',
@@ -398,6 +410,8 @@ class edit extends Component {
 						{ ( placeholder || ( yelp || isSelected ) ) && (
 							<li>
 								<button
+									aria-expanded={ this.state.currentIcon === 'yelp' }
+									aria-label={ __( 'Add Yelp Profile' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--yelp',
@@ -442,6 +456,8 @@ class edit extends Component {
 						{ ( placeholder || ( houzz || isSelected ) ) && (
 							<li>
 								<button
+									aria-expanded={ this.state.currentIcon === 'twitter' }
+									aria-label={ __( 'Add Houzz Profile' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--houzz',
