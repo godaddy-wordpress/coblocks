@@ -26,60 +26,6 @@ function coblocks_render_social_profiles_block($attributes)
 		$thumbnail = null;
 	}
 
-	// Generate the Twitter URL.
-	$twitter_url = '
-		http://twitter.com/share?
-		text=' . get_the_title() . '
-		&url=' . get_the_permalink() . '
-	';
-
-	// Generate the Facebook URL.
-	$facebook_url = '
-		https://www.facebook.com/sharer/sharer.php?
-		u=' . get_the_permalink() . '
-		&title=' . get_the_title() . '
-	';
-
-	// Generate the LinkedIn URL.
-	$linkedin_url = '
-		https://www.linkedin.com/shareArticle?mini=true
-		&url=' . get_the_permalink() . '
-		&title=' . get_the_title() . '
-	';
-
-	// Generate the Pinterest URL.
-	$pinterest_url = '
-		https://pinterest.com/pin/create/button/?
-		&url=' . get_the_permalink() . '
-		&description=' . get_the_title() . '
-		&media=' . esc_url($thumbnail) . '
-	';
-
-	// Generate the Tumblr URL.
-	$tumblr_url = '
-		https://tumblr.com/share/link?
-		url=' . get_the_permalink() . '
-		&name=' . get_the_title() . '
-	';
-
-	// Generate the Reddit URL.
-	$reddit_url = '
-		https://www.reddit.com/submit?
-		url=' . get_the_permalink() . '
-	';
-
-	$instagram_url =
-
-
-
-		// Apply filters, so that the social URLs can be modified.
-		$twitter_url   = apply_filters('coblocks_twitter_social_profile_url', $twitter_url);
-	$facebook_url  = apply_filters('coblocks_facebook_social_profile_url', $facebook_url);
-	$pinterest_url = apply_filters('coblocks_pinterest_social_profile_url', $pinterest_url);
-	$linkedin_url  = apply_filters('coblocks_linkedin_social_profile_url', $linkedin_url);
-	$tumblr_url    = apply_filters('coblocks_tumblr_social_profile_url', $tumblr_url);
-	$reddit_url    = apply_filters('coblocks_reddit_social_profile_url', $reddit_url);
-
 	// Attributes.
 	$text_align    = is_array($attributes) && isset($attributes['textAlign']) ? "style=text-align:{$attributes['textAlign']}" : '';
 	$border_radius = is_array($attributes) && isset($attributes['borderRadius']) ? "border-radius: {$attributes['borderRadius']}px;" : '';
