@@ -15,7 +15,7 @@
 		}
 
 		&:focus {
-			box-shadow: 0 0 0 1px #fff, 0 0 0 3px #00a0d2 !important;
+			box-shadow: 0 0 0 1px $white, 0 0 0 3px theme(primary) !important;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
 		}
