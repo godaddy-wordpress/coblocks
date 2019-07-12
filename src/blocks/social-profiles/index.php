@@ -241,10 +241,6 @@ function coblocks_register_social_profiles_block() {
 					'type'    => 'string',
 					'default' => '',
 				),
-				'shareAttributes'       => array(
-					'type'    => 'string',
-					'default' => '',
-				),
 			),
 			'render_callback' => 'coblocks_render_social_profiles_block',
 		)

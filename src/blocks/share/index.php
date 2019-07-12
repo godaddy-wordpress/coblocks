@@ -308,10 +308,6 @@ function coblocks_register_share_block()
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'socialProfileAttributes'		=> array(
-					'type'	  => 'string',
-					'default' => '',
-				)
 			),
 			'render_callback' => 'coblocks_render_share_block',
 		)

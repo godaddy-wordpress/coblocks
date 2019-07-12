@@ -1,35 +1,47 @@
 const { createBlock } = wp.blocks;
 
-function getTransformedAttributes( blockName, attributeName, attributes ) {
-	if ( blockName === 'share' ) {
-		if ( attributes.shareAttributes ) {
-			const sa = JSON.parse( attributes.shareAttributes );
-			return sa[ attributeName ];
-		}
-		return attributes[ attributeName ] ? true : false;
-	} else if ( blockName === 'social-profiles' ) {
-		if ( attributes[ attributeName ] === false ) {
+function getPreviousAttributes( blockName, attributeName, attributes ) {
+	switch ( blockName ) {
+		case 'social-profiles':
+			if ( localStorage.getItem( 'shareAttributes' ) !== null ) {
+				if ( attributes[ attributeName ] === false ) {
+					return '';
+				}
+				const shareString = localStorage.getItem( 'shareAttributes' );
+				const shareObject = JSON.parse( shareString );
+				console.log( 'social case local  ' + shareObject[ attributeName ] );
+				return shareObject[ attributeName ];
+			}
 			return '';
-		}
-		if ( attributes.socialProfileAttributes ) {
-			const spa = JSON.parse( attributes.socialProfileAttributes );
-			return spa[ attributeName ];
-		} else if (
-			! attributes.socialProfileAttributes &&
-			attributes[ attributeName ] === true
-		) {
-			return '';
-		}
-		return attributes[ attributeName ];
+		case 'share':
+			if ( localStorage.getItem( 'socialProfilesAttributes' ) !== null && attributes[ attributeName ] !== false ) {
+				if ( attributes[ attributeName ] === '' ) {
+					return false;
+				}
+				const socialString = localStorage.getItem( 'socialProfilesAttributes' );
+				const socialObject = JSON.parse( socialString );
+				console.log( 'share case local  ' + socialObject[ attributeName ] );
+				return socialObject[ attributeName ];
+			}
+			console.log( 'share case  ' + attributes[ attributeName ] );
+			return attributes[ attributeName ] ? true : false;
 	}
 }
 
-function getPreviousAttributes( blockName, attributes ) {
-	if ( blockName === 'share' ) {
-		return JSON.stringify( { ...attributes, socialProfileAttributes: '' } );
-	}
-	if ( blockName === 'social-profiles' ) {
-		return JSON.stringify( { ...attributes, shareAttributes: '' } );
+function storePreviousAttributes( blockName, attributes ) {
+	switch ( blockName ) {
+		case 'share':
+			console.log( 'shareattributes   : ' + JSON.stringify( attributes ) );
+			// eslint-disable-next-line no-undef
+			localStorage.setItem( 'shareAttributes', JSON.stringify( attributes ) );
+			break;
+		case 'social-profiles':
+			console.log( 'socialProfilesAttributes   : ' + JSON.stringify( attributes ) );
+			// eslint-disable-next-line no-undef
+			localStorage.setItem( 'socialProfilesAttributes', JSON.stringify( attributes ) );
+			break;
+		default:
+			return null;
 	}
 }
 
@@ -39,17 +51,17 @@ export const transforms = {
 			type: 'block',
 			blocks: [ 'coblocks/social' ],
 			transform: attributes => {
+				storePreviousAttributes( 'share', attributes );
 				return createBlock( 'coblocks/social', {
 					...attributes,
-					socialProfileAttributes: getPreviousAttributes( 'share', attributes ),
-					facebook: getTransformedAttributes( 'share', 'facebook', attributes ),
-					twitter: getTransformedAttributes( 'share', 'twitter', attributes ),
-					pinterest: getTransformedAttributes( 'share', 'pinterest', attributes ),
-					linkedin: getTransformedAttributes( 'share', 'linkedin', attributes ),
-					email: getTransformedAttributes( 'share', 'email', attributes ),
-					tumblr: getTransformedAttributes( 'share', 'tumblr', attributes ),
-					google: getTransformedAttributes( 'share', 'google', attributes ),
-					reddit: getTransformedAttributes( 'share', 'reddit', attributes ),
+					facebook: getPreviousAttributes( 'share', 'facebook', attributes ),
+					twitter: getPreviousAttributes( 'share', 'twitter', attributes ),
+					pinterest: getPreviousAttributes( 'share', 'pinterest', attributes ),
+					linkedin: getPreviousAttributes( 'share', 'linkedin', attributes ),
+					email: getPreviousAttributes( 'share', 'email', attributes ),
+					tumblr: getPreviousAttributes( 'share', 'tumblr', attributes ),
+					google: getPreviousAttributes( 'share', 'google', attributes ),
+					reddit: getPreviousAttributes( 'share', 'reddit', attributes ),
 				} );
 			},
 		},
@@ -59,41 +71,41 @@ export const transforms = {
 			type: 'block',
 			blocks: [ 'coblocks/social' ],
 			transform: attributes => {
+				storePreviousAttributes( 'social-profiles', attributes );
 				return createBlock( 'coblocks/social-profiles', {
 					...attributes,
-					shareAttributes: getPreviousAttributes( 'social-profiles', attributes ),
-					facebook: getTransformedAttributes(
+					facebook: getPreviousAttributes(
 						'social-profiles',
 						'facebook',
 						attributes
 					),
-					twitter: getTransformedAttributes(
+					twitter: getPreviousAttributes(
 						'social-profiles',
 						'twitter',
 						attributes
 					),
-					pinterest: getTransformedAttributes(
+					pinterest: getPreviousAttributes(
 						'social-profiles',
 						'pinterest',
 						attributes
 					),
-					linkedin: getTransformedAttributes(
+					linkedin: getPreviousAttributes(
 						'social-profiles',
 						'linkedin',
 						attributes
 					),
-					instagram: getTransformedAttributes(
+					instagram: getPreviousAttributes(
 						'social-profiles',
 						'instagram',
 						attributes
 					),
-					houzz: getTransformedAttributes(
+					houzz: getPreviousAttributes(
 						'social-profiles',
 						'houzz',
 						attributes
 					),
-					yelp: getTransformedAttributes( 'social-profiles', 'yelp', attributes ),
-					youtube: getTransformedAttributes(
+					yelp: getPreviousAttributes( 'social-profiles', 'yelp', attributes ),
+					youtube: getPreviousAttributes(
 						'social-profiles',
 						'youtube',
 						attributes
