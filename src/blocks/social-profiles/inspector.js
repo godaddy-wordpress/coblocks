@@ -1,8 +1,7 @@
 /**
  * External dependencies
  */
-import includes from 'lodash/includes';
-import escape from 'lodash/escape';
+import { includes, escape } from 'lodash';
 
 /**
  * Internal dependencies
