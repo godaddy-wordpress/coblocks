@@ -3,19 +3,20 @@
  */
 import './styles/editor.scss';
 import './styles/style.scss';
+import Slider from 'react-slick';
 
 /**
  * External dependencies
  */
 import { isUndefined, pickBy } from 'lodash';
+import classnames from 'classnames';
 
 /**
  * WordPress dependencies
  */
-import { Component} from '@wordpress/element';
+import { Component, RawHTML } from '@wordpress/element';
 import {
 	PanelBody,
-	Disabled,
 	Placeholder,
 	QueryControls,
 	RangeControl,
@@ -40,7 +41,7 @@ import SlickSliderPanel from '../../components/slick-slider-panel';
 /**
  * Module Constants
  */
-const { InspectorControls, BlockControls } = wp.editor;
+const { InspectorControls, BlockControls, PlainText } = wp.editor;
 
 const CATEGORIES_LIST_QUERY = {
 	per_page: -1,
@@ -91,7 +92,7 @@ class LatestPostsEdit extends Component {
 	}
 
 	render() {
-		const { attributes, setAttributes, className } = this.props;
+		const { attributes, setAttributes, className, latestPosts } = this.props;
 
 		const isListStyle = includes( className, 'is-style-list' );
 		const isGridStyle = includes( className, 'is-style-grid' );
@@ -102,7 +103,6 @@ class LatestPostsEdit extends Component {
 			displayPostContent,
 			displayPostDate,
 			displayPostLink,
-			displayCategories,
 			postLink,
 			postFeedType,
 			externalRssUrl,
@@ -113,10 +113,9 @@ class LatestPostsEdit extends Component {
 			postsToShow,
 			excerptLength,
 			listPosition,
+			infiniteSlide,
 			prevNextButtons,
 			visibleItems,
-			importRSS,
-			height,
 			draggable,
 			autoPlay,
 			autoPlaySpeed } = attributes;
@@ -140,12 +139,6 @@ class LatestPostsEdit extends Component {
 					checked={ displayPostContent }
 					help={ __( 'Showing the post excerpt.' ) }
 					onChange={ ( value ) => setAttributes( { displayPostContent: value } ) }
-				/>
-				<ToggleControl
-					label={ __( 'Display Categories' ) }
-					checked={ displayCategories }
-					help={ __( 'Showing posts categories.' ) }
-					onChange={ ( value ) => setAttributes( { displayCategories: value } ) }
 				/>
 				{ displayPostContent &&
 					<RangeControl
@@ -205,6 +198,30 @@ class LatestPostsEdit extends Component {
 			</PanelBody>
 		);
 
+		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+		if ( ! hasPosts && postFeedType === 'internal' ) {
+			return (
+				<Fragment>
+					<InspectorControls>
+						{ feedType }
+					</InspectorControls>
+					<Placeholder
+						icon="admin-post"
+						label={ __( 'Blog' ) }
+					>
+						{ ! Array.isArray( latestPosts ) ?
+							<Spinner /> :
+							__( 'No posts found.' )
+						}
+					</Placeholder>
+				</Fragment>
+			);
+		}
+
+		const displayPosts = Array.isArray( latestPosts ) && latestPosts.length > postsToShow ?
+			latestPosts.slice( 0, postsToShow ) :
+			latestPosts;
+
 		const toolbarControls = [ {
 			icon: blogIcons.mediaCardRight,
 			title: __( 'Image on left' ),
@@ -217,7 +234,22 @@ class LatestPostsEdit extends Component {
 			onClick: () => setAttributes( { listPosition: 'right' } ),
 		} ];
 
-		if ( this.state.editing ) {
+		const slickSettings = {
+			autoPlay: autoPlay,
+			autoPlaySpeed: autoPlaySpeed,
+			dots: false,
+			arrows: prevNextButtons,
+			infinite: infiniteSlide,
+			draggable: draggable,
+			adaptiveHeight: false,
+			speed: 500,
+			slidesToShow: visibleItems,
+			slidesToScroll: 1,
+		};
+
+		const dateFormat = __experimentalGetSettings().formats.date;
+
+		if ( this.state.editing && postFeedType === 'external' ) {
 			return (
 				<Fragment>
 					<InspectorControls>
@@ -260,39 +292,173 @@ class LatestPostsEdit extends Component {
 						/>
 					}
 				</BlockControls>
-				<ServerSideRender
-					block="coblocks/blog"
-					attributes={ this.props.attributes }
-					className="coblocks-slick"
-				/>
+				{ postFeedType === 'external' &&
+					<ServerSideRender
+						block="coblocks/blog"
+						attributes={ this.props.attributes }
+						className="coblocks-slick"
+					/>
+				}
+				{ postFeedType === 'internal' && ! isCarouselStyle &&
+				<ul
+					className={ classnames( this.props.className, {
+						'image-to-left': listPosition === 'left',
+						'image-to-right': listPosition === 'right',
+						'wp-block-coblocks-blog__list': true,
+						'has-dates': displayPostDate,
+						[ `columns-${ columns }` ]: isGridStyle,
+					} ) }
+				>
+					{ displayPosts.map( ( post, i ) => {
+						const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
+						const featuredImageStyle = 'url(' + featuredImageUrl + ')';
+						const titleTrimmed = post.title.rendered.trim();
+						let excerpt = post.excerpt.rendered;
+						if ( post.excerpt.raw === '' ) {
+							excerpt = post.content.raw;
+						}
+						const excerptElement = document.createElement( 'div' );
+						excerptElement.innerHTML = excerpt;
+						excerpt = excerptElement.textContent || excerptElement.innerText || '';
+						return (
+							<li className={ classnames( {
+								'list-center': isGridStyle && !featuredImageUrl,
+							} ) } key={ i }>
+								{ featuredImageUrl &&
+								<div className="wp-block-coblocks-blog__post-image-wrapper"
+									 style={ { backgroundImage: featuredImageStyle } }></div>
+								}
+								<div className="wp-block-coblocks-blog__post-info">
+									{ displayPostDate && post.date_gmt &&
+									<time dateTime={ format( 'c', post.date_gmt ) }
+										  className="wp-block-coblocks-blog__post-date">
+										{ dateI18n( dateFormat, post.date_gmt ) }
+									</time>
+									}
+									<h5>
+										{ titleTrimmed ? (
+											<RawHTML>
+												{ titleTrimmed }
+											</RawHTML>
+										) :
+											__( '(Untitled)' )
+										}
+									</h5>
+									{ displayPostContent &&
+									<div className="wp-block-coblocks-blog__post-excerpt">
+										<p>
+											<RawHTML
+												key="html"
+											>
+												{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+											</RawHTML>
+										</p>
+									</div>
+									}
+									{ displayPostLink &&
+									<PlainText
+										className="wp-block-coblocks-blog__post-read-more"
+										onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
+										value={ postLink }
+										placeholder={ __( 'Continue Reading' ) }
+									/>
+									}
+								</div>
+							</li>
+						);
+					} ) }
+				</ul>
+				}
+				{ postFeedType === 'internal' && isCarouselStyle &&
+				<Slider { ...slickSettings } className={ classnames( this.props.className ) }>
+					{ displayPosts.map( ( post, i ) => {
+						const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
+						const featuredImageStyle = 'url(' + featuredImageUrl + ')';
+						const titleTrimmed = post.title.rendered.trim();
+						let excerpt = post.excerpt.rendered;
+						if ( post.excerpt.raw === '' ) {
+							excerpt = post.content.raw;
+						}
+						const excerptElement = document.createElement( 'div' );
+						excerptElement.innerHTML = excerpt;
+						excerpt = excerptElement.textContent || excerptElement.innerText || '';
+						return (
+							<div className="coblocks-blog-post--item" key={ i }>
+								<div className="coblocks-blog-post--item-inner">
+									{ featuredImageUrl &&
+									<div className="wp-block-coblocks-blog__post-image-wrapper"
+										 style={ { backgroundImage: featuredImageStyle } }></div>
+									}
+									<div className={ classnames('wp-block-coblocks-blog__post-info', {
+										'full-height': !featuredImageUrl,
+									} ) }>
+										{ displayPostDate && post.date_gmt &&
+										<time dateTime={ format( 'c', post.date_gmt ) }
+											  className="wp-block-coblocks-blog__post-date">
+											{ dateI18n( dateFormat, post.date_gmt ) }
+										</time>
+										}
+										<h5>
+											{ titleTrimmed ? (
+												<RawHTML>
+													{ titleTrimmed }
+												</RawHTML>
+											) :
+												__( '(Untitled)' )
+											}
+										</h5>
+										{ displayPostContent &&
+										<div className="wp-block-coblocks-blog__post-excerpt">
+											<p>
+												<RawHTML
+													key="html"
+												>
+													{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+												</RawHTML>
+											</p>
+										</div>
+										}
+										{ displayPostLink &&
+										<PlainText
+											className="wp-block-coblocks-blog__post-read-more"
+											onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
+											value={ postLink }
+											placeholder={ __( 'Continue Reading' ) }
+										/>
+										}
+									</div>
+								</div>
+							</div>
+						);
+					} ) }
+				</Slider>
+				}
 			</div>
 		);
 	}
 }
 
-// export default withSelect( ( select, props ) => {
-// 	const { postsToShow, order, orderBy, categories } = props.attributes;
-// 	const { getEntityRecords } = select( 'core' );
-// 	const latestPostsQuery = pickBy( {
-// 		categories,
-// 		order,
-// 		orderby: orderBy,
-// 		per_page: postsToShow,
-// 	}, ( value ) => ! isUndefined( value ) );
-//
-// 	let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
-// 	if ( latestPosts ) {
-// 		latestPosts = latestPosts.map( ( post ) => {
-// 			return {
-// 				...post,
-// 				featured_media_object: select( 'core' ).getMedia( post.featured_media ),
-// 			};
-// 		} );
-// 	}
-//
-// 	return {
-// 		latestPosts: latestPosts,
-// 	};
-// } )( LatestPostsEdit );
+export default withSelect( ( select, props ) => {
+	const { postsToShow, order, orderBy, categories } = props.attributes;
+	const { getEntityRecords } = select( 'core' );
+	const latestPostsQuery = pickBy( {
+		categories,
+		order,
+		orderby: orderBy,
+		per_page: postsToShow,
+	}, ( value ) => ! isUndefined( value ) );
 
-export default LatestPostsEdit;
+	let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+	if ( latestPosts ) {
+		latestPosts = latestPosts.map( ( post ) => {
+			return {
+				...post,
+				featured_media_object: select( 'core' ).getMedia( post.featured_media ),
+			};
+		} );
+	}
+
+	return {
+		latestPosts: latestPosts,
+	};
+} )( LatestPostsEdit );

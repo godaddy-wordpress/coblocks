@@ -69,6 +69,7 @@ function build_carousel_block_content($posts, $attributes) {
 	$arrows = $attributes['prevNextButtons'] ? 'true' : 'false';
 	$auto_play = $attributes['autoPlay'] ? 'true' : 'false';
 	$draggable = (string) $attributes['draggable'] ? 'true' : 'false';
+	$infinite_slide = $attributes['infiniteSlide'] ? 'true' : 'false';
 
 	$class = 'wp-block-coblocks-blog';
 
@@ -87,7 +88,7 @@ data-slick='{"slidesToShow": {$attributes['visibleItems']},
 "arrows": $arrows,
 "autoPlay": $auto_play,
 "autoPlaySpeed": {$attributes['autoPlaySpeed']},
-"infinite": true,
+"infinite": $infinite_slide,
 "adaptiveHeight": false,
 "draggable": $draggable
 }'>
@@ -107,7 +108,14 @@ EOL;
 			);
 		}
 
-		$list_items_markup .= '<div class="wp-block-coblocks-blog__post-info">';
+		$item_info_class = 'wp-block-coblocks-blog__post-info ';
+		if ($post['thumbnailURL'] === null || !$post['thumbnailURL']) {
+			$item_info_class .= 'full-height ';
+		}
+		$list_items_markup .= sprintf(
+			'<div class="%1$s"</div>',
+			$item_info_class
+		);
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 			$list_items_markup .= sprintf(
@@ -182,6 +190,15 @@ EOL;
 	$list_items_markup = '';
 
 	foreach ( $posts as $post ) {
+
+		$list_class = '';
+		if ($post['thumbnailURL'] === null || !$post['thumbnailURL']) {
+			$list_class .= 'list-center ';
+		}
+		$list_items_markup .= sprintf(
+			'<li class="%1$s"',
+			$list_class
+		);
 
 		$list_items_markup .= '<li>';
 
@@ -319,10 +336,6 @@ function register_block_blog() {
 					'type'    => 'string',
 					'default' => 'left',
 				),
-				'height'			  => array(
-					'type'    => 'number',
-					'default' => 400,
-				),
 				'align'                   => array(
 					'type'    => 'string',
 					'default' => 'wide',
@@ -342,10 +355,6 @@ function register_block_blog() {
 					'default' => false,
 				),
 				'displayPostLink'		  => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'displayCategories'		  => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
@@ -401,7 +410,7 @@ function register_block_blog() {
 					'type'	  => 'number',
 					'default' => 2
 				),
-				'importRSS'		  => array(
+				'infiniteSlide'	  => array(
 					'type'	  => 'boolean',
 					'default' => false
 				)

@@ -1,4 +1,8 @@
 .wp-block-coblocks-blog {
+  	.slick-slide {
+	  margin-right: 10px;
+	}
+
   	&.alignfull {
 	  padding: 0 12px;
 	}
@@ -60,6 +64,15 @@
 			margin: 0 16px 16px 0;
 			width: 100%;
 		  	background-color: #fff;
+
+		  &.list-center {
+			display: flex;
+			align-items: center;
+		  }
+
+		  .wp-block-coblocks-blog__post-info {
+			word-break: break-word;
+		  }
 
 		  .wp-block-coblocks-blog__post-image-wrapper {
 			position:relative;
