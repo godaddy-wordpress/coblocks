@@ -3,27 +3,28 @@ const { createBlock } = wp.blocks;
 function getPreviousAttributes( blockName, attributeName, attributes ) {
 	switch ( blockName ) {
 		case 'social-profiles':
+			// eslint-disable-next-line no-undef
 			if ( localStorage.getItem( 'shareAttributes' ) !== null ) {
 				if ( attributes[ attributeName ] === false ) {
 					return '';
 				}
+				// eslint-disable-next-line no-undef
 				const shareString = localStorage.getItem( 'shareAttributes' );
 				const shareObject = JSON.parse( shareString );
-				console.log( 'social case local  ' + shareObject[ attributeName ] );
 				return shareObject[ attributeName ];
 			}
 			return '';
 		case 'share':
+			// eslint-disable-next-line no-undef
 			if ( localStorage.getItem( 'socialProfilesAttributes' ) !== null && attributes[ attributeName ] !== false ) {
 				if ( attributes[ attributeName ] === '' ) {
 					return false;
 				}
+				// eslint-disable-next-line no-undef
 				const socialString = localStorage.getItem( 'socialProfilesAttributes' );
 				const socialObject = JSON.parse( socialString );
-				console.log( 'share case local  ' + socialObject[ attributeName ] );
 				return socialObject[ attributeName ];
 			}
-			console.log( 'share case  ' + attributes[ attributeName ] );
 			return attributes[ attributeName ] ? true : false;
 	}
 }
@@ -31,12 +32,10 @@ function getPreviousAttributes( blockName, attributeName, attributes ) {
 function storePreviousAttributes( blockName, attributes ) {
 	switch ( blockName ) {
 		case 'share':
-			console.log( 'shareattributes   : ' + JSON.stringify( attributes ) );
 			// eslint-disable-next-line no-undef
 			localStorage.setItem( 'shareAttributes', JSON.stringify( attributes ) );
 			break;
 		case 'social-profiles':
-			console.log( 'socialProfilesAttributes   : ' + JSON.stringify( attributes ) );
 			// eslint-disable-next-line no-undef
 			localStorage.setItem( 'socialProfilesAttributes', JSON.stringify( attributes ) );
 			break;
