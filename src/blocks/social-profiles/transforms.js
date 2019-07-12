@@ -1,26 +1,23 @@
+/* eslint-env browser */
 const { createBlock } = wp.blocks;
 
 function getPreviousAttributes( blockName, attributeName, attributes ) {
 	switch ( blockName ) {
 		case 'social-profiles':
-			// eslint-disable-next-line no-undef
 			if ( localStorage.getItem( 'shareAttributes' ) !== null ) {
 				if ( attributes[ attributeName ] === false ) {
 					return '';
 				}
-				// eslint-disable-next-line no-undef
 				const shareString = localStorage.getItem( 'shareAttributes' );
 				const shareObject = JSON.parse( shareString );
 				return shareObject[ attributeName ];
 			}
 			return '';
 		case 'share':
-			// eslint-disable-next-line no-undef
 			if ( localStorage.getItem( 'socialProfilesAttributes' ) !== null && attributes[ attributeName ] !== false ) {
 				if ( attributes[ attributeName ] === '' ) {
 					return false;
 				}
-				// eslint-disable-next-line no-undef
 				const socialString = localStorage.getItem( 'socialProfilesAttributes' );
 				const socialObject = JSON.parse( socialString );
 				return socialObject[ attributeName ];
@@ -32,11 +29,9 @@ function getPreviousAttributes( blockName, attributeName, attributes ) {
 function storePreviousAttributes( blockName, attributes ) {
 	switch ( blockName ) {
 		case 'share':
-			// eslint-disable-next-line no-undef
 			localStorage.setItem( 'shareAttributes', JSON.stringify( attributes ) );
 			break;
 		case 'social-profiles':
-			// eslint-disable-next-line no-undef
 			localStorage.setItem( 'socialProfilesAttributes', JSON.stringify( attributes ) );
 			break;
 		default:
