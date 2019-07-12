@@ -119,8 +119,7 @@ class edit extends Component {
 			houzz
 		);
 
-		return [
-			// eslint-disable-next-line react/jsx-key
+		return (
 			<Fragment>
 				{ isSelected && <Controls { ...this.props } /> }
 				{ isSelected && <Inspector { ...this.props } /> }
@@ -501,8 +500,8 @@ class edit extends Component {
 						) }
 					</ul>
 				</div>
-			</Fragment>,
-		];
+			</Fragment>
+		);
 	}
 }
 
