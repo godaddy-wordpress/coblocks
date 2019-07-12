@@ -1,0 +1,25 @@
+.wp-block-coblocks-events {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+
+	// On small screens, we are no longer using row direction but column.
+	@media all and (max-width: 514px) {
+		flex-direction: column;
+	}
+
+	+ .wp-block-coblocks-events {
+		margin-top: 3em;
+	}
+
+	> h1,
+	> h2,
+	> h3,
+	> h4,
+	> h5,
+	> h6 {
+		flex: 1 100%;
+		margin: 0;
+		padding: 0;
+	}
+}
