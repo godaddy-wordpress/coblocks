@@ -33,6 +33,7 @@ class CoBlocks_Crop_System
     {
         add_filter('ajax_query_attachments_args', array($this, 'hideCroppedFromLibrary'));
         add_action('wp_ajax_coblocks_system_crop', array($this, 'apiCrop'));
+        add_action('wp_ajax_coblocks_system_original_image', array($this, 'getOriginalImage'));
     }
 
     public function hideCroppedFromLibrary($query)
@@ -44,6 +45,30 @@ class CoBlocks_Crop_System
         }
 
         return $query;
+    }
+
+    public function getOriginalImage()
+    {
+        if (!isset($_POST['id'])) {
+            http_response_code(400);
+            die();
+        }
+
+        $id = (int)$_POST['id'];
+
+        $attachmentMeta = wp_get_attachment_metadata($id);
+
+        if (isset($attachmentMeta[self::ORIGINAL_META_KEY])) {
+            $originalImageId = $attachmentMeta[self::ORIGINAL_META_KEY];
+        } else {
+            $originalImageId = $id;
+        }
+
+        echo json_encode([
+            'url' => wp_get_attachment_image_url($originalImageId, 'original'),
+        ]);
+
+        die();
     }
 
     public function apiCrop()

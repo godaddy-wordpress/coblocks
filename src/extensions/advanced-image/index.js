@@ -1,11 +1,10 @@
-const el = wp.element.createElement;
+import AttachmentCropControl from "../../components/image-crop-control/attachment-crop-control";
+
 const {assign} = lodash;
 const {createHigherOrderComponent} = wp.compose;
 const {Fragment} = wp.element;
 const {InspectorControls} = wp.editor;
 const {PanelBody} = wp.components;
-const {PanelRow} = wp.components;
-const {PanelColumn} = wp.components;
 const {TextControl} = wp.components;
 const {ButtonGroup} = wp.components;
 const {Button} = wp.components;
@@ -68,6 +67,13 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
             const {cropX, cropY, cropWidth, cropHeight, cropRotation} = attributes;
             let currentAttributes = _.extend({}, attributes);
 
+            // Only Gallery images supported at this time
+            if (!currentAttributes.id) {
+                return (
+                    <BlockEdit {...props} />
+                );
+            }
+
             const updateImage = function () {
                 jQuery.post(ajaxurl, {
                     'action': 'coblocks_system_crop',
@@ -106,6 +112,14 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                     <BlockEdit {...props} />
                     <InspectorControls>
                         <PanelBody title={__('Crop Settings')} initialOpen={false}>
+                            <AttachmentCropControl
+                                attachmentId={currentAttributes.id}
+                                offsetX={cropX}
+                                offsetY={cropY}
+                                cropWidth={cropWidth}
+                                cropHeight={cropHeight}
+                                rotation={cropRotation}
+                            />
                             <TextControl
                                 label={__('Offset X (%)')}
                                 value={cropX}

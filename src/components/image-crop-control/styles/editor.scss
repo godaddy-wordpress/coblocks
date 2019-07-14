@@ -1,0 +1,14 @@
+.components-coblocks-image-control {
+  width: 232px;
+  height: 154px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    will-change: transform;
+    transform-origin: left top 0;
+    opacity: 0.2;
+  }
+}
