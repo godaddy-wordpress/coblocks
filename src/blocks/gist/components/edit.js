@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import escape from 'lodash/escape';
 
 /**
  * Internal dependencies
@@ -9,6 +10,7 @@ import classnames from 'classnames';
 import Controls from './controls';
 import Inspector from './inspector';
 import icons from './../../../utils/icons';
+import GistPlaceholder from './placeholder';
 import Gist from './gist';
 
 /**
@@ -18,49 +20,51 @@ const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { PlainText, RichText } = wp.blockEditor;
+const { withNotices } = wp.components;
 const { withState } = wp.compose;
 
 /**
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor() {
+	constructor( props ) {
 		super( ...arguments );
+		this.state = {
+			urlText: '',
+		};
 		this.updateURL = this.updateURL.bind( this );
 	}
 
 	componentDidMount() {
 		if ( this.props.attributes.url ) {
-			this.props.setState( { preview: true } )
+			this.props.setState( { preview: true } );
 		}
 	}
 
 	updateURL( newURL ) {
-
+		console.log( newURL );
 		this.props.setAttributes( { url: newURL } );
-
+		this.setState( { urlText: newURL } );
 		if ( ! this.props.attributes.url ) {
-			this.props.setState( { preview: true } )
+			this.props.setState( { preview: true } );
 		}
 
 		// Check for #file in the entered URL. If it's there, let's use it properly.
-		let file = (newURL).split('#file-').pop();
+		let file = newURL.split( '#file-' ).pop();
 
-		if( file ){
+		if ( file ) {
 			file = '#file-' + file;
 		}
 
-		if ( newURL.match(/#file-*/) != null ) {
-			const newURLWithNoFile = newURL.replace( file , '' ).replace( '#file-' , '' );
+		if ( newURL.match( /#file-*/ ) !== null ) {
+			const newURLWithNoFile = newURL.replace( file, '' ).replace( '#file-', '' );
 
 			this.props.setAttributes( { url: newURLWithNoFile } );
-			this.props.setAttributes( { file: file.replace( /-([^-]*)$/, '.'+'$1' ) } );
+			this.props.setAttributes( { file: file.replace( /-([^-]*)$/, '.' + '$1' ) } );
 		}
 	}
 
 	render() {
-
 		const {
 			attributes,
 			className,
@@ -71,73 +75,47 @@ class Edit extends Component {
 			toggleSelection,
 		} = this.props;
 
-		const {
-			url,
-			file,
-			meta,
-			caption,
-		} = attributes;
+		// console.log( this.props );
 
-		return [
+		const { url, file, meta, caption } = attributes;
+		const label = __( 'Gist URL' );
+
+		return (
 			<Fragment>
-				{ url && url.length > 0 && isSelected && (
-					<Controls
-						{ ...this.props }
+				{ url && url.length > 0 && isSelected && <Controls { ...this.props } /> }
+				{ url && url.length > 0 && isSelected && <Inspector { ...this.props } /> }
+				<div className={ classnames( className, meta ? null : 'no-meta' ) }>
+					<Gist
+						label={ label }
+						icon={ icons.github }
+						value={ this.state.urlText }
+						updateURL={ this.updateURL }
+						url={ this.props.attributes.url }
+						onChange={ event =>
+							this.setState( { urlText: escape( event.target.value ) } )
+						}
+						editProps={ this.props }
+						// fallback={ () => fallback( url, this.props.onReplace ) }
+						// tryAgain={ tryAgain }
+						// cannotEmbed={ cannotEmbed }
 					/>
-				) }
-				{ url && url.length > 0 && isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
-				{ preview ? (
-					url && (
-						<div
-							className={ classnames(
-								className,
-								meta ? null : `no-meta`,
-							) }
-						>
-							<Gist
-								url={ url }
-								file={ file }
+					{ preview ?
+						url &&
+						  ( ! RichText.isEmpty( caption ) || isSelected ) && (
+							<RichText
+								tagName="figcaption"
+								placeholder={ __( 'Write caption…' ) }
+								value={ caption }
+								onChange={ value => setAttributes( { caption: value } ) }
+								keepPlaceholderOnFocus
+								inlineToolbar
 							/>
-							{ ( ! RichText.isEmpty( caption ) || isSelected ) && (
-								<RichText
-									tagName="figcaption"
-									placeholder={ __( 'Write caption…' ) }
-									value={ caption }
-									onChange={ ( value ) => setAttributes( { caption: value } ) }
-									keepPlaceholderOnFocus
-									inlineToolbar
-								/>
-							) }
-						</div>
-					)
-				) : (
-					<div
-						className={ classnames(
-							className,
-							'wp-block-shortcode', // Use the same styling as the core shortcode block.
-						) }
-					>
-						<label>
-							{ icons.github }
-							{ __( 'Gist URL' ) }
-						</label>
-						<PlainText
-							className="input-control"
-							value={ url }
-							placeholder={ __( 'Add GitHub Gist URL...' ) }
-							onChange={ this.updateURL }
-						/>
-					</div>
-				) }
+						  ) :
+						null }
+				</div>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
-export default compose( [
-	withState( { preview: false } ),
-] )( Edit );
+export default compose( [ withState( { preview: false } ), withNotices ] )( Edit );

@@ -12,13 +12,11 @@ const { BlockControls } = wp.blockEditor;
 const { Toolbar, IconButton } = wp.components;
 
 class Controls extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
 	}
 
 	render() {
-
 		const {
 			className,
 			attributes,
@@ -37,9 +35,9 @@ class Controls extends Component {
 			{
 				icon: 'info',
 				title: __( 'Display meta' ),
-				onClick: () => setAttributes( {  meta: ! meta } ),
+				onClick: () => setAttributes( { meta: ! meta } ),
 				isActive: meta === true,
-			}
+			},
 		];
 
 		return [
@@ -86,9 +84,9 @@ class Controls extends Component {
 						</Toolbar>
 					) }
 				</BlockControls>
-			</Fragment>
+			</Fragment>,
 		];
 	}
-};
+}
 
 export default Controls;

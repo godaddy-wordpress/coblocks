@@ -77,11 +77,11 @@ const settings = {
 				transform: ( node ) => {
 					// Check for a file within the URL.
 					const file = ( node.textContent.trim() ).split( '#' ).pop();
-					const fileClean = file.replace('file-', '#file-').replace('-', '.');
+					const fileClean = file.replace( 'file-', '#file-' ).replace( '-', '.' );
 
 					return createBlock( 'coblocks/gist', {
 						url: node.textContent.trim(),
-						file: file.match(/file*/) != null ? fileClean : undefined,
+						file: file.match( /file*/ ) != null ? fileClean : undefined,
 					} );
 				},
 			},
@@ -105,7 +105,6 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes, className } ) {
-
 		const {
 			url,
 			file,
@@ -114,17 +113,17 @@ const settings = {
 		} = attributes;
 
 		const classes = classnames( {
-				[ 'no-meta' ] : ! meta,
-			}
+			'no-meta': ! meta,
+		}
 		);
 
 		const src = file ? `${ url }.js?file=${ file }` : `${ url }.js`;
 
-		const noscriptSrc = file ? `${ url }#file-${ file.replace('.', '-') }` : `${ url }`;
+		const noscriptSrc = file ? `${ url }#file-${ file.replace( '.', '-' ) }` : `${ url }`;
 
 		return (
 			<div className={ classes }>
-				<script src={ src }/>
+				<script src={ src } />
 				<noscript><a href={ noscriptSrc }>{ __( 'View this gist on GitHub' ) }</a></noscript>
 				{ ! RichText.isEmpty( caption ) && <RichText.Content tagName="figcaption" value={ caption } /> }
 			</div>
@@ -135,31 +134,30 @@ const settings = {
 	deprecated: [
 		{
 			save( { attributes, className } ) {
+				const {
+					url,
+					file,
+					meta,
+				} = attributes;
 
-			const {
-				url,
-				file,
-				meta,
-			} = attributes;
-
-			const classes = classnames( {
-					[ 'wp-block-coblocks-gist--no-meta' ] : ! meta,
+				const classes = classnames( {
+					'wp-block-coblocks-gist--no-meta': ! meta,
 				}
-			);
+				);
 
-			const src = file ? `${ url }.js?file=${ file }` : `${ url }.js`;
+				const src = file ? `${ url }.js?file=${ file }` : `${ url }.js`;
 
-			const noscriptSrc = file ? `${ url }#file-${ file.replace('.', '-') }` : `${ url }`;
+				const noscriptSrc = file ? `${ url }#file-${ file.replace( '.', '-' ) }` : `${ url }`;
 
-			return (
-				<div className={ classes }>
-					<script src={ src }/>
-					<noscript><a href={ noscriptSrc }>{ __( 'View this gist on GitHub' ) }</a></noscript>
-				</div>
+				return (
+					<div className={ classes }>
+						<script src={ src } />
+						<noscript><a href={ noscriptSrc }>{ __( 'View this gist on GitHub' ) }</a></noscript>
+					</div>
 
-			);
+				);
+			},
 		},
-	}
 	],
 };
 
