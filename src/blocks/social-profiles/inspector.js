@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import includes from 'lodash/includes';
+import { includes, escape } from 'lodash';
 
 /**
  * Internal dependencies
@@ -14,15 +14,27 @@ import applyWithColors from './colors';
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.blockEditor;
-const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles, CheckboxControl } = wp.components;
+const {
+	InspectorControls,
+	PanelColorSettings,
+	ContrastChecker,
+} = wp.blockEditor;
+const {
+	PanelBody,
+	RangeControl,
+	ToggleControl,
+	SelectControl,
+	TextControl,
+} = wp.components;
 
 /**
  * Inspector controls
  */
 class Inspector extends Component {
 	getHasColorsHelp( checked ) {
-		return checked ? __( 'Share button colors are enabled.' ) : __( 'Toggle to use official colors from each social media platform.' );
+		return checked ?
+			__( 'Share button colors are enabled.' ) :
+			__( 'Toggle to use official colors from each social media platform.' );
 	}
 
 	render() {
@@ -39,19 +51,19 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
-			facebook,
 			hasColors,
-			linkedin,
-			pinterest,
 			borderRadius,
-			tumblr,
-			twitter,
 			size,
-			reddit,
-			email,
-			google,
 			iconSize,
 			padding,
+			facebook,
+			twitter,
+			instagram,
+			pinterest,
+			linkedin,
+			youtube,
+			yelp,
+			houzz,
 		} = attributes;
 
 		const options = [
@@ -94,94 +106,95 @@ class Inspector extends Component {
 							onChange={ () => setAttributes( { hasColors: ! hasColors } ) }
 							help={ this.getHasColorsHelp }
 						/>
-						{ ! isMaskStyle && ! isCircularStyle &&
+						{ ! isMaskStyle && ! isCircularStyle && (
 							<RangeControl
 								label={ __( 'Rounded Corners' ) }
 								value={ borderRadius }
-								onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+								onChange={ value => setAttributes( { borderRadius: value } ) }
 								min={ 0 }
 								max={ 50 }
 							/>
-						}
-						{ ( isMaskStyle || isCircularStyle ) &&
+						) }
+						{ ( isMaskStyle || isCircularStyle ) && (
 							<RangeControl
 								label={ __( 'Icon Size' ) }
 								value={ iconSize }
-								onChange={ ( value ) => setAttributes( { iconSize: value } ) }
+								onChange={ value => setAttributes( { iconSize: value } ) }
 								min={ 16 }
 								max={ 60 }
 							/>
-						}
-						{ isCircularStyle &&
+						) }
+						{ isCircularStyle && (
 							<RangeControl
 								label={ __( 'Circle Size' ) }
 								value={ padding }
-								onChange={ ( value ) => setAttributes( { padding: value } ) }
+								onChange={ value => setAttributes( { padding: value } ) }
 								min={ 10 }
 								max={ 50 }
 							/>
-						}
-						{ ! isMaskStyle && ! isCircularStyle &&
+						) }
+						{ ! isMaskStyle && ! isCircularStyle && (
 							<SelectControl
 								label={ __( 'Button Size' ) }
 								value={ size }
 								options={ options }
-								onChange={ ( value ) => setAttributes( { size: value } ) }
+								onChange={ value => setAttributes( { size: value } ) }
 								className="components-coblocks-inspector__social-button-size"
 							/>
-						}
-						<div className="components-social-icons-list">
-							<p className="components-social-icons-list__label">{ __( 'Icons' ) }</p>
-							<CheckboxControl
-								label={ __( 'Twitter' ) }
-								checked={ !! twitter }
-								onChange={ () => setAttributes( { twitter: ! twitter } ) }
+						) }
+					</PanelBody>
+					<PanelBody title={ __( 'Profile Links' ) } initialOpen={ false }>
+						<div className="components-social-links-list">
+							<TextControl
+								label="Facebook"
+								value={ facebook }
+								onChange={ value => setAttributes( { facebook: escape( value ) } ) }
 							/>
-							<CheckboxControl
-								label={ __( 'Facebook' ) }
-								checked={ !! facebook }
-								onChange={ () => setAttributes( { facebook: ! facebook } ) }
+							<TextControl
+								label="Twitter"
+								value={ twitter }
+								onChange={ value => setAttributes( { twitter: escape( value ) } ) }
 							/>
-							<CheckboxControl
-								label={ __( 'Pinterest' ) }
-								checked={ !! pinterest }
-								onChange={ () => setAttributes( { pinterest: ! pinterest } ) }
+							<TextControl
+								label="Instagram"
+								value={ instagram }
+								onChange={ value => setAttributes( { instagram: escape( value ) } ) }
 							/>
-							<CheckboxControl
-								label={ __( 'LinkedIn' ) }
-								checked={ !! linkedin }
-								onChange={ () => setAttributes( { linkedin: ! linkedin } ) }
+							<TextControl
+								label="Pinterest"
+								value={ pinterest }
+								onChange={ value => setAttributes( { pinterest: escape( value ) } ) }
 							/>
-							<CheckboxControl
-								label={ __( 'Email' ) }
-								checked={ !! email }
-								onChange={ () => setAttributes( { email: ! email } ) }
+							<TextControl
+								label="LinkedIn"
+								value={ linkedin }
+								onChange={ value => setAttributes( { linkedin: escape( value ) } ) }
 							/>
-							<CheckboxControl
-								label={ __( 'Tumblr' ) }
-								checked={ !! tumblr }
-								onChange={ () => setAttributes( { tumblr: ! tumblr } ) }
+							<TextControl
+								label="YouTube"
+								value={ youtube }
+								onChange={ value => setAttributes( { youtube: escape( value ) } ) }
 							/>
-							<CheckboxControl
-								label={ __( 'Google' ) }
-								checked={ !! google }
-								onChange={ () => setAttributes( { google: ! google } ) }
+							<TextControl
+								label="Yelp"
+								value={ yelp }
+								onChange={ value => setAttributes( { yelp: escape( value ) } ) }
 							/>
-							<CheckboxControl
-								label={ __( 'Reddit' ) }
-								checked={ !! reddit }
-								onChange={ () => setAttributes( { reddit: ! reddit } ) }
+							<TextControl
+								label="Houzz"
+								value={ houzz }
+								onChange={ value => setAttributes( { houzz: escape( value ) } ) }
 							/>
 						</div>
 					</PanelBody>
 
-					{ ! hasColors &&
+					{ ! hasColors && (
 						<PanelColorSettings
 							title={ __( 'Color Settings' ) }
 							initialOpen={ false }
 							colorSettings={ ! isMaskStyle ? defaultColors : maskColors }
 						>
-							{ ! isMaskStyle &&
+							{ ! isMaskStyle && (
 								<ContrastChecker
 									{ ...{
 										isLargeText: true,
@@ -191,15 +204,13 @@ class Inspector extends Component {
 										fallbackTextColor,
 									} }
 								/>
-							}
+							) }
 						</PanelColorSettings>
-					}
+					) }
 				</InspectorControls>
 			</Fragment>
 		);
 	}
 }
 
-export default compose( [
-	applyWithColors,
-] )( Inspector );
+export default compose( [ applyWithColors ] )( Inspector );
