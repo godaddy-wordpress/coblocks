@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Server-side rendering of the `coblocks/social` block.
+ * Server-side rendering of the `coblocks/social-profiles` block.
  *
  * @package CoBlocks
  */
@@ -13,7 +13,7 @@
  *
  * @return string Returns the block content.
  */
-function coblocks_render_share_block( $attributes ) {
+function coblocks_render_social_profiles_block( $attributes ) {
 
 	global $post;
 
@@ -24,72 +24,6 @@ function coblocks_render_share_block( $attributes ) {
 	} else {
 		$thumbnail = null;
 	}
-
-	// Generate the Twitter URL.
-	$twitter_url = '
-		http://twitter.com/share?
-		text=' . get_the_title() . '
-		&url=' . get_the_permalink() . '
-	';
-
-	// Generate the Facebook URL.
-	$facebook_url = '
-		https://www.facebook.com/sharer/sharer.php?
-		u=' . get_the_permalink() . '
-		&title=' . get_the_title() . '
-	';
-
-	// Generate the LinkedIn URL.
-	$linkedin_url = '
-		https://www.linkedin.com/shareArticle?mini=true
-		&url=' . get_the_permalink() . '
-		&title=' . get_the_title() . '
-	';
-
-	// Generate the Pinterest URL.
-	$pinterest_url = '
-		https://pinterest.com/pin/create/button/?
-		&url=' . get_the_permalink() . '
-		&description=' . get_the_title() . '
-		&media=' . esc_url( $thumbnail ) . '
-	';
-
-	// Generate the Tumblr URL.
-	$tumblr_url = '
-		https://tumblr.com/share/link?
-		url=' . get_the_permalink() . '
-		&name=' . get_the_title() . '
-	';
-
-	// Generate the Reddit URL.
-	$reddit_url = '
-		https://www.reddit.com/submit?
-		url=' . get_the_permalink() . '
-	';
-
-	// Generate the Email URL.
-	$email_url = '
-		mailto:
-		?subject=' . get_the_title() . '
-		&body=' . get_the_title() . '
-		&mdash;' . get_the_permalink() . '
-	';
-
-	// Generate the Google URL.
-	$google_url = '
-		https://plus.google.com/share
-		?url=' . get_the_permalink() . '
-	';
-
-	// Apply filters, so that the social URLs can be modified.
-	$twitter_url   = apply_filters( 'coblocks_twitter_share_url', $twitter_url );
-	$facebook_url  = apply_filters( 'coblocks_facebook_share_url', $facebook_url );
-	$pinterest_url = apply_filters( 'coblocks_pinterest_share_url', $pinterest_url );
-	$linkedin_url  = apply_filters( 'coblocks_linkedin_share_url', $linkedin_url );
-	$email_url     = apply_filters( 'coblocks_email_share_url', $email_url );
-	$tumblr_url    = apply_filters( 'coblocks_tumblr_share_url', $tumblr_url );
-	$reddit_url    = apply_filters( 'coblocks_reddit_share_url', $reddit_url );
-	$google_url    = apply_filters( 'coblocks_google_share_url', $google_url );
 
 	// Attributes.
 	$text_align    = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "style=text-align:{$attributes['textAlign']}" : '';
@@ -129,37 +63,39 @@ function coblocks_render_share_block( $attributes ) {
 
 	// Supported social media platforms.
 	$platforms = array(
-		'twitter'   => array(
-			'text' => esc_html__( 'Share on Twitter', 'coblocks' ),
-			'url'  => $twitter_url,
-		),
+
 		'facebook'  => array(
-			'text' => esc_html__( 'Share on Facebook', 'coblocks' ),
-			'url'  => $facebook_url,
+			'text' => esc_html__( 'Facebook', 'coblocks' ),
+			'url'  => $attributes['facebook'],
+		),
+		'twitter'   => array(
+			'text' => esc_html__( 'Twitter', 'coblocks' ),
+			'url'  => $attributes['twitter'],
+		),
+		'instagram' => array(
+			'text' => esc_html__( 'Instagram', 'coblocks' ),
+			'url'  => $attributes['instagram'],
 		),
 		'pinterest' => array(
-			'text' => esc_html__( 'Share on Pinterest', 'coblocks' ),
-			'url'  => $pinterest_url,
+			'text' => esc_html__( 'Pinterest', 'coblocks' ),
+			'url'  => $attributes['pinterest'],
 		),
 		'linkedin'  => array(
-			'text' => esc_html__( 'Share on Linkedin', 'coblocks' ),
-			'url'  => $linkedin_url,
+			'text' => esc_html__( 'Linkedin', 'coblocks' ),
+			'url'  => $attributes['linkedin'],
 		),
-		'email'     => array(
-			'text' => esc_html__( 'Share via Email', 'coblocks' ),
-			'url'  => $email_url,
+
+		'youtube'   => array(
+			'text' => esc_html__( 'YouTube', 'coblocks' ),
+			'url'  => $attributes['youtube'],
 		),
-		'tumblr'    => array(
-			'text' => esc_html__( 'Share on Tumblr', 'coblocks' ),
-			'url'  => $tumblr_url,
+		'yelp'      => array(
+			'text' => esc_html__( 'Yelp', 'coblocks' ),
+			'url'  => $attributes['yelp'],
 		),
-		'google'    => array(
-			'text' => esc_html__( 'Share on Google', 'coblocks' ),
-			'url'  => $google_url,
-		),
-		'reddit'    => array(
-			'text' => esc_html__( 'Share on Reddit', 'coblocks' ),
-			'url'  => $reddit_url,
+		'houzz'     => array(
+			'text' => esc_html__( 'Houzz', 'coblocks' ),
+			'url'  => $attributes['houzz'],
 		),
 	);
 
@@ -194,7 +130,7 @@ function coblocks_render_share_block( $attributes ) {
 	}
 
 	// Build classes.
-	$class = 'wp-block-coblocks-social';
+	$class = 'wp-block-coblocks-social wp-block-coblocks-social-profiles';
 
 	if ( isset( $attributes['className'] ) ) {
 		$class .= ' ' . $attributes['className'];
@@ -222,14 +158,14 @@ function coblocks_render_share_block( $attributes ) {
 /**
  * Registers the block on server.
  */
-function coblocks_register_share_block() {
+function coblocks_register_social_profiles_block() {
 	// Return early if this function does not exist.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
 	register_block_type(
-		'coblocks/social',
+		'coblocks/social-profiles',
 		array(
 			'editor_script'   => 'coblocks-editor',
 			'editor_style'    => 'coblocks-editor',
@@ -273,41 +209,41 @@ function coblocks_register_share_block() {
 				'customTextColor'       => array(
 					'type' => 'string',
 				),
-				'twitter'               => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
 				'facebook'              => array(
-					'type'    => 'boolean',
-					'default' => true,
+					'type'    => 'string',
+					'default' => '',
+				),
+				'twitter'               => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'instagram'             => array(
+					'type'    => 'string',
+					'default' => '',
 				),
 				'pinterest'             => array(
-					'type'    => 'boolean',
-					'default' => true,
+					'type'    => 'string',
+					'default' => '',
 				),
 				'linkedin'              => array(
-					'type'    => 'boolean',
-					'default' => false,
+					'type'    => 'string',
+					'default' => '',
 				),
-				'tumblr'                => array(
-					'type'    => 'boolean',
-					'default' => false,
+				'youtube'               => array(
+					'type'    => 'string',
+					'default' => '',
 				),
-				'reddit'                => array(
-					'type'    => 'boolean',
-					'default' => false,
+				'yelp'                  => array(
+					'type'    => 'string',
+					'default' => '',
 				),
-				'email'                 => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'google'                => array(
-					'type'    => 'boolean',
-					'default' => false,
+				'houzz'                 => array(
+					'type'    => 'string',
+					'default' => '',
 				),
 			),
-			'render_callback' => 'coblocks_render_share_block',
+			'render_callback' => 'coblocks_render_social_profiles_block',
 		)
 	);
 }
-add_action( 'init', 'coblocks_register_share_block' );
+add_action( 'init', 'coblocks_register_social_profiles_block' );

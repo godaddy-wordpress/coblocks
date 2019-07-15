@@ -2,9 +2,9 @@
  * Internal dependencies
  */
 import './styles/editor.scss';
-import './styles/style.scss';
 import edit from './edit';
-import icons from './../../utils/icons';
+import icons from './icons';
+import { transforms } from './transforms';
 
 /**
  * WordPress dependencies
@@ -14,18 +14,18 @@ const { __, _x } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'social';
+const name = 'social-profiles';
 
-const title = __( 'Share' );
+const title = __( 'Social Profiles' );
 
-const icon = icons.social;
+const icon = icons.socialProfiles;
 
-const keywords = [ __( 'social' ), __( 'coblocks' ) ];
+const keywords = [ __( 'share' ), __( 'links' ), __( 'icons' ) ];
 
 const settings = {
 	title,
 
-	description: __( 'Add social sharing links to help you get likes and shares.' ),
+	description: __( 'Display links to social media profiles.' ),
 
 	keywords,
 
@@ -38,6 +38,8 @@ const settings = {
 	],
 
 	edit,
+
+	transforms,
 
 	save() {
 		return null;
