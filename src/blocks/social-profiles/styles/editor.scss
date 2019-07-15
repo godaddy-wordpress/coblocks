@@ -1,0 +1,33 @@
+.wp-block-coblocks-social-profiles {
+	.wp-block-coblocks-social__button {
+		transition: opacity 0.2s ease;
+
+		&.is-empty {
+			opacity: 0.4;
+		}
+
+		&.is-selected {
+			opacity: 1;
+		}
+
+		&:not(.is-selected):hover {
+			opacity: 100;
+		}
+
+		&:focus {
+			box-shadow: 0 0 0 1px $white, 0 0 0 3px theme(primary) !important;
+			outline: 2px solid transparent;
+			outline-offset: -2px;
+		}
+	}
+}
+
+.block-library-button__inline-link--coblocks {
+	margin-bottom: 0;
+	margin-top: 0;
+	width: 338px;
+
+	.components-base-control__field {
+		margin-bottom: 0;
+	}
+}

@@ -104,7 +104,7 @@ class CoBlocks_Google_Map_Block {
 
 			}
 
-			wp_localize_script( $this->_slug . '-google-maps', 'baAtts', array( 'url' => $this->_url ) );
+			wp_localize_script( $this->_slug . '-google-maps', 'coblocksGoogleMaps', array( 'url' => $this->_url ) );
 		}
 	}
 
