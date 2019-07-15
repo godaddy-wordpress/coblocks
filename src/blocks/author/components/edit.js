@@ -9,8 +9,8 @@ import Controls from './controls';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { MediaUpload, mediaUpload, MediaUploadCheck } = wp.editor;
-const { RichText, InnerBlocks } = wp.blockEditor;
+const { mediaUpload } = wp.editor;
+const { RichText, InnerBlocks, MediaUpload, MediaUploadCheck } = wp.blockEditor;
 const { Button, Dashicon, DropZone } = wp.components;
 
 /**
