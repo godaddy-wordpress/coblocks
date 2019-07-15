@@ -69,8 +69,9 @@ import * as hero from './blocks/hero';
 import * as stacked from './blocks/gallery-stacked';
 import * as masonry from './blocks/gallery-masonry';
 import * as carousel from './blocks/gallery-carousel';
+import * as socialProfiles from './blocks/social-profiles';
 
-export function registerBlocks () {
+export function registerBlocks() {
 	[
 		accordion,
 		accordionItem,
@@ -101,15 +102,19 @@ export function registerBlocks () {
 		shapeDivider,
 		share,
 		stacked,
-	].forEach( ( block ) => {
-
+		socialProfiles,
+	].forEach( block => {
 		if ( ! block ) {
 			return;
 		}
 
 		const { name, icon, settings } = block;
 
-		registerBlockType( `coblocks/${ name }`, { category: category.slug, icon: { src: icon, foreground: iconColor, }, ...settings } );
+		registerBlockType( `coblocks/${ name }`, {
+			category: category.slug,
+			icon: { src: icon, foreground: iconColor },
+			...settings,
+		} );
 	} );
-};
+}
 registerBlocks();
