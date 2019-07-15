@@ -42,32 +42,22 @@ class Edit extends Component {
 		}
 	}
 
-	updateURL( newURL ) {
-		console.log( `the newUrl passed is : ${ newURL }` );
-		this.props.setAttributes( { url: newURL } );
+	updateURL( urlProps ) {
+		console.log( 'the urlProps passed is :' );
+		console.log( urlProps );
+		this.props.setAttributes( { url: urlProps.url } );
 		if ( ! this.props.attributes.url ) {
 			this.props.setState( { preview: true } );
 		}
+		this.props.setAttributes( {
+			url: urlProps.url,
+			file: urlProps.file,
+		} );
 
-		// Check for #file in the entered URL. If it's there, let's use it properly.
-		let file = newURL.split( '#file-' ).pop();
-
-		if ( file ) {
-			file = '#file-' + file;
-		}
-
-		if ( newURL.match( /#file-*/ ) !== null ) {
-			const newURLWithNoFile = newURL.replace( file, '' ).replace( '#file-', '' );
-
-			this.props.setAttributes( {
-				url: newURLWithNoFile,
-				file: file.replace( /-([^-]*)$/, '.' + '$1' ),
-			} );
-		}
 		this.setState( {
-			urlText: newURL,
-			url: this.props.attributes.url,
-			file: this.props.attributes.file,
+			urlText: urlProps.urlText,
+			url: urlProps.url,
+			file: urlProps.file,
 		} );
 	}
 
@@ -82,7 +72,6 @@ class Edit extends Component {
 
 		const { meta, caption, file, url } = attributes;
 		const { urlText } = this.state;
-		console.log( this.props );
 		const label = __( 'Gist URL' );
 
 		return (
@@ -95,8 +84,8 @@ class Edit extends Component {
 						icon={ icons.github }
 						value={ urlText }
 						updateURL={ this.updateURL }
-						file={ this.props.attributes.file }
-						url={ this.props.attributes.url }
+						file={ file }
+						url={ url }
 						onChange={ event =>
 							this.setState( { urlText: escape( event.target.value ) } )
 						}
@@ -108,7 +97,7 @@ class Edit extends Component {
 					{ preview ?
 						url &&
 						  ( ! RichText.isEmpty( caption ) || isSelected ) && (
-						<RichText
+							<RichText
 								tagName="figcaption"
 								placeholder={ __( 'Write caption…' ) }
 								value={ caption }

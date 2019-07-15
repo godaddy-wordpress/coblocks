@@ -23,8 +23,8 @@ class Gist extends Component {
 		super( props );
 		this.stylesheetAdded = false; // Ensures we only add the Gist's stylesheet one time.
 		this.state = {
-			// url: this.props.value,
-			// file: this.props.file,
+			url: this.props.value,
+			file: this.props.file,
 			error: false, // If error loading Gist url.
 			loading: false, // We have not fetched the Gist yet.
 			gistContent: '', // Raw HTML of the Gist.
@@ -32,6 +32,7 @@ class Gist extends Component {
 		this._handleScriptError = this._handleScriptError.bind( this );
 		this._buildGist = this._buildGist.bind( this );
 		this._formOnSubmit = this._formOnSubmit.bind( this );
+		this._setupURL = this._setupURL.bind( this );
 		this._getFile = this._getFile.bind( this );
 		this._getID = this._getID.bind( this );
 	}
@@ -68,27 +69,26 @@ class Gist extends Component {
 	}
 
 	_getID() {
-		console.log( this.props );
 		// Extract a string in form `username/uniqueValue` from the provided Gist url.
+		if ( this.props.value.match( /(\.com\/)(.*?)([^#]+)/ ) == null ) {
+			return null;
+		}
 		return this.props.value.match( /(\.com\/)(.*?)([^#]+)/ ).pop();
 	}
 
 	_getFile() {
-		console.log( 'this.props' );
-		console.log( this.props );
 		// If `file` prop was provided return that.
-		if ( this.props.file !== undefined ) {
-			return `&file=${ this.props.file }`;
+		if ( this.state.file !== undefined ) {
+			return `&file=${ this.state.file }`;
 		}
 
-		// Else construct the file parameter from the `url` prop.
-		const file = this.props.url.split( '#' ).pop();
+		// Else construct the file parameter from the `value` prop.
+		const file = this.props.value.split( '#' ).pop();
 
 		// If the file parameter exist in Gist url return that file.
 		if ( file.match( /file*/ ) !== null ) {
 			return `&file=${ file.replace( 'file-', '' ).replace( '-', '.' ) }`;
 		}
-
 		// Else the user wants to link the whole Gist repository.
 		return '';
 	}
@@ -96,6 +96,10 @@ class Gist extends Component {
 	_tranformedURL( gistCallback ) {
 		// Construct a gist url that will allow us to render the Gist into our page.
 		const id = this._getID();
+		if ( id === null ) {
+			this._handleScriptError();
+			return;
+		}
 		const file = this._getFile();
 
 		return `https://gist.github.com/${ id }.json?callback=${ gistCallback }${ file }`;
@@ -132,8 +136,54 @@ class Gist extends Component {
 
 	_formOnSubmit( event ) {
 		event.preventDefault();
-		this.props.updateURL( this.props.value );
-		setTimeout( 10000, this._buildGist() );
+		this._setupURL( this.props.value );
+	}
+
+	_setupURL( newURL ) {
+		console.log( newURL );
+		this.setState( {
+			url: newURL,
+		} );
+		// Check for #file in the entered URL. If it's there, let's use it properly.
+		let file = newURL.split( '#file-' ).pop();
+
+		if ( file ) {
+			file = '#file-' + file;
+		}
+
+		if ( newURL.match( /#file-*/ ) !== null ) {
+			const newURLWithNoFile = newURL.replace( file, '' ).replace( '#file-', '' );
+			this.setState(
+				{
+					url: newURLWithNoFile,
+					file: file.replace( /-([^-]*)$/, '.' + '$1' ),
+				},
+				() => {
+					const urlProps = {
+						urlText: this.props.value,
+						url: this.state.url,
+						file: this.state.file,
+					};
+					this.props.updateURL( urlProps );
+					this._buildGist();
+				}
+			);
+		} else {
+			this.setState(
+				{
+					file: file,
+				},
+				() => {
+					const urlProps = {
+						urlText: this.props.value,
+						url: this.state.url,
+						file: this.state.file,
+					};
+					this.props.updateURL( urlProps );
+					this._buildGist();
+				}
+			);
+		}
 	}
 
 	render() {
@@ -156,7 +206,7 @@ class Gist extends Component {
 		return (
 			<Fragment>
 				{ this.state.error ? noticeUI : null }
-				{ this.state.loading && ! this.state.rendered ? (
+				{ this.state.loading && (
 					<Placeholder
 						key="placeholder"
 						icon={ icons.github }
@@ -164,7 +214,7 @@ class Gist extends Component {
 					>
 						<Spinner />
 					</Placeholder>
-				) : null }
+				) }
 				{ ! this.state.loading && ! this.state.rendered ? (
 					<Placeholder
 						icon={ <BlockIcon icon={ icon } showColors /> }
