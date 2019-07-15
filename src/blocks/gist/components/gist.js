@@ -21,23 +21,19 @@ const { Placeholder, Spinner, withNotices, Button } = wp.components;
 class Gist extends Component {
 	constructor( props ) {
 		super( props );
-		console.log( props );
 		this.stylesheetAdded = false; // Ensures we only add the Gist's stylesheet one time.
-		this.icon = props.icon;
-		this.label = props.label;
-		this.onSubmit = props.onSubmit;
-		this.onChange = props.onChange;
-		this.updateURL = props.updateURL;
 		this.state = {
-			url: this.props.url,
-			file: this.props.editProps.attributes.file,
+			// url: this.props.value,
+			// file: this.props.file,
 			error: false, // If error loading Gist url.
 			loading: false, // We have not fetched the Gist yet.
 			gistContent: '', // Raw HTML of the Gist.
 		};
 		this._handleScriptError = this._handleScriptError.bind( this );
 		this._buildGist = this._buildGist.bind( this );
-		this._setUrlTrigger = this._setUrlTrigger.bind( this );
+		this._formOnSubmit = this._formOnSubmit.bind( this );
+		this._getFile = this._getFile.bind( this );
+		this._getID = this._getID.bind( this );
 	}
 
 	// Each time we request a new Gist, we have to provide a new
@@ -64,10 +60,7 @@ class Gist extends Component {
 	}
 
 	componentDidMount() {
-		const { _handleScriptError } = this;
-		console.log( this.props );
-		console.log( this.state );
-		if ( ! this.state.url ) {
+		if ( ! this.props.url ) {
 			return;
 		}
 		// Request the Gist iframe.
@@ -75,18 +68,21 @@ class Gist extends Component {
 	}
 
 	_getID() {
+		console.log( this.props );
 		// Extract a string in form `username/uniqueValue` from the provided Gist url.
-		return this.state.url.match( /(\.com\/)(.*?)([^#]+)/ ).pop();
+		return this.props.value.match( /(\.com\/)(.*?)([^#]+)/ ).pop();
 	}
 
 	_getFile() {
+		console.log( 'this.props' );
+		console.log( this.props );
 		// If `file` prop was provided return that.
-		if ( this.state.file !== undefined ) {
-			return `&file=${ this.state.file }`;
+		if ( this.props.file !== undefined ) {
+			return `&file=${ this.props.file }`;
 		}
 
 		// Else construct the file parameter from the `url` prop.
-		const file = this.state.url.split( '#' ).pop();
+		const file = this.props.url.split( '#' ).pop();
 
 		// If the file parameter exist in Gist url return that file.
 		if ( file.match( /file*/ ) !== null ) {
@@ -134,29 +130,29 @@ class Gist extends Component {
 		this.setState( { rendered: true } );
 	}
 
-	_setUrlTrigger() {
-		console.log( this.state );
-		this.setState( { url: this.props.editProps.attributes.url } );
+	_formOnSubmit( event ) {
+		event.preventDefault();
+		this.props.updateURL( this.props.value );
+		setTimeout( 10000, this._buildGist() );
 	}
 
 	render() {
 		const {
 			// noticeOperations,
 			noticeUI,
-			// icon,
-			// label,
+			icon,
+			label,
 			value,
-			// onSubmit,
-			// onChange,
+			onChange,
 			// cannotEmbed,
 			// fallback,
 			// tryAgain,
 			// url,
 			// file,
-			// updateURL,
+			// ,
 		} = this.props;
 
-		const { _buildGist, _setUrlTrigger } = this;
+		const { _formOnSubmit } = this;
 		return (
 			<Fragment>
 				{ this.state.error ? noticeUI : null }
@@ -169,27 +165,20 @@ class Gist extends Component {
 						<Spinner />
 					</Placeholder>
 				) : null }
-				{ ! this.state.loading ? (
+				{ ! this.state.loading && ! this.state.rendered ? (
 					<Placeholder
-						icon={ <BlockIcon icon={ this.icon } showColors /> }
-						label={ this.label }
+						icon={ <BlockIcon icon={ icon } showColors /> }
+						label={ label }
 						className="wp-block-embed"
 					>
-						<form
-							onSubmit={ event => {
-								event.preventDefault();
-								console.log( value );
-								this.updateURL( value );
-								_setUrlTrigger();
-							} }
-						>
+						<form onSubmit={ event => _formOnSubmit( event ) }>
 							<input
 								type="url"
 								value={ value || '' }
 								className="components-placeholder__input"
-								aria-label={ this.label }
+								aria-label={ label }
 								placeholder={ __( 'Enter URL to embed here…' ) }
-								onChange={ this.onChange }
+								onChange={ onChange }
 							/>
 							<Button isLarge type="submit">
 								{ _x( 'Embed', 'button label' ) }

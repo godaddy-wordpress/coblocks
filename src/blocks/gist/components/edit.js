@@ -10,7 +10,6 @@ import escape from 'lodash/escape';
 import Controls from './controls';
 import Inspector from './inspector';
 import icons from './../../../utils/icons';
-import GistPlaceholder from './placeholder';
 import Gist from './gist';
 
 /**
@@ -19,7 +18,7 @@ import Gist from './gist';
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
-const { PlainText, RichText } = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 const { withNotices } = wp.components;
 const { withState } = wp.compose;
 
@@ -31,6 +30,8 @@ class Edit extends Component {
 		super( ...arguments );
 		this.state = {
 			urlText: '',
+			url: this.props.attributes.url,
+			file: this.props.attributes.file,
 		};
 		this.updateURL = this.updateURL.bind( this );
 	}
@@ -42,9 +43,8 @@ class Edit extends Component {
 	}
 
 	updateURL( newURL ) {
-		console.log( newURL );
+		console.log( `the newUrl passed is : ${ newURL }` );
 		this.props.setAttributes( { url: newURL } );
-		this.setState( { urlText: newURL } );
 		if ( ! this.props.attributes.url ) {
 			this.props.setState( { preview: true } );
 		}
@@ -59,9 +59,16 @@ class Edit extends Component {
 		if ( newURL.match( /#file-*/ ) !== null ) {
 			const newURLWithNoFile = newURL.replace( file, '' ).replace( '#file-', '' );
 
-			this.props.setAttributes( { url: newURLWithNoFile } );
-			this.props.setAttributes( { file: file.replace( /-([^-]*)$/, '.' + '$1' ) } );
+			this.props.setAttributes( {
+				url: newURLWithNoFile,
+				file: file.replace( /-([^-]*)$/, '.' + '$1' ),
+			} );
 		}
+		this.setState( {
+			urlText: newURL,
+			url: this.props.attributes.url,
+			file: this.props.attributes.file,
+		} );
 	}
 
 	render() {
@@ -71,13 +78,11 @@ class Edit extends Component {
 			isSelected,
 			preview,
 			setAttributes,
-			setState,
-			toggleSelection,
 		} = this.props;
 
-		// console.log( this.props );
-
-		const { url, file, meta, caption } = attributes;
+		const { meta, caption, file, url } = attributes;
+		const { urlText } = this.state;
+		console.log( this.props );
 		const label = __( 'Gist URL' );
 
 		return (
@@ -88,8 +93,9 @@ class Edit extends Component {
 					<Gist
 						label={ label }
 						icon={ icons.github }
-						value={ this.state.urlText }
+						value={ urlText }
 						updateURL={ this.updateURL }
+						file={ this.props.attributes.file }
 						url={ this.props.attributes.url }
 						onChange={ event =>
 							this.setState( { urlText: escape( event.target.value ) } )
@@ -102,7 +108,7 @@ class Edit extends Component {
 					{ preview ?
 						url &&
 						  ( ! RichText.isEmpty( caption ) || isSelected ) && (
-							<RichText
+						<RichText
 								tagName="figcaption"
 								placeholder={ __( 'Write caption…' ) }
 								value={ caption }
