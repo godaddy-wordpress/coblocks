@@ -74,7 +74,7 @@ class CoBlocks_Post_Meta {
 	 *
 	 * @return bool True when can edit posts, else false.
 	 */
-	private function auth_callback() {
+	public function auth_callback() {
 
 		return current_user_can( 'edit_posts' );
 
