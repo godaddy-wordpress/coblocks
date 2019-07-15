@@ -61,11 +61,6 @@ class Edit extends Component {
 		} = attributes;
 
 		const classes = classnames(
-			className, {
-			}
-		);
-
-		const innerClasses = classnames(
 			'wp-block-coblocks-buttons__inner',{
 				[ `flex-align-${ contentAlign }` ] : contentAlign,
 				'is-stacked-on-mobile': isStackedOnMobile,
@@ -84,8 +79,8 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<div className={ classes }>
-					<div className={ innerClasses }>
+				<div className={ className }>
+					<div className={ classes }>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ getCount( items ) }
@@ -99,6 +94,4 @@ class Edit extends Component {
 	}
 }
 
-export default compose( [
-	// applyWithColors,
-] )( Edit );
+export default Edit;

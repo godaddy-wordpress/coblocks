@@ -59,10 +59,6 @@ const settings = {
 
 	attributes: blockAttributes,
 
-	supports: {
-		stackedOnMobile: true
-	},
-
 	transforms: {
 		from: [
 			...[ 1, 2, 3, 4 ].map( ( items ) => ( {
