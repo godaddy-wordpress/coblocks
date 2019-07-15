@@ -18,11 +18,15 @@ $gutter: 1.35em;
 		justify-content: flex-end;
 	}
 
-	.wp-block-button + .wp-block-button {
-		margin-left: $gutter;
+	.wp-block-button {
+		margin-bottom: 0;
+
+		+ .wp-block-button {
+			margin-left: $gutter;
+		}
 	}
 
-	&__inner.is-stacked-on-mobile {
+	.is-stacked-on-mobile {
 		.wp-block-button + .wp-block-button {
 			@media (max-width: #{ ($break-small) }) {
 				margin-left: 0;

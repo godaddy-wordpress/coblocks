@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
-import Edit from './components/edit';
+import edit from './components/edit';
 
 /**
  * WordPress dependencies
@@ -74,7 +74,7 @@ const settings = {
 		],
 	},
 
-	edit: Edit,
+	edit,
 
 	save( { attributes, className } ) {
 		const {
