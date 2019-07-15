@@ -112,7 +112,7 @@ class Inspector extends Component {
 									}
 								}
 
-								wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );
+								wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
 							} }
 							min={ 1 }
 							max={ 3 }

@@ -52,7 +52,6 @@ const blockAttributes = {
 };
 
 const settings = {
-
 	title: title,
 
 	description: __( 'Add up to three columns of small notes for your product or service.' ),
@@ -87,7 +86,7 @@ const settings = {
 					} );
 				},
 			},
-			...[ 2, 3 ].map( ( columns ) => ( {
+			...[ 2, 3 ].map( columns => ( {
 				type: 'prefix',
 				prefix: Array( columns + 1 ).join( ':' ) + 'features',
 				transform( content ) {
@@ -153,7 +152,7 @@ const settings = {
 		};
 
 		return (
-			<div className={ classes } data-columns={ columns } >
+			<div className={ classes } data-columns={ columns }>
 				<div className={ innerClasses } style={ innerStyles }>
 					{ BackgroundVideo( attributes ) }
 					<InnerBlocks.Content />

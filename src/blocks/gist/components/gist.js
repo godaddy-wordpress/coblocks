@@ -59,17 +59,17 @@ export default class Gist extends Component {
 
 	_getID() {
 		// Extract a string in form `username/uniqueValue` from the provided Gist url.
-		return ( this.url ).match( /(\.com\/)(.*?)([^#]+)/ ).pop();
+		return this.url.match( /(\.com\/)(.*?)([^#]+)/ ).pop();
 	}
 
 	_getFile() {
 		// If `file` prop was provided return that.
-		if ( this.file !== null ) {
+		if ( this.file !== undefined ) {
 			return `&file=${ this.file }`;
 		}
 
 		// Else construct the file parameter from the `url` prop.
-		const file = ( this.url ).split( '#' ).pop();
+		const file = this.url.split( '#' ).pop();
 
 		// If the file parameter exist in Gist url return that file.
 		if ( file.match( /file*/ ) !== null ) {
@@ -90,7 +90,7 @@ export default class Gist extends Component {
 
 	_buildGist() {
 		const gistCallback = Gist.__nextGist();
-		window[ gistCallback ] = ( gist ) => {
+		window[ gistCallback ] = gist => {
 			Gist.__addStylesheet( gist.stylesheet );
 			this.setState( {
 				loading: false,
@@ -110,10 +110,10 @@ export default class Gist extends Component {
 				<Placeholder
 					key="placeholder"
 					icon={ icons.github }
-					label={ __( 'Loading Gist' ) }>
+					label={ __( 'Loading Gist' ) }
+				>
 					<Spinner />
 				</Placeholder>,
-
 			];
 		}
 		// Render as html.

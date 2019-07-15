@@ -43,7 +43,7 @@ class Edit extends Component {
 		}
 
 		// Check for #file in the entered URL. If it's there, let's use it properly.
-		let file = ( newURL ).split( '#file-' ).pop();
+		let file = newURL.split( '#file-' ).pop();
 
 		if ( file ) {
 			file = '#file-' + file;
@@ -66,43 +66,22 @@ class Edit extends Component {
 			setAttributes,
 		} = this.props;
 
-		const {
-			url,
-			file,
-			meta,
-			caption,
-		} = attributes;
+		const { url, file, meta, caption } = attributes;
 
 		return (
 			<Fragment>
-				{ url && url.length > 0 && isSelected && (
-					<Controls
-						{ ...this.props }
-					/>
-				) }
-				{ url && url.length > 0 && isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
+				{ url && url.length > 0 && isSelected && <Controls { ...this.props } /> }
+				{ url && url.length > 0 && isSelected && <Inspector { ...this.props } /> }
 				{ preview ? (
 					url && (
-						<div
-							className={ classnames(
-								className,
-								meta ? null : 'no-meta',
-							) }
-						>
-							<Gist
-								url={ url }
-								file={ file }
-							/>
+						<div className={ classnames( className, meta ? null : 'no-meta' ) }>
+							<Gist url={ url } file={ file } />
 							{ ( ! RichText.isEmpty( caption ) || isSelected ) && (
 								<RichText
 									tagName="figcaption"
 									placeholder={ __( 'Write caption…' ) }
 									value={ caption }
-									onChange={ ( value ) => setAttributes( { caption: value } ) }
+									onChange={ value => setAttributes( { caption: value } ) }
 									keepPlaceholderOnFocus
 									inlineToolbar
 								/>
@@ -113,7 +92,7 @@ class Edit extends Component {
 					<div
 						className={ classnames(
 							className,
-							'wp-block-shortcode', // Use the same styling as the core shortcode block.
+							'wp-block-shortcode' // Use the same styling as the core shortcode block.
 						) }
 					>
 						<label>
@@ -133,6 +112,4 @@ class Edit extends Component {
 	}
 }
 
-export default compose( [
-	withState( { preview: false } ),
-] )( Edit );
+export default compose( [ withState( { preview: false } ) ] )( Edit );
