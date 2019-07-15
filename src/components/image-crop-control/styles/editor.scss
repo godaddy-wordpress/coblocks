@@ -1,6 +1,6 @@
 .components-coblocks-image-control {
   width: 232px;
-  height: 154px;
+  height: 179px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -10,5 +10,7 @@
     will-change: transform;
     transform-origin: left top 0;
     opacity: 0.2;
+    padding: 10px;
+    background-color: #ccc;
   }
 }
