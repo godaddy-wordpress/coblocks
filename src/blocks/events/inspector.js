@@ -8,7 +8,7 @@ import applyWithColors from './colors';
  */
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
-const { PanelBody, ToggleControl, TextControl, Button } = wp.components;
+const { PanelBody, ToggleControl } = wp.components;
 const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.blockEditor;
 
 const Inspector = props => {
@@ -16,9 +16,7 @@ const Inspector = props => {
 		attributes,
 		textColor,
 		setTextColor,
-		externalCalendarUrl,
 		onToggleCalendarLink,
-		onSubmitURL,
 		onUpdateTextColor,
 		setAttributes,
 	} = props;
@@ -42,21 +40,8 @@ const Inspector = props => {
 							__( 'Toggle to link a public calendar.' )
 					}
 					checked={ attributes.linkACalendar }
-					onChange={ ( value ) => setAttributes( { linkACalendar: value } ) }
+					onChange={ onToggleCalendarLink }
 				/>
-				{ attributes.linkACalendar &&
-				<form onSubmit={ onSubmitURL }>
-					<TextControl
-						placeholder={ __( 'Enter URL here…' ) }
-						value={ externalCalendarUrl }
-						onChange={ ( value ) => setAttributes( { externalCalendarUrl: value } ) }
-						className={ 'components-placeholder__input' }
-					/>
-					<Button isLarge type="submit">
-						{ __( 'Use URL' ) }
-					</Button>
-				</form>
-				}
 			</PanelBody>
 			<PanelColorSettings
 				title={ __( 'Color Settings' ) }

@@ -25,7 +25,6 @@ const settings = {
 	title: __( 'Events' ),
 	description: __( 'Add events or display any public calendar.' ),
 	keywords: [ __( 'events' ), __( 'calendar' ) ],
-	attributes: metadata.attributes,
 	supports: {
 		align: [ 'wide', 'full' ],
 	},

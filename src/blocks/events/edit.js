@@ -16,9 +16,10 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
+const { Toolbar, Placeholder, Button, TextControl } = wp.components;
 const { compose } = wp.compose;
 const { withSelect, dispatch, select } = wp.data;
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks, BlockControls } = wp.blockEditor;
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
 
@@ -27,6 +28,16 @@ const TEMPLATE = [
 ];
 
 class EventItem extends Component {
+	constructor() {
+		super( ...arguments );
+
+		this.state = {
+			editing: ! this.props.attributes.externalCalendarUrl && this.props.attributes.linkACalendar,
+		};
+
+		this.onSubmitURL = this.onSubmitURL.bind( this );
+	}
+
 	updateInnerAttributes = ( blockName, newAttributes ) => {
 		const innerItems = select( 'core/editor' ).getBlocksByClientId(
 			this.props.clientId
@@ -50,6 +61,25 @@ class EventItem extends Component {
 
 		this.updateInnerAttributes( 'coblocks/event-item', { textColor: value } );
 	};
+
+	toggleCalendarLink = ( ) => {
+		const { attributes, setAttributes } = this.props;
+
+		const linkACalendar = ! attributes.linkACalendar;
+		setAttributes( { linkACalendar } );
+
+		const edit = linkACalendar && attributes.externalCalendarUrl === '';
+		this.setState( { editing: edit } );
+	};
+
+	onSubmitURL( event ) {
+		event.preventDefault();
+
+		const { externalCalendarUrl } = this.props.attributes;
+		if ( externalCalendarUrl ) {
+			this.setState( { editing: false } );
+		}
+	}
 
 	insertNewItem = () => {
 		const { clientId, attributes, textColor } = this.props;
@@ -83,25 +113,72 @@ class EventItem extends Component {
 			clientId,
 			selectedParentClientId,
 			textColor,
+			setAttributes,
 		} = this.props;
+
+		const { editing } = this.state;
+
+		const toolbarControls = [
+			{
+				icon: 'edit',
+				title: __( 'Edit Calendar URL' ),
+				onClick: () => this.setState( { editing: true } ),
+			},
+		];
+
+		if ( this.state.editing ) {
+			return (
+				<Fragment>
+					<InspectorControls
+						{ ...this.props }
+						onUpdateTextColor={ this.updateTextColor }
+						onToggleCalendarLink={ this.toggleCalendarLink }
+					/>
+					<Placeholder
+						icon="rss"
+						label="RSS"
+					>
+						<form onSubmit={ this.onSubmitURL }>
+							<TextControl
+								placeholder={ __( 'Enter URL here…' ) }
+								value={ attributes.externalCalendarUrl }
+								onChange={ ( value ) => setAttributes( { externalCalendarUrl: value } ) }
+								className={ 'components-placeholder__input' }
+							/>
+							<Button isLarge type="submit">
+								{ __( 'Use URL' ) }
+							</Button>
+						</form>
+					</Placeholder>
+				</Fragment>
+			);
+		}
 
 		return (
 			<Fragment>
+				{ attributes.linkACalendar &&
+				<BlockControls>
+					<Toolbar controls={ toolbarControls } />
+				</BlockControls>
+				}
 				<InspectorControls
 					{ ...this.props }
 					onUpdateTextColor={ this.updateTextColor }
+					onToggleCalendarLink={ this.toggleCalendarLink }
 				/>
 				<div
 					className={ classnames( className, {
 						'child-selected': isSelected || clientId === selectedParentClientId,
 					} ) }
 				>
+					{ ! attributes.linkACalendar &&
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
 						template={ TEMPLATE }
 						templateInsertUpdatesSelection={ false }
 					/>
-					{ ( isSelected || clientId === selectedParentClientId ) && (
+					}
+					{ ( isSelected || clientId === selectedParentClientId ) && ! attributes.linkACalendar && (
 						<CustomAppender onClick={ this.insertNewItem } />
 					) }
 				</div>
