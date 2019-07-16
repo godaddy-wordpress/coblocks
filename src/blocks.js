@@ -43,7 +43,6 @@ import * as accordion from './blocks/accordion';
 import * as accordionItem from './blocks/accordion/accordion-item';
 import * as alert from './blocks/alert';
 import * as author from './blocks/author';
-import * as blog from './blocks/blog';
 import * as clickToTweet from './blocks/click-to-tweet';
 import * as column from './blocks/row/column';
 import * as dynamicSeparator from './blocks/dynamic-separator';
@@ -73,7 +72,6 @@ export function registerBlocks () {
 		accordionItem,
 		alert,
 		author,
-		blog,
 		clickToTweet,
 		column,
 		dynamicSeparator,
