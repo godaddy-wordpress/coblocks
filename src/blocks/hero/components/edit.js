@@ -133,6 +133,7 @@ class Edit extends Component {
 			setAttributes,
 			textColor,
 			toggleSelection,
+			backgroundColor,
 		} = this.props;
 
 		const {
