@@ -12,13 +12,7 @@ const { AlignmentToolbar, BlockControls } = wp.blockEditor;
 const { Toolbar } = wp.components;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -42,19 +36,19 @@ class Controls extends Component {
 							icon: icons.blank,
 							/* translators: %s: number of tables */
 							title: sprintf( __( '%s Tables' ), number ),
-							isActive: count == number,
+							isActive: count === number,
 							subscript: number,
 							onClick: () =>
 								setAttributes( {
 									count: parseInt( number ),
-								} )
-							} )
+								} ),
+						} )
 						) }
 					/>
 				</BlockControls>
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Controls;

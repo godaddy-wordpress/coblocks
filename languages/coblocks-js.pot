@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
+
+#: src/blocks/features/components/inspector.js:122
+msgid "Margin"
+msgstr ""
+
+#: src/blocks/features/components/inspector.js:143
+msgid "Padding"
+msgstr ""
+
+#: src/blocks/features/components/inspector.js:164
+msgid "Gutter"
+msgstr ""
+
+#: src/blocks/features/components/inspector.js:167
+msgid "Space between each column."
+msgstr ""
+
+#: src/blocks/features/components/inspector.js:173
+#: src/blocks/highlight/components/inspector.js:44
+msgid "Color Settings"
+msgstr ""
+
+#: src/blocks/features/components/inspector.js:191
+#: src/blocks/highlight/components/inspector.js:50
+msgid "Background Color"
+msgstr ""
+
+#: src/blocks/features/components/inspector.js:195
+#: src/blocks/highlight/components/inspector.js:55
+msgid "Text Color"
+msgstr ""
+
+#: src/blocks/features/components/inspector.js:86
+msgid "Small"
+msgstr ""
+
+#: src/blocks/features/components/inspector.js:87
+msgid "Medium"
+msgstr ""
+
+#: src/blocks/features/components/inspector.js:88
+msgid "Large"
+msgstr ""
+
+#: src/blocks/features/components/inspector.js:94
+msgid "Features Settings"
+msgstr ""
+
+#: src/blocks/features/components/inspector.js:96
+msgid "Columns"
+msgstr ""
+
+#: src/blocks/features/index.js:28
+msgid "Features"
+msgstr ""
+
+#: src/blocks/features/index.js:33
+msgid "services"
+msgstr ""
+
+#: src/blocks/features/index.js:34
+#: src/blocks/gist/index.js:30
+#: src/blocks/gist/index.js:33
+#: src/blocks/gist/index.js:34
+#: src/blocks/highlight/index.js:33
+msgid "coblocks"
+msgstr ""
+
+#: src/blocks/features/index.js:57
+msgid "Add up to three columns of small notes for your product or service."
+msgstr ""
+
+#: src/blocks/gist/components/controls.js:29
+msgid "Display meta"
+msgstr ""
+
+#: src/blocks/gist/components/controls.js:42
+msgid "Edit Gist"
+msgstr ""
+
+#: src/blocks/gist/components/controls.js:49
+msgid "View Gist"
+msgstr ""
+
+#: src/blocks/gist/components/controls.js:68
+msgid "GitHub File"
+msgstr ""
+
+#: src/blocks/gist/components/controls.js:72
+msgid "File"
+msgstr ""
+
+#: src/blocks/gist/components/edit.js:103
+#: src/blocks/gist/components/edit.js:101
+#: src/blocks/gist/components/edit.js:100
+#: src/blocks/gist/components/inspector.js:48
+msgid "Gist URL"
+msgstr ""
+
+#: src/blocks/gist/components/edit.js:108
+msgid "Add GitHub Gist URL..."
+msgstr ""
+
+#: src/blocks/gist/components/edit.js:85
+msgid "Write caption…"
+msgstr ""
+
+#: src/blocks/gist/components/gist.js:113
+msgid "Loading Gist"
+msgstr ""
+
+#: src/blocks/gist/components/inspector.js:28
+msgid "Showing gist meta data."
+msgstr ""
+
+#: src/blocks/gist/components/inspector.js:28
+msgid "Toggle to show the gist meta data."
+msgstr ""
+
+#: src/blocks/gist/components/inspector.js:46
+msgid "Gist Settings"
+msgstr ""
+
+#: src/blocks/gist/components/inspector.js:53
+msgid "Gist File"
+msgstr ""
+
+#: src/blocks/gist/components/inspector.js:58
+msgid "Gist Meta"
+msgstr ""
+
+#: src/blocks/gist/index.js:146
+msgid "View this gist on GitHub"
+msgstr ""
+
+#: src/blocks/gist/index.js:26
+msgid "Gist"
+msgstr ""
+
+#: src/blocks/gist/index.js:30
+msgid "code"
+msgstr ""
+
+#: src/blocks/gist/index.js:30
+msgid "github"
+msgstr ""
+
+#: src/blocks/gist/index.js:53
+msgid "Embed GitHub gists by adding the gist link."
+msgstr ""
+
+#: src/blocks/highlight/components/edit.js:109
+msgid "Add highlighted text..."
+msgstr ""
+
+#: src/blocks/highlight/components/inspector.js:36
+msgid "Text Settings"
+msgstr ""
+
+#: src/blocks/highlight/index.js:26
+msgid "Highlight"
+msgstr ""
+
+#: src/blocks/highlight/index.js:31
+msgid "text"
+msgstr ""
+
+#: src/blocks/highlight/index.js:32
+msgid "paragraph"
+msgstr ""
+
+#: src/blocks/highlight/index.js:69
+msgid "Highlight text."
+msgstr ""
