@@ -1,33 +1,25 @@
-( function( $ ) {
+/*global grecaptcha coblocksFormBlockAtts*/
 
-	var coblocksRecaptcha = {
+( function( $ ) {
+	const coblocksRecaptcha = {
 
 		init: function() {
-
-			var recaptchaFields = $( '.g-recaptcha-token' );
+			const recaptchaFields = $( '.g-recaptcha-token' );
 
 			if ( ! recaptchaFields.length ) {
-
 				return;
-
 			}
 
 			recaptchaFields.each( function() {
-
-				var $recaptchaTokenField = $( this );
+				const $recaptchaTokenField = $( this );
 
 				grecaptcha.execute( coblocksFormBlockAtts.recaptchaSiteKey, { action: 'coblocks' } ).then( function( token ) {
-
 					$recaptchaTokenField.val( token );
-
 				} );
-
 			} );
-
 		},
 
 	};
 
 	grecaptcha.ready( coblocksRecaptcha.init );
-
-} )( jQuery );
+}( jQuery ) );

@@ -18,8 +18,7 @@ const {
 } = wp.blockEditor;
 
 class Controls extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.onSelectImages = this.onSelectImages.bind( this );
 	}
@@ -31,16 +30,8 @@ class Controls extends Component {
 	}
 
 	render() {
-
-		const {
-			attributes,
-			isSelected,
-			setAttributes,
-		} = this.props;
-
-		const {
-			images,
-		} = attributes;
+		const { attributes } = this.props;
+		const { images } = attributes;
 
 		const hasImages = !! images.length;
 
@@ -74,7 +65,7 @@ class Controls extends Component {
 					</Fragment>
 				) }
 			</BlockControls>
-		)
+		);
 	}
 }
 

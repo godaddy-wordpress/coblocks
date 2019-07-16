@@ -1,7 +1,3 @@
-/**
- * External dependencies
- */
-import map from 'lodash/map';
 
 /**
  * Internal dependencies
@@ -25,12 +21,7 @@ const { PanelBody, RangeControl, withFallbackStyles } = wp.components;
 const { getComputedStyle } = window;
 
 const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-
-	const {
-		headingColor,
-		backgroundColor,
-		textColor,
-	} = ownProps.attributes;
+	const { backgroundColor } = ownProps.attributes;
 
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 
@@ -46,20 +37,12 @@ const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			clientId,
 			attributes,
 			setAttributes,
 			backgroundColor,
-			customBackgroundColor,
-			fallbackBackgroundColor,
 			setBackgroundColor,
 			setTextColor,
 			textColor,
@@ -83,21 +66,21 @@ class Inspector extends Component {
 			paddingSize,
 		} = attributes;
 
-		const parentId 	 	 		= wp.data.select( 'core/editor' ).getBlockRootClientId( clientId );
-		const parentBlocks 	 		= wp.data.select( 'core/editor' ).getBlocksByClientId( parentId );
-		const nextBlockClientId 	= wp.data.select( 'core/editor' ).getNextBlockClientId( clientId );
-		const nextBlockClient 	    = wp.data.select( 'core/editor' ).getBlock( nextBlockClientId );
-		const lastId 	 	 		= ( parentBlocks[0].innerBlocks !== 'undefined' ) ? parentBlocks[0].innerBlocks[ parentBlocks[0].innerBlocks.length - 1 ].clientId : clientId;
+		const parentId = wp.data.select( 'core/block-editor' ).getBlockRootClientId( clientId );
+		const parentBlocks = wp.data.select( 'core/block-editor' ).getBlocksByClientId( parentId );
+		const nextBlockClientId = wp.data.select( 'core/block-editor' ).getNextBlockClientId( clientId );
+		const nextBlockClient = wp.data.select( 'core/block-editor' ).getBlock( nextBlockClientId );
+		const lastId = ( parentBlocks[ 0 ].innerBlocks !== 'undefined' ) ? parentBlocks[ 0 ].innerBlocks[ parentBlocks[ 0 ].innerBlocks.length - 1 ].clientId : clientId;
 
 		const onChangeWidth = ( newWidth ) => {
-			let diff =  parseFloat( width ) - newWidth;
-			let nextBlockWidth = parseFloat( nextBlockClient.attributes.width ) + diff;
+			const diff = parseFloat( width ) - newWidth;
+			const nextBlockWidth = parseFloat( nextBlockClient.attributes.width ) + diff;
 
-			if( nextBlockWidth > 9 ){
-				setAttributes( {  width: parseFloat( newWidth ).toFixed(2) } );
-				wp.data.dispatch( 'core/editor' ).updateBlockAttributes( nextBlockClientId, { width : parseFloat( nextBlockWidth ).toFixed(2) } );
+			if ( nextBlockWidth > 9 ) {
+				setAttributes( { width: parseFloat( newWidth ).toFixed( 2 ) } );
+				wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( nextBlockClientId, { width: parseFloat( nextBlockWidth ).toFixed( 2 ) } );
 			}
-		}
+		};
 
 		return (
 			<Fragment>
@@ -127,16 +110,16 @@ class Inspector extends Component {
 							syncUnits={ paddingSyncUnits }
 							dimensionSize={ paddingSize }
 						/>
-						{ ( lastId != clientId ) ?
+						{ ( lastId !== clientId ) ?
 							<RangeControl
-	 							label={ __( 'Width' ) }
-	 							value={ parseFloat( width ) }
-	 							onChange={ ( newWidth ) => onChangeWidth( newWidth ) }
-	 							min={ 10.00 }
-	 							max={ 100.00 }
-	 							step={ 0.01 }
-	 						/>
-						: null }
+								label={ __( 'Width' ) }
+								value={ parseFloat( width ) }
+								onChange={ ( newWidth ) => onChangeWidth( newWidth ) }
+								min={ 10.00 }
+								max={ 100.00 }
+								step={ 0.01 }
+							/> :
+							null }
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }
@@ -156,8 +139,8 @@ class Inspector extends Component {
 					>
 					</PanelColorSettings>
 					<BackgroundPanel { ...this.props }
-		 				hasOverlay={ true }
-		 			/>
+						hasOverlay={ true }
+					/>
 				</InspectorControls>
 			</Fragment>
 		);

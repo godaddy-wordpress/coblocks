@@ -16,8 +16,7 @@ import Edit from './components/edit';
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { RichText, getColorClassName, getFontSizeClass, InnerBlocks } = wp.blockEditor;
-
+const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Block constants
@@ -68,7 +67,7 @@ const settings = {
 	attributes: blockAttributes,
 
 	supports: {
-		stackedOnMobile: true
+		stackedOnMobile: true,
 	},
 
 	transforms: {
@@ -91,7 +90,6 @@ const settings = {
 	save( { attributes, className } ) {
 		const {
 			gutter,
-			items,
 			stacked,
 			contentAlign,
 			isStackedOnMobile,
@@ -104,9 +102,9 @@ const settings = {
 		);
 
 		const innerClasses = classnames(
-			'wp-block-coblocks-buttons__inner',{
-				[ `flex-align-${ contentAlign }` ] : contentAlign,
-				[ `has-${ gutter }-gutter` ] : gutter,
+			'wp-block-coblocks-buttons__inner', {
+				[ `flex-align-${ contentAlign }` ]: contentAlign,
+				[ `has-${ gutter }-gutter` ]: gutter,
 				'is-stacked': stacked,
 				'is-stacked-on-mobile': isStackedOnMobile,
 			}

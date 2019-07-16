@@ -10,13 +10,7 @@ const { PanelBody, RangeControl } = wp.components;
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -46,6 +40,6 @@ class Inspector extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Inspector;
