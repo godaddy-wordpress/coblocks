@@ -15,7 +15,7 @@ const BackgroundStyles = ( attributes, backgroundColor ) => {
 	const styles = {
 		backgroundImage: attributes.backgroundImg && attributes.backgroundType === 'image' ? `url(${ attributes.backgroundImg })` : undefined,
 		backgroundColor: backgroundClass ? backgroundColor && backgroundColor.color : attributes.customBackgroundColor,
-    backgroundPosition: attributes.focalPoint && ! attributes.hasParallax ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined,		
+		backgroundPosition: attributes.focalPoint && ! attributes.hasParallax ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined,
 	};
 
 	return styles;
