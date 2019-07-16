@@ -133,6 +133,7 @@ class Edit extends Component {
 			setAttributes,
 			textColor,
 			toggleSelection,
+			backgroundColor,
 		} = this.props;
 
 		const {
@@ -180,7 +181,7 @@ class Edit extends Component {
 		);
 
 		const innerStyles = {
-			...BackgroundStyles( attributes ),
+			...BackgroundStyles( attributes, backgroundColor ),
 			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
