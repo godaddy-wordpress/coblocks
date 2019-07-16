@@ -2,47 +2,11 @@
 :-ms-fullscreen,
 :root .wp-block-coblocks-food-and-drinks {
 	display: -ms-grid;
-	// -ms-grid-columns: 2fr 1fr;
-	// width: 100% !important;
-	// -ms-grid-columns: 50%;
+	// display: flex;
+	flex-direction: row;
 	-ms-grid-rows: 100%;
 	overflow: hidden;
-
-	// color: red;
-	// display: -ms-grid;
-	// flex: 1 auto;
-	// // width: 50%;
-	// -ms-flex-flow: none;
-	// -ms-grid-columns: 50% auto;
-	//
-
-	// [data-columns="3"] & {
-	// 	flex: 1 33.33%;
-	// 	-ms-grid-column: 3;
-	// }
-
-	// .wp-block-coblocks-food-and-drinks[data-columns="2"]:not(.is-style-list) & {
-	// 	display: -ms-grid;
-	// 	flex: 1 1 auto;
-	// 	-ms-flex-flow: none;
-	// 	-ms-grid-columns: 100% auto;
-
-	// 	&:nth-child(even) {
-	// 		padding-right: 20px;
-
-	// 		@media all and (max-width: 514px) {
-	// 			padding-right: 0;
-	// 		}
-	// 	}
-
-	// 	&:nth-child(odd) {
-	// 		padding-left: 20px;
-
-	// 		@media all and (max-width: 514px) {
-	// 			padding-left: 0;
-	// 		}
-	// 	}
-	// }
+	// flex-basis: 1;
 }
 
 :-ms-fullscreen,
