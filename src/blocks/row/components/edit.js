@@ -109,7 +109,7 @@ const TEMPLATE = {
  * Block edit function
  */
 class Edit extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.state = {
@@ -185,7 +185,7 @@ class Edit extends Component {
 		}
 
 		if ( ! layout && this.state.layoutSelection ) {
-			return [
+			return (
 				<Fragment>
 					{ isSelected && (
 						<Controls
@@ -218,7 +218,7 @@ class Edit extends Component {
 														layout: columns === 1 ? key : null,
 													} );
 
-													{ columns === 1 &&
+													if ( columns === 1 ) {
 														this.setState( { layoutSelection: false } );
 													}
 												} }
@@ -228,7 +228,7 @@ class Edit extends Component {
 										</div>
 									</Tooltip>
 								) ) }
-							</ButtonGroup>						:
+							</ButtonGroup> :
 							<Fragment>
 								<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
 									<IconButton
@@ -242,7 +242,7 @@ class Edit extends Component {
 										} }
 										label={ __( 'Back to Columns' ) }
 									/>
-									{ map( layoutOptions[ selectedRows ], ( { name, key, icon, cols } ) => (
+									{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
 										<Tooltip text={ name }>
 											<div className="components-coblocks-visual-dropdown__button-wrapper">
 												<Button
@@ -265,8 +265,8 @@ class Edit extends Component {
 							</Fragment>
 						}
 					</Placeholder>
-				</Fragment>,
-			];
+				</Fragment>
+			);
 		}
 
 		const classes = classnames(
@@ -281,10 +281,10 @@ class Edit extends Component {
 			...BackgroundClasses( attributes ), {
 				'has-text-color': textColor.color,
 				[ `has-${ gutter }-gutter` ]: gutter,
-				'has-padding': paddingSize && paddingSize != 'no',
-				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize != 'advanced',
-				'has-margin': marginSize && marginSize != 'no',
-				[ `has-${ marginSize }-margin` ]: marginSize && marginSize != 'advanced',
+				'has-padding': paddingSize && paddingSize !== 'no',
+				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+				'has-margin': marginSize && marginSize !== 'no',
+				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
 				'is-stacked-on-mobile': isStackedOnMobile,
 			}
 		);
@@ -304,7 +304,7 @@ class Edit extends Component {
 			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 		};
 
-		return [
+		return (
 			<Fragment>
 				{ dropZone }
 				{ isSelected && (
@@ -329,8 +329,8 @@ class Edit extends Component {
 							renderAppender={ () => ( null ) } />
 					</div>
 				</div>
-			</Fragment>,
-		];
+			</Fragment>
+		);
 	}
 }
 

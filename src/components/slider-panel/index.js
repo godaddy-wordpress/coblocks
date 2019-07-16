@@ -1,7 +1,3 @@
-/**
- * External dependencies
- */
-import map from 'lodash/map';
 
 /**
  * Internal dependencies
@@ -17,8 +13,7 @@ const { Component, Fragment } = wp.element;
 const { PanelBody, ToggleControl, SelectControl } = wp.components;
 
 class SliderPanel extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.getAutoPlayHelp = this.getAutoPlayHelp.bind( this );
 	}
@@ -45,7 +40,6 @@ class SliderPanel extends Component {
 	}
 
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -65,33 +59,32 @@ class SliderPanel extends Component {
 					<ToggleControl
 						label={ __( 'Autoplay' ) }
 						checked={ !! autoPlay }
-						onChange={ () => setAttributes( {  autoPlay: ! autoPlay } ) }
+						onChange={ () => setAttributes( { autoPlay: ! autoPlay } ) }
 						help={ this.getAutoPlayHelp }
 					/>
 					{ autoPlay && <SelectControl
 						label={ __( 'Transition Speed' ) }
 						value={ autoPlaySpeed }
-						onChange={ this.setAutoPlaySpeedTo }
 						onChange={ ( value ) => setAttributes( { autoPlaySpeed: value } ) }
 						options={ autoPlayOptions }
-						className='components-coblocks-gallery-inspector__autoplayspeed-select'
+						className="components-coblocks-gallery-inspector__autoplayspeed-select"
 					/> }
 					<ToggleControl
 						label={ __( 'Draggable' ) }
 						checked={ !! draggable }
-						onChange={ () => setAttributes( {  draggable: ! draggable } ) }
+						onChange={ () => setAttributes( { draggable: ! draggable } ) }
 						help={ this.getDraggableHelp }
 					/>
 					<ToggleControl
 						label={ __( 'Arrow Navigation' ) }
 						checked={ !! prevNextButtons }
-						onChange={ () => setAttributes( {  prevNextButtons: ! prevNextButtons } ) }
+						onChange={ () => setAttributes( { prevNextButtons: ! prevNextButtons } ) }
 						help={ this.getArrowNavigationHelp }
 					/>
 					<ToggleControl
 						label={ __( 'Dot Navigation' ) }
 						checked={ !! pageDots }
-						onChange={ () => setAttributes( {  pageDots: ! pageDots } ) }
+						onChange={ () => setAttributes( { pageDots: ! pageDots } ) }
 						help={ this.getDotNavigationHelp }
 					/>
 				</PanelBody>

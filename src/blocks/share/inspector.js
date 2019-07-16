@@ -15,7 +15,7 @@ const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.blockEditor;
-const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles, CheckboxControl } = wp.components;
+const { PanelBody, RangeControl, ToggleControl, SelectControl, CheckboxControl } = wp.components;
 
 /**
  * Inspector controls
@@ -174,7 +174,6 @@ class Inspector extends Component {
 							/>
 						</div>
 					</PanelBody>
-
 					{ ! hasColors &&
 						<PanelColorSettings
 							title={ __( 'Color Settings' ) }

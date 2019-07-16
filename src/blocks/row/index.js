@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
 import './styles/editor.scss';
@@ -26,7 +21,8 @@ const { createBlock } = wp.blocks;
  * The number of :: represents the number of columns to input.
  * We fallback to the standard divided column layouts.
  *
- * @return String defaultLayout
+ * @param {int} columns The number of columns.
+ * @return {String} defaultLayout
  */
 function generateLayout( columns ) {
 	let defaultLayout;

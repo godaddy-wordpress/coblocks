@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import map from 'lodash/map';
 
 /**
  * Internal dependencies
@@ -13,21 +12,15 @@ import icons from './icons';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RangeControl, TabPanel, Tooltip, ButtonGroup, Button } = wp.components;
+const { Tooltip, ButtonGroup, Button } = wp.components;
 
 /**
  * Responsive Controls Component
  */
 class OrientationControl extends Component {
-
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			label,
 			help,
