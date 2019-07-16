@@ -1,16 +1,27 @@
 .components-coblocks-image-control {
   width: 232px;
-  height: 179px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
   overflow: hidden;
 
-  img {
+  > img {
+    display: block;
     will-change: transform;
-    transform-origin: left top 0;
-    opacity: 0.2;
-    padding: 10px;
+    opacity: 0.5;
+    padding: 20px;
     background-color: #ccc;
+  }
+
+  > div {
+    position: absolute;
+    top: 0;
+    margin: 19px;
+    overflow: hidden;
+    border: 1px solid black;
+
+    img {
+      display: block;
+    }
   }
 }

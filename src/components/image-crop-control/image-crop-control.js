@@ -13,10 +13,21 @@ class ImageCropControl extends Component {
             'components-coblocks-image-control'
         );
 
+        console.log(this.props);
+
+        const scale = 1 / (cropWidth / 100);
+        const style = {
+            'transform': 'scale(' + scale + ')'
+        };
+
         return (
             <div className={mainClass}>
-                <img src={imageUrl}>
+                <img src={imageUrl} style={style}>
                 </img>
+                <div>
+                    <img src={imageUrl} style={style}>
+                    </img>
+                </div>
             </div>
         );
     }
