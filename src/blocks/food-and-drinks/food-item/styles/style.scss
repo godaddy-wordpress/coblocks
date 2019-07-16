@@ -1,20 +1,62 @@
+:-ms-fullscreen,
+:root .wp-block-coblocks-food-item {
+	color: red;
+	// flex-grow: 0;
+	// flex-shrink: 0;
+	// flex-basis: inherit;
+	// max-width: 100%;
+	overflow: hidden;
+	// width: 50%;
+
+	//display: flex; //if you have items within the child you'll need to make it display flex
+	// flex: 1 0 100%;
+	// flex-direction: column;
+	// justify-content: center;
+
+	&:nth-child(even) {
+		margin-right: 50%;
+
+		@media all and (max-width: 514px) {
+			margin-right: 50%;
+		}
+	}
+
+	&:nth-child(odd) {
+		margin-left: 50%;
+
+		@media all and (max-width: 514px) {
+			margin-left: 50%;
+		}
+	}
+
+	// [data-columns="3"] & {
+	// 	flex: 1 33.33%;
+	// }
+
+	// .wp-block-coblocks-food-and-drinks[data-columns="2"]:not(.is-style-list) & {
+
+	// }
+
+	// 	&:nth-child(odd) {
+	// 		padding-left: 0;
+
+	// 		@media all and (max-width: 514px) {
+	// 			padding-left: 0 !important;
+	// 		}
+	// 	}
+	// }
+}
+
 .wp-block-coblocks-food-item {
-	display: -ms-grid;
-	flex: 1 1 auto;
-	-ms-grid-columns: 50% auto;
+	flex: 1 50%;
 	margin-top: 2.75em;
 
 	[data-columns="3"] & {
 		flex: 1 33.33%;
-		-ms-grid-column: 3;
 	}
 
 	.wp-block-coblocks-food-and-drinks[data-columns="2"]:not(.is-style-list) & {
-		display: -ms-grid;
-		-ms-flex-flow: none;
-		-ms-grid-columns: 50% auto;
 		&:nth-child(even) {
-			-ms-grid-column: 2;
 			padding-right: 20px;
 
 			@media all and (max-width: 514px) {
