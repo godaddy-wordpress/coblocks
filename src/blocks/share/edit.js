@@ -78,7 +78,7 @@ class edit extends Component {
 
 		const buttonStyles = {
 			borderRadius: borderRadius && borderRadius + 'px',
-			backgroundColor: ( ! hasColors && ! isMaskStyle ) && backgroundColor.color,
+			backgroundColor: ! hasColors && ! isMaskStyle && backgroundColor.color,
 			color: ! hasColors && this.getTextColor( isMaskStyle ),
 			padding: isCircularStyle && padding + 'px',
 		};
@@ -91,16 +91,8 @@ class edit extends Component {
 		return [
 			// eslint-disable-next-line react/jsx-key
 			<Fragment>
-				{ isSelected && (
-					<Controls
-						{ ...this.props }
-					/>
-				) }
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
+				{ isSelected && <Controls { ...this.props } /> }
+				{ isSelected && <Inspector { ...this.props } /> }
 				<div className={ classes } style={ { textAlign: textAlign } }>
 					<ul>
 						{ twitter &&

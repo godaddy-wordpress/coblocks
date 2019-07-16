@@ -12,17 +12,10 @@ const { Toolbar } = wp.components;
 const { AlignmentToolbar, BlockControls } = wp.blockEditor;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			className,
 			attributes,
-			isSelected,
 			setAttributes,
 		} = this.props;
 
@@ -62,6 +55,6 @@ class Controls extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Controls;

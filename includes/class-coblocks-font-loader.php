@@ -45,7 +45,7 @@ class CoBlocks_Font_Loader {
 	/**
 	 * The Constructor.
 	 */
-	private function __construct() {
+	public function __construct() {
 		$this->_version = COBLOCKS_VERSION;
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'fonts_loader' ) );

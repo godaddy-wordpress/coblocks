@@ -11,14 +11,13 @@ import './styles/editor.scss';
 import icons from './icons';
 import edit from './edit';
 import transforms from './transforms';
-import { BackgroundStyles, BackgroundAttributes, BackgroundVideo, BackgroundClasses } from '../../components/background';
+import { BackgroundStyles, BackgroundAttributes } from '../../components/background';
 import { GalleryAttributes, GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
 const { getColorClassName, RichText } = wp.blockEditor;
 
 /**
@@ -103,7 +102,6 @@ const settings = {
 	edit,
 
 	save( { attributes, className } ) {
-
 		const {
 			autoPlay,
 			autoPlaySpeed,
@@ -123,7 +121,7 @@ const settings = {
 		const innerClasses = classnames(
 			'is-cropped',
 			...GalleryClasses( attributes ), {
-				[ `has-horizontal-gutter` ] : gutter > 0,
+				'has-horizontal-gutter': gutter > 0,
 			}
 		);
 
@@ -132,7 +130,7 @@ const settings = {
 		};
 
 		const flickityClasses = classnames(
-			`has-carousel`,
+			'has-carousel',
 			`has-carousel-${ gridSize }`, {}
 		);
 
@@ -142,10 +140,10 @@ const settings = {
 
 		const figureClasses = classnames(
 			'coblocks-gallery--figure', {
-				[ `has-margin-left-${ gutter }` ] : gutter > 0,
-				[ `has-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
-				[ `has-margin-right-${ gutter }` ] : gutter > 0,
-				[ `has-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-margin-left-${ gutter }` ]: gutter > 0,
+				[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+				[ `has-margin-right-${ gutter }` ]: gutter > 0,
+				[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
 
@@ -159,7 +157,7 @@ const settings = {
 				x0: 10,
 				x1: 60, y1: 50,
 				x2: 65, y2: 45,
-				x3: 20
+				x3: 20,
 			},
 		};
 
@@ -195,7 +193,6 @@ const settings = {
 						data-flickity={ JSON.stringify( flickityOptions ) }
 					>
 						{ images.map( ( image ) => {
-
 							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
 
 							return (
@@ -208,10 +205,10 @@ const settings = {
 						} ) }
 					</div>
 				</div>
-				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles }/> }
+				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles } /> }
 			</div>
 		);
 	},
-}
+};
 
 export { name, title, icon, settings };

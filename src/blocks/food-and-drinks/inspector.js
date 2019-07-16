@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
-const { PanelBody, ToggleControl, RangeControl } = wp.components;
+const { PanelBody, ToggleControl } = wp.components;
 const { InspectorControls } = wp.blockEditor;
 const { ENTER, SPACE } = wp.keycodes;
 
@@ -19,7 +19,6 @@ const Inspector = props => {
 		onToggleImages,
 		onTogglePrices,
 		onUpdateStyle,
-		onSetColumns,
 	} = props;
 
 	return (

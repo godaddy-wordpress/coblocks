@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import flatMap from 'lodash/flatMap';
 
 /**
  * Internal dependencies
@@ -14,17 +13,15 @@ import CSSGridControl from './';
  * WordPress dependencies
  */
 const { DOWN } = wp.keycodes;
-const { Button, IconButton, Dropdown, NavigableMenu } = wp.components;
+const { IconButton, Dropdown, NavigableMenu } = wp.components;
 
 function CSSGridToolbar( {
 	icon = 'menu',
 	label,
-	test,
 	menuLabel,
 	className,
 	props,
 } ) {
-
 	return (
 		<Dropdown
 			className={ classnames( 'components-dropdown-menu', 'components-coblocks-visual-dropdown', className ) }
@@ -52,14 +49,14 @@ function CSSGridToolbar( {
 					</IconButton>
 				);
 			} }
-			renderContent={ ( { onClose } ) => {
+			renderContent={ () => {
 				return (
 					<NavigableMenu
 						className="components-coblocks-visual-dropdown components-coblocks-grid-dropdown"
 						role="menu"
 						aria-label={ menuLabel }
 					>
-						<CSSGridControl { ...props } 
+						<CSSGridControl { ...props }
 							tooltip={ false }
 						/>
 					</NavigableMenu>
