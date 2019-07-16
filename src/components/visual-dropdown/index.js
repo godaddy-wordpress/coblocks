@@ -18,7 +18,6 @@ const { Button, IconButton, Dropdown, NavigableMenu } = wp.components;
 function VisualDropdown( {
 	icon = 'menu',
 	label,
-	test,
 	menuLabel,
 	controls,
 	className,
@@ -70,7 +69,7 @@ function VisualDropdown( {
 						<div className="components-button-group">
 							{ flatMap( controlSets, ( controlSet, indexOfSet ) => (
 								controlSet.map( ( control, indexOfControl ) => (
-									<div className={ ( control.key == control.value ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
+									<div key={ `visual-dropdown-${ indexOfControl }` } className={ ( control.key === control.value ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
 										<Button
 											key={ [ indexOfSet, indexOfControl ].join() }
 											onClick={ ( event ) => {
@@ -84,21 +83,21 @@ function VisualDropdown( {
 												'is-default',
 												'components-coblocks-visual-dropdown__button', {
 													'components-coblocks-visual-dropdown__button--selected': control.isActive,
-													[ `components-button--${ control.key }` ] : control.key,
+													[ `components-button--${ control.key }` ]: control.key,
 												},
 											) }
 											role="menuitem"
 											disabled={ control.isDisabled }
 										>
 											{ control.icon &&
-												control.icon
+control.icon
 											}
 
 										</Button>
 										{ control.label &&
-											<div class="editor-block-styles__item-label">
-												{ control.label }
-											</div>
+										<div className="editor-block-styles__item-label">
+											{ control.label }
+										</div>
 										}
 									</div>
 								) )

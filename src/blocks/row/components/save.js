@@ -29,7 +29,7 @@ function Save( { attributes } ) {
 	const classes = classnames( {
 		[ `coblocks-row--${ id }` ]: id,
 		[ `coblocks-row-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
-	});
+	} );
 
 	const innerClasses = classnames(
 		'wp-block-coblocks-row__inner',

@@ -43,20 +43,12 @@ const getCount = memoize( ( count ) => {
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
-			backgroundColor,
 			textColor,
 			className,
 			isSelected,
-			setAttributes,
 		} = this.props;
 
 		const {
@@ -77,9 +69,6 @@ class Edit extends Component {
 			marginUnit,
 			marginSize,
 			paddingSize,
-			focalPoint,
-			hasParallax,
-			backgroundType,
 		} = attributes;
 
 		const dropZone = (
@@ -91,18 +80,18 @@ class Edit extends Component {
 
 		const classes = classnames(
 			className, {
-				[ `coblocks-features-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+				[ `coblocks-features-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
 			}
 		);
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-features__inner',
 			...BackgroundClasses( attributes ), {
-				[ `has-${ gutter }-gutter` ] : gutter,
-				'has-padding': paddingSize && paddingSize != 'no',
-				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
-				'has-margin': marginSize && marginSize != 'no',
-				[ `has-${ marginSize }-margin` ] : marginSize && marginSize != 'advanced',
+				[ `has-${ gutter }-gutter` ]: gutter,
+				'has-padding': paddingSize && paddingSize !== 'no',
+				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+				'has-margin': marginSize && marginSize !== 'no',
+				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
 				[ `has-${ contentAlign }-content` ]: contentAlign,
 			}
 		);
@@ -121,7 +110,7 @@ class Edit extends Component {
 			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 		};
 
-		return [
+		return (
 			<Fragment>
 				{ dropZone }
 				{ isSelected && (
@@ -148,7 +137,7 @@ class Edit extends Component {
 					</div>
 				</div>
 			</Fragment>
-		];
+		);
 	}
 }
 
