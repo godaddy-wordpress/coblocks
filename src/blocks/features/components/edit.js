@@ -49,6 +49,7 @@ class Edit extends Component {
 			textColor,
 			className,
 			isSelected,
+			backgroundColor,
 		} = this.props;
 
 		const {
