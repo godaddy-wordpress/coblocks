@@ -13,7 +13,7 @@ import { styleOptions } from './styles';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls } = wp.editor;
+const { InspectorControls } = wp.blockEditor;
 const { PanelBody, ToggleControl, RangeControl, TextControl, Button, ButtonGroup, ExternalLink } = wp.components;
 const { ENTER } = wp.keycodes;
 

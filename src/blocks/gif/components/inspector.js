@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls } = wp.editor;
+const { InspectorControls } = wp.blockEditor;
 const { PanelBody, TextareaControl, ExternalLink } = wp.components;
 
 /**
@@ -39,7 +39,7 @@ class Inspector extends Component {
 							label={ __( 'Alt Text (Alternative Text)' ) }
 							value={ alt }
 							onChange={ this.updateAlt }
-							help={ 
+							help={
 								<Fragment>
 									<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
 										{ __( 'Describe the purpose of the image' ) }

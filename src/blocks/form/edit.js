@@ -21,7 +21,7 @@ const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { registerBlockType, getBlockType } = wp.blocks;
 const { Button, PanelBody, TextControl, ExternalLink } = wp.components;
-const { InspectorControls, InnerBlocks } = wp.editor;
+const { InspectorControls, InnerBlocks } = wp.blockEditor;
 const { applyFilters } = wp.hooks;
 
 /**

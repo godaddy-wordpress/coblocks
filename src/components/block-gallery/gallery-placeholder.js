@@ -14,7 +14,7 @@ import GalleryUploader from './gallery-uploader';
  */
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { MediaPlaceholder, BlockIcon } = wp.editor;
+const { MediaPlaceholder, BlockIcon } = wp.blockEditor;
 
 class GalleryPlaceholder extends Component {
 

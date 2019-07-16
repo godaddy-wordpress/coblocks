@@ -99,7 +99,7 @@ class CoBlocks_Getting_Started_Page {
 					<?php
 					echo sprintf(
 						/* translators: 1: Opening <strong> tag, 2: Closing </strong> tag */
-						esc_html__( 'You\'ve just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks %2$s, a %1$s page-builder experience %2$s, %1$s typography controls %2$s and a new %1$s Block Manager %2$s for turning off blocks.', 'coblocks' ),
+						esc_html__( 'You\'ve just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s.', 'coblocks' ),
 						'<strong>',
 						'</strong>'
 					);

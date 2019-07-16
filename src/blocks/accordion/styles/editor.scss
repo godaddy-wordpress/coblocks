@@ -2,12 +2,24 @@
 	.wp-block[data-type="coblocks/accordion-item"] {
 		margin-top: 0 !important;
 
+		p {
+			margin-top: 0;
+		}
+
 		&:not(:last-child) {
 			margin-bottom: -15px !important;
 		}
 
 		.editor-block-list__insertion-point {
 			display: none;
+		}
+
+		.wp-block:first-child [data-block] {
+			margin-top: 0;
+		}
+
+		.wp-block:nth-last-child(2) [data-block] {
+			margin-bottom: 0;
 		}
 	}
 
