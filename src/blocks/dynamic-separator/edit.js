@@ -16,6 +16,9 @@ const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { ResizableBox } = wp.components;
 
+/**
+ * Block edit function
+ */
 class DynamicSeparatorEdit extends Component {
 	render() {
 		const {
@@ -26,25 +29,17 @@ class DynamicSeparatorEdit extends Component {
 			color,
 		} = this.props;
 
-		const {
-			height,
-		} = attributes;
+		const { height } = attributes;
 
 		return (
 			<Fragment>
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
+				{ isSelected && <Inspector { ...this.props } /> }
 				<ResizableBox
-					className={ classnames(
-						className, {
-							'is-selected': isSelected,
-							'has-text-color': color.color,
-							[ color.class ]: color.class,
-						}
-					) }
+					className={ classnames( className, {
+						'is-selected': isSelected,
+						'has-text-color': color.color,
+						[ color.class ]: color.class,
+					} ) }
 					style={ {
 						color: color.color,
 					} }
@@ -62,19 +57,16 @@ class DynamicSeparatorEdit extends Component {
 						bottomLeft: false,
 						topLeft: false,
 					} }
-					onResizeStop={ ( event, direction, elt, delta ) => {
+					onResizeStop={ ( _event, _direction, _elt, delta ) => {
 						const spacerHeight = parseInt( height + delta.height, 10 );
 						setAttributes( {
 							height: spacerHeight,
 						} );
 					} }
-				>
-				</ResizableBox>
+				/>
 			</Fragment>
 		);
 	}
 }
 
-export default compose( [
-	applyWithColors,
-] )( DynamicSeparatorEdit );
+export default compose( [ applyWithColors ] )( DynamicSeparatorEdit );

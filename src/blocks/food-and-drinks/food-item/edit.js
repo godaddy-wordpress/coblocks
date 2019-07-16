@@ -56,7 +56,7 @@ const handlePlaceholderPlacement = (
 	// Add a placeholder if there are none.
 	if ( placeholders.length === 0 ) {
 		const newFoodItem = wp.blocks.createBlock( blockName, blockAttributes );
-		dispatch( 'core/editor' ).insertBlocks(
+		dispatch( 'core/block-editor' ).insertBlocks(
 			newFoodItem,
 			foodItems.length,
 			itemClientId,

@@ -111,7 +111,6 @@ class GalleryImage extends Component {
 			isFirstItem,
 			isLastItem,
 			isSelected,
-			link,
 			linkTo,
 			marginBottom,
 			marginLeft,

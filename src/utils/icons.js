@@ -147,7 +147,6 @@ icons.imageBox = (
 icons.twitter = (
 	<svg
 		className="dashicon components-coblocks-svg"
-		className="dashicon components-coblocks-svg"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -417,7 +416,6 @@ icons.column = (
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 24 24"
 		role="img"
-		aria-hidden="true"
 		focusable="false"
 	>
 		<path d="M0 0h24v24H0V0z" fill="none" />

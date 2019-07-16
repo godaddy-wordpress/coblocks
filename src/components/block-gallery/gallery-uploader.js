@@ -1,7 +1,3 @@
-/**
- * External Dependencies
- */
-import classnames from 'classnames';
 
 /**
  * Internal dependencies
@@ -13,15 +9,10 @@ import * as helper from './../../utils/helper';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const {
-	IconButton,
-	FormFileUpload,
-} = wp.components;
-const { MediaPlaceholder } = wp.blockEditor;
+const { FormFileUpload } = wp.components;
 const { mediaUpload } = wp.editor;
 
 class GalleryUploader extends Component {
-
 	constructor() {
 		super( ...arguments );
 		this.addFiles = this.addFiles.bind( this );
@@ -48,7 +39,6 @@ class GalleryUploader extends Component {
 	}
 
 	render() {
-
 		return (
 			<Fragment>
 				<div className="coblocks-gallery--figure components-coblocks-gallery-uploader-wrapper">
@@ -64,7 +54,7 @@ class GalleryUploader extends Component {
 					</FormFileUpload>
 				</div>
 			</Fragment>
-		)
+		);
 	}
 }
 
