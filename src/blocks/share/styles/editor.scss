@@ -1,0 +1,96 @@
+.wp-block-coblocks-social {
+	&__button {
+		&:active {
+			animation: none !important;
+		}
+	}
+}
+
+.block-editor-block-preview__content {
+	.wp-block-coblocks-social {
+		align-content: center;
+		align-items: center;
+		display: flex;
+		height: 100%;
+		justify-content: center;
+		text-align: center !important;
+
+		&.is-style-mask {
+			.wp-block-coblocks-social__icon {
+				height: 32px !important;
+				width: 32px !important;
+			}
+		}
+
+		&.is-style-text,
+		&.is-style-icon-and-text {
+			.wp-block-coblocks-social__button {
+				width: 75%;
+			}
+		}
+
+		&.is-style-circular {
+			.wp-block-coblocks-social__icon {
+				height: 18px !important;
+				width: 18px !important;
+			}
+			.wp-block-coblocks-social__button {
+				padding: 14px !important;
+			}
+		}
+
+		ul {
+			margin: 0;
+		}
+
+		li {
+			display: none;
+			margin: 0 !important;
+
+			&:first-child {
+				display: block;
+			}
+
+			&::before,
+			&::after {
+				display: none;
+			}
+		}
+
+		&__text {
+			max-width: 70%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		&__button {
+			margin: 0;
+			max-width: 100%;
+			padding-left: 10px;
+			padding-right: 10px;
+			width: 100%;
+		}
+	}
+
+	// Gutenberg 5.9+ tweaks.
+	[data-type="coblocks/social"] [data-block] {
+		margin-bottom: 0;
+
+		.wp-block-coblocks-social {
+			margin-top: 10px;
+
+			&.is-style-icon {
+				margin-top: 8px;
+			}
+
+			&.is-style-circular {
+				margin-top: 5px;
+			}
+		}
+	}
+}
+
+.components-range-control + .components-coblocks-inspector__social-button-size {
+	margin-top: -13px !important;
+}
