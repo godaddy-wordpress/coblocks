@@ -276,7 +276,7 @@ class Inspector extends Component {
 						}
 						<TextControl
 							type="text"
-							autocomplete="off"
+							autoComplete="off"
 							label={ __( 'Icon Search' ) }
 							value={ this.state.searchValue }
 							className="coblocks-icon-types-list__search"
