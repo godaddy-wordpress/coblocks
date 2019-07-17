@@ -165,10 +165,10 @@ class FoodAndDrinksEdit extends Component {
 						src={ attributes.url }
 						alt={ attributes.alt }
 						style={ {
-							objectPosition: attributes.focalPoint
-								? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y *
-										100 }%`
-								: undefined,
+							objectPosition: attributes.focalPoint ?
+								`${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y *
+										100 }%` :
+								undefined,
 						} }
 					/>
 				</figure>
@@ -268,7 +268,9 @@ class FoodAndDrinksEdit extends Component {
 											icon={ icons.vegetarian }
 											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegetarian"
 											onClick={ () =>
-												setAttributes( { vegetarian: ! attributes.vegetarian } )
+												setAttributes( {
+													vegetarian: ! attributes.vegetarian,
+												} )
 											}
 											label={ __( 'Vegetarian' ) }
 											isToggled={ attributes.vegetarian }
@@ -285,12 +287,16 @@ class FoodAndDrinksEdit extends Component {
 								{ isSelected &&
 								attributes.title &&
 								( ! attributes.pescatarian && ! attributes.vegan ) ? (
+									// disable reason: 10 tabs seems to be correct indent
+									// eslint-disable-next-line react/jsx-indent
 										<span>
 											<IconButton
 												icon={ icons.glutenFree }
 												className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--gf"
 												onClick={ () =>
-													setAttributes( { glutenFree: ! attributes.glutenFree } )
+													setAttributes( {
+														glutenFree: ! attributes.glutenFree,
+													} )
 												}
 												label={ __( 'Gluten Free' ) }
 												isToggled={ attributes.glutenFree }
@@ -311,7 +317,9 @@ class FoodAndDrinksEdit extends Component {
 											icon={ icons.pescatarian }
 											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--pescatarian"
 											onClick={ () =>
-												setAttributes( { pescatarian: ! attributes.pescatarian } )
+												setAttributes( {
+													pescatarian: ! attributes.pescatarian,
+												} )
 											}
 											label={ __( 'Pescatarian' ) }
 											isToggled={ attributes.pescatarian }
