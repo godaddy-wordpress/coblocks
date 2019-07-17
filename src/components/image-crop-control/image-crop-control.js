@@ -46,7 +46,7 @@ class ImageCropControl extends Component {
         e.preventDefault();
         e.stopPropagation();
 
-        this.updateState(this.state.x + e.movementX, this.state.y + e.movementY, this.state.w, this.state.h);
+        this.updateState(this.state.x + e.movementX * 0.35, this.state.y + e.movementY * 0.35, this.state.w, this.state.h);
     }
 
     mouseUpListener(e) {
