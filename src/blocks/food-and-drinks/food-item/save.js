@@ -3,7 +3,8 @@
  */
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
 import icons from './icons';
-import 'core-js/stable';
+// import 'core-js-pure/stable';
+import fromEntries from '../../../js/coblocks-fromEntries';
 
 /**
  * WordPress dependencies.
@@ -18,7 +19,7 @@ const isEmpty = attributes => {
 		attributesToCheck.includes( key )
 	);
 
-	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
+	return hasEmptyAttributes( fromEntries( newAttributes ) );
 };
 
 export default function save( { attributes } ) {

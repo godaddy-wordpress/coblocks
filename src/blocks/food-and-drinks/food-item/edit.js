@@ -4,6 +4,7 @@
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
 import InspectorControls from './inspector';
 import icons from './icons';
+import fromEntries from '../../../js/coblocks-fromEntries';
 
 /**
  * External dependencies.
@@ -71,7 +72,7 @@ const isEmpty = attributes => {
 		attributesToCheck.includes( key )
 	);
 
-	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
+	return hasEmptyAttributes( fromEntries( newAttributes ) );
 };
 
 class FoodAndDrinksEdit extends Component {
