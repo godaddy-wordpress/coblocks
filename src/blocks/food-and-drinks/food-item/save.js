@@ -3,7 +3,6 @@
  */
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
 import icons from './icons';
-// import 'core-js-pure/stable';
 import fromEntries from '../../../js/coblocks-fromEntries';
 
 /**
@@ -19,7 +18,11 @@ const isEmpty = attributes => {
 		attributesToCheck.includes( key )
 	);
 
-	return hasEmptyAttributes( fromEntries( newAttributes ) );
+	if ( ! Object.fromEntries ) {
+		return hasEmptyAttributes( fromEntries( newAttributes ) );
+	}
+
+	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 };
 
 export default function save( { attributes } ) {

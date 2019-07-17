@@ -72,7 +72,11 @@ const isEmpty = attributes => {
 		attributesToCheck.includes( key )
 	);
 
-	return hasEmptyAttributes( fromEntries( newAttributes ) );
+	if ( ! Object.fromEntries ) {
+		return hasEmptyAttributes( fromEntries( newAttributes ) );
+	}
+
+	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 };
 
 class FoodAndDrinksEdit extends Component {
