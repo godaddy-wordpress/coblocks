@@ -15,18 +15,21 @@ class ImageCropControl extends Component {
 
         console.log(this.props);
 
+        const translateX = 50 - (offsetX + cropWidth / 2);
+        const translateY = 50 - (offsetY + cropHeight / 2);
         const scale = 1 / (cropWidth / 100);
         const style = {
-            'transform': 'scale(' + scale + ')'
+            'transform': 'scale(' + scale + ') translate(' + translateX + '%, ' + translateY + '%)'
         };
 
         return (
             <div className={mainClass}>
-                <img src={imageUrl} style={style}>
-                </img>
                 <div>
-                    <img src={imageUrl} style={style}>
-                    </img>
+                    <img src={imageUrl} style={style} alt={""}/>
+                </div>
+                <img src={imageUrl} alt={""}/>
+                <div>
+                    <img src={imageUrl} style={style} alt={""}/>
                 </div>
             </div>
         );
