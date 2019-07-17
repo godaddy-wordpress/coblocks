@@ -1,21 +1,33 @@
 :-ms-fullscreen,
-:root .wp-block-coblocks-food-item {
-	color: red;
-	overflow: hidden;
+:root .entry-content {
+	.wp-block-coblocks-food-item {
+		color: red;
+		overflow: hidden;
 
-	&:nth-child(even) {
-		margin-right: 50%;
-
-		@media all and (max-width: 514px) {
+		&:nth-child(even) {
 			margin-right: 50%;
 		}
-	}
 
-	&:nth-child(odd) {
-		margin-left: 50%;
-
-		@media all and (max-width: 514px) {
+		&:nth-child(odd) {
 			margin-left: 50%;
+		}
+	}
+}
+
+:-ms-fullscreen,
+:root .wp-block-coblocks-food-item {
+	figure {
+		margin-top: 33px;
+		overflow: hidden;
+		padding-top: 65%;
+		width: 100%;
+
+		img {
+			height: auto;
+			left: -10px !important;
+			position: absolute;
+			top: -30px !important;
+			width: 100%;
 		}
 	}
 }

@@ -1,17 +1,16 @@
 // Backwards compatibility for IE 11.
 :-ms-fullscreen,
-:root .wp-block-coblocks-food-and-drinks {
-	display: -ms-grid;
-	// display: flex;
-	flex-direction: row;
-	-ms-grid-rows: 100%;
-	overflow: hidden;
-	// flex-basis: 1;
-}
-
-:-ms-fullscreen,
 :root .entry-content {
-	max-width: 100% !important;
+	.wp-block-coblocks-food-and-drinks {
+		display: -ms-grid; // Display flex does not behave correctly with IE 11
+		// flex-direction: row; // Mimic flex layout.
+		// overflow: hidden;
+		// position: relative;
+
+		h3 {
+			margin-bottom: 10px; // Handle extra spacing in IE 11.
+		}
+	}
 }
 
 .wp-block-coblocks-food-and-drinks {
