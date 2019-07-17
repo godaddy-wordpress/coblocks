@@ -1,9 +1,8 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { mediaUpload } = wp.blockEditor;
+const { mediaUpload } = wp.editor;
 const { DropZone } = wp.components;
 
 /**
@@ -12,7 +11,6 @@ const { DropZone } = wp.components;
 import * as helper from './../../utils/helper';
 
 class GalleryDropZone extends Component {
-
 	constructor() {
 		super( ...arguments );
 
@@ -36,15 +34,6 @@ class GalleryDropZone extends Component {
 	}
 
 	render() {
-
-		const {
-			attributes,
-			className,
-			noticeOperations,
-			noticeUI,
-			label,
-		} = this.props;
-
 		return (
 			<Fragment>
 				<DropZone

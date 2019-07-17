@@ -37,7 +37,7 @@ class CoBlocks_Generated_Styles {
 	/**
 	 * The Constructor.
 	 */
-	private function __construct() {
+	public function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 	}

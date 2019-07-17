@@ -14,6 +14,8 @@ cp -a .wordpress-org/* $HOME/coblocks/assets/
 # Deploy Coblocks to WordPress.org
 cd $HOME/coblocks
 svn add * --force
+# Delete removed files
+svn status | grep '^!' | awk '{print $2}' | xargs svn delete
 svn ci --no-auth-cache --username ${WP_ORG_USERNAME} --password ${WP_ORG_PASSWORD} -m "Deploy new version of Coblocks"
 
 # Deploy a Coblocks Github release

@@ -8,7 +8,7 @@ import Flickity from 'react-flickity-component';
 /**
  * Internal dependencies
  */
-import { title, icon } from './'
+import { title, icon } from './';
 import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
@@ -24,7 +24,6 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { withSelect } = wp.data;
 const { withNotices, ResizableBox, Spinner } = wp.components;
 const { withColors, RichText } = wp.blockEditor;
 const { isBlobURL } = wp.blob;
@@ -42,7 +41,7 @@ const flickityOptions = {
 		x0: 10,
 		x1: 60, y1: 50,
 		x2: 65, y2: 45,
-		x3: 20
+		x3: 20,
 	},
 	thumbnails: false,
 	responsiveHeight: true,
@@ -76,7 +75,6 @@ class GalleryCarouselEdit extends Component {
 	}
 
 	componentDidMount() {
-
 		// This block does not support the following attributes.
 		this.props.setAttributes( {
 			lightbox: undefined,
@@ -86,7 +84,6 @@ class GalleryCarouselEdit extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-
 		// Deselect images when deselecting the block.
 		if ( ! this.props.isSelected && prevProps.isSelected ) {
 			this.setState( {
@@ -109,7 +106,7 @@ class GalleryCarouselEdit extends Component {
 			} );
 		}
 
-		if ( this.props.attributes.gridSize == 'xlrg' && prevProps.attributes.align == undefined ) {
+		if ( this.props.attributes.gridSize === 'xlrg' && prevProps.attributes.align === undefined ) {
 			this.props.setAttributes( {
 				gutter: 0,
 				gutterMobile: 0,
@@ -130,8 +127,7 @@ class GalleryCarouselEdit extends Component {
 
 	onRemoveImage( index ) {
 		return () => {
-			const images = filter( this.props.attributes.images, ( img, i ) => index !== i );
-			const { gridSize } = this.props.attributes;
+			const images = filter( this.props.attributes.images, ( _img, i ) => index !== i );
 			this.setState( { selectedImage: null } );
 			this.props.setAttributes( {
 				images,
@@ -182,7 +178,6 @@ class GalleryCarouselEdit extends Component {
 			backgroundColor,
 			className,
 			isSelected,
-			noticeOperations,
 			noticeUI,
 			setAttributes,
 			toggleSelection,
@@ -191,7 +186,6 @@ class GalleryCarouselEdit extends Component {
 
 		const {
 			align,
-			autoPlay,
 			gridSize,
 			gutter,
 			gutterMobile,
@@ -290,34 +284,34 @@ class GalleryCarouselEdit extends Component {
 				}
 				{ noticeUI }
 				<ResizableBox
-						size={ {
-							height: height,
-							width: '100%',
-						} }
-						className={ classnames(
-							{ 'is-selected': isSelected }
-						) }
-						minHeight="200"
-						enable={ {
-							bottom: true,
-							bottomLeft: false,
-							bottomRight: false,
-							left: false,
-							right: false,
-							top: false,
-							topLeft: false,
-							topRight: false,
-						} }
-						onResizeStop={ ( event, direction, elt, delta ) => {
-							setAttributes( {
-								height: parseInt( height + delta.height, 10 ),
-							} );
-							toggleSelection( true );
-						} }
-						onResizeStart={ () => {
-							toggleSelection( false );
-						} }
-					>
+					size={ {
+						height: height,
+						width: '100%',
+					} }
+					className={ classnames(
+						{ 'is-selected': isSelected }
+					) }
+					minHeight="200"
+					enable={ {
+						bottom: true,
+						bottomLeft: false,
+						bottomRight: false,
+						left: false,
+						right: false,
+						top: false,
+						topLeft: false,
+						topRight: false,
+					} }
+					onResizeStop={ ( _event, _direction, _elt, delta ) => {
+						setAttributes( {
+							height: parseInt( height + delta.height, 10 ),
+						} );
+						toggleSelection( true );
+					} }
+					onResizeStart={ () => {
+						toggleSelection( false );
+					} }
+				>
 					{ dropZone }
 					{ isBlobURL( backgroundImg ) && <Spinner /> }
 					{ BackgroundVideo( attributes ) }
@@ -336,7 +330,7 @@ class GalleryCarouselEdit extends Component {
 							>
 								{ images.map( ( img, index ) => {
 									// translators: %1$d is the order number of the image, %2$d is the total number of images
-									const ariaLabel = __( sprintf( 'image %1$d of %2$d in gallery', ( index + 1 ), images.length ) );
+									const ariaLabel = sprintf( __( 'image %1$d of %2$d in gallery' ), ( index + 1 ), images.length );
 
 									return (
 										<div className="coblocks-gallery--item" key={ img.id || img.url } onClick={ this.onItemClick }>
@@ -419,6 +413,6 @@ class GalleryCarouselEdit extends Component {
 }
 
 export default compose( [
-	withColors( { backgroundColor : 'background-color', captionColor : 'color' } ),
+	withColors( { backgroundColor: 'background-color', captionColor: 'color' } ),
 	withNotices,
 ] )( GalleryCarouselEdit );

@@ -3,7 +3,6 @@
  */
 import classnames from 'classnames';
 import noop from 'lodash/noop';
-import includes from 'lodash/includes';
 
 /**
  * Internal dependencies
@@ -20,8 +19,8 @@ import DimensionsAttributes from '../../components/dimensions-control/attributes
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock, getBlockType } = wp.blocks;
-const { getColorClassName, InnerBlocks } = wp.blockEditor;
+const { createBlock } = wp.blocks;
+const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Block constants
@@ -188,18 +187,14 @@ const settings = {
 					} )
 				),
 			},
-		]
+		],
 	},
 
 	edit: Edit,
 
-	save( { attributes, className } ) {
-
+	save( { attributes } ) {
 		const {
 			coblocks,
-			backgroundColor,
-			backgroundImg,
-			customBackgroundColor,
 			hasCardShadow,
 			hasImgShadow,
 			paddingSize,
@@ -212,9 +207,6 @@ const settings = {
 			mediaPosition,
 			isStackedOnMobile,
 			align,
-			focalPoint,
-			hasParallax,
-			backgroundType,
 		} = attributes;
 
 		// Media.
@@ -228,11 +220,9 @@ const settings = {
 			gridTemplateColumns = mediaPosition === 'right' ? `auto ${ mediaWidth }%` : `${ mediaWidth }% auto`;
 		}
 
-		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-
 		const classes = classnames( {
-			[ `coblocks-media-card-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
-			[ `is-style-${ mediaPosition }` ] : mediaPosition,
+			[ `coblocks-media-card-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
+			[ `is-style-${ mediaPosition }` ]: mediaPosition,
 			'has-no-media': ! mediaUrl || null,
 			'is-stacked-on-mobile': isStackedOnMobile,
 		} );
@@ -240,9 +230,9 @@ const settings = {
 		const innerClasses = classnames(
 			'wp-block-coblocks-media-card__inner',
 			...BackgroundClasses( attributes ), {
-				'has-padding': paddingSize && paddingSize != 'no',
-				[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
-		} );
+				'has-padding': paddingSize && paddingSize !== 'no',
+				[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
+			} );
 
 		const innerStyles = {
 			...BackgroundStyles( attributes ),
@@ -250,13 +240,13 @@ const settings = {
 
 		const wrapperStyles = {
 			gridTemplateColumns,
-			maxWidth: maxWidth ? ( 'full' == align || 'wide' == align ) && maxWidth : undefined,
+			maxWidth: maxWidth ? ( 'full' === align || 'wide' === align ) && maxWidth : undefined,
 		};
 
 		const cardClasses = classnames(
 			'wp-block-coblocks-media-card__content', {
-			'has-shadow': hasCardShadow,
-		} );
+				'has-shadow': hasCardShadow,
+			} );
 
 		return (
 			<div className={ classes }>
@@ -264,10 +254,10 @@ const settings = {
 					{ BackgroundVideo( attributes ) }
 					<div className="wp-block-coblocks-media-card__wrapper" style={ wrapperStyles }>
 						<figure className={ classnames(
-								'wp-block-coblocks-media-card__media', {
-									'has-shadow': hasImgShadow,
-								}
-							) }
+							'wp-block-coblocks-media-card__media', {
+								'has-shadow': hasImgShadow,
+							}
+						) }
 						>
 							{ ( mediaTypeRenders[ mediaType ] || noop )() }
 							{ ! mediaUrl ? brandAssets.logo : null }

@@ -24,7 +24,7 @@ function CoBlocksFieldTextarea( {
 					setAttributes={ setAttributes }
 					isSelected={ isSelected }
 				/>
-				<TextareaControl/>
+				<TextareaControl />
 			</div>
 		</Fragment>
 	);

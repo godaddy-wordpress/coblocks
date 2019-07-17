@@ -14,7 +14,9 @@ const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, req
 					className="coblocks-label coblocks-field-label__input"
 					value={ label }
 					onChange={ value => {
-						resetFocus && resetFocus();
+						if ( resetFocus ) {
+							resetFocus();
+						}
 						setAttributes( { label: value } );
 					} }
 					placeholder={ __( 'Add label…' ) }

@@ -5,23 +5,16 @@
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, } = wp.blockEditor;
-const { PanelBody, RangeControl, ToggleControl, SelectControl  } = wp.components;
-
+const { InspectorControls } = wp.blockEditor;
+const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
 
 /**
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			clientId,
 			attributes,
@@ -44,7 +37,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Buttons Settings' ) } className='components-coblocks-block-sidebar--buttons'>
+					<PanelBody title={ __( 'Buttons Settings' ) } className="components-coblocks-block-sidebar--buttons">
 						<RangeControl
 							label={ __( 'Buttons' ) }
 							value={ items }
@@ -53,7 +46,7 @@ class Inspector extends Component {
 									items: parseInt( nextCount ),
 								} );
 
-								wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
+								wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );
 							} }
 							min={ 1 }
 							max={ 4 }
@@ -69,10 +62,10 @@ class Inspector extends Component {
 						}
 						{ items >= 2 &&
 							<ToggleControl
-							label={ __( 'Stack Buttons' ) }
-							checked={ !! stacked }
-							onChange={ () => setAttributes( {  stacked: ! stacked } ) }
-							help={ !! stacked ? __( 'Aligning buttons in a single column.' ) : __( 'Toggle to align buttons in a column.' ) } />
+								label={ __( 'Stack Buttons' ) }
+								checked={ !! stacked }
+								onChange={ () => setAttributes( { stacked: ! stacked } ) }
+								help={ !! stacked ? __( 'Aligning buttons in a single column.' ) : __( 'Toggle to align buttons in a column.' ) } />
 						}
 					</PanelBody>
 				</InspectorControls>
