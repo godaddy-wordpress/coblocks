@@ -5,7 +5,6 @@ const {createHigherOrderComponent} = wp.compose;
 const {Fragment} = wp.element;
 const {InspectorControls} = wp.editor;
 const {PanelBody} = wp.components;
-const {TextControl} = wp.components;
 const {ButtonGroup} = wp.components;
 const {Button} = wp.components;
 const {addFilter} = wp.hooks;
@@ -119,38 +118,12 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                                 cropWidth={cropWidth}
                                 cropHeight={cropHeight}
                                 rotation={cropRotation}
-                            />
-                            <TextControl
-                                label={__('Offset X (%)')}
-                                value={cropX}
-                                type={'number'}
-                                min={0}
-                                max={100}
-                                onChange={(val) => applyAttributes({cropX: parseInt(val)})}
-                            />
-                            <TextControl
-                                label={__('Offset Y (%)')}
-                                value={cropY}
-                                type={'number'}
-                                min={0}
-                                max={100}
-                                onChange={(val) => applyAttributes({cropY: parseInt(val)})}
-                            />
-                            <TextControl
-                                label={__('Width (%)')}
-                                value={cropWidth}
-                                type={'number'}
-                                min={0}
-                                max={100}
-                                onChange={(val) => applyAttributes({cropWidth: parseInt(val)})}
-                            />
-                            <TextControl
-                                label={__('Height (%)')}
-                                value={cropHeight}
-                                type={'number'}
-                                min={0}
-                                max={100}
-                                onChange={(val) => applyAttributes({cropHeight: parseInt(val)})}
+                                onChange={(val) => applyAttributes({
+                                    cropX: val.x,
+                                    cropY: val.y,
+                                    cropWidth: val.w,
+                                    cropHeight: val.h
+                                })}
                             />
                             <ButtonGroup>
                                 <Button
