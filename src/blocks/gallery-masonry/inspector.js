@@ -125,6 +125,7 @@ class Inspector extends Component {
 			gridSize,
 			gutter,
 			radius,
+			lightbox,
 		} = attributes;
 
 		return (
