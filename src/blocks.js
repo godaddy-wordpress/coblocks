@@ -13,7 +13,7 @@ const category = {
 const iconColor = '#1e35b9';
 
 // Register block category
-import icons from './utils/block-category';
+import './utils/block-category';
 
 // Editor and Frontend Styles
 import './styles/editor.scss';
@@ -50,6 +50,8 @@ import * as form from './blocks/form';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
 import * as highlight from './blocks/highlight';
+import * as foodAndDrinks from './blocks/food-and-drinks';
+import * as foodItem from './blocks/food-and-drinks/food-item';
 import * as pricingTable from './blocks/pricing-table';
 import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';
@@ -65,44 +67,51 @@ import * as hero from './blocks/hero';
 import * as stacked from './blocks/gallery-stacked';
 import * as masonry from './blocks/gallery-masonry';
 import * as carousel from './blocks/gallery-carousel';
+import * as socialProfiles from './blocks/social-profiles';
 
-export function registerBlocks () {
+export function registerBlocks() {
 	[
 		accordion,
 		accordionItem,
 		alert,
 		author,
+		buttons,
+		carousel,
 		clickToTweet,
 		column,
 		dynamicSeparator,
+		feature,
+		features,
+		foodAndDrinks,
+		foodItem,
 		form,
 		gif,
 		gist,
+		hero,
 		highlight,
+		icon,
+		map,
+		masonry,
+		mediaCard,
 		pricingTable,
 		pricingTableItem,
 		row,
-		share,
-		map,
-		mediaCard,
 		shapeDivider,
-		icon,
-		feature,
-		features,
-		buttons,
-		hero,
+		share,
 		stacked,
-		carousel,
-		masonry,
-	].forEach( ( block ) => {
-
+		socialProfiles,
+	].forEach( block => {
 		if ( ! block ) {
 			return;
 		}
 
 		const { name, icon, settings } = block;
 
-		registerBlockType( `coblocks/${ name }`, { category: category.slug, icon: { src: icon, foreground: iconColor, }, ...settings } );
+		registerBlockType( `coblocks/${ name }`, {
+			category: category.slug,
+			icon: { src: icon, foreground: iconColor },
+			...settings,
+		} );
 	} );
-};
+}
 registerBlocks();

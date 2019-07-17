@@ -36,18 +36,6 @@ class CoBlocks_Action_Links {
 			define( 'COBLOCKS_PLUGIN_BASE', null );
 		}
 
-		$url_generator = new CoBlocks_URL_Generator();
-
-		$support_url = $url_generator->get_store_url(
-			'/',
-			array(
-				'utm_medium'   => 'coblocks-lite',
-				'utm_source'   => 'plugins-page',
-				'utm_campaign' => 'plugins-row',
-				'utm_content'  => 'help-and-faqs',
-			)
-		);
-
 		if ( COBLOCKS_PLUGIN_BASE === $plugin_file ) {
 			$row_meta = [
 				'review' => '<a href="' . esc_url( COBLOCKS_REVIEW_URL ) . '" aria-label="' . esc_attr( __( 'Review CoBlocks on WordPress.org', '@@textdomain' ) ) . '" target="_blank">' . __( 'Leave a Review', '@@textdomain' ) . '</a>',

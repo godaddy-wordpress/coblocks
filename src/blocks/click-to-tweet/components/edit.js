@@ -34,15 +34,10 @@ const applyWithSelect = withSelect( ( select ) => {
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor() {
-		super( ...arguments );
-	}
-
-	componentWillReceiveProps( { postLink } ) {
+	UNSAFE_componentWillReceiveProps( { postLink } ) { // eslint-disable-line camelcase
 		if ( postLink ) {
 			this.props.setAttributes( {
-				url: postLink
+				url: postLink,
 			} );
 		}
 	}
@@ -54,12 +49,7 @@ class Edit extends Component {
 			className,
 			isSelected,
 			setAttributes,
-			setButtonColor,
-			setTextColor,
 			textColor,
-			fallbackButtonColor,
-			fallbackTextColor,
-			fallbackFontSize,
 			fontSize,
 			onReplace,
 		} = this.props;
@@ -67,12 +57,10 @@ class Edit extends Component {
 		const {
 			buttonText,
 			content,
-			url,
-			via,
 			textAlign,
 		} = attributes;
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Controls
@@ -133,9 +121,9 @@ class Edit extends Component {
 					/>
 				</blockquote>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default compose( [
 	applyWithSelect,
