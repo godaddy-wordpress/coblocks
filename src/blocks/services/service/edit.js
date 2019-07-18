@@ -187,7 +187,7 @@ class Edit extends Component {
 	}
 
 	render() {
-		const { className, attributes, setAttributes } = this.props;
+		const { className, attributes } = this.props;
 
 		const TEMPLATE = [
 			[
