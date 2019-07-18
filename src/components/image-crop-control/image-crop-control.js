@@ -82,14 +82,19 @@ class ImageCropControl extends Component {
     }
 
     getCurrentScale() {
-        const scaleX = 1 / (this.state.w / 100);
-        const scaleY = 1 / (this.state.h / 100);
-
-        return ((this.state.r === 0 || this.state.r === 180) ? scaleX : scaleY) * 100;
+        return Math.min(1 / (this.state.w / 100), 1 / (this.state.h / 100)) * 100;
     }
 
     updateState(nX, nY, nW, nH, nR) {
         const {onChange} = this.props;
+
+        if (nW > 100) {
+            nW = 100;
+        }
+
+        if (nH > 100) {
+            nH = 100;
+        }
 
         if (nX + nW > 100) {
             nX = 100 - nW;
@@ -108,6 +113,14 @@ class ImageCropControl extends Component {
         }
 
         if (onChange) {
+            console.log({
+                x: nX,
+                y: nY,
+                w: nW,
+                h: nH,
+                r: nR
+            });
+
             onChange({
                 x: nX,
                 y: nY,
@@ -131,7 +144,9 @@ class ImageCropControl extends Component {
     setNewZoom(zoom, newRotation) {
         zoom /= 100;
 
-        let nW = 100 / zoom;
+        let aspectScale = (newRotation === 90 || newRotation === 270) ? this.state.aspectRatio : 1;
+
+        let nW = 100 * aspectScale / zoom;
         let nH = 100 / zoom;
 
         let nX = this.state.midX - nW / 2;
@@ -149,22 +164,27 @@ class ImageCropControl extends Component {
             'components-coblocks-image-control'
         );
 
-        const coefficient = (self.state.r === 90 || self.state.r === 270) ? this.state.aspectRatio : 1;
-        const scaleX = 1 / (self.state.w * coefficient / 100);
-        const scaleY = 1 / (self.state.h / coefficient / 100);
-
+        let scaleX, scaleY;
         let translateX, translateY;
 
         if (self.state.r === 90) {
+            scaleX = 1 / (self.state.h / 100);
+            scaleY = 1 / (self.state.w / 100);
             translateX = (50 - (self.state.y + self.state.h / 2));
             translateY = -(50 - (self.state.x + self.state.w / 2));
         } else if (self.state.r === 180) {
+            scaleX = 1 / (self.state.w / 100);
+            scaleY = 1 / (self.state.h / 100);
             translateX = -(50 - (self.state.x + self.state.w / 2));
             translateY = -(50 - (self.state.y + self.state.h / 2));
         } else if (self.state.r === 270) {
+            scaleX = 1 / (self.state.h / 100);
+            scaleY = 1 / (self.state.w / 100);
             translateX = -(50 - (self.state.y + self.state.h / 2));
             translateY = (50 - (self.state.x + self.state.w / 2));
         } else {
+            scaleX = 1 / (self.state.w / 100);
+            scaleY = 1 / (self.state.h / 100);
             translateX = 50 - (self.state.x + self.state.w / 2);
             translateY = 50 - (self.state.y + self.state.h / 2);
         }
