@@ -137,7 +137,7 @@ class Edit extends Component {
 	renderImage() {
 		const { attributes, setAttributes, isSelected } = this.props;
 
-		const classes = classnames( 'wp-block-coblocks-food-item__figure', {
+		const classes = classnames( 'wp-block-coblocks-service__figure', {
 			'is-transient': isBlobURL( attributes.imageUrl ),
 			'is-selected': isSelected,
 		} );
@@ -232,12 +232,14 @@ class Edit extends Component {
 
 				<div className={ className }>
 					{ attributes.imageUrl ? this.renderImage() : this.renderPlaceholder() }
-					<InnerBlocks
-						allowedBlocks={ ALLOWED_BLOCKS }
-						template={ TEMPLATE }
-						templateLock={ false }
-						templateInsertUpdatesSelection={ false }
-					/>
+					<div className="wp-block-coblocks-service__content">
+						<InnerBlocks
+							allowedBlocks={ ALLOWED_BLOCKS }
+							template={ TEMPLATE }
+							templateLock={ false }
+							templateInsertUpdatesSelection={ false }
+						/>
+					</div>
 				</div>
 			</Fragment>
 		);

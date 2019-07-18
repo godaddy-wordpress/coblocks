@@ -1,4 +1,8 @@
 .wp-block-coblocks-service {
+	display: block;
+	flex: 1 100%;
+	padding: 0 !important;
+
 	.editor-media-placeholder {
 		margin: 0 0 1.65em !important;
 		border: 1px dashed $dark-gray-150;
@@ -50,7 +54,7 @@
 		}
 	}
 
-	.wp-block-coblocks-service__remove-menu {
+	&__remove-menu {
 		background-color: theme(primary);
 		display: inline-flex;
 		padding: 2px;
@@ -62,6 +66,37 @@
 
 		svg {
 			position: relative;
+		}
+	}
+
+	&__figure {
+		&.is-selected {
+			&::after {
+				bottom: 0;
+				box-shadow: inset 0 0 0 4px theme(primary);
+				content: "";
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+				z-index: 1;
+			}
+		}
+	}
+
+	&__content {
+		.wp-block[data-type="core/heading"] .block-editor-block-list__block-edit {
+			margin-top: 1em;
+			margin-bottom: 0;
+		}
+
+		.wp-block[data-type="core/paragraph"] .block-editor-block-list__block-edit {
+			margin-top: 0.5em;
+		}
+
+		.wp-block[data-type="core/button"] .block-editor-block-list__block-edit {
+			margin-top: 0;
+			margin-bottom: 0;
 		}
 	}
 }
