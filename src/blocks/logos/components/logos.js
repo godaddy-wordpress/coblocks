@@ -74,9 +74,8 @@ class Logos extends Component {
 								>
 									<img
 										src={ img.url }
-										className="logo"
 										alt={ img.alt }
-										onClick={ ( e ) => { this.setState( { selectedImage: img.id } ); } }
+										onClick={ () => { this.setState( { selectedImage: img.id } ); } }
 										tabIndex="0"
 									/>
 								</ResizableBox>
