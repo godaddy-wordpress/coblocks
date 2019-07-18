@@ -78,7 +78,14 @@ class ImageCropControl extends Component {
     }
 
     applyRotation(r) {
-        this.updateState(this.state.x, this.state.y, this.state.w, this.state.h, r);
+        this.setNewZoom(this.getCurrentScale(), r);
+    }
+
+    getCurrentScale() {
+        const scaleX = 1 / (this.state.w / 100);
+        const scaleY = 1 / (this.state.h / 100);
+
+        return ((this.state.r === 0 || this.state.r === 180) ? scaleX : scaleY) * 100;
     }
 
     updateState(nX, nY, nW, nH, nR) {
@@ -121,6 +128,18 @@ class ImageCropControl extends Component {
         });
     }
 
+    setNewZoom(zoom, newRotation) {
+        zoom /= 100;
+
+        let nW = 100 / zoom;
+        let nH = 100 / zoom;
+
+        let nX = this.state.midX - nW / 2;
+        let nY = this.state.midY - nH / 2;
+
+        this.updateState(nX, nY, nW, nH, newRotation);
+    }
+
     render() {
         const self = this;
         const {imageUrl} = self.props;
@@ -130,28 +149,31 @@ class ImageCropControl extends Component {
             'components-coblocks-image-control'
         );
 
-        const translateX = 50 - (self.state.x + self.state.w / 2);
-        const translateY = 50 - (self.state.y + self.state.h / 2);
-        const scaleX = 1 / (self.state.w / 100);
-        const scaleY = 1 / (self.state.h / 100);
+        const coefficient = (self.state.r === 90 || self.state.r === 270) ? this.state.aspectRatio : 1;
+        const scaleX = 1 / (self.state.w * coefficient / 100);
+        const scaleY = 1 / (self.state.h / coefficient / 100);
+
+        let translateX, translateY;
+
+        if (self.state.r === 90) {
+            translateX = (50 - (self.state.y + self.state.h / 2));
+            translateY = -(50 - (self.state.x + self.state.w / 2));
+        } else if (self.state.r === 180) {
+            translateX = -(50 - (self.state.x + self.state.w / 2));
+            translateY = -(50 - (self.state.y + self.state.h / 2));
+        } else if (self.state.r === 270) {
+            translateX = -(50 - (self.state.y + self.state.h / 2));
+            translateY = (50 - (self.state.x + self.state.w / 2));
+        } else {
+            translateX = 50 - (self.state.x + self.state.w / 2);
+            translateY = 50 - (self.state.y + self.state.h / 2);
+        }
 
         const containerStyle = {
             'height': Math.round(this.state.containerWidth / this.state.aspectRatio + 40) + 'px'
         };
         const style = {
             'transform': 'rotate(' + this.state.r + 'deg) scale(' + scaleX + ', ' + scaleY + ') translate(' + translateX + '%, ' + translateY + '%)'
-        };
-
-        const setNewZoom = function (zoom) {
-            zoom /= 100;
-
-            let nW = 100 / zoom;
-            let nH = 100 / zoom;
-
-            let nX = self.state.midX - nW / 2;
-            let nY = self.state.midY - nH / 2;
-
-            self.updateState(nX, nY, nW, nH, self.state.r);
         };
 
         return (
@@ -168,8 +190,8 @@ class ImageCropControl extends Component {
                 </div>
                 <RangeControl
                     label={"Zoom (%)"}
-                    value={scaleX * 100}
-                    onChange={(val) => setNewZoom(val)}
+                    value={this.getCurrentScale()}
+                    onChange={(val) => this.setNewZoom(val, self.state.r)}
                     min={100}
                     max={1000}
                 />
