@@ -1,7 +1,6 @@
 .wp-block-coblocks-service {
 	&__figure {
 		display: flex;
-		overflow: hidden;
 		margin: 0;
 		padding-top: calc(9 / 16 * 100%);
 		position: relative;
@@ -10,6 +9,10 @@
 		.is-style-circle & {
 			padding-top: 100%;
 			border-radius: 100%;
+
+			img {
+				border-radius: 100%;
+			}
 		}
 
 		.is-style-square & {

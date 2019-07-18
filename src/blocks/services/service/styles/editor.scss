@@ -17,10 +17,6 @@
 		.is-style-circle & {
 			padding-top: 100%;
 			border-radius: 100%;
-
-			.components-drop-zone {
-				border-radius: 100%;
-			}
 		}
 
 		.is-style-square & {
@@ -51,6 +47,10 @@
 			left: -1px;
 			right: -1px;
 			top: -1px;
+
+			.is-style-circle & {
+				border-radius: 100%;
+			}
 		}
 	}
 
@@ -80,6 +80,10 @@
 				right: 0;
 				top: 0;
 				z-index: 1;
+			}
+
+			.is-style-circle &::after {
+				border-radius: 100%;
 			}
 		}
 	}
