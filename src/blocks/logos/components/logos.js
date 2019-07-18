@@ -2,7 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { flatten } from 'lodash';
+import { chunk, flatten } from 'lodash';
 
 /**
  * Internal dependencies
@@ -20,7 +20,6 @@ class Logos extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		// Deselect image when deselecting the block.
 		if ( ! this.props.isSelected && prevProps.isSelected ) {
 			this.setState( {
 				selectedImage: null,
@@ -29,56 +28,64 @@ class Logos extends Component {
 	}
 
 	render() {
-		let images = this.props.images[ this.props.imageKey ];
-
-		console.log( this.state );
+		let imageChunks = chunk( this.props.images, 4 );
 
 		return (
-			<div className="wrapper">
-				{ images.map( ( img, index ) => {
-					var imgIndex =  this.props.imageKey + "-" + index;
-					return (
-						<Fragment>
-							<ResizableBox
-								className={ classnames(
-									'resize',
-									{
-										'is-selected': ( imgIndex === this.state.selectedImage ),
-									}
-								) }
-								size={ {
-									width: img.width ? img.width : ( ( 100 / images.length ) + '%' ),
-								} }
-								enable={ {
-									top: false,
-									right: true,
-									bottom: false,
-									left: true,
-									topRight: false,
-									bottomRight: false,
-									bottomLeft: false,
-									topLeft: false,
-								} }
-								onResizeStop={ ( event, direction, elt, delta ) => {
-									this.props.images[ $( elt ).closest( '.wrapper' ).index() ][ $( elt ).index() ].width = elt.style.width;
-									this.props.setAttributes( {
-										images: flatten( this.props.images ),
-									} );
-								} }
-							>
-								<img
-									src={ img.url }
-									className="logo"
-									alt={ img.alt }
-									data-index={ imgIndex }
-									onClick={ ( e ) => { this.setState( { selectedImage: imgIndex } ) } }
-									tabIndex="0"
-								/>
-							</ResizableBox>
-						</Fragment>
-					);
-				} ) }
-			</div>
+			<Fragment>
+			{ Object.keys( imageChunks ).map( keyOuter => {
+
+				var images = imageChunks[ keyOuter ];
+
+				return (
+					<div className="wrapper" key={ "wrapper-" + keyOuter }>
+						{ images.map( ( img, index ) => {
+							return (
+								<ResizableBox
+									key={ img.id + '-' + keyOuter + '-' + index }
+									className={ classnames(
+										'resize',
+										{
+											'is-selected': ( img.id === this.state.selectedImage ),
+										}
+									) }
+									size={ {
+										width: img.width ? img.width : ( ( 100 / images.length ) + '%' ),
+									} }
+									enable={ {
+										top: false,
+										right: true,
+										bottom: false,
+										left: true,
+										topRight: false,
+										bottomRight: false,
+										bottomLeft: false,
+										topLeft: false,
+									} }
+									onResizeStop={ ( event, direction, elt, delta ) => {
+										var elementWidth = elt.style.width;
+										if ( elementWidth.replace( '%', '' ) <= 10 ) {
+											elementWidth = '10%';
+										}
+										imageChunks[ keyOuter ][ $( elt ).index() ].width = elementWidth;
+										this.props.setAttributes( {
+											images: flatten( imageChunks ),
+										} );
+									} }
+								>
+									<img
+										src={ img.url }
+										className="logo"
+										alt={ img.alt }
+										onClick={ ( e ) => { this.setState( { selectedImage: img.id } ); } }
+										tabIndex="0"
+									/>
+								</ResizableBox>
+							);
+						} ) }
+					</div>
+				);
+			} ) }
+			</Fragment>
 		);
 	}
 }

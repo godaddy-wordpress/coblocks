@@ -32,18 +32,11 @@ export default function save( { attributes, className } ) {
 		);
 	}
 
-	var imageChunks = chunk( images, 4 );
-
 	return (
 		<div className={ classes }>
-			{ Object.keys( imageChunks ).map( keyOuter => {
-				return (
-					<Logos
-						images={ imageChunks }
-						imageKey={ keyOuter }
-					/>
-				);
-			} ) }
+			<Logos
+				images={ images }
+			/>
 		</div>
 	);
 }

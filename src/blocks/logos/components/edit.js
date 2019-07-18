@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { chunk } from 'lodash';
 
 /**
  * Internal dependencies
@@ -89,8 +88,6 @@ class Edit extends Component {
 			);
 		}
 
-		var imageChunks = chunk( images, 4 );
-
 		return (
 			<Fragment>
 				<Controls
@@ -101,15 +98,10 @@ class Edit extends Component {
 				/>
 				{ noticeUI }
 				<div className={ classes }>
-					{ Object.keys( imageChunks ).map( keyOuter => {
-						return (
-							<Logos
-								{...this.props}
-								images={ imageChunks }
-								imageKey={ keyOuter }
-							/>
-						);
-					} ) }
+					<Logos
+						{...this.props}
+						images={ images }
+					/>
 					{ isSelected && (
 						<MediaPlaceholder
 							{ ...this.props }

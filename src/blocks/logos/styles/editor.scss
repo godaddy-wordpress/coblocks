@@ -1,19 +1,19 @@
-.wp-block-coblocks-logo {
-	.wrapper {
-		display: inline-flex;
-		flex-direction: row;
-		max-width: 100%;
-		width: 100%;
-		user-select: none;
-		justify-content: center;
-		align-items: center;
+.wp-block-coblocks-logo:not(.editor-media-placeholder) {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	max-width: 100%;
+	width: 100%;
+	user-select: none;
+	justify-content: center;
+	align-items: center;
 
-		.logo {
-			padding: 1em;
+	.logo {
+		display: inline-block;
+		padding: 1em;
 
-			&:focus {
-				outline: none;	
-			}
+		&:focus {
+			outline: none;
 		}
 	}
 
@@ -29,45 +29,5 @@
 
 	.resize {
 		text-align: center;
-
-		.holder {
-			display: block;
-			margin: 0 auto;
-			position: relative;
-		}
-
-		&.selected {
-			position: relative;
-
-			.handle {
-				cursor: ew-resize;
-				display: block;
-				padding: 0;
-				position: absolute;
-				right: -10px;
-				top: 50%;
-				transform: translateY( -50% );
-				width: 16px;
-				z-index: 999;
-				display: block;
-
-				&::before {
-					background: theme(primary);
-					border: 2px solid $white;
-					border-radius: 50%;
-					content: "";
-					cursor: inherit;
-					display: block;
-					height: 16px;
-					position: relative;
-					width: 16px;
-					z-index: 999;
-				}
-
-				&:first-child {
-					right: calc( 100% - 10px );
-				}
-			}
-		}
 	}
 }
