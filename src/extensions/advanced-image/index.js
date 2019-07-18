@@ -122,39 +122,10 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                                     cropX: val.x,
                                     cropY: val.y,
                                     cropWidth: val.w,
-                                    cropHeight: val.h
+                                    cropHeight: val.h,
+                                    cropRotation: val.r
                                 })}
                             />
-                            <ButtonGroup>
-                                <Button
-                                    isDefault
-                                    isPrimary={cropRotation === 0}
-                                    onClick={() => applyAttributes({cropRotation: 0})}
-                                >
-                                    0°
-                                </Button>
-                                <Button
-                                    isDefault
-                                    isPrimary={cropRotation === 90}
-                                    onClick={() => applyAttributes({cropRotation: 90})}
-                                >
-                                    90°
-                                </Button>
-                                <Button
-                                    isDefault
-                                    isPrimary={cropRotation === 180}
-                                    onClick={() => applyAttributes({cropRotation: 180})}
-                                >
-                                    180°
-                                </Button>
-                                <Button
-                                    isDefault
-                                    isPrimary={cropRotation === 270}
-                                    onClick={() => applyAttributes({cropRotation: 270})}
-                                >
-                                    270°
-                                </Button>
-                            </ButtonGroup>
                         </PanelBody>
                     </InspectorControls>
                 </Fragment>
