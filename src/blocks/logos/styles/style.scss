@@ -1,10 +1,4 @@
 .wp-block-coblocks-logo {
-
-  .holder {
-    display: block;
-    margin: 0 auto;
-  }
-
   .wrapper {
     /* Use flexbox */
     display: inline-flex;
@@ -18,8 +12,12 @@
     width: 100%;
     max-width: 100%;
 
-    .logo {
+    img {
       padding: 1em;
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 }

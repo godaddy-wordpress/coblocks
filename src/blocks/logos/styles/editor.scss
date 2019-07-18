@@ -8,13 +8,16 @@
 	justify-content: center;
 	align-items: center;
 
-	.logo {
-		display: inline-block;
+	img {
 		padding: 1em;
 
 		&:focus {
 			outline: none;
 		}
+	}
+
+	.components-resizable-box__handle {
+		z-index: 999;
 	}
 
 	.components-placeholder.block-editor-media-placeholder {
