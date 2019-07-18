@@ -1,6 +1,7 @@
 /**
  * Internal dependencies
  */
+import InspectorControls from './inspector';
 
 /**
  * External dependencies.
@@ -15,13 +16,10 @@ const { Component, Fragment } = wp.element;
 const {
 	AlignmentToolbar,
 	BlockControls,
-	InspectorControls,
 	InnerBlocks,
 	MediaPlaceholder,
 } = wp.blockEditor;
 const {
-	PanelBody,
-	ToggleControl,
 	DropZone,
 	IconButton,
 	Spinner,
@@ -165,7 +163,7 @@ class Edit extends Component {
 					) }
 					{ dropZone }
 					{ isBlobURL( attributes.imageUrl ) && <Spinner /> }
-					<img src={ attributes.imageUrl } alt={ attributes.imageAlt } />
+					<img src={ attributes.imageUrl } alt={ attributes.imageAlt } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined } } />
 				</figure>
 			</Fragment>
 		);
@@ -187,7 +185,7 @@ class Edit extends Component {
 	}
 
 	render() {
-		const { className, attributes } = this.props;
+		const { className, attributes, setAttributes } = this.props;
 
 		const TEMPLATE = [
 			[
@@ -215,21 +213,11 @@ class Edit extends Component {
 						onChange={ this.onChangeAlignment }
 					/>
 				</BlockControls>
-				<InspectorControls>
-					<PanelBody title={ __( 'Group Settings' ) }>
-						<ToggleControl
-							label={ __( 'Action Buttons' ) }
-							help={
-								attributes.showCta ?
-									__( 'Showing the call to action buttons.' ) :
-									__( 'Toggle to show call to action buttons.' )
-							}
-							checked={ attributes.showCta }
-							onChange={ this.toggleCta }
-						/>
-					</PanelBody>
-				</InspectorControls>
-
+				<InspectorControls
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					onToggleCta={ this.toggleCta }
+				/>
 				<div className={ className }>
 					{ attributes.imageUrl ? this.renderImage() : this.renderPlaceholder() }
 					<div className="wp-block-coblocks-service__content">

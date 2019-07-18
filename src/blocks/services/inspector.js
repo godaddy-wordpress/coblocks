@@ -61,7 +61,7 @@ const Inspector = props => {
 					) ) }
 				</div>
 			</PanelBody>
-			<PanelBody title={ __( 'Group Settings' ) }>
+			<PanelBody title={ __( 'Services Settings' ) }>
 				<RangeControl
 					label={ __( 'Columns' ) }
 					value={ attributes.columns }

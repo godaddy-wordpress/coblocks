@@ -26,6 +26,9 @@
 			"selector": "img",
 			"attribute": "alt",
 			"default": ""
+		},
+		"focalPoint": {
+			"type": "object"
 		}
 	}
 }
