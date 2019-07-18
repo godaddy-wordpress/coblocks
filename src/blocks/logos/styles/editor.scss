@@ -7,6 +7,14 @@
 		user-select: none;
 		justify-content: center;
 		align-items: center;
+
+		.logo {
+			padding: 1em;
+
+			&:focus {
+				outline: none;	
+			}
+		}
 	}
 
 	.components-placeholder.block-editor-media-placeholder {
