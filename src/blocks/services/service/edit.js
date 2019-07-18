@@ -18,7 +18,6 @@ const {
 	InspectorControls,
 	InnerBlocks,
 	MediaPlaceholder,
-	mediaUpload,
 } = wp.blockEditor;
 const {
 	PanelBody,
@@ -28,6 +27,7 @@ const {
 	Spinner,
 } = wp.components;
 const { dispatch, select } = wp.data;
+const { mediaUpload } = wp.editor;
 const { isBlobURL } = wp.blob;
 
 /**
