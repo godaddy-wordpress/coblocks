@@ -1,13 +1,12 @@
 /**
- * Internal dependencies
+ * Internal dependencies.
  */
-import HeadingToolbar from '../../components/heading-toolbar';
+import InspectorControls from './inspector';
 
 /**
  * External dependencies.
  */
 import { find } from 'lodash';
-import classnames from 'classnames';
 
 /**
  * WordPress dependencies
@@ -17,13 +16,10 @@ const { Component, Fragment } = wp.element;
 const {
 	AlignmentToolbar,
 	BlockControls,
-	InspectorControls,
 	InnerBlocks,
 } = wp.blockEditor;
-const { PanelBody, ToggleControl, RangeControl } = wp.components;
 const { dispatch, select } = wp.data;
 const TokenList = wp.tokenList;
-const { ENTER, SPACE } = wp.keycodes;
 
 /**
  * Constants
@@ -177,66 +173,16 @@ class Edit extends Component {
 						onChange={ this.onChangeAlignment }
 					/>
 				</BlockControls>
-				<InspectorControls>
-					<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
-						<div className="editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
-							{ layoutOptions.map( style => (
-								<div
-									key={ `style-${ style.name }` }
-									className={ classnames(
-										'editor-block-styles__item block-editor-block-styles__item',
-										{
-											'is-active': activeStyle === style,
-										}
-									) }
-									onClick={ () => this.updateStyle( style ) }
-									onKeyDown={ event => {
-										if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
-											event.preventDefault();
-											this.updateStyle( style );
-										}
-									} }
-									role="button"
-									tabIndex="0"
-									aria-label={ style.label || style.name }
-								>
-									<div className="editor-block-styles__item-preview block-editor-block-styles__item-preview">
-										{ attributes.showImages ? style.iconWithImages : style.icon }
-									</div>
-									<div className="editor-block-styles__item-label block-editor-block-styles__item-label">
-										{ style.label || style.name }
-									</div>
-								</div>
-							) ) }
-						</div>
-					</PanelBody>
-					<PanelBody title={ __( 'Group Settings' ) }>
-						<RangeControl
-							label={ __( 'Columns' ) }
-							value={ attributes.columns }
-							min={ 1 }
-							max={ 3 }
-							onChange={ columns => setAttributes( { columns } ) }
-						/>
-						<p>{ __( 'Heading Level' ) }</p>
-						<HeadingToolbar
-							minLevel={ 1 }
-							maxLevel={ 7 }
-							selectedLevel={ attributes.headingLevel }
-							onChange={ this.onChangeHeadingLevel }
-						/>
-						<ToggleControl
-							label={ __( 'Action Buttons' ) }
-							help={
-								attributes.showCtas ?
-									__( 'Showing the call to action buttons.' ) :
-									__( 'Toggle to show call to action buttons.' )
-							}
-							checked={ attributes.showCtas }
-							onChange={ this.toggleCtas }
-						/>
-					</PanelBody>
-				</InspectorControls>
+				<InspectorControls
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					activeStyle={ activeStyle }
+					layoutOptions={ layoutOptions }
+					onChangeHeadingLevel={ this.onChangeHeadingLevel }
+					onToggleCtas={ this.toggleCtas }
+					onUpdateStyle={ this.updateStyle }
+					onSetColumns={ this.setColumns }
+				/>
 				<div className={ className } data-columns={ attributes.columns }>
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
