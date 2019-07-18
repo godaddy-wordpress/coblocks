@@ -1,3 +1,113 @@
+:-ms-fullscreen,
+:root .entry-content {
+	.wp-block-coblocks-hero {
+		&__inner {
+			// display: -ms-flex;
+			// display: grid;
+			// -ms-grid-columns: (auto) [3];
+
+			// grid-template-columns: repeat(3, auto);
+			// -ms-grid-rows: (1fr) [3];
+			// grid-template-rows: repeat(3, 1fr);
+			// position: relative;
+
+			display: table;
+			width: 100%;
+
+			&.hero-center-left-align {
+				.wp-block-coblocks-hero__box {
+					display: table-cell;
+					vertical-align: middle;
+					width: 30%;
+					h2 {
+						width: 33%;
+					}
+					p {
+						width: 33%;
+					}
+				}
+			}
+			&.hero-top-left-align {
+				> .wp-block-coblocks-hero__box {
+					display: table-cell;
+					vertical-align: middle;
+					width: 30%;
+				}
+			}
+
+			&.hero-top-center-align {
+				> .wp-block-coblocks-hero__box {
+					display: table-cell;
+					vertical-align: middle;
+					width: 30%;
+				}
+			}
+
+			&.hero-top-right-align {
+				> .wp-block-coblocks-hero__box {
+					display: table-cell;
+					vertical-align: middle;
+					width: 30%;
+				}
+			}
+
+			&.hero-center-center-align {
+				> .wp-block-coblocks-hero__box {
+					display: table-cell;
+					vertical-align: middle;
+					width: 30%;
+				}
+			}
+
+			&.hero-center-center-align.is-fullscreen {
+				> .wp-block-coblocks-hero__box {
+					display: table-cell;
+					vertical-align: middle;
+					width: 30%;
+				}
+			}
+
+			&.hero-center-right-align {
+				> .wp-block-coblocks-hero__box {
+					display: table-cell;
+					vertical-align: middle;
+					width: 30%;
+					h2 {
+						width: 33%;
+					}
+					p {
+						width: 33%;
+					}
+				}
+			}
+
+			&.hero-bottom-left-align {
+				> .wp-block-coblocks-hero__box {
+					display: table-cell;
+					vertical-align: middle;
+					width: 30%;
+				}
+			}
+
+			&.hero-bottom-center-align {
+				> .wp-block-coblocks-hero__box {
+					display: table-cell;
+					vertical-align: middle;
+					width: 30%;
+				}
+			}
+
+			&.hero-bottom-right-align {
+				> .wp-block-coblocks-hero__box {
+					display: table-cell;
+					vertical-align: middle;
+					width: 30%;
+				}
+			}
+		}
+	}
+}
+
 .wp-block-coblocks-hero {
 	position: relative;
 
