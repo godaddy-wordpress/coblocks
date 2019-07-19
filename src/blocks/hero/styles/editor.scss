@@ -22,7 +22,8 @@
 			box-shadow: none;
 			flex: 0 0 32%;
 			height: 100%;
-			padding: 20px;
+			padding: 18px;
+			width:50%;
 
 			svg {
 				display: flex;
@@ -46,13 +47,13 @@
 		}
 
 		.is-selected {
-			width: 50%;
+			// width: 15%;
 			z-index: 99;
 		}
 
 		.is-selected .components-button {
 			background: $dark-gray-500;
-			width: 50%;
+			// width: 50%;
 
 			&:focus:enabled {
 				background: $dark-gray-500;
