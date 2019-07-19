@@ -1,33 +1,23 @@
 :-ms-fullscreen,
 :root .entry-content {
 	.wp-block-coblocks-food-item {
-		overflow: hidden; // Hides element overflow
-
 		&:nth-child(even) {
-			margin-right: 50%; // Handles grid spacing issues
+			padding-right: 0 !important;
 		}
 
 		&:nth-child(odd) {
-			margin-left: 50%; // Handles grid spacing issues
+			padding-left: 0 !important;
 		}
 	}
 }
 
 :-ms-fullscreen,
 :root .wp-block-coblocks-food-item {
-	// Handle image display both on page and in-editor
 	figure {
-		margin-top: 33px;
-		overflow: hidden;
-		padding-top: 65%;
-		width: 100%;
-
 		img {
-			height: auto;
-			left: -10px !important;
-			position: absolute;
-			top: -30px !important;
-			width: 100%;
+			margin-left: 5%;
+			max-width: 90%;
+  			min-height: 100%;
 		}
 	}
 }
