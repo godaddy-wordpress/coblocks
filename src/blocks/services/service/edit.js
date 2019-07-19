@@ -96,7 +96,9 @@ class Edit extends Component {
 		}
 
 		if ( this.props.attributes.showCta !== prevProps.attributes.showCta ) {
-			this.manageInnerBlock( 'core/button', {}, this.props.attributes.showCta );
+			this.manageInnerBlock( 'core/button', {
+				align: this.props.attributes.alignment,
+			}, this.props.attributes.showCta );
 		}
 	}
 

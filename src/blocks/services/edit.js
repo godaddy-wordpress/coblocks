@@ -191,6 +191,7 @@ class Edit extends Component {
 							{
 								showCta: attributes.showCtas,
 								headingLevel: attributes.headingLevel,
+								alignment: attributes.alignment,
 							},
 						] ) }
 						templateLock="all"
