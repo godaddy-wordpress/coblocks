@@ -5,6 +5,7 @@
 		flex-wrap: wrap;
 		  
 		.components-button {
+			display: table-cell;
 			padding: 18px;
 			width:50%;
 		}
@@ -138,7 +139,6 @@
 			> span {
 				.components-resizable-box__handle {
 					display: block;
-					table-layout: fixed;
 				}
 			}
 		}
@@ -163,7 +163,6 @@
 			border: 0;
 			border-radius: 0 !important;
 			box-shadow: none;
-			display: table-cell;
 			height: 100%;
 			padding: 20px;
 			width: 100%;
