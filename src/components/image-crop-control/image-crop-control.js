@@ -23,7 +23,9 @@ class ImageCropControl extends Component {
             midY: offsetY + cropHeight / 2,
             dragging: false,
             containerWidth: 0,
-            aspectRatio: 1
+            aspectRatio: 1,
+            imageWidth: 1000,
+            imageHeight: 1000
         };
 
         this.mouseDownListener = this.mouseDownListener.bind(this);
@@ -42,7 +44,9 @@ class ImageCropControl extends Component {
 
     handleImageLoaded() {
         this.setState({
-            aspectRatio: this.imageReference.current.naturalWidth / this.imageReference.current.naturalHeight
+            aspectRatio: this.imageReference.current.naturalWidth / this.imageReference.current.naturalHeight,
+            imageWidth: this.imageReference.current.naturalWidth,
+            imageHeight: this.imageReference.current.naturalHeight
         });
     }
 
@@ -82,7 +86,8 @@ class ImageCropControl extends Component {
     }
 
     getCurrentScale() {
-        return Math.min(1 / (this.state.w / 100), 1 / (this.state.h / 100)) * 100;
+        let aspectScale = (this.state.r === 90 || this.state.r === 270) ? this.state.aspectRatio : 1;
+        return Math.min(Math.max(1, 1 / (this.state.w / aspectScale / aspectScale / 100)), 1 / (this.state.h / 100)) * 100;
     }
 
     updateState(nX, nY, nW, nH, nR) {
@@ -113,14 +118,6 @@ class ImageCropControl extends Component {
         }
 
         if (onChange) {
-            console.log({
-                x: nX,
-                y: nY,
-                w: nW,
-                h: nH,
-                r: nR
-            });
-
             onChange({
                 x: nX,
                 y: nY,
@@ -146,7 +143,7 @@ class ImageCropControl extends Component {
 
         let aspectScale = (newRotation === 90 || newRotation === 270) ? this.state.aspectRatio : 1;
 
-        let nW = 100 * aspectScale / zoom;
+        let nW = 100 * aspectScale * aspectScale / zoom;
         let nH = 100 / zoom;
 
         let nX = this.state.midX - nW / 2;
@@ -166,10 +163,14 @@ class ImageCropControl extends Component {
 
         let scaleX, scaleY;
         let translateX, translateY;
+        const coefficient = (self.state.r === 90 || self.state.r === 270) ? this.state.aspectRatio : 1;
+        const currentImageWidth = Math.round((self.state.imageWidth * (this.state.w / 100)) / coefficient);
+        const currentImageHeight = Math.round((self.state.imageHeight * (this.state.h / 100)) * coefficient);
+        const currentAspect = currentImageWidth / currentImageHeight;
 
         if (self.state.r === 90) {
-            scaleX = 1 / (self.state.h / 100);
-            scaleY = 1 / (self.state.w / 100);
+            scaleX = 1 / (self.state.h / 100) / currentAspect;
+            scaleY = 1 / (self.state.w / 100) * currentAspect;
             translateX = (50 - (self.state.y + self.state.h / 2));
             translateY = -(50 - (self.state.x + self.state.w / 2));
         } else if (self.state.r === 180) {
@@ -178,8 +179,8 @@ class ImageCropControl extends Component {
             translateX = -(50 - (self.state.x + self.state.w / 2));
             translateY = -(50 - (self.state.y + self.state.h / 2));
         } else if (self.state.r === 270) {
-            scaleX = 1 / (self.state.h / 100);
-            scaleY = 1 / (self.state.w / 100);
+            scaleX = 1 / (self.state.h / 100) / currentAspect;
+            scaleY = 1 / (self.state.w / 100) * currentAspect;
             translateX = -(50 - (self.state.y + self.state.h / 2));
             translateY = (50 - (self.state.x + self.state.w / 2));
         } else {
@@ -189,11 +190,13 @@ class ImageCropControl extends Component {
             translateY = 50 - (self.state.y + self.state.h / 2);
         }
 
+        const imageHeight = Math.round(this.state.containerWidth / currentAspect);
         const containerStyle = {
-            'height': Math.round(this.state.containerWidth / this.state.aspectRatio + 40) + 'px'
+            'height': (imageHeight + 40) + 'px'
         };
         const style = {
-            'transform': 'rotate(' + this.state.r + 'deg) scale(' + scaleX + ', ' + scaleY + ') translate(' + translateX + '%, ' + translateY + '%)'
+            'transform': 'rotate(' + this.state.r + 'deg) scale(' + scaleX + ', ' + scaleY + ') translate(' + translateX + '%, ' + translateY + '%)',
+            'height': imageHeight + 'px'
         };
 
         return (
