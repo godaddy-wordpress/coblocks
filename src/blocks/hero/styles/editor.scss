@@ -1,3 +1,106 @@
+:-ms-fullscreen,
+:root .components-coblocks-css-grid-selector {
+	.components-button-group {
+		display: flex;                       /* establish flex container */
+  		flex-wrap: wrap;                     /* enable flex items to wrap */
+  		justify-content: space-around;
+		// display: table;
+		// grid-template-columns: repeat(3, 1fr);
+		// grid-template-rows: repeat(1, 1fr);
+		margin-bottom: 2em;
+		width:100%;
+
+		div {
+			background: $white;
+			padding: 1px;
+		}
+
+		.components-button {
+			background: $light-gray-300;
+			border: 0;
+			border-radius: 0 !important;
+			box-shadow: none;
+			flex: 0 0 32%;
+			height: 100%;
+			padding: 20px;
+
+			svg {
+				display: flex;
+				width: 50%;
+			}
+
+			&:hover {
+				background: $light-gray-500;
+				box-shadow: inset 0 0 0 1px $dark-gray-500, inset 0 0 0 2px $white;
+			}
+
+			&:active:enabled {
+				background: $light-gray-500;
+				box-shadow: inset 0 0 0 1px $dark-gray-500, inset 0 0 0 2px $white;
+			}
+
+			&:focus:enabled {
+				background: $light-gray-500;
+				box-shadow: inset 0 0 0 1px $dark-gray-500, inset 0 0 0 2px $white;
+			}
+		}
+
+		.is-selected {
+			width: 50%;
+			z-index: 99;
+		}
+
+		.is-selected .components-button {
+			background: $dark-gray-500;
+			width: 50%;
+
+			&:focus:enabled {
+				background: $dark-gray-500;
+			}
+		}
+
+		div:nth-of-type(1) .components-button {
+			border-radius: 4px 0 0 4px !important;
+			display: table-cell;
+			width: 50%;
+		}
+
+		div:nth-of-type(3) .components-button {
+			border-radius: 0 4px 4px 0 !important;
+			width: 50%;
+		}
+	}
+
+	&.is-fullscreen .components-button-group {
+		grid-template-rows: repeat(3, 1fr);
+
+		div:nth-of-type(1) .components-button {
+			border-radius: 4px 0 0 0 !important;
+			display: table-cell;
+			width: 50%
+		}
+
+		div:nth-of-type(3) .components-button {
+			border-radius: 0 4px 0 0 !important;
+			display: table-cell;
+			width: 50%;
+			
+		}
+
+		div:nth-last-of-type(1) .components-button {
+			border-radius: 0 0 4px 0 !important;
+			display: table-cell;
+			width: 50%
+		}
+
+		div:nth-last-of-type(3) .components-button {
+			border-radius: 0 0 0 4px !important;
+			display: table-cell;
+			width: 50%
+		}
+	}
+}
+
 .wp-block[data-type="coblocks/hero"] {
 	background: transparent !important;
 
@@ -125,6 +228,7 @@
 			> span {
 				.components-resizable-box__handle {
 					display: block;
+					table-layout: fixed;
 				}
 			}
 		}
@@ -149,6 +253,7 @@
 			border: 0;
 			border-radius: 0 !important;
 			box-shadow: none;
+			display: table-cell;
 			height: 100%;
 			padding: 20px;
 			width: 100%;
