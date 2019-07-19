@@ -21,7 +21,6 @@ class ImageCropControl extends Component {
             r: rotation,
             midX: offsetX + cropWidth / 2,
             midY: offsetY + cropHeight / 2,
-            dragging: false,
             containerWidth: 0,
             aspectRatio: 1,
             imageWidth: 1000,
@@ -51,12 +50,12 @@ class ImageCropControl extends Component {
     }
 
     mouseDownListener(e) {
+        if (e.button !== 0) {
+            return;
+        }
+
         e.preventDefault();
         e.stopPropagation();
-
-        this.setState({
-            dragging: true
-        });
 
         this.captureMouseEvents();
     }
@@ -70,7 +69,8 @@ class ImageCropControl extends Component {
         e.preventDefault();
         e.stopPropagation();
 
-        this.updateState(this.state.x + e.movementX * 0.35, this.state.y + e.movementY * 0.35, this.state.w, this.state.h, this.state.r);
+        const moveSpeed = 100 / this.getCurrentScale();
+        this.updateState(this.state.x - e.movementX * moveSpeed, this.state.y - e.movementY * moveSpeed, this.state.w, this.state.h, this.state.r);
     }
 
     mouseUpListener(e) {
@@ -161,31 +161,30 @@ class ImageCropControl extends Component {
             'components-coblocks-image-control'
         );
 
-        let scaleX, scaleY;
-        let translateX, translateY;
+        let scaleX, scaleY, translateX, translateY;
         const coefficient = (self.state.r === 90 || self.state.r === 270) ? this.state.aspectRatio : 1;
         const currentImageWidth = Math.round((self.state.imageWidth * (this.state.w / 100)) / coefficient);
         const currentImageHeight = Math.round((self.state.imageHeight * (this.state.h / 100)) * coefficient);
         const currentAspect = currentImageWidth / currentImageHeight;
 
-        if (self.state.r === 90) {
+        if (self.state.r === 90 || self.state.r === 270) {
             scaleX = 1 / (self.state.h / 100) / currentAspect;
             scaleY = 1 / (self.state.w / 100) * currentAspect;
-            translateX = (50 - (self.state.y + self.state.h / 2));
-            translateY = -(50 - (self.state.x + self.state.w / 2));
-        } else if (self.state.r === 180) {
-            scaleX = 1 / (self.state.w / 100);
-            scaleY = 1 / (self.state.h / 100);
-            translateX = -(50 - (self.state.x + self.state.w / 2));
-            translateY = -(50 - (self.state.y + self.state.h / 2));
-        } else if (self.state.r === 270) {
-            scaleX = 1 / (self.state.h / 100) / currentAspect;
-            scaleY = 1 / (self.state.w / 100) * currentAspect;
-            translateX = -(50 - (self.state.y + self.state.h / 2));
-            translateY = (50 - (self.state.x + self.state.w / 2));
         } else {
             scaleX = 1 / (self.state.w / 100);
             scaleY = 1 / (self.state.h / 100);
+        }
+
+        if (self.state.r === 90) {
+            translateX = (50 - (self.state.y + self.state.h / 2));
+            translateY = -(50 - (self.state.x + self.state.w / 2));
+        } else if (self.state.r === 180) {
+            translateX = -(50 - (self.state.x + self.state.w / 2));
+            translateY = -(50 - (self.state.y + self.state.h / 2));
+        } else if (self.state.r === 270) {
+            translateX = -(50 - (self.state.y + self.state.h / 2));
+            translateY = (50 - (self.state.x + self.state.w / 2));
+        } else {
             translateX = 50 - (self.state.x + self.state.w / 2);
             translateY = 50 - (self.state.y + self.state.h / 2);
         }
