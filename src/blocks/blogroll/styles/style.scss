@@ -158,11 +158,13 @@
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
+  word-break: break-word;
 
   h5 {
 	margin: 0!important;
 
 	a {
+	  color: inherit;
 	  text-decoration: none;
 	}
 
