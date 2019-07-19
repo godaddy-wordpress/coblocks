@@ -1,16 +1,3 @@
-// Backwards compatibility for IE 11.
-// :-ms-fullscreen,
-// :root .entry-content {
-// 	.wp-block-coblocks-food-and-drinks {
-
-// 		// display: flex;
-// 		// table-layout: fixed;
-// 		// flex: 50%;
-// 		// justify-content: space-between;
-// 		// flex-wrap: wrap;
-// 	}
-// }
-
 .wp-block-coblocks-food-and-drinks {
 	display: flex;
 	flex-flow: row wrap;
