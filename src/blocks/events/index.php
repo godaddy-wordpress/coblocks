@@ -32,14 +32,24 @@ function render_block_events($attributes, $content)
 				'useTimeZoneWithRRules'       => false, // Default value
 			));
 			$ical->initUrl($attributes['externalCalendarUrl']);
-			$events = $ical->eventsFromInterval('1 week');
 
-			$eventsLayout = '<div class="wp-block-coblocks-events">';
+			if ($attributes['eventsRange'] === "all") {
+				$events = $ical->eventsFromRange();
+			} else {
+				$events = $ical->eventsFromInterval($attributes['eventsRange']);
+			}
+			// we limit the events to 100
+			$events = array_slice($events, 0, 100);
+
 			$text_color_class  = is_array( $attributes ) && isset( $attributes['textColor'] ) ? "has-{$attributes['textColor']}-color" : false;
 			$custom_text_color = is_array( $attributes ) && isset( $attributes['customTextColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['textColor'] ) ) ? "color: {$attributes['customTextColor']};" : '';
+			$align = is_array( $attributes ) && isset( $attributes['align'] ) ? "align{$attributes['align']} " : '';
 
-			foreach ($events as $event) {
-				$eventsLayout .= '<div class="wp-block-coblocks-event-item"><div class="wp-block-coblocks-event-item__content">';
+			$eventsLayout = sprintf('<div class="wp-block-coblocks-events imported-events %1$s">', $align);
+
+			foreach ($events as $i => $event) {
+				$pageNum = (int) ($i / $attributes['eventsToShow']);
+				$eventsLayout .= sprintf('<div class="wp-block-coblocks-event-item" data-page="%1$s"><div class="wp-block-coblocks-event-item__content">', $pageNum);
 
 				$dtstart	  = $ical->iCalDateToDateTime($event->dtstart_array[3]);
 				$dtend 		  = $ical->iCalDateToDateTime($event->dtend_array[3]);
@@ -48,13 +58,14 @@ function render_block_events($attributes, $content)
 				$day 		  = date('D', $start_date_string);
 				$month 		  = date('F', $start_date_string);
 				$day_of_month = date('d', $start_date_string);
-				$start_time   = date("g:iA", $start_date_string);
-				$end_time     = date("g:iA", $end_date_string);
+				$start_time   = date("g:ia", $start_date_string);
+				$end_time     = date("g:ia", $end_date_string);
+				$time_string  = $start_time .' - '.$end_time;
 				$title		  = $event->summary;
 				$desctiption  = $event->description;
 				$location	  = $event->location;
 				$eventsLayout .= sprintf(
-					'<div class="wp-block-coblocks-event-item__dates %1$s" style="%2$s"><p class="wp-block-coblocks-event-item__day">%3$s</p><h4 class="wp-block-coblocks-event-item__month">%4$s</h4><h4 class="wp-block-coblocks-event-item__date">%5$s</h4></div>',
+					'<div class="wp-block-coblocks-event-item__dates has-text-color %1$s" style="%2$s"><p class="wp-block-coblocks-event-item__day">%3$s</p><h4 class="wp-block-coblocks-event-item__month">%4$s</h4><h4 class="wp-block-coblocks-event-item__date">%5$s</h4></div>',
 					esc_attr($text_color_class),
 					esc_attr($custom_text_color),
 					$day,
@@ -62,8 +73,31 @@ function render_block_events($attributes, $content)
 					$day_of_month
 				);
 
+				$eventsLayout .= sprintf(
+					'<div class="wp-block-coblocks-event-item__heading-wrapper has-text-color %1$s" style="%2$s"><h4 class="wp-block-coblocks-event-item__heading">%3$s</h4><p class="wp-block-coblocks-event-item__description">%4$s<p class="show-more-details">EVENT DETAILS</p></p></div>',
+					esc_attr($text_color_class),
+					esc_attr($custom_text_color),
+					$title,
+					$desctiption
+				);
+
+				$eventsLayout .= sprintf(
+					'<div class="wp-block-coblocks-event-item__time-and-location has-text-color %1$s" style="%2$s"><h5 class="wp-block-coblocks-event-item__time">%3$s</h5><p class="wp-block-coblocks-event-item__location">%4$s</p></div>',
+					esc_attr($text_color_class),
+					esc_attr($custom_text_color),
+					$time_string,
+					$location
+				);
+
 				$eventsLayout .= '</div></div>';
-			 }
+			}
+
+			if (count($events) > 5) {
+				$eventsLayout .= sprintf('<div class="wp-block-coblocks-events__more-events-wrapper has-text-color %1$s" style="%2$s"><p>More Events</p></div>',
+					esc_attr($text_color_class),
+					esc_attr($custom_text_color)
+				);
+			}
 
 			$eventsLayout .= '</div>';
 
@@ -87,6 +121,14 @@ function register_block_events()
 		return;
 	}
 
+	$dir = CoBlocks()->asset_source( 'js' );
+
+	wp_register_script(
+		'coblocks-events-pagination',
+		$dir . 'coblocks-events-pagination' . COBLOCKS_ASSET_SUFFIX . '.js',
+		array( 'jquery')
+	);
+
 	register_block_type(
 		'coblocks/events',
 		array(
@@ -105,8 +147,28 @@ function register_block_events()
 				'textColor' => array(
 					'type' => 'string',
 				),
+				'customTextColor' => array(
+					'type' => 'string',
+				),
+				'eventsRange' => array(
+					'type' => 'string',
+					'default' => 'all',
+				),
+				'eventsToShow' => array(
+					'type' => 'number',
+					'default' => 5,
+				),
+				'currrentPage' => array(
+					'type' => 'number',
+					'default' => 0,
+				),
+				'align'        => array(
+					'type'    => 'string',
+					'default' => 'wide',
+				)
 			),
 			'render_callback' => 'render_block_events',
+			'editor_script'   => 'coblocks-events-pagination',
 		)
 	);
 }

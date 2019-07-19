@@ -1,23 +1,34 @@
+.wp-block[data-type="coblocks/event-item"] {
+  width: 100%;
+}
+
 .wp-block-coblocks-event-item {
 	display: block;
 	flex: 1 100%;
-	padding: 0 !important;
-  	margin-bottom: 30px;
+  	padding: 40px 0 !important;
+  	border-bottom: 1px solid #bfbfbf;
 
   .wp-block-coblocks-event-item__content {
 	display: flex;
 	justify-content: space-between;
 
 	.wp-block-coblocks-event-item__dates {
-	  flex-basis: 20%;
+	  flex-basis: 25%;
+	  max-width: 25%;
+	  padding-right: 24px;
 	}
 
 	.wp-block-coblocks-event-item__heading-wrapper {
-	  flex-basis: 60%;
+	  flex-basis: 50%;
+	  max-width: 50%;
+	  padding: 0 24px;
 	}
 
 	.wp-block-coblocks-event-item__time-and-location {
-	  flex-basis: 20%;
+	  flex-basis: 25%;
+	  max-width: 25%;
+	  padding-left: 24px;
+	  text-align: right;
 	}
 
 	.wp-block-coblocks-event-item__time {

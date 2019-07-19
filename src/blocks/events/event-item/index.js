@@ -71,6 +71,9 @@ const attributes = {
 		type: 'string',
 		default: '#000000',
 	},
+	customTextColor: {
+		type: 'string',
+	},
 };
 
 const settings = {

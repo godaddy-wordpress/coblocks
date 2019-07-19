@@ -16,7 +16,7 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { Toolbar, Placeholder, Button, TextControl } = wp.components;
+const { Toolbar, Placeholder, Button, TextControl, ServerSideRender } = wp.components;
 const { compose } = wp.compose;
 const { withSelect, dispatch, select } = wp.data;
 const { InnerBlocks, BlockControls } = wp.blockEditor;
@@ -166,6 +166,7 @@ class EventItem extends Component {
 					onUpdateTextColor={ this.updateTextColor }
 					onToggleCalendarLink={ this.toggleCalendarLink }
 				/>
+				{ ! attributes.linkACalendar &&
 				<div
 					className={ classnames( className, {
 						'child-selected': isSelected || clientId === selectedParentClientId,
@@ -182,6 +183,14 @@ class EventItem extends Component {
 						<CustomAppender onClick={ this.insertNewItem } />
 					) }
 				</div>
+				}
+				{ attributes.linkACalendar &&
+				<ServerSideRender
+					block="coblocks/events"
+					attributes={ this.props.attributes }
+					className="coblocks-ical-events"
+				/>
+				}
 			</Fragment>
 		);
 	}

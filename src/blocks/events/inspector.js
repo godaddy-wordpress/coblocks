@@ -8,7 +8,7 @@ import applyWithColors from './colors';
  */
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
-const { PanelBody, ToggleControl } = wp.components;
+const { PanelBody, ToggleControl, SelectControl, RangeControl } = wp.components;
 const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.blockEditor;
 
 const Inspector = props => {
@@ -29,6 +29,13 @@ const Inspector = props => {
 		},
 	];
 
+	const eventsRange = [
+		{ value: '1 week', label: __( '1 Week' ) },
+		{ value: '2 weeks', label: __( '2 Weeks' ) },
+		{ value: '1 month', label: __( '1 Month' ) },
+		{ value: 'all', label: __( 'Fetch all' ) },
+	];
+
 	return (
 		<InspectorControls>
 			<PanelBody title={ __( 'Events Settings' ) } initialOpen={ true }>
@@ -42,6 +49,24 @@ const Inspector = props => {
 					checked={ attributes.linkACalendar }
 					onChange={ onToggleCalendarLink }
 				/>
+				{ attributes.linkACalendar &&
+				<SelectControl
+					label={ __( 'Period' ) }
+					value={ attributes.eventsRange }
+					options={ eventsRange }
+					help={ __( 'Show the events from the period (100 events max).' ) }
+					onChange={ ( value ) => setAttributes( { eventsRange: value } ) }
+				/>
+				}
+				{ attributes.linkACalendar &&
+				<RangeControl
+					label={ __( 'Number of events to show per page' ) }
+					value={ attributes.eventsToShow }
+					onChange={ ( value ) => setAttributes( { eventsToShow: value } ) }
+					min={ 5 }
+					max={ 15 }
+				/>
+				}
 			</PanelBody>
 			<PanelColorSettings
 				title={ __( 'Color Settings' ) }
