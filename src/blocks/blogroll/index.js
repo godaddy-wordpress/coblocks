@@ -15,11 +15,16 @@ const title = __( 'Blogroll' );
 
 const icon = icons.blog;
 
+const keywords = [
+	__( 'posts' ),
+	__( 'articles' ),
+];
+
 const settings = {
 	title: title,
 	description: __( 'Display a list of your most recent posts.' ),
 	icon,
-	keywords: [ __( 'blog posts' ) ],
+	keywords: keywords,
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
