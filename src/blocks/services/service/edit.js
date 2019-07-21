@@ -1,6 +1,7 @@
 /**
  * Internal dependencies
  */
+import InspectorControls from './inspector';
 
 /**
  * External dependencies.
@@ -15,19 +16,16 @@ const { Component, Fragment } = wp.element;
 const {
 	AlignmentToolbar,
 	BlockControls,
-	InspectorControls,
 	InnerBlocks,
 	MediaPlaceholder,
-	mediaUpload,
 } = wp.blockEditor;
 const {
-	PanelBody,
-	ToggleControl,
 	DropZone,
 	IconButton,
 	Spinner,
 } = wp.components;
 const { dispatch, select } = wp.data;
+const { mediaUpload } = wp.editor;
 const { isBlobURL } = wp.blob;
 
 /**
@@ -37,13 +35,13 @@ const ALLOWED_BLOCKS = [ 'core/heading', 'core/button' ];
 
 class Edit extends Component {
 	updateInnerAttributes = ( blockName, newAttributes ) => {
-		const innerItems = select( 'core/editor' ).getBlocksByClientId(
+		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
 			this.props.clientId
 		)[ 0 ].innerBlocks;
 
 		innerItems.map( item => {
 			if ( item.name === blockName ) {
-				dispatch( 'core/editor' ).updateBlockAttributes(
+				dispatch( 'core/block-editor' ).updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
@@ -52,7 +50,7 @@ class Edit extends Component {
 	};
 
 	manageInnerBlock = ( blockName, blockAttributes, show = true ) => {
-		const innerItems = select( 'core/editor' ).getBlocksByClientId(
+		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
 			this.props.clientId
 		)[ 0 ].innerBlocks;
 
@@ -98,7 +96,9 @@ class Edit extends Component {
 		}
 
 		if ( this.props.attributes.showCta !== prevProps.attributes.showCta ) {
-			this.manageInnerBlock( 'core/button', {}, this.props.attributes.showCta );
+			this.manageInnerBlock( 'core/button', {
+				align: this.props.attributes.alignment,
+			}, this.props.attributes.showCta );
 		}
 	}
 
@@ -137,7 +137,7 @@ class Edit extends Component {
 	renderImage() {
 		const { attributes, setAttributes, isSelected } = this.props;
 
-		const classes = classnames( 'wp-block-coblocks-food-item__figure', {
+		const classes = classnames( 'wp-block-coblocks-service__figure', {
 			'is-transient': isBlobURL( attributes.imageUrl ),
 			'is-selected': isSelected,
 		} );
@@ -165,7 +165,7 @@ class Edit extends Component {
 					) }
 					{ dropZone }
 					{ isBlobURL( attributes.imageUrl ) && <Spinner /> }
-					<img src={ attributes.imageUrl } alt={ attributes.imageAlt } />
+					<img src={ attributes.imageUrl } alt={ attributes.imageAlt } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined } } />
 				</figure>
 			</Fragment>
 		);
@@ -215,29 +215,21 @@ class Edit extends Component {
 						onChange={ this.onChangeAlignment }
 					/>
 				</BlockControls>
-				<InspectorControls>
-					<PanelBody title={ __( 'Group Settings' ) }>
-						<ToggleControl
-							label={ __( 'Action Buttons' ) }
-							help={
-								attributes.showCta ?
-									__( 'Showing the call to action buttons.' ) :
-									__( 'Toggle to show call to action buttons.' )
-							}
-							checked={ attributes.showCta }
-							onChange={ this.toggleCta }
-						/>
-					</PanelBody>
-				</InspectorControls>
-
+				<InspectorControls
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					onToggleCta={ this.toggleCta }
+				/>
 				<div className={ className }>
 					{ attributes.imageUrl ? this.renderImage() : this.renderPlaceholder() }
-					<InnerBlocks
-						allowedBlocks={ ALLOWED_BLOCKS }
-						template={ TEMPLATE }
-						templateLock={ false }
-						templateInsertUpdatesSelection={ false }
-					/>
+					<div className="wp-block-coblocks-service__content">
+						<InnerBlocks
+							allowedBlocks={ ALLOWED_BLOCKS }
+							template={ TEMPLATE }
+							templateLock={ false }
+							templateInsertUpdatesSelection={ false }
+						/>
+					</div>
 				</div>
 			</Fragment>
 		);

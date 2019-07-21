@@ -10,8 +10,7 @@ const { PanelBody, TextareaControl, ExternalLink } = wp.components;
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.updateAlt = this.updateAlt.bind( this );
 	}
@@ -21,15 +20,8 @@ class Inspector extends Component {
 	}
 
 	render() {
-
-		const {
-			attributes,
-			setAttributes
-		} = this.props;
-
-		const {
-			alt,
-		} = attributes;
+		const { attributes } = this.props;
+		const { alt } = attributes;
 
 		return (
 			<Fragment>
@@ -53,6 +45,6 @@ class Inspector extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Inspector;
