@@ -103,6 +103,52 @@ const settings = {
 			</div>
 		);
 	},
+	deprecated: [
+		{
+			attributes: {
+				...blockAttributes,
+				gutter: {
+					type: 'string',
+					default: 'medium',
+				},
+				stacked: {
+					type: 'boolean',
+					default: false,
+				},
+			},
+			save( { attributes, className } ) {
+				const {
+					gutter,
+					stacked,
+					contentAlign,
+					isStackedOnMobile,
+				} = attributes;
+
+				const classes = classnames(
+					className, {
+
+					}
+				);
+
+				const innerClasses = classnames(
+					'wp-block-coblocks-buttons__inner', {
+						[ `flex-align-${ contentAlign }` ]: contentAlign,
+						[ `has-${ gutter }-gutter` ]: gutter,
+						'is-stacked': stacked,
+						'is-stacked-on-mobile': isStackedOnMobile,
+					}
+				);
+
+				return (
+					<div className={ classes }>
+						<div className={ innerClasses }>
+							<InnerBlocks.Content />
+						</div>
+					</div>
+				);
+			},
+		}
+	],
 };
 
 export { name, title, icon, settings };
