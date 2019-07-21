@@ -111,7 +111,6 @@ class Edit extends Component {
 						value={ features }
 						placeholder={ __( 'Add features' ) }
 						keepPlaceholderOnFocus
-						formattingControls={ [] }
 					/>
 					<InnerBlocks
 						template={ TEMPLATE }
