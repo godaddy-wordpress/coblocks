@@ -1,4 +1,9 @@
 .wp-block-coblocks-services {
+	[data-block] {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+
 	.block-editor-inner-blocks {
 		width: 100%;
 	}
