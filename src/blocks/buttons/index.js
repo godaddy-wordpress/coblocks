@@ -18,7 +18,6 @@ const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
 const { RichText, getColorClassName, getFontSizeClass, InnerBlocks } = wp.blockEditor;
 
-
 /**
  * Block constants
  */
