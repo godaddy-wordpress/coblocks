@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { hasEmptyAttributes } from '../../../utils/block-helpers';
 
 /**
  * Internal dependencies
@@ -16,6 +17,15 @@ import icons from './../../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { RichText, getColorClassName, InnerBlocks } = wp.blockEditor;
+
+const isEmpty = attributes => {
+	const attributesToCheck = [ 'title', 'features', 'currency', 'amount' ];
+	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
+		attributesToCheck.includes( key )
+	);
+
+	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
+};
 
 /**
  * Block constants
@@ -130,7 +140,8 @@ const settings = {
 			color: textColorClass ? undefined : customTextColor,
 		};
 
-		return (
+
+		return isEmpty( attributes ) ? null : (
 			<div
 				className={ classes }
 				style={ styles }
