@@ -51,9 +51,9 @@ class Logos extends Component {
 										} }
 										enable={ {
 											top: false,
-											right: true,
+											right: index !== ( images.length - 1 ),
 											bottom: false,
-											left: true,
+											left: index !== 0,
 											topRight: false,
 											bottomRight: false,
 											bottomLeft: false,
