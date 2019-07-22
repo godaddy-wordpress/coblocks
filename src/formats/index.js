@@ -8,9 +8,9 @@ import { uppercase } from './uppercase';
  */
 const { registerFormatType } = wp.richText;
 
-function registerFormats () {
+function registerFormats() {
 	[
 		uppercase,
 	].forEach( ( { name, ...settings } ) => registerFormatType( name, settings ) );
-};
+}
 registerFormats();
