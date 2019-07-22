@@ -90,12 +90,6 @@ const settings = {
 		{ name: 'error', label: _x( 'Error', 'block style' ) },
 	],
 
-	supports: {
-		align: true,
-		alignWide: false,
-		alignFull: false,
-	},
-
 	transforms: {
 		from: [
 			{
@@ -161,6 +155,7 @@ const settings = {
 		const classes = classnames( {
 			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
+			[ `has-text-align-${ textAlign }` ]: textAlign,
 			'has-background': backgroundColor || customBackgroundColor,
 			[ backgroundClass ]: backgroundClass,
 		} );
@@ -168,7 +163,6 @@ const settings = {
 		const styles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			color: textClass ? undefined : customTextColor,
-			textAlign: textAlign ? textAlign : null,
 		};
 
 		return (
@@ -209,7 +203,11 @@ const settings = {
 					type: 'string',
 				},
 			},
-
+			supports: {
+				align: true,
+				alignWide: false,
+				alignFull: false,
+			},
 			save( { attributes, className } ) {
 				const {
 					align,
