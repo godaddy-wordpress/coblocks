@@ -8,6 +8,11 @@ $gutter: 1em;
 		justify-content: space-between;
 	}
 
+	&.alignfull {
+		padding-left: $gutter * 2;
+		padding-right: $gutter * 2;
+	}
+
 	> .wp-block-coblocks-service:last-child {
 		margin-bottom: 0;
 	}

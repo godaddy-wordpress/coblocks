@@ -1,9 +1,14 @@
-$gutter: 0.25em;
+$gutter: 0.3em;
 
 .wp-block-coblocks-services {
 	[data-block] {
 		margin-bottom: 0;
 		margin-top: 0;
+	}
+
+	[data-align="full"] & {
+		padding-left: $gutter * 6;
+		padding-right: $gutter * 6;
 	}
 
 	.block-editor-inner-blocks {
