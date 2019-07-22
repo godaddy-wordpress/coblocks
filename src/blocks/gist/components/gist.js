@@ -106,6 +106,7 @@ class Gist extends Component {
 	}
 
 	_handleScriptError() {
+		console.log( 'script error' );
 		this.props.noticeOperations.createErrorNotice( 'Error message' );
 		this.setState( {
 			error: true,
@@ -126,10 +127,12 @@ class Gist extends Component {
 		};
 		const gistScript = document.createElement( 'script' );
 		gistScript.type = 'text/javascript';
+		console.log( gistCallback );
 		gistScript.src = this._tranformedURL( gistCallback );
 		gistScript.onerror = function( err ) {
 			_handleScriptError();
 		};
+		console.log( gistScript );
 		document.head.appendChild( gistScript );
 		this.setState( { rendered: true } );
 	}
@@ -184,6 +187,9 @@ class Gist extends Component {
 				}
 			);
 		}
+		// Render as html.
+		// https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
+		return <div dangerouslySetInnerHTML={ { __html: this.state.gistContent } } />;
 	}
 
 	render() {

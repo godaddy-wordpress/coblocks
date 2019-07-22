@@ -70,7 +70,6 @@ class TypographyControls extends Component {
 			textTransform,
 		} = attributes;
 
-
 		const weight = [
 			{
 				value: '',

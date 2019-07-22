@@ -25,11 +25,7 @@ class Controls extends Component {
 			setState,
 		} = this.props;
 
-		const {
-			file,
-			meta,
-			url,
-		} = attributes;
+		const { file, meta } = attributes;
 
 		const customControls = [
 			{
@@ -40,7 +36,7 @@ class Controls extends Component {
 			},
 		];
 
-		return [
+		return (
 			<Fragment>
 				<BlockControls>
 					<Toolbar>
@@ -76,7 +72,7 @@ class Controls extends Component {
 								aria-label={ __( 'GitHub File' ) }
 								className={ `${ className }__file` }
 								id={ `${ className }__file` }
-								onChange={ ( event ) => setAttributes( { file: event.target.value } ) }
+								onChange={ event => setAttributes( { file: event.target.value } ) }
 								placeholder={ __( 'File' ) }
 								type="text"
 								value={ file }
@@ -84,8 +80,8 @@ class Controls extends Component {
 						</Toolbar>
 					) }
 				</BlockControls>
-			</Fragment>,
-		];
+			</Fragment>
+		);
 	}
 }
 

@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-import get from 'lodash/get';
 import classnames from 'classnames';
 
 /**
@@ -18,7 +17,7 @@ import icons from './../../utils/icons';
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
 const { RichText, getColorClassName, getFontSizeClass } = wp.blockEditor;
-const { join, split, create, toHTMLString } = wp.richText;
+const { split, create, toHTMLString } = wp.richText;
 
 /**
  * Block constants
@@ -97,8 +96,7 @@ const settings = {
 			{
 				type: 'block',
 				blocks: [ 'core/pullquote' ],
-				transform: ( { value, ...attrs } ) => {
-
+				transform: ( { value } ) => {
 					const pieces = split( create( { html: value, multilineTag: 'p' } ), '\u2028' );
 
 					return [
@@ -111,8 +109,7 @@ const settings = {
 			{
 				type: 'block',
 				blocks: [ 'core/quote' ],
-				transform: ( { value, ...attrs } ) => {
-
+				transform: ( { value } ) => {
 					const pieces = split( create( { html: value, multilineTag: 'p' } ), '\u2028' );
 
 					return [
@@ -151,7 +148,6 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes } ) {
-
 		const {
 			buttonColor,
 			buttonText,
@@ -166,9 +162,9 @@ const settings = {
 			via,
 		} = attributes;
 
-		const viaUrl = via ? `&via=${via}` : '';
+		const viaUrl = via ? `&via=${ via }` : '';
 
-		const tweetUrl = `http://twitter.com/share?&text=${ encodeURIComponent( content ) }&url=${url}${viaUrl}`;
+		const tweetUrl = `http://twitter.com/share?&text=${ encodeURIComponent( content ) }&url=${ url }${ viaUrl }`;
 
 		const textColorClass = getColorClassName( 'color', textColor );
 
@@ -188,7 +184,7 @@ const settings = {
 		const buttonColorClass = getColorClassName( 'background-color', buttonColor );
 
 		const buttonClasses = classnames( 'wp-block-coblocks-click-to-tweet__twitter-btn', {
-			'has-button-color':  buttonColor || customButtonColor,
+			'has-button-color': buttonColor || customButtonColor,
 			[ buttonColorClass ]: buttonColorClass,
 		} );
 
