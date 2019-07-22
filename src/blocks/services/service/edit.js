@@ -150,7 +150,7 @@ class Edit extends Component {
 			<Fragment>
 				<figure className={ classes }>
 					{ isSelected && (
-						<div className="wp-block-coblocks-service__remove-menu">
+						<div className="components-coblocks-gallery-item__remove-menu">
 							<IconButton
 								icon="no-alt"
 								onClick={ () => setAttributes( { imageUrl: '' } ) }

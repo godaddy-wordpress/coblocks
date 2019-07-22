@@ -62,21 +62,6 @@
 		}
 	}
 
-	&__remove-menu {
-		background-color: theme(primary);
-		display: inline-flex;
-		padding: 2px;
-		position: absolute;
-		right: 2px;
-		top: 2px;
-		transition: padding 0.1s linear;
-		z-index: 20;
-
-		svg {
-			position: relative;
-		}
-	}
-
 	&__figure {
 		&.is-selected {
 			&::after {
