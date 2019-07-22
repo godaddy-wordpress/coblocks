@@ -63,6 +63,9 @@ const blockAttributes = {
 	customTextColor: {
 		type: 'string',
 	},
+	placeholder: {
+		type: 'string',
+	},
 };
 
 const settings = {
