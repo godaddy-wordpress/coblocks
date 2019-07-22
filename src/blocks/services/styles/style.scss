@@ -1,32 +1,66 @@
 .wp-block-coblocks-services {
 	display: flex;
-	flex-flow: row nowrap;
+	flex-direction: column;
+	flex-wrap: wrap;
 	justify-content: space-between;
 
-	// On small screens, we are no longer using row direction but column.
-	@media all and (max-width: 514px) {
-		flex-direction: column;
+	@media all and (min-width: 514px) {
+		flex-direction: row;
 	}
 
-	> div {
+	> .wp-block-coblocks-service {
 		flex: 1 100%;
 		margin: 0 0 3rem;
 		max-width: 100%;
+
+		@media all and (min-width: 514px) {
+			margin: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 
 	@media all and (min-width: 514px) {
-		> .wp-block-coblocks-service {
-			margin: 0 1em 0;
-		}
-
 		&[data-columns="2"] > .wp-block-coblocks-service {
-			flex: 1 calc(100% / 2);
-			max-width: calc(100% / 2);
+			flex-basis: 50%;
+			max-width: calc(100% / 2 - 1rem);
 		}
 
 		&[data-columns="3"] > .wp-block-coblocks-service {
-			flex: 1 calc(100% / 3);
-			max-width: calc(100% / 3);
+			flex-basis: 33.333%;
+			max-width: calc(100% / 3 - 1rem);
+		}
+	}
+
+	@media all and (min-width: 514px) and (max-width: 1200px) {
+		&[data-columns="4"] > .wp-block-coblocks-service {
+			flex-basis: 50%;
+			margin-bottom: 3rem;
+			max-width: calc(100% / 2 - 1rem);
+
+			&:nth-child(1),
+			&:nth-child(3) {
+				margin-left: 0;
+			}
+
+			&:nth-child(2),
+			&:nth-child(4) {
+				margin-right: 0;
+			}
+
+			&:nth-child(3),
+			&:nth-child(4) {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	@media all and (min-width: 1200px) {
+		&[data-columns="4"] > .wp-block-coblocks-service {
+			flex-basis: 25%;
+			max-width: calc(100% / 4 - 1rem);
 		}
 	}
 }
