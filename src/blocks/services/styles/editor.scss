@@ -28,11 +28,6 @@ $gutter: 0.3em;
 		}
 	}
 
-	.wp-block[data-type="coblocks/service"] {
-		flex: 1 100%;
-		max-width: 100%;
-	}
-
 	@include break-small() {
 		&[data-columns="2"] .wp-block[data-type="coblocks/service"] {
 			flex-basis: 50%;

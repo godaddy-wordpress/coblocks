@@ -1,7 +1,11 @@
+.wp-block[data-type="coblocks/service"] {
+	flex: 1 100%;
+	max-width: 100%;
+}
+
 .wp-block-coblocks-service {
 	display: block;
 	flex: 1 100%;
-	margin: 0 0 4rem;
 
 	.editor-media-placeholder {
 		border: 1px dashed $dark-gray-150;
