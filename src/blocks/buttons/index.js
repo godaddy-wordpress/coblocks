@@ -16,7 +16,7 @@ import edit from './components/edit';
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { RichText, getColorClassName, getFontSizeClass, InnerBlocks } = wp.blockEditor;
+const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Block constants
@@ -77,16 +77,9 @@ const settings = {
 
 	save( { attributes, className } ) {
 		const {
-			items,
 			contentAlign,
 			isStackedOnMobile,
 		} = attributes;
-
-		const classes = classnames(
-			className, {
-
-			}
-		);
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-buttons__inner',{
@@ -96,13 +89,14 @@ const settings = {
 		);
 
 		return (
-			<div className={ classes }>
+			<div className={ className }>
 				<div className={ innerClasses }>
 					<InnerBlocks.Content />
 				</div>
 			</div>
 		);
 	},
+
 	deprecated: [
 		{
 			attributes: {

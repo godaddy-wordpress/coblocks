@@ -45,9 +45,7 @@ function deprecateBlockManager() {
 
 					// Save deprecated object to options table for checking
 					const model = new models.Settings( { coblocks_settings_api: JSON.stringify( optionSettings ) } );
-					model.save().then( response => {
-						// Do nothing
-					} );
+					model.save();
 
 					// Add array of blocks to disabled blocks
 					// Reference: https://github.com/WordPress/gutenberg/issues/14139#issuecomment-480261866

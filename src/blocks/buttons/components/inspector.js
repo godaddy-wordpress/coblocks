@@ -34,7 +34,7 @@ class Inspector extends Component {
 									items: parseInt( nextCount ),
 								} );
 
-								wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
+								wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );
 							} }
 							min={ 1 }
 							max={ 4 }

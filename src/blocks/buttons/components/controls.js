@@ -15,9 +15,7 @@ class Controls extends Component {
 			setAttributes,
 		} = this.props;
 
-		const {
-			contentAlign,
-		} = attributes;
+		const { contentAlign } = attributes;
 
 		return (
 			<Fragment>

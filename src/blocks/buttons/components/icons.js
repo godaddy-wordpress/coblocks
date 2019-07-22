@@ -3,9 +3,6 @@
  */
 const { SVG, Path } = wp.components;
 
-/**
- * Block user interface icons
- */
 const icons = {};
 
 icons.buttons =

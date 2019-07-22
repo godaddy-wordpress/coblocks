@@ -33,22 +33,13 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
-			attributes,
 			buttonColor,
 			fallbackButtonColor,
 			fallbackFontSize,
 			fallbackTextColor,
 			fontSize,
-			isSelected,
-			setAttributes,
 			setButtonColor,
 			setFontSize,
 			setTextColor,

@@ -105,7 +105,6 @@ class Inspector extends Component {
 		if ( captions ) {
 			return background.concat( caption );
 		}
-
 		return background;
 	}
 
@@ -150,12 +149,12 @@ class Inspector extends Component {
 						help={ this.getCaptionsHelp }
 					/>
 					{ captions &&
-						<SelectControl
-							label={ __( 'Caption Style' ) }
-							value={ captionStyle }
-							onChange={ this.setCaptionStyleTo }
-							options={ captionOptions }
-						/>
+					<SelectControl
+						label={ __( 'Caption Style' ) }
+						value={ captionStyle }
+						onChange={ this.setCaptionStyleTo }
+						options={ captionOptions }
+					/>
 					}
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
