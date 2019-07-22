@@ -140,7 +140,6 @@ const settings = {
 			color: textColorClass ? undefined : customTextColor,
 		};
 
-
 		return isEmpty( attributes ) ? null : (
 			<div
 				className={ classes }
