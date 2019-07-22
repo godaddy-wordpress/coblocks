@@ -17,11 +17,11 @@ const Inspector = props => {
 		<InspectorControls>
 			<PanelBody title={ __( 'Service Settings' ) }>
 				<ToggleControl
-					label={ __( 'Action Buttons' ) }
+					label={ __( 'Action Button' ) }
 					help={
 						attributes.showCta ?
-							__( 'Showing the call to action buttons.' ) :
-							__( 'Toggle to show call to action buttons.' )
+							__( 'Showing the call to action button.' ) :
+							__( 'Toggle to show a call to action button.' )
 					}
 					checked={ attributes.showCta }
 					onChange={ onToggleCta }
