@@ -26,8 +26,11 @@ const settings = {
 	description: __( 'service description' ),
 	keywords: [],
 	attributes: metadata.attributes,
-	supports: { },
-	inserter: false,
+	supports: {
+		reusable: false,
+ 		html: false,
+ 		inserter: false
+ 	},
 	edit,
 	save,
 };

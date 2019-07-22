@@ -28,6 +28,8 @@ const settings = {
 	attributes: metadata.attributes,
 	supports: {
 		align: [ 'wide', 'full' ],
+		reusable: false,
+ 		html: false,
 	},
 	edit,
 	save,
