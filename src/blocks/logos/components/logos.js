@@ -28,16 +28,14 @@ class Logos extends Component {
 	}
 
 	render() {
-		let imageChunks = chunk( this.props.images, 4 );
+		const imageChunks = chunk( this.props.images, 4 );
 
 		return (
 			<Fragment>
 				{ Object.keys( imageChunks ).map( keyOuter => {
-
-					var images = imageChunks[ keyOuter ];
-
+					let images = imageChunks[ keyOuter ];
 					return (
-						<div className="wrapper" key={ "wrapper-" + keyOuter }>
+						<div className='wrapper' key={ 'wrapper-' + keyOuter }>
 							{ images.map( ( img, index ) => {
 								return (
 									<ResizableBox
@@ -61,8 +59,8 @@ class Logos extends Component {
 											bottomLeft: false,
 											topLeft: false,
 										} }
-										onResizeStop={ ( event, direction, elt, delta ) => {
-											var elementWidth = elt.style.width;
+										onResizeStop={ ( event, direction, elt ) => {
+											let elementWidth = elt.style.width;
 											if ( elementWidth.replace( '%', '' ) <= 10 ) {
 												elementWidth = '10%';
 											}
@@ -76,8 +74,10 @@ class Logos extends Component {
 											src={ img.url }
 											alt={ img.alt }
 											data-id={ img.id }
-											onClick={ () => { this.setState( { selectedImage: img.id } ); } }
-											tabIndex="0"
+											onClick={ () => {
+												this.setState( { selectedImage: img.id } );
+											} }
+											tabIndex='0'
 										/>
 									</ResizableBox>
 								);

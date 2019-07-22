@@ -47,14 +47,12 @@ class Edit extends Component {
 			noticeOperations,
 			attributes,
 			noticeUI,
-			setAttributes,
 			isSelected,
 		} = this.props;
 
 		const {
 			images,
 			blackAndWhite,
-			align,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -62,7 +60,7 @@ class Edit extends Component {
 		const classes = classnames(
 			className,
 			{
-				'has-filter-grayscale' : blackAndWhite,
+				'has-filter-grayscale': blackAndWhite,
 			}
 		);
 
@@ -88,7 +86,7 @@ class Edit extends Component {
 		return (
 			<Fragment>
 				<Controls
-					{...this.props}
+					{ ...this.props }
 				/>
 				<GalleryDropZone
 					{ ...this.props }
@@ -96,7 +94,7 @@ class Edit extends Component {
 				{ noticeUI }
 				<div className={ classes }>
 					<Logos
-						{...this.props}
+						{ ...this.props }
 						images={ images }
 					/>
 					{ isSelected && (

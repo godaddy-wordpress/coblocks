@@ -19,23 +19,23 @@ export default function save( { attributes, className } ) {
 	const classes = classnames(
 		className,
 		{
-			'has-filter-grayscale' : blackAndWhite,
+			'has-filter-grayscale': blackAndWhite,
 		}
 	);
 
-	let imageChunks = chunk( images, 4 );
+	const imageChunks = chunk( images, 4 );
 
 	return (
 		<div className={ classes }>
 			{ Object.keys( imageChunks ).map( keyOuter => {
-
-				var images = imageChunks[ keyOuter ];
-
+				let images = imageChunks[ keyOuter ];
 				return (
-					<div className="wrapper">
+					<div className='wrapper' key={ 'wrapper-' + keyOuter }>
 						{ images.map( ( img, index ) => {
 							return (
-								<div style={ {
+								<div
+								key={ 'img-' + index }
+								style={ {
 									width: img.width ? img.width : ( ( 100 / images.length ) + '%' ),
 								} }>
 									<img

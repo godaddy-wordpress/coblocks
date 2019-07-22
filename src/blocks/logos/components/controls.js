@@ -1,9 +1,9 @@
 /**
  * WordPress dependencies.
  */
- const { __ } = wp.i18n;
- const { InspectorControls } = wp.blockEditor;
- const { PanelBody, ToggleControl } = wp.components;
+const { __ } = wp.i18n;
+const { InspectorControls } = wp.blockEditor;
+const { PanelBody, ToggleControl } = wp.components;
 
 const Controls = props => {
 	return (
@@ -21,6 +21,6 @@ const Controls = props => {
 			</PanelBody>
 		</InspectorControls>
 	);
-}
+};
 
 export default Controls;

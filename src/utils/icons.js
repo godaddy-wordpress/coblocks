@@ -804,9 +804,10 @@ icons.social = (
 	</svg>
 );
 
-icons.logos =
-<svg className="components-coblocks-svg" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-	<path d="m1 5h2v14h-2zm4 0h2v14h-2zm17 0h-12c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-12c0-.55-.45-1-1-1zm-1 12h-10v-10h10zm-3.57-4.38-2 2.57-1.43-1.72-2 2.52h8z" fill="currentColor"/>
-</svg>;
+icons.logos = (
+	<svg className="components-coblocks-svg" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+		<path d="m1 5h2v14h-2zm4 0h2v14h-2zm17 0h-12c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-12c0-.55-.45-1-1-1zm-1 12h-10v-10h10zm-3.57-4.38-2 2.57-1.43-1.72-2 2.52h8z" fill="currentColor"/>
+	</svg>
+);
 
 export default icons;
