@@ -111,6 +111,7 @@ class Edit extends Component {
 							onError={ noticeOperations.createErrorNotice }
 							notices={ hasImages ? undefined : noticeUI }
 							onSelect={ this.onSelectImages }
+							className="block-editor-media-placeholder is-appender"
 						/>
 					) }
 				</div>

@@ -1,12 +1,13 @@
 .wp-block-coblocks-logo:not(.editor-media-placeholder) {
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	max-width: 100%;
-	width: 100%;
-	user-select: none;
-	justify-content: center;
 	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: 0;
+	max-width: 100%;
+	user-select: none;
+	width: 100%;
 
 	img {
 		padding: 1em;
@@ -20,14 +21,19 @@
 		z-index: 999;
 	}
 
-	.components-placeholder.block-editor-media-placeholder {
-		border: 1px dashed #bfbfbf;
-		min-height: 115px;
+	.block-editor-media-placeholder.is-appender {
+		margin-bottom: 0;
+		min-height: 100px;
+		outline: 1px dashed #8d96a0;
+	}
 
-		.components-placeholder__label,
-		.components-placeholder__instructions {
-			display: none;
-		}
+	.components-placeholder__label,
+	.components-placeholder__instructions {
+		display: none;
+	}
+
+	.components-button {
+		margin-bottom: 1px;
 	}
 
 	.resize {
