@@ -38,6 +38,11 @@
 			flex: 1 calc(100% / 3);
 			max-width: calc(100% / 3);
 		}
+
+		&[data-columns="4"] .wp-block[data-type="coblocks/service"] {
+			flex: 1 calc(100% / 4);
+			max-width: calc(100% / 4);
+		}
 	}
 
 	.block-editor-inserter,

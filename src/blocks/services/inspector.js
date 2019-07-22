@@ -66,7 +66,7 @@ const Inspector = props => {
 					label={ __( 'Columns' ) }
 					value={ attributes.columns }
 					min={ 1 }
-					max={ 3 }
+					max={ 4 }
 					onChange={ columns => setAttributes( { columns } ) }
 				/>
 				<p>{ __( 'Heading Level' ) }</p>
