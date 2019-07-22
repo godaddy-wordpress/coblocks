@@ -1,4 +1,13 @@
-.wp-block-coblocks-logo {
+.wp-block-coblocks-logo:not(.editor-media-placeholder) {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  max-width: 100%;
+  width: 100%;
+  user-select: none;
+  justify-content: center;
+  align-items: center;
+
   .wrapper {
     /* Use flexbox */
     display: inline-flex;
@@ -12,12 +21,16 @@
     width: 100%;
     max-width: 100%;
 
-    img {
-      padding: 1em;
+    div {
+      text-align: center;
 
-      &:focus {
-        outline: none;
-      }
-    }
+      img {
+	      padding: 1em;
+
+	      &:focus {
+	        outline: none;
+	      }
+	    }
+		}
   }
 }

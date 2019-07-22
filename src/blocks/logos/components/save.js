@@ -4,20 +4,17 @@
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
-/**
- * Internal dependencies
- */
-import Logos from './logos';
-
 export default function save( { attributes, className } ) {
 	const {
 		images,
 		blackAndWhite,
-		align,
-		fullwidth,
 	} = attributes;
 
 	const hasImages = !! images.length;
+
+	if ( ! hasImages ) {
+		return ( null );
+	}
 
 	const classes = classnames(
 		className,
@@ -26,17 +23,32 @@ export default function save( { attributes, className } ) {
 		}
 	);
 
-	if ( ! hasImages ) {
-		return (
-			null
-		);
-	}
+	let imageChunks = chunk( images, 4 );
 
 	return (
 		<div className={ classes }>
-			<Logos
-				images={ images }
-			/>
+			{ Object.keys( imageChunks ).map( keyOuter => {
+
+				var images = imageChunks[ keyOuter ];
+
+				return (
+					<div className="wrapper">
+						{ images.map( ( img, index ) => {
+							return (
+								<div style={ {
+									width: img.width ? img.width : ( ( 100 / images.length ) + '%' ),
+								} }>
+									<img
+										src={ img.url }
+										alt={ img.alt }
+										data-id={ img.id }
+									/>
+								</div>
+							);
+						} ) }
+					</div>
+				);
+			} ) }
 		</div>
 	);
 }

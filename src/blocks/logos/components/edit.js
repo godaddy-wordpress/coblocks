@@ -9,9 +9,7 @@ import classnames from 'classnames';
 import * as helper from './../../../utils/helper';
 import Controls from './controls';
 import GalleryDropZone from '../../../components/block-gallery/gallery-dropzone';
-import GalleryUploader from '../../../components/block-gallery/gallery-uploader';
 import Logos from './logos';
-import { GalleryClasses } from '../../../components/block-gallery/shared';
 import { title, icon } from '../'
 
 /**
