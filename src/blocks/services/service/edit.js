@@ -29,7 +29,7 @@ const { isBlobURL } = wp.blob;
 /**
  * Constants
  */
-const ALLOWED_BLOCKS = [ 'core/heading', 'core/button', 'core/paragraph', ];
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/button', 'core/paragraph' ];
 
 class Edit extends Component {
 	updateInnerAttributes = ( blockName, newAttributes ) => {
@@ -81,38 +81,11 @@ class Edit extends Component {
 			} );
 		}
 
-		// if ( this.props.attributes.alignment !== prevProps.attributes.alignment ) {
-		// 	this.updateInnerAttributes( 'core/heading', {
-		// 		align: this.props.attributes.alignment,
-		// 	} );
-		// 	this.updateInnerAttributes( 'core/paragraph', {
-		// 		align: this.props.attributes.alignment,
-		// 	} );
-		// 	this.updateInnerAttributes( 'core/button', {
-		// 		align: this.props.attributes.alignment,
-		// 	} );
-		// }
-
 		if ( this.props.attributes.showCta !== prevProps.attributes.showCta ) {
 			this.manageInnerBlock( 'core/button', {
 			}, this.props.attributes.showCta );
 		}
 	}
-
-	// onChangeAlignment = alignment => {
-	// 	const { setAttributes } = this.props;
-
-	// 	setAttributes( { alignment } );
-	// 	this.updateInnerAttributes( 'core/heading', {
-	// 		align: this.props.attributes.alignment,
-	// 	} );
-	// 	this.updateInnerAttributes( 'core/paragraph', {
-	// 		align: this.props.attributes.alignment,
-	// 	} );
-	// 	this.updateInnerAttributes( 'core/button', {
-	// 		align: this.props.attributes.alignment,
-	// 	} );
-	// };
 
 	toggleCta = () => {
 		const { attributes, setAttributes } = this.props;
