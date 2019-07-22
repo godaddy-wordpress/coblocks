@@ -79,7 +79,9 @@ const settings = {
 	parent: [ 'coblocks/pricing-table' ],
 
 	supports: {
+		html: false,
 		inserter: false,
+		reusable: false,
 	},
 
 	attributes: blockAttributes,
