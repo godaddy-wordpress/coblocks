@@ -8,8 +8,10 @@ import classnames from 'classnames';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import icons from './components/icons';
+import deprecated from './components/deprecated';
+import metadata from './block.json';
 import edit from './components/edit';
+import icons from './components/icons';
 
 /**
  * WordPress dependencies
@@ -33,21 +35,6 @@ const keywords = [
 	__( 'coblocks' ),
 ];
 
-const blockAttributes = {
-	items: {
-		type: 'number',
-		default: 2,
-	},
-	contentAlign: {
-		type: 'string',
-		default: 'left',
-	},
-	isStackedOnMobile: {
-		type: 'boolean',
-		default: false,
-	},
-};
-
 const settings = {
 
 	title: title,
@@ -56,7 +43,7 @@ const settings = {
 
 	keywords: keywords,
 
-	attributes: blockAttributes,
+	attributes: metadata.attributes,
 
 	transforms: {
 		from: [
@@ -96,53 +83,7 @@ const settings = {
 			</div>
 		);
 	},
-
-	deprecated: [
-		{
-			attributes: {
-				...blockAttributes,
-				gutter: {
-					type: 'string',
-					default: 'medium',
-				},
-				stacked: {
-					type: 'boolean',
-					default: false,
-				},
-			},
-			save( { attributes, className } ) {
-				const {
-					gutter,
-					stacked,
-					contentAlign,
-					isStackedOnMobile,
-				} = attributes;
-
-				const classes = classnames(
-					className, {
-
-					}
-				);
-
-				const innerClasses = classnames(
-					'wp-block-coblocks-buttons__inner', {
-						[ `flex-align-${ contentAlign }` ]: contentAlign,
-						[ `has-${ gutter }-gutter` ]: gutter,
-						'is-stacked': stacked,
-						'is-stacked-on-mobile': isStackedOnMobile,
-					}
-				);
-
-				return (
-					<div className={ classes }>
-						<div className={ innerClasses }>
-							<InnerBlocks.Content />
-						</div>
-					</div>
-				);
-			},
-		}
-	],
+	deprecated,
 };
 
 export { name, title, icon, settings };
