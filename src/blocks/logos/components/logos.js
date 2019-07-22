@@ -59,9 +59,7 @@ class Logos extends Component {
 										} }
 										onResizeStop={ ( event, direction, elt ) => {
 											const elementWidth = elt.style.width;
-											imageChunks[ keyOuter ][
-												$( elt ).index()
-											].width = elementWidth;
+											imageChunks[ keyOuter ][ index ].width = elementWidth;
 											this.props.setAttributes( {
 												images: flatten( imageChunks ),
 											} );
