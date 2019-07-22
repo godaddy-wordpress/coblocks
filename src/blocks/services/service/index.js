@@ -28,9 +28,9 @@ const settings = {
 	attributes: metadata.attributes,
 	supports: {
 		reusable: false,
- 		html: false,
- 		inserter: false
- 	},
+		html: false,
+		inserter: false,
+	},
 	edit,
 	save,
 };
