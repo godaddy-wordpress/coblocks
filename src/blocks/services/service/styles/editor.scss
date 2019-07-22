@@ -1,6 +1,10 @@
 .wp-block[data-type="coblocks/service"] {
 	flex: 1 100%;
 	max-width: 100%;
+
+	.editor-block-mover {
+		display: none;
+	}
 }
 
 .wp-block-coblocks-service {
@@ -92,19 +96,17 @@
 		}
 	}
 
-	// &__content {
-	// 	.wp-block[data-type="core/heading"] .block-editor-block-list__block-edit {
-	// 		margin-bottom: 0;
-	// 		margin-top: 1em;
-	// 	}
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		&.rich-text {
+			margin-bottom: 0.5em;
+		}
+	}
 
-	// 	.wp-block[data-type="core/paragraph"] .block-editor-block-list__block-edit {
-	// 		margin-top: 0.5em;
-	// 	}
-
-	// 	.wp-block[data-type="core/button"] .block-editor-block-list__block-edit {
-	// 		margin-bottom: 0;
-	// 		margin-top: 0;
-	// 	}
-	// }
+	.wp-block[data-type="core/button"] {
+		margin-top: 1.7em;
+	}
 }
