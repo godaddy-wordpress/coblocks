@@ -1,4 +1,4 @@
-$gutter: 1rem;
+$gutter: 1em;
 
 .wp-block-coblocks-services {
 	@include break-small() {
@@ -8,18 +8,8 @@ $gutter: 1rem;
 		justify-content: space-between;
 	}
 
-	> .wp-block-coblocks-service {
-		flex: 1 100%;
-		margin: 0 0 3rem;
-		max-width: 100%;
-
-		@include break-small() {
-			margin: 0;
-		}
-
-		&:last-child {
-			margin-bottom: 0;
-		}
+	> .wp-block-coblocks-service:last-child {
+		margin-bottom: 0;
 	}
 
 	@include break-small() {
@@ -37,7 +27,7 @@ $gutter: 1rem;
 	@media (min-width: #{ ($break-small) }) and (max-width: #{ ($break-wide) }) {
 		&[data-columns="4"] > .wp-block-coblocks-service {
 			flex-basis: 50%;
-			margin-bottom: 3rem;
+			margin-bottom: 3em;
 			max-width: calc(100% / 2 - #{$gutter});
 
 			&:nth-child(1),
@@ -60,7 +50,17 @@ $gutter: 1rem;
 	@include break-wide() {
 		&[data-columns="4"] > .wp-block-coblocks-service {
 			flex-basis: 25%;
-			max-width: calc(100% / 4 - #{$gutter} * 1.25);
+			max-width: calc(100% / 4 - #{$gutter} * 1.4);
 		}
+	}
+}
+
+.wp-block-coblocks-service {
+	flex: 1 100%;
+	margin: 0 0 3em;
+	max-width: 100%;
+
+	@include break-small() {
+		margin: 0;
 	}
 }
