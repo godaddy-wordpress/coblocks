@@ -1,10 +1,6 @@
 {
 	"name": "service",
 	"attributes": {
-		"alignment": {
-			"type": "string",
-			"default": "none"
-		},
 		"headingLevel": {
 			"type": "integer",
 			"default": 3

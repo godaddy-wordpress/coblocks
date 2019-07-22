@@ -14,8 +14,6 @@ import classnames from 'classnames';
 const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const {
-	AlignmentToolbar,
-	BlockControls,
 	InnerBlocks,
 	MediaPlaceholder,
 } = wp.blockEditor;
@@ -83,39 +81,38 @@ class Edit extends Component {
 			} );
 		}
 
-		if ( this.props.attributes.alignment !== prevProps.attributes.alignment ) {
-			this.updateInnerAttributes( 'core/heading', {
-				align: this.props.attributes.alignment,
-			} );
-			this.updateInnerAttributes( 'core/paragraph', {
-				align: this.props.attributes.alignment,
-			} );
-			this.updateInnerAttributes( 'core/button', {
-				align: this.props.attributes.alignment,
-			} );
-		}
+		// if ( this.props.attributes.alignment !== prevProps.attributes.alignment ) {
+		// 	this.updateInnerAttributes( 'core/heading', {
+		// 		align: this.props.attributes.alignment,
+		// 	} );
+		// 	this.updateInnerAttributes( 'core/paragraph', {
+		// 		align: this.props.attributes.alignment,
+		// 	} );
+		// 	this.updateInnerAttributes( 'core/button', {
+		// 		align: this.props.attributes.alignment,
+		// 	} );
+		// }
 
 		if ( this.props.attributes.showCta !== prevProps.attributes.showCta ) {
 			this.manageInnerBlock( 'core/button', {
-				align: this.props.attributes.alignment,
 			}, this.props.attributes.showCta );
 		}
 	}
 
-	onChangeAlignment = alignment => {
-		const { setAttributes } = this.props;
+	// onChangeAlignment = alignment => {
+	// 	const { setAttributes } = this.props;
 
-		setAttributes( { alignment } );
-		this.updateInnerAttributes( 'core/heading', {
-			align: this.props.attributes.alignment,
-		} );
-		this.updateInnerAttributes( 'core/paragraph', {
-			align: this.props.attributes.alignment,
-		} );
-		this.updateInnerAttributes( 'core/button', {
-			align: this.props.attributes.alignment,
-		} );
-	};
+	// 	setAttributes( { alignment } );
+	// 	this.updateInnerAttributes( 'core/heading', {
+	// 		align: this.props.attributes.alignment,
+	// 	} );
+	// 	this.updateInnerAttributes( 'core/paragraph', {
+	// 		align: this.props.attributes.alignment,
+	// 	} );
+	// 	this.updateInnerAttributes( 'core/button', {
+	// 		align: this.props.attributes.alignment,
+	// 	} );
+	// };
 
 	toggleCta = () => {
 		const { attributes, setAttributes } = this.props;
@@ -209,12 +206,6 @@ class Edit extends Component {
 
 		return (
 			<Fragment>
-				<BlockControls>
-					<AlignmentToolbar
-						value={ attributes.alignment }
-						onChange={ this.onChangeAlignment }
-					/>
-				</BlockControls>
 				<InspectorControls
 					attributes={ attributes }
 					setAttributes={ setAttributes }
