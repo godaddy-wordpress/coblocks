@@ -43,8 +43,6 @@ class Edit extends Component {
 	}
 
 	updateURL( urlProps ) {
-		console.log( 'the urlProps passed is :' );
-		console.log( urlProps );
 		this.props.setAttributes( { url: urlProps.url } );
 		if ( ! this.props.attributes.url ) {
 			this.props.setState( { preview: true } );
@@ -73,7 +71,7 @@ class Edit extends Component {
 		const { meta, caption, file, url } = attributes;
 		const { urlText } = this.state;
 		const label = __( 'Gist URL' );
-
+		console.log( this.props.preview );
 		return (
 			<Fragment>
 				{ url && url.length > 0 && isSelected && <Controls { ...this.props } /> }
@@ -89,7 +87,10 @@ class Edit extends Component {
 						onChange={ event =>
 							this.setState( { urlText: escape( event.target.value ) } )
 						}
-						editProps={ this.props }
+						preview={ this.props.preview }
+						changePreviewState={ () => {
+							this.props.setState( { preview: ! this.props.preview } );
+						} }
 						// fallback={ () => fallback( url, this.props.onReplace ) }
 						// tryAgain={ tryAgain }
 						// cannotEmbed={ cannotEmbed }

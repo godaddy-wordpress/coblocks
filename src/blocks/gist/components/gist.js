@@ -16,11 +16,10 @@ const { Component, Fragment } = wp.element;
 const { BlockIcon } = wp.blockEditor;
 const { Placeholder, Spinner, withNotices, Button } = wp.components;
 
-// -- MAIN --
 // Extending PureComponent allow us to prevent re-rendering when the props DONT change.
 class Gist extends Component {
 	constructor( props ) {
-		super( props );
+		super( props, ...arguments );
 		this.stylesheetAdded = false; // Ensures we only add the Gist's stylesheet one time.
 		this.state = {
 			url: this.props.value,
@@ -28,6 +27,8 @@ class Gist extends Component {
 			error: false, // If error loading Gist url.
 			loading: false, // We have not fetched the Gist yet.
 			gistContent: '', // Raw HTML of the Gist.
+			rendered: '',
+			// preview: this.props.preview,
 		};
 		this._handleScriptError = this._handleScriptError.bind( this );
 		this._buildGist = this._buildGist.bind( this );
@@ -44,7 +45,7 @@ class Gist extends Component {
 	}
 
 	static __nextGist() {
-		return 'embed_gist_callback_' + 0;
+		return 'embed_gist_callback_' + this.__gistCallbackId++;
 	}
 
 	// The Gist JSON data includes a stylesheet file.
@@ -70,10 +71,16 @@ class Gist extends Component {
 
 	_getID() {
 		// Extract a string in form `username/uniqueValue` from the provided Gist url.
-		if ( this.props.value.match( /(\.com\/)(.*?)([^#]+)/ ) == null ) {
+		let urlToParse;
+		if ( this.props.url ) {
+			urlToParse = this.props.url;
+		} else if ( this.props.value ) {
+			urlToParse = this.props.value;
+		}
+		if ( urlToParse.match( /(\.com\/)(.*?)([^#]+)/ ) === null ) {
 			return null;
 		}
-		return this.props.value.match( /(\.com\/)(.*?)([^#]+)/ ).pop();
+		return urlToParse.match( /(\.com\/)(.*?)([^#]+)/ ).pop();
 	}
 
 	_getFile() {
@@ -82,8 +89,15 @@ class Gist extends Component {
 			return `&file=${ this.state.file }`;
 		}
 
+		let urlToParse;
+		if ( this.state.value ) {
+			urlToParse = this.state.value;
+		} else if ( this.state.url ) {
+			urlToParse = this.state.url;
+		}
+
 		// Else construct the file parameter from the `value` prop.
-		const file = this.props.value.split( '#' ).pop();
+		const file = urlToParse.split( '#' ).pop();
 
 		// If the file parameter exist in Gist url return that file.
 		if ( file.match( /file*/ ) !== null ) {
@@ -105,14 +119,14 @@ class Gist extends Component {
 		return `https://gist.github.com/${ id }.json?callback=${ gistCallback }${ file }`;
 	}
 
-	_handleScriptError() {
+	_handleScriptError( err ) {
 		console.log( 'script error' );
-		this.props.noticeOperations.createErrorNotice( 'Error message' );
+		this.props.noticeOperations.createErrorNotice( err );
 		this.setState( {
 			error: true,
 			loading: false,
-			gistContent: '',
 		} );
+		this.props.changePreviewState();
 	}
 
 	_buildGist() {
@@ -127,23 +141,36 @@ class Gist extends Component {
 		};
 		const gistScript = document.createElement( 'script' );
 		gistScript.type = 'text/javascript';
-		console.log( gistCallback );
-		gistScript.src = this._tranformedURL( gistCallback );
+		if ( this.state.rendered !== this._tranformedURL( gistCallback ) ) {
+			console.log( this._tranformedURL( gistCallback ) );
+			gistScript.src = this._tranformedURL( gistCallback );
+		} else {
+			this.setState( { loading: false } );
+			this.props.changePreviewState();
+			return;
+		}
+
 		gistScript.onerror = function( err ) {
-			_handleScriptError();
+			_handleScriptError( err );
 		};
-		console.log( gistScript );
 		document.head.appendChild( gistScript );
-		this.setState( { rendered: true } );
+		this.setState( { rendered: gistScript.src, loading: false } );
 	}
 
 	_formOnSubmit( event ) {
 		event.preventDefault();
+		this.setState( { loading: true } );
+		// if ( this.state.rendered !== this.state.url ) {
+		// 	console.log( this.props.url );
+		// 	console.log( this.props.value );
+		// 	this.props.changePreviewState();
+		// 	this.setState( { loading: false } );
+		// } else {
 		this._setupURL( this.props.value );
+		// }
 	}
 
 	_setupURL( newURL ) {
-		console.log( newURL );
 		this.setState( {
 			url: newURL,
 		} );
@@ -189,7 +216,7 @@ class Gist extends Component {
 		}
 		// Render as html.
 		// https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
-		return <div dangerouslySetInnerHTML={ { __html: this.state.gistContent } } />;
+		// return <div dangerouslySetInnerHTML={ { __html: this.state.gistContent } } />;
 	}
 
 	render() {
@@ -221,25 +248,26 @@ class Gist extends Component {
 						<Spinner />
 					</Placeholder>
 				) }
-				{ ! this.state.loading && ! this.state.rendered ? (
-					<Placeholder
-						icon={ <BlockIcon icon={ icon } showColors /> }
-						label={ label }
-						className="wp-block-embed"
-					>
-						<form onSubmit={ event => _formOnSubmit( event ) }>
-							<input
-								type="url"
-								value={ value || '' }
-								className="components-placeholder__input"
-								aria-label={ label }
-								placeholder={ __( 'Enter URL to embed here…' ) }
-								onChange={ onChange }
-							/>
-							<Button isLarge type="submit">
-								{ _x( 'Embed', 'button label' ) }
-							</Button>
-							{
+				{ /* { ! this.state.loading && ! this.state.rendered ? */
+					! this.props.preview && (
+						<Placeholder
+							icon={ <BlockIcon icon={ icon } showColors /> }
+							label={ label }
+							className="wp-block-embed"
+						>
+							<form onSubmit={ event => _formOnSubmit( event ) }>
+								<input
+									type="url"
+									value={ value || '' }
+									className="components-placeholder__input"
+									aria-label={ label }
+									placeholder={ __( 'Enter URL to embed here…' ) }
+									onChange={ onChange }
+								/>
+								<Button isLarge type="submit" disabled={ this.props.value.length <= 0 }>
+									{ _x( 'Embed', 'button label' ) }
+								</Button>
+								{
 								//cannotEmbed && (
 								// <p className="components-placeholder__error">
 								// 	{ __( 'Sorry, this content could not be embedded.' ) }
@@ -252,11 +280,11 @@ class Gist extends Component {
 								// 	</Button>
 								// </p>
 								//)
-							}
-						</form>
-					</Placeholder>
-				) : null }
-				{ this.state.rendered ? (
+								}
+							</form>
+						</Placeholder>
+					) }
+				{ this.props.preview ? (
 					// Render as html.
 					// https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
 					<div dangerouslySetInnerHTML={ { __html: this.state.gistContent } } />
