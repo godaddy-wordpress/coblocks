@@ -51,6 +51,7 @@ class ButtonsEdit extends Component {
 			'wp-block-coblocks-buttons__inner', {
 				[ `flex-align-${ contentAlign }` ]: contentAlign,
 				'is-stacked-on-mobile': isStackedOnMobile,
+			}
 		);
 
 		return (
