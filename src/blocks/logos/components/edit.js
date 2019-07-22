@@ -15,7 +15,7 @@ import { title, icon } from '../';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withNotices } = wp.components;
