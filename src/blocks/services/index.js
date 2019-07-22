@@ -1,9 +1,12 @@
 /**
- * Internal dependencies.
+ * Styles.
  */
 import './styles/editor.scss';
 import './styles/style.scss';
 
+/**
+ * Internal dependencies.
+ */
 import metadata from './block.json';
 import icons from './icons';
 import edit from './edit';
@@ -29,7 +32,7 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 		reusable: false,
- 		html: false,
+		html: false,
 	},
 	edit,
 	save,
