@@ -28,16 +28,17 @@ export default function save( { attributes, className } ) {
 	return (
 		<div className={ classes }>
 			{ Object.keys( imageChunks ).map( keyOuter => {
-				let images = imageChunks[ keyOuter ];
+				const images = imageChunks[ keyOuter ];
 				return (
-					<div className='wrapper' key={ 'wrapper-' + keyOuter }>
+					<div className="wrapper" key={ 'wrapper-' + keyOuter }>
 						{ images.map( ( img, index ) => {
 							return (
 								<div
-								key={ 'img-' + index }
-								style={ {
-									width: img.width ? img.width : ( ( 100 / images.length ) + '%' ),
-								} }>
+									key={ 'img-' + index }
+									style={ {
+										width: img.width ? img.width : ( ( 100 / images.length ) + '%' ),
+									} }
+								>
 									<img
 										src={ img.url }
 										alt={ img.alt }

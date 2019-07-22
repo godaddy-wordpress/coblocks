@@ -33,9 +33,9 @@ class Logos extends Component {
 		return (
 			<Fragment>
 				{ Object.keys( imageChunks ).map( keyOuter => {
-					let images = imageChunks[ keyOuter ];
+					const images = imageChunks[ keyOuter ];
 					return (
-						<div className='wrapper' key={ 'wrapper-' + keyOuter }>
+						<div className="wrapper" key={ 'wrapper-' + keyOuter }>
 							{ images.map( ( img, index ) => {
 								return (
 									<ResizableBox
@@ -69,15 +69,15 @@ class Logos extends Component {
 												images: flatten( imageChunks ),
 											} );
 										} }
+										onClick={ () => {
+											this.setState( { selectedImage: img.id } );
+										} }
 									>
 										<img
 											src={ img.url }
 											alt={ img.alt }
 											data-id={ img.id }
-											onClick={ () => {
-												this.setState( { selectedImage: img.id } );
-											} }
-											tabIndex='0'
+											tabIndex="0"
 										/>
 									</ResizableBox>
 								);
