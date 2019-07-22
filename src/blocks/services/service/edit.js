@@ -29,7 +29,7 @@ const { isBlobURL } = wp.blob;
 /**
  * Constants
  */
-const ALLOWED_BLOCKS = [ 'core/heading', 'core/button' ];
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/button', 'core/paragraph', ];
 
 class Edit extends Component {
 	updateInnerAttributes = ( blockName, newAttributes ) => {
