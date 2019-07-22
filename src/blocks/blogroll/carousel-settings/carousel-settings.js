@@ -7,7 +7,7 @@ import map from 'lodash/map';
  * Internal dependencies
  */
 import autoPlayOptions from '../../../components/slider-panel/autoplay-options';
-import './editor.scss';
+import '../styles/editor.scss';
 
 /**
  * WordPress dependencies

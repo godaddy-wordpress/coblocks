@@ -179,7 +179,7 @@ class CoBlocks_Block_Assets {
 			);
 		}
 
-		if ( has_block( $this->_slug . '/blog' ) ) {
+		if ( has_block( $this->_slug . '/blogroll' ) ) {
 			wp_enqueue_script(
 				$this->_slug . '-slick-initializer-front',
 				$dir . 'coblocks-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
