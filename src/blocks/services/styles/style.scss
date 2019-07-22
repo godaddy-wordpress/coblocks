@@ -1,11 +1,9 @@
 .wp-block-coblocks-services {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: space-between;
-
-	@media all and (min-width: 514px) {
+	@include break-small() {
+		display: flex;
 		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
 	}
 
 	> .wp-block-coblocks-service {
@@ -13,7 +11,7 @@
 		margin: 0 0 3rem;
 		max-width: 100%;
 
-		@media all and (min-width: 514px) {
+		@include break-small() {
 			margin: 0;
 		}
 
@@ -22,7 +20,7 @@
 		}
 	}
 
-	@media all and (min-width: 514px) {
+	@include break-small() {
 		&[data-columns="2"] > .wp-block-coblocks-service {
 			flex-basis: 50%;
 			max-width: calc(100% / 2 - 1rem);
@@ -34,7 +32,7 @@
 		}
 	}
 
-	@media all and (min-width: 514px) and (max-width: 1200px) {
+	@media (min-width: #{ ($break-small) }) and (max-width: #{ ($break-wide) }) {
 		&[data-columns="4"] > .wp-block-coblocks-service {
 			flex-basis: 50%;
 			margin-bottom: 3rem;
@@ -57,7 +55,7 @@
 		}
 	}
 
-	@media all and (min-width: 1200px) {
+	@include break-wide() {
 		&[data-columns="4"] > .wp-block-coblocks-service {
 			flex-basis: 25%;
 			max-width: calc(100% / 4 - 1rem);
