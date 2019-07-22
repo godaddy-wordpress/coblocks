@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import './styles/editor.scss';
 
 const {Component} = wp.element;
+const {TextControl} = wp.components;
 const {RangeControl} = wp.components;
 const {ButtonGroup} = wp.components;
 const {Button} = wp.components;
@@ -34,6 +35,7 @@ class ImageCropControl extends Component {
         this.handleImageLoaded = this.handleImageLoaded.bind(this);
         this.imageContainer = React.createRef();
         this.imageReference = React.createRef();
+        this.selectedAreaReference = React.createRef();
     }
 
     componentDidMount() {
@@ -41,11 +43,11 @@ class ImageCropControl extends Component {
             containerWidth: (jQuery(this.imageContainer.current).width() - 40)
         });
 
-        this.imageContainer.current.addEventListener('wheel', this.handleMouseWheel);
+        this.selectedAreaReference.current.addEventListener('wheel', this.handleMouseWheel);
     }
 
     componentWillUnmount() {
-        this.imageContainer.current.removeEventListener('wheel', this.handleMouseWheel);
+        this.selectedAreaReference.current.removeEventListener('wheel', this.handleMouseWheel);
     }
 
     handleMouseWheel(e) {
@@ -84,7 +86,7 @@ class ImageCropControl extends Component {
         e.stopPropagation();
 
         const moveSpeed = 100 / this.getCurrentScale();
-        this.updateState(this.state.x - e.movementX * moveSpeed, this.state.y - e.movementY * moveSpeed, this.state.w, this.state.h, this.state.r);
+        this.updateState((this.state.x - e.movementX * moveSpeed).toFixed(2), (this.state.y - e.movementY * moveSpeed).toFixed(2), this.state.w, this.state.h, this.state.r);
     }
 
     mouseUpListener(e) {
@@ -106,6 +108,14 @@ class ImageCropControl extends Component {
 
     updateState(nX, nY, nW, nH, nR) {
         const {onChange} = this.props;
+
+        if (typeof nX === 'string') {
+            nX = parseFloat(nX);
+        }
+
+        if (typeof nY === 'string') {
+            nY = parseFloat(nY);
+        }
 
         if (nW > 100) {
             nW = 100;
@@ -166,8 +176,8 @@ class ImageCropControl extends Component {
         let nW = 100 * aspectScale * aspectScale / zoom;
         let nH = 100 / zoom;
 
-        let nX = this.state.midX - nW / 2;
-        let nY = this.state.midY - nH / 2;
+        let nX = (this.state.midX - nW / 2).toFixed(2);
+        let nY = (this.state.midY - nH / 2).toFixed(2);
 
         this.updateState(nX, nY, nW, nH, newRotation);
     }
@@ -179,6 +189,10 @@ class ImageCropControl extends Component {
         const mainClass = classnames(
             'components-base-control',
             'components-coblocks-image-control'
+        );
+
+        const offsetClass = classnames(
+            'components-coblocks-offset-control'
         );
 
         let scaleX, scaleY, translateX, translateY;
@@ -226,9 +240,27 @@ class ImageCropControl extends Component {
                         <img ref={this.imageReference} src={imageUrl} style={style} alt={""}
                              onLoad={this.handleImageLoaded}/>
                     </div>
-                    <div>
+                    <div ref={this.selectedAreaReference}>
                         <img src={imageUrl} style={style} alt={""}/>
                     </div>
+                </div>
+                <div className={offsetClass}>
+                    <TextControl
+                        label={__('Offset X (%)')}
+                        value={self.state.x}
+                        type={'number'}
+                        min={0}
+                        max={100}
+                        onChange={(val) => this.updateState(val, self.state.y, self.state.w, self.state.h, self.state.r)}
+                    />
+                    <TextControl
+                        label={__('Offset Y (%)')}
+                        value={self.state.y}
+                        type={'number'}
+                        min={0}
+                        max={100}
+                        onChange={(val) => this.updateState(self.state.x, val, self.state.w, self.state.h, self.state.r)}
+                    />
                 </div>
                 <RangeControl
                     label={"Zoom (%)"}

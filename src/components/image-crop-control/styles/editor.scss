@@ -27,3 +27,12 @@
     }
   }
 }
+
+.components-coblocks-offset-control {
+  display: flex;
+  justify-content: space-between;
+
+  > div {
+    width: 45%;
+  }
+}
