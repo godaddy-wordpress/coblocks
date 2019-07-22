@@ -8,16 +8,15 @@
 		flex-direction: column;
 	}
 
-	> .wp-block-coblocks-service {
+	> div {
 		flex: 1 100%;
+		margin: 0 0 3rem;
 		max-width: 100%;
-		margin: 1em;
 	}
 
 	@media all and (min-width: 514px) {
 		> .wp-block-coblocks-service {
-			margin-top: 0;
-			margin-bottom: 0;
+			margin: 0 1em 0;
 		}
 
 		&[data-columns="2"] > .wp-block-coblocks-service {

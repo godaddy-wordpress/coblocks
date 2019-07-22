@@ -7,8 +7,8 @@
 		width: 100%;
 
 		.is-style-circle & {
-			padding-top: 100%;
 			border-radius: 100%;
+			padding-top: 100%;
 
 			img {
 				border-radius: 100%;
@@ -20,27 +20,30 @@
 		}
 
 		> img {
-			width: 100%;
 			height: 100%;
 			object-fit: cover;
 			position: absolute;
 			top: 0;
 			vertical-align: middle;
+			width: 100%;
 		}
 	}
 
-	&__content {
-		h3 {
-			margin-bottom: 0;
-		}
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-bottom: 1rem;
+	}
 
-		p {
-			margin-top: 0.5em;
-		}
+	p {
+		margin-bottom: 1rem;
+		margin-top: 0;
+	}
 
-		.wp-block-button {
-			margin-top: 0;
-			margin-bottom: 0;
-		}
+	.wp-block-button {
+		margin-bottom: 0;
+		margin-top: 0;
 	}
 }
