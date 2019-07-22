@@ -30,6 +30,7 @@ class ImageCropControl extends Component {
         this.mouseDownListener = this.mouseDownListener.bind(this);
         this.mouseMoveListener = this.mouseMoveListener.bind(this);
         this.mouseUpListener = this.mouseUpListener.bind(this);
+        this.handleMouseWheel = this.handleMouseWheel.bind(this);
         this.handleImageLoaded = this.handleImageLoaded.bind(this);
         this.imageContainer = React.createRef();
         this.imageReference = React.createRef();
@@ -39,6 +40,19 @@ class ImageCropControl extends Component {
         this.setState({
             containerWidth: (jQuery(this.imageContainer.current).width() - 40)
         });
+
+        this.imageContainer.current.addEventListener('wheel', this.handleMouseWheel);
+    }
+
+    componentWillUnmount() {
+        this.imageContainer.current.removeEventListener('wheel', this.handleMouseWheel);
+    }
+
+    handleMouseWheel(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        this.setNewZoom(this.getCurrentScale() - event.deltaY * 0.3, this.state.r);
     }
 
     handleImageLoaded() {
@@ -139,6 +153,12 @@ class ImageCropControl extends Component {
     }
 
     setNewZoom(zoom, newRotation) {
+        if (zoom < 100) {
+            zoom = 100;
+        } else if (zoom > 1000) {
+            zoom = 1000;
+        }
+
         zoom /= 100;
 
         let aspectScale = (newRotation === 90 || newRotation === 270) ? this.state.aspectRatio : 1;
