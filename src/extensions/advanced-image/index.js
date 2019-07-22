@@ -5,13 +5,12 @@ const {createHigherOrderComponent} = wp.compose;
 const {Fragment} = wp.element;
 const {InspectorControls} = wp.editor;
 const {PanelBody} = wp.components;
-const {ButtonGroup} = wp.components;
-const {Button} = wp.components;
 const {addFilter} = wp.hooks;
 const {__} = wp.i18n;
 
 const supportedBlocks = [
     'core/image',
+    'core/cover'
 ];
 
 const addPositioningControl = (settings, name) => {
