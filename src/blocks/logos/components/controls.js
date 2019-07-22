@@ -16,7 +16,7 @@ const Controls = props => {
 					label={ __( 'Black & White' ) }
 					help={ __( 'Toggle to add a black and white filter.' ) }
 					checked={ props.attributes.blackAndWhite }
-					onChange={ () => setAttributes( { blackAndWhite: ! props.attributes.blackAndWhite } ) }
+					onChange={ () => props.setAttributes( { blackAndWhite: ! props.attributes.blackAndWhite } ) }
 				/>
 			</PanelBody>
 		</InspectorControls>

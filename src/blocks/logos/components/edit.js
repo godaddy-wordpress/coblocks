@@ -72,15 +72,14 @@ class Edit extends Component {
 					{ ...this.props }
 					icon={ ! hasImages && <BlockIcon icon={ icon } /> }
 					labels={ {
-						title: ! hasImages && title,
-						instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.' ),
+						title: title,
+						instructions: __( 'Drag images, upload new ones or select files from your library.' ),
 					} }
 					multiple
 					accept="image/*"
 					allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
-					value={ hasImages ? images : undefined }
 					onError={ noticeOperations.createErrorNotice }
-					notices={ hasImages ? undefined : noticeUI }
+					notices={ noticeUI }
 					onSelect={ this.onSelectImages }
 				/>
 			);
@@ -103,7 +102,6 @@ class Edit extends Component {
 					{ isSelected && (
 						<MediaPlaceholder
 							{ ...this.props }
-							icon={ ! hasImages && <BlockIcon icon={ icon } /> }
 							labels={ {
 								title: ' ',
 								instructions: ' ',
