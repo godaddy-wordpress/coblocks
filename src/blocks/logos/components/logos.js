@@ -40,18 +40,16 @@ class Logos extends Component {
 								return (
 									<ResizableBox
 										key={ img.id + '-' + keyOuter + '-' + index }
-										className={ classnames(
-											'resize',
-											{
-												'is-selected': ( img.id === this.state.selectedImage ),
-											}
-										) }
+										minWidth="10%"
+										className={ classnames( 'resize', {
+											'is-selected': img.id === this.state.selectedImage,
+										} ) }
 										size={ {
-											width: img.width ? img.width : ( ( 100 / images.length ) + '%' ),
+											width: img.width ? img.width : ( 100 / images.length ) + '%',
 										} }
 										enable={ {
 											top: false,
-											right: index !== ( images.length - 1 ),
+											right: index !== images.length - 1,
 											bottom: false,
 											left: index !== 0,
 											topRight: false,
@@ -60,11 +58,10 @@ class Logos extends Component {
 											topLeft: false,
 										} }
 										onResizeStop={ ( event, direction, elt ) => {
-											let elementWidth = elt.style.width;
-											if ( elementWidth.replace( '%', '' ) <= 10 ) {
-												elementWidth = '10%';
-											}
-											imageChunks[ keyOuter ][ $( elt ).index() ].width = elementWidth;
+											const elementWidth = elt.style.width;
+											imageChunks[ keyOuter ][
+												$( elt ).index()
+											].width = elementWidth;
 											this.props.setAttributes( {
 												images: flatten( imageChunks ),
 											} );
