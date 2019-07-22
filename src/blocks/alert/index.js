@@ -14,7 +14,7 @@ import icons from './../../utils/icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { createBlock } = wp.blocks;
 const { RichText, getColorClassName } = wp.blockEditor;
 
@@ -65,10 +65,6 @@ const blockAttributes = {
 	textAlign: {
 		type: 'string',
 	},
-	type: {
-		type: 'string',
-		default: 'default',
-	},
 	borderColor: {
 		type: 'string',
 	},
@@ -86,6 +82,13 @@ const settings = {
 	keywords: keywords,
 
 	attributes: blockAttributes,
+
+	styles: [
+		{ name: 'info', label: _x( 'Info', 'block style' ), isDefault: true },
+		{ name: 'success', label: _x( 'Success', 'block style' ) },
+		{ name: 'warning', label: _x( 'Warning', 'block style' ) },
+		{ name: 'error', label: _x( 'Error', 'block style' ) },
+	],
 
 	supports: {
 		align: true,
@@ -149,14 +152,13 @@ const settings = {
 			textAlign,
 			textColor,
 			title,
-			type,
 			value,
 		} = attributes;
 
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 		const textClass = getColorClassName( 'color', textColor );
 
-		const classes = classnames( `is-${ type }-alert`, {
+		const classes = classnames( {
 			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
 			'has-background': backgroundColor || customBackgroundColor,
@@ -196,6 +198,10 @@ const settings = {
 		{
 			attributes: {
 				...blockAttributes,
+				type: {
+					type: 'string',
+					default: 'default',
+				},
 				borderColor: {
 					type: 'string',
 				},

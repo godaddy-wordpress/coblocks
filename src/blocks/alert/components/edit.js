@@ -36,7 +36,6 @@ class Edit extends Component {
 			align,
 			textAlign,
 			title,
-			type,
 			value,
 		} = attributes;
 
@@ -55,7 +54,6 @@ class Edit extends Component {
 				<div
 					className={ classnames(
 						className,
-						`is-${ type }-alert`,
 						`align${ align }`, {
 							'has-background': backgroundColor.color,
 							'has-text-color': textColor.color,
