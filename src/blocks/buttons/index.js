@@ -1,89 +1,40 @@
 /**
- * External dependencies
+ * Styles
  */
-import classnames from 'classnames';
+import './styles/style.scss';
+import './styles/editor.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-import deprecated from './components/deprecated';
+import deprecated from './deprecated';
+import edit from './edit';
+import icons from './icons';
 import metadata from './block.json';
-import edit from './components/edit';
-import icons from './components/icons';
+import save from './save';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
-const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Block constants
  */
 const name = 'buttons';
 
-const title = __( 'Buttons' );
-
 const icon = icons.buttons;
 
-const keywords = [
-	__( 'link' ),
-	__( 'cta' ),
-	__( 'coblocks' ),
-];
-
 const settings = {
-
-	title: title,
-
+	title: __( 'Buttons' ),
 	description: __( 'Prompt visitors to take action with multiple buttons, side by side.' ),
-
-	keywords: keywords,
-
+	keywords: [ __( 'link' ), __( 'cta' ), __( 'coblocks' ) ],
 	attributes: metadata.attributes,
-
-	transforms: {
-		from: [
-			...[ 1, 2, 3, 4 ].map( ( items ) => ( {
-				type: 'prefix',
-				prefix: Array( items + 1 ).join( ':' ) + 'buttons',
-				transform( content ) {
-					return createBlock( `coblocks/${ name }`, {
-						content,
-						items,
-					} );
-				},
-			} ) ),
-		],
-	},
-
+	transforms,
 	edit,
-
-	save( { attributes, className } ) {
-		const {
-			contentAlign,
-			isStackedOnMobile,
-		} = attributes;
-
-		const innerClasses = classnames(
-			'wp-block-coblocks-buttons__inner',{
-				[ `flex-align-${ contentAlign }` ] : contentAlign,
-				'is-stacked-on-mobile': isStackedOnMobile,
-			}
-		);
-
-		return (
-			<div className={ className }>
-				<div className={ innerClasses }>
-					<InnerBlocks.Content />
-				</div>
-			</div>
-		);
-	},
+	save,
 	deprecated,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };
