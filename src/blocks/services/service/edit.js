@@ -29,7 +29,7 @@ const { isBlobURL } = wp.blob;
 /**
  * Constants
  */
-const ALLOWED_BLOCKS = [ 'core/heading', 'core/button', 'core/paragraph', ];
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/button', 'core/paragraph' ];
 
 class Edit extends Component {
 	updateInnerAttributes = ( blockName, newAttributes ) => {
@@ -95,6 +95,7 @@ class Edit extends Component {
 
 		if ( this.props.attributes.showCta !== prevProps.attributes.showCta ) {
 			this.manageInnerBlock( 'core/button', {
+				align: this.props.attributes.alignment,
 			}, this.props.attributes.showCta );
 		}
 	}

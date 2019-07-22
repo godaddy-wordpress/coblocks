@@ -25,6 +25,10 @@
 		},
 		"focalPoint": {
 			"type": "object"
+		},
+		"alignment": {
+			"type": "string",
+			"default": "none"
 		}
 	}
 }
