@@ -110,8 +110,6 @@ class Edit extends Component {
 		if ( activeStyle !== lastActiveStyle ) {
 			if ( 'circle' === activeStyle.name ) {
 				this.onChangeAlignment( 'center' );
-			} else {
-				this.onChangeAlignment( 'none' );
 			}
 		}
 	}
