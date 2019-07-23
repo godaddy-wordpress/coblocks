@@ -13,7 +13,7 @@
 			"type": "integer",
 			"default": 3
 		},
-		"showCtas": {
+		"buttons": {
 			"type": "boolean",
 			"default": false
 		}

@@ -159,10 +159,10 @@ class Edit extends Component {
 	toggleCtas = () => {
 		const { attributes, setAttributes } = this.props;
 
-		const showCtas = ! attributes.showCtas;
-		setAttributes( { showCtas } );
+		const buttons = ! attributes.buttons;
+		setAttributes( { buttons } );
 
-		this.updateInnerAttributes( 'coblocks/service', { showCta: showCtas } );
+		this.updateInnerAttributes( 'coblocks/service', { showCta: buttons } );
 	};
 
 	render() {
@@ -194,7 +194,7 @@ class Edit extends Component {
 						template={ Array( attributes.columns ).fill( [
 							'coblocks/service',
 							{
-								showCta: attributes.showCtas,
+								showCta: attributes.buttons,
 								headingLevel: attributes.headingLevel,
 								alignment: attributes.alignment,
 							},

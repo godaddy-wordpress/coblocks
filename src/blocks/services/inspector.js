@@ -85,11 +85,11 @@ const Inspector = props => {
 					label={ __( 'Action Buttons' ) }
 					className="components-toggle-control--services-action-button"
 					help={
-						attributes.showCtas ?
+						attributes.buttons ?
 							__( 'Showing the call to action buttons.' ) :
 							__( 'Toggle to show call to action buttons.' )
 					}
-					checked={ attributes.showCtas }
+					checked={ attributes.buttons }
 					onChange={ onToggleCtas }
 				/>
 			</PanelBody>
