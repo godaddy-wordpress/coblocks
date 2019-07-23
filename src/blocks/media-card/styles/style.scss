@@ -1,3 +1,36 @@
+:-ms-fullscreen,
+:root .wp-block-coblocks-media-card {
+	
+	.wp-block-coblocks-media-card__wrapper {
+		display: flex;
+
+		.wp-block-coblocks-row__inner{
+			margin-left: 33%;
+			margin-right: -10%; 
+		}
+
+		figure {
+			margin-right:-25%;
+			width:100%;
+			
+		}
+	}
+
+	&.is-style-right  {
+		figure {
+			margin-left: 40%;
+			margin-right: -66%;
+		}
+		.wp-block-coblocks-row__inner{
+		margin-left: -50%;		
+		margin-right: 70%;
+		}
+
+	}
+	
+	
+}
+
 .wp-block-coblocks-media-card {
 	&__wrapper {
 		align-items: center;
