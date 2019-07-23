@@ -46,53 +46,23 @@
 		}
 
 		//grid alignment
-		&.hero-top-left-align {
+		&[class*="hero-top"] {
 			align-items: flex-start;
+		}
+		&[class*="hero-center"] {
+			align-items: center;
+		}
+		&[class*="hero-bottom"] {
+			align-items: flex-end;
+		}
+
+		&[class*="left-align"] {
 			justify-content: flex-start;
 		}
-
-		&.hero-top-center-align {
-			align-items: flex-start;
+		&[class*="center-align"] {
 			justify-content: center;
 		}
-
-		&.hero-top-right-align {
-			align-items: flex-start;
-			justify-content: flex-end;
-		}
-
-		&.hero-center-left-align {
-			align-items: center;
-			justify-content: flex-start;
-		}
-
-		&.hero-center-center-align {
-			align-items: center;
-			justify-content: center;
-		}
-
-		&.hero-center-center-align.is-fullscreen {
-			align-items: center;
-			justify-content: center;
-		}
-
-		&.hero-center-right-align {
-			align-items: center;
-			justify-content: flex-end;
-		}
-
-		&.hero-bottom-left-align {
-			align-items: flex-end;
-			justify-content: flex-start;
-		}
-
-		&.hero-bottom-center-align {
-			align-items: flex-end;
-			justify-content: center;
-		}
-
-		&.hero-bottom-right-align {
-			align-items: flex-end;
+		&[class*="right-align"] {
 			justify-content: flex-end;
 		}
 	}
