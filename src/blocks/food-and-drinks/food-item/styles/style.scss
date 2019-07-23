@@ -1,23 +1,23 @@
-:-ms-fullscreen,
-:root .entry-content {
-	.wp-block-coblocks-food-item {
-		&:nth-child(even) {
-			padding-right: 0 !important;
-		}
+:-ms-fullscreen .wp-block-coblocks-food-item,
+:root .wp-block-coblocks-food-item {
+	&:nth-child(even) {
+		padding-right: 0 !important;
+	}
 
-		&:nth-child(odd) {
-			padding-left: 0 !important;
-		}
+	&:nth-child(odd) {
+		padding-left: 0 !important;
 	}
 }
 
-:-ms-fullscreen,
+:-ms-fullscreen .wp-block-coblocks-food-item,
 :root .wp-block-coblocks-food-item {
 	figure {
 		img {
-			margin-left: 5%;
-			max-width: 90%;
-  			min-height: 100%;
+			min-width: 100%;
+			height: auto;
+			top: 50%;
+			left: 50%;
+			transform: translate( -50%, -50% );
 		}
 	}
 }
