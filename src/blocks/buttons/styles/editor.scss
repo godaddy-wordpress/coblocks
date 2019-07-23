@@ -4,230 +4,41 @@
 		margin-top: 0;
 	}
 
-	.wp-block-coblocks-buttons {
-		position: relative;
+	.editor-inner-blocks {
+		> .editor-block-list__layout {
+			display: flex;
+			justify-content: center;
 
-		&__inner {
-			> .editor-inner-blocks {
-				> .editor-block-list__layout {
-					display: flex;
-					justify-content: center;
-
-					.wp-block {
-						.editor-block-list__block-edit {
-							.block-library-button__inline-link {
-								background: $white;
-								box-shadow: 0 0 0 1px #ced2d6;
-								position: absolute;
-								z-index: 99;
-							}
-						}
-					}
-				}
-			}
-
-			&.flex-align-left {
-				> .editor-inner-blocks {
-					> .editor-block-list__layout {
-						justify-content: flex-start;
-						.wp-block[data-type="core/button"] {
-							text-align: left;
-						}
-					}
-				}
-			}
-
-			&.flex-align-right {
-				> .editor-inner-blocks {
-					> .editor-block-list__layout {
-						justify-content: flex-end;
-						.wp-block[data-type="core/button"] {
-							text-align: right;
-						}
-					}
-				}
-			}
-
-			.editor-default-block-appender {
-				display: none;
-			}
-
-			//button block
-			.wp-block[data-type="core/button"] {
-				margin-left: 0;
-				margin-right: 0;
-				text-align: center;
-				width: auto !important;
-
-				> .editor-block-list__block-edit {
-					margin-bottom: 0 !important;
-					margin-top: 0 !important;
-				}
-			}
-
-			//Add Gutter
-			&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
-				@media (max-width: #{ ($break-small) }) {
-					&:not(:last-child) {
-						margin-bottom: ($gutter--small / 2);
-					}
-				}
-
-				@include break-small() {
-					&:nth-child(odd) {
-						margin-right: ($gutter--small / 2) - 16px;
-					}
-
-					&:nth-child(even) {
-						margin-left: ($gutter--small / 2) - 16px;
-					}
-
-					&:not(:first-child) {
-						margin-left: ($gutter--small / 2) - 16px;
-					}
-
-					&:not(:last-child) {
-						margin-right: ($gutter--small / 2) - 16px;
-					}
-					&:last-child {
-						margin-right: 0px;
-					}
-				}
-			}
-
-			&.has-medium-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
-				@media (max-width: #{ ($break-small) }) {
-					&:not(:last-child) {
-						margin-bottom: ($gutter--medium / 2);
-					}
-				}
-
-				@include break-small() {
-					&:nth-child(odd) {
-						margin-right: ($gutter--medium / 2) - 16px;
-					}
-
-					&:nth-child(even) {
-						margin-left: ($gutter--medium / 2) - 16px;
-					}
-
-					&:not(:first-child) {
-						margin-left: ($gutter--medium / 2) - 16px;
-					}
-
-					&:not(:last-child) {
-						margin-right: ($gutter--medium / 2) - 16px;
-					}
-
-					&:last-child {
-						margin-right: 0px;
-					}
-				}
-			}
-
-			&.has-large-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
-				@media (max-width: #{ ($break-small) }) {
-					&:not(:last-child) {
-						margin-bottom: ($gutter--large / 2);
-					}
-				}
-
-				@include break-small() {
-					&:nth-child(odd) {
-						margin-right: ($gutter--large / 2) - 16px;
-					}
-
-					&:nth-child(even) {
-						margin-left: ($gutter--large / 2) - 16px;
-					}
-
-					&:not(:first-child) {
-						margin-left: ($gutter--large / 2) - 16px;
-					}
-
-					&:not(:last-child) {
-						margin-right: ($gutter--large / 2) - 16px;
-					}
-
-					&:last-child {
-						margin-right: 0px;
-					}
-				}
-			}
-
-			&.has-huge-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
-				@media (max-width: #{ ($break-small) }) {
-					&:not(:last-child) {
-						margin-bottom: ($gutter--huge / 2);
-					}
-				}
-
-				@include break-small() {
-					&:nth-child(odd) {
-						margin-right: ($gutter--huge / 2) - 16px;
-					}
-
-					&:nth-child(even) {
-						margin-left: ($gutter--huge / 2) - 16px;
-					}
-
-					&:not(:first-child) {
-						margin-left: ($gutter--huge / 2) - 16px;
-					}
-
-					&:not(:last-child) {
-						margin-right: ($gutter--huge / 2) - 16px;
-					}
-
-					&:last-child {
-						margin-right: 0px;
-					}
-				}
-			}
-
-			//Display button as stacked
-			&.is-stacked {
-				> .editor-inner-blocks {
-					display: block;
-					width: 100%;
-
-					> .editor-block-list__layout {
-						flex-direction: column;
-					}
-				}
-				.wp-block[data-type="core/button"] {
-					display: block;
-					margin-left: 0 !important;
-					margin-right: 0 !important;
-				}
-
-				&.has-small-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
-					&:not(:last-child) {
-						margin-bottom: $gutter--small !important;
-					}
-				}
-
-				&.has-medium-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
-					&:not(:last-child) {
-						margin-bottom: $gutter--medium !important;
-					}
-				}
-
-				&.has-large-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
-					&:not(:last-child) {
-						margin-bottom: $gutter--large !important;
-					}
-				}
-
-				&.has-huge-gutter > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/button"] {
-					&:not(:last-child) {
-						margin-bottom: $gutter--huge !important;
-					}
-				}
+			.block-library-button__inline-link {
+				box-shadow: 0 0 0 1px $light-gray-500;
+				position: absolute;
+				z-index: 99;
 			}
 		}
-		.block-list-appender {
-			display: none;
+	}
+
+	.flex-align-left {
+		> .editor-inner-blocks {
+			> .editor-block-list__layout {
+				justify-content: flex-start;
+			}
+		}
+	}
+
+	.flex-align-right {
+		> .editor-inner-blocks {
+			> .editor-block-list__layout {
+				justify-content: flex-end;
+			}
+		}
+	}
+
+	.wp-block[data-type="core/button"] {
+		width: auto;
+
+		> .editor-block-list__block-edit {
+			margin-bottom: 0;
+			margin-top: 0;
 		}
 	}
 }
