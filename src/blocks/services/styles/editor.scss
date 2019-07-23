@@ -1,5 +1,25 @@
 $gutter: 0.3em;
 
+.coblocks-editor-block-styles {
+	&.align-center {
+		.service-svg-moving-path {
+			transform: translateX(4px);
+		}
+	}
+
+	&.align-left {
+		.service-svg-moving-path {
+			transform: translateX(0);
+		}
+	}
+
+	&.align-right {
+		.service-svg-second {
+			transform: translateX(2px);
+		}
+	}
+}
+
 .wp-block-coblocks-services {
 	[data-block] {
 		margin-bottom: 0;

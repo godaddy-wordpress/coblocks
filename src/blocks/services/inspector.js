@@ -30,7 +30,12 @@ const Inspector = props => {
 	return (
 		<InspectorControls>
 			<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
-				<div className="editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
+				<div className={ classnames(
+					'editor-block-styles',
+					'block-editor-block-styles',
+					'coblocks-editor-block-styles',
+					`align-${ attributes.alignment }`, { }
+				) } >
 					{ layoutOptions.map( style => (
 						<div
 							key={ `style-${ style.name }` }
@@ -52,7 +57,7 @@ const Inspector = props => {
 							aria-label={ style.label || style.name }
 						>
 							<div className="editor-block-styles__item-preview block-editor-block-styles__item-preview">
-								{ attributes.showImages ? style.iconWithImages : style.icon }
+								{ style.icon }
 							</div>
 							<div className="editor-block-styles__item-label block-editor-block-styles__item-label">
 								{ style.label || style.name }

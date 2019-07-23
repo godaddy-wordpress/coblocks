@@ -2,9 +2,13 @@
 	&__figure {
 		display: flex;
 		margin: 0;
-		padding-top: calc(9 / 16 * 100%);
+		padding-top: calc(3 / 4 * 100%);
 		position: relative;
 		width: 100%;
+
+		.is-style-sixbynine & {
+			padding-top: calc(9 / 16 * 100%);
+		}
 
 		.is-style-circle & {
 			border-radius: 100%;

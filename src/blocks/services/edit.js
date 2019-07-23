@@ -1,12 +1,13 @@
 /**
- * Internal dependencies.
- */
-import InspectorControls from './inspector';
-
-/**
  * External dependencies.
  */
 import { find } from 'lodash';
+
+/**
+ * Internal dependencies.
+ */
+import InspectorControls from './inspector';
+import icons from './icons';
 
 /**
  * WordPress dependencies
@@ -28,20 +29,26 @@ const ALLOWED_BLOCKS = [ 'coblocks/service' ];
 
 const layoutOptions = [
 	{
-		name: 'sixteenbynine',
-		label: __( '16:9' ),
-		icon: '',
+		name: 'threebyfour',
+		label: __( '4:3' ),
+		icon: icons.service43,
 		isDefault: true,
+	},
+	{
+		name: 'sixbynine',
+		label: __( '16:9' ),
+		icon: icons.service169,
+
 	},
 	{
 		name: 'square',
 		label: __( 'Square' ),
-		icon: '',
+		icon: icons.serviceSquare,
 	},
 	{
 		name: 'circle',
 		label: __( 'Circle' ),
-		icon: '',
+		icon: icons.serviceCircle,
 	},
 ];
 
