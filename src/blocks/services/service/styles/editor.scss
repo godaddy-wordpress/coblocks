@@ -12,14 +12,14 @@
 	flex: 1 100%;
 
 	.editor-media-placeholder {
-		border: 1px dashed $dark-gray-150;
 		margin: 0 0 1.65em !important;
 		min-height: unset;
+		outline: 1px dashed $dark-gray-150;
 		padding: calc(9 / 16 * 100%) 0 0 0;
 		position: relative;
 
 		&:hover {
-			border: 1px dashed $dark-gray-500;
+			outline: 1px dashed $dark-gray-500;
 		}
 
 		.is-style-circle & {
