@@ -160,12 +160,6 @@ class Gist extends Component {
 	_formOnSubmit( event ) {
 		event.preventDefault();
 		this.setState( { loading: true } );
-		// if ( this.state.rendered !== this.state.url ) {
-		// 	console.log( this.props.url );
-		// 	console.log( this.props.value );
-		// 	this.props.changePreviewState();
-		// 	this.setState( { loading: false } );
-		// } else {
 		this._setupURL( this.props.value );
 		// }
 	}
@@ -235,19 +229,30 @@ class Gist extends Component {
 			// ,
 		} = this.props;
 
+		const {
+			// url,
+			// file,
+			// error,
+			loading,
+			gistContent,
+			rendered,
+		} = this.state;
+
 		const { _formOnSubmit } = this;
+		// console.log( rendered );
+		console.log( loading );
 		return (
 			<Fragment>
 				{ this.state.error ? noticeUI : null }
-				{ this.state.loading && (
-					<Placeholder
-						key="placeholder"
-						icon={ icons.github }
-						label={ __( 'Loading Gist' ) }
-					>
-						<Spinner />
-					</Placeholder>
-				) }
+				 { rendered && ! gistContent &&
+				<Placeholder
+					key="placeholder"
+					icon={ icons.github }
+					label={ __( 'Loading Gist' ) }
+				>
+					<Spinner />
+				</Placeholder>
+				 }
 				{ /* { ! this.state.loading && ! this.state.rendered ? */
 					! this.props.preview && (
 						<Placeholder

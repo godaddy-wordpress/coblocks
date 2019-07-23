@@ -19,7 +19,7 @@ const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { RichText } = wp.blockEditor;
-const { withNotices } = wp.components;
+const { withNotices, Spinner } = wp.components;
 const { withState } = wp.compose;
 
 /**
@@ -68,15 +68,19 @@ class Edit extends Component {
 			setAttributes,
 		} = this.props;
 
+		// const { c } = this.state;
+
 		const { meta, caption, file, url } = attributes;
 		const { urlText } = this.state;
 		const label = __( 'Gist URL' );
-		console.log( this.props.preview );
+		console.log( preview );
 		return (
 			<Fragment>
 				{ url && url.length > 0 && isSelected && <Controls { ...this.props } /> }
 				{ url && url.length > 0 && isSelected && <Inspector { ...this.props } /> }
+
 				<div className={ classnames( className, meta ? null : 'no-meta' ) }>
+					{ /* { ! preview && ! url && <Spinner /> } */ }
 					<Gist
 						label={ label }
 						icon={ icons.github }
@@ -87,7 +91,7 @@ class Edit extends Component {
 						onChange={ event =>
 							this.setState( { urlText: escape( event.target.value ) } )
 						}
-						preview={ this.props.preview }
+						preview={ preview }
 						changePreviewState={ () => {
 							this.props.setState( { preview: ! this.props.preview } );
 						} }
