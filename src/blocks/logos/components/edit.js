@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import * as helper from './../../../utils/helper';
-import Controls from './controls';
+import Inspector from './inspector';
 import GalleryDropZone from '../../../components/block-gallery/gallery-dropzone';
 import Logos from './logos';
 import { title, icon } from '../';
@@ -52,40 +52,44 @@ class Edit extends Component {
 
 		const {
 			images,
-			blackAndWhite,
+			grayscale,
 		} = attributes;
 
 		const hasImages = !! images.length;
 
 		const classes = classnames(
-			className,
-			{
-				'has-filter-grayscale': blackAndWhite,
+			className, {
+				'has-filter-grayscale': grayscale,
 			}
 		);
 
 		if ( ! hasImages ) {
 			return (
-				<MediaPlaceholder
-					{ ...this.props }
-					icon={ ! hasImages && <BlockIcon icon={ icon } /> }
-					labels={ {
-						title: title,
-						instructions: __( 'Drag images, upload new ones or select files from your library.' ),
-					} }
-					multiple
-					accept="image/*"
-					allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
-					onError={ noticeOperations.createErrorNotice }
-					notices={ noticeUI }
-					onSelect={ this.onSelectImages }
-				/>
+				<Fragment>
+					<Inspector
+						{ ...this.props }
+					/>
+					<MediaPlaceholder
+						{ ...this.props }
+						icon={ ! hasImages && <BlockIcon icon={ icon } /> }
+						labels={ {
+							title: title,
+							instructions: __( 'Drag images, upload new ones or select files from your library.' ),
+						} }
+						multiple
+						accept="image/*"
+						allowedTypes={ [ 'image' ] }
+						onError={ noticeOperations.createErrorNotice }
+						notices={ noticeUI }
+						onSelect={ this.onSelectImages }
+					/>
+				</Fragment>
 			);
 		}
 
 		return (
 			<Fragment>
-				<Controls
+				<Inspector
 					{ ...this.props }
 				/>
 				<GalleryDropZone
@@ -106,7 +110,7 @@ class Edit extends Component {
 							} }
 							multiple
 							accept="image/*"
-							allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
+							allowedTypes={ [ 'image' ] }
 							value={ hasImages ? images : undefined }
 							onError={ noticeOperations.createErrorNotice }
 							notices={ hasImages ? undefined : noticeUI }

@@ -3,8 +3,8 @@
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import Edit from './components/edit';
-import Save from './components/save';
+import edit from './components/edit';
+import save from './components/save';
 import icons from './../../utils/icons';
 
 /**
@@ -23,7 +23,7 @@ const icon = icons.logos;
 
 const keywords = [
 	__( 'clients' ),
-	__( 'badges' ),
+	__( 'proof' ),
 	__( 'testimonials' ),
 ];
 
@@ -51,37 +51,22 @@ const blockAttributes = {
 		},
 		default: [],
 	},
-	blackAndWhite: {
+	grayscale: {
 		type: 'boolean',
 		default: false,
-	},
-	align: {
-		type: 'string',
-		default: 'wide',
 	},
 };
 
 const settings = {
-
 	title: title,
-
 	description: __( 'Add a set of logos or badges' ),
-
 	keywords: keywords,
-
-	category: 'coblocks-galleries',
-
+	attributes: blockAttributes,
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
-
-	attributes: blockAttributes,
-
-	edit: Edit,
-
-	save: Save,
-
-	deprecated: [],
+	edit: edit,
+	save: save,
 };
 
 export { name, title, icon, settings };

@@ -7,7 +7,7 @@ import { chunk } from 'lodash';
 export default function save( { attributes, className } ) {
 	const {
 		images,
-		blackAndWhite,
+		grayscale,
 	} = attributes;
 
 	const hasImages = !! images.length;
@@ -19,7 +19,7 @@ export default function save( { attributes, className } ) {
 	const classes = classnames(
 		className,
 		{
-			'has-filter-grayscale': blackAndWhite,
+			'has-filter-grayscale': grayscale,
 		}
 	);
 
