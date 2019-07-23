@@ -78,6 +78,7 @@ const Inspector = props => {
 				/>
 				<ToggleControl
 					label={ __( 'Action Buttons' ) }
+					className="components-toggle-control--services-action-button"
 					help={
 						attributes.showCtas ?
 							__( 'Showing the call to action buttons.' ) :
