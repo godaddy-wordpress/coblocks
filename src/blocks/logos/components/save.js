@@ -32,6 +32,7 @@ export default function save( { attributes, className } ) {
 									src={ img.url }
 									alt={ img.alt }
 									data-id={ img.id }
+									width={ img.width }
 								/>
 							);
 						} ) }
