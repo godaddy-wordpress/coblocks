@@ -1,13 +1,3 @@
-:-ms-fullscreen .wp-block-coblocks-food-item,
-:root .wp-block-coblocks-food-item {
-	&:nth-child(even) {
-		padding-right: 0 !important;
-	}
-
-	&:nth-child(odd) {
-		padding-left: 0 !important;
-	}
-}
 
 :-ms-fullscreen .wp-block-coblocks-food-item,
 :root .wp-block-coblocks-food-item {
@@ -23,11 +13,13 @@
 }
 
 .wp-block-coblocks-food-item {
-	flex: 1 50%;
+	flex-grow: 1;
+	width: 50%;
 	margin-top: 2.75em;
 
 	[data-columns="3"] & {
-		flex: 1 33.33%;
+		flex-grow: 1;
+		width: 33.33%;
 	}
 
 	.wp-block-coblocks-food-and-drinks[data-columns="2"]:not(.is-style-list) & {
