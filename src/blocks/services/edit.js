@@ -130,13 +130,13 @@ class Edit extends Component {
 	};
 
 	updateInnerAttributes = ( blockName, newAttributes ) => {
-		const innerItems = select( 'core/editor' ).getBlocksByClientId(
+		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
 			this.props.clientId
 		)[ 0 ].innerBlocks;
 
 		innerItems.map( item => {
 			if ( item.name === blockName ) {
-				dispatch( 'core/editor' ).updateBlockAttributes(
+				dispatch( 'core/block-editor' ).updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
