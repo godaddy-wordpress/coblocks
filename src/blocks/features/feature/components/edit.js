@@ -112,6 +112,7 @@ class Edit extends Component {
 							template={ TEMPLATE }
 							templateLock={ false }
 							templateInsertUpdatesSelection={ false }
+							renderAppender={ () => ( null ) }
 						/>
 					</div>
 				</div>

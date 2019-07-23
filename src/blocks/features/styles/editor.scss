@@ -1,6 +1,10 @@
 .wp-block[data-type="coblocks/features"] {
 	background: transparent !important;
 
+	.block-list-appender {
+		display: none;
+	}
+
 	.wp-block-coblocks-features {
 		width: 100%;
 
