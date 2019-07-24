@@ -37,7 +37,7 @@ class Edit extends Component {
 
 	onSelectImages( images ) {
 		this.props.setAttributes( {
-			images: images.map( ( image ) => Object.assign( helper.pickRelevantMediaFiles( image ), { width: ( 100 / images.length ) + '%' } ) ),
+			images: images.map( ( image ) => helper.pickRelevantMediaFiles( image ) ),
 		} );
 	}
 
