@@ -1,31 +1,31 @@
 .wp-block-coblocks-logo:not(.editor-media-placeholder) {
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	max-width: 100%;
-	width: 100%;
-	user-select: none;
-	justify-content: center;
 	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 100%;
+	user-select: none;
+	width: 100%;
 
 	.wrapper {
-		/* Use flexbox */
+		align-items: center;
 		display: inline-flex;
 		flex-direction: row;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
 		justify-content: center;
-		align-items: center;
-		width: 100%;
 		max-width: 100%;
+		user-select: none;
+		width: 100%;
 
-		img {
-			padding: 1em;
+		> img {
+			margin: 0 1em;
 
-			&:focus {
-				outline: none;
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:last-child {
+				margin-right: 0;
 			}
 		}
 	}

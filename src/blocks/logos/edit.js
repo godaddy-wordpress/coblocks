@@ -27,14 +27,6 @@ class Edit extends Component {
 		this.onSelectImages = this.onSelectImages.bind( this );
 	}
 
-	componentDidMount() {
-		if ( ! this.props.attributes.align ) {
-			this.props.setAttributes( {
-				align: 'wide',
-			} );
-		}
-	}
-
 	onSelectImages( images ) {
 		this.props.setAttributes( {
 			images: images.map( ( image ) => helper.pickRelevantMediaFiles( image ) ),

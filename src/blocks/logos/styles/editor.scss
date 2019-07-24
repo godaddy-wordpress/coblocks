@@ -9,8 +9,20 @@
 	user-select: none;
 	width: 100%;
 
+	.wrapper > div {
+		margin: 0 1em;
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&:nth-last-child(2) {
+			margin-right: 0;
+		}
+	}
+
 	img {
-		padding: 1em;
+		vertical-align: middle;
 
 		&:focus {
 			outline: none;
@@ -23,8 +35,9 @@
 
 	.block-editor-media-placeholder.is-appender {
 		margin-bottom: 0;
+		margin-top: 16px;
 		min-height: 100px;
-		outline: 1px dashed #8d96a0;
+		outline: 1px dashed $dark-gray-150;
 	}
 
 	.components-placeholder__label,
