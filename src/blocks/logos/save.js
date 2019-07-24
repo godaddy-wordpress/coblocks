@@ -27,13 +27,15 @@ export default function save( { attributes, className } ) {
 					<div className="wrapper" key={ 'wrapper-' + keyOuter }>
 						{ images.map( ( img, index ) => {
 							return (
-								<img
-									key={ 'img-' + index }
-									src={ img.url }
-									alt={ img.alt }
-									data-id={ img.id }
-									width={ img.width || ( 100 / images.length ) + '%' }
-								/>
+								<div style={ { width: img.width || ( 100 / images.length ) + '%' } }>
+									<img
+										key={ 'img-' + index }
+										src={ img.url }
+										alt={ img.alt }
+										data-id={ img.id }
+										data-width={ img.width || ( 100 / images.length ) + '%' }
+									/>
+								</div>
 							);
 						} ) }
 					</div>

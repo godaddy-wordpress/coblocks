@@ -41,6 +41,7 @@ class Logos extends Component {
 									<ResizableBox
 										key={ img.id + '-' + keyOuter + '-' + index }
 										minWidth="10%"
+										maxWidth={ ( 100 / images.length ) + '%' }
 										className={ classnames( 'resize', {
 											'is-selected': img.id === this.state.selectedImage,
 										} ) }
@@ -92,6 +93,7 @@ class Logos extends Component {
 											src={ img.url }
 											alt={ img.alt }
 											data-id={ img.id }
+											data-width={ img.width || ( 100 / images.length ) + '%' }
 											tabIndex="0"
 										/>
 									</ResizableBox>

@@ -55,7 +55,7 @@ const blockAttributes = {
 			width: {
 				type: 'string',
 				source: 'attribute',
-				attribute: 'width',
+				attribute: 'data-width',
 			},
 		},
 		default: [],

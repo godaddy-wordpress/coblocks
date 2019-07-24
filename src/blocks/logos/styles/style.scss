@@ -1,24 +1,16 @@
-.wp-block-coblocks-logo:not(.editor-media-placeholder) {
-	align-items: center;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	max-width: 100%;
-	user-select: none;
-	width: 100%;
-
+.wp-block-coblocks-logo {
 	.wrapper {
 		align-items: center;
-		display: inline-flex;
+		display: flex;
 		flex-direction: row;
+		// flex-wrap: wrap;
 		justify-content: center;
-		max-width: 100%;
-		user-select: none;
-		width: 100%;
+		// max-width: 100%;
+		// user-select: none;
+		// width: 100%;
 
-		> img {
-			margin: 0 1em;
+		> div {
+			margin: 0.5em;
 
 			&:first-child {
 				margin-left: 0;
@@ -28,5 +20,20 @@
 				margin-right: 0;
 			}
 		}
+
+		img {
+			vertical-align: middle;
+			width: 100%;
+		}
 	}
+
+	// .wrapper {
+	// 	align-items: center;
+	// 	display: inline-flex;
+	// 	flex-direction: row;
+	// 	justify-content: center;
+	// 	// max-width: 100%;
+	// 	// user-select: none;
+	// 	// width: 100%;
+	// }
 }
