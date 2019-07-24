@@ -29,8 +29,8 @@ class Logos extends Component {
 
 	render() {
 
-		// Todo: Set imageChunks to 5 if fullwidth alignment.
-		const imageChunks = chunk( this.props.images, 4 );
+		// Set imageChunks to 5 if fullwidth alignment.
+		const imageChunks = chunk( this.props.images, this.props.attributes.align === 'full' ? 5 : 4 );
 
 		return (
 			<Fragment>
@@ -98,6 +98,7 @@ class Logos extends Component {
 											data-width={ img.width || ( 100 / images.length ) + '%' }
 											tabIndex="0"
 										/>
+
 									</ResizableBox>
 								);
 							} ) }

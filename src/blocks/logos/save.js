@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { chunk } from 'lodash';
 
 export default function save( { attributes, className } ) {
-	const { images, grayscale } = attributes;
+	const { images, grayscale, align } = attributes;
 
 	const hasImages = !! images.length;
 
@@ -17,8 +17,8 @@ export default function save( { attributes, className } ) {
 		'has-filter-grayscale': grayscale,
 	} );
 
-	// Todo: Set imageChunks to 5 if fullwidth alignment.
-	const imageChunks = chunk( images, 4 );
+	// Set imageChunks to 5 if fullwidth alignment.
+	const imageChunks = chunk( images, align === 'full' ? 5 : 4 );
 
 	return (
 		<div className={ classes }>
