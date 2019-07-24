@@ -6,11 +6,11 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import * as helper from './../../../utils/helper';
+import * as helper from './../../utils/helper';
 import Inspector from './inspector';
-import GalleryDropZone from '../../../components/block-gallery/gallery-dropzone';
+import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import Logos from './logos';
-import { title, icon } from '../';
+import { title, icon } from './';
 
 /**
  * WordPress dependencies

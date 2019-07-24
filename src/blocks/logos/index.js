@@ -1,10 +1,14 @@
 /**
- * Internal dependencies
+ * Styles
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import edit from './components/edit';
-import save from './components/save';
+
+/**
+ * Internal dependencies
+ */
+import edit from './edit';
+import save from './save';
 import icons from './icons';
 
 /**
