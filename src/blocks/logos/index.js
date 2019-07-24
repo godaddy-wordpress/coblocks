@@ -17,7 +17,7 @@ const { __ } = wp.i18n;
  */
 const name = 'logo';
 
-const title = __( 'Logos' );
+const title = __( 'Logos & Badges' );
 
 const icon = icons.logos;
 
@@ -64,7 +64,7 @@ const blockAttributes = {
 
 const settings = {
 	title: title,
-	description: __( 'Add a set of logos or badges' ),
+	description: __( 'Add logos, badges, or certifications to build credibility.' ),
 	keywords: keywords,
 	attributes: blockAttributes,
 	supports: {
