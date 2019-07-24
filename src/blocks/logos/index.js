@@ -48,6 +48,11 @@ const blockAttributes = {
 				source: 'attribute',
 				attribute: 'data-id',
 			},
+			width: {
+				type: 'string',
+				source: 'attribute',
+				attribute: 'width',
+			},
 		},
 		default: [],
 	},

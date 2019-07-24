@@ -5,23 +5,17 @@ import classnames from 'classnames';
 import { chunk } from 'lodash';
 
 export default function save( { attributes, className } ) {
-	const {
-		images,
-		grayscale,
-	} = attributes;
+	const { images, grayscale } = attributes;
 
 	const hasImages = !! images.length;
 
 	if ( ! hasImages ) {
-		return ( null );
+		return null;
 	}
 
-	const classes = classnames(
-		className,
-		{
-			'has-filter-grayscale': grayscale,
-		}
-	);
+	const classes = classnames( className, {
+		'has-filter-grayscale': grayscale,
+	} );
 
 	const imageChunks = chunk( images, 4 );
 
@@ -33,18 +27,13 @@ export default function save( { attributes, className } ) {
 					<div className="wrapper" key={ 'wrapper-' + keyOuter }>
 						{ images.map( ( img, index ) => {
 							return (
-								<div
+								<img
 									key={ 'img-' + index }
-									style={ {
-										width: img.width ? img.width : ( ( 100 / images.length ) + '%' ),
-									} }
-								>
-									<img
-										src={ img.url }
-										alt={ img.alt }
-										data-id={ img.id }
-									/>
-								</div>
+									src={ img.url }
+									alt={ img.alt }
+									data-id={ img.id }
+									width={ img.width }
+								/>
 							);
 						} ) }
 					</div>

@@ -44,14 +44,12 @@ class Logos extends Component {
 										className={ classnames( 'resize', {
 											'is-selected': img.id === this.state.selectedImage,
 										} ) }
-										size={ {
-											width: img.width ? img.width : ( 100 / images.length ) + '%',
-										} }
+										size={ { width: img.width } }
 										enable={ {
 											top: false,
-											right: index !== images.length - 1,
+											right: true,
 											bottom: false,
-											left: index !== 0,
+											left: true,
 											topRight: false,
 											bottomRight: false,
 											bottomLeft: false,
@@ -60,6 +58,28 @@ class Logos extends Component {
 										onResizeStop={ ( event, direction, elt ) => {
 											const elementWidth = elt.style.width;
 											imageChunks[ keyOuter ][ index ].width = elementWidth;
+
+											const totalWidth = imageChunks[ keyOuter ].reduce(
+												( acc, image ) => acc + parseFloat( image.width ),
+												0.0
+											);
+
+											if ( totalWidth > 100 ) {
+												const widthDifference = parseFloat( 100 - totalWidth );
+
+												imageChunks[ keyOuter ].map( ( image, thisIndex ) => {
+													if ( thisIndex !== index ) {
+														image.width =
+															parseFloat( image.width ) +
+															parseFloat( widthDifference / ( imageChunks[ keyOuter ].length - 1 ) ) + '%';
+
+														return image;
+													}
+
+													return image;
+												} );
+											}
+
 											this.props.setAttributes( {
 												images: flatten( imageChunks ),
 											} );
