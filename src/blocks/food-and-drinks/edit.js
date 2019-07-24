@@ -166,7 +166,7 @@ class FoodItem extends Component {
 			innerBlocks
 		);
 
-		dispatch( 'core/editor' ).insertBlock( newItem, insertAtIndex );
+		dispatch( 'core/block-editor' ).insertBlock( newItem, insertAtIndex );
 	};
 
 	render() {

@@ -14,6 +14,7 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
+const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.blockEditor;
 
@@ -35,7 +36,7 @@ const ALLOWED_BLOCKS = [ 'coblocks/pricing-table-item' ];
  * @return {Object[]} Columns layout configuration.
  */
 const getCount = memoize( ( count ) => {
-	return times( count, () => [ 'coblocks/pricing-table-item' ] );
+	return times( count, ( index ) => [ 'coblocks/pricing-table-item', { placeholder: sprintf( __( 'Plan %s' ), index + 1 ) } ] );
 } );
 
 /**
