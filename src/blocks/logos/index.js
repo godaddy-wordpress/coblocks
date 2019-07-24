@@ -10,6 +10,7 @@ import './styles/style.scss';
 import edit from './edit';
 import save from './save';
 import icons from './icons';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -17,65 +18,22 @@ import icons from './icons';
 const { __ } = wp.i18n;
 
 /**
- * Block constants
+ * Block constants.
  */
-const name = 'logo';
-
-const title = __( 'Logos & Badges' );
+const { name } = metadata;
 
 const icon = icons.logos;
 
-const keywords = [
-	__( 'clients' ),
-	__( 'proof' ),
-	__( 'testimonials' ),
-];
-
-const blockAttributes = {
-	images: {
-		type: 'array',
-		source: 'query',
-		selector: 'img',
-		query: {
-			url: {
-				type: 'string',
-				source: 'attribute',
-				attribute: 'src',
-			},
-			alt: {
-				type: 'string',
-				source: 'attribute',
-				attribute: 'alt',
-			},
-			id: {
-				type: 'string',
-				source: 'attribute',
-				attribute: 'data-id',
-			},
-			width: {
-				type: 'string',
-				source: 'attribute',
-				attribute: 'width',
-			},
-		},
-		default: [],
-	},
-	grayscale: {
-		type: 'boolean',
-		default: false,
-	},
-};
-
 const settings = {
-	title: title,
+	title: __( 'Logos & Badges' ),
 	description: __( 'Add logos, badges, or certifications to build credibility.' ),
-	keywords: keywords,
-	attributes: blockAttributes,
+	keywords: [ __( 'clients' ), __( 'proof' ), __( 'testimonials' ) ],
+	attributes: metadata.attributes,
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
-	edit: edit,
-	save: save,
+	edit,
+	save,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

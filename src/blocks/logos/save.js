@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { chunk } from 'lodash';
 
 export default function save( { attributes, className } ) {
-	const { images, grayscale } = attributes;
+	const { images, grayscale, align } = attributes;
 
 	const hasImages = !! images.length;
 
@@ -17,23 +17,26 @@ export default function save( { attributes, className } ) {
 		'has-filter-grayscale': grayscale,
 	} );
 
-	const imageChunks = chunk( images, 4 );
+	// Set imageChunks to 5 if fullwidth alignment.
+	const imageChunks = chunk( images, align === 'full' ? 5 : align === 'wide' ? 4 : 3);
 
 	return (
 		<div className={ classes }>
 			{ Object.keys( imageChunks ).map( keyOuter => {
 				const images = imageChunks[ keyOuter ];
 				return (
-					<div className="wrapper" key={ 'wrapper-' + keyOuter }>
+					<div className="wp-block-coblocks-logos__row" key={ 'wrapper-' + keyOuter }>
 						{ images.map( ( img, index ) => {
 							return (
-								<img
-									key={ 'img-' + index }
-									src={ img.url }
-									alt={ img.alt }
-									data-id={ img.id }
-									width={ img.width || ( 100 / images.length ) + '%' }
-								/>
+								<div style={ { width: img.width || ( 100 / images.length ) + '%' } } key={ 'logo-' + keyOuter }>
+									<img
+										key={ 'img-' + index }
+										src={ img.url }
+										alt={ img.alt }
+										data-id={ img.id }
+										data-width={ img.width || ( 100 / images.length ) + '%' }
+									/>
+								</div>
 							);
 						} ) }
 					</div>

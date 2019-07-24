@@ -8,9 +8,10 @@ import classnames from 'classnames';
  */
 import * as helper from './../../utils/helper';
 import Inspector from './inspector';
+import Controls from './controls';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import Logos from './logos';
-import { title, icon } from './';
+import { icon } from './';
 
 /**
  * WordPress dependencies
@@ -65,7 +66,7 @@ class Edit extends Component {
 						{ ...this.props }
 						icon={ ! hasImages && <BlockIcon icon={ icon } /> }
 						labels={ {
-							title: title,
+							title: __( 'Logos & Badges' ),
 							instructions: __( 'Drag images, upload new ones or select files from your library.' ),
 						} }
 						multiple
@@ -81,9 +82,16 @@ class Edit extends Component {
 
 		return (
 			<Fragment>
-				<Inspector
-					{ ...this.props }
-				/>
+				{ isSelected &&
+					<Controls
+						{ ...this.props }
+					/>
+				}
+				{ isSelected &&
+					<Inspector
+						{ ...this.props }
+					/>
+				}
 				<GalleryDropZone
 					{ ...this.props }
 				/>

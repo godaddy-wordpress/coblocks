@@ -28,19 +28,21 @@ class Logos extends Component {
 	}
 
 	render() {
-		const imageChunks = chunk( this.props.images, 4 );
+		// Set imageChunks to 5 if fullwidth alignment.
+		const imageChunks = chunk( this.props.images, this.props.attributes.align === 'full' ? 5 : this.props.attributes.align === 'wide' ? 4 : 3);
 
 		return (
 			<Fragment>
 				{ Object.keys( imageChunks ).map( keyOuter => {
 					const images = imageChunks[ keyOuter ];
 					return (
-						<div className="wrapper" key={ 'wrapper-' + keyOuter }>
+						<div className="wp-block-coblocks-logos__row" key={ 'wrapper-' + keyOuter }>
 							{ images.map( ( img, index ) => {
 								return (
 									<ResizableBox
 										key={ img.id + '-' + keyOuter + '-' + index }
 										minWidth="10%"
+										maxWidth={ ( 100 / images.length ) + '%' }
 										className={ classnames( 'resize', {
 											'is-selected': img.id === this.state.selectedImage,
 										} ) }
@@ -92,8 +94,10 @@ class Logos extends Component {
 											src={ img.url }
 											alt={ img.alt }
 											data-id={ img.id }
+											data-width={ img.width || ( 100 / images.length ) + '%' }
 											tabIndex="0"
 										/>
+
 									</ResizableBox>
 								);
 							} ) }
