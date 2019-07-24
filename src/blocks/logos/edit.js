@@ -8,6 +8,7 @@ import classnames from 'classnames';
  */
 import * as helper from './../../utils/helper';
 import Inspector from './inspector';
+import Controls from './controls';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import Logos from './logos';
 import { icon } from './';
@@ -81,9 +82,16 @@ class Edit extends Component {
 
 		return (
 			<Fragment>
-				<Inspector
-					{ ...this.props }
-				/>
+				{ isSelected &&
+					<Controls
+						{ ...this.props }
+					/>
+				}
+				{ isSelected &&
+					<Inspector
+						{ ...this.props }
+					/>
+				}
 				<GalleryDropZone
 					{ ...this.props }
 				/>
