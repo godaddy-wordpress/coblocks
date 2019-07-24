@@ -17,6 +17,7 @@ export default function save( { attributes, className } ) {
 		'has-filter-grayscale': grayscale,
 	} );
 
+	// Todo: Set imageChunks to 5 if fullwidth alignment.
 	const imageChunks = chunk( images, 4 );
 
 	return (

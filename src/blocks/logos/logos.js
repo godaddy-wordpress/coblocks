@@ -28,6 +28,8 @@ class Logos extends Component {
 	}
 
 	render() {
+
+		// Todo: Set imageChunks to 5 if fullwidth alignment.
 		const imageChunks = chunk( this.props.images, 4 );
 
 		return (
