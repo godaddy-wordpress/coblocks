@@ -44,7 +44,7 @@ class Logos extends Component {
 										className={ classnames( 'resize', {
 											'is-selected': img.id === this.state.selectedImage,
 										} ) }
-										size={ { width: img.width } }
+										size={ { width: img.width || ( 100 / images.length ) + '%' } }
 										enable={ {
 											top: false,
 											right: true,
