@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import * as helper from './../../utils/helper';
-import { BackgroundControls } from '../../components/background';
 
 /**
  * WordPress dependencies

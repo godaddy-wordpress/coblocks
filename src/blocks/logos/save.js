@@ -18,7 +18,7 @@ export default function save( { attributes, className } ) {
 	} );
 
 	// Set imageChunks to 5 if fullwidth alignment.
-	const imageChunks = chunk( images, align === 'full' ? 5 : 4 );
+	const imageChunks = chunk( images, align === 'full' ? 5 : align === 'wide' ? 4 : 3);
 
 	return (
 		<div className={ classes }>
@@ -28,7 +28,7 @@ export default function save( { attributes, className } ) {
 					<div className="wp-block-coblocks-logos__row" key={ 'wrapper-' + keyOuter }>
 						{ images.map( ( img, index ) => {
 							return (
-								<div style={ { width: img.width || ( 100 / images.length ) + '%' } }>
+								<div style={ { width: img.width || ( 100 / images.length ) + '%' } } key={ 'logo-' + keyOuter }>
 									<img
 										key={ 'img-' + index }
 										src={ img.url }

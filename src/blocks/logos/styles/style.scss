@@ -9,8 +9,12 @@
 			flex-wrap: wrap;
 		}
 
+		& + & {
+			margin-top: 2em;
+		}
+
 		> div {
-			margin: 0.5em 1.5em;
+			margin: 0 1.5em;
 		}
 
 		img {

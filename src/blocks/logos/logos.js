@@ -28,9 +28,8 @@ class Logos extends Component {
 	}
 
 	render() {
-
 		// Set imageChunks to 5 if fullwidth alignment.
-		const imageChunks = chunk( this.props.images, this.props.attributes.align === 'full' ? 5 : 4 );
+		const imageChunks = chunk( this.props.images, this.props.attributes.align === 'full' ? 5 : this.props.attributes.align === 'wide' ? 4 : 3);
 
 		return (
 			<Fragment>
