@@ -1,12 +1,6 @@
 .wp-block-coblocks-logos {
-	.wrapper > div {
-		&:nth-last-child(2) {
-			margin-right: 0;
-		}
-
-		img:focus {
-			outline: none;
-		}
+	img:focus {
+		outline: none;
 	}
 
 	.editor-media-placeholder:not(.wp-block-coblocks-logos) {

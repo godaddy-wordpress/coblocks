@@ -1,20 +1,16 @@
 .wp-block-coblocks-logos {
-	.wrapper {
+	&__row {
 		align-items: center;
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
 
+		@media (max-width: #{ ($break-small) }) {
+			flex-wrap: wrap;
+		}
+
 		> div {
-			margin: 0.5em;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:last-child {
-				margin-right: 0;
-			}
+			margin: 0.5em 1.5em;
 		}
 
 		img {

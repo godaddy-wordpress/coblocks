@@ -37,7 +37,7 @@ class Logos extends Component {
 				{ Object.keys( imageChunks ).map( keyOuter => {
 					const images = imageChunks[ keyOuter ];
 					return (
-						<div className="wrapper" key={ 'wrapper-' + keyOuter }>
+						<div className="wp-block-coblocks-logos__row" key={ 'wrapper-' + keyOuter }>
 							{ images.map( ( img, index ) => {
 								return (
 									<ResizableBox
