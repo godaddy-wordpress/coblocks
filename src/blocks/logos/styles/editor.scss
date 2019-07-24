@@ -1,4 +1,4 @@
-.wp-block-coblocks-logo {
+.wp-block-coblocks-logos {
 	.wrapper > div {
 		&:nth-last-child(2) {
 			margin-right: 0;
@@ -9,7 +9,7 @@
 		}
 	}
 
-	.editor-media-placeholder:not(.wp-block-coblocks-logo) {
+	.editor-media-placeholder:not(.wp-block-coblocks-logos) {
 		.components-placeholder__label,
 		.components-placeholder__instructions {
 			display: none;

@@ -1,13 +1,9 @@
-.wp-block-coblocks-logo {
+.wp-block-coblocks-logos {
 	.wrapper {
 		align-items: center;
 		display: flex;
 		flex-direction: row;
-		// flex-wrap: wrap;
 		justify-content: center;
-		// max-width: 100%;
-		// user-select: none;
-		// width: 100%;
 
 		> div {
 			margin: 0.5em;
@@ -26,14 +22,4 @@
 			width: 100%;
 		}
 	}
-
-	// .wrapper {
-	// 	align-items: center;
-	// 	display: inline-flex;
-	// 	flex-direction: row;
-	// 	justify-content: center;
-	// 	// max-width: 100%;
-	// 	// user-select: none;
-	// 	// width: 100%;
-	// }
 }

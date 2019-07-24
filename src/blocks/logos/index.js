@@ -19,7 +19,7 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'logo';
+const name = 'logos';
 
 const title = __( 'Logos & Badges' );
 
