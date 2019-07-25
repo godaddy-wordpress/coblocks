@@ -9,8 +9,9 @@ import classnames from 'classnames';
 import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
-import Edit from './components/edit';
+import edit from './components/edit';
 import svgs from './components/svgs';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -26,103 +27,20 @@ export const DEFAULT_ICON_SIZE = 60;
 /**
  * Block constants
  */
-const name = 'icon';
-
-const title = __( 'Icon' );
+const { name } = metadata;
 
 const icon = icons.icon;
 
-const keywords = [
-	__( 'svg' ),
-	__( 'icons' ),
-	__( 'coblocks' ),
-];
-
-const blockAttributes = {
-	icon: {
-		type: 'string',
-		default: 'heart',
-	},
-	iconRand: {
-		type: 'boolean',
-		default: true,
-	},
-	iconSize: {
-		type: 'string',
-		default: 'medium',
-	},
-	contentAlign: {
-		type: 'string',
-	},
-	hasContentAlign: {
-		type: 'boolean',
-		default: true,
-	},
-	backgroundColor: {
-		type: 'string',
-	},
-	iconColor: {
-		type: 'string',
-	},
-	customBackgroundColor: {
-		type: 'string',
-	},
-	customIconColor: {
-		type: 'string',
-	},
-	height: {
-		type: 'number',
-		default: DEFAULT_ICON_SIZE,
-	},
-	width: {
-		type: 'number',
-		default: DEFAULT_ICON_SIZE,
-	},
-	borderRadius: {
-		type: 'number',
-		default: 0,
-	},
-	padding: {
-		type: 'number',
-		default: 0,
-	},
-	href: {
-		type: 'string',
-		source: 'attribute',
-		selector: 'div > div > a',
-		attribute: 'href',
-	},
-	rel: {
-		type: 'string',
-		source: 'attribute',
-		selector: 'div > div > a',
-		attribute: 'rel',
-	},
-	linkTarget: {
-		type: 'string',
-		source: 'attribute',
-		selector: 'div > div > a',
-		attribute: 'target',
-	},
-};
-
 const settings = {
-
-	title: title,
-
+	title: __( 'Icon' ),
 	description: __( 'Add a stylized graphic symbol to communicate something more.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
-	edit: Edit,
-
+	keywords: [ __( 'svg' ), __( 'icons' ), __( 'coblocks' ) ],
+	attributes: metadata.attributes,
 	styles: [
 		{ name: 'outlined', label: _x( 'Outlined', 'block style' ), isDefault: true },
 		{ name: 'filled', label: _x( 'Filled', 'block style' ) },
 	],
-
+	edit,
 	save( { attributes, className } ) {
 		const {
 			icon,
@@ -183,4 +101,4 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };
