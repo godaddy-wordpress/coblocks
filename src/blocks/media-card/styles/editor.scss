@@ -1,29 +1,3 @@
-:-ms-fullscreen,
-:root .editor-styles-wrapper .wp-block .wp-block {
-	width: none;
-
-}
-
-:-ms-fullscreen,
-:root .editor-block-list__block{
-	
-.is-style-right  {
-			display: flex;
-			flex-grow: 1;
-			
-		.components-resizable-box__container {
-			order: 2;
-		}
-
-		.wp-block-coblocks-media-card__content {
-			order :1;
-			overflow: hidden;
-		}
-		}
-	}
-
-
-
 .wp-block-coblocks-media-card {
 	&__wrapper {
 		@media (max-width: #{ ($break-small-mediacard) }) {
@@ -256,4 +230,21 @@
 
 .components-block-coblocks-media-card-maxwidth-range {
 	margin-bottom: 0.7em;
+}
+
+// IE 10+ Support
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	.wp-block-coblocks-media-card.is-style-right {
+		display: flex;
+		flex-grow: 1;
+
+		.components-resizable-box__container {
+			order: 2;
+		}
+
+		.wp-block-coblocks-media-card__content {
+			order: 1;
+			overflow: hidden;
+		}
+	}
 }
