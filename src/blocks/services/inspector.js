@@ -34,16 +34,14 @@ const Inspector = props => {
 					'editor-block-styles',
 					'block-editor-block-styles',
 					'coblocks-editor-block-styles',
-					`align-${ attributes.alignment }`, { }
 				) } >
 					{ layoutOptions.map( style => (
 						<div
 							key={ `style-${ style.name }` }
 							className={ classnames(
 								'editor-block-styles__item block-editor-block-styles__item',
-								{
-									'is-active': activeStyle === style,
-								}
+								{ 'is-active': activeStyle === style },
+								`align-${ ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ? style.defaultAlign : attributes.alignment }`
 							) }
 							onClick={ () => onUpdateStyle( style ) }
 							onKeyDown={ event => {

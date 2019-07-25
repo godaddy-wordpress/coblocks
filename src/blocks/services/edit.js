@@ -38,7 +38,6 @@ const layoutOptions = [
 		name: 'sixbynine',
 		label: __( '16:9' ),
 		icon: icons.service169,
-
 	},
 	{
 		name: 'square',
@@ -49,6 +48,7 @@ const layoutOptions = [
 		name: 'circle',
 		label: __( 'Circle' ),
 		icon: icons.serviceCircle,
+		defaultAlign: 'center',
 	},
 ];
 
@@ -108,7 +108,7 @@ class Edit extends Component {
 		);
 
 		if ( activeStyle !== lastActiveStyle ) {
-			if ( 'circle' === activeStyle.name ) {
+			if ( 'circle' === activeStyle.name && ( typeof attributes.alignment === 'undefined' || attributes.alignment === 'none' ) ) {
 				this.onChangeAlignment( 'center' );
 			}
 		}
@@ -167,6 +167,7 @@ class Edit extends Component {
 
 	render() {
 		const { className, attributes, setAttributes } = this.props;
+		console.log( attributes.alignment );
 
 		const activeStyle = getActiveStyle( layoutOptions, className );
 
