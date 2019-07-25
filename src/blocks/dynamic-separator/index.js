@@ -26,19 +26,6 @@ const { name } = metadata;
 
 const icon = icons.hr;
 
-const blockAttributes = {
-	height: {
-		type: 'number',
-		default: 50,
-	},
-	color: {
-		type: 'string',
-	},
-	customColor: {
-		type: 'string',
-	},
-};
-
 const settings = {
 	title: __( 'Dynamic HR' ),
 	description: __( 'Add a resizable spacer between other blocks.' ),
