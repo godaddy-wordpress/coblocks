@@ -32,27 +32,28 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Alert Block
 * Author Profile Block
 * Buttons Block
-* Carousel Gallery Block (New!)
+* Carousel Gallery Block
 * Click to Tweet Block
 * Dynamic Separator Block
 * Features Block
-* Food & Drinks Block (New!)
+* Food & Drinks Block
 * Form Block (New!)
 * Gif Block
 * GitHub Gist Block
 * Hero Block
 * Highlight Block
 * Icon Block
+* Logos & Badges Block (New!)
 * Map Block
-* Masonry Gallery Block (New!)
+* Masonry Gallery Block
 * Media Card Block
 * Pricing Table Block
 * Resizable Row/Columns Blocks
+* Services Block (New!)
 * Shape Divider Block
+* Social Profiles Block (New!)
 * Social Sharing Block
-* Stacked Gallery Block (New!)
-
-And we're adding new Gutenberg blocks all the time!
+* Stacked Gallery Block
 
 ## Breakthrough Page Builder System
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, with the new WordPress editor.
@@ -78,7 +79,6 @@ The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks m
 * [Follow on Twitter](https://twitter.com/coblocks)
 * [Join our new Community](https://facebook.com/groups/coblocks)
 * [Like us on Facebook](https://www.facebook.com/coblocks/)
-* [Follow us on Instagram](https://www.instagram.com/coblockswp/)
 
 ## Built with developers in mind
 Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/godaddy/coblocks) and join the party. 🎉
@@ -119,6 +119,31 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 Please reach out via the contact form at the bottom right of [our website](https://coblocks.com).
 
 == Changelog ==
+
+= 1.12.0 =
+* New: Add new Logo & Badges block
+* New: Add new Social Profiles block
+* New: Add new Sercives block
+* New: Introduce Jest & PHPUnit tests
+* Tweak: Improve UI of Share block icon selection
+* Tweak: Add top/bottom spacing controls to the core Group block
+* Tweak: Remove admin footer notice
+* Tweak: Update icons for Carousel and Stacked Gallery blocks
+* Tweak: Adjust keywords for Share and Features blocks
+* Tweak: Adjust social icon SVGs
+* Tweak: Adjust Pinterest icon color to the proper brand color
+* Tweak: Remove blue color from icons for a cleaner interface
+* Tweak: Improve Hero block initial state with better placeholders
+* Tweak: Add ascending plan titles to the Pricing Table block
+* Tweak: Hero block now supports IE 10+
+* Tweak: Share and Social Profiles blocks now support IE 10+
+* Tweak: Food & Drinks block now supports IE 10+
+* Tweak: Media Card block now supports IE 10+
+* Fix: Resolve issue where block background colors may not properly display in the editor
+* Fix: Resolve display issue with the Dynamic HR block while using TwentyNineteen
+* Fix: Resolve Hero block z-index issue on wide and full width alignments
+* Fix: Resolve issue with Checkbox list style SVG
+* Fix: Resolve issue with inline links within the Buttons block in Gutenberg 6.1.1
 
 = 1.11.1 =
 * Fix: Resolve duplicate registered block issue
