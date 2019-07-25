@@ -8,10 +8,10 @@ import classnames from 'classnames';
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-
 import icons from './icons';
 import edit from './edit';
 import transforms from './transforms';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -22,17 +22,9 @@ const { getColorClassName } = wp.blockEditor;
 /**
  * Block constants
  */
-const name = 'dynamic-separator';
-
-const title = __( 'Dynamic HR' );
+const { name } = metadata;
 
 const icon = icons.hr;
-
-const keywords = [
-	__( 'hr' ),
-	__( 'spacer' ),
-	__( 'coblocks' ),
-];
 
 const blockAttributes = {
 	height: {
@@ -48,25 +40,17 @@ const blockAttributes = {
 };
 
 const settings = {
-
-	title: title,
-
+	title: __( 'Dynamic HR' ),
 	description: __( 'Add a resizable spacer between other blocks.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	keywords: [ __( 'hr' ), __( 'spacer' ), __( 'coblocks' ) ],
+	attributes: metadata.attributes,
 	styles: [
 		{ name: 'dots', label: _x( 'Dot', 'block style' ), isDefault: true },
 		{ name: 'line', label: _x( 'Line', 'block style' ) },
 		{ name: 'fullwidth', label: _x( 'Fullwidth', 'block style' ) },
 	],
-
 	transforms,
-
 	edit,
-
 	save( { attributes, className } ) {
 		const {
 			color,
@@ -93,5 +77,5 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };
 
