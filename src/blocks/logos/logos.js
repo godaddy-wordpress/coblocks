@@ -29,8 +29,21 @@ class Logos extends Component {
 	}
 
 	render() {
-		// Set imageChunks to 5 if fullwidth alignment.
-		const imageChunks = chunk( this.props.images, this.props.attributes.align === 'full' ? 5 : this.props.attributes.align === 'wide' ? 4 : 3);
+		let count;
+
+		switch ( this.props.attributes.align ) {
+			case 'wide':
+				count = 4;
+				break;
+			case 'full':
+				count = 5;
+				break;
+			default:
+				count = 3;
+				break;
+		}
+
+		const imageChunks = chunk( this.props.images, count );
 
 		return (
 			<Fragment>
@@ -100,7 +113,7 @@ class Logos extends Component {
 											onKeyDown={ event => {
 												if ( BACKSPACE === event.keyCode ) {
 													const images = filter( this.props.attributes.images, ( _img, i ) => index !== i );
-													this.setState( { selectedImage: null } )
+													this.setState( { selectedImage: null } );
 													this.props.setAttributes( {
 														images,
 													} );

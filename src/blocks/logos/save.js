@@ -17,8 +17,21 @@ export default function save( { attributes, className } ) {
 		'has-filter-grayscale': grayscale,
 	} );
 
-	// Set imageChunks to 5 if fullwidth alignment.
-	const imageChunks = chunk( images, align === 'full' ? 5 : align === 'wide' ? 4 : 3);
+	let count;
+
+	switch ( align ) {
+		case 'wide':
+			count = 4;
+			break;
+		case 'full':
+			count = 5;
+			break;
+		default:
+			count = 3;
+			break;
+	}
+
+	const imageChunks = chunk( images, count );
 
 	return (
 		<div className={ classes }>
