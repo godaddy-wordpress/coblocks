@@ -1,7 +1,8 @@
 .wp-block-coblocks-food-item {
 	display: block;
-	flex: 1 100%;
+	flex-grow: 1;
 	padding: 0 !important;
+	width: 100% !important;
 
 	.editor-media-placeholder {
 		margin: 0 0 1.65em !important;
