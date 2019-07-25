@@ -1,4 +1,12 @@
 .wp-block-coblocks-service {
+	flex: 1 100%;
+	margin: 0 0 3em;
+	max-width: 100%;
+
+	@include break-small() {
+		margin: 0;
+	}
+
 	&__figure {
 		display: flex;
 		margin: 0;
@@ -43,8 +51,13 @@
 	}
 
 	p {
-		margin-bottom: 0;
-		margin-top: 0;
+		&:first-of-type {
+			margin-top: 0;
+		}
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
 	}
 
 	.wp-block-button {
