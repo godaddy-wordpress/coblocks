@@ -8,8 +8,9 @@ import classnames from 'classnames';
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import Edit from './components/edit';
+import edit from './components/edit';
 import icons from './../../utils/icons';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -21,71 +22,26 @@ const { Fragment } = wp.element;
 /**
  * Block constants
  */
-const name = 'gif';
-
-const title = __( 'Gif' );
+const { name } = metadata;
 
 const icon = icons.gif;
 
-const keywords = [
-	__( 'animated' ),
-	__( 'coblocks' ),
-];
-
-const blockAttributes = {
-	url: {
-		attribute: 'src',
-		selector: 'img',
-		source: 'attribute',
-		type: 'string',
-	},
-	alt: {
-		attribute: 'alt',
-		selector: 'img',
-		source: 'attribute',
-		type: 'string',
-		default: '',
-	},
-	caption: {
-		type: 'string',
-		source: 'html',
-		selector: 'figcaption',
-	},
-	align: {
-		type: 'string',
-	},
-	width: {
-		type: 'number',
-	},
-	height: {
-		type: 'number',
-	},
-};
-
 const settings = {
-
-	title: title,
-
+	title: __( 'Gif' ),
 	description: __( 'Pick a gif, any gif.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	keywords: [ __( 'animated' ), __( 'coblocks' ) ],
+	attributes: metadata.attributes,
 	supports: {
 		customClassName: false,
 		html: false,
 	},
-
 	getEditWrapperProps( attributes ) {
 		const { align, width } = attributes;
 		if ( 'left' === align || 'center' === align || 'right' === align || 'wide' === align || 'full' === align ) {
 			return { 'data-align': align, 'data-resized': !! width };
 		}
 	},
-
-	edit: Edit,
-
+	edit,
 	save( { attributes } ) {
 		const {
 			url,
@@ -135,5 +91,5 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };
 
