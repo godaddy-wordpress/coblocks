@@ -101,11 +101,12 @@ class Edit extends Component {
 					<Logos
 						{ ...this.props }
 						images={ images }
-						setAttributes={ setAttributes }
 					/>
 					{ isSelected && (
 						<MediaPlaceholder
-							{ ...this.props }
+							addToGallery={ hasImages }
+							isAppender={ hasImages }
+							icon={ ! hasImages && <BlockIcon icon={ this.props.icon } /> }
 							labels={ {
 								title: ' ',
 								instructions: ' ',
