@@ -1,3 +1,17 @@
+:-ms-fullscreen,
+:root .components-coblocks-css-grid-selector {
+	.components-button-group {
+		display: flex;
+		flex-wrap: wrap;
+		  
+		.components-button {
+			display: table-cell;
+			padding: 18px;
+			width:50%;
+		}
+	}
+}
+
 .wp-block[data-type="coblocks/hero"] {
 	background: transparent !important;
 
