@@ -89,6 +89,14 @@ $icons: (twitter, #55acee), (facebook, #3b5999), (pinterest, #e60023), (linkedin
 		&__button--#{$icon} &__icon {
 			mask-image: url(images/social/#{$icon}.svg);
 		}
+
+		// IE 10+ Support
+		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+			&__button--#{$icon} &__icon {
+				background-image: url(images/social/#{$icon}.svg);
+				color: transparent !important;
+			}
+		}
 	}
 
 	&.has-colors &__text,

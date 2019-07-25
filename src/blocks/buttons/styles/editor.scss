@@ -8,12 +8,6 @@
 		> .editor-block-list__layout {
 			display: flex;
 			justify-content: center;
-
-			.block-library-button__inline-link {
-				box-shadow: 0 0 0 1px $light-gray-500;
-				position: absolute;
-				z-index: 99;
-			}
 		}
 	}
 
