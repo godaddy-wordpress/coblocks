@@ -8,8 +8,9 @@ import classnames from 'classnames';
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import Edit from './components/edit';
+import edit from './components/edit';
 import icons from './../../../utils/icons';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -20,72 +21,21 @@ const { RichText, getColorClassName, InnerBlocks } = wp.blockEditor;
 /**
  * Block constants
  */
-const name = 'pricing-table-item';
-
-const title = __( 'Pricing Table Item' );
+const { name } = metadata;
 
 const icon = icons.pricing;
 
-const keywords = [
-	__( 'landing' ),
-	__( 'comparison' ),
-	__( 'coblocks' ),
-];
-
-const blockAttributes = {
-	title: {
-		source: 'children',
-		selector: '.wp-block-coblocks-pricing-table-item__title',
-	},
-	features: {
-		source: 'children',
-		selector: '.wp-block-coblocks-pricing-table-item__features',
-	},
-	currency: {
-		type: 'array',
-		source: 'children',
-		selector: '.wp-block-coblocks-pricing-table-item__currency',
-	},
-	amount: {
-		type: 'array',
-		source: 'children',
-		selector: '.wp-block-coblocks-pricing-table-item__amount',
-	},
-	backgroundColor: {
-		type: 'string',
-	},
-	customBackgroundColor: {
-		type: 'string',
-	},
-	textColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
-	placeholder: {
-		type: 'string',
-	},
-};
-
 const settings = {
-
-	title: title,
-
+	title: __( 'Pricing Table Item' ),
 	description: __( 'A column placed within the pricing table block.' ),
-
-	keywords: keywords,
-
+	keywords: [ __( 'landing' ), __( 'comparison' ), __( 'coblocks' ) ],
 	parent: [ 'coblocks/pricing-table' ],
-
 	supports: {
 		html: false,
 		inserter: false,
 		reusable: false,
 	},
-
-	attributes: blockAttributes,
-
+	attributes: metadata.attributes,
 	transforms: {
 		from: [
 			{
@@ -99,9 +49,7 @@ const settings = {
 			},
 		],
 	},
-
-	edit: Edit,
-
+	edit,
 	save( { attributes } ) {
 		const {
 			amount,
@@ -171,4 +119,4 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };
