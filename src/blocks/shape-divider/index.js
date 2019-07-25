@@ -9,10 +9,10 @@ import includes from 'lodash/includes';
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import Edit from './components/edit';
+import edit from './components/edit';
 import icons from './components/icons';
-import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 import dividers from './components/dividers';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -60,102 +60,19 @@ export function getDividerFromStyle( className ) {
 /**
  * Block constants
  */
-const name = 'shape-divider';
-
-const title = __( 'Shape Divider' );
+const { name } = metadata;
 
 const icon = icons.shapeDivider;
 
-const keywords = [
-	__( 'hr' ),
-	__( 'separator' ),
-	__( 'svg' ),
-];
-
-const blockAttributes = {
-	align: {
-		type: 'string',
-		default: 'full',
-	},
-	height: {
-		type: 'number',
-		default: 100,
-	},
-	shapeHeight: {
-		type: 'number',
-		default: 100,
-	},
-	shapeHeightMobile: {
-		type: 'number',
-	},
-	shapeHeightTablet: {
-		type: 'number',
-	},
-	backgroundHeight: {
-		type: 'number',
-		default: 50,
-	},
-	backgroundHeightMobile: {
-		type: 'number',
-	},
-	backgroundHeightTablet: {
-		type: 'number',
-	},
-	syncHeightAlt: {
-		type: 'boolean',
-		default: true,
-	},
-	verticalFlip: {
-		type: 'boolean',
-		default: false,
-	},
-	horizontalFlip: {
-		type: 'boolean',
-		default: false,
-	},
-	color: {
-		type: 'string',
-	},
-	customColor: {
-		type: 'string',
-		default: '#111',
-	},
-	backgroundColor: {
-		type: 'string',
-	},
-	customBackgroundColor: {
-		type: 'string',
-	},
-	noBottomMargin: {
-		type: 'boolean',
-		default: true,
-	},
-	noTopMargin: {
-		type: 'boolean',
-		default: true,
-	},
-	justAdded: {
-		type: 'boolean',
-		default: true,
-	},
-	...ResponsiveBaseControlAttributes,
-};
-
 const settings = {
-
-	title: title,
-
+	title: __( 'Shape Divider' ),
 	description: __( 'Add a shape divider to visually distinquish page sections.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	keywords: [ __( 'hr' ), __( 'separator' ), __( 'svg' ) ],
+	attributes: metadata.attributes,
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-
 	styles: [
 		{ name: 'wavy', label: _x( 'Wavy', 'block style' ), isDefault: true },
 		{ name: 'hills', label: _x( 'Hills', 'block style' ) },
@@ -166,7 +83,6 @@ const settings = {
 		{ name: 'triangle', label: _x( 'Triangle', 'block style' ) },
 		{ name: 'pointed', label: _x( 'Pointed', 'block style' ) },
 	],
-
 	transforms: {
 		from: [
 			// Default.
@@ -347,9 +263,7 @@ const settings = {
 			},
 		],
 	},
-
-	edit: Edit,
-
+	edit,
 	save( { attributes, className } ) {
 		const {
 			backgroundColor,
@@ -391,9 +305,6 @@ const settings = {
 	},
 	deprecated: [
 		{
-			attributes: {
-				...blockAttributes,
-			},
 			save( { attributes, className } ) {
 				const {
 					backgroundColor,
@@ -435,5 +346,5 @@ const settings = {
 	],
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };
 
