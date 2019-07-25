@@ -9,7 +9,8 @@ import classnames from 'classnames';
 import './styles/editor.scss';
 import './styles/style.scss';
 import icons from './../../utils/icons';
-import Edit from './components/edit';
+import edit from './components/edit';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -21,41 +22,19 @@ const { RichText } = wp.blockEditor;
 /**
  * Block constants
  */
-const name = 'gist';
-
-const title = __( 'Gist' );
+const { name } = metadata;
 
 const icon = icons.github;
 
-const keywords = [ __( 'code' ), __( 'github' ), __( 'coblocks' ) ];
-
-const blockAttributes = {
-	url: {
-		type: 'string',
-	},
-	file: {
-		type: 'string',
-	},
-	meta: {
-		type: 'boolean',
-		default: true,
-	},
-	caption: {
-		type: 'string',
-		source: 'html',
-		selector: 'figcaption',
-	},
-};
-
 const settings = {
-	title: title,
-
+	title: __( 'Gist' ),
 	description: __( 'Embed GitHub gists by adding the gist link.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	keywords: [ __( 'code' ), __( 'github' ), __( 'coblocks' ) ],
+	attributes: metadata.attributes,
+	supports: {
+		html: false,
+		align: [ 'wide' ],
+	},
 	transforms: {
 		from: [
 			{
@@ -90,14 +69,7 @@ const settings = {
 			},
 		],
 	},
-
-	supports: {
-		html: false,
-		align: [ 'wide' ],
-	},
-
-	edit: Edit,
-
+	edit,
 	save( { attributes } ) {
 		const { url, file, meta, caption } = attributes;
 
@@ -123,7 +95,6 @@ const settings = {
 			</div>
 		);
 	},
-
 	deprecated: [
 		{
 			save( { attributes } ) {
@@ -152,4 +123,4 @@ const settings = {
 	],
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };
