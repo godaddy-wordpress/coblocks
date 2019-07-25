@@ -167,7 +167,6 @@ class Edit extends Component {
 
 	render() {
 		const { className, attributes, setAttributes } = this.props;
-		console.log( attributes.alignment );
 
 		const activeStyle = getActiveStyle( layoutOptions, className );
 
