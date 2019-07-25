@@ -131,10 +131,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * Tweak: Remove blue color from icons for a cleaner interface
 * Tweak: Improve Hero block initial state with better placeholders
 * Tweak: Add ascending plan titles to the Pricing Table block
-* Tweak: Hero block now supports IE 10+
-* Tweak: Share and Social Profiles blocks now support IE 10+
-* Tweak: Food & Drinks block now supports IE 10+
-* Tweak: Media Card block now supports IE 10+
+* Tweak: Hero block now supports IE 11+
+* Tweak: Share and Social Profiles blocks now support IE 11+
+* Tweak: Food & Drinks block now supports IE 11+
+* Tweak: Media Card block now supports IE 11+
 * Fix: Resolve issue where block background colors may not properly display in the editor
 * Fix: Resolve display issue with the Dynamic HR block while using TwentyNineteen
 * Fix: Resolve Hero block z-index issue on wide and full width alignments
