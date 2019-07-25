@@ -2,7 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { chunk, flatten, filter } from 'lodash';
+import { chunk, flatten } from 'lodash';
 
 /**
  * Internal dependencies
@@ -90,6 +90,13 @@ class Logos extends Component {
 										onClick={ () => {
 											this.setState( { selectedImage: img.id } );
 										} }
+										onKeyDown={ event => {
+											if ( BACKSPACE === event.keyCode ) {
+												const images = this.props.images.filter( ( image ) => image.id !== img.id );
+												this.setState( { selectedImage: null } );
+												this.props.setAttributes( { images } );
+											}
+										} }
 									>
 										<img
 											src={ img.url }
@@ -97,15 +104,6 @@ class Logos extends Component {
 											data-id={ img.id }
 											data-width={ img.width || ( 100 / images.length ) + '%' }
 											tabIndex="0"
-											onKeyDown={ event => {
-												if ( BACKSPACE === event.keyCode ) {
-													const images = filter( this.props.attributes.images, ( _img, i ) => index !== i );
-													this.setState( { selectedImage: null } )
-													this.props.setAttributes( {
-														images,
-													} );
-												}
-											} }
 										/>
 
 									</ResizableBox>
