@@ -11,7 +11,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
 import brandAssets from '../../utils/brand-assets';
-import Edit from './components/edit';
+import edit from './components/edit';
 import { BackgroundStyles, BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
@@ -27,15 +27,7 @@ const { InnerBlocks } = wp.blockEditor;
  */
 const name = 'media-card';
 
-const title = __( 'Media Card' );
-
 const icon = icons.mediaCard;
-
-const keywords = [
-	__( 'image' ),
-	__( 'video' ),
-	__( 'coblocks' ),
-];
 
 const blockAttributes = {
 	mediaPosition: {
@@ -85,21 +77,15 @@ const blockAttributes = {
 };
 
 const settings = {
-
-	title: title,
-
+	title: __( 'Media Card' ),
 	description: __( 'Add an image or video with an offset card side-by-side.' ),
-
-	keywords: keywords,
-
+	keywords: [ __( 'image' ), __( 'video' ), __( 'coblocks' ) ],
 	attributes: blockAttributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		stackedOnMobile: true,
 		coBlocksSpacing: true,
 	},
-
 	transforms: {
 		from: [
 			{
@@ -189,9 +175,7 @@ const settings = {
 			},
 		],
 	},
-
-	edit: Edit,
-
+	edit,
 	save( { attributes } ) {
 		const {
 			coblocks,
@@ -272,4 +256,4 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };
