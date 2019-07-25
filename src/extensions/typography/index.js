@@ -194,11 +194,11 @@ addFilter(
 	withControls
 );
 
-addFilter(
-	'editor.BlockListBlock',
-	'coblocks/withFontSettings',
-	withFontSettings
-);
+// addFilter(
+// 	'editor.BlockListBlock',
+// 	'coblocks/withFontSettings',
+// 	withFontSettings
+// );
 
 addFilter(
 	'blocks.getSaveContent.extraProps',

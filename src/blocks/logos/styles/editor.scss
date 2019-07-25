@@ -3,7 +3,7 @@
 		outline: none;
 	}
 
-	.editor-media-placeholder:not(.wp-block-coblocks-logos) {
+	.block-editor-media-placeholder.is-appender {
 		.components-placeholder__label,
 		.components-placeholder__instructions {
 			display: none;

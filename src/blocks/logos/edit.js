@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import * as helper from './../../utils/helper';
+import { pickRelevantMediaFiles } from './../../utils/helper';
 import Inspector from './inspector';
 import Controls from './controls';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
@@ -30,7 +30,7 @@ class Edit extends Component {
 
 	onSelectImages( images ) {
 		this.props.setAttributes( {
-			images: images.map( ( image ) => helper.pickRelevantMediaFiles( image ) ),
+			images: images.map( image => pickRelevantMediaFiles( image ) ),
 		} );
 	}
 
@@ -43,81 +43,40 @@ class Edit extends Component {
 			isSelected,
 		} = this.props;
 
-		const {
-			images,
-			grayscale,
-		} = attributes;
+		const { images, grayscale } = attributes;
 
 		const hasImages = !! images.length;
 
-		const classes = classnames(
-			className, {
-				'has-filter-grayscale': grayscale,
-			}
-		);
-
-		if ( ! hasImages ) {
-			return (
-				<Fragment>
-					<Inspector
-						{ ...this.props }
-					/>
-					<MediaPlaceholder
-						{ ...this.props }
-						icon={ ! hasImages && <BlockIcon icon={ icon } /> }
-						labels={ {
-							title: __( 'Logos & Badges' ),
-							instructions: __( 'Drag images, upload new ones or select files from your library.' ),
-						} }
-						multiple
-						accept="image/*"
-						allowedTypes={ [ 'image' ] }
-						onError={ noticeOperations.createErrorNotice }
-						notices={ noticeUI }
-						onSelect={ this.onSelectImages }
-					/>
-				</Fragment>
-			);
-		}
+		const classes = classnames( className, {
+			'has-filter-grayscale': grayscale,
+		} );
 
 		return (
 			<Fragment>
-				{ isSelected &&
-					<Controls
-						{ ...this.props }
-					/>
-				}
-				{ isSelected &&
-					<Inspector
-						{ ...this.props }
-					/>
-				}
-				<GalleryDropZone
-					{ ...this.props }
-				/>
-				{ noticeUI }
+				<Controls { ...this.props } />
+				<Inspector { ...this.props } />
+				<GalleryDropZone { ...this.props } />
+
 				<div className={ classes }>
-					<Logos
-						{ ...this.props }
-						images={ images }
-					/>
-					{ isSelected && (
+					<Logos { ...this.props } images={ images } />
+
+					{ ( ! hasImages || isSelected ) && (
 						<MediaPlaceholder
 							addToGallery={ hasImages }
 							isAppender={ hasImages }
-							icon={ ! hasImages && <BlockIcon icon={ this.props.icon } /> }
+							icon={ <BlockIcon icon={ icon } /> }
 							labels={ {
-								title: ' ',
-								instructions: ' ',
+								title: __( 'Logos & Badges' ),
+								instructions: __( 'Drag images, upload new ones or select files from your library.' ),
 							} }
 							multiple
 							accept="image/*"
 							allowedTypes={ [ 'image' ] }
-							value={ hasImages ? images : undefined }
+							value={ images }
 							onError={ noticeOperations.createErrorNotice }
-							notices={ hasImages ? undefined : noticeUI }
+							notices={ noticeUI }
 							onSelect={ this.onSelectImages }
-							className="block-editor-media-placeholder is-appender"
+							className={ classnames( { 'is-appender': hasImages } ) }
 						/>
 					) }
 				</div>
@@ -126,6 +85,4 @@ class Edit extends Component {
 	}
 }
 
-export default compose( [
-	withNotices,
-] )( Edit );
+export default compose( [ withNotices ] )( Edit );
