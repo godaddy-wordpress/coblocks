@@ -16,7 +16,7 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Alert Block
 -   Author Profile Block
 -   Buttons Block
--   Carousel Gallery Block (New!)
+-   Carousel Gallery Block
 -   Click to Tweet Block
 -   Dynamic Separator Block
 -   Features Block
@@ -26,14 +26,17 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Hero Block
 -   Highlight Block
 -   Icon Block
+-   Logos & Badges Block (New!)
 -   Map Block
--   Masonry Gallery Block (New!)
+-   Masonry Gallery Block
 -   Media Card Block
 -   Pricing Table Block
 -   Resizable Row/Columns Blocks
+-   Services Block (New!)
 -   Shape Divider Block
+-   Social Profiles Block (New!)
 -   Social Sharing Block
--   Stacked Gallery Block (New!)
+-   Stacked Gallery Block
 
 ### Connect
 
