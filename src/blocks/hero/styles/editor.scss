@@ -3,17 +3,22 @@
 	.components-button-group {
 		display: flex;
 		flex-wrap: wrap;
-		  
+
 		.components-button {
 			display: table-cell;
 			padding: 18px;
-			width:50%;
+			width: 50%;
 		}
 	}
 }
 
 .wp-block[data-type="coblocks/hero"] {
 	background: transparent !important;
+
+	&[data-align="full"],
+	&[data-align="wide"] {
+		z-index: 0;
+	}
 
 	.wp-block-coblocks-hero {
 		width: 100%;
