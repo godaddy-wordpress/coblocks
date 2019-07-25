@@ -8,8 +8,9 @@ import classnames from 'classnames';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import Edit from './components/edit';
+import edit from './components/edit';
 import icons from './../../utils/icons';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -21,17 +22,9 @@ const { RichText, getColorClassName } = wp.blockEditor;
 /**
  * Block constants
  */
-const name = 'alert';
-
-const title = __( 'Alert' );
+const { name } = metadata;
 
 const icon = icons.alert;
-
-const keywords = [
-	__( 'notice' ),
-	__( 'message' ),
-	__( 'coblocks' ),
-];
 
 const blockAttributes = {
 	title: {
@@ -78,21 +71,15 @@ const blockAttributes = {
 };
 
 const settings = {
-
-	title: title,
-
+	title: __( 'Alert' ),
 	description: __( 'Provide contextual feedback messages.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	keywords: [ __( 'notice' ), __( 'message' ), __( 'coblocks' ) ],
+	attributes: metadata.attributes,
 	supports: {
 		align: true,
 		alignWide: false,
 		alignFull: false,
 	},
-
 	transforms: {
 		from: [
 			{
@@ -138,9 +125,7 @@ const settings = {
 			},
 		],
 	},
-
-	edit: Edit,
-
+	edit,
 	save( { attributes } ) {
 		const {
 			backgroundColor,
@@ -191,7 +176,6 @@ const settings = {
 			</div>
 		);
 	},
-
 	deprecated: [
 		{
 			attributes: {
@@ -295,4 +279,4 @@ const settings = {
 	],
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };
