@@ -20,6 +20,13 @@ $gutter: 0.3em;
 	}
 }
 
+.wp-block[data-type="coblocks/services"] {
+	[data-block] {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+}
+
 .wp-block-coblocks-services {
 	[data-block] {
 		margin-bottom: 0;
