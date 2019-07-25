@@ -72,7 +72,7 @@ class Edit extends Component {
 							multiple
 							accept="image/*"
 							allowedTypes={ [ 'image' ] }
-							value={ images }
+							value={ hasImages ? images : undefined }
 							onError={ noticeOperations.createErrorNotice }
 							notices={ noticeUI }
 							onSelect={ this.onSelectImages }
