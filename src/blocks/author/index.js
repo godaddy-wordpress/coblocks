@@ -22,36 +22,6 @@ const { name } = metadata;
 
 const icon = icons.author;
 
-const blockAttributes = {
-	biography: {
-		type: 'array',
-		source: 'children',
-		selector: '.wp-block-coblocks-author__biography',
-		default: [],
-	},
-	heading: {
-		type: 'string',
-		selector: '.wp-block-coblocks-author__heading',
-		default: __( 'Written by...' ),
-	},
-	name: {
-		type: 'string',
-		selector: '.wp-block-coblocks-author__name',
-	},
-	imgId: {
-		type: 'number',
-	},
-	imgUrl: {
-		type: 'string',
-		source: 'attribute',
-		attribute: 'src',
-		selector: 'img',
-	},
-	textAlign: {
-		type: 'string',
-	},
-};
-
 const settings = {
 	title: __( 'Author' ),
 	description: __( 'Add an author biography.' ),
