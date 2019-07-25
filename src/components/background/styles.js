@@ -7,7 +7,7 @@ const { getColorClassName } = wp.blockEditor;
  * Background Classes
  *
  * @param {Object} attributes The attributes.
- * @param {Object} backgroundColor The background color.
+ * @param {String} backgroundColor The background color.
  * @returns {Object} styles.
  */
 const BackgroundStyles = ( attributes, backgroundColor ) => {

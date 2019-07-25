@@ -10,7 +10,6 @@ const icons = {};
 
 icons.features = (
 	<SVG
-		className="components-coblocks-svg"
 		height="24"
 		viewBox="0 0 24 24"
 		width="24"
