@@ -5,7 +5,6 @@ const icons = {};
 
 icons.accordion = (
 	<svg
-		className="components-coblocks-svg"
 		aria-hidden
 		role="img"
 		height="24"
@@ -22,7 +21,6 @@ icons.accordion = (
 
 icons.accordionItem = (
 	<svg
-		className="components-coblocks-svg"
 		aria-hidden
 		role="img"
 		height="24"
@@ -42,7 +40,6 @@ icons.accordionItem = (
 
 icons.actionGrid = (
 	<svg
-		className="components-coblocks-svg"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -90,7 +87,7 @@ icons.cta = (
 
 icons.edit = (
 	<svg
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -108,7 +105,7 @@ icons.edit = (
 
 icons.googleMap = (
 	<svg
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -130,7 +127,7 @@ icons.googleMap = (
 
 icons.imageBox = (
 	<svg
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -146,7 +143,7 @@ icons.imageBox = (
 
 icons.twitter = (
 	<svg
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -164,7 +161,7 @@ icons.twitter = (
 
 icons.imageFeature = (
 	<svg
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -182,7 +179,7 @@ icons.imageFeature = (
 
 icons.imagePanel = (
 	<svg
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -201,7 +198,7 @@ icons.imagePanel = (
 
 icons.open = (
 	<svg
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		role="img"
 		focusable="false"
 		xmlns="http://www.w3.org/2000/svg"
@@ -223,7 +220,7 @@ icons.open = (
 
 icons.alert = (
 	<svg
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -241,7 +238,7 @@ icons.alert = (
 
 icons.alertFilled = (
 	<svg
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -333,7 +330,7 @@ icons.info = (
 
 icons.author = (
 	<svg
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -374,7 +371,7 @@ icons.at = (
 icons.gif = (
 	<svg
 		aria-hidden
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		role="img"
 		focusable="false"
 		height="24"
@@ -392,7 +389,7 @@ icons.gif = (
 icons.row = (
 	<svg
 		aria-hidden
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		role="img"
 		focusable="false"
 		height="24"
@@ -410,7 +407,7 @@ icons.row = (
 icons.column = (
 	<svg
 		aria-hidden
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		width="24"
 		height="24"
 		xmlns="http://www.w3.org/2000/svg"
@@ -425,7 +422,6 @@ icons.column = (
 
 icons.highlight = (
 	<svg
-		className="components-coblocks-svg"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -573,7 +569,7 @@ icons.giphy = (
 icons.github = (
 	<svg
 		aria-hidden
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		role="img"
 		focusable="false"
 		height="24"
@@ -593,7 +589,7 @@ icons.file = (
 		aria-hidden
 		role="img"
 		focusable="false"
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		width="20px"
 		height="20px"
 		viewBox="0 0 20 20"
@@ -605,7 +601,7 @@ icons.file = (
 
 icons.link = (
 	<svg
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		height="24"
 		width="24"
 		aria-hidden
@@ -731,7 +727,6 @@ icons.mapEdit = (
 
 icons.pricing = (
 	<svg
-		className="components-coblocks-svg"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -747,7 +742,7 @@ icons.pricing = (
 
 icons.link = (
 	<svg
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		height="24"
 		width="24"
 		aria-hidden
@@ -765,7 +760,7 @@ icons.link = (
 
 icons.trash = (
 	<svg
-		className="dashicon components-coblocks-svg"
+		className="dashicon"
 		aria-hidden
 		role="img"
 		focusable="false"
@@ -783,7 +778,6 @@ icons.trash = (
 
 icons.social = (
 	<svg
-		className="components-coblocks-svg"
 		aria-hidden
 		role="img"
 		focusable="false"
