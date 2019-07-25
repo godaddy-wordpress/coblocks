@@ -9,9 +9,6 @@ const category = {
 	title: 'CoBlocks',
 };
 
-// Custom foreground icon color based on the CoBlocks branding
-const iconColor = '#1e35b9';
-
 // Register block category
 import './utils/block-category';
 
@@ -113,7 +110,7 @@ export function registerBlocks() {
 
 		registerBlockType( `coblocks/${ name }`, {
 			category: category.slug,
-			icon: { src: icon, foreground: iconColor },
+			icon: { src: icon },
 			...settings,
 		} );
 	} );

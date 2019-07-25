@@ -26,6 +26,7 @@ const blocksWithSpacingSupport = [
 	'core/gallery',
 	'core/spacer',
 	'core/cover',
+	'core/group',
 ];
 
 /**
