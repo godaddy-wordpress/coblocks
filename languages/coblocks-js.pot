@@ -3,55 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/blocks/food-and-drinks/food-item/edit.js:144
-msgid "Drop image to replace"
+#: src/blocks/logos/edit.js:69
+msgid "Logos & Badges"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:157
-msgid "Remove Image"
-msgstr ""
-
-#: src/blocks/food-and-drinks/food-item/edit.js:222
-msgid "Add title..."
-msgstr ""
-
-#: src/blocks/food-and-drinks/food-item/edit.js:233
-#: src/blocks/food-and-drinks/food-item/save.js:65
-msgid "Spicy"
-msgstr ""
-
-#: src/blocks/food-and-drinks/food-item/edit.js:253
-msgid "Hot"
-msgstr ""
-
-#: src/blocks/food-and-drinks/food-item/edit.js:275
-#: src/blocks/food-and-drinks/food-item/save.js:81
-msgid "Vegetarian"
-msgstr ""
-
-#: src/blocks/food-and-drinks/food-item/edit.js:301
-#: src/blocks/food-and-drinks/food-item/save.js:89
-msgid "Gluten Free"
-msgstr ""
-
-#: src/blocks/food-and-drinks/food-item/edit.js:324
-#: src/blocks/food-and-drinks/food-item/save.js:97
-msgid "Pescatarian"
-msgstr ""
-
-#: src/blocks/food-and-drinks/food-item/edit.js:345
-#: src/blocks/food-and-drinks/food-item/save.js:105
-msgid "Vegan"
-msgstr ""
-
-#: src/blocks/food-and-drinks/food-item/edit.js:363
-msgid "Add description..."
-msgstr ""
-
-#: src/blocks/food-and-drinks/food-item/edit.js:372
-msgid "$0.00"
-msgstr ""
-
-#: src/blocks/food-and-drinks/food-item/save.js:73
-msgid "Spicier"
+#: src/blocks/logos/edit.js:70
+msgid "Drag images, upload new ones or select files from your library."
 msgstr ""
