@@ -59,13 +59,3 @@ $gutter: 1em;
 		}
 	}
 }
-
-.wp-block-coblocks-service {
-	flex: 1 100%;
-	margin: 0 0 3em;
-	max-width: 100%;
-
-	@include break-small() {
-		margin: 0;
-	}
-}
