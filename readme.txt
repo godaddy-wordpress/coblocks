@@ -75,7 +75,6 @@ The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks m
 <strong>Join us</strong> in welcoming the future of WordPress blocks:
 
 * [Visit the CoBlocks website](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks)
-* [Subscribe to updates](http://eepurl.com/gd1S8D)
 * [Follow on Twitter](https://twitter.com/coblocks)
 * [Join our new Community](https://facebook.com/groups/coblocks)
 * [Like us on Facebook](https://www.facebook.com/coblocks/)
@@ -114,9 +113,6 @@ CoBlocks adds its Gutenberg blocks to the new WordPress editor, so you can use t
 Any properly developed WordPress theme will work with CoBlocks, though if you're looking for an exceptional theme, check out [Tabor](https://themebeans.com/themes/tabor?utm_medium=coblocks-lite&utm_source=readme&utm_campaign=readme&utm_content=tabor).
 
 Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://coblocks.com).
-
-= Where can I get help? =
-Please reach out via the contact form at the bottom right of [our website](https://coblocks.com).
 
 == Changelog ==
 
