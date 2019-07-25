@@ -79,6 +79,15 @@
 			top: 0;
 			vertical-align: middle;
 			width: 100%;
+
+			// IE 10+ Support
+			@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+				height: auto;
+				left: 50%;
+				min-width: 100%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
 		}
 	}
 
@@ -136,18 +145,5 @@
 		margin: 0.5em 0 0 0;
 		opacity: 0.7;
 		order: 2;
-	}
-}
-
-:root .wp-block-coblocks-food-item,
-:-ms-fullscreen .wp-block-coblocks-food-item {
-	figure {
-		img {
-			height: auto;
-			left: 50%;
-			min-width: 100%;
-			top: 50%;
-			transform: translate(-50%, -50%);
-		}
 	}
 }
