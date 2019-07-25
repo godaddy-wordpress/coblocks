@@ -8,8 +8,9 @@ import classnames from 'classnames';
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import Edit from './components/edit';
+import edit from './components/edit';
 import icons from './../../utils/icons';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -21,44 +22,19 @@ const { InnerBlocks } = wp.blockEditor;
 /**
  * Block constants
  */
-const name = 'pricing-table';
-
-const title = __( 'Pricing Table' );
+const { name } = metadata;
 
 const icon = icons.pricing;
 
-const keywords = [
-	__( 'landing' ),
-	__( 'comparison' ),
-	__( 'coblocks' ),
-];
-
-const blockAttributes = {
-	count: {
-		type: 'number',
-		default: 2,
-	},
-	contentAlign: {
-		type: 'string',
-		default: 'center',
-	},
-};
-
 const settings = {
-
-	title: title,
-
+	title: __( 'Pricing Table' ),
 	description: __( 'Add pricing tables.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	keywords: [ __( 'landing' ), __( 'comparison' ), __( 'coblocks' ) ],
+	attributes: metadata.attributes,
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
 	},
-
 	transforms: {
 		from: [
 			{
@@ -81,9 +57,7 @@ const settings = {
 			},
 		],
 	},
-
-	edit: Edit,
-
+	edit,
 	save( { attributes } ) {
 		const {
 			contentAlign,
@@ -109,5 +83,4 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings };
-
+export { name, icon, settings };
