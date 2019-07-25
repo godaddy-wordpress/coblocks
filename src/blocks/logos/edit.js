@@ -41,6 +41,7 @@ class Edit extends Component {
 			attributes,
 			noticeUI,
 			isSelected,
+			setAttributes,
 		} = this.props;
 
 		const {
@@ -100,6 +101,7 @@ class Edit extends Component {
 					<Logos
 						{ ...this.props }
 						images={ images }
+						setAttributes={ setAttributes }
 					/>
 					{ isSelected && (
 						<MediaPlaceholder

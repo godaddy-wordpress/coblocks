@@ -2,13 +2,14 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { chunk, flatten } from 'lodash';
+import { chunk, flatten, filter } from 'lodash';
 
 /**
  * Internal dependencies
  */
 const { Component, Fragment } = wp.element;
 const { ResizableBox } = wp.components;
+const { BACKSPACE } = wp.keycodes;
 
 class Logos extends Component {
 	constructor() {
@@ -96,6 +97,15 @@ class Logos extends Component {
 											data-id={ img.id }
 											data-width={ img.width || ( 100 / images.length ) + '%' }
 											tabIndex="0"
+											onKeyDown={ event => {
+												if ( BACKSPACE === event.keyCode ) {
+													const images = filter( this.props.attributes.images, ( _img, i ) => index !== i );
+													this.setState( { selectedImage: null } )
+													this.props.setAttributes( {
+														images,
+													} );
+												}
+											} }
 										/>
 
 									</ResizableBox>
