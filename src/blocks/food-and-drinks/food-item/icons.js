@@ -10,7 +10,6 @@ const icons = {};
 
 icons.foodItem = (
 	<SVG
-		className="components-coblocks-svg"
 		height="14"
 		viewBox="0 0 14 14"
 		width="14"
