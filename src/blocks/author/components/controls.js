@@ -3,8 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls, MediaUploadCheck } = wp.blockEditor;
-const { MediaUpload } = wp.editor;
+const { AlignmentToolbar, BlockControls, MediaUpload, MediaUploadCheck } = wp.blockEditor;
 const { Toolbar, IconButton } = wp.components;
 
 class Controls extends Component {

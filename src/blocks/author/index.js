@@ -4,8 +4,9 @@
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import Edit from './components/edit';
+import edit from './components/edit';
 import icons from './../../utils/icons';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -17,17 +18,9 @@ const { RichText, InnerBlocks } = wp.blockEditor;
 /**
  * Block constants
  */
-const name = 'author';
-
-const title = __( 'Author' );
+const { name } = metadata;
 
 const icon = icons.author;
-
-const keywords = [
-	__( 'biography' ),
-	__( 'profile' ),
-	__( 'coblocks' ),
-];
 
 const blockAttributes = {
 	biography: {
@@ -60,15 +53,10 @@ const blockAttributes = {
 };
 
 const settings = {
-
-	title: title,
-
+	title: __( 'Author' ),
 	description: __( 'Add an author biography.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	keywords: [ __( 'biography' ), __( 'profile' ), __( 'coblocks' ) ],
+	attributes: metadata.attributes,
 	transforms: {
 		from: [
 			{
@@ -91,9 +79,7 @@ const settings = {
 			},
 		],
 	},
-
-	edit: Edit,
-
+	edit,
 	save( { attributes } ) {
 		const {
 			biography,
@@ -146,4 +132,4 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };
