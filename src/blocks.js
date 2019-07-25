@@ -57,6 +57,7 @@ import * as map from './blocks/map';
 import * as mediaCard from './blocks/media-card';
 import * as shapeDivider from './blocks/shape-divider';
 import * as icon from './blocks/icon';
+import * as logos from './blocks/logos';
 import * as feature from './blocks/features/feature';
 import * as features from './blocks/features';
 import * as buttons from './blocks/buttons';
@@ -89,6 +90,7 @@ export function registerBlocks() {
 		hero,
 		highlight,
 		icon,
+		logos,
 		map,
 		masonry,
 		mediaCard,
