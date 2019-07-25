@@ -9,7 +9,8 @@ import classnames from 'classnames';
 import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './../../utils/icons';
-import Edit from './components/edit';
+import edit from './components/edit';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -21,57 +22,15 @@ const { RichText, getColorClassName, getFontSizeClass } = wp.blockEditor;
 /**
  * Block constants
  */
-const name = 'highlight';
-
-const title = __( 'Highlight' );
+const { name } = metadata;
 
 const icon = icons.highlight;
 
-const keywords = [
-	__( 'text' ),
-	__( 'paragraph' ),
-	__( 'coblocks' ),
-];
-
-const blockAttributes = {
-	content: {
-		type: 'string',
-		source: 'html',
-		selector: 'mark',
-	},
-	align: {
-		type: 'string',
-	},
-	backgroundColor: {
-		type: 'string',
-	},
-	textColor: {
-		type: 'string',
-	},
-	customBackgroundColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
-	fontSize: {
-		type: 'string',
-	},
-	customFontSize: {
-		type: 'number',
-	},
-};
-
 const settings = {
-
-	title: title,
-
+	title: __( 'Highlight' ),
 	description: __( 'Highlight text.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	keywords: [ __( 'text' ), __( 'paragraph' ), __( 'coblocks' ) ],
+	attributes: metadata.attributes,
 	transforms: {
 		from: [
 			{
@@ -119,9 +78,7 @@ const settings = {
 			},
 		],
 	},
-
-	edit: Edit,
-
+	edit,
 	save( { attributes } ) {
 		const {
 			backgroundColor,
@@ -130,7 +87,7 @@ const settings = {
 			customFontSize,
 			customTextColor,
 			fontSize,
-			textAlign,
+			align,
 			textColor,
 		} = attributes;
 
@@ -155,7 +112,7 @@ const settings = {
 		};
 
 		return (
-			<p style={ { textAlign: textAlign } }>
+			<p style={ { textAlign: align } }>
 				{ ! RichText.isEmpty( content ) && (
 					<RichText.Content
 						tagName="mark"
@@ -169,4 +126,4 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

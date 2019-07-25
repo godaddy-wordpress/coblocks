@@ -87,7 +87,7 @@ class Edit extends Component {
 
 		const {
 			content,
-			textAlign,
+			align,
 		} = attributes;
 
 		return (
@@ -102,7 +102,7 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<p className={ className } style={ { textAlign: textAlign } }>
+				<p className={ className } style={ { textAlign: align } }>
 					<RichText
 						tagName="mark"
 						placeholder={ __( 'Add highlighted text...' ) }
