@@ -8,8 +8,9 @@ import classnames from 'classnames';
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import Edit from './components/edit';
+import edit from './components/edit';
 import icons from './../../../utils/icons';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -20,64 +21,22 @@ const { RichText, InnerBlocks, getColorClassName } = wp.blockEditor;
 /**
  * Block constants
  */
-const name = 'accordion-item';
-
-const title = __( 'Accordion Item' );
+const { name } = metadata;
 
 const icon = icons.accordionItem;
 
-const keywords = [
-	__( 'tabs' ),
-	__( 'faq' ),
-	__( 'coblocks' ),
-];
-
-const blockAttributes = {
-	title: {
-		type: 'string',
-		selector: '.wp-block-coblocks-accordion__title',
-	},
-	open: {
-		type: 'boolean',
-		default: false,
-	},
-	backgroundColor: {
-		type: 'string',
-	},
-	textColor: {
-		type: 'string',
-	},
-	borderColor: {
-		type: 'string',
-	},
-	customBackgroundColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
-};
-
 const settings = {
-
-	title: title,
-
+	title: __( 'Accordion Item' ),
 	description: __( 'Add collapsable accordion items to accordions.' ),
-
-	keywords: keywords,
-
+	keywords: [ __( 'tabs' ), __( 'faq' ), __( 'coblocks' ) ],
 	parent: [ 'coblocks/accordion' ],
-
 	supports: {
 		reusable: false,
 		html: false,
 		inserter: false,
 	},
-
-	attributes: blockAttributes,
-
-	edit: Edit,
-
+	attributes: metadata.attributes,
+	edit,
 	save( { attributes } ) {
 		const {
 			backgroundColor,
@@ -129,4 +88,4 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };
