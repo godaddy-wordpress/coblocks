@@ -1,4 +1,8 @@
 .wp-block-coblocks-logos {
+	&.has-filter-grayscale img {
+		filter: brightness(0) grayscale(1);
+	}
+
 	&__row {
 		align-items: center;
 		display: flex;
