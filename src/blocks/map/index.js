@@ -2,9 +2,10 @@
  * Internal dependencies
  */
 import './styles/editor.scss';
-import Edit from './components/edit';
-import Save from './components/save';
+import edit from './components/edit';
+import save from './components/save';
 import icons from './../../utils/icons';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -15,17 +16,9 @@ const { createBlock } = wp.blocks;
 /**
  * Block constants
  */
-const name = 'map';
-
-const title = __( 'Map' );
+const { name } = metadata;
 
 const icon = icons.googleMap;
-
-const keywords = [
-	__( 'address' ),
-	__( 'maps' ),
-	__( 'google' ),
-];
 
 const blockAttributes = {
 	address: {
@@ -87,20 +80,14 @@ const blockAttributes = {
 };
 
 const settings = {
-
-	title: title,
-
+	title: __( 'Map' ),
 	description: __( 'Add an address and drop a pin on a Google map.' ),
-
-	keywords: keywords,
-
+	keywords: [ __( 'address' ), __( 'maps' ), __( 'google' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-
-	attributes: blockAttributes,
-
+	attributes: metadata.attributes,
 	transforms: {
 		from: [
 			{
@@ -114,11 +101,8 @@ const settings = {
 			},
 		],
 	},
-
-	edit: Edit,
-
-	save: Save,
-
+	edit,
+	save,
 	deprecated: [
 		{
 			attributes: blockAttributes,
@@ -169,4 +153,4 @@ const settings = {
 	],
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };
