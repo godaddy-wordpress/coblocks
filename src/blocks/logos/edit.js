@@ -41,7 +41,6 @@ class Edit extends Component {
 			attributes,
 			noticeUI,
 			isSelected,
-			setAttributes,
 		} = this.props;
 
 		const {
