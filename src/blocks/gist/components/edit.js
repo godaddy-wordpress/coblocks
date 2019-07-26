@@ -27,7 +27,7 @@ const { withState } = wp.compose;
  */
 class Edit extends Component {
 	constructor( props ) {
-		super( ...arguments );
+		super( props, ...arguments );
 		this.state = {
 			urlText: '',
 			url: this.props.attributes.url,
@@ -73,7 +73,6 @@ class Edit extends Component {
 		const { meta, caption, file, url } = attributes;
 		const { urlText } = this.state;
 		const label = __( 'Gist URL' );
-		console.log( preview );
 		return (
 			<Fragment>
 				{ url && url.length > 0 && isSelected && <Controls { ...this.props } /> }
