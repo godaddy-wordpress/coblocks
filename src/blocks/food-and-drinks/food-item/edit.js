@@ -4,6 +4,7 @@
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
 import InspectorControls from './inspector';
 import icons from './icons';
+import fromEntries from '../../../js/coblocks-fromEntries';
 
 /**
  * External dependencies.
@@ -37,8 +38,9 @@ const handlePlaceholderPlacement = (
 		childClientId
 	);
 
-	const foodItems = select( 'core/block-editor' ).getBlocksByClientId( itemClientId )[ 0 ]
-		.innerBlocks;
+	const foodItems = select( 'core/block-editor' ).getBlocksByClientId(
+		itemClientId
+	)[ 0 ].innerBlocks;
 
 	const placeholders = foodItems.filter(
 		item => item.name === blockName && isEmpty( item.attributes )
@@ -69,6 +71,10 @@ const isEmpty = attributes => {
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
 	);
+
+	if ( ! Object.fromEntries ) {
+		return hasEmptyAttributes( fromEntries( newAttributes ) );
+	}
 
 	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 };
@@ -155,7 +161,16 @@ class FoodAndDrinksEdit extends Component {
 					) }
 					{ dropZone }
 					{ isBlobURL( attributes.url ) && <Spinner /> }
-					<img src={ attributes.url } alt={ attributes.alt } style={ { objectPosition: attributes.focalPoint ? `${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y * 100 }%` : undefined } } />
+					<img
+						src={ attributes.url }
+						alt={ attributes.alt }
+						style={ {
+							objectPosition: attributes.focalPoint ?
+								`${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y *
+										100 }%` :
+								undefined,
+						} }
+					/>
 				</figure>
 			</Fragment>
 		);
@@ -186,7 +201,8 @@ class FoodAndDrinksEdit extends Component {
 
 		return (
 			<Fragment>
-				<InspectorControls { ...this.props }
+				<InspectorControls
+					{ ...this.props }
 					setSpicyTo={ this.setSpicyTo }
 					setHotTo={ this.setHotTo }
 				/>
@@ -196,9 +212,7 @@ class FoodAndDrinksEdit extends Component {
 					} ) }
 				>
 					{ !! attributes.showImage &&
-						( attributes.url ?
-							this.renderImage() :
-							this.renderPlaceholder() ) }
+						( attributes.url ? this.renderImage() : this.renderPlaceholder() ) }
 					<div className="wp-block-coblocks-food-item__content">
 						<div className="wp-block-coblocks-food-item__heading-wrapper">
 							<RichText
@@ -210,7 +224,7 @@ class FoodAndDrinksEdit extends Component {
 								{ ...richTextAttributes }
 							/>
 							<div className="wp-block-coblocks-food-item__attributes">
-								{ isSelected && attributes.title ?
+								{ isSelected && attributes.title ? (
 									<span>
 										<IconButton
 											icon={ icons.spicy }
@@ -219,89 +233,127 @@ class FoodAndDrinksEdit extends Component {
 											label={ __( 'Spicy' ) }
 											isToggled={ attributes.spicy }
 										/>
-									</span> :
-									!! attributes.spicy && <Icon
-										icon={ icons.spicy }
-										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicy"
-									/>
-								}
-								{ isSelected && attributes.title && !! attributes.spicy ?
+									</span>
+								) : (
+									!! attributes.spicy && (
+										<Icon
+											icon={ icons.spicy }
+											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicy"
+										/>
+									)
+								) }
+								{ isSelected && attributes.title && !! attributes.spicy ? (
 									<span>
 										<IconButton
 											icon={ icons.spicy }
 											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicier"
-											onClick={ () => setAttributes( { spicier: ! attributes.spicier } ) }
+											onClick={ () =>
+												setAttributes( { spicier: ! attributes.spicier } )
+											}
 											label={ __( 'Hot' ) }
 											isToggled={ attributes.spicier }
 										/>
-									</span> :
-									!! attributes.spicier && <Icon
-										icon={ icons.spicy }
-										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicier"
-									/>
-								}
-								{ isSelected && attributes.title ?
+									</span>
+								) : (
+									!! attributes.spicier && (
+										<Icon
+											icon={ icons.spicy }
+											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicier"
+										/>
+									)
+								) }
+								{ isSelected && attributes.title ? (
 									<span>
 										<IconButton
 											icon={ icons.vegetarian }
 											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegetarian"
-											onClick={ () => setAttributes( { vegetarian: ! attributes.vegetarian } ) }
+											onClick={ () =>
+												setAttributes( {
+													vegetarian: ! attributes.vegetarian,
+												} )
+											}
 											label={ __( 'Vegetarian' ) }
 											isToggled={ attributes.vegetarian }
 										/>
-									</span> :
-									!! attributes.vegetarian && <Icon
-										icon={ icons.vegetarian }
-										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegetarian"
-									/>
-								}
-								{ isSelected && attributes.title && ( ! attributes.pescatarian && ! attributes.vegan ) ?
-									<span>
-										<IconButton
-											icon={ icons.glutenFree }
-											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--gf"
-											onClick={ () => setAttributes( { glutenFree: ! attributes.glutenFree } ) }
-											label={ __( 'Gluten Free' ) }
-											isToggled={ attributes.glutenFree }
+									</span>
+								) : (
+									!! attributes.vegetarian && (
+										<Icon
+											icon={ icons.vegetarian }
+											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegetarian"
 										/>
-									</span> :
-									!! attributes.glutenFree && <Icon
-										icon={ icons.glutenFree }
-										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--gf"
-									/>
-								}
-								{ isSelected && !! attributes.pescatarian ?
+									)
+								) }
+								{ isSelected &&
+								attributes.title &&
+								( ! attributes.pescatarian && ! attributes.vegan ) ? (
+									// disable reason: 10 tabs seems to be correct indent
+									// eslint-disable-next-line react/jsx-indent
+										<span>
+											<IconButton
+												icon={ icons.glutenFree }
+												className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--gf"
+												onClick={ () =>
+													setAttributes( {
+														glutenFree: ! attributes.glutenFree,
+													} )
+												}
+												label={ __( 'Gluten Free' ) }
+												isToggled={ attributes.glutenFree }
+											/>
+										</span>
+									) : (
+										!! attributes.glutenFree && (
+											<Icon
+												icon={ icons.glutenFree }
+												className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--gf"
+											/>
+										)
+									) }
+								{ isSelected && !! attributes.pescatarian ? (
 									// Only renders if the option is checked within the Settings sidebar.
 									<span>
 										<IconButton
 											icon={ icons.pescatarian }
 											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--pescatarian"
-											onClick={ () => setAttributes( { pescatarian: ! attributes.pescatarian } ) }
+											onClick={ () =>
+												setAttributes( {
+													pescatarian: ! attributes.pescatarian,
+												} )
+											}
 											label={ __( 'Pescatarian' ) }
 											isToggled={ attributes.pescatarian }
 										/>
-									</span> :
-									!! attributes.pescatarian && <Icon
-										icon={ icons.pescatarian }
-										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--pescatarian"
-									/>
-								}
-								{ isSelected && !! attributes.vegan ?
+									</span>
+								) : (
+									!! attributes.pescatarian && (
+										<Icon
+											icon={ icons.pescatarian }
+											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--pescatarian"
+										/>
+									)
+								) }
+								{ isSelected && !! attributes.vegan ? (
 									// Only renders if the option is checked within the Settings sidebar.
 									<span>
 										<IconButton
 											icon={ icons.vegan }
 											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegan"
-											onClick={ () => setAttributes( { vegan: ! attributes.vegan } ) }
+											onClick={ () =>
+												setAttributes( { vegan: ! attributes.vegan } )
+											}
 											label={ __( 'Vegan' ) }
 											isToggled={ attributes.vegan }
 										/>
-									</span> :
-									!! attributes.vegan && <Icon
-										icon={ icons.vegan }
-										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegan"
-									/>
-								}
+									</span>
+								) : (
+									!! attributes.vegan && (
+										<Icon
+											icon={ icons.vegan }
+											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegan"
+										/>
+									)
+								) }
 							</div>
 						</div>
 						<RichText
