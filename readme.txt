@@ -7,8 +7,8 @@ Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.2.4
 Stable tag: 1.12.0
-License: GPL-3.0
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License: GPL-2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 CoBlocks is a suite of page builder WordPress blocks for Gutenberg, with 10+ new blocks and a true page builder experience with rows and columns.
 
