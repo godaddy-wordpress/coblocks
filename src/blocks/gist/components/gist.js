@@ -34,6 +34,7 @@ class Gist extends Component {
 		this._formOnSubmit = this._formOnSubmit.bind( this );
 		this._setupURL = this._setupURL.bind( this );
 		this._getID = this._getID.bind( this );
+		this._checkNewInput = this._checkNewInput.bind( this );
 	}
 
 	// Each time we request a new Gist, we have to provide a new
@@ -79,6 +80,21 @@ class Gist extends Component {
 			return null;
 		}
 		return urlToParse.match( /(\.com\/)(.*?)([^#]+)/ ).pop();
+	}
+
+	_checkNewInput() {
+		if ( this.state.rendered && this.state.gistContent && this.props.url ) {
+			console.log( 'this is the props.value and then props.url' );
+			console.log( this.props.value );
+			console.log( this.props.url );
+			const valueWithNoFile = this.props.value.replace( file, '' ).replace( '#file-', '' );
+			const urlWithNoFile = this.props.url.replace( file, '' ).replace( '#file-', '' );
+			if ( valueWithNoFile !== urlWithNoFile ) {
+				console.log( 'Values do not match. set and fetch new callback.' );
+			} else {
+				console.log( 'Values match. Should not reset anything.' );
+			}
+		}
 	}
 
 	_tranformedURL( gistCallback ) {
@@ -134,15 +150,12 @@ class Gist extends Component {
 
 	_formOnSubmit( event ) {
 		event.preventDefault();
+		this._checkNewInput();
 		this.setState( { loading: true } );
 		this._setupURL( this.props.value );
 	}
 
 	_setupURL( newURL ) {
-		this.setState( {
-			url: newURL,
-		} );
-
 		let file = /(#file-).*/gi.exec( newURL );
 
 		if ( file ) {
@@ -173,6 +186,7 @@ class Gist extends Component {
 	render() {
 		const {
 			// noticeOperations,
+			url,
 			noticeUI,
 			icon,
 			label,
@@ -188,6 +202,10 @@ class Gist extends Component {
 			gistContent,
 			rendered,
 		} = this.state;
+		if ( rendered && gistContent && url ) {
+			console.log( 'gist has been rendered.' );
+			// console.log( this._checkNewInput() );
+		}
 
 		const { _formOnSubmit } = this;
 		return (
