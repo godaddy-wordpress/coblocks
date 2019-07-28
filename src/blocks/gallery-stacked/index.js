@@ -81,7 +81,6 @@ const settings = {
 	edit,
 
 	save( { attributes, className } ) {
-
 		const {
 			captionColor,
 			captions,
@@ -92,27 +91,20 @@ const settings = {
 			gutter,
 			gutterMobile,
 			images,
-			linkTo,
-			shadow,
-			hasParallax,
-			backgroundType,
-			focalPoint,
-			backgroundImg,
-			customBackgroundColor,
-			backgroundColor,
 			target,
 			rel,
+			linkTo,
+			shadow,
 		} = attributes;
 
 		// Body color class and styles.
 		const textClass = getColorClassName( 'color', captionColor );
-		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
 			...BackgroundClasses( attributes ), {
 				'has-fullwidth-images': fullwidth,
-				[ `has-margin` ] : gutter > 0,
+				'has-margin': gutter > 0,
 			}
 		);
 
@@ -126,15 +118,15 @@ const settings = {
 
 		const figureClasses = classnames(
 			'coblocks-gallery--figure', {
-				[ `has-margin-bottom-${ gutter }` ] : gutter > 0,
-				[ `has-margin-bottom-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-margin-bottom-${ gutter }` ]: gutter > 0,
+				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 				[ fontSizeClass ]: fontSizeClass,
-		} );
+			} );
 
 		const captionClasses = classnames(
 			'coblocks-gallery--caption', {
 				[ fontSizeClass ]: fontSizeClass,
-		} );
+			} );
 
 		const captionStyles = {
 			fontSize: fontSizeClass ? undefined : customFontSize,
@@ -163,8 +155,8 @@ const settings = {
 
 						const imgClasses = classnames(
 							image.id ? [ `wp-image-${ image.id }` ] : null, {
-								[ `has-shadow-${ shadow }` ] : shadow != 'none' || shadow != undefined ,
-						} );
+								[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
+							} );
 
 						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
 
@@ -173,7 +165,7 @@ const settings = {
 								<figure className={ figureClasses }>
 									{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 									{ captions && image.caption && image.caption.length > 0 && (
-										<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } styles={ captionStyles }/>
+										<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } styles={ captionStyles } />
 									) }
 								</figure>
 							</li>

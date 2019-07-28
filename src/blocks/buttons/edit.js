@@ -14,11 +14,8 @@ import Controls from './controls';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
-const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.blockEditor;
-const { Spinner } = wp.components;
 
 /**
  * Constants
@@ -36,47 +33,28 @@ const getCount = memoize( ( count ) => {
 	return times( count, () => [ 'core/button' ] );
 } );
 
-/**
- * Block edit function
- */
-class Edit extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
+class ButtonsEdit extends Component {
 	render() {
-
 		const {
 			attributes,
 			className,
 			isSelected,
-			setAttributes,
 		} = this.props;
 
 		const {
-			gutter,
 			items,
-			stacked,
 			contentAlign,
 			isStackedOnMobile,
 		} = attributes;
 
 		const classes = classnames(
-			className, {
-			}
-		);
-
-		const innerClasses = classnames(
-			'wp-block-coblocks-buttons__inner',{
-				[ `flex-align-${ contentAlign }` ] : contentAlign,
-				[ `has-${ gutter }-gutter` ] : gutter,
-				'is-stacked': stacked,
+			'wp-block-coblocks-buttons__inner', {
+				[ `flex-align-${ contentAlign }` ]: contentAlign,
 				'is-stacked-on-mobile': isStackedOnMobile,
 			}
 		);
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Inspector
@@ -88,8 +66,8 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<div className={ classes }>
-					<div className={ innerClasses }>
+				<div className={ className }>
+					<div className={ classes }>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ getCount( items ) }
@@ -99,10 +77,8 @@ class Edit extends Component {
 					</div>
 				</div>
 			</Fragment>
-		];
+		);
 	}
 }
 
-export default compose( [
-	// applyWithColors,
-] )( Edit );
+export default ButtonsEdit;

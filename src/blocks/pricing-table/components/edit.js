@@ -10,12 +10,11 @@ import memoize from 'memize';
  */
 import Controls from './controls';
 import Inspector from './inspector';
-import icons from './../../../utils/icons';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.blockEditor;
 
@@ -37,26 +36,18 @@ const ALLOWED_BLOCKS = [ 'coblocks/pricing-table-item' ];
  * @return {Object[]} Columns layout configuration.
  */
 const getCount = memoize( ( count ) => {
-	return times( count, () => [ 'coblocks/pricing-table-item' ] );
+	return times( count, ( index ) => [ 'coblocks/pricing-table-item', { placeholder: sprintf( __( 'Plan %s' ), index + 1 ) } ] );
 } );
 
 /**
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			className,
 			isSelected,
-			setAttributes,
-			setState,
 		} = this.props;
 
 		const {
@@ -70,7 +61,7 @@ class Edit extends Component {
 			`has-${ contentAlign }-content`,
 		);
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Controls
@@ -94,8 +85,8 @@ class Edit extends Component {
 					</div>
 				</div>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default Edit;

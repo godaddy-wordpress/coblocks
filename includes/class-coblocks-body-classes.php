@@ -101,7 +101,7 @@ class CoBlocks_Body_Classes {
 		}
 
 		if ( $this->is_active_theme( $this->themes() ) ) {
-			$classes .= 'is-' . $this->theme_slug();
+			$classes .= ' is-' . $this->theme_slug();
 		}
 
 		return $classes;

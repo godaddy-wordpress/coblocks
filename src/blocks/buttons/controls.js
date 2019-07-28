@@ -1,31 +1,17 @@
 /**
- * Internal dependencies
- */
-
-/**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { BlockControls, AlignmentToolbar } = wp.blockEditor;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
 		} = this.props;
 
-		const {
-			contentAlign,
-			hasContentAlign,
-		} = attributes;
+		const { contentAlign } = attributes;
 
 		return (
 			<Fragment>
@@ -38,6 +24,6 @@ class Controls extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Controls;

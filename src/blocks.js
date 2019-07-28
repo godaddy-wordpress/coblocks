@@ -9,11 +9,8 @@ const category = {
 	title: 'CoBlocks',
 };
 
-// Custom foreground icon color based on the CoBlocks branding
-const iconColor = '#1e35b9';
-
 // Register block category
-import icons from './utils/block-category';
+import './utils/block-category';
 
 // Editor and Frontend Styles
 import './styles/editor.scss';
@@ -60,15 +57,19 @@ import * as map from './blocks/map';
 import * as mediaCard from './blocks/media-card';
 import * as shapeDivider from './blocks/shape-divider';
 import * as icon from './blocks/icon';
+import * as logos from './blocks/logos';
 import * as feature from './blocks/features/feature';
 import * as features from './blocks/features';
 import * as buttons from './blocks/buttons';
 import * as hero from './blocks/hero';
+import * as services from './blocks/services';
+import * as service from './blocks/services/service';
 import * as stacked from './blocks/gallery-stacked';
 import * as masonry from './blocks/gallery-masonry';
 import * as carousel from './blocks/gallery-carousel';
+import * as socialProfiles from './blocks/social-profiles';
 
-export function registerBlocks () {
+export function registerBlocks() {
 	[
 		accordion,
 		accordionItem,
@@ -89,24 +90,31 @@ export function registerBlocks () {
 		hero,
 		highlight,
 		icon,
+		logos,
 		map,
 		masonry,
 		mediaCard,
 		pricingTable,
 		pricingTableItem,
 		row,
+		services,
+		service,
 		shapeDivider,
 		share,
 		stacked,
-	].forEach( ( block ) => {
-
+		socialProfiles,
+	].forEach( block => {
 		if ( ! block ) {
 			return;
 		}
 
 		const { name, icon, settings } = block;
 
-		registerBlockType( `coblocks/${ name }`, { category: category.slug, icon: { src: icon, foreground: iconColor, }, ...settings } );
+		registerBlockType( `coblocks/${ name }`, {
+			category: category.slug,
+			icon: { src: icon },
+			...settings,
+		} );
 	} );
-};
+}
 registerBlocks();

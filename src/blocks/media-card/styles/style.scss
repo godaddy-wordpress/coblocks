@@ -181,3 +181,25 @@
 		}
 	}
 }
+
+// IE 10+ Support
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	.wp-block-coblocks-media-card {
+		.wp-block-coblocks-media-card__wrapper {
+			display: flex;
+
+			.wp-block-coblocks-row__inner {
+				flex-grow: 1;
+			}
+		}
+
+		&.is-style-right {
+			figure {
+				order: 2;
+			}
+			.wp-block-coblocks-row__inner {
+				order: 1;
+			}
+		}
+	}
+}

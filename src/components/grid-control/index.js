@@ -5,27 +5,16 @@ import classnames from 'classnames';
 import map from 'lodash/map';
 
 /**
- * Internal dependencies
- */
-import CSSGridAttributes from './attributes';
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { withInstanceId } = wp.compose;
-const { dispatch, select } = wp.data;
+const { dispatch } = wp.data;
 const { Component, Fragment } = wp.element;
 const { ButtonGroup, Button, Tooltip, ToggleControl } = wp.components;
 
 class CSSGridControl extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			clientId,
@@ -54,7 +43,7 @@ class CSSGridControl extends Component {
 			{ value: 'bottom-right', label: __( 'Bottom Right' ) },
 		];
 
-		if( !fullscreen ){
+		if ( ! fullscreen ) {
 			layoutOptions = [
 				{ value: 'center-left', label: __( 'Center Left' ) },
 				{ value: 'center-center', label: __( 'Center Center' ) },
@@ -62,7 +51,7 @@ class CSSGridControl extends Component {
 			];
 		}
 
-		let layoutAttributes = {};
+		const layoutAttributes = {};
 		//top
 		layoutAttributes[ 'top-left' ] = {
 			wrapper: {
@@ -120,8 +109,6 @@ class CSSGridControl extends Component {
 			},
 		};
 
-		let getBlockContents = select( 'core/editor' ).getBlock( clientId );
-
 		const classes = classnames(
 			'components-base-control',
 			'components-coblocks-css-grid-selector', {
@@ -132,63 +119,62 @@ class CSSGridControl extends Component {
 		return (
 			<Fragment>
 				<div className={ classes }>
-					<label className="components-base-control__label" >{ __( 'Layout' ) }</label>
+					<p className="components-base-control__label">{ __( 'Layout' ) }</p>
 					<ButtonGroup aria-label={ __( 'Select Layout' ) }>
-					{ map( layoutOptions, ( { label, value, icon } ) => {
-						 if( tooltip ){
-						 	return (
-						 		<Tooltip text={ label }>
-									<div className={ ( value == layout ) ? 'is-selected' : null }>
-										<Button
-											isSmall
-											onClick={ () => {
-												setAttributes( { layout: value } );
-												if( layoutAttributes[ value ].wrapper ){
-													dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
-												}
-											} }
-										>
-										</Button>
-									</div>
-								</Tooltip>
-							)
-						 }else{
-						 	return(
-						 		<div className={ ( value == layout ) ? 'is-selected' : null }>
+						{ map( layoutOptions, ( { label, value } ) => {
+							if ( tooltip ) {
+								return (
+									<Tooltip text={ label }>
+										<div className={ ( value === layout ) ? 'is-selected' : null }>
+											<Button
+												isSmall
+												onClick={ () => {
+													setAttributes( { layout: value } );
+													if ( layoutAttributes[ value ].wrapper ) {
+														dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+													}
+												} }
+											>
+											</Button>
+										</div>
+									</Tooltip>
+								);
+							}
+							return (
+								<div className={ ( value === layout ) ? 'is-selected' : null }>
 									<Button
 										isSmall
 										onClick={ () => {
 											setAttributes( { layout: value } );
-											if( layoutAttributes[ value ].wrapper ){
-												dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+											if ( layoutAttributes[ value ].wrapper ) {
+												dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
 											}
 										} }
 									>
 									</Button>
 								</div>
-						 	)
-						 }
-					} ) }
+							);
+						} ) }
 					</ButtonGroup>
 				</div>
 				<ToggleControl
 					label={ __( 'Fullscreen' ) }
 					checked={ !! fullscreen }
 					onChange={ () => {
-						if( fullscreen ){
-							if( [ 'bottom-left', 'top-left' ].includes( layout ) ){
-								setAttributes( {  layout: 'center-left' } )
+						if ( fullscreen ) {
+							if ( [ 'bottom-left', 'top-left' ].includes( layout ) ) {
+								setAttributes( { layout: 'center-left' } );
 							}
 
-							if( [ 'bottom-center', 'top-center' ].includes( layout ) ){
-								setAttributes( {  layout: 'center-center' } )
+							if ( [ 'bottom-center', 'top-center' ].includes( layout ) ) {
+								setAttributes( { layout: 'center-center' } );
 							}
 
-							if( [ 'bottom-right', 'top-right' ].includes( layout ) ){
-								setAttributes( {  layout: 'center-right' } )
+							if ( [ 'bottom-right', 'top-right' ].includes( layout ) ) {
+								setAttributes( { layout: 'center-right' } );
 							}
 						}
-						setAttributes( {  fullscreen: ! fullscreen } )
+						setAttributes( { fullscreen: ! fullscreen } );
 					} }
 					help={ !! fullscreen ? __( 'Fullscreen mode is enabled.' ) : __( 'Toggle to enable fullscreen mode.' ) }
 				/>
@@ -197,4 +183,4 @@ class CSSGridControl extends Component {
 	}
 }
 
-export default withInstanceId( CSSGridControl  );
+export default withInstanceId( CSSGridControl );

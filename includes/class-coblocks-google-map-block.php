@@ -58,7 +58,7 @@ class CoBlocks_Google_Map_Block {
 	/**
 	 * The Constructor.
 	 */
-	private function __construct() {
+	public function __construct() {
 		$this->_version = COBLOCKS_VERSION;
 		$this->_slug    = 'coblocks';
 		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
@@ -104,7 +104,7 @@ class CoBlocks_Google_Map_Block {
 
 			}
 
-			wp_localize_script( $this->_slug . '-google-maps', 'baAtts', array( 'url' => $this->_url ) );
+			wp_localize_script( $this->_slug . '-google-maps', 'coblocksGoogleMaps', array( 'url' => $this->_url ) );
 		}
 	}
 

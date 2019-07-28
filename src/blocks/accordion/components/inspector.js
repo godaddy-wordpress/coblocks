@@ -4,7 +4,6 @@
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
 const { InspectorControls } = wp.blockEditor;
 const { PanelBody, ToggleControl } = wp.components;
 
@@ -12,14 +11,7 @@ const { PanelBody, ToggleControl } = wp.components;
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -38,13 +30,13 @@ class Inspector extends Component {
 							checked={ !! polyfill }
 							help={ ! polyfill ? __( 'Add support for Internet Explorer by loading a JavaScript polyfill.' ) : __( 'Supporting Internet Explorer by loading a JavaScript polyfill on this page.' ) }
 							onChange={ () => {
-								setAttributes( {  polyfill: ! polyfill } )
+								setAttributes( { polyfill: ! polyfill } );
 								// Save values to metadata.
-								wp.data.dispatch( 'core/editor' ).editPost({
+								wp.data.dispatch( 'core/editor' ).editPost( {
 									meta: {
-										_coblocks_accordion_ie_support: "'" + ! polyfill + "'",
-									}
-								});
+										_coblocks_accordion_ie_support: '\'' + ! polyfill + '\'',
+									},
+								} );
 							} }
 						/>
 					</PanelBody>
@@ -52,6 +44,6 @@ class Inspector extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Inspector;
