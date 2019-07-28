@@ -74,7 +74,8 @@
 	}
 
 	// Gutenberg 5.9+ tweaks.
-	[data-type="coblocks/social"] [data-block] {
+	[data-type="coblocks/social"] [data-block],
+	[data-type="coblocks/social-profiles"] [data-block] {
 		margin-bottom: 0;
 
 		.wp-block-coblocks-social {
@@ -100,6 +101,12 @@
 }
 
 .edit-post-settings-sidebar__panel-block .components-social-icons-list {
+	.components-base-control {
+		margin-bottom: 8px;
+	}
+}
+
+.edit-post-settings-sidebar__panel-block .components-social-links-list {
 	.components-base-control {
 		margin-bottom: 8px;
 	}

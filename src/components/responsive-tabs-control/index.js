@@ -12,7 +12,6 @@ const { Component, Fragment } = wp.element;
 const { RangeControl, TabPanel } = wp.components;
 
 class ResponsiveTabsControl extends Component {
-
 	constructor() {
 		super( ...arguments );
 		this.setGutterTo = this.setGutterTo.bind( this );
@@ -28,15 +27,12 @@ class ResponsiveTabsControl extends Component {
 	}
 
 	render() {
-
 		const {
-			attributes,
 			label = __( 'Gutter' ),
 			max = 50,
 			min = 0,
 			onChange = this.setGutterTo,
 			onChangeMobile = this.setGutterMobileTo,
-			setAttributes,
 			step = 5,
 			value = this.props.attributes.gutter,
 			valueMobile = this.props.attributes.gutterMobile,
@@ -73,19 +69,18 @@ class ResponsiveTabsControl extends Component {
 										max={ max }
 										step={ step }
 									/>
-								)
-							} else {
-								return (
-									<RangeControl
-										label={ label }
-										value={ value }
-										onChange={ ( value ) => onChange( value ) }
-										min={ min }
-										max={ max }
-										step={ step }
-									/>
-								)
+								);
 							}
+							return (
+								<RangeControl
+									label={ label }
+									value={ value }
+									onChange={ ( value ) => onChange( value ) }
+									min={ min }
+									max={ max }
+									step={ step }
+								/>
+							);
 						}
 					}
 				</TabPanel>

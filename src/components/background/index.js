@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import isEmpty from 'lodash/isEmpty';
-
-/**
  * Internal dependencies
  */
 import './styles/style.scss';

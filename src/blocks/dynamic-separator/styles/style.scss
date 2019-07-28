@@ -1,7 +1,7 @@
 .wp-block-coblocks-dynamic-separator {
-	background: none;
+	background: none !important;
 	border: 0;
-	margin: 0 0 1.5em;
+	max-width: 100% !important;
 	opacity: 1;
 	padding: 0;
 	position: relative;
