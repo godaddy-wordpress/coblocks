@@ -1,0 +1,47 @@
+.coblocks-gallery--item {
+	margin: 0;
+
+	figure:focus {
+		outline: none;
+	}
+
+	img:focus {
+		box-shadow: inset 0 0 0 4px theme(primary);
+		outline: none;
+	}
+
+	.is-selected {
+		&::after {
+			bottom: 0;
+			box-shadow: inset 0 0 0 4px theme(primary);
+			content: "";
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: 1;
+		}
+	}
+
+	.is-transient img {
+		opacity: 0.3;
+	}
+
+	.editor-rich-text {
+		z-index: 2;
+	}
+
+	> .components-spinner {
+		left: 50%;
+		margin-left: -9px;
+		margin-top: -9px;
+		position: absolute;
+		top: 50%;
+	}
+}
+
+.has-caption-color .coblocks-gallery--caption {
+	a {
+		color: inherit !important;
+	}
+}

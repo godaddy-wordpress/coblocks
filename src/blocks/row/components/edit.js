@@ -2,20 +2,18 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import memoize from 'memize';
-import times from 'lodash/times';
 import map from 'lodash/map';
 
 /**
  * Internal dependencies
  */
-import { layoutOptions } from './layouts'
+import { layoutOptions } from './layouts';
 import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
 import rowIcons from './icons';
-import { title, icon } from '../'
-import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../components/background';
+import { title } from '../';
+import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../../components/background';
 
 /**
  * WordPress dependencies
@@ -23,8 +21,8 @@ import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InnerBlocks } = wp.editor;
-const { ResizableBox, ButtonGroup, Button, IconButton, Tooltip, Placeholder, Spinner } = wp.components;
+const { InnerBlocks } = wp.blockEditor;
+const { ButtonGroup, Button, IconButton, Tooltip, Placeholder, Spinner } = wp.components;
 const { isBlobURL } = wp.blob;
 
 /**
@@ -39,67 +37,67 @@ const { isBlobURL } = wp.blob;
 const ALLOWED_BLOCKS = [ 'coblocks/column' ];
 
 const TEMPLATE = {
-	'100' : [
+	100: [
 		[ 'coblocks/column', { width: '100' } ],
 	],
-	'50-50' : [
+	'50-50': [
 		[ 'coblocks/column', { width: '50' } ],
 		[ 'coblocks/column', { width: '50' } ],
 	],
-	'25-75' : [
+	'25-75': [
 		[ 'coblocks/column', { width: '25' } ],
 		[ 'coblocks/column', { width: '75' } ],
 	],
-	'75-25' : [
+	'75-25': [
 		[ 'coblocks/column', { width: '75' } ],
 		[ 'coblocks/column', { width: '25' } ],
 	],
-	'66-33' : [
+	'66-33': [
 		[ 'coblocks/column', { width: '66' } ],
 		[ 'coblocks/column', { width: '33' } ],
 	],
-	'33-66' : [
+	'33-66': [
 		[ 'coblocks/column', { width: '33' } ],
 		[ 'coblocks/column', { width: '66' } ],
 	],
-	'33-33-33' : [
+	'33-33-33': [
 		[ 'coblocks/column', { width: '33.33' } ],
 		[ 'coblocks/column', { width: '33.33' } ],
 		[ 'coblocks/column', { width: '33.33' } ],
 	],
-	'50-25-25' : [
+	'50-25-25': [
 		[ 'coblocks/column', { width: '50' } ],
 		[ 'coblocks/column', { width: '25' } ],
 		[ 'coblocks/column', { width: '25' } ],
 	],
-	'25-25-50' : [
+	'25-25-50': [
 		[ 'coblocks/column', { width: '25' } ],
 		[ 'coblocks/column', { width: '25' } ],
 		[ 'coblocks/column', { width: '50' } ],
 	],
-	'25-50-25' : [
+	'25-50-25': [
 		[ 'coblocks/column', { width: '25' } ],
 		[ 'coblocks/column', { width: '50' } ],
 		[ 'coblocks/column', { width: '25' } ],
 	],
-	'20-60-20' : [
+	'20-60-20': [
 		[ 'coblocks/column', { width: '20' } ],
 		[ 'coblocks/column', { width: '60' } ],
 		[ 'coblocks/column', { width: '20' } ],
 	],
-	'25-25-25-25' : [
+	'25-25-25-25': [
 		[ 'coblocks/column', { width: '25' } ],
 		[ 'coblocks/column', { width: '25' } ],
 		[ 'coblocks/column', { width: '25' } ],
 		[ 'coblocks/column', { width: '25' } ],
 	],
-	'40-20-20-20' : [
+	'40-20-20-20': [
 		[ 'coblocks/column', { width: '40' } ],
 		[ 'coblocks/column', { width: '20' } ],
 		[ 'coblocks/column', { width: '20' } ],
 		[ 'coblocks/column', { width: '20' } ],
 	],
-	'20-20-20-40' : [
+	'20-20-20-40': [
 		[ 'coblocks/column', { width: '20' } ],
 		[ 'coblocks/column', { width: '20' } ],
 		[ 'coblocks/column', { width: '20' } ],
@@ -111,13 +109,12 @@ const TEMPLATE = {
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.state = {
 			layoutSelection: true,
-		}
+		};
 	}
 
 	numberToText( columns ) {
@@ -133,16 +130,14 @@ class Edit extends Component {
 	}
 
 	render() {
-
 		const {
 			attributes,
 			className,
 			isSelected,
-			toggleSelection,
 			setAttributes,
 			backgroundColor,
 			textColor,
-		} = this.props
+		} = this.props;
 
 		const {
 			coblocks,
@@ -151,7 +146,6 @@ class Edit extends Component {
 			columns,
 			layout,
 			gutter,
-			stacked,
 			paddingTop,
 			paddingRight,
 			paddingBottom,
@@ -164,21 +158,21 @@ class Edit extends Component {
 			marginUnit,
 			marginSize,
 			paddingSize,
-			hasAlignmentControls,
 			isStackedOnMobile,
 			focalPoint,
 			hasParallax,
+			backgroundType,
 		} = attributes;
 
 		const dropZone = (
-			<BackgroundImageDropZone
+			<BackgroundDropZone
 				{ ...this.props }
-				label={ sprintf( __( 'Add backround image to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
+				label={ sprintf( __( 'Add backround to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
 			/>
 		);
 
 		const columnOptions = [
-			{ columns: 1, name: __( 'One Column' ), icon: rowIcons.colOne, key: '100', },
+			{ columns: 1, name: __( 'One Column' ), icon: rowIcons.colOne, key: '100' },
 			{ columns: 2, name: __( 'Two Columns' ), icon: rowIcons.colTwo },
 			{ columns: 3, name: __( 'Three Columns' ), icon: rowIcons.colThree },
 			{ columns: 4, name: __( 'Four Columns' ), icon: rowIcons.colFour },
@@ -187,11 +181,11 @@ class Edit extends Component {
 		let selectedRows = 1;
 
 		if ( columns ) {
-			selectedRows = parseInt( columns.toString().split('-') );
+			selectedRows = parseInt( columns.toString().split( '-' ) );
 		}
 
 		if ( ! layout && this.state.layoutSelection ) {
-			return [
+			return (
 				<Fragment>
 					{ isSelected && (
 						<Controls
@@ -224,8 +218,8 @@ class Edit extends Component {
 														layout: columns === 1 ? key : null,
 													} );
 
-													{ columns === 1 &&
-														this.setState( { 'layoutSelection' : false } );
+													if ( columns === 1 ) {
+														this.setState( { layoutSelection: false } );
 													}
 												} }
 											>
@@ -234,8 +228,7 @@ class Edit extends Component {
 										</div>
 									</Tooltip>
 								) ) }
-							</ButtonGroup>
-						:
+							</ButtonGroup> :
 							<Fragment>
 								<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
 									<IconButton
@@ -245,11 +238,11 @@ class Edit extends Component {
 											setAttributes( {
 												columns: null,
 											} );
-											this.setState( { 'layoutSelection' : true } );
+											this.setState( { layoutSelection: true } );
 										} }
 										label={ __( 'Back to Columns' ) }
 									/>
-									{ map( layoutOptions[ selectedRows ], ( { name, key, icon, cols } ) => (
+									{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
 										<Tooltip text={ name }>
 											<div className="components-coblocks-visual-dropdown__button-wrapper">
 												<Button
@@ -260,7 +253,7 @@ class Edit extends Component {
 														setAttributes( {
 															layout: key,
 														} );
-														this.setState( { 'layoutSelection' : false } );
+														this.setState( { layoutSelection: false } );
 													} }
 												>
 													{ icon }
@@ -273,13 +266,13 @@ class Edit extends Component {
 						}
 					</Placeholder>
 				</Fragment>
-			];
+			);
 		}
 
 		const classes = classnames(
-			'wp-block-coblocks-row', {
-				[ `coblocks-row--${ id }` ] : id,
-				[ `coblocks-row-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+			className, {
+				[ `coblocks-row--${ id }` ]: id,
+				[ `coblocks-row-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
 			}
 		);
 
@@ -287,18 +280,18 @@ class Edit extends Component {
 			'wp-block-coblocks-row__inner',
 			...BackgroundClasses( attributes ), {
 				'has-text-color': textColor.color,
-				[ `has-${ gutter }-gutter` ] : gutter,
-				'has-padding': paddingSize && paddingSize != 'no',
-				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
-				'has-margin': marginSize && marginSize != 'no',
-				[ `has-${ marginSize }-margin` ] : marginSize && marginSize != 'advanced',
+				[ `has-${ gutter }-gutter` ]: gutter,
+				'has-padding': paddingSize && paddingSize !== 'no',
+				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+				'has-margin': marginSize && marginSize !== 'no',
+				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
 				'is-stacked-on-mobile': isStackedOnMobile,
 			}
 		);
 
 		const innerStyles = {
 			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
+			backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
 			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 			color: textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
@@ -311,7 +304,7 @@ class Edit extends Component {
 			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 		};
 
-		return [
+		return (
 			<Fragment>
 				{ dropZone }
 				{ isSelected && (
@@ -325,19 +318,21 @@ class Edit extends Component {
 					/>
 				) }
 				<div className={ classes }>
+					{ isBlobURL( backgroundImg ) && <Spinner /> }
 					<div className={ innerClasses } style={ innerStyles }>
-						{ isBlobURL( backgroundImg ) && <Spinner /> }
+						{ BackgroundVideo( attributes ) }
 						<InnerBlocks
 							template={ TEMPLATE[ layout ] }
 							templateLock="all"
 							allowedBlocks={ ALLOWED_BLOCKS }
-							templateInsertUpdatesSelection={ columns === 1 ? true : false } />
+							templateInsertUpdatesSelection={ columns === 1 }
+							renderAppender={ () => ( null ) } />
 					</div>
 				</div>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

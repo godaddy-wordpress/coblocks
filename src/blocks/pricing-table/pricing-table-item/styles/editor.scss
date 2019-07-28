@@ -30,6 +30,15 @@
 			}
 		}
 	}
+
+	.has-left-content & .editor-block-list__block[data-type="core/button"] .editor-block-list__block-edit > div {
+		justify-content: flex-start;
+	}
+
+	.has-right-content & .editor-block-list__block[data-type="core/button"] .editor-block-list__block-edit > div {
+		justify-content: flex-end;
+	}
+
 	.editor-block-list__breadcrumb {
 		display: none !important;
 	}

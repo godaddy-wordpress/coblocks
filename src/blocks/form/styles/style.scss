@@ -1,0 +1,113 @@
+.coblocks-form {
+	label {
+		display: block;
+		float: none;
+		margin-bottom: 3px;
+	}
+
+	.coblocks-field {
+		margin: 0 0 1.25rem 0;
+		width: 100%;
+
+		&.verify {
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 0;
+			width: 0;
+			z-index: -1;
+		}
+	}
+
+	textarea {
+		float: none;
+		height: 200px;
+		margin: 0 0 1.15rem 0;
+		resize: vertical;
+		width: 100%;
+	}
+
+	.required {
+		color: $alert-red;
+		margin-left: 5px;
+	}
+
+	.coblocks-form__inline-fields {
+		align-items: center;
+		display: flex;
+		flex-flow: row wrap;
+		margin-bottom: 1.15rem;
+
+		.coblocks-form__inline-field {
+			margin-bottom: 0.15rem;
+			width: 50%;
+
+			input[type="text"] {
+				margin-bottom: 3px;
+				width: 100%;
+			}
+
+			&:first-child {
+				padding-right: 10px;
+			}
+
+			&:last-child {
+				padding-left: 10px;
+			}
+		}
+
+		@media only screen and (max-width: 535px) {
+			display: block;
+
+			.coblocks-form__inline-field {
+				width: 100%;
+
+				&:first-child,
+				&:last-child {
+					margin: 0 0 1.15rem 0;
+					padding: 0;
+				}
+			}
+		}
+	}
+
+	&__subtext {
+		display: block;
+		line-height: 1;
+		margin-bottom: -0.3rem;
+		margin-top: 0.3rem;
+		opacity: 0.66;
+	}
+
+	.coblocks-form-submission {
+		margin-bottom: 4em;
+		padding: 1.5em 1em;
+
+		p {
+			margin: 0 auto;
+			word-wrap: break-word;
+		}
+	}
+
+	.form-errors .form-error-message {
+		color: $alert-red;
+	}
+}
+
+.is-twentysixteen,
+.is-twentynineteen {
+	.coblocks-form__submit {
+		margin-top: 1.5em;
+	}
+}
+
+.is-twentyseventeen {
+	.coblocks-field {
+		margin-bottom: 1.75rem;
+	}
+
+	.coblocks-form__submit .wp-block-button__link {
+		margin-top: 0.1em;
+	}
+}

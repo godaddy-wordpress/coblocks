@@ -1,27 +1,20 @@
 /**
- * External dependencies
- */
-import map from 'lodash/map';
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
-import icons from './icons';
 import applyWithColors from './colors';
-import BackgroundImagePanel from '../../../components/background';
+import { BackgroundPanel } from '../../../components/background';
 import DimensionsControl from '../../../components/dimensions-control/';
 import CSSGridControl from '../../../components/grid-control/';
+import ResponsiveBaseControl from '../../../components/responsive-base-control/';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, PanelColorSettings } = wp.editor;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { compose } = wp.compose;
-const { dispatch, select } = wp.data;
-const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyles, Button, ButtonGroup, Tooltip  } = wp.components;
+const { PanelBody, RangeControl, withFallbackStyles } = wp.components;
 
 /**
  * Fallback styles
@@ -29,11 +22,7 @@ const { PanelBody, RangeControl, ToggleControl, SelectControl, withFallbackStyle
 const { getComputedStyle } = window;
 
 const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-
-	const {
-		backgroundColor,
-		textColor,
-	} = ownProps.attributes;
+	const { backgroundColor } = ownProps.attributes;
 
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 
@@ -45,25 +34,14 @@ const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
-
-
 /**
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			backgroundColor,
-			clientId,
-			customBackgroundColor,
-			fallbackBackgroundColor,
 			setAttributes,
 			setBackgroundColor,
 			setTextColor,
@@ -71,7 +49,6 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
-			layout,
 			fullscreen,
 			maxWidth,
 			paddingTop,
@@ -82,74 +59,11 @@ class Inspector extends Component {
 			paddingSyncUnits,
 			paddingSize,
 			saveCoBlocksMeta,
+			height,
+			heightTablet,
+			heightMobile,
+			syncHeight,
 		} = attributes;
-
-		let layoutAttributes = {};
-		//top
-		layoutAttributes[ 'top-left' ] = {
-			wrapper: {
-				contentAlign: 'left',
-			},
-		};
-
-		layoutAttributes[ 'top-center' ] = {
-			wrapper: {
-				contentAlign: 'center',
-			},
-		};
-
-		layoutAttributes[ 'top-right' ] = {
-			wrapper: {
-				contentAlign: 'right',
-			},
-		};
-
-		//center
-		layoutAttributes[ 'center-left' ] = {
-			wrapper: {
-				contentAlign: 'left',
-			},
-		};
-
-		layoutAttributes[ 'center-center' ] = {
-			wrapper: {
-				contentAlign: 'center',
-			},
-		};
-
-		layoutAttributes[ 'center-right' ] = {
-			wrapper: {
-				contentAlign: 'right',
-			},
-		};
-
-		//bottom
-		layoutAttributes[ 'bottom-left' ] = {
-			wrapper: {
-				contentAlign: 'left',
-			},
-		};
-
-		layoutAttributes[ 'bottom-center' ] = {
-			wrapper: {
-				contentAlign: 'center',
-			},
-		};
-
-		layoutAttributes[ 'bottom-right' ] = {
-			wrapper: {
-				contentAlign: 'right',
-			},
-		};
-
-		let getBlockContents = select( 'core/editor' ).getBlock( clientId );
-
-		const classes = classnames(
-			'components-base-control',
-			'components-coblocks-css-grid-selector', {
-				'is-fullscreen': fullscreen,
-			}
-		);
 
 		return (
 			<Fragment>
@@ -168,13 +82,31 @@ class Inspector extends Component {
 							dimensionSize={ paddingSize }
 							saveCoBlocksMeta={ saveCoBlocksMeta }
 						/>
-
 						<CSSGridControl { ...this.props } />
-
+						{ ! fullscreen && (
+							<ResponsiveBaseControl { ...this.props }
+								label={ __( 'Height in pixels' ) }
+								height={ height }
+								heightTablet={ heightTablet }
+								heightMobile={ heightMobile }
+								onChange={ ( event ) => {
+									setAttributes( { height: parseInt( event.target.value, 10 ) } );
+								} }
+								onChangeTablet={ ( event ) => {
+									setAttributes( { heightTablet: parseInt( event.target.value, 10 ) } );
+								} }
+								onChangeMobile={ ( event ) => {
+									setAttributes( { heightMobile: parseInt( event.target.value, 10 ) } );
+								} }
+								sync={ syncHeight }
+								type="height"
+								min="500"
+							/>
+						) }
 						<RangeControl
 							label={ __( 'Content width in pixels' ) }
 							value={ parseInt( maxWidth ) }
-							onChange={ ( nextMaxWidth ) => setAttributes( {  maxWidth: parseInt(nextMaxWidth) } ) }
+							onChange={ ( nextMaxWidth ) => setAttributes( { maxWidth: parseInt( nextMaxWidth ) } ) }
 							min={ 400 }
 							max={ 1000 }
 							step={ 10 }
@@ -188,17 +120,11 @@ class Inspector extends Component {
 							{
 								value: backgroundColor.color,
 								onChange: ( nextBackgroundColor ) => {
-
 									setBackgroundColor( nextBackgroundColor );
 
 									// Add padding if there's none.
-									if ( !paddingSize || paddingSize == 'no' ) {
-										setAttributes( { paddingSize: 'medium' } );
-									}
-
-									// Reset when cleared.
-									if ( ! nextBackgroundColor ) {
-										setAttributes( { paddingSize: 'no' } );
+									if ( ! paddingSize || paddingSize === 'no' ) {
+										setAttributes( { paddingSize: 'huge' } );
 									}
 								},
 								label: __( 'Background Color' ),
@@ -211,7 +137,9 @@ class Inspector extends Component {
 						] }
 					>
 					</PanelColorSettings>
-					{ BackgroundImagePanel( this.props, { overlay: true } ) }
+					<BackgroundPanel { ...this.props }
+						hasOverlay={ true }
+					/>
 				</InspectorControls>
 			</Fragment>
 		);

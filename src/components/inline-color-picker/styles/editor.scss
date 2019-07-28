@@ -1,0 +1,53 @@
+.components-coblocks-inline-color-picker {
+	bottom: 10px;
+	left: 25px;
+	opacity: 0.99;
+	position: absolute;
+	width: auto;
+	z-index: 9999;
+
+	.components-color-palette__custom-color {
+		margin: 0;
+	}
+
+	.components-color-palette__custom-clear-wrapper {
+		display: inline-block;
+		height: 28px;
+		transform: scale(1);
+		transition: transform 0.1s ease;
+		vertical-align: top;
+		width: 28px;
+	}
+
+	.components-color-palette__custom-color-gradient {
+		border-radius: 50%;
+		display: block;
+		height: 100%;
+		left: 0;
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		width: 100%;
+
+		&::before {
+			background-clip: content-box, content-box, content-box, content-box, content-box, content-box, padding-box, padding-box, padding-box,
+				padding-box, padding-box, padding-box;
+			background-image: linear-gradient(330deg, transparent 50%, #ff8100 0), linear-gradient(300deg, transparent 50%, #ff5800 0),
+				linear-gradient(270deg, transparent 50%, #c92323 0), linear-gradient(240deg, transparent 50%, #cc42a2 0),
+				linear-gradient(210deg, transparent 50%, #9f49ac 0), linear-gradient(180deg, transparent 50%, #306cd3 0),
+				linear-gradient(150deg, transparent 50%, #179067 0), linear-gradient(120deg, transparent 50%, #0eb5d6 0),
+				linear-gradient(90deg, transparent 50%, #50b517 0), linear-gradient(60deg, transparent 50%, #ede604 0),
+				linear-gradient(30deg, transparent 50%, #fc0 0), linear-gradient(0deg, transparent 50%, #feac00 0);
+			content: "";
+			display: block;
+			filter: blur(6px) saturate(0.7) brightness(1.1);
+			height: 200%;
+			left: -50%;
+			padding-top: 100%;
+			position: absolute;
+			top: -50%;
+			transform: scale(1);
+			width: 200%;
+		}
+	}
+}

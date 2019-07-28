@@ -1,22 +1,24 @@
 /**
  * Internal dependencies
  */
-import icons from './../../utils/icons';
-import { ALLOWED_BG_MEDIA_TYPES, BLOCKS_WITH_AUTOPADDING } from './';
+import icons from './icons';
+import { ALLOWED_BG_MEDIA_TYPES } from './';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { AlignmentToolbar, MediaUpload, MediaUploadCheck } = wp.editor;
-const { Toolbar, IconButton } = wp.components;
+const { MediaUpload, MediaUploadCheck } = wp.blockEditor;
+const { Toolbar, IconButton, Popover, MenuItem } = wp.components;
 
 /**
- * Background image block toolbar controls
+ * Background image block toolbar controls.
+ *
+ * @param {Object} props The passed props.
+ * @return {string} Component.
  */
-function BackgroundImageToolbarControls( props, options ) {
-
+function BackgroundControls( props ) {
 	const {
 		attributes,
 		setAttributes,
@@ -24,63 +26,85 @@ function BackgroundImageToolbarControls( props, options ) {
 
 	const {
 		backgroundImg,
+		openPopover,
 	} = attributes;
 
 	return (
 		<Fragment>
 			<MediaUploadCheck>
-				<Toolbar>
-					<MediaUpload
-						onSelect={ ( media ) => {
-							setAttributes( { backgroundImg: media.url } );
-
-							// Set padding when background image is added.
-							if ( BLOCKS_WITH_AUTOPADDING.includes( props.name ) ){
-								if ( ! attributes.paddingSize || attributes.paddingSize == 'no' ) {
-									setAttributes( { paddingSize: 'medium' } );
-								}
-							}
-						} }
-						allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
-						value={ backgroundImg }
-						render={ ( { open } ) => (
-							<IconButton
-								className="components-toolbar__control"
-								label={ backgroundImg ? ( typeof options !== 'undefined' && typeof options.editLabel !== 'undefined' ) ? options.editLabel : __( 'Edit background image' ) : ( typeof options !== 'undefined' && typeof options.addLabel !== 'undefined' ) ? options.addLabel : __( 'Add background image' ) }
-								icon={ backgroundImg ? icons.edit : icons.backgroundImage }
-								onClick={ open }
+				<Toolbar className={ backgroundImg ? 'components-dropdown-menu' : '' }>
+					{ openPopover && (
+						<Popover
+							position="bottom center"
+							className="components-coblocks__background-popover"
+						>
+							<MediaUpload
+								onSelect={ ( media ) => {
+									setAttributes( { backgroundImg: media.url, backgroundType: media.type, openPopover: ! openPopover } );
+								} }
+								allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
+								value={ backgroundImg }
+								render={ ( { open } ) => (
+									<MenuItem
+										className="components-dropdown-menu__menu-item"
+										icon="edit"
+										role="menuitem"
+										onClick={ open } >
+										{ __( 'Edit Background' ) }
+									</MenuItem>
+								) }
 							/>
-						) }
-					/>
-					{ backgroundImg &&
+							<MenuItem
+								className="components-dropdown-menu__menu-item"
+								icon="trash"
+								role="menuitem"
+								onClick={ () => {
+									setAttributes( {
+										backgroundImg: '',
+										backgroundOverlay: 0,
+										backgroundRepeat: 'no-repeat',
+										backgroundPosition: '',
+										backgroundSize: 'cover',
+										hasParallax: false,
+										openPopover: ! openPopover,
+									} );
+								} } >
+								{ __( 'Remove Background' ) }
+							</MenuItem>
+						</Popover>
+					) }
+					{ backgroundImg ?
 						<IconButton
-							className="components-toolbar__control"
-							label={ ( typeof options !== 'undefined' && typeof options.deleteLabel !== 'undefined' ) ? options.deleteLabel : __( 'Remove background image' ) }
-							icon={ icons.trash }
-							onClick={ () => {
-								setAttributes( {
-									backgroundImg: '',
-									backgroundOverlay: 0,
-									backgroundRepeat: 'no-repeat',
-									backgroundPosition: '',
-									backgroundSize: 'cover',
-									hasParallax: false,
-								} );
-
-								// Remove padding when background image is removed.
-								if ( BLOCKS_WITH_AUTOPADDING.includes( props.name ) ){
-									if( attributes.paddingSize ){
-										setAttributes( { paddingSize: 'no' } );
-									}
-								}
+							className="components-dropdown-menu__toggle"
+							icon={ icons.background }
+							aria-haspopup="true"
+							label={ __( 'Background' ) }
+							tooltip={ __( 'Background' ) }
+							onClick={ () => setAttributes( { openPopover: ! openPopover } ) }
+						>
+							<span className="components-dropdown-menu__indicator" />
+						</IconButton>					:
+						<MediaUpload
+							onSelect={ ( media ) => {
+								setAttributes( { backgroundImg: media.url, backgroundType: media.type } );
 							} }
+							allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
+							value={ backgroundImg }
+							render={ ( { open } ) => (
+								<IconButton
+									className="components-toolbar__control"
+									label={ __( 'Background' ) }
+									icon={ icons.background }
+									onClick={ open }
+								/>
+							) }
 						/>
+
 					}
 				</Toolbar>
 			</MediaUploadCheck>
 		</Fragment>
 	);
-
 }
 
-export default BackgroundImageToolbarControls;
+export default BackgroundControls;

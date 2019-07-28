@@ -6,10 +6,9 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-import { layoutOptions } from './layouts'
-import rowIcons from './icons';
+import { layoutOptions } from './layouts';
 import applyWithColors from './colors';
-import BackgroundImagePanel from '../../../components/background';
+import { BackgroundPanel } from '../../../components/background';
 import DimensionsControl from '../../../components/dimensions-control/';
 
 /**
@@ -18,8 +17,8 @@ import DimensionsControl from '../../../components/dimensions-control/';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.editor;
-const { PanelBody, RangeControl, SelectControl, ToggleControl, ButtonGroup, Button, Tooltip, Placeholder, withFallbackStyles } = wp.components;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
+const { PanelBody, SelectControl, ButtonGroup, Button, Tooltip, withFallbackStyles } = wp.components;
 
 /**
  * Fallback styles
@@ -27,11 +26,7 @@ const { PanelBody, RangeControl, SelectControl, ToggleControl, ButtonGroup, Butt
 const { getComputedStyle } = window;
 
 const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-
-	const {
-		backgroundColor,
-		textColor,
-	} = ownProps.attributes;
+	const { backgroundColor } = ownProps.attributes;
 
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
 
@@ -47,19 +42,11 @@ const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			backgroundColor,
 			clientId,
-			customBackgroundColor,
-			fallbackBackgroundColor,
 			setAttributes,
 			setBackgroundColor,
 			setTextColor,
@@ -70,7 +57,6 @@ class Inspector extends Component {
 			columns,
 			gutter,
 			layout,
-			stacked,
 			marginBottom,
 			marginLeft,
 			marginRight,
@@ -106,7 +92,6 @@ class Inspector extends Component {
 			paddingSyncUnitsMobile,
 			paddingUnit,
 			hasMarginControl,
-			hasStackedControl,
 		} = attributes;
 
 		const gutterOptions = [
@@ -120,43 +105,78 @@ class Inspector extends Component {
 		let selectedRows = 1;
 
 		if ( columns ) {
-			selectedRows = parseInt( columns.toString().split('-') );
+			selectedRows = parseInt( columns.toString().split( '-' ) );
 		}
 
 		return (
 			<Fragment>
 				<InspectorControls>
 					{ ( columns && selectedRows >= 1 ) &&
+					<Fragment>
+						{ selectedRows > 1 &&
+						<PanelBody title={ __( 'Layout' ) } initialOpen={ false }>
+							<div className="components-coblocks-visual-dropdown">
+								<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
+									{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
+										<Tooltip text={ name }>
+											<div className={ ( key === layout ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
+												<Button
+													className={ ( key === layout ) ? 'components-coblocks-visual-dropdown__button components-coblocks-visual-dropdown__button--selected' : 'components-coblocks-visual-dropdown__button' }
+													isSmall
+													onClick={ () => {
+														const selectedWidth = key.toString().split( '-' );
+														const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
+														setAttributes( {
+															layout: key,
+														} );
+
+														if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
+															map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
+																wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
+															) );
+														}
+													} }
+												>
+													{ icon }
+												</Button>
+											</div>
+										</Tooltip>
+									) ) }
+								</ButtonGroup>
+							</div>
+						</PanelBody>
+						}
+						{ layout &&
 						<Fragment>
 							{ selectedRows > 1 &&
-								<PanelBody title={ __( 'Layout' ) } initialOpen={ false }>
+								<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
 									<div className="components-coblocks-visual-dropdown">
 										<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
-										{ map( layoutOptions[ selectedRows ], ( { name, key, icon, cols } ) => (
-											<Tooltip text={ name }>
-												<div className={ ( key == layout ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
-													<Button
-														className={ ( key == layout ) ? 'components-coblocks-visual-dropdown__button components-coblocks-visual-dropdown__button--selected' : 'components-coblocks-visual-dropdown__button' }
-														isSmall
-														onClick={ () => {
-															let selectedWidth = key.toString().split('-');
-															let children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
-															setAttributes( {
-																layout: key,
-															} );
+											{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
+												<Tooltip text={ name }>
+													<div className={ ( key === layout ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
+														<Button
+															className={ ( key === layout ) ? 'components-coblocks-visual-dropdown__button components-coblocks-visual-dropdown__button--selected' : 'components-coblocks-visual-dropdown__button' }
+															isSmall
+															onClick={ () => {
+																const selectedWidth = key.toString().split( '-' );
+																const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
+																setAttributes( {
+																	layout: key,
+																} );
 
-															if ( typeof children[0].innerBlocks !== 'undefined' ) {
-																map( children[0].innerBlocks, ( { clientId }, index ) => (
-																	wp.data.dispatch( 'core/editor' ).updateBlockAttributes( clientId, { width : selectedWidth[ index ] } )
-																) );
-															}
-														} }
-													>
-														{ icon }
-													</Button>
-												</div>
-											</Tooltip>
-										) ) }
+																if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
+																	map( children[ 0 ].innerBlocks, ( { childrenClientId }, index ) => (
+																		wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( childrenClientId, { width: selectedWidth[ index ] } )
+																	) );
+																}
+															} }
+														>
+															{ icon }
+														</Button>
+													</div>
+												</Tooltip>
+											) ) }
 										</ButtonGroup>
 									</div>
 								</PanelBody>
@@ -164,61 +184,61 @@ class Inspector extends Component {
 							{ layout &&
 								<Fragment>
 									<PanelBody title={ __( 'Row Settings' ) }>
-											{ hasMarginControl &&
-												<DimensionsControl { ...this.props }
-													type={ 'margin' }
-													label={ __( 'Margin' ) }
-													help={ __( 'Space around the container.' ) }
-													valueTop={ marginTop }
-													valueRight={ marginRight }
-													valueBottom={ marginBottom }
-													valueLeft={ marginLeft }
-													valueTopTablet={ marginTopTablet }
-													valueRightTablet={ marginRightTablet }
-													valueBottomTablet={ marginBottomTablet }
-													valueLeftTablet={ marginLeftTablet }
-													valueTopMobile={ marginTopMobile }
-													valueRightMobile={ marginRightMobile }
-													valueBottomMobile={ marginBottomMobile }
-													valueLeftMobile={ marginLeftMobile }
-													unit={ marginUnit }
-													syncUnits={ marginSyncUnits }
-													syncUnitsTablet={ marginSyncUnitsTablet }
-													syncUnitsMobile={ marginSyncUnitsMobile }
-													dimensionSize={ marginSize }
-												/>
-											}
+										{ hasMarginControl &&
 											<DimensionsControl { ...this.props }
-												type={ 'padding' }
-												label={ __( 'Padding' ) }
-												help={ __( 'Space inside of the container.' ) }
-												valueTop={ paddingTop }
-												valueRight={ paddingRight }
-												valueBottom={ paddingBottom }
-												valueLeft={ paddingLeft }
-												valueTopTablet={ paddingTopTablet }
-												valueRightTablet={ paddingRightTablet }
-												valueBottomTablet={ paddingBottomTablet }
-												valueLeftTablet={ paddingLeftTablet }
-												valueTopMobile={ paddingTopMobile }
-												valueRightMobile={ paddingRightMobile }
-												valueBottomMobile={ paddingBottomMobile }
-												valueLeftMobile={ paddingLeftMobile }
-												unit={ paddingUnit }
-												syncUnits={ paddingSyncUnits }
-												syncUnitsTablet={ paddingSyncUnitsTablet }
-												syncUnitsMobile={ paddingSyncUnitsMobile }
-												dimensionSize={ paddingSize }
+												type={ 'margin' }
+												label={ __( 'Margin' ) }
+												help={ __( 'Space around the container.' ) }
+												valueTop={ marginTop }
+												valueRight={ marginRight }
+												valueBottom={ marginBottom }
+												valueLeft={ marginLeft }
+												valueTopTablet={ marginTopTablet }
+												valueRightTablet={ marginRightTablet }
+												valueBottomTablet={ marginBottomTablet }
+												valueLeftTablet={ marginLeftTablet }
+												valueTopMobile={ marginTopMobile }
+												valueRightMobile={ marginRightMobile }
+												valueBottomMobile={ marginBottomMobile }
+												valueLeftMobile={ marginLeftMobile }
+												unit={ marginUnit }
+												syncUnits={ marginSyncUnits }
+												syncUnitsTablet={ marginSyncUnitsTablet }
+												syncUnitsMobile={ marginSyncUnitsMobile }
+												dimensionSize={ marginSize }
 											/>
-											{ selectedRows >= 2 &&
-												<SelectControl
-													label={ __( 'Gutter' ) }
-													value={ gutter }
-													options={ gutterOptions }
-													help={ __( 'Space between each column.' ) }
-													onChange={ ( value ) => setAttributes( { gutter: value } ) }
-												/>
-											}
+										}
+										<DimensionsControl { ...this.props }
+											type={ 'padding' }
+											label={ __( 'Padding' ) }
+											help={ __( 'Space inside of the container.' ) }
+											valueTop={ paddingTop }
+											valueRight={ paddingRight }
+											valueBottom={ paddingBottom }
+											valueLeft={ paddingLeft }
+											valueTopTablet={ paddingTopTablet }
+											valueRightTablet={ paddingRightTablet }
+											valueBottomTablet={ paddingBottomTablet }
+											valueLeftTablet={ paddingLeftTablet }
+											valueTopMobile={ paddingTopMobile }
+											valueRightMobile={ paddingRightMobile }
+											valueBottomMobile={ paddingBottomMobile }
+											valueLeftMobile={ paddingLeftMobile }
+											unit={ paddingUnit }
+											syncUnits={ paddingSyncUnits }
+											syncUnitsTablet={ paddingSyncUnitsTablet }
+											syncUnitsMobile={ paddingSyncUnitsMobile }
+											dimensionSize={ paddingSize }
+										/>
+										{ selectedRows >= 2 &&
+											<SelectControl
+												label={ __( 'Gutter' ) }
+												value={ gutter }
+												options={ gutterOptions }
+												help={ __( 'Space between each column.' ) }
+												onChange={ ( value ) => setAttributes( { gutter: value } ) }
+											/>
+										}
 									</PanelBody>
 									<PanelColorSettings
 										title={ __( 'Color Settings' ) }
@@ -227,16 +247,13 @@ class Inspector extends Component {
 											{
 												value: backgroundColor.color,
 												onChange: ( nextBackgroundColor ) => {
-
 													setBackgroundColor( nextBackgroundColor );
 
-													//add padding if there's none
-													if( !paddingSize || paddingSize == 'no' ){
-														setAttributes({ paddingSize: 'medium' });
+													if ( ! paddingSize || paddingSize === 'no' ) {
+														setAttributes( { paddingSize: 'medium' } );
 													}
 
-													//reset when cleared
-													if( !nextBackgroundColor ){
+													if ( ! nextBackgroundColor ) {
 														setAttributes( { paddingSize: 'no' } );
 													}
 												},
@@ -250,10 +267,14 @@ class Inspector extends Component {
 										] }
 									>
 									</PanelColorSettings>
-									{ BackgroundImagePanel( this.props, { overlay: true } ) }
+									<BackgroundPanel { ...this.props }
+										hasOverlay={ true }
+									/>
 								</Fragment>
 							}
 						</Fragment>
+						}
+					</Fragment>
 					}
 				</InspectorControls>
 			</Fragment>

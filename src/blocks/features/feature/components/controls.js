@@ -1,23 +1,16 @@
 /**
  * Internal dependencies
  */
-import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../../components/background';
+import { BackgroundControls } from '../../../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls } = wp.editor;
+const { AlignmentToolbar, BlockControls } = wp.blockEditor;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -34,11 +27,11 @@ class Controls extends Component {
 						value={ contentAlign }
 						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
 					/>
-					{ BackgroundImageToolbarControls( this.props ) }
+					{ BackgroundControls( this.props ) }
 				</BlockControls>
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Controls;

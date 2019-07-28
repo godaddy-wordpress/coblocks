@@ -1,7 +1,5 @@
+// Common
 @import "../common";
-
-// Style icons
-@import "editor/icons";
 
 // Style various inspector region and block toolbar controls
 @import "editor/is-transient";
@@ -20,7 +18,7 @@
 		margin-right: 0.7em;
 
 		svg {
-			fill: #23282d; // Same color as modal headings.
+			fill: $dark-gray-800; // Same color as modal headings.
 			position: relative;
 			top: 0.16em;
 		}
@@ -50,5 +48,27 @@
 	> .components-base-control:first-of-type {
 		margin-bottom: 1.3em !important;
 		margin-top: 0.7em !important;
+	}
+}
+
+.components-coblocks-icon-dropdown__popover {
+	.components-popover__content {
+		min-width: 80px !important;
+		text-align: center;
+		width: 80px;
+	}
+}
+
+.components-coblocks-icon-menu-dropdown {
+	padding: 3px;
+}
+
+.components-coblocks-block-settings-sidebar {
+	.components-external-link {
+		color: theme(outlines);
+
+		&:hover {
+			color: color(theme(outlines) shade(25%));
+		}
 	}
 }

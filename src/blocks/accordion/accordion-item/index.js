@@ -15,7 +15,7 @@ import icons from './../../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { RichText, InnerBlocks, getColorClassName } = wp.editor;
+const { RichText, InnerBlocks, getColorClassName } = wp.blockEditor;
 
 /**
  * Block constants
@@ -79,7 +79,6 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes } ) {
-
 		const {
 			backgroundColor,
 			customBackgroundColor,
@@ -93,18 +92,13 @@ const settings = {
 		const backgroundColorClass = getColorClassName( 'background-color', backgroundColor );
 		const textColorClass = getColorClassName( 'color', textColor );
 
-		const backgroundClasses = classnames(
-			'wp-block-coblocks-accordion-item',
-			open ? 'wp-block-coblocks-accordion-item--open' : null, {}
-		);
-
 		const titleClasses = classnames(
 			'wp-block-coblocks-accordion-item__title', {
-			'has-background': backgroundColor || customBackgroundColor,
-			[ backgroundColorClass ]: backgroundColorClass,
-			'has-text-color': textColor || customTextColor,
-			[ textColorClass ]: textColorClass,
-		} );
+				'has-background': backgroundColor || customBackgroundColor,
+				[ backgroundColorClass ]: backgroundColorClass,
+				'has-text-color': textColor || customTextColor,
+				[ textColorClass ]: textColorClass,
+			} );
 
 		const titleStyles = {
 			backgroundColor: backgroundColorClass ? undefined : customBackgroundColor,
@@ -113,7 +107,7 @@ const settings = {
 
 		const borderStyle = {
 			borderColor: borderColor ? borderColor : customBackgroundColor,
-		}
+		};
 
 		return (
 			<div>

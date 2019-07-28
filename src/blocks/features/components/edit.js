@@ -8,7 +8,7 @@ import times from 'lodash/times';
 /**
  * Internal dependencies
  */
-import BackgroundImagePanel, { BackgroundClasses, BackgroundImageDropZone } from '../../../components/background';
+import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../../components/background';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 import Controls from './controls';
@@ -19,7 +19,7 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 const { isBlobURL } = wp.blob;
 const { Spinner } = wp.components;
 
@@ -43,20 +43,13 @@ const getCount = memoize( ( count ) => {
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
-			backgroundColor,
 			textColor,
 			className,
 			isSelected,
-			setAttributes,
+			backgroundColor,
 		} = this.props;
 
 		const {
@@ -77,39 +70,35 @@ class Edit extends Component {
 			marginUnit,
 			marginSize,
 			paddingSize,
-			focalPoint,
-			hasParallax,
 		} = attributes;
 
 		const dropZone = (
-			<BackgroundImageDropZone
+			<BackgroundDropZone
 				{ ...this.props }
-				label={ __( 'Add backround image' ) }
+				label={ __( 'Add as backround' ) }
 			/>
 		);
 
 		const classes = classnames(
 			className, {
-				[ `coblocks-features-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+				[ `coblocks-features-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
 			}
 		);
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-features__inner',
 			...BackgroundClasses( attributes ), {
-				[ `has-${ gutter }-gutter` ] : gutter,
-				'has-padding': paddingSize && paddingSize != 'no',
-				[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
-				'has-margin': marginSize && marginSize != 'no',
-				[ `has-${ marginSize }-margin` ] : marginSize && marginSize != 'advanced',
+				[ `has-${ gutter }-gutter` ]: gutter,
+				'has-padding': paddingSize && paddingSize !== 'no',
+				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+				'has-margin': marginSize && marginSize !== 'no',
+				[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
 				[ `has-${ contentAlign }-content` ]: contentAlign,
 			}
 		);
 
 		const innerStyles = {
-			backgroundColor: backgroundColor.color,
-			backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+			...BackgroundStyles( attributes, backgroundColor ),
 			color: textColor.color,
 			textAlign: contentAlign,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
@@ -122,7 +111,7 @@ class Edit extends Component {
 			marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 		};
 
-		return [
+		return (
 			<Fragment>
 				{ dropZone }
 				{ isSelected && (
@@ -140,15 +129,17 @@ class Edit extends Component {
 				>
 					<div className={ innerClasses } style={ innerStyles }>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
+						{ BackgroundVideo( attributes ) }
 						<InnerBlocks
 							template={ getCount( columns ) }
 							allowedBlocks={ ALLOWED_BLOCKS }
 							templateLock="all"
-							templateInsertUpdatesSelection={ false } />
+							templateInsertUpdatesSelection={ false }
+							renderAppender={ () => ( null ) } />
 					</div>
 				</div>
 			</Fragment>
-		];
+		);
 	}
 }
 

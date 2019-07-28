@@ -1,0 +1,260 @@
+/**
+ * Long content fade mixin
+ *
+ * Creates a fading overlay to signify that the content is longer
+ * than the space allows.
+ */
+/**
+ * Button states and focus styles
+ */
+/**
+ * Applies editor left position to the selector passed as argument
+ */
+/**
+ * Applies editor right position to the selector passed as argument
+ */
+/**
+ * Styles that are reused verbatim in a few places
+ */
+.toplevel_page_coblocks-getting-started {
+  background: #f3f4f5; }
+  .toplevel_page_coblocks-getting-started #wpcontent {
+    padding-left: 0; }
+  .toplevel_page_coblocks-getting-started #wpbody-content {
+    padding-bottom: 0; }
+    @media (min-width: 560px) {
+      .toplevel_page_coblocks-getting-started #wpbody-content {
+        margin: 0; } }
+
+.page--coblocks-getting-started {
+  background: #fff;
+  border: 1px solid #e2e4e7;
+  border-radius: 3px;
+  box-shadow: 0 2px 30px rgba(25, 30, 35, 0.05);
+  color: #000;
+  margin: 20px auto 80px;
+  max-width: 600px;
+  text-align: left;
+  width: calc(100% - 20px); }
+  @media screen and (max-width: 782px) {
+    .page--coblocks-getting-started {
+      margin-top: 10px; } }
+  .page--coblocks-getting-started .logo {
+    margin-bottom: 30px; }
+    @media screen and (max-width: 600px) {
+      .page--coblocks-getting-started .logo {
+        margin-bottom: 20px; } }
+    .page--coblocks-getting-started .logo svg {
+      height: 30px;
+      width: 155px; }
+  .page--coblocks-getting-started .getting-started__content {
+    padding: 40px; }
+    @media screen and (max-width: 600px) {
+      .page--coblocks-getting-started .getting-started__content {
+        padding: 30px; } }
+  .page--coblocks-getting-started h1 {
+    color: #23282d;
+    font-size: 1.7em;
+    font-weight: 700;
+    line-height: 1.48;
+    margin-bottom: 28px;
+    margin-top: 0; }
+    @media screen and (max-width: 600px) {
+      .page--coblocks-getting-started h1 {
+        margin-bottom: 20px; } }
+  .page--coblocks-getting-started p {
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 20px; }
+    .page--coblocks-getting-started p:last-of-type {
+      margin-bottom: 0; }
+  .page--coblocks-getting-started .videos {
+    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 24px -4px; }
+    .page--coblocks-getting-started .videos a {
+      cursor: pointer;
+      display: block;
+      padding: 4px; }
+      .page--coblocks-getting-started .videos a:first-child {
+        width: 100%; }
+      .page--coblocks-getting-started .videos a:not(:first-child) {
+        flex: 1; }
+      .page--coblocks-getting-started .videos a:focus {
+        box-shadow: none;
+        outline: 1px solid #fff;
+        outline-offset: -4px; }
+    .page--coblocks-getting-started .videos img {
+      max-width: 100%;
+      vertical-align: middle; }
+
+.lity {
+  background: #0b0b0b;
+  background: rgba(0, 0, 0, 0.9);
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  outline: none !important;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  z-index: 9990; }
+
+.lity.lity-opened {
+  opacity: 1; }
+
+.lity.lity-closed {
+  opacity: 0; }
+
+.lity * {
+  box-sizing: border-box; }
+
+.lity-wrap {
+  bottom: 0;
+  left: 0;
+  outline: none !important;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  z-index: 9990; }
+  .lity-wrap::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    margin-right: -0.25em;
+    vertical-align: middle; }
+
+.lity-loader {
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin-top: -0.8em;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transition: opacity 0.3s ease;
+  width: 100%;
+  z-index: 9991; }
+  .lity-loading .lity-loader {
+    opacity: 1; }
+
+.lity-container {
+  display: inline-block;
+  max-height: 100%;
+  max-width: 100%;
+  outline: none !important;
+  position: relative;
+  text-align: left;
+  vertical-align: middle;
+  white-space: normal;
+  z-index: 9992; }
+
+.lity-content {
+  transform: scale(1);
+  transition: transform 0.3s ease;
+  width: 100%;
+  z-index: 9993; }
+
+.lity-loading .lity-content,
+.lity-closed .lity-content {
+  transform: scale(0.8); }
+
+.lity-content::after {
+  bottom: 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  content: "";
+  display: block;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+  z-index: -1; }
+
+.lity-close {
+  appearance: none;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: Arial, Baskerville, monospace;
+  font-size: 35px;
+  font-style: normal;
+  height: 35px;
+  line-height: 35px;
+  outline: none;
+  padding: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  top: 0;
+  width: 35px;
+  z-index: 9994; }
+  .lity-close::-moz-focus-inner {
+    border: 0;
+    padding: 0; }
+  .lity-close:hover, .lity-close:focus, .lity-close:active, .lity-close:visited {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    color: #fff;
+    font-family: Arial, Baskerville, monospace;
+    font-size: 35px;
+    font-style: normal;
+    line-height: 35px;
+    outline: none;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }
+
+.lity-close:active {
+  top: 1px; }
+
+.lity-image img {
+  border: 0;
+  display: block;
+  line-height: 0;
+  max-width: 100%; }
+
+.lity-iframe .lity-container,
+.lity-youtube .lity-container,
+.lity-vimeo .lity-container,
+.lity-facebookvideo .lity-container,
+.lity-googlemaps .lity-container {
+  max-width: 964px;
+  width: 100%; }
+
+.lity-iframe-container {
+  height: 0;
+  overflow: auto;
+  padding-top: 56.25%;
+  pointer-events: auto;
+  transform: translateZ(0);
+  width: 100%;
+  -webkit-overflow-scrolling: touch; }
+
+.lity-iframe-container iframe {
+  background: #000;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%; }
+
+.lity-hide {
+  display: none; }

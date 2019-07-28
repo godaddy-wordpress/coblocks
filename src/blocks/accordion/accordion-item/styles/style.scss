@@ -23,11 +23,11 @@
 		}
 
 		&:hover::after {
-			background: rgba(#000, 0.0275);
+			background: rgba($black, 0.0275);
 		}
 
 		&:focus {
-			outline: 1px dotted #aaa;
+			outline: 1px dotted $light-gray-900;
 			outline-offset: -4px;
 		}
 

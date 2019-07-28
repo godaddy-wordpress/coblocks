@@ -1,0 +1,17 @@
+.has-background-video {
+	position: relative;
+
+	&.has-background-overlay {
+		&::before {
+			z-index: 1;
+		}
+
+		> :not(.coblocks-video-bg) {
+			z-index: 10;
+		}
+	}
+
+	> :not(.coblocks-video-bg) {
+		position: relative;
+	}
+}

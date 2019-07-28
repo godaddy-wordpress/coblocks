@@ -1,5 +1,24 @@
+:-ms-fullscreen,
+:root .components-coblocks-css-grid-selector {
+	.components-button-group {
+		display: flex;
+		flex-wrap: wrap;
+
+		.components-button {
+			display: table-cell;
+			padding: 18px;
+			width: 50%;
+		}
+	}
+}
+
 .wp-block[data-type="coblocks/hero"] {
 	background: transparent !important;
+
+	&[data-align="full"],
+	&[data-align="wide"] {
+		z-index: 0;
+	}
 
 	.wp-block-coblocks-hero {
 		width: 100%;
@@ -28,7 +47,7 @@
 
 				&::before,
 				&::after {
-					background: #0085ba;
+					background: theme(primary);
 					content: "";
 					display: block;
 					height: 100%;
@@ -99,11 +118,28 @@
 					}
 				}
 			}
+
+			&.is-hero-resizing {
+				.wp-block-coblocks-hero__box {
+					&.is-resizing {
+						&::after {
+							opacity: 0;
+						}
+					}
+				}
+			}
+
+			&.has-background-video {
+				> span {
+					position: static;
+				}
+			}
 		}
 	}
 
 	// Show resize handle when the block is selected.
 	&.is-selected {
+		.wp-block-coblocks-hero__inner,
 		.wp-block-coblocks-hero__box {
 			> span {
 				.components-resizable-box__handle {
@@ -123,17 +159,17 @@
 		margin-bottom: 2em;
 
 		div {
-			background: #fff;
+			background: $white;
 			padding: 1px;
 		}
 
 		.components-button {
-			background: #edeff0;
-			padding: 20px;
+			background: $light-gray-300;
 			border: 0;
 			border-radius: 0 !important;
 			box-shadow: none;
 			height: 100%;
+			padding: 20px;
 			width: 100%;
 
 			svg {
@@ -141,18 +177,18 @@
 			}
 
 			&:hover {
-				background: #e3e4e7;
-				box-shadow: inset 0 0 0 1px #555d66, inset 0 0 0 2px #fff;
+				background: $light-gray-500;
+				box-shadow: inset 0 0 0 1px $dark-gray-500, inset 0 0 0 2px $white;
 			}
 
 			&:active:enabled {
-				background: #e3e4e7;
-				box-shadow: inset 0 0 0 1px #555d66, inset 0 0 0 2px #fff;
+				background: $light-gray-500;
+				box-shadow: inset 0 0 0 1px $dark-gray-500, inset 0 0 0 2px $white;
 			}
 
 			&:focus:enabled {
-				background: #e3e4e7;
-				box-shadow: inset 0 0 0 1px #555d66, inset 0 0 0 2px #fff;
+				background: $light-gray-500;
+				box-shadow: inset 0 0 0 1px $dark-gray-500, inset 0 0 0 2px $white;
 			}
 		}
 
@@ -161,10 +197,10 @@
 		}
 
 		.is-selected .components-button {
-			background: #555d66;
+			background: $dark-gray-500;
 
 			&:focus:enabled {
-				background: #555d66;
+				background: $dark-gray-500;
 			}
 		}
 

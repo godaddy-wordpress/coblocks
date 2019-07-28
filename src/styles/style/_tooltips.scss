@@ -1,0 +1,104 @@
+// ! Hint.css - v2.5.0 - 2017-04-23
+//	http://kushagragour.in/lab/hint/
+//	Copyright (c) 2017 Kushagra Gour
+[class*="hint--"] {
+	display: inline-block;
+	position: relative;
+}
+
+[class*="hint--"]::before,
+[class*="hint--"]::after {
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	transform: translate3d(0, 0, 0);
+	visibility: hidden;
+	z-index: 1000000;
+}
+
+[class*="hint--"]::before {
+	background: transparent;
+	border: 6px solid transparent;
+	content: "";
+	position: absolute;
+	z-index: 1000001;
+}
+
+[class*="hint--"]::after {
+	background: #333;
+	border-radius: 2px;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+	color: $white;
+	font-size: 12px;
+	line-height: 11px;
+	padding: 6px 8px 7px 9px;
+	white-space: nowrap;
+	font-family: $default-font;
+}
+
+[class*="hint--"]:hover::before,
+[class*="hint--"]:hover::after {
+	visibility: visible;
+	opacity: 1;
+}
+
+[class*="hint--"][aria-label]::after {
+	content: attr(aria-label);
+}
+
+[class*="hint--"][data-hint]::after {
+	content: attr(data-hint);
+}
+
+[aria-label=""]::before,
+[aria-label=""]::after,
+[data-hint=""]::before,
+[data-hint=""]::after {
+	display: none !important;
+}
+
+// Top tooltip.
+.hint--top::before {
+	border-top-color: #333;
+	left: calc(50% - 6px) !important;
+	margin-bottom: -10px;
+}
+
+.hint--top::before,
+.hint--top::after {
+	bottom: 103%;
+	left: 50%;
+}
+
+.hint--top::after {
+	transform: translateX(-50%);
+}
+
+.hint--top:hover::after {
+	transform: translateX(-50%);
+}
+
+// Bottom tooltip.
+.hint--bottom::before {
+	border-bottom-color: #333;
+	left: calc(50% - 10px);
+	margin-top: -11px;
+}
+
+.hint--bottom::before,
+.hint--bottom::after {
+	left: 50%;
+	top: 100%;
+}
+
+.hint--bottom::after {
+	transform: translateX(-50%);
+}
+
+.hint--bottom:hover::before {
+	transform: translateY(8px);
+}
+
+.hint--bottom:hover::after {
+	transform: translateX(-50%) translateY(8px);
+}

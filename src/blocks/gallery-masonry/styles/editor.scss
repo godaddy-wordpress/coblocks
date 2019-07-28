@@ -1,0 +1,91 @@
+.editor-block-list__block[data-type="coblocks/gallery-masonry"] {
+	// Fixes issue where figures are set to display 100% if alignfull is set.
+	.coblocks-gallery--figure {
+		width: auto !important;
+
+		img {
+			vertical-align: bottom;
+		}
+	}
+
+	// Fixes issue where the outline does not fully render due to the outside nature of the core outline style applied.
+	.is-appender,
+	.components-coblocks-gallery-uploader {
+		border: 1px dashed $dark-gray-150;
+		outline: none;
+
+		&:hover {
+			border-color: $dark-gray-500;
+		}
+	}
+
+	// Fixes issue with multiple dropzones displaying when dropping in an image.
+	.components-drop-zone.is-active {
+		+ ul li:last-child .components-drop-zone {
+			display: none;
+		}
+	}
+
+	// Captions.
+	.editor-rich-text {
+		bottom: 0;
+		left: 0;
+		max-height: 100%;
+		overflow-y: auto;
+		position: absolute;
+		right: 0;
+		width: 100%;
+
+		.editor-rich-text__tinymce {
+			color: inherit;
+
+			a {
+				color: inherit;
+			}
+
+			&:not(.mce-content-body) {
+				opacity: 0.6;
+			}
+
+			&:focus a[data-mce-selected] {
+				opacity: 0.2;
+			}
+		}
+	}
+
+	.editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
+		overflow: hidden;
+		position: relative !important;
+	}
+
+	.is-selected .editor-rich-text {
+		// IE calculates this incorrectly, so leave it to modern browsers.
+		@supports (position: sticky) {
+			bottom: 4px;
+			left: 4px;
+			margin-top: -4px;
+			right: 4px;
+			width: calc(100% - 8px);
+		}
+
+		figcaption {
+			padding-bottom: 6px !important;
+		}
+
+		// Override negative margins so this toolbar isn't hidden by overflow.
+		// Overflow is needed for long captions.
+		.editor-rich-text__inline-toolbar {
+			top: 0;
+		}
+
+		// Make extra space for the inline toolbar.
+		.editor-rich-text__tinymce {
+			padding-top: 48px;
+		}
+	}
+
+	// Tweak the position of the figcaption if Custom URL is set.
+	.components-coblocks-gallery-item__image-link + img + .editor-rich-text {
+		margin-bottom: 34px;
+	}
+}

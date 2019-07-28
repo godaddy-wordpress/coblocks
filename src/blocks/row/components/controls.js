@@ -6,9 +6,9 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-import { layoutOptions } from './layouts'
+import { layoutOptions } from './layouts';
 import rowIcons from './icons';
-import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../components/background';
+import { BackgroundControls } from '../../../components/background';
 import VisualDropdown from '../../../components/visual-dropdown/';
 
 /**
@@ -16,19 +16,13 @@ import VisualDropdown from '../../../components/visual-dropdown/';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { BlockControls } = wp.editor;
-const { Toolbar, DropdownMenu } = wp.components;
+const { BlockControls } = wp.blockEditor;
+const { Toolbar } = wp.components;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	// Switches the icon based on the layout selected,
 	// Fallback is the default layout icon.
 	layoutIcon() {
-
 		const {
 			columns,
 			layout,
@@ -37,20 +31,19 @@ class Controls extends Component {
 		let selectedRows = 1;
 
 		if ( columns ) {
-			selectedRows = parseInt( columns.toString().split('-') );
+			selectedRows = parseInt( columns.toString().split( '-' ) );
 		}
 
-		if ( layout == undefined ) {
-			return rowIcons.layout
+		if ( layout === undefined ) {
+			return rowIcons.layout;
 		}
 
 		return map( layoutOptions[ selectedRows ], ( { key, smallIcon } ) => (
-			( key == layout ) ? smallIcon : ''
-		) )
+			( key === layout ) ? smallIcon : ''
+		) );
 	}
 
 	render() {
-
 		const {
 			clientId,
 			attributes,
@@ -65,7 +58,7 @@ class Controls extends Component {
 		let selectedRows = 1;
 
 		if ( columns ) {
-			selectedRows = parseInt( columns.toString().split('-') );
+			selectedRows = parseInt( columns.toString().split( '-' ) );
 		}
 
 		return (
@@ -77,30 +70,30 @@ class Controls extends Component {
 								icon={ this.layoutIcon() }
 								label={ __( 'Change layout' ) }
 								controls={ [
-									map( layoutOptions[ selectedRows ], ( { name, key, icon, cols } ) => ({
+									map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => ( {
 										icon: icon,
 										title: name,
 										key: key,
 										value: layout,
 										onClick: () => {
-											let selectedWidth = key.toString().split('-');
-											let children = wp.data.select( 'core/editor' ).getBlocksByClientId( clientId );
+											const selectedWidth = key.toString().split( '-' );
+											const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
 											setAttributes( {
 												layout: key,
 											} );
-											if ( typeof children[0].innerBlocks !== 'undefined' ) {
-												map( children[0].innerBlocks, ( { clientId }, index ) => (
-													wp.data.dispatch( 'core/editor' ).updateBlockAttributes( clientId, { width : selectedWidth[ index ] } )
+											if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
+												map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
+													wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
 												) );
 											}
-										}
-									}) )
+										},
+									} ) ),
 								] }
 							/>
 						</Toolbar>
 					}
 					{ layout &&
-						BackgroundImageToolbarControls( this.props )
+						BackgroundControls( this.props )
 					}
 				</BlockControls>
 			</Fragment>

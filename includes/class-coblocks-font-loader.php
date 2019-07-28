@@ -2,10 +2,7 @@
 /**
  * Load google fonts.
  *
- * @package   CoBlocks
- * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
- * @link      https://coblocks.com
- * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
@@ -48,7 +45,7 @@ class CoBlocks_Font_Loader {
 	/**
 	 * The Constructor.
 	 */
-	private function __construct() {
+	public function __construct() {
 		$this->_version = COBLOCKS_VERSION;
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'fonts_loader' ) );

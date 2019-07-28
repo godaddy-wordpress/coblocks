@@ -2,18 +2,17 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import BackgroundImagePanel from '../../../../components/background';
+import { BackgroundPanel } from '../../../../components/background';
 import DimensionsControl from '../../../../components/dimensions-control/';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { withSelect } = wp.data;
-const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.editor;
-const { PanelBody, RangeControl, ToggleControl, Toolbar, SelectControl, withFallbackStyles } = wp.components;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
+const { PanelBody, withFallbackStyles } = wp.components;
 
 /**
  * Fallback styles
@@ -33,18 +32,10 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			backgroundColor,
-			fallbackBackgroundColor,
-			fallbackTextColor,
 			setAttributes,
 			setBackgroundColor,
 			textColor,
@@ -52,7 +43,6 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
-			width,
 			paddingBottom,
 			paddingLeft,
 			paddingRight,
@@ -75,7 +65,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Feature Settings' ) } className='components-coblocks-block-sidebar--features'>
+					<PanelBody title={ __( 'Feature Settings' ) } className="components-coblocks-block-sidebar--features">
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
 							label={ __( 'Padding' ) }
@@ -108,7 +98,7 @@ class Inspector extends Component {
 									setBackgroundColor( nextBackground );
 
 									//add padding if there's none
-									if ( ! paddingSize || paddingSize == 'no' ) {
+									if ( ! paddingSize || paddingSize === 'no' ) {
 										setAttributes( { paddingSize: 'medium' } );
 									}
 
@@ -118,7 +108,7 @@ class Inspector extends Component {
 									}
 								},
 								label: __( 'Background Color' ),
-							},{
+							}, {
 								value: textColor.color,
 								onChange: setTextColor,
 								label: __( 'Text Color' ),
@@ -126,7 +116,9 @@ class Inspector extends Component {
 						] }
 					>
 					</PanelColorSettings>
-					{ BackgroundImagePanel( this.props, { overlay: true } ) }
+					<BackgroundPanel { ...this.props }
+						hasOverlay={ true }
+					/>
 				</InspectorControls>
 			</Fragment>
 		);

@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import BackgroundImagePanel, { BackgroundImageToolbarControls } from '../../../components/background';
+import { BackgroundControls } from '../../../components/background';
 import icons from './icons';
 
 /**
@@ -9,17 +9,11 @@ import icons from './icons';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { BlockControls } = wp.editor;
+const { BlockControls } = wp.blockEditor;
 const { Toolbar } = wp.components;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -39,7 +33,7 @@ class Controls extends Component {
 			title: __( 'Media on left' ),
 			isActive: mediaPosition === 'left',
 			onClick: () => setAttributes( { mediaPosition: 'left' } ),
-		}, ];
+		} ];
 
 		return (
 			<Fragment>
@@ -47,7 +41,7 @@ class Controls extends Component {
 					<Toolbar
 						controls={ toolbarControls }
 					/>
-					{ BackgroundImageToolbarControls( this.props ) }
+					{ BackgroundControls( this.props ) }
 				</BlockControls>
 			</Fragment>
 		);

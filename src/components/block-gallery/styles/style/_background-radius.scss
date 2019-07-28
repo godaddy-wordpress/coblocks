@@ -1,0 +1,11 @@
+// Utility class for adding a border-radius to the figure elements.
+@for $i from 2 through 20 {
+
+	.has-background-border-radius-#{ $i } {
+		border-radius: #{ $i }px;
+
+		&::before {
+			border-radius: #{ $i }px;
+		}
+	}
+}

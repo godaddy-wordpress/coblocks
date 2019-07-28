@@ -1,0 +1,137 @@
+.editor-block-list__block[data-type="coblocks/form"] {
+	.coblocks-field-label__input-wrapper {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+	}
+
+	.coblocks-field-label {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		label {
+			cursor: text;
+		}
+
+		.components-base-control {
+			&.coblocks-field-label__required {
+				color: $dark-gray-500;
+				margin-top: -5px;
+
+				.components-form-toggle {
+					margin: 2px 8px 0 0;
+				}
+
+				.components-toggle-control__label {
+					margin-bottom: 0;
+					word-break: normal;
+				}
+			}
+		}
+
+		.components-toggle-control .components-base-control__field {
+			margin-bottom: 0;
+		}
+	}
+
+	.components-base-control {
+		margin-bottom: 0;
+
+		.components-base-control__field {
+			margin-bottom: 15px;
+		}
+	}
+
+	.coblocks-field {
+		input,
+		textarea,
+		[data-block] {
+			margin-bottom: 0;
+		}
+
+		.components-text-control__input.components-text-control__input {
+			width: 100%;
+		}
+	}
+
+	.components-text-control__input,
+	.components-textarea-control__input {
+		padding: 10px 8px;
+		pointer-events: none;
+	}
+
+	.coblocks-form__subtext {
+		margin-top: -0.5rem;
+	}
+
+	.coblocks-form__inline-fields .coblocks-form__inline-field {
+		margin: 0 0 0.15rem;
+	}
+}
+
+@import "notice";
+
+// Advanced forms filter.
+.components-coblocks-advanced-forms-cta {
+	h3 {
+		margin-bottom: 0.5em;
+	}
+}
+
+.edit-post-settings-sidebar__panel-block {
+	.components-block-coblocks-form-recaptcha-key__custom-input {
+		margin-bottom: 15px !important;
+	}
+}
+
+// Core themes.
+.is-twentynineteen {
+	.coblocks-form {
+		.components-text-control__input,
+		.components-textarea-control__input {
+			border-color: #ccc;
+			border-radius: 0;
+			padding: 1.2rem 0;
+		}
+	}
+
+	.coblocks-form__submit.wp-block-button {
+		margin-top: 0;
+	}
+}
+
+.is-twentyseventeen {
+	.coblocks-label {
+		font-weight: 800;
+	}
+
+	.coblocks-form__submit {
+		margin-top: -0.75em;
+	}
+}
+
+.is-twentysixteen {
+	.coblocks-form {
+		.components-text-control__input,
+		.components-textarea-control__input {
+			background-color: #f7f7f7;
+			border-color: #d1d1d1;
+			border-radius: 2px;
+			padding: 0.75rem 0;
+		}
+
+		.components-base-control {
+			margin-bottom: 0;
+
+			.components-base-control__field {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.coblocks-form__submit.wp-block-button {
+		margin-top: 0;
+	}
+}

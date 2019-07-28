@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import omit from 'lodash/omit';
 import includes from 'lodash/includes';
 
 /**
@@ -18,15 +17,17 @@ import dividers from './components/dividers';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { getColorClassName } = wp.editor;
+const { getColorClassName } = wp.blockEditor;
 
 /**
  * Return the appropriate SVG for the block style.
+ *
+ * @param {Array} className The class names.
+ * @returns {String} The divider.
  */
 export function getDividerFromStyle( className ) {
-
 	const angled = includes( className, 'is-style-angled' );
 	const hills = includes( className, 'is-style-hills' );
 	const pointed = includes( className, 'is-style-pointed' );
@@ -34,7 +35,6 @@ export function getDividerFromStyle( className ) {
 	const sloped = includes( className, 'is-style-sloped' );
 	const triangle = includes( className, 'is-style-triangle' );
 	const waves = includes( className, 'is-style-waves' );
-	const wavy = includes( className, 'is-style-wavy' );
 
 	let divider = dividers.wavy;
 
@@ -157,14 +157,14 @@ const settings = {
 	},
 
 	styles: [
-		{ name: 'wavy', label: __( 'Wavy' ), isDefault: true },
-		{ name: 'hills', label: __( 'Hills' ) },
-		{ name: 'waves', label: __( 'Waves' ) },
-		{ name: 'angled', label: __( 'Angled' ) },
-		{ name: 'sloped', label: __( 'Sloped' ) },
-		{ name: 'rounded', label: __( 'Rounded' ) },
-		{ name: 'triangle', label: __( 'Triangle' ) },
-		{ name: 'pointed', label: __( 'Pointed' ) },
+		{ name: 'wavy', label: _x( 'Wavy', 'block style' ), isDefault: true },
+		{ name: 'hills', label: _x( 'Hills', 'block style' ) },
+		{ name: 'waves', label: _x( 'Waves', 'block style' ) },
+		{ name: 'angled', label: _x( 'Angled', 'block style' ) },
+		{ name: 'sloped', label: _x( 'Sloped', 'block style' ) },
+		{ name: 'rounded', label: _x( 'Rounded', 'block style' ) },
+		{ name: 'triangle', label: _x( 'Triangle', 'block style' ) },
+		{ name: 'pointed', label: _x( 'Pointed', 'block style' ) },
 	],
 
 	transforms: {
@@ -351,7 +351,6 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes, className } ) {
-
 		const {
 			backgroundColor,
 			backgroundHeight,
@@ -369,12 +368,12 @@ const settings = {
 
 		const classes = classnames(
 			className, {
-			[ `coblocks-shape-divider-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
-			'is-vertically-flipped' : verticalFlip,
-			'is-horizontally-flipped' : horizontalFlip,
-			[ shapeClass ]: shapeClass,
-			[ backgroundClass ]: backgroundClass,
-		} );
+				[ `coblocks-shape-divider-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
+				'is-vertically-flipped': verticalFlip,
+				'is-horizontally-flipped': horizontalFlip,
+				[ shapeClass ]: shapeClass,
+				[ backgroundClass ]: backgroundClass,
+			} );
 
 		const styles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
@@ -383,13 +382,57 @@ const settings = {
 
 		return (
 			<div className={ classes } style={ styles } aria-hidden="true">
-				<div className="wp-block-coblocks-shape-divider__svg-wrapper" style={ { height: shapeHeight } }>
+				<div className="wp-block-coblocks-shape-divider__svg-wrapper" style={ { minHeight: shapeHeight } }>
 					{ getDividerFromStyle( attributes.className ) }
 				</div>
-				<div className="wp-block-coblocks-shape-divider__alt-wrapper" style={ { height: backgroundHeight } }></div>
+				<div className="wp-block-coblocks-shape-divider__alt-wrapper" style={ { minHeight: backgroundHeight } }></div>
 			</div>
 		);
 	},
+	deprecated: [
+		{
+			attributes: {
+				...blockAttributes,
+			},
+			save( { attributes, className } ) {
+				const {
+					backgroundColor,
+					backgroundHeight,
+					color,
+					customBackgroundColor,
+					customColor,
+					horizontalFlip,
+					shapeHeight,
+					verticalFlip,
+				} = attributes;
+
+				const shapeClass = getColorClassName( 'color', color );
+				const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
+				const classes = classnames(
+					className, {
+						'is-vertically-flipped': verticalFlip,
+						'is-horizontally-flipped': horizontalFlip,
+						[ shapeClass ]: shapeClass,
+						[ backgroundClass ]: backgroundClass,
+					} );
+
+				const styles = {
+					backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+					color: shapeClass ? undefined : customColor,
+				};
+
+				return (
+					<div className={ classes } style={ styles } aria-hidden="true">
+						<div className="wp-block-coblocks-shape-divider__svg-wrapper" style={ { height: shapeHeight } }>
+							{ getDividerFromStyle( attributes.className ) }
+						</div>
+						<div className="wp-block-coblocks-shape-divider__alt-wrapper" style={ { height: backgroundHeight } }></div>
+					</div>
+				);
+			},
+		},
+	],
 };
 
 export { name, title, icon, settings };

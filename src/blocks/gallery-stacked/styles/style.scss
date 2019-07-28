@@ -1,0 +1,49 @@
+.wp-block-coblocks-gallery-stacked {
+	position: relative;
+	text-align: center;
+
+	&:not(.has-caption-color) {
+		color: $dark-gray-500 !important;
+	}
+
+	.coblocks-gallery--item {
+		margin-left: auto;
+		margin-right: auto;
+
+		&:last-child {
+			margin-bottom: 0;
+
+			figure {
+				margin-bottom: 0 !important;
+			}
+
+			figcaption {
+				padding-bottom: 0;
+			}
+		}
+	}
+
+	.coblocks-gallery--caption {
+		padding-bottom: 1em;
+		padding-top: 1em;
+		text-align: center;
+
+		&:not([class*="font-size"]) {
+			font-size: 13px;
+		}
+
+		.is-selected &,
+		.is-typing & {
+			padding-left: 1em;
+			padding-right: 1em;
+		}
+	}
+
+	.has-fullwidth-images img {
+		width: 100%;
+	}
+
+	.coblocks-video-bg {
+		z-index: 1;
+	}
+}

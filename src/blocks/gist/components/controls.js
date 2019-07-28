@@ -8,17 +8,11 @@ import icons from './../../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { BlockControls } = wp.editor;
+const { BlockControls } = wp.blockEditor;
 const { Toolbar, IconButton } = wp.components;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			className,
 			attributes,
@@ -27,22 +21,18 @@ class Controls extends Component {
 			setState,
 		} = this.props;
 
-		const {
-			file,
-			meta,
-			url,
-		} = attributes;
+		const { file, meta } = attributes;
 
 		const customControls = [
 			{
 				icon: 'info',
 				title: __( 'Display meta' ),
-				onClick: () => setAttributes( {  meta: ! meta } ),
+				onClick: () => setAttributes( { meta: ! meta } ),
 				isActive: meta === true,
-			}
+			},
 		];
 
-		return [
+		return (
 			<Fragment>
 				<BlockControls>
 					<Toolbar>
@@ -78,7 +68,7 @@ class Controls extends Component {
 								aria-label={ __( 'GitHub File' ) }
 								className={ `${ className }__file` }
 								id={ `${ className }__file` }
-								onChange={ ( event ) => setAttributes( { file: event.target.value } ) }
+								onChange={ event => setAttributes( { file: event.target.value } ) }
 								placeholder={ __( 'File' ) }
 								type="text"
 								value={ file }
@@ -87,8 +77,8 @@ class Controls extends Component {
 					) }
 				</BlockControls>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default Controls;

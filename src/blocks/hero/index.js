@@ -10,17 +10,17 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import icons from './components/icons';
 import Edit from './components/edit';
-import BackgroundImagePanel, { BackgroundAttributes, BackgroundClasses, BackgroundImageTransforms } from '../../components/background';
+import { BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import CSSGridAttributes from '../../components/grid-control/attributes';
+import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { RichText, getColorClassName, getFontSizeClass, InnerBlocks } = wp.editor;
-
+const { getColorClassName, InnerBlocks } = wp.blockEditor;
 
 /**
  * Block constants
@@ -38,6 +38,10 @@ const keywords = [
 ];
 
 const blockAttributes = {
+	...CSSGridAttributes,
+	...DimensionsAttributes,
+	...BackgroundAttributes,
+	...ResponsiveBaseControlAttributes,
 	align: {
 		type: 'string',
 		default: 'full',
@@ -55,10 +59,6 @@ const blockAttributes = {
 		type: 'number',
 		default: 560,
 	},
-	...CSSGridAttributes,
-	...DimensionsAttributes,
-	...BackgroundAttributes,
-
 	saveCoBlocksMeta: {
 		type: 'boolean',
 		default: true,
@@ -89,7 +89,11 @@ const blockAttributes = {
 	},
 	customBackgroundColor: {
 		type: 'string',
-		default: '#f4e9e0',
+		default: '#f3f3f3',
+	},
+	height: {
+		type: 'number',
+		default: 500,
 	},
 };
 
@@ -124,70 +128,70 @@ const settings = {
 
 	edit: Edit,
 
-	save( { attributes, className } ) {
+	save( { attributes } ) {
 		const {
-				coblocks,
-				layout,
-				fullscreen,
-				maxWidth,
-				backgroundImg,
-				paddingSize,
-				backgroundColor,
-				customBackgroundColor,
-				customTextColor,
-				textColor,
-				contentAlign,
-				focalPoint,
-				hasParallax,
-			} = attributes;
+			coblocks,
+			layout,
+			fullscreen,
+			maxWidth,
+			backgroundImg,
+			backgroundType,
+			paddingSize,
+			backgroundColor,
+			customBackgroundColor,
+			customTextColor,
+			textColor,
+			contentAlign,
+			focalPoint,
+			hasParallax,
+			height,
+		} = attributes;
 
-			const textClass = getColorClassName( 'color', textColor );
-			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+		const textClass = getColorClassName( 'color', textColor );
+		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-			let classlist = {
-				'has-text-color': textColor || customTextColor,
-				[ textClass ]: textClass,
-				[ `coblocks-hero-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
-			};
+		const classlist = {
+			'has-text-color': textColor || customTextColor,
+			[ textClass ]: textClass,
+			[ `coblocks-hero-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
+		};
 
-			const classes = classnames( classlist );
+		const classes = classnames( classlist );
 
-			const styles = {
-				color: textClass ? undefined : customTextColor,
-			};
+		const styles = {
+			color: textClass ? undefined : customTextColor,
+		};
 
-			const innerClasses = classnames(
-				'wp-block-coblocks-hero__inner',
-				...BackgroundClasses( attributes ), {
-					[ `hero-${ layout }-align` ] : layout,
-					'has-text-color': textColor && textColor.color,
-					'has-padding': paddingSize && paddingSize != 'no',
-					[ `has-${ paddingSize }-padding` ] : paddingSize && paddingSize != 'advanced',
-					[ backgroundClass ]: backgroundClass,
-					[ `has-${ contentAlign }-content` ]: contentAlign,
-					'is-fullscreen': fullscreen,
+		const innerClasses = classnames(
+			'wp-block-coblocks-hero__inner',
+			...BackgroundClasses( attributes ), {
+				[ `hero-${ layout }-align` ]: layout,
+				'has-text-color': textColor && textColor.color,
+				'has-padding': paddingSize && paddingSize !== 'no',
+				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+				[ backgroundClass ]: backgroundClass,
+				[ `has-${ contentAlign }-content` ]: contentAlign,
+				'is-fullscreen': fullscreen,
 			} );
 
-			const innerStyles = {
-				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-				backgroundImage: backgroundImg ? `url(${ backgroundImg })` : undefined,
-				color: textColor ? textColor.color : undefined,
-				backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
-			};
+		const innerStyles = {
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
+			color: textColor ? textColor.color : undefined,
+			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
+			minHeight: fullscreen ? undefined : height,
+		};
 
-			return (
-				<div className={ classes } style={ styles } >
-					<div className={ innerClasses } style={ innerStyles }>
-						<div className="wp-block-coblocks-hero__box"
-							style={ {
-								maxWidth: maxWidth ? maxWidth + 'px' : undefined,
-							} }
-						>
-							<InnerBlocks.Content />
-						</div>
+		return (
+			<div className={ classes } style={ styles } >
+				<div className={ innerClasses } style={ innerStyles }>
+					{ BackgroundVideo( attributes ) }
+					<div className="wp-block-coblocks-hero__box" style={ { maxWidth: maxWidth ? maxWidth + 'px' : undefined } }>
+						<InnerBlocks.Content />
 					</div>
 				</div>
-			);
+			</div>
+		);
 	},
 };
 

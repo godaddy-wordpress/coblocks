@@ -2,10 +2,7 @@
 /**
  * Load assets for our blocks.
  *
- * @package   CoBlocks
- * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
- * @link      https://coblocks.com
- * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
@@ -45,14 +42,14 @@ class CoBlocks_Block_Assets {
 	private $_url;
 
 	/**
-	 * The Plugin version.
+	 * The plugin version.
 	 *
 	 * @var string $_version
 	 */
 	private $_version;
 
 	/**
-	 * The Plugin version.
+	 * The plugin version.
 	 *
 	 * @var string $_slug
 	 */
@@ -61,13 +58,15 @@ class CoBlocks_Block_Assets {
 	/**
 	 * The Constructor.
 	 */
-	private function __construct() {
+	public function __construct() {
 		$this->_version = COBLOCKS_VERSION;
 		$this->_slug    = 'coblocks';
 		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
+		add_action( 'the_post', array( $this, 'frontend_scripts' ) );
 	}
 
 	/**
@@ -109,6 +108,66 @@ class CoBlocks_Block_Assets {
 			time(),
 			true
 		);
+
+		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
+		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
+
+		/**
+		 * Filter the default block email address value
+		 *
+		 * @param string  $to      Admin email.
+		 * @param integer $post_id Current post ID.
+		 */
+		$email_to = (string) apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), $post_id );
+
+		wp_localize_script(
+			$this->_slug . '-editor',
+			'coblocksBlockData',
+			[
+				'form' => [
+					'adminEmail'   => $email_to,
+					'emailSubject' => $post_title,
+				],
+			]
+		);
+
+	}
+
+	/**
+	 * Enqueue front-end assets for blocks.
+	 *
+	 * @access public
+	 * @since 1.9.5
+	 */
+	public function frontend_scripts() {
+
+		// Define where the asset is loaded from.
+		$dir = CoBlocks()->asset_source( 'js' );
+
+		// Define where the vendor asset is loaded from.
+		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
+
+		// Masonry block.
+		if ( has_block( $this->_slug . '/gallery-masonry' ) ) {
+			wp_enqueue_script(
+				$this->_slug . '-masonry',
+				$dir . $this->_slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery', 'masonry', 'imagesloaded' ),
+				$this->_version,
+				true
+			);
+		}
+
+		// Carousel block.
+		if ( has_block( $this->_slug . '/gallery-carousel' ) ) {
+			wp_enqueue_script(
+				$this->_slug . '-flickity',
+				$vendors_dir . '/flickity' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				$this->_version,
+				true
+			);
+		}
 	}
 
 }

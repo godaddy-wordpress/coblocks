@@ -1,9 +1,0 @@
-<!-- wp:coblocks/media-card {"coblocks":{"id":"126215143380"}} -->
-<div class="wp-block-coblocks-media-card alignwide coblocks-media-card-126215143380 is-style-left has-no-media is-stacked-on-mobile"><div class="wp-block-coblocks-media-card__inner has-no-padding"><div class="wp-block-coblocks-media-card__wrapper"><figure class="wp-block-coblocks-media-card__media"></figure><div class="wp-block-coblocks-media-card__content"><!-- wp:coblocks/row {"columns":1,"layout":"100","hasMarginControl":false,"hasAlignmentControls":false,"hasStackedControl":false,"coblocks":{"id":"126215143412"}} -->
-<div class="wp-block-coblocks-row coblocks-row-126215143412" data-columns="1" data-layout="100"><div class="wp-block-coblocks-row__inner has-medium-gutter has-no-padding has-no-margin is-stacked-on-mobile"><!-- wp:coblocks/column {"width":"100","showInserter":false,"coblocks":{"id":"126215143430"}} -->
-<div class="wp-block-coblocks-column coblocks-column-126215143430" style="width:100%"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"><!-- wp:heading {"level":3,"placeholder":"Add heading...","customTextColor":"#e02f36","customFontSize":70,"fontFamily":"","lineHeight":1.2,"fontWeight":"bold","noBottomSpacing":true,"noTopSpacing":true} -->
-<h3 style="line-height:1.2;font-weight:bold;font-size:70px;color:#e02f36" class="has-custom-size has-custom-weight has-custom-lineheight mb-0 pb-0 mt-0 pt-0">Build Your Online Training Business the Smarter Way</h3>
-<!-- /wp:heading --></div></div>
-<!-- /wp:coblocks/column --></div></div>
-<!-- /wp:coblocks/row --></div></div></div></div>
-<!-- /wp:coblocks/media-card -->

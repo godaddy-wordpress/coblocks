@@ -3,21 +3,15 @@
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls, MediaUpload, MediaUploadCheck } = wp.editor;
+const { AlignmentToolbar, BlockControls, MediaUploadCheck } = wp.blockEditor;
+const { MediaUpload } = wp.editor;
 const { Toolbar, IconButton } = wp.components;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
-			isSelected,
 		} = this.props;
 
 		const {
@@ -64,6 +58,6 @@ class Controls extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Controls;

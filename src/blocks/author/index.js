@@ -1,7 +1,3 @@
-/**
- * External dependencies
- */
-import classnames from 'classnames';
 
 /**
  * Internal dependencies
@@ -16,7 +12,7 @@ import icons from './../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { RichText, InnerBlocks } = wp.editor;
+const { RichText, InnerBlocks } = wp.blockEditor;
 
 /**
  * Block constants
@@ -99,7 +95,6 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes } ) {
-
 		const {
 			biography,
 			heading,
@@ -114,7 +109,7 @@ const settings = {
 					{ imgUrl && (
 						<div className={ 'wp-block-coblocks-author__avatar' }>
 							<img
-								class="wp-block-coblocks-author__avatar-img"
+								className="wp-block-coblocks-author__avatar-img"
 								src={ imgUrl }
 								alt="avatar"
 							/>
@@ -142,13 +137,13 @@ const settings = {
 								value={ biography }
 							/>
 						) }
-						<InnerBlocks.Content/>
+						<InnerBlocks.Content />
 					</div>
 				</div>
 			);
 		}
 		return null;
 	},
-}
+};
 
 export { name, title, icon, settings };

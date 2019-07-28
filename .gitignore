@@ -6,7 +6,6 @@
 **/dist/blocks.editor.build.css
 **/dist/*.css
 **/build/**
-**/languages/**
 *.sublime-project
 *.sublime-workspace
 *.cache
@@ -14,8 +13,6 @@
 coverage
 cypress
 sftp.json
-.github/
-.github/issue_template.md
 dist/blocks.build.js
 dist/blocks.editor.build.css
 dist/blocks.style.build.css
@@ -23,3 +20,4 @@ dist/blocks.style.build.css
 includes/.DS_Store
 .DS_Store
 sandbox.json
+languages/coblocks-js.pot

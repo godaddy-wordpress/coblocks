@@ -1,9 +1,10 @@
 /**
- * Set the attributes for the Background transformations
- * @type {Object}
+ * Set the attributes for the Background transformations.
+ *
+ * @param {Object} props The passed props.
+ * @returns {Object} The background transforms.
  */
-function BackgroundImageTransforms( props ) {
-
+function BackgroundTransforms( props ) {
 	const transforms = {
 		backgroundColor: props.backgroundColor,
 		customBackgroundColor: props.customBackgroundColor,
@@ -13,9 +14,13 @@ function BackgroundImageTransforms( props ) {
 		backgroundRepeat: props.backgroundRepeat,
 		backgroundSize: props.backgroundSize,
 		hasParallax: props.hasParallax,
+		backgroundPadding: props.backgroundPadding,
+		backgroundPaddingMobile: props.backgroundPaddingMobile,
+		backgroundRadius: props.backgroundRadius,
+		captionStyle: props.captionStyle,
 	};
 
 	return transforms;
 }
 
-export default BackgroundImageTransforms;
+export default BackgroundTransforms;
