@@ -36,7 +36,6 @@ class Edit extends Component {
 	}
 
 	updateURL( newURL ) {
-
 		this.props.setAttributes( { url: newURL } );
 
 		if ( ! this.props.attributes.url ) {
