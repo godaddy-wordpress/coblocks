@@ -43,7 +43,7 @@ class Edit extends Component {
 		}
 
 		// Check for #file in the entered URL. If it's there, let's use it properly.
-		let file = newURL.split( '#file-' ).pop();
+		const file = newURL.split( '#file-' ).pop();
 
 		if ( newURL.match( /#file-*/ ) !== null ) {
 			const newURLWithNoFile = newURL.replace( file, '' ).replace( '#file-', '' );
