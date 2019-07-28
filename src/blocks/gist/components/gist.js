@@ -64,6 +64,7 @@ class Gist extends Component {
 		if ( ! this.props.url ) {
 			return;
 		}
+		this._checkNewInput();
 		// Request the Gist iframe.
 		this._buildGist();
 	}
@@ -84,16 +85,16 @@ class Gist extends Component {
 
 	_checkNewInput() {
 		if ( this.state.rendered && this.state.gistContent && this.props.url ) {
+			const valueWithNoFile = this.props.value.replace( /(#).*/gi, '' );
+			const urlWithNoFile = this.props.url.replace( /'#file-'/gi, '' );
+
 			console.log( 'this is the props.value and then props.url' );
-			console.log( this.props.value );
-			console.log( this.props.url );
-			const valueWithNoFile = this.props.value.replace( file, '' ).replace( '#file-', '' );
-			const urlWithNoFile = this.props.url.replace( file, '' ).replace( '#file-', '' );
+			console.log( valueWithNoFile );
+			console.log( urlWithNoFile );
 			if ( valueWithNoFile !== urlWithNoFile ) {
-				console.log( 'Values do not match. set and fetch new callback.' );
-			} else {
-				console.log( 'Values match. Should not reset anything.' );
+				return false;
 			}
+			return true;
 		}
 	}
 
@@ -105,9 +106,12 @@ class Gist extends Component {
 			return;
 		}
 
-		const file = this.state.file ? this.state.file : '';
+		// new template to select correct file from github api
+		// /(article[-._]preview[-._]markdown)/gi
 
-		return `https://gist.github.com/${ id }.json?callback=${ gistCallback }${ file }`;
+		const file = this.state.file ? this.state.file : '';
+		// const url = 'https://api.github.com/gists/60773585576525356cc7dfaad81a8301';
+		return `https://api.github.com/gists/${ id }`;
 	}
 
 	_handleScriptError( err ) {
@@ -123,6 +127,14 @@ class Gist extends Component {
 	_buildGist() {
 		const { _handleScriptError } = this;
 		const gistCallback = Gist.__nextGist();
+
+		$.get( url, function( data ) {
+			console.log( data );
+
+			console.log( data.files );
+			alert( 'Load was performed.' );
+		} );
+
 		window[ gistCallback ] = gist => {
 			Gist.__addStylesheet( gist.stylesheet );
 			this.setState( {
@@ -144,13 +156,13 @@ class Gist extends Component {
 		gistScript.onerror = function( err ) {
 			_handleScriptError( err );
 		};
+
 		document.head.appendChild( gistScript );
 		this.setState( { rendered: gistScript.src, loading: false } );
 	}
 
 	_formOnSubmit( event ) {
 		event.preventDefault();
-		this._checkNewInput();
 		this.setState( { loading: true } );
 		this._setupURL( this.props.value );
 	}
@@ -172,12 +184,14 @@ class Gist extends Component {
 				file: file,
 			},
 			() => {
+				this._checkNewInput();
 				const urlProps = {
 					urlText: this.props.value,
 					url: this.state.url,
 					file: this.state.file,
 				};
 				this.props.updateURL( urlProps );
+				this._checkNewInput();
 				this._buildGist();
 			}
 		);
@@ -204,7 +218,7 @@ class Gist extends Component {
 		} = this.state;
 		if ( rendered && gistContent && url ) {
 			console.log( 'gist has been rendered.' );
-			// console.log( this._checkNewInput() );
+			console.log( this._checkNewInput() );
 		}
 
 		const { _formOnSubmit } = this;
