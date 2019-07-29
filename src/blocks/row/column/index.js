@@ -10,6 +10,7 @@ import Edit from './components/edit';
 import icons from './../../../utils/icons';
 import { BackgroundStyles, BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../../components/background';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -20,40 +21,25 @@ const { InnerBlocks, getColorClassName } = wp.blockEditor;
 /**
  * Block constants
  */
-const name = 'column';
+const { name } = metadata;
 
 const title = __( 'Column' );
 
 const icon = icons.column;
 
-const blockAttributes = {
-	width: {
-		type: 'string',
-	},
-	contentAlign: {
-		type: 'string',
-	},
-	textColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
-	showInserter: {
-		type: 'boolean',
-		default: true,
-	},
+const attributes = {
 	...DimensionsAttributes,
 	...BackgroundAttributes,
+	...metadata.attributes,
 };
 
 const settings = {
 
-	title: title,
+	title,
 
 	description: __( 'An immediate child of a row.' ),
 
-	attributes: blockAttributes,
+	attributes,
 
 	parent: [ 'coblocks/row' ],
 
@@ -118,9 +104,7 @@ const settings = {
 	},
 
 	deprecated: [ {
-		attributes: {
-			...blockAttributes,
-		},
+		attributes,
 		save( { attributes } ) {
 			const {
 				id,
