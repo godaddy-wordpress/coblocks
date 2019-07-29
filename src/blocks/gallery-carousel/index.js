@@ -11,6 +11,7 @@ import './styles/editor.scss';
 import icons from './icons';
 import edit from './edit';
 import transforms from './transforms';
+import metadata from './block.json';
 import { BackgroundStyles, BackgroundAttributes } from '../../components/background';
 import { GalleryAttributes, GalleryClasses } from '../../components/block-gallery/shared';
 
@@ -23,75 +24,29 @@ const { getColorClassName, RichText } = wp.blockEditor;
 /**
  * Block constants
  */
-const name = 'gallery-carousel';
+const { name } = metadata;
 
 const title = __( 'Carousel' );
 
 const icon = icons.carousel;
 
-const keywords = [
-	__( 'gallery' ),
-	__( 'photos' ),
-];
-
-const blockAttributes = {
+const attributes = {
 	...GalleryAttributes,
 	...BackgroundAttributes,
-
-	// Override global attributes.
-	gutter: {
-		type: 'number',
-		default: 5,
-	},
-	gutterMobile: {
-		type: 'number',
-		default: 5,
-	},
-
-	// Block specific attributes.
-	gridSize: {
-		type: 'string',
-		default: 'lrg',
-	},
-	height: {
-		type: 'number',
-		default: 400,
-	},
-
-	// Slider attributes.
-	pageDots: {
-		type: 'boolean',
-		default: false,
-	},
-	prevNextButtons: {
-		type: 'boolean',
-		default: true,
-	},
-	autoPlay: {
-		type: 'boolean',
-		default: false,
-	},
-	autoPlaySpeed: {
-		type: 'string',
-		default: 3000,
-	},
-	draggable: {
-		type: 'boolean',
-		default: true,
-	},
+	...metadata.attributes,
 };
 
 const settings = {
 
-	title: title,
+	title,
 
 	description: __( 'Display multiple images in a beautiful carousel gallery.' ),
 
 	category: 'coblocks-galleries',
 
-	keywords: keywords,
+	keywords: [	__( 'gallery' ), __( 'photos' )	],
 
-	attributes: blockAttributes,
+	attributes,
 
 	supports: {
 		align: [ 'wide', 'full' ],

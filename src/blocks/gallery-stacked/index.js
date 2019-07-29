@@ -154,4 +154,4 @@ const settings = {
 	},
 };
 
-export { name, icon, settings };
+export { name, title, icon, settings };
