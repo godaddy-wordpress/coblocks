@@ -11,6 +11,7 @@ import './styles/editor.scss';
 import edit from './edit';
 import icons from './icons';
 import transforms from './transforms';
+import metadata from './block.json';
 import { GalleryAttributes, GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
 import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
@@ -23,41 +24,17 @@ const { RichText, getFontSizeClass, getColorClassName } = wp.blockEditor;
 /**
  * Block constants
  */
-const name = 'gallery-stacked';
+const { name } = metadata;
 
 const title = __( 'Stacked' );
 
 const icon = icons.stacked;
 
-const keywords = [
-	__( 'gallery' ),
-	__( 'photos' ),
-];
-
-const blockAttributes = {
+const attributes = {
 	...GalleryAttributes,
 	...BackgroundAttributes,
-
 	// Block specific attributes and overrides.
-	align: {
-		type: 'string',
-		default: 'full',
-	},
-	captionStyle: {
-		type: 'string',
-	},
-	fullwidth: {
-		type: 'boolean',
-		default: true,
-	},
-	gutter: {
-		type: 'number',
-		default: 0,
-	},
-	gutterMobile: {
-		type: 'number',
-		default: 0,
-	},
+	...metadata.attributes,
 };
 
 const settings = {
@@ -68,9 +45,9 @@ const settings = {
 
 	category: 'coblocks-galleries',
 
-	keywords: keywords,
+	keywords: [	__( 'gallery' ), __( 'photos' ) ],
 
-	attributes: blockAttributes,
+	attributes,
 
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -177,4 +154,4 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };
