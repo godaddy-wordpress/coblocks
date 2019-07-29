@@ -12,6 +12,7 @@ import { BackgroundStyles, BackgroundAttributes, BackgroundClasses, BackgroundVi
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import Edit from './components/edit';
 import icons from './components/icons';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -23,32 +24,16 @@ const { InnerBlocks, getColorClassName } = wp.blockEditor;
 /**
  * Block constants
  */
-const name = 'features';
+const { name } = metadata;
 
 const title = __( 'Features' );
 
 const icon = icons.features;
 
-const keywords = [
-	__( 'services' ),
-	__( 'coblocks' ),
-];
-
-const blockAttributes = {
-	gutter: {
-		type: 'string',
-		default: 'large',
-	},
-	columns: {
-		type: 'number',
-		default: 2,
-	},
-	contentAlign: {
-		type: 'string',
-		default: 'center',
-	},
+const attributes = {
 	...DimensionsAttributes,
 	...BackgroundAttributes,
+	...metadata.attributes,
 };
 
 const settings = {
@@ -56,9 +41,9 @@ const settings = {
 
 	description: __( 'Add up to three columns of small notes for your product or service.' ),
 
-	keywords: keywords,
+	keywords: [ __( 'services' ), __( 'coblocks' ) ],
 
-	attributes: blockAttributes,
+	attributes,
 
 	supports: {
 		align: [ 'wide', 'full' ],
