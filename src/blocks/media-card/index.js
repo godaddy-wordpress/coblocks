@@ -12,6 +12,7 @@ import './styles/editor.scss';
 import icons from './components/icons';
 import brandAssets from '../../utils/brand-assets';
 import edit from './components/edit';
+import metadata from './block.json';
 import { BackgroundStyles, BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
@@ -25,62 +26,21 @@ const { InnerBlocks } = wp.blockEditor;
 /**
  * Block constants
  */
-const name = 'media-card';
+const { name } = metadata;
 
 const icon = icons.mediaCard;
 
-const blockAttributes = {
-	mediaPosition: {
-		type: 'string',
-		default: 'left',
-	},
-	mediaAlt: {
-		type: 'string',
-		source: 'attribute',
-		selector: 'figure img',
-		attribute: 'alt',
-		default: '',
-	},
-	mediaId: {
-		type: 'number',
-	},
-	mediaUrl: {
-		type: 'string',
-		source: 'attribute',
-		selector: 'div div figure video, div div figure img',
-		attribute: 'src',
-	},
-	mediaType: {
-		type: 'string',
-	},
-	mediaWidth: {
-		type: 'number',
-		default: 55,
-	},
-	align: {
-		type: 'string',
-		default: 'wide',
-	},
-	maxWidth: {
-		type: 'number',
-	},
-	hasImgShadow: {
-		type: 'boolean',
-		default: false,
-	},
-	hasCardShadow: {
-		type: 'boolean',
-		default: false,
-	},
+const attributes = {
 	...BackgroundAttributes,
 	...DimensionsAttributes,
+	...metadata.attributes,
 };
 
 const settings = {
 	title: __( 'Media Card' ),
 	description: __( 'Add an image or video with an offset card side-by-side.' ),
 	keywords: [ __( 'image' ), __( 'video' ), __( 'coblocks' ) ],
-	attributes: blockAttributes,
+	attributes,
 	supports: {
 		align: [ 'wide', 'full' ],
 		stackedOnMobile: true,
