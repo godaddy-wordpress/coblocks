@@ -26,17 +26,16 @@ export default function save( { attributes } ) {
 
 	const textClasses = classnames(
 		attributes.className, {
-			'has-text-color': !! attributes.textColor,
+			'has-text-color': attributes.textColor || attributes.customTextColor,
 			[ colorClass ]: colorClass,
-		}
-	);
+		} );
 
 	const textStyles = {
-		color: attributes.textColor,
+		color: colorClass ? undefined : attributes.customTextColor,
 	};
 
 	return isEmpty( attributes ) ? null : (
-		<div
+		<div data-page={ String( attributes.pageNum ) }
 			className={ attributes.className }
 		>
 			<div className="wp-block-coblocks-event-item__content">

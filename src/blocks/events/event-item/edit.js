@@ -10,6 +10,7 @@ import icons from './icons';
 import classnames from 'classnames';
 import InspectorControls from './inspector';
 import applyWithColors from '.././colors';
+import {get, isEqual, isUndefined} from 'lodash';
 
 /**
  * WordPress dependencies.
@@ -74,14 +75,10 @@ const isEmpty = attributes => {
 
 class EventsEdit extends Component {
 	componentDidUpdate( prevProps ) {
-		if (
-			isEmpty( prevProps.attributes ) !== isEmpty( this.props.attributes ) ||
-			( ! prevProps.isSelected && this.props.isSelected )
-		) {
-			const { textColor } = this.props.attributes;
-			handlePlaceholderPlacement( this.props.clientId, 'coblocks/event-item', {
-				textColor,
-			} );
+		if ( ( this.props.attributes.externalChange ) ) {
+			// this.props.attributes.textColor =
+			this.props.setAttributes( { textColor: this.props.attributes.textColor, externalChange: false } );
+			this.props.setTextColor( this.props.attributes.textColor );
 		}
 	}
 
@@ -108,10 +105,10 @@ class EventsEdit extends Component {
 			<Fragment>
 				<InspectorControls { ...this.props }
 				/>
-				<div
+				<div data-page={ String( attributes.pageNum ) }
 					className={ classnames( className, {
 						'is-empty': isEmpty( attributes ),
-					} ) }
+					}, 'coblocks-custom-event-item' ) }
 				>
 					<div className="wp-block-coblocks-event-item__content">
 						<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__dates' ) } style={ textStyles }>

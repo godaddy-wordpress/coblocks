@@ -18,13 +18,14 @@ const Inspector = props => {
 		setTextColor,
 		onToggleCalendarLink,
 		onUpdateTextColor,
+		onChangeVisibleEvents,
 		setAttributes,
 	} = props;
 
 	const defaultColors = [
 		{
 			value: textColor.color,
-			onChange: setTextColor,
+			onChange: onUpdateTextColor,
 			label: __( 'Text Color' ),
 		},
 	];
@@ -58,15 +59,13 @@ const Inspector = props => {
 					onChange={ ( value ) => setAttributes( { eventsRange: value } ) }
 				/>
 				}
-				{ attributes.linkACalendar &&
 				<RangeControl
 					label={ __( 'Number of events to show per page' ) }
 					value={ attributes.eventsToShow }
-					onChange={ ( value ) => setAttributes( { eventsToShow: value } ) }
+					onChange={ onChangeVisibleEvents }
 					min={ 5 }
 					max={ 15 }
 				/>
-				}
 			</PanelBody>
 			<PanelColorSettings
 				title={ __( 'Color Settings' ) }

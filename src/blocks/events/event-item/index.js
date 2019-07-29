@@ -69,10 +69,13 @@ const attributes = {
 	},
 	textColor: {
 		type: 'string',
-		default: '#000000',
 	},
 	customTextColor: {
 		type: 'string',
+	},
+	pageNum: {
+		type: 'number',
+		default: 0,
 	},
 };
 

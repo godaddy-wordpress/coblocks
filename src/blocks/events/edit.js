@@ -57,9 +57,8 @@ class EventItem extends Component {
 		const { attributes, setAttributes, setTextColor, textColor } = this.props;
 
 		setTextColor( value );
-		setAttributes( { textColor: value } );
 
-		this.updateInnerAttributes( 'coblocks/event-item', { textColor: value } );
+		this.updateInnerAttributes( 'coblocks/event-item', { textColor: value, externalChange: true } );
 	};
 
 	toggleCalendarLink = ( ) => {
@@ -81,28 +80,44 @@ class EventItem extends Component {
 		}
 	}
 
+	changeVisibleEvents = ( value ) => {
+		const { clientId, attributes, setAttributes } = this.props;
+
+		setAttributes( { eventsToShow: value } );
+
+		const block = select( 'core/editor' ).getBlock( clientId );
+
+		block.innerBlocks.map( ( item, key ) =>
+			item.attributes.pageNum = Math.floor( key / value )
+		);
+	};
+
 	insertNewItem = () => {
-		const { clientId, attributes, textColor } = this.props;
+		const { clientId, attributes } = this.props;
 
-		const blockOrder = select( 'core/editor' ).getBlockOrder();
-		const insertAtIndex = blockOrder.indexOf( clientId ) + 1;
+		const block = select( 'core/editor' ).getBlock( clientId );
 
-		const innerBlocks = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
+		const newItemPageNumber = Math.floor( block.innerBlocks.length / attributes.eventsToShow );
+
+		const newEventBlock = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
 			wp.blocks.createBlock(
 				blockName,
 				Object.assign( {}, blockAttributes, {
-					textColor: textColor,
+					textColor: attributes.textColor,
+					pageNum: newItemPageNumber,
 				} )
 			)
 		);
 
-		const newItem = wp.blocks.createBlock(
-			'coblocks/events',
-			attributes,
-			innerBlocks
-		);
+		attributes.currentPage = newItemPageNumber;
 
-		dispatch( 'core/editor' ).insertBlock( newItem, insertAtIndex );
+		block.innerBlocks.push( newEventBlock[0] );
+
+		dispatch( 'core/editor' ).insertBlock( newEventBlock[0], block.innerBlocks.length, clientId );
+
+		block.innerBlocks.map( ( key, value ) =>
+			key.attributes.pageNum !== newItemPageNumber ? key.originalContent = key.originalContent.replace('wp-block-coblocks-event-item', 'wp-block-coblocks-event-item hide-item') : ''
+		);
 	};
 
 	render() {
@@ -116,7 +131,20 @@ class EventItem extends Component {
 			setAttributes,
 		} = this.props;
 
+		attributes.childrenLength = select( 'core/editor' ).getBlock( clientId ).innerBlocks.length;
+
 		const { editing } = this.state;
+
+		const textClasses = classnames(
+			{
+				'has-text-color': textColor.color,
+				[ textColor.class ]: textColor.class,
+			}
+		);
+
+		const textStyles = {
+			color: textColor.color,
+		};
 
 		const toolbarControls = [
 			{
@@ -165,12 +193,13 @@ class EventItem extends Component {
 					{ ...this.props }
 					onUpdateTextColor={ this.updateTextColor }
 					onToggleCalendarLink={ this.toggleCalendarLink }
+					onChangeVisibleEvents={ this.changeVisibleEvents }
 				/>
 				{ ! attributes.linkACalendar &&
-				<div
+				<div data-current-page-num={ String( attributes.currentPage ) }
 					className={ classnames( className, {
 						'child-selected': isSelected || clientId === selectedParentClientId,
-					} ) }
+					}, 'coblocks-custom-event' ) }
 				>
 					{ ! attributes.linkACalendar &&
 					<InnerBlocks

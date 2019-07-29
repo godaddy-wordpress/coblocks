@@ -1,6 +1,5 @@
 ( function( $ ) {
 	'use strict';
-
 	$(document).ready(function() {
 
 		observer.observe(document.body, {
@@ -44,8 +43,8 @@
 
 		var currentPage = 0;
 		// Initially set only first page items to be shown
-		$( '.imported-events .wp-block-coblocks-event-item' ).css( 'display', 'none' );
-		$( '.imported-events .wp-block-coblocks-event-item[data-page="' + currentPage + '"]' ).css( 'display', 'initial' );
+		$( '.wp-block-coblocks-event-item' ).css( 'display', 'none' );
+		$( '.wp-block-coblocks-event-item[data-page="' + currentPage + '"]' ).css( 'display', 'initial' );
 		previousPageIconContainer.css( 'display', 'none' );
 		var totalPageCount = Number( $( '.wp-block-coblocks-event-item' ).last().attr( 'data-page' ) );
 
