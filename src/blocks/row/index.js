@@ -9,6 +9,7 @@ import icons from './../../utils/icons';
 import { BackgroundAttributes } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import Save from './components/save';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -46,51 +47,27 @@ function generateLayout( columns ) {
 /**
  * Block constants
  */
-const name = 'row';
+const { name } = metadata;
 
 const title = __( 'Row' );
 
 const icon = icons.row;
 
-const keywords = [
-	__( 'rows' ),
-	__( 'columns' ),
-	__( 'layouts' ),
-];
-
-const blockAttributes = {
-	id: {
-		type: 'number',
-	},
-	columns: {
-		type: 'number',
-	},
-	layout: {
-		type: 'string',
-	},
-	gutter: {
-		type: 'string',
-		default: 'medium',
-	},
-	textColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
+const attributes = {
 	...DimensionsAttributes,
 	...BackgroundAttributes,
+	...metadata.attributes,
 };
 
 const settings = {
 
-	title: title,
+	title,
 
 	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.' ),
 
-	keywords: keywords,
+	keywords: [	__( 'rows' ), __( 'columns' ), __( 'layouts' )	],
 
-	attributes: blockAttributes,
+	attributes,
 
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -145,7 +122,7 @@ const settings = {
 
 	deprecated: [
 		{
-			attributes: blockAttributes,
+			attributes,
 			save: DeprecationVideo,
 		},
 		{
@@ -154,7 +131,7 @@ const settings = {
 					type: 'boolean',
 					default: true,
 				},
-				...blockAttributes,
+				...attributes,
 			},
 			save: Deprecation,
 		},
