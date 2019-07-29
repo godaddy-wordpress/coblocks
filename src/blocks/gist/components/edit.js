@@ -36,7 +36,8 @@ class Edit extends Component {
 	}
 
 	updateURL( newURL ) {
-		this.props.setAttributes( { url: newURL } );
+		this.props.setAttributes( { url: newURL, file: '' } );
+		// file: ''
 
 		if ( '' === newURL ) {
 			this.props.setState( { preview: false } );
