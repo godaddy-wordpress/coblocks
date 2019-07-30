@@ -15,8 +15,7 @@ import Edit from './components/edit';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Fragment } = wp.element;
-const { createBlock, getBlockAttributes } = wp.blocks;
+const { createBlock } = wp.blocks;
 const { RichText } = wp.blockEditor;
 
 /**
@@ -28,11 +27,7 @@ const title = __( 'Gist' );
 
 const icon = icons.github;
 
-const keywords = [
-	__( 'code' ),
-	__( 'github' ),
-	__( 'coblocks' ),
-];
+const keywords = [ __( 'code' ), __( 'github' ), __( 'coblocks' ) ];
 
 const blockAttributes = {
 	url: {
@@ -52,14 +47,7 @@ const blockAttributes = {
 	},
 };
 
-const schema = {
-	div: {
-		classes: [ 'wp-block-coblocks-gist' ],
-	},
-};
-
 const settings = {
-
 	title: title,
 
 	description: __( 'Embed GitHub gists by adding the gist link.' ),
@@ -73,15 +61,21 @@ const settings = {
 			{
 				type: 'raw',
 				priority: 1,
-				isMatch: ( node ) => node.nodeName === 'P' && /^\s*(https?:\/\/\S+)\s*$/i.test( node.textContent ) && node.textContent.match( /^https?:\/\/(www\.)?gist\.github\.com\/.+/i ),
-				transform: ( node ) => {
+				isMatch: node =>
+					node.nodeName === 'P' &&
+					/^\s*(https?:\/\/\S+)\s*$/i.test( node.textContent ) &&
+					node.textContent.match( /^https?:\/\/(www\.)?gist\.github\.com\/.+/i ),
+				transform: node => {
 					// Check for a file within the URL.
-					const file = ( node.textContent.trim() ).split( '#' ).pop();
-					const fileClean = file.replace('file-', '#file-').replace('-', '.');
+					const file = node.textContent
+						.trim()
+						.split( '#' )
+						.pop();
+					const fileClean = file.replace( 'file-', '#file-' ).replace( '-', '.' );
 
 					return createBlock( 'coblocks/gist', {
 						url: node.textContent.trim(),
-						file: file.match(/file*/) != null ? fileClean : undefined,
+						file: file.match( /file*/ ) !== null ? fileClean : undefined,
 					} );
 				},
 			},
@@ -104,64 +98,58 @@ const settings = {
 
 	edit: Edit,
 
-	save( { attributes, className } ) {
-
-		const {
-			url,
-			file,
-			meta,
-			caption,
-		} = attributes;
+	save( { attributes } ) {
+		const { url, file, meta, caption } = attributes;
 
 		const classes = classnames( {
-				[ 'no-meta' ] : ! meta,
-			}
-		);
+			'no-meta': ! meta,
+		} );
 
 		const src = file ? `${ url }.js?file=${ file }` : `${ url }.js`;
 
-		const noscriptSrc = file ? `${ url }#file-${ file.replace('.', '-') }` : `${ url }`;
+		const noscriptSrc = file ?
+			`${ url }#file-${ file.replace( '.', '-' ) }` :
+			`${ url }`;
 
 		return (
 			<div className={ classes }>
-				<script src={ src }/>
-				<noscript><a href={ noscriptSrc }>{ __( 'View this gist on GitHub' ) }</a></noscript>
-				{ ! RichText.isEmpty( caption ) && <RichText.Content tagName="figcaption" value={ caption } /> }
+				<script src={ src } />
+				<noscript>
+					<a href={ noscriptSrc }>{ __( 'View this gist on GitHub' ) }</a>
+				</noscript>
+				{ ! RichText.isEmpty( caption ) && (
+					<RichText.Content tagName="figcaption" value={ caption } />
+				) }
 			</div>
-
 		);
 	},
 
 	deprecated: [
 		{
-			save( { attributes, className } ) {
+			save( { attributes } ) {
+				const { url, file, meta } = attributes;
 
-			const {
-				url,
-				file,
-				meta,
-			} = attributes;
+				const classes = classnames( {
+					'wp-block-coblocks-gist--no-meta': ! meta,
+				} );
 
-			const classes = classnames( {
-					[ 'wp-block-coblocks-gist--no-meta' ] : ! meta,
-				}
-			);
+				const src = file ? `${ url }.js?file=${ file }` : `${ url }.js`;
 
-			const src = file ? `${ url }.js?file=${ file }` : `${ url }.js`;
+				const noscriptSrc = file ?
+					`${ url }#file-${ file.replace( '.', '-' ) }` :
+					`${ url }`;
 
-			const noscriptSrc = file ? `${ url }#file-${ file.replace('.', '-') }` : `${ url }`;
-
-			return (
-				<div className={ classes }>
-					<script src={ src }/>
-					<noscript><a href={ noscriptSrc }>{ __( 'View this gist on GitHub' ) }</a></noscript>
-				</div>
-
-			);
+				return (
+					<div className={ classes }>
+						<script src={ src } />
+						<noscript>
+							<a href={ noscriptSrc }>{ __( 'View this gist on GitHub' ) }</a>
+						</noscript>
+					</div>
+				);
+			},
 		},
-	}
 	],
 };
 
 export { name, title, icon, settings };
-

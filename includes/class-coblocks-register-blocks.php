@@ -44,7 +44,7 @@ class CoBlocks_Register_Blocks {
 	/**
 	 * The Constructor.
 	 */
-	private function __construct() {
+	public function __construct() {
 		$this->_slug = 'coblocks';
 
 		add_action( 'init', array( $this, 'register_blocks' ), 99 );

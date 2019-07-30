@@ -8,12 +8,11 @@ import DimensionsControl from '../../../components/dimensions-control/';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { withSelect } = wp.data;
-const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.blockEditor;
-const { PanelBody, RangeControl, ToggleControl, Toolbar, SelectControl, withFallbackStyles } = wp.components;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
+const { PanelBody, RangeControl, SelectControl, withFallbackStyles } = wp.components;
 
 /**
  * Fallback styles
@@ -33,19 +32,11 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			clientId,
 			attributes,
 			backgroundColor,
-			fallbackBackgroundColor,
-			fallbackTextColor,
 			setAttributes,
 			setBackgroundColor,
 			textColor,
@@ -100,7 +91,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Features Settings' ) } className='components-coblocks-block-sidebar--features'>
+					<PanelBody title={ __( 'Features Settings' ) } className="components-coblocks-block-sidebar--features">
 						<RangeControl
 							label={ __( 'Columns' ) }
 							value={ columns }
@@ -109,19 +100,19 @@ class Inspector extends Component {
 									columns: parseInt( nextCount ),
 								} );
 
-								if( parseInt( nextCount ) < 2 ){
+								if ( parseInt( nextCount ) < 2 ) {
 									setAttributes( {
 										gutter: 'no',
 									} );
-								}else{
-									if( gutter == 'no' ){
+								} else {
+									if ( gutter === 'no' ) {
 										setAttributes( {
 											gutter: 'large',
 										} );
 									}
 								}
 
-								wp.data.dispatch( 'core/editor' ).selectBlock( clientId );
+								wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );
 							} }
 							min={ 1 }
 							max={ 3 }
@@ -169,13 +160,13 @@ class Inspector extends Component {
 							dimensionSize={ paddingSize }
 						/>
 						{ columns >= 2 &&
-							<SelectControl
-								label={ __( 'Gutter' ) }
-								value={ gutter }
-								options={ gutterOptions }
-								help={ __( 'Space between each column.' ) }
-								onChange={ ( value ) => setAttributes( { gutter: value } ) }
-							/>
+						<SelectControl
+							label={ __( 'Gutter' ) }
+							value={ gutter }
+							options={ gutterOptions }
+							help={ __( 'Space between each column.' ) }
+							onChange={ ( value ) => setAttributes( { gutter: value } ) }
+						/>
 						}
 					</PanelBody>
 					<PanelColorSettings
@@ -188,17 +179,17 @@ class Inspector extends Component {
 									setBackgroundColor( nextBackground );
 
 									//add padding if there's none
-									if( !paddingSize || paddingSize == 'no' ){
-										setAttributes({ paddingSize: 'medium' });
+									if ( ! paddingSize || paddingSize === 'no' ) {
+										setAttributes( { paddingSize: 'medium' } );
 									}
 
 									//reset when cleared
-									if( !nextBackground ){
+									if ( ! nextBackground ) {
 										setAttributes( { paddingSize: 'no' } );
 									}
 								},
 								label: __( 'Background Color' ),
-							},{
+							}, {
 								value: textColor.color,
 								onChange: setTextColor,
 								label: __( 'Text Color' ),
@@ -207,10 +198,10 @@ class Inspector extends Component {
 					>
 					</PanelColorSettings>
 					<BackgroundPanel { ...this.props }
-	 					hasCaption={ false }
-	 					hasOverlay={ true }
-	 					hasGalleryControls={ false }
-	 				/>
+						hasCaption={ false }
+						hasOverlay={ true }
+						hasGalleryControls={ false }
+					/>
 				</InspectorControls>
 			</Fragment>
 		);
