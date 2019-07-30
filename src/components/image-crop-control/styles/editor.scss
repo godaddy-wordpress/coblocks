@@ -1,16 +1,38 @@
 .components-coblocks-image-control {
-  width: 232px;
-  height: 179px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   position: relative;
   overflow: hidden;
+  background-color: #ccc;
 
-  img {
-    will-change: transform;
-    transform-origin: left top 0;
-    opacity: 0.2;
-    padding: 10px;
-    background-color: #ccc;
+  > div {
+    position: absolute;
+    top: 0;
+    margin: 20px;
+    overflow: hidden;
+
+    &:first-child {
+      opacity: 0.5;
+      overflow: visible;
+    }
+
+    &:last-child {
+      cursor: move;
+    }
+
+    img {
+      display: block;
+      will-change: transform;
+    }
+  }
+}
+
+.components-coblocks-offset-control {
+  display: flex;
+  justify-content: space-between;
+
+  > div {
+    width: 45%;
   }
 }

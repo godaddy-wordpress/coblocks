@@ -65,7 +65,7 @@ class AttachmentCropControl extends Component {
     }
 
     render() {
-        const {offsetX, offsetY, cropWidth, cropHeight, rotation, attachmentId} = this.props;
+        const {offsetX, offsetY, cropWidth, cropHeight, rotation, onChange} = this.props;
 
         return (
             <ImageCropControl
@@ -75,6 +75,7 @@ class AttachmentCropControl extends Component {
                 cropHeight={cropHeight}
                 rotation={rotation}
                 imageUrl={this.state.imageUrl}
+                onChange={onChange}
             />
         );
     }

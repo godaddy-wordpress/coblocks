@@ -70,6 +70,9 @@ import * as stacked from './blocks/gallery-stacked';
 import * as masonry from './blocks/gallery-masonry';
 import * as carousel from './blocks/gallery-carousel';
 import * as socialProfiles from './blocks/social-profiles';
+import * as button from './blocks/subscribe/button';
+import * as input from './blocks/subscribe/input';
+import * as subscribe from './blocks/subscribe';
 
 export function registerBlocks() {
 	[
@@ -106,6 +109,9 @@ export function registerBlocks() {
 		share,
 		stacked,
 		socialProfiles,
+		subscribe,
+		input,
+		button
 	].forEach( block => {
 		if ( ! block ) {
 			return;
