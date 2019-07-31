@@ -187,21 +187,21 @@ class CoBlocks_Block_Assets {
 			);
 		}
 
-		if ( has_block( $this->_slug . '/events' ) ) {
+		if ( has_block( $this->_slug . '/blogroll' ) ) {
 			wp_enqueue_script(
-				$this->_slug . '-events-pagination-front',
-				$dir . $this->_slug . '-events-pagination-front' . COBLOCKS_ASSET_SUFFIX . '.js',
-				array( 'jquery' ),
+				$this->_slug . '-slick-initializer-front',
+				$dir . 'coblocks-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array('jquery'),
 				$this->_version,
 				true
 			);
 		}
 
-		if ( has_block( $this->_slug . '/blog' ) ) {
+		if ( has_block( $this->_slug . '/events' ) ) {
 			wp_enqueue_script(
-				$this->_slug . '-slick-initializer-front',
-				$dir . 'coblocks-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
-				array('jquery'),
+				$this->_slug . '-events-pagination-front',
+				$dir . $this->_slug . '-events-pagination-front' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
 				$this->_version,
 				true
 			);

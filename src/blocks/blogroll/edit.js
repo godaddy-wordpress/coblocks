@@ -4,6 +4,8 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 import Slider from 'react-slick';
+import icons from './icons';
+import InspectorControls from './inspector';
 
 /**
  * External dependencies
@@ -35,18 +37,88 @@ import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
 import { withSelect } from '@wordpress/data';
 import blogIcons from './icons';
 import includes from 'lodash/includes';
+import { find } from 'lodash';
 import { Fragment } from 'react';
 import SlickSliderPanel from '../../components/slick-slider-panel';
+const TokenList = wp.tokenList;
 
 /**
  * Module Constants
  */
-const { InspectorControls, BlockControls, PlainText } = wp.editor;
+const { BlockControls, PlainText } = wp.editor;
 
 const CATEGORIES_LIST_QUERY = {
 	per_page: -1,
 };
 const MAX_POSTS_COLUMNS = 3;
+
+const layoutOptions = [
+	{
+		name: 'grid',
+		label: __( 'Grid' ),
+		icon: icons.layoutGridIcon,
+		iconWithImages: icons.layoutGridIconWithImages,
+		isDefault: true,
+	},
+	{
+		name: 'list',
+		label: __( 'List' ),
+		icon: icons.layoutListIcon,
+		iconWithImages: icons.layoutListIconWithImages,
+	},
+	{
+		name: 'carousel',
+		label: __( 'Carousel' ),
+		icon: icons.layoutCarouselIcon,
+		iconWithImages: icons.layoutCarouselIconWithImages,
+	},
+];
+
+/**
+ * Returns the active style from the given className.
+ *
+ * @param {Array} styles Block style variations.
+ * @param {string} className  Class name
+ *
+ * @return {Object?} The active style.
+ */
+function getActiveStyle( styles, className ) {
+	for ( const style of new TokenList( className ).values() ) {
+		if ( style.indexOf( 'is-style-' ) === -1 ) {
+			continue;
+		}
+
+		const potentialStyleName = style.substring( 9 );
+		const activeStyle = find( styles, { name: potentialStyleName } );
+
+		if ( activeStyle ) {
+			return activeStyle;
+		}
+	}
+
+	return find( styles, 'isDefault' );
+}
+
+/**
+ * Replaces the active style in the block's className.
+ *
+ * @param {string}  className   Class name.
+ * @param {Object?} activeStyle The replaced style.
+ * @param {Object}  newStyle    The replacing style.
+ *
+ * @return {string} The updated className.
+ */
+function replaceActiveStyle( className, activeStyle, newStyle ) {
+	const list = new TokenList( className );
+
+	if ( activeStyle ) {
+		list.remove( 'is-style-' + activeStyle.name );
+	}
+
+	list.add( 'is-style-' + newStyle.name );
+
+	return list.value;
+}
 
 class LatestPostsEdit extends Component {
 	constructor() {
@@ -91,12 +163,27 @@ class LatestPostsEdit extends Component {
 		this.isStillMounted = false;
 	}
 
+	updateStyle = style => {
+		const { className, attributes, setAttributes } = this.props;
+
+		const activeStyle = getActiveStyle( layoutOptions, className );
+		const updatedClassName = replaceActiveStyle(
+			attributes.className,
+			activeStyle,
+			style
+		);
+
+		setAttributes( { className: updatedClassName } );
+	};
+
 	render() {
 		const { attributes, setAttributes, className, latestPosts } = this.props;
 
 		const isListStyle = includes( className, 'is-style-list' );
 		const isGridStyle = includes( className, 'is-style-grid' );
 		const isCarouselStyle = includes( className, 'is-style-carousel' );
+
+		const activeStyle = getActiveStyle( layoutOptions, className );
 
 		const { categoriesList, editing } = this.state;
 		const {
@@ -107,9 +194,6 @@ class LatestPostsEdit extends Component {
 			postFeedType,
 			externalRssUrl,
 			columns,
-			order,
-			orderBy,
-			categories,
 			postsToShow,
 			excerptLength,
 			listPosition,
@@ -120,91 +204,28 @@ class LatestPostsEdit extends Component {
 			autoPlay,
 			autoPlaySpeed } = attributes;
 
-		const postSettingsControls = (
-			<PanelBody title={ __( 'Post Settings' ) }>
-				<ToggleControl
-					label={ __( 'Display Date' ) }
-					checked={ displayPostDate }
-					help={ __( 'Showing the publish date.' ) }
-					onChange={ ( value ) => setAttributes( { displayPostDate: value } ) }
-				/>
-				<ToggleControl
-					label={ __( 'Display Link' ) }
-					checked={ displayPostLink }
-					help={ __( 'Showing links to individual posts.' ) }
-					onChange={ ( value ) => setAttributes( { displayPostLink: value } ) }
-				/>
-				<ToggleControl
-					label={ __( 'Display Excerpt' ) }
-					checked={ displayPostContent }
-					help={ __( 'Showing the post excerpt.' ) }
-					onChange={ ( value ) => setAttributes( { displayPostContent: value } ) }
-				/>
-				{ displayPostContent &&
-					<RangeControl
-						label={ __( 'Max words in post excerpt' ) }
-						value={ excerptLength }
-						onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
-						min={ 10 }
-						max={ 100 }
-					/>
-				}
-			</PanelBody>
-		);
-
-		const sortingAndFiltering = (
-			<PanelBody title={ __( 'Sorting and Filtering' ) }>
-				<QueryControls
-					{ ...{ order, orderBy } }
-					numberOfItems={ postsToShow }
-					categoriesList={ categoriesList }
-					selectedCategoryId={ categories }
-					onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-					onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-					onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
-					onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
-				/>
-				{ isGridStyle &&
-				<RangeControl
-					label={ __( 'Columns' ) }
-					value={ columns }
-					onChange={ ( value ) => setAttributes( { columns: value } ) }
-					min={ 2 }
-					max={ 4 }
-					required
-				/>
-				}
-			</PanelBody>
-		);
-
-		const feedType = (
-			<PanelBody title={ __( 'Feed type' ) }>
-				<RadioControl
-					label={ __( 'Post Feed' ) }
-					selected={ postFeedType }
-					options={ [
-						{ label: 'My Blog', value: 'internal' },
-						{ label: 'External Blog Feed', value: 'external' },
-					] }
-					onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
-				/>
-				{ postFeedType === 'external' &&
-				<div>
-					<Button isLarge onClick={ () => this.setState( { editing: true } ) } >
-						{ 'Edit external RSS' }
-					</Button>
-				</div>
-				}
-			</PanelBody>
-		);
+		const editToolbarControls = [
+			{
+				icon: 'edit',
+				title: __( 'Edit Calendar URL' ),
+				onClick: () => this.setState( { editing: true } ),
+			},
+		];
 
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 		if ( ! hasPosts && postFeedType === 'internal' ) {
 			return (
 				<Fragment>
-					<InspectorControls>
-						{ feedType }
-					</InspectorControls>
+					<InspectorControls
+						{ ...this.props }
+						attributes={ attributes }
+						hasPosts={ hasPosts }
+						editing={ this.state.editing }
+						activeStyle={ activeStyle }
+						layoutOptions={ layoutOptions }
+						onUpdateStyle={ this.updateStyle }
+						categoriesList={ categoriesList }
+					/>
 					<Placeholder
 						icon="admin-post"
 						label={ __( 'Blog' ) }
@@ -252,9 +273,16 @@ class LatestPostsEdit extends Component {
 		if ( this.state.editing && postFeedType === 'external' ) {
 			return (
 				<Fragment>
-					<InspectorControls>
-						{ feedType }
-					</InspectorControls>
+					<InspectorControls
+						{ ...this.props }
+						attributes={ attributes }
+						hasPosts={ hasPosts }
+						editing={ this.state.editing }
+						activeStyle={ activeStyle }
+						layoutOptions={ layoutOptions }
+						onUpdateStyle={ this.updateStyle }
+						categoriesList={ categoriesList }
+					/>
 					<Placeholder
 						icon="rss"
 						label="RSS"
@@ -277,24 +305,31 @@ class LatestPostsEdit extends Component {
 
 		return (
 			<div>
-				<InspectorControls>
-					{ feedType }
-					{ postSettingsControls }
-					{ isCarouselStyle &&
-						<SlickSliderPanel { ...this.props } />
-					}
-					{ sortingAndFiltering }
-				</InspectorControls>
+				<InspectorControls
+					{ ...this.props }
+					attributes={ attributes }
+					hasPosts={ hasPosts }
+					editing={ this.state.editing }
+					activeStyle={ activeStyle }
+					layoutOptions={ layoutOptions }
+					onUpdateStyle={ this.updateStyle }
+					categoriesList={ categoriesList }
+				/>
 				<BlockControls>
 					{ isListStyle &&
 						<Toolbar
 							controls={ toolbarControls }
 						/>
 					}
+					{ postFeedType === 'external' &&
+						<Toolbar
+							controls={ editToolbarControls }
+						/>
+					}
 				</BlockControls>
 				{ postFeedType === 'external' &&
 					<ServerSideRender
-						block="coblocks/blog"
+						block="coblocks/blogroll"
 						attributes={ this.props.attributes }
 						className="coblocks-slick"
 					/>
