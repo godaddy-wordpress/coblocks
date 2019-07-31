@@ -16,7 +16,7 @@ import icons from './../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Block constants
@@ -39,9 +39,9 @@ const blockAttributes = {
 		default: 2,
 	},
 	contentAlign: {
-  		type: 'string',
-  		default: 'center',
-  	},
+		type: 'string',
+		default: 'center',
+	},
 };
 
 const settings = {
@@ -85,7 +85,6 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes } ) {
-
 		const {
 			contentAlign,
 			count,

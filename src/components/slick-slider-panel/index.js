@@ -39,6 +39,10 @@ class SlickSliderPanel extends Component {
 		return checked ? __( 'Showing slide navigation arrows.' ) : __( 'Toggle to show slide navigation arrows.' );
 	}
 
+	getInfiniteSlideHelp( checked ) {
+		return checked ? __( 'Looping the posts to infinity.' ) : __( 'Toggle to loop infinitely through posts.' );
+	}
+
 	getVisibleItemsHelp( ) {
 		return __( 'The number of visible items in the slider viewport.' );
 	}
@@ -54,6 +58,7 @@ class SlickSliderPanel extends Component {
 			autoPlaySpeed,
 			draggable,
 			visibleItems,
+			infiniteSlide,
 			prevNextButtons,
 		} = attributes;
 
@@ -78,6 +83,12 @@ class SlickSliderPanel extends Component {
 						checked={ !! draggable }
 						onChange={ () => setAttributes( { draggable: ! draggable } ) }
 						help={ this.getDraggableHelp }
+					/>
+					<ToggleControl
+						label={ __( 'Infinite slide' ) }
+						checked={ !! infiniteSlide }
+						onChange={ () => setAttributes( { infiniteSlide: ! infiniteSlide } ) }
+						help={ this.getAutoPlayHelp }
 					/>
 					<ToggleControl
 						label={ __( 'Arrow Navigation' ) }

@@ -7,9 +7,7 @@ function applyStyle( attributes, name ) {
 		textTransform,
 	} = attributes;
 
-	const allowedBlocks = [ 'core/heading' ];
-
-	let style = {
+	const style = {
 		lineHeight: lineHeight || null,
 		fontFamily: fontFamily || null,
 		fontWeight: fontWeight || null,
@@ -25,7 +23,7 @@ function applyStyle( attributes, name ) {
 		style.color = attributes.customTextColor || null;
 	}
 
-	if ( name == 'coblocks/column' && typeof attributes.width !== 'undefined' ) {
+	if ( name === 'coblocks/column' && typeof attributes.width !== 'undefined' ) {
 		style.width = attributes.width + '%';
 	}
 

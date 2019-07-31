@@ -7,12 +7,11 @@ import filter from 'lodash/filter';
 /**
  * Internal dependencies
  */
-import { title, icon } from './'
+import { title, icon } from './';
 import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
-import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
@@ -25,7 +24,7 @@ const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
 const { withNotices, Spinner } = wp.components;
-const { withColors, withFontSizes } = wp.editor;
+const { withColors, withFontSizes } = wp.blockEditor;
 const { isBlobURL } = wp.blob;
 
 class GalleryStackedEdit extends Component {
@@ -99,7 +98,7 @@ class GalleryStackedEdit extends Component {
 
 	onRemoveImage( index ) {
 		return () => {
-			const images = filter( this.props.attributes.images, ( img, i ) => index !== i );
+			const images = filter( this.props.attributes.images, ( _img, i ) => index !== i );
 			this.setState( { selectedImage: null } );
 			this.props.setAttributes( {
 				images,
@@ -132,9 +131,7 @@ class GalleryStackedEdit extends Component {
 			className,
 			fontSize,
 			isSelected,
-			noticeOperations,
 			noticeUI,
-			setAttributes,
 		} = this.props;
 
 		const {
@@ -144,9 +141,9 @@ class GalleryStackedEdit extends Component {
 			gutter,
 			gutterMobile,
 			images,
-			linkTo,
 			shadow,
 			backgroundImg,
+			linkTo,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -155,10 +152,10 @@ class GalleryStackedEdit extends Component {
 			...GalleryClasses( attributes ),
 			...BackgroundClasses( attributes ), {
 				'has-fullwidth-images': fullwidth,
-				[ `align${ align }` ] : align,
-				[ `has-margin` ] : gutter > 0,
-				[ `has-margin-bottom-${ gutter }` ] : gutter > 0,
-				[ `has-margin-bottom-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `align${ align }` ]: align,
+				'has-margin': gutter > 0,
+				[ `has-margin-bottom-${ gutter }` ]: gutter > 0,
+				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
 
@@ -188,7 +185,7 @@ class GalleryStackedEdit extends Component {
 				{ isSelected &&
 					<Inspector
 						{ ...this.props }
-				/>
+					/>
 				}
 				{ noticeUI }
 				<div className={ className }>
@@ -197,7 +194,7 @@ class GalleryStackedEdit extends Component {
 					<ul className={ innerClasses } style={ innerStyles }>
 						{ images.map( ( img, index ) => {
 							// translators: %1$d is the order number of the image, %2$d is the total number of images.
-							const ariaLabel = __( sprintf( 'image %1$d of %2$d in gallery', ( index + 1 ), images.length ) );
+							const ariaLabel = sprintf( __( 'image %1$d of %2$d in gallery' ), ( index + 1 ), images.length );
 
 							return (
 								<li className="coblocks-gallery--item" key={ img.id || img.url }>
@@ -205,6 +202,8 @@ class GalleryStackedEdit extends Component {
 										url={ img.url }
 										alt={ img.alt }
 										id={ img.id }
+										imgLink={ img.imgLink }
+										linkTo={ linkTo }
 										gutter={ gutter }
 										gutterMobile={ gutterMobile }
 										marginBottom={ true }
@@ -244,7 +243,7 @@ export default compose( [
 		publishSidebarOpened: select( 'core/edit-post' ).isPublishSidebarOpened(),
 		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
 	} ) ),
-	withColors( { backgroundColor : 'background-color', captionColor : 'color' } ),
+	withColors( { backgroundColor: 'background-color', captionColor: 'color' } ),
 	withFontSizes( 'fontSize' ),
 	withNotices,
 ] )( GalleryStackedEdit );

@@ -9,7 +9,7 @@ import applyWithColors from './colors';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
+const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.blockEditor;
 const { withFallbackStyles } = wp.components;
 
 /**
@@ -32,22 +32,14 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			backgroundColor,
 			fallbackBackgroundColor,
 			fallbackTextColor,
 			setBackgroundColor,
-			setBorderColor,
 			setTextColor,
 			textColor,
-			isSelected,
 		} = this.props;
 
 		return (
@@ -82,7 +74,7 @@ class Inspector extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

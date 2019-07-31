@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { ToggleControl } from '@wordpress/components';
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, required } ) => {
 	return (
@@ -14,7 +14,9 @@ const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, req
 					className="coblocks-label coblocks-field-label__input"
 					value={ label }
 					onChange={ value => {
-						resetFocus && resetFocus();
+						if ( resetFocus ) {
+							resetFocus();
+						}
 						setAttributes( { label: value } );
 					} }
 					placeholder={ __( 'Add label…' ) }

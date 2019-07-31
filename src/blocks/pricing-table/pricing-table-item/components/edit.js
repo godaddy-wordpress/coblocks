@@ -8,7 +8,6 @@ import classnames from 'classnames';
  */
 import applyWithColors from './colors';
 import Inspector from './inspector';
-import icons from './../../../../utils/icons';
 
 /**
  * WordPress dependencies
@@ -16,7 +15,7 @@ import icons from './../../../../utils/icons';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText, InnerBlocks } = wp.editor;
+const { RichText, InnerBlocks } = wp.blockEditor;
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -28,27 +27,18 @@ const { RichText, InnerBlocks } = wp.editor;
  * @type {string[]}
 */
 const ALLOWED_BLOCKS = [ 'core/button' ];
-const TEMPLATE = [ [ 'core/button', { text: __( 'Buy Now' ) } ] ];
+const TEMPLATE = [ [ 'core/button', { placeholder: __( 'Buy Now' ) } ] ];
 
 /**
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			className,
 			isSelected,
 			setAttributes,
-			setState,
-			setBackgroundColor,
-			setTextColor,
 			backgroundColor,
 			textColor,
 		} = this.props;
@@ -58,11 +48,12 @@ class Edit extends Component {
 			currency,
 			features,
 			title,
+			placeholder,
 		} = attributes;
 
 		const formattingControls = [ 'bold', 'italic', 'strikethrough' ];
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Inspector
@@ -88,7 +79,7 @@ class Edit extends Component {
 						className="wp-block-coblocks-pricing-table-item__title"
 						onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
 						value={ title }
-						placeholder={ __( 'Plan A' ) }
+						placeholder={ placeholder || __( 'Plan A' ) }
 						formattingControls={ formattingControls }
 						keepPlaceholderOnFocus
 					/>
@@ -129,9 +120,9 @@ class Edit extends Component {
 					/>
 				</div>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

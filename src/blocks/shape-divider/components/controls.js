@@ -8,17 +8,11 @@ import icons from './icons';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { BlockControls } = wp.editor;
+const { BlockControls } = wp.blockEditor;
 const { Toolbar } = wp.components;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -39,12 +33,12 @@ class Controls extends Component {
 			title: __( 'Flip vertically' ),
 			isActive: !! horizontalFlip,
 			onClick: () => setAttributes( { horizontalFlip: ! horizontalFlip } ),
-		}, ];
+		} ];
 
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar controls={ toolbarControls }/>
+					<Toolbar controls={ toolbarControls } />
 				</BlockControls>
 			</Fragment>
 		);

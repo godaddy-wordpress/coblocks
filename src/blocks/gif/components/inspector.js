@@ -3,15 +3,14 @@
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls } = wp.editor;
+const { InspectorControls } = wp.blockEditor;
 const { PanelBody, TextareaControl, ExternalLink } = wp.components;
 
 /**
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.updateAlt = this.updateAlt.bind( this );
 	}
@@ -21,15 +20,8 @@ class Inspector extends Component {
 	}
 
 	render() {
-
-		const {
-			attributes,
-			setAttributes
-		} = this.props;
-
-		const {
-			alt,
-		} = attributes;
+		const { attributes } = this.props;
+		const { alt } = attributes;
 
 		return (
 			<Fragment>
@@ -39,7 +31,7 @@ class Inspector extends Component {
 							label={ __( 'Alt Text (Alternative Text)' ) }
 							value={ alt }
 							onChange={ this.updateAlt }
-							help={ 
+							help={
 								<Fragment>
 									<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
 										{ __( 'Describe the purpose of the image' ) }
@@ -53,6 +45,6 @@ class Inspector extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Inspector;

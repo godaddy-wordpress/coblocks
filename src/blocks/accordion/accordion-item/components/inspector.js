@@ -9,7 +9,7 @@ import applyWithColors from './colors';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.editor;
+const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, withFallbackStyles, ToggleControl } = wp.components;
 
 /**
@@ -30,26 +30,19 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	getDisplayOpenHelp( checked ) {
 		return checked ? __( 'Accordion item is open by default.' ) : __( 'Toggle to set this accordion item to be open by default.' );
 	}
 
 	setBorderColor() {
-
 		this.props.setAttributes( {
 			borderColor: this.props.backgroundColor.color,
-		} )
+		} );
 
 		return this.props.setBackgroundColor;
 	}
 
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -57,7 +50,6 @@ class Inspector extends Component {
 			textColor,
 			fallbackBackgroundColor,
 			fallbackTextColor,
-			setBackgroundColor,
 			setTextColor,
 		} = this.props;
 
@@ -73,7 +65,7 @@ class Inspector extends Component {
 							label={ __( 'Display Open' ) }
 							checked={ !! open }
 							help={ this.getDisplayOpenHelp }
-							onChange={ () => setAttributes( {  open: ! open } ) }
+							onChange={ () => setAttributes( { open: ! open } ) }
 						/>
 					</PanelBody>
 					<PanelColorSettings
@@ -92,20 +84,20 @@ class Inspector extends Component {
 							},
 						] }
 					>
-					<ContrastChecker
-						{ ...{
-							textColor: textColor.color,
-							backgroundColor: backgroundColor.color,
-							fallbackTextColor,
-							fallbackBackgroundColor,
-						} }
-					/>
+						<ContrastChecker
+							{ ...{
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackTextColor,
+								fallbackBackgroundColor,
+							} }
+						/>
 					</PanelColorSettings>
 				</InspectorControls>
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

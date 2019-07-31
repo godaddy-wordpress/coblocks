@@ -1,7 +1,3 @@
-/**
- * External dependencies
- */
-import classnames from 'classnames';
 
 /**
  * Internal dependencies
@@ -15,7 +11,7 @@ import icons from './icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Block constants

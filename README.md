@@ -16,7 +16,7 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Alert Block
 -   Author Profile Block
 -   Buttons Block
--   Carousel Gallery Block (New!)
+-   Carousel Gallery Block
 -   Click to Tweet Block
 -   Dynamic Separator Block
 -   Features Block
@@ -26,18 +26,17 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Hero Block
 -   Highlight Block
 -   Icon Block
+-   Logos & Badges Block (New!)
 -   Map Block
--   Masonry Gallery Block (New!)
+-   Masonry Gallery Block
 -   Media Card Block
 -   Pricing Table Block
 -   Resizable Row/Columns Blocks
+-   Services Block (New!)
 -   Shape Divider Block
+-   Social Profiles Block (New!)
 -   Social Sharing Block
--   Stacked Gallery Block (New!)
-
-### Our Block Manager
-
-Easily toggle off any WordPress block in the Gutenberg editor with the new CoBlocks Block Manager. No more unnecessary WordPress Gutenberg blocks standing in the way for you, or your clients.
+-   Stacked Gallery Block
 
 ### Connect
 
@@ -65,7 +64,7 @@ Need help? This is a developer's portal for CoBlocks and should not be used for 
 
 ## Contributions
 
-Please read the [guidelines for contributing](https://github.com/godaddy/coblocks/blob/master/CONTRIBUTING.md) to CoBlocks. Anyone is welcome to contribute. If you find a 🐞 or an issue, [create an issue](https://github.com/godaddy/coblocks/issues/new). Here are ways to contribute:
+Please read the [guidelines for contributing](https://github.com/godaddy/coblocks/blob/master/.github/CONTRIBUTING.md) to CoBlocks. Anyone is welcome to contribute. If you find a 🐞 or an issue, [create an issue](https://github.com/godaddy/coblocks/issues/new). Here are ways to contribute:
 
 1. Raise an [issue](https://github.com/godaddy/coblocks/issues/new)
 2. Send a pull request with your bug fixes and/or new features

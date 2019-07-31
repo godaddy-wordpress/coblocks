@@ -11,15 +11,14 @@ import './styles/editor.scss';
 import icons from './icons';
 import edit from './edit';
 import transforms from './transforms';
-import { BackgroundStyles, BackgroundAttributes, BackgroundVideo, BackgroundClasses } from '../../components/background';
+import { BackgroundStyles, BackgroundAttributes } from '../../components/background';
 import { GalleryAttributes, GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
-const { getColorClassName, RichText } = wp.editor;
+const { getColorClassName, RichText } = wp.blockEditor;
 
 /**
  * Block constants
@@ -64,6 +63,14 @@ const blockAttributes = {
 		type: 'boolean',
 		default: false,
 	},
+	thumbnails: {
+		type: 'boolean',
+		default: false,
+	},
+	responsiveHeight: {
+		type: 'boolean',
+		default: false,
+	},
 	prevNextButtons: {
 		type: 'boolean',
 		default: true,
@@ -80,6 +87,15 @@ const blockAttributes = {
 		type: 'boolean',
 		default: true,
 	},
+	radiusThumbs: {
+		type: 'number',
+		default: 0,
+	},
+	thumbSize: {
+		type: 'string',
+		default: 'med',
+	},
+
 };
 
 const settings = {
@@ -87,6 +103,8 @@ const settings = {
 	title: title,
 
 	description: __( 'Display multiple images in a beautiful carousel gallery.' ),
+
+	category: 'coblocks-galleries',
 
 	keywords: keywords,
 
@@ -101,7 +119,6 @@ const settings = {
 	edit,
 
 	save( { attributes, className } ) {
-
 		const {
 			autoPlay,
 			autoPlaySpeed,
@@ -112,8 +129,12 @@ const settings = {
 			gutter,
 			gutterMobile,
 			height,
+			radiusThumbs,
+			thumbSize,
 			images,
 			pageDots,
+			thumbnails,
+			responsiveHeight,
 			prevNextButtons,
 			primaryCaption,
 		} = attributes;
@@ -121,7 +142,7 @@ const settings = {
 		const innerClasses = classnames(
 			'is-cropped',
 			...GalleryClasses( attributes ), {
-				[ `has-horizontal-gutter` ] : gutter > 0,
+				'has-horizontal-gutter': gutter > 0,
 			}
 		);
 
@@ -130,7 +151,7 @@ const settings = {
 		};
 
 		const flickityClasses = classnames(
-			`has-carousel`,
+			'has-carousel',
 			`has-carousel-${ gridSize }`, {}
 		);
 
@@ -140,10 +161,10 @@ const settings = {
 
 		const figureClasses = classnames(
 			'coblocks-gallery--figure', {
-				[ `has-margin-left-${ gutter }` ] : gutter > 0,
-				[ `has-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
-				[ `has-margin-right-${ gutter }` ] : gutter > 0,
-				[ `has-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-margin-left-${ gutter }` ]: gutter > 0,
+				[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+				[ `has-margin-right-${ gutter }` ]: gutter > 0,
+				[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
 
@@ -151,13 +172,15 @@ const settings = {
 			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
 			draggable: draggable,
 			pageDots: pageDots,
+			thumbnails: thumbnails,
+			responsiveHeight: responsiveHeight,
 			prevNextButtons: prevNextButtons,
 			wrapAround: true,
 			arrowShape: {
 				x0: 10,
 				x1: 60, y1: 50,
 				x2: 65, y2: 45,
-				x3: 20
+				x3: 20,
 			},
 		};
 
@@ -172,6 +195,40 @@ const settings = {
 			}
 		);
 
+		const navClasses = classnames(
+			'carousel-nav',
+			`has-thumbnails-${ thumbSize }`, {
+				[ `has-border-radius-${ radiusThumbs }` ] : radiusThumbs > 0,
+				[ `has-margin-top-${ gutter }` ] : gutter > 0,
+				[ `has-margin-top-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-negative-margin-left-${ gutter }` ] : gutter > 0,
+				[ `has-negative-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-negative-margin-right-${ gutter }` ] : gutter > 0,
+				[ `has-negative-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+			}
+		);
+
+		const navFigureClasses = classnames(
+			'blockgallery--figure', {
+				[ `has-margin-left-${ gutter }` ] : gutter > 0,
+				[ `has-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-margin-right-${ gutter }` ] : gutter > 0,
+				[ `has-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+			}
+		);
+
+		const navOptions = {
+			asNavFor: '.has-carousel',
+			autoPlay: false,
+			contain: true,
+			cellAlign: 'left',
+			pageDots: false,
+			thumbnails: false,
+			draggable: draggable,
+			prevNextButtons: false,
+			wrapAround: false,
+		};
+
 		const captionStyles = {
 			color: captionColorClass ? undefined : customCaptionColor,
 		};
@@ -182,7 +239,7 @@ const settings = {
 		}
 
 		return (
-			<div className={ className }>
+			<div className={ className } >
 				<div
 					className={ innerClasses }
 					style={ innerStyles }
@@ -193,7 +250,6 @@ const settings = {
 						data-flickity={ JSON.stringify( flickityOptions ) }
 					>
 						{ images.map( ( image ) => {
-
 							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
 
 							return (
@@ -205,11 +261,28 @@ const settings = {
 							);
 						} ) }
 					</div>
+					{ thumbnails ?
+						<div
+							className={ navClasses }
+							data-flickity={ JSON.stringify( navOptions ) }
+						>
+							{ images.map( ( image ) => {
+								const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
+								return (
+									<div key={ image.id || image.url } className="blockgallery--item-thumbnail">
+										<figure className={ navFigureClasses }>
+											{ img }
+										</figure>
+									</div>
+								);
+							} ) }
+						</div> : null
+					}
 				</div>
-				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles }/> }
+				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles } /> }
 			</div>
 		);
 	},
-}
+};
 
 export { name, title, icon, settings };

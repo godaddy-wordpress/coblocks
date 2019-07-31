@@ -11,15 +11,14 @@ import ResponsiveBaseControl from '../../../components/responsive-base-control/'
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InspectorControls, PanelColorSettings } = wp.editor;
-const { PanelBody, BaseControl, ToggleControl, RangeControl } = wp.components;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
+const { PanelBody } = wp.components;
 
 /**
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.setSizeControl = this.setSizeControl.bind( this );
@@ -30,16 +29,12 @@ class Inspector extends Component {
 	}
 
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
 			setColor,
 			color,
-			fallbackColor,
-			isSelected,
 			backgroundColor,
-			fallbackBackgroundColor,
 			setBackgroundColor,
 		} = this.props;
 
@@ -53,7 +48,6 @@ class Inspector extends Component {
 			syncHeight,
 			horizontalFlip,
 			verticalFlip,
-			syncHeightAlt,
 		} = attributes;
 
 		return (
@@ -65,9 +59,15 @@ class Inspector extends Component {
 							height={ shapeHeight }
 							heightTablet={ shapeHeightTablet }
 							heightMobile={ shapeHeightMobile }
-							onChange={ ( event ) => { setAttributes( { shapeHeight: parseInt( event.target.value, 10 ) } ) } }
-							onChangeTablet={ ( event ) => { setAttributes( { shapeHeightTablet: parseInt( event.target.value, 10 ) } ) } }
-							onChangeMobile={ ( event ) => { setAttributes( { shapeHeightMobile: parseInt( event.target.value, 10 ) } ) } }
+							onChange={ ( event ) => {
+								setAttributes( { shapeHeight: parseInt( event.target.value, 10 ) } );
+							} }
+							onChangeTablet={ ( event ) => {
+								setAttributes( { shapeHeightTablet: parseInt( event.target.value, 10 ) } );
+							} }
+							onChangeMobile={ ( event ) => {
+								setAttributes( { shapeHeightMobile: parseInt( event.target.value, 10 ) } );
+							} }
 							sync={ syncHeight }
 							type="shapeHeight"
 							min="40"
@@ -77,9 +77,15 @@ class Inspector extends Component {
 							height={ backgroundHeight }
 							heightTablet={ backgroundHeightTablet }
 							heightMobile={ backgroundHeightMobile }
-							onChange={ ( event ) => { setAttributes( { backgroundHeight: parseInt( event.target.value, 10 ) } ) } }
-							onChangeTablet={ ( event ) => { setAttributes( { backgroundHeightTablet: parseInt( event.target.value, 10 ) } ) } }
-							onChangeMobile={ ( event ) => { setAttributes( { backgroundHeightMobile: parseInt( event.target.value, 10 ) } ) } }
+							onChange={ ( event ) => {
+								setAttributes( { backgroundHeight: parseInt( event.target.value, 10 ) } );
+							} }
+							onChangeTablet={ ( event ) => {
+								setAttributes( { backgroundHeightTablet: parseInt( event.target.value, 10 ) } );
+							} }
+							onChangeMobile={ ( event ) => {
+								setAttributes( { backgroundHeightMobile: parseInt( event.target.value, 10 ) } );
+							} }
 							sync={ syncHeight }
 							type="backgroundHeight"
 							min="20"
@@ -88,8 +94,8 @@ class Inspector extends Component {
 							label={ __( 'Orientation' ) }
 							horizontalFlip={ horizontalFlip }
 							verticalFlip={ verticalFlip }
-							onHorizontalFlip={ () => setAttributes( {  horizontalFlip: ! horizontalFlip } ) }
-							onVerticalFlip={ () => setAttributes( {  verticalFlip: ! verticalFlip } ) }
+							onHorizontalFlip={ () => setAttributes( { horizontalFlip: ! horizontalFlip } ) }
+							onVerticalFlip={ () => setAttributes( { verticalFlip: ! verticalFlip } ) }
 						/>
 					</PanelBody>
 					<PanelColorSettings

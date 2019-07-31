@@ -1,8 +1,3 @@
-/**
- * External dependencies
- */
-import classnames from 'classnames';
-import map from 'lodash/map';
 
 /**
  * Internal dependencies
@@ -17,7 +12,7 @@ import icons from './../../utils/icons';
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Block constants
@@ -81,13 +76,12 @@ const settings = {
 					} );
 				},
 			} ) ),
-		]
+		],
 	},
 
 	edit: Edit,
 
 	save() {
-
 		return (
 			<div>
 				<InnerBlocks.Content />

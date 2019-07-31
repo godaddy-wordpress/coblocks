@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import map from 'lodash/map';
 
 /**
  * Internal dependencies
@@ -18,8 +17,8 @@ import icons from './components/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock, getBlockType } = wp.blocks;
-const { InnerBlocks, getColorClassName } = wp.editor;
+const { createBlock } = wp.blocks;
+const { InnerBlocks, getColorClassName } = wp.blockEditor;
 
 /**
  * Block constants
@@ -31,7 +30,6 @@ const title = __( 'Features' );
 const icon = icons.features;
 
 const keywords = [
-	__( 'icons' ),
 	__( 'services' ),
 	__( 'coblocks' ),
 ];
@@ -54,7 +52,6 @@ const blockAttributes = {
 };
 
 const settings = {
-
 	title: title,
 
 	description: __( 'Add up to three columns of small notes for your product or service.' ),
@@ -76,7 +73,7 @@ const settings = {
 				transform: function( content ) {
 					return createBlock( `coblocks/${ name }`, {
 						content,
-						columns: 1
+						columns: 1,
 					} );
 				},
 			},
@@ -89,7 +86,7 @@ const settings = {
 					} );
 				},
 			},
-			...[ 2, 3 ].map( ( columns ) => ( {
+			...[ 2, 3 ].map( columns => ( {
 				type: 'prefix',
 				prefix: Array( columns + 1 ).join( ':' ) + 'features',
 				transform( content ) {
@@ -99,7 +96,7 @@ const settings = {
 					} );
 				},
 			} ) ),
-		]
+		],
 	},
 
 	edit: Edit,
@@ -109,53 +106,45 @@ const settings = {
 
 		// If no layout is seleted, return the following.
 		if ( ! layout ) {
-			return { 'data-id': id, 'data-columns': columns, };
+			return { 'data-id': id, 'data-columns': columns };
 		}
 
 		return { 'data-id': id, 'data-columns': columns };
 	},
 
 	save( { attributes, className } ) {
-
 		const {
 			coblocks,
-			backgroundColor,
-			backgroundImg,
 			columns,
 			contentAlign,
-			customBackgroundColor,
 			customTextColor,
 			textColor,
 			gutter,
 			marginSize,
 			paddingSize,
-			focalPoint,
-			hasParallax,
-			backgroundType,
 		} = attributes;
 
 		// Body color class and styles.
 		const textClass = getColorClassName( 'color', textColor );
-		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const classes = classnames(
 			className, {
-				[ `coblocks-features-${ coblocks.id }` ] : coblocks && ( typeof coblocks.id != 'undefined' ),
+				[ `coblocks-features-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
 			}
 		);
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-features__inner',
 			...BackgroundClasses( attributes ), {
-			'has-text-color': textColor || customTextColor,
-			[ textClass ]: textClass,
-			'has-padding': paddingSize && paddingSize != 'no',
-			[ `has-${ paddingSize }-padding` ] : paddingSize && ( paddingSize != 'advanced' ),
-			'has-margin': marginSize && marginSize != 'no',
-			[ `has-${ marginSize }-margin` ] : marginSize && ( marginSize != 'advanced' ),
-			[ `has-${ gutter }-gutter` ] : gutter,
-			[ `has-${ contentAlign }-content` ]: contentAlign,
-		} );
+				'has-text-color': textColor || customTextColor,
+				[ textClass ]: textClass,
+				'has-padding': paddingSize && paddingSize !== 'no',
+				[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
+				'has-margin': marginSize && marginSize !== 'no',
+				[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
+				[ `has-${ gutter }-gutter` ]: gutter,
+				[ `has-${ contentAlign }-content` ]: contentAlign,
+			} );
 
 		const innerStyles = {
 			...BackgroundStyles( attributes ),
@@ -163,7 +152,7 @@ const settings = {
 		};
 
 		return (
-			<div className={ classes } data-columns={ columns } >
+			<div className={ classes } data-columns={ columns }>
 				<div className={ innerClasses } style={ innerStyles }>
 					{ BackgroundVideo( attributes ) }
 					<InnerBlocks.Content />

@@ -7,17 +7,15 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import * as helper from './../../utils/helper';
-import GalleryUploader from './gallery-uploader';
 
 /**
  * WordPress dependencies
  */
 const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { MediaPlaceholder, BlockIcon } = wp.editor;
+const { Component } = wp.element;
+const { MediaPlaceholder, BlockIcon } = wp.blockEditor;
 
 class GalleryPlaceholder extends Component {
-
 	constructor() {
 		super( ...arguments );
 		this.onSelectImages = this.onSelectImages.bind( this );
@@ -30,10 +28,8 @@ class GalleryPlaceholder extends Component {
 	}
 
 	render() {
-
 		const {
 			attributes,
-			className,
 			gutter,
 			gutterMobile,
 			isSelected,
@@ -53,15 +49,15 @@ class GalleryPlaceholder extends Component {
 
 		const classes = classnames(
 			'coblocks-gallery--figure', {
-			[ `has-margin-top-${ gutter }` ] : marginTop && gutter > 0,
-			[ `has-margin-top-mobile-${ gutterMobile }` ] : marginTop && gutterMobile > 0,
-			[ `has-margin-right-${ gutter }` ] : marginRight && gutter > 0,
-			[ `has-margin-right-mobile-${ gutterMobile }` ] : marginRight && gutterMobile > 0,
-			[ `has-margin-bottom-${ gutter }` ] : marginBottom && gutter > 0,
-			[ `has-margin-bottom-mobile-${ gutterMobile }` ] : marginBottom && gutterMobile > 0,
-			[ `has-margin-left-${ gutter }` ] : marginLeft && gutter > 0,
-			[ `has-margin-left-mobile-${ gutterMobile }` ] : marginLeft && gutterMobile > 0,
-		} );
+				[ `has-margin-top-${ gutter }` ]: marginTop && gutter > 0,
+				[ `has-margin-top-mobile-${ gutterMobile }` ]: marginTop && gutterMobile > 0,
+				[ `has-margin-right-${ gutter }` ]: marginRight && gutter > 0,
+				[ `has-margin-right-mobile-${ gutterMobile }` ]: marginRight && gutterMobile > 0,
+				[ `has-margin-bottom-${ gutter }` ]: marginBottom && gutter > 0,
+				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: marginBottom && gutterMobile > 0,
+				[ `has-margin-left-${ gutter }` ]: marginLeft && gutter > 0,
+				[ `has-margin-left-mobile-${ gutterMobile }` ]: marginLeft && gutterMobile > 0,
+			} );
 
 		return (
 			<div className={ classes }>
@@ -88,4 +84,3 @@ class GalleryPlaceholder extends Component {
 }
 
 export default GalleryPlaceholder;
-

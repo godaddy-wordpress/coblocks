@@ -16,15 +16,14 @@ import Inspector from './inspector';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText, withFontSizes } = wp.editor;
+const { RichText, withFontSizes } = wp.blockEditor;
 const { createBlock } = wp.blocks;
 
 /**
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.splitBlock = this.splitBlock.bind( this );
 	}
@@ -74,20 +73,15 @@ class Edit extends Component {
 	}
 
 	render() {
-
 		const {
 			attributes,
 			backgroundColor,
 			className,
-			insertBlocksAfter,
 			isSelected,
 			mergeBlocks,
 			onReplace,
 			setAttributes,
-			setBackgroundColor,
-			setTextColor,
 			textColor,
-			fallbackFontSize,
 			fontSize,
 		} = this.props;
 
@@ -96,7 +90,7 @@ class Edit extends Component {
 			textAlign,
 		} = attributes;
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Controls
@@ -127,17 +121,17 @@ class Edit extends Component {
 							}
 						) }
 						style={ {
-								backgroundColor: backgroundColor.color,
-								color: textColor.color,
-								fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
+							backgroundColor: backgroundColor.color,
+							color: textColor.color,
+							fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 						} }
 						keepPlaceholderOnFocus
 					/>
 				</p>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

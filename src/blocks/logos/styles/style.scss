@@ -1,0 +1,29 @@
+.wp-block-coblocks-logos {
+	&.has-filter-grayscale img {
+		filter: brightness(0) grayscale(1);
+	}
+
+	&__row {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+
+		@media (max-width: #{ ($break-small) }) {
+			flex-wrap: wrap;
+		}
+
+		& + & {
+			margin-top: 2em;
+		}
+
+		> div {
+			padding: 0 1.5em;
+		}
+
+		img {
+			vertical-align: middle;
+			width: 100%;
+		}
+	}
+}

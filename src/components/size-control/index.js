@@ -19,19 +19,17 @@ const { ButtonGroup, Button } = wp.components;
 const { withSelect } = wp.data;
 
 class SizeControl extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.getSizes = this.getSizes.bind( this );
 	}
 
-	componentDidUpdate( prevProps ) {
-
-		const { align, columns, gridSize } = this.props.attributes;
+	componentDidUpdate() {
+		const { align, columns } = this.props.attributes;
 
 		// Prevent small and medium column grid sizes without wide or full alignments.
-		if ( align == undefined ) {
-			if ( columns == 'med' || columns == 'sml' ) {
+		if ( align === undefined ) {
+			if ( columns === 'med' || columns === 'sml' ) {
 				this.props.setAttributes( {
 					gridSize: 'xlrg',
 				} );
@@ -64,11 +62,11 @@ class SizeControl extends Component {
 
 		const standardSizes = [
 			{
-				shortName: wideControlsEnabled == true && 'wide' == align || 'full' == align ? 'L' : __( 'Large' ),
+				shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'L' : __( 'Large' ),
 				size: 'lrg',
 			},
 			{
-				shortName: wideControlsEnabled == true && 'wide' == align || 'full' == align ? 'XL' : __( 'Extra Large' ),
+				shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'XL' : __( 'Extra Large' ),
 				size: 'xlrg',
 			},
 		];
@@ -88,8 +86,7 @@ class SizeControl extends Component {
 		];
 
 		// If this is a standard size settings, not a complex grid sizer.
-		if ( 'smlx' == type ) {
-
+		if ( 'smlx' === type ) {
 			const standardSizes = [
 				{
 					shortName: 'S',
@@ -113,15 +110,14 @@ class SizeControl extends Component {
 		}
 
 		// If this is a standard size settings, not a complex grid sizer.
-		if ( 'reverse-grid' == type ) {
-
+		if ( 'reverse-grid' === type ) {
 			const standardSizes = [
 				{
-					shortName: wideControlsEnabled == true && 'wide' == align || 'full' == align ? 'S' : __( 'Small' ),
+					shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'S' : __( 'Small' ),
 					size: 'sml',
 				},
 				{
-					shortName: wideControlsEnabled == true && 'wide' == align || 'full' == align ? 'M' : __( 'Medium' ),
+					shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'M' : __( 'Medium' ),
 					size: 'med',
 				},
 			];
@@ -140,31 +136,28 @@ class SizeControl extends Component {
 				},
 			];
 
-			if ( 'wide' == align ) {
+			if ( 'wide' === align ) {
 				return standardSizes.concat( wideSizes );
-			} else if ( 'full' == align ) {
+			} else if ( 'full' === align ) {
 				return standardSizes.concat( wideSizes ).concat( fullSizes );
-			} else {
-				return standardSizes;
 			}
+			return standardSizes;
 		}
 
 		// If this is a standard size settings, not a complex grid sizer.
-		if ( 'grid' != type ) {
+		if ( 'grid' !== type ) {
 			return defaultSizes;
 		}
 
-		if ( wideControlsEnabled == true && 'wide' == align ) {
+		if ( wideControlsEnabled === true && 'wide' === align ) {
 			return wideSizes.concat( standardSizes );
-		} else if ( wideControlsEnabled == true && 'full' == align ) {
+		} else if ( wideControlsEnabled === true && 'full' === align ) {
 			return fullSizes.concat( wideSizes ).concat( standardSizes );
-		} else {
-			return standardSizes;
 		}
+		return standardSizes;
 	}
 
 	render() {
-
 		const {
 			onChange,
 			value,
@@ -176,7 +169,7 @@ class SizeControl extends Component {
 
 		const classes = classnames(
 			'components-coblocks-size-control', {
-				[ className ] : className,
+				[ className ]: className,
 			}
 		);
 

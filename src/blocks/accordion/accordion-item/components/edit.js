@@ -16,12 +16,12 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { InnerBlocks, RichText } = wp.editor;
+const { InnerBlocks, RichText } = wp.blockEditor;
 
 /**
  * Constants
  */
-const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/list', 'core/image', 'core/columns', 'core/column', 'coblocks/row', 'coblocks/column', 'coblocks/highlight', 'coblocks/alert',  'coblocks/social' ];
+const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/list', 'core/image', 'core/columns', 'core/column', 'coblocks/row', 'coblocks/column', 'coblocks/highlight', 'coblocks/alert', 'coblocks/social' ];
 
 const TEMPLATE = [ [ 'core/paragraph', { placeholder: 'Add content...' } ] ];
 
@@ -29,9 +29,7 @@ const TEMPLATE = [ [ 'core/paragraph', { placeholder: 'Add content...' } ] ];
  * Block edit function
  */
 class Edit extends Component {
-
 	render() {
-
 		const {
 			attributes,
 			backgroundColor,
@@ -42,12 +40,9 @@ class Edit extends Component {
 			textColor,
 		} = this.props;
 
-		const {
-			open,
-			title,
-		} = attributes;
+		const { title } = attributes;
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Controls
@@ -84,7 +79,7 @@ class Edit extends Component {
 						onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
 						keepPlaceholderOnFocus
 						onRemove={ ( forward ) => {
-							const hasEmptyTitle = typeof title == 'undefined' || ( typeof title != 'undefined' && title.length == 0 );
+							const hasEmptyTitle = typeof title === 'undefined' || ( typeof title !== 'undefined' && title.length === 0 );
 
 							if ( ! forward && hasEmptyTitle ) {
 								onReplace( [] );
@@ -92,9 +87,9 @@ class Edit extends Component {
 						} }
 					/>
 					<div
-						className={ `${ className }__content`  }
+						className={ `${ className }__content` }
 						style={ { borderColor: backgroundColor.color } }
-						>
+					>
 						<InnerBlocks
 							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ TEMPLATE }
@@ -103,7 +98,7 @@ class Edit extends Component {
 					</div>
 				</div>
 			</Fragment>
-		];
+		);
 	}
 }
 

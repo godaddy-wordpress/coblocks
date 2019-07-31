@@ -74,6 +74,13 @@
   visibility: hidden;
 }
 
+
+.slick-slide {
+  >div {
+	height: 100%;
+  }
+}
+
 .slick-slide
 {
   display: none;

@@ -15,7 +15,7 @@ import icons from './../../utils/icons';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 const { Fragment } = wp.element;
 
 /**
@@ -87,7 +87,6 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes } ) {
-
 		const {
 			url,
 			alt,

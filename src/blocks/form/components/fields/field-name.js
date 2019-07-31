@@ -13,7 +13,7 @@ import CoBlocksFieldLabel from './field-label';
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { InspectorControls, RichText } = wp.editor;
+const { InspectorControls, RichText } = wp.blockEditor;
 const { PanelBody, TextControl, ToggleControl } = wp.components;
 
 function CoBlocksFieldName( {
@@ -44,7 +44,7 @@ function CoBlocksFieldName( {
 				{ hasLastName ?
 					<div className="coblocks-form__inline-fields">
 						<div className="coblocks-form__inline-field">
-							<TextControl className="coblocks-field"/>
+							<TextControl className="coblocks-field" />
 							<RichText
 								tagName="small"
 								className="coblocks-form__subtext"
@@ -56,7 +56,7 @@ function CoBlocksFieldName( {
 							/>
 						</div>
 						<div className="coblocks-form__inline-field">
-							<TextControl className="coblocks-field"/>
+							<TextControl className="coblocks-field" />
 							<RichText
 								tagName="small"
 								className="coblocks-form__subtext"
@@ -67,9 +67,8 @@ function CoBlocksFieldName( {
 								placeholder={ __( 'Add label…' ) }
 							/>
 						</div>
-					</div>
-				:
-					<TextControl/>
+					</div>				:
+					<TextControl />
 				}
 			</div>
 			<InspectorControls>

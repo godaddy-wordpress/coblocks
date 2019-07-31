@@ -1,0 +1,47 @@
+.wp-block-coblocks-subscribe {
+  padding: 20px 0;
+
+  .wp-block-coblocks-subscribe__inner-form-wrapper {
+    display: flex;
+    justify-content: center;
+
+    .block-editor-block-list__block .block-editor-block-list__layout {
+      display: flex;
+    }
+
+    .input-wrapper {
+      width: auto;
+      flex-grow: 1;
+      margin-right: 24px;
+
+        input {
+          width: 100%;
+          border: none;
+          padding: 23px 16px 7px;
+          border-radius: 0;
+          position: relative;
+          box-sizing: border-box;
+          font-size: 14px;
+
+          &::placeholder {
+            color: #fff;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+    }
+
+    .sign-up-button {
+      display: block;
+      text-align: center;
+      padding: 16px 48px;
+      text-transform: uppercase;
+      border: none;
+      font-size: 14px;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { withColors } = wp.editor;
+const { withColors } = wp.blockEditor;
 
 /**
  * Generate block colors.

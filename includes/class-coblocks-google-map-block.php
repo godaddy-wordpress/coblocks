@@ -58,7 +58,7 @@ class CoBlocks_Google_Map_Block {
 	/**
 	 * The Constructor.
 	 */
-	private function __construct() {
+	public function __construct() {
 		$this->_version = COBLOCKS_VERSION;
 		$this->_slug    = 'coblocks';
 		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
@@ -92,15 +92,19 @@ class CoBlocks_Google_Map_Block {
 				true
 			);
 
-			wp_enqueue_script(
-				$this->_slug . '-google-maps-api',
-				'https://maps.googleapis.com/maps/api/js?key=' . esc_attr( $key ),
-				array( $this->_slug . '-google-maps' ),
-				$this->_version,
-				true
-			);
+			if ( ! is_admin() ) {
 
-			wp_localize_script( $this->_slug . '-google-maps', 'baAtts', array( 'url' => $this->_url ) );
+				wp_enqueue_script(
+					$this->_slug . '-google-maps-api',
+					'https://maps.googleapis.com/maps/api/js?key=' . esc_attr( $key ),
+					array( $this->_slug . '-google-maps' ),
+					$this->_version,
+					true
+				);
+
+			}
+
+			wp_localize_script( $this->_slug . '-google-maps', 'coblocksGoogleMaps', array( 'url' => $this->_url ) );
 		}
 	}
 

@@ -14,11 +14,8 @@ import svgs from './svgs';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { RichText, withFontSizes } = wp.editor;
-const { createBlock } = wp.blocks;
 const { ResizableBox } = wp.components;
 const { withSelect } = wp.data;
 
@@ -34,34 +31,24 @@ export { MIN_ICON_SIZE, MAX_ICON_SIZE };
  * Block edit function
  */
 class Edit extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	componentDidMount() {
 		// Randomized the default icon when first added.
-		const defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker', ];
+		const defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
 		const rand = defaultIcons[ Math.floor( Math.random() * defaultIcons.length ) ];
 
 		// CHeck if the icon is the default.
 		if ( this.props.attributes.iconRand === true ) {
-			this.props.setAttributes( { icon: rand, iconRand: false } )
+			this.props.setAttributes( { icon: rand, iconRand: false } );
 		}
 	}
 
 	render() {
-
 		const {
 			attributes,
 			backgroundColor,
 			className,
 			isSelected,
-			mergeBlocks,
-			onReplace,
 			setAttributes,
-			setBackgroundColor,
-			setIconColor,
 			iconColor,
 			toggleSelection,
 			isRTL,
@@ -70,7 +57,6 @@ class Edit extends Component {
 		const {
 			icon,
 			contentAlign,
-			height,
 			width,
 			borderRadius,
 			padding,
@@ -99,7 +85,7 @@ class Edit extends Component {
 			iconStyle = 'filled';
 		}
 
-		let selectedIcon = icon ? svgs[ iconStyle ][ icon ] : svgs[ iconStyle ].logo;
+		const selectedIcon = icon ? svgs[ iconStyle ][ icon ] : svgs[ iconStyle ].logo;
 
 		// Show or hide handles based on the contentAlign attribute.
 		let showRightHandle = false;
@@ -135,7 +121,7 @@ class Edit extends Component {
 			showLeftHandle = true;
 		}
 
-		return [
+		return (
 			<Fragment>
 				{ isSelected && (
 					<Inspector
@@ -152,8 +138,8 @@ class Edit extends Component {
 					<ResizableBox
 						className={ classes }
 						style={ styles }
-						size={ { width, width } }
-						minWidth={ padding ? MIN_ICON_SIZE + 28 : MIN_ICON_SIZE  }
+						size={ { width } }
+						minWidth={ padding ? MIN_ICON_SIZE + 28 : MIN_ICON_SIZE }
 						maxWidth={ MAX_ICON_SIZE }
 						enable={ {
 							top: false,
@@ -162,7 +148,7 @@ class Edit extends Component {
 							left: showLeftHandle,
 						} }
 						lockAspectRatio
-						onResizeStop={ ( event, direction, elt, delta ) => {
+						onResizeStop={ ( _event, _direction, _elt, delta ) => {
 							setAttributes( {
 								height: parseInt( width + delta.width, 10 ),
 								width: parseInt( width + delta.width, 10 ),
@@ -171,20 +157,20 @@ class Edit extends Component {
 						} }
 						onResizeStart={ () => {
 							toggleSelection( false );
-							setAttributes( {  iconSize: 'advanced' } )
+							setAttributes( { iconSize: 'advanced' } );
 						} }
 					>
 						{ selectedIcon ? selectedIcon.icon : null }
 					</ResizableBox>
 				</div>
 			</Fragment>
-		];
+		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,
-	withSelect( ( select, props ) => {
+	withSelect( ( select ) => {
 		const { getEditorSettings } = select( 'core/editor' );
 		const { isRTL } = getEditorSettings();
 

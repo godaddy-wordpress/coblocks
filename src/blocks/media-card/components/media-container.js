@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import includes from 'lodash/includes';
 
 /**
  * Internal dependencies
@@ -14,7 +13,7 @@ import { ALLOWED_MEDIA_TYPES } from './edit';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { BlockControls, MediaPlaceholder, MediaUpload } = wp.editor;
+const { BlockControls, MediaPlaceholder, MediaUpload } = wp.blockEditor;
 const { IconButton, ResizableBox, Toolbar, DropZone, Spinner } = wp.components;
 const { isBlobURL } = wp.blob;
 
@@ -22,11 +21,6 @@ const { isBlobURL } = wp.blob;
  * MediaContainer component
  */
 class MediaContainer extends Component {
-
-	constructor() {
-		super( ...arguments );
-	}
-
 	renderToolbarEditButton() {
 		const { mediaId, onSelectMedia } = this.props;
 
@@ -86,7 +80,7 @@ class MediaContainer extends Component {
 	}
 
 	renderPlaceholder() {
-		const { onSelectMedia, figureClass, mediaAlt, mediaUrl, hasImgShadow, } = this.props;
+		const { onSelectMedia, figureClass, mediaAlt, mediaUrl } = this.props;
 
 		return (
 			<div className="wp-block-coblocks-media-card__placeholder">
@@ -99,8 +93,7 @@ class MediaContainer extends Component {
 						) } >
 							<img src={ mediaUrl } alt={ mediaAlt } />
 						</figure>
-					</Fragment>
-				:
+					</Fragment>				:
 					<MediaPlaceholder
 						icon="format-image"
 						labels={ {
@@ -110,7 +103,7 @@ class MediaContainer extends Component {
 						onSelect={ onSelectMedia }
 						accept="image/*,video/*"
 						allowedTypes={ ALLOWED_MEDIA_TYPES }
-						>
+					>
 					</MediaPlaceholder>
 				}
 			</div>
@@ -118,7 +111,7 @@ class MediaContainer extends Component {
 	}
 
 	render() {
-		const { className, mediaUrl, mediaType, mediaWidth, mediaPosition, commitWidthChange, onWidthChange, onSelectMedia, onDropMedia } = this.props;
+		const { mediaUrl, mediaType, mediaWidth, mediaPosition, commitWidthChange, onWidthChange, onDropMedia } = this.props;
 
 		const imageDropZone = (
 			<Fragment>
@@ -130,10 +123,10 @@ class MediaContainer extends Component {
 		);
 
 		if ( mediaType && mediaUrl ) {
-			const onResize = ( event, direction, elt ) => {
+			const onResize = ( _event, _direction, elt ) => {
 				onWidthChange( parseInt( elt.style.width ) );
 			};
-			const onResizeStop = ( event, direction, elt ) => {
+			const onResizeStop = ( _event, _direction, elt ) => {
 				commitWidthChange( parseInt( elt.style.width ) );
 			};
 			const enablePositions = {

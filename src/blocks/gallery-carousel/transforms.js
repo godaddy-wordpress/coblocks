@@ -6,14 +6,13 @@ import filter from 'lodash/filter';
 /**
  * Internal dependencies
  */
-import { name } from './'
+import { name } from './';
 import { GalleryTransforms } from '../../components/block-gallery/shared';
 import { BackgroundTransforms } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
 
 const transforms = {

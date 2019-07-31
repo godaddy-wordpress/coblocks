@@ -9,20 +9,13 @@ import icons from './../../../utils/icons';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { Toolbar } = wp.components;
-const { AlignmentToolbar, BlockControls } = wp.editor;
+const { AlignmentToolbar, BlockControls } = wp.blockEditor;
 
 class Controls extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			className,
 			attributes,
-			isSelected,
 			setAttributes,
 		} = this.props;
 
@@ -62,6 +55,6 @@ class Controls extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Controls;

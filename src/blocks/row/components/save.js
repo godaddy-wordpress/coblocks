@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { BackgroundClasses, BackgroundVideo } from '../../../components/background';
 
-const { getColorClassName, InnerBlocks } = wp.editor;
+const { getColorClassName, InnerBlocks } = wp.blockEditor;
 
 function Save( { attributes } ) {
 	const {
@@ -29,7 +29,7 @@ function Save( { attributes } ) {
 	const classes = classnames( {
 		[ `coblocks-row--${ id }` ]: id,
 		[ `coblocks-row-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
-	});
+	} );
 
 	const innerClasses = classnames(
 		'wp-block-coblocks-row__inner',
