@@ -8,6 +8,7 @@ import classnames from 'classnames';
  */
 import { BackgroundStyles, BackgroundAttributes } from '../../components/background';
 import { GalleryAttributes, GalleryClasses } from '../../components/block-gallery/shared';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -19,45 +20,7 @@ export const deprecated =
 	attributes: {
 		...GalleryAttributes,
 		...BackgroundAttributes,
-
-		gutter: {
-			type: 'number',
-			default: 5,
-		},
-		gutterMobile: {
-			type: 'number',
-			default: 5,
-		},
-
-		gridSize: {
-			type: 'string',
-			default: 'lrg',
-		},
-		height: {
-			type: 'number',
-			default: 400,
-		},
-
-		pageDots: {
-			type: 'boolean',
-			default: false,
-		},
-		prevNextButtons: {
-			type: 'boolean',
-			default: true,
-		},
-		autoPlay: {
-			type: 'boolean',
-			default: false,
-		},
-		autoPlaySpeed: {
-			type: 'string',
-			default: 3000,
-		},
-		draggable: {
-			type: 'boolean',
-			default: true,
-		},
+		...metadata.attributes,
 	},
 	save( { attributes, className } ) {
 		const {
