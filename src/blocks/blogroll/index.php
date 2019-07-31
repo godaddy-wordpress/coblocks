@@ -1,18 +1,18 @@
 <?php
 /**
- * Server-side rendering of the `blog` block.
+ * Server-side rendering of the `blogroll` block.
  *
  * @package WordPress
  */
 
 /**
- * Renders the `blog` block on server.
+ * Renders the `blogroll` block on server.
  *
  * @param array $attributes The block attributes.
  *
  * @return string Returns the post content with latest posts added.
  */
-function render_block_blog( $attributes ) {
+function render_block_blogroll( $attributes ) {
 	$args = array(
 		'posts_per_page'   => $attributes['postsToShow'],
 		'post_status'      => 'publish',
@@ -71,7 +71,7 @@ function build_carousel_block_content($posts, $attributes) {
 	$draggable = (string) $attributes['draggable'] ? 'true' : 'false';
 	$infinite_slide = $attributes['infiniteSlide'] ? 'true' : 'false';
 
-	$class = 'wp-block-coblocks-blog';
+	$class = 'wp-block-coblocks-blogroll';
 
 	if ($attributes['align'] !== '') {
 		$class .= ' align'.$attributes['align'];
@@ -163,7 +163,7 @@ EOL;
 }
 
 function build_non_carousel_block_content($posts, $attributes) {
-	$class = 'wp-block-coblocks-blog wp-block-coblocks-blog__list';
+	$class = 'wp-block-coblocks-blogroll wp-block-coblocks-blog__list';
 
 	$blogLayout = strpos($attributes['className'], 'is-style-grid') !== false ? 'grid' : 'list';
 
@@ -312,9 +312,9 @@ function extract_internal_info($posts) {
 }
 
 /**
- * Registers the `blog` block on server.
+ * Registers the `blogroll` block on server.
  */
-function register_block_blog() {
+function register_block_blogroll() {
 	// Return early if this function does not exist.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
@@ -329,7 +329,7 @@ function register_block_blog() {
 	);
 
 	register_block_type(
-		'coblocks/blog',
+		'coblocks/blogroll',
 		array(
 			'attributes'      => array(
 				'listPosition'			  => array(
@@ -415,9 +415,9 @@ function register_block_blog() {
 					'default' => false
 				)
 			),
-			'render_callback' => 'render_block_blog',
+			'render_callback' => 'render_block_blogroll',
 			'editor_script'   => 'coblocks-slick-initializer',
 		)
 	);
 }
-add_action( 'init', 'register_block_blog' );
+add_action( 'init', 'register_block_blogroll' );
