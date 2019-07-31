@@ -37,6 +37,8 @@ const flickityOptions = {
 	prevNextButtons: true,
 	wrapAround: true,
 	autoPlay: false,
+	pauseAutoPlayOnHover: false,
+	freeScroll: false,
 	arrowShape: {
 		x0: 10,
 		x1: 60, y1: 50,
@@ -228,7 +230,6 @@ class GalleryCarouselEdit extends Component {
 				/>
 			);
 		}
-
 		return (
 			<Fragment>
 				{ isSelected &&
