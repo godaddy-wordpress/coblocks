@@ -6,20 +6,17 @@ import isEmpty from 'lodash/isEmpty';
 /**
  * Internal dependencies
  */
-import { BLOCKS_WITH_AUTOPADDING } from './'
+import { BLOCKS_WITH_AUTOPADDING } from './';
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { SelectControl, RangeControl, ToggleControl, PanelBody, Button, FocalPointPicker } = wp.components;
-const { withColors, ColorPalette, PanelColorSettings } = wp.blockEditor;
 
 class BackgroundPanel extends Component {
-
 	constructor() {
 		super( ...arguments );
 		this.setBackgroundPaddingTo = this.setBackgroundPaddingTo.bind( this );
@@ -35,7 +32,6 @@ class BackgroundPanel extends Component {
 				backgroundRadius: 0,
 			} );
 		}
-
 	}
 
 	setBackgroundPaddingMobileTo( value ) {
@@ -43,7 +39,6 @@ class BackgroundPanel extends Component {
 	}
 
 	onSelectRepeat( value ) {
-
 		if ( value === 'no-repeat' ) {
 			this.props.setAttributes( {
 				backgroundRepeat: value,
@@ -62,7 +57,6 @@ class BackgroundPanel extends Component {
 		const {
 			attributes,
 			backgroundColor,
-			hasCaption,
 			hasGalleryControls,
 			hasOverlay,
 			setAttributes,
@@ -110,16 +104,9 @@ class BackgroundPanel extends Component {
 			{ value: 'contain', label: __( 'Contain' ) },
 		];
 
-		const overlayStyleOptions = [
-			{ value: 'dark', label: __( 'Dark' ) },
-			{ value: 'gray', label: __( 'Gray' ) },
-			{ value: 'light', label: __( 'Light' ) },
-			{ value: 'background', label: __( 'Background Color' ) },
-		];
-
 		const backgroundSizeDefault = 'cover';
 
-		return(
+		return (
 			<Fragment>
 				{ backgroundImg && (
 					<PanelBody
@@ -127,14 +114,14 @@ class BackgroundPanel extends Component {
 						initialOpen={ false }
 						className="components-panel__body--coblocks-background-panel"
 					>
-						{ backgroundType == 'image' && (
+						{ backgroundType === 'image' && (
 							<ToggleControl
 								label={ __( 'Fixed Background' ) }
 								checked={ !! hasParallax }
-								onChange={ () => setAttributes( {  hasParallax: ! hasParallax } ) }
+								onChange={ () => setAttributes( { hasParallax: ! hasParallax } ) }
 							/>
 						) }
-						{ ! hasParallax && FocalPointPicker && backgroundType == 'image' && backgroundRepeat !== 'repeat' && (
+						{ ! hasParallax && FocalPointPicker && backgroundType === 'image' && backgroundRepeat !== 'repeat' && (
 							<FocalPointPicker
 								label={ __( 'Focal Point' ) }
 								url={ backgroundImg }
@@ -147,7 +134,7 @@ class BackgroundPanel extends Component {
 							<RangeControl
 								label={ __( 'Background Opacity' ) }
 								value={ backgroundOverlay }
-								onChange={ ( nextBackgroundOverlay ) => setAttributes( {  backgroundOverlay: nextBackgroundOverlay } ) }
+								onChange={ ( nextBackgroundOverlay ) => setAttributes( { backgroundOverlay: nextBackgroundOverlay } ) }
 								min={ 0 }
 								max={ 100 }
 								step={ 10 }
@@ -164,11 +151,11 @@ class BackgroundPanel extends Component {
 									min={ 5 }
 									max={ 100 }
 								/>
-								{ ( ( ! isEmpty( backgroundImg ) || ! isEmpty( backgroundColor.color ) ) && backgroundPadding > 0 ) && align != 'full' &&
+								{ ( ( ! isEmpty( backgroundImg ) || ! isEmpty( backgroundColor.color ) ) && backgroundPadding > 0 ) && align !== 'full' &&
 									<RangeControl
 										label={ __( 'Rounded Corners' ) }
 										value={ backgroundRadius }
-										onChange={ ( nextBackgroundRadius ) => setAttributes( {  backgroundRadius: nextBackgroundRadius } ) }
+										onChange={ ( nextBackgroundRadius ) => setAttributes( { backgroundRadius: nextBackgroundRadius } ) }
 										min={ 0 }
 										max={ 20 }
 										step={ 1 }
@@ -176,7 +163,7 @@ class BackgroundPanel extends Component {
 								}
 							</Fragment>
 						) }
-						{ backgroundType == 'image' && (
+						{ backgroundType === 'image' && (
 							<SelectControl
 								label={ __( 'Repeat' ) }
 								className="components-background-display-select--coblocks"
@@ -185,7 +172,7 @@ class BackgroundPanel extends Component {
 								onChange={ ( nextbackgroundRepeat ) => this.onSelectRepeat( nextbackgroundRepeat ) }
 							/>
 						) }
-						{ ! FocalPointPicker && backgroundType == 'image' && (
+						{ ! FocalPointPicker && backgroundType === 'image' && (
 							<SelectControl
 								label={ __( 'Position' ) }
 								value={ backgroundPosition ? backgroundPosition : 'center center' }
@@ -193,7 +180,7 @@ class BackgroundPanel extends Component {
 								onChange={ ( nextbackgroundPosition ) => setAttributes( { backgroundPosition: nextbackgroundPosition } ) }
 							/>
 						) }
-						{ backgroundRepeat == 'no-repeat' && backgroundType == 'image' && (
+						{ backgroundRepeat === 'no-repeat' && backgroundType === 'image' && (
 							<SelectControl
 								label={ __( 'Display' ) }
 								value={ backgroundSize ? backgroundSize : backgroundSizeDefault }
@@ -201,20 +188,20 @@ class BackgroundPanel extends Component {
 								onChange={ ( nextbackgroundSize ) => setAttributes( { backgroundSize: nextbackgroundSize } ) }
 							/>
 						) }
-						{ backgroundType == 'video' && (
+						{ backgroundType === 'video' && (
 							<ToggleControl
 								label={ __( 'Mute Video' ) }
 								help={ videoMuted ? __( 'Muting the background video.' ) : __( 'Toggle to mute the video.' ) }
 								checked={ !! videoMuted }
-								onChange={ () => setAttributes( {  videoMuted: ! videoMuted } ) }
+								onChange={ () => setAttributes( { videoMuted: ! videoMuted } ) }
 							/>
 						) }
-						{ backgroundType == 'video' && (
+						{ backgroundType === 'video' && (
 							<ToggleControl
 								label={ __( 'Loop Video' ) }
 								help={ videoLoop ? __( 'Looping the background video.' ) : __( 'Toggle to loop the video.' ) }
 								checked={ !! videoLoop }
-								onChange={ () => setAttributes( {  videoLoop: ! videoLoop } ) }
+								onChange={ () => setAttributes( { videoLoop: ! videoLoop } ) }
 							/>
 						) }
 						<Button

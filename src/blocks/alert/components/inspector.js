@@ -32,22 +32,14 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Inspector controls
  */
 class Inspector extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			backgroundColor,
 			fallbackBackgroundColor,
 			fallbackTextColor,
 			setBackgroundColor,
-			setBorderColor,
 			setTextColor,
 			textColor,
-			isSelected,
 		} = this.props;
 
 		return (
@@ -82,7 +74,7 @@ class Inspector extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default compose( [
 	applyWithColors,

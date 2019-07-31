@@ -1,19 +1,16 @@
-const el = wp.element.createElement;
+import AttachmentCropControl from "../../components/image-crop-control/attachment-crop-control";
+
 const {assign} = lodash;
 const {createHigherOrderComponent} = wp.compose;
 const {Fragment} = wp.element;
 const {InspectorControls} = wp.editor;
 const {PanelBody} = wp.components;
-const {PanelRow} = wp.components;
-const {PanelColumn} = wp.components;
-const {TextControl} = wp.components;
-const {ButtonGroup} = wp.components;
-const {Button} = wp.components;
 const {addFilter} = wp.hooks;
 const {__} = wp.i18n;
 
 const supportedBlocks = [
     'core/image',
+    'core/cover'
 ];
 
 const addPositioningControl = (settings, name) => {
@@ -47,6 +44,10 @@ const addPositioningControl = (settings, name) => {
     return settings;
 };
 
+const updateDebounce = _.debounce(function (callback) {
+    callback();
+}, 1500);
+
 const positioningControl = createHigherOrderComponent((BlockEdit) => {
         return (props) => {
             // Do nothing if it's another block than our defined ones.
@@ -62,20 +63,24 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
             } = props;
 
             const {cropX, cropY, cropWidth, cropHeight, cropRotation} = attributes;
+            let currentAttributes = _.extend({}, attributes);
 
-            const applyAttributes = function (changeAttributes) {
-                setAttributes(changeAttributes);
+            // Only Gallery images supported at this time
+            if (!currentAttributes.id) {
+                return (
+                    <BlockEdit {...props} />
+                );
+            }
 
-                const finalAttributes = _.extend({}, attributes, changeAttributes);
-
+            const updateImage = function () {
                 jQuery.post(ajaxurl, {
                     'action': 'coblocks_system_crop',
-                    'id': finalAttributes.id,
-                    'cropX': finalAttributes.cropX,
-                    'cropY': finalAttributes.cropY,
-                    'cropWidth': finalAttributes.cropWidth,
-                    'cropHeight': finalAttributes.cropHeight,
-                    'cropRotation': finalAttributes.cropRotation
+                    'id': currentAttributes.id,
+                    'cropX': currentAttributes.cropX,
+                    'cropY': currentAttributes.cropY,
+                    'cropWidth': currentAttributes.cropWidth,
+                    'cropHeight': currentAttributes.cropHeight,
+                    'cropRotation': currentAttributes.cropRotation
                 }, function (response) {
                     if (!response) {
                         return;
@@ -94,73 +99,32 @@ const positioningControl = createHigherOrderComponent((BlockEdit) => {
                 });
             };
 
+            const applyAttributes = function (changeAttributes) {
+                setAttributes(changeAttributes);
+                currentAttributes = _.extend({}, currentAttributes, changeAttributes);
+                updateDebounce(updateImage);
+            };
+
             return (
                 <Fragment>
                     <BlockEdit {...props} />
                     <InspectorControls>
                         <PanelBody title={__('Crop Settings')} initialOpen={false}>
-                            <TextControl
-                                label={__('Offset X (%)')}
-                                value={cropX}
-                                type={'number'}
-                                min={0}
-                                max={100}
-                                onChange={(val) => applyAttributes({cropX: parseInt(val)})}
+                            <AttachmentCropControl
+                                attachmentId={currentAttributes.id}
+                                offsetX={cropX}
+                                offsetY={cropY}
+                                cropWidth={cropWidth}
+                                cropHeight={cropHeight}
+                                rotation={cropRotation}
+                                onChange={(val) => applyAttributes({
+                                    cropX: val.x,
+                                    cropY: val.y,
+                                    cropWidth: val.w,
+                                    cropHeight: val.h,
+                                    cropRotation: val.r
+                                })}
                             />
-                            <TextControl
-                                label={__('Offset Y (%)')}
-                                value={cropY}
-                                type={'number'}
-                                min={0}
-                                max={100}
-                                onChange={(val) => applyAttributes({cropY: parseInt(val)})}
-                            />
-                            <TextControl
-                                label={__('Width (%)')}
-                                value={cropWidth}
-                                type={'number'}
-                                min={0}
-                                max={100}
-                                onChange={(val) => applyAttributes({cropWidth: parseInt(val)})}
-                            />
-                            <TextControl
-                                label={__('Height (%)')}
-                                value={cropHeight}
-                                type={'number'}
-                                min={0}
-                                max={100}
-                                onChange={(val) => applyAttributes({cropHeight: parseInt(val)})}
-                            />
-                            <ButtonGroup>
-                                <Button
-                                    isDefault
-                                    isPrimary={cropRotation === 0}
-                                    onClick={() => applyAttributes({cropRotation: 0})}
-                                >
-                                    0°
-                                </Button>
-                                <Button
-                                    isDefault
-                                    isPrimary={cropRotation === 90}
-                                    onClick={() => applyAttributes({cropRotation: 90})}
-                                >
-                                    90°
-                                </Button>
-                                <Button
-                                    isDefault
-                                    isPrimary={cropRotation === 180}
-                                    onClick={() => applyAttributes({cropRotation: 180})}
-                                >
-                                    180°
-                                </Button>
-                                <Button
-                                    isDefault
-                                    isPrimary={cropRotation === 270}
-                                    onClick={() => applyAttributes({cropRotation: 270})}
-                                >
-                                    270°
-                                </Button>
-                            </ButtonGroup>
                         </PanelBody>
                     </InspectorControls>
                 </Fragment>

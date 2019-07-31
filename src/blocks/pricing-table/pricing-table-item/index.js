@@ -63,6 +63,9 @@ const blockAttributes = {
 	customTextColor: {
 		type: 'string',
 	},
+	placeholder: {
+		type: 'string',
+	},
 };
 
 const settings = {
@@ -76,7 +79,9 @@ const settings = {
 	parent: [ 'coblocks/pricing-table' ],
 
 	supports: {
+		html: false,
 		inserter: false,
+		reusable: false,
 	},
 
 	attributes: blockAttributes,
@@ -98,10 +103,8 @@ const settings = {
 	edit: Edit,
 
 	save( { attributes } ) {
-
 		const {
 			amount,
-			columns,
 			currency,
 			customBackgroundColor,
 			customTextColor,
@@ -115,11 +118,11 @@ const settings = {
 		const textColorClass = getColorClassName( 'color', textColor );
 
 		const classes = classnames( {
-				'has-background': backgroundColor || customBackgroundColor,
-				[ backgroundClass ]: backgroundClass,
-				'has-text-color': textColor || customTextColor,
-				[ textColorClass ]: textColorClass,
-			}
+			'has-background': backgroundColor || customBackgroundColor,
+			[ backgroundClass ]: backgroundClass,
+			'has-text-color': textColor || customTextColor,
+			[ textColorClass ]: textColorClass,
+		}
 		);
 
 		const styles = {

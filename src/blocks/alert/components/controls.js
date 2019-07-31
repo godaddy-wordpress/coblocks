@@ -12,63 +12,57 @@ const { AlignmentToolbar, BlockControls } = wp.blockEditor;
 const { Toolbar, DropdownMenu } = wp.components;
 
 class Controls extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.styles = this.styles.bind( this );
 	}
 
 	styles( value ) {
-
 		this.props.setAttributes( {
 			customBackgroundColor: value,
 			backgroundColor: '',
 			textColor: '',
-		} )
+		} );
 
 		// Info (Blue)
-		if  ( value == '#D6EFEE' ) {
-			this.props.setAttributes( { customTextColor: '#094264' } )
+		if ( value === '#D6EFEE' ) {
+			this.props.setAttributes( { customTextColor: '#094264' } );
 
 		// Success (Green)
-		} else if  ( value == '#D0EAC4' ) {
-			this.props.setAttributes( { customTextColor: '#154a28' } )
+		} else if ( value === '#D0EAC4' ) {
+			this.props.setAttributes( { customTextColor: '#154a28' } );
 
 		// Warning (Orange)
-		} else if  ( value == '#FBE7DD' ) {
-			this.props.setAttributes( { customTextColor: '#8a4b30' } )
+		} else if ( value === '#FBE7DD' ) {
+			this.props.setAttributes( { customTextColor: '#8a4b30' } );
 
 		// Error (Red)
-		} else if  ( value == '#ffdede' ) {
-			this.props.setAttributes( { customTextColor: '#8b343c' } )
+		} else if ( value === '#ffdede' ) {
+			this.props.setAttributes( { customTextColor: '#8b343c' } );
 		}
 	}
 
 	render() {
-
 		const {
 			attributes,
-			isSelected,
 			setAttributes,
 		} = this.props;
 
 		const {
-			customTextColor,
 			textAlign,
 			type,
 		} = attributes;
 
 		function icon() {
-
-			if ( type == 'default' ) {
+			if ( type === 'default' ) {
 				return icons.alertFilled;
-			} else if  ( type == 'info' ) {
+			} else if ( type === 'info' ) {
 				return icons.info;
-			} else if  ( type == 'success' ) {
+			} else if ( type === 'success' ) {
 				return icons.success;
-			} else if  ( type == 'warning' ) {
+			} else if ( type === 'warning' ) {
 				return icons.warning;
-			} else if  ( type == 'error' ) {
+			} else if ( type === 'error' ) {
 				return icons.error;
 			}
 		}
@@ -78,33 +72,47 @@ class Controls extends Component {
 				<BlockControls>
 					<Toolbar>
 						<DropdownMenu
-							icon= { icon() }
+							icon={ icon() }
 							label={ __( 'Alert Type' ) }
 							controls={ [
 								{
 									icon: icons.alertFilled,
 									title: __( 'Default' ),
-									onClick: () => { setAttributes( { type: 'default', backgroundColor: '',  customBackgroundColor: '', customTextColor: '' } ) },
+									onClick: () => {
+										setAttributes( { type: 'default', backgroundColor: '', customBackgroundColor: '', customTextColor: '' } );
+									},
 								},
 								{
 									icon: icons.info,
 									title: __( 'Info' ),
-									onClick: () => { this.styles( '#D6EFEE' ), setAttributes( { type: 'info' } ) },
+									onClick: () => {
+										this.styles( '#D6EFEE' );
+										setAttributes( { type: 'info' } );
+									},
 								},
 								{
 									icon: icons.success,
 									title: __( 'Success' ),
-									onClick: () => { this.styles( '#D0EAC4' ), setAttributes( { type: 'success' } ) },
+									onClick: () => {
+										this.styles( '#D0EAC4' );
+										setAttributes( { type: 'success' } );
+									},
 								},
 								{
 									icon: icons.warning,
 									title: __( 'Warning' ),
-									onClick: () => { this.styles( '#FBE7DD' ), setAttributes( { type: 'warning' } ) },
+									onClick: () => {
+										this.styles( '#FBE7DD' );
+										setAttributes( { type: 'warning' } );
+									},
 								},
 								{
 									icon: icons.error,
 									title: __( 'Error' ),
-									onClick: () => { this.styles( '#ffdede' ), setAttributes( { type: 'error' } ) },
+									onClick: () => {
+										this.styles( '#ffdede' );
+										setAttributes( { type: 'error' } );
+									},
 								},
 							] }
 						/>
@@ -117,6 +125,6 @@ class Controls extends Component {
 			</Fragment>
 		);
 	}
-};
+}
 
 export default Controls;
