@@ -27,6 +27,7 @@ export default class Gist extends Component {
 			loading: true, // We have not fetched the Gist yet.
 			gistContent: '', // Raw HTML of the Gist.
 		};
+		this._handleError = this._handleError.bind( this );
 	}
 
 	// Each time we request a new Gist, we have to provide a new
@@ -57,8 +58,21 @@ export default class Gist extends Component {
 		this._buildGist();
 	}
 
+	_handleError( err ) {
+		const { onError } = this.props;
+		this.setState( {
+			loading: false,
+		} );
+		onError( err );
+	}
+
 	_getID() {
+		const { _handleError } = this;
 		// Extract a string in form `username/uniqueValue` from the provided Gist url.
+		if ( this.url.match( /(\.com\/)(.*?)([^#]+)/ ) === null ) {
+			_handleError( 'URL contains no Gist ID' );
+			return;
+		}
 		return this.url.match( /(\.com\/)(.*?)([^#]+)/ ).pop();
 	}
 
@@ -83,12 +97,15 @@ export default class Gist extends Component {
 	_tranformedURL( gistCallback ) {
 		// Construct a gist url that will allow us to redner the Gist into our page.
 		const id = this._getID();
+		if ( ! id ) {
+			return false;
+		}
 		const file = this._getFile();
-
 		return `https://gist.github.com/${ id }.json?callback=${ gistCallback }${ file }`;
 	}
 
 	_buildGist() {
+		const { _handleError } = this;
 		const gistCallback = Gist.__nextGist();
 		window[ gistCallback ] = gist => {
 			Gist.__addStylesheet( gist.stylesheet );
@@ -100,25 +117,34 @@ export default class Gist extends Component {
 
 		const gistScript = document.createElement( 'script' );
 		gistScript.type = 'text/javascript';
-		gistScript.src = this._tranformedURL( gistCallback );
+		const transformedURL = this._tranformedURL( gistCallback );
+		if ( ! transformedURL ) {
+			return;
+		}
+		gistScript.src = transformedURL;
+		gistScript.onerror = function() {
+			_handleError( 'URL does not resolve to a valid Gist' );
+		};
 		document.head.appendChild( gistScript );
 	}
 
 	render() {
 		if ( this.state.loading ) {
-			return [
+			return (
 				<Placeholder
 					key="placeholder"
 					icon={ icons.github }
 					label={ __( 'Loading Gist' ) }
 				>
 					<Spinner />
-				</Placeholder>,
-			];
+				</Placeholder>
+			);
 		}
-		// Render as html.
-		// https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
-		return <div dangerouslySetInnerHTML={ { __html: this.state.gistContent } } />;
+		if ( this.state.gistContent ) {
+			// Render as html.
+			// https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml\
+			return <div dangerouslySetInnerHTML={ { __html: this.state.gistContent } } />;
+		}
 	}
 }
 
