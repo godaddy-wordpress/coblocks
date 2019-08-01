@@ -47,6 +47,7 @@ class Edit extends Component {
 		this.state = {
 			apiKey: '',
 			address: this.props.attributes.address,
+			addressText: '',
 			coords: null,
 			hasError: false,
 			isLoading: true,
@@ -146,7 +147,9 @@ class Edit extends Component {
 		} = attributes;
 
 		const renderMap = () => {
-			setAttributes( { address: this.state.address, pinned: true } );
+			this.setState( { address: this.state.addressText }, () =>{
+				setAttributes( { address: this.state.address, pinned: true } );
+			} );
 		};
 
 		const handleKeyDown = keyCode => {
@@ -299,13 +302,26 @@ class Edit extends Component {
 					>
 						<TextControl
 							className="components-placeholder__input"
-							value={ this.state.address }
+							value={ this.state.addressText }
 							placeholder={ __( 'Search for a place or address…' ) }
-							onChange={ nextAddress => this.setState( { address: nextAddress } ) }
+							onChange={ nextAddress => this.setState( { addressText: nextAddress } ) }
 							onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
 						/>
 						<Button isLarge type="button" onClick={ renderMap }>
 							{ __( 'Apply' ) }
+						</Button>
+
+						<Button
+							className="coblocks-map-placeholder__cancel-button is-link"
+							title={ __( 'Cancel' ) }
+							isLink
+							onClick={ () => {
+								setAttributes( { pinned: ! pinned } );
+								this.setState( { addressText: address } );
+							} }
+							disabled={ ! address }
+						>
+							{ __( 'Cancel' ) }
 						</Button>
 
 						{ attributes.lng && attributes.hasError && (

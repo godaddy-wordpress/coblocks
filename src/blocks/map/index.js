@@ -21,12 +21,6 @@ const title = __( 'Map' );
 
 const icon = icons.googleMap;
 
-const keywords = [
-	__( 'address' ),
-	__( 'maps' ),
-	__( 'google' ),
-];
-
 const blockAttributes = {
 	address: {
 		type: 'string',
@@ -88,11 +82,11 @@ const blockAttributes = {
 
 const settings = {
 
-	title: title,
+	title,
 
 	description: __( 'Add an address and drop a pin on a Google map.' ),
 
-	keywords: keywords,
+	keywords: [	__( 'address' ), __( 'maps' ), __( 'google' )	],
 
 	supports: {
 		align: [ 'wide', 'full' ],
