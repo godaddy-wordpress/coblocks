@@ -51,12 +51,11 @@ class Edit extends Component {
                     className={classnames('sign-up-button', {
                         'has-background': backgroundColor.color,
                         'has-text-color': textColor.color,
-                        [backgroundColor.class]: backgroundColor.class,
                         [textColor.class]: textColor.class,
                     })}
                     style={{
                         backgroundColor: backgroundColor.color,
-                        color: textColor.color
+                        color: textColor.color,
                     }}
                 >{buttonLabel}</Button>
             </Fragment>

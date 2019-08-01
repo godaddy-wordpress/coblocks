@@ -44,7 +44,7 @@ const blockAttributes = {
     },
     buttonLabel: {
         type: 'string',
-        default: 'Sign Up',
+        default: 'Sign up',
     },
     backgroundColor: {
         type: 'string',
