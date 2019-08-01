@@ -1,0 +1,17 @@
+{
+  "name": "events",
+  "attributes": {
+	"linkACalendar": {
+	  "type": "boolean",
+	  "default": false
+	},
+	"externalCalendarUrl": {
+	  "type": "string",
+	  "default": ""
+	},
+	"textColor": {
+	  "type": "string",
+	   "default": "#000000"
+	}
+  }
+}

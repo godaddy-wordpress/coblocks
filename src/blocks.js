@@ -45,6 +45,8 @@ import * as blogroll from './blocks/blogroll';
 import * as clickToTweet from './blocks/click-to-tweet';
 import * as column from './blocks/row/column';
 import * as dynamicSeparator from './blocks/dynamic-separator';
+import * as events from './blocks/events';
+import * as eventItem from './blocks/events/event-item';
 import * as form from './blocks/form';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
@@ -86,6 +88,8 @@ export function registerBlocks() {
 		clickToTweet,
 		column,
 		dynamicSeparator,
+		events,
+		eventItem,
 		feature,
 		features,
 		foodAndDrinks,

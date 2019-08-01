@@ -1,0 +1,115 @@
+.wp-block[data-type="coblocks/event-item"] {
+  width: 100%;
+}
+
+.wp-block-coblocks-event-item {
+	display: block;
+	flex: 1 100%;
+  	padding: 40px 0 !important;
+  	border-bottom: 1px solid #bfbfbf;
+
+  .wp-block-coblocks-event-item__content {
+	display: flex;
+	justify-content: space-between;
+
+	.wp-block-coblocks-event-item__dates {
+	  flex-basis: 25%;
+	  max-width: 25%;
+	  padding-right: 24px;
+	}
+
+	.wp-block-coblocks-event-item__heading-wrapper {
+	  flex-basis: 50%;
+	  max-width: 50%;
+	  padding: 0 24px;
+	}
+
+	.wp-block-coblocks-event-item__time-and-location {
+	  flex-basis: 25%;
+	  max-width: 25%;
+	  padding-left: 24px;
+	  text-align: right;
+	}
+
+	.wp-block-coblocks-event-item__time {
+	  h5 {
+		margin: 0;
+	  }
+	}
+  }
+
+	.editor-media-placeholder {
+		margin: 0 0 1.65em !important;
+		min-height: 264px;
+		outline: 1px dashed $dark-gray-150;
+		padding: 100% 0 0 0;
+		position: relative;
+
+		&:hover {
+			outline: 1px dashed $dark-gray-500;
+		}
+
+		.components-placeholder__label,
+		.components-placeholder__instructions {
+			display: none;
+		}
+
+		.components-placeholder__fieldset {
+			align-items: center;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+
+			.components-button {
+				margin-bottom: 0 !important;
+			}
+		}
+
+		.components-drop-zone {
+			bottom: -1px;
+			left: -1px;
+			right: -1px;
+			top: -1px;
+		}
+	}
+
+	.components-spinner {
+		z-index: 9;
+	}
+
+
+	h4.block-editor-rich-text__editable, // Gutenberg 5.9+
+	&__heading.block-editor-rich-text__editable {
+		margin: 0;
+	}
+
+	p.block-editor-rich-text__editable, // Gutenberg 5.9+ Fix
+	&__description.block-editor-rich-text__editable {
+		margin: 0;
+	}
+
+	&__attribute.components-icon-button {
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+		color: inherit;
+		font-size: inherit;
+		line-height: 1;
+		overflow: visible;
+		padding: 0;
+
+		&:not(:disabled):not([aria-disabled="true"]):not(.is-default):hover {
+			box-shadow: none;
+		}
+
+		&:not(.is-toggled):hover {
+			opacity: 0.725;
+		}
+
+		&:not(.is-toggled) {
+			opacity: 0.55;
+		}
+	}
+}
