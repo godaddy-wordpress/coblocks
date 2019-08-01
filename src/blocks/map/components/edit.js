@@ -312,7 +312,7 @@ class Edit extends Component {
 						</Button>
 
 						<Button
-							className="coblocks-map-placeholder__cancel-button is-link"
+							className="components-placeholder__cancel-button"
 							title={ __( 'Cancel' ) }
 							isLink
 							onClick={ () => {
