@@ -58,19 +58,19 @@ export default class Gist extends Component {
 		this._buildGist();
 	}
 
-	_handleError( err ) {
+	_handleError() {
 		const { onError } = this.props;
 		this.setState( {
 			loading: false,
 		} );
-		onError( err );
+		onError();
 	}
 
 	_getID() {
 		const { _handleError } = this;
 		// Extract a string in form `username/uniqueValue` from the provided Gist url.
 		if ( this.url.match( /(\.com\/)(.*?)([^#]+)/ ) === null ) {
-			_handleError( 'URL contains no Gist ID' );
+			_handleError();
 			return;
 		}
 		return this.url.match( /(\.com\/)(.*?)([^#]+)/ ).pop();
@@ -123,7 +123,7 @@ export default class Gist extends Component {
 		}
 		gistScript.src = transformedURL;
 		gistScript.onerror = function() {
-			_handleError( 'URL does not resolve to a valid Gist' );
+			_handleError();
 		};
 		document.head.appendChild( gistScript );
 	}
@@ -150,6 +150,7 @@ export default class Gist extends Component {
 
 // - PROP TYPES -
 Gist.propTypes = {
-	url: PropTypes.string.isRequired,
 	file: PropTypes.string,
+	onError: PropTypes.function,
+	url: PropTypes.string.isRequired,
 };

@@ -60,10 +60,10 @@ class Edit extends Component {
 		this.clearErrors();
 	}
 
-	handleErrors( err ) {
+	handleErrors() {
 		const { noticeOperations, setState } = this.props;
 		noticeOperations.removeAllNotices();
-		noticeOperations.createErrorNotice( err );
+		noticeOperations.createErrorNotice( 'Sorry, this URL is not a GitHub gist.' );
 		setState( { preview: false } );
 	}
 
@@ -93,8 +93,8 @@ class Edit extends Component {
 				{ preview ? (
 					url && (
 						<div className={ classnames( className, meta ? null : 'no-meta' ) }>
-							<Gist url={ url } file={ file } onError={ ( err ) => {
-								handleErrors( err );
+							<Gist url={ url } file={ file } onError={ () => {
+								handleErrors();
 							} } />
 							{ ( ! RichText.isEmpty( caption ) || isSelected ) && (
 								<RichText
