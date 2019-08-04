@@ -1,18 +1,7 @@
-
 /**
  * Internal dependencies
  */
 import applyWithColors from './colors';
-
-/**
- * WordPress dependencies
-*/
-const { compose } = wp.compose;
-const { withFallbackStyles } = wp.components;
-
-/**
- * Internal dependencies
- */
 import icons from './icons';
 import { BackgroundControls } from '../../../components/background';
 import CSSGridToolbar from '../../../components/grid-control/toolbar';
@@ -22,9 +11,10 @@ import CSSGridToolbar from '../../../components/grid-control/toolbar';
  */
 
 const { __ } = wp.i18n;
+const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { AlignmentToolbar, BlockControls, PanelColorSettings } = wp.blockEditor;
-const { Toolbar, Dropdown, IconButton } = wp.components;
+const { Toolbar, Dropdown, IconButton, withFallbackStyles } = wp.components;
 
 /**
  * Fallback styles
