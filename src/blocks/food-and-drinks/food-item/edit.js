@@ -46,16 +46,16 @@ const handlePlaceholderPlacement = (
 		item => item.name === blockName && isEmpty( item.attributes )
 	);
 
-	// Remove trailing placholders if there are more than one.
+	// Remove trailing placholders if there are more than two.
 	dispatch( 'core/block-editor' ).removeBlocks(
 		placeholders
-			.filter( ( item, index ) => item.clientId !== childClientId && index !== 0 )
+			.filter( ( item, index ) => item.clientId !== childClientId && index !== 0 && index !== 1 )
 			.map( item => item.clientId ),
 		false
 	);
 
 	// Add a placeholder if there are none.
-	if ( placeholders.length === 0 ) {
+	if ( placeholders.length === 1 || 0 ) {
 		const newFoodItem = wp.blocks.createBlock( blockName, blockAttributes );
 		dispatch( 'core/block-editor' ).insertBlocks(
 			newFoodItem,
