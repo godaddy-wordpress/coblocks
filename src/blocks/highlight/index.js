@@ -133,6 +133,8 @@ const settings = {
 			textAlign,
 			textColor,
 		} = attributes;
+		console.log( 'here are the save attributes' );
+		console.log( attributes );
 
 		const textClass = getColorClassName( 'color', textColor );
 
