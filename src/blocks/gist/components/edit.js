@@ -63,7 +63,7 @@ class Edit extends Component {
 	handleErrors() {
 		const { noticeOperations, setState } = this.props;
 		noticeOperations.removeAllNotices();
-		noticeOperations.createErrorNotice( 'Sorry, this URL is not a GitHub gist.' );
+		noticeOperations.createErrorNotice( 'Sorry, this URL is not a GitHub Gist.' );
 		setState( { preview: false } );
 	}
 
