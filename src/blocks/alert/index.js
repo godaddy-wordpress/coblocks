@@ -125,8 +125,13 @@ const settings = {
 			{
 				type: 'block',
 				blocks: [ 'core/paragraph' ],
-				transform: ( { value } ) => {
-					// transforming an empty alert element
+				transform: ( { value, title } ) => {
+					value.unshift( title, { type: 'br',
+						props: {
+							children: [],
+						},
+					} );
+
 					if ( ! value || ! value.length ) {
 						return createBlock( 'core/paragraph' );
 					}
