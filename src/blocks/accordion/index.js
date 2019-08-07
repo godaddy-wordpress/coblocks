@@ -18,7 +18,7 @@ const { InnerBlocks } = wp.blockEditor;
 /**
  * Block constants
  */
-const { name } = metadata;
+const { attributes, name } = metadata;
 
 const title = __( 'Accordion' );
 
@@ -32,7 +32,7 @@ const settings = {
 
 	keywords: [	__( 'tabs' ), __( 'faq' ), __( 'coblocks' ) ],
 
-	attributes: metadata.attributes,
+	attributes,
 
 	supports: {
 		align: [ 'wide', 'full' ],

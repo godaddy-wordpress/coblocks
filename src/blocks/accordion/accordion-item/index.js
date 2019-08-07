@@ -16,7 +16,7 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const { name } = metadata;
+const { attributes, name } = metadata;
 
 const title = __( 'Accordion Item' );
 
@@ -38,7 +38,7 @@ const settings = {
 		inserter: false,
 	},
 
-	attributes: metadata.attributes,
+	attributes,
 
 	edit,
 
