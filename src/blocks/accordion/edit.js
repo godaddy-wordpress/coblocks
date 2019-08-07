@@ -39,7 +39,7 @@ const getCount = memoize( ( count ) => {
 /**
  * Block edit function
  */
-class Edit extends Component {
+class edit extends Component {
 	render() {
 		const {
 			clientId,
@@ -117,4 +117,4 @@ class Edit extends Component {
 	}
 }
 
-export default Edit;
+export default edit;
