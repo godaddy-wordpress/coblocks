@@ -5,14 +5,14 @@
 	var index;
 
 	var wrapper = $( '<div/>', { class: 'masonry-modal-wrapper' } );
-	var wrapperBackground = $( '<div/>', { class: 'wrapper-background' } );
-	var modalHeading = $('<div/>', { class: 'modal-heading' });
-	var close = $( '<div/>', { class: 'close' } );
-	var counter = $( '<div/>', { class: 'counter' } );
-	var imageContainer = $( '<div/>', { class: 'image-container' } );
+	var wrapperBackground = $( '<div/>', { class: 'masonry-modal-wrapper__background' } );
+	var modalHeading = $('<div/>', { class: 'masonry-modal-wrapper__heading' });
+	var close = $( '<div/>', { class: 'masonry-modal-wrapper--close' } );
+	var counter = $( '<div/>', { class: 'masonry-modal-wrapper--counter' } );
+	var imageContainer = $( '<div/>', { class: 'masonry-modal-wrapper__image-container' } );
 	var image = $( '<img/>' );
-	var arrowLeftContainer = $( '<div/>', { class: 'arrow-left-container' } );
-	var arrowRightContainer = $( '<div/>', { class: 'arrow-right-container' } );
+	var arrowLeftContainer = $( '<div/>', { class: 'masonry-modal-wrapper--arrow-left-container' } );
+	var arrowRightContainer = $( '<div/>', { class: 'masonry-modal-wrapper--arrow-right-container' } );
 	var arrowRight = $( '<div/>', { class: 'arrow-right' } );
 	var arrowLeft = $( '<div/>', { class: 'arrow-left' } );
 
@@ -39,14 +39,14 @@
 		counter.html( ( Number( e.target.attributes[ 5 ].value ) + 1 ) + ' / ' + images.length );
 	} );
 
-	$( '.arrow-left-container' ).click( function() {
+	arrowLeftContainer.click( function() {
 
 		index === 0 ? index = 0 : index--;
 
 		changeImage(index);
 	});
 
-	$( '.arrow-right-container' ).click( function() {
+	arrowRightContainer.click( function() {
 
 		index === images.length ? index = images.length : index++;
 

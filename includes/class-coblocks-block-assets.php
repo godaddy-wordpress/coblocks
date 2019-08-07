@@ -150,8 +150,8 @@ class CoBlocks_Block_Assets {
 		// Masonry block.
         if ( has_block( $this->_slug . '/gallery-masonry' ) ) {
             wp_enqueue_script(
-                $this->_slug . '-expand-image',
-                $dir . $this->_slug . '-expand-image' . COBLOCKS_ASSET_SUFFIX . '.js',
+                $this->_slug . '-lightbox',
+                $dir . $this->_slug . '-lightbox' . COBLOCKS_ASSET_SUFFIX . '.js',
                 array( 'jquery' ),
                 $this->_version,
                 true

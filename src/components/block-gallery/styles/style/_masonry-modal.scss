@@ -10,7 +10,7 @@
   z-index: 9999;
   background: rgba(0, 0, 0, 0.7);
 
-  .wrapper-background {
+  .masonry-modal-wrapper__background {
     position: absolute;
     top: -50px;
     left: -50px;
@@ -21,7 +21,7 @@
     transition: all 250ms ease-in-out 0s;
   }
 
-  .modal-heading {
+  .masonry-modal-wrapper__heading {
     position: absolute;
     width: 76%;
     left: 50%;
@@ -33,7 +33,7 @@
     color: #fff;
   }
 
-  .image-container {
+  .masonry-modal-wrapper__image-container {
     z-index: 2;
 
     img {
@@ -42,7 +42,7 @@
     }
   }
 
-  .arrow-right-container {
+  .masonry-modal-wrapper--arrow-right-container {
     position: absolute;
     top: 50%;
     right: 0;
@@ -55,7 +55,7 @@
     cursor: pointer;
   }
 
-  .arrow-left-container {
+  .masonry-modal-wrapper--arrow-left-container {
     position: absolute;
     top: 50%;
     left: 0;
@@ -84,7 +84,7 @@
     mask-image: url(images/masonry-modal/arrow-right.svg);
   }
 
-  .close {
+  .masonry-modal-wrapper--close {
     cursor: pointer;
     width: 16px;
     height: 16px;

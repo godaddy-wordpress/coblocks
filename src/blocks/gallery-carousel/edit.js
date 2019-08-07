@@ -252,10 +252,8 @@ class GalleryCarouselEdit extends Component {
 
 		const navFigureClasses = classnames(
 			'blockgallery--figure', {
-				[ `has-margin-left-${ gutter }` ] : gutter > 0,
-				[ `has-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
-				[ `has-margin-right-${ gutter }` ] : gutter > 0,
-				[ `has-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-margin-top-${ gutter }` ] : gutter > 0,
+				[ `has-margin-top-mobile-${ gutterMobile }` ] : gutterMobile > 0,
 			}
 		);
 
