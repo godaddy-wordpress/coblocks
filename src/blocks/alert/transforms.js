@@ -3,6 +3,9 @@
  */
 const { createBlock } = wp.blocks;
 
+/**
+ * Internal dependencies
+ */
 import { name } from './';
 
 const transforms = {
