@@ -131,9 +131,9 @@ const settings = {
 						return createBlock( 'core/paragraph' );
 					}
 					// transforming an alert element with content
-					return ( value || [] ).map( () => createBlock( 'core/paragraph', {
+					return createBlock( 'core/paragraph', {
 						content: value,
-					} ) );
+					} );
 				},
 			},
 		],
