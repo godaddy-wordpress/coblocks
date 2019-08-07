@@ -90,9 +90,6 @@ class Edit extends Component {
 			textAlign,
 		} = attributes;
 
-		console.log( 'here are the edit attributes' );
-		console.log( attributes );
-
 		return (
 			<Fragment>
 				{ isSelected && (
