@@ -8,7 +8,6 @@ import edit from './edit';
 import icons from './../../utils/icons';
 import transforms from './transforms';
 import save from './save';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -18,11 +17,41 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const { attributes, name } = metadata;
+const name = 'author';
 
 const title = __( 'Author' );
 
 const icon = icons.author;
+
+const blockAttributes = {
+	biography: {
+		type: 'array',
+		source: 'children',
+		selector: '.wp-block-coblocks-author__biography',
+		default: [],
+	},
+	heading: {
+		type: 'string',
+		selector: '.wp-block-coblocks-author__heading',
+		default: __( 'Written by...' ),
+	},
+	name: {
+		type: 'string',
+		selector: '.wp-block-coblocks-author__name',
+	},
+	imgId: {
+		type: 'number',
+	},
+	imgUrl: {
+		type: 'string',
+		source: 'attribute',
+		attribute: 'src',
+		selector: 'img',
+	},
+	textAlign: {
+		type: 'string',
+	},
+};
 
 const settings = {
 
@@ -32,7 +61,7 @@ const settings = {
 
 	keywords: [ __( 'biography' ), __( 'profile' ), __( 'coblocks' ) ],
 
-	attributes,
+	attributes: blockAttributes,
 
 	transforms,
 
