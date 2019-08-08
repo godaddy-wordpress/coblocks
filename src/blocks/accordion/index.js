@@ -7,7 +7,6 @@ import './styles/style.scss';
 import edit from './edit';
 import icons from './../../utils/icons';
 import transforms from './transforms';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -18,11 +17,22 @@ const { InnerBlocks } = wp.blockEditor;
 /**
  * Block constants
  */
-const { attributes, name } = metadata;
+const name = 'accordion';
 
 const title = __( 'Accordion' );
 
 const icon = icons.accordion;
+
+const blockAttributes = {
+	count: {
+		type: 'number',
+		default: 1,
+	},
+	polyfill: {
+		type: 'boolean',
+		default: false,
+	},
+};
 
 const settings = {
 
@@ -32,7 +42,7 @@ const settings = {
 
 	keywords: [	__( 'tabs' ), __( 'faq' ), __( 'coblocks' ) ],
 
-	attributes,
+	attributes: blockAttributes,
 
 	supports: {
 		align: [ 'wide', 'full' ],

@@ -6,7 +6,6 @@ import './styles/style.scss';
 import edit from './edit';
 import save from './save';
 import icons from './../../../utils/icons';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -16,11 +15,37 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const { attributes, name } = metadata;
+const name = 'accordion-item';
 
 const title = __( 'Accordion Item' );
 
 const icon = icons.accordionItem;
+
+const blockAttributes = {
+	title: {
+		type: 'string',
+		selector: '.wp-block-coblocks-accordion__title',
+	},
+	open: {
+		type: 'boolean',
+		default: false,
+	},
+	backgroundColor: {
+		type: 'string',
+	},
+	textColor: {
+		type: 'string',
+	},
+	borderColor: {
+		type: 'string',
+	},
+	customBackgroundColor: {
+		type: 'string',
+	},
+	customTextColor: {
+		type: 'string',
+	},
+};
 
 const settings = {
 
@@ -38,7 +63,7 @@ const settings = {
 		inserter: false,
 	},
 
-	attributes,
+	attributes: blockAttributes,
 
 	edit,
 
