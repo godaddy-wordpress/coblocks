@@ -17,20 +17,26 @@ const { InnerBlocks } = wp.blockEditor;
 /**
  * Block constants
  */
-const { name } = metadata;
+const { attributes, name } = metadata;
 
 const icon = icons.form;
 
 const settings = {
 	title: __( 'Form' ),
+
 	description: __( 'Add a simple form to your page.' ),
+
 	keywords: [ __( 'email' ), __( 'about' ), __( 'contact' ) ],
-	attributes: metadata.attributes,
+
+	attributes,
+
 	supports: {
 		reusable: false,
 		html: false,
 	},
+
 	edit,
+
 	save: InnerBlocks.Content,
 
 };

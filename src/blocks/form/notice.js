@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import icons from './../icons';
+import icons from './icons';
 
 export default ( { children = null, isError = false, ...props } ) => {
 	const classes = classnames( 'coblocks-form__notice', {
