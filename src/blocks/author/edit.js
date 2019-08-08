@@ -28,7 +28,7 @@ const TEMPLATE = [ [ 'core/button', { text: 'Follow' } ] ];
 /**
  * Block edit function
  */
-class edit extends Component {
+class Edit extends Component {
 	constructor() {
 		super( ...arguments );
 		this.addImage = this.addImage.bind( this );
@@ -182,4 +182,4 @@ class edit extends Component {
 	}
 }
 
-export default edit;
+export default Edit;
