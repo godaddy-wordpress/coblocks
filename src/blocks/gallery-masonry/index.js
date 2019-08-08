@@ -84,6 +84,7 @@ const settings = {
 			...GalleryClasses( attributes ),
 			...BackgroundClasses( attributes ), {
 				'has-gutter': gutter > 0,
+				'expandable-image': lightbox,
 			}
 		);
 

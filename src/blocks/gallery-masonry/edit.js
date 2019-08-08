@@ -177,6 +177,7 @@ class GalleryMasonryEdit extends Component {
 			sidebarIsOpened, {
 				[ `align${ align }` ]: align,
 				'has-gutter': gutter > 0,
+				'expandable-image': lightbox,
 			}
 		);
 

@@ -164,7 +164,7 @@ class Inspector extends Component {
 					<ToggleControl
 						label={ __( 'Lightbox' ) }
 						checked={ !! lightbox }
-						onChange={ () => setAttributes( { lightbox: ! lightbox, className: !lightbox ? 'expandable-image' : '' } ) }
+						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 						help={ this.getModalHelp }
 					/>
 				</PanelBody>
