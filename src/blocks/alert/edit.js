@@ -21,7 +21,7 @@ const { RichText } = wp.blockEditor;
 /**
  * Block edit function
  */
-class edit extends Component {
+class Edit extends Component {
 	render() {
 		const {
 			attributes,
@@ -93,4 +93,4 @@ class edit extends Component {
 
 export default compose( [
 	applyWithColors,
-] )( edit );
+] )( Edit );
