@@ -205,6 +205,15 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 				wp_set_script_translations( 'coblocks-editor', 'coblocks' );
 			}
 		}
+
+		/**
+		 * Is an AMP endpoint.
+		 *
+		 * @return bool Whether the current response will be AMP.
+		 */
+		public function is_amp() {
+			return function_exists( 'is_amp_endpoint' ) && is_amp_endpoint();
+		}
 	}
 endif;
 
