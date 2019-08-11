@@ -6,8 +6,8 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-import icons from './../../../utils/icons';
-import VisualDropdown from '../../../components/visual-dropdown/';
+import icons from '../../utils/icons';
+import VisualDropdown from '../../components/visual-dropdown';
 import { styleOptions } from './styles';
 
 /**
