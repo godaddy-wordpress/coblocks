@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { BackgroundControls } from '../../../../components/background';
+import { BackgroundControls } from '../../../components/background';
 
 /**
  * WordPress dependencies

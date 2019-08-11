@@ -1,6 +1,17 @@
-import classnames from 'classnames';
-import { BackgroundClasses, BackgroundVideo } from '../../../components/background';
+/**
+ * Internal dependencies
+ */
+import { BackgroundClasses, BackgroundVideo } from '../../components/background';
+import metadata from './block.json';
 
+/**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
+ * WordPress dependencies
+ */
 const { getColorClassName, InnerBlocks } = wp.blockEditor;
 
 function Deprecation( { attributes } ) {
@@ -122,7 +133,23 @@ function DeprecationVideo( { attributes } ) {
 	);
 }
 
-export {
-	Deprecation,
-	DeprecationVideo,
-};
+const { attributes } = metadata;
+
+const deprecated = [
+	{
+		attributes,
+		save: DeprecationVideo,
+	},
+	{
+		attributes: {
+			isStackedOnMobile: {
+				type: 'boolean',
+				default: true,
+			},
+			...attributes,
+		},
+		save: Deprecation,
+	},
+];
+
+export default deprecated;

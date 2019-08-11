@@ -1,6 +1,16 @@
+/**
+ * External dependencies
+ */
 import classnames from 'classnames';
-import { BackgroundClasses, BackgroundVideo } from '../../../components/background';
 
+/**
+ * Internal dependencies
+ */
+import { BackgroundClasses, BackgroundVideo } from '../../components/background';
+
+/**
+ * WordPress dependencies
+ */
 const { getColorClassName, InnerBlocks } = wp.blockEditor;
 
 function Save( { attributes } ) {

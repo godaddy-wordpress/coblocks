@@ -8,8 +8,8 @@ import map from 'lodash/map';
  */
 import { layoutOptions } from './layouts';
 import rowIcons from './icons';
-import { BackgroundControls } from '../../../components/background';
-import VisualDropdown from '../../../components/visual-dropdown/';
+import { BackgroundControls } from '../../components/background';
+import VisualDropdown from '../../components/visual-dropdown';
 
 /**
  * WordPress dependencies

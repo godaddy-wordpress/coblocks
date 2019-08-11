@@ -9,13 +9,13 @@ import classnames from 'classnames';
 import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
-import { title } from '../';
+import { title } from '.';
 import {
 	BackgroundStyles,
 	BackgroundClasses,
 	BackgroundVideo,
 	BackgroundDropZone,
-} from '../../../../components/background';
+} from '../../../components/background';
 
 /**
  * WordPress dependencies

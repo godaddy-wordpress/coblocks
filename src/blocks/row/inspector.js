@@ -8,8 +8,8 @@ import map from 'lodash/map';
  */
 import { layoutOptions } from './layouts';
 import applyWithColors from './colors';
-import { BackgroundPanel } from '../../../components/background';
-import DimensionsControl from '../../../components/dimensions-control/';
+import { BackgroundPanel } from '../../components/background';
+import DimensionsControl from '../../components/dimensions-control';
 
 /**
  * WordPress dependencies
