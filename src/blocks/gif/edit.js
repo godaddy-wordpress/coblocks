@@ -20,7 +20,7 @@ const { RichText } = wp.blockEditor;
  * Internal dependencies
  */
 import Controls from './controls';
-import icons from './../../../utils/icons';
+import icons from './../../utils/icons';
 import Inspector from './inspector';
 import Size from './size';
 
