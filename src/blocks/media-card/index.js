@@ -1,27 +1,20 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-import noop from 'lodash/noop';
-
-/**
  * Internal dependencies
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import icons from './components/icons';
-import brandAssets from '../../utils/brand-assets';
-import edit from './components/edit';
+import icons from './icons';
+import edit from './edit';
+import save from './save';
+import transforms from './transforms';
 import metadata from './block.json';
-import { BackgroundStyles, BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
+import { BackgroundAttributes } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
-const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Block constants
@@ -30,6 +23,8 @@ const { name } = metadata;
 
 const icon = icons.mediaCard;
 
+const title = __( 'Media Card' );
+
 const attributes = {
 	...BackgroundAttributes,
 	...DimensionsAttributes,
@@ -37,183 +32,25 @@ const attributes = {
 };
 
 const settings = {
-	title: __( 'Media Card' ),
+	title,
+
 	description: __( 'Add an image or video with an offset card side-by-side.' ),
+
 	keywords: [ __( 'image' ), __( 'video' ), __( 'coblocks' ) ],
+
 	attributes,
+
 	supports: {
 		align: [ 'wide', 'full' ],
 		stackedOnMobile: true,
 		coBlocksSpacing: true,
 	},
-	transforms: {
-		from: [
-			{
-				type: 'prefix',
-				prefix: ':card',
-				transform: function() {
-					return createBlock( `coblocks/${ name }` );
-				},
-			},
-			{
-				type: 'block',
-				blocks: [ 'core/image' ],
-				transform: ( { alt, url, id } ) => (
-					createBlock( `coblocks/${ name }`, {
-						mediaAlt: alt,
-						mediaId: id,
-						mediaUrl: url,
-						mediaType: 'image',
-					} )
-				),
-			},
-			{
-				type: 'block',
-				blocks: [ 'core/video' ],
-				transform: ( { src, id } ) => (
-					createBlock( `coblocks/${ name }`, {
-						mediaId: id,
-						mediaUrl: src,
-						mediaType: 'video',
-					} )
-				),
-			},
-			{
-				type: 'block',
-				blocks: [ 'core/media-text' ],
-				transform: ( { mediaAlt, mediaUrl, mediaId, mediaType, mediaPosition } ) => (
-					createBlock( `coblocks/${ name }`, {
-						mediaAlt: mediaAlt,
-						mediaId: mediaId,
-						mediaUrl: mediaUrl,
-						mediaType: mediaType,
-						mediaPosition: mediaPosition,
-					} )
-				),
-			},
-		],
-		to: [
-			{
-				type: 'block',
-				blocks: [ 'core/image' ],
-				isMatch: ( { mediaType, mediaUrl } ) => {
-					return ! mediaUrl || mediaType === 'image';
-				},
-				transform: ( { mediaAlt, mediaId, mediaUrl } ) => {
-					return createBlock( 'core/image', {
-						alt: mediaAlt,
-						id: mediaId,
-						url: mediaUrl,
-					} );
-				},
-			},
-			{
-				type: 'block',
-				blocks: [ 'core/video' ],
-				isMatch: ( { mediaType, mediaUrl } ) => {
-					return ! mediaUrl || mediaType === 'video';
-				},
-				transform: ( { mediaId, mediaUrl } ) => {
-					return createBlock( 'core/video', {
-						id: mediaId,
-						src: mediaUrl,
-					} );
-				},
-			},
-			{
-				type: 'block',
-				blocks: [ 'core/media-text' ],
-				transform: ( { mediaAlt, mediaUrl, mediaId, mediaType, mediaPosition } ) => (
-					createBlock( 'core/media-text', {
-						mediaAlt: mediaAlt,
-						mediaId: mediaId,
-						mediaUrl: mediaUrl,
-						mediaType: mediaType,
-						mediaPosition: mediaPosition,
-					} )
-				),
-			},
-		],
-	},
+
+	transforms,
+
 	edit,
-	save( { attributes } ) {
-		const {
-			coblocks,
-			hasCardShadow,
-			hasImgShadow,
-			paddingSize,
-			mediaAlt,
-			mediaType,
-			mediaUrl,
-			mediaWidth,
-			mediaId,
-			maxWidth,
-			mediaPosition,
-			isStackedOnMobile,
-			align,
-		} = attributes;
 
-		// Media.
-		const mediaTypeRenders = {
-			image: () => <img src={ mediaUrl } alt={ mediaAlt } className={ ( mediaId && mediaType === 'image' ) ? `wp-image-${ mediaId }` : null } />,
-			video: () => <video controls src={ mediaUrl } />,
-		};
-
-		let gridTemplateColumns;
-		if ( mediaWidth !== 55 ) {
-			gridTemplateColumns = mediaPosition === 'right' ? `auto ${ mediaWidth }%` : `${ mediaWidth }% auto`;
-		}
-
-		const classes = classnames( {
-			[ `coblocks-media-card-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
-			[ `is-style-${ mediaPosition }` ]: mediaPosition,
-			'has-no-media': ! mediaUrl || null,
-			'is-stacked-on-mobile': isStackedOnMobile,
-		} );
-
-		const innerClasses = classnames(
-			'wp-block-coblocks-media-card__inner',
-			...BackgroundClasses( attributes ), {
-				'has-padding': paddingSize && paddingSize !== 'no',
-				[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
-			} );
-
-		const innerStyles = {
-			...BackgroundStyles( attributes ),
-		};
-
-		const wrapperStyles = {
-			gridTemplateColumns,
-			maxWidth: maxWidth ? ( 'full' === align || 'wide' === align ) && maxWidth : undefined,
-		};
-
-		const cardClasses = classnames(
-			'wp-block-coblocks-media-card__content', {
-				'has-shadow': hasCardShadow,
-			} );
-
-		return (
-			<div className={ classes }>
-				<div className={ innerClasses } style={ innerStyles } >
-					{ BackgroundVideo( attributes ) }
-					<div className="wp-block-coblocks-media-card__wrapper" style={ wrapperStyles }>
-						<figure className={ classnames(
-							'wp-block-coblocks-media-card__media', {
-								'has-shadow': hasImgShadow,
-							}
-						) }
-						>
-							{ ( mediaTypeRenders[ mediaType ] || noop )() }
-							{ ! mediaUrl ? brandAssets.logo : null }
-						</figure>
-						<div className={ cardClasses }>
-							<InnerBlocks.Content />
-						</div>
-					</div>
-				</div>
-			</div>
-		);
-	},
+	save,
 };
 
-export { name, icon, settings };
+export { name, title, icon, settings };

@@ -10,7 +10,7 @@ import get from 'lodash/get';
 import applyWithColors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
-import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../../components/background';
+import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../components/background';
 import MediaContainer from './media-container';
 
 /**
