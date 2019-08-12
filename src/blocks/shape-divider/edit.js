@@ -9,8 +9,8 @@ import classnames from 'classnames';
 import Controls from './controls';
 import Inspector from './inspector';
 import applyWithColors from './colors';
-import { getDividerFromStyle } from '.././';
-import InlineColorPicker from '../../../components/inline-color-picker/';
+import { getDividerFromStyle } from '.';
+import InlineColorPicker from '../../components/inline-color-picker';
 
 /**
  * WordPress dependencies
