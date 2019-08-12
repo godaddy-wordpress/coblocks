@@ -250,7 +250,7 @@ class Edit extends Component {
 									minWidth="400"
 									maxWidth="1000"
 									enable={ enablePositions }
-									onResizeStart={ () => {
+									onResizeStart={ ( ) => {
 										this.setState( { resizing: true } );
 										toggleSelection( false );
 										const currentBlock = document.getElementById( 'block-' + clientId );
@@ -316,14 +316,12 @@ class Edit extends Component {
 								}
 
 								toggleSelection( true );
-								this.setState( { resizing: false, resizingInner: false } );
 
 								//update meta
 								this.saveMeta( 'height' );
 							} }
-							onResizeStart={ () => {
+							onResizeStart={ ( ) => {
 								toggleSelection( false );
-								this.setState( { resizing: true, resizingInner: true } );
 							} }
 						>
 							{ isBlobURL( backgroundImg ) && <Spinner /> }
@@ -340,7 +338,7 @@ class Edit extends Component {
 									minWidth="400"
 									maxWidth="1000"
 									enable={ enablePositions }
-									onResizeStart={ () => {
+									onResizeStart={ ( ) => {
 										this.setState( { resizing: true } );
 										toggleSelection( false );
 										const currentBlock = document.getElementById( 'block-' + clientId );
