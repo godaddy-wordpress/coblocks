@@ -142,7 +142,7 @@ class ModalSettings extends Component {
 						<div className="coblocks-block-manager__search">
 							<TextControl
 								type="search"
-								autocomplete="off"
+								autoComplete="off"
 								autofocus="autofocus"
 								placeholder={ __( 'Search for a block' ) }
 								value={ this.state.searchValue }

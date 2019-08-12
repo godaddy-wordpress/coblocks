@@ -1,0 +1,26 @@
+.editor-block-list__block[data-type="coblocks/blogroll"] {
+  padding-left: 2.5em;
+  &.is-style-grid {
+	padding-left: 0;
+  }
+
+  li a > div {
+	display: inline;
+  }
+
+  &.editor-block-list__block[data-align="full"] {
+	.wp-block-coblocks-blogroll {
+	  padding: 0 12px;
+	}
+  }
+
+  .flickity-enabled {
+	height: 100% !important;
+	position: inherit;
+  }
+}
+
+.components-coblocks-gallery-inspector__autoplayspeed-select {
+  margin-bottom: 1.75em !important;
+  margin-top: -0.85em;
+}

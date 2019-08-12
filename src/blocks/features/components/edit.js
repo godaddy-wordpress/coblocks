@@ -134,7 +134,8 @@ class Edit extends Component {
 							template={ getCount( columns ) }
 							allowedBlocks={ ALLOWED_BLOCKS }
 							templateLock="all"
-							templateInsertUpdatesSelection={ false } />
+							templateInsertUpdatesSelection={ false }
+							renderAppender={ () => ( null ) } />
 					</div>
 				</div>
 			</Fragment>

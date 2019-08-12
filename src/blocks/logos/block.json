@@ -1,0 +1,41 @@
+{
+	"name": "logos",
+	"attributes": {
+		"align": {
+			"type": "string"
+		},
+		"grayscale": {
+			"type": "boolean",
+			"default": false
+		},
+		"images": {
+			"type": "array",
+			"default": [],
+			"source": "query",
+			"selector": "img",
+			"query": {
+				"url": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "src"
+				},
+				"alt": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "alt",
+					"default": ""
+				},
+				"id": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "data-id"
+				},
+				"width": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "data-width"
+				}
+			}
+		}
+	}
+}

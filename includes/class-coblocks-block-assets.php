@@ -83,6 +83,16 @@ class CoBlocks_Block_Assets {
 			array(),
 			$this->_version
 		);
+
+		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
+
+		wp_enqueue_script(
+			$this->_slug . '-slick',
+			$vendors_dir . '/slick' . COBLOCKS_ASSET_SUFFIX . '.js',
+			array('jquery'),
+			$this->_version,
+			true
+		);
 	}
 
 	/**
@@ -171,6 +181,26 @@ class CoBlocks_Block_Assets {
 			wp_enqueue_script(
 				$this->_slug . '-flickity',
 				$vendors_dir . '/flickity' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				$this->_version,
+				true
+			);
+		}
+
+		if ( has_block( $this->_slug . '/blogroll' ) ) {
+			wp_enqueue_script(
+				$this->_slug . '-slick-initializer-front',
+				$dir . 'coblocks-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array('jquery'),
+				$this->_version,
+				true
+			);
+		}
+
+		if ( has_block( $this->_slug . '/events' ) ) {
+			wp_enqueue_script(
+				$this->_slug . '-events-pagination-front',
+				$dir . $this->_slug . '-events-pagination-front' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
 				$this->_version,
 				true

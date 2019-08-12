@@ -26,6 +26,7 @@ const blocksWithSpacingSupport = [
 	'core/gallery',
 	'core/spacer',
 	'core/cover',
+	'core/group',
 ];
 
 /**
@@ -157,8 +158,7 @@ const withAdvancedControls = createHigherOrderComponent( BlockEdit => {
 										.getNextBlockClientId( clientId );
 									if ( nextBlockClientId && ! noBottomMargin ) {
 										wp.data
-											.dispatch( 'core/editor' )
-											.updateBlockAttributes( nextBlockClientId, {
+											.dispatch( 'core/block-editor' ).updateBlockAttributes( nextBlockClientId, {
 												noTopMargin: ! noTopMargin,
 												marginTop: 0,
 												marginTopTablet: 0,
