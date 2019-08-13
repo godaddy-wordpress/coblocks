@@ -207,7 +207,7 @@ class CoBlocks_Form {
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( untrailingslashit( get_the_permalink() ) ), $this->form_hash ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); ?>
-				<input class="coblocks-field verify" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>">
+				<input class="coblocks-field verify" type="email" tabindex="-1" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>">
 				<div class="coblocks-form__submit wp-block-button">
 					<?php $this->render_submit_button( $atts ); ?>
 					<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
