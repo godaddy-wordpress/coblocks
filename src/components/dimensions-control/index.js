@@ -16,8 +16,8 @@ import './styles/editor.scss';
 const { __, _x, sprintf } = wp.i18n;
 const { withInstanceId } = wp.compose;
 const { dispatch } = wp.data;
-const { Component, Fragment } = wp.element;
-const { ButtonGroup, Dropdown, NavigableMenu, BaseControl, Button, Tooltip, Dashicon, TabPanel } = wp.components;
+const { Component, Fragment, useState } = wp.element;
+const { ButtonGroup, Dropdown, NavigableMenu, BaseControl, Button, Tooltip, Dashicon, TabPanel, SelectControl } = wp.components;
 
 class DimensionsControl extends Component {
 	constructor( props ) {
@@ -313,6 +313,8 @@ class DimensionsControl extends Component {
 			dimensionSize,
 		} = this.props;
 
+		const { paddingSize } = this.props.attributes;
+
 		const classes = classnames(
 			'components-base-control',
 			'components-coblocks-dimensions-control', {
@@ -474,6 +476,61 @@ class DimensionsControl extends Component {
 				button[ 0 ].style.display = 'block';
 			}
 		};
+
+		//const [ currentSelectValue, setCurrentSelectValue ] = useState( getSelectValueFromUtilitySize( utilitySizes, currentSize ) );
+
+		function getSelectValueFromUtilitySize( listOfSizes, value ) {
+			let selectedPreset;
+			switch ( typeof value ) {
+				case 'string':
+					selectedPreset = listOfSizes.find( ( choice ) => choice.slug === value );
+					return selectedPreset ? selectedPreset.slug : 'custom';
+				case 'number':
+					selectedPreset = listOfSizes.find( ( choice ) => choice.size === value );
+					return selectedPreset ? selectedPreset.slug : 'custom';
+				default:
+					return 'normal';
+			}
+		}
+
+		const getCurrentSelectValue = () => {
+			const { type } = this.props;
+			const { paddingSize, marginSize } = this.props.attributes;
+			console.log( type );
+			console.log( paddingSize, marginSize );
+			switch ( type ) {
+				case 'margin':
+					return marginSize;
+				case 'padding':
+					return paddingSize;
+				default:
+			}
+		};
+
+		const setCurrentSelectValue = newSetting => {
+			switch ( this.props.type ) {
+				case 'margin':
+					this.props.setAttributes( { marginSize: newSetting } );
+					break;
+				case 'padding':
+					this.props.setAttributes( { paddingSize: newSetting } );
+					break;
+				default:
+			}
+		};
+
+		const onChangeValue = ( event ) => {
+			const selectedUtil = utilitySizes.find( ( util ) => util.slug === event );
+			if ( selectedUtil ) {
+				setCurrentSelectValue( getSelectValueFromUtilitySize( utilitySizes, selectedUtil.slug ) );
+			}
+		};
+
+		function getSelectOptions( optionsArray ) {
+			return [
+				...optionsArray.map( ( option ) => ( { value: option.slug, label: option.name } ) ),
+			];
+		}
 
 		return (
 			<Fragment>
@@ -733,9 +790,9 @@ class DimensionsControl extends Component {
 							</div>
 						</Fragment>						:
 						<BaseControl id="textarea-1" label={ label } help={ help }>
-							<div className="components-font-size-picker__buttons">
-								<Dropdown
-									className="components-font-size-picker__dropdown"
+							<div className="components-font-size-picker__controls">
+								{ /* <Dropdown
+									className="components-font-size-picker__select"
 									contentClassName="components-font-size-picker__dropdown-content components-coblocks-dimensions-control__dropdown-content"
 									position="bottom"
 									renderToggle={ ( { isOpen, onToggle } ) => (
@@ -766,7 +823,17 @@ class DimensionsControl extends Component {
 											) ) }
 										</NavigableMenu>
 									) }
+								/> */ }
+
+								<SelectControl
+									className={ 'components-font-size-picker__select' }
+									label={ 'Choose padding preset' }
+									hideLabelFromVision={ true }
+									value={ getCurrentSelectValue }
+									onChange={ onChangeValue }
+									options={ getSelectOptions( utilitySizes ) }
 								/>
+
 								<Button
 									className="components-color-palette__clear"
 									type="button"
