@@ -17,7 +17,7 @@ class Inspector extends Component {
 	}
 
 	updateURL( newURL ) {
-		if ( '' === newURL ) {
+		if ( 'undefined' === typeof newURL || ! newURL.trim() ) {
 			this.props.setState( { preview: false } );
 		}
 		this.props.setAttributes( { url: newURL } );
