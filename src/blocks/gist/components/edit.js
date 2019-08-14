@@ -15,10 +15,10 @@ import Gist from './gist';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { compose } = wp.compose;
+const { compose, withState } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { PlainText, RichText } = wp.blockEditor;
-const { withState } = wp.compose;
+const { withNotices } = wp.components;
 
 /**
  * Block edit function
@@ -27,6 +27,8 @@ class Edit extends Component {
 	constructor() {
 		super( ...arguments );
 		this.updateURL = this.updateURL.bind( this );
+		this.handleErrors = this.handleErrors.bind( this );
+		this.clearErrors = this.clearErrors.bind( this );
 	}
 
 	componentDidMount() {
@@ -60,6 +62,19 @@ class Edit extends Component {
 			this.props.setAttributes( { url: newURLWithNoFile } );
 			this.props.setAttributes( { file: file.replace( /-([^-]*)$/, '.' + '$1' ) } );
 		}
+		this.clearErrors();
+	}
+
+	handleErrors() {
+		const { noticeOperations, setState } = this.props;
+		noticeOperations.removeAllNotices();
+		noticeOperations.createErrorNotice( 'Sorry, this URL is not a GitHub Gist.' );
+		setState( { preview: false } );
+	}
+
+	clearErrors() {
+		const { noticeOperations } = this.props;
+		noticeOperations.removeAllNotices();
 	}
 
 	render() {
@@ -69,9 +84,12 @@ class Edit extends Component {
 			isSelected,
 			preview,
 			setAttributes,
+			noticeUI,
 		} = this.props;
 
 		const { url, file, meta, caption } = attributes;
+
+		const { handleErrors } = this;
 
 		return (
 			<Fragment>
@@ -80,7 +98,9 @@ class Edit extends Component {
 				{ preview ? (
 					url && (
 						<div className={ classnames( className, meta ? null : 'no-meta' ) }>
-							<Gist url={ url } file={ file } />
+							<Gist url={ url } file={ file } onError={ () => {
+								handleErrors();
+							} } />
 							{ ( ! RichText.isEmpty( caption ) || isSelected ) && (
 								<RichText
 									tagName="figcaption"
@@ -94,27 +114,32 @@ class Edit extends Component {
 						</div>
 					)
 				) : (
-					<div
-						className={ classnames(
-							className,
-							'wp-block-shortcode' // Use the same styling as the core shortcode block.
-						) }
-					>
-						<label>
-							{ icons.github }
-							{ __( 'Gist URL' ) }
-						</label>
-						<PlainText
-							className="input-control"
-							value={ url }
-							placeholder={ __( 'Add GitHub Gist URL...' ) }
-							onChange={ this.updateURL }
-						/>
-					</div>
+					<Fragment>
+						{ noticeUI }
+						<div
+							className={ classnames(
+								className,
+								'wp-block-shortcode' // Use the same styling as the core shortcode block.
+							) }
+						>
+
+							<label>
+								{ icons.github }
+								{ __( 'Gist URL' ) }
+							</label>
+							<PlainText
+								className="input-control"
+								value={ url }
+								placeholder={ __( 'Add GitHub Gist URL...' ) }
+								onChange={ this.updateURL }
+							/>
+						</div>
+					</Fragment>
 				) }
+
 			</Fragment>
 		);
 	}
 }
 
-export default compose( [ withState( { preview: false } ) ] )( Edit );
+export default compose( [ withState( { preview: false } ), withNotices ] )( Edit );
