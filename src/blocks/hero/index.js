@@ -7,6 +7,7 @@ import icons from './icons';
 import edit from './edit';
 import save from './save';
 import transforms from './transforms';
+import deprecated from './deprecated';
 import { BackgroundAttributes } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import CSSGridAttributes from '../../components/grid-control/attributes';
@@ -112,6 +113,8 @@ const settings = {
 	edit,
 
 	save,
+
+	deprecated,
 
 };
 
