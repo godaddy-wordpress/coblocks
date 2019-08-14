@@ -8,6 +8,7 @@ import classnames from 'classnames';
  */
 
 import { BackgroundClasses, BackgroundVideo } from '../../components/background';
+
 /**
  * WordPress dependencies
  */
@@ -71,8 +72,10 @@ const save = ( { attributes } ) => {
 		<div className={ classes } style={ styles } >
 			<div className={ innerClasses } style={ innerStyles }>
 				{ BackgroundVideo( attributes ) }
-				<div className="wp-block-coblocks-hero__box" style={ { maxWidth: maxWidth ? maxWidth + 'px' : undefined } }>
-					<InnerBlocks.Content />
+				<div className="wp-block-coblocks-hero__content-wrapper">
+					<div className="wp-block-coblocks-hero__content" style={ { maxWidth: maxWidth ? maxWidth + 'px' : undefined } }>
+						<InnerBlocks.Content />
+					</div>
 				</div>
 			</div>
 		</div>
