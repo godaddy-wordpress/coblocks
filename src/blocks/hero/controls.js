@@ -3,8 +3,8 @@
  * Internal dependencies
  */
 import icons from './icons';
-import { BackgroundControls } from '../../../components/background';
-import CSSGridToolbar from '../../../components/grid-control/toolbar';
+import { BackgroundControls } from '../../components/background';
+import CSSGridToolbar from '../../components/grid-control/toolbar';
 
 /**
  * WordPress dependencies
