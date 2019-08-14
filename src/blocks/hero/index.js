@@ -186,8 +186,10 @@ const settings = {
 			<div className={ classes } style={ styles } >
 				<div className={ innerClasses } style={ innerStyles }>
 					{ BackgroundVideo( attributes ) }
-					<div className="wp-block-coblocks-hero__box" style={ { maxWidth: maxWidth ? maxWidth + 'px' : undefined } }>
-						<InnerBlocks.Content />
+					<div className="wp-block-coblocks-hero__inner-wrapper">
+						<div className="wp-block-coblocks-hero__box" style={ { maxWidth: maxWidth ? maxWidth + 'px' : undefined } }>
+							<InnerBlocks.Content />
+						</div>
 					</div>
 				</div>
 			</div>
