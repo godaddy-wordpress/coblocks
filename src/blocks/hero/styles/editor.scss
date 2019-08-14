@@ -24,7 +24,7 @@
 		width: 100%;
 
 		&__inner {
-			.wp-block-coblocks-hero__box {
+			.wp-block-coblocks-hero__content {
 				> .editor-inner-blocks {
 					> .editor-block-list__layout {
 						> .wp-block {
@@ -73,7 +73,7 @@
 			&.hero-top-left-align,
 			&.hero-center-left-align,
 			&.hero-bottom-left-align {
-				.wp-block-coblocks-hero__box {
+				.wp-block-coblocks-hero__content {
 					> span {
 						.components-resizable-box__handle-left {
 							display: none;
@@ -91,7 +91,7 @@
 			&.hero-top-center-align,
 			&.hero-center-center-align,
 			&.hero-bottom-center-align {
-				.wp-block-coblocks-hero__box {
+				.wp-block-coblocks-hero__content {
 					&.is-resizing {
 						&::before,
 						&::after {
@@ -104,7 +104,7 @@
 			&.hero-top-right-align,
 			&.hero-center-right-align,
 			&.hero-bottom-right-align {
-				.wp-block-coblocks-hero__box {
+				.wp-block-coblocks-hero__content {
 					> span {
 						.components-resizable-box__handle-right {
 							display: none;
@@ -120,7 +120,7 @@
 			}
 
 			&.is-hero-resizing {
-				.wp-block-coblocks-hero__box {
+				.wp-block-coblocks-hero__content {
 					&.is-resizing {
 						&::after {
 							opacity: 0;
@@ -140,7 +140,7 @@
 	// Show resize handle when the block is selected.
 	&.is-selected {
 		.wp-block-coblocks-hero__inner,
-		.wp-block-coblocks-hero__box {
+		.wp-block-coblocks-hero__content {
 			> span {
 				.components-resizable-box__handle {
 					display: block;
