@@ -101,7 +101,7 @@ export default class DimensionsSelect extends Component {
 			<Fragment>
 				<SelectControl
 					className={ 'components-font-size-picker__select' }
-					label={ 'Choose padding preset' }
+					label={ `Choose ${ type } preset` }
 					hideLabelFromVision={ true }
 					value={ this.getCurrentSelectValue( type ) }
 					onChange={ this.onChangeValue }
