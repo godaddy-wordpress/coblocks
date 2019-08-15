@@ -1,14 +1,9 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-
+import save from './save';
 import icons from './icons';
 import edit from './edit';
 import transforms from './transforms';
@@ -17,7 +12,6 @@ import transforms from './transforms';
  * WordPress dependencies
  */
 const { __, _x } = wp.i18n;
-const { getColorClassName } = wp.blockEditor;
 
 /**
  * Block constants
@@ -27,12 +21,6 @@ const name = 'dynamic-separator';
 const title = __( 'Dynamic HR' );
 
 const icon = icons.hr;
-
-const keywords = [
-	__( 'hr' ),
-	__( 'spacer' ),
-	__( 'coblocks' ),
-];
 
 const blockAttributes = {
 	height: {
@@ -49,11 +37,11 @@ const blockAttributes = {
 
 const settings = {
 
-	title: title,
+	title,
 
 	description: __( 'Add a resizable spacer between other blocks.' ),
 
-	keywords: keywords,
+	keywords: [	__( 'hr' ),	__( 'spacer' ),	__( 'coblocks' ) ],
 
 	attributes: blockAttributes,
 
@@ -67,31 +55,7 @@ const settings = {
 
 	edit,
 
-	save( { attributes, className } ) {
-		const {
-			color,
-			customColor,
-			height,
-		} = attributes;
-
-		const colorClass = getColorClassName( 'color', color );
-
-		const classes = classnames(
-			className, {
-				'has-text-color': color || customColor,
-				[ colorClass ]: colorClass,
-			} );
-
-		const styles = {
-			color: colorClass ? undefined : customColor,
-			height: height ? height + 'px' : undefined,
-		};
-
-		return (
-			<hr className={ classes } style={ styles }></hr>
-		);
-	},
+	save,
 };
 
 export { name, title, icon, settings };
-

@@ -2,10 +2,10 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import { BackgroundPanel } from '../../../components/background';
-import DimensionsControl from '../../../components/dimensions-control/';
-import CSSGridControl from '../../../components/grid-control/';
-import ResponsiveBaseControl from '../../../components/responsive-base-control/';
+import { BackgroundPanel } from '../../components/background';
+import DimensionsControl from '../../components/dimensions-control/';
+import CSSGridControl from '../../components/grid-control/';
+import ResponsiveBaseControl from '../../components/responsive-base-control/';
 
 /**
  * WordPress dependencies
