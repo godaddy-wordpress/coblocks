@@ -54,7 +54,7 @@ class CoBlocks_Getting_Started_Page {
 
 		}
 
-		add_menu_page(
+		add_management_page(
 			__( 'CoBlocks', 'coblocks' ),
 			__( 'CoBlocks', 'coblocks' ),
 			apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
