@@ -71,7 +71,7 @@
 		}
 		
 		.components-base-control__help {
-			margin-top: -5px;
+			margin-top: -8px;
 		}
 
 		&__header,
@@ -306,6 +306,10 @@
 					box-shadow: none;
 				}
 			}
+		}
+
+		.components-font-size-picker__controls {
+			margin-bottom: 0px;
 		}
 	}
 }
