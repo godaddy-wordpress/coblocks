@@ -11,20 +11,7 @@ const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.blockEditor;
 const { withFallbackStyles } = wp.components;
-
-const { getComputedStyle } = window;
-
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-    const { textColor, backgroundColor } = ownProps;
-    const backgroundColorValue = backgroundColor && backgroundColor.color;
-    const textColorValue = textColor && textColor.color;
-    //avoid the use of querySelector if textColor color is known and verify if node is available.
-    const textNode = ! textColorValue && node ? node.querySelector( '[contenteditable="true"]' ) : null;
-    return {
-        fallbackBackgroundColor: backgroundColorValue || ! node ? undefined : getComputedStyle( node ).backgroundColor,
-        fallbackTextColor: textColorValue || ! textNode ? undefined : getComputedStyle( textNode ).color,
-    };
-} );
+const { PanelBody, TextControl } = wp.components;
 
 /**
  * Inspector controls
@@ -38,6 +25,7 @@ class Inspector extends Component {
     render() {
 
         const {
+            attributes,
             backgroundColor,
             setBackgroundColor,
             setTextColor,
@@ -45,11 +33,21 @@ class Inspector extends Component {
             fallbackTextColor,
             textColor,
             isSelected,
+            setAttributes,
         } = this.props;
+
+        const { buttonLabel } = attributes;
 
         return (
             <Fragment>
                 <InspectorControls>
+                    <PanelBody title={__('Button Settings')} initialOpen={false}>
+                        <TextControl
+                            label="Button Label"
+                            value={buttonLabel}
+                            onChange={value => setAttributes({buttonLabel: value})}
+                        />
+                    </PanelBody>
                     <PanelColorSettings
                         title={ __( 'Color Settings' ) }
                         colorSettings={ [
@@ -70,8 +68,6 @@ class Inspector extends Component {
                                 isLargeText: false,
                                 textColor: textColor.color,
                                 backgroundColor: backgroundColor.color,
-                                fallbackBackgroundColor,
-                                fallbackTextColor,
                             } }
                         />
                     </PanelColorSettings>

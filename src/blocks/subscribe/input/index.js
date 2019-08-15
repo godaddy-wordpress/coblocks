@@ -34,7 +34,6 @@ const blockAttributes = {
     },
     label: {
         type: 'string',
-        default: 'Email Address',
     },
     backgroundColor: {
         type: 'string',

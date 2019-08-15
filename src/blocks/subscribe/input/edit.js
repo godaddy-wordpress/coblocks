@@ -62,7 +62,7 @@ class Edit extends Component {
                         value={email}
                         /* eslint-disable jsx-a11y/no-autofocus */
                         // Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
-                        placeholder={__(label)}
+                        placeholder={label}
                         /* eslint-enable jsx-a11y/no-autofocus */
                         onChange={value => setAttributes({email: value})}
                     />
