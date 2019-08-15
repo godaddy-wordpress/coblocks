@@ -16,7 +16,7 @@ class CoBlocks_Getting_Started_Page_Tests extends WP_UnitTestCase {
 
 		$this->coblocks_getting_started_page = new CoBlocks_Getting_Started_Page();
 
-		set_current_screen( 'tools.php_page_coblocks-getting-started' );
+		set_current_screen( 'tools_page_coblocks-getting-started' );
 
 	}
 
