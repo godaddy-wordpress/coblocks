@@ -18,6 +18,6 @@ dist/blocks.editor.build.css
 dist/blocks.style.build.css
 .DS_Store
 includes/.DS_Store
-.DS_Store
 sandbox.json
 languages/coblocks-js.pot
+/.idea/
