@@ -1,44 +1,7 @@
 import ImageCropControl from './image-crop-control';
+import { attachmentOriginalImage } from './attachment-original-image';
 
 const { Component } = wp.element;
-
-const originalImageCache = {};
-const urlsInProgress = {};
-
-const getOriginalImageUrl = function( id ) {
-	if ( urlsInProgress[ id ] ) {
-		return urlsInProgress[ id ];
-	}
-
-	urlsInProgress[ id ] = new Promise( ( resolve, reject ) => {
-		if ( originalImageCache[ id ] ) {
-			resolve( originalImageCache[ id ] );
-			return;
-		}
-
-		jQuery.post( ajaxurl, {
-			action: 'coblocks_system_original_image',
-			id: id,
-		}, function( response ) {
-			if ( ! response ) {
-				reject();
-				return;
-			}
-
-			const data = JSON.parse( response );
-
-			if ( ! data || ! data.url ) {
-				reject();
-				return;
-			}
-
-			originalImageCache[ id ] = data.url;
-			resolve( data.url );
-		} );
-	} );
-
-	return urlsInProgress[ id ];
-};
 
 class AttachmentCropControl extends Component {
 	constructor( props ) {
@@ -57,7 +20,7 @@ class AttachmentCropControl extends Component {
 			return;
 		}
 
-		getOriginalImageUrl( attachmentId ).then( function( url ) {
+		attachmentOriginalImage.get( attachmentId ).then( function( url ) {
 			self.setState( {
 				imageUrl: url,
 			} );

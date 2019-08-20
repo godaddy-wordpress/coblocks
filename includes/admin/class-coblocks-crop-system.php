@@ -50,8 +50,7 @@ class CoBlocks_Crop_System
     public function getOriginalImage()
     {
         if (!isset($_POST['id'])) {
-            http_response_code(400);
-            die();
+            wp_die('', 400);
         }
 
         $id = (int)$_POST['id'];
@@ -64,18 +63,15 @@ class CoBlocks_Crop_System
             $originalImageId = $id;
         }
 
-        echo json_encode([
+        wp_die(json_encode([
             'url' => wp_get_attachment_image_url($originalImageId, 'original'),
-        ]);
-
-        die();
+        ]), 200);
     }
 
     public function apiCrop()
     {
         if (!isset($_POST['id']) || !isset($_POST['cropX']) || !isset($_POST['cropY']) || !isset($_POST['cropWidth']) || !isset($_POST['cropHeight']) || !isset($_POST['cropRotation'])) {
-            http_response_code(400);
-            die();
+            wp_die('', 400);
         }
 
         $newId = $this->imageMediaCrop(
@@ -87,21 +83,17 @@ class CoBlocks_Crop_System
             floatval($_POST['cropRotation'])
         );
 
-        http_response_code(200);
-
-        if ($newId !== null) {
-            echo json_encode([
-                'success' => true,
-                'id'      => $newId,
-                'url'     => wp_get_attachment_image_url($newId, 'original'),
-            ]);
-        } else {
-            echo json_encode([
+        if ($newId === null) {
+            wp_die(json_encode([
                 'success' => false,
-            ]);
+            ]), 200);
         }
 
-        die();
+        wp_die(json_encode([
+            'success' => true,
+            'id'      => $newId,
+            'url'     => wp_get_attachment_image_url($newId, 'original'),
+        ]), 200);
     }
 
     public function imageMediaCrop($id, $offsetX, $offsetY, $width, $height, $rotate)
