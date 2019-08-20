@@ -101,6 +101,10 @@ $gutter: 0.3em;
 	.block-list-appender {
 		display: none !important;
 	}
+
+	.wp-block-button-wrapper {
+		display: inline-flex;
+	}
 }
 
 .components-toggle-control--services-action-button {
