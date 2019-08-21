@@ -8,6 +8,13 @@ import classnames from 'classnames';
  */
 import { BackgroundAttributes } from '../../components/background';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
+import { BackgroundStyles } from '../../components/background';
+import { GalleryClasses } from '../../components/block-gallery/shared';
+
+/**
+ * WordPress dependencies
+ */
+const { getColorClassName, RichText } = wp.blockEditor;
 
 /**
  * Block constants
