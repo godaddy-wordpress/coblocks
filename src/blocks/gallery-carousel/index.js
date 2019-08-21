@@ -6,6 +6,7 @@ import './styles/editor.scss';
 import icons from './icons';
 import edit from './edit';
 import transforms from './transforms';
+import deprecated from './deprecated';
 import save from './save';
 import { BackgroundAttributes } from '../../components/background';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
@@ -101,6 +102,8 @@ const settings = {
 	edit,
 
 	save,
+
+	deprecated,
 };
 
 export { name, title, icon, settings };
