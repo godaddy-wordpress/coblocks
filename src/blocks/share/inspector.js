@@ -34,6 +34,7 @@ class Inspector extends Component {
 			setBlockBackgroundColor,
 			setTextColor,
 			fallbackTextColor,
+			fallbackBlockBackgroundColor,
 			backgroundColor,
 			blockBackgroundColor,
 			textColor,
@@ -187,6 +188,16 @@ class Inspector extends Component {
 							initialOpen={ false }
 							colorSettings={ ! isMaskStyle ? defaultColors : maskColors }
 						>
+							<ContrastChecker
+								{ ...{
+									isLargeText: true,
+									textColor: backgroundColor.color,
+									backgroundColor: blockBackgroundColor.color,
+									fallbackBackgroundColor,
+									fallbackBlockBackgroundColor,
+								} }
+							/>
+
 							{ ! isMaskStyle &&
 								<ContrastChecker
 									{ ...{
