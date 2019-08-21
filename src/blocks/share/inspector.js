@@ -64,14 +64,14 @@ class Inspector extends Component {
 
 		const defaultColors = [
 			{
-				value: backgroundColor.color,
-				onChange: setBackgroundColor,
-				label: __( 'Button Background Color' ),
-			},
-			{
 				value: blockBackgroundColor.color,
 				onChange: setBlockBackgroundColor,
 				label: __( 'Block Background Color' ),
+			},
+			{
+				value: backgroundColor.color,
+				onChange: setBackgroundColor,
+				label: __( 'Button Background Color' ),
 			},
 			{
 				value: textColor.color,
