@@ -74,6 +74,10 @@ const blockAttributes = {
 		type: 'boolean',
 		default: true,
 	},
+	alignCells: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 const settings = {

@@ -31,20 +31,6 @@ const { isBlobURL } = wp.blob;
 /**
  * Block consts.
  */
-const flickityOptions = {
-	draggable: false,
-	pageDots: true,
-	prevNextButtons: true,
-	wrapAround: true,
-	autoPlay: false,
-	arrowShape: {
-		x0: 10,
-		x1: 60, y1: 50,
-		x2: 65, y2: 45,
-		x3: 20,
-	},
-};
-
 class GalleryCarouselEdit extends Component {
 	constructor() {
 		super( ...arguments );
@@ -181,6 +167,7 @@ class GalleryCarouselEdit extends Component {
 			prevNextButtons,
 			primaryCaption,
 			backgroundImg,
+			alignCells,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -216,7 +203,9 @@ class GalleryCarouselEdit extends Component {
 
 		const flickityClasses = classnames(
 			'has-carousel',
-			`has-carousel-${ gridSize }`, {}
+			`has-carousel-${ gridSize }`, {
+				'has-aligned-cells': alignCells,
+			}
 		);
 
 		if ( ! hasImages ) {
@@ -228,6 +217,21 @@ class GalleryCarouselEdit extends Component {
 				/>
 			);
 		}
+
+		const flickityOptions = {
+			draggable: false,
+			pageDots: true,
+			prevNextButtons: true,
+			wrapAround: true,
+			autoPlay: false,
+			cellAlign: alignCells ? 'left' : 'center',
+			arrowShape: {
+				x0: 10,
+				x1: 60, y1: 50,
+				x2: 65, y2: 45,
+				x3: 20,
+			},
+		};
 
 		return (
 			<Fragment>

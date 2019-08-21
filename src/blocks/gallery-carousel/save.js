@@ -30,12 +30,14 @@ const save = ( { attributes, className } ) => {
 		pageDots,
 		prevNextButtons,
 		primaryCaption,
+		alignCells,
 	} = attributes;
 
 	const innerClasses = classnames(
 		'is-cropped',
 		...GalleryClasses( attributes ), {
 			'has-horizontal-gutter': gutter > 0,
+
 		}
 	);
 
@@ -45,7 +47,9 @@ const save = ( { attributes, className } ) => {
 
 	const flickityClasses = classnames(
 		'has-carousel',
-		`has-carousel-${ gridSize }`, {}
+		`has-carousel-${ gridSize }`, {
+			'has-aligned-cells': alignCells,
+		}
 	);
 
 	const flickityStyles = {
@@ -67,6 +71,7 @@ const save = ( { attributes, className } ) => {
 		pageDots: pageDots,
 		prevNextButtons: prevNextButtons,
 		wrapAround: true,
+		cellAlign: alignCells ? 'left' : 'center',
 		arrowShape: {
 			x0: 10,
 			x1: 60, y1: 50,

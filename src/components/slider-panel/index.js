@@ -39,6 +39,10 @@ class SliderPanel extends Component {
 		return checked ? __( 'Showing dot navigation arrows.' ) : __( 'Toggle to show dot navigation.' );
 	}
 
+	getAlignCellsHelp( checked ) {
+		return checked ? __( 'Aligning slides to the left.' ) : __( 'Aligning slides to the center.' );
+	}
+
 	render() {
 		const {
 			attributes,
@@ -51,6 +55,7 @@ class SliderPanel extends Component {
 			draggable,
 			pageDots,
 			prevNextButtons,
+			alignCells,
 		} = attributes;
 
 		return (
@@ -86,6 +91,12 @@ class SliderPanel extends Component {
 						checked={ !! pageDots }
 						onChange={ () => setAttributes( { pageDots: ! pageDots } ) }
 						help={ this.getDotNavigationHelp }
+					/>
+					<ToggleControl
+						label={ __( 'Align Cells' ) }
+						checked={ !! alignCells }
+						onChange={ () => setAttributes( { alignCells: ! alignCells } ) }
+						help={ this.getAlignCellsHelp }
 					/>
 				</PanelBody>
 			</Fragment>
