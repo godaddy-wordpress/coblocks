@@ -6,10 +6,8 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { BackgroundAttributes } from '../../components/background';
-import { GalleryAttributes } from '../../components/block-gallery/shared';
-import { BackgroundStyles } from '../../components/background';
-import { GalleryClasses } from '../../components/block-gallery/shared';
+import { BackgroundAttributes, BackgroundStyles } from '../../components/background';
+import { GalleryAttributes, GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
