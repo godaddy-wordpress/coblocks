@@ -200,6 +200,9 @@ function coblocks_register_social_profiles_block() {
 				'backgroundColor'       => array(
 					'type' => 'string',
 				),
+				'blockBackgroundColor'	=> array(
+					'type' => 'string',
+				),
 				'customBackgroundColor' => array(
 					'type' => 'string',
 				),

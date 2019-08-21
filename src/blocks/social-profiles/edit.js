@@ -55,6 +55,7 @@ class edit extends Component {
 			className,
 			isSelected,
 			backgroundColor,
+			blockBackgroundColor,
 			textColor,
 			setAttributes,
 		} = this.props;
@@ -84,6 +85,10 @@ class edit extends Component {
 				[ `has-button-size-${ size }` ]: size !== 'med',
 				'has-colors': hasColors,
 			} );
+
+		const blockStyles = {
+			backgroundColor: blockBackgroundColor.color ? blockBackgroundColor.color : '',
+		};
 
 		const buttonClasses = classnames(
 			'wp-block-button__link',
@@ -124,7 +129,7 @@ class edit extends Component {
 				{ isSelected && <Controls { ...this.props } /> }
 				{ isSelected && <Inspector { ...this.props } /> }
 
-				<div className={ classes } style={ { textAlign: textAlign } }>
+				<div className={ classes } style={ { ...textAlign, ...blockStyles } }>
 					<ul>
 						{ ( placeholder || ( facebook || isSelected ) ) && (
 							<li>
