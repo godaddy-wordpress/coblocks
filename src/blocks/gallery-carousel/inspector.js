@@ -107,7 +107,6 @@ class Inspector extends Component {
 			gutter,
 			height,
 			radius,
-			alignCells,
 		} = attributes;
 
 		return (
