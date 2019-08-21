@@ -31,9 +31,11 @@ class Inspector extends Component {
 			attributes,
 			setAttributes,
 			setBackgroundColor,
+			setBlockBackgroundColor,
 			setTextColor,
 			fallbackTextColor,
 			backgroundColor,
+			blockBackgroundColor,
 			textColor,
 			fallbackBackgroundColor,
 		} = this.props;
@@ -64,7 +66,12 @@ class Inspector extends Component {
 			{
 				value: backgroundColor.color,
 				onChange: setBackgroundColor,
-				label: __( 'Background Color' ),
+				label: __( 'Button Background Color' ),
+			},
+			{
+				value: blockBackgroundColor.color,
+				onChange: setBlockBackgroundColor,
+				label: __( 'Block Background Color' ),
 			},
 			{
 				value: textColor.color,

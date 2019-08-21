@@ -264,6 +264,9 @@ function coblocks_register_share_block() {
 				'backgroundColor'       => array(
 					'type' => 'string',
 				),
+				'blockBackgroundColor'	=> array(
+					'type' => 'string',
+				),
 				'customBackgroundColor' => array(
 					'type' => 'string',
 				),
