@@ -27,7 +27,7 @@ const icon = icons.services;
 const settings = {
 	title: __( 'Services' ),
 	description: __( 'Add up to four columns of services to display.' ),
-	keywords: [],
+	keywords: [ __( 'features' ) ],
 	attributes: metadata.attributes,
 	supports: {
 		align: [ 'wide', 'full' ],
