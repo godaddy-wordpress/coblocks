@@ -200,6 +200,10 @@ function coblocks_render_share_block( $attributes ) {
 		$class .= ' ' . $attributes['className'];
 	}
 
+	if ( isset( $attributes['blockBackgroundColor'] ) ) {
+		$class .= " has-{$attributes['blockBackgroundColor']}-background-color";
+	}
+
 	if ( isset( $attributes['hasColors'] ) && $attributes['hasColors'] ) {
 		$class .= ' has-colors';
 	}
