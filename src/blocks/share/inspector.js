@@ -57,6 +57,18 @@ class Inspector extends Component {
 			padding,
 		} = attributes;
 
+		const isMaskStyle = includes( className, 'is-style-mask' );
+		const isTextStyle = includes( className, 'is-style-text' );
+		const isIconTextStyle = includes( className, 'is-style-icon-and-text' );
+		const isCircularStyle = includes( className, 'is-style-circular' );
+
+		const textColorLabel = () => {
+			if ( isTextStyle || isIconTextStyle ) {
+				return __( 'Text Color' );
+			}
+			return __( 'Icon Color' );
+		};
+
 		const options = [
 			{ value: 'sml', label: __( 'Small' ) },
 			{ value: 'med', label: __( 'Medium' ) },
@@ -67,30 +79,32 @@ class Inspector extends Component {
 			{
 				value: blockBackgroundColor.color,
 				onChange: setBlockBackgroundColor,
-				label: __( 'Block Background Color' ),
+				label: __( 'Background Color' ),
 			},
 			{
 				value: backgroundColor.color,
 				onChange: setBackgroundColor,
-				label: __( 'Button Background Color' ),
+				label: __( 'Button Color' ),
 			},
 			{
 				value: textColor.color,
 				onChange: setTextColor,
-				label: __( 'Text Color' ),
+				label: textColorLabel(),
 			},
 		];
 
 		const maskColors = [
 			{
-				value: backgroundColor.color,
-				onChange: setBackgroundColor,
+				value: blockBackgroundColor.color,
+				onChange: setBlockBackgroundColor,
 				label: __( 'Background Color' ),
 			},
+			{
+				value: backgroundColor.color,
+				onChange: setBackgroundColor,
+				label: __( 'Icon Color' ),
+			},
 		];
-
-		const isMaskStyle = includes( className, 'is-style-mask' );
-		const isCircularStyle = includes( className, 'is-style-circular' );
 
 		return (
 			<Fragment>
@@ -188,16 +202,6 @@ class Inspector extends Component {
 							initialOpen={ false }
 							colorSettings={ ! isMaskStyle ? defaultColors : maskColors }
 						>
-							<ContrastChecker
-								{ ...{
-									isLargeText: true,
-									textColor: backgroundColor.color,
-									backgroundColor: blockBackgroundColor.color,
-									fallbackBackgroundColor,
-									fallbackBlockBackgroundColor,
-								} }
-							/>
-
 							{ ! isMaskStyle &&
 								<ContrastChecker
 									{ ...{
