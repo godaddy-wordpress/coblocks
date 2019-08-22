@@ -171,76 +171,79 @@ function coblocks_register_social_profiles_block() {
 			'editor_style'    => 'coblocks-editor',
 			'style'           => 'coblocks-frontend',
 			'attributes'      => array(
-				'className'             => array(
+				'className'                  => array(
 					'type' => 'string',
 				),
-				'hasColors'             => array(
+				'hasColors'                  => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'borderRadius'          => array(
+				'borderRadius'               => array(
 					'type'    => 'number',
 					'default' => 40,
 				),
-				'size'                  => array(
+				'size'                       => array(
 					'type'    => 'string',
 					'default' => 'med',
 				),
-				'iconSize'              => array(
+				'iconSize'                   => array(
 					'type'    => 'number',
 					'default' => 22,
 				),
-				'padding'               => array(
+				'padding'                    => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'textAlign'             => array(
+				'textAlign'                  => array(
 					'type' => 'string',
 				),
-				'backgroundColor'       => array(
+				'backgroundColor'            => array(
 					'type' => 'string',
 				),
-				'blockBackgroundColor'  => array(
+				'blockBackgroundColor'       => array(
 					'type' => 'string',
 				),
-				'customBackgroundColor' => array(
+				'customBlockBackgroundColor' => array(
 					'type' => 'string',
 				),
-				'textColor'             => array(
+				'customBackgroundColor'      => array(
 					'type' => 'string',
 				),
-				'customTextColor'       => array(
+				'textColor'                  => array(
 					'type' => 'string',
 				),
-				'facebook'              => array(
+				'customTextColor'            => array(
+					'type' => 'string',
+				),
+				'facebook'                   => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'twitter'               => array(
+				'twitter'                    => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'instagram'             => array(
+				'instagram'                  => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'pinterest'             => array(
+				'pinterest'                  => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'linkedin'              => array(
+				'linkedin'                   => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'youtube'               => array(
+				'youtube'                    => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'yelp'                  => array(
+				'yelp'                       => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'houzz'                 => array(
+				'houzz'                      => array(
 					'type'    => 'string',
 					'default' => '',
 				),
