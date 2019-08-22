@@ -34,7 +34,6 @@ class Inspector extends Component {
 			setBlockBackgroundColor,
 			setTextColor,
 			fallbackTextColor,
-			fallbackBlockBackgroundColor,
 			backgroundColor,
 			blockBackgroundColor,
 			textColor,
