@@ -62,19 +62,20 @@ class edit extends Component {
 
 		const {
 			borderRadius,
+			customBlockBackgroundColor,
+			facebook,
 			hasColors,
+			houzz,
+			iconSize,
+			instagram,
+			linkedin,
+			padding,
+			pinterest,
 			size,
 			textAlign,
-			iconSize,
-			padding,
-			facebook,
 			twitter,
-			instagram,
-			pinterest,
-			linkedin,
-			youtube,
 			yelp,
-			houzz,
+			youtube,
 		} = attributes;
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
@@ -84,6 +85,7 @@ class edit extends Component {
 			'wp-block-coblocks-social', {
 				[ `has-button-size-${ size }` ]: size !== 'med',
 				'has-colors': hasColors,
+				'has-background': blockBackgroundColor.color || customBlockBackgroundColor,
 			} );
 
 		const blockStyles = {

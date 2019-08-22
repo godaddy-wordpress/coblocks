@@ -43,19 +43,20 @@ class edit extends Component {
 
 		const {
 			borderRadius,
+			customBlockBackgroundColor,
+			email,
 			facebook,
+			google,
 			hasColors,
+			iconSize,
 			linkedin,
+			padding,
 			pinterest,
 			reddit,
 			size,
 			textAlign,
 			tumblr,
 			twitter,
-			email,
-			iconSize,
-			google,
-			padding,
 		} = attributes;
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
@@ -64,6 +65,7 @@ class edit extends Component {
 		const classes = classnames( className, {
 			[ `has-button-size-${ size }` ]: size !== 'med',
 			'has-colors': hasColors,
+			'has-background': blockBackgroundColor.color || customBlockBackgroundColor,
 		}
 		);
 
