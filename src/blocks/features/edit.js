@@ -8,7 +8,7 @@ import times from 'lodash/times';
 /**
  * Internal dependencies
  */
-import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../../components/background';
+import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../components/background';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 import Controls from './controls';
