@@ -7,6 +7,7 @@ import save from './save';
 import icons from './icons';
 import edit from './edit';
 import transforms from './transforms';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -16,34 +17,20 @@ const { __, _x } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'dynamic-separator';
-
-const title = __( 'Dynamic HR' );
+const { attributes, name } = metadata;
 
 const icon = icons.hr;
 
-const blockAttributes = {
-	height: {
-		type: 'number',
-		default: 50,
-	},
-	color: {
-		type: 'string',
-	},
-	customColor: {
-		type: 'string',
-	},
-};
+const title = __( 'Dynamic HR' );
 
 const settings = {
-
 	title,
 
 	description: __( 'Add a resizable spacer between other blocks.' ),
 
-	keywords: [	__( 'hr' ),	__( 'spacer' ),	__( 'coblocks' ) ],
+	keywords: [ __( 'hr' ), __( 'spacer' ), __( 'coblocks' ) ],
 
-	attributes: blockAttributes,
+	attributes,
 
 	styles: [
 		{ name: 'dots', label: _x( 'Dot', 'block style' ), isDefault: true },
