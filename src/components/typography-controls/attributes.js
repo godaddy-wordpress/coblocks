@@ -4,7 +4,7 @@
  */
 const TypographyAttributes = {
 	fontSize: {
-		type: 'number',
+		type: 'string',
 	},
 	customFontSize: {
 		type: 'number',

@@ -55,6 +55,7 @@ import * as gist from './blocks/gist';
 import * as hero from './blocks/hero';
 import * as highlight from './blocks/highlight';
 import * as icon from './blocks/icon';
+import * as logos from './blocks/logos';
 import * as map from './blocks/map';
 import * as masonry from './blocks/gallery-masonry';
 import * as mediaCard from './blocks/media-card';
@@ -63,8 +64,10 @@ import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';
 import * as shapeDivider from './blocks/shape-divider';
 import * as share from './blocks/share';
-import * as socialProfiles from './blocks/social-profiles';
+import * as services from './blocks/services';
+import * as service from './blocks/services/service';
 import * as stacked from './blocks/gallery-stacked';
+import * as socialProfiles from './blocks/social-profiles';
 
 export function registerBlocks() {
 	[
@@ -87,12 +90,15 @@ export function registerBlocks() {
 		hero,
 		highlight,
 		icon,
+		logos,
 		map,
 		masonry,
 		mediaCard,
 		pricingTable,
 		pricingTableItem,
 		row,
+		services,
+		service,
 		shapeDivider,
 		share,
 		socialProfiles,
