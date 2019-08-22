@@ -200,6 +200,10 @@ function coblocks_render_share_block( $attributes ) {
 		$class .= ' ' . $attributes['className'];
 	}
 
+	if ( isset( $attributes['align'] ) ) {
+		$class .= ' align' . $attributes['align'];
+	}
+
 	if ( isset( $attributes['blockBackgroundColor'] ) ) {
 		$class .= " has-{$attributes['blockBackgroundColor']}-background-color";
 	}
@@ -239,6 +243,10 @@ function coblocks_register_share_block() {
 			'editor_style'    => 'coblocks-editor',
 			'style'           => 'coblocks-frontend',
 			'attributes'      => array(
+				'align'                      => array(
+					'type' => 'string',
+					'enum' => array( 'wide', 'full' ),
+				),
 				'className'                  => array(
 					'type' => 'string',
 				),

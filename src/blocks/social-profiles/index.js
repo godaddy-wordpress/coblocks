@@ -37,6 +37,11 @@ const settings = {
 		{ name: 'circular', label: _x( 'Circular', 'block style' ) },
 	],
 
+	supports: {
+		align: [ 'wide', 'full' ],
+		coBlocksSpacing: true,
+	},
+
 	edit,
 
 	transforms,
