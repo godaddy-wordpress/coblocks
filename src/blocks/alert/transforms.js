@@ -40,15 +40,22 @@ const transforms = {
 		{
 			type: 'block',
 			blocks: [ 'core/paragraph' ],
-			transform: ( { value } ) => {
-				// transforming an empty alert element
+			transform: ( { value, title } ) => {
+				if ( title ) {
+					value.unshift( title, { type: 'br',
+						props: {
+							children: [],
+						},
+					} );
+				}
+
 				if ( ! value || ! value.length ) {
 					return createBlock( 'core/paragraph' );
 				}
 				// transforming an alert element with content
-				return ( value || [] ).map( () => createBlock( 'core/paragraph', {
+				return createBlock( 'core/paragraph', {
 					content: value,
-				} ) );
+				} );
 			},
 		},
 	],
