@@ -1,16 +1,10 @@
 /**
- * External dependencies
- */
-import includes from 'lodash/includes';
-
-/**
  * Internal dependencies
  */
 import './styles/editor.scss';
 import './styles/style.scss';
 import edit from './edit';
 import icons from './icons';
-import dividers from './dividers';
 import save from './save';
 import transforms from './transforms';
 import deprecated from './deprecated';
