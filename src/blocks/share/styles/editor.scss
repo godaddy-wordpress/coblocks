@@ -25,7 +25,7 @@
 		&.is-style-text,
 		&.is-style-icon-and-text {
 			.wp-block-coblocks-social__button {
-				width: 95%;
+				width: 75%;
 			}
 		}
 
@@ -73,6 +73,15 @@
 
 			&.is-empty {
 				opacity: 1 !important;
+			}
+		}
+	}
+
+	.wp-block-coblocks-social-profiles {
+		&.is-style-text,
+		&.is-style-icon-and-text {
+			.wp-block-coblocks-social__button {
+				width: 95%;
 			}
 		}
 	}
