@@ -140,6 +140,10 @@ function coblocks_render_social_profiles_block( $attributes ) {
 		$class .= ' align' . $attributes['align'];
 	}
 
+	if ( isset( $attributes['blockBackgroundColor'] ) || isset( $attributes['customBlockBackgroundColor'] ) ) {
+		$class .= ' has-background';
+	}
+
 	if ( isset( $attributes['blockBackgroundColor'] ) ) {
 		$class .= " has-{$attributes['blockBackgroundColor']}-background-color";
 	}
