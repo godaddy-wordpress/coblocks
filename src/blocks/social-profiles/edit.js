@@ -88,10 +88,6 @@ class edit extends Component {
 				'has-background': blockBackgroundColor.color || customBlockBackgroundColor,
 			} );
 
-		const blockStyles = {
-			backgroundColor: blockBackgroundColor.color ? blockBackgroundColor.color : '',
-		};
-
 		const buttonClasses = classnames(
 			'wp-block-button__link',
 			'wp-block-coblocks-social__button',
@@ -131,7 +127,7 @@ class edit extends Component {
 				{ isSelected && <Controls { ...this.props } /> }
 				{ isSelected && <Inspector { ...this.props } /> }
 
-				<div className={ classes } style={ { ...textAlign, ...blockStyles } }>
+				<div className={ classes } style={ { textAlign, backgroundColor: blockBackgroundColor.color || '' } }>
 					<ul>
 						{ ( placeholder || ( facebook || isSelected ) ) && (
 							<li>
