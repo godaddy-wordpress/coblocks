@@ -1,0 +1,18 @@
+{
+	"name": "features",
+	"category": "coblocks",
+	"attributes": {
+		"gutter": {
+			"type": "string",
+			"default": "large"
+		},
+		"columns": {
+			"type": "number",
+			"default": 2
+		},
+		"contentAlign": {
+			"type": "string",
+			"default": "center"
+		}
+	}
+}
