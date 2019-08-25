@@ -1,0 +1,32 @@
+{
+	"name": "author",
+	"category": "coblocks",
+	"attributes": {
+		"biography": {
+			"type": "array",
+			"source": "children",
+			"selector": ".wp-block-coblocks-author__biography",
+			"default": []
+		},
+		"heading": {
+			"type": "string",
+			"selector": ".wp-block-coblocks-author__heading"
+		},
+		"name": {
+			"type": "string",
+			"selector": ".wp-block-coblocks-author__name"
+		},
+		"imgId": {
+			"type": "number"
+		},
+		"imgUrl": {
+			"type": "string",
+			"source": "attribute",
+			"attribute": "src",
+			"selector": "img"
+		},
+		"textAlign": {
+			"type": "string"
+		}
+	}
+}

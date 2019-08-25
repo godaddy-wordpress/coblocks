@@ -66,16 +66,12 @@
 			margin-bottom: 1.5em;
 		}
 
-		.components-font-size-picker__selector {
-			width: 115px;
-		}
-
 		.components-base-control__label {
 			margin-bottom: 5px;
 		}
-
+		
 		.components-base-control__help {
-			margin-top: -5px;
+			margin-top: -8px;
 		}
 
 		&__header,
@@ -145,7 +141,8 @@
 			border-radius: 3px !important;
 		}
 
-		.components-coblocks-dimensions-control__header .components-color-palette__clear {
+		.components-coblocks-dimensions-control__header
+			.components-color-palette__clear {
 			background: $white;
 			border: 1px solid $light-gray-500;
 			box-shadow: none;
@@ -310,6 +307,10 @@
 				}
 			}
 		}
+
+		.components-font-size-picker__controls {
+			margin-bottom: 0px;
+		}
 	}
 }
 
@@ -335,5 +336,31 @@
 
 	&.is-huge-size {
 		font-size: 34px;
+	}
+}
+
+// Styles to handle Gutenberg < V6.2.0.
+// Should be able to deprecate when Gutenberg 6.2.0 is merged into WP core.
+.components-panel__body {
+	.components-coblocks-dimensions-control {
+		.components-font-size-picker__select {
+			width: 115px;
+			margin-bottom: 0px !important;
+		}
+
+		.components-font-size-picker__controls {
+			max-width: $sidebar-width - (2 * $panel-padding);
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.components-font-size-picker__select .components-base-control__label {
+			margin-bottom: 5px;
+		}
+
+		.components-font-size-picker__select .components-base-control__label {
+			display: none;
+			visibility: hidden;
+		}
 	}
 }

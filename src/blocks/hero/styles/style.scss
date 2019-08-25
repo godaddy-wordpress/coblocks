@@ -1,4 +1,3 @@
-
 .wp-block-coblocks-hero {
 	position: relative;
 
@@ -41,11 +40,10 @@
 			height: 100vh;
 		}
 
-		.wp-block-coblocks-hero__box {
+		.wp-block-coblocks-hero__content {
 			position: relative;
 		}
 
-		//grid alignment
 		&[class*="hero-top"] {
 			align-items: flex-start;
 		}
