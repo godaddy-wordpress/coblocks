@@ -92,10 +92,10 @@ function coblocks_render_share_block( $attributes ) {
 	$google_url    = apply_filters( 'coblocks_google_share_url', $google_url );
 
 	// Attributes.
-	$text_align    = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "text-align:{$attributes['textAlign']};" : '';
-	$background_color    = is_array( $attributes ) && isset( $attributes['customBlockBackgroundColor'] ) ? "background-color:{$attributes['customBlockBackgroundColor']};" : '';
-	$border_radius = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : '';
-	$has_padding   = is_array( $attributes ) && isset( $attributes['padding'] ) ? 'has-padding' : '';
+	$text_align       = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "text-align:{$attributes['textAlign']};" : '';
+	$background_color = is_array( $attributes ) && isset( $attributes['customBlockBackgroundColor'] ) ? "background-color:{$attributes['customBlockBackgroundColor']};" : '';
+	$border_radius    = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : '';
+	$has_padding      = is_array( $attributes ) && isset( $attributes['padding'] ) ? 'has-padding' : '';
 
 	$has_backround           = '';
 	$background_color_class  = '';
@@ -226,10 +226,10 @@ function coblocks_render_share_block( $attributes ) {
 		'<div class="%1$s" style="%2$s %3$s"><ul>%4$s</ul></div>',
 		esc_attr( $class ),
 		esc_attr( $text_align ),
-		esc_attr( $background_color),
+		esc_attr( $background_color ),
 		$markup
 	);
-	
+
 	return $block_content;
 }
 

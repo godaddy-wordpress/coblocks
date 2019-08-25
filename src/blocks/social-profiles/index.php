@@ -26,10 +26,10 @@ function coblocks_render_social_profiles_block( $attributes ) {
 	}
 
 	// Attributes.
-	$text_align    = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "text-align:{$attributes['textAlign']};" : '';
-	$background_color    = is_array( $attributes ) && isset( $attributes['customBlockBackgroundColor'] ) ? "background-color:{$attributes['customBlockBackgroundColor']};" : '';
-	$border_radius = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : '';
-	$has_padding   = is_array( $attributes ) && isset( $attributes['padding'] ) ? 'has-padding' : '';
+	$text_align       = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "text-align:{$attributes['textAlign']};" : '';
+	$background_color = is_array( $attributes ) && isset( $attributes['customBlockBackgroundColor'] ) ? "background-color:{$attributes['customBlockBackgroundColor']};" : '';
+	$border_radius    = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : '';
+	$has_padding      = is_array( $attributes ) && isset( $attributes['padding'] ) ? 'has-padding' : '';
 
 	$has_backround           = '';
 	$background_color_class  = '';
