@@ -10,11 +10,11 @@ import emailValidator from 'email-validator';
  * Internal dependencies
  */
 import icons from './icons';
-import CoBlocksField from './components/fields/field';
-import CoBlocksFieldName from './components/fields/field-name';
-import CoBlocksFieldTextarea from './components/fields/field-textarea';
-import Notice from './components/notice';
-import SubmitButton from './components/submit-button';
+import CoBlocksField from './fields/field';
+import CoBlocksFieldName from './fields/field-name';
+import CoBlocksFieldTextarea from './fields/field-textarea';
+import Notice from './notice';
+import SubmitButton from './submit-button';
 
 /**
  * WordPress dependencies

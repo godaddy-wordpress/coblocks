@@ -315,14 +315,12 @@ class Edit extends Component {
 								}
 
 								toggleSelection( true );
-								this.setState( { resizing: false, resizingInner: false } );
 
 								//update meta
 								this.saveMeta( 'height' );
 							} }
-							onResizeStart={ () => {
+							onResizeStart={ ( ) => {
 								toggleSelection( false );
-								this.setState( { resizing: true, resizingInner: true } );
 							} }
 						>
 							{ isBlobURL( backgroundImg ) && <Spinner /> }
