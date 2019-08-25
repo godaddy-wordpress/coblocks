@@ -1,6 +1,6 @@
 import AttachmentCropControl from '../../components/image-crop-control/attachment-crop-control';
 
-const { assign } = lodash;
+import { assign } from 'lodash';
 const { createHigherOrderComponent } = wp.compose;
 const { Fragment } = wp.element;
 const { InspectorControls } = wp.editor;
@@ -73,7 +73,7 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		const updateImage = function() {
-			jQuery.post( ajaxurl, {
+			jQuery.post( global.ajaxurl, {
 				action: 'coblocks_system_crop',
 				id: currentAttributes.id,
 				cropX: currentAttributes.cropX,
