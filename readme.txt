@@ -117,6 +117,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 = 1.12.1 =
+* Tweak: Begun refactoring blocks to align with the Gutenberg Block Registration API RFC.
+* Tweak: Descriptions added to the Services block.
+* Tweak: Error notice added to the Gist block to prevent silent failures.
+* Tweak: Navigating the Form block fields with the tab key has been corrected.
+* Tweak: Wrapper element added to the Hero block to ensure the max-width of the content within the block does not exceed the set max-width within a theme.
 * Fix: Minor typo in the Icon block.
 * Fix: Dimensions Control now utilizing the SelectControl.
 * Fix: Ensure the active resizer handle is the only one shown.
@@ -125,11 +130,6 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * Fix: Applying a custom font size no longer causes block validation to fail.
 * Fix: Minor style change to the Typography Controls toolbar for consistency.
 * Fix: Removing the Gist URL will now revert the Gist block to its initial state.
-* Tweak: Begun refactoring blocks to align with the Gutenberg Block Registration API RFC.
-* Tweak: Descriptions added to the Services block.
-* Tweak: Error notice added to the Gist block to prevent silent failures.
-* Tweak: Navigating the Form block fields with the tab key has been corrected.
-* Tweak: Wrapper element added to the Hero block to ensure the max-width of the content within the block does not exceed the set max-width within a theme.
 
 
 = 1.12.0 =
