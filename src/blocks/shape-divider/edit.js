@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import Controls from './controls';
 import Inspector from './inspector';
 import applyWithColors from './colors';
-import { getDividerFromStyle } from '.';
+import { getDividerFromStyle } from './utils';
 import InlineColorPicker from '../../components/inline-color-picker';
 
 /**
