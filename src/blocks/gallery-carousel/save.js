@@ -16,7 +16,7 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
  */
 const { getColorClassName, RichText } = wp.blockEditor;
 
-export function save( { attributes, className } ) {
+const save = ( { attributes, className } ) => {
 	const {
 		autoPlay,
 		autoPlaySpeed,
@@ -127,4 +127,6 @@ export function save( { attributes, className } ) {
 			{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles } /> }
 		</div>
 	);
-}
+};
+
+export default save;

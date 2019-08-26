@@ -3,14 +3,14 @@
  */
 import './styles/style.scss';
 import './styles/editor.scss';
+import { BackgroundAttributes } from '../../components/background';
+import { GalleryAttributes } from '../../components/block-gallery/shared';
 import icons from './icons';
 import edit from './edit';
 import transforms from './transforms';
 import metadata from './block.json';
-import { deprecated } from './deprecated';
-import { save } from './save';
-import { BackgroundAttributes } from '../../components/background';
-import { GalleryAttributes } from '../../components/block-gallery/shared';
+import deprecated from './deprecated';
+import save from './save';
 
 /**
  * WordPress dependencies

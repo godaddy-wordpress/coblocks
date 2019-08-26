@@ -15,7 +15,7 @@ import metadata from './block.json';
  */
 const { getColorClassName, RichText } = wp.blockEditor;
 
-export const deprecated =
+const deprecated =
 [ {
 	attributes: {
 		...GalleryAttributes,
@@ -132,3 +132,5 @@ export const deprecated =
 	},
 },
 ];
+
+export default deprecated;

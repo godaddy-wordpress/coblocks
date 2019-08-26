@@ -26,7 +26,7 @@ const icon = icons.service;
 
 const settings = {
 	title: __( 'Service' ),
-	description: __( 'service description' ),
+	description: __( 'A single service item within a services block.' ),
 	keywords: [],
 	attributes: metadata.attributes,
 	supports: {
