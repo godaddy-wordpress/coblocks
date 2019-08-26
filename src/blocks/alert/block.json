@@ -10,7 +10,7 @@
 			"type": "string",
 			"source": "html",
 			"selector": ".wp-block-coblocks-alert__text",
-			"default": []
+			"default": ""
 		},
 		"backgroundColor": {
 			"type": "string"
