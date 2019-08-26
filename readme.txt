@@ -118,18 +118,18 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 = 1.12.1 =
 * Fix: Minor typo in the Icon block.
-* Fix: Update the Dimensions Control to use a proper select control element.
-* Fix: Prevent the width resize handle from displaying when using the height resize handle on the Hero block.
-* Fix: The Alert block, when transformed into a Paragraph block, would generate multiple identical blocks as opposed to the expected 1-to-1 transformation.
-* Fix: When providing a Gist url for a file within a multi-file Gist, the Gist block would show all files. Now it will show only the target file.
-* Fix: Resolved an issue when applying a custom font size to the Highlight and Click to Tweet blocks that would cause block validation to fail.
-* Fix: Minor style change applied to the Typography Controls toolbar when running the Gutenberg Plugin.
-* Fix: The Gist block is no longer left empty when removing the Gist URL. We revert it back to it's initial state.
-* Tweak: We've begun to refactor blocks to align with the Gutenberg Block Registration API RFC.
-* Tweak: Added descriptions for the Services block.
-* Tweak: A error notice was added to the Gist block to prevent silent failures.
+* Fix: Dimensions Control now utilizing the SelectControl.
+* Fix: Ensure the active resizer handle is the only one shown.
+* Fix: The Alert block no longer escapes valid html when transformed.
+* Fix: Providing a Gist url with a file hash properly loads the targetted Gist.
+* Fix: Applying a custom font size no longer causes block validation to fail.
+* Fix: Minor style change to the Typography Controls toolbar for consistency.
+* Fix: Removing the Gist URL will now revert the Gist block to its initial state.
+* Tweak: Begun refactoring blocks to align with the Gutenberg Block Registration API RFC.
+* Tweak: Descriptions added to the Services block.
+* Tweak: Error notice added to the Gist block to prevent silent failures.
 * Tweak: Navigating the Form block fields with the tab key has been corrected.
-* Tweak: Added a wrapping <div> element within the Hero block to ensure the max-width of the content within the block does not exceed the set max-width within a theme.
+* Tweak: Wrapper element added to the Hero block to ensure the max-width of the content within the block does not exceed the set max-width within a theme.
 
 
 = 1.12.0 =
