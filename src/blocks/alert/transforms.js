@@ -42,11 +42,7 @@ const transforms = {
 			blocks: [ 'core/paragraph' ],
 			transform: ( { value, title } ) => {
 				if ( title ) {
-					value.unshift( title, { type: 'br',
-						props: {
-							children: [],
-						},
-					} );
+					value = title + '<br />' + value;
 				}
 
 				if ( ! value || ! value.length ) {
