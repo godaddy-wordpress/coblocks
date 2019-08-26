@@ -117,19 +117,19 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 = 1.12.1 =
-* Tweak: Begun refactoring blocks to align with the Gutenberg Block Registration API RFC.
-* Tweak: Descriptions added to the Services block.
-* Tweak: Error notice added to the Gist block to prevent silent failures.
-* Tweak: Navigating the Form block fields with the tab key has been corrected.
-* Tweak: Wrapper element added to the Hero block to ensure the max-width of the content within the block does not exceed the set max-width within a theme.
-* Fix: Minor typo in the Icon block.
-* Fix: Dimensions Control now utilizing the SelectControl.
-* Fix: Ensure the active resizer handle is the only one shown.
-* Fix: The Alert block no longer escapes valid html when transformed.
-* Fix: Providing a Gist url with a file hash properly loads the targetted Gist.
-* Fix: Applying a custom font size no longer causes block validation to fail.
-* Fix: Minor style change to the Typography Controls toolbar for consistency.
-* Fix: Removing the Gist URL will now revert the Gist block to its initial state.
+* Tweak: Start refactoring blocks to align with the Gutenberg Block Registration API RFC
+* Tweak: Add proper block descriptions to the Services block
+* Tweak: Add error notice to the Gist block to prevent silent failures
+* Tweak: Improve accessibility via tab control in the Form block
+* Tweak: Add support for SelectControl components within the Dimensions Controls components
+* Tweak: Add wrapper to Hero block content to provide a max width limitation
+* Fix: Resolve typo in the Icon block
+* Fix: Resolve issue where the active ResizableBox handles properly display
+* Fix: Alert block no longer escapes valid html when transformed
+* Fix: Providing a Gist url with a file hash properly loads the targetted Gist
+* Fix: Resolve issue where custom font sizes led to invalid block markup
+* Fix: Add minor style update to the Typography Controls toolbar icon
+* Fix: Removing the Gist URL will now revert the Gist block to its initial state
 
 
 = 1.12.0 =
