@@ -44,7 +44,7 @@ const settings = {
 	attributes,
 
 	supports: {
-		align: [ 'wide', 'full' ],
+		align: [ 'wide', 'full', 'left', 'center', 'right' ],
 	},
 
 	transforms,
