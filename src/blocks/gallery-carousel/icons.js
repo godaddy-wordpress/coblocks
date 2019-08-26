@@ -3,14 +3,11 @@
  */
 const { SVG, Path, G } = wp.components;
 
-/**
- * Block user interface icons
- */
 const icons = {};
 
 icons.carousel =
-<SVG className="components-coblocks-svg" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-	<G transform="translate(3 3)"><Path d="m11 0h-4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm0 16h-4v-14h4z"/><Path d="m18 0h-1c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h1s0-.9 0-2v-14c0-1.1 0-2 0-2zm0 16h-1v-14h1z"/><Path d="m3 0h-1c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h1s0-.9 0-2v-14c0-1.1 0-2 0-2zm0 16h-1v-14h1z" transform="matrix(-1 0 0 1 3 0)"/></G>
-</SVG>;
+	<SVG viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+		<G fill="currentColor" fillRule="evenodd"><G fillRule="nonzero"><Path d="m18 3c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2h-12c-1.1 0-2-.9-2-2v-14c0-1.1.9-2 2-2zm0 16v-14h-12v14zm3-14c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zm0 12v-10zm-18 2c-1.1 0-2-.9-2-2v-10c0-1.1.9-2 2-2zm0-12v10zm10.7857143 6 3.2142857 5h-10l2.5-3.75 1.7857143 2.5083333z" /></G></G>
+	</SVG>;
 
 export default icons;

@@ -1,76 +1,35 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * Internal dependencies
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import Edit from './components/edit';
+import edit from './edit';
 import icons from './../../utils/icons';
+import metadata from './block.json';
+import save from './save';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { RichText } = wp.editor;
-const { Fragment } = wp.element;
 
 /**
  * Block constants
  */
-const name = 'gif';
+const { attributes, name } = metadata;
 
 const title = __( 'Gif' );
 
 const icon = icons.gif;
 
-const keywords = [
-	__( 'animated' ),
-	__( 'coblocks' ),
-];
-
-const blockAttributes = {
-	url: {
-		attribute: 'src',
-		selector: 'img',
-		source: 'attribute',
-		type: 'string',
-	},
-	alt: {
-		attribute: 'alt',
-		selector: 'img',
-		source: 'attribute',
-		type: 'string',
-		default: '',
-	},
-	caption: {
-		type: 'string',
-		source: 'html',
-		selector: 'figcaption',
-	},
-	align: {
-		type: 'string',
-	},
-	width: {
-		type: 'number',
-	},
-	height: {
-		type: 'number',
-	},
-};
-
 const settings = {
-
-	title: title,
+	title,
 
 	description: __( 'Pick a gif, any gif.' ),
 
-	keywords: keywords,
+	keywords: [ __( 'animated' ), __( 'coblocks' ) ],
 
-	attributes: blockAttributes,
+	attributes,
 
 	supports: {
 		customClassName: false,
@@ -84,56 +43,9 @@ const settings = {
 		}
 	},
 
-	edit: Edit,
+	edit,
 
-	save( { attributes } ) {
-
-		const {
-			url,
-			alt,
-			align,
-			width,
-			height,
-			caption,
-		} = attributes;
-
-		const classes = classnames( {
-			[ `align${ align }` ]: align,
-			'is-resized': width || height,
-		} );
-
-		const image = (
-			<img
-				src={ url }
-				alt={ alt }
-				width={ width }
-				height={ height }
-			/>
-		);
-
-		const figure = (
-			<Fragment>
-				{ image }
-				{ ! RichText.isEmpty( caption ) && <RichText.Content tagName="figcaption" value={ caption } /> }
-			</Fragment>
-		);
-
-		if ( 'left' === align || 'right' === align || 'center' === align ) {
-			return (
-				<div className={ 'wp-block-image' }>
-					<figure className={ classes }>
-						{ figure }
-					</figure>
-				</div>
-			);
-		}
-
-		return (
-			<figure className={ classes }>
-				{ figure }
-			</figure>
-		);
-	},
+	save,
 };
 
 export { name, title, icon, settings };

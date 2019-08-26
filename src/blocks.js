@@ -9,11 +9,8 @@ const category = {
 	title: 'CoBlocks',
 };
 
-// Custom foreground icon color based on the CoBlocks branding
-const iconColor = '#1e35b9';
-
 // Register block category
-import icons from './utils/block-category';
+import './utils/block-category';
 
 // Editor and Frontend Styles
 import './styles/editor.scss';
@@ -44,67 +41,82 @@ import * as accordionItem from './blocks/accordion/accordion-item';
 import * as alert from './blocks/alert';
 import * as author from './blocks/author';
 import * as blogroll from './blocks/blogroll';
+import * as buttons from './blocks/buttons';
+import * as carousel from './blocks/gallery-carousel';
 import * as clickToTweet from './blocks/click-to-tweet';
 import * as column from './blocks/row/column';
 import * as dynamicSeparator from './blocks/dynamic-separator';
+import * as feature from './blocks/features/feature';
+import * as features from './blocks/features';
+import * as foodAndDrinks from './blocks/food-and-drinks';
+import * as foodItem from './blocks/food-and-drinks/food-item';
 import * as form from './blocks/form';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
+import * as hero from './blocks/hero';
 import * as highlight from './blocks/highlight';
+import * as icon from './blocks/icon';
+import * as logos from './blocks/logos';
+import * as map from './blocks/map';
+import * as masonry from './blocks/gallery-masonry';
+import * as mediaCard from './blocks/media-card';
 import * as pricingTable from './blocks/pricing-table';
 import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';
-import * as social from './blocks/social';
-import * as map from './blocks/map';
-import * as mediaCard from './blocks/media-card';
 import * as shapeDivider from './blocks/shape-divider';
-import * as icon from './blocks/icon';
-import * as feature from './blocks/features/feature';
-import * as features from './blocks/features';
-import * as buttons from './blocks/buttons';
-import * as hero from './blocks/hero';
+import * as share from './blocks/share';
+import * as services from './blocks/services';
+import * as service from './blocks/services/service';
 import * as stacked from './blocks/gallery-stacked';
-import * as masonry from './blocks/gallery-masonry';
-import * as carousel from './blocks/gallery-carousel';
+import * as socialProfiles from './blocks/social-profiles';
 
-export function registerBlocks () {
+export function registerBlocks() {
 	[
 		accordion,
 		accordionItem,
 		alert,
 		author,
 		blogroll,
+		buttons,
+		carousel,
 		clickToTweet,
 		column,
 		dynamicSeparator,
+		feature,
+		features,
+		foodAndDrinks,
+		foodItem,
 		form,
 		gif,
 		gist,
+		hero,
 		highlight,
+		icon,
+		logos,
+		map,
+		masonry,
+		mediaCard,
 		pricingTable,
 		pricingTableItem,
 		row,
-		social,
-		map,
-		mediaCard,
+		services,
+		service,
 		shapeDivider,
-		icon,
-		feature,
-		features,
-		buttons,
-		hero,
+		share,
+		socialProfiles,
 		stacked,
-		carousel,
-		masonry,
-	].forEach( ( block ) => {
-
+	].forEach( block => {
 		if ( ! block ) {
 			return;
 		}
 
 		const { name, icon, settings } = block;
 
-		registerBlockType( `coblocks/${ name }`, { category: category.slug, icon: { src: icon, foreground: iconColor, }, ...settings } );
+		registerBlockType( `coblocks/${ name }`, {
+			category: category.slug,
+			icon: { src: icon },
+			...settings,
+		} );
 	} );
-};
+}
 registerBlocks();

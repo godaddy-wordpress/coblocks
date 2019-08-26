@@ -1,11 +1,4 @@
 /**
- * External dependencies
- */
-import map from 'lodash/map';
-import classnames from 'classnames';
-import flatMap from 'lodash/flatMap';
-
-/**
  * Internal dependencies
  */
 import icons from './icons';
@@ -16,14 +9,16 @@ import { ALLOWED_BG_MEDIA_TYPES } from './';
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { MediaUpload, MediaUploadCheck } = wp.editor;
+const { MediaUpload, MediaUploadCheck } = wp.blockEditor;
 const { Toolbar, IconButton, Popover, MenuItem } = wp.components;
 
 /**
- * Background image block toolbar controls
+ * Background image block toolbar controls.
+ *
+ * @param {Object} props The passed props.
+ * @return {string} Component.
  */
-function BackgroundControls( props, options ) {
-
+function BackgroundControls( props ) {
 	const {
 		attributes,
 		setAttributes,
@@ -44,16 +39,18 @@ function BackgroundControls( props, options ) {
 							className="components-coblocks__background-popover"
 						>
 							<MediaUpload
-								onSelect={ ( media ) => { setAttributes( { backgroundImg: media.url, backgroundType: media.type, openPopover: ! openPopover } ) } }
+								onSelect={ ( media ) => {
+									setAttributes( { backgroundImg: media.url, backgroundType: media.type, openPopover: ! openPopover } );
+								} }
 								allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
 								value={ backgroundImg }
 								render={ ( { open } ) => (
 									<MenuItem
 										className="components-dropdown-menu__menu-item"
-										icon='edit'
+										icon="edit"
 										role="menuitem"
 										onClick={ open } >
-											{ __( 'Edit Background' ) }
+										{ __( 'Edit Background' ) }
 									</MenuItem>
 								) }
 							/>
@@ -72,7 +69,7 @@ function BackgroundControls( props, options ) {
 										openPopover: ! openPopover,
 									} );
 								} } >
-									{ __( 'Remove Background' ) }
+								{ __( 'Remove Background' ) }
 							</MenuItem>
 						</Popover>
 					) }
@@ -86,10 +83,11 @@ function BackgroundControls( props, options ) {
 							onClick={ () => setAttributes( { openPopover: ! openPopover } ) }
 						>
 							<span className="components-dropdown-menu__indicator" />
-						</IconButton>
-					:
+						</IconButton>					:
 						<MediaUpload
-							onSelect={ ( media ) => { setAttributes( { backgroundImg: media.url, backgroundType: media.type  } ) } }
+							onSelect={ ( media ) => {
+								setAttributes( { backgroundImg: media.url, backgroundType: media.type } );
+							} }
 							allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
 							value={ backgroundImg }
 							render={ ( { open } ) => (

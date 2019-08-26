@@ -2,48 +2,42 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import map from 'lodash/map';
 
 /**
  * Internal dependencies
  */
-import DimensionsAttributes from './attributes';
 import icons from './icons';
 import './styles/editor.scss';
 
 /**
  * WordPress dependencies
  */
-const { __, _x, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { withInstanceId } = wp.compose;
 const { Component, Fragment } = wp.element;
-const { ButtonGroup, Dropdown, NavigableMenu, BaseControl, Button, Tooltip, Dashicon, TabPanel } = wp.components;
+const { BaseControl, TabPanel } = wp.components;
 
 class ResponsiveBaseControl extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		this.saveMeta = this.saveMeta.bind( this );
-
-		let meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		// console.log( props.attributes );
 	}
 
-	saveMeta( event ){
-		let meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		let block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
+	saveMeta() {
+		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
+		const block = wp.data.select( 'core/block-editor' ).getBlock( this.props.clientId );
 		let dimensions = {};
-		
+
 		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
-			let id = this.props.name.split('/').join('-') + '-' + this.props.attributes.coblocks.id;
-			let height = {
+			const id = this.props.name.split( '/' ).join( '-' ) + '-' + this.props.attributes.coblocks.id;
+			const height = {
 				height: block.attributes[ this.props.type ],
 				heightTablet: block.attributes[ this.props.type + 'Tablet' ],
 				heightMobile: block.attributes[ this.props.type + 'Mobile' ],
 			};
 
-			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height  == '' ) ){
+			if ( typeof meta._coblocks_responsive_height === 'undefined' || ( typeof meta._coblocks_responsive_height !== 'undefined' && meta._coblocks_responsive_height === '' ) ) {
 				dimensions = {};
 			} else {
 				dimensions = JSON.parse( meta._coblocks_responsive_height );
@@ -53,101 +47,65 @@ class ResponsiveBaseControl extends Component {
 				dimensions[ id ] = {};
 				dimensions[ id ][ this.props.type ] = {};
 			} else {
-				if ( typeof dimensions[ id ][ this.props.type ] === 'undefined' ){
+				if ( typeof dimensions[ id ][ this.props.type ] === 'undefined' ) {
 					dimensions[ id ][ this.props.type ] = {};
 				}
 			}
 
 			dimensions[ id ][ this.props.type ] = height;
-			
+
 			// Save values to metadata.
-			wp.data.dispatch( 'core/editor' ).editPost({
+			wp.data.dispatch( 'core/editor' ).editPost( {
 				meta: {
 					_coblocks_responsive_height: JSON.stringify( dimensions ),
-				}
-			});
-
+				},
+			} );
 		}
 	}
 
 	render() {
-
 		const {
-			bottom = true,
-			className,
-			help,
-			instanceId,
 			label = __( 'Height' ),
-			left = true,
-			reset = false,
-			right = true,
-			setAttributes,
-			top = true,
-			type = 'margin',
-			unit,
-			units = true,
-			valueBottom,
-			valueLeft,
-			valueRight,
-			valueTop,
-			valueBottomTablet,
-			valueLeftTablet,
-			valueRightTablet,
-			valueTopTablet,
-			valueBottomMobile,
-			valueLeftMobile,
-			valueRightMobile,
-			valueTopMobile,
-			syncUnits,
-			syncUnitsTablet,
-			syncUnitsMobile,
-			dimensionSize,
-
-
-
 			height,
 			heightTablet,
 			heightMobile,
 			onChange,
 			onChangeTablet,
 			onChangeMobile,
-			sync,
 			min = 10,
 			max = 1000,
 			step = 1,
-
-
 		} = this.props;
 
 		const onSelect = ( tabName ) => {
 			let selected = 'desktop';
 
-			switch( tabName ){
+			switch ( tabName ) {
 				case 'desktop':
 					selected = 'tablet';
-				break;
+					break;
 				case 'tablet':
 					selected = 'mobile';
-				break;
+					break;
 				case 'mobile':
 					selected = 'desktop';
-				break;
+					break;
 				default:
-				break;
+					break;
 			}
 
 			//Reset z-index
-			const buttons = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type }`);
+			const buttons = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type }` );
 
-			for(var i = 0; i < buttons.length; i++) {
-				buttons[i].style.display = 'none';
+			for ( let i = 0; i < buttons.length; i++ ) {
+				buttons[ i ].style.display = 'none';
 			}
-			if( tabName == 'default' ){
-				const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--tablet`);
-				button[0].click();
-			}else{
-				const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--${ selected }`);
-				button[0].style.display = 'block';
+			if ( tabName === 'default' ) {
+				const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--tablet` );
+				button[ 0 ].click();
+			} else {
+				const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--${ selected }` );
+				button[ 0 ].style.display = 'block';
 			}
 		};
 
@@ -157,8 +115,6 @@ class ResponsiveBaseControl extends Component {
 			'components-coblocks-responsive-base-control', {
 			}
 		);
-
-		const id = `inspector-coblocks-dimensions-control-${ instanceId }`;
 
 		return (
 			<Fragment>
@@ -197,7 +153,7 @@ class ResponsiveBaseControl extends Component {
 									if ( 'mobile' === tab.name ) {
 										return (
 											<Fragment>
-												<div className='components-coblocks-dimensions-control__inputs component-coblocks-is-mobile'>
+												<div className="components-coblocks-dimensions-control__inputs component-coblocks-is-mobile">
 													<BaseControl>
 														<input
 															type="number"
@@ -213,11 +169,11 @@ class ResponsiveBaseControl extends Component {
 													</BaseControl>
 												</div>
 											</Fragment>
-										)
+										);
 									} else if ( 'tablet' === tab.name ) {
 										return (
 											<Fragment>
-												<div className='components-coblocks-dimensions-control__inputs component-coblocks-is-tablet'>
+												<div className="components-coblocks-dimensions-control__inputs component-coblocks-is-tablet">
 													<BaseControl>
 														<input
 															type="number"
@@ -233,28 +189,27 @@ class ResponsiveBaseControl extends Component {
 													</BaseControl>
 												</div>
 											</Fragment>
-										)
-									} else {
-										return (
-											<Fragment>
-												<div className='components-coblocks-dimensions-control__inputs component-coblocks-is-desktop'>
-													<BaseControl>
-														<input
-															type="number"
-															onChange={ ( newValue ) => {
-																onChange( newValue );
-																this.saveMeta();
-															} }
-															value={ height ? height : '' }
-															min={ min }
-															step={ step }
-															max={ max }
-														/>
-													</BaseControl>
-												</div>
-											</Fragment>
-										)
+										);
 									}
+									return (
+										<Fragment>
+											<div className="components-coblocks-dimensions-control__inputs component-coblocks-is-desktop">
+												<BaseControl>
+													<input
+														type="number"
+														onChange={ ( newValue ) => {
+															onChange( newValue );
+															this.saveMeta();
+														} }
+														value={ height ? height : '' }
+														min={ min }
+														step={ step }
+														max={ max }
+													/>
+												</BaseControl>
+											</div>
+										</Fragment>
+									);
 								}
 							}
 						</TabPanel>

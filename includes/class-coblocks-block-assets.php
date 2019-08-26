@@ -58,7 +58,7 @@ class CoBlocks_Block_Assets {
 	/**
 	 * The Constructor.
 	 */
-	private function __construct() {
+	public function __construct() {
 		$this->_version = COBLOCKS_VERSION;
 		$this->_slug    = 'coblocks';
 		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );

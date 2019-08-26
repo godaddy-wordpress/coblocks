@@ -8,6 +8,10 @@
 .wp-block-coblocks-click-to-tweet {
 	margin: 0;
 
+	p.block-editor-rich-text__editable {
+		margin: 0;
+	}
+
 	a {
 		pointer-events: none;
 	}
