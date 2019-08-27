@@ -1,9 +1,4 @@
 /**
- * WordPress dependencies
- */
-const { __ } = wp.i18n;
-
-/**
  * Internal dependencies
  */
 import rowIcons from './icons';
