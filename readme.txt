@@ -130,7 +130,7 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * Fix: Resolve issue where custom font sizes led to invalid block markup
 * Fix: Add minor style update to the Typography Controls toolbar icon
 * Fix: Removing the Gist URL will now revert the Gist block to its initial state
-
+* Fix: Map block is no longer using a global which was previously renamed
 
 = 1.12.0 =
 * New: Add new Logo & Badges block
