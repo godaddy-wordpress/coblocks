@@ -23,11 +23,11 @@ const { RichText } = wp.blockEditor;
  */
 const name = 'gist';
 
-const title = __( 'Gist' );
+const title = 'Gist';
 
 const icon = icons.github;
 
-const keywords = [ __( 'code' ), __( 'github' ), __( 'coblocks' ) ];
+const keywords = [ __( 'code' ), 'github', 'coblocks' ];
 
 const blockAttributes = {
 	url: {

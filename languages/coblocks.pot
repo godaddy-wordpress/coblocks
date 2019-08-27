@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-08-27T15:49:48+00:00\n"
+"POT-Creation-Date: 2019-08-27T15:51:48+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -48,7 +48,6 @@ msgstr ""
 #: src/blocks/dynamic-separator/index.js:44
 #: src/blocks/features/index.js:48
 #: src/blocks/gif/index.js:32
-#: src/blocks/gist/index.js:30
 #: src/blocks/highlight/index.js:33
 #: src/blocks/icon/index.js:38
 #: src/blocks/media-card/index.js:37
@@ -1070,16 +1069,8 @@ msgstr ""
 msgid "View this gist on GitHub"
 msgstr ""
 
-#: src/blocks/gist/index.js:26
-msgid "Gist"
-msgstr ""
-
 #: src/blocks/gist/index.js:30
 msgid "code"
-msgstr ""
-
-#: src/blocks/gist/index.js:30
-msgid "github"
 msgstr ""
 
 #: src/blocks/gist/index.js:53
