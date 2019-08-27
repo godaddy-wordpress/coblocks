@@ -21,14 +21,14 @@ const { attributes, name } = metadata;
 
 const icon = icons.github;
 
-const title = __( 'Gist' );
+const title = 'gist';
 
 const settings = {
 	title,
 
 	description: __( 'Embed GitHub gists by adding the gist link.' ),
 
-	keywords: [ __( 'code' ), __( 'github' ), __( 'coblocks' ) ],
+	keywords: [ __( 'code' ), 'github', 'coblocks' ],
 
 	attributes,
 

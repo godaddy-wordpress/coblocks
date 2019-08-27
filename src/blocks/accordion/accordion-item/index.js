@@ -25,7 +25,7 @@ const settings = {
 
 	description: __( 'Add collapsable accordion items to accordions.' ),
 
-	keywords: [ __( 'tabs' ), __( 'faq' ), __( 'coblocks' ) ],
+	keywords: [ __( 'tabs' ), __( 'faq' ), 'coblocks' ],
 
 	parent: [ 'coblocks/accordion' ],
 
