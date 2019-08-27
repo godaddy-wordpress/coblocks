@@ -23,7 +23,7 @@ const { Fragment } = wp.element;
  */
 const name = 'gif';
 
-const title = __( 'Gif' );
+const title = 'Gif';
 
 const icon = icons.gif;
 
@@ -136,4 +136,3 @@ const settings = {
 };
 
 export { name, title, icon, settings };
-
