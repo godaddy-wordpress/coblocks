@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-08-27T15:23:17+00:00\n"
+"POT-Creation-Date: 2019-08-27T15:37:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -1755,58 +1755,6 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:13
-msgid "50/50"
-msgstr ""
-
-#: src/blocks/row/components/layouts.js:14
-msgid "66/33"
-msgstr ""
-
-#: src/blocks/row/components/layouts.js:15
-msgid "33/66"
-msgstr ""
-
-#: src/blocks/row/components/layouts.js:16
-msgid "75/25"
-msgstr ""
-
-#: src/blocks/row/components/layouts.js:17
-msgid "25/75"
-msgstr ""
-
-#: src/blocks/row/components/layouts.js:20
-msgid "33/33/33"
-msgstr ""
-
-#: src/blocks/row/components/layouts.js:21
-msgid "50/25/25"
-msgstr ""
-
-#: src/blocks/row/components/layouts.js:22
-msgid "25/25/50"
-msgstr ""
-
-#: src/blocks/row/components/layouts.js:23
-msgid "25/50/25"
-msgstr ""
-
-#: src/blocks/row/components/layouts.js:24
-msgid "20/60/20"
-msgstr ""
-
-#: src/blocks/row/components/layouts.js:27
-msgid "25/25/25/25"
-msgstr ""
-
-#: src/blocks/row/components/layouts.js:28
-msgid "40/20/20/20"
-msgstr ""
-
-#: src/blocks/row/components/layouts.js:29
-msgid "20/20/20/40"
-msgstr ""
-
 #: src/blocks/row/index.js:56
 msgid "rows"
 msgstr ""
@@ -1821,14 +1769,6 @@ msgstr ""
 
 #: src/blocks/row/index.js:89
 msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
-msgstr ""
-
-#: src/blocks/services/edit.js:33
-msgid "4:3"
-msgstr ""
-
-#: src/blocks/services/edit.js:39
-msgid "16:9"
 msgstr ""
 
 #: src/blocks/services/edit.js:44
