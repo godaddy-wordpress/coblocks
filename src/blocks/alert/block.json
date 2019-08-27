@@ -38,9 +38,6 @@
 		},
 		"textAlign": {
 			"type": "string"
-		},
-		"type": {
-			"type": "string"
 		}
 	}
 }

@@ -16,7 +16,6 @@ const save = ( { attributes } ) => {
 		textAlign,
 		textColor,
 		title,
-		type,
 		value,
 	} = attributes;
 
