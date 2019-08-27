@@ -142,15 +142,9 @@ jobs:
           name: Install ghr
           command: |
             go get -u github.com/tcnksm/ghr
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install node packages
           command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - node_modules
       - run:
           name: Build the plugin
           command: |
