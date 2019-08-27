@@ -69,7 +69,7 @@ const icon = icons.shapeDivider;
 const keywords = [
 	'hr',
 	__( 'separator' ),
-	__( 'svg' ),
+	'svg',
 ];
 
 const blockAttributes = {

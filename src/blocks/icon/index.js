@@ -33,7 +33,7 @@ const title = __( 'Icon' );
 const icon = icons.icon;
 
 const keywords = [
-	__( 'svg' ),
+	'svg',
 	__( 'icons' ),
 	__( 'coblocks' ),
 ];
