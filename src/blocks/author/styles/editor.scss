@@ -41,8 +41,7 @@
 
 			svg {
 				fill: #444;
-				flex: content;
-				margin-top: 43%;
+				margin: auto auto;
 				pointer-events: none;
 				transform: translate3d(0, 0, 0);
 				transition: transform 100ms cubic-bezier(0.645, 0.045, 0.355, 1);
