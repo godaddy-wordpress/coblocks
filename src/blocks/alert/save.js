@@ -23,7 +23,7 @@ const save = ( { attributes } ) => {
 	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 	const textClass = getColorClassName( 'color', textColor );
 
-	const classes = classnames( `is-${ type }-alert`, {
+	const classes = classnames( {
 		'has-text-color': textColor || customTextColor,
 		[ textClass ]: textClass,
 		'has-background': backgroundColor || customBackgroundColor,
