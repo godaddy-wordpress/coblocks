@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import getDividerFromStyle from './';
+import { getDividerFromStyle } from './utils';
 
 /**
  * WordPress dependencies
