@@ -1,6 +1,6 @@
 'use strict';
 
-/*global google baAtts*/
+/*global google coblocksGoogleMaps*/
 
 const coblocksMap = {
 	init: function() {
