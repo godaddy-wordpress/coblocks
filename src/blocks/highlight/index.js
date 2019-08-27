@@ -30,7 +30,7 @@ const icon = icons.highlight;
 const keywords = [
 	__( 'text' ),
 	__( 'paragraph' ),
-	__( 'coblocks' ),
+	'coblocks',
 ];
 
 const blockAttributes = {

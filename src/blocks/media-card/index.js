@@ -34,7 +34,7 @@ const icon = icons.mediaCard;
 const keywords = [
 	__( 'image' ),
 	__( 'video' ),
-	__( 'coblocks' ),
+	'coblocks',
 ];
 
 const blockAttributes = {

@@ -59,7 +59,7 @@ const settings = {
 
 	description: __( 'Add an author biography.' ),
 
-	keywords: [ __( 'biography' ), __( 'profile' ), __( 'coblocks' ) ],
+	keywords: [ __( 'biography' ), __( 'profile' ), 'coblocks' ],
 
 	attributes: blockAttributes,
 

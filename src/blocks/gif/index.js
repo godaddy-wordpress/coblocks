@@ -29,7 +29,7 @@ const icon = icons.gif;
 
 const keywords = [
 	__( 'animated' ),
-	__( 'coblocks' ),
+	'coblocks',
 ];
 
 const blockAttributes = {

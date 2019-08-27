@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-08-27T15:51:48+00:00\n"
+"POT-Creation-Date: 2019-08-27T16:07:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -37,24 +37,6 @@ msgstr ""
 #: src/blocks/accordion/accordion-item/index.js:56
 #: src/blocks/accordion/index.js:43
 msgid "faq"
-msgstr ""
-
-#: src/blocks/accordion/accordion-item/index.js:56
-#: src/blocks/accordion/index.js:43
-#: src/blocks/alert/index.js:76
-#: src/blocks/author/index.js:62
-#: src/blocks/buttons/index.js:32
-#: src/blocks/click-to-tweet/index.js:71
-#: src/blocks/dynamic-separator/index.js:44
-#: src/blocks/features/index.js:48
-#: src/blocks/gif/index.js:32
-#: src/blocks/highlight/index.js:33
-#: src/blocks/icon/index.js:38
-#: src/blocks/media-card/index.js:37
-#: src/blocks/pricing-table/index.js:33
-#: src/blocks/pricing-table/pricing-table-item/index.js:32
-#: src/blocks/share/index.js:23
-msgid "coblocks"
 msgstr ""
 
 #: src/blocks/accordion/accordion-item/inspector.js:34
@@ -1288,6 +1270,10 @@ msgstr ""
 msgid "icons"
 msgstr ""
 
+#: src/blocks/icon/index.js:38
+msgid "coblocks"
+msgstr ""
+
 #: src/blocks/logos/controls.js:51
 msgid "Edit logos"
 msgstr ""
@@ -1850,10 +1836,6 @@ msgstr ""
 msgid "Shape Divider"
 msgstr ""
 
-#: src/blocks/shape-divider/index.js:70
-msgid "hr"
-msgstr ""
-
 #: src/blocks/shape-divider/index.js:71
 msgid "separator"
 msgstr ""
@@ -2208,10 +2190,6 @@ msgstr ""
 
 #: src/components/dimensions-control/index.js:404
 msgid "Pixel"
-msgstr ""
-
-#: src/components/dimensions-control/index.js:408
-msgid "Em"
 msgstr ""
 
 #: src/components/dimensions-control/index.js:412

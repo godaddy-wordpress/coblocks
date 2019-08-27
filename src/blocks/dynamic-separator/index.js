@@ -41,7 +41,7 @@ const settings = {
 
 	description: __( 'Add a resizable spacer between other blocks.' ),
 
-	keywords: [	'hr',	__( 'spacer' ),	__( 'coblocks' ) ],
+	keywords: [	'hr',	__( 'spacer' ),	'coblocks' ],
 
 	attributes: blockAttributes,
 

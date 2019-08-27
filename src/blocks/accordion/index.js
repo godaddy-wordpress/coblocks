@@ -40,7 +40,7 @@ const settings = {
 
 	description: __( 'Organize content within collapsable accordion items.' ),
 
-	keywords: [	__( 'tabs' ), __( 'faq' ), __( 'coblocks' ) ],
+	keywords: [	__( 'tabs' ), __( 'faq' ), 'coblocks' ],
 
 	attributes: blockAttributes,
 

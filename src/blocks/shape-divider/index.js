@@ -67,7 +67,7 @@ const title = __( 'Shape Divider' );
 const icon = icons.shapeDivider;
 
 const keywords = [
-	__( 'hr' ),
+	'hr',
 	__( 'separator' ),
 	__( 'svg' ),
 ];

@@ -68,7 +68,7 @@ const settings = {
 
 	description: __( 'Add a quote for readers to tweet via Twitter.' ),
 
-	keywords: [ __( 'share' ), __( 'twitter' ), __( 'coblocks' ) ],
+	keywords: [ __( 'share' ), __( 'twitter' ), 'coblocks' ],
 
 	attributes: blockAttributes,
 

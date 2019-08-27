@@ -405,7 +405,7 @@ class DimensionsControl extends Component {
 				unitValue: 'px',
 			},
 			{
-				name: __( 'Em' ),
+				name: 'Em',
 				unitValue: 'em',
 			},
 			{

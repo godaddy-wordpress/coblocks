@@ -29,7 +29,7 @@ const icon = icons.pricing;
 const keywords = [
 	__( 'landing' ),
 	__( 'comparison' ),
-	__( 'coblocks' ),
+	'coblocks',
 ];
 
 const blockAttributes = {
