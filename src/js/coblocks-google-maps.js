@@ -1,6 +1,6 @@
 'use strict';
 
-/*global google baAtts*/
+/*global google coblocksGoogleMaps*/
 
 const coblocksMap = {
 	init: function() {
@@ -72,7 +72,7 @@ const coblocksMap = {
 				position: new google.maps.LatLng( gmapAttr.lat, gmapAttr.lng ),
 				map: map,
 				icon: {
-					url: baAtts.url + '/dist/images/markers/' + gmapAttr.skin + '.svg',
+					url: coblocksGoogleMaps.url + '/dist/images/markers/' + gmapAttr.skin + '.svg',
 					scaledSize: new google.maps.Size(
 						gmapAttr.iconSize,
 						gmapAttr.iconSize
