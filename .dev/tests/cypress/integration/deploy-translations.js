@@ -31,7 +31,7 @@ describe( 'Deploy .po files from Coblocks to WordPress.org', function() {
 
       cy.visit( `https://translate.wordpress.org/projects/wp-plugins/coblocks/dev/${localeSplit}/default/import-translations/` );
 
-      cy.uploadFile( 'coblocks-' + locale + '.po', 'text/x-gettext-translation', '#import-file' );
+      cy.uploadFile( `coblocks-${locale}.po`, 'text/x-gettext-translation', '#import-file' );
 
       cy.task( 'log', `Uploading ${locale} translations...` );
 
