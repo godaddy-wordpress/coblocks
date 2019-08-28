@@ -1,9 +1,8 @@
 .wp-block-coblocks-alert {
 	background-color: #d6efee;
-	border-radius: 0.25rem;
+	border-radius: 3px;
 	color: #094264;
-	padding: 1.1em 1.3em 1em;
-	position: relative;
+	padding: 2em;
 
 	&:not(.has-background) {
 		&.is-style-warning {
@@ -36,6 +35,7 @@
 	&__title {
 		display: block;
 		margin-bottom: 0.5em;
+		margin-top: 0;
 
 		&:empty {
 			display: none;
