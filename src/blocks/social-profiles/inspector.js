@@ -70,7 +70,6 @@ class Inspector extends Component {
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
 		const isTextStyle = includes( className, 'is-style-text' );
-		const isIconTextStyle = includes( className, 'is-style-icon-and-text' );
 		const isCircularStyle = includes( className, 'is-style-circular' );
 
 		const options = [
@@ -78,13 +77,6 @@ class Inspector extends Component {
 			{ value: 'med', label: __( 'Medium' ) },
 			{ value: 'lrg', label: __( 'Large' ) },
 		];
-
-		const textColorLabel = () => {
-			if ( isTextStyle || isIconTextStyle ) {
-				return __( 'Text Color' );
-			}
-			return __( 'Icon Color' );
-		};
 
 		const defaultColors = [
 			{
@@ -100,7 +92,7 @@ class Inspector extends Component {
 			{
 				value: textColor.color,
 				onChange: setTextColor,
-				label: textColorLabel(),
+				label: ! isTextStyle ? __( 'Icon Color' ) : __( 'Text Color' ),
 			},
 		];
 
@@ -113,7 +105,7 @@ class Inspector extends Component {
 			{
 				value: backgroundColor.color,
 				onChange: setBackgroundColor,
-				label: __( 'Button Color' ),
+				label: __( 'Icon Color' ),
 			},
 		];
 
