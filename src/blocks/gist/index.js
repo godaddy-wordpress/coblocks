@@ -21,7 +21,7 @@ const { attributes, name } = metadata;
 
 const icon = icons.github;
 
-const title = 'gist';
+const title = 'Gist';
 
 const settings = {
 	title,
