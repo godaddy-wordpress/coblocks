@@ -9,3 +9,7 @@ composer global require "phpunit/phpunit=5.7.*"
 composer global require wp-coding-standards/wpcs
 
 phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
+
+.dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
+
+cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks

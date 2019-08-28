@@ -7,21 +7,20 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-import DimensionsAttributes from './attributes';
 import icons from './icons';
 import './styles/editor.scss';
+import DimensionsSelect from './dimensions-select';
 
 /**
  * WordPress dependencies
  */
-const { __, _x, sprintf } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 const { withInstanceId } = wp.compose;
 const { dispatch } = wp.data;
 const { Component, Fragment } = wp.element;
-const { ButtonGroup, Dropdown, NavigableMenu, BaseControl, Button, Tooltip, Dashicon, TabPanel } = wp.components;
+const { ButtonGroup, BaseControl, Button, Tooltip, TabPanel } = wp.components;
 
 class DimensionsControl extends Component {
-
 	constructor( props ) {
 		super( ...arguments );
 		this.onChangeTop = this.onChangeTop.bind( this );
@@ -34,65 +33,59 @@ class DimensionsControl extends Component {
 		this.syncUnits = this.syncUnits.bind( this );
 		this.saveMeta = this.saveMeta.bind( this );
 
-		let meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		if( props.attributes.saveCoBlocksMeta ){
+		if ( props.attributes.saveCoBlocksMeta ) {
 			this.saveMeta();
-			dispatch( 'core/editor' ).updateBlockAttributes( props.attributes.clientId, { saveCoBlocksMeta: false } );
+			dispatch( 'core/block-editor' ).updateBlockAttributes( props.attributes.clientId, { saveCoBlocksMeta: false } );
 		}
 	}
 
 	onChangeTop( value, device ) {
-		if  ( this.props.type == 'padding' ) {
+		if ( this.props.type === 'padding' ) {
 			this.props.setAttributes( { [ 'paddingTop' + device ]: value } );
 		} else {
 			this.props.setAttributes( { [ 'marginTop' + device ]: value } );
 		}
 		this.saveMeta();
-
 	}
 
 	onChangeRight( value, device ) {
-		if  ( this.props.type == 'padding' ) {
+		if ( this.props.type === 'padding' ) {
 			this.props.setAttributes( { [ 'paddingRight' + device ]: value } );
 		} else {
 			this.props.setAttributes( { [ 'marginRight' + device ]: value } );
 		}
 		this.saveMeta();
-
 	}
 
 	onChangeBottom( value, device ) {
-		if  ( this.props.type == 'padding' ) {
+		if ( this.props.type === 'padding' ) {
 			this.props.setAttributes( { [ 'paddingBottom' + device ]: value } );
 		} else {
 			this.props.setAttributes( { [ 'marginBottom' + device ]: value } );
 		}
 		this.saveMeta();
-
 	}
 
 	onChangeLeft( value, device ) {
-		if  ( this.props.type == 'padding' ) {
+		if ( this.props.type === 'padding' ) {
 			this.props.setAttributes( { [ 'paddingLeft' + device ]: value } );
 		} else {
 			this.props.setAttributes( { [ 'marginLeft' + device ]: value } );
 		}
 		this.saveMeta();
-
 	}
 
 	onChangeAll( value, device ) {
-		if  ( this.props.type == 'padding' ) {
+		if ( this.props.type === 'padding' ) {
 			this.props.setAttributes( { [ 'paddingTop' + device ]: value, [ 'paddingRight' + device ]: value, [ 'paddingBottom' + device ]: value, [ 'paddingLeft' + device ]: value } );
 		} else {
 			this.props.setAttributes( { [ 'marginTop' + device ]: value, [ 'marginRight' + device ]: value, [ 'marginBottom' + device ]: value, [ 'marginLeft' + device ]: value } );
 		}
 		this.saveMeta();
-
 	}
 
 	onChangeUnits( value ) {
-		if  ( this.props.type == 'padding' ) {
+		if ( this.props.type === 'padding' ) {
 			this.props.setAttributes( { paddingUnit: value } );
 		} else {
 			this.props.setAttributes( { marginUnit: value } );
@@ -102,30 +95,29 @@ class DimensionsControl extends Component {
 	}
 
 	onChangeSize( value, size ) {
-
 		//fix reset for specific blocks
-		if( [ 'coblocks/hero' ].includes( this.props.name ) && value == 'no' ){
-			if( size < 0 ){
+		if ( [ 'coblocks/hero' ].includes( this.props.name ) && value === 'no' ) {
+			if ( size < 0 ) {
 				value = 'huge';
-				size  = 60;
-			}else{
-				size  = -1;
+				size = 60;
+			} else {
+				size = -1;
 			}
 		}
 
-		if  ( this.props.type == 'padding' ) {
-			this.props.setAttributes( {  paddingSyncUnits: true } )
+		if ( this.props.type === 'padding' ) {
+			this.props.setAttributes( { paddingSyncUnits: true } );
 			this.props.setAttributes( { paddingSize: value } );
-			if( size ){
-				if( size < 0 ){
+			if ( size ) {
+				if ( size < 0 ) {
 					size = '';
 				}
 				this.props.setAttributes( { paddingTop: size, paddingRight: size, paddingBottom: size, paddingLeft: size, paddingUnit: 'px' } );
 			}
 		} else {
 			this.props.setAttributes( { marginSize: value } );
-			if( size ){
-				if( size < 0 ){
+			if ( size ) {
+				if ( size < 0 ) {
 					size = '';
 				}
 				this.props.setAttributes( { marginTop: size, marginRight: 0, marginBottom: size, marginLeft: 0, marginUnit: 'px' } );
@@ -136,32 +128,31 @@ class DimensionsControl extends Component {
 	}
 
 	syncUnits( value, device ) {
+		const numbers = [ this.props[ 'valueTop' + device ], this.props[ 'valueRight' + device ], this.props[ 'valueBottom' + device ], this.props[ 'valueLeft' + device ] ];
 
-		var numbers = [ this.props[ 'valueTop' + device ], this.props[ 'valueRight' + device ], this.props[ 'valueBottom' + device ], this.props[ 'valueLeft' + device ]];
+		const syncValue = Math.max.apply( null, numbers );
 
-		const syncValue = Math.max.apply( null, numbers )
-
-		if  ( this.props.type == 'padding' ) {
-			this.props.setAttributes( {  [ 'paddingSyncUnits' + device ]: ! this.props[ 'syncUnits' + device ] } )
+		if ( this.props.type === 'padding' ) {
+			this.props.setAttributes( { [ 'paddingSyncUnits' + device ]: ! this.props[ 'syncUnits' + device ] } );
 			this.props.setAttributes( { [ 'paddingTop' + device ]: syncValue, [ 'paddingRight' + device ]: syncValue, [ 'paddingBottom' + device ]: syncValue, [ 'paddingLeft' + device ]: syncValue } );
 		} else {
-			this.props.setAttributes( {  [ 'marginSyncUnits' + device ]: ! this.props[ 'syncUnits' + device ] } )
+			this.props.setAttributes( { [ 'marginSyncUnits' + device ]: ! this.props[ 'syncUnits' + device ] } );
 			this.props.setAttributes( { [ 'marginTop' + device ]: syncValue, [ 'marginRight' + device ]: syncValue, [ 'marginBottom' + device ]: syncValue, [ 'marginLeft' + device ]: syncValue } );
 		}
 
 		this.saveMeta();
 	}
 
-	saveMeta( event ){
-		let meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		let block = wp.data.select( 'core/editor' ).getBlock( this.props.clientId );
+	saveMeta() {
+		const meta = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
+		const block = wp.data.select( 'core/block-editor' ).getBlock( this.props.clientId );
 		let dimensions = {};
 
 		if ( typeof this.props.attributes.coblocks !== 'undefined' && typeof this.props.attributes.coblocks.id !== 'undefined' ) {
-			let id = this.props.name.split('/').join('-') + '-' + this.props.attributes.coblocks.id;
-			let paddingUnit = block.attributes.paddingUnit;
-			let marginUnit = block.attributes.marginUnit;
-			let padding = {
+			const id = this.props.name.split( '/' ).join( '-' ) + '-' + this.props.attributes.coblocks.id;
+			const paddingUnit = block.attributes.paddingUnit;
+			const marginUnit = block.attributes.marginUnit;
+			const padding = {
 				paddingTop: ( block.attributes.paddingTop ) ? block.attributes.paddingTop + paddingUnit : null,
 				paddingRight: ( block.attributes.paddingRight ) ? block.attributes.paddingRight + paddingUnit : null,
 				paddingBottom: ( block.attributes.paddingBottom ) ? block.attributes.paddingBottom + paddingUnit : null,
@@ -175,7 +166,7 @@ class DimensionsControl extends Component {
 				paddingBottomMobile: ( block.attributes.paddingBottomMobile ) ? block.attributes.paddingBottomMobile + paddingUnit : null,
 				paddingLeftMobile: ( block.attributes.paddingLeftMobile ) ? block.attributes.paddingLeftMobile + paddingUnit : null,
 			};
-			let margin = {
+			const margin = {
 				marginTop: ( block.attributes.marginTop ) ? block.attributes.marginTop + marginUnit : null,
 				marginRight: ( block.attributes.marginRight ) ? block.attributes.marginRight + marginUnit : null,
 				marginBottom: ( block.attributes.marginBottom ) ? block.attributes.marginBottom + marginUnit : null,
@@ -190,7 +181,7 @@ class DimensionsControl extends Component {
 				marginLeftMobile: ( block.attributes.marginLeftMobile ) ? block.attributes.marginLeftMobile + marginUnit : null,
 			};
 
-			if ( typeof meta._coblocks_dimensions === 'undefined' || ( typeof meta._coblocks_dimensions !== 'undefined' && meta._coblocks_dimensions  == '' ) ){
+			if ( typeof meta._coblocks_dimensions === 'undefined' || ( typeof meta._coblocks_dimensions !== 'undefined' && meta._coblocks_dimensions === '' ) ) {
 				dimensions = {};
 			} else {
 				dimensions = JSON.parse( meta._coblocks_dimensions );
@@ -200,121 +191,111 @@ class DimensionsControl extends Component {
 				dimensions[ id ] = {};
 				dimensions[ id ][ this.props.type ] = {};
 			} else {
-				if ( typeof dimensions[ id ][ this.props.type ] === 'undefined' ){
+				if ( typeof dimensions[ id ][ this.props.type ] === 'undefined' ) {
 					dimensions[ id ][ this.props.type ] = {};
 				}
 			}
 
-			if ( this.props.dimensionSize == 'advanced' ) {
-				dimensions[ id ][ this.props.type ] = ( this.props.type == 'padding' ) ? padding : margin;
+			if ( this.props.dimensionSize === 'advanced' ) {
+				dimensions[ id ][ this.props.type ] = ( this.props.type === 'padding' ) ? padding : margin;
 			} else {
 				dimensions[ id ][ this.props.type ] = {};
 			}
 
 			// Save values to metadata.
-			wp.data.dispatch( 'core/editor' ).editPost({
+			wp.data.dispatch( 'core/editor' ).editPost( {
 				meta: {
 					_coblocks_dimensions: JSON.stringify( dimensions ),
-				}
-			});
+				},
+			} );
 
 			//add CSS to head
-			let head 			= document.head || document.getElementsByTagName('head')[0],
-			responsiveCss		= '',
-		    style 				= document.createElement('style');
-		    style.type 			= 'text/css';
+			const head = document.head || document.getElementsByTagName( 'head' )[ 0 ];
+			const style = document.createElement( 'style' );
+			let responsiveCss = '';
+			style.type = 'text/css';
 
-		    //add responsive styling for tablet device
-		    responsiveCss += '@media only screen and (max-width: 768px) {';
-		   		responsiveCss += '.'+ id + ' > div{';
-		   		if( padding.paddingTopTablet ){
-		   			responsiveCss += 'padding-top: ' + padding.paddingTopTablet + ' !important;';
-		   		}
-		    	if( padding.paddingBottomTablet ){
-		    		responsiveCss += 'padding-bottom: ' + padding.paddingBottomTablet + ' !important;';
-		    	}
-		    	if( padding.paddingRightTablet ){
-		    		responsiveCss += 'padding-right: ' + padding.paddingRightTablet + ' !important;';
-		    	}
-		    	if( padding.paddingLeftTablet ){
-		    		responsiveCss += 'padding-left: ' + padding.paddingLeftTablet + ' !important;';
-		    	}
-
-		    	if( margin.marginTopTablet ){
-		   			responsiveCss += 'margin-top: ' + margin.marginTopTablet + ' !important;';
-		   		}
-		    	if( margin.marginBottomTablet ){
-		    		responsiveCss += 'margin-bottom: ' + margin.marginBottomTablet + ' !important;';
-		    	}
-		    	if( margin.marginRightTablet ){
-		    		responsiveCss += 'margin-right: ' + margin.marginRightTablet + ' !important;';
-		    	}
-		    	if( margin.marginleLtTablet ){
-		    		responsiveCss += 'margin-left: ' + margin.marginLeftTablet + ' !important;';
-		    	}
-
-		    	responsiveCss += '}';
-		    responsiveCss += '}';
-
-		    responsiveCss += '@media only screen and (max-width: 514px) {';
-		   		responsiveCss += '.'+ id + ' > div{';
-		   		if( padding.paddingTopMobile ){
-		   			responsiveCss += 'padding-top: ' + padding.paddingTopMobile + ' !important;';
-		   		}
-		    	if( padding.paddingBottomMobile ){
-		    		responsiveCss += 'padding-bottom: ' + padding.paddingBottomMobile + ' !important;';
-		    	}
-		    	if( padding.paddingRightMobile ){
-		    		responsiveCss += 'padding-right: ' + padding.paddingRightMobile + ' !important;';
-		    	}
-		    	if( padding.paddingLeftMobile ){
-		    		responsiveCss += 'padding-left: ' + padding.paddingLeftMobile + ' !important;';
-		    	}
-
-		    	if( margin.marginTopMobile ){
-		   			responsiveCss += 'margin-top: ' + margin.marginTopMobile + ' !important;';
-		   		}
-		    	if( margin.marginBottomMobile ){
-		    		responsiveCss += 'margin-bottom: ' + margin.marginBottomMobile + ' !important;';
-		    	}
-		    	if( margin.marginRightMobile ){
-		    		responsiveCss += 'margin-right: ' + margin.marginRightMobile + ' !important;';
-		    	}
-		    	if( margin.marginleLtMobile ){
-		    		responsiveCss += 'margin-left: ' + margin.marginLeftMobile + ' !important;';
-		    	}
-
-
-		    	responsiveCss += '}';
-		    responsiveCss += '}';
-
-		    if ( style.styleSheet ){
-			  style.styleSheet.cssText = responsiveCss;
-			}else {
-			  style.appendChild( document.createTextNode(responsiveCss) );
+			//add responsive styling for tablet device
+			responsiveCss += '@media only screen and (max-width: 768px) {';
+			responsiveCss += '.' + id + ' > div{';
+			if ( padding.paddingTopTablet ) {
+				responsiveCss += 'padding-top: ' + padding.paddingTopTablet + ' !important;';
+			}
+			if ( padding.paddingBottomTablet ) {
+				responsiveCss += 'padding-bottom: ' + padding.paddingBottomTablet + ' !important;';
+			}
+			if ( padding.paddingRightTablet ) {
+				responsiveCss += 'padding-right: ' + padding.paddingRightTablet + ' !important;';
+			}
+			if ( padding.paddingLeftTablet ) {
+				responsiveCss += 'padding-left: ' + padding.paddingLeftTablet + ' !important;';
 			}
 
-			head.appendChild(style);
+			if ( margin.marginTopTablet ) {
+				responsiveCss += 'margin-top: ' + margin.marginTopTablet + ' !important;';
+			}
+			if ( margin.marginBottomTablet ) {
+				responsiveCss += 'margin-bottom: ' + margin.marginBottomTablet + ' !important;';
+			}
+			if ( margin.marginRightTablet ) {
+				responsiveCss += 'margin-right: ' + margin.marginRightTablet + ' !important;';
+			}
+			if ( margin.marginleLtTablet ) {
+				responsiveCss += 'margin-left: ' + margin.marginLeftTablet + ' !important;';
+			}
+
+			responsiveCss += '}';
+			responsiveCss += '}';
+
+			responsiveCss += '@media only screen and (max-width: 514px) {';
+			responsiveCss += '.' + id + ' > div{';
+			if ( padding.paddingTopMobile ) {
+				responsiveCss += 'padding-top: ' + padding.paddingTopMobile + ' !important;';
+			}
+			if ( padding.paddingBottomMobile ) {
+				responsiveCss += 'padding-bottom: ' + padding.paddingBottomMobile + ' !important;';
+			}
+			if ( padding.paddingRightMobile ) {
+				responsiveCss += 'padding-right: ' + padding.paddingRightMobile + ' !important;';
+			}
+			if ( padding.paddingLeftMobile ) {
+				responsiveCss += 'padding-left: ' + padding.paddingLeftMobile + ' !important;';
+			}
+
+			if ( margin.marginTopMobile ) {
+				responsiveCss += 'margin-top: ' + margin.marginTopMobile + ' !important;';
+			}
+			if ( margin.marginBottomMobile ) {
+				responsiveCss += 'margin-bottom: ' + margin.marginBottomMobile + ' !important;';
+			}
+			if ( margin.marginRightMobile ) {
+				responsiveCss += 'margin-right: ' + margin.marginRightMobile + ' !important;';
+			}
+			if ( margin.marginleLtMobile ) {
+				responsiveCss += 'margin-left: ' + margin.marginLeftMobile + ' !important;';
+			}
+
+			responsiveCss += '}';
+			responsiveCss += '}';
+
+			if ( style.styleSheet ) {
+				style.styleSheet.cssText = responsiveCss;
+			} else {
+				style.appendChild( document.createTextNode( responsiveCss ) );
+			}
+
+			head.appendChild( style );
 		}
 	}
 
 	render() {
-
 		const {
-			bottom = true,
-			className,
 			help,
 			instanceId,
 			label = __( 'Margin' ),
-			left = true,
 			onChange,
-			reset = false,
-			right = true,
-			setAttributes,
-			top = true,
 			type = 'margin',
 			unit,
-			units = true,
 			valueBottom,
 			valueLeft,
 			valueRight,
@@ -331,7 +312,10 @@ class DimensionsControl extends Component {
 			syncUnitsTablet,
 			syncUnitsMobile,
 			dimensionSize,
+			setAttributes,
 		} = this.props;
+
+		const { paddingSize, marginSize } = this.props.attributes;
 
 		const classes = classnames(
 			'components-base-control',
@@ -351,11 +335,11 @@ class DimensionsControl extends Component {
 			}
 
 			let device = '';
-			if( typeof event.target.getAttribute('data-device-type') !== 'undefined' && typeof event.target.getAttribute('data-device-type') !== 'null' ){
-				device = event.target.getAttribute('data-device-type');
+			if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' && typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
+				device = event.target.getAttribute( 'data-device-type' );
 			}
 
-			if  ( this.props[ 'syncUnits' + device ] ) {
+			if ( this.props[ 'syncUnits' + device ] ) {
 				this.onChangeAll( Number( newValue ), device );
 			} else {
 				this.onChangeTop( Number( newValue ), device );
@@ -370,11 +354,11 @@ class DimensionsControl extends Component {
 			}
 
 			let device = '';
-			if( typeof event.target.getAttribute('data-device-type') !== 'undefined' && typeof event.target.getAttribute('data-device-type') !== 'null' ){
-				device = event.target.getAttribute('data-device-type');
+			if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' && typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
+				device = event.target.getAttribute( 'data-device-type' );
 			}
 
-			if  ( this.props[ 'syncUnits' + device ] ) {
+			if ( this.props[ 'syncUnits' + device ] ) {
 				this.onChangeAll( Number( newValue ), device );
 			} else {
 				this.onChangeRight( Number( newValue ), device );
@@ -389,11 +373,11 @@ class DimensionsControl extends Component {
 			}
 
 			let device = '';
-			if( typeof event.target.getAttribute('data-device-type') !== 'undefined' && typeof event.target.getAttribute('data-device-type') !== 'null' ){
-				device = event.target.getAttribute('data-device-type');
+			if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' && typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
+				device = event.target.getAttribute( 'data-device-type' );
 			}
 
-			if  ( this.props[ 'syncUnits' + device ] ) {
+			if ( this.props[ 'syncUnits' + device ] ) {
 				this.onChangeAll( Number( newValue ), device );
 			} else {
 				this.onChangeBottom( Number( newValue ), device );
@@ -408,11 +392,11 @@ class DimensionsControl extends Component {
 			}
 
 			let device = '';
-			if( typeof event.target.getAttribute('data-device-type') !== 'undefined' && typeof event.target.getAttribute('data-device-type') !== 'null' ){
-				device = event.target.getAttribute('data-device-type');
+			if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' && typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
+				device = event.target.getAttribute( 'data-device-type' );
 			}
 
-			if  ( this.props[ 'syncUnits' + device ] ) {
+			if ( this.props[ 'syncUnits' + device ] ) {
 				this.onChangeAll( Number( newValue ), device );
 			} else {
 				this.onChangeLeft( Number( newValue ), device );
@@ -434,64 +418,35 @@ class DimensionsControl extends Component {
 			},
 		];
 
-		const utilitySizes = [
-			{
-				name: __( 'None' ),
-				size: 0,
-				slug: 'no',
-			},
-			{
-				name: __( 'Small' ),
-				size: 14,
-				slug: 'small',
-			},
-			{
-				name: __( 'Medium' ),
-				size: 24,
-				slug: 'medium',
-			},
-			{
-				name: __( 'Large' ),
-				size: 34,
-				slug: 'large',
-			},{
-				name: __( 'Huge' ),
-				size: 60,
-				slug: 'huge',
-			},
-		];
-
-		const currentSize = utilitySizes.find( ( utility ) => utility.slug === dimensionSize );
-
 		const onSelect = ( tabName ) => {
 			let selected = 'desktop';
 
-			switch( tabName ){
+			switch ( tabName ) {
 				case 'desktop':
 					selected = 'tablet';
-				break;
+					break;
 				case 'tablet':
 					selected = 'mobile';
-				break;
+					break;
 				case 'mobile':
 					selected = 'desktop';
-				break;
+					break;
 				default:
-				break;
+					break;
 			}
 
 			//Reset z-index
-			const buttons = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type }`);
+			const buttons = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type }` );
 
-			for(var i = 0; i < buttons.length; i++) {
-				buttons[i].style.display = 'none';
+			for ( let i = 0; i < buttons.length; i++ ) {
+				buttons[ i ].style.display = 'none';
 			}
-			if( tabName == 'default' ){
-				const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--tablet`);
-				button[0].click();
-			}else{
-				const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--${ selected }`);
-				button[0].style.display = 'block';
+			if ( tabName === 'default' ) {
+				const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--tablet` );
+				button[ 0 ].click();
+			} else {
+				const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--${ selected }` );
+				button[ 0 ].style.display = 'block';
 			}
 		};
 
@@ -500,9 +455,9 @@ class DimensionsControl extends Component {
 				<div className={ classes }>
 					{ dimensionSize === 'advanced' ?
 						<Fragment>
-							<div className='components-coblocks-dimensions-control__header'>
+							<div className="components-coblocks-dimensions-control__header">
 								{ label && <p className={ 'components-coblocks-dimensions-control__label' }>{ label }</p> }
-								<div className='components-coblocks-dimensions-control__actions'>
+								<div className="components-coblocks-dimensions-control__actions">
 									<ButtonGroup className="components-coblocks-dimensions-control__units" aria-label={ __( 'Select Units' ) }>
 										{ map( unitSizes, ( { unitValue, name } ) => (
 											<Tooltip text={ sprintf( __( '%s Units' ), name ) }>
@@ -564,7 +519,7 @@ class DimensionsControl extends Component {
 										if ( 'mobile' === tab.name ) {
 											return (
 												<Fragment>
-													<div className='components-coblocks-dimensions-control__inputs'>
+													<div className="components-coblocks-dimensions-control__inputs">
 														<input
 															className="components-coblocks-dimensions-control__number"
 															type="number"
@@ -572,8 +527,7 @@ class DimensionsControl extends Component {
 															aria-label={ sprintf( __( '%s Top' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueTopMobile ? valueTopMobile : '' }
-															min="0"
-															min={ type == 'padding' ? 0 : undefined }
+															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Mobile"
 														/>
 														<input
@@ -583,7 +537,7 @@ class DimensionsControl extends Component {
 															aria-label={ sprintf( __( '%s Right' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueRightMobile ? valueRightMobile : '' }
-															min={ type == 'padding' ? 0 : undefined }
+															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Mobile"
 														/>
 														<input
@@ -593,7 +547,7 @@ class DimensionsControl extends Component {
 															aria-label={ sprintf( __( '%s Bottom' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueBottomMobile ? valueBottomMobile : '' }
-															min={ type == 'padding' ? 0 : undefined }
+															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Mobile"
 														/>
 														<input
@@ -603,7 +557,7 @@ class DimensionsControl extends Component {
 															aria-label={ sprintf( __( '%s Left' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueLeftMobile ? valueLeftMobile : '' }
-															min={ type == 'padding' ? 0 : undefined }
+															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Mobile"
 														/>
 														<Tooltip text={ !! syncUnitsMobile ? __( 'Unsync' ) : __( 'Sync' ) } >
@@ -621,11 +575,11 @@ class DimensionsControl extends Component {
 														</Tooltip>
 													</div>
 												</Fragment>
-											)
+											);
 										} else if ( 'tablet' === tab.name ) {
 											return (
 												<Fragment>
-													<div className='components-coblocks-dimensions-control__inputs'>
+													<div className="components-coblocks-dimensions-control__inputs">
 														<input
 															className="components-coblocks-dimensions-control__number"
 															type="number"
@@ -633,8 +587,7 @@ class DimensionsControl extends Component {
 															aria-label={ sprintf( __( '%s Top' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueTopTablet ? valueTopTablet : '' }
-															min="0"
-															min={ type == 'padding' ? 0 : undefined }
+															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Tablet"
 														/>
 														<input
@@ -644,7 +597,7 @@ class DimensionsControl extends Component {
 															aria-label={ sprintf( __( '%s Right' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueRightTablet ? valueRightTablet : '' }
-															min={ type == 'padding' ? 0 : undefined }
+															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Tablet"
 														/>
 														<input
@@ -654,7 +607,7 @@ class DimensionsControl extends Component {
 															aria-label={ sprintf( __( '%s Bottom' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueBottomTablet ? valueBottomTablet : '' }
-															min={ type == 'padding' ? 0 : undefined }
+															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Tablet"
 														/>
 														<input
@@ -664,7 +617,7 @@ class DimensionsControl extends Component {
 															aria-label={ sprintf( __( '%s Left' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueLeftTablet ? valueLeftTablet : '' }
-															min={ type == 'padding' ? 0 : undefined }
+															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Tablet"
 														/>
 														<Tooltip text={ !! syncUnitsTablet ? __( 'Unsync' ) : __( 'Sync' ) } >
@@ -682,116 +635,87 @@ class DimensionsControl extends Component {
 														</Tooltip>
 													</div>
 												</Fragment>
-											)
-										} else {
-											return (
-												<Fragment>
-													<div className='components-coblocks-dimensions-control__inputs'>
-														<input
-															className="components-coblocks-dimensions-control__number"
-															type="number"
-															onChange={ onChangeTopValue }
-															aria-label={ sprintf( __( '%s Top' ), label ) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueTop ? valueTop : '' }
-															min="0"
-															min={ type == 'padding' ? 0 : undefined }
-															data-device-type=""
-														/>
-														<input
-															className="components-coblocks-dimensions-control__number"
-															type="number"
-															onChange={ onChangeRightValue }
-															aria-label={ sprintf( __( '%s Right' ), label ) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueRight ? valueRight : '' }
-															min={ type == 'padding' ? 0 : undefined }
-															data-device-type=""
-														/>
-														<input
-															className="components-coblocks-dimensions-control__number"
-															type="number"
-															onChange={ onChangeBottomValue }
-															aria-label={ sprintf( __( '%s Bottom' ), label ) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueBottom ? valueBottom : '' }
-															min={ type == 'padding' ? 0 : undefined }
-															data-device-type=""
-														/>
-														<input
-															className="components-coblocks-dimensions-control__number"
-															type="number"
-															onChange={ onChangeLeftValue }
-															aria-label={ sprintf( __( '%s Left' ), label ) }
-															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueLeft ? valueLeft : '' }
-															min={ type == 'padding' ? 0 : undefined }
-															data-device-type=""
-														/>
-														<Tooltip text={ !! syncUnits ? __( 'Unsync' ) : __( 'Sync' ) } >
-															<Button
-																className="components-coblocks-dimensions-control_sync"
-																aria-label={ __( 'Sync Units' ) }
-																isPrimary={ syncUnits ? syncUnits : false }
-																aria-pressed={ syncUnits ? syncUnits : false }
-																onClick={ ( value ) => this.syncUnits( value, '' ) }
-																data-device-type=""
-																isSmall
-															>
-																{ !! syncUnits ? icons.sync : icons.sync }
-															</Button>
-														</Tooltip>
-													</div>
-												</Fragment>
-											)
+											);
 										}
+										return (
+											<Fragment>
+												<div className="components-coblocks-dimensions-control__inputs">
+													<input
+														className="components-coblocks-dimensions-control__number"
+														type="number"
+														onChange={ onChangeTopValue }
+														aria-label={ sprintf( __( '%s Top' ), label ) }
+														aria-describedby={ !! help ? id + '__help' : undefined }
+														value={ valueTop ? valueTop : '' }
+														min={ type === 'padding' ? 0 : undefined }
+														data-device-type=""
+													/>
+													<input
+														className="components-coblocks-dimensions-control__number"
+														type="number"
+														onChange={ onChangeRightValue }
+														aria-label={ sprintf( __( '%s Right' ), label ) }
+														aria-describedby={ !! help ? id + '__help' : undefined }
+														value={ valueRight ? valueRight : '' }
+														min={ type === 'padding' ? 0 : undefined }
+														data-device-type=""
+													/>
+													<input
+														className="components-coblocks-dimensions-control__number"
+														type="number"
+														onChange={ onChangeBottomValue }
+														aria-label={ sprintf( __( '%s Bottom' ), label ) }
+														aria-describedby={ !! help ? id + '__help' : undefined }
+														value={ valueBottom ? valueBottom : '' }
+														min={ type === 'padding' ? 0 : undefined }
+														data-device-type=""
+													/>
+													<input
+														className="components-coblocks-dimensions-control__number"
+														type="number"
+														onChange={ onChangeLeftValue }
+														aria-label={ sprintf( __( '%s Left' ), label ) }
+														aria-describedby={ !! help ? id + '__help' : undefined }
+														value={ valueLeft ? valueLeft : '' }
+														min={ type === 'padding' ? 0 : undefined }
+														data-device-type=""
+													/>
+													<Tooltip text={ !! syncUnits ? __( 'Unsync' ) : __( 'Sync' ) } >
+														<Button
+															className="components-coblocks-dimensions-control_sync"
+															aria-label={ __( 'Sync Units' ) }
+															isPrimary={ syncUnits ? syncUnits : false }
+															aria-pressed={ syncUnits ? syncUnits : false }
+															onClick={ ( value ) => this.syncUnits( value, '' ) }
+															data-device-type=""
+															isSmall
+														>
+															{ !! syncUnits ? icons.sync : icons.sync }
+														</Button>
+													</Tooltip>
+												</div>
+											</Fragment>
+										);
 									}
 								}
 							</TabPanel>
-							<div className='components-coblocks-dimensions-control__input-labels'>
-								<span className='components-coblocks-dimensions-control__number-label'>{  __( 'Top' ) }</span>
-								<span className='components-coblocks-dimensions-control__number-label'>{  __( 'Right' ) }</span>
-								<span className='components-coblocks-dimensions-control__number-label'>{  __( 'Bottom' ) }</span>
-								<span className='components-coblocks-dimensions-control__number-label'>{  __( 'Left' ) }</span>
-								<span className='components-coblocks-dimensions-control__number-label-blank'></span>
+							<div className="components-coblocks-dimensions-control__input-labels">
+								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Top' ) }</span>
+								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Right' ) }</span>
+								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Bottom' ) }</span>
+								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Left' ) }</span>
+								<span className="components-coblocks-dimensions-control__number-label-blank"></span>
 							</div>
-						</Fragment>
-						:
+						</Fragment>						:
 						<BaseControl id="textarea-1" label={ label } help={ help }>
-							<div className="components-font-size-picker__buttons">
-								<Dropdown
-									className="components-font-size-picker__dropdown"
-									contentClassName="components-font-size-picker__dropdown-content components-coblocks-dimensions-control__dropdown-content"
-									position="bottom"
-									renderToggle={ ( { isOpen, onToggle } ) => (
-										<Button
-											className="components-font-size-picker__selector"
-											isLarge
-											onClick={ onToggle }
-											aria-expanded={ isOpen }
-											aria-label={ sprintf( __( 'Custom %s size' ), label.toLowerCase() ) }
-										>
-											{ ( currentSize && currentSize.name ) || ( ! dimensionSize && _x( 'Normal', 'size name' ) ) || _x( 'Custom', 'size name' ) }
-										</Button>
-									) }
-									renderContent={ () => (
-										<NavigableMenu>
-											{ map( utilitySizes, ( { name, size, slug } ) => (
-												<Button
-													key={ slug }
-													onClick={ () => this.onChangeSize( slug, size ) }
-													className={ `is-${ slug }-size` }
-													role="menuitem"
-												>
-													{ ( dimensionSize === slug || ( ! dimensionSize && slug === 'normal' ) ) && <Dashicon icon="saved" /> }
-													<span className="components-font-size-picker__dropdown-text-size">
-														{ name }
-													</span>
-												</Button>
-											) ) }
-										</NavigableMenu>
-									) }
+							<div className="components-font-size-picker__controls">
+								<DimensionsSelect
+									type={ type }
+									setAttributes={ setAttributes }
+									paddingSize={ paddingSize }
+									marginSize={ marginSize }
 								/>
+
 								<Button
 									className="components-color-palette__clear"
 									type="button"

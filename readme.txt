@@ -1,14 +1,14 @@
 === Page Builder Gutenberg Blocks – CoBlocks ===
 Author URI: https://www.godaddy.com
 Plugin URI: https://www.coblocks.com
-Contributors: coblocks, godaddy, richtabor, phpbits, eherman24, jonathanbardo, jrtashjian, sbalakr2, dmatuszak
+Contributors: coblocks, godaddy, richtabor, phpbits, eherman24, jonathanbardo, jrtashjian, sbalakr2, dmatuszak, paranoia1906
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.2
+Tested up to: 5.2.2
 Requires PHP: 5.2.4
-Stable tag: 1.10.0
+Stable tag: 1.12.1
 License: GPL-2.0
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 CoBlocks is a suite of page builder WordPress blocks for Gutenberg, with 10+ new blocks and a true page builder experience with rows and columns.
 
@@ -32,26 +32,28 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Alert Block
 * Author Profile Block
 * Buttons Block
-* Carousel Gallery Block (New!)
+* Carousel Gallery Block
 * Click to Tweet Block
 * Dynamic Separator Block
 * Features Block
+* Food & Drinks Block
 * Form Block (New!)
 * Gif Block
 * GitHub Gist Block
 * Hero Block
 * Highlight Block
 * Icon Block
+* Logos & Badges Block (New!)
 * Map Block
-* Masonry Gallery Block (New!)
+* Masonry Gallery Block
 * Media Card Block
 * Pricing Table Block
 * Resizable Row/Columns Blocks
+* Services Block (New!)
 * Shape Divider Block
+* Social Profiles Block (New!)
 * Social Sharing Block
-* Stacked Gallery Block (New!)
-
-And we're adding new Gutenberg blocks all the time!
+* Stacked Gallery Block
 
 ## Breakthrough Page Builder System
 [CoBlocks](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks) features an innovative block system that allows you to create stunning web pages, and even entire websites, with the new WordPress editor.
@@ -73,11 +75,9 @@ The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks m
 <strong>Join us</strong> in welcoming the future of WordPress blocks:
 
 * [Visit the CoBlocks website](https://coblocks.com?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=coblocks)
-* [Subscribe to updates](http://eepurl.com/gd1S8D)
 * [Follow on Twitter](https://twitter.com/coblocks)
 * [Join our new Community](https://facebook.com/groups/coblocks)
 * [Like us on Facebook](https://www.facebook.com/coblocks/)
-* [Follow us on Instagram](https://www.instagram.com/coblockswp/)
 
 ## Built with developers in mind
 Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/godaddy/coblocks) and join the party. 🎉
@@ -114,10 +114,65 @@ Any properly developed WordPress theme will work with CoBlocks, though if you're
 
 Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://coblocks.com).
 
-= Where can I get help? =
-Please reach out via the contact form at the bottom right of [our website](https://coblocks.com).
-
 == Changelog ==
+
+= 1.12.1 =
+* Tweak: Start refactoring blocks to align with the Gutenberg Block Registration API RFC
+* Tweak: Add proper block descriptions to the Services block
+* Tweak: Add error notice to the Gist block to prevent silent failures
+* Tweak: Improve accessibility via tab control in the Form block
+* Tweak: Add support for SelectControl components within the Dimensions Controls components
+* Tweak: Add wrapper to Hero block content to provide a max width limitation
+* Fix: Resolve typo in the Icon block
+* Fix: Resolve issue where the active ResizableBox handles properly display
+* Fix: Alert block no longer escapes valid html when transformed
+* Fix: Providing a Gist url with a file hash properly loads the targetted Gist
+* Fix: Resolve issue where custom font sizes led to invalid block markup
+* Fix: Add minor style update to the Typography Controls toolbar icon
+* Fix: Removing the Gist URL will now revert the Gist block to its initial state
+* Fix: Map block is no longer using a global which was previously renamed
+
+= 1.12.0 =
+* New: Add new Logo & Badges block
+* New: Add new Social Profiles block
+* New: Add new Services block
+* New: Introduce Jest & PHPUnit tests
+* Tweak: Improve UI of Share block icon selection
+* Tweak: Add top/bottom spacing controls to the core Group block
+* Tweak: Remove admin footer notice
+* Tweak: Update icons for Carousel and Stacked Gallery blocks
+* Tweak: Adjust keywords for Share and Features blocks
+* Tweak: Adjust social icon SVGs
+* Tweak: Adjust Pinterest icon color to the proper brand color
+* Tweak: Remove blue color from icons for a cleaner interface
+* Tweak: Improve Hero block initial state with better placeholders
+* Tweak: Add ascending plan titles to the Pricing Table block
+* Tweak: Hero block now supports IE 11+
+* Tweak: Share and Social Profiles blocks now support IE 11+
+* Tweak: Food & Drinks block now supports IE 11+
+* Tweak: Media Card block now supports IE 11+
+* Fix: Resolve issue where block background colors may not properly display in the editor
+* Fix: Resolve display issue with the Dynamic HR block while using TwentyNineteen
+* Fix: Resolve Hero block z-index issue on wide and full width alignments
+* Fix: Resolve issue with Checkbox list style SVG
+* Fix: Resolve issue with inline links within the Buttons block in Gutenberg 6.1.1
+
+= 1.11.1 =
+* Fix: Resolve duplicate registered block issue
+
+= 1.11.0 =
+* New: Support for Gutenberg 6.0 🎊
+* New: Add new Food & Drinks block for restaurants and eateries to create menus with
+* New: Add support for individual gallery links for images [Stacked and Masonry blocks]
+* New: Add support for opening gallery links in a new tab [Stacked and Masonry blocks]
+* New: Add new category in the block inserter for gallery blocks
+* New: Add filter to nest Getting Started page in an admin parent menu
+* New: Add support for double-clicking a rendered map to bring up the location editor [Map block]
+* Tweak: Improve Gallery Block Icons
+* Tweak: Rename the "Social" block to the "Share" block [Share block]
+* Tweak: Update Facebook icon to new brand guidelines [Share block]
+* Tweak: Improved Row Block selected state in older versions of Gutenberg
+* Fix: Resole duplicate Google map script enqueued in editor [Map block]
 
 = 1.10.0 =
 * New: Add easy mode to the Google Map block without an API key requirement

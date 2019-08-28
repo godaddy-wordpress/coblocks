@@ -1,5 +1,7 @@
 .components-coblocks-typography-dropdown {
-	padding: 0 !important;
+	.edit-post-header-toolbar__block-toolbar & {
+		padding: 0 !important;
+	}
 
 	&__inner {
 		padding: 16px;

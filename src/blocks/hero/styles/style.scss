@@ -33,110 +33,35 @@
 	}
 
 	&__inner {
-		display: grid;
-		grid-template-columns: repeat(3, auto);
-		grid-template-rows: repeat(3, 1fr);
+		display: flex;
 		position: relative;
 
 		&.is-fullscreen {
 			height: 100vh;
 		}
 
-		.wp-block-coblocks-hero__box {
+		.wp-block-coblocks-hero__content {
 			position: relative;
 		}
 
-		//grid alignment
-		&.hero-top-left-align {
-			> .wp-block-coblocks-hero__box {
-				grid-column: 1;
-				grid-row: 1;
-				margin-right: auto;
-			}
+		&[class*="hero-top"] {
+			align-items: flex-start;
+		}
+		&[class*="hero-center"] {
+			align-items: center;
+		}
+		&[class*="hero-bottom"] {
+			align-items: flex-end;
 		}
 
-		&.hero-top-center-align {
-			> .wp-block-coblocks-hero__box {
-				grid-column: 2;
-				grid-row: 1;
-				margin: auto;
-			}
+		&[class*="left-align"] {
+			justify-content: flex-start;
 		}
-
-		&.hero-top-right-align {
-			> .wp-block-coblocks-hero__box {
-				grid-column: 3;
-				grid-row: 1;
-				margin-left: auto;
-			}
+		&[class*="center-align"] {
+			justify-content: center;
 		}
-
-		&.hero-center-left-align {
-			> .wp-block-coblocks-hero__box {
-				grid-column: 1;
-				grid-row: 2;
-				margin-right: auto;
-			}
-		}
-
-		&.hero-center-center-align {
-			> .wp-block-coblocks-hero__box {
-				grid-column: 2;
-				grid-row: 1;
-				margin: auto;
-			}
-		}
-
-		&.hero-center-center-align.is-fullscreen {
-			> .wp-block-coblocks-hero__box {
-				grid-row: 2;
-			}
-		}
-
-		&.hero-center-right-align {
-			> .wp-block-coblocks-hero__box {
-				grid-column: 3;
-				grid-row: 2;
-				margin-left: auto;
-			}
-		}
-
-		&.hero-bottom-left-align {
-			> .wp-block-coblocks-hero__box {
-				grid-column: 1;
-				grid-row: 3;
-				margin-right: auto;
-			}
-		}
-
-		&.hero-bottom-center-align {
-			> .wp-block-coblocks-hero__box {
-				grid-column: 2;
-				grid-row: 3;
-				margin: auto;
-			}
-		}
-
-		&.hero-bottom-right-align {
-			> .wp-block-coblocks-hero__box {
-				grid-column: 3;
-				grid-row: 3;
-				margin-left: auto;
-			}
-		}
-
-		&:not(.is-fullscreen) {
-			&.hero-top-left-align,
-			&.hero-top-center-align,
-			&.hero-top-right-align,
-			&.hero-center-left-align,
-			&.hero-center-center-align,
-			&.hero-center-right-align,
-			&.hero-bottom-left-align,
-			&.hero-bottom-center-align,
-			&.hero-bottom-right-align {
-				grid-template-rows: auto;
-			}
+		&[class*="right-align"] {
+			justify-content: flex-end;
 		}
 	}
 
