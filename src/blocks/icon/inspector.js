@@ -3,7 +3,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import map from 'lodash/map';
 
 /**
  * Internal dependencies
@@ -12,15 +11,16 @@ import applyWithColors from './colors';
 import svg from './svgs';
 import { DEFAULT_ICON_SIZE } from '.';
 import { MIN_ICON_SIZE, MAX_ICON_SIZE } from './edit';
+import IconSizeSelect from './icon-size-select';
 
 /**
  * WordPress dependencies
  */
-const { __, _x, sprintf } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.blockEditor;
-const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, NavigableMenu, Dropdown, Dashicon, Tooltip, ToggleControl } = wp.components;
+const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, Tooltip, ToggleControl } = wp.components;
 
 /**
  * Module constants
@@ -149,30 +149,6 @@ class Inspector extends Component {
 			this.setState( { filteredIcons: filtered } );
 		};
 
-		const utilitySizes = [
-			{
-				name: __( 'Small' ),
-				size: 40,
-				slug: 'small',
-			},
-			{
-				name: __( 'Medium' ),
-				size: padding ? DEFAULT_ICON_SIZE + 28 : DEFAULT_ICON_SIZE,
-				slug: 'medium',
-			},
-			{
-				name: __( 'Large' ),
-				size: 120,
-				slug: 'large',
-			}, {
-				name: __( 'Huge' ),
-				size: 200,
-				slug: 'huge',
-			},
-		];
-
-		const currentSize = utilitySizes.find( ( utility ) => utility.slug === iconSize );
-
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -207,51 +183,11 @@ class Inspector extends Component {
 								</div>
 							</Fragment> :
 							<BaseControl id="textarea-1" label={ label } help={ help }>
-								<div className="components-font-size-picker__buttons">
-									<Dropdown
-										className="components-font-size-picker__dropdown"
-										contentClassName="components-font-size-picker__dropdown-content components-coblocks-dimensions-control__dropdown-content"
-										position="bottom"
-										renderToggle={ ( { isOpen, onToggle } ) => (
-											<Button
-												className="components-font-size-picker__selector"
-												isLarge
-												onClick={ onToggle }
-												aria-expanded={ isOpen }
-												aria-label={ sprintf( __( 'Custom %s size' ), label.toLowerCase() ) }
-											>
-												{ ( currentSize && currentSize.name ) || ( ! iconSize && _x( 'Normal', 'size name' ) ) || _x( 'Custom', 'size name' ) }
-											</Button>
-										) }
-										renderContent={ () => (
-											<NavigableMenu>
-												{ map( utilitySizes, ( { name, size, slug } ) => (
-													<Button
-														key={ slug }
-														onClick={ () => this.onChangeSize( slug, size ) }
-														className={ `is-${ slug }-size` }
-														role="menuitem"
-													>
-														{ ( iconSize === slug || ( ! iconSize && slug === 'normal' ) ) && <Dashicon icon="saved" /> }
-														<span className="components-font-size-picker__dropdown-text-size">
-															{ name }
-														</span>
-													</Button>
-												) ) }
-											</NavigableMenu>
-										) }
-									/>
-									<Button
-										className="components-color-palette__clear"
-										type="button"
-										onClick={ () => this.onChangeSize( 'advanced', '' ) }
-										isDefault
-										aria-label={ sprintf( __( 'Advanced %s settings' ), label.toLowerCase() ) }
-										isPrimary={ iconSize === 'advanced' }
-									>
-										{ __( 'Advanced' ) }
-									</Button>
-								</div>
+								<IconSizeSelect
+									setAttributes={ setAttributes }
+									iconSize={ iconSize }
+									width={ width }
+								/>
 							</BaseControl>
 						}
 						{ backgroundColor.color &&

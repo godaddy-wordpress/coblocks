@@ -184,3 +184,10 @@
 		margin-top: 3px;
 	}
 }
+
+// Hide screen reader label for Gutenberg < 6.4
+.components-base-control {
+	.components-base-control .components-base-control__label {
+		display: none;
+	}
+}
