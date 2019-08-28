@@ -29,7 +29,7 @@ const settings = {
 
 	description: __( 'Add a shape divider to visually distinquish page sections.' ),
 
-	keywords: [ __( 'hr' ), __( 'separator' ), __( 'svg' ) ],
+	keywords: [ __( 'separator' ), 'hr', 'svg' ],
 
 	attributes,
 
@@ -60,4 +60,3 @@ const settings = {
 };
 
 export { name, title, icon, settings };
-

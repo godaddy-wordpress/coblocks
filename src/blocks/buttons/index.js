@@ -29,7 +29,7 @@ const icon = icons.buttons;
 const settings = {
 	title: __( 'Buttons' ),
 	description: __( 'Prompt visitors to take action with multiple buttons, side by side.' ),
-	keywords: [ __( 'link' ), __( 'cta' ), __( 'coblocks' ) ],
+	keywords: [ __( 'link' ), __( 'cta' ), 'coblocks' ],
 	attributes,
 	transforms,
 	edit,
