@@ -20,7 +20,8 @@
 		"babel": "babel src --ignore src/blocks/gist/components/gist.js",
 		"babel:json": "wp i18n make-json languages",
 		"babel:build": "npm run babel && npm run makepot && npm run babel:json",
-		"test": "jest --config .dev/tests/jest/jest.config.js"
+		"test": "jest --config .dev/tests/jest/jest.config.js",
+		"deploy-i18n": "./node_modules/.bin/cypress run"
 	},
 	"locales": {
 		"da_DK": "Dansk",
@@ -47,6 +48,7 @@
 		"core-js": "^2.6.9",
 		"cross-env": "^5.0.1",
 		"cross-spawn": "^5.1.0",
+		"cypress": "^3.4.1",
 		"delete-empty": "^2.0.0",
 		"email-validator": "2.0.4",
 		"eslint": "^4.15.0",
