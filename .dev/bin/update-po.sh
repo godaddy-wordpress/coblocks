@@ -2,7 +2,7 @@
 
 declare -A myarray
 
-# Converts coblocks.pot into the appropriate .po for each locale in package.json
+# Merge coblocks.pot changes into the appropriate .po for each locale in package.json
 LOCALES=$(cat package.json | jq -r '.locales')
 POTPATH='languages';
 
