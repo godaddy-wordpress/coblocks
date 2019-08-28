@@ -284,7 +284,7 @@ class Edit extends Component {
 				<Placeholder
 					key="placeholder"
 					icon={ icons.gif }
-					label="gif"
+					label="Gif"
 					instructions={ __( 'Search for that perfect gif on Giphy' ) }
 					className={ className }>
 					{ icons.giphy }

@@ -33,7 +33,7 @@ const settings = {
 
 	description: __( 'Add a stylized graphic symbol to communicate something more.' ),
 
-	keywords: [ 'svg', __( 'icons' ), 'coblocks' ],
+	keywords: [ __( 'icons' ), 'svg', 'coblocks' ],
 
 	attributes,
 
