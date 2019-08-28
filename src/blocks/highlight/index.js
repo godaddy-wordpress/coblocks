@@ -28,7 +28,7 @@ const settings = {
 
 	description: __( 'Highlight text.' ),
 
-	keywords: [ __( 'text' ), __( 'paragraph' ), __( 'coblocks' ) ],
+	keywords: [ __( 'text' ), __( 'paragraph' ), 'coblocks' ],
 
 	attributes,
 
