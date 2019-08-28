@@ -1,8 +1,9 @@
 {
-  "integrationFolder": ".dev/tests/cypress/integration",
+  "chromeWebSecurity": false,
   "fixturesFolder": "languages",
+  "integrationFolder": ".dev/tests/cypress/integration",
   "pluginsFile": ".dev/tests/cypress/plugins/index.js",
   "supportFile": ".dev/tests/cypress/support/commands.js",
+  "screenshotsFolder": ".dev/tests/cypress/screenshos",
   "video": false,
-  "chromeWebSecurity": false
 }
