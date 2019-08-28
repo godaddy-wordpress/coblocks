@@ -13,7 +13,7 @@ import deprecated from './deprecated';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
@@ -32,6 +32,13 @@ const settings = {
 	keywords: [ __( 'notice' ), __( 'message' ), 'coblocks' ],
 
 	attributes,
+
+	styles: [
+		{ name: 'info', label: _x( 'Info', 'block style' ), isDefault: true },
+		{ name: 'success', label: _x( 'Success', 'block style' ) },
+		{ name: 'warning', label: _x( 'Warning', 'block style' ) },
+		{ name: 'error', label: _x( 'Error', 'block style' ) },
+	],
 
 	supports: {
 		align: true,

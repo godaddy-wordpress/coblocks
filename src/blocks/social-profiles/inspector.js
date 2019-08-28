@@ -72,6 +72,10 @@ class Inspector extends Component {
 			{ value: 'lrg', label: __( 'Large' ) },
 		];
 
+		const isMaskStyle = includes( className, 'is-style-mask' );
+		const isCircularStyle = includes( className, 'is-style-circular' );
+		const isTextStyle = includes( className, 'is-style-text' );
+
 		const defaultColors = [
 			{
 				value: backgroundColor.color,
@@ -81,7 +85,7 @@ class Inspector extends Component {
 			{
 				value: textColor.color,
 				onChange: setTextColor,
-				label: __( 'Text Color' ),
+				label: ! isTextStyle ? __( 'Icon Color' ) : __( 'Text Color' ),
 			},
 		];
 
@@ -89,12 +93,9 @@ class Inspector extends Component {
 			{
 				value: backgroundColor.color,
 				onChange: setBackgroundColor,
-				label: __( 'Background Color' ),
+				label: __( 'Icon Color' ),
 			},
 		];
-
-		const isMaskStyle = includes( className, 'is-style-mask' );
-		const isCircularStyle = includes( className, 'is-style-circular' );
 
 		return (
 			<Fragment>
