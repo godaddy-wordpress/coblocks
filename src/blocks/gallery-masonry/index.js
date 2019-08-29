@@ -1,15 +1,19 @@
 /**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
+
+/**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-import icons from './icons';
 import edit from './edit';
+import icon from './icon';
 import metadata from './block.json';
-import transforms from './transforms';
 import save from './save';
-import { GalleryAttributes } from '../../components/block-gallery/shared';
+import transforms from './transforms';
 import { BackgroundAttributes } from '../../components/background';
+import { GalleryAttributes } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
@@ -21,38 +25,24 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const title = __( 'Masonry' );
-
-const icon = icons.masonry;
-
 const attributes = {
 	...GalleryAttributes,
 	...BackgroundAttributes,
-	// Block specific attributes.
 	...metadata.attributes,
 };
 
 const settings = {
-
-	title,
-
+	title: __( 'Masonry' ),
 	description: __( 'Display multiple images in an organized masonry gallery.' ),
-
-	category: 'coblocks-galleries',
-
+	icon,
 	keywords: [	__( 'gallery' ), __( 'photos' )	],
-
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, metadata, icon, settings };
