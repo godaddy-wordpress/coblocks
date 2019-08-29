@@ -7,12 +7,12 @@ import './styles/style.scss';
 /**
  * Internal dependencies
  */
-import metadata from './block.json';
-import edit from './edit';
-import save from './save';
-import icon from './icon';
-import transforms from './transforms';
 import deprecated from './deprecated';
+import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
+import save from './save';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies

@@ -1,14 +1,17 @@
+/**
+ * Styles.
+ */
+import './styles/style.scss';
+import './styles/editor.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-import metadata from './block.json';
 import edit from './edit';
 import icon from './icon';
-import transforms from './transforms';
+import metadata from './block.json';
 import save from './save';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies

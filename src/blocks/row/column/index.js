@@ -1,13 +1,13 @@
 /**
  * Internal dependencies
  */
+import deprecated from './deprecated';
+import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 import edit from './edit';
 import icon from './icon';
-import save from './save';
-import deprecated from './deprecated';
 import metadata from './block.json';
+import save from './save';
 import { BackgroundAttributes } from '../../../components/background';
-import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 
 /**
  * WordPress dependencies

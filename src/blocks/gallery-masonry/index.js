@@ -7,13 +7,13 @@ import './styles/style.scss';
 /**
  * Internal dependencies
  */
-import icon from './icon';
 import edit from './edit';
+import icon from './icon';
 import metadata from './block.json';
-import transforms from './transforms';
 import save from './save';
-import { GalleryAttributes } from '../../components/block-gallery/shared';
+import transforms from './transforms';
 import { BackgroundAttributes } from '../../components/background';
+import { GalleryAttributes } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies

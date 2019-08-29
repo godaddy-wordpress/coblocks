@@ -5,8 +5,8 @@ import { BackgroundAttributes } from '../../../components/background';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 import edit from './edit';
 import icon from './icon';
-import save from './save';
 import metadata from './block.json';
+import save from './save';
 
 /**
  * WordPress dependencies
