@@ -25,18 +25,18 @@ function coblocks_render_share_block( $attributes ) {
 		$thumbnail = null;
 	}
 
-	// Generate the Twitter URL.
-	$twitter_url = '
-		http://twitter.com/share?
-		text=' . get_the_title() . '
-		&url=' . get_the_permalink() . '
-	';
-
 	// Generate the Facebook URL.
 	$facebook_url = '
 		https://www.facebook.com/sharer/sharer.php?
 		u=' . get_the_permalink() . '
 		&title=' . get_the_title() . '
+	';
+
+	// Generate the Twitter URL.
+	$twitter_url = '
+		http://twitter.com/share?
+		text=' . get_the_title() . '
+		&url=' . get_the_permalink() . '
 	';
 
 	// Generate the LinkedIn URL.
@@ -82,8 +82,8 @@ function coblocks_render_share_block( $attributes ) {
 	';
 
 	// Apply filters, so that the social URLs can be modified.
-	$twitter_url   = apply_filters( 'coblocks_twitter_share_url', $twitter_url );
 	$facebook_url  = apply_filters( 'coblocks_facebook_share_url', $facebook_url );
+	$twitter_url   = apply_filters( 'coblocks_twitter_share_url', $twitter_url );
 	$pinterest_url = apply_filters( 'coblocks_pinterest_share_url', $pinterest_url );
 	$linkedin_url  = apply_filters( 'coblocks_linkedin_share_url', $linkedin_url );
 	$email_url     = apply_filters( 'coblocks_email_share_url', $email_url );
@@ -129,13 +129,13 @@ function coblocks_render_share_block( $attributes ) {
 
 	// Supported social media platforms.
 	$platforms = array(
-		'twitter'   => array(
-			'text' => esc_html__( 'Share on Twitter', 'coblocks' ),
-			'url'  => $twitter_url,
-		),
 		'facebook'  => array(
 			'text' => esc_html__( 'Share on Facebook', 'coblocks' ),
 			'url'  => $facebook_url,
+		),
+		'twitter'   => array(
+			'text' => esc_html__( 'Share on Twitter', 'coblocks' ),
+			'url'  => $twitter_url,
 		),
 		'pinterest' => array(
 			'text' => esc_html__( 'Share on Pinterest', 'coblocks' ),
