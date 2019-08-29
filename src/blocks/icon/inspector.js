@@ -188,6 +188,16 @@ class Inspector extends Component {
 									iconSize={ iconSize }
 									width={ width }
 								/>
+								<Button
+									className="components-color-palette__clear"
+									type="button"
+									onClick={ () => this.onChangeSize( 'advanced', '' ) }
+									isDefault
+									aria-label={ sprintf( __( 'Advanced %s settings' ), label.toLowerCase() ) }
+									isPrimary={ iconSize === 'advanced' }
+								>
+									{ __( 'Advanced' ) }
+								</Button>
 							</BaseControl>
 						}
 						{ backgroundColor.color &&
