@@ -41,14 +41,14 @@ const settings = {
 
 	keywords: [	__( 'rows' ), __( 'columns' ), __( 'layouts' )	],
 
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		anchor: true,
 		stackedOnMobile: true,
 		coBlocksSpacing: true,
 	},
+
+	attributes,
 
 	transforms,
 

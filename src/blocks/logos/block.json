@@ -1,5 +1,5 @@
 {
-	"name": "logos",
+	"name": "coblocks/logos",
 	"attributes": {
 		"align": {
 			"type": "string"

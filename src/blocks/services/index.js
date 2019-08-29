@@ -20,7 +20,7 @@ const { __ } = wp.i18n;
 /**
  * Block constants.
  */
-const { name } = metadata;
+const { attributes, name } = metadata;
 
 const icon = icons.services;
 
@@ -28,14 +28,14 @@ const settings = {
 	title: __( 'Services' ),
 	description: __( 'Add up to four columns of services to display.' ),
 	keywords: [ __( 'features' ) ],
-	attributes: metadata.attributes,
 	supports: {
 		align: [ 'wide', 'full' ],
 		reusable: false,
 		html: false,
 	},
+	attributes,
 	edit,
 	save,
 };
 
-export { metadata, name, icon, settings };
+export { name, icon, settings };

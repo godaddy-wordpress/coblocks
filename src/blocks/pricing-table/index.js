@@ -30,12 +30,12 @@ const settings = {
 
 	keywords: [ __( 'landing' ), __( 'comparison' ), 'coblocks' ],
 
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
 	},
+
+	attributes,
 
 	transforms,
 

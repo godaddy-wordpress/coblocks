@@ -38,13 +38,13 @@ const settings = {
 
 	keywords: [ __( 'image' ), __( 'video' ), 'coblocks' ],
 
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		stackedOnMobile: true,
 		coBlocksSpacing: true,
 	},
+
+	attributes,
 
 	transforms,
 

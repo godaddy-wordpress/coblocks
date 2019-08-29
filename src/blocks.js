@@ -110,7 +110,7 @@ export function registerBlocks() {
 
 		const { name, icon, settings } = block;
 
-		registerBlockType( `coblocks/${ name }`, {
+		registerBlockType( name, {
 			category: category.slug,
 			icon: { src: icon },
 			...settings,

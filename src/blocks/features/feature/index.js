@@ -15,7 +15,7 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'feature';
+const name = 'coblocks/feature';
 
 const title = __( 'Feature' );
 

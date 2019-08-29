@@ -20,7 +20,7 @@ const { __ } = wp.i18n;
 /**
  * Block constants.
  */
-const { name } = metadata;
+const { attributes, name } = metadata;
 
 const icon = icons.service;
 
@@ -28,14 +28,14 @@ const settings = {
 	title: __( 'Service' ),
 	description: __( 'A single service item within a services block.' ),
 	keywords: [],
-	attributes: metadata.attributes,
 	supports: {
 		reusable: false,
 		html: false,
 		inserter: false,
 	},
+	attributes,
 	edit,
 	save,
 };
 
-export { metadata, name, icon, settings };
+export { name, icon, settings };

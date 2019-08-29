@@ -1,5 +1,5 @@
 {
-	"name": "services",
+	"name": "coblocks/services",
 	"attributes": {
 		"columns": {
 			"type": "integer",

@@ -1,10 +1,10 @@
 {
-	"name": "gallery-masonry",
+	"name": "coblocks/gallery-masonry",
 	"category": "coblocks",
-	"attributes" : {
-        "gridSize": {
-            "type": "string",
-            "default": "xlrg"
-        }
-    }
+	"attributes": {
+		"gridSize": {
+			"type": "string",
+			"default": "xlrg"
+		}
+	}
 }

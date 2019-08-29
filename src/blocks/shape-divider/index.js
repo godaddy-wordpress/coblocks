@@ -31,8 +31,6 @@ const settings = {
 
 	keywords: [ __( 'separator' ), 'hr', 'svg' ],
 
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
@@ -49,6 +47,8 @@ const settings = {
 		{ name: 'triangle', label: _x( 'Triangle', 'block style' ) },
 		{ name: 'pointed', label: _x( 'Pointed', 'block style' ) },
 	],
+
+	attributes,
 
 	transforms,
 

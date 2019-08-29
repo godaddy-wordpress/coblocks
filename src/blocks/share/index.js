@@ -14,7 +14,7 @@ const { __, _x } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'social';
+const name = 'coblocks/social';
 
 const title = __( 'Share' );
 
