@@ -20,21 +20,21 @@ const transforms = {
 		{
 			type: 'block',
 			blocks: [ 'core/spacer' ],
-			transform: ( { height } ) => createBlock( name, {
+			transform: ( { height } ) => createBlock( metadata.name, {
 				height: height,
 			} ),
 		},
 		{
 			type: 'block',
 			blocks: [ 'coblocks/dynamic-separator' ],
-			transform: ( { height } ) => createBlock( name, {
+			transform: ( { height } ) => createBlock( metadata.name, {
 				height: height,
 			} ),
 		},
 		{
 			type: 'block',
 			blocks: [ 'core/separator' ],
-			transform: () => createBlock( name ),
+			transform: () => createBlock( metadata.name ),
 		},
 	],
 };
