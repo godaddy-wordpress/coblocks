@@ -37,7 +37,7 @@ const settings = {
 	icon,
 	keywords: [	__( 'gallery' ), __( 'photos' ) ],
 	supports: {
-		align: [ 'wide', 'full' ],
+		align: [ 'wide', 'full', 'left', 'center', 'right' ],
 	},
 	attributes,
 	transforms,
