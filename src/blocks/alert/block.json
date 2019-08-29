@@ -7,10 +7,10 @@
 			"selector": ".wp-block-coblocks-alert__title"
 		},
 		"value": {
-			"type": "array",
-			"source": "children",
+			"type": "string",
+			"source": "html",
 			"selector": ".wp-block-coblocks-alert__text",
-			"default": []
+			"default": ""
 		},
 		"backgroundColor": {
 			"type": "string"
@@ -37,9 +37,6 @@
 			"type": "string"
 		},
 		"textAlign": {
-			"type": "string"
-		},
-		"type": {
 			"type": "string"
 		}
 	}
