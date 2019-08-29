@@ -37,24 +37,26 @@ class edit extends Component {
 			className,
 			isSelected,
 			backgroundColor,
+			blockBackgroundColor,
 			textColor,
 		} = this.props;
 
 		const {
 			borderRadius,
+			customBlockBackgroundColor,
+			email,
 			facebook,
+			google,
 			hasColors,
+			iconSize,
 			linkedin,
+			padding,
 			pinterest,
 			reddit,
 			size,
 			textAlign,
 			tumblr,
 			twitter,
-			email,
-			iconSize,
-			google,
-			padding,
 		} = attributes;
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
@@ -63,6 +65,7 @@ class edit extends Component {
 		const classes = classnames( className, {
 			[ `has-button-size-${ size }` ]: size !== 'med',
 			'has-colors': hasColors,
+			'has-background': blockBackgroundColor.color || customBlockBackgroundColor,
 		}
 		);
 
@@ -93,7 +96,7 @@ class edit extends Component {
 			<Fragment>
 				{ isSelected && <Controls { ...this.props } /> }
 				{ isSelected && <Inspector { ...this.props } /> }
-				<div className={ classes } style={ { textAlign: textAlign } }>
+				<div className={ classes } style={ { textAlign, backgroundColor: blockBackgroundColor.color || '' } }>
 					<ul>
 						{ facebook &&
 						<li>
