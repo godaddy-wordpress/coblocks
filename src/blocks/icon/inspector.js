@@ -182,22 +182,24 @@ class Inspector extends Component {
 									/>
 								</div>
 							</Fragment> :
-							<BaseControl id="textarea-1" label={ label } help={ help }>
-								<IconSizeSelect
-									setAttributes={ setAttributes }
-									iconSize={ iconSize }
-									width={ width }
-								/>
-								<Button
-									className="components-color-palette__clear"
-									type="button"
-									onClick={ () => this.onChangeSize( 'advanced', '' ) }
-									isDefault
-									aria-label={ sprintf( __( 'Advanced %s settings' ), label.toLowerCase() ) }
-									isPrimary={ iconSize === 'advanced' }
-								>
-									{ __( 'Advanced' ) }
-								</Button>
+							<BaseControl label={ label } help={ help }>
+								<div className="components-coblocks-icon-size__controls">
+									<IconSizeSelect
+										setAttributes={ setAttributes }
+										iconSize={ iconSize }
+										width={ width }
+									/>
+									<Button
+										className="components-color-palette__clear"
+										type="button"
+										onClick={ () => this.onChangeSize( 'advanced', '' ) }
+										isDefault
+										aria-label={ sprintf( __( 'Advanced %s settings' ), label.toLowerCase() ) }
+										isPrimary={ iconSize === 'advanced' }
+									>
+										{ __( 'Advanced' ) }
+									</Button>
+								</div>
 							</BaseControl>
 						}
 						{ backgroundColor.color &&

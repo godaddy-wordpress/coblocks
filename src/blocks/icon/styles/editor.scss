@@ -185,9 +185,18 @@
 	}
 }
 
-// Hide screen reader label for Gutenberg < 6.4
-.components-base-control {
-	.components-base-control .components-base-control__label {
-		display: none;
+.components-coblocks-icon-size__controls {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	max-width: 248px;
+
+	.components-base-control {
+		width: 45%;
+	}
+
+	.components-base-control,
+	.components-base-control__field {
+		margin-bottom: 0 !important;
 	}
 }

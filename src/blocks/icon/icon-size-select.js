@@ -77,7 +77,6 @@ export default class IconSizeSelect extends Component {
 		return (
 			<Fragment>
 				<SelectControl
-					className={ 'components-font-size-picker__select' }
 					label={ __( 'Choose icon size preset' ) }
 					hideLabelFromVision={ true }
 					value={ iconSize }
