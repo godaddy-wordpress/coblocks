@@ -98,19 +98,19 @@ class edit extends Component {
 				{ isSelected && <Inspector { ...this.props } /> }
 				<div className={ classes } style={ { textAlign, backgroundColor: blockBackgroundColor.color || '' } }>
 					<ul>
-						{ twitter &&
-						<li>
-							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--twitter' ) } style={ buttonStyles }>
-								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
-								<span className="wp-block-coblocks-social__text">{ __( 'Share on Twitter' ) }</span>
-							</span>
-						</li>
-						}
 						{ facebook &&
 						<li>
 							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--facebook' ) } style={ buttonStyles }>
 								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
 								<span className="wp-block-coblocks-social__text">{ __( 'Share on Facebook' ) }</span>
+							</span>
+						</li>
+						}
+						{ twitter &&
+						<li>
+							<span className={ classnames( buttonClasses, 'wp-block-coblocks-social__button--twitter' ) } style={ buttonStyles }>
+								<span className="wp-block-coblocks-social__icon" style={ iconStyles }></span>
+								<span className="wp-block-coblocks-social__text">{ __( 'Share on Twitter' ) }</span>
 							</span>
 						</li>
 						}

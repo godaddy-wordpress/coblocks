@@ -1,15 +1,19 @@
 /**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
+
+/**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-import icons from './icons';
+import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
-import metadata from './block.json';
 import { BackgroundAttributes } from '../../components/background';
-import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**
  * WordPress dependencies
@@ -19,11 +23,7 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const { name } = metadata;
-
-const icon = icons.mediaCard;
-
-const title = __( 'Media Card' );
+const { name, category } = metadata;
 
 const attributes = {
 	...BackgroundAttributes,
@@ -32,25 +32,19 @@ const attributes = {
 };
 
 const settings = {
-	title,
-
+	title: __( 'Media Card' ),
 	description: __( 'Add an image or video with an offset card side-by-side.' ),
-
+	icon,
 	keywords: [ __( 'image' ), __( 'video' ), 'coblocks' ],
-
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		stackedOnMobile: true,
 		coBlocksSpacing: true,
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

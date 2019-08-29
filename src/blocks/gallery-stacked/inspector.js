@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import { title } from './';
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import SizeControl from '../../components/size-control';
 import { BackgroundPanel } from '../../components/background';
@@ -10,7 +9,7 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
@@ -131,7 +130,7 @@ class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ sprintf( __( '%s Settings' ), title ) }>
+				<PanelBody title={ __( 'Stacked Settings' ) }>
 					{ wideControlsEnabled &&
 					<ToggleControl
 						label={ images.length > 1 ? __( 'Fullwidth Images' ) : __( 'Fullwidth Image' ) }

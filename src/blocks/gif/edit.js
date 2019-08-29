@@ -86,7 +86,6 @@ class Edit extends Component {
 			setAttributes,
 			isLargeViewport,
 			isRTL,
-			toggleSelection,
 			maxWidth,
 		} = this.props;
 
@@ -225,15 +224,11 @@ class Edit extends Component {
 												bottom: true,
 												left: showLeftHandle,
 											} }
-											onResizeStart={ () => {
-												toggleSelection( false );
-											} }
 											onResizeStop={ ( _event, _direction, _elt, delta ) => {
 												setAttributes( {
 													width: parseInt( currentWidth + delta.width, 10 ),
 													height: parseInt( currentHeight + delta.height, 10 ),
 												} );
-												toggleSelection( true );
 											} }
 										>
 											{ img }

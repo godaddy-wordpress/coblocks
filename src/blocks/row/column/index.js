@@ -1,13 +1,13 @@
 /**
  * Internal dependencies
  */
-import edit from './edit';
-import icons from './../../../utils/icons';
-import save from './save';
 import deprecated from './deprecated';
-import metadata from './block.json';
-import { BackgroundAttributes } from '../../../components/background';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
+import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
+import save from './save';
+import { BackgroundAttributes } from '../../../components/background';
 
 /**
  * WordPress dependencies
@@ -17,11 +17,7 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const { name } = metadata;
-
-const title = __( 'Column' );
-
-const icon = icons.column;
+const { name, category } = metadata;
 
 const attributes = {
 	...DimensionsAttributes,
@@ -30,21 +26,15 @@ const attributes = {
 };
 
 const settings = {
-
-	title,
-
+	title: __( 'Column' ),
 	description: __( 'An immediate child of a row.' ),
-
-	attributes,
-
+	icon,
 	parent: [ 'coblocks/row' ],
-
 	supports: {
 		inserter: false,
 	},
-
+	attributes,
 	edit,
-
 	getEditWrapperProps( attributes ) {
 		const { paddingSize } = attributes;
 
@@ -53,10 +43,8 @@ const settings = {
 			return { 'data-background-dropzone': false };
 		}
 	},
-
 	save,
-
 	deprecated,
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

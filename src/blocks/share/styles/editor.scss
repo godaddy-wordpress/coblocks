@@ -26,7 +26,7 @@
 		&.is-style-text,
 		&.is-style-icon-and-text {
 			.wp-block-coblocks-social__button {
-				width: 75%;
+				width: 61%;
 			}
 		}
 
@@ -71,6 +71,19 @@
 			padding-left: 10px;
 			padding-right: 10px;
 			width: 100%;
+
+			&.is-empty {
+				opacity: 1 !important;
+			}
+		}
+	}
+
+	.wp-block-coblocks-social-profiles {
+		&.is-style-text,
+		&.is-style-icon-and-text {
+			.wp-block-coblocks-social__button {
+				width: 96%;
+			}
 		}
 	}
 
@@ -111,4 +124,9 @@
 	.components-base-control {
 		margin-bottom: 8px;
 	}
+}
+
+// Shim to get buttons to display correctly in G 6.3+ only.
+.block-editor-block-preview__container .wp-block-coblocks-social__button {
+	transform: scale(4.2);
 }
