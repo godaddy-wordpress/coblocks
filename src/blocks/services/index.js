@@ -7,9 +7,9 @@ import './styles/style.scss';
 /**
  * Internal dependencies.
  */
-import metadata from './block.json';
-import icons from './icons';
 import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
 
 /**
@@ -20,22 +20,21 @@ const { __ } = wp.i18n;
 /**
  * Block constants.
  */
-const { name } = metadata;
-
-const icon = icons.services;
+const { attributes, name } = metadata;
 
 const settings = {
 	title: __( 'Services' ),
 	description: __( 'Add up to four columns of services to display.' ),
+	icon,
 	keywords: [ __( 'features' ) ],
-	attributes: metadata.attributes,
 	supports: {
 		align: [ 'wide', 'full' ],
 		reusable: false,
 		html: false,
 	},
+	attributes,
 	edit,
 	save,
 };
 
-export { metadata, name, icon, settings };
+export { name, metadata, settings };
