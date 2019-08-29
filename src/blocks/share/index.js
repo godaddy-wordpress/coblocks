@@ -20,7 +20,7 @@ const title = __( 'Share' );
 
 const icon = icons.social;
 
-const keywords = [ __( 'social' ), __( 'coblocks' ) ];
+const keywords = [ __( 'social' ), 'coblocks' ];
 
 const settings = {
 	title,

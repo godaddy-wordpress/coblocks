@@ -29,7 +29,7 @@ const settings = {
 
 	description: __( 'Provide contextual feedback messages.' ),
 
-	keywords: [ __( 'notice' ), __( 'message' ), __( 'coblocks' ) ],
+	keywords: [ __( 'notice' ), __( 'message' ), 'coblocks' ],
 
 	attributes,
 
