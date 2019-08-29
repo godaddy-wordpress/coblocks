@@ -35,7 +35,7 @@ const settings = {
 
 	description: __( 'Add up to three columns of small notes for your product or service.' ),
 
-	keywords: [ __( 'services' ), __( 'coblocks' ) ],
+	keywords: [ __( 'services' ), 'coblocks' ],
 
 	attributes,
 
