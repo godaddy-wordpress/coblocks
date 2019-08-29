@@ -26,9 +26,9 @@ const title = __( 'Alert' );
 const settings = {
 	title,
 
-	description: __( 'Provide contextual feedback messages.' ),
+	description: __( 'Provide contextual feedback messages or notices.' ),
 
-	keywords: [ __( 'notice' ), __( 'message' ), __( 'coblocks' ) ],
+	keywords: [ __( 'notice' ), __( 'message' ), 'coblocks' ],
 
 	attributes,
 
