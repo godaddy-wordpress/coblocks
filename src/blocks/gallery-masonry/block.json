@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/gallery-masonry",
-	"category": "coblocks",
+	"category": "coblocks-galleries",
 	"attributes": {
 		"gridSize": {
 			"type": "string",

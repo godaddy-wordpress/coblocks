@@ -6,7 +6,6 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { title } from './';
 import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
@@ -154,7 +153,7 @@ class Edit extends Component {
 		const dropZone = (
 			<BackgroundDropZone
 				{ ...this.props }
-				label={ sprintf( __( 'Add backround to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
+				label={ __( 'Add backround to hero' ) }
 			/>
 		);
 

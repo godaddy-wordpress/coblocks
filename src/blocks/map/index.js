@@ -21,29 +21,19 @@ const { attributes, name } = metadata;
 
 const icon = icons.googleMap;
 
-const title = __( 'Map' );
-
 const settings = {
-	title,
-
+	title: __( 'Map' ),
 	description: __( 'Add an address and drop a pin on a Google map.' ),
-
 	keywords: [ __( 'address' ), __( 'maps' ), __( 'google' ) ],
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-
 	attributes,
-
 	transforms,
-
 	edit,
-
 	save,
-
 	deprecated,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

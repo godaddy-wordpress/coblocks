@@ -23,17 +23,11 @@ const icon = icons.twitter;
 
 const settings = {
 	title: __( 'Click to Tweet' ),
-
 	description: __( 'Add a quote for readers to tweet via Twitter.' ),
-
 	keywords: [ __( 'share' ), __( 'twitter' ), 'coblocks' ],
-
 	attributes,
-
 	transforms,
-
 	edit,
-
 	save,
 };
 

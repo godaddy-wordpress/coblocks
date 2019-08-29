@@ -16,19 +16,12 @@ const { __, _x } = wp.i18n;
  */
 const name = 'coblocks/social-profiles';
 
-const title = __( 'Social Profiles' );
-
 const icon = icons.socialProfiles;
 
-const keywords = [ __( 'share' ), __( 'links' ), __( 'icons' ) ];
-
 const settings = {
-	title,
-
+	title: __( 'Social Profiles' ),
 	description: __( 'Display links to social media profiles.' ),
-
-	keywords,
-
+	keywords: [ __( 'share' ), __( 'links' ), __( 'icons' ) ],
 	styles: [
 		{ name: 'mask', label: _x( 'Mask', 'block style' ) },
 		{ name: 'icon', label: _x( 'Icon', 'block style' ), isDefault: true },
@@ -36,14 +29,11 @@ const settings = {
 		{ name: 'icon-and-text', label: _x( 'Icon & Text', 'block style' ) },
 		{ name: 'circular', label: _x( 'Circular', 'block style' ) },
 	],
-
 	edit,
-
 	transforms,
-
 	save() {
 		return null;
 	},
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

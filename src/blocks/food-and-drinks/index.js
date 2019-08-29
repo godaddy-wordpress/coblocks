@@ -22,23 +22,16 @@ const icon = icons.foodAndDrinks;
 
 const settings = {
 	title: __( 'Food & Drinks' ),
-
 	description: __( 'Display a menu or price list.' ),
-
 	keywords: [ __( 'restaurant' ), __( 'menu' ) ],
-
-	attributes,
-
 	supports: {
 		align: [ 'wide' ],
 	},
-
 	getEditWrapperProps( attributes ) {
 		return { 'data-columns': attributes.columns };
 	},
-
+	attributes,
 	edit,
-
 	save,
 };
 

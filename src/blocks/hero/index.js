@@ -24,8 +24,6 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const title = __( 'Hero' );
-
 const icon = icons.hero;
 
 const attributes = {
@@ -37,28 +35,18 @@ const attributes = {
 };
 
 const settings = {
-
-	title,
-
+	title: __( 'Hero' ),
 	description: __( 'An introductory area of a page accompanied by a small amount of text and a call to action.' ),
-
 	keywords: [ __( 'button' ),	__( 'cta' ), __( 'call to action' ) ],
-
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
-
 	deprecated,
-
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

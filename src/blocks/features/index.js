@@ -20,8 +20,6 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const title = __( 'Features' );
-
 const icon = icons.features;
 
 const attributes = {
@@ -31,23 +29,16 @@ const attributes = {
 };
 
 const settings = {
-	title,
-
+	title: __( 'Features' ),
 	description: __( 'Add up to three columns of small notes for your product or service.' ),
-
 	keywords: [ __( 'services' ), 'coblocks' ],
-
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	getEditWrapperProps( attributes ) {
 		const { id, layout, columns } = attributes;
 
@@ -58,8 +49,7 @@ const settings = {
 
 		return { 'data-id': id, 'data-columns': columns };
 	},
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

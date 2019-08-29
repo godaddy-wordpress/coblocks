@@ -21,8 +21,6 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const title = __( 'Carousel' );
-
 const icon = icons.carousel;
 
 const attributes = {
@@ -32,26 +30,17 @@ const attributes = {
 };
 
 const settings = {
-
-	title,
-
+	title:  __( 'Carousel' ),
 	description: __( 'Display multiple images in a beautiful carousel gallery.' ),
-
 	category: 'coblocks-galleries',
-
 	keywords: [	__( 'gallery' ), __( 'photos' )	],
-
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

@@ -24,22 +24,15 @@ const icon = icons.accordion;
 
 const settings = {
 	title: __( 'Accordion' ),
-
 	description: __( 'Organize content within collapsable accordion items.' ),
-
 	keywords: [ __( 'tabs' ), __( 'faq' ), 'coblocks' ],
-
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save() {
 		return (
 			<div>

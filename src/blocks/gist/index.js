@@ -21,29 +21,19 @@ const { attributes, name } = metadata;
 
 const icon = icons.github;
 
-const title = 'Gist';
-
 const settings = {
-	title,
-
+	title: 'Gist',
 	description: __( 'Embed GitHub gists by adding a gist link.' ),
-
 	keywords: [ __( 'code' ), 'github', 'coblocks' ],
-
-	attributes,
-
 	supports: {
 		html: false,
 		align: [ 'wide' ],
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
-
 	deprecated,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

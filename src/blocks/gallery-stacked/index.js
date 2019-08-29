@@ -21,8 +21,6 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const title = __( 'Stacked' );
-
 const icon = icons.stacked;
 
 const attributes = {
@@ -32,26 +30,17 @@ const attributes = {
 };
 
 const settings = {
-
-	title,
-
+	title: __( 'Stacked' ),
 	description: __( 'Display multiple images in an single column stacked gallery.' ),
-
 	category: 'coblocks-galleries',
-
 	keywords: [	__( 'gallery' ), __( 'photos' ) ],
-
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

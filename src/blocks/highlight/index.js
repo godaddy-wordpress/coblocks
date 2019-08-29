@@ -19,24 +19,16 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const title = __( 'Highlight' );
-
 const icon = icons.highlight;
 
 const settings = {
-	title,
-
+	title: __( 'Highlight' ),
 	description: __( 'Highlight text.' ),
-
 	keywords: [ __( 'text' ), __( 'paragraph' ), 'coblocks' ],
-
 	attributes,
-
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

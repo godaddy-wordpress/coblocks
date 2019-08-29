@@ -18,34 +18,25 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const title = 'Gif';
-
 const icon = icons.gif;
 
 const settings = {
-	title,
-
+	title: 'Gif',
 	description: __( 'Pick a gif, any gif.' ),
-
 	keywords: [ __( 'animated' ), 'coblocks' ],
-
-	attributes,
-
 	supports: {
 		customClassName: false,
 		html: false,
 	},
-
+	attributes,
 	getEditWrapperProps( attributes ) {
 		const { align, width } = attributes;
 		if ( 'left' === align || 'center' === align || 'right' === align || 'wide' === align || 'full' === align ) {
 			return { 'data-align': align, 'data-resized': !! width };
 		}
 	},
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

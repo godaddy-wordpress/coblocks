@@ -22,23 +22,16 @@ const icon = icons.accordionItem;
 
 const settings = {
 	title: __( 'Accordion Item' ),
-
 	description: __( 'Add collapsable accordion items to accordions.' ),
-
 	keywords: [ __( 'tabs' ), __( 'faq' ), 'coblocks' ],
-
 	parent: [ 'coblocks/accordion' ],
-
 	supports: {
 		reusable: false,
 		html: false,
 		inserter: false,
 	},
-
 	attributes,
-
 	edit,
-
 	save,
 };
 

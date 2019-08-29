@@ -24,27 +24,19 @@ export const DEFAULT_ICON_SIZE = 60;
  */
 const { attributes, name } = metadata;
 
-const title = __( 'Icon' );
-
 const icon = icons.icon;
 
 const settings = {
-	title,
-
+	title: __( 'Icon' ),
 	description: __( 'Add a stylized graphic symbol to communicate something more.' ),
-
 	keywords: [ __( 'icons' ), 'svg', 'coblocks' ],
-
-	attributes,
-
 	styles: [
 		{ name: 'outlined', label: _x( 'Outlined', 'block style' ), isDefault: true },
 		{ name: 'filled', label: _x( 'Filled', 'block style' ) },
 	],
-
+	attributes,
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

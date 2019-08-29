@@ -17,8 +17,6 @@ const { __ } = wp.i18n;
  */
 const name = 'coblocks/feature';
 
-const title = __( 'Feature' );
-
 const icon = icons.feature;
 
 const blockAttributes = {
@@ -36,22 +34,15 @@ const blockAttributes = {
 };
 
 const settings = {
-
-	title,
-
+	title: __( 'Feature' ),
 	description: __( 'A singular child column within a parent features block.' ),
-
-	attributes: blockAttributes,
-
 	parent: [ 'coblocks/features' ],
-
 	supports: {
 		inserter: false,
 	},
-
+	attributes: blockAttributes,
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

@@ -19,28 +19,19 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const title = __( 'Pricing Table' );
-
 const icon = icons.pricing;
 
 const settings = {
-	title,
-
+	title: __( 'Pricing Table' ),
 	description: __( 'Add pricing tables.' ),
-
 	keywords: [ __( 'landing' ), __( 'comparison' ), 'coblocks' ],
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
 	},
-
 	attributes,
-
 	transforms,
-
 	edit,
-
 	save,
 };
 

@@ -24,17 +24,11 @@ const icon = icons.author;
 
 const settings = {
 	title: __( 'Author' ),
-
 	description: __( 'Add an author biography.' ),
-
 	keywords: [ __( 'biography' ), __( 'profile' ), 'coblocks' ],
-
 	attributes,
-
 	transforms,
-
 	edit,
-
 	save,
 };
 

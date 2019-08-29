@@ -23,8 +23,6 @@ const { name } = metadata;
 
 const icon = icons.mediaCard;
 
-const title = __( 'Media Card' );
-
 const attributes = {
 	...BackgroundAttributes,
 	...DimensionsAttributes,
@@ -32,25 +30,18 @@ const attributes = {
 };
 
 const settings = {
-	title,
-
+	title: __( 'Media Card' ),
 	description: __( 'Add an image or video with an offset card side-by-side.' ),
-
 	keywords: [ __( 'image' ), __( 'video' ), 'coblocks' ],
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		stackedOnMobile: true,
 		coBlocksSpacing: true,
 	},
-
 	attributes,
-
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

@@ -20,23 +20,17 @@ const { __, _x } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const title = __( 'Shape Divider' );
-
 const icon = icons.shapeDivider;
 
 const settings = {
-	title,
-
+	title: __( 'Shape Divider' ),
 	description: __( 'Add a shape divider to visually distinquish page sections.' ),
-
 	keywords: [ __( 'separator' ), 'hr', 'svg' ],
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 
 	},
-
 	styles: [
 		{ name: 'wavy', label: _x( 'Wavy', 'block style' ), isDefault: true },
 		{ name: 'hills', label: _x( 'Hills', 'block style' ) },
@@ -47,16 +41,11 @@ const settings = {
 		{ name: 'triangle', label: _x( 'Triangle', 'block style' ) },
 		{ name: 'pointed', label: _x( 'Pointed', 'block style' ) },
 	],
-
 	attributes,
-
 	transforms,
-
 	edit,
-
 	save,
-
 	deprecated,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

@@ -19,8 +19,6 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const title = __( 'Column' );
-
 const icon = icons.column;
 
 const attributes = {
@@ -30,21 +28,14 @@ const attributes = {
 };
 
 const settings = {
-
-	title,
-
+	title: __( 'Column' ),
 	description: __( 'An immediate child of a row.' ),
-
-	attributes,
-
 	parent: [ 'coblocks/row' ],
-
 	supports: {
 		inserter: false,
 	},
-
+	attributes,
 	edit,
-
 	getEditWrapperProps( attributes ) {
 		const { paddingSize } = attributes;
 
@@ -53,10 +44,8 @@ const settings = {
 			return { 'data-background-dropzone': false };
 		}
 	},
-
 	save,
-
 	deprecated,
 };
 
-export { name, title, icon, settings };
+export { name, icon, settings };

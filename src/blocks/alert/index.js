@@ -22,37 +22,26 @@ const { attributes, name } = metadata;
 
 const icon = icons.alert;
 
-const title = __( 'Alert' );
-
 const settings = {
-	title,
-
+	title: __( 'Alert' ),
 	description: __( 'Provide contextual feedback messages.' ),
-
 	keywords: [ __( 'notice' ), __( 'message' ), 'coblocks' ],
-
-	attributes,
-
 	styles: [
 		{ name: 'info', label: _x( 'Info', 'block style' ), isDefault: true },
 		{ name: 'success', label: _x( 'Success', 'block style' ) },
 		{ name: 'warning', label: _x( 'Warning', 'block style' ) },
 		{ name: 'error', label: _x( 'Error', 'block style' ) },
 	],
-
 	supports: {
 		align: true,
 		alignWide: false,
 		alignFull: false,
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
-
 	deprecated,
 };
 
-export { name, title, icon, settings, attributes };
+export { name, icon, settings, attributes };

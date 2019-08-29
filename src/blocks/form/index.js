@@ -23,22 +23,15 @@ const icon = icons.form;
 
 const settings = {
 	title: __( 'Form' ),
-
 	description: __( 'Add a simple form to your page.' ),
-
 	keywords: [ __( 'email' ), __( 'about' ), __( 'contact' ) ],
-
-	attributes,
-
 	supports: {
 		reusable: false,
 		html: false,
 	},
-
+	attributes,
 	edit,
-
 	save: InnerBlocks.Content,
-
 };
 
 export { name, icon, settings };

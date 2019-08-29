@@ -28,10 +28,10 @@ const settings = {
 	title: __( 'Logos & Badges' ),
 	description: __( 'Add logos, badges, or certifications to build credibility.' ),
 	keywords: [ __( 'clients' ), __( 'proof' ), __( 'testimonials' ) ],
-	attributes,
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
+	attributes,
 	edit,
 	save,
 };
