@@ -11,12 +11,12 @@ const { RichText, getColorClassName } = wp.blockEditor;
 /**
  * Internal dependencies
  */
-import blockAttributes from './';
+import { attributes } from './';
 
 const deprecated = [
 	{
 		attributes: {
-			...blockAttributes,
+			...attributes,
 			borderColor: {
 				type: 'string',
 			},
