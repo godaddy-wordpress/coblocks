@@ -1,12 +1,12 @@
 {
-	"name": "click-to-tweet",
+	"name": "coblocks/click-to-tweet",
 	"category": "coblocks",
 	"attributes": {
 		"content": {
 			"type": "string",
 			"source": "html",
 			"selector": "p",
-			"default": []
+			"default": ""
 		},
 		"url": {
 			"type": "attribute"

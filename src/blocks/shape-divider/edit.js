@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import Controls from './controls';
 import Inspector from './inspector';
 import applyWithColors from './colors';
-import { getDividerFromStyle } from '.';
+import { getDividerFromStyle } from './utils';
 import InlineColorPicker from '../../components/inline-color-picker';
 
 /**
@@ -99,7 +99,6 @@ class Edit extends Component {
 			className,
 			isSelected,
 			setAttributes,
-			toggleSelection,
 			backgroundColor,
 			color,
 		} = this.props;
@@ -229,14 +228,12 @@ class Edit extends Component {
 									break;
 							}
 
-							toggleSelection( true );
 							this.setState( { resizing: false } );
 
 							//update meta
 							this.saveMeta( 'shapeHeight' );
 						} }
 						onResizeStart={ () => {
-							toggleSelection( false );
 							this.setState( { resizing: true } );
 						} }
 					>
@@ -285,12 +282,10 @@ class Edit extends Component {
 									break;
 							}
 
-							toggleSelection( true );
 							this.setState( { resizingAlt: false } );
 							this.saveMeta( 'backgroundHeight' );
 						} }
 						onResizeStart={ () => {
-							toggleSelection( false );
 							this.setState( { resizingAlt: true } );
 						} }
 					>
