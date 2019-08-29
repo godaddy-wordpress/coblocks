@@ -6,7 +6,7 @@
 			"type": "string",
 			"source": "html",
 			"selector": "p",
-			"default": []
+			"default": ""
 		},
 		"url": {
 			"type": "attribute"
