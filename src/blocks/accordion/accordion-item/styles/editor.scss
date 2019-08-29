@@ -18,14 +18,14 @@
 		border-radius: $accordion-border-radius $accordion-border-radius 0 0;
 	}
 
-	// // Set proper margin for the first and last item within the accordion item.
-	// .wp-block:first-of-type .editor-block-list__block-edit {
-	// 	margin-top: 4px;
-	// }
+	// Set proper margin for the first and last item within the accordion item for < Gutenberg 6.3.
+	.wp-block:first-of-type .editor-block-list__block-edit {
+		margin-top: 4px;
+	}
 
-	// .wp-block:nth-last-child(2) .editor-block-list__block-edit {
-	// 	margin-bottom: 4px;
-	// }
+	.wp-block:nth-last-child(2) .editor-block-list__block-edit {
+		margin-bottom: 4px;
+	}
 
 	.wp-block:first-child [data-block] {
 		margin-top: 0;
@@ -34,20 +34,6 @@
 		margin-bottom: 0;
 	}
 }
-
-// margin-top: 0 !important;
-// &:not(:last-child) {
-// 	margin-bottom: -15px !important;
-// }
-// .editor-block-list__insertion-point {
-// 	display: none;
-// }
-// .wp-block:first-child [data-block] {
-// 	margin-top: 0;
-// }
-// .wp-block:nth-last-child(2) [data-block] {
-// 	margin-bottom: 0;
-// };
 
 .wp-block-coblocks-accordion
 	> .editor-inner-blocks
