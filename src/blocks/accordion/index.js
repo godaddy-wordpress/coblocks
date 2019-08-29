@@ -1,11 +1,14 @@
+/**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
-import './styles/style.scss';
 import edit from './edit';
-import icons from './../../utils/icons';
+import icon from './icon';
 import metadata from './block.json';
 import transforms from './transforms';
 
@@ -20,26 +23,18 @@ const { InnerBlocks } = wp.blockEditor;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.accordion;
-
 const settings = {
 	title: __( 'Accordion' ),
-
 	description: __( 'Organize content within collapsable accordion items.' ),
-
+	icon,
 	keywords: [ __( 'tabs' ), __( 'faq' ), 'coblocks' ],
-
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save() {
 		return (
 			<div>
@@ -49,4 +44,4 @@ const settings = {
 	},
 };
 
-export { name, icon, settings };
+export { name, metadata, settings };
