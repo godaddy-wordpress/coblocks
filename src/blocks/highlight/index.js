@@ -1,13 +1,17 @@
 /**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
+
+/**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-import icons from './../../utils/icons';
 import edit from './edit';
+import icon from './icon';
 import metadata from './block.json';
-import transforms from './transforms';
 import save from './save';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies
@@ -19,14 +23,14 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const title = __( 'Highlight' );
-
-const icon = icons.highlight;
-
 const settings = {
-	title,
-
 	description: __( 'Draw attention and emphasize important narrative.' ),
+
+	title: __( 'Highlight' ),
+
+	description: __( 'Highlight text.' ),
+
+	icon,
 
 	keywords: [ __( 'text' ), __( 'paragraph' ), 'coblocks' ],
 
@@ -39,4 +43,4 @@ const settings = {
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, metadata, settings };
