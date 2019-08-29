@@ -16,16 +16,12 @@
 		"build": "node .dev/scripts/build.js",
 		"version": "grunt version && git add -A .",
 		"postversion": "git push && git push --tags",
-		"makepot": "wp i18n make-pot . --merge=languages/coblocks-js.pot --skip-audit --exclude=build,dist --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy/coblocks/issues\"}' --file-comment='Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.' && .dev/bin/update-po.sh",
+		"makepot": "wp i18n make-pot . --merge=languages/coblocks-js.pot --skip-audit --exclude=build,dist --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy/coblocks/issues\"}' --file-comment='Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.' && rm -f languages/coblocks-js.pot && .dev/bin/update-po.sh",
 		"babel": "babel src --ignore src/blocks/gist/components/gist.js",
 		"babel:json": "wp i18n make-json languages",
 		"babel:build": "npm run babel && npm run makepot && npm run babel:json",
 		"test": "jest --config .dev/tests/jest/jest.config.js",
 		"deploy-i18n": "./node_modules/.bin/cypress run -s './.dev/tests/cypress/integration/deploy-translations.js'"
-	},
-	"locales": {
-		"da_DK": "Dansk",
-		"de_DE": "Deutsch"
 	},
 	"locales": {
 		"da_DK": "Dansk",
