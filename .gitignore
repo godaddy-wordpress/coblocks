@@ -11,7 +11,8 @@
 *.cache
 .ftppass
 coverage
-cypress
+.dev/tests/cypress/screenshots
+wp_creds.json
 sftp.json
 dist/blocks.build.js
 dist/blocks.editor.build.css
