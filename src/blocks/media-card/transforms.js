@@ -1,12 +1,12 @@
 /**
+ * Internal dependencies
+ */
+import metadata from './block.json';
+
+/**
  * WordPress dependencies
  */
 const { createBlock } = wp.blocks;
-
-/**
- * Internal dependencies
- */
-import name from './';
 
 const transforms = {
 	from: [
@@ -14,14 +14,14 @@ const transforms = {
 			type: 'prefix',
 			prefix: ':card',
 			transform: function() {
-				return createBlock( `coblocks/${ name }` );
+				return createBlock( metadata.name );
 			},
 		},
 		{
 			type: 'block',
 			blocks: [ 'core/image' ],
 			transform: ( { alt, url, id } ) => (
-				createBlock( `coblocks/${ name }`, {
+				createBlock( metadata.name, {
 					mediaAlt: alt,
 					mediaId: id,
 					mediaUrl: url,
@@ -33,7 +33,7 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'core/video' ],
 			transform: ( { src, id } ) => (
-				createBlock( `coblocks/${ name }`, {
+				createBlock( metadata.name, {
 					mediaId: id,
 					mediaUrl: src,
 					mediaType: 'video',
@@ -44,7 +44,7 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'core/media-text' ],
 			transform: ( { mediaAlt, mediaUrl, mediaId, mediaType, mediaPosition } ) => (
-				createBlock( `coblocks/${ name }`, {
+				createBlock( metadata.name, {
 					mediaAlt: mediaAlt,
 					mediaId: mediaId,
 					mediaUrl: mediaUrl,

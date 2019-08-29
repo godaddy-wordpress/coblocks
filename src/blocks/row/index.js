@@ -1,17 +1,21 @@
 /**
- * Internal dependencies
+ * Styles.
  */
 import './styles/editor.scss';
 import './styles/style.scss';
+
+/**
+ * Internal dependencies
+ */
 import edit from './edit';
-import transforms from './transforms';
 import deprecated from './deprecated';
-import save from './save';
-import metadata from './block.json';
-import getEditWrapperProps from './getEditWrapperProps';
-import icons from './../../utils/icons';
-import { BackgroundAttributes } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
+import getEditWrapperProps from './getEditWrapperProps';
+import icon from './icon';
+import metadata from './block.json';
+import save from './save';
+import transforms from './transforms';
+import { BackgroundAttributes } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -23,10 +27,6 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const title = __( 'Row' );
-
-const icon = icons.row;
-
 const attributes = {
 	...DimensionsAttributes,
 	...BackgroundAttributes,
@@ -34,31 +34,22 @@ const attributes = {
 };
 
 const settings = {
-
-	title,
-
+	title: __( 'Row' ),
 	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.' ),
-
+	icon,
 	keywords: [	__( 'rows' ), __( 'columns' ), __( 'layouts' )	],
-
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		anchor: true,
 		stackedOnMobile: true,
 		coBlocksSpacing: true,
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	getEditWrapperProps,
-
 	save,
-
 	deprecated,
 };
 
-export { name, title, icon, settings };
+export { name, metadata, settings };
