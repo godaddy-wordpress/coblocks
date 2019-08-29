@@ -25,7 +25,7 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	title: __( 'Highlight' ),
-	description: __( 'Highlight text.' ),
+	description: __( 'Draw attention and emphasize important narrative.' ),
 	icon,
 	keywords: [ __( 'text' ), __( 'paragraph' ), 'coblocks' ],
 	attributes,
