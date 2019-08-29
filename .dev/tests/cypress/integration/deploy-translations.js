@@ -37,6 +37,10 @@ describe( 'Deploy .po files from Coblocks to WordPress.org', function() {
 
       cy.wait( 2000 );
 
+      /**
+       * @todo When translation files are ready for deployment, uncomment the lines
+       *       below, and run `npm run deploy-i18n` or `.dev/node_modules/cypress open`
+       */
       // cy.get( '#submit' ).click();
 
       // Get the legend in the footer of Glotpress
