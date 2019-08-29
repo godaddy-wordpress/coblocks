@@ -25,7 +25,7 @@ const { attributes, name } = metadata;
 
 const settings = {
 	title: __( 'Author' ),
-	description: __( 'Add an author biography.' ),
+	description: __( 'Add an author biography to build credibility and authority.' ),
 	icon,
 	keywords: [ __( 'biography' ), __( 'profile' ), 'coblocks' ],
 	attributes,
