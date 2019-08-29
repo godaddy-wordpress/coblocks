@@ -7,14 +7,14 @@ const { split, create, toHTMLString } = wp.richText;
 /**
  * Internal dependencies
  */
-import { name } from './';
+import metadata from './block.json';
 
 const transforms = {
 	from: [
 		{
 			type: 'block',
 			blocks: [ 'core/paragraph' ],
-			transform: ( { content } ) => createBlock( `coblocks/${ name }`, {
+			transform: ( { content } ) => createBlock( metadata.name, {
 				content: content,
 			} ),
 		},
@@ -25,7 +25,7 @@ const transforms = {
 				const pieces = split( create( { html: value, multilineTag: 'p' } ), '\u2028' );
 
 				return [
-					createBlock( `coblocks/${ name }`, {
+					createBlock( metadata.name, {
 						content: toHTMLString( { value: pieces[ 0 ] } ),
 					} ),
 				];
@@ -38,7 +38,7 @@ const transforms = {
 				const pieces = split( create( { html: value, multilineTag: 'p' } ), '\u2028' );
 
 				return [
-					createBlock( `coblocks/${ name }`, {
+					createBlock( metadata.name, {
 						content: toHTMLString( { value: pieces[ 0 ] } ),
 					} ),
 				];

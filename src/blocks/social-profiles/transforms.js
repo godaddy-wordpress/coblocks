@@ -1,4 +1,6 @@
-/* eslint-env browser */
+/**
+ * WordPress dependencies
+ */
 const { createBlock } = wp.blocks;
 
 function getPreviousAttributes( blockName, attributeName, attributes ) {
