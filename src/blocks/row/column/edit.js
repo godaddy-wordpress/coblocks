@@ -49,7 +49,6 @@ class Edit extends Component {
 			attributes,
 			className,
 			isSelected,
-			toggleSelection,
 			setAttributes,
 			backgroundColor,
 			textColor,
@@ -225,8 +224,6 @@ class Edit extends Component {
 						document
 							.getElementById( 'block-' + parentId )
 							.classList.remove( 'is-resizing' );
-
-						toggleSelection( true );
 						this.setState( { resizing: false } );
 					} }
 					onResize={ ( _event, _direction, _elt, delta ) => {
@@ -275,7 +272,6 @@ class Edit extends Component {
 
 						this.setState( { selectedWidth: currentBlockClientRect.width } );
 						this.setState( { resizing: true } );
-						toggleSelection( false );
 					} }
 				>
 					<div
