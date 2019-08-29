@@ -3,7 +3,7 @@
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import icons from './../../utils/icons';
+import icon from './icon';
 import edit from './edit';
 import metadata from './block.json';
 import transforms from './transforms';
@@ -19,11 +19,12 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.highlight;
+// const icon = icons.highlight;
 
 const settings = {
 	title: __( 'Highlight' ),
 	description: __( 'Highlight text.' ),
+	icon,
 	keywords: [ __( 'text' ), __( 'paragraph' ), 'coblocks' ],
 	attributes,
 	transforms,
@@ -31,4 +32,4 @@ const settings = {
 	save,
 };
 
-export { name, icon, settings };
+export { name, settings };

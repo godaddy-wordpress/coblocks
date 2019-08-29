@@ -5,7 +5,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import { BackgroundAttributes } from '../../components/background';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
-import icons from './icons';
+import icon from './icon';
 import edit from './edit';
 import transforms from './transforms';
 import metadata from './block.json';
@@ -21,7 +21,7 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const icon = icons.carousel;
+// const icon = icons.carousel;
 
 const attributes = {
 	...GalleryAttributes,
@@ -32,7 +32,7 @@ const attributes = {
 const settings = {
 	title:  __( 'Carousel' ),
 	description: __( 'Display multiple images in a beautiful carousel gallery.' ),
-	category: 'coblocks-galleries',
+	icon,
 	keywords: [	__( 'gallery' ), __( 'photos' )	],
 	supports: {
 		align: [ 'wide', 'full' ],

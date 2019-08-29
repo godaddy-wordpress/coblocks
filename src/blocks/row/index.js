@@ -9,7 +9,7 @@ import deprecated from './deprecated';
 import save from './save';
 import metadata from './block.json';
 import getEditWrapperProps from './getEditWrapperProps';
-import icons from './../../utils/icons';
+import icon from './icon';
 import { BackgroundAttributes } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
@@ -23,7 +23,7 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const icon = icons.row;
+// const icon = icons.row;
 
 const attributes = {
 	...DimensionsAttributes,
@@ -34,6 +34,7 @@ const attributes = {
 const settings = {
 	title: __( 'Row' ),
 	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.' ),
+	icon,
 	keywords: [	__( 'rows' ), __( 'columns' ), __( 'layouts' )	],
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -49,4 +50,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, icon, settings };
+export { name, settings };

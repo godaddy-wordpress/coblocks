@@ -5,7 +5,7 @@ import './styles/editor.scss';
 import './styles/style.scss';
 import metadata from './block.json';
 import edit from './edit';
-import icons from './../../utils/icons';
+import icon from './icon';
 import save from './save';
 import transforms from './transforms';
 
@@ -19,11 +19,12 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.twitter;
+// const icon = icons.twitter;
 
 const settings = {
 	title: __( 'Click to Tweet' ),
 	description: __( 'Add a quote for readers to tweet via Twitter.' ),
+	icon,
 	keywords: [ __( 'share' ), __( 'twitter' ), 'coblocks' ],
 	attributes,
 	transforms,
@@ -31,4 +32,4 @@ const settings = {
 	save,
 };
 
-export { name, icon, settings };
+export { name, settings };

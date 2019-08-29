@@ -6,7 +6,7 @@ import './styles/editor.scss';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
 import { BackgroundAttributes } from '../../components/background';
 import edit from './edit';
-import icons from './icons';
+import icon from './icon';
 import transforms from './transforms';
 import metadata from './block.json';
 import save from './save';
@@ -21,7 +21,7 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const icon = icons.stacked;
+// const icon = icons.stacked;
 
 const attributes = {
 	...GalleryAttributes,
@@ -32,7 +32,7 @@ const attributes = {
 const settings = {
 	title: __( 'Stacked' ),
 	description: __( 'Display multiple images in an single column stacked gallery.' ),
-	category: 'coblocks-galleries',
+	icon,
 	keywords: [	__( 'gallery' ), __( 'photos' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],

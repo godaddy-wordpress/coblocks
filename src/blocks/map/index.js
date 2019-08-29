@@ -6,7 +6,7 @@ import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
 import transforms from './transforms';
-import icons from './../../utils/icons';
+import icon from './icon';
 import metadata from './block.json';
 
 /**
@@ -19,11 +19,10 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.googleMap;
-
 const settings = {
 	title: __( 'Map' ),
 	description: __( 'Add an address and drop a pin on a Google map.' ),
+	icon,
 	keywords: [ __( 'address' ), __( 'maps' ), __( 'google' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -36,4 +35,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, icon, settings };
+export { name, settings };

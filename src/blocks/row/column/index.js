@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icons from './../../../utils/icons';
+import icon from './icon';
 import save from './save';
 import deprecated from './deprecated';
 import metadata from './block.json';
@@ -19,7 +19,7 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const icon = icons.column;
+// const icon = icons.column;
 
 const attributes = {
 	...DimensionsAttributes,
@@ -30,6 +30,7 @@ const attributes = {
 const settings = {
 	title: __( 'Column' ),
 	description: __( 'An immediate child of a row.' ),
+	icon,
 	parent: [ 'coblocks/row' ],
 	supports: {
 		inserter: false,
@@ -48,4 +49,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, icon, settings };
+export { name, settings };

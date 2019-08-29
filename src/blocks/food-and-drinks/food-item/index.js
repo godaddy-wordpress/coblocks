@@ -4,7 +4,7 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 import metadata from './block.json';
-import icons from './icons';
+import icon from './icon';
 import edit from './edit';
 import save from './save';
 
@@ -18,11 +18,12 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.foodItem;
+// const icon = icons.foodItem;
 
 const settings = {
 	title: __( 'Food Item' ),
 	description: __( 'A food and drink item within the Food & Drinks block.' ),
+	icon,
 	keywords: __( 'menu' ),
 	supports: {
 		inserter: false,
@@ -36,4 +37,4 @@ const settings = {
 	save,
 };
 
-export { name, icon, settings };
+export { name, settings };

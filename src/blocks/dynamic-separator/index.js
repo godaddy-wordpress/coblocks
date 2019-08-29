@@ -4,7 +4,7 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 import save from './save';
-import icons from './icons';
+import icon from './icon';
 import edit from './edit';
 import transforms from './transforms';
 import metadata from './block.json';
@@ -19,11 +19,12 @@ const { __, _x } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.hr;
+// const icon = icons.hr;
 
 const settings = {
 	title: __( 'Dynamic HR' ),
 	description: __( 'Add a resizable spacer between other blocks.' ),
+	icon,
 	keywords: [ __( 'spacer' ), 'hr', 'coblocks' ],
 	styles: [
 		{ name: 'dots', label: _x( 'Dot', 'block style' ), isDefault: true },
@@ -36,4 +37,4 @@ const settings = {
 	save,
 };
 
-export { name, icon, settings };
+export { name, settings };

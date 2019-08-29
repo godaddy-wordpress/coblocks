@@ -8,7 +8,7 @@ import './styles/style.scss';
  * Internal dependencies.
  */
 import metadata from './block.json';
-import icons from './icons';
+import icon from './icon';
 import edit from './edit';
 import save from './save';
 
@@ -22,11 +22,12 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.services;
+// const icon = icons.services;
 
 const settings = {
 	title: __( 'Services' ),
 	description: __( 'Add up to four columns of services to display.' ),
+	icon,
 	keywords: [ __( 'features' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -38,4 +39,4 @@ const settings = {
 	save,
 };
 
-export { name, icon, settings };
+export { name, settings };

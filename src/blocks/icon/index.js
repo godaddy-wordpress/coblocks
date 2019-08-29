@@ -4,7 +4,7 @@
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import icons from './icons';
+import icon from './icon';
 import edit from './edit';
 import save from './save';
 import metadata from './block.json';
@@ -24,11 +24,12 @@ export const DEFAULT_ICON_SIZE = 60;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.icon;
+// const icon = icons.icon;
 
 const settings = {
 	title: __( 'Icon' ),
 	description: __( 'Add a stylized graphic symbol to communicate something more.' ),
+	icon,
 	keywords: [ __( 'icons' ), 'svg', 'coblocks' ],
 	styles: [
 		{ name: 'outlined', label: _x( 'Outlined', 'block style' ), isDefault: true },
@@ -39,4 +40,4 @@ const settings = {
 	save,
 };
 
-export { name, icon, settings };
+export { name, settings };

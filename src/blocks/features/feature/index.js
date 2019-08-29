@@ -4,7 +4,7 @@
 import { BackgroundAttributes } from '../../../components/background';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 import edit from './edit';
-import icons from './icons';
+import icon from './icon';
 import save from './save';
 
 /**
@@ -17,7 +17,7 @@ const { __ } = wp.i18n;
  */
 const name = 'coblocks/feature';
 
-const icon = icons.feature;
+// const icon = icons.feature;
 
 const blockAttributes = {
 	contentAlign: {
@@ -36,6 +36,7 @@ const blockAttributes = {
 const settings = {
 	title: __( 'Feature' ),
 	description: __( 'A singular child column within a parent features block.' ),
+	icon,
 	parent: [ 'coblocks/features' ],
 	supports: {
 		inserter: false,
@@ -45,4 +46,4 @@ const settings = {
 	save,
 };
 
-export { name, icon, settings };
+export { name, settings };

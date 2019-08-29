@@ -1,6 +1,6 @@
 {
 	"name": "coblocks/gallery-stacked",
-	"category": "coblocks",
+	"category": "coblocks-galleries",
 	"attributes": {
 		"align": {
 			"type": "string",

@@ -4,7 +4,7 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 import edit from './edit';
-import icons from './../../utils/icons';
+import icon from './icon';
 
 /**
  * WordPress dependencies
@@ -16,11 +16,12 @@ const { __, _x } = wp.i18n;
  */
 const name = 'coblocks/social';
 
-const icon = icons.social;
+// const icon = icons.social;
 
 const settings = {
 	title: __( 'Share' ),
 	description: __( 'Add social sharing links to help you get likes and shares.' ),
+	icon,
 	keywords: [ __( 'social' ), 'coblocks' ],
 	styles: [
 		{ name: 'mask', label: _x( 'Mask', 'block style' ) },
@@ -35,4 +36,4 @@ const settings = {
 	},
 };
 
-export { name, icon, settings };
+export { name, settings };

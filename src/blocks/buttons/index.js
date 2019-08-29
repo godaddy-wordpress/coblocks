@@ -9,7 +9,7 @@ import './styles/editor.scss';
  */
 import deprecated from './deprecated';
 import edit from './edit';
-import icons from './icons';
+import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
@@ -24,11 +24,10 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.buttons;
-
 const settings = {
 	title: __( 'Buttons' ),
 	description: __( 'Prompt visitors to take action with multiple buttons, side by side.' ),
+	icon,
 	keywords: [ __( 'link' ), __( 'cta' ), 'coblocks' ],
 	attributes,
 	transforms,
@@ -37,4 +36,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, icon, settings };
+export { name, settings };

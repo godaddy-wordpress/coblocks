@@ -4,7 +4,7 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 import edit from './edit';
-import icons from './icons';
+import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 
@@ -18,11 +18,12 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.foodAndDrinks;
+// const icon = icons.foodAndDrinks;
 
 const settings = {
 	title: __( 'Food & Drinks' ),
 	description: __( 'Display a menu or price list.' ),
+	icon,
 	keywords: [ __( 'restaurant' ), __( 'menu' ) ],
 	supports: {
 		align: [ 'wide' ],
@@ -35,4 +36,4 @@ const settings = {
 	save,
 };
 
-export { name, icon, settings };
+export { name, settings };

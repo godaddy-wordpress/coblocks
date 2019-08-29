@@ -3,7 +3,7 @@
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import icons from './icons';
+import icon from './icon';
 import edit from './edit';
 import metadata from './block.json';
 import transforms from './transforms';
@@ -21,7 +21,7 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const icon = icons.masonry;
+// const icon = icons.masonry;
 
 const attributes = {
 	...GalleryAttributes,
@@ -32,6 +32,7 @@ const attributes = {
 const settings = {
 	title: __( 'Masonry' ),
 	description: __( 'Display multiple images in an organized masonry gallery.' ),
+	icon,
 	keywords: [	__( 'gallery' ), __( 'photos' )	],
 	supports: {
 		align: [ 'wide', 'full' ],

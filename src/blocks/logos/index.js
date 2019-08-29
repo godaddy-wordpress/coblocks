@@ -9,7 +9,7 @@ import './styles/style.scss';
  */
 import edit from './edit';
 import save from './save';
-import icons from './icons';
+import icon from './icon';
 import metadata from './block.json';
 
 /**
@@ -22,11 +22,12 @@ const { __ } = wp.i18n;
  */
 const { name, attributes } = metadata;
 
-const icon = icons.logos;
+// const icon = icons.logos;
 
 const settings = {
 	title: __( 'Logos & Badges' ),
 	description: __( 'Add logos, badges, or certifications to build credibility.' ),
+	icon,
 	keywords: [ __( 'clients' ), __( 'proof' ), __( 'testimonials' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -36,4 +37,4 @@ const settings = {
 	save,
 };
 
-export { name, icon, settings };
+export { name, settings };

@@ -4,7 +4,7 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 import edit from './edit';
-import icons from './../../utils/icons';
+import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 
@@ -18,11 +18,12 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.gif;
+// const icon = icons.gif;
 
 const settings = {
 	title: 'Gif',
 	description: __( 'Pick a gif, any gif.' ),
+	icon,
 	keywords: [ __( 'animated' ), 'coblocks' ],
 	supports: {
 		customClassName: false,
@@ -39,4 +40,4 @@ const settings = {
 	save,
 };
 
-export { name, icon, settings };
+export { name, settings };

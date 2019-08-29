@@ -3,7 +3,7 @@
  */
 import './styles/editor.scss';
 import edit from './edit';
-import icons from './icons';
+import icon from './icon';
 import { transforms } from './transforms';
 
 /**
@@ -16,11 +16,12 @@ const { __, _x } = wp.i18n;
  */
 const name = 'coblocks/social-profiles';
 
-const icon = icons.socialProfiles;
+// const icon = icons.socialProfiles;
 
 const settings = {
 	title: __( 'Social Profiles' ),
 	description: __( 'Display links to social media profiles.' ),
+	icon,
 	keywords: [ __( 'share' ), __( 'links' ), __( 'icons' ) ],
 	styles: [
 		{ name: 'mask', label: _x( 'Mask', 'block style' ) },
@@ -36,4 +37,4 @@ const settings = {
 	},
 };
 
-export { name, icon, settings };
+export { name, settings };

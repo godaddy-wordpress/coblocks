@@ -4,7 +4,7 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 import edit from './edit';
-import icons from './icons';
+import icon from './icon';
 import save from './save';
 import transforms from './transforms';
 import deprecated from './deprecated';
@@ -20,11 +20,12 @@ const { __, _x } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.shapeDivider;
+// const icon = icons.shapeDivider;
 
 const settings = {
 	title: __( 'Shape Divider' ),
 	description: __( 'Add a shape divider to visually distinquish page sections.' ),
+	icon,
 	keywords: [ __( 'separator' ), 'hr', 'svg' ],
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -48,4 +49,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, icon, settings };
+export { name, settings };

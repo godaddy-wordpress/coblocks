@@ -3,7 +3,7 @@
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import icons from './icons';
+import icon from './icon';
 import edit from './edit';
 import save from './save';
 import transforms from './transforms';
@@ -21,7 +21,7 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const icon = icons.mediaCard;
+// const icon = icons.mediaCard;
 
 const attributes = {
 	...BackgroundAttributes,
@@ -32,6 +32,7 @@ const attributes = {
 const settings = {
 	title: __( 'Media Card' ),
 	description: __( 'Add an image or video with an offset card side-by-side.' ),
+	icon,
 	keywords: [ __( 'image' ), __( 'video' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -44,4 +45,4 @@ const settings = {
 	save,
 };
 
-export { name, icon, settings };
+export { name, settings };

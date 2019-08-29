@@ -3,7 +3,7 @@
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import icons from './icons';
+import icon from './icon';
 import edit from './edit';
 import save from './save';
 import transforms from './transforms';
@@ -24,7 +24,7 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const icon = icons.hero;
+// const icon = icons.hero;
 
 const attributes = {
 	...CSSGridAttributes,
@@ -37,6 +37,7 @@ const attributes = {
 const settings = {
 	title: __( 'Hero' ),
 	description: __( 'An introductory area of a page accompanied by a small amount of text and a call to action.' ),
+	icon,
 	keywords: [ __( 'button' ),	__( 'cta' ), __( 'call to action' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -49,4 +50,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, icon, settings };
+export { name, settings };

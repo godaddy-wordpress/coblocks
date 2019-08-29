@@ -3,7 +3,7 @@
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import icons from './../../utils/icons';
+import icon from './icon';
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
@@ -19,11 +19,12 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.github;
+// const icon = icons.github;
 
 const settings = {
 	title: 'Gist',
 	description: __( 'Embed GitHub gists by adding a gist link.' ),
+	icon,
 	keywords: [ __( 'code' ), 'github', 'coblocks' ],
 	supports: {
 		html: false,
@@ -36,4 +37,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, icon, settings };
+export { name, settings };

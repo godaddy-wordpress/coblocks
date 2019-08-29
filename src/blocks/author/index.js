@@ -6,7 +6,7 @@ import './styles/style.scss';
 import './styles/editor.scss';
 import metadata from './block.json';
 import edit from './edit';
-import icons from './../../utils/icons';
+import icon from './icon';
 import transforms from './transforms';
 import save from './save';
 
@@ -20,11 +20,10 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.author;
-
 const settings = {
 	title: __( 'Author' ),
 	description: __( 'Add an author biography.' ),
+	icon,
 	keywords: [ __( 'biography' ), __( 'profile' ), 'coblocks' ],
 	attributes,
 	transforms,
@@ -32,4 +31,4 @@ const settings = {
 	save,
 };
 
-export { name, icon, settings };
+export { name, settings };

@@ -7,7 +7,7 @@ import { BackgroundAttributes } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import metadata from './block.json';
 import edit from './edit';
-import icons from './icons';
+import icon from './icon';
 import transforms from './transforms';
 import save from './save';
 
@@ -20,7 +20,7 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-const icon = icons.features;
+// const icon = icons.features;
 
 const attributes = {
 	...DimensionsAttributes,
@@ -31,6 +31,7 @@ const attributes = {
 const settings = {
 	title: __( 'Features' ),
 	description: __( 'Add up to three columns of small notes for your product or service.' ),
+	icon,
 	keywords: [ __( 'services' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -52,4 +53,4 @@ const settings = {
 	save,
 };
 
-export { name, icon, settings };
+export { name, settings };
