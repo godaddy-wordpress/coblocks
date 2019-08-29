@@ -129,7 +129,6 @@ class Edit extends Component {
 			isSelected,
 			setAttributes,
 			textColor,
-			toggleSelection,
 			backgroundColor,
 		} = this.props;
 
@@ -250,7 +249,6 @@ class Edit extends Component {
 										enable={ enablePositions }
 										onResizeStart={ () => {
 											this.setState( { resizing: true } );
-											toggleSelection( false );
 											const currentBlock = document.getElementById( 'block-' + clientId );
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = '';
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = maxWidth + 'px';
@@ -259,7 +257,6 @@ class Edit extends Component {
 											setAttributes( {
 												maxWidth: parseInt( maxWidth + delta.width, 10 ),
 											} );
-											toggleSelection( true );
 											this.setState( { resizing: false } );
 											const currentBlock = document.getElementById( 'block-' + clientId );
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = 'auto';
@@ -314,13 +311,8 @@ class Edit extends Component {
 										break;
 								}
 
-								toggleSelection( true );
-
 								//update meta
 								this.saveMeta( 'height' );
-							} }
-							onResizeStart={ ( ) => {
-								toggleSelection( false );
 							} }
 						>
 							{ isBlobURL( backgroundImg ) && <Spinner /> }
@@ -340,7 +332,6 @@ class Edit extends Component {
 										enable={ enablePositions }
 										onResizeStart={ () => {
 											this.setState( { resizing: true } );
-											toggleSelection( false );
 											const currentBlock = document.getElementById( 'block-' + clientId );
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = '';
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = maxWidth + 'px';
@@ -349,7 +340,6 @@ class Edit extends Component {
 											setAttributes( {
 												maxWidth: parseInt( maxWidth + delta.width, 10 ),
 											} );
-											toggleSelection( true );
 											this.setState( { resizing: false } );
 											const currentBlock = document.getElementById( 'block-' + clientId );
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = 'auto';
