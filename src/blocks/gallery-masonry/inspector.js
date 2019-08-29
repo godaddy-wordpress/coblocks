@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import { title } from './';
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import captionOptions from '../../components/block-gallery/options/caption-options';
 import SizeControl from '../../components/size-control';
@@ -11,7 +10,7 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
@@ -124,7 +123,7 @@ class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ sprintf( __( '%s Settings' ), title ) }>
+				<PanelBody title={ __( 'Masonry Settings' ) }>
 					<SizeControl { ...this.props }
 						type={ 'grid' }
 						label={ __( 'Column Size' ) }

@@ -1,26 +1,26 @@
 /**
- * Internal dependencies
- */
-import { name } from './';
-
-/**
  * WordPress dependencies
  */
 const { createBlock } = wp.blocks;
+
+/**
+ * Internal dependencies
+ */
+import metadata from './block.json';
 
 const transforms = {
 	from: [
 		{
 			type: 'block',
 			blocks: [ 'core/spacer' ],
-			transform: ( { height } ) => createBlock( `coblocks/${ name }`, {
+			transform: ( { height } ) => createBlock( metadata.name, {
 				height: height,
 			} ),
 		},
 		{
 			type: 'block',
 			blocks: [ 'core/separator' ],
-			transform: () => createBlock( `coblocks/${ name }` ),
+			transform: () => createBlock( metadata.name ),
 		},
 	],
 	to: [

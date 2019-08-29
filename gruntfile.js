@@ -212,7 +212,7 @@ module.exports = function( grunt ) {
 			translations: [
 				'npm run babel:build',
 			].join( ' && ' ),
-		},
+		}
 
 	} );
 
