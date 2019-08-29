@@ -3,6 +3,7 @@
  */
 const { createBlock } = wp.blocks;
 
+/* eslint-env browser */
 function getPreviousAttributes( blockName, attributeName, attributes ) {
 	switch ( blockName ) {
 		case 'social-profiles':
