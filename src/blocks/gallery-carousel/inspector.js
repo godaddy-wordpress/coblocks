@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import { title } from './';
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import SizeControl from '../../components/size-control';
 import SliderPanel from '../../components/slider-panel';
@@ -10,7 +9,7 @@ import { BackgroundPanel } from '../../components/background';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, RangeControl } = wp.components;
@@ -113,12 +112,7 @@ class Inspector extends Component {
 			isSelected && (
 				<Fragment>
 					<InspectorControls>
-						<PanelBody
-							title={
-								// translators: %s: Block title
-								sprintf( __( '%s Settings' ), title )
-							}
-						>
+						<PanelBody title={ __( 'Carousel Settings' ) } >
 							<SizeControl { ...this.props }
 								type={ 'grid' }
 								label={ __( 'Size' ) }

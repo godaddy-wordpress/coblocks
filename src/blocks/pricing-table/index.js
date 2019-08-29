@@ -1,13 +1,17 @@
 /**
- * Internal dependencies
+ * Styles.
  */
 import './styles/editor.scss';
 import './styles/style.scss';
+
+/**
+ * Internal dependencies
+ */
 import edit from './edit';
-import icons from './../../utils/icons';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -19,29 +23,19 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const title = __( 'Pricing Table' );
-
-const icon = icons.pricing;
-
 const settings = {
-	title,
-
+	title: __( 'Pricing Table' ),
 	description: __( 'Add pricing tables.' ),
-
+	icon,
 	keywords: [ __( 'landing' ), __( 'comparison' ), 'coblocks' ],
-
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, icon, settings };
+export { name, metadata, settings };

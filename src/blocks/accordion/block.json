@@ -1,6 +1,6 @@
 {
-	"name": "accordion",
-	"category": "coblocks",
+	"name": "coblocks/accordion",
+	"category": "layout",
 	"attributes": {
 		"count": {
 			"type": "number",
