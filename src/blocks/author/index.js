@@ -21,11 +21,11 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const { attributes, name } = metadata;
+const { name, category, attributes } = metadata;
 
 const settings = {
 	title: __( 'Author' ),
-	description: __( 'Add an author biography.' ),
+	description: __( 'Add an author biography to build credibility and authority.' ),
 	icon,
 	keywords: [ __( 'biography' ), __( 'profile' ), 'coblocks' ],
 	attributes,
@@ -34,4 +34,4 @@ const settings = {
 	save,
 };
 
-export { name, metadata, settings };
+export { name, category, metadata, settings };

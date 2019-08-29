@@ -23,7 +23,7 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const { name } = metadata;
+const { name, category } = metadata;
 
 const attributes = {
 	...GalleryAttributes,
@@ -37,7 +37,7 @@ const settings = {
 	icon,
 	keywords: [	__( 'gallery' ), __( 'photos' ) ],
 	supports: {
-		align: [ 'wide', 'full' ],
+		align: [ 'wide', 'full', 'left', 'center', 'right' ],
 	},
 	attributes,
 	transforms,
@@ -45,4 +45,4 @@ const settings = {
 	save,
 };
 
-export { name, metadata, icon, settings };
+export { name, category, icon, metadata, settings };

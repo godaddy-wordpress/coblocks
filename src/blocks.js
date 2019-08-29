@@ -3,7 +3,6 @@
  */
 const {
 	registerBlockType,
-	unstable__bootstrapServerSideBlockDefinitions, // eslint-disable-line camelcase
 } = wp.blocks;
 
 // Register block category
@@ -77,13 +76,12 @@ const registerBlock = ( block ) => {
 		return;
 	}
 
-	const { metadata, settings, name } = block;
+	const { name, category, settings } = block;
 
-	if ( metadata ) {
-		unstable__bootstrapServerSideBlockDefinitions( { [ name ]: metadata } );
-	}
-
-	registerBlockType( name, settings );
+	registerBlockType( name, {
+		category: category,
+		...settings,
+	} );
 };
 
 /**

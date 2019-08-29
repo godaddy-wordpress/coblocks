@@ -25,7 +25,7 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const { name } = metadata;
+const { name, category } = metadata;
 
 const attributes = {
 	...DimensionsAttributes,
@@ -52,4 +52,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, metadata, settings };
+export { name, category, metadata, settings };
