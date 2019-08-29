@@ -26,7 +26,7 @@ const icon = icons.highlight;
 const settings = {
 	title,
 
-	description: __( 'Highlight text.' ),
+	description: __( 'Draw attention and emphasize important narrative.' ),
 
 	keywords: [ __( 'text' ), __( 'paragraph' ), 'coblocks' ],
 
