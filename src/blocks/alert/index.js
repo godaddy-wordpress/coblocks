@@ -22,7 +22,7 @@ const { __, _x } = wp.i18n;
 /**
  * Block constants
  */
-const { attributes, name } = metadata;
+const { name, category, attributes } = metadata;
 
 const settings = {
 	title: __( 'Alert' ),
@@ -47,4 +47,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, metadata, settings, attributes };
+export { name, category, metadata, settings, attributes };

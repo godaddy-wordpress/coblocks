@@ -25,7 +25,7 @@ export const DEFAULT_ICON_SIZE = 60;
 /**
  * Block constants
  */
-const { attributes, name } = metadata;
+const { name, category, attributes } = metadata;
 
 const settings = {
 	title: __( 'Icon' ),
@@ -41,4 +41,4 @@ const settings = {
 	save,
 };
 
-export { name, metadata, settings };
+export { name, category, metadata, settings };

@@ -23,7 +23,7 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const { name } = metadata;
+const { name, category } = metadata;
 
 const attributes = {
 	...GalleryAttributes,
@@ -45,4 +45,4 @@ const settings = {
 	save,
 };
 
-export { name, metadata, icon, settings };
+export { name, category, icon, metadata, settings };
