@@ -28,7 +28,7 @@ const settings = {
 
 	description: __( 'Add pricing tables.' ),
 
-	keywords: [ __( 'landing' ), __( 'comparison' ), __( 'coblocks' ) ],
+	keywords: [ __( 'landing' ), __( 'comparison' ), 'coblocks' ],
 
 	attributes,
 

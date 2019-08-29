@@ -18,7 +18,7 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const title = __( 'Gif' );
+const title = 'Gif';
 
 const icon = icons.gif;
 
@@ -27,7 +27,7 @@ const settings = {
 
 	description: __( 'Pick a gif, any gif.' ),
 
-	keywords: [ __( 'animated' ), __( 'coblocks' ) ],
+	keywords: [ __( 'animated' ), 'coblocks' ],
 
 	attributes,
 
@@ -49,4 +49,3 @@ const settings = {
 };
 
 export { name, title, icon, settings };
-
