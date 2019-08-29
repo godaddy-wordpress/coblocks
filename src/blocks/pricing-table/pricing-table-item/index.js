@@ -28,7 +28,7 @@ const settings = {
 
 	description: __( 'A column placed within the pricing table block.' ),
 
-	keywords: [ __( 'landing' ), __( 'comparison' ), __( 'coblocks' ) ],
+	keywords: [ __( 'landing' ), __( 'comparison' ), 'coblocks' ],
 
 	parent: [ 'coblocks/pricing-table' ],
 
