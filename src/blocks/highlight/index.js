@@ -24,22 +24,13 @@ const { __ } = wp.i18n;
 const { attributes, name } = metadata;
 
 const settings = {
-	description: __( 'Draw attention and emphasize important narrative.' ),
-
 	title: __( 'Highlight' ),
-
-	description: __( 'Highlight text.' ),
-
+	description: __( 'Draw attention and emphasize important narrative.' ),
 	icon,
-
 	keywords: [ __( 'text' ), __( 'paragraph' ), 'coblocks' ],
-
 	attributes,
-
 	transforms,
-
 	edit,
-
 	save,
 };
 
