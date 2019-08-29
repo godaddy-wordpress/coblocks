@@ -1,13 +1,17 @@
 /**
- * Internal dependencies
+ * Styles.
  */
 import './styles/editor.scss';
-import edit from './edit';
-import save from './save';
+
+/**
+ * Internal dependencies
+ */
 import deprecated from './deprecated';
-import transforms from './transforms';
-import icons from './../../utils/icons';
+import edit from './edit';
+import icon from './icon';
 import metadata from './block.json';
+import save from './save';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies
@@ -19,31 +23,20 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const icon = icons.googleMap;
-
-const title = __( 'Map' );
-
 const settings = {
-	title,
-
+	title: __( 'Map' ),
 	description: __( 'Add an address and drop a pin on a Google map.' ),
-
+	icon,
 	keywords: [ __( 'address' ), __( 'maps' ), __( 'google' ) ],
-
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-
 	attributes,
-
 	transforms,
-
 	edit,
-
 	save,
-
 	deprecated,
 };
 
-export { name, title, icon, settings };
+export { name, metadata, settings };

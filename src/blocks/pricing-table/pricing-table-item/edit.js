@@ -98,7 +98,7 @@ class Edit extends Component {
 							className="wp-block-coblocks-pricing-table-item__amount"
 							onChange={ ( nextAmount ) => setAttributes( { amount: nextAmount } ) }
 							value={ amount }
-							placeholder={ __( '99' ) }
+							placeholder="99"
 							formattingControls={ formattingControls }
 							keepPlaceholderOnFocus
 						/>
