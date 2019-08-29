@@ -1,9 +1,15 @@
 .wp-block-coblocks-food-item {
-	flex: 1 50%;
+	flex-grow: 1;
 	margin-top: 2.75em;
+	width: 50%;
+
+	@media all and (max-width: 514px) {
+		width: 100%;
+	}
 
 	[data-columns="3"] & {
-		flex: 1 33.33%;
+		flex-grow: 1;
+		width: 33.33%;
 	}
 
 	.wp-block-coblocks-food-and-drinks[data-columns="2"]:not(.is-style-list) & {
@@ -73,6 +79,15 @@
 			top: 0;
 			vertical-align: middle;
 			width: 100%;
+
+			// IE 10+ Support
+			@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+				height: auto;
+				left: 50%;
+				min-width: 100%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
 		}
 	}
 

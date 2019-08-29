@@ -22,15 +22,15 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'buttons';
+const { attributes, name } = metadata;
 
 const icon = icons.buttons;
 
 const settings = {
 	title: __( 'Buttons' ),
 	description: __( 'Prompt visitors to take action with multiple buttons, side by side.' ),
-	keywords: [ __( 'link' ), __( 'cta' ), __( 'coblocks' ) ],
-	attributes: metadata.attributes,
+	keywords: [ __( 'link' ), __( 'cta' ), 'coblocks' ],
+	attributes,
 	transforms,
 	edit,
 	save,
