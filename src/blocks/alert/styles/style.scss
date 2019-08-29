@@ -1,23 +1,44 @@
 .wp-block-coblocks-alert {
+	background-color: #d6efee;
 	border-radius: 0.25rem;
+	color: #094264;
 	padding: 1.1em 1.3em 1em;
 	position: relative;
 
 	&:not(.has-background) {
-		background-color: #f5f5f5;
+		&.is-style-warning {
+			background-color: #fbe7dd;
+		}
+
+		&.is-style-error {
+			background-color: #ffdede;
+		}
+
+		&.is-style-success {
+			background-color: #d0eac4;
+		}
 	}
 
-	&.alignleft,
-	&.alignright {
-		max-width: 300px;
+	&:not(.has-text-color) {
+		&.is-style-warning {
+			color: #8a4b30;
+		}
+
+		&.is-style-error {
+			color: #8b343c;
+		}
+
+		&.is-style-success {
+			color: #154a28;
+		}
 	}
 
 	&__title {
 		color: inherit;
 		display: inline-block;
 		line-height: 1;
-		width: 100%;
 		margin-bottom: 0.75em;
+		width: 100%;
 
 		&:empty {
 			display: none;
