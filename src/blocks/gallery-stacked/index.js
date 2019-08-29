@@ -1,8 +1,12 @@
 /**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
+
+/**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
 import { BackgroundAttributes } from '../../components/background';
 import edit from './edit';

@@ -1,8 +1,12 @@
 /**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
+
+/**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
 import metadata from './block.json';
 import edit from './edit';
 import save from './save';

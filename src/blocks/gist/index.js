@@ -1,8 +1,12 @@
 /**
- * Internal dependencies
+ * Styles.
  */
 import './styles/editor.scss';
 import './styles/style.scss';
+
+/**
+ * Internal dependencies
+ */
 import icon from './icon';
 import edit from './edit';
 import metadata from './block.json';

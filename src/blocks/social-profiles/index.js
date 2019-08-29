@@ -1,7 +1,11 @@
 /**
- * Internal dependencies
+ * Styles.
  */
 import './styles/editor.scss';
+
+/**
+ * Internal dependencies
+ */
 import edit from './edit';
 import icon from './icon';
 import { transforms } from './transforms';

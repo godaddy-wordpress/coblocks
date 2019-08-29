@@ -1,7 +1,11 @@
 /**
- * Internal dependencies
+ * Styles.
  */
 import './styles/editor.scss';
+
+/**
+ * Internal dependencies
+ */
 import edit from './edit';
 import save from './save';
 import deprecated from './deprecated';
