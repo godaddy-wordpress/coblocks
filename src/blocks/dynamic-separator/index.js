@@ -21,7 +21,7 @@ const { __, _x } = wp.i18n;
 /**
  * Block constants
  */
-const { attributes, name } = metadata;
+const { name, category, attributes } = metadata;
 
 const settings = {
 	title: __( 'Dynamic HR' ),
@@ -39,4 +39,4 @@ const settings = {
 	save,
 };
 
-export { name, metadata, settings };
+export { name, category, metadata, settings };
