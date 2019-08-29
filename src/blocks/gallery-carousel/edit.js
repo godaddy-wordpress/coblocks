@@ -166,7 +166,6 @@ class GalleryCarouselEdit extends Component {
 			isSelected,
 			noticeUI,
 			setAttributes,
-			toggleSelection,
 			captionColor,
 		} = this.props;
 
@@ -265,10 +264,6 @@ class GalleryCarouselEdit extends Component {
 						setAttributes( {
 							height: parseInt( height + delta.height, 10 ),
 						} );
-						toggleSelection( true );
-					} }
-					onResizeStart={ () => {
-						toggleSelection( false );
 					} }
 				>
 					{ dropZone }

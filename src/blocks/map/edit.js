@@ -127,7 +127,6 @@ class Edit extends Component {
 	render() {
 		const {
 			attributes,
-			toggleSelection,
 			setAttributes,
 			isSelected,
 		} = this.props;
@@ -277,10 +276,6 @@ class Edit extends Component {
 							setAttributes( {
 								height: parseInt( height + delta.height, 10 ),
 							} );
-							toggleSelection( true );
-						} }
-						onResizeStart={ () => {
-							toggleSelection( false );
 						} }
 					>
 						{ !! this.state.apiKey ? (

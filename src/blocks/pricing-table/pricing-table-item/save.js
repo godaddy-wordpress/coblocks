@@ -2,11 +2,21 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { hasEmptyAttributes } from '../../../utils/block-helpers';
 
 /**
  * WordPress dependencies
  */
 const { RichText, getColorClassName, InnerBlocks } = wp.blockEditor;
+
+const isEmpty = attributes => {
+	const attributesToCheck = [ 'title', 'features', 'currency', 'amount' ];
+	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
+		attributesToCheck.includes( key )
+	);
+
+	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
+};
 
 const save = ( { attributes } ) => {
 	const {
@@ -36,7 +46,7 @@ const save = ( { attributes } ) => {
 		color: textColorClass ? undefined : customTextColor,
 	};
 
-	return (
+	return isEmpty( attributes ) ? null : (
 		<div
 			className={ classes }
 			style={ styles }
