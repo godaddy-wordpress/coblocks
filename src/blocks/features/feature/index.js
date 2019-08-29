@@ -6,6 +6,7 @@ import DimensionsAttributes from '../../../components/dimensions-control/attribu
 import edit from './edit';
 import icon from './icon';
 import save from './save';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -15,20 +16,12 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'coblocks/feature';
+const { name } = metadata;
 
-const blockAttributes = {
-	contentAlign: {
-		type: 'string',
-	},
-	textColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
+const attributes = {
 	...DimensionsAttributes,
 	...BackgroundAttributes,
+	...metadata.attributes,
 };
 
 const settings = {
@@ -39,7 +32,7 @@ const settings = {
 	supports: {
 		inserter: false,
 	},
-	attributes: blockAttributes,
+	attributes,
 	edit,
 	save,
 };
