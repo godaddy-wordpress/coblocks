@@ -200,3 +200,10 @@
 		margin-bottom: 0 !important;
 	}
 }
+
+// Hide screen reader label for Gutenberg < 6.4
+.components-coblocks-icon-size__controls {
+	.components-base-control .components-base-control__label {
+		display: none;
+	}
+}
