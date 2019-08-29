@@ -1,13 +1,16 @@
+/**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-import icons from './icons';
 import edit from './edit';
-import save from './save';
+import icon from './icon';
 import metadata from './block.json';
+import save from './save';
 
 /**
  * WordPress dependencies
@@ -24,27 +27,18 @@ export const DEFAULT_ICON_SIZE = 60;
  */
 const { attributes, name } = metadata;
 
-const title = __( 'Icon' );
-
-const icon = icons.icon;
-
 const settings = {
-	title,
-
+	title: __( 'Icon' ),
 	description: __( 'Add a stylized graphic symbol to communicate something more.' ),
-
-	keywords: [ __( 'svg' ), __( 'icons' ), __( 'coblocks' ) ],
-
-	attributes,
-
+	icon,
+	keywords: [ __( 'icons' ), 'svg', 'coblocks' ],
 	styles: [
 		{ name: 'outlined', label: _x( 'Outlined', 'block style' ), isDefault: true },
 		{ name: 'filled', label: _x( 'Filled', 'block style' ) },
 	],
-
+	attributes,
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, metadata, settings };

@@ -33,10 +33,8 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
-			align,
 			textAlign,
 			title,
-			type,
 			value,
 		} = attributes;
 
@@ -54,11 +52,10 @@ class Edit extends Component {
 				) }
 				<div
 					className={ classnames(
-						className,
-						`is-${ type }-alert`,
-						`align${ align }`, {
+						className, {
 							'has-background': backgroundColor.color,
 							'has-text-color': textColor.color,
+							[ `has-text-align-${ textAlign }` ]: textAlign,
 							[ backgroundColor.class ]: backgroundColor.class,
 							[ textColor.class ]: textColor.class,
 						}
