@@ -19,8 +19,6 @@ const { __, _x } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-// const icon = icons.hr;
-
 const settings = {
 	title: __( 'Dynamic HR' ),
 	description: __( 'Add a resizable spacer between other blocks.' ),

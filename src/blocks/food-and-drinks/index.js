@@ -18,8 +18,6 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-// const icon = icons.foodAndDrinks;
-
 const settings = {
 	title: __( 'Food & Drinks' ),
 	description: __( 'Display a menu or price list.' ),

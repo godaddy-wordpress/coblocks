@@ -19,8 +19,6 @@ const { InnerBlocks } = wp.blockEditor;
  */
 const { attributes, name } = metadata;
 
-// const icon = icons.form;
-
 const settings = {
 	title: __( 'Form' ),
 	description: __( 'Add a simple form to your page.' ),

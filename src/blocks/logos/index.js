@@ -22,8 +22,6 @@ const { __ } = wp.i18n;
  */
 const { name, attributes } = metadata;
 
-// const icon = icons.logos;
-
 const settings = {
 	title: __( 'Logos & Badges' ),
 	description: __( 'Add logos, badges, or certifications to build credibility.' ),

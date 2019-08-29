@@ -19,8 +19,6 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-// const icon = icons.twitter;
-
 const settings = {
 	title: __( 'Click to Tweet' ),
 	description: __( 'Add a quote for readers to tweet via Twitter.' ),

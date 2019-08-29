@@ -18,8 +18,6 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-// const icon = icons.foodItem;
-
 const settings = {
 	title: __( 'Food Item' ),
 	description: __( 'A food and drink item within the Food & Drinks block.' ),

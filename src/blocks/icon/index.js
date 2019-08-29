@@ -24,8 +24,6 @@ export const DEFAULT_ICON_SIZE = 60;
  */
 const { attributes, name } = metadata;
 
-// const icon = icons.icon;
-
 const settings = {
 	title: __( 'Icon' ),
 	description: __( 'Add a stylized graphic symbol to communicate something more.' ),

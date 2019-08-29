@@ -19,8 +19,6 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-// const icon = icons.github;
-
 const settings = {
 	title: 'Gist',
 	description: __( 'Embed GitHub gists by adding a gist link.' ),

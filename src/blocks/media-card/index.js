@@ -21,8 +21,6 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-// const icon = icons.mediaCard;
-
 const attributes = {
 	...BackgroundAttributes,
 	...DimensionsAttributes,

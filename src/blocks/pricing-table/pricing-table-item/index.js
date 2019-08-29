@@ -19,8 +19,6 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-// const icon = icons.pricing;
-
 const settings = {
 	title: __( 'Pricing Table Item' ),
 	description: __( 'A column placed within the pricing table block.' ),

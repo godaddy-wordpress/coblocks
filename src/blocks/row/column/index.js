@@ -19,8 +19,6 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-// const icon = icons.column;
-
 const attributes = {
 	...DimensionsAttributes,
 	...BackgroundAttributes,

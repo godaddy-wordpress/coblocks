@@ -22,8 +22,6 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-// const icon = icons.service;
-
 const settings = {
 	title: __( 'Service' ),
 	description: __( 'A single service item within a services block.' ),

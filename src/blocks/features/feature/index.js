@@ -17,8 +17,6 @@ const { __ } = wp.i18n;
  */
 const name = 'coblocks/feature';
 
-// const icon = icons.feature;
-
 const blockAttributes = {
 	contentAlign: {
 		type: 'string',

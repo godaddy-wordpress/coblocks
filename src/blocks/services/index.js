@@ -22,8 +22,6 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-// const icon = icons.services;
-
 const settings = {
 	title: __( 'Services' ),
 	description: __( 'Add up to four columns of services to display.' ),

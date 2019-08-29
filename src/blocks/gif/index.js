@@ -18,8 +18,6 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-// const icon = icons.gif;
-
 const settings = {
 	title: 'Gif',
 	description: __( 'Pick a gif, any gif.' ),

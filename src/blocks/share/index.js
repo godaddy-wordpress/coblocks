@@ -16,8 +16,6 @@ const { __, _x } = wp.i18n;
  */
 const name = 'coblocks/social';
 
-// const icon = icons.social;
-
 const settings = {
 	title: __( 'Share' ),
 	description: __( 'Add social sharing links to help you get likes and shares.' ),

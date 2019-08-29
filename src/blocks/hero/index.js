@@ -24,8 +24,6 @@ const { __ } = wp.i18n;
  */
 const { name } = metadata;
 
-// const icon = icons.hero;
-
 const attributes = {
 	...CSSGridAttributes,
 	...DimensionsAttributes,

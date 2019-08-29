@@ -19,8 +19,6 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-// const icon = icons.highlight;
-
 const settings = {
 	title: __( 'Highlight' ),
 	description: __( 'Highlight text.' ),

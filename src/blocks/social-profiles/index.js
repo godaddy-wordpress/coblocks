@@ -16,8 +16,6 @@ const { __, _x } = wp.i18n;
  */
 const name = 'coblocks/social-profiles';
 
-// const icon = icons.socialProfiles;
-
 const settings = {
 	title: __( 'Social Profiles' ),
 	description: __( 'Display links to social media profiles.' ),

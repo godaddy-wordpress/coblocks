@@ -20,8 +20,6 @@ const { __, _x } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-// const icon = icons.shapeDivider;
-
 const settings = {
 	title: __( 'Shape Divider' ),
 	description: __( 'Add a shape divider to visually distinquish page sections.' ),
