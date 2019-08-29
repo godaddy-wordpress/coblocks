@@ -9,7 +9,6 @@ import './styles/style.scss';
  */
 import edit from './edit';
 import icon from './icon';
-import icons from './../../utils/icons';
 import metadata from './block.json';
 import transforms from './transforms';
 

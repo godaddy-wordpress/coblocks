@@ -6,12 +6,6 @@ const {
 	unstable__bootstrapServerSideBlockDefinitions, // eslint-disable-line camelcase
 } = wp.blocks;
 
-// Category slug and title
-const category = {
-	slug: 'coblocks',
-	title: 'CoBlocks',
-};
-
 // Register block category
 import './utils/block-category';
 

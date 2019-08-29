@@ -9,7 +9,7 @@ import { BackgroundPanel } from '../../components/background';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, RangeControl } = wp.components;

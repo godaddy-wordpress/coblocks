@@ -9,7 +9,7 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;

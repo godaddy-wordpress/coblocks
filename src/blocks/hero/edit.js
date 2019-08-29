@@ -14,7 +14,7 @@ import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZon
 /**
  * WordPress dependencies
  */
-const { __, _x, sprintf } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.blockEditor;

@@ -32,7 +32,7 @@ const attributes = {
 };
 
 const settings = {
-	title:  __( 'Carousel' ),
+	title: __( 'Carousel' ),
 	description: __( 'Display multiple images in a beautiful carousel gallery.' ),
 	icon,
 	keywords: [	__( 'gallery' ), __( 'photos' )	],
