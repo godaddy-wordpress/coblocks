@@ -1,5 +1,6 @@
 {
-	"name": "food-and-drinks",
+	"name": "coblocks/food-and-drinks",
+	"category": "coblocks",
 	"attributes": {
 		"showImages": {
 			"type": "boolean",

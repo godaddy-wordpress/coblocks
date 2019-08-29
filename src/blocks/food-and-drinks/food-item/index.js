@@ -1,11 +1,15 @@
 /**
- * Internal dependencies.
+ * Styles.
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import metadata from './block.json';
-import icons from './icons';
+
+/**
+ * Internal dependencies.
+ */
 import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
 
 /**
@@ -18,33 +22,21 @@ const { __ } = wp.i18n;
  */
 const { attributes, name } = metadata;
 
-const title = __( 'Food Item' );
-
-const icon = icons.foodItem;
-
-const keywords = [];
-
 const settings = {
-	title,
-
+	title: __( 'Food Item' ),
 	description: __( 'A food and drink item within the Food & Drinks block.' ),
-
-	keywords,
-
-	attributes,
-
+	icon,
+	keywords: __( 'menu' ),
 	supports: {
 		inserter: false,
 		customClassName: false,
 		reusable: false,
 		html: false,
 	},
-
 	parent: [ 'coblocks/food-and-drinks' ],
-
+	attributes,
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, metadata, settings };

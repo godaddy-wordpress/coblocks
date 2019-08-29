@@ -9,7 +9,6 @@ import classnames from 'classnames';
 import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
-import { title } from '.';
 import {
 	BackgroundStyles,
 	BackgroundClasses,
@@ -20,7 +19,7 @@ import {
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InnerBlocks, Inserter } = wp.blockEditor;
@@ -88,7 +87,7 @@ class Edit extends Component {
 		const dropZone = (
 			<BackgroundDropZone
 				{ ...this.props }
-				label={ sprintf( __( 'Add backround to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
+				label={ __( 'Add backround to column' ) }
 			/>
 		);
 
