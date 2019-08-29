@@ -24,6 +24,7 @@ const settings = {
 	title: __( 'Share' ),
 	description: __( 'Add social sharing links to help you get likes and shares.' ),
 	icon,
+	category: 'coblocks',
 	keywords: [ __( 'social' ), 'coblocks' ],
 	styles: [
 		{ name: 'mask', label: _x( 'Mask', 'block style' ) },

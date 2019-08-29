@@ -39,4 +39,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, settings };
+export { name, metadata, settings };

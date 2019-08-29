@@ -24,6 +24,7 @@ const settings = {
 	title: __( 'Social Profiles' ),
 	description: __( 'Display links to social media profiles.' ),
 	icon,
+	category: 'coblocks',
 	keywords: [ __( 'share' ), __( 'links' ), __( 'icons' ) ],
 	styles: [
 		{ name: 'mask', label: _x( 'Mask', 'block style' ) },

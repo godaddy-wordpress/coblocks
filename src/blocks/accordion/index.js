@@ -45,4 +45,4 @@ const settings = {
 	},
 };
 
-export { name, settings };
+export { name, metadata, settings };

@@ -42,4 +42,4 @@ const settings = {
 	save,
 };
 
-export { name, settings };
+export { name, metadata, settings };

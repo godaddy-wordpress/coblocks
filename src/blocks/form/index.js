@@ -36,4 +36,4 @@ const settings = {
 	save: InnerBlocks.Content,
 };
 
-export { name, settings };
+export { name, metadata, settings };
