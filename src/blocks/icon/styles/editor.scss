@@ -204,6 +204,15 @@
 // Hide screen reader label for Gutenberg < 6.4
 .components-coblocks-icon-size__controls {
 	.components-base-control .components-base-control__label {
-		display: none;
+		border: 0;
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute !important;
+		width: 1px;
+		word-wrap: normal !important;
 	}
 }
