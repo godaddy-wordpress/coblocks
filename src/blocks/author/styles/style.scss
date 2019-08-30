@@ -1,11 +1,11 @@
 .wp-block-coblocks-author {
 	align-items: flex-start;
-	display: flex;
-	position: relative;
-	margin: 1.5em 0;
-	padding: 30px 20px;
 	background: $accordion-background;
 	border-radius: $accordion-border-radius;
+	display: flex;
+	margin: 1.5em 0;
+	padding: 30px 20px;
+	position: relative;
 
 	@media (min-width: 600px) {
 		padding: 40px 30px;
@@ -34,18 +34,13 @@
 		width: 70px;
 
 		@media (min-width: 600px) {
-			width: 150px;
 			height: 150px;
+			width: 150px;
 		}
 	}
 
 	&__content {
 		flex: 1 1 auto;
-	}
-
-	&__heading {
-		margin: 0 0 0.5em;
-		padding: 0;
 	}
 
 	&__name {
