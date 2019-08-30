@@ -38,19 +38,21 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 		} = props;
 
 		//add unique selector
-		if ( allowedBlocks.includes( props.name ) && typeof attributes.coblocks.id === 'undefined' ) {
+		if ( allowedBlocks.includes( props.name ) ) {
 			if ( typeof attributes.coblocks === 'undefined' ) {
 				attributes.coblocks = {};
 			}
 
-			const d = new Date();
+			if ( typeof attributes.coblocks.id === 'undefined' ) {
+				const d = new Date();
 
-			if ( typeof attributes.coblocks !== 'undefined' && typeof attributes.coblocks.id !== 'undefined' ) {
-				delete attributes.coblocks.id;
+				if ( typeof attributes.coblocks !== 'undefined' && typeof attributes.coblocks.id !== 'undefined' ) {
+					delete attributes.coblocks.id;
+				}
+
+				const coblocks = Object.assign( { id: '' + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds() }, attributes.coblocks );
+				setAttributes( { coblocks: coblocks } );
 			}
-
-			const coblocks = Object.assign( { id: '' + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds() }, attributes.coblocks );
-			setAttributes( { coblocks: coblocks } );
 		}
 
 		return (
