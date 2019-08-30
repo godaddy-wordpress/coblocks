@@ -41,6 +41,7 @@ const settings = {
 			linkedin: '#',
 			email: '#',
 			tumblr: '#',
+			textAlign: 'center',
 		},
 	},
 	supports: {

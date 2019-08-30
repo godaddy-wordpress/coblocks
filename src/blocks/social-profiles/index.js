@@ -36,10 +36,11 @@ const settings = {
 	example: {
 		attributes: {
 			facebook: '#',
-			twitter: '#',
-			pinterest: '#',
 			instagram: '#',
+			pinterest: '#',
+			twitter: '#',
 			youtube: '#',
+			textAlign: 'center',
 		},
 	},
 	supports: {
