@@ -36,4 +36,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, category, attributes, metadata, settings };
+export { name, category, metadata, settings };

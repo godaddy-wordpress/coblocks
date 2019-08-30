@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { attributes } from './';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -11,7 +11,7 @@ const { RichText, InnerBlocks } = wp.blockEditor;
 const deprecated = [
 	{
 		attributes: {
-			...attributes,
+			...metadata.attributes,
 			textAlign: {
 				type: 'string',
 			}
