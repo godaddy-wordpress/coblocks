@@ -56,9 +56,9 @@ const save = ( { attributes } ) => {
 	return isEmpty( attributes ) ? null : (
 		<div className={ classes } style={ styles }>
 			{ imgUrl && (
-				<div className={ 'wp-block-coblocks-author__avatar' }>
+				<figure className={ 'wp-block-coblocks-author__avatar' }>
 					<img className="wp-block-coblocks-author__avatar-img" src={ imgUrl } alt={ name } />
-				</div>
+				</figure>
 			) }
 			<div className={ 'wp-block-coblocks-author__content' }>
 				{ ! RichText.isEmpty( name ) && (

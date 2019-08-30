@@ -12,29 +12,27 @@
 	&__avatar {
 		border-radius: 100%;
 		flex: 0 0 auto;
-		margin-right: 25px;
+		height: 70px;
+		margin: 0 25px 0 0;
+		position: relative;
+		width: 70px;
 
 		@media (min-width: 600px) {
+			height: 150px;
 			margin-right: 35px;
+			width: 150px;
 		}
 	}
 
 	&__avatar-img {
 		border-radius: 100%;
 		display: inline-block;
-		height: 100% !important;
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+		top: 0;
 		vertical-align: middle;
-	}
-
-	&__avatar,
-	&__avatar-img {
-		height: 70px;
-		width: 70px;
-
-		@media (min-width: 600px) {
-			height: 150px;
-			width: 150px;
-		}
+		width: 100%;
 	}
 
 	&__content {

@@ -95,7 +95,7 @@ class AuthorEdit extends Component {
 				) }
 				<div className={ classes } style={ styles }>
 					{ dropZone }
-					<div className={ `${ className }__avatar` }>
+					<figure className={ `${ className }__avatar` }>
 						<MediaUploadCheck>
 							<MediaUpload
 								onSelect={ onUploadImage }
@@ -115,7 +115,7 @@ class AuthorEdit extends Component {
 							>
 							</MediaUpload>
 						</MediaUploadCheck>
-					</div>
+					</figure>
 					<div className={ `${ className }__content` }>
 						<RichText
 							identifier="name"
