@@ -89,3 +89,11 @@
 		margin-bottom: 34px;
 	}
 }
+
+.block-editor-inserter__preview-content {
+	.wp-block-coblocks-gallery-masonry {
+		.coblocks-gallery--item:last-child {
+			display: none;
+		}
+	}
+}

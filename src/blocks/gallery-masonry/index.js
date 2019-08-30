@@ -39,6 +39,19 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
+	example: {
+		attributes: {
+			gridSize: 'xlrg',
+			gutter: 5,
+			images: [
+				0, { url: '/wp-content/plugins/coblocks/dist/images/examples/masonry-1.jpg' },
+				1, { url: '/wp-content/plugins/coblocks/dist/images/examples/masonry-2.jpg' },
+				2, { url: '/wp-content/plugins/coblocks/dist/images/examples/masonry-3.jpg' },
+				3, { url: '/wp-content/plugins/coblocks/dist/images/examples/masonry-4.jpg' },
+				4, { url: '/wp-content/plugins/coblocks/dist/images/examples/masonry-5.jpg' },
+			],
+		},
+	},
 	attributes,
 	transforms,
 	edit,
