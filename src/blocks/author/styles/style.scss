@@ -2,21 +2,20 @@
 	align-items: flex-start;
 	background: $accordion-background;
 	display: flex;
-	margin: 1.5em 0;
-	padding: 30px 20px 35px;
+	padding: 30px 25px;
 	position: relative;
 
 	@media (min-width: 600px) {
-		padding: 40px 30px 45px;
+		padding: 40px 35px;
 	}
 
 	&__avatar {
 		border-radius: 100%;
 		flex: 0 0 auto;
-		margin-right: 20px;
+		margin-right: 25px;
 
 		@media (min-width: 600px) {
-			margin-right: 30px;
+			margin-right: 35px;
 		}
 	}
 
