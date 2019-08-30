@@ -33,17 +33,11 @@ class Controls extends Component {
 									render={ ( { open } ) => (
 										<IconButton
 											className="components-toolbar__control"
-											label={ __( 'Edit image' ) }
+											label={ __( 'Edit avatar' ) }
 											icon="edit"
 											onClick={ open }
 										/>
 									) }
-								/>
-								<IconButton
-									className="components-toolbar__control"
-									label={ __( 'Remove image' ) }
-									icon="trash"
-									onClick={ () => setAttributes( { imgUrl: '', imgId: '' } ) }
 								/>
 							</Toolbar>
 						</MediaUploadCheck>
