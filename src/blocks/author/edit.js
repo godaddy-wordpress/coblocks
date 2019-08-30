@@ -77,7 +77,7 @@ class AuthorEdit extends Component {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
-		}
+		};
 
 		const onUploadImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
 

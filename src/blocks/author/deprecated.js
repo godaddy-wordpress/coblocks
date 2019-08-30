@@ -12,7 +12,7 @@ const deprecated = [
 	{
 		attributes: {
 			...metadata.attributes,
-			textAlign: {
+			heading: {
 				type: 'string',
 				selector: '.wp-block-coblocks-author__heading',
 			},
