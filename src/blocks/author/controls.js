@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls, MediaUpload, MediaUploadCheck } = wp.blockEditor;
+const { BlockControls, MediaUpload, MediaUploadCheck } = wp.blockEditor;
 const { Toolbar, IconButton } = wp.components;
 
 class Controls extends Component {
@@ -16,7 +16,6 @@ class Controls extends Component {
 		const {
 			imgUrl,
 			imgId,
-			textAlign,
 		} = attributes;
 
 		const onSelectImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
@@ -24,10 +23,6 @@ class Controls extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
-					<AlignmentToolbar
-						value={ textAlign }
-						onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
-					/>
 					{ imgUrl &&
 						<MediaUploadCheck>
 							<Toolbar>

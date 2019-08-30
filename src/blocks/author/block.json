@@ -24,9 +24,6 @@
 			"source": "attribute",
 			"attribute": "src",
 			"selector": "img"
-		},
-		"textAlign": {
-			"type": "string"
 		}
 	}
 }

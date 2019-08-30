@@ -9,12 +9,11 @@ const save = ( { attributes } ) => {
 		heading,
 		imgUrl,
 		name,
-		textAlign,
 	} = attributes;
 
 	if ( name ) {
 		return (
-			<div style={ { textAlign: textAlign } }>
+			<div>
 				{ imgUrl && (
 					<div className={ 'wp-block-coblocks-author__avatar' }>
 						<img

@@ -93,7 +93,6 @@ class Edit extends Component {
 			heading,
 			imgUrl,
 			name,
-			textAlign,
 		} = attributes;
 
 		const dropZone = (
@@ -112,7 +111,7 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<div className={ className } style={ { textAlign: textAlign } }>
+				<div className={ className }>
 					{ dropZone }
 					<div className={ `${ className }__avatar` }>
 						<MediaUploadCheck>
