@@ -1,16 +1,22 @@
+/**
+ * External dependencies
+ */
+import classnames from 'classnames';
 
 /**
  * Internal dependencies
  */
 import Controls from './controls';
+import Inspector from './inspector';
 
 /**
  * WordPress dependencies
  */
 const { __, _x } = wp.i18n;
+const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { mediaUpload } = wp.editor;
-const { RichText, InnerBlocks, MediaUpload, MediaUploadCheck } = wp.blockEditor;
+const { RichText, InnerBlocks, MediaUpload, MediaUploadCheck, withColors } = wp.blockEditor;
 const { Button, Dashicon, DropZone } = wp.components;
 
 class AuthorEdit extends Component {
@@ -40,6 +46,8 @@ class AuthorEdit extends Component {
 			className,
 			isSelected,
 			setAttributes,
+			backgroundColor,
+			textColor,
 		} = this.props;
 
 		const {
@@ -55,6 +63,20 @@ class AuthorEdit extends Component {
 			/>
 		);
 
+		const classes = classnames(
+			className, {
+				'has-background': backgroundColor.color,
+				'has-text-color': textColor.color,
+				[ backgroundColor.class ]: backgroundColor.class,
+				[ textColor.class ]: textColor.class,
+			}
+		);
+
+		const styles = {
+			backgroundColor: backgroundColor.color,
+			color: textColor.color,
+		}
+
 		const onUploadImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
 
 		return (
@@ -64,7 +86,12 @@ class AuthorEdit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<div className={ className }>
+				{ isSelected && (
+					<Inspector
+						{ ...this.props }
+					/>
+				) }
+				<div className={ classes } style={ styles }>
 					{ dropZone }
 					<div className={ `${ className }__avatar` }>
 						<MediaUploadCheck>
@@ -129,4 +156,6 @@ class AuthorEdit extends Component {
 	}
 }
 
-export default AuthorEdit;
+export default compose( [
+	withColors( 'backgroundColor', { textColor: 'color' } ),
+] )( AuthorEdit );
