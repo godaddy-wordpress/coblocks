@@ -3,6 +3,11 @@
  */
 import { hasEmptyAttributes } from '../../utils/block-helpers';
 
+/**
+ * WordPress dependencies
+ */
+const { RichText, InnerBlocks } = wp.blockEditor;
+
 const isEmpty = attributes => {
 	const attributesToCheck = [ 'heading', 'name', 'imgUrl', 'biography' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
@@ -11,11 +16,6 @@ const isEmpty = attributes => {
 
 	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 };
-
-/**
- * WordPress dependencies
- */
-const { RichText, InnerBlocks } = wp.blockEditor;
 
 const save = ( { attributes } ) => {
 	const {
