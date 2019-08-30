@@ -9,7 +9,7 @@ import { hasEmptyAttributes } from '../../utils/block-helpers';
 const { RichText, InnerBlocks } = wp.blockEditor;
 
 const isEmpty = attributes => {
-	const attributesToCheck = [ 'heading', 'name', 'imgUrl', 'biography' ];
+	const attributesToCheck = [ 'name', 'imgUrl', 'biography' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
 	);
@@ -20,7 +20,6 @@ const isEmpty = attributes => {
 const save = ( { attributes } ) => {
 	const {
 		biography,
-		heading,
 		imgUrl,
 		name,
 	} = attributes;
@@ -37,13 +36,6 @@ const save = ( { attributes } ) => {
 				</div>
 			) }
 			<div className={ 'wp-block-coblocks-author__content' }>
-				{ ! RichText.isEmpty( heading ) && (
-					<RichText.Content
-						tagName="p"
-						className="wp-block-coblocks-author__heading"
-						value={ heading }
-					/>
-				) }
 				{ ! RichText.isEmpty( name ) && (
 					<RichText.Content
 						tagName="span"

@@ -8,10 +8,6 @@
 			"selector": ".wp-block-coblocks-author__biography",
 			"default": []
 		},
-		"heading": {
-			"type": "string",
-			"selector": ".wp-block-coblocks-author__heading"
-		},
 		"name": {
 			"type": "string",
 			"selector": ".wp-block-coblocks-author__name"

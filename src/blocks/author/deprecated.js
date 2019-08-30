@@ -14,7 +14,11 @@ const deprecated = [
 			...metadata.attributes,
 			textAlign: {
 				type: 'string',
-			}
+				selector: '.wp-block-coblocks-author__heading',
+			},
+			textAlign: {
+				type: 'string',
+			},
 		},
 
 		save( { attributes } ) {

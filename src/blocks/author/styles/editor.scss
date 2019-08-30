@@ -1,24 +1,31 @@
 .editor-block-list__block[data-type="coblocks/author"] {
-
 	.editor-inner-blocks {
-
 		.editor-block-list__block-edit {
-			margin-top: 0;
 			margin-bottom: 0;
+			margin-top: 0;
 		}
 	}
 
-	.block-library-button__inline-link {
-		margin-top: 5px;
+	.wp-block[data-type="core/button"] .block-editor-block-list__block-edit::before {
+		border: none;
+		box-shadow: none;
 	}
 
-	.editor-block-list__layout .editor-block-list__block > .editor-block-list__block-edit::before {
-		outline: none;
+	// Show the inline button control only when editing the button block.
+	&.is-selected .wp-block-button__inline-link {
+		display: none;
+	}
+
+	&.has-child-selected .wp-block-button__inline-link {
+		display: block;
+	}
+
+	.wp-block-button {
+		margin-top: 10px;
 	}
 }
 
 .wp-block-coblocks-author {
-
 	&__avatar {
 		background: $white;
 		position: relative;
@@ -32,10 +39,10 @@
 			width: 100%;
 			z-index: 50;
 
-			&:focus {
+			&:focus:not(:disabled) {
 				background: none;
 				border: none;
-				box-shadow: none;
+				box-shadow: 0 0 0 2px $blue-medium-focus;
 				outline: none;
 			}
 
@@ -53,4 +60,3 @@
 		margin: 0.2em 0 0.1em 0;
 	}
 }
-

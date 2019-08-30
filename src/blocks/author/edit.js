@@ -39,13 +39,11 @@ class AuthorEdit extends Component {
 			attributes,
 			className,
 			isSelected,
-			mergeBlocks,
 			setAttributes,
 		} = this.props;
 
 		const {
 			biography,
-			heading,
 			imgUrl,
 			name,
 		} = attributes;
@@ -90,30 +88,14 @@ class AuthorEdit extends Component {
 						</MediaUploadCheck>
 					</div>
 					<div className={ `${ className }__content` }>
-						{ ( ! RichText.isEmpty( heading ) || isSelected ) && (
-							<RichText
-								identifier="heading"
-								multiline={ false }
-								tagName="p"
-								className={ `${ className }__heading` }
-								placeholder={
-									// translators: placeholder text used for the heading
-									__( 'Optional heading…' )
-								}
-								value={ heading }
-								onChange={ ( nextHeading ) => {
-									setAttributes( { heading: nextHeading } );
-								} }
-							/>
-						) }
 						<RichText
 							identifier="name"
 							multiline={ false }
 							tagName="span"
 							className={ `${ className }__name` }
 							placeholder={
-								// translators: placeholder text used for the heading
-								__( 'Author name…' )
+								// translators: placeholder text used for the author name
+								__( 'Write author name…' )
 							}
 							value={ name }
 							onChange={ ( nextName ) => {
@@ -127,7 +109,7 @@ class AuthorEdit extends Component {
 							className={ `${ className }__biography` }
 							placeholder={
 								// translators: placeholder text used for the biography
-								__( 'Add a biography that distills objective credibility and authority to your readers…' )
+								__( 'Write a biography that distills objective credibility and authority to your readers…' )
 							}
 							value={ biography }
 							onChange={ ( nextBio ) => {
