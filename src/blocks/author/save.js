@@ -28,11 +28,7 @@ const save = ( { attributes } ) => {
 		<div>
 			{ imgUrl && (
 				<div className={ 'wp-block-coblocks-author__avatar' }>
-					<img
-						className="wp-block-coblocks-author__avatar-img"
-						src={ imgUrl }
-						alt="avatar"
-					/>
+					<img className="wp-block-coblocks-author__avatar-img" src={ imgUrl } alt={ name } />
 				</div>
 			) }
 			<div className={ 'wp-block-coblocks-author__content' }>
