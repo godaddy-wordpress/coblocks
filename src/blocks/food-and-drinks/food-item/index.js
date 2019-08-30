@@ -20,7 +20,7 @@ const { __ } = wp.i18n;
 /**
  * Block constants.
  */
-const { attributes, name } = metadata;
+const { name, category, attributes } = metadata;
 
 const settings = {
 	title: __( 'Food Item' ),
@@ -39,4 +39,4 @@ const settings = {
 	save,
 };
 
-export { name, metadata, settings };
+export { name, category, metadata, settings };

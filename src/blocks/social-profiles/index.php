@@ -26,9 +26,9 @@ function coblocks_render_social_profiles_block( $attributes ) {
 	}
 
 	// Attributes.
-	$text_align    = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "style=text-align:{$attributes['textAlign']}" : '';
-	$border_radius = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : '';
-	$has_padding   = is_array( $attributes ) && isset( $attributes['padding'] ) ? 'has-padding' : '';
+	$background_color_style = is_array( $attributes ) && isset( $attributes['customBlockBackgroundColor'] ) ? 'style=background-color:' . $attributes['customBlockBackgroundColor'] : '';
+	$border_radius          = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : '';
+	$has_padding            = is_array( $attributes ) && isset( $attributes['padding'] ) ? 'has-padding' : '';
 
 	$has_backround           = '';
 	$background_color_class  = '';
@@ -136,6 +136,22 @@ function coblocks_render_social_profiles_block( $attributes ) {
 		$class .= ' ' . $attributes['className'];
 	}
 
+	if ( isset( $attributes['align'] ) ) {
+		$class .= ' align' . $attributes['align'];
+	}
+
+	if ( isset( $attributes['textAlign'] ) ) {
+		$class .= ' has-text-align-' . $attributes['textAlign'];
+	}
+
+	if ( isset( $attributes['blockBackgroundColor'] ) || isset( $attributes['customBlockBackgroundColor'] ) ) {
+		$class .= ' has-background';
+	}
+
+	if ( isset( $attributes['blockBackgroundColor'] ) ) {
+		$class .= " has-{$attributes['blockBackgroundColor']}-background-color";
+	}
+
 	if ( isset( $attributes['hasColors'] ) && $attributes['hasColors'] ) {
 		$class .= ' has-colors';
 	}
@@ -148,7 +164,7 @@ function coblocks_render_social_profiles_block( $attributes ) {
 	$block_content = sprintf(
 		'<div class="%1$s" %2$s><ul>%3$s</ul></div>',
 		esc_attr( $class ),
-		esc_attr( $text_align ),
+		esc_attr( $background_color_style ),
 		$markup
 	);
 
@@ -171,73 +187,83 @@ function coblocks_register_social_profiles_block() {
 			'editor_style'    => 'coblocks-editor',
 			'style'           => 'coblocks-frontend',
 			'attributes'      => array(
-				'className'             => array(
+				'align'                      => array(
+					'type' => 'string',
+					'enum' => array( 'wide', 'full' ),
+				),
+				'className'                  => array(
 					'type' => 'string',
 				),
-				'hasColors'             => array(
+				'hasColors'                  => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'borderRadius'          => array(
+				'borderRadius'               => array(
 					'type'    => 'number',
 					'default' => 40,
 				),
-				'size'                  => array(
+				'size'                       => array(
 					'type'    => 'string',
 					'default' => 'med',
 				),
-				'iconSize'              => array(
+				'iconSize'                   => array(
 					'type'    => 'number',
 					'default' => 22,
 				),
-				'padding'               => array(
+				'padding'                    => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'textAlign'             => array(
+				'textAlign'                  => array(
 					'type' => 'string',
 				),
-				'backgroundColor'       => array(
+				'backgroundColor'            => array(
 					'type' => 'string',
 				),
-				'customBackgroundColor' => array(
+				'blockBackgroundColor'       => array(
 					'type' => 'string',
 				),
-				'textColor'             => array(
+				'customBlockBackgroundColor' => array(
 					'type' => 'string',
 				),
-				'customTextColor'       => array(
+				'customBackgroundColor'      => array(
 					'type' => 'string',
 				),
-				'facebook'              => array(
+				'textColor'                  => array(
+					'type' => 'string',
+				),
+				'customTextColor'            => array(
+					'type' => 'string',
+				),
+				'facebook'                   => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'twitter'               => array(
+				'twitter'                    => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'instagram'             => array(
+				'instagram'                  => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'pinterest'             => array(
+				'pinterest'                  => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'linkedin'              => array(
+				'linkedin'                   => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'youtube'               => array(
+				'youtube'                    => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'yelp'                  => array(
+				'yelp'                       => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'houzz'                 => array(
+				'houzz'                      => array(
 					'type'    => 'string',
 					'default' => '',
 				),

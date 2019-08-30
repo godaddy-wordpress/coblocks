@@ -20,7 +20,7 @@ const { InnerBlocks } = wp.blockEditor;
 /**
  * Block constants
  */
-const { attributes, name } = metadata;
+const { name, category, attributes } = metadata;
 
 const settings = {
 	title: __( 'Form' ),
@@ -36,4 +36,4 @@ const settings = {
 	save: InnerBlocks.Content,
 };
 
-export { name, metadata, settings };
+export { name, category, metadata, settings };
