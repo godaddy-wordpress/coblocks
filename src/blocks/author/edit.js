@@ -16,7 +16,7 @@ const { __, _x } = wp.i18n;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { mediaUpload } = wp.editor;
-const { RichText, InnerBlocks, MediaUpload, MediaUploadCheck, withColors } = wp.blockEditor;
+const { RichText, InnerBlocks, MediaUpload, MediaUploadCheck, withColors, withFontSizes } = wp.blockEditor;
 const { Button, Dashicon, DropZone } = wp.components;
 
 class AuthorEdit extends Component {
@@ -48,6 +48,7 @@ class AuthorEdit extends Component {
 			setAttributes,
 			backgroundColor,
 			textColor,
+			fontSize,
 		} = this.props;
 
 		const {
@@ -75,6 +76,7 @@ class AuthorEdit extends Component {
 		const styles = {
 			backgroundColor: backgroundColor.color,
 			color: textColor.color,
+			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 		}
 
 		const onUploadImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
@@ -158,4 +160,5 @@ class AuthorEdit extends Component {
 
 export default compose( [
 	withColors( 'backgroundColor', { textColor: 'color' } ),
+	withFontSizes( 'fontSize' ),
 ] )( AuthorEdit );

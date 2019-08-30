@@ -11,7 +11,7 @@ import { hasEmptyAttributes } from '../../utils/block-helpers';
 /**
  * WordPress dependencies
  */
-const { RichText, InnerBlocks, getColorClassName } = wp.blockEditor;
+const { RichText, InnerBlocks, getColorClassName, getFontSizeClass } = wp.blockEditor;
 
 const isEmpty = attributes => {
 	const attributesToCheck = [ 'name', 'imgUrl', 'biography' ];
@@ -22,7 +22,7 @@ const isEmpty = attributes => {
 	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 };
 
-const save = ( { attributes, className } ) => {
+const save = ( { attributes } ) => {
 	const {
 		backgroundColor,
 		biography,
@@ -31,21 +31,26 @@ const save = ( { attributes, className } ) => {
 		imgUrl,
 		name,
 		textColor,
+		fontSize,
+		customFontSize,
 	} = attributes;
 
 	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 	const textClass = getColorClassName( 'color', textColor );
+	const fontSizeClass = getFontSizeClass( fontSize );
 
-	const classes = classnames( className, {
+	const classes = classnames( {
 		'has-text-color': textColor || customTextColor,
 		'has-background': backgroundColor || customBackgroundColor,
 		[ textClass ]: textClass,
 		[ backgroundClass ]: backgroundClass,
+		[ fontSizeClass ]: fontSizeClass,
 	} );
 
 	const styles = {
 		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 		color: textClass ? undefined : customTextColor,
+		fontSize: fontSizeClass ? undefined : customFontSize,
 	};
 
 	return isEmpty( attributes ) ? null : (

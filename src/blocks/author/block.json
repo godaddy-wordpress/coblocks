@@ -32,6 +32,12 @@
 		},
 		"customTextColor": {
 			"type": "string"
+		},
+		"fontSize": {
+			"type": "string"
+		},
+		"customFontSize": {
+			"type": "number"
 		}
 	}
 }
