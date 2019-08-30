@@ -1,7 +1,5 @@
 .editor-block-list__block[data-type="coblocks/author"] {
-
 	.editor-inner-blocks {
-
 		.editor-block-list__block-edit {
 			margin-top: 0;
 			margin-bottom: 0;
@@ -18,7 +16,6 @@
 }
 
 .wp-block-coblocks-author {
-
 	&__avatar {
 		background: $white;
 		position: relative;
@@ -54,3 +51,18 @@
 	}
 }
 
+// Shim to make the avatar 100% opacity in the previewer.
+.block-editor-inserter__preview-content .wp-block-coblocks-author {
+	.components-button {
+		opacity: 1;
+	}
+
+	.wp-block-coblocks-author__avatar {
+		height: 110px;
+		width: 110px;
+	}
+
+	.editor-block-list__layout {
+		margin-left: 0;
+	}
+}
