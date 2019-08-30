@@ -7,62 +7,17 @@ import Controls from './controls';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { mediaUpload } = wp.editor;
 const { RichText, InnerBlocks, MediaUpload, MediaUploadCheck } = wp.blockEditor;
 const { Button, Dashicon, DropZone } = wp.components;
 
-/**
- * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
- * The contents of the array should never change.
- * The array should contain the name of each block that is allowed.
- * In standout block, the only block we allow is 'core/list'.
- *
- * @constant
- * @type {string[]}
-*/
-const ALLOWED_BLOCKS = [ 'core/button' ];
-const TEMPLATE = [ [ 'core/button', { text: 'Follow' } ] ];
-
-/**
- * Block edit function
- */
-class Edit extends Component {
+class AuthorEdit extends Component {
 	constructor() {
 		super( ...arguments );
 		this.addImage = this.addImage.bind( this );
 		this.onSelectImage = this.onSelectImage.bind( this );
-		this.onFocusButton = this.onFocusButton.bind( this );
-		this.offFocusButton = this.offFocusButton.bind( this );
-
-		this.state = {
-			buttonFocused: false,
-		};
-	}
-
-	componentDidUpdate( prevProps ) {
-		if ( ! this.props.isSelected && prevProps.isSelected && this.state.buttonFocused ) {
-			this.setState( {
-				buttonFocused: false,
-			} );
-		}
-	}
-
-	onFocusButton() {
-		if ( ! this.state.buttonFocused ) {
-			this.setState( {
-				buttonFocused: true,
-			} );
-		}
-	}
-
-	offFocusButton() {
-		if ( this.state.buttonFocused ) {
-			this.setState( {
-				buttonFocused: false,
-			} );
-		}
 	}
 
 	onSelectImage( media ) {
@@ -137,41 +92,52 @@ class Edit extends Component {
 					<div className={ `${ className }__content` }>
 						{ ( ! RichText.isEmpty( heading ) || isSelected ) && (
 							<RichText
-								multiline="false"
+								identifier="heading"
+								multiline={ false }
 								tagName="p"
-								placeholder={ __( 'Heading...' ) }
-								value={ heading }
 								className={ `${ className }__heading` }
-								onChange={ ( value ) => setAttributes( { heading: value } ) }
-								unstableOnFocus={ this.offFocusButton }
-								keepPlaceholderOnFocus
+								placeholder={
+									// translators: placeholder text used for the heading
+									__( 'Optional heading…' )
+								}
+								value={ heading }
+								onChange={ ( nextHeading ) => {
+									setAttributes( { heading: nextHeading } );
+								} }
 							/>
 						) }
 						<RichText
-							multiline="false"
+							identifier="name"
+							multiline={ false }
 							tagName="span"
-							placeholder={ __( 'Author Name' ) }
-							value={ name }
 							className={ `${ className }__name` }
-							onMerge={ mergeBlocks }
-							onChange={ ( value ) => setAttributes( { name: value } ) }
-							unstableOnFocus={ this.offFocusButton }
-							keepPlaceholderOnFocus
+							placeholder={
+								// translators: placeholder text used for the heading
+								__( 'Author name…' )
+							}
+							value={ name }
+							onChange={ ( nextName ) => {
+								setAttributes( { name: nextName } );
+							} }
 						/>
 						<RichText
-							multiline="false"
+							identifier="biography"
+							multiline={ false }
 							tagName="p"
-							placeholder={ __( 'Write biography...' ) }
 							className={ `${ className }__biography` }
+							placeholder={
+								// translators: placeholder text used for the biography
+								__( 'Add a biography that distills objective credibility and authority to your readers…' )
+							}
 							value={ biography }
-							onChange={ ( value ) => setAttributes( { biography: value } ) }
-							unstableOnFocus={ this.offFocusButton }
-							keepPlaceholderOnFocus
+							onChange={ ( nextBio ) => {
+								setAttributes( { biography: nextBio } );
+							} }
 						/>
 						<InnerBlocks
-							template={ TEMPLATE }
+							template={ [ [ 'core/button', { placeholder: _x( 'Author link...', 'content placeholder' ) } ] ] }
 							templateLock="all"
-							allowedBlocks={ ALLOWED_BLOCKS }
+							allowedBlocks={ [ 'core/button' ] }
 							templateInsertUpdatesSelection={ false }
 						/>
 					</div>
@@ -181,4 +147,4 @@ class Edit extends Component {
 	}
 }
 
-export default Edit;
+export default AuthorEdit;
