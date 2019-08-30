@@ -1,14 +1,13 @@
 .wp-block-coblocks-author {
 	align-items: flex-start;
 	background: $accordion-background;
-	border-radius: $accordion-border-radius;
 	display: flex;
 	margin: 1.5em 0;
-	padding: 30px 20px;
+	padding: 30px 20px 35px;
 	position: relative;
 
 	@media (min-width: 600px) {
-		padding: 40px 30px;
+		padding: 40px 30px 45px;
 	}
 
 	&__avatar {
