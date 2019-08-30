@@ -40,7 +40,7 @@ const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
 		//add unique selector
 		if ( allowedBlocks.includes( props.name ) && typeof attributes.coblocks.id === 'undefined' ) {
 			if ( typeof attributes.coblocks === 'undefined' ) {
-				attributes.coblocks = [];
+				attributes.coblocks = {};
 			}
 
 			const d = new Date();
