@@ -39,6 +39,17 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full', 'left', 'center', 'right' ],
 	},
+	example: {
+		attributes: {
+			align: 'wide',
+			fullwidth: false,
+			gutter: 5,
+			images: [
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/masonry-1.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/masonry-2.jpg' },
+			],
+		},
+	},
 	attributes,
 	transforms,
 	edit,
