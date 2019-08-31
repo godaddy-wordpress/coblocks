@@ -42,7 +42,7 @@ class Controls extends Component {
 								setAttributes( {
 									count: parseInt( number ),
 								} ),
-						} )
+							} )
 						) }
 					/>
 				</BlockControls>
