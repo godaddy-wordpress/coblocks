@@ -30,6 +30,15 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
+	example: {
+		attributes: {
+			align: 'full',
+			images: [
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/logo-1.jpg', width: 420 },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/logo-2.jpg', width: 340 },
+			],
+		},
+	},
 	attributes,
 	edit,
 	save,
