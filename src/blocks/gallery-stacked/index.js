@@ -41,7 +41,6 @@ const settings = {
 	},
 	example: {
 		attributes: {
-			align: 'wide',
 			fullwidth: false,
 			gutter: 5,
 			images: [
