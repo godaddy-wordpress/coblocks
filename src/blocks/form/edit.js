@@ -10,11 +10,11 @@ import emailValidator from 'email-validator';
  * Internal dependencies
  */
 import icons from './icons';
-import CoBlocksField from './components/fields/field';
-import CoBlocksFieldName from './components/fields/field-name';
-import CoBlocksFieldTextarea from './components/fields/field-textarea';
-import Notice from './components/notice';
-import SubmitButton from './components/submit-button';
+import CoBlocksField from './fields/field';
+import CoBlocksFieldName from './fields/field-name';
+import CoBlocksFieldTextarea from './fields/field-textarea';
+import Notice from './notice';
+import SubmitButton from './submit-button';
 
 /**
  * WordPress dependencies
@@ -82,7 +82,7 @@ const editField = type => props => (
 
 export const childBlocks = [
 	{
-		name: 'field-name',
+		name: 'coblocks/field-name',
 		settings: {
 			...FieldDefaults,
 			title: __( 'Name' ),
@@ -103,7 +103,7 @@ export const childBlocks = [
 		},
 	},
 	{
-		name: 'field-email',
+		name: 'coblocks/field-email',
 		settings: {
 			...FieldDefaults,
 			title: __( 'Email' ),
@@ -114,7 +114,7 @@ export const childBlocks = [
 		},
 	},
 	{
-		name: 'field-textarea',
+		name: 'coblocks/field-textarea',
 		settings: {
 			...FieldDefaults,
 			title: __( 'Message' ),
@@ -134,7 +134,7 @@ export const childBlocks = [
 ];
 
 childBlocks.forEach( childBlock =>
-	registerBlockType( `coblocks/${ childBlock.name }`, childBlock.settings )
+	registerBlockType( childBlock.name, childBlock.settings )
 );
 
 /**

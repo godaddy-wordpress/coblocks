@@ -1,0 +1,27 @@
+{
+	"name": "coblocks/form",
+	"category": "coblocks",
+	"attributes": {
+		"subject": {
+			"type": "string",
+			"default": null
+		},
+		"to": {
+			"type": "string",
+			"default": null
+		},
+		"submitButtonText": {
+			"type": "string",
+			"default": "Submit"
+		},
+		"customBackgroundButtonColor": {
+			"type": "string"
+		},
+		"customTextButtonColor": {
+			"type": "string"
+		},
+		"submitButtonClasses": {
+			"type": "string"
+		}
+	}
+}

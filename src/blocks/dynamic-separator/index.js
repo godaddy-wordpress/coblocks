@@ -1,11 +1,16 @@
 /**
- * Internal dependencies
+ * Styles.
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import save from './save';
-import icons from './icons';
+
+/**
+ * Internal dependencies
+ */
 import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
+import save from './save';
 import transforms from './transforms';
 
 /**
@@ -16,46 +21,22 @@ const { __, _x } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'dynamic-separator';
-
-const title = __( 'Dynamic HR' );
-
-const icon = icons.hr;
-
-const blockAttributes = {
-	height: {
-		type: 'number',
-		default: 50,
-	},
-	color: {
-		type: 'string',
-	},
-	customColor: {
-		type: 'string',
-	},
-};
+const { name, category, attributes } = metadata;
 
 const settings = {
-
-	title,
-
+	title: __( 'Dynamic HR' ),
 	description: __( 'Add a resizable spacer between other blocks.' ),
-
-	keywords: [	__( 'hr' ),	__( 'spacer' ),	__( 'coblocks' ) ],
-
-	attributes: blockAttributes,
-
+	icon,
+	keywords: [ __( 'spacer' ), 'hr', 'coblocks' ],
 	styles: [
 		{ name: 'dots', label: _x( 'Dot', 'block style' ), isDefault: true },
 		{ name: 'line', label: _x( 'Line', 'block style' ) },
 		{ name: 'fullwidth', label: _x( 'Fullwidth', 'block style' ) },
 	],
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

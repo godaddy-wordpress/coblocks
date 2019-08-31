@@ -1,10 +1,15 @@
 /**
- * Internal dependencies
+ * Styles.
  */
 import './styles/editor.scss';
 import './styles/style.scss';
+
+/**
+ * Internal dependencies
+ */
 import edit from './edit';
-import icons from './../../utils/icons';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
 
@@ -16,67 +21,17 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'click-to-tweet';
-
-const title = __( 'Click to Tweet' );
-
-const blockAttributes = {
-	content: {
-		type: 'string',
-		source: 'html',
-		selector: 'p',
-		default: [],
-	},
-	url: {
-		type: 'attribute',
-	},
-	textAlign: {
-		type: 'string',
-	},
-	via: {
-		type: 'string',
-	},
-	buttonText: {
-		type: 'string',
-		default: __( 'Tweet' ),
-	},
-	buttonColor: {
-		type: 'string',
-	},
-	textColor: {
-		type: 'string',
-	},
-	customButtonColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
-	fontSize: {
-		type: 'string',
-	},
-	customFontSize: {
-		type: 'number',
-	},
-};
-
-const icon = icons.twitter;
+const { name, category, attributes } = metadata;
 
 const settings = {
-
-	title,
-
+	title: __( 'Click to Tweet' ),
 	description: __( 'Add a quote for readers to tweet via Twitter.' ),
-
-	keywords: [ __( 'share' ), __( 'twitter' ), __( 'coblocks' ) ],
-
-	attributes: blockAttributes,
-
+	icon,
+	keywords: [ __( 'share' ), __( 'twitter' ), 'coblocks' ],
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

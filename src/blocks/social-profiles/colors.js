@@ -9,6 +9,7 @@ const { withColors } = wp.blockEditor;
 const applyWithColors = withColors(
 	'backgroundColor',
 	{ textColor: 'color' },
+	'blockBackgroundColor',
 );
 
 export default applyWithColors;

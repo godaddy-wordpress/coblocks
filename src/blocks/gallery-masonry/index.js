@@ -1,14 +1,19 @@
 /**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
+
+/**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-import icons from './icons';
 import edit from './edit';
-import transforms from './transforms';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
-import { GalleryAttributes } from '../../components/block-gallery/shared';
+import transforms from './transforms';
 import { BackgroundAttributes } from '../../components/background';
+import { GalleryAttributes } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
@@ -18,49 +23,26 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'gallery-masonry';
+const { name, category } = metadata;
 
-const title = __( 'Masonry' );
-
-const icon = icons.masonry;
-
-const keywords = [
-	__( 'gallery' ),
-	__( 'photos' ),
-];
-
-const blockAttributes = {
+const attributes = {
 	...GalleryAttributes,
 	...BackgroundAttributes,
-
-	// Block specific attributes.
-	gridSize: {
-		type: 'string',
-		default: 'xlrg',
-	},
+	...metadata.attributes,
 };
 
 const settings = {
-
-	title: title,
-
+	title: __( 'Masonry' ),
 	description: __( 'Display multiple images in an organized masonry gallery.' ),
-
-	category: 'coblocks-galleries',
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	icon,
+	keywords: [	__( 'gallery' ), __( 'photos' )	],
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, category, icon, metadata, settings };

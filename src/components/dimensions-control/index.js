@@ -9,15 +9,16 @@ import map from 'lodash/map';
  */
 import icons from './icons';
 import './styles/editor.scss';
+import DimensionsSelect from './dimensions-select';
 
 /**
  * WordPress dependencies
  */
-const { __, _x, sprintf } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 const { withInstanceId } = wp.compose;
 const { dispatch } = wp.data;
 const { Component, Fragment } = wp.element;
-const { ButtonGroup, Dropdown, NavigableMenu, BaseControl, Button, Tooltip, Dashicon, TabPanel } = wp.components;
+const { ButtonGroup, BaseControl, Button, Tooltip, TabPanel } = wp.components;
 
 class DimensionsControl extends Component {
 	constructor( props ) {
@@ -311,7 +312,10 @@ class DimensionsControl extends Component {
 			syncUnitsTablet,
 			syncUnitsMobile,
 			dimensionSize,
+			setAttributes,
 		} = this.props;
+
+		const { paddingSize, marginSize } = this.props.attributes;
 
 		const classes = classnames(
 			'components-base-control',
@@ -413,35 +417,6 @@ class DimensionsControl extends Component {
 				unitValue: '%',
 			},
 		];
-
-		const utilitySizes = [
-			{
-				name: __( 'None' ),
-				size: 0,
-				slug: 'no',
-			},
-			{
-				name: __( 'Small' ),
-				size: 14,
-				slug: 'small',
-			},
-			{
-				name: __( 'Medium' ),
-				size: 24,
-				slug: 'medium',
-			},
-			{
-				name: __( 'Large' ),
-				size: 34,
-				slug: 'large',
-			}, {
-				name: __( 'Huge' ),
-				size: 60,
-				slug: 'huge',
-			},
-		];
-
-		const currentSize = utilitySizes.find( ( utility ) => utility.slug === dimensionSize );
 
 		const onSelect = ( tabName ) => {
 			let selected = 'desktop';
@@ -733,40 +708,14 @@ class DimensionsControl extends Component {
 							</div>
 						</Fragment>						:
 						<BaseControl id="textarea-1" label={ label } help={ help }>
-							<div className="components-font-size-picker__buttons">
-								<Dropdown
-									className="components-font-size-picker__dropdown"
-									contentClassName="components-font-size-picker__dropdown-content components-coblocks-dimensions-control__dropdown-content"
-									position="bottom"
-									renderToggle={ ( { isOpen, onToggle } ) => (
-										<Button
-											className="components-font-size-picker__selector"
-											isLarge
-											onClick={ onToggle }
-											aria-expanded={ isOpen }
-											aria-label={ sprintf( __( 'Custom %s size' ), label.toLowerCase() ) }
-										>
-											{ ( currentSize && currentSize.name ) || ( ! dimensionSize && _x( 'Normal', 'size name' ) ) || _x( 'Custom', 'size name' ) }
-										</Button>
-									) }
-									renderContent={ () => (
-										<NavigableMenu>
-											{ map( utilitySizes, ( { name, size, slug } ) => (
-												<Button
-													key={ slug }
-													onClick={ () => this.onChangeSize( slug, size ) }
-													className={ `is-${ slug }-size` }
-													role="menuitem"
-												>
-													{ ( dimensionSize === slug || ( ! dimensionSize && slug === 'normal' ) ) && <Dashicon icon="saved" /> }
-													<span className="components-font-size-picker__dropdown-text-size">
-														{ name }
-													</span>
-												</Button>
-											) ) }
-										</NavigableMenu>
-									) }
+							<div className="components-font-size-picker__controls">
+								<DimensionsSelect
+									type={ type }
+									setAttributes={ setAttributes }
+									paddingSize={ paddingSize }
+									marginSize={ marginSize }
 								/>
+
 								<Button
 									className="components-color-palette__clear"
 									type="button"

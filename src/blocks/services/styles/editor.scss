@@ -18,6 +18,11 @@ $gutter: 0.3em;
 			transform: translateX(8px);
 		}
 	}
+
+	.block-editor-block-styles__item-preview {
+		height: 82px;
+		padding: 0;
+	}
 }
 
 .wp-block-coblocks-services {

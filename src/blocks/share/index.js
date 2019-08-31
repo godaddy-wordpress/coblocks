@@ -1,10 +1,14 @@
 /**
- * Internal dependencies
+ * Styles.
  */
 import './styles/editor.scss';
 import './styles/style.scss';
+
+/**
+ * Internal dependencies
+ */
 import edit from './edit';
-import icons from './../../utils/icons';
+import icon from './icon';
 
 /**
  * WordPress dependencies
@@ -14,21 +18,14 @@ const { __, _x } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'social';
-
-const title = __( 'Share' );
-
-const icon = icons.social;
-
-const keywords = [ __( 'social' ), __( 'coblocks' ) ];
+const name = 'coblocks/social';
 
 const settings = {
-	title,
-
+	title: __( 'Share' ),
 	description: __( 'Add social sharing links to help you get likes and shares.' ),
-
-	keywords,
-
+	icon,
+	category: 'coblocks',
+	keywords: [ __( 'social' ), 'coblocks' ],
 	styles: [
 		{ name: 'mask', label: _x( 'Mask', 'block style' ) },
 		{ name: 'icon', label: _x( 'Icon', 'block style' ), isDefault: true },
@@ -37,11 +34,15 @@ const settings = {
 		{ name: 'circular', label: _x( 'Circular', 'block style' ) },
 	],
 
-	edit,
+	supports: {
+		align: [ 'wide', 'full' ],
+		coBlocksSpacing: true,
+	},
 
+	edit,
 	save() {
 		return null;
 	},
 };
 
-export { name, title, icon, settings };
+export { name, settings };

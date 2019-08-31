@@ -1,0 +1,39 @@
+{
+	"name": "coblocks/pricing-table-item",
+	"category": "coblocks",
+	"attributes": {
+		"title": {
+			"source": "children",
+			"selector": ".wp-block-coblocks-pricing-table-item__title"
+		},
+		"features": {
+			"source": "children",
+			"selector": ".wp-block-coblocks-pricing-table-item__features"
+		},
+		"currency": {
+			"type": "array",
+			"source": "children",
+			"selector": ".wp-block-coblocks-pricing-table-item__currency"
+		},
+		"amount": {
+			"type": "array",
+			"source": "children",
+			"selector": ".wp-block-coblocks-pricing-table-item__amount"
+		},
+		"backgroundColor": {
+			"type": "string"
+		},
+		"customBackgroundColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"customTextColor": {
+			"type": "string"
+		},
+		"placeholder": {
+			"type": "string"
+		}
+	}
+}
