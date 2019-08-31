@@ -44,8 +44,8 @@ const settings = {
 			fullwidth: false,
 			gutter: 5,
 			images: [
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/masonry-1.jpg' },
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/masonry-2.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-1.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-2.jpg' },
 			],
 		},
 	},
