@@ -101,34 +101,6 @@ $gutter: 0.3em;
 }
 
 // Added for Gutenberg 6.3+
-.block-editor-block-list__block[data-type="coblocks/service"].has-child-selected .wp-block-coblocks-service__content .block-editor-block-list__block-edit {
-	margin-left: -24px;
-	margin-right: -27px;
-}
-
-.block-editor-block-list__block[data-type="coblocks/service"].has-child-selected > .block-editor-block-list__block-edit .wp-block-coblocks-service::before,
-.block-editor-block-list__block[data-type="coblocks/service"].is-selected > .block-editor-block-list__block-edit .wp-block-coblocks-service::before {
-	border: 1px dashed rgba(123, 134, 162, 0.3);
-	bottom: 0;
-	box-shadow: none;
-	content: "";
-	left: -2px;
-	outline: 1px solid transparent;
-	pointer-events: none;
-	position: absolute;
-	right: -2px;
-	top: 0;
-	transition: border-color 0.1s linear, border-style 0.1s linear, box-shadow 0.1s linear;
-	z-index: 0;
-}
-
-.block-editor-block-list__layout .block-editor-block-list__block[data-type="coblocks/service"].has-child-selected .wp-block-coblocks-service,
-.block-editor-block-list__layout .block-editor-block-list__block[data-type="coblocks/service"].is-selected .wp-block-coblocks-service {
-	padding: 0 14px;
-}
-
-.block-editor-block-list__block[data-type="coblocks/service"].has-child-selected > .block-editor-block-list__block-edit > [data-block] > div,
-.block-editor-block-list__block[data-type="coblocks/service"].is-selected > .block-editor-block-list__block-edit > [data-block] > div,
 .block-editor-block-list__block[data-type="coblocks/services"].has-child-selected
 	> .block-editor-block-list__block-edit
 	> [data-block]
