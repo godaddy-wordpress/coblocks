@@ -36,7 +36,7 @@ const settings = {
 
 	description: __( 'Add an image or video with an offset card side-by-side.' ),
 
-	keywords: [ __( 'image' ), __( 'video' ), __( 'coblocks' ) ],
+	keywords: [ __( 'image' ), __( 'video' ), 'coblocks' ],
 
 	attributes,
 
