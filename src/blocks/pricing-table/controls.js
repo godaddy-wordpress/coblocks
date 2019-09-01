@@ -4,14 +4,9 @@
 import { find } from 'lodash';
 
 /**
- * Internal dependencies
- */
-import icons from '../../utils/icons';
-
-/**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { AlignmentToolbar, BlockControls } = wp.blockEditor;
 const { Toolbar, Path, SVG } = wp.components;
