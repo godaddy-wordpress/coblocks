@@ -25,7 +25,7 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	title: __( 'Pricing Table' ),
-	description: __( 'Add pricing tables.' ),
+	description: __( 'Add pricing tables to help visitors compare products and plans.' ),
 	icon,
 	keywords: [ __( 'landing' ), __( 'comparison' ), 'coblocks' ],
 	supports: {
