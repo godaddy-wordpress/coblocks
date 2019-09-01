@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import name from './';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -41,7 +41,7 @@ const transforms = {
 			type: 'prefix',
 			prefix: ':row',
 			transform: function( content ) {
-				return createBlock( `coblocks/${ name }`, {
+				return createBlock( metadata.name, {
 					content,
 				} );
 			},
@@ -50,7 +50,7 @@ const transforms = {
 			type: 'prefix',
 			prefix: Array( columns + 1 ).join( ':' ) + 'row',
 			transform( content ) {
-				return createBlock( `coblocks/${ name }`, {
+				return createBlock( metadata.name, {
 					content,
 					columns,
 					layout: generateLayout( columns ),

@@ -141,6 +141,11 @@ class CoBlocks_Block_Assets {
 	 */
 	public function frontend_scripts() {
 
+		// Custom scripts are not allowed in AMP, so short-circuit.
+		if ( CoBlocks()->is_amp() ) {
+			return;
+		}
+
 		// Define where the asset is loaded from.
 		$dir = CoBlocks()->asset_source( 'js' );
 
