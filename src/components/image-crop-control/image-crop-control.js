@@ -41,7 +41,7 @@ class ImageCropControl extends Component {
 
 	componentDidMount() {
 		this.setState( {
-			containerWidth: ( jQuery( this.imageContainer.current ).width() - 40 ),
+			containerWidth: ( jQuery( this.imageContainer.current ).width() - 28 ),
 		} );
 
 		this.selectedAreaReference.current.addEventListener( 'wheel', this.handleMouseWheel );
@@ -187,15 +187,6 @@ class ImageCropControl extends Component {
 		const self = this;
 		const { imageUrl } = self.props;
 
-		const mainClass = classnames(
-			'components-base-control',
-			'components-coblocks-image-control'
-		);
-
-		const offsetClass = classnames(
-			'components-coblocks-offset-control'
-		);
-
 		let scaleX, scaleY, translateX, translateY;
 		const coefficient = ( self.state.r === 90 || self.state.r === 270 ) ? this.state.aspectRatio : 1;
 		const currentImageWidth = Math.round( ( self.state.imageWidth * ( this.state.w / 100 ) ) / coefficient );
@@ -224,10 +215,22 @@ class ImageCropControl extends Component {
 			translateY = 50 - ( self.state.y + ( self.state.h / 2 ) );
 		}
 
+		const mainClass = classnames(
+			'components-base-control',
+			'components-coblocks-image-control', {
+				'is-zoomed': scaleX > 1,
+			}
+		);
+
+		const offsetClass = classnames(
+			'components-coblocks-offset-control'
+		);
+
 		const imageHeight = Math.round( this.state.containerWidth / currentAspect );
 		const containerStyle = {
-			height: ( imageHeight + 40 ) + 'px',
+			height: ( imageHeight + 28 ) + 'px',
 		};
+
 		const style = {
 			transform: 'rotate(' + this.state.r + 'deg) scale(' + scaleX + ', ' + scaleY + ') translate(' + translateX + '%, ' + translateY + '%)',
 			height: imageHeight + 'px',
@@ -247,7 +250,7 @@ class ImageCropControl extends Component {
 				</div>
 				<div className={ offsetClass }>
 					<TextControl
-						label={ __( 'Offset X (%)' ) }
+						label={ __( 'Horizontal Pos.' ) }
 						value={ self.state.x }
 						type={ 'number' }
 						min={ 0 }
@@ -255,7 +258,7 @@ class ImageCropControl extends Component {
 						onChange={ ( val ) => this.updateState( val, self.state.y, self.state.w, self.state.h, self.state.r ) }
 					/>
 					<TextControl
-						label={ __( 'Offset Y (%)' ) }
+						label={ __( 'Vertical Pos.' ) }
 						value={ self.state.y }
 						type={ 'number' }
 						min={ 0 }
@@ -264,13 +267,14 @@ class ImageCropControl extends Component {
 					/>
 				</div>
 				<RangeControl
-					label={ 'Zoom (%)' }
+					label={ 'Zoom' }
 					value={ this.getCurrentScale() }
 					onChange={ ( val ) => this.setNewZoom( val, self.state.r ) }
 					min={ 100 }
 					max={ 1000 }
 				/>
 				<ButtonGroup>
+					<p>{ __( 'Rotate' ) }</p>
 					<Button
 						isDefault
 						isPrimary={ self.state.r === 0 }

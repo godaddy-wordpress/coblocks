@@ -1,38 +1,44 @@
 .components-coblocks-image-control {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  overflow: hidden;
-  background-color: #ccc;
+	background-color: $light-gray-200;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
 
-  > div {
-    position: absolute;
-    top: 0;
-    margin: 20px;
-    overflow: hidden;
+	> div {
+		margin: 14px;
+		overflow: hidden;
+		position: absolute;
+		top: 0;
 
-    &:first-child {
-      opacity: 0.5;
-      overflow: visible;
-    }
+		&:first-child {
+			opacity: 0.5;
+			overflow: visible;
+		}
 
-    &:last-child {
-      cursor: move;
-    }
+		&:last-child {
+			cursor: move;
+		}
 
-    img {
-      display: block;
-      will-change: transform;
-    }
-  }
+		img {
+			display: block;
+			will-change: transform;
+		}
+	}
+
+	&.is-zoomed div:first-child {
+		img {
+			filter: blur(6px) saturate(0.7) brightness(1.1);
+		}
+	}
 }
 
 .components-coblocks-offset-control {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 
-  > div {
-    width: 45%;
-  }
+	> div {
+		width: 45%;
+	}
 }
