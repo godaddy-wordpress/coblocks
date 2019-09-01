@@ -1,5 +1,6 @@
 {
-	"name": "service",
+	"name": "coblocks/service",
+	"category": "coblocks",
 	"attributes": {
 		"headingLevel": {
 			"type": "integer",
