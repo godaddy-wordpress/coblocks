@@ -2,6 +2,11 @@
 	position: relative;
 	text-align: center;
 
+	&.alignleft,
+	&.alignright {
+		max-width: 305px;
+	}
+
 	&:not(.has-caption-color) {
 		color: $dark-gray-500 !important;
 	}

@@ -25,18 +25,18 @@ function coblocks_render_share_block( $attributes ) {
 		$thumbnail = null;
 	}
 
-	// Generate the Twitter URL.
-	$twitter_url = '
-		http://twitter.com/share?
-		text=' . get_the_title() . '
-		&url=' . get_the_permalink() . '
-	';
-
 	// Generate the Facebook URL.
 	$facebook_url = '
 		https://www.facebook.com/sharer/sharer.php?
 		u=' . get_the_permalink() . '
 		&title=' . get_the_title() . '
+	';
+
+	// Generate the Twitter URL.
+	$twitter_url = '
+		http://twitter.com/share?
+		text=' . get_the_title() . '
+		&url=' . get_the_permalink() . '
 	';
 
 	// Generate the LinkedIn URL.
@@ -82,8 +82,8 @@ function coblocks_render_share_block( $attributes ) {
 	';
 
 	// Apply filters, so that the social URLs can be modified.
-	$twitter_url   = apply_filters( 'coblocks_twitter_share_url', $twitter_url );
 	$facebook_url  = apply_filters( 'coblocks_facebook_share_url', $facebook_url );
+	$twitter_url   = apply_filters( 'coblocks_twitter_share_url', $twitter_url );
 	$pinterest_url = apply_filters( 'coblocks_pinterest_share_url', $pinterest_url );
 	$linkedin_url  = apply_filters( 'coblocks_linkedin_share_url', $linkedin_url );
 	$email_url     = apply_filters( 'coblocks_email_share_url', $email_url );
@@ -92,9 +92,10 @@ function coblocks_render_share_block( $attributes ) {
 	$google_url    = apply_filters( 'coblocks_google_share_url', $google_url );
 
 	// Attributes.
-	$text_align    = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "style=text-align:{$attributes['textAlign']}" : '';
-	$border_radius = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : '';
-	$has_padding   = is_array( $attributes ) && isset( $attributes['padding'] ) ? 'has-padding' : '';
+	$text_align       = is_array( $attributes ) && isset( $attributes['textAlign'] ) ? "text-align:{$attributes['textAlign']};" : '';
+	$background_color = is_array( $attributes ) && isset( $attributes['customBlockBackgroundColor'] ) ? "background-color:{$attributes['customBlockBackgroundColor']};" : '';
+	$border_radius    = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : '';
+	$has_padding      = is_array( $attributes ) && isset( $attributes['padding'] ) ? 'has-padding' : '';
 
 	$has_backround           = '';
 	$background_color_class  = '';
@@ -129,13 +130,13 @@ function coblocks_render_share_block( $attributes ) {
 
 	// Supported social media platforms.
 	$platforms = array(
-		'twitter'   => array(
-			'text' => esc_html__( 'Share on Twitter', 'coblocks' ),
-			'url'  => $twitter_url,
-		),
 		'facebook'  => array(
 			'text' => esc_html__( 'Share on Facebook', 'coblocks' ),
 			'url'  => $facebook_url,
+		),
+		'twitter'   => array(
+			'text' => esc_html__( 'Share on Twitter', 'coblocks' ),
+			'url'  => $twitter_url,
 		),
 		'pinterest' => array(
 			'text' => esc_html__( 'Share on Pinterest', 'coblocks' ),
@@ -200,6 +201,18 @@ function coblocks_render_share_block( $attributes ) {
 		$class .= ' ' . $attributes['className'];
 	}
 
+	if ( isset( $attributes['align'] ) ) {
+		$class .= ' align' . $attributes['align'];
+	}
+
+	if ( isset( $attributes['blockBackgroundColor'] ) || isset( $attributes['customBlockBackgroundColor'] ) ) {
+		$class .= ' has-background';
+	}
+
+	if ( isset( $attributes['blockBackgroundColor'] ) ) {
+		$class .= " has-{$attributes['blockBackgroundColor']}-background-color";
+	}
+
 	if ( isset( $attributes['hasColors'] ) && $attributes['hasColors'] ) {
 		$class .= ' has-colors';
 	}
@@ -210,9 +223,10 @@ function coblocks_render_share_block( $attributes ) {
 
 	// Render block content.
 	$block_content = sprintf(
-		'<div class="%1$s" %2$s><ul>%3$s</ul></div>',
+		'<div class="%1$s" style="%2$s %3$s"><ul>%4$s</ul></div>',
 		esc_attr( $class ),
 		esc_attr( $text_align ),
+		esc_attr( $background_color ),
 		$markup
 	);
 
@@ -235,73 +249,83 @@ function coblocks_register_share_block() {
 			'editor_style'    => 'coblocks-editor',
 			'style'           => 'coblocks-frontend',
 			'attributes'      => array(
-				'className'             => array(
+				'align'                      => array(
+					'type' => 'string',
+					'enum' => array( 'wide', 'full' ),
+				),
+				'className'                  => array(
 					'type' => 'string',
 				),
-				'hasColors'             => array(
+				'hasColors'                  => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'borderRadius'          => array(
+				'borderRadius'               => array(
 					'type'    => 'number',
 					'default' => 40,
 				),
-				'size'                  => array(
+				'size'                       => array(
 					'type'    => 'string',
 					'default' => 'med',
 				),
-				'iconSize'              => array(
+				'iconSize'                   => array(
 					'type'    => 'number',
 					'default' => 22,
 				),
-				'padding'               => array(
+				'padding'                    => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'textAlign'             => array(
+				'textAlign'                  => array(
 					'type' => 'string',
 				),
-				'backgroundColor'       => array(
+				'backgroundColor'            => array(
 					'type' => 'string',
 				),
-				'customBackgroundColor' => array(
+				'blockBackgroundColor'       => array(
 					'type' => 'string',
 				),
-				'textColor'             => array(
+				'customBlockBackgroundColor' => array(
 					'type' => 'string',
 				),
-				'customTextColor'       => array(
+				'customBackgroundColor'      => array(
 					'type' => 'string',
 				),
-				'twitter'               => array(
+				'textColor'                  => array(
+					'type' => 'string',
+				),
+				'customTextColor'            => array(
+					'type' => 'string',
+				),
+				'twitter'                    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'facebook'              => array(
+				'facebook'                   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'pinterest'             => array(
+				'pinterest'                  => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'linkedin'              => array(
+				'linkedin'                   => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'tumblr'                => array(
+				'tumblr'                     => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'reddit'                => array(
+				'reddit'                     => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'email'                 => array(
+				'email'                      => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'google'                => array(
+				'google'                     => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),

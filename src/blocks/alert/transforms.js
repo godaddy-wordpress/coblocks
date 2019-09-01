@@ -1,12 +1,12 @@
 /**
+ * Internal dependencies
+ */
+import metadata from './block.json';
+
+/**
  * WordPress dependencies
  */
 const { createBlock } = wp.blocks;
-
-/**
- * Internal dependencies
- */
-import { name } from './';
 
 const transforms = {
 	from: [
@@ -14,7 +14,7 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'core/paragraph' ],
 			transform: ( { content } ) => {
-				return createBlock( `coblocks/${ name }`, { value: content } );
+				return createBlock( metadata.name, { value: content } );
 			},
 		},
 		{
@@ -26,15 +26,6 @@ const transforms = {
 				},
 			},
 		},
-		{
-			type: 'prefix',
-			prefix: ':alert',
-			transform: function( content ) {
-				return createBlock( `coblocks/${ name }`, {
-					content,
-				} );
-			},
-		},
 	],
 	to: [
 		{
@@ -42,11 +33,7 @@ const transforms = {
 			blocks: [ 'core/paragraph' ],
 			transform: ( { value, title } ) => {
 				if ( title ) {
-					value.unshift( title, { type: 'br',
-						props: {
-							children: [],
-						},
-					} );
+					value = title + '<br />' + value;
 				}
 
 				if ( ! value || ! value.length ) {
