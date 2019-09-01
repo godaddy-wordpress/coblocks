@@ -43,9 +43,11 @@ class Inspector extends Component {
 			attributes,
 			setAttributes,
 			setBackgroundColor,
+			setBlockBackgroundColor,
 			setTextColor,
 			fallbackTextColor,
 			backgroundColor,
+			blockBackgroundColor,
 			textColor,
 			fallbackBackgroundColor,
 		} = this.props;
@@ -66,6 +68,10 @@ class Inspector extends Component {
 			houzz,
 		} = attributes;
 
+		const isMaskStyle = includes( className, 'is-style-mask' );
+		const isTextStyle = includes( className, 'is-style-text' );
+		const isCircularStyle = includes( className, 'is-style-circular' );
+
 		const options = [
 			{ value: 'sml', label: __( 'Small' ) },
 			{ value: 'med', label: __( 'Medium' ) },
@@ -74,27 +80,34 @@ class Inspector extends Component {
 
 		const defaultColors = [
 			{
+				value: blockBackgroundColor.color,
+				onChange: setBlockBackgroundColor,
+				label: __( 'Background Color' ),
+			},
+			{
 				value: backgroundColor.color,
 				onChange: setBackgroundColor,
-				label: __( 'Background Color' ),
+				label: __( 'Button Color' ),
 			},
 			{
 				value: textColor.color,
 				onChange: setTextColor,
-				label: __( 'Text Color' ),
+				label: ! isTextStyle ? __( 'Icon Color' ) : __( 'Text Color' ),
 			},
 		];
 
 		const maskColors = [
 			{
-				value: backgroundColor.color,
-				onChange: setBackgroundColor,
+				value: blockBackgroundColor.color,
+				onChange: setBlockBackgroundColor,
 				label: __( 'Background Color' ),
 			},
+			{
+				value: backgroundColor.color,
+				onChange: setBackgroundColor,
+				label: __( 'Icon Color' ),
+			},
 		];
-
-		const isMaskStyle = includes( className, 'is-style-mask' );
-		const isCircularStyle = includes( className, 'is-style-circular' );
 
 		return (
 			<Fragment>

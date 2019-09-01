@@ -1,15 +1,19 @@
 /**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
+
+/**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-import { BackgroundAttributes } from '../../components/background';
-import { GalleryAttributes } from '../../components/block-gallery/shared';
-import icons from './icons';
 import edit from './edit';
-import transforms from './transforms';
+import icon from './icon';
 import metadata from './block.json';
 import save from './save';
+import transforms from './transforms';
+import { BackgroundAttributes } from '../../components/background';
+import { GalleryAttributes } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
@@ -19,11 +23,7 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const { name } = metadata;
-
-const title = __( 'Carousel' );
-
-const icon = icons.carousel;
+const { name, category } = metadata;
 
 const attributes = {
 	...GalleryAttributes,
@@ -32,26 +32,17 @@ const attributes = {
 };
 
 const settings = {
-
-	title,
-
+	title: __( 'Carousel' ),
 	description: __( 'Display multiple images in a beautiful carousel gallery.' ),
-
-	category: 'coblocks-galleries',
-
+	icon,
 	keywords: [	__( 'gallery' ), __( 'photos' )	],
-
-	attributes,
-
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, category, icon, metadata, settings };

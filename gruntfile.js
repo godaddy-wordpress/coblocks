@@ -41,8 +41,7 @@ module.exports = function( grunt ) {
 							'src/**',
 							'dist/**',
 							'includes/**',
-							'languages/*.{mo,pot}',
-							'!languages/coblocks-js.pot',
+							'languages/coblocks.pot',
 							'!**/*.{ai,eps,psd}',
 						],
 						dest: 'build/<%= pkg.name %>',
@@ -212,7 +211,7 @@ module.exports = function( grunt ) {
 			translations: [
 				'npm run babel:build',
 			].join( ' && ' ),
-		},
+		}
 
 	} );
 

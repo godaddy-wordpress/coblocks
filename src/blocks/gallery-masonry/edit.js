@@ -8,7 +8,7 @@ import Masonry from 'react-masonry-component';
 /**
  * Internal dependencies
  */
-import { title, icon } from './';
+import { icon } from './';
 import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
@@ -199,7 +199,7 @@ class GalleryMasonryEdit extends Component {
 			return (
 				<GalleryPlaceholder
 					{ ...this.props }
-					label={ title }
+					label={ __( 'Masonry' ) }
 					icon={ icon }
 				/>
 			);

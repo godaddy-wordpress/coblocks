@@ -1,4 +1,9 @@
 /**
+ * Internal dependencies
+ */
+import metadata from './block.json';
+
+/**
  * WordPress dependencies
  */
 const { createBlock } = wp.blocks;
@@ -9,7 +14,7 @@ const transforms = {
 			type: 'prefix',
 			prefix: ':accordion',
 			transform: function( content ) {
-				return createBlock( 'coblocks/accordion', {
+				return createBlock( metadata.name, {
 					content,
 				} );
 			},
@@ -18,7 +23,7 @@ const transforms = {
 			type: 'prefix',
 			prefix: Array( count + 1 ).join( ':' ) + 'accordion',
 			transform( content ) {
-				return createBlock( 'coblocks/accordion', {
+				return createBlock( metadata.name, {
 					content,
 					count,
 				} );

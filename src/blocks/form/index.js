@@ -1,11 +1,14 @@
+/**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
-import './styles/style.scss';
 import edit from './edit';
-import icons from './icons';
+import icon from './icon';
 import metadata from './block.json';
 
 /**
@@ -17,28 +20,20 @@ const { InnerBlocks } = wp.blockEditor;
 /**
  * Block constants
  */
-const { attributes, name } = metadata;
-
-const icon = icons.form;
+const { name, category, attributes } = metadata;
 
 const settings = {
 	title: __( 'Form' ),
-
 	description: __( 'Add a simple form to your page.' ),
-
+	icon,
 	keywords: [ __( 'email' ), __( 'about' ), __( 'contact' ) ],
-
-	attributes,
-
 	supports: {
 		reusable: false,
 		html: false,
 	},
-
+	attributes,
 	edit,
-
 	save: InnerBlocks.Content,
-
 };
 
-export { name, icon, settings };
+export { name, category, metadata, settings };
