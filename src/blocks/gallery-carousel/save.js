@@ -6,7 +6,8 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-
+import './styles/style.scss';
+import './styles/editor.scss';
 import { BackgroundStyles } from '../../components/background';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
@@ -22,12 +23,14 @@ const save = ( { attributes, className } ) => {
 		captionColor,
 		customCaptionColor,
 		draggable,
+		freeScroll,
 		gridSize,
 		gutter,
 		gutterMobile,
 		height,
 		images,
 		pageDots,
+		pauseHover,
 		prevNextButtons,
 		primaryCaption,
 		alignCells,
@@ -72,6 +75,8 @@ const save = ( { attributes, className } ) => {
 		prevNextButtons: prevNextButtons,
 		wrapAround: true,
 		cellAlign: alignCells ? 'left' : 'center',
+		pauseAutoPlayOnHover: pauseHover,
+		freeScroll: freeScroll,
 		arrowShape: {
 			x0: 10,
 			x1: 60, y1: 50,

@@ -1,6 +1,6 @@
 {
-	"name": "gallery-carousel",
-	"category": "coblocks",
+	"name": "coblocks/gallery-carousel",
+	"category": "coblocks-galleries",
 	"attributes": {
 		"gutter": {
 			"type": "number",
@@ -41,6 +41,14 @@
 		"alignCells": {
 			"type": "boolean",
 			"default": false
-		}
+		},
+        "pauseHover": {
+            "type": "boolean",
+            "default": false
+        },
+        "freeScroll": {
+            "type": "boolean",
+            "default": false
+        }
 	}
 }

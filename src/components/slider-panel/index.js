@@ -42,6 +42,13 @@ class SliderPanel extends Component {
 	getAlignCellsHelp( checked ) {
 		return checked ? __( 'Aligning slides to the left.' ) : __( 'Aligning slides to the center.' );
 	}
+	getPauseAutoplayOnHoverHelp( checked ) {
+		return checked ? __( 'Carousel will continue to Auto-play when pointer hovers over the carousel.' ) : __( 'Auto-playing will pause when the user hovers over the carousel.' );
+	}
+
+	getfreeScrollHelp( checked ) {
+		return checked ? __( 'Enables content to be freely scrolled without cell alignment.' ) : __( 'Images will aligned to cells.' );
+	}
 
 	render() {
 		const {
@@ -53,9 +60,11 @@ class SliderPanel extends Component {
 			autoPlay,
 			autoPlaySpeed,
 			draggable,
+			freeScroll,
 			pageDots,
 			prevNextButtons,
 			alignCells,
+			pauseHover,
 		} = attributes;
 
 		return (
@@ -67,19 +76,34 @@ class SliderPanel extends Component {
 						onChange={ () => setAttributes( { autoPlay: ! autoPlay } ) }
 						help={ this.getAutoPlayHelp }
 					/>
-					{ autoPlay && <SelectControl
-						label={ __( 'Transition Speed' ) }
-						value={ autoPlaySpeed }
-						onChange={ ( value ) => setAttributes( { autoPlaySpeed: value } ) }
-						options={ autoPlayOptions }
-						className="components-coblocks-gallery-inspector__autoplayspeed-select"
-					/> }
+					{ autoPlay && <Fragment>
+						<SelectControl
+							label={ __( 'Transition Speed' ) }
+							value={ autoPlaySpeed }
+							onChange={ ( value ) => setAttributes( { autoPlaySpeed: value } ) }
+							options={ autoPlayOptions }
+							className="components-coblocks-gallery-inspector__autoplayspeed-select"
+						/>
+						<ToggleControl
+							label={ __( 'Pause Auto-Play On Hover' ) }
+							checked={ pauseHover }
+							onChange={ () => setAttributes( { pauseHover: ! pauseHover } ) }
+							help={ this.getPauseAutoplayOnHoverHelp }
+						/>
+					</Fragment>
+					}
 					<ToggleControl
 						label={ __( 'Draggable' ) }
 						checked={ !! draggable }
 						onChange={ () => setAttributes( { draggable: ! draggable } ) }
 						help={ this.getDraggableHelp }
 					/>
+					{ draggable && <ToggleControl
+						label={ __( 'Free Scroll' ) }
+						checked={ !! freeScroll }
+						onChange={ () => setAttributes( { freeScroll: ! freeScroll } ) }
+						help={ this.getfreeScrollHelp }
+					/> }
 					<ToggleControl
 						label={ __( 'Arrow Navigation' ) }
 						checked={ !! prevNextButtons }
