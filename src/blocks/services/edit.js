@@ -30,13 +30,13 @@ const ALLOWED_BLOCKS = [ 'coblocks/service' ];
 const layoutOptions = [
 	{
 		name: 'threebyfour',
-		label: __( '4:3' ),
+		label: '4:3',
 		icon: icons.service43,
 		isDefault: true,
 	},
 	{
 		name: 'sixbynine',
-		label: __( '16:9' ),
+		label: '16:9',
 		icon: icons.service169,
 	},
 	{

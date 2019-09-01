@@ -1,13 +1,17 @@
 /**
- * Internal dependencies
+ * Styles.
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import icons from './../../utils/icons';
+
+/**
+ * Internal dependencies
+ */
+import deprecated from './deprecated';
 import edit from './edit';
+import icon from './icon';
 import metadata from './block.json';
 import save from './save';
-import deprecated from './deprecated';
 import transforms from './transforms';
 
 /**
@@ -17,33 +21,22 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const { attributes, name } = metadata;
-
-const icon = icons.github;
-
-const title = __( 'Gist' );
+const { name, category, attributes } = metadata;
 
 const settings = {
-	title,
-
-	description: __( 'Embed GitHub gists by adding the gist link.' ),
-
-	keywords: [ __( 'code' ), __( 'github' ), __( 'coblocks' ) ],
-
-	attributes,
-
+	title: 'Gist',
+	description: __( 'Embed GitHub gists by adding a gist link.' ),
+	icon,
+	keywords: [ __( 'code' ), 'github', 'coblocks' ],
 	supports: {
 		html: false,
 		align: [ 'wide' ],
 	},
-
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
-
 	deprecated,
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

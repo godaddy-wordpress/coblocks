@@ -1,9 +1,12 @@
 /**
+ * Internal dependencies
+ */
+import metadata from './block.json';
+
+/**
  * WordPress dependencies
  */
 const { createBlock } = wp.blocks;
-
-import name from './';
 
 const transforms = {
 	from: [
@@ -11,7 +14,7 @@ const transforms = {
 			type: 'prefix',
 			prefix: ':map',
 			transform: function( content ) {
-				return createBlock( `coblocks/${ name }`, {
+				return createBlock( metadata.name, {
 					content,
 				} );
 			},

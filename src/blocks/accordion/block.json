@@ -1,5 +1,5 @@
 {
-	"name": "accordion",
+	"name": "coblocks/accordion",
 	"category": "coblocks",
 	"attributes": {
 		"count": {

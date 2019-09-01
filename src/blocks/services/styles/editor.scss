@@ -1,22 +1,27 @@
 $gutter: 0.3em;
 
 .coblocks-editor-block-styles {
-	& .align-center {
+	.align-center {
 		.service-svg-moving-path {
 			transform: translateX(4px);
 		}
 	}
 
-	& .align-left {
+	.align-left {
 		.service-svg-moving-path {
 			transform: translateX(0);
 		}
 	}
 
-	& .align-right {
+	.align-right {
 		.service-svg-moving-path {
 			transform: translateX(8px);
 		}
+	}
+
+	.block-editor-block-styles__item-preview {
+		height: 82px;
+		padding: 0;
 	}
 }
 
