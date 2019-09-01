@@ -165,7 +165,7 @@ class Inspector extends Component {
 										} }
 										isSmall
 										isDefault
-										aria-label={ sprintf( __( 'Turn off advanced %s settings' ), label.toLowerCase() ) }
+										aria-label={ __( 'Reset icon size' ) }
 									>
 										{ __( 'Reset' ) }
 									</Button>
@@ -194,10 +194,11 @@ class Inspector extends Component {
 										type="button"
 										onClick={ () => this.onChangeSize( 'advanced', '' ) }
 										isDefault
-										aria-label={ sprintf( __( 'Advanced %s settings' ), label.toLowerCase() ) }
+										isSmall
+										aria-label={ __( 'Apply custom size' ) }
 										isPrimary={ iconSize === 'advanced' }
 									>
-										{ __( 'Advanced' ) }
+										{ __( 'Custom' ) }
 									</Button>
 								</div>
 							</BaseControl>
