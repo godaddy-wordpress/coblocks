@@ -1,28 +1,4 @@
 .wp-block[data-type="coblocks/accordion"] {
-	.wp-block[data-type="coblocks/accordion-item"] {
-		margin-top: 0 !important;
-
-		p {
-			margin-top: 0;
-		}
-
-		&:not(:last-child) {
-			margin-bottom: -15px !important;
-		}
-
-		.editor-block-list__insertion-point {
-			display: none;
-		}
-
-		.wp-block:first-child [data-block] {
-			margin-top: 0;
-		}
-
-		.wp-block:nth-last-child(2) [data-block] {
-			margin-bottom: 0;
-		}
-	}
-
 	&[data-align="wide"],
 	&[data-align="full"] {
 		.editor-block-list__block {
@@ -30,37 +6,51 @@
 		}
 	}
 
-	&[data-align="full"] {
-		.wp-block-coblocks-accordion {
-			padding: 0 12px;
-		}
+	&[data-align="full"] .wp-block-coblocks-accordion {
+		padding: 0 12px;
+	}
+
+	.block-editor-inner-blocks .block-list-appender {
+		display: none;
 	}
 }
 
 // The "Add Accordion Item" button
-.wp-block-coblocks-accordion {
-	.components-coblocks-add-accordion-item__button.components-button {
-		background: $dark-opacity-light-200;
-		border: 1px dashed $dark-gray-150;
-		border-radius: 0;
-		box-shadow: none !important;
-		color: $dark-gray-500;
-		font-size: 14px;
-		height: 46px;
-		justify-content: center;
-		line-height: 31px;
-		padding: 0 5px;
-		text-align: center;
-		transition: all 0.2s ease;
-		width: 100%;
+.components-coblocks-add-accordion-item {
+	margin-top: -14px;
+}
 
-		svg {
-			margin-right: 5px;
-		}
+.components-coblocks-add-accordion-item__button.components-button {
+	align-items: center;
+	background: rgba(237, 239, 240, 0.8);
+	border: none;
+	border-radius: 0;
+	box-shadow: none !important;
+	color: $dark-gray-500;
+	display: flex;
+	flex-direction: column;
+	height: 62px;
+	justify-content: center;
+	line-height: 31px;
+	outline: 1px dashed $dark-gray-150;
+	padding: 21px;
+	text-align: center;
+	width: 100%;
 
-		&:hover {
-			border-color: $dark-gray-900;
-			color: $dark-gray-800;
-		}
+	svg {
+		margin-right: 5px;
+	}
+
+	&:hover {
+		background: rgba(237, 239, 240, 0.8);
+		color: $dark-gray-900;
+		outline: 1px dashed $dark-gray-500;
+	}
+
+	&.block-editor-button-block-appender:focus {
+		background-color: #fff;
+		box-shadow: inset 0 0 0 1px #6c7781, inset 0 0 0 2px #fff !important;
+		color: #191e23;
+		outline: 2px solid transparent;
 	}
 }

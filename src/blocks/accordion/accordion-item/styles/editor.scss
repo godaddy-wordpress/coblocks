@@ -1,20 +1,10 @@
 .wp-block-coblocks-accordion-item {
-	margin-bottom: 0;
-
-	.editor-block-list__block-edit {
-		margin-bottom: 13px !important;
-		margin-top: 14px !important;
+	p {
+		margin-top: 0;
 	}
 
-	.editor-inner-blocks {
-		margin-left: -2px;
-	}
-
+	// Remove hover and focus, as the title is now a text field.
 	&__title {
-		cursor: inherit;
-		margin-bottom: 0 !important;
-		padding: 10px 15px !important;
-
 		&::after {
 			display: none;
 		}
@@ -28,7 +18,73 @@
 		border-radius: $accordion-border-radius $accordion-border-radius 0 0;
 	}
 
-	&__content {
-		padding: 0 20px;
+	// Set proper margin for the first and last item within the accordion item for < Gutenberg 6.3.
+	.wp-block:first-of-type .editor-block-list__block-edit {
+		margin-top: 4px;
 	}
+
+	.wp-block:nth-last-child(2) .editor-block-list__block-edit {
+		margin-bottom: 4px;
+	}
+
+	.wp-block:first-child [data-block] {
+		margin-top: 0;
+	}
+	.wp-block:nth-last-child(2) [data-block] {
+		margin-bottom: 0;
+	}
+}
+
+.wp-block-coblocks-accordion
+	> .editor-inner-blocks
+	> .editor-block-list__layout
+	> [data-type="coblocks/accordion-item"]
+	> .editor-block-list__block-edit
+	> [data-block] {
+	margin-top: 0;
+}
+
+.block-editor-block-list__layout
+	.block-editor-block-list__block[data-type="coblocks/accordion-item"].has-child-selected
+	> .block-editor-block-list__block-edit
+	> [data-block]
+	> div
+	> .block-editor-inner-blocks,
+.block-editor-block-list__layout
+	.block-editor-block-list__block[data-type="coblocks/accordion-item"].is-selected
+	> .block-editor-block-list__block-edit
+	> [data-block]
+	> div
+	> .block-editor-inner-blocks,
+.block-editor-block-list__layout
+	.block-editor-block-list__block[data-type="coblocks/accordion"].has-child-selected
+	> .block-editor-block-list__block-edit
+	> [data-block]
+	> div
+	> .block-editor-inner-blocks,
+.block-editor-block-list__layout
+	.block-editor-block-list__block[data-type="coblocks/accordion"].is-selected
+	> .block-editor-block-list__block-edit
+	> [data-block]
+	> div
+	> .block-editor-inner-blocks {
+	padding: 14px 14px 0;
+}
+
+.has-child-selected
+	.wp-block-coblocks-accordion
+	> .editor-inner-blocks
+	> .editor-block-list__layout
+	> [data-type="coblocks/accordion-item"]
+	> .editor-block-list__block-edit
+	> [data-block],
+.is-selected
+	.wp-block-coblocks-accordion
+	> .editor-inner-blocks
+	> .editor-block-list__layout
+	> [data-type="coblocks/accordion-item"]
+	> .editor-block-list__block-edit
+	> [data-block] {
+	margin-bottom: 42px;
+	margin-top: 0;
 }
