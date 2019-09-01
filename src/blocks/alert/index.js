@@ -1,7 +1,6 @@
 /**
  * Styles.
  */
-import './styles/editor.scss';
 import './styles/style.scss';
 
 /**
@@ -26,7 +25,7 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	title: __( 'Alert' ),
-	description: __( 'Provide contextual feedback messages.' ),
+	description: __( 'Provide contextual feedback messages or notices.' ),
 	icon,
 	keywords: [ __( 'notice' ), __( 'message' ), 'coblocks' ],
 	styles: [

@@ -69,7 +69,7 @@ class Edit extends Component {
 					<div className="components-coblocks-add-accordion-item">
 						<IconButton
 							isLarge
-							className="components-coblocks-add-accordion-item__button"
+							className="block-editor-button-block-appender components-coblocks-add-accordion-item__button"
 							label={ __( 'Add Accordion Item' ) }
 							icon="insert"
 							onClick={ () => {
@@ -108,7 +108,6 @@ class Edit extends Component {
 									wp.data.dispatch( 'core/block-editor' ).insertBlock( created, undefined, clientId );
 								}
 							} } >
-							{ __( 'Add Accordion Item' ) }
 						</IconButton>
 					</div>
 				</div>
