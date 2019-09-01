@@ -9,7 +9,6 @@ import memoize from 'memize';
  * Internal dependencies
  */
 import Controls from './controls';
-import Inspector from './inspector';
 
 /**
  * WordPress dependencies
@@ -65,11 +64,6 @@ class Edit extends Component {
 			<Fragment>
 				{ isSelected && (
 					<Controls
-						{ ...this.props }
-					/>
-				) }
-				{ isSelected && (
-					<Inspector
 						{ ...this.props }
 					/>
 				) }
