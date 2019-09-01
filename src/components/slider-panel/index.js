@@ -43,7 +43,7 @@ class SliderPanel extends Component {
 		return checked ? __( 'Aligning slides to the left.' ) : __( 'Aligning slides to the center.' );
 	}
 	getPauseAutoplayOnHoverHelp( checked ) {
-		return checked ? __( 'Carousel will continue to Auto-play when pointer hovers over the carousel.' ) : __( 'Auto-playing will pause when the user hovers over the carousel.' );
+		return checked ? __( 'Auto-playing will pause when the user hovers over the carousel.' ) : __( 'Carousel will continue to Auto-play when pointer hovers over the carousel.' );
 	}
 
 	getfreeScrollHelp( checked ) {
