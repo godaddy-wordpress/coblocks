@@ -303,7 +303,7 @@ class Edit extends Component {
 							{ __( 'Apply' ) }
 						</Button>
 
-						{address && (
+						{ address && (
 							<Button
 								className="components-placeholder__cancel-button"
 								title={ __( 'Cancel' ) }
