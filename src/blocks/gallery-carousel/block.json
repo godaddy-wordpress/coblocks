@@ -42,13 +42,13 @@
 			"type": "boolean",
 			"default": false
 		},
-        "pauseHover": {
-            "type": "boolean",
-            "default": false
-        },
-        "freeScroll": {
-            "type": "boolean",
-            "default": false
-        }
+		"pauseHover": {
+			"type": "boolean",
+				"default": false
+		},
+		"freeScroll": {
+			"type": "boolean",
+			"default": false
+		}
 	}
 }
