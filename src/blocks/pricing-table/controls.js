@@ -36,7 +36,7 @@ class Controls extends Component {
 							icon: icons.blank,
 							/* translators: %s: number of tables */
 							title: sprintf( __( '%s Tables' ), number ),
-							isActive: count == number,
+							isActive: count === parseInt( number ),
 							subscript: number,
 							onClick: () => setAttributes( { count: parseInt( number ) } ),
 						} )
