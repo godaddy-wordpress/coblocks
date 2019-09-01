@@ -62,19 +62,16 @@ $gutter: 1em;
 }
 
 // Added for Gutenberg 6.3+
-.block-editor-block-list__layout
-	.block-editor-block-list__block[data-type="coblocks/pricing-table"].has-child-selected
-	> .block-editor-block-list__block-edit
-	> [data-block]
-	> div
-	.editor-inner-blocks {
+.block-editor-block-list__block[data-type="coblocks/pricing-table"].has-child-selected .wp-block-coblocks-pricing-table,
+.block-editor-block-list__block[data-type="coblocks/pricing-table"].is-selected .wp-block-coblocks-pricing-table {
 	padding: 14px;
 }
 
+.block-editor-block-list__block[data-type="coblocks/pricing-table"].is-selected
+	[data-type="coblocks/pricing-table-item"]:not(.is-selected)
+	> .block-editor-block-list__block-edit::before,
 .block-editor-block-list__block[data-type="coblocks/pricing-table"].has-child-selected
 	[data-type="coblocks/pricing-table-item"]:not(.is-selected)
 	> .block-editor-block-list__block-edit::before {
 	border: 1px dashed rgba(123, 134, 162, 0.3);
-	left: -14px;
-	right: -14px;
 }
