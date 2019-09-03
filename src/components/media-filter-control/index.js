@@ -14,40 +14,39 @@ import './styles/style.scss';
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { Toolbar } = wp.components;
+const { Toolbar, MenuGroup } = wp.components;
 
 const DEFAULT_CONTROLS = [
 	{
-		icon: icons.none,
+		icon: icons.filter,
 		title: __( 'Original' ),
 		filter: 'none',
 	},
 	{
 		icon: icons.grayscale,
-		title: __( 'Grayscale' ),
+		title: __( 'Grayscale Filter' ),
 		filter: 'grayscale',
 	},
 	{
 		icon: icons.sepia,
-		title: __( 'Sepia' ),
+		title: __( 'Sepia Filter' ),
 		filter: 'sepia',
 	},
 	{
 		icon: icons.saturation,
-		title: __( 'Saturation' ),
+		title: __( 'Saturation Filter' ),
 		filter: 'saturation',
 	},
 	{
 		icon: icons.dark,
-		title: __( 'Dim' ),
+		title: __( 'Dim Filter' ),
 		filter: 'dim',
 	},
 	{
 		icon: icons.vintage,
-		title: __( 'Vintage' ),
+		title: __( 'Vintage Filter' ),
 		filter: 'vintage',
 	},
-
 ];
 
 class Controls extends Component {
@@ -66,7 +65,7 @@ class Controls extends Component {
 		return (
 			<Toolbar
 				isCollapsed={ true }
-				icon={ icons.filter }
+				icon={ active ? active.icon : icons.filter }
 				label={ __( 'Apply media filter' ) }
 				controls={ DEFAULT_CONTROLS.map( ( control ) => {
 					const isActive = ( filter === control.filter );
