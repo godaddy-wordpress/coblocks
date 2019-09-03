@@ -80,6 +80,7 @@ class MediaFilterControl extends Component {
 		return (
 			<Toolbar>
 				<DropdownMenu
+					hasArrowIndicator
 					icon={ icons.filter }
 					label={ __( 'Apply filter' ) }
 					controls={ filterControls }
