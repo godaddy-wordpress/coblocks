@@ -99,6 +99,12 @@ class ImageCropControl extends Component {
 	}
 
 	applyRotation( r ) {
+		if (r < 0) {
+			r += 360;
+		}
+
+		r %= 360;
+
 		this.setNewZoom( this.getCurrentScale(), r );
 	}
 
@@ -277,31 +283,15 @@ class ImageCropControl extends Component {
 					<p>{ __( 'Rotate' ) }</p>
 					<Button
 						isDefault
-						isPrimary={ self.state.r === 0 }
-						onClick={ () => this.applyRotation( 0 ) }
+						onClick={ () => this.applyRotation( self.state.r - 90 ) }
 					>
-                        0°
+                        Rotate Left
 					</Button>
 					<Button
 						isDefault
-						isPrimary={ self.state.r === 90 }
-						onClick={ () => this.applyRotation( 90 ) }
+						onClick={ () => this.applyRotation( self.state.r + 90 ) }
 					>
-                        90°
-					</Button>
-					<Button
-						isDefault
-						isPrimary={ self.state.r === 180 }
-						onClick={ () => this.applyRotation( 180 ) }
-					>
-                        180°
-					</Button>
-					<Button
-						isDefault
-						isPrimary={ self.state.r === 270 }
-						onClick={ () => this.applyRotation( 270 ) }
-					>
-                        270°
+                        Rotate Right
 					</Button>
 				</ButtonGroup>
 			</div>
