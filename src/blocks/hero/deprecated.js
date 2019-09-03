@@ -10,6 +10,8 @@ import { BackgroundClasses, BackgroundVideo, BackgroundAttributes } from '../../
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import CSSGridAttributes from '../../components/grid-control/attributes';
 import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
+import metadata from './block.json';
+import { type } from 'os';
 
 /**
  * WordPress dependencies
@@ -21,59 +23,7 @@ const blockAttributes = {
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 	...ResponsiveBaseControlAttributes,
-	align: {
-		type: 'string',
-		default: 'full',
-	},
-	contentAlign: {
-		type: 'string',
-	},
-	textColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
-	maxWidth: {
-		type: 'number',
-		default: 560,
-	},
-	saveCoBlocksMeta: {
-		type: 'boolean',
-		default: true,
-	},
-	paddingSize: {
-		type: 'string',
-		default: 'huge',
-	},
-	paddingUnit: {
-		type: 'string',
-		default: 'px',
-	},
-	paddingTop: {
-		type: 'number',
-		default: 60,
-	},
-	paddingBottom: {
-		type: 'number',
-		default: 60,
-	},
-	paddingLeft: {
-		type: 'number',
-		default: 60,
-	},
-	paddingRight: {
-		type: 'number',
-		default: 60,
-	},
-	customBackgroundColor: {
-		type: 'string',
-		default: '#f3f3f3',
-	},
-	height: {
-		type: 'number',
-		default: 500,
-	},
+	...metadata.attributes,
 };
 
 const deprecated = [
@@ -103,13 +53,21 @@ const deprecated = [
 			const textClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-			const classlist = {
-				'has-text-color': textColor || customTextColor,
-				[ textClass ]: textClass,
-				[ `coblocks-hero-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
+			const classlist = () => {
+				if ( typeof coblocks !== 'undefined' ) {
+					return {
+						'has-text-color': textColor || customTextColor,
+						[ textClass ]: textClass,
+						[ `coblocks-hero-${ coblocks.id }` ]: ( typeof coblocks !== 'undefined' ) && ( typeof coblocks.id !== 'undefined' ),
+					};
+				}
+				return {
+					'has-text-color': textColor || customTextColor,
+					[ textClass ]: textClass,
+				};
 			};
 
-			const classes = classnames( classlist );
+			const classes = classnames( classlist() );
 
 			const styles = {
 				color: textClass ? undefined : customTextColor,
