@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { find } from 'lodash';
-
-/**
  * Internal dependencies
  */
 import icons from './icons';
@@ -14,43 +9,12 @@ import './styles/style.scss';
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { Toolbar } = wp.components;
+const {
+	Toolbar,
+	DropdownMenu,
+} = wp.components;
 
-const DEFAULT_CONTROLS = [
-	{
-		icon: icons.none,
-		title: __( 'Original' ),
-		filter: 'none',
-	},
-	{
-		icon: icons.grayscale,
-		title: __( 'Grayscale' ),
-		filter: 'grayscale',
-	},
-	{
-		icon: icons.sepia,
-		title: __( 'Sepia' ),
-		filter: 'sepia',
-	},
-	{
-		icon: icons.saturation,
-		title: __( 'Saturation' ),
-		filter: 'saturation',
-	},
-	{
-		icon: icons.dark,
-		title: __( 'Dim' ),
-		filter: 'dim',
-	},
-	{
-		icon: icons.vintage,
-		title: __( 'Vintage' ),
-		filter: 'vintage',
-	},
-
-];
-
-class Controls extends Component {
+class MediaFilterControl extends Component {
 	render() {
 		const {
 			attributes,
@@ -61,25 +25,69 @@ class Controls extends Component {
 			filter,
 		} = attributes;
 
-		const active = find( DEFAULT_CONTROLS, ( control ) => control.filter === filter );
+		const filterControls = [
+			{
+				icon: icons.none,
+				title: __( 'Original' ),
+				onClick: () => {
+					setAttributes( { filter: 'none' } );
+				},
+				isActive: filter === 'none',
+			},
+			{
+				icon: icons.grayscale,
+				title: __( 'Grayscale' ),
+				onClick: () => {
+					setAttributes( { filter: 'grayscale' } );
+				},
+				isActive: filter === 'grayscale',
+			},
+			{
+				icon: icons.sepia,
+				title: __( 'Sepia' ),
+				onClick: () => {
+					setAttributes( { filter: 'sepia' } );
+				},
+				isActive: filter === 'sepia',
+			},
+			{
+				icon: icons.saturation,
+				title: __( 'Saturation' ),
+				onClick: () => {
+					setAttributes( { filter: 'saturation' } );
+				},
+				isActive: filter === 'saturation',
+			},
+			{
+				icon: icons.dark,
+				title: __( 'Dim' ),
+				onClick: () => {
+					setAttributes( { filter: 'dim' } );
+				},
+				isActive: filter === 'dim',
+			},
+			{
+				icon: icons.vintage,
+				title: __( 'Vintage' ),
+				onClick: () => {
+					setAttributes( { filter: 'vintage' } );
+				},
+				isActive: filter === 'vintage',
+			},
+		];
 
 		return (
-			<Toolbar
-				isCollapsed={ true }
-				icon={ icons.filter }
-				label={ __( 'Apply media filter' ) }
-				controls={ DEFAULT_CONTROLS.map( ( control ) => {
-					const isActive = ( filter === control.filter );
-
-					return {
-						...control,
-						isActive,
-						onClick: () => setAttributes( { filter: control.filter } ),
-					};
-				} ) }
-			/>
+			<Toolbar>
+				<DropdownMenu
+					hasArrowIndicator
+					icon={ icons.filter }
+					label={ __( 'Apply filter' ) }
+					controls={ filterControls }
+					className="components-coblocks-media-filter"
+				/>
+			</Toolbar>
 		);
 	}
 }
 
-export default Controls;
+export default MediaFilterControl;
