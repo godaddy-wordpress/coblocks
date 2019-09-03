@@ -9,7 +9,7 @@ import { find } from 'lodash';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { AlignmentToolbar, BlockControls } = wp.blockEditor;
-const { Toolbar, Path, SVG } = wp.components;
+const { DropdownMenu, Toolbar, Path, SVG } = wp.components;
 
 const DEFAULT_ALIGNMENT_CONTROLS = [
 	{
@@ -56,8 +56,9 @@ class Controls extends Component {
 						value={ contentAlign }
 						onChange={ ( nextContentAlign ) => setAttributes( { contentAlign: nextContentAlign } ) }
 					/>
-					<Toolbar
-						isCollapsed={ true }
+					<Toolbar>
+					<DropdownMenu
+						hasArrowIndicator
 						icon={ activeCount.icon }
 						label={ __( 'Change pricing table count' ) }
 						controls={ DEFAULT_ALIGNMENT_CONTROLS.map( ( control ) => {
@@ -70,6 +71,7 @@ class Controls extends Component {
 							};
 						} ) }
 					/>
+					</Toolbar>
 				</BlockControls>
 			</Fragment>
 		);
