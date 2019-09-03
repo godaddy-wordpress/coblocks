@@ -127,7 +127,6 @@ class Edit extends Component {
 	render() {
 		const {
 			attributes,
-			toggleSelection,
 			setAttributes,
 			isSelected,
 		} = this.props;
@@ -277,10 +276,6 @@ class Edit extends Component {
 							setAttributes( {
 								height: parseInt( height + delta.height, 10 ),
 							} );
-							toggleSelection( true );
-						} }
-						onResizeStart={ () => {
-							toggleSelection( false );
 						} }
 					>
 						{ !! this.state.apiKey ? (
@@ -308,6 +303,20 @@ class Edit extends Component {
 							{ __( 'Apply' ) }
 						</Button>
 
+						{ address && (
+							<Button
+								className="components-placeholder__cancel-button"
+								title={ __( 'Cancel' ) }
+								isLink
+								onClick={ () => {
+									setAttributes( { pinned: ! pinned } );
+									this.setState( { address: this.props.attributes.address } );
+								} }
+								disabled={ ! address }
+							>
+								{ __( 'Cancel' ) }
+							</Button>
+						) }
 						{ attributes.lng && attributes.hasError && (
 							<span className="invalid-google-maps-api-key">
 								{ attributes.hasError }

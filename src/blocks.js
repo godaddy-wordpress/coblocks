@@ -1,13 +1,9 @@
 /**
  * WordPress dependencies
  */
-const { registerBlockType } = wp.blocks;
-
-// Category slug and title
-const category = {
-	slug: 'coblocks',
-	title: 'CoBlocks',
-};
+const {
+	registerBlockType,
+} = wp.blocks;
 
 // Register block category
 import './utils/block-category';
@@ -70,7 +66,29 @@ import * as service from './blocks/services/service';
 import * as stacked from './blocks/gallery-stacked';
 import * as socialProfiles from './blocks/social-profiles';
 
-export function registerBlocks() {
+/**
+ * Function to register an individual block.
+ *
+ * @param {Object} block The block to be registered.
+ *
+ */
+const registerBlock = ( block ) => {
+	if ( ! block ) {
+		return;
+	}
+
+	const { name, category, settings } = block;
+
+	registerBlockType( name, {
+		category: category,
+		...settings,
+	} );
+};
+
+/**
+ * Function to register blocks provided by CoBlocks.
+ */
+export const registerCoBlocksBlocks = () => {
 	[
 		accordion,
 		accordionItem,
@@ -99,24 +117,12 @@ export function registerBlocks() {
 		pricingTable,
 		pricingTableItem,
 		row,
-		services,
 		service,
+		services,
 		shapeDivider,
 		share,
 		socialProfiles,
 		stacked,
-	].forEach( block => {
-		if ( ! block ) {
-			return;
-		}
-
-		const { name, icon, settings } = block;
-
-		registerBlockType( `coblocks/${ name }`, {
-			category: category.slug,
-			icon: { src: icon },
-			...settings,
-		} );
-	} );
-}
-registerBlocks();
+	].forEach( registerBlock );
+};
+registerCoBlocksBlocks();
