@@ -52,19 +52,14 @@ const deprecated = [
 			const textClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-			const classlist = () => {
-				if ( typeof coblocks !== 'undefined' ) {
-					return {
-						'has-text-color': textColor || customTextColor,
-						[ textClass ]: textClass,
-						[ `coblocks-hero-${ coblocks.id }` ]: ( typeof coblocks !== 'undefined' ) && ( typeof coblocks.id !== 'undefined' ),
-					};
-				}
-				return {
-					'has-text-color': textColor || customTextColor,
-					[ textClass ]: textClass,
-				};
+			let classlist = {
+				'has-text-color': textColor || customTextColor,
+				[ textClass ]: textClass,
 			};
+
+			if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+				classlist = Object.assign( classlist, [ `coblocks-hero-${ coblocks.id }` ] );
+			}
 
 			const classes = classnames( classlist() );
 
