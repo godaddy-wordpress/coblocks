@@ -31,6 +31,12 @@ class edit extends Component {
 		return isMaskStyle ? backgroundColor.color : textColor.color;
 	}
 
+	componentDidUpdate( prevProps ) {
+		if ( ( prevProps.attributes.align === 'wide' || prevProps.attributes.align === undefined ) && this.props.attributes.align === 'full' ) {
+			this.props.setAttributes( { textAlign: 'center' } );
+		}
+	}
+
 	render() {
 		const {
 			attributes,
