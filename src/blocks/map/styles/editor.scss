@@ -43,6 +43,12 @@
 		height: 100%;
 		overflow: hidden;
 	}
+
+	.components-placeholder__cancel-button.is-link {
+		margin-left: 33%;
+		margin-right: 33%;
+		display: block;
+	}
 }
 
 // Map styles.
