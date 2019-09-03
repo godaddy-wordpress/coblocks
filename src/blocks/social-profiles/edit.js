@@ -41,6 +41,9 @@ class edit extends Component {
 				currentIcon: '',
 			} );
 		}
+		if ( ( prevProps.attributes.align === 'wide' || prevProps.attributes.align === undefined ) && this.props.attributes.align === 'full' ) {
+			this.props.setAttributes( { textAlign: 'center' } );
+		}
 	}
 
 	getTextColor( isMaskStyle ) {
