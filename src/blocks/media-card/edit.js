@@ -198,6 +198,16 @@ class Edit extends Component {
 			maxWidth: maxWidth ? ( 'full' === align || 'wide' === align ) && maxWidth : undefined,
 		};
 
+		let classes = classnames( className, { [ `is-style-${ mediaPosition }` ]: mediaPosition,
+			'has-no-media': ! mediaUrl || null,
+			'is-selected': isSelected,
+			'is-stacked-on-mobile': isStackedOnMobile }
+		);
+
+		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+			classes = classnames( classes, [ `coblocks-media-card-${ coblocks.id }` ] );
+		}
+
 		return (
 			<Fragment>
 				{ dropZone }
@@ -212,15 +222,7 @@ class Edit extends Component {
 					/>
 				) }
 				<div
-					className={ classnames(
-						className, {
-							[ `coblocks-media-card-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
-							[ `is-style-${ mediaPosition }` ]: mediaPosition,
-							'has-no-media': ! mediaUrl || null,
-							'is-selected': isSelected,
-							'is-stacked-on-mobile': isStackedOnMobile,
-						}
-					) }
+					className={ classes }
 				>
 					<div className={ innerClasses } style={ innerStyles } >
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
