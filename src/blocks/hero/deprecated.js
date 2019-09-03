@@ -11,7 +11,6 @@ import DimensionsAttributes from '../../components/dimensions-control/attributes
 import CSSGridAttributes from '../../components/grid-control/attributes';
 import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 import metadata from './block.json';
-import { type } from 'os';
 
 /**
  * WordPress dependencies
