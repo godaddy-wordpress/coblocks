@@ -156,11 +156,11 @@ class Edit extends Component {
 			/>
 		);
 
-		const classes = classnames(
-			'wp-block-coblocks-hero', {
-				[ `coblocks-hero-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
-			}
-		);
+		let classes = 'wp-block-coblocks-hero';
+
+		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+			classes = classnames( classes, [ `coblocks-hero-${ coblocks.id }` ] );
+		}
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-hero__inner',

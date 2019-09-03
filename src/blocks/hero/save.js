@@ -36,11 +36,14 @@ const save = ( { attributes } ) => {
 	const textClass = getColorClassName( 'color', textColor );
 	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-	const classlist = {
+	let classlist = {
 		'has-text-color': textColor || customTextColor,
 		[ textClass ]: textClass,
-		[ `coblocks-hero-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
 	};
+
+	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+		classlist = Object.assign( classlist, [ `coblocks-hero-${ coblocks.id }` ] );
+	}
 
 	const classes = classnames( classlist );
 
