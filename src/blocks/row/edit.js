@@ -268,12 +268,15 @@ class Edit extends Component {
 			);
 		}
 
-		const classes = classnames(
+		let classes = classnames(
 			className, {
 				[ `coblocks-row--${ id }` ]: id,
-				[ `coblocks-row-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
 			}
 		);
+
+		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+			classes = classnames( classes, [ `coblocks-row-${ coblocks.id }` ] );
+		}
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-row__inner',

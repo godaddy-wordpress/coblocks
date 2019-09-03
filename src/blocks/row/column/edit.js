@@ -91,14 +91,16 @@ class Edit extends Component {
 			/>
 		);
 
-		const classes = classnames( 'wp-block-coblocks-column', {
-			[ `coblocks-column-${ coblocks.id }` ]:
-				coblocks && typeof coblocks.id !== 'undefined',
+		let classes = classnames( 'wp-block-coblocks-column', {
 			'wp-block-coblocks-column-placeholder':
 				columnBlocks &&
 				columnBlocks.innerBlocks &&
 				Object.keys( columnBlocks.innerBlocks ).length < 1,
 		} );
+
+		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+			classes = classnames( classes, [ `coblocks-column-${ coblocks.id }` ] );
+		}
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-column__inner',
