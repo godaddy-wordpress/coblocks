@@ -61,7 +61,7 @@ const deprecated = [
 				classlist = Object.assign( classlist, [ `coblocks-hero-${ coblocks.id }` ] );
 			}
 
-			const classes = classnames( classlist() );
+			const classes = classnames( classlist );
 
 			const styles = {
 				color: textClass ? undefined : customTextColor,
