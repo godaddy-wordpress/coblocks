@@ -28,7 +28,7 @@ class SliderPanel extends Component {
 	}
 
 	getDraggableHelp( checked ) {
-		return checked ? __( 'Dragging and flicking enabled on desktop and mobile devices.' ) : __( 'Toggle to enable drag functionality on desktop and mobile devices.' );
+		return checked ? __( 'Dragging and flicking enabled.' ) : __( 'Toggle to enable drag functionality.' );
 	}
 
 	getArrowNavigationHelp( checked ) {
@@ -36,18 +36,18 @@ class SliderPanel extends Component {
 	}
 
 	getDotNavigationHelp( checked ) {
-		return checked ? __( 'Showing dot navigation arrows.' ) : __( 'Toggle to show dot navigation.' );
+		return checked ? __( 'Showing dot navigation.' ) : __( 'Toggle to show dot navigation.' );
 	}
 
 	getAlignCellsHelp( checked ) {
 		return checked ? __( 'Aligning slides to the left.' ) : __( 'Aligning slides to the center.' );
 	}
 	getPauseAutoplayOnHoverHelp( checked ) {
-		return checked ? __( 'Auto-playing will pause when the user hovers over the carousel.' ) : __( 'Carousel will continue to Auto-play when pointer hovers over the carousel.' );
+		return checked ? __( 'Pausing autoplay when hovering.' ) : __( 'Toggle to pause autoplay when hovered.' );
 	}
 
 	getfreeScrollHelp( checked ) {
-		return checked ? __( 'Enables content to be freely scrolled without cell alignment.' ) : __( 'Images will aligned to cells.' );
+		return checked ? __( 'Scrolling without fixed slides enabled.' ) : __( 'Toggle to scroll without fixed slides.' );
 	}
 
 	render() {
@@ -85,7 +85,7 @@ class SliderPanel extends Component {
 							className="components-coblocks-gallery-inspector__autoplayspeed-select"
 						/>
 						<ToggleControl
-							label={ __( 'Pause Auto-Play On Hover' ) }
+							label={ __( 'Pause on Hover' ) }
 							checked={ pauseHover }
 							onChange={ () => setAttributes( { pauseHover: ! pauseHover } ) }
 							help={ this.getPauseAutoplayOnHoverHelp }
