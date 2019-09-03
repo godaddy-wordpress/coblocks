@@ -36,7 +36,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.grayscale,
-				title: __( 'Grayscale' ),
+				title: __( 'Grayscale Filter' ),
 				onClick: () => {
 					setAttributes( { filter: 'grayscale' } );
 				},
@@ -44,7 +44,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.sepia,
-				title: __( 'Sepia' ),
+				title: __( 'Sepia Filter' ),
 				onClick: () => {
 					setAttributes( { filter: 'sepia' } );
 				},
@@ -52,7 +52,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.saturation,
-				title: __( 'Saturation' ),
+				title: __( 'Saturation Filter' ),
 				onClick: () => {
 					setAttributes( { filter: 'saturation' } );
 				},
@@ -60,7 +60,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.dark,
-				title: __( 'Dim' ),
+				title: __( 'Dim Filter' ),
 				onClick: () => {
 					setAttributes( { filter: 'dim' } );
 				},
@@ -68,7 +68,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.vintage,
-				title: __( 'Vintage' ),
+				title: __( 'Vintage Filter' ),
 				onClick: () => {
 					setAttributes( { filter: 'vintage' } );
 				},
