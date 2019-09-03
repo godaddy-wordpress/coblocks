@@ -56,7 +56,7 @@ export default class IconSizeSelect extends Component {
 	onChangeValue = event => {
 		const selectedUtil = this.state.utilitySizes.find( util => util.slug === event );
 		if ( selectedUtil ) {
-			this.props.setAttributes( { width: selectedUtil.size } );
+			this.props.setAttributes( { width: selectedUtil.size, height: selectedUtil.size } );
 			this.setCurrentSelectValue(
 				this.getSelectValuesFromUtilitySizes( this.state.utilitySizes, selectedUtil.slug )
 			);
