@@ -32,6 +32,8 @@ class edit extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
+		const { attributes } = this.props;
+
 		if (
 			! this.props.isSelected &&
 			prevProps.isSelected &&
@@ -41,7 +43,8 @@ class edit extends Component {
 				currentIcon: '',
 			} );
 		}
-		if ( ( prevProps.attributes.align === 'wide' || prevProps.attributes.align === undefined ) && this.props.attributes.align === 'full' ) {
+
+		if ( prevProps.attributes.align !== attributes.align && [ 'wide', 'full' ].includes( attributes.align ) && attributes.textAlign === undefined ) {
 			this.props.setAttributes( { textAlign: 'center' } );
 		}
 	}

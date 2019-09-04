@@ -32,7 +32,8 @@ class edit extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		if ( ( prevProps.attributes.align === 'wide' || prevProps.attributes.align === undefined ) && this.props.attributes.align === 'full' ) {
+		const { attributes } = this.props;
+		if ( prevProps.attributes.align !== attributes.align && [ 'wide', 'full' ].includes( attributes.align ) && attributes.textAlign === undefined ) {
 			this.props.setAttributes( { textAlign: 'center' } );
 		}
 	}
