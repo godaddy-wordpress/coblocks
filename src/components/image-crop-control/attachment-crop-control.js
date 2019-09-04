@@ -30,6 +30,10 @@ class AttachmentCropControl extends Component {
 				imageUrl: url,
 				id: attachmentId,
 			} );
+
+			if ( ! data.crop ) {
+				self.cropControl.current.resetControl();
+			}
 		} );
 	}
 
