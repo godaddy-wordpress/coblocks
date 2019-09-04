@@ -1,5 +1,7 @@
 == Changelog ==
 
+= 1.12.2 =
+
 = 1.12.1 =
 * Tweak: Start refactoring blocks to align with the Gutenberg Block Registration API RFC
 * Tweak: Add proper block descriptions to the Services block

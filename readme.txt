@@ -116,18 +116,4 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-= 1.12.1 =
-* Tweak: Start refactoring blocks to align with the Gutenberg Block Registration API RFC
-* Tweak: Add proper block descriptions to the Services block
-* Tweak: Add error notice to the Gist block to prevent silent failures
-* Tweak: Improve accessibility via tab control in the Form block
-* Tweak: Add support for SelectControl components within the Dimensions Controls components
-* Tweak: Add wrapper to Hero block content to provide a max width limitation
-* Fix: Resolve typo in the Icon block
-* Fix: Resolve issue where the active ResizableBox handles properly display
-* Fix: Alert block no longer escapes valid html when transformed
-* Fix: Providing a Gist url with a file hash properly loads the targetted Gist
-* Fix: Resolve issue where custom font sizes led to invalid block markup
-* Fix: Add minor style update to the Typography Controls toolbar icon
-* Fix: Removing the Gist URL will now revert the Gist block to its initial state
-* Fix: Map block is no longer using a global which was previously renamed
+= 1.12.2 =
