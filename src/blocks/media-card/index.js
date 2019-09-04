@@ -41,6 +41,14 @@ const settings = {
 		stackedOnMobile: true,
 		coBlocksSpacing: true,
 	},
+	example: {
+		attributes: {
+			align: 'wide',
+			mediaType: 'image',
+			mediaUrl: '/wp-content/plugins/coblocks/dist/images/examples/gallery-5.jpg',
+			mediaWidth: 65,
+		},
+	},
 	attributes,
 	transforms,
 	edit,
