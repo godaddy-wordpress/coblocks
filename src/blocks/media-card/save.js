@@ -50,7 +50,7 @@ const save = ( { attributes } ) => {
 	} );
 
 	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-		classes = classnames( classes, [ `coblocks-media-card-${ coblocks.id }` ] );
+		classes = classnames( classes, `coblocks-media-card-${ coblocks.id }` );
 	}
 
 	const innerClasses = classnames(

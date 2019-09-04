@@ -159,7 +159,7 @@ class Edit extends Component {
 		let classes = 'wp-block-coblocks-hero';
 
 		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-			classes = classnames( classes, [ `coblocks-hero-${ coblocks.id }` ] );
+			classes = classnames( classes, `coblocks-hero-${ coblocks.id }` );
 		}
 
 		const innerClasses = classnames(

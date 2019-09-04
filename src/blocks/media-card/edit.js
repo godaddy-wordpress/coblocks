@@ -205,7 +205,7 @@ class Edit extends Component {
 		);
 
 		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-			classes = classnames( classes, [ `coblocks-media-card-${ coblocks.id }` ] );
+			classes = classnames( classes, `coblocks-media-card-${ coblocks.id }` );
 		}
 
 		return (

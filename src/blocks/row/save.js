@@ -41,7 +41,7 @@ function Save( { attributes } ) {
 	} );
 
 	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-		classes = classnames( classes, [ `coblocks-row-${ coblocks.id }` ] );
+		classes = classnames( classes, `coblocks-row-${ coblocks.id }` );
 	}
 
 	const innerClasses = classnames(

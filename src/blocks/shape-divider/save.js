@@ -38,7 +38,7 @@ const save = ( { attributes, className } ) => {
 		} );
 
 	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-		classes = classnames( classes, [ `coblocks-shape-divider-${ coblocks.id }` ] );
+		classes = classnames( classes, `coblocks-shape-divider-${ coblocks.id }` );
 	}
 
 	const styles = {

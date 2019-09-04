@@ -103,16 +103,14 @@ const deprecated = [
 			const textClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-			let classlist = {
+			let classes = classnames( {
 				'has-text-color': textColor || customTextColor,
 				[ textClass ]: textClass,
-			};
+			} );
 
 			if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-				classlist = Object.assign( classlist, [ `coblocks-hero-${ coblocks.id }` ] );
+				classes = classnames( classnames, `coblocks-hero-${ coblocks.id }` );
 			}
-
-			const classes = classnames( classlist );
 
 			const styles = {
 				color: textClass ? undefined : customTextColor,

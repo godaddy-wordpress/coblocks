@@ -31,7 +31,7 @@ const save = ( { attributes, className } ) => {
 		} );
 
 	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-		classes = classnames( classes, [ `coblocks-feature-${ coblocks.id }` ] );
+		classes = classnames( classes, `coblocks-feature-${ coblocks.id }` );
 	}
 
 	const innerClasses = classnames(
