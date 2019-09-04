@@ -9,7 +9,10 @@ class AttachmentCropControl extends Component {
 
 		this.state = {
 			imageUrl: '',
+			id: null,
 		};
+
+		this.cropControl = React.createRef();
 	}
 
 	componentDidMount() {
@@ -23,7 +26,30 @@ class AttachmentCropControl extends Component {
 		attachmentOriginalImage.get( attachmentId ).then( function( url ) {
 			self.setState( {
 				imageUrl: url,
+				id: attachmentId,
 			} );
+		} );
+	}
+
+	componentDidUpdate( prevProps ) {
+		const { attachmentId } = this.props;
+		const self = this;
+
+		if ( ! prevProps.attachmentId || self.state.id === attachmentId ) {
+			return;
+		}
+
+		attachmentOriginalImage.get( attachmentId ).then( function( url ) {
+			const lastUrl = self.state.imageUrl;
+
+			self.setState( {
+				imageUrl: url,
+				id: attachmentId,
+			} );
+
+			if ( lastUrl !== self.state.imageUrl ) {
+				self.cropControl.current.resetControl();
+			}
 		} );
 	}
 
@@ -39,6 +65,7 @@ class AttachmentCropControl extends Component {
 				rotation={ rotation }
 				imageUrl={ this.state.imageUrl }
 				onChange={ onChange }
+				ref={ this.cropControl }
 			/>
 		);
 	}

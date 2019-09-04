@@ -169,6 +169,10 @@ class ImageCropControl extends Component {
 		} );
 	}
 
+	resetControl() {
+		this.setNewZoom( 100, 0 );
+	}
+
 	setNewZoom( zoom, newRotation ) {
 		if ( zoom < 100 ) {
 			zoom = 100;
