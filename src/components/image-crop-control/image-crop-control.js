@@ -278,11 +278,10 @@ class ImageCropControl extends Component {
 				<div ref={ this.imageContainer } className={ mainClass } onMouseDown={ this.mouseDownListener }
 					style={ containerStyle }>
 					<div>
-						<img ref={ this.imageReference } src={ imageUrl } style={ style } alt={ '' }
-							onLoad={ this.handleImageLoaded } />
+						<img ref={ this.imageReference } src={ imageUrl } style={ style } alt={ __( 'Crop settings image placeholder' ) } onLoad={ this.handleImageLoaded } />
 					</div>
 					<div ref={ this.selectedAreaReference }>
-						<img src={ imageUrl } style={ style } alt={ '' } />
+						<img src={ imageUrl } style={ style } alt={ __( 'Crop settings image placeholder' ) } />
 					</div>
 				</div>
 				<div className={ offsetClass }>
