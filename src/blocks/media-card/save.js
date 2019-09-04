@@ -43,12 +43,15 @@ const save = ( { attributes } ) => {
 		gridTemplateColumns = mediaPosition === 'right' ? `auto ${ mediaWidth }%` : `${ mediaWidth }% auto`;
 	}
 
-	const classes = classnames( {
-		[ `coblocks-media-card-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
+	let classes = classnames( {
 		[ `is-style-${ mediaPosition }` ]: mediaPosition,
 		'has-no-media': ! mediaUrl || null,
 		'is-stacked-on-mobile': isStackedOnMobile,
 	} );
+
+	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+		classes = classnames( classes, `coblocks-media-card-${ coblocks.id }` );
+	}
 
 	const innerClasses = classnames(
 		'wp-block-coblocks-media-card__inner',
