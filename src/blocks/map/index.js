@@ -32,6 +32,12 @@ const settings = {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
+	example: {
+		attributes: {
+			align: 'wide',
+			address: 'Scotsdale, Arizona',
+		},
+	},
 	attributes,
 	transforms,
 	edit,

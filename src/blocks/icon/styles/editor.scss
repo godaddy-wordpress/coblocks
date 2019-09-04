@@ -216,3 +216,10 @@
 		word-wrap: normal !important;
 	}
 }
+
+// Shim to center buttons in the inserter preview.
+.block-editor-inserter__preview-content {
+	.wp-block-coblocks-icon {
+		text-align: center;
+	}
+}

@@ -33,12 +33,20 @@ const settings = {
 		{ name: 'icon-and-text', label: _x( 'Icon & Text', 'block style' ) },
 		{ name: 'circular', label: _x( 'Circular', 'block style' ) },
 	],
-
+	example: {
+		attributes: {
+			facebook: '#',
+			instagram: '#',
+			pinterest: '#',
+			twitter: '#',
+			youtube: '#',
+			textAlign: 'center',
+		},
+	},
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-
 	edit,
 	transforms,
 	save() {

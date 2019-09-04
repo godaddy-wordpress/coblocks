@@ -32,6 +32,11 @@ const settings = {
 		align: [ 'wide', 'full' ],
 		html: false,
 	},
+	example: {
+		attributes: {
+			count: 1,
+		},
+	},
 	attributes,
 	transforms,
 	edit,

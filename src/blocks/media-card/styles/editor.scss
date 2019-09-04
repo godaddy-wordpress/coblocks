@@ -248,3 +248,15 @@
 		}
 	}
 }
+
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content .wp-block-coblocks-media-card {
+	.block-editor-inserter {
+		display: none !important;
+	}
+
+	.wp-block-coblocks-media-card__media-container::after,
+	.components-resizable-box__side-handle {
+		display: none;
+	}
+}

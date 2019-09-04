@@ -169,3 +169,11 @@
 		}
 	}
 }
+
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content .wp-block-coblocks-shape-divider {
+	.wp-block-coblocks-shape-divider__alt-wrapper {
+		margin-top: -1px;
+	}
+}
+

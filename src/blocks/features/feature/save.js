@@ -25,11 +25,14 @@ const save = ( { attributes, className } ) => {
 	// Body color class and styles.
 	const textClass = getColorClassName( 'color', textColor );
 
-	const classes = classnames(
+	let classes = classnames(
 		className, {
 			[ `has-${ contentAlign }-content` ]: contentAlign,
-			[ `coblocks-feature-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
 		} );
+
+	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+		classes = classnames( classes, `coblocks-feature-${ coblocks.id }` );
+	}
 
 	const innerClasses = classnames(
 		'wp-block-coblocks-feature__inner',
