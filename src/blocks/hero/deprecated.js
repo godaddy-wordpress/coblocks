@@ -6,30 +6,28 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { attributes } from './block.json';
-import { BackgroundClasses, BackgroundVideo, BackgroundAttributes } from '../../components/background';
-import DimensionsAttributes from '../../components/dimensions-control/attributes';
+import metadata from './block.json';
 import CSSGridAttributes from '../../components/grid-control/attributes';
+import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
+import { BackgroundClasses, BackgroundVideo, BackgroundAttributes } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
 const { getColorClassName, InnerBlocks } = wp.blockEditor;
 
-const blockAttributes = {
+const attributes = {
 	...CSSGridAttributes,
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 	...ResponsiveBaseControlAttributes,
-	...attributes,
+	...metadata.attributes,
 };
 
 const deprecated = [
 	{
-		attributes: {
-			...blockAttributes,
-		},
+		attributes,
 		save( { attributes } ) {
 			const {
 				coblocks,
