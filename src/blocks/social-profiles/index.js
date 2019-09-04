@@ -22,7 +22,7 @@ const name = 'coblocks/social-profiles';
 
 const settings = {
 	title: __( 'Social Profiles' ),
-	description: __( 'Display links to social media profiles.' ),
+	description: __( 'Grow your audience with links to social media profiles.' ),
 	icon,
 	category: 'coblocks',
 	keywords: [ __( 'share' ), __( 'links' ), __( 'icons' ) ],
