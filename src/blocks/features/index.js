@@ -39,6 +39,11 @@ const settings = {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
+	example: {
+		attributes: {
+			align: 'wide',
+		},
+	},
 	attributes,
 	transforms,
 	edit,

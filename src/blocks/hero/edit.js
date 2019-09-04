@@ -55,7 +55,7 @@ class Edit extends Component {
 		this.state = {
 			resizingInner: false,
 			resizing: false,
-			innerWidth: this.getBrowserWidth(),
+			innerWidth: null,
 		};
 	}
 
@@ -70,9 +70,6 @@ class Edit extends Component {
 		window.addEventListener( 'resize', this.getBrowserWidth.bind( this ) );
 	}
 
-	UNSAFE_componentWillMount() { // eslint-disable-line camelcase
-		this.getBrowserWidth();
-	}
 	componentWillUnmount() {
 		window.removeEventListener( 'resize', this.getBrowserWidth.bind( this ) );
 	}
@@ -156,11 +153,11 @@ class Edit extends Component {
 			/>
 		);
 
-		const classes = classnames(
-			'wp-block-coblocks-hero', {
-				[ `coblocks-hero-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
-			}
-		);
+		let classes = 'wp-block-coblocks-hero';
+
+		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+			classes = classnames( classes, `coblocks-hero-${ coblocks.id }` );
+		}
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-hero__inner',

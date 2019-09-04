@@ -6,11 +6,11 @@
 	}
 }
 
-.block-editor-block-preview__content {
+.block-editor-block-styles {
 	.wp-block-coblocks-social {
-		background: transparent !important;
 		align-content: center;
 		align-items: center;
+		background: transparent !important;
 		display: flex;
 		height: 100%;
 		justify-content: center;
@@ -127,6 +127,6 @@
 }
 
 // Shim to get buttons to display correctly in G 6.3+ only.
-.block-editor-block-preview__container .wp-block-coblocks-social__button {
+.components-panel__body .block-editor-block-preview__container .wp-block-coblocks-social__button {
 	transform: scale(4.2);
 }
