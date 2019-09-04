@@ -53,7 +53,8 @@ class CoBlocks_Crop_System
             wp_die('', 400);
         }
 
-        $id = (int)$_POST['id'];
+        $id   = (int)$_POST['id'];
+        $crop = null;
 
         $attachmentMeta = wp_get_attachment_metadata($id);
 
@@ -63,8 +64,14 @@ class CoBlocks_Crop_System
             $originalImageId = $id;
         }
 
+        if (isset($attachmentMeta[self::CROP_META_KEY])) {
+            $crop = $attachmentMeta[self::CROP_META_KEY];
+        }
+
         wp_die(json_encode([
-            'url' => wp_get_attachment_image_url($originalImageId, 'original'),
+            'id'   => $originalImageId,
+            'url'  => wp_get_attachment_image_url($originalImageId, 'original'),
+            'crop' => $crop,
         ]), 200);
     }
 
