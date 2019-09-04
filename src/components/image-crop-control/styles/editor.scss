@@ -34,11 +34,24 @@
 	}
 }
 
-.components-coblocks-offset-control {
+.components-panel__body .components-coblocks-offset-control {
 	display: flex;
 	justify-content: space-between;
 
-	> div {
-		width: 45%;
+	> .components-base-control {
+		margin-bottom: 18px;
+		width: 47%;
 	}
+}
+
+.components-panel__body .components-range-control.components-coblocks-zoom-control {
+	margin-bottom: 14px;
+}
+
+.components-coblocks-rotate-control {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 12px;
+	margin-top: -10px;
 }

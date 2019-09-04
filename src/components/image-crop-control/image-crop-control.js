@@ -1,13 +1,31 @@
-import classnames from 'classnames';
-
+/**
+ * Styles
+ */
 import './styles/editor.scss';
 
-const { Component } = wp.element;
-const { TextControl } = wp.components;
-const { RangeControl } = wp.components;
-const { ButtonGroup } = wp.components;
-const { Button } = wp.components;
+/**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
+ * Internal dependencies
+ */
+import icons from './icons';
+
+/**
+ * WordPress dependencies
+ */
 const { __ } = wp.i18n;
+const { Component } = wp.element;
+const { TextControl,
+	RangeControl,
+	ButtonGroup,
+	Button,
+	IconButton, Path,
+	SVG,
+	Rect,
+} = wp.components;
 
 class ImageCropControl extends Component {
 	constructor( props ) {
@@ -236,6 +254,14 @@ class ImageCropControl extends Component {
 			'components-coblocks-offset-control'
 		);
 
+		const zoomClass = classnames(
+			'components-coblocks-zoom-control'
+		);
+
+		const rotateClass = classnames(
+			'components-coblocks-rotate-control'
+		);
+
 		const imageHeight = Math.round( this.state.containerWidth / currentAspect );
 		const containerStyle = {
 			height: ( imageHeight + 28 ) + 'px',
@@ -277,27 +303,39 @@ class ImageCropControl extends Component {
 					/>
 				</div>
 				<RangeControl
-					label={ 'Zoom' }
+					label={ 'Image Zoom' }
+					className={ zoomClass }
 					value={ this.getCurrentScale() }
 					onChange={ ( val ) => this.setNewZoom( val, self.state.r ) }
 					min={ 100 }
 					max={ 1000 }
 				/>
-				<ButtonGroup>
-					<p>{ __( 'Rotate' ) }</p>
+				<p>{ __( 'Image Orientation' ) }</p>
+				<div className={ rotateClass }>
+					<ButtonGroup >
+						<IconButton
+							isLarge
+							icon={ icons.rotateLeft }
+							label={ __( 'Rotate counter-clockwise' ) }
+							onClick={ () => this.applyRotation( self.state.r - 90 ) }
+						/>
+						<IconButton
+							isLarge
+							icon={ icons.rotateRight }
+							label={ __( 'Rotate clockwise' ) }
+							onClick={ () => this.applyRotation( self.state.r + 90 ) }
+						/>
+					</ButtonGroup>
 					<Button
+						type="button"
+						onClick={ () => this.applyRotation( 0 ) }
+						isSmall
 						isDefault
-						onClick={ () => this.applyRotation( self.state.r - 90 ) }
+						aria-label={ __( 'Reset image orientation' ) }
 					>
-                        Rotate Left
+						{ __( 'Reset' ) }
 					</Button>
-					<Button
-						isDefault
-						onClick={ () => this.applyRotation( self.state.r + 90 ) }
-					>
-                        Rotate Right
-					</Button>
-				</ButtonGroup>
+				</div>
 			</div>
 		);
 	}
