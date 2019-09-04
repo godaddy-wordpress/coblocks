@@ -174,9 +174,7 @@
 
 .wp-block[data-type="coblocks/food-item"] {
 	flex: 1 50%;
-	margin-left: 5px;
-	margin-right: 5px;
-	max-width: calc(50% - 10px) !important;
+	max-width: 50% !important;
 
 	@media all and (max-width: 514px) {
 		max-width: 100% !important;
