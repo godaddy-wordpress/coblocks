@@ -9,7 +9,6 @@ import map from 'lodash/map';
 import { layoutOptions } from './layouts';
 import rowIcons from './icons';
 import { BackgroundControls } from '../../components/background';
-import VisualDropdown from '../../components/visual-dropdown';
 
 /**
  * WordPress dependencies
@@ -69,7 +68,7 @@ class Controls extends Component {
 							isCollapsed={ true }
 							icon={ this.layoutIcon() }
 							label={ __( 'Change row block layout' ) }
-							controls={ map( layoutOptions[ selectedRows ], ( { name, key, icon, smallIcon } ) => {
+							controls={ map( layoutOptions[ selectedRows ], ( { name, key, smallIcon } ) => {
 								return {
 									title: name,
 									key,
