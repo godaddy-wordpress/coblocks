@@ -1,5 +1,6 @@
 .components-coblocks-image-control {
 	background-color: $light-gray-200;
+	margin-bottom: 0 !important;
 	margin-left: auto;
 	margin-right: auto;
 	overflow: hidden;
@@ -35,12 +36,8 @@
 }
 
 .components-panel__body .components-coblocks-offset-control {
-	display: flex;
-	justify-content: space-between;
-
 	> .components-base-control {
-		margin-bottom: 18px;
-		width: 47%;
+		margin-bottom: 15px;
 	}
 }
 
@@ -53,5 +50,5 @@
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 12px;
-	margin-top: -10px;
+	margin-top: -8px;
 }
