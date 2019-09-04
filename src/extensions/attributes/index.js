@@ -36,10 +36,12 @@ const withAttributes = createHigherOrderComponent(
 		if ( allowedBlocks.includes( blockName ) ) {
 			props.attributes.coblocks = props.attributes.coblocks || {};
 
-			const d = new Date();
-			props.attributes.coblocks = Object.assign( {}, props.attributes.coblocks, {
-				id: '' + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds(),
-			} );
+			if ( typeof props.attributes.coblocks.id === 'undefined' ) {
+				const d = new Date();
+				props.attributes.coblocks = Object.assign( {}, props.attributes.coblocks, {
+					id: '' + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds(),
+				} );
+			}
 		}
 
 		return <BlockEdit { ...props } />;
