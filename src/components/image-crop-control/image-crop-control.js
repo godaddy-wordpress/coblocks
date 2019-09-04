@@ -251,7 +251,8 @@ class ImageCropControl extends Component {
 		);
 
 		const offsetClass = classnames(
-			'components-coblocks-offset-control'
+			'components-coblocks-offset-control',
+			'components-focal-point-picker_position-display-container',
 		);
 
 		const zoomClass = classnames(
