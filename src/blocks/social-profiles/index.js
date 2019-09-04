@@ -22,7 +22,7 @@ const name = 'coblocks/social-profiles';
 
 const settings = {
 	title: __( 'Social Profiles' ),
-	description: __( 'Display links to social media profiles.' ),
+	description: __( 'Grow your audience with links to social media profiles.' ),
 	icon,
 	category: 'coblocks',
 	keywords: [ __( 'share' ), __( 'links' ), __( 'icons' ) ],
@@ -33,12 +33,20 @@ const settings = {
 		{ name: 'icon-and-text', label: _x( 'Icon & Text', 'block style' ) },
 		{ name: 'circular', label: _x( 'Circular', 'block style' ) },
 	],
-
+	example: {
+		attributes: {
+			facebook: '#',
+			instagram: '#',
+			pinterest: '#',
+			twitter: '#',
+			youtube: '#',
+			textAlign: 'center',
+		},
+	},
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-
 	edit,
 	transforms,
 	save() {

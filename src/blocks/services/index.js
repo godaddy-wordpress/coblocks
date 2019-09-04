@@ -32,6 +32,11 @@ const settings = {
 		reusable: false,
 		html: false,
 	},
+	example: {
+		attributes: {
+			align: 'full',
+		},
+	},
 	attributes,
 	edit,
 	save,
