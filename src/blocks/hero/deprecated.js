@@ -6,81 +6,28 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { BackgroundClasses, BackgroundVideo, BackgroundAttributes } from '../../components/background';
-import DimensionsAttributes from '../../components/dimensions-control/attributes';
+import metadata from './block.json';
 import CSSGridAttributes from '../../components/grid-control/attributes';
+import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
+import { BackgroundClasses, BackgroundVideo, BackgroundAttributes } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
 const { getColorClassName, InnerBlocks } = wp.blockEditor;
 
-const blockAttributes = {
+const attributes = {
 	...CSSGridAttributes,
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 	...ResponsiveBaseControlAttributes,
-	align: {
-		type: 'string',
-		default: 'full',
-	},
-	contentAlign: {
-		type: 'string',
-	},
-	textColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
-	maxWidth: {
-		type: 'number',
-		default: 560,
-	},
-	saveCoBlocksMeta: {
-		type: 'boolean',
-		default: true,
-	},
-	paddingSize: {
-		type: 'string',
-		default: 'huge',
-	},
-	paddingUnit: {
-		type: 'string',
-		default: 'px',
-	},
-	paddingTop: {
-		type: 'number',
-		default: 60,
-	},
-	paddingBottom: {
-		type: 'number',
-		default: 60,
-	},
-	paddingLeft: {
-		type: 'number',
-		default: 60,
-	},
-	paddingRight: {
-		type: 'number',
-		default: 60,
-	},
-	customBackgroundColor: {
-		type: 'string',
-		default: '#f3f3f3',
-	},
-	height: {
-		type: 'number',
-		default: 500,
-	},
+	...metadata.attributes,
 };
 
 const deprecated = [
 	{
-		attributes: {
-			...blockAttributes,
-		},
+		attributes,
 		save( { attributes } ) {
 			const {
 				coblocks,
