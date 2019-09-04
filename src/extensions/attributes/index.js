@@ -2,7 +2,6 @@
  * WordPress Dependencies
  */
 const { addFilter } = wp.hooks;
-const { Fragment }	= wp.element;
 const { createHigherOrderComponent } = wp.compose;
 
 const allowedBlocks = [ 'coblocks/row', 'coblocks/column', 'coblocks/features', 'coblocks/feature', 'coblocks/media-card', 'coblocks/shape-divider', 'coblocks/hero' ];
@@ -30,36 +29,25 @@ function addAttributes( settings ) {
  * @param {function|Component} BlockEdit Original component.
  * @return {string} Wrapped component.
  */
-const withAttributes = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
-		const {
-			attributes,
-			setAttributes,
-		} = props;
+const withAttributes = createHigherOrderComponent(
+	BlockEdit => props => {
+		const { name: blockName } = props;
 
-		if ( typeof attributes.coblocks === 'undefined' ) {
-			attributes.coblocks = [];
-		}
+		if ( allowedBlocks.includes( blockName ) ) {
+			props.attributes.coblocks = props.attributes.coblocks || {};
 
-		//add unique selector
-		if ( allowedBlocks.includes( props.name ) && typeof attributes.coblocks.id === 'undefined' ) {
-			const d = new Date();
-
-			if ( typeof attributes.coblocks !== 'undefined' && typeof attributes.coblocks.id !== 'undefined' ) {
-				delete attributes.coblocks.id;
+			if ( typeof props.attributes.coblocks.id === 'undefined' ) {
+				const d = new Date();
+				props.attributes.coblocks = Object.assign( {}, props.attributes.coblocks, {
+					id: '' + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds(),
+				} );
 			}
-
-			const coblocks = Object.assign( { id: '' + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes() + d.getSeconds() + d.getMilliseconds() }, attributes.coblocks );
-			setAttributes( { coblocks: coblocks } );
 		}
 
-		return (
-			<Fragment>
-				<BlockEdit { ...props } />
-			</Fragment>
-		);
-	};
-}, 'withAttributes' );
+		return <BlockEdit { ...props } />;
+	},
+	'withAttributes'
+);
 
 addFilter(
 	'blocks.registerBlockType',
