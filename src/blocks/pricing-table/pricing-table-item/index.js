@@ -2,7 +2,6 @@
  * Styles.
  */
 import './styles/editor.scss';
-import './styles/style.scss';
 
 /**
  * Internal dependencies
