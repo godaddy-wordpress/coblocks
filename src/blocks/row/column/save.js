@@ -24,9 +24,11 @@ const save = ( { attributes } ) => {
 	} = attributes;
 	const textClass = getColorClassName( 'color', textColor );
 
-	const classes = classnames( {
-		[ `coblocks-column-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
-	} );
+	let classes = '';
+
+	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+		classes = classnames( classes, `coblocks-column-${ coblocks.id }` );
+	}
 
 	const innerClasses = classnames(
 		'wp-block-coblocks-column__inner',
