@@ -85,6 +85,14 @@
 	}
 }
 
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content .wp-block-coblocks-form {
+	.block-editor-block-list__layout {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
 // Core themes.
 .is-twentynineteen {
 	.coblocks-form {

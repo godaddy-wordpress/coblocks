@@ -253,3 +253,9 @@
 .block-editor-block-list__block[data-type="coblocks/features"].is-selected .wp-block-coblocks-features {
 	padding: 14px;
 }
+
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content .wp-block-coblocks-features {
+	padding-left: 30px;
+	padding-right: 30px;
+}

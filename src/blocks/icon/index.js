@@ -36,6 +36,11 @@ const settings = {
 		{ name: 'outlined', label: _x( 'Outlined', 'block style' ), isDefault: true },
 		{ name: 'filled', label: _x( 'Filled', 'block style' ) },
 	],
+	example: {
+		attributes: {
+			width: 260,
+		},
+	},
 	attributes,
 	edit,
 	save,

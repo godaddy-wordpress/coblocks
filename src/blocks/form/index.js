@@ -31,6 +31,11 @@ const settings = {
 		reusable: false,
 		html: false,
 	},
+	example: {
+		attributes: {
+			subject: __( 'Subject example' ),
+		},
+	},
 	attributes,
 	edit,
 	save: InnerBlocks.Content,

@@ -89,3 +89,10 @@
 		margin-bottom: 34px;
 	}
 }
+
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content .wp-block-coblocks-gallery-masonry {
+	.coblocks-gallery--item:last-child {
+		display: none;
+	}
+}
