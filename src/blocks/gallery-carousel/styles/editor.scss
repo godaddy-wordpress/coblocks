@@ -47,3 +47,10 @@
 		position: inherit;
 	}
 }
+
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content .wp-block-coblocks-gallery-carousel {
+	.flickity-button:disabled {
+		opacity: 1;
+	}
+}

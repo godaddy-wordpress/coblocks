@@ -1,7 +1,6 @@
 /**
  * Styles.
  */
-import './styles/editor.scss';
 import './styles/style.scss';
 
 /**
@@ -26,7 +25,7 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	title: __( 'Alert' ),
-	description: __( 'Provide contextual feedback messages.' ),
+	description: __( 'Provide contextual feedback messages or notices.' ),
 	icon,
 	keywords: [ __( 'notice' ), __( 'message' ), 'coblocks' ],
 	styles: [
@@ -39,6 +38,12 @@ const settings = {
 		align: true,
 		alignWide: false,
 		alignFull: false,
+	},
+	example: {
+		attributes: {
+			title: __( 'This is an alert block' ),
+			value: __( 'An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action.' ),
+		},
 	},
 	attributes,
 	transforms,

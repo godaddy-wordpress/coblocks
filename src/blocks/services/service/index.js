@@ -32,6 +32,9 @@ const settings = {
 		html: false,
 		inserter: false,
 	},
+	example: {
+		attributes: {},
+	},
 	attributes,
 	edit,
 	save,
