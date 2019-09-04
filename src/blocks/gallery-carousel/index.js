@@ -42,6 +42,17 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
+	example: {
+		attributes: {
+			gridSize: 'lrg',
+			gutter: 5,
+			images: [
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-1.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-2.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-3.jpg' },
+			],
+		},
+	},
 	transforms,
 	edit,
 	deprecated,
