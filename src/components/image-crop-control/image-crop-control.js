@@ -99,7 +99,7 @@ class ImageCropControl extends Component {
 	}
 
 	applyRotation( r ) {
-		if (r < 0) {
+		if ( r < 0 ) {
 			r += 360;
 		}
 
