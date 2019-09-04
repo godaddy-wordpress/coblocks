@@ -72,6 +72,12 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 			);
 		}
 
+		if ( currentAttributes.backgroundType === 'video' ) {
+			return (
+				<BlockEdit { ...props } />
+			);
+		}
+
 		const updateImage = function() {
 			jQuery.post( global.ajaxurl, {
 				action: 'coblocks_system_crop',
