@@ -55,7 +55,7 @@ class Edit extends Component {
 		this.state = {
 			resizingInner: false,
 			resizing: false,
-			innerWidth: this.getBrowserWidth(),
+			innerWidth: null,
 		};
 	}
 
@@ -70,9 +70,6 @@ class Edit extends Component {
 		window.addEventListener( 'resize', this.getBrowserWidth.bind( this ) );
 	}
 
-	UNSAFE_componentWillMount() { // eslint-disable-line camelcase
-		this.getBrowserWidth();
-	}
 	componentWillUnmount() {
 		window.removeEventListener( 'resize', this.getBrowserWidth.bind( this ) );
 	}
