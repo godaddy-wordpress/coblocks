@@ -33,8 +33,8 @@ class AttachmentOriginalImage {
 					return;
 				}
 
-				self.originalImageCache[ id ] = data.url;
-				resolve( data.url );
+				self.originalImageCache[ id ] = data;
+				resolve( data );
 			} );
 		} );
 

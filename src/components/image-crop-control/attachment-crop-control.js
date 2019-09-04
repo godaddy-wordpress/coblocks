@@ -23,7 +23,9 @@ class AttachmentCropControl extends Component {
 			return;
 		}
 
-		attachmentOriginalImage.get( attachmentId ).then( function( url ) {
+		attachmentOriginalImage.get( attachmentId ).then( function( data ) {
+			const url = data.url;
+
 			self.setState( {
 				imageUrl: url,
 				id: attachmentId,
@@ -39,7 +41,8 @@ class AttachmentCropControl extends Component {
 			return;
 		}
 
-		attachmentOriginalImage.get( attachmentId ).then( function( url ) {
+		attachmentOriginalImage.get( attachmentId ).then( function( data ) {
+			const url = data.url;
 			const lastUrl = self.state.imageUrl;
 
 			self.setState( {
