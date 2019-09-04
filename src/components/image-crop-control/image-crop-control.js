@@ -328,12 +328,12 @@ class ImageCropControl extends Component {
 					</ButtonGroup>
 					<Button
 						type="button"
-						onClick={ () => this.applyRotation( 0 ) }
+						onClick={ () => this.resetControl() }
 						isSmall
 						isDefault
-						aria-label={ __( 'Reset image orientation' ) }
+						aria-label={ __( 'Reset image cropping options' ) }
 					>
-						{ __( 'Reset' ) }
+						{ __( 'Reset All' ) }
 					</Button>
 				</div>
 			</div>
