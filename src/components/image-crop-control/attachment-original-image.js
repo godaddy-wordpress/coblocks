@@ -17,7 +17,7 @@ class AttachmentOriginalImage {
 				return;
 			}
 
-			jQuery.post( ajaxurl, {
+			jQuery.post( global.ajaxurl, {
 				action: 'coblocks_system_original_image',
 				id: id,
 			}, function( response ) {

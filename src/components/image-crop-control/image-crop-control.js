@@ -22,9 +22,7 @@ const { TextControl,
 	RangeControl,
 	ButtonGroup,
 	Button,
-	IconButton, Path,
-	SVG,
-	Rect,
+	IconButton,
 } = wp.components;
 
 class ImageCropControl extends Component {
