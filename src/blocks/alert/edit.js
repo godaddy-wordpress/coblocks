@@ -36,6 +36,16 @@ class Edit extends Component {
 		}
 	}
 
+	componentDidUpdate( prevProps ) {
+		const { attributes, setAttributes } = this.props;
+
+		// Reset color selections when a new style has been selected.
+		// If the legacy alert class is detected, we want to retain the custom color selections.
+		if ( ! /is-\w+-alert/.test( prevProps.attributes.className ) && prevProps.attributes.className !== attributes.className ) {
+			setAttributes( { backgroundColor: '', customBackgroundColor: '', textColor: '', customTextColor: '' } );
+		}
+	}
+
 	render() {
 		const {
 			attributes,
