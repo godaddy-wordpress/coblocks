@@ -48,7 +48,7 @@
 		},
 		"thumbnails": {
 			"type": "boolean",
-			"default": false,
+			"default": false
 		},
 		"responsiveHeight": {
 			"type": "boolean",
