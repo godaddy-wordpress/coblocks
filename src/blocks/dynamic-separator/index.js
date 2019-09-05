@@ -33,6 +33,11 @@ const settings = {
 		{ name: 'line', label: _x( 'Line', 'block style' ) },
 		{ name: 'fullwidth', label: _x( 'Fullwidth', 'block style' ) },
 	],
+	example: {
+		attributes: {
+			height: 100,
+		},
+	},
 	attributes,
 	transforms,
 	edit,
