@@ -1,86 +1,40 @@
+/**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
-import './styles/style.scss';
-import Edit from './components/edit';
-import icons from './../../utils/icons';
+import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
 const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Block constants
  */
-const name = 'accordion';
-
-const title = __( 'Accordion' );
-
-const icon = icons.accordion;
-
-const keywords = [
-	__( 'tabs' ),
-	__( 'faq' ),
-	__( 'coblocks' ),
-];
-
-const blockAttributes = {
-	count: {
-		type: 'number',
-		default: 1,
-	},
-	polyfill: {
-		type: 'boolean',
-		default: false,
-	},
-};
+const { name, category, attributes } = metadata;
 
 const settings = {
-
-	title: title,
-
+	title: __( 'Accordion' ),
 	description: __( 'Organize content within collapsable accordion items.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	icon,
+	keywords: [ __( 'tabs' ), __( 'faq' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
 	},
-
-	transforms: {
-		from: [
-			{
-				type: 'prefix',
-				prefix: ':accordion',
-				transform: function( content ) {
-					return createBlock( `coblocks/${ name }`, {
-						content,
-					} );
-				},
-			},
-			...[ 2, 3, 4, 5 ].map( ( count ) => ( {
-				type: 'prefix',
-				prefix: Array( count + 1 ).join( ':' ) + 'accordion',
-				transform( content ) {
-					return createBlock( `coblocks/${ name }`, {
-						content,
-						count,
-					} );
-				},
-			} ) ),
-		],
-	},
-
-	edit: Edit,
-
+	attributes,
+	transforms,
+	edit,
 	save() {
 		return (
 			<div>
@@ -90,4 +44,4 @@ const settings = {
 	},
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

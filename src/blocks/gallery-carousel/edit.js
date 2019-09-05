@@ -8,7 +8,7 @@ import Flickity from 'react-flickity-component';
 /**
  * Internal dependencies
  */
-import { title, icon } from './';
+import { icon } from './';
 import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
@@ -180,7 +180,6 @@ class GalleryCarouselEdit extends Component {
 			isSelected,
 			noticeUI,
 			setAttributes,
-			toggleSelection,
 			captionColor,
 		} = this.props;
 
@@ -262,7 +261,7 @@ class GalleryCarouselEdit extends Component {
 			return (
 				<GalleryPlaceholder
 					{ ...this.props }
-					label={ title }
+					label={ __( 'Carousel' ) }
 					icon={ icon }
 				/>
 			);
@@ -304,10 +303,6 @@ class GalleryCarouselEdit extends Component {
 						setAttributes( {
 							height: parseInt( height + delta.height, 10 ),
 						} );
-						toggleSelection( true );
-					} }
-					onResizeStart={ () => {
-						toggleSelection( false );
 					} }
 				>
 					{ dropZone }

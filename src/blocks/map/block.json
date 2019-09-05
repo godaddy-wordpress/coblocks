@@ -1,0 +1,62 @@
+{
+	"name": "coblocks/map",
+	"category": "coblocks",
+	"attributes": {
+		"address": {
+			"type": "string"
+		},
+		"lat": {
+			"type": "string"
+		},
+		"lng": {
+			"type": "string"
+		},
+		"hasApiKey": {
+			"type": "boolean",
+			"default": false
+		},
+		"pinned": {
+			"type": "boolean",
+			"default": false
+		},
+		"height": {
+			"type": "number",
+			"default": 400
+		},
+		"skin": {
+			"type": "string",
+			"default": "standard"
+		},
+		"zoom": {
+			"type": "number",
+			"default": 12
+		},
+		"iconSize": {
+			"type": "number",
+			"default": 36
+		},
+		"mapTypeControl": {
+			"type": "boolean",
+			"default": true
+		},
+		"zoomControl": {
+			"type": "boolean",
+			"default": true
+		},
+		"streetViewControl": {
+			"type": "boolean",
+			"default": true
+		},
+		"fullscreenControl": {
+			"type": "boolean",
+			"default": true
+		},
+		"controls": {
+			"type": "boolean",
+			"default": true
+		},
+		"hasError": {
+			"type": "string"
+		}
+	}
+}

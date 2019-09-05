@@ -64,11 +64,11 @@ class Edit extends Component {
 			/>
 		);
 
-		const classes = classnames(
-			className, {
-				[ `coblocks-feature-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
-			}
-		);
+		let classes = className;
+
+		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+			classes = classnames( classes, `coblocks-feature-${ coblocks.id }` );
+		}
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-feature__inner',

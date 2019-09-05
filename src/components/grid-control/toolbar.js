@@ -52,7 +52,7 @@ function CSSGridToolbar( {
 			renderContent={ () => {
 				return (
 					<NavigableMenu
-						className="components-coblocks-visual-dropdown components-coblocks-grid-dropdown"
+						className="components-coblocks-grid-dropdown"
 						role="menu"
 						aria-label={ menuLabel }
 					>

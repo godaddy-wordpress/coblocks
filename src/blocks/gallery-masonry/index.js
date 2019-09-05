@@ -1,16 +1,19 @@
 /**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
+
+/**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-import icons from './icons';
 import edit from './edit';
-import transforms from './transforms';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
+import transforms from './transforms';
 import { BackgroundAttributes } from '../../components/background';
-import { GalleryAttributes, GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
-import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
-import {Fragment} from "react";
+import { GalleryAttributes } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
@@ -20,49 +23,41 @@ const { __ } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'gallery-masonry';
+const { name, category } = metadata;
 
-const title = __( 'Masonry' );
-
-const icon = icons.masonry;
-
-const keywords = [
-	__( 'gallery' ),
-	__( 'photos' ),
-];
-
-const blockAttributes = {
+const attributes = {
 	...GalleryAttributes,
 	...BackgroundAttributes,
-
-	// Block specific attributes.
-	gridSize: {
-		type: 'string',
-		default: 'xlrg',
-	},
+	...metadata.attributes,
 };
 
 const settings = {
-
-	title: title,
-
+	title: __( 'Masonry' ),
 	description: __( 'Display multiple images in an organized masonry gallery.' ),
-
-	category: 'coblocks-galleries',
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	icon,
+	keywords: [	__( 'gallery' ), __( 'photos' )	],
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
-
+	example: {
+		attributes: {
+			gridSize: 'xlrg',
+			gutter: 5,
+			images: [
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-1.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-2.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-3.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-4.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-5.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-6.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-7.jpg' },
+			],
+		},
+	},
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, category, icon, metadata, settings };

@@ -1,11 +1,15 @@
 /**
- * Internal dependencies.
+ * Styles.
  */
 import './styles/editor.scss';
 import './styles/style.scss';
 
-import icons from './icons';
+/**
+ * Internal dependencies.
+ */
 import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
 
 /**
@@ -16,98 +20,23 @@ const { __ } = wp.i18n;
 /**
  * Block constants.
  */
-const name = 'food-item';
-
-const title = __( 'Food Item' );
-
-const icon = icons.foodItem;
-
-const keywords = [];
-
-const attributes = {
-	title: {
-		type: 'string',
-		source: 'html',
-		selector: '.wp-block-coblocks-food-item__heading',
-		default: '',
-	},
-	description: {
-		type: 'string',
-		source: 'html',
-		selector: '.wp-block-coblocks-food-item__description',
-		default: '',
-	},
-	price: {
-		type: 'string',
-		source: 'html',
-		selector: '.wp-block-coblocks-food-item__price span',
-		default: '',
-	},
-	url: {
-		type: 'string',
-		source: 'attribute',
-		selector: 'img',
-		attribute: 'src',
-		default: '',
-	},
-	alt: {
-		type: 'string',
-		source: 'attribute',
-		selector: 'img',
-		attribute: 'alt',
-		default: '',
-	},
-	focalPoint: {
-		type: 'object',
-	},
-	glutenFree: {
-		type: 'boolean',
-	},
-	pescatarian: {
-		type: 'boolean',
-	},
-	spicy: {
-		type: 'boolean',
-	},
-	spicier: {
-		type: 'boolean',
-	},
-	vegetarian: {
-		type: 'boolean',
-	},
-	vegan: {
-		type: 'boolean',
-	},
-	showImage: {
-		type: 'boolean',
-		default: false,
-	},
-	showPrice: {
-		type: 'boolean',
-		default: true,
-	},
-};
+const { name, category, attributes } = metadata;
 
 const settings = {
-	title,
-
+	title: __( 'Food Item' ),
 	description: __( 'A food and drink item within the Food & Drinks block.' ),
-
-	keywords,
-
-	attributes,
-
+	icon,
+	keywords: __( 'menu' ),
 	supports: {
 		inserter: false,
 		customClassName: false,
 		reusable: false,
 		html: false,
 	},
-
 	parent: [ 'coblocks/food-and-drinks' ],
-
+	attributes,
 	edit,
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

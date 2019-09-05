@@ -7,6 +7,8 @@
 @import "editor/core-themes";
 
 .coblocks-gallery {
+	margin: 0;
+
 	.components-resizable-box__handle {
 		z-index: 9999;
 	}

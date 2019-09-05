@@ -1,11 +1,14 @@
 /**
- * Internal dependencies.
+ * Styles.
  */
 import './styles/editor.scss';
 import './styles/style.scss';
 
+/**
+ * Internal dependencies.
+ */
 import edit from './edit';
-import icons from './icons';
+import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 
@@ -17,23 +20,22 @@ const { __ } = wp.i18n;
 /**
  * Block constants.
  */
-const { name } = metadata;
-
-const icon = icons.foodAndDrinks;
+const { name, category, attributes } = metadata;
 
 const settings = {
 	title: __( 'Food & Drinks' ),
 	description: __( 'Display a menu or price list.' ),
+	icon,
 	keywords: [ __( 'restaurant' ), __( 'menu' ) ],
-	attributes: metadata.attributes,
 	supports: {
 		align: [ 'wide' ],
 	},
 	getEditWrapperProps( attributes ) {
 		return { 'data-columns': attributes.columns };
 	},
+	attributes,
 	edit,
 	save,
 };
 
-export { metadata, name, icon, settings };
+export { name, category, metadata, settings };

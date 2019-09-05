@@ -1,0 +1,43 @@
+{
+	"name": "coblocks/click-to-tweet",
+	"category": "coblocks",
+	"attributes": {
+		"content": {
+			"type": "string",
+			"source": "html",
+			"selector": "p",
+			"default": ""
+		},
+		"url": {
+			"type": "attribute"
+		},
+		"textAlign": {
+			"type": "string"
+		},
+		"via": {
+			"type": "string"
+		},
+		"buttonText": {
+			"type": "string",
+			"default": "Tweet"
+		},
+		"buttonColor": {
+			"type": "string"
+		},
+		"customButtonColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"customTextColor": {
+			"type": "string"
+		},
+		"fontSize": {
+			"type": "string"
+		},
+		"customFontSize": {
+			"type": "string"
+		}
+	}
+}

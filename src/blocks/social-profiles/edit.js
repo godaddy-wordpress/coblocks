@@ -32,6 +32,8 @@ class edit extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
+		const { attributes } = this.props;
+
 		if (
 			! this.props.isSelected &&
 			prevProps.isSelected &&
@@ -40,6 +42,10 @@ class edit extends Component {
 			this.setState( {
 				currentIcon: '',
 			} );
+		}
+
+		if ( prevProps.attributes.align !== attributes.align && [ 'wide', 'full' ].includes( attributes.align ) && attributes.textAlign === undefined ) {
+			this.props.setAttributes( { textAlign: 'center' } );
 		}
 	}
 
@@ -55,25 +61,27 @@ class edit extends Component {
 			className,
 			isSelected,
 			backgroundColor,
+			blockBackgroundColor,
 			textColor,
 			setAttributes,
 		} = this.props;
 
 		const {
 			borderRadius,
+			customBlockBackgroundColor,
+			facebook,
 			hasColors,
+			houzz,
+			iconSize,
+			instagram,
+			linkedin,
+			padding,
+			pinterest,
 			size,
 			textAlign,
-			iconSize,
-			padding,
-			facebook,
 			twitter,
-			instagram,
-			pinterest,
-			linkedin,
-			youtube,
 			yelp,
-			houzz,
+			youtube,
 		} = attributes;
 
 		const isMaskStyle = includes( className, 'is-style-mask' );
@@ -83,6 +91,7 @@ class edit extends Component {
 			'wp-block-coblocks-social', {
 				[ `has-button-size-${ size }` ]: size !== 'med',
 				'has-colors': hasColors,
+				'has-background': blockBackgroundColor.color || customBlockBackgroundColor,
 			} );
 
 		const buttonClasses = classnames(
@@ -124,7 +133,7 @@ class edit extends Component {
 				{ isSelected && <Controls { ...this.props } /> }
 				{ isSelected && <Inspector { ...this.props } /> }
 
-				<div className={ classes } style={ { textAlign: textAlign } }>
+				<div className={ classes } style={ { textAlign, backgroundColor: blockBackgroundColor.color || '' } }>
 					<ul>
 						{ ( placeholder || ( facebook || isSelected ) ) && (
 							<li>
