@@ -11,7 +11,7 @@
 	}
 
 	&.alignfull::after {
-		width: 100vw;
+		width: calc(100vw + 2px);
 	}
 
 	figure {
