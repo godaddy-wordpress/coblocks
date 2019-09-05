@@ -1,0 +1,51 @@
+.is-style-bottom-wave {
+	overflow: hidden;
+	position: relative;
+
+	img {
+		vertical-align: bottom;
+	}
+
+	figcaption {
+		display: none;
+	}
+
+	&.alignfull::after {
+		width: 100vw;
+	}
+
+	figure {
+		position: relative;
+	}
+
+	&::after {
+		background-color: $white;
+		background-position: bottom;
+		background-repeat: no-repeat;
+		background-size: cover;
+		bottom: -1px;
+		content: "";
+		height: 100%;
+		left: -1px;
+		mask-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" height="38" viewBox="0 0 219 38" width="219" xmlns="http://www.w3.org/2000/svg"><path d="m92.3868613 2.88543152c4.9489051-.94902414 11.2773727.15184387 16.5328467 2.01193119 5.167883 1.86008732 15.525547 8.92082699 22.007299 13.55206479 16.59854 12.223431 29.277373 16.8926297 42.175183 18.8666 5.167883.7971803 10.664233 1.3286338 22.642336-.9490242 11.978102-2.2776579 23.255474-9.7180072 23.255474-9.7180072v-26.23102735h-219v11.50217265s15.7664234 12.3752748 34.6861314 11.5780945c8.5839416-.2657267 20.3211679-2.5433847 29.3430657-8.5032563 4.6423357-3.0748382 11.4306569-6.90889577 17.4525547-9.18655371 5.9562044-2.39154084 8.6496351-2.54338471 10.9051095-2.92299437z" fill-rule="evenodd" transform="matrix(1 0 0 -1 0 38.417968)"/></svg>');
+		mask-mode: alpha;
+		mask-position: bottom;
+		mask-repeat: no-repeat;
+		mask-size: contain;
+		position: absolute;
+		right: -1px;
+		top: 1px;
+		width: calc(100% + 2px);
+		z-index: 1;
+	}
+}
+
+// .is-twentynineteen .is-style-bottom-wave:not(.alignfull):not(.alignwide)::after {
+// 	@media only screen and (min-width: 768px) {
+// 		width: calc(8 * (100vw / 12) - 27px);
+// 	}
+
+// 	@media only screen and (min-width: 1168px) {
+// 		width: calc(6 * (100vw / 12) - 27px);
+// 	}
+// }
