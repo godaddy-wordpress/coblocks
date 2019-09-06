@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/highlight/save renders 1`] = `
+<p
+  style={
+    Object {
+      "textAlign": "",
+    }
+  }
+/>
+`;
