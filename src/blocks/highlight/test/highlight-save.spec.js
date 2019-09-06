@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-// import { create as createTestRenderer } from 'react-test-renderer';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
 /**
