@@ -9,3 +9,5 @@ exports[`coblocks/highlight/save renders 1`] = `
   }
 />
 `;
+
+exports[`coblocks/highlight/save saves 1`] = `"<p style=\\"text-align:\\" class=\\"wp-block-coblocks-highlight\\"></p>"`;
