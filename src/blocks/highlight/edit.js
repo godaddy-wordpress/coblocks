@@ -13,11 +13,11 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { RichText, withFontSizes } = wp.blockEditor;
-const { createBlock } = wp.blocks;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { RichText, withFontSizes } from '@wordpress/block-editor';
+import { createBlock } from '@wordpress/blocks';
 
 /**
  * Block edit function
