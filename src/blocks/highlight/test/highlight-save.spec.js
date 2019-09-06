@@ -6,9 +6,14 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 /**
  * Internal dependencies.
  */
-import SaveComponent from '../save';
+import { name, settings } from '../index';
 
 describe( 'coblocks/highlight/save', () => {
+	beforeAll( () => {
+		// Register the block.
+		registerBlockType( name, { category: 'common', ...settings } );
+	} );
+
 	it( 'renders', () => {
 		const renderer = new ShallowRenderer();
 
@@ -23,7 +28,8 @@ describe( 'coblocks/highlight/save', () => {
 			customFontSize: ''
 		};
 
-		renderer.render( <SaveComponent attributes={attributes} /> );
+		const Save = settings.save;
+		renderer.render( <Save attributes={ attributes } /> );
 
 		expect( renderer.getRenderOutput() ).toMatchSnapshot();
 	} );
