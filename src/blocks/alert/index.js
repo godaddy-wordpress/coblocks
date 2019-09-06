@@ -1,6 +1,7 @@
 /**
  * Styles.
  */
+import './styles/editor.scss';
 import './styles/style.scss';
 
 /**
@@ -38,6 +39,12 @@ const settings = {
 		align: true,
 		alignWide: false,
 		alignFull: false,
+	},
+	example: {
+		attributes: {
+			title: __( 'This is an alert block' ),
+			value: __( 'An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action.' ),
+		},
 	},
 	attributes,
 	transforms,

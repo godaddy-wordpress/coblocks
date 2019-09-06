@@ -62,3 +62,19 @@
 		}
 	}
 }
+
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content .wp-block-coblocks-author {
+	.components-button {
+		opacity: 1;
+	}
+
+	.wp-block-coblocks-author__avatar {
+		height: 110px;
+		width: 110px;
+	}
+
+	.editor-block-list__layout {
+		margin-left: 0;
+	}
+}
