@@ -426,7 +426,20 @@ class CoBlocks_Form {
 
 		$form_submission = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
 
-		if ( ! $form_submission || 'coblocks-form-submit' !== $form_submission ) {
+		/**
+		 * Filter to disable the CoBlocks form emails.
+		 *
+		 * @param bool false Whether or not the emails should be disabled.
+		 */
+		$disable_emails = (string) apply_filters( 'coblocks_form_disable_emails', false );
+
+		if ( ! $form_submission || 'coblocks-form-submit' !== $form_submission || $disable_emails ) {
+
+			if ( $disable_emails ) {
+
+				return true;
+
+			}
 
 			return;
 
