@@ -426,20 +426,7 @@ class CoBlocks_Form {
 
 		$form_submission = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
 
-		/**
-		 * Filter to disable the CoBlocks form emails.
-		 *
-		 * @param bool false Whether or not the emails should be disabled.
-		 */
-		$disable_emails = (string) apply_filters( 'coblocks_form_disable_emails', false );
-
-		if ( ! $form_submission || 'coblocks-form-submit' !== $form_submission || $disable_emails ) {
-
-			if ( $disable_emails ) {
-
-				return true;
-
-			}
+		if ( ! $form_submission || 'coblocks-form-submit' !== $form_submission ) {
 
 			return;
 
@@ -463,6 +450,27 @@ class CoBlocks_Form {
 			$this->remove_url_form_hash();
 
 			return;
+
+		}
+
+		/**
+		 * Fires before a form is submitted.
+		 *
+		 * @param array $_POST User submitted form data.
+		 * @param array $atts  Form block attributes.
+		 */
+		do_action( 'coblocks_before_form_submit', $_POST, $atts );
+
+		/**
+		 * Filter to disable the CoBlocks form emails.
+		 *
+		 * @param bool false Whether or not the emails should be disabled.
+		 */
+		$disable_emails = (string) apply_filters( 'coblocks_form_disable_emails', false );
+
+		if ( $disable_emails ) {
+
+			return true;
 
 		}
 
