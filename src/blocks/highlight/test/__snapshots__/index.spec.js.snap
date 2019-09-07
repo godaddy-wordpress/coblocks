@@ -2,48 +2,48 @@
 
 exports[`coblocks/highlight should apply custom background color with inline css 1`] = `
 "<!-- wp:coblocks/highlight {\\"customBackgroundColor\\":\\"#000000\\"} -->
-<p class=\\"wp-block-coblocks-highlight\\"><mark class=\\"wp-block-coblocks-highlight__content has-background\\" style=\\"background-color:#000000\\">highlighted content</mark></p>
+<p class=\\"wp-block-coblocks-highlight\\"><div class=\\"wp-block-coblocks-highlight__content has-background\\" style=\\"background-color:#000000\\">highlighted content</div></p>
 <!-- /wp:coblocks/highlight -->"
 `;
 
 exports[`coblocks/highlight should apply custom font size with inline css 1`] = `
 "<!-- wp:coblocks/highlight {\\"customFontSize\\":50} -->
-<p class=\\"wp-block-coblocks-highlight\\"><mark class=\\"wp-block-coblocks-highlight__content\\" style=\\"font-size:50px\\">highlighted content</mark></p>
+<p class=\\"wp-block-coblocks-highlight\\"><div class=\\"wp-block-coblocks-highlight__content\\" style=\\"font-size:50px\\">highlighted content</div></p>
 <!-- /wp:coblocks/highlight -->"
 `;
 
 exports[`coblocks/highlight should apply has-background class if any background color is selected 1`] = `
 "<!-- wp:coblocks/highlight {\\"customBackgroundColor\\":\\"#000000\\"} -->
-<p class=\\"wp-block-coblocks-highlight\\"><mark class=\\"wp-block-coblocks-highlight__content has-background\\" style=\\"background-color:#000000\\">highlighted content</mark></p>
+<p class=\\"wp-block-coblocks-highlight\\"><div class=\\"wp-block-coblocks-highlight__content has-background\\" style=\\"background-color:#000000\\">highlighted content</div></p>
 <!-- /wp:coblocks/highlight -->"
 `;
 
 exports[`coblocks/highlight should apply has-background class if any background color is selected 2`] = `
 "<!-- wp:coblocks/highlight {\\"backgroundColor\\":\\"primary\\"} -->
-<p class=\\"wp-block-coblocks-highlight\\"><mark class=\\"wp-block-coblocks-highlight__content has-background has-primary-background-color\\">highlighted content</mark></p>
+<p class=\\"wp-block-coblocks-highlight\\"><div class=\\"wp-block-coblocks-highlight__content has-background has-primary-background-color\\">highlighted content</div></p>
 <!-- /wp:coblocks/highlight -->"
 `;
 
 exports[`coblocks/highlight should apply has-primary-background-color class if the primary color is selected from the color palette 1`] = `
 "<!-- wp:coblocks/highlight {\\"backgroundColor\\":\\"primary\\"} -->
-<p class=\\"wp-block-coblocks-highlight\\"><mark class=\\"wp-block-coblocks-highlight__content has-background has-primary-background-color\\">highlighted content</mark></p>
+<p class=\\"wp-block-coblocks-highlight\\"><div class=\\"wp-block-coblocks-highlight__content has-background has-primary-background-color\\">highlighted content</div></p>
 <!-- /wp:coblocks/highlight -->"
 `;
 
 exports[`coblocks/highlight should apply has-small-font-size class if the small font size is selected 1`] = `
 "<!-- wp:coblocks/highlight {\\"fontSize\\":\\"small\\"} -->
-<p class=\\"wp-block-coblocks-highlight\\"><mark class=\\"wp-block-coblocks-highlight__content has-small-font-size\\">highlighted content</mark></p>
+<p class=\\"wp-block-coblocks-highlight\\"><div class=\\"wp-block-coblocks-highlight__content has-small-font-size\\">highlighted content</div></p>
 <!-- /wp:coblocks/highlight -->"
 `;
 
 exports[`coblocks/highlight should center align text with inline css 1`] = `
 "<!-- wp:coblocks/highlight {\\"align\\":\\"center\\"} -->
-<p style=\\"text-align:center\\" class=\\"wp-block-coblocks-highlight\\"><mark class=\\"wp-block-coblocks-highlight__content\\">highlighted content</mark></p>
+<p style=\\"text-align:center\\" class=\\"wp-block-coblocks-highlight\\"><div class=\\"wp-block-coblocks-highlight__content\\">highlighted content</div></p>
 <!-- /wp:coblocks/highlight -->"
 `;
 
 exports[`coblocks/highlight should render with content 1`] = `
 "<!-- wp:coblocks/highlight -->
-<p class=\\"wp-block-coblocks-highlight\\"><mark class=\\"wp-block-coblocks-highlight__content\\">highlighted content</mark></p>
+<p class=\\"wp-block-coblocks-highlight\\"><div class=\\"wp-block-coblocks-highlight__content\\">highlighted content</div></p>
 <!-- /wp:coblocks/highlight -->"
 `;

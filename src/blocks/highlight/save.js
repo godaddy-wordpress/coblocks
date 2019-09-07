@@ -43,7 +43,7 @@ const save = ( { attributes } ) => {
 	return RichText.isEmpty( content ) ? null : (
 		<p style={ { textAlign: align } }>
 			<RichText.Content
-				tagName="mark"
+				tagName="div"
 				className={ classes }
 				style={ styles }
 				value={ content }

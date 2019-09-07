@@ -5,7 +5,7 @@
 		"content": {
 			"type": "string",
 			"source": "html",
-			"selector": "mark"
+			"selector": "div"
 		},
 		"align": {
 			"type": "string"
