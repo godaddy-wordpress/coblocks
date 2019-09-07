@@ -40,16 +40,14 @@ const save = ( { attributes } ) => {
 		fontSize: fontSizeClass ? undefined : customFontSize,
 	};
 
-	return (
+	return RichText.isEmpty( content ) ? null : (
 		<p style={ { textAlign: align } }>
-			{ ! RichText.isEmpty( content ) && (
-				<RichText.Content
-					tagName="mark"
-					className={ classes }
-					style={ styles }
-					value={ content }
-				/>
-			) }
+			<RichText.Content
+				tagName="mark"
+				className={ classes }
+				style={ styles }
+				value={ content }
+			/>
 		</p>
 	);
 };
