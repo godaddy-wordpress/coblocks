@@ -420,7 +420,7 @@ class CoBlocks_Form {
 	/**
 	 * Process the form submission
 	 *
-	 * @return null
+	 * @return bool True when an email is sent, else false.
 	 */
 	public function process_form_submission( $atts ) {
 
@@ -466,9 +466,9 @@ class CoBlocks_Form {
 		 *
 		 * @param bool false Whether or not the emails should be disabled.
 		 */
-		$disable_emails = (string) apply_filters( 'coblocks_form_disable_emails', false );
+		$send_email = (bool) apply_filters( 'coblocks_form_email_send', true );
 
-		if ( $disable_emails ) {
+		if ( ! $send_email ) {
 
 			return true;
 
@@ -488,7 +488,7 @@ class CoBlocks_Form {
 
 				$this->remove_url_form_hash();
 
-				return;
+				return false;
 
 			}
 
