@@ -26,8 +26,12 @@ const save = ( { attributes, className } ) => {
 		gutter,
 		gutterMobile,
 		height,
+		radiusThumbs,
+		thumbSize,
 		images,
 		pageDots,
+		thumbnails,
+		responsiveHeight,
 		prevNextButtons,
 		primaryCaption,
 	} = attributes;
@@ -65,6 +69,8 @@ const save = ( { attributes, className } ) => {
 		autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
 		draggable: draggable,
 		pageDots: pageDots,
+		thumbnails: thumbnails,
+		responsiveHeight: responsiveHeight,
 		prevNextButtons: prevNextButtons,
 		wrapAround: true,
 		arrowShape: {
@@ -86,6 +92,38 @@ const save = ( { attributes, className } ) => {
 		}
 	);
 
+	const navClasses = classnames(
+		'carousel-nav',
+		`has-thumbnails-${ thumbSize }`, {
+			[ `has-border-radius-${ radiusThumbs }` ] : radiusThumbs > 0,
+			[ `has-margin-top-${ gutter }` ] : gutter > 0,
+			[ `has-margin-top-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+			[ `has-negative-margin-left-${ gutter }` ] : gutter > 0,
+			[ `has-negative-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+			[ `has-negative-margin-right-${ gutter }` ] : gutter > 0,
+			[ `has-negative-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+		}
+	);
+
+	const navFigureClasses = classnames(
+		'blockgallery--figure', {
+			[ `has-margin-top-${ gutter }` ] : gutter > 0,
+			[ `has-margin-top-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+		}
+	);
+
+	const navOptions = {
+		asNavFor: '.has-carousel',
+		autoPlay: false,
+		contain: true,
+		cellAlign: 'left',
+		pageDots: false,
+		thumbnails: false,
+		draggable: draggable,
+		prevNextButtons: false,
+		wrapAround: false,
+	};
+
 	const captionStyles = {
 		color: captionColorClass ? undefined : customCaptionColor,
 	};
@@ -96,7 +134,7 @@ const save = ( { attributes, className } ) => {
 	}
 
 	return (
-		<div className={ className }>
+		<div className={ className } >
 			<div
 				className={ innerClasses }
 				style={ innerStyles }
@@ -118,6 +156,23 @@ const save = ( { attributes, className } ) => {
 						);
 					} ) }
 				</div>
+				{ thumbnails ?
+					<div
+						className={ navClasses }
+						data-flickity={ JSON.stringify( navOptions ) }
+					>
+						{ images.map( ( image ) => {
+							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
+							return (
+								<div key={ image.id || image.url } className="blockgallery--item-thumbnail">
+									<figure className={ navFigureClasses }>
+										{ img }
+									</figure>
+								</div>
+							);
+						} ) }
+					</div> : null
+				}
 			</div>
 			{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles } /> }
 		</div>
