@@ -286,6 +286,7 @@ class FormEdit extends Component {
 			if ( errors.length === 1 ) {
 				if ( errors[ 0 ] && errors[ 0 ].email ) {
 					return sprintf(
+						/* translators: s: Placeholder for email address provided by user.  */
 						__( '%s is not a valid email address.' ),
 						errors[ 0 ].email
 					);
@@ -295,6 +296,7 @@ class FormEdit extends Component {
 
 			if ( errors.length === 2 ) {
 				return sprintf(
+					/* translators: s1: Placeholder for email address provided by user. s2: Placeholder for email address provided by user.  */
 					__( '%s and %s are not a valid email address.' ),
 					errors[ 0 ].email,
 					errors[ 1 ].email
@@ -302,6 +304,7 @@ class FormEdit extends Component {
 			}
 			const inValidEmails = errors.map( error => error.email );
 			return sprintf(
+				/* translators: s1: Placeholder for email address provided by user. */
 				__( '%s are not a valid email address.' ),
 				inValidEmails.join( ', ' )
 			);

@@ -110,6 +110,7 @@ class CoBlocks_Block_Assets {
 		);
 
 		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
+		/* translators: s: The title of a specific blog post  */
 		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
 
 		/**
