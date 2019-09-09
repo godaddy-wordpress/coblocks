@@ -18,6 +18,36 @@
 		vertical-align: bottom;
 	}
 
+	.expandable-image {
+		.coblocks-gallery--figure {
+
+			img {
+				transition: transform .5s ease 0s;
+			}
+
+			&:hover {
+				position: relative;
+				transition: all .5s ease 0s;
+
+				&::before {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(255, 255, 255, 0.1);
+					transition: all .5s ease 0s;
+					z-index: 2;
+				}
+
+				img {
+					transform: scale(1.1);
+				}
+			}
+		}
+	}
+
 	figcaption {
 		background: linear-gradient(0deg, rgba($color: $black, $alpha: 0.7) 0, rgba($color: $black, $alpha: 0.3) 50%, transparent);
 		bottom: 0;
