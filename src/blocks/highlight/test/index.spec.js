@@ -3,106 +3,12 @@
  */
 import { JSDOM } from 'jsdom';
 import '@testing-library/jest-dom/extend-expect';
-import { castArray, omit, stubFalse } from 'lodash';
-import { registerBlockType, createBlock, serialize, getBlockType, getBlockAttributes, isValidBlockContent } from '@wordpress/blocks';
-import { parse } from '@wordpress/block-serialization-default-parser';
+import { registerBlockType, createBlock, serialize, parse } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
  */
 import { name, settings } from '../index';
-
-// TODO: Extract this into a helper file.
-// Pulled from @wordpress/blocks because it's not easily accessible from the npm package.
-// https://github.com/WordPress/gutenberg/blob/403fa51163f2122017625ca94f852fb4c863d145/packages/blocks/src/api/parser.js#L293-L370
-function getMigratedBlock( block, parsedAttributes ) {
-	const blockType = getBlockType( block.name );
-
-	const { deprecated: deprecatedDefinitions } = blockType;
-	if ( ! deprecatedDefinitions || ! deprecatedDefinitions.length ) {
-		return block;
-	}
-
-	const { originalContent, innerBlocks } = block;
-
-	for ( let i = 0; i < deprecatedDefinitions.length; i++ ) {
-		// A block can opt into a migration even if the block is valid by
-		// defining isEligible on its deprecation. If the block is both valid
-		// and does not opt to migrate, skip.
-		const { isEligible = stubFalse } = deprecatedDefinitions[ i ];
-		if ( block.isValid && ! isEligible( parsedAttributes, innerBlocks ) ) {
-			continue;
-		}
-
-		// Block type properties which could impact either serialization or
-		// parsing are not considered in the deprecated block type by default,
-		// and must be explicitly provided.
-		const deprecatedBlockType = Object.assign(
-			omit( blockType, [ 'attributes', 'save', 'supports' ] ),
-			deprecatedDefinitions[ i ]
-		);
-
-		let migratedAttributes = getBlockAttributes(
-			deprecatedBlockType,
-			originalContent,
-			parsedAttributes
-		);
-
-		// Ignore the deprecation if it produces a block which is not valid.
-		const isValid = isValidBlockContent(
-			deprecatedBlockType,
-			migratedAttributes,
-			originalContent
-		);
-
-		if ( ! isValid ) {
-			continue;
-		}
-
-		block = {
-			...block,
-			isValid: true,
-		};
-
-		let migratedInnerBlocks = innerBlocks;
-
-		// A block may provide custom behavior to assign new attributes and/or
-		// inner blocks.
-		const { migrate } = deprecatedBlockType;
-		if ( migrate ) {
-			( [
-				migratedAttributes = parsedAttributes,
-				migratedInnerBlocks = innerBlocks,
-			] = castArray( migrate( migratedAttributes, innerBlocks ) ) );
-		}
-
-		block.attributes = migratedAttributes;
-		block.innerBlocks = migratedInnerBlocks;
-	}
-
-	return block;
-}
-
-// TODO: Extract this into a helper file.
-// Pulled from @wordpress/blocks and simplified because it's not easily accessible from the npm package.
-// https://github.com/WordPress/gutenberg/blob/403fa51163f2122017625ca94f852fb4c863d145/packages/blocks/src/api/parser.js#L372-L467
-function createBlockWithFallback( blockNode ) {
-	const { blockName, attrs, innerBlocks, innerHTML } = blockNode;
-	const blockType = getBlockType( blockName );
-
-	let block = createBlock(
-		blockName,
-		getBlockAttributes( blockType, innerHTML, attrs ),
-		innerBlocks
-	);
-
-	block.isValid = isValidBlockContent( blockType, block.attributes, innerHTML );
-	block.originalContent = innerHTML;
-
-	block = getMigratedBlock( block, attrs );
-
-	return block;
-}
 
 // Make variables accessible for all tests.
 let block;
@@ -214,9 +120,7 @@ describe( 'coblocks/highlight', () => {
 			<!-- /wp:coblocks/highlight -->
 		`.trim();
 
-		const parsed = parse( postContent );
-		const block = createBlockWithFallback( parsed[ 0 ] );
-
-		expect( block.isValid ).toBe( true );
+		const block = parse( postContent );
+		expect( block[ 0 ].isValid ).toBe( true );
 	} );
 } );
