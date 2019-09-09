@@ -1,6 +1,8 @@
 /**
  * External dependencies
  */
+import { JSDOM } from 'jsdom';
+import '@testing-library/jest-dom/extend-expect';
 import { castArray, omit, stubFalse } from 'lodash';
 import { registerBlockType, createBlock, serialize, getBlockType, getBlockAttributes, isValidBlockContent } from '@wordpress/blocks';
 import { parse } from '@wordpress/block-serialization-default-parser';
@@ -102,15 +104,28 @@ function createBlockWithFallback( blockNode ) {
 	return block;
 }
 
+// Make variables accessible for all tests.
+let block;
+let blockDOM;
+let serializedBlock;
+
 describe( 'coblocks/highlight', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
 	} );
 
+	beforeEach( () => {
+		// Create the block with the minimum attributes.
+		block = createBlock( name, { content: 'highlighted content' } );
+
+		// Reset the reused variables.
+		blockDOM = undefined;
+		serializedBlock = '';
+	} );
+
 	it( 'should render with content', () => {
-		const block = createBlock( name, { content: 'highlighted content' } );
-		const serializedBlock = serialize( block );
+		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( 'highlighted content' );
@@ -118,87 +133,86 @@ describe( 'coblocks/highlight', () => {
 	} );
 
 	it( 'should not render without content', () => {
-		const block = createBlock( name );
-
-		expect( serialize( block ) ).toEqual( `<!-- wp:${ name } /-->` );
+		serializedBlock = serialize( createBlock( name ) );
+		expect( serializedBlock ).toEqual( `<!-- wp:${ name } /-->` );
 	} );
 
 	it( 'should center align text with inline css', () => {
-		const block = createBlock( name, {
-			content: 'highlighted content',
-			align: 'center',
-		} );
-		const serializedBlock = serialize( block );
+		block.attributes.align = 'center';
+		serializedBlock = serialize( block );
 
-		expect( serializedBlock ).toMatch( /<p.*style=".*text-align:center/ );
-		expect( serializedBlock ).toMatchSnapshot();
+		blockDOM = new JSDOM( serializedBlock );
+		expect(
+			blockDOM.window.document.querySelector( '.wp-block-coblocks-highlight' )
+		).toHaveStyle( 'text-align: center' );
 	} );
 
 	it( 'should apply has-background class if any background color is selected', () => {
-		const block = createBlock( name, { content: 'highlighted content' } );
-		let serializedBlock = '';
-
 		block.attributes.customBackgroundColor = '#000000';
+		block.attributes.backgroundColor = undefined;
 		serializedBlock = serialize( block );
-		expect( serializedBlock ).toMatch( /<div.*class=".*has-background/ );
-		expect( serializedBlock ).toMatchSnapshot();
+
+		blockDOM = new JSDOM( serializedBlock );
+		expect(
+			blockDOM.window.document.querySelector( '.wp-block-coblocks-highlight__content' )
+		).toHaveClass( 'has-background' );
 
 		block.attributes.customBackgroundColor = undefined;
 		block.attributes.backgroundColor = 'primary';
 		serializedBlock = serialize( block );
-		expect( serializedBlock ).toMatch( /<div.*class=".*has-background/ );
-		expect( serializedBlock ).toMatchSnapshot();
+
+		blockDOM = new JSDOM( serializedBlock );
+		expect(
+			blockDOM.window.document.querySelector( '.wp-block-coblocks-highlight__content' )
+		).toHaveClass( 'has-background' );
 	} );
 
 	it( 'should apply has-primary-background-color class if the primary color is selected from the color palette', () => {
-		const block = createBlock( name, {
-			content: 'highlighted content',
-			backgroundColor: 'primary',
-		} );
-		const serializedBlock = serialize( block );
+		block.attributes.backgroundColor = 'primary';
+		serializedBlock = serialize( block );
 
-		expect( serialize( block ) ).toMatch( /<div.*class=".*has-primary-background-color/ );
-		expect( serializedBlock ).toMatchSnapshot();
+		blockDOM = new JSDOM( serializedBlock );
+		expect(
+			blockDOM.window.document.querySelector( '.wp-block-coblocks-highlight__content' )
+		).toHaveClass( `has-${ block.attributes.backgroundColor }-background-color` );
 	} );
 
 	it( 'should apply custom background color with inline css', () => {
-		const block = createBlock( name, {
-			content: 'highlighted content',
-			customBackgroundColor: '#000000',
-		} );
-		const serializedBlock = serialize( block );
+		block.attributes.customBackgroundColor = '#123456';
+		serializedBlock = serialize( block );
 
-		expect( serialize( block ) ).toMatch( /<div.*style=".*background-color:#000000/ );
-		expect( serializedBlock ).toMatchSnapshot();
+		blockDOM = new JSDOM( serializedBlock );
+		expect(
+			blockDOM.window.document.querySelector( '.wp-block-coblocks-highlight__content' )
+		).toHaveStyle( `background-color: ${ block.attributes.customBackgroundColor }` );
 	} );
 
 	it( 'should apply has-small-font-size class if the small font size is selected', () => {
-		const block = createBlock( name, {
-			content: 'highlighted content',
-			fontSize: 'small',
-		} );
-		const serializedBlock = serialize( block );
+		block.attributes.fontSize = 'small';
+		serializedBlock = serialize( block );
 
-		expect( serialize( block ) ).toMatch( /<p.*class=".*has-small-font-size/ );
-		expect( serializedBlock ).toMatchSnapshot();
+		blockDOM = new JSDOM( serializedBlock );
+		expect(
+			blockDOM.window.document.querySelector( '.wp-block-coblocks-highlight__content' )
+		).toHaveClass( `has-${ block.attributes.fontSize }-font-size` );
 	} );
 
 	it( 'should apply custom font size with inline css', () => {
-		const block = createBlock( name, {
-			content: 'highlighted content',
-			customFontSize: 50,
-		} );
-		const serializedBlock = serialize( block );
+		block.attributes.customFontSize = 50;
+		serializedBlock = serialize( block );
 
-		expect( serialize( block ) ).toMatch( /<div.*style=".*font-size:50px/ );
-		expect( serializedBlock ).toMatchSnapshot();
+		blockDOM = new JSDOM( serializedBlock );
+		expect(
+			blockDOM.window.document.querySelector( '.wp-block-coblocks-highlight__content' )
+		).toHaveStyle( `font-size: ${ block.attributes.customFontSize }px` );
 	} );
 
 	it( 'should deprecate v1', () => {
 		const postContent = `
-<!-- wp:coblocks/highlight -->
-<p class="wp-block-coblocks-highlight"><mark class="wp-block-coblocks-highlight__content">highlighted content</mark></p>
-<!-- /wp:coblocks/highlight -->`.trim();
+			<!-- wp:coblocks/highlight -->
+			<p class="wp-block-coblocks-highlight"><mark class="wp-block-coblocks-highlight__content">highlighted content</mark></p>
+			<!-- /wp:coblocks/highlight -->
+		`.trim();
 
 		const parsed = parse( postContent );
 		const block = createBlockWithFallback( parsed[ 0 ] );
