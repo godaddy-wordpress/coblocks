@@ -6,4 +6,5 @@ module.exports = {
 	moduleNameMapper: {
 		'\\.(scss|css|less)$': '<rootDir>/.dev/tests/jest/styleMock.js',
 	},
+	reporters: [ 'default', 'jest-junit' ],
 };
