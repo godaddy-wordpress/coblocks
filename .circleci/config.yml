@@ -110,15 +110,10 @@ jobs:
           command: grunt eslint
       - run:
           name: Run jest tests
-          command: npm test -- --ci --runInBand
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: /tmp/artifacts/code-coverage/
-            JEST_JUNIT_OUTPUT_NAME: js-test-results.xml
+          command: npm test -- --coverage --coverageDirectory=/tmp/artifacts/code-coverage
       - store_artifacts:
           path: /tmp/artifacts/code-coverage
           destination: jest-coverage
-      - store_test_results:
-          path: /tmp/artifacts/code-coverage
 
   deploy:
     docker:
