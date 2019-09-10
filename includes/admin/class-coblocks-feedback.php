@@ -88,7 +88,7 @@ class CoBlocks_Feedback {
 		// Get the years.
 		$years = ( intval( $seconds ) / YEAR_IN_SECONDS ) % 100;
 		if ( $years > 1 ) {
-			/* translators: Number of years */
+			/* translators: %d: Number of years */
 			return sprintf( __( '%d years', 'coblocks' ), $years );
 		} elseif ( $years > 0 ) {
 			return __( 'a year', 'coblocks' );
@@ -97,7 +97,7 @@ class CoBlocks_Feedback {
 		// Get the weeks.
 		$weeks = ( intval( $seconds ) / WEEK_IN_SECONDS ) % 52;
 		if ( $weeks > 1 ) {
-			/* translators: Number of weeks */
+			/* translators: %d: Number of weeks */
 			return sprintf( __( '%d weeks', 'coblocks' ), $weeks );
 		} elseif ( $weeks > 0 ) {
 			return __( 'a week', 'coblocks' );
@@ -106,7 +106,7 @@ class CoBlocks_Feedback {
 		// Get the days.
 		$days = ( intval( $seconds ) / DAY_IN_SECONDS ) % 7;
 		if ( $days > 1 ) {
-			/* translators: Number of days */
+			/* translators: %d: Number of days */
 			return sprintf( __( '%d days', 'coblocks' ), $days );
 		} elseif ( $days > 0 ) {
 			return __( 'a day', 'coblocks' );
@@ -115,7 +115,7 @@ class CoBlocks_Feedback {
 		// Get the hours.
 		$hours = ( intval( $seconds ) / HOUR_IN_SECONDS ) % 24;
 		if ( $hours > 1 ) {
-			/* translators: Number of hours */
+			/* translators: %d: Number of hours */
 			return sprintf( __( '%d hours', 'coblocks' ), $hours );
 		} elseif ( $hours > 0 ) {
 			return __( 'an hour', 'coblocks' );
@@ -124,7 +124,7 @@ class CoBlocks_Feedback {
 		// Get the minutes.
 		$minutes = ( intval( $seconds ) / MINUTE_IN_SECONDS ) % 60;
 		if ( $minutes > 1 ) {
-			/* translators: Number of minutes */
+			/* translators: %d: Number of minutes */
 			return sprintf( __( '%d minutes', 'coblocks' ), $minutes );
 		} elseif ( $minutes > 0 ) {
 			return __( 'a minute', 'coblocks' );
@@ -133,7 +133,7 @@ class CoBlocks_Feedback {
 		// Get the seconds.
 		$seconds = intval( $seconds ) % 60;
 		if ( $seconds > 1 ) {
-			/* translators: Number of seconds */
+			/* translators: %d: Number of seconds */
 			return sprintf( __( '%d seconds', 'coblocks' ), $seconds );
 		} elseif ( $seconds > 0 ) {
 			return __( 'a second', 'coblocks' );
@@ -267,14 +267,14 @@ class CoBlocks_Feedback {
 		<div class="notice updated coblocks-notice">
 			<div class="coblocks-notice-inner">
 				<div class="coblocks-notice-icon">
-					<?php /* translators: 1. Plugin Name */ ?>
+					<?php /* translators: %s: Plugin Name */ ?>
 					<img src="<?php echo esc_url( COBLOCKS_PLUGIN_URL . 'dist/images/admin/icon-notice.jpg' ); ?>" alt="<?php printf( esc_attr__( '%s WordPress Plugin', 'coblocks' ), esc_attr( $this->name ) ); ?>" />
 				</div>
 				<div class="coblocks-notice-content">
-					<?php /* translators: 1. Plugin Name */ ?>
+					<?php /* translators: %s: Plugin Name */ ?>
 					<h3><?php printf( esc_html__( 'Are you enjoying %s?', 'coblocks' ), esc_html( $this->name ) ); ?></h3>
 					<p>
-						<?php /* translators: 1. Plugin Name, 2. Time */ ?>
+						<?php /* translators: %s: Plugin Name, 2. Time */ ?>
 						<?php printf( esc_html__( 'You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We\'d really appreciate it!', 'coblocks' ), esc_html( $this->name ), esc_html( $time ) ); ?>
 					</p>
 				</div>

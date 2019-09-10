@@ -17,6 +17,7 @@ setCategories( [
 	},
 	{
 		slug: 'coblocks-galleries',
+		/* translators: %s: Represents 'CoBlocks' */
 		title: sprintf( __( '%s Galleries' ), 'CoBlocks' ),
 		icon: brandAssets.categoryIcon,
 	},

@@ -61,7 +61,7 @@ class ResponsiveTabsControl extends Component {
 							if ( 'mobile' === tab.name ) {
 								return (
 									<RangeControl
-										// translators: Control name
+										/* translators: %s: Represents values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width' */
 										label={ sprintf( __( 'Mobile %s' ), label ) }
 										value={ valueMobile }
 										onChange={ ( valueMobile ) => onChangeMobile( valueMobile ) }

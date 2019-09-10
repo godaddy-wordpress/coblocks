@@ -228,7 +228,10 @@ class DisableBlocks extends Component {
 						}
 					} ) :
 					<section className="coblocks-block-manager__section coblocks-block-manager__section--noresults ">
-						<p className="editor-inserter__no-results">{ sprintf( __( 'No "%s" blocks found.' ), this.props.keyword ) }</p>
+						<p className="editor-inserter__no-results">{
+							/* translators: %s: Represents text input from user  */
+							sprintf( __( 'No "%s" blocks found.' ), this.props.keyword )
+						}</p>
 					</section>
 				}
 			</Fragment>
