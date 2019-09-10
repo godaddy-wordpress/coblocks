@@ -42,14 +42,17 @@ const handlePlaceholderPlacement = (
 		itemClientId
 	)[ 0 ].innerBlocks;
 
+	const filledFoodItems = foodItems.filter(
+		item => item.name === 'coblocks/food-item' && ! isEmpty( item.attributes ) );
+
 	const placeholders = foodItems.filter(
 		item => item.name === blockName && isEmpty( item.attributes )
 	);
 
-	// Remove trailing placholders if there are more than one.
+	// Remove trailing placholders if there are more than two.
 	dispatch( 'core/block-editor' ).removeBlocks(
 		placeholders
-			.filter( ( item, index ) => item.clientId !== childClientId && index !== 0 )
+			.filter( ( item, index ) => item.clientId !== childClientId && index !== 0 && filledFoodItems.length >= 1 )
 			.map( item => item.clientId ),
 		false
 	);

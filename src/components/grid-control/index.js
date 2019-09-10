@@ -121,10 +121,10 @@ class CSSGridControl extends Component {
 				<div className={ classes }>
 					<p className="components-base-control__label">{ __( 'Layout' ) }</p>
 					<ButtonGroup aria-label={ __( 'Select Layout' ) }>
-						{ map( layoutOptions, ( { label, value } ) => {
+						{ map( layoutOptions, ( { label, value }, index ) => {
 							if ( tooltip ) {
 								return (
-									<Tooltip text={ label }>
+									<Tooltip text={ label } key={ `grid-tooltip-${ index }` }>
 										<div className={ ( value === layout ) ? 'is-selected' : null }>
 											<Button
 												isSmall

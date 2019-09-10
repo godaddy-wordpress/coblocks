@@ -1,9 +1,4 @@
 .wp-block-coblocks-food-and-drinks {
-	[data-block] {
-		margin-bottom: 0;
-		margin-top: 0;
-	}
-
 	.block-editor-inner-blocks {
 		width: 100%;
 	}
@@ -19,11 +14,22 @@
 		}
 
 		.wp-block[data-type="core/heading"] {
+			align-content: center;
 			flex: 1 100%;
 			max-width: 100%;
 			width: 100%;
 
+			[data-block],
 			.block-editor-block-list__block-edit {
+				margin-top: 0;
+			}
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
 				margin-top: 0;
 			}
 		}
@@ -46,7 +52,7 @@
 
 	// Hide this on Gutenberg 5.9+
 	.block-list-appender {
-		display: none;
+		display: none !important;
 	}
 
 	.coblocks-list-appender__toggle {
@@ -57,7 +63,7 @@
 		color: $dark-gray-500;
 		display: flex;
 		justify-content: center;
-		margin-top: 3.25em;
+		margin-top: 14px;
 		outline: 1px dashed $dark-gray-150;
 		padding: 16px;
 		width: 100%;
@@ -91,4 +97,23 @@
 	svg {
 		fill: $dark-gray-500;
 	}
+}
+
+.wp-block[data-type="coblocks/food-and-drinks"] > .block-editor-block-list__block-edit > [data-block] {
+	margin-bottom: 0;
+}
+
+// Added for Gutenberg 6.3+
+.block-editor-block-list__block[data-type="coblocks/food-and-drinks"].has-child-selected
+	> .block-editor-block-list__block-edit
+	> [data-block]
+	> div
+	> .block-editor-inner-blocks,
+.block-editor-block-list__block[data-type="coblocks/food-and-drinks"].is-selected
+	> .block-editor-block-list__block-edit
+	> [data-block]
+	> div
+	> .block-editor-inner-blocks {
+	padding: 14px;
+	padding-bottom: 0;
 }

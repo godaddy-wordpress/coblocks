@@ -7,15 +7,15 @@ import './styles/style.scss';
 /**
  * Internal dependencies
  */
-import CSSGridAttributes from '../../components/grid-control/attributes';
 import deprecated from './deprecated';
-import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
-import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 import save from './save';
 import transforms from './transforms';
+import CSSGridAttributes from '../../components/grid-control/attributes';
+import DimensionsAttributes from '../../components/dimensions-control/attributes';
+import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
 import { BackgroundAttributes } from '../../components/background';
 
 /**
@@ -52,4 +52,4 @@ const settings = {
 	deprecated,
 };
 
-export { name, category, metadata, settings };
+export { name, category, metadata, settings, attributes };

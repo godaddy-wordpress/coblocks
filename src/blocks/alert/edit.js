@@ -22,6 +22,30 @@ const { RichText } = wp.blockEditor;
  * Block edit function
  */
 class Edit extends Component {
+	componentDidMount() {
+		const { attributes, setAttributes } = this.props;
+
+		// Convert is-{type}-alert to is-style-{type}.
+		// See: https://github.com/godaddy/coblocks/pull/781
+		if ( /is-\w+-alert/.test( attributes.className ) ) {
+			let newClassName = attributes.className;
+
+			newClassName = newClassName.replace( 'is-default-alert', 'is-style-info' );
+			newClassName = newClassName.replace( /is-(\w+)-alert/, 'is-style-$1' );
+			setAttributes( { className: newClassName } );
+		}
+	}
+
+	componentDidUpdate( prevProps ) {
+		const { attributes, setAttributes } = this.props;
+
+		// Reset color selections when a new style has been selected.
+		// If the legacy alert class is detected, we want to retain the custom color selections.
+		if ( ! /is-\w+-alert/.test( prevProps.attributes.className ) && prevProps.attributes.className !== attributes.className ) {
+			setAttributes( { backgroundColor: '', customBackgroundColor: '', textColor: '', customTextColor: '' } );
+		}
+	}
+
 	render() {
 		const {
 			attributes,
