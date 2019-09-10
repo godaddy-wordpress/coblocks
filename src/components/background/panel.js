@@ -12,9 +12,9 @@ import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { SelectControl, RangeControl, ToggleControl, PanelBody, Button, FocalPointPicker } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { SelectControl, RangeControl, ToggleControl, PanelBody, Button, FocalPointPicker } from '@wordpress/components';
 
 class BackgroundPanel extends Component {
 	constructor() {

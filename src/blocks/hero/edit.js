@@ -14,12 +14,12 @@ import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZon
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
-const { compose } = wp.compose;
-const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.blockEditor;
-const { ResizableBox, Spinner } = wp.components;
-const { isBlobURL } = wp.blob;
+import { __, _x } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import { Component, Fragment } from '@wordpress/element';
+import { InnerBlocks } from '@wordpress/block-editor';
+import { ResizableBox, Spinner } from '@wordpress/components';
+import { isBlobURL } from '@wordpress/blob';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.

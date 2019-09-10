@@ -14,11 +14,11 @@ import DimensionsSelect from './dimensions-select';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { withInstanceId } = wp.compose;
-const { dispatch } = wp.data;
-const { Component, Fragment } = wp.element;
-const { ButtonGroup, BaseControl, Button, Tooltip, TabPanel } = wp.components;
+import { __, sprintf } from '@wordpress/i18n';
+import { withInstanceId } from '@wordpress/compose';
+import { dispatch } from '@wordpress/data';
+import { Component, Fragment } from '@wordpress/element';
+import { ButtonGroup, BaseControl, Button, Tooltip, TabPanel } from '@wordpress/components';
 
 class DimensionsControl extends Component {
 	constructor( props ) {

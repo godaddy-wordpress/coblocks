@@ -7,11 +7,11 @@ import map from 'lodash/map';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { withInstanceId } = wp.compose;
-const { dispatch } = wp.data;
-const { Component, Fragment } = wp.element;
-const { ButtonGroup, Button, Tooltip, ToggleControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { withInstanceId } from '@wordpress/compose';
+import { dispatch } from '@wordpress/data';
+import { Component, Fragment } from '@wordpress/element';
+import { ButtonGroup, Button, Tooltip, ToggleControl } from '@wordpress/components';
 
 class CSSGridControl extends Component {
 	render() {

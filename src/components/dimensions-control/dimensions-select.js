@@ -1,9 +1,9 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const {	SelectControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { SelectControl } from '@wordpress/components';
 
 const utilitySizes = [
 	{

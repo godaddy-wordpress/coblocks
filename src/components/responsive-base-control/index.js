@@ -12,10 +12,10 @@ import './styles/editor.scss';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { withInstanceId } = wp.compose;
-const { Component, Fragment } = wp.element;
-const { BaseControl, TabPanel } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { withInstanceId } from '@wordpress/compose';
+import { Component, Fragment } from '@wordpress/element';
+import { BaseControl, TabPanel } from '@wordpress/components';
 
 class ResponsiveBaseControl extends Component {
 	constructor() {

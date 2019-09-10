@@ -7,9 +7,9 @@ import icons from './icons';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { RangeControl, TabPanel } = wp.components;
+import { __, sprintf } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { RangeControl, TabPanel } from '@wordpress/components';
 
 class ResponsiveTabsControl extends Component {
 	constructor() {
