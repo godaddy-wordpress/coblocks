@@ -6,7 +6,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { createBlock } from '@wordpress/blocks';
+import { createBlock, getPhrasingContentSchema } from '@wordpress/blocks';
 
 const transforms = {
 	from: [
@@ -21,10 +21,14 @@ const transforms = {
 		},
 		{
 			type: 'raw',
-			selector: 'div.wp-block-coblocks-highlight',
+			selector: 'p.wp-block-coblocks-highlight',
 			schema: {
-				div: {
-					classes: [ 'wp-block-coblocks-highlight' ],
+				p: {
+					children: {
+						mark: {
+							children: getPhrasingContentSchema(),
+						},
+					},
 				},
 			},
 		},
