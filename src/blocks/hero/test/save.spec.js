@@ -3,8 +3,7 @@
  */
 import { JSDOM } from 'jsdom';
 import '@testing-library/jest-dom/extend-expect';
-import { omit } from 'lodash';
-import { registerBlockType, unregisterBlockType, createBlock, serialize, parse } from '@wordpress/blocks';
+import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
@@ -86,36 +85,5 @@ describe( 'coblocks/hero', () => {
 		expect(
 			blockDOM.window.document.querySelector( '.wp-block-coblocks-hero__content' )
 		).toHaveStyle( 'max-width: 750px' );
-	} );
-
-	it( 'should deprecate old version', () => {
-		// Unregister the current block version.
-		unregisterBlockType( name );
-
-		// Register the v1 block.
-		const v1Settings = Object.assign(
-			{}, omit( settings, [ 'attributes', 'save', 'deprecated' ] ),
-			{
-				attributes: settings.deprecated[ 0 ].attributes,
-				save: settings.deprecated[ 0 ].save,
-			}
-		);
-		registerBlockType( name, { category: 'common', ...v1Settings } );
-
-		// Create the block with the minimum attributes.
-		const v1Block = createBlock( name );
-		const v1Serialized = serialize( v1Block );
-
-		// Unregister the v1 block version.
-		unregisterBlockType( name );
-
-		// Register the current block version.
-		registerBlockType( name, { category: 'common', ...settings } );
-
-		const blocks = parse( v1Serialized );
-
-		for ( let i = 0; i < blocks.length; i++ ) {
-			expect( blocks[ i ].isValid ).toBe( true );
-		}
 	} );
 } );
