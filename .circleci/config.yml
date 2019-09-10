@@ -110,14 +110,13 @@ jobs:
           command: grunt eslint
       - run:
           name: Run jest tests
-          command: npm test -- --ci --testResultsProcessor="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage
+          command: npm test -- --ci --testResultsProcessor="jest-junit"
           environment:
-            JEST_JUNIT_OUTPUT: /tmp/artifacts/code-coverage/js-test-results.xml
+            JEST_JUNIT_OUTPUT: reports/junit/js-test-results.xml
       - store_artifacts:
-          path: /tmp/artifacts/code-coverage
-          destination: jest-coverage
+          path: /reports/junit
       - store_test_results:
-          path: /tmp/artifacts/code-coverage
+          path: /reports/junit
 
   deploy:
     docker:
