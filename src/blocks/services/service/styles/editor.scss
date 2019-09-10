@@ -75,6 +75,8 @@
 	}
 
 	&__figure {
+		margin-bottom: 0;
+
 		&.is-selected {
 			&::after {
 				bottom: 0;
