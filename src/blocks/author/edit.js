@@ -7,7 +7,7 @@ import Controls from './controls';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { mediaUpload } = wp.editor;
 const { RichText, InnerBlocks, MediaUpload, MediaUploadCheck } = wp.blockEditor;
@@ -99,7 +99,7 @@ class Edit extends Component {
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.addImage }
-				label={ __( 'Drop to add as avatar' ) }
+				label={ _x( 'Drop to add as avatar', 'avatar meaning an image representing the user' ) }
 			/>
 		);
 

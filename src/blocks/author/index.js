@@ -16,7 +16,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
@@ -24,7 +24,7 @@ const { __ } = wp.i18n;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Author' ),
+	title: _x( 'Author', 'block name' ),
 	description: __( 'Add an author biography to build credibility and authority.' ),
 	icon,
 	keywords: [ __( 'biography' ), __( 'profile' ), 'coblocks' ],

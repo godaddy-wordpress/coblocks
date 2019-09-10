@@ -25,7 +25,7 @@ const { __, _x } = wp.i18n;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Alert' ),
+	title: _x( 'Alert', 'block name' ),
 	description: __( 'Provide contextual feedback messages or notices.' ),
 	icon,
 	keywords: [ __( 'notice' ), __( 'message' ), 'coblocks' ],

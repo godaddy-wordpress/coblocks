@@ -204,7 +204,6 @@ class CoBlocks_Getting_Started_Page {
 
 			WP_CLI::log(
 				WP_CLI::colorize(
-					/* translators: %s1: Getting started wtih Coblocks here: , %s2: Link to coblocks admin page */
 					'%b' . sprintf( '🎉 %s %s', __( 'Get started with CoBlocks here:', 'coblocks' ), admin_url( 'admin.php?page=coblocks-getting-started' ) ) . '%n'
 				)
 			);
