@@ -45,6 +45,14 @@ describe( 'coblocks/highlight transforms', () => {
 		expect( transformed[ 0 ].attributes.content ).toBe( 'paragraph content' );
 	} );
 
+	it( 'should transform to core/paragraph block without content', () => {
+		const block = createBlock( name, { } );
+		const transformed = switchToBlockType( block, 'core/paragraph' );
+
+		expect( transformed[ 0 ].isValid ).toBe( true );
+		expect( transformed[ 0 ].attributes.content ).toBe( '' );
+	} );
+
 	it( 'should transform when :highlight prefix is seen', () => {
 		const prefix = ':highlight';
 		const content = 'Lorem ipsum dolor sit amet.';
