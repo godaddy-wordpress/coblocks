@@ -13,7 +13,7 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
+const { _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { RichText } = wp.blockEditor;

@@ -13,7 +13,7 @@ import Controls from './controls';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
+const { _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InnerBlocks, RichText } = wp.blockEditor;
