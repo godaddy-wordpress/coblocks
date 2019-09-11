@@ -14,7 +14,7 @@ import DimensionsSelect from './dimensions-select';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __, _x, sprintf } = wp.i18n;
 const { withInstanceId } = wp.compose;
 const { dispatch } = wp.data;
 const { Component, Fragment } = wp.element;
@@ -405,15 +405,15 @@ class DimensionsControl extends Component {
 
 		const unitSizes = [
 			{
-				name: __( 'Pixel' ),
+				name: _x( 'Pixel', 'related to CSS Markup' ),
 				unitValue: 'px',
 			},
 			{
-				name: __( 'Em' ),
+				name: _x( 'Em', 'related to CSS Markup' ),
 				unitValue: 'em',
 			},
 			{
-				name: __( 'Percentage' ),
+				name: _x( 'Percentage', 'related to CSS Markup' ),
 				unitValue: '%',
 			},
 		];

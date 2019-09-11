@@ -1,15 +1,15 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { _x } = wp.i18n;
 
 /**
  * Link options.
  */
 const captionOptions = [
-	{ value: 'dark', label: __( 'Dark' ) },
-	{ value: 'light', label: __( 'Light' ) },
-	{ value: 'none', label: __( 'None' ) },
+	{ value: 'dark', label: _x( 'Dark', 'block styles' ) },
+	{ value: 'light', label: _x( 'Light', 'block styles' ) },
+	{ value: 'none', label: _x( 'None', 'block styles' ) },
 ];
 
 export default captionOptions;

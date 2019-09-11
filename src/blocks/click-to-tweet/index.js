@@ -16,7 +16,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
@@ -24,7 +24,7 @@ const { __ } = wp.i18n;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Click to Tweet' ),
+	title: _x( 'Click to Tweet', 'block name' ),
 	description: __( 'Add a quote for readers to tweet via Twitter.' ),
 	icon,
 	keywords: [ __( 'share' ), __( 'twitter' ), 'coblocks' ],

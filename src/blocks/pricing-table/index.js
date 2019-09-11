@@ -16,7 +16,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
@@ -24,10 +24,10 @@ const { __ } = wp.i18n;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Pricing Table' ),
+	title: _x( 'Pricing Table', 'block name' ),
 	description: __( 'Add pricing tables to help visitors compare products and plans.' ),
 	icon,
-	keywords: [ __( 'landing' ), __( 'comparison' ), 'coblocks' ],
+	keywords: [ _x( 'landing', 'block search keyword' ), _x( 'comparison', 'block search keyword' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,

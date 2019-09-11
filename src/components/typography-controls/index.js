@@ -17,7 +17,7 @@ import icons from './icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { DOWN } = wp.keycodes;
@@ -73,38 +73,38 @@ class TypographyControls extends Component {
 		const weight = [
 			{
 				value: '',
-				label: __( 'Default' ),
+				label: _x( 'Default', 'block styles' ),
 			},
 			{
 				value: 'normal',
-				label: __( 'Normal' ),
+				label: _x( 'Normal', 'block styles' ),
 			},
 			{
 				value: 'bold',
-				label: __( 'Bold' ),
+				label: _x( 'Bold', 'block styles' ),
 			},
 		];
 
 		const transform = [
 			{
 				value: '',
-				label: __( 'Default' ),
+				label: _x( 'Default', 'block styles' ),
 			},
 			{
 				value: 'uppercase',
-				label: __( 'Uppercase' ),
+				label: _x( 'Uppercase', 'block styles' ),
 			},
 			{
 				value: 'lowercase',
-				label: __( 'Lowercase' ),
+				label: _x( 'Lowercase', 'block styles' ),
 			},
 			{
 				value: 'capitalize',
-				label: __( 'Capitalize' ),
+				label: _x( 'Capitalize', 'block styles' ),
 			},
 			{
 				value: 'initial',
-				label: __( 'Normal' ),
+				label: _x( 'Normal', 'block styles' ),
 			},
 		];
 

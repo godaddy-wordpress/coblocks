@@ -19,7 +19,7 @@ import SubmitButton from './submit-button';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __, _x, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { registerBlockType, getBlockType } = wp.blocks;
 const { Button, PanelBody, TextControl, ExternalLink } = wp.components;
@@ -118,7 +118,7 @@ export const childBlocks = [
 		settings: {
 			...FieldDefaults,
 			title: __( 'Message' ),
-			keywords: [ __( 'Textarea' ), 'textarea', __( 'Multiline text' ) ],
+			keywords: [ _x( 'Textarea', 'refers to an HTML element' ), 'textarea', __( 'Multiline text' ) ],
 			description: __( 'A text box for longer responses.' ),
 			icon: icons.textarea,
 			edit: props => (

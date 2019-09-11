@@ -24,7 +24,7 @@ const { __, _x } = wp.i18n;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Dynamic HR' ),
+	title: _x( 'Dynamic HR', 'block name' ),
 	description: __( 'Add a resizable spacer between other blocks.' ),
 	icon,
 	keywords: [ __( 'spacer' ), 'hr', 'coblocks' ],

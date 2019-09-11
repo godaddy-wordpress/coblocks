@@ -14,7 +14,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { InnerBlocks } = wp.blockEditor;
 
 /**
@@ -23,7 +23,7 @@ const { InnerBlocks } = wp.blockEditor;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Form' ),
+	title: _x( 'Form', 'block name' ),
 	description: __( 'Add a simple form to your page.' ),
 	icon,
 	keywords: [ __( 'email' ), __( 'about' ), __( 'contact' ) ],
