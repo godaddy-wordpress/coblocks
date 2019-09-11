@@ -27,7 +27,7 @@ const settings = {
 	title: _x( 'Click to Tweet', 'block name' ),
 	description: __( 'Add a quote for readers to tweet via Twitter.' ),
 	icon,
-	keywords: [ __( 'share' ), __( 'twitter' ), 'coblocks' ],
+	keywords: [ _x( 'share', 'block search keyword' ), _x( 'twitter', 'block search keyword' ), 'coblocks' ],
 	example: {
 		attributes: {
 			content: __( 'The easiest way to promote and advertise your blog, website, and business on Twitter.' ),

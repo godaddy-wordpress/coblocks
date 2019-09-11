@@ -26,7 +26,7 @@ const settings = {
 	title: _x( 'Accordion Item', 'This is an inner block for the Accordion Block.' ),
 	description: __( 'Add collapsable accordion items to accordions.' ),
 	icon,
-	keywords: [ __( 'tabs' ), __( 'faq' ), 'coblocks' ],
+	keywords: [ _x( 'tabs', 'block search keyword' ), _x( 'faq', 'block search keyword' ), 'coblocks' ],
 	parent: [ 'coblocks/accordion' ],
 	supports: {
 		reusable: false,

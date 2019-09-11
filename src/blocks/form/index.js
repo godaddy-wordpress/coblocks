@@ -26,7 +26,7 @@ const settings = {
 	title: _x( 'Form', 'block name' ),
 	description: __( 'Add a simple form to your page.' ),
 	icon,
-	keywords: [ __( 'email' ), __( 'about' ), __( 'contact' ) ],
+	keywords: [ _x( 'email', 'block search keyword' ), _x( 'about', 'block search keyword' ), _x( 'contact', 'block search keyword' ) ],
 	supports: {
 		reusable: false,
 		html: false,

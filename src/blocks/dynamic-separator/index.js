@@ -27,7 +27,7 @@ const settings = {
 	title: _x( 'Dynamic HR', 'block name' ),
 	description: __( 'Add a resizable spacer between other blocks.' ),
 	icon,
-	keywords: [ __( 'spacer' ), 'hr', 'coblocks' ],
+	keywords: [ _x( 'spacer', 'block search keyword' ), 'hr', 'coblocks' ],
 	styles: [
 		{ name: 'dots', label: _x( 'Dot', 'block style' ), isDefault: true },
 		{ name: 'line', label: _x( 'Line', 'block style' ) },

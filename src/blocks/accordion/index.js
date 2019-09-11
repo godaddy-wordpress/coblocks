@@ -27,7 +27,7 @@ const settings = {
 	title: _x( 'Accordion', 'block title' ),
 	description: __( 'Organize content within collapsable accordion items.' ),
 	icon,
-	keywords: [ __( 'tabs' ), __( 'faq' ), 'coblocks' ],
+	keywords: [ _x( 'tabs', 'block search keyword' ), _x( 'faq', 'block search keyword' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,

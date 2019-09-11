@@ -26,7 +26,7 @@ const settings = {
 	title: _x( 'Food Item', 'block name' ),
 	description: __( 'A food and drink item within the Food & Drinks block.' ),
 	icon,
-	keywords: __( 'menu' ),
+	keywords: _x( 'menu', 'block search keyword' ),
 	supports: {
 		inserter: false,
 		customClassName: false,

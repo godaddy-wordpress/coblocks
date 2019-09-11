@@ -34,7 +34,7 @@ const settings = {
 	title: _x( 'Features', 'block name' ),
 	description: __( 'Add up to three columns of small notes for your product or service.' ),
 	icon,
-	keywords: [ __( 'services' ), 'coblocks' ],
+	keywords: [ _x( 'services', 'block search keyword' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,

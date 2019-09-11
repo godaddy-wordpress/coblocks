@@ -27,7 +27,7 @@ const settings = {
 	title: _x( 'Author', 'block name' ),
 	description: __( 'Add an author biography to build credibility and authority.' ),
 	icon,
-	keywords: [ __( 'biography' ), __( 'profile' ), 'coblocks' ],
+	keywords: [ _x( 'biography', 'block search keyword' ), _x( 'profile', 'block search keyword' ), 'coblocks' ],
 	example: {
 		attributes: {
 			name: 'Jane Doe',

@@ -85,7 +85,7 @@ export const childBlocks = [
 		name: 'coblocks/field-name',
 		settings: {
 			...FieldDefaults,
-			title: __( 'Name' ),
+			title: _x( 'Name', 'block name' ),
 			description: __( 'A text field for names.' ),
 			icon: icons.name,
 			edit: props => (
@@ -106,8 +106,8 @@ export const childBlocks = [
 		name: 'coblocks/field-email',
 		settings: {
 			...FieldDefaults,
-			title: __( 'Email' ),
-			keywords: [ __( 'e-mail' ), __( 'mail' ), 'email' ],
+			title: _x( 'Email', 'block name' ),
+			keywords: [ _x( 'e-mail', 'block search keyword' ), _x( 'mail', 'block search keyword' ), 'email' ],
 			description: __( 'An email address field.' ),
 			icon: icons.email,
 			edit: editField( 'email' ),
@@ -117,8 +117,8 @@ export const childBlocks = [
 		name: 'coblocks/field-textarea',
 		settings: {
 			...FieldDefaults,
-			title: __( 'Message' ),
-			keywords: [ _x( 'Textarea', 'refers to an HTML element' ), 'textarea', __( 'Multiline text' ) ],
+			title: _x( 'Message', 'block name' ),
+			keywords: [ _x( 'Textarea', 'block search keyword' ), 'textarea', _x( 'Multiline text', 'block search keyword' ) ],
 			description: __( 'A text box for longer responses.' ),
 			icon: icons.textarea,
 			edit: props => (

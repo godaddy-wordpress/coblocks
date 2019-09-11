@@ -26,7 +26,7 @@ const settings = {
 	title: _x( 'Food & Drinks', 'block name' ),
 	description: __( 'Display a menu or price list.' ),
 	icon,
-	keywords: [ __( 'restaurant' ), __( 'menu' ) ],
+	keywords: [ _x( 'restaurant', 'block search keyword' ), _x( 'menu', 'block search keyword' ) ],
 	supports: {
 		align: [ 'wide' ],
 	},

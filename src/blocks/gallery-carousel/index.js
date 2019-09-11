@@ -35,7 +35,7 @@ const settings = {
 	title: _x( 'Carousel', 'block name' ),
 	description: __( 'Display multiple images in a beautiful carousel gallery.' ),
 	icon,
-	keywords: [	__( 'gallery' ), __( 'photos' )	],
+	keywords: [	_x( 'gallery', 'block search keyword' ), _x( 'photos', 'block search keyword' )	],
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
