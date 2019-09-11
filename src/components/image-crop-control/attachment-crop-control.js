@@ -1,3 +1,4 @@
+/* global React */
 import ImageCropControl from './image-crop-control';
 import { attachmentOriginalImage } from './attachment-original-image';
 

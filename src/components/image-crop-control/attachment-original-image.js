@@ -21,19 +21,19 @@ class AttachmentOriginalImage {
 				action: 'coblocks_system_original_image',
 				id: id,
 			}, function( response ) {
-				if ( ! response ) {
+				if ( ! response.success ) {
 					reject();
 					return;
 				}
 
-				const data = JSON.parse( response );
+				const data = response.data;
 
 				if ( ! data || ! data.url ) {
 					reject();
 					return;
 				}
 
-				self.originalImageCache[ id ] = data;
+				self.originalImageCache[ id ] = data.id;
 				resolve( data );
 			} );
 		} );

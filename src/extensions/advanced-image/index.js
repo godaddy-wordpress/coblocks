@@ -88,13 +88,13 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 				cropHeight: currentAttributes.cropHeight,
 				cropRotation: currentAttributes.cropRotation,
 			}, function( response ) {
-				if ( ! response ) {
+				if ( ! response.success ) {
 					return;
 				}
 
-				const data = JSON.parse( response );
+				const data = response.data;
 
-				if ( ! data || ! data.success ) {
+				if ( ! data ) {
 					return;
 				}
 

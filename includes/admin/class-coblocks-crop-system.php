@@ -6,191 +6,228 @@
  */
 
 // Exit if accessed directly.
-if (!defined('ABSPATH')) {
-    exit;
+if ( ! defined( 'ABSPATH' ) ) {
+
+	exit;
+
 }
 
 /**
  * Crops Images
  */
-class CoBlocks_Crop_System
-{
-    const ORIGINAL_META_KEY = 'original-image-id';
-    const CROP_META_KEY = 'crop-image-data';
+class CoBlocks_Crop_System {
 
-    private static $instance;
+	const ORIGINAL_META_KEY = 'original-image-id';
 
-    public static function instance()
-    {
-        if (empty(self::$instance)) {
-            self::$instance = new CoBlocks_Crop_System();
-        }
+	const CROP_META_KEY = 'crop-image-data';
 
-        return self::$instance;
-    }
+	private static $instance;
 
-    public function registerEndpoints()
-    {
-        add_filter('ajax_query_attachments_args', array($this, 'hideCroppedFromLibrary'));
-        add_action('wp_ajax_coblocks_system_crop', array($this, 'apiCrop'));
-        add_action('wp_ajax_coblocks_system_original_image', array($this, 'getOriginalImage'));
-    }
+	public static function instance() {
 
-    public function hideCroppedFromLibrary($query)
-    {
-        $tag = get_term_by('slug', 'coblocks-cropped', 'post_tag');
+		if ( empty( self::$instance ) ) {
 
-        if (!empty($tag)) {
-            $query['tag__not_in'][] = $tag->term_id;
-        }
+			self::$instance = new CoBlocks_Crop_System();
 
-        return $query;
-    }
+		}
 
-    public function getOriginalImage()
-    {
-        if (!isset($_POST['id'])) {
-            wp_die('', 400);
-        }
+		return self::$instance;
 
-        $id   = (int)$_POST['id'];
-        $crop = null;
+	}
 
-        $attachmentMeta = wp_get_attachment_metadata($id);
+	public function register_endpoints() {
 
-        if (isset($attachmentMeta[self::ORIGINAL_META_KEY])) {
-            $originalImageId = $attachmentMeta[self::ORIGINAL_META_KEY];
-        } else {
-            $originalImageId = $id;
-        }
+		add_filter( 'ajax_query_attachments_args', [ $this, 'hide_cropped_from_library' ] );
+		add_action( 'wp_ajax_coblocks_system_crop', [ $this, 'api_crop' ] );
+		add_action( 'wp_ajax_coblocks_system_original_image', [ $this, 'get_original_image' ] );
 
-        if (isset($attachmentMeta[self::CROP_META_KEY])) {
-            $crop = $attachmentMeta[self::CROP_META_KEY];
-        }
+	}
 
-        wp_die(json_encode([
-            'id'   => $originalImageId,
-            'url'  => wp_get_attachment_image_url($originalImageId, 'original'),
-            'crop' => $crop,
-        ]), 200);
-    }
+	public function hide_cropped_from_library( $query ) {
 
-    public function apiCrop()
-    {
-        if (!isset($_POST['id']) || !isset($_POST['cropX']) || !isset($_POST['cropY']) || !isset($_POST['cropWidth']) || !isset($_POST['cropHeight']) || !isset($_POST['cropRotation'])) {
-            wp_die('', 400);
-        }
+		$tag = get_term_by( 'slug', 'coblocks-cropped', 'post_tag' );
 
-        $newId = $this->imageMediaCrop(
-            intval($_POST['id']),
-            floatval($_POST['cropX']),
-            floatval($_POST['cropY']),
-            floatval($_POST['cropWidth']),
-            floatval($_POST['cropHeight']),
-            floatval($_POST['cropRotation'])
-        );
+		if ( ! empty( $tag ) ) {
 
-        if ($newId === null) {
-            wp_die(json_encode([
-                'success' => false,
-            ]), 200);
-        }
+			$query['tag__not_in'][] = $tag->term_id;
 
-        wp_die(json_encode([
-            'success' => true,
-            'id'      => $newId,
-            'url'     => wp_get_attachment_image_url($newId, 'original'),
-        ]), 200);
-    }
+		}
 
-    public function imageMediaCrop($id, $offsetX, $offsetY, $width, $height, $rotate)
-    {
-        require_once(ABSPATH.'wp-admin/includes/image.php');
+		return $query;
 
-        $attachmentMeta = wp_get_attachment_metadata($id);
+	}
 
-        if (isset($attachmentMeta[self::ORIGINAL_META_KEY])) {
-            $originalImageId = $attachmentMeta[self::ORIGINAL_META_KEY];
-        } else {
-            $originalImageId = $id;
-        }
+	public function get_original_image() {
 
-        $filePath = get_attached_file($originalImageId);
+		$id = filter_input( INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT );
 
-        if (empty($filePath)) {
-            return null;
-        }
+		if ( ! $id ) {
 
-        $imageEditor = wp_get_image_editor($filePath);
-        $loaded      = $imageEditor->load();
+			wp_send_json_error();
 
-        if (!$loaded) {
-            return null;
-        }
+		}
 
-        $nR = (360 - round($rotate)) % 360;
-        $sz = $imageEditor->get_size();
+		$attachment_meta   = wp_get_attachment_metadata( $id );
+		$original_image_id = isset( $attachment_meta[ self::ORIGINAL_META_KEY ] ) ? $attachment_meta[ self::ORIGINAL_META_KEY ] : $id;
 
-        if ($nR !== 0 && $nR !== 180) {
-            $originalWidth = $sz['width'];
-            $sz['width']   = $sz['height'];
-            $sz['height']  = $originalWidth;
-        }
+		$crop = isset( $attachment_meta[ self::CROP_META_KEY ] ) ? $attachment_meta[ self::CROP_META_KEY ] : null;
 
-        $nX = round($sz['width'] * $offsetX / 100);
-        $nY = round($sz['height'] * $offsetY / 100);
-        $nW = round($sz['width'] * $width / 100);
-        $nH = round($sz['height'] * $height / 100);
+		wp_send_json_success(
+			[
+				'id'   => $original_image_id,
+				'url'  => wp_get_attachment_image_url( $original_image_id, 'original' ),
+				'crop' => $crop,
+			]
+		);
 
-        $newName  = 'crop-'.$nX.'-'.$nY.'-'.$nW.'-'.$nH.'-'.$nR.'-'.basename($filePath);
-        $filename = rtrim(dirname($filePath), '/').'/'.$newName;
+	}
 
-        $existingAttachment = get_page_by_title($newName, ARRAY_A, 'attachment');
-        if (!empty($existingAttachment)) {
-            return $existingAttachment['ID'];
-        }
+	public function api_crop() {
 
-        if (!empty($nR)) {
-            $imageEditor->rotate($nR);
-        }
-        $cropped = $imageEditor->crop($nX, $nY, $nW, $nH);
+		if (
+			! isset( $_POST['id'] ) ||
+			! isset( $_POST['cropX'] ) ||
+			! isset( $_POST['cropY'] ) ||
+			! isset( $_POST['cropWidth'] ) ||
+			! isset( $_POST['cropHeight'] ) ||
+			! isset( $_POST['cropRotation'] )
+		) {
 
-        if (!$cropped) {
-            return null;
-        }
+			wp_send_json_error();
 
-        $savedImage = $imageEditor->save($filename);
+		}
 
-        if ($savedImage instanceof WP_Error) {
-            return null;
-        }
+		$new_id = $this->image_media_crop(
+			intval( $_POST['id'] ),
+			floatval( $_POST['cropX'] ),
+			floatval( $_POST['cropY'] ),
+			floatval( $_POST['cropWidth'] ),
+			floatval( $_POST['cropHeight'] ),
+			floatval( $_POST['cropRotation'] )
+		);
 
-        $filename = $savedImage['path'];
-        $mimeType = $savedImage['mime-type'];
+		if ( null === $new_id ) {
 
-        $attachmentId = wp_insert_attachment(array(
-            'guid'           => $filename,
-            'post_mime_type' => $mimeType,
-            'post_title'     => $newName,
-            'post_content'   => '',
-            'post_status'    => 'inherit'
-        ), $filename, 0);
+			wp_send_json_error();
 
-        $metadata                          = wp_generate_attachment_metadata($attachmentId, $filename);
-        $metadata[self::ORIGINAL_META_KEY] = $originalImageId;
-        $metadata[self::CROP_META_KEY]     = array(
-            'offsetX'  => $offsetX,
-            'offsetY'  => $offsetY,
-            'width'    => $width,
-            'height'   => $height,
-            'rotation' => $rotate,
-        );
+		}
 
-        wp_update_attachment_metadata($attachmentId, $metadata);
-        wp_set_post_tags($attachmentId, 'coblocks-cropped', true);
+		wp_send_json_success(
+			[
+				'success' => true,
+				'id'      => $new_id,
+				'url'     => wp_get_attachment_image_url( $new_id, 'original' ),
+			]
+		);
 
-        return $attachmentId;
-    }
+	}
+
+	public function image_media_crop( $id, $offset_x, $offset_y, $width, $height, $rotate ) {
+
+		require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+		$attachment_meta   = wp_get_attachment_metadata( $id );
+		$original_image_id = isset( $attachment_meta[ self::ORIGINAL_META_KEY ] ) ? $attachment_meta[ self::ORIGINAL_META_KEY ] : $id;
+
+		$file_path = get_attached_file( $original_image_id );
+
+		if ( empty( $file_path ) ) {
+
+			return null;
+
+		}
+
+		$image_editor = wp_get_image_editor( $file_path );
+		$loaded       = $image_editor->load();
+
+		if ( ! $loaded ) {
+
+			return null;
+
+		}
+
+		$nr = ( 360 - round( $rotate ) ) % 360;
+		$sz = $image_editor->get_size();
+
+		if ( 0 !== $nr && 180 !== $nr ) {
+
+			$original_width = $sz['width'];
+			$sz['width']    = $sz['height'];
+			$sz['height']   = $original_width;
+
+		}
+
+		$nx = round( $sz['width'] * $offset_x / 100 );
+		$ny = round( $sz['height'] * $offset_y / 100 );
+		$nw = round( $sz['width'] * $width / 100 );
+		$nh = round( $sz['height'] * $height / 100 );
+
+		$new_name = 'crop-' . $nx . '-' . $ny . '-' . $nw . '-' . $nh . '-' . $nr . '-' . basename( $file_path );
+		$filename = rtrim( dirname( $file_path ), '/' ) . '/' . $new_name;
+
+		$existing_attachment = get_page_by_title( $new_name, ARRAY_A, 'attachment' );
+
+		if ( ! empty( $existing_attachment ) ) {
+
+			return $existing_attachment['ID'];
+
+		}
+
+		if ( ! empty( $nr ) ) {
+
+			$image_editor->rotate( $nr );
+
+		}
+
+		$cropped = $image_editor->crop( $nx, $ny, $nw, $nh );
+
+		if ( ! $cropped ) {
+
+			return null;
+
+		}
+
+		$saved_image = $image_editor->save( $filename );
+
+		if ( $saved_image instanceof WP_Error ) {
+
+			return null;
+
+		}
+
+		$filename  = $saved_image['path'];
+		$mime_type = $saved_image['mime-type'];
+
+		$attachment_id = wp_insert_attachment(
+			[
+				'guid'           => $filename,
+				'post_mime_type' => $mime_type,
+				'post_title'     => $new_name,
+				'post_content'   => '',
+				'post_status'    => 'inherit',
+			],
+			$filename,
+			0
+		);
+
+		$metadata = wp_generate_attachment_metadata( $attachment_id, $filename );
+
+		$metadata[ self::ORIGINAL_META_KEY ] = $original_image_id;
+		$metadata[ self::CROP_META_KEY ]     = [
+			'offsetX'  => $offset_x,
+			'offsetY'  => $offset_y,
+			'width'    => $width,
+			'height'   => $height,
+			'rotation' => $rotate,
+		];
+
+		wp_update_attachment_metadata( $attachment_id, $metadata );
+
+		wp_set_post_tags( $attachment_id, 'coblocks-cropped', true );
+
+		return $attachment_id;
+
+	}
 }
 
-CoBlocks_Crop_System::instance()->registerEndpoints();
+CoBlocks_Crop_System::instance()->register_endpoints();
