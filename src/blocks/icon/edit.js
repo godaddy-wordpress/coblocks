@@ -50,7 +50,6 @@ class Edit extends Component {
 			isSelected,
 			setAttributes,
 			iconColor,
-			toggleSelection,
 			isRTL,
 		} = this.props;
 
@@ -153,10 +152,8 @@ class Edit extends Component {
 								height: parseInt( width + delta.width, 10 ),
 								width: parseInt( width + delta.width, 10 ),
 							} );
-							toggleSelection( true );
 						} }
 						onResizeStart={ () => {
-							toggleSelection( false );
 							setAttributes( { iconSize: 'advanced' } );
 						} }
 					>

@@ -1,5 +1,6 @@
 {
-	"name": "food-item",
+	"name": "coblocks/food-item",
+	"category": "coblocks",
 	"attributes": {
 		"title": {
 			"type": "string",

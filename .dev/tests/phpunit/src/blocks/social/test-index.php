@@ -67,7 +67,7 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 			'hasColors' => true,
 		];
 
-		$this->assertEquals( '<div class="wp-block-coblocks-social test-class-name has-colors has-button-size-large" ><ul></ul></div>', coblocks_render_share_block( $attributes ) );
+		$this->assertEquals( '<div class="wp-block-coblocks-social test-class-name has-colors has-button-size-large" style=" "><ul></ul></div>', coblocks_render_share_block( $attributes ) );
 
 	}
 
@@ -81,7 +81,7 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 			'hasColors' => true,
 		];
 
-		$this->assertEquals( '<div class="wp-block-coblocks-social test-class-name is-style-mask has-colors" ><ul></ul></div>', coblocks_render_share_block( $attributes ) );
+		$this->assertEquals( '<div class="wp-block-coblocks-social test-class-name is-style-mask has-colors" style=" "><ul></ul></div>', coblocks_render_share_block( $attributes ) );
 
 	}
 

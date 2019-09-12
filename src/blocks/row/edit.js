@@ -12,7 +12,6 @@ import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
 import rowIcons from './icons';
-import { title } from '.';
 import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../components/background';
 
 /**
@@ -167,7 +166,7 @@ class Edit extends Component {
 		const dropZone = (
 			<BackgroundDropZone
 				{ ...this.props }
-				label={ sprintf( __( 'Add backround to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
+				label={ __( 'Add backround to row' ) }
 			/>
 		);
 
@@ -269,12 +268,15 @@ class Edit extends Component {
 			);
 		}
 
-		const classes = classnames(
+		let classes = classnames(
 			className, {
 				[ `coblocks-row--${ id }` ]: id,
-				[ `coblocks-row-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
 			}
 		);
+
+		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+			classes = classnames( classes, `coblocks-row-${ coblocks.id }` );
+		}
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-row__inner',

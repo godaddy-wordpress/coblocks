@@ -99,7 +99,6 @@ class Edit extends Component {
 			className,
 			isSelected,
 			setAttributes,
-			toggleSelection,
 			backgroundColor,
 			color,
 		} = this.props;
@@ -164,12 +163,15 @@ class Edit extends Component {
 			setAttributes( { justAdded: false } );
 		}
 
-		const classes = classnames(
+		let classes = classnames(
 			className, {
-				[ `coblocks-shape-divider-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
 				'is-vertically-flipped': verticalFlip,
 				'is-horizontally-flipped': horizontalFlip,
 			} );
+
+		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+			classes = classnames( classes, `coblocks-shape-divider-${ coblocks.id }` );
+		}
 
 		return (
 			<Fragment>
@@ -229,14 +231,12 @@ class Edit extends Component {
 									break;
 							}
 
-							toggleSelection( true );
 							this.setState( { resizing: false } );
 
 							//update meta
 							this.saveMeta( 'shapeHeight' );
 						} }
 						onResizeStart={ () => {
-							toggleSelection( false );
 							this.setState( { resizing: true } );
 						} }
 					>
@@ -285,12 +285,10 @@ class Edit extends Component {
 									break;
 							}
 
-							toggleSelection( true );
 							this.setState( { resizingAlt: false } );
 							this.saveMeta( 'backgroundHeight' );
 						} }
 						onResizeStart={ () => {
-							toggleSelection( false );
 							this.setState( { resizingAlt: true } );
 						} }
 					>
