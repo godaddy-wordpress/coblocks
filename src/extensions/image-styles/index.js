@@ -22,3 +22,9 @@ registerBlockStyle( 'core/image', {
 	label: __( 'Bottom Wave' ),
 	isDefault: false,
 } );
+
+registerBlockStyle( 'core/image', {
+	name: 'top-wave',
+	label: __( 'Top Wave' ),
+	isDefault: false,
+} );
