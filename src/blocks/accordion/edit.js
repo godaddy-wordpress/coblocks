@@ -70,7 +70,7 @@ class Edit extends Component {
 						<IconButton
 							isLarge
 							className="block-editor-button-block-appender components-coblocks-add-accordion-item__button"
-							label={ _x( 'Add Accordion Item', 'This is an inner block for the Accordion Block.' ) }
+							label={ _x( 'Add Accordion Item', 'This is an child element for the Accordion Block.' ) }
 							icon="insert"
 							onClick={ () => {
 								if ( items[ 0 ].innerBlocks ) {

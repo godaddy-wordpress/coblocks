@@ -99,7 +99,7 @@ class Edit extends Component {
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.addImage }
-				label={ _x( 'Drop to add as avatar', 'avatar meaning an image representing the user' ) }
+				label={ _x( 'Drop to add as avatar', 'avatar is an image representing the user' ) }
 			/>
 		);
 

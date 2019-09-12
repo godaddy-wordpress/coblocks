@@ -73,38 +73,38 @@ class TypographyControls extends Component {
 		const weight = [
 			{
 				value: '',
-				label: _x( 'Default', 'block styles' ),
+				label: _x( 'Default', 'typography styles' ),
 			},
 			{
 				value: 'normal',
-				label: _x( 'Normal', 'block styles' ),
+				label: _x( 'Normal', 'typography styles' ),
 			},
 			{
 				value: 'bold',
-				label: _x( 'Bold', 'block styles' ),
+				label: _x( 'Bold', 'typography styles' ),
 			},
 		];
 
 		const transform = [
 			{
 				value: '',
-				label: _x( 'Default', 'block styles' ),
+				label: _x( 'Default', 'typography styles' ),
 			},
 			{
 				value: 'uppercase',
-				label: _x( 'Uppercase', 'block styles' ),
+				label: _x( 'Uppercase', 'typography styles' ),
 			},
 			{
 				value: 'lowercase',
-				label: _x( 'Lowercase', 'block styles' ),
+				label: _x( 'Lowercase', 'typography styles' ),
 			},
 			{
 				value: 'capitalize',
-				label: _x( 'Capitalize', 'block styles' ),
+				label: _x( 'Capitalize', 'typography styles' ),
 			},
 			{
 				value: 'initial',
-				label: _x( 'Normal', 'block styles' ),
+				label: _x( 'Normal', 'typography styles' ),
 			},
 		];
 

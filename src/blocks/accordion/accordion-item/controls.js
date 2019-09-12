@@ -25,7 +25,7 @@ class Controls extends Component {
 		const customControls = [
 			{
 				icon: icons.open,
-				title: _x( 'Display open', 'Visually display open as opposed to closed.' ),
+				title: _x( 'Display open', 'Toggle label to display the accordion open' ),
 				onClick: () => setAttributes( { open: ! open } ),
 				isActive: open === true,
 			},

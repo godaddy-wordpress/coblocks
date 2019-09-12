@@ -77,7 +77,7 @@ class GalleryLinkSettings extends Component {
 									checked={ target === '_blank' }
 								/>
 								<TextControl
-									label={ _x( 'Link Rel', 'a link rel is an HTML attribute' ) }
+									label={ _x( 'Link Rel', 'HTML attribute that specifies the a relationship between the two pages.' ) }
 									value={ rel }
 									onChange={ ( value ) => setAttributes( { rel: value } ) }
 								/>

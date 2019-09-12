@@ -17,7 +17,7 @@ setCategories( [
 	},
 	{
 		slug: 'coblocks-galleries',
-		/* translators: %s: Represents 'CoBlocks' */
+		/* translators: %s: Plugin title, i.e. CoBlocks */
 		title: sprintf( __( '%s Galleries' ), 'CoBlocks' ),
 		icon: brandAssets.categoryIcon,
 	},

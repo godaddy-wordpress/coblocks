@@ -405,15 +405,15 @@ class DimensionsControl extends Component {
 
 		const unitSizes = [
 			{
-				name: _x( 'Pixel', 'related to CSS Markup' ),
+				name: _x( 'Pixel', 'A size unit for CSS markup' ),
 				unitValue: 'px',
 			},
 			{
-				name: _x( 'Em', 'related to CSS Markup' ),
+				name: _x( 'Em', 'A size unit for CSS markup' ),
 				unitValue: 'em',
 			},
 			{
-				name: _x( 'Percentage', 'related to CSS Markup' ),
+				name: _x( 'Percentage', 'A size unit for CSS markup' ),
 				unitValue: '%',
 			},
 		];
@@ -460,7 +460,7 @@ class DimensionsControl extends Component {
 								<div className="components-coblocks-dimensions-control__actions">
 									<ButtonGroup className="components-coblocks-dimensions-control__units" aria-label={ __( 'Select Units' ) }>
 										{ map( unitSizes, ( { unitValue, name } ) => (
-											/* translators: %s: Represents values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
+											/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
 											<Tooltip text={ sprintf( __( '%s Units' ), name ) }>
 												<Button
 													key={ unitValue }
@@ -468,7 +468,7 @@ class DimensionsControl extends Component {
 													isSmall
 													isPrimary={ unit === unitValue }
 													aria-pressed={ unit === unitValue }
-													/* translators: %s: Represents values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
+													/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
 													aria-label={ sprintf( __( '%s Units' ), name ) }
 													onClick={ () => this.onChangeUnits( unitValue ) }
 												>
@@ -483,7 +483,7 @@ class DimensionsControl extends Component {
 										onClick={ () => this.onChangeSize( 'no', -1 ) }
 										isSmall
 										isDefault
-										/* translators: %s: Represents a texual label  */
+										/* translators: %s: a texual label  */
 										aria-label={ sprintf( __( 'Turn off advanced %s settings' ), label.toLowerCase() ) }
 									>
 										{ __( 'Reset' ) }

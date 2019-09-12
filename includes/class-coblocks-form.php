@@ -357,9 +357,8 @@ class CoBlocks_Form {
 		 *
 		 * @param string $field_label Form field label text.
 		 */
-		$required_text = (string) apply_filters( 'coblocks_form_label_required_text', '&#42;', $field_label );
-		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
-		/* translators: %s: Custom text label for form input*/
+		$required_text  = (string) apply_filters( 'coblocks_form_label_required_text', '&#42;', $field_label );
+		$required_attr  = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 		$required_label = empty( $required_attr ) ? '' : sprintf( ' <span class="required">%s</span>', $required_text );
 
 		/*
@@ -454,8 +453,7 @@ class CoBlocks_Form {
 
 		}
 
-		$post_id = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
-		/* translators: %s: A specific post title. */
+		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
 
 		$to      = isset( $atts['to'] ) ? sanitize_email( $atts['to'] ) : get_option( 'admin_email' );
@@ -572,7 +570,6 @@ class CoBlocks_Form {
 		$success_message = (string) apply_filters(
 			'coblocks_form_success_message',
 			sprintf(
-				/* translators: %s1: Confirmation of email sent. %s2: Placeholder for content from the completed contact from.  */
 				'<div class="coblocks-form__submitted">%s %s</div>',
 				wp_kses_post( $sent_notice ),
 				wp_kses_post( $this->email_content )

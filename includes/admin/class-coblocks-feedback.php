@@ -274,7 +274,7 @@ class CoBlocks_Feedback {
 					<?php /* translators: %s: Plugin Name */ ?>
 					<h3><?php printf( esc_html__( 'Are you enjoying %s?', 'coblocks' ), esc_html( $this->name ) ); ?></h3>
 					<p>
-						<?php /* translators: %s: Plugin Name, 2. Time */ ?>
+						<?php /* translators: %s: Plugin Name, 2. Time which the plugin has been in use for */ ?>
 						<?php printf( esc_html__( 'You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We\'d really appreciate it!', 'coblocks' ), esc_html( $this->name ), esc_html( $time ) ); ?>
 					</p>
 				</div>
