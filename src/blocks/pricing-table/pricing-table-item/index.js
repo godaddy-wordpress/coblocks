@@ -26,7 +26,7 @@ const settings = {
 	title: _x( 'Pricing Table Item', 'block name' ),
 	description: __( 'A pricing table to help visitors compare products and plans.' ),
 	icon,
-	keywords: [ _x( 'landing', 'block search keyword' ), _x( 'comparison', 'block search keyword' ), 'coblocks' ],
+	keywords: [ _x( 'landing', 'block keyword' ), _x( 'comparison', 'block keyword' ), 'coblocks' ],
 	parent: [ 'coblocks/pricing-table' ],
 	supports: {
 		html: false,

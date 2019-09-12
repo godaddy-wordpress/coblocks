@@ -27,7 +27,7 @@ const settings = {
 	title: _x( 'Map', 'block name' ),
 	description: __( 'Add an address and drop a pin on a Google map.' ),
 	icon,
-	keywords: [ _x( 'address', 'block search keyword' ), _x( 'maps', 'block search keyword' ), _x( 'google', 'block search keyword' ) ],
+	keywords: [ _x( 'address', 'block keyword' ), _x( 'maps', 'block keyword' ), _x( 'google', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,

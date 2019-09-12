@@ -37,7 +37,7 @@ const settings = {
 	title: _x( 'Row', 'block name' ),
 	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.' ),
 	icon,
-	keywords: [	_x( 'rows', 'block search keyword' ), _x( 'columns', 'block search keyword' ), _x( 'layouts', 'block search keyword' )	],
+	keywords: [	_x( 'rows', 'block keyword' ), _x( 'columns', 'block keyword' ), _x( 'layouts', 'block keyword' )	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		anchor: true,

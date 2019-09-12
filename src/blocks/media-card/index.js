@@ -35,7 +35,7 @@ const settings = {
 	title: _x( 'Media Card', 'block name' ),
 	description: __( 'Add an image or video with an offset card side-by-side.' ),
 	icon,
-	keywords: [ _x( 'image', 'block search keyword' ), _x( 'video', 'block search keyword' ), 'coblocks' ],
+	keywords: [ _x( 'image', 'block keyword' ), _x( 'video', 'block keyword' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		stackedOnMobile: true,

@@ -26,7 +26,7 @@ const settings = {
 	title: _x( 'Gif', 'block name' ),
 	description: __( 'Pick a gif, any gif.' ),
 	icon,
-	keywords: [ _x( 'animated', 'block search keyword' ), 'coblocks' ],
+	keywords: [ _x( 'animated', 'block keyword' ), 'coblocks' ],
 	supports: {
 		customClassName: false,
 		html: false,

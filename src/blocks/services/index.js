@@ -26,7 +26,7 @@ const settings = {
 	title: _x( 'Services', 'block name' ),
 	description: __( 'Add up to four columns of services to display.' ),
 	icon,
-	keywords: [ _x( 'features', 'block search keyword' ) ],
+	keywords: [ _x( 'features', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		reusable: false,

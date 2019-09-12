@@ -35,7 +35,7 @@ const settings = {
 	title: _x( 'Stacked', 'block name' ),
 	description: __( 'Display multiple images in an single column stacked gallery.' ),
 	icon,
-	keywords: [	_x( 'gallery', 'block search keyword' ), _x( 'photos', 'block search keyword' ) ],
+	keywords: [	_x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full', 'left', 'center', 'right' ],
 	},

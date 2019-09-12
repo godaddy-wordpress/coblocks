@@ -28,7 +28,7 @@ const settings = {
 	title: _x( 'Shape Divider', 'block name' ),
 	description: __( 'Add a shape divider to visually distinquish page sections.' ),
 	icon,
-	keywords: [ _x( 'separator', 'block search keyword' ), 'hr', 'svg' ],
+	keywords: [ _x( 'separator', 'block keyword' ), 'hr', 'svg' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,

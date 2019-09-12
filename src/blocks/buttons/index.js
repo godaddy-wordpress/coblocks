@@ -28,7 +28,7 @@ const settings = {
 	title: _x( 'Buttons', 'block name' ),
 	description: __( 'Prompt visitors to take action with multiple buttons, side by side.' ),
 	icon,
-	keywords: [ _x( 'link', 'block search keyword' ), _x( 'cta', 'block search keyword' ), 'coblocks' ],
+	keywords: [ _x( 'link', 'block keyword' ), _x( 'cta', 'block keyword' ), 'coblocks' ],
 	attributes,
 	transforms,
 	edit,

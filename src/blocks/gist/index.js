@@ -27,7 +27,7 @@ const settings = {
 	title: _x( 'Gist', 'block name' ),
 	description: __( 'Embed GitHub gists by adding a gist link.' ),
 	icon,
-	keywords: [ _x( 'code', 'block search keyword' ), 'github', 'coblocks' ],
+	keywords: [ _x( 'code', 'block keyword' ), 'github', 'coblocks' ],
 	supports: {
 		html: false,
 		align: [ 'wide' ],

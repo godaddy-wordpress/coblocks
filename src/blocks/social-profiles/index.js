@@ -25,7 +25,7 @@ const settings = {
 	description: __( 'Grow your audience with links to social media profiles.' ),
 	icon,
 	category: 'coblocks',
-	keywords: [ _x( 'share', 'block search keyword' ), _x( 'links', 'block search keyword' ), _x( 'icons', 'block search keyword' ) ],
+	keywords: [ _x( 'share', 'block keyword' ), _x( 'links', 'block keyword' ), _x( 'icons', 'block keyword' ) ],
 	styles: [
 		{ name: 'mask', label: _x( 'Mask', 'block style' ) },
 		{ name: 'icon', label: _x( 'Icon', 'block style' ), isDefault: true },

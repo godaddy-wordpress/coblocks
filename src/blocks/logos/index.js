@@ -26,7 +26,7 @@ const settings = {
 	title: _x( 'Logos & Badges', 'block name' ),
 	description: __( 'Add logos, badges, or certifications to build credibility.' ),
 	icon,
-	keywords: [ _x( 'clients', 'block search keyword' ), _x( 'proof', 'block search keyword' ), _x( 'testimonials', 'block search keyword' ) ],
+	keywords: [ _x( 'clients', 'block keyword' ), _x( 'proof', 'block keyword' ), _x( 'testimonials', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 	},

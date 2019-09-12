@@ -27,7 +27,7 @@ const settings = {
 	title: _x( 'Highlight', 'block name' ),
 	description: __( 'Draw attention and emphasize important narrative.' ),
 	icon,
-	keywords: [ _x( 'text', 'block search keyword' ), _x( 'paragraph', 'block search keyword' ), 'coblocks' ],
+	keywords: [ _x( 'text', 'block keyword' ), _x( 'paragraph', 'block keyword' ), 'coblocks' ],
 	example: {
 		attributes: {
 			content: __( 'Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative.' ),

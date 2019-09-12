@@ -107,7 +107,7 @@ export const childBlocks = [
 		settings: {
 			...FieldDefaults,
 			title: _x( 'Email', 'block name' ),
-			keywords: [ _x( 'e-mail', 'block search keyword' ), _x( 'mail', 'block search keyword' ), 'email' ],
+			keywords: [ _x( 'e-mail', 'block keyword' ), _x( 'mail', 'block keyword' ), 'email' ],
 			description: __( 'An email address field.' ),
 			icon: icons.email,
 			edit: editField( 'email' ),
@@ -118,7 +118,7 @@ export const childBlocks = [
 		settings: {
 			...FieldDefaults,
 			title: _x( 'Message', 'block name' ),
-			keywords: [ _x( 'Textarea', 'block search keyword' ), 'textarea', _x( 'Multiline text', 'block search keyword' ) ],
+			keywords: [ _x( 'Textarea', 'block keyword' ), 'textarea', _x( 'Multiline text', 'block keyword' ) ],
 			description: __( 'A text box for longer responses.' ),
 			icon: icons.textarea,
 			edit: props => (
