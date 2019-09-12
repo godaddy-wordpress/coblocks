@@ -3,25 +3,15 @@
  */
 import '@testing-library/jest-dom/extend-expect';
 import { registerCoreBlocks } from '@wordpress/block-library';
-import { registerBlockType, createBlock, switchToBlockType, getBlockTransforms, rawHandler } from '@wordpress/blocks';
+import { registerBlockType, createBlock, switchToBlockType, rawHandler } from '@wordpress/blocks';
+
+registerCoreBlocks();
 
 /**
  * Internal dependencies.
  */
+import * as helpers from '../../../../.dev/tests/jest/helpers';
 import { name, settings } from '../index';
-
-registerCoreBlocks();
-
-const performPrefixTransformation = ( blockName, prefix, content ) => {
-	const prefixTransforms = getBlockTransforms( 'from', blockName )
-		.filter( ( { type: transformType, prefix: transformPrefix } ) => transformType === 'prefix' && prefix === transformPrefix );
-
-	// Remove prefix trigger from content before performing the transform.
-	const blockContent = content.replace( prefix, '' ).trim();
-	const block = prefixTransforms[ 0 ].transform( blockContent );
-
-	return block;
-};
 
 describe( 'coblocks/highlight transforms', () => {
 	beforeAll( () => {
@@ -56,7 +46,7 @@ describe( 'coblocks/highlight transforms', () => {
 	it( 'should transform when :highlight prefix is seen', () => {
 		const prefix = ':highlight';
 		const content = 'Lorem ipsum dolor sit amet.';
-		const block = performPrefixTransformation( name, prefix, prefix.concat( ' ', content ) );
+		const block = helpers.performPrefixTransformation( name, prefix, prefix.concat( ' ', content ) );
 
 		expect( block.isValid ).toBe( true );
 		expect( block.name ).toBe( name );
