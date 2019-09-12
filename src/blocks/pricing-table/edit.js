@@ -36,7 +36,7 @@ const ALLOWED_BLOCKS = [ 'coblocks/pricing-table-item' ];
  * @return {Object[]} Columns layout configuration.
  */
 const getCount = memoize( ( count ) => {
-	/* translators: %d: Represents a digit 1-3 */
+	/* translators: %d: a digit 1-3 */
 	return times( count, ( index ) => [ 'coblocks/pricing-table-item', { placeholder: sprintf( __( 'Plan %d' ), parseInt( index + 1 ) ) } ] );
 } );
 

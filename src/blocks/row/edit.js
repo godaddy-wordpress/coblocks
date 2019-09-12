@@ -201,7 +201,7 @@ class Edit extends Component {
 						icon={ columns ? rowIcons.layout : rowIcons.row }
 						label={ columns ? __( 'Row Layout' ) : __( 'Row' ) }
 						instructions={ columns ?
-							/* translators: %s: Represents 'one' 'two' 'three' and 'four' */
+							/* translators: %s: 'one' 'two' 'three' and 'four' */
 							sprintf( __( 'Now select a layout for this %s column row.' ), this.numberToText( columns ) ) :
 							__( 'Select the number of columns for this row.' )
 						}
