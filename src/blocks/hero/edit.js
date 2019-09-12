@@ -36,8 +36,8 @@ const TEMPLATE = [
 	[ 'core/paragraph', { placeholder: _x( 'Add hero content, which is typically an introductory area of a page accompanied by call to action or two.', 'content placeholder' ) } ],
 	[ 'coblocks/buttons', { contentAlign: 'left', items: 2, gutter: 'medium' },
 		[
-			[ 'core/button', { placeholder: _x( 'Add primary action...', 'content placeholder' ) } ],
-			[ 'core/button', { placeholder: _x( 'Add secondary action...', 'content placeholder' ), className: 'is-style-outline' } ],
+			[ 'core/button', { placeholder: _x( 'Primary Button', 'content placeholder' ) } ],
+			[ 'core/button', { placeholder: _x( 'Secondary button', 'content placeholder' ), className: 'is-style-outline' } ],
 		],
 	],
 ];
