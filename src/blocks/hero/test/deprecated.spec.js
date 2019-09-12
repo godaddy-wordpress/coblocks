@@ -1,13 +1,7 @@
 /**
- * External dependencies
- */
-import '@testing-library/jest-dom/extend-expect';
-import { omit } from 'lodash';
-import { registerBlockType, unregisterBlockType, createBlock, serialize, parse } from '@wordpress/blocks';
-
-/**
  * Internal dependencies.
  */
+import * as helpers from '../../../../.dev/tests/jest/helpers';
 import { name, settings } from '../index';
 
 const variations = {
@@ -75,63 +69,4 @@ const variations = {
 	saveCoBlocksMeta: [ true, false ],
 };
 
-settings.deprecated.map( ( deprecated, index ) => {
-	describe( `coblocks/hero deprecation ${ index }`, () => {
-		// Make variables accessible for all tests.
-		let deprecatedBlock;
-
-		beforeEach( () => {
-			unregisterBlockType( name );
-
-			// Register the deprecated block.
-			const deprecatedSettings = Object.assign(
-				{}, omit( settings, [ 'attributes', 'save', 'deprecated' ] ),
-				{
-					attributes: deprecated.attributes,
-					save: deprecated.save,
-				}
-			);
-			registerBlockType( name, { category: 'common', ...deprecatedSettings } );
-
-			// Create the block with the minimum attributes.
-			deprecatedBlock = createBlock( name );
-		} );
-
-		it( 'should deprecate old version', () => {
-			const deprecatedSerialized = serialize( deprecatedBlock );
-
-			// Unregister the deprecated block version.
-			unregisterBlockType( name );
-
-			// Register the current block version.
-			registerBlockType( name, { category: 'common', ...settings } );
-
-			const blocks = parse( deprecatedSerialized );
-
-			expect(
-				blocks.every( block => block.isValid )
-			).toBe( true );
-		} );
-
-		Object.keys( deprecated.attributes ).map( ( attribute ) => {
-			variations[ attribute ].map( variation => {
-				it( `should support attribute.${ attribute } set to '${ variation }'`, () => {
-					deprecatedBlock.attributes[ attribute ] = variation;
-					const deprecatedSerialized = serialize( deprecatedBlock );
-
-					// Unregister the deprecated block version.
-					unregisterBlockType( name );
-
-					// Register the current block version.
-					registerBlockType( name, { category: 'common', ...settings } );
-
-					const blocks = parse( deprecatedSerialized );
-
-					expect(
-						blocks.every( block => block.isValid )
-					).toBe( true );
-				} );
-			} );
-		} );
-	} );
-} );
+helpers.testDeprecatedBlockVariations( name, settings, variations );
