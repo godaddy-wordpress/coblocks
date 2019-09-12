@@ -527,7 +527,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeTopValue }
-															/* translators: %s: Represents values associated with CSS syntax, 'Margin', 'Padding' */
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Top' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueTopMobile ? valueTopMobile : '' }
@@ -538,7 +538,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeRightValue }
-															/* translators: %s: Represents values associated with CSS syntax, 'Margin', 'Padding' */
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Right' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueRightMobile ? valueRightMobile : '' }
@@ -549,7 +549,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeBottomValue }
-															/* translators: %s: Represents values associated with CSS syntax, 'Margin', 'Padding' */
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Bottom' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueBottomMobile ? valueBottomMobile : '' }
@@ -560,7 +560,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeLeftValue }
-															/* translators: %s: Represents values associated with CSS syntax, 'Margin', 'Padding' */
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Left' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueLeftMobile ? valueLeftMobile : '' }
@@ -591,7 +591,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeTopValue }
-															/* translators: %s: Represents values associated with CSS syntax, 'Margin', 'Padding' */
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Top' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueTopTablet ? valueTopTablet : '' }
@@ -602,7 +602,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeRightValue }
-															/* translators: %s: Represents values associated with CSS syntax, 'Margin', 'Padding' */
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Right' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueRightTablet ? valueRightTablet : '' }
@@ -613,7 +613,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeBottomValue }
-															/* translators: %s: Represents values associated with CSS syntax, 'Margin', 'Padding' */
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Bottom' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueBottomTablet ? valueBottomTablet : '' }
@@ -624,7 +624,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeLeftValue }
-															/* translators: %s: Represents values associated with CSS syntax, 'Margin', 'Padding' */
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Left' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueLeftTablet ? valueLeftTablet : '' }
@@ -655,7 +655,7 @@ class DimensionsControl extends Component {
 														className="components-coblocks-dimensions-control__number"
 														type="number"
 														onChange={ onChangeTopValue }
-														/* translators: %s: Represents values associated with CSS syntax, 'Margin', 'Padding' */
+														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 														aria-label={ sprintf( __( '%s Top' ), label ) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
 														value={ valueTop ? valueTop : '' }
@@ -666,7 +666,7 @@ class DimensionsControl extends Component {
 														className="components-coblocks-dimensions-control__number"
 														type="number"
 														onChange={ onChangeRightValue }
-														/* translators: %s: Represents values associated with CSS syntax, 'Margin', 'Padding' */
+														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 														aria-label={ sprintf( __( '%s Right' ), label ) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
 														value={ valueRight ? valueRight : '' }
@@ -677,7 +677,7 @@ class DimensionsControl extends Component {
 														className="components-coblocks-dimensions-control__number"
 														type="number"
 														onChange={ onChangeBottomValue }
-														/* translators: %s: Represents values associated with CSS syntax, 'Margin', 'Padding' */
+														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 														aria-label={ sprintf( __( '%s Bottom' ), label ) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
 														value={ valueBottom ? valueBottom : '' }
@@ -688,7 +688,7 @@ class DimensionsControl extends Component {
 														className="components-coblocks-dimensions-control__number"
 														type="number"
 														onChange={ onChangeLeftValue }
-														/* translators: %s: Represents values associated with CSS syntax, 'Margin', 'Padding' */
+														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 														aria-label={ sprintf( __( '%s Left' ), label ) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
 														value={ valueLeft ? valueLeft : '' }
@@ -737,7 +737,7 @@ class DimensionsControl extends Component {
 									onClick={ () => this.onChangeSize( 'advanced', '' ) }
 
 									isDefault
-									/* translators: %s: Represents a texual label */
+									/* translators: %s:  a texual label */
 									aria-label={ sprintf( __( 'Advanced %s settings' ), label.toLowerCase() ) }
 									isPrimary={ dimensionSize === 'advanced' }
 								>
