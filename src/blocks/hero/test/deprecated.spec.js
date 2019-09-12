@@ -108,9 +108,9 @@ settings.deprecated.map( ( deprecated, index ) => {
 
 			const blocks = parse( deprecatedSerialized );
 
-			for ( let i = 0; i < blocks.length; i++ ) {
-				expect( blocks[ i ].isValid ).toBe( true );
-			}
+			expect(
+				blocks.every( block => block.isValid )
+			).toBe( true );
 		} );
 
 		Object.keys( deprecated.attributes ).map( ( attribute ) => {
@@ -127,9 +127,9 @@ settings.deprecated.map( ( deprecated, index ) => {
 
 					const blocks = parse( deprecatedSerialized );
 
-					for ( let i = 0; i < blocks.length; i++ ) {
-						expect( blocks[ i ].isValid ).toBe( true );
-					}
+					expect(
+						blocks.every( block => block.isValid )
+					).toBe( true );
 				} );
 			} );
 		} );
