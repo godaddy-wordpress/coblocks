@@ -52,7 +52,7 @@ class Inspector extends Component {
 	}
 
 	getModalHelp( checked ) {
-		return checked ? __( 'Showing modal for each media item.' ) : __( 'Toggle to show media modal.' );
+		return checked ? __( 'Displaying media in lightbox when clicked.' ) : __( 'Toggle to enable lightbox for media.' );
 	}
 
 	getColors() {
