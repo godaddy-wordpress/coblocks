@@ -23,7 +23,6 @@ const save = ( { attributes, className } ) => {
 		images,
 		linkTo,
 		lightbox,
-		focalPoint,
 		rel,
 		target,
 	} = attributes;
