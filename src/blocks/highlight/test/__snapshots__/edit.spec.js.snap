@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/highlight edit should render 1`] = `
+<React.Fragment>
+  <p
+    className="wp-block-coblocks-highlight"
+    style={
+      Object {
+        "textAlign": undefined,
+      }
+    }
+  >
+    <WithInstanceId(WithBlockEditContext(WithSelect(WithDispatch(WithFilters(RichTextWrapper)))))
+      className="wp-block-coblocks-highlight__content"
+      keepPlaceholderOnFocus={true}
+      onChange={[Function]}
+      onRemove={[Function]}
+      onSplit={[Function]}
+      placeholder="Add highlighted text..."
+      style={
+        Object {
+          "backgroundColor": undefined,
+          "color": undefined,
+          "fontSize": undefined,
+        }
+      }
+      tagName="mark"
+    />
+  </p>
+</React.Fragment>
+`;
