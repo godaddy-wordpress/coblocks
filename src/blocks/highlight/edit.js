@@ -77,7 +77,6 @@ export class Edit extends Component {
 			attributes,
 			backgroundColor,
 			className,
-			isSelected,
 			mergeBlocks,
 			onReplace,
 			setAttributes,
@@ -106,16 +105,8 @@ export class Edit extends Component {
 
 		return (
 			<Fragment>
-				{ isSelected && (
-					<Controls
-						{ ...this.props }
-					/>
-				) }
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
+				<Controls { ...this.props } />
+				<Inspector { ...this.props } />
 				<p className={ className } style={ { textAlign: align } }>
 					<RichText
 						tagName="mark"
