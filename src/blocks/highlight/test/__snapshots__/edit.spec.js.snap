@@ -5,10 +5,14 @@ exports[`coblocks/highlight edit should render 1`] = `
   <Controls
     attributes={Object {}}
     className="wp-block-coblocks-highlight"
+    onReplace={[MockFunction]}
+    setAttributes={[MockFunction]}
   />
   <WithColors(WithFontSizes(Inspector))
     attributes={Object {}}
     className="wp-block-coblocks-highlight"
+    onReplace={[MockFunction]}
+    setAttributes={[MockFunction]}
   />
   <p
     className="wp-block-coblocks-highlight"
@@ -18,7 +22,7 @@ exports[`coblocks/highlight edit should render 1`] = `
       }
     }
   >
-    <WithInstanceId(WithBlockEditContext(WithSelect(WithDispatch(WithFilters(RichTextWrapper)))))
+    <RichText
       className="wp-block-coblocks-highlight__content"
       keepPlaceholderOnFocus={true}
       onChange={[Function]}
