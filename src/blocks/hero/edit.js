@@ -45,7 +45,7 @@ const TEMPLATE = [
 /**
  * Block edit function
  */
-class Edit extends Component {
+export class Edit extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -161,12 +161,19 @@ class Edit extends Component {
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-hero__inner',
-			...BackgroundClasses( attributes ), {
+			...BackgroundClasses( attributes ),
+			layout && {
 				[ `hero-${ layout }-align` ]: layout,
-				'has-text-color': textColor.color,
-				'has-padding': paddingSize && paddingSize !== 'no',
-				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+			},
+			{ 'has-text-color': textColor && textColor.color },
+			paddingSize && {
+				'has-padding': paddingSize !== 'no',
+				[ `has-${ paddingSize }-padding` ]: paddingSize !== 'advanced',
+			},
+			contentAlign && {
 				[ `has-${ contentAlign }-content` ]: contentAlign,
+			},
+			{
 				'is-fullscreen': fullscreen,
 				'is-hero-resizing': this.state.resizingInner,
 			}
@@ -174,7 +181,7 @@ class Edit extends Component {
 
 		const innerStyles = {
 			...BackgroundStyles( attributes, backgroundColor ),
-			color: textColor.color,
+			color: textColor && textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
