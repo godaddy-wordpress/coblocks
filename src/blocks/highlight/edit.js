@@ -90,6 +90,20 @@ export class Edit extends Component {
 			align,
 		} = attributes;
 
+		const classes = classnames( `${ className }__content`,
+			backgroundColor && {
+				'has-background': backgroundColor.color,
+				[ backgroundColor.class ]: backgroundColor.class,
+			},
+			textColor && {
+				'has-text-color': textColor.color,
+				[ textColor.class ]: textColor.class,
+			},
+			fontSize && {
+				[ fontSize.class ]: fontSize.class,
+			}
+		);
+
 		return (
 			<Fragment>
 				{ isSelected && (
@@ -111,19 +125,11 @@ export class Edit extends Component {
 						onMerge={ mergeBlocks }
 						onSplit={ this.splitBlock }
 						onRemove={ () => onReplace( [] ) }
-						className={ classnames(
-							`${ className }__content`, {
-								'has-background': backgroundColor.color,
-								[ backgroundColor.class ]: backgroundColor.class,
-								'has-text-color': textColor.color,
-								[ textColor.class ]: textColor.class,
-								[ fontSize.class ]: fontSize.class,
-							}
-						) }
+						className={ classes }
 						style={ {
-							backgroundColor: backgroundColor.color,
-							color: textColor.color,
-							fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
+							backgroundColor: backgroundColor && backgroundColor.color,
+							color: textColor && textColor.color,
+							fontSize: fontSize && fontSize.size ? fontSize.size + 'px' : undefined,
 						} }
 						keepPlaceholderOnFocus
 					/>
