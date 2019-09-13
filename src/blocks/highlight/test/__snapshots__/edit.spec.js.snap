@@ -2,6 +2,14 @@
 
 exports[`coblocks/highlight edit should render 1`] = `
 <React.Fragment>
+  <Controls
+    attributes={Object {}}
+    className="wp-block-coblocks-highlight"
+  />
+  <WithColors(WithFontSizes(Inspector))
+    attributes={Object {}}
+    className="wp-block-coblocks-highlight"
+  />
   <p
     className="wp-block-coblocks-highlight"
     style={
