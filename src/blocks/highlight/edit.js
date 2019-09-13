@@ -22,7 +22,7 @@ import { createBlock } from '@wordpress/blocks';
 /**
  * Block edit function
  */
-class Edit extends Component {
+export class Edit extends Component {
 	constructor() {
 		super( ...arguments );
 		this.splitBlock = this.splitBlock.bind( this );
