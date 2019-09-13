@@ -3,7 +3,7 @@ import AttachmentCropControl from '../../components/image-crop-control/attachmen
 import { assign } from 'lodash';
 const { createHigherOrderComponent } = wp.compose;
 const { Fragment } = wp.element;
-const { InspectorControls } = wp.editor;
+const { InspectorControls } = wp.blockEditor;
 const { PanelBody } = wp.components;
 const { addFilter } = wp.hooks;
 const { __ } = wp.i18n;
