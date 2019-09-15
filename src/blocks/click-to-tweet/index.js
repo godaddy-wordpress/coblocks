@@ -12,6 +12,7 @@ import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
+import deprecated from './deprecated';
 
 /**
  * WordPress dependencies
@@ -35,6 +36,7 @@ const settings = {
 	},
 	attributes,
 	transforms,
+	deprecated,
 	edit,
 	save,
 };
