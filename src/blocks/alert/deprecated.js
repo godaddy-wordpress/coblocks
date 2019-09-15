@@ -114,9 +114,7 @@ const deprecated = [
 		},
 	},
 	{
-		attributes: {
-			...attributes,
-		},
+		attributes,
 		save( { attributes } ) {
 			const {
 				backgroundColor,
