@@ -60,6 +60,8 @@ class Edit extends Component {
 			textAlign,
 		} = attributes;
 
+		const blockquoteClasses = classnames( className, { [ `has-text-align-${ textAlign }` ]: textAlign } );
+
 		return (
 			<Fragment>
 				{ isSelected && (
@@ -72,7 +74,7 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				<blockquote className={ className } style={ { textAlign: textAlign } }>
+				<blockquote className={ blockquoteClasses }>
 					<RichText
 						tagName="p"
 						multiline="false"
