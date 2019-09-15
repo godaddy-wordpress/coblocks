@@ -75,7 +75,6 @@ class Edit extends Component {
 				) }
 				<div
 					className={ classes }
-					// style={ { textAlign: contentAlign } }
 				>
 					<div className={ `${ className }__inner` }>
 						<InnerBlocks
