@@ -25,6 +25,7 @@ const save = ( { attributes } ) => {
 	const classes = classnames( {
 		'has-text-color': textColor || customTextColor,
 		[ textClass ]: textClass,
+		[ `has-text-align-${ textAlign }` ]: textAlign,
 		'has-background': backgroundColor || customBackgroundColor,
 		[ backgroundClass ]: backgroundClass,
 	} );
@@ -32,7 +33,6 @@ const save = ( { attributes } ) => {
 	const styles = {
 		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 		color: textClass ? undefined : customTextColor,
-		textAlign: textAlign ? textAlign : null,
 	};
 
 	return (

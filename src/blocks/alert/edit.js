@@ -87,7 +87,6 @@ class Edit extends Component {
 					style={ {
 						backgroundColor: backgroundColor.color,
 						color: textColor.color,
-						textAlign: textAlign,
 					} }
 				>
 					{ ( ! RichText.isEmpty( title ) || isSelected ) && (
