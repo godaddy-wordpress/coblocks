@@ -11,7 +11,7 @@ const { InnerBlocks } = wp.blockEditor;
 /**
  * Internal dependencies
  */
-import { attributes } from './';
+import { attributes } from './block.json';
 
 const deprecated = [
 	{
