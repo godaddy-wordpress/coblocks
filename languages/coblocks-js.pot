@@ -1,0 +1,20 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
+
+#: src/blocks/events/index.js:25
+msgid "Events"
+msgstr ""
+
+#: src/blocks/events/index.js:26
+msgid "Add events or display any public calendar."
+msgstr ""
+
+#: src/blocks/events/index.js:27
+msgid "events"
+msgstr ""
+
+#: src/blocks/events/index.js:27
+msgid "calendar"
+msgstr ""

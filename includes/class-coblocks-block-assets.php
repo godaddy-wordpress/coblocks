@@ -173,6 +173,17 @@ class CoBlocks_Block_Assets {
 				true
 			);
 		}
+
+		// Events block.
+		if ( has_block( $this->_slug . '/events' ) ) {
+			wp_enqueue_script(
+				$this->_slug . '-events-pagination-front',
+				$dir . $this->_slug . '-events-pagination-front' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				$this->_version,
+				true
+			);
+		}
 	}
 
 }
