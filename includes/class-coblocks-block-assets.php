@@ -89,7 +89,7 @@ class CoBlocks_Block_Assets {
 		wp_enqueue_script(
 			$this->_slug . '-slick',
 			$vendors_dir . '/slick' . COBLOCKS_ASSET_SUFFIX . '.js',
-			array('jquery'),
+			array( 'jquery' ),
 			$this->_version,
 			true
 		);
@@ -188,7 +188,7 @@ class CoBlocks_Block_Assets {
 			wp_enqueue_script(
 				$this->_slug . '-slick-initializer-front',
 				$dir . 'coblocks-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
-				array('jquery'),
+				array( 'jquery' ),
 				$this->_version,
 				true
 			);
