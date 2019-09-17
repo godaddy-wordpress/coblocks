@@ -13,7 +13,7 @@ import Controls from './controls';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InnerBlocks, RichText } = wp.blockEditor;
@@ -64,7 +64,7 @@ class Edit extends Component {
 				>
 					<RichText
 						tagName="p"
-						placeholder={ __( 'Add accordion title...' ) }
+						placeholder={ _x( 'Add accordion title...', 'Accordion is the block name' ) }
 						value={ title }
 						className={ classnames(
 							`${ className }__title`, {
