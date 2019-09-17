@@ -45,9 +45,13 @@ const addPositioningControl = ( settings, name ) => {
 	return settings;
 };
 
-const updateDebounce = _.debounce( function( callback ) {
-	callback();
-}, 1500 );
+const positioningControlData = {
+	updateDebounce: _.debounce( function( callback ) {
+		callback();
+	}, 250 ),
+	loadingCount: 0,
+	editing: false,
+};
 
 const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
@@ -79,7 +83,20 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 			);
 		}
 
+		const removeCropClass = function( classes ) {
+			if ( ! classes ) {
+				classes = '';
+			}
+
+			classes = classes.replace( / ?cb-image-is-cropping/g, '' );
+
+			return classes;
+		};
+
 		const updateImage = function() {
+			positioningControlData.editing = false;
+			++positioningControlData.loadingCount;
+
 			jQuery.post( global.ajaxurl, {
 				action: 'coblocks_system_crop',
 				id: currentAttributes.id,
@@ -89,6 +106,8 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 				cropHeight: currentAttributes.cropHeight,
 				cropRotation: currentAttributes.cropRotation,
 			}, function( response ) {
+				--positioningControlData.loadingCount;
+
 				if ( ! response.success ) {
 					return;
 				}
@@ -99,17 +118,27 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 					return;
 				}
 
+				if ( positioningControlData.loadingCount > 0 || positioningControlData.editing ) {
+					return;
+				}
+
+				const removedCrop = removeCropClass( currentAttributes.className );
+
 				setAttributes( {
 					id: data.id,
 					url: data.url,
+					className: removedCrop !== '' ? removedCrop : null,
 				} );
 			} );
 		};
 
 		const applyAttributes = function( changeAttributes ) {
+			positioningControlData.editing = true;
+			changeAttributes.className = removeCropClass( currentAttributes.className ) + ' cb-image-is-cropping';
+
 			setAttributes( changeAttributes );
 			currentAttributes = _.extend( {}, currentAttributes, changeAttributes );
-			updateDebounce( updateImage );
+			positioningControlData.updateDebounce( updateImage );
 		};
 
 		return (
@@ -141,20 +170,5 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 'positioningControl'
 );
 
-// const imageLoading = function( element, blockType, attributes ) {
-// 	if ( ! supportedBlocks.includes( blockType.name ) ) {
-// 		return element;
-// 	}
-//
-// 	console.log( element );
-// 	console.log( blockType );
-// 	console.log( attributes );
-//
-// 	// element.props.className += ' is-loading';
-//
-// 	return element;
-// };
-
 addFilter( 'blocks.registerBlockType', 'coblocks/imagePositioning/attributes', addPositioningControl );
 addFilter( 'editor.BlockEdit', 'coblocks/positioning', positioningControl );
-// addFilter( 'blocks.getSaveElement', 'coblocks/image-loading', imageLoading );

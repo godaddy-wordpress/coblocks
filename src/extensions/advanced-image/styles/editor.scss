@@ -1,5 +1,5 @@
 .wp-block[data-type="core/image"] .block-editor-block-list__block-edit {
-  .image-is-cropping div.components-resizable-box__container::after {
+  .cb-image-is-cropping div.components-resizable-box__container::after {
     content: 'Cropping...';
     position: absolute;
     top: 0;
