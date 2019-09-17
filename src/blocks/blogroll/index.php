@@ -260,7 +260,7 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 		}
 
 		$list_items_markup .= sprintf(
-			'<li class="%1$s">',
+			'<li class="%1$s"',
 			$list_class
 		);
 
@@ -341,7 +341,7 @@ function extract_external_info( $posts ) {
 
 	foreach ( $posts as $post ) {
 
-		$title = esc_html( trim( strip_tags( $post->get_title() ) ) )
+		$title = esc_html( trim( strip_tags( $post->get_title() ) ) );
 
 		$formatted_post = null;
 
@@ -408,7 +408,6 @@ function extract_internal_info( $posts ) {
  */
 function register_block_blogroll() {
 
-	// Return early if this function does not exist.
 	if ( ! function_exists( 'register_block_type' ) ) {
 
 		return;
@@ -455,7 +454,7 @@ function register_block_blogroll() {
 				),
 				'postLink'           => array(
 					'type'    => 'string',
-					'default' => 'Continue Reading',
+					'default' => __( 'Continue Reading', 'coblocks' ),
 				),
 				'postFeedType'       => array(
 					'type'    => 'string',

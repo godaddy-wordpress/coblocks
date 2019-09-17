@@ -24,7 +24,7 @@ const Inspector = props => {
 		categoriesList,
 	} = props;
 
-	const isCarouselStyle = activeStyle;
+	const isCarouselStyle = ( 'carousel' === activeStyle.name );
 
 	const postSettingsControls = (
 		<PanelBody title={ __( 'Post Settings' ) }>

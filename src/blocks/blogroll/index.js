@@ -3,33 +3,32 @@
  */
 import edit from './edit';
 import icons from './icons';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 
-const name = 'blogroll';
+/**
+ * Block constants
+ */
+const { name, category, supports } = metadata;
 
 const title = __( 'Blogroll' );
 
 const icon = icons.blog;
 
-const keywords = [
-	__( 'posts' ),
-	__( 'articles' ),
-];
-
 const settings = {
 	title: title,
 	description: __( 'Display a list of your most recent posts.' ),
 	icon,
-	keywords: keywords,
-	supports: {
-		align: [ 'wide', 'full' ],
-		html: false,
-	},
+	keywords: [ __( 'posts' ), __( 'articles' ), 'coblocks' ],
+	supports,
 	edit,
+	save: function( props ) {
+		return null;
+	},
 };
 
-export { name, title, icon, settings };
+export { name, category, title, icon, settings };
