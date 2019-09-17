@@ -420,7 +420,7 @@ class CoBlocks_Form {
 	/**
 	 * Process the form submission
 	 *
-	 * @return null
+	 * @return bool True when an email is sent, else false.
 	 */
 	public function process_form_submission( $atts ) {
 
@@ -453,6 +453,27 @@ class CoBlocks_Form {
 
 		}
 
+		/**
+		 * Fires before a form is submitted.
+		 *
+		 * @param array $_POST User submitted form data.
+		 * @param array $atts  Form block attributes.
+		 */
+		do_action( 'coblocks_before_form_submit', $_POST, $atts );
+
+		/**
+		 * Filter to disable the CoBlocks form emails.
+		 *
+		 * @param bool false Whether or not the emails should be disabled.
+		 */
+		$send_email = (bool) apply_filters( 'coblocks_form_email_send', true );
+
+		if ( ! $send_email ) {
+
+			return true;
+
+		}
+
 		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
 
@@ -467,7 +488,7 @@ class CoBlocks_Form {
 
 				$this->remove_url_form_hash();
 
-				return;
+				return false;
 
 			}
 
