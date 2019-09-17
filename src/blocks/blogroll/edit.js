@@ -176,6 +176,8 @@ class LatestPostsEdit extends Component {
 
 		const activeStyle = getActiveStyle( layoutOptions, className );
 
+		this.updateStyle( activeStyle );
+
 		const { categoriesList } = this.state;
 		const {
 			displayPostContent,
