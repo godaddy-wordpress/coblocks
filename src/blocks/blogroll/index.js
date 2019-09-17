@@ -26,7 +26,7 @@ const settings = {
 	keywords: [ __( 'posts' ), __( 'articles' ), 'coblocks' ],
 	supports,
 	edit,
-	save: function( props ) {
+	save: function() {
 		return null;
 	},
 };

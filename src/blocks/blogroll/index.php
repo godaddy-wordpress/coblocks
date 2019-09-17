@@ -86,7 +86,7 @@ function render_block_blogroll( $attributes ) {
 	}
 }
 
-function build_carousel_block_content( $posts, $attribute ) {
+function build_carousel_block_content( $posts, $attributes ) {
 
 	$arrows         = $attributes['prevNextButtons'] ? 'true' : 'false';
 	$auto_play      = $attributes['autoPlay'] ? 'true' : 'false';
@@ -112,15 +112,24 @@ function build_carousel_block_content( $posts, $attribute ) {
 		esc_attr( $class ),
 		esc_attr(
 			json_encode(
-				[
-					'slidesToScroll' => 1,
-					'arrow'          => $arrows,
-					'autoPlay'       => $auto_play,
-					'autoPlaySpeed'  => $attributes['autoPlaySpeed'],
-					'infinite'       => $infinite_slide,
-					'adaptiveHeight' => false,
-					'draggable'      => $draggable,
-				],
+				/**
+				 * Filter the slick slider carousel settings
+				 *
+				 * @var array Slick slider settings.
+				 */
+				(array) apply_filters(
+					'coblocks_blogroll_carousel_settings',
+					[
+						'slidesToScroll' => 1,
+						'arrow'          => $arrows,
+						'autoPlay'       => $auto_play,
+						'autoPlaySpeed'  => $attributes['autoPlaySpeed'],
+						'slidesToShow'   => $attributes['visibleItems'],
+						'infinite'       => $infinite_slide,
+						'adaptiveHeight' => false,
+						'draggable'      => $draggable,
+					]
+				),
 				true
 			)
 		)
@@ -137,8 +146,8 @@ function build_carousel_block_content( $posts, $attribute ) {
 
 			$list_items_markup .= sprintf(
 				'<div class="wp-block-coblocks-blog__post-image-wrapper" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
-				$post['postLink'],
-				$post['thumbnailURL']
+				esc_url( $post['postLink'] ),
+				esc_url( $post['thumbnailURL'] )
 			);
 
 		}
@@ -260,11 +269,9 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 		}
 
 		$list_items_markup .= sprintf(
-			'<li class="%1$s"',
+			'<li class="%1$s">',
 			$list_class
 		);
-
-		$list_items_markup .= '<li>';
 
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 

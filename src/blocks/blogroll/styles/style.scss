@@ -1,59 +1,61 @@
 .wp-block-coblocks-blogroll {
-  	.slick-slide {
-	  margin-right: 10px;
+	.slick-slide {
+		margin-right: 10px;
 	}
 
-  	&.alignfull {
-	  padding: 0 12px;
+	&.alignfull {
+		padding: 0 12px;
 	}
 
 	&.wp-block-coblocks-blog__list {
-	  list-style: none;
+		list-style: none;
 	}
-  	&.is-style-list {
-	  display: flex;
-	  flex-direction: column;
 
-	  &.image-to-right {
-		li {
-		  flex-direction: row-reverse;
-		}
-	  }
-
-	  li {
-		align-items: flex-start;
+	&.is-style-list {
 		display: flex;
-		margin: 0 0 30px;
-		width: 100%;
+		flex-direction: column;
 
-		border-bottom: 0.5px solid #8d96a0;
-		padding-bottom: 20px;
-
-		.wp-block-coblocks-blog__post-info {
-		  padding: 0;
-		  width: 100%;
+		&.image-to-right {
+			li {
+				flex-direction: row-reverse;
+			}
 		}
 
-		.wp-block-coblocks-blog__post-image-wrapper {
-		  position:relative;
-		  width:200px;
-		  min-width:200px;
-		  height:200px;
-		  background-size:auto;
-		  background-position-x: center;
-		  background-position-y: top;
-		  margin-right: 20px;
+		li {
+			align-items: flex-start;
+			display: flex;
+			margin: 0 0 30px;
+			width: 100%;
+			border-bottom: 0.5px solid #8d96a0;
+			padding-bottom: 20px;
 
-		  a {
-			position: absolute;
-			height:100%;
-			width:100%;
-			top:0;
-			left:0;
-		  }
+			.wp-block-coblocks-blog__post-info {
+				padding: 0;
+				width: 100%;
+			}
+
+			.wp-block-coblocks-blog__post-image-wrapper {
+				position: relative;
+				width: 200px;
+				min-width: 200px;
+				height: 200px;
+				background-size: 100%;
+				background-repeat: no-repeat;
+				background-position-x: center;
+				background-position-y: top;
+				margin-right: 20px;
+
+				a {
+					position: absolute;
+					height:100%;
+					width:100%;
+					top:0;
+					left:0;
+				}
+			}
 		}
-	  }
 	}
+
 	&.is-style-grid {
 		display: flex;
 		flex-wrap: wrap;
