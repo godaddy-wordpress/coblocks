@@ -60,7 +60,7 @@ class AuthorEdit extends Component {
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.addImage }
-				label={ __( 'Drop to upload as avatar' ) }
+				label={ _x( 'Drop to upload as avatar', 'image to represent the post author' ) }
 			/>
 		);
 

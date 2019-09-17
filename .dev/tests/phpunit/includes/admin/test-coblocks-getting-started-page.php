@@ -16,7 +16,9 @@ class CoBlocks_Getting_Started_Page_Tests extends WP_UnitTestCase {
 
 		$this->coblocks_getting_started_page = new CoBlocks_Getting_Started_Page();
 
-		set_current_screen( 'toplevel_page_coblocks-getting-started' );
+		wp_set_current_user( self::factory()->user->create( array( 'role' => 'administrator' ) ) );
+		
+		set_current_screen( 'tools_page_coblocks-getting-started' );
 
 	}
 
@@ -61,8 +63,7 @@ class CoBlocks_Getting_Started_Page_Tests extends WP_UnitTestCase {
 
 		$this->coblocks_getting_started_page->screen_page();
 
-		$this->assertNotEmpty( menu_page_url( 'coblocks-getting-started', false ) );
-
+		$this->assertEquals( 'http://example.org/wp-admin/tools.php?page=coblocks-getting-started', menu_page_url( 'coblocks-getting-started', false ) );
 	}
 
 	/**

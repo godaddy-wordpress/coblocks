@@ -6,7 +6,7 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.blockEditor;
@@ -62,7 +62,7 @@ class Inspector extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( 'Accordion Item Settings' ) }>
 						<ToggleControl
-							label={ __( 'Display Open' ) }
+							label={ _x( 'Display Open', 'Visually display open as opposed to closed.' ) }
 							checked={ !! open }
 							help={ this.getDisplayOpenHelp }
 							onChange={ () => setAttributes( { open: ! open } ) }
