@@ -1,6 +1,12 @@
 .block-editor-block-styles {
 	.block-editor-block-preview__content {
 		position: relative;
+		.wp-block-image{
+			.components-resizable-box__container {
+				width: 100% !important;
+				height: 100% !important;
+			}
+		}
 	}
 
 	.is-style-bottom-wave {
