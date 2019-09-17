@@ -1,95 +1,17 @@
 .is-style-bottom-wave {
-	overflow: hidden;
-	position: relative;
-
-	// IE 10+ Support
-	// @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-	// 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' style='fill:red; stroke:none' %3E%3Crect x='0' y='40' width='100' height='20' /%3E%3Crect x='40' y='0' width='20' height='100' /%3E%3C/svg%3E");				color: transparent !important;
-	// 	z-index: 2;
-	// }
-
 	img {
-		vertical-align: bottom;
-	}
-
-	figcaption {
-		display: none;
-	}
-
-	&.alignfull::after {
-		width: calc(100vw + 2px);
-	}
-
-	&.alignfull {
-		overflow: visible !important;
-	}
-
-	figure {
-		position: relative;
-	}
-
-	&::after {
-		background-color: $white;
-		background-position: bottom;
-		background-repeat: no-repeat;
-		background-size: cover;
-		bottom: 1vh;
-		content: "";
-		height: 100%;
-		left: -1vh;
-		mask-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" height="38" viewBox="0 0 219 38" width="219" xmlns="http://www.w3.org/2000/svg"><path d="m92.3868613 2.88543152c4.9489051-.94902414 11.2773727.15184387 16.5328467 2.01193119 5.167883 1.86008732 15.525547 8.92082699 22.007299 13.55206479 16.59854 12.223431 29.277373 16.8926297 42.175183 18.8666 5.167883.7971803 10.664233 1.3286338 22.642336-.9490242 11.978102-2.2776579 23.255474-9.7180072 23.255474-9.7180072v-26.23102735h-219v11.50217265s15.7664234 12.3752748 34.6861314 11.5780945c8.5839416-.2657267 20.3211679-2.5433847 29.3430657-8.5032563 4.6423357-3.0748382 11.4306569-6.90889577 17.4525547-9.18655371 5.9562044-2.39154084 8.6496351-2.54338471 10.9051095-2.92299437z" fill-rule="evenodd" transform="matrix(1 0 0 -1 0 38.417968)"/></svg>');
-		mask-mode: alpha;
+		mask-image: url('data:image/svg+xml;utf8,<svg width="250" height="248" xmlns="http://www.w3.org/2000/svg"><path d="M250 220.092145s-12.873712-8.581631-26.547345-11.208661c-13.673633-2.62703-19.948005-2.014057-25.847415-1.094596-14.723528 2.276759-29.197081 7.662171-48.145186 21.760565-7.399261 5.341628-19.223078 13.485421-25.122488 15.630829-5.999399 2.145408-13.223677 3.415139-18.873112 2.320543-2.574743-.437838-5.6494355-.612974-12.4487556-3.371355-6.8743126-2.62703-14.6235377-7.049197-19.9230076-10.595688-10.2989701-6.874062-23.6976303-9.501092-33.4966504-9.807579C17.9982002 222.806743 0 237.080273 0 237.080273V0h250z"/></svg>');
 		mask-position: bottom;
 		mask-repeat: no-repeat;
-		mask-size: contain;
-		position: absolute;
-		width: calc(100% + 2vh);		
-		top: 1px;
-		z-index: 1;
+		mask-size: cover;
 	}
 }
 
 .is-style-top-wave {
-	overflow: hidden;
-	position: relative;
-
 	img {
-		vertical-align: bottom;
-	}
-
-	figcaption {
-		display: none;
-	}
-
-	&.alignfull::after {
-		width: calc(100vw + 2px);
-	}
-
-	&.alignfull {
-		overflow: visible !important;
-	}
-
-	figure {
-		position: relative;
-	}
-
-	&::after {
-		background-color: $white;
-		background-position: bottom;
-		background-repeat: no-repeat;
-		background-size: cover;
-		transform: scaleY(-1);
-		content: "";
-		height: 100%;
-		mask-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" height="38" viewBox="0 0 219 38" width="219" xmlns="http://www.w3.org/2000/svg"><path d="m92.3868613 2.88543152c4.9489051-.94902414 11.2773727.15184387 16.5328467 2.01193119 5.167883 1.86008732 15.525547 8.92082699 22.007299 13.55206479 16.59854 12.223431 29.277373 16.8926297 42.175183 18.8666 5.167883.7971803 10.664233 1.3286338 22.642336-.9490242 11.978102-2.2776579 23.255474-9.7180072 23.255474-9.7180072v-26.23102735h-219v11.50217265s15.7664234 12.3752748 34.6861314 11.5780945c8.5839416-.2657267 20.3211679-2.5433847 29.3430657-8.5032563 4.6423357-3.0748382 11.4306569-6.90889577 17.4525547-9.18655371 5.9562044-2.39154084 8.6496351-2.54338471 10.9051095-2.92299437z" fill-rule="evenodd" transform="matrix(1 0 0 -1 0 38.417968)"/></svg>');
-		mask-mode: alpha;
+		mask-image: url('data:image/svg+xml;utf8,<svg width="250" height="250" xmlns="http://www.w3.org/2000/svg"><path d="M0 29.809587s12.873712 8.581631 26.547345 11.208661c13.673633 2.62703 19.948005 2.014057 25.847415 1.094596 14.723528-2.276759 29.197081-7.662171 48.145186-21.760565 7.399261-5.341628 19.223078-13.485421 25.122488-15.630829 5.999399-2.145408 13.223677-3.415139 18.873112-2.320543 2.574743.437838 5.6494355.612974 12.4487556 3.371355 6.8743126 2.62703 14.6235377 7.049197 19.9230076 10.595688 10.2989701 6.874062 23.6976303 9.501092 33.4966504 9.807579C232.0017998 27.094989 250 12.821459 250 12.821459v237.080273H0z"/></svg>');
 		mask-position: bottom;
 		mask-repeat: no-repeat;
-		mask-size: contain;
-		position: absolute;
-		top: -1px;
-		left: -1vh;
-		width: calc(100% + 2vh);
-		z-index: 1;
+		mask-size: cover;
 	}
 }
