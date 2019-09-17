@@ -212,7 +212,7 @@ msgstr "아바타로 추가하려면 마우스 놓기"
 
 #: src/blocks/author/edit.js:143
 msgid "Heading..."
-msgstr "머리글 ..."
+msgstr "머리글..."
 
 #: src/blocks/author/edit.js:154
 msgid "Author Name"
@@ -304,7 +304,7 @@ msgstr "공유"
 
 #: src/blocks/click-to-tweet/index.js:29
 msgid "twitter"
-msgstr "twitter"
+msgstr "Twitter"
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
@@ -482,7 +482,7 @@ msgstr "제목 추가..."
 #: src/blocks/food-and-drinks/food-item/inspector.js:55
 #: src/blocks/food-and-drinks/food-item/save.js:65
 msgid "Spicy"
-msgstr "향신료가 강한 음식"
+msgstr "매콤한 음식"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:253
 msgid "Hot"
@@ -563,7 +563,7 @@ msgstr "항목 속성"
 #: src/blocks/food-and-drinks/food-item/inspector.js:60
 #: src/blocks/food-and-drinks/food-item/save.js:73
 msgid "Spicier"
-msgstr "더 매운 맛"
+msgstr "더 매콤한 음식"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:77
 #: src/blocks/services/service/inspector.js:31
@@ -589,7 +589,7 @@ msgstr "이미지의 목적 설명"
 #: src/blocks/media-card/inspector.js:103
 #: src/blocks/services/service/inspector.js:41
 msgid "Leave empty if the image is purely decorative."
-msgstr "순전히 장식용 이미지인 경우 빈 곳으로 남겨 둡니다."
+msgstr "장식용 이미지일 뿐인 경우 빈 곳으로 남겨 둡니다."
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:92
 #: src/blocks/services/service/inspector.js:46
@@ -690,7 +690,7 @@ msgstr "‌‌%s은(는) 올바른 이메일 주소가 아닙니다."
 
 #: src/blocks/form/edit.js:298
 msgid "%s and %s are not a valid email address."
-msgstr "‌‌%s 및 %s(는) 올바른 이메일 주소가 아닙니다."
+msgstr "‌‌%s 및 %s은(는) 올바른 이메일 주소가 아닙니다."
 
 #: src/blocks/form/edit.js:305
 msgid "%s are not a valid email address."
@@ -758,12 +758,12 @@ msgstr "제거"
 #: src/blocks/form/edit.js:57
 #: includes/class-coblocks-form.php:248
 msgid "First"
-msgstr "처음"
+msgstr "이름"
 
 #: src/blocks/form/edit.js:61
 #: includes/class-coblocks-form.php:249
 msgid "Last"
-msgstr "마지막"
+msgstr "성"
 
 #: src/blocks/form/edit.js:88
 #: includes/class-coblocks-form.php:244
@@ -979,7 +979,7 @@ msgstr "GIF를 마음껏 선택하세요."
 
 #: src/blocks/gif/index.js:30
 msgid "animated"
-msgstr "애니메이션 사용"
+msgstr "애니메이션"
 
 #: src/blocks/gif/inspector.js:29
 msgid "Gif Settings"
@@ -1049,7 +1049,7 @@ msgstr "gist 파일"
 
 #: src/blocks/gist/inspector.js:61
 msgid "Gist Meta"
-msgstr "gist 메타데이터"
+msgstr "gist 메타"
 
 #: src/blocks/hero/controls.js:32
 #: src/blocks/row/controls.js:71
@@ -2477,7 +2477,7 @@ msgstr "모바일에서 스택"
 
 #: src/extensions/advanced-controls/index.js:116
 msgid "Responsiveness is enabled."
-msgstr "응답 성능이 서렁되었습니다."
+msgstr "응답 성능이 설정되었습니다."
 
 #: src/extensions/advanced-controls/index.js:117
 msgid "Toggle to stack elements on top of each other on smaller viewports."
@@ -2513,11 +2513,11 @@ msgstr "전체 너비 표시"
 
 #: src/extensions/button-controls/index.js:74
 msgid "Displaying as full width."
-msgstr "전체 화면으로 표시합니다."
+msgstr "전체 너비로 표시합니다."
 
 #: src/extensions/button-controls/index.js:74
 msgid "Toggle to display button as full width."
-msgstr "전체 화면으로 버튼을 표시하려면 토글합니다."
+msgstr "전체 너비로 버튼을 표시하려면 토글합니다."
 
 #: src/extensions/button-styles/index.js:16
 msgid "Circular"
@@ -3230,7 +3230,7 @@ msgstr "디자인 창조 구축 개발 엔지니어"
 #: src/blocks/icon/svgs.js:335
 msgctxt "tags"
 msgid "shop commence ecommence woo cart ship"
-msgstr "쇼핑 상거래 전자상거래 woo 카트 배송"
+msgstr "쇼핑 상거래 전자상거래 Woo 카트 배송"
 
 #: src/blocks/icon/svgs.js:340
 msgctxt "tags"
@@ -3317,7 +3317,7 @@ msgstr "https://coblocks.com"
 
 #. Description of the plugin
 msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
-msgstr "CoBlocks는 워드프레스 구텐베르그 블록 에디터의 전문 <strong>페이지 구축 콘텐츠 블록</strong> 제품군입니다. 당사 블록은 워드프레스에서 멋지고 풍부한 페이지를 만들 수 있도록 표식을 강화하는 데 주안점을 둡니다."
+msgstr "CoBlocks는 워드프레스 구텐베르그 블록 에디터의 전문 <strong>페이지 구축 콘텐츠 블록</strong> 제품군입니다. 당사 블록은 워드프레스에서 멋지고 풍부한 페이지를 만들 수 있도록 제작자에게 힘을 싣는 데 주안점을 둡니다."
 
 #. Author of the plugin
 msgid "GoDaddy"
@@ -3399,7 +3399,7 @@ msgstr "%s이(가) 마음에 드시나요?"
 #. translators: 1. Name, 2. Time
 #: includes/admin/class-coblocks-feedback.php:278
 msgid "You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We'd really appreciate it!"
-msgstr "귀하는 현재 %2$s 동안 %1$s을(를) 사용하고 있습니다. 리뷰를 남겨 귀하께서 어떻게 생각하는지 알려주시겠어요? 정말 감사합니다!"
+msgstr "귀하는 현재 %2$s 동안 %1$s을(를) 사용하고 있습니다. 리뷰를 남겨 귀하의 생각을 알려주시겠어요? 정말 감사합니다!"
 
 #: includes/admin/class-coblocks-feedback.php:282
 msgid "Leave a Review"
@@ -3477,7 +3477,7 @@ msgstr "제출"
 
 #: includes/class-coblocks-form.php:561
 msgid "Your message was sent:"
-msgstr "메시지가 전송됨"
+msgstr "메시지가 전송됨:"
 
 #: includes/class-coblocks-google-map-block.php:122
 msgid "Google Map API key for map rendering"
