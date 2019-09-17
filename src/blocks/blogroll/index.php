@@ -356,7 +356,7 @@ function extract_external_info( $posts ) {
 		$formatted_post['dateReadable'] = date_i18n( get_option( 'date_format' ), $post->get_date( 'U' ) );
 		$formatted_post['title']        = $title;
 		$formatted_post['postLink']     = esc_url( $post->get_link() );
-		$formatted_post['postExcerpt']  = 'test';
+		$formatted_post['postExcerpt']  = html_entity_decode( $post->get_description(), ENT_QUOTES, get_option( 'blog_charset' ) );
 
 		$output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->get_content(), $matches );
 
