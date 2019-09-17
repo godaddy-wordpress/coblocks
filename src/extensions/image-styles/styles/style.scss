@@ -11,3 +11,10 @@
 	mask-repeat: no-repeat;
 	mask-size: cover;
 }
+
+.block-editor-block-styles__item-preview {
+	.components-resizable-box__container {
+		width: 100% !important;
+		height: 100% !important;
+	}
+}
