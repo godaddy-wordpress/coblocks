@@ -146,7 +146,7 @@ class AuthorEdit extends Component {
 							} }
 						/>
 						<InnerBlocks
-							template={ [ [ 'core/button', { placeholder: _x( 'Author link...', 'content placeholder' ) } ] ] }
+							template={ [ [ 'core/button', { placeholder: _x( 'Author link…', 'content placeholder' ) } ] ] }
 							templateLock="all"
 							allowedBlocks={ [ 'core/button' ] }
 							templateInsertUpdatesSelection={ false }
