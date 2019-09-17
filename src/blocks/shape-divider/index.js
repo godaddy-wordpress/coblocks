@@ -25,10 +25,10 @@ const { __, _x } = wp.i18n;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Shape Divider' ),
+	title: _x( 'Shape Divider', 'block name' ),
 	description: __( 'Add a shape divider to visually distinquish page sections.' ),
 	icon,
-	keywords: [ __( 'separator' ), 'hr', 'svg' ],
+	keywords: [ _x( 'separator', 'block keyword' ), 'hr', 'svg' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,

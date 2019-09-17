@@ -7,7 +7,7 @@ import './styles/style.scss';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component } = wp.element;
 const {
 	Toolbar,
@@ -28,7 +28,7 @@ class MediaFilterControl extends Component {
 		const filterControls = [
 			{
 				icon: icons.none,
-				title: __( 'Original' ),
+				title: _x( 'Original', 'image styles' ),
 				onClick: () => {
 					setAttributes( { filter: 'none' } );
 				},
@@ -36,7 +36,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.grayscale,
-				title: __( 'Grayscale Filter' ),
+				title: _x( 'Grayscale Filter', 'image styles' ),
 				onClick: () => {
 					setAttributes( { filter: 'grayscale' } );
 				},
@@ -44,7 +44,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.sepia,
-				title: __( 'Sepia Filter' ),
+				title: _x( 'Sepia Filter', 'image styles' ),
 				onClick: () => {
 					setAttributes( { filter: 'sepia' } );
 				},
@@ -52,7 +52,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.saturation,
-				title: __( 'Saturation Filter' ),
+				title: _x( 'Saturation Filter', 'image styles' ),
 				onClick: () => {
 					setAttributes( { filter: 'saturation' } );
 				},
@@ -60,7 +60,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.dark,
-				title: __( 'Dim Filter' ),
+				title: _x( 'Dim Filter', 'image styles' ),
 				onClick: () => {
 					setAttributes( { filter: 'dim' } );
 				},
@@ -68,7 +68,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.vintage,
-				title: __( 'Vintage Filter' ),
+				title: _x( 'Vintage Filter', 'image styles' ),
 				onClick: () => {
 					setAttributes( { filter: 'vintage' } );
 				},
