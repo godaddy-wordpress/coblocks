@@ -43,8 +43,8 @@ class CoBlocks_Getting_Started_Page {
 
 			add_submenu_page(
 				$submenu_parent_slug,
-				__( 'CoBlocks', 'coblocks' ),
-				__( 'CoBlocks', 'coblocks' ),
+				'CoBlocks',
+				'CoBlocks',
 				apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
 				'coblocks-getting-started',
 				array( $this, 'content' )
@@ -54,9 +54,9 @@ class CoBlocks_Getting_Started_Page {
 
 		}
 
-		add_menu_page(
-			__( 'CoBlocks', 'coblocks' ),
-			__( 'CoBlocks', 'coblocks' ),
+		add_management_page(
+			'CoBlocks',
+			'CoBlocks',
 			apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
 			'coblocks-getting-started',
 			array( $this, 'content' ),
