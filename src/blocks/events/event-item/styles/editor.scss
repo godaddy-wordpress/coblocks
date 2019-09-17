@@ -8,6 +8,41 @@
   	padding: 40px 0 !important;
   	border-bottom: 1px solid #bfbfbf;
 
+  &.page-last-item {
+	border-bottom: none;
+	padding-bottom: 75px!important;
+  }
+
+  .event-item-last {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	text-align: center;
+
+	div {
+	  position: relative;
+	  z-index: 1;
+
+	  &:before {
+		border-top: 2px solid #dfdfdf;
+		content:"";
+		margin: 0 auto; /* this centers the line to the full width specified */
+		position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+		top: 50%; left: 0; right: 0; bottom: 0;
+		width: 95%;
+		z-index: -1;
+	  }
+
+	  span {
+		/* to hide the lines from behind the text, you have to set the background color the same as the container */
+		background: #fff;
+		padding: 0 15px;
+	  }
+	}
+  }
+
   .wp-block-coblocks-event-item__content {
 	display: flex;
 	justify-content: space-between;

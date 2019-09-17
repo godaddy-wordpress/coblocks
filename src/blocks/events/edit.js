@@ -5,6 +5,7 @@ import CustomAppender from './appender';
 import InspectorControls from './inspector';
 import applyWithColors from './colors';
 import icons from './icons';
+import { cloneDeep } from 'lodash';
 
 /**
  * External dependencies.
@@ -38,14 +39,41 @@ class EventItem extends Component {
 		this.onSubmitURL = this.onSubmitURL.bind( this );
 	}
 
+	componentDidUpdate( prevProps ) {
+		// Here we are checking whether the ordering of items has been changed, in order to put proper item on its page
+		const prevInnerBlocksSorted = cloneDeep( prevProps.innerBlocks );
+		const currentInnerBlockSorted = cloneDeep( this.props.innerBlocks );
+		prevInnerBlocksSorted.sort( function( a, b ) {
+			return a.clientId.localeCompare( b.clientId );
+		} );
+		currentInnerBlockSorted.sort( function( a, b ) {
+			return a.clientId.localeCompare( b.clientId );
+		} );
+		// The purpose of sameSorted check is that we check if content of the items has been changed
+		const sameSorted = JSON.stringify( prevInnerBlocksSorted ) === JSON.stringify( currentInnerBlockSorted );
+		const sameUnsorted = JSON.stringify( prevProps.innerBlocks ) === JSON.stringify( this.props.innerBlocks );
+		// Only if the content of the events is the same, and the ordering is different, then we can go through each item
+		// to find its place on the page.
+		if ( sameSorted && ! sameUnsorted ) {
+			const { attributes } = this.props;
+
+			this.props.innerBlocks.map( ( item, key ) => {
+				const lastItemOnPage = key % attributes.eventsToShow === ( attributes.eventsToShow - 1 );
+
+				dispatch( 'core/block-editor' ).updateBlockAttributes(
+					item.clientId,
+					{ pageNum: Math.floor( key / attributes.eventsToShow ), lastItem: lastItemOnPage }
+				);
+			} );
+		}
+	}
+
 	updateInnerAttributes = ( blockName, newAttributes ) => {
-		const innerItems = select( 'core/editor' ).getBlocksByClientId(
-			this.props.clientId
-		)[ 0 ].innerBlocks;
+		const innerItems = this.props.innerBlocks;
 
 		innerItems.map( item => {
 			if ( item.name === blockName ) {
-				dispatch( 'core/editor' ).updateBlockAttributes(
+				dispatch( 'core/block-editor' ).updateBlockAttributes(
 					item.clientId,
 					newAttributes
 				);
@@ -81,23 +109,26 @@ class EventItem extends Component {
 	}
 
 	changeVisibleEvents = ( value ) => {
-		const { clientId, attributes, setAttributes } = this.props;
+		const { attributes, setAttributes } = this.props;
 
 		setAttributes( { eventsToShow: value } );
 
-		const block = select( 'core/editor' ).getBlock( clientId );
+		this.props.innerBlocks.map( ( item, key ) => {
+			const lastItemOnPage = key % value === ( value - 1 );
 
-		block.innerBlocks.map( ( item, key ) =>
-			item.attributes.pageNum = Math.floor( key / value )
-		);
+			dispatch( 'core/block-editor' ).updateBlockAttributes(
+				item.clientId,
+				{ pageNum: Math.floor( key / value ), lastItem: lastItemOnPage }
+			);
+		});
 	};
 
 	insertNewItem = () => {
 		const { clientId, attributes } = this.props;
 
-		const block = select( 'core/editor' ).getBlock( clientId );
+		const newItemPageNumber = Math.floor( this.props.innerBlocks.length / attributes.eventsToShow );
 
-		const newItemPageNumber = Math.floor( block.innerBlocks.length / attributes.eventsToShow );
+		const lastItemOnPage = this.props.innerBlocks.length % attributes.eventsToShow === ( attributes.eventsToShow - 1 );
 
 		const newEventBlock = TEMPLATE.map( ( [ blockName, blockAttributes ] ) =>
 			wp.blocks.createBlock(
@@ -105,19 +136,23 @@ class EventItem extends Component {
 				Object.assign( {}, blockAttributes, {
 					textColor: attributes.textColor,
 					pageNum: newItemPageNumber,
+					lastItem: lastItemOnPage,
 				} )
 			)
 		);
 
 		attributes.currentPage = newItemPageNumber;
 
-		block.innerBlocks.push( newEventBlock[0] );
+		this.props.innerBlocks.push( newEventBlock[0] );
 
-		dispatch( 'core/editor' ).insertBlock( newEventBlock[0], block.innerBlocks.length, clientId );
+		dispatch( 'core/editor' ).insertBlock( newEventBlock[0], this.props.innerBlocks.length, clientId );
 
-		block.innerBlocks.map( ( key, value ) =>
-			key.attributes.pageNum !== newItemPageNumber ? key.originalContent = key.originalContent.replace('wp-block-coblocks-event-item', 'wp-block-coblocks-event-item hide-item') : ''
-		);
+		this.props.block.innerBlocks.map( ( key, value ) => {
+			key.originalContent = '';
+			if ( key.attributes.pageNum !== newItemPageNumber ) {
+				key.originalContent = key.originalContent.replace( 'wp-block-coblocks-event-item', 'wp-block-coblocks-event-item hide-item' );
+			}
+		});
 	};
 
 	render() {
@@ -131,7 +166,7 @@ class EventItem extends Component {
 			setAttributes,
 		} = this.props;
 
-		attributes.childrenLength = select( 'core/editor' ).getBlock( clientId ).innerBlocks.length;
+		attributes.childrenLength = select( 'core/block-editor' ).getBlock( clientId ).innerBlocks.length;
 
 		const { editing } = this.state;
 
@@ -225,7 +260,7 @@ class EventItem extends Component {
 	}
 }
 
-const applyWithSelect = withSelect( () => {
+const applyWithSelect = withSelect( ( select, blockData ) => {
 	const selectedClientId = select( 'core/block-editor' ).getBlockSelectionStart();
 	const parentClientId = select( 'core/block-editor' ).getBlockRootClientId(
 		selectedClientId
@@ -233,6 +268,7 @@ const applyWithSelect = withSelect( () => {
 
 	return {
 		selectedParentClientId: parentClientId,
+		innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
 	};
 } );
 

@@ -74,7 +74,7 @@ function render_block_events($attributes, $content)
 				);
 
 				$eventsLayout .= sprintf(
-					'<div class="wp-block-coblocks-event-item__heading-wrapper has-text-color %1$s" style="%2$s"><h4 class="wp-block-coblocks-event-item__heading">%3$s</h4><p class="wp-block-coblocks-event-item__description">%4$s<p class="show-more-details">EVENT DETAILS</p></p></div>',
+					'<div class="wp-block-coblocks-event-item__heading-wrapper has-text-color %1$s" style="%2$s"><h4 class="wp-block-coblocks-event-item__heading">%3$s</h4><p class="wp-block-coblocks-event-item__description">%4$s</p></div>',
 					esc_attr($text_color_class),
 					esc_attr($custom_text_color),
 					$title,

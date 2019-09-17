@@ -108,6 +108,7 @@ class EventsEdit extends Component {
 				<div data-page={ String( attributes.pageNum ) }
 					className={ classnames( className, {
 						'is-empty': isEmpty( attributes ),
+						'page-last-item': attributes.lastItem,
 					}, 'coblocks-custom-event-item' ) }
 				>
 					<div className="wp-block-coblocks-event-item__content">
@@ -174,6 +175,11 @@ class EventsEdit extends Component {
 							/>
 						</div>
 					</div>
+					{ attributes.lastItem &&
+					<div className="event-item-last" style={ textStyles }>
+						<div><span>PAGE BREAK</span></div>
+					</div>
+					}
 				</div>
 			</Fragment>
 		);

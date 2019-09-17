@@ -4,6 +4,13 @@
 		margin-top: 0;
 	}
 
+  	// If the block is not selected, show only items that are on the first page
+	&:not(.child-selected) .wp-block-coblocks-event-item {
+	  &:not([data-page="0"]) {
+		display: none;
+	  }
+	}
+
 	.block-editor-inner-blocks {
 		width: 100%;
 	}
