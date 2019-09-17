@@ -20,7 +20,7 @@ import { BackgroundAttributes } from '../../components/background';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
@@ -34,10 +34,10 @@ const attributes = {
 };
 
 const settings = {
-	title: __( 'Row' ),
+	title: _x( 'Row', 'block name' ),
 	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.' ),
 	icon,
-	keywords: [	__( 'rows' ), __( 'columns' ), __( 'layouts' )	],
+	keywords: [	_x( 'rows', 'block keyword' ), _x( 'columns', 'block keyword' ), _x( 'layouts', 'block keyword' )	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		anchor: true,

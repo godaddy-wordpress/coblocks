@@ -6,7 +6,7 @@ import * as ratio from './../../utils/helper';
 /**
  * WordPress dependencies
  */
-const { getColorClassName } = wp.blockEditor;
+import { getColorClassName } from '@wordpress/block-editor';
 
 /**
  * Background Classes.

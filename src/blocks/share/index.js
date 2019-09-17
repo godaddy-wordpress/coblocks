@@ -21,11 +21,11 @@ const { __, _x } = wp.i18n;
 const name = 'coblocks/social';
 
 const settings = {
-	title: __( 'Share' ),
+	title: _x( 'Share', 'block name' ),
 	description: __( 'Add social sharing links to help you get likes and shares.' ),
 	icon,
 	category: 'coblocks',
-	keywords: [ __( 'social' ), 'coblocks' ],
+	keywords: [ _x( 'social', 'block keyword' ), 'coblocks' ],
 	styles: [
 		{ name: 'mask', label: _x( 'Mask', 'block style' ) },
 		{ name: 'icon', label: _x( 'Icon', 'block style' ), isDefault: true },
