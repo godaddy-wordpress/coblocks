@@ -308,7 +308,7 @@ class CoBlocks_Feedback {
 new CoBlocks_Feedback(
 	array(
 		'slug'       => 'coblocks_plugin_feedback',
-		'name'       => __( 'CoBlocks', 'coblocks' ),
+		'name'       => 'CoBlocks',
 		'time_limit' => WEEK_IN_SECONDS,
 	)
 );
