@@ -88,7 +88,7 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 				classes = '';
 			}
 
-			classes = classes.replace( / ?cb-image-is-cropping/g, '' );
+			classes = classes.replace( / ?is-cropping/g, '' );
 
 			return classes;
 		};
@@ -140,7 +140,7 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 			positioningControlData.editing = true;
 
 			if ( attributeDifference ) {
-				changeAttributes.className = removeCropClass( currentAttributes.className ) + ' cb-image-is-cropping';
+				changeAttributes.className = removeCropClass( currentAttributes.className ) + ' is-cropping';
 			}
 
 			setAttributes( changeAttributes );
