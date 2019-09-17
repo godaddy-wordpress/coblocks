@@ -371,23 +371,23 @@ class LatestPostsEdit extends Component {
 										}
 									</h5>
 									{ displayPostContent &&
-									<div className="wp-block-coblocks-blog__post-excerpt">
-										<p>
-											<RawHTML
-												key="html"
-											>
-												{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
-											</RawHTML>
-										</p>
-									</div>
+										<div className="wp-block-coblocks-blog__post-excerpt">
+											<p>
+												<RawHTML
+													key="html"
+												>
+													{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+												</RawHTML>
+											</p>
+										</div>
 									}
 									{ displayPostLink &&
-									<PlainText
-										className="wp-block-coblocks-blog__post-read-more"
-										onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
-										value={ postLink }
-										placeholder={ __( 'Continue Reading' ) }
-									/>
+										<PlainText
+											className="wp-block-coblocks-blog__post-read-more"
+											onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
+											value={ postLink }
+											placeholder={ __( 'Continue Reading' ) }
+										/>
 									}
 								</div>
 							</li>
