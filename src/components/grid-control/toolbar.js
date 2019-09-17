@@ -12,8 +12,8 @@ import CSSGridControl from './';
 /**
  * WordPress dependencies
  */
-const { DOWN } = wp.keycodes;
-const { IconButton, Dropdown, NavigableMenu } = wp.components;
+import { DOWN } from '@wordpress/keycodes';
+import { IconButton, Dropdown, NavigableMenu } from '@wordpress/components';
 
 function CSSGridToolbar( {
 	icon = 'menu',
