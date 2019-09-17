@@ -1,4 +1,5 @@
 import AttachmentCropControl from '../../components/image-crop-control/attachment-crop-control';
+import './styles/editor.scss';
 
 import { assign } from 'lodash';
 const { createHigherOrderComponent } = wp.compose;
@@ -140,5 +141,20 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 'positioningControl'
 );
 
+// const imageLoading = function( element, blockType, attributes ) {
+// 	if ( ! supportedBlocks.includes( blockType.name ) ) {
+// 		return element;
+// 	}
+//
+// 	console.log( element );
+// 	console.log( blockType );
+// 	console.log( attributes );
+//
+// 	// element.props.className += ' is-loading';
+//
+// 	return element;
+// };
+
 addFilter( 'blocks.registerBlockType', 'coblocks/imagePositioning/attributes', addPositioningControl );
 addFilter( 'editor.BlockEdit', 'coblocks/positioning', positioningControl );
+// addFilter( 'blocks.getSaveElement', 'coblocks/image-loading', imageLoading );
