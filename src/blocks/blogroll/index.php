@@ -195,9 +195,9 @@ function build_carousel_block_content( $posts, $attribute ) {
 		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blog__post-read-more"><a href="%2$s">%1$s</a></div>',
-				$attributes['postLink'],
-				$post['postLink']
+				'<div class="wp-block-coblocks-blog__post-read-more"><a href="%1$s">%2$s</a></div>',
+				esc_url( $post['postLink'] ),
+				esc_html( $attributes['postLink'] )
 			);
 
 		}
@@ -317,9 +317,9 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blog__post-read-more"><a href="%2$s">%1$s</a></div>',
-				esc_url( $attributes['postLink'] ),
-				esc_url( $post['postLink'] )
+				'<div class="wp-block-coblocks-blog__post-read-more"><a href="%1$s">%2$s</a></div>',
+				esc_url( $post['postLink'] ),
+				esc_html( $attributes['postLink'] )
 			);
 
 		}
@@ -349,7 +349,7 @@ function extract_external_info( $posts ) {
 		$formatted_post['dateReadable'] = date_i18n( get_option( 'date_format' ), $post->get_date( 'U' ) );
 		$formatted_post['title']        = $title;
 		$formatted_post['postLink']     = esc_url( $post->get_link() );
-		$formatted_post['postExcerpt']  = html_entity_decode( $post->get_description(), ENT_QUOTES, get_option( 'blog_charset' ) );
+		$formatted_post['postExcerpt']  = 'test';
 
 		$output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->get_content(), $matches );
 
@@ -446,11 +446,11 @@ function register_block_blogroll() {
 				),
 				'displayPostContent' => array(
 					'type'    => 'boolean',
-					'default' => false,
+					'default' => true,
 				),
 				'displayPostLink'    => array(
 					'type'    => 'boolean',
-					'default' => false,
+					'default' => true,
 				),
 				'postLink'           => array(
 					'type'    => 'string',
@@ -470,7 +470,7 @@ function register_block_blogroll() {
 				),
 				'displayPostDate'    => array(
 					'type'    => 'boolean',
-					'default' => false,
+					'default' => true,
 				),
 				'columns'            => array(
 					'type'    => 'number',
