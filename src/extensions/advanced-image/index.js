@@ -133,8 +133,15 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 		};
 
 		const applyAttributes = function( changeAttributes ) {
+			const attributeDifference = _.reduce( changeAttributes, function( result, value, key ) {
+				return result || ! _.isEqual( value, currentAttributes[ key ] );
+			}, false );
+
 			positioningControlData.editing = true;
-			changeAttributes.className = removeCropClass( currentAttributes.className ) + ' cb-image-is-cropping';
+
+			if ( attributeDifference ) {
+				changeAttributes.className = removeCropClass( currentAttributes.className ) + ' cb-image-is-cropping';
+			}
 
 			setAttributes( changeAttributes );
 			currentAttributes = _.extend( {}, currentAttributes, changeAttributes );
