@@ -132,13 +132,7 @@ const withAdvancedControls = createHigherOrderComponent( BlockEdit => {
 										marginTopMobile: 0,
 									} )
 								}
-								help={
-									!! noTopMargin ?
-										__( 'Top margin is removed on this block.' ) :
-										__(
-											'Toggle to remove any margin applied to the top of this block.'
-										)
-								}
+								help={ !! noTopMargin ? __( 'Toggle to add top margin back.' ) : __( 'Toggle to remove any top margin.' ) }
 							/>
 						) }
 						{ withBlockSpacing && (
@@ -166,13 +160,7 @@ const withAdvancedControls = createHigherOrderComponent( BlockEdit => {
 											} );
 									}
 								} }
-								help={
-									!! noBottomMargin ?
-										__( 'Bottom margin is removed on this block.' ) :
-										__(
-											'Toggle to remove any margin applied to the bottom of this block.'
-										)
-								}
+								help={ !! noBottomMargin ? __( 'Toggle to add bottom margin back.' ) : __( 'Toggle to remove any bottom margin.' ) }
 							/>
 						) }
 					</InspectorAdvancedControls>

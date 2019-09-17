@@ -200,7 +200,11 @@ class Edit extends Component {
 						key="placeholder"
 						icon={ columns ? rowIcons.layout : rowIcons.row }
 						label={ columns ? __( 'Row Layout' ) : __( 'Row' ) }
-						instructions={ columns ? sprintf( __( 'Now select a layout for this %s column row.' ), this.numberToText( columns ) ) : __( 'Select the number of columns for this row.' ) }
+						instructions={ columns ?
+							/* translators: %s: 'one' 'two' 'three' and 'four' */
+							sprintf( __( 'Now select a layout for this %s column row.' ), this.numberToText( columns ) ) :
+							__( 'Select the number of columns for this row.' )
+						}
 						className={ 'components-coblocks-visual-dropdown' }
 					>
 						{ ! columns ?
@@ -268,12 +272,15 @@ class Edit extends Component {
 			);
 		}
 
-		const classes = classnames(
+		let classes = classnames(
 			className, {
 				[ `coblocks-row--${ id }` ]: id,
-				[ `coblocks-row-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
 			}
 		);
+
+		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+			classes = classnames( classes, `coblocks-row-${ coblocks.id }` );
+		}
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-row__inner',

@@ -6,81 +6,28 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { BackgroundClasses, BackgroundVideo, BackgroundAttributes } from '../../components/background';
-import DimensionsAttributes from '../../components/dimensions-control/attributes';
+import metadata from './block.json';
 import CSSGridAttributes from '../../components/grid-control/attributes';
+import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
+import { BackgroundClasses, BackgroundVideo, BackgroundAttributes } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { getColorClassName, InnerBlocks } = wp.blockEditor;
+import { getColorClassName, InnerBlocks } from '@wordpress/block-editor';
 
-const blockAttributes = {
+const attributes = {
 	...CSSGridAttributes,
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 	...ResponsiveBaseControlAttributes,
-	align: {
-		type: 'string',
-		default: 'full',
-	},
-	contentAlign: {
-		type: 'string',
-	},
-	textColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
-	maxWidth: {
-		type: 'number',
-		default: 560,
-	},
-	saveCoBlocksMeta: {
-		type: 'boolean',
-		default: true,
-	},
-	paddingSize: {
-		type: 'string',
-		default: 'huge',
-	},
-	paddingUnit: {
-		type: 'string',
-		default: 'px',
-	},
-	paddingTop: {
-		type: 'number',
-		default: 60,
-	},
-	paddingBottom: {
-		type: 'number',
-		default: 60,
-	},
-	paddingLeft: {
-		type: 'number',
-		default: 60,
-	},
-	paddingRight: {
-		type: 'number',
-		default: 60,
-	},
-	customBackgroundColor: {
-		type: 'string',
-		default: '#f3f3f3',
-	},
-	height: {
-		type: 'number',
-		default: 500,
-	},
+	...metadata.attributes,
 };
 
 const deprecated = [
 	{
-		attributes: {
-			...blockAttributes,
-		},
+		attributes,
 		save( { attributes } ) {
 			const {
 				coblocks,
@@ -103,13 +50,14 @@ const deprecated = [
 			const textClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-			const classlist = {
+			let classes = classnames( {
 				'has-text-color': textColor || customTextColor,
 				[ textClass ]: textClass,
-				[ `coblocks-hero-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
-			};
+			} );
 
-			const classes = classnames( classlist );
+			if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+				classes = classnames( classnames, `coblocks-hero-${ coblocks.id }` );
+			}
 
 			const styles = {
 				color: textClass ? undefined : customTextColor,
