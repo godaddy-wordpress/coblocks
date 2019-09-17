@@ -223,3 +223,15 @@
 		text-align: center;
 	}
 }
+
+// Shim to get icons to display correctly in G 6.3+ only.
+.components-panel__body .block-editor-block-preview__container .wp-block-coblocks-icon {
+	align-content: center;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	
+	svg {
+		transform: scale(4);
+	}
+}
