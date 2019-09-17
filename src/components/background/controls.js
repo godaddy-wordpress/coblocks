@@ -7,10 +7,10 @@ import { ALLOWED_BG_MEDIA_TYPES } from './';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Fragment } = wp.element;
-const { MediaUpload, MediaUploadCheck } = wp.blockEditor;
-const { Toolbar, IconButton, Popover, MenuItem } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Fragment } from '@wordpress/element';
+import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { Toolbar, IconButton, Popover, MenuItem } from '@wordpress/components';
 
 /**
  * Background image block toolbar controls.

@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { _x } = wp.i18n;
 const { registerBlockStyle } = wp.blocks;
 
 /**
@@ -12,19 +12,19 @@ import './styles/style.scss';
 // Default list style for reset.
 registerBlockStyle( 'core/list', {
 	name: 'default',
-	label: __( 'Default' ),
+	label: _x( 'Default', 'block styles' ),
 	isDefault: true,
 } );
 
 registerBlockStyle( 'core/list', {
 	name: 'none',
-	label: __( 'None' ),
+	label: _x( 'None', 'block styles' ),
 	isDefault: false,
 } );
 
 registerBlockStyle( 'core/list', {
 	name: 'checkbox',
-	label: __( 'Checkbox' ),
+	label: _x( 'Checkbox', 'block styles' ),
 	isDefault: false,
 } );
 
