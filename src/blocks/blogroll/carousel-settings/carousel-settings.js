@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import map from 'lodash/map';
-
-/**
  * Internal dependencies
  */
 import autoPlayOptions from '../../../components/slider-panel/autoplay-options';
@@ -17,7 +12,7 @@ const { Component, Fragment } = wp.element;
 const { PanelBody, ToggleControl, SelectControl, RangeControl } = wp.components;
 
 class CarouselPanel extends Component {
-	constructor( props ) {
+	constructor( ) {
 		super( ...arguments );
 		this.getAutoPlayHelp = this.getAutoPlayHelp.bind( this );
 	}
@@ -65,7 +60,6 @@ class CarouselPanel extends Component {
 					{ autoPlay && <SelectControl
 						label={ __( 'Transition Speed' ) }
 						value={ autoPlaySpeed }
-						onChange={ this.setAutoPlaySpeedTo }
 						onChange={ ( value ) => setAttributes( { autoPlaySpeed: value } ) }
 						options={ autoPlayOptions }
 						className="components-coblocks-gallery-inspector__autoplayspeed-select"

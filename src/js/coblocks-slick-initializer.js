@@ -1,33 +1,35 @@
 ( function( $ ) {
-	"use strict";
+	'use strict';
 
-	$(document).ready(function() {
+	const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
-		observer.observe(document.body, {
-			childList: true
-			, subtree: true
-			, attributes: false
-			, characterData: false
-		})
-	});
-	var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+	$( document ).ready( function() {
+		observer.observe( document.body, {
+			childList: true,
+			subtree: true,
+			attributes: false,
+			characterData: false,
+		} );
+	} );
 
-	var observer = new MutationObserver(function(mutations) {
-		mutations.forEach(function(mutation) {
-			if (!mutation.addedNodes) return
+	const observer = new MutationObserver( function( mutations ) {
+		mutations.forEach( function( mutation ) {
+			if ( ! mutation.addedNodes ) {
+				return;
+			}
 
-			for (var i = 0; i < mutation.addedNodes.length; i++) {
+			for ( let i = 0; i < mutation.addedNodes.length; i++ ) {
 				// do things to your newly added nodes here
-				var node = mutation.addedNodes[i];
+				const node = mutation.addedNodes[ i ];
 
-				if (node.className === "coblocks-slick") {
-					var carousel = $('.carousel-container');
+				if ( node.className === 'coblocks-slick' ) {
+					const carousel = $( '.carousel-container' );
 
-					if(carousel) {
+					if ( carousel ) {
 						carousel.slick();
 					}
 				}
 			}
-		})
-	})
-} )( jQuery );
+		} );
+	} );
+}( jQuery ) );

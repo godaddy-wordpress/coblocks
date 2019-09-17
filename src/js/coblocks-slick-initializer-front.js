@@ -1,12 +1,11 @@
 ( function( $ ) {
-	"use strict";
+	'use strict';
 
-	$(document).ready(function() {
+	$( document ).ready( function() {
+		const carousel = $( '.carousel-container' );
 
-		var carousel = $('.carousel-container');
-
-		if(carousel) {
+		if ( carousel ) {
 			carousel.slick();
 		}
-	});
-} )( jQuery );
+	} );
+}( jQuery ) );

@@ -4,28 +4,25 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 import Slider from 'react-slick';
-import icons from './icons';
 import InspectorControls from './inspector';
+import blogIcons from './icons';
 
 /**
  * External dependencies
  */
-import { isUndefined, pickBy } from 'lodash';
 import classnames from 'classnames';
+import includes from 'lodash/includes';
+import { find, isUndefined, pickBy } from 'lodash';
+import { Fragment } from 'react';
 
 /**
  * WordPress dependencies
  */
 import { Component, RawHTML } from '@wordpress/element';
 import {
-	PanelBody,
 	Placeholder,
-	QueryControls,
-	RangeControl,
 	Spinner,
-	ToggleControl,
 	Toolbar,
-	RadioControl,
 	TextControl,
 	Button,
 	ServerSideRender,
@@ -35,11 +32,6 @@ import { addQueryArgs } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
 import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
 import { withSelect } from '@wordpress/data';
-import blogIcons from './icons';
-import includes from 'lodash/includes';
-import { find } from 'lodash';
-import { Fragment } from 'react';
-import SlickSliderPanel from '../../components/slick-slider-panel';
 const TokenList = wp.tokenList;
 
 /**
@@ -50,27 +42,26 @@ const { BlockControls, PlainText } = wp.editor;
 const CATEGORIES_LIST_QUERY = {
 	per_page: -1,
 };
-const MAX_POSTS_COLUMNS = 3;
 
 const layoutOptions = [
 	{
 		name: 'grid',
 		label: __( 'Grid' ),
-		icon: icons.layoutGridIcon,
-		iconWithImages: icons.layoutGridIconWithImages,
+		icon: blogIcons.layoutGridIcon,
+		iconWithImages: blogIcons.layoutGridIconWithImages,
 		isDefault: true,
 	},
 	{
 		name: 'list',
 		label: __( 'List' ),
-		icon: icons.layoutListIcon,
-		iconWithImages: icons.layoutListIconWithImages,
+		icon: blogIcons.layoutListIcon,
+		iconWithImages: blogIcons.layoutListIconWithImages,
 	},
 	{
 		name: 'carousel',
 		label: __( 'Carousel' ),
-		icon: icons.layoutCarouselIcon,
-		iconWithImages: icons.layoutCarouselIconWithImages,
+		icon: blogIcons.layoutCarouselIcon,
+		iconWithImages: blogIcons.layoutCarouselIconWithImages,
 	},
 ];
 
@@ -142,7 +133,7 @@ class LatestPostsEdit extends Component {
 				}
 			}
 		).catch(
-			( e ) => {
+			() => {
 				if ( this.isStillMounted ) {
 					this.setState( { categoriesList: [] } );
 				}
@@ -185,7 +176,7 @@ class LatestPostsEdit extends Component {
 
 		const activeStyle = getActiveStyle( layoutOptions, className );
 
-		const { categoriesList, editing } = this.state;
+		const { categoriesList } = this.state;
 		const {
 			displayPostContent,
 			displayPostDate,
@@ -268,7 +259,7 @@ class LatestPostsEdit extends Component {
 			slidesToScroll: 1,
 		};
 
-		const dateFormat = __experimentalGetSettings().formats.date;
+		const dateFormat = __experimentalGetSettings().formats.date; // eslint-disable-line no-restricted-syntax
 
 		if ( this.state.editing && postFeedType === 'external' ) {
 			return (
@@ -357,18 +348,16 @@ class LatestPostsEdit extends Component {
 						excerpt = excerptElement.textContent || excerptElement.innerText || '';
 						return (
 							<li className={ classnames( {
-								'list-center': isGridStyle && !featuredImageUrl,
+								'list-center': isGridStyle && ! featuredImageUrl,
 							} ) } key={ i }>
 								{ featuredImageUrl &&
-								<div className="wp-block-coblocks-blog__post-image-wrapper"
-									 style={ { backgroundImage: featuredImageStyle } }></div>
+									<div className="wp-block-coblocks-blog__post-image-wrapper" style={ { backgroundImage: featuredImageStyle } }></div>
 								}
 								<div className="wp-block-coblocks-blog__post-info">
 									{ displayPostDate && post.date_gmt &&
-									<time dateTime={ format( 'c', post.date_gmt ) }
-										  className="wp-block-coblocks-blog__post-date">
-										{ dateI18n( dateFormat, post.date_gmt ) }
-									</time>
+										<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blog__post-date">
+											{ dateI18n( dateFormat, post.date_gmt ) }
+										</time>
 									}
 									<h5>
 										{ titleTrimmed ? (
@@ -421,17 +410,15 @@ class LatestPostsEdit extends Component {
 							<div className="coblocks-blog-post--item" key={ i }>
 								<div className="coblocks-blog-post--item-inner">
 									{ featuredImageUrl &&
-									<div className="wp-block-coblocks-blog__post-image-wrapper"
-										 style={ { backgroundImage: featuredImageStyle } }></div>
+										<div className="wp-block-coblocks-blog__post-image-wrapper" style={ { backgroundImage: featuredImageStyle } }></div>
 									}
-									<div className={ classnames('wp-block-coblocks-blog__post-info', {
-										'full-height': !featuredImageUrl,
+									<div className={ classnames( 'wp-block-coblocks-blog__post-info', {
+										'full-height': ! featuredImageUrl,
 									} ) }>
 										{ displayPostDate && post.date_gmt &&
-										<time dateTime={ format( 'c', post.date_gmt ) }
-											  className="wp-block-coblocks-blog__post-date">
-											{ dateI18n( dateFormat, post.date_gmt ) }
-										</time>
+											<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blog__post-date">
+												{ dateI18n( dateFormat, post.date_gmt ) }
+											</time>
 										}
 										<h5>
 											{ titleTrimmed ? (

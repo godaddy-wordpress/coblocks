@@ -52,7 +52,7 @@
 		"zh_TW": "繁體中文"
 	},
 	"devDependencies": {
-	  	"@wordpress/api-fetch": "^2.2.8",
+		"@wordpress/api-fetch": "^2.2.8",
 		"@babel/cli": "^7.4.4",
 		"@babel/core": "^7.4.5",
 		"@babel/plugin-proposal-class-properties": "^7.4.4",
@@ -117,11 +117,11 @@
 		"react-flickity-component": "^3.2.0",
 		"react-google-maps": "^9.4.5",
 		"react-masonry-component": "^6.2.1",
-	    "react-slick": "^0.24.0",
+		"react-slick": "^0.24.0",
 		"redux": "^4.0.1",
 		"resolve-pkg": "^1.0.0",
 		"sass-loader": "^6.0.6",
-	    "slick-carousel": "^1.8.1",
+		"slick-carousel": "^1.8.1",
 		"style-loader": "^0.19.1",
 		"stylelint": "^9.10.1",
 		"stylelint-config-prettier": "^3.1.0",

@@ -2,14 +2,13 @@
  * External dependencies.
  */
 import classnames from 'classnames';
-import SlickSliderPanel from "../../components/slick-slider-panel";
-import includes from "lodash/includes";
+import SlickSliderPanel from '../../components/slick-slider-panel';
 
 /**
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
-const { PanelBody, ToggleControl, RangeControl, QueryControls, RadioControl, Button } = wp.components;
+const { PanelBody, ToggleControl, RangeControl, QueryControls, RadioControl } = wp.components;
 const { InspectorControls } = wp.blockEditor;
 const { ENTER, SPACE } = wp.keycodes;
 

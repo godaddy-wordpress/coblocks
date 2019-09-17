@@ -7,7 +7,7 @@ import icons from './icons';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
+const { __ } = wp.i18n;
 
 const name = 'blogroll';
 

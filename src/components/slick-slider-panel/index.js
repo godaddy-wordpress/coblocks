@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import map from 'lodash/map';
-
-/**
  * Internal dependencies
  */
 import autoPlayOptions from './autoplay-options';
@@ -17,7 +12,7 @@ const { Component, Fragment } = wp.element;
 const { PanelBody, ToggleControl, SelectControl, RangeControl } = wp.components;
 
 class SlickSliderPanel extends Component {
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.getAutoPlayHelp = this.getAutoPlayHelp.bind( this );
 	}
