@@ -1,0 +1,14 @@
+.block-editor-block-styles {
+	.block-editor-block-preview__content {
+		position: relative;
+	}
+
+	.is-style-bottom-wave {
+		position: absolute;
+		bottom: 0;
+
+		.block-editor-rich-text {
+			display: none;
+		}
+	}
+}
