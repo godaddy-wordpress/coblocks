@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { _x } = wp.i18n;
 const { registerBlockStyle } = wp.blocks;
 
 /**
@@ -13,18 +13,18 @@ import './styles/editor.scss';
 // Register custom styles for the core list block.
 registerBlockStyle( 'core/button', {
 	name: 'circular',
-	label: __( 'Circular' ),
+	label: _x( 'Circular', 'block styles' ),
 	isDefault: false,
 } );
 
 registerBlockStyle( 'core/button', {
 	name: '3d',
-	label: __( '3D' ),
+	label: _x( '3D', 'block styles' ),
 	isDefault: false,
 } );
 
 registerBlockStyle( 'core/button', {
 	name: 'shadow',
-	label: __( 'Shadow' ),
+	label: _x( 'Shadow', 'block styles' ),
 	isDefault: false,
 } );
