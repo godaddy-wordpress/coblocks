@@ -113,39 +113,6 @@ class Inspector extends Component {
 				<InspectorControls>
 					{ ( columns && selectedRows >= 1 ) &&
 					<Fragment>
-						{ selectedRows > 1 &&
-						<PanelBody title={ __( 'Layout' ) } initialOpen={ false }>
-							<div className="components-coblocks-visual-dropdown">
-								<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
-									{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
-										<Tooltip text={ name }>
-											<div className={ ( key === layout ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
-												<Button
-													className={ ( key === layout ) ? 'components-coblocks-visual-dropdown__button components-coblocks-visual-dropdown__button--selected' : 'components-coblocks-visual-dropdown__button' }
-													isSmall
-													onClick={ () => {
-														const selectedWidth = key.toString().split( '-' );
-														const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
-														setAttributes( {
-															layout: key,
-														} );
-
-														if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
-															map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
-																wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
-															) );
-														}
-													} }
-												>
-													{ icon }
-												</Button>
-											</div>
-										</Tooltip>
-									) ) }
-								</ButtonGroup>
-							</div>
-						</PanelBody>
-						}
 						{ layout &&
 						<Fragment>
 							{ selectedRows > 1 &&
@@ -166,8 +133,8 @@ class Inspector extends Component {
 																} );
 
 																if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
-																	map( children[ 0 ].innerBlocks, ( { childrenClientId }, index ) => (
-																		wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( childrenClientId, { width: selectedWidth[ index ] } )
+																	map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
+																		wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
 																	) );
 																}
 															} }

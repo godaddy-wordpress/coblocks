@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { RichText, getColorClassName, getFontSizeClass } = wp.blockEditor;
+import { RichText, getColorClassName, getFontSizeClass } from '@wordpress/block-editor';
 
 const save = ( { attributes } ) => {
 	const {
@@ -40,16 +40,14 @@ const save = ( { attributes } ) => {
 		fontSize: fontSizeClass ? undefined : customFontSize,
 	};
 
-	return (
+	return RichText.isEmpty( content ) ? null : (
 		<p style={ { textAlign: align } }>
-			{ ! RichText.isEmpty( content ) && (
-				<RichText.Content
-					tagName="mark"
-					className={ classes }
-					style={ styles }
-					value={ content }
-				/>
-			) }
+			<RichText.Content
+				tagName="mark"
+				className={ classes }
+				style={ styles }
+				value={ content }
+			/>
 		</p>
 	);
 };

@@ -19,7 +19,7 @@ import { GalleryAttributes } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
@@ -33,12 +33,13 @@ const attributes = {
 };
 
 const settings = {
-	title: __( 'Carousel' ),
+	title: _x( 'Carousel', 'block name' ),
 	description: __( 'Display multiple images in a beautiful carousel gallery.' ),
 	category: 'coblocks-galleries',
-	keywords: [	__( 'gallery' ), __( 'photos' ) ],
 	attributes,
 	icon,
+	keywords: [	_x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' )	],
+
 	supports: {
 		align: [ 'wide', 'full' ],
 	},

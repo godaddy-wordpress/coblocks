@@ -18,17 +18,19 @@ const camelCaseDash = string => string.replace( /-([a-z])/g, ( match, letter ) =
  * Define externals to load components through the wp global.
  */
 const externals = [
+	'blocks',
+	'block-editor',
 	'components',
+	'compose',
+	'data',
+	'date',
+	'editor',
 	'edit-post',
 	'element',
-	'plugins',
-	'editor',
-	'blocks',
 	'hooks',
-	'utils',
-	'date',
-	'data',
 	'i18n',
+	'plugins',
+	'utils',
 ].reduce(
 	( externals, name ) => ( {
 		...externals,

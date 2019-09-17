@@ -12,9 +12,9 @@ import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { SelectControl, RangeControl, ToggleControl, PanelBody, Button, FocalPointPicker } = wp.components;
+import { __, _x } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { SelectControl, RangeControl, ToggleControl, PanelBody, Button, FocalPointPicker } from '@wordpress/components';
 
 class BackgroundPanel extends Component {
 	constructor() {
@@ -80,28 +80,28 @@ class BackgroundPanel extends Component {
 		} = attributes;
 
 		const backgroundPositionOptions = [
-			{ value: 'top left', label: __( 'Top Left' ) },
-			{ value: 'top center', label: __( 'Top Center' ) },
-			{ value: 'top right', label: __( 'Top Right' ) },
-			{ value: 'center left', label: __( 'Center Left' ) },
-			{ value: 'center center', label: __( 'Center Center' ) },
-			{ value: 'center right', label: __( 'Center Right' ) },
-			{ value: 'bottom left', label: __( 'Bottom Left' ) },
-			{ value: 'bottom center', label: __( 'Bottom Center' ) },
-			{ value: 'bottom right', label: __( 'Bottom Right' ) },
+			{ value: 'top left', label: _x( 'Top Left', 'block layout' ) },
+			{ value: 'top center', label: _x( 'Top Center', 'block layout' ) },
+			{ value: 'top right', label: _x( 'Top Right', 'block layout' ) },
+			{ value: 'center left', label: _x( 'Center Left', 'block layout' ) },
+			{ value: 'center center', label: _x( 'Center Center', 'block layout' ) },
+			{ value: 'center right', label: _x( 'Center Right', 'block layout' ) },
+			{ value: 'bottom left', label: _x( 'Bottom Left', 'block layout' ) },
+			{ value: 'bottom center', label: _x( 'Bottom Center', 'block layout' ) },
+			{ value: 'bottom right', label: _x( 'Bottom Right', 'block layout' ) },
 		];
 
 		const backgroundRepeatOptions = [
-			{ value: 'no-repeat', label: __( 'No Repeat' ) },
-			{ value: 'repeat', label: __( 'Repeat' ) },
-			{ value: 'repeat-x', label: __( 'Repeat Horizontally' ) },
-			{ value: 'repeat-y', label: __( 'Repeat Vertically' ) },
+			{ value: 'no-repeat', label: _x( 'No Repeat', 'block layout' ) },
+			{ value: 'repeat', label: _x( 'Repeat', 'block layout' ) },
+			{ value: 'repeat-x', label: _x( 'Repeat Horizontally', 'block layout' ) },
+			{ value: 'repeat-y', label: _x( 'Repeat Vertically', 'block layout' ) },
 		];
 
 		const backgroundSizeOptions = [
-			{ value: 'auto', label: __( 'Auto' ) },
-			{ value: 'cover', label: __( 'Cover' ) },
-			{ value: 'contain', label: __( 'Contain' ) },
+			{ value: 'auto', label: _x( 'Auto', 'block layout' ) },
+			{ value: 'cover', label: _x( 'Cover', 'block layout' ) },
+			{ value: 'contain', label: _x( 'Contain', 'block layout' ) },
 		];
 
 		const backgroundSizeDefault = 'cover';
