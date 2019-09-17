@@ -13,7 +13,7 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { RichText } = wp.blockEditor;
@@ -22,6 +22,30 @@ const { RichText } = wp.blockEditor;
  * Block edit function
  */
 class Edit extends Component {
+	componentDidMount() {
+		const { attributes, setAttributes } = this.props;
+
+		// Convert is-{type}-alert to is-style-{type}.
+		// See: https://github.com/godaddy/coblocks/pull/781
+		if ( /is-\w+-alert/.test( attributes.className ) ) {
+			let newClassName = attributes.className;
+
+			newClassName = newClassName.replace( 'is-default-alert', 'is-style-info' );
+			newClassName = newClassName.replace( /is-(\w+)-alert/, 'is-style-$1' );
+			setAttributes( { className: newClassName } );
+		}
+	}
+
+	componentDidUpdate( prevProps ) {
+		const { attributes, setAttributes } = this.props;
+
+		// Reset color selections when a new style has been selected.
+		// If the legacy alert class is detected, we want to retain the custom color selections.
+		if ( ! /is-\w+-alert/.test( prevProps.attributes.className ) && prevProps.attributes.className !== attributes.className ) {
+			setAttributes( { backgroundColor: '', customBackgroundColor: '', textColor: '', customTextColor: '' } );
+		}
+	}
+
 	render() {
 		const {
 			attributes,
@@ -33,10 +57,8 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
-			align,
 			textAlign,
 			title,
-			type,
 			value,
 		} = attributes;
 
@@ -54,11 +76,10 @@ class Edit extends Component {
 				) }
 				<div
 					className={ classnames(
-						className,
-						`is-${ type }-alert`,
-						`align${ align }`, {
+						className, {
 							'has-background': backgroundColor.color,
 							'has-text-color': textColor.color,
+							[ `has-text-align-${ textAlign }` ]: textAlign,
 							[ backgroundColor.class ]: backgroundColor.class,
 							[ textColor.class ]: textColor.class,
 						}
@@ -71,7 +92,7 @@ class Edit extends Component {
 				>
 					{ ( ! RichText.isEmpty( title ) || isSelected ) && (
 						<RichText
-							placeholder={ __( 'Write title...' ) }
+							placeholder={ _x( 'Write title...', 'Placeholder text for input box' ) }
 							value={ title }
 							className="wp-block-coblocks-alert__title"
 							onChange={ ( value ) => setAttributes( { title: value } ) }
@@ -79,7 +100,7 @@ class Edit extends Component {
 						/>
 					) }
 					<RichText
-						placeholder={ __( 'Write text...' ) }
+						placeholder={ _x( 'Write text...', 'Placeholder text for input box' ) }
 						value={ value }
 						className="wp-block-coblocks-alert__text"
 						onChange={ ( value ) => setAttributes( { value: value } ) }

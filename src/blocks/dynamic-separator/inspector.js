@@ -6,7 +6,7 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { InspectorControls, PanelColorSettings } = wp.blockEditor;
@@ -40,7 +40,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Dynamic HR Settings' ) }>
+					<PanelBody title={ _x( 'Dynamic HR Settings', 'hr is html markup - horizonal rule' ) }>
 						<BaseControl label={ __( 'Height in pixels' ) }>
 							<input
 								type="number"

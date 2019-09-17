@@ -1,73 +1,44 @@
+/**
+ * Styles.
+ */
+import './styles/style.scss';
+import './styles/editor.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
 import edit from './edit';
-import icons from './../../utils/icons';
-import transforms from './transforms';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
  */
-const name = 'author';
-
-const title = __( 'Author' );
-
-const icon = icons.author;
-
-const blockAttributes = {
-	biography: {
-		type: 'array',
-		source: 'children',
-		selector: '.wp-block-coblocks-author__biography',
-		default: [],
-	},
-	heading: {
-		type: 'string',
-		selector: '.wp-block-coblocks-author__heading',
-		default: __( 'Written by...' ),
-	},
-	name: {
-		type: 'string',
-		selector: '.wp-block-coblocks-author__name',
-	},
-	imgId: {
-		type: 'number',
-	},
-	imgUrl: {
-		type: 'string',
-		source: 'attribute',
-		attribute: 'src',
-		selector: 'img',
-	},
-	textAlign: {
-		type: 'string',
-	},
-};
+const { name, category, attributes } = metadata;
 
 const settings = {
-
-	title,
-
-	description: __( 'Add an author biography.' ),
-
-	keywords: [ __( 'biography' ), __( 'profile' ), __( 'coblocks' ) ],
-
-	attributes: blockAttributes,
-
+	title: _x( 'Author', 'block name' ),
+	description: __( 'Add an author biography to build credibility and authority.' ),
+	icon,
+	keywords: [ _x( 'biography', 'block keyword' ), _x( 'profile', 'block keyword' ), 'coblocks' ],
+	example: {
+		attributes: {
+			name: 'Jane Doe',
+			biography: __( 'Born to express, not to impress. A maker making the world I want.' ),
+			imgUrl: '/wp-content/plugins/coblocks/dist/images/examples/author.jpg',
+		},
+	},
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

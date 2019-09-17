@@ -8,7 +8,7 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.blockEditor;
 const { IconButton } = wp.components;
@@ -69,8 +69,8 @@ class Edit extends Component {
 					<div className="components-coblocks-add-accordion-item">
 						<IconButton
 							isLarge
-							className="components-coblocks-add-accordion-item__button"
-							label={ __( 'Add Accordion Item' ) }
+							className="block-editor-button-block-appender components-coblocks-add-accordion-item__button"
+							label={ _x( 'Add Accordion Item', 'This is an child element for the Accordion Block.' ) }
 							icon="insert"
 							onClick={ () => {
 								if ( items[ 0 ].innerBlocks ) {
@@ -108,7 +108,6 @@ class Edit extends Component {
 									wp.data.dispatch( 'core/block-editor' ).insertBlock( created, undefined, clientId );
 								}
 							} } >
-							{ __( 'Add Accordion Item' ) }
 						</IconButton>
 					</div>
 				</div>

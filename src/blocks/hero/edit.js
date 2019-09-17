@@ -6,7 +6,6 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { title } from './';
 import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
@@ -15,12 +14,12 @@ import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZon
 /**
  * WordPress dependencies
  */
-const { __, _x, sprintf } = wp.i18n;
-const { compose } = wp.compose;
-const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.blockEditor;
-const { ResizableBox, Spinner } = wp.components;
-const { isBlobURL } = wp.blob;
+import { __, _x } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import { Component, Fragment } from '@wordpress/element';
+import { InnerBlocks } from '@wordpress/block-editor';
+import { ResizableBox, Spinner } from '@wordpress/components';
+import { isBlobURL } from '@wordpress/blob';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -46,7 +45,7 @@ const TEMPLATE = [
 /**
  * Block edit function
  */
-class Edit extends Component {
+export class Edit extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -56,7 +55,7 @@ class Edit extends Component {
 		this.state = {
 			resizingInner: false,
 			resizing: false,
-			innerWidth: this.getBrowserWidth(),
+			innerWidth: null,
 		};
 	}
 
@@ -71,9 +70,6 @@ class Edit extends Component {
 		window.addEventListener( 'resize', this.getBrowserWidth.bind( this ) );
 	}
 
-	UNSAFE_componentWillMount() { // eslint-disable-line camelcase
-		this.getBrowserWidth();
-	}
 	componentWillUnmount() {
 		window.removeEventListener( 'resize', this.getBrowserWidth.bind( this ) );
 	}
@@ -129,7 +125,6 @@ class Edit extends Component {
 			isSelected,
 			setAttributes,
 			textColor,
-			toggleSelection,
 			backgroundColor,
 		} = this.props;
 
@@ -154,24 +149,31 @@ class Edit extends Component {
 		const dropZone = (
 			<BackgroundDropZone
 				{ ...this.props }
-				label={ sprintf( __( 'Add backround to %s' ), title.toLowerCase() ) } // translators: %s: Lowercase block title
+				label={ __( 'Add backround to hero' ) }
 			/>
 		);
 
-		const classes = classnames(
-			'wp-block-coblocks-hero', {
-				[ `coblocks-hero-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
-			}
-		);
+		let classes = 'wp-block-coblocks-hero';
+
+		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+			classes = classnames( classes, `coblocks-hero-${ coblocks.id }` );
+		}
 
 		const innerClasses = classnames(
 			'wp-block-coblocks-hero__inner',
-			...BackgroundClasses( attributes ), {
+			...BackgroundClasses( attributes ),
+			layout && {
 				[ `hero-${ layout }-align` ]: layout,
-				'has-text-color': textColor.color,
-				'has-padding': paddingSize && paddingSize !== 'no',
-				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+			},
+			{ 'has-text-color': textColor && textColor.color },
+			paddingSize && {
+				'has-padding': paddingSize !== 'no',
+				[ `has-${ paddingSize }-padding` ]: paddingSize !== 'advanced',
+			},
+			contentAlign && {
 				[ `has-${ contentAlign }-content` ]: contentAlign,
+			},
+			{
 				'is-fullscreen': fullscreen,
 				'is-hero-resizing': this.state.resizingInner,
 			}
@@ -179,7 +181,7 @@ class Edit extends Component {
 
 		const innerStyles = {
 			...BackgroundStyles( attributes, backgroundColor ),
-			color: textColor.color,
+			color: textColor && textColor.color,
 			paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
 			paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
 			paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
@@ -250,7 +252,6 @@ class Edit extends Component {
 										enable={ enablePositions }
 										onResizeStart={ () => {
 											this.setState( { resizing: true } );
-											toggleSelection( false );
 											const currentBlock = document.getElementById( 'block-' + clientId );
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = '';
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = maxWidth + 'px';
@@ -259,7 +260,6 @@ class Edit extends Component {
 											setAttributes( {
 												maxWidth: parseInt( maxWidth + delta.width, 10 ),
 											} );
-											toggleSelection( true );
 											this.setState( { resizing: false } );
 											const currentBlock = document.getElementById( 'block-' + clientId );
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = 'auto';
@@ -314,15 +314,8 @@ class Edit extends Component {
 										break;
 								}
 
-								toggleSelection( true );
-								this.setState( { resizing: false, resizingInner: false } );
-
 								//update meta
 								this.saveMeta( 'height' );
-							} }
-							onResizeStart={ () => {
-								toggleSelection( false );
-								this.setState( { resizing: true, resizingInner: true } );
 							} }
 						>
 							{ isBlobURL( backgroundImg ) && <Spinner /> }
@@ -342,7 +335,6 @@ class Edit extends Component {
 										enable={ enablePositions }
 										onResizeStart={ () => {
 											this.setState( { resizing: true } );
-											toggleSelection( false );
 											const currentBlock = document.getElementById( 'block-' + clientId );
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = '';
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = maxWidth + 'px';
@@ -351,7 +343,6 @@ class Edit extends Component {
 											setAttributes( {
 												maxWidth: parseInt( maxWidth + delta.width, 10 ),
 											} );
-											toggleSelection( true );
 											this.setState( { resizing: false } );
 											const currentBlock = document.getElementById( 'block-' + clientId );
 											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = 'auto';

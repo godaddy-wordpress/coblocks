@@ -1,63 +1,52 @@
 /**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
+
+/**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-import { BackgroundAttributes } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import edit from './edit';
-import icons from './icons';
-import transforms from './transforms';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
+import transforms from './transforms';
+import { BackgroundAttributes } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 /**
  * Block constants
  */
-const name = 'features';
+const { name, category } = metadata;
 
-const title = __( 'Features' );
-
-const icon = icons.features;
-
-const blockAttributes = {
-	gutter: {
-		type: 'string',
-		default: 'large',
-	},
-	columns: {
-		type: 'number',
-		default: 2,
-	},
-	contentAlign: {
-		type: 'string',
-		default: 'center',
-	},
+const attributes = {
 	...DimensionsAttributes,
 	...BackgroundAttributes,
+	...metadata.attributes,
 };
 
 const settings = {
-	title: title,
-
+	title: _x( 'Features', 'block name' ),
 	description: __( 'Add up to three columns of small notes for your product or service.' ),
-
-	keywords: [ __( 'services' ), __( 'coblocks' ) ],
-
-	attributes: blockAttributes,
-
+	icon,
+	keywords: [ _x( 'services', 'block keyword' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-
+	example: {
+		attributes: {
+			align: 'wide',
+		},
+	},
+	attributes,
 	transforms,
-
 	edit,
-
 	getEditWrapperProps( attributes ) {
 		const { id, layout, columns } = attributes;
 
@@ -68,8 +57,7 @@ const settings = {
 
 		return { 'data-id': id, 'data-columns': columns };
 	},
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

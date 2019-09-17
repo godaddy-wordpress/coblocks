@@ -1,4 +1,11 @@
 .editor-block-list__block[data-type="coblocks/gallery-stacked"] {
+	&[data-align="left"],
+	&[data-align="right"] {
+		.wp-block-coblocks-gallery-stacked {
+			max-width: 305px;
+		}
+	}
+
 	// Fix issue where selected images are not wider than the viewport.
 	.coblocks-gallery--item:not(.is-appender) .coblocks-gallery--figure {
 		display: inline-block;
@@ -28,5 +35,14 @@
 	// Tweak the position of the figcaption if Custom URL is set.
 	.components-coblocks-gallery-item__image-link + img + .editor-rich-text {
 		margin-bottom: 35px;
+	}
+}
+
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content {
+	.wp-block-coblocks-gallery-stacked {
+		.coblocks-gallery--item:last-child {
+			display: none;
+		}
 	}
 }

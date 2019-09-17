@@ -2,7 +2,7 @@
 	background: transparent !important;
 
 	.block-list-appender {
-		display: none;
+		display: none !important;
 	}
 
 	.wp-block-coblocks-features {
@@ -10,6 +10,8 @@
 
 		&__inner {
 			> .editor-inner-blocks {
+				width: 100%;
+
 				> .editor-block-list__layout {
 					@media (min-width: 600px) {
 						display: flex;
@@ -18,34 +20,6 @@
 					> .wp-block > .editor-block-list__block-edit {
 						margin-bottom: 0;
 						margin-top: 0;
-					}
-				}
-			}
-
-			// Fix color for headings.
-			p,
-			.wp-block-heading {
-				padding-top: 0 !important;
-
-				h1,
-				h2,
-				h3,
-				h4,
-				h5,
-				h6 {
-					color: inherit !important;
-				}
-			}
-
-			p {
-				color: inherit !important;
-			}
-
-			// Hide first mover.
-			[data-type="coblocks/feature"] {
-				.wp-block:first-child {
-					.editor-block-mover {
-						display: none !important;
 					}
 				}
 			}
@@ -190,27 +164,14 @@
 		}
 	}
 
-	> .editor-block-mover,
-	> .block-list-appender {
-		display: none;
-	}
-
 	.wp-block[data-type="coblocks/feature"] {
 		@media (min-width: 600px) {
 			display: flex;
 			flex-direction: column;
-
-			// Prevent the columns from growing wider than their distributed sizes.
 			min-width: 0;
-
-			// Prevent long unbroken words from overflowing.
 			overflow-wrap: break-word;
+			width: 100%;
 			word-break: break-word;
-		}
-
-		[data-block] {
-			margin-bottom: 0;
-			margin-top: 0;
 		}
 
 		.editor-default-block-appender {
@@ -248,14 +209,10 @@
 							margin-bottom: 0;
 							margin-top: 0;
 						}
-
-						&[data-type="core/paragraph"] {
-							margin-top: 0 !important;
-						}
 					}
 					> div {
 						> .editor-default-block-appender {
-							display: none;
+							display: none !important;
 						}
 					}
 				}
@@ -268,4 +225,37 @@
 	.components-range-control {
 		margin-bottom: 0 !important;
 	}
+}
+
+// Added for Gutenberg 6.3+
+.block-editor-block-list__block[data-type="coblocks/feature"] .wp-block:first-child {
+	[data-block] {
+		margin-top: 0;
+	}
+}
+
+.block-editor-block-list__block[data-type="coblocks/feature"] .wp-block:nth-last-child(2) {
+	[data-block] {
+		margin-bottom: 0;
+	}
+}
+
+.block-editor-block-list__block[data-type="coblocks/features"].is-selected
+	[data-type="coblocks/feature"]:not(.is-selected)
+	> .block-editor-block-list__block-edit::before,
+.block-editor-block-list__block[data-type="coblocks/features"].has-child-selected
+	[data-type="coblocks/feature"]:not(.is-selected)
+	> .block-editor-block-list__block-edit::before {
+	border: 1px dashed rgba(123, 134, 162, 0.3);
+}
+
+.block-editor-block-list__block[data-type="coblocks/features"].has-child-selected .wp-block-coblocks-features,
+.block-editor-block-list__block[data-type="coblocks/features"].is-selected .wp-block-coblocks-features {
+	padding: 14px;
+}
+
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content .wp-block-coblocks-features {
+	padding-left: 30px;
+	padding-right: 30px;
 }

@@ -1,0 +1,29 @@
+{
+	"name": "coblocks/accordion-item",
+	"category": "coblocks",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"selector": ".wp-block-coblocks-accordion__title"
+		},
+		"open": {
+			"type": "boolean",
+			"default": false
+		},
+		"backgroundColor": {
+			"type": "string"
+		},
+		"customBackgroundColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"customTextColor": {
+			"type": "string"
+		},
+		"borderColor": {
+			"type": "string"
+		}
+	}
+}

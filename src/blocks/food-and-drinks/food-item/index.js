@@ -1,50 +1,42 @@
 /**
- * Internal dependencies.
+ * Styles.
  */
 import './styles/editor.scss';
 import './styles/style.scss';
-import metadata from './block.json';
-import icons from './icons';
+
+/**
+ * Internal dependencies.
+ */
 import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
 
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants.
  */
-const { attributes, name } = metadata;
-
-const title = __( 'Food Item' );
-
-const icon = icons.foodItem;
-
-const keywords = [];
+const { name, category, attributes } = metadata;
 
 const settings = {
-	title,
-
+	title: _x( 'Food Item', 'block name' ),
 	description: __( 'A food and drink item within the Food & Drinks block.' ),
-
-	keywords,
-
-	attributes,
-
+	icon,
+	keywords: _x( 'menu', 'block keyword' ),
 	supports: {
 		inserter: false,
 		customClassName: false,
 		reusable: false,
 		html: false,
 	},
-
 	parent: [ 'coblocks/food-and-drinks' ],
-
+	attributes,
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

@@ -10,16 +10,16 @@ import emailValidator from 'email-validator';
  * Internal dependencies
  */
 import icons from './icons';
-import CoBlocksField from './components/fields/field';
-import CoBlocksFieldName from './components/fields/field-name';
-import CoBlocksFieldTextarea from './components/fields/field-textarea';
-import Notice from './components/notice';
-import SubmitButton from './components/submit-button';
+import CoBlocksField from './fields/field';
+import CoBlocksFieldName from './fields/field-name';
+import CoBlocksFieldTextarea from './fields/field-textarea';
+import Notice from './notice';
+import SubmitButton from './submit-button';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
+const { __, _x, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { registerBlockType, getBlockType } = wp.blocks;
 const { Button, PanelBody, TextControl, ExternalLink } = wp.components;
@@ -82,10 +82,10 @@ const editField = type => props => (
 
 export const childBlocks = [
 	{
-		name: 'field-name',
+		name: 'coblocks/field-name',
 		settings: {
 			...FieldDefaults,
-			title: __( 'Name' ),
+			title: _x( 'Name', 'block name' ),
 			description: __( 'A text field for names.' ),
 			icon: icons.name,
 			edit: props => (
@@ -103,22 +103,22 @@ export const childBlocks = [
 		},
 	},
 	{
-		name: 'field-email',
+		name: 'coblocks/field-email',
 		settings: {
 			...FieldDefaults,
-			title: __( 'Email' ),
-			keywords: [ __( 'e-mail' ), __( 'mail' ), 'email' ],
+			title: _x( 'Email', 'block name' ),
+			keywords: [ _x( 'e-mail', 'block keyword' ), _x( 'mail', 'block keyword' ), 'email' ],
 			description: __( 'An email address field.' ),
 			icon: icons.email,
 			edit: editField( 'email' ),
 		},
 	},
 	{
-		name: 'field-textarea',
+		name: 'coblocks/field-textarea',
 		settings: {
 			...FieldDefaults,
-			title: __( 'Message' ),
-			keywords: [ __( 'Textarea' ), 'textarea', __( 'Multiline text' ) ],
+			title: _x( 'Message', 'block name' ),
+			keywords: [ _x( 'Textarea', 'block keyword' ), 'textarea', _x( 'Multiline text', 'block keyword' ) ],
 			description: __( 'A text box for longer responses.' ),
 			icon: icons.textarea,
 			edit: props => (
@@ -134,7 +134,7 @@ export const childBlocks = [
 ];
 
 childBlocks.forEach( childBlock =>
-	registerBlockType( `coblocks/${ childBlock.name }`, childBlock.settings )
+	registerBlockType( childBlock.name, childBlock.settings )
 );
 
 /**
@@ -286,6 +286,7 @@ class FormEdit extends Component {
 			if ( errors.length === 1 ) {
 				if ( errors[ 0 ] && errors[ 0 ].email ) {
 					return sprintf(
+						/* translators: %s: Placeholder for email address provided by user.  */
 						__( '%s is not a valid email address.' ),
 						errors[ 0 ].email
 					);
@@ -295,6 +296,7 @@ class FormEdit extends Component {
 
 			if ( errors.length === 2 ) {
 				return sprintf(
+					/* translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.  */
 					__( '%s and %s are not a valid email address.' ),
 					errors[ 0 ].email,
 					errors[ 1 ].email
@@ -302,6 +304,7 @@ class FormEdit extends Component {
 			}
 			const inValidEmails = errors.map( error => error.email );
 			return sprintf(
+				/* translators: %s1: Placeholder for email address provided by user. */
 				__( '%s are not a valid email address.' ),
 				inValidEmails.join( ', ' )
 			);

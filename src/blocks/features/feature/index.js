@@ -4,54 +4,37 @@
 import { BackgroundAttributes } from '../../../components/background';
 import DimensionsAttributes from '../../../components/dimensions-control/attributes';
 import edit from './edit';
-import icons from './icons';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
  */
-const name = 'feature';
+const { name, category } = metadata;
 
-const title = __( 'Feature' );
-
-const icon = icons.feature;
-
-const blockAttributes = {
-	contentAlign: {
-		type: 'string',
-	},
-	textColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
+const attributes = {
 	...DimensionsAttributes,
 	...BackgroundAttributes,
+	...metadata.attributes,
 };
 
 const settings = {
-
-	title,
-
+	title: _x( 'Feature', 'block name' ),
 	description: __( 'A singular child column within a parent features block.' ),
-
-	attributes: blockAttributes,
-
+	icon,
 	parent: [ 'coblocks/features' ],
-
 	supports: {
 		inserter: false,
 	},
-
+	attributes,
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

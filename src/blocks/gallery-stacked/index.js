@@ -1,81 +1,58 @@
 /**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
+
+/**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
 import edit from './edit';
-import icons from './icons';
-import transforms from './transforms';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
-import { GalleryAttributes } from '../../components/block-gallery/shared';
+import transforms from './transforms';
 import { BackgroundAttributes } from '../../components/background';
+import { GalleryAttributes } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
  */
-const name = 'gallery-stacked';
+const { name, category } = metadata;
 
-const title = __( 'Stacked' );
-
-const icon = icons.stacked;
-
-const keywords = [
-	__( 'gallery' ),
-	__( 'photos' ),
-];
-
-const blockAttributes = {
+const attributes = {
 	...GalleryAttributes,
 	...BackgroundAttributes,
-
-	// Block specific attributes and overrides.
-	align: {
-		type: 'string',
-		default: 'full',
-	},
-	captionStyle: {
-		type: 'string',
-	},
-	fullwidth: {
-		type: 'boolean',
-		default: true,
-	},
-	gutter: {
-		type: 'number',
-		default: 0,
-	},
-	gutterMobile: {
-		type: 'number',
-		default: 0,
-	},
+	...metadata.attributes,
 };
 
 const settings = {
-
-	title,
-
+	title: _x( 'Stacked', 'block name' ),
 	description: __( 'Display multiple images in an single column stacked gallery.' ),
-
-	category: 'coblocks-galleries',
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	icon,
+	keywords: [	_x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ) ],
 	supports: {
-		align: [ 'wide', 'full' ],
+		align: [ 'wide', 'full', 'left', 'center', 'right' ],
 	},
-
+	example: {
+		attributes: {
+			fullwidth: false,
+			gutter: 5,
+			images: [
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-6.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-2.jpg' },
+			],
+		},
+	},
+	attributes,
 	transforms,
-
 	edit,
-
 	save,
 };
 
-export { name, title, icon, settings };
+export { name, category, icon, metadata, settings };

@@ -1,0 +1,6 @@
+<Translation>
+    <File
+        HoPath="languages/coblocks.pot"
+        HbPath="languages/coblocks-{Culture}.po"
+        Cultures="da_DK, de_DE, el, es_ES, fi, fr_FR, hi_IN, id_ID, it_IT, ja, ko_KR, mr, nb_NO, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, sv_SE, th, tr_TR, uk, vi, zh_CN, zh_TW" />
+</Translation>

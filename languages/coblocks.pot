@@ -1,215 +1,181 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.11.1\n"
+"Project-Id-Version: CoBlocks 1.12.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-07-16T12:59:40-04:00\n"
+"POT-Creation-Date: 2019-08-27T16:28:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.2.0\n"
+"X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
 
-#: src/blocks/pricing-table/pricing-table-item/components/edit.js:100
-msgid "99"
-msgstr ""
-
-#: src/blocks/accordion/accordion-item/components/controls.js:28
+#: src/blocks/accordion/accordion-item/controls.js:28
 msgid "Display open"
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/components/edit.js:67
+#: src/blocks/accordion/accordion-item/edit.js:67
 msgid "Add accordion title..."
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/components/inspector.js:34
+#: src/blocks/accordion/accordion-item/index.js:24
+msgid "Accordion Item"
+msgstr ""
+
+#: src/blocks/accordion/accordion-item/index.js:26
+msgid "Add collapsable accordion items to accordions."
+msgstr ""
+
+#: src/blocks/accordion/accordion-item/index.js:28
+#: src/blocks/accordion/index.js:30
+msgid "tabs"
+msgstr ""
+
+#: src/blocks/accordion/accordion-item/index.js:28
+#: src/blocks/accordion/index.js:30
+msgid "faq"
+msgstr ""
+
+#: src/blocks/accordion/accordion-item/inspector.js:34
 msgid "Accordion item is open by default."
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/components/inspector.js:34
+#: src/blocks/accordion/accordion-item/inspector.js:34
 msgid "Toggle to set this accordion item to be open by default."
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/components/inspector.js:63
+#: src/blocks/accordion/accordion-item/inspector.js:63
 msgid "Accordion Item Settings"
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/components/inspector.js:65
+#: src/blocks/accordion/accordion-item/inspector.js:65
 msgid "Display Open"
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/components/inspector.js:72
-#: src/blocks/alert/components/inspector.js:49
-#: src/blocks/click-to-tweet/components/inspector.js:60
+#: src/blocks/accordion/accordion-item/inspector.js:72
+#: src/blocks/alert/inspector.js:49
+#: src/blocks/click-to-tweet/inspector.js:60
 #: src/blocks/dynamic-separator/inspector.js:60
-#: src/blocks/features/components/inspector.js:173
-#: src/blocks/features/feature/components/inspector.js:92
-#: src/blocks/form/components/submit-button.js:118
+#: src/blocks/features/feature/inspector.js:92
+#: src/blocks/features/inspector.js:173
+#: src/blocks/form/submit-button.js:118
 #: src/blocks/gallery-carousel/inspector.js:165
 #: src/blocks/gallery-masonry/inspector.js:167
 #: src/blocks/gallery-stacked/inspector.js:184
-#: src/blocks/hero/components/inspector.js:117
-#: src/blocks/highlight/components/inspector.js:43
-#: src/blocks/icon/components/inspector.js:353
-#: src/blocks/media-card/components/inspector.js:124
-#: src/blocks/pricing-table/pricing-table-item/components/inspector.js:48
-#: src/blocks/row/column/components/inspector.js:125
-#: src/blocks/row/components/inspector.js:244
-#: src/blocks/shape-divider/components/inspector.js:102
+#: src/blocks/hero/inspector.js:117
+#: src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:353
+#: src/blocks/media-card/inspector.js:124
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:48
+#: src/blocks/row/column/inspector.js:125
+#: src/blocks/row/inspector.js:244
+#: src/blocks/shape-divider/inspector.js:102
 #: src/blocks/share/inspector.js:179
 #: src/blocks/social-profiles/inspector.js:193
 #: src/extensions/colors/index.js:59
 msgid "Color Settings"
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/components/inspector.js:78
-#: src/blocks/alert/components/inspector.js:54
-#: src/blocks/features/components/inspector.js:191
-#: src/blocks/features/feature/components/inspector.js:110
+#: src/blocks/accordion/accordion-item/inspector.js:78
+#: src/blocks/alert/inspector.js:54
+#: src/blocks/features/feature/inspector.js:110
+#: src/blocks/features/inspector.js:191
 #: src/blocks/gallery-carousel/inspector.js:80
 #: src/blocks/gallery-masonry/inspector.js:93
 #: src/blocks/gallery-stacked/inspector.js:96
-#: src/blocks/hero/components/inspector.js:130
-#: src/blocks/highlight/components/inspector.js:49
-#: src/blocks/icon/components/inspector.js:377
-#: src/blocks/media-card/components/inspector.js:138
-#: src/blocks/pricing-table/pricing-table-item/components/inspector.js:53
-#: src/blocks/row/column/components/inspector.js:131
-#: src/blocks/row/components/inspector.js:260
-#: src/blocks/shape-divider/components/inspector.js:113
+#: src/blocks/hero/inspector.js:130
+#: src/blocks/highlight/inspector.js:49
+#: src/blocks/icon/inspector.js:377
+#: src/blocks/media-card/inspector.js:138
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:53
+#: src/blocks/row/column/inspector.js:131
+#: src/blocks/row/inspector.js:260
+#: src/blocks/shape-divider/inspector.js:113
 #: src/blocks/share/inspector.js:80
 #: src/blocks/social-profiles/inspector.js:92
 #: src/extensions/colors/index.js:47
 msgid "Background Color"
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/components/inspector.js:83
+#: src/blocks/accordion/accordion-item/inspector.js:83
 msgid "Title Text Color"
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/index.js:25
-msgid "Accordion Item"
-msgstr ""
-
-#: src/blocks/accordion/accordion-item/index.js:30
-#: src/blocks/accordion/index.js:27
-msgid "tabs"
-msgstr ""
-
-#: src/blocks/accordion/accordion-item/index.js:31
-#: src/blocks/accordion/index.js:28
-msgid "faq"
-msgstr ""
-
-#: src/blocks/accordion/accordion-item/index.js:32
-#: src/blocks/accordion/index.js:29
-#: src/blocks/alert/index.js:33
-#: src/blocks/author/index.js:29
-#: src/blocks/buttons/index.js:33
-#: src/blocks/click-to-tweet/index.js:34
-#: src/blocks/dynamic-separator/index.js:34
-#: src/blocks/features/index.js:34
-#: src/blocks/gif/index.js:32
-#: src/blocks/gist/index.js:30
-#: src/blocks/highlight/index.js:33
-#: src/blocks/icon/index.js:38
-#: src/blocks/media-card/index.js:37
-#: src/blocks/pricing-table/index.js:33
-#: src/blocks/pricing-table/pricing-table-item/index.js:32
-#: src/blocks/share/index.js:23
-msgid "coblocks"
-msgstr ""
-
-#: src/blocks/accordion/accordion-item/index.js:65
-msgid "Add collapsable accordion items to accordions."
-msgstr ""
-
-#: src/blocks/accordion/components/edit.js:111
+#: src/blocks/accordion/edit.js:111
 msgid "Add Accordion Item"
 msgstr ""
 
-#: src/blocks/accordion/components/inspector.js:27
-msgid "Accordion Settings"
-msgstr ""
-
-#: src/blocks/accordion/components/inspector.js:29
-msgid "Internet Explorer Support"
-msgstr ""
-
-#: src/blocks/accordion/components/inspector.js:31
-msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
-msgstr ""
-
-#: src/blocks/accordion/components/inspector.js:31
-msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
-msgstr ""
-
-#: src/blocks/accordion/index.js:22
+#: src/blocks/accordion/index.js:26
 msgid "Accordion"
 msgstr ""
 
-#: src/blocks/accordion/index.js:47
+#: src/blocks/accordion/index.js:28
 msgid "Organize content within collapsable accordion items."
 msgstr ""
 
-#: src/blocks/alert/components/controls.js:103
+#: src/blocks/accordion/inspector.js:27
+msgid "Accordion Settings"
+msgstr ""
+
+#: src/blocks/accordion/inspector.js:29
+msgid "Internet Explorer Support"
+msgstr ""
+
+#: src/blocks/accordion/inspector.js:31
+msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
+msgstr ""
+
+#: src/blocks/accordion/inspector.js:31
+msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgstr ""
+
+#: src/blocks/alert/controls.js:103
 msgid "Warning"
 msgstr ""
 
-#: src/blocks/alert/components/controls.js:111
+#: src/blocks/alert/controls.js:111
 msgid "Error"
 msgstr ""
 
-#: src/blocks/alert/components/controls.js:76
+#: src/blocks/alert/controls.js:76
 msgid "Alert Type"
 msgstr ""
 
-#: src/blocks/alert/components/controls.js:80
+#: src/blocks/alert/controls.js:80
 #: src/components/font-family/index.js:16
 #: src/components/typography-controls/index.js:91
 #: src/extensions/list-styles/index.js:15
 msgid "Default"
 msgstr ""
 
-#: src/blocks/alert/components/controls.js:87
+#: src/blocks/alert/controls.js:87
 msgid "Info"
 msgstr ""
 
-#: src/blocks/alert/components/controls.js:95
+#: src/blocks/alert/controls.js:95
 msgid "Success"
 msgstr ""
 
-#: src/blocks/alert/components/edit.js:74
+#: src/blocks/alert/edit.js:74
 msgid "Write title..."
 msgstr ""
 
-#: src/blocks/alert/components/edit.js:82
+#: src/blocks/alert/edit.js:82
 msgid "Write text..."
 msgstr ""
 
-#: src/blocks/alert/components/inspector.js:59
-#: src/blocks/click-to-tweet/components/inspector.js:66
-#: src/blocks/features/components/inspector.js:195
-#: src/blocks/features/feature/components/inspector.js:114
-#: src/blocks/hero/components/inspector.js:135
-#: src/blocks/highlight/components/inspector.js:54
-#: src/blocks/pricing-table/pricing-table-item/components/inspector.js:58
-#: src/blocks/row/column/components/inspector.js:136
-#: src/blocks/row/components/inspector.js:265
-#: src/blocks/share/inspector.js:72
-#: src/blocks/social-profiles/inspector.js:84
-#: src/extensions/colors/index.js:54
-msgid "Text Color"
-msgstr ""
-
-#: src/blocks/alert/index.js:26
+#: src/blocks/alert/index.js:25
 msgid "Alert"
 msgstr ""
 
-#: src/blocks/alert/index.js:31
+#: src/blocks/alert/index.js:30
+msgid "Provide contextual feedback messages."
+msgstr ""
+
+#: src/blocks/alert/index.js:32
 msgid "notice"
 msgstr ""
 
@@ -217,204 +183,149 @@ msgstr ""
 msgid "message"
 msgstr ""
 
-#: src/blocks/alert/index.js:84
-msgid "Provide contextual feedback messages."
+#: src/blocks/alert/inspector.js:59
+#: src/blocks/click-to-tweet/inspector.js:66
+#: src/blocks/features/feature/inspector.js:114
+#: src/blocks/features/inspector.js:195
+#: src/blocks/hero/inspector.js:135
+#: src/blocks/highlight/inspector.js:54
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:58
+#: src/blocks/row/column/inspector.js:136
+#: src/blocks/row/inspector.js:265
+#: src/blocks/share/inspector.js:72
+#: src/blocks/social-profiles/inspector.js:84
+#: src/extensions/colors/index.js:54
+msgid "Text Color"
 msgstr ""
 
-#: src/blocks/author/components/controls.js:42
+#: src/blocks/author/controls.js:41
 msgid "Edit image"
 msgstr ""
 
-#: src/blocks/author/components/controls.js:50
+#: src/blocks/author/controls.js:49
 msgid "Remove image"
 msgstr ""
 
-#: src/blocks/author/components/edit.js:102
+#: src/blocks/author/edit.js:102
 msgid "Drop to add as avatar"
 msgstr ""
 
-#: src/blocks/author/components/edit.js:143
+#: src/blocks/author/edit.js:143
 msgid "Heading..."
 msgstr ""
 
-#: src/blocks/author/components/edit.js:154
+#: src/blocks/author/edit.js:154
 msgid "Author Name"
 msgstr ""
 
-#: src/blocks/author/components/edit.js:165
+#: src/blocks/author/edit.js:165
 msgid "Write biography..."
 msgstr ""
 
-#: src/blocks/author/index.js:22
+#: src/blocks/author/index.js:26
 msgid "Author"
 msgstr ""
 
-#: src/blocks/author/index.js:27
-msgid "biography"
-msgstr ""
-
 #: src/blocks/author/index.js:28
-msgid "profile"
-msgstr ""
-
-#: src/blocks/author/index.js:42
-msgid "Written by..."
-msgstr ""
-
-#: src/blocks/author/index.js:66
 msgid "Add an author biography."
 msgstr ""
 
-#: src/blocks/buttons/components/inspector.js:31
-#: src/blocks/features/components/inspector.js:86
-#: src/blocks/icon/components/inspector.js:154
-#: src/blocks/row/components/inspector.js:99
-#: src/blocks/share/inspector.js:58
-#: src/blocks/social-profiles/inspector.js:70
-#: src/components/dimensions-control/index.js:424
-#: src/components/size-control/index.js:116
-msgid "Small"
+#: src/blocks/author/index.js:30
+msgid "biography"
 msgstr ""
 
-#: src/blocks/buttons/components/inspector.js:32
-#: src/blocks/features/components/inspector.js:87
-#: src/blocks/icon/components/inspector.js:159
-#: src/blocks/row/components/inspector.js:100
-#: src/blocks/share/inspector.js:59
-#: src/blocks/social-profiles/inspector.js:71
-#: src/components/dimensions-control/index.js:429
-#: src/components/size-control/index.js:120
-msgid "Medium"
+#: src/blocks/author/index.js:30
+msgid "profile"
 msgstr ""
 
-#: src/blocks/buttons/components/inspector.js:33
-#: src/blocks/features/components/inspector.js:88
-#: src/blocks/icon/components/inspector.js:164
-#: src/blocks/row/components/inspector.js:101
-#: src/blocks/share/inspector.js:60
-#: src/blocks/social-profiles/inspector.js:72
-#: src/components/dimensions-control/index.js:434
-#: src/components/size-control/index.js:65
-msgid "Large"
-msgstr ""
-
-#: src/blocks/buttons/components/inspector.js:34
-#: src/blocks/icon/components/inspector.js:168
-#: src/blocks/row/components/inspector.js:102
-#: src/components/dimensions-control/index.js:438
-msgid "Huge"
-msgstr ""
-
-#: src/blocks/buttons/components/inspector.js:40
-msgid "Buttons Settings"
-msgstr ""
-
-#: src/blocks/buttons/components/inspector.js:42
-#: src/blocks/buttons/index.js:26
+#: src/blocks/buttons/index.js:30
+#: src/blocks/buttons/inspector.js:30
 msgid "Buttons"
 msgstr ""
 
-#: src/blocks/buttons/components/inspector.js:56
-#: src/blocks/features/components/inspector.js:164
-#: src/blocks/gallery-carousel/inspector.js:137
-#: src/blocks/gallery-stacked/inspector.js:145
-#: src/blocks/row/components/inspector.js:235
-#: src/components/responsive-tabs-control/index.js:31
-msgid "Gutter"
-msgstr ""
-
-#: src/blocks/buttons/components/inspector.js:59
-msgid "Space between each button."
-msgstr ""
-
-#: src/blocks/buttons/components/inspector.js:65
-msgid "Stack Buttons"
-msgstr ""
-
-#: src/blocks/buttons/components/inspector.js:68
-msgid "Aligning buttons in a single column."
-msgstr ""
-
-#: src/blocks/buttons/components/inspector.js:68
-msgid "Toggle to align buttons in a column."
-msgstr ""
-
 #: src/blocks/buttons/index.js:31
+msgid "Prompt visitors to take action with multiple buttons, side by side."
+msgstr ""
+
+#: src/blocks/buttons/index.js:32
 msgid "link"
 msgstr ""
 
 #: src/blocks/buttons/index.js:32
-#: src/blocks/hero/index.js:36
+#: src/blocks/hero/index.js:45
 msgid "cta"
 msgstr ""
 
-#: src/blocks/buttons/index.js:63
-msgid "Prompt visitors to take action with multiple buttons, side by side."
+#: src/blocks/buttons/inspector.js:28
+msgid "Buttons Settings"
 msgstr ""
 
-#: src/blocks/click-to-tweet/components/controls.js:44
+#: src/blocks/buttons/inspector.js:43
+msgid "Stack on mobile"
+msgstr ""
+
+#: src/blocks/buttons/inspector.js:48
+msgid "Stacking buttons on mobile."
+msgstr ""
+
+#: src/blocks/buttons/inspector.js:48
+msgid "Toggle to stack buttons on mobile."
+msgstr ""
+
+#: src/blocks/click-to-tweet/controls.js:44
 msgid "Twitter Username"
 msgstr ""
 
-#: src/blocks/click-to-tweet/components/controls.js:48
+#: src/blocks/click-to-tweet/controls.js:48
 msgid "Username"
 msgstr ""
 
-#: src/blocks/click-to-tweet/components/edit.js:107
+#: src/blocks/click-to-tweet/edit.js:107
 msgid "Add button..."
 msgstr ""
 
 # the text of the click to tweet element
-#: src/blocks/click-to-tweet/components/edit.js:80
+#: src/blocks/click-to-tweet/edit.js:80
 msgid "Add a quote to tweet..."
 msgstr ""
 
-#: src/blocks/click-to-tweet/components/inspector.js:52
-#: src/blocks/highlight/components/inspector.js:35
-msgid "Text Settings"
-msgstr ""
-
-#: src/blocks/click-to-tweet/components/inspector.js:71
-#: src/blocks/form/components/submit-button.js:127
-msgid "Button Color"
-msgstr ""
-
-#: src/blocks/click-to-tweet/index.js:27
+#: src/blocks/click-to-tweet/index.js:25
 msgid "Click to Tweet"
 msgstr ""
 
-#: src/blocks/click-to-tweet/index.js:32
+#: src/blocks/click-to-tweet/index.js:27
+msgid "Add a quote for readers to tweet via Twitter."
+msgstr ""
+
+#: src/blocks/click-to-tweet/index.js:29
 #: src/blocks/social-profiles/index.js:23
 msgid "share"
 msgstr ""
 
-#: src/blocks/click-to-tweet/index.js:33
+#: src/blocks/click-to-tweet/index.js:29
 msgid "twitter"
 msgstr ""
 
-#: src/blocks/click-to-tweet/index.js:55
-msgid "Tweet"
+#: src/blocks/click-to-tweet/inspector.js:52
+#: src/blocks/highlight/inspector.js:35
+msgid "Text Settings"
 msgstr ""
 
-#: src/blocks/click-to-tweet/index.js:81
-msgid "Add a quote for readers to tweet via Twitter."
+#: src/blocks/click-to-tweet/inspector.js:71
+#: src/blocks/form/submit-button.js:127
+msgid "Button Color"
 msgstr ""
 
-#: src/blocks/dynamic-separator/index.js:27
+#: src/blocks/dynamic-separator/index.js:24
 msgid "Dynamic HR"
 msgstr ""
 
-#: src/blocks/dynamic-separator/index.js:32
-#: src/blocks/shape-divider/index.js:70
-msgid "hr"
-msgstr ""
-
-#: src/blocks/dynamic-separator/index.js:33
-msgid "spacer"
-msgstr ""
-
-#: src/blocks/dynamic-separator/index.js:54
+#: src/blocks/dynamic-separator/index.js:29
 msgid "Add a resizable spacer between other blocks."
+msgstr ""
+
+#: src/blocks/dynamic-separator/index.js:31
+msgid "spacer"
 msgstr ""
 
 #: src/blocks/dynamic-separator/inspector.js:43
@@ -423,8 +334,8 @@ msgstr ""
 
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:142
-#: src/blocks/hero/components/inspector.js:88
-#: src/blocks/map/components/inspector.js:133
+#: src/blocks/hero/inspector.js:88
+#: src/blocks/map/inspector.js:133
 msgid "Height in pixels"
 msgstr ""
 
@@ -436,65 +347,104 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: src/blocks/features/components/edit.js:77
-#: src/blocks/features/feature/components/edit.js:62
-#: src/blocks/media-card/components/edit.js:173
+#: src/blocks/features/edit.js:78
+#: src/blocks/features/feature/edit.js:63
+#: src/blocks/media-card/edit.js:173
 msgid "Add as backround"
 msgstr ""
 
-#: src/blocks/features/components/inspector.js:122
-#: src/blocks/row/column/components/inspector.js:91
-#: src/blocks/row/components/inspector.js:190
-#: src/components/dimensions-control/index.js:294
-msgid "Margin"
+#: src/blocks/features/feature/index.js:20
+msgid "Feature"
 msgstr ""
 
-#: src/blocks/features/components/inspector.js:143
-#: src/blocks/features/feature/components/inspector.js:71
-#: src/blocks/hero/components/inspector.js:74
-#: src/blocks/icon/components/inspector.js:268
-#: src/blocks/media-card/components/inspector.js:62
-#: src/blocks/row/column/components/inspector.js:103
-#: src/blocks/row/components/inspector.js:213
+#: src/blocks/features/feature/index.js:42
+msgid "A singular child column within a parent features block."
+msgstr ""
+
+#: src/blocks/features/feature/inspector.js:68
+msgid "Feature Settings"
+msgstr ""
+
+#: src/blocks/features/feature/inspector.js:71
+#: src/blocks/features/inspector.js:143
+#: src/blocks/hero/inspector.js:74
+#: src/blocks/icon/inspector.js:268
+#: src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:103
+#: src/blocks/row/inspector.js:213
 #: src/components/background/panel.js:146
 msgid "Padding"
 msgstr ""
 
-#: src/blocks/features/components/inspector.js:167
-#: src/blocks/row/components/inspector.js:238
-msgid "Space between each column."
-msgstr ""
-
-#: src/blocks/features/components/inspector.js:94
-msgid "Features Settings"
-msgstr ""
-
-#: src/blocks/features/components/inspector.js:96
-msgid "Columns"
-msgstr ""
-
-#: src/blocks/features/feature/components/inspector.js:68
-msgid "Feature Settings"
-msgstr ""
-
-#: src/blocks/features/feature/index.js:25
-msgid "Feature"
-msgstr ""
-
-#: src/blocks/features/feature/index.js:47
-msgid "A singular child column within a parent features block."
-msgstr ""
-
-#: src/blocks/features/index.js:28
+#: src/blocks/features/index.js:23
 msgid "Features"
 msgstr ""
 
-#: src/blocks/features/index.js:33
+#: src/blocks/features/index.js:36
+msgid "Add up to three columns of small notes for your product or service."
+msgstr ""
+
+#: src/blocks/features/index.js:38
 msgid "services"
 msgstr ""
 
-#: src/blocks/features/index.js:57
-msgid "Add up to three columns of small notes for your product or service."
+#: src/blocks/features/inspector.js:122
+#: src/blocks/row/column/inspector.js:91
+#: src/blocks/row/inspector.js:190
+#: src/components/dimensions-control/index.js:295
+msgid "Margin"
+msgstr ""
+
+#: src/blocks/features/inspector.js:164
+#: src/blocks/gallery-carousel/inspector.js:137
+#: src/blocks/gallery-stacked/inspector.js:145
+#: src/blocks/row/inspector.js:235
+#: src/components/responsive-tabs-control/index.js:31
+msgid "Gutter"
+msgstr ""
+
+#: src/blocks/features/inspector.js:167
+#: src/blocks/row/inspector.js:238
+msgid "Space between each column."
+msgstr ""
+
+#: src/blocks/features/inspector.js:86
+#: src/blocks/icon/inspector.js:154
+#: src/blocks/row/inspector.js:99
+#: src/blocks/share/inspector.js:58
+#: src/blocks/social-profiles/inspector.js:70
+#: src/components/dimensions-control/dimensions-select.js:15
+#: src/components/size-control/index.js:116
+msgid "Small"
+msgstr ""
+
+#: src/blocks/features/inspector.js:87
+#: src/blocks/icon/inspector.js:159
+#: src/blocks/row/inspector.js:100
+#: src/blocks/share/inspector.js:59
+#: src/blocks/social-profiles/inspector.js:71
+#: src/components/dimensions-control/dimensions-select.js:20
+#: src/components/size-control/index.js:120
+msgid "Medium"
+msgstr ""
+
+#: src/blocks/features/inspector.js:88
+#: src/blocks/icon/inspector.js:164
+#: src/blocks/row/inspector.js:101
+#: src/blocks/share/inspector.js:60
+#: src/blocks/social-profiles/inspector.js:72
+#: src/components/dimensions-control/dimensions-select.js:25
+#: src/components/size-control/index.js:65
+msgid "Large"
+msgstr ""
+
+#: src/blocks/features/inspector.js:94
+msgid "Features Settings"
+msgstr ""
+
+#: src/blocks/features/inspector.js:96
+#: src/blocks/services/inspector.js:69
+msgid "Columns"
 msgstr ""
 
 #: src/blocks/food-and-drinks/appender.js:22
@@ -513,58 +463,60 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:138
+#: src/blocks/food-and-drinks/food-item/edit.js:144
+#: src/blocks/services/service/edit.js:146
 msgid "Drop image to replace"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:151
+#: src/blocks/food-and-drinks/food-item/edit.js:157
+#: src/blocks/services/service/edit.js:159
 #: src/components/block-gallery/gallery-image.js:208
 msgid "Remove Image"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:208
+#: src/blocks/food-and-drinks/food-item/edit.js:222
 msgid "Add title..."
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:219
+#: src/blocks/food-and-drinks/food-item/edit.js:233
 #: src/blocks/food-and-drinks/food-item/inspector.js:55
-#: src/blocks/food-and-drinks/food-item/save.js:51
+#: src/blocks/food-and-drinks/food-item/save.js:65
 msgid "Spicy"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:234
+#: src/blocks/food-and-drinks/food-item/edit.js:253
 msgid "Hot"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:249
+#: src/blocks/food-and-drinks/food-item/edit.js:275
 #: src/blocks/food-and-drinks/food-item/inspector.js:70
-#: src/blocks/food-and-drinks/food-item/save.js:61
+#: src/blocks/food-and-drinks/food-item/save.js:81
 msgid "Vegetarian"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:264
+#: src/blocks/food-and-drinks/food-item/edit.js:301
 #: src/blocks/food-and-drinks/food-item/inspector.js:45
-#: src/blocks/food-and-drinks/food-item/save.js:66
+#: src/blocks/food-and-drinks/food-item/save.js:89
 msgid "Gluten Free"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:280
+#: src/blocks/food-and-drinks/food-item/edit.js:324
 #: src/blocks/food-and-drinks/food-item/inspector.js:50
-#: src/blocks/food-and-drinks/food-item/save.js:71
+#: src/blocks/food-and-drinks/food-item/save.js:97
 msgid "Pescatarian"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:296
+#: src/blocks/food-and-drinks/food-item/edit.js:345
 #: src/blocks/food-and-drinks/food-item/inspector.js:65
-#: src/blocks/food-and-drinks/food-item/save.js:76
+#: src/blocks/food-and-drinks/food-item/save.js:105
 msgid "Vegan"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:311
+#: src/blocks/food-and-drinks/food-item/edit.js:363
 msgid "Add description..."
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/edit.js:320
+#: src/blocks/food-and-drinks/food-item/edit.js:372
 msgid "$0.00"
 msgstr ""
 
@@ -572,7 +524,7 @@ msgstr ""
 msgid "Food Item"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/index.js:94
+#: src/blocks/food-and-drinks/food-item/index.js:30
 msgid "A food and drink item within the Food & Drinks block."
 msgstr ""
 
@@ -609,38 +561,43 @@ msgid "Item Attributes"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:60
-#: src/blocks/food-and-drinks/food-item/save.js:56
+#: src/blocks/food-and-drinks/food-item/save.js:73
 msgid "Spicier"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:77
+#: src/blocks/services/service/inspector.js:31
 msgid "Image Settings"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:79
-#: src/blocks/gif/components/inspector.js:31
-#: src/blocks/media-card/components/inspector.js:95
+#: src/blocks/gif/inspector.js:31
+#: src/blocks/media-card/inspector.js:95
+#: src/blocks/services/service/inspector.js:33
 msgid "Alt Text (Alternative Text)"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:85
-#: src/blocks/gif/components/inspector.js:37
-#: src/blocks/media-card/components/inspector.js:101
+#: src/blocks/gif/inspector.js:37
+#: src/blocks/media-card/inspector.js:101
+#: src/blocks/services/service/inspector.js:39
 msgid "Describe the purpose of the image"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:87
-#: src/blocks/gif/components/inspector.js:39
-#: src/blocks/media-card/components/inspector.js:103
+#: src/blocks/gif/inspector.js:39
+#: src/blocks/media-card/inspector.js:103
+#: src/blocks/services/service/inspector.js:41
 msgid "Leave empty if the image is purely decorative."
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:92
+#: src/blocks/services/service/inspector.js:46
 #: src/components/background/panel.js:126
 msgid "Focal Point"
 msgstr ""
 
-#: src/blocks/food-and-drinks/index.js:25
+#: src/blocks/food-and-drinks/index.js:24
 msgid "Food & Drinks"
 msgstr ""
 
@@ -648,17 +605,18 @@ msgstr ""
 msgid "Display a menu or price list."
 msgstr ""
 
-#: src/blocks/food-and-drinks/index.js:27
+#: src/blocks/food-and-drinks/index.js:28
 msgid "restaurant"
 msgstr ""
 
-#: src/blocks/food-and-drinks/index.js:27
+#: src/blocks/food-and-drinks/index.js:28
 msgid "menu"
 msgstr ""
 
 #: src/blocks/food-and-drinks/inspector.js:26
-#: src/blocks/map/components/inspector.js:98
-#: src/blocks/row/components/inspector.js:152
+#: src/blocks/map/inspector.js:98
+#: src/blocks/row/inspector.js:152
+#: src/blocks/services/inspector.js:32
 msgid "Styles"
 msgstr ""
 
@@ -688,39 +646,6 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/inspector.js:75
 msgid "Toggle to show the price of each item."
-msgstr ""
-
-#: src/blocks/form/components/fields/field-label.js:22
-#: src/blocks/form/components/fields/field-name.js:67
-msgid "Add label…"
-msgstr ""
-
-#: src/blocks/form/components/fields/field-label.js:30
-msgid "Required"
-msgstr ""
-
-#: src/blocks/form/components/fields/field-name.js:75
-msgid "Name Field Settings"
-msgstr ""
-
-#: src/blocks/form/components/fields/field-name.js:77
-msgid "Last Name"
-msgstr ""
-
-#: src/blocks/form/components/fields/field-name.js:81
-msgid "Showing both first and last name fields."
-msgstr ""
-
-#: src/blocks/form/components/fields/field-name.js:81
-msgid "Toggle to add a last name field."
-msgstr ""
-
-#: src/blocks/form/components/submit-button.js:107
-msgid "Add text…"
-msgstr ""
-
-#: src/blocks/form/components/submit-button.js:135
-msgid "Button Text Color"
 msgstr ""
 
 #: src/blocks/form/edit.js:109
@@ -821,12 +746,12 @@ msgid "Saving"
 msgstr ""
 
 #: src/blocks/form/edit.js:446
-#: src/blocks/map/components/inspector.js:221
+#: src/blocks/map/inspector.js:221
 msgid "Save"
 msgstr ""
 
 #: src/blocks/form/edit.js:461
-#: src/blocks/map/components/inspector.js:229
+#: src/blocks/map/inspector.js:229
 msgid "Remove"
 msgstr ""
 
@@ -849,29 +774,57 @@ msgstr ""
 msgid "A text field for names."
 msgstr ""
 
-#: src/blocks/form/index.js:21
+#: src/blocks/form/fields/field-label.js:22
+#: src/blocks/form/fields/field-name.js:67
+msgid "Add label…"
+msgstr ""
+
+#: src/blocks/form/fields/field-label.js:30
+msgid "Required"
+msgstr ""
+
+#: src/blocks/form/fields/field-name.js:75
+msgid "Name Field Settings"
+msgstr ""
+
+#: src/blocks/form/fields/field-name.js:77
+msgid "Last Name"
+msgstr ""
+
+#: src/blocks/form/fields/field-name.js:81
+msgid "Showing both first and last name fields."
+msgstr ""
+
+#: src/blocks/form/fields/field-name.js:81
+msgid "Toggle to add a last name field."
+msgstr ""
+
+#: src/blocks/form/index.js:25
 msgid "Form"
 msgstr ""
 
-#: src/blocks/form/index.js:26
+#: src/blocks/form/index.js:27
+msgid "Add a simple form to your page."
+msgstr ""
+
+#: src/blocks/form/index.js:29
 msgid "email"
 msgstr ""
 
-#: src/blocks/form/index.js:27
+#: src/blocks/form/index.js:29
 msgid "about"
 msgstr ""
 
-#: src/blocks/form/index.js:28
+#: src/blocks/form/index.js:29
 msgid "contact"
 msgstr ""
 
-#: src/blocks/form/index.js:42
-#: includes/class-coblocks-form.php:390
-msgid "Submit"
+#: src/blocks/form/submit-button.js:107
+msgid "Add text…"
 msgstr ""
 
-#: src/blocks/form/index.js:59
-msgid "Add a simple form to your page."
+#: src/blocks/form/submit-button.js:135
+msgid "Button Text Color"
 msgstr ""
 
 #: src/blocks/gallery-carousel/controls.js:53
@@ -888,30 +841,30 @@ msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
 #: src/blocks/gallery-carousel/edit.js:333
-#: src/blocks/gif/components/edit.js:248
-#: src/blocks/gist/components/edit.js:82
+#: src/blocks/gif/edit.js:248
+#: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:230
 msgid "Write caption…"
 msgstr ""
 
-#: src/blocks/gallery-carousel/index.js:28
+#: src/blocks/gallery-carousel/index.js:24
 msgid "Carousel"
 msgstr ""
 
-#: src/blocks/gallery-carousel/index.js:33
-#: src/blocks/gallery-masonry/index.js:33
-#: src/blocks/gallery-stacked/index.js:33
+#: src/blocks/gallery-carousel/index.js:38
+msgid "Display multiple images in a beautiful carousel gallery."
+msgstr ""
+
+#: src/blocks/gallery-carousel/index.js:42
+#: src/blocks/gallery-masonry/index.js:43
+#: src/blocks/gallery-stacked/index.js:42
 msgid "gallery"
 msgstr ""
 
-#: src/blocks/gallery-carousel/index.js:34
-#: src/blocks/gallery-masonry/index.js:34
-#: src/blocks/gallery-stacked/index.js:34
+#: src/blocks/gallery-carousel/index.js:42
+#: src/blocks/gallery-masonry/index.js:43
+#: src/blocks/gallery-stacked/index.js:42
 msgid "photos"
-msgstr ""
-
-#: src/blocks/gallery-carousel/index.js:88
-msgid "Display multiple images in a beautiful carousel gallery."
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:119
@@ -921,7 +874,7 @@ msgid "%s Settings"
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:124
-#: src/blocks/icon/components/inspector.js:197
+#: src/blocks/icon/inspector.js:197
 #: src/components/typography-controls/index.js:189
 msgid "Size"
 msgstr ""
@@ -941,11 +894,11 @@ msgstr ""
 msgid "Caption Color"
 msgstr ""
 
-#: src/blocks/gallery-masonry/index.js:28
+#: src/blocks/gallery-masonry/index.js:24
 msgid "Masonry"
 msgstr ""
 
-#: src/blocks/gallery-masonry/index.js:52
+#: src/blocks/gallery-masonry/index.js:39
 msgid "Display multiple images in an organized masonry gallery."
 msgstr ""
 
@@ -976,11 +929,11 @@ msgstr ""
 msgid "Toggle to show media captions."
 msgstr ""
 
-#: src/blocks/gallery-stacked/index.js:28
+#: src/blocks/gallery-stacked/index.js:24
 msgid "Stacked"
 msgstr ""
 
-#: src/blocks/gallery-stacked/index.js:67
+#: src/blocks/gallery-stacked/index.js:38
 msgid "Display multiple images in an single column stacked gallery."
 msgstr ""
 
@@ -1004,823 +957,873 @@ msgstr ""
 msgid "Toggle to fill the available gallery area with completely fullwidth images."
 msgstr ""
 
-#: src/blocks/gif/components/controls.js:44
+#: src/blocks/gif/controls.js:44
 msgid "Remove gif"
 msgstr ""
 
-#: src/blocks/gif/components/edit.js:153
+#: src/blocks/gif/edit.js:153
 msgid "This gif has an empty alt attribute"
 msgstr ""
 
-#: src/blocks/gif/components/edit.js:287
-#: src/blocks/gif/index.js:26
-msgid "Gif"
-msgstr ""
-
-#: src/blocks/gif/components/edit.js:288
+#: src/blocks/gif/edit.js:288
 msgid "Search for that perfect gif on Giphy"
 msgstr ""
 
-#: src/blocks/gif/components/edit.js:294
+#: src/blocks/gif/edit.js:294
 msgid "Search for gifs"
 msgstr ""
 
-#: src/blocks/gif/components/inspector.js:29
-msgid "Gif Settings"
-msgstr ""
-
-#: src/blocks/gif/index.js:31
-msgid "animated"
-msgstr ""
-
-#: src/blocks/gif/index.js:69
+#: src/blocks/gif/index.js:28
 msgid "Pick a gif, any gif."
 msgstr ""
 
-#: src/blocks/gist/components/controls.js:29
+#: src/blocks/gif/index.js:30
+msgid "animated"
+msgstr ""
+
+#: src/blocks/gif/inspector.js:29
+msgid "Gif Settings"
+msgstr ""
+
+#: src/blocks/gist/controls.js:29
 msgid "Display meta"
 msgstr ""
 
-#: src/blocks/gist/components/controls.js:42
+#: src/blocks/gist/controls.js:42
 msgid "Edit Gist"
 msgstr ""
 
-#: src/blocks/gist/components/controls.js:49
+#: src/blocks/gist/controls.js:49
 msgid "View Gist"
 msgstr ""
 
-#: src/blocks/gist/components/controls.js:68
+#: src/blocks/gist/controls.js:68
 msgid "GitHub File"
 msgstr ""
 
-#: src/blocks/gist/components/controls.js:72
+#: src/blocks/gist/controls.js:72
 msgid "File"
 msgstr ""
 
-#: src/blocks/gist/components/edit.js:100
-#: src/blocks/gist/components/inspector.js:48
-msgid "Gist URL"
-msgstr ""
-
-#: src/blocks/gist/components/edit.js:105
-msgid "Add GitHub Gist URL..."
-msgstr ""
-
-#: src/blocks/gist/components/inspector.js:28
-msgid "Showing gist meta data."
-msgstr ""
-
-#: src/blocks/gist/components/inspector.js:28
-msgid "Toggle to show the gist meta data."
-msgstr ""
-
-#: src/blocks/gist/components/inspector.js:46
-msgid "Gist Settings"
-msgstr ""
-
-#: src/blocks/gist/components/inspector.js:53
-msgid "Gist File"
-msgstr ""
-
-#: src/blocks/gist/components/inspector.js:58
-msgid "Gist Meta"
-msgstr ""
-
-#: src/blocks/gist/index.js:146
+#: src/blocks/gist/deprecated.js:30
+#: src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr ""
 
-#: src/blocks/gist/index.js:26
-msgid "Gist"
+#: src/blocks/gist/edit.js:124
+#: src/blocks/gist/inspector.js:51
+msgid "Gist URL"
 msgstr ""
 
-#: src/blocks/gist/index.js:30
-msgid "code"
+#: src/blocks/gist/edit.js:129
+msgid "Add GitHub Gist URL..."
 msgstr ""
 
-#: src/blocks/gist/index.js:30
-msgid "github"
+#: src/blocks/gist/gist.js:137
+msgid "Loading Gist"
 msgstr ""
 
-#: src/blocks/gist/index.js:53
+#: src/blocks/gist/index.js:29
 msgid "Embed GitHub gists by adding the gist link."
 msgstr ""
 
-#: src/blocks/hero/components/controls.js:32
-#: src/blocks/row/components/controls.js:71
+#: src/blocks/gist/index.js:31
+msgid "code"
+msgstr ""
+
+#: src/blocks/gist/inspector.js:31
+msgid "Showing gist meta data."
+msgstr ""
+
+#: src/blocks/gist/inspector.js:31
+msgid "Toggle to show the gist meta data."
+msgstr ""
+
+#: src/blocks/gist/inspector.js:49
+msgid "Gist Settings"
+msgstr ""
+
+#: src/blocks/gist/inspector.js:56
+msgid "Gist File"
+msgstr ""
+
+#: src/blocks/gist/inspector.js:61
+msgid "Gist Meta"
+msgstr ""
+
+#: src/blocks/hero/controls.js:32
+#: src/blocks/row/controls.js:71
 msgid "Change layout"
 msgstr ""
 
-#: src/blocks/hero/components/edit.js:159
-#: src/blocks/row/column/components/edit.js:92
-#: src/blocks/row/components/edit.js:170
+#: src/blocks/hero/edit.js:157
+#: src/blocks/row/column/edit.js:92
+#: src/blocks/row/edit.js:170
 msgid "Add backround to %s"
 msgstr ""
 
-#: src/blocks/hero/components/inspector.js:107
+#: src/blocks/hero/index.js:27
+msgid "Hero"
+msgstr ""
+
+#: src/blocks/hero/index.js:43
+msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
+msgstr ""
+
+#: src/blocks/hero/index.js:45
+msgid "button"
+msgstr ""
+
+#: src/blocks/hero/index.js:45
+msgid "call to action"
+msgstr ""
+
+#: src/blocks/hero/inspector.js:107
 msgid "Content width in pixels"
 msgstr ""
 
-#: src/blocks/hero/components/inspector.js:71
+#: src/blocks/hero/inspector.js:71
 msgid "Hero Settings"
 msgstr ""
 
-#: src/blocks/hero/components/inspector.js:75
-#: src/blocks/media-card/components/inspector.js:63
-#: src/blocks/row/column/components/inspector.js:104
-#: src/blocks/row/components/inspector.js:214
+#: src/blocks/hero/inspector.js:75
+#: src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:104
+#: src/blocks/row/inspector.js:214
 msgid "Space inside of the container."
 msgstr ""
 
-#: src/blocks/hero/components/layouts.js:12
+#: src/blocks/hero/layouts.js:12
 #: src/components/background/panel.js:83
 #: src/components/grid-control/index.js:35
 msgid "Top Left"
 msgstr ""
 
-#: src/blocks/hero/components/layouts.js:13
+#: src/blocks/hero/layouts.js:13
 #: src/components/background/panel.js:84
 #: src/components/grid-control/index.js:36
 msgid "Top Center"
 msgstr ""
 
-#: src/blocks/hero/components/layouts.js:14
+#: src/blocks/hero/layouts.js:14
 #: src/components/background/panel.js:85
 #: src/components/grid-control/index.js:37
 msgid "Top Right"
 msgstr ""
 
-#: src/blocks/hero/components/layouts.js:15
+#: src/blocks/hero/layouts.js:15
 #: src/components/background/panel.js:86
 #: src/components/grid-control/index.js:48
 msgid "Center Left"
 msgstr ""
 
-#: src/blocks/hero/components/layouts.js:16
+#: src/blocks/hero/layouts.js:16
 #: src/components/background/panel.js:87
 #: src/components/grid-control/index.js:49
 msgid "Center Center"
 msgstr ""
 
-#: src/blocks/hero/components/layouts.js:17
+#: src/blocks/hero/layouts.js:17
 #: src/components/background/panel.js:88
 #: src/components/grid-control/index.js:50
 msgid "Center Right"
 msgstr ""
 
-#: src/blocks/hero/components/layouts.js:18
+#: src/blocks/hero/layouts.js:18
 #: src/components/background/panel.js:89
 #: src/components/grid-control/index.js:41
 msgid "Bottom Left"
 msgstr ""
 
-#: src/blocks/hero/components/layouts.js:19
+#: src/blocks/hero/layouts.js:19
 #: src/components/background/panel.js:90
 #: src/components/grid-control/index.js:42
 msgid "Bottom Center"
 msgstr ""
 
-#: src/blocks/hero/components/layouts.js:20
+#: src/blocks/hero/layouts.js:20
 #: src/components/background/panel.js:91
 #: src/components/grid-control/index.js:43
 msgid "Bottom Right"
 msgstr ""
 
-#: src/blocks/hero/index.js:104
-msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
-msgstr ""
-
-#: src/blocks/hero/index.js:30
-msgid "Hero"
-msgstr ""
-
-#: src/blocks/hero/index.js:35
-msgid "button"
-msgstr ""
-
-#: src/blocks/hero/index.js:37
-msgid "call to action"
-msgstr ""
-
-#: src/blocks/highlight/components/edit.js:108
+#: src/blocks/highlight/edit.js:108
 msgid "Add highlighted text..."
 msgstr ""
 
-#: src/blocks/highlight/index.js:26
+#: src/blocks/highlight/index.js:22
 msgid "Highlight"
+msgstr ""
+
+#: src/blocks/highlight/index.js:29
+msgid "Highlight text."
 msgstr ""
 
 #: src/blocks/highlight/index.js:31
 msgid "text"
 msgstr ""
 
-#: src/blocks/highlight/index.js:32
+#: src/blocks/highlight/index.js:31
 msgid "paragraph"
 msgstr ""
 
-#: src/blocks/highlight/index.js:69
-msgid "Highlight text."
+#: src/blocks/icon/index.js:27
+msgid "Icon"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:179
+#: src/blocks/icon/index.js:34
+msgid "Add a stylized graphic symbol to communicate something more."
+msgstr ""
+
+#: src/blocks/icon/index.js:36
+#: src/blocks/social-profiles/index.js:23
+msgid "icons"
+msgstr ""
+
+#: src/blocks/icon/inspector.js:168
+#: src/blocks/row/inspector.js:102
+#: src/components/dimensions-control/dimensions-select.js:30
+msgid "Huge"
+msgstr ""
+
+#: src/blocks/icon/inspector.js:179
 #: src/blocks/share/inspector.js:90
 #: src/blocks/social-profiles/inspector.js:102
 msgid "Icon Settings"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:192
-#: src/components/dimensions-control/index.js:509
+#: src/blocks/icon/inspector.js:192
+#: src/components/dimensions-control/index.js:484
 msgid "Turn off advanced %s settings"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:194
-#: src/components/dimensions-control/index.js:511
+#: src/blocks/icon/inspector.js:194
+#: src/components/dimensions-control/index.js:486
 #: src/components/size-control/index.js:198
 msgid "Reset"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:221
-#: src/components/dimensions-control/index.js:747
+#: src/blocks/icon/inspector.js:221
 msgid "Custom %s size"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:249
-#: src/components/dimensions-control/index.js:776
+#: src/blocks/icon/inspector.js:249
+#: src/components/dimensions-control/index.js:725
 msgid "Advanced %s settings"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:252
-#: src/components/dimensions-control/index.js:779
+#: src/blocks/icon/inspector.js:252
+#: src/components/dimensions-control/index.js:728
 msgid "Advanced"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:260
+#: src/blocks/icon/inspector.js:260
 msgid "Radius"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:280
+#: src/blocks/icon/inspector.js:280
 msgid "Icon Search"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:329
+#: src/blocks/icon/inspector.js:329
 msgid "No results found."
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:335
+#: src/blocks/icon/inspector.js:335
 #: src/components/block-gallery/gallery-link-settings.js:63
 msgid "Link Settings"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:338
+#: src/blocks/icon/inspector.js:338
 msgid "Link URL"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:343
+#: src/blocks/icon/inspector.js:343
 #: src/components/block-gallery/gallery-link-settings.js:80
 msgid "Link Rel"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:348
+#: src/blocks/icon/inspector.js:348
 msgid "Opening in New Tab"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:348
+#: src/blocks/icon/inspector.js:348
 #: src/components/block-gallery/gallery-link-settings.js:75
 msgid "Open in New Tab"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:360
+#: src/blocks/icon/inspector.js:360
 msgid "Icon Color"
 msgstr ""
 
-#: src/blocks/icon/index.js:113
-msgid "Add a stylized graphic symbol to communicate something more."
+#: src/blocks/logos/controls.js:51
+msgid "Edit logos"
 msgstr ""
 
-#: src/blocks/icon/index.js:31
-msgid "Icon"
+#: src/blocks/logos/edit.js:69
+#: src/blocks/logos/index.js:28
+msgid "Logos & Badges"
 msgstr ""
 
-#: src/blocks/icon/index.js:36
-#: src/blocks/shape-divider/index.js:72
-msgid "svg"
+#: src/blocks/logos/edit.js:70
+#: src/components/block-gallery/gallery-placeholder.js:71
+msgid "Drag images, upload new ones or select files from your library."
 msgstr ""
 
-#: src/blocks/icon/index.js:37
-#: src/blocks/social-profiles/index.js:23
-msgid "icons"
+#: src/blocks/logos/index.js:29
+msgid "Add logos, badges, or certifications to build credibility."
 msgstr ""
 
-#: src/blocks/map/components/controls.js:30
+#: src/blocks/logos/index.js:30
+msgid "clients"
+msgstr ""
+
+#: src/blocks/logos/index.js:30
+msgid "proof"
+msgstr ""
+
+#: src/blocks/logos/index.js:30
+msgid "testimonials"
+msgstr ""
+
+#: src/blocks/logos/inspector.js:12
+msgid "Logos Settings"
+msgstr ""
+
+#: src/blocks/logos/inspector.js:15
+msgid "Black & White"
+msgstr ""
+
+#: src/blocks/logos/inspector.js:16
+msgid "Toggle to add a black and white filter."
+msgstr ""
+
+#: src/blocks/map/controls.js:30
 msgid "Edit Location"
 msgstr ""
 
-#: src/blocks/map/components/controls.js:42
+#: src/blocks/map/controls.js:42
 msgid "Map style"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:188
+#: src/blocks/map/edit.js:188
 msgid "Invalid API key, or too many requests"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:295
-#: src/blocks/map/components/save.js:48
+#: src/blocks/map/edit.js:295
+#: src/blocks/map/save.js:48
 msgid "Google Map"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:296
+#: src/blocks/map/edit.js:296
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/components/edit.js:303
+#: src/blocks/map/edit.js:303
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/components/edit.js:308
+#: src/blocks/map/edit.js:308
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:100
+#: src/blocks/map/index.js:24
+msgid "Map"
+msgstr ""
+
+#: src/blocks/map/index.js:29
+msgid "Add an address and drop a pin on a Google map."
+msgstr ""
+
+#: src/blocks/map/index.js:31
+msgid "address"
+msgstr ""
+
+#: src/blocks/map/index.js:31
+msgid "maps"
+msgstr ""
+
+#: src/blocks/map/index.js:31
+msgid "google"
+msgstr ""
+
+#: src/blocks/map/inspector.js:100
 msgid "Select Map Style"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:121
+#: src/blocks/map/inspector.js:121
 msgid "Map Settings"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:124
+#: src/blocks/map/inspector.js:124
 msgid "Zoom Level"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:134
+#: src/blocks/map/inspector.js:134
 msgid "Height for the map in pixels"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:145
+#: src/blocks/map/inspector.js:145
 msgid "Marker Size"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:160
+#: src/blocks/map/inspector.js:160
 msgid "Fine control options are enabled."
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:160
+#: src/blocks/map/inspector.js:160
 msgid "Toggle to enable map control options."
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:168
+#: src/blocks/map/inspector.js:168
 msgid "Map Controls"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:172
+#: src/blocks/map/inspector.js:172
 msgid "Map Type"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:175
+#: src/blocks/map/inspector.js:175
 msgid "Switching between standard and satellite map views is enabled."
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:175
+#: src/blocks/map/inspector.js:175
 msgid "Toggle to enable switching between standard and satellite maps."
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:178
+#: src/blocks/map/inspector.js:178
 msgid "Zoom Controls"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:181
+#: src/blocks/map/inspector.js:181
 msgid "Showing map zoom controls."
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:181
+#: src/blocks/map/inspector.js:181
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:184
+#: src/blocks/map/inspector.js:184
 msgid "Street View"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:187
+#: src/blocks/map/inspector.js:187
 msgid "Showing the street view map control."
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:187
+#: src/blocks/map/inspector.js:187
 msgid "Toggle to show the street view control at the bottom right."
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:190
+#: src/blocks/map/inspector.js:190
 msgid "Fullscreen Toggle"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:193
+#: src/blocks/map/inspector.js:193
 msgid "Showing the fullscreen map control."
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:193
+#: src/blocks/map/inspector.js:193
 msgid "Toggle to show the fullscreen map control."
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:198
+#: src/blocks/map/inspector.js:198
 msgid "Google Maps API Key"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:202
+#: src/blocks/map/inspector.js:202
 msgid "Add your Google Maps API key. Updating this API key will set all your maps to use the new key."
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:205
+#: src/blocks/map/inspector.js:205
 msgid "Retrieve your key"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:206
+#: src/blocks/map/inspector.js:206
 msgid "Need help?"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:212
+#: src/blocks/map/inspector.js:212
 msgid "Enter Google API Key…"
 msgstr ""
 
-#: src/blocks/map/components/inspector.js:221
+#: src/blocks/map/inspector.js:221
 msgid "Saved"
 msgstr ""
 
-#: src/blocks/map/components/styles.js:12
+#: src/blocks/map/styles.js:12
 msgid "Standard"
 msgstr ""
 
-#: src/blocks/map/components/styles.js:16
+#: src/blocks/map/styles.js:16
 msgid "Silver"
 msgstr ""
 
-#: src/blocks/map/components/styles.js:20
+#: src/blocks/map/styles.js:20
 msgid "Retro"
 msgstr ""
 
-#: src/blocks/map/components/styles.js:24
+#: src/blocks/map/styles.js:24
 #: src/components/block-gallery/options/caption-options.js:10
 msgid "Dark"
 msgstr ""
 
-#: src/blocks/map/components/styles.js:28
+#: src/blocks/map/styles.js:28
 msgid "Night"
 msgstr ""
 
-#: src/blocks/map/components/styles.js:32
+#: src/blocks/map/styles.js:32
 msgid "Aubergine"
 msgstr ""
 
-#: src/blocks/map/index.js:20
-msgid "Map"
-msgstr ""
-
-#: src/blocks/map/index.js:25
-msgid "address"
-msgstr ""
-
-#: src/blocks/map/index.js:26
-msgid "maps"
-msgstr ""
-
-#: src/blocks/map/index.js:27
-msgid "google"
-msgstr ""
-
-#: src/blocks/map/index.js:93
-msgid "Add an address and drop a pin on a Google map."
-msgstr ""
-
-#: src/blocks/media-card/components/controls.js:28
+#: src/blocks/media-card/controls.js:28
 msgid "Media on right"
 msgstr ""
 
-#: src/blocks/media-card/components/controls.js:33
+#: src/blocks/media-card/controls.js:33
 msgid "Media on left"
 msgstr ""
 
-#: src/blocks/media-card/components/inspector.js:109
-msgid "Card Shadow"
-msgstr ""
-
-#: src/blocks/media-card/components/inspector.js:112
-msgid "Showing card shadow."
-msgstr ""
-
-#: src/blocks/media-card/components/inspector.js:112
-msgid "Toggle to add a card shadow."
-msgstr ""
-
-#: src/blocks/media-card/components/inspector.js:116
-msgid " %s Shadow"
-msgstr ""
-
-#: src/blocks/media-card/components/inspector.js:119
-msgid "Showing %s shadow."
-msgstr ""
-
-#: src/blocks/media-card/components/inspector.js:119
-msgid "Toggle to add an %s shadow"
-msgstr ""
-
-#: src/blocks/media-card/components/inspector.js:59
-msgid "Media Card Settings"
-msgstr ""
-
-#: src/blocks/media-card/components/inspector.js:84
-msgid "Max Width"
-msgstr ""
-
-#: src/blocks/media-card/components/media-container.js:100
-msgid "Media"
-msgstr ""
-
-#: src/blocks/media-card/components/media-container.js:120
-msgid "Drop to replace media"
-msgstr ""
-
-#: src/blocks/media-card/components/media-container.js:37
-msgid "Edit media"
-msgstr ""
-
-#: src/blocks/media-card/index.js:30
+#: src/blocks/media-card/index.js:26
 msgid "Media Card"
 msgstr ""
 
-#: src/blocks/media-card/index.js:35
-msgid "image"
-msgstr ""
-
-#: src/blocks/media-card/index.js:36
-msgid "video"
-msgstr ""
-
-#: src/blocks/media-card/index.js:91
+#: src/blocks/media-card/index.js:37
 msgid "Add an image or video with an offset card side-by-side."
 msgstr ""
 
+#: src/blocks/media-card/index.js:39
+msgid "image"
+msgstr ""
+
+#: src/blocks/media-card/index.js:39
+msgid "video"
+msgstr ""
+
+#: src/blocks/media-card/inspector.js:109
+msgid "Card Shadow"
+msgstr ""
+
+#: src/blocks/media-card/inspector.js:112
+msgid "Showing card shadow."
+msgstr ""
+
+#: src/blocks/media-card/inspector.js:112
+msgid "Toggle to add a card shadow."
+msgstr ""
+
+#: src/blocks/media-card/inspector.js:116
+msgid " %s Shadow"
+msgstr ""
+
+#: src/blocks/media-card/inspector.js:119
+msgid "Showing %s shadow."
+msgstr ""
+
+#: src/blocks/media-card/inspector.js:119
+msgid "Toggle to add an %s shadow"
+msgstr ""
+
+#: src/blocks/media-card/inspector.js:59
+msgid "Media Card Settings"
+msgstr ""
+
+#: src/blocks/media-card/inspector.js:84
+msgid "Max Width"
+msgstr ""
+
+#: src/blocks/media-card/media-container.js:100
+msgid "Media"
+msgstr ""
+
+#: src/blocks/media-card/media-container.js:120
+msgid "Drop to replace media"
+msgstr ""
+
+#: src/blocks/media-card/media-container.js:37
+msgid "Edit media"
+msgstr ""
+
 # %s: number of tables
-#: src/blocks/pricing-table/components/controls.js:38
+#: src/blocks/pricing-table/controls.js:38
 msgid "%s Tables"
 msgstr ""
 
-#: src/blocks/pricing-table/components/inspector.js:26
-msgid "Pricing Table Settings"
+#: src/blocks/pricing-table/edit.js:39
+msgid "Plan %s"
 msgstr ""
 
-#: src/blocks/pricing-table/components/inspector.js:28
-msgid "Tables"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:26
+#: src/blocks/pricing-table/index.js:22
 msgid "Pricing Table"
 msgstr ""
 
+#: src/blocks/pricing-table/index.js:29
+msgid "Add pricing tables."
+msgstr ""
+
 #: src/blocks/pricing-table/index.js:31
-#: src/blocks/pricing-table/pricing-table-item/index.js:30
+#: src/blocks/pricing-table/pricing-table-item/index.js:31
 msgid "landing"
 msgstr ""
 
-#: src/blocks/pricing-table/index.js:32
+#: src/blocks/pricing-table/index.js:31
 #: src/blocks/pricing-table/pricing-table-item/index.js:31
 msgid "comparison"
 msgstr ""
 
-#: src/blocks/pricing-table/index.js:51
-msgid "Add pricing tables."
+#: src/blocks/pricing-table/inspector.js:26
+msgid "Pricing Table Settings"
 msgstr ""
 
-#: src/blocks/pricing-table/pricing-table-item/components/edit.js:111
+#: src/blocks/pricing-table/inspector.js:28
+msgid "Tables"
+msgstr ""
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:112
 msgid "Add features"
 msgstr ""
 
-#: src/blocks/pricing-table/pricing-table-item/components/edit.js:30
+#: src/blocks/pricing-table/pricing-table-item/edit.js:30
 msgid "Buy Now"
 msgstr ""
 
-#: src/blocks/pricing-table/pricing-table-item/components/edit.js:81
+#: src/blocks/pricing-table/pricing-table-item/edit.js:82
 msgid "Plan A"
 msgstr ""
 
-#: src/blocks/pricing-table/pricing-table-item/components/edit.js:91
+#: src/blocks/pricing-table/pricing-table-item/edit.js:92
 msgid "$"
 msgstr ""
 
-#: src/blocks/pricing-table/pricing-table-item/index.js:25
+#: src/blocks/pricing-table/pricing-table-item/index.js:22
 msgid "Pricing Table Item"
 msgstr ""
 
-#: src/blocks/pricing-table/pricing-table-item/index.js:72
+#: src/blocks/pricing-table/pricing-table-item/index.js:29
 msgid "A column placed within the pricing table block."
 msgstr ""
 
-#: src/blocks/row/column/components/inspector.js:115
-msgid "Width"
-msgstr ""
-
-#: src/blocks/row/column/components/inspector.js:88
-msgid "Column Settings"
-msgstr ""
-
-#: src/blocks/row/column/components/inspector.js:92
-#: src/blocks/row/components/inspector.js:191
-msgid "Space around the container."
-msgstr ""
-
-#: src/blocks/row/column/index.js:25
+#: src/blocks/row/column/index.js:22
 msgid "Column"
 msgstr ""
 
-#: src/blocks/row/column/index.js:54
+#: src/blocks/row/column/index.js:36
 msgid "An immediate child of a row."
 msgstr ""
 
-#: src/blocks/row/components/edit.js:122
+#: src/blocks/row/column/inspector.js:115
+msgid "Width"
+msgstr ""
+
+#: src/blocks/row/column/inspector.js:88
+msgid "Column Settings"
+msgstr ""
+
+#: src/blocks/row/column/inspector.js:92
+#: src/blocks/row/inspector.js:191
+msgid "Space around the container."
+msgstr ""
+
+#: src/blocks/row/edit.js:122
 msgid "one"
 msgstr ""
 
-#: src/blocks/row/components/edit.js:124
+#: src/blocks/row/edit.js:124
 msgid "two"
 msgstr ""
 
-#: src/blocks/row/components/edit.js:126
+#: src/blocks/row/edit.js:126
 msgid "three"
 msgstr ""
 
-#: src/blocks/row/components/edit.js:128
+#: src/blocks/row/edit.js:128
 msgid "four"
 msgstr ""
 
-#: src/blocks/row/components/edit.js:175
+#: src/blocks/row/edit.js:175
 msgid "One Column"
 msgstr ""
 
-#: src/blocks/row/components/edit.js:176
+#: src/blocks/row/edit.js:176
 msgid "Two Columns"
 msgstr ""
 
-#: src/blocks/row/components/edit.js:177
+#: src/blocks/row/edit.js:177
 msgid "Three Columns"
 msgstr ""
 
-#: src/blocks/row/components/edit.js:178
+#: src/blocks/row/edit.js:178
 msgid "Four Columns"
 msgstr ""
 
-#: src/blocks/row/components/edit.js:203
+#: src/blocks/row/edit.js:203
 msgid "Row Layout"
 msgstr ""
 
-#: src/blocks/row/components/edit.js:203
-#: src/blocks/row/index.js:51
+#: src/blocks/row/edit.js:203
+#: src/blocks/row/index.js:26
 msgid "Row"
 msgstr ""
 
-#: src/blocks/row/components/edit.js:204
+#: src/blocks/row/edit.js:204
 msgid "Now select a layout for this %s column row."
 msgstr ""
 
-#: src/blocks/row/components/edit.js:204
+#: src/blocks/row/edit.js:204
 msgid "Select the number of columns for this row."
 msgstr ""
 
-#: src/blocks/row/components/edit.js:208
+#: src/blocks/row/edit.js:208
 msgid "Select Row Columns"
 msgstr ""
 
-#: src/blocks/row/components/edit.js:233
-#: src/blocks/row/components/inspector.js:154
+#: src/blocks/row/edit.js:233
+#: src/blocks/row/inspector.js:154
 msgid "Select Row Layout"
 msgstr ""
 
-#: src/blocks/row/components/edit.js:243
+#: src/blocks/row/edit.js:243
 msgid "Back to Columns"
 msgstr ""
 
-#: src/blocks/row/components/inspector.js:117
+#: src/blocks/row/index.js:40
+msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
+msgstr ""
+
+#: src/blocks/row/index.js:42
+msgid "rows"
+msgstr ""
+
+#: src/blocks/row/index.js:42
+msgid "columns"
+msgstr ""
+
+#: src/blocks/row/index.js:42
+msgid "layouts"
+msgstr ""
+
+#: src/blocks/row/inspector.js:117
 #: src/components/grid-control/index.js:122
 msgid "Layout"
 msgstr ""
 
-#: src/blocks/row/components/inspector.js:186
+#: src/blocks/row/inspector.js:186
 msgid "Row Settings"
 msgstr ""
 
-#: src/blocks/row/components/inspector.js:98
+#: src/blocks/row/inspector.js:98
 #: src/components/block-gallery/options/caption-options.js:12
 #: src/components/block-gallery/options/link-options.js:10
-#: src/components/dimensions-control/index.js:419
+#: src/components/dimensions-control/dimensions-select.js:10
 #: src/extensions/list-styles/index.js:21
 msgid "None"
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:13
-msgid "50/50"
+#: src/blocks/services/edit.js:44
+msgid "Square"
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:14
-msgid "66/33"
+#: src/blocks/services/edit.js:49
+msgid "Circle"
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:15
-msgid "33/66"
+#: src/blocks/services/index.js:28
+msgid "Services"
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:16
-msgid "75/25"
+#: src/blocks/services/index.js:29
+msgid "Add up to four columns of services to display."
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:17
-msgid "25/75"
+#: src/blocks/services/index.js:30
+msgid "features"
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:20
-msgid "33/33/33"
+#: src/blocks/services/inspector.js:67
+msgid "Services Settings"
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:21
-msgid "50/25/25"
+#: src/blocks/services/inspector.js:75
+msgid "Heading Level"
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:22
-msgid "25/25/50"
+#: src/blocks/services/inspector.js:83
+msgid "Action Buttons"
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:23
-msgid "25/50/25"
+#: src/blocks/services/inspector.js:87
+msgid "Showing the call to action buttons."
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:24
-msgid "20/60/20"
+#: src/blocks/services/inspector.js:88
+msgid "Toggle to show call to action buttons."
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:27
-msgid "25/25/25/25"
+#: src/blocks/services/service/index.js:28
+msgid "Service"
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:28
-msgid "40/20/20/20"
+#: src/blocks/services/service/index.js:29
+msgid "A single service item within a services block."
 msgstr ""
 
-#: src/blocks/row/components/layouts.js:29
-msgid "20/20/20/40"
+#: src/blocks/services/service/inspector.js:18
+msgid "Service Settings"
 msgstr ""
 
-#: src/blocks/row/index.js:56
-msgid "rows"
+#: src/blocks/services/service/inspector.js:20
+msgid "Action Button"
 msgstr ""
 
-#: src/blocks/row/index.js:57
-msgid "columns"
+#: src/blocks/services/service/inspector.js:23
+msgid "Showing the call to action button."
 msgstr ""
 
-#: src/blocks/row/index.js:58
-msgid "layouts"
+#: src/blocks/services/service/inspector.js:24
+msgid "Toggle to show a call to action button."
 msgstr ""
 
-#: src/blocks/row/index.js:89
-msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
-msgstr ""
-
-#: src/blocks/shape-divider/components/controls.js:28
+#: src/blocks/shape-divider/controls.js:28
 #: src/components/orientation/index.js:59
 msgid "Flip horiztonally"
 msgstr ""
 
-#: src/blocks/shape-divider/components/controls.js:33
+#: src/blocks/shape-divider/controls.js:33
 #: src/components/orientation/index.js:48
 msgid "Flip vertically"
 msgstr ""
 
-#: src/blocks/shape-divider/components/inspector.js:108
-msgid "Shape Color"
-msgstr ""
-
-#: src/blocks/shape-divider/components/inspector.js:56
-msgid "Divider Settings"
-msgstr ""
-
-#: src/blocks/shape-divider/components/inspector.js:58
-msgid "Shape Height in pixels"
-msgstr ""
-
-#: src/blocks/shape-divider/components/inspector.js:76
-msgid "Background Height in pixels"
-msgstr ""
-
-#: src/blocks/shape-divider/components/inspector.js:94
-msgid "Orientation"
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:148
-msgid "Add a shape divider to visually distinquish page sections."
-msgstr ""
-
-#: src/blocks/shape-divider/index.js:65
+#: src/blocks/shape-divider/index.js:23
 msgid "Shape Divider"
 msgstr ""
 
-#: src/blocks/shape-divider/index.js:71
+#: src/blocks/shape-divider/index.js:30
+msgid "Add a shape divider to visually distinquish page sections."
+msgstr ""
+
+#: src/blocks/shape-divider/index.js:32
 msgid "separator"
+msgstr ""
+
+#: src/blocks/shape-divider/inspector.js:108
+msgid "Shape Color"
+msgstr ""
+
+#: src/blocks/shape-divider/inspector.js:56
+msgid "Divider Settings"
+msgstr ""
+
+#: src/blocks/shape-divider/inspector.js:58
+msgid "Shape Height in pixels"
+msgstr ""
+
+#: src/blocks/shape-divider/inspector.js:76
+msgid "Background Height in pixels"
+msgstr ""
+
+#: src/blocks/shape-divider/inspector.js:94
+msgid "Orientation"
 msgstr ""
 
 #: src/blocks/share/edit.js:102
@@ -2151,10 +2154,6 @@ msgstr ""
 msgid "%s Gallery"
 msgstr ""
 
-#: src/components/block-gallery/gallery-placeholder.js:71
-msgid "Drag images, upload new ones or select files from your library."
-msgstr ""
-
 #: src/components/block-gallery/gallery-uploader.js:53
 msgid "Upload an image"
 msgstr ""
@@ -2175,67 +2174,67 @@ msgstr ""
 msgid "Custom URL"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:404
+#: src/components/dimensions-control/index.js:408
 msgid "Pixel"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:408
+#: src/components/dimensions-control/index.js:412
 msgid "Em"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:412
+#: src/components/dimensions-control/index.js:416
 msgid "Percentage"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:486
+#: src/components/dimensions-control/index.js:461
 msgid "Select Units"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:495
+#: src/components/dimensions-control/index.js:470
 msgid "%s Units"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:672
+#: src/components/dimensions-control/index.js:647
 msgid "%s Top"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:682
+#: src/components/dimensions-control/index.js:657
 msgid "%s Right"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:692
+#: src/components/dimensions-control/index.js:667
 msgid "%s Bottom"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:702
+#: src/components/dimensions-control/index.js:677
 msgid "%s Left"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:708
+#: src/components/dimensions-control/index.js:683
 msgid "Unsync"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:708
+#: src/components/dimensions-control/index.js:683
 msgid "Sync"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:711
+#: src/components/dimensions-control/index.js:686
 msgid "Sync Units"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:728
+#: src/components/dimensions-control/index.js:703
 msgid "Top"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:729
+#: src/components/dimensions-control/index.js:704
 msgid "Right"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:730
+#: src/components/dimensions-control/index.js:705
 msgid "Bottom"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:731
+#: src/components/dimensions-control/index.js:706
 msgid "Left"
 msgstr ""
 
@@ -2253,6 +2252,11 @@ msgstr ""
 
 #: src/components/grid-control/index.js:179
 msgid "Toggle to enable fullscreen mode."
+msgstr ""
+
+# %s: heading level e.g: "1", "2", "3"
+#: src/components/heading-toolbar/index.js:18
+msgid "Heading %d"
 msgstr ""
 
 #: src/components/inline-color-picker/index.js:30
@@ -2467,31 +2471,31 @@ msgstr ""
 msgid "Lowercase"
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:108
+#: src/extensions/advanced-controls/index.js:109
 msgid "Stack on Mobile"
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:115
+#: src/extensions/advanced-controls/index.js:116
 msgid "Responsiveness is enabled."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:116
+#: src/extensions/advanced-controls/index.js:117
 msgid "Toggle to stack elements on top of each other on smaller viewports."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:124
+#: src/extensions/advanced-controls/index.js:125
 msgid "Remove Top Spacing"
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:136
+#: src/extensions/advanced-controls/index.js:137
 msgid "Top margin is removed on this block."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:137
+#: src/extensions/advanced-controls/index.js:138
 msgid "Toggle to remove any margin applied to the top of this block."
 msgstr ""
 
-#: src/extensions/advanced-controls/index.js:145
+#: src/extensions/advanced-controls/index.js:146
 msgid "Remove Bottom Spacing"
 msgstr ""
 
@@ -2563,67 +2567,67 @@ msgstr ""
 msgid "%s Galleries"
 msgstr ""
 
-#: src/blocks/dynamic-separator/index.js:61
+#: src/blocks/dynamic-separator/index.js:36
 msgctxt "block style"
 msgid "Dot"
 msgstr ""
 
-#: src/blocks/dynamic-separator/index.js:62
+#: src/blocks/dynamic-separator/index.js:37
 msgctxt "block style"
 msgid "Line"
 msgstr ""
 
-#: src/blocks/dynamic-separator/index.js:63
+#: src/blocks/dynamic-separator/index.js:38
 msgctxt "block style"
 msgid "Fullwidth"
 msgstr ""
 
-#: src/blocks/icon/index.js:122
+#: src/blocks/icon/index.js:41
 msgctxt "block style"
 msgid "Outlined"
 msgstr ""
 
-#: src/blocks/icon/index.js:123
+#: src/blocks/icon/index.js:42
 msgctxt "block style"
 msgid "Filled"
 msgstr ""
 
-#: src/blocks/shape-divider/index.js:160
+#: src/blocks/shape-divider/index.js:43
 msgctxt "block style"
 msgid "Wavy"
 msgstr ""
 
-#: src/blocks/shape-divider/index.js:161
+#: src/blocks/shape-divider/index.js:44
 msgctxt "block style"
 msgid "Hills"
 msgstr ""
 
-#: src/blocks/shape-divider/index.js:162
+#: src/blocks/shape-divider/index.js:45
 msgctxt "block style"
 msgid "Waves"
 msgstr ""
 
-#: src/blocks/shape-divider/index.js:163
+#: src/blocks/shape-divider/index.js:46
 msgctxt "block style"
 msgid "Angled"
 msgstr ""
 
-#: src/blocks/shape-divider/index.js:164
+#: src/blocks/shape-divider/index.js:47
 msgctxt "block style"
 msgid "Sloped"
 msgstr ""
 
-#: src/blocks/shape-divider/index.js:165
+#: src/blocks/shape-divider/index.js:48
 msgctxt "block style"
 msgid "Rounded"
 msgstr ""
 
-#: src/blocks/shape-divider/index.js:166
+#: src/blocks/shape-divider/index.js:49
 msgctxt "block style"
 msgid "Triangle"
 msgstr ""
 
-#: src/blocks/shape-divider/index.js:167
+#: src/blocks/shape-divider/index.js:50
 msgctxt "block style"
 msgid "Pointed"
 msgstr ""
@@ -2658,636 +2662,642 @@ msgctxt "block style"
 msgid "Circular"
 msgstr ""
 
-#: src/blocks/features/feature/components/edit.js:31
+#: src/blocks/features/feature/edit.js:31
 msgctxt "content placeholder"
 msgid "Add feature title..."
 msgstr ""
 
-#: src/blocks/features/feature/components/edit.js:31
+#: src/blocks/features/feature/edit.js:31
 msgctxt "content placeholder"
 msgid "Feature Title"
 msgstr ""
 
-#: src/blocks/features/feature/components/edit.js:32
+#: src/blocks/features/feature/edit.js:32
 msgctxt "content placeholder"
 msgid "Add feature content"
 msgstr ""
 
-#: src/blocks/features/feature/components/edit.js:32
+#: src/blocks/features/feature/edit.js:32
 msgctxt "content placeholder"
 msgid "This is a feature block that you can use to highlight features."
 msgstr ""
 
-#: src/blocks/hero/components/edit.js:40
-#: src/blocks/media-card/components/edit.js:46
+#: src/blocks/hero/edit.js:36
+msgctxt "content placeholder"
+msgid "Add hero heading..."
+msgstr ""
+
+#: src/blocks/hero/edit.js:37
+msgctxt "content placeholder"
+msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
+msgstr ""
+
+#: src/blocks/hero/edit.js:40
+msgctxt "content placeholder"
+msgid "Add primary action..."
+msgstr ""
+
+#: src/blocks/hero/edit.js:41
+msgctxt "content placeholder"
+msgid "Add secondary action..."
+msgstr ""
+
+#: src/blocks/media-card/edit.js:46
 msgctxt "content placeholder"
 msgid "Add heading..."
 msgstr ""
 
-#: src/blocks/hero/components/edit.js:40
-msgctxt "content placeholder"
-msgid "Hero Block"
-msgstr ""
-
-#: src/blocks/hero/components/edit.js:41
-#: src/blocks/media-card/components/edit.js:47
-msgctxt "content placeholder"
-msgid "Add content..."
-msgstr ""
-
-#: src/blocks/hero/components/edit.js:41
-msgctxt "content placeholder"
-msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
-msgstr ""
-
-#: src/blocks/hero/components/edit.js:44
-msgctxt "content placeholder"
-msgid "Primary"
-msgstr ""
-
-#: src/blocks/hero/components/edit.js:45
-msgctxt "content placeholder"
-msgid "Secondary"
-msgstr ""
-
-#: src/blocks/media-card/components/edit.js:46
+#: src/blocks/media-card/edit.js:46
 msgctxt "content placeholder"
 msgid "Media Card"
 msgstr ""
 
-#: src/blocks/media-card/components/edit.js:47
+#: src/blocks/media-card/edit.js:47
+msgctxt "content placeholder"
+msgid "Add content..."
+msgstr ""
+
+#: src/blocks/media-card/edit.js:47
 msgctxt "content placeholder"
 msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:223
-#: src/components/dimensions-control/index.js:749
+#: src/blocks/services/service/edit.js:194
+msgctxt "content placeholder"
+msgid "Write title..."
+msgstr ""
+
+#: src/blocks/services/service/edit.js:200
+msgctxt "content placeholder"
+msgid "Write description..."
+msgstr ""
+
+#: src/blocks/icon/inspector.js:223
 msgctxt "size name"
 msgid "Normal"
 msgstr ""
 
-#: src/blocks/icon/components/inspector.js:223
-#: src/components/dimensions-control/index.js:749
+#: src/blocks/icon/inspector.js:223
 msgctxt "size name"
 msgid "Custom"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:102
+#: src/blocks/icon/svgs.js:102
 msgctxt "label"
 msgid "Add Circle"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:108
+#: src/blocks/icon/svgs.js:108
 msgctxt "label"
 msgid "Minus Circle"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:114
+#: src/blocks/icon/svgs.js:114
 msgctxt "label"
 msgid "Pie Chart"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:119
+#: src/blocks/icon/svgs.js:119
 msgctxt "label"
 msgid "Scatter Plot"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:125
+#: src/blocks/icon/svgs.js:125
 msgctxt "label"
 msgid "Poll"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:131
+#: src/blocks/icon/svgs.js:131
 msgctxt "label"
 msgid "Emoticon"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:137
+#: src/blocks/icon/svgs.js:137
 msgctxt "label"
 msgid "Functions"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:14
+#: src/blocks/icon/svgs.js:14
 msgctxt "label"
 msgid "CoBlocks"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:142
+#: src/blocks/icon/svgs.js:142
 msgctxt "label"
 msgid "Doodle"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:147
+#: src/blocks/icon/svgs.js:147
 msgctxt "label"
 msgid "Font"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:153
+#: src/blocks/icon/svgs.js:153
 msgctxt "label"
 msgid "Heart"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:159
+#: src/blocks/icon/svgs.js:159
 msgctxt "label"
 msgid "Star"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:165
+#: src/blocks/icon/svgs.js:165
 msgctxt "label"
 msgid "Desktop"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:171
+#: src/blocks/icon/svgs.js:171
 msgctxt "label"
 msgid "Devices"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:176
+#: src/blocks/icon/svgs.js:176
 msgctxt "label"
 msgid "Laptop"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:181
+#: src/blocks/icon/svgs.js:181
 msgctxt "label"
 msgid "Tablet"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:186
+#: src/blocks/icon/svgs.js:186
 msgctxt "label"
 msgid "Watch"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:19
+#: src/blocks/icon/svgs.js:19
 msgctxt "label"
 msgid "Audio"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:192
+#: src/blocks/icon/svgs.js:192
 msgctxt "label"
 msgid "Keyboard"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:197
+#: src/blocks/icon/svgs.js:197
 msgctxt "label"
 msgid "Hub"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:208
+#: src/blocks/icon/svgs.js:208
 msgctxt "label"
 msgid "Email"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:213
+#: src/blocks/icon/svgs.js:213
 msgctxt "label"
 msgid "Reply"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:218
+#: src/blocks/icon/svgs.js:218
 msgctxt "label"
 msgid "Send"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:224
+#: src/blocks/icon/svgs.js:224
 msgctxt "label"
 msgid "Signal"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:229
+#: src/blocks/icon/svgs.js:229
 msgctxt "label"
 msgid "Blocks"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:235
+#: src/blocks/icon/svgs.js:235
 msgctxt "label"
 msgid "Marker"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:241
+#: src/blocks/icon/svgs.js:241
 msgctxt "label"
 msgid "Mountains"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:247
+#: src/blocks/icon/svgs.js:247
 msgctxt "label"
 msgid "Waves"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:25
+#: src/blocks/icon/svgs.js:25
 msgctxt "label"
 msgid "Album"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:252
+#: src/blocks/icon/svgs.js:252
 msgctxt "label"
 msgid "Globe"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:257
+#: src/blocks/icon/svgs.js:257
 msgctxt "label"
 msgid "City"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:262
+#: src/blocks/icon/svgs.js:262
 msgctxt "label"
 msgid "Dining"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:267
+#: src/blocks/icon/svgs.js:267
 msgctxt "label"
 msgid "Couch"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:273
+#: src/blocks/icon/svgs.js:273
 msgctxt "label"
 msgid "Cake"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:279
+#: src/blocks/icon/svgs.js:279
 msgctxt "label"
 msgid "Flower"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:285
+#: src/blocks/icon/svgs.js:285
 msgctxt "label"
 msgid "Vintage Filter"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:291
+#: src/blocks/icon/svgs.js:291
 msgctxt "label"
 msgid "Build"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:297
+#: src/blocks/icon/svgs.js:297
 msgctxt "label"
 msgid "Credit Card"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:302
+#: src/blocks/icon/svgs.js:302
 msgctxt "label"
 msgid "Extension"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:308
+#: src/blocks/icon/svgs.js:308
 msgctxt "label"
 msgid "Fingerprint"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:31
+#: src/blocks/icon/svgs.js:31
 msgctxt "label"
 msgid "Headset"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:313
+#: src/blocks/icon/svgs.js:313
 msgctxt "label"
 msgid "Translate"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:318
+#: src/blocks/icon/svgs.js:318
 msgctxt "label"
 msgid "New"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:324
+#: src/blocks/icon/svgs.js:324
 msgctxt "label"
 msgid "Flare"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:329
+#: src/blocks/icon/svgs.js:329
 msgctxt "label"
 msgid "Layers"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:334
+#: src/blocks/icon/svgs.js:334
 msgctxt "label"
 msgid "Shipping"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:339
+#: src/blocks/icon/svgs.js:339
 msgctxt "label"
 msgid "Snowflake"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:344
+#: src/blocks/icon/svgs.js:344
 msgctxt "label"
 msgid "School"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:349
+#: src/blocks/icon/svgs.js:349
 msgctxt "label"
 msgid "Fire"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:354
+#: src/blocks/icon/svgs.js:354
 msgctxt "label"
 msgid "Update"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:36
+#: src/blocks/icon/svgs.js:36
 msgctxt "label"
 msgid "Volume"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:42
+#: src/blocks/icon/svgs.js:42
 msgctxt "label"
 msgid "Voice"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:48
+#: src/blocks/icon/svgs.js:48
 msgctxt "label"
 msgid "Aperture"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:54
+#: src/blocks/icon/svgs.js:54
 msgctxt "label"
 msgid "Camera"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:60
+#: src/blocks/icon/svgs.js:60
 msgctxt "label"
 msgid "Gallery"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:66
+#: src/blocks/icon/svgs.js:66
 msgctxt "label"
 msgid "Video"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:72
+#: src/blocks/icon/svgs.js:72
 msgctxt "label"
 msgid "Film"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:78
+#: src/blocks/icon/svgs.js:78
 msgctxt "label"
 msgid "Color Lens"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:84
+#: src/blocks/icon/svgs.js:84
 msgctxt "label"
 msgid "Color Picker"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:90
+#: src/blocks/icon/svgs.js:90
 msgctxt "label"
 msgid "Paint"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:96
+#: src/blocks/icon/svgs.js:96
 msgctxt "label"
 msgid "Brush"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:109
+#: src/blocks/icon/svgs.js:109
 msgctxt "tags"
 msgid "add minus circle insert plus round math"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:115
+#: src/blocks/icon/svgs.js:115
 msgctxt "tags"
 msgid "stats round circle pie chart graph"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:120
+#: src/blocks/icon/svgs.js:120
 msgctxt "tags"
 msgid "stats round circle pie chart graph dots data"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:126
+#: src/blocks/icon/svgs.js:126
 msgctxt "tags"
 msgid "chart graph stats data graph"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:132
+#: src/blocks/icon/svgs.js:132
 msgctxt "tags"
 msgid "happy emotion emoticon smile fun joy"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:138
+#: src/blocks/icon/svgs.js:138
 msgctxt "tags"
 msgid "code greek math"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:143
+#: src/blocks/icon/svgs.js:143
 msgctxt "tags"
 msgid "drawing doodle art creative type font pencil marker"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:15
+#: src/blocks/icon/svgs.js:15
 msgctxt "tags"
 msgid "blocks block build gutenberg design"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:154
+#: src/blocks/icon/svgs.js:154
 msgctxt "tags"
 msgid "love shape valentine kiss"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:160
+#: src/blocks/icon/svgs.js:160
 msgctxt "tags"
 msgid "rate vote plus favorite like"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:177
+#: src/blocks/icon/svgs.js:177
 msgctxt "tags"
 msgid "computer apple montior device pc desk office"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:182
+#: src/blocks/icon/svgs.js:182
 msgctxt "tags"
 msgid "computer ipad surface apple montior device pc desk office"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:187
+#: src/blocks/icon/svgs.js:187
 msgctxt "tags"
 msgid "device apple mac"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:193
+#: src/blocks/icon/svgs.js:193
 msgctxt "tags"
 msgid "computer ipad surface apple device pc desk office"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:198
+#: src/blocks/icon/svgs.js:198
 msgctxt "tags"
 msgid "usb connect hub device social"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:20
+#: src/blocks/icon/svgs.js:20
 msgctxt "tags"
 msgid "music microphone podcast song artist creative media audio"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:209
+#: src/blocks/icon/svgs.js:209
 msgctxt "tags"
 msgid "email mail os read letter"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:225
+#: src/blocks/icon/svgs.js:225
 msgctxt "tags"
 msgid "wifi radio waves"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:236
+#: src/blocks/icon/svgs.js:236
 msgctxt "tags"
 msgid "map directions about check checkbox"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:242
+#: src/blocks/icon/svgs.js:242
 msgctxt "tags"
 msgid "hills landscape minimal outdoors outside"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:248
+#: src/blocks/icon/svgs.js:248
 msgctxt "tags"
 msgid "ocean outside outdoors water fun summer minimal"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:253
+#: src/blocks/icon/svgs.js:253
 msgctxt "tags"
 msgid "world public global earth location map"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:258
+#: src/blocks/icon/svgs.js:258
 msgctxt "tags"
 msgid "location map public business corporation building town skyscraper"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:263
+#: src/blocks/icon/svgs.js:263
 msgctxt "tags"
 msgid "food drink restaurant menu fork spoon taste"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:268
+#: src/blocks/icon/svgs.js:268
 msgctxt "tags"
 msgid "weekend chill relax chair"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:274
+#: src/blocks/icon/svgs.js:274
 msgctxt "tags"
-msgid "fun party happy celebration tast food"
+msgid "fun party happy celebration taste food"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:280
+#: src/blocks/icon/svgs.js:280
 msgctxt "tags"
 msgid "petal scent smell nice relax landscape gardening outdoors outside"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:292
+#: src/blocks/icon/svgs.js:292
 msgctxt "tags"
 msgid "blocks block box boxes square build widgets"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:298
+#: src/blocks/icon/svgs.js:298
 msgctxt "tags"
 msgid "money cash checkout shop commerce ecommerce"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:303
+#: src/blocks/icon/svgs.js:303
 msgctxt "tags"
 msgid "puzzle plugin widget team together"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:309
+#: src/blocks/icon/svgs.js:309
 msgctxt "tags"
 msgid "security bio defense biometric safe secure"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:314
+#: src/blocks/icon/svgs.js:314
 msgctxt "tags"
 msgid "language global world speech"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:319
+#: src/blocks/icon/svgs.js:319
 msgctxt "tags"
 msgid "music microphone song artist creative media audio badge"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:32
+#: src/blocks/icon/svgs.js:32
 msgctxt "tags"
 msgid "microphone audio beats bose headphones"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:325
+#: src/blocks/icon/svgs.js:325
 msgctxt "tags"
 msgid "flower camera photography artist creative"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:330
+#: src/blocks/icon/svgs.js:330
 msgctxt "tags"
 msgid "design creative build develop engineer"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:335
+#: src/blocks/icon/svgs.js:335
 msgctxt "tags"
 msgid "shop commence ecommence woo cart ship"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:340
+#: src/blocks/icon/svgs.js:340
 msgctxt "tags"
 msgid "cold ice frozen chill winter season global"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:345
+#: src/blocks/icon/svgs.js:345
 msgctxt "tags"
 msgid "education graduate graduation degree diploma college"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:350
+#: src/blocks/icon/svgs.js:350
 msgctxt "tags"
 msgid "hot trending trendy design"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:355
+#: src/blocks/icon/svgs.js:355
 msgctxt "tags"
 msgid "improve add upload software"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:37
+#: src/blocks/icon/svgs.js:37
 msgctxt "tags"
 msgid "music microphone song artist creative media audio"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:43
+#: src/blocks/icon/svgs.js:43
 msgctxt "tags"
 msgid "microphone podcast computer device music microphone song artist creative media audio"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:49
+#: src/blocks/icon/svgs.js:49
 msgctxt "tags"
 msgid "photo photographer photography camera film creative media"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:55
+#: src/blocks/icon/svgs.js:55
 msgctxt "tags"
 msgid "photo photographer photography camera aperture film creative media"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:61
+#: src/blocks/icon/svgs.js:61
 msgctxt "tags"
 msgid "photo photos image media camera aperture collection"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:67
+#: src/blocks/icon/svgs.js:67
 msgctxt "tags"
 msgid "film videography director producer media creative"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:73
+#: src/blocks/icon/svgs.js:73
 msgctxt "tags"
 msgid "video videography director producer media creative camera photographer photography aperture"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:85
+#: src/blocks/icon/svgs.js:85
 msgctxt "tags"
 msgid "palette design colors artist paint creative media"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:91
+#: src/blocks/icon/svgs.js:91
 msgctxt "tags"
 msgid "palette design colors artist creative media"
 msgstr ""
 
-#: src/blocks/icon/components/svgs.js:97
+#: src/blocks/icon/svgs.js:97
 msgctxt "tags"
 msgid "palette design colors artist creative media paint paintbrush"
 msgstr ""
@@ -3449,6 +3459,10 @@ msgstr ""
 msgid "Get started with CoBlocks here:"
 msgstr ""
 
+#: includes/class-coblocks-block-settings.php:80
+msgid "Enable or disable blocks"
+msgstr ""
+
 #: includes/class-coblocks-form.php:67
 msgid "Google reCaptcha site key for form spam protection"
 msgstr ""
@@ -3457,16 +3471,16 @@ msgstr ""
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr ""
 
+#: includes/class-coblocks-form.php:390
+msgid "Submit"
+msgstr ""
+
 #: includes/class-coblocks-form.php:561
 msgid "Your message was sent:"
 msgstr ""
 
 #: includes/class-coblocks-google-map-block.php:122
 msgid "Google Map API key for map rendering"
-msgstr ""
-
-#: includes/class-coblocks-block-settings.php:80
-msgid "Enable or disable blocks"
 msgstr ""
 
 #: src/blocks/share/index.php:145

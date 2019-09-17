@@ -7,35 +7,39 @@ import './styles/style.scss';
 /**
  * Internal dependencies.
  */
-import metadata from './block.json';
-import icons from './icons';
 import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
 
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants.
  */
-const { name } = metadata;
-
-const icon = icons.services;
+const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Services' ),
-	description: __( 'services description' ),
-	keywords: [],
-	attributes: metadata.attributes,
+	title: _x( 'Services', 'block name' ),
+	description: __( 'Add up to four columns of services to display.' ),
+	icon,
+	keywords: [ _x( 'features', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		reusable: false,
 		html: false,
 	},
+	example: {
+		attributes: {
+			align: 'full',
+		},
+	},
+	attributes,
 	edit,
 	save,
 };
 
-export { metadata, name, icon, settings };
+export { name, category, metadata, settings };

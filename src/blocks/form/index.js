@@ -1,78 +1,44 @@
+/**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
-import './styles/style.scss';
 import edit from './edit';
-import icons from './icons';
+import icon from './icon';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Block constants
  */
-const name = 'form';
-
-const title = __( 'Form' );
-
-const icon = icons.form;
-
-const keywords = [
-	__( 'email' ),
-	__( 'about' ),
-	__( 'contact' ),
-];
-
-const blockAttributes = {
-	subject: {
-		type: 'string',
-		default: null,
-	},
-	to: {
-		type: 'string',
-		default: null,
-	},
-	submitButtonText: {
-		type: 'string',
-		default: __( 'Submit' ),
-	},
-	customBackgroundButtonColor: {
-		type: 'string',
-	},
-	customTextButtonColor: {
-		type: 'string',
-	},
-	submitButtonClasses: {
-		type: 'string',
-	},
-};
+const { name, category, attributes } = metadata;
 
 const settings = {
-
-	title: title,
-
+	title: _x( 'Form', 'block name' ),
 	description: __( 'Add a simple form to your page.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	icon,
+	keywords: [ _x( 'email', 'block keyword' ), _x( 'about', 'block keyword' ), _x( 'contact', 'block keyword' ) ],
 	supports: {
 		reusable: false,
 		html: false,
 	},
-
-	className: false,
-
-	edit: edit,
-
+	example: {
+		attributes: {
+			subject: __( 'Subject example' ),
+		},
+	},
+	attributes,
+	edit,
 	save: InnerBlocks.Content,
-
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

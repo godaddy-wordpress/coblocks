@@ -9,15 +9,16 @@ import map from 'lodash/map';
  */
 import icons from './icons';
 import './styles/editor.scss';
+import DimensionsSelect from './dimensions-select';
 
 /**
  * WordPress dependencies
  */
-const { __, _x, sprintf } = wp.i18n;
-const { withInstanceId } = wp.compose;
-const { dispatch } = wp.data;
-const { Component, Fragment } = wp.element;
-const { ButtonGroup, Dropdown, NavigableMenu, BaseControl, Button, Tooltip, Dashicon, TabPanel } = wp.components;
+import { __, _x, sprintf } from '@wordpress/i18n';
+import { withInstanceId } from '@wordpress/compose';
+import { dispatch } from '@wordpress/data';
+import { Component, Fragment } from '@wordpress/element';
+import { ButtonGroup, BaseControl, Button, Tooltip, TabPanel } from '@wordpress/components';
 
 class DimensionsControl extends Component {
 	constructor( props ) {
@@ -311,7 +312,10 @@ class DimensionsControl extends Component {
 			syncUnitsTablet,
 			syncUnitsMobile,
 			dimensionSize,
+			setAttributes,
 		} = this.props;
+
+		const { paddingSize, marginSize } = this.props.attributes;
 
 		const classes = classnames(
 			'components-base-control',
@@ -401,47 +405,18 @@ class DimensionsControl extends Component {
 
 		const unitSizes = [
 			{
-				name: __( 'Pixel' ),
+				name: _x( 'Pixel', 'A size unit for CSS markup' ),
 				unitValue: 'px',
 			},
 			{
-				name: __( 'Em' ),
+				name: _x( 'Em', 'A size unit for CSS markup' ),
 				unitValue: 'em',
 			},
 			{
-				name: __( 'Percentage' ),
+				name: _x( 'Percentage', 'A size unit for CSS markup' ),
 				unitValue: '%',
 			},
 		];
-
-		const utilitySizes = [
-			{
-				name: __( 'None' ),
-				size: 0,
-				slug: 'no',
-			},
-			{
-				name: __( 'Small' ),
-				size: 14,
-				slug: 'small',
-			},
-			{
-				name: __( 'Medium' ),
-				size: 24,
-				slug: 'medium',
-			},
-			{
-				name: __( 'Large' ),
-				size: 34,
-				slug: 'large',
-			}, {
-				name: __( 'Huge' ),
-				size: 60,
-				slug: 'huge',
-			},
-		];
-
-		const currentSize = utilitySizes.find( ( utility ) => utility.slug === dimensionSize );
 
 		const onSelect = ( tabName ) => {
 			let selected = 'desktop';
@@ -485,6 +460,7 @@ class DimensionsControl extends Component {
 								<div className="components-coblocks-dimensions-control__actions">
 									<ButtonGroup className="components-coblocks-dimensions-control__units" aria-label={ __( 'Select Units' ) }>
 										{ map( unitSizes, ( { unitValue, name } ) => (
+											/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
 											<Tooltip text={ sprintf( __( '%s Units' ), name ) }>
 												<Button
 													key={ unitValue }
@@ -492,6 +468,7 @@ class DimensionsControl extends Component {
 													isSmall
 													isPrimary={ unit === unitValue }
 													aria-pressed={ unit === unitValue }
+													/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
 													aria-label={ sprintf( __( '%s Units' ), name ) }
 													onClick={ () => this.onChangeUnits( unitValue ) }
 												>
@@ -506,6 +483,7 @@ class DimensionsControl extends Component {
 										onClick={ () => this.onChangeSize( 'no', -1 ) }
 										isSmall
 										isDefault
+										/* translators: %s: a texual label  */
 										aria-label={ sprintf( __( 'Turn off advanced %s settings' ), label.toLowerCase() ) }
 									>
 										{ __( 'Reset' ) }
@@ -549,6 +527,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeTopValue }
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Top' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueTopMobile ? valueTopMobile : '' }
@@ -559,6 +538,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeRightValue }
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Right' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueRightMobile ? valueRightMobile : '' }
@@ -569,6 +549,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeBottomValue }
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Bottom' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueBottomMobile ? valueBottomMobile : '' }
@@ -579,6 +560,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeLeftValue }
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Left' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueLeftMobile ? valueLeftMobile : '' }
@@ -609,6 +591,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeTopValue }
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Top' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueTopTablet ? valueTopTablet : '' }
@@ -619,6 +602,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeRightValue }
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Right' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueRightTablet ? valueRightTablet : '' }
@@ -629,6 +613,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeBottomValue }
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Bottom' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueBottomTablet ? valueBottomTablet : '' }
@@ -639,6 +624,7 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeLeftValue }
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 															aria-label={ sprintf( __( '%s Left' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueLeftTablet ? valueLeftTablet : '' }
@@ -669,6 +655,7 @@ class DimensionsControl extends Component {
 														className="components-coblocks-dimensions-control__number"
 														type="number"
 														onChange={ onChangeTopValue }
+														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 														aria-label={ sprintf( __( '%s Top' ), label ) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
 														value={ valueTop ? valueTop : '' }
@@ -679,6 +666,7 @@ class DimensionsControl extends Component {
 														className="components-coblocks-dimensions-control__number"
 														type="number"
 														onChange={ onChangeRightValue }
+														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 														aria-label={ sprintf( __( '%s Right' ), label ) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
 														value={ valueRight ? valueRight : '' }
@@ -689,6 +677,7 @@ class DimensionsControl extends Component {
 														className="components-coblocks-dimensions-control__number"
 														type="number"
 														onChange={ onChangeBottomValue }
+														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 														aria-label={ sprintf( __( '%s Bottom' ), label ) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
 														value={ valueBottom ? valueBottom : '' }
@@ -699,6 +688,7 @@ class DimensionsControl extends Component {
 														className="components-coblocks-dimensions-control__number"
 														type="number"
 														onChange={ onChangeLeftValue }
+														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
 														aria-label={ sprintf( __( '%s Left' ), label ) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
 														value={ valueLeft ? valueLeft : '' }
@@ -733,46 +723,21 @@ class DimensionsControl extends Component {
 							</div>
 						</Fragment>						:
 						<BaseControl id="textarea-1" label={ label } help={ help }>
-							<div className="components-font-size-picker__buttons">
-								<Dropdown
-									className="components-font-size-picker__dropdown"
-									contentClassName="components-font-size-picker__dropdown-content components-coblocks-dimensions-control__dropdown-content"
-									position="bottom"
-									renderToggle={ ( { isOpen, onToggle } ) => (
-										<Button
-											className="components-font-size-picker__selector"
-											isLarge
-											onClick={ onToggle }
-											aria-expanded={ isOpen }
-											aria-label={ sprintf( __( 'Custom %s size' ), label.toLowerCase() ) }
-										>
-											{ ( currentSize && currentSize.name ) || ( ! dimensionSize && _x( 'Normal', 'size name' ) ) || _x( 'Custom', 'size name' ) }
-										</Button>
-									) }
-									renderContent={ () => (
-										<NavigableMenu>
-											{ map( utilitySizes, ( { name, size, slug } ) => (
-												<Button
-													key={ slug }
-													onClick={ () => this.onChangeSize( slug, size ) }
-													className={ `is-${ slug }-size` }
-													role="menuitem"
-												>
-													{ ( dimensionSize === slug || ( ! dimensionSize && slug === 'normal' ) ) && <Dashicon icon="saved" /> }
-													<span className="components-font-size-picker__dropdown-text-size">
-														{ name }
-													</span>
-												</Button>
-											) ) }
-										</NavigableMenu>
-									) }
+							<div className="components-font-size-picker__controls">
+								<DimensionsSelect
+									type={ type }
+									setAttributes={ setAttributes }
+									paddingSize={ paddingSize }
+									marginSize={ marginSize }
 								/>
+
 								<Button
 									className="components-color-palette__clear"
 									type="button"
 									onClick={ () => this.onChangeSize( 'advanced', '' ) }
 
 									isDefault
+									/* translators: %s:  a texual label */
 									aria-label={ sprintf( __( 'Advanced %s settings' ), label.toLowerCase() ) }
 									isPrimary={ dimensionSize === 'advanced' }
 								>

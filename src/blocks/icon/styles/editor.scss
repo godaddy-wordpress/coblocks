@@ -184,3 +184,54 @@
 		margin-top: 3px;
 	}
 }
+
+.components-coblocks-icon-size__controls {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	max-width: 248px;
+
+	.components-base-control {
+		width: 45%;
+	}
+
+	.components-base-control,
+	.components-base-control__field {
+		margin-bottom: 0 !important;
+	}
+}
+
+// Hide screen reader label for Gutenberg < 6.4
+.components-coblocks-icon-size__controls {
+	.components-base-control .components-base-control__label {
+		border: 0;
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute !important;
+		width: 1px;
+		word-wrap: normal !important;
+	}
+}
+
+// Shim to center buttons in the inserter preview.
+.block-editor-inserter__preview-content {
+	.wp-block-coblocks-icon {
+		text-align: center;
+	}
+}
+
+// Shim to get icons to display correctly in G 6.3+ only.
+.components-panel__body .block-editor-block-preview__container .wp-block-coblocks-icon {
+	align-content: center;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	
+	svg {
+		transform: scale(4);
+	}
+}

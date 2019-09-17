@@ -1,0 +1,71 @@
+{
+	"name": "coblocks/icon",
+	"category": "coblocks",
+	"attributes": {
+		"icon": {
+			"type": "string",
+			"default": "heart"
+		},
+		"iconRand": {
+			"type": "boolean",
+			"default": true
+		},
+		"iconSize": {
+			"type": "string",
+			"default": "medium"
+		},
+		"contentAlign": {
+			"type": "string"
+		},
+		"hasContentAlign": {
+			"type": "boolean",
+			"default": true
+		},
+		"backgroundColor": {
+			"type": "string"
+		},
+		"customBackgroundColor": {
+			"type": "string"
+		},
+		"iconColor": {
+			"type": "string"
+		},
+		"customIconColor": {
+			"type": "string"
+		},
+		"height": {
+			"type": "number",
+			"default": 60
+		},
+		"width": {
+			"type": "number",
+			"default": 60
+		},
+		"borderRadius": {
+			"type": "number",
+			"default": 0
+		},
+		"padding": {
+			"type": "number",
+			"default": 0
+		},
+		"href": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "div > div > a",
+			"attribute": "href"
+		},
+		"rel": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "div > div > a",
+			"attribute": "rel"
+		},
+		"linkTarge": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "div > div > a",
+			"attribute": "target"
+		}
+	}
+}

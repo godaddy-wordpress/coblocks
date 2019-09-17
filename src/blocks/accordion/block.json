@@ -1,0 +1,14 @@
+{
+	"name": "coblocks/accordion",
+	"category": "coblocks",
+	"attributes": {
+		"count": {
+			"type": "number",
+			"default": "1"
+		},
+		"polyfill": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}

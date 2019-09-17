@@ -37,7 +37,7 @@ class CoBlocks_Accordion_IE_Support_Tests extends WP_UnitTestCase {
 		$new_reflection::register();
 
 		$expected = [
-			'version' => '1.12.0',
+			'version' => '1.13.0',
 			'slug'    => 'coblocks',
 			'url'     => str_replace( '/.dev/tests/phpunit', '', untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) ) ), // Fix inconsistencies path between plugin and unit tests
 		];
