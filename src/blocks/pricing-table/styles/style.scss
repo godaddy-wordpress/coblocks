@@ -39,6 +39,7 @@ $gutter: 0.75em;
 	margin-bottom: $gutter * 2;
 	padding: 4em 1.5em;
 	position: relative;
+	width: 100%;
 
 	@include break-small() {
 		margin-bottom: 0;
