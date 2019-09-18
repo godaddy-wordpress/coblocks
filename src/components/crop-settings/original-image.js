@@ -1,4 +1,4 @@
-class AttachmentOriginalImage {
+class OriginalImage {
 	constructor() {
 		this.originalImageCache = {};
 		this.urlsInProgress = {};
@@ -42,4 +42,4 @@ class AttachmentOriginalImage {
 	}
 }
 
-export const attachmentOriginalImage = new AttachmentOriginalImage();
+export const originalImage = new OriginalImage();

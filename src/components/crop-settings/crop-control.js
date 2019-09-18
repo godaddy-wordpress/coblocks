@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import CropSettings from './';
-import { attachmentOriginalImage } from './attachment-original-image';
+import { originalImage } from './original-image';
 
 /**
  * WordPress dependencies
@@ -29,7 +29,7 @@ class CropControl extends Component {
 			return;
 		}
 
-		attachmentOriginalImage.get( attachmentId ).then( function( data ) {
+		originalImage.get( attachmentId ).then( function( data ) {
 			const url = data.url;
 
 			self.setState( {
@@ -51,7 +51,7 @@ class CropControl extends Component {
 			return;
 		}
 
-		attachmentOriginalImage.get( attachmentId ).then( function( data ) {
+		originalImage.get( attachmentId ).then( function( data ) {
 			const url = data.url;
 			const lastUrl = self.state.imageUrl;
 
