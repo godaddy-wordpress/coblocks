@@ -11,7 +11,7 @@ import { BackgroundPanel } from '../../components/background';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, PanelColorSettings } = wp.blockEditor;
+const { InspectorControls, InspectorAdvancedControls, PanelColorSettings } = wp.blockEditor;
 const { PanelBody, RangeControl, ToggleControl } = wp.components;
 
 /**
@@ -163,13 +163,7 @@ class Inspector extends Component {
 								step={ 1 }
 							/> }
 							<ToggleControl
-								label={ __( 'Responsive Height' ) }
-								checked={ !! responsiveHeight }
-								onChange={ () => setAttributes( { responsiveHeight: ! responsiveHeight, height: 500, className: !responsiveHeight ? 'responsive-height' : '' } ) }
-								help={ this.getResponsiveHeightHelp }
-							/>
-							<ToggleControl
-								label={ __( 'Thumbnail Navigation' ) }
+								label={ __( 'Thumbnails' ) }
 								checked={ !! thumbnails }
 								onChange={ () => setAttributes( { thumbnails: ! thumbnails } ) }
 								help={ this.getThumbnailNavigationHelp }
@@ -187,6 +181,14 @@ class Inspector extends Component {
 							colorSettings={ this.getColors() }
 						/>
 					</InspectorControls>
+					<InspectorAdvancedControls>
+						<ToggleControl
+							label={ __( 'Responsive Height' ) }
+							checked={ !! responsiveHeight }
+							onChange={ () => setAttributes( { responsiveHeight: ! responsiveHeight, height: 500, className: !responsiveHeight ? 'responsive-height' : '' } ) }
+							help={ this.getResponsiveHeightHelp }
+						/>
+					</InspectorAdvancedControls>
 				</Fragment>
 			)
 		);

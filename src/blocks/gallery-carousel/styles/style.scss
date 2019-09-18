@@ -19,7 +19,6 @@
 
 	.carousel-nav {
 		height: auto;
-		margin: 5px auto 0;
 
 		.flickity-viewport {
 			height: 80px !important;
@@ -27,32 +26,35 @@
 			margin-right: 0;
 		}
 
-		.blockgallery-figure {
+		figure {
+			margin: 0;
+		}
+
+		.blockgallery--figure {
 			height: 100%;
-			width: 100%;
+			position: relative;
 		}
 
 		.blockgallery--item-thumbnail {
 			height: 80px;
 			opacity: 0.4;
+			overflow: hidden;
 			transition: opacity 350ms ease;
 			width: 100px;
 
 			&.is-selected {
 				opacity: 1;
 			}
+
+			img {
+				height: 100%;
+				object-fit: cover;
+				position: absolute;
+				top: 0;
+				vertical-align: middle;
+				width: 100%;
+			}
 		}
-	}
-
-	.blockgallery--figure {
-		margin: 0 5px 0 0;
-	}
-}
-
-.editor-block-list__block-edit {
-	.carousel-nav {
-		margin: 3px -3px !important;
-		width: 100% !important;
 	}
 }
 

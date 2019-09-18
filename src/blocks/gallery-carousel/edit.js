@@ -230,7 +230,10 @@ class GalleryCarouselEdit extends Component {
 
 		const flickityClasses = classnames(
 			'has-carousel',
-			`has-carousel-${ gridSize }`, {}
+			`has-carousel-${ gridSize }`, {
+				[ `has-margin-bottom-${ gutter }` ] : thumbnails && gutter > 0,
+				[ `has-margin-bottom-mobile-${ gutterMobile }` ] : thumbnails && gutterMobile > 0,
+			}
 		);
 
 		const navClasses = classnames(
@@ -244,18 +247,18 @@ class GalleryCarouselEdit extends Component {
 			}
 		);
 
-		const thumbnailClasses = classnames(
-			'carousel-nav', {
-			}
-		);
+		const navStyles = {
+			marginTop: gutter > 0 ? gutter / 2 + 'px' : undefined,
+		};
 
 		const navFigureClasses = classnames(
 			'blockgallery--figure', {
-				[ `has-margin-top-${ gutter }` ] : gutter > 0,
-				[ `has-margin-top-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-margin-left-${ gutter }` ] : gutter > 0,
+				[ `has-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+				[ `has-margin-right-${ gutter }` ] : gutter > 0,
+				[ `has-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
 			}
 		);
-
 
 		if ( ! hasImages ) {
 			return (
@@ -365,9 +368,10 @@ class GalleryCarouselEdit extends Component {
 					<div
 						className={ innerClasses }
 						style={ innerStyles }
+						style={ navStyles }
 					>
 						<Flickity
-							className={ thumbnailClasses }
+							className={ navClasses }
 							options={ navOptions }
 							disableImagesLoaded={ false }
 							flickityRef={ c => this.flkty = c }

@@ -47,7 +47,10 @@ const save = ( { attributes, className } ) => {
 
 	const flickityClasses = classnames(
 		'has-carousel',
-		`has-carousel-${ gridSize }`, {}
+		`has-carousel-${ gridSize }`, {
+			[ `has-margin-bottom-${ gutter }` ] : thumbnails && gutter > 0,
+			[ `has-margin-bottom-mobile-${ gutterMobile }` ] : thumbnails && gutterMobile > 0,
+		}
 	);
 
 	const flickityStyles = {
@@ -101,28 +104,23 @@ const save = ( { attributes, className } ) => {
 		}
 	);
 
-	const thumbnailClasses = classnames(
-		'carousel-nav', {
-		}
-	);
-
 	const navFigureClasses = classnames(
 		'blockgallery--figure', {
-			[ `has-margin-top-${ gutter }` ] : gutter > 0,
-			[ `has-margin-top-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+			[ `has-margin-left-${ gutter }` ] : gutter > 0,
+			[ `has-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+			[ `has-margin-right-${ gutter }` ] : gutter > 0,
+			[ `has-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
 		}
 	);
 
 	const navOptions = {
 		asNavFor: '.has-carousel',
-		autoPlay: false,
 		contain: true,
-		cellAlign: 'left',
 		pageDots: false,
-		thumbnails: false,
 		draggable: draggable,
 		prevNextButtons: false,
 		wrapAround: false,
+		cellAlign: 'left',
 	};
 
 	const captionStyles = {
@@ -159,7 +157,7 @@ const save = ( { attributes, className } ) => {
 				</div>
 				{ thumbnails ?
 					<div
-						className={ thumbnailClasses }
+						className={ navClasses }
 						data-flickity={ JSON.stringify( navOptions ) }
 					>
 						{ images.map( ( image ) => {
