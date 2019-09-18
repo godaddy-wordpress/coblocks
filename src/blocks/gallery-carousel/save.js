@@ -101,6 +101,11 @@ const save = ( { attributes, className } ) => {
 		}
 	);
 
+	const thumbnailClasses = classnames(
+		'carousel-nav', {
+		}
+	);
+
 	const navFigureClasses = classnames(
 		'blockgallery--figure', {
 			[ `has-margin-top-${ gutter }` ] : gutter > 0,
@@ -154,7 +159,7 @@ const save = ( { attributes, className } ) => {
 				</div>
 				{ thumbnails ?
 					<div
-						className={ navClasses }
+						className={ thumbnailClasses }
 						data-flickity={ JSON.stringify( navOptions ) }
 					>
 						{ images.map( ( image ) => {

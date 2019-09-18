@@ -244,6 +244,11 @@ class GalleryCarouselEdit extends Component {
 			}
 		);
 
+		const thumbnailClasses = classnames(
+			'carousel-nav', {
+			}
+		);
+
 		const navFigureClasses = classnames(
 			'blockgallery--figure', {
 				[ `has-margin-top-${ gutter }` ] : gutter > 0,
@@ -362,7 +367,7 @@ class GalleryCarouselEdit extends Component {
 						style={ innerStyles }
 					>
 						<Flickity
-							className={ navClasses }
+							className={ thumbnailClasses }
 							options={ navOptions }
 							disableImagesLoaded={ false }
 							flickityRef={ c => this.flkty = c }
