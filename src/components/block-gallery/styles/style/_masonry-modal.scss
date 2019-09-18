@@ -40,10 +40,10 @@
 	left: 3%;
 	position: absolute;
 	right: 3%;
-	top: 1%;
+	top: 1em;
 
 	@include break-small() {
-		top: 2%;
+		top: 2em;
 	}
 }
 
@@ -94,6 +94,7 @@
 	> div {
 		background-color: $white;
 		height: 1.15em;
+		position: relative;
 		transition: 150ms transform linear;
 		width: 1.15em;
 
@@ -110,11 +111,13 @@
 }
 
 .arrow-left {
+	left: -1px;
 	mask-image: url(images/lightbox/arrow-left.svg);
 }
 
 .arrow-right {
 	mask-image: url(images/lightbox/arrow-right.svg);
+	right: -1px;
 }
 
 .masonry-modal-wrapper--close {
@@ -123,5 +126,10 @@
 	height: 2.5em;
 	mask-image: url(images/lightbox/close.svg);
 	mask-size: contain;
+	transition: transform 0.15s linear;
 	width: 2.5em;
+
+	&:hover {
+		transform: scale(1.125);
+	}
 }
