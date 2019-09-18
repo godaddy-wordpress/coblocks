@@ -294,7 +294,6 @@ class CropSettings extends Component {
 					/>
 				</div>
 				<RangeControl
-					label={ 'Image Zoom' }
 					label={ _x( 'Image Zoom', 'label for the control that allows zooming in on the image' ) }
 					className="components-coblocks-zoom-control"
 					value={ this.getCurrentScale() }
