@@ -7,7 +7,7 @@ import { originalImage } from './original-image';
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
+const { Component, createRef } = wp.element;
 
 class CropControl extends Component {
 	constructor( props ) {
@@ -18,7 +18,7 @@ class CropControl extends Component {
 			id: null,
 		};
 
-		this.cropControl = React.createRef();
+		this.cropControl = createRef();
 	}
 
 	componentDidMount() {

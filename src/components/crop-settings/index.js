@@ -17,7 +17,7 @@ import icons from './icons';
  * WordPress dependencies
  */
 const { __, _x } = wp.i18n;
-const { Component } = wp.element;
+const { Component, createRef } = wp.element;
 const { TextControl,
 	RangeControl,
 	ButtonGroup,
@@ -50,9 +50,9 @@ class CropSettings extends Component {
 		this.mouseUpListener = this.mouseUpListener.bind( this );
 		this.handleMouseWheel = this.handleMouseWheel.bind( this );
 		this.handleImageLoaded = this.handleImageLoaded.bind( this );
-		this.imageContainer = React.createRef();
-		this.imageReference = React.createRef();
-		this.selectedAreaReference = React.createRef();
+		this.imageContainer = createRef();
+		this.imageReference = createRef();
+		this.selectedAreaReference = createRef();
 	}
 
 	componentDidMount() {
