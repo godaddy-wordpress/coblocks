@@ -56,14 +56,6 @@
 			&:not(.has-background) {
 				padding-top: 0;
 			}
-
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
-
-		> *:last-child {
-			margin-bottom: 0;
 		}
 	}
 
@@ -95,6 +87,10 @@
 
 		> * {
 			position: relative;
+		}
+
+		> *:last-child {
+			margin-bottom: 0 !important;
 		}
 	}
 }
