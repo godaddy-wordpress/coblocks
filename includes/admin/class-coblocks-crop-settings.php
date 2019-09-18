@@ -1,21 +1,19 @@
 <?php
 /**
- * Crop system for the Advanced Image extension.
+ * Crop settings extension.
  *
  * @package CoBlocks
  */
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-
 	exit;
-
 }
 
 /**
- * Crops Images
+ * Crop Settings Class
  */
-class CoBlocks_Crop_System {
+class CoBlocks_Crop_Settings {
 
 	const ORIGINAL_META_KEY = 'original-image-id';
 
@@ -27,7 +25,7 @@ class CoBlocks_Crop_System {
 
 		if ( empty( self::$instance ) ) {
 
-			self::$instance = new CoBlocks_Crop_System();
+			self::$instance = new CoBlocks_Crop_Settings();
 
 		}
 
@@ -43,6 +41,11 @@ class CoBlocks_Crop_System {
 
 	}
 
+	/**
+	 * Hide the cropped image from the media library
+	 *
+	 * @return array Media attachments query array.
+	 */
 	public function hide_cropped_from_library( $query ) {
 
 		$tag = get_term_by( 'slug', 'coblocks-cropped', 'post_tag' );
@@ -57,6 +60,9 @@ class CoBlocks_Crop_System {
 
 	}
 
+	/**
+	 * Retrieve the original image.
+	 */
 	public function get_original_image() {
 
 		$id = filter_input( INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT );
@@ -82,6 +88,9 @@ class CoBlocks_Crop_System {
 
 	}
 
+	/**
+	 * Cropping.
+	 */
 	public function api_crop() {
 
 		if (
@@ -230,4 +239,4 @@ class CoBlocks_Crop_System {
 	}
 }
 
-CoBlocks_Crop_System::instance()->register_endpoints();
+CoBlocks_Crop_Settings::instance()->register_endpoints();
