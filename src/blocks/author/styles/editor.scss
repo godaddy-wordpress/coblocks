@@ -61,6 +61,10 @@
 			}
 		}
 	}
+
+	&.has-text-color p.wp-block-coblocks-author__biography {
+		color: inherit;
+	}
 }
 
 // Shim to fix styles in the previewer.
