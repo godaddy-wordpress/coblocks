@@ -14,6 +14,7 @@
 	}
 
 	&-item {
+		align-items: center;
 		appearance: none;
 		background: $white;
 		border: 1px solid $dark-gray-150;
@@ -89,8 +90,6 @@
 
 		svg {
 			height: 15px;
-			position: relative;
-			top: 0.08em;
 			width: 15px;
 		}
 	}
