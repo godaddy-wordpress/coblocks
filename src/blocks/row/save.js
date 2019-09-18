@@ -31,6 +31,16 @@ function Save( { attributes } ) {
 		focalPoint,
 		hasParallax,
 		backgroundType,
+		paddingTop,
+		paddingRight,
+		paddingBottom,
+		paddingLeft,
+		marginTop,
+		marginRight,
+		marginBottom,
+		marginLeft,
+		paddingUnit,
+		marginUnit,
 	} = attributes;
 
 	const textClass = getColorClassName( 'color', textColor );
@@ -62,6 +72,14 @@ function Save( { attributes } ) {
 		backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
 		backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 		color: textClass ? undefined : customTextColor,
+		paddingTop: paddingSize === 'advanced' && paddingTop ? paddingTop + paddingUnit : undefined,
+		paddingRight: paddingSize === 'advanced' && paddingRight ? paddingRight + paddingUnit : undefined,
+		paddingBottom: paddingSize === 'advanced' && paddingBottom ? paddingBottom + paddingUnit : undefined,
+		paddingLeft: paddingSize === 'advanced' && paddingLeft ? paddingLeft + paddingUnit : undefined,
+		marginTop: marginSize === 'advanced' && marginTop ? marginTop + marginUnit : undefined,
+		marginRight: marginSize === 'advanced' && marginRight ? marginRight + marginUnit : undefined,
+		marginBottom: marginSize === 'advanced' && marginBottom ? marginBottom + marginUnit : undefined,
+		marginLeft: marginSize === 'advanced' && marginLeft ? marginLeft + marginUnit : undefined,
 	};
 
 	return (
