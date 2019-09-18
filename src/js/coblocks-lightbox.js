@@ -5,15 +5,15 @@
 	const images = $( '.has-lightbox ul li figure img' );
 	let index;
 
-	const wrapper = $( '<div/>', { class: 'masonry-modal-wrapper' } );
-	const wrapperBackground = $( '<div/>', { class: 'masonry-modal-wrapper__background' } );
-	const modalHeading = $( '<div/>', { class: 'masonry-modal-wrapper__heading' } );
-	const close = $( '<div/>', { class: 'masonry-modal-wrapper--close' } );
-	const counter = $( '<span/>', { class: 'masonry-modal-wrapper--counter' } );
-	const imageContainer = $( '<div/>', { class: 'masonry-modal-wrapper__image-container' } );
+	const wrapper = $( '<div/>', { class: 'coblocks-lightbox' } );
+	const wrapperBackground = $( '<div/>', { class: 'coblocks-lightbox__background' } );
+	const modalHeading = $( '<div/>', { class: 'coblocks-lightbox__heading' } );
+	const close = $( '<button/>', { class: 'coblocks-lightbox__close' } );
+	const counter = $( '<span/>', { class: 'coblocks-lightbox__count' } );
+	const imageContainer = $( '<div/>', { class: 'coblocks-lightbox__image' } );
 	const image = $( '<img/>' );
-	const arrowLeftContainer = $( '<div/>', { class: 'masonry-modal-wrapper--arrow-left-container' } );
-	const arrowRightContainer = $( '<div/>', { class: 'masonry-modal-wrapper--arrow-right-container' } );
+	const arrowLeftContainer = $( '<button/>', { class: 'coblocks-lightbox__arrow coblocks-lightbox__arrow--left' } );
+	const arrowRightContainer = $( '<button/>', { class: 'coblocks-lightbox__arrow coblocks-lightbox__arrow--right' } );
 	const arrowRight = $( '<div/>', { class: 'arrow-right' } );
 	const arrowLeft = $( '<div/>', { class: 'arrow-left' } );
 
