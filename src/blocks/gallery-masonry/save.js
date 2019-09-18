@@ -31,7 +31,7 @@ const save = ( { attributes, className } ) => {
 		...GalleryClasses( attributes ),
 		...BackgroundClasses( attributes ), {
 			'has-gutter': gutter > 0,
-			'expandable-image': lightbox,
+			'has-lightbox': lightbox,
 		}
 	);
 
