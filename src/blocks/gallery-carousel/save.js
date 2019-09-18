@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import { BackgroundStyles } from '../../components/background';
+import { BackgroundStyles, BackgroundClasses } from '../../components/background';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -38,7 +38,8 @@ const save = ( { attributes, className } ) => {
 
 	const innerClasses = classnames(
 		'is-cropped',
-		...GalleryClasses( attributes ), {
+		...GalleryClasses( attributes ),
+		...BackgroundClasses( attributes ), {
 			'has-horizontal-gutter': gutter > 0,
 
 		}
