@@ -526,6 +526,15 @@ body {
 						}
 					}
 				}
+
+				> .block-list-appender {
+					> div:not(.wp-block) {
+						> .editor-default-block-appender {
+							display: none !important;
+							position: relative;
+						}
+					}
+				}
 			}
 		}
 	}
