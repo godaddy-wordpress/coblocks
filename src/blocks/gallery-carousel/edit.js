@@ -102,7 +102,6 @@ class GalleryCarouselEdit extends Component {
 		if ( this.props.attributes.gutter <= 0 ) {
 			this.props.setAttributes( {
 				radius: 0,
-				radiusThumbs: 0,
 			} );
 		}
 
@@ -189,8 +188,6 @@ class GalleryCarouselEdit extends Component {
 			gutter,
 			gutterMobile,
 			height,
-			radiusThumbs,
-			thumbSize,
 			images,
 			pageDots,
 			thumbnails,
@@ -237,9 +234,7 @@ class GalleryCarouselEdit extends Component {
 		);
 
 		const navClasses = classnames(
-			'carousel-nav',
-			`has-thumbnails-${ thumbSize }`, {
-				[ `has-border-radius-${ radiusThumbs }` ] : radiusThumbs > 0,
+			'carousel-nav', {
 				[ `has-margin-top-${ gutter }` ] : gutter > 0,
 				[ `has-margin-top-mobile-${ gutterMobile }` ] : gutterMobile > 0,
 				[ `has-negative-margin-left-${ gutter }` ] : gutter > 0,

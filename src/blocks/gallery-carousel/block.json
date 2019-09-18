@@ -38,14 +38,6 @@
 			"type": "boolean",
 			"default": true
 		},
-		"radiusThumbs": {
-			"type": "number",
-			"default": 0
-		},
-		"thumbSize": {
-			"type": "string",
-			"default": "med"
-		},
 		"thumbnails": {
 			"type": "boolean",
 			"default": false
