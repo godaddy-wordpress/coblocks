@@ -16,7 +16,7 @@ import icons from './icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component } = wp.element;
 const { TextControl,
 	RangeControl,
@@ -277,7 +277,7 @@ class CropSettings extends Component {
 				</div>
 				<div className={ offsetClass }>
 					<TextControl
-						label={ __( 'Horizontal Pos.' ) }
+						label={ _x( 'Horizontal Pos.', 'label for horizontal positioning input' ) }
 						value={ self.state.x }
 						type={ 'number' }
 						min={ 0 }
@@ -285,7 +285,7 @@ class CropSettings extends Component {
 						onChange={ ( val ) => this.updateState( val, self.state.y, self.state.w, self.state.h, self.state.r ) }
 					/>
 					<TextControl
-						label={ __( 'Vertical Pos.' ) }
+						label={ _x( 'Vertical Pos.', 'label for vertical positioning input' ) }
 						value={ self.state.y }
 						type={ 'number' }
 						min={ 0 }
@@ -295,6 +295,7 @@ class CropSettings extends Component {
 				</div>
 				<RangeControl
 					label={ 'Image Zoom' }
+					label={ _x( 'Image Zoom', 'label for the control that allows zooming in on the image' ) }
 					className="components-coblocks-zoom-control"
 					value={ this.getCurrentScale() }
 					onChange={ ( val ) => this.setNewZoom( val, self.state.r ) }
