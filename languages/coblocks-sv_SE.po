@@ -3,77 +3,81 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CoBlocks 1.12.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"Language-Team: \n"
+"Last-Translator: plugins@godaddy.com\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2019-08-27T16:28:38+00:00\n"
-"PO-Revision-Date: 2019-08-28 13:35-0400\n"
-"X-Generator: Poedit 2.2.3\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
-"Last-Translator: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: sv\n"
 
 #: src/blocks/accordion/accordion-item/controls.js:28
 msgid "Display open"
-msgstr ""
+msgstr "Visa öppen"
 
 #: src/blocks/accordion/accordion-item/edit.js:67
 msgid "Add accordion title..."
-msgstr ""
+msgstr "Lägg till titel för dragspel..."
 
 #: src/blocks/accordion/accordion-item/index.js:24
 msgid "Accordion Item"
-msgstr ""
+msgstr "Dragspelsobjekt"
 
 #: src/blocks/accordion/accordion-item/index.js:26
 msgid "Add collapsable accordion items to accordions."
-msgstr ""
+msgstr "Lägg till komprimerade dragspelsobjekt till dragspel."
 
 #: src/blocks/accordion/accordion-item/index.js:28
 #: src/blocks/accordion/index.js:30
 msgid "tabs"
-msgstr ""
+msgstr "flikar"
 
 #: src/blocks/accordion/accordion-item/index.js:28
 #: src/blocks/accordion/index.js:30
 msgid "faq"
-msgstr ""
+msgstr "vanliga frågor"
 
 #: src/blocks/accordion/accordion-item/inspector.js:34
 msgid "Accordion item is open by default."
-msgstr ""
+msgstr "Dragspelsobjekt är öppet som standard."
 
 #: src/blocks/accordion/accordion-item/inspector.js:34
 msgid "Toggle to set this accordion item to be open by default."
-msgstr ""
+msgstr "Växla för att ange att det här dragspelsobjektet ska vara öppet som standard."
 
 #: src/blocks/accordion/accordion-item/inspector.js:63
 msgid "Accordion Item Settings"
-msgstr ""
+msgstr "Inställningar för dragspelsobjekt"
 
 #: src/blocks/accordion/accordion-item/inspector.js:65
 msgid "Display Open"
-msgstr ""
+msgstr "Visa Öppen"
 
 #: src/blocks/accordion/accordion-item/inspector.js:72
-#: src/blocks/alert/inspector.js:49 src/blocks/click-to-tweet/inspector.js:60
+#: src/blocks/alert/inspector.js:49
+#: src/blocks/click-to-tweet/inspector.js:60
 #: src/blocks/dynamic-separator/inspector.js:60
 #: src/blocks/features/feature/inspector.js:92
-#: src/blocks/features/inspector.js:173 src/blocks/form/submit-button.js:118
+#: src/blocks/features/inspector.js:173
+#: src/blocks/form/submit-button.js:118
 #: src/blocks/gallery-carousel/inspector.js:165
 #: src/blocks/gallery-masonry/inspector.js:167
-#: src/blocks/gallery-stacked/inspector.js:184 src/blocks/hero/inspector.js:117
-#: src/blocks/highlight/inspector.js:43 src/blocks/icon/inspector.js:353
+#: src/blocks/gallery-stacked/inspector.js:184
+#: src/blocks/hero/inspector.js:117
+#: src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:353
 #: src/blocks/media-card/inspector.js:124
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
-#: src/blocks/row/column/inspector.js:125 src/blocks/row/inspector.js:244
-#: src/blocks/shape-divider/inspector.js:102 src/blocks/share/inspector.js:179
+#: src/blocks/row/column/inspector.js:125
+#: src/blocks/row/inspector.js:244
+#: src/blocks/shape-divider/inspector.js:102
+#: src/blocks/share/inspector.js:179
 #: src/blocks/social-profiles/inspector.js:193
 #: src/extensions/colors/index.js:59
 msgid "Color Settings"
-msgstr ""
+msgstr "Färginställningar"
 
 #: src/blocks/accordion/accordion-item/inspector.js:78
 #: src/blocks/alert/inspector.js:54
@@ -81,1572 +85,1632 @@ msgstr ""
 #: src/blocks/features/inspector.js:191
 #: src/blocks/gallery-carousel/inspector.js:80
 #: src/blocks/gallery-masonry/inspector.js:93
-#: src/blocks/gallery-stacked/inspector.js:96 src/blocks/hero/inspector.js:130
-#: src/blocks/highlight/inspector.js:49 src/blocks/icon/inspector.js:377
+#: src/blocks/gallery-stacked/inspector.js:96
+#: src/blocks/hero/inspector.js:130
+#: src/blocks/highlight/inspector.js:49
+#: src/blocks/icon/inspector.js:377
 #: src/blocks/media-card/inspector.js:138
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
-#: src/blocks/row/column/inspector.js:131 src/blocks/row/inspector.js:260
-#: src/blocks/shape-divider/inspector.js:113 src/blocks/share/inspector.js:80
-#: src/blocks/social-profiles/inspector.js:92 src/extensions/colors/index.js:47
+#: src/blocks/row/column/inspector.js:131
+#: src/blocks/row/inspector.js:260
+#: src/blocks/shape-divider/inspector.js:113
+#: src/blocks/share/inspector.js:80
+#: src/blocks/social-profiles/inspector.js:92
+#: src/extensions/colors/index.js:47
 msgid "Background Color"
-msgstr ""
+msgstr "Bakgrundsfärg"
 
 #: src/blocks/accordion/accordion-item/inspector.js:83
 msgid "Title Text Color"
-msgstr ""
+msgstr "Textfärg för titel"
 
 #: src/blocks/accordion/edit.js:111
 msgid "Add Accordion Item"
-msgstr ""
+msgstr "Lägg till dragspelsobjekt"
 
 #: src/blocks/accordion/index.js:26
 msgid "Accordion"
-msgstr ""
+msgstr "Accordion (dragspel)"
 
 #: src/blocks/accordion/index.js:28
 msgid "Organize content within collapsable accordion items."
-msgstr ""
+msgstr "Organisera innehåll inuti komprimerade dragspelsobjekt."
 
 #: src/blocks/accordion/inspector.js:27
 msgid "Accordion Settings"
-msgstr ""
+msgstr "Inställningar för dragspel"
 
 #: src/blocks/accordion/inspector.js:29
 msgid "Internet Explorer Support"
-msgstr ""
+msgstr "Stöd för Internet Explorer"
 
 #: src/blocks/accordion/inspector.js:31
 msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
-msgstr ""
+msgstr "Lägg till stöd för Internet Explorer genom att läsa in ett JavaScript-polyfill."
 
 #: src/blocks/accordion/inspector.js:31
-msgid ""
-"Supporting Internet Explorer by loading a JavaScript polyfill on this page."
-msgstr ""
+msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgstr "Få stöd för Internet Explorer genom att läsa in ett JavaScript-polyfill på den här sidan."
 
 #: src/blocks/alert/controls.js:103
 msgid "Warning"
-msgstr ""
+msgstr "Varning"
 
 #: src/blocks/alert/controls.js:111
 msgid "Error"
-msgstr ""
+msgstr "Fel"
 
 #: src/blocks/alert/controls.js:76
 msgid "Alert Type"
-msgstr ""
+msgstr "Varningstyp"
 
-#: src/blocks/alert/controls.js:80 src/components/font-family/index.js:16
+#: src/blocks/alert/controls.js:80
+#: src/components/font-family/index.js:16
 #: src/components/typography-controls/index.js:91
 #: src/extensions/list-styles/index.js:15
 msgid "Default"
-msgstr ""
+msgstr "Standard"
 
 #: src/blocks/alert/controls.js:87
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #: src/blocks/alert/controls.js:95
 msgid "Success"
-msgstr ""
+msgstr "Klart"
 
 #: src/blocks/alert/edit.js:74
 msgid "Write title..."
-msgstr ""
+msgstr "Skriv titel..."
 
 #: src/blocks/alert/edit.js:82
 msgid "Write text..."
-msgstr ""
+msgstr "Skriv text..."
 
 #: src/blocks/alert/index.js:25
 msgid "Alert"
-msgstr ""
+msgstr "Alert (varning)"
 
 #: src/blocks/alert/index.js:30
 msgid "Provide contextual feedback messages."
-msgstr ""
+msgstr "Ge kontextfeedback med meddelanden."
 
 #: src/blocks/alert/index.js:32
 msgid "notice"
-msgstr ""
+msgstr "avisering"
 
 #: src/blocks/alert/index.js:32
 msgid "message"
-msgstr ""
+msgstr "meddelande"
 
-#: src/blocks/alert/inspector.js:59 src/blocks/click-to-tweet/inspector.js:66
+#: src/blocks/alert/inspector.js:59
+#: src/blocks/click-to-tweet/inspector.js:66
 #: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:195 src/blocks/hero/inspector.js:135
+#: src/blocks/features/inspector.js:195
+#: src/blocks/hero/inspector.js:135
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
-#: src/blocks/row/column/inspector.js:136 src/blocks/row/inspector.js:265
-#: src/blocks/share/inspector.js:72 src/blocks/social-profiles/inspector.js:84
+#: src/blocks/row/column/inspector.js:136
+#: src/blocks/row/inspector.js:265
+#: src/blocks/share/inspector.js:72
+#: src/blocks/social-profiles/inspector.js:84
 #: src/extensions/colors/index.js:54
 msgid "Text Color"
-msgstr ""
+msgstr "Textfärger"
 
 #: src/blocks/author/controls.js:41
 msgid "Edit image"
-msgstr ""
+msgstr "Redigera bild"
 
 #: src/blocks/author/controls.js:49
 msgid "Remove image"
-msgstr ""
+msgstr "Ta bort bild"
 
 #: src/blocks/author/edit.js:102
 msgid "Drop to add as avatar"
-msgstr ""
+msgstr "Släpp för att lägga till som avatar"
 
 #: src/blocks/author/edit.js:143
 msgid "Heading..."
-msgstr ""
+msgstr "Rubrik..."
 
 #: src/blocks/author/edit.js:154
 msgid "Author Name"
-msgstr ""
+msgstr "Författarens namn"
 
 #: src/blocks/author/edit.js:165
 msgid "Write biography..."
-msgstr ""
+msgstr "Skriv biografi..."
 
 #: src/blocks/author/index.js:26
 msgid "Author"
-msgstr ""
+msgstr "Författare"
 
 #: src/blocks/author/index.js:28
 msgid "Add an author biography."
-msgstr ""
+msgstr "Lägg till en biografi över författare"
 
 #: src/blocks/author/index.js:30
 msgid "biography"
-msgstr ""
+msgstr "biografi"
 
 #: src/blocks/author/index.js:30
 msgid "profile"
-msgstr ""
+msgstr "profil"
 
-#: src/blocks/buttons/index.js:30 src/blocks/buttons/inspector.js:30
+#: src/blocks/buttons/index.js:30
+#: src/blocks/buttons/inspector.js:30
 msgid "Buttons"
-msgstr ""
+msgstr "Buttons (knappar)"
 
 #: src/blocks/buttons/index.js:31
 msgid "Prompt visitors to take action with multiple buttons, side by side."
-msgstr ""
+msgstr "Uppmana besökare att agera med flera knappar, sida vid sida."
 
 #: src/blocks/buttons/index.js:32
 msgid "link"
-msgstr ""
+msgstr "länk"
 
-#: src/blocks/buttons/index.js:32 src/blocks/hero/index.js:45
+#: src/blocks/buttons/index.js:32
+#: src/blocks/hero/index.js:45
 msgid "cta"
-msgstr ""
+msgstr "cta"
 
 #: src/blocks/buttons/inspector.js:28
 msgid "Buttons Settings"
-msgstr ""
+msgstr "Inställningar för knapp"
 
 #: src/blocks/buttons/inspector.js:43
 msgid "Stack on mobile"
-msgstr ""
+msgstr "Stapla på mobilen"
 
 #: src/blocks/buttons/inspector.js:48
 msgid "Stacking buttons on mobile."
-msgstr ""
+msgstr "Staplingsknappar på mobilen."
 
 #: src/blocks/buttons/inspector.js:48
 msgid "Toggle to stack buttons on mobile."
-msgstr ""
+msgstr "Växla för att stapla knappar på mobilen"
 
 #: src/blocks/click-to-tweet/controls.js:44
 msgid "Twitter Username"
-msgstr ""
+msgstr "Twitter-användarnamn"
 
 #: src/blocks/click-to-tweet/controls.js:48
 msgid "Username"
-msgstr ""
+msgstr "Användarnamn"
 
 #: src/blocks/click-to-tweet/edit.js:107
 msgid "Add button..."
-msgstr ""
+msgstr "Lägg till knapp..."
 
 # the text of the click to tweet element
 #: src/blocks/click-to-tweet/edit.js:80
 msgid "Add a quote to tweet..."
-msgstr ""
+msgstr "Lägg till ett citattecken för att twittra..."
 
 #: src/blocks/click-to-tweet/index.js:25
 msgid "Click to Tweet"
-msgstr ""
+msgstr "Click to Tweet (klicka för att twittra)"
 
 #: src/blocks/click-to-tweet/index.js:27
 msgid "Add a quote for readers to tweet via Twitter."
-msgstr ""
+msgstr "Lägg till ett citattecken så kan läsarna twittra på Twitter om det."
 
-#: src/blocks/click-to-tweet/index.js:29 src/blocks/social-profiles/index.js:23
+#: src/blocks/click-to-tweet/index.js:29
+#: src/blocks/social-profiles/index.js:23
 msgid "share"
-msgstr ""
+msgstr "dela"
 
 #: src/blocks/click-to-tweet/index.js:29
 msgid "twitter"
-msgstr ""
+msgstr "twitter"
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
 msgid "Text Settings"
-msgstr ""
+msgstr "Textinställningar"
 
 #: src/blocks/click-to-tweet/inspector.js:71
 #: src/blocks/form/submit-button.js:127
 msgid "Button Color"
-msgstr ""
+msgstr "Knappfärg"
 
 #: src/blocks/dynamic-separator/index.js:24
 msgid "Dynamic HR"
-msgstr ""
+msgstr "Dynamic HR"
 
 #: src/blocks/dynamic-separator/index.js:29
 msgid "Add a resizable spacer between other blocks."
-msgstr ""
+msgstr "Lägg till en reglerbar avståndskontroll mellan andra block."
 
 #: src/blocks/dynamic-separator/index.js:31
 msgid "spacer"
-msgstr ""
+msgstr "avståndskontroll"
 
 #: src/blocks/dynamic-separator/inspector.js:43
 msgid "Dynamic HR Settings"
-msgstr ""
+msgstr "Inställningar för Dynamic HR"
 
 #: src/blocks/dynamic-separator/inspector.js:44
-#: src/blocks/gallery-carousel/inspector.js:142 src/blocks/hero/inspector.js:88
+#: src/blocks/gallery-carousel/inspector.js:142
+#: src/blocks/hero/inspector.js:88
 #: src/blocks/map/inspector.js:133
 msgid "Height in pixels"
-msgstr ""
+msgstr "Höjd i pixlar"
 
 #: src/blocks/dynamic-separator/inspector.js:52
 msgid "Height for the dynamic separator element in pixels."
-msgstr ""
+msgstr "Höjd för dynamiskt avgränsningselement i pixlar."
 
 #: src/blocks/dynamic-separator/inspector.js:66
 msgid "Color"
-msgstr ""
+msgstr "Färg"
 
-#: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
+#: src/blocks/features/edit.js:78
+#: src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
 msgid "Add as backround"
-msgstr ""
+msgstr "Lägg till som bakgrund"
 
 #: src/blocks/features/feature/index.js:20
 msgid "Feature"
-msgstr ""
+msgstr "Funktion"
 
 #: src/blocks/features/feature/index.js:42
 msgid "A singular child column within a parent features block."
-msgstr ""
+msgstr "En enskild underordnad kolumn inom ett överordnat block."
 
 #: src/blocks/features/feature/inspector.js:68
 msgid "Feature Settings"
-msgstr ""
+msgstr "Funktionsinställningar"
 
 #: src/blocks/features/feature/inspector.js:71
-#: src/blocks/features/inspector.js:143 src/blocks/hero/inspector.js:74
-#: src/blocks/icon/inspector.js:268 src/blocks/media-card/inspector.js:62
-#: src/blocks/row/column/inspector.js:103 src/blocks/row/inspector.js:213
+#: src/blocks/features/inspector.js:143
+#: src/blocks/hero/inspector.js:74
+#: src/blocks/icon/inspector.js:268
+#: src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:103
+#: src/blocks/row/inspector.js:213
 #: src/components/background/panel.js:146
 msgid "Padding"
-msgstr ""
+msgstr "Utfyllnad"
 
 #: src/blocks/features/index.js:23
 msgid "Features"
-msgstr ""
+msgstr "Features (funktioner)"
 
 #: src/blocks/features/index.js:36
 msgid "Add up to three columns of small notes for your product or service."
-msgstr ""
+msgstr "Lägg till upp till tre kolumner med små anteckningar om din produkt eller tjänst."
 
 #: src/blocks/features/index.js:38
 msgid "services"
-msgstr ""
+msgstr "tjänster"
 
-#: src/blocks/features/inspector.js:122 src/blocks/row/column/inspector.js:91
+#: src/blocks/features/inspector.js:122
+#: src/blocks/row/column/inspector.js:91
 #: src/blocks/row/inspector.js:190
 #: src/components/dimensions-control/index.js:295
 msgid "Margin"
-msgstr ""
+msgstr "Marginal"
 
 #: src/blocks/features/inspector.js:164
 #: src/blocks/gallery-carousel/inspector.js:137
-#: src/blocks/gallery-stacked/inspector.js:145 src/blocks/row/inspector.js:235
+#: src/blocks/gallery-stacked/inspector.js:145
+#: src/blocks/row/inspector.js:235
 #: src/components/responsive-tabs-control/index.js:31
 msgid "Gutter"
-msgstr ""
+msgstr "Fästmarginal"
 
-#: src/blocks/features/inspector.js:167 src/blocks/row/inspector.js:238
+#: src/blocks/features/inspector.js:167
+#: src/blocks/row/inspector.js:238
 msgid "Space between each column."
-msgstr ""
+msgstr "Utrymme mellan respektive kolumn."
 
-#: src/blocks/features/inspector.js:86 src/blocks/icon/inspector.js:154
-#: src/blocks/row/inspector.js:99 src/blocks/share/inspector.js:58
+#: src/blocks/features/inspector.js:86
+#: src/blocks/icon/inspector.js:154
+#: src/blocks/row/inspector.js:99
+#: src/blocks/share/inspector.js:58
 #: src/blocks/social-profiles/inspector.js:70
 #: src/components/dimensions-control/dimensions-select.js:15
 #: src/components/size-control/index.js:116
 msgid "Small"
-msgstr ""
+msgstr "Litet"
 
-#: src/blocks/features/inspector.js:87 src/blocks/icon/inspector.js:159
-#: src/blocks/row/inspector.js:100 src/blocks/share/inspector.js:59
+#: src/blocks/features/inspector.js:87
+#: src/blocks/icon/inspector.js:159
+#: src/blocks/row/inspector.js:100
+#: src/blocks/share/inspector.js:59
 #: src/blocks/social-profiles/inspector.js:71
 #: src/components/dimensions-control/dimensions-select.js:20
 #: src/components/size-control/index.js:120
 msgid "Medium"
-msgstr ""
+msgstr "Medium"
 
-#: src/blocks/features/inspector.js:88 src/blocks/icon/inspector.js:164
-#: src/blocks/row/inspector.js:101 src/blocks/share/inspector.js:60
+#: src/blocks/features/inspector.js:88
+#: src/blocks/icon/inspector.js:164
+#: src/blocks/row/inspector.js:101
+#: src/blocks/share/inspector.js:60
 #: src/blocks/social-profiles/inspector.js:72
 #: src/components/dimensions-control/dimensions-select.js:25
 #: src/components/size-control/index.js:65
 msgid "Large"
-msgstr ""
+msgstr "Stort"
 
 #: src/blocks/features/inspector.js:94
 msgid "Features Settings"
-msgstr ""
+msgstr "Funktionsinställningar"
 
-#: src/blocks/features/inspector.js:96 src/blocks/services/inspector.js:69
+#: src/blocks/features/inspector.js:96
+#: src/blocks/services/inspector.js:69
 msgid "Columns"
-msgstr ""
+msgstr "Kolumner"
 
 #: src/blocks/food-and-drinks/appender.js:22
 msgid "Add Menu Section"
-msgstr ""
+msgstr "Lägg till Meny-avsnitt"
 
 #: src/blocks/food-and-drinks/edit.js:27
 msgid "Menu title..."
-msgstr ""
+msgstr "Menyrubrik..."
 
 #: src/blocks/food-and-drinks/edit.js:35
 msgid "Grid"
-msgstr ""
+msgstr "Skikt"
 
 #: src/blocks/food-and-drinks/edit.js:42
 msgid "List"
-msgstr ""
+msgstr "Lista"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:144
 #: src/blocks/services/service/edit.js:146
 msgid "Drop image to replace"
-msgstr ""
+msgstr "Släpp bild för att ersätta"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:157
 #: src/blocks/services/service/edit.js:159
 #: src/components/block-gallery/gallery-image.js:208
 msgid "Remove Image"
-msgstr ""
+msgstr "Ta bort bild"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:222
 msgid "Add title..."
-msgstr ""
+msgstr "Lägg till titel..."
 
 #: src/blocks/food-and-drinks/food-item/edit.js:233
 #: src/blocks/food-and-drinks/food-item/inspector.js:55
 #: src/blocks/food-and-drinks/food-item/save.js:65
 msgid "Spicy"
-msgstr ""
+msgstr "Kryddstarkt"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:253
 msgid "Hot"
-msgstr ""
+msgstr "Hett"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:275
 #: src/blocks/food-and-drinks/food-item/inspector.js:70
 #: src/blocks/food-and-drinks/food-item/save.js:81
 msgid "Vegetarian"
-msgstr ""
+msgstr "Vegetariskt"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:301
 #: src/blocks/food-and-drinks/food-item/inspector.js:45
 #: src/blocks/food-and-drinks/food-item/save.js:89
 msgid "Gluten Free"
-msgstr ""
+msgstr "Glutenfritt"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:324
 #: src/blocks/food-and-drinks/food-item/inspector.js:50
 #: src/blocks/food-and-drinks/food-item/save.js:97
 msgid "Pescatarian"
-msgstr ""
+msgstr "Fisk"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:345
 #: src/blocks/food-and-drinks/food-item/inspector.js:65
 #: src/blocks/food-and-drinks/food-item/save.js:105
 msgid "Vegan"
-msgstr ""
+msgstr "Veganskt"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:363
 msgid "Add description..."
-msgstr ""
+msgstr "Lägg till beskrivning..."
 
 #: src/blocks/food-and-drinks/food-item/edit.js:372
 msgid "$0.00"
-msgstr ""
+msgstr "0,00 kr"
 
 #: src/blocks/food-and-drinks/food-item/index.js:21
 msgid "Food Item"
-msgstr ""
+msgstr "Maträtt"
 
 #: src/blocks/food-and-drinks/food-item/index.js:30
 msgid "A food and drink item within the Food & Drinks block."
-msgstr ""
+msgstr "Ett maträtts- och dryckesobjekt i blocket mat & dryck."
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:19
 msgid "Item Settings"
-msgstr ""
+msgstr "Inställningar för artikel"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:21
 msgid "Image"
-msgstr ""
+msgstr "Bild"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:24
 msgid "Showing an image for this item."
-msgstr ""
+msgstr "Visar en bild av den här artikeln."
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:25
 msgid "Toggle to show an image for this item."
-msgstr ""
+msgstr "Växla för att visa en bild av den här artikeln."
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:31
 msgid "Price"
-msgstr ""
+msgstr "Pris"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:34
 msgid "Showing the price for this item."
-msgstr ""
+msgstr "Visar priset för den här artikeln."
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:35
 msgid "Toggle to show the price for this item."
-msgstr ""
+msgstr "Växla för att visa pris för den här artikeln."
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:42
 msgid "Item Attributes"
-msgstr ""
+msgstr "Artikelattribut"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:60
 #: src/blocks/food-and-drinks/food-item/save.js:73
 msgid "Spicier"
-msgstr ""
+msgstr "Starkare"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:77
 #: src/blocks/services/service/inspector.js:31
 msgid "Image Settings"
-msgstr ""
+msgstr "Bildinställningar"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:79
-#: src/blocks/gif/inspector.js:31 src/blocks/media-card/inspector.js:95
+#: src/blocks/gif/inspector.js:31
+#: src/blocks/media-card/inspector.js:95
 #: src/blocks/services/service/inspector.js:33
 msgid "Alt Text (Alternative Text)"
-msgstr ""
+msgstr "Alt Text (Alternativ text)"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:85
-#: src/blocks/gif/inspector.js:37 src/blocks/media-card/inspector.js:101
+#: src/blocks/gif/inspector.js:37
+#: src/blocks/media-card/inspector.js:101
 #: src/blocks/services/service/inspector.js:39
 msgid "Describe the purpose of the image"
-msgstr ""
+msgstr "Beskriv syftet med bilden"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:87
-#: src/blocks/gif/inspector.js:39 src/blocks/media-card/inspector.js:103
+#: src/blocks/gif/inspector.js:39
+#: src/blocks/media-card/inspector.js:103
 #: src/blocks/services/service/inspector.js:41
 msgid "Leave empty if the image is purely decorative."
-msgstr ""
+msgstr "Lämna tom om bilden bara är dekoration."
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:92
 #: src/blocks/services/service/inspector.js:46
 #: src/components/background/panel.js:126
 msgid "Focal Point"
-msgstr ""
+msgstr "Fokuspunkt"
 
 #: src/blocks/food-and-drinks/index.js:24
 msgid "Food & Drinks"
-msgstr ""
+msgstr "Food & Drinks (mat & dryck)"
 
 #: src/blocks/food-and-drinks/index.js:26
 msgid "Display a menu or price list."
-msgstr ""
+msgstr "Visa en meny eller prislista."
 
 #: src/blocks/food-and-drinks/index.js:28
 msgid "restaurant"
-msgstr ""
+msgstr "restaurang"
 
 #: src/blocks/food-and-drinks/index.js:28
 msgid "menu"
-msgstr ""
+msgstr "meny"
 
-#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:98
-#: src/blocks/row/inspector.js:152 src/blocks/services/inspector.js:32
+#: src/blocks/food-and-drinks/inspector.js:26
+#: src/blocks/map/inspector.js:98
+#: src/blocks/row/inspector.js:152
+#: src/blocks/services/inspector.js:32
 msgid "Styles"
-msgstr ""
+msgstr "Stilar"
 
 #: src/blocks/food-and-drinks/inspector.js:59
 msgid "Food & Drinks Settings"
-msgstr ""
+msgstr "Inställningar för mat & dryck"
 
 #: src/blocks/food-and-drinks/inspector.js:61
 msgid "Images"
-msgstr ""
+msgstr "Bilder"
 
 #: src/blocks/food-and-drinks/inspector.js:64
 msgid "Showing images for each item"
-msgstr ""
+msgstr "Visar bilder av vardera artikel"
 
 #: src/blocks/food-and-drinks/inspector.js:65
 msgid "Toggle to show images for each item."
-msgstr ""
+msgstr "Växla för att visa bilder för vardera artikel."
 
 #: src/blocks/food-and-drinks/inspector.js:71
 msgid "Prices"
-msgstr ""
+msgstr "Priser"
 
 #: src/blocks/food-and-drinks/inspector.js:74
 msgid "Showing the price of each item"
-msgstr ""
+msgstr "Visar pris för vardera artikel"
 
 #: src/blocks/food-and-drinks/inspector.js:75
 msgid "Toggle to show the price of each item."
-msgstr ""
+msgstr "Växla för att visa pris för vardera artikel."
 
-#: src/blocks/form/edit.js:109 src/blocks/share/inspector.js:156
-#: includes/class-coblocks-form.php:210 includes/class-coblocks-form.php:297
+#: src/blocks/form/edit.js:109
+#: src/blocks/share/inspector.js:156
+#: includes/class-coblocks-form.php:210
+#: includes/class-coblocks-form.php:297
 msgid "Email"
-msgstr ""
+msgstr "E-post"
 
 #: src/blocks/form/edit.js:110
 msgid "e-mail"
-msgstr ""
+msgstr "e-post"
 
 #: src/blocks/form/edit.js:110
 msgid "mail"
-msgstr ""
+msgstr "mail"
 
 #: src/blocks/form/edit.js:111
 msgid "An email address field."
-msgstr ""
+msgstr "Fält för e-postadress."
 
-#: src/blocks/form/edit.js:120 includes/class-coblocks-form.php:325
+#: src/blocks/form/edit.js:120
+#: includes/class-coblocks-form.php:325
 msgid "Message"
-msgstr ""
+msgstr "Meddelande"
 
 #: src/blocks/form/edit.js:121
 msgid "Textarea"
-msgstr ""
+msgstr "Textområde"
 
 #: src/blocks/form/edit.js:121
 msgid "Multiline text"
-msgstr ""
+msgstr "Flerradig text"
 
 #: src/blocks/form/edit.js:122
 msgid "A text box for longer responses."
-msgstr ""
+msgstr "Textruta för längre svar."
 
 #: src/blocks/form/edit.js:289
 msgid "%s is not a valid email address."
-msgstr ""
+msgstr "%s är ingen giltig e-postadress."
 
 #: src/blocks/form/edit.js:298
 msgid "%s and %s are not a valid email address."
-msgstr ""
+msgstr "%s och %s är inte giltiga e-postadresser."
 
 #: src/blocks/form/edit.js:305
 msgid "%s are not a valid email address."
-msgstr ""
+msgstr "%s är inte giltiga e-postadresser."
 
 #: src/blocks/form/edit.js:363
 msgid "Email address"
-msgstr ""
+msgstr "E-postadress"
 
 #: src/blocks/form/edit.js:364
 msgid "name@example.com"
-msgstr ""
+msgstr "name@example.com"
 
 #: src/blocks/form/edit.js:374
 msgid "Subject"
-msgstr ""
+msgstr "Ämne"
 
 #: src/blocks/form/edit.js:404
 msgid "Form Settings"
-msgstr ""
+msgstr "Formulärinställningar"
 
 #: src/blocks/form/edit.js:409
 msgid "Google reCAPTCHA"
-msgstr ""
+msgstr "Google reCAPTCHA"
 
 #: src/blocks/form/edit.js:412
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
-msgstr ""
+msgstr "Lägg till din reCAPTCHA och hemlig nyckel för att skydda formuläret från skräppost."
 
 #: src/blocks/form/edit.js:418
 msgid "Generate keys"
-msgstr ""
+msgstr "Generera nycklar"
 
 #: src/blocks/form/edit.js:419
 msgid "My keys"
-msgstr ""
+msgstr "Mina nycklar"
 
 #: src/blocks/form/edit.js:422
 msgid "Get help"
-msgstr ""
+msgstr "Få hjälp"
 
 #: src/blocks/form/edit.js:426
 msgid "Site Key"
-msgstr ""
+msgstr "Webbplatsnyckel"
 
 #: src/blocks/form/edit.js:432
 msgid "Secret Key"
-msgstr ""
+msgstr "Hemlig nyckel"
 
 #: src/blocks/form/edit.js:446
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
-msgstr ""
+msgstr "Sparar"
 
-#: src/blocks/form/edit.js:446 src/blocks/map/inspector.js:221
+#: src/blocks/form/edit.js:446
+#: src/blocks/map/inspector.js:221
 msgid "Save"
-msgstr ""
+msgstr "Spara"
 
-#: src/blocks/form/edit.js:461 src/blocks/map/inspector.js:229
+#: src/blocks/form/edit.js:461
+#: src/blocks/map/inspector.js:229
 msgid "Remove"
-msgstr ""
+msgstr "Ta bort"
 
-#: src/blocks/form/edit.js:57 includes/class-coblocks-form.php:248
+#: src/blocks/form/edit.js:57
+#: includes/class-coblocks-form.php:248
 msgid "First"
-msgstr ""
+msgstr "För"
 
-#: src/blocks/form/edit.js:61 includes/class-coblocks-form.php:249
+#: src/blocks/form/edit.js:61
+#: includes/class-coblocks-form.php:249
 msgid "Last"
-msgstr ""
+msgstr "Efter"
 
-#: src/blocks/form/edit.js:88 includes/class-coblocks-form.php:244
+#: src/blocks/form/edit.js:88
+#: includes/class-coblocks-form.php:244
 msgid "Name"
-msgstr ""
+msgstr "namn"
 
 #: src/blocks/form/edit.js:89
 msgid "A text field for names."
-msgstr ""
+msgstr "Ett textfält för namn."
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/field-name.js:67
 msgid "Add label…"
-msgstr ""
+msgstr "Lägg till etikett..."
 
 #: src/blocks/form/fields/field-label.js:30
 msgid "Required"
-msgstr ""
+msgstr "Krävs"
 
 #: src/blocks/form/fields/field-name.js:75
 msgid "Name Field Settings"
-msgstr ""
+msgstr "Namnfältinställningar"
 
 #: src/blocks/form/fields/field-name.js:77
 msgid "Last Name"
-msgstr ""
+msgstr "Efternamn"
 
 #: src/blocks/form/fields/field-name.js:81
 msgid "Showing both first and last name fields."
-msgstr ""
+msgstr "Visar fält för både förnamn och efternamn."
 
 #: src/blocks/form/fields/field-name.js:81
 msgid "Toggle to add a last name field."
-msgstr ""
+msgstr "Växla för att lägga till fält för efternamn."
 
 #: src/blocks/form/index.js:25
 msgid "Form"
-msgstr ""
+msgstr "Form (formulär)"
 
 #: src/blocks/form/index.js:27
 msgid "Add a simple form to your page."
-msgstr ""
+msgstr "Lägg till ett enkelt formulär till din sida."
 
 #: src/blocks/form/index.js:29
 msgid "email"
-msgstr ""
+msgstr "e-post:"
 
 #: src/blocks/form/index.js:29
 msgid "about"
-msgstr ""
+msgstr "om"
 
 #: src/blocks/form/index.js:29
 msgid "contact"
-msgstr ""
+msgstr "kontakt"
 
 #: src/blocks/form/submit-button.js:107
 msgid "Add text…"
-msgstr ""
+msgstr "Lägg till text..."
 
 #: src/blocks/form/submit-button.js:135
 msgid "Button Text Color"
-msgstr ""
+msgstr "Knapptextfärg"
 
 #: src/blocks/gallery-carousel/controls.js:53
 #: src/blocks/gallery-masonry/controls.js:53
 #: src/blocks/gallery-stacked/controls.js:53
 msgid "Edit gallery"
-msgstr ""
+msgstr "Redigera galleri"
 
 # %1$d is the order number of the image, %2$d is the total number of images.
 #: src/blocks/gallery-carousel/edit.js:292
 #: src/blocks/gallery-masonry/edit.js:239
 #: src/blocks/gallery-stacked/edit.js:197
 msgid "image %1$d of %2$d in gallery"
-msgstr ""
+msgstr "bild %1$d av %2$d i galleri"
 
-#: src/blocks/gallery-carousel/edit.js:333 src/blocks/gif/edit.js:248
+#: src/blocks/gallery-carousel/edit.js:333
+#: src/blocks/gif/edit.js:248
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:230
 msgid "Write caption…"
-msgstr ""
+msgstr "Skriv bildtext..."
 
 #: src/blocks/gallery-carousel/index.js:24
 msgid "Carousel"
-msgstr ""
+msgstr "Carousel (karusell)"
 
 #: src/blocks/gallery-carousel/index.js:38
 msgid "Display multiple images in a beautiful carousel gallery."
-msgstr ""
+msgstr "Visa flera bilder i ett snyggt karusellgalleri."
 
 #: src/blocks/gallery-carousel/index.js:42
 #: src/blocks/gallery-masonry/index.js:43
 #: src/blocks/gallery-stacked/index.js:42
 msgid "gallery"
-msgstr ""
+msgstr "galleri"
 
 #: src/blocks/gallery-carousel/index.js:42
 #: src/blocks/gallery-masonry/index.js:43
 #: src/blocks/gallery-stacked/index.js:42
 msgid "photos"
-msgstr ""
+msgstr "foton"
 
 #: src/blocks/gallery-carousel/inspector.js:119
 #: src/blocks/gallery-masonry/inspector.js:127
 #: src/blocks/gallery-stacked/inspector.js:134
 msgid "%s Settings"
-msgstr ""
+msgstr "Inställningar för %s"
 
 #: src/blocks/gallery-carousel/inspector.js:124
 #: src/blocks/icon/inspector.js:197
 #: src/components/typography-controls/index.js:189
 msgid "Size"
-msgstr ""
+msgstr "Storlek"
 
 #: src/blocks/gallery-carousel/inspector.js:150
 #: src/blocks/gallery-masonry/inspector.js:137
-#: src/blocks/gallery-stacked/inspector.js:149 src/blocks/share/inspector.js:99
+#: src/blocks/gallery-stacked/inspector.js:149
+#: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:111
 #: src/components/background/panel.js:156
 msgid "Rounded Corners"
-msgstr ""
+msgstr "Runda hörn"
 
 #: src/blocks/gallery-carousel/inspector.js:88
 #: src/blocks/gallery-masonry/inspector.js:101
 #: src/blocks/gallery-stacked/inspector.js:104
 msgid "Caption Color"
-msgstr ""
+msgstr "Bildtextfärg"
 
 #: src/blocks/gallery-masonry/index.js:24
 msgid "Masonry"
-msgstr ""
+msgstr "Masonry (murning)"
 
 #: src/blocks/gallery-masonry/index.js:39
 msgid "Display multiple images in an organized masonry gallery."
-msgstr ""
+msgstr "Visa flera bilder i ett organiserat murningsgalleri."
 
 #: src/blocks/gallery-masonry/inspector.js:130
 msgid "Column Size"
-msgstr ""
+msgstr "Kolumnstorlek"
 
 #: src/blocks/gallery-masonry/inspector.js:138
 msgid "Add rounded corners to the gallery items."
-msgstr ""
+msgstr "Lägg till rundade hörn på galleriobjekt"
 
 #: src/blocks/gallery-masonry/inspector.js:146
 #: src/blocks/gallery-stacked/inspector.js:165
 msgid "Captions"
-msgstr ""
+msgstr "Bildtexter"
 
 #: src/blocks/gallery-masonry/inspector.js:153
 msgid "Caption Style"
-msgstr ""
+msgstr "Format på bildtexter"
 
 #: src/blocks/gallery-masonry/inspector.js:52
 #: src/blocks/gallery-stacked/inspector.js:55
 msgid "Showing captions for each media item."
-msgstr ""
+msgstr "Visar bildtexter för vardera medieobjekt."
 
 #: src/blocks/gallery-masonry/inspector.js:52
 #: src/blocks/gallery-stacked/inspector.js:55
 msgid "Toggle to show media captions."
-msgstr ""
+msgstr "Växla för att visa mediebildtexter."
 
 #: src/blocks/gallery-stacked/index.js:24
 msgid "Stacked"
-msgstr ""
+msgstr "Stacked (staplad)"
 
 #: src/blocks/gallery-stacked/index.js:38
 msgid "Display multiple images in an single column stacked gallery."
-msgstr ""
+msgstr "Visa flera bilder i ett staplat galleri med en kolumn."
 
 #: src/blocks/gallery-stacked/inspector.js:137
 msgid "Fullwidth Images"
-msgstr ""
+msgstr "Bilder med fullständig bredd"
 
 #: src/blocks/gallery-stacked/inspector.js:137
 msgid "Fullwidth Image"
-msgstr ""
+msgstr "Bild med fullständig bredd"
 
 #: src/blocks/gallery-stacked/inspector.js:159
 msgid "Box Shadow"
-msgstr ""
+msgstr "Skugga på ruta"
 
 #: src/blocks/gallery-stacked/inspector.js:51
 msgid "Fullwidth images are enabled."
-msgstr ""
+msgstr "Bilder med fullständig bredd är aktiverade."
 
 #: src/blocks/gallery-stacked/inspector.js:51
-msgid ""
-"Toggle to fill the available gallery area with completely fullwidth images."
-msgstr ""
+msgid "Toggle to fill the available gallery area with completely fullwidth images."
+msgstr "Växla för att fylla tillgängligt galleriområde med bilder med fullständig bredd."
 
 #: src/blocks/gif/controls.js:44
 msgid "Remove gif"
-msgstr ""
+msgstr "Ta bort gif"
 
 #: src/blocks/gif/edit.js:153
 msgid "This gif has an empty alt attribute"
-msgstr ""
+msgstr "Denna gif har ett tomt attribut alt"
 
 #: src/blocks/gif/edit.js:288
 msgid "Search for that perfect gif on Giphy"
-msgstr ""
+msgstr "Sök efter en perfekt gif på Giphy"
 
 #: src/blocks/gif/edit.js:294
 msgid "Search for gifs"
-msgstr ""
+msgstr "Sök efter fler gif:ar"
 
 #: src/blocks/gif/index.js:28
 msgid "Pick a gif, any gif."
-msgstr ""
+msgstr "Välj en gif, vilken gif som helst."
 
 #: src/blocks/gif/index.js:30
 msgid "animated"
-msgstr ""
+msgstr "animerad"
 
 #: src/blocks/gif/inspector.js:29
 msgid "Gif Settings"
-msgstr ""
+msgstr "Gif-inställningar"
 
 #: src/blocks/gist/controls.js:29
 msgid "Display meta"
-msgstr ""
+msgstr "Visa meta"
 
 #: src/blocks/gist/controls.js:42
 msgid "Edit Gist"
-msgstr ""
+msgstr "Redigera Gist"
 
 #: src/blocks/gist/controls.js:49
 msgid "View Gist"
-msgstr ""
+msgstr "Visa Gist"
 
 #: src/blocks/gist/controls.js:68
 msgid "GitHub File"
-msgstr ""
+msgstr "GitHub-fil"
 
 #: src/blocks/gist/controls.js:72
 msgid "File"
-msgstr ""
+msgstr "Fil"
 
-#: src/blocks/gist/deprecated.js:30 src/blocks/gist/save.js:29
+#: src/blocks/gist/deprecated.js:30
+#: src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
-msgstr ""
+msgstr "Visa denna gist på GitHub"
 
-#: src/blocks/gist/edit.js:124 src/blocks/gist/inspector.js:51
+#: src/blocks/gist/edit.js:124
+#: src/blocks/gist/inspector.js:51
 msgid "Gist URL"
-msgstr ""
+msgstr "Gist-webbadress"
 
 #: src/blocks/gist/edit.js:129
 msgid "Add GitHub Gist URL..."
-msgstr ""
+msgstr "Lägg till GitHub gist-webbadress"
 
 #: src/blocks/gist/gist.js:137
 msgid "Loading Gist"
-msgstr ""
+msgstr "Läser in gist"
 
 #: src/blocks/gist/index.js:29
 msgid "Embed GitHub gists by adding the gist link."
-msgstr ""
+msgstr "Bädda in GitHub-gistar genom att lägga till gistlänken."
 
 #: src/blocks/gist/index.js:31
 msgid "code"
-msgstr ""
+msgstr "kod"
 
 #: src/blocks/gist/inspector.js:31
 msgid "Showing gist meta data."
-msgstr ""
+msgstr "Visar gistmetadata."
 
 #: src/blocks/gist/inspector.js:31
 msgid "Toggle to show the gist meta data."
-msgstr ""
+msgstr "Växla för att visa gistmetadata."
 
 #: src/blocks/gist/inspector.js:49
 msgid "Gist Settings"
-msgstr ""
+msgstr "Gistinställningar"
 
 #: src/blocks/gist/inspector.js:56
 msgid "Gist File"
-msgstr ""
+msgstr "Gistfil"
 
 #: src/blocks/gist/inspector.js:61
 msgid "Gist Meta"
-msgstr ""
+msgstr "Gistmeta"
 
-#: src/blocks/hero/controls.js:32 src/blocks/row/controls.js:71
+#: src/blocks/hero/controls.js:32
+#: src/blocks/row/controls.js:71
 msgid "Change layout"
-msgstr ""
+msgstr "Ändra layout"
 
-#: src/blocks/hero/edit.js:157 src/blocks/row/column/edit.js:92
+#: src/blocks/hero/edit.js:157
+#: src/blocks/row/column/edit.js:92
 #: src/blocks/row/edit.js:170
 msgid "Add backround to %s"
-msgstr ""
+msgstr "Lägg till bakgrund till %s"
 
 #: src/blocks/hero/index.js:27
 msgid "Hero"
-msgstr ""
+msgstr "Herobanner"
 
 #: src/blocks/hero/index.js:43
-msgid ""
-"An introductory area of a page accompanied by a small amount of text and a "
-"call to action."
-msgstr ""
+msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
+msgstr "Ett inledande stycke på en sida följt av ett litet textstycke och en uppmaning till handling."
 
 #: src/blocks/hero/index.js:45
 msgid "button"
-msgstr ""
+msgstr "knapp"
 
 #: src/blocks/hero/index.js:45
 msgid "call to action"
-msgstr ""
+msgstr "uppmaning till handling"
 
 #: src/blocks/hero/inspector.js:107
 msgid "Content width in pixels"
-msgstr ""
+msgstr "Innehållsbredd i pixlar"
 
 #: src/blocks/hero/inspector.js:71
 msgid "Hero Settings"
-msgstr ""
+msgstr "Herobannerinställningar"
 
-#: src/blocks/hero/inspector.js:75 src/blocks/media-card/inspector.js:63
-#: src/blocks/row/column/inspector.js:104 src/blocks/row/inspector.js:214
+#: src/blocks/hero/inspector.js:75
+#: src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:104
+#: src/blocks/row/inspector.js:214
 msgid "Space inside of the container."
-msgstr ""
+msgstr "Utrymme i behållare"
 
-#: src/blocks/hero/layouts.js:12 src/components/background/panel.js:83
+#: src/blocks/hero/layouts.js:12
+#: src/components/background/panel.js:83
 #: src/components/grid-control/index.js:35
 msgid "Top Left"
-msgstr ""
+msgstr "Högst upp till vänster"
 
-#: src/blocks/hero/layouts.js:13 src/components/background/panel.js:84
+#: src/blocks/hero/layouts.js:13
+#: src/components/background/panel.js:84
 #: src/components/grid-control/index.js:36
 msgid "Top Center"
-msgstr ""
+msgstr "Högst upp i mitten"
 
-#: src/blocks/hero/layouts.js:14 src/components/background/panel.js:85
+#: src/blocks/hero/layouts.js:14
+#: src/components/background/panel.js:85
 #: src/components/grid-control/index.js:37
 msgid "Top Right"
-msgstr ""
+msgstr "Högst upp till höger"
 
-#: src/blocks/hero/layouts.js:15 src/components/background/panel.js:86
+#: src/blocks/hero/layouts.js:15
+#: src/components/background/panel.js:86
 #: src/components/grid-control/index.js:48
 msgid "Center Left"
-msgstr ""
+msgstr "Mitten vänster"
 
-#: src/blocks/hero/layouts.js:16 src/components/background/panel.js:87
+#: src/blocks/hero/layouts.js:16
+#: src/components/background/panel.js:87
 #: src/components/grid-control/index.js:49
 msgid "Center Center"
-msgstr ""
+msgstr "Mitten mitten"
 
-#: src/blocks/hero/layouts.js:17 src/components/background/panel.js:88
+#: src/blocks/hero/layouts.js:17
+#: src/components/background/panel.js:88
 #: src/components/grid-control/index.js:50
 msgid "Center Right"
-msgstr ""
+msgstr "Mitten höger"
 
-#: src/blocks/hero/layouts.js:18 src/components/background/panel.js:89
+#: src/blocks/hero/layouts.js:18
+#: src/components/background/panel.js:89
 #: src/components/grid-control/index.js:41
 msgid "Bottom Left"
-msgstr ""
+msgstr "Längst ner till vänster"
 
-#: src/blocks/hero/layouts.js:19 src/components/background/panel.js:90
+#: src/blocks/hero/layouts.js:19
+#: src/components/background/panel.js:90
 #: src/components/grid-control/index.js:42
 msgid "Bottom Center"
-msgstr ""
+msgstr "Längst ner i mitten"
 
-#: src/blocks/hero/layouts.js:20 src/components/background/panel.js:91
+#: src/blocks/hero/layouts.js:20
+#: src/components/background/panel.js:91
 #: src/components/grid-control/index.js:43
 msgid "Bottom Right"
-msgstr ""
+msgstr "Längst ner till höger"
 
 #: src/blocks/highlight/edit.js:108
 msgid "Add highlighted text..."
-msgstr ""
+msgstr "Lägg till markerad text..."
 
 #: src/blocks/highlight/index.js:22
 msgid "Highlight"
-msgstr ""
+msgstr "Markera"
 
 #: src/blocks/highlight/index.js:29
 msgid "Highlight text."
-msgstr ""
+msgstr "Markera text."
 
 #: src/blocks/highlight/index.js:31
 msgid "text"
-msgstr ""
+msgstr "text"
 
 #: src/blocks/highlight/index.js:31
 msgid "paragraph"
-msgstr ""
+msgstr "stycke"
 
 #: src/blocks/icon/index.js:27
 msgid "Icon"
-msgstr ""
+msgstr "Icon (ikon)"
 
 #: src/blocks/icon/index.js:34
 msgid "Add a stylized graphic symbol to communicate something more."
-msgstr ""
+msgstr "Lägg till en stiliserad grafisk symbol för att kommunicera något mer."
 
-#: src/blocks/icon/index.js:36 src/blocks/social-profiles/index.js:23
+#: src/blocks/icon/index.js:36
+#: src/blocks/social-profiles/index.js:23
 msgid "icons"
-msgstr ""
+msgstr "ikoner"
 
-#: src/blocks/icon/inspector.js:168 src/blocks/row/inspector.js:102
+#: src/blocks/icon/inspector.js:168
+#: src/blocks/row/inspector.js:102
 #: src/components/dimensions-control/dimensions-select.js:30
 msgid "Huge"
-msgstr ""
+msgstr "Stor"
 
-#: src/blocks/icon/inspector.js:179 src/blocks/share/inspector.js:90
+#: src/blocks/icon/inspector.js:179
+#: src/blocks/share/inspector.js:90
 #: src/blocks/social-profiles/inspector.js:102
 msgid "Icon Settings"
-msgstr ""
+msgstr "Ikoninställningar"
 
 #: src/blocks/icon/inspector.js:192
 #: src/components/dimensions-control/index.js:484
 msgid "Turn off advanced %s settings"
-msgstr ""
+msgstr "Stäng av avancerade inställningar för %s"
 
 #: src/blocks/icon/inspector.js:194
 #: src/components/dimensions-control/index.js:486
 #: src/components/size-control/index.js:198
 msgid "Reset"
-msgstr ""
+msgstr "Återställ"
 
 #: src/blocks/icon/inspector.js:221
 msgid "Custom %s size"
-msgstr ""
+msgstr "Anpassade storlek för %s"
 
 #: src/blocks/icon/inspector.js:249
 #: src/components/dimensions-control/index.js:725
 msgid "Advanced %s settings"
-msgstr ""
+msgstr "Avancerade inställningar för %s"
 
 #: src/blocks/icon/inspector.js:252
 #: src/components/dimensions-control/index.js:728
 msgid "Advanced"
-msgstr ""
+msgstr "Avancerat"
 
 #: src/blocks/icon/inspector.js:260
 msgid "Radius"
-msgstr ""
+msgstr "Radius"
 
 #: src/blocks/icon/inspector.js:280
 msgid "Icon Search"
-msgstr ""
+msgstr "Ikonsökning"
 
 #: src/blocks/icon/inspector.js:329
 msgid "No results found."
-msgstr ""
+msgstr "Hittade inga resultat."
 
 #: src/blocks/icon/inspector.js:335
 #: src/components/block-gallery/gallery-link-settings.js:63
 msgid "Link Settings"
-msgstr ""
+msgstr "Länkinställningar"
 
 #: src/blocks/icon/inspector.js:338
 msgid "Link URL"
-msgstr ""
+msgstr "Länk-URL"
 
 #: src/blocks/icon/inspector.js:343
 #: src/components/block-gallery/gallery-link-settings.js:80
 msgid "Link Rel"
-msgstr ""
+msgstr "Länkrelation"
 
 #: src/blocks/icon/inspector.js:348
 msgid "Opening in New Tab"
-msgstr ""
+msgstr "Öppnar i ny flik"
 
 #: src/blocks/icon/inspector.js:348
 #: src/components/block-gallery/gallery-link-settings.js:75
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Öppen i ny flik"
 
 #: src/blocks/icon/inspector.js:360
 msgid "Icon Color"
-msgstr ""
+msgstr "Ikonfärg"
 
 #: src/blocks/logos/controls.js:51
 msgid "Edit logos"
-msgstr ""
+msgstr "Redigera logotyper"
 
-#: src/blocks/logos/edit.js:69 src/blocks/logos/index.js:28
+#: src/blocks/logos/edit.js:69
+#: src/blocks/logos/index.js:28
 msgid "Logos & Badges"
-msgstr ""
+msgstr "Logos & Badges (logotyper och märken)"
 
 #: src/blocks/logos/edit.js:70
 #: src/components/block-gallery/gallery-placeholder.js:71
 msgid "Drag images, upload new ones or select files from your library."
-msgstr ""
+msgstr "Dra bilder, ladda upp nya eller välj filer från ditt bibliotek."
 
 #: src/blocks/logos/index.js:29
 msgid "Add logos, badges, or certifications to build credibility."
-msgstr ""
+msgstr "Lägg till logotyper, märken eller certifieringar för ökad trovärdighet."
 
 #: src/blocks/logos/index.js:30
 msgid "clients"
-msgstr ""
+msgstr "kunder"
 
 #: src/blocks/logos/index.js:30
 msgid "proof"
-msgstr ""
+msgstr "bevis"
 
 #: src/blocks/logos/index.js:30
 msgid "testimonials"
-msgstr ""
+msgstr "utlåtanden"
 
 #: src/blocks/logos/inspector.js:12
 msgid "Logos Settings"
-msgstr ""
+msgstr "Inställningar för logotyper"
 
 #: src/blocks/logos/inspector.js:15
 msgid "Black & White"
-msgstr ""
+msgstr "Black & White"
 
 #: src/blocks/logos/inspector.js:16
 msgid "Toggle to add a black and white filter."
-msgstr ""
+msgstr "Växla för att lägga till ett svartvitt filter."
 
 #: src/blocks/map/controls.js:30
 msgid "Edit Location"
-msgstr ""
+msgstr "Redigera plats"
 
 #: src/blocks/map/controls.js:42
 msgid "Map style"
-msgstr ""
+msgstr "Kartformat"
 
 #: src/blocks/map/edit.js:188
 msgid "Invalid API key, or too many requests"
-msgstr ""
+msgstr "Ogiltig API-nyckel eller för många förfrågningar"
 
-#: src/blocks/map/edit.js:295 src/blocks/map/save.js:48
+#: src/blocks/map/edit.js:295
+#: src/blocks/map/save.js:48
 msgid "Google Map"
-msgstr ""
+msgstr "Google Maps"
 
 #: src/blocks/map/edit.js:296
 msgid "Enter a location or address to drop a pin on a Google map."
-msgstr ""
+msgstr "Ange en plats eller adress för att fästa en nål på en Google-karta."
 
 #: src/blocks/map/edit.js:303
 msgid "Search for a place or address…"
-msgstr ""
+msgstr "Sök efter en plats eller adress..."
 
-#: src/blocks/map/edit.js:308 src/components/block-gallery/gallery-image.js:221
+#: src/blocks/map/edit.js:308
+#: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
-msgstr ""
+msgstr "Tillämpa"
 
 #: src/blocks/map/index.js:24
 msgid "Map"
-msgstr ""
+msgstr "Map (karta)"
 
 #: src/blocks/map/index.js:29
 msgid "Add an address and drop a pin on a Google map."
-msgstr ""
+msgstr "Lägg till en adress och fäst en nål på en Google-karta."
 
 #: src/blocks/map/index.js:31
 msgid "address"
-msgstr ""
+msgstr "adress"
 
 #: src/blocks/map/index.js:31
 msgid "maps"
-msgstr ""
+msgstr "kartor"
 
 #: src/blocks/map/index.js:31
 msgid "google"
-msgstr ""
+msgstr "google"
 
 #: src/blocks/map/inspector.js:100
 msgid "Select Map Style"
-msgstr ""
+msgstr "Välj kartformat"
 
 #: src/blocks/map/inspector.js:121
 msgid "Map Settings"
-msgstr ""
+msgstr "Inställningar för karta"
 
 #: src/blocks/map/inspector.js:124
 msgid "Zoom Level"
-msgstr ""
+msgstr "Inzoomningsnivå"
 
 #: src/blocks/map/inspector.js:134
 msgid "Height for the map in pixels"
-msgstr ""
+msgstr "Höjd för karta i pixlar"
 
 #: src/blocks/map/inspector.js:145
 msgid "Marker Size"
-msgstr ""
+msgstr "Storlek på markör"
 
 #: src/blocks/map/inspector.js:160
 msgid "Fine control options are enabled."
-msgstr ""
+msgstr "Alternativ för finjustering är aktiverad."
 
 #: src/blocks/map/inspector.js:160
 msgid "Toggle to enable map control options."
-msgstr ""
+msgstr "Växla för att aktivera alternativ för kartkontroll."
 
 #: src/blocks/map/inspector.js:168
 msgid "Map Controls"
-msgstr ""
+msgstr "Kartkontroller"
 
 #: src/blocks/map/inspector.js:172
 msgid "Map Type"
-msgstr ""
+msgstr "Karttyp"
 
 #: src/blocks/map/inspector.js:175
 msgid "Switching between standard and satellite map views is enabled."
-msgstr ""
+msgstr "Växling mellan standard- och satellitkarta är aktiverad."
 
 #: src/blocks/map/inspector.js:175
 msgid "Toggle to enable switching between standard and satellite maps."
-msgstr ""
+msgstr "Växla för att aktivera växling mellan standard- och satellitkartor."
 
 #: src/blocks/map/inspector.js:178
 msgid "Zoom Controls"
-msgstr ""
+msgstr "Zoomkontroller"
 
 #: src/blocks/map/inspector.js:181
 msgid "Showing map zoom controls."
-msgstr ""
+msgstr "Visar kontroller för kartzoomning"
 
 #: src/blocks/map/inspector.js:181
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
-msgstr ""
+msgstr "Växla för att aktivera mellan att zooma in och ut på kartan med zoomkontroller."
 
 #: src/blocks/map/inspector.js:184
 msgid "Street View"
-msgstr ""
+msgstr "Gatuvy"
 
 #: src/blocks/map/inspector.js:187
 msgid "Showing the street view map control."
-msgstr ""
+msgstr "Visar kontroll för gatuvykarta."
 
 #: src/blocks/map/inspector.js:187
 msgid "Toggle to show the street view control at the bottom right."
-msgstr ""
+msgstr "Växla för att visa gatuvykontrollen längst ner till höger."
 
 #: src/blocks/map/inspector.js:190
 msgid "Fullscreen Toggle"
-msgstr ""
+msgstr "Helskärmsväxling"
 
 #: src/blocks/map/inspector.js:193
 msgid "Showing the fullscreen map control."
-msgstr ""
+msgstr "Visar kontroll för helskärmskarta."
 
 #: src/blocks/map/inspector.js:193
 msgid "Toggle to show the fullscreen map control."
-msgstr ""
+msgstr "Växla för att visa kontroll för helskärmskarta"
 
 #: src/blocks/map/inspector.js:198
 msgid "Google Maps API Key"
-msgstr ""
+msgstr "API-nyckel för Google Maps"
 
 #: src/blocks/map/inspector.js:202
-msgid ""
-"Add your Google Maps API key. Updating this API key will set all your maps "
-"to use the new key."
-msgstr ""
+msgid "Add your Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgstr "Lägg till din API-nyckel för Google Maps. Om du uppdaterar den här API-nyckeln kommer den att användas till alla kartor."
 
 #: src/blocks/map/inspector.js:205
 msgid "Retrieve your key"
-msgstr ""
+msgstr "Hämta din nyckel"
 
 #: src/blocks/map/inspector.js:206
 msgid "Need help?"
-msgstr ""
+msgstr "Behöver du hjälp?"
 
 #: src/blocks/map/inspector.js:212
 msgid "Enter Google API Key…"
-msgstr ""
+msgstr "Ange API-nyckel för Google..."
 
 #: src/blocks/map/inspector.js:221
 msgid "Saved"
-msgstr ""
+msgstr "Sparat"
 
 #: src/blocks/map/styles.js:12
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 #: src/blocks/map/styles.js:16
 msgid "Silver"
-msgstr ""
+msgstr "Silver"
 
 #: src/blocks/map/styles.js:20
 msgid "Retro"
-msgstr ""
+msgstr "Retro"
 
 #: src/blocks/map/styles.js:24
 #: src/components/block-gallery/options/caption-options.js:10
 msgid "Dark"
-msgstr ""
+msgstr "Mörk"
 
 #: src/blocks/map/styles.js:28
 msgid "Night"
-msgstr ""
+msgstr "Natt"
 
 #: src/blocks/map/styles.js:32
 msgid "Aubergine"
-msgstr ""
+msgstr "Aubergine"
 
 #: src/blocks/media-card/controls.js:28
 msgid "Media on right"
-msgstr ""
+msgstr "Media på höger sida"
 
 #: src/blocks/media-card/controls.js:33
 msgid "Media on left"
-msgstr ""
+msgstr "Media på vänster sida"
 
 #: src/blocks/media-card/index.js:26
 msgid "Media Card"
-msgstr ""
+msgstr "Media Card (mediekort)"
 
 #: src/blocks/media-card/index.js:37
 msgid "Add an image or video with an offset card side-by-side."
-msgstr ""
+msgstr "Lägg till en bild eller video med ett förskjutet kort, sida vid sida."
 
 #: src/blocks/media-card/index.js:39
 msgid "image"
-msgstr ""
+msgstr "bild"
 
 #: src/blocks/media-card/index.js:39
 msgid "video"
-msgstr ""
+msgstr "video"
 
 #: src/blocks/media-card/inspector.js:109
 msgid "Card Shadow"
-msgstr ""
+msgstr "Kortskugga"
 
 #: src/blocks/media-card/inspector.js:112
 msgid "Showing card shadow."
-msgstr ""
+msgstr "Visar kortskugga"
 
 #: src/blocks/media-card/inspector.js:112
 msgid "Toggle to add a card shadow."
-msgstr ""
+msgstr "Växla för att lägga till en kortskugga."
 
 #: src/blocks/media-card/inspector.js:116
 msgid " %s Shadow"
-msgstr ""
+msgstr " Skugga från %s"
 
 #: src/blocks/media-card/inspector.js:119
 msgid "Showing %s shadow."
-msgstr ""
+msgstr "Visar skugga från %s."
 
 #: src/blocks/media-card/inspector.js:119
 msgid "Toggle to add an %s shadow"
-msgstr ""
+msgstr "Växla för att lägga till en skugga från %s"
 
 #: src/blocks/media-card/inspector.js:59
 msgid "Media Card Settings"
-msgstr ""
+msgstr "Inställningar för mediekort"
 
 #: src/blocks/media-card/inspector.js:84
 msgid "Max Width"
-msgstr ""
+msgstr "Maxbredd"
 
 #: src/blocks/media-card/media-container.js:100
 msgid "Media"
-msgstr ""
+msgstr "Media"
 
 #: src/blocks/media-card/media-container.js:120
 msgid "Drop to replace media"
-msgstr ""
+msgstr "Släpp för att ersätta media"
 
 #: src/blocks/media-card/media-container.js:37
 msgid "Edit media"
-msgstr ""
+msgstr "Redigera media"
 
 # %s: number of tables
 #: src/blocks/pricing-table/controls.js:38
 msgid "%s Tables"
-msgstr ""
+msgstr "%s-tabeller"
 
 #: src/blocks/pricing-table/edit.js:39
 msgid "Plan %s"
-msgstr ""
+msgstr "Paket %s"
 
 #: src/blocks/pricing-table/index.js:22
 msgid "Pricing Table"
-msgstr ""
+msgstr "Pricing Table (prislistor)"
 
 #: src/blocks/pricing-table/index.js:29
 msgid "Add pricing tables."
-msgstr ""
+msgstr "Lägg till prislistor."
 
 #: src/blocks/pricing-table/index.js:31
 #: src/blocks/pricing-table/pricing-table-item/index.js:31
 msgid "landing"
-msgstr ""
+msgstr "start"
 
 #: src/blocks/pricing-table/index.js:31
 #: src/blocks/pricing-table/pricing-table-item/index.js:31
 msgid "comparison"
-msgstr ""
+msgstr "jämförelse"
 
 #: src/blocks/pricing-table/inspector.js:26
 msgid "Pricing Table Settings"
-msgstr ""
+msgstr "Inställningar för prislistor"
 
 #: src/blocks/pricing-table/inspector.js:28
 msgid "Tables"
-msgstr ""
+msgstr "Tabeller"
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:112
 msgid "Add features"
-msgstr ""
+msgstr "Lägg till funktioner"
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:30
 msgid "Buy Now"
-msgstr ""
+msgstr "Köp nu"
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:82
 msgid "Plan A"
-msgstr ""
+msgstr "Paket A"
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:92
 msgid "$"
-msgstr ""
+msgstr "$"
 
 #: src/blocks/pricing-table/pricing-table-item/index.js:22
 msgid "Pricing Table Item"
-msgstr ""
+msgstr "Objekt i prislista"
 
 #: src/blocks/pricing-table/pricing-table-item/index.js:29
 msgid "A column placed within the pricing table block."
-msgstr ""
+msgstr "En kolumn i blocket med prislista."
 
 #: src/blocks/row/column/index.js:22
 msgid "Column"
-msgstr ""
+msgstr "Kolumn"
 
 #: src/blocks/row/column/index.js:36
 msgid "An immediate child of a row."
-msgstr ""
+msgstr "Ett direkt underordnat objekt till en rad."
 
 #: src/blocks/row/column/inspector.js:115
 msgid "Width"
-msgstr ""
+msgstr "Bredd"
 
 #: src/blocks/row/column/inspector.js:88
 msgid "Column Settings"
-msgstr ""
+msgstr "Kolumninställningar"
 
-#: src/blocks/row/column/inspector.js:92 src/blocks/row/inspector.js:191
+#: src/blocks/row/column/inspector.js:92
+#: src/blocks/row/inspector.js:191
 msgid "Space around the container."
-msgstr ""
+msgstr "Utrymme runt behållaren."
 
 #: src/blocks/row/edit.js:122
 msgid "one"
-msgstr ""
+msgstr "ett"
 
 #: src/blocks/row/edit.js:124
 msgid "two"
-msgstr ""
+msgstr "två"
 
 #: src/blocks/row/edit.js:126
 msgid "three"
-msgstr ""
+msgstr "tre"
 
 #: src/blocks/row/edit.js:128
 msgid "four"
-msgstr ""
+msgstr "fyra"
 
 #: src/blocks/row/edit.js:175
 msgid "One Column"
-msgstr ""
+msgstr "En kolumn"
 
 #: src/blocks/row/edit.js:176
 msgid "Two Columns"
-msgstr ""
+msgstr "Två kolumner"
 
 #: src/blocks/row/edit.js:177
 msgid "Three Columns"
-msgstr ""
+msgstr "Tre kolumner"
 
 #: src/blocks/row/edit.js:178
 msgid "Four Columns"
-msgstr ""
+msgstr "Fyra kolumner"
 
 #: src/blocks/row/edit.js:203
 msgid "Row Layout"
-msgstr ""
+msgstr "Radlayout"
 
-#: src/blocks/row/edit.js:203 src/blocks/row/index.js:26
+#: src/blocks/row/edit.js:203
+#: src/blocks/row/index.js:26
 msgid "Row"
-msgstr ""
+msgstr "Rad"
 
 #: src/blocks/row/edit.js:204
 msgid "Now select a layout for this %s column row."
-msgstr ""
+msgstr "Välj nu en layout för den här %s-kolumnraden."
 
 #: src/blocks/row/edit.js:204
 msgid "Select the number of columns for this row."
-msgstr ""
+msgstr "Välj antalet kolumner för den här raden."
 
 #: src/blocks/row/edit.js:208
 msgid "Select Row Columns"
-msgstr ""
+msgstr "Välj radkolumner"
 
-#: src/blocks/row/edit.js:233 src/blocks/row/inspector.js:154
+#: src/blocks/row/edit.js:233
+#: src/blocks/row/inspector.js:154
 msgid "Select Row Layout"
-msgstr ""
+msgstr "Välj radlayout"
 
 #: src/blocks/row/edit.js:243
 msgid "Back to Columns"
-msgstr ""
+msgstr "Tillbaka till kolumner"
 
 #: src/blocks/row/index.js:40
-msgid ""
-"Add a structured wrapper for column blocks, then add content blocks you’d "
-"like to the columns."
-msgstr ""
+msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
+msgstr "Lägg till ett omslag med struktur för kolumnblock och lägg sedan till de innehållsblock du vill till kolumnerna."
 
 #: src/blocks/row/index.js:42
 msgid "rows"
-msgstr ""
+msgstr "rader"
 
 #: src/blocks/row/index.js:42
 msgid "columns"
-msgstr ""
+msgstr "kolumner"
 
 #: src/blocks/row/index.js:42
 msgid "layouts"
-msgstr ""
+msgstr "layouter"
 
-#: src/blocks/row/inspector.js:117 src/components/grid-control/index.js:122
+#: src/blocks/row/inspector.js:117
+#: src/components/grid-control/index.js:122
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 #: src/blocks/row/inspector.js:186
 msgid "Row Settings"
-msgstr ""
+msgstr "Radinställningar"
 
 #: src/blocks/row/inspector.js:98
 #: src/components/block-gallery/options/caption-options.js:12
@@ -1654,1578 +1718,1589 @@ msgstr ""
 #: src/components/dimensions-control/dimensions-select.js:10
 #: src/extensions/list-styles/index.js:21
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #: src/blocks/services/edit.js:44
 msgid "Square"
-msgstr ""
+msgstr "Fyrkantig"
 
 #: src/blocks/services/edit.js:49
 msgid "Circle"
-msgstr ""
+msgstr "Cirkel"
 
 #: src/blocks/services/index.js:28
 msgid "Services"
-msgstr ""
+msgstr "Services (tjänster)"
 
 #: src/blocks/services/index.js:29
 msgid "Add up to four columns of services to display."
-msgstr ""
+msgstr "Lägg till upp till fyra kolumner med tjänster att visa."
 
 #: src/blocks/services/index.js:30
 msgid "features"
-msgstr ""
+msgstr "funktioner"
 
 #: src/blocks/services/inspector.js:67
 msgid "Services Settings"
-msgstr ""
+msgstr "Tjänsteinställningar"
 
 #: src/blocks/services/inspector.js:75
 msgid "Heading Level"
-msgstr ""
+msgstr "Rubriknivå"
 
 #: src/blocks/services/inspector.js:83
 msgid "Action Buttons"
-msgstr ""
+msgstr "Åtgärdsknappar"
 
 #: src/blocks/services/inspector.js:87
 msgid "Showing the call to action buttons."
-msgstr ""
+msgstr "Visar knappar med uppmaning till handling."
 
 #: src/blocks/services/inspector.js:88
 msgid "Toggle to show call to action buttons."
-msgstr ""
+msgstr "Växla till att visa knappar med uppmaning till handling."
 
 #: src/blocks/services/service/index.js:28
 msgid "Service"
-msgstr ""
+msgstr "Tjänst"
 
 #: src/blocks/services/service/index.js:29
 msgid "A single service item within a services block."
-msgstr ""
+msgstr "Ett tjänsteobjekt inom ett block med tjänster."
 
 #: src/blocks/services/service/inspector.js:18
 msgid "Service Settings"
-msgstr ""
+msgstr "Tjänsteinställningar"
 
 #: src/blocks/services/service/inspector.js:20
 msgid "Action Button"
-msgstr ""
+msgstr "Åtgärdsknapp"
 
 #: src/blocks/services/service/inspector.js:23
 msgid "Showing the call to action button."
-msgstr ""
+msgstr "Visar knappen med uppmaning till handling."
 
 #: src/blocks/services/service/inspector.js:24
 msgid "Toggle to show a call to action button."
-msgstr ""
+msgstr "Växla för att visa en knapp med uppmaning till handling."
 
 #: src/blocks/shape-divider/controls.js:28
 #: src/components/orientation/index.js:59
 msgid "Flip horiztonally"
-msgstr ""
+msgstr "Vänd horisontellt"
 
 #: src/blocks/shape-divider/controls.js:33
 #: src/components/orientation/index.js:48
 msgid "Flip vertically"
-msgstr ""
+msgstr "Vänd vertikalt"
 
 #: src/blocks/shape-divider/index.js:23
 msgid "Shape Divider"
-msgstr ""
+msgstr "Shape Divider (avdelare)"
 
 #: src/blocks/shape-divider/index.js:30
 msgid "Add a shape divider to visually distinquish page sections."
-msgstr ""
+msgstr "Lägg till en avdelare för att synligt skilja stycken på sidan åt."
 
 #: src/blocks/shape-divider/index.js:32
 msgid "separator"
-msgstr ""
+msgstr "separator"
 
 #: src/blocks/shape-divider/inspector.js:108
 msgid "Shape Color"
-msgstr ""
+msgstr "Formfärg"
 
 #: src/blocks/shape-divider/inspector.js:56
 msgid "Divider Settings"
-msgstr ""
+msgstr "Inställningar för avdelare"
 
 #: src/blocks/shape-divider/inspector.js:58
 msgid "Shape Height in pixels"
-msgstr ""
+msgstr "Formhöjd i pixlar"
 
 #: src/blocks/shape-divider/inspector.js:76
 msgid "Background Height in pixels"
-msgstr ""
+msgstr "Bakgrundshöjd i pixlar"
 
 #: src/blocks/shape-divider/inspector.js:94
 msgid "Orientation"
-msgstr ""
+msgstr "Orientering"
 
-#: src/blocks/share/edit.js:102 src/blocks/share/index.php:133
+#: src/blocks/share/edit.js:102
+#: src/blocks/share/index.php:133
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Dela på Twitter"
 
-#: src/blocks/share/edit.js:110 src/blocks/share/index.php:137
+#: src/blocks/share/edit.js:110
+#: src/blocks/share/index.php:137
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Dela på Facebook"
 
-#: src/blocks/share/edit.js:118 src/blocks/share/index.php:141
+#: src/blocks/share/edit.js:118
+#: src/blocks/share/index.php:141
 msgid "Share on Pinterest"
-msgstr ""
+msgstr "Dela på Pinterest"
 
 #: src/blocks/share/edit.js:126
 msgid "Share on LinkedIn"
-msgstr ""
+msgstr "Dela på LinkedIn"
 
-#: src/blocks/share/edit.js:134 src/blocks/share/index.php:149
+#: src/blocks/share/edit.js:134
+#: src/blocks/share/index.php:149
 msgid "Share via Email"
-msgstr ""
+msgstr "Dela via e-post"
 
-#: src/blocks/share/edit.js:142 src/blocks/share/index.php:153
+#: src/blocks/share/edit.js:142
+#: src/blocks/share/index.php:153
 msgid "Share on Tumblr"
-msgstr ""
+msgstr "Dela på Tumblr"
 
-#: src/blocks/share/edit.js:150 src/blocks/share/index.php:157
+#: src/blocks/share/edit.js:150
+#: src/blocks/share/index.php:157
 msgid "Share on Google"
-msgstr ""
+msgstr "Dela på Google"
 
-#: src/blocks/share/edit.js:158 src/blocks/share/index.php:161
+#: src/blocks/share/edit.js:158
+#: src/blocks/share/index.php:161
 msgid "Share on Reddit"
-msgstr ""
+msgstr "Dela på Reddit"
 
 #: src/blocks/share/index.js:19
 msgid "Share"
-msgstr ""
+msgstr "Dela"
 
 #: src/blocks/share/index.js:23
 msgid "social"
-msgstr ""
+msgstr "socialt"
 
 #: src/blocks/share/index.js:28
 msgid "Add social sharing links to help you get likes and shares."
-msgstr ""
+msgstr "Lägg till länkar för delning på sociala medier som kan hjälpa dig att få delningar och gillanden."
 
 #: src/blocks/share/inspector.js:108
 #: src/blocks/social-profiles/inspector.js:120
 msgid "Icon Size"
-msgstr ""
+msgstr "Ikonstorlek"
 
 #: src/blocks/share/inspector.js:117
 #: src/blocks/social-profiles/inspector.js:129
 msgid "Circle Size"
-msgstr ""
+msgstr "Cirkelstorlek"
 
 #: src/blocks/share/inspector.js:126
 #: src/blocks/social-profiles/inspector.js:138
 msgid "Button Size"
-msgstr ""
+msgstr "Knappstorlek"
 
 #: src/blocks/share/inspector.js:134
 msgid "Icons"
-msgstr ""
+msgstr "Ikoner"
 
-#: src/blocks/share/inspector.js:136 src/blocks/social-profiles/edit.js:196
+#: src/blocks/share/inspector.js:136
+#: src/blocks/social-profiles/edit.js:196
 #: src/blocks/social-profiles/index.php:72
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
-#: src/blocks/share/inspector.js:141 src/blocks/social-profiles/edit.js:150
+#: src/blocks/share/inspector.js:141
+#: src/blocks/social-profiles/edit.js:150
 #: src/blocks/social-profiles/index.php:68
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
-#: src/blocks/share/inspector.js:146 src/blocks/social-profiles/edit.js:290
+#: src/blocks/share/inspector.js:146
+#: src/blocks/social-profiles/edit.js:290
 #: src/blocks/social-profiles/index.php:80
 msgid "Pinterest"
-msgstr ""
+msgstr "Pinterest"
 
-#: src/blocks/share/inspector.js:151 src/blocks/social-profiles/edit.js:338
+#: src/blocks/share/inspector.js:151
+#: src/blocks/social-profiles/edit.js:338
 msgid "LinkedIn"
-msgstr ""
+msgstr "LinkedIn"
 
 #: src/blocks/share/inspector.js:161
 msgid "Tumblr"
-msgstr ""
+msgstr "Tumblr"
 
 #: src/blocks/share/inspector.js:166
 msgid "Google"
-msgstr ""
+msgstr "Google"
 
 #: src/blocks/share/inspector.js:171
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
-#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:36
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:36
 msgid "Share button colors are enabled."
-msgstr ""
+msgstr "Delningsknappens färger är aktiverade."
 
-#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:37
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:37
 msgid "Toggle to use official colors from each social media platform."
-msgstr ""
+msgstr "Växla för att använda de officiella färgerna från de olika sociala medieplattformarna."
 
-#: src/blocks/share/inspector.js:92 src/blocks/social-profiles/inspector.js:104
+#: src/blocks/share/inspector.js:92
+#: src/blocks/social-profiles/inspector.js:104
 msgid "Social Colors"
-msgstr ""
+msgstr "Sociala mediefärger"
 
 #: src/blocks/social-profiles/edit.js:133
 msgid "Add Facebook Profile"
-msgstr ""
+msgstr "Lägg till Facebook-profil"
 
 #: src/blocks/social-profiles/edit.js:165
 msgid "https://facebook.com/"
-msgstr ""
+msgstr "https://facebook.com/"
 
 #: src/blocks/social-profiles/edit.js:179
 msgid "Add Twitter Profile"
-msgstr ""
+msgstr "Lägg till Twitter-profil"
 
 #: src/blocks/social-profiles/edit.js:211
 msgid "https://twitter.com/"
-msgstr ""
+msgstr "https://twitter.com/"
 
 #: src/blocks/social-profiles/edit.js:225
 msgid "Add Instagram Profile"
-msgstr ""
+msgstr "Lägg till Instagram-profil"
 
 #: src/blocks/social-profiles/edit.js:242
 #: src/blocks/social-profiles/index.php:76
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: src/blocks/social-profiles/edit.js:257
 msgid "https://instagram.com/"
-msgstr ""
+msgstr "https://instagram.com/"
 
 #: src/blocks/social-profiles/edit.js:273
 msgid "Add Pinterest Profile"
-msgstr ""
+msgstr "Lägg till Pinterest-profil"
 
 #: src/blocks/social-profiles/edit.js:305
 msgid "https://pinterest.com/"
-msgstr ""
+msgstr "https://pinterest.com/"
 
 #: src/blocks/social-profiles/edit.js:321
 msgid "Add LinkedIn Profile"
-msgstr ""
+msgstr "Lägg till LinkedIn-profil"
 
 #: src/blocks/social-profiles/edit.js:353
 msgid "https://linkedin.com/"
-msgstr ""
+msgstr "https://linkedin.com/"
 
 #: src/blocks/social-profiles/edit.js:367
 msgid "Add YouTube Profile"
-msgstr ""
+msgstr "Lägg till YouTube-profil"
 
 #: src/blocks/social-profiles/edit.js:384
 #: src/blocks/social-profiles/index.php:89
 msgid "YouTube"
-msgstr ""
+msgstr "YouTube"
 
 #: src/blocks/social-profiles/edit.js:399
 msgid "https://youtube.com/"
-msgstr ""
+msgstr "https://youtube.com/"
 
 #: src/blocks/social-profiles/edit.js:413
 msgid "Add Yelp Profile"
-msgstr ""
+msgstr "Lägg till Yelp-profil"
 
 #: src/blocks/social-profiles/edit.js:430
 #: src/blocks/social-profiles/index.php:93
 msgid "Yelp"
-msgstr ""
+msgstr "Yelp"
 
 #: src/blocks/social-profiles/edit.js:445
 msgid "https://yelp.com/"
-msgstr ""
+msgstr "https://yelp.com/"
 
 #: src/blocks/social-profiles/edit.js:459
 msgid "Add Houzz Profile"
-msgstr ""
+msgstr "Lägg till Houzz-profil"
 
 #: src/blocks/social-profiles/edit.js:476
 #: src/blocks/social-profiles/index.php:97
 msgid "Houzz"
-msgstr ""
+msgstr "Houzz"
 
 #: src/blocks/social-profiles/edit.js:491
 msgid "https://houzz.com/"
-msgstr ""
+msgstr "https://houzz.com/"
 
 #: src/blocks/social-profiles/index.js:19
 msgid "Social Profiles"
-msgstr ""
+msgstr "Social Profiles (sociala profiler)"
 
 #: src/blocks/social-profiles/index.js:23
 msgid "links"
-msgstr ""
+msgstr "länkar"
 
 #: src/blocks/social-profiles/index.js:28
 msgid "Display links to social media profiles."
-msgstr ""
+msgstr "Visa länkar till sociala medieprofiler."
 
 #: src/blocks/social-profiles/inspector.js:146
 msgid "Profile Links"
-msgstr ""
+msgstr "Profillänkar"
 
 #: src/components/background/controls.js:53
 msgid "Edit Background"
-msgstr ""
+msgstr "Redigera bakgrund"
 
 #: src/components/background/controls.js:72
 msgid "Remove Background"
-msgstr ""
+msgstr "Ta bort bakgrund"
 
 #: src/components/background/controls.js:96
 msgid "Background"
-msgstr ""
+msgstr "Bakgrund"
 
 #: src/components/background/panel.js:102
 msgid "Auto"
-msgstr ""
+msgstr "Bil"
 
 #: src/components/background/panel.js:103
 msgid "Cover"
-msgstr ""
+msgstr "Omslagsfoto"
 
 #: src/components/background/panel.js:104
 msgid "Contain"
-msgstr ""
+msgstr "Innehåller"
 
 #: src/components/background/panel.js:113
 msgid "Background Settings"
-msgstr ""
+msgstr "Inställningar för bakgrund"
 
 #: src/components/background/panel.js:119
 msgid "Fixed Background"
-msgstr ""
+msgstr "Fast bakgrund"
 
 #: src/components/background/panel.js:135
 msgid "Background Opacity"
-msgstr ""
+msgstr "Bakgrundsogenomskinlighet"
 
 #: src/components/background/panel.js:168
 msgid "Repeat"
-msgstr ""
+msgstr "Upprepa"
 
 #: src/components/background/panel.js:177
 msgid "Position"
-msgstr ""
+msgstr "Position"
 
 #: src/components/background/panel.js:185
 msgid "Display"
-msgstr ""
+msgstr "Visa"
 
 #: src/components/background/panel.js:193
 msgid "Mute Video"
-msgstr ""
+msgstr "Stäng av ljud på video"
 
 #: src/components/background/panel.js:194
 msgid "Muting the background video."
-msgstr ""
+msgstr "Stäng av ljud på bakgrundsvideon."
 
 #: src/components/background/panel.js:194
 msgid "Toggle to mute the video."
-msgstr ""
+msgstr "Växla för att stänga av ljud på video."
 
 #: src/components/background/panel.js:201
 msgid "Loop Video"
-msgstr ""
+msgstr "Kör video i loop"
 
 #: src/components/background/panel.js:202
 msgid "Looping the background video."
-msgstr ""
+msgstr "Loopa bakgrundsvideon."
 
 #: src/components/background/panel.js:202
 msgid "Toggle to loop the video."
-msgstr ""
+msgstr "Växla för att loopa videon."
 
 #: src/components/background/panel.js:211
 msgid "Remove background"
-msgstr ""
+msgstr "Ta bort bakgrund"
 
 #: src/components/background/panel.js:232
 msgid "Remove "
-msgstr ""
+msgstr "Ta bort "
 
 #: src/components/background/panel.js:95
 msgid "No Repeat"
-msgstr ""
+msgstr "Ingen upprepning"
 
 #: src/components/background/panel.js:97
 msgid "Repeat Horizontally"
-msgstr ""
+msgstr "Upprepa horisontellt"
 
 #: src/components/background/panel.js:98
 msgid "Repeat Vertically"
-msgstr ""
+msgstr "Upprepa vertikalt"
 
 #: src/components/block-gallery/gallery-image.js:189
 msgid "Move Image Backward"
-msgstr ""
+msgstr "Flytta bild bakåt"
 
 #: src/components/block-gallery/gallery-image.js:197
 msgid "Move Image Forward"
-msgstr ""
+msgstr "Flytta bild framåt"
 
 #: src/components/block-gallery/gallery-link-settings.js:67
 msgid "Link To"
-msgstr ""
+msgstr "Länka till"
 
 #: src/components/block-gallery/gallery-placeholder.js:70
 msgid "%s Gallery"
-msgstr ""
+msgstr "%s-galleri"
 
 #: src/components/block-gallery/gallery-uploader.js:53
 msgid "Upload an image"
-msgstr ""
+msgstr "Ladda upp en bild"
 
 #: src/components/block-gallery/options/caption-options.js:11
 msgid "Light"
-msgstr ""
+msgstr "Ljus"
 
 #: src/components/block-gallery/options/link-options.js:11
 msgid "Media File"
-msgstr ""
+msgstr "Mediefil"
 
 #: src/components/block-gallery/options/link-options.js:12
 msgid "Attachment Page"
-msgstr ""
+msgstr "Sida med bilaga"
 
 #: src/components/block-gallery/options/link-options.js:13
 msgid "Custom URL"
-msgstr ""
+msgstr "Anpassad webbadress"
 
 #: src/components/dimensions-control/index.js:408
 msgid "Pixel"
-msgstr ""
+msgstr "Pixel"
 
 #: src/components/dimensions-control/index.js:412
 msgid "Em"
-msgstr ""
+msgstr "Em"
 
 #: src/components/dimensions-control/index.js:416
 msgid "Percentage"
-msgstr ""
+msgstr "Procentsats"
 
 #: src/components/dimensions-control/index.js:461
 msgid "Select Units"
-msgstr ""
+msgstr "Välj enheter"
 
 #: src/components/dimensions-control/index.js:470
 msgid "%s Units"
-msgstr ""
+msgstr "%s enheter"
 
 #: src/components/dimensions-control/index.js:647
 msgid "%s Top"
-msgstr ""
+msgstr "%s högst upp"
 
 #: src/components/dimensions-control/index.js:657
 msgid "%s Right"
-msgstr ""
+msgstr "%s höger"
 
 #: src/components/dimensions-control/index.js:667
 msgid "%s Bottom"
-msgstr ""
+msgstr "%s nederst"
 
 #: src/components/dimensions-control/index.js:677
 msgid "%s Left"
-msgstr ""
+msgstr "%s vänster"
 
 #: src/components/dimensions-control/index.js:683
 msgid "Unsync"
-msgstr ""
+msgstr "Avsluta synkronisering"
 
 #: src/components/dimensions-control/index.js:683
 msgid "Sync"
-msgstr ""
+msgstr "Synkronisering"
 
 #: src/components/dimensions-control/index.js:686
 msgid "Sync Units"
-msgstr ""
+msgstr "Synkronisera enheter"
 
 #: src/components/dimensions-control/index.js:703
 msgid "Top"
-msgstr ""
+msgstr "Överst"
 
 #: src/components/dimensions-control/index.js:704
 msgid "Right"
-msgstr ""
+msgstr "Höger"
 
 #: src/components/dimensions-control/index.js:705
 msgid "Bottom"
-msgstr ""
+msgstr "Nederst"
 
 #: src/components/dimensions-control/index.js:706
 msgid "Left"
-msgstr ""
+msgstr "Vänster"
 
 #: src/components/grid-control/index.js:123
 msgid "Select Layout"
-msgstr ""
+msgstr "Välj layout"
 
 #: src/components/grid-control/index.js:161
 msgid "Fullscreen"
-msgstr ""
+msgstr "Helskärm"
 
 #: src/components/grid-control/index.js:179
 msgid "Fullscreen mode is enabled."
-msgstr ""
+msgstr "Helskärmsläge är aktiverat."
 
 #: src/components/grid-control/index.js:179
 msgid "Toggle to enable fullscreen mode."
-msgstr ""
+msgstr "Växla för att aktivera helskärmsläge."
 
 # %s: heading level e.g: "1", "2", "3"
 #: src/components/heading-toolbar/index.js:18
 msgid "Heading %d"
-msgstr ""
+msgstr "Rubrik %d"
 
 #: src/components/inline-color-picker/index.js:30
 msgid "Custom color picker"
-msgstr ""
+msgstr "Anpassad färgväljare"
 
 #: src/components/media-filter-control/index.js:32
 msgid "Original"
-msgstr ""
+msgstr "Original"
 
 #: src/components/media-filter-control/index.js:40
 msgid "Grayscale"
-msgstr ""
+msgstr "Gråskala"
 
 #: src/components/media-filter-control/index.js:48
 msgid "Sepia"
-msgstr ""
+msgstr "Sepia"
 
 #: src/components/media-filter-control/index.js:56
 msgid "Saturation"
-msgstr ""
+msgstr "Mättnad"
 
 #: src/components/media-filter-control/index.js:64
 msgid "Dim"
-msgstr ""
+msgstr "Nedtonad"
 
 #: src/components/media-filter-control/index.js:72
 msgid "Vintage"
-msgstr ""
+msgstr "Vintage"
 
 #: src/components/media-filter-control/index.js:84
 msgid "Apply filter"
-msgstr ""
+msgstr "Tillämpa filter"
 
 #: src/components/orientation/index.js:47
 msgid "Select Orientation"
-msgstr ""
+msgstr "Välj orientering"
 
 #: src/components/responsive-base-control/index.js:68
 msgid "Height"
-msgstr ""
+msgstr "Höjd"
 
 # Control name
 #: src/components/responsive-tabs-control/index.js:65
 msgid "Mobile %s"
-msgstr ""
+msgstr "Mobil %s"
 
 #: src/components/size-control/index.js:180
 msgid "Select Size"
-msgstr ""
+msgstr "Välj storlek"
 
 #: src/components/size-control/index.js:69
 msgid "Extra Large"
-msgstr ""
+msgstr "Extra stor"
 
 #: src/components/slider-panel/autoplay-options.js:10
 msgid "One Second"
-msgstr ""
+msgstr "En sekund"
 
 #: src/components/slider-panel/autoplay-options.js:11
 msgid "Two Seconds"
-msgstr ""
+msgstr "Två sekunder"
 
 #: src/components/slider-panel/autoplay-options.js:12
 msgid "Three Seconds"
-msgstr ""
+msgstr "Tre sekunder"
 
 #: src/components/slider-panel/autoplay-options.js:13
 msgid "Four Seconds"
-msgstr ""
+msgstr "Fyra sekunder"
 
 #: src/components/slider-panel/autoplay-options.js:14
 msgid "Five Seconds"
-msgstr ""
+msgstr "Fem sekunder"
 
 #: src/components/slider-panel/autoplay-options.js:15
 msgid "Six Second"
-msgstr ""
+msgstr "Sex sekunder"
 
 #: src/components/slider-panel/autoplay-options.js:16
 msgid "Seven Seconds"
-msgstr ""
+msgstr "Sju sekunder"
 
 #: src/components/slider-panel/autoplay-options.js:17
 msgid "Eight Seconds"
-msgstr ""
+msgstr "Åtta sekunder"
 
 #: src/components/slider-panel/autoplay-options.js:18
 msgid "Nine Seconds"
-msgstr ""
+msgstr "Nio sekunder"
 
 #: src/components/slider-panel/autoplay-options.js:19
 msgid "Ten Seconds"
-msgstr ""
+msgstr "Tio sekunder"
 
 #: src/components/slider-panel/index.js:24
 msgid "seconds"
-msgstr ""
+msgstr "sekunder"
 
 #: src/components/slider-panel/index.js:24
 msgid "second"
-msgstr ""
+msgstr "sekund"
 
 # 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Advancing after %1$d %2$s."
-msgstr ""
+msgstr "Går vidare efter %1$d %2$s."
 
 # 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Automatically advance to the next slide."
-msgstr ""
+msgstr "Gå automatiskt vidare till nästa bild."
 
 #: src/components/slider-panel/index.js:31
 msgid "Dragging and flicking enabled on desktop and mobile devices."
-msgstr ""
+msgstr "Att dra och svepa är aktiverat på dator och mobila enheter."
 
 #: src/components/slider-panel/index.js:31
 msgid "Toggle to enable drag functionality on desktop and mobile devices."
-msgstr ""
+msgstr "Växla för att aktivera dragfunktionen på dator och mobila enheter."
 
 #: src/components/slider-panel/index.js:35
 msgid "Showing slide navigation arrows."
-msgstr ""
+msgstr "Visar navigeringspilar för bildspel."
 
 #: src/components/slider-panel/index.js:35
 msgid "Toggle to show slide navigation arrows."
-msgstr ""
+msgstr "Växla för att visa navigeringspilar för bildspel."
 
 #: src/components/slider-panel/index.js:39
 msgid "Showing dot navigation arrows."
-msgstr ""
+msgstr "Visar navigeringspilar för punkter."
 
 #: src/components/slider-panel/index.js:39
 msgid "Toggle to show dot navigation."
-msgstr ""
+msgstr "Växla för att visa navigeringspilar för punkter."
 
 #: src/components/slider-panel/index.js:58
 msgid "Slider Settings"
-msgstr ""
+msgstr "Inställningar för skjutreglage"
 
 #: src/components/slider-panel/index.js:60
 msgid "Autoplay"
-msgstr ""
+msgstr "Autospela"
 
 #: src/components/slider-panel/index.js:66
 msgid "Transition Speed"
-msgstr ""
+msgstr "Övergångshastighet"
 
 #: src/components/slider-panel/index.js:73
 msgid "Draggable"
-msgstr ""
+msgstr "Dragbar"
 
 #: src/components/slider-panel/index.js:79
 msgid "Arrow Navigation"
-msgstr ""
+msgstr "Pilnavigering"
 
 #: src/components/slider-panel/index.js:85
 msgid "Dot Navigation"
-msgstr ""
+msgstr "Punktnavigering"
 
 #: src/components/typography-controls/index.js:103
 msgid "Capitalize"
-msgstr ""
+msgstr "Börja med stor bokstav"
 
 #: src/components/typography-controls/index.js:107
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: src/components/typography-controls/index.js:164
 msgid "Font"
-msgstr ""
+msgstr "Teckensnitt"
 
 #: src/components/typography-controls/index.js:171
 msgid "Weight"
-msgstr ""
+msgstr "Vikt"
 
 #: src/components/typography-controls/index.js:180
 msgid "Transform"
-msgstr ""
+msgstr "Omvandla"
 
 #: src/components/typography-controls/index.js:200
 msgid "Line Height"
-msgstr ""
+msgstr "Radhöjd"
 
 #: src/components/typography-controls/index.js:211
 msgid "Letter Spacing"
-msgstr ""
+msgstr "Avstånd mellan bokstäver"
 
 #: src/components/typography-controls/index.js:223
 msgid "No Top Spacing"
-msgstr ""
+msgstr "Inget utrymme högst upp"
 
 #: src/components/typography-controls/index.js:228
 msgid "No Bottom Spacing"
-msgstr ""
+msgstr "Inget utrymme längst ner"
 
 #: src/components/typography-controls/index.js:59
 msgid "Change typography"
-msgstr ""
+msgstr "Byt typografi"
 
 #: src/components/typography-controls/index.js:84
 msgid "Bold"
-msgstr ""
+msgstr "Fet"
 
 #: src/components/typography-controls/index.js:95
 #: src/formats/uppercase/index.js:36
 msgid "Uppercase"
-msgstr ""
+msgstr "Versaler"
 
 #: src/components/typography-controls/index.js:99
 msgid "Lowercase"
-msgstr ""
+msgstr "Gemener"
 
 #: src/extensions/advanced-controls/index.js:109
 msgid "Stack on Mobile"
-msgstr ""
+msgstr "Stapla på mobilen"
 
 #: src/extensions/advanced-controls/index.js:116
 msgid "Responsiveness is enabled."
-msgstr ""
+msgstr "Följsamhet är aktiverad."
 
 #: src/extensions/advanced-controls/index.js:117
 msgid "Toggle to stack elements on top of each other on smaller viewports."
-msgstr ""
+msgstr "Växla för att stapla element på varandra på mindre visningsområden."
 
 #: src/extensions/advanced-controls/index.js:125
 msgid "Remove Top Spacing"
-msgstr ""
+msgstr "Ta bort utrymme högst upp"
 
 #: src/extensions/advanced-controls/index.js:137
 msgid "Top margin is removed on this block."
-msgstr ""
+msgstr "Övre marginal är borttagen på det här blocket."
 
 #: src/extensions/advanced-controls/index.js:138
 msgid "Toggle to remove any margin applied to the top of this block."
-msgstr ""
+msgstr "Växla för att ta bort marginal upptill på det här blocket."
 
 #: src/extensions/advanced-controls/index.js:146
 msgid "Remove Bottom Spacing"
-msgstr ""
+msgstr "Ta bort utrymme längst ner"
 
 #: src/extensions/advanced-controls/index.js:171
 msgid "Bottom margin is removed on this block."
-msgstr ""
+msgstr "Nedre marginal är borttagen på det här blocket."
 
 #: src/extensions/advanced-controls/index.js:172
 msgid "Toggle to remove any margin applied to the bottom of this block."
-msgstr ""
+msgstr "Växla för att ta bort marginal nedtill på det här blocket."
 
 #: src/extensions/button-controls/index.js:71
 msgid "Display Fullwidth"
-msgstr ""
+msgstr "Visa fullständig bredd"
 
 #: src/extensions/button-controls/index.js:74
 msgid "Displaying as full width."
-msgstr ""
+msgstr "Visas som fullständig bredd"
 
 #: src/extensions/button-controls/index.js:74
 msgid "Toggle to display button as full width."
-msgstr ""
+msgstr "Växla för att visa knapp med fullständig bredd."
 
 #: src/extensions/button-styles/index.js:16
 msgid "Circular"
-msgstr ""
+msgstr "Cirkelformad"
 
 #: src/extensions/button-styles/index.js:22
 msgid "3D"
-msgstr ""
+msgstr "3D"
 
 #: src/extensions/button-styles/index.js:28
 msgid "Shadow"
-msgstr ""
+msgstr "Skugga"
 
 #: src/extensions/list-styles/index.js:27
 msgid "Checkbox"
-msgstr ""
+msgstr "Kryssruta"
 
 #: src/sidebars/block-manager/components/modal.js:132
 msgid "Manage Blocks"
-msgstr ""
+msgstr "Hantera block"
 
 #: src/sidebars/block-manager/components/modal.js:136
 msgid "Block Manager"
-msgstr ""
+msgstr "Blockhanterare"
 
 #: src/sidebars/block-manager/components/modal.js:138
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #: src/sidebars/block-manager/components/modal.js:147
 msgid "Search for a block"
-msgstr ""
+msgstr "Sök efter ett block"
 
 #: src/sidebars/block-manager/components/options/disable-blocks.js:170
 msgid "This block is added to the page and cannot currently be disabled"
-msgstr ""
+msgstr "Det här blocket är tillagt på sidan och kan inte inaktiveras just nu."
 
 #: src/sidebars/block-manager/components/options/disable-blocks.js:185
 msgid "Disable all"
-msgstr ""
+msgstr "Inaktivera alla"
 
 #: src/sidebars/block-manager/components/options/disable-blocks.js:231
 msgid "No \"%s\" blocks found."
-msgstr ""
+msgstr "Inga \"%s\"-block hittade."
 
 #: src/utils/block-category.js:20
 msgid "%s Galleries"
-msgstr ""
+msgstr "%s-gallerier"
 
 #: src/blocks/dynamic-separator/index.js:36
 msgctxt "block style"
 msgid "Dot"
-msgstr ""
+msgstr "Punkt"
 
 #: src/blocks/dynamic-separator/index.js:37
 msgctxt "block style"
 msgid "Line"
-msgstr ""
+msgstr "Linje"
 
 #: src/blocks/dynamic-separator/index.js:38
 msgctxt "block style"
 msgid "Fullwidth"
-msgstr ""
+msgstr "Fullständig bredd"
 
 #: src/blocks/icon/index.js:41
 msgctxt "block style"
 msgid "Outlined"
-msgstr ""
+msgstr "Kontur"
 
 #: src/blocks/icon/index.js:42
 msgctxt "block style"
 msgid "Filled"
-msgstr ""
+msgstr "Fylld"
 
 #: src/blocks/shape-divider/index.js:43
 msgctxt "block style"
 msgid "Wavy"
-msgstr ""
+msgstr "Vågig"
 
 #: src/blocks/shape-divider/index.js:44
 msgctxt "block style"
 msgid "Hills"
-msgstr ""
+msgstr "Kullar"
 
 #: src/blocks/shape-divider/index.js:45
 msgctxt "block style"
 msgid "Waves"
-msgstr ""
+msgstr "Vågor"
 
 #: src/blocks/shape-divider/index.js:46
 msgctxt "block style"
 msgid "Angled"
-msgstr ""
+msgstr "Vinklad"
 
 #: src/blocks/shape-divider/index.js:47
 msgctxt "block style"
 msgid "Sloped"
-msgstr ""
+msgstr "Lutande"
 
 #: src/blocks/shape-divider/index.js:48
 msgctxt "block style"
 msgid "Rounded"
-msgstr ""
+msgstr "Rundad"
 
 #: src/blocks/shape-divider/index.js:49
 msgctxt "block style"
 msgid "Triangle"
-msgstr ""
+msgstr "Triangelformad"
 
 #: src/blocks/shape-divider/index.js:50
 msgctxt "block style"
 msgid "Pointed"
-msgstr ""
+msgstr "Spetsig"
 
-#: src/blocks/share/index.js:33 src/blocks/social-profiles/index.js:33
+#: src/blocks/share/index.js:33
+#: src/blocks/social-profiles/index.js:33
 msgctxt "block style"
 msgid "Mask"
-msgstr ""
+msgstr "Mask"
 
-#: src/blocks/share/index.js:34 src/blocks/social-profiles/index.js:34
+#: src/blocks/share/index.js:34
+#: src/blocks/social-profiles/index.js:34
 msgctxt "block style"
 msgid "Icon"
-msgstr ""
+msgstr "Icon (ikon)"
 
-#: src/blocks/share/index.js:35 src/blocks/social-profiles/index.js:35
+#: src/blocks/share/index.js:35
+#: src/blocks/social-profiles/index.js:35
 msgctxt "block style"
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
-#: src/blocks/share/index.js:36 src/blocks/social-profiles/index.js:36
+#: src/blocks/share/index.js:36
+#: src/blocks/social-profiles/index.js:36
 msgctxt "block style"
 msgid "Icon & Text"
-msgstr ""
+msgstr "Ikon och text"
 
-#: src/blocks/share/index.js:37 src/blocks/social-profiles/index.js:37
+#: src/blocks/share/index.js:37
+#: src/blocks/social-profiles/index.js:37
 msgctxt "block style"
 msgid "Circular"
-msgstr ""
+msgstr "Cirkelformad"
 
 #: src/blocks/features/feature/edit.js:31
 msgctxt "content placeholder"
 msgid "Add feature title..."
-msgstr ""
+msgstr "Lägg till funktionstitel..."
 
 #: src/blocks/features/feature/edit.js:31
 msgctxt "content placeholder"
 msgid "Feature Title"
-msgstr ""
+msgstr "Funktionstitel"
 
 #: src/blocks/features/feature/edit.js:32
 msgctxt "content placeholder"
 msgid "Add feature content"
-msgstr ""
+msgstr "Lägg till funktionsinnehåll"
 
 #: src/blocks/features/feature/edit.js:32
 msgctxt "content placeholder"
 msgid "This is a feature block that you can use to highlight features."
-msgstr ""
+msgstr "Det här är ett funktionsblock som du kan använda för att markera funktioner."
 
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
 msgid "Add hero heading..."
-msgstr ""
+msgstr "Lägg till herobannerrubrik..."
 
 #: src/blocks/hero/edit.js:37
 msgctxt "content placeholder"
-msgid ""
-"Add hero content, which is typically an introductory area of a page "
-"accompanied by call to action or two."
-msgstr ""
+msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
+msgstr "Lägg till herobannerinnehåll, som brukar vara ett introduktionsområde på en sida, följt av en uppmaning till handling eller två."
 
 #: src/blocks/hero/edit.js:40
 msgctxt "content placeholder"
 msgid "Add primary action..."
-msgstr ""
+msgstr "Lägg till primär åtgärd..."
 
 #: src/blocks/hero/edit.js:41
 msgctxt "content placeholder"
 msgid "Add secondary action..."
-msgstr ""
+msgstr "Lägg till sekundär åtgärd..."
 
 #: src/blocks/media-card/edit.js:46
 msgctxt "content placeholder"
 msgid "Add heading..."
-msgstr ""
+msgstr "Lägg till rubrik..."
 
 #: src/blocks/media-card/edit.js:46
 msgctxt "content placeholder"
 msgid "Media Card"
-msgstr ""
+msgstr "Media Card (mediekort)"
 
 #: src/blocks/media-card/edit.js:47
 msgctxt "content placeholder"
 msgid "Add content..."
-msgstr ""
+msgstr "Lägg till innehåll..."
 
 #: src/blocks/media-card/edit.js:47
 msgctxt "content placeholder"
-msgid ""
-"Replace this text with descriptive copy to go along with the card image. "
-"Then add more blocks to this card, such as buttons, lists or images."
-msgstr ""
+msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
+msgstr "Ersätt den här texten med beskrivande text som passar med kortbilden. Sedan kan du lägga till fler block till det här kortet, som knappar, listor och bilder."
 
 #: src/blocks/services/service/edit.js:194
 msgctxt "content placeholder"
 msgid "Write title..."
-msgstr ""
+msgstr "Skriv titel..."
 
 #: src/blocks/services/service/edit.js:200
 msgctxt "content placeholder"
 msgid "Write description..."
-msgstr ""
+msgstr "Skriv beskrivning..."
 
 #: src/blocks/icon/inspector.js:223
 msgctxt "size name"
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: src/blocks/icon/inspector.js:223
 msgctxt "size name"
 msgid "Custom"
-msgstr ""
+msgstr "Anpassad"
 
 #: src/blocks/icon/svgs.js:102
 msgctxt "label"
 msgid "Add Circle"
-msgstr ""
+msgstr "Lägg till cirkel"
 
 #: src/blocks/icon/svgs.js:108
 msgctxt "label"
 msgid "Minus Circle"
-msgstr ""
+msgstr "Minuscirkel"
 
 #: src/blocks/icon/svgs.js:114
 msgctxt "label"
 msgid "Pie Chart"
-msgstr ""
+msgstr "Cirkeldiagram"
 
 #: src/blocks/icon/svgs.js:119
 msgctxt "label"
 msgid "Scatter Plot"
-msgstr ""
+msgstr "Punktdiagram"
 
 #: src/blocks/icon/svgs.js:125
 msgctxt "label"
 msgid "Poll"
-msgstr ""
+msgstr "Enkät"
 
 #: src/blocks/icon/svgs.js:131
 msgctxt "label"
 msgid "Emoticon"
-msgstr ""
+msgstr "Uttryckssymbol"
 
 #: src/blocks/icon/svgs.js:137
 msgctxt "label"
 msgid "Functions"
-msgstr ""
+msgstr "Funktioner"
 
 #: src/blocks/icon/svgs.js:14
 msgctxt "label"
 msgid "CoBlocks"
-msgstr ""
+msgstr "CoBlocks"
 
 #: src/blocks/icon/svgs.js:142
 msgctxt "label"
 msgid "Doodle"
-msgstr ""
+msgstr "Skiss"
 
 #: src/blocks/icon/svgs.js:147
 msgctxt "label"
 msgid "Font"
-msgstr ""
+msgstr "Teckensnitt"
 
 #: src/blocks/icon/svgs.js:153
 msgctxt "label"
 msgid "Heart"
-msgstr ""
+msgstr "Hjärta"
 
 #: src/blocks/icon/svgs.js:159
 msgctxt "label"
 msgid "Star"
-msgstr ""
+msgstr "Stjärnmarkera"
 
 #: src/blocks/icon/svgs.js:165
 msgctxt "label"
 msgid "Desktop"
-msgstr ""
+msgstr "Stationär dator"
 
 #: src/blocks/icon/svgs.js:171
 msgctxt "label"
 msgid "Devices"
-msgstr ""
+msgstr "Enheter"
 
 #: src/blocks/icon/svgs.js:176
 msgctxt "label"
 msgid "Laptop"
-msgstr ""
+msgstr "Bärbar dator"
 
 #: src/blocks/icon/svgs.js:181
 msgctxt "label"
 msgid "Tablet"
-msgstr ""
+msgstr "Surfplatta"
 
 #: src/blocks/icon/svgs.js:186
 msgctxt "label"
 msgid "Watch"
-msgstr ""
+msgstr "Bevaka"
 
 #: src/blocks/icon/svgs.js:19
 msgctxt "label"
 msgid "Audio"
-msgstr ""
+msgstr "Ljud"
 
 #: src/blocks/icon/svgs.js:192
 msgctxt "label"
 msgid "Keyboard"
-msgstr ""
+msgstr "Tangentbord"
 
 #: src/blocks/icon/svgs.js:197
 msgctxt "label"
 msgid "Hub"
-msgstr ""
+msgstr "Hub"
 
 #: src/blocks/icon/svgs.js:208
 msgctxt "label"
 msgid "Email"
-msgstr ""
+msgstr "E-post"
 
 #: src/blocks/icon/svgs.js:213
 msgctxt "label"
 msgid "Reply"
-msgstr ""
+msgstr "Svara"
 
 #: src/blocks/icon/svgs.js:218
 msgctxt "label"
 msgid "Send"
-msgstr ""
+msgstr "Skicka"
 
 #: src/blocks/icon/svgs.js:224
 msgctxt "label"
 msgid "Signal"
-msgstr ""
+msgstr "Signal"
 
 #: src/blocks/icon/svgs.js:229
 msgctxt "label"
 msgid "Blocks"
-msgstr ""
+msgstr "Block"
 
 #: src/blocks/icon/svgs.js:235
 msgctxt "label"
 msgid "Marker"
-msgstr ""
+msgstr "Markör"
 
 #: src/blocks/icon/svgs.js:241
 msgctxt "label"
 msgid "Mountains"
-msgstr ""
+msgstr "Berg"
 
 #: src/blocks/icon/svgs.js:247
 msgctxt "label"
 msgid "Waves"
-msgstr ""
+msgstr "Vågor"
 
 #: src/blocks/icon/svgs.js:25
 msgctxt "label"
 msgid "Album"
-msgstr ""
+msgstr "Album"
 
 #: src/blocks/icon/svgs.js:252
 msgctxt "label"
 msgid "Globe"
-msgstr ""
+msgstr "Glob"
 
 #: src/blocks/icon/svgs.js:257
 msgctxt "label"
 msgid "City"
-msgstr ""
+msgstr "Ort"
 
 #: src/blocks/icon/svgs.js:262
 msgctxt "label"
 msgid "Dining"
-msgstr ""
+msgstr "Mat"
 
 #: src/blocks/icon/svgs.js:267
 msgctxt "label"
 msgid "Couch"
-msgstr ""
+msgstr "Soffa"
 
 #: src/blocks/icon/svgs.js:273
 msgctxt "label"
 msgid "Cake"
-msgstr ""
+msgstr "Tårta"
 
 #: src/blocks/icon/svgs.js:279
 msgctxt "label"
 msgid "Flower"
-msgstr ""
+msgstr "Blomma"
 
 #: src/blocks/icon/svgs.js:285
 msgctxt "label"
 msgid "Vintage Filter"
-msgstr ""
+msgstr "Vintagefilter"
 
 #: src/blocks/icon/svgs.js:291
 msgctxt "label"
 msgid "Build"
-msgstr ""
+msgstr "Skapa"
 
 #: src/blocks/icon/svgs.js:297
 msgctxt "label"
 msgid "Credit Card"
-msgstr ""
+msgstr "Kreditkort"
 
 #: src/blocks/icon/svgs.js:302
 msgctxt "label"
 msgid "Extension"
-msgstr ""
+msgstr "Ändelse"
 
 #: src/blocks/icon/svgs.js:308
 msgctxt "label"
 msgid "Fingerprint"
-msgstr ""
+msgstr "Fingeravtryck"
 
 #: src/blocks/icon/svgs.js:31
 msgctxt "label"
 msgid "Headset"
-msgstr ""
+msgstr "Headset"
 
 #: src/blocks/icon/svgs.js:313
 msgctxt "label"
 msgid "Translate"
-msgstr ""
+msgstr "Översätt"
 
 #: src/blocks/icon/svgs.js:318
 msgctxt "label"
 msgid "New"
-msgstr ""
+msgstr "Nytt"
 
 #: src/blocks/icon/svgs.js:324
 msgctxt "label"
 msgid "Flare"
-msgstr ""
+msgstr "Fackla"
 
 #: src/blocks/icon/svgs.js:329
 msgctxt "label"
 msgid "Layers"
-msgstr ""
+msgstr "Lager"
 
 #: src/blocks/icon/svgs.js:334
 msgctxt "label"
 msgid "Shipping"
-msgstr ""
+msgstr "Frakt"
 
 #: src/blocks/icon/svgs.js:339
 msgctxt "label"
 msgid "Snowflake"
-msgstr ""
+msgstr "Snöflinga"
 
 #: src/blocks/icon/svgs.js:344
 msgctxt "label"
 msgid "School"
-msgstr ""
+msgstr "Skola"
 
 #: src/blocks/icon/svgs.js:349
 msgctxt "label"
 msgid "Fire"
-msgstr ""
+msgstr "Eld"
 
 #: src/blocks/icon/svgs.js:354
 msgctxt "label"
 msgid "Update"
-msgstr ""
+msgstr "Uppdatering"
 
 #: src/blocks/icon/svgs.js:36
 msgctxt "label"
 msgid "Volume"
-msgstr ""
+msgstr "Volym"
 
 #: src/blocks/icon/svgs.js:42
 msgctxt "label"
 msgid "Voice"
-msgstr ""
+msgstr "Röst"
 
 #: src/blocks/icon/svgs.js:48
 msgctxt "label"
 msgid "Aperture"
-msgstr ""
+msgstr "Bländare"
 
 #: src/blocks/icon/svgs.js:54
 msgctxt "label"
 msgid "Camera"
-msgstr ""
+msgstr "Kamera"
 
 #: src/blocks/icon/svgs.js:60
 msgctxt "label"
 msgid "Gallery"
-msgstr ""
+msgstr "Galleri"
 
 #: src/blocks/icon/svgs.js:66
 msgctxt "label"
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: src/blocks/icon/svgs.js:72
 msgctxt "label"
 msgid "Film"
-msgstr ""
+msgstr "Film"
 
 #: src/blocks/icon/svgs.js:78
 msgctxt "label"
 msgid "Color Lens"
-msgstr ""
+msgstr "Färgobjektiv"
 
 #: src/blocks/icon/svgs.js:84
 msgctxt "label"
 msgid "Color Picker"
-msgstr ""
+msgstr "Färgväljare"
 
 #: src/blocks/icon/svgs.js:90
 msgctxt "label"
 msgid "Paint"
-msgstr ""
+msgstr "Färg"
 
 #: src/blocks/icon/svgs.js:96
 msgctxt "label"
 msgid "Brush"
-msgstr ""
+msgstr "Borste"
 
 #: src/blocks/icon/svgs.js:109
 msgctxt "tags"
 msgid "add minus circle insert plus round math"
-msgstr ""
+msgstr "lägg till minus cirkel inlägg plus rund matte"
 
 #: src/blocks/icon/svgs.js:115
 msgctxt "tags"
 msgid "stats round circle pie chart graph"
-msgstr ""
+msgstr "statistik rund cirkel cirkeldiagram graf"
 
 #: src/blocks/icon/svgs.js:120
 msgctxt "tags"
 msgid "stats round circle pie chart graph dots data"
-msgstr ""
+msgstr "statistik rund cirkel cirkeldiagram graf punkter data"
 
 #: src/blocks/icon/svgs.js:126
 msgctxt "tags"
 msgid "chart graph stats data graph"
-msgstr ""
+msgstr "diagram graf statistik datagraf"
 
 #: src/blocks/icon/svgs.js:132
 msgctxt "tags"
 msgid "happy emotion emoticon smile fun joy"
-msgstr ""
+msgstr "glad känsla uttryckssymbol leende roligt glädje"
 
 #: src/blocks/icon/svgs.js:138
 msgctxt "tags"
 msgid "code greek math"
-msgstr ""
+msgstr "kod grekisk matte"
 
 #: src/blocks/icon/svgs.js:143
 msgctxt "tags"
 msgid "drawing doodle art creative type font pencil marker"
-msgstr ""
+msgstr "teckning skiss konst kreativ typ teckensnitt blyerts markör"
 
 #: src/blocks/icon/svgs.js:15
 msgctxt "tags"
 msgid "blocks block build gutenberg design"
-msgstr ""
+msgstr "block bygg gutenberg design"
 
 #: src/blocks/icon/svgs.js:154
 msgctxt "tags"
 msgid "love shape valentine kiss"
-msgstr ""
+msgstr "kärlek form valentin puss"
 
 #: src/blocks/icon/svgs.js:160
 msgctxt "tags"
 msgid "rate vote plus favorite like"
-msgstr ""
+msgstr "rangordna rösta plus favorit gilla"
 
 #: src/blocks/icon/svgs.js:177
 msgctxt "tags"
 msgid "computer apple montior device pc desk office"
-msgstr ""
+msgstr "dator apple skärm enhet pc office"
 
 #: src/blocks/icon/svgs.js:182
 msgctxt "tags"
 msgid "computer ipad surface apple montior device pc desk office"
-msgstr ""
+msgstr "dator ipad surface apple skärm enhet pc office"
 
 #: src/blocks/icon/svgs.js:187
 msgctxt "tags"
 msgid "device apple mac"
-msgstr ""
+msgstr "enhet apple mac"
 
 #: src/blocks/icon/svgs.js:193
 msgctxt "tags"
 msgid "computer ipad surface apple device pc desk office"
-msgstr ""
+msgstr "dator ipad surface apple enhet pc office"
 
 #: src/blocks/icon/svgs.js:198
 msgctxt "tags"
 msgid "usb connect hub device social"
-msgstr ""
+msgstr "usb anslut hubb enhet sociala medier"
 
 #: src/blocks/icon/svgs.js:20
 msgctxt "tags"
 msgid "music microphone podcast song artist creative media audio"
-msgstr ""
+msgstr "musik mikrofon podcast låt artist kreativ media ljud"
 
 #: src/blocks/icon/svgs.js:209
 msgctxt "tags"
 msgid "email mail os read letter"
-msgstr ""
+msgstr "e-post mejl operativsystem läs brev"
 
 #: src/blocks/icon/svgs.js:225
 msgctxt "tags"
 msgid "wifi radio waves"
-msgstr ""
+msgstr "wifi radiovågor"
 
 #: src/blocks/icon/svgs.js:236
 msgctxt "tags"
 msgid "map directions about check checkbox"
-msgstr ""
+msgstr "karta vägbeskrivningar om markera kryssruta"
 
 #: src/blocks/icon/svgs.js:242
 msgctxt "tags"
 msgid "hills landscape minimal outdoors outside"
-msgstr ""
+msgstr "kullar landskap minimal utomhus ute"
 
 #: src/blocks/icon/svgs.js:248
 msgctxt "tags"
 msgid "ocean outside outdoors water fun summer minimal"
-msgstr ""
+msgstr "hav utomhus vatten skoj sommar minimal"
 
 #: src/blocks/icon/svgs.js:253
 msgctxt "tags"
 msgid "world public global earth location map"
-msgstr ""
+msgstr "värld offentligt global jord plats karta"
 
 #: src/blocks/icon/svgs.js:258
 msgctxt "tags"
 msgid "location map public business corporation building town skyscraper"
-msgstr ""
+msgstr "plats karta offentlig företag koncern byggnad stad skyskrapa"
 
 #: src/blocks/icon/svgs.js:263
 msgctxt "tags"
 msgid "food drink restaurant menu fork spoon taste"
-msgstr ""
+msgstr "mat dryck restaurang meny gaffel sked smak"
 
 #: src/blocks/icon/svgs.js:268
 msgctxt "tags"
 msgid "weekend chill relax chair"
-msgstr ""
+msgstr "weekend helg chilla slappna av stol"
 
 #: src/blocks/icon/svgs.js:274
 msgctxt "tags"
 msgid "fun party happy celebration taste food"
-msgstr ""
+msgstr "kul party lycklig fira smak mat"
 
 #: src/blocks/icon/svgs.js:280
 msgctxt "tags"
 msgid "petal scent smell nice relax landscape gardening outdoors outside"
-msgstr ""
+msgstr "blomblad doft lukt god slappna av landskap trädgårdsarbete utomhus ute"
 
 #: src/blocks/icon/svgs.js:292
 msgctxt "tags"
 msgid "blocks block box boxes square build widgets"
-msgstr ""
+msgstr "block ruta rutor bygg widget"
 
 #: src/blocks/icon/svgs.js:298
 msgctxt "tags"
 msgid "money cash checkout shop commerce ecommerce"
-msgstr ""
+msgstr "pengar kontanter betala handla e-handel butik"
 
 #: src/blocks/icon/svgs.js:303
 msgctxt "tags"
 msgid "puzzle plugin widget team together"
-msgstr ""
+msgstr "pussel plugin widget team tillsammans"
 
 #: src/blocks/icon/svgs.js:309
 msgctxt "tags"
 msgid "security bio defense biometric safe secure"
-msgstr ""
+msgstr "säkerhet bioskydd biometrisk säker trygg"
 
 #: src/blocks/icon/svgs.js:314
 msgctxt "tags"
 msgid "language global world speech"
-msgstr ""
+msgstr "språk global världen tal"
 
 #: src/blocks/icon/svgs.js:319
 msgctxt "tags"
 msgid "music microphone song artist creative media audio badge"
-msgstr ""
+msgstr "musik mikrofon låt artist kreativ media ljud märke"
 
 #: src/blocks/icon/svgs.js:32
 msgctxt "tags"
 msgid "microphone audio beats bose headphones"
-msgstr ""
+msgstr "mikrofon ljud beats bose hörlurar"
 
 #: src/blocks/icon/svgs.js:325
 msgctxt "tags"
 msgid "flower camera photography artist creative"
-msgstr ""
+msgstr "blomma kamera fotografi artist kreativ"
 
 #: src/blocks/icon/svgs.js:330
 msgctxt "tags"
 msgid "design creative build develop engineer"
-msgstr ""
+msgstr "design kreativ bygg utveckla ingenjör"
 
 #: src/blocks/icon/svgs.js:335
 msgctxt "tags"
 msgid "shop commence ecommence woo cart ship"
-msgstr ""
+msgstr "shop handel ehandel woo kundvagn frakta"
 
 #: src/blocks/icon/svgs.js:340
 msgctxt "tags"
 msgid "cold ice frozen chill winter season global"
-msgstr ""
+msgstr "kall is frusen chilla vinter säsong global"
 
 #: src/blocks/icon/svgs.js:345
 msgctxt "tags"
 msgid "education graduate graduation degree diploma college"
-msgstr ""
+msgstr "utbildning student diplom universitet högskola"
 
 #: src/blocks/icon/svgs.js:350
 msgctxt "tags"
 msgid "hot trending trendy design"
-msgstr ""
+msgstr "hett trendigt trendar design"
 
 #: src/blocks/icon/svgs.js:355
 msgctxt "tags"
 msgid "improve add upload software"
-msgstr ""
+msgstr "förbättra lägg till ladda upp programvara"
 
 #: src/blocks/icon/svgs.js:37
 msgctxt "tags"
 msgid "music microphone song artist creative media audio"
-msgstr ""
+msgstr "musik mikrofon låt artist kreativ media ljud"
 
 #: src/blocks/icon/svgs.js:43
 msgctxt "tags"
-msgid ""
-"microphone podcast computer device music microphone song artist creative "
-"media audio"
-msgstr ""
+msgid "microphone podcast computer device music microphone song artist creative media audio"
+msgstr "mikrofon podcast dator enhet ljud"
 
 #: src/blocks/icon/svgs.js:49
 msgctxt "tags"
 msgid "photo photographer photography camera film creative media"
-msgstr ""
+msgstr "foto fotograf fotografi kamera film kreativ media"
 
 #: src/blocks/icon/svgs.js:55
 msgctxt "tags"
 msgid "photo photographer photography camera aperture film creative media"
-msgstr ""
+msgstr "foto fotograf fotografi kamera bländare film kreativ media"
 
 #: src/blocks/icon/svgs.js:61
 msgctxt "tags"
 msgid "photo photos image media camera aperture collection"
-msgstr ""
+msgstr "foto foton bild media kamera bländare kollektion"
 
 #: src/blocks/icon/svgs.js:67
 msgctxt "tags"
 msgid "film videography director producer media creative"
-msgstr ""
+msgstr "film videografi regissör producent media kreativ"
 
 #: src/blocks/icon/svgs.js:73
 msgctxt "tags"
-msgid ""
-"video videography director producer media creative camera photographer "
-"photography aperture"
-msgstr ""
+msgid "video videography director producer media creative camera photographer photography aperture"
+msgstr "video videografi regissör producent media kreativ kamera fotografi fotograf bländare"
 
 #: src/blocks/icon/svgs.js:85
 msgctxt "tags"
 msgid "palette design colors artist paint creative media"
-msgstr ""
+msgstr "palett design färger artist konstnär måla kreativ media"
 
 #: src/blocks/icon/svgs.js:91
 msgctxt "tags"
 msgid "palette design colors artist creative media"
-msgstr ""
+msgstr "palett design färger artist konstnär kreativ media"
 
 #: src/blocks/icon/svgs.js:97
 msgctxt "tags"
 msgid "palette design colors artist creative media paint paintbrush"
-msgstr ""
+msgstr "palett design färger artist konstnär kreativ media måla pensel"
 
 #. Plugin Name of the plugin
 #: includes/admin/class-coblocks-feedback.php:311
@@ -3234,199 +3309,184 @@ msgstr ""
 #: includes/admin/class-coblocks-getting-started-page.php:58
 #: includes/admin/class-coblocks-getting-started-page.php:59
 msgid "CoBlocks"
-msgstr ""
+msgstr "CoBlocks"
 
 #. Plugin URI of the plugin
 msgid "https://coblocks.com"
-msgstr ""
+msgstr "https://coblocks.com"
 
 #. Description of the plugin
-msgid ""
-"CoBlocks is a suite of professional <strong>page building content blocks</"
-"strong> for the WordPress Gutenberg block editor. Our blocks are hyper-"
-"focused on empowering makers to build beautifully rich pages in WordPress."
-msgstr ""
+msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
+msgstr "CoBlocks är en svit professionella <strong>block för sidbygge</strong> för blockredigeraren Gutenberg i WordPress. Våra block är hyperfokuserade på att ge användarna alla möjligheter att skapa snygga och innehållsrika sidor i WordPress."
 
 #. Author of the plugin
 msgid "GoDaddy"
-msgstr ""
+msgstr "GoDaddy"
 
 #. Author URI of the plugin
 msgid "https://www.godaddy.com"
-msgstr ""
+msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:77 class-coblocks.php:89
+#: class-coblocks.php:77
+#: class-coblocks.php:89
 msgid "Cheating huh?"
-msgstr ""
+msgstr "Fusk, va?"
 
 #. translators: Number of years
 #: includes/admin/class-coblocks-feedback.php:92
 msgid "%s years"
-msgstr ""
+msgstr "%s år"
 
 #: includes/admin/class-coblocks-feedback.php:94
 msgid "a year"
-msgstr ""
+msgstr "ett år"
 
 #. translators: Number of weeks
 #: includes/admin/class-coblocks-feedback.php:101
 msgid "%s weeks"
-msgstr ""
+msgstr "%s veckor"
 
 #: includes/admin/class-coblocks-feedback.php:103
 msgid "a week"
-msgstr ""
+msgstr "en vecka"
 
 #. translators: Number of days
 #: includes/admin/class-coblocks-feedback.php:110
 msgid "%s days"
-msgstr ""
+msgstr "%s dagar"
 
 #: includes/admin/class-coblocks-feedback.php:112
 msgid "a day"
-msgstr ""
+msgstr "en dag"
 
 #. translators: Number of hours
 #: includes/admin/class-coblocks-feedback.php:119
 msgid "%s hours"
-msgstr ""
+msgstr "%s timmar"
 
 #: includes/admin/class-coblocks-feedback.php:121
 msgid "an hour"
-msgstr ""
+msgstr "en timme"
 
 #. translators: Number of minutes
 #: includes/admin/class-coblocks-feedback.php:128
 msgid "%s minutes"
-msgstr ""
+msgstr "%s minuter"
 
 #: includes/admin/class-coblocks-feedback.php:130
 msgid "a minute"
-msgstr ""
+msgstr "en minut"
 
 #. translators: Number of seconds
 #: includes/admin/class-coblocks-feedback.php:137
 msgid "%s seconds"
-msgstr ""
+msgstr "%s sekunder"
 
 #: includes/admin/class-coblocks-feedback.php:139
 msgid "a second"
-msgstr ""
+msgstr "en sekund"
 
 #. translators: 1. Name
 #: includes/admin/class-coblocks-feedback.php:271
 msgid "%s WordPress Plugin"
-msgstr ""
+msgstr "%s WordPress-plugin"
 
 #. translators: 1. Name
 #: includes/admin/class-coblocks-feedback.php:275
 msgid "Are you enjoying %s?"
-msgstr ""
+msgstr "Tycker du om %s?"
 
 #. translators: 1. Name, 2. Time
 #: includes/admin/class-coblocks-feedback.php:278
-msgid ""
-"You have been using %1$s for %2$s now. Mind leaving a review to let us know "
-"know what you think? We'd really appreciate it!"
-msgstr ""
+msgid "You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We'd really appreciate it!"
+msgstr "Du har använt %1$s i %2$s nu. Kan du tänka dig att skriva en recension och berätta vad du tycker? Det skulle vara toppen!"
 
 #: includes/admin/class-coblocks-feedback.php:282
 msgid "Leave a Review"
-msgstr ""
+msgstr "Skriv en recension"
 
 #: includes/admin/class-coblocks-feedback.php:283
 msgid "No thanks / I already have"
-msgstr ""
+msgstr "Nej tack / Det har jag redan gjort"
 
 #: includes/admin/class-coblocks-getting-started-page.php:122
-msgid ""
-"Thanks for choosing CoBlocks, the premier page builder for the new WordPress "
-"block editor."
-msgstr ""
+msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
+msgstr "Tack för att du väljer CoBlocks, den högklassiga sidbyggaren för den nya WordPress-blockredigeraren."
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
 #: includes/admin/class-coblocks-getting-started-page.php:128
-msgid ""
-"You've just added lots of useful blocks and a new page builder toolkit to "
-"the WordPress editor. CoBlocks gives you a game-changing set of features: "
-"%1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom "
-"typography controls%2$s."
-msgstr ""
+msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
+msgstr "Du har precis lag till massor av användbara block och ett nytt verktygskit för sidbygge i WordPress-redigeraren. CoBlocks ger dig revolutionerande funktioner: %1$s tiotalet olika block%2$s, en %1$s sidbyggarupplevelse %2$s och %1$s anpassade typografikontroller%2$s."
 
 #: includes/admin/class-coblocks-getting-started-page.php:135
 msgid "Here are a few videos to help you get started:"
-msgstr ""
+msgstr "Här är några videoklipp som kan hjälpa dig att komma igång:"
 
 #. translators: CoBlocks plugin name
 #: includes/admin/class-coblocks-getting-started-page.php:139
 msgid "Watch how to create your first page with %s"
-msgstr ""
+msgstr "Se hur du skapar din första sidan med %s"
 
 #: includes/admin/class-coblocks-getting-started-page.php:140
 msgid "Watch how to create your first page"
-msgstr ""
+msgstr "Se hur du skapar din första sida"
 
 #: includes/admin/class-coblocks-getting-started-page.php:142
 #: includes/admin/class-coblocks-getting-started-page.php:143
 msgid "Watch how to use the Row and Shape Divider blocks"
-msgstr ""
+msgstr "Se hur du kan använda blocken rad och avdelare"
 
 #: includes/admin/class-coblocks-getting-started-page.php:145
 #: includes/admin/class-coblocks-getting-started-page.php:146
 msgid "Watch how to use the Media Card block"
-msgstr ""
+msgstr "Titta på hur man använder mediekortsblocket"
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:154
-msgid ""
-"Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let "
-"you know when new video tutorials are released."
-msgstr ""
+msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
+msgstr "Tycker du om det du ser? %1$sPrenumerera på vår YouTube-kanal%2$s så meddelar vi när nya videohandledningar släpps."
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:165
-msgid ""
-"If you have any questions or feedback, let us know on %1$sTwitter%4$s or our "
-"%2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you "
-"want to stay up to date with what's new and upcoming at CoBlocks."
-msgstr ""
+msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
+msgstr "Om du har några frågor eller kommentarer kan du bara kontakta oss på %1$sTwitter%4$s eller i vår %2$sFacebook-grupp %4$s. Du kan också %3$sprenumerera på vårt nyhetsbrev%4$s om du vill få besked om det senaste inom CoBlocks."
 
 #: includes/admin/class-coblocks-getting-started-page.php:174
 msgid "Enjoy!"
-msgstr ""
+msgstr "Mycket nöje!"
 
 #: includes/admin/class-coblocks-getting-started-page.php:207
 msgid "Get started with CoBlocks here:"
-msgstr ""
+msgstr "Kom igång med CoBlocks här:"
 
 #: includes/class-coblocks-block-settings.php:80
 msgid "Enable or disable blocks"
-msgstr ""
+msgstr "Aktivera eller inaktivera block"
 
 #: includes/class-coblocks-form.php:67
 msgid "Google reCaptcha site key for form spam protection"
-msgstr ""
+msgstr "Google reCaptcha-platsnyckel för skräppostskydd för formulär"
 
 #: includes/class-coblocks-form.php:79
 msgid "Google reCaptcha secret key for form spam protection"
-msgstr ""
+msgstr "Google reCaptcha hemlig nyckel för skräppostskydd för formulär"
 
 #: includes/class-coblocks-form.php:390
 msgid "Submit"
-msgstr ""
+msgstr "Skicka"
 
 #: includes/class-coblocks-form.php:561
 msgid "Your message was sent:"
-msgstr ""
+msgstr "Ditt meddelande skickades:"
 
 #: includes/class-coblocks-google-map-block.php:122
 msgid "Google Map API key for map rendering"
-msgstr ""
+msgstr "Google Maps API-nyckel för kartåtergivning"
 
 #: src/blocks/share/index.php:145
 msgid "Share on Linkedin"
-msgstr ""
+msgstr "Dela på LinkedIn"
 
 #: src/blocks/social-profiles/index.php:84
 msgid "Linkedin"
-msgstr ""
+msgstr "LinkedIn"

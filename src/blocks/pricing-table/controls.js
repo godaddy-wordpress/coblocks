@@ -34,8 +34,8 @@ class Controls extends Component {
 						className="components-toolbar-coblocks-numeral-controls"
 						controls={ '123'.split( '' ).map( ( number ) => ( {
 							icon: icons.blank,
-							/* translators: %s: number of tables */
-							title: sprintf( __( '%s Tables' ), number ),
+							/* translators: %d: number of tables */
+							title: sprintf( __( '%d Tables' ), parseInt( number ) ),
 							isActive: count === parseInt( number ),
 							subscript: number,
 							onClick: () => setAttributes( { count: parseInt( number ) } ),

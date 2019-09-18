@@ -6,7 +6,7 @@ import linkOptions from './options/link-options';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { SelectControl, ToggleControl, PanelBody, TextControl } = wp.components;
 
@@ -77,7 +77,7 @@ class GalleryLinkSettings extends Component {
 									checked={ target === '_blank' }
 								/>
 								<TextControl
-									label={ __( 'Link Rel' ) }
+									label={ _x( 'Link Rel', 'HTML attribute that specifies the a relationship between the two pages.' ) }
 									value={ rel }
 									onChange={ ( value ) => setAttributes( { rel: value } ) }
 								/>

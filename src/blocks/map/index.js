@@ -16,7 +16,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
@@ -24,10 +24,10 @@ const { __ } = wp.i18n;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Map' ),
+	title: _x( 'Map', 'block name' ),
 	description: __( 'Add an address and drop a pin on a Google map.' ),
 	icon,
-	keywords: [ __( 'address' ), __( 'maps' ), __( 'google' ) ],
+	keywords: [ _x( 'address', 'block keyword' ), _x( 'maps', 'block keyword' ), _x( 'google', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,

@@ -38,7 +38,7 @@ class CoBlocks_Action_Links {
 
 		if ( COBLOCKS_PLUGIN_BASE === $plugin_file ) {
 			$row_meta = [
-				'review' => '<a href="' . esc_url( COBLOCKS_REVIEW_URL ) . '" aria-label="' . esc_attr( __( 'Review CoBlocks on WordPress.org', '@@textdomain' ) ) . '" target="_blank">' . __( 'Leave a Review', '@@textdomain' ) . '</a>',
+				'review' => '<a href="' . esc_url( COBLOCKS_REVIEW_URL ) . '" aria-label="' . esc_attr( __( 'Review CoBlocks on WordPress.org', 'coblocks' ) ) . '" target="_blank">' . __( 'Leave a Review', 'coblocks' ) . '</a>',
 			];
 
 			$plugin_meta = array_merge( $plugin_meta, $row_meta );
