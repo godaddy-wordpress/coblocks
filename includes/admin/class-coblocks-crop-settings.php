@@ -36,8 +36,8 @@ class CoBlocks_Crop_Settings {
 	public function register_endpoints() {
 
 		add_filter( 'ajax_query_attachments_args', [ $this, 'hide_cropped_from_library' ] );
-		add_action( 'wp_ajax_coblocks_system_crop', [ $this, 'api_crop' ] );
-		add_action( 'wp_ajax_coblocks_system_original_image', [ $this, 'get_original_image' ] );
+		add_action( 'wp_ajax_coblocks_crop_settings', [ $this, 'api_crop' ] );
+		add_action( 'wp_ajax_coblocks_crop_settings_original_image', [ $this, 'get_original_image' ] );
 
 	}
 

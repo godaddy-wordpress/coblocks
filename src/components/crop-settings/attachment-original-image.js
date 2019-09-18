@@ -18,7 +18,7 @@ class AttachmentOriginalImage {
 			}
 
 			jQuery.post( global.ajaxurl, {
-				action: 'coblocks_system_original_image',
+				action: 'coblocks_crop_settings_original_image',
 				id: id,
 			}, function( response ) {
 				if ( ! response.success ) {

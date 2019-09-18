@@ -1,4 +1,3 @@
-/* global React */
 /**
  * Styles
  */
@@ -26,7 +25,7 @@ const { TextControl,
 	IconButton,
 } = wp.components;
 
-class ImageCropControl extends Component {
+class CropSettings extends Component {
 	constructor( props ) {
 		super( props );
 
@@ -254,15 +253,8 @@ class ImageCropControl extends Component {
 			'components-focal-point-picker_position-display-container',
 		);
 
-		const zoomClass = classnames(
-			'components-coblocks-zoom-control'
-		);
-
-		const rotateClass = classnames(
-			'components-coblocks-rotate-control'
-		);
-
 		const imageHeight = Math.round( this.state.containerWidth / currentAspect );
+
 		const containerStyle = {
 			height: ( imageHeight + 28 ) + 'px',
 		};
@@ -303,14 +295,14 @@ class ImageCropControl extends Component {
 				</div>
 				<RangeControl
 					label={ 'Image Zoom' }
-					className={ zoomClass }
+					className="components-coblocks-zoom-control"
 					value={ this.getCurrentScale() }
 					onChange={ ( val ) => this.setNewZoom( val, self.state.r ) }
 					min={ 100 }
 					max={ 1000 }
 				/>
 				<p>{ __( 'Image Orientation' ) }</p>
-				<div className={ rotateClass }>
+				<div className="components-coblocks-rotate-control">
 					<ButtonGroup >
 						<IconButton
 							isLarge
@@ -340,4 +332,4 @@ class ImageCropControl extends Component {
 	}
 }
 
-export default ImageCropControl;
+export default CropSettings;

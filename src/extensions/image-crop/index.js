@@ -1,7 +1,21 @@
-import AttachmentCropControl from '../../components/image-crop-control/attachment-crop-control';
+/**
+ * Styles
+ */
 import './styles/editor.scss';
 
+/**
+ * External dependencies
+ */
 import { assign } from 'lodash';
+
+/**
+ * Internal dependencies
+ */
+import CropControl from '../../components/crop-settings/crop-control';
+
+/**
+ * WordPress dependencies
+ */
 const { createHigherOrderComponent } = wp.compose;
 const { Fragment } = wp.element;
 const { InspectorControls } = wp.blockEditor;
@@ -98,7 +112,7 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 			++positioningControlData.loadingCount;
 
 			jQuery.post( global.ajaxurl, {
-				action: 'coblocks_system_crop',
+				action: 'coblocks_crop_settings',
 				id: currentAttributes.id,
 				cropX: currentAttributes.cropX,
 				cropY: currentAttributes.cropY,
@@ -153,7 +167,7 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 				<BlockEdit { ...props } />
 				<InspectorControls>
 					<PanelBody title={ __( 'Crop Settings' ) } initialOpen={ false }>
-						<AttachmentCropControl
+						<CropControl
 							attachmentId={ currentAttributes.id }
 							offsetX={ cropX }
 							offsetY={ cropY }

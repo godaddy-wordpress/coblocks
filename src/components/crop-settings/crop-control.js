@@ -1,10 +1,15 @@
-/* global React */
-import ImageCropControl from './image-crop-control';
+/**
+ * Internal dependencies
+ */
+import CropSettings from './';
 import { attachmentOriginalImage } from './attachment-original-image';
 
+/**
+ * WordPress dependencies
+ */
 const { Component } = wp.element;
 
-class AttachmentCropControl extends Component {
+class CropControl extends Component {
 	constructor( props ) {
 		super( props );
 
@@ -65,7 +70,7 @@ class AttachmentCropControl extends Component {
 		const { offsetX, offsetY, cropWidth, cropHeight, rotation, onChange } = this.props;
 
 		return (
-			<ImageCropControl
+			<CropSettings
 				offsetX={ offsetX }
 				offsetY={ offsetY }
 				cropWidth={ cropWidth }
@@ -79,4 +84,4 @@ class AttachmentCropControl extends Component {
 	}
 }
 
-export default AttachmentCropControl;
+export default CropControl;

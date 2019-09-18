@@ -19,9 +19,9 @@ import './extensions/attributes';
 import './extensions/advanced-controls';
 import './extensions/list-styles';
 import './extensions/button-styles';
-import './extensions/image-styles';
 import './extensions/button-controls';
-import './extensions/advanced-image';
+import './extensions/image-styles';
+import './extensions/image-crop';
 
 // Formats
 import './formats/';
