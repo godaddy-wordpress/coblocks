@@ -14,6 +14,7 @@
 	}
 
 	&-item {
+		align-items: center;
 		appearance: none;
 		background: $white;
 		border: 1px solid $dark-gray-150;
@@ -89,15 +90,8 @@
 
 		svg {
 			height: 15px;
-			margin: auto;
-			position: relative;
-			top: 0.03em;
 			width: 15px;
 		}
-	}
-
-	&-item--mobile svg {
-		top: 0.05em;
 	}
 
 	.components-tab-panel__tabs {
