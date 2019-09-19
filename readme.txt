@@ -37,21 +37,21 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Dynamic Separator Block
 * Features Block
 * Food & Drinks Block
-* Form Block (New!)
+* Form Block
 * Gif Block
 * GitHub Gist Block
 * Hero Block
 * Highlight Block
 * Icon Block
-* Logos & Badges Block (New!)
+* Logos & Badges Block
 * Map Block
 * Masonry Gallery Block
 * Media Card Block
 * Pricing Table Block
 * Resizable Row/Columns Blocks
-* Services Block (New!)
+* Services Block
 * Shape Divider Block
-* Social Profiles Block (New!)
+* Social Profiles Block
 * Social Sharing Block
 * Stacked Gallery Block
 
@@ -116,54 +116,25 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-= 1.13.0 =
-* New: Support for Gutenberg 6.4 🎊
-* New: Example block content added for the new block inserter help panel
-* New: Block level background color can be applied to the Share block
-* New: Block level background color can be applied to the Social Profiles block
-* New: Stacked Gallery block can now be aligned left, right, and center
-* New: Internationalization improvements for utilizing GlotPress
-* New: Improvements in code organization to prepare for the Block Directory
-* Tweak: Center align Share icons by default for wide and full block alignment
-* Tweak: Center align Social Profile icons by default for wide and full block alignment
-* Tweak: Simplify top and bottom block margin setting labels
-* Tweak: Version history moved to a changelog.txt file
-* Tweak: Adjust spacing for nested blocks when selecting the parent block
-* Tweak: Improve the Pricing block description
-* Tweak: Improve the Social Profiles block description
-* Tweak: Improve the Highlight block description
-* Tweak: Improve the Author block icon and description
-* Tweak: Improve the placeholder behavior in the Food and Drinks block
-* Tweak: Unify the size control in the Icon block to match core settings
-* Tweak: Added a cancel button to the Map block preventing unwanted updates
-* Tweak: Simplify specificity of CSS styles on the Alert block
-* Tweak: Simplify specificity of CSS styles on the Accordion block
-* Tweak: Moved the Accordion block into the CoBlocks block category
-* Tweak: Change the Icon block size selector to a proper Select control
-* Tweak: Focus style added to Food and Drink block's item attributes
-* Tweak: Prevent enqueuing frontend scripts on AMP responses
-* Tweak: Improved Alert block style selection with core component
-* Fix: Grid layout control no longer visually broken on the Hero block
-* Fix: Removed the "Layout" sidebar panel from the Row block
-* Fix: Resolve grid control tooltips missing a unique key
-* Fix: Child blocks no longer missing when adding the Hero block to a post
-* Fix: Gallery block's media filter control no longer missing dropdown indicator
-* Fix: Resolve the edit screen failing to load with a Hero block present
-* Fix: Icon block no longer missing height attribute when a size is applied
-* Fix: Styles panel no longer visually broken on the Services block
-* Fix: Styles panel no longer visually broken on the Food and Drinks block
-* Fix: Styles panel no longer visually broken on the Share block
-* Fix: Styles panel no longer visually broken on the Social Profiles block
-* Fix: Author image placeholder no longer misaligned
-* Fix: Orientation control no longer visually broken on the Shape Divider block
-* Fix: Shape Divider block no longer loses focus when using the resize control
-* Fix: Hero block no longer loses focus when using the resize control
-* Fix: Gif block no longer loses focus when using the resize control
-* Fix: Icon block no longer loses focus when using the resize control
-* Fix: Carousel Gallery block no longer loses focus when using the resize control
-* Fix: Row block no longer loses focus when using the resize control
-* Fix: When empty, the Pricing Table block no longer saves to the post content
-* Fix: Features block is now utilizing the available block width
-* Fix: Alert block no longer escapes HTML when transforming another block to it
-* Fix: Click to Tweet block no longer removes inline HTML elements from pasted text
-* Fix: Social Profiles popover component no longer visually broken
+### Features
+* Add new [Crop Settings panel](https://github.com/godaddy/coblocks/pull/749) to the Image and Cover blocks to allow image cropping
+* Add [font size, background and text color controls](https://github.com/godaddy/coblocks/pull/808) to the Author block
+* Add new Image block styles to [mask images with a wave shape](https://github.com/godaddy/coblocks/pull/877)
+
+### Enhancements
+* Improve the [context of strings](https://github.com/godaddy/coblocks/pull/852) for translators
+* Add a [new filter](https://github.com/godaddy/coblocks/pull/834) in the Form block to prevent wp_mail from sending mail
+* Move the CoBlocks [top-level admin page](https://github.com/godaddy/coblocks/pull/746) under Tools
+* Shorten [the Button block placeholder text](https://github.com/godaddy/coblocks/pull/878) within the Hero block
+* Add [additional carousel controls](https://github.com/godaddy/coblocks/pull/765) to the Carousel block
+* Update the [Pricing Table block toolbar control](https://github.com/godaddy/coblocks/pull/811) to follow new Gutenberg patterns
+* Update the [Row block toolbar control](https://github.com/godaddy/coblocks/pull/827) to follow new Gutenberg patterns
+* Lay the groundwork for [improved automated tests for blocks](https://github.com/godaddy/coblocks/pull/835) using Jest
+
+### Bug Fixes
+* Fix the [styles preview](https://github.com/godaddy/coblocks/pull/879) in the Icon block in Gutenberg 6.3+
+* Fix one column Pricing Table block display to use the [full available width](https://github.com/godaddy/coblocks/pull/844)
+* Remove [margin bottom](https://github.com/godaddy/coblocks/pull/845) from the last item within the Feature block
+* Improve the [spacing between the figure and content elements](https://github.com/godaddy/coblocks/pull/846) in the Services block
+* Avoid z-index issues with the [Hero block toolbar](https://github.com/godaddy/coblocks/pull/838)
+* Fix [misaligned responsive control SVG icons](https://github.com/godaddy/coblocks/pull/820) in Firefox and Edge
