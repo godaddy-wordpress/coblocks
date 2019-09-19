@@ -226,7 +226,7 @@ function coblocks_render_share_block( $attributes ) {
 
 	// Render block content.
 	$block_content = sprintf(
-		'<div class="%1$s" style="%2$s"><ul>%3$s</ul></div>',
+		'<div class="%1$s" style="%2$s "><ul>%3$s</ul></div>',
 		esc_attr( $class ),
 		esc_attr( $background_color ),
 		$markup
