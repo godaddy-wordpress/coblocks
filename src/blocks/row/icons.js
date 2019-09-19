@@ -78,10 +78,10 @@ rowIcons.smallLayout7525 =
 rowIcons.smallLayout2575 =
 	<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fillRule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fillRule="nonzero" /><path d="m6 0h2v18h-2z" /></g></svg>;
 
-rowIcons.smallLayout6633 =
+rowIcons.smallLayout3366 =
 	<svg className="dashicon" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fillRule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fillRule="nonzero" /><path d="m5 0h2v18h-2z" /></g></svg>;
 
-rowIcons.smallLayout3366 =
+rowIcons.smallLayout6633 =
 	<svg className="dashicon" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fillRule="evenodd" transform="translate(3 3)"><path d="m16.0833333 0h-14.16666663c-1.05416667 0-1.91666667.9-1.91666667 2v14c0 1.1.8625 2 1.91666667 2h14.16666663c1.0541667 0 1.9166667-.9 1.9166667-2v-14c0-1.1-.8625-2-1.9166667-2zm0 16h-14.16666663v-14h14.16666663z" fillRule="nonzero" /><path d="m11 0h2v18h-2z" /></g></svg>;
 
 rowIcons.smallLayout333333 =
