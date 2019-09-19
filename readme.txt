@@ -37,21 +37,21 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Dynamic Separator Block
 * Features Block
 * Food & Drinks Block
-* Form Block (New!)
+* Form Block
 * Gif Block
 * GitHub Gist Block
 * Hero Block
 * Highlight Block
 * Icon Block
-* Logos & Badges Block (New!)
+* Logos & Badges Block
 * Map Block
 * Masonry Gallery Block
 * Media Card Block
 * Pricing Table Block
 * Resizable Row/Columns Blocks
-* Services Block (New!)
+* Services Block
 * Shape Divider Block
-* Social Profiles Block (New!)
+* Social Profiles Block
 * Social Sharing Block
 * Stacked Gallery Block
 
