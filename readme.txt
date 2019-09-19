@@ -136,5 +136,5 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * Pricing Table will now [use all available width](https://github.com/godaddy/coblocks/pull/844) with any number of tables
 * [Bottom margin removed](https://github.com/godaddy/coblocks/pull/845) from last item within the Feature block
 * Improve the [spacing between figure and content](https://github.com/godaddy/coblocks/pull/846) on the Services block
-* Hero block [toolbar is now accessible](https://github.com/godaddy/coblocks/pull/838) when a Group block preceeds it
+* Hero block [toolbar is now accessible](https://github.com/godaddy/coblocks/pull/838) when a Group block precedes it
 * [Aligned responsive control SVG icons](https://github.com/godaddy/coblocks/pull/820) in Firefox and Edge
