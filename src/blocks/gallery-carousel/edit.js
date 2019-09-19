@@ -213,14 +213,14 @@ class GalleryCarouselEdit extends Component {
 			wrapAround: true,
 			autoPlay: false,
 			cellAlign: alignCells ? 'left' : 'center',
-			responsiveHeight: responsiveHeight,
-			thumbnails: thumbnails,
 			arrowShape: {
 				x0: 10,
 				x1: 60, y1: 50,
 				x2: 65, y2: 45,
 				x3: 20,
 			},
+			responsiveHeight: responsiveHeight,
+			thumbnails: thumbnails,
 		};
 
 		if ( ! hasImages ) {

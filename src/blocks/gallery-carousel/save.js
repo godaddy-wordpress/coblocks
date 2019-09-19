@@ -80,14 +80,14 @@ const save = ( { attributes, className } ) => {
 		cellAlign: alignCells ? 'left' : 'center',
 		pauseAutoPlayOnHover: pauseHover,
 		freeScroll: freeScroll,
-		thumbnails: thumbnails,
-		responsiveHeight: responsiveHeight,
 		arrowShape: {
 			x0: 10,
 			x1: 60, y1: 50,
 			x2: 65, y2: 45,
 			x3: 20,
 		},
+		thumbnails: thumbnails,
+		responsiveHeight: responsiveHeight,
 	};
 
 	const captionColorClass = getColorClassName( 'color', captionColor );
