@@ -56,8 +56,10 @@ function InlineTextColor( { attributes } ) {
 		...BackgroundClasses( attributes ), {
 			[ `has-${ gutter }-gutter` ]: gutter,
 			'has-padding': paddingSize && paddingSize !== 'no',
-			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),			'has-margin': marginSize && marginSize !== 'no',
-			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),			'is-stacked-on-mobile': isStackedOnMobile,
+			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
+			'has-margin': marginSize && marginSize !== 'no',
+			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
+			'is-stacked-on-mobile': isStackedOnMobile,
 		}
 	);
 
