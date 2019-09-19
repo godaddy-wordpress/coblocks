@@ -30,7 +30,14 @@ const save = ( { attributes, className } ) => {
 		rel,
 		linkTo,
 		shadow,
+		lightbox,
 	} = attributes;
+
+	const classes = classnames(
+		className, {
+			'has-lightbox': lightbox,
+		}
+	);
 
 	// Body color class and styles.
 	const textClass = getColorClassName( 'color', captionColor );
@@ -68,7 +75,7 @@ const save = ( { attributes, className } ) => {
 	};
 
 	return (
-		<div className={ className }>
+		<div className={ classes }>
 			{ BackgroundVideo( attributes ) }
 			<ul className={ innerClasses } style={ innerStyles }>
 				{ images.map( ( image ) => {
