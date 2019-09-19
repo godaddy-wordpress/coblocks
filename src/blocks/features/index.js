@@ -18,7 +18,7 @@ import { BackgroundAttributes } from '../../components/background';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 /**
  * Block constants
  */
@@ -31,13 +31,18 @@ const attributes = {
 };
 
 const settings = {
-	title: __( 'Features' ),
+	title: _x( 'Features', 'block name' ),
 	description: __( 'Add up to three columns of small notes for your product or service.' ),
 	icon,
-	keywords: [ __( 'services' ), 'coblocks' ],
+	keywords: [ _x( 'services', 'block keyword' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
+	},
+	example: {
+		attributes: {
+			align: 'wide',
+		},
 	},
 	attributes,
 	transforms,

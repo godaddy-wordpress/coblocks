@@ -18,7 +18,7 @@ import { BackgroundAttributes } from '../../components/background';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
@@ -32,14 +32,22 @@ const attributes = {
 };
 
 const settings = {
-	title: __( 'Media Card' ),
+	title: _x( 'Media Card', 'block name' ),
 	description: __( 'Add an image or video with an offset card side-by-side.' ),
 	icon,
-	keywords: [ __( 'image' ), __( 'video' ), 'coblocks' ],
+	keywords: [ _x( 'image', 'block keyword' ), _x( 'video', 'block keyword' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		stackedOnMobile: true,
 		coBlocksSpacing: true,
+	},
+	example: {
+		attributes: {
+			align: 'wide',
+			mediaType: 'image',
+			mediaUrl: '/wp-content/plugins/coblocks/dist/images/examples/gallery-5.jpg',
+			mediaWidth: 65,
+		},
 	},
 	attributes,
 	transforms,

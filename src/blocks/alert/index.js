@@ -1,6 +1,7 @@
 /**
  * Styles.
  */
+import './styles/editor.scss';
 import './styles/style.scss';
 
 /**
@@ -24,10 +25,10 @@ const { __, _x } = wp.i18n;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Alert' ),
+	title: _x( 'Alert', 'block name' ),
 	description: __( 'Provide contextual feedback messages or notices.' ),
 	icon,
-	keywords: [ __( 'notice' ), __( 'message' ), 'coblocks' ],
+	keywords: [ _x( 'notice', 'block keyword' ), _x( 'message', 'block keyword' ), 'coblocks' ],
 	styles: [
 		{ name: 'info', label: _x( 'Info', 'block style' ), isDefault: true },
 		{ name: 'success', label: _x( 'Success', 'block style' ) },
@@ -38,6 +39,12 @@ const settings = {
 		align: true,
 		alignWide: false,
 		alignFull: false,
+	},
+	example: {
+		attributes: {
+			title: __( 'This is an alert block' ),
+			value: __( 'An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action.' ),
+		},
 	},
 	attributes,
 	transforms,

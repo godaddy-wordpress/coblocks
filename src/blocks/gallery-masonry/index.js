@@ -18,7 +18,7 @@ import { GalleryAttributes } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
@@ -32,12 +32,27 @@ const attributes = {
 };
 
 const settings = {
-	title: __( 'Masonry' ),
+	title: _x( 'Masonry', 'block name' ),
 	description: __( 'Display multiple images in an organized masonry gallery.' ),
 	icon,
-	keywords: [	__( 'gallery' ), __( 'photos' )	],
+	keywords: [	_x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' )	],
 	supports: {
 		align: [ 'wide', 'full' ],
+	},
+	example: {
+		attributes: {
+			gridSize: 'xlrg',
+			gutter: 5,
+			images: [
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-1.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-2.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-3.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-4.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-5.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-6.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-7.jpg' },
+			],
+		},
 	},
 	attributes,
 	transforms,

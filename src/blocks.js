@@ -20,6 +20,8 @@ import './extensions/advanced-controls';
 import './extensions/list-styles';
 import './extensions/button-styles';
 import './extensions/button-controls';
+import './extensions/image-styles';
+import './extensions/image-crop';
 
 // Formats
 import './formats/';

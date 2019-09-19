@@ -1,56 +1,49 @@
 .wp-block-coblocks-author {
 	align-items: flex-start;
-	display: flex;
-	position: relative;
-	margin: 1.5em 0;
-	padding: 30px 20px;
 	background: $accordion-background;
-	border-radius: $accordion-border-radius;
+	display: flex;
+	padding: 30px 25px;
+	position: relative;
 
 	@media (min-width: 600px) {
-		padding: 40px 30px;
+		padding: 40px 35px;
 	}
 
 	&__avatar {
 		border-radius: 100%;
 		flex: 0 0 auto;
-		margin-right: 20px;
-
-		@media (min-width: 600px) {
-			margin-right: 30px;
-		}
-	}
-
-	&__avatar-img {
-		border-radius: 100%;
-		display: inline-block;
-		vertical-align: middle;
-		height: 100% !important;
-	}
-
-	&__avatar,
-	&__avatar-img {
 		height: 70px;
+		margin: 0 25px 0 0;
+		position: relative;
 		width: 70px;
 
 		@media (min-width: 600px) {
-			width: 150px;
 			height: 150px;
+			margin-right: 35px;
+			width: 150px;
 		}
+	}
+
+	.block-editor__container &__avatar-img,
+	&__avatar-img {
+		border-radius: 100%;
+		display: inline-block;
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+		top: 0;
+		vertical-align: middle;
+		width: 100%;
 	}
 
 	&__content {
 		flex: 1 1 auto;
 	}
 
-	&__heading {
-		margin: 0 0 0.5em;
-		padding: 0;
-	}
-
 	&__name {
 		display: block;
-		margin: 0 0 0.5em;
+		font-size: 1.5em;
+		margin: 0;
 		padding: 0;
 	}
 

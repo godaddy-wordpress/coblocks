@@ -9,7 +9,6 @@ import memoize from 'memize';
  * Internal dependencies
  */
 import Controls from './controls';
-import Inspector from './inspector';
 
 /**
  * WordPress dependencies
@@ -36,7 +35,8 @@ const ALLOWED_BLOCKS = [ 'coblocks/pricing-table-item' ];
  * @return {Object[]} Columns layout configuration.
  */
 const getCount = memoize( ( count ) => {
-	return times( count, ( index ) => [ 'coblocks/pricing-table-item', { placeholder: sprintf( __( 'Plan %s' ), index + 1 ) } ] );
+	/* translators: %d: a digit 1-3 */
+	return times( count, ( index ) => [ 'coblocks/pricing-table-item', { placeholder: sprintf( __( 'Plan %d' ), parseInt( index + 1 ) ) } ] );
 } );
 
 /**
@@ -65,11 +65,6 @@ class Edit extends Component {
 			<Fragment>
 				{ isSelected && (
 					<Controls
-						{ ...this.props }
-					/>
-				) }
-				{ isSelected && (
-					<Inspector
 						{ ...this.props }
 					/>
 				) }

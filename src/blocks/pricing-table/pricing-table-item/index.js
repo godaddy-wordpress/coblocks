@@ -2,7 +2,6 @@
  * Styles.
  */
 import './styles/editor.scss';
-import './styles/style.scss';
 
 /**
  * Internal dependencies
@@ -16,7 +15,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
@@ -24,10 +23,10 @@ const { __ } = wp.i18n;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Pricing Table Item' ),
-	description: __( 'A column placed within the pricing table block.' ),
+	title: _x( 'Pricing Table Item', 'block name' ),
+	description: __( 'A pricing table to help visitors compare products and plans.' ),
 	icon,
-	keywords: [ __( 'landing' ), __( 'comparison' ), 'coblocks' ],
+	keywords: [ _x( 'landing', 'block keyword' ), _x( 'comparison', 'block keyword' ), 'coblocks' ],
 	parent: [ 'coblocks/pricing-table' ],
 	supports: {
 		html: false,

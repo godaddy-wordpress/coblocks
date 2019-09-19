@@ -5,6 +5,11 @@
 	> .editor-block-list__block-edit {
 		margin-bottom: 0;
 		margin-top: 0;
+
+		> [data-block] {
+			margin-bottom: 0;
+			margin-top: 0;
+		}
 	}
 
 	.editor-block-mover {
@@ -14,26 +19,20 @@
 	.rich-text:last-of-type {
 		margin-bottom: 0;
 	}
+
+	.wp-block:nth-last-child(2) [data-block] {
+		margin-bottom: 0;
+	}
 }
 
 .wp-block-coblocks-service {
 	display: block;
 	flex: 1 100%;
 
-	.block-editor-block-list__block .block-editor-block-list__block-edit {
-		margin-bottom: 0;
-	}
-
 	.editor-media-placeholder {
-		margin: 0 0 1.65em !important;
 		min-height: unset;
-		outline: 1px dashed $dark-gray-150;
 		padding: calc(9 / 16 * 100%) 0 0 0;
 		position: relative;
-
-		&:hover {
-			outline: 1px dashed $dark-gray-500;
-		}
 
 		.is-style-circle & {
 			border-radius: 100%;
@@ -76,6 +75,8 @@
 	}
 
 	&__figure {
+		margin-bottom: 0;
+
 		&.is-selected {
 			&::after {
 				bottom: 0;

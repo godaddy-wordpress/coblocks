@@ -10,11 +10,11 @@ import ResponsiveBaseControl from '../../components/responsive-base-control/';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { InspectorControls, PanelColorSettings } = wp.blockEditor;
-const { compose } = wp.compose;
-const { PanelBody, RangeControl, withFallbackStyles } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
+import { compose } from '@wordpress/compose';
+import { PanelBody, RangeControl, withFallbackStyles } from '@wordpress/components';
 
 /**
  * Fallback styles

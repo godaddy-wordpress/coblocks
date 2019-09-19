@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InspectorControls } = wp.blockEditor;
 const { PanelBody, RangeControl, ToggleControl } = wp.components;
@@ -25,7 +25,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Buttons Settings' ) }>
+					<PanelBody title={ _x( 'Buttons Settings', 'block settings' ) }>
 						<RangeControl
 							label={ __( 'Buttons' ) }
 							value={ items }
@@ -40,7 +40,7 @@ class Inspector extends Component {
 							max={ 4 }
 						/>
 						<ToggleControl
-							label={ __( 'Stack on mobile' ) }
+							label={ _x( 'Stack on mobile', 'visually stack buttons one on top of another' ) }
 							checked={ isStackedOnMobile }
 							onChange={ () => setAttributes( {
 								isStackedOnMobile: ! isStackedOnMobile,

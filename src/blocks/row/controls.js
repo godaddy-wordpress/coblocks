@@ -9,7 +9,6 @@ import map from 'lodash/map';
 import { layoutOptions } from './layouts';
 import rowIcons from './icons';
 import { BackgroundControls } from '../../components/background';
-import VisualDropdown from '../../components/visual-dropdown';
 
 /**
  * WordPress dependencies
@@ -65,31 +64,31 @@ class Controls extends Component {
 			<Fragment>
 				<BlockControls>
 					{ ( columns && selectedRows > 1 ) &&
-						<Toolbar>
-							<VisualDropdown
-								icon={ this.layoutIcon() }
-								label={ __( 'Change layout' ) }
-								controls={ [
-									map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => ( {
-										icon: icon,
-										title: name,
-										key: key,
-										value: layout,
-										onClick: () => {
-											const selectedWidth = key.toString().split( '-' );
-											const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
-											setAttributes( {
-												layout: key,
-											} );
-											if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
-												map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
-													wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
-												) );
-											}
-										},
-									} ) ),
-								] }
-							/>
+						<Toolbar
+							isCollapsed={ true }
+							icon={ this.layoutIcon() }
+							label={ __( 'Change row block layout' ) }
+							controls={ map( layoutOptions[ selectedRows ], ( { name, key, smallIcon } ) => {
+								return {
+									title: name,
+									key,
+									icon: smallIcon,
+									isActive: key === layout,
+									onClick: () => {
+										const selectedWidth = key.toString().split( '-' );
+										const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
+										setAttributes( {
+											layout: key,
+										} );
+										if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
+											map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
+												wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
+											) );
+										}
+									},
+								};
+							} ) }
+						>
 						</Toolbar>
 					}
 					{ layout &&

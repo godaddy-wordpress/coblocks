@@ -7,9 +7,9 @@ import icons from './icons';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { RangeControl, TabPanel } = wp.components;
+import { __, sprintf } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { RangeControl, TabPanel } from '@wordpress/components';
 
 class ResponsiveTabsControl extends Component {
 	constructor() {
@@ -61,7 +61,7 @@ class ResponsiveTabsControl extends Component {
 							if ( 'mobile' === tab.name ) {
 								return (
 									<RangeControl
-										// translators: Control name
+										/* translators: %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width' */
 										label={ sprintf( __( 'Mobile %s' ), label ) }
 										value={ valueMobile }
 										onChange={ ( valueMobile ) => onChangeMobile( valueMobile ) }

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/hero edit should render 1`] = `
+<React.Fragment>
+  <BackgroundDropZone
+    attributes={Object {}}
+    className="wp-block-coblocks-hero"
+    label="Add backround to hero"
+  />
+  <div
+    className="wp-block-coblocks-hero"
+  >
+    <ResizableBox
+      className="wp-block-coblocks-hero__inner"
+      enable={
+        Object {
+          "bottom": true,
+          "bottomLeft": false,
+          "bottomRight": false,
+          "left": false,
+          "right": false,
+          "top": false,
+          "topLeft": false,
+          "topRight": false,
+        }
+      }
+      minHeight="500"
+      onResizeStop={[Function]}
+      size={
+        Object {
+          "height": undefined,
+        }
+      }
+      style={
+        Object {
+          "backgroundColor": undefined,
+          "backgroundImage": undefined,
+          "backgroundPosition": undefined,
+          "color": undefined,
+          "minHeight": undefined,
+          "paddingBottom": undefined,
+          "paddingLeft": undefined,
+          "paddingRight": undefined,
+          "paddingTop": undefined,
+        }
+      }
+    />
+  </div>
+</React.Fragment>
+`;

@@ -15,7 +15,7 @@ import save from './save';
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants.
@@ -23,7 +23,7 @@ const { __ } = wp.i18n;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Service' ),
+	title: _x( 'Service', 'block name' ),
 	description: __( 'A single service item within a services block.' ),
 	icon,
 	keywords: [],
@@ -31,6 +31,9 @@ const settings = {
 		reusable: false,
 		html: false,
 		inserter: false,
+	},
+	example: {
+		attributes: {},
 	},
 	attributes,
 	edit,
