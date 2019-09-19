@@ -28,36 +28,6 @@ const { withNotices, ResizableBox, Spinner } = wp.components;
 const { withColors, RichText } = wp.blockEditor;
 const { isBlobURL } = wp.blob;
 
-/**
- * Block consts.
- */
-const flickityOptions = {
-	draggable: false,
-	pageDots: true,
-	prevNextButtons: true,
-	wrapAround: true,
-	autoPlay: false,
-	arrowShape: {
-		x0: 10,
-		x1: 60, y1: 50,
-		x2: 65, y2: 45,
-		x3: 20,
-	},
-	thumbnails: false,
-	responsiveHeight: true,
-};
-
-const navOptions = {
-	asNavFor: '.has-carousel',
-	draggable: false,
-	pageDots: true,
-	prevNextButtons: false,
-	wrapAround: true,
-	autoPlay: false,
-	thumbnails: false,
-	cellAlign: 'left',
-};
-
 class GalleryCarouselEdit extends Component {
 	constructor() {
 		super( ...arguments );
@@ -195,6 +165,7 @@ class GalleryCarouselEdit extends Component {
 			prevNextButtons,
 			primaryCaption,
 			backgroundImg,
+			alignCells,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -210,12 +181,12 @@ class GalleryCarouselEdit extends Component {
 			'is-cropped',
 			...GalleryClasses( attributes ),
 			...BackgroundClasses( attributes ), {
-				[ `align${ align }` ] : align,
-				[ `has-horizontal-gutter` ] : gutter > 0,
-				[ `has-no-dots` ] : ! pageDots,
-				[ `has-no-thumbnails` ] : ! thumbnails,
-				[ `has-no-arrows` ] : ! prevNextButtons,
+				[ `align${ align }` ]: align,
+				'has-horizontal-gutter': gutter > 0,
+				'has-no-dots': ! pageDots,
+				'has-no-arrows': ! prevNextButtons,
 				'is-selected': isSelected,
+				'has-no-thumbnails': ! thumbnails,
 			}
 		);
 
@@ -231,6 +202,7 @@ class GalleryCarouselEdit extends Component {
 		const flickityClasses = classnames(
 			'has-carousel',
 			`has-carousel-${ gridSize }`, {
+				'has-aligned-cells': alignCells,
 				[ `has-margin-bottom-${ gutter }` ] : thumbnails && gutter > 0,
 				[ `has-margin-bottom-mobile-${ gutterMobile }` ] : thumbnails && gutterMobile > 0,
 			}
@@ -246,6 +218,32 @@ class GalleryCarouselEdit extends Component {
 				[ `has-negative-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
 			}
 		);
+
+		const flickityOptions = {
+			draggable: false,
+			pageDots: true,
+			prevNextButtons: true,
+			wrapAround: true,
+			autoPlay: false,
+			cellAlign: alignCells ? 'left' : 'center',
+			arrowShape: {
+				x0: 10,
+				x1: 60, y1: 50,
+				x2: 65, y2: 45,
+				x3: 20,
+			},
+		};
+
+		const navOptions = {
+			asNavFor: '.has-carousel',
+			draggable: false,
+			pageDots: true,
+			prevNextButtons: false,
+			wrapAround: true,
+			autoPlay: false,
+			thumbnails: false,
+			cellAlign: 'left',
+		};
 
 		const navStyles = {
 			marginTop: gutter > 0 ? gutter / 2 + 'px' : undefined,

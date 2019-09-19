@@ -6,8 +6,9 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-
-import { BackgroundStyles } from '../../components/background';
+import './styles/style.scss';
+import './styles/editor.scss';
+import { BackgroundStyles, BackgroundClasses } from '../../components/background';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -22,22 +23,27 @@ const save = ( { attributes, className } ) => {
 		captionColor,
 		customCaptionColor,
 		draggable,
+		freeScroll,
 		gridSize,
 		gutter,
 		gutterMobile,
 		height,
 		images,
 		pageDots,
+		pauseHover,
 		thumbnails,
 		responsiveHeight,
 		prevNextButtons,
 		primaryCaption,
+		alignCells,
 	} = attributes;
 
 	const innerClasses = classnames(
 		'is-cropped',
-		...GalleryClasses( attributes ), {
+		...GalleryClasses( attributes ),
+		...BackgroundClasses( attributes ), {
 			'has-horizontal-gutter': gutter > 0,
+
 		}
 	);
 
@@ -48,6 +54,7 @@ const save = ( { attributes, className } ) => {
 	const flickityClasses = classnames(
 		'has-carousel',
 		`has-carousel-${ gridSize }`, {
+			'has-aligned-cells': alignCells,
 			[ `has-margin-bottom-${ gutter }` ] : thumbnails && gutter > 0,
 			[ `has-margin-bottom-mobile-${ gutterMobile }` ] : thumbnails && gutterMobile > 0,
 		}
@@ -74,6 +81,9 @@ const save = ( { attributes, className } ) => {
 		responsiveHeight: responsiveHeight,
 		prevNextButtons: prevNextButtons,
 		wrapAround: true,
+		cellAlign: alignCells ? 'left' : 'center',
+		pauseAutoPlayOnHover: pauseHover,
+		freeScroll: freeScroll,
 		arrowShape: {
 			x0: 10,
 			x1: 60, y1: 50,
@@ -133,7 +143,7 @@ const save = ( { attributes, className } ) => {
 	}
 
 	return (
-		<div className={ className } >
+		<div className={ className }>
 			<div
 				className={ innerClasses }
 				style={ innerStyles }
