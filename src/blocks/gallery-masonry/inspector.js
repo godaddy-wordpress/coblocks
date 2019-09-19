@@ -51,7 +51,7 @@ class Inspector extends Component {
 		return checked ? __( 'Showing captions for each media item.' ) : __( 'Toggle to show media captions.' );
 	}
 
-	getModalHelp( checked ) {
+	getLightboxHelp( checked ) {
 		return checked ? __( 'Image lightbox is enabled.' ) : __( 'Toggle to enable the image lightbox.' );
 	}
 
@@ -164,7 +164,7 @@ class Inspector extends Component {
 						label={ __( 'Lightbox' ) }
 						checked={ !! lightbox }
 						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
-						help={ this.getModalHelp }
+						help={ this.getLightboxHelp }
 					/>
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
