@@ -55,8 +55,6 @@ const save = ( { attributes, className } ) => {
 		'has-carousel',
 		`has-carousel-${ gridSize }`, {
 			'has-aligned-cells': alignCells,
-			[ `has-margin-bottom-${ gutter }` ] : thumbnails && gutter > 0,
-			[ `has-margin-bottom-mobile-${ gutterMobile }` ] : thumbnails && gutterMobile > 0,
 		}
 	);
 
@@ -104,7 +102,7 @@ const save = ( { attributes, className } ) => {
 	);
 
 	const navClasses = classnames(
-		'carousel-nav', {
+		'carousel-nav has-thumbnails-med', {
 			[ `has-margin-top-${ gutter }` ] : gutter > 0,
 			[ `has-margin-top-mobile-${ gutterMobile }` ] : gutterMobile > 0,
 			[ `has-negative-margin-left-${ gutter }` ] : gutter > 0,
@@ -125,12 +123,14 @@ const save = ( { attributes, className } ) => {
 
 	const navOptions = {
 		asNavFor: '.has-carousel',
+		autoPlay: false,
 		contain: true,
+		cellAlign: 'left',
 		pageDots: false,
+		thumbnails: false,
 		draggable: draggable,
 		prevNextButtons: false,
 		wrapAround: false,
-		cellAlign: 'left',
 	};
 
 	const captionStyles = {
