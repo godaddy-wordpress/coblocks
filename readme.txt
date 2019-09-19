@@ -117,24 +117,24 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Features
-* New image block style can be applied which [masks images with a wave shape](https://github.com/godaddy/coblocks/pull/877)
-* [Image cropping](https://github.com/godaddy/coblocks/pull/749) within the Image and Cover blocks
+* Add new [Crop Settings panel](https://github.com/godaddy/coblocks/pull/749) to the Image and Cover blocks to allow image cropping
+* Add [font size, background and text color controls](https://github.com/godaddy/coblocks/pull/808) to the Author block
+* Add new Image block styles to [mask images with a wave shape](https://github.com/godaddy/coblocks/pull/877)
 
 ### Enhancements
-* Improved the [context of strings](https://github.com/godaddy/coblocks/pull/852) for translators
-* [New filter in the Form block](https://github.com/godaddy/coblocks/pull/834) to prevent wp_mail from sending mail
-* CoBlocks [admin page has been moved](https://github.com/godaddy/coblocks/pull/746) under Tools
-* [Shortened the button placeholder](https://github.com/godaddy/coblocks/pull/878) text within the Hero block
-* [Exposed additional controls](https://github.com/godaddy/coblocks/pull/765) from [Flickity](https://flickity.metafizzy.co/) in the Carousel block
-* Font size, background and text color [controls added to the Author block](https://github.com/godaddy/coblocks/pull/808)
-* [Pricing table toolbar control](https://github.com/godaddy/coblocks/pull/811) updated to follow new Gutenberg pattern
-* [Row block toolbar control](https://github.com/godaddy/coblocks/pull/827) updated to follow new Gutenberg pattern
-* Groundwork added for [improved automated testing of blocks](https://github.com/godaddy/coblocks/pull/835) with Jest
+* Improve the [context of strings](https://github.com/godaddy/coblocks/pull/852) for translators
+* Add a [new filter](https://github.com/godaddy/coblocks/pull/834) in the Form block to prevent wp_mail from sending mail
+* Move the CoBlocks [top-level admin page](https://github.com/godaddy/coblocks/pull/746) under Tools
+* Shorten [the Button block placeholder text](https://github.com/godaddy/coblocks/pull/878) within the Hero block
+* Add [additional carousel controls](https://github.com/godaddy/coblocks/pull/765) to the Carousel block
+* Update the [Pricing Table block toolbar control](https://github.com/godaddy/coblocks/pull/811) to follow new Gutenberg patterns
+* Update the [Row block toolbar control](https://github.com/godaddy/coblocks/pull/827) to follow new Gutenberg patterns
+* Lay the groundwork for [improved automated tests for blocks](https://github.com/godaddy/coblocks/pull/835) using Jest
 
 ### Bug Fixes
-* Styles [preview scaling has been fixed](https://github.com/godaddy/coblocks/pull/879) in the Icon block with the Gutenberg plugin
-* Pricing Table will now [use all available width](https://github.com/godaddy/coblocks/pull/844) with any number of tables
-* [Bottom margin removed](https://github.com/godaddy/coblocks/pull/845) from last item within the Feature block
-* Improve the [spacing between figure and content](https://github.com/godaddy/coblocks/pull/846) on the Services block
-* Hero block [toolbar is now accessible](https://github.com/godaddy/coblocks/pull/838) when a Group block precedes it
-* [Aligned responsive control SVG icons](https://github.com/godaddy/coblocks/pull/820) in Firefox and Edge
+* Fix the [styles preview](https://github.com/godaddy/coblocks/pull/879) in the Icon block in Gutenberg 6.3+
+* Fix one column Pricing Table block display to use the [full available width](https://github.com/godaddy/coblocks/pull/844)
+* Remove [margin bottom](https://github.com/godaddy/coblocks/pull/845) from the last item within the Feature block
+* Improve the [spacing between the figure and content elements](https://github.com/godaddy/coblocks/pull/846) in the Services block
+* Avoid z-index issues with the [Hero block toolbar](https://github.com/godaddy/coblocks/pull/838)
+* Fix [misaligned responsive control SVG icons](https://github.com/godaddy/coblocks/pull/820) in Firefox and Edge
