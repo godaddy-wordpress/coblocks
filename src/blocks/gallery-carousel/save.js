@@ -77,8 +77,6 @@ const save = ( { attributes, className } ) => {
 		autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
 		draggable: draggable,
 		pageDots: pageDots,
-		thumbnails: thumbnails,
-		responsiveHeight: responsiveHeight,
 		prevNextButtons: prevNextButtons,
 		wrapAround: true,
 		cellAlign: alignCells ? 'left' : 'center',
@@ -90,6 +88,8 @@ const save = ( { attributes, className } ) => {
 			x2: 65, y2: 45,
 			x3: 20,
 		},
+		thumbnails: thumbnails,
+		responsiveHeight: responsiveHeight,
 	};
 
 	const captionColorClass = getColorClassName( 'color', captionColor );
