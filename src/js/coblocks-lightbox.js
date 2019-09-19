@@ -22,7 +22,10 @@
 	arrowLeftContainer.append( arrowLeft );
 	arrowRightContainer.append( arrowRight );
 	wrapper.append( wrapperBackground, modalHeading, imageContainer, arrowLeftContainer, arrowRightContainer );
-	$( 'body' ).prepend( wrapper );
+
+	if ( images.length > 0 ) {
+		$( 'body' ).append( wrapper );
+	}
 
 	const imagePreloader = {};
 
