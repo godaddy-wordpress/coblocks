@@ -1,8 +1,8 @@
 /**
  * Internal dependencies
  */
-import { BackgroundClasses, BackgroundVideo } from '../../components/background';
 import { attributes } from './block.json';
+import { BackgroundClasses, BackgroundVideo } from '../../components/background';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
 
 /**
@@ -15,7 +15,7 @@ import classnames from 'classnames';
  */
 const { getColorClassName, InnerBlocks } = wp.blockEditor;
 
-function Deprecation( { attributes } ) {
+function InlineTextColor( { attributes } ) {
 	const {
 		coblocks,
 		backgroundColor,
@@ -33,10 +33,7 @@ function Deprecation( { attributes } ) {
 	} = attributes;
 
 	const textClass = getColorClassName( 'color', textColor );
-	const backgroundClass = getColorClassName(
-		'background-color',
-		backgroundColor
-	);
+	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 	let classlist = {
 		[ `coblocks-row--${ id }` ]: id,
@@ -44,7 +41,7 @@ function Deprecation( { attributes } ) {
 		[ textClass ]: textClass,
 	};
 
-	if ( coblocks && typeof coblocks.id !== 'undefined' ) {
+	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 		classlist = Object.assign( classlist, [ `coblocks-row-${ coblocks.id }` ] );
 	}
 
@@ -56,14 +53,11 @@ function Deprecation( { attributes } ) {
 
 	const innerClasses = classnames(
 		'wp-block-coblocks-row__inner',
-		...BackgroundClasses( attributes ),
-		{
+		...BackgroundClasses( attributes ), {
 			[ `has-${ gutter }-gutter` ]: gutter,
 			'has-padding': paddingSize && paddingSize !== 'no',
-			[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
-			'has-margin': marginSize && marginSize !== 'no',
-			[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
-			'is-stacked-on-mobile': isStackedOnMobile,
+			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),			'has-margin': marginSize && marginSize !== 'no',
+			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),			'is-stacked-on-mobile': isStackedOnMobile,
 		}
 	);
 
@@ -73,13 +67,7 @@ function Deprecation( { attributes } ) {
 	};
 
 	return (
-		<div
-			className={ classes }
-			data-id={ id }
-			data-columns={ columns }
-			data-layout={ layout }
-			style={ styles }
-		>
+		<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } style={ styles } >
 			<div className={ innerClasses } style={ innerStyles }>
 				<InnerBlocks.Content />
 			</div>
@@ -108,52 +96,36 @@ function DeprecationVideo( { attributes } ) {
 	} = attributes;
 
 	const textClass = getColorClassName( 'color', textColor );
-	const backgroundClass = getColorClassName(
-		'background-color',
-		backgroundColor
-	);
+	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 	const classes = classnames( {
 		[ `coblocks-row--${ id }` ]: id,
-		[ `coblocks-row-${ coblocks.id }` ]:
-			coblocks && typeof coblocks.id !== 'undefined',
+		[ `coblocks-row-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
 	} );
 
 	const innerClasses = classnames(
 		'wp-block-coblocks-row__inner',
-		...BackgroundClasses( attributes ),
-		{
+		...BackgroundClasses( attributes ), {
 			'has-text-color': textColor || customTextColor,
 			[ textClass ]: textClass,
 			[ `has-${ gutter }-gutter` ]: gutter,
 			'has-padding': paddingSize && paddingSize !== 'no',
-			[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
+			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
 			'has-margin': marginSize && marginSize !== 'no',
-			[ `has-${ marginSize }-margin` ]: marginSize && marginSize !== 'advanced',
+			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
 			'is-stacked-on-mobile': isStackedOnMobile,
 		}
 	);
 
 	const innerStyles = {
 		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-		backgroundImage:
-			backgroundImg && backgroundType === 'image' ?
-				`url(${ backgroundImg })` :
-				undefined,
-		backgroundPosition:
-			focalPoint && ! hasParallax ?
-				`${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` :
-				undefined,
+		backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
+		backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
 		color: textClass ? undefined : customTextColor,
 	};
 
 	return (
-		<div
-			className={ classes }
-			data-id={ id }
-			data-columns={ columns }
-			data-layout={ layout }
-		>
+		<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } >
 			{ BackgroundVideo( attributes ) }
 			<div className={ innerClasses } style={ innerStyles }>
 				<InnerBlocks.Content />
@@ -162,7 +134,7 @@ function DeprecationVideo( { attributes } ) {
 	);
 }
 
-function DeprecatedInlinePaddingMarginsSave( { attributes } ) {
+function InlinePaddingMargins( { attributes } ) {
 	const {
 		coblocks,
 		backgroundColor,
@@ -225,12 +197,7 @@ function DeprecatedInlinePaddingMarginsSave( { attributes } ) {
 		color: textClass ? undefined : customTextColor,
 	};
 	return (
-		<div
-			className={ classes }
-			data-id={ id }
-			data-columns={ columns }
-			data-layout={ layout }
-		>
+		<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout }>
 			<div className={ innerClasses } style={ innerStyles }>
 				{ BackgroundVideo( attributes ) }
 				<InnerBlocks.Content />
@@ -252,7 +219,7 @@ const deprecated = [
 			},
 			...attributes,
 		},
-		save: Deprecation,
+		save: InlineTextColor,
 	},
 	{
 		attributes: {
@@ -263,7 +230,7 @@ const deprecated = [
 				default: true,
 			},
 		},
-		save: DeprecatedInlinePaddingMarginsSave,
+		save: InlinePaddingMargins,
 	},
 ];
 
