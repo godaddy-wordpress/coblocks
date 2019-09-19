@@ -164,6 +164,8 @@ class GalleryCarouselEdit extends Component {
 			primaryCaption,
 			backgroundImg,
 			alignCells,
+			thumbnails,
+			responsiveHeight,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -211,6 +213,8 @@ class GalleryCarouselEdit extends Component {
 			wrapAround: true,
 			autoPlay: false,
 			cellAlign: alignCells ? 'left' : 'center',
+			responsiveHeight: responsiveHeight,
+			thumbnails: thumbnails,
 			arrowShape: {
 				x0: 10,
 				x1: 60, y1: 50,

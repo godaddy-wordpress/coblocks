@@ -34,6 +34,8 @@ const save = ( { attributes, className } ) => {
 		prevNextButtons,
 		primaryCaption,
 		alignCells,
+		thumbnails,
+		responsiveHeight,
 	} = attributes;
 
 	const innerClasses = classnames(
@@ -78,6 +80,8 @@ const save = ( { attributes, className } ) => {
 		cellAlign: alignCells ? 'left' : 'center',
 		pauseAutoPlayOnHover: pauseHover,
 		freeScroll: freeScroll,
+		thumbnails: thumbnails,
+		responsiveHeight: responsiveHeight,
 		arrowShape: {
 			x0: 10,
 			x1: 60, y1: 50,
