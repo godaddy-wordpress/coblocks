@@ -55,6 +55,8 @@ const save = ( { attributes, className } ) => {
 		'has-carousel',
 		`has-carousel-${ gridSize }`, {
 			'has-aligned-cells': alignCells,
+			[ `has-margin-bottom-${ gutter }` ] : thumbnails && gutter > 0,
+			[ `has-margin-bottom-mobile-${ gutterMobile }` ] : thumbnails && gutterMobile > 0,
 		}
 	);
 
