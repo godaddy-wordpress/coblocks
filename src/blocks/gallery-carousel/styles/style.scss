@@ -39,8 +39,12 @@
 			height: 80px;
 			opacity: 0.4;
 			overflow: hidden;
-			transition: opacity 350ms ease;
+			transition: opacity 250ms ease;
 			width: 100px;
+
+			&:hover {
+				opacity: 0.66;
+			}
 
 			&.is-selected {
 				opacity: 1;
@@ -59,7 +63,6 @@
 }
 
 .responsive-height {
-
 	&.wp-block-coblocks-gallery-carousel {
 		overflow: hidden;
 	}
