@@ -199,6 +199,16 @@ module.exports = function( grunt ) {
 					},
 				],
 			},
+			languages: {
+				src: 'languages/coblocks.pot',
+				overwrite: true,
+				replacements: [
+					{
+						from: /(Project-Id-Version: CoBlocks )[0-9\.]+/,
+						to: '$1' + pkg.version,
+					},
+				],
+			},
 		},
 
 		shell: {

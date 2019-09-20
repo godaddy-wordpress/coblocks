@@ -36,6 +36,8 @@ const save = ( { attributes, className } ) => {
 		prevNextButtons,
 		primaryCaption,
 		alignCells,
+		thumbnails,
+		responsiveHeight,
 	} = attributes;
 
 	const innerClasses = classnames(

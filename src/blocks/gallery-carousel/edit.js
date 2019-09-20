@@ -166,6 +166,8 @@ class GalleryCarouselEdit extends Component {
 			primaryCaption,
 			backgroundImg,
 			alignCells,
+			thumbnails,
+			responsiveHeight,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -232,6 +234,8 @@ class GalleryCarouselEdit extends Component {
 				x2: 65, y2: 45,
 				x3: 20,
 			},
+			responsiveHeight: responsiveHeight,
+			thumbnails: thumbnails,
 		};
 
 		const navOptions = {
