@@ -115,7 +115,7 @@ const save = ( { attributes, className } ) => {
 	);
 
 	const navFigureClasses = classnames(
-		'blockgallery--figure', {
+		'coblocks--figure', {
 			[ `has-margin-left-${ gutter }` ] : gutter > 0,
 			[ `has-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
 			[ `has-margin-right-${ gutter }` ] : gutter > 0,
@@ -175,7 +175,7 @@ const save = ( { attributes, className } ) => {
 						{ images.map( ( image ) => {
 							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
 							return (
-								<div key={ image.id || image.url } className="blockgallery--item-thumbnail">
+								<div key={ image.id || image.url } className="coblocks--item-thumbnail">
 									<figure className={ navFigureClasses }>
 										{ img }
 									</figure>

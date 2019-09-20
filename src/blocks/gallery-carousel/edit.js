@@ -252,7 +252,7 @@ class GalleryCarouselEdit extends Component {
 		};
 
 		const navFigureClasses = classnames(
-			'blockgallery--figure', {
+			'coblocks--figure', {
 				[ `has-margin-left-${ gutter }` ] : gutter > 0,
 				[ `has-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
 				[ `has-margin-right-${ gutter }` ] : gutter > 0,
@@ -380,7 +380,7 @@ class GalleryCarouselEdit extends Component {
 						>
 							{ images.map( ( image ) => {
 								return (
-									<div className="blockgallery--item-thumbnail" key={ image.id || image.url }>
+									<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
 										<figure className={ navFigureClasses }>
 											<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
 										</figure>
