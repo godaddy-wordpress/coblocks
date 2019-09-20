@@ -248,7 +248,7 @@ class GalleryCarouselEdit extends Component {
 		};
 
 		const navStyles = {
-			marginTop: gutter > 0 ? gutter / 2 + 'px' : undefined,
+			marginTop: gutter > 0 && ! responsiveHeight ? gutter / 2 + 'px' : undefined,
 		};
 
 		const navFigureClasses = classnames(
@@ -288,9 +288,10 @@ class GalleryCarouselEdit extends Component {
 						height: height,
 						width: '100%',
 					} }
-					className={ classnames(
-						{ 'is-selected': isSelected }
-					) }
+					className={ classnames( {
+						'is-selected': isSelected,
+						'has-responsive-height': responsiveHeight,
+					} ) }
 					minHeight="200"
 					enable={ {
 						bottom: true,

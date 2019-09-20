@@ -62,15 +62,7 @@
 	}
 }
 
-.responsive-height {
-	&.wp-block-coblocks-gallery-carousel {
-		overflow: hidden;
-	}
-
-	~ span .components-resizable-box__handle {
-		display: none !important;
-	}
-
+.has-responsive-height {
 	.has-carousel {
 		height: auto !important;
 		padding-bottom: 56.25%;

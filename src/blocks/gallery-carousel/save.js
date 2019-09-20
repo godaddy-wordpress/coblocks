@@ -38,6 +38,12 @@ const save = ( { attributes, className } ) => {
 		responsiveHeight,
 	} = attributes;
 
+	const classes = classnames(
+		className, {
+			'has-responsive-height': responsiveHeight,
+		}
+	);
+
 	const innerClasses = classnames(
 		'is-cropped',
 		...GalleryClasses( attributes ),
@@ -145,7 +151,7 @@ const save = ( { attributes, className } ) => {
 	}
 
 	return (
-		<div className={ className }>
+		<div className={ classes }>
 			<div
 				className={ innerClasses }
 				style={ innerStyles }

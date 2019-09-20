@@ -185,7 +185,7 @@ class Inspector extends Component {
 						<ToggleControl
 							label={ __( 'Responsive Height' ) }
 							checked={ !! responsiveHeight }
-							onChange={ () => setAttributes( { responsiveHeight: ! responsiveHeight, height: 500, className: !responsiveHeight ? 'responsive-height' : '' } ) }
+							onChange={ () => setAttributes( { responsiveHeight: ! responsiveHeight } ) }
 							help={ this.getResponsiveHeightHelp }
 						/>
 					</InspectorAdvancedControls>
