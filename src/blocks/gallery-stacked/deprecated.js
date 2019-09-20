@@ -6,8 +6,8 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
-import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
+import { GalleryAttributes, GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
+import { BackgroundAttributes, BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 import metadata from './block.json';
 
 /**
