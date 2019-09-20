@@ -143,13 +143,14 @@ class Inspector extends Component {
 									max={ 20 }
 								/>
 							}
-							{ gutter > 0 && <RangeControl
-								label={ __( 'Rounded Corners' ) }
-								value={ radius }
-								onChange={ this.setRadiusTo }
-								min={ 0 }
-								max={ 20 }
-								step={ 1 }
+							{ gutter > 0 &&
+								<RangeControl
+									label={ __( 'Rounded Corners' ) }
+									value={ radius }
+									onChange={ this.setRadiusTo }
+									min={ 0 }
+									max={ 20 }
+									step={ 1 }
 								/>
 							}
 							{ ! responsiveHeight &&
