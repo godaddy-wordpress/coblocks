@@ -158,7 +158,7 @@ const save = ( { attributes, className } ) => {
 			>
 				<div
 					className={ flickityClasses }
-					style={ flickityStyles }
+					style={ responsiveHeight ? undefined : flickityStyles }
 					data-flickity={ JSON.stringify( flickityOptions ) }
 				>
 					{ images.map( ( image ) => {
