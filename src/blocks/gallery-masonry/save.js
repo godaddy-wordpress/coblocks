@@ -78,7 +78,7 @@ const save = ( { attributes, className } ) => {
 							href = image.imgLink;
 						}
 
-						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } data-index={ index } data-imglink={ image.imgLink } className={ image.id ? `wp-image-${ image.id }` : null } />;
+						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } data-imglink={ image.imgLink } data-index={ index } className={ image.id ? `wp-image-${ image.id }` : null } />;
 
 						return (
 							<li key={ image.id || image.url } className="coblocks-gallery--item">
