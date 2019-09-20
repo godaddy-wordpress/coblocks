@@ -42,7 +42,6 @@ class Inspector extends Component {
 		return checked ? __( 'Showing thumbnail navigation.' ) : __( 'Toggle to show thumbnails.' );
 	}
 
-
 	getResponsiveHeightHelp( checked ) {
 		return checked ? __( 'Percentage based height is activated.' ) : __( 'Toggle for percentage based height.' );
 	}
@@ -144,7 +143,7 @@ class Inspector extends Component {
 								max={ 20 }
 							/>
 							}
-							{ !responsiveHeight &&
+							{ ! responsiveHeight &&
 								<RangeControl
 									label={ __( 'Height in pixels' ) }
 									value={ height }

@@ -61,8 +61,8 @@ const save = ( { attributes, className } ) => {
 		'has-carousel',
 		`has-carousel-${ gridSize }`, {
 			'has-aligned-cells': alignCells,
-			[ `has-margin-bottom-${ gutter }` ] : thumbnails && gutter > 0,
-			[ `has-margin-bottom-mobile-${ gutterMobile }` ] : thumbnails && gutterMobile > 0,
+			[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
+			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
 		}
 	);
 
@@ -111,21 +111,21 @@ const save = ( { attributes, className } ) => {
 
 	const navClasses = classnames(
 		'carousel-nav', {
-			[ `has-margin-top-${ gutter }` ] : gutter > 0,
-			[ `has-margin-top-mobile-${ gutterMobile }` ] : gutterMobile > 0,
-			[ `has-negative-margin-left-${ gutter }` ] : gutter > 0,
-			[ `has-negative-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
-			[ `has-negative-margin-right-${ gutter }` ] : gutter > 0,
-			[ `has-negative-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+			[ `has-margin-top-${ gutter }` ]: gutter > 0,
+			[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			[ `has-negative-margin-left-${ gutter }` ]: gutter > 0,
+			[ `has-negative-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			[ `has-negative-margin-right-${ gutter }` ]: gutter > 0,
+			[ `has-negative-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		}
 	);
 
 	const navFigureClasses = classnames(
 		'coblocks--figure', {
-			[ `has-margin-left-${ gutter }` ] : gutter > 0,
-			[ `has-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
-			[ `has-margin-right-${ gutter }` ] : gutter > 0,
-			[ `has-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
+			[ `has-margin-left-${ gutter }` ]: gutter > 0,
+			[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			[ `has-margin-right-${ gutter }` ]: gutter > 0,
+			[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		}
 	);
 
