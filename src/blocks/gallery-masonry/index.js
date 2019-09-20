@@ -7,6 +7,7 @@ import './styles/style.scss';
 /**
  * Internal dependencies
  */
+import deprecated from './deprecated';
 import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
@@ -56,6 +57,7 @@ const settings = {
 	},
 	attributes,
 	transforms,
+	deprecated,
 	edit,
 	save,
 };
