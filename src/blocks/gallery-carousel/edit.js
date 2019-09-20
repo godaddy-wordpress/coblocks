@@ -160,8 +160,6 @@ class GalleryCarouselEdit extends Component {
 			height,
 			images,
 			pageDots,
-			thumbnails,
-			responsiveHeight,
 			prevNextButtons,
 			primaryCaption,
 			backgroundImg,

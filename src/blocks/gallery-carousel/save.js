@@ -31,8 +31,6 @@ const save = ( { attributes, className } ) => {
 		images,
 		pageDots,
 		pauseHover,
-		thumbnails,
-		responsiveHeight,
 		prevNextButtons,
 		primaryCaption,
 		alignCells,
@@ -106,7 +104,7 @@ const save = ( { attributes, className } ) => {
 	);
 
 	const navClasses = classnames(
-		'carousel-nav has-thumbnails-med', {
+		'carousel-nav', {
 			[ `has-margin-top-${ gutter }` ] : gutter > 0,
 			[ `has-margin-top-mobile-${ gutterMobile }` ] : gutterMobile > 0,
 			[ `has-negative-margin-left-${ gutter }` ] : gutter > 0,
