@@ -10,7 +10,7 @@ import SliderPanel from '../../components/slider-panel';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, PanelColorSettings } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 const { PanelBody, RangeControl } = wp.components;
 
 /**
@@ -40,8 +40,6 @@ class Inspector extends Component {
 		const {
 			attributes,
 			isSelected,
-			captionColor,
-			setCaptionColor,
 		} = this.props;
 
 		const {
@@ -94,17 +92,6 @@ class Inspector extends Component {
 							/> }
 						</PanelBody>
 						<SliderPanel { ...this.props } />
-						<PanelColorSettings
-							title={ __( 'Color Settings' ) }
-							initialOpen={ false }
-							colorSettings={ [
-								{
-									value: captionColor.color,
-									onChange: setCaptionColor,
-									label: __( 'Caption Color' ),
-								},
-							] }
-						/>
 					</InspectorControls>
 				</Fragment>
 			)

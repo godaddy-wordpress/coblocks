@@ -23,9 +23,8 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { withNotices, ResizableBox, Spinner } = wp.components;
-const { withColors, RichText } = wp.blockEditor;
-const { isBlobURL } = wp.blob;
+const { withNotices, ResizableBox } = wp.components;
+const { RichText } = wp.blockEditor;
 
 class GalleryCarouselEdit extends Component {
 	constructor() {
@@ -147,7 +146,6 @@ class GalleryCarouselEdit extends Component {
 			isSelected,
 			noticeUI,
 			setAttributes,
-			captionColor,
 		} = this.props;
 
 		const {
@@ -185,10 +183,6 @@ class GalleryCarouselEdit extends Component {
 
 			}
 		);
-
-		const captionStyles = {
-			color: captionColor.color,
-		};
 
 		const flickityClasses = classnames(
 			'has-carousel',
@@ -319,7 +313,6 @@ class GalleryCarouselEdit extends Component {
 						placeholder={ __( 'Write caption…' ) }
 						value={ primaryCaption }
 						className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-						style={ captionStyles }
 						unstableOnFocus={ this.onFocusCaption }
 						onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
 						isSelected={ this.state.captionFocused }
@@ -333,6 +326,5 @@ class GalleryCarouselEdit extends Component {
 }
 
 export default compose( [
-	withColors( { captionColor: 'color' } ),
 	withNotices,
 ] )( GalleryCarouselEdit );

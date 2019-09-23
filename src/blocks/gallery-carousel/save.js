@@ -13,14 +13,12 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-const { getColorClassName, RichText } = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 
 const save = ( { attributes, className } ) => {
 	const {
 		autoPlay,
 		autoPlaySpeed,
-		captionColor,
-		customCaptionColor,
 		draggable,
 		freeScroll,
 		gridSize,
@@ -84,20 +82,10 @@ const save = ( { attributes, className } ) => {
 		responsiveHeight: responsiveHeight,
 	};
 
-	const captionColorClass = getColorClassName( 'color', captionColor );
-
 	const captionClasses = classnames(
 		'coblocks-gallery--caption',
-		'coblocks-gallery--primary-caption',
-		captionColorClass, {
-			'has-caption-color': captionColorClass,
-
-		}
+		'coblocks-gallery--primary-caption', {}
 	);
-
-	const captionStyles = {
-		color: captionColorClass ? undefined : customCaptionColor,
-	};
 
 	// Return early if there are no images.
 	if ( images.length <= 0 ) {
@@ -125,7 +113,7 @@ const save = ( { attributes, className } ) => {
 					} ) }
 				</div>
 			</div>
-			{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles } /> }
+			{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }
 		</div>
 	);
 };
