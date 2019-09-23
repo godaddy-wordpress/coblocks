@@ -141,7 +141,6 @@ class GalleryMasonryEdit extends Component {
 			noticeUI,
 			pluginSidebarOpened,
 			publishSidebarOpened,
-			captionColor,
 		} = this.props;
 
 		const {
@@ -180,10 +179,6 @@ class GalleryMasonryEdit extends Component {
 			}
 		);
 
-		const masonryStyles = {
-			color: captionColor.color,
-		};
-
 		if ( ! hasImages ) {
 			return (
 				<GalleryPlaceholder
@@ -213,7 +208,6 @@ class GalleryMasonryEdit extends Component {
 						<Masonry
 							elementType={ 'ul' }
 							className={ masonryClasses }
-							style={ masonryStyles }
 							options={ masonryOptions }
 							disableImagesLoaded={ false }
 							updateOnEachImageLoad={ false }
