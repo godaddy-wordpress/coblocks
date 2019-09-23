@@ -38,6 +38,9 @@ class Controls extends Component {
 			<BlockControls>
 				{ hasImages && (
 					<Fragment>
+						<MediaFilterControl
+							{ ...this.props }
+						/>
 						<Toolbar>
 							<MediaUploadCheck>
 								<MediaUpload
@@ -57,9 +60,6 @@ class Controls extends Component {
 								/>
 							</MediaUploadCheck>
 						</Toolbar>
-						<MediaFilterControl
-							{ ...this.props }
-						/>
 					</Fragment>
 				) }
 			</BlockControls>
