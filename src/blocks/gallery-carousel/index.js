@@ -13,7 +13,6 @@ import deprecated from './deprecated';
 import icon from './icon';
 import metadata from './block.json';
 import save from './save';
-import { BackgroundAttributes } from '../../components/background';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
 
 /**
@@ -28,7 +27,6 @@ const { name, category } = metadata;
 
 const attributes = {
 	...GalleryAttributes,
-	...BackgroundAttributes,
 	...metadata.attributes,
 };
 

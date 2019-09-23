@@ -8,7 +8,6 @@ import classnames from 'classnames';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import { BackgroundStyles, BackgroundClasses } from '../../components/background';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -40,16 +39,11 @@ const save = ( { attributes, className } ) => {
 
 	const innerClasses = classnames(
 		'is-cropped',
-		...GalleryClasses( attributes ),
-		...BackgroundClasses( attributes ), {
+		...GalleryClasses( attributes ), {
 			'has-horizontal-gutter': gutter > 0,
 
 		}
 	);
-
-	const innerStyles = {
-		...BackgroundStyles( attributes ),
-	};
 
 	const flickityClasses = classnames(
 		'has-carousel',
@@ -112,10 +106,7 @@ const save = ( { attributes, className } ) => {
 
 	return (
 		<div className={ className }>
-			<div
-				className={ innerClasses }
-				style={ innerStyles }
-			>
+			<div className={ innerClasses }>
 				<div
 					className={ flickityClasses }
 					style={ flickityStyles }

@@ -15,7 +15,6 @@ import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import GalleryUploader from '../../components/block-gallery/gallery-uploader';
-import { BackgroundStyles, BackgroundClasses, BackgroundVideo } from '../../components/background';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -144,7 +143,6 @@ class GalleryCarouselEdit extends Component {
 	render() {
 		const {
 			attributes,
-			backgroundColor,
 			className,
 			isSelected,
 			noticeUI,
@@ -162,7 +160,6 @@ class GalleryCarouselEdit extends Component {
 			pageDots,
 			prevNextButtons,
 			primaryCaption,
-			backgroundImg,
 			alignCells,
 			thumbnails,
 			responsiveHeight,
@@ -179,8 +176,7 @@ class GalleryCarouselEdit extends Component {
 
 		const innerClasses = classnames(
 			'is-cropped',
-			...GalleryClasses( attributes ),
-			...BackgroundClasses( attributes ), {
+			...GalleryClasses( attributes ), {
 				[ `align${ align }` ]: align,
 				'has-horizontal-gutter': gutter > 0,
 				'has-no-dots': ! pageDots,
@@ -189,11 +185,6 @@ class GalleryCarouselEdit extends Component {
 
 			}
 		);
-
-		const innerStyles = {
-			...BackgroundStyles( attributes ),
-			backgroundColor: backgroundColor.color,
-		};
 
 		const captionStyles = {
 			color: captionColor.color,
@@ -272,13 +263,8 @@ class GalleryCarouselEdit extends Component {
 					} }
 				>
 					{ dropZone }
-					{ isBlobURL( backgroundImg ) && <Spinner /> }
-					{ BackgroundVideo( attributes ) }
 					<div className={ className }>
-						<div
-							className={ innerClasses }
-							style={ innerStyles }
-						>
+						<div className={ innerClasses }>
 							<Flickity
 								className={ flickityClasses }
 								disableImagesLoaded={ false }
@@ -347,6 +333,6 @@ class GalleryCarouselEdit extends Component {
 }
 
 export default compose( [
-	withColors( { backgroundColor: 'background-color', captionColor: 'color' } ),
+	withColors( { captionColor: 'color' } ),
 	withNotices,
 ] )( GalleryCarouselEdit );
