@@ -8,18 +8,15 @@ import classnames from 'classnames';
  */
 
 import { GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
-import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { RichText, getFontSizeClass, getColorClassName } = wp.blockEditor;
+const { RichText, getFontSizeClass } = wp.blockEditor;
 
 const save = ( { attributes, className } ) => {
 	const {
-		captionColor,
 		captions,
-		customCaptionColor,
 		customFontSize,
 		fontSize,
 		fullwidth,
@@ -33,11 +30,8 @@ const save = ( { attributes, className } ) => {
 	} = attributes;
 
 	// Body color class and styles.
-	const textClass = getColorClassName( 'color', captionColor );
-
 	const innerClasses = classnames(
-		...GalleryClasses( attributes ),
-		...BackgroundClasses( attributes ), {
+		...GalleryClasses( attributes ), {
 			'has-fullwidth-images': fullwidth,
 			'has-margin': gutter > 0,
 		}
@@ -45,8 +39,6 @@ const save = ( { attributes, className } ) => {
 
 	const innerStyles = {
 		...GalleryStyles( attributes ),
-		...BackgroundStyles( attributes ),
-		color: textClass ? undefined : customCaptionColor,
 	};
 
 	const fontSizeClass = getFontSizeClass( fontSize );
@@ -69,7 +61,6 @@ const save = ( { attributes, className } ) => {
 
 	return (
 		<div className={ className }>
-			{ BackgroundVideo( attributes ) }
 			<ul className={ innerClasses } style={ innerStyles }>
 				{ images.map( ( image ) => {
 					let href;

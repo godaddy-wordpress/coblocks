@@ -14,7 +14,6 @@ import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import { GalleryClasses } from '../../components/block-gallery/shared';
-import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -23,9 +22,8 @@ const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
-const { withNotices, Spinner } = wp.components;
-const { withColors, withFontSizes } = wp.blockEditor;
-const { isBlobURL } = wp.blob;
+const { withNotices } = wp.components;
+const { withFontSizes } = wp.blockEditor;
 
 class GalleryStackedEdit extends Component {
 	constructor() {
@@ -126,8 +124,6 @@ class GalleryStackedEdit extends Component {
 	render() {
 		const {
 			attributes,
-			backgroundColor,
-			captionColor,
 			className,
 			fontSize,
 			isSelected,
@@ -142,15 +138,13 @@ class GalleryStackedEdit extends Component {
 			gutterMobile,
 			images,
 			shadow,
-			backgroundImg,
 			linkTo,
 		} = attributes;
 
 		const hasImages = !! images.length;
 
 		const innerClasses = classnames(
-			...GalleryClasses( attributes ),
-			...BackgroundClasses( attributes ), {
+			...GalleryClasses( attributes ), {
 				'has-fullwidth-images': fullwidth,
 				[ `align${ align }` ]: align,
 				'has-margin': gutter > 0,
@@ -158,12 +152,6 @@ class GalleryStackedEdit extends Component {
 				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
-
-		const innerStyles = {
-			...BackgroundStyles( attributes ),
-			backgroundColor: backgroundColor.color,
-			color: captionColor.color,
-		};
 
 		if ( ! hasImages ) {
 			return (
@@ -189,9 +177,7 @@ class GalleryStackedEdit extends Component {
 				}
 				{ noticeUI }
 				<div className={ className }>
-					{ isBlobURL( backgroundImg ) && <Spinner /> }
-					{ BackgroundVideo( attributes ) }
-					<ul className={ innerClasses } style={ innerStyles }>
+					<ul className={ innerClasses }>
 						{ images.map( ( img, index ) => {
 							// translators: %1$d is the order number of the image, %2$d is the total number of images.
 							const ariaLabel = sprintf( __( 'image %1$d of %2$d in gallery' ), ( index + 1 ), images.length );
@@ -243,7 +229,6 @@ export default compose( [
 		publishSidebarOpened: select( 'core/edit-post' ).isPublishSidebarOpened(),
 		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
 	} ) ),
-	withColors( { backgroundColor: 'background-color', captionColor: 'color' } ),
 	withFontSizes( 'fontSize' ),
 	withNotices,
 ] )( GalleryStackedEdit );
