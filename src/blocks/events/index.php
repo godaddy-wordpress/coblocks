@@ -45,7 +45,16 @@ function render_block_events($attributes, $content)
 			$custom_text_color = is_array($attributes) && isset($attributes['customTextColor']) && isset($attributes['hasColors']) && (!$attributes['hasColors'] && !isset($attributes['textColor'])) ? "color: {$attributes['customTextColor']};" : '';
 			$align = is_array($attributes) && isset($attributes['align']) ? "align{$attributes['align']} " : '';
 
-			$eventsLayout = sprintf('<div class="wp-block-coblocks-events %1$s">', $align);
+			$class = 'wp-block-coblocks-events';
+			if ( isset( $attributes['className'] ) ) {
+				$class .= ' ' . $attributes['className'];
+			}
+
+			if ( isset( $attributes['align'] ) ) {
+				$class .= ' align' . $align;
+			}
+
+			$eventsLayout = sprintf('<div class="%1$s">', esc_attr( $class ));
 
 			foreach ($events as $i => $event) {
 				$pageNum = (int)($i / $attributes['eventsToShow']);
