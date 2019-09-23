@@ -7,7 +7,6 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import { GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
-import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -27,15 +26,10 @@ const save = ( { attributes, className } ) => {
 	} = attributes;
 
 	const innerClasses = classnames(
-		...GalleryClasses( attributes ),
-		...BackgroundClasses( attributes ), {
+		...GalleryClasses( attributes ), {
 			'has-gutter': gutter > 0,
 		}
 	);
-
-	const innerStyles = {
-		...BackgroundStyles( attributes ),
-	};
 
 	const masonryClasses = classnames(
 		`has-grid-${ gridSize }`, {
@@ -50,11 +44,7 @@ const save = ( { attributes, className } ) => {
 
 	return (
 		<div className={ className }>
-			<div
-				className={ innerClasses }
-				style={ innerStyles }
-			>
-				{ BackgroundVideo( attributes ) }
+			<div className={ innerClasses } >
 				<ul
 					className={ masonryClasses }
 					style={ masonryStyles }

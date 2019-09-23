@@ -16,7 +16,6 @@ import GalleryPlaceholder from '../../components/block-gallery/gallery-placehold
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import { GalleryClasses } from '../../components/block-gallery/shared';
-import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -25,9 +24,7 @@ const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
-const { withNotices, Spinner } = wp.components;
-const { withColors } = wp.blockEditor;
-const { isBlobURL } = wp.blob;
+const { withNotices } = wp.components;
 
 /**
  * Block consts
@@ -138,7 +135,6 @@ class GalleryMasonryEdit extends Component {
 	render() {
 		const {
 			attributes,
-			backgroundColor,
 			className,
 			editorSidebarOpened,
 			isSelected,
@@ -150,7 +146,6 @@ class GalleryMasonryEdit extends Component {
 
 		const {
 			align,
-			backgroundImg,
 			captions,
 			gridSize,
 			gutter,
@@ -172,17 +167,11 @@ class GalleryMasonryEdit extends Component {
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
-			...BackgroundClasses( attributes ),
 			sidebarIsOpened, {
 				[ `align${ align }` ]: align,
 				'has-gutter': gutter > 0,
 			}
 		);
-
-		const innerStyles = {
-			...BackgroundStyles( attributes ),
-			backgroundColor: backgroundColor.color,
-		};
 
 		const masonryClasses = classnames(
 			`has-grid-${ gridSize }`, {
@@ -219,13 +208,8 @@ class GalleryMasonryEdit extends Component {
 				}
 				{ noticeUI }
 				<div className={ className }>
-					<div
-						className={ innerClasses }
-						style={ innerStyles }
-					>
+					<div className={ innerClasses }>
 						{ dropZone }
-						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						{ BackgroundVideo( attributes ) }
 						<Masonry
 							elementType={ 'ul' }
 							className={ masonryClasses }
@@ -280,6 +264,5 @@ export default compose( [
 		publishSidebarOpened: select( 'core/edit-post' ).isPublishSidebarOpened(),
 		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
 	} ) ),
-	withColors( { backgroundColor: 'background-color', captionColor: 'color' } ),
 	withNotices,
 ] )( GalleryMasonryEdit );
