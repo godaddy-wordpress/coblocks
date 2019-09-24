@@ -44,9 +44,17 @@
 		},
 		"pauseHover": {
 			"type": "boolean",
-				"default": false
+			"default": false
 		},
 		"freeScroll": {
+			"type": "boolean",
+			"default": false
+		},
+		"thumbnails": {
+			"type": "boolean",
+			"default": false
+		},
+		"responsiveHeight": {
 			"type": "boolean",
 			"default": false
 		}

@@ -34,6 +34,8 @@ const save = ( { attributes, className } ) => {
 		prevNextButtons,
 		primaryCaption,
 		alignCells,
+		thumbnails,
+		responsiveHeight,
 	} = attributes;
 
 	const innerClasses = classnames(
@@ -84,6 +86,8 @@ const save = ( { attributes, className } ) => {
 			x2: 65, y2: 45,
 			x3: 20,
 		},
+		thumbnails: thumbnails,
+		responsiveHeight: responsiveHeight,
 	};
 
 	const captionColorClass = getColorClassName( 'color', captionColor );
