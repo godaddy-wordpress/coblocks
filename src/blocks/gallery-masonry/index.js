@@ -35,7 +35,7 @@ const settings = {
 	title: _x( 'Masonry', 'block name' ),
 	description: __( 'Display multiple images in an organized masonry gallery.' ),
 	icon,
-	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ), _x( 'lightbox', 'block keyword' ) ],
+	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 	},

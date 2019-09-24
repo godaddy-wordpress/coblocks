@@ -368,15 +368,14 @@ class GalleryCarouselEdit extends Component {
 				<div className={ className }>
 					<div
 						className={ innerClasses }
-						style={ innerStyles }
 						style={ navStyles }
 					>
 						<Flickity
 							className={ navClasses }
 							options={ navOptions }
 							disableImagesLoaded={ false }
-							flickityRef={ c => this.flkty = c }
 							reloadOnUpdate={ true }
+							flickityRef={ c => this.flkty = c }
 							updateOnEachImageLoad={ true }
 						>
 							{ images.map( ( image ) => {
