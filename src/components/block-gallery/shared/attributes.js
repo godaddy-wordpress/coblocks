@@ -113,6 +113,10 @@ const GalleryAttributes = {
 		type: 'number',
 		default: 0,
 	},
+	lightbox: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default GalleryAttributes;

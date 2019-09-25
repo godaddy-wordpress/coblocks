@@ -96,3 +96,9 @@
 		display: none;
 	}
 }
+
+.has-lightbox {
+	.coblocks-gallery--figure:hover {
+		cursor: default !important;
+	}
+}

@@ -7,6 +7,7 @@ import './styles/style.scss';
 /**
  * Internal dependencies
  */
+import deprecated from './deprecated';
 import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
@@ -35,7 +36,7 @@ const settings = {
 	title: _x( 'Masonry', 'block name' ),
 	description: __( 'Display multiple images in an organized masonry gallery.' ),
 	icon,
-	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ) ],
+	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ), _x( 'lightbox', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
@@ -56,6 +57,7 @@ const settings = {
 	},
 	attributes,
 	transforms,
+	deprecated,
 	edit,
 	save,
 };
