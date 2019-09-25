@@ -173,6 +173,25 @@ class CoBlocks_Block_Assets {
 				true
 			);
 		}
+
+		// Lightbox.
+		if ( has_block( $this->_slug . '/gallery-masonry' ) || has_block( $this->_slug . '/gallery-stacked' ) ) {
+			wp_enqueue_script(
+				$this->_slug . '-lightbox',
+				$dir . $this->_slug . '-lightbox' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				$this->_version,
+				true
+			);
+
+			wp_enqueue_script(
+				$this->_slug . '-masonry',
+				$dir . $this->_slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery', 'masonry', 'imagesloaded' ),
+				$this->_version,
+				true
+			);
+		}
 	}
 
 }
