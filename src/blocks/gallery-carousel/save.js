@@ -38,6 +38,12 @@ const save = ( { attributes, className } ) => {
 		responsiveHeight,
 	} = attributes;
 
+	const classes = classnames(
+		className, {
+			'has-responsive-height': responsiveHeight,
+		}
+	);
+
 	const innerClasses = classnames(
 		'is-cropped',
 		...GalleryClasses( attributes ),
@@ -55,6 +61,8 @@ const save = ( { attributes, className } ) => {
 		'has-carousel',
 		`has-carousel-${ gridSize }`, {
 			'has-aligned-cells': alignCells,
+			[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
+			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
 		}
 	);
 
@@ -101,6 +109,38 @@ const save = ( { attributes, className } ) => {
 		}
 	);
 
+	const navClasses = classnames(
+		'carousel-nav', {
+			[ `has-margin-top-${ gutter }` ]: gutter > 0,
+			[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			[ `has-negative-margin-left-${ gutter }` ]: gutter > 0,
+			[ `has-negative-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			[ `has-negative-margin-right-${ gutter }` ]: gutter > 0,
+			[ `has-negative-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		}
+	);
+
+	const navFigureClasses = classnames(
+		'coblocks--figure', {
+			[ `has-margin-left-${ gutter }` ]: gutter > 0,
+			[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			[ `has-margin-right-${ gutter }` ]: gutter > 0,
+			[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		}
+	);
+
+	const navOptions = {
+		asNavFor: '.has-carousel',
+		autoPlay: false,
+		contain: true,
+		cellAlign: 'left',
+		pageDots: false,
+		thumbnails: false,
+		draggable: draggable,
+		prevNextButtons: false,
+		wrapAround: false,
+	};
+
 	const captionStyles = {
 		color: captionColorClass ? undefined : customCaptionColor,
 	};
@@ -111,14 +151,14 @@ const save = ( { attributes, className } ) => {
 	}
 
 	return (
-		<div className={ className }>
+		<div className={ classes }>
 			<div
 				className={ innerClasses }
 				style={ innerStyles }
 			>
 				<div
 					className={ flickityClasses }
-					style={ flickityStyles }
+					style={ responsiveHeight ? undefined : flickityStyles }
 					data-flickity={ JSON.stringify( flickityOptions ) }
 				>
 					{ images.map( ( image ) => {
@@ -133,6 +173,23 @@ const save = ( { attributes, className } ) => {
 						);
 					} ) }
 				</div>
+				{ thumbnails ?
+					<div
+						className={ navClasses }
+						data-flickity={ JSON.stringify( navOptions ) }
+					>
+						{ images.map( ( image ) => {
+							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } />;
+							return (
+								<div key={ image.id || image.url } className="coblocks--item-thumbnail">
+									<figure className={ navFigureClasses }>
+										{ img }
+									</figure>
+								</div>
+							);
+						} ) }
+					</div> : null
+				}
 			</div>
 			{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles } /> }
 		</div>
