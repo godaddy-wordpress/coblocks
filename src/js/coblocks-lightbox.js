@@ -4,7 +4,6 @@
 
 	const lightboxModals = $( '.has-lightbox' );
 
-
 	$.each( lightboxModals, function( i, lightbox ) {
 		lightbox.className += ' lightbox-' + i + ' ';
 
@@ -12,7 +11,6 @@
 	} );
 
 	function renderLightboxModal( lightboxClass ) {
-
 		const wrapper = $( '<div/>', { class: 'coblocks-lightbox' } );
 		const wrapperBackground = $( '<div/>', { class: 'coblocks-lightbox__background' } );
 		const modalHeading = $( '<div/>', { class: 'coblocks-lightbox__heading' } );
