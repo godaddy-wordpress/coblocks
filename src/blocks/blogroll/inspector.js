@@ -45,19 +45,31 @@ const Inspector = props => {
 					<ToggleControl
 						label={ __( 'Display post date' ) }
 						checked={ attributes.displayPostDate }
-						help={ __( 'Showing the publish date.' ) }
+						help={
+							attributes.displayPostDate ?
+								__( 'Showing the publish date.' ) :
+								__( 'Toggle to show the publish date.' )
+						}
 						onChange={ ( value ) => setAttributes( { displayPostDate: value } ) }
 					/>
 					<ToggleControl
 						label={ __( 'Display Link' ) }
 						checked={ attributes.displayPostLink }
-						help={ __( 'Showing links to individual posts.' ) }
+						help={
+							attributes.displayPostLink ?
+								__( 'Showing links to individual posts.' ) :
+								__( 'Toggle to show links to posts.' )
+						}
 						onChange={ ( value ) => setAttributes( { displayPostLink: value } ) }
 					/>
 					<ToggleControl
 						label={ __( 'Display Excerpt' ) }
 						checked={ attributes.displayPostContent }
-						help={ __( 'Showing the post excerpt.' ) }
+						help={
+							attributes.displayPostContent ?
+								__( 'Showing the post excerpt.' ) :
+								__( 'Toggle to show the post excerpt.' )
+						}
 						onChange={ ( value ) => setAttributes( { displayPostContent: value } ) }
 					/>
 					{ attributes.displayPostContent &&
