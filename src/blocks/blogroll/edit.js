@@ -1,4 +1,12 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+import includes from 'lodash/includes';
+import { find, isUndefined, pickBy } from 'lodash';
+import { Fragment } from 'react';
+
+/**
  * Internal dependencies
  */
 import './styles/editor.scss';
@@ -6,14 +14,6 @@ import './styles/style.scss';
 import Slider from 'react-slick';
 import InspectorControls from './inspector';
 import blogIcons from './icons';
-
-/**
- * External dependencies
- */
-import classnames from 'classnames';
-import includes from 'lodash/includes';
-import { find, isUndefined, pickBy } from 'lodash';
-import { Fragment } from 'react';
 
 /**
  * WordPress dependencies
@@ -32,6 +32,7 @@ import { addQueryArgs } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
 import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
 import { withSelect } from '@wordpress/data';
+
 const TokenList = wp.tokenList;
 
 /**
