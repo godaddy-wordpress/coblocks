@@ -7,7 +7,8 @@ import SlickSliderPanel from '../../components/slick-slider-panel';
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
+const { Fragment } = wp.element;
 const { PanelBody, ToggleControl, RangeControl, QueryControls, RadioControl } = wp.components;
 const { InspectorControls } = wp.blockEditor;
 const { ENTER, SPACE } = wp.keycodes;
@@ -28,32 +29,46 @@ const Inspector = props => {
 
 	const postSettingsControls = (
 		<PanelBody title={ __( 'Post Settings' ) }>
-			<ToggleControl
-				label={ __( 'Display Date' ) }
-				checked={ attributes.displayPostDate }
-				help={ __( 'Showing the publish date.' ) }
-				onChange={ ( value ) => setAttributes( { displayPostDate: value } ) }
+			<RadioControl
+				label={ __( 'Feed' ) }
+				selected={ attributes.postFeedType }
+				options={ [
+					{ label:  __( 'My Blog' ), value: 'internal' },
+					{ label: __( 'External Feed' ), value: 'external' },
+				] }
+				onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
 			/>
-			<ToggleControl
-				label={ __( 'Display Link' ) }
-				checked={ attributes.displayPostLink }
-				help={ __( 'Showing links to individual posts.' ) }
-				onChange={ ( value ) => setAttributes( { displayPostLink: value } ) }
-			/>
-			<ToggleControl
-				label={ __( 'Display Excerpt' ) }
-				checked={ attributes.displayPostContent }
-				help={ __( 'Showing the post excerpt.' ) }
-				onChange={ ( value ) => setAttributes( { displayPostContent: value } ) }
-			/>
-			{ attributes.displayPostContent &&
-			<RangeControl
-				label={ __( 'Max words in post excerpt' ) }
-				value={ attributes.excerptLength }
-				onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
-				min={ 10 }
-				max={ 100 }
-			/>
+
+			{ ( ( ! hasPosts && attributes.postFeedType === 'external' ) || ( editing && attributes.postFeedType === 'internal' ) ) &&
+				<Fragment>
+					<ToggleControl
+						label={ __( 'Display post date' ) }
+						checked={ attributes.displayPostDate }
+						help={ __( 'Showing the publish date.' ) }
+						onChange={ ( value ) => setAttributes( { displayPostDate: value } ) }
+					/>
+					<ToggleControl
+						label={ __( 'Display Link' ) }
+						checked={ attributes.displayPostLink }
+						help={ __( 'Showing links to individual posts.' ) }
+						onChange={ ( value ) => setAttributes( { displayPostLink: value } ) }
+					/>
+					<ToggleControl
+						label={ __( 'Display Excerpt' ) }
+						checked={ attributes.displayPostContent }
+						help={ __( 'Showing the post excerpt.' ) }
+						onChange={ ( value ) => setAttributes( { displayPostContent: value } ) }
+					/>
+					{ attributes.displayPostContent &&
+						<RangeControl
+							label={ __( 'Max words in post excerpt' ) }
+							value={ attributes.excerptLength }
+							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
+							min={ 10 }
+							max={ 100 }
+						/>
+					}
+				</Fragment>
 			}
 		</PanelBody>
 	);
@@ -61,16 +76,16 @@ const Inspector = props => {
 	const { order, orderBy } = attributes;
 
 	const sortingAndFiltering = (
-		<PanelBody title={ __( 'Sorting and Filtering' ) }>
+		<PanelBody title={ __( 'Sorting and Filtering' ) } initialOpen={ false }>
 			{ attributes.postFeedType === 'internal' &&
-			<QueryControls
-				{ ...{ order, orderBy } }
-				categoriesList={ categoriesList }
-				selectedCategoryId={ categoriesList.categories }
-				onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-				onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-				onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
-			/>
+				<QueryControls
+					{ ...{ order, orderBy } }
+					categoriesList={ categoriesList }
+					selectedCategoryId={ categoriesList.categories }
+					onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+					onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
+					onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
+				/>
 			}
 			<RangeControl
 				label={ __( 'Number of items' ) }
@@ -80,43 +95,21 @@ const Inspector = props => {
 				max={ 20 }
 			/>
 			{ attributes.isGridStyle &&
-			<RangeControl
-				label={ __( 'Columns' ) }
-				value={ attributes.columns }
-				onChange={ ( value ) => setAttributes( { columns: value } ) }
-				min={ 2 }
-				max={ 4 }
-				required
-			/>
+				<RangeControl
+					label={ __( 'Columns' ) }
+					value={ attributes.columns }
+					onChange={ ( value ) => setAttributes( { columns: value } ) }
+					min={ 2 }
+					max={ 4 }
+					required
+				/>
 			}
 		</PanelBody>
 	);
 
-	const feedType = (
-		<PanelBody title={ __( 'Feed type' ) }>
-			<RadioControl
-				label={ __( 'Post Feed' ) }
-				selected={ attributes.postFeedType }
-				options={ [
-					{ label: 'My Blog', value: 'internal' },
-					{ label: 'External Blog Feed', value: 'external' },
-				] }
-				onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
-			/>
-		</PanelBody>
-	);
-
-	if ( ( ! hasPosts && attributes.postFeedType === 'internal' ) || ( editing && attributes.postFeedType === 'external' ) ) {
-		return (
-			<InspectorControls>
-				{ feedType }
-			</InspectorControls>
-		);
-	}
-
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Styles' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
 				<div className="editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
 					{ layoutOptions.map( style => (
 						<div
@@ -148,13 +141,11 @@ const Inspector = props => {
 					) ) }
 				</div>
 			</PanelBody>
-
-			{ feedType }
 			{ postSettingsControls }
-			{ isCarouselStyle &&
-			<SlickSliderPanel { ...props } />
-			}
 			{ sortingAndFiltering }
+			{ isCarouselStyle &&
+				<SlickSliderPanel { ...props } />
+			}
 		</InspectorControls>
 	);
 };
