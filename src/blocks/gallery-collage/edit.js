@@ -219,7 +219,7 @@ class GalleryCollageEdit extends Component {
 							const theIndex = img.index || index;
 							return (
 								<li className="wp-block-coblocks-gallery-collage__item" key={ `image-${ theIndex }` }>
-									{ img.hasOwnProperty( 'url' ) ? this.renderImage( theIndex ) : this.renderPlaceholder( theIndex ) }
+									{ !! img.url ? this.renderImage( theIndex ) : this.renderPlaceholder( theIndex ) }
 								</li>
 							);
 						} ) }
