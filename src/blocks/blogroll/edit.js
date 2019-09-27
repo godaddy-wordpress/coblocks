@@ -122,6 +122,9 @@ class LatestPostsEdit extends Component {
 	}
 
 	componentDidMount() {
+		const { className } = this.props;
+		const activeStyle = getActiveStyle( layoutOptions, className );
+		this.updateStyle( activeStyle );
 		this.isStillMounted = true;
 		this.fetchRequest = apiFetch( {
 			path: addQueryArgs( '/wp-json/wp/v2/categories', CATEGORIES_LIST_QUERY ),
@@ -174,8 +177,6 @@ class LatestPostsEdit extends Component {
 		const isCarouselStyle = includes( className, 'is-style-carousel' );
 
 		const activeStyle = getActiveStyle( layoutOptions, className );
-
-		this.updateStyle( activeStyle );
 
 		const { categoriesList } = this.state;
 		const {
