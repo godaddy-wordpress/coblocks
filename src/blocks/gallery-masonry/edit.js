@@ -157,6 +157,7 @@ class GalleryMasonryEdit extends Component {
 			gutterMobile,
 			images,
 			linkTo,
+			lightbox,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -176,6 +177,7 @@ class GalleryMasonryEdit extends Component {
 			sidebarIsOpened, {
 				[ `align${ align }` ]: align,
 				'has-gutter': gutter > 0,
+				'has-lightbox': lightbox,
 			}
 		);
 

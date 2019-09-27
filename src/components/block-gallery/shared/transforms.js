@@ -36,6 +36,7 @@ function GalleryTransforms( props ) {
 		rel: props.rel,
 		shadow: props.shadow,
 		target: props.target,
+		lightbox: props.lightbox,
 	};
 
 	return transforms;

@@ -144,9 +144,16 @@ class GalleryStackedEdit extends Component {
 			shadow,
 			backgroundImg,
 			linkTo,
+			lightbox,
 		} = attributes;
 
 		const hasImages = !! images.length;
+
+		const classes = classnames(
+			className, {
+				'has-lightbox': lightbox,
+			}
+		);
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
@@ -154,6 +161,7 @@ class GalleryStackedEdit extends Component {
 				'has-fullwidth-images': fullwidth,
 				[ `align${ align }` ]: align,
 				'has-margin': gutter > 0,
+				'has-lightbox': lightbox,
 				[ `has-margin-bottom-${ gutter }` ]: gutter > 0,
 				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
@@ -188,7 +196,7 @@ class GalleryStackedEdit extends Component {
 					/>
 				}
 				{ noticeUI }
-				<div className={ className }>
+				<div className={ classes }>
 					{ isBlobURL( backgroundImg ) && <Spinner /> }
 					{ BackgroundVideo( attributes ) }
 					<ul className={ innerClasses } style={ innerStyles }>
