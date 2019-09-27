@@ -1,0 +1,217 @@
+.wp-block-coblocks-gallery-collage {
+
+	ul {
+		list-style-type: none;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__item {
+		figure,
+		.block-editor-media-placeholder {
+			padding: 0;
+		}
+
+		&:nth-child( 1 ) {
+			width: 65%;
+			align-self: flex-end;
+
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: calc( 330 / 495 * 100% );
+			}
+		}
+
+		&:nth-child( 2 ) {
+			width: 25%;
+			margin-right: auto;
+			align-self: flex-end;
+
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: 100%;
+			}
+		}
+
+		&:nth-child( 3 ) {
+			width: 25%;
+			margin-left: auto;
+			align-self: flex-start;
+
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: 100%;
+			}
+		}
+
+		&:nth-child( 4 ),
+		&:nth-child( 5 ) {
+			width: 25%;
+			align-self: flex-start;
+
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: calc( 82 / 63 * 100% );
+			}
+		}
+	}
+
+	.is-style-two &__item {
+		&:nth-child( 1 ),
+		&:nth-child( 4 ) {
+			width: calc( 590 / 890 * 100% );
+
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: calc( 380 / 590 * 100% );
+			}
+		}
+
+		&:nth-child( 2 ),
+		&:nth-child( 3 ) {
+			width: calc( 300 / 890 * 100% );
+
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: calc( 380 / 300 * 100% );
+			}
+		}
+	}
+
+	.is-style-three &__item {
+		align-self: flex-start;
+
+		&:nth-child( 1 ) {
+			margin-left: calc( 159 / 890 * 100% );
+			width: calc( 358 / 890 * 100% );
+			z-index: 4;
+
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: calc( 492 / 358 * 100% );
+			}
+		}
+
+		&:nth-child( 2 ) {
+			margin-top: calc( 117 / 772 * 100% );
+			margin-left: calc( 172 / 890 * 100% );
+			width: calc( 198 / 890 * 100% );
+			z-index: 2;
+
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: 100%;
+			}
+		}
+
+		&:nth-child( 3 ) {
+			margin-top: calc( 249 / 890 * 100% * -1 );
+			margin-left: calc( 328 / 890 * 100% );
+			width: calc( 492 / 890 * 100% );
+			z-index: 3;
+
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: calc( 340 / 492 * 100% );
+			}
+		}
+
+		&:nth-child( 4 ) {
+			margin-top: calc( 189 / 890 * 100% * -1 );
+			width: calc( 492 / 890 * 100% );
+			z-index: 1;
+
+			figure,
+			.block-editor-media-placeholder {
+				padding-top: calc( 378 / 492 * 100% );
+			}
+		}
+	}
+
+	&__figure {
+		display: flex;
+		margin: 0;
+		position: relative;
+		width: 100%;
+
+		> img {
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			vertical-align: middle;
+			width: 100%;
+		}
+	}
+
+	figcaption {
+		bottom: 0;
+		font-size: 13px;
+		opacity: 0.9;
+		padding: 30px 10px 10px;
+		position: absolute;
+		text-align: center;
+		width: 100%;
+	}
+
+	&.has-caption-style-dark figcaption {
+		background: linear-gradient(
+			0deg,
+			rgba($color: $black, $alpha: 0.7) 0,
+			rgba($color: $black, $alpha: 0.3) 50%,
+			transparent
+		);
+	}
+
+	&.has-caption-style-light figcaption {
+		background: linear-gradient(
+			0deg,
+			rgba($color: $white, $alpha: 0.93) 6.3%,
+			rgba($color: $white, $alpha: 0.5) 61%,
+			rgba(255, 255, 255, 0)
+		);
+	}
+
+	&:not(.has-caption-color).has-caption-style-dark figcaption {
+		color: $white;
+	}
+
+	&:not(.has-caption-color).has-caption-style-light figcaption {
+		color: $black;
+	}
+
+	// For desktop.
+	@media (min-width: 700px) {
+		// Add negative margin to the parent ul to offset the gutter.
+		@for $i from 1 through 10 {
+			.has-gutter-#{ $i * 5 } {
+				margin: #{round($i * 5 / 2)}px !important;
+				max-width: calc(100% - #{round($i * 5)}px) !important;
+			}
+		}
+
+		// Add gutter margin to the figure elements.
+		@for $i from 1 through 10 {
+			.has-gutter-#{ $i * 5 } {
+				figure {
+					margin: #{round($i * 5 / 2)}px;
+				}
+			}
+		}
+	}
+
+	// For mobile.
+	@media (max-width: 699px) {
+		// Add gutter margin to the figure elements.
+		@for $i from 1 through 10 {
+			.has-gutter-mobile-#{ $i * 5 } {
+				margin: #{round($i * 5 / 2)}px !important;
+				max-width: calc(100% - #{round($i * 5)}px) !important;
+
+				figure {
+					margin: #{round($i * 5 / 2)}px;
+				}
+			}
+		}
+	}
+}

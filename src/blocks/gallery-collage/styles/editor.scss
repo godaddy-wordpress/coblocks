@@ -1,0 +1,83 @@
+.editor-block-list__block[data-type="coblocks/gallery-collage"],
+.editor-block-preview__content {
+
+	.wp-block-coblocks-gallery-collage {
+		ul {
+			list-style-type: none;
+		}
+
+		&__figure {
+			&.is-selected {
+				&::after {
+					bottom: 0;
+					box-shadow: inset 0 0 0 4px theme(primary);
+					content: "";
+					left: 0;
+					position: absolute;
+					right: 0;
+					top: 0;
+					z-index: 1;
+				}
+			}
+		}
+	}
+
+	.block-editor-media-placeholder {
+		outline: 1px dashed $dark-gray-150;
+		background-color: $light-gray-200;
+
+		&:hover {
+			outline: 1px dashed $dark-gray-500;
+		}
+
+		.components-placeholder__label,
+		.components-placeholder__instructions {
+			display: none;
+		}
+
+		.components-placeholder__fieldset {
+			align-items: center;
+			align-content: center;
+			height: 100%;
+			left: 0;
+			max-width: 100%;
+			position: absolute;
+			top: 0;
+			width: 100%;
+
+			.components-button {
+				margin: 2px;
+			}
+		}
+	}
+
+	// Captions.
+	.editor-rich-text {
+		bottom: 0;
+		left: 0;
+		max-height: 100%;
+		position: absolute;
+		right: 0;
+		width: 100%;
+		z-index: 2;
+
+		.editor-rich-text__tinymce {
+			color: inherit;
+
+			a {
+				color: inherit;
+			}
+		}
+
+		// Override negative margins so this toolbar isn't hidden by overflow.
+		// Overflow is needed for long captions.
+		.editor-rich-text__inline-toolbar {
+			top: -20px;
+		}
+	}
+
+	.editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
+		overflow: hidden;
+		position: relative !important;
+	}
+}

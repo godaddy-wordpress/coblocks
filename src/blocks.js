@@ -39,6 +39,7 @@ import * as accordionItem from './blocks/accordion/accordion-item';
 import * as alert from './blocks/alert';
 import * as author from './blocks/author';
 import * as buttons from './blocks/buttons';
+import * as collage from './blocks/gallery-collage';
 import * as carousel from './blocks/gallery-carousel';
 import * as clickToTweet from './blocks/click-to-tweet';
 import * as column from './blocks/row/column';
@@ -96,6 +97,7 @@ export const registerCoBlocksBlocks = () => {
 		alert,
 		author,
 		buttons,
+		collage,
 		carousel,
 		clickToTweet,
 		column,
