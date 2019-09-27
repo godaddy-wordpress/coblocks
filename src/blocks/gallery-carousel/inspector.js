@@ -11,8 +11,8 @@ import { BackgroundPanel } from '../../components/background';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, PanelColorSettings } = wp.blockEditor;
-const { PanelBody, RangeControl } = wp.components;
+const { InspectorControls, InspectorAdvancedControls, PanelColorSettings } = wp.blockEditor;
+const { PanelBody, RangeControl, ToggleControl } = wp.components;
 
 /**
  * Inspector controls
@@ -36,6 +36,14 @@ class Inspector extends Component {
 
 	setHeightTo( value ) {
 		this.props.setAttributes( { height: value } );
+	}
+
+	getThumbnailNavigationHelp( checked ) {
+		return checked ? __( 'Showing thumbnail navigation.' ) : __( 'Toggle to show thumbnails.' );
+	}
+
+	getResponsiveHeightHelp( checked ) {
+		return checked ? __( 'Percentage based height is activated.' ) : __( 'Toggle for percentage based height.' );
 	}
 
 	getColors() {
@@ -98,6 +106,7 @@ class Inspector extends Component {
 		const {
 			attributes,
 			isSelected,
+			setAttributes,
 		} = this.props;
 
 		const {
@@ -106,6 +115,8 @@ class Inspector extends Component {
 			gutter,
 			height,
 			radius,
+			thumbnails,
+			responsiveHeight,
 		} = attributes;
 
 		return (
@@ -121,33 +132,43 @@ class Inspector extends Component {
 								resetValue={ 'xlrg' }
 							/>
 							{ gridSize !== null && ( align === 'wide' || align === 'full' ) &&
-							<ResponsiveTabsControl { ...this.props }
-								label={ __( 'Gutter' ) }
-								max={ 20 }
-							/>
+								<ResponsiveTabsControl { ...this.props }
+									label={ __( 'Gutter' ) }
+									max={ 20 }
+								/>
 							}
 							{ gridSize !== 'xlrg' && ! align &&
-							<ResponsiveTabsControl { ...this.props }
-								label={ __( 'Gutter' ) }
-								max={ 20 }
-							/>
+								<ResponsiveTabsControl { ...this.props }
+									label={ __( 'Gutter' ) }
+									max={ 20 }
+								/>
 							}
-							<RangeControl
-								label={ __( 'Height in pixels' ) }
-								value={ height }
-								onChange={ this.setHeightTo }
-								min={ 200 }
-								max={ 1000 }
-								step={ 1 }
+							{ gutter > 0 &&
+								<RangeControl
+									label={ __( 'Rounded Corners' ) }
+									value={ radius }
+									onChange={ this.setRadiusTo }
+									min={ 0 }
+									max={ 20 }
+									step={ 1 }
+								/>
+							}
+							{ ! responsiveHeight &&
+								<RangeControl
+									label={ __( 'Height in pixels' ) }
+									value={ height }
+									onChange={ this.setHeightTo }
+									min={ 200 }
+									max={ 1000 }
+									step={ 1 }
+								/>
+							}
+							<ToggleControl
+								label={ __( 'Thumbnails' ) }
+								checked={ !! thumbnails }
+								onChange={ () => setAttributes( { thumbnails: ! thumbnails } ) }
+								help={ this.getThumbnailNavigationHelp }
 							/>
-							{ gutter > 0 && <RangeControl
-								label={ __( 'Rounded Corners' ) }
-								value={ radius }
-								onChange={ this.setRadiusTo }
-								min={ 0 }
-								max={ 20 }
-								step={ 1 }
-							/> }
 						</PanelBody>
 						<SliderPanel { ...this.props } />
 						<BackgroundPanel { ...this.props }
@@ -161,6 +182,14 @@ class Inspector extends Component {
 							colorSettings={ this.getColors() }
 						/>
 					</InspectorControls>
+					<InspectorAdvancedControls>
+						<ToggleControl
+							label={ __( 'Responsive Height' ) }
+							checked={ !! responsiveHeight }
+							onChange={ () => setAttributes( { responsiveHeight: ! responsiveHeight } ) }
+							help={ this.getResponsiveHeightHelp }
+						/>
+					</InspectorAdvancedControls>
 				</Fragment>
 			)
 		);
