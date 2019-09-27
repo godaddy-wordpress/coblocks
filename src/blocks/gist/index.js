@@ -18,6 +18,7 @@ import transforms from './transforms';
  * WordPress dependencies
  */
 const { __, _x } = wp.i18n;
+
 /**
  * Block constants
  */

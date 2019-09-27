@@ -1,29 +1,31 @@
 /**
+ * Styles.
+ */
+import './styles/editor.scss';
+import './styles/style.scss';
+
+/**
  * Internal dependencies
  */
 import edit from './edit';
-import icons from './icons';
+import icon from './icon';
 import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x} = wp.i18n;
 
 /**
  * Block constants
  */
 const { name, category, supports } = metadata;
 
-const title = __( 'Blogroll' );
-
-const icon = icons.blog;
-
 const settings = {
-	title: title,
-	description: __( 'Display a list of your most recent posts.' ),
+	title: _x( 'Blogroll', 'block name' ),
+	description: __( 'Display a list of your most recent posts or an external blog feed.' ),
 	icon,
-	keywords: [ __( 'posts' ), __( 'articles' ), 'coblocks' ],
+	keywords: [ _x( 'posts', 'block keyword' ), _x( 'articles', 'block keyword' ) ],
 	supports,
 	edit,
 	save: function() {
@@ -31,4 +33,4 @@ const settings = {
 	},
 };
 
-export { name, category, title, icon, settings };
+export { name, category, icon, settings };

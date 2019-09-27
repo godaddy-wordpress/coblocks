@@ -9,8 +9,6 @@ import { Fragment } from 'react';
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
-import './styles/style.scss';
 import Slider from 'react-slick';
 import InspectorControls from './inspector';
 import blogIcons from './icons';
