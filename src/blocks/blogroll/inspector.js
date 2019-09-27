@@ -26,6 +26,7 @@ const Inspector = props => {
 	} = props;
 
 	const isCarouselStyle = ( 'carousel' === activeStyle.name );
+	const isGridStyle = ( 'grid' === activeStyle.name );
 
 	const postSettingsControls = (
 		<PanelBody title={ __( 'Post Settings' ) }>
@@ -94,7 +95,7 @@ const Inspector = props => {
 				min={ 2 }
 				max={ 20 }
 			/>
-			{ attributes.isGridStyle &&
+			{ isGridStyle &&
 				<RangeControl
 					label={ __( 'Columns' ) }
 					value={ attributes.columns }
