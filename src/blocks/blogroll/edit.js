@@ -37,7 +37,7 @@ const TokenList = wp.tokenList;
 /**
  * Module Constants
  */
-const { BlockControls, PlainText } = wp.editor;
+const { BlockControls, PlainText } = wp.blockEditor;
 
 const CATEGORIES_LIST_QUERY = {
 	per_page: -1,
