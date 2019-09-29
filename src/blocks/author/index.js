@@ -7,6 +7,7 @@ import './styles/editor.scss';
 /**
  * Internal dependencies
  */
+import deprecated from './deprecated';
 import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
@@ -16,7 +17,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
@@ -24,10 +25,10 @@ const { __ } = wp.i18n;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Author' ),
+	title: _x( 'Author', 'block name' ),
 	description: __( 'Add an author biography to build credibility and authority.' ),
 	icon,
-	keywords: [ __( 'biography' ), __( 'profile' ), 'coblocks' ],
+	keywords: [ _x( 'biography', 'block keyword' ), _x( 'profile', 'block keyword' ), 'coblocks' ],
 	example: {
 		attributes: {
 			name: 'Jane Doe',
@@ -39,6 +40,7 @@ const settings = {
 	transforms,
 	edit,
 	save,
+	deprecated,
 };
 
 export { name, category, metadata, settings };

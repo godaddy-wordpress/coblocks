@@ -13,16 +13,16 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { RichText, withFontSizes } = wp.blockEditor;
-const { createBlock } = wp.blocks;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { RichText, withFontSizes } from '@wordpress/block-editor';
+import { createBlock } from '@wordpress/blocks';
 
 /**
  * Block edit function
  */
-class Edit extends Component {
+export class Edit extends Component {
 	constructor() {
 		super( ...arguments );
 		this.splitBlock = this.splitBlock.bind( this );
@@ -77,7 +77,6 @@ class Edit extends Component {
 			attributes,
 			backgroundColor,
 			className,
-			isSelected,
 			mergeBlocks,
 			onReplace,
 			setAttributes,
@@ -90,18 +89,24 @@ class Edit extends Component {
 			align,
 		} = attributes;
 
+		const classes = classnames( `${ className }__content`,
+			backgroundColor && {
+				'has-background': backgroundColor.color,
+				[ backgroundColor.class ]: backgroundColor.class,
+			},
+			textColor && {
+				'has-text-color': textColor.color,
+				[ textColor.class ]: textColor.class,
+			},
+			fontSize && {
+				[ fontSize.class ]: fontSize.class,
+			}
+		);
+
 		return (
 			<Fragment>
-				{ isSelected && (
-					<Controls
-						{ ...this.props }
-					/>
-				) }
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
+				<Controls { ...this.props } />
+				<Inspector { ...this.props } />
 				<p className={ className } style={ { textAlign: align } }>
 					<RichText
 						tagName="mark"
@@ -111,19 +116,11 @@ class Edit extends Component {
 						onMerge={ mergeBlocks }
 						onSplit={ this.splitBlock }
 						onRemove={ () => onReplace( [] ) }
-						className={ classnames(
-							`${ className }__content`, {
-								'has-background': backgroundColor.color,
-								[ backgroundColor.class ]: backgroundColor.class,
-								'has-text-color': textColor.color,
-								[ textColor.class ]: textColor.class,
-								[ fontSize.class ]: fontSize.class,
-							}
-						) }
+						className={ classes }
 						style={ {
-							backgroundColor: backgroundColor.color,
-							color: textColor.color,
-							fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
+							backgroundColor: backgroundColor && backgroundColor.color,
+							color: textColor && textColor.color,
+							fontSize: fontSize && fontSize.size ? fontSize.size + 'px' : undefined,
 						} }
 						keepPlaceholderOnFocus
 					/>

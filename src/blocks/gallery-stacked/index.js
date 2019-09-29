@@ -7,6 +7,7 @@ import './styles/style.scss';
 /**
  * Internal dependencies
  */
+import deprecated from './deprecated';
 import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
@@ -18,7 +19,7 @@ import { GalleryAttributes } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
@@ -32,10 +33,10 @@ const attributes = {
 };
 
 const settings = {
-	title: __( 'Stacked' ),
+	title: _x( 'Stacked', 'block name' ),
 	description: __( 'Display multiple images in an single column stacked gallery.' ),
 	icon,
-	keywords: [	__( 'gallery' ), __( 'photos' ) ],
+	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ), _x( 'lightbox', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full', 'left', 'center', 'right' ],
 	},
@@ -52,6 +53,7 @@ const settings = {
 	attributes,
 	transforms,
 	edit,
+	deprecated,
 	save,
 };
 

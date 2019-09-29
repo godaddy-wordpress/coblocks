@@ -22,6 +22,7 @@ const save = ( { attributes, className } ) => {
 		gutterMobile,
 		images,
 		linkTo,
+		lightbox,
 		rel,
 		target,
 	} = attributes;
@@ -30,6 +31,7 @@ const save = ( { attributes, className } ) => {
 		...GalleryClasses( attributes ),
 		...BackgroundClasses( attributes ), {
 			'has-gutter': gutter > 0,
+			'has-lightbox': lightbox,
 		}
 	);
 
@@ -59,7 +61,7 @@ const save = ( { attributes, className } ) => {
 					className={ masonryClasses }
 					style={ masonryStyles }
 				>
-					{ images.map( ( image ) => {
+					{ images.map( ( image, index ) => {
 						let href;
 
 						switch ( linkTo ) {
@@ -76,7 +78,7 @@ const save = ( { attributes, className } ) => {
 							href = image.imgLink;
 						}
 
-						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
+						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } data-imglink={ image.imgLink } data-index={ index } className={ image.id ? `wp-image-${ image.id }` : null } />;
 
 						return (
 							<li key={ image.id || image.url } className="coblocks-gallery--item">

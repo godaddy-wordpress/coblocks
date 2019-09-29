@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/hero should render 1`] = `
+"<!-- wp:coblocks/hero -->
+<div class=\\"wp-block-coblocks-hero alignfull\\"><div class=\\"wp-block-coblocks-hero__inner has-background hero-center-left-align has-padding has-huge-padding\\" style=\\"background-color:#f3f3f3;min-height:500px\\"><div class=\\"wp-block-coblocks-hero__content-wrapper\\"><div class=\\"wp-block-coblocks-hero__content\\" style=\\"max-width:560px\\"></div></div></div></div>
+<!-- /wp:coblocks/hero -->"
+`;

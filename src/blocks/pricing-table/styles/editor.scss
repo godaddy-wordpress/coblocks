@@ -47,20 +47,6 @@ $gutter: 1em;
 	}
 }
 
-.components-toolbar-coblocks-numeral-controls {
-	display: inline-flex;
-
-	.components-button[data-subscript]::after {
-		bottom: 0.68em;
-		font-size: 17px;
-		right: 13px;
-	}
-
-	.components-button[data-subscript="1"]::after {
-		right: 14px;
-	}
-}
-
 // Added for Gutenberg 6.3+
 .block-editor-block-list__block[data-type="coblocks/pricing-table"].has-child-selected .wp-block-coblocks-pricing-table,
 .block-editor-block-list__block[data-type="coblocks/pricing-table"].is-selected .wp-block-coblocks-pricing-table {

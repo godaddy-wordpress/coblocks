@@ -51,6 +51,10 @@ class Inspector extends Component {
 		return checked ? __( 'Showing captions for each media item.' ) : __( 'Toggle to show media captions.' );
 	}
 
+	getLightboxHelp( checked ) {
+		return checked ? __( 'Image lightbox is enabled.' ) : __( 'Toggle to enable the image lightbox.' );
+	}
+
 	getColors() {
 		const {
 			attributes,
@@ -119,6 +123,7 @@ class Inspector extends Component {
 			gridSize,
 			gutter,
 			radius,
+			lightbox,
 		} = attributes;
 
 		return (
@@ -155,6 +160,12 @@ class Inspector extends Component {
 						options={ captionOptions }
 					/>
 					}
+					<ToggleControl
+						label={ __( 'Lightbox' ) }
+						checked={ !! lightbox }
+						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+						help={ this.getLightboxHelp }
+					/>
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
 				<BackgroundPanel { ...this.props }

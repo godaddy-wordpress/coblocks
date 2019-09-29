@@ -6,7 +6,6 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-
 import { GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
 import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
@@ -30,7 +29,14 @@ const save = ( { attributes, className } ) => {
 		rel,
 		linkTo,
 		shadow,
+		lightbox,
 	} = attributes;
+
+	const classes = classnames(
+		className, {
+			'has-lightbox': lightbox,
+		}
+	);
 
 	// Body color class and styles.
 	const textClass = getColorClassName( 'color', captionColor );
@@ -68,10 +74,10 @@ const save = ( { attributes, className } ) => {
 	};
 
 	return (
-		<div className={ className }>
+		<div className={ classes }>
 			{ BackgroundVideo( attributes ) }
 			<ul className={ innerClasses } style={ innerStyles }>
-				{ images.map( ( image ) => {
+				{ images.map( ( image, index ) => {
 					let href;
 
 					switch ( linkTo ) {
@@ -93,7 +99,7 @@ const save = ( { attributes, className } ) => {
 							[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
 						} );
 
-					const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
+					const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } data-index={ index } className={ imgClasses } />;
 
 					return (
 						<li key={ image.id || image.url } className="coblocks-gallery--item">
