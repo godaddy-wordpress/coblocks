@@ -39,9 +39,9 @@ const settings = {
 	attributes,
 	icon,
 	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ) ],
-
 	supports: {
 		align: [ 'wide', 'full' ],
+		html: false,
 	},
 	example: {
 		attributes: {
