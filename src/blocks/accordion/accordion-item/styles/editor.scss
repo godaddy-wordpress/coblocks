@@ -68,7 +68,7 @@
 	> [data-block]
 	> div
 	> .block-editor-inner-blocks {
-	padding: 14px 14px 0;
+	padding: 14px;
 }
 
 .has-child-selected
@@ -87,4 +87,23 @@
 	> [data-block] {
 	margin-bottom: 42px;
 	margin-top: 0;
+}
+
+.wp-block-coblocks-accordion
+	> .editor-inner-blocks
+	> .editor-block-list__layout
+	> [data-type="coblocks/accordion-item"].is-selected:nth-last-child(2)
+	> .editor-block-list__block-edit
+	> [data-block] {
+	margin-bottom: 0;
+}
+
+.has-child-selected
+	.wp-block-coblocks-accordion
+	> .editor-inner-blocks
+	> .editor-block-list__layout
+	> [data-type="coblocks/accordion-item"]:nth-last-child(2)
+	> .editor-block-list__block-edit
+	> [data-block] {
+	margin-bottom: -21px;
 }

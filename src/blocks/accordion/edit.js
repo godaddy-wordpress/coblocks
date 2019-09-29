@@ -8,7 +8,7 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { InnerBlocks } = wp.blockEditor;
 const { IconButton } = wp.components;
