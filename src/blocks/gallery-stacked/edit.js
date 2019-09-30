@@ -139,15 +139,23 @@ class GalleryStackedEdit extends Component {
 			images,
 			shadow,
 			linkTo,
+			lightbox,
 		} = attributes;
 
 		const hasImages = !! images.length;
+
+		const classes = classnames(
+			className, {
+				'has-lightbox': lightbox,
+			}
+		);
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ), {
 				'has-fullwidth-images': fullwidth,
 				[ `align${ align }` ]: align,
 				'has-margin': gutter > 0,
+				'has-lightbox': lightbox,
 				[ `has-margin-bottom-${ gutter }` ]: gutter > 0,
 				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
@@ -176,7 +184,7 @@ class GalleryStackedEdit extends Component {
 					/>
 				}
 				{ noticeUI }
-				<div className={ className }>
+				<div className={ classes }>
 					<ul className={ innerClasses }>
 						{ images.map( ( img, index ) => {
 							// translators: %1$d is the order number of the image, %2$d is the total number of images.

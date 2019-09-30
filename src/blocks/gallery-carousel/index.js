@@ -7,9 +7,8 @@ import './styles/style.scss';
 /**
  * Internal dependencies
  */
-import edit from './edit';
-import transforms from './transforms';
 import deprecated from './deprecated';
+import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
 import save from './save';
@@ -36,7 +35,7 @@ const settings = {
 	category: 'coblocks-galleries',
 	attributes,
 	icon,
-	keywords: [	_x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' )	],
+	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ) ],
 
 	supports: {
 		align: [ 'wide', 'full' ],

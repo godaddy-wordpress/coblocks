@@ -8,4 +8,71 @@
 	.coblocks-gallery--figure {
 		height: 100%;
 	}
+
+	@for $i from 2 through 20 {
+		.carousel-nav.has-border-radius-#{ $i } {
+			img {
+				border-radius: #{$i}px;
+			}
+		}
+	}
+
+	.carousel-nav {
+		height: auto;
+
+		.flickity-viewport {
+			height: 80px !important;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		figure {
+			margin: 0;
+		}
+
+		.coblocks--figure {
+			height: 100%;
+			position: relative;
+		}
+
+		.coblocks--item-thumbnail {
+			height: 80px;
+			opacity: 0.4;
+			overflow: hidden;
+			transition: opacity 250ms ease;
+			width: 100px;
+
+			&:hover {
+				opacity: 0.66;
+			}
+
+			&.is-selected {
+				opacity: 1;
+			}
+
+			img {
+				height: 100%;
+				object-fit: cover;
+				position: absolute;
+				top: 0;
+				vertical-align: middle;
+				width: 100%;
+			}
+		}
+	}
+}
+
+.has-responsive-height {
+	.has-carousel {
+		height: auto !important;
+		padding-bottom: 56.25%;
+		position: relative;
+
+		.flickity-viewport {
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+	}
 }
