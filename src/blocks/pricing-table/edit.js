@@ -58,7 +58,7 @@ class Edit extends Component {
 		const classes = classnames(
 			className,
 			`has-${ count }-columns`,
-			`has-${ contentAlign }-content`,
+			{ [ `has-text-align-${ contentAlign }` ]: contentAlign }
 		);
 
 		return (
@@ -70,7 +70,6 @@ class Edit extends Component {
 				) }
 				<div
 					className={ classes }
-					style={ { textAlign: contentAlign } }
 				>
 					<div className={ `${ className }__inner` }>
 						<InnerBlocks
