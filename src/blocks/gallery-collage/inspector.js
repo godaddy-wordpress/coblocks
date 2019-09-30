@@ -34,6 +34,7 @@ class Inspector extends Component {
 			attributes,
 			setAttributes,
 			enableGutter,
+			enableCaptions,
 		} = this.props;
 
 		const {
@@ -44,13 +45,13 @@ class Inspector extends Component {
 		return (
 			<InspectorControls>
 				<PanelBody title={ __( 'Collage Settings' ) }>
-					{ enableGutter && <ResponsiveTabsControl label={ __( 'Gutter' ) } { ...this.props } /> }
-					<ToggleControl
+					{ enableGutter && <ResponsiveTabsControl label={ __( 'Gutter' ) } min={ 5 } { ...this.props } /> }
+					{ enableCaptions && <ToggleControl
 						label={ __( 'Captions' ) }
 						checked={ !! captions }
 						onChange={ () => setAttributes( { captions: ! captions } ) }
 						help={ this.getCaptionsHelp }
-					/>
+					/> }
 					{ captions && <SelectControl
 						label={ __( 'Caption Style' ) }
 						value={ captionStyle }

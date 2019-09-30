@@ -119,6 +119,7 @@ class GalleryCollageEdit extends Component {
 	renderImage( index ) {
 		const image = this.props.attributes.images.filter( image => parseInt( image.index ) === parseInt( index ) ).pop() || {};
 		const isSelected = this.props.isSelected && this.state.selectedImage === image.index;
+		const enableCaptions = ! this.props.className.includes( 'is-style-layered' );
 
 		const dropZone = (
 			<DropZone
@@ -150,7 +151,7 @@ class GalleryCollageEdit extends Component {
 						{ dropZone }
 						{ isBlobURL( image.url ) && <Spinner /> }
 						<img src={ image.url } alt={ image.alt } />
-						{ this.props.attributes.captions && ( image.caption || isSelected ) &&
+						{ enableCaptions && this.props.attributes.captions && ( image.caption || isSelected ) &&
 							<RichText
 								tagName="figcaption"
 								placeholder={ __( 'Write caption...' ) }
@@ -195,13 +196,13 @@ class GalleryCollageEdit extends Component {
 			filter,
 		} = attributes;
 
-		const gutterStyles = className.includes( 'is-style-layered' );
-		const enableGutter = ! gutterStyles;
+		const enableGutter = ! className.includes( 'is-style-layered' );
+		const enableCaptions = ! className.includes( 'is-style-layered' );
 
 		return (
 			<Fragment>
 				<Controls { ...this.props } />
-				<Inspector { ...this.props } enableGutter={ enableGutter } />
+				<Inspector { ...this.props } enableGutter={ enableGutter } enableCaptions={ enableCaptions } />
 				{ noticeUI }
 				<div className={ classnames( className, {
 					[ `has-filter-${ filter }` ]: filter !== 'none',
