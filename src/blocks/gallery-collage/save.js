@@ -6,14 +6,12 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { RichText, getColorClassName } = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 
 const save = ( props ) => {
 	const { attributes, className } = props;
 
 	const {
-		captionColor,
-		customCaptionColor,
 		captionStyle,
 		captions,
 		gutter,
@@ -21,12 +19,6 @@ const save = ( props ) => {
 		filter,
 		images,
 	} = attributes;
-
-	const captionColorClass = getColorClassName( 'color', captionColor );
-
-	const innerStyles = {
-		color: ! captionColorClass && customCaptionColor,
-	};
 
 	const figureClasses = classnames(
 		'wp-block-coblocks-gallery-collage__figure',
@@ -41,11 +33,8 @@ const save = ( props ) => {
 		<div className={ classnames( className, {
 			[ `has-filter-${ filter }` ]: filter !== 'none',
 			[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
-			'has-caption-color': captionColorClass || customCaptionColor,
-			captionColorClass,
-			[ captionColorClass ]: captionColorClass,
 		} ) }>
-			<ul style={ innerStyles }>
+			<ul>
 				{ images.sort( ( a, b ) => parseInt( a.index ) - parseInt( b.index ) ).map( ( image, index ) => {
 					const imgClasses = classnames( image.id && [ `wp-image-${ image.id }` ] );
 					const img = ( <img src={ image.url } alt={ image.alt } data-index={ image.index } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } /> );

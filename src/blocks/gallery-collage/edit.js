@@ -17,7 +17,7 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withNotices, DropZone, Spinner, IconButton } from '@wordpress/components';
-import { MediaPlaceholder, RichText, withColors } from '@wordpress/block-editor';
+import { MediaPlaceholder, RichText } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
 
@@ -155,7 +155,6 @@ class GalleryCollageEdit extends Component {
 								tagName="figcaption"
 								placeholder={ __( 'Write caption...' ) }
 								className="coblocks-gallery--caption"
-								style={ { color: this.props.captionColor.color } }
 								value={ image.caption }
 								onChange={ ( caption ) => this.updateImageAttributes( index, { caption } ) }
 								isSelected={ isSelected }
@@ -187,7 +186,6 @@ class GalleryCollageEdit extends Component {
 	render() {
 		const {
 			attributes,
-			captionColor,
 			className,
 			noticeUI,
 		} = this.props;
@@ -196,10 +194,6 @@ class GalleryCollageEdit extends Component {
 			captionStyle,
 			filter,
 		} = attributes;
-
-		const innerStyles = {
-			color: ! captionColor.class && captionColor.color,
-		};
 
 		const gutterStyles = className.includes( 'is-style-layered' );
 		const enableGutter = ! gutterStyles;
@@ -212,10 +206,8 @@ class GalleryCollageEdit extends Component {
 				<div className={ classnames( className, {
 					[ `has-filter-${ filter }` ]: filter !== 'none',
 					[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
-					'has-caption-color': captionColor.color,
-					[ captionColor.class ]: captionColor.class,
 				} ) }>
-					<ul style={ innerStyles }>
+					<ul>
 						{ this.state.images.map( ( img, index ) => {
 							const theIndex = img.index || index;
 							return (
@@ -232,6 +224,5 @@ class GalleryCollageEdit extends Component {
 }
 
 export default compose( [
-	withColors( { captionColor: 'color' } ),
 	withNotices,
 ] )( GalleryCollageEdit );

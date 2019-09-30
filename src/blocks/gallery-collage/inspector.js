@@ -9,7 +9,7 @@ import captionOptions from '../../components/block-gallery/options/caption-optio
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { InspectorControls, PanelColorSettings } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 const { PanelBody, ToggleControl, SelectControl } = wp.components;
 
 /**
@@ -18,8 +18,6 @@ const { PanelBody, ToggleControl, SelectControl } = wp.components;
 class Inspector extends Component {
 	constructor() {
 		super( ...arguments );
-
-		this.getColors = this.getColors.bind( this );
 		this.setCaptionStyleTo = this.setCaptionStyleTo.bind( this );
 	}
 
@@ -29,24 +27,6 @@ class Inspector extends Component {
 
 	getCaptionsHelp( checked ) {
 		return checked ? __( 'Showing captions for each media item.' ) : __( 'Toggle to show media captions.' );
-	}
-
-	getColors() {
-		const {
-			attributes,
-			captionColor,
-			setCaptionColor,
-		} = this.props;
-
-		const {
-			captions,
-		} = attributes;
-
-		return captions ? [ {
-			label: __( 'Caption Color' ),
-			value: captionColor.color,
-			onChange: setCaptionColor,
-		} ] : [];
 	}
 
 	render() {
@@ -78,11 +58,6 @@ class Inspector extends Component {
 						options={ captionOptions }
 					/> }
 				</PanelBody>
-				<PanelColorSettings
-					title={ __( 'Color Settings' ) }
-					colorSettings={ this.getColors() }
-					initialOpen
-				/>
 			</InspectorControls>
 		);
 	}
