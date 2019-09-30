@@ -38,6 +38,11 @@
 	}
 }
 
+.wp-block[data-type="core/group"] .wp-block-coblocks-gallery-stacked {
+	margin-bottom: 40px !important;
+	margin-top: 40px !important;
+}
+
 // Shim to fix styles in the previewer.
 .block-editor-inserter__preview-content {
 	.wp-block-coblocks-gallery-stacked {
