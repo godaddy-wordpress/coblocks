@@ -133,7 +133,7 @@ const save = ( { attributes, className } ) => {
 	}
 
 	return (
-		<div className={ className }>
+		<div className={ classes }>
 			<div className={ innerClasses }>
 				<div
 					className={ flickityClasses }

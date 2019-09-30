@@ -10,7 +10,7 @@ import SliderPanel from '../../components/slider-panel';
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InspectorControls, InspectorAdvancedControls, PanelColorSettings } = wp.blockEditor;
+const { InspectorControls, InspectorAdvancedControls } = wp.blockEditor;
 const { PanelBody, RangeControl, ToggleControl } = wp.components;
 
 /**
