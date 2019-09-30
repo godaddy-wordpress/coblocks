@@ -6,6 +6,8 @@
 		}
 
 		&__figure {
+			transition: opacity 0.1s linear;
+
 			&.is-selected {
 				&::after {
 					bottom: 0;
@@ -71,4 +73,8 @@
 		overflow: hidden;
 		position: relative !important;
 	}
+}
+
+.wp-block-coblocks-gallery-collage__figure.is-transient img {
+	opacity: 0.3;
 }
