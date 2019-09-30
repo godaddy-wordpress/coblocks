@@ -45,8 +45,6 @@ class Inspector extends Component {
 			backgroundHeightMobile,
 			backgroundHeightTablet,
 			syncHeight,
-			horizontalFlip,
-			verticalFlip,
 		} = attributes;
 
 		return (
