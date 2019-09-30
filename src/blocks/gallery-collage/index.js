@@ -31,7 +31,7 @@ const attributes = {
 
 const settings = {
 	title: _x( 'Collage', 'block name' ),
-	description: __( 'Display images in a beautiful collage gallery.' ),
+	description: __( 'Assemble images into a beautiful collage gallery.' ),
 	icon,
 	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ) ],
 	styles: [
