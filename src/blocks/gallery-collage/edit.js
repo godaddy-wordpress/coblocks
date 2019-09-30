@@ -39,7 +39,7 @@ class GalleryCollageEdit extends Component {
 		if ( this.props.className !== prevProps.className ) {
 			this.setupImageLocations();
 
-			if ( this.props.className.includes( 'is-style-three' ) ) {
+			if ( this.props.className.includes( 'is-style-layered' ) ) {
 				this.props.setAttributes( { gutter: 0, gutterMobile: 0 } );
 			}
 		}
@@ -52,7 +52,7 @@ class GalleryCollageEdit extends Component {
 	setupImageLocations = ( images = null ) => {
 		const theImages = images || this.props.attributes.images;
 
-		const placeholderCount = this.props.className.includes( 'is-style-two' ) || this.props.className.includes( 'is-style-three' ) ? 4 : 5;
+		const placeholderCount = this.props.className.includes( 'is-style-tiled' ) || this.props.className.includes( 'is-style-layered' ) ? 4 : 5;
 		const imageLocations = [];
 
 		for ( let index = 0; index < placeholderCount; index++ ) {
@@ -201,7 +201,7 @@ class GalleryCollageEdit extends Component {
 			color: ! captionColor.class && captionColor.color,
 		};
 
-		const gutterStyles = className.includes( 'is-style-three' );
+		const gutterStyles = className.includes( 'is-style-layered' );
 		const enableGutter = ! gutterStyles;
 
 		return (

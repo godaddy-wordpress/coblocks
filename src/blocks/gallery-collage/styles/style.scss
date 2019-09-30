@@ -57,7 +57,7 @@
 		}
 	}
 
-	.is-style-two &__item {
+	.is-style-tiled &__item {
 		&:nth-child(1),
 		&:nth-child(4) {
 			width: calc(590 / 890 * 100%);
@@ -79,7 +79,7 @@
 		}
 	}
 
-	.is-style-three &__item {
+	.is-style-layered &__item {
 		align-self: flex-start;
 
 		&:nth-child(1) {

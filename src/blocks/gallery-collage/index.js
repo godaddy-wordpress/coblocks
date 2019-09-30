@@ -33,23 +33,20 @@ const settings = {
 	title: _x( 'Collage', 'block name' ),
 	description: __( 'Display images in a beautiful collage gallery.' ),
 	icon,
-	keywords: [
-		_x( 'gallery', 'block keyword' ),
-		_x( 'photos', 'block keyword' ),
-	],
+	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ) ],
 	styles: [
 		{
-			name: 'one',
-			label: _x( 'Style One', 'block style' ),
+			name: 'default',
+			label: _x( 'Default', 'block style' ),
 			isDefault: true,
 		},
 		{
-			name: 'two',
-			label: _x( 'Style Two', 'block style' ),
+			name: 'tiled',
+			label: _x( 'Tiled', 'block style' ),
 		},
 		{
-			name: 'three',
-			label: _x( 'Style Three', 'block style' ),
+			name: 'layered',
+			label: _x( 'Layered', 'block style' ),
 		},
 	],
 	supports: {
