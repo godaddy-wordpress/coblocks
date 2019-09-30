@@ -3,6 +3,7 @@
  */
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import captionOptions from '../../components/block-gallery/options/caption-options';
+import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 
 /**
  * WordPress dependencies
@@ -59,6 +60,7 @@ class Inspector extends Component {
 						options={ captionOptions }
 					/> }
 				</PanelBody>
+				<GalleryLinkSettings { ...this.props } />
 			</InspectorControls>
 		);
 	}

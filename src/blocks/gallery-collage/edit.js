@@ -16,14 +16,16 @@ import * as helper from './../../utils/helper';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withNotices, DropZone, Spinner, IconButton } from '@wordpress/components';
-import { MediaPlaceholder, RichText } from '@wordpress/block-editor';
+import { withNotices, DropZone, Spinner, IconButton, Dashicon } from '@wordpress/components';
+import { MediaPlaceholder, RichText, URLInput } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
 import { isBlobURL } from '@wordpress/blob';
 
 class GalleryCollageEdit extends Component {
 	constructor() {
 		super( ...arguments );
+
+		this.saveCustomLink = this.saveCustomLink.bind( this );
 
 		this.state = {
 			images: [],
@@ -116,6 +118,10 @@ class GalleryCollageEdit extends Component {
 		this.setupImageLocations( images );
 	}
 
+	saveCustomLink() {
+		this.setState( { isSaved: true } );
+	}
+
 	renderImage( index ) {
 		const image = this.props.attributes.images.filter( image => parseInt( image.index ) === parseInt( index ) ).pop() || {};
 		const isSelected = this.props.isSelected && this.state.selectedImage === image.index;
@@ -148,6 +154,18 @@ class GalleryCollageEdit extends Component {
 								/>
 							</div>
 						) }
+						{ this.state.selectedImage === image.index && this.props.attributes.linkTo === 'custom' &&
+							<form
+								className="components-coblocks-gallery-item__image-link"
+								onSubmit={ ( event ) => event.preventDefault() }>
+								<Dashicon icon="admin-links" />
+								<URLInput
+									value={ this.props.attributes.imgLink }
+									onChange={ ( value ) => this.props.setAttributes( { imgLink: value } ) }
+								/>
+								<IconButton icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving' ) : __( 'Apply' ) } onClick={ this.saveCustomLink } type="submit" />
+							</form>
+						}
 						{ dropZone }
 						{ isBlobURL( image.url ) && <Spinner /> }
 						<img src={ image.url } alt={ image.alt } />
