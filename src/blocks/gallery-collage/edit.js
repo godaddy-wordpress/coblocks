@@ -160,8 +160,8 @@ class GalleryCollageEdit extends Component {
 								onSubmit={ ( event ) => event.preventDefault() }>
 								<Dashicon icon="admin-links" />
 								<URLInput
-									value={ this.props.attributes.imgLink }
-									onChange={ ( value ) => this.props.setAttributes( { imgLink: value } ) }
+									value={ image.imgLink }
+									onChange={ ( imgLink ) => this.updateImageAttributes( index, { imgLink } ) }
 								/>
 								<IconButton icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving' ) : __( 'Apply' ) } onClick={ this.saveCustomLink } type="submit" />
 							</form>
