@@ -24,13 +24,20 @@ const deprecated =
 	},
 	save( { attributes, className } ) {
 		const {
+			align,
+			backgroundPadding,
+			backgroundPaddingMobile,
 			captions,
+			captionStyle,
+			customCaptionColor,
+			filter,
 			gridSize,
 			gutter,
 			gutterMobile,
 			images,
-			linkTo,
 			lightbox,
+			linkTo,
+			radius,
 			rel,
 			target,
 		} = attributes;
