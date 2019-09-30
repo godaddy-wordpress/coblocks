@@ -13,7 +13,6 @@ import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
-import { BackgroundAttributes } from '../../components/background';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
 
 /**
@@ -28,7 +27,6 @@ const { name, category } = metadata;
 
 const attributes = {
 	...GalleryAttributes,
-	...BackgroundAttributes,
 	...metadata.attributes,
 };
 
@@ -39,6 +37,7 @@ const settings = {
 	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ), _x( 'lightbox', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full', 'left', 'center', 'right' ],
+		coBlocksSpacing: true,
 	},
 	example: {
 		attributes: {

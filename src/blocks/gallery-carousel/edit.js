@@ -15,7 +15,6 @@ import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import GalleryUploader from '../../components/block-gallery/gallery-uploader';
-import { BackgroundStyles, BackgroundClasses, BackgroundVideo } from '../../components/background';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -24,9 +23,8 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { withNotices, ResizableBox, Spinner } = wp.components;
-const { withColors, RichText } = wp.blockEditor;
-const { isBlobURL } = wp.blob;
+const { withNotices, ResizableBox } = wp.components;
+const { RichText } = wp.blockEditor;
 
 class GalleryCarouselEdit extends Component {
 	constructor() {
@@ -144,12 +142,10 @@ class GalleryCarouselEdit extends Component {
 	render() {
 		const {
 			attributes,
-			backgroundColor,
 			className,
 			isSelected,
 			noticeUI,
 			setAttributes,
-			captionColor,
 		} = this.props;
 
 		const {
@@ -162,7 +158,6 @@ class GalleryCarouselEdit extends Component {
 			pageDots,
 			prevNextButtons,
 			primaryCaption,
-			backgroundImg,
 			alignCells,
 			thumbnails,
 			responsiveHeight,
@@ -179,8 +174,7 @@ class GalleryCarouselEdit extends Component {
 
 		const innerClasses = classnames(
 			'is-cropped',
-			...GalleryClasses( attributes ),
-			...BackgroundClasses( attributes ), {
+			...GalleryClasses( attributes ), {
 				[ `align${ align }` ]: align,
 				'has-horizontal-gutter': gutter > 0,
 				'has-no-dots': ! pageDots,
@@ -189,15 +183,6 @@ class GalleryCarouselEdit extends Component {
 				'has-no-thumbnails': ! thumbnails,
 			}
 		);
-
-		const innerStyles = {
-			...BackgroundStyles( attributes ),
-			backgroundColor: backgroundColor.color,
-		};
-
-		const captionStyles = {
-			color: captionColor.color,
-		};
 
 		const flickityClasses = classnames(
 			'has-carousel',
@@ -310,13 +295,8 @@ class GalleryCarouselEdit extends Component {
 					} }
 				>
 					{ dropZone }
-					{ isBlobURL( backgroundImg ) && <Spinner /> }
-					{ BackgroundVideo( attributes ) }
 					<div className={ className }>
-						<div
-							className={ innerClasses }
-							style={ innerStyles }
-						>
+						<div className={ innerClasses }>
 							<Flickity
 								className={ flickityClasses }
 								disableImagesLoaded={ false }
@@ -396,7 +376,6 @@ class GalleryCarouselEdit extends Component {
 						placeholder={ __( 'Write caption…' ) }
 						value={ primaryCaption }
 						className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-						style={ captionStyles }
 						unstableOnFocus={ this.onFocusCaption }
 						onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
 						isSelected={ this.state.captionFocused }
@@ -410,6 +389,5 @@ class GalleryCarouselEdit extends Component {
 }
 
 export default compose( [
-	withColors( { backgroundColor: 'background-color', captionColor: 'color' } ),
 	withNotices,
 ] )( GalleryCarouselEdit );
