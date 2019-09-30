@@ -39,6 +39,7 @@ const settings = {
 	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ), _x( 'lightbox', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
+		coBlocksSpacing: true,
 	},
 	example: {
 		attributes: {
