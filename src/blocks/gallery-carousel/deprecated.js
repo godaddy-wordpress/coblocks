@@ -24,11 +24,16 @@ const deprecated =
 	},
 	save( { attributes, className } ) {
 		const {
+			align,
+			alignCells,
 			autoPlay,
 			autoPlaySpeed,
-			captionColor,
+			backgroundPadding,
+			backgroundPaddingMobile,
+			captionStyle,
 			customCaptionColor,
 			draggable,
+			filter,
 			freeScroll,
 			gridSize,
 			gutter,
@@ -39,10 +44,27 @@ const deprecated =
 			pauseHover,
 			prevNextButtons,
 			primaryCaption,
-			alignCells,
-			thumbnails,
+			radius,
 			responsiveHeight,
+			thumbnails,
 		} = attributes;
+
+		const captionColorClass = getColorClassName( 'color', attributes.captionColor );
+
+		const galleryClassesDeprecated = classnames(
+			'coblocks-gallery', {
+				'has-no-alignment': ! align,
+				[ `has-border-radius-${ radius }` ]: radius > 0,
+				[ `has-filter-${ filter }` ]: filter !== 'none',
+				[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
+				'has-caption-color': captionColorClass || customCaptionColor,
+				captionColorClass,
+				[ `has-background-border-radius-${ attributes.backgroundRadius }` ]: attributes.backgroundRadius > 0,
+				'has-padding': backgroundPadding > 0,
+				[ `has-padding-${ backgroundPadding }` ]: backgroundPadding > 0,
+				[ `has-padding-mobile-${ backgroundPaddingMobile }` ]: backgroundPaddingMobile > 0,
+			}
+		);
 
 		const classes = classnames(
 			className, {
@@ -52,7 +74,7 @@ const deprecated =
 
 		const innerClasses = classnames(
 			'is-cropped',
-			...GalleryClasses( attributes ),
+			galleryClassesDeprecated,
 			...BackgroundClasses( attributes ), {
 				'has-horizontal-gutter': gutter > 0,
 
@@ -103,8 +125,6 @@ const deprecated =
 			thumbnails: thumbnails,
 			responsiveHeight: responsiveHeight,
 		};
-
-		const captionColorClass = getColorClassName( 'color', captionColor );
 
 		const captionClasses = classnames(
 			'coblocks-gallery--caption',
