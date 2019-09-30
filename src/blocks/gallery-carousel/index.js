@@ -13,7 +13,6 @@ import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
-import { BackgroundAttributes } from '../../components/background';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
 
 /**
@@ -28,7 +27,6 @@ const { name, category } = metadata;
 
 const attributes = {
 	...GalleryAttributes,
-	...BackgroundAttributes,
 	...metadata.attributes,
 };
 
@@ -42,6 +40,7 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
+		coBlocksSpacing: true,
 	},
 	example: {
 		attributes: {

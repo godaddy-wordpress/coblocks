@@ -7,7 +7,7 @@ import { ALLOWED_BG_MEDIA_TYPES, BLOCKS_WITH_AUTOPADDING } from './';
  * WordPress dependencies
  */
 import { Component, Fragment } from '@wordpress/element';
-import { mediaUpload } from '@wordpress/block-editor';
+import { mediaUpload } from '@wordpress/editor';
 import { DropZone } from '@wordpress/components';
 
 class BackgroundDropZone extends Component {

@@ -87,6 +87,11 @@ figcaption.coblocks-gallery--primary-caption {
 	}
 }
 
+.wp-block-group div[class*="wp-block-coblocks-gallery"] {
+	margin-bottom: 10px !important;
+	margin-top: 10px !important;
+}
+
 // Front-end modules
 @import "style/grid";
 @import "style/gutter";
