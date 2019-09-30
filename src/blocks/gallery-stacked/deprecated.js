@@ -245,7 +245,7 @@ const deprecated =
 			</div>
 		);
 	},
-}
+},
 ];
 
 export default deprecated;

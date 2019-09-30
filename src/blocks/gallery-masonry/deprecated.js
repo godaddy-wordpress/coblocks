@@ -29,7 +29,6 @@ const deprecated =
 			backgroundPaddingMobile,
 			captions,
 			captionStyle,
-			customCaptionColor,
 			filter,
 			gridSize,
 			gutter,
