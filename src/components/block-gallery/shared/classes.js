@@ -5,7 +5,6 @@
  * @returns {Array} The gallery classes.
  */
 function GalleryClasses( attributes ) {
-
 	const {
 		align,
 		radius,
