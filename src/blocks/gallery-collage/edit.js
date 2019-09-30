@@ -201,7 +201,8 @@ class GalleryCollageEdit extends Component {
 			color: ! captionColor.class && captionColor.color,
 		};
 
-		const enableGutter = className.includes( 'is-style-one' ) || className.includes( 'is-style-two' );
+		const gutterStyles = className.includes( 'is-style-three' );
+		const enableGutter = ! gutterStyles;
 
 		return (
 			<Fragment>
