@@ -31,36 +31,14 @@ class Controls extends Component {
 	render() {
 		const { attributes } = this.props;
 		const { images } = attributes;
-
 		const hasImages = !! images.length;
 
 		return (
 			<BlockControls>
 				{ hasImages && (
-					<Fragment>
-						<MediaFilterControl
-							{ ...this.props }
-						/>
-						<Toolbar>
-							<MediaUploadCheck>
-								<MediaUpload
-									onSelect={ this.onSelectImages }
-									allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
-									multiple
-									gallery
-									value={ images.filter( img => Object.is( img, {} ) ).map( img => img.id ) }
-									render={ ( { open } ) => (
-										<IconButton
-											className="components-toolbar__control"
-											label={ __( 'Edit gallery' ) }
-											icon="edit"
-											onClick={ open }
-										/>
-									) }
-								/>
-							</MediaUploadCheck>
-						</Toolbar>
-					</Fragment>
+					<MediaFilterControl
+						{ ...this.props }
+					/>
 				) }
 			</BlockControls>
 		);
