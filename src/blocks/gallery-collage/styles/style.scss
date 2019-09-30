@@ -1,9 +1,10 @@
 .wp-block-coblocks-gallery-collage {
+	background: #f0f0f0;
 
 	ul {
-		list-style-type: none;
 		display: flex;
 		flex-wrap: wrap;
+		list-style-type: none;
 	}
 
 	&__item {
@@ -12,20 +13,20 @@
 			padding: 0;
 		}
 
-		&:nth-child( 1 ) {
+		&:nth-child(1) {
+			align-self: flex-end;
 			width: 65%;
-			align-self: flex-end;
 
 			figure,
 			.block-editor-media-placeholder {
-				padding-top: calc( 330 / 495 * 100% );
+				padding-top: calc(330 / 495 * 100%);
 			}
 		}
 
-		&:nth-child( 2 ) {
-			width: 25%;
+		&:nth-child(2) {
+			align-self: flex-end;
 			margin-right: auto;
-			align-self: flex-end;
+			width: 25%;
 
 			figure,
 			.block-editor-media-placeholder {
@@ -33,10 +34,10 @@
 			}
 		}
 
-		&:nth-child( 3 ) {
-			width: 25%;
+		&:nth-child(3) {
+			align-self: flex-start;
 			margin-left: auto;
-			align-self: flex-start;
+			width: 25%;
 
 			figure,
 			.block-editor-media-placeholder {
@@ -44,36 +45,36 @@
 			}
 		}
 
-		&:nth-child( 4 ),
-		&:nth-child( 5 ) {
-			width: 25%;
+		&:nth-child(4),
+		&:nth-child(5) {
 			align-self: flex-start;
+			width: 25%;
 
 			figure,
 			.block-editor-media-placeholder {
-				padding-top: calc( 82 / 63 * 100% );
+				padding-top: calc(82 / 63 * 100%);
 			}
 		}
 	}
 
 	.is-style-two &__item {
-		&:nth-child( 1 ),
-		&:nth-child( 4 ) {
-			width: calc( 590 / 890 * 100% );
+		&:nth-child(1),
+		&:nth-child(4) {
+			width: calc(590 / 890 * 100%);
 
 			figure,
 			.block-editor-media-placeholder {
-				padding-top: calc( 380 / 590 * 100% );
+				padding-top: calc(380 / 590 * 100%);
 			}
 		}
 
-		&:nth-child( 2 ),
-		&:nth-child( 3 ) {
-			width: calc( 300 / 890 * 100% );
+		&:nth-child(2),
+		&:nth-child(3) {
+			width: calc(300 / 890 * 100%);
 
 			figure,
 			.block-editor-media-placeholder {
-				padding-top: calc( 380 / 300 * 100% );
+				padding-top: calc(380 / 300 * 100%);
 			}
 		}
 	}
@@ -81,21 +82,21 @@
 	.is-style-three &__item {
 		align-self: flex-start;
 
-		&:nth-child( 1 ) {
-			margin-left: calc( 159 / 890 * 100% );
-			width: calc( 358 / 890 * 100% );
+		&:nth-child(1) {
+			margin-left: calc(159 / 890 * 100%);
+			width: calc(358 / 890 * 100%);
 			z-index: 4;
 
 			figure,
 			.block-editor-media-placeholder {
-				padding-top: calc( 492 / 358 * 100% );
+				padding-top: calc(492 / 358 * 100%);
 			}
 		}
 
-		&:nth-child( 2 ) {
-			margin-top: calc( 117 / 772 * 100% );
-			margin-left: calc( 172 / 890 * 100% );
-			width: calc( 198 / 890 * 100% );
+		&:nth-child(2) {
+			margin-left: calc(172 / 890 * 100%);
+			margin-top: calc(117 / 772 * 100%);
+			width: calc(198 / 890 * 100%);
 			z-index: 2;
 
 			figure,
@@ -104,26 +105,26 @@
 			}
 		}
 
-		&:nth-child( 3 ) {
-			margin-top: calc( 249 / 890 * 100% * -1 );
-			margin-left: calc( 328 / 890 * 100% );
-			width: calc( 492 / 890 * 100% );
+		&:nth-child(3) {
+			margin-left: calc(328 / 890 * 100%);
+			margin-top: calc(249 / 890 * 100% * -1);
+			width: calc(492 / 890 * 100%);
 			z-index: 3;
 
 			figure,
 			.block-editor-media-placeholder {
-				padding-top: calc( 340 / 492 * 100% );
+				padding-top: calc(340 / 492 * 100%);
 			}
 		}
 
-		&:nth-child( 4 ) {
-			margin-top: calc( 189 / 890 * 100% * -1 );
-			width: calc( 492 / 890 * 100% );
+		&:nth-child(4) {
+			margin-top: calc(189 / 890 * 100% * -1);
+			width: calc(492 / 890 * 100%);
 			z-index: 1;
 
 			figure,
 			.block-editor-media-placeholder {
-				padding-top: calc( 378 / 492 * 100% );
+				padding-top: calc(378 / 492 * 100%);
 			}
 		}
 	}
@@ -155,21 +156,11 @@
 	}
 
 	&.has-caption-style-dark figcaption {
-		background: linear-gradient(
-			0deg,
-			rgba($color: $black, $alpha: 0.7) 0,
-			rgba($color: $black, $alpha: 0.3) 50%,
-			transparent
-		);
+		background: linear-gradient(0deg, rgba($color: $black, $alpha: 0.7) 0, rgba($color: $black, $alpha: 0.3) 50%, transparent);
 	}
 
 	&.has-caption-style-light figcaption {
-		background: linear-gradient(
-			0deg,
-			rgba($color: $white, $alpha: 0.93) 6.3%,
-			rgba($color: $white, $alpha: 0.5) 61%,
-			rgba(255, 255, 255, 0)
-		);
+		background: linear-gradient(0deg, rgba($color: $white, $alpha: 0.93) 6.3%, rgba($color: $white, $alpha: 0.5) 61%, rgba(255, 255, 255, 0));
 	}
 
 	&:not(.has-caption-color).has-caption-style-dark figcaption {

@@ -1,6 +1,5 @@
 .editor-block-list__block[data-type="coblocks/gallery-collage"],
 .editor-block-preview__content {
-
 	.wp-block-coblocks-gallery-collage {
 		ul {
 			list-style-type: none;
@@ -23,8 +22,8 @@
 	}
 
 	.block-editor-media-placeholder {
-		outline: 1px dashed $dark-gray-150;
 		background-color: $light-gray-200;
+		outline: 1px dashed $dark-gray-150;
 
 		&:hover {
 			outline: 1px dashed $dark-gray-500;
@@ -36,8 +35,8 @@
 		}
 
 		.components-placeholder__fieldset {
-			align-items: center;
 			align-content: center;
+			align-items: center;
 			height: 100%;
 			left: 0;
 			max-width: 100%;
@@ -60,14 +59,6 @@
 		right: 0;
 		width: 100%;
 		z-index: 2;
-
-		.editor-rich-text__tinymce {
-			color: inherit;
-
-			a {
-				color: inherit;
-			}
-		}
 
 		// Override negative margins so this toolbar isn't hidden by overflow.
 		// Overflow is needed for long captions.
