@@ -42,6 +42,7 @@ const settings = {
 
 	supports: {
 		align: [ 'wide', 'full' ],
+		coBlocksSpacing: true,
 	},
 	example: {
 		attributes: {
