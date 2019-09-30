@@ -37,6 +37,8 @@ const save = ( { attributes } ) => {
 		[ textColorClass ]: textColorClass,
 	} );
 
+	const blockquoteClasses = classnames( { [ `has-text-align-${ textAlign }` ]: textAlign } );
+
 	const textStyles = {
 		fontSize: fontSizeClass ? undefined : customFontSize,
 		color: textColorClass ? undefined : customTextColor,
@@ -55,7 +57,7 @@ const save = ( { attributes } ) => {
 
 	return (
 		! RichText.isEmpty( content ) && (
-			<blockquote style={ { textAlign: textAlign } }>
+			<blockquote className={ blockquoteClasses }>
 				<RichText.Content
 					tagName="p"
 					className={ textClasses }
