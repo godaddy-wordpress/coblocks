@@ -71,14 +71,6 @@ class GalleryCollageEdit extends Component {
 		}
 	}
 
-	locationClasses = ( classes ) => classnames( classes,
-		{
-			'has-gutter': !! this.props.attributes.gutter,
-			[ `has-gutter-${ this.props.attributes.gutter }` ]: !! this.props.attributes.gutter,
-			[ `has-gutter-mobile-${ this.props.attributes.gutterMobile }` ]: !! this.props.attributes.gutterMobile,
-		}
-	);
-
 	uploadImage = ( files, index ) => {
 		mediaUpload( {
 			allowedTypes: [ 'image' ],
@@ -138,7 +130,7 @@ class GalleryCollageEdit extends Component {
 			<Fragment>
 				<a onClick={ () => this.onSelectImage( image.index ) }>
 					<figure
-						className={ this.locationClasses( {
+						className={ classnames( {
 							'wp-block-coblocks-gallery-collage__figure': true,
 							'is-transient': isBlobURL( image.url ),
 							'is-selected': isSelected,
@@ -189,7 +181,7 @@ class GalleryCollageEdit extends Component {
 	renderPlaceholder( index ) {
 		return (
 			<MediaPlaceholder
-				className={ this.locationClasses( 'wp-block-coblocks-gallery-collage__figure' ) }
+				className={ classnames( 'wp-block-coblocks-gallery-collage__figure' ) }
 				allowedTypes={ [ 'image' ] }
 				multiple={ false }
 				icon={ false }
@@ -222,15 +214,62 @@ class GalleryCollageEdit extends Component {
 				<Controls { ...this.props } />
 				<Inspector { ...this.props } enableGutter={ enableGutter } enableCaptions={ enableCaptions } />
 				{ noticeUI }
-				<div className={ classnames( className, {
+
+				<div  className={ classnames( className, {
 					[ `has-filter-${ filter }` ]: filter !== 'none',
 					[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
 				} ) }>
 					<ul>
 						{ this.state.images.map( ( img, index ) => {
 							const theIndex = img.index || index;
+
+							let gutterIndex;
+
+							switch ( theIndex ) {
+								case 0:
+									gutterIndex = `mr-${ this.props.attributes.gutter } mb-${ this.props.attributes.gutter }`;
+									break;
+								case 1:
+									gutterIndex = `ml-${ this.props.attributes.gutter } mb-${ this.props.attributes.gutter }`;
+									break;
+								case 2:
+									gutterIndex = `mt-${ this.props.attributes.gutter } mr-${ this.props.attributes.gutter }`;
+									break;
+								case 3:
+									gutterIndex = `mt-${ this.props.attributes.gutter } mr-${ this.props.attributes.gutter } ml-${ this.props.attributes.gutter }`;
+									break;
+								case 4:
+									gutterIndex = `mt-${ this.props.attributes.gutter } ml-${ this.props.attributes.gutter }`;
+									break;
+							}
+
+							if ( className.includes( 'is-style-tiled' ) ) {
+
+								switch ( theIndex ) {
+									case 0:
+										gutterIndex = `mr-${ this.props.attributes.gutter } mb-${ this.props.attributes.gutter }`;
+										break;
+									case 1:
+										gutterIndex = `ml-${ this.props.attributes.gutter } mb-${ this.props.attributes.gutter }`;
+										break;
+									case 2:
+										gutterIndex = `mt-${ this.props.attributes.gutter } mr-${ this.props.attributes.gutter }`;
+										break;
+									case 3:
+										gutterIndex = `mt-${ this.props.attributes.gutter } mr-${ this.props.attributes.gutter } ml-${ this.props.attributes.gutter }`;
+										break;
+									case 4:
+										gutterIndex = `mt-${ this.props.attributes.gutter } ml-${ this.props.attributes.gutter }`;
+										break;
+								}
+
+							}
+
 							return (
-								<li className="wp-block-coblocks-gallery-collage__item" key={ `image-${ theIndex }` }>
+								<li
+									key={ `image-${ theIndex }` }
+									className={ classnames( 'wp-block-coblocks-gallery-collage__item', gutterIndex ) }
+								>
 									{ !! img.url ? this.renderImage( theIndex ) : this.renderPlaceholder( theIndex ) }
 								</li>
 							);

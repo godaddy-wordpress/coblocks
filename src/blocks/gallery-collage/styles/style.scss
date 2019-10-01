@@ -1,6 +1,61 @@
 .wp-block-coblocks-gallery-collage {
 	background: #eeeeee;
 
+	// For desktop.
+	@media (min-width: 700px) {
+		@for $i from 1 through 10 {
+			.mt-#{ $i * 5 } {
+				padding-top: #{round($i * 5 / 2)}px;
+				// max-width: calc(100% - #{round($i * 5)}px) !important;
+			}
+		}
+
+		@for $i from 1 through 10 {
+			.mr-#{ $i * 5 } {
+				padding-right: #{round($i * 5 / 2)}px;
+				// max-width: calc(100% - #{round($i * 5)}px) !important;
+			}
+		}
+
+		@for $i from 1 through 10 {
+			.mb-#{ $i * 5 } {
+				padding-bottom: #{round($i * 5 / 2)}px;
+				// max-width: calc(100% - #{round($i * 5)}px) !important;
+			}
+		}
+
+		@for $i from 1 through 10 {
+			.ml-#{ $i * 5 } {
+				padding-left: #{round($i * 5 / 2)}px;
+				// max-width: calc(100% - #{round($i * 5)}px) !important;
+			}
+		}
+
+		// Add gutter margin to the figure elements.
+		// @for $i from 1 through 10 {
+		// 	.has-gutter-#{ $i * 5 } {
+		// 		figure {
+		// 			margin: #{round($i * 5 / 2)}px;
+		// 		}
+		// 	}
+		// }
+	}
+
+	// // For mobile.
+	// @media (max-width: 699px) {
+	// 	// Add gutter margin to the figure elements.
+	// 	@for $i from 1 through 10 {
+	// 		.has-gutter-mobile-#{ $i * 5 } {
+	// 			margin: #{round($i * 5 / 2)}px !important;
+	// 			max-width: calc(100% - #{round($i * 5)}px) !important;
+
+	// 			figure {
+	// 				margin: #{round($i * 5 / 2)}px;
+	// 			}
+	// 		}
+	// 	}
+	// }
+
 	ul {
 		display: flex;
 		flex-wrap: wrap;
@@ -10,12 +65,14 @@
 	&__item {
 		figure,
 		.block-editor-media-placeholder {
+			// margin-left: 0;
+			// margin-top: 0;
 			padding: 0;
 		}
 
 		&:nth-child(1) {
 			align-self: flex-end;
-			width: 65%;
+			width: 75%;
 
 			figure,
 			.block-editor-media-placeholder {
@@ -25,7 +82,7 @@
 
 		&:nth-child(2) {
 			align-self: flex-end;
-			margin-right: auto;
+			// margin-right: auto;
 			width: 25%;
 
 			figure,
@@ -36,7 +93,7 @@
 
 		&:nth-child(3) {
 			align-self: flex-start;
-			margin-left: auto;
+			// margin-left: auto;
 			width: 25%;
 
 			figure,
@@ -94,7 +151,7 @@
 		}
 
 		&:nth-child(2) {
-			margin-left: calc(172 / 890 * 100%);
+			margin-left: calc(175 / 890 * 100%);
 			margin-top: calc(117 / 772 * 100%);
 			width: calc(198 / 890 * 100%);
 			z-index: 2;
@@ -169,40 +226,5 @@
 
 	&:not(.has-caption-color).has-caption-style-light figcaption {
 		color: $black;
-	}
-
-	// For desktop.
-	@media (min-width: 700px) {
-		// Add negative margin to the parent ul to offset the gutter.
-		@for $i from 1 through 10 {
-			.has-gutter-#{ $i * 5 } {
-				margin: #{round($i * 5 / 2)}px !important;
-				max-width: calc(100% - #{round($i * 5)}px) !important;
-			}
-		}
-
-		// Add gutter margin to the figure elements.
-		@for $i from 1 through 10 {
-			.has-gutter-#{ $i * 5 } {
-				figure {
-					margin: #{round($i * 5 / 2)}px;
-				}
-			}
-		}
-	}
-
-	// For mobile.
-	@media (max-width: 699px) {
-		// Add gutter margin to the figure elements.
-		@for $i from 1 through 10 {
-			.has-gutter-mobile-#{ $i * 5 } {
-				margin: #{round($i * 5 / 2)}px !important;
-				max-width: calc(100% - #{round($i * 5)}px) !important;
-
-				figure {
-					margin: #{round($i * 5 / 2)}px;
-				}
-			}
-		}
 	}
 }
