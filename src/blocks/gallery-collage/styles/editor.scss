@@ -23,9 +23,16 @@
 	}
 }
 
-.editor-block-list__block[data-type="coblocks/gallery-collage"] {
+.wp-block[data-type="coblocks/gallery-collage"] {
 	ul {
 		list-style-type: none;
+	}
+
+	&[data-align="full"] .wp-block-coblocks-gallery-collage:not(.is-style-tiled) {
+		ul {
+			padding-left: 1em;
+			padding-right: 1em;
+		}
 	}
 
 	.block-editor-media-placeholder__upload-button {
