@@ -26,6 +26,7 @@
 	.block-editor-media-placeholder {
 		background-color: $light-gray-200;
 		outline: 1px dashed $dark-gray-150;
+		outline-offset: -1px;
 
 		&:hover {
 			outline: 1px dashed $dark-gray-500;
