@@ -6,14 +6,29 @@
 
 	.has-left-content {
 		text-align: left;
+
+		img {
+			margin-left: 0;
+			margin-right: auto;
+		}
 	}
 
 	.has-center-content {
 		text-align: center;
+
+		img {
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
 
 	.has-right-content {
 		text-align: right;
+
+		img {
+			margin-left: auto;
+			margin-right: 0;
+		}
 	}
 
 	.wp-block-coblocks-feature {
@@ -88,10 +103,6 @@
 	}
 
 	.wp-block-coblocks-feature__inner {
-		img {
-			display: inline !important;
-		}
-
 		// Add padding so the feature does not run into the viewport edge on mobile.
 		&.has-no-padding {
 			padding: 0 10px;
