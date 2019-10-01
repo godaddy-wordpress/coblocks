@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import applyWithColors from './colors';
-import OrientationControl from '../../components/orientation';
 import ResponsiveBaseControl from '../../components/responsive-base-control';
 
 /**
@@ -46,8 +45,6 @@ class Inspector extends Component {
 			backgroundHeightMobile,
 			backgroundHeightTablet,
 			syncHeight,
-			horizontalFlip,
-			verticalFlip,
 		} = attributes;
 
 		return (
@@ -89,13 +86,6 @@ class Inspector extends Component {
 							sync={ syncHeight }
 							type="backgroundHeight"
 							min="20"
-						/>
-						<OrientationControl { ...this.props }
-							label={ __( 'Orientation' ) }
-							horizontalFlip={ horizontalFlip }
-							verticalFlip={ verticalFlip }
-							onHorizontalFlip={ () => setAttributes( { horizontalFlip: ! horizontalFlip } ) }
-							onVerticalFlip={ () => setAttributes( { verticalFlip: ! verticalFlip } ) }
 						/>
 					</PanelBody>
 					<PanelColorSettings
