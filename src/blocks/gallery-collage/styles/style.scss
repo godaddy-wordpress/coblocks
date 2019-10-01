@@ -66,6 +66,13 @@
 		}
 	}
 
+	&:not(.is-style-tiled) {
+		ul {
+			padding-left: 1em;
+			padding-right: 1em;
+		}
+	}
+
 	.is-style-tiled &__item {
 		&:nth-child(1),
 		&:nth-child(4) {
@@ -85,13 +92,6 @@
 			.block-editor-media-placeholder {
 				padding-top: calc(380 / 288 * 100%);
 			}
-		}
-	}
-
-	&.is-style-layered {
-		ul {
-			padding-left: 1em;
-			padding-right: 1em;
 		}
 	}
 
