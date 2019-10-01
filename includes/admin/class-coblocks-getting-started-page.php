@@ -20,7 +20,6 @@ class CoBlocks_Getting_Started_Page {
 	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'screen_page' ) );
-		add_action( 'activated_plugin', array( $this, 'redirect' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_style' ), 100 );
 	}
 
