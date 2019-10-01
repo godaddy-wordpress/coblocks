@@ -37,6 +37,26 @@
 		"draggable": {
 			"type": "boolean",
 			"default": true
+		},
+		"alignCells": {
+			"type": "boolean",
+			"default": false
+		},
+		"pauseHover": {
+			"type": "boolean",
+			"default": false
+		},
+		"freeScroll": {
+			"type": "boolean",
+			"default": false
+		},
+		"thumbnails": {
+			"type": "boolean",
+			"default": false
+		},
+		"responsiveHeight": {
+			"type": "boolean",
+			"default": false
 		}
 	}
 }

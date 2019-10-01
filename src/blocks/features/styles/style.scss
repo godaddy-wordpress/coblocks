@@ -6,14 +6,29 @@
 
 	.has-left-content {
 		text-align: left;
+
+		img {
+			margin-left: 0;
+			margin-right: auto;
+		}
 	}
 
 	.has-center-content {
 		text-align: center;
+
+		img {
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
 
 	.has-right-content {
 		text-align: right;
+
+		img {
+			margin-left: auto;
+			margin-right: 0;
+		}
 	}
 
 	.wp-block-coblocks-feature {
@@ -56,14 +71,6 @@
 			&:not(.has-background) {
 				padding-top: 0;
 			}
-
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
-
-		> *:last-child {
-			margin-bottom: 0;
 		}
 	}
 
@@ -95,6 +102,10 @@
 
 		> * {
 			position: relative;
+		}
+
+		> *:last-child {
+			margin-bottom: 0 !important;
 		}
 	}
 }

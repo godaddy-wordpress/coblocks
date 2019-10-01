@@ -34,6 +34,9 @@ function GalleryTransforms( props ) {
 		rel: props.rel,
 		shadow: props.shadow,
 		target: props.target,
+		lightbox: props.lightbox,
+		noBottomMargin: props.noBottomMargin,
+		noTopMargin: props.noTopMargin,
 	};
 
 	return transforms;

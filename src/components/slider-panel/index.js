@@ -28,7 +28,7 @@ class SliderPanel extends Component {
 	}
 
 	getDraggableHelp( checked ) {
-		return checked ? __( 'Dragging and flicking enabled on desktop and mobile devices.' ) : __( 'Toggle to enable drag functionality on desktop and mobile devices.' );
+		return checked ? __( 'Dragging and flicking enabled.' ) : __( 'Toggle to enable drag functionality.' );
 	}
 
 	getArrowNavigationHelp( checked ) {
@@ -36,7 +36,18 @@ class SliderPanel extends Component {
 	}
 
 	getDotNavigationHelp( checked ) {
-		return checked ? __( 'Showing dot navigation arrows.' ) : __( 'Toggle to show dot navigation.' );
+		return checked ? __( 'Showing dot navigation.' ) : __( 'Toggle to show dot navigation.' );
+	}
+
+	getAlignCellsHelp( checked ) {
+		return checked ? __( 'Aligning slides to the left.' ) : __( 'Aligning slides to the center.' );
+	}
+	getPauseAutoplayOnHoverHelp( checked ) {
+		return checked ? __( 'Pausing autoplay when hovering.' ) : __( 'Toggle to pause autoplay when hovered.' );
+	}
+
+	getfreeScrollHelp( checked ) {
+		return checked ? __( 'Scrolling without fixed slides enabled.' ) : __( 'Toggle to scroll without fixed slides.' );
 	}
 
 	render() {
@@ -49,8 +60,11 @@ class SliderPanel extends Component {
 			autoPlay,
 			autoPlaySpeed,
 			draggable,
+			freeScroll,
 			pageDots,
 			prevNextButtons,
+			alignCells,
+			pauseHover,
 		} = attributes;
 
 		return (
@@ -62,19 +76,34 @@ class SliderPanel extends Component {
 						onChange={ () => setAttributes( { autoPlay: ! autoPlay } ) }
 						help={ this.getAutoPlayHelp }
 					/>
-					{ autoPlay && <SelectControl
-						label={ __( 'Transition Speed' ) }
-						value={ autoPlaySpeed }
-						onChange={ ( value ) => setAttributes( { autoPlaySpeed: value } ) }
-						options={ autoPlayOptions }
-						className="components-coblocks-gallery-inspector__autoplayspeed-select"
-					/> }
+					{ autoPlay && <Fragment>
+						<SelectControl
+							label={ __( 'Transition Speed' ) }
+							value={ autoPlaySpeed }
+							onChange={ ( value ) => setAttributes( { autoPlaySpeed: value } ) }
+							options={ autoPlayOptions }
+							className="components-coblocks-gallery-inspector__autoplayspeed-select"
+						/>
+						<ToggleControl
+							label={ __( 'Pause on Hover' ) }
+							checked={ pauseHover }
+							onChange={ () => setAttributes( { pauseHover: ! pauseHover } ) }
+							help={ this.getPauseAutoplayOnHoverHelp }
+						/>
+					</Fragment>
+					}
 					<ToggleControl
 						label={ __( 'Draggable' ) }
 						checked={ !! draggable }
 						onChange={ () => setAttributes( { draggable: ! draggable } ) }
 						help={ this.getDraggableHelp }
 					/>
+					{ draggable && <ToggleControl
+						label={ __( 'Free Scroll' ) }
+						checked={ !! freeScroll }
+						onChange={ () => setAttributes( { freeScroll: ! freeScroll } ) }
+						help={ this.getfreeScrollHelp }
+					/> }
 					<ToggleControl
 						label={ __( 'Arrow Navigation' ) }
 						checked={ !! prevNextButtons }
@@ -86,6 +115,12 @@ class SliderPanel extends Component {
 						checked={ !! pageDots }
 						onChange={ () => setAttributes( { pageDots: ! pageDots } ) }
 						help={ this.getDotNavigationHelp }
+					/>
+					<ToggleControl
+						label={ __( 'Align Cells' ) }
+						checked={ !! alignCells }
+						onChange={ () => setAttributes( { alignCells: ! alignCells } ) }
+						help={ this.getAlignCellsHelp }
 					/>
 				</PanelBody>
 			</Fragment>
