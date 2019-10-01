@@ -24,18 +24,37 @@ const deprecated = [
 		},
 		save( { attributes, className } ) {
 			const {
+				align,
+				backgroundPadding,
+				backgroundPaddingMobile,
 				captions,
+				captionStyle,
+				filter,
 				gridSize,
 				gutter,
 				gutterMobile,
 				images,
 				linkTo,
+				radius,
 				rel,
 				target,
 			} = attributes;
 
+			const galleryClassesDeprecated = classnames(
+				'coblocks-gallery', {
+					'has-no-alignment': ! align,
+					[ `has-border-radius-${ radius }` ]: radius > 0,
+					[ `has-filter-${ filter }` ]: filter !== 'none',
+					[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
+					[ `has-background-border-radius-${ attributes.backgroundRadius }` ]: attributes.backgroundRadius > 0,
+					'has-padding': backgroundPadding > 0,
+					[ `has-padding-${ backgroundPadding }` ]: backgroundPadding > 0,
+					[ `has-padding-mobile-${ backgroundPaddingMobile }` ]: backgroundPaddingMobile > 0,
+				}
+			);
+
 			const innerClasses = classnames(
-				...GalleryClasses( attributes ),
+				galleryClassesDeprecated,
 				...BackgroundClasses( attributes ), {
 					'has-gutter': gutter > 0,
 				}
