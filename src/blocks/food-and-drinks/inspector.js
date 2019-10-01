@@ -23,7 +23,7 @@ const Inspector = props => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Styles' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
 				<div className="editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
 					{ layoutOptions.map( style => (
 						<div
