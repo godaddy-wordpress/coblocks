@@ -83,7 +83,7 @@
 
 			figure,
 			.block-editor-media-placeholder {
-				padding-top: calc(380 / 290 * 100%);
+				padding-top: calc(380 / 288 * 100%);
 			}
 		}
 	}
@@ -92,7 +92,7 @@
 		align-self: flex-start;
 
 		&:nth-child(1) {
-			margin-left: calc(159 / 890 * 100%);
+			margin-left: calc(150 / 890 * 100%);
 			width: calc(358 / 890 * 100%);
 			z-index: 4;
 
@@ -103,8 +103,8 @@
 		}
 
 		&:nth-child(2) {
-			margin-left: calc(175 / 900 * 100%);
-			margin-top: calc(117 / 772 * 100%);
+			margin-left: calc(175 / 850 * 100%);
+			margin-top: calc(117 / 990 * 100%);
 			width: calc(198 / 890 * 100%);
 			z-index: 2;
 
