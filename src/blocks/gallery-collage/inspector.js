@@ -55,13 +55,13 @@ class Inspector extends Component {
 				<PanelBody title={ __( 'Collage Settings' ) }>
 					{ enableGutter && <ResponsiveTabsControl label={ __( 'Gutter' ) } min={ 10 } { ...this.props } /> }
 					{ ! enableGutter && <SizeControl { ...this.props }
-							onChange={ this.setShadowTo }
-							value={ shadow }
-							label={ __( 'Shadow' ) }
-							reset={ false }
-							className={ 'components-coblocks-size-control--shadow' }
+						onChange={ this.setShadowTo }
+						value={ shadow }
+						label={ __( 'Shadow' ) }
+						reset={ false }
+						className={ 'components-coblocks-size-control--shadow' }
 
-						/>
+					/>
 					}
 					{ enableCaptions && <ToggleControl
 						label={ __( 'Captions' ) }

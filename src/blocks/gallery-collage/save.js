@@ -76,7 +76,6 @@ const save = ( props, className ) => {
 
 					if ( className ) {
 						if ( className.includes( 'is-style-tiled' ) ) {
-
 							switch ( index ) {
 								case 0:
 									gutterClasses = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
