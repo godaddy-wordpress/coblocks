@@ -1,44 +1,29 @@
 .wp-block-coblocks-gallery-collage {
-	background: #eeeeee;
-
 	// For desktop.
 	@media (min-width: 700px) {
 		@for $i from 1 through 10 {
-			.mt-#{ $i * 5 } {
+			.pt-#{ $i * 5 } {
 				padding-top: #{round($i * 5 / 2)}px;
-				// max-width: calc(100% - #{round($i * 5)}px) !important;
 			}
 		}
 
 		@for $i from 1 through 10 {
-			.mr-#{ $i * 5 } {
+			.pr-#{ $i * 5 } {
 				padding-right: #{round($i * 5 / 2)}px;
-				// max-width: calc(100% - #{round($i * 5)}px) !important;
 			}
 		}
 
 		@for $i from 1 through 10 {
-			.mb-#{ $i * 5 } {
+			.pb-#{ $i * 5 } {
 				padding-bottom: #{round($i * 5 / 2)}px;
-				// max-width: calc(100% - #{round($i * 5)}px) !important;
 			}
 		}
 
 		@for $i from 1 through 10 {
-			.ml-#{ $i * 5 } {
+			.pl-#{ $i * 5 } {
 				padding-left: #{round($i * 5 / 2)}px;
-				// max-width: calc(100% - #{round($i * 5)}px) !important;
 			}
 		}
-
-		// Add gutter margin to the figure elements.
-		// @for $i from 1 through 10 {
-		// 	.has-gutter-#{ $i * 5 } {
-		// 		figure {
-		// 			margin: #{round($i * 5 / 2)}px;
-		// 		}
-		// 	}
-		// }
 	}
 
 	// // For mobile.
@@ -106,7 +91,7 @@
 
 			figure,
 			.block-editor-media-placeholder {
-				padding-top: calc(82 / 69 * 100%);
+				padding-top: 100%;
 			}
 		}
 
@@ -116,7 +101,7 @@
 
 			figure,
 			.block-editor-media-placeholder {
-				padding-top: calc(82 / 65 * 100%);
+				padding-top: 150%;
 			}
 		}
 	}
@@ -138,7 +123,7 @@
 
 			figure,
 			.block-editor-media-placeholder {
-				padding-top: calc(380 / 288 * 100%);
+				padding-top: calc(380 / 290 * 100%);
 			}
 		}
 	}

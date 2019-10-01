@@ -42,7 +42,7 @@ class GalleryCollageEdit extends Component {
 			this.setupImageLocations();
 
 			if ( this.props.className.includes( 'is-style-layered' ) ) {
-				this.props.setAttributes( { gutter: 0, gutterMobile: 0 } );
+				this.props.setAttributes( { gutter: 10, gutterMobile: 10 } );
 			}
 		}
 
@@ -178,6 +178,62 @@ class GalleryCollageEdit extends Component {
 		);
 	}
 
+	gutterClasses = ( index ) => {
+
+		const {
+			attributes,
+			className,
+		} = this.props;
+
+		const {
+			gutter,
+		} = attributes;
+
+		let gutterIndex;
+
+		switch ( index ) {
+			case 0:
+				gutterIndex = `pr-${ gutter } pb-${ gutter }`;
+				break;
+			case 1:
+				gutterIndex = `pl-${ gutter } pb-${ gutter }`;
+				break;
+			case 2:
+				gutterIndex = `pt-${ gutter } pr-${ gutter } pl-${ gutter }`;
+				break;
+			case 3:
+				gutterIndex = `pt-${ gutter } pr-${ gutter } pl-${ gutter }`;
+				break;
+			case 4:
+				gutterIndex = `pt-${ gutter } pl-${ gutter }`;
+				break;
+		}
+
+		if ( className.includes( 'is-style-tiled' ) ) {
+
+			switch ( index ) {
+				case 0:
+					gutterIndex = `pr-${ gutter } pb-${ gutter }`;
+					break;
+				case 1:
+					gutterIndex = `pl-${ gutter } pb-${ gutter }`;
+					break;
+				case 2:
+					gutterIndex = `pt-${ gutter } pr-${ gutter }`;
+					break;
+				case 3:
+					gutterIndex = `pt-${ gutter } pl-${ gutter }`;
+					break;
+			}
+		}
+
+		if ( className.includes( 'is-style-layered' ) ) {
+			gutterIndex = null;
+		}
+
+		return gutterIndex;
+	};
+
 	renderPlaceholder( index ) {
 		return (
 			<MediaPlaceholder
@@ -214,58 +270,19 @@ class GalleryCollageEdit extends Component {
 				<Controls { ...this.props } />
 				<Inspector { ...this.props } enableGutter={ enableGutter } enableCaptions={ enableCaptions } />
 				{ noticeUI }
-
-				<div  className={ classnames( className, {
+				<div className={ classnames( className, {
 					[ `has-filter-${ filter }` ]: filter !== 'none',
 					[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
-				} ) }>
+					} ) }
+				>
 					<ul>
 						{ this.state.images.map( ( img, index ) => {
 							const theIndex = img.index || index;
 
-							let gutterIndex;
-
-							switch ( theIndex ) {
-								case 0:
-									gutterIndex = `mr-${ this.props.attributes.gutter } mb-${ this.props.attributes.gutter }`;
-									break;
-								case 1:
-									gutterIndex = `ml-${ this.props.attributes.gutter } mb-${ this.props.attributes.gutter }`;
-									break;
-								case 2:
-									gutterIndex = `mt-${ this.props.attributes.gutter } mr-${ this.props.attributes.gutter }`;
-									break;
-								case 3:
-									gutterIndex = `mt-${ this.props.attributes.gutter } mr-${ this.props.attributes.gutter } ml-${ this.props.attributes.gutter }`;
-									break;
-								case 4:
-									gutterIndex = `mt-${ this.props.attributes.gutter } ml-${ this.props.attributes.gutter }`;
-									break;
-							}
-
-							if ( className.includes( 'is-style-tiled' ) ) {
-
-								switch ( theIndex ) {
-									case 0:
-										gutterIndex = `mr-${ this.props.attributes.gutter } mb-${ this.props.attributes.gutter }`;
-										break;
-									case 1:
-										gutterIndex = `ml-${ this.props.attributes.gutter } mb-${ this.props.attributes.gutter }`;
-										break;
-									case 2:
-										gutterIndex = `mt-${ this.props.attributes.gutter } mr-${ this.props.attributes.gutter }`;
-										break;
-									case 3:
-										gutterIndex = `mt-${ this.props.attributes.gutter } ml-${ this.props.attributes.gutter }`;
-										break;
-								}
-
-							}
-
 							return (
 								<li
 									key={ `image-${ theIndex }` }
-									className={ classnames( 'wp-block-coblocks-gallery-collage__item', gutterIndex ) }
+									className={ classnames( 'wp-block-coblocks-gallery-collage__item', this.gutterClasses( index ) ) }
 								>
 									{ !! img.url ? this.renderImage( theIndex ) : this.renderPlaceholder( theIndex ) }
 								</li>

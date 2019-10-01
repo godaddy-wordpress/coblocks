@@ -46,7 +46,7 @@ class Inspector extends Component {
 		return (
 			<InspectorControls>
 				<PanelBody title={ __( 'Collage Settings' ) }>
-					{ enableGutter && <ResponsiveTabsControl label={ __( 'Gutter' ) } min={ 5 } { ...this.props } /> }
+					{ enableGutter && <ResponsiveTabsControl label={ __( 'Gutter' ) } min={ 10 } { ...this.props } /> }
 					{ enableCaptions && <ToggleControl
 						label={ __( 'Captions' ) }
 						checked={ !! captions }

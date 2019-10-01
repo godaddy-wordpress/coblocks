@@ -74,6 +74,12 @@
 		overflow: hidden;
 		position: relative !important;
 	}
+
+	.is-style-layered .wp-block-coblocks-gallery-collage__item {
+		.components-form-file-upload {
+			display: none;
+		}
+	}
 }
 
 .wp-block-coblocks-gallery-collage__figure.is-transient img {
