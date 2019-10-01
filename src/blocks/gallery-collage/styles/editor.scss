@@ -28,6 +28,24 @@
 		list-style-type: none;
 	}
 
+	.block-editor-media-placeholder__upload-button {
+		@media (max-width: 699px) {
+			display: none;
+		}
+	}
+
+	.editor-media-placeholder__media-library-button {
+		@media (max-width: 699px) {
+			background: transparent;
+			border: 0;
+			box-shadow: none !important;
+			display: inline-block;
+			height: 100%;
+			text-align: center;
+			width: 100%;
+		}
+	}
+
 	.block-editor-media-placeholder {
 		background: $dark-opacity-light-200;
 		min-height: inherit;
@@ -64,14 +82,23 @@
 	}
 
 	.is-style-layered {
+		.block-editor-media-placeholder {
+			background: $light-gray-200;
+		}
+
 		.components-form-file-upload {
 			display: none;
 		}
 
+		// Move the close button where its visible on the Layered style.
 		li:nth-child(4) .components-coblocks-gallery-item__remove-menu {
 			left: 2px;
 			right: auto;
 		}
+	}
+
+	.is-dark-theme .block-editor-media-placeholder {
+		background: $light-opacity-light-200;
 	}
 
 	// Captions.
