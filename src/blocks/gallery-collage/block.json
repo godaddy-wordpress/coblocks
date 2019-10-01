@@ -46,9 +46,9 @@
 				}
 			}
 		},
-		"align": {
-			"type": "string",
-			"default": "full"
+		"gutter": {
+			"type": "number",
+			"default": 25
 		}
 	}
 }
