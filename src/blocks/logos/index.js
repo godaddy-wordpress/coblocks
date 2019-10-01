@@ -44,4 +44,4 @@ const settings = {
 	save,
 };
 
-export { name, category, metadata, settings };
+export { name, category, metadata, settings, icon };
