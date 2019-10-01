@@ -1,32 +1,60 @@
-.editor-block-list__block[data-type="coblocks/gallery-collage"],
-.editor-block-preview__content {
-	.wp-block-coblocks-gallery-collage {
-		ul {
-			list-style-type: none;
+.wp-block-coblocks-gallery-collage {
+	&__figure {
+		img {
+			transition: opacity 0.1s linear;
 		}
 
-		&__figure {
-			transition: opacity 0.1s linear;
+		&.is-transient img {
+			opacity: 0.3;
+		}
 
-			&.is-selected {
-				&::after {
-					bottom: 0;
-					box-shadow: inset 0 0 0 4px theme(primary);
-					content: "";
-					left: 0;
-					position: absolute;
-					right: 0;
-					top: 0;
-					z-index: 1;
-				}
+		&.is-selected {
+			&::after {
+				bottom: 0;
+				box-shadow: inset 0 0 0 4px theme(primary);
+				content: "";
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+				z-index: 1;
 			}
+		}
+	}
+}
+
+.editor-block-list__block[data-type="coblocks/gallery-collage"] {
+	ul {
+		list-style-type: none;
+	}
+
+	.block-editor-media-placeholder__upload-button {
+		@media (max-width: 699px) {
+			display: none;
+		}
+	}
+
+	.editor-media-placeholder__media-library-button {
+		@media (max-width: 699px) {
+			background: transparent;
+			border: 0;
+			box-shadow: none !important;
+			display: inline-block;
+			height: 100%;
+			text-align: center;
+			width: 100%;
 		}
 	}
 
 	.block-editor-media-placeholder {
-		background-color: $light-gray-200;
+		background: $dark-opacity-light-200;
+		min-height: inherit;
 		outline: 1px dashed $dark-gray-150;
 		outline-offset: -1px;
+
+		.is-dark-theme & {
+			background: $light-opacity-light-200;
+		}
 
 		&:hover {
 			outline: 1px dashed $dark-gray-500;
@@ -53,6 +81,26 @@
 		}
 	}
 
+	.is-style-layered {
+		.block-editor-media-placeholder {
+			background: $light-gray-200;
+		}
+
+		.components-form-file-upload {
+			display: none;
+		}
+
+		// Move the close button where its visible on the Layered style.
+		li:nth-child(4) .components-coblocks-gallery-item__remove-menu {
+			left: 2px;
+			right: auto;
+		}
+	}
+
+	.is-dark-theme .block-editor-media-placeholder {
+		background: $light-opacity-light-200;
+	}
+
 	// Captions.
 	.editor-rich-text {
 		bottom: 0;
@@ -76,6 +124,7 @@
 	}
 }
 
-.wp-block-coblocks-gallery-collage__figure.is-transient img {
-	opacity: 0.3;
+// Shim for styles panel.
+.components-panel__body .block-editor-block-preview__container .wp-block-coblocks-gallery-collage .components-placeholder__fieldset {
+	display: none;
 }

@@ -42,7 +42,11 @@ class GalleryCollageEdit extends Component {
 			this.setupImageLocations();
 
 			if ( this.props.className.includes( 'is-style-layered' ) ) {
-				this.props.setAttributes( { gutter: 0, gutterMobile: 0 } );
+				this.props.setAttributes( { gutter: 10, gutterMobile: 10 } );
+			}
+
+			if ( ! this.props.className.includes( 'is-style-layered' ) ) {
+				this.props.setAttributes( { shadow: null } );
 			}
 		}
 
@@ -70,14 +74,6 @@ class GalleryCollageEdit extends Component {
 			this.setState( { selectedImage: index } );
 		}
 	}
-
-	locationClasses = ( classes ) => classnames( classes,
-		{
-			'has-gutter': !! this.props.attributes.gutter,
-			[ `has-gutter-${ this.props.attributes.gutter }` ]: !! this.props.attributes.gutter,
-			[ `has-gutter-mobile-${ this.props.attributes.gutterMobile }` ]: !! this.props.attributes.gutterMobile,
-		}
-	);
 
 	uploadImage = ( files, index ) => {
 		mediaUpload( {
@@ -138,10 +134,11 @@ class GalleryCollageEdit extends Component {
 			<Fragment>
 				<a onClick={ () => this.onSelectImage( image.index ) }>
 					<figure
-						className={ this.locationClasses( {
+						className={ classnames( {
 							'wp-block-coblocks-gallery-collage__figure': true,
 							'is-transient': isBlobURL( image.url ),
 							'is-selected': isSelected,
+							[ `has-shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
 						} ) }>
 						{ isSelected && (
 							<div className="components-coblocks-gallery-item__remove-menu">
@@ -186,10 +183,65 @@ class GalleryCollageEdit extends Component {
 		);
 	}
 
+	gutterClasses = ( index ) => {
+		const {
+			attributes,
+			className,
+		} = this.props;
+
+		const {
+			gutter,
+			gutterMobile,
+		} = attributes;
+
+		let gutterIndex;
+
+		switch ( index ) {
+			case 0:
+				gutterIndex = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+				break;
+			case 1:
+				gutterIndex = `pl-${ gutterMobile } desktop:pl-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+				break;
+			case 2:
+				gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+				break;
+			case 3:
+				gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+				break;
+			case 4:
+				gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+				break;
+		}
+
+		if ( className.includes( 'is-style-tiled' ) ) {
+			switch ( index ) {
+				case 0:
+					gutterIndex = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+					break;
+				case 1:
+					gutterIndex = `pl-${ gutterMobile } desktop:pl-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+					break;
+				case 2:
+					gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter }`;
+					break;
+				case 3:
+					gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+					break;
+			}
+		}
+
+		if ( className.includes( 'is-style-layered' ) ) {
+			gutterIndex = null;
+		}
+
+		return gutterIndex;
+	};
+
 	renderPlaceholder( index ) {
 		return (
 			<MediaPlaceholder
-				className={ this.locationClasses( 'wp-block-coblocks-gallery-collage__figure' ) }
+				className={ classnames( 'wp-block-coblocks-gallery-collage__figure' ) }
 				allowedTypes={ [ 'image' ] }
 				multiple={ false }
 				icon={ false }
@@ -225,12 +277,17 @@ class GalleryCollageEdit extends Component {
 				<div className={ classnames( className, {
 					[ `has-filter-${ filter }` ]: filter !== 'none',
 					[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
-				} ) }>
+				} ) }
+				>
 					<ul>
 						{ this.state.images.map( ( img, index ) => {
 							const theIndex = img.index || index;
+
 							return (
-								<li className="wp-block-coblocks-gallery-collage__item" key={ `image-${ theIndex }` }>
+								<li
+									key={ `image-${ theIndex }` }
+									className={ classnames( 'wp-block-coblocks-gallery-collage__item', this.gutterClasses( index ) ) }
+								>
 									{ !! img.url ? this.renderImage( theIndex ) : this.renderPlaceholder( theIndex ) }
 								</li>
 							);
