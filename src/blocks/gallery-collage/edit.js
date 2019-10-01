@@ -184,7 +184,6 @@ class GalleryCollageEdit extends Component {
 	}
 
 	gutterClasses = ( index ) => {
-
 		const {
 			attributes,
 			className,
@@ -216,7 +215,6 @@ class GalleryCollageEdit extends Component {
 		}
 
 		if ( className.includes( 'is-style-tiled' ) ) {
-
 			switch ( index ) {
 				case 0:
 					gutterIndex = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
@@ -279,7 +277,7 @@ class GalleryCollageEdit extends Component {
 				<div className={ classnames( className, {
 					[ `has-filter-${ filter }` ]: filter !== 'none',
 					[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
-					} ) }
+				} ) }
 				>
 					<ul>
 						{ this.state.images.map( ( img, index ) => {
