@@ -86,7 +86,7 @@ const deprecated =
 						className={ masonryClasses }
 						style={ masonryStyles }
 					>
-						{ images.map( ( image, index ) => {
+						{ images.map( ( image ) => {
 							let href;
 
 							switch ( linkTo ) {

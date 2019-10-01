@@ -38,7 +38,6 @@ const deprecated =
 			gutter,
 			gutterMobile,
 			images,
-			lightbox,
 			linkTo,
 			radius,
 			rel,
@@ -102,7 +101,7 @@ const deprecated =
 			<div className={ classes }>
 				{ BackgroundVideo( attributes ) }
 				<ul className={ innerClasses } style={ innerStyles }>
-					{ images.map( ( image, index ) => {
+					{ images.map( ( image ) => {
 						let href;
 
 						switch ( linkTo ) {
