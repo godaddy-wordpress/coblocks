@@ -4,13 +4,12 @@
 
 	const lightboxModals = $( '.has-lightbox' );
 
-	$.each( lightboxModals, function( i, lightbox ) {
-		lightbox.className += ' lightbox-' + i + ' ';
-
-		renderLightboxModal( '.lightbox-' + i + ' ' );
+	$.each( lightboxModals, function( index, lightbox ) {
+		lightbox.className += ' lightbox-' + index + ' ';
+		renderLightboxModal( index );
 	} );
 
-	function renderLightboxModal( lightboxClass ) {
+	function renderLightboxModal( lightboxIndex ) {
 		const wrapper = $( '<div/>', { class: 'coblocks-lightbox' } );
 		const wrapperBackground = $( '<div/>', { class: 'coblocks-lightbox__background' } );
 		const modalHeading = $( '<div/>', { class: 'coblocks-lightbox__heading' } );
@@ -23,7 +22,7 @@
 		const arrowRight = $( '<div/>', { class: 'arrow-right' } );
 		const arrowLeft = $( '<div/>', { class: 'arrow-left' } );
 
-		const images = $( '.has-lightbox' + lightboxClass + ' ul li figure img' );
+		const images = $( `.has-lightbox.lightbox-${ lightboxIndex } ul li figure img` );
 		let index;
 
 		modalHeading.append( counter, close );
@@ -38,17 +37,13 @@
 
 		const imagePreloader = {};
 
-		images.click( function( e ) {
-			$.each( images, function( i, img ) {
-				imagePreloader[ 'img-' + i ] = new window.Image();
-				imagePreloader[ 'img-' + i ].src = img.attributes[ 0 ].value;
-			} );
+		images.each( function( index, img ) {
+			imagePreloader[ `img-${ index }` ] = new window.Image();
+			imagePreloader[ `img-${ index }` ].src = img.attributes.src.value;
 
-			index = Number( e.target.attributes[ 4 ].value );
-			wrapper.css( 'display', 'flex' );
-			wrapperBackground.css( 'background-image', 'url(' + imagePreloader[ 'img-' + index ].src + ')' );
-			image.attr( 'src', imagePreloader[ 'img-' + index ].src );
-			counter.html( ( Number( e.target.attributes[ 4 ].value ) + 1 ) + ' / ' + images.length );
+			$( img ).click( function() {
+				changeImage( index );
+			} );
 		} );
 
 		arrowLeftContainer.click( function() {
@@ -69,14 +64,12 @@
 			wrapper.css( 'display', 'none' );
 		} );
 
-		function changeImage( index ) {
-			$.each( images, function( i, img ) {
-				if ( parseInt( img.attributes[ 4 ].value ) === index ) {
-					wrapperBackground.css( 'background-image', 'url(' + imagePreloader[ 'img-' + i ].src + ')' );
-					image.attr( 'src', imagePreloader[ 'img-' + i ].src );
-					counter.html( ( Number( img.attributes[ 4 ].value ) + 1 ) + ' / ' + images.length );
-				}
-			} );
+		function changeImage( imageIndex ) {
+			index = imageIndex;
+			wrapper.css( 'display', 'flex' );
+			wrapperBackground.css( 'background-image', 'url(' + imagePreloader[ `img-${ index }` ].src + ')' );
+			image.attr( 'src', imagePreloader[ `img-${ index }` ].src );
+			counter.html( ( index + 1 ) + ' / ' + images.length );
 		}
 	}
 }( jQuery ) );
