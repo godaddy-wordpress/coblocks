@@ -25,7 +25,7 @@ const save = ( props, className ) => {
 	} = attributes;
 
 	const classes = classnames( 'wp-block-coblocks-gallery-collage__figure', {
-		[ `has-shadow-${ shadow }` ]: shadow,
+		[ `has-shadow-${ shadow }` ]: shadow && shadow !== 'none',
 	} );
 
 	return (
