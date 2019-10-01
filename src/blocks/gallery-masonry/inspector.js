@@ -89,6 +89,12 @@ class Inspector extends Component {
 						step={ 1 }
 					/> }
 					<ToggleControl
+						label={ __( 'Lightbox' ) }
+						checked={ !! lightbox }
+						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+						help={ this.getLightboxHelp }
+					/>
+					<ToggleControl
 						label={ __( 'Captions' ) }
 						checked={ !! captions }
 						onChange={ () => setAttributes( { captions: ! captions } ) }
@@ -102,12 +108,6 @@ class Inspector extends Component {
 						options={ captionOptions }
 					/>
 					}
-					<ToggleControl
-						label={ __( 'Lightbox' ) }
-						checked={ !! lightbox }
-						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
-						help={ this.getLightboxHelp }
-					/>
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
 			</InspectorControls>
