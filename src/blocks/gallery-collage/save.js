@@ -21,7 +21,12 @@ const save = ( props, className ) => {
 		linkTo,
 		rel,
 		target,
+		shadow,
 	} = attributes;
+
+	const classes = classnames( 'wp-block-coblocks-gallery-collage__figure', {
+		[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
+	} );
 
 	return (
 		<div className={ classnames( className, {
@@ -53,20 +58,40 @@ const save = ( props, className ) => {
 
 					switch ( index ) {
 						case 0:
-							gutterClasses = `pr-${ gutter } pb-${ gutter }`;
+							gutterClasses = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
 							break;
 						case 1:
-							gutterClasses = `pl-${ gutter } pb-${ gutter }`;
+							gutterClasses = `pl-${ gutterMobile } desktop:pl-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
 							break;
 						case 2:
-							gutterClasses = `pt-${ gutter } pr-${ gutter } pl-${ gutter }`;
+							gutterClasses = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
 							break;
 						case 3:
-							gutterClasses = `pt-${ gutter } pr-${ gutter } pl-${ gutter }`;
+							gutterClasses = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
 							break;
 						case 4:
-							gutterClasses = `pt-${ gutter } pl-${ gutter }`;
+							gutterClasses = `pt-${ gutterMobile } desktop:pt-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
 							break;
+					}
+
+					if ( className ) {
+						if ( className.includes( 'is-style-tiled' ) ) {
+
+							switch ( index ) {
+								case 0:
+									gutterClasses = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+									break;
+								case 1:
+									gutterClasses = `pl-${ gutterMobile } desktop:pl-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+									break;
+								case 2:
+									gutterClasses = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter }`;
+									break;
+								case 3:
+									gutterClasses = `pt-${ gutterMobile } desktop:pt-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+									break;
+							}
+						}
 					}
 
 					if ( className ) {
@@ -80,7 +105,7 @@ const save = ( props, className ) => {
 							key={ `image-${ index }` }
 							className={ classnames( 'wp-block-coblocks-gallery-collage__item', gutterClasses ) }
 						>
-							<figure className="wp-block-coblocks-gallery-collage__figure">
+							<figure className={ classes }>
 								{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 								{ captions && image.caption && (
 									<RichText.Content tagName="figcaption" className="wp-block-coblocks-gallery-collage__caption" value={ image.caption } />

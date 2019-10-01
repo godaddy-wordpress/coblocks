@@ -134,6 +134,7 @@ class GalleryCollageEdit extends Component {
 							'wp-block-coblocks-gallery-collage__figure': true,
 							'is-transient': isBlobURL( image.url ),
 							'is-selected': isSelected,
+							[ `has-shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow !== 'none' || this.props.attributes.shadow !== undefined,
 						} ) }>
 						{ isSelected && (
 							<div className="components-coblocks-gallery-item__remove-menu">
@@ -187,25 +188,26 @@ class GalleryCollageEdit extends Component {
 
 		const {
 			gutter,
+			gutterMobile,
 		} = attributes;
 
 		let gutterIndex;
 
 		switch ( index ) {
 			case 0:
-				gutterIndex = `pr-${ gutter } pb-${ gutter }`;
+				gutterIndex = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
 				break;
 			case 1:
-				gutterIndex = `pl-${ gutter } pb-${ gutter }`;
+				gutterIndex = `pl-${ gutterMobile } desktop:pl-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
 				break;
 			case 2:
-				gutterIndex = `pt-${ gutter } pr-${ gutter } pl-${ gutter }`;
+				gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
 				break;
 			case 3:
-				gutterIndex = `pt-${ gutter } pr-${ gutter } pl-${ gutter }`;
+				gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
 				break;
 			case 4:
-				gutterIndex = `pt-${ gutter } pl-${ gutter }`;
+				gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
 				break;
 		}
 
@@ -213,16 +215,16 @@ class GalleryCollageEdit extends Component {
 
 			switch ( index ) {
 				case 0:
-					gutterIndex = `pr-${ gutter } pb-${ gutter }`;
+					gutterIndex = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
 					break;
 				case 1:
-					gutterIndex = `pl-${ gutter } pb-${ gutter }`;
+					gutterIndex = `pl-${ gutterMobile } desktop:pl-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
 					break;
 				case 2:
-					gutterIndex = `pt-${ gutter } pr-${ gutter }`;
+					gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter }`;
 					break;
 				case 3:
-					gutterIndex = `pt-${ gutter } pl-${ gutter }`;
+					gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
 					break;
 			}
 		}
