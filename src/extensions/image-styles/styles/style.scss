@@ -11,3 +11,13 @@
 	mask-repeat: no-repeat;
 	mask-size: cover;
 }
+
+// Shim for pre WordPress 5.3 - @todo, remove when 5.3 is released.
+.block-editor-block-styles__item-preview .wp-block-image {
+	margin-top: 0;
+
+	.components-resizable-box__container {
+		height: 100% !important;
+		width: 100% !important;
+	}
+}

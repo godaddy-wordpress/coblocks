@@ -33,13 +33,12 @@ const attributes = {
 const settings = {
 	title: _x( 'Carousel', 'block name' ),
 	description: __( 'Display multiple images in a beautiful carousel gallery.' ),
-	category: 'coblocks-galleries',
 	attributes,
 	icon,
 	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ) ],
-
 	supports: {
 		align: [ 'wide', 'full' ],
+		html: false,
 		coBlocksSpacing: true,
 	},
 	example: {
