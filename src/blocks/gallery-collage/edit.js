@@ -256,9 +256,6 @@ class GalleryCollageEdit extends Component {
 										gutterIndex = `mt-${ this.props.attributes.gutter } mr-${ this.props.attributes.gutter }`;
 										break;
 									case 3:
-										gutterIndex = `mt-${ this.props.attributes.gutter } mr-${ this.props.attributes.gutter } ml-${ this.props.attributes.gutter }`;
-										break;
-									case 4:
 										gutterIndex = `mt-${ this.props.attributes.gutter } ml-${ this.props.attributes.gutter }`;
 										break;
 								}
