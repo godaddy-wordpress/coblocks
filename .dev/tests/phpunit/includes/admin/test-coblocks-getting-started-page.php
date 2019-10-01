@@ -37,7 +37,6 @@ class CoBlocks_Getting_Started_Page_Tests extends WP_UnitTestCase {
 
 		$actions = [
 			[ 'admin_menu', 'screen_page' ],
-			[ 'activated_plugin', 'redirect' ],
 			[ 'admin_enqueue_scripts', 'load_style', 100 ],
 		];
 
@@ -134,12 +133,4 @@ class CoBlocks_Getting_Started_Page_Tests extends WP_UnitTestCase {
 
 	}
 
-	/**
-	 * Test the plugin redirects properly
-	 */
-	public function test_redirect() {
-
-		$this->markTestSkipped( 'Todo: Figure out how to properly test the redirection.' );
-
-	}
 }
