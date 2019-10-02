@@ -81,19 +81,6 @@
 		}
 	}
 
-	.has-text-color {
-		p,
-		a,
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			color: inherit !important;
-		}
-	}
-
 	.wp-block-coblocks-feature__inner {
 		// Add padding so the feature does not run into the viewport edge on mobile.
 		&.has-no-padding {
