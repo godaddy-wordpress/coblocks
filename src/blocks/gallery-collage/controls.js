@@ -25,15 +25,11 @@ class Controls extends Component {
 	render() {
 		const { attributes } = this.props;
 		const { images } = attributes;
-		const hasImages = !! images.length;
+		const hasImages = !! images.filter( image => typeof image.id !== 'undefined' ).length;
 
 		return (
 			<BlockControls>
-				{ hasImages && (
-					<MediaFilterControl
-						{ ...this.props }
-					/>
-				) }
+				{ hasImages && <MediaFilterControl { ...this.props } /> }
 			</BlockControls>
 		);
 	}
