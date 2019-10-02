@@ -41,14 +41,18 @@ const save = ( { attributes, className } ) => {
 	const textClass = getColorClassName( 'color', iconColor );
 	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-	const classes = classnames( 'wp-block-coblocks-icon__inner', {
+	const classes = classnames( className, {
+		[ `has-text-align-${ contentAlign }` ]: contentAlign,
+	} );
+
+	const innerClasses = classnames( 'wp-block-coblocks-icon__inner', {
 		'has-text-color': iconColor || customIconColor,
 		[ textClass ]: textClass,
 		'has-background': backgroundColor || customBackgroundColor,
 		[ backgroundClass ]: backgroundClass,
 	} );
 
-	const styles = {
+	const innerStyles = {
 		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 		color: textClass ? undefined : customIconColor,
 		fill: textClass ? undefined : customIconColor,
@@ -59,8 +63,8 @@ const save = ( { attributes, className } ) => {
 	};
 
 	return (
-		<div className={ className } style={ { textAlign: contentAlign ? contentAlign : undefined } }>
-			<div className={ classes } style={ styles }>
+		<div className={ classes }>
+			<div className={ innerClasses } style={ innerStyles }>
 				{ href ?
 					( <a href={ href } target={ linkTarget } rel={ rel }>
 						{ svgs[ iconStyle ][ icon ].icon }
