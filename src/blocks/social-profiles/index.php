@@ -141,7 +141,7 @@ function coblocks_render_social_profiles_block( $attributes ) {
 	}
 
 	if ( isset( $attributes['textAlign'] ) ) {
-		$class .= ' has-text-align-' . $attributes['textAlign'];
+		$class .= " has-text-align-{$attributes['textAlign']}";
 	}
 
 	if ( isset( $attributes['blockBackgroundColor'] ) || isset( $attributes['customBlockBackgroundColor'] ) ) {
