@@ -54,22 +54,46 @@ const transforms = {
 		{
 			type: 'block',
 			blocks: [ 'core/gallery' ],
-			transform: ( attributes ) => createBlock( 'core/gallery', GalleryTransforms( attributes ) ),
+			transform: ( attributes ) => {
+				const newAttributes = Object.assign(
+					GalleryTransforms( attributes ),
+					{ images: attributes.images.filter( image => typeof image.id !== 'undefined' ) }
+				);
+				return createBlock( 'core/gallery', newAttributes );
+			},
 		},
 		{
 			type: 'block',
 			blocks: [ 'coblocks/gallery-carousel' ],
-			transform: ( attributes ) => createBlock( 'coblocks/gallery-carousel', GalleryTransforms( attributes ) ),
+			transform: ( attributes ) => {
+				const newAttributes = Object.assign(
+					GalleryTransforms( attributes ),
+					{ images: attributes.images.filter( image => typeof image.id !== 'undefined' ) }
+				);
+				return createBlock( 'coblocks/gallery-carousel', newAttributes );
+			},
 		},
 		{
 			type: 'block',
 			blocks: [ 'coblocks/gallery-masonry' ],
-			transform: ( attributes ) => createBlock( 'coblocks/gallery-masonry', GalleryTransforms( attributes ) ),
+			transform: ( attributes ) => {
+				const newAttributes = Object.assign(
+					GalleryTransforms( attributes ),
+					{ images: attributes.images.filter( image => typeof image.id !== 'undefined' ) }
+				);
+				return createBlock( 'coblocks/gallery-masonry', newAttributes );
+			},
 		},
 		{
 			type: 'block',
 			blocks: [ 'coblocks/gallery-stacked' ],
-			transform: ( attributes ) => createBlock( 'coblocks/gallery-stacked', GalleryTransforms( attributes ) ),
+			transform: ( attributes ) => {
+				const newAttributes = Object.assign(
+					GalleryTransforms( attributes ),
+					{ images: attributes.images.filter( image => typeof image.id !== 'undefined' ) }
+				);
+				return createBlock( 'coblocks/gallery-stacked', newAttributes );
+			},
 		},
 	],
 };
