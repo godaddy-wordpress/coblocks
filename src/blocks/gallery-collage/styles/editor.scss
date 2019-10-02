@@ -131,7 +131,12 @@
 	}
 }
 
-// Shim for styles panel.
-.components-panel__body .block-editor-block-preview__container .wp-block-coblocks-gallery-collage .components-placeholder__fieldset {
-	display: none;
+.block-editor-block-preview__content .wp-block-coblocks-gallery-collage {
+	ul {
+		list-style-type: none;
+	}
+
+	.components-placeholder__fieldset {
+		display: none;
+	}
 }
