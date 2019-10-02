@@ -38,7 +38,6 @@ const deprecated =
 			gutter,
 			gutterMobile,
 			images,
-			lightbox,
 			linkTo,
 			radius,
 			rel,
@@ -60,9 +59,7 @@ const deprecated =
 		);
 
 		const classes = classnames(
-			className, {
-				'has-lightbox': lightbox,
-			}
+			className, {}
 		);
 
 		// Body color class and styles.
@@ -104,7 +101,7 @@ const deprecated =
 			<div className={ classes }>
 				{ BackgroundVideo( attributes ) }
 				<ul className={ innerClasses } style={ innerStyles }>
-					{ images.map( ( image, index ) => {
+					{ images.map( ( image ) => {
 						let href;
 
 						switch ( linkTo ) {
@@ -126,7 +123,7 @@ const deprecated =
 								[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
 							} );
 
-						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } data-index={ index } className={ imgClasses } />;
+						const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
 
 						return (
 							<li key={ image.id || image.url } className="coblocks-gallery--item">
