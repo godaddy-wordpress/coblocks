@@ -8,6 +8,7 @@ import './styles/style.scss';
  * Internal dependencies
  */
 import edit from './edit';
+import deprecated from './deprecated';
 import icon from './icon';
 import metadata from './block.json';
 import save from './save';
@@ -44,6 +45,7 @@ const settings = {
 	attributes,
 	edit,
 	save,
+	deprecated,
 };
 
 export { name, category, metadata, settings };

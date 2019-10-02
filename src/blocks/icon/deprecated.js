@@ -6,12 +6,13 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { RichText, getColorClassName } = wp.blockEditor;
+const { getColorClassName } = wp.blockEditor;
 
 /**
  * Internal dependencies
  */
 import metadata from './block.json';
+import svgs from './svgs';
 
 const deprecated = [
 	{
