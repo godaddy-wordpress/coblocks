@@ -21,8 +21,6 @@ const { InnerBlocks, RichText } = wp.blockEditor;
 /**
  * Constants
  */
-const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/list', 'core/image', 'core/columns', 'core/column', 'coblocks/row', 'coblocks/column', 'coblocks/highlight', 'coblocks/alert', 'coblocks/social' ];
-
 const TEMPLATE = [ [ 'core/paragraph', { placeholder: 'Add content...' } ] ];
 
 /**
@@ -91,7 +89,6 @@ class Edit extends Component {
 						style={ { borderColor: backgroundColor.color } }
 					>
 						<InnerBlocks
-							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ TEMPLATE }
 							templateInsertUpdatesSelection={ false }
 						/>
