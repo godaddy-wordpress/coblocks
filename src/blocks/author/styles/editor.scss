@@ -53,17 +53,13 @@
 			}
 
 			svg {
-				fill: #444;
+				fill: $dark-gray-500;
 				margin: auto auto;
 				pointer-events: none;
 				transform: translate3d(0, 0, 0);
 				transition: transform 100ms cubic-bezier(0.645, 0.045, 0.355, 1);
 			}
 		}
-	}
-
-	&.has-text-color p.wp-block-coblocks-author__biography {
-		color: inherit;
 	}
 }
 
