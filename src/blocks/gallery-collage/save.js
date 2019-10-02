@@ -52,7 +52,7 @@ const save = ( props, className ) => {
 					}
 
 					const imgClasses = classnames( image.id && [ `wp-image-${ image.id }` ] );
-					const img = ( <img src={ image.url } alt={ image.alt } data-index={ image.index } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } /> );
+					const img = typeof image.url === 'undefined' ? null : ( <img src={ image.url } alt={ image.alt } data-index={ image.index } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } /> );
 
 					let gutterClasses;
 
@@ -104,12 +104,14 @@ const save = ( props, className ) => {
 							key={ `image-${ index }` }
 							className={ classnames( 'wp-block-coblocks-gallery-collage__item', gutterClasses ) }
 						>
-							<figure className={ classes }>
-								{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
-								{ captions && image.caption && (
-									<RichText.Content tagName="figcaption" className="wp-block-coblocks-gallery-collage__caption" value={ image.caption } />
-								) }
-							</figure>
+							{ img &&
+								<figure className={ classes }>
+									{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
+									{ captions && image.caption && (
+										<RichText.Content tagName="figcaption" className="wp-block-coblocks-gallery-collage__caption" value={ image.caption } />
+									) }
+								</figure>
+							}
 						</li>
 					);
 				} ) }
