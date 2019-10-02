@@ -54,8 +54,8 @@ const settings = {
 	},
 	transforms,
 	edit,
-	deprecated,
 	save,
+	deprecated,
 };
 
 export { name, category, icon, metadata, settings };

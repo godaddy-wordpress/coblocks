@@ -40,9 +40,9 @@ const settings = {
 	},
 	attributes,
 	transforms,
-	deprecated,
 	edit,
 	save,
+	deprecated,
 };
 
 export { name, category, metadata, settings };
