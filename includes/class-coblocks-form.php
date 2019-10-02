@@ -515,7 +515,7 @@ class CoBlocks_Form {
 
 			$this->email_content .= '<li>' . sanitize_text_field( $data['label'] ) . ': ' . sanitize_text_field( $data['value'] ) . '</li>';
 
-			if ( $data['label'] === 'Email' ) {
+			if ( 'Email' === $data['label'] ) {
 				$this->reply_to_email = $data['value'];
 			}
 		}
@@ -552,13 +552,13 @@ class CoBlocks_Form {
 		/**
 		 * Message headers to email
 		 *
-		 * @param array   $headers 			   Headers to send.
+		 * @param array   $headers             Headers to send.
 		 * @param string  $reply_to_email      Reply to address.
 		 * @param array   $_POST               Submitted form data.
 		 * @param integer $post_id             Current post ID.
 		 */
 		$headers[] = (string) apply_filters( 'coblocks_form_email_headers', 'Reply-To: ' . $this->reply_to_email . ' <' . $this->reply_to_email . '>', $_POST, $post_id );
-		
+
 		add_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
 
 		$email = wp_mail( $to, $subject, $email_content, $headers );
