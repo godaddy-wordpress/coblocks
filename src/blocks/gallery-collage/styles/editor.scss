@@ -28,11 +28,9 @@
 		list-style-type: none;
 	}
 
-	&[data-align="full"] .wp-block-coblocks-gallery-collage:not(.is-style-tiled) {
-		ul {
-			padding-left: 1em;
-			padding-right: 1em;
-		}
+	&[data-align="full"] .wp-block-coblocks-gallery-collage ul {
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 
 	.block-editor-media-placeholder__upload-button {

@@ -1,4 +1,11 @@
 .wp-block-coblocks-gallery-collage {
+	&.alignfull {
+		ul {
+			padding-left: 1em;
+			padding-right: 1em;
+		}
+	}
+
 	ul {
 		display: flex;
 		flex-wrap: wrap;
@@ -63,13 +70,6 @@
 			.block-editor-media-placeholder {
 				padding-top: 150%;
 			}
-		}
-	}
-
-	&.alignfull:not(.is-style-tiled) {
-		ul {
-			padding-left: 1em;
-			padding-right: 1em;
 		}
 	}
 
