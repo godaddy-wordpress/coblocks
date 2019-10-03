@@ -40,15 +40,15 @@ function InlineTextColor( { attributes } ) {
 	const textClass = getColorClassName( 'color', textColor );
 	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-	let classlist = {
+	const classlist = {
 		'has-text-color': textColor || customTextColor,
 		[ textClass ]: textClass,
 	};
 
 	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
-		classlist = Object.assign( classlist, [ `coblocks-row-${ coblocks.id }` ] );
+		classlist[ `coblocks-row-${ coblocks.id }` ] = 'true';
 	}
-
+	console.log( classlist );
 	const classes = classnames( classlist );
 
 	const styles = {
