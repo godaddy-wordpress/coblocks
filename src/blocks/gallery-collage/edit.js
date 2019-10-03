@@ -30,6 +30,7 @@ class GalleryCollageEdit extends Component {
 		this.state = {
 			images: [],
 			selectedImage: null,
+			lastGutterValue: null,
 		};
 	}
 
@@ -41,12 +42,15 @@ class GalleryCollageEdit extends Component {
 		if ( this.props.className !== prevProps.className ) {
 			this.setupImageLocations();
 
-			if ( this.props.className.includes( 'is-style-layered' ) ) {
-				this.props.setAttributes( { gutter: 2 } );
-			}
-
 			if ( ! this.props.className.includes( 'is-style-layered' ) ) {
-				this.props.setAttributes( { shadow: null } );
+				this.props.setAttributes( {
+					shadow: 'none',
+					gutter: this.state.lastGutterValue || this.props.attributes.gutter,
+				} );
+				this.setState( { lastGutterValue: null } );
+			} else {
+				this.setState( { lastGutterValue: this.props.attributes.gutter } );
+				this.props.setAttributes( { gutter: 0 } );
 			}
 		}
 
@@ -272,6 +276,7 @@ class GalleryCollageEdit extends Component {
 
 		return (
 			<Fragment>
+				<pre>{JSON.stringify( { 'attribute.gutter': attributes.gutter, lastGutterValue: this.state.lastGutterValue }, null, 2 )}</pre>
 				<Controls { ...this.props } />
 				<Inspector { ...this.props } enableGutter={ enableGutter } enableCaptions={ enableCaptions } />
 				{ noticeUI }
