@@ -42,7 +42,7 @@ class GalleryCollageEdit extends Component {
 			this.setupImageLocations();
 
 			if ( this.props.className.includes( 'is-style-layered' ) ) {
-				this.props.setAttributes( { gutter: 10 } );
+				this.props.setAttributes( { gutter: 2 } );
 			}
 
 			if ( ! this.props.className.includes( 'is-style-layered' ) ) {
@@ -138,7 +138,7 @@ class GalleryCollageEdit extends Component {
 							'wp-block-coblocks-gallery-collage__figure': true,
 							'is-transient': isBlobURL( image.url ),
 							'is-selected': isSelected,
-							[ `has-shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
+							[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
 						} ) }>
 						{ isSelected && (
 							<div className="components-coblocks-gallery-item__remove-menu">

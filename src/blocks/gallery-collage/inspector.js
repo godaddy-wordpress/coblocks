@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import SizeControl from '../../components/size-control';
 import captionOptions from '../../components/block-gallery/options/caption-options';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 
@@ -78,6 +77,29 @@ class Inspector extends Component {
 			},
 		];
 
+		const shadowOptions = [
+			{
+				value: 'none',
+				label: _x( 'None', 'label for no shadow option' ),
+				shortName: _x( 'None', 'abbreviation for "Short" size' ),
+			},
+			{
+				value: 'sm',
+				label: _x( 'Small', 'label for small shadow option' ),
+				shortName: _x( 'S', 'abbreviation for "Small" size' ),
+			},
+			{
+				value: 'md',
+				label: _x( 'Medium', 'label for medium shadow option' ),
+				shortName: _x( 'M', 'abbreviation for "Medium" size' ),
+			},
+			{
+				value: 'lg',
+				label: _x( 'Large', 'label for large shadow option' ),
+				shortName: _x( 'L', 'abbreviation for "Large" size' ),
+			},
+		];
+
 		return (
 			<InspectorControls>
 				<PanelBody title={ __( 'Collage Settings' ) }>
@@ -101,13 +123,25 @@ class Inspector extends Component {
 							</ButtonGroup>
 						</BaseControl>
 					}
-					{ ! enableGutter && <SizeControl { ...this.props }
-						onChange={ this.setShadowTo }
-						value={ shadow }
-						label={ __( 'Shadow' ) }
-						reset={ false }
-						className={ 'components-coblocks-size-control--shadow' }
-					/>
+					{ ! enableGutter &&
+						<BaseControl label={ __( 'Shadow' ) }>
+							<ButtonGroup aria-label={ __( 'Shadow' ) }>
+								{ shadowOptions.map( ( option ) => {
+									const isCurrent = shadow === option.value;
+									return (
+										<Button
+											key={ `option-${ option.value }` }
+											isLarge
+											isPrimary={ isCurrent }
+											aria-pressed={ isCurrent }
+											onClick={ () => setAttributes( { shadow: option.value } ) }
+										>
+											{ option.shortName }
+										</Button>
+									);
+								} ) }
+							</ButtonGroup>
+						</BaseControl>
 					}
 					{ enableCaptions && <ToggleControl
 						label={ __( 'Captions' ) }
