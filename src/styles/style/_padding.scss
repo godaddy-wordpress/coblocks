@@ -1,4 +1,5 @@
 $padding: (
+	0: 0,
 	1: 0.25em,
 	2: 0.25em,
 	3: 0.5em,
@@ -6,6 +7,7 @@ $padding: (
 );
 
 $padding__sm: (
+	0: 0,
 	1: 0.5em,
 	2: 1em,
 	3: 1.5em,
@@ -13,6 +15,7 @@ $padding__sm: (
 );
 
 $padding__lg: (
+	0: 0,
 	1: 1em,
 	2: 1.5em,
 	3: 2em,
@@ -73,7 +76,7 @@ $padding__lg: (
 	}
 }
 
-// Older utilities.
+// Old utilities.
 .has-small-padding {
 	padding: 14px;
 }
