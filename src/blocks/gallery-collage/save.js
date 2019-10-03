@@ -8,8 +8,7 @@ import classnames from 'classnames';
  */
 const { RichText } = wp.blockEditor;
 
-const save = ( { attributes, className } ) => {
-
+const save = ( { attributes } ) => {
 	const {
 		captionStyle,
 		captions,
