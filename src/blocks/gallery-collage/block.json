@@ -49,6 +49,10 @@
 		"gutter": {
 			"type": "number",
 			"default": 2
+		},
+		"shadow": {
+			"type": "string",
+			"default": "none"
 		}
 	}
 }
