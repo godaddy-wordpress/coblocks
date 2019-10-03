@@ -8,8 +8,7 @@ import classnames from 'classnames';
  */
 const { RichText } = wp.blockEditor;
 
-const save = ( props, className ) => {
-	const { attributes } = props;
+const save = ( { attributes, className } ) => {
 
 	const {
 		captionStyle,
@@ -28,7 +27,7 @@ const save = ( props, className ) => {
 	} );
 
 	return (
-		<div className={ classnames( className, {
+		<div className={ classnames( attributes.className, {
 			[ `has-filter-${ filter }` ]: filter !== 'none',
 			[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
 		} ) }>
@@ -73,8 +72,8 @@ const save = ( props, className ) => {
 							break;
 					}
 
-					if ( className ) {
-						if ( className.includes( 'is-style-tiled' ) ) {
+					if ( attributes.className ) {
+						if ( attributes.className.includes( 'is-style-tiled' ) ) {
 							switch ( index ) {
 								case 0:
 									gutterClasses = '';
@@ -92,8 +91,8 @@ const save = ( props, className ) => {
 						}
 					}
 
-					if ( className ) {
-						if ( className.includes( 'is-style-layered' ) ) {
+					if ( attributes.className ) {
+						if ( attributes.className.includes( 'is-style-layered' ) ) {
 							gutterClasses = null;
 						}
 					}
