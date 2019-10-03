@@ -6,14 +6,29 @@
 
 	.has-left-content {
 		text-align: left;
+
+		img {
+			margin-left: 0;
+			margin-right: auto;
+		}
 	}
 
 	.has-center-content {
 		text-align: center;
+
+		img {
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
 
 	.has-right-content {
 		text-align: right;
+
+		img {
+			margin-left: auto;
+			margin-right: 0;
+		}
 	}
 
 	.wp-block-coblocks-feature {
@@ -63,19 +78,6 @@
 		@media (min-width: 600px) {
 			align-items: flex-start;
 			display: flex;
-		}
-	}
-
-	.has-text-color {
-		p,
-		a,
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			color: inherit !important;
 		}
 	}
 

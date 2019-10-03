@@ -25,7 +25,9 @@ function GalleryTransforms( props ) {
 		gutter: props.gutter,
 		gutterMobile: props.gutterMobile,
 		height: props.height,
-		images: props.images.map( ( image ) => helper.pickRelevantMediaFiles( image ) ),
+		images: props.images.map( ( image, index ) => {
+			return { ...helper.pickRelevantMediaFiles( image ), index };
+		} ),
 		linkTo: props.linkTo,
 		pageDots: props.pageDots,
 		prevNextButtons: props.prevNextButtons,
@@ -35,6 +37,8 @@ function GalleryTransforms( props ) {
 		shadow: props.shadow,
 		target: props.target,
 		lightbox: props.lightbox,
+		noBottomMargin: props.noBottomMargin,
+		noTopMargin: props.noTopMargin,
 	};
 
 	return transforms;

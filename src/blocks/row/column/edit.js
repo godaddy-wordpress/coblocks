@@ -96,7 +96,7 @@ class Edit extends Component {
 				columnBlocks &&
 				columnBlocks.innerBlocks &&
 				Object.keys( columnBlocks.innerBlocks ).length < 1,
-		} );
+		}, { [ `has-text-align-${ contentAlign }` ]: contentAlign } );
 
 		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 			classes = classnames( classes, `coblocks-column-${ coblocks.id }` );
@@ -167,7 +167,6 @@ class Edit extends Component {
 								`url(${ backgroundImg })` :
 								undefined,
 							color: textColor.color,
-							textAlign: contentAlign,
 						} }
 					>
 						<div className="wp-block-coblocks-column">
@@ -278,7 +277,7 @@ class Edit extends Component {
 				>
 					<div
 						className={ classes }
-						style={ { color: textColor.color, textAlign: contentAlign } }
+						style={ { color: textColor.color } }
 					>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }

@@ -40,6 +40,7 @@ import * as alert from './blocks/alert';
 import * as author from './blocks/author';
 import * as blogroll from './blocks/blogroll';
 import * as buttons from './blocks/buttons';
+import * as collage from './blocks/gallery-collage';
 import * as carousel from './blocks/gallery-carousel';
 import * as clickToTweet from './blocks/click-to-tweet';
 import * as column from './blocks/row/column';
@@ -98,6 +99,7 @@ export const registerCoBlocksBlocks = () => {
 		author,
 		blogroll,
 		buttons,
+		collage,
 		carousel,
 		clickToTweet,
 		column,

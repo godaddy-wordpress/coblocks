@@ -6,19 +6,16 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
-import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
+import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
  */
-const { RichText, getFontSizeClass, getColorClassName } = wp.blockEditor;
+const { RichText, getFontSizeClass } = wp.blockEditor;
 
 const save = ( { attributes, className } ) => {
 	const {
-		captionColor,
 		captions,
-		customCaptionColor,
 		customFontSize,
 		fontSize,
 		fullwidth,
@@ -39,21 +36,12 @@ const save = ( { attributes, className } ) => {
 	);
 
 	// Body color class and styles.
-	const textClass = getColorClassName( 'color', captionColor );
-
 	const innerClasses = classnames(
-		...GalleryClasses( attributes ),
-		...BackgroundClasses( attributes ), {
+		...GalleryClasses( attributes ), {
 			'has-fullwidth-images': fullwidth,
 			'has-margin': gutter > 0,
 		}
 	);
-
-	const innerStyles = {
-		...GalleryStyles( attributes ),
-		...BackgroundStyles( attributes ),
-		color: textClass ? undefined : customCaptionColor,
-	};
 
 	const fontSizeClass = getFontSizeClass( fontSize );
 
@@ -75,9 +63,8 @@ const save = ( { attributes, className } ) => {
 
 	return (
 		<div className={ classes }>
-			{ BackgroundVideo( attributes ) }
-			<ul className={ innerClasses } style={ innerStyles }>
-				{ images.map( ( image, index ) => {
+			<ul className={ innerClasses }>
+				{ images.map( ( image ) => {
 					let href;
 
 					switch ( linkTo ) {
@@ -99,7 +86,7 @@ const save = ( { attributes, className } ) => {
 							[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
 						} );
 
-					const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } data-index={ index } className={ imgClasses } />;
+					const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-imglink={ image.imgLink } data-link={ image.link } className={ imgClasses } />;
 
 					return (
 						<li key={ image.id || image.url } className="coblocks-gallery--item">

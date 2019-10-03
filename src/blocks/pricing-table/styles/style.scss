@@ -105,10 +105,10 @@ $gutter: 0.75em;
 	}
 }
 
-.has-center-content .wp-block-coblocks-pricing-table-item__price-wrapper {
+.has-text-align-center .wp-block-coblocks-pricing-table-item__price-wrapper {
 	justify-content: center;
 }
 
-.has-right-content .wp-block-coblocks-pricing-table-item__price-wrapper {
+.has-text-align-right .wp-block-coblocks-pricing-table-item__price-wrapper {
 	justify-content: flex-end;
 }

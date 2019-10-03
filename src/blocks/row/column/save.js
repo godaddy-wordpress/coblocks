@@ -24,7 +24,7 @@ const save = ( { attributes } ) => {
 	} = attributes;
 	const textClass = getColorClassName( 'color', textColor );
 
-	let classes = '';
+	let classes = classnames( { [ `has-text-align-${ contentAlign }` ]: contentAlign } );
 
 	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 		classes = classnames( classes, `coblocks-column-${ coblocks.id }` );
@@ -41,17 +41,13 @@ const save = ( { attributes } ) => {
 			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
 		} );
 
-	const styles = {
-		textAlign: contentAlign ? contentAlign : null,
-	};
-
 	const innerStyles = {
 		...BackgroundStyles( attributes ),
 		color: textClass ? undefined : customTextColor,
 	};
 
 	return (
-		<div className={ classes } style={ styles } >
+		<div className={ classes } >
 			<div className={ innerClasses } style={ innerStyles }>
 				{ BackgroundVideo( attributes ) }
 				<InnerBlocks.Content />

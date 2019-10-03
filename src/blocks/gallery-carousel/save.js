@@ -8,20 +8,17 @@ import classnames from 'classnames';
  */
 import './styles/style.scss';
 import './styles/editor.scss';
-import { BackgroundStyles, BackgroundClasses } from '../../components/background';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
  */
-const { getColorClassName, RichText } = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 
 const save = ( { attributes, className } ) => {
 	const {
 		autoPlay,
 		autoPlaySpeed,
-		captionColor,
-		customCaptionColor,
 		draggable,
 		freeScroll,
 		gridSize,
@@ -46,16 +43,11 @@ const save = ( { attributes, className } ) => {
 
 	const innerClasses = classnames(
 		'is-cropped',
-		...GalleryClasses( attributes ),
-		...BackgroundClasses( attributes ), {
+		...GalleryClasses( attributes ), {
 			'has-horizontal-gutter': gutter > 0,
 
 		}
 	);
-
-	const innerStyles = {
-		...BackgroundStyles( attributes ),
-	};
 
 	const flickityClasses = classnames(
 		'has-carousel',
@@ -98,15 +90,9 @@ const save = ( { attributes, className } ) => {
 		responsiveHeight: responsiveHeight,
 	};
 
-	const captionColorClass = getColorClassName( 'color', captionColor );
-
 	const captionClasses = classnames(
 		'coblocks-gallery--caption',
-		'coblocks-gallery--primary-caption',
-		captionColorClass, {
-			'has-caption-color': captionColorClass,
-
-		}
+		'coblocks-gallery--primary-caption', {}
 	);
 
 	const navClasses = classnames(
@@ -141,10 +127,6 @@ const save = ( { attributes, className } ) => {
 		wrapAround: false,
 	};
 
-	const captionStyles = {
-		color: captionColorClass ? undefined : customCaptionColor,
-	};
-
 	// Return early if there are no images.
 	if ( images.length <= 0 ) {
 		return;
@@ -152,10 +134,7 @@ const save = ( { attributes, className } ) => {
 
 	return (
 		<div className={ classes }>
-			<div
-				className={ innerClasses }
-				style={ innerStyles }
-			>
+			<div className={ innerClasses }>
 				<div
 					className={ flickityClasses }
 					style={ responsiveHeight ? undefined : flickityStyles }
@@ -191,7 +170,7 @@ const save = ( { attributes, className } ) => {
 					</div> : null
 				}
 			</div>
-			{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles } /> }
+			{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }
 		</div>
 	);
 };
