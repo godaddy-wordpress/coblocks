@@ -140,7 +140,7 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * [Remove the default block appender](https://github.com/godaddy/coblocks/pull/892) (added in Gutenberg 6.5) on the Row block
 * [Display the "Add" accordion item button](https://github.com/godaddy/coblocks/pull/836) only when the parent block is selected
 * [Remove background color and image support](https://github.com/godaddy/coblocks/pull/913) from gallery blocks
-* [Add top/bottom marging removal](https://github.com/godaddy/coblocks/pull/912) toggles to the gallery blocks
+* [Add top/bottom margin removal](https://github.com/godaddy/coblocks/pull/912) toggles to the gallery blocks
 * Removed a screenshot to [prevent a potential trademark violation](https://github.com/godaddy/coblocks/pull/911)
 * Minor code cleanups ([#924](https://github.com/godaddy/coblocks/pull/924), [#928](https://github.com/godaddy/coblocks/pull/928), [#931](https://github.com/godaddy/coblocks/pull/931), [#933](https://github.com/godaddy/coblocks/pull/933))
 
