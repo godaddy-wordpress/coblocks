@@ -240,7 +240,9 @@ class GalleryCollageEdit extends Component {
 	renderPlaceholder( index ) {
 		return (
 			<MediaPlaceholder
-				className={ classnames( 'wp-block-coblocks-gallery-collage__figure' ) }
+				className={ classnames( 'wp-block-coblocks-gallery-collage__figure', {
+					[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
+				} ) }
 				allowedTypes={ [ 'image' ] }
 				multiple={ false }
 				icon={ false }
