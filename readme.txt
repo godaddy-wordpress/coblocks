@@ -122,7 +122,7 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * Add [new lightbox support](https://github.com/godaddy/coblocks/pull/840) to Masonry and Stacked gallery blocks
 
 ### Enhancements
-* Improve the [experience of the Map block](https://github.com/godaddy/coblocks/issues/917) when applying an address
+* Improve the [experience of the Map block](https://github.com/godaddy/coblocks/pull/936) when applying an address
 * [Remove redirect](https://github.com/godaddy/coblocks/pull/925) to plugin's admin page when activating CoBlocks
 * Convert [Alert block text alignment](https://github.com/godaddy/coblocks/pull/880) setting to use utility classes
 * Convert [Click-to-Tweet block text alignment](https://github.com/godaddy/coblocks/pull/881) setting to use utility classes
@@ -136,13 +136,13 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * Improve the [Map block description](https://github.com/godaddy/coblocks/pull/910)
 * [Prevent Styles panel opening by default](https://github.com/godaddy/coblocks/pull/909) on the Food and Drinks block
 * [Disable HTML editing](https://github.com/godaddy/coblocks/pull/908) of gallery blocks
-* Add [block icon to the media placeholder](https://github.com/godaddy/coblocks/issues/919) on the Logos and Badges block
+* Add [block icon to the media placeholder](https://github.com/godaddy/coblocks/pull/927) on the Logos and Badges block
 * [Remove the default block appender](https://github.com/godaddy/coblocks/pull/892) (added in Gutenberg 6.5) on the Row block
 * [Display the "Add" accordion item button](https://github.com/godaddy/coblocks/pull/836) only when the parent block is selected
 * [Remove background color and image support](https://github.com/godaddy/coblocks/pull/913) from gallery blocks
 * [Add top/bottom marging removal](https://github.com/godaddy/coblocks/pull/912) toggles to the gallery blocks
 * Removed a screenshot to [prevent a potential trademark violation](https://github.com/godaddy/coblocks/pull/911)
-* Minor code cleanups ([#924](https://github.com/godaddy/coblocks/pull/924), [#931](https://github.com/godaddy/coblocks/pull/931), [#933](https://github.com/godaddy/coblocks/pull/933))
+* Minor code cleanups ([#924](https://github.com/godaddy/coblocks/pull/924), [#928](https://github.com/godaddy/coblocks/pull/928), [#931](https://github.com/godaddy/coblocks/pull/931), [#933](https://github.com/godaddy/coblocks/pull/933))
 
 ### Bug Fixes
 * [Remove inherit colors fallback](https://github.com/godaddy/coblocks/pull/940) from the Authors, Features, Media Card, and Row blocks
