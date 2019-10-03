@@ -48,7 +48,7 @@ function InlineTextColor( { attributes } ) {
 	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 		classlist[ `coblocks-row-${ coblocks.id }` ] = 'true';
 	}
-	console.log( classlist );
+
 	const classes = classnames( classlist );
 
 	const styles = {
