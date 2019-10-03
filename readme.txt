@@ -116,24 +116,7 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Features
-* Add new [Crop Settings panel](https://github.com/godaddy/coblocks/pull/749) to the Image and Cover blocks to allow image cropping
-* Add [font size, background and text color controls](https://github.com/godaddy/coblocks/pull/808) to the Author block
-* Add new Image block styles to [mask images with a wave shape](https://github.com/godaddy/coblocks/pull/877)
 
 ### Enhancements
-* Improve the [context of strings](https://github.com/godaddy/coblocks/pull/852) for translators
-* Add a [new filter](https://github.com/godaddy/coblocks/pull/834) in the Form block to prevent wp_mail from sending mail
-* Move the CoBlocks [top-level admin page](https://github.com/godaddy/coblocks/pull/746) under Tools
-* Shorten [the Button block placeholder text](https://github.com/godaddy/coblocks/pull/878) within the Hero block
-* Add [additional carousel controls](https://github.com/godaddy/coblocks/pull/765) to the Carousel block
-* Update the [Pricing Table block toolbar control](https://github.com/godaddy/coblocks/pull/811) to follow new Gutenberg patterns
-* Update the [Row block toolbar control](https://github.com/godaddy/coblocks/pull/827) to follow new Gutenberg patterns
-* Lay the groundwork for [improved automated tests for blocks](https://github.com/godaddy/coblocks/pull/835) using Jest
 
 ### Bug Fixes
-* Fix the [styles preview](https://github.com/godaddy/coblocks/pull/879) in the Icon block in Gutenberg 6.3+
-* Fix one column Pricing Table block display to use the [full available width](https://github.com/godaddy/coblocks/pull/844)
-* Remove [margin bottom](https://github.com/godaddy/coblocks/pull/845) from the last item within the Feature block
-* Improve the [spacing between the figure and content elements](https://github.com/godaddy/coblocks/pull/846) in the Services block
-* Avoid z-index issues with the [Hero block toolbar](https://github.com/godaddy/coblocks/pull/838)
-* Fix [misaligned responsive control SVG icons](https://github.com/godaddy/coblocks/pull/820) in Firefox and Edge
