@@ -22,7 +22,6 @@ function Save( { attributes } ) {
 		customBackgroundColor,
 		customTextColor,
 		gutter,
-		id,
 		layout,
 		isStackedOnMobile,
 		marginSize,
@@ -46,10 +45,7 @@ function Save( { attributes } ) {
 	const textClass = getColorClassName( 'color', textColor );
 	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-	let classes = classnames( {
-		[ `coblocks-row--${ id }` ]: id,
-	} );
-
+	let classes;
 	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 		classes = classnames( classes, `coblocks-row-${ coblocks.id }` );
 	}
@@ -83,7 +79,7 @@ function Save( { attributes } ) {
 	};
 
 	return (
-		<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } >
+		<div className={ classes } data-columns={ columns } data-layout={ layout } >
 			<div className={ innerClasses } style={ innerStyles }>
 				{ BackgroundVideo( attributes ) }
 				<InnerBlocks.Content />
