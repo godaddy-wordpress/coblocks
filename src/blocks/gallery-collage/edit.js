@@ -276,7 +276,6 @@ class GalleryCollageEdit extends Component {
 
 		return (
 			<Fragment>
-				<pre>{JSON.stringify( { 'attribute.gutter': attributes.gutter, lastGutterValue: this.state.lastGutterValue }, null, 2 )}</pre>
 				<Controls { ...this.props } />
 				<Inspector { ...this.props } enableGutter={ enableGutter } enableCaptions={ enableCaptions } />
 				{ noticeUI }
