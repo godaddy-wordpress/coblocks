@@ -1,4 +1,11 @@
 .wp-block-coblocks-gallery-collage {
+	&.alignfull {
+		ul {
+			padding-left: 1em;
+			padding-right: 1em;
+		}
+	}
+
 	ul {
 		display: flex;
 		flex-wrap: wrap;
@@ -66,13 +73,6 @@
 		}
 	}
 
-	&.alignfull:not(.is-style-tiled) {
-		ul {
-			padding-left: 1em;
-			padding-right: 1em;
-		}
-	}
-
 	.is-style-tiled &__item {
 		&:nth-child(1),
 		&:nth-child(4) {
@@ -80,7 +80,7 @@
 
 			figure,
 			.block-editor-media-placeholder {
-				padding-top: calc(380 / 583 * 100%);
+				padding-top: 66%;
 			}
 		}
 
@@ -90,7 +90,7 @@
 
 			figure,
 			.block-editor-media-placeholder {
-				padding-top: calc(380 / 288 * 100%);
+				padding-top: 100%;
 			}
 		}
 	}
@@ -185,57 +185,5 @@
 
 	&:not(.has-caption-color).has-caption-style-light figcaption {
 		color: $black;
-	}
-}
-
-// For mobile.
-@for $i from 1 through 10 {
-	.pt-#{ $i * 5 } {
-		padding-top: #{round($i * 5 / 2)}px;
-	}
-}
-
-@for $i from 1 through 10 {
-	.pr-#{ $i * 5 } {
-		padding-right: #{round($i * 5 / 2)}px;
-	}
-}
-
-@for $i from 1 through 10 {
-	.pb-#{ $i * 5 } {
-		padding-bottom: #{round($i * 5 / 2)}px;
-	}
-}
-
-@for $i from 1 through 10 {
-	.pl-#{ $i * 5 } {
-		padding-left: #{round($i * 5 / 2)}px;
-	}
-}
-
-// For desktop.
-@media (min-width: 700px) {
-	@for $i from 1 through 10 {
-		.desktop\:pt-#{ $i * 5 } {
-			padding-top: #{round($i * 5 / 2)}px;
-		}
-	}
-
-	@for $i from 1 through 10 {
-		.desktop\:pr-#{ $i * 5 } {
-			padding-right: #{round($i * 5 / 2)}px;
-		}
-	}
-
-	@for $i from 1 through 10 {
-		.desktop\:pb-#{ $i * 5 } {
-			padding-bottom: #{round($i * 5 / 2)}px;
-		}
-	}
-
-	@for $i from 1 through 10 {
-		.desktop\:pl-#{ $i * 5 } {
-			padding-left: #{round($i * 5 / 2)}px;
-		}
 	}
 }

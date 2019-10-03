@@ -30,6 +30,7 @@ class GalleryCollageEdit extends Component {
 		this.state = {
 			images: [],
 			selectedImage: null,
+			lastGutterValue: null,
 		};
 	}
 
@@ -41,12 +42,15 @@ class GalleryCollageEdit extends Component {
 		if ( this.props.className !== prevProps.className ) {
 			this.setupImageLocations();
 
-			if ( this.props.className.includes( 'is-style-layered' ) ) {
-				this.props.setAttributes( { gutter: 10, gutterMobile: 10 } );
-			}
-
 			if ( ! this.props.className.includes( 'is-style-layered' ) ) {
-				this.props.setAttributes( { shadow: null } );
+				this.props.setAttributes( {
+					shadow: 'none',
+					gutter: this.state.lastGutterValue || this.props.attributes.gutter,
+				} );
+				this.setState( { lastGutterValue: null } );
+			} else {
+				this.setState( { lastGutterValue: this.props.attributes.gutter } );
+				this.props.setAttributes( { gutter: 0 } );
 			}
 		}
 
@@ -138,7 +142,7 @@ class GalleryCollageEdit extends Component {
 							'wp-block-coblocks-gallery-collage__figure': true,
 							'is-transient': isBlobURL( image.url ),
 							'is-selected': isSelected,
-							[ `has-shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
+							[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
 						} ) }>
 						{ isSelected && (
 							<div className="components-coblocks-gallery-item__remove-menu">
@@ -191,57 +195,58 @@ class GalleryCollageEdit extends Component {
 
 		const {
 			gutter,
-			gutterMobile,
 		} = attributes;
 
-		let gutterIndex;
+		let gutterClasses;
 
 		switch ( index ) {
 			case 0:
-				gutterIndex = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+				gutterClasses = `pb-${ gutter } sm:pb-${ gutter } lg:pb-${ gutter }`;
 				break;
 			case 1:
-				gutterIndex = `pl-${ gutterMobile } desktop:pl-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+				gutterClasses = `pb-${ gutter } sm:pb-${ gutter } lg:pb-${ gutter } pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 				break;
 			case 2:
-				gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+				gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 				break;
 			case 3:
-				gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+				gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 				break;
 			case 4:
-				gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+				gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 				break;
 		}
 
 		if ( className.includes( 'is-style-tiled' ) ) {
 			switch ( index ) {
 				case 0:
-					gutterIndex = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+					gutterClasses = '';
 					break;
 				case 1:
-					gutterIndex = `pl-${ gutterMobile } desktop:pl-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+					gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 					break;
 				case 2:
-					gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter }`;
+					gutterClasses = `pt-${ gutter } sm:pt-${ gutter } lg:pt-${ gutter } pr-${ gutter } sm:pr-${ gutter } lg:pr-${ gutter }`;
 					break;
 				case 3:
-					gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+					gutterClasses = `pt-${ gutter } sm:pt-${ gutter } lg:pt-${ gutter }`;
 					break;
 			}
 		}
 
 		if ( className.includes( 'is-style-layered' ) ) {
-			gutterIndex = null;
+			gutterClasses = null;
 		}
 
-		return gutterIndex;
+		return gutterClasses;
 	};
 
 	renderPlaceholder( index ) {
 		return (
 			<MediaPlaceholder
-				className={ classnames( 'wp-block-coblocks-gallery-collage__figure' ) }
+				className={ classnames( 'wp-block-coblocks-gallery-collage__figure', {
+					[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
+				} ) }
 				allowedTypes={ [ 'image' ] }
 				multiple={ false }
 				icon={ false }
