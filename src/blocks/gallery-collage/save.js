@@ -15,7 +15,6 @@ const save = ( props, className ) => {
 		captionStyle,
 		captions,
 		gutter,
-		gutterMobile,
 		filter,
 		images,
 		linkTo,
@@ -58,19 +57,19 @@ const save = ( props, className ) => {
 
 					switch ( index ) {
 						case 0:
-							gutterClasses = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+							gutterClasses = `pb-${ gutter } sm:pb-${ gutter } lg:pb-${ gutter }`;
 							break;
 						case 1:
-							gutterClasses = `pl-${ gutterMobile } desktop:pl-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+							gutterClasses = `pb-${ gutter } sm:pb-${ gutter } lg:pb-${ gutter } pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 							break;
 						case 2:
-							gutterClasses = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+							gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 							break;
 						case 3:
-							gutterClasses = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+							gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 							break;
 						case 4:
-							gutterClasses = `pt-${ gutterMobile } desktop:pt-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+							gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 							break;
 					}
 
@@ -78,16 +77,16 @@ const save = ( props, className ) => {
 						if ( className.includes( 'is-style-tiled' ) ) {
 							switch ( index ) {
 								case 0:
-									gutterClasses = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+									gutterClasses = `pr-${ gutter } sm:pr-${ gutter } lg:pr-${ gutter } pb-${ gutter } sm:pb-${ gutter } lg:pb-${ gutter }`;
 									break;
 								case 1:
-									gutterClasses = `pl-${ gutterMobile } desktop:pl-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+									gutterClasses = `pb-${ gutter } sm:pb-${ gutter } lg:pb-${ gutter } pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 									break;
 								case 2:
-									gutterClasses = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter }`;
+									gutterClasses = `pt-${ gutter } sm:pt-${ gutter } lg:pt-${ gutter } pr-${ gutter } sm:pr-${ gutter } lg:pr-${ gutter }`;
 									break;
 								case 3:
-									gutterClasses = `pt-${ gutterMobile } desktop:pt-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+									gutterClasses = `pt-${ gutter } sm:pt-${ gutter } lg:pt-${ gutter } pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 									break;
 							}
 						}

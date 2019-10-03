@@ -42,7 +42,7 @@ class GalleryCollageEdit extends Component {
 			this.setupImageLocations();
 
 			if ( this.props.className.includes( 'is-style-layered' ) ) {
-				this.props.setAttributes( { gutter: 10, gutterMobile: 10 } );
+				this.props.setAttributes( { gutter: 10 } );
 			}
 
 			if ( ! this.props.className.includes( 'is-style-layered' ) ) {
@@ -191,51 +191,50 @@ class GalleryCollageEdit extends Component {
 
 		const {
 			gutter,
-			gutterMobile,
 		} = attributes;
 
-		let gutterIndex;
+		let gutterClasses;
 
 		switch ( index ) {
 			case 0:
-				gutterIndex = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+				gutterClasses = `pb-${ gutter } sm:pb-${ gutter } lg:pb-${ gutter }`;
 				break;
 			case 1:
-				gutterIndex = `pl-${ gutterMobile } desktop:pl-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+				gutterClasses = `pb-${ gutter } sm:pb-${ gutter } lg:pb-${ gutter } pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 				break;
 			case 2:
-				gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+				gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 				break;
 			case 3:
-				gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+				gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 				break;
 			case 4:
-				gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+				gutterClasses = `pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 				break;
 		}
 
 		if ( className.includes( 'is-style-tiled' ) ) {
 			switch ( index ) {
 				case 0:
-					gutterIndex = `pr-${ gutterMobile } desktop:pr-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+					gutterClasses = `pr-${ gutter } sm:pr-${ gutter } lg:pr-${ gutter } pb-${ gutter } sm:pb-${ gutter } lg:pb-${ gutter }`;
 					break;
 				case 1:
-					gutterIndex = `pl-${ gutterMobile } desktop:pl-${ gutter } pb-${ gutterMobile } desktop:pb-${ gutter }`;
+					gutterClasses = `pb-${ gutter } sm:pb-${ gutter } lg:pb-${ gutter } pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 					break;
 				case 2:
-					gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pr-${ gutterMobile } desktop:pr-${ gutter }`;
+					gutterClasses = `pt-${ gutter } sm:pt-${ gutter } lg:pt-${ gutter } pr-${ gutter } sm:pr-${ gutter } lg:pr-${ gutter }`;
 					break;
 				case 3:
-					gutterIndex = `pt-${ gutterMobile } desktop:pt-${ gutter } pl-${ gutterMobile } desktop:pl-${ gutter }`;
+					gutterClasses = `pt-${ gutter } sm:pt-${ gutter } lg:pt-${ gutter } pl-${ gutter } sm:pl-${ gutter } lg:pl-${ gutter }`;
 					break;
 			}
 		}
 
 		if ( className.includes( 'is-style-layered' ) ) {
-			gutterIndex = null;
+			gutterClasses = null;
 		}
 
-		return gutterIndex;
+		return gutterClasses;
 	};
 
 	renderPlaceholder( index ) {

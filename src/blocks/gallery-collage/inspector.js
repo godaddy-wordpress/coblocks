@@ -45,15 +45,28 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
+			gutter,
 			shadow,
 			captions,
 			captionStyle,
 		} = attributes;
 
+		const gutterOptions = [
+			{ value: '1', label: __( 'Small' ) },
+			{ value: '2', label: __( 'Medium' ) },
+			{ value: '3', label: __( 'Large' ) },
+			{ value: '4', label: __( 'Huge' ) },
+		];
+
 		return (
 			<InspectorControls>
 				<PanelBody title={ __( 'Collage Settings' ) }>
-					{ enableGutter && <ResponsiveTabsControl label={ __( 'Gutter' ) } min={ 10 } { ...this.props } /> }
+					{ enableGutter && <SelectControl
+						label={ __( 'Gutter' ) }
+						value={ gutter }
+						options={ gutterOptions }
+						onChange={ ( value ) => setAttributes( { gutter: value } ) }
+					/> }
 					{ ! enableGutter && <SizeControl { ...this.props }
 						onChange={ this.setShadowTo }
 						value={ shadow }

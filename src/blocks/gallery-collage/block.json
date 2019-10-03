@@ -47,8 +47,8 @@
 			}
 		},
 		"gutter": {
-			"type": "number",
-			"default": 25
+			"type": "string",
+			"default": "2"
 		}
 	}
 }
