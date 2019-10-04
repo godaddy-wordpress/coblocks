@@ -9,12 +9,12 @@ import ModalSettings from './components/modal';
  */
 import { registerPlugin } from '@wordpress/plugins';
 import { dispatch } from '@wordpress/data';
-const hideBlockTypes = dispatch( 'core/edit-post' ).hideBlockTypes;
+const dispatcher = dispatch( 'core/edit-post' );
 
 /**
  * Register Plugin
  */
-if ( typeof hideBlockTypes === 'undefined' ) {
+if ( typeof dispatcher !== 'undefined' || ! dispatcher.hasOwnProperty( 'hideBlockTypes' ) ) {
 	registerPlugin( 'coblocks-block-manager', {
 		icon: false,
 		render: ModalSettings,
