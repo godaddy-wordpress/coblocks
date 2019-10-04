@@ -16,7 +16,7 @@ import { withProps, lifecycle } from 'recompose';
 import Controls from './controls';
 import Inspector from './inspector';
 import GMapStyles from './map-styles';
-import icons from '../../utils/icons';
+import icon from './icon';
 
 /**
  * WordPress dependencies
@@ -32,6 +32,7 @@ import {
 } from '@wordpress/components';
 import { Fragment, Component } from '@wordpress/element';
 import { ENTER } from '@wordpress/keycodes';
+import { BlockIcon } from '@wordpress/block-editor';
 
 /**
  * Get settings.
@@ -159,7 +160,7 @@ class Edit extends Component {
 			renderMap();
 		};
 
-		const icon = {
+		const marker = {
 			url: '/wp-content/plugins/coblocks/dist/images/markers/' + skin + '.svg',
 			scaledSize: { width: iconSize, height: iconSize },
 		};
@@ -222,7 +223,7 @@ class Edit extends Component {
 				>
 					<Marker
 						position={ new window.google.maps.LatLng( props.coords ) }
-						icon={ icon }
+						icon={ marker }
 					/>
 				</GoogleMap>
 			) : null,
@@ -289,7 +290,7 @@ class Edit extends Component {
 					</ResizableBox>
 				) : (
 					<Placeholder
-						icon={ icons.googleMap }
+						icon={ <BlockIcon icon={ icon } /> }
 						label={ __( 'Google Map' ) }
 						instructions={ __(
 							'Enter a location or address to drop a pin on a Google map.'
