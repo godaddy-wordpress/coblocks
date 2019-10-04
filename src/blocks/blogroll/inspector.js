@@ -96,7 +96,7 @@ const Inspector = props => {
 					/>
 					{ displayPostContent &&
 						<RangeControl
-							label={ __( 'Content Word Count' ) }
+							label={ __( 'Max number of words in content' ) }
 							value={ excerptLength }
 							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
 							min={ 5 }

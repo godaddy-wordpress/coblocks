@@ -139,6 +139,10 @@ class LatestPostsEdit extends Component {
 		);
 	}
 
+	componentWillUnmount() {
+		this.isStillMounted = false;
+	}
+
 	onSubmitURL( event ) {
 		event.preventDefault();
 
@@ -146,10 +150,6 @@ class LatestPostsEdit extends Component {
 		if ( externalRssUrl ) {
 			this.setState( { editing: false } );
 		}
-	}
-
-	componentWillUnmount() {
-		this.isStillMounted = false;
 	}
 
 	updateStyle = style => {
@@ -194,6 +194,18 @@ class LatestPostsEdit extends Component {
 			autoPlay,
 			autoPlaySpeed,
 		} = attributes;
+
+		const listClasses = classnames( 'flex', 'w-full', {
+			'flex-row-reverse': listPosition === 'right',
+		} );
+
+		const imageClasses = classnames( 'wp-block-coblocks-blogroll__post-image', {
+			'mr-6': listPosition === 'left',
+			'ml-6': listPosition === 'right',
+		} );
+
+
+
 
 		const editToolbarControls = [
 			{
@@ -328,9 +340,6 @@ class LatestPostsEdit extends Component {
 				{ postFeedType === 'internal' && ! isCarouselStyle &&
 				<ul
 					className={ classnames( this.props.className, {
-						'image-to-left': listPosition === 'left',
-						'image-to-right': listPosition === 'right',
-						'has-dates': displayPostDate,
 						[ `columns-${ columns }` ]: isGridStyle,
 					} ) }
 				>
@@ -346,13 +355,11 @@ class LatestPostsEdit extends Component {
 						excerptElement.innerHTML = excerpt;
 						excerpt = excerptElement.textContent || excerptElement.innerText || '';
 						return (
-							<li className={ classnames( {
-								'list-center': isGridStyle && ! featuredImageUrl,
-							} ) } key={ i }>
+							<li key={ i } className={ listClasses }>
 								{ featuredImageUrl &&
-									<div className="wp-block-coblocks-blogroll__post-image-wrapper" style={ { backgroundImage: featuredImageStyle } }></div>
+									<div className={ imageClasses } style={ { backgroundImage: featuredImageStyle } }></div>
 								}
-								<div className="wp-block-coblocks-blogroll__post-info">
+								<div className="wp-block-coblocks-blogroll__content">
 									{ displayPostDate && post.date_gmt &&
 										<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__post-date">
 											{ dateI18n( dateFormat, post.date_gmt ) }
@@ -369,18 +376,18 @@ class LatestPostsEdit extends Component {
 									</a>
 									{ displayPostContent &&
 										<div className="wp-block-coblocks-blogroll__post-excerpt">
-											<p>
-												<RawHTML
-													key="html"
-												>
-													{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
-												</RawHTML>
-											</p>
+											<RawHTML
+												key="html"
+											>
+												{ excerptLength < excerpt.trim().split( ' ' ).length ?
+													excerpt.trim().split( ' ', excerptLength ).join( ' ' ) + '…' :
+													excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+											</RawHTML>
 										</div>
 									}
 									{ displayPostLink &&
 										<PlainText
-											className="wp-block-coblocks-blogroll__post-read-more"
+											className="wp-block-coblocks-blogroll__more-link"
 											onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
 											value={ postLink }
 											placeholder={ __( 'Read more' ) }
@@ -409,9 +416,9 @@ class LatestPostsEdit extends Component {
 							<div className="coblocks-blog-post--item" key={ i }>
 								<div className="coblocks-blog-post--item-inner">
 									{ featuredImageUrl &&
-										<div className="wp-block-coblocks-blogroll__post-image-wrapper" style={ { backgroundImage: featuredImageStyle } }></div>
+										<div className="wp-block-coblocks-blogroll__post-image" style={ { backgroundImage: featuredImageStyle } }></div>
 									}
-									<div className={ classnames( 'wp-block-coblocks-blogroll__post-info', {
+									<div className={ classnames( 'wp-block-coblocks-blogroll__content', {
 										'full-height': ! featuredImageUrl,
 									} ) }>
 										{ displayPostDate && post.date_gmt &&
@@ -441,7 +448,7 @@ class LatestPostsEdit extends Component {
 										}
 										{ displayPostLink &&
 										<PlainText
-											className="wp-block-coblocks-blogroll__post-read-more"
+											className="wp-block-coblocks-blogroll__more-link"
 											onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
 											value={ postLink }
 											placeholder={ __( 'Read more' ) }

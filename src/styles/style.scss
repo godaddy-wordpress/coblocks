@@ -32,6 +32,18 @@
 	text-align: center;
 }
 
+.flex {
+	display: flex;
+}
+
+.flex-0 {
+	flex: 0 0 auto;
+}
+
+.flex-row-reverse {
+	flex-direction: row-reverse;
+}
+
 .h-full {
 	height: 100%;
 }
@@ -62,6 +74,10 @@
 
 .position-absolute {
 	position: absolute;
+}
+
+.block {
+	display: block;
 }
 
 .object-cover {

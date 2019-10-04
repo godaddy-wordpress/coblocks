@@ -1,3 +1,21 @@
+$margin: (
+	1: 0.25em,
+	2: 0.25em,
+	3: 0.5em,
+	4: 0.75em,
+	5: 1em,
+	6: 1.5em
+);
+
+.mr {
+	@include utilities($margin, "margin-right", "-");
+}
+
+.ml {
+	@include utilities($margin, "margin-left", "-");
+}
+
+//Old utitlies.
 .mb-0 {
 	margin-bottom: 0 !important;
 }

@@ -145,14 +145,14 @@ function build_carousel_block_content( $posts, $attributes ) {
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__post-image-wrapper" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
+				'<div class="wp-block-coblocks-blogroll__post-image" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
 				esc_url( $post['postLink'] ),
 				esc_url( $post['thumbnailURL'] )
 			);
 
 		}
 
-		$item_info_class = 'wp-block-coblocks-blogroll__post-info ';
+		$item_info_class = 'wp-block-coblocks-blogroll__content ';
 
 		if ( null === $post['thumbnailURL'] || ! $post['thumbnailURL'] ) {
 
@@ -179,12 +179,12 @@ function build_carousel_block_content( $posts, $attributes ) {
 
 		if ( ! $title ) {
 
-			$title = __( '(Untitled)' );
+			$title = _x( '(no title)', 'placeholder when a post has no title', 'coblocks' );
 
 		}
 
 		$list_items_markup .= sprintf(
-			'<h5 href="%1$s">%2$s</h5>',
+			'<a href="%1$s">%2$s</a>',
 			esc_url( $post['postLink'] ),
 			esc_html( $title )
 		);
@@ -204,7 +204,7 @@ function build_carousel_block_content( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__post-read-more"><a href="%1$s">%2$s</a></div>',
+				'<div class="wp-block-coblocks-blogroll__more-link"><a href="%1$s">%2$s</a></div>',
 				esc_url( $post['postLink'] ),
 				esc_html( $attributes['postLink'] )
 			);
@@ -239,12 +239,6 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 
 	}
 
-	if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-
-		$class .= ' has-dates';
-
-	}
-
 	if ( isset( $attributes['className'] ) ) {
 
 		$class .= ' ' . $attributes['className'];
@@ -260,30 +254,35 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 
 	foreach ( $posts as $post ) {
 
-		$list_class = '';
+		$list_class   = '';
+		$margin_class = '';
 
-		if ( null === $post['thumbnailURL'] || ! $post['thumbnailURL'] ) {
+		if ( isset( $attributes['listPosition'] ) && 'list' === $block_layout ) {
 
-			$list_class .= 'list-center ';
-
+			if ( 'left' === $attributes['listPosition'] ) {
+				$margin_class .= 'mr-6';
+			} else {
+				$margin_class .= 'ml-6';
+			}
 		}
 
 		$list_items_markup .= sprintf(
-			'<li class="%1$s">',
+			'<li class="flex w-full %1$s">',
 			$list_class
 		);
 
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__post-image-wrapper" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
+				'<div class="wp-block-coblocks-blogroll__post-image flex-0 %1$s"><a href="%2$s" class="block w-full h-full bg-cover bg-center-center" style="background-image:url(%3$s)"></a></div>',
+				esc_attr( $margin_class ),
 				esc_url( $post['postLink'] ),
 				esc_url( $post['thumbnailURL'] )
 			);
 
 		}
 
-		$list_items_markup .= '<div class="wp-block-coblocks-blogroll__post-info">';
+		$list_items_markup .= '<div class="wp-block-coblocks-blogroll__content">';
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 
@@ -299,12 +298,12 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 
 		if ( ! $title ) {
 
-			$title = __( '(Untitled)', 'coblocks' );
+			$title = _x( '(no title)', 'placeholder when a post has no title', 'coblocks' );
 
 		}
 
 		$list_items_markup .= sprintf(
-			'<h5><a href="%1$s">%2$s</a></h5>',
+			'<a href="%1$s">%2$s</a>',
 			$post['postLink'],
 			$title
 		);
@@ -324,7 +323,7 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__post-read-more"><a href="%1$s">%2$s</a></div>',
+				'<div class="wp-block-coblocks-blogroll__more-link"><a href="%1$s">%2$s</a></div>',
 				esc_url( $post['postLink'] ),
 				esc_html( $attributes['postLink'] )
 			);
