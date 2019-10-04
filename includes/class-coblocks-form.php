@@ -35,11 +35,90 @@ class CoBlocks_Form {
 	private $form_hash;
 
 	/**
+	 * Google Recaptcha v3 verify endpoint
+	 *
+	 * @var string
+	 */
+	const GCAPTCHA_VERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify';
+
+	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
 
-		$this->register_form_blocks();
+		add_action( 'init', [ $this, 'register_settings' ] );
+		add_action( 'init', [ $this, 'register_form_blocks' ] );
+
+		add_action( 'wp_enqueue_scripts', [ $this, 'form_recaptcha_assets' ] );
+
+	}
+
+	/**
+	 * Register block settings.
+	 *
+	 * @access public
+	 */
+	public function register_settings() {
+		register_setting(
+			'coblocks_google_recaptcha_site_key',
+			'coblocks_google_recaptcha_site_key',
+			array(
+				'type'              => 'string',
+				'description'       => __( 'Google reCaptcha site key for form spam protection', 'coblocks' ),
+				'sanitize_callback' => 'sanitize_text_field',
+				'show_in_rest'      => true,
+				'default'           => '',
+			)
+		);
+
+		register_setting(
+			'coblocks_google_recaptcha_secret_key',
+			'coblocks_google_recaptcha_secret_key',
+			array(
+				'type'              => 'string',
+				'description'       => __( 'Google reCaptcha secret key for form spam protection', 'coblocks' ),
+				'sanitize_callback' => 'sanitize_text_field',
+				'show_in_rest'      => true,
+				'default'           => '',
+			)
+		);
+	}
+
+	/**
+	 * Enqueue form block assets when recaptcha site & secret keys are present
+	 */
+	public function form_recaptcha_assets() {
+
+		$recaptcha_site_key   = get_option( 'coblocks_google_recaptcha_site_key' );
+		$recaptcha_secret_key = get_option( 'coblocks_google_recaptcha_secret_key' );
+
+		if ( has_block( 'coblocks/form' ) && ! empty( $recaptcha_site_key ) && ! empty( $recaptcha_secret_key ) ) {
+
+			wp_enqueue_script(
+				'google-recaptcha',
+				'https://www.google.com/recaptcha/api.js?render=' . esc_attr( $recaptcha_site_key ),
+				array( 'jquery' ),
+				'3.0.0',
+				true
+			);
+
+			wp_enqueue_script(
+				'coblocks-google-recaptcha',
+				CoBlocks()->asset_source( 'js' ) . 'coblocks-google-recaptcha' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery', 'google-recaptcha' ),
+				COBLOCKS_VERSION,
+				true
+			);
+
+			wp_localize_script(
+				'coblocks-google-recaptcha',
+				'coblocksFormBlockAtts',
+				[
+					'recaptchaSiteKey' => $recaptcha_site_key,
+				]
+			);
+
+		}
 
 	}
 
@@ -96,8 +175,10 @@ class CoBlocks_Form {
 	 */
 	public function render_form( $atts, $content ) {
 
-		$this->form_hash = sha1( json_encode( $atts ) . $content );
-		$submitted_hash  = filter_input( INPUT_POST, 'form-hash', FILTER_SANITIZE_STRING );
+		$this->form_hash      = sha1( json_encode( $atts ) . $content );
+		$submitted_hash       = filter_input( INPUT_POST, 'form-hash', FILTER_SANITIZE_STRING );
+		$recaptcha_site_key   = get_option( 'coblocks_google_recaptcha_site_key' );
+		$recaptcha_secret_key = get_option( 'coblocks_google_recaptcha_secret_key' );
 
 		ob_start();
 
@@ -126,11 +207,19 @@ class CoBlocks_Form {
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( untrailingslashit( get_the_permalink() ) ), $this->form_hash ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); ?>
+				<input class="coblocks-field verify" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>" tabindex="-1">
 				<div class="coblocks-form__submit wp-block-button">
 					<?php $this->render_submit_button( $atts ); ?>
 					<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
 					<input type="hidden" name="action" value="coblocks-form-submit">
 					<input type="hidden" name="form-hash" value="<?php echo esc_attr( $this->form_hash ); ?>">
+					<?php
+					if ( $recaptcha_site_key && $recaptcha_secret_key ) {
+						?>
+						<input type="hidden" class="g-recaptcha-token" name="g-recaptcha-token" />
+						<?php
+					}
+					?>
 				</div>
 			</form>
 
@@ -331,7 +420,7 @@ class CoBlocks_Form {
 	/**
 	 * Process the form submission
 	 *
-	 * @return null
+	 * @return bool True when an email is sent, else false.
 	 */
 	public function process_form_submission( $atts ) {
 
@@ -351,13 +440,61 @@ class CoBlocks_Form {
 
 		}
 
+		/**
+		 * Check if the honeypot field was filled out and if so, bail.
+		 */
+		$honeypot_check = filter_input( INPUT_POST, 'coblocks-verify-email', FILTER_SANITIZE_STRING );
+
+		if ( ! empty( $honeypot_check ) ) {
+
+			$this->remove_url_form_hash();
+
+			return;
+
+		}
+
+		/**
+		 * Fires before a form is submitted.
+		 *
+		 * @param array $_POST User submitted form data.
+		 * @param array $atts  Form block attributes.
+		 */
+		do_action( 'coblocks_before_form_submit', $_POST, $atts );
+
+		/**
+		 * Filter to disable the CoBlocks form emails.
+		 *
+		 * @param bool false Whether or not the emails should be disabled.
+		 */
+		$send_email = (bool) apply_filters( 'coblocks_form_email_send', true );
+
+		if ( ! $send_email ) {
+
+			return true;
+
+		}
+
 		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
 
 		$to      = isset( $atts['to'] ) ? sanitize_email( $atts['to'] ) : get_option( 'admin_email' );
 		$subject = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : $post_title;
 
-		unset( $_POST['form-submit'], $_POST['_wp_http_referer'], $_POST['action'], $_POST['form-hash'] );
+		unset( $_POST['form-submit'], $_POST['_wp_http_referer'], $_POST['action'], $_POST['form-hash'], $_POST['coblocks-verify-email'] );
+
+		if ( isset( $_POST['g-recaptcha-token'] ) ) {
+
+			if ( ! $this->verify_recaptcha( $_POST['g-recaptcha-token'] ) ) {
+
+				$this->remove_url_form_hash();
+
+				return false;
+
+			}
+
+			unset( $_POST['g-recaptcha-token'] );
+
+		}
 
 		$this->email_content = '<ul>';
 
@@ -461,7 +598,16 @@ class CoBlocks_Form {
 			get_the_ID()
 		);
 
+		$this->remove_url_form_hash();
+
 		echo wp_kses_post( $success_message );
+
+	}
+
+	/**
+	 * Remove the form has from the URL in the browser address bar
+	 */
+	private function remove_url_form_hash() {
 
 		?>
 
@@ -476,6 +622,51 @@ class CoBlocks_Form {
 
 	}
 
+	/**
+	 * Verify recaptcha to prevent spam
+	 *
+	 * @param string $recaptcha_token The recaptcha token submitted with the form
+	 *
+	 * @return bool True when token is valid, else false
+	 */
+	private function verify_recaptcha( $recaptcha_token ) {
+
+		$verify_token_request = wp_remote_post(
+			self::GCAPTCHA_VERIFY_URL,
+			[
+				'timeout' => 30,
+				'body'    => [
+					'secret'   => get_option( 'coblocks_google_recaptcha_secret_key' ),
+					'response' => $recaptcha_token,
+				],
+			]
+		);
+
+		if ( is_wp_error( $verify_token_request ) ) {
+
+			return false;
+
+		}
+
+		$response = wp_remote_retrieve_body( $verify_token_request );
+
+		if ( is_wp_error( $response ) ) {
+
+			return false;
+
+		}
+
+		$response = json_decode( $response, true );
+
+		if ( ! isset( $response['success'] ) ) {
+
+			return false;
+
+		}
+
+		return $response['success'];
+
+	}
 }
 
 new CoBlocks_Form();

@@ -1,6 +1,6 @@
 .has-no-arrows {
 	.flickity-prev-next-button {
-		background-color: $blue;
+		background-color: theme(primary);
 		border-radius: 4px;
 		border: none;
 		display: none;
@@ -47,5 +47,9 @@
 }
 
 .has-no-dots .flickity-page-dots {
+	display: none !important;
+}
+
+.has-no-thumbnails .carousel-nav {
 	display: none !important;
 }

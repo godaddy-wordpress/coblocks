@@ -1,23 +1,41 @@
 .wp-block-coblocks-alert {
-	border-radius: 0.25rem;
-	padding: 1.1em 1.3em 1em;
-	position: relative;
+	background-color: $alert-default-background-color;
+	border-radius: 3px;
+	color: $alert-default-color;
+	padding: 2em;
 
 	&:not(.has-background) {
-		background-color: #f5f5f5;
+		&.is-style-warning {
+			background-color: $alert-warning-background-color;
+		}
+
+		&.is-style-error {
+			background-color: $alert-error-background-color;
+		}
+
+		&.is-style-success {
+			background-color: $alert-success-background-color;
+		}
 	}
 
-	&.alignleft,
-	&.alignright {
-		max-width: 300px;
+	&:not(.has-text-color) {
+		&.is-style-warning {
+			color: $alert-warning-color;
+		}
+
+		&.is-style-error {
+			color: $alert-error-color;
+		}
+
+		&.is-style-success {
+			color: $alert-success-color;
+		}
 	}
 
 	&__title {
-		color: inherit;
-		display: inline-block;
-		line-height: 1;
-		width: 100%;
-		margin-bottom: 0.75em;
+		display: block;
+		margin-bottom: 0.5em;
+		margin-top: 0;
 
 		&:empty {
 			display: none;
@@ -25,7 +43,7 @@
 	}
 
 	&__text {
-		color: inherit;
 		margin-bottom: 0;
+		margin-top: 0;
 	}
 }

@@ -1,10 +1,42 @@
 {
-	"presets": ["@wordpress/babel-preset-default"],
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"modules": false,
+				"targets": {
+					"browsers": [
+						"last 2 Chrome versions",
+						"last 2 Firefox versions",
+						"last 2 Safari versions",
+						"last 2 iOS versions",
+						"last 1 Android version",
+						"last 1 ChromeAndroid version",
+						"ie 11"
+					]
+				}
+			}
+		],
+		[
+			"@wordpress/default"
+		]
+	],
 	"plugins": [
 		[
 			"@wordpress/babel-plugin-makepot",
 			{
 				"output": "languages/coblocks-js.pot"
+			}
+		],
+		[
+			"@babel/plugin-proposal-class-properties"
+		],
+		[
+			"@babel/plugin-transform-runtime",
+			{
+				"helpers": false,
+				"corejs": 2,
+				"regenerator": true
 			}
 		]
 	]

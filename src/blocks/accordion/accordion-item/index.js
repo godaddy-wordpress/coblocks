@@ -1,138 +1,41 @@
 /**
- * External dependencies
+ * Styles.
  */
-import classnames from 'classnames';
+import './styles/editor.scss';
+import './styles/style.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
-import './styles/style.scss';
-import Edit from './components/edit';
-import icons from './../../../utils/icons';
+import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
+import save from './save';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { RichText, InnerBlocks, getColorClassName } = wp.editor;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
  */
-const name = 'accordion-item';
-
-const title = __( 'Accordion Item' );
-
-const icon = icons.accordionItem;
-
-const keywords = [
-	__( 'tabs' ),
-	__( 'faq' ),
-	__( 'coblocks' ),
-];
-
-const blockAttributes = {
-	title: {
-		type: 'string',
-		selector: '.wp-block-coblocks-accordion__title',
-	},
-	open: {
-		type: 'boolean',
-		default: false,
-	},
-	backgroundColor: {
-		type: 'string',
-	},
-	textColor: {
-		type: 'string',
-	},
-	borderColor: {
-		type: 'string',
-	},
-	customBackgroundColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
-};
+const { name, category, attributes } = metadata;
 
 const settings = {
-
-	title: title,
-
+	title: _x( 'Accordion Item', 'This is an inner block for the Accordion Block.' ),
 	description: __( 'Add collapsable accordion items to accordions.' ),
-
-	keywords: keywords,
-
+	icon,
+	keywords: [ _x( 'tabs', 'block keyword' ), _x( 'faq', 'block keyword' ), 'coblocks' ],
 	parent: [ 'coblocks/accordion' ],
-
 	supports: {
 		reusable: false,
 		html: false,
 		inserter: false,
 	},
-
-	attributes: blockAttributes,
-
-	edit: Edit,
-
-	save( { attributes } ) {
-
-		const {
-			backgroundColor,
-			customBackgroundColor,
-			customTextColor,
-			open,
-			textColor,
-			borderColor,
-			title,
-		} = attributes;
-
-		const backgroundColorClass = getColorClassName( 'background-color', backgroundColor );
-		const textColorClass = getColorClassName( 'color', textColor );
-
-		const backgroundClasses = classnames(
-			'wp-block-coblocks-accordion-item',
-			open ? 'wp-block-coblocks-accordion-item--open' : null, {}
-		);
-
-		const titleClasses = classnames(
-			'wp-block-coblocks-accordion-item__title', {
-			'has-background': backgroundColor || customBackgroundColor,
-			[ backgroundColorClass ]: backgroundColorClass,
-			'has-text-color': textColor || customTextColor,
-			[ textColorClass ]: textColorClass,
-		} );
-
-		const titleStyles = {
-			backgroundColor: backgroundColorClass ? undefined : customBackgroundColor,
-			color: textColorClass ? undefined : customTextColor,
-		};
-
-		const borderStyle = {
-			borderColor: borderColor ? borderColor : customBackgroundColor,
-		}
-
-		return (
-			<div>
-				{ ! RichText.isEmpty( title ) &&
-					<details open={ open }>
-						<RichText.Content
-							tagName="summary"
-							className={ titleClasses }
-							value={ title }
-							style={ titleStyles }
-						/>
-						<div className="wp-block-coblocks-accordion-item__content" style={ borderStyle }>
-							<InnerBlocks.Content />
-						</div>
-					</details>
-				}
-			</div>
-		);
-	},
+	attributes,
+	edit,
+	save,
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

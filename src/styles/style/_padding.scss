@@ -1,11 +1,82 @@
-.pb-0 {
-	padding-bottom: 0 !important;
+$padding: (
+	0: 0,
+	1: 0.25em,
+	2: 0.25em,
+	3: 0.5em,
+	4: 0.75em
+);
+
+$padding__sm: (
+	0: 0,
+	1: 0.5em,
+	2: 1em,
+	3: 1.5em,
+	4: 1.75em
+);
+
+$padding__lg: (
+	0: 0,
+	1: 1em,
+	2: 1.5em,
+	3: 2em,
+	4: 2.75em
+);
+
+.pt {
+	@include utilities($padding, "padding-top", "-");
 }
 
-.pt-0 {
-	padding-top: 0 !important;
+.pr {
+	@include utilities($padding, "padding-right", "-");
 }
 
+.pb {
+	@include utilities($padding, "padding-bottom", "-");
+}
+
+.pl {
+	@include utilities($padding, "padding-left", "-");
+}
+
+// 600px +
+@include break-small() {
+	.sm\:pt {
+		@include utilities($padding__sm, "padding-top", "-");
+	}
+
+	.sm\:pr {
+		@include utilities($padding__sm, "padding-right", "-");
+	}
+
+	.sm\:pb {
+		@include utilities($padding__sm, "padding-bottom", "-");
+	}
+
+	.sm\:pl {
+		@include utilities($padding__sm, "padding-left", "-");
+	}
+}
+
+// 1440 +
+@include break-huge() {
+	.lg\:pt {
+		@include utilities($padding__lg, "padding-top", "-");
+	}
+
+	.lg\:pr {
+		@include utilities($padding__lg, "padding-right", "-");
+	}
+
+	.lg\:pb {
+		@include utilities($padding__lg, "padding-bottom", "-");
+	}
+
+	.lg\:pl {
+		@include utilities($padding__lg, "padding-left", "-");
+	}
+}
+
+// Old utilities.
 .has-small-padding {
 	padding: 14px;
 }

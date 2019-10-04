@@ -1,173 +1,48 @@
 /**
- * External dependencies
+ * Styles.
  */
-import classnames from 'classnames';
+import './styles/editor.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
-import Edit from './components/edit';
-import icons from './../../utils/icons';
+import deprecated from './deprecated';
+import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
+import save from './save';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
  */
-const name = 'map';
-
-const title = __( 'Map' );
-
-const icon = icons.googleMap;
-
-const keywords = [
-	__( 'address' ),
-	__( 'maps' ),
-	__( 'google' ),
-];
-
-const blockAttributes = {
-	address: {
-		type: 'string',
-	},
-	lat: {
-		type: 'string',
-	},
-	lng: {
-		type: 'string',
-	},
-	apiKey: {
-		type: 'string',
-	},
-	pinned: {
-		type: 'boolean',
-		default: false,
-	},
-	height: {
-		type: 'number',
-		default: 400,
-	},
-	skin: {
-		type: 'string',
-		default: 'standard',
-	},
-	zoom: {
-		type: 'number',
-		default: 12,
-	},
-	iconSize: {
-		type: 'number',
-		default: 36,
-	},
-	mapTypeControl: {
-		type: 'boolean',
-		default: true,
-	},
-	zoomControl: {
-		type: 'boolean',
-		default: true,
-	},
-	streetViewControl: {
-		type: 'boolean',
-		default: true,
-	},
-	fullscreenControl: {
-		type: 'boolean',
-		default: true,
-	},
-	controls: {
-		type: 'boolean',
-		default: true,
-	},
-	hasError: {
-		type: 'string',
-	},
-};
+const { name, category, attributes } = metadata;
 
 const settings = {
-
-	title: title,
-
-	description : __( 'Add an address and drop a pin on a Google map.' ),
-
-	keywords: keywords,
-
+	title: _x( 'Map', 'block name' ),
+	description: __( 'Add an address or location to drop a pin on a Google map.' ),
+	icon,
+	keywords: [ _x( 'address', 'block keyword' ), _x( 'maps', 'block keyword' ), _x( 'google', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-
-	attributes: blockAttributes,
-
-	transforms: {
-		from: [
-			{
-				type: 'prefix',
-				prefix: ':map',
-				transform: function( content ) {
-					return createBlock( `coblocks/${ name }`, {
-						content,
-					} );
-				},
-			},
-		],
+	example: {
+		attributes: {
+			align: 'wide',
+			address: 'Scotsdale, Arizona',
+		},
 	},
-
-	edit: Edit,
-
-	save( { attributes, className } ) {
-
-		const {
-			address,
-			apiKey,
-			height,
-			lat,
-			lng,
-			skin,
-			zoom,
-			iconSize,
-			mapTypeControl,
-			zoomControl,
-			streetViewControl,
-			fullscreenControl,
-		} = attributes;
-
-		const backgroundStyles = {
-			minHeight: height ? height + 'px' : undefined,
-		};
-
-		const mapAttributes = {
-			address : address,
-			lat     : lat,
-			lng     : lng,
-			skin	: skin,
-			zoom	: zoom,
-			iconSize : iconSize,
-			mapTypeControl : mapTypeControl,
-			zoomControl : zoomControl,
-			streetViewControl : streetViewControl,
-			fullscreenControl : fullscreenControl,
-		};
-
-		let attr = Object
-
-	        .keys( mapAttributes )
-	        .map( key => `/q${key}/q:/q${ mapAttributes[key] }/q` )
-	        .join( '||' );
-
-		const dataMap = { [`data-map-attr`] : attr };
-
-		return (
-			<div style={ backgroundStyles }
-				{ ...dataMap }
-			></div>
-		);
-	},
+	attributes,
+	transforms,
+	edit,
+	save,
+	deprecated,
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

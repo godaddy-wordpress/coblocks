@@ -5,27 +5,16 @@ import classnames from 'classnames';
 import map from 'lodash/map';
 
 /**
- * Internal dependencies
- */
-import CSSGridAttributes from './attributes';
-
-/**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { withInstanceId } = wp.compose;
-const { dispatch, select } = wp.data;
-const { Component, Fragment } = wp.element;
-const { ButtonGroup, Button, Tooltip, ToggleControl } = wp.components;
+import { __, _x } from '@wordpress/i18n';
+import { withInstanceId } from '@wordpress/compose';
+import { dispatch } from '@wordpress/data';
+import { Component, Fragment } from '@wordpress/element';
+import { ButtonGroup, Button, Tooltip, ToggleControl } from '@wordpress/components';
 
 class CSSGridControl extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			clientId,
@@ -43,26 +32,26 @@ class CSSGridControl extends Component {
 		 * This will make us of existing block instead of creating new one
 		 */
 		let layoutOptions = [
-			{ value: 'top-left', label: __( 'Top Left' ) },
-			{ value: 'top-center', label: __( 'Top Center' ) },
-			{ value: 'top-right', label: __( 'Top Right' ) },
-			{ value: 'center-left', label: __( 'Center Left' ) },
-			{ value: 'center-center', label: __( 'Center Center' ) },
-			{ value: 'center-right', label: __( 'Center Right' ) },
-			{ value: 'bottom-left', label: __( 'Bottom Left' ) },
-			{ value: 'bottom-center', label: __( 'Bottom Center' ) },
-			{ value: 'bottom-right', label: __( 'Bottom Right' ) },
+			{ value: 'top-left', label: _x( 'Top Left', 'block layout' ) },
+			{ value: 'top-center', label: _x( 'Top Center', 'block layout' ) },
+			{ value: 'top-right', label: _x( 'Top Right', 'block layout' ) },
+			{ value: 'center-left', label: _x( 'Center Left', 'block layout' ) },
+			{ value: 'center-center', label: _x( 'Center Center', 'block layout' ) },
+			{ value: 'center-right', label: _x( 'Center Right', 'block layout' ) },
+			{ value: 'bottom-left', label: _x( 'Bottom Left', 'block layout' ) },
+			{ value: 'bottom-center', label: _x( 'Bottom Center', 'block layout' ) },
+			{ value: 'bottom-right', label: _x( 'Bottom Right', 'block layout' ) },
 		];
 
-		if( !fullscreen ){
+		if ( ! fullscreen ) {
 			layoutOptions = [
-				{ value: 'center-left', label: __( 'Center Left' ) },
-				{ value: 'center-center', label: __( 'Center Center' ) },
-				{ value: 'center-right', label: __( 'Center Right' ) },
+				{ value: 'center-left', label: _x( 'Center Left', 'block layout' ) },
+				{ value: 'center-center', label: _x( 'Center Center', 'block layout' ) },
+				{ value: 'center-right', label: _x( 'Center Right', 'block layout' ) },
 			];
 		}
 
-		let layoutAttributes = {};
+		const layoutAttributes = {};
 		//top
 		layoutAttributes[ 'top-left' ] = {
 			wrapper: {
@@ -120,8 +109,6 @@ class CSSGridControl extends Component {
 			},
 		};
 
-		let getBlockContents = select( 'core/editor' ).getBlock( clientId );
-
 		const classes = classnames(
 			'components-base-control',
 			'components-coblocks-css-grid-selector', {
@@ -132,63 +119,62 @@ class CSSGridControl extends Component {
 		return (
 			<Fragment>
 				<div className={ classes }>
-					<label className="components-base-control__label" >{ __( 'Layout' ) }</label>
+					<p className="components-base-control__label">{ __( 'Layout' ) }</p>
 					<ButtonGroup aria-label={ __( 'Select Layout' ) }>
-					{ map( layoutOptions, ( { label, value, icon } ) => {
-						 if( tooltip ){
-						 	return (
-						 		<Tooltip text={ label }>
-									<div className={ ( value == layout ) ? 'is-selected' : null }>
-										<Button
-											isSmall
-											onClick={ () => {
-												setAttributes( { layout: value } );
-												if( layoutAttributes[ value ].wrapper ){
-													dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
-												}
-											} }
-										>
-										</Button>
-									</div>
-								</Tooltip>
-							)
-						 }else{
-						 	return(
-						 		<div className={ ( value == layout ) ? 'is-selected' : null }>
+						{ map( layoutOptions, ( { label, value }, index ) => {
+							if ( tooltip ) {
+								return (
+									<Tooltip text={ label } key={ `grid-tooltip-${ index }` }>
+										<div className={ ( value === layout ) ? 'is-selected' : null }>
+											<Button
+												isSmall
+												onClick={ () => {
+													setAttributes( { layout: value } );
+													if ( layoutAttributes[ value ].wrapper ) {
+														dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+													}
+												} }
+											>
+											</Button>
+										</div>
+									</Tooltip>
+								);
+							}
+							return (
+								<div className={ ( value === layout ) ? 'is-selected' : null }>
 									<Button
 										isSmall
 										onClick={ () => {
 											setAttributes( { layout: value } );
-											if( layoutAttributes[ value ].wrapper ){
-												dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+											if ( layoutAttributes[ value ].wrapper ) {
+												dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
 											}
 										} }
 									>
 									</Button>
 								</div>
-						 	)
-						 }
-					} ) }
+							);
+						} ) }
 					</ButtonGroup>
 				</div>
 				<ToggleControl
 					label={ __( 'Fullscreen' ) }
 					checked={ !! fullscreen }
 					onChange={ () => {
-						if( fullscreen ){
-							if( [ 'bottom-left', 'top-left' ].includes( layout ) ){
-								setAttributes( {  layout: 'center-left' } )
+						if ( fullscreen ) {
+							if ( [ 'bottom-left', 'top-left' ].includes( layout ) ) {
+								setAttributes( { layout: 'center-left' } );
 							}
 
-							if( [ 'bottom-center', 'top-center' ].includes( layout ) ){
-								setAttributes( {  layout: 'center-center' } )
+							if ( [ 'bottom-center', 'top-center' ].includes( layout ) ) {
+								setAttributes( { layout: 'center-center' } );
 							}
 
-							if( [ 'bottom-right', 'top-right' ].includes( layout ) ){
-								setAttributes( {  layout: 'center-right' } )
+							if ( [ 'bottom-right', 'top-right' ].includes( layout ) ) {
+								setAttributes( { layout: 'center-right' } );
 							}
 						}
-						setAttributes( {  fullscreen: ! fullscreen } )
+						setAttributes( { fullscreen: ! fullscreen } );
 					} }
 					help={ !! fullscreen ? __( 'Fullscreen mode is enabled.' ) : __( 'Toggle to enable fullscreen mode.' ) }
 				/>
@@ -197,4 +183,4 @@ class CSSGridControl extends Component {
 	}
 }
 
-export default withInstanceId( CSSGridControl  );
+export default withInstanceId( CSSGridControl );

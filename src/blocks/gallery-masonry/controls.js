@@ -3,7 +3,6 @@
  */
 import * as helper from './../../utils/helper';
 import MediaFilterControl from '../../components/media-filter-control';
-import { BackgroundControls } from '../../components/background';
 
 /**
  * WordPress dependencies
@@ -15,11 +14,10 @@ const {
 	BlockControls,
 	MediaUpload,
 	MediaUploadCheck,
-} = wp.editor;
+} = wp.blockEditor;
 
 class Controls extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 		this.onSelectImages = this.onSelectImages.bind( this );
 	}
@@ -31,16 +29,8 @@ class Controls extends Component {
 	}
 
 	render() {
-
-		const {
-			attributes,
-			isSelected,
-			setAttributes,
-		} = this.props;
-
-		const {
-			images,
-		} = attributes;
+		const { attributes } = this.props;
+		const { images } = attributes;
 
 		const hasImages = !! images.length;
 
@@ -48,6 +38,9 @@ class Controls extends Component {
 			<BlockControls>
 				{ hasImages && (
 					<Fragment>
+						<MediaFilterControl
+							{ ...this.props }
+						/>
 						<Toolbar>
 							<MediaUploadCheck>
 								<MediaUpload
@@ -67,14 +60,10 @@ class Controls extends Component {
 								/>
 							</MediaUploadCheck>
 						</Toolbar>
-						{ BackgroundControls( this.props ) }
-						<MediaFilterControl
-							{ ...this.props }
-						/>
 					</Fragment>
 				) }
 			</BlockControls>
-		)
+		);
 	}
 }
 

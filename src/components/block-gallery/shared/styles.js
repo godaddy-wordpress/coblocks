@@ -1,13 +1,15 @@
 /**
  * WordPress dependencies
  */
-const { getColorClassName } = wp.editor;
+const { getColorClassName } = wp.blockEditor;
 
 /**
- * Background Classes
+ * Background Classes.
+ *
+ * @param {Object} attributes The passed attributes.
+ * @returns {Object} the styles.
  */
 function GalleryStyles( attributes ) {
-
 	const captionColorClass = getColorClassName( 'color', attributes.captionColor );
 
 	const styles = {

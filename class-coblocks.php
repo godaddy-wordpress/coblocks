@@ -5,10 +5,10 @@
  * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
  * Author: GoDaddy
  * Author URI: https://www.godaddy.com
- * Version: 1.9.6
+ * Version: 1.15.0
  * Text Domain: coblocks
  * Domain Path: /languages
- * Tested up to: 5.2
+ * Tested up to: 5.2.2
  *
  * CoBlocks is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -97,13 +97,12 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @return void
 		 */
 		private function constants() {
-			$this->define( 'COBLOCKS_VERSION', '1.9.6' );
+			$this->define( 'COBLOCKS_VERSION', '1.15.0' );
 			$this->define( 'COBLOCKS_HAS_PRO', false );
 			$this->define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 			$this->define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 			$this->define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
 			$this->define( 'COBLOCKS_PLUGIN_BASE', plugin_basename( __FILE__ ) );
-			$this->define( 'COBLOCKS_SHOP_URL', 'https://coblocks.com/' );
 			$this->define( 'COBLOCKS_REVIEW_URL', 'https://wordpress.org/support/plugin/coblocks/reviews/?filter=5' );
 		}
 
@@ -142,10 +141,9 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-getting-started-page.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';
-				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-footer.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-feedback.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php';
-				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-url-generator.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-crop-settings.php';
 			}
 		}
 
@@ -181,11 +179,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		public function asset_source( $type = 'js', $directory = null ) {
 
 			if ( 'js' === $type ) {
-				if ( SCRIPT_DEBUG ) {
-					return COBLOCKS_PLUGIN_URL . 'src/' . $type . '/' . $directory;
-				} else {
-					return COBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
-				}
+				return SCRIPT_DEBUG ? COBLOCKS_PLUGIN_URL . 'src/' . $type . '/' . $directory : COBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
 			} else {
 				return COBLOCKS_PLUGIN_URL . 'dist/css/' . $directory;
 			}
@@ -211,6 +205,15 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			if ( function_exists( 'wp_set_script_translations' ) ) {
 				wp_set_script_translations( 'coblocks-editor', 'coblocks' );
 			}
+		}
+
+		/**
+		 * Is an AMP endpoint.
+		 *
+		 * @return bool Whether the current response will be AMP.
+		 */
+		public function is_amp() {
+			return function_exists( 'is_amp_endpoint' ) && is_amp_endpoint();
 		}
 	}
 endif;

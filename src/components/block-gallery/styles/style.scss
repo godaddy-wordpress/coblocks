@@ -83,8 +83,13 @@ figcaption.coblocks-gallery--primary-caption {
 	text-align: center;
 
 	&:not(.has-caption-color) {
-		color: #555d66;
+		color: $dark-gray-500;
 	}
+}
+
+.wp-block-group div[class*="wp-block-coblocks-gallery"] {
+	margin-bottom: 10px !important;
+	margin-top: 10px !important;
 }
 
 // Front-end modules
@@ -103,4 +108,5 @@ figcaption.coblocks-gallery--primary-caption {
 @import "style/captions";
 @import "style/background-radius";
 @import "style/flickity";
+@import "style/lightbox";
 @import "style/core-themes";

@@ -1,0 +1,11 @@
+@mixin utilities($map, $attribute, $prefix: "-", $separator: "-", $base: "base") {
+	@each $key, $value in $map {
+		&#{if($key != $base, #{$prefix}#{$key}, '')} {
+			@if type-of($value) == "map" {
+				@include utilities($value, $attribute, $separator);
+			} @else {
+				#{$attribute}: $value;
+			}
+		}
+	}
+}

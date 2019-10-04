@@ -3,8 +3,8 @@
 		position: relative;
 
 		&__mobile-controls-item {
-			background: #fff;
-			border: 1px solid #8d96a0;
+			background: $white;
+			border: 1px solid $dark-gray-150;
 			border-radius: 4px 0 0 4px;
 			box-shadow: none;
 			color: $dark-gray-500;
@@ -21,7 +21,6 @@
 			top: 23px;
 			width: 26px;
 			z-index: 1;
-			display: none;
 
 			&.is-active {
 				display: block;
@@ -29,7 +28,7 @@
 
 			&:hover {
 				border-color: $dark-gray-500;
-				color: #191e23;
+				color: $dark-gray-900;
 			}
 
 			&:focus:enabled {
@@ -38,7 +37,7 @@
 				box-shadow: inset 0 0 0 1px $white;
 
 				svg {
-					fill: #fff;
+					fill: $white;
 				}
 			}
 
@@ -67,16 +66,12 @@
 			margin-bottom: 1.5em;
 		}
 
-		.components-font-size-picker__selector {
-			width: 115px;
-		}
-
 		.components-base-control__label {
 			margin-bottom: 5px;
 		}
-
+		
 		.components-base-control__help {
-			margin-top: -5px;
+			margin-top: -8px;
 		}
 
 		&__header,
@@ -146,9 +141,10 @@
 			border-radius: 3px !important;
 		}
 
-		.components-coblocks-dimensions-control__header .components-color-palette__clear {
-			background: #fff;
-			border: 1px solid #e2e4e7;
+		.components-coblocks-dimensions-control__header
+			.components-color-palette__clear {
+			background: $white;
+			border: 1px solid $light-gray-500;
 			box-shadow: none;
 			color: $dark-gray-500;
 			height: 22px;
@@ -161,70 +157,69 @@
 
 			&:hover {
 				border-color: $dark-gray-500;
-				color: #191e23;
+				color: $dark-gray-900;
 			}
 
 			&:active:enabled {
+				background: $white;
 				border-color: #999;
-				background: #fff;
 				box-shadow: none;
 			}
 
 			&:focus {
-				background: #fff;
-				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
-				outline-offset: -2px;
+				background: $white;
+				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
 				outline: 2px solid transparent;
+				outline-offset: -2px;
 			}
 		}
 
 		&__units {
 			.components-button {
-				background: #fff;
-				border-color: #e2e4e7;
-				text-transform: uppercase;
-				line-height: 20px;
-				font-size: 10px;
-				padding: 0;
-				text-shadow: none;
-				box-shadow: none;
-				color: #6c7781;
-				width: 22px;
-				height: 22px;
-				text-align: center;
-				justify-content: center;
-				position: relative;
-				top: -1px;
+				background: $white;
+				border-color: $light-gray-500;
 				box-shadow: none !important;
+				color: $dark-gray-300;
+				font-size: 10px;
+				height: 22px;
+				justify-content: center;
+				line-height: 20px;
+				padding: 0;
+				position: relative;
+				text-align: center;
+				text-shadow: none;
+				text-transform: uppercase;
+				top: -1px;
+				width: 22px;
 
 				&:hover {
-					color: #191e23;
 					border-color: $dark-gray-500;
+					color: $dark-gray-900;
 				}
 
 				&:focus {
-					outline-offset: -2px;
 					background: $dark-gray-500;
+					box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
 					outline: 2px solid transparent;
-					box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
+					outline-offset: -2px;
 				}
 
 				&:not(.is-primary):hover {
-					background: #fff;
-					color: #191e23;
+					background: $white;
 					box-shadow: none;
+					color: $dark-gray-900;
 				}
 
 				&.is-primary {
 					background: $dark-gray-500;
 					border-color: $dark-gray-500;
 					color: $white;
-					z-index: 1;
 					cursor: default;
+					z-index: 1;
 
 					&:focus {
 						background: $dark-gray-500;
-						box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
+						box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
 					}
 
 					&:active:enabled {
@@ -237,10 +232,10 @@
 		}
 
 		&_sync.components-button.is-small {
-			background: #fff;
-			border: 1px solid #8d96a0;
-			border-radius: 0;
+			background: $white;
+			border: 1px solid $dark-gray-150;
 			border-bottom-right-radius: 4px;
+			border-radius: 0;
 			border-top-right-radius: 4px;
 			box-shadow: none;
 			color: $dark-gray-500;
@@ -260,10 +255,10 @@
 			&:focus {
 				background: $dark-gray-500 !important;
 				border-color: $dark-gray-500;
-				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px #fff;
-				color: #fff !important;
-				outline-offset: -2px;
+				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
+				color: $white !important;
 				outline: 2px solid transparent;
+				outline-offset: -2px;
 
 				svg {
 					fill: $white !important;
@@ -277,11 +272,11 @@
 			&:not(.is-primary):active:enabled,
 			&:not(.is-primary):focus:enabled {
 				box-shadow: none;
-				color: #fff !important;
+				color: $white !important;
 			}
 
 			&:not(.is-primary):hover {
-				background: #fff;
+				background: $white;
 				border-color: $dark-gray-500;
 				box-shadow: none;
 				color: $dark-gray-500;
@@ -312,6 +307,10 @@
 				}
 			}
 		}
+
+		.components-font-size-picker__controls {
+			margin-bottom: 0px;
+		}
 	}
 }
 
@@ -337,5 +336,31 @@
 
 	&.is-huge-size {
 		font-size: 34px;
+	}
+}
+
+// Styles to handle Gutenberg < V6.2.0.
+// Should be able to deprecate when Gutenberg 6.2.0 is merged into WP core.
+.components-panel__body {
+	.components-coblocks-dimensions-control {
+		.components-font-size-picker__select {
+			width: 115px;
+			margin-bottom: 0px !important;
+		}
+
+		.components-font-size-picker__controls {
+			max-width: $sidebar-width - (2 * $panel-padding);
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.components-font-size-picker__select .components-base-control__label {
+			margin-bottom: 5px;
+		}
+
+		.components-font-size-picker__select .components-base-control__label {
+			display: none;
+			visibility: hidden;
+		}
 	}
 }

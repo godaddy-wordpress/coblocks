@@ -50,20 +50,20 @@
 }
 
 .coblocks-icon-types-list.editor-block-types-list {
-	list-style: none;
-	overflow: hidden;
 	display: flex;
 	flex-wrap: wrap;
+	list-style: none;
 	margin-top: 0;
 	max-height: 170px;
+	overflow: hidden;
 	overflow-y: scroll;
 	padding: 4px 0 0 0;
 
 	.editor-block-types-list__list-item {
+		display: block;
 		margin: 0 0 8px;
 		padding: 0 4px;
 		width: 29.9%;
-		display: block;
 
 		@media screen and (max-width: 782px) {
 			width: 31.5%;
@@ -86,22 +86,22 @@
 			width: 100%;
 
 			&:hover {
-				background: #f8f9f9;
+				background: $light-gray-100;
 
 				svg {
-					fill: #191e23;
+					fill: $dark-gray-900;
 				}
 			}
 
 			&:focus,
 			&:active:enabled {
-				background: #f8faf9;
-				box-shadow: 0 0 0 3px #f8faf9;
+				background: $light-gray-100;
+				box-shadow: 0 0 0 3px $light-gray-100;
 				outline: none;
 			}
 
 			svg {
-				fill: #3f464d;
+				fill: $dark-gray-500;
 				height: 20px;
 				margin: 0;
 				overflow: hidden;
@@ -117,12 +117,12 @@
 
 		&.selected-svg {
 			.components-button {
-				background: #e3e4e7;
-				border-color: #e3e4e7;
+				background: $light-gray-500;
+				border-color: $light-gray-500;
 				pointer-events: none;
 
 				svg {
-					fill: #3f464d;
+					fill: $dark-gray-500;
 				}
 			}
 		}
@@ -132,7 +132,7 @@
 				&,
 				&:focus {
 					background: transparent;
-					box-shadow: 0 0 0 2px #fff, 0 0 0 4px #555d66;
+					box-shadow: 0 0 0 2px $white, 0 0 0 4px $dark-gray-500;
 				}
 			}
 		}
@@ -182,5 +182,56 @@
 .editor-block-preview {
 	.wp-block-coblocks-icon__inner {
 		margin-top: 3px;
+	}
+}
+
+.components-coblocks-icon-size__controls {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	max-width: 248px;
+
+	.components-base-control {
+		width: 45%;
+	}
+
+	.components-base-control,
+	.components-base-control__field {
+		margin-bottom: 0 !important;
+	}
+}
+
+// Hide screen reader label for Gutenberg < 6.4
+.components-coblocks-icon-size__controls {
+	.components-base-control .components-base-control__label {
+		border: 0;
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute !important;
+		width: 1px;
+		word-wrap: normal !important;
+	}
+}
+
+// Shim to center buttons in the inserter preview.
+.block-editor-inserter__preview-content {
+	.wp-block-coblocks-icon {
+		text-align: center;
+	}
+}
+
+// Shim to get icons to display correctly in G 6.3+ only.
+.components-panel__body .block-editor-block-preview__container .wp-block-coblocks-icon {
+	align-content: center;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	
+	svg {
+		transform: scale(4);
 	}
 }

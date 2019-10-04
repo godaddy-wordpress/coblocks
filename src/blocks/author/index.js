@@ -1,154 +1,46 @@
 /**
- * External dependencies
+ * Styles.
  */
-import classnames from 'classnames';
+import './styles/style.scss';
+import './styles/editor.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-import Edit from './components/edit';
-import icons from './../../utils/icons';
+import deprecated from './deprecated';
+import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
+import save from './save';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
-const { RichText, InnerBlocks } = wp.editor;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
  */
-const name = 'author';
-
-const title = __( 'Author' );
-
-const icon = icons.author;
-
-const keywords = [
-	__( 'biography' ),
-	__( 'profile' ),
-	__( 'coblocks' ),
-];
-
-const blockAttributes = {
-	biography: {
-		type: 'array',
-		source: 'children',
-		selector: '.wp-block-coblocks-author__biography',
-		default: [],
-	},
-	heading: {
-		type: 'string',
-		selector: '.wp-block-coblocks-author__heading',
-		default: __( 'Written by...' ),
-	},
-	name: {
-		type: 'string',
-		selector: '.wp-block-coblocks-author__name',
-	},
-	imgId: {
-		type: 'number',
-	},
-	imgUrl: {
-		type: 'string',
-		source: 'attribute',
-		attribute: 'src',
-		selector: 'img',
-	},
-	textAlign: {
-		type: 'string',
-	},
-};
+const { name, category, attributes } = metadata;
 
 const settings = {
-
-	title: title,
-
-	description: __( 'Add an author biography.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
-	transforms: {
-		from: [
-			{
-				type: 'raw',
-				selector: 'div.wp-block-coblocks-author',
-				schema: {
-					div: {
-						classes: [ 'wp-block-coblocks-author' ],
-					},
-				},
-			},
-			{
-				type: 'prefix',
-				prefix: ':author',
-				transform: function( content ) {
-					return createBlock( `coblocks/${ name }`, {
-						content,
-					} );
-				},
-			},
-		],
+	title: _x( 'Author', 'block name' ),
+	description: __( 'Add an author biography to build credibility and authority.' ),
+	icon,
+	keywords: [ _x( 'biography', 'block keyword' ), _x( 'profile', 'block keyword' ), 'coblocks' ],
+	example: {
+		attributes: {
+			name: 'Jane Doe',
+			biography: __( 'Born to express, not to impress. A maker making the world I want.' ),
+			imgUrl: '/wp-content/plugins/coblocks/dist/images/examples/author.jpg',
+		},
 	},
+	attributes,
+	transforms,
+	edit,
+	save,
+	deprecated,
+};
 
-	edit: Edit,
-
-	save( { attributes } ) {
-
-		const {
-			biography,
-			heading,
-			imgUrl,
-			name,
-			textAlign,
-		} = attributes;
-
-		if ( name ) {
-			return (
-				<div style={ { textAlign: textAlign } }>
-					{ imgUrl && (
-						<div className={ 'wp-block-coblocks-author__avatar' }>
-							<img
-								class="wp-block-coblocks-author__avatar-img"
-								src={ imgUrl }
-								alt="avatar"
-							/>
-						</div>
-					) }
-					<div className={ 'wp-block-coblocks-author__content' }>
-						{ ! RichText.isEmpty( heading ) && (
-							<RichText.Content
-								tagName="p"
-								className="wp-block-coblocks-author__heading"
-								value={ heading }
-							/>
-						) }
-						{ ! RichText.isEmpty( name ) && (
-							<RichText.Content
-								tagName="span"
-								className="wp-block-coblocks-author__name"
-								value={ name }
-							/>
-						) }
-						{ ! RichText.isEmpty( biography ) && (
-							<RichText.Content
-								tagName="p"
-								className="wp-block-coblocks-author__biography"
-								value={ biography }
-							/>
-						) }
-						<InnerBlocks.Content/>
-					</div>
-				</div>
-			);
-		}
-		return null;
-	},
-}
-
-export { name, title, icon, settings };
+export { name, category, metadata, settings };

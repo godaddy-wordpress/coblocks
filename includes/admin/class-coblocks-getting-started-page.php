@@ -20,7 +20,6 @@ class CoBlocks_Getting_Started_Page {
 	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'screen_page' ) );
-		add_action( 'activated_plugin', array( $this, 'redirect' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_style' ), 100 );
 	}
 
@@ -32,9 +31,31 @@ class CoBlocks_Getting_Started_Page {
 		// Menu icon.
 		$svg = '<svg fill="#a0a5aa" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m4.26414583.01915857 7.65399957-.01909461c1.4476957-.0036116 1.9730418.14581421 2.5030049.42754356.5299632.28172936.9463642.69605707 1.2307358 1.22460786.2843716.5285508.4364185 1.0531452.4400359 2.50084368l.019125 7.65401434c.0036173 1.4476985-.1458061 1.973045-.4275329 2.503008-.2817267.5299631-.6960519.9463632-1.2246006 1.2307333-.5285486.28437-1.0531414.4364151-2.5008371.4400267l-7.6539996.0190946c-1.44769568.0036116-1.97304176-.1458142-2.50300491-.4275435-.52996316-.2817294-.94636416-.6960571-1.23073576-1.2246079s-.43641852-1.0531452-.44003586-2.5008437l-.019125-7.65401429c-.00361735-1.44769847.1458061-1.97304496.4275328-2.50300802.28172671-.52996305.69605197-.9463632 1.22460063-1.23073324.52854865-.28437005 1.05314144-.43641517 2.50083713-.44002678zm-.15303472 2.98084143c-.55228475 0-1 .44771525-1 1v8c0 .5522847.44771525 1 1 1h2c.55228475 0 1-.4477153 1-1v-8c0-.55228475-.44771525-1-1-1zm5.99999999 6c-.55228474 0-.99999999.44771525-.99999999 1v2c0 .5522847.44771525 1 .99999999 1h2c.5522848 0 1-.4477153 1-1v-2c0-.55228475-.4477152-1-1-1zm0-6c-.55228474 0-.99999999.44771525-.99999999 1v2c0 .55228475.44771525 1 .99999999 1h2c.5522848 0 1-.44771525 1-1v-2c0-.55228475-.4477152-1-1-1z" fill-rule="evenodd" transform="translate(1.888889 2)"/></svg>';
 
-		add_menu_page(
-			__( 'CoBlocks', 'coblocks' ),
-			__( 'CoBlocks', 'coblocks' ),
+		/**
+		 * Allow users to nest the CoBlocks menu page
+		 *
+		 * @var string
+		 */
+		$submenu_parent_slug = (string) apply_filters( 'coblocks_getting_started_submenu_parent_slug', '' );
+
+		if ( '' !== $submenu_parent_slug ) {
+
+			add_submenu_page(
+				$submenu_parent_slug,
+				'CoBlocks',
+				'CoBlocks',
+				apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
+				'coblocks-getting-started',
+				array( $this, 'content' )
+			);
+
+			return;
+
+		}
+
+		add_management_page(
+			'CoBlocks',
+			'CoBlocks',
 			apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
 			'coblocks-getting-started',
 			array( $this, 'content' ),
@@ -56,18 +77,20 @@ class CoBlocks_Getting_Started_Page {
 		$screen    = get_current_screen();
 		$screen_id = $screen ? $screen->id : '';
 
-		// Define where the assets are loaded from.
-		$dir         = CoBlocks()->asset_source( 'styles' );
-		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
-
 		// Only enqueue admin scripts and styles on relevant pages.
-		if ( in_array( $screen_id, array( 'toplevel_page_coblocks-getting-started', 'coblocks_page_coblocks-getting-started' ), true ) ) {
+		if ( false !== strpos( $screen_id, 'coblocks-getting-started' ) ) {
+
+			// Define where the assets are loaded from.
+			$dir         = CoBlocks()->asset_source( 'styles' );
+			$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
+
 			wp_enqueue_style(
 				'coblocks-getting-started',
 				$dir . 'coblocks-getting-started' . COBLOCKS_ASSET_SUFFIX . '.css',
 				COBLOCKS_VERSION,
 				true
 			);
+
 			wp_enqueue_script(
 				'coblocks-lity',
 				$vendors_dir . '/lity' . COBLOCKS_ASSET_SUFFIX . '.js',
@@ -75,7 +98,9 @@ class CoBlocks_Getting_Started_Page {
 				COBLOCKS_VERSION,
 				true
 			);
+
 		}
+
 	}
 
 	/**
@@ -99,7 +124,7 @@ class CoBlocks_Getting_Started_Page {
 					<?php
 					echo sprintf(
 						/* translators: 1: Opening <strong> tag, 2: Closing </strong> tag */
-						esc_html__( 'You\'ve just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks %2$s, a %1$s page-builder experience %2$s, %1$s typography controls %2$s and a new %1$s Block Manager %2$s for turning off blocks.', 'coblocks' ),
+						esc_html__( 'You\'ve just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s.', 'coblocks' ),
 						'<strong>',
 						'</strong>'
 					);
@@ -150,52 +175,6 @@ class CoBlocks_Getting_Started_Page {
 
 		</div>
 		<?php
-	}
-
-	/**
-	 * Redirect to the Getting Started page upon plugin activation.
-	 *
-	 * @param string $plugin The activate plugin name.
-	 */
-	public function redirect( $plugin ) {
-
-		if ( 'coblocks/class-coblocks.php' !== $plugin ) {
-
-			return;
-
-		}
-
-		$nonce          = filter_input( INPUT_GET, '_wpnonce', FILTER_SANITIZE_STRING );
-		$activate_multi = filter_input( INPUT_GET, 'activate-multi', FILTER_VALIDATE_BOOLEAN );
-
-		if ( ! $nonce ) {
-
-			return;
-
-		}
-
-		if ( defined( 'WP_CLI' ) && WP_CLI ) {
-
-			WP_CLI::log(
-				WP_CLI::colorize(
-					'%b' . sprintf( '🎉 %s %s', __( 'Get started with CoBlocks here:', 'coblocks' ), admin_url( 'admin.php?page=coblocks-getting-started' ) ) . '%n'
-				)
-			);
-
-			return;
-
-		}
-
-		if ( $activate_multi ) {
-
-			return;
-
-		}
-
-		wp_safe_redirect( admin_url( 'admin.php?page=coblocks-getting-started' ) );
-
-		die();
-
 	}
 }
 

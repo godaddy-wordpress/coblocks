@@ -58,7 +58,7 @@ class CoBlocks_Block_Assets {
 	/**
 	 * The Constructor.
 	 */
-	private function __construct() {
+	public function __construct() {
 		$this->_version = COBLOCKS_VERSION;
 		$this->_slug    = 'coblocks';
 		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
@@ -141,6 +141,11 @@ class CoBlocks_Block_Assets {
 	 */
 	public function frontend_scripts() {
 
+		// Custom scripts are not allowed in AMP, so short-circuit.
+		if ( CoBlocks()->is_amp() ) {
+			return;
+		}
+
 		// Define where the asset is loaded from.
 		$dir = CoBlocks()->asset_source( 'js' );
 
@@ -164,6 +169,25 @@ class CoBlocks_Block_Assets {
 				$this->_slug . '-flickity',
 				$vendors_dir . '/flickity' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
+				$this->_version,
+				true
+			);
+		}
+
+		// Lightbox.
+		if ( has_block( $this->_slug . '/gallery-masonry' ) || has_block( $this->_slug . '/gallery-stacked' ) ) {
+			wp_enqueue_script(
+				$this->_slug . '-lightbox',
+				$dir . $this->_slug . '-lightbox' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				$this->_version,
+				true
+			);
+
+			wp_enqueue_script(
+				$this->_slug . '-masonry',
+				$dir . $this->_slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery', 'masonry', 'imagesloaded' ),
 				$this->_version,
 				true
 			);

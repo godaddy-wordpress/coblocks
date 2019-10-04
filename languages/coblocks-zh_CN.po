@@ -1,0 +1,3492 @@
+# Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
+msgid ""
+msgstr ""
+"Project-Id-Version: CoBlocks 1.12.1\n"
+"Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
+"Last-Translator: plugins@godaddy.com\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-08-27T16:28:38+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.3.0\n"
+"X-Domain: coblocks\n"
+
+#: src/blocks/accordion/accordion-item/controls.js:28
+msgid "Display open"
+msgstr "显示打开"
+
+#: src/blocks/accordion/accordion-item/edit.js:67
+msgid "Add accordion title..."
+msgstr "添加折叠项标题..."
+
+#: src/blocks/accordion/accordion-item/index.js:24
+msgid "Accordion Item"
+msgstr "折叠项"
+
+#: src/blocks/accordion/accordion-item/index.js:26
+msgid "Add collapsable accordion items to accordions."
+msgstr "将可折叠的折叠项添加到折叠组件。"
+
+#: src/blocks/accordion/accordion-item/index.js:28
+#: src/blocks/accordion/index.js:30
+msgid "tabs"
+msgstr "选项卡"
+
+#: src/blocks/accordion/accordion-item/index.js:28
+#: src/blocks/accordion/index.js:30
+msgid "faq"
+msgstr "常见问题解答"
+
+#: src/blocks/accordion/accordion-item/inspector.js:34
+msgid "Accordion item is open by default."
+msgstr "折叠项默认处于打开状态。"
+
+#: src/blocks/accordion/accordion-item/inspector.js:34
+msgid "Toggle to set this accordion item to be open by default."
+msgstr "进行切换，将此折叠项设置为默认处于打开状态。"
+
+#: src/blocks/accordion/accordion-item/inspector.js:63
+msgid "Accordion Item Settings"
+msgstr "折叠项设置"
+
+#: src/blocks/accordion/accordion-item/inspector.js:65
+msgid "Display Open"
+msgstr "显示打开"
+
+#: src/blocks/accordion/accordion-item/inspector.js:72
+#: src/blocks/alert/inspector.js:49
+#: src/blocks/click-to-tweet/inspector.js:60
+#: src/blocks/dynamic-separator/inspector.js:60
+#: src/blocks/features/feature/inspector.js:92
+#: src/blocks/features/inspector.js:173
+#: src/blocks/form/submit-button.js:118
+#: src/blocks/gallery-carousel/inspector.js:165
+#: src/blocks/gallery-masonry/inspector.js:167
+#: src/blocks/gallery-stacked/inspector.js:184
+#: src/blocks/hero/inspector.js:117
+#: src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:353
+#: src/blocks/media-card/inspector.js:124
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:48
+#: src/blocks/row/column/inspector.js:125
+#: src/blocks/row/inspector.js:244
+#: src/blocks/shape-divider/inspector.js:102
+#: src/blocks/share/inspector.js:179
+#: src/blocks/social-profiles/inspector.js:193
+#: src/extensions/colors/index.js:59
+msgid "Color Settings"
+msgstr "颜色设置"
+
+#: src/blocks/accordion/accordion-item/inspector.js:78
+#: src/blocks/alert/inspector.js:54
+#: src/blocks/features/feature/inspector.js:110
+#: src/blocks/features/inspector.js:191
+#: src/blocks/gallery-carousel/inspector.js:80
+#: src/blocks/gallery-masonry/inspector.js:93
+#: src/blocks/gallery-stacked/inspector.js:96
+#: src/blocks/hero/inspector.js:130
+#: src/blocks/highlight/inspector.js:49
+#: src/blocks/icon/inspector.js:377
+#: src/blocks/media-card/inspector.js:138
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:53
+#: src/blocks/row/column/inspector.js:131
+#: src/blocks/row/inspector.js:260
+#: src/blocks/shape-divider/inspector.js:113
+#: src/blocks/share/inspector.js:80
+#: src/blocks/social-profiles/inspector.js:92
+#: src/extensions/colors/index.js:47
+msgid "Background Color"
+msgstr "背景色"
+
+#: src/blocks/accordion/accordion-item/inspector.js:83
+msgid "Title Text Color"
+msgstr "标题文本颜色"
+
+#: src/blocks/accordion/edit.js:111
+msgid "Add Accordion Item"
+msgstr "添加折叠项"
+
+#: src/blocks/accordion/index.js:26
+msgid "Accordion"
+msgstr "折叠组件"
+
+#: src/blocks/accordion/index.js:28
+msgid "Organize content within collapsable accordion items."
+msgstr "在可折叠的折叠项内组织内容。"
+
+#: src/blocks/accordion/inspector.js:27
+msgid "Accordion Settings"
+msgstr "折叠组件设置"
+
+#: src/blocks/accordion/inspector.js:29
+msgid "Internet Explorer Support"
+msgstr "Internet Explorer 支持"
+
+#: src/blocks/accordion/inspector.js:31
+msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
+msgstr "通过加载一个 JavaScript polyfill 添加对 Internet Explorer 的支持。"
+
+#: src/blocks/accordion/inspector.js:31
+msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgstr "通过在此页面上加载一个 JavaScript polyfill 来支持 Internet Explorer。"
+
+#: src/blocks/alert/controls.js:103
+msgid "Warning"
+msgstr "警告"
+
+#: src/blocks/alert/controls.js:111
+msgid "Error"
+msgstr "错误"
+
+#: src/blocks/alert/controls.js:76
+msgid "Alert Type"
+msgstr "警报类型"
+
+#: src/blocks/alert/controls.js:80
+#: src/components/font-family/index.js:16
+#: src/components/typography-controls/index.js:91
+#: src/extensions/list-styles/index.js:15
+msgid "Default"
+msgstr "默认"
+
+#: src/blocks/alert/controls.js:87
+msgid "Info"
+msgstr "信息"
+
+#: src/blocks/alert/controls.js:95
+msgid "Success"
+msgstr "成功"
+
+#: src/blocks/alert/edit.js:74
+msgid "Write title..."
+msgstr "编写标题..."
+
+#: src/blocks/alert/edit.js:82
+msgid "Write text..."
+msgstr "编写文本..."
+
+#: src/blocks/alert/index.js:25
+msgid "Alert"
+msgstr "提醒"
+
+#: src/blocks/alert/index.js:30
+msgid "Provide contextual feedback messages."
+msgstr "提供有上下文的反馈消息。"
+
+#: src/blocks/alert/index.js:32
+msgid "notice"
+msgstr "通知"
+
+#: src/blocks/alert/index.js:32
+msgid "message"
+msgstr "信息"
+
+#: src/blocks/alert/inspector.js:59
+#: src/blocks/click-to-tweet/inspector.js:66
+#: src/blocks/features/feature/inspector.js:114
+#: src/blocks/features/inspector.js:195
+#: src/blocks/hero/inspector.js:135
+#: src/blocks/highlight/inspector.js:54
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:58
+#: src/blocks/row/column/inspector.js:136
+#: src/blocks/row/inspector.js:265
+#: src/blocks/share/inspector.js:72
+#: src/blocks/social-profiles/inspector.js:84
+#: src/extensions/colors/index.js:54
+msgid "Text Color"
+msgstr "文本颜色"
+
+#: src/blocks/author/controls.js:41
+msgid "Edit image"
+msgstr "编辑图片"
+
+#: src/blocks/author/controls.js:49
+msgid "Remove image"
+msgstr "删除图片"
+
+#: src/blocks/author/edit.js:102
+msgid "Drop to add as avatar"
+msgstr "拖放添加为头像"
+
+#: src/blocks/author/edit.js:143
+msgid "Heading..."
+msgstr "标题..."
+
+#: src/blocks/author/edit.js:154
+msgid "Author Name"
+msgstr "创建者姓名"
+
+#: src/blocks/author/edit.js:165
+msgid "Write biography..."
+msgstr "编写传记..."
+
+#: src/blocks/author/index.js:26
+msgid "Author"
+msgstr "创建者"
+
+#: src/blocks/author/index.js:28
+msgid "Add an author biography."
+msgstr "添加创建者传记。"
+
+#: src/blocks/author/index.js:30
+msgid "biography"
+msgstr "传记"
+
+#: src/blocks/author/index.js:30
+msgid "profile"
+msgstr "基本资料"
+
+#: src/blocks/buttons/index.js:30
+#: src/blocks/buttons/inspector.js:30
+msgid "Buttons"
+msgstr "按钮"
+
+#: src/blocks/buttons/index.js:31
+msgid "Prompt visitors to take action with multiple buttons, side by side."
+msgstr "利用并排的多个按钮，提示访问者进行操作。"
+
+#: src/blocks/buttons/index.js:32
+msgid "link"
+msgstr "链接"
+
+#: src/blocks/buttons/index.js:32
+#: src/blocks/hero/index.js:45
+msgid "cta"
+msgstr "cta"
+
+#: src/blocks/buttons/inspector.js:28
+msgid "Buttons Settings"
+msgstr "按钮设置"
+
+#: src/blocks/buttons/inspector.js:43
+msgid "Stack on mobile"
+msgstr "在移动设备上叠放"
+
+#: src/blocks/buttons/inspector.js:48
+msgid "Stacking buttons on mobile."
+msgstr "在移动设备上叠放按钮。"
+
+#: src/blocks/buttons/inspector.js:48
+msgid "Toggle to stack buttons on mobile."
+msgstr "进行切换，在移动设备上叠放按钮。"
+
+#: src/blocks/click-to-tweet/controls.js:44
+msgid "Twitter Username"
+msgstr "Twitter 用户名"
+
+#: src/blocks/click-to-tweet/controls.js:48
+msgid "Username"
+msgstr "用户名"
+
+#: src/blocks/click-to-tweet/edit.js:107
+msgid "Add button..."
+msgstr "添加按钮..."
+
+# the text of the click to tweet element
+#: src/blocks/click-to-tweet/edit.js:80
+msgid "Add a quote to tweet..."
+msgstr "将引用添加到 Tweet..."
+
+#: src/blocks/click-to-tweet/index.js:25
+msgid "Click to Tweet"
+msgstr "单击以推送 Tweet"
+
+#: src/blocks/click-to-tweet/index.js:27
+msgid "Add a quote for readers to tweet via Twitter."
+msgstr "添加引用以供读者通过 Twitter 推送。"
+
+#: src/blocks/click-to-tweet/index.js:29
+#: src/blocks/social-profiles/index.js:23
+msgid "share"
+msgstr "分享"
+
+#: src/blocks/click-to-tweet/index.js:29
+msgid "twitter"
+msgstr "twitter"
+
+#: src/blocks/click-to-tweet/inspector.js:52
+#: src/blocks/highlight/inspector.js:35
+msgid "Text Settings"
+msgstr "文本设置"
+
+#: src/blocks/click-to-tweet/inspector.js:71
+#: src/blocks/form/submit-button.js:127
+msgid "Button Color"
+msgstr "按钮颜色"
+
+#: src/blocks/dynamic-separator/index.js:24
+msgid "Dynamic HR"
+msgstr "动态 HR"
+
+#: src/blocks/dynamic-separator/index.js:29
+msgid "Add a resizable spacer between other blocks."
+msgstr "在其他模块之间添加可调整大小的间隔区。"
+
+#: src/blocks/dynamic-separator/index.js:31
+msgid "spacer"
+msgstr "间隔区"
+
+#: src/blocks/dynamic-separator/inspector.js:43
+msgid "Dynamic HR Settings"
+msgstr "动态 HR 设置"
+
+#: src/blocks/dynamic-separator/inspector.js:44
+#: src/blocks/gallery-carousel/inspector.js:142
+#: src/blocks/hero/inspector.js:88
+#: src/blocks/map/inspector.js:133
+msgid "Height in pixels"
+msgstr "高度（像素）"
+
+#: src/blocks/dynamic-separator/inspector.js:52
+msgid "Height for the dynamic separator element in pixels."
+msgstr "动态分隔符元素的高度，以像素为单位。"
+
+#: src/blocks/dynamic-separator/inspector.js:66
+msgid "Color"
+msgstr "颜色"
+
+#: src/blocks/features/edit.js:78
+#: src/blocks/features/feature/edit.js:63
+#: src/blocks/media-card/edit.js:173
+msgid "Add as backround"
+msgstr "添加为背景"
+
+#: src/blocks/features/feature/index.js:20
+msgid "Feature"
+msgstr "功能"
+
+#: src/blocks/features/feature/index.js:42
+msgid "A singular child column within a parent features block."
+msgstr "父级功能块内的单一子列。"
+
+#: src/blocks/features/feature/inspector.js:68
+msgid "Feature Settings"
+msgstr "功能设置"
+
+#: src/blocks/features/feature/inspector.js:71
+#: src/blocks/features/inspector.js:143
+#: src/blocks/hero/inspector.js:74
+#: src/blocks/icon/inspector.js:268
+#: src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:103
+#: src/blocks/row/inspector.js:213
+#: src/components/background/panel.js:146
+msgid "Padding"
+msgstr "填充"
+
+#: src/blocks/features/index.js:23
+msgid "Features"
+msgstr "功能"
+
+#: src/blocks/features/index.js:36
+msgid "Add up to three columns of small notes for your product or service."
+msgstr "为您的产品或服务添加最多三列小注释。"
+
+#: src/blocks/features/index.js:38
+msgid "services"
+msgstr "服务"
+
+#: src/blocks/features/inspector.js:122
+#: src/blocks/row/column/inspector.js:91
+#: src/blocks/row/inspector.js:190
+#: src/components/dimensions-control/index.js:295
+msgid "Margin"
+msgstr "边距"
+
+#: src/blocks/features/inspector.js:164
+#: src/blocks/gallery-carousel/inspector.js:137
+#: src/blocks/gallery-stacked/inspector.js:145
+#: src/blocks/row/inspector.js:235
+#: src/components/responsive-tabs-control/index.js:31
+msgid "Gutter"
+msgstr "槽宽"
+
+#: src/blocks/features/inspector.js:167
+#: src/blocks/row/inspector.js:238
+msgid "Space between each column."
+msgstr "各列之间的间隔。"
+
+#: src/blocks/features/inspector.js:86
+#: src/blocks/icon/inspector.js:154
+#: src/blocks/row/inspector.js:99
+#: src/blocks/share/inspector.js:58
+#: src/blocks/social-profiles/inspector.js:70
+#: src/components/dimensions-control/dimensions-select.js:15
+#: src/components/size-control/index.js:116
+msgid "Small"
+msgstr "小"
+
+#: src/blocks/features/inspector.js:87
+#: src/blocks/icon/inspector.js:159
+#: src/blocks/row/inspector.js:100
+#: src/blocks/share/inspector.js:59
+#: src/blocks/social-profiles/inspector.js:71
+#: src/components/dimensions-control/dimensions-select.js:20
+#: src/components/size-control/index.js:120
+msgid "Medium"
+msgstr "中"
+
+#: src/blocks/features/inspector.js:88
+#: src/blocks/icon/inspector.js:164
+#: src/blocks/row/inspector.js:101
+#: src/blocks/share/inspector.js:60
+#: src/blocks/social-profiles/inspector.js:72
+#: src/components/dimensions-control/dimensions-select.js:25
+#: src/components/size-control/index.js:65
+msgid "Large"
+msgstr "大"
+
+#: src/blocks/features/inspector.js:94
+msgid "Features Settings"
+msgstr "功能设置"
+
+#: src/blocks/features/inspector.js:96
+#: src/blocks/services/inspector.js:69
+msgid "Columns"
+msgstr "列"
+
+#: src/blocks/food-and-drinks/appender.js:22
+msgid "Add Menu Section"
+msgstr "添加菜单部分"
+
+#: src/blocks/food-and-drinks/edit.js:27
+msgid "Menu title..."
+msgstr "菜单标题..."
+
+#: src/blocks/food-and-drinks/edit.js:35
+msgid "Grid"
+msgstr "网格"
+
+#: src/blocks/food-and-drinks/edit.js:42
+msgid "List"
+msgstr "列表"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:144
+#: src/blocks/services/service/edit.js:146
+msgid "Drop image to replace"
+msgstr "拖放图片以替换"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:157
+#: src/blocks/services/service/edit.js:159
+#: src/components/block-gallery/gallery-image.js:208
+msgid "Remove Image"
+msgstr "删除图片"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:222
+msgid "Add title..."
+msgstr "添加标题..."
+
+#: src/blocks/food-and-drinks/food-item/edit.js:233
+#: src/blocks/food-and-drinks/food-item/inspector.js:55
+#: src/blocks/food-and-drinks/food-item/save.js:65
+msgid "Spicy"
+msgstr "辛辣"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:253
+msgid "Hot"
+msgstr "热"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:275
+#: src/blocks/food-and-drinks/food-item/inspector.js:70
+#: src/blocks/food-and-drinks/food-item/save.js:81
+msgid "Vegetarian"
+msgstr "素食主义者"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:301
+#: src/blocks/food-and-drinks/food-item/inspector.js:45
+#: src/blocks/food-and-drinks/food-item/save.js:89
+msgid "Gluten Free"
+msgstr "无麸质"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:324
+#: src/blocks/food-and-drinks/food-item/inspector.js:50
+#: src/blocks/food-and-drinks/food-item/save.js:97
+msgid "Pescatarian"
+msgstr "鱼素者"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:345
+#: src/blocks/food-and-drinks/food-item/inspector.js:65
+#: src/blocks/food-and-drinks/food-item/save.js:105
+msgid "Vegan"
+msgstr "素食"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:363
+msgid "Add description..."
+msgstr "添加描述..."
+
+#: src/blocks/food-and-drinks/food-item/edit.js:372
+msgid "$0.00"
+msgstr "0.00 美元"
+
+#: src/blocks/food-and-drinks/food-item/index.js:21
+msgid "Food Item"
+msgstr "食品项"
+
+#: src/blocks/food-and-drinks/food-item/index.js:30
+msgid "A food and drink item within the Food & Drinks block."
+msgstr "食品与饮料模块内的食品和饮料项。"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:19
+msgid "Item Settings"
+msgstr "项目设置"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:21
+msgid "Image"
+msgstr "图片"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:24
+msgid "Showing an image for this item."
+msgstr "显示此项目的图片。"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:25
+msgid "Toggle to show an image for this item."
+msgstr "进行切换，显示此项目的图片。"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:31
+msgid "Price"
+msgstr "价格"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:34
+msgid "Showing the price for this item."
+msgstr "显示此项目的价格。"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:35
+msgid "Toggle to show the price for this item."
+msgstr "进行切换，显示此项目的价格。"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:42
+msgid "Item Attributes"
+msgstr "项目属性"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:60
+#: src/blocks/food-and-drinks/food-item/save.js:73
+msgid "Spicier"
+msgstr "更辣"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:77
+#: src/blocks/services/service/inspector.js:31
+msgid "Image Settings"
+msgstr "图片设置"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:79
+#: src/blocks/gif/inspector.js:31
+#: src/blocks/media-card/inspector.js:95
+#: src/blocks/services/service/inspector.js:33
+msgid "Alt Text (Alternative Text)"
+msgstr "Alt Text（替代文本）"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:85
+#: src/blocks/gif/inspector.js:37
+#: src/blocks/media-card/inspector.js:101
+#: src/blocks/services/service/inspector.js:39
+msgid "Describe the purpose of the image"
+msgstr "描述该图片的用途"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:87
+#: src/blocks/gif/inspector.js:39
+#: src/blocks/media-card/inspector.js:103
+#: src/blocks/services/service/inspector.js:41
+msgid "Leave empty if the image is purely decorative."
+msgstr "如果图片只是装饰用途，则保持空白。"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:92
+#: src/blocks/services/service/inspector.js:46
+#: src/components/background/panel.js:126
+msgid "Focal Point"
+msgstr "焦点"
+
+#: src/blocks/food-and-drinks/index.js:24
+msgid "Food & Drinks"
+msgstr "食品和饮料"
+
+#: src/blocks/food-and-drinks/index.js:26
+msgid "Display a menu or price list."
+msgstr "显示菜单或价目表。"
+
+#: src/blocks/food-and-drinks/index.js:28
+msgid "restaurant"
+msgstr "餐厅"
+
+#: src/blocks/food-and-drinks/index.js:28
+msgid "menu"
+msgstr "菜单"
+
+#: src/blocks/food-and-drinks/inspector.js:26
+#: src/blocks/map/inspector.js:98
+#: src/blocks/row/inspector.js:152
+#: src/blocks/services/inspector.js:32
+msgid "Styles"
+msgstr "样式"
+
+#: src/blocks/food-and-drinks/inspector.js:59
+msgid "Food & Drinks Settings"
+msgstr "食品和饮料设置"
+
+#: src/blocks/food-and-drinks/inspector.js:61
+msgid "Images"
+msgstr "图片"
+
+#: src/blocks/food-and-drinks/inspector.js:64
+msgid "Showing images for each item"
+msgstr "显示各项目的图片"
+
+#: src/blocks/food-and-drinks/inspector.js:65
+msgid "Toggle to show images for each item."
+msgstr "进行切换，显示各项目的图片。"
+
+#: src/blocks/food-and-drinks/inspector.js:71
+msgid "Prices"
+msgstr "价格"
+
+#: src/blocks/food-and-drinks/inspector.js:74
+msgid "Showing the price of each item"
+msgstr "显示各项目的价格"
+
+#: src/blocks/food-and-drinks/inspector.js:75
+msgid "Toggle to show the price of each item."
+msgstr "进行切换，显示各项目的价格。"
+
+#: src/blocks/form/edit.js:109
+#: src/blocks/share/inspector.js:156
+#: includes/class-coblocks-form.php:210
+#: includes/class-coblocks-form.php:297
+msgid "Email"
+msgstr "电子邮件"
+
+#: src/blocks/form/edit.js:110
+msgid "e-mail"
+msgstr "电子邮件"
+
+#: src/blocks/form/edit.js:110
+msgid "mail"
+msgstr "邮件"
+
+#: src/blocks/form/edit.js:111
+msgid "An email address field."
+msgstr "电子邮件地址字段。"
+
+#: src/blocks/form/edit.js:120
+#: includes/class-coblocks-form.php:325
+msgid "Message"
+msgstr "信息"
+
+#: src/blocks/form/edit.js:121
+msgid "Textarea"
+msgstr "文本区域"
+
+#: src/blocks/form/edit.js:121
+msgid "Multiline text"
+msgstr "多行文本"
+
+#: src/blocks/form/edit.js:122
+msgid "A text box for longer responses."
+msgstr "用于较长回复内容的文本框。"
+
+#: src/blocks/form/edit.js:289
+msgid "%s is not a valid email address."
+msgstr "%s 不是有效的电子邮件地址。"
+
+#: src/blocks/form/edit.js:298
+msgid "%s and %s are not a valid email address."
+msgstr "%s 和 %s 不是有效的电子邮件地址。"
+
+#: src/blocks/form/edit.js:305
+msgid "%s are not a valid email address."
+msgstr "%s 不是有效的电子邮件地址。"
+
+#: src/blocks/form/edit.js:363
+msgid "Email address"
+msgstr "电子邮件地址"
+
+#: src/blocks/form/edit.js:364
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: src/blocks/form/edit.js:374
+msgid "Subject"
+msgstr "主题"
+
+#: src/blocks/form/edit.js:404
+msgid "Form Settings"
+msgstr "表单设置"
+
+#: src/blocks/form/edit.js:409
+msgid "Google reCAPTCHA"
+msgstr "Google reCAPTCHA"
+
+#: src/blocks/form/edit.js:412
+msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
+msgstr "添加您的 reCAPTCHA 网站密钥和密钥，保护您的表单不受垃圾数据侵扰。"
+
+#: src/blocks/form/edit.js:418
+msgid "Generate keys"
+msgstr "生成密钥"
+
+#: src/blocks/form/edit.js:419
+msgid "My keys"
+msgstr "我的密钥"
+
+#: src/blocks/form/edit.js:422
+msgid "Get help"
+msgstr "获取帮助"
+
+#: src/blocks/form/edit.js:426
+msgid "Site Key"
+msgstr "网站密钥"
+
+#: src/blocks/form/edit.js:432
+msgid "Secret Key"
+msgstr "密钥"
+
+#: src/blocks/form/edit.js:446
+#: src/components/block-gallery/gallery-image.js:221
+msgid "Saving"
+msgstr "正在保存"
+
+#: src/blocks/form/edit.js:446
+#: src/blocks/map/inspector.js:221
+msgid "Save"
+msgstr "保存"
+
+#: src/blocks/form/edit.js:461
+#: src/blocks/map/inspector.js:229
+msgid "Remove"
+msgstr "删除"
+
+#: src/blocks/form/edit.js:57
+#: includes/class-coblocks-form.php:248
+msgid "First"
+msgstr "首页"
+
+#: src/blocks/form/edit.js:61
+#: includes/class-coblocks-form.php:249
+msgid "Last"
+msgstr "最后一页"
+
+#: src/blocks/form/edit.js:88
+#: includes/class-coblocks-form.php:244
+msgid "Name"
+msgstr "名称"
+
+#: src/blocks/form/edit.js:89
+msgid "A text field for names."
+msgstr "用于名称的文本字段。"
+
+#: src/blocks/form/fields/field-label.js:22
+#: src/blocks/form/fields/field-name.js:67
+msgid "Add label…"
+msgstr "添加标签..."
+
+#: src/blocks/form/fields/field-label.js:30
+msgid "Required"
+msgstr "必填"
+
+#: src/blocks/form/fields/field-name.js:75
+msgid "Name Field Settings"
+msgstr "名称字段设置"
+
+#: src/blocks/form/fields/field-name.js:77
+msgid "Last Name"
+msgstr "姓氏"
+
+#: src/blocks/form/fields/field-name.js:81
+msgid "Showing both first and last name fields."
+msgstr "同时显示名字和姓氏字段。"
+
+#: src/blocks/form/fields/field-name.js:81
+msgid "Toggle to add a last name field."
+msgstr "进行切换，添加姓氏字段。"
+
+#: src/blocks/form/index.js:25
+msgid "Form"
+msgstr "表单"
+
+#: src/blocks/form/index.js:27
+msgid "Add a simple form to your page."
+msgstr "将一个简单表单添加到您的页面。"
+
+#: src/blocks/form/index.js:29
+msgid "email"
+msgstr "电子邮件"
+
+#: src/blocks/form/index.js:29
+msgid "about"
+msgstr "关于"
+
+#: src/blocks/form/index.js:29
+msgid "contact"
+msgstr "联系人"
+
+#: src/blocks/form/submit-button.js:107
+msgid "Add text…"
+msgstr "添加文本…"
+
+#: src/blocks/form/submit-button.js:135
+msgid "Button Text Color"
+msgstr "按钮文本颜色"
+
+#: src/blocks/gallery-carousel/controls.js:53
+#: src/blocks/gallery-masonry/controls.js:53
+#: src/blocks/gallery-stacked/controls.js:53
+msgid "Edit gallery"
+msgstr "编辑图片库"
+
+# %1$d is the order number of the image, %2$d is the total number of images.
+#: src/blocks/gallery-carousel/edit.js:292
+#: src/blocks/gallery-masonry/edit.js:239
+#: src/blocks/gallery-stacked/edit.js:197
+msgid "image %1$d of %2$d in gallery"
+msgstr "图片库中的第 %1$d 张图片（共 %2$d 张）"
+
+#: src/blocks/gallery-carousel/edit.js:333
+#: src/blocks/gif/edit.js:248
+#: src/blocks/gist/edit.js:103
+#: src/components/block-gallery/gallery-image.js:230
+msgid "Write caption…"
+msgstr "编写标题..."
+
+#: src/blocks/gallery-carousel/index.js:24
+msgid "Carousel"
+msgstr "滚动"
+
+#: src/blocks/gallery-carousel/index.js:38
+msgid "Display multiple images in a beautiful carousel gallery."
+msgstr "显示精美的滚动图片库中的多张图片。"
+
+#: src/blocks/gallery-carousel/index.js:42
+#: src/blocks/gallery-masonry/index.js:43
+#: src/blocks/gallery-stacked/index.js:42
+msgid "gallery"
+msgstr "图片库"
+
+#: src/blocks/gallery-carousel/index.js:42
+#: src/blocks/gallery-masonry/index.js:43
+#: src/blocks/gallery-stacked/index.js:42
+msgid "photos"
+msgstr "照片"
+
+#: src/blocks/gallery-carousel/inspector.js:119
+#: src/blocks/gallery-masonry/inspector.js:127
+#: src/blocks/gallery-stacked/inspector.js:134
+msgid "%s Settings"
+msgstr "%s 设置"
+
+#: src/blocks/gallery-carousel/inspector.js:124
+#: src/blocks/icon/inspector.js:197
+#: src/components/typography-controls/index.js:189
+msgid "Size"
+msgstr "大小"
+
+#: src/blocks/gallery-carousel/inspector.js:150
+#: src/blocks/gallery-masonry/inspector.js:137
+#: src/blocks/gallery-stacked/inspector.js:149
+#: src/blocks/share/inspector.js:99
+#: src/blocks/social-profiles/inspector.js:111
+#: src/components/background/panel.js:156
+msgid "Rounded Corners"
+msgstr "圆角"
+
+#: src/blocks/gallery-carousel/inspector.js:88
+#: src/blocks/gallery-masonry/inspector.js:101
+#: src/blocks/gallery-stacked/inspector.js:104
+msgid "Caption Color"
+msgstr "标题颜色"
+
+#: src/blocks/gallery-masonry/index.js:24
+msgid "Masonry"
+msgstr "砖石布局"
+
+#: src/blocks/gallery-masonry/index.js:39
+msgid "Display multiple images in an organized masonry gallery."
+msgstr "显示有条理的砖石布局图片库中的多张图片。"
+
+#: src/blocks/gallery-masonry/inspector.js:130
+msgid "Column Size"
+msgstr "列大小"
+
+#: src/blocks/gallery-masonry/inspector.js:138
+msgid "Add rounded corners to the gallery items."
+msgstr "将圆角添加到图片库项目。"
+
+#: src/blocks/gallery-masonry/inspector.js:146
+#: src/blocks/gallery-stacked/inspector.js:165
+msgid "Captions"
+msgstr "标题"
+
+#: src/blocks/gallery-masonry/inspector.js:153
+msgid "Caption Style"
+msgstr "标题样式"
+
+#: src/blocks/gallery-masonry/inspector.js:52
+#: src/blocks/gallery-stacked/inspector.js:55
+msgid "Showing captions for each media item."
+msgstr "显示各个媒体项的标题。"
+
+#: src/blocks/gallery-masonry/inspector.js:52
+#: src/blocks/gallery-stacked/inspector.js:55
+msgid "Toggle to show media captions."
+msgstr "进行切换，显示媒体标题。"
+
+#: src/blocks/gallery-stacked/index.js:24
+msgid "Stacked"
+msgstr "堆叠"
+
+#: src/blocks/gallery-stacked/index.js:38
+msgid "Display multiple images in an single column stacked gallery."
+msgstr "显示单列叠放图片库中的多张图片。"
+
+#: src/blocks/gallery-stacked/inspector.js:137
+msgid "Fullwidth Images"
+msgstr "全宽图片"
+
+#: src/blocks/gallery-stacked/inspector.js:137
+msgid "Fullwidth Image"
+msgstr "全宽图片"
+
+#: src/blocks/gallery-stacked/inspector.js:159
+msgid "Box Shadow"
+msgstr "方框阴影"
+
+#: src/blocks/gallery-stacked/inspector.js:51
+msgid "Fullwidth images are enabled."
+msgstr "全宽图片已启用。"
+
+#: src/blocks/gallery-stacked/inspector.js:51
+msgid "Toggle to fill the available gallery area with completely fullwidth images."
+msgstr "进行切换，用全宽图片完全填充可用的图片库区域。"
+
+#: src/blocks/gif/controls.js:44
+msgid "Remove gif"
+msgstr "删除 gif"
+
+#: src/blocks/gif/edit.js:153
+msgid "This gif has an empty alt attribute"
+msgstr "此 gif 具有空白 alt 属性"
+
+#: src/blocks/gif/edit.js:288
+msgid "Search for that perfect gif on Giphy"
+msgstr "在 Giphy 上搜索完美 gif"
+
+#: src/blocks/gif/edit.js:294
+msgid "Search for gifs"
+msgstr "搜索 gif"
+
+#: src/blocks/gif/index.js:28
+msgid "Pick a gif, any gif."
+msgstr "选取 gif，任何 gif。"
+
+#: src/blocks/gif/index.js:30
+msgid "animated"
+msgstr "动画"
+
+#: src/blocks/gif/inspector.js:29
+msgid "Gif Settings"
+msgstr "Gif 设置"
+
+#: src/blocks/gist/controls.js:29
+msgid "Display meta"
+msgstr "显示 meta"
+
+#: src/blocks/gist/controls.js:42
+msgid "Edit Gist"
+msgstr "编辑 Gist"
+
+#: src/blocks/gist/controls.js:49
+msgid "View Gist"
+msgstr "查看 Gist"
+
+#: src/blocks/gist/controls.js:68
+msgid "GitHub File"
+msgstr "GitHub 文件"
+
+#: src/blocks/gist/controls.js:72
+msgid "File"
+msgstr "文件"
+
+#: src/blocks/gist/deprecated.js:30
+#: src/blocks/gist/save.js:29
+msgid "View this gist on GitHub"
+msgstr "查看 GitHub 上的此 gist"
+
+#: src/blocks/gist/edit.js:124
+#: src/blocks/gist/inspector.js:51
+msgid "Gist URL"
+msgstr "Gist URL"
+
+#: src/blocks/gist/edit.js:129
+msgid "Add GitHub Gist URL..."
+msgstr "添加 GitHub Gist URL..."
+
+#: src/blocks/gist/gist.js:137
+msgid "Loading Gist"
+msgstr "正在加载 Gist"
+
+#: src/blocks/gist/index.js:29
+msgid "Embed GitHub gists by adding the gist link."
+msgstr "通过添加 gist 链接嵌入 GitHub gist。"
+
+#: src/blocks/gist/index.js:31
+msgid "code"
+msgstr "代码"
+
+#: src/blocks/gist/inspector.js:31
+msgid "Showing gist meta data."
+msgstr "显示 gist 元数据。"
+
+#: src/blocks/gist/inspector.js:31
+msgid "Toggle to show the gist meta data."
+msgstr "进行切换，显示 gist 元数据。"
+
+#: src/blocks/gist/inspector.js:49
+msgid "Gist Settings"
+msgstr "Gist 设置"
+
+#: src/blocks/gist/inspector.js:56
+msgid "Gist File"
+msgstr "Gist 文件"
+
+#: src/blocks/gist/inspector.js:61
+msgid "Gist Meta"
+msgstr "Gist Meta"
+
+#: src/blocks/hero/controls.js:32
+#: src/blocks/row/controls.js:71
+msgid "Change layout"
+msgstr "更改布局"
+
+#: src/blocks/hero/edit.js:157
+#: src/blocks/row/column/edit.js:92
+#: src/blocks/row/edit.js:170
+msgid "Add backround to %s"
+msgstr "将背景添加到 %s"
+
+#: src/blocks/hero/index.js:27
+msgid "Hero"
+msgstr "首页"
+
+#: src/blocks/hero/index.js:43
+msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
+msgstr "一个页面的介绍性区域，配有少量文字和行动号召。"
+
+#: src/blocks/hero/index.js:45
+msgid "button"
+msgstr "按钮"
+
+#: src/blocks/hero/index.js:45
+msgid "call to action"
+msgstr "行动号召"
+
+#: src/blocks/hero/inspector.js:107
+msgid "Content width in pixels"
+msgstr "内容宽度（像素）"
+
+#: src/blocks/hero/inspector.js:71
+msgid "Hero Settings"
+msgstr "首页设置"
+
+#: src/blocks/hero/inspector.js:75
+#: src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:104
+#: src/blocks/row/inspector.js:214
+msgid "Space inside of the container."
+msgstr "容器内部空间。"
+
+#: src/blocks/hero/layouts.js:12
+#: src/components/background/panel.js:83
+#: src/components/grid-control/index.js:35
+msgid "Top Left"
+msgstr "左上方"
+
+#: src/blocks/hero/layouts.js:13
+#: src/components/background/panel.js:84
+#: src/components/grid-control/index.js:36
+msgid "Top Center"
+msgstr "中上方"
+
+#: src/blocks/hero/layouts.js:14
+#: src/components/background/panel.js:85
+#: src/components/grid-control/index.js:37
+msgid "Top Right"
+msgstr "右上方"
+
+#: src/blocks/hero/layouts.js:15
+#: src/components/background/panel.js:86
+#: src/components/grid-control/index.js:48
+msgid "Center Left"
+msgstr "左中部"
+
+#: src/blocks/hero/layouts.js:16
+#: src/components/background/panel.js:87
+#: src/components/grid-control/index.js:49
+msgid "Center Center"
+msgstr "正中部"
+
+#: src/blocks/hero/layouts.js:17
+#: src/components/background/panel.js:88
+#: src/components/grid-control/index.js:50
+msgid "Center Right"
+msgstr "右中部"
+
+#: src/blocks/hero/layouts.js:18
+#: src/components/background/panel.js:89
+#: src/components/grid-control/index.js:41
+msgid "Bottom Left"
+msgstr "左下方"
+
+#: src/blocks/hero/layouts.js:19
+#: src/components/background/panel.js:90
+#: src/components/grid-control/index.js:42
+msgid "Bottom Center"
+msgstr "中下方"
+
+#: src/blocks/hero/layouts.js:20
+#: src/components/background/panel.js:91
+#: src/components/grid-control/index.js:43
+msgid "Bottom Right"
+msgstr "右下方"
+
+#: src/blocks/highlight/edit.js:108
+msgid "Add highlighted text..."
+msgstr "添加突出显示的文本..."
+
+#: src/blocks/highlight/index.js:22
+msgid "Highlight"
+msgstr "高光"
+
+#: src/blocks/highlight/index.js:29
+msgid "Highlight text."
+msgstr "突出显示文本。"
+
+#: src/blocks/highlight/index.js:31
+msgid "text"
+msgstr "文本"
+
+#: src/blocks/highlight/index.js:31
+msgid "paragraph"
+msgstr "段落"
+
+#: src/blocks/icon/index.js:27
+msgid "Icon"
+msgstr "图标"
+
+#: src/blocks/icon/index.js:34
+msgid "Add a stylized graphic symbol to communicate something more."
+msgstr "添加特定风格的图形符号，以传达更多信息。"
+
+#: src/blocks/icon/index.js:36
+#: src/blocks/social-profiles/index.js:23
+msgid "icons"
+msgstr "图标"
+
+#: src/blocks/icon/inspector.js:168
+#: src/blocks/row/inspector.js:102
+#: src/components/dimensions-control/dimensions-select.js:30
+msgid "Huge"
+msgstr "巨大"
+
+#: src/blocks/icon/inspector.js:179
+#: src/blocks/share/inspector.js:90
+#: src/blocks/social-profiles/inspector.js:102
+msgid "Icon Settings"
+msgstr "图标设置"
+
+#: src/blocks/icon/inspector.js:192
+#: src/components/dimensions-control/index.js:484
+msgid "Turn off advanced %s settings"
+msgstr "关闭高级 %s 设置"
+
+#: src/blocks/icon/inspector.js:194
+#: src/components/dimensions-control/index.js:486
+#: src/components/size-control/index.js:198
+msgid "Reset"
+msgstr "重置"
+
+#: src/blocks/icon/inspector.js:221
+msgid "Custom %s size"
+msgstr "自定义 %s 大小"
+
+#: src/blocks/icon/inspector.js:249
+#: src/components/dimensions-control/index.js:725
+msgid "Advanced %s settings"
+msgstr "高级 %s 设置"
+
+#: src/blocks/icon/inspector.js:252
+#: src/components/dimensions-control/index.js:728
+msgid "Advanced"
+msgstr "高级"
+
+#: src/blocks/icon/inspector.js:260
+msgid "Radius"
+msgstr "半径"
+
+#: src/blocks/icon/inspector.js:280
+msgid "Icon Search"
+msgstr "图标搜索"
+
+#: src/blocks/icon/inspector.js:329
+msgid "No results found."
+msgstr "未找到结果。"
+
+#: src/blocks/icon/inspector.js:335
+#: src/components/block-gallery/gallery-link-settings.js:63
+msgid "Link Settings"
+msgstr "链接设置"
+
+#: src/blocks/icon/inspector.js:338
+msgid "Link URL"
+msgstr "链接 URL"
+
+#: src/blocks/icon/inspector.js:343
+#: src/components/block-gallery/gallery-link-settings.js:80
+msgid "Link Rel"
+msgstr "链接 Rel"
+
+#: src/blocks/icon/inspector.js:348
+msgid "Opening in New Tab"
+msgstr "在新选项卡中打开"
+
+#: src/blocks/icon/inspector.js:348
+#: src/components/block-gallery/gallery-link-settings.js:75
+msgid "Open in New Tab"
+msgstr "在新选项卡中打开"
+
+#: src/blocks/icon/inspector.js:360
+msgid "Icon Color"
+msgstr "图标颜色"
+
+#: src/blocks/logos/controls.js:51
+msgid "Edit logos"
+msgstr "编辑徽标"
+
+#: src/blocks/logos/edit.js:69
+#: src/blocks/logos/index.js:28
+msgid "Logos & Badges"
+msgstr "徽标和徽章"
+
+#: src/blocks/logos/edit.js:70
+#: src/components/block-gallery/gallery-placeholder.js:71
+msgid "Drag images, upload new ones or select files from your library."
+msgstr "拖放图片、上传新图片或从您的库中选择文件。"
+
+#: src/blocks/logos/index.js:29
+msgid "Add logos, badges, or certifications to build credibility."
+msgstr "添加徽标、徽章或证书，以建立信誉。"
+
+#: src/blocks/logos/index.js:30
+msgid "clients"
+msgstr "客户"
+
+#: src/blocks/logos/index.js:30
+msgid "proof"
+msgstr "证明"
+
+#: src/blocks/logos/index.js:30
+msgid "testimonials"
+msgstr "感言"
+
+#: src/blocks/logos/inspector.js:12
+msgid "Logos Settings"
+msgstr "徽标设置"
+
+#: src/blocks/logos/inspector.js:15
+msgid "Black & White"
+msgstr "黑白"
+
+#: src/blocks/logos/inspector.js:16
+msgid "Toggle to add a black and white filter."
+msgstr "进行切换，添加黑白滤镜。"
+
+#: src/blocks/map/controls.js:30
+msgid "Edit Location"
+msgstr "编辑地点"
+
+#: src/blocks/map/controls.js:42
+msgid "Map style"
+msgstr "地图样式"
+
+#: src/blocks/map/edit.js:188
+msgid "Invalid API key, or too many requests"
+msgstr "无效 API 密钥，或请求太多"
+
+#: src/blocks/map/edit.js:295
+#: src/blocks/map/save.js:48
+msgid "Google Map"
+msgstr "Google 地图"
+
+#: src/blocks/map/edit.js:296
+msgid "Enter a location or address to drop a pin on a Google map."
+msgstr "输入地点或地址，在 Google 地图上放一个大头针。"
+
+#: src/blocks/map/edit.js:303
+msgid "Search for a place or address…"
+msgstr "搜索地方或地址…"
+
+#: src/blocks/map/edit.js:308
+#: src/components/block-gallery/gallery-image.js:221
+msgid "Apply"
+msgstr "应用"
+
+#: src/blocks/map/index.js:24
+msgid "Map"
+msgstr "地图"
+
+#: src/blocks/map/index.js:29
+msgid "Add an address and drop a pin on a Google map."
+msgstr "添加地址并在 Google 地图上放一个大头针。"
+
+#: src/blocks/map/index.js:31
+msgid "address"
+msgstr "地址"
+
+#: src/blocks/map/index.js:31
+msgid "maps"
+msgstr "地图"
+
+#: src/blocks/map/index.js:31
+msgid "google"
+msgstr "google"
+
+#: src/blocks/map/inspector.js:100
+msgid "Select Map Style"
+msgstr "选择地图样式"
+
+#: src/blocks/map/inspector.js:121
+msgid "Map Settings"
+msgstr "地图设置"
+
+#: src/blocks/map/inspector.js:124
+msgid "Zoom Level"
+msgstr "缩放级别"
+
+#: src/blocks/map/inspector.js:134
+msgid "Height for the map in pixels"
+msgstr "地图的高度，以像素为单位"
+
+#: src/blocks/map/inspector.js:145
+msgid "Marker Size"
+msgstr "标记大小"
+
+#: src/blocks/map/inspector.js:160
+msgid "Fine control options are enabled."
+msgstr "精细控制选项已启用。"
+
+#: src/blocks/map/inspector.js:160
+msgid "Toggle to enable map control options."
+msgstr "进行切换，启用地图控制选项。"
+
+#: src/blocks/map/inspector.js:168
+msgid "Map Controls"
+msgstr "地图控件"
+
+#: src/blocks/map/inspector.js:172
+msgid "Map Type"
+msgstr "地图类型"
+
+#: src/blocks/map/inspector.js:175
+msgid "Switching between standard and satellite map views is enabled."
+msgstr "启用在标准地图和卫星地图视图之间切换。"
+
+#: src/blocks/map/inspector.js:175
+msgid "Toggle to enable switching between standard and satellite maps."
+msgstr "进行切换，启用在标准地图和卫星地图之间切换。"
+
+#: src/blocks/map/inspector.js:178
+msgid "Zoom Controls"
+msgstr "缩放控件"
+
+#: src/blocks/map/inspector.js:181
+msgid "Showing map zoom controls."
+msgstr "显示地图缩放控件。"
+
+#: src/blocks/map/inspector.js:181
+msgid "Toggle to enable zooming in and out on the map with zoom controls."
+msgstr "进行切换，启用通过缩放控件放大和缩小地图。"
+
+#: src/blocks/map/inspector.js:184
+msgid "Street View"
+msgstr "街景视图"
+
+#: src/blocks/map/inspector.js:187
+msgid "Showing the street view map control."
+msgstr "显示街景视图地图控件。"
+
+#: src/blocks/map/inspector.js:187
+msgid "Toggle to show the street view control at the bottom right."
+msgstr "进行切换，在右下方显示街景视图控件。"
+
+#: src/blocks/map/inspector.js:190
+msgid "Fullscreen Toggle"
+msgstr "全屏切换"
+
+#: src/blocks/map/inspector.js:193
+msgid "Showing the fullscreen map control."
+msgstr "显示全屏地图控件。"
+
+#: src/blocks/map/inspector.js:193
+msgid "Toggle to show the fullscreen map control."
+msgstr "进行切换，显示全屏地图控件。"
+
+#: src/blocks/map/inspector.js:198
+msgid "Google Maps API Key"
+msgstr "Google 地图 API 密钥"
+
+#: src/blocks/map/inspector.js:202
+msgid "Add your Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgstr "添加您的 Google 地图 API 密钥。更新此 API 密钥将会设置您的所有地图使用新密钥。"
+
+#: src/blocks/map/inspector.js:205
+msgid "Retrieve your key"
+msgstr "获取您的密钥"
+
+#: src/blocks/map/inspector.js:206
+msgid "Need help?"
+msgstr "需要帮助？"
+
+#: src/blocks/map/inspector.js:212
+msgid "Enter Google API Key…"
+msgstr "输入 Google API 密钥…"
+
+#: src/blocks/map/inspector.js:221
+msgid "Saved"
+msgstr "已保存"
+
+#: src/blocks/map/styles.js:12
+msgid "Standard"
+msgstr "标准"
+
+#: src/blocks/map/styles.js:16
+msgid "Silver"
+msgstr "银色"
+
+#: src/blocks/map/styles.js:20
+msgid "Retro"
+msgstr "质璞复古"
+
+#: src/blocks/map/styles.js:24
+#: src/components/block-gallery/options/caption-options.js:10
+msgid "Dark"
+msgstr "暗黑"
+
+#: src/blocks/map/styles.js:28
+msgid "Night"
+msgstr "夜晚"
+
+#: src/blocks/map/styles.js:32
+msgid "Aubergine"
+msgstr "紫红色"
+
+#: src/blocks/media-card/controls.js:28
+msgid "Media on right"
+msgstr "媒体在右侧"
+
+#: src/blocks/media-card/controls.js:33
+msgid "Media on left"
+msgstr "媒体在左侧"
+
+#: src/blocks/media-card/index.js:26
+msgid "Media Card"
+msgstr "媒体卡"
+
+#: src/blocks/media-card/index.js:37
+msgid "Add an image or video with an offset card side-by-side."
+msgstr "使用并排胶印卡添加图片或视频。"
+
+#: src/blocks/media-card/index.js:39
+msgid "image"
+msgstr "图片"
+
+#: src/blocks/media-card/index.js:39
+msgid "video"
+msgstr "视频"
+
+#: src/blocks/media-card/inspector.js:109
+msgid "Card Shadow"
+msgstr "卡阴影"
+
+#: src/blocks/media-card/inspector.js:112
+msgid "Showing card shadow."
+msgstr "显示卡阴影。"
+
+#: src/blocks/media-card/inspector.js:112
+msgid "Toggle to add a card shadow."
+msgstr "进行切换，添加卡阴影。"
+
+#: src/blocks/media-card/inspector.js:116
+msgid " %s Shadow"
+msgstr " %s 阴影"
+
+#: src/blocks/media-card/inspector.js:119
+msgid "Showing %s shadow."
+msgstr "显示 %s 阴影。"
+
+#: src/blocks/media-card/inspector.js:119
+msgid "Toggle to add an %s shadow"
+msgstr "进行切换，添加 %s 阴影"
+
+#: src/blocks/media-card/inspector.js:59
+msgid "Media Card Settings"
+msgstr "媒体卡设置"
+
+#: src/blocks/media-card/inspector.js:84
+msgid "Max Width"
+msgstr "最大宽度"
+
+#: src/blocks/media-card/media-container.js:100
+msgid "Media"
+msgstr "媒体"
+
+#: src/blocks/media-card/media-container.js:120
+msgid "Drop to replace media"
+msgstr "拖放以替换媒体"
+
+#: src/blocks/media-card/media-container.js:37
+msgid "Edit media"
+msgstr "编辑媒体"
+
+# %s: number of tables
+#: src/blocks/pricing-table/controls.js:38
+msgid "%s Tables"
+msgstr "%s 表格"
+
+#: src/blocks/pricing-table/edit.js:39
+msgid "Plan %s"
+msgstr "套餐 %s"
+
+#: src/blocks/pricing-table/index.js:22
+msgid "Pricing Table"
+msgstr "价目表"
+
+#: src/blocks/pricing-table/index.js:29
+msgid "Add pricing tables."
+msgstr "添加价目表。"
+
+#: src/blocks/pricing-table/index.js:31
+#: src/blocks/pricing-table/pricing-table-item/index.js:31
+msgid "landing"
+msgstr "登陆"
+
+#: src/blocks/pricing-table/index.js:31
+#: src/blocks/pricing-table/pricing-table-item/index.js:31
+msgid "comparison"
+msgstr "比较"
+
+#: src/blocks/pricing-table/inspector.js:26
+msgid "Pricing Table Settings"
+msgstr "价目表设置"
+
+#: src/blocks/pricing-table/inspector.js:28
+msgid "Tables"
+msgstr "表格"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:112
+msgid "Add features"
+msgstr "添加功能"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:30
+msgid "Buy Now"
+msgstr "立即购买"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:82
+msgid "Plan A"
+msgstr "套餐 A"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:92
+msgid "$"
+msgstr "$"
+
+#: src/blocks/pricing-table/pricing-table-item/index.js:22
+msgid "Pricing Table Item"
+msgstr "价目表项"
+
+#: src/blocks/pricing-table/pricing-table-item/index.js:29
+msgid "A column placed within the pricing table block."
+msgstr "放在价目表模块内的一列。"
+
+#: src/blocks/row/column/index.js:22
+msgid "Column"
+msgstr "列"
+
+#: src/blocks/row/column/index.js:36
+msgid "An immediate child of a row."
+msgstr "一行的直接子级。"
+
+#: src/blocks/row/column/inspector.js:115
+msgid "Width"
+msgstr "宽度"
+
+#: src/blocks/row/column/inspector.js:88
+msgid "Column Settings"
+msgstr "列设置"
+
+#: src/blocks/row/column/inspector.js:92
+#: src/blocks/row/inspector.js:191
+msgid "Space around the container."
+msgstr "容器周围的空间。"
+
+#: src/blocks/row/edit.js:122
+msgid "one"
+msgstr "一"
+
+#: src/blocks/row/edit.js:124
+msgid "two"
+msgstr "二"
+
+#: src/blocks/row/edit.js:126
+msgid "three"
+msgstr "三"
+
+#: src/blocks/row/edit.js:128
+msgid "four"
+msgstr "四"
+
+#: src/blocks/row/edit.js:175
+msgid "One Column"
+msgstr "一列"
+
+#: src/blocks/row/edit.js:176
+msgid "Two Columns"
+msgstr "两列"
+
+#: src/blocks/row/edit.js:177
+msgid "Three Columns"
+msgstr "三列"
+
+#: src/blocks/row/edit.js:178
+msgid "Four Columns"
+msgstr "四列"
+
+#: src/blocks/row/edit.js:203
+msgid "Row Layout"
+msgstr "行布局"
+
+#: src/blocks/row/edit.js:203
+#: src/blocks/row/index.js:26
+msgid "Row"
+msgstr "行"
+
+#: src/blocks/row/edit.js:204
+msgid "Now select a layout for this %s column row."
+msgstr "现在为此 %s 列的行选择一种布局。"
+
+#: src/blocks/row/edit.js:204
+msgid "Select the number of columns for this row."
+msgstr "选择此行的列数。"
+
+#: src/blocks/row/edit.js:208
+msgid "Select Row Columns"
+msgstr "选择行列数"
+
+#: src/blocks/row/edit.js:233
+#: src/blocks/row/inspector.js:154
+msgid "Select Row Layout"
+msgstr "选择行布局"
+
+#: src/blocks/row/edit.js:243
+msgid "Back to Columns"
+msgstr "返回到列"
+
+#: src/blocks/row/index.js:40
+msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
+msgstr "为列模块添加结构化的包装器，然后将所需内容模块添加到列。"
+
+#: src/blocks/row/index.js:42
+msgid "rows"
+msgstr "行"
+
+#: src/blocks/row/index.js:42
+msgid "columns"
+msgstr "列"
+
+#: src/blocks/row/index.js:42
+msgid "layouts"
+msgstr "布局"
+
+#: src/blocks/row/inspector.js:117
+#: src/components/grid-control/index.js:122
+msgid "Layout"
+msgstr "布局"
+
+#: src/blocks/row/inspector.js:186
+msgid "Row Settings"
+msgstr "行设置"
+
+#: src/blocks/row/inspector.js:98
+#: src/components/block-gallery/options/caption-options.js:12
+#: src/components/block-gallery/options/link-options.js:10
+#: src/components/dimensions-control/dimensions-select.js:10
+#: src/extensions/list-styles/index.js:21
+msgid "None"
+msgstr "无"
+
+#: src/blocks/services/edit.js:44
+msgid "Square"
+msgstr "方形"
+
+#: src/blocks/services/edit.js:49
+msgid "Circle"
+msgstr "圆形"
+
+#: src/blocks/services/index.js:28
+msgid "Services"
+msgstr "服务"
+
+#: src/blocks/services/index.js:29
+msgid "Add up to four columns of services to display."
+msgstr "添加最多四列要显示的服务。"
+
+#: src/blocks/services/index.js:30
+msgid "features"
+msgstr "功能"
+
+#: src/blocks/services/inspector.js:67
+msgid "Services Settings"
+msgstr "服务设置"
+
+#: src/blocks/services/inspector.js:75
+msgid "Heading Level"
+msgstr "标题级别"
+
+#: src/blocks/services/inspector.js:83
+msgid "Action Buttons"
+msgstr "行动按钮"
+
+#: src/blocks/services/inspector.js:87
+msgid "Showing the call to action buttons."
+msgstr "显示行动号召按钮。"
+
+#: src/blocks/services/inspector.js:88
+msgid "Toggle to show call to action buttons."
+msgstr "进行切换，显示行动号召按钮。"
+
+#: src/blocks/services/service/index.js:28
+msgid "Service"
+msgstr "服务"
+
+#: src/blocks/services/service/index.js:29
+msgid "A single service item within a services block."
+msgstr "服务模块内的一个服务项目。"
+
+#: src/blocks/services/service/inspector.js:18
+msgid "Service Settings"
+msgstr "服务设置"
+
+#: src/blocks/services/service/inspector.js:20
+msgid "Action Button"
+msgstr "行动按钮"
+
+#: src/blocks/services/service/inspector.js:23
+msgid "Showing the call to action button."
+msgstr "显示行动号召按钮。"
+
+#: src/blocks/services/service/inspector.js:24
+msgid "Toggle to show a call to action button."
+msgstr "进行切换，显示行动号召按钮。"
+
+#: src/blocks/shape-divider/controls.js:28
+#: src/components/orientation/index.js:59
+msgid "Flip horiztonally"
+msgstr "水平翻转"
+
+#: src/blocks/shape-divider/controls.js:33
+#: src/components/orientation/index.js:48
+msgid "Flip vertically"
+msgstr "垂直翻转"
+
+#: src/blocks/shape-divider/index.js:23
+msgid "Shape Divider"
+msgstr "形状分割器"
+
+#: src/blocks/shape-divider/index.js:30
+msgid "Add a shape divider to visually distinquish page sections."
+msgstr "添加形状分割器，直观地分割页面各部分。"
+
+#: src/blocks/shape-divider/index.js:32
+msgid "separator"
+msgstr "分隔符"
+
+#: src/blocks/shape-divider/inspector.js:108
+msgid "Shape Color"
+msgstr "形状颜色"
+
+#: src/blocks/shape-divider/inspector.js:56
+msgid "Divider Settings"
+msgstr "分割器设置"
+
+#: src/blocks/shape-divider/inspector.js:58
+msgid "Shape Height in pixels"
+msgstr "形状高度（像素）"
+
+#: src/blocks/shape-divider/inspector.js:76
+msgid "Background Height in pixels"
+msgstr "背景高度（像素）"
+
+#: src/blocks/shape-divider/inspector.js:94
+msgid "Orientation"
+msgstr "方向"
+
+#: src/blocks/share/edit.js:102
+#: src/blocks/share/index.php:133
+msgid "Share on Twitter"
+msgstr "在 Twitter 上分享"
+
+#: src/blocks/share/edit.js:110
+#: src/blocks/share/index.php:137
+msgid "Share on Facebook"
+msgstr "在 Facebook 上分享"
+
+#: src/blocks/share/edit.js:118
+#: src/blocks/share/index.php:141
+msgid "Share on Pinterest"
+msgstr "在 Pinterest 上分享"
+
+#: src/blocks/share/edit.js:126
+msgid "Share on LinkedIn"
+msgstr "在 LinkedIn 上分享"
+
+#: src/blocks/share/edit.js:134
+#: src/blocks/share/index.php:149
+msgid "Share via Email"
+msgstr "通过电子邮件分享"
+
+#: src/blocks/share/edit.js:142
+#: src/blocks/share/index.php:153
+msgid "Share on Tumblr"
+msgstr "在 Tumblr 上分享"
+
+#: src/blocks/share/edit.js:150
+#: src/blocks/share/index.php:157
+msgid "Share on Google"
+msgstr "在 Google 上分享"
+
+#: src/blocks/share/edit.js:158
+#: src/blocks/share/index.php:161
+msgid "Share on Reddit"
+msgstr "在 Reddit 上分享"
+
+#: src/blocks/share/index.js:19
+msgid "Share"
+msgstr "分享"
+
+#: src/blocks/share/index.js:23
+msgid "social"
+msgstr "社交"
+
+#: src/blocks/share/index.js:28
+msgid "Add social sharing links to help you get likes and shares."
+msgstr "添加社交分享链接，帮助您获得链接和分享。"
+
+#: src/blocks/share/inspector.js:108
+#: src/blocks/social-profiles/inspector.js:120
+msgid "Icon Size"
+msgstr "图标大小"
+
+#: src/blocks/share/inspector.js:117
+#: src/blocks/social-profiles/inspector.js:129
+msgid "Circle Size"
+msgstr "圆形大小"
+
+#: src/blocks/share/inspector.js:126
+#: src/blocks/social-profiles/inspector.js:138
+msgid "Button Size"
+msgstr "按钮大小"
+
+#: src/blocks/share/inspector.js:134
+msgid "Icons"
+msgstr "图标"
+
+#: src/blocks/share/inspector.js:136
+#: src/blocks/social-profiles/edit.js:196
+#: src/blocks/social-profiles/index.php:72
+msgid "Twitter"
+msgstr "Twitter"
+
+#: src/blocks/share/inspector.js:141
+#: src/blocks/social-profiles/edit.js:150
+#: src/blocks/social-profiles/index.php:68
+msgid "Facebook"
+msgstr "Facebook"
+
+#: src/blocks/share/inspector.js:146
+#: src/blocks/social-profiles/edit.js:290
+#: src/blocks/social-profiles/index.php:80
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: src/blocks/share/inspector.js:151
+#: src/blocks/social-profiles/edit.js:338
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: src/blocks/share/inspector.js:161
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: src/blocks/share/inspector.js:166
+msgid "Google"
+msgstr "Google"
+
+#: src/blocks/share/inspector.js:171
+msgid "Reddit"
+msgstr "Reddit"
+
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:36
+msgid "Share button colors are enabled."
+msgstr "分享按钮颜色已启用。"
+
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:37
+msgid "Toggle to use official colors from each social media platform."
+msgstr "进行切换，使用各个社交媒体平台的官方颜色。"
+
+#: src/blocks/share/inspector.js:92
+#: src/blocks/social-profiles/inspector.js:104
+msgid "Social Colors"
+msgstr "社交颜色"
+
+#: src/blocks/social-profiles/edit.js:133
+msgid "Add Facebook Profile"
+msgstr "添加 Facebook 个人资料"
+
+#: src/blocks/social-profiles/edit.js:165
+msgid "https://facebook.com/"
+msgstr "https://facebook.com/"
+
+#: src/blocks/social-profiles/edit.js:179
+msgid "Add Twitter Profile"
+msgstr "添加 Twitter 个人资料"
+
+#: src/blocks/social-profiles/edit.js:211
+msgid "https://twitter.com/"
+msgstr "https://twitter.com/"
+
+#: src/blocks/social-profiles/edit.js:225
+msgid "Add Instagram Profile"
+msgstr "添加 Instagram 个人资料"
+
+#: src/blocks/social-profiles/edit.js:242
+#: src/blocks/social-profiles/index.php:76
+msgid "Instagram"
+msgstr "Instagram"
+
+#: src/blocks/social-profiles/edit.js:257
+msgid "https://instagram.com/"
+msgstr "https://instagram.com/"
+
+#: src/blocks/social-profiles/edit.js:273
+msgid "Add Pinterest Profile"
+msgstr "添加 Pinterest 个人资料"
+
+#: src/blocks/social-profiles/edit.js:305
+msgid "https://pinterest.com/"
+msgstr "https://pinterest.com/"
+
+#: src/blocks/social-profiles/edit.js:321
+msgid "Add LinkedIn Profile"
+msgstr "添加 LinkedIn 个人资料"
+
+#: src/blocks/social-profiles/edit.js:353
+msgid "https://linkedin.com/"
+msgstr "https://linkedin.com/"
+
+#: src/blocks/social-profiles/edit.js:367
+msgid "Add YouTube Profile"
+msgstr "添加 YouTube 个人资料"
+
+#: src/blocks/social-profiles/edit.js:384
+#: src/blocks/social-profiles/index.php:89
+msgid "YouTube"
+msgstr "YouTube"
+
+#: src/blocks/social-profiles/edit.js:399
+msgid "https://youtube.com/"
+msgstr "https://youtube.com/"
+
+#: src/blocks/social-profiles/edit.js:413
+msgid "Add Yelp Profile"
+msgstr "添加 Yelp 个人资料"
+
+#: src/blocks/social-profiles/edit.js:430
+#: src/blocks/social-profiles/index.php:93
+msgid "Yelp"
+msgstr "Yelp"
+
+#: src/blocks/social-profiles/edit.js:445
+msgid "https://yelp.com/"
+msgstr "https://yelp.com/"
+
+#: src/blocks/social-profiles/edit.js:459
+msgid "Add Houzz Profile"
+msgstr "添加 Houzz 个人资料"
+
+#: src/blocks/social-profiles/edit.js:476
+#: src/blocks/social-profiles/index.php:97
+msgid "Houzz"
+msgstr "Houzz"
+
+#: src/blocks/social-profiles/edit.js:491
+msgid "https://houzz.com/"
+msgstr "https://houzz.com/"
+
+#: src/blocks/social-profiles/index.js:19
+msgid "Social Profiles"
+msgstr "社交档案"
+
+#: src/blocks/social-profiles/index.js:23
+msgid "links"
+msgstr "链接"
+
+#: src/blocks/social-profiles/index.js:28
+msgid "Display links to social media profiles."
+msgstr "显示社交媒体档案页链接。"
+
+#: src/blocks/social-profiles/inspector.js:146
+msgid "Profile Links"
+msgstr "个人资料链接"
+
+#: src/components/background/controls.js:53
+msgid "Edit Background"
+msgstr "编辑背景"
+
+#: src/components/background/controls.js:72
+msgid "Remove Background"
+msgstr "删除背景"
+
+#: src/components/background/controls.js:96
+msgid "Background"
+msgstr "背景"
+
+#: src/components/background/panel.js:102
+msgid "Auto"
+msgstr "汽车机械"
+
+#: src/components/background/panel.js:103
+msgid "Cover"
+msgstr "封面"
+
+#: src/components/background/panel.js:104
+msgid "Contain"
+msgstr "包含"
+
+#: src/components/background/panel.js:113
+msgid "Background Settings"
+msgstr "背景设置"
+
+#: src/components/background/panel.js:119
+msgid "Fixed Background"
+msgstr "固定背景"
+
+#: src/components/background/panel.js:135
+msgid "Background Opacity"
+msgstr "背景透明度"
+
+#: src/components/background/panel.js:168
+msgid "Repeat"
+msgstr "重复"
+
+#: src/components/background/panel.js:177
+msgid "Position"
+msgstr "位置"
+
+#: src/components/background/panel.js:185
+msgid "Display"
+msgstr "显示"
+
+#: src/components/background/panel.js:193
+msgid "Mute Video"
+msgstr "视频静音"
+
+#: src/components/background/panel.js:194
+msgid "Muting the background video."
+msgstr "使背景视频静音。"
+
+#: src/components/background/panel.js:194
+msgid "Toggle to mute the video."
+msgstr "进行切换，使视频静音。"
+
+#: src/components/background/panel.js:201
+msgid "Loop Video"
+msgstr "循环播放视频"
+
+#: src/components/background/panel.js:202
+msgid "Looping the background video."
+msgstr "循环播放背景视频。"
+
+#: src/components/background/panel.js:202
+msgid "Toggle to loop the video."
+msgstr "进行切换，循环播放视频。"
+
+#: src/components/background/panel.js:211
+msgid "Remove background"
+msgstr "删除背景"
+
+#: src/components/background/panel.js:232
+msgid "Remove "
+msgstr "删除 "
+
+#: src/components/background/panel.js:95
+msgid "No Repeat"
+msgstr "不重复"
+
+#: src/components/background/panel.js:97
+msgid "Repeat Horizontally"
+msgstr "水平重复"
+
+#: src/components/background/panel.js:98
+msgid "Repeat Vertically"
+msgstr "垂直重复"
+
+#: src/components/block-gallery/gallery-image.js:189
+msgid "Move Image Backward"
+msgstr "向后移动图片"
+
+#: src/components/block-gallery/gallery-image.js:197
+msgid "Move Image Forward"
+msgstr "向前移动图片"
+
+#: src/components/block-gallery/gallery-link-settings.js:67
+msgid "Link To"
+msgstr "链接到"
+
+#: src/components/block-gallery/gallery-placeholder.js:70
+msgid "%s Gallery"
+msgstr "%s 图片库"
+
+#: src/components/block-gallery/gallery-uploader.js:53
+msgid "Upload an image"
+msgstr "上传图片"
+
+#: src/components/block-gallery/options/caption-options.js:11
+msgid "Light"
+msgstr "轻型"
+
+#: src/components/block-gallery/options/link-options.js:11
+msgid "Media File"
+msgstr "媒体文件"
+
+#: src/components/block-gallery/options/link-options.js:12
+msgid "Attachment Page"
+msgstr "附件页面"
+
+#: src/components/block-gallery/options/link-options.js:13
+msgid "Custom URL"
+msgstr "自定义 URL"
+
+#: src/components/dimensions-control/index.js:408
+msgid "Pixel"
+msgstr "像素"
+
+#: src/components/dimensions-control/index.js:412
+msgid "Em"
+msgstr "Em"
+
+#: src/components/dimensions-control/index.js:416
+msgid "Percentage"
+msgstr "百分比"
+
+#: src/components/dimensions-control/index.js:461
+msgid "Select Units"
+msgstr "选择单位"
+
+#: src/components/dimensions-control/index.js:470
+msgid "%s Units"
+msgstr "%s 个单位"
+
+#: src/components/dimensions-control/index.js:647
+msgid "%s Top"
+msgstr "%s 顶部"
+
+#: src/components/dimensions-control/index.js:657
+msgid "%s Right"
+msgstr "%s 右侧"
+
+#: src/components/dimensions-control/index.js:667
+msgid "%s Bottom"
+msgstr "%s 底部"
+
+#: src/components/dimensions-control/index.js:677
+msgid "%s Left"
+msgstr "%s 左侧"
+
+#: src/components/dimensions-control/index.js:683
+msgid "Unsync"
+msgstr "不同步"
+
+#: src/components/dimensions-control/index.js:683
+msgid "Sync"
+msgstr "同步"
+
+#: src/components/dimensions-control/index.js:686
+msgid "Sync Units"
+msgstr "同步单位"
+
+#: src/components/dimensions-control/index.js:703
+msgid "Top"
+msgstr "顶部"
+
+#: src/components/dimensions-control/index.js:704
+msgid "Right"
+msgstr "右侧"
+
+#: src/components/dimensions-control/index.js:705
+msgid "Bottom"
+msgstr "底部"
+
+#: src/components/dimensions-control/index.js:706
+msgid "Left"
+msgstr "左侧"
+
+#: src/components/grid-control/index.js:123
+msgid "Select Layout"
+msgstr "选择布局"
+
+#: src/components/grid-control/index.js:161
+msgid "Fullscreen"
+msgstr "全屏"
+
+#: src/components/grid-control/index.js:179
+msgid "Fullscreen mode is enabled."
+msgstr "全屏模式已启用。"
+
+#: src/components/grid-control/index.js:179
+msgid "Toggle to enable fullscreen mode."
+msgstr "进行切换，启用全屏模式。"
+
+# %s: heading level e.g: "1", "2", "3"
+#: src/components/heading-toolbar/index.js:18
+msgid "Heading %d"
+msgstr "标题 %d"
+
+#: src/components/inline-color-picker/index.js:30
+msgid "Custom color picker"
+msgstr "自定义颜色选择器"
+
+#: src/components/media-filter-control/index.js:32
+msgid "Original"
+msgstr "原始"
+
+#: src/components/media-filter-control/index.js:40
+msgid "Grayscale"
+msgstr "灰阶"
+
+#: src/components/media-filter-control/index.js:48
+msgid "Sepia"
+msgstr "深褐色"
+
+#: src/components/media-filter-control/index.js:56
+msgid "Saturation"
+msgstr "饱和度"
+
+#: src/components/media-filter-control/index.js:64
+msgid "Dim"
+msgstr "暗淡"
+
+#: src/components/media-filter-control/index.js:72
+msgid "Vintage"
+msgstr "复古"
+
+#: src/components/media-filter-control/index.js:84
+msgid "Apply filter"
+msgstr "应用滤镜"
+
+#: src/components/orientation/index.js:47
+msgid "Select Orientation"
+msgstr "选择方向"
+
+#: src/components/responsive-base-control/index.js:68
+msgid "Height"
+msgstr "高度"
+
+# Control name
+#: src/components/responsive-tabs-control/index.js:65
+msgid "Mobile %s"
+msgstr "移动 %s"
+
+#: src/components/size-control/index.js:180
+msgid "Select Size"
+msgstr "选择大小"
+
+#: src/components/size-control/index.js:69
+msgid "Extra Large"
+msgstr "超大"
+
+#: src/components/slider-panel/autoplay-options.js:10
+msgid "One Second"
+msgstr "一秒"
+
+#: src/components/slider-panel/autoplay-options.js:11
+msgid "Two Seconds"
+msgstr "二秒"
+
+#: src/components/slider-panel/autoplay-options.js:12
+msgid "Three Seconds"
+msgstr "三秒"
+
+#: src/components/slider-panel/autoplay-options.js:13
+msgid "Four Seconds"
+msgstr "四秒"
+
+#: src/components/slider-panel/autoplay-options.js:14
+msgid "Five Seconds"
+msgstr "五秒"
+
+#: src/components/slider-panel/autoplay-options.js:15
+msgid "Six Second"
+msgstr "六秒"
+
+#: src/components/slider-panel/autoplay-options.js:16
+msgid "Seven Seconds"
+msgstr "七秒"
+
+#: src/components/slider-panel/autoplay-options.js:17
+msgid "Eight Seconds"
+msgstr "八秒"
+
+#: src/components/slider-panel/autoplay-options.js:18
+msgid "Nine Seconds"
+msgstr "九秒"
+
+#: src/components/slider-panel/autoplay-options.js:19
+msgid "Ten Seconds"
+msgstr "十秒"
+
+#: src/components/slider-panel/index.js:24
+msgid "seconds"
+msgstr "秒"
+
+#: src/components/slider-panel/index.js:24
+msgid "second"
+msgstr "秒"
+
+# 1. Speed of the slider, 2: Time until the slide advances
+#: src/components/slider-panel/index.js:27
+msgid "Advancing after %1$d %2$s."
+msgstr "%1$d %2$s 之后前进。"
+
+# 1. Speed of the slider, 2: Time until the slide advances
+#: src/components/slider-panel/index.js:27
+msgid "Automatically advance to the next slide."
+msgstr "自动前进到下一张幻灯片。"
+
+#: src/components/slider-panel/index.js:31
+msgid "Dragging and flicking enabled on desktop and mobile devices."
+msgstr "在台式和移动设备上启用了拖动和翻阅。"
+
+#: src/components/slider-panel/index.js:31
+msgid "Toggle to enable drag functionality on desktop and mobile devices."
+msgstr "进行切换，在台式和移动设备上启用拖动功能。"
+
+#: src/components/slider-panel/index.js:35
+msgid "Showing slide navigation arrows."
+msgstr "显示幻灯片导航箭头。"
+
+#: src/components/slider-panel/index.js:35
+msgid "Toggle to show slide navigation arrows."
+msgstr "进行切换，显示幻灯片导航箭头。"
+
+#: src/components/slider-panel/index.js:39
+msgid "Showing dot navigation arrows."
+msgstr "显示圆点导航箭头。"
+
+#: src/components/slider-panel/index.js:39
+msgid "Toggle to show dot navigation."
+msgstr "进行切换，显示圆点导航。"
+
+#: src/components/slider-panel/index.js:58
+msgid "Slider Settings"
+msgstr "幻灯片设置"
+
+#: src/components/slider-panel/index.js:60
+msgid "Autoplay"
+msgstr "自动播放"
+
+#: src/components/slider-panel/index.js:66
+msgid "Transition Speed"
+msgstr "过渡速度"
+
+#: src/components/slider-panel/index.js:73
+msgid "Draggable"
+msgstr "可拖动"
+
+#: src/components/slider-panel/index.js:79
+msgid "Arrow Navigation"
+msgstr "箭头导航"
+
+#: src/components/slider-panel/index.js:85
+msgid "Dot Navigation"
+msgstr "圆点导航"
+
+#: src/components/typography-controls/index.js:103
+msgid "Capitalize"
+msgstr "首字母大写"
+
+#: src/components/typography-controls/index.js:107
+msgid "Normal"
+msgstr "普通"
+
+#: src/components/typography-controls/index.js:164
+msgid "Font"
+msgstr "字体"
+
+#: src/components/typography-controls/index.js:171
+msgid "Weight"
+msgstr "权重"
+
+#: src/components/typography-controls/index.js:180
+msgid "Transform"
+msgstr "变换"
+
+#: src/components/typography-controls/index.js:200
+msgid "Line Height"
+msgstr "线高度"
+
+#: src/components/typography-controls/index.js:211
+msgid "Letter Spacing"
+msgstr "字母间距"
+
+#: src/components/typography-controls/index.js:223
+msgid "No Top Spacing"
+msgstr "无顶部间距"
+
+#: src/components/typography-controls/index.js:228
+msgid "No Bottom Spacing"
+msgstr "无底部间距"
+
+#: src/components/typography-controls/index.js:59
+msgid "Change typography"
+msgstr "更改排版"
+
+#: src/components/typography-controls/index.js:84
+msgid "Bold"
+msgstr "粗体"
+
+#: src/components/typography-controls/index.js:95
+#: src/formats/uppercase/index.js:36
+msgid "Uppercase"
+msgstr "大写字母"
+
+#: src/components/typography-controls/index.js:99
+msgid "Lowercase"
+msgstr "小写字母"
+
+#: src/extensions/advanced-controls/index.js:109
+msgid "Stack on Mobile"
+msgstr "在移动设备上叠放"
+
+#: src/extensions/advanced-controls/index.js:116
+msgid "Responsiveness is enabled."
+msgstr "响应已启用。"
+
+#: src/extensions/advanced-controls/index.js:117
+msgid "Toggle to stack elements on top of each other on smaller viewports."
+msgstr "进行切换，在较小检视区的顶部相互重叠地堆放元素。"
+
+#: src/extensions/advanced-controls/index.js:125
+msgid "Remove Top Spacing"
+msgstr "移除顶部间距"
+
+#: src/extensions/advanced-controls/index.js:137
+msgid "Top margin is removed on this block."
+msgstr "移除在此模块上的顶部边距。"
+
+#: src/extensions/advanced-controls/index.js:138
+msgid "Toggle to remove any margin applied to the top of this block."
+msgstr "进行切换，移除应用于此模块顶部的任何边距。"
+
+#: src/extensions/advanced-controls/index.js:146
+msgid "Remove Bottom Spacing"
+msgstr "移除底部间距"
+
+#: src/extensions/advanced-controls/index.js:171
+msgid "Bottom margin is removed on this block."
+msgstr "移除在此模块上的底部边距。"
+
+#: src/extensions/advanced-controls/index.js:172
+msgid "Toggle to remove any margin applied to the bottom of this block."
+msgstr "进行切换，移除应用于此模块底部的任何边距。"
+
+#: src/extensions/button-controls/index.js:71
+msgid "Display Fullwidth"
+msgstr "显示全宽"
+
+#: src/extensions/button-controls/index.js:74
+msgid "Displaying as full width."
+msgstr "显示为全宽。"
+
+#: src/extensions/button-controls/index.js:74
+msgid "Toggle to display button as full width."
+msgstr "进行切换，将按钮显示为全宽。"
+
+#: src/extensions/button-styles/index.js:16
+msgid "Circular"
+msgstr "圆形"
+
+#: src/extensions/button-styles/index.js:22
+msgid "3D"
+msgstr "3D"
+
+#: src/extensions/button-styles/index.js:28
+msgid "Shadow"
+msgstr "阴影"
+
+#: src/extensions/list-styles/index.js:27
+msgid "Checkbox"
+msgstr "复选框"
+
+#: src/sidebars/block-manager/components/modal.js:132
+msgid "Manage Blocks"
+msgstr "管理模块"
+
+#: src/sidebars/block-manager/components/modal.js:136
+msgid "Block Manager"
+msgstr "模块管理器"
+
+#: src/sidebars/block-manager/components/modal.js:138
+msgid "Close"
+msgstr "关闭"
+
+#: src/sidebars/block-manager/components/modal.js:147
+msgid "Search for a block"
+msgstr "搜索模块"
+
+#: src/sidebars/block-manager/components/options/disable-blocks.js:170
+msgid "This block is added to the page and cannot currently be disabled"
+msgstr "此模块已添加到页面，目前无法禁用"
+
+#: src/sidebars/block-manager/components/options/disable-blocks.js:185
+msgid "Disable all"
+msgstr "全部禁用"
+
+#: src/sidebars/block-manager/components/options/disable-blocks.js:231
+msgid "No \"%s\" blocks found."
+msgstr "未找到“%s”模块。"
+
+#: src/utils/block-category.js:20
+msgid "%s Galleries"
+msgstr "%s 图片库"
+
+#: src/blocks/dynamic-separator/index.js:36
+msgctxt "block style"
+msgid "Dot"
+msgstr "点"
+
+#: src/blocks/dynamic-separator/index.js:37
+msgctxt "block style"
+msgid "Line"
+msgstr "线"
+
+#: src/blocks/dynamic-separator/index.js:38
+msgctxt "block style"
+msgid "Fullwidth"
+msgstr "全宽"
+
+#: src/blocks/icon/index.js:41
+msgctxt "block style"
+msgid "Outlined"
+msgstr "轮廓"
+
+#: src/blocks/icon/index.js:42
+msgctxt "block style"
+msgid "Filled"
+msgstr "填充"
+
+#: src/blocks/shape-divider/index.js:43
+msgctxt "block style"
+msgid "Wavy"
+msgstr "波纹"
+
+#: src/blocks/shape-divider/index.js:44
+msgctxt "block style"
+msgid "Hills"
+msgstr "山丘"
+
+#: src/blocks/shape-divider/index.js:45
+msgctxt "block style"
+msgid "Waves"
+msgstr "波浪"
+
+#: src/blocks/shape-divider/index.js:46
+msgctxt "block style"
+msgid "Angled"
+msgstr "有角"
+
+#: src/blocks/shape-divider/index.js:47
+msgctxt "block style"
+msgid "Sloped"
+msgstr "倾斜"
+
+#: src/blocks/shape-divider/index.js:48
+msgctxt "block style"
+msgid "Rounded"
+msgstr "圆润"
+
+#: src/blocks/shape-divider/index.js:49
+msgctxt "block style"
+msgid "Triangle"
+msgstr "三角"
+
+#: src/blocks/shape-divider/index.js:50
+msgctxt "block style"
+msgid "Pointed"
+msgstr "点状"
+
+#: src/blocks/share/index.js:33
+#: src/blocks/social-profiles/index.js:33
+msgctxt "block style"
+msgid "Mask"
+msgstr "掩饰"
+
+#: src/blocks/share/index.js:34
+#: src/blocks/social-profiles/index.js:34
+msgctxt "block style"
+msgid "Icon"
+msgstr "图标"
+
+#: src/blocks/share/index.js:35
+#: src/blocks/social-profiles/index.js:35
+msgctxt "block style"
+msgid "Text"
+msgstr "文本"
+
+#: src/blocks/share/index.js:36
+#: src/blocks/social-profiles/index.js:36
+msgctxt "block style"
+msgid "Icon & Text"
+msgstr "图标和文本"
+
+#: src/blocks/share/index.js:37
+#: src/blocks/social-profiles/index.js:37
+msgctxt "block style"
+msgid "Circular"
+msgstr "圆形"
+
+#: src/blocks/features/feature/edit.js:31
+msgctxt "content placeholder"
+msgid "Add feature title..."
+msgstr "添加功能名称..."
+
+#: src/blocks/features/feature/edit.js:31
+msgctxt "content placeholder"
+msgid "Feature Title"
+msgstr "功能名称"
+
+#: src/blocks/features/feature/edit.js:32
+msgctxt "content placeholder"
+msgid "Add feature content"
+msgstr "添加功能内容"
+
+#: src/blocks/features/feature/edit.js:32
+msgctxt "content placeholder"
+msgid "This is a feature block that you can use to highlight features."
+msgstr "这是可用来突出显示功能的功能块。"
+
+#: src/blocks/hero/edit.js:36
+msgctxt "content placeholder"
+msgid "Add hero heading..."
+msgstr "添加首页标题..."
+
+#: src/blocks/hero/edit.js:37
+msgctxt "content placeholder"
+msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
+msgstr "添加首页内容，通常是页面的介绍性区域，配有行动号召或两个。"
+
+#: src/blocks/hero/edit.js:40
+msgctxt "content placeholder"
+msgid "Add primary action..."
+msgstr "添加主要行动..."
+
+#: src/blocks/hero/edit.js:41
+msgctxt "content placeholder"
+msgid "Add secondary action..."
+msgstr "添加辅助行动..."
+
+#: src/blocks/media-card/edit.js:46
+msgctxt "content placeholder"
+msgid "Add heading..."
+msgstr "添加标题..."
+
+#: src/blocks/media-card/edit.js:46
+msgctxt "content placeholder"
+msgid "Media Card"
+msgstr "媒体卡"
+
+#: src/blocks/media-card/edit.js:47
+msgctxt "content placeholder"
+msgid "Add content..."
+msgstr "添加内容..."
+
+#: src/blocks/media-card/edit.js:47
+msgctxt "content placeholder"
+msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
+msgstr "将此文本替换为与卡图片相配的描述性副本。然后向此卡中添加更多模块，如按钮、列表或图片。"
+
+#: src/blocks/services/service/edit.js:194
+msgctxt "content placeholder"
+msgid "Write title..."
+msgstr "编写标题..."
+
+#: src/blocks/services/service/edit.js:200
+msgctxt "content placeholder"
+msgid "Write description..."
+msgstr "编写描述..."
+
+#: src/blocks/icon/inspector.js:223
+msgctxt "size name"
+msgid "Normal"
+msgstr "普通"
+
+#: src/blocks/icon/inspector.js:223
+msgctxt "size name"
+msgid "Custom"
+msgstr "自定义"
+
+#: src/blocks/icon/svgs.js:102
+msgctxt "label"
+msgid "Add Circle"
+msgstr "添加圆形"
+
+#: src/blocks/icon/svgs.js:108
+msgctxt "label"
+msgid "Minus Circle"
+msgstr "减去圆形"
+
+#: src/blocks/icon/svgs.js:114
+msgctxt "label"
+msgid "Pie Chart"
+msgstr "饼状图"
+
+#: src/blocks/icon/svgs.js:119
+msgctxt "label"
+msgid "Scatter Plot"
+msgstr "散点图"
+
+#: src/blocks/icon/svgs.js:125
+msgctxt "label"
+msgid "Poll"
+msgstr "投票"
+
+#: src/blocks/icon/svgs.js:131
+msgctxt "label"
+msgid "Emoticon"
+msgstr "表情符号"
+
+#: src/blocks/icon/svgs.js:137
+msgctxt "label"
+msgid "Functions"
+msgstr "功能"
+
+#: src/blocks/icon/svgs.js:14
+msgctxt "label"
+msgid "CoBlocks"
+msgstr "CoBlocks"
+
+#: src/blocks/icon/svgs.js:142
+msgctxt "label"
+msgid "Doodle"
+msgstr "涂鸦"
+
+#: src/blocks/icon/svgs.js:147
+msgctxt "label"
+msgid "Font"
+msgstr "字体"
+
+#: src/blocks/icon/svgs.js:153
+msgctxt "label"
+msgid "Heart"
+msgstr "心形"
+
+#: src/blocks/icon/svgs.js:159
+msgctxt "label"
+msgid "Star"
+msgstr "标记星号"
+
+#: src/blocks/icon/svgs.js:165
+msgctxt "label"
+msgid "Desktop"
+msgstr "桌面"
+
+#: src/blocks/icon/svgs.js:171
+msgctxt "label"
+msgid "Devices"
+msgstr "设备"
+
+#: src/blocks/icon/svgs.js:176
+msgctxt "label"
+msgid "Laptop"
+msgstr "笔记本电脑"
+
+#: src/blocks/icon/svgs.js:181
+msgctxt "label"
+msgid "Tablet"
+msgstr "平板电脑"
+
+#: src/blocks/icon/svgs.js:186
+msgctxt "label"
+msgid "Watch"
+msgstr "关注"
+
+#: src/blocks/icon/svgs.js:19
+msgctxt "label"
+msgid "Audio"
+msgstr "音频"
+
+#: src/blocks/icon/svgs.js:192
+msgctxt "label"
+msgid "Keyboard"
+msgstr "键盘"
+
+#: src/blocks/icon/svgs.js:197
+msgctxt "label"
+msgid "Hub"
+msgstr "集线器"
+
+#: src/blocks/icon/svgs.js:208
+msgctxt "label"
+msgid "Email"
+msgstr "电子邮件"
+
+#: src/blocks/icon/svgs.js:213
+msgctxt "label"
+msgid "Reply"
+msgstr "回复"
+
+#: src/blocks/icon/svgs.js:218
+msgctxt "label"
+msgid "Send"
+msgstr "发送"
+
+#: src/blocks/icon/svgs.js:224
+msgctxt "label"
+msgid "Signal"
+msgstr "信号"
+
+#: src/blocks/icon/svgs.js:229
+msgctxt "label"
+msgid "Blocks"
+msgstr "模块"
+
+#: src/blocks/icon/svgs.js:235
+msgctxt "label"
+msgid "Marker"
+msgstr "标记"
+
+#: src/blocks/icon/svgs.js:241
+msgctxt "label"
+msgid "Mountains"
+msgstr "山"
+
+#: src/blocks/icon/svgs.js:247
+msgctxt "label"
+msgid "Waves"
+msgstr "波浪"
+
+#: src/blocks/icon/svgs.js:25
+msgctxt "label"
+msgid "Album"
+msgstr "相册"
+
+#: src/blocks/icon/svgs.js:252
+msgctxt "label"
+msgid "Globe"
+msgstr "全球"
+
+#: src/blocks/icon/svgs.js:257
+msgctxt "label"
+msgid "City"
+msgstr "城市"
+
+#: src/blocks/icon/svgs.js:262
+msgctxt "label"
+msgid "Dining"
+msgstr "餐饮"
+
+#: src/blocks/icon/svgs.js:267
+msgctxt "label"
+msgid "Couch"
+msgstr "睡椅"
+
+#: src/blocks/icon/svgs.js:273
+msgctxt "label"
+msgid "Cake"
+msgstr "蛋糕"
+
+#: src/blocks/icon/svgs.js:279
+msgctxt "label"
+msgid "Flower"
+msgstr "花"
+
+#: src/blocks/icon/svgs.js:285
+msgctxt "label"
+msgid "Vintage Filter"
+msgstr "复古滤镜"
+
+#: src/blocks/icon/svgs.js:291
+msgctxt "label"
+msgid "Build"
+msgstr "打造"
+
+#: src/blocks/icon/svgs.js:297
+msgctxt "label"
+msgid "Credit Card"
+msgstr "信用卡"
+
+#: src/blocks/icon/svgs.js:302
+msgctxt "label"
+msgid "Extension"
+msgstr "扩展名"
+
+#: src/blocks/icon/svgs.js:308
+msgctxt "label"
+msgid "Fingerprint"
+msgstr "指纹"
+
+#: src/blocks/icon/svgs.js:31
+msgctxt "label"
+msgid "Headset"
+msgstr "耳机"
+
+#: src/blocks/icon/svgs.js:313
+msgctxt "label"
+msgid "Translate"
+msgstr "翻译"
+
+#: src/blocks/icon/svgs.js:318
+msgctxt "label"
+msgid "New"
+msgstr "新建"
+
+#: src/blocks/icon/svgs.js:324
+msgctxt "label"
+msgid "Flare"
+msgstr "闪耀"
+
+#: src/blocks/icon/svgs.js:329
+msgctxt "label"
+msgid "Layers"
+msgstr "层"
+
+#: src/blocks/icon/svgs.js:334
+msgctxt "label"
+msgid "Shipping"
+msgstr "运送"
+
+#: src/blocks/icon/svgs.js:339
+msgctxt "label"
+msgid "Snowflake"
+msgstr "雪花"
+
+#: src/blocks/icon/svgs.js:344
+msgctxt "label"
+msgid "School"
+msgstr "学校"
+
+#: src/blocks/icon/svgs.js:349
+msgctxt "label"
+msgid "Fire"
+msgstr "火"
+
+#: src/blocks/icon/svgs.js:354
+msgctxt "label"
+msgid "Update"
+msgstr "更新"
+
+#: src/blocks/icon/svgs.js:36
+msgctxt "label"
+msgid "Volume"
+msgstr "容量"
+
+#: src/blocks/icon/svgs.js:42
+msgctxt "label"
+msgid "Voice"
+msgstr "语音"
+
+#: src/blocks/icon/svgs.js:48
+msgctxt "label"
+msgid "Aperture"
+msgstr "光圈"
+
+#: src/blocks/icon/svgs.js:54
+msgctxt "label"
+msgid "Camera"
+msgstr "相机"
+
+#: src/blocks/icon/svgs.js:60
+msgctxt "label"
+msgid "Gallery"
+msgstr "图片库"
+
+#: src/blocks/icon/svgs.js:66
+msgctxt "label"
+msgid "Video"
+msgstr "视频"
+
+#: src/blocks/icon/svgs.js:72
+msgctxt "label"
+msgid "Film"
+msgstr "电影"
+
+#: src/blocks/icon/svgs.js:78
+msgctxt "label"
+msgid "Color Lens"
+msgstr "彩色透镜"
+
+#: src/blocks/icon/svgs.js:84
+msgctxt "label"
+msgid "Color Picker"
+msgstr "颜色选择器"
+
+#: src/blocks/icon/svgs.js:90
+msgctxt "label"
+msgid "Paint"
+msgstr "绘画"
+
+#: src/blocks/icon/svgs.js:96
+msgctxt "label"
+msgid "Brush"
+msgstr "画笔"
+
+#: src/blocks/icon/svgs.js:109
+msgctxt "tags"
+msgid "add minus circle insert plus round math"
+msgstr "添加 减去 圆圈 插入 加 圆 数学"
+
+#: src/blocks/icon/svgs.js:115
+msgctxt "tags"
+msgid "stats round circle pie chart graph"
+msgstr "统计 圆 圆圈 饼状图 图形"
+
+#: src/blocks/icon/svgs.js:120
+msgctxt "tags"
+msgid "stats round circle pie chart graph dots data"
+msgstr "统计 圆 圆圈 饼状图 图形 圆点 数据"
+
+#: src/blocks/icon/svgs.js:126
+msgctxt "tags"
+msgid "chart graph stats data graph"
+msgstr "图表 图形 统计 数据 图形"
+
+#: src/blocks/icon/svgs.js:132
+msgctxt "tags"
+msgid "happy emotion emoticon smile fun joy"
+msgstr "高兴 情绪 表情符号 微笑 有趣 快乐"
+
+#: src/blocks/icon/svgs.js:138
+msgctxt "tags"
+msgid "code greek math"
+msgstr "代码 希腊语 数学"
+
+#: src/blocks/icon/svgs.js:143
+msgctxt "tags"
+msgid "drawing doodle art creative type font pencil marker"
+msgstr "绘画 涂鸦 艺术 创意 类型 字体 铅笔 标记"
+
+#: src/blocks/icon/svgs.js:15
+msgctxt "tags"
+msgid "blocks block build gutenberg design"
+msgstr "模块 模块 建造 gutenberg 设计"
+
+#: src/blocks/icon/svgs.js:154
+msgctxt "tags"
+msgid "love shape valentine kiss"
+msgstr "爱 形状 情人 吻"
+
+#: src/blocks/icon/svgs.js:160
+msgctxt "tags"
+msgid "rate vote plus favorite like"
+msgstr "评级 投票 加 喜爱 喜欢"
+
+#: src/blocks/icon/svgs.js:177
+msgctxt "tags"
+msgid "computer apple montior device pc desk office"
+msgstr "计算机 apple 显示器 设备 pc 桌面 office"
+
+#: src/blocks/icon/svgs.js:182
+msgctxt "tags"
+msgid "computer ipad surface apple montior device pc desk office"
+msgstr "计算机 ipad surface apple 显示器 设备 pc 桌面 office"
+
+#: src/blocks/icon/svgs.js:187
+msgctxt "tags"
+msgid "device apple mac"
+msgstr "设备 apple mac"
+
+#: src/blocks/icon/svgs.js:193
+msgctxt "tags"
+msgid "computer ipad surface apple device pc desk office"
+msgstr "计算机 ipad surface apple 设备 pc 桌面 office"
+
+#: src/blocks/icon/svgs.js:198
+msgctxt "tags"
+msgid "usb connect hub device social"
+msgstr "usb 连接 集线器 设备 社交"
+
+#: src/blocks/icon/svgs.js:20
+msgctxt "tags"
+msgid "music microphone podcast song artist creative media audio"
+msgstr "音乐 麦克风 播客 歌曲 艺术家 创意 媒体 音频"
+
+#: src/blocks/icon/svgs.js:209
+msgctxt "tags"
+msgid "email mail os read letter"
+msgstr "电子邮件 邮件 操作系统 阅读 信件"
+
+#: src/blocks/icon/svgs.js:225
+msgctxt "tags"
+msgid "wifi radio waves"
+msgstr "wifi 无线电波"
+
+#: src/blocks/icon/svgs.js:236
+msgctxt "tags"
+msgid "map directions about check checkbox"
+msgstr "地图 方向 关于 勾选 复选框"
+
+#: src/blocks/icon/svgs.js:242
+msgctxt "tags"
+msgid "hills landscape minimal outdoors outside"
+msgstr "山丘 风景 最少 户外 外面"
+
+#: src/blocks/icon/svgs.js:248
+msgctxt "tags"
+msgid "ocean outside outdoors water fun summer minimal"
+msgstr "海洋 外面 户外 水 有趣 夏季 最少"
+
+#: src/blocks/icon/svgs.js:253
+msgctxt "tags"
+msgid "world public global earth location map"
+msgstr "世界 公共 全球 地球 地点 地图"
+
+#: src/blocks/icon/svgs.js:258
+msgctxt "tags"
+msgid "location map public business corporation building town skyscraper"
+msgstr "地点 地图 公共 商业 公司 建筑物 城镇 摩天大楼"
+
+#: src/blocks/icon/svgs.js:263
+msgctxt "tags"
+msgid "food drink restaurant menu fork spoon taste"
+msgstr "食品 饮料 餐厅 菜单 叉子 匙 味道"
+
+#: src/blocks/icon/svgs.js:268
+msgctxt "tags"
+msgid "weekend chill relax chair"
+msgstr "周末 寒冷 放松 椅子"
+
+#: src/blocks/icon/svgs.js:274
+msgctxt "tags"
+msgid "fun party happy celebration taste food"
+msgstr "有趣 派对 高兴 庆祝 味道 食品"
+
+#: src/blocks/icon/svgs.js:280
+msgctxt "tags"
+msgid "petal scent smell nice relax landscape gardening outdoors outside"
+msgstr "花瓣 气味 嗅觉 美好 放松 风景 园艺 户外 外面"
+
+#: src/blocks/icon/svgs.js:292
+msgctxt "tags"
+msgid "blocks block box boxes square build widgets"
+msgstr "模块 模块 框 方框 方形 建造 小组件"
+
+#: src/blocks/icon/svgs.js:298
+msgctxt "tags"
+msgid "money cash checkout shop commerce ecommerce"
+msgstr "金钱 现金 结账 购物 商务 电子商务"
+
+#: src/blocks/icon/svgs.js:303
+msgctxt "tags"
+msgid "puzzle plugin widget team together"
+msgstr "拼图 插件 小组件 团队 共同"
+
+#: src/blocks/icon/svgs.js:309
+msgctxt "tags"
+msgid "security bio defense biometric safe secure"
+msgstr "安全 生物 防御 生物特征识别 安全 安全"
+
+#: src/blocks/icon/svgs.js:314
+msgctxt "tags"
+msgid "language global world speech"
+msgstr "语言 全球 世界 演讲"
+
+#: src/blocks/icon/svgs.js:319
+msgctxt "tags"
+msgid "music microphone song artist creative media audio badge"
+msgstr "音乐 麦克风 歌曲 艺术家 创意 媒体 音频 徽章"
+
+#: src/blocks/icon/svgs.js:32
+msgctxt "tags"
+msgid "microphone audio beats bose headphones"
+msgstr "麦克风 音频 节拍 bose 耳机"
+
+#: src/blocks/icon/svgs.js:325
+msgctxt "tags"
+msgid "flower camera photography artist creative"
+msgstr "花 相机 摄影 艺术家 创意"
+
+#: src/blocks/icon/svgs.js:330
+msgctxt "tags"
+msgid "design creative build develop engineer"
+msgstr "设计 创意 建造 开发 工程师"
+
+#: src/blocks/icon/svgs.js:335
+msgctxt "tags"
+msgid "shop commence ecommence woo cart ship"
+msgstr "购物 商务 电子商务 woo 购物车 运送"
+
+#: src/blocks/icon/svgs.js:340
+msgctxt "tags"
+msgid "cold ice frozen chill winter season global"
+msgstr "冷 冰 冷冻 寒冷 冬季 季节 全球"
+
+#: src/blocks/icon/svgs.js:345
+msgctxt "tags"
+msgid "education graduate graduation degree diploma college"
+msgstr "教育 毕业生 毕业 学位 文凭 大学"
+
+#: src/blocks/icon/svgs.js:350
+msgctxt "tags"
+msgid "hot trending trendy design"
+msgstr "热 趋势 时髦 设计"
+
+#: src/blocks/icon/svgs.js:355
+msgctxt "tags"
+msgid "improve add upload software"
+msgstr "改进 添加 上传 软件"
+
+#: src/blocks/icon/svgs.js:37
+msgctxt "tags"
+msgid "music microphone song artist creative media audio"
+msgstr "音乐 麦克风 歌曲 艺术家 创意 媒体 音频"
+
+#: src/blocks/icon/svgs.js:43
+msgctxt "tags"
+msgid "microphone podcast computer device music microphone song artist creative media audio"
+msgstr "麦克风 播客 计算机 设备 音乐 麦克风 歌曲 艺术家 创意 媒体 音频"
+
+#: src/blocks/icon/svgs.js:49
+msgctxt "tags"
+msgid "photo photographer photography camera film creative media"
+msgstr "照片 摄影师 摄影 相机 电影 创意 媒体"
+
+#: src/blocks/icon/svgs.js:55
+msgctxt "tags"
+msgid "photo photographer photography camera aperture film creative media"
+msgstr "照片 摄影师 摄影 相机 光圈 电影 创意 媒体"
+
+#: src/blocks/icon/svgs.js:61
+msgctxt "tags"
+msgid "photo photos image media camera aperture collection"
+msgstr "照片 照片 图片 媒体 相机 光圈 收集"
+
+#: src/blocks/icon/svgs.js:67
+msgctxt "tags"
+msgid "film videography director producer media creative"
+msgstr "电影 摄像 导演 制片人 媒体 创意"
+
+#: src/blocks/icon/svgs.js:73
+msgctxt "tags"
+msgid "video videography director producer media creative camera photographer photography aperture"
+msgstr "视频 摄像 导演 制片人 媒体 创意 相机 摄影师 摄影 光圈"
+
+#: src/blocks/icon/svgs.js:85
+msgctxt "tags"
+msgid "palette design colors artist paint creative media"
+msgstr "调色板 设计 颜色 艺术家 绘画 创意 媒体"
+
+#: src/blocks/icon/svgs.js:91
+msgctxt "tags"
+msgid "palette design colors artist creative media"
+msgstr "调色板 设计 颜色 艺术家 创意 媒体"
+
+#: src/blocks/icon/svgs.js:97
+msgctxt "tags"
+msgid "palette design colors artist creative media paint paintbrush"
+msgstr "调色板 设计 颜色 艺术家 创意 媒体 绘画 画笔"
+
+#. Plugin Name of the plugin
+#: includes/admin/class-coblocks-feedback.php:311
+#: includes/admin/class-coblocks-getting-started-page.php:46
+#: includes/admin/class-coblocks-getting-started-page.php:47
+#: includes/admin/class-coblocks-getting-started-page.php:58
+#: includes/admin/class-coblocks-getting-started-page.php:59
+msgid "CoBlocks"
+msgstr "CoBlocks"
+
+#. Plugin URI of the plugin
+msgid "https://coblocks.com"
+msgstr "https://coblocks.com"
+
+#. Description of the plugin
+msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
+msgstr "CoBlocks 是用于 WordPress Gutenberg 模块编辑器的一套专业<strong>网页构建内容模块</strong>。我们的模块侧重点是让制作者能够在 WordPress 中构建内容丰富的精美页面。"
+
+#. Author of the plugin
+msgid "GoDaddy"
+msgstr "GoDaddy"
+
+#. Author URI of the plugin
+msgid "https://www.godaddy.com"
+msgstr "https://www.godaddy.com"
+
+#: class-coblocks.php:77
+#: class-coblocks.php:89
+msgid "Cheating huh?"
+msgstr "作弊啊？"
+
+#. translators: Number of years
+#: includes/admin/class-coblocks-feedback.php:92
+msgid "%s years"
+msgstr "%s 年"
+
+#: includes/admin/class-coblocks-feedback.php:94
+msgid "a year"
+msgstr "一年"
+
+#. translators: Number of weeks
+#: includes/admin/class-coblocks-feedback.php:101
+msgid "%s weeks"
+msgstr "%s 周"
+
+#: includes/admin/class-coblocks-feedback.php:103
+msgid "a week"
+msgstr "一周"
+
+#. translators: Number of days
+#: includes/admin/class-coblocks-feedback.php:110
+msgid "%s days"
+msgstr "%s 天"
+
+#: includes/admin/class-coblocks-feedback.php:112
+msgid "a day"
+msgstr "一天"
+
+#. translators: Number of hours
+#: includes/admin/class-coblocks-feedback.php:119
+msgid "%s hours"
+msgstr "%s 小时"
+
+#: includes/admin/class-coblocks-feedback.php:121
+msgid "an hour"
+msgstr "一小时"
+
+#. translators: Number of minutes
+#: includes/admin/class-coblocks-feedback.php:128
+msgid "%s minutes"
+msgstr "%s 分钟"
+
+#: includes/admin/class-coblocks-feedback.php:130
+msgid "a minute"
+msgstr "一分钟"
+
+#. translators: Number of seconds
+#: includes/admin/class-coblocks-feedback.php:137
+msgid "%s seconds"
+msgstr "%s 秒"
+
+#: includes/admin/class-coblocks-feedback.php:139
+msgid "a second"
+msgstr "一秒"
+
+#. translators: 1. Name
+#: includes/admin/class-coblocks-feedback.php:271
+msgid "%s WordPress Plugin"
+msgstr "%s WordPress 插件"
+
+#. translators: 1. Name
+#: includes/admin/class-coblocks-feedback.php:275
+msgid "Are you enjoying %s?"
+msgstr "喜欢 %s 吗？"
+
+#. translators: 1. Name, 2. Time
+#: includes/admin/class-coblocks-feedback.php:278
+msgid "You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We'd really appreciate it!"
+msgstr "现在您已经使用 %1$s %2$s 了。是否介意留下评论，让我们知道您是怎么想的？我们将万分感谢！"
+
+#: includes/admin/class-coblocks-feedback.php:282
+msgid "Leave a Review"
+msgstr "留下评论"
+
+#: includes/admin/class-coblocks-feedback.php:283
+msgid "No thanks / I already have"
+msgstr "不，谢谢/我已经有了"
+
+#: includes/admin/class-coblocks-getting-started-page.php:122
+msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
+msgstr "感谢您选择 CoBlocks，适用于新 WordPress 模块编辑器的首要页面构建器。"
+
+#. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
+#: includes/admin/class-coblocks-getting-started-page.php:128
+msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
+msgstr "我们刚向 WordPress 编辑器中添加了很多有用的模块和一个新的页面构建工具包。CoBlocks 为您提供一组颠覆性的功能：%1$s几十个模块%2$s、%1$s页面构建器体验%2$s和%1$s自定义排版控制%2$s。"
+
+#: includes/admin/class-coblocks-getting-started-page.php:135
+msgid "Here are a few videos to help you get started:"
+msgstr "这里有一些视频，可帮助您入门："
+
+#. translators: CoBlocks plugin name
+#: includes/admin/class-coblocks-getting-started-page.php:139
+msgid "Watch how to create your first page with %s"
+msgstr "观看如何使用 %s 创建您的第一个网页"
+
+#: includes/admin/class-coblocks-getting-started-page.php:140
+msgid "Watch how to create your first page"
+msgstr "观看如何创建您的第一个网页"
+
+#: includes/admin/class-coblocks-getting-started-page.php:142
+#: includes/admin/class-coblocks-getting-started-page.php:143
+msgid "Watch how to use the Row and Shape Divider blocks"
+msgstr "观看如何使用行和形状分割器模块"
+
+#: includes/admin/class-coblocks-getting-started-page.php:145
+#: includes/admin/class-coblocks-getting-started-page.php:146
+msgid "Watch how to use the Media Card block"
+msgstr "观看如何使用媒体卡模块"
+
+#. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
+#: includes/admin/class-coblocks-getting-started-page.php:154
+msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
+msgstr "喜欢吗？%1$s订阅我们的 YouTube 频道%2$s，当发布新的视频教程时，我们会通知您。"
+
+#. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
+#: includes/admin/class-coblocks-getting-started-page.php:165
+msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
+msgstr "如果您有任何问题或反馈，请通过 %1$sTwitter%4$s 或我们的 %2$sFacebook 群组%4$s告诉我们。另外，如果您想跟上 CoBlocks 的新功能，掌握最新情况，请%3$s订阅我们的内部通讯%4$s。"
+
+#: includes/admin/class-coblocks-getting-started-page.php:174
+msgid "Enjoy!"
+msgstr "祝使用愉快！"
+
+#: includes/admin/class-coblocks-getting-started-page.php:207
+msgid "Get started with CoBlocks here:"
+msgstr "从这里开始使用 CoBlocks："
+
+#: includes/class-coblocks-block-settings.php:80
+msgid "Enable or disable blocks"
+msgstr "启用或禁用模块"
+
+#: includes/class-coblocks-form.php:67
+msgid "Google reCaptcha site key for form spam protection"
+msgstr "用于表单垃圾防护的 Google reCaptcha 网站密钥"
+
+#: includes/class-coblocks-form.php:79
+msgid "Google reCaptcha secret key for form spam protection"
+msgstr "用于表单垃圾防护的 Google reCaptcha 密钥"
+
+#: includes/class-coblocks-form.php:390
+msgid "Submit"
+msgstr "提交"
+
+#: includes/class-coblocks-form.php:561
+msgid "Your message was sent:"
+msgstr "您的消息已发送："
+
+#: includes/class-coblocks-google-map-block.php:122
+msgid "Google Map API key for map rendering"
+msgstr "用于地图渲染的 Google 地图 API 密钥"
+
+#: src/blocks/share/index.php:145
+msgid "Share on Linkedin"
+msgstr "在 Linkedin 上分享"
+
+#: src/blocks/social-profiles/index.php:84
+msgid "Linkedin"
+msgstr "Linkedin"

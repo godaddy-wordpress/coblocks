@@ -3,12 +3,11 @@
  */
 import icons from './icons';
 import './styles/style.scss';
-import './styles/editor.scss';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 const { Component } = wp.element;
 const {
 	Toolbar,
@@ -16,13 +15,7 @@ const {
 } = wp.components;
 
 class MediaFilterControl extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			setAttributes,
@@ -35,38 +28,50 @@ class MediaFilterControl extends Component {
 		const filterControls = [
 			{
 				icon: icons.none,
-				title: __( 'Original' ),
-				onClick: () => { setAttributes( { filter: 'none' } ) },
+				title: _x( 'Original', 'image styles' ),
+				onClick: () => {
+					setAttributes( { filter: 'none' } );
+				},
 				isActive: filter === 'none',
 			},
 			{
 				icon: icons.grayscale,
-				title: __( 'Grayscale' ),
-				onClick: () => { setAttributes( { filter: 'grayscale' } ) },
+				title: _x( 'Grayscale Filter', 'image styles' ),
+				onClick: () => {
+					setAttributes( { filter: 'grayscale' } );
+				},
 				isActive: filter === 'grayscale',
 			},
 			{
 				icon: icons.sepia,
-				title: __( 'Sepia' ),
-				onClick: () => { setAttributes( { filter: 'sepia' } ) },
+				title: _x( 'Sepia Filter', 'image styles' ),
+				onClick: () => {
+					setAttributes( { filter: 'sepia' } );
+				},
 				isActive: filter === 'sepia',
 			},
 			{
 				icon: icons.saturation,
-				title: __( 'Saturation' ),
-				onClick: () => { setAttributes( { filter: 'saturation' } ) },
+				title: _x( 'Saturation Filter', 'image styles' ),
+				onClick: () => {
+					setAttributes( { filter: 'saturation' } );
+				},
 				isActive: filter === 'saturation',
 			},
 			{
 				icon: icons.dark,
-				title: __( 'Dim' ),
-				onClick: () => { setAttributes( { filter: 'dim' } ) },
+				title: _x( 'Dim Filter', 'image styles' ),
+				onClick: () => {
+					setAttributes( { filter: 'dim' } );
+				},
 				isActive: filter === 'dim',
 			},
 			{
 				icon: icons.vintage,
-				title: __( 'Vintage' ),
-				onClick: () => { setAttributes( { filter: 'vintage' } ) },
+				title: _x( 'Vintage Filter', 'image styles' ),
+				onClick: () => {
+					setAttributes( { filter: 'vintage' } );
+				},
 				isActive: filter === 'vintage',
 			},
 		];
@@ -74,13 +79,14 @@ class MediaFilterControl extends Component {
 		return (
 			<Toolbar>
 				<DropdownMenu
-					icon= { icons.filter }
+					hasArrowIndicator
+					icon={ icons.filter }
 					label={ __( 'Apply filter' ) }
 					controls={ filterControls }
 					className="components-coblocks-media-filter"
 				/>
 			</Toolbar>
-		)
+		);
 	}
 }
 

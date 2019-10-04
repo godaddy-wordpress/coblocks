@@ -12,10 +12,15 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - jest:
+          filters:
+            tags:
+              only: /.*/
       - deploy:
           requires:
             - php71-build
             - php72-build
+            - jest
           filters:
             tags:
               only: /.*/
@@ -44,14 +49,15 @@ jobs:
           command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
-          command: |
-            bash .dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
-            phpunit --coverage-html=/tmp/artifacts/code-coverage/html --coverage-clover=/tmp/artifacts/code-coverage/clover
+          command: phpunit --coverage-html=/tmp/artifacts/code-coverage/html --coverage-clover=/tmp/artifacts/code-coverage/clover --coverage-text
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/html
+          destination: phpunit-coverage
       - run:
           name: "Run PHPUnit - Multi Site"
           command: WP_MULTISITE=1 phpunit
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
   php72-build:
     docker:
@@ -72,12 +78,42 @@ jobs:
           command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
       - run:
           name: "Run PHPUnit - Single Site"
-          command: |
-            bash .dev/bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
-            phpunit
+          command: phpunit
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: "Run PHPUnit - Multisite"
           command: WP_MULTISITE=1 phpunit
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+
+  jest:
+    docker:
+      - image: circleci/node:latest-browsers-legacy
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - run:
+          name: Install Grunt.js
+          command: sudo npm install -g grunt-cli
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Run eslint
+          command: grunt eslint
+      - run:
+          name: Run jest tests
+          command: npm test -- --coverage --coverageDirectory=/tmp/artifacts/code-coverage
+      - store_artifacts:
+          path: /tmp/artifacts/code-coverage
+          destination: jest-coverage
 
   deploy:
     docker:
@@ -97,6 +133,9 @@ jobs:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring
       - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
+      - run:
           name: Install WPCLI
           command: |
             curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -106,15 +145,9 @@ jobs:
           name: Install ghr
           command: |
             go get -u github.com/tcnksm/ghr
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install node packages
           command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - node_modules
       - run:
           name: Build the plugin
           command: |

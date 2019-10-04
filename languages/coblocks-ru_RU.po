@@ -1,0 +1,3492 @@
+# Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
+msgid ""
+msgstr ""
+"Project-Id-Version: CoBlocks 1.12.1\n"
+"Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
+"Last-Translator: plugins@godaddy.com\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-08-27T16:28:38+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.3.0\n"
+"X-Domain: coblocks\n"
+
+#: src/blocks/accordion/accordion-item/controls.js:28
+msgid "Display open"
+msgstr "Отображать открытым"
+
+#: src/blocks/accordion/accordion-item/edit.js:67
+msgid "Add accordion title..."
+msgstr "Добавить название аккордеона..."
+
+#: src/blocks/accordion/accordion-item/index.js:24
+msgid "Accordion Item"
+msgstr "Элемент аккордеона"
+
+#: src/blocks/accordion/accordion-item/index.js:26
+msgid "Add collapsable accordion items to accordions."
+msgstr "Добавить сворачиваемые элементы аккордеона к аккордеонам."
+
+#: src/blocks/accordion/accordion-item/index.js:28
+#: src/blocks/accordion/index.js:30
+msgid "tabs"
+msgstr "вкладки"
+
+#: src/blocks/accordion/accordion-item/index.js:28
+#: src/blocks/accordion/index.js:30
+msgid "faq"
+msgstr "вопросы и ответы"
+
+#: src/blocks/accordion/accordion-item/inspector.js:34
+msgid "Accordion item is open by default."
+msgstr "Элемент аккордеона открыт по умолчанию."
+
+#: src/blocks/accordion/accordion-item/inspector.js:34
+msgid "Toggle to set this accordion item to be open by default."
+msgstr "Переключить для открытия этого элемента аккордеона по умолчанию."
+
+#: src/blocks/accordion/accordion-item/inspector.js:63
+msgid "Accordion Item Settings"
+msgstr "Настройки элемента аккордеона"
+
+#: src/blocks/accordion/accordion-item/inspector.js:65
+msgid "Display Open"
+msgstr "Дисплей открыт"
+
+#: src/blocks/accordion/accordion-item/inspector.js:72
+#: src/blocks/alert/inspector.js:49
+#: src/blocks/click-to-tweet/inspector.js:60
+#: src/blocks/dynamic-separator/inspector.js:60
+#: src/blocks/features/feature/inspector.js:92
+#: src/blocks/features/inspector.js:173
+#: src/blocks/form/submit-button.js:118
+#: src/blocks/gallery-carousel/inspector.js:165
+#: src/blocks/gallery-masonry/inspector.js:167
+#: src/blocks/gallery-stacked/inspector.js:184
+#: src/blocks/hero/inspector.js:117
+#: src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:353
+#: src/blocks/media-card/inspector.js:124
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:48
+#: src/blocks/row/column/inspector.js:125
+#: src/blocks/row/inspector.js:244
+#: src/blocks/shape-divider/inspector.js:102
+#: src/blocks/share/inspector.js:179
+#: src/blocks/social-profiles/inspector.js:193
+#: src/extensions/colors/index.js:59
+msgid "Color Settings"
+msgstr "настройки сервера"
+
+#: src/blocks/accordion/accordion-item/inspector.js:78
+#: src/blocks/alert/inspector.js:54
+#: src/blocks/features/feature/inspector.js:110
+#: src/blocks/features/inspector.js:191
+#: src/blocks/gallery-carousel/inspector.js:80
+#: src/blocks/gallery-masonry/inspector.js:93
+#: src/blocks/gallery-stacked/inspector.js:96
+#: src/blocks/hero/inspector.js:130
+#: src/blocks/highlight/inspector.js:49
+#: src/blocks/icon/inspector.js:377
+#: src/blocks/media-card/inspector.js:138
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:53
+#: src/blocks/row/column/inspector.js:131
+#: src/blocks/row/inspector.js:260
+#: src/blocks/shape-divider/inspector.js:113
+#: src/blocks/share/inspector.js:80
+#: src/blocks/social-profiles/inspector.js:92
+#: src/extensions/colors/index.js:47
+msgid "Background Color"
+msgstr "Цвет фона"
+
+#: src/blocks/accordion/accordion-item/inspector.js:83
+msgid "Title Text Color"
+msgstr "Цвет основного текста"
+
+#: src/blocks/accordion/edit.js:111
+msgid "Add Accordion Item"
+msgstr "Добавить элемент аккордеона"
+
+#: src/blocks/accordion/index.js:26
+msgid "Accordion"
+msgstr "Аккордеон"
+
+#: src/blocks/accordion/index.js:28
+msgid "Organize content within collapsable accordion items."
+msgstr "Упорядочьте контент в сворачиваемых элементах аккордеона."
+
+#: src/blocks/accordion/inspector.js:27
+msgid "Accordion Settings"
+msgstr "Настройки аккордеона"
+
+#: src/blocks/accordion/inspector.js:29
+msgid "Internet Explorer Support"
+msgstr "Поддержка Internet Explorer"
+
+#: src/blocks/accordion/inspector.js:31
+msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
+msgstr "Добавьте поддержку Internet Explorer путем загрузки полизаполнения JavaScript."
+
+#: src/blocks/accordion/inspector.js:31
+msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgstr "Поддержка Internet Explorer путем загрузки полизаполнения JavaScript на этой странице."
+
+#: src/blocks/alert/controls.js:103
+msgid "Warning"
+msgstr "Внимание"
+
+#: src/blocks/alert/controls.js:111
+msgid "Error"
+msgstr "Ошибка"
+
+#: src/blocks/alert/controls.js:76
+msgid "Alert Type"
+msgstr "Тип предупреждения"
+
+#: src/blocks/alert/controls.js:80
+#: src/components/font-family/index.js:16
+#: src/components/typography-controls/index.js:91
+#: src/extensions/list-styles/index.js:15
+msgid "Default"
+msgstr "По умолчанию"
+
+#: src/blocks/alert/controls.js:87
+msgid "Info"
+msgstr "Информация"
+
+#: src/blocks/alert/controls.js:95
+msgid "Success"
+msgstr "Успех"
+
+#: src/blocks/alert/edit.js:74
+msgid "Write title..."
+msgstr "Введите заголовок..."
+
+#: src/blocks/alert/edit.js:82
+msgid "Write text..."
+msgstr "Введите текст..."
+
+#: src/blocks/alert/index.js:25
+msgid "Alert"
+msgstr "Извещение"
+
+#: src/blocks/alert/index.js:30
+msgid "Provide contextual feedback messages."
+msgstr "Предоставьте контекстуальные отзывы."
+
+#: src/blocks/alert/index.js:32
+msgid "notice"
+msgstr "уведомление"
+
+#: src/blocks/alert/index.js:32
+msgid "message"
+msgstr "сообщение"
+
+#: src/blocks/alert/inspector.js:59
+#: src/blocks/click-to-tweet/inspector.js:66
+#: src/blocks/features/feature/inspector.js:114
+#: src/blocks/features/inspector.js:195
+#: src/blocks/hero/inspector.js:135
+#: src/blocks/highlight/inspector.js:54
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:58
+#: src/blocks/row/column/inspector.js:136
+#: src/blocks/row/inspector.js:265
+#: src/blocks/share/inspector.js:72
+#: src/blocks/social-profiles/inspector.js:84
+#: src/extensions/colors/index.js:54
+msgid "Text Color"
+msgstr "Цвет текста"
+
+#: src/blocks/author/controls.js:41
+msgid "Edit image"
+msgstr "Изменить изображение"
+
+#: src/blocks/author/controls.js:49
+msgid "Remove image"
+msgstr "Удалить изображение"
+
+#: src/blocks/author/edit.js:102
+msgid "Drop to add as avatar"
+msgstr "Добавьте аватар методом перетаскивания"
+
+#: src/blocks/author/edit.js:143
+msgid "Heading..."
+msgstr "Заголовок..."
+
+#: src/blocks/author/edit.js:154
+msgid "Author Name"
+msgstr "Имя автора"
+
+#: src/blocks/author/edit.js:165
+msgid "Write biography..."
+msgstr "Напишите биографию"
+
+#: src/blocks/author/index.js:26
+msgid "Author"
+msgstr "Автор"
+
+#: src/blocks/author/index.js:28
+msgid "Add an author biography."
+msgstr "Добавьте биографию автора"
+
+#: src/blocks/author/index.js:30
+msgid "biography"
+msgstr "биография"
+
+#: src/blocks/author/index.js:30
+msgid "profile"
+msgstr "профиль"
+
+#: src/blocks/buttons/index.js:30
+#: src/blocks/buttons/inspector.js:30
+msgid "Buttons"
+msgstr "Кнопки"
+
+#: src/blocks/buttons/index.js:31
+msgid "Prompt visitors to take action with multiple buttons, side by side."
+msgstr "Предложите посетителям выполнить действия с помощью нескольких кнопок, расположенных рядом."
+
+#: src/blocks/buttons/index.js:32
+msgid "link"
+msgstr "ссылка"
+
+#: src/blocks/buttons/index.js:32
+#: src/blocks/hero/index.js:45
+msgid "cta"
+msgstr "cta"
+
+#: src/blocks/buttons/inspector.js:28
+msgid "Buttons Settings"
+msgstr "Настройки кнопок"
+
+#: src/blocks/buttons/inspector.js:43
+msgid "Stack on mobile"
+msgstr "Компоновка на мобильном устройстве"
+
+#: src/blocks/buttons/inspector.js:48
+msgid "Stacking buttons on mobile."
+msgstr "Компоновка кнопок на мобильном устройстве."
+
+#: src/blocks/buttons/inspector.js:48
+msgid "Toggle to stack buttons on mobile."
+msgstr "Используйте переключатель для компоновки кнопок на мобильном устройстве."
+
+#: src/blocks/click-to-tweet/controls.js:44
+msgid "Twitter Username"
+msgstr "Имя пользователя Twitter"
+
+#: src/blocks/click-to-tweet/controls.js:48
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: src/blocks/click-to-tweet/edit.js:107
+msgid "Add button..."
+msgstr "Добавить кнопку..."
+
+# the text of the click to tweet element
+#: src/blocks/click-to-tweet/edit.js:80
+msgid "Add a quote to tweet..."
+msgstr "Добавить цитату в Twitter..."
+
+#: src/blocks/click-to-tweet/index.js:25
+msgid "Click to Tweet"
+msgstr "Щелкните, чтобы твитнуть"
+
+#: src/blocks/click-to-tweet/index.js:27
+msgid "Add a quote for readers to tweet via Twitter."
+msgstr "Добавьте цитату для читателей в Twitter."
+
+#: src/blocks/click-to-tweet/index.js:29
+#: src/blocks/social-profiles/index.js:23
+msgid "share"
+msgstr "поделиться"
+
+#: src/blocks/click-to-tweet/index.js:29
+msgid "twitter"
+msgstr "Twitter"
+
+#: src/blocks/click-to-tweet/inspector.js:52
+#: src/blocks/highlight/inspector.js:35
+msgid "Text Settings"
+msgstr "Настройки текста"
+
+#: src/blocks/click-to-tweet/inspector.js:71
+#: src/blocks/form/submit-button.js:127
+msgid "Button Color"
+msgstr "Цвет кнопки"
+
+#: src/blocks/dynamic-separator/index.js:24
+msgid "Dynamic HR"
+msgstr "Динамический HR"
+
+#: src/blocks/dynamic-separator/index.js:29
+msgid "Add a resizable spacer between other blocks."
+msgstr "Добавьте разделитель с изменяемым размером между другими блоками."
+
+#: src/blocks/dynamic-separator/index.js:31
+msgid "spacer"
+msgstr "разделитель"
+
+#: src/blocks/dynamic-separator/inspector.js:43
+msgid "Dynamic HR Settings"
+msgstr "Настройки динамического HR"
+
+#: src/blocks/dynamic-separator/inspector.js:44
+#: src/blocks/gallery-carousel/inspector.js:142
+#: src/blocks/hero/inspector.js:88
+#: src/blocks/map/inspector.js:133
+msgid "Height in pixels"
+msgstr "Высота в пикселях"
+
+#: src/blocks/dynamic-separator/inspector.js:52
+msgid "Height for the dynamic separator element in pixels."
+msgstr "Высота элемента динамического разделителя в пикселях."
+
+#: src/blocks/dynamic-separator/inspector.js:66
+msgid "Color"
+msgstr "Цвет"
+
+#: src/blocks/features/edit.js:78
+#: src/blocks/features/feature/edit.js:63
+#: src/blocks/media-card/edit.js:173
+msgid "Add as backround"
+msgstr "Добавить как фон"
+
+#: src/blocks/features/feature/index.js:20
+msgid "Feature"
+msgstr "Функция"
+
+#: src/blocks/features/feature/index.js:42
+msgid "A singular child column within a parent features block."
+msgstr "Отдельный дочерний столбец в блоке родительских функций."
+
+#: src/blocks/features/feature/inspector.js:68
+msgid "Feature Settings"
+msgstr "Настройка функции"
+
+#: src/blocks/features/feature/inspector.js:71
+#: src/blocks/features/inspector.js:143
+#: src/blocks/hero/inspector.js:74
+#: src/blocks/icon/inspector.js:268
+#: src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:103
+#: src/blocks/row/inspector.js:213
+#: src/components/background/panel.js:146
+msgid "Padding"
+msgstr "Отступ"
+
+#: src/blocks/features/index.js:23
+msgid "Features"
+msgstr "Функции"
+
+#: src/blocks/features/index.js:36
+msgid "Add up to three columns of small notes for your product or service."
+msgstr "Можно добавить до трех столбцов или небольших заметок о вашем продукте или услуге."
+
+#: src/blocks/features/index.js:38
+msgid "services"
+msgstr "услуги"
+
+#: src/blocks/features/inspector.js:122
+#: src/blocks/row/column/inspector.js:91
+#: src/blocks/row/inspector.js:190
+#: src/components/dimensions-control/index.js:295
+msgid "Margin"
+msgstr "Поле"
+
+#: src/blocks/features/inspector.js:164
+#: src/blocks/gallery-carousel/inspector.js:137
+#: src/blocks/gallery-stacked/inspector.js:145
+#: src/blocks/row/inspector.js:235
+#: src/components/responsive-tabs-control/index.js:31
+msgid "Gutter"
+msgstr "Межстолбцовый промежуток"
+
+#: src/blocks/features/inspector.js:167
+#: src/blocks/row/inspector.js:238
+msgid "Space between each column."
+msgstr "Промежуток между столбцами"
+
+#: src/blocks/features/inspector.js:86
+#: src/blocks/icon/inspector.js:154
+#: src/blocks/row/inspector.js:99
+#: src/blocks/share/inspector.js:58
+#: src/blocks/social-profiles/inspector.js:70
+#: src/components/dimensions-control/dimensions-select.js:15
+#: src/components/size-control/index.js:116
+msgid "Small"
+msgstr "Малый"
+
+#: src/blocks/features/inspector.js:87
+#: src/blocks/icon/inspector.js:159
+#: src/blocks/row/inspector.js:100
+#: src/blocks/share/inspector.js:59
+#: src/blocks/social-profiles/inspector.js:71
+#: src/components/dimensions-control/dimensions-select.js:20
+#: src/components/size-control/index.js:120
+msgid "Medium"
+msgstr "Средний"
+
+#: src/blocks/features/inspector.js:88
+#: src/blocks/icon/inspector.js:164
+#: src/blocks/row/inspector.js:101
+#: src/blocks/share/inspector.js:60
+#: src/blocks/social-profiles/inspector.js:72
+#: src/components/dimensions-control/dimensions-select.js:25
+#: src/components/size-control/index.js:65
+msgid "Large"
+msgstr "Крупный"
+
+#: src/blocks/features/inspector.js:94
+msgid "Features Settings"
+msgstr "Настройки функций"
+
+#: src/blocks/features/inspector.js:96
+#: src/blocks/services/inspector.js:69
+msgid "Columns"
+msgstr "Столбцы"
+
+#: src/blocks/food-and-drinks/appender.js:22
+msgid "Add Menu Section"
+msgstr "Добавить раздел меню"
+
+#: src/blocks/food-and-drinks/edit.js:27
+msgid "Menu title..."
+msgstr "Заголовок меню..."
+
+#: src/blocks/food-and-drinks/edit.js:35
+msgid "Grid"
+msgstr "Сетка"
+
+#: src/blocks/food-and-drinks/edit.js:42
+msgid "List"
+msgstr "Список"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:144
+#: src/blocks/services/service/edit.js:146
+msgid "Drop image to replace"
+msgstr "Перетащите изображение для замены"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:157
+#: src/blocks/services/service/edit.js:159
+#: src/components/block-gallery/gallery-image.js:208
+msgid "Remove Image"
+msgstr "Удалить изображение"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:222
+msgid "Add title..."
+msgstr "Добавить заголовок..."
+
+#: src/blocks/food-and-drinks/food-item/edit.js:233
+#: src/blocks/food-and-drinks/food-item/inspector.js:55
+#: src/blocks/food-and-drinks/food-item/save.js:65
+msgid "Spicy"
+msgstr "Острое"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:253
+msgid "Hot"
+msgstr "Горячее"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:275
+#: src/blocks/food-and-drinks/food-item/inspector.js:70
+#: src/blocks/food-and-drinks/food-item/save.js:81
+msgid "Vegetarian"
+msgstr "Вегетарианское"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:301
+#: src/blocks/food-and-drinks/food-item/inspector.js:45
+#: src/blocks/food-and-drinks/food-item/save.js:89
+msgid "Gluten Free"
+msgstr "Без глютена"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:324
+#: src/blocks/food-and-drinks/food-item/inspector.js:50
+#: src/blocks/food-and-drinks/food-item/save.js:97
+msgid "Pescatarian"
+msgstr "Вегетарианское с морепродуктами"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:345
+#: src/blocks/food-and-drinks/food-item/inspector.js:65
+#: src/blocks/food-and-drinks/food-item/save.js:105
+msgid "Vegan"
+msgstr "Веган"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:363
+msgid "Add description..."
+msgstr "Добавить описание..."
+
+#: src/blocks/food-and-drinks/food-item/edit.js:372
+msgid "$0.00"
+msgstr "$0.00"
+
+#: src/blocks/food-and-drinks/food-item/index.js:21
+msgid "Food Item"
+msgstr "Пищевой продукт"
+
+#: src/blocks/food-and-drinks/food-item/index.js:30
+msgid "A food and drink item within the Food & Drinks block."
+msgstr "Продукты питания и напитки в блоке \"Еда и напитки\"."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:19
+msgid "Item Settings"
+msgstr "Настройки элемента"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:21
+msgid "Image"
+msgstr "Изображение"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:24
+msgid "Showing an image for this item."
+msgstr "Отображение изображения для этого элемента."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:25
+msgid "Toggle to show an image for this item."
+msgstr "Воспользуйтесь переключателем для отображения изображения для этого элемента."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:31
+msgid "Price"
+msgstr "Цена"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:34
+msgid "Showing the price for this item."
+msgstr "Отображение цены для этого элемента."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:35
+msgid "Toggle to show the price for this item."
+msgstr "Воспользуйтесь переключателем для отображения цены для этого элемента."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:42
+msgid "Item Attributes"
+msgstr "Атрибуты элемента"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:60
+#: src/blocks/food-and-drinks/food-item/save.js:73
+msgid "Spicier"
+msgstr "Пряный"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:77
+#: src/blocks/services/service/inspector.js:31
+msgid "Image Settings"
+msgstr "Настройки изображения"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:79
+#: src/blocks/gif/inspector.js:31
+#: src/blocks/media-card/inspector.js:95
+#: src/blocks/services/service/inspector.js:33
+msgid "Alt Text (Alternative Text)"
+msgstr "Альтернативный текст"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:85
+#: src/blocks/gif/inspector.js:37
+#: src/blocks/media-card/inspector.js:101
+#: src/blocks/services/service/inspector.js:39
+msgid "Describe the purpose of the image"
+msgstr "Опишите назначение изображения"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:87
+#: src/blocks/gif/inspector.js:39
+#: src/blocks/media-card/inspector.js:103
+#: src/blocks/services/service/inspector.js:41
+msgid "Leave empty if the image is purely decorative."
+msgstr "Не заполняйте, если изображение используется только для украшения"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:92
+#: src/blocks/services/service/inspector.js:46
+#: src/components/background/panel.js:126
+msgid "Focal Point"
+msgstr "Фокусная точка"
+
+#: src/blocks/food-and-drinks/index.js:24
+msgid "Food & Drinks"
+msgstr "Продукты и напитки"
+
+#: src/blocks/food-and-drinks/index.js:26
+msgid "Display a menu or price list."
+msgstr "Отображение меню или прайс-листа"
+
+#: src/blocks/food-and-drinks/index.js:28
+msgid "restaurant"
+msgstr "ресторан"
+
+#: src/blocks/food-and-drinks/index.js:28
+msgid "menu"
+msgstr "меню"
+
+#: src/blocks/food-and-drinks/inspector.js:26
+#: src/blocks/map/inspector.js:98
+#: src/blocks/row/inspector.js:152
+#: src/blocks/services/inspector.js:32
+msgid "Styles"
+msgstr "Стили"
+
+#: src/blocks/food-and-drinks/inspector.js:59
+msgid "Food & Drinks Settings"
+msgstr "Настройки блока \"Еда и напитки\""
+
+#: src/blocks/food-and-drinks/inspector.js:61
+msgid "Images"
+msgstr "Изображения"
+
+#: src/blocks/food-and-drinks/inspector.js:64
+msgid "Showing images for each item"
+msgstr "Отображение изображений для каждого элемента"
+
+#: src/blocks/food-and-drinks/inspector.js:65
+msgid "Toggle to show images for each item."
+msgstr "Воспользуйтесь переключателем для отображения изображений для каждого элемента."
+
+#: src/blocks/food-and-drinks/inspector.js:71
+msgid "Prices"
+msgstr "Цены"
+
+#: src/blocks/food-and-drinks/inspector.js:74
+msgid "Showing the price of each item"
+msgstr "Отображение цен для каждого элемента"
+
+#: src/blocks/food-and-drinks/inspector.js:75
+msgid "Toggle to show the price of each item."
+msgstr "Воспользуйтесь переключателем для отображения цен для каждого элемента."
+
+#: src/blocks/form/edit.js:109
+#: src/blocks/share/inspector.js:156
+#: includes/class-coblocks-form.php:210
+#: includes/class-coblocks-form.php:297
+msgid "Email"
+msgstr "Эл. почта"
+
+#: src/blocks/form/edit.js:110
+msgid "e-mail"
+msgstr "эл. почта"
+
+#: src/blocks/form/edit.js:110
+msgid "mail"
+msgstr "почта"
+
+#: src/blocks/form/edit.js:111
+msgid "An email address field."
+msgstr "Поле адреса электронной почты."
+
+#: src/blocks/form/edit.js:120
+#: includes/class-coblocks-form.php:325
+msgid "Message"
+msgstr "Сообщение"
+
+#: src/blocks/form/edit.js:121
+msgid "Textarea"
+msgstr "Текстовая область"
+
+#: src/blocks/form/edit.js:121
+msgid "Multiline text"
+msgstr "Многострочный текст"
+
+#: src/blocks/form/edit.js:122
+msgid "A text box for longer responses."
+msgstr "Текстовое поле для длинных ответов."
+
+#: src/blocks/form/edit.js:289
+msgid "%s is not a valid email address."
+msgstr "‌‌%s — недействительный адрес электронной почты."
+
+#: src/blocks/form/edit.js:298
+msgid "%s and %s are not a valid email address."
+msgstr "%s и %s — недействительные адреса электронной почты."
+
+#: src/blocks/form/edit.js:305
+msgid "%s are not a valid email address."
+msgstr "%s — недействительный адрес электронной почты"
+
+#: src/blocks/form/edit.js:363
+msgid "Email address"
+msgstr "Адрес эл. почты"
+
+#: src/blocks/form/edit.js:364
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: src/blocks/form/edit.js:374
+msgid "Subject"
+msgstr "Тема"
+
+#: src/blocks/form/edit.js:404
+msgid "Form Settings"
+msgstr "Настройки формы"
+
+#: src/blocks/form/edit.js:409
+msgid "Google reCAPTCHA"
+msgstr "reCAPTCHA Google"
+
+#: src/blocks/form/edit.js:412
+msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
+msgstr "Добавьте ключ reCAPTCHA для сайта и секретный ключ, чтобы обеспечить защиту от спама."
+
+#: src/blocks/form/edit.js:418
+msgid "Generate keys"
+msgstr "Создать ключи"
+
+#: src/blocks/form/edit.js:419
+msgid "My keys"
+msgstr "Мои ключи"
+
+#: src/blocks/form/edit.js:422
+msgid "Get help"
+msgstr "Получить помощь"
+
+#: src/blocks/form/edit.js:426
+msgid "Site Key"
+msgstr "Ключ сайта"
+
+#: src/blocks/form/edit.js:432
+msgid "Secret Key"
+msgstr "Введите секретный ключ"
+
+#: src/blocks/form/edit.js:446
+#: src/components/block-gallery/gallery-image.js:221
+msgid "Saving"
+msgstr "Сохранение"
+
+#: src/blocks/form/edit.js:446
+#: src/blocks/map/inspector.js:221
+msgid "Save"
+msgstr "Сохранить"
+
+#: src/blocks/form/edit.js:461
+#: src/blocks/map/inspector.js:229
+msgid "Remove"
+msgstr "Удалить"
+
+#: src/blocks/form/edit.js:57
+#: includes/class-coblocks-form.php:248
+msgid "First"
+msgstr "Первая"
+
+#: src/blocks/form/edit.js:61
+#: includes/class-coblocks-form.php:249
+msgid "Last"
+msgstr "Последняя"
+
+#: src/blocks/form/edit.js:88
+#: includes/class-coblocks-form.php:244
+msgid "Name"
+msgstr "Имя"
+
+#: src/blocks/form/edit.js:89
+msgid "A text field for names."
+msgstr "Текстовое поле для имен."
+
+#: src/blocks/form/fields/field-label.js:22
+#: src/blocks/form/fields/field-name.js:67
+msgid "Add label…"
+msgstr "Добавьте метку..."
+
+#: src/blocks/form/fields/field-label.js:30
+msgid "Required"
+msgstr "Обязательно"
+
+#: src/blocks/form/fields/field-name.js:75
+msgid "Name Field Settings"
+msgstr "Настройки поля имени"
+
+#: src/blocks/form/fields/field-name.js:77
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: src/blocks/form/fields/field-name.js:81
+msgid "Showing both first and last name fields."
+msgstr "Отображение полей имени и фамилии."
+
+#: src/blocks/form/fields/field-name.js:81
+msgid "Toggle to add a last name field."
+msgstr "Воспользуйтесь переключателем для добавления поля \"Фамилия\"."
+
+#: src/blocks/form/index.js:25
+msgid "Form"
+msgstr "Форма"
+
+#: src/blocks/form/index.js:27
+msgid "Add a simple form to your page."
+msgstr "Добавьте простую форму на вашу страницу."
+
+#: src/blocks/form/index.js:29
+msgid "email"
+msgstr "электронная почта"
+
+#: src/blocks/form/index.js:29
+msgid "about"
+msgstr "информация"
+
+#: src/blocks/form/index.js:29
+msgid "contact"
+msgstr "контакт"
+
+#: src/blocks/form/submit-button.js:107
+msgid "Add text…"
+msgstr "Добавить текст..."
+
+#: src/blocks/form/submit-button.js:135
+msgid "Button Text Color"
+msgstr "Цвет текста кнопки"
+
+#: src/blocks/gallery-carousel/controls.js:53
+#: src/blocks/gallery-masonry/controls.js:53
+#: src/blocks/gallery-stacked/controls.js:53
+msgid "Edit gallery"
+msgstr "Редактировать галерею"
+
+# %1$d is the order number of the image, %2$d is the total number of images.
+#: src/blocks/gallery-carousel/edit.js:292
+#: src/blocks/gallery-masonry/edit.js:239
+#: src/blocks/gallery-stacked/edit.js:197
+msgid "image %1$d of %2$d in gallery"
+msgstr "изображение %1$d из %2$d в галерее"
+
+#: src/blocks/gallery-carousel/edit.js:333
+#: src/blocks/gif/edit.js:248
+#: src/blocks/gist/edit.js:103
+#: src/components/block-gallery/gallery-image.js:230
+msgid "Write caption…"
+msgstr "Напишите подпись..."
+
+#: src/blocks/gallery-carousel/index.js:24
+msgid "Carousel"
+msgstr "Карусель"
+
+#: src/blocks/gallery-carousel/index.js:38
+msgid "Display multiple images in a beautiful carousel gallery."
+msgstr "Покажите несколько изображений в красивой галерее \"Карусель\"."
+
+#: src/blocks/gallery-carousel/index.js:42
+#: src/blocks/gallery-masonry/index.js:43
+#: src/blocks/gallery-stacked/index.js:42
+msgid "gallery"
+msgstr "галерея"
+
+#: src/blocks/gallery-carousel/index.js:42
+#: src/blocks/gallery-masonry/index.js:43
+#: src/blocks/gallery-stacked/index.js:42
+msgid "photos"
+msgstr "фотографии"
+
+#: src/blocks/gallery-carousel/inspector.js:119
+#: src/blocks/gallery-masonry/inspector.js:127
+#: src/blocks/gallery-stacked/inspector.js:134
+msgid "%s Settings"
+msgstr "Настройки %s"
+
+#: src/blocks/gallery-carousel/inspector.js:124
+#: src/blocks/icon/inspector.js:197
+#: src/components/typography-controls/index.js:189
+msgid "Size"
+msgstr "Размер"
+
+#: src/blocks/gallery-carousel/inspector.js:150
+#: src/blocks/gallery-masonry/inspector.js:137
+#: src/blocks/gallery-stacked/inspector.js:149
+#: src/blocks/share/inspector.js:99
+#: src/blocks/social-profiles/inspector.js:111
+#: src/components/background/panel.js:156
+msgid "Rounded Corners"
+msgstr "Скругленные углы"
+
+#: src/blocks/gallery-carousel/inspector.js:88
+#: src/blocks/gallery-masonry/inspector.js:101
+#: src/blocks/gallery-stacked/inspector.js:104
+msgid "Caption Color"
+msgstr "Цвет подписи"
+
+#: src/blocks/gallery-masonry/index.js:24
+msgid "Masonry"
+msgstr "Кладка"
+
+#: src/blocks/gallery-masonry/index.js:39
+msgid "Display multiple images in an organized masonry gallery."
+msgstr "Отображение нескольких изображений в упорядоченной галерее \"Кладка\"."
+
+#: src/blocks/gallery-masonry/inspector.js:130
+msgid "Column Size"
+msgstr "Ширина столбца"
+
+#: src/blocks/gallery-masonry/inspector.js:138
+msgid "Add rounded corners to the gallery items."
+msgstr "Добавить скругленные углы к элементам галереи"
+
+#: src/blocks/gallery-masonry/inspector.js:146
+#: src/blocks/gallery-stacked/inspector.js:165
+msgid "Captions"
+msgstr "Подписи"
+
+#: src/blocks/gallery-masonry/inspector.js:153
+msgid "Caption Style"
+msgstr "Стиль подписи"
+
+#: src/blocks/gallery-masonry/inspector.js:52
+#: src/blocks/gallery-stacked/inspector.js:55
+msgid "Showing captions for each media item."
+msgstr "Отображение подписей для каждого мультимедийного элемента."
+
+#: src/blocks/gallery-masonry/inspector.js:52
+#: src/blocks/gallery-stacked/inspector.js:55
+msgid "Toggle to show media captions."
+msgstr "Воспользуйтесь переключателем для отображения подписей к мультимедийным элементам."
+
+#: src/blocks/gallery-stacked/index.js:24
+msgid "Stacked"
+msgstr "Стек"
+
+#: src/blocks/gallery-stacked/index.js:38
+msgid "Display multiple images in an single column stacked gallery."
+msgstr "Отображение нескольких изображений в одной колонке галереи \"Стек\"."
+
+#: src/blocks/gallery-stacked/inspector.js:137
+msgid "Fullwidth Images"
+msgstr "Изображения с полной шириной"
+
+#: src/blocks/gallery-stacked/inspector.js:137
+msgid "Fullwidth Image"
+msgstr "Изображения с полной высотой"
+
+#: src/blocks/gallery-stacked/inspector.js:159
+msgid "Box Shadow"
+msgstr "Поле \"Тень\""
+
+#: src/blocks/gallery-stacked/inspector.js:51
+msgid "Fullwidth images are enabled."
+msgstr "Включен режим изображений с полной шириной"
+
+#: src/blocks/gallery-stacked/inspector.js:51
+msgid "Toggle to fill the available gallery area with completely fullwidth images."
+msgstr "Воспользуйтесь переключателем, чтобы заполнить галерею изображениями с полной шириной."
+
+#: src/blocks/gif/controls.js:44
+msgid "Remove gif"
+msgstr "Удалить GIF"
+
+#: src/blocks/gif/edit.js:153
+msgid "This gif has an empty alt attribute"
+msgstr "Этот файл GIF имеет пустой атрибут alt"
+
+#: src/blocks/gif/edit.js:288
+msgid "Search for that perfect gif on Giphy"
+msgstr "Поиск совершенного файла gif в Giphy"
+
+#: src/blocks/gif/edit.js:294
+msgid "Search for gifs"
+msgstr "Поиск файлов GIF"
+
+#: src/blocks/gif/index.js:28
+msgid "Pick a gif, any gif."
+msgstr "Выберите любой файл GIF."
+
+#: src/blocks/gif/index.js:30
+msgid "animated"
+msgstr "анимация"
+
+#: src/blocks/gif/inspector.js:29
+msgid "Gif Settings"
+msgstr "Настройки GIF"
+
+#: src/blocks/gist/controls.js:29
+msgid "Display meta"
+msgstr "Отображаемое имя"
+
+#: src/blocks/gist/controls.js:42
+msgid "Edit Gist"
+msgstr "Редактировать Gist"
+
+#: src/blocks/gist/controls.js:49
+msgid "View Gist"
+msgstr "Просмотреть Gist"
+
+#: src/blocks/gist/controls.js:68
+msgid "GitHub File"
+msgstr "Файл GitHub"
+
+#: src/blocks/gist/controls.js:72
+msgid "File"
+msgstr "Файл"
+
+#: src/blocks/gist/deprecated.js:30
+#: src/blocks/gist/save.js:29
+msgid "View this gist on GitHub"
+msgstr "Просмотреть Gist на GitHub"
+
+#: src/blocks/gist/edit.js:124
+#: src/blocks/gist/inspector.js:51
+msgid "Gist URL"
+msgstr "URL-адрес Gist"
+
+#: src/blocks/gist/edit.js:129
+msgid "Add GitHub Gist URL..."
+msgstr "Добавить URL-адрес GitHub Gist..."
+
+#: src/blocks/gist/gist.js:137
+msgid "Loading Gist"
+msgstr "Загрузка Gist"
+
+#: src/blocks/gist/index.js:29
+msgid "Embed GitHub gists by adding the gist link."
+msgstr "Встроить GitHub Gist путем добавления ссылки Gist."
+
+#: src/blocks/gist/index.js:31
+msgid "code"
+msgstr "код"
+
+#: src/blocks/gist/inspector.js:31
+msgid "Showing gist meta data."
+msgstr "Отображение метаданных Gist."
+
+#: src/blocks/gist/inspector.js:31
+msgid "Toggle to show the gist meta data."
+msgstr "Воспользуйтесь переключателем для отображения метаданных Gist."
+
+#: src/blocks/gist/inspector.js:49
+msgid "Gist Settings"
+msgstr "Настройки Gist"
+
+#: src/blocks/gist/inspector.js:56
+msgid "Gist File"
+msgstr "Файл Gist"
+
+#: src/blocks/gist/inspector.js:61
+msgid "Gist Meta"
+msgstr "Метаданные Gist"
+
+#: src/blocks/hero/controls.js:32
+#: src/blocks/row/controls.js:71
+msgid "Change layout"
+msgstr "Изменить макет"
+
+#: src/blocks/hero/edit.js:157
+#: src/blocks/row/column/edit.js:92
+#: src/blocks/row/edit.js:170
+msgid "Add backround to %s"
+msgstr "Добавить фон для %s"
+
+#: src/blocks/hero/index.js:27
+msgid "Hero"
+msgstr "Герой"
+
+#: src/blocks/hero/index.js:43
+msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
+msgstr "Вводная область страницы с небольшим текстом и призывом к действию."
+
+#: src/blocks/hero/index.js:45
+msgid "button"
+msgstr "кнопка"
+
+#: src/blocks/hero/index.js:45
+msgid "call to action"
+msgstr "призыв к действию"
+
+#: src/blocks/hero/inspector.js:107
+msgid "Content width in pixels"
+msgstr "Ширина содержимого в пикселях"
+
+#: src/blocks/hero/inspector.js:71
+msgid "Hero Settings"
+msgstr "Настройки блока героев"
+
+#: src/blocks/hero/inspector.js:75
+#: src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:104
+#: src/blocks/row/inspector.js:214
+msgid "Space inside of the container."
+msgstr "Пространство в контейнере."
+
+#: src/blocks/hero/layouts.js:12
+#: src/components/background/panel.js:83
+#: src/components/grid-control/index.js:35
+msgid "Top Left"
+msgstr "Вверху слева"
+
+#: src/blocks/hero/layouts.js:13
+#: src/components/background/panel.js:84
+#: src/components/grid-control/index.js:36
+msgid "Top Center"
+msgstr "Вверху по центру"
+
+#: src/blocks/hero/layouts.js:14
+#: src/components/background/panel.js:85
+#: src/components/grid-control/index.js:37
+msgid "Top Right"
+msgstr "Вверху справа"
+
+#: src/blocks/hero/layouts.js:15
+#: src/components/background/panel.js:86
+#: src/components/grid-control/index.js:48
+msgid "Center Left"
+msgstr "Слева по центру"
+
+#: src/blocks/hero/layouts.js:16
+#: src/components/background/panel.js:87
+#: src/components/grid-control/index.js:49
+msgid "Center Center"
+msgstr "Точно в центре"
+
+#: src/blocks/hero/layouts.js:17
+#: src/components/background/panel.js:88
+#: src/components/grid-control/index.js:50
+msgid "Center Right"
+msgstr "Справа по центру"
+
+#: src/blocks/hero/layouts.js:18
+#: src/components/background/panel.js:89
+#: src/components/grid-control/index.js:41
+msgid "Bottom Left"
+msgstr "Внизу слева"
+
+#: src/blocks/hero/layouts.js:19
+#: src/components/background/panel.js:90
+#: src/components/grid-control/index.js:42
+msgid "Bottom Center"
+msgstr "Внизу по центру"
+
+#: src/blocks/hero/layouts.js:20
+#: src/components/background/panel.js:91
+#: src/components/grid-control/index.js:43
+msgid "Bottom Right"
+msgstr "Внизу справа"
+
+#: src/blocks/highlight/edit.js:108
+msgid "Add highlighted text..."
+msgstr "Добавить выделенный текст..."
+
+#: src/blocks/highlight/index.js:22
+msgid "Highlight"
+msgstr "Выделение"
+
+#: src/blocks/highlight/index.js:29
+msgid "Highlight text."
+msgstr "Выделенный текст."
+
+#: src/blocks/highlight/index.js:31
+msgid "text"
+msgstr "текст"
+
+#: src/blocks/highlight/index.js:31
+msgid "paragraph"
+msgstr "абзац"
+
+#: src/blocks/icon/index.js:27
+msgid "Icon"
+msgstr "Значок"
+
+#: src/blocks/icon/index.js:34
+msgid "Add a stylized graphic symbol to communicate something more."
+msgstr "Добавьте стилизованный графический символ, чтобы сообщить дополнительную информацию."
+
+#: src/blocks/icon/index.js:36
+#: src/blocks/social-profiles/index.js:23
+msgid "icons"
+msgstr "значки"
+
+#: src/blocks/icon/inspector.js:168
+#: src/blocks/row/inspector.js:102
+#: src/components/dimensions-control/dimensions-select.js:30
+msgid "Huge"
+msgstr "Огромные"
+
+#: src/blocks/icon/inspector.js:179
+#: src/blocks/share/inspector.js:90
+#: src/blocks/social-profiles/inspector.js:102
+msgid "Icon Settings"
+msgstr "Настройки значков"
+
+#: src/blocks/icon/inspector.js:192
+#: src/components/dimensions-control/index.js:484
+msgid "Turn off advanced %s settings"
+msgstr "Отключить расширенные настройки %s"
+
+#: src/blocks/icon/inspector.js:194
+#: src/components/dimensions-control/index.js:486
+#: src/components/size-control/index.js:198
+msgid "Reset"
+msgstr "Сброс"
+
+#: src/blocks/icon/inspector.js:221
+msgid "Custom %s size"
+msgstr "Пользовательский размер %s"
+
+#: src/blocks/icon/inspector.js:249
+#: src/components/dimensions-control/index.js:725
+msgid "Advanced %s settings"
+msgstr "Дополнительные настройки %s"
+
+#: src/blocks/icon/inspector.js:252
+#: src/components/dimensions-control/index.js:728
+msgid "Advanced"
+msgstr "Дополнительно"
+
+#: src/blocks/icon/inspector.js:260
+msgid "Radius"
+msgstr "Радиус"
+
+#: src/blocks/icon/inspector.js:280
+msgid "Icon Search"
+msgstr "Поиск значка"
+
+#: src/blocks/icon/inspector.js:329
+msgid "No results found."
+msgstr "Результаты не найдены."
+
+#: src/blocks/icon/inspector.js:335
+#: src/components/block-gallery/gallery-link-settings.js:63
+msgid "Link Settings"
+msgstr "Настройки ссылки"
+
+#: src/blocks/icon/inspector.js:338
+msgid "Link URL"
+msgstr "URL-адрес ссылки"
+
+#: src/blocks/icon/inspector.js:343
+#: src/components/block-gallery/gallery-link-settings.js:80
+msgid "Link Rel"
+msgstr "Связь ссылки"
+
+#: src/blocks/icon/inspector.js:348
+msgid "Opening in New Tab"
+msgstr "Открытие в новой вкладке"
+
+#: src/blocks/icon/inspector.js:348
+#: src/components/block-gallery/gallery-link-settings.js:75
+msgid "Open in New Tab"
+msgstr "Открыть в новой вкладке"
+
+#: src/blocks/icon/inspector.js:360
+msgid "Icon Color"
+msgstr "Цвет значка"
+
+#: src/blocks/logos/controls.js:51
+msgid "Edit logos"
+msgstr "Изменить логотипы"
+
+#: src/blocks/logos/edit.js:69
+#: src/blocks/logos/index.js:28
+msgid "Logos & Badges"
+msgstr "Логотипы и эмблемы"
+
+#: src/blocks/logos/edit.js:70
+#: src/components/block-gallery/gallery-placeholder.js:71
+msgid "Drag images, upload new ones or select files from your library."
+msgstr "Перетащите изображения, загрузите новые фотографии или выберите файлы из своей библиотеки."
+
+#: src/blocks/logos/index.js:29
+msgid "Add logos, badges, or certifications to build credibility."
+msgstr "Добавьте логотипы, эмблемы или сертификаты, чтобы улучшить свою репутацию"
+
+#: src/blocks/logos/index.js:30
+msgid "clients"
+msgstr "клиенты"
+
+#: src/blocks/logos/index.js:30
+msgid "proof"
+msgstr "подтверждение"
+
+#: src/blocks/logos/index.js:30
+msgid "testimonials"
+msgstr "рекомендации"
+
+#: src/blocks/logos/inspector.js:12
+msgid "Logos Settings"
+msgstr "Настройки логотипов"
+
+#: src/blocks/logos/inspector.js:15
+msgid "Black & White"
+msgstr "Черно-белое изображение"
+
+#: src/blocks/logos/inspector.js:16
+msgid "Toggle to add a black and white filter."
+msgstr "Воспользуйтесь переключателем, чтобы добавить фильтр черно-белого изображения."
+
+#: src/blocks/map/controls.js:30
+msgid "Edit Location"
+msgstr "Изменить местоположение"
+
+#: src/blocks/map/controls.js:42
+msgid "Map style"
+msgstr "Стиль карты"
+
+#: src/blocks/map/edit.js:188
+msgid "Invalid API key, or too many requests"
+msgstr "Недействительный ключ API или слишком много запросов"
+
+#: src/blocks/map/edit.js:295
+#: src/blocks/map/save.js:48
+msgid "Google Map"
+msgstr "Карта Google"
+
+#: src/blocks/map/edit.js:296
+msgid "Enter a location or address to drop a pin on a Google map."
+msgstr "Введите местоположение или адрес, чтобы добавить метку на карту Google."
+
+#: src/blocks/map/edit.js:303
+msgid "Search for a place or address…"
+msgstr "Поиск местоположения или адреса..."
+
+#: src/blocks/map/edit.js:308
+#: src/components/block-gallery/gallery-image.js:221
+msgid "Apply"
+msgstr "Применить"
+
+#: src/blocks/map/index.js:24
+msgid "Map"
+msgstr "Карта"
+
+#: src/blocks/map/index.js:29
+msgid "Add an address and drop a pin on a Google map."
+msgstr "Добавьте местоположение, чтобы поместить метку на карту Google."
+
+#: src/blocks/map/index.js:31
+msgid "address"
+msgstr "адрес"
+
+#: src/blocks/map/index.js:31
+msgid "maps"
+msgstr "карты"
+
+#: src/blocks/map/index.js:31
+msgid "google"
+msgstr "Google"
+
+#: src/blocks/map/inspector.js:100
+msgid "Select Map Style"
+msgstr "Выберите стиль карты"
+
+#: src/blocks/map/inspector.js:121
+msgid "Map Settings"
+msgstr "Настройки карты"
+
+#: src/blocks/map/inspector.js:124
+msgid "Zoom Level"
+msgstr "Уровень масштабирования"
+
+#: src/blocks/map/inspector.js:134
+msgid "Height for the map in pixels"
+msgstr "Высота карты в пикселях"
+
+#: src/blocks/map/inspector.js:145
+msgid "Marker Size"
+msgstr "Размер маркера"
+
+#: src/blocks/map/inspector.js:160
+msgid "Fine control options are enabled."
+msgstr "Опции точного управления включены"
+
+#: src/blocks/map/inspector.js:160
+msgid "Toggle to enable map control options."
+msgstr "Воспользуйтесь переключателем, чтобы включить опции управления картой."
+
+#: src/blocks/map/inspector.js:168
+msgid "Map Controls"
+msgstr "Опции управления картой"
+
+#: src/blocks/map/inspector.js:172
+msgid "Map Type"
+msgstr "Тип карты"
+
+#: src/blocks/map/inspector.js:175
+msgid "Switching between standard and satellite map views is enabled."
+msgstr "Переключатель стандартного и спутникового видов карты активирован."
+
+#: src/blocks/map/inspector.js:175
+msgid "Toggle to enable switching between standard and satellite maps."
+msgstr "Воспользуйтесь переключателем, чтобы выбрать стандартный или спутниковый вид карты."
+
+#: src/blocks/map/inspector.js:178
+msgid "Zoom Controls"
+msgstr "Управление масштабированием"
+
+#: src/blocks/map/inspector.js:181
+msgid "Showing map zoom controls."
+msgstr "Отображение элементов управления масштабированием карты"
+
+#: src/blocks/map/inspector.js:181
+msgid "Toggle to enable zooming in and out on the map with zoom controls."
+msgstr "Воспользуйтесь переключателем, чтобы активировать элементы управления масштабированием карты."
+
+#: src/blocks/map/inspector.js:184
+msgid "Street View"
+msgstr "Просмотр улиц"
+
+#: src/blocks/map/inspector.js:187
+msgid "Showing the street view map control."
+msgstr "Отображение элемента управления просмотром улиц на карте."
+
+#: src/blocks/map/inspector.js:187
+msgid "Toggle to show the street view control at the bottom right."
+msgstr "Воспользуйтесь переключателем, чтобы отобразить элемент управления просмотром улиц внизу справа."
+
+#: src/blocks/map/inspector.js:190
+msgid "Fullscreen Toggle"
+msgstr "Переключатель полного экрана"
+
+#: src/blocks/map/inspector.js:193
+msgid "Showing the fullscreen map control."
+msgstr "Отображение переключателя полноэкранного режима карты."
+
+#: src/blocks/map/inspector.js:193
+msgid "Toggle to show the fullscreen map control."
+msgstr "Воспользуйтесь переключателем, чтобы отобразить элемент управления полноэкранным режимом карты."
+
+#: src/blocks/map/inspector.js:198
+msgid "Google Maps API Key"
+msgstr "Ключ API Карт Google"
+
+#: src/blocks/map/inspector.js:202
+msgid "Add your Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgstr "Добавьте свой ключ API Карт Google. После обновления этого ключа API для всех ваших карт будет использоваться новый ключ."
+
+#: src/blocks/map/inspector.js:205
+msgid "Retrieve your key"
+msgstr "Получить ключ"
+
+#: src/blocks/map/inspector.js:206
+msgid "Need help?"
+msgstr "Нужна помощь?"
+
+#: src/blocks/map/inspector.js:212
+msgid "Enter Google API Key…"
+msgstr "Введите ключ API Google…"
+
+#: src/blocks/map/inspector.js:221
+msgid "Saved"
+msgstr "Сохранено"
+
+#: src/blocks/map/styles.js:12
+msgid "Standard"
+msgstr "Стандарт"
+
+#: src/blocks/map/styles.js:16
+msgid "Silver"
+msgstr "Серебристый"
+
+#: src/blocks/map/styles.js:20
+msgid "Retro"
+msgstr "Ретро"
+
+#: src/blocks/map/styles.js:24
+#: src/components/block-gallery/options/caption-options.js:10
+msgid "Dark"
+msgstr "Темный"
+
+#: src/blocks/map/styles.js:28
+msgid "Night"
+msgstr "Ночь"
+
+#: src/blocks/map/styles.js:32
+msgid "Aubergine"
+msgstr "Баклажан"
+
+#: src/blocks/media-card/controls.js:28
+msgid "Media on right"
+msgstr "Мультимедийный элемент справа"
+
+#: src/blocks/media-card/controls.js:33
+msgid "Media on left"
+msgstr "Мультимедийный элемент слева"
+
+#: src/blocks/media-card/index.js:26
+msgid "Media Card"
+msgstr "Медиакарта"
+
+#: src/blocks/media-card/index.js:37
+msgid "Add an image or video with an offset card side-by-side."
+msgstr "Добавьте изображение или видео рядом с картой."
+
+#: src/blocks/media-card/index.js:39
+msgid "image"
+msgstr "изображение"
+
+#: src/blocks/media-card/index.js:39
+msgid "video"
+msgstr "видео"
+
+#: src/blocks/media-card/inspector.js:109
+msgid "Card Shadow"
+msgstr "Тень карты"
+
+#: src/blocks/media-card/inspector.js:112
+msgid "Showing card shadow."
+msgstr "Отображение тени карты."
+
+#: src/blocks/media-card/inspector.js:112
+msgid "Toggle to add a card shadow."
+msgstr "Воспользуйтесь переключателем, чтобы добавить тень карты."
+
+#: src/blocks/media-card/inspector.js:116
+msgid " %s Shadow"
+msgstr " Тень %s"
+
+#: src/blocks/media-card/inspector.js:119
+msgid "Showing %s shadow."
+msgstr "Отображение тени %s"
+
+#: src/blocks/media-card/inspector.js:119
+msgid "Toggle to add an %s shadow"
+msgstr "Воспользуйтесь переключателем, чтобы добавить тень %s"
+
+#: src/blocks/media-card/inspector.js:59
+msgid "Media Card Settings"
+msgstr "Настройки медиакарты"
+
+#: src/blocks/media-card/inspector.js:84
+msgid "Max Width"
+msgstr "Макс. ширина"
+
+#: src/blocks/media-card/media-container.js:100
+msgid "Media"
+msgstr "Мультимедийный элемент"
+
+#: src/blocks/media-card/media-container.js:120
+msgid "Drop to replace media"
+msgstr "Перетащите для замены мультимедийного элемента"
+
+#: src/blocks/media-card/media-container.js:37
+msgid "Edit media"
+msgstr "Изменить мультимедийный элемент"
+
+# %s: number of tables
+#: src/blocks/pricing-table/controls.js:38
+msgid "%s Tables"
+msgstr "Таблицы %s"
+
+#: src/blocks/pricing-table/edit.js:39
+msgid "Plan %s"
+msgstr "План %s"
+
+#: src/blocks/pricing-table/index.js:22
+msgid "Pricing Table"
+msgstr "Таблица цен"
+
+#: src/blocks/pricing-table/index.js:29
+msgid "Add pricing tables."
+msgstr "Добавьте таблицы цен."
+
+#: src/blocks/pricing-table/index.js:31
+#: src/blocks/pricing-table/pricing-table-item/index.js:31
+msgid "landing"
+msgstr "целевая страница"
+
+#: src/blocks/pricing-table/index.js:31
+#: src/blocks/pricing-table/pricing-table-item/index.js:31
+msgid "comparison"
+msgstr "сравнение"
+
+#: src/blocks/pricing-table/inspector.js:26
+msgid "Pricing Table Settings"
+msgstr "Настройки таблиц цен"
+
+#: src/blocks/pricing-table/inspector.js:28
+msgid "Tables"
+msgstr "Таблицы"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:112
+msgid "Add features"
+msgstr "Добавить функции"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:30
+msgid "Buy Now"
+msgstr "Купить"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:82
+msgid "Plan A"
+msgstr "План A"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:92
+msgid "$"
+msgstr "$"
+
+#: src/blocks/pricing-table/pricing-table-item/index.js:22
+msgid "Pricing Table Item"
+msgstr "Элемент таблицы цен"
+
+#: src/blocks/pricing-table/pricing-table-item/index.js:29
+msgid "A column placed within the pricing table block."
+msgstr "Столбец в блоке таблиц цен"
+
+#: src/blocks/row/column/index.js:22
+msgid "Column"
+msgstr "Столбец"
+
+#: src/blocks/row/column/index.js:36
+msgid "An immediate child of a row."
+msgstr "Непосредственный дочерний элемент строки."
+
+#: src/blocks/row/column/inspector.js:115
+msgid "Width"
+msgstr "Ширина"
+
+#: src/blocks/row/column/inspector.js:88
+msgid "Column Settings"
+msgstr "Настройки столбца"
+
+#: src/blocks/row/column/inspector.js:92
+#: src/blocks/row/inspector.js:191
+msgid "Space around the container."
+msgstr "Пространство вокруг контейнера."
+
+#: src/blocks/row/edit.js:122
+msgid "one"
+msgstr "один"
+
+#: src/blocks/row/edit.js:124
+msgid "two"
+msgstr "два"
+
+#: src/blocks/row/edit.js:126
+msgid "three"
+msgstr "три"
+
+#: src/blocks/row/edit.js:128
+msgid "four"
+msgstr "четыре"
+
+#: src/blocks/row/edit.js:175
+msgid "One Column"
+msgstr "Один столбец"
+
+#: src/blocks/row/edit.js:176
+msgid "Two Columns"
+msgstr "Два столбца"
+
+#: src/blocks/row/edit.js:177
+msgid "Three Columns"
+msgstr "Три столбца"
+
+#: src/blocks/row/edit.js:178
+msgid "Four Columns"
+msgstr "Четыре столбца"
+
+#: src/blocks/row/edit.js:203
+msgid "Row Layout"
+msgstr "Макет строки"
+
+#: src/blocks/row/edit.js:203
+#: src/blocks/row/index.js:26
+msgid "Row"
+msgstr "Строка"
+
+#: src/blocks/row/edit.js:204
+msgid "Now select a layout for this %s column row."
+msgstr "Теперь выберите макет для этой строки столбца %s."
+
+#: src/blocks/row/edit.js:204
+msgid "Select the number of columns for this row."
+msgstr "Выберите количество столбцов для этой строки."
+
+#: src/blocks/row/edit.js:208
+msgid "Select Row Columns"
+msgstr "Выберите столбцы строки"
+
+#: src/blocks/row/edit.js:233
+#: src/blocks/row/inspector.js:154
+msgid "Select Row Layout"
+msgstr "Выберите макет строки"
+
+#: src/blocks/row/edit.js:243
+msgid "Back to Columns"
+msgstr "Вернуться к столбцам"
+
+#: src/blocks/row/index.js:40
+msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
+msgstr "Добавьте структурированную оболочку для блоков столбцов, а затем добавьте блоки контента в столбцы."
+
+#: src/blocks/row/index.js:42
+msgid "rows"
+msgstr "строки"
+
+#: src/blocks/row/index.js:42
+msgid "columns"
+msgstr "столбцы"
+
+#: src/blocks/row/index.js:42
+msgid "layouts"
+msgstr "макеты"
+
+#: src/blocks/row/inspector.js:117
+#: src/components/grid-control/index.js:122
+msgid "Layout"
+msgstr "Макет"
+
+#: src/blocks/row/inspector.js:186
+msgid "Row Settings"
+msgstr "Настройки строки"
+
+#: src/blocks/row/inspector.js:98
+#: src/components/block-gallery/options/caption-options.js:12
+#: src/components/block-gallery/options/link-options.js:10
+#: src/components/dimensions-control/dimensions-select.js:10
+#: src/extensions/list-styles/index.js:21
+msgid "None"
+msgstr "Нет"
+
+#: src/blocks/services/edit.js:44
+msgid "Square"
+msgstr "Квадрат"
+
+#: src/blocks/services/edit.js:49
+msgid "Circle"
+msgstr "Круг"
+
+#: src/blocks/services/index.js:28
+msgid "Services"
+msgstr "Услуги"
+
+#: src/blocks/services/index.js:29
+msgid "Add up to four columns of services to display."
+msgstr "Добавьте до четырех столбцов для отображения услуг"
+
+#: src/blocks/services/index.js:30
+msgid "features"
+msgstr "функции"
+
+#: src/blocks/services/inspector.js:67
+msgid "Services Settings"
+msgstr "Настройки раздела услуг"
+
+#: src/blocks/services/inspector.js:75
+msgid "Heading Level"
+msgstr "Уровень заголовка"
+
+#: src/blocks/services/inspector.js:83
+msgid "Action Buttons"
+msgstr "Кнопки действий"
+
+#: src/blocks/services/inspector.js:87
+msgid "Showing the call to action buttons."
+msgstr "Отображение кнопок призыва к действию."
+
+#: src/blocks/services/inspector.js:88
+msgid "Toggle to show call to action buttons."
+msgstr "Воспользуйтесь переключателем, чтобы отобразить кнопки призыва к действию."
+
+#: src/blocks/services/service/index.js:28
+msgid "Service"
+msgstr "Услуга"
+
+#: src/blocks/services/service/index.js:29
+msgid "A single service item within a services block."
+msgstr "Один элемент в блоке услуг."
+
+#: src/blocks/services/service/inspector.js:18
+msgid "Service Settings"
+msgstr "Настройки услуги"
+
+#: src/blocks/services/service/inspector.js:20
+msgid "Action Button"
+msgstr "Кнопка действия"
+
+#: src/blocks/services/service/inspector.js:23
+msgid "Showing the call to action button."
+msgstr "Отображение кнопки призыва к действию."
+
+#: src/blocks/services/service/inspector.js:24
+msgid "Toggle to show a call to action button."
+msgstr "Воспользуйтесь переключателем, чтобы отобразить кнопку призыва к действию."
+
+#: src/blocks/shape-divider/controls.js:28
+#: src/components/orientation/index.js:59
+msgid "Flip horiztonally"
+msgstr "Повернуть по горизонтали"
+
+#: src/blocks/shape-divider/controls.js:33
+#: src/components/orientation/index.js:48
+msgid "Flip vertically"
+msgstr "Повернуть по вертикали"
+
+#: src/blocks/shape-divider/index.js:23
+msgid "Shape Divider"
+msgstr "Разделитель форм"
+
+#: src/blocks/shape-divider/index.js:30
+msgid "Add a shape divider to visually distinquish page sections."
+msgstr "Добавьте разделитель форм, чтобы визуально различать разделы страницы."
+
+#: src/blocks/shape-divider/index.js:32
+msgid "separator"
+msgstr "разделитель"
+
+#: src/blocks/shape-divider/inspector.js:108
+msgid "Shape Color"
+msgstr "Цвет формы"
+
+#: src/blocks/shape-divider/inspector.js:56
+msgid "Divider Settings"
+msgstr "Настройки разделителя"
+
+#: src/blocks/shape-divider/inspector.js:58
+msgid "Shape Height in pixels"
+msgstr "Высота формы в пикселях"
+
+#: src/blocks/shape-divider/inspector.js:76
+msgid "Background Height in pixels"
+msgstr "Высота фона в пикселях"
+
+#: src/blocks/shape-divider/inspector.js:94
+msgid "Orientation"
+msgstr "Ориентация"
+
+#: src/blocks/share/edit.js:102
+#: src/blocks/share/index.php:133
+msgid "Share on Twitter"
+msgstr "Опубликовать в Twitter"
+
+#: src/blocks/share/edit.js:110
+#: src/blocks/share/index.php:137
+msgid "Share on Facebook"
+msgstr "Опубликовать в Facebook"
+
+#: src/blocks/share/edit.js:118
+#: src/blocks/share/index.php:141
+msgid "Share on Pinterest"
+msgstr "Опубликовать в Pinterest"
+
+#: src/blocks/share/edit.js:126
+msgid "Share on LinkedIn"
+msgstr "Опубликовать в LinkedIn"
+
+#: src/blocks/share/edit.js:134
+#: src/blocks/share/index.php:149
+msgid "Share via Email"
+msgstr "Поделиться по электронной почте"
+
+#: src/blocks/share/edit.js:142
+#: src/blocks/share/index.php:153
+msgid "Share on Tumblr"
+msgstr "Опубликовать в Tumblr"
+
+#: src/blocks/share/edit.js:150
+#: src/blocks/share/index.php:157
+msgid "Share on Google"
+msgstr "Опубликовать в Google"
+
+#: src/blocks/share/edit.js:158
+#: src/blocks/share/index.php:161
+msgid "Share on Reddit"
+msgstr "Опубликовать в Reddit"
+
+#: src/blocks/share/index.js:19
+msgid "Share"
+msgstr "Поделиться"
+
+#: src/blocks/share/index.js:23
+msgid "social"
+msgstr "соцсети"
+
+#: src/blocks/share/index.js:28
+msgid "Add social sharing links to help you get likes and shares."
+msgstr "Добавьте ссылки социальных сетей, чтобы получать лайки и публикации."
+
+#: src/blocks/share/inspector.js:108
+#: src/blocks/social-profiles/inspector.js:120
+msgid "Icon Size"
+msgstr "Размер значка"
+
+#: src/blocks/share/inspector.js:117
+#: src/blocks/social-profiles/inspector.js:129
+msgid "Circle Size"
+msgstr "Размер круга"
+
+#: src/blocks/share/inspector.js:126
+#: src/blocks/social-profiles/inspector.js:138
+msgid "Button Size"
+msgstr "Размер кнопки"
+
+#: src/blocks/share/inspector.js:134
+msgid "Icons"
+msgstr "Значки"
+
+#: src/blocks/share/inspector.js:136
+#: src/blocks/social-profiles/edit.js:196
+#: src/blocks/social-profiles/index.php:72
+msgid "Twitter"
+msgstr "Twitter"
+
+#: src/blocks/share/inspector.js:141
+#: src/blocks/social-profiles/edit.js:150
+#: src/blocks/social-profiles/index.php:68
+msgid "Facebook"
+msgstr "Facebook"
+
+#: src/blocks/share/inspector.js:146
+#: src/blocks/social-profiles/edit.js:290
+#: src/blocks/social-profiles/index.php:80
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: src/blocks/share/inspector.js:151
+#: src/blocks/social-profiles/edit.js:338
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: src/blocks/share/inspector.js:161
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: src/blocks/share/inspector.js:166
+msgid "Google"
+msgstr "Google"
+
+#: src/blocks/share/inspector.js:171
+msgid "Reddit"
+msgstr "Reddit"
+
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:36
+msgid "Share button colors are enabled."
+msgstr "Цвета кнопки \"Поделиться\" активированы."
+
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:37
+msgid "Toggle to use official colors from each social media platform."
+msgstr "Воспользуйтесь переключателем, чтобы использовать стандартные цвета каждой социальной платформы."
+
+#: src/blocks/share/inspector.js:92
+#: src/blocks/social-profiles/inspector.js:104
+msgid "Social Colors"
+msgstr "Цвета соцсетей"
+
+#: src/blocks/social-profiles/edit.js:133
+msgid "Add Facebook Profile"
+msgstr "Добавить профиль Facebook"
+
+#: src/blocks/social-profiles/edit.js:165
+msgid "https://facebook.com/"
+msgstr "https://facebook.com/"
+
+#: src/blocks/social-profiles/edit.js:179
+msgid "Add Twitter Profile"
+msgstr "Добавить профиль Twitter"
+
+#: src/blocks/social-profiles/edit.js:211
+msgid "https://twitter.com/"
+msgstr "https://twitter.com/"
+
+#: src/blocks/social-profiles/edit.js:225
+msgid "Add Instagram Profile"
+msgstr "Добавить профиль Instagram"
+
+#: src/blocks/social-profiles/edit.js:242
+#: src/blocks/social-profiles/index.php:76
+msgid "Instagram"
+msgstr "Instagram"
+
+#: src/blocks/social-profiles/edit.js:257
+msgid "https://instagram.com/"
+msgstr "https://instagram.com/"
+
+#: src/blocks/social-profiles/edit.js:273
+msgid "Add Pinterest Profile"
+msgstr "Добавить профиль Pinterest"
+
+#: src/blocks/social-profiles/edit.js:305
+msgid "https://pinterest.com/"
+msgstr "https://pinterest.com/"
+
+#: src/blocks/social-profiles/edit.js:321
+msgid "Add LinkedIn Profile"
+msgstr "Добавить профиль LinkedIn"
+
+#: src/blocks/social-profiles/edit.js:353
+msgid "https://linkedin.com/"
+msgstr "https://linkedin.com/"
+
+#: src/blocks/social-profiles/edit.js:367
+msgid "Add YouTube Profile"
+msgstr "Добавить профиль YouTube"
+
+#: src/blocks/social-profiles/edit.js:384
+#: src/blocks/social-profiles/index.php:89
+msgid "YouTube"
+msgstr "YouTube"
+
+#: src/blocks/social-profiles/edit.js:399
+msgid "https://youtube.com/"
+msgstr "https://youtube.com/"
+
+#: src/blocks/social-profiles/edit.js:413
+msgid "Add Yelp Profile"
+msgstr "Добавить профиль Yelp"
+
+#: src/blocks/social-profiles/edit.js:430
+#: src/blocks/social-profiles/index.php:93
+msgid "Yelp"
+msgstr "Yelp"
+
+#: src/blocks/social-profiles/edit.js:445
+msgid "https://yelp.com/"
+msgstr "https://yelp.com/"
+
+#: src/blocks/social-profiles/edit.js:459
+msgid "Add Houzz Profile"
+msgstr "Добавить профиль Houzz"
+
+#: src/blocks/social-profiles/edit.js:476
+#: src/blocks/social-profiles/index.php:97
+msgid "Houzz"
+msgstr "Houzz"
+
+#: src/blocks/social-profiles/edit.js:491
+msgid "https://houzz.com/"
+msgstr "https://houzz.com/"
+
+#: src/blocks/social-profiles/index.js:19
+msgid "Social Profiles"
+msgstr "Профили в социальных сетях"
+
+#: src/blocks/social-profiles/index.js:23
+msgid "links"
+msgstr "ссылки"
+
+#: src/blocks/social-profiles/index.js:28
+msgid "Display links to social media profiles."
+msgstr "Отображение ссылок на профили в социальных сетях."
+
+#: src/blocks/social-profiles/inspector.js:146
+msgid "Profile Links"
+msgstr "Ссылки на профили"
+
+#: src/components/background/controls.js:53
+msgid "Edit Background"
+msgstr "Изменить фон"
+
+#: src/components/background/controls.js:72
+msgid "Remove Background"
+msgstr "Удалить фон"
+
+#: src/components/background/controls.js:96
+msgid "Background"
+msgstr "Фон"
+
+#: src/components/background/panel.js:102
+msgid "Auto"
+msgstr "Автоматически"
+
+#: src/components/background/panel.js:103
+msgid "Cover"
+msgstr "Обложка"
+
+#: src/components/background/panel.js:104
+msgid "Contain"
+msgstr "Содержит"
+
+#: src/components/background/panel.js:113
+msgid "Background Settings"
+msgstr "Настройки фона"
+
+#: src/components/background/panel.js:119
+msgid "Fixed Background"
+msgstr "Фиксированный фон"
+
+#: src/components/background/panel.js:135
+msgid "Background Opacity"
+msgstr "Прозрачность фона"
+
+#: src/components/background/panel.js:168
+msgid "Repeat"
+msgstr "Повтор"
+
+#: src/components/background/panel.js:177
+msgid "Position"
+msgstr "Положение"
+
+#: src/components/background/panel.js:185
+msgid "Display"
+msgstr "Отображение"
+
+#: src/components/background/panel.js:193
+msgid "Mute Video"
+msgstr "Отключить звук видео"
+
+#: src/components/background/panel.js:194
+msgid "Muting the background video."
+msgstr "Код фонового видео"
+
+#: src/components/background/panel.js:194
+msgid "Toggle to mute the video."
+msgstr "Воспользуйтесь переключателем, чтобы отключить звук видео"
+
+#: src/components/background/panel.js:201
+msgid "Loop Video"
+msgstr "Повтор видео"
+
+#: src/components/background/panel.js:202
+msgid "Looping the background video."
+msgstr "Циклический повтор фонового видео."
+
+#: src/components/background/panel.js:202
+msgid "Toggle to loop the video."
+msgstr "Воспользуйтесь переключателем, чтобы зациклить видео"
+
+#: src/components/background/panel.js:211
+msgid "Remove background"
+msgstr "Удалить фон"
+
+#: src/components/background/panel.js:232
+msgid "Remove "
+msgstr "Удалить "
+
+#: src/components/background/panel.js:95
+msgid "No Repeat"
+msgstr "Без повтора"
+
+#: src/components/background/panel.js:97
+msgid "Repeat Horizontally"
+msgstr "Повтор по горизонтали"
+
+#: src/components/background/panel.js:98
+msgid "Repeat Vertically"
+msgstr "Повтор по вертикали"
+
+#: src/components/block-gallery/gallery-image.js:189
+msgid "Move Image Backward"
+msgstr "Переместить изображение назад"
+
+#: src/components/block-gallery/gallery-image.js:197
+msgid "Move Image Forward"
+msgstr "Переместить изображение вперед"
+
+#: src/components/block-gallery/gallery-link-settings.js:67
+msgid "Link To"
+msgstr "Ссылка на"
+
+#: src/components/block-gallery/gallery-placeholder.js:70
+msgid "%s Gallery"
+msgstr "Галерея %s"
+
+#: src/components/block-gallery/gallery-uploader.js:53
+msgid "Upload an image"
+msgstr "Загрузить изображение"
+
+#: src/components/block-gallery/options/caption-options.js:11
+msgid "Light"
+msgstr "Свет"
+
+#: src/components/block-gallery/options/link-options.js:11
+msgid "Media File"
+msgstr "Медиафайл"
+
+#: src/components/block-gallery/options/link-options.js:12
+msgid "Attachment Page"
+msgstr "Страница приложений"
+
+#: src/components/block-gallery/options/link-options.js:13
+msgid "Custom URL"
+msgstr "Пользовательский URL"
+
+#: src/components/dimensions-control/index.js:408
+msgid "Pixel"
+msgstr "Пиксели"
+
+#: src/components/dimensions-control/index.js:412
+msgid "Em"
+msgstr "\"Эм\" (ширина самой широкой буквы данного шрифта)"
+
+#: src/components/dimensions-control/index.js:416
+msgid "Percentage"
+msgstr "Проценты"
+
+#: src/components/dimensions-control/index.js:461
+msgid "Select Units"
+msgstr "Выбрать единицы"
+
+#: src/components/dimensions-control/index.js:470
+msgid "%s Units"
+msgstr "Единицы: %s"
+
+#: src/components/dimensions-control/index.js:647
+msgid "%s Top"
+msgstr "Верх %s"
+
+#: src/components/dimensions-control/index.js:657
+msgid "%s Right"
+msgstr "Справа %s"
+
+#: src/components/dimensions-control/index.js:667
+msgid "%s Bottom"
+msgstr "Снизу %s"
+
+#: src/components/dimensions-control/index.js:677
+msgid "%s Left"
+msgstr "Слева %s"
+
+#: src/components/dimensions-control/index.js:683
+msgid "Unsync"
+msgstr "Отменить синхронизацию"
+
+#: src/components/dimensions-control/index.js:683
+msgid "Sync"
+msgstr "Синхронизация"
+
+#: src/components/dimensions-control/index.js:686
+msgid "Sync Units"
+msgstr "Синхронизация единиц"
+
+#: src/components/dimensions-control/index.js:703
+msgid "Top"
+msgstr "Верх"
+
+#: src/components/dimensions-control/index.js:704
+msgid "Right"
+msgstr "Справа"
+
+#: src/components/dimensions-control/index.js:705
+msgid "Bottom"
+msgstr "Снизу"
+
+#: src/components/dimensions-control/index.js:706
+msgid "Left"
+msgstr "Слева"
+
+#: src/components/grid-control/index.js:123
+msgid "Select Layout"
+msgstr "Выберите макет"
+
+#: src/components/grid-control/index.js:161
+msgid "Fullscreen"
+msgstr "Полноэкранный"
+
+#: src/components/grid-control/index.js:179
+msgid "Fullscreen mode is enabled."
+msgstr "Полноэкранный режим включен."
+
+#: src/components/grid-control/index.js:179
+msgid "Toggle to enable fullscreen mode."
+msgstr "Воспользуйтесь переключателем, чтобы включить полноэкранный режим."
+
+# %s: heading level e.g: "1", "2", "3"
+#: src/components/heading-toolbar/index.js:18
+msgid "Heading %d"
+msgstr "Заголовок %d"
+
+#: src/components/inline-color-picker/index.js:30
+msgid "Custom color picker"
+msgstr "Пользовательская палитра"
+
+#: src/components/media-filter-control/index.js:32
+msgid "Original"
+msgstr "Оригинал"
+
+#: src/components/media-filter-control/index.js:40
+msgid "Grayscale"
+msgstr "Оттенки серого"
+
+#: src/components/media-filter-control/index.js:48
+msgid "Sepia"
+msgstr "Сепия"
+
+#: src/components/media-filter-control/index.js:56
+msgid "Saturation"
+msgstr "Насыщенность"
+
+#: src/components/media-filter-control/index.js:64
+msgid "Dim"
+msgstr "Тускло"
+
+#: src/components/media-filter-control/index.js:72
+msgid "Vintage"
+msgstr "Винтаж"
+
+#: src/components/media-filter-control/index.js:84
+msgid "Apply filter"
+msgstr "Применить фильтр"
+
+#: src/components/orientation/index.js:47
+msgid "Select Orientation"
+msgstr "Выберите ориентацию"
+
+#: src/components/responsive-base-control/index.js:68
+msgid "Height"
+msgstr "Высота"
+
+# Control name
+#: src/components/responsive-tabs-control/index.js:65
+msgid "Mobile %s"
+msgstr "Мобильный %s"
+
+#: src/components/size-control/index.js:180
+msgid "Select Size"
+msgstr "Выберите размер"
+
+#: src/components/size-control/index.js:69
+msgid "Extra Large"
+msgstr "Очень крупный"
+
+#: src/components/slider-panel/autoplay-options.js:10
+msgid "One Second"
+msgstr "1 сек."
+
+#: src/components/slider-panel/autoplay-options.js:11
+msgid "Two Seconds"
+msgstr "2 сек."
+
+#: src/components/slider-panel/autoplay-options.js:12
+msgid "Three Seconds"
+msgstr "3 сек."
+
+#: src/components/slider-panel/autoplay-options.js:13
+msgid "Four Seconds"
+msgstr "4 сек."
+
+#: src/components/slider-panel/autoplay-options.js:14
+msgid "Five Seconds"
+msgstr "5 сек."
+
+#: src/components/slider-panel/autoplay-options.js:15
+msgid "Six Second"
+msgstr "6 сек."
+
+#: src/components/slider-panel/autoplay-options.js:16
+msgid "Seven Seconds"
+msgstr "7 сек."
+
+#: src/components/slider-panel/autoplay-options.js:17
+msgid "Eight Seconds"
+msgstr "8 сек."
+
+#: src/components/slider-panel/autoplay-options.js:18
+msgid "Nine Seconds"
+msgstr "9 сек."
+
+#: src/components/slider-panel/autoplay-options.js:19
+msgid "Ten Seconds"
+msgstr "10 сек."
+
+#: src/components/slider-panel/index.js:24
+msgid "seconds"
+msgstr "сек."
+
+#: src/components/slider-panel/index.js:24
+msgid "second"
+msgstr "сек."
+
+# 1. Speed of the slider, 2: Time until the slide advances
+#: src/components/slider-panel/index.js:27
+msgid "Advancing after %1$d %2$s."
+msgstr "Переход через %1$d %2$s."
+
+# 1. Speed of the slider, 2: Time until the slide advances
+#: src/components/slider-panel/index.js:27
+msgid "Automatically advance to the next slide."
+msgstr "Автоматически переходить к следующему слайду."
+
+#: src/components/slider-panel/index.js:31
+msgid "Dragging and flicking enabled on desktop and mobile devices."
+msgstr "Перетаскивание включено на настольных и мобильных устройствах."
+
+#: src/components/slider-panel/index.js:31
+msgid "Toggle to enable drag functionality on desktop and mobile devices."
+msgstr "Воспользуйтесь переключателем, чтобы включить функцию перетаскивания на настольных и мобильных устройствах."
+
+#: src/components/slider-panel/index.js:35
+msgid "Showing slide navigation arrows."
+msgstr "Отображение навигационных стрелок слайдов."
+
+#: src/components/slider-panel/index.js:35
+msgid "Toggle to show slide navigation arrows."
+msgstr "Воспользуйтесь переключателем, чтобы отобразить стрелки навигации слайдов."
+
+#: src/components/slider-panel/index.js:39
+msgid "Showing dot navigation arrows."
+msgstr "Отображение навигационных стрелок точки."
+
+#: src/components/slider-panel/index.js:39
+msgid "Toggle to show dot navigation."
+msgstr "Воспользуйтесь переключателем, чтобы отобразить навигационные стрелки точки"
+
+#: src/components/slider-panel/index.js:58
+msgid "Slider Settings"
+msgstr "Настройки ползунка"
+
+#: src/components/slider-panel/index.js:60
+msgid "Autoplay"
+msgstr "Автовоспроизведение"
+
+#: src/components/slider-panel/index.js:66
+msgid "Transition Speed"
+msgstr "Скорость перехода"
+
+#: src/components/slider-panel/index.js:73
+msgid "Draggable"
+msgstr "Перетаскивание"
+
+#: src/components/slider-panel/index.js:79
+msgid "Arrow Navigation"
+msgstr "Стрелки навигации"
+
+#: src/components/slider-panel/index.js:85
+msgid "Dot Navigation"
+msgstr "Навигация точки"
+
+#: src/components/typography-controls/index.js:103
+msgid "Capitalize"
+msgstr "Прописные буквы"
+
+#: src/components/typography-controls/index.js:107
+msgid "Normal"
+msgstr "Нормальный"
+
+#: src/components/typography-controls/index.js:164
+msgid "Font"
+msgstr "Шрифт"
+
+#: src/components/typography-controls/index.js:171
+msgid "Weight"
+msgstr "Нагрузка"
+
+#: src/components/typography-controls/index.js:180
+msgid "Transform"
+msgstr "Преобразовать"
+
+#: src/components/typography-controls/index.js:200
+msgid "Line Height"
+msgstr "Высота линии"
+
+#: src/components/typography-controls/index.js:211
+msgid "Letter Spacing"
+msgstr "Интервал между буквами"
+
+#: src/components/typography-controls/index.js:223
+msgid "No Top Spacing"
+msgstr "Без верхнего интервала"
+
+#: src/components/typography-controls/index.js:228
+msgid "No Bottom Spacing"
+msgstr "Без нижнего интервала"
+
+#: src/components/typography-controls/index.js:59
+msgid "Change typography"
+msgstr "Изменить типографику"
+
+#: src/components/typography-controls/index.js:84
+msgid "Bold"
+msgstr "Полужирный"
+
+#: src/components/typography-controls/index.js:95
+#: src/formats/uppercase/index.js:36
+msgid "Uppercase"
+msgstr "Верхний регистр"
+
+#: src/components/typography-controls/index.js:99
+msgid "Lowercase"
+msgstr "Нижний регистр"
+
+#: src/extensions/advanced-controls/index.js:109
+msgid "Stack on Mobile"
+msgstr "Стек на мобильных устройствах"
+
+#: src/extensions/advanced-controls/index.js:116
+msgid "Responsiveness is enabled."
+msgstr "Обратная связь активирована."
+
+#: src/extensions/advanced-controls/index.js:117
+msgid "Toggle to stack elements on top of each other on smaller viewports."
+msgstr "Воспользуйтесь переключателем, чтобы расположить элементы друг над другом в малой области просмотра."
+
+#: src/extensions/advanced-controls/index.js:125
+msgid "Remove Top Spacing"
+msgstr "Удалить верхний интервал"
+
+#: src/extensions/advanced-controls/index.js:137
+msgid "Top margin is removed on this block."
+msgstr "В этом блоке удалено верхнее поле."
+
+#: src/extensions/advanced-controls/index.js:138
+msgid "Toggle to remove any margin applied to the top of this block."
+msgstr "Воспользуйтесь переключателем, чтобы удалить все поля, используемые в верхней части этого блока."
+
+#: src/extensions/advanced-controls/index.js:146
+msgid "Remove Bottom Spacing"
+msgstr "Удалить нижний интервал"
+
+#: src/extensions/advanced-controls/index.js:171
+msgid "Bottom margin is removed on this block."
+msgstr "В этом блоке удалено нижнее поле."
+
+#: src/extensions/advanced-controls/index.js:172
+msgid "Toggle to remove any margin applied to the bottom of this block."
+msgstr "Воспользуйтесь переключателем, чтобы удалить все поля, используемые в нижней части этого блока."
+
+#: src/extensions/button-controls/index.js:71
+msgid "Display Fullwidth"
+msgstr "Показать полную ширину"
+
+#: src/extensions/button-controls/index.js:74
+msgid "Displaying as full width."
+msgstr "Отображение в полную ширину."
+
+#: src/extensions/button-controls/index.js:74
+msgid "Toggle to display button as full width."
+msgstr "Воспользуйтесь переключателем, чтобы отобразить кнопку в полную ширину."
+
+#: src/extensions/button-styles/index.js:16
+msgid "Circular"
+msgstr "Круговой"
+
+#: src/extensions/button-styles/index.js:22
+msgid "3D"
+msgstr "3D"
+
+#: src/extensions/button-styles/index.js:28
+msgid "Shadow"
+msgstr "Тень"
+
+#: src/extensions/list-styles/index.js:27
+msgid "Checkbox"
+msgstr "Флажок"
+
+#: src/sidebars/block-manager/components/modal.js:132
+msgid "Manage Blocks"
+msgstr "Управление блоками"
+
+#: src/sidebars/block-manager/components/modal.js:136
+msgid "Block Manager"
+msgstr "Диспетчер блоков"
+
+#: src/sidebars/block-manager/components/modal.js:138
+msgid "Close"
+msgstr "Закрыть"
+
+#: src/sidebars/block-manager/components/modal.js:147
+msgid "Search for a block"
+msgstr "Поиск блока"
+
+#: src/sidebars/block-manager/components/options/disable-blocks.js:170
+msgid "This block is added to the page and cannot currently be disabled"
+msgstr "Этот блок добавлен на страницу и в настоящее время не может быть отключен"
+
+#: src/sidebars/block-manager/components/options/disable-blocks.js:185
+msgid "Disable all"
+msgstr "Отключить все"
+
+#: src/sidebars/block-manager/components/options/disable-blocks.js:231
+msgid "No \"%s\" blocks found."
+msgstr "Блоки \"%s\" не найдены."
+
+#: src/utils/block-category.js:20
+msgid "%s Galleries"
+msgstr "Галереи %s"
+
+#: src/blocks/dynamic-separator/index.js:36
+msgctxt "block style"
+msgid "Dot"
+msgstr "Точка"
+
+#: src/blocks/dynamic-separator/index.js:37
+msgctxt "block style"
+msgid "Line"
+msgstr "Линия"
+
+#: src/blocks/dynamic-separator/index.js:38
+msgctxt "block style"
+msgid "Fullwidth"
+msgstr "Полная ширина"
+
+#: src/blocks/icon/index.js:41
+msgctxt "block style"
+msgid "Outlined"
+msgstr "Контурный"
+
+#: src/blocks/icon/index.js:42
+msgctxt "block style"
+msgid "Filled"
+msgstr "Заполненный"
+
+#: src/blocks/shape-divider/index.js:43
+msgctxt "block style"
+msgid "Wavy"
+msgstr "Волнистый"
+
+#: src/blocks/shape-divider/index.js:44
+msgctxt "block style"
+msgid "Hills"
+msgstr "Холмы"
+
+#: src/blocks/shape-divider/index.js:45
+msgctxt "block style"
+msgid "Waves"
+msgstr "Волны"
+
+#: src/blocks/shape-divider/index.js:46
+msgctxt "block style"
+msgid "Angled"
+msgstr "Угловой"
+
+#: src/blocks/shape-divider/index.js:47
+msgctxt "block style"
+msgid "Sloped"
+msgstr "Наклонный"
+
+#: src/blocks/shape-divider/index.js:48
+msgctxt "block style"
+msgid "Rounded"
+msgstr "Округленный"
+
+#: src/blocks/shape-divider/index.js:49
+msgctxt "block style"
+msgid "Triangle"
+msgstr "Треугольник"
+
+#: src/blocks/shape-divider/index.js:50
+msgctxt "block style"
+msgid "Pointed"
+msgstr "Заостренный"
+
+#: src/blocks/share/index.js:33
+#: src/blocks/social-profiles/index.js:33
+msgctxt "block style"
+msgid "Mask"
+msgstr "Маска"
+
+#: src/blocks/share/index.js:34
+#: src/blocks/social-profiles/index.js:34
+msgctxt "block style"
+msgid "Icon"
+msgstr "Значок"
+
+#: src/blocks/share/index.js:35
+#: src/blocks/social-profiles/index.js:35
+msgctxt "block style"
+msgid "Text"
+msgstr "Текст"
+
+#: src/blocks/share/index.js:36
+#: src/blocks/social-profiles/index.js:36
+msgctxt "block style"
+msgid "Icon & Text"
+msgstr "Значок и текст"
+
+#: src/blocks/share/index.js:37
+#: src/blocks/social-profiles/index.js:37
+msgctxt "block style"
+msgid "Circular"
+msgstr "Круговой"
+
+#: src/blocks/features/feature/edit.js:31
+msgctxt "content placeholder"
+msgid "Add feature title..."
+msgstr "Добавить название функции..."
+
+#: src/blocks/features/feature/edit.js:31
+msgctxt "content placeholder"
+msgid "Feature Title"
+msgstr "Название функции"
+
+#: src/blocks/features/feature/edit.js:32
+msgctxt "content placeholder"
+msgid "Add feature content"
+msgstr "Добавить контент функции"
+
+#: src/blocks/features/feature/edit.js:32
+msgctxt "content placeholder"
+msgid "This is a feature block that you can use to highlight features."
+msgstr "Этот функциональный блок вы можете использовать для выделения функций."
+
+#: src/blocks/hero/edit.js:36
+msgctxt "content placeholder"
+msgid "Add hero heading..."
+msgstr "Добавить заголовок блока героев..."
+
+#: src/blocks/hero/edit.js:37
+msgctxt "content placeholder"
+msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
+msgstr "Добавьте контент блока героев, который обычно является вводным текстом страницы с одним или двумя призывами к действию."
+
+#: src/blocks/hero/edit.js:40
+msgctxt "content placeholder"
+msgid "Add primary action..."
+msgstr "Добавьте основное действие..."
+
+#: src/blocks/hero/edit.js:41
+msgctxt "content placeholder"
+msgid "Add secondary action..."
+msgstr "Добавьте вспомогательное действие..."
+
+#: src/blocks/media-card/edit.js:46
+msgctxt "content placeholder"
+msgid "Add heading..."
+msgstr "Добавьте заголовок..."
+
+#: src/blocks/media-card/edit.js:46
+msgctxt "content placeholder"
+msgid "Media Card"
+msgstr "Медиакарта"
+
+#: src/blocks/media-card/edit.js:47
+msgctxt "content placeholder"
+msgid "Add content..."
+msgstr "Добавьте контент..."
+
+#: src/blocks/media-card/edit.js:47
+msgctxt "content placeholder"
+msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
+msgstr "Замените этот текст описанием с изображением карты. Затем добавьте различные блоки на карту, такие как кнопки, списки или изображения."
+
+#: src/blocks/services/service/edit.js:194
+msgctxt "content placeholder"
+msgid "Write title..."
+msgstr "Введите заголовок..."
+
+#: src/blocks/services/service/edit.js:200
+msgctxt "content placeholder"
+msgid "Write description..."
+msgstr "Введите описание…"
+
+#: src/blocks/icon/inspector.js:223
+msgctxt "size name"
+msgid "Normal"
+msgstr "Нормальный"
+
+#: src/blocks/icon/inspector.js:223
+msgctxt "size name"
+msgid "Custom"
+msgstr "Специальный"
+
+#: src/blocks/icon/svgs.js:102
+msgctxt "label"
+msgid "Add Circle"
+msgstr "Добавить круг"
+
+#: src/blocks/icon/svgs.js:108
+msgctxt "label"
+msgid "Minus Circle"
+msgstr "Удалить круг"
+
+#: src/blocks/icon/svgs.js:114
+msgctxt "label"
+msgid "Pie Chart"
+msgstr "Секторная диаграмма"
+
+#: src/blocks/icon/svgs.js:119
+msgctxt "label"
+msgid "Scatter Plot"
+msgstr "Диаграмма рассеяния"
+
+#: src/blocks/icon/svgs.js:125
+msgctxt "label"
+msgid "Poll"
+msgstr "Опрос"
+
+#: src/blocks/icon/svgs.js:131
+msgctxt "label"
+msgid "Emoticon"
+msgstr "Смайлик"
+
+#: src/blocks/icon/svgs.js:137
+msgctxt "label"
+msgid "Functions"
+msgstr "Функции"
+
+#: src/blocks/icon/svgs.js:14
+msgctxt "label"
+msgid "CoBlocks"
+msgstr "CoBlocks"
+
+#: src/blocks/icon/svgs.js:142
+msgctxt "label"
+msgid "Doodle"
+msgstr "Черточки"
+
+#: src/blocks/icon/svgs.js:147
+msgctxt "label"
+msgid "Font"
+msgstr "Шрифт"
+
+#: src/blocks/icon/svgs.js:153
+msgctxt "label"
+msgid "Heart"
+msgstr "Сердце"
+
+#: src/blocks/icon/svgs.js:159
+msgctxt "label"
+msgid "Star"
+msgstr "Звезда"
+
+#: src/blocks/icon/svgs.js:165
+msgctxt "label"
+msgid "Desktop"
+msgstr "Настольный компьютер"
+
+#: src/blocks/icon/svgs.js:171
+msgctxt "label"
+msgid "Devices"
+msgstr "Устройства"
+
+#: src/blocks/icon/svgs.js:176
+msgctxt "label"
+msgid "Laptop"
+msgstr "Ноутбук"
+
+#: src/blocks/icon/svgs.js:181
+msgctxt "label"
+msgid "Tablet"
+msgstr "Планшет"
+
+#: src/blocks/icon/svgs.js:186
+msgctxt "label"
+msgid "Watch"
+msgstr "Просмотр"
+
+#: src/blocks/icon/svgs.js:19
+msgctxt "label"
+msgid "Audio"
+msgstr "Аудио"
+
+#: src/blocks/icon/svgs.js:192
+msgctxt "label"
+msgid "Keyboard"
+msgstr "Клавиатура"
+
+#: src/blocks/icon/svgs.js:197
+msgctxt "label"
+msgid "Hub"
+msgstr "Концентратор"
+
+#: src/blocks/icon/svgs.js:208
+msgctxt "label"
+msgid "Email"
+msgstr "Эл. почта"
+
+#: src/blocks/icon/svgs.js:213
+msgctxt "label"
+msgid "Reply"
+msgstr "Ответить"
+
+#: src/blocks/icon/svgs.js:218
+msgctxt "label"
+msgid "Send"
+msgstr "Отправить"
+
+#: src/blocks/icon/svgs.js:224
+msgctxt "label"
+msgid "Signal"
+msgstr "Сигнал"
+
+#: src/blocks/icon/svgs.js:229
+msgctxt "label"
+msgid "Blocks"
+msgstr "Блоки"
+
+#: src/blocks/icon/svgs.js:235
+msgctxt "label"
+msgid "Marker"
+msgstr "Маркер"
+
+#: src/blocks/icon/svgs.js:241
+msgctxt "label"
+msgid "Mountains"
+msgstr "Горы"
+
+#: src/blocks/icon/svgs.js:247
+msgctxt "label"
+msgid "Waves"
+msgstr "Волны"
+
+#: src/blocks/icon/svgs.js:25
+msgctxt "label"
+msgid "Album"
+msgstr "Альбом"
+
+#: src/blocks/icon/svgs.js:252
+msgctxt "label"
+msgid "Globe"
+msgstr "Глобус"
+
+#: src/blocks/icon/svgs.js:257
+msgctxt "label"
+msgid "City"
+msgstr "Город"
+
+#: src/blocks/icon/svgs.js:262
+msgctxt "label"
+msgid "Dining"
+msgstr "Обед"
+
+#: src/blocks/icon/svgs.js:267
+msgctxt "label"
+msgid "Couch"
+msgstr "Диван"
+
+#: src/blocks/icon/svgs.js:273
+msgctxt "label"
+msgid "Cake"
+msgstr "Пирог"
+
+#: src/blocks/icon/svgs.js:279
+msgctxt "label"
+msgid "Flower"
+msgstr "Цветок"
+
+#: src/blocks/icon/svgs.js:285
+msgctxt "label"
+msgid "Vintage Filter"
+msgstr "Фильтр сайта"
+
+#: src/blocks/icon/svgs.js:291
+msgctxt "label"
+msgid "Build"
+msgstr "Создание"
+
+#: src/blocks/icon/svgs.js:297
+msgctxt "label"
+msgid "Credit Card"
+msgstr "Банковская карта"
+
+#: src/blocks/icon/svgs.js:302
+msgctxt "label"
+msgid "Extension"
+msgstr "Расширение"
+
+#: src/blocks/icon/svgs.js:308
+msgctxt "label"
+msgid "Fingerprint"
+msgstr "Отпечаток пальца"
+
+#: src/blocks/icon/svgs.js:31
+msgctxt "label"
+msgid "Headset"
+msgstr "Наушники"
+
+#: src/blocks/icon/svgs.js:313
+msgctxt "label"
+msgid "Translate"
+msgstr "Перевести"
+
+#: src/blocks/icon/svgs.js:318
+msgctxt "label"
+msgid "New"
+msgstr "Новинка"
+
+#: src/blocks/icon/svgs.js:324
+msgctxt "label"
+msgid "Flare"
+msgstr "Вспышка"
+
+#: src/blocks/icon/svgs.js:329
+msgctxt "label"
+msgid "Layers"
+msgstr "Слои"
+
+#: src/blocks/icon/svgs.js:334
+msgctxt "label"
+msgid "Shipping"
+msgstr "Доставка"
+
+#: src/blocks/icon/svgs.js:339
+msgctxt "label"
+msgid "Snowflake"
+msgstr "Снежинка"
+
+#: src/blocks/icon/svgs.js:344
+msgctxt "label"
+msgid "School"
+msgstr "Школа"
+
+#: src/blocks/icon/svgs.js:349
+msgctxt "label"
+msgid "Fire"
+msgstr "Огонь"
+
+#: src/blocks/icon/svgs.js:354
+msgctxt "label"
+msgid "Update"
+msgstr "Обновление"
+
+#: src/blocks/icon/svgs.js:36
+msgctxt "label"
+msgid "Volume"
+msgstr "Громкость"
+
+#: src/blocks/icon/svgs.js:42
+msgctxt "label"
+msgid "Voice"
+msgstr "Голос"
+
+#: src/blocks/icon/svgs.js:48
+msgctxt "label"
+msgid "Aperture"
+msgstr "Диафрагма"
+
+#: src/blocks/icon/svgs.js:54
+msgctxt "label"
+msgid "Camera"
+msgstr "Камера"
+
+#: src/blocks/icon/svgs.js:60
+msgctxt "label"
+msgid "Gallery"
+msgstr "Галерея"
+
+#: src/blocks/icon/svgs.js:66
+msgctxt "label"
+msgid "Video"
+msgstr "Видео"
+
+#: src/blocks/icon/svgs.js:72
+msgctxt "label"
+msgid "Film"
+msgstr "Фильм"
+
+#: src/blocks/icon/svgs.js:78
+msgctxt "label"
+msgid "Color Lens"
+msgstr "Цветной объектив"
+
+#: src/blocks/icon/svgs.js:84
+msgctxt "label"
+msgid "Color Picker"
+msgstr "Палитра цветов"
+
+#: src/blocks/icon/svgs.js:90
+msgctxt "label"
+msgid "Paint"
+msgstr "Рисование"
+
+#: src/blocks/icon/svgs.js:96
+msgctxt "label"
+msgid "Brush"
+msgstr "Кисть"
+
+#: src/blocks/icon/svgs.js:109
+msgctxt "tags"
+msgid "add minus circle insert plus round math"
+msgstr "добавить, минус, круг, вставить, плюс, круглый, математика"
+
+#: src/blocks/icon/svgs.js:115
+msgctxt "tags"
+msgid "stats round circle pie chart graph"
+msgstr "статистическая круговая диаграмма, секторная диаграмма"
+
+#: src/blocks/icon/svgs.js:120
+msgctxt "tags"
+msgid "stats round circle pie chart graph dots data"
+msgstr "данные точек, статистическая круговая диаграмма, секторная диаграмма"
+
+#: src/blocks/icon/svgs.js:126
+msgctxt "tags"
+msgid "chart graph stats data graph"
+msgstr "диаграмма, диаграмма статистических данных"
+
+#: src/blocks/icon/svgs.js:132
+msgctxt "tags"
+msgid "happy emotion emoticon smile fun joy"
+msgstr "эмоции счастья, смайлик, улыбка, веселье, радость"
+
+#: src/blocks/icon/svgs.js:138
+msgctxt "tags"
+msgid "code greek math"
+msgstr "код, имитировать текст, математика"
+
+#: src/blocks/icon/svgs.js:143
+msgctxt "tags"
+msgid "drawing doodle art creative type font pencil marker"
+msgstr "рисунок каракули, искусство, креативный шрифт, карандашный маркер"
+
+#: src/blocks/icon/svgs.js:15
+msgctxt "tags"
+msgid "blocks block build gutenberg design"
+msgstr "блоки, создание блоков, дизайн, Гутенберг"
+
+#: src/blocks/icon/svgs.js:154
+msgctxt "tags"
+msgid "love shape valentine kiss"
+msgstr "любовь, форма, валентинка, поцелуй"
+
+#: src/blocks/icon/svgs.js:160
+msgctxt "tags"
+msgid "rate vote plus favorite like"
+msgstr "оценить, опрос, рейтинг, плюс, избранное, нравится"
+
+#: src/blocks/icon/svgs.js:177
+msgctxt "tags"
+msgid "computer apple montior device pc desk office"
+msgstr "компьютер Apple, монитор, устройство, настольный ПК, офис"
+
+#: src/blocks/icon/svgs.js:182
+msgctxt "tags"
+msgid "computer ipad surface apple montior device pc desk office"
+msgstr "компьютер, iPad, поверхность, Apple, монитор, устройство, настольный ПК, офис"
+
+#: src/blocks/icon/svgs.js:187
+msgctxt "tags"
+msgid "device apple mac"
+msgstr "устройство Apple Mac"
+
+#: src/blocks/icon/svgs.js:193
+msgctxt "tags"
+msgid "computer ipad surface apple device pc desk office"
+msgstr "компьютер, iPad, поверхность, Apple, устройство, настольный ПК, офис"
+
+#: src/blocks/icon/svgs.js:198
+msgctxt "tags"
+msgid "usb connect hub device social"
+msgstr "USB-подключение, соцсеть, устройство, концентратор"
+
+#: src/blocks/icon/svgs.js:20
+msgctxt "tags"
+msgid "music microphone podcast song artist creative media audio"
+msgstr "музыка, микрофон, подкаст, песня, исполнитель креатив, медиафайл, аудио"
+
+#: src/blocks/icon/svgs.js:209
+msgctxt "tags"
+msgid "email mail os read letter"
+msgstr "электронная почта, почта, ОС, прочитанное письмо"
+
+#: src/blocks/icon/svgs.js:225
+msgctxt "tags"
+msgid "wifi radio waves"
+msgstr "Wi-Fi, радиоволны"
+
+#: src/blocks/icon/svgs.js:236
+msgctxt "tags"
+msgid "map directions about check checkbox"
+msgstr "карта проезда, флажок сведений, флажок"
+
+#: src/blocks/icon/svgs.js:242
+msgctxt "tags"
+msgid "hills landscape minimal outdoors outside"
+msgstr "холмы, пейзаж, минимальный, природа, снаружи"
+
+#: src/blocks/icon/svgs.js:248
+msgctxt "tags"
+msgid "ocean outside outdoors water fun summer minimal"
+msgstr "океан, природа, вода, веселье, лето, минимально"
+
+#: src/blocks/icon/svgs.js:253
+msgctxt "tags"
+msgid "world public global earth location map"
+msgstr "мир, общество, глобальная карта Земли"
+
+#: src/blocks/icon/svgs.js:258
+msgctxt "tags"
+msgid "location map public business corporation building town skyscraper"
+msgstr "схема проезда, государственная коммерческая корпорация, здание, город, небоскреб"
+
+#: src/blocks/icon/svgs.js:263
+msgctxt "tags"
+msgid "food drink restaurant menu fork spoon taste"
+msgstr "еда, напитки, ресторан, меню, вилка, ложка, вкус"
+
+#: src/blocks/icon/svgs.js:268
+msgctxt "tags"
+msgid "weekend chill relax chair"
+msgstr "выходные, прохладиться, расслабиться, кресло"
+
+#: src/blocks/icon/svgs.js:274
+msgctxt "tags"
+msgid "fun party happy celebration taste food"
+msgstr "веселье, вечеринка, счастливый праздник, вкус, еда"
+
+#: src/blocks/icon/svgs.js:280
+msgctxt "tags"
+msgid "petal scent smell nice relax landscape gardening outdoors outside"
+msgstr "запах лепестка, приятный запах, расслабление, садоводство на открытом воздухе, природа, на улице"
+
+#: src/blocks/icon/svgs.js:292
+msgctxt "tags"
+msgid "blocks block box boxes square build widgets"
+msgstr "блоки, блок, поле, поля, квадратные, сборки, виджеты"
+
+#: src/blocks/icon/svgs.js:298
+msgctxt "tags"
+msgid "money cash checkout shop commerce ecommerce"
+msgstr "деньги, касса, магазин, коммерция, электронная коммерция"
+
+#: src/blocks/icon/svgs.js:303
+msgctxt "tags"
+msgid "puzzle plugin widget team together"
+msgstr "головоломка, плагин, виджет, команда, совместная работа"
+
+#: src/blocks/icon/svgs.js:309
+msgctxt "tags"
+msgid "security bio defense biometric safe secure"
+msgstr "безопасность, биозащита, биометрия, защита"
+
+#: src/blocks/icon/svgs.js:314
+msgctxt "tags"
+msgid "language global world speech"
+msgstr "язык, глобальный, мир, речь"
+
+#: src/blocks/icon/svgs.js:319
+msgctxt "tags"
+msgid "music microphone song artist creative media audio badge"
+msgstr "музыка, микрофон, песня, исполнитель креатив, медиафайл, аудио, значок"
+
+#: src/blocks/icon/svgs.js:32
+msgctxt "tags"
+msgid "microphone audio beats bose headphones"
+msgstr "микрофон, аудио, ритм, наушники, Бозе"
+
+#: src/blocks/icon/svgs.js:325
+msgctxt "tags"
+msgid "flower camera photography artist creative"
+msgstr "цветок, камера, фотография, художник, креатив"
+
+#: src/blocks/icon/svgs.js:330
+msgctxt "tags"
+msgid "design creative build develop engineer"
+msgstr "дизайн, креатив, создание, разработчик, инженер"
+
+#: src/blocks/icon/svgs.js:335
+msgctxt "tags"
+msgid "shop commence ecommence woo cart ship"
+msgstr "магазин, коммерция, торговля, WooCommerce, корзина, доставка"
+
+#: src/blocks/icon/svgs.js:340
+msgctxt "tags"
+msgid "cold ice frozen chill winter season global"
+msgstr "холод, лед, замороженный, зимний сезон, глобальный"
+
+#: src/blocks/icon/svgs.js:345
+msgctxt "tags"
+msgid "education graduate graduation degree diploma college"
+msgstr "образование, выпускники, диплом, вуз"
+
+#: src/blocks/icon/svgs.js:350
+msgctxt "tags"
+msgid "hot trending trendy design"
+msgstr "горячие тренды, модный дизайн"
+
+#: src/blocks/icon/svgs.js:355
+msgctxt "tags"
+msgid "improve add upload software"
+msgstr "улучшить, добавить, загрузить программное обеспечение"
+
+#: src/blocks/icon/svgs.js:37
+msgctxt "tags"
+msgid "music microphone song artist creative media audio"
+msgstr "музыка, микрофон, песня, исполнитель креатив, медиафайл, аудио"
+
+#: src/blocks/icon/svgs.js:43
+msgctxt "tags"
+msgid "microphone podcast computer device music microphone song artist creative media audio"
+msgstr "микрофон, подкаст, компьютер, устройство, песня, музыка, исполнитель креатив, медиафайл, аудио"
+
+#: src/blocks/icon/svgs.js:49
+msgctxt "tags"
+msgid "photo photographer photography camera film creative media"
+msgstr "фото, фотограф, фотография, фотоаппарат, пленка, креатив, медиафайл"
+
+#: src/blocks/icon/svgs.js:55
+msgctxt "tags"
+msgid "photo photographer photography camera aperture film creative media"
+msgstr "фото, фотограф, фотография, фотоаппарат, диафрагма, пленка, креатив, медиафайл"
+
+#: src/blocks/icon/svgs.js:61
+msgctxt "tags"
+msgid "photo photos image media camera aperture collection"
+msgstr "фото, фотографии, изображения, медиафайлы, камера, диафрагма, коллекция"
+
+#: src/blocks/icon/svgs.js:67
+msgctxt "tags"
+msgid "film videography director producer media creative"
+msgstr "режиссер фильма, продюсер, медиафайл, креатив"
+
+#: src/blocks/icon/svgs.js:73
+msgctxt "tags"
+msgid "video videography director producer media creative camera photographer photography aperture"
+msgstr "видео, видеография, режиссер, продюсер, медиафайл, креатив, камера, фотограф, фотосъемка, диафрагма"
+
+#: src/blocks/icon/svgs.js:85
+msgctxt "tags"
+msgid "palette design colors artist paint creative media"
+msgstr "палитра, дизайн, цвета, художник, рисовать, креатив, медиафайл"
+
+#: src/blocks/icon/svgs.js:91
+msgctxt "tags"
+msgid "palette design colors artist creative media"
+msgstr "палитра, дизайн, цвета, художник, креатив, медиафайл"
+
+#: src/blocks/icon/svgs.js:97
+msgctxt "tags"
+msgid "palette design colors artist creative media paint paintbrush"
+msgstr "палитра, дизайн, цвета, художник, рисовать, креатив, медиафайл, кисть"
+
+#. Plugin Name of the plugin
+#: includes/admin/class-coblocks-feedback.php:311
+#: includes/admin/class-coblocks-getting-started-page.php:46
+#: includes/admin/class-coblocks-getting-started-page.php:47
+#: includes/admin/class-coblocks-getting-started-page.php:58
+#: includes/admin/class-coblocks-getting-started-page.php:59
+msgid "CoBlocks"
+msgstr "CoBlocks"
+
+#. Plugin URI of the plugin
+msgid "https://coblocks.com"
+msgstr "https://coblocks.com"
+
+#. Description of the plugin
+msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
+msgstr "CoBlocks - это набор профессиональных <strong>блоков для создания страниц</strong> в редакторе WordPress Gutenberg Наши блоки позволяют разработчикам создавать прекрасные страницы в WordPress."
+
+#. Author of the plugin
+msgid "GoDaddy"
+msgstr "GoDaddy"
+
+#. Author URI of the plugin
+msgid "https://www.godaddy.com"
+msgstr "https://www.godaddy.com"
+
+#: class-coblocks.php:77
+#: class-coblocks.php:89
+msgid "Cheating huh?"
+msgstr "Шутите?"
+
+#. translators: Number of years
+#: includes/admin/class-coblocks-feedback.php:92
+msgid "%s years"
+msgstr "%s г."
+
+#: includes/admin/class-coblocks-feedback.php:94
+msgid "a year"
+msgstr "год"
+
+#. translators: Number of weeks
+#: includes/admin/class-coblocks-feedback.php:101
+msgid "%s weeks"
+msgstr "%s нед."
+
+#: includes/admin/class-coblocks-feedback.php:103
+msgid "a week"
+msgstr "нед."
+
+#. translators: Number of days
+#: includes/admin/class-coblocks-feedback.php:110
+msgid "%s days"
+msgstr "%s дн."
+
+#: includes/admin/class-coblocks-feedback.php:112
+msgid "a day"
+msgstr "день"
+
+#. translators: Number of hours
+#: includes/admin/class-coblocks-feedback.php:119
+msgid "%s hours"
+msgstr "%s ч."
+
+#: includes/admin/class-coblocks-feedback.php:121
+msgid "an hour"
+msgstr "час"
+
+#. translators: Number of minutes
+#: includes/admin/class-coblocks-feedback.php:128
+msgid "%s minutes"
+msgstr "%s мин."
+
+#: includes/admin/class-coblocks-feedback.php:130
+msgid "a minute"
+msgstr "мин."
+
+#. translators: Number of seconds
+#: includes/admin/class-coblocks-feedback.php:137
+msgid "%s seconds"
+msgstr "%s сек."
+
+#: includes/admin/class-coblocks-feedback.php:139
+msgid "a second"
+msgstr "сек."
+
+#. translators: 1. Name
+#: includes/admin/class-coblocks-feedback.php:271
+msgid "%s WordPress Plugin"
+msgstr "Плагин WordPress %s"
+
+#. translators: 1. Name
+#: includes/admin/class-coblocks-feedback.php:275
+msgid "Are you enjoying %s?"
+msgstr "Вам нравится %s?"
+
+#. translators: 1. Name, 2. Time
+#: includes/admin/class-coblocks-feedback.php:278
+msgid "You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We'd really appreciate it!"
+msgstr "Вы используете %1$s уже %2$s. Не могли бы вы оставить отзыв, чтобы поделиться своими идеями и пожеланиями? Мы будем очень признательны!"
+
+#: includes/admin/class-coblocks-feedback.php:282
+msgid "Leave a Review"
+msgstr "Оставьте отзыв"
+
+#: includes/admin/class-coblocks-feedback.php:283
+msgid "No thanks / I already have"
+msgstr "Нет, спасибо / у меня уже есть"
+
+#: includes/admin/class-coblocks-getting-started-page.php:122
+msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
+msgstr "Спасибо за выбор CoBlocks, лучшего конструктора страниц для нового редактора блоков WordPress."
+
+#. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
+#: includes/admin/class-coblocks-getting-started-page.php:128
+msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
+msgstr "Вы только что добавили много полезных блоков и новые инструменты для компоновки страниц в редактор WordPress. CoBlocks предоставляет принципиально новый набор функций: %1$s десятки блоков%2$s, %1$s удобный конструктор страниц %2$s и %1$s пользовательские средства управления типографикой%2$s."
+
+#: includes/admin/class-coblocks-getting-started-page.php:135
+msgid "Here are a few videos to help you get started:"
+msgstr "Вот несколько видеороликов, которые помогут вам начать работу:"
+
+#. translators: CoBlocks plugin name
+#: includes/admin/class-coblocks-getting-started-page.php:139
+msgid "Watch how to create your first page with %s"
+msgstr "Посмотрите, как создать свою первую страницу с %s"
+
+#: includes/admin/class-coblocks-getting-started-page.php:140
+msgid "Watch how to create your first page"
+msgstr "Посмотрите, как создать свою первую страницу"
+
+#: includes/admin/class-coblocks-getting-started-page.php:142
+#: includes/admin/class-coblocks-getting-started-page.php:143
+msgid "Watch how to use the Row and Shape Divider blocks"
+msgstr "Посмотрите, как использовать блоки \"Строка\" и \"Разделитель форм\""
+
+#: includes/admin/class-coblocks-getting-started-page.php:145
+#: includes/admin/class-coblocks-getting-started-page.php:146
+msgid "Watch how to use the Media Card block"
+msgstr "Просмотрите, как использовать блок медиакарты"
+
+#. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
+#: includes/admin/class-coblocks-getting-started-page.php:154
+msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
+msgstr "Нравится то, что вы видите? %1$sПодпишитесь на канал YouTube%2$s, и мы будем уведомлять вас о выпуске новых учебных роликов."
+
+#. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
+#: includes/admin/class-coblocks-getting-started-page.php:165
+msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
+msgstr "Если у вас есть вопросы или комментарии, поделитесь ими в %1$sTwitter%4$s или в нашей группе %2$sFacebook %4$s. Кроме того, если вы хотите быть в курсе предстоящих событий на CoBlocks, %3$sподпишитесь на нашу новостную рассылку%4$s."
+
+#: includes/admin/class-coblocks-getting-started-page.php:174
+msgid "Enjoy!"
+msgstr "Наслаждайтесь!"
+
+#: includes/admin/class-coblocks-getting-started-page.php:207
+msgid "Get started with CoBlocks here:"
+msgstr "Начните работать с CoBlocks здесь:"
+
+#: includes/class-coblocks-block-settings.php:80
+msgid "Enable or disable blocks"
+msgstr "Включение или отключение блоков."
+
+#: includes/class-coblocks-form.php:67
+msgid "Google reCaptcha site key for form spam protection"
+msgstr "Ключ сайта reCAPTCHA Google для защиты от спама"
+
+#: includes/class-coblocks-form.php:79
+msgid "Google reCaptcha secret key for form spam protection"
+msgstr "Секретный ключ reCAPTCHA Google для защиты от спама"
+
+#: includes/class-coblocks-form.php:390
+msgid "Submit"
+msgstr "Отправить"
+
+#: includes/class-coblocks-form.php:561
+msgid "Your message was sent:"
+msgstr "Ваше сообщение отправлено:"
+
+#: includes/class-coblocks-google-map-block.php:122
+msgid "Google Map API key for map rendering"
+msgstr "API-ключ карт Google для отображения карт"
+
+#: src/blocks/share/index.php:145
+msgid "Share on Linkedin"
+msgstr "Опубликовать в LinkedIn"
+
+#: src/blocks/social-profiles/index.php:84
+msgid "Linkedin"
+msgstr "Linkedin"

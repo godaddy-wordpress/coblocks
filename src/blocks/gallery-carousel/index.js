@@ -1,215 +1,61 @@
 /**
- * External dependencies
+ * Styles.
  */
-import classnames from 'classnames';
+import './styles/editor.scss';
+import './styles/style.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-import icons from './icons';
+import deprecated from './deprecated';
 import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
+import save from './save';
 import transforms from './transforms';
-import { BackgroundStyles, BackgroundAttributes, BackgroundVideo, BackgroundClasses } from '../../components/background';
-import { GalleryAttributes, GalleryClasses } from '../../components/block-gallery/shared';
+import { GalleryAttributes } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
-const { getColorClassName, RichText } = wp.editor;
+const { __, _x } = wp.i18n;
 
 /**
  * Block constants
  */
-const name = 'gallery-carousel';
+const { name, category } = metadata;
 
-const title = __( 'Carousel' );
-
-const icon = icons.carousel;
-
-const keywords = [
-	__( 'gallery' ),
-	__( 'photos' ),
-];
-
-const blockAttributes = {
+const attributes = {
 	...GalleryAttributes,
-	...BackgroundAttributes,
-
-	// Override global attributes.
-	gutter: {
-		type: 'number',
-		default: 5,
-	},
-	gutterMobile: {
-		type: 'number',
-		default: 5,
-	},
-
-	// Block specific attributes.
-	gridSize: {
-		type: 'string',
-		default: 'lrg',
-	},
-	height: {
-		type: 'number',
-		default: 400,
-	},
-
-	// Slider attributes.
-	pageDots: {
-		type: 'boolean',
-		default: false,
-	},
-	prevNextButtons: {
-		type: 'boolean',
-		default: true,
-	},
-	autoPlay: {
-		type: 'boolean',
-		default: false,
-	},
-	autoPlaySpeed: {
-		type: 'string',
-		default: 3000,
-	},
-	draggable: {
-		type: 'boolean',
-		default: true,
-	},
+	...metadata.attributes,
 };
 
 const settings = {
-
-	title: title,
-
+	title: _x( 'Carousel', 'block name' ),
 	description: __( 'Display multiple images in a beautiful carousel gallery.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	attributes,
+	icon,
+	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
+		html: false,
+		coBlocksSpacing: true,
 	},
-
+	example: {
+		attributes: {
+			gridSize: 'lrg',
+			gutter: 5,
+			images: [
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-1.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-2.jpg' },
+				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-3.jpg' },
+			],
+		},
+	},
 	transforms,
-
 	edit,
+	save,
+	deprecated,
+};
 
-	save( { attributes, className } ) {
-
-		const {
-			autoPlay,
-			autoPlaySpeed,
-			captionColor,
-			customCaptionColor,
-			draggable,
-			gridSize,
-			gutter,
-			gutterMobile,
-			height,
-			images,
-			pageDots,
-			prevNextButtons,
-			primaryCaption,
-		} = attributes;
-
-		const innerClasses = classnames(
-			'is-cropped',
-			...GalleryClasses( attributes ), {
-				[ `has-horizontal-gutter` ] : gutter > 0,
-			}
-		);
-
-		const innerStyles = {
-			...BackgroundStyles( attributes ),
-		};
-
-		const flickityClasses = classnames(
-			`has-carousel`,
-			`has-carousel-${ gridSize }`, {}
-		);
-
-		const flickityStyles = {
-			height: height ? height + 'px' : undefined,
-		};
-
-		const figureClasses = classnames(
-			'coblocks-gallery--figure', {
-				[ `has-margin-left-${ gutter }` ] : gutter > 0,
-				[ `has-margin-left-mobile-${ gutterMobile }` ] : gutterMobile > 0,
-				[ `has-margin-right-${ gutter }` ] : gutter > 0,
-				[ `has-margin-right-mobile-${ gutterMobile }` ] : gutterMobile > 0,
-			}
-		);
-
-		const flickityOptions = {
-			autoPlay: autoPlay && autoPlaySpeed ? parseFloat( autoPlaySpeed ) : false,
-			draggable: draggable,
-			pageDots: pageDots,
-			prevNextButtons: prevNextButtons,
-			wrapAround: true,
-			arrowShape: {
-				x0: 10,
-				x1: 60, y1: 50,
-				x2: 65, y2: 45,
-				x3: 20
-			},
-		};
-
-		const captionColorClass = getColorClassName( 'color', captionColor );
-
-		const captionClasses = classnames(
-			'coblocks-gallery--caption',
-			'coblocks-gallery--primary-caption',
-			captionColorClass, {
-				'has-caption-color': captionColorClass,
-
-			}
-		);
-
-		const captionStyles = {
-			color: captionColorClass ? undefined : customCaptionColor,
-		};
-
-		// Return early if there are no images.
-		if ( images.length <= 0 ) {
-			return;
-		}
-
-		return (
-			<div className={ className }>
-				<div
-					className={ innerClasses }
-					style={ innerStyles }
-				>
-					<div
-						className={ flickityClasses }
-						style={ flickityStyles }
-						data-flickity={ JSON.stringify( flickityOptions ) }
-					>
-						{ images.map( ( image ) => {
-
-							const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ image.id ? `wp-image-${ image.id }` : null } />;
-
-							return (
-								<div key={ image.id || image.url } className="coblocks-gallery--item">
-									<figure className={ figureClasses }>
-										{ img }
-									</figure>
-								</div>
-							);
-						} ) }
-					</div>
-				</div>
-				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } style={ captionStyles }/> }
-			</div>
-		);
-	},
-}
-
-export { name, title, icon, settings };
+export { name, category, icon, metadata, settings };

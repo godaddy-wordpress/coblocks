@@ -1,0 +1,62 @@
+{
+	"name": "coblocks/gallery-carousel",
+	"category": "coblocks-galleries",
+	"attributes": {
+		"gutter": {
+			"type": "number",
+			"default": 5
+		},
+		"gutterMobile": {
+			"type": "number",
+			"default": 5
+		},
+		"gridSize": {
+			"type": "string",
+			"default": "lrg"
+		},
+		"height": {
+			"type": "number",
+			"default": 400
+		},
+		"pageDots": {
+			"type": "boolean",
+			"default": false
+		},
+		"prevNextButtons": {
+			"type": "boolean",
+			"default": true
+		},
+		"autoPlay": {
+			"type": "boolean",
+			"default": false
+		},
+		"autoPlaySpeed": {
+			"type": "string",
+			"default": 3000
+		},
+		"draggable": {
+			"type": "boolean",
+			"default": true
+		},
+		"alignCells": {
+			"type": "boolean",
+			"default": false
+		},
+		"pauseHover": {
+			"type": "boolean",
+			"default": false
+		},
+		"freeScroll": {
+			"type": "boolean",
+			"default": false
+		},
+		"thumbnails": {
+			"type": "boolean",
+			"default": false
+		},
+		"responsiveHeight": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}

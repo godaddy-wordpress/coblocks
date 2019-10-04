@@ -4,7 +4,7 @@
 
 		.components-placeholder__fieldset {
 			span {
-				color: #555d66;
+				color: $dark-gray-500;
 			}
 
 			.components-button {
@@ -26,7 +26,7 @@
 
 		.invalid-google-maps-api-key {
 			clear: both;
-			color: $red !important;
+			color: $alert-red !important;
 			display: block;
 			text-align: center;
 			width: 100%;
@@ -37,6 +37,17 @@
 	// and the next has margin-top removed.
 	&.is-selected .components-resizable-box__handle {
 		z-index: 30;
+	}
+
+	.iframe__overflow-wrapper {
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.components-placeholder__cancel-button.is-link {
+		margin-left: 33%;
+		margin-right: 33%;
+		display: block;
 	}
 }
 
@@ -94,7 +105,7 @@ $styles: (standard), (silver), (retro), (dark), (night), (aubergine);
 			margin-bottom: 5px;
 		}
 	}
-  	.components-block-coblocks-map-api-key-remove__button {
+	.components-block-coblocks-map-api-key-remove__button {
 		margin-left: 5px;
-  	}
+	}
 }

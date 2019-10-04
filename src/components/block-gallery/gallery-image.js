@@ -9,14 +9,13 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
-const { IconButton, Spinner } = wp.components;
-const { RichText } = wp.editor;
+const { IconButton, Spinner, Dashicon } = wp.components;
+const { RichText, URLInput } = wp.blockEditor;
 const { withSelect } = wp.data;
 const { BACKSPACE, DELETE } = wp.keycodes;
 const { isBlobURL } = wp.blob;
 
 class GalleryImage extends Component {
-
 	constructor() {
 		super( ...arguments );
 
@@ -24,10 +23,12 @@ class GalleryImage extends Component {
 		this.onSelectCaption = this.onSelectCaption.bind( this );
 		this.onKeyDown = this.onKeyDown.bind( this );
 		this.bindContainer = this.bindContainer.bind( this );
+		this.saveCustomLink = this.saveCustomLink.bind( this );
 
 		this.state = {
 			captionSelected: false,
 			captionFocused: false,
+			isSaved: false,
 		};
 	}
 
@@ -71,8 +72,12 @@ class GalleryImage extends Component {
 		}
 	}
 
+	saveCustomLink() {
+		this.setState( { isSaved: true } );
+	}
+
 	componentDidUpdate( prevProps ) {
-		const { isSelected, image, url } = this.props;
+		const { isSelected, image, url, imgLink } = this.props;
 		if ( image && ! url ) {
 			this.props.setAttributes( {
 				url: image.source_url,
@@ -88,46 +93,44 @@ class GalleryImage extends Component {
 				captionFocused: false,
 			} );
 		}
+
+		if ( imgLink && ! isSelected && prevProps.isSelected ) {
+			this.setState( { isSaved: false } );
+		}
 	}
 
 	render() {
-
 		const {
 			alt,
 			caption,
+			captions,
 			fontSize,
 			gutter,
 			gutterMobile,
 			id,
+			isFirstItem,
+			isLastItem,
 			isSelected,
-			link,
 			linkTo,
 			marginBottom,
 			marginLeft,
 			marginRight,
 			marginTop,
+			onMoveBackward,
+			onMoveForward,
 			onRemove,
 			setAttributes,
 			shadow,
 			supportsCaption,
+			supportsMoving = true,
+			verticalMoving = false,
 			url,
-			captions,
 			'aria-label': ariaLabel,
+			imgLink,
 		} = this.props;
 
-		let href;
-
-		switch ( linkTo ) {
-			case 'media':
-				href = url;
-				break;
-			case 'attachment':
-				href = link;
-				break;
-		}
-
 		const imgClasses = classnames( {
-			[ `has-shadow-${ shadow }` ] : shadow != 'none' || shadow != undefined,
+			[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
 		} );
 
 		// Disable reason: Image itself is not meant to be
@@ -143,6 +146,7 @@ class GalleryImage extends Component {
 					className={ imgClasses }
 					alt={ alt }
 					data-id={ id }
+					data-imglink={ imgLink }
 					onClick={ this.onImageClick }
 					tabIndex="0"
 					onKeyDown={ this.onImageClick }
@@ -156,14 +160,14 @@ class GalleryImage extends Component {
 		const className = classnames( {
 			'is-selected': isSelected,
 			'is-transient': url && 0 === url.indexOf( 'blob:' ),
-			[ `has-margin-top-${ gutter }` ] : marginTop && gutter > 0,
-			[ `has-margin-top-mobile-${ gutterMobile }` ] : marginTop && gutterMobile > 0,
-			[ `has-margin-right-${ gutter }` ] : marginRight && gutter > 0,
-			[ `has-margin-right-mobile-${ gutterMobile }` ] : marginRight && gutterMobile > 0,
-			[ `has-margin-bottom-${ gutter }` ] : marginBottom && gutter > 0,
-			[ `has-margin-bottom-mobile-${ gutterMobile }` ] : marginBottom && gutterMobile > 0,
-			[ `has-margin-left-${ gutter }` ] : marginLeft && gutter > 0,
-			[ `has-margin-left-mobile-${ gutterMobile }` ] : marginLeft && gutterMobile > 0,
+			[ `has-margin-top-${ gutter }` ]: marginTop && gutter > 0,
+			[ `has-margin-top-mobile-${ gutterMobile }` ]: marginTop && gutterMobile > 0,
+			[ `has-margin-right-${ gutter }` ]: marginRight && gutter > 0,
+			[ `has-margin-right-mobile-${ gutterMobile }` ]: marginRight && gutterMobile > 0,
+			[ `has-margin-bottom-${ gutter }` ]: marginBottom && gutter > 0,
+			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: marginBottom && gutterMobile > 0,
+			[ `has-margin-left-${ gutter }` ]: marginLeft && gutter > 0,
+			[ `has-margin-left-mobile-${ gutterMobile }` ]: marginLeft && gutterMobile > 0,
 		} );
 
 		const captionStyles = {
@@ -175,16 +179,51 @@ class GalleryImage extends Component {
 		return (
 			<figure className={ 'coblocks-gallery--figure ' + className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
 				{ isSelected &&
-					<div className="components-coblocks-remove-gallery-item-button-wrapper">
-						<IconButton
-							icon="no-alt"
-							onClick={ onRemove }
-							className="components-coblocks-remove-gallery-item-button-button"
-							label={ __( 'Remove Image' ) }
-						/>
-					</div>
+					<Fragment>
+						{ supportsMoving &&
+							<div className="components-coblocks-gallery-item__move-menu">
+								<IconButton
+									icon={ verticalMoving ? 'arrow-up' : 'arrow-left' }
+									onClick={ ! isFirstItem && onMoveBackward }
+									className="coblocks-gallery-item__button"
+									label={ __( 'Move Image Backward' ) }
+									aria-disabled={ isFirstItem }
+									disabled={ ! isSelected }
+								/>
+								<IconButton
+									icon={ verticalMoving ? 'arrow-down' : 'arrow-right' }
+									onClick={ ! isLastItem && onMoveForward }
+									className="coblocks-gallery-item__button"
+									label={ __( 'Move Image Forward' ) }
+									aria-disabled={ isLastItem }
+									disabled={ ! isSelected }
+								/>
+							</div>
+						}
+						<div className="components-coblocks-gallery-item__remove-menu">
+							<IconButton
+								icon="no-alt"
+								onClick={ onRemove }
+								className="coblocks-gallery-item__button"
+								label={ __( 'Remove Image' ) }
+								disabled={ ! isSelected }
+							/>
+						</div>
+						{ linkTo === 'custom' &&
+							<form
+								className="components-coblocks-gallery-item__image-link"
+								onSubmit={ ( event ) => event.preventDefault() }>
+								<Dashicon icon="admin-links" />
+								<URLInput
+									value={ imgLink }
+									onChange={ ( value ) => setAttributes( { imgLink: value } ) }
+								/>
+								<IconButton icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving' ) : __( 'Apply' ) } onClick={ this.saveCustomLink } type="submit" />
+							</form>
+						}
+					</Fragment>
 				}
-				{ href ? <a href={ href }>{ img }</a> : img }
+				{ img }
 				{ ( supportsCaption === true ) && ( ! RichText.isEmpty( caption ) || isSelected ) && captions ? (
 					<RichText
 						tagName="figcaption"

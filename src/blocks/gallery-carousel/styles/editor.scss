@@ -1,5 +1,4 @@
 .editor-block-list__block[data-type="coblocks/gallery-carousel"] {
-	// Fix fullwidth alignment bug where gutters would not display.
 	&.editor-block-list__block[data-align="full"] > .editor-block-list__block-edit figure {
 		width: auto;
 	}
@@ -45,5 +44,51 @@
 	.flickity-enabled {
 		height: 100% !important;
 		position: inherit;
+	}
+
+	.has-responsive-height {
+		> span .components-resizable-box__handle {
+			display: none !important;
+		}
+
+		.carousel-nav {
+			margin-top: 0 !important;
+		}
+	}
+
+	.has-responsive-height .has-carousel.flickity-enabled {
+		height: auto !important;
+		padding-bottom: 56.25%;
+		position: relative;
+	}
+
+	.has-responsive-height.components-resizable-box__container {
+		height: auto !important;
+	}
+
+	.carousel-nav {
+		.coblocks--item-thumbnail {
+			opacity: 0.4;
+		}
+
+		.coblocks--item-thumbnail:first-of-type {
+			opacity: 1;
+		}
+	}
+
+	.wp-block-blockgallery-thumbnails {
+		overflow: visible;
+	}
+}
+
+.wp-block[data-type="core/group"] .components-resizable-box__container .wp-block-coblocks-gallery-carousel {
+	margin-bottom: 40px !important;
+	margin-top: 40px !important;
+}
+
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content .wp-block-coblocks-gallery-carousel {
+	.flickity-button:disabled {
+		opacity: 1;
 	}
 }

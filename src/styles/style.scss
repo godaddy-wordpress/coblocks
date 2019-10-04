@@ -1,3 +1,5 @@
+@import "style/mixins";
+
 // Background
 @import "style/background-classes";
 @import "style/background-overlay";
@@ -14,6 +16,21 @@
 @import "style/margin";
 @import "style/gutter";
 @import "style/shadow";
+
+// Utility tooltips
+@import "style/tooltips";
+
+.has-text-align-right {
+	text-align: right;
+}
+
+.has-text-align-left {
+	text-align: left;
+}
+
+.has-text-align-center {
+	text-align: center;
+}
 
 .h-full {
 	height: 100%;
@@ -54,4 +71,3 @@
 .object-position {
 	object-position: 50% 50%;
 }
-

@@ -6,34 +6,35 @@
 	text-align: center;
 	text-decoration: none;
 
-	a{
+	a {
+		border: 0;
 		text-decoration: none;
-		border: 0px;
 	}
 
 	&--error {
-		background: $lightred;
-		color: $darkred;
+		background: #f9e2e2;
+		color: $alert-red;
 		margin: 13px 0 0;
-		a, a:hover{
-			color: $darkred;
+		a,
+		a:hover {
+			color: $alert-red;
 		}
 	}
 
 	&--success {
-		background: $lightgreen;
-		color: $darkgreen;
+		background: #eff9f1;
+		color: $alert-green;
 		padding: 7px 11px 8px;
-		a, a:hover{
-			color: $darkgreen;
+		a,
+		a:hover {
+			color: $alert-green;
 		}
 	}
 
 	&--limit {
-		margin-top: 0;
 		margin-bottom: 15px;
+		margin-top: 0;
 		padding: 9px 15px 10px;
 		text-align: left;
 	}
-
 }
