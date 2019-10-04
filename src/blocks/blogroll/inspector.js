@@ -43,33 +43,33 @@ const Inspector = props => {
 			{ ( ( ! hasPosts && attributes.postFeedType === 'external' ) || ( editing && attributes.postFeedType === 'internal' ) ) &&
 				<Fragment>
 					<ToggleControl
-						label={ __( 'Display post date' ) }
+						label={ __( 'Post Date' ) }
 						checked={ attributes.displayPostDate }
-						help={
-							attributes.displayPostDate ?
-								__( 'Showing the publish date.' ) :
-								__( 'Toggle to show the publish date.' )
-						}
+						// help={
+						// 	attributes.displayPostDate ?
+						// 		__( 'Showing the publish date.' ) :
+						// 		__( 'Toggle to show the publish date.' )
+						// }
 						onChange={ ( value ) => setAttributes( { displayPostDate: value } ) }
 					/>
 					<ToggleControl
-						label={ __( 'Display Link' ) }
+						label={ __( 'More Link' ) }
 						checked={ attributes.displayPostLink }
-						help={
-							attributes.displayPostLink ?
-								__( 'Showing links to individual posts.' ) :
-								__( 'Toggle to show links to posts.' )
-						}
+						// help={
+						// 	attributes.displayPostLink ?
+						// 		__( 'Showing links to individual posts.' ) :
+						// 		__( 'Toggle to show links to posts.' )
+						// }
 						onChange={ ( value ) => setAttributes( { displayPostLink: value } ) }
 					/>
 					<ToggleControl
-						label={ __( 'Display Excerpt' ) }
+						label={ __( 'Post Content' ) }
 						checked={ attributes.displayPostContent }
-						help={
-							attributes.displayPostContent ?
-								__( 'Showing the post excerpt.' ) :
-								__( 'Toggle to show the post excerpt.' )
-						}
+						// help={
+						// 	attributes.displayPostContent ?
+						// 		__( 'Showing the post excerpt.' ) :
+						// 		__( 'Toggle to show the post excerpt.' )
+						// }
 						onChange={ ( value ) => setAttributes( { displayPostContent: value } ) }
 					/>
 					{ attributes.displayPostContent &&
@@ -86,11 +86,11 @@ const Inspector = props => {
 		</PanelBody>
 	);
 
-	const { order, orderBy } = attributes;
+	const { order, orderBy, postFeedType, postsToShow } = attributes;
 
 	const sortingAndFiltering = (
-		<PanelBody title={ __( 'Sorting and Filtering' ) } initialOpen={ false }>
-			{ attributes.postFeedType === 'internal' &&
+		<PanelBody title={ __( 'Sorting and Filtering' ) } initialOpen={ postFeedType === 'external' ? true : false }>
+			{ postFeedType === 'internal' &&
 				<QueryControls
 					{ ...{ order, orderBy } }
 					categoriesList={ categoriesList }
@@ -102,9 +102,9 @@ const Inspector = props => {
 			}
 			<RangeControl
 				label={ __( 'Number of items' ) }
-				value={ attributes.postsToShow }
+				value={ postsToShow }
 				onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
-				min={ 2 }
+				min={ 1 }
 				max={ 20 }
 			/>
 			{ isGridStyle &&
@@ -112,7 +112,7 @@ const Inspector = props => {
 					label={ __( 'Columns' ) }
 					value={ attributes.columns }
 					onChange={ ( value ) => setAttributes( { columns: value } ) }
-					min={ 2 }
+					min={ 1 }
 					max={ 4 }
 					required
 				/>
