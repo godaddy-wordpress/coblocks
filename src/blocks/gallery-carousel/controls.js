@@ -7,14 +7,14 @@ import MediaFilterControl from '../../components/media-filter-control';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { IconButton, Toolbar } = wp.components;
-const {
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { IconButton, Toolbar } from '@wordpress/components';
+import {
 	BlockControls,
 	MediaUpload,
 	MediaUploadCheck,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
 class Controls extends Component {
 	constructor() {

@@ -6,10 +6,10 @@ import ColorSettings, { ColorSettingsAttributes } from './index';
 /**
  * WordPress dependencies
  */
-const { InspectorControls } = wp.blockEditor;
-const { addFilter } = wp.hooks;
-const { Fragment } = wp.element;
-const { createHigherOrderComponent } = wp.compose;
+import { InspectorControls } from '@wordpress/block-editor';
+import { addFilter } from '@wordpress/hooks';
+import { Fragment } from '@wordpress/element';
+import { createHigherOrderComponent } from '@wordpress/compose';
 
 /**
  * Inspector.

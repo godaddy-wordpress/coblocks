@@ -17,11 +17,11 @@ import icons from './icons';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { DOWN } = wp.keycodes;
-const { RangeControl, withFallbackStyles, ToggleControl, Dropdown, IconButton, SelectControl } = wp.components;
+import { __, _x } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { DOWN } from '@wordpress/keycodes';
+import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, IconButton, SelectControl } from '@wordpress/components';
 
 /**
  * Export

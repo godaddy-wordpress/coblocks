@@ -6,7 +6,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-const { RichText, InnerBlocks } = wp.blockEditor;
+import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 const deprecated = [
 	{

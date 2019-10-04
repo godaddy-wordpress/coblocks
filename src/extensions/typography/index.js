@@ -15,10 +15,10 @@ import classnames from 'classnames';
 /**
  * WordPress Dependencies
  */
-const { withSelect } = wp.data;
-const { addFilter } = wp.hooks;
-const { Fragment }	= wp.element;
-const { compose, createHigherOrderComponent } = wp.compose;
+import { withSelect } from '@wordpress/data';
+import { addFilter } from '@wordpress/hooks';
+import { Fragment }	from '@wordpress/element';
+import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
 const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/pullquote', 'core/quote', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/highlight', 'coblocks/pricing-table', 'coblocks/features' ];
 

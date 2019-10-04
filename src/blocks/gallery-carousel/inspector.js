@@ -8,10 +8,10 @@ import SliderPanel from '../../components/slider-panel';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { InspectorControls, InspectorAdvancedControls } = wp.blockEditor;
-const { PanelBody, RangeControl, ToggleControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { InspectorControls, InspectorAdvancedControls } from '@wordpress/block-editor';
+import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 
 /**
  * Inspector controls

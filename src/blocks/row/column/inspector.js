@@ -9,11 +9,11 @@ import DimensionsControl from '../../../components/dimensions-control';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { InspectorControls, PanelColorSettings } = wp.blockEditor;
-const { PanelBody, RangeControl, withFallbackStyles } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
+import { PanelBody, RangeControl, withFallbackStyles } from '@wordpress/components';
 
 /**
  * Fallback styles

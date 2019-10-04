@@ -7,7 +7,7 @@ import { hasEmptyAttributes } from '../../../utils/block-helpers';
 /**
  * WordPress dependencies
  */
-const { RichText, getColorClassName, InnerBlocks } = wp.blockEditor;
+import { RichText, getColorClassName, InnerBlocks } from '@wordpress/block-editor';
 
 const isEmpty = attributes => {
 	const attributesToCheck = [ 'title', 'features', 'currency', 'amount' ];

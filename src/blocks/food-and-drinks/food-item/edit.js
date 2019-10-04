@@ -14,13 +14,13 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { IconButton, DropZone, Spinner, Icon } = wp.components;
-const { dispatch, select } = wp.data;
-const { RichText, MediaPlaceholder } = wp.blockEditor;
-const { mediaUpload } = wp.editor;
-const { isBlobURL } = wp.blob;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { IconButton, DropZone, Spinner, Icon } from '@wordpress/components';
+import { dispatch, select } from '@wordpress/data';
+import { RichText, MediaPlaceholder } from '@wordpress/block-editor';
+import { mediaUpload } from '@wordpress/editor';
+import { isBlobURL } from '@wordpress/blob';
 
 /**
  * Handle creation and removal of placeholder elements so that we always have one available to use.

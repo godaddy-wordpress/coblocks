@@ -19,12 +19,12 @@ import {
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { InnerBlocks, Inserter } = wp.blockEditor;
-const { ResizableBox, Spinner } = wp.components;
-const { isBlobURL } = wp.blob;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { InnerBlocks, Inserter } from '@wordpress/block-editor';
+import { ResizableBox, Spinner } from '@wordpress/components';
+import { isBlobURL } from '@wordpress/blob';
 
 /**
  * Block edit function

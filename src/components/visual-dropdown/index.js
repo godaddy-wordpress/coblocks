@@ -12,8 +12,8 @@ import './styles/editor.scss';
 /**
  * WordPress dependencies
  */
-const { DOWN } = wp.keycodes;
-const { Button, IconButton, Dropdown, NavigableMenu } = wp.components;
+import { DOWN } from '@wordpress/keycodes';
+import { Button, IconButton, Dropdown, NavigableMenu } from '@wordpress/components';
 
 function VisualDropdown( {
 	icon = 'menu',

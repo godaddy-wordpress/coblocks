@@ -20,11 +20,11 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { withNotices, ResizableBox } = wp.components;
-const { RichText } = wp.blockEditor;
+import { __, sprintf } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withNotices, ResizableBox } from '@wordpress/components';
+import { RichText } from '@wordpress/block-editor';
 
 class GalleryCarouselEdit extends Component {
 	constructor() {

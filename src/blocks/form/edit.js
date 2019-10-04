@@ -19,12 +19,12 @@ import SubmitButton from './submit-button';
 /**
  * WordPress dependencies
  */
-const { __, _x, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { registerBlockType, getBlockType } = wp.blocks;
-const { Button, PanelBody, TextControl, ExternalLink } = wp.components;
-const { InspectorControls, InnerBlocks } = wp.blockEditor;
-const { applyFilters } = wp.hooks;
+import { __, _x, sprintf } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { registerBlockType, getBlockType } from '@wordpress/blocks';
+import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
+import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
+import { applyFilters } from '@wordpress/hooks';
 
 /**
  * Block constants

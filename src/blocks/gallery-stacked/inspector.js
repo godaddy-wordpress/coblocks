@@ -8,12 +8,12 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component } = wp.element;
-const { compose } = wp.compose;
-const { withSelect } = wp.data;
-const { InspectorControls, FontSizePicker, withFontSizes } = wp.blockEditor;
-const { PanelBody, RangeControl, ToggleControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
+import { InspectorControls, FontSizePicker, withFontSizes } from '@wordpress/block-editor';
+import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 
 /**
  * Inspector controls

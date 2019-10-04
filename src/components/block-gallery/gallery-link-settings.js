@@ -6,9 +6,9 @@ import linkOptions from './options/link-options';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { SelectControl, ToggleControl, PanelBody, TextControl } = wp.components;
+import { __, _x } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { SelectControl, ToggleControl, PanelBody, TextControl } from '@wordpress/components';
 
 class GalleryLinkSettings extends Component {
 	constructor() {

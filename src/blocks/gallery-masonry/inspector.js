@@ -9,10 +9,10 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component } = wp.element;
-const { InspectorControls } = wp.blockEditor;
-const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component } from '@wordpress/element';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, RangeControl, ToggleControl, SelectControl } from '@wordpress/components';
 
 /**
  * Inspector controls

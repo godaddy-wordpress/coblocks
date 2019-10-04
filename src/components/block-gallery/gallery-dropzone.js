@@ -1,9 +1,9 @@
 /**
  * WordPress dependencies
  */
-const { Component, Fragment } = wp.element;
-const { mediaUpload } = wp.editor;
-const { DropZone } = wp.components;
+import { Component, Fragment } from '@wordpress/element';
+import { mediaUpload } from '@wordpress/editor';
+import { DropZone } from '@wordpress/components';
 
 /**
  * Internal dependencies

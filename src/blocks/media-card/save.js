@@ -13,7 +13,7 @@ import { BackgroundStyles, BackgroundClasses, BackgroundVideo } from '../../comp
 /**
  * WordPress dependencies
  */
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const save = ( { attributes } ) => {
 	const {

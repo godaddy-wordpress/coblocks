@@ -12,7 +12,7 @@ import { GalleryTransforms } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-const { createBlock } = wp.blocks;
+import { createBlock } from '@wordpress/blocks';
 
 const transforms = {
 	from: [

@@ -1,9 +1,9 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { InspectorControls } = wp.blockEditor;
-const { PanelBody, ToggleControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, ToggleControl } from '@wordpress/components';
 
 const Inspector = props => {
 	return (

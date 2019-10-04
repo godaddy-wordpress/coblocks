@@ -21,18 +21,18 @@ import icon from './icon';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const {
+import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import {
 	Placeholder,
 	Button,
 	TextControl,
 	ResizableBox,
 	withNotices,
-} = wp.components;
-const { Fragment, Component } = wp.element;
-const { ENTER } = wp.keycodes;
-const { BlockIcon } = wp.blockEditor;
+} from '@wordpress/components';
+import { Fragment, Component } from '@wordpress/element';
+import { ENTER } from '@wordpress/keycodes';
+import { BlockIcon } from '@wordpress/block-editor';
 
 /**
  * Get settings.
@@ -72,6 +72,9 @@ class Edit extends Component {
 
 			this.setState( { isLoading: false } );
 		} );
+
+		this.updateApiKey = this.updateApiKey.bind( this );
+		this.saveApiKey = this.saveApiKey.bind( this );
 	}
 
 	componentDidUpdate() {
@@ -89,7 +92,7 @@ class Edit extends Component {
 		}
 	}
 
-	updateApiKey = ( apiKey = this.state.apiKey ) => {
+	updateApiKey( apiKey = this.state.apiKey ) {
 		const { attributes, setAttributes } = this.props;
 
 		this.saveApiKey( apiKey );
@@ -107,9 +110,9 @@ class Edit extends Component {
 		if ( attributes.address ) {
 			setAttributes( { pinned: true } );
 		}
-	};
+	}
 
-	saveApiKey = ( apiKey = this.state.apiKey ) => {
+	saveApiKey( apiKey = this.state.apiKey ) {
 		this.setState( { apiKey, isSaving: true } );
 		const model = new wp.api.models.Settings( {
 			coblocks_google_maps_api_key: apiKey,
@@ -123,7 +126,7 @@ class Edit extends Component {
 			} );
 			settings.fetch();
 		} );
-	};
+	}
 
 	render() {
 		const {

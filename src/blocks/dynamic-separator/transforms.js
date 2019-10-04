@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { createBlock } = wp.blocks;
+import { createBlock } from '@wordpress/blocks';
 
 /**
  * Internal dependencies

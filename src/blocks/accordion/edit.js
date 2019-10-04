@@ -8,11 +8,11 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-const { _x } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.blockEditor;
-const { IconButton } = wp.components;
-const { createBlock } = wp.blocks;
+import { _x } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { InnerBlocks } from '@wordpress/block-editor';
+import { IconButton } from '@wordpress/components';
+import { createBlock } from '@wordpress/blocks';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.

@@ -13,7 +13,7 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 const save = ( { attributes, className } ) => {
 	const {

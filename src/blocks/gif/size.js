@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
+import { Component } from '@wordpress/element';
 
 export default class Size extends Component {
 	constructor() {

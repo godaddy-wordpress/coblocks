@@ -16,14 +16,14 @@ import icons from './icons';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
-const { Component, createRef } = wp.element;
-const { TextControl,
+import { __, _x } from '@wordpress/i18n';
+import { Component, createRef } from '@wordpress/element';
+import { TextControl,
 	RangeControl,
 	ButtonGroup,
 	Button,
 	IconButton,
-} = wp.components;
+} from '@wordpress/components';
 
 class CropSettings extends Component {
 	constructor( props ) {

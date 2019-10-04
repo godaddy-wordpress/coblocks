@@ -13,7 +13,7 @@ import DimensionsAttributes from '../../../components/dimensions-control/attribu
 /**
  * WordPress dependencies
  */
-const { InnerBlocks, getColorClassName } = wp.blockEditor;
+import { InnerBlocks, getColorClassName } from '@wordpress/block-editor';
 
 const deprecated = [ {
 	attributes,
