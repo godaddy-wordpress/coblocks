@@ -32,9 +32,14 @@ class Inspector extends Component {
 			keySaved: false,
 			address: props.attributes.address,
 		};
+
+		this.setControls = this.setControls.bind( this );
+		this.updateApiKey = this.updateApiKey.bind( this );
+		this.removeApiKey = this.removeApiKey.bind( this );
+		this.handleKeyDown = this.handleKeyDown.bind( this );
 	}
 
-	setControls = () => {
+	setControls() {
 		const {
 			setAttributes,
 			attributes,
@@ -51,24 +56,24 @@ class Inspector extends Component {
 			streetViewControl: ! controls,
 			fullscreenControl: ! controls,
 		} );
-	};
+	}
 
-	updateApiKey = () => {
+	updateApiKey() {
 		this.props.updateApiKeyCallBack( this.state.apiKey );
-	};
+	}
 
-	removeApiKey = () => {
+	removeApiKey() {
 		this.setState( { apiKey: '' } );
 		this.props.updateApiKeyCallBack( '' );
-	};
+	}
 
-	handleKeyDown = ( keyCode ) => {
+	handleKeyDown( keyCode ) {
 		if ( keyCode !== ENTER ) {
 			return;
 		}
 
 		this.updateApiKey();
-	};
+	}
 
 	render() {
 		const {

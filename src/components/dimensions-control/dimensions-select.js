@@ -36,24 +36,23 @@ const utilitySizes = [
 export default class DimensionsSelect extends Component {
 	constructor( ) {
 		super( ...arguments );
-		this.getSelectValuesFromUtilitySizes = this.getSelectValuesFromUtilitySizes.bind(
-			this
-		);
+
+		this.getSelectValuesFromUtilitySizes = this.getSelectValuesFromUtilitySizes.bind( this );
 		this.getCurrentSelectValue = this.getCurrentSelectValue.bind( this );
 		this.setCurrentSelectValue = this.setCurrentSelectValue.bind( this );
 		this.onChangeValue = this.onChangeValue.bind( this );
 		this.getSelectOptions = this.getSelectOptions.bind( this );
 	}
 
-	getSelectValuesFromUtilitySizes = ( listOfSizes, value ) => {
+	getSelectValuesFromUtilitySizes( listOfSizes, value ) {
 		let selectedPreset;
 		if ( typeof value === 'string' ) {
 			selectedPreset = listOfSizes.find( choice => choice.slug === value );
 			return selectedPreset ? selectedPreset.slug : 'custom';
 		}
-	};
+	}
 
-	getCurrentSelectValue = type => {
+	getCurrentSelectValue( type ) {
 		const { paddingSize, marginSize } = this.props;
 		switch ( type ) {
 			case 'margin':
@@ -62,9 +61,9 @@ export default class DimensionsSelect extends Component {
 				return paddingSize;
 			default:
 		}
-	};
+	}
 
-	setCurrentSelectValue = newSetting => {
+	setCurrentSelectValue( newSetting ) {
 		const { type, setAttributes } = this.props;
 		switch ( type ) {
 			case 'margin':
@@ -75,25 +74,25 @@ export default class DimensionsSelect extends Component {
 				break;
 			default:
 		}
-	};
+	}
 
-	onChangeValue = event => {
+	onChangeValue( event ) {
 		const selectedUtil = utilitySizes.find( util => util.slug === event );
 		if ( selectedUtil ) {
 			this.setCurrentSelectValue(
 				this.getSelectValuesFromUtilitySizes( utilitySizes, selectedUtil.slug )
 			);
 		}
-	};
+	}
 
-	getSelectOptions = optionsArray => {
+	getSelectOptions( optionsArray ) {
 		return [
 			...optionsArray.map( option => ( {
 				value: option.slug,
 				label: option.name,
 			} ) ),
 		];
-	};
+	}
 
 	render() {
 		const { type } = this.props;

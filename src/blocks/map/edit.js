@@ -71,6 +71,9 @@ class Edit extends Component {
 
 			this.setState( { isLoading: false } );
 		} );
+
+		this.updateApiKey = this.updateApiKey.bind( this );
+		this.saveApiKey = this.saveApiKey.bind( this );
 	}
 
 	componentDidUpdate() {
@@ -88,7 +91,7 @@ class Edit extends Component {
 		}
 	}
 
-	updateApiKey = ( apiKey = this.state.apiKey ) => {
+	updateApiKey( apiKey = this.state.apiKey ) {
 		const { attributes, setAttributes } = this.props;
 
 		this.saveApiKey( apiKey );
@@ -106,9 +109,9 @@ class Edit extends Component {
 		if ( attributes.address ) {
 			setAttributes( { pinned: true } );
 		}
-	};
+	}
 
-	saveApiKey = ( apiKey = this.state.apiKey ) => {
+	saveApiKey( apiKey = this.state.apiKey ) {
 		this.setState( { apiKey, isSaving: true } );
 		const model = new wp.api.models.Settings( {
 			coblocks_google_maps_api_key: apiKey,
@@ -122,7 +125,7 @@ class Edit extends Component {
 			} );
 			settings.fetch();
 		} );
-	};
+	}
 
 	render() {
 		const {

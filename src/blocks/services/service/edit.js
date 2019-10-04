@@ -32,7 +32,17 @@ import { isBlobURL } from '@wordpress/blob';
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/button', 'core/paragraph' ];
 
 class Edit extends Component {
-	updateInnerAttributes = ( blockName, newAttributes ) => {
+	constructor() {
+		super( ...arguments );
+
+		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
+		this.manageInnerBlock = this.manageInnerBlock.bind( this );
+		this.onChangeAlignment = this.onChangeAlignment.bind( this );
+		this.toggleCta = this.toggleCta.bind( this );
+		this.replaceImage = this.replaceImage.bind( this );
+	}
+
+	updateInnerAttributes( blockName, newAttributes ) {
 		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
 			this.props.clientId
 		)[ 0 ].innerBlocks;
@@ -45,9 +55,9 @@ class Edit extends Component {
 				);
 			}
 		} );
-	};
+	}
 
-	manageInnerBlock = ( blockName, blockAttributes, show = true ) => {
+	manageInnerBlock( blockName, blockAttributes, show = true ) {
 		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
 			this.props.clientId
 		)[ 0 ].innerBlocks;
@@ -70,7 +80,7 @@ class Edit extends Component {
 				false
 			);
 		}
-	};
+	}
 
 	componentDidUpdate( prevProps ) {
 		if (
@@ -100,7 +110,7 @@ class Edit extends Component {
 		}
 	}
 
-	onChangeAlignment = alignment => {
+	onChangeAlignment( alignment ) {
 		const { setAttributes } = this.props;
 
 		setAttributes( { alignment } );
@@ -113,24 +123,24 @@ class Edit extends Component {
 		this.updateInnerAttributes( 'core/button', {
 			align: this.props.attributes.alignment,
 		} );
-	};
+	}
 
-	toggleCta = () => {
+	toggleCta() {
 		const { attributes, setAttributes } = this.props;
 
 		const showCta = ! attributes.showCta;
 		setAttributes( { showCta } );
 		this.manageInnerBlock( 'core/button', {}, showCta );
-	};
+	}
 
-	replaceImage = files => {
+	replaceImage( files ) {
 		mediaUpload( {
 			allowedTypes: [ 'image' ],
 			filesList: files,
 			onFileChange: ( [ media ] ) =>
 				this.props.setAttributes( { imageUrl: media.url, imageAlt: media.alt } ),
 		} );
-	};
+	}
 
 	renderImage() {
 		const { attributes, setAttributes, isSelected } = this.props;

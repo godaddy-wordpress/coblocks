@@ -92,7 +92,18 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 }
 
 class FoodItem extends Component {
-	updateInnerAttributes = ( blockName, newAttributes ) => {
+	constructor( ) {
+		super( ...arguments );
+
+		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
+		this.toggleImages = this.toggleImages.bind( this );
+		this.togglePrices = this.togglePrices.bind( this );
+		this.setColumns = this.setColumns.bind( this );
+		this.updateStyle = this.updateStyle.bind( this );
+		this.insertNewItem = this.insertNewItem.bind( this );
+	}
+
+	updateInnerAttributes( blockName, newAttributes ) {
 		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
 			this.props.clientId
 		)[ 0 ].innerBlocks;
@@ -105,33 +116,33 @@ class FoodItem extends Component {
 				);
 			}
 		} );
-	};
+	}
 
-	toggleImages = () => {
+	toggleImages() {
 		const { attributes, setAttributes } = this.props;
 
 		const showImages = ! attributes.showImages;
 		setAttributes( { showImages } );
 
 		this.updateInnerAttributes( 'coblocks/food-item', { showImage: showImages } );
-	};
+	}
 
-	togglePrices = () => {
+	togglePrices() {
 		const { attributes, setAttributes } = this.props;
 
 		const showPrices = ! attributes.showPrices;
 		setAttributes( { showPrices } );
 
 		this.updateInnerAttributes( 'coblocks/food-item', { showPrice: showPrices } );
-	};
+	}
 
-	setColumns = ( value ) => {
+	setColumns( value ) {
 		const { setAttributes } = this.props;
 
 		setAttributes( { columns: parseInt( value ) } );
-	};
+	}
 
-	updateStyle = style => {
+	updateStyle( style ) {
 		const { className, attributes, setAttributes } = this.props;
 
 		const activeStyle = getActiveStyle( layoutOptions, className );
@@ -142,9 +153,9 @@ class FoodItem extends Component {
 		);
 
 		setAttributes( { className: updatedClassName } );
-	};
+	}
 
-	insertNewItem = () => {
+	insertNewItem() {
 		const { clientId, attributes } = this.props;
 
 		const blockOrder = select( 'core/block-editor' ).getBlockOrder();
@@ -167,7 +178,7 @@ class FoodItem extends Component {
 		);
 
 		dispatch( 'core/block-editor' ).insertBlock( newItem, insertAtIndex );
-	};
+	}
 
 	render() {
 		const {

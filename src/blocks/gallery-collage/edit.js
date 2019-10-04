@@ -32,6 +32,13 @@ class GalleryCollageEdit extends Component {
 			selectedImage: null,
 			lastGutterValue: null,
 		};
+
+		this.setupImageLocations = this.setupImageLocations.bind( this );
+		this.onSelectImage = this.onSelectImage.bind( this );
+		this.uploadImage = this.uploadImage.bind( this );
+		this.replaceImage = this.replaceImage.bind( this );
+		this.removeImage = this.removeImage.bind( this );
+		this.gutterClasses = this.gutterClasses.bind( this );
 	}
 
 	componentDidMount() {
@@ -59,7 +66,7 @@ class GalleryCollageEdit extends Component {
 		}
 	}
 
-	setupImageLocations = ( images = null ) => {
+	setupImageLocations( images = null ) {
 		const theImages = images || this.props.attributes.images;
 
 		const placeholderCount = this.props.className.includes( 'is-style-tiled' ) || this.props.className.includes( 'is-style-layered' ) ? 4 : 5;
@@ -71,23 +78,23 @@ class GalleryCollageEdit extends Component {
 
 		this.props.setAttributes( { images: imageLocations } );
 		this.setState( { images: imageLocations } );
-	};
+	}
 
-	onSelectImage = ( index ) => {
+	onSelectImage( index ) {
 		if ( this.state.selectedImage !== index ) {
 			this.setState( { selectedImage: index } );
 		}
 	}
 
-	uploadImage = ( files, index ) => {
+	uploadImage( files, index ) {
 		mediaUpload( {
 			allowedTypes: [ 'image' ],
 			filesList: files,
 			onFileChange: ( [ image ] ) => this.replaceImage( image, index ),
 		} );
-	};
+	}
 
-	replaceImage = ( image, index ) => {
+	replaceImage( image, index ) {
 		const { attributes } = this.props;
 
 		const images = [
@@ -95,18 +102,18 @@ class GalleryCollageEdit extends Component {
 			{ ...helper.pickRelevantMediaFiles( image ), index },
 		];
 		this.setupImageLocations( images );
-	};
+	}
 
-	removeImage = ( index ) => {
+	removeImage( index ) {
 		const { attributes } = this.props;
 
 		const images = [
 			...attributes.images.filter( image => parseInt( image.index ) !== parseInt( index ) ),
 		];
 		this.setupImageLocations( images );
-	};
+	}
 
-	updateImageAttributes = ( index, newAttributes ) => {
+	updateImageAttributes( index, newAttributes ) {
 		const { attributes } = this.props;
 		const image = attributes.images.filter( image => parseInt( image.index ) === parseInt( index ) ).pop();
 
@@ -187,7 +194,7 @@ class GalleryCollageEdit extends Component {
 		);
 	}
 
-	gutterClasses = ( index ) => {
+	gutterClasses( index ) {
 		const {
 			attributes,
 			className,
@@ -239,7 +246,7 @@ class GalleryCollageEdit extends Component {
 		}
 
 		return gutterClasses;
-	};
+	}
 
 	renderPlaceholder( index ) {
 		return (
