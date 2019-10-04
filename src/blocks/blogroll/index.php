@@ -145,14 +145,14 @@ function build_carousel_block_content( $posts, $attributes ) {
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blog__post-image-wrapper" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
+				'<div class="wp-block-coblocks-blogroll__post-image-wrapper" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
 				esc_url( $post['postLink'] ),
 				esc_url( $post['thumbnailURL'] )
 			);
 
 		}
 
-		$item_info_class = 'wp-block-coblocks-blog__post-info ';
+		$item_info_class = 'wp-block-coblocks-blogroll__post-info ';
 
 		if ( null === $post['thumbnailURL'] || ! $post['thumbnailURL'] ) {
 
@@ -168,7 +168,7 @@ function build_carousel_block_content( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 
 			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="wp-block-coblocks-blog__post-date">%2$s</time>',
+				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__post-date">%2$s</time>',
 				$post['date'],
 				$post['dateReadable']
 			);
@@ -195,7 +195,7 @@ function build_carousel_block_content( $posts, $attributes ) {
 			$trimmed_excerpt = esc_html( wp_trim_words( $post_excerpt, $attributes['excerptLength'], ' &hellip; ' ) );
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blog__post-excerpt"><p>%1$s</p></div>',
+				'<div class="wp-block-coblocks-blogroll__post-excerpt"><p>%1$s</p></div>',
 				$trimmed_excerpt
 			);
 
@@ -204,7 +204,7 @@ function build_carousel_block_content( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blog__post-read-more"><a href="%1$s">%2$s</a></div>',
+				'<div class="wp-block-coblocks-blogroll__post-read-more"><a href="%1$s">%2$s</a></div>',
 				esc_url( $post['postLink'] ),
 				esc_html( $attributes['postLink'] )
 			);
@@ -276,19 +276,19 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blog__post-image-wrapper" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
+				'<div class="wp-block-coblocks-blogroll__post-image-wrapper" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
 				esc_url( $post['postLink'] ),
 				esc_url( $post['thumbnailURL'] )
 			);
 
 		}
 
-		$list_items_markup .= '<div class="wp-block-coblocks-blog__post-info">';
+		$list_items_markup .= '<div class="wp-block-coblocks-blogroll__post-info">';
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 
 			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="wp-block-coblocks-blog__post-date">%2$s</time>',
+				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__post-date">%2$s</time>',
 				esc_url( $post['date'] ),
 				esc_html( $post['dateReadable'] )
 			);
@@ -315,7 +315,7 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 			$trimmed_excerpt = esc_html( wp_trim_words( $post_excerpt, $attributes['excerptLength'], ' &hellip; ' ) );
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blog__post-excerpt"><p>%1$s</p></div>',
+				'<div class="wp-block-coblocks-blogroll__post-excerpt"><p>%1$s</p></div>',
 				esc_html( $trimmed_excerpt )
 			);
 
@@ -324,7 +324,7 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blog__post-read-more"><a href="%1$s">%2$s</a></div>',
+				'<div class="wp-block-coblocks-blogroll__post-read-more"><a href="%1$s">%2$s</a></div>',
 				esc_url( $post['postLink'] ),
 				esc_html( $attributes['postLink'] )
 			);

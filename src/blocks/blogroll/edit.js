@@ -350,11 +350,11 @@ class LatestPostsEdit extends Component {
 								'list-center': isGridStyle && ! featuredImageUrl,
 							} ) } key={ i }>
 								{ featuredImageUrl &&
-									<div className="wp-block-coblocks-blog__post-image-wrapper" style={ { backgroundImage: featuredImageStyle } }></div>
+									<div className="wp-block-coblocks-blogroll__post-image-wrapper" style={ { backgroundImage: featuredImageStyle } }></div>
 								}
-								<div className="wp-block-coblocks-blog__post-info">
+								<div className="wp-block-coblocks-blogroll__post-info">
 									{ displayPostDate && post.date_gmt &&
-										<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blog__post-date">
+										<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__post-date">
 											{ dateI18n( dateFormat, post.date_gmt ) }
 										</time>
 									}
@@ -368,7 +368,7 @@ class LatestPostsEdit extends Component {
 										}
 									</a>
 									{ displayPostContent &&
-										<div className="wp-block-coblocks-blog__post-excerpt">
+										<div className="wp-block-coblocks-blogroll__post-excerpt">
 											<p>
 												<RawHTML
 													key="html"
@@ -380,7 +380,7 @@ class LatestPostsEdit extends Component {
 									}
 									{ displayPostLink &&
 										<PlainText
-											className="wp-block-coblocks-blog__post-read-more"
+											className="wp-block-coblocks-blogroll__post-read-more"
 											onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
 											value={ postLink }
 											placeholder={ __( 'Read more' ) }
@@ -409,13 +409,13 @@ class LatestPostsEdit extends Component {
 							<div className="coblocks-blog-post--item" key={ i }>
 								<div className="coblocks-blog-post--item-inner">
 									{ featuredImageUrl &&
-										<div className="wp-block-coblocks-blog__post-image-wrapper" style={ { backgroundImage: featuredImageStyle } }></div>
+										<div className="wp-block-coblocks-blogroll__post-image-wrapper" style={ { backgroundImage: featuredImageStyle } }></div>
 									}
-									<div className={ classnames( 'wp-block-coblocks-blog__post-info', {
+									<div className={ classnames( 'wp-block-coblocks-blogroll__post-info', {
 										'full-height': ! featuredImageUrl,
 									} ) }>
 										{ displayPostDate && post.date_gmt &&
-											<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blog__post-date">
+											<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__post-date">
 												{ dateI18n( dateFormat, post.date_gmt ) }
 											</time>
 										}
@@ -429,7 +429,7 @@ class LatestPostsEdit extends Component {
 											}
 										</h5>
 										{ displayPostContent &&
-										<div className="wp-block-coblocks-blog__post-excerpt">
+										<div className="wp-block-coblocks-blogroll__post-excerpt">
 											<p>
 												<RawHTML
 													key="html"
@@ -441,7 +441,7 @@ class LatestPostsEdit extends Component {
 										}
 										{ displayPostLink &&
 										<PlainText
-											className="wp-block-coblocks-blog__post-read-more"
+											className="wp-block-coblocks-blogroll__post-read-more"
 											onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
 											value={ postLink }
 											placeholder={ __( 'Read more' ) }
