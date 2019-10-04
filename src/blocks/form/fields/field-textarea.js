@@ -6,8 +6,8 @@ import CoBlocksFieldLabel from './field-label';
 /**
  * WordPress dependencies
  */
-const { Fragment } = wp.element;
-const { TextareaControl } = wp.components;
+import { Fragment } from '@wordpress/element';
+import { TextareaControl } from '@wordpress/components';
 
 function CoBlocksFieldTextarea( {
 	required,

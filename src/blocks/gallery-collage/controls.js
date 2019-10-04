@@ -7,8 +7,8 @@ import MediaFilterControl from '../../components/media-filter-control';
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
-const { BlockControls } = wp.blockEditor;
+import { Component } from '@wordpress/element';
+import { BlockControls } from '@wordpress/block-editor';
 
 class Controls extends Component {
 	constructor() {

@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-const { createBlock } = wp.blocks;
-const { split, create, toHTMLString } = wp.richText;
+import { createBlock } from '@wordpress/blocks';
+import { split, create, toHTMLString } from '@wordpress/rich-text';
 
 /**
  * Internal dependencies

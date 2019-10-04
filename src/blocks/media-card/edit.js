@@ -16,13 +16,13 @@ import MediaContainer from './media-container';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { InnerBlocks } = wp.blockEditor;
-const { mediaUpload } = wp.editor;
-const { Spinner } = wp.components;
-const { isBlobURL } = wp.blob;
+import { __, _x } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { InnerBlocks } from '@wordpress/block-editor';
+import { mediaUpload } from '@wordpress/editor';
+import { Spinner } from '@wordpress/components';
+import { isBlobURL } from '@wordpress/blob';
 
 /**
  * This block can recieve both image and video files.

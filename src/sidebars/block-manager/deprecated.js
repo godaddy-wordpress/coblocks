@@ -11,8 +11,8 @@ import MapInnerBlocks from './components/map-innerblocks';
 /**
  * WordPress dependencies
  */
-const { models, loadPromise } = wp.api;
-const { dispatch } = wp.data;
+import { models, loadPromise } from '@wordpress/api';
+import { dispatch } from '@wordpress/data';
 
 const hideBlockTypes = dispatch( 'core/edit-post' ).hideBlockTypes;
 

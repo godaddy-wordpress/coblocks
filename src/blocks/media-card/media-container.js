@@ -11,11 +11,11 @@ import { ALLOWED_MEDIA_TYPES } from './edit';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { BlockControls, MediaPlaceholder, MediaUpload } = wp.blockEditor;
-const { IconButton, ResizableBox, Toolbar, DropZone, Spinner } = wp.components;
-const { isBlobURL } = wp.blob;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { BlockControls, MediaPlaceholder, MediaUpload } from '@wordpress/block-editor';
+import { IconButton, ResizableBox, Toolbar, DropZone, Spinner } from '@wordpress/components';
+import { isBlobURL } from '@wordpress/blob';
 
 /**
  * MediaContainer component

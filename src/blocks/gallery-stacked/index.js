@@ -18,7 +18,7 @@ import { GalleryAttributes } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
+import { __, _x } from '@wordpress/i18n';
 
 /**
  * Block constants

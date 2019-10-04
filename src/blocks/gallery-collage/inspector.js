@@ -7,10 +7,10 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
-const { Component } = wp.element;
-const { InspectorControls } = wp.blockEditor;
-const { PanelBody, ToggleControl, SelectControl, ButtonGroup, Button, BaseControl } = wp.components;
+import { __, _x } from '@wordpress/i18n';
+import { Component } from '@wordpress/element';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, ToggleControl, SelectControl, ButtonGroup, Button, BaseControl } from '@wordpress/components';
 
 /**
  * Inspector controls

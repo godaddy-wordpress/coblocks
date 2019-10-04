@@ -8,9 +8,9 @@ import fromEntries from '../../../js/coblocks-fromEntries';
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
-const { RichText } = wp.blockEditor;
-const { Icon } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { RichText } from '@wordpress/block-editor';
+import { Icon } from '@wordpress/components';
 
 const isEmpty = attributes => {
 	const attributesToCheck = [ 'url', 'title', 'description', 'price' ];

@@ -14,11 +14,11 @@ import Gist from './gist';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { compose, withState } = wp.compose;
-const { Component, Fragment } = wp.element;
-const { PlainText, RichText } = wp.blockEditor;
-const { withNotices } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { compose, withState } from '@wordpress/compose';
+import { Component, Fragment } from '@wordpress/element';
+import { PlainText, RichText } from '@wordpress/block-editor';
+import { withNotices } from '@wordpress/components';
 
 /**
  * Block edit function

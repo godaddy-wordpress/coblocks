@@ -7,12 +7,12 @@ import './styles/style.scss';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
-const { Component } = wp.element;
-const {
+import { __, _x } from '@wordpress/i18n';
+import { Component } from '@wordpress/element';
+import {
 	Toolbar,
 	DropdownMenu,
-} = wp.components;
+} from '@wordpress/components';
 
 class MediaFilterControl extends Component {
 	render() {

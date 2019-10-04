@@ -6,8 +6,8 @@ import { noop } from 'lodash';
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
-const { IconButton } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { IconButton } from '@wordpress/components';
 
 const CustomAppender = ( { onClick = noop } ) => {
 	return (

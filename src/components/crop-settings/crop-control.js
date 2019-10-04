@@ -7,7 +7,7 @@ import { originalImage } from './original-image';
 /**
  * WordPress dependencies
  */
-const { Component, createRef } = wp.element;
+import { Component, createRef } from '@wordpress/element';
 
 class CropControl extends Component {
 	constructor( props ) {

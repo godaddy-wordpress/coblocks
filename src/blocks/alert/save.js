@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { RichText, getColorClassName } = wp.blockEditor;
+import { RichText, getColorClassName } from '@wordpress/block-editor';
 
 const save = ( { attributes } ) => {
 	const {

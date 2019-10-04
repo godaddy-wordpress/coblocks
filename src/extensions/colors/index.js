@@ -8,10 +8,10 @@ import ColorTransforms from './transform';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component } = wp.element;
-const { compose } = wp.compose;
-const { withColors, PanelColorSettings } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { Component } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withColors, PanelColorSettings } from '@wordpress/block-editor';
 
 /**
  * Export

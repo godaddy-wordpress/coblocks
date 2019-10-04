@@ -11,9 +11,9 @@ import * as helper from './../../utils/helper';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component } = wp.element;
-const { MediaPlaceholder, BlockIcon } = wp.blockEditor;
+import { __, sprintf } from '@wordpress/i18n';
+import { Component } from '@wordpress/element';
+import { MediaPlaceholder, BlockIcon } from '@wordpress/block-editor';
 
 class GalleryPlaceholder extends Component {
 	constructor() {

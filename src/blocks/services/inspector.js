@@ -11,10 +11,10 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
-const { PanelBody, ToggleControl, RangeControl } = wp.components;
-const { InspectorControls } = wp.blockEditor;
-const { ENTER, SPACE } = wp.keycodes;
+import { __ } from '@wordpress/i18n';
+import { PanelBody, ToggleControl, RangeControl } from '@wordpress/components';
+import { InspectorControls } from '@wordpress/block-editor';
+import { ENTER, SPACE } from '@wordpress/keycodes';
 
 const Inspector = props => {
 	const {

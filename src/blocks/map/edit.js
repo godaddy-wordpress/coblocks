@@ -21,17 +21,17 @@ import icons from '../../utils/icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const {
+import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import {
 	Placeholder,
 	Button,
 	TextControl,
 	ResizableBox,
 	withNotices,
-} = wp.components;
-const { Fragment, Component } = wp.element;
-const { ENTER } = wp.keycodes;
+} from '@wordpress/components';
+import { Fragment, Component } from '@wordpress/element';
+import { ENTER } from '@wordpress/keycodes';
 
 /**
  * Get settings.

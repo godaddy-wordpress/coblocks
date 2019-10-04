@@ -8,9 +8,9 @@ import './styles/editor.scss';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { PanelBody, ToggleControl, SelectControl } = wp.components;
+import { __, sprintf } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
 
 class SliderPanel extends Component {
 	constructor() {

@@ -11,11 +11,11 @@ import { styleOptions } from './styles';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { InspectorControls } = wp.blockEditor;
-const { PanelBody, ToggleControl, RangeControl, TextControl, Button, ButtonGroup, ExternalLink } = wp.components;
-const { ENTER } = wp.keycodes;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, ToggleControl, RangeControl, TextControl, Button, ButtonGroup, ExternalLink } from '@wordpress/components';
+import { ENTER } from '@wordpress/keycodes';
 
 const RETRIEVE_KEY_URL = 'https://cloud.google.com/maps-platform';
 const HELP_URL = 'https://developers.google.com/maps/documentation/javascript/get-api-key';

@@ -14,10 +14,10 @@ import svgs from './svgs';
 /**
  * WordPress dependencies
  */
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { ResizableBox } = wp.components;
-const { withSelect } = wp.data;
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { ResizableBox } from '@wordpress/components';
+import { withSelect } from '@wordpress/data';
 
 /**
  * Set and export block values.

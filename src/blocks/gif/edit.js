@@ -8,13 +8,13 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { Placeholder, Spinner, ResizableBox } = wp.components;
-const { withViewportMatch } = wp.viewport;
-const { withSelect } = wp.data;
-const { RichText } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { Placeholder, Spinner, ResizableBox } from '@wordpress/components';
+import { withViewportMatch } from '@wordpress/viewport';
+import { withSelect } from '@wordpress/data';
+import { RichText } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies

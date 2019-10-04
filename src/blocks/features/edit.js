@@ -16,12 +16,12 @@ import Controls from './controls';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { InnerBlocks } = wp.blockEditor;
-const { isBlobURL } = wp.blob;
-const { Spinner } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { InnerBlocks } from '@wordpress/block-editor';
+import { isBlobURL } from '@wordpress/blob';
+import { Spinner } from '@wordpress/components';
 
 /**
  * Constants

@@ -16,11 +16,11 @@ import { icon } from './';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { withNotices } = wp.components;
-const { MediaPlaceholder, BlockIcon } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withNotices } from '@wordpress/components';
+import { MediaPlaceholder, BlockIcon } from '@wordpress/block-editor';
 
 class Edit extends Component {
 	constructor() {

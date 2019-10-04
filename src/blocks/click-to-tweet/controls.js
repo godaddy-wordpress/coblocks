@@ -6,10 +6,10 @@ import icons from '../../utils/icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { Toolbar } = wp.components;
-const { AlignmentToolbar, BlockControls } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { Toolbar } from '@wordpress/components';
+import { AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 
 class Controls extends Component {
 	render() {

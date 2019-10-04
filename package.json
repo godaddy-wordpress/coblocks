@@ -60,6 +60,7 @@
 		"@wordpress/babel-preset-default": "^4.3.0",
 		"@wordpress/block-editor": "^3.1.0",
 		"@wordpress/block-library": "^2.8.0",
+		"@wordpress/edit-post": "^3.8.1",
 		"@wordpress/i18n": "^1.2.3",
 		"@wordpress/plugins": "^1.0.4",
 		"@wordpress/postcss-themes": "^2.1.0",

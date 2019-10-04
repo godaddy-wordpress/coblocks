@@ -11,20 +11,20 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const {
+import { __, _x } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import {
 	InnerBlocks,
 	MediaPlaceholder,
-} = wp.blockEditor;
-const {
+} from '@wordpress/block-editor';
+import {
 	DropZone,
 	IconButton,
 	Spinner,
-} = wp.components;
-const { dispatch, select } = wp.data;
-const { mediaUpload } = wp.editor;
-const { isBlobURL } = wp.blob;
+} from '@wordpress/components';
+import { dispatch, select } from '@wordpress/data';
+import { mediaUpload } from '@wordpress/editor';
+import { isBlobURL } from '@wordpress/blob';
 
 /**
  * Constants

@@ -14,11 +14,11 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-const { __, _x } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { withSelect, dispatch, select } = wp.data;
-const { InnerBlocks } = wp.blockEditor;
+import { __, _x } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withSelect, dispatch, select } from '@wordpress/data';
+import { InnerBlocks } from '@wordpress/block-editor';
 const TokenList = wp.tokenList;
 
 const ALLOWED_BLOCKS = [ 'coblocks/food-item' ];

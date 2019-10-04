@@ -11,8 +11,8 @@ import CoBlocksFieldLabel from './field-label';
 /**
  * WordPress dependencies
  */
-const { Fragment } = wp.element;
-const { TextControl } = wp.components;
+import { Fragment } from '@wordpress/element';
+import { TextControl } from '@wordpress/components';
 
 function CoBlocksField( {
 	isSelected,

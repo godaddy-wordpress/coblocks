@@ -6,14 +6,14 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { IconButton, Spinner, Dashicon } = wp.components;
-const { RichText, URLInput } = wp.blockEditor;
-const { withSelect } = wp.data;
-const { BACKSPACE, DELETE } = wp.keycodes;
-const { isBlobURL } = wp.blob;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { IconButton, Spinner, Dashicon } from '@wordpress/components';
+import { RichText, URLInput } from '@wordpress/block-editor';
+import { withSelect } from '@wordpress/data';
+import { BACKSPACE, DELETE } from '@wordpress/keycodes';
+import { isBlobURL } from '@wordpress/blob';
 
 class GalleryImage extends Component {
 	constructor() {

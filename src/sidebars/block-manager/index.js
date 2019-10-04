@@ -7,8 +7,8 @@ import ModalSettings from './components/modal';
 /**
  * WordPress dependencies
  */
-const { registerPlugin } = wp.plugins;
-const { dispatch } = wp.data;
+import { registerPlugin } from '@wordpress/plugins';
+import { dispatch } from '@wordpress/data';
 const hideBlockTypes = dispatch( 'core/edit-post' ).hideBlockTypes;
 
 /**

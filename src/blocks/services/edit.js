@@ -12,14 +12,14 @@ import icons from './icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const {
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import {
 	AlignmentToolbar,
 	BlockControls,
 	InnerBlocks,
-} = wp.blockEditor;
-const { dispatch, select } = wp.data;
+} from '@wordpress/block-editor';
+import { dispatch, select } from '@wordpress/data';
 const TokenList = wp.tokenList;
 
 /**
