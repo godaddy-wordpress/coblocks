@@ -6,13 +6,13 @@
  */
 
 /**
- * Renders the `blogroll` block on server.
+ * Renders the block on server.
  *
  * @param array $attributes The block attributes.
  *
- * @return string Returns the post content with latest posts added.
+ * @return string Returns the block content.
  */
-function render_block_blogroll( $attributes ) {
+function coblocks_render_blogroll_block( $attributes ) {
 
 	$args = array(
 		'posts_per_page'   => $attributes['postsToShow'],
@@ -413,7 +413,7 @@ function extract_internal_info( $posts ) {
 /**
  * Registers the `blogroll` block on server.
  */
-function register_block_blogroll() {
+function coblocks_register_blogroll_block() {
 
 	if ( ! function_exists( 'register_block_type' ) ) {
 
@@ -438,8 +438,7 @@ function register_block_blogroll() {
 					'default' => 'left',
 				),
 				'align'              => array(
-					'type'    => 'string',
-					'default' => 'wide',
+					'type' => 'string',
 				),
 				'className'          => array(
 					'type' => 'string',
@@ -516,9 +515,9 @@ function register_block_blogroll() {
 					'default' => false,
 				),
 			),
-			'render_callback' => 'render_block_blogroll',
+			'render_callback' => 'coblocks_render_blogroll_block',
 			'editor_script'   => 'coblocks-slick-initializer',
 		)
 	);
 }
-add_action( 'init', 'register_block_blogroll' );
+add_action( 'init', 'coblocks_register_blogroll_block' );
