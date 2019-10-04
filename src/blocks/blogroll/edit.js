@@ -4,19 +4,25 @@
 import classnames from 'classnames';
 import includes from 'lodash/includes';
 import { find, isUndefined, pickBy } from 'lodash';
-import { Fragment } from 'react';
+import Slider from 'react-slick';
 
 /**
  * Internal dependencies
  */
-import Slider from 'react-slick';
+
 import InspectorControls from './inspector';
 import blogIcons from './icons';
 
 /**
  * WordPress dependencies
  */
-import { Component, RawHTML } from '@wordpress/element';
+import apiFetch from '@wordpress/api-fetch';
+import { __, _x } from '@wordpress/i18n';
+import { Component, RawHTML, Fragment } from '@wordpress/element';
+import { addQueryArgs } from '@wordpress/url';
+import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
+import { withSelect } from '@wordpress/data';
+import { BlockControls, PlainText } from '@wordpress/block-editor';
 import {
 	Placeholder,
 	Spinner,
@@ -25,42 +31,32 @@ import {
 	Button,
 	ServerSideRender,
 } from '@wordpress/components';
-import apiFetch from '@wordpress/api-fetch';
-import { addQueryArgs } from '@wordpress/url';
-import { __ } from '@wordpress/i18n';
-import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
-import { withSelect } from '@wordpress/data';
-
-const TokenList = wp.tokenList;
 
 /**
  * Module Constants
  */
-const { BlockControls, PlainText } = wp.blockEditor;
-
 const CATEGORIES_LIST_QUERY = {
 	per_page: -1,
 };
 
-const layoutOptions = [
+const TokenList = wp.tokenList;
+
+const styleOptions = [
 	{
 		name: 'grid',
 		label: __( 'Grid' ),
 		icon: blogIcons.layoutGridIcon,
-		iconWithImages: blogIcons.layoutGridIconWithImages,
 		isDefault: true,
 	},
 	{
 		name: 'list',
 		label: __( 'List' ),
 		icon: blogIcons.layoutListIcon,
-		iconWithImages: blogIcons.layoutListIconWithImages,
 	},
 	{
 		name: 'carousel',
 		label: __( 'Carousel' ),
 		icon: blogIcons.layoutCarouselIcon,
-		iconWithImages: blogIcons.layoutCarouselIconWithImages,
 	},
 ];
 
@@ -123,7 +119,7 @@ class LatestPostsEdit extends Component {
 
 	componentDidMount() {
 		const { className } = this.props;
-		const activeStyle = getActiveStyle( layoutOptions, className );
+		const activeStyle = getActiveStyle( styleOptions, className );
 		this.updateStyle( activeStyle );
 		this.isStillMounted = true;
 		this.fetchRequest = apiFetch( {
@@ -159,7 +155,7 @@ class LatestPostsEdit extends Component {
 	updateStyle = style => {
 		const { className, attributes, setAttributes } = this.props;
 
-		const activeStyle = getActiveStyle( layoutOptions, className );
+		const activeStyle = getActiveStyle( styleOptions, className );
 		const updatedClassName = replaceActiveStyle(
 			attributes.className,
 			activeStyle,
@@ -172,13 +168,14 @@ class LatestPostsEdit extends Component {
 	render() {
 		const { attributes, setAttributes, className, latestPosts } = this.props;
 
+		const { categoriesList } = this.state;
+
 		const isListStyle = includes( className, 'is-style-list' );
 		const isGridStyle = includes( className, 'is-style-grid' );
 		const isCarouselStyle = includes( className, 'is-style-carousel' );
 
-		const activeStyle = getActiveStyle( layoutOptions, className );
+		const activeStyle = getActiveStyle( styleOptions, className );
 
-		const { categoriesList } = this.state;
 		const {
 			displayPostContent,
 			displayPostDate,
@@ -195,12 +192,13 @@ class LatestPostsEdit extends Component {
 			visibleItems,
 			draggable,
 			autoPlay,
-			autoPlaySpeed } = attributes;
+			autoPlaySpeed,
+		} = attributes;
 
 		const editToolbarControls = [
 			{
 				icon: 'edit',
-				title: __( 'Edit Calendar URL' ),
+				title: __( 'Edit RSS URL' ),
 				onClick: () => this.setState( { editing: true } ),
 			},
 		];
@@ -215,7 +213,7 @@ class LatestPostsEdit extends Component {
 						hasPosts={ hasPosts }
 						editing={ this.state.editing }
 						activeStyle={ activeStyle }
-						layoutOptions={ layoutOptions }
+						styleOptions={ styleOptions }
 						onUpdateStyle={ this.updateStyle }
 						categoriesList={ categoriesList }
 					/>
@@ -272,7 +270,7 @@ class LatestPostsEdit extends Component {
 						hasPosts={ hasPosts }
 						editing={ this.state.editing }
 						activeStyle={ activeStyle }
-						layoutOptions={ layoutOptions }
+						styleOptions={ styleOptions }
 						onUpdateStyle={ this.updateStyle }
 						categoriesList={ categoriesList }
 					/>
@@ -304,7 +302,7 @@ class LatestPostsEdit extends Component {
 					hasPosts={ hasPosts }
 					editing={ this.state.editing }
 					activeStyle={ activeStyle }
-					layoutOptions={ layoutOptions }
+					styleOptions={ styleOptions }
 					onUpdateStyle={ this.updateStyle }
 					categoriesList={ categoriesList }
 				/>
@@ -332,7 +330,6 @@ class LatestPostsEdit extends Component {
 					className={ classnames( this.props.className, {
 						'image-to-left': listPosition === 'left',
 						'image-to-right': listPosition === 'right',
-						'wp-block-coblocks-blog__list': true,
 						'has-dates': displayPostDate,
 						[ `columns-${ columns }` ]: isGridStyle,
 					} ) }
@@ -361,15 +358,15 @@ class LatestPostsEdit extends Component {
 											{ dateI18n( dateFormat, post.date_gmt ) }
 										</time>
 									}
-									<h5>
+									<a href={ post.link } target="_blank" rel="noreferrer noopener">
 										{ titleTrimmed ? (
 											<RawHTML>
 												{ titleTrimmed }
 											</RawHTML>
 										) :
-											__( '(Untitled)' )
+											_x( '(no title)', 'placeholder when a post has no title' )
 										}
-									</h5>
+									</a>
 									{ displayPostContent &&
 										<div className="wp-block-coblocks-blog__post-excerpt">
 											<p>
@@ -386,7 +383,7 @@ class LatestPostsEdit extends Component {
 											className="wp-block-coblocks-blog__post-read-more"
 											onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
 											value={ postLink }
-											placeholder={ __( 'Continue Reading' ) }
+											placeholder={ __( 'Read more' ) }
 										/>
 									}
 								</div>
@@ -447,7 +444,7 @@ class LatestPostsEdit extends Component {
 											className="wp-block-coblocks-blog__post-read-more"
 											onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
 											value={ postLink }
-											placeholder={ __( 'Continue Reading' ) }
+											placeholder={ __( 'Read more' ) }
 										/>
 										}
 									</div>

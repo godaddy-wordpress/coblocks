@@ -1,5 +1,5 @@
 .editor-block-list__block[data-type="coblocks/blogroll"] {
-  padding-left: 2.5em;
+	padding-left: 2.5em;
 
 	&.is-style-grid {
 		padding-left: 0;
@@ -7,8 +7,8 @@
 
 	ul.is-style-list {
 		.wp-block-coblocks-blog__post-image-wrapper {
-			background-size: 100%;
 			background-repeat: no-repeat;
+			background-size: 100%;
 		}
 	}
 
@@ -18,7 +18,7 @@
 
 	&.editor-block-list__block[data-align="full"] {
 		.wp-block-coblocks-blogroll {
-		  padding: 0 12px;
+			padding: 0 12px;
 		}
 	}
 
@@ -26,9 +26,4 @@
 		height: 100% !important;
 		position: inherit;
 	}
-}
-
-.components-coblocks-gallery-inspector__autoplayspeed-select {
-	margin-bottom: 1.75em !important;
-	margin-top: -0.85em;
 }

@@ -1,5 +1,5 @@
 /**
- * Styles.
+ * Styles
  */
 import './styles/editor.scss';
 import './styles/style.scss';

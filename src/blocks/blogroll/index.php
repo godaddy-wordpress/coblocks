@@ -224,7 +224,7 @@ function build_carousel_block_content( $posts, $attributes ) {
 
 function build_non_carousel_block_content( $posts, $attributes ) {
 
-	$class        = 'wp-block-coblocks-blogroll wp-block-coblocks-blog__list';
+	$class        = 'wp-block-coblocks-blogroll';
 	$block_layout = strpos( $attributes['className'], 'is-style-grid' ) !== false ? 'grid' : 'list';
 
 	if ( isset( $attributes['listPosition'] ) && 'list' === $block_layout ) {
@@ -460,7 +460,7 @@ function coblocks_register_blogroll_block() {
 				),
 				'postLink'           => array(
 					'type'    => 'string',
-					'default' => __( 'Continue Reading', 'coblocks' ),
+					'default' => __( 'Read more', 'coblocks' ),
 				),
 				'postFeedType'       => array(
 					'type'    => 'string',
