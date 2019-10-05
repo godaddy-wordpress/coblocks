@@ -84,8 +84,38 @@ const Inspector = props => {
 			/>
 			{ postFeedType === 'internal' &&
 				<Fragment>
+					<ToggleControl
+						label={ __( 'Post Date' ) }
+						checked={ displayPostDate }
+						help={
+							displayPostDate ?
+								__( 'Showing the publish date.' ) :
+								__( 'Toggle to show the publish date.' )
+						}
+						onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
+					/>
+					<ToggleControl
+						label={ __( 'Post Content' ) }
+						checked={ displayPostContent }
+						help={
+							displayPostContent ?
+								__( 'Showing the post content.' ) :
+								__( 'Toggle to show the post content.' )
+						}
+						onChange={ () => setAttributes( { displayPostContent: ! displayPostContent } ) }
+					/>
+					{ displayPostContent &&
+						<RangeControl
+							label={ __( 'Max words in content' ) }
+							className="components-coblocks-blogroll-word-count"
+							value={ excerptLength }
+							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
+							min={ 5 }
+							max={ 75 }
+						/>
+					}
 					{ ! isGridStyle && ! isCarouselStyle &&
-						<BaseControl label={ __( 'Thumbnail Size' ) } className="components-coblocks-blogroll-thumbnail-size">
+						<BaseControl label={ __( 'Thumbnail Size' ) }>
 							<ButtonGroup aria-label={ __( 'Thumbnail Size' ) }>
 								{ sizeOptions.map( ( option ) => {
 									const isCurrent = imageSize === option.value;
@@ -103,35 +133,6 @@ const Inspector = props => {
 								} ) }
 							</ButtonGroup>
 						</BaseControl>
-					}
-					<ToggleControl
-						label={ __( 'Post Date' ) }
-						checked={ displayPostDate }
-						help={
-							displayPostDate ?
-								__( 'Showing the publish date.' ) :
-								__( 'Toggle to show the publish date.' )
-						}
-						onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
-					/>
-					<ToggleControl
-						label={ __( 'Post Content' ) }
-						checked={ displayPostContent }
-						help={
-							displayPostContent ?
-								__( 'Showing the post excerpt.' ) :
-								__( 'Toggle to show the post excerpt.' )
-						}
-						onChange={ () => setAttributes( { displayPostContent: ! displayPostContent } ) }
-					/>
-					{ displayPostContent &&
-						<RangeControl
-							label={ __( 'Max words in excerpt' ) }
-							value={ excerptLength }
-							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
-							min={ 5 }
-							max={ 75 }
-						/>
 					}
 				</Fragment>
 			}

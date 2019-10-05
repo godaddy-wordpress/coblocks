@@ -258,15 +258,15 @@ class LatestPostsEdit extends Component {
 			latestPosts;
 
 		const toolbarControls = [ {
-			icon: blogIcons.listPositionRight,
-			title: __( 'Image on right' ),
-			isActive: listPosition === 'right',
-			onClick: () => setAttributes( { listPosition: 'right' } ),
-		}, {
 			icon: blogIcons.listPositionLeft,
 			title: __( 'Image on left' ),
 			isActive: listPosition === 'left',
 			onClick: () => setAttributes( { listPosition: 'left' } ),
+		}, {
+			icon: blogIcons.listPositionRight,
+			title: __( 'Image on right' ),
+			isActive: listPosition === 'right',
+			onClick: () => setAttributes( { listPosition: 'right' } ),
 		} ];
 
 		const slickSettings = {
