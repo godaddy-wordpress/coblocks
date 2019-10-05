@@ -184,7 +184,7 @@ function build_carousel_block_content( $posts, $attributes ) {
 		}
 
 		$list_items_markup .= sprintf(
-			'<a href="%1$s">%2$s</a>',
+			'<a href="%1$s" alt="%2$s">%2$s</a>',
 			esc_url( $post['postLink'] ),
 			esc_html( $title )
 		);
@@ -304,7 +304,7 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 		}
 
 		$list_items_markup .= sprintf(
-			'<a href="%1$s">%2$s</a>',
+			'<a href="%1$s" alt="%2$s">%2$s</a>',
 			$post['postLink'],
 			$title
 		);

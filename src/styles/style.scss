@@ -52,6 +52,28 @@
 	height: 20%;
 }
 
+// 600px +
+@include break-small() {
+	.sm\:w-1\/3 {
+		width: 33.33%;
+	}
+
+	.sm\:h-1\/3 {
+		height: 33.33%;
+	}
+}
+
+// 782px+
+@include break-medium() {
+	.md\:w-1\/2 {
+		width: 50%;
+	}
+
+	.md\:h-1\/2 {
+		height: 50%;
+	}
+}
+
 .has-text-align-right {
 	text-align: right;
 }

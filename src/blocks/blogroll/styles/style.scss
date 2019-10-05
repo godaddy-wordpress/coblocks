@@ -1,6 +1,10 @@
 .wp-block-coblocks-blogroll {
 	list-style: none;
 
+	& + & {
+		margin-top: map-get($margin, 7);
+	}
+
 	&.alignfull {
 		padding-left: map-get($padding, 5);
 		padding-right: map-get($padding, 5);

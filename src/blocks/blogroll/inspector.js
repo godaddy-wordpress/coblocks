@@ -60,12 +60,12 @@ const Inspector = props => {
 			shortName: _x( 'S', 'abbreviation for "Small" size' ),
 		},
 		{
-			value: 'w-1/3 h-1/3',
+			value: 'w-1/5 sm:w-1/3 h-1/5 sm:h-1/3',
 			label: _x( 'Medium', 'label for medium size option' ),
 			shortName: _x( 'M', 'abbreviation for "Medium" size' ),
 		},
 		{
-			value: 'w-1/2 h-1/2',
+			value: 'w-1/5 sm:w-1/3 md:w-1/2 h-1/5 sm:h-1/3 md:h-1/2',
 			label: _x( 'Large', 'label for large size option' ),
 			shortName: _x( 'L', 'abbreviation for "Large" size' ),
 		},

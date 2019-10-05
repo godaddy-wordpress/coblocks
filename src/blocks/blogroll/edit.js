@@ -107,7 +107,7 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 	return list.value;
 }
 
-class LatestPostsEdit extends Component {
+class BlogrollEdit extends Component {
 	constructor() {
 		super( ...arguments );
 		this.state = {
@@ -386,7 +386,7 @@ class LatestPostsEdit extends Component {
 											{ dateI18n( dateFormat, post.date_gmt ) }
 										</time>
 									}
-									<a href={ post.link } target="_blank" rel="noreferrer noopener">
+									<a href={ post.link } target="_blank" rel="noreferrer noopener" alt={ titleTrimmed }>
 										{ titleTrimmed ? (
 											<RawHTML>
 												{ titleTrimmed }
@@ -516,4 +516,4 @@ export default compose( [
 			latestPosts: latestPosts,
 		};
 	} ),
-] )( LatestPostsEdit );
+] )( BlogrollEdit );
