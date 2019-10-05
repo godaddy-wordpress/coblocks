@@ -22,7 +22,7 @@ import { compose } from '@wordpress/compose';
 import { Component, RawHTML, Fragment } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
-import { withSelect, withDispatch} from '@wordpress/data';
+import { withSelect } from '@wordpress/data';
 import { BlockControls, PlainText, RichText } from '@wordpress/block-editor';
 import {
 	Placeholder,
@@ -31,8 +31,6 @@ import {
 	TextControl,
 	Button,
 	ServerSideRender,
-	Disabled,
-	ResizableBox,
 } from '@wordpress/components';
 
 /**
@@ -62,8 +60,6 @@ const styleOptions = [
 		icon: blogIcons.layoutCarouselIcon,
 	},
 ];
-
-const applyWidthConstraints = ( width ) => Math.ceil( width / 5 ) * 5;
 
 /**
  * Returns the active style from the given className.
@@ -123,7 +119,7 @@ class LatestPostsEdit extends Component {
 	}
 
 	componentDidMount() {
-		const { className, attributes } = this.props;
+		const { className } = this.props;
 		const activeStyle = getActiveStyle( styleOptions, className );
 
 		this.updateStyle( activeStyle );
@@ -150,11 +146,11 @@ class LatestPostsEdit extends Component {
 		this.isStillMounted = false;
 	}
 
-	componentDidUpdate( prevProps) {
+	componentDidUpdate() {
 		const { displayPostContent, displayPostLink } = this.props.attributes;
 		if ( displayPostLink && ! displayPostContent ) {
 			this.props.setAttributes( {
-				displayPostLink: false
+				displayPostLink: false,
 			} );
 		}
 	}
@@ -187,8 +183,6 @@ class LatestPostsEdit extends Component {
 			setAttributes,
 			className,
 			latestPosts,
-			isSelected,
-			toggleSelection,
 		} = this.props;
 
 		const { categoriesList } = this.state;
@@ -219,10 +213,9 @@ class LatestPostsEdit extends Component {
 			imageSize,
 		} = attributes;
 
-		const imageClasses = classnames( 'wp-block-coblocks-blogroll__image', 'flex-0', {
+		const imageClasses = classnames( 'wp-block-coblocks-blogroll__image', 'flex-0', imageSize, {
 			'mr-6': isListStyle && listPosition === 'left',
 			'ml-6': isListStyle && listPosition === 'right',
-			'is-selected': isSelected,
 		} );
 
 		const editToolbarControls = [
@@ -265,12 +258,12 @@ class LatestPostsEdit extends Component {
 			latestPosts;
 
 		const toolbarControls = [ {
-			icon: blogIcons.mediaCardRight,
+			icon: blogIcons.listPositionRight,
 			title: __( 'Image on right' ),
 			isActive: listPosition === 'right',
 			onClick: () => setAttributes( { listPosition: 'right' } ),
 		}, {
-			icon: blogIcons.mediaCardLeft,
+			icon: blogIcons.listPositionLeft,
 			title: __( 'Image on left' ),
 			isActive: listPosition === 'left',
 			onClick: () => setAttributes( { listPosition: 'left' } ),
@@ -362,11 +355,10 @@ class LatestPostsEdit extends Component {
 					} ) }
 				>
 					{ displayPosts.map( ( post, i ) => {
-
 						const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
 						const featuredImageStyle = 'url(' + featuredImageUrl + ')';
 
-						const listClasses = classnames( 'flex', 'flex-auto', 'items-stretch', 'w-full', 'mb-7',  {
+						const listClasses = classnames( 'flex', 'flex-auto', 'items-stretch', 'w-full', 'mb-7', {
 							'flex-row-reverse': listPosition === 'right',
 							'has-featured-image': featuredImageUrl,
 						} );
@@ -381,46 +373,12 @@ class LatestPostsEdit extends Component {
 						excerptElement.innerHTML = excerpt;
 						excerpt = excerptElement.textContent || excerptElement.innerText || '';
 
-
-
-
-						const onResizeStart = () => {
-							toggleSelection( false );
-						};
-						const onResize = ( event, direction, elt ) => {
-							setAttributes( {
-								imageSize: applyWidthConstraints( parseInt( elt.style.width ) ),
-							} );
-							//onWidthChange( parseInt( elt.style.width ) );
-						};
-						const onResizeStop = ( event, direction, elt ) => {
-							toggleSelection( true );
-							setAttributes( {
-								imageSize: applyWidthConstraints( parseInt( elt.style.width ) ),
-							} );
-						};
-						const enablePositions = {
-							right: listPosition === 'left',
-							bottom: true,
-							left: listPosition === 'right',
-						};
-
 						return (
 							<li key={ i } className={ listClasses }>
 								{ featuredImageUrl &&
-										<ResizableBox
-											className={ imageClasses }
-											size={ { width: applyWidthConstraints( imageSize ) + 'px', height: applyWidthConstraints( imageSize ) + 'px' } }
-											maxWidth="50%"
-											minWidth="10%"
-											enable={ enablePositions }
-											onResizeStart={ onResizeStart }
-											onResize={ onResize }
-											onResizeStop={ onResizeStop }
-											lockAspectRatio
-										>
-											<a className="block w-full h-full bg-cover bg-center-center" target="_blank" rel="noreferrer noopener" style={ { backgroundImage: featuredImageStyle } }></a>
-										</ResizableBox>
+									<div className={ imageClasses }>
+										<div className="block w-full h-full bg-cover bg-center-center pt-full" style={ { backgroundImage: featuredImageStyle } }></div>
+									</div>
 								}
 								<div className="wp-block-coblocks-blogroll__content flex flex-col self-center w-full">
 									{ displayPostDate && post.date_gmt &&
@@ -534,13 +492,6 @@ class LatestPostsEdit extends Component {
 }
 
 export default compose( [
-	withDispatch( ( dispatch ) => {
-		const { toggleSelection } = dispatch( 'core/block-editor' );
-
-		return {
-			toggleSelection,
-		};
-	} ),
 	withSelect( ( select, props ) => {
 		const { postsToShow, order, orderBy, categories } = props.attributes;
 		const { getEntityRecords } = select( 'core' );

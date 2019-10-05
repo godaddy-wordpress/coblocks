@@ -21,13 +21,14 @@ import {
 	RangeControl,
 	QueryControls,
 	RadioControl,
+	BaseControl,
+	ButtonGroup,
+	Button,
 } from '@wordpress/components';
 
 const Inspector = props => {
 	const {
 		attributes,
-		hasPosts,
-		editing,
 		activeStyle,
 		styleOptions,
 		onUpdateStyle,
@@ -45,10 +46,30 @@ const Inspector = props => {
 		displayPostLink,
 		displayPostContent,
 		columns,
+		imageSize,
 	} = attributes;
 
 	const isCarouselStyle = ( 'carousel' === activeStyle.name );
+
 	const isGridStyle = ( 'grid' === activeStyle.name );
+
+	const sizeOptions = [
+		{
+			value: 'w-1/5 h-1/5',
+			label: _x( 'Small', 'label for small size option' ),
+			shortName: _x( 'S', 'abbreviation for "Small" size' ),
+		},
+		{
+			value: 'w-1/3 h-1/3',
+			label: _x( 'Medium', 'label for medium size option' ),
+			shortName: _x( 'M', 'abbreviation for "Medium" size' ),
+		},
+		{
+			value: 'w-1/2 h-1/2',
+			label: _x( 'Large', 'label for large size option' ),
+			shortName: _x( 'L', 'abbreviation for "Large" size' ),
+		},
+	];
 
 	const settings = (
 		<PanelBody title={ __( 'Blogroll Settings' ) }>
@@ -56,12 +77,11 @@ const Inspector = props => {
 				label={ __( 'Feed' ) }
 				selected={ postFeedType }
 				options={ [
-					{ label:  __( 'My Blog' ), value: 'internal' },
+					{ label: __( 'My Blog' ), value: 'internal' },
 					{ label: __( 'External Feed' ), value: 'external' },
 				] }
 				onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
 			/>
-
 			{ postFeedType === 'internal' &&
 				<Fragment>
 					<ToggleControl
@@ -104,6 +124,26 @@ const Inspector = props => {
 							min={ 5 }
 							max={ 75 }
 						/>
+					}
+					{ ! isGridStyle && ! isCarouselStyle &&
+						<BaseControl label={ __( 'Thumbnail Size' ) }>
+							<ButtonGroup aria-label={ __( 'Thumbnail Size' ) }>
+								{ sizeOptions.map( ( option ) => {
+									const isCurrent = imageSize === option.value;
+									return (
+										<Button
+											key={ `option-${ option.value }` }
+											isLarge
+											isPrimary={ isCurrent }
+											aria-pressed={ isCurrent }
+											onClick={ () => setAttributes( { imageSize: option.value } ) }
+										>
+											{ option.shortName }
+										</Button>
+									);
+								} ) }
+							</ButtonGroup>
+						</BaseControl>
 					}
 				</Fragment>
 			}

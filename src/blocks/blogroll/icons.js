@@ -8,8 +8,8 @@ const { SVG, Path, G } = wp.components;
  */
 const icons = {};
 
-icons.mediaCardLeft  = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><Path d="m11 15v-10h-10v10zm2-6h6v-2h-6zm0 4h6v-2h-6z" /></SVG>;
-icons.mediaCardRight = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><Path d="m19 15v-10h-10v10zm-18-6h6v-2h-6zm0 4h6v-2h-6z" /></SVG>;
+icons.listPositionLeft  = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><Path d="m11 15v-10h-10v10zm2-6h6v-2h-6zm0 4h6v-2h-6z" /></SVG>;
+icons.listPositionRight = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><Path d="m19 15v-10h-10v10zm-18-6h6v-2h-6zm0 4h6v-2h-6z" /></SVG>;
 
 // TODO add the proper SVGs for the code below
 icons.layoutGridIcon = (
