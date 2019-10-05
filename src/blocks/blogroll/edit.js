@@ -17,7 +17,7 @@ import blogIcons from './icons';
  * WordPress dependencies
  */
 import apiFetch from '@wordpress/api-fetch';
-import { __, _x } from '@wordpress/i18n';
+import { __, _x, sprintf } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { Component, RawHTML, Fragment } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
@@ -227,35 +227,8 @@ class BlogrollEdit extends Component {
 		];
 
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
-		if ( ! hasPosts && postFeedType === 'internal' ) {
-			return (
-				<Fragment>
-					<InspectorControls
-						{ ...this.props }
-						attributes={ attributes }
-						hasPosts={ hasPosts }
-						editing={ this.state.editing }
-						activeStyle={ activeStyle }
-						styleOptions={ styleOptions }
-						onUpdateStyle={ this.updateStyle }
-						categoriesList={ categoriesList }
-					/>
-					<Placeholder
-						icon="admin-post"
-						label={ __( 'Blog' ) }
-					>
-						{ ! Array.isArray( latestPosts ) ?
-							<Spinner /> :
-							__( 'No posts found.' )
-						}
-					</Placeholder>
-				</Fragment>
-			);
-		}
 
-		const displayPosts = Array.isArray( latestPosts ) && latestPosts.length > postsToShow ?
-			latestPosts.slice( 0, postsToShow ) :
-			latestPosts;
+		const displayPosts = Array.isArray( latestPosts ) && latestPosts.length > postsToShow ? latestPosts.slice( 0, postsToShow ) : latestPosts;
 
 		const toolbarControls = [ {
 			icon: blogIcons.listPositionLeft,
@@ -284,6 +257,22 @@ class BlogrollEdit extends Component {
 
 		const dateFormat = __experimentalGetSettings().formats.date; // eslint-disable-line no-restricted-syntax
 
+		if ( ! hasPosts && postFeedType === 'internal' ) {
+			return (
+				<Fragment>
+					<Placeholder
+						icon="admin-post"
+						label={ __( 'Blogroll' ) }
+					>
+						{ ! Array.isArray( latestPosts ) ?
+							<Spinner /> :
+							__( 'No posts found.' )
+						}
+					</Placeholder>
+				</Fragment>
+			);
+		}
+
 		if ( this.state.editing && postFeedType === 'external' ) {
 			return (
 				<Fragment>
@@ -299,16 +288,18 @@ class BlogrollEdit extends Component {
 					/>
 					<Placeholder
 						icon="rss"
-						label="RSS"
+						/* translators: %s: RSS */
+						label={ sprintf( __( '%s Feed' ), 'RSS' ) }
+						instructions={ sprintf( __( '%s URLs are generally located at the /feed/ directory of a site.' ), 'RSS' ) }
 					>
 						<form onSubmit={ this.onSubmitURL }>
 							<TextControl
-								placeholder={ __( 'Enter URL here…' ) }
+								placeholder={ __( 'https://example.com/feed…' ) }
 								value={ externalRssUrl }
 								onChange={ ( value ) => setAttributes( { externalRssUrl: value } ) }
 								className={ 'components-placeholder__input' }
 							/>
-							<Button isLarge type="submit">
+							<Button isLarge type="submit" disabled={ ! externalRssUrl }>
 								{ __( 'Use URL' ) }
 							</Button>
 						</form>
@@ -318,7 +309,7 @@ class BlogrollEdit extends Component {
 		}
 
 		return (
-			<div>
+			<Fragment>
 				<InspectorControls
 					{ ...this.props }
 					attributes={ attributes }
@@ -486,7 +477,7 @@ class BlogrollEdit extends Component {
 						} ) }
 					</Slider>
 				}
-			</div>
+			</Fragment>
 		);
 	}
 }

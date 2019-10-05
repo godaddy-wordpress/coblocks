@@ -14,12 +14,15 @@
  */
 function coblocks_render_blogroll_block( $attributes ) {
 
+	global $post;
+
 	$args = array(
 		'posts_per_page'   => $attributes['postsToShow'],
 		'post_status'      => 'publish',
 		'order'            => $attributes['order'],
 		'orderby'          => $attributes['orderBy'],
 		'suppress_filters' => false,
+		'post__not_in'     => array( $post->ID ),
 	);
 
 	if ( isset( $attributes['categories'] ) ) {
