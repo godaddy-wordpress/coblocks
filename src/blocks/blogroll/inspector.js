@@ -84,6 +84,26 @@ const Inspector = props => {
 			/>
 			{ postFeedType === 'internal' &&
 				<Fragment>
+					{ ! isGridStyle && ! isCarouselStyle &&
+						<BaseControl label={ __( 'Thumbnail Size' ) } className="components-coblocks-blogroll-thumbnail-size">
+							<ButtonGroup aria-label={ __( 'Thumbnail Size' ) }>
+								{ sizeOptions.map( ( option ) => {
+									const isCurrent = imageSize === option.value;
+									return (
+										<Button
+											key={ `option-${ option.value }` }
+											isLarge
+											isPrimary={ isCurrent }
+											aria-pressed={ isCurrent }
+											onClick={ () => setAttributes( { imageSize: option.value } ) }
+										>
+											{ option.label }
+										</Button>
+									);
+								} ) }
+							</ButtonGroup>
+						</BaseControl>
+					}
 					<ToggleControl
 						label={ __( 'Post Date' ) }
 						checked={ displayPostDate }
@@ -105,45 +125,13 @@ const Inspector = props => {
 						onChange={ () => setAttributes( { displayPostContent: ! displayPostContent } ) }
 					/>
 					{ displayPostContent &&
-						<ToggleControl
-							label={ __( 'More Link' ) }
-							checked={ displayPostLink }
-							help={
-								displayPostLink ?
-									__( 'Showing links to individual posts.' ) :
-									__( 'Toggle to show links to posts.' )
-							}
-							onChange={ () => setAttributes( { displayPostLink: ! displayPostLink } ) }
-						/>
-					}
-					{ displayPostContent &&
 						<RangeControl
-							label={ __( 'Content Word Count' ) }
+							label={ __( 'Max words in excerpt' ) }
 							value={ excerptLength }
 							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
 							min={ 5 }
 							max={ 75 }
 						/>
-					}
-					{ ! isGridStyle && ! isCarouselStyle &&
-						<BaseControl label={ __( 'Thumbnail Size' ) }>
-							<ButtonGroup aria-label={ __( 'Thumbnail Size' ) }>
-								{ sizeOptions.map( ( option ) => {
-									const isCurrent = imageSize === option.value;
-									return (
-										<Button
-											key={ `option-${ option.value }` }
-											isLarge
-											isPrimary={ isCurrent }
-											aria-pressed={ isCurrent }
-											onClick={ () => setAttributes( { imageSize: option.value } ) }
-										>
-											{ option.shortName }
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
-						</BaseControl>
 					}
 				</Fragment>
 			}
