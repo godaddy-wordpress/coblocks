@@ -136,6 +136,27 @@ const Inspector = props => {
 					}
 				</Fragment>
 			}
+			{ postFeedType === 'external' &&
+				<Fragment>
+					<RangeControl
+						label={ __( 'Number of items' ) }
+						value={ postsToShow }
+						onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+						min={ 1 }
+						max={ 20 }
+					/>
+					{ isGridStyle &&
+						<RangeControl
+							label={ __( 'Columns' ) }
+							value={ columns }
+							onChange={ ( value ) => setAttributes( { columns: value } ) }
+							min={ 1 }
+							max={ 4 }
+							required
+						/>
+					}
+				</Fragment>
+			}
 		</PanelBody>
 	);
 
@@ -206,7 +227,7 @@ const Inspector = props => {
 				</div>
 			</PanelBody>
 			{ settings }
-			{ sortingAndFiltering }
+			{ postFeedType === 'internal' && sortingAndFiltering }
 			{ isCarouselStyle &&
 				<SlickSliderPanel { ...props } />
 			}

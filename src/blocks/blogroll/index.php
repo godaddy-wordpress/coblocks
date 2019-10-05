@@ -444,7 +444,7 @@ function coblocks_register_blogroll_block() {
 				),
 				'postsToShow'        => array(
 					'type'    => 'number',
-					'default' => 4,
+					'default' => 2,
 				),
 				'displayPostContent' => array(
 					'type'    => 'boolean',
