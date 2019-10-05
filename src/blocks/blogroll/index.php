@@ -227,15 +227,15 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 	$class        = 'wp-block-coblocks-blogroll';
 	$block_layout = strpos( $attributes['className'], 'is-style-grid' ) !== false ? 'grid' : 'list';
 
-	if ( isset( $attributes['columns'] ) && 'grid' === $block_layout ) {
-
-		$class .= ' columns-' . $attributes['columns'];
-
-	}
-
 	if ( isset( $attributes['className'] ) ) {
 
 		$class .= ' ' . $attributes['className'];
+
+	}
+
+	if ( isset( $attributes['align'] ) ) {
+
+		$class .= ' align' . $attributes['align'];
 
 	}
 
@@ -246,36 +246,37 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 
 	$list_items_markup = '';
 	$list_items_class  = '';
-	$image_size        = '';
 
 	foreach ( $posts as $post ) {
 
+		$list_class   = '';
 		$margin_class = '';
 
 		if ( isset( $attributes['listPosition'] ) && 'list' === $block_layout ) {
 
 			if ( 'left' === $attributes['listPosition'] ) {
-				$margin_class     = 'mr-6';
+				$margin_class .= ' mr-6';
 			} else {
-				$margin_class     = 'ml-6';
+				$margin_class    .= ' ml-6';
 				$list_items_class = 'flex-row-reverse';
 			}
 		}
 
-		if ( isset( $attributes['imageSize'] ) && 'list' === $block_layout ) {
-			$image_size = `height:{$attributes['imageSize']}`;
-		}
-
-		$list_items_markup = sprintf(
+		$list_items_markup .= sprintf(
 			'<li class="flex flex-auto items-stretch w-full mb-7 %1$s">',
-			esc_attr( $list_items_class )
+			$list_items_class
 		);
+
+		if ( isset( $attributes['imageSize'] ) ) {
+			$image_style = 'height:' . $attributes['imageSize'] . 'px; width:' . $attributes['imageSize'] . 'px';
+		}
 
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__image flex-0 %1$s"><a href="%2$s" class="block w-full h-full bg-cover bg-center-center" style="background-image:url(%3$s)"></a></div>',
+				'<div class="wp-block-coblocks-blogroll__image flex-0 %1$s" style="%2$s"><a href="%3$s" class="block w-full h-full bg-cover bg-center-center" style="background-image:url(%4$s)"></a></div>',
 				esc_attr( $margin_class ),
+				esc_attr( $image_style ),
 				esc_url( $post['postLink'] ),
 				esc_url( $post['thumbnailURL'] )
 			);
@@ -323,7 +324,7 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 
 			$list_items_markup .= sprintf(
-				'<a href="%1$s" class="wp-block-coblocks-blogroll__more-link block self-start mt-3">%2$s</a>',
+				'<div class="wp-block-coblocks-blogroll__more-link"><a href="%1$s">%2$s</a></div>',
 				esc_url( $post['postLink'] ),
 				esc_html( $attributes['postLink'] )
 			);
@@ -471,7 +472,7 @@ function coblocks_register_blogroll_block() {
 				),
 				'imageSize'          => array(
 					'type'    => 'number',
-					'default' => 9,
+					'default' => 80,
 				),
 				'displayPostDate'    => array(
 					'type'    => 'boolean',
