@@ -34,6 +34,7 @@ const Inspector = props => {
 		onUpdateStyle,
 		setAttributes,
 		categoriesList,
+		postCount,
 	} = props;
 
 	const {
@@ -151,7 +152,7 @@ const Inspector = props => {
 							value={ columns }
 							onChange={ ( value ) => setAttributes( { columns: value } ) }
 							min={ 1 }
-							max={ 4 }
+							max={ Math.min( 4, postCount ) }
 							required
 						/>
 					}
@@ -179,13 +180,13 @@ const Inspector = props => {
 				min={ 1 }
 				max={ 20 }
 			/>
-			{ isGridStyle &&
+			{ ! isCarouselStyle &&
 				<RangeControl
 					label={ __( 'Columns' ) }
 					value={ columns }
 					onChange={ ( value ) => setAttributes( { columns: value } ) }
 					min={ 1 }
-					max={ 4 }
+					max={ Math.min( 4, postCount ) }
 					required
 				/>
 			}

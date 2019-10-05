@@ -171,7 +171,7 @@ function build_carousel_block_content( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 
 			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__post-date">%2$s</time>',
+				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__date">%2$s</time>',
 				$post['date'],
 				$post['dateReadable']
 			);
@@ -242,6 +242,12 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 
 	}
 
+	if ( isset( $attributes['columns'] ) ) {
+
+		$class .= ' columns columns-' . $attributes['columns'];
+
+	}
+
 	$block_content = sprintf(
 		'<ul class="%s list-none ml-0 pl-0">',
 		esc_attr( $class )
@@ -252,8 +258,9 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 
 	foreach ( $posts as $post ) {
 
-		$list_class  = '';
-		$image_class = '';
+		$list_class       = '';
+		$image_class      = '';
+		$align_self_class = '';
 
 		if ( isset( $attributes['listPosition'] ) && 'list' === $block_layout ) {
 
@@ -284,14 +291,21 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 				esc_url( $post['thumbnailURL'] )
 			);
 
+			$align_self_class = 'self-center';
+
+		} else {
+			$align_self_class = 'flex-start';
 		}
 
-		$list_items_markup .= '<div class="wp-block-coblocks-blogroll__content flex flex-col self-center w-full">';
+		$list_items_markup .= sprintf(
+			'<div class="wp-block-coblocks-blogroll__content flex flex-col %s w-full">',
+			esc_attr( $align_self_class )
+		);
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 
 			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__post-date">%2$s</time>',
+				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__date">%2$s</time>',
 				esc_url( $post['date'] ),
 				esc_html( $post['dateReadable'] )
 			);
@@ -487,7 +501,7 @@ function coblocks_register_blogroll_block() {
 				),
 				'columns'            => array(
 					'type'    => 'number',
-					'default' => 2,
+					'default' => 1,
 				),
 				'order'              => array(
 					'type'    => 'string',

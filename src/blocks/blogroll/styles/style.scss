@@ -1,6 +1,4 @@
 .wp-block-coblocks-blogroll {
-	list-style: none;
-
 	& + & {
 		margin-top: map-get($margin, 7);
 	}
@@ -12,14 +10,6 @@
 
 	> li:last-child {
 		margin-bottom: 0;
-	}
-
-	@include break-small {
-		@for $i from 2 through 6 {
-			&.columns-#{ $i } li {
-				width: calc((100% / #{$i}) - 18px);
-			}
-		}
 	}
 
 	// &.is-style-grid {
@@ -90,7 +80,7 @@
 	// }
 }
 
-.wp-block-coblocks-blogroll__post-date {
+.wp-block-coblocks-blogroll__date {
 	color: $dark-gray-300;
 	display: block;
 	font-size: $default-font-size;

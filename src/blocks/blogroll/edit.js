@@ -285,6 +285,7 @@ class BlogrollEdit extends Component {
 						styleOptions={ styleOptions }
 						onUpdateStyle={ this.updateStyle }
 						categoriesList={ categoriesList }
+						postCount={ latestPosts.length }
 					/>
 					<Placeholder
 						icon="rss"
@@ -319,6 +320,7 @@ class BlogrollEdit extends Component {
 					styleOptions={ styleOptions }
 					onUpdateStyle={ this.updateStyle }
 					categoriesList={ categoriesList }
+					postCount={ latestPosts.length }
 				/>
 				<BlockControls>
 					{ isListStyle &&
@@ -342,7 +344,8 @@ class BlogrollEdit extends Component {
 				{ postFeedType === 'internal' && ! isCarouselStyle &&
 				<ul
 					className={ classnames( this.props.className, 'list-none', 'ml-0', 'pl-0', {
-						[ `columns-${ columns }` ]: isGridStyle,
+						'columns': columns && ! isCarouselStyle,
+						[ `columns-${ columns }` ]: columns && ! isCarouselStyle,
 					} ) }
 				>
 					{ displayPosts.map( ( post, i ) => {
@@ -373,7 +376,7 @@ class BlogrollEdit extends Component {
 								}
 								<div className="wp-block-coblocks-blogroll__content flex flex-col self-center w-full">
 									{ displayPostDate && post.date_gmt &&
-										<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__post-date">
+										<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date">
 											{ dateI18n( dateFormat, post.date_gmt ) }
 										</time>
 									}
@@ -438,7 +441,7 @@ class BlogrollEdit extends Component {
 											'full-height': ! featuredImageUrl,
 										} ) }>
 											{ displayPostDate && post.date_gmt &&
-												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__post-date">
+												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date">
 													{ dateI18n( dateFormat, post.date_gmt ) }
 												</time>
 											}
