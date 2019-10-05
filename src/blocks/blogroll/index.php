@@ -95,15 +95,15 @@ function build_carousel_block_content( $posts, $attributes ) {
 
 	$class = 'wp-block-coblocks-blogroll';
 
-	if ( '' !== $attributes['align'] ) {
-
-		$class .= ' align' . $attributes['align'];
-
-	}
-
 	if ( isset( $attributes['className'] ) ) {
 
 		$class .= ' ' . $attributes['className'];
+
+	}
+
+	if ( isset( $attributes['align'] ) ) {
+
+		$class .= ' align' . $attributes['align'];
 
 	}
 
@@ -432,6 +432,9 @@ function coblocks_register_blogroll_block() {
 		'coblocks/blogroll',
 		array(
 			'attributes'      => array(
+				'className'          => array(
+					'type' => 'string',
+				),
 				'align'              => array(
 					'type' => 'string',
 				),
