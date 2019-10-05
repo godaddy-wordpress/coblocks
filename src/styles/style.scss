@@ -32,6 +32,10 @@
 	text-align: center;
 }
 
+.list-none {
+	list-style: none;
+}
+
 .flex {
 	display: flex;
 }
@@ -40,8 +44,28 @@
 	flex: 0 0 auto;
 }
 
+.flex-auto {
+	flex: 1 1 auto;
+}
+
 .flex-row-reverse {
 	flex-direction: row-reverse;
+}
+
+.flex-col {
+	flex-direction: column;
+}
+
+.self-start {
+	align-self: self-start;
+}
+
+.self-center {
+	align-self: center;
+}
+
+.items-stretch {
+	align-items: stretch;
 }
 
 .h-full {

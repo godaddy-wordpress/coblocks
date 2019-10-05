@@ -18,11 +18,12 @@ import blogIcons from './icons';
  */
 import apiFetch from '@wordpress/api-fetch';
 import { __, _x } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
 import { Component, RawHTML, Fragment } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
-import { withSelect } from '@wordpress/data';
-import { BlockControls, PlainText } from '@wordpress/block-editor';
+import { withSelect, withDispatch} from '@wordpress/data';
+import { BlockControls, PlainText, RichText } from '@wordpress/block-editor';
 import {
 	Placeholder,
 	Spinner,
@@ -30,6 +31,8 @@ import {
 	TextControl,
 	Button,
 	ServerSideRender,
+	Disabled,
+	ResizableBox,
 } from '@wordpress/components';
 
 /**
@@ -43,15 +46,15 @@ const TokenList = wp.tokenList;
 
 const styleOptions = [
 	{
-		name: 'grid',
-		label: __( 'Grid' ),
-		icon: blogIcons.layoutGridIcon,
-		isDefault: true,
-	},
-	{
 		name: 'list',
 		label: __( 'List' ),
 		icon: blogIcons.layoutListIcon,
+		isDefault: true,
+	},
+	{
+		name: 'grid',
+		label: __( 'Grid' ),
+		icon: blogIcons.layoutGridIcon,
 	},
 	{
 		name: 'carousel',
@@ -59,6 +62,8 @@ const styleOptions = [
 		icon: blogIcons.layoutCarouselIcon,
 	},
 ];
+
+const applyWidthConstraints = ( width ) => Math.ceil( width / 5 ) * 5;
 
 /**
  * Returns the active style from the given className.
@@ -118,9 +123,11 @@ class LatestPostsEdit extends Component {
 	}
 
 	componentDidMount() {
-		const { className } = this.props;
+		const { className, attributes } = this.props;
 		const activeStyle = getActiveStyle( styleOptions, className );
+
 		this.updateStyle( activeStyle );
+
 		this.isStillMounted = true;
 		this.fetchRequest = apiFetch( {
 			path: addQueryArgs( '/wp-json/wp/v2/categories', CATEGORIES_LIST_QUERY ),
@@ -141,6 +148,15 @@ class LatestPostsEdit extends Component {
 
 	componentWillUnmount() {
 		this.isStillMounted = false;
+	}
+
+	componentDidUpdate( prevProps) {
+		const { displayPostContent, displayPostLink } = this.props.attributes;
+		if ( displayPostLink && ! displayPostContent ) {
+			this.props.setAttributes( {
+				displayPostLink: false
+			} );
+		}
 	}
 
 	onSubmitURL( event ) {
@@ -166,7 +182,14 @@ class LatestPostsEdit extends Component {
 	};
 
 	render() {
-		const { attributes, setAttributes, className, latestPosts } = this.props;
+		const {
+			attributes,
+			setAttributes,
+			className,
+			latestPosts,
+			isSelected,
+			toggleSelection,
+		} = this.props;
 
 		const { categoriesList } = this.state;
 
@@ -193,19 +216,14 @@ class LatestPostsEdit extends Component {
 			draggable,
 			autoPlay,
 			autoPlaySpeed,
+			imageSize,
 		} = attributes;
 
-		const listClasses = classnames( 'flex', 'w-full', {
-			'flex-row-reverse': listPosition === 'right',
+		const imageClasses = classnames( 'wp-block-coblocks-blogroll__image', 'flex-0', {
+			'mr-6': isListStyle && listPosition === 'left',
+			'ml-6': isListStyle && listPosition === 'right',
+			'is-selected': isSelected,
 		} );
-
-		const imageClasses = classnames( 'wp-block-coblocks-blogroll__post-image', {
-			'mr-6': listPosition === 'left',
-			'ml-6': listPosition === 'right',
-		} );
-
-
-
 
 		const editToolbarControls = [
 			{
@@ -248,14 +266,14 @@ class LatestPostsEdit extends Component {
 
 		const toolbarControls = [ {
 			icon: blogIcons.mediaCardRight,
-			title: __( 'Image on left' ),
-			isActive: listPosition === 'left',
-			onClick: () => setAttributes( { listPosition: 'left' } ),
-		}, {
-			icon: blogIcons.mediaCardLeft,
 			title: __( 'Image on right' ),
 			isActive: listPosition === 'right',
 			onClick: () => setAttributes( { listPosition: 'right' } ),
+		}, {
+			icon: blogIcons.mediaCardLeft,
+			title: __( 'Image on left' ),
+			isActive: listPosition === 'left',
+			onClick: () => setAttributes( { listPosition: 'left' } ),
 		} ];
 
 		const slickSettings = {
@@ -339,14 +357,22 @@ class LatestPostsEdit extends Component {
 				}
 				{ postFeedType === 'internal' && ! isCarouselStyle &&
 				<ul
-					className={ classnames( this.props.className, {
+					className={ classnames( this.props.className, 'list-none', 'ml-0', 'pl-0', {
 						[ `columns-${ columns }` ]: isGridStyle,
 					} ) }
 				>
 					{ displayPosts.map( ( post, i ) => {
+
 						const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
 						const featuredImageStyle = 'url(' + featuredImageUrl + ')';
+
+						const listClasses = classnames( 'flex', 'flex-auto', 'items-stretch', 'w-full', 'mb-7',  {
+							'flex-row-reverse': listPosition === 'right',
+							'has-featured-image': featuredImageUrl,
+						} );
+
 						const titleTrimmed = post.title.rendered.trim();
+
 						let excerpt = post.excerpt.rendered;
 						if ( post.excerpt.raw === '' ) {
 							excerpt = post.content.raw;
@@ -354,12 +380,49 @@ class LatestPostsEdit extends Component {
 						const excerptElement = document.createElement( 'div' );
 						excerptElement.innerHTML = excerpt;
 						excerpt = excerptElement.textContent || excerptElement.innerText || '';
+
+
+
+
+						const onResizeStart = () => {
+							toggleSelection( false );
+						};
+						const onResize = ( event, direction, elt ) => {
+							setAttributes( {
+								imageSize: applyWidthConstraints( parseInt( elt.style.width ) ),
+							} );
+							//onWidthChange( parseInt( elt.style.width ) );
+						};
+						const onResizeStop = ( event, direction, elt ) => {
+							toggleSelection( true );
+							setAttributes( {
+								imageSize: applyWidthConstraints( parseInt( elt.style.width ) ),
+							} );
+						};
+						const enablePositions = {
+							right: listPosition === 'left',
+							bottom: true,
+							left: listPosition === 'right',
+						};
+
 						return (
 							<li key={ i } className={ listClasses }>
 								{ featuredImageUrl &&
-									<div className={ imageClasses } style={ { backgroundImage: featuredImageStyle } }></div>
+										<ResizableBox
+											className={ imageClasses }
+											size={ { width: applyWidthConstraints( imageSize ) + 'px', height: applyWidthConstraints( imageSize ) + 'px' } }
+											maxWidth="50%"
+											minWidth="10%"
+											enable={ enablePositions }
+											onResizeStart={ onResizeStart }
+											onResize={ onResize }
+											onResizeStop={ onResizeStop }
+											lockAspectRatio
+										>
+											<a className="block w-full h-full bg-cover bg-center-center" target="_blank" rel="noreferrer noopener" style={ { backgroundImage: featuredImageStyle } }></a>
+										</ResizableBox>
 								}
-								<div className="wp-block-coblocks-blogroll__content">
+								<div className="wp-block-coblocks-blogroll__content flex flex-col self-center w-full">
 									{ displayPostDate && post.date_gmt &&
 										<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__post-date">
 											{ dateI18n( dateFormat, post.date_gmt ) }
@@ -386,11 +449,15 @@ class LatestPostsEdit extends Component {
 										</div>
 									}
 									{ displayPostLink &&
-										<PlainText
-											className="wp-block-coblocks-blogroll__more-link"
+										<RichText
+											tagName="a"
+											className="wp-block-coblocks-blogroll__more-link block self-start mt-3"
 											onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
 											value={ postLink }
 											placeholder={ __( 'Read more' ) }
+											multiline={ false }
+											withoutInteractiveFormatting={ false }
+											isSelected={ false }
 										/>
 									}
 								</div>
@@ -400,93 +467,102 @@ class LatestPostsEdit extends Component {
 				</ul>
 				}
 				{ postFeedType === 'internal' && isCarouselStyle &&
-				<Slider { ...slickSettings } className={ classnames( this.props.className ) }>
-					{ displayPosts.map( ( post, i ) => {
-						const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
-						const featuredImageStyle = 'url(' + featuredImageUrl + ')';
-						const titleTrimmed = post.title.rendered.trim();
-						let excerpt = post.excerpt.rendered;
-						if ( post.excerpt.raw === '' ) {
-							excerpt = post.content.raw;
-						}
-						const excerptElement = document.createElement( 'div' );
-						excerptElement.innerHTML = excerpt;
-						excerpt = excerptElement.textContent || excerptElement.innerText || '';
-						return (
-							<div className="coblocks-blog-post--item" key={ i }>
-								<div className="coblocks-blog-post--item-inner">
-									{ featuredImageUrl &&
-										<div className="wp-block-coblocks-blogroll__post-image" style={ { backgroundImage: featuredImageStyle } }></div>
-									}
-									<div className={ classnames( 'wp-block-coblocks-blogroll__content', {
-										'full-height': ! featuredImageUrl,
-									} ) }>
-										{ displayPostDate && post.date_gmt &&
-											<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__post-date">
-												{ dateI18n( dateFormat, post.date_gmt ) }
-											</time>
+					<Slider { ...slickSettings } className={ classnames( this.props.className ) }>
+						{ displayPosts.map( ( post, i ) => {
+							const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
+							const featuredImageStyle = 'url(' + featuredImageUrl + ')';
+							const titleTrimmed = post.title.rendered.trim();
+							let excerpt = post.excerpt.rendered;
+							if ( post.excerpt.raw === '' ) {
+								excerpt = post.content.raw;
+							}
+							const excerptElement = document.createElement( 'div' );
+							excerptElement.innerHTML = excerpt;
+							excerpt = excerptElement.textContent || excerptElement.innerText || '';
+							return (
+								<div className="coblocks-blog-post--item" key={ i }>
+									<div className="coblocks-blog-post--item-inner">
+										{ featuredImageUrl &&
+											<div className="wp-block-coblocks-blogroll__image" style={ { backgroundImage: featuredImageStyle } }></div>
 										}
-										<h5>
-											{ titleTrimmed ? (
-												<RawHTML>
-													{ titleTrimmed }
-												</RawHTML>
-											) :
-												__( '(Untitled)' )
+										<div className={ classnames( 'wp-block-coblocks-blogroll__content', {
+											'full-height': ! featuredImageUrl,
+										} ) }>
+											{ displayPostDate && post.date_gmt &&
+												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__post-date">
+													{ dateI18n( dateFormat, post.date_gmt ) }
+												</time>
 											}
-										</h5>
-										{ displayPostContent &&
-										<div className="wp-block-coblocks-blogroll__post-excerpt">
-											<p>
-												<RawHTML
-													key="html"
-												>
-													{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
-												</RawHTML>
-											</p>
+											<h5>
+												{ titleTrimmed ? (
+													<RawHTML>
+														{ titleTrimmed }
+													</RawHTML>
+												) :
+													__( '(Untitled)' )
+												}
+											</h5>
+											{ displayPostContent &&
+											<div className="wp-block-coblocks-blogroll__post-excerpt">
+												<p>
+													<RawHTML
+														key="html"
+													>
+														{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+													</RawHTML>
+												</p>
+											</div>
+											}
+											{ displayPostLink &&
+											<PlainText
+												className="wp-block-coblocks-blogroll__more-link"
+												onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
+												value={ postLink }
+												placeholder={ __( 'Read more' ) }
+											/>
+											}
 										</div>
-										}
-										{ displayPostLink &&
-										<PlainText
-											className="wp-block-coblocks-blogroll__more-link"
-											onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
-											value={ postLink }
-											placeholder={ __( 'Read more' ) }
-										/>
-										}
 									</div>
 								</div>
-							</div>
-						);
-					} ) }
-				</Slider>
+							);
+						} ) }
+					</Slider>
 				}
 			</div>
 		);
 	}
 }
 
-export default withSelect( ( select, props ) => {
-	const { postsToShow, order, orderBy, categories } = props.attributes;
-	const { getEntityRecords } = select( 'core' );
-	const latestPostsQuery = pickBy( {
-		categories,
-		order,
-		orderby: orderBy,
-		per_page: postsToShow,
-	}, ( value ) => ! isUndefined( value ) );
+export default compose( [
+	withDispatch( ( dispatch ) => {
+		const { toggleSelection } = dispatch( 'core/block-editor' );
 
-	let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
-	if ( latestPosts ) {
-		latestPosts = latestPosts.map( ( post ) => {
-			return {
-				...post,
-				featured_media_object: select( 'core' ).getMedia( post.featured_media ),
-			};
-		} );
-	}
+		return {
+			toggleSelection,
+		};
+	} ),
+	withSelect( ( select, props ) => {
+		const { postsToShow, order, orderBy, categories } = props.attributes;
+		const { getEntityRecords } = select( 'core' );
+		const latestPostsQuery = pickBy( {
+			categories,
+			order,
+			orderby: orderBy,
+			per_page: postsToShow,
+		}, ( value ) => ! isUndefined( value ) );
 
-	return {
-		latestPosts: latestPosts,
-	};
-} )( LatestPostsEdit );
+		let latestPosts = getEntityRecords( 'postType', 'post', latestPostsQuery );
+		if ( latestPosts ) {
+			latestPosts = latestPosts.map( ( post ) => {
+				return {
+					...post,
+					featured_media_object: select( 'core' ).getMedia( post.featured_media ),
+				};
+			} );
+		}
+
+		return {
+			latestPosts: latestPosts,
+		};
+	} ),
+] )( LatestPostsEdit );

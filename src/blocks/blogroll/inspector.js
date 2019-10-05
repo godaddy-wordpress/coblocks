@@ -72,17 +72,7 @@ const Inspector = props => {
 								__( 'Showing the publish date.' ) :
 								__( 'Toggle to show the publish date.' )
 						}
-						onChange={ ( value ) => setAttributes( { displayPostDate: value } ) }
-					/>
-					<ToggleControl
-						label={ __( 'More Link' ) }
-						checked={ displayPostLink }
-						help={
-							displayPostLink ?
-								__( 'Showing links to individual posts.' ) :
-								__( 'Toggle to show links to posts.' )
-						}
-						onChange={ ( value ) => setAttributes( { displayPostLink: value } ) }
+						onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
 					/>
 					<ToggleControl
 						label={ __( 'Post Content' ) }
@@ -92,11 +82,23 @@ const Inspector = props => {
 								__( 'Showing the post excerpt.' ) :
 								__( 'Toggle to show the post excerpt.' )
 						}
-						onChange={ ( value ) => setAttributes( { displayPostContent: value } ) }
+						onChange={ () => setAttributes( { displayPostContent: ! displayPostContent } ) }
 					/>
 					{ displayPostContent &&
+						<ToggleControl
+							label={ __( 'More Link' ) }
+							checked={ displayPostLink }
+							help={
+								displayPostLink ?
+									__( 'Showing links to individual posts.' ) :
+									__( 'Toggle to show links to posts.' )
+							}
+							onChange={ () => setAttributes( { displayPostLink: ! displayPostLink } ) }
+						/>
+					}
+					{ displayPostContent &&
 						<RangeControl
-							label={ __( 'Max number of words in content' ) }
+							label={ __( 'Content Word Count' ) }
 							value={ excerptLength }
 							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
 							min={ 5 }

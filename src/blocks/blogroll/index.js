@@ -10,6 +10,7 @@ import './styles/style.scss';
 import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies
@@ -23,14 +24,12 @@ const { name, category, supports } = metadata;
 
 const settings = {
 	title: _x( 'Blogroll', 'block name' ),
-	description: __( 'Display a list of your most recent posts or an external blog feed.' ),
+	description: __( 'Display posts or an external blog feed as a list, grid, or carousel.' ),
 	icon,
-	keywords: [ _x( 'posts', 'block keyword' ), _x( 'articles', 'block keyword' ) ],
+	keywords: [ _x( 'posts', 'block keyword' ), _x( 'articles', 'block keyword' ), _x( 'latest', 'block keyword' ) ],
 	supports,
+	transforms,
 	edit,
-	save: function() {
-		return null;
-	},
 };
 
 export { name, category, metadata, settings };

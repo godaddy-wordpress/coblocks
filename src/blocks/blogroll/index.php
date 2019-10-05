@@ -77,7 +77,7 @@ function coblocks_render_blogroll_block( $attributes ) {
 
 	if ( 'carousel' === $block_layout ) {
 
-		return build_carousel_block_content( $formatted_posts, $attributes );
+		// return build_carousel_block_content( $formatted_posts, $attributes );
 
 	} else {
 
@@ -86,152 +86,146 @@ function coblocks_render_blogroll_block( $attributes ) {
 	}
 }
 
-function build_carousel_block_content( $posts, $attributes ) {
+// function build_carousel_block_content( $posts, $attributes ) {
 
-	$arrows         = $attributes['prevNextButtons'] ? 'true' : 'false';
-	$auto_play      = $attributes['autoPlay'] ? 'true' : 'false';
-	$draggable      = (string) $attributes['draggable'] ? 'true' : 'false';
-	$infinite_slide = $attributes['infiniteSlide'] ? 'true' : 'false';
+// 	$arrows         = $attributes['prevNextButtons'] ? 'true' : 'false';
+// 	$auto_play      = $attributes['autoPlay'] ? 'true' : 'false';
+// 	$draggable      = (string) $attributes['draggable'] ? 'true' : 'false';
+// 	$infinite_slide = $attributes['infiniteSlide'] ? 'true' : 'false';
 
-	$class = 'wp-block-coblocks-blogroll';
+// 	$class = 'wp-block-coblocks-blogroll';
 
-	if ( '' !== $attributes['align'] ) {
+// 	// if ( '' !== $attributes['align'] ) {
 
-		$class .= ' align' . $attributes['align'];
+// 	// 	$class .= ' align' . $attributes['align'];
 
-	}
+// 	// }
 
-	if ( isset( $attributes['className'] ) ) {
+// 	if ( isset( $attributes['className'] ) ) {
 
-		$class .= ' ' . $attributes['className'];
+// 		$class .= ' ' . $attributes['className'];
 
-	}
+// 	}
 
-	$block_content = sprintf(
-		'<div class="carousel-container %1$s" data-slick="%2$s">',
-		esc_attr( $class ),
-		esc_attr(
-			json_encode(
-				/**
-				 * Filter the slick slider carousel settings
-				 *
-				 * @var array Slick slider settings.
-				 */
-				(array) apply_filters(
-					'coblocks_blogroll_carousel_settings',
-					[
-						'slidesToScroll' => 1,
-						'arrow'          => $arrows,
-						'autoPlay'       => $auto_play,
-						'autoPlaySpeed'  => $attributes['autoPlaySpeed'],
-						'slidesToShow'   => $attributes['visibleItems'],
-						'infinite'       => $infinite_slide,
-						'adaptiveHeight' => false,
-						'draggable'      => $draggable,
-					]
-				),
-				true
-			)
-		)
-	);
+// 	$block_content = sprintf(
+// 		'<div class="carousel-container %1$s" data-slick="%2$s">',
+// 		esc_attr( $class ),
+// 		esc_attr(
+// 			json_encode(
+// 				/**
+// 				 * Filter the slick slider carousel settings
+// 				 *
+// 				 * @var array Slick slider settings.
+// 				 */
+// 				(array) apply_filters(
+// 					'coblocks_blogroll_carousel_settings',
+// 					[
+// 						'slidesToScroll' => 1,
+// 						'arrow'          => $arrows,
+// 						'autoPlay'       => $auto_play,
+// 						'autoPlaySpeed'  => $attributes['autoPlaySpeed'],
+// 						'slidesToShow'   => $attributes['visibleItems'],
+// 						'infinite'       => $infinite_slide,
+// 						'adaptiveHeight' => false,
+// 						'draggable'      => $draggable,
+// 					]
+// 				),
+// 				true
+// 			)
+// 		)
+// 	);
 
-	$list_items_markup = '';
+// 	$list_items_markup = '';
 
-	foreach ( $posts as $post ) {
+// 	foreach ( $posts as $post ) {
 
-		$list_items_markup .= '<div class="coblocks-blog-post--item">';
-		$list_items_markup .= '<div class="coblocks-blog-post--item-inner">';
+// 		$list_items_markup .= '<div class="coblocks-blog-post--item">';
+// 		$list_items_markup .= '<div class="coblocks-blog-post--item-inner">';
 
-		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
+// 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
-			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__post-image" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
-				esc_url( $post['postLink'] ),
-				esc_url( $post['thumbnailURL'] )
-			);
+// 			$list_items_markup .= sprintf(
+// 				'<div class="wp-block-coblocks-blogroll__image" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
+// 				esc_url( $post['postLink'] ),
+// 				esc_url( $post['thumbnailURL'] )
+// 			);
 
-		}
+// 		}
 
-		$item_info_class = 'wp-block-coblocks-blogroll__content ';
+// 		$item_info_class = 'wp-block-coblocks-blogroll__content ';
 
-		if ( null === $post['thumbnailURL'] || ! $post['thumbnailURL'] ) {
+// 		if ( null === $post['thumbnailURL'] || ! $post['thumbnailURL'] ) {
 
-			$item_info_class .= 'full-height ';
+// 			$item_info_class .= 'full-height ';
 
-		}
+// 		}
 
-		$list_items_markup .= sprintf(
-			'<div class="%1$s"</div>',
-			$item_info_class
-		);
+// 		$list_items_markup .= sprintf(
+// 			'<div class="%1$s"</div>',
+// 			$item_info_class
+// 		);
 
-		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+// 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 
-			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__post-date">%2$s</time>',
-				$post['date'],
-				$post['dateReadable']
-			);
+// 			$list_items_markup .= sprintf(
+// 				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__post-date">%2$s</time>',
+// 				$post['date'],
+// 				$post['dateReadable']
+// 			);
 
-		}
+// 		}
 
-		$title = $post['title'];
+// 		$title = $post['title'];
 
-		if ( ! $title ) {
+// 		if ( ! $title ) {
 
-			$title = _x( '(no title)', 'placeholder when a post has no title', 'coblocks' );
+// 			$title = _x( '(no title)', 'placeholder when a post has no title', 'coblocks' );
 
-		}
+// 		}
 
-		$list_items_markup .= sprintf(
-			'<a href="%1$s">%2$s</a>',
-			esc_url( $post['postLink'] ),
-			esc_html( $title )
-		);
+// 		$list_items_markup .= sprintf(
+// 			'<a href="%1$s">%2$s</a>',
+// 			esc_url( $post['postLink'] ),
+// 			esc_html( $title )
+// 		);
 
-		if ( isset( $attributes['displayPostContent'] ) && $attributes['displayPostContent'] ) {
+// 		if ( isset( $attributes['displayPostContent'] ) && $attributes['displayPostContent'] ) {
 
-			$post_excerpt    = $post['postExcerpt'];
-			$trimmed_excerpt = esc_html( wp_trim_words( $post_excerpt, $attributes['excerptLength'], ' &hellip; ' ) );
+// 			$post_excerpt    = $post['postExcerpt'];
+// 			$trimmed_excerpt = esc_html( wp_trim_words( $post_excerpt, $attributes['excerptLength'], ' &hellip; ' ) );
 
-			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__post-excerpt"><p>%1$s</p></div>',
-				$trimmed_excerpt
-			);
+// 			$list_items_markup .= sprintf(
+// 				'<div class="wp-block-coblocks-blogroll__post-excerpt"><p>%1$s</p></div>',
+// 				$trimmed_excerpt
+// 			);
 
-		}
+// 		}
 
-		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
+// 		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 
-			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__more-link"><a href="%1$s">%2$s</a></div>',
-				esc_url( $post['postLink'] ),
-				esc_html( $attributes['postLink'] )
-			);
+// 			$list_items_markup .= sprintf(
+// 				'<a href="%1$s" class="wp-block-coblocks-blogroll__more-link self-start mt-2">%2$s</a>',
+// 				esc_url( $post['postLink'] ),
+// 				esc_html( $attributes['postLink'] )
+// 			);
 
-		}
+// 		}
 
-		$list_items_markup .= '</div></div></div>';
+// 		$list_items_markup .= '</div></div></div>';
 
-	}
+// 	}
 
-	$block_content .= $list_items_markup;
-	$block_content .= '</div>';
+// 	$block_content .= $list_items_markup;
+// 	$block_content .= '</div>';
 
-	return $block_content;
+// 	return $block_content;
 
-}
+// }
 
 function build_non_carousel_block_content( $posts, $attributes ) {
 
 	$class        = 'wp-block-coblocks-blogroll';
 	$block_layout = strpos( $attributes['className'], 'is-style-grid' ) !== false ? 'grid' : 'list';
-
-	if ( isset( $attributes['listPosition'] ) && 'list' === $block_layout ) {
-
-		$class .= ' image-to-' . $attributes['listPosition'];
-
-	}
 
 	if ( isset( $attributes['columns'] ) && 'grid' === $block_layout ) {
 
@@ -246,35 +240,41 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 	}
 
 	$block_content = sprintf(
-		'<ul class="%s">',
+		'<ul class="%s list-none ml-0 pl-0">',
 		esc_attr( $class )
 	);
 
 	$list_items_markup = '';
+	$list_items_class  = '';
+	$image_size        = '';
 
 	foreach ( $posts as $post ) {
 
-		$list_class   = '';
 		$margin_class = '';
 
 		if ( isset( $attributes['listPosition'] ) && 'list' === $block_layout ) {
 
 			if ( 'left' === $attributes['listPosition'] ) {
-				$margin_class .= 'mr-6';
+				$margin_class     = 'mr-6';
 			} else {
-				$margin_class .= 'ml-6';
+				$margin_class     = 'ml-6';
+				$list_items_class = 'flex-row-reverse';
 			}
 		}
 
-		$list_items_markup .= sprintf(
-			'<li class="flex w-full %1$s">',
-			$list_class
+		if ( isset( $attributes['imageSize'] ) && 'list' === $block_layout ) {
+			$image_size = `height:{$attributes['imageSize']}`;
+		}
+
+		$list_items_markup = sprintf(
+			'<li class="flex flex-auto items-stretch w-full mb-7 %1$s">',
+			esc_attr( $list_items_class )
 		);
 
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__post-image flex-0 %1$s"><a href="%2$s" class="block w-full h-full bg-cover bg-center-center" style="background-image:url(%3$s)"></a></div>',
+				'<div class="wp-block-coblocks-blogroll__image flex-0 %1$s"><a href="%2$s" class="block w-full h-full bg-cover bg-center-center" style="background-image:url(%3$s)"></a></div>',
 				esc_attr( $margin_class ),
 				esc_url( $post['postLink'] ),
 				esc_url( $post['thumbnailURL'] )
@@ -282,7 +282,7 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 
 		}
 
-		$list_items_markup .= '<div class="wp-block-coblocks-blogroll__content">';
+		$list_items_markup .= '<div class="wp-block-coblocks-blogroll__content flex flex-col self-center w-full">';
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 
@@ -314,7 +314,7 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 			$trimmed_excerpt = esc_html( wp_trim_words( $post_excerpt, $attributes['excerptLength'], ' &hellip; ' ) );
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__post-excerpt"><p>%1$s</p></div>',
+				'<div class="wp-block-coblocks-blogroll__post-excerpt">%1$s</div>',
 				esc_html( $trimmed_excerpt )
 			);
 
@@ -323,7 +323,7 @@ function build_non_carousel_block_content( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__more-link"><a href="%1$s">%2$s</a></div>',
+				'<a href="%1$s" class="wp-block-coblocks-blogroll__more-link block self-start mt-3">%2$s</a>',
 				esc_url( $post['postLink'] ),
 				esc_html( $attributes['postLink'] )
 			);
@@ -432,14 +432,7 @@ function coblocks_register_blogroll_block() {
 		'coblocks/blogroll',
 		array(
 			'attributes'      => array(
-				'listPosition'       => array(
-					'type'    => 'string',
-					'default' => 'left',
-				),
 				'align'              => array(
-					'type' => 'string',
-				),
-				'className'          => array(
 					'type' => 'string',
 				),
 				'categories'         => array(
@@ -447,7 +440,7 @@ function coblocks_register_blogroll_block() {
 				),
 				'postsToShow'        => array(
 					'type'    => 'number',
-					'default' => 5,
+					'default' => 4,
 				),
 				'displayPostContent' => array(
 					'type'    => 'boolean',
@@ -455,7 +448,7 @@ function coblocks_register_blogroll_block() {
 				),
 				'displayPostLink'    => array(
 					'type'    => 'boolean',
-					'default' => true,
+					'default' => false,
 				),
 				'postLink'           => array(
 					'type'    => 'string',
@@ -471,11 +464,19 @@ function coblocks_register_blogroll_block() {
 				),
 				'excerptLength'      => array(
 					'type'    => 'number',
-					'default' => 55,
+					'default' => 12,
+				),
+				'imageSize'          => array(
+					'type'    => 'number',
+					'default' => 9,
 				),
 				'displayPostDate'    => array(
 					'type'    => 'boolean',
 					'default' => true,
+				),
+				'listPosition'       => array(
+					'type'    => 'string',
+					'default' => 'right',
 				),
 				'columns'            => array(
 					'type'    => 'number',

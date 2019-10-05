@@ -1,11 +1,10 @@
-$margin: (
-	1: 0.25em,
-	2: 0.25em,
-	3: 0.5em,
-	4: 0.75em,
-	5: 1em,
-	6: 1.5em
-);
+.mt {
+	@include utilities($margin, "margin-top", "-");
+}
+
+.mb {
+	@include utilities($margin, "margin-bottom", "-");
+}
 
 .mr {
 	@include utilities($margin, "margin-right", "-");
@@ -15,15 +14,15 @@ $margin: (
 	@include utilities($margin, "margin-left", "-");
 }
 
+// Shim as Gutenberg removes margin-bottom from lists.
+// @todo, this should be moved into the editor styles.
+.editor-styles-wrapper {
+	.mb {
+		@include utilities($margin, "margin-bottom", "-");
+	}
+}
+
 //Old utitlies.
-.mb-0 {
-	margin-bottom: 0 !important;
-}
-
-.mt-0 {
-	margin-top: 0 !important;
-}
-
 body {
 	.has-margin {
 		&.has-small-margin {
