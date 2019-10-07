@@ -175,7 +175,7 @@ class BlogrollEdit extends Component {
 		);
 
 		setAttributes( { className: updatedClassName } );
-	};
+	}
 
 	render() {
 		const {
@@ -188,7 +188,6 @@ class BlogrollEdit extends Component {
 		const { categoriesList } = this.state;
 
 		const isListStyle = includes( className, 'is-style-list' );
-		const isGridStyle = includes( className, 'is-style-grid' );
 		const isCarouselStyle = includes( className, 'is-style-carousel' );
 
 		const activeStyle = getActiveStyle( styleOptions, className );
