@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/alert should render 1`] = `
+"<!-- wp:coblocks/alert -->
+<div class=\\"wp-block-coblocks-alert\\"></div>
+<!-- /wp:coblocks/alert -->"
+`;
