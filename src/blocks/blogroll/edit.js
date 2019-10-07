@@ -164,7 +164,7 @@ class BlogrollEdit extends Component {
 		}
 	}
 
-	updateStyle = style => {
+	updateStyle( style ) {
 		const { className, attributes, setAttributes } = this.props;
 
 		const activeStyle = getActiveStyle( styleOptions, className );
