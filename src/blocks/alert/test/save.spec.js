@@ -27,10 +27,14 @@ describe( name, () => {
 		serializedBlock = '';
 	} );
 
-	it( 'should render', () => {
+	it( 'should render with content', () => {
+		block.attributes.title = 'Alert title';
+		block.attributes.value = 'Alert description';
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
+		expect( serializedBlock ).toContain( 'Alert title' );
+		expect( serializedBlock ).toContain( 'Alert description' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );
