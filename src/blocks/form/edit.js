@@ -12,7 +12,6 @@ import emailValidator from 'email-validator';
 import icons from './icons';
 import CoBlocksField from './fields/field';
 import CoBlocksFieldName from './fields/field-name';
-import CoBlocksFieldTextarea from './fields/field-textarea';
 import Notice from './notice';
 import SubmitButton from './submit-button';
 
@@ -111,24 +110,6 @@ export const childBlocks = [
 			description: __( 'An email address field.' ),
 			icon: icons.email,
 			edit: editField( 'email' ),
-		},
-	},
-	{
-		name: 'coblocks/field-textarea',
-		settings: {
-			...FieldDefaults,
-			title: _x( 'Message', 'block name' ),
-			keywords: [ _x( 'Textarea', 'block keyword' ), 'textarea', _x( 'Multiline text', 'block keyword' ) ],
-			description: __( 'A text box for longer responses.' ),
-			icon: icons.textarea,
-			edit: props => (
-				<CoBlocksFieldTextarea
-					label={ getFieldLabel( props ) }
-					required={ props.attributes.required }
-					setAttributes={ props.setAttributes }
-					isSelected={ props.isSelected }
-				/>
-			),
 		},
 	},
 ];
