@@ -7,6 +7,10 @@ svn co "http://svn.wp-plugins.org/coblocks" $HOME/coblocks
 rm -rf $HOME/coblocks/trunk/*
 cp -a build/coblocks/* $HOME/coblocks/trunk/
 
+# Create the tag on the SVN repo and copy over plugin files
+mkdir $HOME/coblocks/tags/${CIRCLE_TAG}
+cp -a build/coblocks/* $HOME/coblocks/tags/${CIRCLE_TAG}/
+
 # Copy the WordPress.org assets over
 rm -rf $HOME/coblocks/assets/*
 cp -a .wordpress-org/* $HOME/coblocks/assets/
