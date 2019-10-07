@@ -53,12 +53,12 @@ function coblocks_render_blogroll_block( $attributes ) {
 		}
 
 		$recent_posts    = $recent_posts->get_items( 0, $attributes['postsToShow'] );
-		$formatted_posts = coblocks_extract_external_info( $recent_posts );
+		$formatted_posts = coblocks_get_rss_post_info( $recent_posts );
 
 	} else {
 
 		$recent_posts    = get_posts( $args );
-		$formatted_posts = coblocks_extract_internal_info( $recent_posts );
+		$formatted_posts = coblocks_get_post_info( $recent_posts );
 
 	}
 
@@ -89,6 +89,14 @@ function coblocks_render_blogroll_block( $attributes ) {
 	}
 }
 
+/**
+ * Renders the list and grid styles.
+ *
+ * @param array $posts Current posts.
+ * @param array $attributes The block attributes.
+ *
+ * @return string Returns the block content for the list and grid styles.
+ */
 function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 
 	$class        = 'wp-block-coblocks-blogroll';
@@ -223,6 +231,14 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 
 }
 
+/**
+ * Renders the carousel style.
+ *
+ * @param array $posts Current posts.
+ * @param array $attributes The block attributes.
+ *
+ * @return string Returns the block content for the carousel style.
+ */
 function coblocks_blogroll_carousel_style( $posts, $attributes ) {
 
 	$arrows         = $attributes['prevNextButtons'] ? 'true' : 'false';
@@ -359,7 +375,53 @@ function coblocks_blogroll_carousel_style( $posts, $attributes ) {
 
 }
 
-function coblocks_extract_external_info( $posts ) {
+/**
+ * Returns the posts for an internal blogroll.
+ *
+ * @param array $posts Current posts.
+ *
+ * @return array Returns posts.
+ */
+function coblocks_get_post_info( $posts ) {
+
+	$formatted_posts = [];
+
+	foreach ( $posts as $post ) {
+
+		$formatted_post = null;
+
+		$formatted_post['thumbnailURL'] = get_the_post_thumbnail_url( $post );
+		$formatted_post['date']         = esc_attr( get_the_date( 'c', $post ) );
+		$formatted_post['dateReadable'] = esc_html( get_the_date( '', $post ) );
+		$formatted_post['title']        = get_the_title( $post );
+		$formatted_post['postLink']     = esc_url( get_permalink( $post ) );
+
+		$post_excerpt = $post->post_excerpt;
+
+		if ( ! ( $post_excerpt ) ) {
+
+			$post_excerpt = $post->post_content;
+
+		}
+
+		$formatted_post['postExcerpt'] = $post_excerpt;
+
+		$formatted_posts[] = $formatted_post;
+
+	}
+
+	return $formatted_posts;
+
+}
+
+/**
+ * Returns the posts for an external RSS feed.
+ *
+ * @param array $posts Current posts.
+ *
+ * @return array Returns posts.
+ */
+function coblocks_get_rss_post_info( $posts ) {
 
 	$formatted_posts = [];
 
@@ -386,38 +448,6 @@ function coblocks_extract_external_info( $posts ) {
 		}
 
 		$formatted_post['thumbnailURL'] = $first_img;
-
-		$formatted_posts[] = $formatted_post;
-
-	}
-
-	return $formatted_posts;
-
-}
-
-function coblocks_extract_internal_info( $posts ) {
-
-	$formatted_posts = [];
-
-	foreach ( $posts as $post ) {
-
-		$formatted_post = null;
-
-		$formatted_post['thumbnailURL'] = get_the_post_thumbnail_url( $post );
-		$formatted_post['date']         = esc_attr( get_the_date( 'c', $post ) );
-		$formatted_post['dateReadable'] = esc_html( get_the_date( '', $post ) );
-		$formatted_post['title']        = get_the_title( $post );
-		$formatted_post['postLink']     = esc_url( get_permalink( $post ) );
-
-		$post_excerpt = $post->post_excerpt;
-
-		if ( ! ( $post_excerpt ) ) {
-
-			$post_excerpt = $post->post_content;
-
-		}
-
-		$formatted_post['postExcerpt'] = $post_excerpt;
 
 		$formatted_posts[] = $formatted_post;
 
