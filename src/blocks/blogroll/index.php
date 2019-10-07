@@ -150,7 +150,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 		}
 
 		$list_items_markup .= sprintf(
-			'<li class="flex flex-auto items-stretch w-full mb-7 %1$s">',
+			'<li class="flex flex-auto items-stretch w-full mb-7 ml-0 pl-0 %1$s">',
 			$list_items_class
 		);
 

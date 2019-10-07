@@ -11,7 +11,7 @@ import Slider from 'react-slick';
  */
 
 import InspectorControls from './inspector';
-import blogIcons from './icons';
+import icons from './icons';
 
 /**
  * WordPress dependencies
@@ -45,20 +45,20 @@ const TokenList = wp.tokenList;
 const styleOptions = [
 	{
 		name: 'list',
-		label: __( 'List' ),
-		icon: blogIcons.layoutListIconRight,
-		iconAlt: blogIcons.layoutListIconLeft,
+		label: _x( 'List', 'block style' ),
+		icon: icons.layoutListIconRight,
+		iconAlt: icons.layoutListIconLeft,
 		isDefault: true,
 	},
 	{
 		name: 'grid',
-		label: __( 'Grid' ),
-		icon: blogIcons.layoutGridIcon,
+		label: _x( 'Grid', 'block style' ),
+		icon: icons.layoutGridIcon,
 	},
 	{
 		name: 'carousel',
-		label: __( 'Carousel' ),
-		icon: blogIcons.layoutCarouselIcon,
+		label: _x( 'Carousel', 'block style' ),
+		icon: icons.layoutCarouselIcon,
 	},
 ];
 
@@ -117,6 +117,7 @@ class BlogrollEdit extends Component {
 		};
 
 		this.onSubmitURL = this.onSubmitURL.bind( this );
+		this.updateStyle = this.updateStyle.bind( this );
 	}
 
 	componentDidMount() {
@@ -166,11 +167,12 @@ class BlogrollEdit extends Component {
 	}
 
 	updateStyle( style ) {
-		const { className, attributes, setAttributes } = this.props;
+		const { className, setAttributes } = this.props;
 
 		const activeStyle = getActiveStyle( styleOptions, className );
+
 		const updatedClassName = replaceActiveStyle(
-			attributes.className,
+			className,
 			activeStyle,
 			style
 		);
@@ -231,12 +233,12 @@ class BlogrollEdit extends Component {
 		const displayPosts = Array.isArray( latestPosts ) && latestPosts.length > postsToShow ? latestPosts.slice( 0, postsToShow ) : latestPosts;
 
 		const toolbarControls = [ {
-			icon: blogIcons.listPositionLeft,
+			icon: icons.listPositionLeft,
 			title: __( 'Image on left' ),
 			isActive: listPosition === 'left',
 			onClick: () => setAttributes( { listPosition: 'left' } ),
 		}, {
-			icon: blogIcons.listPositionRight,
+			icon: icons.listPositionRight,
 			title: __( 'Image on right' ),
 			isActive: listPosition === 'right',
 			onClick: () => setAttributes( { listPosition: 'right' } ),
@@ -343,8 +345,8 @@ class BlogrollEdit extends Component {
 				}
 				{ postFeedType === 'internal' && ! isCarouselStyle &&
 				<ul
-					className={ classnames( this.props.className, 'list-none', 'ml-0', 'pl-0', {
-						'columns': columns && ! isCarouselStyle,
+					className={ classnames( className, 'list-none', 'ml-0', 'pl-0', {
+						columns: columns && ! isCarouselStyle,
 						[ `columns-${ columns }` ]: columns && ! isCarouselStyle,
 					} ) }
 				>
@@ -352,7 +354,7 @@ class BlogrollEdit extends Component {
 						const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
 						const featuredImageStyle = 'url(' + featuredImageUrl + ')';
 
-						const listClasses = classnames( 'flex', 'flex-auto', 'items-stretch', 'w-full', 'mb-7', {
+						const listClasses = classnames( 'flex', 'flex-auto', 'items-stretch', 'w-full', 'mb-7', 'mb-7', 'ml-0', {
 							'flex-row-reverse': listPosition === 'right',
 							'has-featured-image': featuredImageUrl,
 						} );

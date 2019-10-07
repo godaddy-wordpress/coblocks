@@ -8,10 +8,10 @@ const { SVG, Path, G } = wp.components;
  */
 const icons = {};
 
-icons.listPositionLeft  = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><Path d="m11 15v-10h-10v10zm2-6h6v-2h-6zm0 4h6v-2h-6z" /></SVG>;
+icons.listPositionLeft = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><Path d="m11 15v-10h-10v10zm2-6h6v-2h-6zm0 4h6v-2h-6z" /></SVG>;
 icons.listPositionRight = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><Path d="m19 15v-10h-10v10zm-18-6h6v-2h-6zm0 4h6v-2h-6z" /></SVG>;
 icons.layoutListIconRight = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 26" height="26" width="56"><Path d="m52 22v-18h-18v18zm-48-12h6v-2h-6zm0 4h24v-2h-24zm0 4h18v-2h-18z" /></SVG>;
-icons.layoutListIconLeft = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 26" height="26" width="56"><Path d="m22 22v-18h-18v18zm3-12h6v-2h-6zm0 4h24v-2h-24zm0 4h18v-2h-18z" /></SVG>;
+icons.layoutListIconLeft = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 26" height="26" width="56"><Path d="m22 22v-18h-18v18zm6-12h6v-2h-6zm0 4h24v-2h-24zm0 4h18v-2h-18z" /></SVG>;
 
 icons.layoutGridIcon = (
 	<SVG
