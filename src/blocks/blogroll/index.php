@@ -486,14 +486,23 @@ function coblocks_register_blogroll_block() {
 				'align'              => array(
 					'type' => 'string',
 				),
-				'categories'         => array(
-					'type' => 'string',
+				'postFeedType'       => array(
+					'type'    => 'string',
+					'default' => 'internal',
+				),
+				'externalRssUrl'     => array(
+					'type'    => 'string',
+					'default' => '',
 				),
 				'postsToShow'        => array(
 					'type'    => 'number',
 					'default' => 2,
 				),
 				'displayPostContent' => array(
+					'type'    => 'boolean',
+					'default' => true,
+				),
+				'displayPostDate'    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
@@ -505,14 +514,6 @@ function coblocks_register_blogroll_block() {
 					'type'    => 'string',
 					'default' => __( 'Read more', 'coblocks' ),
 				),
-				'postFeedType'       => array(
-					'type'    => 'string',
-					'default' => 'internal',
-				),
-				'externalRssUrl'     => array(
-					'type'    => 'string',
-					'default' => '',
-				),
 				'excerptLength'      => array(
 					'type'    => 'number',
 					'default' => 12,
@@ -520,10 +521,6 @@ function coblocks_register_blogroll_block() {
 				'imageSize'          => array(
 					'type'    => 'string',
 					'default' => 'w-1/5 h-1/5',
-				),
-				'displayPostDate'    => array(
-					'type'    => 'boolean',
-					'default' => true,
 				),
 				'listPosition'       => array(
 					'type'    => 'string',
@@ -540,6 +537,9 @@ function coblocks_register_blogroll_block() {
 				'orderBy'            => array(
 					'type'    => 'string',
 					'default' => 'date',
+				),
+				'categories'         => array(
+					'type' => 'string',
 				),
 				'prevNextButtons'    => array(
 					'type'    => 'boolean',
