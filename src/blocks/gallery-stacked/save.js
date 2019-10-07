@@ -11,7 +11,7 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-const { RichText, getFontSizeClass } = wp.blockEditor;
+import { RichText, getFontSizeClass } from '@wordpress/block-editor';
 
 const save = ( { attributes, className } ) => {
 	const {

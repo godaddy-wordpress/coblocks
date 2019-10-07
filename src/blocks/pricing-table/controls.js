@@ -6,10 +6,10 @@ import { find } from 'lodash';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls } = wp.blockEditor;
-const { Toolbar, Path, SVG } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
+import { Toolbar, Path, SVG } from '@wordpress/components';
 
 const DEFAULT_ALIGNMENT_CONTROLS = [
 	{

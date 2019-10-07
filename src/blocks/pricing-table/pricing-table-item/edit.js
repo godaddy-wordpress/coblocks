@@ -12,10 +12,10 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { RichText, InnerBlocks } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.

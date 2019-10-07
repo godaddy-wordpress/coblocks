@@ -1,9 +1,9 @@
 /**
  * WordPress dependencies
  */
-const {
+import {
 	registerBlockType,
-} = wp.blocks;
+} from '@wordpress/blocks';
 
 // Register block category
 import './utils/block-category';

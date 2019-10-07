@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { getColorClassName } = wp.blockEditor;
+import { getColorClassName } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies

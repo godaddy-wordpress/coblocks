@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-const { _x } = wp.i18n;
-const { SVG, Path, G } = wp.components;
+import { _x } from '@wordpress/i18n';
+import { SVG, Path, G } from '@wordpress/components';
 
 const svgs = {
 	outlined: {},

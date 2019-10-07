@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { ToggleControl } from '@wordpress/components';
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, required } ) => {
 	return (

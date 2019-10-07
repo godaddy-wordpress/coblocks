@@ -16,22 +16,23 @@ import { withProps, lifecycle } from 'recompose';
 import Controls from './controls';
 import Inspector from './inspector';
 import GMapStyles from './map-styles';
-import icons from '../../utils/icons';
+import icon from './icon';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const {
+import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import {
 	Placeholder,
 	Button,
 	TextControl,
 	ResizableBox,
 	withNotices,
-} = wp.components;
-const { Fragment, Component } = wp.element;
-const { ENTER } = wp.keycodes;
+} from '@wordpress/components';
+import { Fragment, Component } from '@wordpress/element';
+import { ENTER } from '@wordpress/keycodes';
+import { BlockIcon } from '@wordpress/block-editor';
 
 /**
  * Get settings.
@@ -71,6 +72,9 @@ class Edit extends Component {
 
 			this.setState( { isLoading: false } );
 		} );
+
+		this.updateApiKey = this.updateApiKey.bind( this );
+		this.saveApiKey = this.saveApiKey.bind( this );
 	}
 
 	componentDidUpdate() {
@@ -88,7 +92,7 @@ class Edit extends Component {
 		}
 	}
 
-	updateApiKey = ( apiKey = this.state.apiKey ) => {
+	updateApiKey( apiKey = this.state.apiKey ) {
 		const { attributes, setAttributes } = this.props;
 
 		this.saveApiKey( apiKey );
@@ -106,9 +110,9 @@ class Edit extends Component {
 		if ( attributes.address ) {
 			setAttributes( { pinned: true } );
 		}
-	};
+	}
 
-	saveApiKey = ( apiKey = this.state.apiKey ) => {
+	saveApiKey( apiKey = this.state.apiKey ) {
 		this.setState( { apiKey, isSaving: true } );
 		const model = new wp.api.models.Settings( {
 			coblocks_google_maps_api_key: apiKey,
@@ -122,7 +126,7 @@ class Edit extends Component {
 			} );
 			settings.fetch();
 		} );
-	};
+	}
 
 	render() {
 		const {
@@ -156,7 +160,7 @@ class Edit extends Component {
 			renderMap();
 		};
 
-		const icon = {
+		const marker = {
 			url: '/wp-content/plugins/coblocks/dist/images/markers/' + skin + '.svg',
 			scaledSize: { width: iconSize, height: iconSize },
 		};
@@ -219,7 +223,7 @@ class Edit extends Component {
 				>
 					<Marker
 						position={ new window.google.maps.LatLng( props.coords ) }
-						icon={ icon }
+						icon={ marker }
 					/>
 				</GoogleMap>
 			) : null,
@@ -286,7 +290,7 @@ class Edit extends Component {
 					</ResizableBox>
 				) : (
 					<Placeholder
-						icon={ icons.googleMap }
+						icon={ <BlockIcon icon={ icon } /> }
 						label={ __( 'Google Map' ) }
 						instructions={ __(
 							'Enter a location or address to drop a pin on a Google map.'

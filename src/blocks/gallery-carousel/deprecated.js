@@ -13,7 +13,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-const { getColorClassName, RichText } = wp.blockEditor;
+import { getColorClassName, RichText } from '@wordpress/block-editor';
 
 const deprecated =
 [ {

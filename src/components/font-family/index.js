@@ -6,9 +6,9 @@ import googleFonts from './fonts';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { withInstanceId } = wp.compose;
-const { BaseControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { withInstanceId } from '@wordpress/compose';
+import { BaseControl } from '@wordpress/components';
 
 function FontFamilyPicker( { label, value, help, instanceId, onChange, className, ...props } ) {
 	const id = `inspector-coblocks-font-family-${ instanceId }`;

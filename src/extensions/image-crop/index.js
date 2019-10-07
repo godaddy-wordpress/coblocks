@@ -6,7 +6,7 @@ import './styles/editor.scss';
 /**
  * External dependencies
  */
-import { assign } from 'lodash';
+import _, { assign } from 'lodash';
 
 /**
  * Internal dependencies
@@ -16,12 +16,12 @@ import CropControl from '../../components/crop-settings/crop-control';
 /**
  * WordPress dependencies
  */
-const { createHigherOrderComponent } = wp.compose;
-const { Fragment } = wp.element;
-const { InspectorControls } = wp.blockEditor;
-const { PanelBody } = wp.components;
-const { addFilter } = wp.hooks;
-const { __ } = wp.i18n;
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { Fragment } from '@wordpress/element';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody } from '@wordpress/components';
+import { addFilter } from '@wordpress/hooks';
+import { __ } from '@wordpress/i18n';
 
 const supportedBlocks = [
 	'core/image',

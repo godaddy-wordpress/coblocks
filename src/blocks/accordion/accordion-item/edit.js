@@ -13,10 +13,10 @@ import Controls from './controls';
 /**
  * WordPress dependencies
  */
-const { _x } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { InnerBlocks, RichText } = wp.blockEditor;
+import { _x } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { InnerBlocks, RichText } from '@wordpress/block-editor';
 
 /**
  * Constants

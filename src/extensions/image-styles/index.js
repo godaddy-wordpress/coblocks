@@ -6,8 +6,8 @@ import './styles/style.scss';
 /**
  * WordPress dependencies
  */
-const { _x } = wp.i18n;
-const { registerBlockStyle } = wp.blocks;
+import { _x } from '@wordpress/i18n';
+import { registerBlockStyle } from '@wordpress/blocks';
 
 // Add default for reset, until WordPress 5.3 is released.
 registerBlockStyle( 'core/image', {

@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { _x } = wp.i18n;
+import { _x } from '@wordpress/i18n';
 
 /**
  * Map styles

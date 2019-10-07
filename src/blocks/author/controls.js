@@ -1,10 +1,10 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { BlockControls, MediaUpload, MediaUploadCheck } = wp.blockEditor;
-const { Toolbar, IconButton } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { BlockControls, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { Toolbar, IconButton } from '@wordpress/components';
 
 class Controls extends Component {
 	render() {

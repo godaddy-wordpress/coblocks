@@ -22,3 +22,14 @@ global.window.localStorage = {
 
 // UserSettings global
 global.window.userSettings = { uid: 1 };
+
+// TODO: Utilize the REST API without the global.
+// Backbone REST API client
+global.wp = {
+	api: {
+		loadPromise: {
+			then: () => { },
+		},
+		models: {},
+	},
+};

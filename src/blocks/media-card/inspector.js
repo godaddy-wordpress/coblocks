@@ -8,11 +8,11 @@ import DimensionsControl from '../../components/dimensions-control/';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { InspectorControls, PanelColorSettings } = wp.blockEditor;
-const { PanelBody, ToggleControl, TextareaControl, RangeControl, ExternalLink } = wp.components;
+import { __, sprintf } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
+import { PanelBody, ToggleControl, TextareaControl, RangeControl, ExternalLink } from '@wordpress/components';
 
 /**
  * Inspector controls

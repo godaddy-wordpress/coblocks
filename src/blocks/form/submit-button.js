@@ -7,16 +7,16 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { withFallbackStyles } = wp.components;
-const { InspectorControls,
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withFallbackStyles } from '@wordpress/components';
+import { InspectorControls,
 	PanelColorSettings,
 	ContrastChecker,
 	RichText,
 	withColors,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
 const { getComputedStyle } = window;
 

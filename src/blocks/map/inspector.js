@@ -11,11 +11,11 @@ import { styleOptions } from './styles';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { InspectorControls } = wp.blockEditor;
-const { PanelBody, ToggleControl, RangeControl, TextControl, Button, ButtonGroup, ExternalLink } = wp.components;
-const { ENTER } = wp.keycodes;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, ToggleControl, RangeControl, TextControl, Button, ButtonGroup, ExternalLink } from '@wordpress/components';
+import { ENTER } from '@wordpress/keycodes';
 
 const RETRIEVE_KEY_URL = 'https://cloud.google.com/maps-platform';
 const HELP_URL = 'https://developers.google.com/maps/documentation/javascript/get-api-key';
@@ -32,9 +32,14 @@ class Inspector extends Component {
 			keySaved: false,
 			address: props.attributes.address,
 		};
+
+		this.setControls = this.setControls.bind( this );
+		this.updateApiKey = this.updateApiKey.bind( this );
+		this.removeApiKey = this.removeApiKey.bind( this );
+		this.handleKeyDown = this.handleKeyDown.bind( this );
 	}
 
-	setControls = () => {
+	setControls() {
 		const {
 			setAttributes,
 			attributes,
@@ -51,24 +56,24 @@ class Inspector extends Component {
 			streetViewControl: ! controls,
 			fullscreenControl: ! controls,
 		} );
-	};
+	}
 
-	updateApiKey = () => {
+	updateApiKey() {
 		this.props.updateApiKeyCallBack( this.state.apiKey );
-	};
+	}
 
-	removeApiKey = () => {
+	removeApiKey() {
 		this.setState( { apiKey: '' } );
 		this.props.updateApiKeyCallBack( '' );
-	};
+	}
 
-	handleKeyDown = ( keyCode ) => {
+	handleKeyDown( keyCode ) {
 		if ( keyCode !== ENTER ) {
 			return;
 		}
 
 		this.updateApiKey();
-	};
+	}
 
 	render() {
 		const {

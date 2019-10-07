@@ -11,8 +11,8 @@ import './styles/editor.scss';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { ColorPicker, Dropdown, Button } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { ColorPicker, Dropdown, Button } from '@wordpress/components';
 
 export default function InlineColorPicker( { disableCustomColors = false, value, onChange, className } ) {
 	const classes = classnames( 'components-color-palette', 'components-coblocks-inline-color-picker', className );

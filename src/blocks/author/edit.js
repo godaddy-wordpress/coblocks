@@ -12,12 +12,12 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
-const { compose } = wp.compose;
-const { Component, Fragment } = wp.element;
-const { mediaUpload } = wp.editor;
-const { RichText, InnerBlocks, MediaUpload, MediaUploadCheck, withColors, withFontSizes } = wp.blockEditor;
-const { Button, Dashicon, DropZone } = wp.components;
+import { __, _x } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import { Component, Fragment } from '@wordpress/element';
+import { mediaUpload } from '@wordpress/editor';
+import { RichText, InnerBlocks, MediaUpload, MediaUploadCheck, withColors, withFontSizes } from '@wordpress/block-editor';
+import { Button, Dashicon, DropZone } from '@wordpress/components';
 
 class AuthorEdit extends Component {
 	constructor() {

@@ -13,7 +13,7 @@ import { transforms } from './transforms';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
+import { __, _x } from '@wordpress/i18n';
 
 /**
  * Block constants

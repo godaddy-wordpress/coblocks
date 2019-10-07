@@ -15,8 +15,8 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
-const { InnerBlocks } = wp.blockEditor;
+import { __, _x } from '@wordpress/i18n';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Block constants

@@ -12,11 +12,11 @@ import MapInnerBlocks from './../map-innerblocks';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Fragment, Component } = wp.element;
-const { Button, ToggleControl } = wp.components;
-const { unregisterBlockType, registerBlockType } = wp.blocks;
-const { BlockIcon } = wp.blockEditor;
+import { __, sprintf } from '@wordpress/i18n';
+import { Fragment, Component } from '@wordpress/element';
+import { Button, ToggleControl } from '@wordpress/components';
+import { unregisterBlockType, registerBlockType } from '@wordpress/blocks';
+import { BlockIcon } from '@wordpress/block-editor';
 
 /**
  * Get settings.

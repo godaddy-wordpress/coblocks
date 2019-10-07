@@ -13,9 +13,9 @@ import { styleOptions } from './styles';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { BlockControls } = wp.blockEditor;
-const { Toolbar } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { BlockControls } from '@wordpress/block-editor';
+import { Toolbar } from '@wordpress/components';
 
 function Controls( { attributes, setAttributes, apiKey } ) {
 	const {

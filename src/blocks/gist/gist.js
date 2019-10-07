@@ -11,9 +11,9 @@ import icons from './../../utils/icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component } = wp.element;
-const { Placeholder, Spinner } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component } from '@wordpress/element';
+import { Placeholder, Spinner } from '@wordpress/components';
 
 // -- MAIN --
 // Extending PureComponent allow us to prevent re-rendering when the props DONT change.

@@ -7,9 +7,9 @@ import TypographyControls from './../../components/typography-controls';
 /**
  * WordPress dependencies
  */
-const { Component, Fragment } = wp.element;
-const { BlockControls } = wp.blockEditor;
-const { Toolbar } = wp.components;
+import { Component, Fragment } from '@wordpress/element';
+import { BlockControls } from '@wordpress/block-editor';
+import { Toolbar } from '@wordpress/components';
 
 class Controls extends Component {
 	render() {

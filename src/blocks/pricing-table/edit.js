@@ -13,9 +13,9 @@ import Controls from './controls';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.blockEditor;
+import { __, sprintf } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
