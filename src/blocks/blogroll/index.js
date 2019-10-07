@@ -30,6 +30,9 @@ const settings = {
 	supports,
 	transforms,
 	edit,
+		save() {
+		return null;
+	},
 };
 
 export { name, category, metadata, settings };
