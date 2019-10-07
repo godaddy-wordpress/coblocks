@@ -49,6 +49,7 @@ import * as features from './blocks/features';
 import * as foodAndDrinks from './blocks/food-and-drinks';
 import * as foodItem from './blocks/food-and-drinks/food-item';
 import * as form from './blocks/form';
+import * as fieldEmail from './blocks/form/fields/email';
 import * as fieldTextarea from './blocks/form/fields/textarea';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
@@ -105,6 +106,7 @@ export const registerCoBlocksBlocks = () => {
 		dynamicSeparator,
 		feature,
 		features,
+		fieldEmail,
 		fieldTextarea,
 		foodAndDrinks,
 		foodItem,

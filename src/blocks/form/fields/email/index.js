@@ -16,10 +16,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Message', 'block name' ),
-	description: __( 'A text box for longer responses.' ),
-	icon: icons.textarea,
-	keywords: [ _x( 'Textarea', 'block keyword' ), 'textarea', _x( 'Multiline text', 'block keyword' ) ],
+	title: _x( 'Email', 'block name' ),
+	description: __( 'An email address field.' ),
+	icon: icons.email,
+	keywords: [ _x( 'e-mail', 'block keyword' ), _x( 'mail', 'block keyword' ), 'email' ],
 	supports: {
 		reusable: false,
 		html: false,

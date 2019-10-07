@@ -10,7 +10,6 @@ import emailValidator from 'email-validator';
  * Internal dependencies
  */
 import icons from './icons';
-import CoBlocksField from './fields/field';
 import CoBlocksFieldName from './fields/field-name';
 import Notice from './notice';
 import SubmitButton from './submit-button';
@@ -69,16 +68,6 @@ const getFieldLabel = ( { attributes, name: blockName } ) => {
 		attributes.label;
 };
 
-const editField = type => props => (
-	<CoBlocksField
-		type={ type }
-		label={ getFieldLabel( props ) }
-		required={ props.attributes.required }
-		setAttributes={ props.setAttributes }
-		isSelected={ props.isSelected }
-	/>
-);
-
 export const childBlocks = [
 	{
 		name: 'coblocks/field-name',
@@ -99,17 +88,6 @@ export const childBlocks = [
 					isSelected={ props.isSelected }
 				/>
 			),
-		},
-	},
-	{
-		name: 'coblocks/field-email',
-		settings: {
-			...FieldDefaults,
-			title: _x( 'Email', 'block name' ),
-			keywords: [ _x( 'e-mail', 'block keyword' ), _x( 'mail', 'block keyword' ), 'email' ],
-			description: __( 'An email address field.' ),
-			icon: icons.email,
-			edit: editField( 'email' ),
 		},
 	},
 ];
