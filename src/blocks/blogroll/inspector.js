@@ -47,12 +47,13 @@ const Inspector = props => {
 		displayPostLink,
 		displayPostContent,
 		columns,
+		listPosition,
 		imageSize,
 	} = attributes;
 
 	const isCarouselStyle = ( 'carousel' === activeStyle.name );
-
 	const isGridStyle = ( 'grid' === activeStyle.name );
+	const isListStyle = ( 'list' === activeStyle.name );
 
 	const sizeOptions = [
 		{
@@ -218,7 +219,7 @@ const Inspector = props => {
 							aria-label={ style.label || style.name }
 						>
 							<div className="editor-block-styles__item-preview block-editor-block-styles__item-preview">
-								{ style.icon }
+								{ isListStyle && listPosition === 'left' && style.iconAlt ? style.iconAlt : style.icon }
 							</div>
 							<div className="editor-block-styles__item-label block-editor-block-styles__item-label">
 								{ style.label || style.name }

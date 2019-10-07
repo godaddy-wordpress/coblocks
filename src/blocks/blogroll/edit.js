@@ -46,7 +46,8 @@ const styleOptions = [
 	{
 		name: 'list',
 		label: __( 'List' ),
-		icon: blogIcons.layoutListIcon,
+		icon: blogIcons.layoutListIconRight,
+		iconAlt: blogIcons.layoutListIconLeft,
 		isDefault: true,
 	},
 	{
