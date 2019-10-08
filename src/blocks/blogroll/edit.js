@@ -341,11 +341,13 @@ class BlogrollEdit extends Component {
 					}
 				</BlockControls>
 				{ postFeedType === 'external' &&
-					<ServerSideRender
-						block="coblocks/blogroll"
-						attributes={ this.props.attributes }
-						className="coblocks-slick"
-					/>
+					<Disabled>
+						<ServerSideRender
+							block="coblocks/blogroll"
+							attributes={ this.props.attributes }
+							className="coblocks-slick"
+						/>
+					</Disabled>
 				}
 				{ postFeedType === 'internal' && ! isCarouselStyle &&
 					<Disabled>
