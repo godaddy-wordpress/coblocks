@@ -11,6 +11,7 @@ import emailValidator from 'email-validator';
  */
 import icons from './icons';
 import CoBlocksField from './fields/field';
+import CoBlocksFieldMultiple from './fields/multi-field';
 import CoBlocksFieldName from './fields/field-name';
 import CoBlocksFieldTextarea from './fields/field-textarea';
 import Notice from './notice';
@@ -29,7 +30,11 @@ import { applyFilters } from '@wordpress/hooks';
 /**
  * Block constants
  */
-const ALLOWED_BLOCKS = [];
+const ALLOWED_BLOCKS = [
+	'coblocks/field-date',
+	'coblocks/field-telephone',
+	'coblocks/field-radio',
+];
 
 const FieldDefaults = {
 	category: 'coblocks',
@@ -37,12 +42,15 @@ const FieldDefaults = {
 	supports: {
 		reusable: false,
 		html: false,
-		inserter: false,
 	},
 	attributes: {
 		label: {
 			type: 'string',
 			default: null,
+		},
+		options: {
+			type: 'array',
+			default: [],
 		},
 		required: {
 			type: 'boolean',
@@ -77,6 +85,18 @@ const editField = type => props => (
 		required={ props.attributes.required }
 		setAttributes={ props.setAttributes }
 		isSelected={ props.isSelected }
+	/>
+);
+
+const editMultiField = type => props => (
+	<CoBlocksFieldMultiple
+		label={ getFieldLabel( props ) }
+		required={ props.attributes.required }
+		options={ props.attributes.options }
+		setAttributes={ props.setAttributes }
+		type={ type }
+		isSelected={ props.isSelected }
+		id={ props.attributes.id }
 	/>
 );
 
@@ -129,6 +149,53 @@ export const childBlocks = [
 					isSelected={ props.isSelected }
 				/>
 			),
+		},
+	},
+	{
+		name: 'coblocks/field-date',
+		settings: {
+			...FieldDefaults,
+			title: __( 'Date', 'block keyword' ),
+			keywords: [
+				_x( 'Calendar', 'block keyword' ),
+				_x( 'day month year', 'block search term' ),
+			],
+			description: __( 'The best way to set a date. Add a date picker.' ),
+			icon: icons.email,
+			edit: editField( 'text' ),
+		},
+	},
+	{
+		name: 'coblocks/field-telephone',
+		settings: {
+			...FieldDefaults,
+			title: _x( 'Telephone', 'block keyword' ),
+			keywords: [
+				_x( 'Phone', 'block keyword' ),
+				_x( 'Cellular phone', 'block keyword' ),
+				_x( 'Mobile', 'block keyword' ),
+			],
+			description: _x( 'Add a phone number input.', 'block keyword' ),
+			icon: icons.email,
+			edit: editField( 'tel' ),
+		},
+	},
+	{
+		name: 'coblocks/field-radio',
+		settings: {
+			...FieldDefaults,
+			title: __( 'Radio' ),
+			keywords: [ _x( 'Choose', 'block keyword' ), _x( 'Select', 'block keyword' ), _x( 'Option', 'block keyword' ) ],
+			description: __( 'Inspired by radios, only one radio item can be selected at a time. Add several radio button items.' ),
+			icon: icons.email,
+			edit: editMultiField( 'radio' ),
+			attributes: {
+				...FieldDefaults.attributes,
+				label: {
+					type: 'string',
+					default: 'Choose one',
+				},
+			},
 		},
 	},
 ];
@@ -471,7 +538,7 @@ class FormEdit extends Component {
 				<div className={ classes }>
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
-						templateLock={ true }
+						templateLock={ false }
 						templateInsertUpdatesSelection={ false }
 						renderAppender={ () => null }
 						template={ FORM_TEMPLATE }
