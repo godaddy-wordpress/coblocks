@@ -33,6 +33,7 @@ const Inspector = props => {
 		styleOptions,
 		onUpdateStyle,
 		setAttributes,
+		onUserModifiedColumn,
 		categoriesList,
 		postCount,
 		hasPosts,
@@ -114,7 +115,10 @@ const Inspector = props => {
 					<RangeControl
 						label={ __( 'Columns' ) }
 						value={ columns }
-						onChange={ ( value ) => setAttributes( { columns: value } ) }
+						onChange={ ( value ) => {
+							onUserModifiedColumn();
+							setAttributes( { columns: value } );
+						} }
 						min={ isStackedStyle ? 2 : 1 }
 						max={ isHorizontalStyle ? 2 : Math.min( 4, postCount ) }
 						required
