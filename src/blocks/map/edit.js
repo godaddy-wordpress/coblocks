@@ -169,6 +169,9 @@ class Edit extends Component {
 				case 'zh-ch':
 					locale = 'zh-CN';
 					break;
+				case 'fr-ca':
+					locale = 'fr-CA';
+					break;
 				default:
 					locale = locale.split( '-' )[ 0 ];
 					break;
