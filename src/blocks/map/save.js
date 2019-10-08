@@ -34,7 +34,34 @@ function Save( { attributes } ) {
 	};
 
 	const userLocale = () => {
-		return $( '[class*="locale-"]' ).attr( 'class' ).split( 'locale-' )[ 1 ].split( ' ' )[ 0 ];
+		let locale = $( '[class*="locale-"]' ).attr( 'class' ).split( 'locale-' )[ 1 ].split( ' ' )[ 0 ];
+		switch ( locale.toLowerCase() ) {
+			case 'en-au':
+				locale = 'en-AU';
+				break;
+			case 'en-gb':
+				locale = 'en-GB';
+				break;
+			case 'pt-br':
+				locale = 'pt-BR';
+				break;
+			case 'pt-pt':
+				locale = 'pt-PT';
+				break;
+			case 'zh-tw':
+				locale = 'zh-TW';
+				break;
+			case 'zh-ch':
+				locale = 'zh-CN';
+				break;
+			case 'fr-ca':
+				locale = 'fr-CA';
+				break;
+			default:
+				locale = locale.split( '-' )[ 0 ];
+				break;
+		}
+		return locale;
 	};
 
 	const attr = Object
