@@ -513,7 +513,7 @@ export default compose( [
 			latestPosts = latestPosts.map( ( post ) => {
 				return {
 					...post,
-					featured_media_object: select( 'core' ).getMedia( post.featured_media ),
+					featured_media_object: post.featured_media && select( 'core' ).getMedia( post.featured_media ),
 				};
 			} );
 		}
