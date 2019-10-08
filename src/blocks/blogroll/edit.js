@@ -30,6 +30,7 @@ import {
 	Toolbar,
 	TextControl,
 	Button,
+	Disabled,
 	ServerSideRender,
 } from '@wordpress/components';
 
@@ -347,87 +348,87 @@ class BlogrollEdit extends Component {
 					/>
 				}
 				{ postFeedType === 'internal' && ! isCarouselStyle &&
-				<ul
-					className={ classnames( className, 'list-none', 'mt-0', 'ml-0', 'pl-0', {
-						columns: columns && ! isCarouselStyle,
-						[ `columns-${ columns }` ]: columns && ! isCarouselStyle,
-					} ) }
-				>
-					{ displayPosts.map( ( post, i ) => {
-						const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
-						const featuredImageStyle = 'url(' + featuredImageUrl + ')';
+					<Disabled>
+						<ul className={ classnames( className, 'list-none', 'mt-0', 'ml-0', 'pl-0', {
+							columns: columns && ! isCarouselStyle,
+							[ `columns-${ columns }` ]: columns && ! isCarouselStyle,
+						} ) }>
+							{ displayPosts.map( ( post, i ) => {
+								const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
+								const featuredImageStyle = 'url(' + featuredImageUrl + ')';
 
-						const listClasses = classnames( 'flex', 'flex-auto', 'items-stretch', 'w-full', 'mt-0', 'mb-4', 'ml-0', 'pl-0', {
-							'flex-row-reverse': isListStyle && listPosition === 'right',
-							'flex-col': isGridStyle,
-							'has-featured-image': featuredImageUrl,
-						} );
+								const listClasses = classnames( 'flex', 'flex-auto', 'items-stretch', 'w-full', 'mt-0', 'mb-4', 'ml-0', 'pl-0', {
+									'flex-row-reverse': isListStyle && listPosition === 'right',
+									'flex-col': isGridStyle,
+									'has-featured-image': featuredImageUrl,
+								} );
 
-						const titleTrimmed = post.title.rendered.trim();
+								const titleTrimmed = post.title.rendered.trim();
 
-						let excerpt = post.excerpt.rendered;
-						if ( post.excerpt.raw === '' ) {
-							excerpt = post.content.raw;
-						}
-						const excerptElement = document.createElement( 'div' );
-						excerptElement.innerHTML = excerpt;
-						excerpt = excerptElement.textContent || excerptElement.innerText || '';
-
-						return (
-							<li key={ i } className={ listClasses }>
-								{ featuredImageUrl &&
-									<div className={ imageClasses }>
-										<div className="block w-full bg-cover bg-center-center pt-full" style={ { backgroundImage: featuredImageStyle } }></div>
-									</div>
+								let excerpt = post.excerpt.rendered;
+								if ( post.excerpt.raw === '' ) {
+									excerpt = post.content.raw;
 								}
-								<div className="wp-block-coblocks-blogroll__content flex flex-col self-center w-full">
-									{ isGridStyle && displayPostDate && post.date_gmt &&
-										<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date mb-1">
-											{ dateI18n( dateFormat, post.date_gmt ) }
-										</time>
-									}
-									<a href={ post.link } target="_blank" rel="noreferrer noopener" alt={ titleTrimmed }>
-										{ titleTrimmed ? (
-											<RawHTML>
-												{ titleTrimmed }
-											</RawHTML>
-										) :
-											_x( '(no title)', 'placeholder when a post has no title' )
+								const excerptElement = document.createElement( 'div' );
+								excerptElement.innerHTML = excerpt;
+								excerpt = excerptElement.textContent || excerptElement.innerText || '';
+
+								return (
+									<li key={ i } className={ listClasses }>
+										{ featuredImageUrl &&
+											<div className={ imageClasses }>
+												<div className="block w-full bg-cover bg-center-center pt-full" style={ { backgroundImage: featuredImageStyle } }></div>
+											</div>
 										}
-									</a>
-									{ isListStyle && displayPostDate && post.date_gmt &&
-										<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date mt-1">
-											{ dateI18n( dateFormat, post.date_gmt ) }
-										</time>
-									}
-									{ displayPostContent &&
-										<div className="wp-block-coblocks-blogroll__post-excerpt mt-1">
-											<RawHTML
-												key="html"
-											>
-												{ excerptLength < excerpt.trim().split( ' ' ).length ?
-													excerpt.trim().split( ' ', excerptLength ).join( ' ' ) + '…' :
-													excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
-											</RawHTML>
+										<div className="wp-block-coblocks-blogroll__content flex flex-col self-center w-full">
+											{ isGridStyle && displayPostDate && post.date_gmt &&
+												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date mb-1">
+													{ dateI18n( dateFormat, post.date_gmt ) }
+												</time>
+											}
+											<a href={ post.link } target="_blank" rel="noreferrer noopener" alt={ titleTrimmed }>
+												{ titleTrimmed ? (
+													<RawHTML>
+														{ titleTrimmed }
+													</RawHTML>
+												) :
+													_x( '(no title)', 'placeholder when a post has no title' )
+												}
+											</a>
+											{ isListStyle && displayPostDate && post.date_gmt &&
+												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date mt-1">
+													{ dateI18n( dateFormat, post.date_gmt ) }
+												</time>
+											}
+											{ displayPostContent &&
+												<div className="wp-block-coblocks-blogroll__post-excerpt mt-1">
+													<RawHTML
+														key="html"
+													>
+														{ excerptLength < excerpt.trim().split( ' ' ).length ?
+															excerpt.trim().split( ' ', excerptLength ).join( ' ' ) + '…' :
+															excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+													</RawHTML>
+												</div>
+											}
+											{ displayPostLink &&
+												<RichText
+													tagName="a"
+													className="wp-block-coblocks-blogroll__more-link block self-start mt-3"
+													onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
+													value={ postLink }
+													placeholder={ __( 'Read more' ) }
+													multiline={ false }
+													withoutInteractiveFormatting={ false }
+													isSelected={ false }
+												/>
+											}
 										</div>
-									}
-									{ displayPostLink &&
-										<RichText
-											tagName="a"
-											className="wp-block-coblocks-blogroll__more-link block self-start mt-3"
-											onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
-											value={ postLink }
-											placeholder={ __( 'Read more' ) }
-											multiline={ false }
-											withoutInteractiveFormatting={ false }
-											isSelected={ false }
-										/>
-									}
-								</div>
-							</li>
-						);
-					} ) }
-				</ul>
+									</li>
+								);
+							} ) }
+						</ul>
+					</Disabled>
 				}
 				{ postFeedType === 'internal' && isCarouselStyle &&
 					<Slider { ...slickSettings } className={ classnames( this.props.className ) }>
