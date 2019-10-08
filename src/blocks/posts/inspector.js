@@ -127,7 +127,7 @@ const Inspector = props => {
 				{ ! isStackedStyle && ! isCarouselStyle &&
 					<BaseControl label={ __( 'Thumbnail Size' ) }
 						className={ classnames(
-							'components-coblocks-blogroll-thumbnail-size',
+							'components-coblocks-posts-thumbnail-size',
 							{
 								'has-content': displayPostContent,
 							}

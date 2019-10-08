@@ -23,10 +23,10 @@ const { __, _x } = wp.i18n;
 const { name, category, supports } = metadata;
 
 const settings = {
-	title: _x( 'Blogroll', 'block name' ),
-	description: __( 'Display posts or an external blog feed as a list, grid, or carousel.' ),
+	title: _x( 'Posts', 'block name' ),
+	description: __( 'Display posts or an RSS feed as stacked or horizontal cards.' ),
 	icon,
-	keywords: [ _x( 'posts', 'block keyword' ), _x( 'articles', 'block keyword' ), _x( 'latest', 'block keyword' ) ],
+	keywords: [ _x( 'posts', 'block keyword' ), _x( 'rss', 'block keyword' ), _x( 'latest', 'block keyword' ) ],
 	supports,
 	transforms,
 	edit,

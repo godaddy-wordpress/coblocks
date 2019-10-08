@@ -1,6 +1,6 @@
 <?php
 /**
- * Server-side rendering of the `blogroll` block.
+ * Server-side rendering of the `posts` block.
  *
  * @package WordPress
  */
@@ -12,7 +12,7 @@
  *
  * @return string Returns the block content.
  */
-function coblocks_render_blogroll_block( $attributes ) {
+function coblocks_render_posts_block( $attributes ) {
 
 	global $post;
 
@@ -80,11 +80,11 @@ function coblocks_render_blogroll_block( $attributes ) {
 
 	if ( 'carousel' === $block_layout ) {
 
-		return coblocks_blogroll_carousel_style( $formatted_posts, $attributes );
+		return coblocks_posts_carousel_style( $formatted_posts, $attributes );
 
 	} else {
 
-		return coblocks_blogroll_list_grid_style( $formatted_posts, $attributes );
+		return coblocks_posts_list_grid_style( $formatted_posts, $attributes );
 
 	}
 }
@@ -97,9 +97,9 @@ function coblocks_render_blogroll_block( $attributes ) {
  *
  * @return string Returns the block content for the list and grid styles.
  */
-function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
+function coblocks_posts_list_grid_style( $posts, $attributes ) {
 
-	$class        = 'wp-block-coblocks-blogroll';
+	$class        = 'wp-block-coblocks-posts';
 	$block_layout = strpos( $attributes['className'], 'is-style-stacked' ) !== false ? 'stacked' : 'horizontal';
 
 	if ( isset( $attributes['className'] ) ) {
@@ -177,7 +177,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 			}
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__image table flex-0 %1$s"><a href="%2$s" class="block w-full bg-cover bg-center-center pt-full" style="background-image:url(%3$s)"></a></div>',
+				'<div class="wp-block-coblocks-posts__image table flex-0 %1$s"><a href="%2$s" class="block w-full bg-cover bg-center-center pt-full" style="background-image:url(%3$s)"></a></div>',
 				esc_attr( $image_class ),
 				esc_url( $post['postLink'] ),
 				esc_url( $post['thumbnailURL'] )
@@ -192,14 +192,14 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 		}
 
 		$list_items_markup .= sprintf(
-			'<div class="wp-block-coblocks-blogroll__content flex flex-col %s w-full">',
+			'<div class="wp-block-coblocks-posts__content flex flex-col %s w-full">',
 			esc_attr( $align_self_class )
 		);
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'stacked' === $block_layout ) {
 
 			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__date mb-1">%2$s</time>',
+				'<time datetime="%1$s" class="wp-block-coblocks-posts__date mb-1">%2$s</time>',
 				esc_url( $post['date'] ),
 				esc_html( $post['dateReadable'] )
 			);
@@ -223,7 +223,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'horizontal' === $block_layout ) {
 
 			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__date mt-2">%2$s</time>',
+				'<time datetime="%1$s" class="wp-block-coblocks-posts__date mt-2">%2$s</time>',
 				esc_url( $post['date'] ),
 				esc_html( $post['dateReadable'] )
 			);
@@ -236,7 +236,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 			$trimmed_excerpt = esc_html( wp_trim_words( $post_excerpt, $attributes['excerptLength'], ' &hellip; ' ) );
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__post-excerpt mt-1">%1$s</div>',
+				'<div class="wp-block-coblocks-posts__post-excerpt mt-1">%1$s</div>',
 				esc_html( $trimmed_excerpt )
 			);
 
@@ -245,7 +245,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__more-link"><a href="%1$s">%2$s</a></div>',
+				'<div class="wp-block-coblocks-posts__more-link"><a href="%1$s">%2$s</a></div>',
 				esc_url( $post['postLink'] ),
 				esc_html( $attributes['postLink'] )
 			);
@@ -271,14 +271,14 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
  *
  * @return string Returns the block content for the carousel style.
  */
-function coblocks_blogroll_carousel_style( $posts, $attributes ) {
+function coblocks_posts_carousel_style( $posts, $attributes ) {
 
 	$arrows         = $attributes['prevNextButtons'] ? 'true' : 'false';
 	$auto_play      = $attributes['autoPlay'] ? 'true' : 'false';
 	$draggable      = (string) $attributes['draggable'] ? 'true' : 'false';
 	$infinite_slide = $attributes['infiniteSlide'] ? 'true' : 'false';
 
-	$class = 'wp-block-coblocks-blogroll';
+	$class = 'wp-block-coblocks-posts';
 
 	if ( isset( $attributes['className'] ) ) {
 
@@ -303,7 +303,7 @@ function coblocks_blogroll_carousel_style( $posts, $attributes ) {
 				 * @var array Slick slider settings.
 				 */
 				(array) apply_filters(
-					'coblocks_blogroll_carousel_style_settings',
+					'coblocks_posts_carousel_style_settings',
 					[
 						'slidesToScroll' => 1,
 						'arrow'          => $arrows,
@@ -350,14 +350,14 @@ function coblocks_blogroll_carousel_style( $posts, $attributes ) {
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__image" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
+				'<div class="wp-block-coblocks-posts__image" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
 				esc_url( $post['postLink'] ),
 				esc_url( $post['thumbnailURL'] )
 			);
 
 		}
 
-		$item_info_class = 'wp-block-coblocks-blogroll__content ';
+		$item_info_class = 'wp-block-coblocks-posts__content ';
 
 		if ( null === $post['thumbnailURL'] || ! $post['thumbnailURL'] ) {
 
@@ -373,7 +373,7 @@ function coblocks_blogroll_carousel_style( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 
 			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__date">%2$s</time>',
+				'<time datetime="%1$s" class="wp-block-coblocks-posts__date">%2$s</time>',
 				$post['date'],
 				$post['dateReadable']
 			);
@@ -400,7 +400,7 @@ function coblocks_blogroll_carousel_style( $posts, $attributes ) {
 			$trimmed_excerpt = esc_html( wp_trim_words( $post_excerpt, $attributes['excerptLength'], ' &hellip; ' ) );
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__post-excerpt mt-1">%1$s</div>',
+				'<div class="wp-block-coblocks-posts__post-excerpt mt-1">%1$s</div>',
 				$trimmed_excerpt
 			);
 
@@ -409,7 +409,7 @@ function coblocks_blogroll_carousel_style( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 
 			$list_items_markup .= sprintf(
-				'<a href="%1$s" class="wp-block-coblocks-blogroll__more-link self-start mt-2">%2$s</a>',
+				'<a href="%1$s" class="wp-block-coblocks-posts__more-link self-start mt-2">%2$s</a>',
 				esc_url( $post['postLink'] ),
 				esc_html( $attributes['postLink'] )
 			);
@@ -428,7 +428,7 @@ function coblocks_blogroll_carousel_style( $posts, $attributes ) {
 }
 
 /**
- * Returns the posts for an internal blogroll.
+ * Returns the posts for an internal posts.
  *
  * @param array $posts Current posts.
  *
@@ -510,9 +510,9 @@ function coblocks_get_rss_post_info( $posts ) {
 }
 
 /**
- * Registers the `blogroll` block on server.
+ * Registers the `posts` block on server.
  */
-function coblocks_register_blogroll_block() {
+function coblocks_register_posts_block() {
 
 	if ( ! function_exists( 'register_block_type' ) ) {
 
@@ -529,7 +529,7 @@ function coblocks_register_blogroll_block() {
 	);
 
 	register_block_type(
-		'coblocks/blogroll',
+		'coblocks/posts',
 		array(
 			'attributes'      => array(
 				'className'          => array(
@@ -618,9 +618,9 @@ function coblocks_register_blogroll_block() {
 					'default' => false,
 				),
 			),
-			'render_callback' => 'coblocks_render_blogroll_block',
+			'render_callback' => 'coblocks_render_posts_block',
 			'editor_script'   => 'coblocks-slick-initializer',
 		)
 	);
 }
-add_action( 'init', 'coblocks_register_blogroll_block' );
+add_action( 'init', 'coblocks_register_posts_block' );

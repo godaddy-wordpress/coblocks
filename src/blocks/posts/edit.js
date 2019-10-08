@@ -241,7 +241,7 @@ class BlogrollEdit extends Component {
 			imageSize,
 		} = attributes;
 
-		const imageClasses = classnames( 'wp-block-coblocks-blogroll__image', 'table', 'flex-0', 'relative', {
+		const imageClasses = classnames( 'wp-block-coblocks-posts__image', 'table', 'flex-0', 'relative', {
 			'mr-3': isHorizontalStyle && listPosition === 'left',
 			'mb-2': isStackedStyle,
 			'ml-3': isHorizontalStyle && listPosition === 'right',
@@ -393,7 +393,7 @@ class BlogrollEdit extends Component {
 				{ postFeedType === 'external' &&
 					<Disabled>
 						<ServerSideRender
-							block="coblocks/blogroll"
+							block="coblocks/posts"
 							attributes={ this.props.attributes }
 							className="coblocks-slick"
 						/>
@@ -415,7 +415,7 @@ class BlogrollEdit extends Component {
 									'has-featured-image': featuredImageUrl,
 								} );
 
-								const contentClasses = classnames( 'wp-block-coblocks-blogroll__content', 'flex', 'flex-col', 'w-full', {
+								const contentClasses = classnames( 'wp-block-coblocks-posts__content', 'flex', 'flex-col', 'w-full', {
 									'self-center': isHorizontalStyle && ! displayPostContent && columns <= 2,
 								} );
 
@@ -438,7 +438,7 @@ class BlogrollEdit extends Component {
 										}
 										<div className={ contentClasses }>
 											{ isStackedStyle && displayPostDate && post.date_gmt &&
-												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date mb-1">
+												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date mb-1">
 													{ dateI18n( dateFormat, post.date_gmt ) }
 												</time>
 											}
@@ -452,12 +452,12 @@ class BlogrollEdit extends Component {
 												}
 											</a>
 											{ isHorizontalStyle && displayPostDate && post.date_gmt &&
-												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date mt-1">
+												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date mt-1">
 													{ dateI18n( dateFormat, post.date_gmt ) }
 												</time>
 											}
 											{ displayPostContent &&
-												<div className="wp-block-coblocks-blogroll__post-excerpt mt-1">
+												<div className="wp-block-coblocks-posts__post-excerpt mt-1">
 													<RawHTML
 														key="html"
 													>
@@ -470,7 +470,7 @@ class BlogrollEdit extends Component {
 											{ displayPostLink &&
 												<RichText
 													tagName="a"
-													className="wp-block-coblocks-blogroll__more-link block self-start mt-3"
+													className="wp-block-coblocks-posts__more-link block self-start mt-3"
 													onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
 													value={ postLink }
 													placeholder={ __( 'Read more' ) }
@@ -503,13 +503,13 @@ class BlogrollEdit extends Component {
 								<div className="coblocks-blog-post--item" key={ i }>
 									<div className="coblocks-blog-post--item-inner">
 										{ featuredImageUrl &&
-											<div className="wp-block-coblocks-blogroll__image" style={ { backgroundImage: featuredImageStyle } }></div>
+											<div className="wp-block-coblocks-posts__image" style={ { backgroundImage: featuredImageStyle } }></div>
 										}
-										<div className={ classnames( 'wp-block-coblocks-blogroll__content', {
+										<div className={ classnames( 'wp-block-coblocks-posts__content', {
 											'full-height': ! featuredImageUrl,
 										} ) }>
 											{ displayPostDate && post.date_gmt &&
-												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date">
+												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date">
 													{ dateI18n( dateFormat, post.date_gmt ) }
 												</time>
 											}
@@ -523,7 +523,7 @@ class BlogrollEdit extends Component {
 												}
 											</h5>
 											{ displayPostContent &&
-											<div className="wp-block-coblocks-blogroll__post-excerpt">
+											<div className="wp-block-coblocks-posts__post-excerpt">
 												<p>
 													<RawHTML
 														key="html"
@@ -535,7 +535,7 @@ class BlogrollEdit extends Component {
 											}
 											{ displayPostLink &&
 											<PlainText
-												className="wp-block-coblocks-blogroll__more-link"
+												className="wp-block-coblocks-posts__more-link"
 												onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
 												value={ postLink }
 												placeholder={ __( 'Read more' ) }

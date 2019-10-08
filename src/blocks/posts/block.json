@@ -1,5 +1,5 @@
 {
-	"name": "coblocks/blogroll",
+	"name": "coblocks/posts",
 	"category": "coblocks",
 	"supports": {
 		"align": ["wide", "full"],
