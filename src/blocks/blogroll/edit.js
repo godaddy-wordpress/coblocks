@@ -12,6 +12,7 @@ import Slider from 'react-slick';
 
 import InspectorControls from './inspector';
 import icons from './icons';
+import icon from './icon';
 
 /**
  * WordPress dependencies
@@ -23,7 +24,7 @@ import { Component, RawHTML, Fragment } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
 import { withSelect } from '@wordpress/data';
-import { BlockControls, PlainText, RichText } from '@wordpress/block-editor';
+import { BlockControls, PlainText, RichText, BlockIcon } from '@wordpress/block-editor';
 import {
 	Placeholder,
 	Spinner,
@@ -262,12 +263,24 @@ class BlogrollEdit extends Component {
 			return (
 				<Fragment>
 					<Placeholder
-						icon="admin-post"
-						label={ __( 'Blogroll' ) }
+						icon={ <BlockIcon icon={ icon } /> }
+						label={ __( 'Blog Posts' ) }
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
-							__( 'No posts found.' )
+							<Fragment>
+								{ sprintf( __( 'No posts found. Start publishing or add posts from an %s feed.' ), 'RSS' ) }
+								<Button
+									className="components-placeholder__cancel-button"
+									title={ __( 'Retrieve an External Feed' ) }
+									isLink
+									onClick={ () => {
+										setAttributes( { postFeedType: 'external' } );
+									} }
+								>
+									{ __( 'Use External Feed' ) }
+								</Button>
+							</Fragment>
 						}
 					</Placeholder>
 				</Fragment>
