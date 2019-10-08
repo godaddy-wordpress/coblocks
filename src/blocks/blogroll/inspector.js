@@ -52,6 +52,7 @@ const Inspector = props => {
 
 	const isCarouselStyle = ( 'carousel' === activeStyle.name );
 	const isGridStyle = ( 'grid' === activeStyle.name );
+	const isListStyle = ( 'list' === activeStyle.name );
 
 	const sizeOptions = [
 		{
@@ -189,8 +190,8 @@ const Inspector = props => {
 					label={ __( 'Columns' ) }
 					value={ columns }
 					onChange={ ( value ) => setAttributes( { columns: value } ) }
-					min={ 1 }
-					max={ Math.min( 4, postCount ) }
+					min={ isGridStyle ? 2 : 1 }
+					max={ isListStyle ? 2 : Math.min( 4, postCount ) }
 					required
 				/>
 			}

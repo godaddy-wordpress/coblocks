@@ -46,14 +46,14 @@ const styleOptions = [
 	{
 		name: 'list',
 		label: _x( 'List', 'block style' ),
-		icon: icons.layoutListIconRight,
-		iconAlt: icons.layoutListIconLeft,
+		icon: icons.styleListIconRight,
+		iconAlt: icons.styleListIconLeft,
 		isDefault: true,
 	},
 	{
 		name: 'grid',
 		label: _x( 'Grid', 'block style' ),
-		icon: icons.layoutGridIcon,
+		icon: icons.styleGrid,
 	},
 	{
 		name: 'carousel',
