@@ -148,6 +148,10 @@ class Edit extends Component {
 			zoom,
 		} = attributes;
 
+		const userLocale = () => {
+			return $( '[class*="locale-"]' ).attr( 'class' ).split( 'locale-' )[ 1 ].split( ' ' )[ 0 ];
+		};
+
 		const renderMap = () => {
 			setAttributes( { address: this.state.address, pinned: true } );
 		};
@@ -240,7 +244,7 @@ class Edit extends Component {
 						src={
 							'https://www.google.com/maps?q=' +
 							encodeURIComponent( address ) +
-							'&language=ja&output=embed&hl=%s&z=' +
+							`&output=embed&hl=${ userLocale() }&z=` +
 							zoom
 						}
 					/>

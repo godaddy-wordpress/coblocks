@@ -33,6 +33,10 @@ function Save( { attributes } ) {
 		fullscreenControl,
 	};
 
+	const userLocale = () => {
+		return $( '[class*="locale-"]' ).attr( 'class' ).split( 'locale-' )[ 1 ].split( ' ' )[ 0 ];
+	};
+
 	const attr = Object
 		.keys( mapAttributes )
 		.map( key => `/q${ key }/q:/q${ mapAttributes[ key ] }/q` )
@@ -48,7 +52,7 @@ function Save( { attributes } ) {
 					title={ __( 'Google Map' ) }
 					frameBorder="0"
 					style={ { width: '100%', minHeight: height + 'px' } }
-					src={ 'https://www.google.com/maps?q=' + encodeURIComponent( address ) + '&language=ja&output=embed&hl=%s&z=' + zoom }
+					src={ 'https://www.google.com/maps?q=' + encodeURIComponent( address ) + `&output=embed&hl=${ userLocale() }&z=` + zoom }
 				/>
 			}
 		</div>
