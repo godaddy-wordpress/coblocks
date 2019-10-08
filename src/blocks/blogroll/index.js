@@ -30,7 +30,7 @@ const settings = {
 	supports,
 	transforms,
 	edit,
-		save() {
+	save() {
 		return null;
 	},
 };
