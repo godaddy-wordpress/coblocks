@@ -10,28 +10,9 @@ const icons = {};
 
 icons.listPositionLeft = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><Path d="m11 15v-10h-10v10zm2-6h6v-2h-6zm0 4h6v-2h-6z" /></SVG>;
 icons.listPositionRight = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><Path d="m19 15v-10h-10v10zm-18-6h6v-2h-6zm0 4h6v-2h-6z" /></SVG>;
-icons.layoutListIconRight = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 26" height="26" width="56"><Path d="m52 22v-18h-18v18zm-48-12h6v-2h-6zm0 4h24v-2h-24zm0 4h18v-2h-18z" /></SVG>;
-icons.layoutListIconLeft = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 26" height="26" width="56"><Path d="m22 22v-18h-18v18zm6-12h6v-2h-6zm0 4h24v-2h-24zm0 4h18v-2h-18z" /></SVG>;
-
-icons.layoutGridIcon = (
-	<SVG
-		height="26"
-		viewBox="0 0 56 26"
-		width="56"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<G fill="currentColor" fillRule="evenodd">
-			<Path d="m5 6h13v.87858073 1.12141927h-13z" />
-			<Path d="m8 18h6v.8785807 1.1214193h-6z" />
-			<Path d="m0 10h23v.8785807 1.1214193h-23z" />
-			<Path d="m3 14h17v.8785807 1.1214193h-17z" />
-			<Path d="m38 6h13v.87858073 1.12141927h-13z" />
-			<Path d="m41 18h6v.8785807 1.1214193h-6z" />
-			<Path d="m33 10h23v.8785807 1.1214193h-23z" />
-			<Path d="m36 14h17v.8785807 1.1214193h-17z" />
-		</G>
-	</SVG>
-);
+icons.layoutListIconRight = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 26" height="26" width="56"><Path d="m48 11.0910645v-10.00000005h-10v10.00000005zm-40-6.00000005h24v-2h-24zm0 4v-2h18v2zm40 16.00000005h-10v-10h10zm-40-6v-2h24v2zm0 4v-2h18v2z" /></SVG>;
+icons.layoutListIconLeft = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 26" height="26" width="56"><Path d="m18 11.0910645v-10.00000005h-10v10.00000005zm6-6.00000005h24v-2h-24zm0 4v-2h18v2zm-6 16.00000005h-10v-10h10zm6-6v-2h24v2zm0 4v-2h18v2z" /></SVG>;
+icons.layoutGridIcon = <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 26" height="26" width="56"><Path d="m26 17v-16h-16v16zm-16 4h10v-2h-10zm0 4v-2h10v2zm36-8h-16v-16h16zm-16 4v-2h10v2zm0 4v-2h10v2z" /></SVG>;
 
 icons.layoutCarouselIcon = (
 	<SVG

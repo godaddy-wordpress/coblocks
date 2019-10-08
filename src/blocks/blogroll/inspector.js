@@ -44,7 +44,6 @@ const Inspector = props => {
 		postsToShow,
 		excerptLength,
 		displayPostDate,
-		displayPostLink,
 		displayPostContent,
 		columns,
 		listPosition,
@@ -53,23 +52,27 @@ const Inspector = props => {
 
 	const isCarouselStyle = ( 'carousel' === activeStyle.name );
 	const isGridStyle = ( 'grid' === activeStyle.name );
-	const isListStyle = ( 'list' === activeStyle.name );
 
 	const sizeOptions = [
 		{
-			value: 'w-1/5 h-1/5',
+			value: 'w-1/7 h-1/7',
 			label: _x( 'Small', 'label for small size option' ),
 			shortName: _x( 'S', 'abbreviation for "Small" size' ),
 		},
 		{
-			value: 'w-1/5 sm:w-1/3 h-1/5 sm:h-1/3',
+			value: 'w-1/7 sm:w-1/5 h-1/7 sm:h-1/5',
 			label: _x( 'Medium', 'label for medium size option' ),
 			shortName: _x( 'M', 'abbreviation for "Medium" size' ),
 		},
 		{
-			value: 'w-1/5 sm:w-1/3 md:w-1/2 h-1/5 sm:h-1/3 md:h-1/2',
+			value: 'w-1/7 sm:w-1/3 h-1/7 sm:h-1/3',
 			label: _x( 'Large', 'label for large size option' ),
 			shortName: _x( 'L', 'abbreviation for "Large" size' ),
+		},
+		{
+			value: 'w-1/7 sm:w-1/3 md:w-1/2 h-1/7 sm:h-1/3 md:h-1/2',
+			label: _x( 'Extra Large', 'label for large size option' ),
+			shortName: _x( 'XL', 'abbreviation for "Large" size' ),
 		},
 	];
 
@@ -129,7 +132,7 @@ const Inspector = props => {
 											aria-pressed={ isCurrent }
 											onClick={ () => setAttributes( { imageSize: option.value } ) }
 										>
-											{ option.label }
+											{ option.shortName }
 										</Button>
 									);
 								} ) }
@@ -219,7 +222,7 @@ const Inspector = props => {
 							aria-label={ style.label || style.name }
 						>
 							<div className="editor-block-styles__item-preview block-editor-block-styles__item-preview">
-								{ isListStyle && listPosition === 'left' && style.iconAlt ? style.iconAlt : style.icon }
+								{ listPosition === 'left' && style.iconAlt ? style.iconAlt : style.icon }
 							</div>
 							<div className="editor-block-styles__item-label block-editor-block-styles__item-label">
 								{ style.label || style.name }

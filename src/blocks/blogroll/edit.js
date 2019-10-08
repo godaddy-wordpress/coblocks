@@ -192,6 +192,7 @@ class BlogrollEdit extends Component {
 
 		const isListStyle = includes( className, 'is-style-list' );
 		const isCarouselStyle = includes( className, 'is-style-carousel' );
+		const isGridStyle = includes( className, 'is-style-grid' );
 
 		const activeStyle = getActiveStyle( styleOptions, className );
 
@@ -215,9 +216,11 @@ class BlogrollEdit extends Component {
 			imageSize,
 		} = attributes;
 
-		const imageClasses = classnames( 'wp-block-coblocks-blogroll__image', 'flex-0', imageSize, {
-			'mr-6': isListStyle && listPosition === 'left',
-			'ml-6': isListStyle && listPosition === 'right',
+		const imageClasses = classnames( 'wp-block-coblocks-blogroll__image', 'table', 'flex-0', 'relative', {
+			'mr-3': isListStyle && listPosition === 'left',
+			'mb-2': isGridStyle,
+			'ml-3': isListStyle && listPosition === 'right',
+			[ imageSize ]: isListStyle,
 		} );
 
 		const editToolbarControls = [
@@ -345,7 +348,7 @@ class BlogrollEdit extends Component {
 				}
 				{ postFeedType === 'internal' && ! isCarouselStyle &&
 				<ul
-					className={ classnames( className, 'list-none', 'ml-0', 'pl-0', {
+					className={ classnames( className, 'list-none', 'mt-0', 'ml-0', 'pl-0', {
 						columns: columns && ! isCarouselStyle,
 						[ `columns-${ columns }` ]: columns && ! isCarouselStyle,
 					} ) }
@@ -354,8 +357,9 @@ class BlogrollEdit extends Component {
 						const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
 						const featuredImageStyle = 'url(' + featuredImageUrl + ')';
 
-						const listClasses = classnames( 'flex', 'flex-auto', 'items-stretch', 'w-full', 'mb-7', 'mb-7', 'ml-0', {
-							'flex-row-reverse': listPosition === 'right',
+						const listClasses = classnames( 'flex', 'flex-auto', 'items-stretch', 'w-full', 'mt-0', 'mb-4', 'ml-0', 'pl-0', {
+							'flex-row-reverse': isListStyle && listPosition === 'right',
+							'flex-col': isGridStyle,
 							'has-featured-image': featuredImageUrl,
 						} );
 
@@ -373,12 +377,12 @@ class BlogrollEdit extends Component {
 							<li key={ i } className={ listClasses }>
 								{ featuredImageUrl &&
 									<div className={ imageClasses }>
-										<div className="block w-full h-full bg-cover bg-center-center pt-full" style={ { backgroundImage: featuredImageStyle } }></div>
+										<div className="block w-full bg-cover bg-center-center pt-full" style={ { backgroundImage: featuredImageStyle } }></div>
 									</div>
 								}
 								<div className="wp-block-coblocks-blogroll__content flex flex-col self-center w-full">
-									{ displayPostDate && post.date_gmt &&
-										<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date">
+									{ isGridStyle && displayPostDate && post.date_gmt &&
+										<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date mb-1">
 											{ dateI18n( dateFormat, post.date_gmt ) }
 										</time>
 									}
@@ -391,8 +395,13 @@ class BlogrollEdit extends Component {
 											_x( '(no title)', 'placeholder when a post has no title' )
 										}
 									</a>
+									{ isListStyle && displayPostDate && post.date_gmt &&
+										<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date mt-1">
+											{ dateI18n( dateFormat, post.date_gmt ) }
+										</time>
+									}
 									{ displayPostContent &&
-										<div className="wp-block-coblocks-blogroll__post-excerpt">
+										<div className="wp-block-coblocks-blogroll__post-excerpt mt-1">
 											<RawHTML
 												key="html"
 											>

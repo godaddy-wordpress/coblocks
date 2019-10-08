@@ -1,9 +1,4 @@
 .wp-block[data-type="coblocks/blogroll"] {
-	&[data-align="full"] ul {
-		padding-left: map-get($padding, 5);
-		padding-right: map-get($padding, 5);
-	}
-
 	.flickity-enabled {
 		height: 100% !important;
 		position: inherit;

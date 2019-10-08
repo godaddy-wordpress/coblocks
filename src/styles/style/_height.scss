@@ -14,10 +14,22 @@
 	height: 20%;
 }
 
+.h-1\/6 {
+	height: 16.666%;
+}
+
+.h-1\/7 {
+	height: 14.285%;
+}
+
 // 600px +
 @include break-small() {
 	.sm\:h-1\/3 {
 		height: 33.33%;
+	}
+
+	.sm\:h-1\/5 {
+		width: 20%;
 	}
 }
 

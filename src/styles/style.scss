@@ -23,15 +23,8 @@
 // Utility tooltips
 @import "style/tooltips";
 
-// 782px+
-@include break-medium() {
-	.md\:w-1\/2 {
-		width: 50%;
-	}
-
-	.md\:h-1\/2 {
-		height: 50%;
-	}
+.relative {
+	position: relative;
 }
 
 .has-text-align-right {
@@ -116,6 +109,10 @@
 
 .block {
 	display: block;
+}
+
+.table {
+	display: table;
 }
 
 .object-cover {

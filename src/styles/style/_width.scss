@@ -14,10 +14,22 @@
 	width: 20%;
 }
 
+.w-1\/6 {
+	width: 16.666%;
+}
+
+.w-1\/7 {
+	width: 14.285%;
+}
+
 // 600px +
 @include break-small() {
 	.sm\:w-1\/3 {
 		width: 33.33%;
+	}
+
+	.sm\:w-1\/5 {
+		width: 20%;
 	}
 }
 

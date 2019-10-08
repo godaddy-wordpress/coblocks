@@ -1,48 +1,11 @@
 .wp-block-coblocks-blogroll {
 	& + & {
-		margin-top: map-get($margin, 7);
-	}
-
-	&.alignfull {
-		padding-left: map-get($padding, 5);
-		padding-right: map-get($padding, 5);
+		margin-top: map-get($margin, 2);
 	}
 
 	> li:last-child {
 		margin-bottom: 0;
 	}
-
-	// &.is-style-grid {
-	// 	display: flex;
-	// 	flex-wrap: wrap;
-	// 	padding: 0;
-
-	// 	li {
-	// 		background-color: $white;
-	// 		border: 1px solid #8d96a0;
-	// 		margin: 0 16px 16px 0;
-	// 		width: 100%;
-
-	// 		.wp-block-coblocks-blogroll__content {
-	// 			word-break: break-word;
-	// 		}
-
-	// 		.wp-block-coblocks-blogroll__image {
-	// 			background-size: cover;
-	// 			min-height: 300px;
-	// 			position: relative;
-	// 			width: 100%;
-
-	// 			a {
-	// 				height: 100%;
-	// 				left: 0;
-	// 				position: absolute;
-	// 				top: 0;
-	// 				width: 100%;
-	// 			}
-	// 		}
-	// 	}
-	// }
 
 	// &.is-style-carousel {
 	// 	height: 100%;
@@ -83,7 +46,7 @@
 .wp-block-coblocks-blogroll__date {
 	color: $dark-gray-300;
 	display: block;
-	font-size: $default-font-size;
+	font-size: $editor-font-size;
 }
 
 .is-twentynineteen {
