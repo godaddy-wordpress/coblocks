@@ -45,21 +45,16 @@ const TokenList = wp.tokenList;
 
 const styleOptions = [
 	{
+		name: 'stacked',
+		label: _x( 'Stacked', 'block style' ),
+		icon: icons.styleGrid,
+		isDefault: true,
+	},
+	{
 		name: 'horizontal',
 		label: _x( 'Horizontal', 'block style' ),
 		icon: icons.styleListIconRight,
 		iconAlt: icons.styleListIconLeft,
-		isDefault: true,
-	},
-	{
-		name: 'vertical',
-		label: _x( 'Vertical', 'block style' ),
-		icon: icons.styleGrid,
-	},
-	{
-		name: 'carousel',
-		label: _x( 'Carousel', 'block style' ),
-		icon: icons.layoutCarouselIcon,
 	},
 ];
 
@@ -193,7 +188,7 @@ class BlogrollEdit extends Component {
 
 		const isListStyle = includes( className, 'is-style-horizontal' );
 		const isCarouselStyle = includes( className, 'is-style-carousel' );
-		const isGridStyle = includes( className, 'is-style-vertical' );
+		const isGridStyle = includes( className, 'is-style-stacked' );
 
 		const activeStyle = getActiveStyle( styleOptions, className );
 

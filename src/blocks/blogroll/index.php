@@ -68,9 +68,9 @@ function coblocks_render_blogroll_block( $attributes ) {
 
 		$block_layout = 'horizontal';
 
-	} elseif ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-vertical' ) !== false ) {
+	} elseif ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-stacked' ) !== false ) {
 
-		$block_layout = 'vertical';
+		$block_layout = 'stacked';
 
 	} else {
 
@@ -100,7 +100,7 @@ function coblocks_render_blogroll_block( $attributes ) {
 function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 
 	$class        = 'wp-block-coblocks-blogroll';
-	$block_layout = strpos( $attributes['className'], 'is-style-vertical' ) !== false ? 'vertical' : 'horizontal';
+	$block_layout = strpos( $attributes['className'], 'is-style-stacked' ) !== false ? 'stacked' : 'horizontal';
 
 	if ( isset( $attributes['className'] ) ) {
 
@@ -170,7 +170,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
-			if ( 'vertical' === $block_layout ) {
+			if ( 'stacked' === $block_layout ) {
 
 				$image_class .= ' mb-2';
 
@@ -196,7 +196,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 			esc_attr( $align_self_class )
 		);
 
-		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'vertical' === $block_layout ) {
+		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'stacked' === $block_layout ) {
 
 			$list_items_markup .= sprintf(
 				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__date mb-1">%2$s</time>',
@@ -580,7 +580,7 @@ function coblocks_register_blogroll_block() {
 				),
 				'columns'            => array(
 					'type'    => 'number',
-					'default' => 1,
+					'default' => 2,
 				),
 				'order'              => array(
 					'type'    => 'string',
