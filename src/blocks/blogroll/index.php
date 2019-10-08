@@ -165,7 +165,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 
 		$list_items_markup .= sprintf(
 			'<li class="flex flex-auto %1$s items-stretch w-full mt-0 mb-4 ml-0 pl-0">',
-			$list_items_class,
+			$list_items_class
 		);
 
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
@@ -313,6 +313,26 @@ function coblocks_blogroll_carousel_style( $posts, $attributes ) {
 						'infinite'       => $infinite_slide,
 						'adaptiveHeight' => false,
 						'draggable'      => $draggable,
+						'responsive' => [
+							[
+								'breakpoint' => 1024,
+								'settings'   => [
+									'slidesToShow'   => 3,
+								]
+							],
+							[
+								'breakpoint' => 600,
+								'settings'   => [
+									'slidesToShow'   => 2,
+								]
+							],
+							[
+								'breakpoint' => 480,
+								'settings'   => [
+									'slidesToShow'   => 1,
+								]
+							]
+						],
 					]
 				),
 				true
