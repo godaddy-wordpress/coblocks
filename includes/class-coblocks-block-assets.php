@@ -174,8 +174,8 @@ class CoBlocks_Block_Assets {
 			);
 		}
 
-		// Carousel block.
-		if ( has_block( $this->_slug . '/blogroll' ) ) {
+		// Post Carousel block.
+		if ( has_block( $this->_slug . '/post-carousel' ) ) {
 			wp_enqueue_script(
 				$this->_slug . '-slick',
 				$vendors_dir . '/slick' . COBLOCKS_ASSET_SUFFIX . '.js',
@@ -185,7 +185,7 @@ class CoBlocks_Block_Assets {
 			);
 			wp_enqueue_script(
 				$this->_slug . '-slick-initializer-front',
-				$dir . 'coblocks-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$dir . $this->_slug . '-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
 				$this->_version,
 				true
