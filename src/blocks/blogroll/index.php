@@ -121,7 +121,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 	}
 
 	$block_content = sprintf(
-		'<ul class="%s list-none mt-0 ml-0 pl-0">',
+		'<ul class="%s list-none ml-0 pl-0">',
 		esc_attr( $class )
 	);
 
@@ -164,7 +164,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 		}
 
 		$list_items_markup .= sprintf(
-			'<li class="flex flex-auto %1$s items-stretch w-full mt-0 mb-4 ml-0 pl-0">',
+			'<li class="flex flex-auto %1$s items-stretch w-full mt-2 mb-2 ml-0 pl-0">',
 			$list_items_class
 		);
 
@@ -183,7 +183,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 				esc_url( $post['thumbnailURL'] )
 			);
 
-			if ( 'list' === $block_layout ) {
+			if ( 'horizontal' === $block_layout && ( isset( $attributes['displayPostContent'] ) && ! $attributes['displayPostContent'] ) && ( isset( $attributes['columns'] ) && 2 >= $attributes['columns'] ) ) {
 
 				$align_self_class = 'self-center';
 			}
