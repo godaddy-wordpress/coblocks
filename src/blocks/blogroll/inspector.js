@@ -33,6 +33,7 @@ const Inspector = props => {
 		styleOptions,
 		onUpdateStyle,
 		setAttributes,
+		onUserModifiedColumn,
 		categoriesList,
 		postCount,
 	} = props;
@@ -155,7 +156,10 @@ const Inspector = props => {
 						<RangeControl
 							label={ __( 'Columns' ) }
 							value={ columns }
-							onChange={ ( value ) => setAttributes( { columns: value } ) }
+							onChange={ ( value ) => {
+								onUserModifiedColumn();
+								setAttributes( { columns: value } );
+							} }
 							min={ 1 }
 							max={ Math.min( 4, postCount ) }
 							required
@@ -189,7 +193,10 @@ const Inspector = props => {
 				<RangeControl
 					label={ __( 'Columns' ) }
 					value={ columns }
-					onChange={ ( value ) => setAttributes( { columns: value } ) }
+					onChange={ ( value ) => {
+						onUserModifiedColumn();
+						setAttributes( { columns: value } );
+					} }
 					min={ isGridStyle ? 2 : 1 }
 					max={ isListStyle ? 2 : Math.min( 4, postCount ) }
 					required

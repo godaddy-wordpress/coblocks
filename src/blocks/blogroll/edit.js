@@ -107,11 +107,25 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 class BlogrollEdit extends Component {
 	constructor() {
 		super( ...arguments );
+
 		this.state = {
 			categoriesList: [],
 			editing: ! this.props.attributes.externalRssUrl,
+			lastColumnValue: null,
+
+			stackedDefaultColumns: 2,
+			horizontalDefaultColumns: 1,
+			userModifiedColumn: false,
 		};
 
+		if (
+			( this.props.className.includes( 'is-style-stacked' ) && this.props.attributes.columns !== this.state.stackedDefaultColumns ) ||
+			( this.props.className.includes( 'is-style-horizontal' ) && this.props.attributes.columns !== this.state.horizontalDefaultColumns )
+		) {
+			this.state.userModifiedColumn = true;
+		}
+
+		this.onUserModifiedColumn = this.onUserModifiedColumn.bind( this );
 		this.onSubmitURL = this.onSubmitURL.bind( this );
 		this.updateStyle = this.updateStyle.bind( this );
 	}
@@ -144,13 +158,27 @@ class BlogrollEdit extends Component {
 		this.isStillMounted = false;
 	}
 
-	componentDidUpdate() {
+	componentDidUpdate( prevProps ) {
 		const { displayPostContent, displayPostLink } = this.props.attributes;
 		if ( displayPostLink && ! displayPostContent ) {
 			this.props.setAttributes( {
 				displayPostLink: false,
 			} );
 		}
+
+		if ( this.props.className !== prevProps.className ) {
+			if ( this.props.className.includes( 'is-style-stacked' ) ) {
+				this.props.setAttributes( { columns: this.state.userModifiedColumn ? this.props.attributes.columns : this.state.stackedDefaultColumns } );
+			}
+
+			if ( this.props.className.includes( 'is-style-horizontal' ) ) {
+				this.props.setAttributes( { columns: this.state.userModifiedColumn ? this.props.attributes.columns : this.state.horizontalDefaultColumns } );
+			}
+		}
+	}
+
+	onUserModifiedColumn() {
+		this.setState( { userModifiedColumn: true } );
 	}
 
 	onSubmitURL( event ) {
@@ -279,6 +307,7 @@ class BlogrollEdit extends Component {
 				<Fragment>
 					<InspectorControls
 						{ ...this.props }
+						onUserModifiedColumn={ this.onUserModifiedColumn }
 						attributes={ attributes }
 						hasPosts={ hasPosts }
 						editing={ this.state.editing }
@@ -314,6 +343,7 @@ class BlogrollEdit extends Component {
 			<Fragment>
 				<InspectorControls
 					{ ...this.props }
+					onUserModifiedColumn={ this.onUserModifiedColumn }
 					attributes={ attributes }
 					hasPosts={ hasPosts }
 					editing={ this.state.editing }
