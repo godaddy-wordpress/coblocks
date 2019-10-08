@@ -35,6 +35,7 @@ const Inspector = props => {
 		setAttributes,
 		categoriesList,
 		postCount,
+		hasPosts,
 	} = props;
 
 	const {
@@ -151,7 +152,7 @@ const Inspector = props => {
 	);
 
 	const feedSettings = (
-		<PanelBody title={ __( 'Feed Settings' ) } initialOpen={ false }>
+		<PanelBody title={ __( 'Feed Settings' ) } initialOpen={ ! hasPosts ? true : false }>
 			<RadioControl
 				selected={ postFeedType }
 				options={ [
@@ -160,61 +161,65 @@ const Inspector = props => {
 				] }
 				onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
 			/>
-			{ postFeedType === 'internal' &&
-				<QueryControls
-					{ ...{ order, orderBy } }
-					categoriesList={ categoriesList }
-					selectedCategoryId={ categoriesList.categories }
-					onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-					onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-					onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
-				/>
-			}
-			<RangeControl
-				label={ __( 'Number of posts' ) }
-				value={ postsToShow }
-				onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
-				min={ 1 }
-				max={ 20 }
-			/>
+			{ hasPosts ?
+				<Fragment>
+					{ postFeedType === 'internal' &&
+						<QueryControls
+							{ ...{ order, orderBy } }
+							categoriesList={ categoriesList }
+							selectedCategoryId={ categoriesList.categories }
+							onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+							onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
+							onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
+						/>
+					}
+					<RangeControl
+						label={ __( 'Number of posts' ) }
+						value={ postsToShow }
+						onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+						min={ 1 }
+						max={ 20 }
+					/>
+				</Fragment> : null }
 		</PanelBody>
 	);
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
-				<div className="editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
-					{ styleOptions.map( style => (
-						<div
-							key={ `style-${ style.name }` }
-							className={ classnames(
-								'editor-block-styles__item block-editor-block-styles__item',
-								{
-									'is-active': activeStyle === style,
-								}
-							) }
-							onClick={ () => onUpdateStyle( style ) }
-							onKeyDown={ event => {
-								if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
-									event.preventDefault();
-									onUpdateStyle( style );
-								}
-							} }
-							role="button"
-							tabIndex="0"
-							aria-label={ style.label || style.name }
-						>
-							<div className="editor-block-styles__item-preview block-editor-block-styles__item-preview">
-								{ listPosition === 'left' && style.iconAlt ? style.iconAlt : style.icon }
+			{ hasPosts ?
+				<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
+					<div className="editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
+						{ styleOptions.map( style => (
+							<div
+								key={ `style-${ style.name }` }
+								className={ classnames(
+									'editor-block-styles__item block-editor-block-styles__item',
+									{
+										'is-active': activeStyle === style,
+									}
+								) }
+								onClick={ () => onUpdateStyle( style ) }
+								onKeyDown={ event => {
+									if ( ENTER === event.keyCode || SPACE === event.keyCode ) {
+										event.preventDefault();
+										onUpdateStyle( style );
+									}
+								} }
+								role="button"
+								tabIndex="0"
+								aria-label={ style.label || style.name }
+							>
+								<div className="editor-block-styles__item-preview block-editor-block-styles__item-preview">
+									{ listPosition === 'left' && style.iconAlt ? style.iconAlt : style.icon }
+								</div>
+								<div className="editor-block-styles__item-label block-editor-block-styles__item-label">
+									{ style.label || style.name }
+								</div>
 							</div>
-							<div className="editor-block-styles__item-label block-editor-block-styles__item-label">
-								{ style.label || style.name }
-							</div>
-						</div>
-					) ) }
-				</div>
-			</PanelBody>
-			{ settings }
+						) ) }
+					</div>
+				</PanelBody> : null }
+			{ hasPosts ? settings : null }
 			{ feedSettings }
 			{ isCarouselStyle &&
 				<SlickSliderPanel { ...props } />

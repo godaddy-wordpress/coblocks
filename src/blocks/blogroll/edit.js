@@ -262,6 +262,17 @@ class BlogrollEdit extends Component {
 		if ( ! hasPosts && postFeedType === 'internal' ) {
 			return (
 				<Fragment>
+					<InspectorControls
+						{ ...this.props }
+						attributes={ attributes }
+						hasPosts={ hasPosts }
+						editing={ this.state.editing }
+						activeStyle={ activeStyle }
+						styleOptions={ styleOptions }
+						onUpdateStyle={ this.updateStyle }
+						categoriesList={ categoriesList }
+						postCount={ latestPosts && latestPosts.length }
+					/>
 					<Placeholder
 						icon={ <BlockIcon icon={ icon } /> }
 						label={ __( 'Blog Posts' ) }
@@ -269,6 +280,7 @@ class BlogrollEdit extends Component {
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
 							<Fragment>
+								{ /* translators: %s: RSS */ }
 								{ sprintf( __( 'No posts found. Start publishing or add posts from an %s feed.' ), 'RSS' ) }
 								<Button
 									className="components-placeholder__cancel-button"
@@ -302,7 +314,7 @@ class BlogrollEdit extends Component {
 						postCount={ latestPosts && latestPosts.length }
 					/>
 					<Placeholder
-						icon="rss"
+						icon={ <BlockIcon icon={ icon } /> }
 						/* translators: %s: RSS */
 						label={ sprintf( __( '%s Feed' ), 'RSS' ) }
 						instructions={ sprintf( __( '%s URLs are generally located at the /feed/ directory of a site.' ), 'RSS' ) }
