@@ -18,8 +18,8 @@
 	&-4.alignfull {
 		// 1280px+
 		@include break-medium() {
-			padding-left: map-get($padding, 6);
-			padding-right: map-get($padding, 6);
+			padding-left: map-get($padding, 4);
+			padding-right: map-get($padding, 4);
 		}
 	}
 
