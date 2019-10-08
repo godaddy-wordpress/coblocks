@@ -52,8 +52,8 @@ const Inspector = props => {
 	} = attributes;
 
 	const isCarouselStyle = ( 'carousel' === activeStyle.name );
-	const isGridStyle = ( 'stacked' === activeStyle.name );
-	const isListStyle = ( 'list' === activeStyle.name );
+	const isStackedStyle = ( 'stacked' === activeStyle.name );
+	const isHorizontalStyle = ( 'list' === activeStyle.name );
 
 	const sizeOptions = [
 		{
@@ -79,9 +79,84 @@ const Inspector = props => {
 	];
 
 	const settings = (
-		<PanelBody title={ __( 'Blogroll Settings' ) }>
+		<PanelBody title={ __( 'Posts Settings' ) }>
+			<Fragment>
+				<ToggleControl
+					label={ __( 'Post Date' ) }
+					checked={ displayPostDate }
+					help={
+						displayPostDate ?
+							__( 'Showing the publish date.' ) :
+							__( 'Toggle to show the publish date.' )
+					}
+					onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
+				/>
+				<ToggleControl
+					label={ __( 'Post Content' ) }
+					checked={ displayPostContent }
+					help={
+						displayPostContent ?
+							__( 'Showing the post content.' ) :
+							__( 'Toggle to show the post content.' )
+					}
+					onChange={ () => setAttributes( { displayPostContent: ! displayPostContent } ) }
+				/>
+				{ displayPostContent &&
+					<RangeControl
+						label={ __( 'Max words in content' ) }
+						value={ excerptLength }
+						onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
+						min={ 5 }
+						max={ 75 }
+					/>
+				}
+				{ ! isCarouselStyle &&
+					<RangeControl
+						label={ __( 'Columns' ) }
+						value={ columns }
+						onChange={ ( value ) => {
+							onUserModifiedColumn();
+							setAttributes( { columns: value } );
+						} }
+						min={ isStackedStyle ? 2 : 1 }
+						max={ isHorizontalStyle ? 2 : Math.min( 4, postCount ) }
+						required
+					/>
+				}
+				{ ! isStackedStyle && ! isCarouselStyle &&
+					<BaseControl label={ __( 'Thumbnail Size' ) }
+						className={ classnames(
+							'components-coblocks-blogroll-thumbnail-size',
+							{
+								'has-content': displayPostContent,
+							}
+						) }
+					>
+						<ButtonGroup aria-label={ __( 'Thumbnail Size' ) }>
+							{ sizeOptions.map( ( option ) => {
+								const isCurrent = imageSize === option.value;
+								return (
+									<Button
+										key={ `option-${ option.value }` }
+										isLarge
+										isPrimary={ isCurrent }
+										aria-pressed={ isCurrent }
+										onClick={ () => setAttributes( { imageSize: option.value } ) }
+									>
+										{ option.shortName }
+									</Button>
+								);
+							} ) }
+						</ButtonGroup>
+					</BaseControl>
+				}
+			</Fragment>
+		</PanelBody>
+	);
+
+	const feedSettings = (
+		<PanelBody title={ __( 'Feed Settings' ) } initialOpen={ false }>
 			<RadioControl
-				label={ __( 'Feed' ) }
 				selected={ postFeedType }
 				options={ [
 					{ label: __( 'My Blog' ), value: 'internal' },
@@ -89,89 +164,6 @@ const Inspector = props => {
 				] }
 				onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
 			/>
-			{ postFeedType === 'internal' &&
-				<Fragment>
-					<ToggleControl
-						label={ __( 'Post Date' ) }
-						checked={ displayPostDate }
-						help={
-							displayPostDate ?
-								__( 'Showing the publish date.' ) :
-								__( 'Toggle to show the publish date.' )
-						}
-						onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
-					/>
-					<ToggleControl
-						label={ __( 'Post Content' ) }
-						checked={ displayPostContent }
-						help={
-							displayPostContent ?
-								__( 'Showing the post content.' ) :
-								__( 'Toggle to show the post content.' )
-						}
-						onChange={ () => setAttributes( { displayPostContent: ! displayPostContent } ) }
-					/>
-					{ displayPostContent &&
-						<RangeControl
-							label={ __( 'Max words in content' ) }
-							className="components-coblocks-blogroll-word-count"
-							value={ excerptLength }
-							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
-							min={ 5 }
-							max={ 75 }
-						/>
-					}
-					{ ! isGridStyle && ! isCarouselStyle &&
-						<BaseControl label={ __( 'Thumbnail Size' ) }>
-							<ButtonGroup aria-label={ __( 'Thumbnail Size' ) }>
-								{ sizeOptions.map( ( option ) => {
-									const isCurrent = imageSize === option.value;
-									return (
-										<Button
-											key={ `option-${ option.value }` }
-											isLarge
-											isPrimary={ isCurrent }
-											aria-pressed={ isCurrent }
-											onClick={ () => setAttributes( { imageSize: option.value } ) }
-										>
-											{ option.shortName }
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
-						</BaseControl>
-					}
-				</Fragment>
-			}
-			{ postFeedType === 'external' &&
-				<Fragment>
-					<RangeControl
-						label={ __( 'Number of items' ) }
-						value={ postsToShow }
-						onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
-						min={ 1 }
-						max={ 20 }
-					/>
-					{ isGridStyle &&
-						<RangeControl
-							label={ __( 'Columns' ) }
-							value={ columns }
-							onChange={ ( value ) => {
-								onUserModifiedColumn();
-								setAttributes( { columns: value } );
-							} }
-							min={ 1 }
-							max={ Math.min( 4, postCount ) }
-							required
-						/>
-					}
-				</Fragment>
-			}
-		</PanelBody>
-	);
-
-	const sortingAndFiltering = (
-		<PanelBody title={ __( 'Sorting and Filtering' ) } initialOpen={ postFeedType === 'external' ? true : false }>
 			{ postFeedType === 'internal' &&
 				<QueryControls
 					{ ...{ order, orderBy } }
@@ -183,25 +175,12 @@ const Inspector = props => {
 				/>
 			}
 			<RangeControl
-				label={ __( 'Number of items' ) }
+				label={ __( 'Number of posts' ) }
 				value={ postsToShow }
 				onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
 				min={ 1 }
 				max={ 20 }
 			/>
-			{ ! isCarouselStyle &&
-				<RangeControl
-					label={ __( 'Columns' ) }
-					value={ columns }
-					onChange={ ( value ) => {
-						onUserModifiedColumn();
-						setAttributes( { columns: value } );
-					} }
-					min={ isGridStyle ? 2 : 1 }
-					max={ isListStyle ? 2 : Math.min( 4, postCount ) }
-					required
-				/>
-			}
 		</PanelBody>
 	);
 
@@ -240,7 +219,7 @@ const Inspector = props => {
 				</div>
 			</PanelBody>
 			{ settings }
-			{ postFeedType === 'internal' && sortingAndFiltering }
+			{ feedSettings }
 			{ isCarouselStyle &&
 				<SlickSliderPanel { ...props } />
 			}

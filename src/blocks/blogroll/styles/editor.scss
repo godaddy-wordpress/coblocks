@@ -14,6 +14,10 @@
 	}
 }
 
-.edit-post-settings-sidebar__panel-block .components-base-control.components-coblocks-blogroll-word-count {
-	margin-bottom: 16px;
+.edit-post-settings-sidebar__panel-block .components-base-control.components-coblocks-blogroll-thumbnail-size {
+	margin-top: -10px;
+
+	&.has-content {
+		margin-top: -5px;
+	}
 }
