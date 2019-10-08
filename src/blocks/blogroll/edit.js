@@ -47,14 +47,14 @@ const styleOptions = [
 	{
 		name: 'stacked',
 		label: _x( 'Stacked', 'block style' ),
-		icon: icons.styleGrid,
+		icon: icons.styleStacked,
 		isDefault: true,
 	},
 	{
 		name: 'horizontal',
 		label: _x( 'Horizontal', 'block style' ),
-		icon: icons.styleListIconRight,
-		iconAlt: icons.styleListIconLeft,
+		icon: icons.styleHorizontalImageRight,
+		iconAlt: icons.styleHorizontalImageLeft,
 	},
 ];
 
@@ -186,9 +186,9 @@ class BlogrollEdit extends Component {
 
 		const { categoriesList } = this.state;
 
-		const isListStyle = includes( className, 'is-style-horizontal' );
+		const isHorizontalStyle = includes( className, 'is-style-horizontal' );
 		const isCarouselStyle = includes( className, 'is-style-carousel' );
-		const isGridStyle = includes( className, 'is-style-stacked' );
+		const isStackedStyle = includes( className, 'is-style-stacked' );
 
 		const activeStyle = getActiveStyle( styleOptions, className );
 
@@ -213,10 +213,10 @@ class BlogrollEdit extends Component {
 		} = attributes;
 
 		const imageClasses = classnames( 'wp-block-coblocks-blogroll__image', 'table', 'flex-0', 'relative', {
-			'mr-3': isListStyle && listPosition === 'left',
-			'mb-2': isGridStyle,
-			'ml-3': isListStyle && listPosition === 'right',
-			[ imageSize ]: isListStyle,
+			'mr-3': isHorizontalStyle && listPosition === 'left',
+			'mb-2': isStackedStyle,
+			'ml-3': isHorizontalStyle && listPosition === 'right',
+			[ imageSize ]: isHorizontalStyle,
 		} );
 
 		const editToolbarControls = [
@@ -232,12 +232,12 @@ class BlogrollEdit extends Component {
 		const displayPosts = Array.isArray( latestPosts ) && latestPosts.length > postsToShow ? latestPosts.slice( 0, postsToShow ) : latestPosts;
 
 		const toolbarControls = [ {
-			icon: icons.listPositionLeft,
+			icon: icons.imageLeft,
 			title: __( 'Image on left' ),
 			isActive: listPosition === 'left',
 			onClick: () => setAttributes( { listPosition: 'left' } ),
 		}, {
-			icon: icons.listPositionRight,
+			icon: icons.imageRight,
 			title: __( 'Image on right' ),
 			isActive: listPosition === 'right',
 			onClick: () => setAttributes( { listPosition: 'right' } ),
@@ -324,7 +324,7 @@ class BlogrollEdit extends Component {
 					postCount={ latestPosts && latestPosts.length }
 				/>
 				<BlockControls>
-					{ isListStyle &&
+					{ isHorizontalStyle &&
 						<Toolbar
 							controls={ toolbarControls }
 						/>
@@ -355,13 +355,13 @@ class BlogrollEdit extends Component {
 								const featuredImageStyle = 'url(' + featuredImageUrl + ')';
 
 								const listClasses = classnames( 'flex', 'flex-auto', 'items-stretch', 'w-full', 'mt-2', 'mb-2', 'ml-0', 'pl-0', {
-									'flex-row-reverse': isListStyle && listPosition === 'right',
-									'flex-col': isGridStyle,
+									'flex-row-reverse': isHorizontalStyle && listPosition === 'right',
+									'flex-col': isStackedStyle,
 									'has-featured-image': featuredImageUrl,
 								} );
 
 								const contentClasses = classnames( 'wp-block-coblocks-blogroll__content', 'flex', 'flex-col', 'w-full', {
-									'self-center': isListStyle && ! displayPostContent && columns <= 2,
+									'self-center': isHorizontalStyle && ! displayPostContent && columns <= 2,
 								} );
 
 								const titleTrimmed = post.title.rendered.trim();
@@ -382,7 +382,7 @@ class BlogrollEdit extends Component {
 											</div>
 										}
 										<div className={ contentClasses }>
-											{ isGridStyle && displayPostDate && post.date_gmt &&
+											{ isStackedStyle && displayPostDate && post.date_gmt &&
 												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date mb-1">
 													{ dateI18n( dateFormat, post.date_gmt ) }
 												</time>
@@ -396,7 +396,7 @@ class BlogrollEdit extends Component {
 													_x( '(no title)', 'placeholder when a post has no title' )
 												}
 											</a>
-											{ isListStyle && displayPostDate && post.date_gmt &&
+											{ isHorizontalStyle && displayPostDate && post.date_gmt &&
 												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date mt-1">
 													{ dateI18n( dateFormat, post.date_gmt ) }
 												</time>

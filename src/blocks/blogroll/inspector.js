@@ -51,8 +51,8 @@ const Inspector = props => {
 	} = attributes;
 
 	const isCarouselStyle = ( 'carousel' === activeStyle.name );
-	const isGridStyle = ( 'stacked' === activeStyle.name );
-	const isListStyle = ( 'list' === activeStyle.name );
+	const isStackedStyle = ( 'stacked' === activeStyle.name );
+	const isHorizontalStyle = ( 'list' === activeStyle.name );
 
 	const sizeOptions = [
 		{
@@ -114,12 +114,12 @@ const Inspector = props => {
 						label={ __( 'Columns' ) }
 						value={ columns }
 						onChange={ ( value ) => setAttributes( { columns: value } ) }
-						min={ isGridStyle ? 2 : 1 }
-						max={ isListStyle ? 2 : Math.min( 4, postCount ) }
+						min={ isStackedStyle ? 2 : 1 }
+						max={ isHorizontalStyle ? 2 : Math.min( 4, postCount ) }
 						required
 					/>
 				}
-				{ ! isGridStyle && ! isCarouselStyle &&
+				{ ! isStackedStyle && ! isCarouselStyle &&
 					<BaseControl label={ __( 'Thumbnail Size' ) }
 						className={ classnames(
 							'components-coblocks-blogroll-thumbnail-size',
