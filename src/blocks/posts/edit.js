@@ -4,7 +4,6 @@
 import classnames from 'classnames';
 import includes from 'lodash/includes';
 import { find, isUndefined, pickBy } from 'lodash';
-import Slider from 'react-slick';
 
 /**
  * Internal dependencies
@@ -24,7 +23,7 @@ import { Component, RawHTML, Fragment } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
 import { withSelect } from '@wordpress/data';
-import { BlockControls, PlainText, RichText, BlockIcon } from '@wordpress/block-editor';
+import { BlockControls, RichText, BlockIcon } from '@wordpress/block-editor';
 import {
 	Placeholder,
 	Spinner,
@@ -105,7 +104,7 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 	return list.value;
 }
 
-class BlogrollEdit extends Component {
+class PostsEdit extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -216,7 +215,6 @@ class BlogrollEdit extends Component {
 		const { categoriesList } = this.state;
 
 		const isHorizontalStyle = includes( className, 'is-style-horizontal' );
-		const isCarouselStyle = includes( className, 'is-style-carousel' );
 		const isStackedStyle = includes( className, 'is-style-stacked' );
 
 		const activeStyle = getActiveStyle( styleOptions, className );
@@ -232,12 +230,6 @@ class BlogrollEdit extends Component {
 			postsToShow,
 			excerptLength,
 			listPosition,
-			infiniteSlide,
-			prevNextButtons,
-			visibleItems,
-			draggable,
-			autoPlay,
-			autoPlaySpeed,
 			imageSize,
 		} = attributes;
 
@@ -271,19 +263,6 @@ class BlogrollEdit extends Component {
 			isActive: listPosition === 'right',
 			onClick: () => setAttributes( { listPosition: 'right' } ),
 		} ];
-
-		const slickSettings = {
-			autoPlay: autoPlay,
-			autoPlaySpeed: autoPlaySpeed,
-			dots: false,
-			arrows: prevNextButtons,
-			infinite: infiniteSlide,
-			draggable: draggable,
-			adaptiveHeight: false,
-			speed: 500,
-			slidesToShow: visibleItems,
-			slidesToScroll: 1,
-		};
 
 		const dateFormat = __experimentalGetSettings().formats.date; // eslint-disable-line no-restricted-syntax
 
@@ -395,15 +374,14 @@ class BlogrollEdit extends Component {
 						<ServerSideRender
 							block="coblocks/posts"
 							attributes={ this.props.attributes }
-							className="coblocks-slick"
 						/>
 					</Disabled>
 				}
-				{ postFeedType === 'internal' && ! isCarouselStyle &&
+				{ postFeedType === 'internal' &&
 					<Disabled>
 						<ul className={ classnames( className, 'list-none', 'ml-0', 'pl-0', {
-							columns: columns && ! isCarouselStyle,
-							[ `columns-${ columns }` ]: columns && ! isCarouselStyle,
+							columns: columns,
+							[ `columns-${ columns }` ]: columns,
 						} ) }>
 							{ displayPosts.map( ( post, i ) => {
 								const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
@@ -486,68 +464,6 @@ class BlogrollEdit extends Component {
 						</ul>
 					</Disabled>
 				}
-				{ postFeedType === 'internal' && isCarouselStyle &&
-					<Slider { ...slickSettings } className={ classnames( this.props.className ) }>
-						{ displayPosts.map( ( post, i ) => {
-							const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
-							const featuredImageStyle = 'url(' + featuredImageUrl + ')';
-							const titleTrimmed = post.title.rendered.trim();
-							let excerpt = post.excerpt.rendered;
-							if ( post.excerpt.raw === '' ) {
-								excerpt = post.content.raw;
-							}
-							const excerptElement = document.createElement( 'div' );
-							excerptElement.innerHTML = excerpt;
-							excerpt = excerptElement.textContent || excerptElement.innerText || '';
-							return (
-								<div className="coblocks-blog-post--item" key={ i }>
-									<div className="coblocks-blog-post--item-inner">
-										{ featuredImageUrl &&
-											<div className="wp-block-coblocks-posts__image" style={ { backgroundImage: featuredImageStyle } }></div>
-										}
-										<div className={ classnames( 'wp-block-coblocks-posts__content', {
-											'full-height': ! featuredImageUrl,
-										} ) }>
-											{ displayPostDate && post.date_gmt &&
-												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date">
-													{ dateI18n( dateFormat, post.date_gmt ) }
-												</time>
-											}
-											<h5>
-												{ titleTrimmed ? (
-													<RawHTML>
-														{ titleTrimmed }
-													</RawHTML>
-												) :
-													__( '(Untitled)' )
-												}
-											</h5>
-											{ displayPostContent &&
-											<div className="wp-block-coblocks-posts__post-excerpt">
-												<p>
-													<RawHTML
-														key="html"
-													>
-														{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
-													</RawHTML>
-												</p>
-											</div>
-											}
-											{ displayPostLink &&
-											<PlainText
-												className="wp-block-coblocks-posts__more-link"
-												onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
-												value={ postLink }
-												placeholder={ __( 'Read more' ) }
-											/>
-											}
-										</div>
-									</div>
-								</div>
-							);
-						} ) }
-					</Slider>
-				}
 			</Fragment>
 		);
 	}
@@ -578,4 +494,4 @@ export default compose( [
 			latestPosts: latestPosts,
 		};
 	} ),
-] )( BlogrollEdit );
+] )( PostsEdit );

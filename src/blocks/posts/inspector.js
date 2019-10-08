@@ -4,11 +4,6 @@
 import classnames from 'classnames';
 
 /**
- * Internal dependencies
- */
-import SlickSliderPanel from '../../components/slick-slider-panel';
-
-/**
  * WordPress dependencies
  */
 import { __, _x } from '@wordpress/i18n';
@@ -52,9 +47,8 @@ const Inspector = props => {
 		imageSize,
 	} = attributes;
 
-	const isCarouselStyle = ( 'carousel' === activeStyle.name );
 	const isStackedStyle = ( 'stacked' === activeStyle.name );
-	const isHorizontalStyle = ( 'list' === activeStyle.name );
+	const isHorizontalStyle = ( 'horizontal' === activeStyle.name );
 
 	const sizeOptions = [
 		{
@@ -111,20 +105,18 @@ const Inspector = props => {
 						max={ 75 }
 					/>
 				}
-				{ ! isCarouselStyle &&
-					<RangeControl
-						label={ __( 'Columns' ) }
-						value={ columns }
-						onChange={ ( value ) => {
-							onUserModifiedColumn();
-							setAttributes( { columns: value } );
-						} }
-						min={ isStackedStyle ? 2 : 1 }
-						max={ isHorizontalStyle ? 2 : Math.min( 4, postCount ) }
-						required
-					/>
-				}
-				{ ! isStackedStyle && ! isCarouselStyle &&
+				<RangeControl
+					label={ __( 'Columns' ) }
+					value={ columns }
+					onChange={ ( value ) => {
+						onUserModifiedColumn();
+						setAttributes( { columns: value } );
+					} }
+					min={ isStackedStyle ? 2 : 1 }
+					max={ isHorizontalStyle ? 2 : Math.min( 4, postCount ) }
+					required
+				/>
+				{ isHorizontalStyle &&
 					<BaseControl label={ __( 'Thumbnail Size' ) }
 						className={ classnames(
 							'components-coblocks-posts-thumbnail-size',
@@ -225,9 +217,6 @@ const Inspector = props => {
 				</PanelBody> : null }
 			{ hasPosts ? settings : null }
 			{ feedSettings }
-			{ isCarouselStyle &&
-				<SlickSliderPanel { ...props } />
-			}
 		</InspectorControls>
 	);
 };

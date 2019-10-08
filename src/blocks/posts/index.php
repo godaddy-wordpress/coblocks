@@ -62,31 +62,19 @@ function coblocks_render_posts_block( $attributes ) {
 
 	}
 
-	$block_layout = null;
+	$block_style = null;
 
 	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-horizontal' ) !== false ) {
 
-		$block_layout = 'horizontal';
+		$block_style = 'horizontal';
 
 	} elseif ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-stacked' ) !== false ) {
 
-		$block_layout = 'stacked';
-
-	} else {
-
-		$block_layout = 'carousel';
+		$block_style = 'stacked';
 
 	}
 
-	if ( 'carousel' === $block_layout ) {
-
-		return coblocks_posts_carousel_style( $formatted_posts, $attributes );
-
-	} else {
-
-		return coblocks_posts_list_grid_style( $formatted_posts, $attributes );
-
-	}
+	return coblocks_posts( $formatted_posts, $attributes );
 }
 
 /**
@@ -97,10 +85,10 @@ function coblocks_render_posts_block( $attributes ) {
  *
  * @return string Returns the block content for the list and grid styles.
  */
-function coblocks_posts_list_grid_style( $posts, $attributes ) {
+function coblocks_posts( $posts, $attributes ) {
 
-	$class        = 'wp-block-coblocks-posts';
-	$block_layout = strpos( $attributes['className'], 'is-style-stacked' ) !== false ? 'stacked' : 'horizontal';
+	$class       = 'wp-block-coblocks-posts';
+	$block_style = strpos( $attributes['className'], 'is-style-stacked' ) !== false ? 'stacked' : 'horizontal';
 
 	if ( isset( $attributes['className'] ) ) {
 
@@ -128,7 +116,7 @@ function coblocks_posts_list_grid_style( $posts, $attributes ) {
 	$list_items_markup = '';
 	$list_items_class  = '';
 
-	if ( 'horizontal' !== $block_layout ) {
+	if ( 'horizontal' !== $block_style ) {
 
 		$list_items_class .= 'flex-col';
 
@@ -140,7 +128,7 @@ function coblocks_posts_list_grid_style( $posts, $attributes ) {
 		$image_class      = '';
 		$align_self_class = '';
 
-		if ( isset( $attributes['listPosition'] ) && 'horizontal' === $block_layout ) {
+		if ( isset( $attributes['listPosition'] ) && 'horizontal' === $block_style ) {
 
 			if ( 'left' === $attributes['listPosition'] ) {
 
@@ -153,7 +141,7 @@ function coblocks_posts_list_grid_style( $posts, $attributes ) {
 			}
 		}
 
-		if ( isset( $attributes['imageSize'] ) && 'horizontal' === $block_layout ) {
+		if ( isset( $attributes['imageSize'] ) && 'horizontal' === $block_style ) {
 
 			$image_class .= ' ' . $attributes['imageSize'];
 
@@ -170,7 +158,7 @@ function coblocks_posts_list_grid_style( $posts, $attributes ) {
 
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
-			if ( 'stacked' === $block_layout ) {
+			if ( 'stacked' === $block_style ) {
 
 				$image_class .= ' mb-2';
 
@@ -183,7 +171,7 @@ function coblocks_posts_list_grid_style( $posts, $attributes ) {
 				esc_url( $post['thumbnailURL'] )
 			);
 
-			if ( 'horizontal' === $block_layout && ( isset( $attributes['displayPostContent'] ) && ! $attributes['displayPostContent'] ) && ( isset( $attributes['columns'] ) && 2 >= $attributes['columns'] ) ) {
+			if ( 'horizontal' === $block_style && ( isset( $attributes['displayPostContent'] ) && ! $attributes['displayPostContent'] ) && ( isset( $attributes['columns'] ) && 2 >= $attributes['columns'] ) ) {
 
 				$align_self_class = 'self-center';
 			}
@@ -196,7 +184,7 @@ function coblocks_posts_list_grid_style( $posts, $attributes ) {
 			esc_attr( $align_self_class )
 		);
 
-		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'stacked' === $block_layout ) {
+		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'stacked' === $block_style ) {
 
 			$list_items_markup .= sprintf(
 				'<time datetime="%1$s" class="wp-block-coblocks-posts__date mb-1">%2$s</time>',
@@ -220,7 +208,7 @@ function coblocks_posts_list_grid_style( $posts, $attributes ) {
 			$title
 		);
 
-		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'horizontal' === $block_layout ) {
+		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'horizontal' === $block_style ) {
 
 			$list_items_markup .= sprintf(
 				'<time datetime="%1$s" class="wp-block-coblocks-posts__date mt-2">%2$s</time>',
@@ -258,170 +246,6 @@ function coblocks_posts_list_grid_style( $posts, $attributes ) {
 
 	$block_content .= $list_items_markup;
 	$block_content .= '</ul>';
-
-	return $block_content;
-
-}
-
-/**
- * Renders the carousel style.
- *
- * @param array $posts Current posts.
- * @param array $attributes The block attributes.
- *
- * @return string Returns the block content for the carousel style.
- */
-function coblocks_posts_carousel_style( $posts, $attributes ) {
-
-	$arrows         = $attributes['prevNextButtons'] ? 'true' : 'false';
-	$auto_play      = $attributes['autoPlay'] ? 'true' : 'false';
-	$draggable      = (string) $attributes['draggable'] ? 'true' : 'false';
-	$infinite_slide = $attributes['infiniteSlide'] ? 'true' : 'false';
-
-	$class = 'wp-block-coblocks-posts';
-
-	if ( isset( $attributes['className'] ) ) {
-
-		$class .= ' ' . $attributes['className'];
-
-	}
-
-	if ( isset( $attributes['align'] ) ) {
-
-		$class .= ' align' . $attributes['align'];
-
-	}
-
-	$block_content = sprintf(
-		'<div class="carousel-container %1$s" data-slick="%2$s">',
-		esc_attr( $class ),
-		esc_attr(
-			json_encode(
-				/**
-				 * Filter the slick slider carousel settings
-				 *
-				 * @var array Slick slider settings.
-				 */
-				(array) apply_filters(
-					'coblocks_posts_carousel_style_settings',
-					[
-						'slidesToScroll' => 1,
-						'arrow'          => $arrows,
-						'autoPlay'       => $auto_play,
-						'autoPlaySpeed'  => $attributes['autoPlaySpeed'],
-						'slidesToShow'   => $attributes['visibleItems'],
-						'infinite'       => $infinite_slide,
-						'adaptiveHeight' => false,
-						'draggable'      => $draggable,
-						'responsive' => [
-							[
-								'breakpoint' => 1024,
-								'settings'   => [
-									'slidesToShow'   => 3,
-								]
-							],
-							[
-								'breakpoint' => 600,
-								'settings'   => [
-									'slidesToShow'   => 2,
-								]
-							],
-							[
-								'breakpoint' => 480,
-								'settings'   => [
-									'slidesToShow'   => 1,
-								]
-							]
-						],
-					]
-				),
-				true
-			)
-		)
-	);
-
-	$list_items_markup = '';
-
-	foreach ( $posts as $post ) {
-
-		$list_items_markup .= '<div class="coblocks-blog-post--item">';
-		$list_items_markup .= '<div class="coblocks-blog-post--item-inner">';
-
-		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
-
-			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-posts__image" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
-				esc_url( $post['postLink'] ),
-				esc_url( $post['thumbnailURL'] )
-			);
-
-		}
-
-		$item_info_class = 'wp-block-coblocks-posts__content ';
-
-		if ( null === $post['thumbnailURL'] || ! $post['thumbnailURL'] ) {
-
-			$item_info_class .= 'full-height ';
-
-		}
-
-		$list_items_markup .= sprintf(
-			'<div class="%1$s"</div>',
-			$item_info_class
-		);
-
-		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-
-			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="wp-block-coblocks-posts__date">%2$s</time>',
-				$post['date'],
-				$post['dateReadable']
-			);
-
-		}
-
-		$title = $post['title'];
-
-		if ( ! $title ) {
-
-			$title = _x( '(no title)', 'placeholder when a post has no title', 'coblocks' );
-
-		}
-
-		$list_items_markup .= sprintf(
-			'<a href="%1$s" alt="%2$s">%2$s</a>',
-			esc_url( $post['postLink'] ),
-			esc_html( $title )
-		);
-
-		if ( isset( $attributes['displayPostContent'] ) && $attributes['displayPostContent'] ) {
-
-			$post_excerpt    = $post['postExcerpt'];
-			$trimmed_excerpt = esc_html( wp_trim_words( $post_excerpt, $attributes['excerptLength'], ' &hellip; ' ) );
-
-			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-posts__post-excerpt mt-1">%1$s</div>',
-				$trimmed_excerpt
-			);
-
-		}
-
-		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
-
-			$list_items_markup .= sprintf(
-				'<a href="%1$s" class="wp-block-coblocks-posts__more-link self-start mt-2">%2$s</a>',
-				esc_url( $post['postLink'] ),
-				esc_html( $attributes['postLink'] )
-			);
-
-		}
-
-		$list_items_markup .= '</div></div></div>';
-
-	}
-
-	$block_content .= $list_items_markup;
-	$block_content .= '</div>';
 
 	return $block_content;
 
@@ -520,14 +344,6 @@ function coblocks_register_posts_block() {
 
 	}
 
-	$dir = CoBlocks()->asset_source( 'js' );
-
-	wp_register_script(
-		'coblocks-slick-initializer',
-		$dir . 'coblocks-slick-initializer' . COBLOCKS_ASSET_SUFFIX . '.js',
-		array( 'jquery' )
-	);
-
 	register_block_type(
 		'coblocks/posts',
 		array(
@@ -593,33 +409,8 @@ function coblocks_register_posts_block() {
 				'categories'         => array(
 					'type' => 'string',
 				),
-				'prevNextButtons'    => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'draggable'          => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'autoPlay'           => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'autoPlaySpeed'      => array(
-					'type'    => 'string',
-					'default' => 3000,
-				),
-				'visibleItems'       => array(
-					'type'    => 'number',
-					'default' => 2,
-				),
-				'infiniteSlide'      => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
 			),
 			'render_callback' => 'coblocks_render_posts_block',
-			'editor_script'   => 'coblocks-slick-initializer',
 		)
 	);
 }
