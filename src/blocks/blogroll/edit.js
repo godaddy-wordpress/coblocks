@@ -45,15 +45,15 @@ const TokenList = wp.tokenList;
 
 const styleOptions = [
 	{
-		name: 'list',
-		label: _x( 'List', 'block style' ),
+		name: 'horizontal',
+		label: _x( 'Horizontal', 'block style' ),
 		icon: icons.styleListIconRight,
 		iconAlt: icons.styleListIconLeft,
 		isDefault: true,
 	},
 	{
-		name: 'grid',
-		label: _x( 'Grid', 'block style' ),
+		name: 'vertical',
+		label: _x( 'Vertical', 'block style' ),
 		icon: icons.styleGrid,
 	},
 	{
@@ -191,9 +191,9 @@ class BlogrollEdit extends Component {
 
 		const { categoriesList } = this.state;
 
-		const isListStyle = includes( className, 'is-style-list' );
+		const isListStyle = includes( className, 'is-style-horizontal' );
 		const isCarouselStyle = includes( className, 'is-style-carousel' );
-		const isGridStyle = includes( className, 'is-style-grid' );
+		const isGridStyle = includes( className, 'is-style-vertical' );
 
 		const activeStyle = getActiveStyle( styleOptions, className );
 

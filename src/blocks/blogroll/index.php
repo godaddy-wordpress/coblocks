@@ -64,13 +64,13 @@ function coblocks_render_blogroll_block( $attributes ) {
 
 	$block_layout = null;
 
-	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-list' ) !== false ) {
+	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-horizontal' ) !== false ) {
 
-		$block_layout = 'list';
+		$block_layout = 'horizontal';
 
-	} elseif ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-grid' ) !== false ) {
+	} elseif ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-vertical' ) !== false ) {
 
-		$block_layout = 'grid';
+		$block_layout = 'vertical';
 
 	} else {
 
@@ -100,7 +100,7 @@ function coblocks_render_blogroll_block( $attributes ) {
 function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 
 	$class        = 'wp-block-coblocks-blogroll';
-	$block_layout = strpos( $attributes['className'], 'is-style-grid' ) !== false ? 'grid' : 'list';
+	$block_layout = strpos( $attributes['className'], 'is-style-vertical' ) !== false ? 'vertical' : 'horizontal';
 
 	if ( isset( $attributes['className'] ) ) {
 
@@ -128,7 +128,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 	$list_items_markup = '';
 	$list_items_class  = '';
 
-	if ( 'list' !== $block_layout ) {
+	if ( 'horizontal' !== $block_layout ) {
 
 		$list_items_class .= 'flex-col';
 
@@ -140,7 +140,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 		$image_class      = '';
 		$align_self_class = '';
 
-		if ( isset( $attributes['listPosition'] ) && 'list' === $block_layout ) {
+		if ( isset( $attributes['listPosition'] ) && 'horizontal' === $block_layout ) {
 
 			if ( 'left' === $attributes['listPosition'] ) {
 
@@ -153,7 +153,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 			}
 		}
 
-		if ( isset( $attributes['imageSize'] ) && 'list' === $block_layout ) {
+		if ( isset( $attributes['imageSize'] ) && 'horizontal' === $block_layout ) {
 
 			$image_class .= ' ' . $attributes['imageSize'];
 
@@ -170,7 +170,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
-			if ( 'grid' === $block_layout ) {
+			if ( 'vertical' === $block_layout ) {
 
 				$image_class .= ' mb-2';
 
@@ -196,7 +196,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 			esc_attr( $align_self_class )
 		);
 
-		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'grid' === $block_layout ) {
+		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'vertical' === $block_layout ) {
 
 			$list_items_markup .= sprintf(
 				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__date mb-1">%2$s</time>',
@@ -220,7 +220,7 @@ function coblocks_blogroll_list_grid_style( $posts, $attributes ) {
 			$title
 		);
 
-		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'list' === $block_layout ) {
+		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] && 'horizontal' === $block_layout ) {
 
 			$list_items_markup .= sprintf(
 				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__date mt-2">%2$s</time>',

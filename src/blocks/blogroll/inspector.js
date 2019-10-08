@@ -51,7 +51,7 @@ const Inspector = props => {
 	} = attributes;
 
 	const isCarouselStyle = ( 'carousel' === activeStyle.name );
-	const isGridStyle = ( 'grid' === activeStyle.name );
+	const isGridStyle = ( 'vertical' === activeStyle.name );
 	const isListStyle = ( 'list' === activeStyle.name );
 
 	const sizeOptions = [
