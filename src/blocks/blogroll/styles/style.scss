@@ -3,6 +3,10 @@
 		margin-top: map-get($margin, 2);
 	}
 
+	&.columns-1 > li:first-child {
+		margin-top: 0;
+	}
+
 	&.columns-1 > li:last-child {
 		margin-bottom: 0;
 	}
