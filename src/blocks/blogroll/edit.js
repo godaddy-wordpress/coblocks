@@ -291,7 +291,7 @@ class BlogrollEdit extends Component {
 						styleOptions={ styleOptions }
 						onUpdateStyle={ this.updateStyle }
 						categoriesList={ categoriesList }
-						postCount={ latestPosts.length }
+						postCount={ latestPosts && latestPosts.length }
 					/>
 					<Placeholder
 						icon="rss"
@@ -326,7 +326,7 @@ class BlogrollEdit extends Component {
 					styleOptions={ styleOptions }
 					onUpdateStyle={ this.updateStyle }
 					categoriesList={ categoriesList }
-					postCount={ latestPosts.length }
+					postCount={ latestPosts && latestPosts.length }
 				/>
 				<BlockControls>
 					{ isListStyle &&
