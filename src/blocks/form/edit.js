@@ -541,7 +541,6 @@ class FormEdit extends Component {
 				<div className={ classes }>
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
-						templateLock={ false }
 						templateInsertUpdatesSelection={ false }
 						renderAppender={ () => null }
 						template={ FORM_TEMPLATE }
