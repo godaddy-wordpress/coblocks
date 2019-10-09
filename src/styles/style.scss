@@ -23,10 +23,6 @@
 // Utility tooltips
 @import "style/tooltips";
 
-.text-center {
-	text-align: center;
-}
-
 .relative {
 	position: relative;
 }
@@ -42,7 +38,7 @@
 .has-text-align-left {
 	text-align: left;
 }
-
+.text-center,
 .has-text-align-center {
 	text-align: center;
 }
