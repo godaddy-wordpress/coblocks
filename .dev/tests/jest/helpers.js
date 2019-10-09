@@ -78,7 +78,7 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 				} );
 
 				blockVariations[ attribute ] && blockVariations[ attribute ].map( variation => {
-					it( `should support attribute.${ attribute } set to '${ variation }'`, () => {
+					it( `should support attribute.${ attribute } set to '${ JSON.stringify( variation ) }'`, () => {
 						deprecatedBlock.attributes[ attribute ] = variation;
 						const deprecatedSerialized = serialize( deprecatedBlock );
 
