@@ -50,9 +50,16 @@ const transforms = {
 		{
 			type: 'block',
 			blocks: [ 'core/latest-posts' ],
-			transform: ( displayPostDate ) => (
+			transform: ( { displayPostDate, displayPostContent, order, orderBy, categories, postsToShow, excerptLength, align } ) => (
 				createBlock( 'core/latest-posts', {
 					displayPostDate,
+					displayPostContent,
+					order,
+					orderBy,
+					categories,
+					postsToShow,
+					align,
+					excerptLength,
 				} )
 			),
 		},

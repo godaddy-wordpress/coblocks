@@ -1,8 +1,0 @@
-{
-	"name": "coblocks/posts",
-	"category": "coblocks",
-	"supports": {
-		"align": ["wide", "full"],
-		"html": false
-	}
-}
