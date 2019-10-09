@@ -102,8 +102,6 @@ class PostCarousel extends Component {
 		const { categoriesList } = this.state;
 
 		const {
-			autoPlay,
-			autoPlaySpeed,
 			displayPostContent,
 			displayPostDate,
 			displayPostLink,
@@ -112,7 +110,7 @@ class PostCarousel extends Component {
 			postFeedType,
 			postLink,
 			postsToShow,
-			visibleItems,
+			columns,
 		} = attributes;
 
 		const imageClasses = classnames( 'wp-block-coblocks-blogroll__image', 'table', 'flex-0', 'relative', 'mb-2', {} );
@@ -130,15 +128,13 @@ class PostCarousel extends Component {
 		const displayPosts = Array.isArray( latestPosts ) && latestPosts.length > postsToShow ? latestPosts.slice( 0, postsToShow ) : latestPosts;
 
 		const slickSettings = {
-			autoPlay: autoPlay,
-			autoPlaySpeed: autoPlaySpeed,
 			dots: false,
 			arrows: true,
 			infinite: true,
 			draggable: true,
 			adaptiveHeight: false,
 			speed: 500,
-			slidesToShow: visibleItems,
+			slidesToShow: columns,
 			slidesToScroll: 1,
 		};
 

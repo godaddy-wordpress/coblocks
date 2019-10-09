@@ -91,8 +91,6 @@ function coblocks_render_post_carousel_block( $attributes ) {
  */
 function coblocks_post_carousel( $posts, $attributes ) {
 
-	$auto_play = $attributes['autoPlay'] ? 'true' : 'false';
-
 	$class = 'wp-block-coblocks-post-carousel';
 
 	if ( isset( $attributes['className'] ) ) {
@@ -122,9 +120,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 					[
 						'slidesToScroll' => 1,
 						'arrow'          => true,
-						'autoPlay'       => $auto_play,
-						'autoPlaySpeed'  => $attributes['autoPlaySpeed'],
-						'slidesToShow'   => $attributes['visibleItems'],
+						'slidesToShow'   => $attributes['columns'],
 						'infinite'       => true,
 						'adaptiveHeight' => false,
 						'draggable'      => true,
@@ -412,17 +408,9 @@ function coblocks_register_post_carousel_block() {
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'autoPlay'           => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'autoPlaySpeed'      => array(
-					'type'    => 'string',
-					'default' => 3000,
-				),
-				'visibleItems'       => array(
+				'columns'            => array(
 					'type'    => 'number',
-					'default' => 2,
+					'default' => 3,
 				),
 			),
 			'render_callback' => 'coblocks_render_post_carousel_block',

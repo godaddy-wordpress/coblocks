@@ -1,12 +1,7 @@
 /**
- * Internal dependencies
- */
-import autoPlayOptions from './../../components/slider-panel/autoplay-options';
-
-/**
  * WordPress dependencies
  */
-import { __, sprintf } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 
@@ -16,24 +11,9 @@ import {
 	RangeControl,
 	QueryControls,
 	RadioControl,
-	SelectControl,
 } from '@wordpress/components';
 
 class Inspector extends Component {
-	constructor() {
-		super( ...arguments );
-		this.getAutoPlayHelp = this.getAutoPlayHelp.bind( this );
-	}
-
-	getAutoPlayHelp( checked ) {
-		// Retrieve the height value and divide it to display full seconds.
-		const speed = this.props.attributes.autoPlaySpeed / 1000;
-		const time = ( speed > 1 ) ? __( 'seconds' ) : __( 'second' );
-
-		// translators: 1. Speed of the slider, 2: Time until the slide advances
-		return checked ? sprintf( __( 'Advancing after %1$d %2$s.' ), speed, time ) : __( 'Automatically advance carousel.' );
-	}
-
 	render() {
 		const {
 			attributes,
@@ -51,9 +31,7 @@ class Inspector extends Component {
 			orderBy,
 			postFeedType,
 			postsToShow,
-			visibleItems,
-			autoPlay,
-			autoPlaySpeed,
+			columns,
 		} = attributes;
 
 		const settings = (
@@ -90,27 +68,14 @@ class Inspector extends Component {
 					}
 					<RangeControl
 						label={ __( 'Columns' ) }
-						value={ visibleItems }
+						value={ columns }
 						onChange={ ( value ) => {
-							setAttributes( { visibleItems: value } );
+							setAttributes( { columns: value } );
 						} }
 						min={ 2 }
 						max={ Math.min( 4, postCount ) }
 						required
 					/>
-					<ToggleControl
-						label={ __( 'Autoplay' ) }
-						checked={ !! autoPlay }
-						onChange={ () => setAttributes( { autoPlay: ! autoPlay } ) }
-						help={ this.getAutoPlayHelp }
-						className="components-coblocks-post-carousel-autoplay"
-					/>
-					{ autoPlay && <SelectControl
-						value={ autoPlaySpeed }
-						onChange={ ( value ) => setAttributes( { autoPlaySpeed: value } ) }
-						options={ autoPlayOptions }
-						className="components-coblocks-post-carousel-autoplayspeed"
-					/> }
 				</Fragment>
 			</PanelBody>
 		);
