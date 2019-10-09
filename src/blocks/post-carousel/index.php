@@ -106,7 +106,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 	}
 
 	$block_content = sprintf(
-		'<div class="%1$s"><div class="coblocks-slick" data-slick="%2$s">',
+		'<div class="%1$s overflow-hidden"><div class="coblocks-slick" data-slick="%2$s">',
 		esc_attr( $class ),
 		esc_attr(
 			json_encode(
@@ -157,36 +157,23 @@ function coblocks_post_carousel( $posts, $attributes ) {
 
 	foreach ( $posts as $post ) {
 
-		$list_items_markup .= '<div class="coblocks-blog-post--item">';
-		$list_items_markup .= '<div class="coblocks-blog-post--item-inner">';
+		$list_items_markup .= '<div class="wp-block-coblocks-post-carousel__item">';
 
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__image" style="background-image:url(%2$s)"><a href="%1$s"></a></div>',
+				'<div class="wp-block-coblocks-blogroll__image table relative flex-0 mb-2 w-full"><a href="%1$s" class="block w-full bg-cover bg-center-center pt-full" style="background-image:url(%2$s)"></a></div>',
 				esc_url( $post['postLink'] ),
 				esc_url( $post['thumbnailURL'] )
 			);
-
 		}
 
-		$item_info_class = 'wp-block-coblocks-blogroll__content ';
-
-		if ( null === $post['thumbnailURL'] || ! $post['thumbnailURL'] ) {
-
-			$item_info_class .= 'full-height ';
-
-		}
-
-		$list_items_markup .= sprintf(
-			'<div class="%1$s"</div>',
-			$item_info_class
-		);
+		$list_items_markup .= '<div class="wp-block-coblocks-blogroll__content flex flex-col w-full">';
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 
 			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="wp-block-coblocks-blogroll__date">%2$s</time>',
+				'<time datetime="%1$s" class="wp-block-coblocks-post-carousel__date mb-1">%2$s</time>',
 				$post['date'],
 				$post['dateReadable']
 			);
@@ -229,7 +216,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 
 		}
 
-		$list_items_markup .= '</div></div></div>';
+		$list_items_markup .= '</div></div>';
 
 	}
 

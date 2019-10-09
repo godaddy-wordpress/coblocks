@@ -3,7 +3,7 @@
  */
 import classnames from 'classnames';
 import { isUndefined, pickBy } from 'lodash';
-import Slider from 'react-slick';
+import Slick from 'react-slick';
 
 /**
  * Internal dependencies
@@ -97,6 +97,7 @@ class PostCarousel extends Component {
 			attributes,
 			setAttributes,
 			latestPosts,
+			className,
 		} = this.props;
 
 		const { categoriesList } = this.state;
@@ -113,7 +114,7 @@ class PostCarousel extends Component {
 			columns,
 		} = attributes;
 
-		const imageClasses = classnames( 'wp-block-coblocks-blogroll__image', 'table', 'flex-0', 'relative', 'mb-2', {} );
+		const imageClasses = classnames( 'wp-block-coblocks-blogroll__image', 'table', 'relative', 'flex-0', 'mb-2', 'w-full', {} );
 
 		const editToolbarControls = [
 			{
@@ -260,53 +261,55 @@ class PostCarousel extends Component {
 				}
 				{ postFeedType === 'internal' &&
 					<Fragment>
-						<Slider { ...slickSettings } className={ classnames( this.props.className, 'overflow-hidden', {} ) }>
-							{ displayPosts.map( ( post, i ) => {
-								const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
-								const featuredImageStyle = 'url(' + featuredImageUrl + ')';
-								const titleTrimmed = post.title.rendered.trim();
+						<div className={ classnames( className, 'overflow-hidden', {} ) }>
+							<Slick className="coblocks-slick" { ...slickSettings }>
+								{ displayPosts.map( ( post, i ) => {
+									const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
+									const featuredImageStyle = 'url(' + featuredImageUrl + ')';
+									const titleTrimmed = post.title.rendered.trim();
 
-								let excerpt = post.excerpt.rendered;
-								if ( post.excerpt.raw === '' ) {
-									excerpt = post.content.raw;
-								}
-								const excerptElement = document.createElement( 'div' );
+									let excerpt = post.excerpt.rendered;
+									if ( post.excerpt.raw === '' ) {
+										excerpt = post.content.raw;
+									}
+									const excerptElement = document.createElement( 'div' );
 
-								excerptElement.innerHTML = excerpt;
-								excerpt = excerptElement.textContent || excerptElement.innerText || '';
+									excerptElement.innerHTML = excerpt;
+									excerpt = excerptElement.textContent || excerptElement.innerText || '';
 
-								return (
-									<div className="coblocks-blog-post--item" key={ i }>
-										<div className="coblocks-blog-post--item-inner">
+									return (
+										<div className="wp-block-coblocks-post-carousel__item" key={ i }>
 											{ featuredImageUrl &&
-												<div className={ imageClasses } style={ { backgroundImage: featuredImageStyle } }></div>
+												<div className={ imageClasses }>
+													<div className="block w-full bg-cover bg-center-center pt-full" style={ { backgroundImage: featuredImageStyle } }></div>
+												</div>
 											}
 											<div className={ classnames( 'wp-block-coblocks-blogroll__content', {
 												'full-height': ! featuredImageUrl,
 											} ) }>
 												{ displayPostDate && post.date_gmt &&
-													<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date">
+													<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-post-carousel__date">
 														{ dateI18n( dateFormat, post.date_gmt ) }
 													</time>
 												}
-												<a href={ post.link } target="_blank" rel="noreferrer noopener" alt={ titleTrimmed }>
-													{ titleTrimmed ? (
-														<RawHTML>
-															{ titleTrimmed }
-														</RawHTML>
-													) :
-														_x( '(no title)', 'placeholder when a post has no title' )
-													}
-												</a>
-												{ displayPostContent &&
-													<div className="wp-block-coblocks-blogroll__post-excerpt">
-														<p>
-															<RawHTML
-																key="html"
-															>
-																{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+												<Disabled>
+													<a href={ post.link } target="_blank" rel="noreferrer noopener" alt={ titleTrimmed }>
+														{ titleTrimmed ? (
+															<RawHTML>
+																{ titleTrimmed }
 															</RawHTML>
-														</p>
+														) :
+															_x( '(no title)', 'placeholder when a post has no title' )
+														}
+													</a>
+												</Disabled>
+												{ displayPostContent &&
+													<div className="wp-block-coblocks-blogroll__post-excerpt mt-1">
+														<RawHTML
+															key="html"
+														>
+															{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+														</RawHTML>
 													</div>
 												}
 												{ displayPostLink &&
@@ -319,13 +322,13 @@ class PostCarousel extends Component {
 												}
 											</div>
 										</div>
-									</div>
-								);
-							} ) }
-						</Slider>
-						<div className="text-center mt-2 sm:mt-4">
-							<button className="slick-prev inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Previous Slide', 'button text to load the previous blog post slide' ) }</span></button>
-							<button className="slick-next inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Next Slide', 'button text to load the next blog post slide' ) }</span></button>
+									);
+								} ) }
+							</Slick>
+							<div className="text-center mt-2 sm:mt-4">
+								<button className="slick-prev inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Previous Slide', 'button text to load the previous blog post slide' ) }</span></button>
+								<button className="slick-next inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Next Slide', 'button text to load the next blog post slide' ) }</span></button>
+							</div>
 						</div>
 					</Fragment>
 				}

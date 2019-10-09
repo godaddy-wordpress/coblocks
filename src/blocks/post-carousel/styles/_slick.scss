@@ -9,7 +9,7 @@
 
 .slick-list {
 	display: block;
-	margin: 0 map-get($margin, -3);
+	margin: 0 map-get($margin, -2);
 	overflow: hidden;
 	padding: 0;
 	position: relative;
@@ -55,8 +55,9 @@
 	display: none;
 	float: left;
 	height: auto;
+	margin: 0 map-get($margin, 2);
 	min-height: 1px;
-	padding: 0 map-get($margin, 2);
+	outline: none;
 }
 
 [dir="rtl"] .slick-slide {
