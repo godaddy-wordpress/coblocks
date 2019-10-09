@@ -26,7 +26,7 @@ const settings = {
 	title: _x( 'Posts', 'block name' ),
 	description: __( 'Display posts or an RSS feed as stacked or horizontal cards.' ),
 	icon,
-	keywords: [ _x( 'posts', 'block keyword' ), _x( 'rss', 'block keyword' ), _x( 'latest', 'block keyword' ) ],
+	keywords: [ _x( 'blog', 'block keyword' ), _x( 'rss', 'block keyword' ), _x( 'latest', 'block keyword' ) ],
 	supports,
 	transforms,
 	edit,
