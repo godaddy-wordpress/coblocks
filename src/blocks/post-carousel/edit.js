@@ -114,7 +114,7 @@ class PostCarousel extends Component {
 			columns,
 		} = attributes;
 
-		const imageClasses = classnames( 'wp-block-coblocks-blogroll__image', 'table', 'relative', 'flex-0', 'mb-2', 'w-full', {} );
+		const imageClasses = classnames( 'wp-block-coblocks-post-carousel__image', 'table', 'relative', 'flex-0', 'mb-2', 'w-full', {} );
 
 		const editToolbarControls = [
 			{
@@ -284,7 +284,7 @@ class PostCarousel extends Component {
 													<div className="block w-full bg-cover bg-center-center pt-full" style={ { backgroundImage: featuredImageStyle } }></div>
 												</div>
 											}
-											<div className={ classnames( 'wp-block-coblocks-blogroll__content', {
+											<div className={ classnames( 'wp-block-coblocks-post-carousel__content', {
 												'full-height': ! featuredImageUrl,
 											} ) }>
 												{ displayPostDate && post.date_gmt &&
@@ -304,7 +304,7 @@ class PostCarousel extends Component {
 													</a>
 												</Disabled>
 												{ displayPostContent &&
-													<div className="wp-block-coblocks-blogroll__post-excerpt mt-1">
+													<div className="wp-block-coblocks-post-carousel__post-excerpt mt-1">
 														<RawHTML
 															key="html"
 														>
@@ -314,7 +314,7 @@ class PostCarousel extends Component {
 												}
 												{ displayPostLink &&
 													<PlainText
-														className="wp-block-coblocks-blogroll__more-link"
+														className="wp-block-coblocks-post-carousel__more-link"
 														onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
 														value={ postLink }
 														placeholder={ __( 'Read more' ) }
@@ -325,7 +325,7 @@ class PostCarousel extends Component {
 									);
 								} ) }
 							</Slick>
-							<div className="text-center mt-2 sm:mt-4">
+							<div className="text-center mt-2 sm:mt-3">
 								<button className="slick-prev inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Previous Slide', 'button text to load the previous blog post slide' ) }</span></button>
 								<button className="slick-next inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Next Slide', 'button text to load the next blog post slide' ) }</span></button>
 							</div>

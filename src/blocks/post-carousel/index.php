@@ -87,7 +87,7 @@ function coblocks_render_post_carousel_block( $attributes ) {
  * @param array $posts Current posts.
  * @param array $attributes The block attributes.
  *
- * @return string Returns the block content for the carousel style.
+ * @return string Returns the block content for the carousel.
  */
 function coblocks_post_carousel( $posts, $attributes ) {
 
@@ -162,13 +162,13 @@ function coblocks_post_carousel( $posts, $attributes ) {
 		if ( null !== $post['thumbnailURL'] && $post['thumbnailURL'] ) {
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__image table relative flex-0 mb-2 w-full"><a href="%1$s" class="block w-full bg-cover bg-center-center pt-full" style="background-image:url(%2$s)"></a></div>',
+				'<div class="wp-block-coblocks-post-carousel__image table relative flex-0 mb-2 w-full"><a href="%1$s" class="block w-full bg-cover bg-center-center pt-full" style="background-image:url(%2$s)"></a></div>',
 				esc_url( $post['postLink'] ),
 				esc_url( $post['thumbnailURL'] )
 			);
 		}
 
-		$list_items_markup .= '<div class="wp-block-coblocks-blogroll__content flex flex-col w-full">';
+		$list_items_markup .= '<div class="wp-block-coblocks-post-carousel__content flex flex-col w-full">';
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 
@@ -200,7 +200,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 			$trimmed_excerpt = esc_html( wp_trim_words( $post_excerpt, $attributes['excerptLength'], ' &hellip; ' ) );
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-coblocks-blogroll__post-excerpt mt-1">%1$s</div>',
+				'<div class="wp-block-coblocks-post-carousel__post-excerpt mt-1">%1$s</div>',
 				$trimmed_excerpt
 			);
 
@@ -209,7 +209,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 
 			$list_items_markup .= sprintf(
-				'<a href="%1$s" class="wp-block-coblocks-blogroll__more-link self-start mt-2">%2$s</a>',
+				'<a href="%1$s" class="wp-block-coblocks-post-carousel__more-link self-start mt-2">%2$s</a>',
 				esc_url( $post['postLink'] ),
 				esc_html( $attributes['postLink'] )
 			);
@@ -222,7 +222,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 
 	$block_content .= $list_items_markup;
 	$block_content .= '</div>';
-	$block_content .= '<div class="text-center mt-2 sm:mt-4">';
+	$block_content .= '<div class="text-center mt-2 sm:mt-3">';
 	$block_content .= sprintf(
 		'<button class="slick-prev inline-block bg-transparent"><span class="screen-reader-text">%s</span></button>',
 		_x( 'Previous Slide', 'button text to load the previous blog post slide', 'coblocks' )
@@ -231,14 +231,14 @@ function coblocks_post_carousel( $posts, $attributes ) {
 		'<button class="slick-next inline-block bg-transparent"><span class="screen-reader-text">%s</span></button>',
 		_x( 'Next Slide', 'button text to load the next blog post slide', 'coblocks' )
 	);
-	$block_content .= '</div>';
+	$block_content .= '</div></div>';
 
 	return $block_content;
 
 }
 
 /**
- * Returns the posts for an internal blogroll.
+ * Returns the posts for an internal post-carousel.
  *
  * @param array $posts Current posts.
  *
@@ -402,14 +402,6 @@ function coblocks_register_post_carousel_block() {
 				),
 				'categories'         => array(
 					'type' => 'string',
-				),
-				'draggable'          => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'columns'            => array(
-					'type'    => 'number',
-					'default' => 2,
 				),
 			),
 			'render_callback' => 'coblocks_render_post_carousel_block',
