@@ -237,6 +237,7 @@ class PostsEdit extends Component {
 			'mr-3': isHorizontalStyle && listPosition === 'left',
 			'mb-2': isStackedStyle,
 			'ml-3': isHorizontalStyle && listPosition === 'right',
+			'w-full': isStackedStyle,
 			[ imageSize ]: isHorizontalStyle,
 		} );
 
