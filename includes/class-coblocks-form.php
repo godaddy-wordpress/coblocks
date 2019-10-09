@@ -454,8 +454,6 @@ class CoBlocks_Form {
 
 		}
 
-		$hash = sha1( implode( ' ', $atts['options'] ) );
-
 		foreach ( $atts['options'] as $value ) {
 
 			printf(
