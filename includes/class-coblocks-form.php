@@ -440,6 +440,12 @@ class CoBlocks_Form {
 	 */
 	public function render_field_radio( $atts, $content ) {
 
+		if ( empty( $atts['options'] ) ) {
+
+			return;
+
+		}
+
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
 		$label_slug    = sanitize_title( $label );
 		$required_attr = ( isset( $is_required ) && $is_required ) ? 'required' : '';
@@ -447,12 +453,6 @@ class CoBlocks_Form {
 		ob_start();
 
 		$this->render_field_label( $atts, $label );
-
-		if ( empty( $atts['options'] ) ) {
-
-			return;
-
-		}
 
 		foreach ( $atts['options'] as $value ) {
 
