@@ -43,6 +43,9 @@
 		"pescatarian": {
 			"type": "boolean"
 		},
+		"popular": {
+			"type": "boolean"
+		},
 		"spicy": {
 			"type": "boolean"
 		},
