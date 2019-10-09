@@ -97,7 +97,7 @@ class CoBlocksFieldMultiple extends Component {
 						<IconButton
 							className="coblocks-field-multiple__add-option"
 							icon="insert"
-							label={ __( 'Insert option' ) }
+							label={ __( 'Add option' ) }
 							onClick={ this.addNewOption }
 						>
 							{ __( 'Add option' ) }

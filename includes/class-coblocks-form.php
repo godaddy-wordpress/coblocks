@@ -158,6 +158,30 @@ class CoBlocks_Form {
 			]
 		);
 
+		register_block_type(
+			'coblocks/field-date',
+			[
+				'parent'          => [ 'coblocks/form' ],
+				'render_callback' => [ $this, 'render_field_date' ],
+			]
+		);
+
+		register_block_type(
+			'coblocks/field-telephone',
+			[
+				'parent'          => [ 'coblocks/form' ],
+				'render_callback' => [ $this, 'render_field_telephone' ],
+			]
+		);
+
+		register_block_type(
+			'coblocks/field-radio',
+			[
+				'parent'          => [ 'coblocks/form' ],
+				'render_callback' => [ $this, 'render_field_radio' ],
+			]
+		);
+
 		/**
 		 * Fires when the coblocks/form block and sub-blocks are registered
 		 */
@@ -341,6 +365,115 @@ class CoBlocks_Form {
 	}
 
 	/**
+	 * Render the date field
+	 *
+	 * @param  array $atts    Block attributes.
+	 * @param  mixed $content Block content.
+	 *
+	 * @return mixed Markup for the date field.
+	 */
+	public function render_field_date( $atts, $content ) {
+
+		wp_enqueue_script(
+			'coblocks-datepicker',
+			CoBlocks()->asset_source( 'js' ) . 'coblocks-datepicker' . COBLOCKS_ASSET_SUFFIX . '.js',
+			array( 'jquery', 'jquery-ui-datepicker' ),
+			COBLOCKS_VERSION,
+			true
+		);
+
+		wp_localize_jquery_ui_datepicker();
+
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Date', 'coblocks' );
+		$label_slug    = sanitize_title( $label );
+		$required_attr = ( isset( $is_required ) && $is_required ) ? 'required' : '';
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label );
+
+		?>
+
+		<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--date" <?php echo esc_attr( $required_attr ); ?> />
+
+		<?php
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Render the telephone field
+	 *
+	 * @param  array $atts    Block attributes.
+	 * @param  mixed $content Block content.
+	 *
+	 * @return mixed Markup for the telephone field.
+	 */
+	public function render_field_telephone( $atts, $content ) {
+
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Telephone', 'coblocks' );
+		$label_slug    = sanitize_title( $label );
+		$required_attr = ( isset( $is_required ) && $is_required ) ? 'required' : '';
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label );
+
+		?>
+
+		<input type="tel" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--telephone" <?php echo esc_attr( $required_attr ); ?> />
+
+		<?php
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Render the radio field
+	 *
+	 * @param  array $atts    Block attributes.
+	 * @param  mixed $content Block content.
+	 *
+	 * @return mixed Markup for the radio field.
+	 */
+	public function render_field_radio( $atts, $content ) {
+
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
+		$label_slug    = sanitize_title( $label );
+		$required_attr = ( isset( $is_required ) && $is_required ) ? 'required' : '';
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label );
+
+		if ( empty( $atts['options'] ) ) {
+
+			return;
+
+		}
+
+		$hash = sha1( implode( ' ', $atts['options'] ) );
+
+		foreach ( $atts['options'] as $value ) {
+
+			printf(
+				'<label class="coblocks-radio-label">
+					<input type="radio" name="field-%1$s[value]" value="%2$s" class="radio"> %3$s
+				</label>',
+				esc_attr( $label_slug ),
+				esc_attr( $value ),
+				esc_html( $value )
+			);
+
+		}
+
+		return ob_get_clean();
+
+	}
+
+	/**
 	 * Generate the form field label.
 	 *
 	 * @param  array $atts Block attributes.
@@ -502,7 +635,7 @@ class CoBlocks_Form {
 
 			if ( is_array( $data['value'] ) ) {
 
-				$data['value'] = implode( ' ', $data['value'] );
+				$data['value'] = implode( ', ', $data['value'] );
 
 			}
 

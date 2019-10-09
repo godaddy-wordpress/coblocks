@@ -1,4 +1,10 @@
 .editor-block-list__block[data-type="coblocks/form"] {
+	.components-base-control,
+	.coblocks-option__input {
+		font-family: inherit;
+		font-size: inherit;
+	}
+
 	.coblocks-field-label__input-wrapper {
 		display: flex;
 		flex-direction: row;
@@ -68,6 +74,46 @@
 	.coblocks-form__inline-fields .coblocks-form__inline-field {
 		margin: 0 0 0.15rem;
 	}
+
+	.coblocks-option {
+		display: flex;
+		align-items: center;
+		margin: 0;
+	}
+
+	.coblocks-option__type.coblocks-option__type {
+		margin-top: 0;
+	}
+
+	.coblocks-option__input.coblocks-option__input.coblocks-option__input {
+		border-color: #fff;
+		border-radius: 0;
+		flex-grow: 1;
+	}
+
+	.coblocks-option__input.coblocks-option__input.coblocks-option__input:hover {
+		border-color: #357cb5;
+	}
+
+	.coblocks-option__input.coblocks-option__input.coblocks-option__input:focus {
+		border-color: #e3e5e8;
+		box-shadow: none;
+	}
+
+	.coblocks-option__remove.coblocks-option__remove {
+		padding: 9px 6px;
+		vertical-align: bottom;
+	}
+
+	.coblocks-field-multiple__add-option {
+		margin-left: -6px;
+		margin-top: 8px;
+		padding: 4px 8px 4px 4px;
+	}
+
+	.coblocks-field-multiple__add-option svg {
+		margin-right: 12px;
+	}
 }
 
 @import "notice";
@@ -107,6 +153,10 @@
 	.coblocks-form__submit.wp-block-button {
 		margin-top: 0;
 	}
+}
+
+.coblocks-form__submit {
+	margin-top: 1em;
 }
 
 .is-twentyseventeen {

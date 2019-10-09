@@ -126,6 +126,9 @@ export const childBlocks = [
 		name: 'coblocks/field-email',
 		settings: {
 			...FieldDefaults,
+			supports: {
+				multiple: false,
+			},
 			title: _x( 'Email', 'block name' ),
 			keywords: [ _x( 'e-mail', 'block keyword' ), _x( 'mail', 'block keyword' ), 'email' ],
 			description: __( 'An email address field.' ),
@@ -161,7 +164,7 @@ export const childBlocks = [
 				_x( 'day month year', 'block search term' ),
 			],
 			description: __( 'The best way to set a date. Add a date picker.' ),
-			icon: icons.email,
+			icon: icons.date,
 			edit: editField( 'text' ),
 		},
 	},
@@ -176,7 +179,7 @@ export const childBlocks = [
 				_x( 'Mobile', 'block keyword' ),
 			],
 			description: _x( 'Add a phone number input.', 'block keyword' ),
-			icon: icons.email,
+			icon: icons.telephone,
 			edit: editField( 'tel' ),
 		},
 	},
@@ -184,10 +187,10 @@ export const childBlocks = [
 		name: 'coblocks/field-radio',
 		settings: {
 			...FieldDefaults,
-			title: __( 'Radio' ),
+			title: __( 'Radio', 'block keyword' ),
 			keywords: [ _x( 'Choose', 'block keyword' ), _x( 'Select', 'block keyword' ), _x( 'Option', 'block keyword' ) ],
 			description: __( 'Inspired by radios, only one radio item can be selected at a time. Add several radio button items.' ),
-			icon: icons.email,
+			icon: icons.radio,
 			edit: editMultiField( 'radio' ),
 			attributes: {
 				...FieldDefaults.attributes,
