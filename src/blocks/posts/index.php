@@ -86,30 +86,31 @@ function coblocks_render_posts_block( $attributes ) {
  * @return string Returns the block content for the list and grid styles.
  */
 function coblocks_posts( $posts, $attributes ) {
-
-	$class       = 'wp-block-coblocks-posts';
+	$class       = '';
+	$class_name  = '';
 	$block_style = strpos( $attributes['className'], 'is-style-stacked' ) !== false ? 'stacked' : 'horizontal';
 
 	if ( isset( $attributes['className'] ) ) {
 
-		$class .= ' ' . $attributes['className'];
+		$class_name .= $attributes['className'];
 
 	}
 
 	if ( isset( $attributes['align'] ) ) {
 
-		$class .= ' align' . $attributes['align'];
+		$class_name .= ' align' . $attributes['align'];
 
 	}
 
 	if ( isset( $attributes['columns'] ) ) {
 
-		$class .= ' columns columns-' . $attributes['columns'];
+		$class .= 'columns columns-' . $attributes['columns'];
 
 	}
 
 	$block_content = sprintf(
-		'<ul class="%s list-none ml-0 pl-0">',
+		'<div class="%1$s"><div class="%2$s list-none ml-0 pl-0 pt-3">',
+		esc_attr( $class_name ),
 		esc_attr( $class )
 	);
 
@@ -152,7 +153,7 @@ function coblocks_posts( $posts, $attributes ) {
 		}
 
 		$list_items_markup .= sprintf(
-			'<li class="flex flex-auto %1$s items-stretch w-full mt-2 mb-2 ml-0 pl-0">',
+			'<div class="flex flex-auto %1$s items-stretch w-full mt-0 mb-3 ml-0 pl-0">',
 			$list_items_class
 		);
 
@@ -240,12 +241,13 @@ function coblocks_posts( $posts, $attributes ) {
 
 		}
 
-		$list_items_markup .= '</li>';
+		$list_items_markup .= '</div></div>';
 
 	}
 
 	$block_content .= $list_items_markup;
-	$block_content .= '</ul>';
+	$block_content .= '</div>';
+	$block_content .= '</div>';
 
 	return $block_content;
 

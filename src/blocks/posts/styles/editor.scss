@@ -16,6 +16,11 @@
 	.components-placeholder__cancel-button {
 		margin-top: 10px;
 	}
+
+	.editor-block-list__block-edit::before {
+		bottom: 8px;
+		top: 8px;
+	}
 }
 
 .edit-post-settings-sidebar__panel-block .components-base-control.components-coblocks-posts-thumbnail-size {

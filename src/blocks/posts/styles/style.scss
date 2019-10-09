@@ -3,11 +3,11 @@
 		margin-top: map-get($margin, 2);
 	}
 
-	&.columns-1 > li:first-child {
+	&.columns-1 > div:first-child {
 		margin-top: 0;
 	}
 
-	&.columns-1 > li:last-child {
+	&.columns-1 > div:last-child {
 		margin-bottom: 0;
 	}
 }
@@ -22,7 +22,7 @@
 	.wp-block-coblocks-posts {
 		line-height: 1.6;
 
-		a {
+		&__content a {
 			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
 				"Helvetica Neue", sans-serif;
 			font-size: calc(22px * 1.125);
@@ -42,11 +42,19 @@
 }
 
 .is-twentytwenty {
+	.wp-block-coblocks-posts .columns {
+		margin-bottom: 0.5em;
+	}
+
 	.wp-block-coblocks-posts a {
 		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 		font-weight: 700;
 		letter-spacing: -0.025em;
 		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 
 	.wp-block-coblocks-posts__date {
