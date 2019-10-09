@@ -383,49 +383,50 @@ class PostsEdit extends Component {
 					</Disabled>
 				}
 				{ postFeedType === 'internal' &&
-					<Disabled>
-						<div className={ className }>
-							<div className={ classnames( 'list-none', 'ml-0', 'pl-0', 'pt-3', {
-								columns: columns,
-								[ `columns-${ columns }` ]: columns,
-							} ) }>
-								{ displayPosts.map( ( post, i ) => {
-									const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
-									const featuredImageStyle = 'url(' + featuredImageUrl + ')';
 
-									const listClasses = classnames( 'flex', 'flex-auto', 'items-stretch', 'w-full', 'mt-0', 'mb-3', 'ml-0', 'pl-0', {
-										'flex-row-reverse': isHorizontalStyle && listPosition === 'right',
-										'flex-col': isStackedStyle,
-										'has-featured-image': featuredImageUrl,
-									} );
+					<div className={ className }>
+						<div className={ classnames( 'list-none', 'ml-0', 'pl-0', {
+							columns: columns,
+							[ `columns-${ columns }` ]: columns,
+						} ) }>
+							{ displayPosts.map( ( post, i ) => {
+								const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
+								const featuredImageStyle = 'url(' + featuredImageUrl + ')';
 
-									const contentClasses = classnames( 'wp-block-coblocks-posts__content', 'flex', 'flex-col', 'w-full', {
-										'self-center': isHorizontalStyle && ! displayPostContent && columns <= 2,
-									} );
+								const listClasses = classnames( 'flex', 'flex-auto', 'items-stretch', 'w-full', 'mt-0', 'mb-3', 'ml-0', 'pl-0', {
+									'flex-row-reverse': isHorizontalStyle && listPosition === 'right',
+									'flex-col': isStackedStyle,
+									'has-featured-image': featuredImageUrl,
+								} );
 
-									const titleTrimmed = post.title.rendered.trim();
+								const contentClasses = classnames( 'wp-block-coblocks-posts__content', 'flex', 'flex-col', 'w-full', {
+									'self-center': isHorizontalStyle && ! displayPostContent && columns <= 2,
+								} );
 
-									let excerpt = post.excerpt.rendered;
-									if ( post.excerpt.raw === '' ) {
-										excerpt = post.content.raw;
-									}
-									const excerptElement = document.createElement( 'div' );
-									excerptElement.innerHTML = excerpt;
-									excerpt = excerptElement.textContent || excerptElement.innerText || '';
+								const titleTrimmed = post.title.rendered.trim();
 
-									return (
-										<div key={ i } className={ listClasses }>
-											{ featuredImageUrl &&
-												<div className={ imageClasses }>
-													<div className="block w-full bg-cover bg-center-center pt-full" style={ { backgroundImage: featuredImageStyle } }></div>
-												</div>
+								let excerpt = post.excerpt.rendered;
+								if ( post.excerpt.raw === '' ) {
+									excerpt = post.content.raw;
+								}
+								const excerptElement = document.createElement( 'div' );
+								excerptElement.innerHTML = excerpt;
+								excerpt = excerptElement.textContent || excerptElement.innerText || '';
+
+								return (
+									<div key={ i } className={ listClasses }>
+										{ featuredImageUrl &&
+											<div className={ imageClasses }>
+												<div className="block w-full bg-cover bg-center-center pt-full" style={ { backgroundImage: featuredImageStyle } }></div>
+											</div>
+										}
+										<div className={ contentClasses }>
+											{ isStackedStyle && displayPostDate && post.date_gmt &&
+												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date mb-1">
+													{ dateI18n( dateFormat, post.date_gmt ) }
+												</time>
 											}
-											<div className={ contentClasses }>
-												{ isStackedStyle && displayPostDate && post.date_gmt &&
-													<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date mb-1">
-														{ dateI18n( dateFormat, post.date_gmt ) }
-													</time>
-												}
+											<Disabled>
 												<a href={ post.link } target="_blank" rel="noreferrer noopener" alt={ titleTrimmed }>
 													{ titleTrimmed ? (
 														<RawHTML>
@@ -435,41 +436,41 @@ class PostsEdit extends Component {
 														_x( '(no title)', 'placeholder when a post has no title' )
 													}
 												</a>
-												{ isHorizontalStyle && displayPostDate && post.date_gmt &&
-													<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date mt-1">
-														{ dateI18n( dateFormat, post.date_gmt ) }
-													</time>
-												}
-												{ displayPostContent &&
-													<div className="wp-block-coblocks-posts__post-excerpt mt-1">
-														<RawHTML
-															key="html"
-														>
-															{ excerptLength < excerpt.trim().split( ' ' ).length ?
-																excerpt.trim().split( ' ', excerptLength ).join( ' ' ) + '…' :
-																excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
-														</RawHTML>
-													</div>
-												}
-												{ displayPostLink &&
-													<RichText
-														tagName="a"
-														className="wp-block-coblocks-posts__more-link block self-start mt-3"
-														onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
-														value={ postLink }
-														placeholder={ __( 'Read more' ) }
-														multiline={ false }
-														withoutInteractiveFormatting={ false }
-														isSelected={ false }
-													/>
-												}
-											</div>
+											</Disabled>
+											{ isHorizontalStyle && displayPostDate && post.date_gmt &&
+												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-posts__date mt-1">
+													{ dateI18n( dateFormat, post.date_gmt ) }
+												</time>
+											}
+											{ displayPostContent &&
+												<div className="wp-block-coblocks-posts__post-excerpt mt-1">
+													<RawHTML
+														key="html"
+													>
+														{ excerptLength < excerpt.trim().split( ' ' ).length ?
+															excerpt.trim().split( ' ', excerptLength ).join( ' ' ) + '…' :
+															excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+													</RawHTML>
+												</div>
+											}
+											{ displayPostLink &&
+												<RichText
+													tagName="a"
+													className="wp-block-coblocks-posts__more-link block self-start mt-3"
+													onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
+													value={ postLink }
+													placeholder={ __( 'Read more' ) }
+													multiline={ false }
+													withoutInteractiveFormatting={ false }
+													isSelected={ false }
+												/>
+											}
 										</div>
-									);
-								} ) }
-							</div>
+									</div>
+								);
+							} ) }
 						</div>
-					</Disabled>
+					</div>
 				}
 			</Fragment>
 		);
