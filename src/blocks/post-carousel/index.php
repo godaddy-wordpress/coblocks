@@ -222,7 +222,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 
 	$block_content .= $list_items_markup;
 	$block_content .= '</div>';
-	$block_content .= '<div class="text-center mt-2 sm:mt-3">';
+	$block_content .= '<div class="text-center font-initial mt-2 sm:mt-3">';
 	$block_content .= sprintf(
 		'<button class="slick-prev inline-block bg-transparent"><span class="screen-reader-text">%s</span></button>',
 		_x( 'Previous Slide', 'button text to load the previous blog post slide', 'coblocks' )
@@ -358,7 +358,7 @@ function coblocks_register_post_carousel_block() {
 				),
 				'postsToShow'        => array(
 					'type'    => 'number',
-					'default' => 2,
+					'default' => 4,
 				),
 				'displayPostContent' => array(
 					'type'    => 'boolean',
