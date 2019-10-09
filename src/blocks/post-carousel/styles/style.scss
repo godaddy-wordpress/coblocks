@@ -10,6 +10,10 @@
 		}
 	}
 
+	&__image a {
+		outline: none;
+	}
+
 	&__date {
 		color: $dark-gray-300;
 		display: block;
