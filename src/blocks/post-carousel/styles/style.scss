@@ -1,12 +1,4 @@
 .wp-block-coblocks-post-carousel {
-	background: #777;
-	height: 100%;
-	position: relative;
-
-	& + & {
-		margin-top: map-get($margin, 2);
-	}
-
 	.wp-block-coblocks-blogroll__image {
 		background-position-x: center;
 		background-position-y: center;
@@ -20,43 +12,6 @@
 			left: 0;
 			position: absolute;
 			top: 0;
-			width: 100%;
-		}
-	}
-
-	// .slick-slide {
-	// 	margin-right: map-get($margin, 5);
-	// }
-
-	.coblocks-gallery {
-		height: 100%;
-		position: relative;
-
-		&--item {
-			margin-right: map-get($margin, 5);
-		}
-	}
-
-	.coblocks-blog-post--item {
-		background-color: #fff;
-		border: 1px solid #8d96a0;
-		margin-right: 10px;
-
-		// We really don't want margin on the flickity items.
-		// Set 100% so the ResizableBox functions properly.
-		.wp-block-coblocks-gallery-carousel &,
-		.wp-block-coblocks-gallery-thumbnails & {
-			height: 100%;
-			margin: 0 !important;
-		}
-
-		.has-no-alignment .has-carousel-lrg & {
-			@media (min-width: 1300px) {
-				width: 70%;
-			}
-		}
-
-		.has-no-alignment .has-carousel-xlrg & {
 			width: 100%;
 		}
 	}

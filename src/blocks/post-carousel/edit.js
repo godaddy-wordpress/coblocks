@@ -136,6 +136,26 @@ class PostCarousel extends Component {
 			speed: 500,
 			slidesToShow: columns,
 			slidesToScroll: 1,
+			responsive: [
+				{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 3,
+					},
+				},
+				{
+					breakpoint: 600,
+					settings: {
+						slidesToShow: 2,
+					},
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						slidesToShow: 1,
+					},
+				},
+			],
 		};
 
 		const dateFormat = __experimentalGetSettings().formats.date; // eslint-disable-line no-restricted-syntax
@@ -230,76 +250,83 @@ class PostCarousel extends Component {
 				{ postFeedType === 'external' &&
 					<Disabled>
 						<ServerSideRender
-							block="coblocks/blogroll"
+							block="coblocks/post-carousel"
 							attributes={ this.props.attributes }
 							className="coblocks-slick"
 						/>
 					</Disabled>
 				}
 				{ postFeedType === 'internal' &&
-					<Slider { ...slickSettings } className={ classnames( this.props.className ) }>
-						{ displayPosts.map( ( post, i ) => {
-							const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
-							const featuredImageStyle = 'url(' + featuredImageUrl + ')';
-							const titleTrimmed = post.title.rendered.trim();
+					<Fragment>
+						<Slider { ...slickSettings } className={ classnames( this.props.className, 'overflow-hidden', {} ) }>
+							{ displayPosts.map( ( post, i ) => {
+								const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
+								const featuredImageStyle = 'url(' + featuredImageUrl + ')';
+								const titleTrimmed = post.title.rendered.trim();
 
-							let excerpt = post.excerpt.rendered;
-							if ( post.excerpt.raw === '' ) {
-								excerpt = post.content.raw;
-							}
-							const excerptElement = document.createElement( 'div' );
+								let excerpt = post.excerpt.rendered;
+								if ( post.excerpt.raw === '' ) {
+									excerpt = post.content.raw;
+								}
+								const excerptElement = document.createElement( 'div' );
 
-							excerptElement.innerHTML = excerpt;
-							excerpt = excerptElement.textContent || excerptElement.innerText || '';
+								excerptElement.innerHTML = excerpt;
+								excerpt = excerptElement.textContent || excerptElement.innerText || '';
 
-							return (
-								<div className="coblocks-blog-post--item" key={ i }>
-									<div className="coblocks-blog-post--item-inner">
-										{ featuredImageUrl &&
-											<div className={ imageClasses } style={ { backgroundImage: featuredImageStyle } }></div>
-										}
-										<div className={ classnames( 'wp-block-coblocks-blogroll__content', {
-											'full-height': ! featuredImageUrl,
-										} ) }>
-											{ displayPostDate && post.date_gmt &&
-												<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date">
-													{ dateI18n( dateFormat, post.date_gmt ) }
-												</time>
+								return (
+									<div className="coblocks-blog-post--item" key={ i }>
+										<div className="coblocks-blog-post--item-inner">
+											{ featuredImageUrl &&
+												<div className={ imageClasses } style={ { backgroundImage: featuredImageStyle } }></div>
 											}
-											<a href={ post.link } target="_blank" rel="noreferrer noopener" alt={ titleTrimmed }>
-												{ titleTrimmed ? (
-													<RawHTML>
-														{ titleTrimmed }
-													</RawHTML>
-												) :
-													_x( '(no title)', 'placeholder when a post has no title' )
+											<div className={ classnames( 'wp-block-coblocks-blogroll__content', {
+												'full-height': ! featuredImageUrl,
+											} ) }>
+												{ displayPostDate && post.date_gmt &&
+													<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-coblocks-blogroll__date">
+														{ dateI18n( dateFormat, post.date_gmt ) }
+													</time>
 												}
-											</a>
-											{ displayPostContent &&
-												<div className="wp-block-coblocks-blogroll__post-excerpt">
-													<p>
-														<RawHTML
-															key="html"
-														>
-															{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+												<a href={ post.link } target="_blank" rel="noreferrer noopener" alt={ titleTrimmed }>
+													{ titleTrimmed ? (
+														<RawHTML>
+															{ titleTrimmed }
 														</RawHTML>
-													</p>
-												</div>
-											}
-											{ displayPostLink &&
-												<PlainText
-													className="wp-block-coblocks-blogroll__more-link"
-													onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
-													value={ postLink }
-													placeholder={ __( 'Read more' ) }
-												/>
-											}
+													) :
+														_x( '(no title)', 'placeholder when a post has no title' )
+													}
+												</a>
+												{ displayPostContent &&
+													<div className="wp-block-coblocks-blogroll__post-excerpt">
+														<p>
+															<RawHTML
+																key="html"
+															>
+																{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+															</RawHTML>
+														</p>
+													</div>
+												}
+												{ displayPostLink &&
+													<PlainText
+														className="wp-block-coblocks-blogroll__more-link"
+														onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
+														value={ postLink }
+														placeholder={ __( 'Read more' ) }
+													/>
+												}
+											</div>
 										</div>
 									</div>
-								</div>
-							);
-						} ) }
-					</Slider>
+								);
+							} ) }
+						</Slider>
+						<div className="text-center mt-2 sm:mt-4">
+							<button className="slick-prev inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Previous Slide', 'button text to load the previous blog post slide' ) }</span></button>
+							<button className="slick-next inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Next Slide', 'button text to load the next blog post slide' ) }</span></button>
+
+						</div>
+					</Fragment>
 				}
 			</Fragment>
 		);

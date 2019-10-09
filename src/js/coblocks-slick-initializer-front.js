@@ -2,7 +2,7 @@
 	'use strict';
 
 	$( document ).ready( function() {
-		const carousel = $( '.carousel-container' );
+		const carousel = $( '.coblocks-slick' );
 
 		if ( carousel ) {
 			carousel.slick();

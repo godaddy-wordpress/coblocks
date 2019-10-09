@@ -23,7 +23,7 @@
 				const node = mutation.addedNodes[ i ];
 
 				if ( node.className === 'coblocks-slick' ) {
-					const carousel = $( '.carousel-container' );
+					const carousel = $( '.coblocks-slick' );
 
 					if ( carousel ) {
 						carousel.slick();
