@@ -71,3 +71,30 @@
 		}
 	}
 }
+
+.wp-block[data-align="full"] > .editor-block-list__block-edit [data-block] > .columns {
+	padding-left: map-get($padding, 2);
+	padding-right: map-get($padding, 2);
+
+	@media (min-width: 480px) {
+		padding-left: map-get($padding, 4);
+		padding-right: map-get($padding, 4);
+	}
+
+	&.columns-3,
+	&.columns-4 {
+		// 1280px+
+		@include break-medium() {
+			padding-left: map-get($padding, 5);
+			padding-right: map-get($padding, 5);
+		}
+	}
+
+	&.columns-4 {
+		// 1280px+
+		@include break-wide() {
+			padding-left: map-get($padding, 4);
+			padding-right: map-get($padding, 4);
+		}
+	}
+}
