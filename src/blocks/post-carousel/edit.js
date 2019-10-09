@@ -136,6 +136,8 @@ class PostCarousel extends Component {
 			speed: 500,
 			slidesToShow: columns,
 			slidesToScroll: 1,
+			// prevArrow: '.slick-prev',
+			// nextArrow: '.slick-next',
 			responsive: [
 				{
 					breakpoint: 1024,
@@ -324,7 +326,6 @@ class PostCarousel extends Component {
 						<div className="text-center mt-2 sm:mt-4">
 							<button className="slick-prev inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Previous Slide', 'button text to load the previous blog post slide' ) }</span></button>
 							<button className="slick-next inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Next Slide', 'button text to load the next blog post slide' ) }</span></button>
-
 						</div>
 					</Fragment>
 				}
