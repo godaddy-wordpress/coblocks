@@ -72,6 +72,11 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 			} );
 
 			Object.keys( deprecated.attributes ).map( ( attribute ) => {
+				// This test helps expose attributes we need variations for.
+				it( `should have variations for attribute.${ attribute }`, () => {
+					expect( blockVariations.hasOwnProperty( attribute ) ).toBe( true );
+				} );
+
 				blockVariations[ attribute ] && blockVariations[ attribute ].map( variation => {
 					it( `should support attribute.${ attribute } set to '${ variation }'`, () => {
 						deprecatedBlock.attributes[ attribute ] = variation;
