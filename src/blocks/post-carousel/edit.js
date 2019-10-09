@@ -39,6 +39,16 @@ const CATEGORIES_LIST_QUERY = {
 	per_page: -1,
 };
 
+function SampleNextArrow( props ) {
+	const { onClick } = props;
+	return ( <button onClick={ onClick } className="slick-next inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Next Slide', 'button text to load the next blog post slide' ) }</span></button> );
+}
+
+function SamplePrevArrow( props ) {
+	const { onClick } = props;
+	return ( <button onClick={ onClick } className="slick-prev inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Previous Slide', 'button text to load the previous blog post slide' ) }</span></button> );
+}
+
 class PostCarousel extends Component {
 	constructor() {
 		super( ...arguments );
@@ -130,15 +140,15 @@ class PostCarousel extends Component {
 
 		const slickSettings = {
 			dots: false,
-			arrows: false,
+			arrows: true,
 			infinite: true,
 			draggable: true,
 			adaptiveHeight: false,
 			speed: 500,
 			slidesToShow: columns,
 			slidesToScroll: 1,
-			prevArrow: '.slick-prev',
-			nextArrow: '.slick-next',
+			prevArrow: <SampleNextArrow />,
+			nextArrow: <SamplePrevArrow />,
 			responsive: [
 				{
 					breakpoint: 1024,
@@ -251,13 +261,11 @@ class PostCarousel extends Component {
 					}
 				</BlockControls>
 				{ postFeedType === 'external' &&
-					<Disabled>
-						<ServerSideRender
-							block="coblocks/post-carousel"
-							attributes={ this.props.attributes }
-							className="coblocks-slick"
-						/>
-					</Disabled>
+					<ServerSideRender
+						block="coblocks/post-carousel"
+						attributes={ this.props.attributes }
+						className="coblocks-slick"
+					/>
 				}
 				{ postFeedType === 'internal' &&
 					<Fragment>
