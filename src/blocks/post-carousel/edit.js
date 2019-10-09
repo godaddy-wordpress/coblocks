@@ -130,15 +130,15 @@ class PostCarousel extends Component {
 
 		const slickSettings = {
 			dots: false,
-			arrows: true,
+			arrows: false,
 			infinite: true,
 			draggable: true,
 			adaptiveHeight: false,
 			speed: 500,
 			slidesToShow: columns,
 			slidesToScroll: 1,
-			// prevArrow: '.slick-prev',
-			// nextArrow: '.slick-next',
+			prevArrow: '.slick-prev',
+			nextArrow: '.slick-next',
 			responsive: [
 				{
 					breakpoint: 1024,
