@@ -3,7 +3,7 @@
  */
 import classnames from 'classnames';
 import includes from 'lodash/includes';
-import { find, isUndefined, pickBy } from 'lodash';
+import { find, isUndefined, pickBy, some } from 'lodash';
 
 /**
  * Internal dependencies
@@ -252,6 +252,8 @@ class PostsEdit extends Component {
 
 		const displayPosts = Array.isArray( latestPosts ) && latestPosts.length > postsToShow ? latestPosts.slice( 0, postsToShow ) : latestPosts;
 
+		const hasFeaturedImage = some( displayPosts, 'featured_media_object' );
+
 		const toolbarControls = [ {
 			icon: icons.imageLeft,
 			title: __( 'Image on left' ),
@@ -273,6 +275,7 @@ class PostsEdit extends Component {
 						{ ...this.props }
 						attributes={ attributes }
 						hasPosts={ hasPosts }
+						hasFeaturedImage={ hasFeaturedImage }
 						editing={ this.state.editing }
 						activeStyle={ activeStyle }
 						styleOptions={ styleOptions }
@@ -314,6 +317,7 @@ class PostsEdit extends Component {
 						onUserModifiedColumn={ this.onUserModifiedColumn }
 						attributes={ attributes }
 						hasPosts={ hasPosts }
+						hasFeaturedImage={ false }
 						editing={ this.state.editing }
 						activeStyle={ activeStyle }
 						styleOptions={ styleOptions }
@@ -350,6 +354,7 @@ class PostsEdit extends Component {
 					onUserModifiedColumn={ this.onUserModifiedColumn }
 					attributes={ attributes }
 					hasPosts={ hasPosts }
+					hasFeaturedImage={ hasFeaturedImage }
 					editing={ this.state.editing }
 					activeStyle={ activeStyle }
 					styleOptions={ styleOptions }

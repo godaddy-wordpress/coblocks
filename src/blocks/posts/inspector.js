@@ -32,6 +32,7 @@ const Inspector = props => {
 		categoriesList,
 		postCount,
 		hasPosts,
+		hasFeaturedImage,
 	} = props;
 
 	const {
@@ -116,7 +117,7 @@ const Inspector = props => {
 					max={ isHorizontalStyle ? 2 : Math.min( 4, postCount ) }
 					required
 				/>
-				{ isHorizontalStyle &&
+				{ isHorizontalStyle && hasFeaturedImage &&
 					<BaseControl label={ __( 'Thumbnail Size' ) }
 						className={ classnames(
 							'components-coblocks-posts-thumbnail-size',
