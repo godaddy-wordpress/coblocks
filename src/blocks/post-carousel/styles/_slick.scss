@@ -103,13 +103,16 @@
 .slick-next {
 	background: transparent;
 	border: none;
+	bottom: 0;
 	color: transparent;
 	cursor: pointer;
 	display: inline-block;
+	font-size: initial;
 	height: map-get($margin, 8);
 	line-height: 0;
 	outline: none;
 	padding: 0.5em;
+	position: absolute;
 	width: map-get($margin, 8);
 
 	&:hover,
@@ -123,6 +126,17 @@
 	&:focus::before {
 		opacity: 1;
 	}
+}
+
+.slick-prev {
+	left: 50%;
+	transform: translateX(-100%);
+}
+
+
+.slick-next {
+	right: 50%;
+	transform: translateX(100%);
 }
 
 .slick-prev.slick-disabled::before,

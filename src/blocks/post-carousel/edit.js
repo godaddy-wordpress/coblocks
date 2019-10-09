@@ -39,16 +39,6 @@ const CATEGORIES_LIST_QUERY = {
 	per_page: -1,
 };
 
-function SampleNextArrow( props ) {
-	const { onClick } = props;
-	return ( <button onClick={ onClick } className="slick-next inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Next Slide', 'button text to load the next blog post slide' ) }</span></button> );
-}
-
-function SamplePrevArrow( props ) {
-	const { onClick } = props;
-	return ( <button onClick={ onClick } className="slick-prev inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Previous Slide', 'button text to load the previous blog post slide' ) }</span></button> );
-}
-
 class PostCarousel extends Component {
 	constructor() {
 		super( ...arguments );
@@ -122,6 +112,7 @@ class PostCarousel extends Component {
 			postLink,
 			postsToShow,
 			columns,
+			align,
 		} = attributes;
 
 		const imageClasses = classnames( 'wp-block-coblocks-post-carousel__image', 'table', 'relative', 'flex-0', 'mb-2', 'w-full', {} );
@@ -147,8 +138,6 @@ class PostCarousel extends Component {
 			speed: 500,
 			slidesToShow: columns,
 			slidesToScroll: 1,
-			prevArrow: <SampleNextArrow />,
-			nextArrow: <SamplePrevArrow />,
 			responsive: [
 				{
 					breakpoint: 1024,
@@ -264,13 +253,16 @@ class PostCarousel extends Component {
 					<ServerSideRender
 						block="coblocks/post-carousel"
 						attributes={ this.props.attributes }
-						className="coblocks-slick"
+						className="coblocks-slick pb-7"
 					/>
 				}
 				{ postFeedType === 'internal' &&
 					<Fragment>
-						<div className={ classnames( className, 'overflow-hidden', {} ) }>
-							<Slick className="coblocks-slick" { ...slickSettings }>
+						<div className={ classnames( className, {
+							[ `align${ align }` ]: align,
+						} ) }
+						>
+							<Slick className="coblocks-slick pb-8" { ...slickSettings }>
 								{ displayPosts.map( ( post, i ) => {
 									const featuredImageUrl = post.featured_media_object ? post.featured_media_object.source_url : null;
 									const featuredImageStyle = 'url(' + featuredImageUrl + ')';
@@ -333,10 +325,6 @@ class PostCarousel extends Component {
 									);
 								} ) }
 							</Slick>
-							<div className="text-center font-initial mt-2 sm:mt-3">
-								<button className="slick-prev inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Previous Slide', 'button text to load the previous blog post slide' ) }</span></button>
-								<button className="slick-next inline-block bg-transparent"><span className="screen-reader-text">{ _x( 'Next Slide', 'button text to load the next blog post slide' ) }</span></button>
-							</div>
 						</div>
 					</Fragment>
 				}

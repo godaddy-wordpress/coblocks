@@ -106,7 +106,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 	}
 
 	$block_content = sprintf(
-		'<div class="%1$s overflow-hidden"><div class="coblocks-slick" data-slick="%2$s">',
+		'<div class="%1$s"><div class="coblocks-slick pb-8" data-slick="%2$s">',
 		esc_attr( $class ),
 		esc_attr(
 			json_encode(
@@ -124,8 +124,6 @@ function coblocks_post_carousel( $posts, $attributes ) {
 						'infinite'       => true,
 						'adaptiveHeight' => false,
 						'draggable'      => true,
-						'prevArrow'      => '.slick-prev',
-						'nextArrow'      => '.slick-next',
 						'responsive'     => [
 							[
 								'breakpoint' => 1024,
@@ -222,16 +220,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 
 	$block_content .= $list_items_markup;
 	$block_content .= '</div>';
-	$block_content .= '<div class="text-center font-initial mt-2 sm:mt-3">';
-	$block_content .= sprintf(
-		'<button class="slick-prev inline-block bg-transparent"><span class="screen-reader-text">%s</span></button>',
-		_x( 'Previous Slide', 'button text to load the previous blog post slide', 'coblocks' )
-	);
-	$block_content .= sprintf(
-		'<button class="slick-next inline-block bg-transparent"><span class="screen-reader-text">%s</span></button>',
-		_x( 'Next Slide', 'button text to load the next blog post slide', 'coblocks' )
-	);
-	$block_content .= '</div></div>';
+	$block_content .= '</div>';
 
 	return $block_content;
 

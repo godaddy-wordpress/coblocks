@@ -1,4 +1,15 @@
 .wp-block-coblocks-post-carousel {
+	&.alignfull {
+		padding-left: map-get($padding, 2);
+		padding-right: map-get($padding, 2);
+
+		// 782px+
+		@include break-medium() {
+			padding-left: map-get($padding, 8);
+			padding-right: map-get($padding, 8);
+		}
+	}
+
 	&__date {
 		color: $dark-gray-300;
 		display: block;
@@ -6,6 +17,36 @@
 	}
 
 	@import "slick";
+
+	&:not(.alignwide) .coblocks-slick {
+		@include break-medium() {
+			padding-bottom: 0;
+		}
+	}
+}
+
+// 782px+
+.wp-block-coblocks-post-carousel:not(.alignwide) .slick-prev {
+	@include break-medium() {
+		left: -5em;
+		transform: translateY(-50%);
+	}
+}
+
+// 782px+
+.wp-block-coblocks-post-carousel:not(.alignwide) .slick-next {
+	@include break-medium() {
+		right: -5em;
+		transform: translateY(-50%);
+	}
+}
+
+// 782px+
+.wp-block-coblocks-post-carousel:not(.alignwide) .slick-next,
+.wp-block-coblocks-post-carousel:not(.alignwide) .slick-prev {
+	@include break-medium() {
+		bottom: 50%;
+	}
 }
 
 .is-twentynineteen {
