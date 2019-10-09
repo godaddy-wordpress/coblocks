@@ -1,0 +1,44 @@
+.wp-block-coblocks-post-carousel {
+	height: 100%;
+	position: relative;
+
+	& + & {
+		margin-top: map-get($margin, 2);
+	}
+
+	.wp-block-coblocks-blogroll__image {
+		background-position-x: center;
+		background-position-y: center;
+		background-size: cover;
+		min-height: 140px;
+		position: relative;
+		width: 100%;
+
+		a {
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+	}
+
+	.slick-slide {
+		margin-right: map-get($margin, 5);
+	}
+
+	.coblocks-gallery {
+		height: 100%;
+		position: relative;
+
+		&--item {
+			margin-right: map-get($margin, 5);
+		}
+	}
+}
+
+.wp-block-coblocks-blogroll__date {
+	color: $dark-gray-300;
+	display: block;
+	font-size: $editor-font-size;
+}

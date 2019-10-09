@@ -1,0 +1,8 @@
+{
+	"name": "coblocks/post-carousel",
+	"category": "coblocks",
+	"supports": {
+		"align": ["wide", "full"],
+		"html": false
+	}
+}
