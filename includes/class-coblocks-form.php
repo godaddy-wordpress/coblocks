@@ -448,8 +448,8 @@ class CoBlocks_Form {
 
 		}
 
-		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
-		$label_slug    = sanitize_title( $label );
+		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
+		$label_slug = sanitize_title( $label );
 
 		ob_start();
 
