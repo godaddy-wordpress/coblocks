@@ -225,6 +225,7 @@ class Inspector extends Component {
 						>
 							{ this.props.attributes.hasApiKey ? __( 'Saved' ) : __( 'Save' ) }
 						</Button>
+						{ apiKey &&
 						<Button
 							className="components-block-coblocks-map-api-key-remove__button"
 							isDefault
@@ -233,6 +234,7 @@ class Inspector extends Component {
 						>
 							{ __( 'Remove' ) }
 						</Button>
+						}
 					</PanelBody>
 				</InspectorControls>
 			</Fragment>
