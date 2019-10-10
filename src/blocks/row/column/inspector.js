@@ -50,19 +50,39 @@ class Inspector extends Component {
 
 		const {
 			width,
-			paddingTop,
-			paddingRight,
-			paddingBottom,
-			paddingLeft,
 			marginTop,
 			marginRight,
 			marginBottom,
 			marginLeft,
+			marginTopTablet,
+			marginRightTablet,
+			marginBottomTablet,
+			marginLeftTablet,
+			marginTopMobile,
+			marginRightMobile,
+			marginBottomMobile,
+			marginLeftMobile,
 			marginUnit,
+			marginSyncUnits,
+			marginSyncUnitsTablet,
+			marginSyncUnitsMobile,
+			marginSize,
+			paddingTop,
+			paddingRight,
+			paddingBottom,
+			paddingLeft,
+			paddingTopTablet,
+			paddingRightTablet,
+			paddingBottomTablet,
+			paddingLeftTablet,
+			paddingTopMobile,
+			paddingRightMobile,
+			paddingBottomMobile,
+			paddingLeftMobile,
 			paddingUnit,
 			paddingSyncUnits,
-			marginSyncUnits,
-			marginSize,
+			paddingSyncUnitsTablet,
+			paddingSyncUnitsMobile,
 			paddingSize,
 		} = attributes;
 
@@ -94,8 +114,18 @@ class Inspector extends Component {
 							valueRight={ marginRight }
 							valueBottom={ marginBottom }
 							valueLeft={ marginLeft }
+							valueTopTablet={ marginTopTablet }
+							valueRightTablet={ marginRightTablet }
+							valueBottomTablet={ marginBottomTablet }
+							valueLeftTablet={ marginLeftTablet }
+							valueTopMobile={ marginTopMobile }
+							valueRightMobile={ marginRightMobile }
+							valueBottomMobile={ marginBottomMobile }
+							valueLeftMobile={ marginLeftMobile }
 							unit={ marginUnit }
 							syncUnits={ marginSyncUnits }
+							syncUnitsTablet={ marginSyncUnitsTablet }
+							syncUnitsMobile={ marginSyncUnitsMobile }
 							dimensionSize={ marginSize }
 						/>
 						<DimensionsControl { ...this.props }
@@ -106,8 +136,18 @@ class Inspector extends Component {
 							valueRight={ paddingRight }
 							valueBottom={ paddingBottom }
 							valueLeft={ paddingLeft }
+							valueTopTablet={ paddingTopTablet }
+							valueRightTablet={ paddingRightTablet }
+							valueBottomTablet={ paddingBottomTablet }
+							valueLeftTablet={ paddingLeftTablet }
+							valueTopMobile={ paddingTopMobile }
+							valueRightMobile={ paddingRightMobile }
+							valueBottomMobile={ paddingBottomMobile }
+							valueLeftMobile={ paddingLeftMobile }
 							unit={ paddingUnit }
 							syncUnits={ paddingSyncUnits }
+							syncUnitsTablet={ paddingSyncUnitsTablet }
+							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
 						/>
 						{ ( lastId !== clientId ) ?
