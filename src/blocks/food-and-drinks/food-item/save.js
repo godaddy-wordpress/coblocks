@@ -59,8 +59,17 @@ export default function save( { attributes } ) {
 						!! attributes.vegetarian ||
 						!! attributes.glutenFree ||
 						!! attributes.pescatarian ||
+						!! attributes.popular ||
 						!! attributes.vegan ) && (
 						<div className="wp-block-coblocks-food-item__attributes">
+							{ !! attributes.popular && (
+								<span className="hint--top" aria-label={ __( 'Popular' ) }>
+									<Icon
+										icon={ icons.popular }
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--popular"
+									/>
+								</span>
+							) }
 							{ !! attributes.spicy && (
 								<span className="hint--top" aria-label={ __( 'Spicy' ) }>
 									<Icon

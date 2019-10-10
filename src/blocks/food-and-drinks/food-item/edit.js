@@ -230,6 +230,26 @@ class FoodAndDrinksEdit extends Component {
 								{ isSelected && attributes.title ? (
 									<span>
 										<IconButton
+											icon={ icons.popular }
+											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--popular"
+											onClick={ () =>
+												setAttributes( { popular: ! attributes.popular } )
+											}
+											label={ __( 'Popular' ) }
+											isToggled={ attributes.popular }
+										/>
+									</span>
+								) : (
+									!! attributes.popular && (
+										<Icon
+											icon={ icons.popular }
+											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--popular"
+										/>
+									)
+								) }
+								{ isSelected && attributes.title ? (
+									<span>
+										<IconButton
 											icon={ icons.spicy }
 											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicy"
 											onClick={ this.setSpicyTo }
@@ -288,7 +308,7 @@ class FoodAndDrinksEdit extends Component {
 									)
 								) }
 								{ isSelected &&
-								attributes.title &&
+								attributes.title && !! attributes.glutenFree &&
 								( ! attributes.pescatarian && ! attributes.vegan ) ? (
 									// disable reason: 10 tabs seems to be correct indent
 									// eslint-disable-next-line react/jsx-indent

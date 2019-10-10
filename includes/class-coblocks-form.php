@@ -670,9 +670,25 @@ class CoBlocks_Form {
 		 */
 		$email_content = (string) apply_filters( 'coblocks_form_email_content', $this->email_content, $_POST, $post_id );
 
+		/**
+		 * Filter the form email headers.
+		 *
+		 * @param array   []       Email headers.
+		 * @param array   $_POST   Submitted form data.
+		 * @param integer $post_id Current post ID.
+		 */
+		$email_headers = (array) apply_filters(
+			'coblocks_form_email_headers',
+			[
+				"Reply-To: {$_POST['field-email']['value']}",
+			],
+			$_POST,
+			$post_id
+		);
+
 		add_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
 
-		$email = wp_mail( $to, $subject, $email_content );
+		$email = wp_mail( $to, $subject, $email_content, $email_headers );
 
 		remove_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
 

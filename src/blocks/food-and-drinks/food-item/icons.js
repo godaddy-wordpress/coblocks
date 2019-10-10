@@ -59,6 +59,12 @@ icons.pescatarian = (
 	</SVG>
 );
 
+icons.popular = (
+	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+		<Path d="m9 14.143 5.562 3.357-1.476-6.327 4.914-4.257-6.471-.549-2.529-5.967-2.529 5.967-6.471.549 4.914 4.257-1.476 6.327z" fillRule="evenodd" />
+	</SVG>
+);
+
 icons.vegan = (
 	<SVG
 		height="18"
