@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import CoBlocksFieldLabel from './field-label';
+import CoBlocksFieldLabel from '../field-label';
 
 /**
  * WordPress dependencies
@@ -16,22 +16,16 @@ import { Fragment } from '@wordpress/element';
 import { InspectorControls, RichText } from '@wordpress/block-editor';
 import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 
-function CoBlocksFieldName( {
-	isSelected,
-	type,
-	required,
-	label,
-	setAttributes,
-	hasLastName,
-	labelFirstName,
-	labelLastName,
-} ) {
+function CoBlocksFieldName( props ) {
+	const { attributes, setAttributes, isSelected } = props;
+	const { required, label, hasLastName, labelFirstName, labelLastName } = attributes;
+
 	return (
 		<Fragment>
 			<div className={
 				classnames(
 					'coblocks-field',
-					`coblocks-field--${ type }`,
+					'coblocks-field--name',
 					{ 'is-selected': isSelected }
 				) }
 			>
