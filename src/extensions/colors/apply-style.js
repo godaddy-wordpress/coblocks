@@ -13,11 +13,11 @@ function applyStyle( attributes ) {
 	};
 
 	if ( typeof attributes.customTextColor !== 'undefined' ) {
-		style.color = attributes.customTextColor || null;
+		style.color = attributes.customTextColor;
 	}
 
 	if ( typeof attributes.customBackgroundColor !== 'undefined' ) {
-		style.backgroundColor = attributes.customBackgroundColor || null;
+		style.backgroundColor = attributes.customBackgroundColor;
 	}
 
 	return style;

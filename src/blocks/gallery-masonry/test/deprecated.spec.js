@@ -43,6 +43,9 @@ const variations = {
 	videoLoop: [ undefined, true, false ],
 	openPopover: [ undefined, true, false ],
 	gridSize: [ 'none', 'sml', 'med', 'lrg', 'xlrg' ],
+	className: [ undefined, '', 'random classes' ],
+	noBottomMargin: [ undefined, true, false ],
+	noTopMargin: [ undefined, true, false ],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );

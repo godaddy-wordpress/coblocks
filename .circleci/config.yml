@@ -110,7 +110,7 @@ jobs:
           command: grunt eslint
       - run:
           name: Run jest tests
-          command: npm test -- --coverage --coverageDirectory=/tmp/artifacts/code-coverage
+          command: npm test -- --ci --runInBand --coverage --coverageDirectory=/tmp/artifacts/code-coverage
       - store_artifacts:
           path: /tmp/artifacts/code-coverage
           destination: jest-coverage

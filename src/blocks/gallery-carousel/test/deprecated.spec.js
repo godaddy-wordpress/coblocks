@@ -54,6 +54,9 @@ const variations = {
 	freeScroll: [ undefined, true, false ],
 	thumbnails: [ undefined, true, false ],
 	responsiveHeight: [ undefined, true, false ],
+	className: [ undefined, '', 'random classes' ],
+	noBottomMargin: [ undefined, true, false ],
+	noTopMargin: [ undefined, true, false ],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );
