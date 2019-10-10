@@ -16,11 +16,11 @@ function applyStyle( attributes, name ) {
 	};
 
 	if ( typeof attributes.customFontSize !== 'undefined' ) {
-		style.fontSize = attributes.customFontSize + 'px' || null;
+		style.fontSize = attributes.customFontSize + 'px';
 	}
 
 	if ( typeof attributes.customTextColor !== 'undefined' ) {
-		style.color = attributes.customTextColor || null;
+		style.color = attributes.customTextColor;
 	}
 
 	if ( name === 'coblocks/column' && typeof attributes.width !== 'undefined' ) {
