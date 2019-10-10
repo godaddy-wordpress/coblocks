@@ -4,6 +4,16 @@
 import { omit } from 'lodash';
 
 /**
+ * Internal dependencies.
+ */
+import '../../../src/extensions/advanced-controls';
+import '../../../src/extensions/attributes';
+import '../../../src/extensions/button-controls';
+import '../../../src/extensions/colors';
+import '../../../src/extensions/image-crop';
+import '../../../src/extensions/typography';
+
+/**
  * WordPress dependencies
  */
 import { sprintf } from '@wordpress/i18n';
@@ -37,24 +47,33 @@ export const performPrefixTransformation = ( blockName, prefix, content ) => {
  * @param {Object} blockSettings The registered block settings.
  * @param {Object} blockVariations The used attributes and value varitions.
  */
-export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVariations ) =>
-	blockSettings.deprecated.map( ( deprecated, index ) => {
-		describe( `${ blockName } deprecation ${ index }`, () => {
-			// Make variables accessible for all tests.
-			let deprecatedBlock;
+export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVariations ) => {
+	// Make variables accessible for all tests.
+	let deprecatedBlock;
+	let deprecatedSettings;
+	let deprecatedBlockType;
 
+	blockSettings.deprecated.map( ( deprecated, index ) => {
+		// Register the deprecated block to get the attributes with filters applied.
+		deprecatedSettings = Object.assign(
+			{ category: 'common' },
+			omit( blockSettings, [ 'attributes', 'save', 'deprecated' ] ),
+			{
+				attributes: deprecated.attributes,
+				save: deprecated.save,
+			}
+		);
+		deprecatedBlockType = registerBlockType( blockName, deprecatedSettings );
+
+		// Unregister the registered block.
+		unregisterBlockType( blockName );
+
+		describe( `${ blockName } deprecation ${ index }`, () => {
 			beforeEach( () => {
 				// Register the deprecated block.
-				const deprecatedSettings = Object.assign(
-					{}, omit( blockSettings, [ 'attributes', 'save', 'deprecated' ] ),
-					{
-						attributes: deprecated.attributes,
-						save: deprecated.save,
-					}
-				);
-				registerBlockType( blockName, { category: 'common', ...deprecatedSettings } );
+				deprecatedBlockType = registerBlockType( blockName, deprecatedSettings );
 
-				// Create the block with the minimum attributes.
+				// Create the block with no attributes.
 				deprecatedBlock = createBlock( blockName );
 			} );
 
@@ -79,7 +98,7 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 				).toEqual( [ ] );
 			} );
 
-			Object.keys( deprecated.attributes ).map( ( attribute ) => {
+			Object.keys( deprecatedBlockType.attributes ).map( ( attribute ) => {
 				// This test helps expose attributes we need variations for.
 				it( `should have variations for attribute.${ attribute }`, () => {
 					expect( blockVariations.hasOwnProperty( attribute ) ).toBe( true );
@@ -105,7 +124,8 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 				} );
 			} );
 		} );
-	} );
+	} )
+};
 
 /**
  * Generate tests for each defined deprecation of a block.
