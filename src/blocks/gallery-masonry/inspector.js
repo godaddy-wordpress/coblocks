@@ -4,16 +4,15 @@
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import captionOptions from '../../components/block-gallery/options/caption-options';
 import SizeControl from '../../components/size-control';
-import { BackgroundPanel } from '../../components/background';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component } = wp.element;
-const { InspectorControls, PanelColorSettings } = wp.blockEditor;
-const { PanelBody, RangeControl, ToggleControl, SelectControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component } from '@wordpress/element';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, RangeControl, ToggleControl, SelectControl } from '@wordpress/components';
 
 /**
  * Inspector controls
@@ -24,7 +23,6 @@ class Inspector extends Component {
 		this.setSizeControl = this.setSizeControl.bind( this );
 		this.setRadiusTo = this.setRadiusTo.bind( this );
 		this.setCaptionStyleTo = this.setCaptionStyleTo.bind( this );
-		this.getColors = this.getColors.bind( this );
 	}
 
 	componentDidUpdate() {
@@ -51,60 +49,8 @@ class Inspector extends Component {
 		return checked ? __( 'Showing captions for each media item.' ) : __( 'Toggle to show media captions.' );
 	}
 
-	getColors() {
-		const {
-			attributes,
-			backgroundColor,
-			captionColor,
-			setBackgroundColor,
-			setCaptionColor,
-		} = this.props;
-
-		const {
-			backgroundImg,
-			backgroundPadding,
-			backgroundPaddingMobile,
-			captions,
-		} = attributes;
-
-		const background = [
-			{
-				value: backgroundColor.color,
-				onChange: ( nextBackgroundColor ) => {
-					setBackgroundColor( nextBackgroundColor );
-
-					// Add default padding, if they are not yet present.
-					if ( ! backgroundPadding && ! backgroundPaddingMobile ) {
-						this.props.setAttributes( {
-							backgroundPadding: 30,
-							backgroundPaddingMobile: 30,
-						} );
-					}
-
-					// Reset when cleared.
-					if ( ! nextBackgroundColor && ! backgroundImg ) {
-						this.props.setAttributes( {
-							backgroundPadding: 0,
-							backgroundPaddingMobile: 0,
-						} );
-					}
-				},
-				label: __( 'Background Color' ),
-			},
-		];
-
-		const caption = [
-			{
-				value: captionColor.color,
-				onChange: setCaptionColor,
-				label: __( 'Caption Color' ),
-			},
-		];
-
-		if ( captions ) {
-			return background.concat( caption );
-		}
-		return background;
+	getLightboxHelp( checked ) {
+		return checked ? __( 'Image lightbox is enabled.' ) : __( 'Toggle to enable the image lightbox.' );
 	}
 
 	render() {
@@ -119,6 +65,7 @@ class Inspector extends Component {
 			gridSize,
 			gutter,
 			radius,
+			lightbox,
 		} = attributes;
 
 		return (
@@ -142,6 +89,12 @@ class Inspector extends Component {
 						step={ 1 }
 					/> }
 					<ToggleControl
+						label={ __( 'Lightbox' ) }
+						checked={ !! lightbox }
+						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+						help={ this.getLightboxHelp }
+					/>
+					<ToggleControl
 						label={ __( 'Captions' ) }
 						checked={ !! captions }
 						onChange={ () => setAttributes( { captions: ! captions } ) }
@@ -157,16 +110,6 @@ class Inspector extends Component {
 					}
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
-				<BackgroundPanel { ...this.props }
-					hasCaption={ true }
-					hasOverlay={ true }
-					hasGalleryControls={ true }
-				/>
-				<PanelColorSettings
-					title={ __( 'Color Settings' ) }
-					initialOpen={ false }
-					colorSettings={ this.getColors() }
-				/>
 			</InspectorControls>
 		);
 	}

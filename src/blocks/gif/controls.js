@@ -1,10 +1,10 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { BlockControls, BlockAlignmentToolbar } = wp.blockEditor;
-const { Toolbar, IconButton } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { BlockControls, BlockAlignmentToolbar } from '@wordpress/block-editor';
+import { Toolbar, IconButton } from '@wordpress/components';
 
 class Controls extends Component {
 	constructor() {

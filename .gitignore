@@ -17,8 +17,9 @@ sftp.json
 dist/blocks.build.js
 dist/blocks.editor.build.css
 dist/blocks.style.build.css
-**/.DS_Store
 sandbox.json
+/.idea/
+**/.DS_Store
 languages/coblocks-js.pot
 languages/*.json
 languages/*.mo

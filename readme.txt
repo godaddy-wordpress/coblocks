@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.2.2
 Requires PHP: 5.2.4
-Stable tag: 1.13.0
+Stable tag: 1.15.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,21 +37,21 @@ https://www.youtube.com/watch?v=SfWoVX_uJ0M
 * Dynamic Separator Block
 * Features Block
 * Food & Drinks Block
-* Form Block (New!)
+* Form Block
 * Gif Block
 * GitHub Gist Block
 * Hero Block
 * Highlight Block
 * Icon Block
-* Logos & Badges Block (New!)
+* Logos & Badges Block
 * Map Block
 * Masonry Gallery Block
 * Media Card Block
 * Pricing Table Block
 * Resizable Row/Columns Blocks
-* Services Block (New!)
+* Services Block
 * Shape Divider Block
-* Social Profiles Block (New!)
+* Social Profiles Block
 * Social Sharing Block
 * Stacked Gallery Block
 
@@ -88,8 +88,7 @@ Extensible, adaptable, and open source — CoBlocks is created with theme and pl
 1. Make beautiful websites with CoBlocks
 2. Build modular grid systems with the CoBlocks Row and Columns blocks
 3. Drag to resize and then nest CoBlocks Row blocks
-4. Design with the CoBlocks Typography Control Panel
-5. Add CoBlocks core blocks to pages
+4. Add CoBlocks core blocks to pages
 
 == Installation ==
 
@@ -116,54 +115,39 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-= 1.13.0 =
-* New: Support for Gutenberg 6.4 🎊
-* New: Example block content added for the new block inserter help panel
-* New: Block level background color can be applied to the Share block
-* New: Block level background color can be applied to the Social Profiles block
-* New: Stacked Gallery block can now be aligned left, right, and center
-* New: Internationalization improvements for utilizing GlotPress
-* New: Improvements in code organization to prepare for the Block Directory
-* Tweak: Center align Share icons by default for wide and full block alignment
-* Tweak: Center align Social Profile icons by default for wide and full block alignment
-* Tweak: Simplify top and bottom block margin setting labels
-* Tweak: Version history moved to a changelog.txt file
-* Tweak: Adjust spacing for nested blocks when selecting the parent block
-* Tweak: Improve the Pricing block description
-* Tweak: Improve the Social Profiles block description
-* Tweak: Improve the Highlight block description
-* Tweak: Improve the Author block icon and description
-* Tweak: Improve the placeholder behavior in the Food and Drinks block
-* Tweak: Unify the size control in the Icon block to match core settings
-* Tweak: Added a cancel button to the Map block preventing unwanted updates
-* Tweak: Simplify specificity of CSS styles on the Alert block
-* Tweak: Simplify specificity of CSS styles on the Accordion block
-* Tweak: Moved the Accordion block into the CoBlocks block category
-* Tweak: Change the Icon block size selector to a proper Select control
-* Tweak: Focus style added to Food and Drink block's item attributes
-* Tweak: Prevent enqueuing frontend scripts on AMP responses
-* Tweak: Improved Alert block style selection with core component
-* Fix: Grid layout control no longer visually broken on the Hero block
-* Fix: Removed the "Layout" sidebar panel from the Row block
-* Fix: Resolve grid control tooltips missing a unique key
-* Fix: Child blocks no longer missing when adding the Hero block to a post
-* Fix: Gallery block's media filter control no longer missing dropdown indicator
-* Fix: Resolve the edit screen failing to load with a Hero block present
-* Fix: Icon block no longer missing height attribute when a size is applied
-* Fix: Styles panel no longer visually broken on the Services block
-* Fix: Styles panel no longer visually broken on the Food and Drinks block
-* Fix: Styles panel no longer visually broken on the Share block
-* Fix: Styles panel no longer visually broken on the Social Profiles block
-* Fix: Author image placeholder no longer misaligned
-* Fix: Orientation control no longer visually broken on the Shape Divider block
-* Fix: Shape Divider block no longer loses focus when using the resize control
-* Fix: Hero block no longer loses focus when using the resize control
-* Fix: Gif block no longer loses focus when using the resize control
-* Fix: Icon block no longer loses focus when using the resize control
-* Fix: Carousel Gallery block no longer loses focus when using the resize control
-* Fix: Row block no longer loses focus when using the resize control
-* Fix: When empty, the Pricing Table block no longer saves to the post content
-* Fix: Features block is now utilizing the available block width
-* Fix: Alert block no longer escapes HTML when transforming another block to it
-* Fix: Click to Tweet block no longer removes inline HTML elements from pasted text
-* Fix: Social Profiles popover component no longer visually broken
+### Features
+* Add [new Collage Gallery](https://github.com/godaddy/coblocks/pull/907) block
+* Add [new CSS utility classes](https://github.com/godaddy/coblocks/pull/941) to enable better design integration with themes
+* Add [new thumbnail navigation and responsive height controls](https://github.com/godaddy/coblocks/pull/839) to the Carousel block
+* Add [new lightbox support](https://github.com/godaddy/coblocks/pull/840) to Masonry and Stacked gallery blocks
+
+### Enhancements
+* Improve the [experience of the Map block](https://github.com/godaddy/coblocks/pull/936) when applying an address
+* [Remove redirect](https://github.com/godaddy/coblocks/pull/925) to plugin's admin page when activating CoBlocks
+* Convert [Alert block text alignment](https://github.com/godaddy/coblocks/pull/880) setting to use utility classes
+* Convert [Click-to-Tweet block text alignment](https://github.com/godaddy/coblocks/pull/881) setting to use utility classes
+* Convert [Pricing Table block text alignment](https://github.com/godaddy/coblocks/pull/882) setting to use utility classes
+* Convert [Row block text alignment](https://github.com/godaddy/coblocks/pull/884) setting to use utility classes
+* Convert [Share block text alignment](https://github.com/godaddy/coblocks/pull/897) setting to use utility classes
+* Convert [Icon block text alignment](https://github.com/godaddy/coblocks/pull/932) setting to use utility classes
+* [Update Media Card toolbar icons](https://github.com/godaddy/coblocks/pull/935) to match the improved Gutenberg iconography
+* [Update the Services block icons](https://github.com/godaddy/coblocks/pull/934)
+* [Remove orientation sidebar controls](https://github.com/godaddy/coblocks/pull/914) on the Shape Divider block
+* Improve the [Map block description](https://github.com/godaddy/coblocks/pull/910)
+* [Prevent Styles panel opening by default](https://github.com/godaddy/coblocks/pull/909) on the Food and Drinks block
+* [Disable HTML editing](https://github.com/godaddy/coblocks/pull/908) of gallery blocks
+* Add [block icon to the media placeholder](https://github.com/godaddy/coblocks/pull/927) on the Logos and Badges block
+* [Remove the default block appender](https://github.com/godaddy/coblocks/pull/892) (added in Gutenberg 6.5) on the Row block
+* [Display the "Add" accordion item button](https://github.com/godaddy/coblocks/pull/836) only when the parent block is selected
+* [Remove background color and image support](https://github.com/godaddy/coblocks/pull/913) from gallery blocks
+* [Add top/bottom margin removal](https://github.com/godaddy/coblocks/pull/912) toggles to the gallery blocks
+* Removed a screenshot to [prevent a potential trademark violation](https://github.com/godaddy/coblocks/pull/911)
+* Minor code cleanups ([#924](https://github.com/godaddy/coblocks/pull/924), [#928](https://github.com/godaddy/coblocks/pull/928), [#931](https://github.com/godaddy/coblocks/pull/931), [#933](https://github.com/godaddy/coblocks/pull/933))
+
+### Bug Fixes
+* [Remove inherit colors fallback](https://github.com/godaddy/coblocks/pull/940) from the Authors, Features, Media Card, and Row blocks
+* [Fix the block icon](https://github.com/godaddy/coblocks/pull/937) shown in the Food Item block's sidebar and toolbar
+* Fix [incorrect image height](https://github.com/godaddy/coblocks/pull/929) being applied on the Masonry block
+* Prevent the [style preview from resizing](https://github.com/godaddy/coblocks/pull/887) when resizing an image
+* Fix [alignment of images within the Features block](https://github.com/godaddy/coblocks/pull/885)
+* Fix [background image upload error](https://github.com/godaddy/coblocks/pull/906) when using drag and drop on the Hero block

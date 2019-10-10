@@ -8,11 +8,11 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.blockEditor;
-const { IconButton } = wp.components;
-const { createBlock } = wp.blocks;
+import { _x } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { InnerBlocks } from '@wordpress/block-editor';
+import { IconButton } from '@wordpress/components';
+import { createBlock } from '@wordpress/blocks';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -64,52 +64,54 @@ class Edit extends Component {
 				<div className={ className }>
 					<InnerBlocks
 						template={ getCount( count ) }
-						allowedBlocks={ ALLOWED_BLOCKS } />
+						allowedBlocks={ ALLOWED_BLOCKS }
+					/>
+					{ isSelected && (
+						<div className="components-coblocks-add-accordion-item">
+							<IconButton
+								isLarge
+								className="block-editor-button-block-appender components-coblocks-add-accordion-item__button"
+								label={ _x( 'Add Accordion Item', 'Add a child element for the Accordion block' ) }
+								icon="insert"
+								onClick={ () => {
+									if ( items[ 0 ].innerBlocks ) {
+										const lastId = items[ 0 ].innerBlocks[ items[ 0 ].innerBlocks.length - 1 ].clientId;
+										let copyAttributes = {};
 
-					<div className="components-coblocks-add-accordion-item">
-						<IconButton
-							isLarge
-							className="block-editor-button-block-appender components-coblocks-add-accordion-item__button"
-							label={ __( 'Add Accordion Item' ) }
-							icon="insert"
-							onClick={ () => {
-								if ( items[ 0 ].innerBlocks ) {
-									const lastId = items[ 0 ].innerBlocks[ items[ 0 ].innerBlocks.length - 1 ].clientId;
-									let copyAttributes = {};
+										if ( lastId ) {
+											const lastBlockClient 	= wp.data.select( 'core/block-editor' ).getBlockAttributes( lastId );
+											if ( lastBlockClient.backgroundColor ) {
+												copyAttributes = Object.assign( copyAttributes, {
+													backgroundColor: lastBlockClient.backgroundColor,
+												} );
+											}
 
-									if ( lastId ) {
-										const lastBlockClient 	= wp.data.select( 'core/block-editor' ).getBlockAttributes( lastId );
-										if ( lastBlockClient.backgroundColor ) {
-											copyAttributes = Object.assign( copyAttributes, {
-												backgroundColor: lastBlockClient.backgroundColor,
-											} );
+											if ( lastBlockClient.borderColor ) {
+												copyAttributes = Object.assign( copyAttributes, {
+													borderColor: lastBlockClient.borderColor,
+												} );
+											}
+
+											if ( lastBlockClient.textColor ) {
+												copyAttributes = Object.assign( copyAttributes, {
+													textColor: lastBlockClient.textColor,
+												} );
+											}
+
+											if ( lastBlockClient.customTextColor ) {
+												copyAttributes = Object.assign( copyAttributes, {
+													customTextColor: lastBlockClient.customTextColor,
+												} );
+											}
 										}
 
-										if ( lastBlockClient.borderColor ) {
-											copyAttributes = Object.assign( copyAttributes, {
-												borderColor: lastBlockClient.borderColor,
-											} );
-										}
-
-										if ( lastBlockClient.textColor ) {
-											copyAttributes = Object.assign( copyAttributes, {
-												textColor: lastBlockClient.textColor,
-											} );
-										}
-
-										if ( lastBlockClient.customTextColor ) {
-											copyAttributes = Object.assign( copyAttributes, {
-												customTextColor: lastBlockClient.customTextColor,
-											} );
-										}
+										const created = createBlock( 'coblocks/accordion-item', copyAttributes );
+										wp.data.dispatch( 'core/block-editor' ).insertBlock( created, undefined, clientId );
 									}
-
-									const created = createBlock( 'coblocks/accordion-item', copyAttributes );
-									wp.data.dispatch( 'core/block-editor' ).insertBlock( created, undefined, clientId );
-								}
-							} } >
-						</IconButton>
-					</div>
+								} } >
+							</IconButton>
+						</div>
+					) }
 				</div>
 			</Fragment>
 		);

@@ -9,14 +9,13 @@ import memoize from 'memize';
  * Internal dependencies
  */
 import Controls from './controls';
-import Inspector from './inspector';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.blockEditor;
+import { __, sprintf } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -36,7 +35,8 @@ const ALLOWED_BLOCKS = [ 'coblocks/pricing-table-item' ];
  * @return {Object[]} Columns layout configuration.
  */
 const getCount = memoize( ( count ) => {
-	return times( count, ( index ) => [ 'coblocks/pricing-table-item', { placeholder: sprintf( __( 'Plan %s' ), index + 1 ) } ] );
+	/* translators: %d: a digit 1-3 */
+	return times( count, ( index ) => [ 'coblocks/pricing-table-item', { placeholder: sprintf( __( 'Plan %d' ), parseInt( index + 1 ) ) } ] );
 } );
 
 /**
@@ -58,7 +58,7 @@ class Edit extends Component {
 		const classes = classnames(
 			className,
 			`has-${ count }-columns`,
-			`has-${ contentAlign }-content`,
+			{ [ `has-text-align-${ contentAlign }` ]: contentAlign }
 		);
 
 		return (
@@ -68,14 +68,8 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
 				<div
 					className={ classes }
-					style={ { textAlign: contentAlign } }
 				>
 					<div className={ `${ className }__inner` }>
 						<InnerBlocks

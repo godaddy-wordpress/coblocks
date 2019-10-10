@@ -38,7 +38,7 @@ module.exports = function( grunt ) {
 							'class-' + pkg.name + '.php',
 							'LICENSE',
 							'readme.txt',
-							'src/**',
+							'src/**/*.php',
 							'dist/**',
 							'includes/**',
 							'languages/coblocks.pot',
@@ -131,7 +131,7 @@ module.exports = function( grunt ) {
 				cwd: '.wordpress-org/',
 				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
 				dest: '.wordpress-org/',
-			}
+			},
 		},
 
 		watch: {
@@ -199,6 +199,16 @@ module.exports = function( grunt ) {
 					},
 				],
 			},
+			languages: {
+				src: 'languages/coblocks.pot',
+				overwrite: true,
+				replacements: [
+					{
+						from: /(Project-Id-Version: CoBlocks )[0-9\.]+/,
+						to: '$1' + pkg.version,
+					},
+				],
+			},
 		},
 
 		shell: {
@@ -211,7 +221,7 @@ module.exports = function( grunt ) {
 			translations: [
 				'npm run babel:build',
 			].join( ' && ' ),
-		}
+		},
 
 	} );
 

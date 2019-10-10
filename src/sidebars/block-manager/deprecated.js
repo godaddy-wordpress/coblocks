@@ -12,9 +12,9 @@ import MapInnerBlocks from './components/map-innerblocks';
  * WordPress dependencies
  */
 const { models, loadPromise } = wp.api;
-const { dispatch } = wp.data;
+import { dispatch } from '@wordpress/data';
 
-const hideBlockTypes = dispatch( 'core/edit-post' ).hideBlockTypes;
+const dispatcher = dispatch( 'core/edit-post' );
 
 function deprecateBlockManager() {
 	let settings;
@@ -58,6 +58,6 @@ function deprecateBlockManager() {
 	} );
 }
 
-if ( typeof hideBlockTypes !== 'undefined' ) {
+if ( typeof dispatcher !== 'undefined' || ! dispatcher.hasOwnProperty( 'hideBlockTypes' ) ) {
 	deprecateBlockManager();
 }

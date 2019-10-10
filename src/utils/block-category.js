@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-const { getCategories, setCategories } = wp.blocks;
-const { __, sprintf } = wp.i18n;
+import { getCategories, setCategories } from '@wordpress/blocks';
+import { __, sprintf } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
@@ -17,6 +17,7 @@ setCategories( [
 	},
 	{
 		slug: 'coblocks-galleries',
+		/* translators: %s: Plugin title, i.e. CoBlocks */
 		title: sprintf( __( '%s Galleries' ), 'CoBlocks' ),
 		icon: brandAssets.categoryIcon,
 	},

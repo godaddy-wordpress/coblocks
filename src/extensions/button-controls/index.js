@@ -12,13 +12,13 @@ import classnames from 'classnames';
 /**
  * WordPress Dependencies
  */
-const { __ } = wp.i18n;
-const { withSelect } = wp.data;
-const { addFilter } = wp.hooks;
-const { Fragment } = wp.element;
-const { InspectorAdvancedControls } = wp.blockEditor;
-const { ToggleControl } = wp.components;
-const { compose, createHigherOrderComponent } = wp.compose;
+import { __ } from '@wordpress/i18n';
+import { withSelect } from '@wordpress/data';
+import { addFilter } from '@wordpress/hooks';
+import { Fragment } from '@wordpress/element';
+import { InspectorAdvancedControls } from '@wordpress/block-editor';
+import { ToggleControl } from '@wordpress/components';
+import { compose, createHigherOrderComponent } from '@wordpress/compose';
 
 const allowedBlocks = [ 'core/button' ];
 

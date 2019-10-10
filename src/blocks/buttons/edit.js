@@ -14,8 +14,8 @@ import Controls from './controls';
 /**
  * WordPress dependencies
  */
-const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.blockEditor;
+import { Component, Fragment } from '@wordpress/element';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Constants

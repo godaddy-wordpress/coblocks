@@ -8,12 +8,11 @@ import filter from 'lodash/filter';
  */
 import metadata from './block.json';
 import { GalleryTransforms } from '../../components/block-gallery/shared';
-import { BackgroundTransforms } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { createBlock } = wp.blocks;
+import { createBlock } from '@wordpress/blocks';
 
 const transforms = {
 	from: [
@@ -23,7 +22,6 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -33,7 +31,6 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -43,7 +40,6 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -53,7 +49,6 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -63,7 +58,6 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -73,7 +67,6 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -83,7 +76,6 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -93,7 +85,6 @@ const transforms = {
 			transform: ( attributes ) => (
 				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},

@@ -6,11 +6,11 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-const { createBlock } = wp.blocks;
+import { createBlock } from '@wordpress/blocks';
 
 /**
  * Generates a layout based on the :row prefix.
- * The number of :: represents the number of columns to input.
+ * The number of ::  the number of columns to input.
  * We fallback to the standard divided column layouts.
  *
  * @param {int} columns The number of columns.

@@ -8,11 +8,11 @@ import DimensionsControl from '../../components/dimensions-control/';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { InspectorControls, PanelColorSettings } = wp.blockEditor;
-const { PanelBody, ToggleControl, TextareaControl, RangeControl, ExternalLink } = wp.components;
+import { __, sprintf } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
+import { PanelBody, ToggleControl, TextareaControl, RangeControl, ExternalLink } from '@wordpress/components';
 
 /**
  * Inspector controls
@@ -113,10 +113,18 @@ class Inspector extends Component {
 						/>
 						{ mediaType && (
 							<ToggleControl
-								label={ sprintf( __( ' %s Shadow' ), mediaType.charAt( 0 ).toUpperCase() + mediaType.slice( 1 ) ) }
+								label={
+									/* translators: %s: Placeholder is either 'Card, or 'Image'   */
+									sprintf( __( ' %s Shadow' ), mediaType.charAt( 0 ).toUpperCase() + mediaType.slice( 1 ) )
+								}
 								checked={ !! hasImgShadow }
 								onChange={ () => setAttributes( { hasImgShadow: ! hasImgShadow } ) }
-								help={ !! hasImgShadow ? sprintf( __( 'Showing %s shadow.' ), mediaType ) : sprintf( __( 'Toggle to add an %s shadow' ), mediaType ) }
+								help={ !! hasImgShadow ?
+									/* translators: %s: Placeholder is either 'Card, or 'Image'   */
+									sprintf( __( 'Showing %s shadow.' ), mediaType ) :
+									/* translators: %s: Placeholder is either 'Card, or 'Image'   */
+									sprintf( __( 'Toggle to add an %s shadow' ), mediaType )
+								}
 							/>
 						) }
 					</PanelBody>

@@ -15,35 +15,16 @@ import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import GalleryUploader from '../../components/block-gallery/gallery-uploader';
-import { BackgroundStyles, BackgroundClasses, BackgroundVideo } from '../../components/background';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { withNotices, ResizableBox, Spinner } = wp.components;
-const { withColors, RichText } = wp.blockEditor;
-const { isBlobURL } = wp.blob;
-
-/**
- * Block consts.
- */
-const flickityOptions = {
-	draggable: false,
-	pageDots: true,
-	prevNextButtons: true,
-	wrapAround: true,
-	autoPlay: false,
-	arrowShape: {
-		x0: 10,
-		x1: 60, y1: 50,
-		x2: 65, y2: 45,
-		x3: 20,
-	},
-};
+import { __, sprintf } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withNotices, ResizableBox } from '@wordpress/components';
+import { RichText } from '@wordpress/block-editor';
 
 class GalleryCarouselEdit extends Component {
 	constructor() {
@@ -161,12 +142,10 @@ class GalleryCarouselEdit extends Component {
 	render() {
 		const {
 			attributes,
-			backgroundColor,
 			className,
 			isSelected,
 			noticeUI,
 			setAttributes,
-			captionColor,
 		} = this.props;
 
 		const {
@@ -179,7 +158,9 @@ class GalleryCarouselEdit extends Component {
 			pageDots,
 			prevNextButtons,
 			primaryCaption,
-			backgroundImg,
+			alignCells,
+			thumbnails,
+			responsiveHeight,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -193,29 +174,75 @@ class GalleryCarouselEdit extends Component {
 
 		const innerClasses = classnames(
 			'is-cropped',
-			...GalleryClasses( attributes ),
-			...BackgroundClasses( attributes ), {
+			...GalleryClasses( attributes ), {
 				[ `align${ align }` ]: align,
 				'has-horizontal-gutter': gutter > 0,
 				'has-no-dots': ! pageDots,
 				'has-no-arrows': ! prevNextButtons,
 				'is-selected': isSelected,
-
+				'has-no-thumbnails': ! thumbnails,
 			}
 		);
 
-		const innerStyles = {
-			...BackgroundStyles( attributes ),
-			backgroundColor: backgroundColor.color,
-		};
-
-		const captionStyles = {
-			color: captionColor.color,
-		};
-
 		const flickityClasses = classnames(
 			'has-carousel',
-			`has-carousel-${ gridSize }`, {}
+			`has-carousel-${ gridSize }`, {
+				'has-aligned-cells': alignCells,
+				[ `has-margin-bottom-${ gutter }` ]: thumbnails && gutter > 0,
+				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: thumbnails && gutterMobile > 0,
+			}
+		);
+
+		const navClasses = classnames(
+			'carousel-nav', {
+				[ `has-margin-top-${ gutter }` ]: gutter > 0,
+				[ `has-margin-top-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+				[ `has-negative-margin-left-${ gutter }` ]: gutter > 0,
+				[ `has-negative-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+				[ `has-negative-margin-right-${ gutter }` ]: gutter > 0,
+				[ `has-negative-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			}
+		);
+
+		const flickityOptions = {
+			draggable: false,
+			pageDots: true,
+			prevNextButtons: true,
+			wrapAround: true,
+			autoPlay: false,
+			cellAlign: alignCells ? 'left' : 'center',
+			arrowShape: {
+				x0: 10,
+				x1: 60, y1: 50,
+				x2: 65, y2: 45,
+				x3: 20,
+			},
+			responsiveHeight: responsiveHeight,
+			thumbnails: thumbnails,
+		};
+
+		const navOptions = {
+			asNavFor: '.has-carousel',
+			draggable: false,
+			pageDots: true,
+			prevNextButtons: false,
+			wrapAround: true,
+			autoPlay: false,
+			thumbnails: false,
+			cellAlign: 'left',
+		};
+
+		const navStyles = {
+			marginTop: gutter > 0 && ! responsiveHeight ? ( gutter / 2 ) + 'px' : undefined,
+		};
+
+		const navFigureClasses = classnames(
+			'coblocks--figure', {
+				[ `has-margin-left-${ gutter }` ]: gutter > 0,
+				[ `has-margin-left-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+				[ `has-margin-right-${ gutter }` ]: gutter > 0,
+				[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+			}
 		);
 
 		if ( ! hasImages ) {
@@ -246,9 +273,10 @@ class GalleryCarouselEdit extends Component {
 						height: height,
 						width: '100%',
 					} }
-					className={ classnames(
-						{ 'is-selected': isSelected }
-					) }
+					className={ classnames( {
+						'is-selected': isSelected,
+						'has-responsive-height': responsiveHeight,
+					} ) }
 					minHeight="200"
 					enable={ {
 						bottom: true,
@@ -267,13 +295,8 @@ class GalleryCarouselEdit extends Component {
 					} }
 				>
 					{ dropZone }
-					{ isBlobURL( backgroundImg ) && <Spinner /> }
-					{ BackgroundVideo( attributes ) }
 					<div className={ className }>
-						<div
-							className={ innerClasses }
-							style={ innerStyles }
-						>
+						<div className={ innerClasses }>
 							<Flickity
 								className={ flickityClasses }
 								disableImagesLoaded={ false }
@@ -322,13 +345,37 @@ class GalleryCarouselEdit extends Component {
 						</div>
 					</div>
 				</ResizableBox>
+				<div className={ className }>
+					<div
+						className={ innerClasses }
+						style={ navStyles }
+					>
+						<Flickity
+							className={ navClasses }
+							options={ navOptions }
+							disableImagesLoaded={ false }
+							reloadOnUpdate={ true }
+							flickityRef={ c => this.flkty = c }
+							updateOnEachImageLoad={ true }
+						>
+							{ images.map( ( image ) => {
+								return (
+									<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
+										<figure className={ navFigureClasses }>
+											<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
+										</figure>
+									</div>
+								);
+							} ) }
+						</Flickity>
+					</div>
+				</div>
 				{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
 					<RichText
 						tagName="figcaption"
 						placeholder={ __( 'Write caption…' ) }
 						value={ primaryCaption }
 						className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-						style={ captionStyles }
 						unstableOnFocus={ this.onFocusCaption }
 						onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
 						isSelected={ this.state.captionFocused }
@@ -342,6 +389,5 @@ class GalleryCarouselEdit extends Component {
 }
 
 export default compose( [
-	withColors( { backgroundColor: 'background-color', captionColor: 'color' } ),
 	withNotices,
 ] )( GalleryCarouselEdit );

@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { registerBlockStyle } = wp.blocks;
+import { _x } from '@wordpress/i18n';
+import { registerBlockStyle } from '@wordpress/blocks';
 
 /**
  * Internal Dependencies
@@ -13,18 +13,18 @@ import './styles/editor.scss';
 // Register custom styles for the core list block.
 registerBlockStyle( 'core/button', {
 	name: 'circular',
-	label: __( 'Circular' ),
+	label: _x( 'Circular', 'block styles' ),
 	isDefault: false,
 } );
 
 registerBlockStyle( 'core/button', {
 	name: '3d',
-	label: __( '3D' ),
+	label: _x( '3D', 'block styles' ),
 	isDefault: false,
 } );
 
 registerBlockStyle( 'core/button', {
 	name: 'shadow',
-	label: __( 'Shadow' ),
+	label: _x( 'Shadow', 'block styles' ),
 	isDefault: false,
 } );

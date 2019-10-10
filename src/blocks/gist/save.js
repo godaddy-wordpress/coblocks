@@ -6,8 +6,8 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { RichText } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { RichText } from '@wordpress/block-editor';
 
 const save = ( { attributes } ) => {
 	const { url, file, meta, caption } = attributes;

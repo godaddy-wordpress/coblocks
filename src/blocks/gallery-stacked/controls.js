@@ -3,19 +3,18 @@
  */
 import * as helper from './../../utils/helper';
 import MediaFilterControl from '../../components/media-filter-control';
-import { BackgroundControls } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { IconButton, Toolbar } = wp.components;
-const {
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { IconButton, Toolbar } from '@wordpress/components';
+import {
 	BlockControls,
 	MediaUpload,
 	MediaUploadCheck,
-} = wp.blockEditor;
+} from '@wordpress/block-editor';
 
 class Controls extends Component {
 	constructor() {
@@ -39,6 +38,9 @@ class Controls extends Component {
 			<BlockControls>
 				{ hasImages && (
 					<Fragment>
+						<MediaFilterControl
+							{ ...this.props }
+						/>
 						<Toolbar>
 							<MediaUploadCheck>
 								<MediaUpload
@@ -58,10 +60,6 @@ class Controls extends Component {
 								/>
 							</MediaUploadCheck>
 						</Toolbar>
-						{ BackgroundControls( this.props ) }
-						<MediaFilterControl
-							{ ...this.props }
-						/>
 					</Fragment>
 				) }
 			</BlockControls>

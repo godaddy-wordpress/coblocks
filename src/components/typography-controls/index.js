@@ -17,11 +17,11 @@ import icons from './icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { DOWN } = wp.keycodes;
-const { RangeControl, withFallbackStyles, ToggleControl, Dropdown, IconButton, SelectControl } = wp.components;
+import { __, _x } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { DOWN } from '@wordpress/keycodes';
+import { RangeControl, withFallbackStyles, ToggleControl, Dropdown, IconButton, SelectControl } from '@wordpress/components';
 
 /**
  * Export
@@ -73,38 +73,38 @@ class TypographyControls extends Component {
 		const weight = [
 			{
 				value: '',
-				label: __( 'Default' ),
+				label: _x( 'Default', 'typography styles' ),
 			},
 			{
 				value: 'normal',
-				label: __( 'Normal' ),
+				label: _x( 'Normal', 'typography styles' ),
 			},
 			{
 				value: 'bold',
-				label: __( 'Bold' ),
+				label: _x( 'Bold', 'typography styles' ),
 			},
 		];
 
 		const transform = [
 			{
 				value: '',
-				label: __( 'Default' ),
+				label: _x( 'Default', 'typography styles' ),
 			},
 			{
 				value: 'uppercase',
-				label: __( 'Uppercase' ),
+				label: _x( 'Uppercase', 'typography styles' ),
 			},
 			{
 				value: 'lowercase',
-				label: __( 'Lowercase' ),
+				label: _x( 'Lowercase', 'typography styles' ),
 			},
 			{
 				value: 'capitalize',
-				label: __( 'Capitalize' ),
+				label: _x( 'Capitalize', 'typography styles' ),
 			},
 			{
 				value: 'initial',
-				label: __( 'Normal' ),
+				label: _x( 'Normal', 'typography styles' ),
 			},
 		];
 

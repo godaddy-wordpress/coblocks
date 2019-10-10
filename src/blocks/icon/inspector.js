@@ -16,11 +16,11 @@ import IconSizeSelect from './icon-size-select';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.blockEditor;
-const { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, Tooltip, ToggleControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { InspectorControls, ContrastChecker, PanelColorSettings } from '@wordpress/block-editor';
+import { PanelBody, withFallbackStyles, RangeControl, TextControl, Button, BaseControl, Tooltip, ToggleControl } from '@wordpress/components';
 
 /**
  * Module constants

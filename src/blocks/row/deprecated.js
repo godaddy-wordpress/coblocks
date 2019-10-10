@@ -12,7 +12,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { getColorClassName, InnerBlocks } = wp.blockEditor;
+import { getColorClassName, InnerBlocks } from '@wordpress/block-editor';
 
 function Deprecation( { attributes } ) {
 	const {

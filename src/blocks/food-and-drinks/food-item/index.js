@@ -15,7 +15,7 @@ import save from './save';
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
+import { __, _x } from '@wordpress/i18n';
 
 /**
  * Block constants.
@@ -23,10 +23,10 @@ const { __ } = wp.i18n;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Food Item' ),
+	title: _x( 'Food Item', 'block name' ),
 	description: __( 'A food and drink item within the Food & Drinks block.' ),
 	icon,
-	keywords: __( 'menu' ),
+	keywords: _x( 'menu', 'block keyword' ),
 	supports: {
 		inserter: false,
 		customClassName: false,

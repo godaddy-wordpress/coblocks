@@ -19,12 +19,12 @@ import {
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { InnerBlocks, Inserter } = wp.blockEditor;
-const { ResizableBox, Spinner } = wp.components;
-const { isBlobURL } = wp.blob;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { InnerBlocks, Inserter } from '@wordpress/block-editor';
+import { ResizableBox, Spinner } from '@wordpress/components';
+import { isBlobURL } from '@wordpress/blob';
 
 /**
  * Block edit function
@@ -96,7 +96,7 @@ class Edit extends Component {
 				columnBlocks &&
 				columnBlocks.innerBlocks &&
 				Object.keys( columnBlocks.innerBlocks ).length < 1,
-		} );
+		}, { [ `has-text-align-${ contentAlign }` ]: contentAlign } );
 
 		if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
 			classes = classnames( classes, `coblocks-column-${ coblocks.id }` );
@@ -167,7 +167,6 @@ class Edit extends Component {
 								`url(${ backgroundImg })` :
 								undefined,
 							color: textColor.color,
-							textAlign: contentAlign,
 						} }
 					>
 						<div className="wp-block-coblocks-column">
@@ -278,7 +277,7 @@ class Edit extends Component {
 				>
 					<div
 						className={ classes }
-						style={ { color: textColor.color, textAlign: contentAlign } }
+						style={ { color: textColor.color } }
 					>
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }

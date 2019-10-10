@@ -13,10 +13,10 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { RichText } = wp.blockEditor;
+import { _x } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { RichText } from '@wordpress/block-editor';
 
 /**
  * Block edit function
@@ -87,12 +87,11 @@ class Edit extends Component {
 					style={ {
 						backgroundColor: backgroundColor.color,
 						color: textColor.color,
-						textAlign: textAlign,
 					} }
 				>
 					{ ( ! RichText.isEmpty( title ) || isSelected ) && (
 						<RichText
-							placeholder={ __( 'Write title...' ) }
+							placeholder={ _x( 'Write title...', 'Placeholder text for input box' ) }
 							value={ title }
 							className="wp-block-coblocks-alert__title"
 							onChange={ ( value ) => setAttributes( { title: value } ) }
@@ -100,7 +99,7 @@ class Edit extends Component {
 						/>
 					) }
 					<RichText
-						placeholder={ __( 'Write text...' ) }
+						placeholder={ _x( 'Write text...', 'Placeholder text for input box' ) }
 						value={ value }
 						className="wp-block-coblocks-alert__text"
 						onChange={ ( value ) => setAttributes( { value: value } ) }

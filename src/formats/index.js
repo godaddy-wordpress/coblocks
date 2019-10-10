@@ -6,7 +6,7 @@ import { uppercase } from './uppercase';
 /**
  * WordPress dependencies
  */
-const { registerFormatType } = wp.richText;
+import { registerFormatType } from '@wordpress/rich-text';
 
 function registerFormats() {
 	[

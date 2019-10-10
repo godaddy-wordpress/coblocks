@@ -13,7 +13,7 @@ import { transforms } from './transforms';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
+import { __, _x } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -21,11 +21,11 @@ const { __, _x } = wp.i18n;
 const name = 'coblocks/social-profiles';
 
 const settings = {
-	title: __( 'Social Profiles' ),
+	title: _x( 'Social Profiles', 'block name' ),
 	description: __( 'Grow your audience with links to social media profiles.' ),
 	icon,
 	category: 'coblocks',
-	keywords: [ __( 'share' ), __( 'links' ), __( 'icons' ) ],
+	keywords: [ _x( 'share', 'block keyword' ), _x( 'links', 'block keyword' ), _x( 'icons', 'block keyword' ) ],
 	styles: [
 		{ name: 'mask', label: _x( 'Mask', 'block style' ) },
 		{ name: 'icon', label: _x( 'Icon', 'block style' ), isDefault: true },

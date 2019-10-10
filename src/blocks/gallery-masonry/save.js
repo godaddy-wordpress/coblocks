@@ -7,12 +7,11 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import { GalleryClasses, GalleryStyles } from '../../components/block-gallery/shared';
-import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { RichText } = wp.blockEditor;
+import { RichText } from '@wordpress/block-editor';
 
 const save = ( { attributes, className } ) => {
 	const {
@@ -22,20 +21,17 @@ const save = ( { attributes, className } ) => {
 		gutterMobile,
 		images,
 		linkTo,
+		lightbox,
 		rel,
 		target,
 	} = attributes;
 
 	const innerClasses = classnames(
-		...GalleryClasses( attributes ),
-		...BackgroundClasses( attributes ), {
+		...GalleryClasses( attributes ), {
 			'has-gutter': gutter > 0,
+			'has-lightbox': lightbox,
 		}
 	);
-
-	const innerStyles = {
-		...BackgroundStyles( attributes ),
-	};
 
 	const masonryClasses = classnames(
 		`has-grid-${ gridSize }`, {
@@ -50,11 +46,7 @@ const save = ( { attributes, className } ) => {
 
 	return (
 		<div className={ className }>
-			<div
-				className={ innerClasses }
-				style={ innerStyles }
-			>
-				{ BackgroundVideo( attributes ) }
+			<div className={ innerClasses } >
 				<ul
 					className={ masonryClasses }
 					style={ masonryStyles }

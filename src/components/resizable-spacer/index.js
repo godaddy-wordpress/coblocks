@@ -19,8 +19,8 @@ export {
 /**
  * WordPress dependencies
  */
-const { ResizableBox } = wp.components;
-const { Component } = wp.element;
+import { ResizableBox } from '@wordpress/components';
+import { Component } from '@wordpress/element';
 
 /**
  * ResizableSpacer Component

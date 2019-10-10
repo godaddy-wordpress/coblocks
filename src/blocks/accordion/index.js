@@ -15,8 +15,8 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { InnerBlocks } = wp.blockEditor;
+import { __, _x } from '@wordpress/i18n';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Block constants
@@ -24,10 +24,10 @@ const { InnerBlocks } = wp.blockEditor;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Accordion' ),
+	title: _x( 'Accordion', 'block title' ),
 	description: __( 'Organize content within collapsable accordion items.' ),
 	icon,
-	keywords: [ __( 'tabs' ), __( 'faq' ), 'coblocks' ],
+	keywords: [ _x( 'tabs', 'block keyword' ), _x( 'faq', 'block keyword' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,

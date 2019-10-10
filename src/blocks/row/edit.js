@@ -17,12 +17,12 @@ import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../co
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { InnerBlocks } = wp.blockEditor;
-const { ButtonGroup, Button, IconButton, Tooltip, Placeholder, Spinner } = wp.components;
-const { isBlobURL } = wp.blob;
+import { __, sprintf } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { InnerBlocks } from '@wordpress/block-editor';
+import { ButtonGroup, Button, IconButton, Tooltip, Placeholder, Spinner } from '@wordpress/components';
+import { isBlobURL } from '@wordpress/blob';
 
 /**
  * Allowed blocks constant is passed to InnerBlocks precisely as specified here.
@@ -200,7 +200,11 @@ class Edit extends Component {
 						key="placeholder"
 						icon={ columns ? rowIcons.layout : rowIcons.row }
 						label={ columns ? __( 'Row Layout' ) : __( 'Row' ) }
-						instructions={ columns ? sprintf( __( 'Now select a layout for this %s column row.' ), this.numberToText( columns ) ) : __( 'Select the number of columns for this row.' ) }
+						instructions={ columns ?
+							/* translators: %s: 'one' 'two' 'three' and 'four' */
+							sprintf( __( 'Now select a layout for this %s column row.' ), this.numberToText( columns ) ) :
+							__( 'Select the number of columns for this row.' )
+						}
 						className={ 'components-coblocks-visual-dropdown' }
 					>
 						{ ! columns ?

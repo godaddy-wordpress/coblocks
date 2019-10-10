@@ -7,9 +7,9 @@ import { chunk, flatten } from 'lodash';
 /**
  * Internal dependencies
  */
-const { Component, Fragment } = wp.element;
-const { ResizableBox } = wp.components;
-const { BACKSPACE } = wp.keycodes;
+import { Component, Fragment } from '@wordpress/element';
+import { ResizableBox } from '@wordpress/components';
+import { BACKSPACE } from '@wordpress/keycodes';
 
 class Logos extends Component {
 	constructor() {

@@ -1,0 +1,140 @@
+.wp-block-coblocks-gallery-collage {
+	&__figure {
+		img {
+			transition: opacity 0.1s linear;
+		}
+
+		&.is-transient img {
+			opacity: 0.3;
+		}
+
+		&.is-selected {
+			&::after {
+				bottom: 0;
+				box-shadow: inset 0 0 0 4px theme(primary);
+				content: "";
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+				z-index: 1;
+			}
+		}
+	}
+}
+
+.wp-block[data-type="coblocks/gallery-collage"] {
+	ul {
+		list-style-type: none;
+	}
+
+	&[data-align="full"] .wp-block-coblocks-gallery-collage ul {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+
+	.block-editor-media-placeholder__upload-button {
+		@media (max-width: 699px) {
+			display: none;
+		}
+	}
+
+	.editor-media-placeholder__media-library-button {
+		@media (max-width: 699px) {
+			background: transparent;
+			border: 0;
+			box-shadow: none !important;
+			display: inline-block;
+			height: 100%;
+			text-align: center;
+			width: 100%;
+		}
+	}
+
+	.block-editor-media-placeholder {
+		background: $dark-opacity-light-200;
+		min-height: inherit;
+		outline: 1px dashed $dark-gray-150;
+		outline-offset: -1px;
+
+		.is-dark-theme & {
+			background: $light-opacity-light-200;
+		}
+
+		&:hover {
+			outline: 1px dashed $dark-gray-500;
+		}
+
+		.components-placeholder__label,
+		.components-placeholder__instructions {
+			display: none;
+		}
+
+		.components-placeholder__fieldset {
+			align-content: center;
+			align-items: center;
+			height: 100%;
+			left: 0;
+			max-width: 100%;
+			position: absolute;
+			top: 0;
+			width: 100%;
+
+			.components-button {
+				margin: 2px;
+			}
+		}
+	}
+
+	.is-style-layered {
+		.block-editor-media-placeholder {
+			background: $light-gray-200;
+		}
+
+		.components-form-file-upload {
+			display: none;
+		}
+
+		// Move the close button where its visible on the Layered style.
+		li:nth-child(4) .components-coblocks-gallery-item__remove-menu {
+			left: 2px;
+			right: auto;
+		}
+	}
+
+	.is-dark-theme .block-editor-media-placeholder {
+		background: $light-opacity-light-200;
+	}
+
+	// Captions.
+	.editor-rich-text {
+		bottom: 0;
+		left: 0;
+		max-height: 100%;
+		position: absolute;
+		right: 0;
+		width: 100%;
+		z-index: 2;
+
+		// Override negative margins so this toolbar isn't hidden by overflow.
+		// Overflow is needed for long captions.
+		.editor-rich-text__inline-toolbar {
+			top: -20px;
+		}
+	}
+
+	.editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
+		overflow: hidden;
+		position: relative !important;
+	}
+}
+
+.block-editor-block-preview__content .wp-block-coblocks-gallery-collage {
+	ul {
+		list-style-type: none;
+	}
+
+	.components-placeholder__fieldset {
+		display: none;
+	}
+}

@@ -6,11 +6,11 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { InspectorControls, PanelColorSettings } = wp.blockEditor;
-const { PanelBody, BaseControl } = wp.components;
+import { __, _x } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
+import { PanelBody, BaseControl } from '@wordpress/components';
 
 /**
  * Inspector controls
@@ -40,7 +40,7 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Dynamic HR Settings' ) }>
+					<PanelBody title={ _x( 'Dynamic HR Settings', 'hr is html markup - horizonal rule' ) }>
 						<BaseControl label={ __( 'Height in pixels' ) }>
 							<input
 								type="number"

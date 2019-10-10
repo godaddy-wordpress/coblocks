@@ -15,7 +15,7 @@ import save from './save';
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
+import { __, _x } from '@wordpress/i18n';
 
 /**
  * Block constants.
@@ -23,10 +23,10 @@ const { __ } = wp.i18n;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Services' ),
+	title: _x( 'Services', 'block name' ),
 	description: __( 'Add up to four columns of services to display.' ),
 	icon,
-	keywords: [ __( 'features' ) ],
+	keywords: [ _x( 'features', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		reusable: false,

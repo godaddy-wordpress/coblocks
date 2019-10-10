@@ -14,9 +14,9 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const { Component, Fragment } = wp.element;
+import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import { Component, Fragment } from '@wordpress/element';
 
 /**
  * Block edit function
@@ -73,6 +73,7 @@ class edit extends Component {
 			[ `has-button-size-${ size }` ]: size !== 'med',
 			'has-colors': hasColors,
 			'has-background': blockBackgroundColor.color || customBlockBackgroundColor,
+			[ `has-text-align-${ textAlign }` ]: textAlign,
 		}
 		);
 
@@ -103,7 +104,7 @@ class edit extends Component {
 			<Fragment>
 				{ isSelected && <Controls { ...this.props } /> }
 				{ isSelected && <Inspector { ...this.props } /> }
-				<div className={ classes } style={ { textAlign, backgroundColor: blockBackgroundColor.color || '' } }>
+				<div className={ classes } style={ { backgroundColor: blockBackgroundColor.color || '' } }>
 					<ul>
 						{ facebook &&
 						<li>

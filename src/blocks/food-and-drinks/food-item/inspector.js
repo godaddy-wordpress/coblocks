@@ -1,10 +1,10 @@
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
-const { Fragment } = wp.element;
-const { PanelBody, ToggleControl, CheckboxControl, FocalPointPicker, ExternalLink, TextareaControl } = wp.components;
-const { InspectorControls } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { Fragment } from '@wordpress/element';
+import { PanelBody, ToggleControl, CheckboxControl, FocalPointPicker, ExternalLink, TextareaControl } from '@wordpress/components';
+import { InspectorControls } from '@wordpress/block-editor';
 
 const Inspector = props => {
 	const {
@@ -41,6 +41,11 @@ const Inspector = props => {
 					<p className="components-food-item-attributes__label">
 						{ __( 'Item Attributes' ) }
 					</p>
+					<CheckboxControl
+						label={ __( 'Popular' ) }
+						checked={ attributes.popular }
+						onChange={ () => setAttributes( { popular: ! attributes.popular } ) }
+					/>
 					<CheckboxControl
 						label={ __( 'Gluten Free' ) }
 						checked={ attributes.glutenFree }

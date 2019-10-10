@@ -6,8 +6,8 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { RichText } = wp.blockEditor;
-const { Fragment } = wp.element;
+import { RichText } from '@wordpress/block-editor';
+import { Fragment } from '@wordpress/element';
 
 const save = ( { attributes } ) => {
 	const {

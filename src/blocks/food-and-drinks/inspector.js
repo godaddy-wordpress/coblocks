@@ -6,10 +6,10 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
-const { PanelBody, ToggleControl } = wp.components;
-const { InspectorControls } = wp.blockEditor;
-const { ENTER, SPACE } = wp.keycodes;
+import { __ } from '@wordpress/i18n';
+import { PanelBody, ToggleControl } from '@wordpress/components';
+import { InspectorControls } from '@wordpress/block-editor';
+import { ENTER, SPACE } from '@wordpress/keycodes';
 
 const Inspector = props => {
 	const {
@@ -23,7 +23,7 @@ const Inspector = props => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Styles' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
 				<div className="editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
 					{ layoutOptions.map( style => (
 						<div

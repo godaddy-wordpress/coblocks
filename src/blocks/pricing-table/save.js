@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const save = ( { attributes } ) => {
 	const {
@@ -16,15 +16,12 @@ const save = ( { attributes } ) => {
 
 	const classes = classnames(
 		`has-${ count }-columns`,
-		`has-${ contentAlign }-content`,
+		{ [ `has-text-align-${ contentAlign }` ]: contentAlign }
 	);
 
 	return (
 
-		<div
-			className={ classes }
-			style={ { textAlign: contentAlign ? contentAlign : null } }
-		>
+		<div className={ classes }>
 			<div className="wp-block-coblocks-pricing-table__inner">
 				<InnerBlocks.Content />
 			</div>

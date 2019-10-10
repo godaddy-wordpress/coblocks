@@ -17,17 +17,18 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+import { __, _x } from '@wordpress/i18n';
+
 /**
  * Block constants
  */
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: 'Gist',
+	title: _x( 'Gist', 'block name' ),
 	description: __( 'Embed GitHub gists by adding a gist link.' ),
 	icon,
-	keywords: [ __( 'code' ), 'github', 'coblocks' ],
+	keywords: [ _x( 'code', 'block keyword' ), 'github', 'coblocks' ],
 	supports: {
 		html: false,
 		align: [ 'wide' ],

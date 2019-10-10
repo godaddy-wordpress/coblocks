@@ -6,11 +6,11 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { InspectorControls, ContrastChecker, PanelColorSettings } = wp.blockEditor;
-const { PanelBody, withFallbackStyles, ToggleControl } = wp.components;
+import { __, _x } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { InspectorControls, ContrastChecker, PanelColorSettings } from '@wordpress/block-editor';
+import { PanelBody, withFallbackStyles, ToggleControl } from '@wordpress/components';
 
 /**
  * Fallback styles
@@ -62,7 +62,7 @@ class Inspector extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( 'Accordion Item Settings' ) }>
 						<ToggleControl
-							label={ __( 'Display Open' ) }
+							label={ _x( 'Display Open', 'Visually display open as opposed to closed.' ) }
 							checked={ !! open }
 							help={ this.getDisplayOpenHelp }
 							onChange={ () => setAttributes( { open: ! open } ) }

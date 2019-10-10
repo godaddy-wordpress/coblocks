@@ -14,10 +14,10 @@ import svgs from './svgs';
 /**
  * WordPress dependencies
  */
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { ResizableBox } = wp.components;
-const { withSelect } = wp.data;
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { ResizableBox } from '@wordpress/components';
+import { withSelect } from '@wordpress/data';
 
 /**
  * Set and export block values.
@@ -62,7 +62,11 @@ class Edit extends Component {
 			hasContentAlign,
 		} = attributes;
 
-		const classes = classnames( 'wp-block-coblocks-icon__inner', {
+		const classes = classnames( className, {
+			[ `has-text-align-${ contentAlign }` ]: contentAlign,
+		} );
+
+		const innerClasses = classnames( 'wp-block-coblocks-icon__inner', {
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			'has-text-color': iconColor.color,
@@ -70,7 +74,7 @@ class Edit extends Component {
 			'is-selected': isSelected,
 		} );
 
-		const styles = {
+		const innerStyles = {
 			backgroundColor: backgroundColor.color,
 			color: iconColor.color,
 			fill: iconColor.color,
@@ -132,11 +136,10 @@ class Edit extends Component {
 						{ ...this.props }
 					/>
 				) }
-
-				<div className={ className } style={ { textAlign: contentAlign } } >
+				<div className={ classes }>
 					<ResizableBox
-						className={ classes }
-						style={ styles }
+						className={ innerClasses }
+						style={ innerStyles }
 						size={ { width } }
 						minWidth={ padding ? MIN_ICON_SIZE + 28 : MIN_ICON_SIZE }
 						maxWidth={ MAX_ICON_SIZE }

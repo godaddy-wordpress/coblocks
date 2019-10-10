@@ -9,15 +9,14 @@ import map from 'lodash/map';
 import { layoutOptions } from './layouts';
 import rowIcons from './icons';
 import { BackgroundControls } from '../../components/background';
-import VisualDropdown from '../../components/visual-dropdown';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { BlockControls } = wp.blockEditor;
-const { Toolbar } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { BlockControls } from '@wordpress/block-editor';
+import { Toolbar } from '@wordpress/components';
 
 class Controls extends Component {
 	// Switches the icon based on the layout selected,
@@ -65,31 +64,31 @@ class Controls extends Component {
 			<Fragment>
 				<BlockControls>
 					{ ( columns && selectedRows > 1 ) &&
-						<Toolbar>
-							<VisualDropdown
-								icon={ this.layoutIcon() }
-								label={ __( 'Change layout' ) }
-								controls={ [
-									map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => ( {
-										icon: icon,
-										title: name,
-										key: key,
-										value: layout,
-										onClick: () => {
-											const selectedWidth = key.toString().split( '-' );
-											const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
-											setAttributes( {
-												layout: key,
-											} );
-											if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
-												map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
-													wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
-												) );
-											}
-										},
-									} ) ),
-								] }
-							/>
+						<Toolbar
+							isCollapsed={ true }
+							icon={ this.layoutIcon() }
+							label={ __( 'Change row block layout' ) }
+							controls={ map( layoutOptions[ selectedRows ], ( { name, key, smallIcon } ) => {
+								return {
+									title: name,
+									key,
+									icon: smallIcon,
+									isActive: key === layout,
+									onClick: () => {
+										const selectedWidth = key.toString().split( '-' );
+										const children = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId );
+										setAttributes( {
+											layout: key,
+										} );
+										if ( typeof children[ 0 ].innerBlocks !== 'undefined' ) {
+											map( children[ 0 ].innerBlocks, ( { clientId }, index ) => (
+												wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, { width: selectedWidth[ index ] } )
+											) );
+										}
+									},
+								};
+							} ) }
+						>
 						</Toolbar>
 					}
 					{ layout &&

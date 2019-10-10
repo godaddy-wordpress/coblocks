@@ -11,10 +11,10 @@ import CoBlocksFieldLabel from './field-label';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Fragment } = wp.element;
-const { InspectorControls, RichText } = wp.blockEditor;
-const { PanelBody, TextControl, ToggleControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Fragment } from '@wordpress/element';
+import { InspectorControls, RichText } from '@wordpress/block-editor';
+import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 
 function CoBlocksFieldName( {
 	isSelected,

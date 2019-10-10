@@ -11,7 +11,7 @@ import { getDividerFromStyle } from './utils';
 /**
  * WordPress dependencies
  */
-const { getColorClassName } = wp.blockEditor;
+import { getColorClassName } from '@wordpress/block-editor';
 
 const save = ( { attributes, className } ) => {
 	const {

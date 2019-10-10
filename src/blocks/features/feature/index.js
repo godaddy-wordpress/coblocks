@@ -11,7 +11,7 @@ import save from './save';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+import { __, _x } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -25,7 +25,7 @@ const attributes = {
 };
 
 const settings = {
-	title: __( 'Feature' ),
+	title: _x( 'Feature', 'block name' ),
 	description: __( 'A singular child column within a parent features block.' ),
 	icon,
 	parent: [ 'coblocks/features' ],

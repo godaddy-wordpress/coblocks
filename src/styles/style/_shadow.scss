@@ -1,15 +1,22 @@
+$shadow_sm: 0 0.5vw 2vw -0.25vw rgba(0, 0, 0, 0.2);
+$shadow_md: 0 1vw 3vw -0.5vw rgba(0, 0, 0, 0.2);
+$shadow_lg: 0 1.8vw 3vw -0.7vw rgba(0, 0, 0, 0.2);
+
 .has-shadow {
 	box-shadow: 0 1.5vw 3vw -0.7vw rgba(0, 0, 0, 0.125);
 }
 
+.shadow-sm,
 .has-shadow-sml {
-	box-shadow: 0 0.5vw 2vw -0.25vw rgba(0, 0, 0, 0.2);
+	box-shadow: $shadow_sm;
 }
 
+.shadow-md,
 .has-shadow-med {
-	box-shadow: 0 1vw 3vw -0.5vw rgba(0, 0, 0, 0.2);
+	box-shadow: $shadow_md;
 }
 
+.shadow-lg,
 .has-shadow-lrg {
-	box-shadow: 0 1.8vw 3vw -0.7vw rgba(0, 0, 0, 0.2);
+	box-shadow: $shadow_lg;
 }
