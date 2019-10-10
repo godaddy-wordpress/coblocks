@@ -204,7 +204,7 @@ class Inspector extends Component {
 						initialOpen={ false }
 						className="components-coblocks-block-settings-sidebar"
 					>
-						<p>{ __( 'Add your Google Maps API key. Updating this API key will set all your maps to use the new key.' ) }</p>
+						<p>{ __( 'Add a Google Maps API key. Updating this API key will set all your maps to use the new key.' ) }</p>
 						{ apiKey === '' &&
 							<p>
 								<ExternalLink href={ RETRIEVE_KEY_URL }>{ __( 'Retrieve your key' ) }</ExternalLink>|&nbsp;
