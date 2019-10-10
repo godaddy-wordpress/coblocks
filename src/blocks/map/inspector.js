@@ -39,6 +39,10 @@ class Inspector extends Component {
 		this.handleKeyDown = this.handleKeyDown.bind( this );
 	}
 
+	componentDidMount() {
+		this.setState( { apiKey: this.props.apiKey } );
+	}
+
 	setControls() {
 		const {
 			setAttributes,
@@ -207,7 +211,7 @@ class Inspector extends Component {
 						<p>{ __( 'Add a Google Maps API key. Updating this API key will set all your maps to use the new key.' ) }</p>
 						{ apiKey === '' &&
 							<p>
-								<ExternalLink href={ GET_KEY_URL }>{ __( 'Get ar key' ) }</ExternalLink>|&nbsp;
+								<ExternalLink href={ GET_KEY_URL }>{ __( 'Get a key.' ) }</ExternalLink>|&nbsp;
 								<ExternalLink href={ HELP_URL }>{ __( 'Need help?' ) }</ExternalLink>
 							</p>
 						}
@@ -223,7 +227,7 @@ class Inspector extends Component {
 							onClick={ this.updateApiKey }
 							disabled={ ( this.state.apiKey === '' ) || ( this.state.apiKey === this.props.apiKey ) }
 						>
-							{ this.props.attributes.hasApiKey ? __( 'Saved' ) : __( 'Save' ) }
+							{ ( this.state.apiKey === this.props.apiKey && this.props.apiKey !== '' ) ? __( 'Saved' ) : __( 'Save' ) }
 						</Button>
 						{ apiKey &&
 						<Button
