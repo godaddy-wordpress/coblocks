@@ -2,6 +2,21 @@
  * External dependencies
  */
 import { omit } from 'lodash';
+
+/**
+ * Internal dependencies.
+ */
+import '../../../src/extensions/advanced-controls';
+import '../../../src/extensions/attributes';
+import '../../../src/extensions/button-controls';
+import '../../../src/extensions/colors';
+import '../../../src/extensions/image-crop';
+import '../../../src/extensions/typography';
+
+/**
+ * WordPress dependencies
+ */
+import { sprintf } from '@wordpress/i18n';
 import { registerBlockType, unregisterBlockType, createBlock, getBlockTransforms, serialize, parse } from '@wordpress/blocks';
 
 /**
@@ -32,27 +47,39 @@ export const performPrefixTransformation = ( blockName, prefix, content ) => {
  * @param {Object} blockSettings The registered block settings.
  * @param {Object} blockVariations The used attributes and value varitions.
  */
-export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVariations ) =>
+export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVariations ) => {
+	// Make variables accessible for all tests.
+	let deprecatedBlock;
+	let deprecatedSettings;
+	let deprecatedBlockType;
+
 	blockSettings.deprecated.map( ( deprecated, index ) => {
+		// Register the deprecated block to get the attributes with filters applied.
+		deprecatedSettings = Object.assign(
+			{ category: 'common' },
+			omit( blockSettings, [ 'attributes', 'save', 'deprecated' ] ),
+			{
+				attributes: deprecated.attributes,
+				save: deprecated.save,
+			}
+		);
+		deprecatedBlockType = registerBlockType( blockName, deprecatedSettings );
+
+		// Unregister the registered block.
+		unregisterBlockType( blockName );
+
 		describe( `${ blockName } deprecation ${ index }`, () => {
-			// Make variables accessible for all tests.
-			let deprecatedBlock;
-
 			beforeEach( () => {
-				unregisterBlockType( blockName );
-
 				// Register the deprecated block.
-				const deprecatedSettings = Object.assign(
-					{}, omit( blockSettings, [ 'attributes', 'save', 'deprecated' ] ),
-					{
-						attributes: deprecated.attributes,
-						save: deprecated.save,
-					}
-				);
-				registerBlockType( blockName, { category: 'common', ...deprecatedSettings } );
+				deprecatedBlockType = registerBlockType( blockName, deprecatedSettings );
 
-				// Create the block with the minimum attributes.
+				// Create the block with no attributes.
 				deprecatedBlock = createBlock( blockName );
+			} );
+
+			afterEach( () => {
+				// Unregister the registered block.
+				unregisterBlockType( blockName );
 			} );
 
 			it( 'should deprecate old version', () => {
@@ -67,13 +94,18 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 				const blocks = parse( deprecatedSerialized );
 
 				expect(
-					blocks.every( block => block.isValid )
-				).toBe( true );
+					blocks.filter( block => ! block.isValid ).map( filterBlockObjectResult )
+				).toEqual( [ ] );
 			} );
 
-			Object.keys( deprecated.attributes ).map( ( attribute ) => {
-				blockVariations[ attribute ].map( variation => {
-					it( `should support attribute.${ attribute } set to '${ variation }'`, () => {
+			Object.keys( deprecatedBlockType.attributes ).map( ( attribute ) => {
+				// This test helps expose attributes we need variations for.
+				it( `should have variations for attribute.${ attribute }`, () => {
+					expect( blockVariations.hasOwnProperty( attribute ) ).toBe( true );
+				} );
+
+				blockVariations[ attribute ] && blockVariations[ attribute ].map( variation => {
+					it( `should support attribute.${ attribute } set to '${ JSON.stringify( variation ) }'`, () => {
 						deprecatedBlock.attributes[ attribute ] = variation;
 						const deprecatedSerialized = serialize( deprecatedBlock );
 
@@ -86,10 +118,24 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 						const blocks = parse( deprecatedSerialized );
 
 						expect(
-							blocks.every( block => block.isValid )
-						).toBe( true );
+							blocks.filter( block => ! block.isValid ).map( filterBlockObjectResult )
+						).toEqual( [ ] );
 					} );
 				} );
 			} );
 		} );
-	} );
+	} )
+};
+
+/**
+ * Generate tests for each defined deprecation of a block.
+ *
+ * @param {Object} blockObject The block object returned from parse().
+ *
+ * @returns {Object} The filtered block object.
+ */
+const filterBlockObjectResult = ( blockObject ) => {
+	const { name, attributes, isValid } = blockObject;
+	const validationIssues = blockObject.validationIssues.map( issue => sprintf( ...issue.args ) );
+	return { name, attributes, isValid, validationIssues };
+};

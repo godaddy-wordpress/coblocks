@@ -5,6 +5,8 @@ import * as helpers from '../../../../.dev/tests/jest/helpers';
 import { name, settings } from '../index';
 
 const variations = {
+	className: [ undefined, '', 'random classes' ],
+	coblocks: [ undefined, {}, { id: undefined }, { id: 'testing' } ],
 	layout: [ 'top-left', 'top-center', 'top-right', 'center-left', 'center-center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right' ],
 	fullscreen: [ true, false ],
 	paddingTop: [ 0, 100 ],
@@ -61,12 +63,14 @@ const variations = {
 	heightTablet: [ 0, 1000 ],
 	heightMobile: [ 0, 1000 ],
 	syncHeight: [ true, false ],
-	align: [ '', 'wide', 'full' ],
+	align: [ '', 'wide', 'full', 'left', 'right', 'center' ],
 	contentAlign: [ undefined, 'left', 'center', 'right' ],
 	textColor: [ undefined, 'primary' ],
 	customTextColor: [ undefined, '#123456' ],
 	maxWidth: [ 750 ],
 	saveCoBlocksMeta: [ true, false ],
+	noBottomMargin: [ undefined, true, false ],
+	noTopMargin: [ undefined, true, false ],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );

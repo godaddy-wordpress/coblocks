@@ -1,4 +1,8 @@
 .bg {
+	// Background transparency
+	&-transparent {
+		background-color: transparent !important;
+	}
 
 	// Background repeat
 	&-repeat {

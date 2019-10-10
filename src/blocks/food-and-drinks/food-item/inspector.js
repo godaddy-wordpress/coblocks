@@ -42,6 +42,11 @@ const Inspector = props => {
 						{ __( 'Item Attributes' ) }
 					</p>
 					<CheckboxControl
+						label={ __( 'Popular' ) }
+						checked={ attributes.popular }
+						onChange={ () => setAttributes( { popular: ! attributes.popular } ) }
+					/>
+					<CheckboxControl
 						label={ __( 'Gluten Free' ) }
 						checked={ attributes.glutenFree }
 						onChange={ () => setAttributes( { glutenFree: ! attributes.glutenFree } ) }

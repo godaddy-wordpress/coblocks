@@ -14,7 +14,7 @@ const dispatcher = dispatch( 'core/edit-post' );
 /**
  * Register Plugin
  */
-if ( typeof dispatcher !== 'undefined' || ! dispatcher.hasOwnProperty( 'hideBlockTypes' ) ) {
+if ( typeof dispatcher !== 'undefined' && ! Object.keys( dispatcher ).includes( 'hideBlockTypes' ) ) {
 	registerPlugin( 'coblocks-block-manager', {
 		icon: false,
 		render: ModalSettings,
