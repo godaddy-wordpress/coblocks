@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/gallery-carousel should render 1`] = `
+"<!-- wp:coblocks/gallery-carousel -->
+<div class=\\"wp-block-coblocks-gallery-carousel\\"><div class=\\"is-cropped coblocks-gallery has-no-alignment has-caption-style-dark has-horizontal-gutter\\"><div class=\\"has-carousel has-carousel-lrg\\" style=\\"height:400px\\" data-flickity=\\"{&quot;autoPlay&quot;:false,&quot;draggable&quot;:true,&quot;pageDots&quot;:false,&quot;prevNextButtons&quot;:true,&quot;wrapAround&quot;:true,&quot;cellAlign&quot;:&quot;center&quot;,&quot;pauseAutoPlayOnHover&quot;:false,&quot;freeScroll&quot;:false,&quot;arrowShape&quot;:{&quot;x0&quot;:10,&quot;x1&quot;:60,&quot;y1&quot;:50,&quot;x2&quot;:65,&quot;y2&quot;:45,&quot;x3&quot;:20},&quot;thumbnails&quot;:false,&quot;responsiveHeight&quot;:false}\\"><div class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure has-margin-left-5 has-margin-left-mobile-5 has-margin-right-5 has-margin-right-mobile-5\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></div></div></div></div>
+<!-- /wp:coblocks/gallery-carousel -->"
+`;

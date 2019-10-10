@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/gallery-stacked should render with images 1`] = `
+"<!-- wp:coblocks/gallery-stacked -->
+<div class=\\"wp-block-coblocks-gallery-stacked alignfull\\"><ul class=\\"coblocks-gallery has-fullwidth-images\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" class=\\"wp-image-1 has-shadow-none\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-stacked -->"
+`;
