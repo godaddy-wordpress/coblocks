@@ -440,7 +440,9 @@ class CoBlocks_Form {
 	 */
 	public function render_field_radio( $atts, $content ) {
 
-		if ( empty( $atts['options'] ) ) {
+		$the_options = array_filter( $atts['options'] );
+
+		if ( empty( $the_options ) ) {
 
 			return;
 
@@ -453,7 +455,7 @@ class CoBlocks_Form {
 
 		$this->render_field_label( $atts, $label );
 
-		foreach ( $atts['options'] as $value ) {
+		foreach ( $the_options as $value ) {
 
 			printf(
 				'<label class="coblocks-radio-label">
