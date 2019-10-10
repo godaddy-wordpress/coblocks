@@ -58,6 +58,6 @@ function deprecateBlockManager() {
 	} );
 }
 
-if ( typeof dispatcher !== 'undefined' || ! dispatcher.hasOwnProperty( 'hideBlockTypes' ) ) {
+if ( typeof dispatcher !== 'undefined' && ! Object.keys( dispatcher ).includes( 'hideBlockTypes' ) ) {
 	deprecateBlockManager();
 }
