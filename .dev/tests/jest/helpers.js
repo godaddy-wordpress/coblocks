@@ -40,8 +40,6 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 			let deprecatedBlock;
 
 			beforeEach( () => {
-				unregisterBlockType( blockName );
-
 				// Register the deprecated block.
 				const deprecatedSettings = Object.assign(
 					{}, omit( blockSettings, [ 'attributes', 'save', 'deprecated' ] ),
@@ -54,6 +52,11 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 
 				// Create the block with the minimum attributes.
 				deprecatedBlock = createBlock( blockName );
+			} );
+
+			afterEach( () => {
+				// Unregister the registered block.
+				unregisterBlockType( blockName );
 			} );
 
 			it( 'should deprecate old version', () => {
