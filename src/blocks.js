@@ -44,6 +44,8 @@ import * as clickToTweet from './blocks/click-to-tweet';
 import * as collage from './blocks/gallery-collage';
 import * as column from './blocks/row/column';
 import * as dynamicSeparator from './blocks/dynamic-separator';
+import * as events from './blocks/events';
+import * as eventItem from './blocks/events/event-item';
 import * as feature from './blocks/features/feature';
 import * as features from './blocks/features';
 import * as foodAndDrinks from './blocks/food-and-drinks';
@@ -104,6 +106,8 @@ export const registerCoBlocksBlocks = () => {
 		collage,
 		column,
 		dynamicSeparator,
+		events,
+		eventItem,
 		feature,
 		features,
 		foodAndDrinks,
