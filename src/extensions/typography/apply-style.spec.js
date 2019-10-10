@@ -46,4 +46,15 @@ describe( 'typography/applyStyle', () => {
 
 		expect( applyStyle( attributes ) ).toMatchObject( expected );
 	} );
+
+	it( 'percentage applied to coblocks/column width if width is defined', () => {
+		const attributes = {
+			width: 100,
+		};
+		const expected = {
+			width: `${ attributes.width }%`,
+		};
+
+		expect( applyStyle( attributes, 'coblocks/column' ) ).toMatchObject( expected );
+	} );
 } );
