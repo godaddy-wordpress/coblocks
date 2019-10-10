@@ -148,36 +148,7 @@ class Edit extends Component {
 			zoom,
 		} = attributes;
 
-		const userLocale = () => {
-			let locale = $( '[class*="locale-"]' ).attr( 'class' ).split( 'locale-' )[ 1 ].split( ' ' )[ 0 ];
-			switch ( locale.toLowerCase() ) {
-				case 'en-au':
-					locale = 'en-AU';
-					break;
-				case 'en-gb':
-					locale = 'en-GB';
-					break;
-				case 'pt-br':
-					locale = 'pt-BR';
-					break;
-				case 'pt-pt':
-					locale = 'pt-PT';
-					break;
-				case 'zh-tw':
-					locale = 'zh-TW';
-					break;
-				case 'zh-ch':
-					locale = 'zh-CN';
-					break;
-				case 'fr-ca':
-					locale = 'fr-CA';
-					break;
-				default:
-					locale = locale.split( '-' )[ 0 ];
-					break;
-			}
-			return locale;
-		};
+		const locale = document.documentElement.lang;
 
 		const renderMap = () => {
 			setAttributes( { address: this.state.address, pinned: true } );
@@ -271,7 +242,7 @@ class Edit extends Component {
 						src={
 							'https://www.google.com/maps?q=' +
 							encodeURIComponent( address ) +
-							`&output=embed&hl=${ userLocale() }&z=` +
+							`&output=embed&hl=${ locale }&z=` +
 							zoom
 						}
 					/>

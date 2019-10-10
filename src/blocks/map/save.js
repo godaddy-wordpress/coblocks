@@ -33,36 +33,7 @@ function Save( { attributes } ) {
 		fullscreenControl,
 	};
 
-	const userLocale = () => {
-		let locale = $( '[class*="locale-"]' ).attr( 'class' ).split( 'locale-' )[ 1 ].split( ' ' )[ 0 ];
-		switch ( locale.toLowerCase() ) {
-			case 'en-au':
-				locale = 'en-AU';
-				break;
-			case 'en-gb':
-				locale = 'en-GB';
-				break;
-			case 'pt-br':
-				locale = 'pt-BR';
-				break;
-			case 'pt-pt':
-				locale = 'pt-PT';
-				break;
-			case 'zh-tw':
-				locale = 'zh-TW';
-				break;
-			case 'zh-ch':
-				locale = 'zh-CN';
-				break;
-			case 'fr-ca':
-				locale = 'fr-CA';
-				break;
-			default:
-				locale = locale.split( '-' )[ 0 ];
-				break;
-		}
-		return locale;
-	};
+	const locale = document.documentElement.lang;
 
 	const attr = Object
 		.keys( mapAttributes )
@@ -79,7 +50,7 @@ function Save( { attributes } ) {
 					title={ __( 'Google Map' ) }
 					frameBorder="0"
 					style={ { width: '100%', minHeight: height + 'px' } }
-					src={ 'https://www.google.com/maps?q=' + encodeURIComponent( address ) + `&output=embed&hl=${ userLocale() }&z=` + zoom }
+					src={ 'https://www.google.com/maps?q=' + encodeURIComponent( address ) + `&output=embed&hl=${ locale }&z=` + zoom }
 				/>
 			}
 		</div>
