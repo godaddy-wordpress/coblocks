@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/features should render 1`] = `
+"<!-- wp:coblocks/features -->
+<div class=\\"wp-block-coblocks-features\\" data-columns=\\"2\\"><div class=\\"wp-block-coblocks-features__inner has-no-padding has-no-margin has-large-gutter has-center-content\\"></div></div>
+<!-- /wp:coblocks/features -->"
+`;

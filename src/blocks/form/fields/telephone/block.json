@@ -1,0 +1,14 @@
+{
+	"name": "coblocks/field-telephone",
+	"category": "coblocks",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Telephone"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}

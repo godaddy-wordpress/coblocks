@@ -9,20 +9,14 @@ import emailValidator from 'email-validator';
 /**
  * Internal dependencies
  */
-import icons from './icons';
-import CoBlocksField from './fields/field';
-import CoBlocksFieldMultiple from './fields/multi-field';
-import CoBlocksFieldName from './fields/field-name';
-import CoBlocksFieldTextarea from './fields/field-textarea';
 import Notice from './notice';
 import SubmitButton from './submit-button';
 
 /**
  * WordPress dependencies
  */
-import { __, _x, sprintf } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { registerBlockType, getBlockType } from '@wordpress/blocks';
 import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
 import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
@@ -36,177 +30,6 @@ const ALLOWED_BLOCKS = [
 	'coblocks/field-radio',
 ];
 
-const FieldDefaults = {
-	category: 'coblocks',
-	parent: [ 'coblocks/form' ],
-	supports: {
-		reusable: false,
-		html: false,
-	},
-	attributes: {
-		label: {
-			type: 'string',
-			default: null,
-		},
-		options: {
-			type: 'array',
-			default: [],
-		},
-		required: {
-			type: 'boolean',
-			default: false,
-		},
-		hasLastName: {
-			type: 'boolean',
-			default: false,
-		},
-		labelFirstName: {
-			type: 'string',
-			default: __( 'First' ),
-		},
-		labelLastName: {
-			type: 'string',
-			default: __( 'Last' ),
-		},
-	},
-	save: () => null,
-};
-
-const getFieldLabel = ( { attributes, name: blockName } ) => {
-	return null === attributes.label ?
-		getBlockType( blockName ).title :
-		attributes.label;
-};
-
-const editField = type => props => (
-	<CoBlocksField
-		type={ type }
-		label={ getFieldLabel( props ) }
-		required={ props.attributes.required }
-		setAttributes={ props.setAttributes }
-		isSelected={ props.isSelected }
-	/>
-);
-
-const editMultiField = type => props => (
-	<CoBlocksFieldMultiple
-		label={ getFieldLabel( props ) }
-		required={ props.attributes.required }
-		options={ props.attributes.options }
-		setAttributes={ props.setAttributes }
-		type={ type }
-		isSelected={ props.isSelected }
-		id={ props.attributes.id }
-	/>
-);
-
-export const childBlocks = [
-	{
-		name: 'coblocks/field-name',
-		settings: {
-			...FieldDefaults,
-			title: _x( 'Name', 'block name' ),
-			description: __( 'A text field for names.' ),
-			icon: icons.name,
-			edit: props => (
-				<CoBlocksFieldName
-					type={ 'name' }
-					label={ getFieldLabel( props ) }
-					labelFirstName={ props.attributes.labelFirstName }
-					labelLastName={ props.attributes.labelLastName }
-					required={ props.attributes.required }
-					hasLastName={ props.attributes.hasLastName }
-					setAttributes={ props.setAttributes }
-					isSelected={ props.isSelected }
-				/>
-			),
-		},
-	},
-	{
-		name: 'coblocks/field-email',
-		settings: {
-			...FieldDefaults,
-			supports: {
-				multiple: false,
-			},
-			title: _x( 'Email', 'block name' ),
-			keywords: [ _x( 'e-mail', 'block keyword' ), _x( 'mail', 'block keyword' ), 'email' ],
-			description: __( 'An email address field.' ),
-			icon: icons.email,
-			edit: editField( 'email' ),
-		},
-	},
-	{
-		name: 'coblocks/field-textarea',
-		settings: {
-			...FieldDefaults,
-			title: _x( 'Message', 'block name' ),
-			keywords: [ _x( 'Textarea', 'block keyword' ), 'textarea', _x( 'Multiline text', 'block keyword' ) ],
-			description: __( 'A text box for longer responses.' ),
-			icon: icons.textarea,
-			edit: props => (
-				<CoBlocksFieldTextarea
-					label={ getFieldLabel( props ) }
-					required={ props.attributes.required }
-					setAttributes={ props.setAttributes }
-					isSelected={ props.isSelected }
-				/>
-			),
-		},
-	},
-	{
-		name: 'coblocks/field-date',
-		settings: {
-			...FieldDefaults,
-			title: __( 'Date', 'block keyword' ),
-			keywords: [
-				_x( 'Calendar', 'block keyword' ),
-				_x( 'day month year', 'block search term' ),
-			],
-			description: __( 'The best way to set a date. Add a date picker.' ),
-			icon: icons.date,
-			edit: editField( 'text' ),
-		},
-	},
-	{
-		name: 'coblocks/field-telephone',
-		settings: {
-			...FieldDefaults,
-			title: _x( 'Telephone', 'block keyword' ),
-			keywords: [
-				_x( 'Phone', 'block keyword' ),
-				_x( 'Cellular phone', 'block keyword' ),
-				_x( 'Mobile', 'block keyword' ),
-			],
-			description: _x( 'Add a phone number input.', 'block keyword' ),
-			icon: icons.telephone,
-			edit: editField( 'tel' ),
-		},
-	},
-	{
-		name: 'coblocks/field-radio',
-		settings: {
-			...FieldDefaults,
-			title: __( 'Radio', 'block keyword' ),
-			keywords: [ _x( 'Choose', 'block keyword' ), _x( 'Select', 'block keyword' ), _x( 'Option', 'block keyword' ) ],
-			description: __( 'Inspired by radios, only one radio item can be selected at a time. Add several radio button items.' ),
-			icon: icons.radio,
-			edit: editMultiField( 'radio' ),
-			attributes: {
-				...FieldDefaults.attributes,
-				label: {
-					type: 'string',
-					default: 'Choose one',
-				},
-			},
-		},
-	},
-];
-
-childBlocks.forEach( childBlock =>
-	registerBlockType( childBlock.name, childBlock.settings )
-);
-
 /**
  * Get settings
  */
@@ -216,24 +39,9 @@ wp.api.loadPromise.then( () => {
 } );
 
 const FORM_TEMPLATE = [
-	[
-		'coblocks/field-name',
-		{
-			required: false,
-		},
-	],
-	[
-		'coblocks/field-email',
-		{
-			required: true,
-		},
-	],
-	[
-		'coblocks/field-textarea',
-		{
-			required: true,
-		},
-	],
+	[ 'coblocks/field-name', { required: false } ],
+	[ 'coblocks/field-email', { required: true } ],
+	[ 'coblocks/field-textarea', { required: true } ],
 ];
 
 const RETRIEVE_KEY_URL = 'https://g.co/recaptcha/v3';

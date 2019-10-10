@@ -55,8 +55,18 @@ class Inspector extends Component {
 			paddingRight,
 			paddingBottom,
 			paddingLeft,
+			paddingTopTablet,
+			paddingRightTablet,
+			paddingBottomTablet,
+			paddingLeftTablet,
+			paddingTopMobile,
+			paddingRightMobile,
+			paddingBottomMobile,
+			paddingLeftMobile,
 			paddingUnit,
 			paddingSyncUnits,
+			paddingSyncUnitsTablet,
+			paddingSyncUnitsMobile,
 			paddingSize,
 			saveCoBlocksMeta,
 			height,
@@ -77,8 +87,18 @@ class Inspector extends Component {
 							valueRight={ paddingRight }
 							valueBottom={ paddingBottom }
 							valueLeft={ paddingLeft }
+							valueTopTablet={ paddingTopTablet }
+							valueRightTablet={ paddingRightTablet }
+							valueBottomTablet={ paddingBottomTablet }
+							valueLeftTablet={ paddingLeftTablet }
+							valueTopMobile={ paddingTopMobile }
+							valueRightMobile={ paddingRightMobile }
+							valueBottomMobile={ paddingBottomMobile }
+							valueLeftMobile={ paddingLeftMobile }
 							unit={ paddingUnit }
 							syncUnits={ paddingSyncUnits }
+							syncUnitsTablet={ paddingSyncUnitsTablet }
+							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
 							saveCoBlocksMeta={ saveCoBlocksMeta }
 						/>

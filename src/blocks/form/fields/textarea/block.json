@@ -1,0 +1,14 @@
+{
+	"name": "coblocks/field-textarea",
+	"category": "coblocks",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Message"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}
