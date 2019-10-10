@@ -43,6 +43,9 @@ const variations = {
 	lightbox: [ undefined, true, false ],
 	openPopover: [ undefined, true, false ],
 	fullwidth: [ true, false ],
+	className: [ undefined, '', 'random classes' ],
+	noBottomMargin: [ undefined, true, false ],
+	noTopMargin: [ undefined, true, false ],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );

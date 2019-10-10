@@ -5,6 +5,7 @@ import * as helpers from '../../../../.dev/tests/jest/helpers';
 import { name, settings } from '../index';
 
 const variations = {
+	className: [ undefined, '', 'random classes' ],
 	heading: [ undefined, '', 'testing' ],
 	biography: [ undefined, '', 'testing' ],
 	name: [ undefined, '', 'testing' ],
