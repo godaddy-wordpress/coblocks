@@ -348,7 +348,7 @@ class CoBlocks_Form {
 
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Message', 'coblocks' );
 		$label_slug    = sanitize_title( $label );
-		$required_attr = ( isset( $is_required ) && $is_required ) ? 'required' : '';
+		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
 		ob_start();
 
@@ -356,7 +356,7 @@ class CoBlocks_Form {
 
 		?>
 
-		<textarea name="field-<?php echo esc_attr( $label_slug ); ?>[value]" id="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-field coblocks-textarea" rows="20"></textarea>
+		<textarea name="field-<?php echo esc_attr( $label_slug ); ?>[value]" id="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-field coblocks-textarea" rows="20" <?php echo esc_attr( $required_attr ); ?>></textarea>
 
 		<?php
 
@@ -386,7 +386,7 @@ class CoBlocks_Form {
 
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Date', 'coblocks' );
 		$label_slug    = sanitize_title( $label );
-		$required_attr = ( isset( $is_required ) && $is_required ) ? 'required' : '';
+		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
 		ob_start();
 
@@ -414,7 +414,7 @@ class CoBlocks_Form {
 
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Telephone', 'coblocks' );
 		$label_slug    = sanitize_title( $label );
-		$required_attr = ( isset( $is_required ) && $is_required ) ? 'required' : '';
+		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
 		ob_start();
 
@@ -448,7 +448,6 @@ class CoBlocks_Form {
 
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
 		$label_slug    = sanitize_title( $label );
-		$required_attr = ( isset( $is_required ) && $is_required ) ? 'required' : '';
 
 		ob_start();
 
