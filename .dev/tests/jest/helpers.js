@@ -2,6 +2,7 @@
  * External dependencies
  */
 import { omit } from 'lodash';
+import { sprintf } from '@wordpress/i18n';
 import { registerBlockType, unregisterBlockType, createBlock, getBlockTransforms, serialize, parse } from '@wordpress/blocks';
 
 /**
@@ -67,8 +68,8 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 				const blocks = parse( deprecatedSerialized );
 
 				expect(
-					blocks.every( block => block.isValid )
-				).toBe( true );
+					blocks.filter( block => ! block.isValid ).map( filterBlockObjectResult )
+				).toEqual( [ ] );
 			} );
 
 			Object.keys( deprecated.attributes ).map( ( attribute ) => {
@@ -91,10 +92,23 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 						const blocks = parse( deprecatedSerialized );
 
 						expect(
-							blocks.every( block => block.isValid )
-						).toBe( true );
+							blocks.filter( block => ! block.isValid ).map( filterBlockObjectResult )
+						).toEqual( [ ] );
 					} );
 				} );
 			} );
 		} );
 	} );
+
+/**
+ * Generate tests for each defined deprecation of a block.
+ *
+ * @param {Object} blockObject The block object returned from parse().
+ *
+ * @returns {Object} The filtered block object.
+ */
+const filterBlockObjectResult = ( blockObject ) => {
+	const { name, attributes, isValid } = blockObject;
+	const validationIssues = blockObject.validationIssues.map( issue => sprintf( ...issue.args ) );
+	return { name, attributes, isValid, validationIssues };
+};
