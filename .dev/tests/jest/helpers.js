@@ -2,6 +2,10 @@
  * External dependencies
  */
 import { omit } from 'lodash';
+
+/**
+ * WordPress dependencies
+ */
 import { sprintf } from '@wordpress/i18n';
 import { registerBlockType, unregisterBlockType, createBlock, getBlockTransforms, serialize, parse } from '@wordpress/blocks';
 
