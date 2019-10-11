@@ -220,6 +220,7 @@ module.exports = function( grunt ) {
 			].join( ' && ' ),
 			translations: [
 				'npm run babel:build',
+				'.dev/bin/update-po.sh',
 			].join( ' && ' ),
 		},
 
