@@ -1,30 +1,6 @@
 /**
  * WordPress dependencies
  */
-const { SVG, Path, G } = wp.components;
+import { Path, SVG, G } from '@wordpress/components';
 
-/**
- * Block user interface icons
- */
-const icons = {};
-
-icons.events = (
-	<SVG
-		className="components-coblocks-svg"
-		viewBox="0 0 24 24"
-		height="24"
-		width="24"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<G fill="none" fillRule="evenodd">
-			<Path d="M0 0h24v24H0z" />
-			<Path
-				d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 0 0 0 5.66zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13z"
-				fill="currentColor"
-				fillRule="nonzero"
-			/>
-		</G>
-	</SVG>
-);
-
-export default icons;
+export default <SVG xmlns="http://www.w3.org/2000/svg"><G fill="currentColor" fillRule="evenodd"><G fillRule="nonzero"><Path d="m18 3c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2h-12c-1.1 0-2-.9-2-2v-14c0-1.1.9-2 2-2zm0 16v-14h-12v14zm3-14c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zm0 12v-10zm-18 2c-1.1 0-2-.9-2-2v-10c0-1.1.9-2 2-2zm0-12v10zm10.7857143 6 3.2142857 5h-10l2.5-3.75 1.7857143 2.5083333z" /></G></G></SVG>;

@@ -15,11 +15,11 @@ import {get, isEqual, isUndefined} from 'lodash';
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const { Component, Fragment } = wp.element;
-const { dispatch, select } = wp.data;
 const { RichText } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { dispatch, select } from '@wordpress/data';
 
 /**
  * Handle creation and removal of placeholder elements so that we always have one available to use.
@@ -76,7 +76,6 @@ const isEmpty = attributes => {
 class EventsEdit extends Component {
 	componentDidUpdate( prevProps ) {
 		if ( ( this.props.attributes.externalChange ) ) {
-			// this.props.attributes.textColor =
 			this.props.setAttributes( { textColor: this.props.attributes.textColor, externalChange: false } );
 			this.props.setTextColor( this.props.attributes.textColor );
 		}

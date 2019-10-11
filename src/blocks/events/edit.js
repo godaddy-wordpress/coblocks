@@ -15,12 +15,12 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { Toolbar, Placeholder, Button, TextControl, ServerSideRender } = wp.components;
-const { compose } = wp.compose;
-const { withSelect, dispatch, select } = wp.data;
-const { InnerBlocks, BlockControls } = wp.blockEditor;
+import { Toolbar, Placeholder, Button, TextControl, ServerSideRender } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withSelect, dispatch, select } from '@wordpress/data';
+import { InnerBlocks, BlockControls } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'coblocks/event-item' ];
 
@@ -37,6 +37,11 @@ class EventItem extends Component {
 		};
 
 		this.onSubmitURL = this.onSubmitURL.bind( this );
+		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
+		this.updateTextColor = this.updateTextColor.bind( this );
+		this.toggleCalendarLink = this.toggleCalendarLink.bind( this );
+		this.changeVisibleEvents = this.changeVisibleEvents.bind( this );
+		this.insertNewItem = this.insertNewItem.bind( this );
 	}
 
 	componentDidUpdate( prevProps ) {
@@ -68,7 +73,7 @@ class EventItem extends Component {
 		}
 	}
 
-	updateInnerAttributes = ( blockName, newAttributes ) => {
+	updateInnerAttributes( blockName, newAttributes ) {
 		const innerItems = this.props.innerBlocks;
 
 		innerItems.map( item => {
@@ -79,17 +84,17 @@ class EventItem extends Component {
 				);
 			}
 		} );
-	};
+	}
 
-	updateTextColor = ( value ) => {
-		const { attributes, setAttributes, setTextColor, textColor } = this.props;
+	updateTextColor( value ) {
+		const { setTextColor } = this.props;
 
 		setTextColor( value );
 
 		this.updateInnerAttributes( 'coblocks/event-item', { textColor: value, externalChange: true } );
-	};
+	}
 
-	toggleCalendarLink = ( ) => {
+	toggleCalendarLink() {
 		const { attributes, setAttributes } = this.props;
 
 		const linkACalendar = ! attributes.linkACalendar;
@@ -97,7 +102,7 @@ class EventItem extends Component {
 
 		const edit = linkACalendar && attributes.externalCalendarUrl === '';
 		this.setState( { editing: edit } );
-	};
+	}
 
 	onSubmitURL( event ) {
 		event.preventDefault();
@@ -108,8 +113,8 @@ class EventItem extends Component {
 		}
 	}
 
-	changeVisibleEvents = ( value ) => {
-		const { attributes, setAttributes } = this.props;
+	changeVisibleEvents( value ) {
+		const { setAttributes } = this.props;
 
 		setAttributes( { eventsToShow: value } );
 
@@ -120,10 +125,10 @@ class EventItem extends Component {
 				item.clientId,
 				{ pageNum: Math.floor( key / value ), lastItem: lastItemOnPage }
 			);
-		});
-	};
+		} );
+	}
 
-	insertNewItem = () => {
+	insertNewItem() {
 		const { clientId, attributes } = this.props;
 
 		const newItemPageNumber = Math.floor( this.props.innerBlocks.length / attributes.eventsToShow );
@@ -143,17 +148,17 @@ class EventItem extends Component {
 
 		attributes.currentPage = newItemPageNumber;
 
-		this.props.innerBlocks.push( newEventBlock[0] );
+		this.props.innerBlocks.push( newEventBlock[ 0 ] );
 
-		dispatch( 'core/editor' ).insertBlock( newEventBlock[0], this.props.innerBlocks.length, clientId );
+		dispatch( 'core/editor' ).insertBlock( newEventBlock[ 0 ], this.props.innerBlocks.length, clientId );
 
-		this.props.block.innerBlocks.map( ( key, value ) => {
+		this.props.innerBlocks.map( ( key, value ) => {
 			key.originalContent = '';
 			if ( key.attributes.pageNum !== newItemPageNumber ) {
 				key.originalContent = key.originalContent.replace( 'wp-block-coblocks-event-item', 'wp-block-coblocks-event-item hide-item' );
 			}
-		});
-	};
+		} );
+	}
 
 	render() {
 		const {

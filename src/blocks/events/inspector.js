@@ -6,10 +6,10 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const { PanelBody, ToggleControl, SelectControl, RangeControl } = wp.components;
-const { InspectorControls, PanelColorSettings, ContrastChecker } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import { PanelBody, ToggleControl, SelectControl, RangeControl } from '@wordpress/components';
+import { InspectorControls, PanelColorSettings, ContrastChecker } from '@wordpress/block-editor';
 
 const Inspector = props => {
 	const {

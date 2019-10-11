@@ -3,14 +3,12 @@
  */
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
 import icons from './icons';
-import classnames from "classnames";
+import classnames from 'classnames';
 
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
-const { RichText, getColorClassName  } = wp.blockEditor;
-const { Icon } = wp.components;
+import { RichText, getColorClassName } from '@wordpress/block-editor';
 
 const isEmpty = attributes => {
 	const attributesToCheck = [ 'title', 'description', 'eventDay', 'eventMonth', 'eventDate', 'eventTime', 'eventLocation' ];
