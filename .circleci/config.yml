@@ -46,7 +46,7 @@ jobs:
             bash .dev/bin/install-dependencies.sh
       - run:
           name: "Run PHPCS"
-          command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
+          command: composer run lint -- -v
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
           command: phpunit --coverage-html=/tmp/artifacts/code-coverage/html --coverage-clover=/tmp/artifacts/code-coverage/clover --coverage-text
@@ -75,7 +75,7 @@ jobs:
           command: bash .dev/bin/install-dependencies.sh
       - run:
           name: "Run PHPCS"
-          command: phpcs --standard=phpcs.xml --extensions=php --colors -s -p -v .
+          command: composer run lint -- -v
       - run:
           name: "Run PHPUnit - Single Site"
           command: phpunit
