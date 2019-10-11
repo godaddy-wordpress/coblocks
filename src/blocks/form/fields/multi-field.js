@@ -97,10 +97,10 @@ class CoBlocksFieldMultiple extends Component {
 						<IconButton
 							className="coblocks-field-multiple__add-option"
 							icon="insert"
-							label={ __( 'Add option' ) }
+							label={ __( 'Add Option' ) }
 							onClick={ this.addNewOption }
 						>
-							{ __( 'Add option' ) }
+							{ __( 'Add Option' ) }
 						</IconButton>
 					) }
 				</BaseControl>

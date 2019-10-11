@@ -67,7 +67,7 @@ class CoBlocksFieldOption extends Component {
 					<IconButton
 						className="coblocks-option__remove"
 						icon="trash"
-						label={ __( 'Remove option' ) }
+						label={ __( 'Remove Option' ) }
 						onClick={ this.onDeleteOption }
 					/>
 				) }

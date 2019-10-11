@@ -31,6 +31,8 @@
 				}
 
 				.components-toggle-control__label {
+					font-size: 13px;
+					font-family: system-ui;
 					margin-bottom: 0;
 					word-break: normal;
 				}
@@ -76,9 +78,14 @@
 	}
 
 	.coblocks-option {
-		display: flex;
 		align-items: center;
+		display: flex;
 		margin: 0;
+	}
+
+	.coblocks-field-multiple__list {
+		margin: 0;
+		padding-left: 0;
 	}
 
 	.coblocks-option__type.coblocks-option__type {
@@ -86,29 +93,34 @@
 	}
 
 	.coblocks-option__input.coblocks-option__input.coblocks-option__input {
-		border-color: #fff;
-		border-radius: 0;
+		background: transparent;
+		border: 1px solid transparent;
+		border-radius: 4px;
 		flex-grow: 1;
+		margin-bottom: 2px;
+		padding: 6px 8px;
+		transform: box-shadow 0.1s linear;
 	}
 
-	.coblocks-option__input.coblocks-option__input.coblocks-option__input:hover {
-		border-color: #357cb5;
+	.is-typing .coblocks-option__input.coblocks-option__input.coblocks-option__input,
+	.is-selected .coblocks-option__input.coblocks-option__input.coblocks-option__input {
+		background: $white;
+		border-color: $dark-gray-150;
 	}
 
 	.coblocks-option__input.coblocks-option__input.coblocks-option__input:focus {
-		border-color: #e3e5e8;
-		box-shadow: none;
+		background: $white;
+		border-color: $blue-medium-focus;
+		box-shadow: 0 0 0 1px $blue-medium-focus;
 	}
 
 	.coblocks-option__remove.coblocks-option__remove {
-		padding: 9px 6px;
-		vertical-align: bottom;
+		margin-left: 8px;
 	}
 
 	.coblocks-field-multiple__add-option {
-		margin-left: -6px;
-		margin-top: 8px;
-		padding: 4px 8px 4px 4px;
+		margin-left: 21px;
+		margin-top: 5px;
 	}
 
 	.coblocks-field-multiple__add-option svg {
