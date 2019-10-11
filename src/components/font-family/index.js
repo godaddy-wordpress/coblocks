@@ -12,19 +12,24 @@ import { BaseControl } from '@wordpress/components';
 
 function FontFamilyPicker( { label, value, help, instanceId, onChange, className, ...props } ) {
 	const id = `inspector-coblocks-font-family-${ instanceId }`;
-	const fonts = [
+	const systemFonts = [
 		{ value: '', label: __( 'Default' ) },
 		{ value: 'Arial', label: 'Arial' },
 		{ value: 'Helvetica', label: 'Helvetica' },
 		{ value: 'Times New Roman', label: 'Times New Roman' },
 		{ value: 'Georgia', label: 'Georgia' },
 	];
+	const fonts = [];
 
-	//Add Google Fonts
+	// Add Google Fonts
 	Object.keys( googleFonts ).map( ( k ) => {
 		fonts.push(
 			{ value: k, label: k }
 		);
+	} );
+
+	systemFonts.reverse().map( ( font ) => {
+		fonts.unshift( font );
 	} );
 
 	const onChangeValue = ( event ) => {
@@ -32,6 +37,10 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 		let ba = '';
 		const googleFontsAttr = ':100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic';
 		const link = document.createElement( 'link' );
+		const isSystemFont = systemFonts.filter( function( font ) {
+			return font.label === event.target.value;
+		} ).length > 0;
+
 		link.rel = 'stylesheet';
 
 		if ( typeof meta !== 'undefined' && typeof meta._coblocks_attr !== 'undefined' ) {
@@ -40,7 +49,7 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 
 		if ( ba.length > 0 ) {
 			//Load fonts on the header
-			if ( ! ba.includes( event.target.value ) ) {
+			if ( ! ba.includes( event.target.value ) && ! isSystemFont ) {
 				link.href = 'https://fonts.googleapis.com/css?family=' + event.target.value.replace( / /g, '+' ) + googleFontsAttr;
 				document.head.appendChild( link );
 			}
