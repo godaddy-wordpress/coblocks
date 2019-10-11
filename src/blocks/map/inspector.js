@@ -14,7 +14,7 @@ import { styleOptions } from './styles';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl, RangeControl, TextControl, Button, ButtonGroup, ExternalLink } from '@wordpress/components';
+import { BaseControl, PanelBody, ToggleControl, RangeControl, TextControl, Button, ButtonGroup, ExternalLink } from '@wordpress/components';
 import { ENTER } from '@wordpress/keycodes';
 
 const RETRIEVE_KEY_URL = 'https://cloud.google.com/maps-platform';
@@ -134,16 +134,18 @@ class Inspector extends Component {
 									max={ 20 }
 									step={ 1 }
 								/>
-								<RangeControl
-									label={ __( 'Height in pixels' ) }
-									aria-label={ __( 'Height for the map in pixels' ) }
-									value={ height }
-									onChange={ ( event ) => setAttributes( { height: parseInt( event.target.value, 10 ) } ) }
-									className="components-block-coblocks-height__custom-input"
-									min={ 200 }
-									max={ 1000 }
-									step={ 10 }
-								/>
+								<BaseControl label={ __( 'Height in pixels' ) }>
+									<input
+										type="number"
+										aria-label={ __( 'Height for the map in pixels' ) }
+										className="components-block-coblocks-height__custom-input"
+										onChange={ ( event ) => setAttributes( { height: parseInt( event.target.value, 10 ) } ) }
+										value={ height }
+										min={ 200 }
+										max={ 1000 }
+										step={ 10 }
+									/>
+								</BaseControl>
 								{
 									!! apiKey &&
 									<RangeControl
