@@ -1,3 +1,4 @@
+/*global coblocksBlockData*/
 
 /**
  * Internal dependencies
@@ -17,6 +18,13 @@ class Controls extends Component {
 			name,
 			attributes,
 		} = this.props;
+
+		if ( ! coblocksBlockData.disableTypography ) {
+			return (
+				<Fragment>
+				</Fragment>
+			);
+		}
 
 		let hideToolbar = false;
 		const allowedBlocks = [ 'core/paragraph', 'core/heading', 'core/cover', 'core/button', 'core/list', 'coblocks/row', 'coblocks/column', 'coblocks/accordion', 'coblocks/accordion-item', 'coblocks/click-to-tweet', 'coblocks/alert', 'coblocks/pricing-table', 'coblocks/highlight', 'coblocks/features' ];

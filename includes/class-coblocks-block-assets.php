@@ -117,16 +117,25 @@ class CoBlocks_Block_Assets {
 		 * @param string  $to      Admin email.
 		 * @param integer $post_id Current post ID.
 		 */
-		$email_to = (string) apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), $post_id );
+		$email_to = (string) apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), (int) $post_id );
+
+		/**
+		 * Filter to disable the typography controls
+		 *
+		 * @param bool    false    Whether or not to disable the controls.
+		 * @param integer $post_id Current post ID.
+		 */
+		$disable_typography = (bool) apply_filters( 'coblocks_disable_typography_controls', false, (int) $post_id );
 
 		wp_localize_script(
 			$this->_slug . '-editor',
 			'coblocksBlockData',
 			[
-				'form' => [
+				'form'              => [
 					'adminEmail'   => $email_to,
 					'emailSubject' => $post_title,
 				],
+				'disableTypography' => $disable_typography,
 			]
 		);
 
