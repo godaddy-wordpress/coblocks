@@ -28,6 +28,9 @@ const ALLOWED_BLOCKS = [
 	'coblocks/field-date',
 	'coblocks/field-phone',
 	'coblocks/field-radio',
+	'coblocks/field-name',
+	'coblocks/field-email',
+	'coblocks/field-textarea',
 ];
 
 /**
