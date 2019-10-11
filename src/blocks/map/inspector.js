@@ -125,15 +125,6 @@ class Inspector extends Component {
 					{ address &&
 						<PanelBody title={ __( 'Map Settings' ) }>
 							<Fragment>
-								<RangeControl
-									label={ __( 'Zoom Level' ) }
-									value={ zoom }
-									onChange={ ( nextZoom ) => setAttributes( { zoom: nextZoom } ) }
-									className="components-block-coblocks-map-zoom__custom-input"
-									min={ 5 }
-									max={ 20 }
-									step={ 1 }
-								/>
 								<BaseControl label={ __( 'Height in pixels' ) }>
 									<input
 										type="number"
@@ -146,6 +137,15 @@ class Inspector extends Component {
 										step={ 10 }
 									/>
 								</BaseControl>
+								<RangeControl
+									label={ __( 'Zoom Level' ) }
+									value={ zoom }
+									onChange={ ( nextZoom ) => setAttributes( { zoom: nextZoom } ) }
+									className="components-block-coblocks-map-zoom__custom-input"
+									min={ 5 }
+									max={ 20 }
+									step={ 1 }
+								/>
 								{
 									!! apiKey &&
 									<RangeControl
