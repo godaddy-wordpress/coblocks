@@ -133,7 +133,6 @@ class Inspector extends Component {
 										onChange={ ( event ) => setAttributes( { height: parseInt( event.target.value, 10 ) } ) }
 										value={ height }
 										min={ 200 }
-										max={ 1000 }
 										step={ 10 }
 									/>
 								</BaseControl>
