@@ -18,7 +18,7 @@ const { name, category, attributes } = metadata;
 const settings = {
 	title: _x( 'Phone', 'block name' ),
 	keywords: [ _x( 'telephone', 'block keyword' ), _x( 'cellular', 'block keyword' ), _x( 'mobile', 'block keyword' ) ],
-	description: __( 'Add a phone number input.' ),
+	description: __( 'A phone number to allow visitors to give you a phone number.' ),
 	icon,
 	parent: [ 'coblocks/form' ],
 	supports: {

@@ -53,7 +53,7 @@ import * as fieldDate from './blocks/form/fields/date';
 import * as fieldEmail from './blocks/form/fields/email';
 import * as fieldName from './blocks/form/fields/name';
 import * as fieldRadio from './blocks/form/fields/radio';
-import * as fieldTelephone from './blocks/form/fields/telephone';
+import * as fieldTelephone from './blocks/form/fields/phone';
 import * as fieldTextarea from './blocks/form/fields/textarea';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';

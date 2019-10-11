@@ -18,7 +18,7 @@ const { name, category, attributes } = metadata;
 const settings = {
 	title: _x( 'Date', 'block name' ),
 	keywords: [ _x( 'calendar', 'block keyword' ), _x( 'day month year', 'block keyword' ) ],
-	description: __( 'The best way to set a date.' ),
+	description: __( 'A field for requesting date selections with a date picker.' ),
 	icon,
 	parent: [ 'coblocks/form' ],
 	supports: {

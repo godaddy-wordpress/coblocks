@@ -17,7 +17,7 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	title: _x( 'Email', 'block name' ),
-	description: __( 'An email address field.' ),
+	description: __( 'A field for collecting a validated email address.' ),
 	icon,
 	keywords: [ _x( 'e-mail', 'block keyword' ), _x( 'mail', 'block keyword' ) ],
 	parent: [ 'coblocks/form' ],

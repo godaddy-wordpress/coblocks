@@ -16,7 +16,7 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Message', 'block name' ),
+	title: _x( 'Textarea', 'block name' ),
 	description: __( 'A text box for longer responses.' ),
 	icon,
 	keywords: [ _x( 'Textarea', 'block keyword' ), 'textarea', _x( 'Multiline text', 'block keyword' ) ],
