@@ -49,10 +49,10 @@ jobs:
           command: composer run lint -- -v
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
-          command: phpunit --coverage-html=/tmp/artifacts/code-coverage/html --coverage-clover=/tmp/artifacts/code-coverage/clover --coverage-text
+          command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --coverage-clover=/tmp/artifacts/code-coverage/phpunit/results.xml --coverage-text
           working_directory: /tmp/wordpress/wp-content/plugins/coblocks
       - store_artifacts:
-          path: /tmp/artifacts/code-coverage/html
+          path: /tmp/artifacts/code-coverage/
           destination: phpunit-coverage
       - run:
           name: "Run PHPUnit - Multi Site"
