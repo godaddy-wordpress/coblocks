@@ -24,7 +24,7 @@ import './extensions/image-styles';
 import './extensions/image-crop';
 
 // Formats
-import './formats/';
+import './formats';
 
 // Sidebars
 import './sidebars/block-manager';
@@ -137,4 +137,5 @@ export const registerCoBlocksBlocks = () => {
 		stacked,
 	].forEach( registerBlock );
 };
+
 registerCoBlocksBlocks();

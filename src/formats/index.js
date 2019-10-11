@@ -1,16 +1,19 @@
 /**
  * Internal dependencies
  */
-import { uppercase } from './uppercase';
+import * as uppercase from './uppercase';
 
 /**
  * WordPress dependencies
  */
 import { registerFormatType } from '@wordpress/rich-text';
 
-function registerFormats() {
+export default function registerCoBlocksFormats() {
 	[
 		uppercase,
-	].forEach( ( { name, ...settings } ) => registerFormatType( name, settings ) );
+	].forEach( ( { name, settings } ) => {
+		registerFormatType( name, settings );
+	} );
 }
-registerFormats();
+
+registerCoBlocksFormats();
