@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icons from '../../icons';
+import icon from './icon';
 import metadata from './block.json';
 
 /**
@@ -17,12 +17,9 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	title: _x( 'Date', 'block name' ),
-	keywords: [
-		_x( 'Calendar', 'block keyword' ),
-		_x( 'day month year', 'block search term' ),
-	],
-	description: __( 'The best way to set a date. Add a date picker.' ),
-	icon: icons.date,
+	keywords: [ _x( 'calendar', 'block keyword' ), _x( 'day month year', 'block keyword' ) ],
+	description: __( 'The best way to set a date.' ),
+	icon,
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

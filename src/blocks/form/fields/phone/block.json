@@ -1,10 +1,10 @@
 {
-	"name": "coblocks/field-telephone",
+	"name": "coblocks/field-phone",
 	"category": "coblocks",
 	"attributes": {
 		"label": {
 			"type": "string",
-			"default": "Telephone"
+			"default": "Phone"
 		},
 		"required": {
 			"type": "boolean",

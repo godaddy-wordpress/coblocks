@@ -26,7 +26,7 @@ import { applyFilters } from '@wordpress/hooks';
  */
 const ALLOWED_BLOCKS = [
 	'coblocks/field-date',
-	'coblocks/field-telephone',
+	'coblocks/field-phone',
 	'coblocks/field-radio',
 ];
 

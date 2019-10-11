@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icons from '../../icons';
+import icon from './icon';
 import metadata from './block.json';
 
 /**
@@ -18,7 +18,7 @@ const { name, category, attributes } = metadata;
 const settings = {
 	title: _x( 'Message', 'block name' ),
 	description: __( 'A text box for longer responses.' ),
-	icon: icons.textarea,
+	icon,
 	keywords: [ _x( 'Textarea', 'block keyword' ), 'textarea', _x( 'Multiline text', 'block keyword' ) ],
 	parent: [ 'coblocks/form' ],
 	supports: {

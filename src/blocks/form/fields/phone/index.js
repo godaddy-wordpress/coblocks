@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icons from '../../icons';
+import icon from './icon';
 import metadata from './block.json';
 
 /**
@@ -16,14 +16,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Telephone', 'block name' ),
-	keywords: [
-		_x( 'Phone', 'block keyword' ),
-		_x( 'Cellular phone', 'block keyword' ),
-		_x( 'Mobile', 'block keyword' ),
-	],
+	title: _x( 'Phone', 'block name' ),
+	keywords: [ _x( 'telephone', 'block keyword' ), _x( 'cellular', 'block keyword' ), _x( 'mobile', 'block keyword' ) ],
 	description: __( 'Add a phone number input.' ),
-	icon: icons.telephone,
+	icon,
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

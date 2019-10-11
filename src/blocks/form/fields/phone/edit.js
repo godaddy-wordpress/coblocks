@@ -3,7 +3,7 @@
  */
 import CoBlocksField from '../field';
 
-function CoBlocksFieldTelephone( props ) {
+function CoBlocksFieldPhone( props ) {
 	const { attributes, setAttributes, isSelected } = props;
 	const { required, label } = attributes;
 
@@ -18,4 +18,4 @@ function CoBlocksFieldTelephone( props ) {
 	);
 }
 
-export default CoBlocksFieldTelephone;
+export default CoBlocksFieldPhone;
