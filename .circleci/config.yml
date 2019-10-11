@@ -54,6 +54,8 @@ jobs:
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
           destination: phpunit-coverage
+      - store_test_results:
+          path: /tmp/artifacts/code-coverage/
       - run:
           name: "Run PHPUnit - Multi Site"
           command: WP_MULTISITE=1 phpunit
