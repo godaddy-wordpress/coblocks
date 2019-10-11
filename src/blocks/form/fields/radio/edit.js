@@ -5,7 +5,7 @@ import CoBlocksFieldMultiple from '../multi-field';
 
 function CoBlocksFieldRadio( props ) {
 	const { attributes, setAttributes, isSelected } = props;
-	const { required, label, options, id } = attributes;
+	const { required, label, options } = attributes;
 
 	return (
 		<CoBlocksFieldMultiple
@@ -15,7 +15,6 @@ function CoBlocksFieldRadio( props ) {
 			setAttributes={ setAttributes }
 			type="radio"
 			isSelected={ isSelected }
-			id={ id }
 		/>
 	);
 }
