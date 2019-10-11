@@ -60,7 +60,7 @@ class CoBlocks_Getting_Started_Page {
 			apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
 			'coblocks-getting-started',
 			array( $this, 'content' ),
-			4,
+			4
 		);
 	}
 
