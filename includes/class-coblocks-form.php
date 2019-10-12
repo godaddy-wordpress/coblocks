@@ -206,7 +206,7 @@ class CoBlocks_Form {
 			?>
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( untrailingslashit( get_the_permalink() ) ), $this->form_hash ) ); ?>" method="post">
-				<?php echo wp_kses_post( do_blocks( $content ) ); ?>
+				<?php echo do_blocks( $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<input class="coblocks-field verify" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>" tabindex="-1">
 				<div class="coblocks-form__submit wp-block-button">
 					<?php $this->render_submit_button( $atts ); ?>
@@ -345,7 +345,7 @@ class CoBlocks_Form {
 	 *
 	 * @return mixed Form field label markup.
 	 */
-	private function render_field_label( $atts, $field_label ) {
+	public function render_field_label( $atts, $field_label ) {
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : $field_label;
 		$label_slug = sanitize_title( $label );
@@ -383,7 +383,7 @@ class CoBlocks_Form {
 	 *
 	 * @return mixed Form submit button markup.
 	 */
-	private function render_submit_button( $atts ) {
+	public function render_submit_button( $atts ) {
 
 		$btn_text  = isset( $atts['submitButtonText'] ) ? $atts['submitButtonText'] : __( 'Submit', 'coblocks' );
 		$btn_class = isset( $atts['submitButtonClasses'] ) ? $atts['submitButtonClasses'] : '';
