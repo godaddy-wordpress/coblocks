@@ -21,8 +21,8 @@ class OriginalImage {
 
 			jQuery.post( global.ajaxurl, {
 				action: 'coblocks_crop_settings_original_image',
+				nonce: coblocksBlockData.cropSettingsOriginalImageNonce,
 				id: id,
-				nonce: coblocksBlockData.cropSettingsNonce,
 			}, function( response ) {
 				if ( ! response.success ) {
 					reject();

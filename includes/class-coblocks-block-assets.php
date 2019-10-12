@@ -116,11 +116,12 @@ class CoBlocks_Block_Assets {
 			$this->slug . '-editor',
 			'coblocksBlockData',
 			[
-				'form'              => [
+				'form'                           => [
 					'adminEmail'   => $email_to,
 					'emailSubject' => $post_title,
 				],
-				'cropSettingsNonce' => wp_create_nonce( 'cropSettingsNonce' ),
+				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
+				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
 			]
 		);
 
