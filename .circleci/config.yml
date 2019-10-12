@@ -44,12 +44,14 @@ jobs:
           name: "Install Dependencies"
           command: |
             bash .dev/bin/install-dependencies.sh
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: "Run PHPCS"
           command: composer run lint -- -v
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
           command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --coverage-clover=/tmp/artifacts/code-coverage/phpunit/results.xml --coverage-text
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
           destination: phpunit-coverage
@@ -58,6 +60,7 @@ jobs:
       - run:
           name: "Run PHPUnit - Multi Site"
           command: WP_MULTISITE=1 composer run test
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
   php72-build:
     docker:
