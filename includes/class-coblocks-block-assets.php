@@ -44,13 +44,6 @@ class CoBlocks_Block_Assets {
 	/**
 	 * The plugin version.
 	 *
-	 * @var string $version
-	 */
-	private $version;
-
-	/**
-	 * The plugin version.
-	 *
 	 * @var string $slug
 	 */
 	private $slug;
@@ -59,9 +52,8 @@ class CoBlocks_Block_Assets {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$this->version = COBLOCKS_VERSION;
-		$this->slug    = 'coblocks';
-		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+		$this->slug = 'coblocks';
+		$this->url  = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
@@ -81,7 +73,7 @@ class CoBlocks_Block_Assets {
 			$this->slug . '-frontend',
 			$this->url . '/dist/blocks.style.build.css',
 			array(),
-			$this->version
+			COBLOCKS_VERSION
 		);
 	}
 
@@ -97,7 +89,7 @@ class CoBlocks_Block_Assets {
 			$this->slug . '-editor',
 			$this->url . '/dist/blocks.editor.build.css',
 			array(),
-			$this->version
+			COBLOCKS_VERSION
 		);
 
 		// Scripts.
@@ -159,7 +151,7 @@ class CoBlocks_Block_Assets {
 				$this->slug . '-masonry',
 				$dir . $this->slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery', 'masonry', 'imagesloaded' ),
-				$this->version,
+				COBLOCKS_VERSION,
 				true
 			);
 		}
@@ -170,7 +162,7 @@ class CoBlocks_Block_Assets {
 				$this->slug . '-flickity',
 				$vendors_dir . '/flickity' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
-				$this->version,
+				COBLOCKS_VERSION,
 				true
 			);
 		}
@@ -181,14 +173,14 @@ class CoBlocks_Block_Assets {
 				$this->slug . '-slick',
 				$vendors_dir . '/slick' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
-				$this->version,
+				COBLOCKS_VERSION,
 				true
 			);
 			wp_enqueue_script(
 				$this->slug . '-slick-initializer-front',
 				$dir . $this->slug . '-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
-				$this->version,
+				COBLOCKS_VERSION,
 				true
 			);
 		}
@@ -199,7 +191,7 @@ class CoBlocks_Block_Assets {
 				$this->slug . '-lightbox',
 				$dir . $this->slug . '-lightbox' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
-				$this->version,
+				COBLOCKS_VERSION,
 				true
 			);
 
@@ -207,7 +199,7 @@ class CoBlocks_Block_Assets {
 				$this->slug . '-masonry',
 				$dir . $this->slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery', 'masonry', 'imagesloaded' ),
-				$this->version,
+				COBLOCKS_VERSION,
 				true
 			);
 		}

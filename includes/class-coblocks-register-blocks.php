@@ -35,7 +35,7 @@ class CoBlocks_Register_Blocks {
 	}
 
 	/**
-	 * The Plugin version.
+	 * The Plugin slug.
 	 *
 	 * @var string $slug
 	 */

@@ -42,14 +42,7 @@ class CoBlocks_Google_Map_Block {
 	private $url;
 
 	/**
-	 * The Plugin version.
-	 *
-	 * @var string $version
-	 */
-	private $version;
-
-	/**
-	 * The Plugin version.
+	 * The Plugin slug.
 	 *
 	 * @var string $slug
 	 */
@@ -59,9 +52,8 @@ class CoBlocks_Google_Map_Block {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$this->version = COBLOCKS_VERSION;
-		$this->slug    = 'coblocks';
-		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+		$this->slug = 'coblocks';
+		$this->url  = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'map_assets' ) );
 		add_action( 'the_post', array( $this, 'map_assets' ) );
@@ -88,7 +80,7 @@ class CoBlocks_Google_Map_Block {
 				$this->slug . '-google-maps',
 				$dir . $this->slug . '-google-maps' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
-				$this->version,
+				COBLOCKS_VERSION,
 				true
 			);
 
@@ -98,7 +90,7 @@ class CoBlocks_Google_Map_Block {
 					$this->slug . '-google-maps-api',
 					'https://maps.googleapis.com/maps/api/js?key=' . esc_attr( $key ),
 					array( $this->slug . '-google-maps' ),
-					$this->version,
+					COBLOCKS_VERSION,
 					true
 				);
 

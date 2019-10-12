@@ -42,14 +42,7 @@ class CoBlocks_Accordion_IE_Support {
 	private $url;
 
 	/**
-	 * The Plugin version.
-	 *
-	 * @var string $version
-	 */
-	private $version;
-
-	/**
-	 * The Plugin version.
+	 * The Plugin slug.
 	 *
 	 * @var string $slug
 	 */
@@ -59,9 +52,8 @@ class CoBlocks_Accordion_IE_Support {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$this->version = COBLOCKS_VERSION;
-		$this->slug    = 'coblocks';
-		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+		$this->slug = 'coblocks';
+		$this->url  = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
 		add_action( 'the_post', array( $this, 'load_assets' ) );
@@ -94,7 +86,7 @@ class CoBlocks_Accordion_IE_Support {
 				$this->slug . '-accordion-polyfill',
 				$dir . $this->slug . '-accordion-polyfill' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array(),
-				$this->version,
+				COBLOCKS_VERSION,
 				true
 			);
 		}

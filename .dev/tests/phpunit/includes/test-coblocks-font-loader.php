@@ -45,30 +45,6 @@ class CoBlocks_Font_Loader_Tests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test the constructor constants
-	 */
-	public function test_construct_constants() {
-
-		$reflection     = new ReflectionClass( $this->coblocks_font_loader );
-		$new_reflection = new CoBlocks_Font_Loader();
-
-		$expected = [
-			'version' => '1.15.0',
-		];
-
-		$version = $reflection->getProperty( 'version' );
-
-		$version->setAccessible( true );
-
-		$check = [
-			'version' => $version->getValue( $new_reflection ),
-		];
-
-		$this->assertEquals( $expected, $check );
-
-	}
-
-	/**
 	 * Test the constructor actions
 	 */
 	public function test_construct_actions() {

@@ -42,14 +42,7 @@ class CoBlocks_Block_Settings {
 	private $url;
 
 	/**
-	 * The Plugin version.
-	 *
-	 * @var string $version
-	 */
-	private $version;
-
-	/**
-	 * The Plugin version.
+	 * The Plugin slug.
 	 *
 	 * @var string $slug
 	 */
@@ -59,9 +52,8 @@ class CoBlocks_Block_Settings {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$this->version = COBLOCKS_VERSION;
-		$this->slug    = 'coblocks';
-		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+		$this->slug = 'coblocks';
+		$this->url  = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'init', array( $this, 'register_settings' ) );
 	}
