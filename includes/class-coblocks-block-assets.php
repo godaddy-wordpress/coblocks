@@ -128,6 +128,7 @@ class CoBlocks_Block_Assets {
 					'adminEmail'   => $email_to,
 					'emailSubject' => $post_title,
 				],
+				'cropSettingsNonce' => wp_create_nonce( 'cropSettingsNonce' )
 			]
 		);
 

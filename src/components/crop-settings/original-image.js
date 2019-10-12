@@ -1,3 +1,5 @@
+/* global coblocksBlockData */
+
 class OriginalImage {
 	constructor() {
 		this.originalImageCache = {};
@@ -20,6 +22,7 @@ class OriginalImage {
 			jQuery.post( global.ajaxurl, {
 				action: 'coblocks_crop_settings_original_image',
 				id: id,
+				nonce: coblocksBlockData.cropSettingsNonce,
 			}, function( response ) {
 				if ( ! response.success ) {
 					reject();

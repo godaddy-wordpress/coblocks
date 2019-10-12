@@ -92,6 +92,7 @@ class CoBlocks_Crop_Settings {
 	 * Cropping.
 	 */
 	public function api_crop() {
+		wp_verify_nonce( $_POST['cropSettingsNonce'], 'cropSettingsNonce' );
 
 		if (
 			! isset( $_POST['id'] ) ||
