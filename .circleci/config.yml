@@ -50,7 +50,6 @@ jobs:
       - run:
           name: "Run PHPUnit - Single Site - Generate Coverage Reports"
           command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --coverage-clover=/tmp/artifacts/code-coverage/phpunit/results.xml --coverage-text
-          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
           destination: phpunit-coverage
@@ -58,8 +57,7 @@ jobs:
           path: /tmp/artifacts/code-coverage/
       - run:
           name: "Run PHPUnit - Multi Site"
-          command: WP_MULTISITE=1 phpunit
-          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+          command: WP_MULTISITE=1 composer run test
 
   php72-build:
     docker:
