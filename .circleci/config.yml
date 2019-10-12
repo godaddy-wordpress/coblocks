@@ -4,7 +4,7 @@ workflows:
     jobs:
       # Support PHP Versions
       # http://php.net/supported-versions.php
-      - php71-build: # Will be deprecated on 1 Dec 2019
+      - php56-build:
           filters:
             tags:
               only: /.*/
@@ -18,7 +18,7 @@ workflows:
               only: /.*/
       - deploy:
           requires:
-            - php71-build
+            - php56-build
             - php72-build
             - jest
           filters:
@@ -29,9 +29,9 @@ workflows:
 
 version: 2
 jobs:
-  php71-build:
+  php56-build:
     docker:
-      - image: circleci/php:7.1
+      - image: circleci/php:5.6
       - image: circleci/mysql:5.7
     steps:
       - checkout
