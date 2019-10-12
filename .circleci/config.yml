@@ -124,6 +124,8 @@ jobs:
       - store_artifacts:
           path: /tmp/artifacts/code-coverage/
           destination: jest-coverage
+      - store_test_results:
+          path: /tmp/artifacts/code-coverage/
 
   deploy:
     docker:
