@@ -108,6 +108,7 @@
 		"husky": "^3.0.8",
 		"inquirer": "^5.0.0",
 		"jest": "^24.8.0",
+		"jest-junit": "github:jest-community/jest-junit",
 		"jsdom": "^15.1.1",
 		"lint-staged": "^9.4.1",
 		"lodash": "^4.17.11",
