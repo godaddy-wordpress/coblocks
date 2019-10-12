@@ -75,7 +75,8 @@ jobs:
             source /home/circleci/.bashrc
       - run:
           name: "Install Dependencies"
-          command: bash .dev/bin/install-dependencies.sh
+          command: |
+            bash .dev/bin/install-dependencies.sh
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: "Run PHPCS"
