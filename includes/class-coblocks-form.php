@@ -401,19 +401,11 @@ class CoBlocks_Form {
 
 		}
 
-		if ( ! empty( $styles ) ) {
-
-			$styles = ' style="' . esc_attr( $styles ) . '"';
-
-		}
-
-		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>
 
-		<button type="submit" class="wp-block-button__link <?php echo esc_attr( $btn_class ); ?>"<?php echo $styles; ?>><?php echo esc_html( $btn_text ); ?></button>
+		<button type="submit" class="wp-block-button__link <?php echo esc_attr( $btn_class ); ?>" style="<?php echo esc_attr( $styles ); ?>"><?php echo esc_html( $btn_text ); ?></button>
 
 		<?php
-		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
