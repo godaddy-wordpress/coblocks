@@ -37,31 +37,31 @@ class CoBlocks_Accordion_IE_Support {
 	/**
 	 * The base URL path (without trailing slash).
 	 *
-	 * @var string $_url
+	 * @var string $url
 	 */
-	private $_url;
+	private $url;
 
 	/**
 	 * The Plugin version.
 	 *
-	 * @var string $_version
+	 * @var string $version
 	 */
-	private $_version;
+	private $version;
 
 	/**
 	 * The Plugin version.
 	 *
-	 * @var string $_slug
+	 * @var string $slug
 	 */
-	private $_slug;
+	private $slug;
 
 	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$this->_version = COBLOCKS_VERSION;
-		$this->_slug    = 'coblocks';
-		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+		$this->version = COBLOCKS_VERSION;
+		$this->slug    = 'coblocks';
+		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
 		add_action( 'the_post', array( $this, 'load_assets' ) );
@@ -76,7 +76,7 @@ class CoBlocks_Accordion_IE_Support {
 
 		global $post;
 
-		// Validate Post ID
+		// Validate Post ID.
 		if ( ! isset( $post->ID ) || empty( $post->ID ) ) {
 
 			return;
@@ -91,10 +91,10 @@ class CoBlocks_Accordion_IE_Support {
 			$dir = CoBlocks()->asset_source( 'js' );
 
 			wp_enqueue_script(
-				$this->_slug . '-accordion-polyfill',
-				$dir . $this->_slug . '-accordion-polyfill' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$this->slug . '-accordion-polyfill',
+				$dir . $this->slug . '-accordion-polyfill' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array(),
-				$this->_version,
+				$this->version,
 				true
 			);
 		}

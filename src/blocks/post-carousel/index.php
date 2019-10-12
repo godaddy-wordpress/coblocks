@@ -109,7 +109,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 		'<div class="%1$s"><div class="coblocks-slick pb-8" data-slick="%2$s">',
 		esc_attr( $class ),
 		esc_attr(
-			json_encode(
+			wp_json_encode(
 				/**
 				 * Filter the slick slider carousel settings
 				 *
@@ -266,7 +266,7 @@ function coblocks_get_post_carousel_info( $posts ) {
 }
 
 /**
- * returns the posts for an external rss feed.
+ * Returns the posts for an external rss feed.
  *
  * @param array $posts current posts.
  *
@@ -278,7 +278,7 @@ function coblocks_get_rss_post_carousel_info( $posts ) {
 
 	foreach ( $posts as $post ) {
 
-		$title = esc_html( trim( strip_tags( $post->get_title() ) ) );
+		$title = esc_html( trim( wp_strip_all_tags( $post->get_title() ) ) );
 
 		$formatted_post = null;
 
@@ -324,7 +324,9 @@ function coblocks_register_post_carousel_block() {
 	wp_register_script(
 		'coblocks-slick-initializer',
 		$dir . 'coblocks-slick-initializer' . COBLOCKS_ASSET_SUFFIX . '.js',
-		array( 'jquery' )
+		array( 'jquery' ),
+		COBLOCKS_VERSION,
+		true
 	);
 
 	register_block_type(

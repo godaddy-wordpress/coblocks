@@ -37,16 +37,16 @@ class CoBlocks_Font_Loader {
 	/**
 	 * The Plugin version.
 	 *
-	 * @var string $_version
+	 * @var string $version
 	 */
-	private $_version;
+	private $version;
 
 
 	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$this->_version = COBLOCKS_VERSION;
+		$this->version = COBLOCKS_VERSION;
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'fonts_loader' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'fonts_loader' ) );
@@ -97,7 +97,7 @@ class CoBlocks_Font_Loader {
 						'coblocks-block-fonts',
 						add_query_arg( $query_args, '//fonts.googleapis.com/css' ),
 						array(),
-						$this->_version
+						$this->version
 					);
 
 					wp_enqueue_style( 'coblocks-block-fonts' );

@@ -59,6 +59,7 @@ class CoBlocks_Getting_Started_Page {
 			apply_filters( 'coblocks_getting_started_screen_capability', 'manage_options' ),
 			'coblocks-getting-started',
 			array( $this, 'content' ),
+			// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 			'data:image/svg+xml;base64,' . base64_encode( $svg )
 		);
 	}

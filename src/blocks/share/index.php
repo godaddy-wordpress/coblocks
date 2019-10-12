@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Server-side rendering of the `coblocks/social` block.
  *

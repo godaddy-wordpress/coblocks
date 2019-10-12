@@ -56,7 +56,7 @@ class CoBlocks_Font_Loader_Tests extends WP_UnitTestCase {
 			'version' => '1.15.0',
 		];
 
-		$version = $reflection->getProperty( '_version' );
+		$version = $reflection->getProperty( 'version' );
 
 		$version->setAccessible( true );
 

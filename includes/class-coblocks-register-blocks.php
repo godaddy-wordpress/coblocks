@@ -37,15 +37,15 @@ class CoBlocks_Register_Blocks {
 	/**
 	 * The Plugin version.
 	 *
-	 * @var string $_slug
+	 * @var string $slug
 	 */
-	private $_slug;
+	private $slug;
 
 	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$this->_slug = 'coblocks';
+		$this->slug = 'coblocks';
 
 		add_action( 'init', array( $this, 'register_blocks' ), 99 );
 	}
@@ -63,7 +63,7 @@ class CoBlocks_Register_Blocks {
 		}
 
 		// Shortcut for the slug.
-		$slug = $this->_slug;
+		$slug = $this->slug;
 
 		register_block_type(
 			$slug . '/accordion',

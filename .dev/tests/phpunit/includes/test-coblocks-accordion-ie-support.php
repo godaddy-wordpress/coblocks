@@ -42,9 +42,9 @@ class CoBlocks_Accordion_IE_Support_Tests extends WP_UnitTestCase {
 			'url'     => str_replace( '/.dev/tests/phpunit', '', untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) ) ), // Fix inconsistencies path between plugin and unit tests
 		];
 
-		$version = $reflection->getProperty( '_version' );
-		$slug    = $reflection->getProperty( '_slug' );
-		$url     = $reflection->getProperty( '_url' );
+		$version = $reflection->getProperty( 'version' );
+		$slug    = $reflection->getProperty( 'slug' );
+		$url     = $reflection->getProperty( 'url' );
 
 		$version->setAccessible( true );
 		$slug->setAccessible( true );

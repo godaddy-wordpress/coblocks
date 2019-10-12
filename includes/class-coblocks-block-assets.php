@@ -37,31 +37,31 @@ class CoBlocks_Block_Assets {
 	/**
 	 * The base URL path (without trailing slash).
 	 *
-	 * @var string $_url
+	 * @var string $url
 	 */
-	private $_url;
+	private $url;
 
 	/**
 	 * The plugin version.
 	 *
-	 * @var string $_version
+	 * @var string $version
 	 */
-	private $_version;
+	private $version;
 
 	/**
 	 * The plugin version.
 	 *
-	 * @var string $_slug
+	 * @var string $slug
 	 */
-	private $_slug;
+	private $slug;
 
 	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
-		$this->_version = COBLOCKS_VERSION;
-		$this->_slug    = 'coblocks';
-		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+		$this->version = COBLOCKS_VERSION;
+		$this->slug    = 'coblocks';
+		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
@@ -78,10 +78,10 @@ class CoBlocks_Block_Assets {
 
 		// Styles.
 		wp_enqueue_style(
-			$this->_slug . '-frontend',
-			$this->_url . '/dist/blocks.style.build.css',
+			$this->slug . '-frontend',
+			$this->url . '/dist/blocks.style.build.css',
 			array(),
-			$this->_version
+			$this->version
 		);
 	}
 
@@ -94,16 +94,16 @@ class CoBlocks_Block_Assets {
 
 		// Styles.
 		wp_register_style(
-			$this->_slug . '-editor',
-			$this->_url . '/dist/blocks.editor.build.css',
+			$this->slug . '-editor',
+			$this->url . '/dist/blocks.editor.build.css',
 			array(),
-			$this->_version
+			$this->version
 		);
 
 		// Scripts.
 		wp_register_script(
-			$this->_slug . '-editor',
-			$this->_url . '/dist/blocks.build.js',
+			$this->slug . '-editor',
+			$this->url . '/dist/blocks.build.js',
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api' ),
 			time(),
 			true
@@ -121,14 +121,14 @@ class CoBlocks_Block_Assets {
 		$email_to = (string) apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), $post_id );
 
 		wp_localize_script(
-			$this->_slug . '-editor',
+			$this->slug . '-editor',
 			'coblocksBlockData',
 			[
-				'form' => [
+				'form'              => [
 					'adminEmail'   => $email_to,
 					'emailSubject' => $post_title,
 				],
-				'cropSettingsNonce' => wp_create_nonce( 'cropSettingsNonce' )
+				'cropSettingsNonce' => wp_create_nonce( 'cropSettingsNonce' ),
 			]
 		);
 
@@ -154,60 +154,60 @@ class CoBlocks_Block_Assets {
 		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
 
 		// Masonry block.
-		if ( has_block( $this->_slug . '/gallery-masonry' ) ) {
+		if ( has_block( $this->slug . '/gallery-masonry' ) ) {
 			wp_enqueue_script(
-				$this->_slug . '-masonry',
-				$dir . $this->_slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$this->slug . '-masonry',
+				$dir . $this->slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery', 'masonry', 'imagesloaded' ),
-				$this->_version,
+				$this->version,
 				true
 			);
 		}
 
 		// Carousel block.
-		if ( has_block( $this->_slug . '/gallery-carousel' ) ) {
+		if ( has_block( $this->slug . '/gallery-carousel' ) ) {
 			wp_enqueue_script(
-				$this->_slug . '-flickity',
+				$this->slug . '-flickity',
 				$vendors_dir . '/flickity' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
-				$this->_version,
+				$this->version,
 				true
 			);
 		}
 
 		// Post Carousel block.
-		if ( has_block( $this->_slug . '/post-carousel' ) ) {
+		if ( has_block( $this->slug . '/post-carousel' ) ) {
 			wp_enqueue_script(
-				$this->_slug . '-slick',
+				$this->slug . '-slick',
 				$vendors_dir . '/slick' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
-				$this->_version,
+				$this->version,
 				true
 			);
 			wp_enqueue_script(
-				$this->_slug . '-slick-initializer-front',
-				$dir . $this->_slug . '-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$this->slug . '-slick-initializer-front',
+				$dir . $this->slug . '-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
-				$this->_version,
+				$this->version,
 				true
 			);
 		}
 
 		// Lightbox.
-		if ( has_block( $this->_slug . '/gallery-masonry' ) || has_block( $this->_slug . '/gallery-stacked' ) ) {
+		if ( has_block( $this->slug . '/gallery-masonry' ) || has_block( $this->slug . '/gallery-stacked' ) ) {
 			wp_enqueue_script(
-				$this->_slug . '-lightbox',
-				$dir . $this->_slug . '-lightbox' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$this->slug . '-lightbox',
+				$dir . $this->slug . '-lightbox' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
-				$this->_version,
+				$this->version,
 				true
 			);
 
 			wp_enqueue_script(
-				$this->_slug . '-masonry',
-				$dir . $this->_slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$this->slug . '-masonry',
+				$dir . $this->slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery', 'masonry', 'imagesloaded' ),
-				$this->_version,
+				$this->version,
 				true
 			);
 		}

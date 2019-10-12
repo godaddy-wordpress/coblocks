@@ -19,8 +19,24 @@ class CoBlocks_Crop_Settings {
 
 	const CROP_META_KEY = 'crop-image-data';
 
+	/**
+	 * This class's instance.
+	 *
+	 * @var CoBlocks
+	 * @since 1.14.0
+	 */
 	private static $instance;
 
+	/**
+	 * Main CoBlocks Instance.
+	 *
+	 * Insures that only one instance of CoBlocks exists in memory at any one
+	 * time. Also prevents needing to define globals all over the place.
+	 *
+	 * @since 1.14.0
+	 * @static
+	 * @return object|CoBlocks_Crop_Settings The one true CoBlocks_Crop_Settings
+	 */
 	public static function instance() {
 
 		if ( empty( self::$instance ) ) {
@@ -33,6 +49,11 @@ class CoBlocks_Crop_Settings {
 
 	}
 
+	/**
+	 * Register the ajax endpoints
+	 *
+	 * @since 1.14.0
+	 */
 	public function register_endpoints() {
 
 		add_filter( 'ajax_query_attachments_args', [ $this, 'hide_cropped_from_library' ] );
@@ -44,6 +65,7 @@ class CoBlocks_Crop_Settings {
 	/**
 	 * Hide the cropped image from the media library
 	 *
+	 * @param array $query The post query.
 	 * @return array Media attachments query array.
 	 */
 	public function hide_cropped_from_library( $query ) {
@@ -132,9 +154,21 @@ class CoBlocks_Crop_Settings {
 
 	}
 
+	/**
+	 * Crop the image
+	 *
+	 * @param int   $id The attachment id.
+	 * @param float $offset_x The x offset.
+	 * @param float $offset_y The y offset.
+	 * @param float $width The width.
+	 * @param float $height The height.
+	 * @param float $rotate THe rotation.
+	 *
+	 * @return id|null The cropped image id.
+	 */
 	public function image_media_crop( $id, $offset_x, $offset_y, $width, $height, $rotate ) {
 
-		require_once( ABSPATH . 'wp-admin/includes/image.php' );
+		require_once ABSPATH . 'wp-admin/includes/image.php';
 
 		$attachment_meta   = wp_get_attachment_metadata( $id );
 		$original_image_id = isset( $attachment_meta[ self::ORIGINAL_META_KEY ] ) ? $attachment_meta[ self::ORIGINAL_META_KEY ] : $id;

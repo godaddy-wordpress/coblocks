@@ -93,20 +93,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test the define function sets a constant properly
-	 */
-	public function test_define() {
-
-		$reflection_method = new ReflectionMethod( 'CoBlocks', 'define' );
-
-		$reflection_method->setAccessible( true );
-		$reflection_method->invoke( coblocks(), 'COBLOCKS_TEST_CONSTANT', 'TEST_VALUE' );
-
-		$this->assertEquals( COBLOCKS_TEST_CONSTANT, 'TEST_VALUE' );
-
-	}
-
-	/**
 	 * Test core plugin files were included
 	 */
 	public function test_included_files() {
