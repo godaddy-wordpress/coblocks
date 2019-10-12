@@ -105,7 +105,8 @@ class CoBlocks_Block_Assets {
 			$this->slug . '-editor',
 			$this->url . '/dist/blocks.build.js',
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-rich-text', 'wp-editor' ),
-			time()
+			time(),
+			false
 		);
 
 		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
