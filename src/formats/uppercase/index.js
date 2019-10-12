@@ -16,12 +16,11 @@ import { RichTextToolbarButton, RichTextShortcut } from '@wordpress/block-editor
  */
 const name = 'coblocks/uppercase';
 
-export const uppercase = {
-	name,
+const settings = {
 	title: __( 'Uppercase' ),
 	tagName: 'span',
 	className: 'uppercase',
-	edit( { isActive, value, onChange } ) {
+	edit: ( { isActive, value, onChange } ) => {
 		const onToggle = () => onChange( toggleFormat( value, { type: name } ) );
 
 		return (
@@ -43,3 +42,5 @@ export const uppercase = {
 		);
 	},
 };
+
+export { name, settings };
