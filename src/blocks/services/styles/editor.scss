@@ -27,8 +27,8 @@ $gutter: 0.3em;
 
 .wp-block-coblocks-services {
 	[data-align="full"] & {
-		padding-left: $gutter * 6;
-		padding-right: $gutter * 6;
+		padding-left: map-get($padding, 2);
+		padding-right: map-get($padding, 2);
 	}
 
 	.block-editor-inner-blocks {

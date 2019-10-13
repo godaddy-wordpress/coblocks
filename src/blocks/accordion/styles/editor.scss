@@ -7,7 +7,7 @@
 	}
 
 	&[data-align="full"] .wp-block-coblocks-accordion {
-		padding: 0 12px;
+		padding: 0 map-get($padding, 2);
 	}
 
 	.block-editor-inner-blocks .block-list-appender {

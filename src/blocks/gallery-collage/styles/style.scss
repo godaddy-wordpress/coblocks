@@ -1,9 +1,7 @@
 .wp-block-coblocks-gallery-collage {
-	&.alignfull {
-		ul {
-			padding-left: 1em;
-			padding-right: 1em;
-		}
+	&.alignfull ul {
+		padding-left: map-get($padding, 2);
+		padding-right: map-get($padding, 2);
 	}
 
 	ul {

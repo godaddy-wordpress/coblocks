@@ -9,8 +9,8 @@ $gutter: 1em;
 	}
 
 	&.alignfull {
-		padding-left: $gutter * 2;
-		padding-right: $gutter * 2;
+		padding-left: map-get($padding, 2);
+		padding-right: map-get($padding, 2);
 	}
 
 	> .wp-block-coblocks-service:last-child {
