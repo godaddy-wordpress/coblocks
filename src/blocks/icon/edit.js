@@ -35,7 +35,7 @@ class Edit extends Component {
 	componentDidMount() {
 		if ( this.isStylePreview() ) {
 			this.props.setAttributes( { icon: 'aperture' } );
-		} else {
+		} else if ( this.props.attributes.icon === '' ) {
 			// Randomized the default icon when first added.
 			const defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
 			const rand = defaultIcons[ Math.floor( Math.random() * defaultIcons.length ) ];
