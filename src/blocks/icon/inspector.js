@@ -245,7 +245,7 @@ class Inspector extends Component {
 											} }
 										>
 											<span className="editor-block-types-list__item-icon">
-												{ svg[ iconStyle ][ icon ].icon }
+												{ icon && svg[ iconStyle ][ icon ].icon }
 											</span>
 										</Button>
 									</li> :
@@ -268,7 +268,7 @@ class Inspector extends Component {
 														} }
 													>
 														<span className="editor-block-types-list__item-icon">
-															{ svg[ iconStyle ][ keyName ].icon }
+															{ icon && svg[ iconStyle ][ keyName ].icon }
 														</span>
 													</Button>
 												</Tooltip>

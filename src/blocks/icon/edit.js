@@ -28,14 +28,9 @@ const MAX_ICON_SIZE = 400;
 export { MIN_ICON_SIZE, MAX_ICON_SIZE };
 
 class Edit extends Component {
-	isStylePreview() {
-		return ( $( `#block-${ this.props.clientId }` ).parent().parent().hasClass( 'block-editor-block-preview__content' ) );
-	}
-
 	componentDidMount() {
-		if ( this.isStylePreview() ) {
-			this.props.setAttributes( { icon: 'aperture' } );
-		} else if ( this.props.attributes.icon === '' ) {
+		// Check if the icon is the default.
+		if ( this.props.attributes.icon === '' ) {
 			// Randomized the default icon when first added.
 			const defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
 			const rand = defaultIcons[ Math.floor( Math.random() * defaultIcons.length ) ];

@@ -4,7 +4,7 @@
 	"attributes": {
 		"icon": {
 			"type": "string",
-			"default" : ""
+			"default": ""
 		},
 		"iconSize": {
 			"type": "string",
