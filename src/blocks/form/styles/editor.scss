@@ -5,6 +5,11 @@
 		font-size: inherit;
 	}
 
+	// Hide the appender in pre WP 5.3
+	.block-list-appender {
+		display: none;
+	}
+
 	.coblocks-field-label__input-wrapper {
 		display: flex;
 		flex-direction: row;
