@@ -61,7 +61,7 @@ class DisableBlocks extends Component {
 		const settingsState = this.state.settings;
 
 		//get current blocks
-		const currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
+		const currentBlocks = wp.data.select( 'core/block-editor' ).getBlocks();
 		const blockNames = MapInnerBlocks( currentBlocks );
 
 		//check block for editor match first
