@@ -4,12 +4,18 @@
 import classnames from 'classnames';
 
 /**
+ * Internal dependencies
+ */
+import metadata from './block.json';
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 
 const deprecated = [
 	{
+		attributes: metadata.attributes,
 		save( { attributes } ) {
 			const { url, file, meta } = attributes;
 
