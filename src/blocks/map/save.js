@@ -50,7 +50,7 @@ function Save( { attributes } ) {
 					title={ __( 'Google Map' ) }
 					frameBorder="0"
 					style={ { width: '100%', minHeight: height + 'px' } }
-					src={ 'https://www.google.com/maps?q=' + encodeURIComponent( address ) + `&output=embed&hl=${ locale }&z=` + zoom }
+					src={ `https://www.google.com/maps?q=${ encodeURIComponent( address ) }&output=embed&hl=${ locale }&z=${ zoom }` }
 				/>
 			}
 		</div>
