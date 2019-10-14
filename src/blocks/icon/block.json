@@ -4,11 +4,7 @@
 	"attributes": {
 		"icon": {
 			"type": "string",
-			"default": "heart"
-		},
-		"iconRand": {
-			"type": "boolean",
-			"default": true
+			"default" : "heart"
 		},
 		"iconSize": {
 			"type": "string",
