@@ -104,9 +104,8 @@ class CoBlocks_Block_Assets {
 		wp_register_script(
 			$this->_slug . '-editor',
 			$this->_url . '/dist/blocks.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api' ),
-			time(),
-			true
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-rich-text', 'wp-editor' ),
+			time()
 		);
 
 		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
@@ -168,6 +167,24 @@ class CoBlocks_Block_Assets {
 			wp_enqueue_script(
 				$this->_slug . '-flickity',
 				$vendors_dir . '/flickity' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				$this->_version,
+				true
+			);
+		}
+
+		// Post Carousel block.
+		if ( has_block( $this->_slug . '/post-carousel' ) ) {
+			wp_enqueue_script(
+				$this->_slug . '-slick',
+				$vendors_dir . '/slick' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				$this->_version,
+				true
+			);
+			wp_enqueue_script(
+				$this->_slug . '-slick-initializer-front',
+				$dir . $this->_slug . '-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
 				$this->_version,
 				true

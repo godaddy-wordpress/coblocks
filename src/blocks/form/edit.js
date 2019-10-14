@@ -9,19 +9,14 @@ import emailValidator from 'email-validator';
 /**
  * Internal dependencies
  */
-import icons from './icons';
-import CoBlocksField from './fields/field';
-import CoBlocksFieldName from './fields/field-name';
-import CoBlocksFieldTextarea from './fields/field-textarea';
 import Notice from './notice';
 import SubmitButton from './submit-button';
 
 /**
  * WordPress dependencies
  */
-import { __, _x, sprintf } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { registerBlockType, getBlockType } from '@wordpress/blocks';
 import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
 import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
@@ -30,112 +25,6 @@ import { applyFilters } from '@wordpress/hooks';
  * Block constants
  */
 const ALLOWED_BLOCKS = [];
-
-const FieldDefaults = {
-	category: 'coblocks',
-	parent: [ 'coblocks/form' ],
-	supports: {
-		reusable: false,
-		html: false,
-		inserter: false,
-	},
-	attributes: {
-		label: {
-			type: 'string',
-			default: null,
-		},
-		required: {
-			type: 'boolean',
-			default: false,
-		},
-		hasLastName: {
-			type: 'boolean',
-			default: false,
-		},
-		labelFirstName: {
-			type: 'string',
-			default: __( 'First' ),
-		},
-		labelLastName: {
-			type: 'string',
-			default: __( 'Last' ),
-		},
-	},
-	save: () => null,
-};
-
-const getFieldLabel = ( { attributes, name: blockName } ) => {
-	return null === attributes.label ?
-		getBlockType( blockName ).title :
-		attributes.label;
-};
-
-const editField = type => props => (
-	<CoBlocksField
-		type={ type }
-		label={ getFieldLabel( props ) }
-		required={ props.attributes.required }
-		setAttributes={ props.setAttributes }
-		isSelected={ props.isSelected }
-	/>
-);
-
-export const childBlocks = [
-	{
-		name: 'coblocks/field-name',
-		settings: {
-			...FieldDefaults,
-			title: _x( 'Name', 'block name' ),
-			description: __( 'A text field for names.' ),
-			icon: icons.name,
-			edit: props => (
-				<CoBlocksFieldName
-					type={ 'name' }
-					label={ getFieldLabel( props ) }
-					labelFirstName={ props.attributes.labelFirstName }
-					labelLastName={ props.attributes.labelLastName }
-					required={ props.attributes.required }
-					hasLastName={ props.attributes.hasLastName }
-					setAttributes={ props.setAttributes }
-					isSelected={ props.isSelected }
-				/>
-			),
-		},
-	},
-	{
-		name: 'coblocks/field-email',
-		settings: {
-			...FieldDefaults,
-			title: _x( 'Email', 'block name' ),
-			keywords: [ _x( 'e-mail', 'block keyword' ), _x( 'mail', 'block keyword' ), 'email' ],
-			description: __( 'An email address field.' ),
-			icon: icons.email,
-			edit: editField( 'email' ),
-		},
-	},
-	{
-		name: 'coblocks/field-textarea',
-		settings: {
-			...FieldDefaults,
-			title: _x( 'Message', 'block name' ),
-			keywords: [ _x( 'Textarea', 'block keyword' ), 'textarea', _x( 'Multiline text', 'block keyword' ) ],
-			description: __( 'A text box for longer responses.' ),
-			icon: icons.textarea,
-			edit: props => (
-				<CoBlocksFieldTextarea
-					label={ getFieldLabel( props ) }
-					required={ props.attributes.required }
-					setAttributes={ props.setAttributes }
-					isSelected={ props.isSelected }
-				/>
-			),
-		},
-	},
-];
-
-childBlocks.forEach( childBlock =>
-	registerBlockType( childBlock.name, childBlock.settings )
-);
 
 /**
  * Get settings
@@ -146,24 +35,9 @@ wp.api.loadPromise.then( () => {
 } );
 
 const FORM_TEMPLATE = [
-	[
-		'coblocks/field-name',
-		{
-			required: false,
-		},
-	],
-	[
-		'coblocks/field-email',
-		{
-			required: true,
-		},
-	],
-	[
-		'coblocks/field-textarea',
-		{
-			required: true,
-		},
-	],
+	[ 'coblocks/field-name', { required: false } ],
+	[ 'coblocks/field-email', { required: true } ],
+	[ 'coblocks/field-textarea', { required: true } ],
 ];
 
 const RETRIEVE_KEY_URL = 'https://g.co/recaptcha/v3';

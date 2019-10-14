@@ -24,7 +24,7 @@ import './extensions/image-styles';
 import './extensions/image-crop';
 
 // Formats
-import './formats/';
+import './formats';
 
 // Sidebars
 import './sidebars/block-manager';
@@ -39,9 +39,9 @@ import * as accordionItem from './blocks/accordion/accordion-item';
 import * as alert from './blocks/alert';
 import * as author from './blocks/author';
 import * as buttons from './blocks/buttons';
-import * as collage from './blocks/gallery-collage';
 import * as carousel from './blocks/gallery-carousel';
 import * as clickToTweet from './blocks/click-to-tweet';
+import * as collage from './blocks/gallery-collage';
 import * as column from './blocks/row/column';
 import * as dynamicSeparator from './blocks/dynamic-separator';
 import * as feature from './blocks/features/feature';
@@ -49,6 +49,9 @@ import * as features from './blocks/features';
 import * as foodAndDrinks from './blocks/food-and-drinks';
 import * as foodItem from './blocks/food-and-drinks/food-item';
 import * as form from './blocks/form';
+import * as fieldEmail from './blocks/form/fields/email';
+import * as fieldName from './blocks/form/fields/name';
+import * as fieldTextarea from './blocks/form/fields/textarea';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
 import * as hero from './blocks/hero';
@@ -58,15 +61,17 @@ import * as logos from './blocks/logos';
 import * as map from './blocks/map';
 import * as masonry from './blocks/gallery-masonry';
 import * as mediaCard from './blocks/media-card';
+import * as posts from './blocks/posts';
+import * as postCarousel from './blocks/post-carousel';
 import * as pricingTable from './blocks/pricing-table';
 import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 import * as row from './blocks/row';
+import * as service from './blocks/services/service';
+import * as services from './blocks/services';
 import * as shapeDivider from './blocks/shape-divider';
 import * as share from './blocks/share';
-import * as services from './blocks/services';
-import * as service from './blocks/services/service';
-import * as stacked from './blocks/gallery-stacked';
 import * as socialProfiles from './blocks/social-profiles';
+import * as stacked from './blocks/gallery-stacked';
 
 /**
  * Function to register an individual block.
@@ -97,13 +102,16 @@ export const registerCoBlocksBlocks = () => {
 		alert,
 		author,
 		buttons,
-		collage,
 		carousel,
 		clickToTweet,
+		collage,
 		column,
 		dynamicSeparator,
 		feature,
 		features,
+		fieldEmail,
+		fieldName,
+		fieldTextarea,
 		foodAndDrinks,
 		foodItem,
 		form,
@@ -116,6 +124,8 @@ export const registerCoBlocksBlocks = () => {
 		map,
 		masonry,
 		mediaCard,
+		posts,
+		postCarousel,
 		pricingTable,
 		pricingTableItem,
 		row,
@@ -127,4 +137,5 @@ export const registerCoBlocksBlocks = () => {
 		stacked,
 	].forEach( registerBlock );
 };
+
 registerCoBlocksBlocks();

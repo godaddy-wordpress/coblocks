@@ -14,11 +14,18 @@
 // Utility classes
 @import "style/padding";
 @import "style/margin";
+@import "style/columns";
+@import "style/height";
+@import "style/width";
 @import "style/gutter";
 @import "style/shadow";
 
 // Utility tooltips
 @import "style/tooltips";
+
+.relative {
+	position: relative;
+}
 
 .has-text-align-right {
 	text-align: right;
@@ -30,6 +37,42 @@
 
 .has-text-align-center {
 	text-align: center;
+}
+
+.list-none {
+	list-style: none;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex-0 {
+	flex: 0 0 auto;
+}
+
+.flex-auto {
+	flex: 1 1 auto;
+}
+
+.flex-row-reverse {
+	flex-direction: row-reverse;
+}
+
+.flex-col {
+	flex-direction: column;
+}
+
+.self-start {
+	align-self: self-start;
+}
+
+.self-center {
+	align-self: center;
+}
+
+.items-stretch {
+	align-items: stretch;
 }
 
 .h-full {
@@ -62,6 +105,14 @@
 
 .position-absolute {
 	position: absolute;
+}
+
+.block {
+	display: block;
+}
+
+.table {
+	display: table;
 }
 
 .object-cover {

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/author should render with content 1`] = `
+"<!-- wp:coblocks/author {\\"name\\":\\"Author Name\\"} -->
+<div class=\\"wp-block-coblocks-author\\"><div class=\\"wp-block-coblocks-author__content\\"><span class=\\"wp-block-coblocks-author__name\\">Author Name</span><p class=\\"wp-block-coblocks-author__biography\\">Author biography</p></div></div>
+<!-- /wp:coblocks/author -->"
+`;

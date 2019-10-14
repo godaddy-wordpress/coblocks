@@ -23,6 +23,10 @@ const deprecated = [
 			customBorderColor: {
 				type: 'string',
 			},
+			type: {
+				type: 'string',
+				default: 'default',
+			},
 		},
 
 		save( { attributes, className } ) {
