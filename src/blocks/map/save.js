@@ -33,6 +33,8 @@ function Save( { attributes } ) {
 		fullscreenControl,
 	};
 
+	const locale = document.documentElement.lang;
+
 	const attr = Object
 		.keys( mapAttributes )
 		.map( key => `/q${ key }/q:/q${ mapAttributes[ key ] }/q` )
@@ -48,7 +50,7 @@ function Save( { attributes } ) {
 					title={ __( 'Google Map' ) }
 					frameBorder="0"
 					style={ { width: '100%', minHeight: height + 'px' } }
-					src={ 'https://www.google.com/maps?q=' + encodeURIComponent( address ) + '&language=ja&output=embed&hl=%s&z=' + zoom }
+					src={ `https://www.google.com/maps?q=${ encodeURIComponent( address ) }&output=embed&hl=${ locale }&z=${ zoom }` }
 				/>
 			}
 		</div>

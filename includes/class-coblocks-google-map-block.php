@@ -94,9 +94,11 @@ class CoBlocks_Google_Map_Block {
 
 			if ( ! is_admin() ) {
 
+				$locale = explode( '_', get_locale() );
+
 				wp_enqueue_script(
 					$this->_slug . '-google-maps-api',
-					'https://maps.googleapis.com/maps/api/js?key=' . esc_attr( $key ),
+					'https://maps.googleapis.com/maps/api/js?key=' . esc_attr( $key ) . '&language=' . esc_attr( $locale[0] ),
 					array( $this->_slug . '-google-maps' ),
 					$this->_version,
 					true
