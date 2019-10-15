@@ -293,7 +293,6 @@ class DimensionsControl extends Component {
 			help,
 			instanceId,
 			label = __( 'Margin' ),
-			onChange,
 			type = 'margin',
 			unit,
 			valueBottom,
