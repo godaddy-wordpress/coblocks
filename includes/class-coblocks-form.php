@@ -440,13 +440,13 @@ class CoBlocks_Form {
 	 */
 	public function render_field_radio( $atts, $content ) {
 
-		$the_options = array_filter( $atts['options'] );
-
-		if ( empty( $the_options ) ) {
+		if ( empty( $atts['options'] ) ) {
 
 			return;
 
 		}
+
+		$the_options = array_filter( $atts['options'] );
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
 		$label_slug = sanitize_title( $label );
