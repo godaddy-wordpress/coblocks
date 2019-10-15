@@ -166,7 +166,7 @@ class Edit extends Component {
 		const dropZone = (
 			<BackgroundDropZone
 				{ ...this.props }
-				label={ __( 'Add backround to row' ) }
+				label={ __( 'Add background to row' ) }
 			/>
 		);
 
