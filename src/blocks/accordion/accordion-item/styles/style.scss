@@ -46,5 +46,13 @@
 		border-radius: 0 0 $accordion-border-radius $accordion-border-radius;
 		margin-top: -1px;
 		padding: 15px 20px;
+
+		> div {
+			max-width: 100%;
+		}
+	}
+
+	.alignfull img {
+		max-width: 100% !important;
 	}
 }
