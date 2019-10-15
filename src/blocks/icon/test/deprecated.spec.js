@@ -6,7 +6,7 @@ import { name, settings } from '../index';
 
 const variations = {
 	className: [ undefined, '', 'random classes' ],
-	icon: [],
+	icon: [ undefined, '', 'coblocks' ],
 	iconRand: [ undefined, true, false ],
 	iconSize: [ undefined, 0, 60 ],
 	contentAlign: [ undefined, 'left', 'center', 'right' ],
