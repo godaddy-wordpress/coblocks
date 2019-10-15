@@ -362,9 +362,12 @@ let icons = {
 
 if ( Object.keys( coblocksBlockData.customIcons ).length ) {
 	Object.keys( coblocksBlockData.customIcons ).forEach( function( key ) {
-		const customIcon = coblocksBlockData.customIcons[ key ].icon;
-		const iconMarkup = customIcon.replace( '<svg', '<svg data-coblocks-custom-icon="true" role="img" aria-hidden="true" focusable="false"' );
-		coblocksBlockData.customIcons[ key ].icon = parse( iconMarkup );
+		const customIcon = ( coblocksBlockData.customIcons[ key ].icon ).replace( '<svg', '<svg data-coblocks-custom-icon="true" role="img" aria-hidden="true" focusable="false"' );
+		coblocksBlockData.customIcons[ key ].icon = parse( customIcon );
+		if ( 'icon_outlined' in coblocksBlockData.customIcons[ key ] ) {
+			const outlinedIcon = ( coblocksBlockData.customIcons[ key ][ 'icon_outlined' ] ).replace( '<svg', '<svg data-coblocks-custom-icon="true" role="img" aria-hidden="true" focusable="false"' );
+			coblocksBlockData.customIcons[ key ][ 'icon_outlined' ] = parse( outlinedIcon );
+		}
 	} );
 	icons = { ...icons, ...coblocksBlockData.customIcons };
 }

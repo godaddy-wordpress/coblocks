@@ -162,6 +162,13 @@ class CoBlocks_Block_Assets {
 			$icon_slug = str_replace( '.svg', '', basename( $icon ) );
 			$icon_name = ucwords( str_replace( '-', ' ', $icon_slug ) );
 
+			// Icon exists in directory, but not found in config
+			if ( ! array_key_exists( $icon_slug, $config ) ) {
+
+				continue;
+
+			}
+
 			$custom_icons[ $icon_slug ] = [
 				'label'    => $icon_name,
 				'keywords' => strtolower( $icon_name ),
@@ -180,7 +187,13 @@ class CoBlocks_Block_Assets {
 
 				}
 
-				$custom_icons[ $icon ] = array_replace_recursive( $custom_icons[ $icon ], $metadata );
+				if ( array_key_exists( 'icon_outlined', $config[ $icon ] ) ) {
+
+					$metadata['icon_outlined'] = file_exists( get_stylesheet_directory() . '/coblocks/icons/' . $metadata['icon_outlined'] ) ? file_get_contents( get_stylesheet_directory() . '/coblocks/icons/' . $metadata['icon_outlined'] ) : '';
+
+				}
+
+				$custom_icons[ $icon ] = array_replace_recursive( $custom_icons[ $icon ], array_filter( $metadata ) );
 
 			}
 		}
