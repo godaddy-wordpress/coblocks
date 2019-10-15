@@ -167,10 +167,10 @@ class CoBlocks_Form {
 		);
 
 		register_block_type(
-			'coblocks/field-telephone',
+			'coblocks/field-phone',
 			[
 				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_telephone' ],
+				'render_callback' => [ $this, 'render_field_phone' ],
 			]
 		);
 
@@ -403,16 +403,16 @@ class CoBlocks_Form {
 	}
 
 	/**
-	 * Render the telephone field
+	 * Render the phone field
 	 *
 	 * @param  array $atts    Block attributes.
 	 * @param  mixed $content Block content.
 	 *
-	 * @return mixed Markup for the telephone field.
+	 * @return mixed Markup for the phone field.
 	 */
-	public function render_field_telephone( $atts, $content ) {
+	public function render_field_phone( $atts, $content ) {
 
-		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Telephone', 'coblocks' );
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Phone', 'coblocks' );
 		$label_slug    = sanitize_title( $label );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
