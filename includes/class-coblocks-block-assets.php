@@ -123,12 +123,69 @@ class CoBlocks_Block_Assets {
 			$this->_slug . '-editor',
 			'coblocksBlockData',
 			[
-				'form' => [
+				'form'        => [
 					'adminEmail'   => $email_to,
 					'emailSubject' => $post_title,
 				],
+				'customIcons' => $this->get_custom_icons(),
 			]
 		);
+
+	}
+
+	/**
+	 * Load custom icons from the theme directory, if they exist
+	 *
+	 * @return array Custom icons array if they exist, else empty array.
+	 */
+	public function get_custom_icons() {
+
+		$config = [];
+		$icons  = glob( get_stylesheet_directory() . '/coblocks/icons/*.svg' );
+
+		if ( empty( $icons ) ) {
+
+			return [];
+
+		}
+
+		if ( file_exists( get_stylesheet_directory() . '/coblocks/icons/config.json' ) ) {
+
+			$config = json_decode( file_get_contents( get_stylesheet_directory() . '/coblocks/icons/config.json' ), true );
+
+		}
+
+		$custom_icons = [];
+
+		foreach ( $icons as $icon ) {
+
+			$icon_slug = str_replace( '.svg', '', basename( $icon ) );
+			$icon_name = ucwords( str_replace( '-', ' ', $icon_slug ) );
+
+			$custom_icons[ $icon_slug ] = [
+				'label'    => $icon_name,
+				'keywords' => strtolower( $icon_name ),
+				'icon'     => file_get_contents( $icon ),
+			];
+
+		}
+
+		if ( ! empty( $config ) ) {
+
+			foreach ( $config as $icon => $metadata ) {
+
+				if ( ! array_key_exists( $icon, $custom_icons ) ) {
+
+					continue;
+
+				}
+
+				$custom_icons[ $icon ] = array_replace_recursive( $custom_icons[ $icon ], $metadata );
+
+			}
+		}
+
+		return $custom_icons;
 
 	}
 

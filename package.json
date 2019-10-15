@@ -171,5 +171,8 @@
 		"coverageReporters": [
 			"html"
 		]
+	},
+	"dependencies": {
+		"html-react-parser": "^0.9.1"
 	}
 }
