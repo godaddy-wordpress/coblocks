@@ -24,7 +24,7 @@ class Controls extends Component {
 
 	onSelectImages( images ) {
 		this.props.setAttributes( {
-			images: images.map( ( image ) => helper.pickRelevantMediaFiles( image ) ),
+			images: images.map( ( image ) => helper.pickRelevantMediaFiles( image, this.props.attributes.images ) ),
 		} );
 	}
 
