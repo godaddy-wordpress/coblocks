@@ -17,7 +17,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { BaseControl, PanelBody, ToggleControl, RangeControl, TextControl, Button, ButtonGroup, ExternalLink } from '@wordpress/components';
 import { ENTER } from '@wordpress/keycodes';
 
-const RETRIEVE_KEY_URL = 'https://cloud.google.com/maps-platform';
+const GET_KEY_URL = 'https://cloud.google.com/maps-platform';
 const HELP_URL = 'https://developers.google.com/maps/documentation/javascript/get-api-key';
 
 class Inspector extends Component {
@@ -37,6 +37,10 @@ class Inspector extends Component {
 		this.updateApiKey = this.updateApiKey.bind( this );
 		this.removeApiKey = this.removeApiKey.bind( this );
 		this.handleKeyDown = this.handleKeyDown.bind( this );
+	}
+
+	componentDidMount() {
+		this.setState( { apiKey: this.props.apiKey } );
 	}
 
 	setControls() {
@@ -205,10 +209,10 @@ class Inspector extends Component {
 						initialOpen={ false }
 						className="components-coblocks-block-settings-sidebar"
 					>
-						<p>{ __( 'Add your Google Maps API key. Updating this API key will set all your maps to use the new key.' ) }</p>
+						<p>{ __( 'Add a Google Maps API key. Updating this API key will set all your maps to use the new key.' ) }</p>
 						{ apiKey === '' &&
 							<p>
-								<ExternalLink href={ RETRIEVE_KEY_URL }>{ __( 'Retrieve your key' ) }</ExternalLink>|&nbsp;
+								<ExternalLink href={ GET_KEY_URL }>{ __( 'Get a key' ) }</ExternalLink>|&nbsp;
 								<ExternalLink href={ HELP_URL }>{ __( 'Need help?' ) }</ExternalLink>
 							</p>
 						}
@@ -224,8 +228,9 @@ class Inspector extends Component {
 							onClick={ this.updateApiKey }
 							disabled={ ( this.state.apiKey === '' ) || ( this.state.apiKey === this.props.apiKey ) }
 						>
-							{ this.props.attributes.hasApiKey ? __( 'Saved' ) : __( 'Save' ) }
+							{ ( this.state.apiKey === this.props.apiKey && this.props.apiKey !== '' ) ? __( 'Saved' ) : __( 'Save' ) }
 						</Button>
+						{ apiKey &&
 						<Button
 							className="components-block-coblocks-map-api-key-remove__button"
 							isDefault
@@ -234,6 +239,7 @@ class Inspector extends Component {
 						>
 							{ __( 'Remove' ) }
 						</Button>
+						}
 					</PanelBody>
 				</InspectorControls>
 			</Fragment>
