@@ -363,8 +363,7 @@ let icons = {
 if ( Object.keys( coblocksBlockData.customIcons ).length ) {
 	Object.keys( coblocksBlockData.customIcons ).forEach( function( key ) {
 		const customIcon = coblocksBlockData.customIcons[ key ].icon;
-		const iconMarkup = customIcon.replace( '<svg', '<svg role="img" aria-hidden="true" focusable="false"' );
-
+		const iconMarkup = customIcon.replace( '<svg', '<svg data-coblocks-custom-icon="true" role="img" aria-hidden="true" focusable="false"' );
 		coblocksBlockData.customIcons[ key ].icon = parse( iconMarkup );
 	} );
 	icons = { ...icons, ...coblocksBlockData.customIcons };
