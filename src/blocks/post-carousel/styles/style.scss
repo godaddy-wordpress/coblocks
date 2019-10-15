@@ -1,0 +1,105 @@
+.wp-block-coblocks-post-carousel {
+	&.alignfull {
+		padding-left: map-get($padding, 2);
+		padding-right: map-get($padding, 2);
+
+		// 782px+
+		@include break-medium() {
+			padding-left: map-get($padding, 8);
+			padding-right: map-get($padding, 8);
+		}
+	}
+
+	&__image a {
+		outline: none;
+	}
+
+	&__date {
+		color: $dark-gray-300;
+		display: block;
+		font-size: $editor-font-size;
+	}
+
+	@import "slick";
+
+	&:not(.alignwide) .coblocks-slick {
+		@include break-medium() {
+			padding-bottom: 0;
+		}
+	}
+}
+
+// 782px+
+.wp-block-coblocks-post-carousel:not(.alignwide) .slick-prev {
+	@include break-medium() {
+		left: -5em;
+		transform: translateY(-50%);
+	}
+}
+
+// 782px+
+.wp-block-coblocks-post-carousel:not(.alignwide) .slick-next {
+	@include break-medium() {
+		right: -5em;
+		transform: translateY(-50%);
+	}
+}
+
+// 782px+
+.wp-block-coblocks-post-carousel:not(.alignwide) .slick-next,
+.wp-block-coblocks-post-carousel:not(.alignwide) .slick-prev {
+	@include break-medium() {
+		bottom: 50%;
+	}
+}
+
+.is-twentynineteen {
+	.wp-block-coblocks-post-carousel {
+		line-height: 1.6;
+
+		&__content a {
+			font-family: $default-font;
+			font-size: calc(22px * 1.125);
+			font-weight: 700;
+			line-height: 1.2;
+			margin-bottom: 0.5rem;
+			margin-top: 0.5rem;
+			text-decoration: none !important;
+		}
+
+		&__date {
+			font-family: $default-font;
+			font-weight: 700;
+		}
+	}
+}
+
+.is-twentytwenty {
+	.wp-block-coblocks-post-carousel {
+		color: #6d6d6d;
+	}
+
+	.wp-block-coblocks-post-carousel .columns {
+		margin-bottom: 0.5em;
+	}
+
+	.wp-block-coblocks-post-carousel a {
+		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.wp-block-coblocks-post-carousel__date {
+		color: #6d6d6d;
+		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+		font-size: 0.7em;
+		font-weight: 600;
+		letter-spacing: normal;
+		margin-bottom: 0.2em;
+	}
+}

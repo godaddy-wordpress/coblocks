@@ -87,7 +87,7 @@
 
 	&__attribute.components-icon-button {
 		border: 0;
-		border-radius: 0;
+		border-radius: 2px;
 		box-shadow: none;
 		color: inherit;
 		font-size: inherit;
@@ -105,6 +105,10 @@
 
 		&:not(.is-toggled) {
 			opacity: 0.55;
+		}
+
+		&:focus {
+			box-shadow: 0 0 0 2px $white, 0 0 0 3px $dark-gray-500;
 		}
 	}
 }
@@ -170,9 +174,7 @@
 
 .wp-block[data-type="coblocks/food-item"] {
 	flex: 1 50%;
-	margin-left: 5px;
-	margin-right: 5px;
-	max-width: calc(50% - 10px) !important;
+	max-width: 50% !important;
 
 	@media all and (max-width: 514px) {
 		max-width: 100% !important;

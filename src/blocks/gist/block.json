@@ -1,0 +1,21 @@
+{
+	"name": "coblocks/gist",
+	"category": "coblocks",
+	"attributes": {
+		"url": {
+			"type": "string"
+		},
+		"file": {
+			"type": "string"
+		},
+		"meta": {
+			"type": "boolean",
+			"default": true
+		},
+		"caption": {
+			"type": "string",
+			"source": "html",
+			"selector": "figcaption"
+		}
+	}
+}

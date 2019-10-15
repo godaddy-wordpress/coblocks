@@ -6,14 +6,13 @@ import filter from 'lodash/filter';
 /**
  * Internal dependencies
  */
-import { name } from './';
+import metadata from './block.json';
 import { GalleryTransforms } from '../../components/block-gallery/shared';
-import { BackgroundTransforms } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { createBlock } = wp.blocks;
+import { createBlock } from '@wordpress/blocks';
 
 const transforms = {
 	from: [
@@ -21,9 +20,8 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'coblocks/gallery-stacked' ],
 			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
+				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -31,9 +29,8 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'coblocks/gallery-carousel' ],
 			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
+				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -41,9 +38,8 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'coblocks/gallery-thumbnails' ],
 			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
+				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -51,9 +47,8 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'coblocks/gallery-offset' ],
 			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
+				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -61,9 +56,8 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'coblocks/gallery-auto-height' ],
 			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
+				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -71,9 +65,8 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'blockgallery/stacked' ],
 			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
+				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -81,9 +74,8 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'blockgallery/masonry' ],
 			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
+				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -91,9 +83,8 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'blockgallery/carousel' ],
 			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
+				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
-					...BackgroundTransforms( attributes ),
 				} )
 			),
 		},
@@ -101,7 +92,7 @@ const transforms = {
 			type: 'block',
 			blocks: [ 'core/gallery' ],
 			transform: ( attributes ) => (
-				createBlock( `coblocks/${ name }`, {
+				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
 				} )
 			),
@@ -113,19 +104,19 @@ const transforms = {
 			transform: ( attributes ) => {
 				const validImages = filter( attributes, ( { id, url } ) => id && url );
 				if ( validImages.length > 0 ) {
-					return createBlock( `coblocks/${ name }`, {
+					return createBlock( metadata.name, {
 						images: validImages.map( ( { id, url, alt, caption } ) => ( { id, url, alt, caption } ) ),
 						ids: validImages.map( ( { id } ) => id ),
 					} );
 				}
-				return createBlock( `coblocks/${ name }` );
+				return createBlock( metadata.name );
 			},
 		},
 		{
 			type: 'prefix',
 			prefix: ':masonry',
 			transform: function( content ) {
-				return createBlock( `coblocks/${ name }`, {
+				return createBlock( metadata.name, {
 					content,
 				} );
 			},

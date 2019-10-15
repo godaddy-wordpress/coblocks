@@ -1,10 +1,10 @@
 /**
  * WordPress dependencies.
  */
-const { __ } = wp.i18n;
-const { Fragment } = wp.element;
-const { PanelBody, ToggleControl, TextareaControl, ExternalLink, FocalPointPicker } = wp.components;
-const { InspectorControls } = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import { Fragment } from '@wordpress/element';
+import { PanelBody, ToggleControl, TextareaControl, ExternalLink, FocalPointPicker } from '@wordpress/components';
+import { InspectorControls } from '@wordpress/block-editor';
 
 const Inspector = props => {
 	const {

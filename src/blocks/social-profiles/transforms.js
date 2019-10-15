@@ -1,6 +1,9 @@
-/* eslint-env browser */
-const { createBlock } = wp.blocks;
+/**
+ * WordPress dependencies
+ */
+import { createBlock } from '@wordpress/blocks';
 
+/* eslint-env browser */
 function getPreviousAttributes( blockName, attributeName, attributes ) {
 	switch ( blockName ) {
 		case 'social-profiles':

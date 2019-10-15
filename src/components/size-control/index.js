@@ -12,11 +12,11 @@ import './styles/editor.scss';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const { Component, Fragment } = wp.element;
-const { ButtonGroup, Button } = wp.components;
-const { withSelect } = wp.data;
+import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import { Component, Fragment } from '@wordpress/element';
+import { ButtonGroup, Button } from '@wordpress/components';
+import { withSelect } from '@wordpress/data';
 
 class SizeControl extends Component {
 	constructor() {

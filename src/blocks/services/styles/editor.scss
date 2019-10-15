@@ -1,38 +1,31 @@
 $gutter: 0.3em;
 
 .coblocks-editor-block-styles {
-	& .align-center {
+	.align-center {
 		.service-svg-moving-path {
 			transform: translateX(4px);
 		}
 	}
 
-	& .align-left {
+	.align-left {
 		.service-svg-moving-path {
 			transform: translateX(0);
 		}
 	}
 
-	& .align-right {
+	.align-right {
 		.service-svg-moving-path {
 			transform: translateX(8px);
 		}
 	}
-}
 
-.wp-block[data-type="coblocks/services"] {
-	[data-block] {
-		margin-bottom: 0;
-		margin-top: 0;
+	.block-editor-block-styles__item-preview {
+		height: 82px;
+		padding: 0;
 	}
 }
 
 .wp-block-coblocks-services {
-	[data-block] {
-		margin-bottom: 0;
-		margin-top: 0;
-	}
-
 	[data-align="full"] & {
 		padding-left: $gutter * 6;
 		padding-right: $gutter * 6;
@@ -71,7 +64,7 @@ $gutter: 0.3em;
 		&[data-columns="4"] .wp-block[data-type="coblocks/service"] {
 			flex-basis: 50%;
 			margin-bottom: 3em;
-			max-width: calc(100% / 2 - #{$gutter});
+			max-width: calc(100% / 2);
 
 			&:nth-child(1),
 			&:nth-child(3) {
@@ -105,4 +98,18 @@ $gutter: 0.3em;
 
 .components-toggle-control--services-action-button {
 	margin-top: 40px;
+}
+
+// Added for Gutenberg 6.3+
+.block-editor-block-list__block[data-type="coblocks/services"].has-child-selected
+	> .block-editor-block-list__block-edit
+	> [data-block]
+	> div
+	> .block-editor-inner-blocks,
+.block-editor-block-list__block[data-type="coblocks/services"].is-selected
+	> .block-editor-block-list__block-edit
+	> [data-block]
+	> div
+	> .block-editor-inner-blocks {
+	padding: 14px 10px;
 }

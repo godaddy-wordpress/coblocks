@@ -3,17 +3,16 @@
  */
 import icons from './icons';
 import './styles/style.scss';
-import './styles/editor.scss';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component } = wp.element;
-const {
+import { __, _x } from '@wordpress/i18n';
+import { Component } from '@wordpress/element';
+import {
 	Toolbar,
 	DropdownMenu,
-} = wp.components;
+} from '@wordpress/components';
 
 class MediaFilterControl extends Component {
 	render() {
@@ -29,7 +28,7 @@ class MediaFilterControl extends Component {
 		const filterControls = [
 			{
 				icon: icons.none,
-				title: __( 'Original' ),
+				title: _x( 'Original', 'image styles' ),
 				onClick: () => {
 					setAttributes( { filter: 'none' } );
 				},
@@ -37,7 +36,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.grayscale,
-				title: __( 'Grayscale' ),
+				title: _x( 'Grayscale Filter', 'image styles' ),
 				onClick: () => {
 					setAttributes( { filter: 'grayscale' } );
 				},
@@ -45,7 +44,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.sepia,
-				title: __( 'Sepia' ),
+				title: _x( 'Sepia Filter', 'image styles' ),
 				onClick: () => {
 					setAttributes( { filter: 'sepia' } );
 				},
@@ -53,7 +52,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.saturation,
-				title: __( 'Saturation' ),
+				title: _x( 'Saturation Filter', 'image styles' ),
 				onClick: () => {
 					setAttributes( { filter: 'saturation' } );
 				},
@@ -61,7 +60,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.dark,
-				title: __( 'Dim' ),
+				title: _x( 'Dim Filter', 'image styles' ),
 				onClick: () => {
 					setAttributes( { filter: 'dim' } );
 				},
@@ -69,7 +68,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.vintage,
-				title: __( 'Vintage' ),
+				title: _x( 'Vintage Filter', 'image styles' ),
 				onClick: () => {
 					setAttributes( { filter: 'vintage' } );
 				},
@@ -80,6 +79,7 @@ class MediaFilterControl extends Component {
 		return (
 			<Toolbar>
 				<DropdownMenu
+					hasArrowIndicator
 					icon={ icons.filter }
 					label={ __( 'Apply filter' ) }
 					controls={ filterControls }

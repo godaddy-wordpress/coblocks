@@ -1,22 +1,12 @@
 /**
  * WordPress dependencies
  */
-const { SVG, Path, G } = wp.components;
+import { SVG, Path, G } from '@wordpress/components';
 
 /**
  * Block user interface icons
  */
 const icons = {};
-
-icons.services = (
-	<SVG viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-		<G fill="currentColor" fillRule="nonzero">
-			<Path d="m3 3h18v10h-18z" />
-			<Path d="m3 15h14v2h-14z" />
-			<Path d="m3 19h14v2h-14z" />
-		</G>
-	</SVG>
-);
 
 icons.service43 = (
 	<SVG height="32" viewBox="0 0 56 32" width="56" xmlns="http://www.w3.org/2000/svg">

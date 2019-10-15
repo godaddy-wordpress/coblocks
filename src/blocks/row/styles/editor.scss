@@ -495,24 +495,6 @@ div[data-type="coblocks/row"].is-resizing .has-huge-gutter .components-resizable
 	}
 }
 
-//Fix background color contrast issue
-body {
-	.editor-styles-wrapper {
-		.wp-block-coblocks-column {
-			p,
-			a,
-			h1,
-			h2,
-			h3,
-			h4,
-			h5,
-			h6 {
-				color: inherit;
-			}
-		}
-	}
-}
-
 // Our custom inserter.
 .wp-block-coblocks-column {
 	> .wp-block-coblocks-column__inner {
@@ -521,6 +503,15 @@ body {
 				> div:not(.wp-block) {
 					> .editor-default-block-appender {
 						> .editor-inserter {
+							display: none !important;
+							position: relative;
+						}
+					}
+				}
+
+				> .block-list-appender {
+					> div:not(.wp-block) {
+						> .editor-default-block-appender {
 							display: none !important;
 							position: relative;
 						}

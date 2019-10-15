@@ -207,7 +207,7 @@ class CoBlocks_Form {
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( untrailingslashit( get_the_permalink() ) ), $this->form_hash ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); ?>
-				<input class="coblocks-field verify" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>">
+				<input class="coblocks-field verify" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>" tabindex="-1">
 				<div class="coblocks-form__submit wp-block-button">
 					<?php $this->render_submit_button( $atts ); ?>
 					<?php wp_nonce_field( 'coblocks-form-submit', 'form-submit' ); ?>
@@ -420,7 +420,7 @@ class CoBlocks_Form {
 	/**
 	 * Process the form submission
 	 *
-	 * @return null
+	 * @return bool True when an email is sent, else false.
 	 */
 	public function process_form_submission( $atts ) {
 
@@ -453,6 +453,27 @@ class CoBlocks_Form {
 
 		}
 
+		/**
+		 * Fires before a form is submitted.
+		 *
+		 * @param array $_POST User submitted form data.
+		 * @param array $atts  Form block attributes.
+		 */
+		do_action( 'coblocks_before_form_submit', $_POST, $atts );
+
+		/**
+		 * Filter to disable the CoBlocks form emails.
+		 *
+		 * @param bool false Whether or not the emails should be disabled.
+		 */
+		$send_email = (bool) apply_filters( 'coblocks_form_email_send', true );
+
+		if ( ! $send_email ) {
+
+			return true;
+
+		}
+
 		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
 
@@ -467,7 +488,7 @@ class CoBlocks_Form {
 
 				$this->remove_url_form_hash();
 
-				return;
+				return false;
 
 			}
 
@@ -518,9 +539,25 @@ class CoBlocks_Form {
 		 */
 		$email_content = (string) apply_filters( 'coblocks_form_email_content', $this->email_content, $_POST, $post_id );
 
+		/**
+		 * Filter the form email headers.
+		 *
+		 * @param array   []       Email headers.
+		 * @param array   $_POST   Submitted form data.
+		 * @param integer $post_id Current post ID.
+		 */
+		$email_headers = (array) apply_filters(
+			'coblocks_form_email_headers',
+			[
+				"Reply-To: {$_POST['field-email']['value']}",
+			],
+			$_POST,
+			$post_id
+		);
+
 		add_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
 
-		$email = wp_mail( $to, $subject, $email_content );
+		$email = wp_mail( $to, $subject, $email_content, $email_headers );
 
 		remove_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
 

@@ -11,7 +11,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-const { InnerBlocks } = wp.blockEditor;
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const deprecated = [
 	{

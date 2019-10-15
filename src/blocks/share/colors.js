@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { withColors } = wp.blockEditor;
+import { withColors } from '@wordpress/block-editor';
 
 /**
  * Generate block colors.
@@ -9,6 +9,7 @@ const { withColors } = wp.blockEditor;
 const applyWithColors = withColors(
 	'backgroundColor',
 	{ textColor: 'color' },
+	'blockBackgroundColor',
 );
 
 export default applyWithColors;

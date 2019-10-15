@@ -1,8 +1,16 @@
 .editor-block-list__block[data-type="coblocks/pricing-table-item"] {
 	width: 100%;
 
+	> .editor-block-list__block-edit,
+	> div > [data-block] {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+
 	.wp-block-coblocks-pricing-table-item {
+		flex-basis: 100% !important;
 		margin: 0;
+		max-width: 100% !important;
 
 		&__price {
 			display: flex !important;
@@ -19,8 +27,6 @@
 
 	.editor-block-list__block-edit {
 		height: 100%;
-		margin-bottom: 30px;
-		margin-top: 0;
 
 		> div:not(.editor-block-contextual-toolbar) {
 			@media (min-width: 600px) {
@@ -31,11 +37,27 @@
 		}
 	}
 
-	.has-left-content & .editor-block-list__block[data-type="core/button"] .editor-block-list__block-edit > div {
+	// Tweak editor styling of button block.
+	.wp-block[data-type="core/button"] {
+		.block-editor-block-list__block-edit::before {
+			display: none;
+		}
+
+		.components-base-control__field {
+			margin-bottom: 0;
+		}
+
+		[data-block] {
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+	}
+
+	.has-text-align-left & .editor-block-list__block[data-type="core/button"] .editor-block-list__block-edit > div {
 		justify-content: flex-start;
 	}
 
-	.has-right-content & .editor-block-list__block[data-type="core/button"] .editor-block-list__block-edit > div {
+	.has-text-align-right & .editor-block-list__block[data-type="core/button"] .editor-block-list__block-edit > div {
 		justify-content: flex-end;
 	}
 
@@ -52,8 +74,6 @@
 	}
 
 	.editor-inner-blocks {
-		margin-bottom: -25px;
-
 		.editor-block-list__insertion-point {
 			display: none;
 		}
@@ -78,10 +98,10 @@
 	}
 }
 
-.has-left-content .wp-block-coblocks-pricing-table-item .wp-block[data-type="core/button"] {
+.has-text-align-left .wp-block-coblocks-pricing-table-item .wp-block[data-type="core/button"] {
 	margin-left: 0;
 }
 
-.has-right-content .wp-block-coblocks-pricing-table-item .wp-block[data-type="core/button"] {
+.has-text-align-right .wp-block-coblocks-pricing-table-item .wp-block[data-type="core/button"] {
 	margin-right: 0;
 }

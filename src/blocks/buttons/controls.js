@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-const { Component, Fragment } = wp.element;
-const { BlockControls, AlignmentToolbar } = wp.blockEditor;
+import { Component, Fragment } from '@wordpress/element';
+import { BlockControls, AlignmentToolbar } from '@wordpress/block-editor';
 
 class Controls extends Component {
 	render() {

@@ -16,7 +16,9 @@ class CoBlocks_Getting_Started_Page_Tests extends WP_UnitTestCase {
 
 		$this->coblocks_getting_started_page = new CoBlocks_Getting_Started_Page();
 
-		set_current_screen( 'toplevel_page_coblocks-getting-started' );
+		wp_set_current_user( self::factory()->user->create( array( 'role' => 'administrator' ) ) );
+
+		set_current_screen( 'tools_page_coblocks-getting-started' );
 
 	}
 
@@ -35,7 +37,6 @@ class CoBlocks_Getting_Started_Page_Tests extends WP_UnitTestCase {
 
 		$actions = [
 			[ 'admin_menu', 'screen_page' ],
-			[ 'activated_plugin', 'redirect' ],
 			[ 'admin_enqueue_scripts', 'load_style', 100 ],
 		];
 
@@ -61,8 +62,7 @@ class CoBlocks_Getting_Started_Page_Tests extends WP_UnitTestCase {
 
 		$this->coblocks_getting_started_page->screen_page();
 
-		$this->assertNotEmpty( menu_page_url( 'coblocks-getting-started', false ) );
-
+		$this->assertEquals( 'http://example.org/wp-admin/tools.php?page=coblocks-getting-started', menu_page_url( 'coblocks-getting-started', false ) );
 	}
 
 	/**
@@ -118,27 +118,6 @@ class CoBlocks_Getting_Started_Page_Tests extends WP_UnitTestCase {
 		}
 
 		$this->assertTrue( true );
-
-	}
-
-	/**
-	 * Test that the page content is rendered correctly
-	 */
-	public function test_content() {
-
-		$this->expectOutputRegex(
-			'/You&#039;ve just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: <strong> tens of blocks<\/strong>, a <strong> page-builder experience <\/strong> and <strong> custom typography controls<\/strong>./',
-			$this->coblocks_getting_started_page->content()
-		);
-
-	}
-
-	/**
-	 * Test the plugin redirects properly
-	 */
-	public function test_redirect() {
-
-		$this->markTestSkipped( 'Todo: Figure out how to properly test the redirection.' );
 
 	}
 }

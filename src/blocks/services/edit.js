@@ -12,14 +12,14 @@ import icons from './icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const {
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import {
 	AlignmentToolbar,
 	BlockControls,
 	InnerBlocks,
-} = wp.blockEditor;
-const { dispatch, select } = wp.data;
+} from '@wordpress/block-editor';
+import { dispatch, select } from '@wordpress/data';
 const TokenList = wp.tokenList;
 
 /**
@@ -30,13 +30,13 @@ const ALLOWED_BLOCKS = [ 'coblocks/service' ];
 const layoutOptions = [
 	{
 		name: 'threebyfour',
-		label: __( '4:3' ),
+		label: '4:3',
 		icon: icons.service43,
 		isDefault: true,
 	},
 	{
 		name: 'sixbynine',
-		label: __( '16:9' ),
+		label: '16:9',
 		icon: icons.service169,
 	},
 	{
@@ -99,6 +99,16 @@ function replaceActiveStyle( className, activeStyle, newStyle ) {
 }
 
 class Edit extends Component {
+	constructor() {
+		super( ...arguments );
+
+		this.updateStyle = this.updateStyle.bind( this );
+		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
+		this.onChangeAlignment = this.onChangeAlignment.bind( this );
+		this.onChangeHeadingLevel = this.onChangeHeadingLevel.bind( this );
+		this.toggleCtas = this.toggleCtas.bind( this );
+	}
+
 	componentDidUpdate( prevProps ) {
 		const { attributes } = this.props;
 		const activeStyle = getActiveStyle( layoutOptions, attributes.className );
@@ -114,7 +124,7 @@ class Edit extends Component {
 		}
 	}
 
-	updateStyle = style => {
+	updateStyle( style ) {
 		const { className, attributes, setAttributes } = this.props;
 
 		const activeStyle = getActiveStyle( layoutOptions, className );
@@ -125,9 +135,9 @@ class Edit extends Component {
 		);
 
 		setAttributes( { className: updatedClassName } );
-	};
+	}
 
-	updateInnerAttributes = ( blockName, newAttributes ) => {
+	updateInnerAttributes( blockName, newAttributes ) {
 		const innerItems = select( 'core/block-editor' ).getBlocksByClientId(
 			this.props.clientId
 		)[ 0 ].innerBlocks;
@@ -140,30 +150,30 @@ class Edit extends Component {
 				);
 			}
 		} );
-	};
+	}
 
-	onChangeAlignment = alignment => {
+	onChangeAlignment( alignment ) {
 		const { setAttributes } = this.props;
 
 		setAttributes( { alignment } );
 		this.updateInnerAttributes( 'coblocks/service', { alignment } );
-	};
+	}
 
-	onChangeHeadingLevel = headingLevel => {
+	onChangeHeadingLevel( headingLevel ) {
 		const { setAttributes } = this.props;
 
 		setAttributes( { headingLevel } );
 		this.updateInnerAttributes( 'coblocks/service', { headingLevel } );
-	};
+	}
 
-	toggleCtas = () => {
+	toggleCtas() {
 		const { attributes, setAttributes } = this.props;
 
 		const buttons = ! attributes.buttons;
 		setAttributes( { buttons } );
 
 		this.updateInnerAttributes( 'coblocks/service', { showCta: buttons } );
-	};
+	}
 
 	render() {
 		const { className, attributes, setAttributes } = this.props;

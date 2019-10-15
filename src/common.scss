@@ -4,8 +4,54 @@
 @import "styles/editor/core/breakpoints";
 @import "styles/editor/core/mixins";
 
-// Colors.
-$coblocks: #1e35b9;
+// Margin Utility
+$margin: (
+	0: 0,
+	1: 0.5em,
+	2: 1em,
+	3: 1.5em,
+	4: 2em,
+	5: 2.5em,
+	6: 3em,
+	7: 3.5em,
+	8: 4em,
+	-1: 0.5em,
+	-2: -1em,
+	-3: -1.5em,
+	-4: -2em,
+	-5: -2.5em,
+	-6: -3em,
+	-7: -3.5em
+);
+
+// Padding Utility
+$padding: (
+	0: 0,
+	1: 0.5em,
+	2: 1em,
+	3: 1.5em,
+	4: 2em,
+	5: 2.5em,
+	6: 3em,
+	7: 3.5em,
+	8: 4em
+);
+
+$padding__sm: (
+	0: 0,
+	1: 0.5em,
+	2: 1em,
+	3: 1.5em,
+	4: 1.75em
+);
+
+$padding__lg: (
+	0: 0,
+	1: 1em,
+	2: 1.5em,
+	3: 2em,
+	4: 2.75em
+);
 
 // Gutters
 $gutter--small: 18px;
@@ -16,6 +62,16 @@ $gutter--huge: 60px;
 // Accordion
 $accordion-border-radius: 4px;
 $accordion-background: #f2f2f2;
+
+// Alert
+$alert-default-background-color: #d6efee;
+$alert-default-color: #094264;
+$alert-warning-background-color: #fbe7dd;
+$alert-warning-color: #8a4b30;
+$alert-error-background-color: #ffdede;
+$alert-error-color: #8b343c;
+$alert-success-background-color: #d0eac4;
+$alert-success-color: #154a28;
 
 // Click to Tweet
 $twitter: #1da1f2;

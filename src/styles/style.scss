@@ -1,3 +1,5 @@
+@import "style/mixins";
+
 // Background
 @import "style/background-classes";
 @import "style/background-overlay";
@@ -12,11 +14,66 @@
 // Utility classes
 @import "style/padding";
 @import "style/margin";
+@import "style/columns";
+@import "style/height";
+@import "style/width";
 @import "style/gutter";
 @import "style/shadow";
 
 // Utility tooltips
 @import "style/tooltips";
+
+.relative {
+	position: relative;
+}
+
+.has-text-align-right {
+	text-align: right;
+}
+
+.has-text-align-left {
+	text-align: left;
+}
+
+.has-text-align-center {
+	text-align: center;
+}
+
+.list-none {
+	list-style: none;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex-0 {
+	flex: 0 0 auto;
+}
+
+.flex-auto {
+	flex: 1 1 auto;
+}
+
+.flex-row-reverse {
+	flex-direction: row-reverse;
+}
+
+.flex-col {
+	flex-direction: column;
+}
+
+.self-start {
+	align-self: self-start;
+}
+
+.self-center {
+	align-self: center;
+}
+
+.items-stretch {
+	align-items: stretch;
+}
 
 .h-full {
 	height: 100%;
@@ -50,6 +107,14 @@
 	position: absolute;
 }
 
+.block {
+	display: block;
+}
+
+.table {
+	display: table;
+}
+
 .object-cover {
 	object-fit: cover;
 }
@@ -57,4 +122,3 @@
 .object-position {
 	object-position: 50% 50%;
 }
-

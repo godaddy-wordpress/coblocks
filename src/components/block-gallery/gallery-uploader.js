@@ -7,10 +7,10 @@ import * as helper from './../../utils/helper';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { FormFileUpload } = wp.components;
-const { mediaUpload } = wp.editor;
+import { __ } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { FormFileUpload } from '@wordpress/components';
+import { mediaUpload } from '@wordpress/editor';
 
 class GalleryUploader extends Component {
 	constructor() {

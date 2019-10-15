@@ -8,7 +8,7 @@ import Masonry from 'react-masonry-component';
 /**
  * Internal dependencies
  */
-import { title, icon } from './';
+import { icon } from './';
 import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
@@ -16,18 +16,15 @@ import GalleryPlaceholder from '../../components/block-gallery/gallery-placehold
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import { GalleryClasses } from '../../components/block-gallery/shared';
-import { BackgroundClasses, BackgroundStyles, BackgroundVideo } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { withSelect } = wp.data;
-const { withNotices, Spinner } = wp.components;
-const { withColors } = wp.blockEditor;
-const { isBlobURL } = wp.blob;
+import { __, sprintf } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
+import { withNotices } from '@wordpress/components';
 
 /**
  * Block consts
@@ -138,25 +135,23 @@ class GalleryMasonryEdit extends Component {
 	render() {
 		const {
 			attributes,
-			backgroundColor,
 			className,
 			editorSidebarOpened,
 			isSelected,
 			noticeUI,
 			pluginSidebarOpened,
 			publishSidebarOpened,
-			captionColor,
 		} = this.props;
 
 		const {
 			align,
-			backgroundImg,
 			captions,
 			gridSize,
 			gutter,
 			gutterMobile,
 			images,
 			linkTo,
+			lightbox,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -172,17 +167,12 @@ class GalleryMasonryEdit extends Component {
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
-			...BackgroundClasses( attributes ),
 			sidebarIsOpened, {
 				[ `align${ align }` ]: align,
 				'has-gutter': gutter > 0,
+				'has-lightbox': lightbox,
 			}
 		);
-
-		const innerStyles = {
-			...BackgroundStyles( attributes ),
-			backgroundColor: backgroundColor.color,
-		};
 
 		const masonryClasses = classnames(
 			`has-grid-${ gridSize }`, {
@@ -191,15 +181,11 @@ class GalleryMasonryEdit extends Component {
 			}
 		);
 
-		const masonryStyles = {
-			color: captionColor.color,
-		};
-
 		if ( ! hasImages ) {
 			return (
 				<GalleryPlaceholder
 					{ ...this.props }
-					label={ title }
+					label={ __( 'Masonry' ) }
 					icon={ icon }
 				/>
 			);
@@ -219,17 +205,11 @@ class GalleryMasonryEdit extends Component {
 				}
 				{ noticeUI }
 				<div className={ className }>
-					<div
-						className={ innerClasses }
-						style={ innerStyles }
-					>
+					<div className={ innerClasses }>
 						{ dropZone }
-						{ isBlobURL( backgroundImg ) && <Spinner /> }
-						{ BackgroundVideo( attributes ) }
 						<Masonry
 							elementType={ 'ul' }
 							className={ masonryClasses }
-							style={ masonryStyles }
 							options={ masonryOptions }
 							disableImagesLoaded={ false }
 							updateOnEachImageLoad={ false }
@@ -280,6 +260,5 @@ export default compose( [
 		publishSidebarOpened: select( 'core/edit-post' ).isPublishSidebarOpened(),
 		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
 	} ) ),
-	withColors( { backgroundColor: 'background-color', captionColor: 'color' } ),
 	withNotices,
 ] )( GalleryMasonryEdit );

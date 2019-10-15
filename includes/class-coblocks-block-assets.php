@@ -104,9 +104,8 @@ class CoBlocks_Block_Assets {
 		wp_register_script(
 			$this->_slug . '-editor',
 			$this->_url . '/dist/blocks.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api' ),
-			time(),
-			true
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-rich-text', 'wp-editor' ),
+			time()
 		);
 
 		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
@@ -141,6 +140,11 @@ class CoBlocks_Block_Assets {
 	 */
 	public function frontend_scripts() {
 
+		// Custom scripts are not allowed in AMP, so short-circuit.
+		if ( CoBlocks()->is_amp() ) {
+			return;
+		}
+
 		// Define where the asset is loaded from.
 		$dir = CoBlocks()->asset_source( 'js' );
 
@@ -164,6 +168,43 @@ class CoBlocks_Block_Assets {
 				$this->_slug . '-flickity',
 				$vendors_dir . '/flickity' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
+				$this->_version,
+				true
+			);
+		}
+
+		// Post Carousel block.
+		if ( has_block( $this->_slug . '/post-carousel' ) ) {
+			wp_enqueue_script(
+				$this->_slug . '-slick',
+				$vendors_dir . '/slick' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				$this->_version,
+				true
+			);
+			wp_enqueue_script(
+				$this->_slug . '-slick-initializer-front',
+				$dir . $this->_slug . '-slick-initializer-front' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				$this->_version,
+				true
+			);
+		}
+
+		// Lightbox.
+		if ( has_block( $this->_slug . '/gallery-masonry' ) || has_block( $this->_slug . '/gallery-stacked' ) ) {
+			wp_enqueue_script(
+				$this->_slug . '-lightbox',
+				$dir . $this->_slug . '-lightbox' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				$this->_version,
+				true
+			);
+
+			wp_enqueue_script(
+				$this->_slug . '-masonry',
+				$dir . $this->_slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery', 'masonry', 'imagesloaded' ),
 				$this->_version,
 				true
 			);

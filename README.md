@@ -20,6 +20,7 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Click to Tweet Block
 -   Dynamic Separator Block
 -   Features Block
+-   Food & Drinks Block (New!)
 -   Form Block (New!)
 -   Gif Block
 -   GitHub Gist Block
@@ -75,7 +76,5 @@ Please read the [guidelines for contributing](https://github.com/godaddy/coblock
 ## [![Build modular grid systems with the CoBlocks Row and Columns blocks](https://user-images.githubusercontent.com/1813435/51091007-6aea2e00-1752-11e9-8ac5-4e6cb307ef47.gif)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=screenshot-1.gif)
 
 ## [![Drag to resize and then nest CoBlocks Row blocks](https://user-images.githubusercontent.com/1813435/51091023-940abe80-1752-11e9-9a91-4c332c393ca9.gif)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=screenshot-3.gif)
-
-## [![Design with the CoBlocks Typography Control Panel](https://user-images.githubusercontent.com/1813435/51091031-bc92b880-1752-11e9-943b-ebb5ca5682f2.gif)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=screenshot-4.gif)
 
 ## [![Add CoBlocks core blocks to pages](https://user-images.githubusercontent.com/1813435/51091036-ccaa9800-1752-11e9-9e9f-fed60a73024c.gif)](https://coblocks.com?utm_medium=coblocks-github&utm_source=readme&utm_campaign=readme&utm_content=screenshot-5.gif)

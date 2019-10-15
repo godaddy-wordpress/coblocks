@@ -9,133 +9,22 @@ import emailValidator from 'email-validator';
 /**
  * Internal dependencies
  */
-import icons from './icons';
-import CoBlocksField from './components/fields/field';
-import CoBlocksFieldName from './components/fields/field-name';
-import CoBlocksFieldTextarea from './components/fields/field-textarea';
-import Notice from './components/notice';
-import SubmitButton from './components/submit-button';
+import Notice from './notice';
+import SubmitButton from './submit-button';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { registerBlockType, getBlockType } = wp.blocks;
-const { Button, PanelBody, TextControl, ExternalLink } = wp.components;
-const { InspectorControls, InnerBlocks } = wp.blockEditor;
-const { applyFilters } = wp.hooks;
+import { __, sprintf } from '@wordpress/i18n';
+import { Component, Fragment } from '@wordpress/element';
+import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
+import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
+import { applyFilters } from '@wordpress/hooks';
 
 /**
  * Block constants
  */
 const ALLOWED_BLOCKS = [];
-
-const FieldDefaults = {
-	category: 'coblocks',
-	parent: [ 'coblocks/form' ],
-	supports: {
-		reusable: false,
-		html: false,
-		inserter: false,
-	},
-	attributes: {
-		label: {
-			type: 'string',
-			default: null,
-		},
-		required: {
-			type: 'boolean',
-			default: false,
-		},
-		hasLastName: {
-			type: 'boolean',
-			default: false,
-		},
-		labelFirstName: {
-			type: 'string',
-			default: __( 'First' ),
-		},
-		labelLastName: {
-			type: 'string',
-			default: __( 'Last' ),
-		},
-	},
-	save: () => null,
-};
-
-const getFieldLabel = ( { attributes, name: blockName } ) => {
-	return null === attributes.label ?
-		getBlockType( blockName ).title :
-		attributes.label;
-};
-
-const editField = type => props => (
-	<CoBlocksField
-		type={ type }
-		label={ getFieldLabel( props ) }
-		required={ props.attributes.required }
-		setAttributes={ props.setAttributes }
-		isSelected={ props.isSelected }
-	/>
-);
-
-export const childBlocks = [
-	{
-		name: 'field-name',
-		settings: {
-			...FieldDefaults,
-			title: __( 'Name' ),
-			description: __( 'A text field for names.' ),
-			icon: icons.name,
-			edit: props => (
-				<CoBlocksFieldName
-					type={ 'name' }
-					label={ getFieldLabel( props ) }
-					labelFirstName={ props.attributes.labelFirstName }
-					labelLastName={ props.attributes.labelLastName }
-					required={ props.attributes.required }
-					hasLastName={ props.attributes.hasLastName }
-					setAttributes={ props.setAttributes }
-					isSelected={ props.isSelected }
-				/>
-			),
-		},
-	},
-	{
-		name: 'field-email',
-		settings: {
-			...FieldDefaults,
-			title: __( 'Email' ),
-			keywords: [ __( 'e-mail' ), __( 'mail' ), 'email' ],
-			description: __( 'An email address field.' ),
-			icon: icons.email,
-			edit: editField( 'email' ),
-		},
-	},
-	{
-		name: 'field-textarea',
-		settings: {
-			...FieldDefaults,
-			title: __( 'Message' ),
-			keywords: [ __( 'Textarea' ), 'textarea', __( 'Multiline text' ) ],
-			description: __( 'A text box for longer responses.' ),
-			icon: icons.textarea,
-			edit: props => (
-				<CoBlocksFieldTextarea
-					label={ getFieldLabel( props ) }
-					required={ props.attributes.required }
-					setAttributes={ props.setAttributes }
-					isSelected={ props.isSelected }
-				/>
-			),
-		},
-	},
-];
-
-childBlocks.forEach( childBlock =>
-	registerBlockType( `coblocks/${ childBlock.name }`, childBlock.settings )
-);
 
 /**
  * Get settings
@@ -146,24 +35,9 @@ wp.api.loadPromise.then( () => {
 } );
 
 const FORM_TEMPLATE = [
-	[
-		'coblocks/field-name',
-		{
-			required: false,
-		},
-	],
-	[
-		'coblocks/field-email',
-		{
-			required: true,
-		},
-	],
-	[
-		'coblocks/field-textarea',
-		{
-			required: true,
-		},
-	],
+	[ 'coblocks/field-name', { required: false } ],
+	[ 'coblocks/field-email', { required: true } ],
+	[ 'coblocks/field-textarea', { required: true } ],
 ];
 
 const RETRIEVE_KEY_URL = 'https://g.co/recaptcha/v3';
@@ -286,6 +160,7 @@ class FormEdit extends Component {
 			if ( errors.length === 1 ) {
 				if ( errors[ 0 ] && errors[ 0 ].email ) {
 					return sprintf(
+						/* translators: %s: Placeholder for email address provided by user.  */
 						__( '%s is not a valid email address.' ),
 						errors[ 0 ].email
 					);
@@ -295,6 +170,7 @@ class FormEdit extends Component {
 
 			if ( errors.length === 2 ) {
 				return sprintf(
+					/* translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.  */
 					__( '%s and %s are not a valid email address.' ),
 					errors[ 0 ].email,
 					errors[ 1 ].email
@@ -302,6 +178,7 @@ class FormEdit extends Component {
 			}
 			const inValidEmails = errors.map( error => error.email );
 			return sprintf(
+				/* translators: %s1: Placeholder for email address provided by user. */
 				__( '%s are not a valid email address.' ),
 				inValidEmails.join( ', ' )
 			);

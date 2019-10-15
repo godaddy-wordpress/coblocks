@@ -1,21 +1,19 @@
 /**
  * Internal dependencies
  */
-import { title } from './';
 import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 import SizeControl from '../../components/size-control';
-import { BackgroundPanel } from '../../components/background';
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Component } = wp.element;
-const { compose } = wp.compose;
-const { withSelect } = wp.data;
-const { InspectorControls, FontSizePicker, withFontSizes, PanelColorSettings } = wp.blockEditor;
-const { PanelBody, RangeControl, ToggleControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { Component } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
+import { InspectorControls, FontSizePicker, withFontSizes } from '@wordpress/block-editor';
+import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 
 /**
  * Inspector controls
@@ -28,7 +26,6 @@ class Inspector extends Component {
 		this.setRadiusTo = this.setRadiusTo.bind( this );
 		this.setFullwidthTo = this.setFullwidthTo.bind( this );
 		this.setShadowTo = this.setShadowTo.bind( this );
-		this.getColors = this.getColors.bind( this );
 	}
 
 	setLinkTo( value ) {
@@ -55,60 +52,8 @@ class Inspector extends Component {
 		return checked ? __( 'Showing captions for each media item.' ) : __( 'Toggle to show media captions.' );
 	}
 
-	getColors() {
-		const {
-			attributes,
-			backgroundColor,
-			captionColor,
-			setBackgroundColor,
-			setCaptionColor,
-		} = this.props;
-
-		const {
-			backgroundImg,
-			backgroundPadding,
-			backgroundPaddingMobile,
-			captions,
-		} = attributes;
-
-		const background = [
-			{
-				value: backgroundColor.color,
-				onChange: ( nextBackgroundColor ) => {
-					setBackgroundColor( nextBackgroundColor );
-
-					// Add default padding, if they are not yet present.
-					if ( ! backgroundPadding && ! backgroundPaddingMobile ) {
-						this.props.setAttributes( {
-							backgroundPadding: 30,
-							backgroundPaddingMobile: 30,
-						} );
-					}
-
-					// Reset when cleared.
-					if ( ! nextBackgroundColor && ! backgroundImg ) {
-						this.props.setAttributes( {
-							backgroundPadding: 0,
-							backgroundPaddingMobile: 0,
-						} );
-					}
-				},
-				label: __( 'Background Color' ),
-			},
-		];
-
-		const caption = [
-			{
-				value: captionColor.color,
-				onChange: setCaptionColor,
-				label: __( 'Caption Color' ),
-			},
-		];
-
-		if ( captions ) {
-			return background.concat( caption );
-		}
-		return background;
+	getLightboxHelp( checked ) {
+		return checked ? __( 'Image lightbox is enabled.' ) : __( 'Toggle to enable the image lightbox.' );
 	}
 
 	render() {
@@ -127,11 +72,12 @@ class Inspector extends Component {
 			radius,
 			shadow,
 			captions,
+			lightbox,
 		} = attributes;
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ sprintf( __( '%s Settings' ), title ) }>
+				<PanelBody title={ __( 'Stacked Settings' ) }>
 					{ wideControlsEnabled &&
 					<ToggleControl
 						label={ images.length > 1 ? __( 'Fullwidth Images' ) : __( 'Fullwidth Image' ) }
@@ -168,23 +114,19 @@ class Inspector extends Component {
 						help={ this.getCaptionsHelp }
 					/>
 					{ captions &&
-					<FontSizePicker
-						value={ fontSize.size }
-						onChange={ setFontSize }
-					/>
+						<FontSizePicker
+							value={ fontSize.size }
+							onChange={ setFontSize }
+						/>
 					}
+					<ToggleControl
+						label={ __( 'Lightbox' ) }
+						checked={ !! lightbox }
+						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+						help={ this.getLightboxHelp }
+					/>
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
-				<BackgroundPanel { ...this.props }
-					hasCaption={ true }
-					hasOverlay={ true }
-					hasGalleryControls={ true }
-				/>
-				<PanelColorSettings
-					title={ __( 'Color Settings' ) }
-					initialOpen={ false }
-					colorSettings={ this.getColors() }
-				/>
 			</InspectorControls>
 		);
 	}

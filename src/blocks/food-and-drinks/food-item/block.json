@@ -1,5 +1,6 @@
 {
-	"name": "food-item",
+	"name": "coblocks/food-item",
+	"category": "coblocks",
 	"attributes": {
 		"title": {
 			"type": "string",
@@ -40,6 +41,9 @@
 			"type": "boolean"
 		},
 		"pescatarian": {
+			"type": "boolean"
+		},
+		"popular": {
 			"type": "boolean"
 		},
 		"spicy": {

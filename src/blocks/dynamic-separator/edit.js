@@ -12,9 +12,9 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies
  */
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { ResizableBox } = wp.components;
+import { Component, Fragment } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { ResizableBox } from '@wordpress/components';
 
 /**
  * Block edit function

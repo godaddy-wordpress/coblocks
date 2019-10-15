@@ -13,11 +13,11 @@ import MapInnerBlocks from './map-innerblocks';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Fragment, Component } = wp.element;
-const { Modal, TextControl } = wp.components;
-const { PluginMoreMenuItem } = wp.editPost;
-const { getCategories, getBlockTypes, unregisterBlockType } = wp.blocks;
+import { __ } from '@wordpress/i18n';
+import { Fragment, Component } from '@wordpress/element';
+import { Modal, TextControl } from '@wordpress/components';
+import { PluginMoreMenuItem } from '@wordpress/edit-post';
+import { getCategories, getBlockTypes, unregisterBlockType } from '@wordpress/blocks';
 
 /**
  * Render plugin
@@ -68,7 +68,7 @@ class ModalSettings extends Component {
 					optionSettings = JSON.parse( optionSettings );
 
 					//get current blocks
-					const currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
+					const currentBlocks = wp.data.select( 'core/block-editor' ).getBlocks();
 					const blockNames = MapInnerBlocks( currentBlocks );
 
 					map( optionSettings, ( visible, block ) => {

@@ -1,198 +1,55 @@
 /**
- * External dependencies
+ * Styles.
  */
-import classnames from 'classnames';
+import './styles/editor.scss';
+import './styles/style.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
-import icons from './components/icons';
-import Edit from './components/edit';
-import { BackgroundAttributes, BackgroundClasses, BackgroundVideo } from '../../components/background';
-import DimensionsAttributes from '../../components/dimensions-control/attributes';
+import deprecated from './deprecated';
+import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
+import save from './save';
+import transforms from './transforms';
 import CSSGridAttributes from '../../components/grid-control/attributes';
+import DimensionsAttributes from '../../components/dimensions-control/attributes';
 import ResponsiveBaseControlAttributes from '../../components/responsive-base-control/attributes';
+import { BackgroundAttributes } from '../../components/background';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
-const { getColorClassName, InnerBlocks } = wp.blockEditor;
+import { __, _x } from '@wordpress/i18n';
 
 /**
  * Block constants
  */
-const name = 'hero';
+const { name, category } = metadata;
 
-const title = __( 'Hero' );
-
-const icon = icons.hero;
-
-const keywords = [
-	__( 'button' ),
-	__( 'cta' ),
-	__( 'call to action' ),
-];
-
-const blockAttributes = {
+const attributes = {
 	...CSSGridAttributes,
 	...DimensionsAttributes,
 	...BackgroundAttributes,
 	...ResponsiveBaseControlAttributes,
-	align: {
-		type: 'string',
-		default: 'full',
-	},
-	contentAlign: {
-		type: 'string',
-	},
-	textColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
-	maxWidth: {
-		type: 'number',
-		default: 560,
-	},
-	saveCoBlocksMeta: {
-		type: 'boolean',
-		default: true,
-	},
-	paddingSize: {
-		type: 'string',
-		default: 'huge',
-	},
-	paddingUnit: {
-		type: 'string',
-		default: 'px',
-	},
-	paddingTop: {
-		type: 'number',
-		default: 60,
-	},
-	paddingBottom: {
-		type: 'number',
-		default: 60,
-	},
-	paddingLeft: {
-		type: 'number',
-		default: 60,
-	},
-	paddingRight: {
-		type: 'number',
-		default: 60,
-	},
-	customBackgroundColor: {
-		type: 'string',
-		default: '#f3f3f3',
-	},
-	height: {
-		type: 'number',
-		default: 500,
-	},
+	...metadata.attributes,
 };
 
 const settings = {
-
-	title: title,
-
+	title: _x( 'Hero', 'block name' ),
 	description: __( 'An introductory area of a page accompanied by a small amount of text and a call to action.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
+	icon,
+	keywords: [ _x( 'button', 'block keyword' ), _x( 'cta', 'block keyword' ), _x( 'call to action', 'block keyword' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-
-	transforms: {
-		from: [
-			{
-				type: 'prefix',
-				prefix: ':hero',
-				transform: function( content ) {
-					return createBlock( `coblocks/${ name }`, {
-						content,
-					} );
-				},
-			},
-		],
-	},
-
-	edit: Edit,
-
-	save( { attributes } ) {
-		const {
-			coblocks,
-			layout,
-			fullscreen,
-			maxWidth,
-			backgroundImg,
-			backgroundType,
-			paddingSize,
-			backgroundColor,
-			customBackgroundColor,
-			customTextColor,
-			textColor,
-			contentAlign,
-			focalPoint,
-			hasParallax,
-			height,
-		} = attributes;
-
-		const textClass = getColorClassName( 'color', textColor );
-		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-
-		const classlist = {
-			'has-text-color': textColor || customTextColor,
-			[ textClass ]: textClass,
-			[ `coblocks-hero-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
-		};
-
-		const classes = classnames( classlist );
-
-		const styles = {
-			color: textClass ? undefined : customTextColor,
-		};
-
-		const innerClasses = classnames(
-			'wp-block-coblocks-hero__inner',
-			...BackgroundClasses( attributes ), {
-				[ `hero-${ layout }-align` ]: layout,
-				'has-text-color': textColor && textColor.color,
-				'has-padding': paddingSize && paddingSize !== 'no',
-				[ `has-${ paddingSize }-padding` ]: paddingSize && paddingSize !== 'advanced',
-				[ backgroundClass ]: backgroundClass,
-				[ `has-${ contentAlign }-content` ]: contentAlign,
-				'is-fullscreen': fullscreen,
-			} );
-
-		const innerStyles = {
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			backgroundImage: backgroundImg && backgroundType === 'image' ? `url(${ backgroundImg })` : undefined,
-			color: textColor ? textColor.color : undefined,
-			backgroundPosition: focalPoint && ! hasParallax ? `${ focalPoint.x * 100 }% ${ focalPoint.y * 100 }%` : undefined,
-			minHeight: fullscreen ? undefined : height,
-		};
-
-		return (
-			<div className={ classes } style={ styles } >
-				<div className={ innerClasses } style={ innerStyles }>
-					{ BackgroundVideo( attributes ) }
-					<div className="wp-block-coblocks-hero__box" style={ { maxWidth: maxWidth ? maxWidth + 'px' : undefined } }>
-						<InnerBlocks.Content />
-					</div>
-				</div>
-			</div>
-		);
-	},
+	attributes,
+	transforms,
+	edit,
+	save,
+	deprecated,
 };
 
-export { name, title, icon, settings };
+export { name, category, metadata, settings, attributes };
