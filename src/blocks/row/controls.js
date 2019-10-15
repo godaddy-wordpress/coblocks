@@ -60,6 +60,10 @@ class Controls extends Component {
 			selectedRows = parseInt( columns.toString().split( '-' ) );
 		}
 
+		if ( ! layout ) {
+			return null;
+		}
+
 		return (
 			<Fragment>
 				<BlockControls>
