@@ -24,7 +24,14 @@ import { applyFilters } from '@wordpress/hooks';
 /**
  * Block constants
  */
-const ALLOWED_BLOCKS = [];
+const ALLOWED_BLOCKS = [
+	'coblocks/field-date',
+	'coblocks/field-phone',
+	'coblocks/field-radio',
+	'coblocks/field-name',
+	'coblocks/field-email',
+	'coblocks/field-textarea',
+];
 
 /**
  * Get settings
@@ -345,7 +352,6 @@ class FormEdit extends Component {
 				<div className={ classes }>
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
-						templateLock={ true }
 						templateInsertUpdatesSelection={ false }
 						renderAppender={ () => null }
 						template={ FORM_TEMPLATE }

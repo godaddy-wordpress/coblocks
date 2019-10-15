@@ -16,15 +16,14 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Email', 'block name' ),
-	description: __( 'A field for collecting a validated email address.' ),
+	title: _x( 'Date', 'block name' ),
+	keywords: [ _x( 'calendar', 'block keyword' ), _x( 'day month year', 'block keyword' ) ],
+	description: __( 'A field for requesting date selections with a date picker.' ),
 	icon,
-	keywords: [ _x( 'e-mail', 'block keyword' ), _x( 'mail', 'block keyword' ) ],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,
 		html: false,
-		multiple: false,
 	},
 	attributes,
 	edit,
