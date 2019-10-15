@@ -3,6 +3,7 @@
  */
 import pick from 'lodash/pick';
 import get from 'lodash/get';
+import findIndex from 'lodash/findIndex';
 
 // Set dim ratio.
 export function overlayToClass( ratio ) {
@@ -12,9 +13,13 @@ export function overlayToClass( ratio ) {
 }
 
 // Pick image media attributes.
-export const pickRelevantMediaFiles = ( image ) => {
+export const pickRelevantMediaFiles = ( image, images ) => {
 	const imageProps = pick( image, [ 'alt', 'id', 'link', 'caption', 'imgLink' ] );
 	imageProps.url = get( image, [ 'sizes', 'large', 'url' ] ) || get( image, [ 'media_details', 'sizes', 'large', 'source_url' ] ) || image.url;
+	const imgKey = findIndex( images, function( img ) {
+		return img.url === imageProps.url;
+	} );
+	imageProps.imgLink = imgKey >= 0 ? images[ imgKey ].imgLink : '';
 	return imageProps;
 };
 

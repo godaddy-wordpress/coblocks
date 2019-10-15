@@ -68,7 +68,7 @@ class ModalSettings extends Component {
 					optionSettings = JSON.parse( optionSettings );
 
 					//get current blocks
-					const currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
+					const currentBlocks = wp.data.select( 'core/block-editor' ).getBlocks();
 					const blockNames = MapInnerBlocks( currentBlocks );
 
 					map( optionSettings, ( visible, block ) => {

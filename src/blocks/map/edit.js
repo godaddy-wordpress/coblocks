@@ -95,6 +95,8 @@ class Edit extends Component {
 	updateApiKey( apiKey = this.state.apiKey ) {
 		const { attributes, setAttributes } = this.props;
 
+		apiKey = apiKey.trim();
+
 		this.saveApiKey( apiKey );
 
 		if ( apiKey === '' ) {
@@ -148,6 +150,8 @@ class Edit extends Component {
 			zoom,
 		} = attributes;
 
+		const locale = document.documentElement.lang;
+
 		const renderMap = () => {
 			setAttributes( { address: this.state.address, pinned: true } );
 		};
@@ -168,8 +172,8 @@ class Edit extends Component {
 		const GoogleMapApiRender = compose(
 			withProps( {
 				googleMapURL:
-					'https://maps.googleapis.com/maps/api/js?key=' +
-					this.state.apiKey +
+					`https://maps.googleapis.com/maps/api/js?key=${ this.state.apiKey }` +
+					`&language=${ locale }` +
 					'&v=3.exp&libraries=geometry,drawing,places',
 				loadingElement: <div style={ { height: '100%' } } />,
 				containerElement: <div style={ { height: '100%' } } />,
@@ -237,12 +241,7 @@ class Edit extends Component {
 						title={ __( 'Google Map' ) }
 						frameBorder="0"
 						style={ { width: '100%', minHeight: height + 'px' } }
-						src={
-							'https://www.google.com/maps?q=' +
-							encodeURIComponent( address ) +
-							'&language=ja&output=embed&hl=%s&z=' +
-							zoom
-						}
+						src={ `https://www.google.com/maps?q=${ encodeURIComponent( address ) }&output=embed&hl=${ locale }&z=${ zoom }` }
 					/>
 				</div>
 			</Fragment>
