@@ -6,5 +6,5 @@ POTPATH='languages';
 
 while IFS="=" read -r KEY value
 do
-	msgmerge -vU "${POTPATH}/coblocks-${KEY}.po" "${POTPATH}/coblocks.pot"
+	msgmerge -vU --backup=none "${POTPATH}/coblocks-${KEY}.po" "${POTPATH}/coblocks.pot"
 done < <(echo $LOCALES | jq -r "to_entries|map(\"\(.key)=\(.value)\")|.[]")

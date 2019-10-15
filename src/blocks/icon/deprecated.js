@@ -69,9 +69,9 @@ const deprecated = [
 					<div className={ classes } style={ styles }>
 						{ href ?
 							( <a href={ href } target={ linkTarget } rel={ rel }>
-								{ svgs[ iconStyle ][ icon ].icon }
+								{ icon && svgs[ iconStyle ][ icon ].icon }
 							</a> ) :
-							svgs[ iconStyle ][ icon ].icon
+							icon && svgs[ iconStyle ][ icon ].icon
 						}
 					</div>
 				</div>
