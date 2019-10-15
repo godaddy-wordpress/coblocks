@@ -28,9 +28,9 @@ class CoBlocks_Crop_Settings {
 	private static $instance;
 
 	/**
-	 * Main CoBlocks Instance.
+	 * Main CoBlocks_Crop_Settings Instance.
 	 *
-	 * Insures that only one instance of CoBlocks exists in memory at any one
+	 * Insures that only one instance of CoBlocks_Crop_Settings exists in memory at any one
 	 * time. Also prevents needing to define globals all over the place.
 	 *
 	 * @since 1.14.0
