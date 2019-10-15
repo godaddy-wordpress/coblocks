@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CoBlocks 1.12.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"POT-Creation-Date: 2019-10-15T15:15:23+00:00\n"
+"POT-Creation-Date: 2019-10-15T20:39:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,6 +13,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
+
+#: src/blocks/hero/edit.js:152
+#, fuzzy
+msgid "Add background to hero"
+msgstr "Tilføj baggrund til %s"
+
+#: src/blocks/hero/edit.js:35
+#, fuzzy
+msgctxt "content placeholder"
+msgid "Add hero heading…"
+msgstr "Tilføj helteoverskrift ..."
+
+#: src/blocks/hero/edit.js:36
+msgctxt "content placeholder"
+msgid ""
+"Add hero content, which is typically an introductory area of a page "
+"accompanied by call to action or two."
+msgstr ""
+"Tilføj heltemateriale, som typisk er et introduktionsafsnit på en side "
+"sammen med én eller to opfordringer til handling."
+
+#: src/blocks/hero/edit.js:39
+msgctxt "content placeholder"
+msgid "Primary button…"
+msgstr ""
+
+#: src/blocks/hero/edit.js:40
+msgctxt "content placeholder"
+msgid "Secondary button…"
+msgstr ""
 
 #. Plugin Name of the plugin
 msgid "CoBlocks"
@@ -794,10 +824,6 @@ msgstr "Houzz"
 
 #~ msgid "Change layout"
 #~ msgstr "Skift layout"
-
-#, fuzzy
-#~ msgid "Add backround to hero"
-#~ msgstr "Tilføj baggrund til %s"
 
 #~ msgid ""
 #~ "An introductory area of a page accompanied by a small amount of text and "
@@ -2373,19 +2399,6 @@ msgstr "Houzz"
 #~ msgctxt "content placeholder"
 #~ msgid "This is a feature block that you can use to highlight features."
 #~ msgstr "Dette er en fremhævelsesblok du kan bruge til at fremhæve indhold."
-
-#, fuzzy
-#~ msgctxt "content placeholder"
-#~ msgid "Add hero heading…"
-#~ msgstr "Tilføj helteoverskrift ..."
-
-#~ msgctxt "content placeholder"
-#~ msgid ""
-#~ "Add hero content, which is typically an introductory area of a page "
-#~ "accompanied by call to action or two."
-#~ msgstr ""
-#~ "Tilføj heltemateriale, som typisk er et introduktionsafsnit på en side "
-#~ "sammen med én eller to opfordringer til handling."
 
 #~ msgctxt "content placeholder"
 #~ msgid "Add heading..."
