@@ -48,8 +48,7 @@
 			"default": 60
 		},
 		"customBackgroundColor": {
-			"type": "string",
-			"default": "#f3f3f3"
+			"type": "string"
 		},
 		"height": {
 			"type": "number",
