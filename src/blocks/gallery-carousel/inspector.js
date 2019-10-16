@@ -11,7 +11,10 @@ import SliderPanel from '../../components/slider-panel';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { InspectorControls, InspectorAdvancedControls } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
+import { PanelBody, RangeControl, ToggleControl, BaseControl } from '@wordpress/components';
+
+const CAROUSEL_MAX = 1000;
+const CAROUSEL_MIN = 200;
 
 /**
  * Inspector controls
@@ -22,6 +25,9 @@ class Inspector extends Component {
 		this.setSizeControl = this.setSizeControl.bind( this );
 		this.setRadiusTo = this.setRadiusTo.bind( this );
 		this.setHeightTo = this.setHeightTo.bind( this );
+		this.state = {
+			temporaryInput: null,
+		};
 	}
 
 	setRadiusTo( value ) {
@@ -34,6 +40,10 @@ class Inspector extends Component {
 
 	setHeightTo( value ) {
 		this.props.setAttributes( { height: value } );
+	}
+
+	setTemporayInput( value ) {
+		this.setState( { temporaryInput: value } );
 	}
 
 	getThumbnailNavigationHelp( checked ) {
@@ -60,6 +70,8 @@ class Inspector extends Component {
 			thumbnails,
 			responsiveHeight,
 		} = attributes;
+
+		const { temporaryInput } = this.state;
 
 		return (
 			isSelected && (
@@ -96,15 +108,39 @@ class Inspector extends Component {
 								/>
 							}
 							{ ! responsiveHeight &&
-								<RangeControl
-									label={ __( 'Height in pixels' ) }
-									value={ height }
-									onChange={ this.setHeightTo }
-									min={ 200 }
-									max={ 1000 }
-									step={ 1 }
+							<BaseControl
+								label={ __( 'Height in pixels' ) }
+								className={ 'block-height-control' }
+							>
+								<input
+									type="number"
+									className={ 'block-height-control__input' }
+									onChange={ ( event ) => {
+										const unprocessedValue = event.target.value;
+										const inputValue = unprocessedValue !== '' ?
+											parseInt( event.target.value, 10 ) :
+											undefined;
+										if ( ( inputValue < CAROUSEL_MIN ) && inputValue !== undefined ) {
+											this.setTemporayInput( inputValue );
+											this.setHeightTo( CAROUSEL_MIN );
+											return;
+										}
+										if ( ( inputValue > CAROUSEL_MAX ) && inputValue !== undefined ) {
+											this.setTemporayInput( inputValue );
+											this.setHeightTo( CAROUSEL_MAX );
+											return;
+										}
+										this.setTemporayInput( null );
+										this.setHeightTo( inputValue );
+									} }
+									value={ temporaryInput || height }
+									min={ CAROUSEL_MIN }
+									max={ CAROUSEL_MAX }
+									step="10"
 								/>
+							</BaseControl>
 							}
+
 							<ToggleControl
 								label={ __( 'Thumbnails' ) }
 								checked={ !! thumbnails }
