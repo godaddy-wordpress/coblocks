@@ -1,9 +1,9 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.12.1\n"
+"Project-Id-Version: CoBlocks 1.15.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"POT-Creation-Date: 2019-10-15T20:39:03+00:00\n"
+"POT-Creation-Date: 2019-10-16T16:11:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,10 +14,3319 @@ msgstr ""
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
 
+#: src/blocks/accordion/accordion-item/index.js:27
+msgid "Add collapsable accordion items to accordions."
+msgstr "एकॉर्डियन में मिश्रित करने योग्य एकॉर्डियन आइटम जोड़ें"
+
+#: src/blocks/accordion/accordion-item/inspector.js:34
+msgid "Accordion item is open by default."
+msgstr "एकॉर्डियन आइटम डिफ़ॉल्ट रूप से खुला होता है."
+
+#: src/blocks/accordion/accordion-item/inspector.js:34
+msgid "Toggle to set this accordion item to be open by default."
+msgstr "डिफ़ॉल्ट रूप से खुले रहने के लिए इस अकॉर्डियन आइटम को सेट करने हेतु टॉगल करें."
+
+#: src/blocks/accordion/accordion-item/inspector.js:63
+msgid "Accordion Item Settings"
+msgstr "एकॉर्डियन आइटम सेटिंग्स"
+
+#: src/blocks/accordion/accordion-item/inspector.js:72
+#: src/blocks/alert/inspector.js:49 src/blocks/author/inspector.js:50
+#: src/blocks/click-to-tweet/inspector.js:60
+#: src/blocks/dynamic-separator/inspector.js:60
+#: src/blocks/features/feature/inspector.js:92
+#: src/blocks/features/inspector.js:173 src/blocks/form/submit-button.js:118
+#: src/blocks/hero/inspector.js:137 src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:302 src/blocks/media-card/inspector.js:132
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:48
+#: src/blocks/row/column/inspector.js:165 src/blocks/row/inspector.js:211
+#: src/blocks/shape-divider/inspector.js:92 src/blocks/share/inspector.js:200
+#: src/blocks/social-profiles/inspector.js:206
+#: src/extensions/colors/index.js:59
+msgid "Color Settings"
+msgstr "रंग की सेटिंग्स"
+
+#: src/blocks/accordion/accordion-item/inspector.js:78
+#: src/blocks/alert/inspector.js:55 src/blocks/author/inspector.js:56
+#: src/blocks/features/feature/inspector.js:110
+#: src/blocks/features/inspector.js:191 src/blocks/hero/inspector.js:150
+#: src/blocks/highlight/inspector.js:49 src/blocks/icon/inspector.js:326
+#: src/blocks/media-card/inspector.js:146
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:53
+#: src/blocks/row/column/inspector.js:171 src/blocks/row/inspector.js:227
+#: src/blocks/shape-divider/inspector.js:103 src/blocks/share/inspector.js:99
+#: src/blocks/social-profiles/inspector.js:103
+#: src/extensions/colors/index.js:47
+msgid "Background Color"
+msgstr "पृष्ठभूमि रंग"
+
+#: src/blocks/accordion/accordion-item/inspector.js:83
+msgid "Title Text Color"
+msgstr "शीर्षक पाठ रंग"
+
+#: src/blocks/accordion/index.js:28
+msgid "Organize content within collapsable accordion items."
+msgstr "मिश्रित करने योग्य एकॉर्डियन आइटम के भीतर सामग्री व्यवस्थित करें."
+
+#: src/blocks/accordion/inspector.js:27
+msgid "Accordion Settings"
+msgstr "एकॉर्डियन सेटिंग्स"
+
+#: src/blocks/accordion/inspector.js:29
+msgid "Internet Explorer Support"
+msgstr "Internet Explorer सहायता"
+
+#: src/blocks/accordion/inspector.js:31
+msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
+msgstr "JavaScript पॉलीफ़िल को लोड करके Internet Explorer के लिए समर्थन जोड़ें."
+
+#: src/blocks/accordion/inspector.js:31
+msgid ""
+"Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgstr ""
+"इस पेज पर JavaScript पॉलीफ़िल को लोड करके Internet Explorer के लिए समर्थन करना."
+
+#: src/blocks/alert/index.js:29
+#, fuzzy
+msgid "Provide contextual feedback messages or notices."
+msgstr "प्रासंगिक प्रतिक्रिया संदेश दें."
+
+#: src/blocks/alert/index.js:45
+msgid "This is an alert block"
+msgstr ""
+
+#: src/blocks/alert/index.js:46
+msgid ""
+"An alert is a message that displays outside the flow of typical content. "
+"Alerts provide contextual feedback, typically asking readers to take an "
+"action."
+msgstr ""
+
+#: src/blocks/alert/inspector.js:60 src/blocks/author/inspector.js:61
+#: src/blocks/click-to-tweet/inspector.js:66
+#: src/blocks/features/feature/inspector.js:114
+#: src/blocks/features/inspector.js:195 src/blocks/hero/inspector.js:155
+#: src/blocks/highlight/inspector.js:54
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:58
+#: src/blocks/row/column/inspector.js:176 src/blocks/row/inspector.js:232
+#: src/blocks/share/inspector.js:66 src/blocks/social-profiles/inspector.js:95
+#: src/extensions/colors/index.js:54
+msgid "Text Color"
+msgstr "पाठ रंग"
+
+#: src/blocks/author/controls.js:36
+#, fuzzy
+msgid "Edit avatar"
+msgstr "गैलरी संपादित करें"
+
+#. placeholder text used for the author name
+#: src/blocks/author/edit.js:127
+#, fuzzy
+msgid "Write author name…"
+msgstr "कैप्शन लिखें..."
+
+#. placeholder text used for the biography
+#: src/blocks/author/edit.js:141
+msgid ""
+"Write a biography that distills objective credibility and authority to your "
+"readers…"
+msgstr ""
+
+#: src/blocks/author/index.js:29
+msgid "Add an author biography to build credibility and authority."
+msgstr ""
+
+#: src/blocks/author/index.js:35
+msgid "Born to express, not to impress. A maker making the world I want."
+msgstr ""
+
+#: src/blocks/author/inspector.js:41
+#, fuzzy
+msgid "Author Settings"
+msgstr "फ़ॉर्म सेटिंग्स"
+
+#: src/blocks/buttons/index.js:29
+msgid "Prompt visitors to take action with multiple buttons, side by side."
+msgstr "एक के पास मौजूद एक कई बटन के द्वारा आगंतुकों को कार्रवाई करने के लिए प्रेरित करें."
+
+#: src/blocks/buttons/inspector.js:30
+msgid "Buttons"
+msgstr "बटन"
+
+#: src/blocks/buttons/inspector.js:48
+msgid "Stacking buttons on mobile."
+msgstr "मोबाइल पर स्टैकिंग बटन."
+
+#: src/blocks/buttons/inspector.js:48
+msgid "Toggle to stack buttons on mobile."
+msgstr "मोबाइल पर स्टैक बटन के लिए टॉगल करें."
+
+#: src/blocks/click-to-tweet/controls.js:44
+msgid "Twitter Username"
+msgstr "Twitter उपयोगकर्ता का नाम"
+
+#: src/blocks/click-to-tweet/controls.js:48
+msgid "Username"
+msgstr "उपयोगकर्ता का नाम"
+
+#: src/blocks/click-to-tweet/edit.js:109
+msgid "Add button..."
+msgstr "बटन जोड़ें..."
+
+# the text of the click to tweet element
+#. the text of the click to tweet element
+#: src/blocks/click-to-tweet/edit.js:82
+msgid "Add a quote to tweet..."
+msgstr "ट्वीट करने के लिए कोट जोड़ें..."
+
+#: src/blocks/click-to-tweet/index.js:29
+msgid "Add a quote for readers to tweet via Twitter."
+msgstr "पाठकों को Twitter के माध्यम से ट्वीट करने के लिए कोट जोड़ें."
+
+#: src/blocks/click-to-tweet/index.js:34
+msgid ""
+"The easiest way to promote and advertise your blog, website, and business on "
+"Twitter."
+msgstr ""
+
+#: src/blocks/click-to-tweet/inspector.js:52
+#: src/blocks/highlight/inspector.js:35
+msgid "Text Settings"
+msgstr "पाठ सेटिंग्स"
+
+#: src/blocks/click-to-tweet/inspector.js:71
+#: src/blocks/form/submit-button.js:127 src/blocks/share/inspector.js:86
+#: src/blocks/social-profiles/inspector.js:90
+msgid "Button Color"
+msgstr "बटन का रंग"
+
+#: src/blocks/dynamic-separator/index.js:28
+msgid "Add a resizable spacer between other blocks."
+msgstr "अन्य ब्लॉक के बीच आकार बदलने योग्य स्पेसर जोड़ें."
+
+#: src/blocks/dynamic-separator/inspector.js:44
+#: src/blocks/gallery-carousel/inspector.js:100
+#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
+msgid "Height in pixels"
+msgstr "पिक्सेल में ऊँचाई"
+
+#: src/blocks/dynamic-separator/inspector.js:52
+msgid "Height for the dynamic separator element in pixels."
+msgstr "पिक्सेल में डायनमिक विभाजक तत्व के लिए ऊँचाई."
+
+#: src/blocks/dynamic-separator/inspector.js:66
+msgid "Color"
+msgstr "रंग"
+
+#: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
+#: src/blocks/media-card/edit.js:173
+#, fuzzy
+msgid "Add as background"
+msgstr "पृष्ठभूमि के रूप में जोड़ें"
+
+#: src/blocks/features/feature/index.js:29
+msgid "A singular child column within a parent features block."
+msgstr "पेरेंट फ़ीचर ब्लॉक में एकल चाइल्ड कॉलम."
+
+#: src/blocks/features/feature/inspector.js:68
+msgid "Feature Settings"
+msgstr "सुविधा सेटिंग्स"
+
+#: src/blocks/features/feature/inspector.js:71
+#: src/blocks/features/inspector.js:143 src/blocks/hero/inspector.js:84
+#: src/blocks/icon/inspector.js:217 src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:133 src/blocks/row/inspector.js:180
+#: src/components/background/panel.js:146
+msgid "Padding"
+msgstr "पैडिंग"
+
+#: src/blocks/features/index.js:35
+msgid "Add up to three columns of small notes for your product or service."
+msgstr "अपने उत्पाद या सेवा के लिए संक्षिप्त टिप्पणी वाले तीन तक कॉलम जोड़ें."
+
+#: src/blocks/features/inspector.js:122 src/blocks/row/column/inspector.js:111
+#: src/blocks/row/inspector.js:157
+#: src/components/dimensions-control/index.js:295
+msgid "Margin"
+msgstr "मार्जिन"
+
+#: src/blocks/features/inspector.js:164
+#: src/blocks/gallery-carousel/inspector.js:84
+#: src/blocks/gallery-collage/inspector.js:108
+#: src/blocks/gallery-stacked/inspector.js:91 src/blocks/row/inspector.js:202
+#: src/components/responsive-tabs-control/index.js:31
+msgid "Gutter"
+msgstr "गटर"
+
+#: src/blocks/features/inspector.js:167 src/blocks/row/inspector.js:205
+msgid "Space between each column."
+msgstr "प्रत्येक कॉलम के बीच जगह"
+
+#: src/blocks/features/inspector.js:86 src/blocks/icon/icon-size-select.js:16
+#: src/blocks/row/inspector.js:99 src/blocks/share/inspector.js:72
+#: src/blocks/social-profiles/inspector.js:76
+#: src/components/dimensions-control/dimensions-select.js:15
+#: src/components/size-control/index.js:116
+msgid "Small"
+msgstr "छोटा"
+
+#: src/blocks/features/inspector.js:87 src/blocks/icon/icon-size-select.js:21
+#: src/blocks/row/inspector.js:100 src/blocks/share/inspector.js:73
+#: src/blocks/social-profiles/inspector.js:77
+#: src/components/dimensions-control/dimensions-select.js:20
+#: src/components/size-control/index.js:120
+msgid "Medium"
+msgstr "मध्यम"
+
+#: src/blocks/features/inspector.js:88 src/blocks/icon/icon-size-select.js:26
+#: src/blocks/row/inspector.js:101 src/blocks/share/inspector.js:74
+#: src/blocks/social-profiles/inspector.js:78
+#: src/components/dimensions-control/dimensions-select.js:25
+#: src/components/size-control/index.js:65
+msgid "Large"
+msgstr "बड़ा"
+
+#: src/blocks/features/inspector.js:94
+msgid "Features Settings"
+msgstr "सुविधा सेटिंग्स"
+
+#: src/blocks/features/inspector.js:96 src/blocks/post-carousel/inspector.js:70
+#: src/blocks/posts/inspector.js:110 src/blocks/services/inspector.js:69
+msgid "Columns"
+msgstr "कॉलम"
+
+#: src/blocks/food-and-drinks/appender.js:22
+msgid "Add Menu Section"
+msgstr "मेनू अनुभाग जोड़ें"
+
+#: src/blocks/food-and-drinks/edit.js:27
+msgid "Menu title..."
+msgstr "मेनू शीर्षक..."
+
+#: src/blocks/food-and-drinks/food-item/edit.js:147
+#: src/blocks/gallery-collage/edit.js:140
+#: src/blocks/services/service/edit.js:156
+msgid "Drop image to replace"
+msgstr "बदलने के लिए छवि छोड़ें"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:160
+#: src/blocks/gallery-collage/edit.js:160
+#: src/blocks/services/service/edit.js:169
+#: src/components/block-gallery/gallery-image.js:208
+msgid "Remove Image"
+msgstr "छवि निकालें"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:225
+msgid "Add title..."
+msgstr "शीर्षक जोड़ें..."
+
+#: src/blocks/food-and-drinks/food-item/edit.js:238
+#: src/blocks/food-and-drinks/food-item/inspector.js:45
+#: src/blocks/food-and-drinks/food-item/save.js:66
+msgid "Popular"
+msgstr ""
+
+#: src/blocks/food-and-drinks/food-item/edit.js:256
+#: src/blocks/food-and-drinks/food-item/inspector.js:60
+#: src/blocks/food-and-drinks/food-item/save.js:74
+msgid "Spicy"
+msgstr "तीखा"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:276
+msgid "Hot"
+msgstr "अत्यंत प्रचलित"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:298
+#: src/blocks/food-and-drinks/food-item/inspector.js:75
+#: src/blocks/food-and-drinks/food-item/save.js:90
+msgid "Vegetarian"
+msgstr "शाकाहार"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:324
+#: src/blocks/food-and-drinks/food-item/inspector.js:50
+#: src/blocks/food-and-drinks/food-item/save.js:98
+msgid "Gluten Free"
+msgstr "ग्लूटेन मुक्त"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:347
+#: src/blocks/food-and-drinks/food-item/inspector.js:55
+#: src/blocks/food-and-drinks/food-item/save.js:106
+msgid "Pescatarian"
+msgstr "पेस्केटैरियन"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:368
+#: src/blocks/food-and-drinks/food-item/inspector.js:70
+#: src/blocks/food-and-drinks/food-item/save.js:114
+msgid "Vegan"
+msgstr "वीगन"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:386
+msgid "Add description..."
+msgstr "वर्णन जोड़ें..."
+
+#: src/blocks/food-and-drinks/food-item/edit.js:395
+msgid "$0.00"
+msgstr "$0.00"
+
+#: src/blocks/food-and-drinks/food-item/index.js:27
+msgid "A food and drink item within the Food & Drinks block."
+msgstr "खाद्य और पेय ब्लॉक के भीतर खाद्य और पेय पदार्थ."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:19
+msgid "Item Settings"
+msgstr "‌आइटम सेटिंग्स"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:21
+msgid "Image"
+msgstr "छवि"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:24
+msgid "Showing an image for this item."
+msgstr "इस आइटम के लिए कोई छवि दिखाना."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:25
+msgid "Toggle to show an image for this item."
+msgstr "इस आइटम के लिए कोई छवि दिखाने हेतु टॉगल करें."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:31
+msgid "Price"
+msgstr "मूल्य"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:34
+msgid "Showing the price for this item."
+msgstr "इस आइटम के लिए कीमत दिखाना."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:35
+msgid "Toggle to show the price for this item."
+msgstr "इस आइटम के लिए कीमत दिखाने के लिए टॉगल करें."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:42
+msgid "Item Attributes"
+msgstr "आइटम की विशेषताएं"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:65
+#: src/blocks/food-and-drinks/food-item/save.js:82
+msgid "Spicier"
+msgstr "मसालेदार"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:82
+#: src/blocks/services/service/inspector.js:31
+msgid "Image Settings"
+msgstr "छवि की सेटिंग्स"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:84
+#: src/blocks/gif/inspector.js:31 src/blocks/media-card/inspector.js:95
+#: src/blocks/services/service/inspector.js:33
+msgid "Alt Text (Alternative Text)"
+msgstr "सभी पाठ (वैकल्पिक पाठ)"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:90
+#: src/blocks/gif/inspector.js:37 src/blocks/media-card/inspector.js:101
+#: src/blocks/services/service/inspector.js:39
+msgid "Describe the purpose of the image"
+msgstr "छवि का उद्देश्य बताएँ"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:92
+#: src/blocks/gif/inspector.js:39 src/blocks/media-card/inspector.js:103
+#: src/blocks/services/service/inspector.js:41
+msgid "Leave empty if the image is purely decorative."
+msgstr "यदि छवि पूरी तरह से सजावटी है, तो खाली छोड़ दें."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:97
+#: src/blocks/services/service/inspector.js:46
+#: src/components/background/panel.js:126
+msgid "Focal Point"
+msgstr "फोकल प्वाइंट"
+
+#: src/blocks/food-and-drinks/index.js:27
+msgid "Display a menu or price list."
+msgstr "मेनू या मूल्य सूची प्रदर्शित करें."
+
+#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
+#: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
+#: src/blocks/services/inspector.js:32
+msgid "Styles"
+msgstr "शैलियां"
+
+#: src/blocks/food-and-drinks/inspector.js:59
+msgid "Food & Drinks Settings"
+msgstr "भोजन और पेय सेटिंग्स"
+
+#: src/blocks/food-and-drinks/inspector.js:61
+msgid "Images"
+msgstr "छवियां"
+
+#: src/blocks/food-and-drinks/inspector.js:64
+msgid "Showing images for each item"
+msgstr "प्रत्येक आइटम के लिए छवियां दिखाना"
+
+#: src/blocks/food-and-drinks/inspector.js:65
+msgid "Toggle to show images for each item."
+msgstr "प्रत्येक आइटम के लिए छवियां दिखाने हेतु टॉगल करें."
+
+#: src/blocks/food-and-drinks/inspector.js:71
+msgid "Prices"
+msgstr "मूल्य"
+
+#: src/blocks/food-and-drinks/inspector.js:74
+msgid "Showing the price of each item"
+msgstr "प्रत्येक आइटम के लिए मूल्य दिखाना"
+
+#: src/blocks/food-and-drinks/inspector.js:75
+msgid "Toggle to show the price of each item."
+msgstr "इस आइटम के लिए मूल्य दिखाने के लिए टॉगल करें."
+
+#. %s: Placeholder for email address provided by user.
+#: src/blocks/form/edit.js:171
+msgid "%s is not a valid email address."
+msgstr "%s कोई मान्य ईमेल पता नहीं है."
+
+#. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#: src/blocks/form/edit.js:181
+msgid "%s and %s are not a valid email address."
+msgstr "%s और %s कोई मान्य ईमेल पते नहीं हैं."
+
+#. %s1: Placeholder for email address provided by user.
+#: src/blocks/form/edit.js:189
+msgid "%s are not a valid email address."
+msgstr "%s कोई मान्य ईमेल पता नहीं है."
+
+#: src/blocks/form/edit.js:247
+msgid "Email address"
+msgstr "ईमेल पता"
+
+#: src/blocks/form/edit.js:248
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: src/blocks/form/edit.js:258
+msgid "Subject"
+msgstr "विषय"
+
+#: src/blocks/form/edit.js:288
+msgid "Form Settings"
+msgstr "फ़ॉर्म सेटिंग्स"
+
+#: src/blocks/form/edit.js:293
+msgid "Google reCAPTCHA"
+msgstr "Google reCAPTCHA"
+
+#: src/blocks/form/edit.js:296
+msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
+msgstr "अपनी reCAPTCHA साइट जोड़ें और स्पैम से आपके फ़ॉर्म को सुरक्षित करने के लिए गुप्त कुंजी."
+
+#: src/blocks/form/edit.js:302
+msgid "Generate keys"
+msgstr "कुंजियाँ जनरेट करें"
+
+#: src/blocks/form/edit.js:303
+msgid "My keys"
+msgstr "मेरी कुंजी"
+
+#: src/blocks/form/edit.js:306
+msgid "Get help"
+msgstr "सहायता प्राप्त करें"
+
+#: src/blocks/form/edit.js:310
+msgid "Site Key"
+msgstr "साइट कुंजी"
+
+#: src/blocks/form/edit.js:316
+msgid "Secret Key"
+msgstr "गुप्त कुंजी"
+
+#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
+#: src/components/block-gallery/gallery-image.js:221
+msgid "Saving"
+msgstr "सहेज रहे हैं"
+
+#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
+msgid "Save"
+msgstr "सहेजें"
+
+#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
+msgid "Remove"
+msgstr "निकालें"
+
+#: src/blocks/form/fields/coblocks-option.js:61
+#, fuzzy
+msgid "Write option…"
+msgstr "कैप्शन लिखें..."
+
+#: src/blocks/form/fields/coblocks-option.js:70
+#, fuzzy
+msgid "Remove Option"
+msgstr "निकालें "
+
+#: src/blocks/form/fields/date/index.js:21
+msgid "A field for requesting date selections with a date picker."
+msgstr ""
+
+#: src/blocks/form/fields/email/index.js:20
+#, fuzzy
+msgid "A field for collecting a validated email address."
+msgstr "%s कोई मान्य ईमेल पता नहीं है."
+
+#: src/blocks/form/fields/field-label.js:22
+#: src/blocks/form/fields/name/edit.js:61
+msgid "Add label…"
+msgstr "लेबल जोड़ें..."
+
+#: src/blocks/form/fields/field-label.js:30
+msgid "Required"
+msgstr "आवश्यक"
+
+#: src/blocks/form/fields/multi-field.js:102
+#, fuzzy
+msgid "Add Option"
+msgstr "वर्णन जोड़ें..."
+
+#: src/blocks/form/fields/name/edit.js:69
+msgid "Name Field Settings"
+msgstr "नाम फ़ील्ड सेटिंग्स"
+
+#: src/blocks/form/fields/name/edit.js:71
+msgid "Last Name"
+msgstr "अंतिम नाम"
+
+#: src/blocks/form/fields/name/edit.js:75
+msgid "Showing both first and last name fields."
+msgstr "पहले और अंतिम नाम फ़ील्ड दोनों दिखाना."
+
+#: src/blocks/form/fields/name/edit.js:75
+msgid "Toggle to add a last name field."
+msgstr "अंतिम नाम फ़ील्ड जोड़ने के लिए टॉगल करें."
+
+#: src/blocks/form/fields/name/index.js:20
+#, fuzzy
+msgid "A text field for collecting the first and last names."
+msgstr "पहले और अंतिम नाम फ़ील्ड दोनों दिखाना."
+
+#: src/blocks/form/fields/phone/index.js:21
+msgid "A phone number to allow visitors to give you a phone number."
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:21
+msgid "A field with multiple options where only one choice can be made."
+msgstr ""
+
+#: src/blocks/form/fields/textarea/index.js:20
+msgid "A text box for longer responses."
+msgstr "लंबी प्रतिक्रियाओं के लिए पाठ बॉक्स."
+
+#: src/blocks/form/index.js:27
+#, fuzzy
+msgid "Add a contact form to your page."
+msgstr "अपने पेज में सामान्य फ़ॉर्म जोड़ें."
+
+#: src/blocks/form/index.js:36
+#, fuzzy
+msgid "Subject example"
+msgstr "विषय"
+
+#: src/blocks/form/submit-button.js:107
+msgid "Add text…"
+msgstr "पाठ जोड़ें…"
+
+#: src/blocks/form/submit-button.js:135
+msgid "Button Text Color"
+msgstr "बटन पाठ रंग"
+
+#: src/blocks/gallery-carousel/controls.js:55
+#: src/blocks/gallery-masonry/controls.js:55
+#: src/blocks/gallery-stacked/controls.js:55
+msgid "Edit gallery"
+msgstr "गैलरी संपादित करें"
+
+#: src/blocks/gallery-carousel/edit.js:252
+msgid "Carousel"
+msgstr "कैरोसल"
+
+# %1$d is the order number of the image, %2$d is the total number of images.
+#. %1$d is the order number of the image, %2$d is the total number of images.
+#: src/blocks/gallery-carousel/edit.js:310
+#: src/blocks/gallery-masonry/edit.js:219
+#: src/blocks/gallery-stacked/edit.js:191
+msgid "image %1$d of %2$d in gallery"
+msgstr "गैलरी में %2$d की %1$dछवि"
+
+#: src/blocks/gallery-carousel/edit.js:376 src/blocks/gif/edit.js:243
+#: src/blocks/gist/edit.js:103
+#: src/components/block-gallery/gallery-image.js:230
+msgid "Write caption…"
+msgstr "कैप्शन लिखें..."
+
+#: src/blocks/gallery-carousel/index.js:35
+msgid "Display multiple images in a beautiful carousel gallery."
+msgstr "सुंदर कैरोसल गैलरी में कई छवियाँ दिखाएं"
+
+#: src/blocks/gallery-carousel/inspector.js:109
+#, fuzzy
+msgid "Thumbnails"
+msgstr "कॉलम का आकार"
+
+#: src/blocks/gallery-carousel/inspector.js:119
+#, fuzzy
+msgid "Responsive Height"
+msgstr "लाइन उँचाई"
+
+#: src/blocks/gallery-carousel/inspector.js:40
+#, fuzzy
+msgid "Showing thumbnail navigation."
+msgstr "डॉट नेविगेशन तीर दिखाना."
+
+#: src/blocks/gallery-carousel/inspector.js:40
+#, fuzzy
+msgid "Toggle to show thumbnails."
+msgstr "मी़डिया कैप्शन दिखाने के लिए टॉगल करें."
+
+#: src/blocks/gallery-carousel/inspector.js:44
+msgid "Percentage based height is activated."
+msgstr ""
+
+#: src/blocks/gallery-carousel/inspector.js:44
+#, fuzzy
+msgid "Toggle for percentage based height."
+msgstr "मैप नियंत्रण विकल्पों को सक्षम करने के लिए टॉगल करें."
+
+#: src/blocks/gallery-carousel/inspector.js:68
+#, fuzzy
+msgid "Carousel Settings"
+msgstr "रंग की सेटिंग्स"
+
+#: src/blocks/gallery-carousel/inspector.js:71 src/blocks/icon/inspector.js:173
+#: src/components/typography-controls/index.js:189
+msgid "Size"
+msgstr "आकार"
+
+#: src/blocks/gallery-carousel/inspector.js:90
+#: src/blocks/gallery-masonry/inspector.js:83
+#: src/blocks/gallery-stacked/inspector.js:95 src/blocks/share/inspector.js:120
+#: src/blocks/social-profiles/inspector.js:124
+#: src/components/background/panel.js:156
+msgid "Rounded Corners"
+msgstr "घुमावदार कोने"
+
+#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
+#: src/components/block-gallery/gallery-image.js:221
+msgid "Apply"
+msgstr "लागू करें"
+
+#: src/blocks/gallery-collage/edit.js:183
+#, fuzzy
+msgid "Write caption..."
+msgstr "वर्णन लिखें..."
+
+#: src/blocks/gallery-collage/index.js:34
+#, fuzzy
+msgid "Assemble images into a beautiful collage gallery."
+msgstr "सुंदर कैरोसल गैलरी में कई छवियाँ दिखाएं"
+
+#: src/blocks/gallery-collage/inspector.js:105
+#, fuzzy
+msgid "Collage Settings"
+msgstr "छवि की सेटिंग्स"
+
+#: src/blocks/gallery-collage/inspector.js:128
+msgid "Shadow"
+msgstr "शैडो"
+
+#: src/blocks/gallery-collage/inspector.js:147
+#: src/blocks/gallery-masonry/inspector.js:98
+#: src/blocks/gallery-stacked/inspector.js:111
+msgid "Captions"
+msgstr "कैप्शन"
+
+#: src/blocks/gallery-collage/inspector.js:153
+#: src/blocks/gallery-masonry/inspector.js:105
+msgid "Caption Style"
+msgstr "कैप्शन स्टाइल"
+
+#: src/blocks/gallery-collage/inspector.js:30
+#: src/blocks/gallery-masonry/inspector.js:49
+#: src/blocks/gallery-stacked/inspector.js:52
+msgid "Showing captions for each media item."
+msgstr "प्रत्येक मीडिया आइटम के लिए कैप्शन दिखाना."
+
+#: src/blocks/gallery-collage/inspector.js:30
+#: src/blocks/gallery-masonry/inspector.js:49
+#: src/blocks/gallery-stacked/inspector.js:52
+msgid "Toggle to show media captions."
+msgstr "मी़डिया कैप्शन दिखाने के लिए टॉगल करें."
+
+#: src/blocks/gallery-masonry/edit.js:188
+msgid "Masonry"
+msgstr "मिस्त्री"
+
+#: src/blocks/gallery-masonry/index.js:35
+msgid "Display multiple images in an organized masonry gallery."
+msgstr "किसी संगठित मिस्त्री गैलरी में कई छवि प्रदर्शित होती हैं."
+
+#: src/blocks/gallery-masonry/inspector.js:53
+#: src/blocks/gallery-stacked/inspector.js:56
+msgid "Image lightbox is enabled."
+msgstr ""
+
+#: src/blocks/gallery-masonry/inspector.js:53
+#: src/blocks/gallery-stacked/inspector.js:56
+#, fuzzy
+msgid "Toggle to enable the image lightbox."
+msgstr "मैप नियंत्रण विकल्पों को सक्षम करने के लिए टॉगल करें."
+
+#: src/blocks/gallery-masonry/inspector.js:73
+#, fuzzy
+msgid "Masonry Settings"
+msgstr "मैप सेटिंग्स"
+
+#: src/blocks/gallery-masonry/inspector.js:76
+msgid "Column Size"
+msgstr "कॉलम का आकार"
+
+#: src/blocks/gallery-masonry/inspector.js:84
+msgid "Add rounded corners to the gallery items."
+msgstr "गैलरी आइटम मे ंघुमावदार कोने जोड़ें."
+
+#: src/blocks/gallery-masonry/inspector.js:92
+#: src/blocks/gallery-stacked/inspector.js:123
+#, fuzzy
+msgid "Lightbox"
+msgstr "प्रकाश"
+
+#: src/blocks/gallery-stacked/edit.js:168
+msgid "Stacked"
+msgstr "स्टैक किया गया"
+
+#: src/blocks/gallery-stacked/index.js:35
+msgid "Display multiple images in an single column stacked gallery."
+msgstr "एकल कॉलम स्टैक की गई गैलरी में कई छवियां दिखाएं."
+
+#: src/blocks/gallery-stacked/inspector.js:105
+msgid "Box Shadow"
+msgstr "बॉक्स शैडो"
+
+#: src/blocks/gallery-stacked/inspector.js:48
+msgid "Fullwidth images are enabled."
+msgstr "पूर्ण-चौड़ाई छवियां सक्षम हैं"
+
+#: src/blocks/gallery-stacked/inspector.js:48
+msgid ""
+"Toggle to fill the available gallery area with completely fullwidth images."
+msgstr "उपलब्ध गैलरी क्षेत्र को पूरी चौड़ाई की छवियों के साथ भरने के लिए टॉगल करें."
+
+#: src/blocks/gallery-stacked/inspector.js:80
+#, fuzzy
+msgid "Stacked Settings"
+msgstr "‌आइटम सेटिंग्स"
+
+#: src/blocks/gallery-stacked/inspector.js:83
+msgid "Fullwidth Images"
+msgstr "पूर्ण-चौड़ाई छवियां"
+
+#: src/blocks/gallery-stacked/inspector.js:83
+msgid "Fullwidth Image"
+msgstr "पूर्ण-चौड़ाई छवि"
+
+#: src/blocks/gif/controls.js:44
+msgid "Remove gif"
+msgstr "gif निकालें"
+
+#: src/blocks/gif/edit.js:152
+msgid "This gif has an empty alt attribute"
+msgstr "इस gif में खाली alt विशेषता है"
+
+#: src/blocks/gif/edit.js:283
+msgid "Search for that perfect gif on Giphy"
+msgstr "Giphy पर उस सही gif के लिए खोजें"
+
+#: src/blocks/gif/edit.js:289
+msgid "Search for gifs"
+msgstr "gif खोजें"
+
+#: src/blocks/gif/index.js:27
+msgid "Pick a gif, any gif."
+msgstr "कोई gif चुनें, कोई भी gif."
+
+#: src/blocks/gif/inspector.js:29
+msgid "Gif Settings"
+msgstr "Gif सेटिंग्स"
+
+#: src/blocks/gist/controls.js:29
+msgid "Display meta"
+msgstr "मेटा प्रदर्शित करें"
+
+#: src/blocks/gist/controls.js:42
+msgid "Edit Gist"
+msgstr "Gist संपादित करें"
+
+#: src/blocks/gist/controls.js:49
+msgid "View Gist"
+msgstr "Gist देखें"
+
+#: src/blocks/gist/controls.js:68
+msgid "GitHub File"
+msgstr "GitHub फ़ाइल"
+
+#: src/blocks/gist/controls.js:72
+msgid "File"
+msgstr "फ़ाइल"
+
+#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
+msgid "View this gist on GitHub"
+msgstr "GitHub पर इस gist को देखें"
+
+#: src/blocks/gist/edit.js:124 src/blocks/gist/inspector.js:51
+msgid "Gist URL"
+msgstr "Gist URL"
+
+#: src/blocks/gist/edit.js:129
+msgid "Add GitHub Gist URL..."
+msgstr "GitHub Gist URL जोड़ें..."
+
+#: src/blocks/gist/gist.js:137
+msgid "Loading Gist"
+msgstr "Gist लोड हो रहा है"
+
+#: src/blocks/gist/index.js:29
+#, fuzzy
+msgid "Embed GitHub gists by adding a gist link."
+msgstr "gist लिंक जोड़कर एम्बेड की गई GitHub gist"
+
+#: src/blocks/gist/inspector.js:31
+msgid "Showing gist meta data."
+msgstr "gist मेटा डेटा दिखाना."
+
+#: src/blocks/gist/inspector.js:31
+msgid "Toggle to show the gist meta data."
+msgstr "gist मेटा डेटा दिखाने के लिए टॉगल करें."
+
+#: src/blocks/gist/inspector.js:49
+msgid "Gist Settings"
+msgstr "Gist सेटिंग्स"
+
+#: src/blocks/gist/inspector.js:56
+msgid "Gist File"
+msgstr "Gist फ़ाइल"
+
+#: src/blocks/gist/inspector.js:61
+msgid "Gist Meta"
+msgstr "Gist मेटा"
+
+#: src/blocks/hero/controls.js:32
+msgid "Change layout"
+msgstr "लेआउट बदलें"
+
 #: src/blocks/hero/edit.js:152
 #, fuzzy
 msgid "Add background to hero"
 msgstr "%s में पृष्ठभूमि जोड़ें"
+
+#: src/blocks/hero/index.js:41
+msgid ""
+"An introductory area of a page accompanied by a small amount of text and a "
+"call to action."
+msgstr ""
+"पेज का परिचय देने वाला क्षेत्र पाठ जिसमें थोड़ा-सा पाठ रहेगा और कार्रवाई के लिए कॉल करें "
+"होगा."
+
+#: src/blocks/hero/inspector.js:127
+msgid "Content width in pixels"
+msgstr "पिक्सेल में सामग्री की चौड़ाई"
+
+#: src/blocks/hero/inspector.js:81
+msgid "Hero Settings"
+msgstr "हीरो सेटिंग्स"
+
+#: src/blocks/hero/inspector.js:85 src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:134 src/blocks/row/inspector.js:181
+msgid "Space inside of the container."
+msgstr "कंटेनर के अंदर जगह."
+
+#: src/blocks/hero/layouts.js:12
+msgid "Top Left"
+msgstr "शीर्ष बायां"
+
+#: src/blocks/hero/layouts.js:13
+msgid "Top Center"
+msgstr "शीर्ष केंद्र"
+
+#: src/blocks/hero/layouts.js:14
+msgid "Top Right"
+msgstr "शीर्ष दायां"
+
+#: src/blocks/hero/layouts.js:15
+msgid "Center Left"
+msgstr "केंद्र बायां"
+
+#: src/blocks/hero/layouts.js:16
+msgid "Center Center"
+msgstr "केंद्र केंद्र"
+
+#: src/blocks/hero/layouts.js:17
+msgid "Center Right"
+msgstr "केंद्र दायां"
+
+#: src/blocks/hero/layouts.js:18
+msgid "Bottom Left"
+msgstr "नीचे बायां"
+
+#: src/blocks/hero/layouts.js:19
+msgid "Bottom Center"
+msgstr "नीचे केंद्र"
+
+#: src/blocks/hero/layouts.js:20
+msgid "Bottom Right"
+msgstr "नीचे दायां"
+
+#: src/blocks/highlight/edit.js:113
+msgid "Add highlighted text..."
+msgstr "हाइलाइट किया गया पाठ जोड़ें..."
+
+#: src/blocks/highlight/index.js:28
+msgid "Draw attention and emphasize important narrative."
+msgstr ""
+
+#: src/blocks/highlight/index.js:33
+msgid ""
+"Add a highlight effect to paragraph text in order to grab attention and "
+"emphasize important narrative."
+msgstr ""
+
+#: src/blocks/icon/icon-size-select.js:30 src/blocks/row/inspector.js:102
+#: src/components/dimensions-control/dimensions-select.js:30
+msgid "Huge"
+msgstr "बड़ा"
+
+#: src/blocks/icon/icon-size-select.js:79
+msgid "Choose icon size preset"
+msgstr ""
+
+#: src/blocks/icon/index.js:33
+msgid "Add a stylized graphic symbol to communicate something more."
+msgstr "कुछ और संचार करने के लिए स्टाइल वाला ग्राफ़िक प्रतीक जोड़ें."
+
+#: src/blocks/icon/inspector.js:155 src/blocks/share/inspector.js:111
+#: src/blocks/social-profiles/inspector.js:115
+msgid "Icon Settings"
+msgstr "आइकन सेटिंग्स"
+
+#: src/blocks/icon/inspector.js:168
+msgid "Reset icon size"
+msgstr ""
+
+#: src/blocks/icon/inspector.js:170
+#: src/components/dimensions-control/index.js:470
+#: src/components/size-control/index.js:198
+msgid "Reset"
+msgstr "रीसेट करें"
+
+#: src/blocks/icon/inspector.js:198
+#, fuzzy
+msgid "Apply custom size"
+msgstr "कस्टम %s आकार"
+
+#: src/blocks/icon/inspector.js:201
+#, fuzzy
+msgid "Custom"
+msgstr "सीमा-शुल्क"
+
+#: src/blocks/icon/inspector.js:209
+msgid "Radius"
+msgstr "त्रिज्या"
+
+#: src/blocks/icon/inspector.js:229
+msgid "Icon Search"
+msgstr "आइकन खोज"
+
+#: src/blocks/icon/inspector.js:278
+msgid "No results found."
+msgstr "कोई परिणाम नहीं मिला."
+
+#: src/blocks/icon/inspector.js:284
+#: src/components/block-gallery/gallery-link-settings.js:63
+msgid "Link Settings"
+msgstr "लिंक सेटिंग्स"
+
+#: src/blocks/icon/inspector.js:287
+msgid "Link URL"
+msgstr "लिंक URL"
+
+#: src/blocks/icon/inspector.js:292
+msgid "Link Rel"
+msgstr "लिंक Rel"
+
+#: src/blocks/icon/inspector.js:297
+msgid "Opening in New Tab"
+msgstr "नई टैब में खोलना"
+
+#: src/blocks/icon/inspector.js:297
+#: src/components/block-gallery/gallery-link-settings.js:75
+msgid "Open in New Tab"
+msgstr "नई टैब में खोलें"
+
+#: src/blocks/icon/inspector.js:309 src/blocks/share/inspector.js:104
+#: src/blocks/social-profiles/inspector.js:108
+msgid "Icon Color"
+msgstr "आइकन का रंग"
+
+#: src/blocks/logos/controls.js:51
+msgid "Edit logos"
+msgstr "लोगो संपादित करें"
+
+#: src/blocks/logos/edit.js:69
+msgid "Logos & Badges"
+msgstr "लोगो और बैज"
+
+#: src/blocks/logos/edit.js:70
+#: src/components/block-gallery/gallery-placeholder.js:72
+msgid "Drag images, upload new ones or select files from your library."
+msgstr "छवियां खींचें, नए अपलोड करें या अपनी लाइब्रेरी से फ़ाइलों का चयन करें."
+
+#: src/blocks/logos/index.js:27
+msgid "Add logos, badges, or certifications to build credibility."
+msgstr "विश्वसनीयता बनाने के लिए लोगो, बैजेस या प्रमाणपत्र जोड़ें."
+
+#: src/blocks/logos/inspector.js:12
+msgid "Logos Settings"
+msgstr "लोगो कि सेटिंग्स"
+
+#: src/blocks/logos/inspector.js:15
+msgid "Black & White"
+msgstr "श्वेत और श्याम"
+
+#: src/blocks/logos/inspector.js:16
+msgid "Toggle to add a black and white filter."
+msgstr "श्वेत और श्याम फ़िल्टर को जोड़ने के लिए टॉगल करें."
+
+#: src/blocks/map/controls.js:30
+msgid "Edit Location"
+msgstr "स्थान संपादित करें"
+
+#: src/blocks/map/controls.js:42
+msgid "Map style"
+msgstr "मैप स्टाइल"
+
+#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50
+msgid "Google Map"
+msgstr "Google Map"
+
+#: src/blocks/map/edit.js:195
+msgid "Invalid API key, or too many requests"
+msgstr "अमान्य API कुंजी या कई सारे अनुरोध"
+
+#: src/blocks/map/edit.js:294
+msgid "Enter a location or address to drop a pin on a Google map."
+msgstr "Google मैप पर पिन छोड़ने के लिए कोई स्थान या पता दर्ज करें."
+
+#: src/blocks/map/edit.js:301
+msgid "Search for a place or address…"
+msgstr "स्थान या पते के लिए खोजें..."
+
+#: src/blocks/map/edit.js:320
+msgid "Cancel"
+msgstr ""
+
+#: src/blocks/map/index.js:28
+#, fuzzy
+msgid "Add an address or location to drop a pin on a Google map."
+msgstr "कोई पता जोड़ें और Google मैप पर पिन छोड़ें."
+
+#: src/blocks/map/inspector.js:109
+msgid "Select Map Style"
+msgstr "मैप स्टाइल चुनें"
+
+#: src/blocks/map/inspector.js:130
+msgid "Map Settings"
+msgstr "मैप सेटिंग्स"
+
+#: src/blocks/map/inspector.js:135
+msgid "Height for the map in pixels"
+msgstr "पिक्सेल में मैप के लिए उँचाई"
+
+#: src/blocks/map/inspector.js:144
+msgid "Zoom Level"
+msgstr "ज़ूम स्तर"
+
+#: src/blocks/map/inspector.js:155
+msgid "Marker Size"
+msgstr "मार्कर का आकार"
+
+#: src/blocks/map/inspector.js:170
+msgid "Fine control options are enabled."
+msgstr "बेहतर नियंत्रण विकल्प सक्षम हैं."
+
+#: src/blocks/map/inspector.js:170
+msgid "Toggle to enable map control options."
+msgstr "मैप नियंत्रण विकल्पों को सक्षम करने के लिए टॉगल करें."
+
+#: src/blocks/map/inspector.js:178
+msgid "Map Controls"
+msgstr "मैप नियंत्रण"
+
+#: src/blocks/map/inspector.js:182
+msgid "Map Type"
+msgstr "मैप प्रकार"
+
+#: src/blocks/map/inspector.js:185
+msgid "Switching between standard and satellite map views is enabled."
+msgstr "मानक और सैटलाइट मैप दृश्यों के बीच स्विच करना सक्षम है."
+
+#: src/blocks/map/inspector.js:185
+msgid "Toggle to enable switching between standard and satellite maps."
+msgstr "मानक और सैटलाइट मैप के बीच स्विच सक्षम करने लिए टॉगल करें."
+
+#: src/blocks/map/inspector.js:188
+msgid "Zoom Controls"
+msgstr "ज़ूम नियंत्रण"
+
+#: src/blocks/map/inspector.js:191
+msgid "Showing map zoom controls."
+msgstr "मैप ज़ूम नियंत्रण दिखाना."
+
+#: src/blocks/map/inspector.js:191
+msgid "Toggle to enable zooming in and out on the map with zoom controls."
+msgstr "ज़ूम नियंत्रण के साथ मैप पर ज़ूम इन और आउट सक्षम करने के लिए टॉगल करें."
+
+#: src/blocks/map/inspector.js:194
+msgid "Street View"
+msgstr "स्ट्रीट दृश्य"
+
+#: src/blocks/map/inspector.js:197
+msgid "Showing the street view map control."
+msgstr "स्ट्रीट दृश्य मैप नियंत्रण दिखाना."
+
+#: src/blocks/map/inspector.js:197
+msgid "Toggle to show the street view control at the bottom right."
+msgstr "नीचे दाईं ओर स्ट्रीट दृश्य नियंत्रण दिखाने के लिए टॉगल करें."
+
+#: src/blocks/map/inspector.js:200
+msgid "Fullscreen Toggle"
+msgstr "पूर्ण स्क्रीन टॉगल करना"
+
+#: src/blocks/map/inspector.js:203
+msgid "Showing the fullscreen map control."
+msgstr "पूर्ण स्क्रीन मैप नियंत्रण दिखाना."
+
+#: src/blocks/map/inspector.js:203
+msgid "Toggle to show the fullscreen map control."
+msgstr "पूर्ण स्क्रीन मैप नियंत्रण दिखाने के लिए टॉगल करें."
+
+#: src/blocks/map/inspector.js:208
+msgid "Google Maps API Key"
+msgstr "Google Maps API कुंजी"
+
+#: src/blocks/map/inspector.js:212
+#, fuzzy
+msgid ""
+"Add a Google Maps API key. Updating this API key will set all your maps to "
+"use the new key."
+msgstr ""
+"अपने Google Maps API कुंजी में जोड़ें. इस API कुंजी को अपडेट करने से नई कुंजी का उपयोग करने "
+"के लिए अपने सभी मैप सेट हो जाएंगे."
+
+#: src/blocks/map/inspector.js:215
+#, fuzzy
+msgid "Get a key"
+msgstr "कुंजियाँ जनरेट करें"
+
+#: src/blocks/map/inspector.js:216
+msgid "Need help?"
+msgstr "मदद चाहिए?"
+
+#: src/blocks/map/inspector.js:222
+msgid "Enter Google API Key…"
+msgstr "Google API कुंजी दर्ज करें…"
+
+#: src/blocks/map/inspector.js:231
+msgid "Saved"
+msgstr "सहेजा गया"
+
+#: src/blocks/media-card/controls.js:28
+msgid "Media on right"
+msgstr "दाईं ओर स्थित मीडिया"
+
+#: src/blocks/media-card/controls.js:33
+msgid "Media on left"
+msgstr "बाईं ओर स्थित मीडिया"
+
+#: src/blocks/media-card/index.js:36
+msgid "Add an image or video with an offset card side-by-side."
+msgstr "ऑफ़सेट कार्ड के साथ कोई छवि या वीडियो जोड़ें."
+
+#: src/blocks/media-card/inspector.js:109
+msgid "Card Shadow"
+msgstr "कार्ड शैडो"
+
+#: src/blocks/media-card/inspector.js:112
+msgid "Showing card shadow."
+msgstr "कार्ड शैडो दिखाना."
+
+#: src/blocks/media-card/inspector.js:112
+msgid "Toggle to add a card shadow."
+msgstr "कार्ड शैडो जोड़ने के लिए टॉगल करें."
+
+#. %s: Placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:118
+msgid " %s Shadow"
+msgstr " %s शैडो"
+
+#. %s: Placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:124
+msgid "Showing %s shadow."
+msgstr "%s शैडो दिखाना."
+
+#. %s: Placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:126
+msgid "Toggle to add an %s shadow"
+msgstr "%s शैडो जोड़ने के लिए टॉगल करें"
+
+#: src/blocks/media-card/inspector.js:59
+msgid "Media Card Settings"
+msgstr "मीडिया कार्ड सेटिंग्स"
+
+#: src/blocks/media-card/inspector.js:84
+msgid "Max Width"
+msgstr "अधिकतम चौड़ाई"
+
+#: src/blocks/media-card/media-container.js:100
+msgid "Media"
+msgstr "मीडिया"
+
+#: src/blocks/media-card/media-container.js:120
+msgid "Drop to replace media"
+msgstr "मीडिया बदलने के लिए छोड़ें"
+
+#: src/blocks/media-card/media-container.js:37
+msgid "Edit media"
+msgstr "मीडिया संपादित करें"
+
+#: src/blocks/post-carousel/edit.js:123 src/blocks/posts/edit.js:247
+#, fuzzy
+msgid "Edit RSS URL"
+msgstr "Gist URL"
+
+#: src/blocks/post-carousel/edit.js:178
+#, fuzzy
+msgid "Post Carousel"
+msgstr "कैरोसल"
+
+#: src/blocks/post-carousel/edit.js:184 src/blocks/posts/edit.js:295
+msgid "No posts found. Start publishing or add posts from an %s feed."
+msgstr ""
+
+#: src/blocks/post-carousel/edit.js:187 src/blocks/posts/edit.js:298
+msgid "Retrieve an External Feed"
+msgstr ""
+
+#: src/blocks/post-carousel/edit.js:193 src/blocks/posts/edit.js:304
+msgid "Use External Feed"
+msgstr ""
+
+#. %s: RSS
+#: src/blocks/post-carousel/edit.js:216 src/blocks/posts/edit.js:332
+msgid "%s Feed"
+msgstr ""
+
+#: src/blocks/post-carousel/edit.js:217 src/blocks/posts/edit.js:333
+msgid "%s URLs are generally located at the /feed/ directory of a site."
+msgstr ""
+
+#: src/blocks/post-carousel/edit.js:221 src/blocks/posts/edit.js:337
+#, fuzzy
+msgid "https://example.com/feed…"
+msgstr "https://yelp.com/"
+
+#: src/blocks/post-carousel/edit.js:227 src/blocks/posts/edit.js:343
+#, fuzzy
+msgid "Use URL"
+msgstr "Gist URL"
+
+#: src/blocks/post-carousel/edit.js:320 src/blocks/posts/edit.js:463
+#: src/blocks/post-carousel/index.php:366 src/blocks/posts/index.php:385
+msgid "Read more"
+msgstr ""
+
+#: src/blocks/post-carousel/index.js:27
+msgid "Display posts or an external blog feed as a carousel."
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:108 src/blocks/posts/inspector.js:174
+msgid "Number of posts"
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:38
+#, fuzzy
+msgid "Post Carousel Settings"
+msgstr "रंग की सेटिंग्स"
+
+#: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
+#, fuzzy
+msgid "Post Date"
+msgstr "कैरोसल"
+
+#: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
+#, fuzzy
+msgid "Showing the publish date."
+msgstr "इस आइटम के लिए कीमत दिखाना."
+
+#: src/blocks/post-carousel/inspector.js:46 src/blocks/posts/inspector.js:86
+#, fuzzy
+msgid "Toggle to show the publish date."
+msgstr "gist मेटा डेटा दिखाने के लिए टॉगल करें."
+
+#: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
+#, fuzzy
+msgid "Post Content"
+msgstr "कैरोसल"
+
+#: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
+#, fuzzy
+msgid "Showing the post content."
+msgstr "कार्रवाई के लिए कॉल करें बटन दिखाना."
+
+#: src/blocks/post-carousel/inspector.js:56 src/blocks/posts/inspector.js:96
+#, fuzzy
+msgid "Toggle to show the post content."
+msgstr "gist मेटा डेटा दिखाने के लिए टॉगल करें."
+
+#: src/blocks/post-carousel/inspector.js:62 src/blocks/posts/inspector.js:102
+msgid "Max words in content"
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:86 src/blocks/posts/inspector.js:152
+#, fuzzy
+msgid "Feed Settings"
+msgstr "सुविधा सेटिंग्स"
+
+#: src/blocks/post-carousel/inspector.js:90 src/blocks/posts/inspector.js:156
+msgid "My Blog"
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:91 src/blocks/posts/inspector.js:157
+msgid "External Feed"
+msgstr ""
+
+#: src/blocks/posts/edit.js:260
+#, fuzzy
+msgid "Image on left"
+msgstr "बाईं ओर स्थित मीडिया"
+
+#: src/blocks/posts/edit.js:265
+#, fuzzy
+msgid "Image on right"
+msgstr "दाईं ओर स्थित मीडिया"
+
+#: src/blocks/posts/edit.js:289
+msgid "Blog Posts"
+msgstr ""
+
+#: src/blocks/posts/index.js:27
+msgid "Display posts or an RSS feed as stacked or horizontal cards."
+msgstr ""
+
+#: src/blocks/posts/inspector.js:129
+#, fuzzy
+msgid "Thumbnail Size"
+msgstr "कॉलम का आकार"
+
+#: src/blocks/posts/inspector.js:78
+#, fuzzy
+msgid "Posts Settings"
+msgstr "Gist सेटिंग्स"
+
+#: src/blocks/pricing-table/controls.js:17
+#, fuzzy
+msgid "One Pricing Table"
+msgstr "मूल्य निर्धारण तालिका"
+
+#: src/blocks/pricing-table/controls.js:22
+#, fuzzy
+msgid "Two Pricing Tables"
+msgstr "मूल्य निर्धारण तालिका"
+
+#: src/blocks/pricing-table/controls.js:27
+#, fuzzy
+msgid "Three Pricing Tables"
+msgstr "मूल्य निर्धारण तालिका"
+
+#: src/blocks/pricing-table/controls.js:32
+#, fuzzy
+msgid "Four Pricing Tables"
+msgstr "मूल्य निर्धारण तालिका"
+
+#: src/blocks/pricing-table/controls.js:62
+#, fuzzy
+msgid "Change pricing table count"
+msgstr "मूल्य निर्धारण तालिका जोड़ें."
+
+#: src/blocks/pricing-table/edit.js:39
+#, fuzzy
+msgid "Plan %d"
+msgstr "%s प्लान"
+
+#: src/blocks/pricing-table/index.js:29
+msgid "Add pricing tables to help visitors compare products and plans."
+msgstr ""
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:112
+msgid "Add features"
+msgstr "विशेषताएं जोड़ें"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:30
+msgid "Buy Now"
+msgstr "अभी खरीदें"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:82
+msgid "Plan A"
+msgstr "A प्लान"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:92
+msgid "$"
+msgstr "$"
+
+#: src/blocks/pricing-table/pricing-table-item/index.js:27
+msgid "A pricing table to help visitors compare products and plans."
+msgstr ""
+
+#: src/blocks/row/column/edit.js:90
+#, fuzzy
+msgid "Add background to column"
+msgstr "%s में पृष्ठभूमि जोड़ें"
+
+#: src/blocks/row/column/index.js:30
+msgid "An immediate child of a row."
+msgstr "पंक्ति का इमिडिएट चाइल्ड."
+
+#: src/blocks/row/column/inspector.js:108
+msgid "Column Settings"
+msgstr "कॉलम सेटिंग्स"
+
+#: src/blocks/row/column/inspector.js:112 src/blocks/row/inspector.js:158
+msgid "Space around the container."
+msgstr "कंटेनर के आसपास की जगह."
+
+#: src/blocks/row/column/inspector.js:155
+msgid "Width"
+msgstr "चौड़ाई"
+
+#: src/blocks/row/controls.js:74
+#, fuzzy
+msgid "Change row block layout"
+msgstr "लेआउट बदलें"
+
+#: src/blocks/row/edit.js:121
+msgid "one"
+msgstr "एक"
+
+#: src/blocks/row/edit.js:123
+msgid "two"
+msgstr "दो"
+
+#: src/blocks/row/edit.js:125
+msgid "three"
+msgstr "तीन"
+
+#: src/blocks/row/edit.js:127
+msgid "four"
+msgstr "चार"
+
+#: src/blocks/row/edit.js:169
+#, fuzzy
+msgid "Add background to row"
+msgstr "%s में पृष्ठभूमि जोड़ें"
+
+#: src/blocks/row/edit.js:174
+msgid "One Column"
+msgstr "एक कॉलम"
+
+#: src/blocks/row/edit.js:175
+msgid "Two Columns"
+msgstr "दो कॉलम"
+
+#: src/blocks/row/edit.js:176
+msgid "Three Columns"
+msgstr "तीन कॉलम"
+
+#: src/blocks/row/edit.js:177
+msgid "Four Columns"
+msgstr "चार कॉलम"
+
+#: src/blocks/row/edit.js:202
+msgid "Row Layout"
+msgstr "पंक्ति का लेआउट"
+
+#: src/blocks/row/edit.js:202
+msgid "Row"
+msgstr "पंक्ति"
+
+#. %s: 'one' 'two' 'three' and 'four'
+#: src/blocks/row/edit.js:205
+msgid "Now select a layout for this %s column row."
+msgstr "अब इस %s स्तंभ पंक्ति के लिए लेआउट चुनें."
+
+#: src/blocks/row/edit.js:206
+msgid "Select the number of columns for this row."
+msgstr "इस पंक्ति के लिए स्तंभ की संख्या चुनें."
+
+#: src/blocks/row/edit.js:211
+msgid "Select Row Columns"
+msgstr "स्तंभ पंक्तियां चुनें"
+
+#: src/blocks/row/edit.js:236 src/blocks/row/inspector.js:121
+msgid "Select Row Layout"
+msgstr "पंक्ति का लेआउट चुनें"
+
+#: src/blocks/row/edit.js:246
+msgid "Back to Columns"
+msgstr "स्तंभ पर वापस जाएं"
+
+#: src/blocks/row/index.js:38
+msgid ""
+"Add a structured wrapper for column blocks, then add content blocks you’d "
+"like to the columns."
+msgstr ""
+"स्तंभ ब्लॉक के लिए संरचित रैपर जोड़ें, फिर स्तंभ को पसंद करने के लिए सामग्री ब्लॉक जोड़ें."
+
+#: src/blocks/row/inspector.js:153
+msgid "Row Settings"
+msgstr "पंक्ति की सेटिंग्स"
+
+#: src/blocks/row/inspector.js:98
+#: src/components/block-gallery/options/link-options.js:10
+#: src/components/dimensions-control/dimensions-select.js:10
+msgid "None"
+msgstr "कोई नहीं"
+
+#: src/blocks/row/layouts.js:13
+msgid "Equal Split"
+msgstr ""
+
+#: src/blocks/row/layouts.js:14
+msgid "Two Thirds / One Third"
+msgstr ""
+
+#: src/blocks/row/layouts.js:15
+msgid "One Third / Two Thirds"
+msgstr ""
+
+#: src/blocks/row/layouts.js:16
+msgid "Three Quarters / Quarter"
+msgstr ""
+
+#: src/blocks/row/layouts.js:17
+msgid "Quarter / Three Quarters"
+msgstr ""
+
+#: src/blocks/row/layouts.js:20
+msgid "Thirds"
+msgstr ""
+
+#: src/blocks/row/layouts.js:21
+msgid "Half / Quarter / Quarter"
+msgstr ""
+
+#: src/blocks/row/layouts.js:22
+msgid "Quarter / Quarter/ Half"
+msgstr ""
+
+#: src/blocks/row/layouts.js:23
+msgid "Quarter / Half / Quarter"
+msgstr ""
+
+#: src/blocks/row/layouts.js:24
+msgid "One Fifth/ Three Fifths / One Fifth"
+msgstr ""
+
+#: src/blocks/row/layouts.js:27
+msgid "Quarters"
+msgstr ""
+
+#: src/blocks/row/layouts.js:28
+msgid "Two Fifths / Fifth / Fifth / Fifth"
+msgstr ""
+
+#: src/blocks/row/layouts.js:29
+msgid "Fifth / Fifth / Fifth / Two Fifths"
+msgstr ""
+
+#: src/blocks/services/edit.js:44
+msgid "Square"
+msgstr "वर्गाकार"
+
+#: src/blocks/services/edit.js:49
+msgid "Circle"
+msgstr "सर्कल"
+
+#: src/blocks/services/index.js:27
+msgid "Add up to four columns of services to display."
+msgstr "प्रदर्शित करने के लिए सेवाओं के चार स्तंभ जोड़ें."
+
+#: src/blocks/services/inspector.js:67
+msgid "Services Settings"
+msgstr "सेवा सेटिंग्स"
+
+#: src/blocks/services/inspector.js:75
+msgid "Heading Level"
+msgstr "शीर्षक लेवल"
+
+#: src/blocks/services/inspector.js:83
+msgid "Action Buttons"
+msgstr "कार्रवाई बटन"
+
+#: src/blocks/services/inspector.js:87
+msgid "Showing the call to action buttons."
+msgstr "कार्रवाई के लिए कॉल करें बटन दिखाना."
+
+#: src/blocks/services/inspector.js:88
+msgid "Toggle to show call to action buttons."
+msgstr "कार्रवाई के लिए कॉल करें बटन दिखाने हेतु टॉगल करें."
+
+#: src/blocks/services/service/index.js:27
+msgid "A single service item within a services block."
+msgstr "सेवा ब्लॉक के भीतर एकल सेवा आइटम."
+
+#: src/blocks/services/service/inspector.js:18
+msgid "Service Settings"
+msgstr "सेवा सेटिंग्स"
+
+#: src/blocks/services/service/inspector.js:20
+msgid "Action Button"
+msgstr "कार्रवाई बटन"
+
+#: src/blocks/services/service/inspector.js:23
+msgid "Showing the call to action button."
+msgstr "कार्रवाई के लिए कॉल करें बटन दिखाना."
+
+#: src/blocks/services/service/inspector.js:24
+msgid "Toggle to show a call to action button."
+msgstr "कार्रवाई के लिए कॉल करें बटन दिखाने हेतु टॉगल करें."
+
+#: src/blocks/shape-divider/controls.js:28
+msgid "Flip horiztonally"
+msgstr "क्षैतिज रूप से फ़्लिप करें"
+
+#: src/blocks/shape-divider/controls.js:33
+msgid "Flip vertically"
+msgstr "लंबवत  रूप से फ़्लिप करें"
+
+#: src/blocks/shape-divider/index.js:29
+msgid "Add a shape divider to visually distinquish page sections."
+msgstr "विज़ुअल रूप से अलग पेज अनुभागों के लिए शेप डिवाइडर जोड़ें."
+
+#: src/blocks/shape-divider/inspector.js:53
+msgid "Divider Settings"
+msgstr "डिवाइडर सेटिंग्स"
+
+#: src/blocks/shape-divider/inspector.js:55
+msgid "Shape Height in pixels"
+msgstr "पिक्सेल में शेप ऊँचाई"
+
+#: src/blocks/shape-divider/inspector.js:73
+msgid "Background Height in pixels"
+msgstr "पिक्सेल में पृष्ठभूमि ऊँचाई"
+
+#: src/blocks/shape-divider/inspector.js:98
+msgid "Shape Color"
+msgstr "शेप रंग"
+
+#: src/blocks/share/edit.js:113 src/blocks/share/index.php:133
+msgid "Share on Facebook"
+msgstr "Facebook पर साझा करें"
+
+#: src/blocks/share/edit.js:121 src/blocks/share/index.php:137
+msgid "Share on Twitter"
+msgstr "Twitter पर साझा करें"
+
+#: src/blocks/share/edit.js:129 src/blocks/share/index.php:141
+msgid "Share on Pinterest"
+msgstr "Pinterest पर साझा करें"
+
+#: src/blocks/share/edit.js:137
+msgid "Share on LinkedIn"
+msgstr "Linkedin पर साझा करें"
+
+#: src/blocks/share/edit.js:145 src/blocks/share/index.php:149
+msgid "Share via Email"
+msgstr "ईमेल के माध्यम से साझा करें"
+
+#: src/blocks/share/edit.js:153 src/blocks/share/index.php:153
+msgid "Share on Tumblr"
+msgstr "Tumblr पर साझा करें"
+
+#: src/blocks/share/edit.js:161 src/blocks/share/index.php:157
+msgid "Share on Google"
+msgstr "Google पर साझा करें"
+
+#: src/blocks/share/edit.js:169 src/blocks/share/index.php:161
+msgid "Share on Reddit"
+msgstr "Reddit पर साझा करें"
+
+#: src/blocks/share/index.js:25
+msgid "Add social sharing links to help you get likes and shares."
+msgstr "पसंद और साझा पाने में अपनी मदद करने के लिए सामाजिक साझाकरण लिंक जोड़ें."
+
+#: src/blocks/share/inspector.js:113
+#: src/blocks/social-profiles/inspector.js:117
+msgid "Social Colors"
+msgstr "सामाजिक रंग"
+
+#: src/blocks/share/inspector.js:129
+#: src/blocks/social-profiles/inspector.js:133
+msgid "Icon Size"
+msgstr "आइकन का आकार"
+
+#: src/blocks/share/inspector.js:138
+#: src/blocks/social-profiles/inspector.js:142
+msgid "Circle Size"
+msgstr "सर्कल आकार"
+
+#: src/blocks/share/inspector.js:147
+#: src/blocks/social-profiles/inspector.js:151
+msgid "Button Size"
+msgstr "बटन आकार"
+
+#: src/blocks/share/inspector.js:155
+msgid "Icons"
+msgstr "आइकन"
+
+#: src/blocks/share/inspector.js:157 src/blocks/social-profiles/edit.js:205
+#: src/blocks/social-profiles/index.php:72
+msgid "Twitter"
+msgstr "Twitter"
+
+#: src/blocks/share/inspector.js:162 src/blocks/social-profiles/edit.js:159
+#: src/blocks/social-profiles/index.php:68
+msgid "Facebook"
+msgstr "Facebook"
+
+#: src/blocks/share/inspector.js:167 src/blocks/social-profiles/edit.js:299
+#: src/blocks/social-profiles/index.php:80
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: src/blocks/share/inspector.js:172 src/blocks/social-profiles/edit.js:347
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
+#: includes/class-coblocks-form.php:321
+msgid "Email"
+msgstr "ईमेल"
+
+#: src/blocks/share/inspector.js:182
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: src/blocks/share/inspector.js:187
+msgid "Google"
+msgstr "Google"
+
+#: src/blocks/share/inspector.js:192
+msgid "Reddit"
+msgstr "Reddit"
+
+#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:36
+msgid "Share button colors are enabled."
+msgstr "साझा करें बटन के रंग सक्षम कर दिया गया है."
+
+#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:37
+msgid "Toggle to use official colors from each social media platform."
+msgstr ""
+"प्रत्येक सामाजिक मीडिया प्लेटफ़ॉर्म से आधिकारिक रंगों का उपयोग करने के लिए टॉगल करें."
+
+#: src/blocks/social-profiles/edit.js:142
+msgid "Add Facebook Profile"
+msgstr "Facebook प्रोफ़ाइल जोड़ें"
+
+#: src/blocks/social-profiles/edit.js:174
+msgid "https://facebook.com/"
+msgstr "https://facebook.com/"
+
+#: src/blocks/social-profiles/edit.js:188
+msgid "Add Twitter Profile"
+msgstr "Twitter प्रोफ़ाइल जोड़ें"
+
+#: src/blocks/social-profiles/edit.js:220
+msgid "https://twitter.com/"
+msgstr "https://twitter.com/"
+
+#: src/blocks/social-profiles/edit.js:234
+msgid "Add Instagram Profile"
+msgstr "Instagram प्रोफ़ाइल जोड़ें"
+
+#: src/blocks/social-profiles/edit.js:251
+#: src/blocks/social-profiles/index.php:76
+msgid "Instagram"
+msgstr "Instagram"
+
+#: src/blocks/social-profiles/edit.js:266
+msgid "https://instagram.com/"
+msgstr "https://instagram.com/"
+
+#: src/blocks/social-profiles/edit.js:282
+msgid "Add Pinterest Profile"
+msgstr "Pinterest प्रोफ़ाइल जोड़ें"
+
+#: src/blocks/social-profiles/edit.js:314
+msgid "https://pinterest.com/"
+msgstr "https://pinterest.com/"
+
+#: src/blocks/social-profiles/edit.js:330
+msgid "Add LinkedIn Profile"
+msgstr "LinkedIn प्रोफ़ाइल जोड़ें"
+
+#: src/blocks/social-profiles/edit.js:362
+msgid "https://linkedin.com/"
+msgstr "https://linkedin.com/"
+
+#: src/blocks/social-profiles/edit.js:376
+msgid "Add YouTube Profile"
+msgstr "YouTube प्रोफ़ाइल जोड़ें"
+
+#: src/blocks/social-profiles/edit.js:393
+#: src/blocks/social-profiles/index.php:89
+msgid "YouTube"
+msgstr "YouTube"
+
+#: src/blocks/social-profiles/edit.js:408
+msgid "https://youtube.com/"
+msgstr "https://youtube.com/"
+
+#: src/blocks/social-profiles/edit.js:422
+msgid "Add Yelp Profile"
+msgstr "Yelp प्रोफ़ाइल जोड़ें"
+
+#: src/blocks/social-profiles/edit.js:439
+#: src/blocks/social-profiles/index.php:93
+msgid "Yelp"
+msgstr "Yelp"
+
+#: src/blocks/social-profiles/edit.js:454
+msgid "https://yelp.com/"
+msgstr "https://yelp.com/"
+
+#: src/blocks/social-profiles/edit.js:468
+msgid "Add Houzz Profile"
+msgstr "Houzz प्रोफ़ाइल जोड़ें"
+
+#: src/blocks/social-profiles/edit.js:485
+#: src/blocks/social-profiles/index.php:97
+msgid "Houzz"
+msgstr "Houzz"
+
+#: src/blocks/social-profiles/edit.js:500
+msgid "https://houzz.com/"
+msgstr "https://houzz.com/"
+
+#: src/blocks/social-profiles/index.js:25
+#, fuzzy
+msgid "Grow your audience with links to social media profiles."
+msgstr "सामाजिक मीडिया प्रोफ़ाइल के लिंक प्रदर्शित करें."
+
+#: src/blocks/social-profiles/inspector.js:159
+msgid "Profile Links"
+msgstr "प्रोफ़ाइल लिंक"
+
+#: src/components/background/controls.js:53
+msgid "Edit Background"
+msgstr "पृष्ठभूमि संपादित करें"
+
+#: src/components/background/controls.js:72
+msgid "Remove Background"
+msgstr "पृष्ठभूमि निकालें"
+
+#: src/components/background/controls.js:96
+msgid "Background"
+msgstr "पृष्ठभूमि"
+
+#: src/components/background/panel.js:113
+msgid "Background Settings"
+msgstr "पृष्ठभूमि सेटिंग्स"
+
+#: src/components/background/panel.js:119
+msgid "Fixed Background"
+msgstr "निश्चित पृष्ठभूमि"
+
+#: src/components/background/panel.js:135
+msgid "Background Opacity"
+msgstr "पृष्ठभूमि अस्पष्टता"
+
+#: src/components/background/panel.js:168
+msgid "Repeat"
+msgstr "दोहराएं"
+
+#: src/components/background/panel.js:177
+msgid "Position"
+msgstr "स्थिति"
+
+#: src/components/background/panel.js:185
+msgid "Display"
+msgstr "प्रदर्शित करें"
+
+#: src/components/background/panel.js:193
+msgid "Mute Video"
+msgstr "वीडियो म्यूट करें"
+
+#: src/components/background/panel.js:194
+msgid "Muting the background video."
+msgstr "पृष्ठभूमि वीडियो म्यूट करना."
+
+#: src/components/background/panel.js:194
+msgid "Toggle to mute the video."
+msgstr "वीडियो म्यूट करने के लिए टॉगल करें."
+
+#: src/components/background/panel.js:201
+msgid "Loop Video"
+msgstr "लूप वीडियो"
+
+#: src/components/background/panel.js:202
+msgid "Looping the background video."
+msgstr "पृष्ठभूमि वीडियो लूप करना."
+
+#: src/components/background/panel.js:202
+msgid "Toggle to loop the video."
+msgstr "वीडियो लूप करने के लिए टॉगल करें."
+
+#: src/components/background/panel.js:211
+msgid "Remove background"
+msgstr "पृष्ठभूमि निकालें"
+
+#: src/components/background/panel.js:232
+msgid "Remove "
+msgstr "निकालें "
+
+#: src/components/block-gallery/gallery-image.js:189
+msgid "Move Image Backward"
+msgstr "छवि को पीछे ले जाएं"
+
+#: src/components/block-gallery/gallery-image.js:197
+msgid "Move Image Forward"
+msgstr "छवि को आगे ले जाएं"
+
+#: src/components/block-gallery/gallery-link-settings.js:67
+msgid "Link To"
+msgstr "इससे लिंक करें"
+
+#. %s: Type of gallery
+#: src/components/block-gallery/gallery-placeholder.js:71
+msgid "%s Gallery"
+msgstr "%s गैलरी"
+
+#: src/components/block-gallery/gallery-uploader.js:53
+msgid "Upload an image"
+msgstr "कोई छवि अपलोड करें"
+
+#: src/components/block-gallery/options/link-options.js:11
+msgid "Media File"
+msgstr "मीडिया फ़ाइल"
+
+#: src/components/block-gallery/options/link-options.js:12
+msgid "Attachment Page"
+msgstr "अटैचमेंट पेज"
+
+#: src/components/block-gallery/options/link-options.js:13
+msgid "Custom URL"
+msgstr "कस्टम URL"
+
+#: src/components/crop-settings/index.js:275
+msgid "Crop settings image placeholder"
+msgstr ""
+
+#: src/components/crop-settings/index.js:304
+#, fuzzy
+msgid "Image Orientation"
+msgstr "अभिविन्यास"
+
+#: src/components/crop-settings/index.js:310
+msgid "Rotate counter-clockwise"
+msgstr ""
+
+#: src/components/crop-settings/index.js:316
+msgid "Rotate clockwise"
+msgstr ""
+
+#: src/components/crop-settings/index.js:325
+msgid "Reset image cropping options"
+msgstr ""
+
+#: src/components/crop-settings/index.js:327
+#, fuzzy
+msgid "Reset All"
+msgstr "रीसेट करें"
+
+#: src/components/dimensions-control/index.js:442
+msgid "Select Units"
+msgstr "यूनिट चुनें"
+
+#. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
+#: src/components/dimensions-control/index.js:453
+msgid "%s Units"
+msgstr "%s यूनिट"
+
+#. %s: a texual label
+#: src/components/dimensions-control/index.js:468
+msgid "Turn off advanced %s settings"
+msgstr "उन्नत %s सेटिंग्स बंद करें"
+
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:640
+msgid "%s Top"
+msgstr "%s शीर्ष"
+
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:651
+msgid "%s Right"
+msgstr "%s दाएं"
+
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:662
+msgid "%s Bottom"
+msgstr "%s नीचे"
+
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:673
+msgid "%s Left"
+msgstr "%s बाएं"
+
+#: src/components/dimensions-control/index.js:679
+msgid "Unsync"
+msgstr "सिंक न करें"
+
+#: src/components/dimensions-control/index.js:679
+msgid "Sync"
+msgstr "सिंक करें"
+
+#: src/components/dimensions-control/index.js:682
+msgid "Sync Units"
+msgstr "यूनिट सिंक करें"
+
+#: src/components/dimensions-control/index.js:699
+msgid "Top"
+msgstr "शीर्ष"
+
+#: src/components/dimensions-control/index.js:700
+msgid "Right"
+msgstr "दाएं"
+
+#: src/components/dimensions-control/index.js:701
+msgid "Bottom"
+msgstr "नीचे"
+
+#: src/components/dimensions-control/index.js:702
+msgid "Left"
+msgstr "बाएं"
+
+#. %s:  a texual label
+#: src/components/dimensions-control/index.js:722
+msgid "Advanced %s settings"
+msgstr "उन्नत %s सेटिंग"
+
+#: src/components/dimensions-control/index.js:725
+msgid "Advanced"
+msgstr "उन्नत"
+
+#: src/components/font-family/index.js:16
+msgid "Default"
+msgstr "डिफ़ॉल्ट"
+
+#: src/components/grid-control/index.js:122
+msgid "Layout"
+msgstr "लेआउट"
+
+#: src/components/grid-control/index.js:123
+msgid "Select Layout"
+msgstr "लेआउट चुनें"
+
+#: src/components/grid-control/index.js:161
+msgid "Fullscreen"
+msgstr "पूर्णस्क्रीन"
+
+#: src/components/grid-control/index.js:179
+msgid "Fullscreen mode is enabled."
+msgstr "पूर्णस्क्रीन मोड सक्षम है."
+
+#: src/components/grid-control/index.js:179
+msgid "Toggle to enable fullscreen mode."
+msgstr "पूर्णस्क्रीन मोड सक्षम करने के लिए टॉगल करें."
+
+# %s: heading level e.g: "1", "2", "3"
+#. %d: heading level e.g: "1", "2", "3"
+#: src/components/heading-toolbar/index.js:18
+msgid "Heading %d"
+msgstr "%d शीर्षक"
+
+#: src/components/inline-color-picker/index.js:30
+msgid "Custom color picker"
+msgstr "कस्टम रंग पिकर"
+
+#: src/components/media-filter-control/index.js:84
+msgid "Apply filter"
+msgstr "फ़िल्टर लागू करें"
+
+#: src/components/responsive-base-control/index.js:68
+msgid "Height"
+msgstr "उँचाई"
+
+# Control name
+#. %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#: src/components/responsive-tabs-control/index.js:65
+msgid "Mobile %s"
+msgstr "%s मोबाइल"
+
+#: src/components/size-control/index.js:180
+msgid "Select Size"
+msgstr "आकार चुनें"
+
+#: src/components/size-control/index.js:69
+msgid "Extra Large"
+msgstr "अधिक बड़ा"
+
+#: src/components/slider-panel/autoplay-options.js:10
+msgid "One Second"
+msgstr "एक सेकंड"
+
+#: src/components/slider-panel/autoplay-options.js:11
+msgid "Two Seconds"
+msgstr "दो सेकंड"
+
+#: src/components/slider-panel/autoplay-options.js:12
+msgid "Three Seconds"
+msgstr "तीन सेकंड"
+
+#: src/components/slider-panel/autoplay-options.js:13
+msgid "Four Seconds"
+msgstr "चार सेकंड"
+
+#: src/components/slider-panel/autoplay-options.js:14
+msgid "Five Seconds"
+msgstr "पाँच सेकंड"
+
+#: src/components/slider-panel/autoplay-options.js:15
+#, fuzzy
+msgid "Six Seconds"
+msgstr "छह सेकंड"
+
+#: src/components/slider-panel/autoplay-options.js:16
+msgid "Seven Seconds"
+msgstr "सात सेकंड"
+
+#: src/components/slider-panel/autoplay-options.js:17
+msgid "Eight Seconds"
+msgstr "आठ सेकंड"
+
+#: src/components/slider-panel/autoplay-options.js:18
+msgid "Nine Seconds"
+msgstr "नौ सेकंड"
+
+#: src/components/slider-panel/autoplay-options.js:19
+msgid "Ten Seconds"
+msgstr "दस सेकंड"
+
+#: src/components/slider-panel/index.js:102
+msgid "Free Scroll"
+msgstr ""
+
+#: src/components/slider-panel/index.js:108
+msgid "Arrow Navigation"
+msgstr "तीर नेविगेशन"
+
+#: src/components/slider-panel/index.js:114
+msgid "Dot Navigation"
+msgstr "डॉट नेविगेशन"
+
+#: src/components/slider-panel/index.js:120
+msgid "Align Cells"
+msgstr ""
+
+#: src/components/slider-panel/index.js:24
+msgid "seconds"
+msgstr "सेकंड"
+
+#: src/components/slider-panel/index.js:24
+msgid "second"
+msgstr "सेकंड"
+
+# 1. Speed of the slider, 2: Time until the slide advances
+#. 1. Speed of the slider, 2: Time until the slide advances
+#: src/components/slider-panel/index.js:27
+msgid "Advancing after %1$d %2$s."
+msgstr "%1$d %2$s के बाद.आगे बढ़ना."
+
+# 1. Speed of the slider, 2: Time until the slide advances
+#. 1. Speed of the slider, 2: Time until the slide advances
+#: src/components/slider-panel/index.js:27
+msgid "Automatically advance to the next slide."
+msgstr "स्वचालित रूप से अगली स्लाइड पर जाएं."
+
+#: src/components/slider-panel/index.js:31
+#, fuzzy
+msgid "Dragging and flicking enabled."
+msgstr "डेस्कटॉप और मोबाइल डिवाइस पर खींचना और फ़्लिक सक्षम करना."
+
+#: src/components/slider-panel/index.js:31
+#, fuzzy
+msgid "Toggle to enable drag functionality."
+msgstr ""
+"डेस्कटॉप और मोबाइल डिवाइस पर किसी चीज़ को खींच कर ले जाने की कार्यक्षमता को सक्षम करने "
+"के लिए टॉगल करें."
+
+#: src/components/slider-panel/index.js:35
+msgid "Showing slide navigation arrows."
+msgstr "स्लाइड नेविगेशन तीर दिखाना."
+
+#: src/components/slider-panel/index.js:35
+msgid "Toggle to show slide navigation arrows."
+msgstr "स्लाइड नेविगेशन तीर दिखाने के लिए टॉगल करें."
+
+#: src/components/slider-panel/index.js:39
+#, fuzzy
+msgid "Showing dot navigation."
+msgstr "डॉट नेविगेशन तीर दिखाना."
+
+#: src/components/slider-panel/index.js:39
+msgid "Toggle to show dot navigation."
+msgstr "डॉट नेविगेशन दिखाने के लिए टॉगल करें."
+
+#: src/components/slider-panel/index.js:43
+#, fuzzy
+msgid "Aligning slides to the left."
+msgstr "कंटेनर के अंदर जगह."
+
+#: src/components/slider-panel/index.js:43
+#, fuzzy
+msgid "Aligning slides to the center."
+msgstr "कंटेनर के अंदर जगह."
+
+#: src/components/slider-panel/index.js:46
+#, fuzzy
+msgid "Pausing autoplay when hovering."
+msgstr "वीडियो म्यूट करने के लिए टॉगल करें."
+
+#: src/components/slider-panel/index.js:46
+#, fuzzy
+msgid "Toggle to pause autoplay when hovered."
+msgstr "वीडियो म्यूट करने के लिए टॉगल करें."
+
+#: src/components/slider-panel/index.js:50
+#, fuzzy
+msgid "Scrolling without fixed slides enabled."
+msgstr "वीडियो लूप करने के लिए टॉगल करें."
+
+#: src/components/slider-panel/index.js:50
+#, fuzzy
+msgid "Toggle to scroll without fixed slides."
+msgstr "वीडियो लूप करने के लिए टॉगल करें."
+
+#: src/components/slider-panel/index.js:72
+msgid "Slider Settings"
+msgstr "स्लाइडर सेटिंग्स"
+
+#: src/components/slider-panel/index.js:74
+msgid "Autoplay"
+msgstr "ऑटोप्ले"
+
+#: src/components/slider-panel/index.js:81
+msgid "Transition Speed"
+msgstr "लेनदेन गति"
+
+#: src/components/slider-panel/index.js:88
+msgid "Pause on Hover"
+msgstr ""
+
+#: src/components/slider-panel/index.js:96
+msgid "Draggable"
+msgstr "खींचने योग्य"
+
+#: src/components/typography-controls/index.js:164
+msgid "Font"
+msgstr "फ़ॉन्ट"
+
+#: src/components/typography-controls/index.js:171
+msgid "Weight"
+msgstr "भार"
+
+#: src/components/typography-controls/index.js:180
+msgid "Transform"
+msgstr "परिवर्तन"
+
+#: src/components/typography-controls/index.js:200
+msgid "Line Height"
+msgstr "लाइन उँचाई"
+
+#: src/components/typography-controls/index.js:211
+msgid "Letter Spacing"
+msgstr "लेटर स्पेसिंग"
+
+#: src/components/typography-controls/index.js:223
+msgid "No Top Spacing"
+msgstr "कोई टॉप स्पेसिंग नहीं"
+
+#: src/components/typography-controls/index.js:228
+msgid "No Bottom Spacing"
+msgstr "कोई बॉटम स्पेसिंग नहीं"
+
+#: src/components/typography-controls/index.js:59
+msgid "Change typography"
+msgstr "टाइपोग्राफ़ी बदलें"
+
+#: src/extensions/advanced-controls/index.js:109
+msgid "Stack on Mobile"
+msgstr "मोबाइल पर स्टैक"
+
+#: src/extensions/advanced-controls/index.js:116
+msgid "Responsiveness is enabled."
+msgstr "प्रतिक्रिया देना सक्षम है."
+
+#: src/extensions/advanced-controls/index.js:117
+msgid "Toggle to stack elements on top of each other on smaller viewports."
+msgstr "छोटे व्यूपोर्ट पर एक दूसरे के ऊपर तत्वों को स्टैक करने के लिए टॉगल करें."
+
+#: src/extensions/advanced-controls/index.js:125
+msgid "Remove Top Spacing"
+msgstr "शीर्ष स्पेसिंग निकालें"
+
+#: src/extensions/advanced-controls/index.js:135
+#, fuzzy
+msgid "Toggle to add top margin back."
+msgstr "कार्ड शैडो जोड़ने के लिए टॉगल करें."
+
+#: src/extensions/advanced-controls/index.js:135
+#, fuzzy
+msgid "Toggle to remove any top margin."
+msgstr "डॉट नेविगेशन दिखाने के लिए टॉगल करें."
+
+#: src/extensions/advanced-controls/index.js:140
+msgid "Remove Bottom Spacing"
+msgstr "नीचे स्पेसिंग निकालें"
+
+#: src/extensions/advanced-controls/index.js:163
+#, fuzzy
+msgid "Toggle to add bottom margin back."
+msgstr "कार्ड शैडो जोड़ने के लिए टॉगल करें."
+
+#: src/extensions/advanced-controls/index.js:163
+#, fuzzy
+msgid "Toggle to remove any bottom margin."
+msgstr "डॉट नेविगेशन दिखाने के लिए टॉगल करें."
+
+#: src/extensions/button-controls/index.js:71
+msgid "Display Fullwidth"
+msgstr "पूर्ण चौड़ाई प्रदर्शित करें"
+
+#: src/extensions/button-controls/index.js:74
+msgid "Displaying as full width."
+msgstr "पूर्ण चौड़ाई के रूप में प्रदर्शित करना."
+
+#: src/extensions/button-controls/index.js:74
+msgid "Toggle to display button as full width."
+msgstr "पूर्ण चौड़ाई के रूप में बटन प्रदर्शित करने के लिए टॉगल करें."
+
+#: src/extensions/image-crop/index.js:169
+#, fuzzy
+msgid "Crop Settings"
+msgstr "हीरो सेटिंग्स"
+
+#: src/formats/uppercase/index.js:35
+msgid "Uppercase"
+msgstr "बड़ा अक्षर"
+
+#: src/sidebars/block-manager/components/modal.js:132
+msgid "Manage Blocks"
+msgstr "ब्लॉक प्रबंधित करें"
+
+#: src/sidebars/block-manager/components/modal.js:136
+msgid "Block Manager"
+msgstr "ब्लॉक प्रबंधक"
+
+#: src/sidebars/block-manager/components/modal.js:138
+msgid "Close"
+msgstr "बंद करें"
+
+#: src/sidebars/block-manager/components/modal.js:147
+msgid "Search for a block"
+msgstr "ब्लॉक खोजें"
+
+#: src/sidebars/block-manager/components/options/disable-blocks.js:170
+msgid "This block is added to the page and cannot currently be disabled"
+msgstr "यह ब्लॉक पेज पर जोड़ा जाता है और वर्तमान में इसे अक्षम नहीं किया जा सकता है"
+
+#: src/sidebars/block-manager/components/options/disable-blocks.js:185
+msgid "Disable all"
+msgstr "सभी अक्षम करें‌‌"
+
+#. %s: search text
+#: src/sidebars/block-manager/components/options/disable-blocks.js:233
+msgid "No \"%s\" blocks found."
+msgstr "कोई \"%s\" ब्लॉक मिले."
+
+#. %s: Plugin title, i.e. CoBlocks
+#: src/utils/block-category.js:21
+msgid "%s Galleries"
+msgstr "%s गैलरीज़"
+
+#: src/blocks/accordion/accordion-item/controls.js:28
+#, fuzzy
+msgctxt "Toggle label to display the accordion open"
+msgid "Display open"
+msgstr "प्रदर्शन खुला"
+
+#: src/blocks/accordion/accordion-item/edit.js:65
+#, fuzzy
+msgctxt "Accordion is the block name"
+msgid "Add accordion title..."
+msgstr "एकॉर्डियन शीर्षक जोड़ें..."
+
+#: src/blocks/accordion/accordion-item/index.js:26
+#, fuzzy
+msgctxt "This is an inner block for the Accordion Block."
+msgid "Accordion Item"
+msgstr "एकॉर्डियन आइटम"
+
+#: src/blocks/accordion/accordion-item/index.js:29
+#: src/blocks/accordion/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "tabs"
+msgstr "टैब्स"
+
+#: src/blocks/accordion/accordion-item/index.js:29
+#: src/blocks/accordion/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "faq"
+msgstr "सामान्य प्रश्न"
+
+#: src/blocks/alert/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "notice"
+msgstr "सूचना"
+
+#: src/blocks/alert/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "message"
+msgstr "संदेश"
+
+#: src/blocks/author/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "biography"
+msgstr "बायोग्राफ़ी"
+
+#: src/blocks/author/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "profile"
+msgstr "प्रोफ़ाइल"
+
+#: src/blocks/buttons/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "link"
+msgstr "लिंक"
+
+#: src/blocks/buttons/index.js:31 src/blocks/hero/index.js:43
+#, fuzzy
+msgctxt "block keyword"
+msgid "cta"
+msgstr "cta"
+
+#: src/blocks/click-to-tweet/index.js:31 src/blocks/social-profiles/index.js:28
+#, fuzzy
+msgctxt "block keyword"
+msgid "share"
+msgstr "साझा करें"
+
+#: src/blocks/click-to-tweet/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "twitter"
+msgstr "twitter"
+
+#: src/blocks/dynamic-separator/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "spacer"
+msgstr "स्पेसर"
+
+#: src/blocks/features/index.js:37
+#, fuzzy
+msgctxt "block keyword"
+msgid "services"
+msgstr "सेवाएँ"
+
+#: src/blocks/food-and-drinks/food-item/index.js:29
+#: src/blocks/food-and-drinks/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "menu"
+msgstr "मेनू"
+
+#: src/blocks/food-and-drinks/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "restaurant"
+msgstr "रेस्तरां"
+
+#: src/blocks/form/fields/date/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "calendar"
+msgstr "मानक"
+
+#: src/blocks/form/fields/date/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "day month year"
+msgstr "वर्ष"
+
+#: src/blocks/form/fields/email/index.js:22
+#, fuzzy
+msgctxt "block keyword"
+msgid "e-mail"
+msgstr "ई-मेल"
+
+#: src/blocks/form/fields/email/index.js:22
+#, fuzzy
+msgctxt "block keyword"
+msgid "mail"
+msgstr "मेल"
+
+#: src/blocks/form/fields/name/index.js:22
+#, fuzzy
+msgctxt "block keyword"
+msgid "first name"
+msgstr "अंतिम नाम"
+
+#: src/blocks/form/fields/name/index.js:22
+#, fuzzy
+msgctxt "block keyword"
+msgid "last name"
+msgstr "अंतिम नाम"
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "telephone"
+msgstr ""
+
+#: src/blocks/form/fields/phone/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "cellular"
+msgstr "सर्कुलर"
+
+# Control name
+#: src/blocks/form/fields/phone/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "mobile"
+msgstr "%s मोबाइल"
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Choose"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "Select"
+msgstr "आकार चुनें"
+
+#: src/blocks/form/fields/radio/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "Option"
+msgstr "कैप्शन"
+
+#: src/blocks/form/fields/textarea/index.js:22
+#, fuzzy
+msgctxt "block keyword"
+msgid "Textarea"
+msgstr "टेक्स्ट क्षेत्र"
+
+#: src/blocks/form/fields/textarea/index.js:22
+#, fuzzy
+msgctxt "block keyword"
+msgid "Multiline text"
+msgstr "मल्टीलाइन पाठ"
+
+#: src/blocks/form/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "email"
+msgstr "ईमेल"
+
+#: src/blocks/form/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "about"
+msgstr "इसके बारे में"
+
+#: src/blocks/form/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "contact"
+msgstr "संपर्क"
+
+#: src/blocks/gallery-carousel/index.js:38
+#: src/blocks/gallery-collage/index.js:36
+#: src/blocks/gallery-masonry/index.js:37
+#: src/blocks/gallery-stacked/index.js:37
+#, fuzzy
+msgctxt "block keyword"
+msgid "gallery"
+msgstr "गैलरी"
+
+#: src/blocks/gallery-carousel/index.js:38
+#: src/blocks/gallery-collage/index.js:36
+#: src/blocks/gallery-masonry/index.js:37
+#: src/blocks/gallery-stacked/index.js:37
+#, fuzzy
+msgctxt "block keyword"
+msgid "photos"
+msgstr "फ़ोटो"
+
+#: src/blocks/gallery-masonry/index.js:37
+#: src/blocks/gallery-stacked/index.js:37
+#, fuzzy
+msgctxt "block keyword"
+msgid "lightbox"
+msgstr "रात"
+
+#: src/blocks/gif/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "animated"
+msgstr "एनीमेटेड"
+
+#: src/blocks/gist/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "code"
+msgstr "कोड"
+
+#: src/blocks/hero/index.js:43
+#, fuzzy
+msgctxt "block keyword"
+msgid "button"
+msgstr "बटन"
+
+#: src/blocks/hero/index.js:43
+#, fuzzy
+msgctxt "block keyword"
+msgid "call to action"
+msgstr "कार्रवाई के लिए कॉल करें"
+
+#: src/blocks/highlight/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "text"
+msgstr "पाठ"
+
+#: src/blocks/highlight/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "paragraph"
+msgstr "पैराग्राफ़"
+
+#: src/blocks/icon/index.js:35 src/blocks/social-profiles/index.js:28
+#, fuzzy
+msgctxt "block keyword"
+msgid "icons"
+msgstr "आइकन"
+
+#: src/blocks/logos/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "clients"
+msgstr "क्लायंट्स"
+
+#: src/blocks/logos/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "proof"
+msgstr "प्रमाण"
+
+#: src/blocks/logos/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "testimonials"
+msgstr "विवरण"
+
+#: src/blocks/map/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "address"
+msgstr "पता"
+
+#: src/blocks/map/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "maps"
+msgstr "मैप"
+
+#: src/blocks/map/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "google"
+msgstr "google"
+
+#: src/blocks/media-card/index.js:38
+#, fuzzy
+msgctxt "block keyword"
+msgid "image"
+msgstr "छवि"
+
+#: src/blocks/media-card/index.js:38
+#, fuzzy
+msgctxt "block keyword"
+msgid "video"
+msgstr "वीडियो"
+
+#: src/blocks/post-carousel/index.js:29
+msgctxt "block keyword"
+msgid "posts"
+msgstr ""
+
+#: src/blocks/post-carousel/index.js:29
+msgctxt "block keyword"
+msgid "slider"
+msgstr ""
+
+#: src/blocks/post-carousel/index.js:29 src/blocks/posts/index.js:29
+msgctxt "block keyword"
+msgid "latest"
+msgstr ""
+
+#: src/blocks/posts/index.js:29
+msgctxt "block keyword"
+msgid "blog"
+msgstr ""
+
+#: src/blocks/posts/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "rss"
+msgstr "पता"
+
+#: src/blocks/pricing-table/index.js:31
+#: src/blocks/pricing-table/pricing-table-item/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "landing"
+msgstr "लैंडिंग"
+
+#: src/blocks/pricing-table/index.js:31
+#: src/blocks/pricing-table/pricing-table-item/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "comparison"
+msgstr "तुलना करें"
+
+#: src/blocks/row/index.js:40
+#, fuzzy
+msgctxt "block keyword"
+msgid "rows"
+msgstr "पंक्तियां"
+
+#: src/blocks/row/index.js:40
+#, fuzzy
+msgctxt "block keyword"
+msgid "columns"
+msgstr "स्तंभ"
+
+#: src/blocks/row/index.js:40
+#, fuzzy
+msgctxt "block keyword"
+msgid "layouts"
+msgstr "लेआउट"
+
+#: src/blocks/services/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "features"
+msgstr "सुविधाएं"
+
+#: src/blocks/shape-divider/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "separator"
+msgstr "सेपरेटर"
+
+#: src/blocks/share/index.js:28
+#, fuzzy
+msgctxt "block keyword"
+msgid "social"
+msgstr "सामाजिक"
+
+#: src/blocks/social-profiles/index.js:28
+#, fuzzy
+msgctxt "block keyword"
+msgid "links"
+msgstr "लिंक"
+
+#: src/blocks/accordion/accordion-item/inspector.js:65
+#, fuzzy
+msgctxt "Visually display open as opposed to closed."
+msgid "Display Open"
+msgstr "प्रदर्शन खुला"
+
+#: src/blocks/accordion/edit.js:74
+#, fuzzy
+msgctxt "Add a child element for the Accordion block"
+msgid "Add Accordion Item"
+msgstr "एकॉर्डियन आइटम जोड़ें"
+
+#: src/blocks/accordion/index.js:27
+#, fuzzy
+msgctxt "block title"
+msgid "Accordion"
+msgstr "एकॉर्डियन"
+
+#: src/blocks/alert/edit.js:102
+#, fuzzy
+msgctxt "Placeholder text for input box"
+msgid "Write text..."
+msgstr "पाठ लिखें..."
+
+#: src/blocks/alert/edit.js:94
+#, fuzzy
+msgctxt "Placeholder text for input box"
+msgid "Write title..."
+msgstr "शीर्षक लिखें..."
+
+#: src/blocks/alert/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Alert"
+msgstr "अलर्ट"
+
+#: src/blocks/author/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Author"
+msgstr "लेखक"
+
+#: src/blocks/buttons/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Buttons"
+msgstr "बटन"
+
+#: src/blocks/click-to-tweet/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Click to Tweet"
+msgstr "ट्वीट करने के लिए क्लिक करें"
+
+#: src/blocks/dynamic-separator/index.js:27
+#, fuzzy
+msgctxt "block name"
+msgid "Dynamic HR"
+msgstr "डायनमिक HR"
+
+#: src/blocks/features/feature/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Feature"
+msgstr "सुविधा"
+
+#: src/blocks/features/index.js:34
+#, fuzzy
+msgctxt "block name"
+msgid "Features"
+msgstr "सुविधाएं"
+
+#: src/blocks/food-and-drinks/food-item/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Food Item"
+msgstr "खाद्य पदार्थ"
+
+#: src/blocks/food-and-drinks/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Food & Drinks"
+msgstr "भोजन और पेय"
+
+#: src/blocks/form/fields/date/index.js:19
+msgctxt "block name"
+msgid "Date"
+msgstr ""
+
+#: src/blocks/form/fields/email/index.js:19
+#, fuzzy
+msgctxt "block name"
+msgid "Email"
+msgstr "ईमेल"
+
+#: src/blocks/form/fields/name/index.js:19
+#, fuzzy
+msgctxt "block name"
+msgid "Name"
+msgstr "नाम"
+
+#: src/blocks/form/fields/phone/index.js:19
+msgctxt "block name"
+msgid "Phone"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:19
+#, fuzzy
+msgctxt "block name"
+msgid "Radio"
+msgstr "त्रिज्या"
+
+#: src/blocks/form/fields/textarea/index.js:19
+#, fuzzy
+msgctxt "block name"
+msgid "Textarea"
+msgstr "टेक्स्ट क्षेत्र"
+
+#: src/blocks/form/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Form"
+msgstr "फ़ॉर्म"
+
+#: src/blocks/gallery-carousel/index.js:34
+#, fuzzy
+msgctxt "block name"
+msgid "Carousel"
+msgstr "कैरोसल"
+
+#: src/blocks/gallery-collage/index.js:33
+#, fuzzy
+msgctxt "block name"
+msgid "Collage"
+msgstr "छवि की सेटिंग्स"
+
+#: src/blocks/gallery-masonry/index.js:34
+#, fuzzy
+msgctxt "block name"
+msgid "Masonry"
+msgstr "मिस्त्री"
+
+#: src/blocks/gallery-stacked/index.js:34
+#, fuzzy
+msgctxt "block name"
+msgid "Stacked"
+msgstr "स्टैक किया गया"
+
+#: src/blocks/gif/index.js:26
+msgctxt "block name"
+msgid "Gif"
+msgstr ""
+
+#: src/blocks/gist/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Gist"
+msgstr "Gist URL"
+
+#: src/blocks/hero/index.js:40
+#, fuzzy
+msgctxt "block name"
+msgid "Hero"
+msgstr "हीरो"
+
+#: src/blocks/highlight/index.js:27
+#, fuzzy
+msgctxt "block name"
+msgid "Highlight"
+msgstr "हाइलाइट"
+
+#: src/blocks/icon/index.js:32
+#, fuzzy
+msgctxt "block name"
+msgid "Icon"
+msgstr "आइकन"
+
+#: src/blocks/logos/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Logos & Badges"
+msgstr "लोगो और बैज"
+
+#: src/blocks/map/index.js:27
+#, fuzzy
+msgctxt "block name"
+msgid "Map"
+msgstr "मैप"
+
+#: src/blocks/media-card/index.js:35
+#, fuzzy
+msgctxt "block name"
+msgid "Media Card"
+msgstr "मीडिया कार्ड"
+
+#: src/blocks/post-carousel/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Post Carousel"
+msgstr "कैरोसल"
+
+#: src/blocks/posts/index.js:26
+msgctxt "block name"
+msgid "Posts"
+msgstr ""
+
+#: src/blocks/pricing-table/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Pricing Table"
+msgstr "मूल्य निर्धारण तालिका"
+
+#: src/blocks/pricing-table/pricing-table-item/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Pricing Table Item"
+msgstr "मूल्य निर्धारण तालिका आइटम"
+
+#: src/blocks/row/column/index.js:29
+#, fuzzy
+msgctxt "block name"
+msgid "Column"
+msgstr "कॉलम"
+
+#: src/blocks/row/index.js:37
+#, fuzzy
+msgctxt "block name"
+msgid "Row"
+msgstr "पंक्ति"
+
+#: src/blocks/services/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Services"
+msgstr "सेवाएं"
+
+#: src/blocks/services/service/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Service"
+msgstr "सेवा"
+
+#: src/blocks/shape-divider/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Shape Divider"
+msgstr "शेप डिवाइडर"
+
+#: src/blocks/share/index.js:24
+#, fuzzy
+msgctxt "block name"
+msgid "Share"
+msgstr "साझा करें"
+
+#: src/blocks/social-profiles/index.js:24
+#, fuzzy
+msgctxt "block name"
+msgid "Social Profiles"
+msgstr "सामाजिक प्रोफ़ाइल"
+
+#: src/blocks/alert/index.js:33
+#, fuzzy
+msgctxt "block style"
+msgid "Info"
+msgstr "जानकारी"
+
+#: src/blocks/alert/index.js:34
+#, fuzzy
+msgctxt "block style"
+msgid "Success"
+msgstr "सफल"
+
+#: src/blocks/alert/index.js:35
+#, fuzzy
+msgctxt "block style"
+msgid "Warning"
+msgstr "चेतावनी"
+
+#: src/blocks/alert/index.js:36
+#, fuzzy
+msgctxt "block style"
+msgid "Error"
+msgstr "त्रुटि"
+
+#: src/blocks/dynamic-separator/index.js:32
+msgctxt "block style"
+msgid "Dot"
+msgstr "डॉट"
+
+#: src/blocks/dynamic-separator/index.js:33
+msgctxt "block style"
+msgid "Line"
+msgstr "लाइन"
+
+#: src/blocks/dynamic-separator/index.js:34
+msgctxt "block style"
+msgid "Fullwidth"
+msgstr "पूर्ण-चौड़ाई"
+
+#: src/blocks/food-and-drinks/edit.js:35
+#, fuzzy
+msgctxt "block style"
+msgid "Grid"
+msgstr "ग्रिड"
+
+#: src/blocks/food-and-drinks/edit.js:42
+#, fuzzy
+msgctxt "block style"
+msgid "List"
+msgstr "सूची"
+
+#: src/blocks/gallery-collage/index.js:40
+#: src/extensions/image-styles/index.js:15
+#, fuzzy
+msgctxt "block style"
+msgid "Default"
+msgstr "डिफ़ॉल्ट"
+
+#: src/blocks/gallery-collage/index.js:45
+msgctxt "block style"
+msgid "Tiled"
+msgstr ""
+
+#: src/blocks/gallery-collage/index.js:49
+#, fuzzy
+msgctxt "block style"
+msgid "Layered"
+msgstr "लेयर्स"
+
+#: src/blocks/icon/index.js:37
+msgctxt "block style"
+msgid "Outlined"
+msgstr "आउटलाइन किया गया"
+
+#: src/blocks/icon/index.js:38
+msgctxt "block style"
+msgid "Filled"
+msgstr "फ़िल्ड"
+
+#: src/blocks/posts/edit.js:49
+#, fuzzy
+msgctxt "block style"
+msgid "Stacked"
+msgstr "स्टैक किया गया"
+
+#: src/blocks/posts/edit.js:55
+#, fuzzy
+msgctxt "block style"
+msgid "Horizontal"
+msgstr "क्षैतिज रूप से दोहराएं"
+
+#: src/blocks/shape-divider/index.js:38
+msgctxt "block style"
+msgid "Wavy"
+msgstr "वेवी"
+
+#: src/blocks/shape-divider/index.js:39
+msgctxt "block style"
+msgid "Hills"
+msgstr "हिल्स"
+
+#: src/blocks/shape-divider/index.js:40
+msgctxt "block style"
+msgid "Waves"
+msgstr "वेव्स"
+
+#: src/blocks/shape-divider/index.js:41
+msgctxt "block style"
+msgid "Angled"
+msgstr "एंगल्ड"
+
+#: src/blocks/shape-divider/index.js:42
+msgctxt "block style"
+msgid "Sloped"
+msgstr "स्लोप्ड"
+
+#: src/blocks/shape-divider/index.js:43
+msgctxt "block style"
+msgid "Rounded"
+msgstr "राउंडेड"
+
+#: src/blocks/shape-divider/index.js:44
+msgctxt "block style"
+msgid "Triangle"
+msgstr "ट्राएंगल"
+
+#: src/blocks/shape-divider/index.js:45
+msgctxt "block style"
+msgid "Pointed"
+msgstr "पॉइंटेड"
+
+#: src/blocks/share/index.js:30 src/blocks/social-profiles/index.js:30
+msgctxt "block style"
+msgid "Mask"
+msgstr "मास्क"
+
+#: src/blocks/share/index.js:31 src/blocks/social-profiles/index.js:31
+msgctxt "block style"
+msgid "Icon"
+msgstr "आइकन"
+
+#: src/blocks/share/index.js:32 src/blocks/social-profiles/index.js:32
+msgctxt "block style"
+msgid "Text"
+msgstr "पाठ"
+
+#: src/blocks/share/index.js:33 src/blocks/social-profiles/index.js:33
+msgctxt "block style"
+msgid "Icon & Text"
+msgstr "आइकन और पाठ"
+
+#: src/blocks/share/index.js:34 src/blocks/social-profiles/index.js:34
+msgctxt "block style"
+msgid "Circular"
+msgstr "सर्कुलर"
+
+#: src/extensions/image-styles/index.js:21
+#, fuzzy
+msgctxt "block style"
+msgid "Bottom Wave"
+msgstr "नीचे बायां"
+
+#: src/extensions/image-styles/index.js:27
+#, fuzzy
+msgctxt "block style"
+msgid "Top Wave"
+msgstr "शीर्ष बायां"
+
+#: src/blocks/author/edit.js:63
+#, fuzzy
+msgctxt "image to represent the post author"
+msgid "Drop to upload as avatar"
+msgstr "अवतार के रूप में जोड़ने के लिए छोड़ें"
+
+#: src/blocks/author/edit.js:149
+#, fuzzy
+msgctxt "content placeholder"
+msgid "Author link…"
+msgstr "लेखक"
+
+#: src/blocks/features/feature/edit.js:31
+msgctxt "content placeholder"
+msgid "Add feature title..."
+msgstr "फ़ीचर टाइटल जोड़ें..."
+
+#: src/blocks/features/feature/edit.js:31
+msgctxt "content placeholder"
+msgid "Feature Title"
+msgstr "फ़ीचर टाइटल"
+
+#: src/blocks/features/feature/edit.js:32
+msgctxt "content placeholder"
+msgid "Add feature content"
+msgstr "फ़ीचर कंटेंट जोड़ें..."
+
+#: src/blocks/features/feature/edit.js:32
+msgctxt "content placeholder"
+msgid "This is a feature block that you can use to highlight features."
+msgstr ""
+"यह ऐसी फ़ीचर ब्लॉक है जिसका उपयोग आप सुविधाओं को हाइलाइट करने के लिए कर सकते हैं."
 
 #: src/blocks/hero/edit.js:35
 #, fuzzy
@@ -43,6 +3352,1050 @@ msgstr ""
 msgctxt "content placeholder"
 msgid "Secondary button…"
 msgstr ""
+
+#: src/blocks/media-card/edit.js:46
+msgctxt "content placeholder"
+msgid "Add heading..."
+msgstr "शीर्षक जोड़ें..."
+
+#: src/blocks/media-card/edit.js:46
+msgctxt "content placeholder"
+msgid "Media Card"
+msgstr "मीडिया कार्ड"
+
+#: src/blocks/media-card/edit.js:47
+msgctxt "content placeholder"
+msgid "Add content..."
+msgstr "सामग्री जोड़ें..."
+
+#: src/blocks/media-card/edit.js:47
+msgctxt "content placeholder"
+msgid ""
+"Replace this text with descriptive copy to go along with the card image. "
+"Then add more blocks to this card, such as buttons, lists or images."
+msgstr ""
+"कार्ड छवि के साथ साथ जाने के लिए वर्णनात्मक प्रतिलिपि के साथ इस पाठ को बदलें. फिर इस "
+"कार्ड में और ब्लॉक जोड़ें, जैसे बटन, सूची या छवियां."
+
+#: src/blocks/services/service/edit.js:204
+msgctxt "content placeholder"
+msgid "Write title..."
+msgstr "शीर्षक लिखें..."
+
+#: src/blocks/services/service/edit.js:210
+msgctxt "content placeholder"
+msgid "Write description..."
+msgstr "वर्णन लिखें..."
+
+#: src/blocks/buttons/inspector.js:28
+#, fuzzy
+msgctxt "block settings"
+msgid "Buttons Settings"
+msgstr "बटन सेटिंग्स"
+
+#: src/blocks/buttons/inspector.js:43
+#, fuzzy
+msgctxt "visually stack buttons one on top of another"
+msgid "Stack on mobile"
+msgstr "मोबाइल पर स्टैक"
+
+#: src/blocks/dynamic-separator/inspector.js:43
+#, fuzzy
+msgctxt "hr is html markup - horizonal rule"
+msgid "Dynamic HR Settings"
+msgstr "डायनमिक HR सेटिंग्स"
+
+#: src/blocks/gallery-collage/inspector.js:55
+#, fuzzy
+msgctxt "label for no gutter option"
+msgid "None"
+msgstr "कोई नहीं"
+
+#: src/blocks/gallery-collage/inspector.js:84
+#, fuzzy
+msgctxt "abbreviation for \"Short\" size"
+msgid "None"
+msgstr "कोई नहीं"
+
+#: src/blocks/gallery-collage/inspector.js:60
+#, fuzzy
+msgctxt "label for small gutter option"
+msgid "Small"
+msgstr "छोटा"
+
+#: src/blocks/gallery-collage/inspector.js:89 src/blocks/posts/inspector.js:58
+msgctxt "abbreviation for \"Small\" size"
+msgid "S"
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:65
+#, fuzzy
+msgctxt "label for medium gutter option"
+msgid "Medium"
+msgstr "मध्यम"
+
+#: src/blocks/gallery-collage/inspector.js:94 src/blocks/posts/inspector.js:63
+msgctxt "abbreviation for \"Medium\" size"
+msgid "M"
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:70
+#, fuzzy
+msgctxt "label for large gutter option"
+msgid "Large"
+msgstr "बड़ा"
+
+#: src/blocks/gallery-collage/inspector.js:99 src/blocks/posts/inspector.js:68
+msgctxt "abbreviation for \"Large\" size"
+msgid "L"
+msgstr ""
+
+#: src/blocks/posts/inspector.js:73
+msgctxt "abbreviation for \"Large\" size"
+msgid "XL"
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:75
+#, fuzzy
+msgctxt "label for extra large gutter option"
+msgid "Extra Large"
+msgstr "अधिक बड़ा"
+
+#: src/blocks/gallery-collage/inspector.js:76
+msgctxt "abbreviation for \"Extra Large\" size"
+msgid "XL"
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:83
+#, fuzzy
+msgctxt "label for no shadow option"
+msgid "None"
+msgstr "कोई नहीं"
+
+#: src/blocks/gallery-collage/inspector.js:88
+#, fuzzy
+msgctxt "label for small shadow option"
+msgid "Small"
+msgstr "छोटा"
+
+#: src/blocks/gallery-collage/inspector.js:93
+#, fuzzy
+msgctxt "label for medium shadow option"
+msgid "Medium"
+msgstr "मध्यम"
+
+#: src/blocks/gallery-collage/inspector.js:98
+#, fuzzy
+msgctxt "label for large shadow option"
+msgid "Large"
+msgstr "बड़ा"
+
+#: src/blocks/icon/svgs.js:102
+msgctxt "label"
+msgid "Add Circle"
+msgstr "सर्कल जोड़ें"
+
+#: src/blocks/icon/svgs.js:108
+msgctxt "label"
+msgid "Minus Circle"
+msgstr "माइनस सर्कल"
+
+#: src/blocks/icon/svgs.js:114
+msgctxt "label"
+msgid "Pie Chart"
+msgstr "पाइ चार्ट"
+
+#: src/blocks/icon/svgs.js:119
+msgctxt "label"
+msgid "Scatter Plot"
+msgstr "स्कैटर प्लॉट"
+
+#: src/blocks/icon/svgs.js:125
+msgctxt "label"
+msgid "Poll"
+msgstr "पोल"
+
+#: src/blocks/icon/svgs.js:131
+msgctxt "label"
+msgid "Emoticon"
+msgstr "इमोटिकॉन"
+
+#: src/blocks/icon/svgs.js:137
+msgctxt "label"
+msgid "Functions"
+msgstr "फ़ंक्शन"
+
+#: src/blocks/icon/svgs.js:14
+msgctxt "label"
+msgid "CoBlocks"
+msgstr "CoBlocks"
+
+#: src/blocks/icon/svgs.js:142
+msgctxt "label"
+msgid "Doodle"
+msgstr "डूडल"
+
+#: src/blocks/icon/svgs.js:147
+msgctxt "label"
+msgid "Font"
+msgstr "फ़ॉन्ट"
+
+#: src/blocks/icon/svgs.js:153
+msgctxt "label"
+msgid "Heart"
+msgstr "हार्ट"
+
+#: src/blocks/icon/svgs.js:159
+msgctxt "label"
+msgid "Star"
+msgstr "स्टार"
+
+#: src/blocks/icon/svgs.js:165
+msgctxt "label"
+msgid "Desktop"
+msgstr "डेस्कटॉप"
+
+#: src/blocks/icon/svgs.js:171
+msgctxt "label"
+msgid "Devices"
+msgstr "डिवाइस"
+
+#: src/blocks/icon/svgs.js:176
+msgctxt "label"
+msgid "Laptop"
+msgstr "लैपटॉप"
+
+#: src/blocks/icon/svgs.js:181
+msgctxt "label"
+msgid "Tablet"
+msgstr "टैबलेट"
+
+#: src/blocks/icon/svgs.js:186
+msgctxt "label"
+msgid "Watch"
+msgstr "देखें"
+
+#: src/blocks/icon/svgs.js:19
+msgctxt "label"
+msgid "Audio"
+msgstr "ऑडियो"
+
+#: src/blocks/icon/svgs.js:192
+msgctxt "label"
+msgid "Keyboard"
+msgstr "कीबोर्ड"
+
+#: src/blocks/icon/svgs.js:197
+msgctxt "label"
+msgid "Hub"
+msgstr "हब"
+
+#: src/blocks/icon/svgs.js:208
+msgctxt "label"
+msgid "Email"
+msgstr "ईमेल"
+
+#: src/blocks/icon/svgs.js:213
+msgctxt "label"
+msgid "Reply"
+msgstr "प्रत्युत्तर"
+
+#: src/blocks/icon/svgs.js:218
+msgctxt "label"
+msgid "Send"
+msgstr "भेजें"
+
+#: src/blocks/icon/svgs.js:224
+msgctxt "label"
+msgid "Signal"
+msgstr "सिग्नल"
+
+#: src/blocks/icon/svgs.js:229
+msgctxt "label"
+msgid "Blocks"
+msgstr "ब्लॉक"
+
+#: src/blocks/icon/svgs.js:235
+msgctxt "label"
+msgid "Marker"
+msgstr "मार्कर"
+
+#: src/blocks/icon/svgs.js:241
+msgctxt "label"
+msgid "Mountains"
+msgstr "माउंटेन"
+
+#: src/blocks/icon/svgs.js:247
+msgctxt "label"
+msgid "Waves"
+msgstr "वेव्स"
+
+#: src/blocks/icon/svgs.js:25
+msgctxt "label"
+msgid "Album"
+msgstr "एल्बम"
+
+#: src/blocks/icon/svgs.js:252
+msgctxt "label"
+msgid "Globe"
+msgstr "ग्लोब"
+
+#: src/blocks/icon/svgs.js:257
+msgctxt "label"
+msgid "City"
+msgstr "शहर"
+
+#: src/blocks/icon/svgs.js:262
+msgctxt "label"
+msgid "Dining"
+msgstr "डाइनिंग"
+
+#: src/blocks/icon/svgs.js:267
+msgctxt "label"
+msgid "Couch"
+msgstr "काउच"
+
+#: src/blocks/icon/svgs.js:273
+msgctxt "label"
+msgid "Cake"
+msgstr "केक"
+
+#: src/blocks/icon/svgs.js:279
+msgctxt "label"
+msgid "Flower"
+msgstr "फ़्लावर"
+
+#: src/blocks/icon/svgs.js:285
+msgctxt "label"
+msgid "Vintage Filter"
+msgstr "विंटेज फ़िल्टर"
+
+#: src/blocks/icon/svgs.js:291
+msgctxt "label"
+msgid "Build"
+msgstr "बनाएं"
+
+#: src/blocks/icon/svgs.js:297
+msgctxt "label"
+msgid "Credit Card"
+msgstr "क्रेडिट कार्ड"
+
+#: src/blocks/icon/svgs.js:302
+msgctxt "label"
+msgid "Extension"
+msgstr "एक्सटेंशन"
+
+#: src/blocks/icon/svgs.js:308
+msgctxt "label"
+msgid "Fingerprint"
+msgstr "फ़िंगरप्रिंट"
+
+#: src/blocks/icon/svgs.js:31
+msgctxt "label"
+msgid "Headset"
+msgstr "हेडसेट"
+
+#: src/blocks/icon/svgs.js:313
+msgctxt "label"
+msgid "Translate"
+msgstr "अनुवाद करें"
+
+#: src/blocks/icon/svgs.js:318
+msgctxt "label"
+msgid "New"
+msgstr "नया"
+
+#: src/blocks/icon/svgs.js:324
+msgctxt "label"
+msgid "Flare"
+msgstr "फ़्लेयर"
+
+#: src/blocks/icon/svgs.js:329
+msgctxt "label"
+msgid "Layers"
+msgstr "लेयर्स"
+
+#: src/blocks/icon/svgs.js:334
+msgctxt "label"
+msgid "Shipping"
+msgstr "शिपिंग"
+
+#: src/blocks/icon/svgs.js:339
+msgctxt "label"
+msgid "Snowflake"
+msgstr "स्नोफ़्लैक"
+
+#: src/blocks/icon/svgs.js:344
+msgctxt "label"
+msgid "School"
+msgstr "स्कूल"
+
+#: src/blocks/icon/svgs.js:349
+msgctxt "label"
+msgid "Fire"
+msgstr "फ़ायर"
+
+#: src/blocks/icon/svgs.js:354
+msgctxt "label"
+msgid "Update"
+msgstr "अपडेट"
+
+#: src/blocks/icon/svgs.js:36
+msgctxt "label"
+msgid "Volume"
+msgstr "वॉल्यूम"
+
+#: src/blocks/icon/svgs.js:42
+msgctxt "label"
+msgid "Voice"
+msgstr "वॉइस"
+
+#: src/blocks/icon/svgs.js:48
+msgctxt "label"
+msgid "Aperture"
+msgstr "अप्रचर"
+
+#: src/blocks/icon/svgs.js:54
+msgctxt "label"
+msgid "Camera"
+msgstr "कैमरा"
+
+#: src/blocks/icon/svgs.js:60
+msgctxt "label"
+msgid "Gallery"
+msgstr "गैलरी"
+
+#: src/blocks/icon/svgs.js:66
+msgctxt "label"
+msgid "Video"
+msgstr "वीडियो"
+
+#: src/blocks/icon/svgs.js:72
+msgctxt "label"
+msgid "Film"
+msgstr "फ़िल्म"
+
+#: src/blocks/icon/svgs.js:78
+msgctxt "label"
+msgid "Color Lens"
+msgstr "कलर लेंस"
+
+#: src/blocks/icon/svgs.js:84
+msgctxt "label"
+msgid "Color Picker"
+msgstr "कलर पिकर"
+
+#: src/blocks/icon/svgs.js:90
+msgctxt "label"
+msgid "Paint"
+msgstr "पैंट"
+
+#: src/blocks/icon/svgs.js:96
+msgctxt "label"
+msgid "Brush"
+msgstr "ब्रश"
+
+#: src/blocks/icon/svgs.js:109
+msgctxt "tags"
+msgid "add minus circle insert plus round math"
+msgstr "माइनस सर्कल इंसर्ट प्लस राउंड मैथ जोड़ें"
+
+#: src/blocks/icon/svgs.js:115
+msgctxt "tags"
+msgid "stats round circle pie chart graph"
+msgstr "स्टैट्स राउंड सर्कल पाई चार्ट ग्राफ़"
+
+#: src/blocks/icon/svgs.js:120
+msgctxt "tags"
+msgid "stats round circle pie chart graph dots data"
+msgstr "स्टैट्स राउंड सर्कल पाई चार्ट ग्राफ़ डॉट डेटा"
+
+#: src/blocks/icon/svgs.js:126
+msgctxt "tags"
+msgid "chart graph stats data graph"
+msgstr "चार्ट ग्राफ़ स्टैट्स डेटा ग्राफ़"
+
+#: src/blocks/icon/svgs.js:132
+msgctxt "tags"
+msgid "happy emotion emoticon smile fun joy"
+msgstr "खुश, भावना, इमोटिकॉन, मुस्कान, आनंद, मज़ा"
+
+#: src/blocks/icon/svgs.js:138
+msgctxt "tags"
+msgid "code greek math"
+msgstr "कोड ग्रीक मैथ"
+
+#: src/blocks/icon/svgs.js:143
+msgctxt "tags"
+msgid "drawing doodle art creative type font pencil marker"
+msgstr "ड्राइंग डूडल आर्ट क्रिएटिव टाइप फॉन्ट पेंसिल मार्कर"
+
+#: src/blocks/icon/svgs.js:15
+msgctxt "tags"
+msgid "blocks block build gutenberg design"
+msgstr "ब्लॉक ब्लॉक बिल्ड गुटेनबर्ग डिज़ाइन"
+
+#: src/blocks/icon/svgs.js:154
+msgctxt "tags"
+msgid "love shape valentine kiss"
+msgstr "प्यार के आकार वाला वेलेंटाइन किस"
+
+#: src/blocks/icon/svgs.js:160
+msgctxt "tags"
+msgid "rate vote plus favorite like"
+msgstr "रेट वोट प्लस पसंदीदा पसंद"
+
+#: src/blocks/icon/svgs.js:177
+msgctxt "tags"
+msgid "computer apple montior device pc desk office"
+msgstr "कंप्यूटर apple मॉनिटर डिवाइस पीसी डेस्क ऑफ़िस"
+
+#: src/blocks/icon/svgs.js:182
+msgctxt "tags"
+msgid "computer ipad surface apple montior device pc desk office"
+msgstr "कंप्यूटर ipad सर्फ़ेस apple मॉनिटर डिवाइस पीसी डेस्क ऑफ़िस"
+
+#: src/blocks/icon/svgs.js:187
+msgctxt "tags"
+msgid "device apple mac"
+msgstr "डिवाइस apple mac"
+
+#: src/blocks/icon/svgs.js:193
+msgctxt "tags"
+msgid "computer ipad surface apple device pc desk office"
+msgstr "कंप्यूटर ipad सर्फ़ेस apple डिवाइस पीसी डेस्क ऑफ़िस"
+
+#: src/blocks/icon/svgs.js:198
+msgctxt "tags"
+msgid "usb connect hub device social"
+msgstr "usb कनेक्ट हब डिवाइस सोशल"
+
+#: src/blocks/icon/svgs.js:20
+msgctxt "tags"
+msgid "music microphone podcast song artist creative media audio"
+msgstr "संगीत माइक्रोफ़ोन पॉडकास्ट साँग आर्टिस्ट क्रिएटिव मीडिया ऑडियो"
+
+#: src/blocks/icon/svgs.js:209
+msgctxt "tags"
+msgid "email mail os read letter"
+msgstr "ईमेल मेल ओएस पढ़ें लेटर"
+
+#: src/blocks/icon/svgs.js:225
+msgctxt "tags"
+msgid "wifi radio waves"
+msgstr "वाईफ़ाई रेडियो वेव्स"
+
+#: src/blocks/icon/svgs.js:236
+msgctxt "tags"
+msgid "map directions about check checkbox"
+msgstr "चेक चेकबॉक्स के बारे में मैप दिशानिर्देश"
+
+#: src/blocks/icon/svgs.js:242
+msgctxt "tags"
+msgid "hills landscape minimal outdoors outside"
+msgstr "हिल्स लैंडस्कैप मिनिमल आउटडोर आउटसाइड"
+
+#: src/blocks/icon/svgs.js:248
+msgctxt "tags"
+msgid "ocean outside outdoors water fun summer minimal"
+msgstr "समुद्र बाहर आउटडोर पानी मज़ा गर्मी बहुत कम"
+
+#: src/blocks/icon/svgs.js:253
+msgctxt "tags"
+msgid "world public global earth location map"
+msgstr "विश्व सार्वजनिक वैश्विक पृथ्वी स्थान मैप"
+
+#: src/blocks/icon/svgs.js:258
+msgctxt "tags"
+msgid "location map public business corporation building town skyscraper"
+msgstr "स्थान मैप सार्वजनिक बिज़नेस कॉर्पोरेशन इमारत शहर बहुत उँची इमारत"
+
+#: src/blocks/icon/svgs.js:263
+msgctxt "tags"
+msgid "food drink restaurant menu fork spoon taste"
+msgstr "फ़ूड ड्रिंक रेस्ट्ररेंट मेनू फ़ोर्क स्पून टेस्ट"
+
+#: src/blocks/icon/svgs.js:268
+msgctxt "tags"
+msgid "weekend chill relax chair"
+msgstr "सप्ताहांत चिल आराम कुर्सी"
+
+#: src/blocks/icon/svgs.js:274
+msgctxt "tags"
+msgid "fun party happy celebration taste food"
+msgstr "मज़ा पार्टी खुशी सेलिब्रेशन स्वाद खाना"
+
+#: src/blocks/icon/svgs.js:280
+msgctxt "tags"
+msgid "petal scent smell nice relax landscape gardening outdoors outside"
+msgstr "पेटल खुशबू महक अच्छा आराम परिदृश्य गार्डनिंग आउटडोर आउटसाइड"
+
+#: src/blocks/icon/svgs.js:292
+msgctxt "tags"
+msgid "blocks block box boxes square build widgets"
+msgstr "ब्लॉक ब्लॉक बॉक्स बॉक्सेज़ स्कॉयर बिल्ड विजेट्स"
+
+#: src/blocks/icon/svgs.js:298
+msgctxt "tags"
+msgid "money cash checkout shop commerce ecommerce"
+msgstr "मनी कैश चेकआउट शॉप कॉमर्स ईकॉमर्स"
+
+#: src/blocks/icon/svgs.js:303
+msgctxt "tags"
+msgid "puzzle plugin widget team together"
+msgstr "पज़ल प्लगइन विजेट्स टीम एक-साथ"
+
+#: src/blocks/icon/svgs.js:309
+msgctxt "tags"
+msgid "security bio defense biometric safe secure"
+msgstr "सुरक्षा बायो रक्षा बायोमेट्रिक सुरक्षा"
+
+#: src/blocks/icon/svgs.js:314
+msgctxt "tags"
+msgid "language global world speech"
+msgstr "भाषा वैश्विक विश्व भाषण"
+
+#: src/blocks/icon/svgs.js:319
+msgctxt "tags"
+msgid "music microphone song artist creative media audio badge"
+msgstr "संगीत माइक्रोफ़ोन पॉडकास्ट गाने कलाकार क्रिएटिव मीडिया ऑडियो बैज"
+
+#: src/blocks/icon/svgs.js:32
+msgctxt "tags"
+msgid "microphone audio beats bose headphones"
+msgstr "माइक्रोफ़ोन ऑडियो बीट्स बोस हेडफ़ोन्स"
+
+#: src/blocks/icon/svgs.js:325
+msgctxt "tags"
+msgid "flower camera photography artist creative"
+msgstr "फ़्लावर कैमरा फ़ोटोग्राफ़ी कलाकार क्रिएटिव"
+
+#: src/blocks/icon/svgs.js:330
+msgctxt "tags"
+msgid "design creative build develop engineer"
+msgstr "डिज़ाइन क्रिएटिव बिल्ड डेवलप इंजीनियर"
+
+#: src/blocks/icon/svgs.js:335
+msgctxt "tags"
+msgid "shop commence ecommence woo cart ship"
+msgstr "शॉप कॉमर्स ईकॉमर्स woo कार्ट शिप"
+
+#: src/blocks/icon/svgs.js:340
+msgctxt "tags"
+msgid "cold ice frozen chill winter season global"
+msgstr "कोड आइस फ़्रोज़न सर्दियों का मौसम वैश्विक"
+
+#: src/blocks/icon/svgs.js:345
+msgctxt "tags"
+msgid "education graduate graduation degree diploma college"
+msgstr "शिक्षा स्नातक स्नातक डिग्री डिप्लोमा कॉलेज"
+
+#: src/blocks/icon/svgs.js:350
+msgctxt "tags"
+msgid "hot trending trendy design"
+msgstr "हॉट ट्रेंडिंग ट्रेंडी डिज़ाइन"
+
+#: src/blocks/icon/svgs.js:355
+msgctxt "tags"
+msgid "improve add upload software"
+msgstr "बेहतर जोड़ें अपलोड सॉफ्टवेयर"
+
+#: src/blocks/icon/svgs.js:37
+msgctxt "tags"
+msgid "music microphone song artist creative media audio"
+msgstr "संगीत माइक्रोफ़ोन गाने कलाकार रचनात्मक मीडिया ऑडियो"
+
+#: src/blocks/icon/svgs.js:43
+msgctxt "tags"
+msgid ""
+"microphone podcast computer device music microphone song artist creative "
+"media audio"
+msgstr ""
+"माइक्रोफ़ोन पॉडकास्ट कंप्यूटर डिवाइस संगीत माइक्रोफ़ोन गीत कलाकार रचनात्मक मीडिया ऑडियो"
+
+#: src/blocks/icon/svgs.js:49
+msgctxt "tags"
+msgid "photo photographer photography camera film creative media"
+msgstr "फ़ोटो फ़ोटोग्राफर फ़ोटोग्राफी कैमरा रचनात्मक मीडिया फ़िल्म"
+
+#: src/blocks/icon/svgs.js:55
+msgctxt "tags"
+msgid "photo photographer photography camera aperture film creative media"
+msgstr "फ़ोटो फ़ोटोग्राफर फ़ोटोग्राफी कैमरा अप्रचर फ़िल्म रचनात्मक मीडिया"
+
+#: src/blocks/icon/svgs.js:61
+msgctxt "tags"
+msgid "photo photos image media camera aperture collection"
+msgstr "फ़ोटो फ़ोटो छवि मीडिया कैमरा अपर्चर संग्रह"
+
+#: src/blocks/icon/svgs.js:67
+msgctxt "tags"
+msgid "film videography director producer media creative"
+msgstr "फ़िल्म वीडियोग्राफी निर्देशक रचनात्मक मीडिया रचनात्मक"
+
+#: src/blocks/icon/svgs.js:73
+msgctxt "tags"
+msgid ""
+"video videography director producer media creative camera photographer "
+"photography aperture"
+msgstr ""
+"वीडियो वीडियोग्राफी निर्देशक रचनात्मक मीडिया रचनात्मक कैमरा फ़ोटोग्राफर फ़ोटोग्राफी "
+"अपर्चर"
+
+#: src/blocks/icon/svgs.js:85
+msgctxt "tags"
+msgid "palette design colors artist paint creative media"
+msgstr "पैलेट डिज़ाइन रंग कलाकार पेंट रचनात्मक मीडिया"
+
+#: src/blocks/icon/svgs.js:91
+msgctxt "tags"
+msgid "palette design colors artist creative media"
+msgstr "पैलेट डिज़ाइन रंग कलाकार रचनात्मक मीडिया"
+
+#: src/blocks/icon/svgs.js:97
+msgctxt "tags"
+msgid "palette design colors artist creative media paint paintbrush"
+msgstr "पैलेट डिज़ाइन रंग कलाकार रचनात्मक मीडिया पेंट पेंटब्रश"
+
+#: src/blocks/map/styles.js:12
+#, fuzzy
+msgctxt "block styles"
+msgid "Standard"
+msgstr "मानक"
+
+#: src/blocks/map/styles.js:16
+#, fuzzy
+msgctxt "block styles"
+msgid "Silver"
+msgstr "सिल्वर"
+
+#: src/blocks/map/styles.js:20
+#, fuzzy
+msgctxt "block styles"
+msgid "Retro"
+msgstr "रेट्रो"
+
+#: src/blocks/map/styles.js:24
+#, fuzzy
+msgctxt "block styles"
+msgid "Dark"
+msgstr "अंधेरा"
+
+#: src/blocks/map/styles.js:28
+#, fuzzy
+msgctxt "block styles"
+msgid "Night"
+msgstr "रात"
+
+#: src/blocks/map/styles.js:32
+#, fuzzy
+msgctxt "block styles"
+msgid "Aubergine"
+msgstr "बैंगनी"
+
+#: src/extensions/button-styles/index.js:16
+#, fuzzy
+msgctxt "block styles"
+msgid "Circular"
+msgstr "सर्कुलर"
+
+#: src/extensions/button-styles/index.js:22
+#, fuzzy
+msgctxt "block styles"
+msgid "3D"
+msgstr "3D"
+
+#: src/extensions/button-styles/index.js:28
+#, fuzzy
+msgctxt "block styles"
+msgid "Shadow"
+msgstr "शैडो"
+
+#: src/extensions/list-styles/index.js:15
+#, fuzzy
+msgctxt "block styles"
+msgid "Default"
+msgstr "डिफ़ॉल्ट"
+
+#: src/extensions/list-styles/index.js:21
+#, fuzzy
+msgctxt "block styles"
+msgid "None"
+msgstr "कोई नहीं"
+
+#: src/extensions/list-styles/index.js:27
+#, fuzzy
+msgctxt "block styles"
+msgid "Checkbox"
+msgstr "चेकबॉक्स"
+
+#: src/blocks/post-carousel/edit.js:302 src/blocks/posts/edit.js:437
+#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
+#, fuzzy
+msgctxt "placeholder when a post has no title"
+msgid "(no title)"
+msgstr "मेनू शीर्षक..."
+
+#: src/blocks/posts/inspector.js:57
+#, fuzzy
+msgctxt "label for small size option"
+msgid "Small"
+msgstr "छोटा"
+
+#: src/blocks/posts/inspector.js:62
+#, fuzzy
+msgctxt "label for medium size option"
+msgid "Medium"
+msgstr "मध्यम"
+
+#: src/blocks/posts/inspector.js:67
+#, fuzzy
+msgctxt "label for large size option"
+msgid "Large"
+msgstr "बड़ा"
+
+#: src/blocks/posts/inspector.js:72
+#, fuzzy
+msgctxt "label for large size option"
+msgid "Extra Large"
+msgstr "अधिक बड़ा"
+
+#: src/components/background/panel.js:102
+#, fuzzy
+msgctxt "block layout"
+msgid "Auto"
+msgstr "ऑटो"
+
+#: src/components/background/panel.js:103
+#, fuzzy
+msgctxt "block layout"
+msgid "Cover"
+msgstr "कवर"
+
+#: src/components/background/panel.js:104
+#, fuzzy
+msgctxt "block layout"
+msgid "Contain"
+msgstr "शामिल"
+
+#: src/components/background/panel.js:83
+#: src/components/grid-control/index.js:35
+#, fuzzy
+msgctxt "block layout"
+msgid "Top Left"
+msgstr "शीर्ष बायां"
+
+#: src/components/background/panel.js:84
+#: src/components/grid-control/index.js:36
+#, fuzzy
+msgctxt "block layout"
+msgid "Top Center"
+msgstr "शीर्ष केंद्र"
+
+#: src/components/background/panel.js:85
+#: src/components/grid-control/index.js:37
+#, fuzzy
+msgctxt "block layout"
+msgid "Top Right"
+msgstr "शीर्ष दायां"
+
+#: src/components/background/panel.js:86
+#: src/components/grid-control/index.js:48
+#, fuzzy
+msgctxt "block layout"
+msgid "Center Left"
+msgstr "केंद्र बायां"
+
+#: src/components/background/panel.js:87
+#: src/components/grid-control/index.js:49
+#, fuzzy
+msgctxt "block layout"
+msgid "Center Center"
+msgstr "केंद्र केंद्र"
+
+#: src/components/background/panel.js:88
+#: src/components/grid-control/index.js:50
+#, fuzzy
+msgctxt "block layout"
+msgid "Center Right"
+msgstr "केंद्र दायां"
+
+#: src/components/background/panel.js:89
+#: src/components/grid-control/index.js:41
+#, fuzzy
+msgctxt "block layout"
+msgid "Bottom Left"
+msgstr "नीचे बायां"
+
+#: src/components/background/panel.js:90
+#: src/components/grid-control/index.js:42
+#, fuzzy
+msgctxt "block layout"
+msgid "Bottom Center"
+msgstr "नीचे केंद्र"
+
+#: src/components/background/panel.js:91
+#: src/components/grid-control/index.js:43
+#, fuzzy
+msgctxt "block layout"
+msgid "Bottom Right"
+msgstr "नीचे दायां"
+
+#: src/components/background/panel.js:95
+#, fuzzy
+msgctxt "block layout"
+msgid "No Repeat"
+msgstr "कोई दोहराव नहीं"
+
+#: src/components/background/panel.js:96
+#, fuzzy
+msgctxt "block layout"
+msgid "Repeat"
+msgstr "दोहराएं"
+
+#: src/components/background/panel.js:97
+#, fuzzy
+msgctxt "block layout"
+msgid "Repeat Horizontally"
+msgstr "क्षैतिज रूप से दोहराएं"
+
+#: src/components/background/panel.js:98
+#, fuzzy
+msgctxt "block layout"
+msgid "Repeat Vertically"
+msgstr "लंबवत रूप से दोहराएं"
+
+#: src/components/block-gallery/gallery-link-settings.js:80
+#, fuzzy
+msgctxt ""
+"HTML attribute that specifies the a relationship between the two pages."
+msgid "Link Rel"
+msgstr "लिंक Rel"
+
+#: src/components/block-gallery/options/caption-options.js:10
+#, fuzzy
+msgctxt "visual style option"
+msgid "Dark"
+msgstr "अंधेरा"
+
+#: src/components/block-gallery/options/caption-options.js:11
+#, fuzzy
+msgctxt "visual style option"
+msgid "Light"
+msgstr "प्रकाश"
+
+#: src/components/block-gallery/options/caption-options.js:12
+#, fuzzy
+msgctxt "visual style option"
+msgid "None"
+msgstr "कोई नहीं"
+
+#: src/components/crop-settings/index.js:280
+#, fuzzy
+msgctxt "label for horizontal positioning input"
+msgid "Horizontal Pos."
+msgstr "क्षैतिज रूप से दोहराएं"
+
+#: src/components/crop-settings/index.js:288
+msgctxt "label for vertical positioning input"
+msgid "Vertical Pos."
+msgstr ""
+
+#: src/components/crop-settings/index.js:297
+#, fuzzy
+msgctxt "label for the control that allows zooming in on the image"
+msgid "Image Zoom"
+msgstr "छवि"
+
+#: src/components/dimensions-control/index.js:389
+#, fuzzy
+msgctxt "A size unit for CSS markup"
+msgid "Pixel"
+msgstr "पिक्सेल"
+
+#: src/components/dimensions-control/index.js:393
+#, fuzzy
+msgctxt "A size unit for CSS markup"
+msgid "Em"
+msgstr "Em"
+
+#: src/components/dimensions-control/index.js:397
+#, fuzzy
+msgctxt "A size unit for CSS markup"
+msgid "Percentage"
+msgstr "प्रतिशत"
+
+#: src/components/media-filter-control/index.js:31
+#, fuzzy
+msgctxt "image styles"
+msgid "Original"
+msgstr "मूल"
+
+#: src/components/media-filter-control/index.js:39
+#, fuzzy
+msgctxt "image styles"
+msgid "Grayscale Filter"
+msgstr "ग्रेस्केल"
+
+#: src/components/media-filter-control/index.js:47
+#, fuzzy
+msgctxt "image styles"
+msgid "Sepia Filter"
+msgstr "मीडिया फ़ाइल"
+
+#: src/components/media-filter-control/index.js:55
+#, fuzzy
+msgctxt "image styles"
+msgid "Saturation Filter"
+msgstr "सैचुरेशन"
+
+#: src/components/media-filter-control/index.js:63
+#, fuzzy
+msgctxt "image styles"
+msgid "Dim Filter"
+msgstr "विंटेज फ़िल्टर"
+
+#: src/components/media-filter-control/index.js:71
+#, fuzzy
+msgctxt "image styles"
+msgid "Vintage Filter"
+msgstr "विंटेज फ़िल्टर"
+
+#: src/components/typography-controls/index.js:103
+#, fuzzy
+msgctxt "typography styles"
+msgid "Capitalize"
+msgstr "बड़े अक्षरों में करना"
+
+#: src/components/typography-controls/index.js:107
+#, fuzzy
+msgctxt "typography styles"
+msgid "Normal"
+msgstr "सामान्य"
+
+#: src/components/typography-controls/index.js:84
+#, fuzzy
+msgctxt "typography styles"
+msgid "Bold"
+msgstr "बोल्ड"
+
+#: src/components/typography-controls/index.js:91
+#, fuzzy
+msgctxt "typography styles"
+msgid "Default"
+msgstr "डिफ़ॉल्ट"
+
+#: src/components/typography-controls/index.js:95
+#, fuzzy
+msgctxt "typography styles"
+msgid "Uppercase"
+msgstr "बड़ा अक्षर"
+
+#: src/components/typography-controls/index.js:99
+#, fuzzy
+msgctxt "typography styles"
+msgid "Lowercase"
+msgstr "छोटा अक्षर"
 
 #. Plugin Name of the plugin
 msgid "CoBlocks"
@@ -160,10 +4513,6 @@ msgstr "फ़ॉर्म स्पैम सुरक्षा के लिए G
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr "फ़ॉर्म स्पैम सुरक्षा के लिए Google reCaptcha गुप्त कुंजी"
 
-#: includes/class-coblocks-form.php:234 includes/class-coblocks-form.php:321
-msgid "Email"
-msgstr "ईमेल"
-
 #: includes/class-coblocks-form.php:268
 msgid "Name"
 msgstr "नाम"
@@ -204,1911 +4553,22 @@ msgstr "आपका संदेश भेज दिया गया था:"
 msgid "Google Map API key for map rendering"
 msgstr "मैप रेंडरिंग के लिए Google मैप API कुंजी"
 
-#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
-#, fuzzy
-msgctxt "placeholder when a post has no title"
-msgid "(no title)"
-msgstr "मेनू शीर्षक..."
-
-#: src/blocks/post-carousel/index.php:366 src/blocks/posts/index.php:385
-msgid "Read more"
-msgstr ""
-
-#: src/blocks/share/index.php:133
-msgid "Share on Facebook"
-msgstr "Facebook पर साझा करें"
-
-#: src/blocks/share/index.php:137
-msgid "Share on Twitter"
-msgstr "Twitter पर साझा करें"
-
-#: src/blocks/share/index.php:141
-msgid "Share on Pinterest"
-msgstr "Pinterest पर साझा करें"
-
 #: src/blocks/share/index.php:145
 msgid "Share on Linkedin"
 msgstr "Linkedin पर साझा करें"
-
-#: src/blocks/share/index.php:149
-msgid "Share via Email"
-msgstr "ईमेल के माध्यम से साझा करें"
-
-#: src/blocks/share/index.php:153
-msgid "Share on Tumblr"
-msgstr "Tumblr पर साझा करें"
-
-#: src/blocks/share/index.php:157
-msgid "Share on Google"
-msgstr "Google पर साझा करें"
-
-#: src/blocks/share/index.php:161
-msgid "Share on Reddit"
-msgstr "Reddit पर साझा करें"
-
-#: src/blocks/social-profiles/index.php:68
-msgid "Facebook"
-msgstr "Facebook"
-
-#: src/blocks/social-profiles/index.php:72
-msgid "Twitter"
-msgstr "Twitter"
-
-#: src/blocks/social-profiles/index.php:76
-msgid "Instagram"
-msgstr "Instagram"
-
-#: src/blocks/social-profiles/index.php:80
-msgid "Pinterest"
-msgstr "Pinterest"
 
 #: src/blocks/social-profiles/index.php:84
 msgid "Linkedin"
 msgstr "LinkedIn"
 
-#: src/blocks/social-profiles/index.php:89
-msgid "YouTube"
-msgstr "YouTube"
-
-#: src/blocks/social-profiles/index.php:93
-msgid "Yelp"
-msgstr "Yelp"
-
-#: src/blocks/social-profiles/index.php:97
-msgid "Houzz"
-msgstr "Houzz"
-
-#~ msgid "Add collapsable accordion items to accordions."
-#~ msgstr "एकॉर्डियन में मिश्रित करने योग्य एकॉर्डियन आइटम जोड़ें"
-
-#~ msgid "Accordion item is open by default."
-#~ msgstr "एकॉर्डियन आइटम डिफ़ॉल्ट रूप से खुला होता है."
-
-#~ msgid "Toggle to set this accordion item to be open by default."
-#~ msgstr "डिफ़ॉल्ट रूप से खुले रहने के लिए इस अकॉर्डियन आइटम को सेट करने हेतु टॉगल करें."
-
-#~ msgid "Accordion Item Settings"
-#~ msgstr "एकॉर्डियन आइटम सेटिंग्स"
-
-#~ msgid "Color Settings"
-#~ msgstr "रंग की सेटिंग्स"
-
-#~ msgid "Background Color"
-#~ msgstr "पृष्ठभूमि रंग"
-
-#~ msgid "Title Text Color"
-#~ msgstr "शीर्षक पाठ रंग"
-
-#~ msgid "Organize content within collapsable accordion items."
-#~ msgstr "मिश्रित करने योग्य एकॉर्डियन आइटम के भीतर सामग्री व्यवस्थित करें."
-
-#~ msgid "Accordion Settings"
-#~ msgstr "एकॉर्डियन सेटिंग्स"
-
-#~ msgid "Internet Explorer Support"
-#~ msgstr "Internet Explorer सहायता"
-
-#~ msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
-#~ msgstr "JavaScript पॉलीफ़िल को लोड करके Internet Explorer के लिए समर्थन जोड़ें."
-
-#~ msgid ""
-#~ "Supporting Internet Explorer by loading a JavaScript polyfill on this "
-#~ "page."
-#~ msgstr ""
-#~ "इस पेज पर JavaScript पॉलीफ़िल को लोड करके Internet Explorer के लिए समर्थन करना."
-
-#, fuzzy
-#~ msgid "Provide contextual feedback messages or notices."
-#~ msgstr "प्रासंगिक प्रतिक्रिया संदेश दें."
-
-#~ msgid "Text Color"
-#~ msgstr "पाठ रंग"
-
-#, fuzzy
-#~ msgid "Edit avatar"
-#~ msgstr "गैलरी संपादित करें"
-
-#, fuzzy
-#~ msgid "Write author name…"
-#~ msgstr "कैप्शन लिखें..."
-
-#, fuzzy
-#~ msgid "Author Settings"
-#~ msgstr "फ़ॉर्म सेटिंग्स"
-
-#~ msgid "Prompt visitors to take action with multiple buttons, side by side."
-#~ msgstr ""
-#~ "एक के पास मौजूद एक कई बटन के द्वारा आगंतुकों को कार्रवाई करने के लिए प्रेरित करें."
-
-#~ msgid "Buttons"
-#~ msgstr "बटन"
-
-#~ msgid "Stacking buttons on mobile."
-#~ msgstr "मोबाइल पर स्टैकिंग बटन."
-
-#~ msgid "Toggle to stack buttons on mobile."
-#~ msgstr "मोबाइल पर स्टैक बटन के लिए टॉगल करें."
-
-#~ msgid "Twitter Username"
-#~ msgstr "Twitter उपयोगकर्ता का नाम"
-
-#~ msgid "Username"
-#~ msgstr "उपयोगकर्ता का नाम"
-
-#~ msgid "Add button..."
-#~ msgstr "बटन जोड़ें..."
-
-# the text of the click to tweet element
-#~ msgid "Add a quote to tweet..."
-#~ msgstr "ट्वीट करने के लिए कोट जोड़ें..."
-
-#~ msgid "Add a quote for readers to tweet via Twitter."
-#~ msgstr "पाठकों को Twitter के माध्यम से ट्वीट करने के लिए कोट जोड़ें."
-
-#~ msgid "Text Settings"
-#~ msgstr "पाठ सेटिंग्स"
-
-#~ msgid "Button Color"
-#~ msgstr "बटन का रंग"
-
-#~ msgid "Add a resizable spacer between other blocks."
-#~ msgstr "अन्य ब्लॉक के बीच आकार बदलने योग्य स्पेसर जोड़ें."
-
-#~ msgid "Height in pixels"
-#~ msgstr "पिक्सेल में ऊँचाई"
-
-#~ msgid "Height for the dynamic separator element in pixels."
-#~ msgstr "पिक्सेल में डायनमिक विभाजक तत्व के लिए ऊँचाई."
-
-#~ msgid "Color"
-#~ msgstr "रंग"
-
-#~ msgid "Add as backround"
-#~ msgstr "पृष्ठभूमि के रूप में जोड़ें"
-
-#~ msgid "A singular child column within a parent features block."
-#~ msgstr "पेरेंट फ़ीचर ब्लॉक में एकल चाइल्ड कॉलम."
-
-#~ msgid "Feature Settings"
-#~ msgstr "सुविधा सेटिंग्स"
-
-#~ msgid "Padding"
-#~ msgstr "पैडिंग"
-
-#~ msgid "Add up to three columns of small notes for your product or service."
-#~ msgstr "अपने उत्पाद या सेवा के लिए संक्षिप्त टिप्पणी वाले तीन तक कॉलम जोड़ें."
-
-#~ msgid "Margin"
-#~ msgstr "मार्जिन"
-
-#~ msgid "Gutter"
-#~ msgstr "गटर"
-
-#~ msgid "Space between each column."
-#~ msgstr "प्रत्येक कॉलम के बीच जगह"
-
-#~ msgid "Small"
-#~ msgstr "छोटा"
-
-#~ msgid "Medium"
-#~ msgstr "मध्यम"
-
-#~ msgid "Large"
-#~ msgstr "बड़ा"
-
-#~ msgid "Features Settings"
-#~ msgstr "सुविधा सेटिंग्स"
-
-#~ msgid "Columns"
-#~ msgstr "कॉलम"
-
-#~ msgid "Add Menu Section"
-#~ msgstr "मेनू अनुभाग जोड़ें"
-
-#~ msgid "Menu title..."
-#~ msgstr "मेनू शीर्षक..."
-
-#~ msgid "Drop image to replace"
-#~ msgstr "बदलने के लिए छवि छोड़ें"
-
-#~ msgid "Remove Image"
-#~ msgstr "छवि निकालें"
-
-#~ msgid "Add title..."
-#~ msgstr "शीर्षक जोड़ें..."
-
-#~ msgid "Spicy"
-#~ msgstr "तीखा"
-
-#~ msgid "Hot"
-#~ msgstr "अत्यंत प्रचलित"
-
-#~ msgid "Vegetarian"
-#~ msgstr "शाकाहार"
-
-#~ msgid "Gluten Free"
-#~ msgstr "ग्लूटेन मुक्त"
-
-#~ msgid "Pescatarian"
-#~ msgstr "पेस्केटैरियन"
-
-#~ msgid "Vegan"
-#~ msgstr "वीगन"
-
-#~ msgid "Add description..."
-#~ msgstr "वर्णन जोड़ें..."
-
-#~ msgid "$0.00"
-#~ msgstr "$0.00"
-
-#~ msgid "A food and drink item within the Food & Drinks block."
-#~ msgstr "खाद्य और पेय ब्लॉक के भीतर खाद्य और पेय पदार्थ."
-
-#~ msgid "Item Settings"
-#~ msgstr "‌आइटम सेटिंग्स"
-
-#~ msgid "Image"
-#~ msgstr "छवि"
-
-#~ msgid "Showing an image for this item."
-#~ msgstr "इस आइटम के लिए कोई छवि दिखाना."
-
-#~ msgid "Toggle to show an image for this item."
-#~ msgstr "इस आइटम के लिए कोई छवि दिखाने हेतु टॉगल करें."
-
-#~ msgid "Price"
-#~ msgstr "मूल्य"
-
-#~ msgid "Showing the price for this item."
-#~ msgstr "इस आइटम के लिए कीमत दिखाना."
-
-#~ msgid "Toggle to show the price for this item."
-#~ msgstr "इस आइटम के लिए कीमत दिखाने के लिए टॉगल करें."
-
-#~ msgid "Item Attributes"
-#~ msgstr "आइटम की विशेषताएं"
-
-#~ msgid "Spicier"
-#~ msgstr "मसालेदार"
-
-#~ msgid "Image Settings"
-#~ msgstr "छवि की सेटिंग्स"
-
-#~ msgid "Alt Text (Alternative Text)"
-#~ msgstr "सभी पाठ (वैकल्पिक पाठ)"
-
-#~ msgid "Describe the purpose of the image"
-#~ msgstr "छवि का उद्देश्य बताएँ"
-
-#~ msgid "Leave empty if the image is purely decorative."
-#~ msgstr "यदि छवि पूरी तरह से सजावटी है, तो खाली छोड़ दें."
-
-#~ msgid "Focal Point"
-#~ msgstr "फोकल प्वाइंट"
-
-#~ msgid "Display a menu or price list."
-#~ msgstr "मेनू या मूल्य सूची प्रदर्शित करें."
-
-#~ msgid "Styles"
-#~ msgstr "शैलियां"
-
-#~ msgid "Food & Drinks Settings"
-#~ msgstr "भोजन और पेय सेटिंग्स"
-
-#~ msgid "Images"
-#~ msgstr "छवियां"
-
-#~ msgid "Showing images for each item"
-#~ msgstr "प्रत्येक आइटम के लिए छवियां दिखाना"
-
-#~ msgid "Toggle to show images for each item."
-#~ msgstr "प्रत्येक आइटम के लिए छवियां दिखाने हेतु टॉगल करें."
-
-#~ msgid "Prices"
-#~ msgstr "मूल्य"
-
-#~ msgid "Showing the price of each item"
-#~ msgstr "प्रत्येक आइटम के लिए मूल्य दिखाना"
-
-#~ msgid "Toggle to show the price of each item."
-#~ msgstr "इस आइटम के लिए मूल्य दिखाने के लिए टॉगल करें."
-
-#~ msgid "%s is not a valid email address."
-#~ msgstr "%s कोई मान्य ईमेल पता नहीं है."
-
-#~ msgid "%s and %s are not a valid email address."
-#~ msgstr "%s और %s कोई मान्य ईमेल पते नहीं हैं."
-
-#~ msgid "%s are not a valid email address."
-#~ msgstr "%s कोई मान्य ईमेल पता नहीं है."
-
-#~ msgid "Email address"
-#~ msgstr "ईमेल पता"
-
-#~ msgid "name@example.com"
-#~ msgstr "name@example.com"
-
-#~ msgid "Subject"
-#~ msgstr "विषय"
-
-#~ msgid "Form Settings"
-#~ msgstr "फ़ॉर्म सेटिंग्स"
-
-#~ msgid "Google reCAPTCHA"
-#~ msgstr "Google reCAPTCHA"
-
-#~ msgid ""
-#~ "Add your reCAPTCHA site and secret keys to protect your form from spam."
-#~ msgstr ""
-#~ "अपनी reCAPTCHA साइट जोड़ें और स्पैम से आपके फ़ॉर्म को सुरक्षित करने के लिए गुप्त कुंजी."
-
-#~ msgid "Generate keys"
-#~ msgstr "कुंजियाँ जनरेट करें"
-
-#~ msgid "My keys"
-#~ msgstr "मेरी कुंजी"
-
-#~ msgid "Get help"
-#~ msgstr "सहायता प्राप्त करें"
-
-#~ msgid "Site Key"
-#~ msgstr "साइट कुंजी"
-
-#~ msgid "Secret Key"
-#~ msgstr "गुप्त कुंजी"
-
-#~ msgid "Saving"
-#~ msgstr "सहेज रहे हैं"
-
-#~ msgid "Save"
-#~ msgstr "सहेजें"
-
-#~ msgid "Remove"
-#~ msgstr "निकालें"
-
 #~ msgid "An email address field."
 #~ msgstr "ईमेल पता फ़ील्ड."
-
-#~ msgid "Add label…"
-#~ msgstr "लेबल जोड़ें..."
-
-#~ msgid "Required"
-#~ msgstr "आवश्यक"
-
-#~ msgid "Name Field Settings"
-#~ msgstr "नाम फ़ील्ड सेटिंग्स"
-
-#~ msgid "Last Name"
-#~ msgstr "अंतिम नाम"
-
-#~ msgid "Showing both first and last name fields."
-#~ msgstr "पहले और अंतिम नाम फ़ील्ड दोनों दिखाना."
-
-#~ msgid "Toggle to add a last name field."
-#~ msgstr "अंतिम नाम फ़ील्ड जोड़ने के लिए टॉगल करें."
 
 #~ msgid "A text field for names."
 #~ msgstr "नाम के लिए पाठ फ़ील्ड"
 
-#~ msgid "A text box for longer responses."
-#~ msgstr "लंबी प्रतिक्रियाओं के लिए पाठ बॉक्स."
-
-#~ msgid "Add a simple form to your page."
-#~ msgstr "अपने पेज में सामान्य फ़ॉर्म जोड़ें."
-
-#, fuzzy
-#~ msgid "Subject example"
-#~ msgstr "विषय"
-
-#~ msgid "Add text…"
-#~ msgstr "पाठ जोड़ें…"
-
-#~ msgid "Button Text Color"
-#~ msgstr "बटन पाठ रंग"
-
-#~ msgid "Edit gallery"
-#~ msgstr "गैलरी संपादित करें"
-
-#~ msgid "Carousel"
-#~ msgstr "कैरोसल"
-
-# %1$d is the order number of the image, %2$d is the total number of images.
-#~ msgid "image %1$d of %2$d in gallery"
-#~ msgstr "गैलरी में %2$d की %1$dछवि"
-
-#~ msgid "Write caption…"
-#~ msgstr "कैप्शन लिखें..."
-
-#~ msgid "Display multiple images in a beautiful carousel gallery."
-#~ msgstr "सुंदर कैरोसल गैलरी में कई छवियाँ दिखाएं"
-
-#, fuzzy
-#~ msgid "Responsive Height"
-#~ msgstr "लाइन उँचाई"
-
-#, fuzzy
-#~ msgid "Showing thumbnail navigation."
-#~ msgstr "डॉट नेविगेशन तीर दिखाना."
-
-#, fuzzy
-#~ msgid "Toggle to show thumbnails."
-#~ msgstr "मी़डिया कैप्शन दिखाने के लिए टॉगल करें."
-
-#, fuzzy
-#~ msgid "Carousel Settings"
-#~ msgstr "रंग की सेटिंग्स"
-
-#~ msgid "Size"
-#~ msgstr "आकार"
-
-#~ msgid "Rounded Corners"
-#~ msgstr "घुमावदार कोने"
-
-#~ msgid "Apply"
-#~ msgstr "लागू करें"
-
-#, fuzzy
-#~ msgid "Write caption..."
-#~ msgstr "वर्णन लिखें..."
-
-#, fuzzy
-#~ msgid "Assemble images into a beautiful collage gallery."
-#~ msgstr "सुंदर कैरोसल गैलरी में कई छवियाँ दिखाएं"
-
-#, fuzzy
-#~ msgid "Collage Settings"
-#~ msgstr "छवि की सेटिंग्स"
-
-#~ msgid "Shadow"
-#~ msgstr "शैडो"
-
-#~ msgid "Captions"
-#~ msgstr "कैप्शन"
-
-#~ msgid "Caption Style"
-#~ msgstr "कैप्शन स्टाइल"
-
-#~ msgid "Showing captions for each media item."
-#~ msgstr "प्रत्येक मीडिया आइटम के लिए कैप्शन दिखाना."
-
-#~ msgid "Toggle to show media captions."
-#~ msgstr "मी़डिया कैप्शन दिखाने के लिए टॉगल करें."
-
-#~ msgid "Masonry"
-#~ msgstr "मिस्त्री"
-
-#~ msgid "Display multiple images in an organized masonry gallery."
-#~ msgstr "किसी संगठित मिस्त्री गैलरी में कई छवि प्रदर्शित होती हैं."
-
-#, fuzzy
-#~ msgid "Toggle to enable the image lightbox."
-#~ msgstr "मैप नियंत्रण विकल्पों को सक्षम करने के लिए टॉगल करें."
-
-#, fuzzy
-#~ msgid "Masonry Settings"
-#~ msgstr "मैप सेटिंग्स"
-
-#~ msgid "Column Size"
-#~ msgstr "कॉलम का आकार"
-
-#~ msgid "Add rounded corners to the gallery items."
-#~ msgstr "गैलरी आइटम मे ंघुमावदार कोने जोड़ें."
-
-#, fuzzy
-#~ msgid "Lightbox"
-#~ msgstr "प्रकाश"
-
-#~ msgid "Stacked"
-#~ msgstr "स्टैक किया गया"
-
-#~ msgid "Display multiple images in an single column stacked gallery."
-#~ msgstr "एकल कॉलम स्टैक की गई गैलरी में कई छवियां दिखाएं."
-
-#~ msgid "Box Shadow"
-#~ msgstr "बॉक्स शैडो"
-
-#~ msgid "Fullwidth images are enabled."
-#~ msgstr "पूर्ण-चौड़ाई छवियां सक्षम हैं"
-
-#~ msgid ""
-#~ "Toggle to fill the available gallery area with completely fullwidth "
-#~ "images."
-#~ msgstr "उपलब्ध गैलरी क्षेत्र को पूरी चौड़ाई की छवियों के साथ भरने के लिए टॉगल करें."
-
-#, fuzzy
-#~ msgid "Stacked Settings"
-#~ msgstr "‌आइटम सेटिंग्स"
-
-#~ msgid "Fullwidth Images"
-#~ msgstr "पूर्ण-चौड़ाई छवियां"
-
-#~ msgid "Fullwidth Image"
-#~ msgstr "पूर्ण-चौड़ाई छवि"
-
-#~ msgid "Remove gif"
-#~ msgstr "gif निकालें"
-
-#~ msgid "This gif has an empty alt attribute"
-#~ msgstr "इस gif में खाली alt विशेषता है"
-
-#~ msgid "Search for that perfect gif on Giphy"
-#~ msgstr "Giphy पर उस सही gif के लिए खोजें"
-
-#~ msgid "Search for gifs"
-#~ msgstr "gif खोजें"
-
-#~ msgid "Pick a gif, any gif."
-#~ msgstr "कोई gif चुनें, कोई भी gif."
-
-#~ msgid "Gif Settings"
-#~ msgstr "Gif सेटिंग्स"
-
-#~ msgid "Display meta"
-#~ msgstr "मेटा प्रदर्शित करें"
-
-#~ msgid "Edit Gist"
-#~ msgstr "Gist संपादित करें"
-
-#~ msgid "View Gist"
-#~ msgstr "Gist देखें"
-
-#~ msgid "GitHub File"
-#~ msgstr "GitHub फ़ाइल"
-
-#~ msgid "File"
-#~ msgstr "फ़ाइल"
-
-#~ msgid "View this gist on GitHub"
-#~ msgstr "GitHub पर इस gist को देखें"
-
-#~ msgid "Gist URL"
-#~ msgstr "Gist URL"
-
-#~ msgid "Add GitHub Gist URL..."
-#~ msgstr "GitHub Gist URL जोड़ें..."
-
-#~ msgid "Loading Gist"
-#~ msgstr "Gist लोड हो रहा है"
-
-#, fuzzy
-#~ msgid "Embed GitHub gists by adding a gist link."
-#~ msgstr "gist लिंक जोड़कर एम्बेड की गई GitHub gist"
-
-#~ msgid "Showing gist meta data."
-#~ msgstr "gist मेटा डेटा दिखाना."
-
-#~ msgid "Toggle to show the gist meta data."
-#~ msgstr "gist मेटा डेटा दिखाने के लिए टॉगल करें."
-
-#~ msgid "Gist Settings"
-#~ msgstr "Gist सेटिंग्स"
-
-#~ msgid "Gist File"
-#~ msgstr "Gist फ़ाइल"
-
-#~ msgid "Gist Meta"
-#~ msgstr "Gist मेटा"
-
-#~ msgid "Change layout"
-#~ msgstr "लेआउट बदलें"
-
-#~ msgid ""
-#~ "An introductory area of a page accompanied by a small amount of text and "
-#~ "a call to action."
-#~ msgstr ""
-#~ "पेज का परिचय देने वाला क्षेत्र पाठ जिसमें थोड़ा-सा पाठ रहेगा और कार्रवाई के लिए कॉल "
-#~ "करें होगा."
-
-#~ msgid "Content width in pixels"
-#~ msgstr "पिक्सेल में सामग्री की चौड़ाई"
-
-#~ msgid "Hero Settings"
-#~ msgstr "हीरो सेटिंग्स"
-
-#~ msgid "Space inside of the container."
-#~ msgstr "कंटेनर के अंदर जगह."
-
-#~ msgid "Top Left"
-#~ msgstr "शीर्ष बायां"
-
-#~ msgid "Top Center"
-#~ msgstr "शीर्ष केंद्र"
-
-#~ msgid "Top Right"
-#~ msgstr "शीर्ष दायां"
-
-#~ msgid "Center Left"
-#~ msgstr "केंद्र बायां"
-
-#~ msgid "Center Center"
-#~ msgstr "केंद्र केंद्र"
-
-#~ msgid "Center Right"
-#~ msgstr "केंद्र दायां"
-
-#~ msgid "Bottom Left"
-#~ msgstr "नीचे बायां"
-
-#~ msgid "Bottom Center"
-#~ msgstr "नीचे केंद्र"
-
-#~ msgid "Bottom Right"
-#~ msgstr "नीचे दायां"
-
-#~ msgid "Add highlighted text..."
-#~ msgstr "हाइलाइट किया गया पाठ जोड़ें..."
-
-#~ msgid "Huge"
-#~ msgstr "बड़ा"
-
-#~ msgid "Add a stylized graphic symbol to communicate something more."
-#~ msgstr "कुछ और संचार करने के लिए स्टाइल वाला ग्राफ़िक प्रतीक जोड़ें."
-
-#~ msgid "Icon Settings"
-#~ msgstr "आइकन सेटिंग्स"
-
-#~ msgid "Reset"
-#~ msgstr "रीसेट करें"
-
-#, fuzzy
-#~ msgid "Apply custom size"
-#~ msgstr "कस्टम %s आकार"
-
-#, fuzzy
-#~ msgid "Custom"
-#~ msgstr "सीमा-शुल्क"
-
-#~ msgid "Radius"
-#~ msgstr "त्रिज्या"
-
-#~ msgid "Icon Search"
-#~ msgstr "आइकन खोज"
-
-#~ msgid "No results found."
-#~ msgstr "कोई परिणाम नहीं मिला."
-
-#~ msgid "Link Settings"
-#~ msgstr "लिंक सेटिंग्स"
-
-#~ msgid "Link URL"
-#~ msgstr "लिंक URL"
-
-#~ msgid "Link Rel"
-#~ msgstr "लिंक Rel"
-
-#~ msgid "Opening in New Tab"
-#~ msgstr "नई टैब में खोलना"
-
-#~ msgid "Open in New Tab"
-#~ msgstr "नई टैब में खोलें"
-
-#~ msgid "Icon Color"
-#~ msgstr "आइकन का रंग"
-
-#~ msgid "Edit logos"
-#~ msgstr "लोगो संपादित करें"
-
-#~ msgid "Logos & Badges"
-#~ msgstr "लोगो और बैज"
-
-#~ msgid "Drag images, upload new ones or select files from your library."
-#~ msgstr "छवियां खींचें, नए अपलोड करें या अपनी लाइब्रेरी से फ़ाइलों का चयन करें."
-
-#~ msgid "Add logos, badges, or certifications to build credibility."
-#~ msgstr "विश्वसनीयता बनाने के लिए लोगो, बैजेस या प्रमाणपत्र जोड़ें."
-
-#~ msgid "Logos Settings"
-#~ msgstr "लोगो कि सेटिंग्स"
-
-#~ msgid "Black & White"
-#~ msgstr "श्वेत और श्याम"
-
-#~ msgid "Toggle to add a black and white filter."
-#~ msgstr "श्वेत और श्याम फ़िल्टर को जोड़ने के लिए टॉगल करें."
-
-#~ msgid "Edit Location"
-#~ msgstr "स्थान संपादित करें"
-
-#~ msgid "Map style"
-#~ msgstr "मैप स्टाइल"
-
-#~ msgid "Invalid API key, or too many requests"
-#~ msgstr "अमान्य API कुंजी या कई सारे अनुरोध"
-
-#~ msgid "Google Map"
-#~ msgstr "Google Map"
-
-#~ msgid "Enter a location or address to drop a pin on a Google map."
-#~ msgstr "Google मैप पर पिन छोड़ने के लिए कोई स्थान या पता दर्ज करें."
-
-#~ msgid "Search for a place or address…"
-#~ msgstr "स्थान या पते के लिए खोजें..."
-
-#, fuzzy
-#~ msgid "Add an address or location to drop a pin on a Google map."
-#~ msgstr "कोई पता जोड़ें और Google मैप पर पिन छोड़ें."
-
-#~ msgid "Select Map Style"
-#~ msgstr "मैप स्टाइल चुनें"
-
-#~ msgid "Map Settings"
-#~ msgstr "मैप सेटिंग्स"
-
-#~ msgid "Height for the map in pixels"
-#~ msgstr "पिक्सेल में मैप के लिए उँचाई"
-
-#~ msgid "Zoom Level"
-#~ msgstr "ज़ूम स्तर"
-
-#~ msgid "Marker Size"
-#~ msgstr "मार्कर का आकार"
-
-#~ msgid "Fine control options are enabled."
-#~ msgstr "बेहतर नियंत्रण विकल्प सक्षम हैं."
-
-#~ msgid "Toggle to enable map control options."
-#~ msgstr "मैप नियंत्रण विकल्पों को सक्षम करने के लिए टॉगल करें."
-
-#~ msgid "Map Controls"
-#~ msgstr "मैप नियंत्रण"
-
-#~ msgid "Map Type"
-#~ msgstr "मैप प्रकार"
-
-#~ msgid "Switching between standard and satellite map views is enabled."
-#~ msgstr "मानक और सैटलाइट मैप दृश्यों के बीच स्विच करना सक्षम है."
-
-#~ msgid "Toggle to enable switching between standard and satellite maps."
-#~ msgstr "मानक और सैटलाइट मैप के बीच स्विच सक्षम करने लिए टॉगल करें."
-
-#~ msgid "Zoom Controls"
-#~ msgstr "ज़ूम नियंत्रण"
-
-#~ msgid "Showing map zoom controls."
-#~ msgstr "मैप ज़ूम नियंत्रण दिखाना."
-
-#~ msgid "Toggle to enable zooming in and out on the map with zoom controls."
-#~ msgstr "ज़ूम नियंत्रण के साथ मैप पर ज़ूम इन और आउट सक्षम करने के लिए टॉगल करें."
-
-#~ msgid "Street View"
-#~ msgstr "स्ट्रीट दृश्य"
-
-#~ msgid "Showing the street view map control."
-#~ msgstr "स्ट्रीट दृश्य मैप नियंत्रण दिखाना."
-
-#~ msgid "Toggle to show the street view control at the bottom right."
-#~ msgstr "नीचे दाईं ओर स्ट्रीट दृश्य नियंत्रण दिखाने के लिए टॉगल करें."
-
-#~ msgid "Fullscreen Toggle"
-#~ msgstr "पूर्ण स्क्रीन टॉगल करना"
-
-#~ msgid "Showing the fullscreen map control."
-#~ msgstr "पूर्ण स्क्रीन मैप नियंत्रण दिखाना."
-
-#~ msgid "Toggle to show the fullscreen map control."
-#~ msgstr "पूर्ण स्क्रीन मैप नियंत्रण दिखाने के लिए टॉगल करें."
-
-#~ msgid "Google Maps API Key"
-#~ msgstr "Google Maps API कुंजी"
-
-#~ msgid ""
-#~ "Add your Google Maps API key. Updating this API key will set all your "
-#~ "maps to use the new key."
-#~ msgstr ""
-#~ "अपने Google Maps API कुंजी में जोड़ें. इस API कुंजी को अपडेट करने से नई कुंजी का उपयोग "
-#~ "करने के लिए अपने सभी मैप सेट हो जाएंगे."
-
 #~ msgid "Retrieve your key"
 #~ msgstr "अपनी कुंजी पुनः प्राप्त करें"
-
-#~ msgid "Need help?"
-#~ msgstr "मदद चाहिए?"
-
-#~ msgid "Enter Google API Key…"
-#~ msgstr "Google API कुंजी दर्ज करें…"
-
-#~ msgid "Saved"
-#~ msgstr "सहेजा गया"
-
-#~ msgid "Media on right"
-#~ msgstr "दाईं ओर स्थित मीडिया"
-
-#~ msgid "Media on left"
-#~ msgstr "बाईं ओर स्थित मीडिया"
-
-#~ msgid "Add an image or video with an offset card side-by-side."
-#~ msgstr "ऑफ़सेट कार्ड के साथ कोई छवि या वीडियो जोड़ें."
-
-#~ msgid "Card Shadow"
-#~ msgstr "कार्ड शैडो"
-
-#~ msgid "Showing card shadow."
-#~ msgstr "कार्ड शैडो दिखाना."
-
-#~ msgid "Toggle to add a card shadow."
-#~ msgstr "कार्ड शैडो जोड़ने के लिए टॉगल करें."
-
-#~ msgid " %s Shadow"
-#~ msgstr " %s शैडो"
-
-#~ msgid "Showing %s shadow."
-#~ msgstr "%s शैडो दिखाना."
-
-#~ msgid "Toggle to add an %s shadow"
-#~ msgstr "%s शैडो जोड़ने के लिए टॉगल करें"
-
-#~ msgid "Media Card Settings"
-#~ msgstr "मीडिया कार्ड सेटिंग्स"
-
-#~ msgid "Max Width"
-#~ msgstr "अधिकतम चौड़ाई"
-
-#~ msgid "Media"
-#~ msgstr "मीडिया"
-
-#~ msgid "Drop to replace media"
-#~ msgstr "मीडिया बदलने के लिए छोड़ें"
-
-#~ msgid "Edit media"
-#~ msgstr "मीडिया संपादित करें"
-
-#, fuzzy
-#~ msgid "Edit RSS URL"
-#~ msgstr "Gist URL"
-
-#, fuzzy
-#~ msgid "Post Carousel"
-#~ msgstr "कैरोसल"
-
-#, fuzzy
-#~ msgid "https://example.com/feed…"
-#~ msgstr "https://yelp.com/"
-
-#, fuzzy
-#~ msgid "Use URL"
-#~ msgstr "Gist URL"
-
-#, fuzzy
-#~ msgid "Post Carousel Settings"
-#~ msgstr "रंग की सेटिंग्स"
-
-#, fuzzy
-#~ msgid "Showing the publish date."
-#~ msgstr "इस आइटम के लिए कीमत दिखाना."
-
-#, fuzzy
-#~ msgid "Toggle to show the publish date."
-#~ msgstr "gist मेटा डेटा दिखाने के लिए टॉगल करें."
-
-#, fuzzy
-#~ msgid "Showing the post content."
-#~ msgstr "कार्रवाई के लिए कॉल करें बटन दिखाना."
-
-#, fuzzy
-#~ msgid "Toggle to show the post content."
-#~ msgstr "gist मेटा डेटा दिखाने के लिए टॉगल करें."
-
-#, fuzzy
-#~ msgid "Feed Settings"
-#~ msgstr "सुविधा सेटिंग्स"
-
-#, fuzzy
-#~ msgid "Image on left"
-#~ msgstr "बाईं ओर स्थित मीडिया"
-
-#, fuzzy
-#~ msgid "Image on right"
-#~ msgstr "दाईं ओर स्थित मीडिया"
-
-#, fuzzy
-#~ msgid "Thumbnail Size"
-#~ msgstr "कॉलम का आकार"
-
-#, fuzzy
-#~ msgid "Posts Settings"
-#~ msgstr "Gist सेटिंग्स"
-
-#, fuzzy
-#~ msgid "One Pricing Table"
-#~ msgstr "मूल्य निर्धारण तालिका"
-
-#, fuzzy
-#~ msgid "Two Pricing Tables"
-#~ msgstr "मूल्य निर्धारण तालिका"
-
-#, fuzzy
-#~ msgid "Three Pricing Tables"
-#~ msgstr "मूल्य निर्धारण तालिका"
-
-#, fuzzy
-#~ msgid "Four Pricing Tables"
-#~ msgstr "मूल्य निर्धारण तालिका"
-
-#, fuzzy
-#~ msgid "Change pricing table count"
-#~ msgstr "मूल्य निर्धारण तालिका जोड़ें."
-
-#, fuzzy
-#~ msgid "Plan %d"
-#~ msgstr "%s प्लान"
-
-#~ msgid "Add features"
-#~ msgstr "विशेषताएं जोड़ें"
-
-#~ msgid "Buy Now"
-#~ msgstr "अभी खरीदें"
-
-#~ msgid "Plan A"
-#~ msgstr "A प्लान"
-
-#~ msgid "$"
-#~ msgstr "$"
-
-#, fuzzy
-#~ msgid "Add backround to column"
-#~ msgstr "%s में पृष्ठभूमि जोड़ें"
-
-#~ msgid "An immediate child of a row."
-#~ msgstr "पंक्ति का इमिडिएट चाइल्ड."
-
-#~ msgid "Column Settings"
-#~ msgstr "कॉलम सेटिंग्स"
-
-#~ msgid "Space around the container."
-#~ msgstr "कंटेनर के आसपास की जगह."
-
-#~ msgid "Width"
-#~ msgstr "चौड़ाई"
-
-#, fuzzy
-#~ msgid "Change row block layout"
-#~ msgstr "लेआउट बदलें"
-
-#~ msgid "one"
-#~ msgstr "एक"
-
-#~ msgid "two"
-#~ msgstr "दो"
-
-#~ msgid "three"
-#~ msgstr "तीन"
-
-#~ msgid "four"
-#~ msgstr "चार"
-
-#, fuzzy
-#~ msgid "Add backround to row"
-#~ msgstr "%s में पृष्ठभूमि जोड़ें"
-
-#~ msgid "One Column"
-#~ msgstr "एक कॉलम"
-
-#~ msgid "Two Columns"
-#~ msgstr "दो कॉलम"
-
-#~ msgid "Three Columns"
-#~ msgstr "तीन कॉलम"
-
-#~ msgid "Four Columns"
-#~ msgstr "चार कॉलम"
-
-#~ msgid "Row Layout"
-#~ msgstr "पंक्ति का लेआउट"
-
-#~ msgid "Row"
-#~ msgstr "पंक्ति"
-
-#~ msgid "Now select a layout for this %s column row."
-#~ msgstr "अब इस %s स्तंभ पंक्ति के लिए लेआउट चुनें."
-
-#~ msgid "Select the number of columns for this row."
-#~ msgstr "इस पंक्ति के लिए स्तंभ की संख्या चुनें."
-
-#~ msgid "Select Row Columns"
-#~ msgstr "स्तंभ पंक्तियां चुनें"
-
-#~ msgid "Select Row Layout"
-#~ msgstr "पंक्ति का लेआउट चुनें"
-
-#~ msgid "Back to Columns"
-#~ msgstr "स्तंभ पर वापस जाएं"
-
-#~ msgid ""
-#~ "Add a structured wrapper for column blocks, then add content blocks you’d "
-#~ "like to the columns."
-#~ msgstr ""
-#~ "स्तंभ ब्लॉक के लिए संरचित रैपर जोड़ें, फिर स्तंभ को पसंद करने के लिए सामग्री ब्लॉक जोड़ें."
-
-#~ msgid "Row Settings"
-#~ msgstr "पंक्ति की सेटिंग्स"
-
-#~ msgid "None"
-#~ msgstr "कोई नहीं"
-
-#~ msgid "Square"
-#~ msgstr "वर्गाकार"
-
-#~ msgid "Circle"
-#~ msgstr "सर्कल"
-
-#~ msgid "Add up to four columns of services to display."
-#~ msgstr "प्रदर्शित करने के लिए सेवाओं के चार स्तंभ जोड़ें."
-
-#~ msgid "Services Settings"
-#~ msgstr "सेवा सेटिंग्स"
-
-#~ msgid "Heading Level"
-#~ msgstr "शीर्षक लेवल"
-
-#~ msgid "Action Buttons"
-#~ msgstr "कार्रवाई बटन"
-
-#~ msgid "Showing the call to action buttons."
-#~ msgstr "कार्रवाई के लिए कॉल करें बटन दिखाना."
-
-#~ msgid "Toggle to show call to action buttons."
-#~ msgstr "कार्रवाई के लिए कॉल करें बटन दिखाने हेतु टॉगल करें."
-
-#~ msgid "A single service item within a services block."
-#~ msgstr "सेवा ब्लॉक के भीतर एकल सेवा आइटम."
-
-#~ msgid "Service Settings"
-#~ msgstr "सेवा सेटिंग्स"
-
-#~ msgid "Action Button"
-#~ msgstr "कार्रवाई बटन"
-
-#~ msgid "Showing the call to action button."
-#~ msgstr "कार्रवाई के लिए कॉल करें बटन दिखाना."
-
-#~ msgid "Toggle to show a call to action button."
-#~ msgstr "कार्रवाई के लिए कॉल करें बटन दिखाने हेतु टॉगल करें."
-
-#~ msgid "Flip horiztonally"
-#~ msgstr "क्षैतिज रूप से फ़्लिप करें"
-
-#~ msgid "Flip vertically"
-#~ msgstr "लंबवत  रूप से फ़्लिप करें"
-
-#~ msgid "Add a shape divider to visually distinquish page sections."
-#~ msgstr "विज़ुअल रूप से अलग पेज अनुभागों के लिए शेप डिवाइडर जोड़ें."
-
-#~ msgid "Divider Settings"
-#~ msgstr "डिवाइडर सेटिंग्स"
-
-#~ msgid "Shape Height in pixels"
-#~ msgstr "पिक्सेल में शेप ऊँचाई"
-
-#~ msgid "Background Height in pixels"
-#~ msgstr "पिक्सेल में पृष्ठभूमि ऊँचाई"
-
-#~ msgid "Shape Color"
-#~ msgstr "शेप रंग"
-
-#~ msgid "Share on LinkedIn"
-#~ msgstr "Linkedin पर साझा करें"
-
-#~ msgid "Add social sharing links to help you get likes and shares."
-#~ msgstr "पसंद और साझा पाने में अपनी मदद करने के लिए सामाजिक साझाकरण लिंक जोड़ें."
-
-#~ msgid "Social Colors"
-#~ msgstr "सामाजिक रंग"
-
-#~ msgid "Icon Size"
-#~ msgstr "आइकन का आकार"
-
-#~ msgid "Circle Size"
-#~ msgstr "सर्कल आकार"
-
-#~ msgid "Button Size"
-#~ msgstr "बटन आकार"
-
-#~ msgid "Icons"
-#~ msgstr "आइकन"
-
-#~ msgid "LinkedIn"
-#~ msgstr "LinkedIn"
-
-#~ msgid "Tumblr"
-#~ msgstr "Tumblr"
-
-#~ msgid "Google"
-#~ msgstr "Google"
-
-#~ msgid "Reddit"
-#~ msgstr "Reddit"
-
-#~ msgid "Share button colors are enabled."
-#~ msgstr "साझा करें बटन के रंग सक्षम कर दिया गया है."
-
-#~ msgid "Toggle to use official colors from each social media platform."
-#~ msgstr ""
-#~ "प्रत्येक सामाजिक मीडिया प्लेटफ़ॉर्म से आधिकारिक रंगों का उपयोग करने के लिए टॉगल करें."
-
-#~ msgid "Add Facebook Profile"
-#~ msgstr "Facebook प्रोफ़ाइल जोड़ें"
-
-#~ msgid "https://facebook.com/"
-#~ msgstr "https://facebook.com/"
-
-#~ msgid "Add Twitter Profile"
-#~ msgstr "Twitter प्रोफ़ाइल जोड़ें"
-
-#~ msgid "https://twitter.com/"
-#~ msgstr "https://twitter.com/"
-
-#~ msgid "Add Instagram Profile"
-#~ msgstr "Instagram प्रोफ़ाइल जोड़ें"
-
-#~ msgid "https://instagram.com/"
-#~ msgstr "https://instagram.com/"
-
-#~ msgid "Add Pinterest Profile"
-#~ msgstr "Pinterest प्रोफ़ाइल जोड़ें"
-
-#~ msgid "https://pinterest.com/"
-#~ msgstr "https://pinterest.com/"
-
-#~ msgid "Add LinkedIn Profile"
-#~ msgstr "LinkedIn प्रोफ़ाइल जोड़ें"
-
-#~ msgid "https://linkedin.com/"
-#~ msgstr "https://linkedin.com/"
-
-#~ msgid "Add YouTube Profile"
-#~ msgstr "YouTube प्रोफ़ाइल जोड़ें"
-
-#~ msgid "https://youtube.com/"
-#~ msgstr "https://youtube.com/"
-
-#~ msgid "Add Yelp Profile"
-#~ msgstr "Yelp प्रोफ़ाइल जोड़ें"
-
-#~ msgid "https://yelp.com/"
-#~ msgstr "https://yelp.com/"
-
-#~ msgid "Add Houzz Profile"
-#~ msgstr "Houzz प्रोफ़ाइल जोड़ें"
-
-#~ msgid "https://houzz.com/"
-#~ msgstr "https://houzz.com/"
-
-#, fuzzy
-#~ msgid "Grow your audience with links to social media profiles."
-#~ msgstr "सामाजिक मीडिया प्रोफ़ाइल के लिंक प्रदर्शित करें."
-
-#~ msgid "Profile Links"
-#~ msgstr "प्रोफ़ाइल लिंक"
-
-#~ msgid "Edit Background"
-#~ msgstr "पृष्ठभूमि संपादित करें"
-
-#~ msgid "Remove Background"
-#~ msgstr "पृष्ठभूमि निकालें"
-
-#~ msgid "Background"
-#~ msgstr "पृष्ठभूमि"
-
-#~ msgid "Background Settings"
-#~ msgstr "पृष्ठभूमि सेटिंग्स"
-
-#~ msgid "Fixed Background"
-#~ msgstr "निश्चित पृष्ठभूमि"
-
-#~ msgid "Background Opacity"
-#~ msgstr "पृष्ठभूमि अस्पष्टता"
-
-#~ msgid "Repeat"
-#~ msgstr "दोहराएं"
-
-#~ msgid "Position"
-#~ msgstr "स्थिति"
-
-#~ msgid "Display"
-#~ msgstr "प्रदर्शित करें"
-
-#~ msgid "Mute Video"
-#~ msgstr "वीडियो म्यूट करें"
-
-#~ msgid "Muting the background video."
-#~ msgstr "पृष्ठभूमि वीडियो म्यूट करना."
-
-#~ msgid "Toggle to mute the video."
-#~ msgstr "वीडियो म्यूट करने के लिए टॉगल करें."
-
-#~ msgid "Loop Video"
-#~ msgstr "लूप वीडियो"
-
-#~ msgid "Looping the background video."
-#~ msgstr "पृष्ठभूमि वीडियो लूप करना."
-
-#~ msgid "Toggle to loop the video."
-#~ msgstr "वीडियो लूप करने के लिए टॉगल करें."
-
-#~ msgid "Remove background"
-#~ msgstr "पृष्ठभूमि निकालें"
-
-#~ msgid "Remove "
-#~ msgstr "निकालें "
-
-#~ msgid "Move Image Backward"
-#~ msgstr "छवि को पीछे ले जाएं"
-
-#~ msgid "Move Image Forward"
-#~ msgstr "छवि को आगे ले जाएं"
-
-#~ msgid "Link To"
-#~ msgstr "इससे लिंक करें"
-
-#~ msgid "%s Gallery"
-#~ msgstr "%s गैलरी"
-
-#~ msgid "Upload an image"
-#~ msgstr "कोई छवि अपलोड करें"
-
-#~ msgid "Media File"
-#~ msgstr "मीडिया फ़ाइल"
-
-#~ msgid "Attachment Page"
-#~ msgstr "अटैचमेंट पेज"
-
-#~ msgid "Custom URL"
-#~ msgstr "कस्टम URL"
-
-#, fuzzy
-#~ msgid "Image Orientation"
-#~ msgstr "अभिविन्यास"
-
-#, fuzzy
-#~ msgid "Reset All"
-#~ msgstr "रीसेट करें"
-
-#~ msgid "Select Units"
-#~ msgstr "यूनिट चुनें"
-
-#~ msgid "%s Units"
-#~ msgstr "%s यूनिट"
-
-#~ msgid "Turn off advanced %s settings"
-#~ msgstr "उन्नत %s सेटिंग्स बंद करें"
-
-#~ msgid "%s Top"
-#~ msgstr "%s शीर्ष"
-
-#~ msgid "%s Right"
-#~ msgstr "%s दाएं"
-
-#~ msgid "%s Bottom"
-#~ msgstr "%s नीचे"
-
-#~ msgid "%s Left"
-#~ msgstr "%s बाएं"
-
-#~ msgid "Unsync"
-#~ msgstr "सिंक न करें"
-
-#~ msgid "Sync"
-#~ msgstr "सिंक करें"
-
-#~ msgid "Sync Units"
-#~ msgstr "यूनिट सिंक करें"
-
-#~ msgid "Top"
-#~ msgstr "शीर्ष"
-
-#~ msgid "Right"
-#~ msgstr "दाएं"
-
-#~ msgid "Bottom"
-#~ msgstr "नीचे"
-
-#~ msgid "Left"
-#~ msgstr "बाएं"
-
-#~ msgid "Advanced %s settings"
-#~ msgstr "उन्नत %s सेटिंग"
-
-#~ msgid "Advanced"
-#~ msgstr "उन्नत"
-
-#~ msgid "Default"
-#~ msgstr "डिफ़ॉल्ट"
-
-#~ msgid "Layout"
-#~ msgstr "लेआउट"
-
-#~ msgid "Select Layout"
-#~ msgstr "लेआउट चुनें"
-
-#~ msgid "Fullscreen"
-#~ msgstr "पूर्णस्क्रीन"
-
-#~ msgid "Fullscreen mode is enabled."
-#~ msgstr "पूर्णस्क्रीन मोड सक्षम है."
-
-#~ msgid "Toggle to enable fullscreen mode."
-#~ msgstr "पूर्णस्क्रीन मोड सक्षम करने के लिए टॉगल करें."
-
-# %s: heading level e.g: "1", "2", "3"
-#~ msgid "Heading %d"
-#~ msgstr "%d शीर्षक"
-
-#~ msgid "Custom color picker"
-#~ msgstr "कस्टम रंग पिकर"
-
-#~ msgid "Apply filter"
-#~ msgstr "फ़िल्टर लागू करें"
-
-#~ msgid "Height"
-#~ msgstr "उँचाई"
-
-# Control name
-#~ msgid "Mobile %s"
-#~ msgstr "%s मोबाइल"
-
-#~ msgid "Select Size"
-#~ msgstr "आकार चुनें"
-
-#~ msgid "Extra Large"
-#~ msgstr "अधिक बड़ा"
-
-#~ msgid "One Second"
-#~ msgstr "एक सेकंड"
-
-#~ msgid "Two Seconds"
-#~ msgstr "दो सेकंड"
-
-#~ msgid "Three Seconds"
-#~ msgstr "तीन सेकंड"
-
-#~ msgid "Four Seconds"
-#~ msgstr "चार सेकंड"
-
-#~ msgid "Five Seconds"
-#~ msgstr "पाँच सेकंड"
-
-#, fuzzy
-#~ msgid "Six Seconds"
-#~ msgstr "छह सेकंड"
-
-#~ msgid "Seven Seconds"
-#~ msgstr "सात सेकंड"
-
-#~ msgid "Eight Seconds"
-#~ msgstr "आठ सेकंड"
-
-#~ msgid "Nine Seconds"
-#~ msgstr "नौ सेकंड"
-
-#~ msgid "Ten Seconds"
-#~ msgstr "दस सेकंड"
-
-#~ msgid "Arrow Navigation"
-#~ msgstr "तीर नेविगेशन"
-
-#~ msgid "Dot Navigation"
-#~ msgstr "डॉट नेविगेशन"
-
-#~ msgid "seconds"
-#~ msgstr "सेकंड"
-
-#~ msgid "second"
-#~ msgstr "सेकंड"
-
-# 1. Speed of the slider, 2: Time until the slide advances
-#~ msgid "Advancing after %1$d %2$s."
-#~ msgstr "%1$d %2$s के बाद.आगे बढ़ना."
-
-# 1. Speed of the slider, 2: Time until the slide advances
-#~ msgid "Automatically advance to the next slide."
-#~ msgstr "स्वचालित रूप से अगली स्लाइड पर जाएं."
-
-#, fuzzy
-#~ msgid "Dragging and flicking enabled."
-#~ msgstr "डेस्कटॉप और मोबाइल डिवाइस पर खींचना और फ़्लिक सक्षम करना."
-
-#, fuzzy
-#~ msgid "Toggle to enable drag functionality."
-#~ msgstr ""
-#~ "डेस्कटॉप और मोबाइल डिवाइस पर किसी चीज़ को खींच कर ले जाने की कार्यक्षमता को सक्षम "
-#~ "करने के लिए टॉगल करें."
-
-#~ msgid "Showing slide navigation arrows."
-#~ msgstr "स्लाइड नेविगेशन तीर दिखाना."
-
-#~ msgid "Toggle to show slide navigation arrows."
-#~ msgstr "स्लाइड नेविगेशन तीर दिखाने के लिए टॉगल करें."
-
-#, fuzzy
-#~ msgid "Showing dot navigation."
-#~ msgstr "डॉट नेविगेशन तीर दिखाना."
-
-#~ msgid "Toggle to show dot navigation."
-#~ msgstr "डॉट नेविगेशन दिखाने के लिए टॉगल करें."
-
-#, fuzzy
-#~ msgid "Aligning slides to the center."
-#~ msgstr "कंटेनर के अंदर जगह."
-
-#, fuzzy
-#~ msgid "Toggle to pause autoplay when hovered."
-#~ msgstr "वीडियो म्यूट करने के लिए टॉगल करें."
-
-#, fuzzy
-#~ msgid "Toggle to scroll without fixed slides."
-#~ msgstr "वीडियो लूप करने के लिए टॉगल करें."
-
-#~ msgid "Slider Settings"
-#~ msgstr "स्लाइडर सेटिंग्स"
-
-#~ msgid "Autoplay"
-#~ msgstr "ऑटोप्ले"
-
-#~ msgid "Transition Speed"
-#~ msgstr "लेनदेन गति"
-
-#~ msgid "Draggable"
-#~ msgstr "खींचने योग्य"
-
-#~ msgid "Font"
-#~ msgstr "फ़ॉन्ट"
-
-#~ msgid "Weight"
-#~ msgstr "भार"
-
-#~ msgid "Transform"
-#~ msgstr "परिवर्तन"
-
-#~ msgid "Line Height"
-#~ msgstr "लाइन उँचाई"
-
-#~ msgid "Letter Spacing"
-#~ msgstr "लेटर स्पेसिंग"
-
-#~ msgid "No Top Spacing"
-#~ msgstr "कोई टॉप स्पेसिंग नहीं"
-
-#~ msgid "No Bottom Spacing"
-#~ msgstr "कोई बॉटम स्पेसिंग नहीं"
-
-#~ msgid "Change typography"
-#~ msgstr "टाइपोग्राफ़ी बदलें"
-
-#~ msgid "Stack on Mobile"
-#~ msgstr "मोबाइल पर स्टैक"
-
-#~ msgid "Responsiveness is enabled."
-#~ msgstr "प्रतिक्रिया देना सक्षम है."
-
-#~ msgid "Toggle to stack elements on top of each other on smaller viewports."
-#~ msgstr "छोटे व्यूपोर्ट पर एक दूसरे के ऊपर तत्वों को स्टैक करने के लिए टॉगल करें."
-
-#~ msgid "Remove Top Spacing"
-#~ msgstr "शीर्ष स्पेसिंग निकालें"
-
-#, fuzzy
-#~ msgid "Toggle to add top margin back."
-#~ msgstr "कार्ड शैडो जोड़ने के लिए टॉगल करें."
-
-#, fuzzy
-#~ msgid "Toggle to remove any top margin."
-#~ msgstr "डॉट नेविगेशन दिखाने के लिए टॉगल करें."
-
-#~ msgid "Remove Bottom Spacing"
-#~ msgstr "नीचे स्पेसिंग निकालें"
-
-#, fuzzy
-#~ msgid "Toggle to add bottom margin back."
-#~ msgstr "कार्ड शैडो जोड़ने के लिए टॉगल करें."
-
-#, fuzzy
-#~ msgid "Toggle to remove any bottom margin."
-#~ msgstr "डॉट नेविगेशन दिखाने के लिए टॉगल करें."
-
-#~ msgid "Display Fullwidth"
-#~ msgstr "पूर्ण चौड़ाई प्रदर्शित करें"
-
-#~ msgid "Displaying as full width."
-#~ msgstr "पूर्ण चौड़ाई के रूप में प्रदर्शित करना."
-
-#~ msgid "Toggle to display button as full width."
-#~ msgstr "पूर्ण चौड़ाई के रूप में बटन प्रदर्शित करने के लिए टॉगल करें."
-
-#, fuzzy
-#~ msgid "Crop Settings"
-#~ msgstr "हीरो सेटिंग्स"
-
-#~ msgid "Uppercase"
-#~ msgstr "बड़ा अक्षर"
-
-#~ msgid "Manage Blocks"
-#~ msgstr "ब्लॉक प्रबंधित करें"
-
-#~ msgid "Block Manager"
-#~ msgstr "ब्लॉक प्रबंधक"
-
-#~ msgid "Close"
-#~ msgstr "बंद करें"
-
-#~ msgid "Search for a block"
-#~ msgstr "ब्लॉक खोजें"
-
-#~ msgid "This block is added to the page and cannot currently be disabled"
-#~ msgstr "यह ब्लॉक पेज पर जोड़ा जाता है और वर्तमान में इसे अक्षम नहीं किया जा सकता है"
-
-#~ msgid "Disable all"
-#~ msgstr "सभी अक्षम करें‌‌"
-
-#~ msgid "No \"%s\" blocks found."
-#~ msgstr "कोई \"%s\" ब्लॉक मिले."
-
-#~ msgid "%s Galleries"
-#~ msgstr "%s गैलरीज़"
-
-#, fuzzy
-#~ msgctxt "Toggle label to display the accordion open"
-#~ msgid "Display open"
-#~ msgstr "प्रदर्शन खुला"
-
-#, fuzzy
-#~ msgctxt "Accordion is the block name"
-#~ msgid "Add accordion title..."
-#~ msgstr "एकॉर्डियन शीर्षक जोड़ें..."
-
-#, fuzzy
-#~ msgctxt "This is an inner block for the Accordion Block."
-#~ msgid "Accordion Item"
-#~ msgstr "एकॉर्डियन आइटम"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "tabs"
-#~ msgstr "टैब्स"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "faq"
-#~ msgstr "सामान्य प्रश्न"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "notice"
-#~ msgstr "सूचना"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "message"
-#~ msgstr "संदेश"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "biography"
-#~ msgstr "बायोग्राफ़ी"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "profile"
-#~ msgstr "प्रोफ़ाइल"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "link"
-#~ msgstr "लिंक"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "cta"
-#~ msgstr "cta"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "share"
-#~ msgstr "साझा करें"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "twitter"
-#~ msgstr "twitter"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "spacer"
-#~ msgstr "स्पेसर"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "services"
-#~ msgstr "सेवाएँ"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "menu"
-#~ msgstr "मेनू"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "restaurant"
-#~ msgstr "रेस्तरां"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "e-mail"
-#~ msgstr "ई-मेल"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "mail"
-#~ msgstr "मेल"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "last name"
-#~ msgstr "अंतिम नाम"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "Textarea"
-#~ msgstr "टेक्स्ट क्षेत्र"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "Multiline text"
-#~ msgstr "मल्टीलाइन पाठ"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "email"
-#~ msgstr "ईमेल"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "about"
-#~ msgstr "इसके बारे में"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "contact"
-#~ msgstr "संपर्क"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "gallery"
-#~ msgstr "गैलरी"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "photos"
-#~ msgstr "फ़ोटो"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "lightbox"
-#~ msgstr "रात"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "animated"
-#~ msgstr "एनीमेटेड"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "code"
-#~ msgstr "कोड"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "button"
-#~ msgstr "बटन"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "call to action"
-#~ msgstr "कार्रवाई के लिए कॉल करें"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "text"
-#~ msgstr "पाठ"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "paragraph"
-#~ msgstr "पैराग्राफ़"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "icons"
-#~ msgstr "आइकन"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "clients"
-#~ msgstr "क्लायंट्स"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "proof"
-#~ msgstr "प्रमाण"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "testimonials"
-#~ msgstr "विवरण"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "address"
-#~ msgstr "पता"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "maps"
-#~ msgstr "मैप"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "google"
-#~ msgstr "google"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "image"
-#~ msgstr "छवि"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "video"
-#~ msgstr "वीडियो"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "rss"
-#~ msgstr "पता"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "landing"
-#~ msgstr "लैंडिंग"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "comparison"
-#~ msgstr "तुलना करें"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "rows"
-#~ msgstr "पंक्तियां"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "columns"
-#~ msgstr "स्तंभ"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "layouts"
-#~ msgstr "लेआउट"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "features"
-#~ msgstr "सुविधाएं"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "separator"
-#~ msgstr "सेपरेटर"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "social"
-#~ msgstr "सामाजिक"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "links"
-#~ msgstr "लिंक"
-
-#, fuzzy
-#~ msgctxt "Visually display open as opposed to closed."
-#~ msgid "Display Open"
-#~ msgstr "प्रदर्शन खुला"
-
-#, fuzzy
-#~ msgctxt "Add a child element for the Accordion block"
-#~ msgid "Add Accordion Item"
-#~ msgstr "एकॉर्डियन आइटम जोड़ें"
-
-#, fuzzy
-#~ msgctxt "block title"
-#~ msgid "Accordion"
-#~ msgstr "एकॉर्डियन"
-
-#, fuzzy
-#~ msgctxt "Placeholder text for input box"
-#~ msgid "Write text..."
-#~ msgstr "पाठ लिखें..."
-
-#, fuzzy
-#~ msgctxt "Placeholder text for input box"
-#~ msgid "Write title..."
-#~ msgstr "शीर्षक लिखें..."
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Alert"
-#~ msgstr "अलर्ट"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Author"
-#~ msgstr "लेखक"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Buttons"
-#~ msgstr "बटन"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Click to Tweet"
-#~ msgstr "ट्वीट करने के लिए क्लिक करें"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Dynamic HR"
-#~ msgstr "डायनमिक HR"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Feature"
-#~ msgstr "सुविधा"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Features"
-#~ msgstr "सुविधाएं"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Food Item"
-#~ msgstr "खाद्य पदार्थ"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Food & Drinks"
-#~ msgstr "भोजन और पेय"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Email"
-#~ msgstr "ईमेल"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Name"
-#~ msgstr "नाम"
 
 #, fuzzy
 #~ msgctxt "block name"
@@ -2116,1085 +4576,8 @@ msgstr "Houzz"
 #~ msgstr "संदेश"
 
 #, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Form"
-#~ msgstr "फ़ॉर्म"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Carousel"
-#~ msgstr "कैरोसल"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Masonry"
-#~ msgstr "मिस्त्री"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Stacked"
-#~ msgstr "स्टैक किया गया"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Gist"
-#~ msgstr "Gist URL"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Hero"
-#~ msgstr "हीरो"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Highlight"
-#~ msgstr "हाइलाइट"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Icon"
-#~ msgstr "आइकन"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Logos & Badges"
-#~ msgstr "लोगो और बैज"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Map"
-#~ msgstr "मैप"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Media Card"
-#~ msgstr "मीडिया कार्ड"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Post Carousel"
-#~ msgstr "कैरोसल"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Pricing Table"
-#~ msgstr "मूल्य निर्धारण तालिका"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Pricing Table Item"
-#~ msgstr "मूल्य निर्धारण तालिका आइटम"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Column"
-#~ msgstr "कॉलम"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Row"
-#~ msgstr "पंक्ति"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Services"
-#~ msgstr "सेवाएं"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Service"
-#~ msgstr "सेवा"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Shape Divider"
-#~ msgstr "शेप डिवाइडर"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Share"
-#~ msgstr "साझा करें"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Social Profiles"
-#~ msgstr "सामाजिक प्रोफ़ाइल"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Info"
-#~ msgstr "जानकारी"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Success"
-#~ msgstr "सफल"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Warning"
-#~ msgstr "चेतावनी"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Error"
-#~ msgstr "त्रुटि"
-
-#~ msgctxt "block style"
-#~ msgid "Dot"
-#~ msgstr "डॉट"
-
-#~ msgctxt "block style"
-#~ msgid "Line"
-#~ msgstr "लाइन"
-
-#~ msgctxt "block style"
-#~ msgid "Fullwidth"
-#~ msgstr "पूर्ण-चौड़ाई"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Grid"
-#~ msgstr "ग्रिड"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "List"
-#~ msgstr "सूची"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Default"
-#~ msgstr "डिफ़ॉल्ट"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Layered"
-#~ msgstr "लेयर्स"
-
-#~ msgctxt "block style"
-#~ msgid "Outlined"
-#~ msgstr "आउटलाइन किया गया"
-
-#~ msgctxt "block style"
-#~ msgid "Filled"
-#~ msgstr "फ़िल्ड"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Stacked"
-#~ msgstr "स्टैक किया गया"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Horizontal"
-#~ msgstr "क्षैतिज रूप से दोहराएं"
-
-#~ msgctxt "block style"
-#~ msgid "Wavy"
-#~ msgstr "वेवी"
-
-#~ msgctxt "block style"
-#~ msgid "Hills"
-#~ msgstr "हिल्स"
-
-#~ msgctxt "block style"
-#~ msgid "Waves"
-#~ msgstr "वेव्स"
-
-#~ msgctxt "block style"
-#~ msgid "Angled"
-#~ msgstr "एंगल्ड"
-
-#~ msgctxt "block style"
-#~ msgid "Sloped"
-#~ msgstr "स्लोप्ड"
-
-#~ msgctxt "block style"
-#~ msgid "Rounded"
-#~ msgstr "राउंडेड"
-
-#~ msgctxt "block style"
-#~ msgid "Triangle"
-#~ msgstr "ट्राएंगल"
-
-#~ msgctxt "block style"
-#~ msgid "Pointed"
-#~ msgstr "पॉइंटेड"
-
-#~ msgctxt "block style"
-#~ msgid "Mask"
-#~ msgstr "मास्क"
-
-#~ msgctxt "block style"
-#~ msgid "Icon"
-#~ msgstr "आइकन"
-
-#~ msgctxt "block style"
-#~ msgid "Text"
-#~ msgstr "पाठ"
-
-#~ msgctxt "block style"
-#~ msgid "Icon & Text"
-#~ msgstr "आइकन और पाठ"
-
-#~ msgctxt "block style"
-#~ msgid "Circular"
-#~ msgstr "सर्कुलर"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Bottom Wave"
-#~ msgstr "नीचे बायां"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Top Wave"
-#~ msgstr "शीर्ष बायां"
-
-#, fuzzy
-#~ msgctxt "image to represent the post author"
-#~ msgid "Drop to upload as avatar"
-#~ msgstr "अवतार के रूप में जोड़ने के लिए छोड़ें"
-
-#, fuzzy
-#~ msgctxt "content placeholder"
-#~ msgid "Author link…"
-#~ msgstr "लेखक"
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add feature title..."
-#~ msgstr "फ़ीचर टाइटल जोड़ें..."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Feature Title"
-#~ msgstr "फ़ीचर टाइटल"
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add feature content"
-#~ msgstr "फ़ीचर कंटेंट जोड़ें..."
-
-#~ msgctxt "content placeholder"
-#~ msgid "This is a feature block that you can use to highlight features."
-#~ msgstr ""
-#~ "यह ऐसी फ़ीचर ब्लॉक है जिसका उपयोग आप सुविधाओं को हाइलाइट करने के लिए कर सकते हैं."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add heading..."
-#~ msgstr "शीर्षक जोड़ें..."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Media Card"
-#~ msgstr "मीडिया कार्ड"
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add content..."
-#~ msgstr "सामग्री जोड़ें..."
-
-#~ msgctxt "content placeholder"
-#~ msgid ""
-#~ "Replace this text with descriptive copy to go along with the card image. "
-#~ "Then add more blocks to this card, such as buttons, lists or images."
-#~ msgstr ""
-#~ "कार्ड छवि के साथ साथ जाने के लिए वर्णनात्मक प्रतिलिपि के साथ इस पाठ को बदलें. फिर "
-#~ "इस कार्ड में और ब्लॉक जोड़ें, जैसे बटन, सूची या छवियां."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Write title..."
-#~ msgstr "शीर्षक लिखें..."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Write description..."
-#~ msgstr "वर्णन लिखें..."
-
-#, fuzzy
-#~ msgctxt "block settings"
-#~ msgid "Buttons Settings"
-#~ msgstr "बटन सेटिंग्स"
-
-#, fuzzy
-#~ msgctxt "visually stack buttons one on top of another"
-#~ msgid "Stack on mobile"
-#~ msgstr "मोबाइल पर स्टैक"
-
-#, fuzzy
-#~ msgctxt "hr is html markup - horizonal rule"
-#~ msgid "Dynamic HR Settings"
-#~ msgstr "डायनमिक HR सेटिंग्स"
-
-#, fuzzy
-#~ msgctxt "label for no gutter option"
-#~ msgid "None"
-#~ msgstr "कोई नहीं"
-
-#, fuzzy
-#~ msgctxt "abbreviation for \"Short\" size"
-#~ msgid "None"
-#~ msgstr "कोई नहीं"
-
-#, fuzzy
-#~ msgctxt "label for small gutter option"
-#~ msgid "Small"
-#~ msgstr "छोटा"
-
-#, fuzzy
-#~ msgctxt "label for medium gutter option"
-#~ msgid "Medium"
-#~ msgstr "मध्यम"
-
-#, fuzzy
-#~ msgctxt "label for large gutter option"
-#~ msgid "Large"
-#~ msgstr "बड़ा"
-
-#, fuzzy
-#~ msgctxt "label for extra large gutter option"
-#~ msgid "Extra Large"
-#~ msgstr "अधिक बड़ा"
-
-#, fuzzy
-#~ msgctxt "label for no shadow option"
-#~ msgid "None"
-#~ msgstr "कोई नहीं"
-
-#, fuzzy
-#~ msgctxt "label for small shadow option"
-#~ msgid "Small"
-#~ msgstr "छोटा"
-
-#, fuzzy
-#~ msgctxt "label for medium shadow option"
-#~ msgid "Medium"
-#~ msgstr "मध्यम"
-
-#, fuzzy
-#~ msgctxt "label for large shadow option"
-#~ msgid "Large"
-#~ msgstr "बड़ा"
-
-#~ msgctxt "label"
-#~ msgid "Add Circle"
-#~ msgstr "सर्कल जोड़ें"
-
-#~ msgctxt "label"
-#~ msgid "Minus Circle"
-#~ msgstr "माइनस सर्कल"
-
-#~ msgctxt "label"
-#~ msgid "Pie Chart"
-#~ msgstr "पाइ चार्ट"
-
-#~ msgctxt "label"
-#~ msgid "Scatter Plot"
-#~ msgstr "स्कैटर प्लॉट"
-
-#~ msgctxt "label"
-#~ msgid "Poll"
-#~ msgstr "पोल"
-
-#~ msgctxt "label"
-#~ msgid "Emoticon"
-#~ msgstr "इमोटिकॉन"
-
-#~ msgctxt "label"
-#~ msgid "Functions"
-#~ msgstr "फ़ंक्शन"
-
-#~ msgctxt "label"
-#~ msgid "CoBlocks"
-#~ msgstr "CoBlocks"
-
-#~ msgctxt "label"
-#~ msgid "Doodle"
-#~ msgstr "डूडल"
-
-#~ msgctxt "label"
-#~ msgid "Font"
-#~ msgstr "फ़ॉन्ट"
-
-#~ msgctxt "label"
-#~ msgid "Heart"
-#~ msgstr "हार्ट"
-
-#~ msgctxt "label"
-#~ msgid "Star"
-#~ msgstr "स्टार"
-
-#~ msgctxt "label"
-#~ msgid "Desktop"
-#~ msgstr "डेस्कटॉप"
-
-#~ msgctxt "label"
-#~ msgid "Devices"
-#~ msgstr "डिवाइस"
-
-#~ msgctxt "label"
-#~ msgid "Laptop"
-#~ msgstr "लैपटॉप"
-
-#~ msgctxt "label"
-#~ msgid "Tablet"
-#~ msgstr "टैबलेट"
-
-#~ msgctxt "label"
-#~ msgid "Watch"
-#~ msgstr "देखें"
-
-#~ msgctxt "label"
-#~ msgid "Audio"
-#~ msgstr "ऑडियो"
-
-#~ msgctxt "label"
-#~ msgid "Keyboard"
-#~ msgstr "कीबोर्ड"
-
-#~ msgctxt "label"
-#~ msgid "Hub"
-#~ msgstr "हब"
-
-#~ msgctxt "label"
-#~ msgid "Email"
-#~ msgstr "ईमेल"
-
-#~ msgctxt "label"
-#~ msgid "Reply"
-#~ msgstr "प्रत्युत्तर"
-
-#~ msgctxt "label"
-#~ msgid "Send"
-#~ msgstr "भेजें"
-
-#~ msgctxt "label"
-#~ msgid "Signal"
-#~ msgstr "सिग्नल"
-
-#~ msgctxt "label"
-#~ msgid "Blocks"
-#~ msgstr "ब्लॉक"
-
-#~ msgctxt "label"
-#~ msgid "Marker"
-#~ msgstr "मार्कर"
-
-#~ msgctxt "label"
-#~ msgid "Mountains"
-#~ msgstr "माउंटेन"
-
-#~ msgctxt "label"
-#~ msgid "Waves"
-#~ msgstr "वेव्स"
-
-#~ msgctxt "label"
-#~ msgid "Album"
-#~ msgstr "एल्बम"
-
-#~ msgctxt "label"
-#~ msgid "Globe"
-#~ msgstr "ग्लोब"
-
-#~ msgctxt "label"
-#~ msgid "City"
-#~ msgstr "शहर"
-
-#~ msgctxt "label"
-#~ msgid "Dining"
-#~ msgstr "डाइनिंग"
-
-#~ msgctxt "label"
-#~ msgid "Couch"
-#~ msgstr "काउच"
-
-#~ msgctxt "label"
-#~ msgid "Cake"
-#~ msgstr "केक"
-
-#~ msgctxt "label"
-#~ msgid "Flower"
-#~ msgstr "फ़्लावर"
-
-#~ msgctxt "label"
-#~ msgid "Vintage Filter"
-#~ msgstr "विंटेज फ़िल्टर"
-
-#~ msgctxt "label"
-#~ msgid "Build"
-#~ msgstr "बनाएं"
-
-#~ msgctxt "label"
-#~ msgid "Credit Card"
-#~ msgstr "क्रेडिट कार्ड"
-
-#~ msgctxt "label"
-#~ msgid "Extension"
-#~ msgstr "एक्सटेंशन"
-
-#~ msgctxt "label"
-#~ msgid "Fingerprint"
-#~ msgstr "फ़िंगरप्रिंट"
-
-#~ msgctxt "label"
-#~ msgid "Headset"
-#~ msgstr "हेडसेट"
-
-#~ msgctxt "label"
-#~ msgid "Translate"
-#~ msgstr "अनुवाद करें"
-
-#~ msgctxt "label"
-#~ msgid "New"
-#~ msgstr "नया"
-
-#~ msgctxt "label"
-#~ msgid "Flare"
-#~ msgstr "फ़्लेयर"
-
-#~ msgctxt "label"
-#~ msgid "Layers"
-#~ msgstr "लेयर्स"
-
-#~ msgctxt "label"
-#~ msgid "Shipping"
-#~ msgstr "शिपिंग"
-
-#~ msgctxt "label"
-#~ msgid "Snowflake"
-#~ msgstr "स्नोफ़्लैक"
-
-#~ msgctxt "label"
-#~ msgid "School"
-#~ msgstr "स्कूल"
-
-#~ msgctxt "label"
-#~ msgid "Fire"
-#~ msgstr "फ़ायर"
-
-#~ msgctxt "label"
-#~ msgid "Update"
-#~ msgstr "अपडेट"
-
-#~ msgctxt "label"
-#~ msgid "Volume"
-#~ msgstr "वॉल्यूम"
-
-#~ msgctxt "label"
-#~ msgid "Voice"
-#~ msgstr "वॉइस"
-
-#~ msgctxt "label"
-#~ msgid "Aperture"
-#~ msgstr "अप्रचर"
-
-#~ msgctxt "label"
-#~ msgid "Camera"
-#~ msgstr "कैमरा"
-
-#~ msgctxt "label"
-#~ msgid "Gallery"
-#~ msgstr "गैलरी"
-
-#~ msgctxt "label"
-#~ msgid "Video"
-#~ msgstr "वीडियो"
-
-#~ msgctxt "label"
-#~ msgid "Film"
-#~ msgstr "फ़िल्म"
-
-#~ msgctxt "label"
-#~ msgid "Color Lens"
-#~ msgstr "कलर लेंस"
-
-#~ msgctxt "label"
-#~ msgid "Color Picker"
-#~ msgstr "कलर पिकर"
-
-#~ msgctxt "label"
-#~ msgid "Paint"
-#~ msgstr "पैंट"
-
-#~ msgctxt "label"
-#~ msgid "Brush"
-#~ msgstr "ब्रश"
-
-#~ msgctxt "tags"
-#~ msgid "add minus circle insert plus round math"
-#~ msgstr "माइनस सर्कल इंसर्ट प्लस राउंड मैथ जोड़ें"
-
-#~ msgctxt "tags"
-#~ msgid "stats round circle pie chart graph"
-#~ msgstr "स्टैट्स राउंड सर्कल पाई चार्ट ग्राफ़"
-
-#~ msgctxt "tags"
-#~ msgid "stats round circle pie chart graph dots data"
-#~ msgstr "स्टैट्स राउंड सर्कल पाई चार्ट ग्राफ़ डॉट डेटा"
-
-#~ msgctxt "tags"
-#~ msgid "chart graph stats data graph"
-#~ msgstr "चार्ट ग्राफ़ स्टैट्स डेटा ग्राफ़"
-
-#~ msgctxt "tags"
-#~ msgid "happy emotion emoticon smile fun joy"
-#~ msgstr "खुश, भावना, इमोटिकॉन, मुस्कान, आनंद, मज़ा"
-
-#~ msgctxt "tags"
-#~ msgid "code greek math"
-#~ msgstr "कोड ग्रीक मैथ"
-
-#~ msgctxt "tags"
-#~ msgid "drawing doodle art creative type font pencil marker"
-#~ msgstr "ड्राइंग डूडल आर्ट क्रिएटिव टाइप फॉन्ट पेंसिल मार्कर"
-
-#~ msgctxt "tags"
-#~ msgid "blocks block build gutenberg design"
-#~ msgstr "ब्लॉक ब्लॉक बिल्ड गुटेनबर्ग डिज़ाइन"
-
-#~ msgctxt "tags"
-#~ msgid "love shape valentine kiss"
-#~ msgstr "प्यार के आकार वाला वेलेंटाइन किस"
-
-#~ msgctxt "tags"
-#~ msgid "rate vote plus favorite like"
-#~ msgstr "रेट वोट प्लस पसंदीदा पसंद"
-
-#~ msgctxt "tags"
-#~ msgid "computer apple montior device pc desk office"
-#~ msgstr "कंप्यूटर apple मॉनिटर डिवाइस पीसी डेस्क ऑफ़िस"
-
-#~ msgctxt "tags"
-#~ msgid "computer ipad surface apple montior device pc desk office"
-#~ msgstr "कंप्यूटर ipad सर्फ़ेस apple मॉनिटर डिवाइस पीसी डेस्क ऑफ़िस"
-
-#~ msgctxt "tags"
-#~ msgid "device apple mac"
-#~ msgstr "डिवाइस apple mac"
-
-#~ msgctxt "tags"
-#~ msgid "computer ipad surface apple device pc desk office"
-#~ msgstr "कंप्यूटर ipad सर्फ़ेस apple डिवाइस पीसी डेस्क ऑफ़िस"
-
-#~ msgctxt "tags"
-#~ msgid "usb connect hub device social"
-#~ msgstr "usb कनेक्ट हब डिवाइस सोशल"
-
-#~ msgctxt "tags"
-#~ msgid "music microphone podcast song artist creative media audio"
-#~ msgstr "संगीत माइक्रोफ़ोन पॉडकास्ट साँग आर्टिस्ट क्रिएटिव मीडिया ऑडियो"
-
-#~ msgctxt "tags"
-#~ msgid "email mail os read letter"
-#~ msgstr "ईमेल मेल ओएस पढ़ें लेटर"
-
-#~ msgctxt "tags"
-#~ msgid "wifi radio waves"
-#~ msgstr "वाईफ़ाई रेडियो वेव्स"
-
-#~ msgctxt "tags"
-#~ msgid "map directions about check checkbox"
-#~ msgstr "चेक चेकबॉक्स के बारे में मैप दिशानिर्देश"
-
-#~ msgctxt "tags"
-#~ msgid "hills landscape minimal outdoors outside"
-#~ msgstr "हिल्स लैंडस्कैप मिनिमल आउटडोर आउटसाइड"
-
-#~ msgctxt "tags"
-#~ msgid "ocean outside outdoors water fun summer minimal"
-#~ msgstr "समुद्र बाहर आउटडोर पानी मज़ा गर्मी बहुत कम"
-
-#~ msgctxt "tags"
-#~ msgid "world public global earth location map"
-#~ msgstr "विश्व सार्वजनिक वैश्विक पृथ्वी स्थान मैप"
-
-#~ msgctxt "tags"
-#~ msgid "location map public business corporation building town skyscraper"
-#~ msgstr "स्थान मैप सार्वजनिक बिज़नेस कॉर्पोरेशन इमारत शहर बहुत उँची इमारत"
-
-#~ msgctxt "tags"
-#~ msgid "food drink restaurant menu fork spoon taste"
-#~ msgstr "फ़ूड ड्रिंक रेस्ट्ररेंट मेनू फ़ोर्क स्पून टेस्ट"
-
-#~ msgctxt "tags"
-#~ msgid "weekend chill relax chair"
-#~ msgstr "सप्ताहांत चिल आराम कुर्सी"
-
-#~ msgctxt "tags"
-#~ msgid "fun party happy celebration taste food"
-#~ msgstr "मज़ा पार्टी खुशी सेलिब्रेशन स्वाद खाना"
-
-#~ msgctxt "tags"
-#~ msgid "petal scent smell nice relax landscape gardening outdoors outside"
-#~ msgstr "पेटल खुशबू महक अच्छा आराम परिदृश्य गार्डनिंग आउटडोर आउटसाइड"
-
-#~ msgctxt "tags"
-#~ msgid "blocks block box boxes square build widgets"
-#~ msgstr "ब्लॉक ब्लॉक बॉक्स बॉक्सेज़ स्कॉयर बिल्ड विजेट्स"
-
-#~ msgctxt "tags"
-#~ msgid "money cash checkout shop commerce ecommerce"
-#~ msgstr "मनी कैश चेकआउट शॉप कॉमर्स ईकॉमर्स"
-
-#~ msgctxt "tags"
-#~ msgid "puzzle plugin widget team together"
-#~ msgstr "पज़ल प्लगइन विजेट्स टीम एक-साथ"
-
-#~ msgctxt "tags"
-#~ msgid "security bio defense biometric safe secure"
-#~ msgstr "सुरक्षा बायो रक्षा बायोमेट्रिक सुरक्षा"
-
-#~ msgctxt "tags"
-#~ msgid "language global world speech"
-#~ msgstr "भाषा वैश्विक विश्व भाषण"
-
-#~ msgctxt "tags"
-#~ msgid "music microphone song artist creative media audio badge"
-#~ msgstr "संगीत माइक्रोफ़ोन पॉडकास्ट गाने कलाकार क्रिएटिव मीडिया ऑडियो बैज"
-
-#~ msgctxt "tags"
-#~ msgid "microphone audio beats bose headphones"
-#~ msgstr "माइक्रोफ़ोन ऑडियो बीट्स बोस हेडफ़ोन्स"
-
-#~ msgctxt "tags"
-#~ msgid "flower camera photography artist creative"
-#~ msgstr "फ़्लावर कैमरा फ़ोटोग्राफ़ी कलाकार क्रिएटिव"
-
-#~ msgctxt "tags"
-#~ msgid "design creative build develop engineer"
-#~ msgstr "डिज़ाइन क्रिएटिव बिल्ड डेवलप इंजीनियर"
-
-#~ msgctxt "tags"
-#~ msgid "shop commence ecommence woo cart ship"
-#~ msgstr "शॉप कॉमर्स ईकॉमर्स woo कार्ट शिप"
-
-#~ msgctxt "tags"
-#~ msgid "cold ice frozen chill winter season global"
-#~ msgstr "कोड आइस फ़्रोज़न सर्दियों का मौसम वैश्विक"
-
-#~ msgctxt "tags"
-#~ msgid "education graduate graduation degree diploma college"
-#~ msgstr "शिक्षा स्नातक स्नातक डिग्री डिप्लोमा कॉलेज"
-
-#~ msgctxt "tags"
-#~ msgid "hot trending trendy design"
-#~ msgstr "हॉट ट्रेंडिंग ट्रेंडी डिज़ाइन"
-
-#~ msgctxt "tags"
-#~ msgid "improve add upload software"
-#~ msgstr "बेहतर जोड़ें अपलोड सॉफ्टवेयर"
-
-#~ msgctxt "tags"
-#~ msgid "music microphone song artist creative media audio"
-#~ msgstr "संगीत माइक्रोफ़ोन गाने कलाकार रचनात्मक मीडिया ऑडियो"
-
-#~ msgctxt "tags"
-#~ msgid ""
-#~ "microphone podcast computer device music microphone song artist creative "
-#~ "media audio"
-#~ msgstr ""
-#~ "माइक्रोफ़ोन पॉडकास्ट कंप्यूटर डिवाइस संगीत माइक्रोफ़ोन गीत कलाकार रचनात्मक मीडिया "
-#~ "ऑडियो"
-
-#~ msgctxt "tags"
-#~ msgid "photo photographer photography camera film creative media"
-#~ msgstr "फ़ोटो फ़ोटोग्राफर फ़ोटोग्राफी कैमरा रचनात्मक मीडिया फ़िल्म"
-
-#~ msgctxt "tags"
-#~ msgid "photo photographer photography camera aperture film creative media"
-#~ msgstr "फ़ोटो फ़ोटोग्राफर फ़ोटोग्राफी कैमरा अप्रचर फ़िल्म रचनात्मक मीडिया"
-
-#~ msgctxt "tags"
-#~ msgid "photo photos image media camera aperture collection"
-#~ msgstr "फ़ोटो फ़ोटो छवि मीडिया कैमरा अपर्चर संग्रह"
-
-#~ msgctxt "tags"
-#~ msgid "film videography director producer media creative"
-#~ msgstr "फ़िल्म वीडियोग्राफी निर्देशक रचनात्मक मीडिया रचनात्मक"
-
-#~ msgctxt "tags"
-#~ msgid ""
-#~ "video videography director producer media creative camera photographer "
-#~ "photography aperture"
-#~ msgstr ""
-#~ "वीडियो वीडियोग्राफी निर्देशक रचनात्मक मीडिया रचनात्मक कैमरा फ़ोटोग्राफर फ़ोटोग्राफी "
-#~ "अपर्चर"
-
-#~ msgctxt "tags"
-#~ msgid "palette design colors artist paint creative media"
-#~ msgstr "पैलेट डिज़ाइन रंग कलाकार पेंट रचनात्मक मीडिया"
-
-#~ msgctxt "tags"
-#~ msgid "palette design colors artist creative media"
-#~ msgstr "पैलेट डिज़ाइन रंग कलाकार रचनात्मक मीडिया"
-
-#~ msgctxt "tags"
-#~ msgid "palette design colors artist creative media paint paintbrush"
-#~ msgstr "पैलेट डिज़ाइन रंग कलाकार रचनात्मक मीडिया पेंट पेंटब्रश"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Standard"
-#~ msgstr "मानक"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Silver"
-#~ msgstr "सिल्वर"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Retro"
-#~ msgstr "रेट्रो"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Dark"
-#~ msgstr "अंधेरा"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Night"
-#~ msgstr "रात"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Aubergine"
-#~ msgstr "बैंगनी"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Circular"
-#~ msgstr "सर्कुलर"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "3D"
-#~ msgstr "3D"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Shadow"
-#~ msgstr "शैडो"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Default"
-#~ msgstr "डिफ़ॉल्ट"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "None"
-#~ msgstr "कोई नहीं"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Checkbox"
-#~ msgstr "चेकबॉक्स"
-
-#, fuzzy
-#~ msgctxt "label for small size option"
-#~ msgid "Small"
-#~ msgstr "छोटा"
-
-#, fuzzy
-#~ msgctxt "label for medium size option"
-#~ msgid "Medium"
-#~ msgstr "मध्यम"
-
-#, fuzzy
-#~ msgctxt "label for large size option"
-#~ msgid "Large"
-#~ msgstr "बड़ा"
-
-#, fuzzy
-#~ msgctxt "label for large size option"
-#~ msgid "Extra Large"
-#~ msgstr "अधिक बड़ा"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Auto"
-#~ msgstr "ऑटो"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Cover"
-#~ msgstr "कवर"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Contain"
-#~ msgstr "शामिल"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Top Left"
-#~ msgstr "शीर्ष बायां"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Top Center"
-#~ msgstr "शीर्ष केंद्र"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Top Right"
-#~ msgstr "शीर्ष दायां"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Center Left"
-#~ msgstr "केंद्र बायां"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Center Center"
-#~ msgstr "केंद्र केंद्र"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Center Right"
-#~ msgstr "केंद्र दायां"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Bottom Left"
-#~ msgstr "नीचे बायां"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Bottom Center"
-#~ msgstr "नीचे केंद्र"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Bottom Right"
-#~ msgstr "नीचे दायां"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "No Repeat"
-#~ msgstr "कोई दोहराव नहीं"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Repeat"
-#~ msgstr "दोहराएं"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Repeat Horizontally"
-#~ msgstr "क्षैतिज रूप से दोहराएं"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Repeat Vertically"
-#~ msgstr "लंबवत रूप से दोहराएं"
-
-#, fuzzy
-#~ msgctxt ""
-#~ "HTML attribute that specifies the a relationship between the two pages."
-#~ msgid "Link Rel"
-#~ msgstr "लिंक Rel"
-
-#, fuzzy
-#~ msgctxt "visual style option"
-#~ msgid "Dark"
-#~ msgstr "अंधेरा"
-
-#, fuzzy
-#~ msgctxt "visual style option"
-#~ msgid "Light"
-#~ msgstr "प्रकाश"
-
-#, fuzzy
-#~ msgctxt "visual style option"
-#~ msgid "None"
-#~ msgstr "कोई नहीं"
-
-#, fuzzy
-#~ msgctxt "label for the control that allows zooming in on the image"
-#~ msgid "Image Zoom"
-#~ msgstr "छवि"
-
-#, fuzzy
-#~ msgctxt "A size unit for CSS markup"
-#~ msgid "Pixel"
-#~ msgstr "पिक्सेल"
-
-#, fuzzy
-#~ msgctxt "A size unit for CSS markup"
-#~ msgid "Em"
-#~ msgstr "Em"
-
-#, fuzzy
-#~ msgctxt "A size unit for CSS markup"
-#~ msgid "Percentage"
-#~ msgstr "प्रतिशत"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Original"
-#~ msgstr "मूल"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Grayscale Filter"
-#~ msgstr "ग्रेस्केल"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Sepia Filter"
-#~ msgstr "मीडिया फ़ाइल"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Saturation Filter"
-#~ msgstr "सैचुरेशन"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Dim Filter"
-#~ msgstr "विंटेज फ़िल्टर"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Vintage Filter"
-#~ msgstr "विंटेज फ़िल्टर"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Capitalize"
-#~ msgstr "बड़े अक्षरों में करना"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Normal"
-#~ msgstr "सामान्य"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Bold"
-#~ msgstr "बोल्ड"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Default"
-#~ msgstr "डिफ़ॉल्ट"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Uppercase"
-#~ msgstr "बड़ा अक्षर"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Lowercase"
-#~ msgstr "छोटा अक्षर"
-
-#, fuzzy
 #~ msgid "%d years"
 #~ msgstr "%s वर्ष"
-
-#~ msgid "a year"
-#~ msgstr "वर्ष"
 
 #, fuzzy
 #~ msgid "%d weeks"
