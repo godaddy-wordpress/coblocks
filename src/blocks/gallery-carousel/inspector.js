@@ -140,7 +140,6 @@ class Inspector extends Component {
 								/>
 							</BaseControl>
 							}
-
 							<ToggleControl
 								label={ __( 'Thumbnails' ) }
 								checked={ !! thumbnails }
