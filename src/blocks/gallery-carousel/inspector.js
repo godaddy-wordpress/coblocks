@@ -13,8 +13,8 @@ import { Component, Fragment } from '@wordpress/element';
 import { InspectorControls, InspectorAdvancedControls } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl, BaseControl } from '@wordpress/components';
 
-const CAROUSEL_MAX = 1000;
-const CAROUSEL_MIN = 200;
+const carouselMax = 1000;
+const carouselMin = 200;
 
 /**
  * Inspector controls
@@ -120,22 +120,22 @@ class Inspector extends Component {
 										const inputValue = unprocessedValue !== '' ?
 											parseInt( event.target.value, 10 ) :
 											undefined;
-										if ( ( inputValue < CAROUSEL_MIN ) && inputValue !== undefined ) {
+										if ( ( inputValue < carouselMin ) && inputValue !== undefined ) {
 											this.setTemporayInput( inputValue );
-											this.setHeightTo( CAROUSEL_MIN );
+											this.setHeightTo( carouselMin );
 											return;
 										}
-										if ( ( inputValue > CAROUSEL_MAX ) && inputValue !== undefined ) {
+										if ( ( inputValue > carouselMax ) && inputValue !== undefined ) {
 											this.setTemporayInput( inputValue );
-											this.setHeightTo( CAROUSEL_MAX );
+											this.setHeightTo( carouselMax );
 											return;
 										}
 										this.setTemporayInput( null );
 										this.setHeightTo( inputValue );
 									} }
 									value={ temporaryInput || height }
-									min={ CAROUSEL_MIN }
-									max={ CAROUSEL_MAX }
+									min={ carouselMin }
+									max={ carouselMax }
 									step="10"
 								/>
 							</BaseControl>
