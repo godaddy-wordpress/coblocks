@@ -369,7 +369,7 @@ class CoBlocks_Form {
 	 *
 	 * @return mixed Markup for the date field.
 	 */
-	public function render_field_date( $atts, $content ) {
+	public function render_field_date( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 
 		wp_enqueue_script(
 			'coblocks-datepicker',
@@ -407,7 +407,7 @@ class CoBlocks_Form {
 	 *
 	 * @return mixed Markup for the phone field.
 	 */
-	public function render_field_phone( $atts, $content ) {
+	public function render_field_phone( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Phone', 'coblocks' );
 		$label_slug    = sanitize_title( $label );
@@ -435,7 +435,7 @@ class CoBlocks_Form {
 	 *
 	 * @return mixed Markup for the radio field.
 	 */
-	public function render_field_radio( $atts, $content ) {
+	public function render_field_radio( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 
 		if ( empty( $atts['options'] ) ) {
 
