@@ -92,7 +92,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 
 			if ( ! array_key_exists( $registered_setting, get_registered_settings() ) ) {
 
-				$this->fail( "$constant is not defined." );
+				$this->fail( "$registered_setting is not defined." );
 
 			}
 		}
@@ -352,7 +352,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_submit_button() {
 
-		$this->expectOutputRegex( '/<button type="submit" class="wp-block-button__link custom-button-class" style=\'background-color: #B4D455;color: #333333;\'>Submit<\/button>/' );
+		$this->expectOutputRegex( '/<button type="submit" class="wp-block-button__link custom-button-class" style="background-color: #B4D455;color: #333333;">Submit<\/button>/' );
 
 		$atts = [
 			'submitButtonClasses'         => 'custom-button-class',

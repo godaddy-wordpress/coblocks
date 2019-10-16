@@ -26,6 +26,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+define( 'COBLOCKS_VERSION', '1.15.0' );
+define( 'COBLOCKS_HAS_PRO', false );
+define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
+define( 'COBLOCKS_PLUGIN_BASE', plugin_basename( __FILE__ ) );
+define( 'COBLOCKS_REVIEW_URL', 'https://wordpress.org/support/plugin/coblocks/reviews/?filter=5' );
+define( 'COBLOCKS_ASSET_SUFFIX', SCRIPT_DEBUG ? null : '.min' );
+
 if ( ! class_exists( 'CoBlocks' ) ) :
 	/**
 	 * Main CoBlocks Class.
@@ -55,8 +64,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof CoBlocks ) ) {
 				self::$instance = new CoBlocks();
 				self::$instance->init();
-				self::$instance->constants();
-				self::$instance->asset_suffix();
 				self::$instance->includes();
 			}
 			return self::$instance;
@@ -87,35 +94,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		public function __wakeup() {
 			// Unserializing instances of the class is forbidden.
 			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', 'coblocks' ), '1.0' );
-		}
-
-		/**
-		 * Setup plugin constants.
-		 *
-		 * @access private
-		 * @since 1.0.0
-		 * @return void
-		 */
-		private function constants() {
-			$this->define( 'COBLOCKS_VERSION', '1.15.0' );
-			$this->define( 'COBLOCKS_HAS_PRO', false );
-			$this->define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-			$this->define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-			$this->define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
-			$this->define( 'COBLOCKS_PLUGIN_BASE', plugin_basename( __FILE__ ) );
-			$this->define( 'COBLOCKS_REVIEW_URL', 'https://wordpress.org/support/plugin/coblocks/reviews/?filter=5' );
-		}
-
-		/**
-		 * Define constant if not already set.
-		 *
-		 * @param  string|string $name Name of the definition.
-		 * @param  string|bool   $value Default value.
-		 */
-		private function define( $name, $value ) {
-			if ( ! defined( $name ) ) {
-				define( $name, $value );
-			}
 		}
 
 		/**
@@ -154,18 +132,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		private function init() {
 			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 99 );
 			add_action( 'enqueue_block_editor_assets', array( $this, 'block_localization' ) );
-		}
-
-		/**
-		 * Change the plugin's minified or src file name, based on debug mode.
-		 *
-		 * @since 1.0.0
-		 */
-		public function asset_suffix() {
-
-			$suffix = SCRIPT_DEBUG ? null : '.min';
-
-			$this->define( 'COBLOCKS_ASSET_SUFFIX', $suffix );
 		}
 
 		/**

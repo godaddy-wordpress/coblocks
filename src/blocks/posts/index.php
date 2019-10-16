@@ -305,7 +305,7 @@ function coblocks_get_rss_post_info( $posts ) {
 
 	foreach ( $posts as $post ) {
 
-		$title = esc_html( trim( strip_tags( $post->get_title() ) ) );
+		$title = esc_html( trim( wp_strip_all_tags( $post->get_title() ) ) );
 
 		$formatted_post = null;
 

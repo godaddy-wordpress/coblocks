@@ -22,10 +22,10 @@ class CoBlocks_Install {
 		register_activation_hook( COBLOCKS_PLUGIN_FILE, array( $this, 'register_defaults' ) );
 	}
 
-	/*
+	/**
 	 * Register plugin defaults.
 	 */
-	function register_defaults() {
+	public function register_defaults() {
 		if ( is_admin() ) {
 			if ( ! get_option( 'coblocks_date_installed' ) ) {
 				add_option( 'coblocks_date_installed', date( 'Y-m-d h:i:s' ) );
