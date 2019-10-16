@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CoBlocks 1.12.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"POT-Creation-Date: 2019-10-15T20:39:03+00:00\n"
+"POT-Creation-Date: 2019-10-16T16:11:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,10 +14,3349 @@ msgstr ""
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
 
+#: src/blocks/accordion/accordion-item/index.js:27
+msgid "Add collapsable accordion items to accordions."
+msgstr "Voeg items toe aan de opvouwbare accordeon."
+
+#: src/blocks/accordion/accordion-item/inspector.js:34
+msgid "Accordion item is open by default."
+msgstr "Het accordeonitem wordt standaard geopend."
+
+#: src/blocks/accordion/accordion-item/inspector.js:34
+msgid "Toggle to set this accordion item to be open by default."
+msgstr "Schakel dit in om het accordeonitem standaard op open in te stellen."
+
+#: src/blocks/accordion/accordion-item/inspector.js:63
+msgid "Accordion Item Settings"
+msgstr "Instellingen accordeonitem"
+
+#: src/blocks/accordion/accordion-item/inspector.js:72
+#: src/blocks/alert/inspector.js:49 src/blocks/author/inspector.js:50
+#: src/blocks/click-to-tweet/inspector.js:60
+#: src/blocks/dynamic-separator/inspector.js:60
+#: src/blocks/features/feature/inspector.js:92
+#: src/blocks/features/inspector.js:173 src/blocks/form/submit-button.js:118
+#: src/blocks/hero/inspector.js:137 src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:302 src/blocks/media-card/inspector.js:132
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:48
+#: src/blocks/row/column/inspector.js:165 src/blocks/row/inspector.js:211
+#: src/blocks/shape-divider/inspector.js:92 src/blocks/share/inspector.js:200
+#: src/blocks/social-profiles/inspector.js:206
+#: src/extensions/colors/index.js:59
+msgid "Color Settings"
+msgstr "Kleurinstellingen"
+
+#: src/blocks/accordion/accordion-item/inspector.js:78
+#: src/blocks/alert/inspector.js:55 src/blocks/author/inspector.js:56
+#: src/blocks/features/feature/inspector.js:110
+#: src/blocks/features/inspector.js:191 src/blocks/hero/inspector.js:150
+#: src/blocks/highlight/inspector.js:49 src/blocks/icon/inspector.js:326
+#: src/blocks/media-card/inspector.js:146
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:53
+#: src/blocks/row/column/inspector.js:171 src/blocks/row/inspector.js:227
+#: src/blocks/shape-divider/inspector.js:103 src/blocks/share/inspector.js:99
+#: src/blocks/social-profiles/inspector.js:103
+#: src/extensions/colors/index.js:47
+msgid "Background Color"
+msgstr "Achtergrondkleur"
+
+#: src/blocks/accordion/accordion-item/inspector.js:83
+msgid "Title Text Color"
+msgstr "Kleur titeltekst"
+
+#: src/blocks/accordion/index.js:28
+msgid "Organize content within collapsable accordion items."
+msgstr "Organiseer de content met accordeonitems die je kunt samenvouwen."
+
+#: src/blocks/accordion/inspector.js:27
+msgid "Accordion Settings"
+msgstr "Instellingen accordeon"
+
+#: src/blocks/accordion/inspector.js:29
+msgid "Internet Explorer Support"
+msgstr "Ondersteuning Internet Explorer"
+
+#: src/blocks/accordion/inspector.js:31
+msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
+msgstr ""
+"Voeg ondersteuning voor Internet Explorer toe door een JavaScript polyfill "
+"te laden."
+
+#: src/blocks/accordion/inspector.js:31
+msgid ""
+"Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgstr ""
+"Internet Explorer wordt ondersteund door op deze pagina een JavaScript "
+"polyfill te laden."
+
+#: src/blocks/alert/index.js:29
+#, fuzzy
+msgid "Provide contextual feedback messages or notices."
+msgstr "Voer contextuele feedbackberichten in."
+
+#: src/blocks/alert/index.js:45
+msgid "This is an alert block"
+msgstr ""
+
+#: src/blocks/alert/index.js:46
+msgid ""
+"An alert is a message that displays outside the flow of typical content. "
+"Alerts provide contextual feedback, typically asking readers to take an "
+"action."
+msgstr ""
+
+#: src/blocks/alert/inspector.js:60 src/blocks/author/inspector.js:61
+#: src/blocks/click-to-tweet/inspector.js:66
+#: src/blocks/features/feature/inspector.js:114
+#: src/blocks/features/inspector.js:195 src/blocks/hero/inspector.js:155
+#: src/blocks/highlight/inspector.js:54
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:58
+#: src/blocks/row/column/inspector.js:176 src/blocks/row/inspector.js:232
+#: src/blocks/share/inspector.js:66 src/blocks/social-profiles/inspector.js:95
+#: src/extensions/colors/index.js:54
+msgid "Text Color"
+msgstr "Tekstkleur"
+
+#: src/blocks/author/controls.js:36
+#, fuzzy
+msgid "Edit avatar"
+msgstr "Galerij bewerken"
+
+#. placeholder text used for the author name
+#: src/blocks/author/edit.js:127
+#, fuzzy
+msgid "Write author name…"
+msgstr "Bijschrift schrijven..."
+
+#. placeholder text used for the biography
+#: src/blocks/author/edit.js:141
+msgid ""
+"Write a biography that distills objective credibility and authority to your "
+"readers…"
+msgstr ""
+
+#: src/blocks/author/index.js:29
+msgid "Add an author biography to build credibility and authority."
+msgstr ""
+
+#: src/blocks/author/index.js:35
+msgid "Born to express, not to impress. A maker making the world I want."
+msgstr ""
+
+#: src/blocks/author/inspector.js:41
+#, fuzzy
+msgid "Author Settings"
+msgstr "Formulierinstellingen"
+
+#: src/blocks/buttons/index.js:29
+msgid "Prompt visitors to take action with multiple buttons, side by side."
+msgstr "Vraag bezoekers actie te ondernemen met meerdere knoppen naast elkaar."
+
+#: src/blocks/buttons/inspector.js:30
+msgid "Buttons"
+msgstr "Knoppen"
+
+#: src/blocks/buttons/inspector.js:48
+msgid "Stacking buttons on mobile."
+msgstr "De knoppen worden op het mobiele apparaat gestapeld."
+
+#: src/blocks/buttons/inspector.js:48
+msgid "Toggle to stack buttons on mobile."
+msgstr "Schakel dit in om de knoppen op het mobiele apparaat te stapelen."
+
+#: src/blocks/click-to-tweet/controls.js:44
+msgid "Twitter Username"
+msgstr "Twitter-gebruikersnaam"
+
+#: src/blocks/click-to-tweet/controls.js:48
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: src/blocks/click-to-tweet/edit.js:109
+msgid "Add button..."
+msgstr "Knop toevoegen..."
+
+# the text of the click to tweet element
+#. the text of the click to tweet element
+#: src/blocks/click-to-tweet/edit.js:82
+msgid "Add a quote to tweet..."
+msgstr "Een citaat toevoegen om te tweeten..."
+
+#: src/blocks/click-to-tweet/index.js:29
+msgid "Add a quote for readers to tweet via Twitter."
+msgstr "Voeg een citaat voor lezers toe om via Twitter te tweeten."
+
+#: src/blocks/click-to-tweet/index.js:34
+msgid ""
+"The easiest way to promote and advertise your blog, website, and business on "
+"Twitter."
+msgstr ""
+
+#: src/blocks/click-to-tweet/inspector.js:52
+#: src/blocks/highlight/inspector.js:35
+msgid "Text Settings"
+msgstr "Tekstinstellingen"
+
+#: src/blocks/click-to-tweet/inspector.js:71
+#: src/blocks/form/submit-button.js:127 src/blocks/share/inspector.js:86
+#: src/blocks/social-profiles/inspector.js:90
+msgid "Button Color"
+msgstr "Knopkleur"
+
+#: src/blocks/dynamic-separator/index.js:28
+msgid "Add a resizable spacer between other blocks."
+msgstr ""
+"Voer een tussenstuk tussen andere blokken toe waarvan je de grootte kunt "
+"aanpassen."
+
+#: src/blocks/dynamic-separator/inspector.js:44
+#: src/blocks/gallery-carousel/inspector.js:100
+#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
+msgid "Height in pixels"
+msgstr "Hoogte in pixels"
+
+#: src/blocks/dynamic-separator/inspector.js:52
+msgid "Height for the dynamic separator element in pixels."
+msgstr "Hoogte in pixels voor dynamisch scheidingselement."
+
+#: src/blocks/dynamic-separator/inspector.js:66
+msgid "Color"
+msgstr "Kleur"
+
+#: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
+#: src/blocks/media-card/edit.js:173
+#, fuzzy
+msgid "Add as background"
+msgstr "Toevoegen als achtergrond"
+
+#: src/blocks/features/feature/index.js:29
+msgid "A singular child column within a parent features block."
+msgstr ""
+"Een enkele onderliggende kolom binnen een bovenliggend blok met functies."
+
+#: src/blocks/features/feature/inspector.js:68
+msgid "Feature Settings"
+msgstr "Functie-instellingen"
+
+#: src/blocks/features/feature/inspector.js:71
+#: src/blocks/features/inspector.js:143 src/blocks/hero/inspector.js:84
+#: src/blocks/icon/inspector.js:217 src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:133 src/blocks/row/inspector.js:180
+#: src/components/background/panel.js:146
+msgid "Padding"
+msgstr "Opvulling"
+
+#: src/blocks/features/index.js:35
+msgid "Add up to three columns of small notes for your product or service."
+msgstr ""
+"Voeg tot drie kolommen met kleine notities toe voor je product of service."
+
+#: src/blocks/features/inspector.js:122 src/blocks/row/column/inspector.js:111
+#: src/blocks/row/inspector.js:157
+#: src/components/dimensions-control/index.js:295
+msgid "Margin"
+msgstr "Marge"
+
+#: src/blocks/features/inspector.js:164
+#: src/blocks/gallery-carousel/inspector.js:84
+#: src/blocks/gallery-collage/inspector.js:108
+#: src/blocks/gallery-stacked/inspector.js:91 src/blocks/row/inspector.js:202
+#: src/components/responsive-tabs-control/index.js:31
+msgid "Gutter"
+msgstr "Rugmarge"
+
+#: src/blocks/features/inspector.js:167 src/blocks/row/inspector.js:205
+msgid "Space between each column."
+msgstr "De ruimte tussen de kolommen."
+
+#: src/blocks/features/inspector.js:86 src/blocks/icon/icon-size-select.js:16
+#: src/blocks/row/inspector.js:99 src/blocks/share/inspector.js:72
+#: src/blocks/social-profiles/inspector.js:76
+#: src/components/dimensions-control/dimensions-select.js:15
+#: src/components/size-control/index.js:116
+msgid "Small"
+msgstr "Klein"
+
+#: src/blocks/features/inspector.js:87 src/blocks/icon/icon-size-select.js:21
+#: src/blocks/row/inspector.js:100 src/blocks/share/inspector.js:73
+#: src/blocks/social-profiles/inspector.js:77
+#: src/components/dimensions-control/dimensions-select.js:20
+#: src/components/size-control/index.js:120
+msgid "Medium"
+msgstr "Gemiddeld"
+
+#: src/blocks/features/inspector.js:88 src/blocks/icon/icon-size-select.js:26
+#: src/blocks/row/inspector.js:101 src/blocks/share/inspector.js:74
+#: src/blocks/social-profiles/inspector.js:78
+#: src/components/dimensions-control/dimensions-select.js:25
+#: src/components/size-control/index.js:65
+msgid "Large"
+msgstr "Groot"
+
+#: src/blocks/features/inspector.js:94
+msgid "Features Settings"
+msgstr "Functie-instellingen"
+
+#: src/blocks/features/inspector.js:96 src/blocks/post-carousel/inspector.js:70
+#: src/blocks/posts/inspector.js:110 src/blocks/services/inspector.js:69
+msgid "Columns"
+msgstr "Kolommen"
+
+#: src/blocks/food-and-drinks/appender.js:22
+msgid "Add Menu Section"
+msgstr "Menusectie toevoegen"
+
+#: src/blocks/food-and-drinks/edit.js:27
+msgid "Menu title..."
+msgstr "Menutitel..."
+
+#: src/blocks/food-and-drinks/food-item/edit.js:147
+#: src/blocks/gallery-collage/edit.js:140
+#: src/blocks/services/service/edit.js:156
+msgid "Drop image to replace"
+msgstr "Afbeelding neerzetten om te vervangen"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:160
+#: src/blocks/gallery-collage/edit.js:160
+#: src/blocks/services/service/edit.js:169
+#: src/components/block-gallery/gallery-image.js:208
+msgid "Remove Image"
+msgstr "Afbeelding verwijderen"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:225
+msgid "Add title..."
+msgstr "Titel toevoegen..."
+
+#: src/blocks/food-and-drinks/food-item/edit.js:238
+#: src/blocks/food-and-drinks/food-item/inspector.js:45
+#: src/blocks/food-and-drinks/food-item/save.js:66
+msgid "Popular"
+msgstr ""
+
+#: src/blocks/food-and-drinks/food-item/edit.js:256
+#: src/blocks/food-and-drinks/food-item/inspector.js:60
+#: src/blocks/food-and-drinks/food-item/save.js:74
+msgid "Spicy"
+msgstr "Pittig"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:276
+msgid "Hot"
+msgstr "Heet"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:298
+#: src/blocks/food-and-drinks/food-item/inspector.js:75
+#: src/blocks/food-and-drinks/food-item/save.js:90
+msgid "Vegetarian"
+msgstr "Vegetarisch"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:324
+#: src/blocks/food-and-drinks/food-item/inspector.js:50
+#: src/blocks/food-and-drinks/food-item/save.js:98
+msgid "Gluten Free"
+msgstr "Zonder gluten"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:347
+#: src/blocks/food-and-drinks/food-item/inspector.js:55
+#: src/blocks/food-and-drinks/food-item/save.js:106
+msgid "Pescatarian"
+msgstr "Pescatarisch"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:368
+#: src/blocks/food-and-drinks/food-item/inspector.js:70
+#: src/blocks/food-and-drinks/food-item/save.js:114
+msgid "Vegan"
+msgstr "Veganistisch"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:386
+msgid "Add description..."
+msgstr "Beschrijving toevoegen..."
+
+#: src/blocks/food-and-drinks/food-item/edit.js:395
+msgid "$0.00"
+msgstr "$ 0,00"
+
+#: src/blocks/food-and-drinks/food-item/index.js:27
+msgid "A food and drink item within the Food & Drinks block."
+msgstr "Eten of drinken binnen het blok voor Eten en drinken."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:19
+msgid "Item Settings"
+msgstr "Iteminstellingen"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:21
+msgid "Image"
+msgstr "Afbeelding"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:24
+msgid "Showing an image for this item."
+msgstr "Een afbeelding van dit item wordt weergegeven."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:25
+msgid "Toggle to show an image for this item."
+msgstr "Schakel dit in om een afbeelding van dit item weer te geven."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:31
+msgid "Price"
+msgstr "Prijs"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:34
+msgid "Showing the price for this item."
+msgstr "De prijs van dit item wordt weergegeven."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:35
+msgid "Toggle to show the price for this item."
+msgstr "Schakel dit in om de prijs van dit item weer te geven."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:42
+msgid "Item Attributes"
+msgstr "Itemeigenschappen"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:65
+#: src/blocks/food-and-drinks/food-item/save.js:82
+msgid "Spicier"
+msgstr "Pittiger"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:82
+#: src/blocks/services/service/inspector.js:31
+msgid "Image Settings"
+msgstr "Instellingen afbeelding"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:84
+#: src/blocks/gif/inspector.js:31 src/blocks/media-card/inspector.js:95
+#: src/blocks/services/service/inspector.js:33
+msgid "Alt Text (Alternative Text)"
+msgstr "Alternatieve tekst"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:90
+#: src/blocks/gif/inspector.js:37 src/blocks/media-card/inspector.js:101
+#: src/blocks/services/service/inspector.js:39
+msgid "Describe the purpose of the image"
+msgstr "Beschrijf het doel van de afbeelding"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:92
+#: src/blocks/gif/inspector.js:39 src/blocks/media-card/inspector.js:103
+#: src/blocks/services/service/inspector.js:41
+msgid "Leave empty if the image is purely decorative."
+msgstr "Laat dit leeg als het een decoratieve afbeelding is."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:97
+#: src/blocks/services/service/inspector.js:46
+#: src/components/background/panel.js:126
+msgid "Focal Point"
+msgstr "Focuspunt"
+
+#: src/blocks/food-and-drinks/index.js:27
+msgid "Display a menu or price list."
+msgstr "Geef een menu of prijslijst weer."
+
+#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
+#: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
+#: src/blocks/services/inspector.js:32
+msgid "Styles"
+msgstr "Stijlen"
+
+#: src/blocks/food-and-drinks/inspector.js:59
+msgid "Food & Drinks Settings"
+msgstr "Instellingen voor Eten en drinken"
+
+#: src/blocks/food-and-drinks/inspector.js:61
+msgid "Images"
+msgstr "Afbeeldingen"
+
+#: src/blocks/food-and-drinks/inspector.js:64
+msgid "Showing images for each item"
+msgstr "Voor elk item worden afbeeldingen weergegeven"
+
+#: src/blocks/food-and-drinks/inspector.js:65
+msgid "Toggle to show images for each item."
+msgstr "Schakel dit in om voor elk item afbeeldingen weer te geven."
+
+#: src/blocks/food-and-drinks/inspector.js:71
+msgid "Prices"
+msgstr "Prijzen"
+
+#: src/blocks/food-and-drinks/inspector.js:74
+msgid "Showing the price of each item"
+msgstr "De prijs van elk item wordt weergegeven"
+
+#: src/blocks/food-and-drinks/inspector.js:75
+msgid "Toggle to show the price of each item."
+msgstr "Schakel dit in om de prijs van elk item weer te geven."
+
+#. %s: Placeholder for email address provided by user.
+#: src/blocks/form/edit.js:171
+msgid "%s is not a valid email address."
+msgstr "‌‌%s is geen geldig e-mailadres."
+
+#. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#: src/blocks/form/edit.js:181
+msgid "%s and %s are not a valid email address."
+msgstr "‌‌%s en %s zijn geen geldige e-mailadressen."
+
+#. %s1: Placeholder for email address provided by user.
+#: src/blocks/form/edit.js:189
+msgid "%s are not a valid email address."
+msgstr "‌‌%s is geen geldig e-mailadres."
+
+#: src/blocks/form/edit.js:247
+msgid "Email address"
+msgstr "E-mailadres"
+
+#: src/blocks/form/edit.js:248
+msgid "name@example.com"
+msgstr "naam@voorbeeld.com"
+
+#: src/blocks/form/edit.js:258
+msgid "Subject"
+msgstr "Onderwerp"
+
+#: src/blocks/form/edit.js:288
+msgid "Form Settings"
+msgstr "Formulierinstellingen"
+
+#: src/blocks/form/edit.js:293
+msgid "Google reCAPTCHA"
+msgstr "reCAPTCHA van Google"
+
+#: src/blocks/form/edit.js:296
+msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
+msgstr ""
+"Voeg je reCAPTCHA-site en geheime sleutels toe om je formulier te beschermen "
+"tegen spam."
+
+#: src/blocks/form/edit.js:302
+msgid "Generate keys"
+msgstr "Sleutels genereren"
+
+#: src/blocks/form/edit.js:303
+msgid "My keys"
+msgstr "Mijn sleutels"
+
+#: src/blocks/form/edit.js:306
+msgid "Get help"
+msgstr "Hulp ontvangen"
+
+#: src/blocks/form/edit.js:310
+msgid "Site Key"
+msgstr "Sitesleutel"
+
+#: src/blocks/form/edit.js:316
+msgid "Secret Key"
+msgstr "Geheime code"
+
+#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
+#: src/components/block-gallery/gallery-image.js:221
+msgid "Saving"
+msgstr "Opslaan"
+
+#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
+msgid "Save"
+msgstr "Opslaan"
+
+#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
+msgid "Remove"
+msgstr "Verwijderen"
+
+#: src/blocks/form/fields/coblocks-option.js:61
+#, fuzzy
+msgid "Write option…"
+msgstr "Bijschrift schrijven..."
+
+#: src/blocks/form/fields/coblocks-option.js:70
+#, fuzzy
+msgid "Remove Option"
+msgstr "Verwijderen "
+
+#: src/blocks/form/fields/date/index.js:21
+msgid "A field for requesting date selections with a date picker."
+msgstr ""
+
+#: src/blocks/form/fields/email/index.js:20
+#, fuzzy
+msgid "A field for collecting a validated email address."
+msgstr "‌‌%s is geen geldig e-mailadres."
+
+#: src/blocks/form/fields/field-label.js:22
+#: src/blocks/form/fields/name/edit.js:61
+msgid "Add label…"
+msgstr "Label toevoegen..."
+
+#: src/blocks/form/fields/field-label.js:30
+msgid "Required"
+msgstr "Vereist"
+
+#: src/blocks/form/fields/multi-field.js:102
+#, fuzzy
+msgid "Add Option"
+msgstr "Beschrijving toevoegen..."
+
+#: src/blocks/form/fields/name/edit.js:69
+msgid "Name Field Settings"
+msgstr "Instellingen naamveld"
+
+#: src/blocks/form/fields/name/edit.js:71
+msgid "Last Name"
+msgstr "Achternaam"
+
+#: src/blocks/form/fields/name/edit.js:75
+msgid "Showing both first and last name fields."
+msgstr "De velden voor de voor- en achternaam worden weergegeven."
+
+#: src/blocks/form/fields/name/edit.js:75
+msgid "Toggle to add a last name field."
+msgstr "Schakel dit in om een veld voor de achternaam toe te voegen."
+
+#: src/blocks/form/fields/name/index.js:20
+#, fuzzy
+msgid "A text field for collecting the first and last names."
+msgstr "De velden voor de voor- en achternaam worden weergegeven."
+
+#: src/blocks/form/fields/phone/index.js:21
+msgid "A phone number to allow visitors to give you a phone number."
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:21
+msgid "A field with multiple options where only one choice can be made."
+msgstr ""
+
+#: src/blocks/form/fields/textarea/index.js:20
+msgid "A text box for longer responses."
+msgstr "Een tekstvak voor langere antwoorden."
+
+#: src/blocks/form/index.js:27
+#, fuzzy
+msgid "Add a contact form to your page."
+msgstr "Voeg een eenvoudig formulier toe aan je pagina."
+
+#: src/blocks/form/index.js:36
+#, fuzzy
+msgid "Subject example"
+msgstr "Onderwerp"
+
+#: src/blocks/form/submit-button.js:107
+msgid "Add text…"
+msgstr "Tekst toevoegen..."
+
+#: src/blocks/form/submit-button.js:135
+msgid "Button Text Color"
+msgstr "Kleur knoptekst"
+
+#: src/blocks/gallery-carousel/controls.js:55
+#: src/blocks/gallery-masonry/controls.js:55
+#: src/blocks/gallery-stacked/controls.js:55
+msgid "Edit gallery"
+msgstr "Galerij bewerken"
+
+#: src/blocks/gallery-carousel/edit.js:252
+msgid "Carousel"
+msgstr "Carrousel"
+
+# %1$d is the order number of the image, %2$d is the total number of images.
+#. %1$d is the order number of the image, %2$d is the total number of images.
+#: src/blocks/gallery-carousel/edit.js:310
+#: src/blocks/gallery-masonry/edit.js:219
+#: src/blocks/gallery-stacked/edit.js:191
+msgid "image %1$d of %2$d in gallery"
+msgstr "afbeelding %1$d van %2$d in galerij"
+
+#: src/blocks/gallery-carousel/edit.js:376 src/blocks/gif/edit.js:243
+#: src/blocks/gist/edit.js:103
+#: src/components/block-gallery/gallery-image.js:230
+msgid "Write caption…"
+msgstr "Bijschrift schrijven..."
+
+#: src/blocks/gallery-carousel/index.js:35
+msgid "Display multiple images in a beautiful carousel gallery."
+msgstr "Geef meerdere afbeeldingen weer in een mooie carrouselgalerij."
+
+#: src/blocks/gallery-carousel/inspector.js:109
+#, fuzzy
+msgid "Thumbnails"
+msgstr "Kolomgrootte"
+
+#: src/blocks/gallery-carousel/inspector.js:119
+#, fuzzy
+msgid "Responsive Height"
+msgstr "Regelhoogte"
+
+#: src/blocks/gallery-carousel/inspector.js:40
+#, fuzzy
+msgid "Showing thumbnail navigation."
+msgstr "De pijlen voor stipnavigatie worden weergegeven."
+
+#: src/blocks/gallery-carousel/inspector.js:40
+#, fuzzy
+msgid "Toggle to show thumbnails."
+msgstr "Schakel dit in om mediabijschriften weer te geven."
+
+#: src/blocks/gallery-carousel/inspector.js:44
+msgid "Percentage based height is activated."
+msgstr ""
+
+#: src/blocks/gallery-carousel/inspector.js:44
+#, fuzzy
+msgid "Toggle for percentage based height."
+msgstr "Schakel dit in om de beheeropties voor de kaart in te schakelen."
+
+#: src/blocks/gallery-carousel/inspector.js:68
+#, fuzzy
+msgid "Carousel Settings"
+msgstr "Kleurinstellingen"
+
+#: src/blocks/gallery-carousel/inspector.js:71 src/blocks/icon/inspector.js:173
+#: src/components/typography-controls/index.js:189
+msgid "Size"
+msgstr "Grootte"
+
+#: src/blocks/gallery-carousel/inspector.js:90
+#: src/blocks/gallery-masonry/inspector.js:83
+#: src/blocks/gallery-stacked/inspector.js:95 src/blocks/share/inspector.js:120
+#: src/blocks/social-profiles/inspector.js:124
+#: src/components/background/panel.js:156
+msgid "Rounded Corners"
+msgstr "Afgeronde hoeken"
+
+#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
+#: src/components/block-gallery/gallery-image.js:221
+msgid "Apply"
+msgstr "Toepassen"
+
+#: src/blocks/gallery-collage/edit.js:183
+#, fuzzy
+msgid "Write caption..."
+msgstr "Beschrijving opstellen..."
+
+#: src/blocks/gallery-collage/index.js:34
+#, fuzzy
+msgid "Assemble images into a beautiful collage gallery."
+msgstr "Geef meerdere afbeeldingen weer in een mooie carrouselgalerij."
+
+#: src/blocks/gallery-collage/inspector.js:105
+#, fuzzy
+msgid "Collage Settings"
+msgstr "Instellingen afbeelding"
+
+#: src/blocks/gallery-collage/inspector.js:128
+msgid "Shadow"
+msgstr "Schaduw"
+
+#: src/blocks/gallery-collage/inspector.js:147
+#: src/blocks/gallery-masonry/inspector.js:98
+#: src/blocks/gallery-stacked/inspector.js:111
+msgid "Captions"
+msgstr "Bijschriften"
+
+#: src/blocks/gallery-collage/inspector.js:153
+#: src/blocks/gallery-masonry/inspector.js:105
+msgid "Caption Style"
+msgstr "Bijschriftstijl"
+
+#: src/blocks/gallery-collage/inspector.js:30
+#: src/blocks/gallery-masonry/inspector.js:49
+#: src/blocks/gallery-stacked/inspector.js:52
+msgid "Showing captions for each media item."
+msgstr "Voor elk media-item wordt een bijschrift weergegeven."
+
+#: src/blocks/gallery-collage/inspector.js:30
+#: src/blocks/gallery-masonry/inspector.js:49
+#: src/blocks/gallery-stacked/inspector.js:52
+msgid "Toggle to show media captions."
+msgstr "Schakel dit in om mediabijschriften weer te geven."
+
+#: src/blocks/gallery-masonry/edit.js:188
+msgid "Masonry"
+msgstr "Gemetselde stijl"
+
+#: src/blocks/gallery-masonry/index.js:35
+msgid "Display multiple images in an organized masonry gallery."
+msgstr ""
+"Geef meerdere afbeeldingen weer in een georganiseerde gemetselde galerij."
+
+#: src/blocks/gallery-masonry/inspector.js:53
+#: src/blocks/gallery-stacked/inspector.js:56
+msgid "Image lightbox is enabled."
+msgstr ""
+
+#: src/blocks/gallery-masonry/inspector.js:53
+#: src/blocks/gallery-stacked/inspector.js:56
+#, fuzzy
+msgid "Toggle to enable the image lightbox."
+msgstr "Schakel dit in om de beheeropties voor de kaart in te schakelen."
+
+#: src/blocks/gallery-masonry/inspector.js:73
+#, fuzzy
+msgid "Masonry Settings"
+msgstr "Kaartinstellingen"
+
+#: src/blocks/gallery-masonry/inspector.js:76
+msgid "Column Size"
+msgstr "Kolomgrootte"
+
+#: src/blocks/gallery-masonry/inspector.js:84
+msgid "Add rounded corners to the gallery items."
+msgstr "Voeg afgeronde hoeken toe aan de galerij-items."
+
+#: src/blocks/gallery-masonry/inspector.js:92
+#: src/blocks/gallery-stacked/inspector.js:123
+#, fuzzy
+msgid "Lightbox"
+msgstr "Licht"
+
+#: src/blocks/gallery-stacked/edit.js:168
+msgid "Stacked"
+msgstr "Gestapeld"
+
+#: src/blocks/gallery-stacked/index.js:35
+msgid "Display multiple images in an single column stacked gallery."
+msgstr ""
+"Geef meerdere afbeeldingen weer in een enkele gestapelde kolom met een "
+"galerij."
+
+#: src/blocks/gallery-stacked/inspector.js:105
+msgid "Box Shadow"
+msgstr "Vakschaduw"
+
+#: src/blocks/gallery-stacked/inspector.js:48
+msgid "Fullwidth images are enabled."
+msgstr "Afbeeldingen op volledige breedte zijn ingeschakeld."
+
+#: src/blocks/gallery-stacked/inspector.js:48
+msgid ""
+"Toggle to fill the available gallery area with completely fullwidth images."
+msgstr ""
+"Schakel dit in om de beschikbare ruimte in de galerij op te vullen met "
+"afbeeldingen op volledige breedte."
+
+#: src/blocks/gallery-stacked/inspector.js:80
+#, fuzzy
+msgid "Stacked Settings"
+msgstr "Iteminstellingen"
+
+#: src/blocks/gallery-stacked/inspector.js:83
+msgid "Fullwidth Images"
+msgstr "Afbeeldingen op volledige breedte"
+
+#: src/blocks/gallery-stacked/inspector.js:83
+msgid "Fullwidth Image"
+msgstr "Afbeelding op volledige breedte"
+
+#: src/blocks/gif/controls.js:44
+msgid "Remove gif"
+msgstr "GIF verwijderen"
+
+#: src/blocks/gif/edit.js:152
+msgid "This gif has an empty alt attribute"
+msgstr "Deze GIF heeft een leeg alt-attribuut"
+
+#: src/blocks/gif/edit.js:283
+msgid "Search for that perfect gif on Giphy"
+msgstr "Ga op zoek naar die perfecte GIF op Giphy"
+
+#: src/blocks/gif/edit.js:289
+msgid "Search for gifs"
+msgstr "Zoeken naar GIFs"
+
+#: src/blocks/gif/index.js:27
+msgid "Pick a gif, any gif."
+msgstr "Kies de allerbeste GIF."
+
+#: src/blocks/gif/inspector.js:29
+msgid "Gif Settings"
+msgstr "GIF-instellingen"
+
+#: src/blocks/gist/controls.js:29
+msgid "Display meta"
+msgstr "Meta weergeven"
+
+#: src/blocks/gist/controls.js:42
+msgid "Edit Gist"
+msgstr "Gist bewerken"
+
+#: src/blocks/gist/controls.js:49
+msgid "View Gist"
+msgstr "Gist weergeven"
+
+#: src/blocks/gist/controls.js:68
+msgid "GitHub File"
+msgstr "GitHub-bestand"
+
+#: src/blocks/gist/controls.js:72
+msgid "File"
+msgstr "Bestand"
+
+#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
+msgid "View this gist on GitHub"
+msgstr "Deze gist op GitHub weergeven"
+
+#: src/blocks/gist/edit.js:124 src/blocks/gist/inspector.js:51
+msgid "Gist URL"
+msgstr "Gist-URL"
+
+#: src/blocks/gist/edit.js:129
+msgid "Add GitHub Gist URL..."
+msgstr "Gist-URL voor GitHub toevoegen..."
+
+#: src/blocks/gist/gist.js:137
+msgid "Loading Gist"
+msgstr "Gist laden"
+
+#: src/blocks/gist/index.js:29
+#, fuzzy
+msgid "Embed GitHub gists by adding a gist link."
+msgstr "Sluit de GitHub-gists in door de link naar de gist toe te voegen."
+
+#: src/blocks/gist/inspector.js:31
+msgid "Showing gist meta data."
+msgstr "De metadata van de gist worden weergegeven."
+
+#: src/blocks/gist/inspector.js:31
+msgid "Toggle to show the gist meta data."
+msgstr "Schakel dit in om de metadata van de gist weer te geven."
+
+#: src/blocks/gist/inspector.js:49
+msgid "Gist Settings"
+msgstr "Gistinstellingen"
+
+#: src/blocks/gist/inspector.js:56
+msgid "Gist File"
+msgstr "Gistbestand"
+
+#: src/blocks/gist/inspector.js:61
+msgid "Gist Meta"
+msgstr "Gistmeta"
+
+#: src/blocks/hero/controls.js:32
+msgid "Change layout"
+msgstr "Lay-out wijzigen"
+
 #: src/blocks/hero/edit.js:152
 #, fuzzy
 msgid "Add background to hero"
 msgstr "Achtergrond toevoegen aan %s"
+
+#: src/blocks/hero/index.js:41
+msgid ""
+"An introductory area of a page accompanied by a small amount of text and a "
+"call to action."
+msgstr ""
+"Een inleidend onderdeel van een pagina samen met een kleine hoeveelheid "
+"tekst en een call-to-action."
+
+#: src/blocks/hero/inspector.js:127
+msgid "Content width in pixels"
+msgstr "Breedte van content in pixels"
+
+#: src/blocks/hero/inspector.js:81
+msgid "Hero Settings"
+msgstr "Hero-instellingen"
+
+#: src/blocks/hero/inspector.js:85 src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:134 src/blocks/row/inspector.js:181
+msgid "Space inside of the container."
+msgstr "De ruimte in de container."
+
+#: src/blocks/hero/layouts.js:12
+msgid "Top Left"
+msgstr "Boven links"
+
+#: src/blocks/hero/layouts.js:13
+msgid "Top Center"
+msgstr "Boven centraal"
+
+#: src/blocks/hero/layouts.js:14
+msgid "Top Right"
+msgstr "Boven rechts"
+
+#: src/blocks/hero/layouts.js:15
+msgid "Center Left"
+msgstr "Centraal links"
+
+#: src/blocks/hero/layouts.js:16
+msgid "Center Center"
+msgstr "Centraal midden"
+
+#: src/blocks/hero/layouts.js:17
+msgid "Center Right"
+msgstr "Centraal rechts"
+
+#: src/blocks/hero/layouts.js:18
+msgid "Bottom Left"
+msgstr "Onder links"
+
+#: src/blocks/hero/layouts.js:19
+msgid "Bottom Center"
+msgstr "Onder centraal"
+
+#: src/blocks/hero/layouts.js:20
+msgid "Bottom Right"
+msgstr "Onder rechts"
+
+#: src/blocks/highlight/edit.js:113
+msgid "Add highlighted text..."
+msgstr "Gemarkeerde tekst toevoegen..."
+
+#: src/blocks/highlight/index.js:28
+msgid "Draw attention and emphasize important narrative."
+msgstr ""
+
+#: src/blocks/highlight/index.js:33
+msgid ""
+"Add a highlight effect to paragraph text in order to grab attention and "
+"emphasize important narrative."
+msgstr ""
+
+#: src/blocks/icon/icon-size-select.js:30 src/blocks/row/inspector.js:102
+#: src/components/dimensions-control/dimensions-select.js:30
+msgid "Huge"
+msgstr "Zeer groot"
+
+#: src/blocks/icon/icon-size-select.js:79
+msgid "Choose icon size preset"
+msgstr ""
+
+#: src/blocks/icon/index.js:33
+msgid "Add a stylized graphic symbol to communicate something more."
+msgstr ""
+"Voeg een gestileerd grafisch symbool toe om wat meer informatie over te "
+"brengen."
+
+#: src/blocks/icon/inspector.js:155 src/blocks/share/inspector.js:111
+#: src/blocks/social-profiles/inspector.js:115
+msgid "Icon Settings"
+msgstr "Pictograminstellingen"
+
+#: src/blocks/icon/inspector.js:168
+msgid "Reset icon size"
+msgstr ""
+
+#: src/blocks/icon/inspector.js:170
+#: src/components/dimensions-control/index.js:470
+#: src/components/size-control/index.js:198
+msgid "Reset"
+msgstr "Opnieuw instellen"
+
+#: src/blocks/icon/inspector.js:198
+#, fuzzy
+msgid "Apply custom size"
+msgstr "Aangepaste grootte %s"
+
+#: src/blocks/icon/inspector.js:201
+#, fuzzy
+msgid "Custom"
+msgstr "Aangepast"
+
+#: src/blocks/icon/inspector.js:209
+msgid "Radius"
+msgstr "Radius"
+
+#: src/blocks/icon/inspector.js:229
+msgid "Icon Search"
+msgstr "Pictogram zoeken"
+
+#: src/blocks/icon/inspector.js:278
+msgid "No results found."
+msgstr "Geen resultaten gevonden."
+
+#: src/blocks/icon/inspector.js:284
+#: src/components/block-gallery/gallery-link-settings.js:63
+msgid "Link Settings"
+msgstr "Linkinstellingen"
+
+#: src/blocks/icon/inspector.js:287
+msgid "Link URL"
+msgstr "URL link"
+
+#: src/blocks/icon/inspector.js:292
+msgid "Link Rel"
+msgstr "Link Rel"
+
+#: src/blocks/icon/inspector.js:297
+msgid "Opening in New Tab"
+msgstr "Wordt in een nieuw tabblad geopend"
+
+#: src/blocks/icon/inspector.js:297
+#: src/components/block-gallery/gallery-link-settings.js:75
+msgid "Open in New Tab"
+msgstr "Openen in nieuw tabblad"
+
+#: src/blocks/icon/inspector.js:309 src/blocks/share/inspector.js:104
+#: src/blocks/social-profiles/inspector.js:108
+msgid "Icon Color"
+msgstr "Pictogramkleur"
+
+#: src/blocks/logos/controls.js:51
+msgid "Edit logos"
+msgstr "Logo's bewerken"
+
+#: src/blocks/logos/edit.js:69
+msgid "Logos & Badges"
+msgstr "Logo's en badges"
+
+#: src/blocks/logos/edit.js:70
+#: src/components/block-gallery/gallery-placeholder.js:72
+msgid "Drag images, upload new ones or select files from your library."
+msgstr ""
+"Sleep afbeeldingen, upload nieuwe of selecteer bestanden uit je bibliotheek."
+
+#: src/blocks/logos/index.js:27
+msgid "Add logos, badges, or certifications to build credibility."
+msgstr ""
+"Voeg logo's, badges of certificaten toe en vergroot je geloofwaardigheid."
+
+#: src/blocks/logos/inspector.js:12
+msgid "Logos Settings"
+msgstr "Logo-instellingen"
+
+#: src/blocks/logos/inspector.js:15
+msgid "Black & White"
+msgstr "Zwart-wit"
+
+#: src/blocks/logos/inspector.js:16
+msgid "Toggle to add a black and white filter."
+msgstr "Schakel dit in om een zwart-wit filter toe te voegen."
+
+#: src/blocks/map/controls.js:30
+msgid "Edit Location"
+msgstr "Locatie bewerken"
+
+#: src/blocks/map/controls.js:42
+msgid "Map style"
+msgstr "Kaartstijl"
+
+#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50
+msgid "Google Map"
+msgstr "Google Maps"
+
+#: src/blocks/map/edit.js:195
+msgid "Invalid API key, or too many requests"
+msgstr "Ongeldige API-code of te veel verzoeken"
+
+#: src/blocks/map/edit.js:294
+msgid "Enter a location or address to drop a pin on a Google map."
+msgstr ""
+"Voer een locatie of adres in om een pin neer te zetten op een kaart van "
+"Google."
+
+#: src/blocks/map/edit.js:301
+msgid "Search for a place or address…"
+msgstr "Zoeken naar een plaats of adres..."
+
+#: src/blocks/map/edit.js:320
+msgid "Cancel"
+msgstr ""
+
+#: src/blocks/map/index.js:28
+#, fuzzy
+msgid "Add an address or location to drop a pin on a Google map."
+msgstr "Voeg een adres toe en zet een pin neer op een kaart van Google."
+
+#: src/blocks/map/inspector.js:109
+msgid "Select Map Style"
+msgstr "Kaartstijl selecteren"
+
+#: src/blocks/map/inspector.js:130
+msgid "Map Settings"
+msgstr "Kaartinstellingen"
+
+#: src/blocks/map/inspector.js:135
+msgid "Height for the map in pixels"
+msgstr "Hoogte voor de kaart in pixels"
+
+#: src/blocks/map/inspector.js:144
+msgid "Zoom Level"
+msgstr "Zoomniveau"
+
+#: src/blocks/map/inspector.js:155
+msgid "Marker Size"
+msgstr "Grootte markering"
+
+#: src/blocks/map/inspector.js:170
+msgid "Fine control options are enabled."
+msgstr "De opties voor gedetailleerd beheer zijn ingeschakeld."
+
+#: src/blocks/map/inspector.js:170
+msgid "Toggle to enable map control options."
+msgstr "Schakel dit in om de beheeropties voor de kaart in te schakelen."
+
+#: src/blocks/map/inspector.js:178
+msgid "Map Controls"
+msgstr "Functies kaart"
+
+#: src/blocks/map/inspector.js:182
+msgid "Map Type"
+msgstr "Kaarttype"
+
+#: src/blocks/map/inspector.js:185
+msgid "Switching between standard and satellite map views is enabled."
+msgstr "Schakelen tussen de standaard- en satellietkaart is ingeschakeld."
+
+#: src/blocks/map/inspector.js:185
+msgid "Toggle to enable switching between standard and satellite maps."
+msgstr "Schakel dit in om te schakelen tussen standaard- en satellietkaarten."
+
+#: src/blocks/map/inspector.js:188
+msgid "Zoom Controls"
+msgstr "Zoomfunctie"
+
+#: src/blocks/map/inspector.js:191
+msgid "Showing map zoom controls."
+msgstr "De functie om in te zoomen wordt weergegeven."
+
+#: src/blocks/map/inspector.js:191
+msgid "Toggle to enable zooming in and out on the map with zoom controls."
+msgstr "Schakel dit in om in en uit te zoomen op de kaart met de zoomfunctie."
+
+#: src/blocks/map/inspector.js:194
+msgid "Street View"
+msgstr "Straatweergave"
+
+#: src/blocks/map/inspector.js:197
+msgid "Showing the street view map control."
+msgstr "De functie voor de straatweergave van de kaart wordt weergegeven."
+
+#: src/blocks/map/inspector.js:197
+msgid "Toggle to show the street view control at the bottom right."
+msgstr ""
+"Schakel dit in om de functie voor straatweergave rechtsonderin weer te geven."
+
+#: src/blocks/map/inspector.js:200
+msgid "Fullscreen Toggle"
+msgstr "Volledig scherm in- en uitschakelen"
+
+#: src/blocks/map/inspector.js:203
+msgid "Showing the fullscreen map control."
+msgstr "De functie voor de kaart op volledig scherm wordt weergegeven."
+
+#: src/blocks/map/inspector.js:203
+msgid "Toggle to show the fullscreen map control."
+msgstr ""
+"Schakel dit in om de functie voor de kaart op volledig scherm weer te geven."
+
+#: src/blocks/map/inspector.js:208
+msgid "Google Maps API Key"
+msgstr "API-sleutel voor Google Maps"
+
+#: src/blocks/map/inspector.js:212
+#, fuzzy
+msgid ""
+"Add a Google Maps API key. Updating this API key will set all your maps to "
+"use the new key."
+msgstr ""
+"Voeg je API-sleutel voor Google Maps toe. Als je deze API-sleutel bijwerkt, "
+"maken al je kaarten gebruik van de nieuwe sleutel."
+
+#: src/blocks/map/inspector.js:215
+#, fuzzy
+msgid "Get a key"
+msgstr "Sleutels genereren"
+
+#: src/blocks/map/inspector.js:216
+msgid "Need help?"
+msgstr "Hulp nodig?"
+
+#: src/blocks/map/inspector.js:222
+msgid "Enter Google API Key…"
+msgstr "De API-sleutel van Google invoeren..."
+
+#: src/blocks/map/inspector.js:231
+msgid "Saved"
+msgstr "Opgeslagen"
+
+#: src/blocks/media-card/controls.js:28
+msgid "Media on right"
+msgstr "Media rechts"
+
+#: src/blocks/media-card/controls.js:33
+msgid "Media on left"
+msgstr "Media links"
+
+#: src/blocks/media-card/index.js:36
+msgid "Add an image or video with an offset card side-by-side."
+msgstr "Voeg een afbeelding of video toe met kaart ernaast."
+
+#: src/blocks/media-card/inspector.js:109
+msgid "Card Shadow"
+msgstr "Kaartschaduw"
+
+#: src/blocks/media-card/inspector.js:112
+msgid "Showing card shadow."
+msgstr "De schaduw van de kaart wordt weergegeven."
+
+#: src/blocks/media-card/inspector.js:112
+msgid "Toggle to add a card shadow."
+msgstr "Schakel dit in om een schaduw aan de kaart toe te voegen."
+
+#. %s: Placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:118
+msgid " %s Shadow"
+msgstr " Schaduw %s"
+
+#. %s: Placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:124
+msgid "Showing %s shadow."
+msgstr "Schaduw van %s wordt weergegeven."
+
+#. %s: Placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:126
+msgid "Toggle to add an %s shadow"
+msgstr "Schakel dit in om een schaduw van %s toe te voegen."
+
+#: src/blocks/media-card/inspector.js:59
+msgid "Media Card Settings"
+msgstr "Instellingen mediakaart"
+
+#: src/blocks/media-card/inspector.js:84
+msgid "Max Width"
+msgstr "Max. breedte"
+
+#: src/blocks/media-card/media-container.js:100
+msgid "Media"
+msgstr "Media"
+
+#: src/blocks/media-card/media-container.js:120
+msgid "Drop to replace media"
+msgstr "Neerzetten om media te vervangen"
+
+#: src/blocks/media-card/media-container.js:37
+msgid "Edit media"
+msgstr "Media bewerken"
+
+#: src/blocks/post-carousel/edit.js:123 src/blocks/posts/edit.js:247
+#, fuzzy
+msgid "Edit RSS URL"
+msgstr "Gist-URL"
+
+#: src/blocks/post-carousel/edit.js:178
+#, fuzzy
+msgid "Post Carousel"
+msgstr "Carrousel"
+
+#: src/blocks/post-carousel/edit.js:184 src/blocks/posts/edit.js:295
+msgid "No posts found. Start publishing or add posts from an %s feed."
+msgstr ""
+
+#: src/blocks/post-carousel/edit.js:187 src/blocks/posts/edit.js:298
+msgid "Retrieve an External Feed"
+msgstr ""
+
+#: src/blocks/post-carousel/edit.js:193 src/blocks/posts/edit.js:304
+msgid "Use External Feed"
+msgstr ""
+
+#. %s: RSS
+#: src/blocks/post-carousel/edit.js:216 src/blocks/posts/edit.js:332
+msgid "%s Feed"
+msgstr ""
+
+#: src/blocks/post-carousel/edit.js:217 src/blocks/posts/edit.js:333
+msgid "%s URLs are generally located at the /feed/ directory of a site."
+msgstr ""
+
+#: src/blocks/post-carousel/edit.js:221 src/blocks/posts/edit.js:337
+#, fuzzy
+msgid "https://example.com/feed…"
+msgstr "https://yelp.com/"
+
+#: src/blocks/post-carousel/edit.js:227 src/blocks/posts/edit.js:343
+#, fuzzy
+msgid "Use URL"
+msgstr "Gist-URL"
+
+#: src/blocks/post-carousel/edit.js:320 src/blocks/posts/edit.js:463
+#: src/blocks/post-carousel/index.php:366 src/blocks/posts/index.php:385
+msgid "Read more"
+msgstr ""
+
+#: src/blocks/post-carousel/index.js:27
+msgid "Display posts or an external blog feed as a carousel."
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:108 src/blocks/posts/inspector.js:174
+msgid "Number of posts"
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:38
+#, fuzzy
+msgid "Post Carousel Settings"
+msgstr "Kleurinstellingen"
+
+#: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
+#, fuzzy
+msgid "Post Date"
+msgstr "Carrousel"
+
+#: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
+#, fuzzy
+msgid "Showing the publish date."
+msgstr "De prijs van dit item wordt weergegeven."
+
+#: src/blocks/post-carousel/inspector.js:46 src/blocks/posts/inspector.js:86
+#, fuzzy
+msgid "Toggle to show the publish date."
+msgstr "Schakel dit in om de metadata van de gist weer te geven."
+
+#: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
+#, fuzzy
+msgid "Post Content"
+msgstr "Carrousel"
+
+#: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
+#, fuzzy
+msgid "Showing the post content."
+msgstr "De knop voor call-to-action wordt weergegeven."
+
+#: src/blocks/post-carousel/inspector.js:56 src/blocks/posts/inspector.js:96
+#, fuzzy
+msgid "Toggle to show the post content."
+msgstr "Schakel dit in om de metadata van de gist weer te geven."
+
+#: src/blocks/post-carousel/inspector.js:62 src/blocks/posts/inspector.js:102
+msgid "Max words in content"
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:86 src/blocks/posts/inspector.js:152
+#, fuzzy
+msgid "Feed Settings"
+msgstr "Functie-instellingen"
+
+#: src/blocks/post-carousel/inspector.js:90 src/blocks/posts/inspector.js:156
+msgid "My Blog"
+msgstr ""
+
+#: src/blocks/post-carousel/inspector.js:91 src/blocks/posts/inspector.js:157
+msgid "External Feed"
+msgstr ""
+
+#: src/blocks/posts/edit.js:260
+#, fuzzy
+msgid "Image on left"
+msgstr "Media links"
+
+#: src/blocks/posts/edit.js:265
+#, fuzzy
+msgid "Image on right"
+msgstr "Media rechts"
+
+#: src/blocks/posts/edit.js:289
+msgid "Blog Posts"
+msgstr ""
+
+#: src/blocks/posts/index.js:27
+msgid "Display posts or an RSS feed as stacked or horizontal cards."
+msgstr ""
+
+#: src/blocks/posts/inspector.js:129
+#, fuzzy
+msgid "Thumbnail Size"
+msgstr "Kolomgrootte"
+
+#: src/blocks/posts/inspector.js:78
+#, fuzzy
+msgid "Posts Settings"
+msgstr "Gistinstellingen"
+
+#: src/blocks/pricing-table/controls.js:17
+#, fuzzy
+msgid "One Pricing Table"
+msgstr "Tariefoverzicht"
+
+#: src/blocks/pricing-table/controls.js:22
+#, fuzzy
+msgid "Two Pricing Tables"
+msgstr "Tariefoverzicht"
+
+#: src/blocks/pricing-table/controls.js:27
+#, fuzzy
+msgid "Three Pricing Tables"
+msgstr "Tariefoverzicht"
+
+#: src/blocks/pricing-table/controls.js:32
+#, fuzzy
+msgid "Four Pricing Tables"
+msgstr "Tariefoverzicht"
+
+#: src/blocks/pricing-table/controls.js:62
+#, fuzzy
+msgid "Change pricing table count"
+msgstr "Voeg tariefoverzichten toe."
+
+#: src/blocks/pricing-table/edit.js:39
+#, fuzzy
+msgid "Plan %d"
+msgstr "Abonnement %s"
+
+#: src/blocks/pricing-table/index.js:29
+msgid "Add pricing tables to help visitors compare products and plans."
+msgstr ""
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:112
+msgid "Add features"
+msgstr "Functies toevoegen"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:30
+msgid "Buy Now"
+msgstr "Nu kopen"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:82
+msgid "Plan A"
+msgstr "Abonnement A"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:92
+msgid "$"
+msgstr "$"
+
+#: src/blocks/pricing-table/pricing-table-item/index.js:27
+msgid "A pricing table to help visitors compare products and plans."
+msgstr ""
+
+#: src/blocks/row/column/edit.js:90
+#, fuzzy
+msgid "Add background to column"
+msgstr "Achtergrond toevoegen aan %s"
+
+#: src/blocks/row/column/index.js:30
+msgid "An immediate child of a row."
+msgstr "Een onmiddellijk onderliggend element van een rij."
+
+#: src/blocks/row/column/inspector.js:108
+msgid "Column Settings"
+msgstr "Kolominstellingen"
+
+#: src/blocks/row/column/inspector.js:112 src/blocks/row/inspector.js:158
+msgid "Space around the container."
+msgstr "De ruimte rondom de container."
+
+#: src/blocks/row/column/inspector.js:155
+msgid "Width"
+msgstr "Breedte"
+
+#: src/blocks/row/controls.js:74
+#, fuzzy
+msgid "Change row block layout"
+msgstr "Lay-out wijzigen"
+
+#: src/blocks/row/edit.js:121
+msgid "one"
+msgstr "één"
+
+#: src/blocks/row/edit.js:123
+msgid "two"
+msgstr "twee"
+
+#: src/blocks/row/edit.js:125
+msgid "three"
+msgstr "drie"
+
+#: src/blocks/row/edit.js:127
+msgid "four"
+msgstr "vier"
+
+#: src/blocks/row/edit.js:169
+#, fuzzy
+msgid "Add background to row"
+msgstr "Achtergrond toevoegen aan %s"
+
+#: src/blocks/row/edit.js:174
+msgid "One Column"
+msgstr "Eén kolom"
+
+#: src/blocks/row/edit.js:175
+msgid "Two Columns"
+msgstr "Twee kolommen"
+
+#: src/blocks/row/edit.js:176
+msgid "Three Columns"
+msgstr "Drie kolommen"
+
+#: src/blocks/row/edit.js:177
+msgid "Four Columns"
+msgstr "Vier kolommen"
+
+#: src/blocks/row/edit.js:202
+msgid "Row Layout"
+msgstr "Lay-out rij"
+
+#: src/blocks/row/edit.js:202
+msgid "Row"
+msgstr "Rij"
+
+#. %s: 'one' 'two' 'three' and 'four'
+#: src/blocks/row/edit.js:205
+msgid "Now select a layout for this %s column row."
+msgstr "Selecteer nu een lay-out voor deze rij van %s kolom(men)."
+
+#: src/blocks/row/edit.js:206
+msgid "Select the number of columns for this row."
+msgstr "Selecteer het aantal kolommen voor deze rij."
+
+#: src/blocks/row/edit.js:211
+msgid "Select Row Columns"
+msgstr "Rijkolommen selecteren"
+
+#: src/blocks/row/edit.js:236 src/blocks/row/inspector.js:121
+msgid "Select Row Layout"
+msgstr "Lay-out van rij selecteren"
+
+#: src/blocks/row/edit.js:246
+msgid "Back to Columns"
+msgstr "Terug naar kolommen"
+
+#: src/blocks/row/index.js:38
+msgid ""
+"Add a structured wrapper for column blocks, then add content blocks you’d "
+"like to the columns."
+msgstr ""
+"Voeg een gestructureerde omslag toe voor kolomblokken en voeg dan de "
+"gewenste contentblokken toe aan de kolommen."
+
+#: src/blocks/row/inspector.js:153
+msgid "Row Settings"
+msgstr "Rij-instellingen"
+
+#: src/blocks/row/inspector.js:98
+#: src/components/block-gallery/options/link-options.js:10
+#: src/components/dimensions-control/dimensions-select.js:10
+msgid "None"
+msgstr "Geen"
+
+#: src/blocks/row/layouts.js:13
+msgid "Equal Split"
+msgstr ""
+
+#: src/blocks/row/layouts.js:14
+msgid "Two Thirds / One Third"
+msgstr ""
+
+#: src/blocks/row/layouts.js:15
+msgid "One Third / Two Thirds"
+msgstr ""
+
+#: src/blocks/row/layouts.js:16
+msgid "Three Quarters / Quarter"
+msgstr ""
+
+#: src/blocks/row/layouts.js:17
+msgid "Quarter / Three Quarters"
+msgstr ""
+
+#: src/blocks/row/layouts.js:20
+msgid "Thirds"
+msgstr ""
+
+#: src/blocks/row/layouts.js:21
+msgid "Half / Quarter / Quarter"
+msgstr ""
+
+#: src/blocks/row/layouts.js:22
+msgid "Quarter / Quarter/ Half"
+msgstr ""
+
+#: src/blocks/row/layouts.js:23
+msgid "Quarter / Half / Quarter"
+msgstr ""
+
+#: src/blocks/row/layouts.js:24
+msgid "One Fifth/ Three Fifths / One Fifth"
+msgstr ""
+
+#: src/blocks/row/layouts.js:27
+msgid "Quarters"
+msgstr ""
+
+#: src/blocks/row/layouts.js:28
+msgid "Two Fifths / Fifth / Fifth / Fifth"
+msgstr ""
+
+#: src/blocks/row/layouts.js:29
+msgid "Fifth / Fifth / Fifth / Two Fifths"
+msgstr ""
+
+#: src/blocks/services/edit.js:44
+msgid "Square"
+msgstr "Vierkant"
+
+#: src/blocks/services/edit.js:49
+msgid "Circle"
+msgstr "Cirkel"
+
+#: src/blocks/services/index.js:27
+msgid "Add up to four columns of services to display."
+msgstr "Voeg tot vier kolommen met services toe om weer te geven."
+
+#: src/blocks/services/inspector.js:67
+msgid "Services Settings"
+msgstr "Instellingen services"
+
+#: src/blocks/services/inspector.js:75
+msgid "Heading Level"
+msgstr "Kopniveau"
+
+#: src/blocks/services/inspector.js:83
+msgid "Action Buttons"
+msgstr "Actieknoppen"
+
+#: src/blocks/services/inspector.js:87
+msgid "Showing the call to action buttons."
+msgstr "De knoppen voor call-to-actions worden weergegeven."
+
+#: src/blocks/services/inspector.js:88
+msgid "Toggle to show call to action buttons."
+msgstr "Schakel dit in om de knoppen voor call-to-actions weer te geven."
+
+#: src/blocks/services/service/index.js:27
+msgid "A single service item within a services block."
+msgstr "Een enkel service-item binnen een blok met services."
+
+#: src/blocks/services/service/inspector.js:18
+msgid "Service Settings"
+msgstr "Service-instellingen"
+
+#: src/blocks/services/service/inspector.js:20
+msgid "Action Button"
+msgstr "Actieknop"
+
+#: src/blocks/services/service/inspector.js:23
+msgid "Showing the call to action button."
+msgstr "De knop voor call-to-action wordt weergegeven."
+
+#: src/blocks/services/service/inspector.js:24
+msgid "Toggle to show a call to action button."
+msgstr "Schakel dit in om een knop voor een call-to-action weer te geven."
+
+#: src/blocks/shape-divider/controls.js:28
+msgid "Flip horiztonally"
+msgstr "Horizontaal draaien"
+
+#: src/blocks/shape-divider/controls.js:33
+msgid "Flip vertically"
+msgstr "Verticaal draaien"
+
+#: src/blocks/shape-divider/index.js:29
+msgid "Add a shape divider to visually distinquish page sections."
+msgstr ""
+"Voeg een vormverdeelstuk toe om de paginasecties op visuele wijze van elkaar "
+"te onderscheiden."
+
+#: src/blocks/shape-divider/inspector.js:53
+msgid "Divider Settings"
+msgstr "Instellingen scheiding"
+
+#: src/blocks/shape-divider/inspector.js:55
+msgid "Shape Height in pixels"
+msgstr "Hoogte vorm in pixels"
+
+#: src/blocks/shape-divider/inspector.js:73
+msgid "Background Height in pixels"
+msgstr "Hoogte achtergrond in pixels"
+
+#: src/blocks/shape-divider/inspector.js:98
+msgid "Shape Color"
+msgstr "Vormkleur"
+
+#: src/blocks/share/edit.js:113 src/blocks/share/index.php:133
+msgid "Share on Facebook"
+msgstr "Delen op Facebook"
+
+#: src/blocks/share/edit.js:121 src/blocks/share/index.php:137
+msgid "Share on Twitter"
+msgstr "Delen op Twitter"
+
+#: src/blocks/share/edit.js:129 src/blocks/share/index.php:141
+msgid "Share on Pinterest"
+msgstr "Delen op Pinterest"
+
+#: src/blocks/share/edit.js:137
+msgid "Share on LinkedIn"
+msgstr "Delen op LinkedIn"
+
+#: src/blocks/share/edit.js:145 src/blocks/share/index.php:149
+msgid "Share via Email"
+msgstr "Delen via e-mail"
+
+#: src/blocks/share/edit.js:153 src/blocks/share/index.php:153
+msgid "Share on Tumblr"
+msgstr "Delen op Tumblr"
+
+#: src/blocks/share/edit.js:161 src/blocks/share/index.php:157
+msgid "Share on Google"
+msgstr "Delen op Google"
+
+#: src/blocks/share/edit.js:169 src/blocks/share/index.php:161
+msgid "Share on Reddit"
+msgstr "Delen op Reddit"
+
+#: src/blocks/share/index.js:25
+msgid "Add social sharing links to help you get likes and shares."
+msgstr ""
+"Voeg links naar sociale media toe om meer vind-ik-leuks en gedeelde items te "
+"krijgen."
+
+#: src/blocks/share/inspector.js:113
+#: src/blocks/social-profiles/inspector.js:117
+msgid "Social Colors"
+msgstr "Kleuren sociale media"
+
+#: src/blocks/share/inspector.js:129
+#: src/blocks/social-profiles/inspector.js:133
+msgid "Icon Size"
+msgstr "Pictogramgrootte"
+
+#: src/blocks/share/inspector.js:138
+#: src/blocks/social-profiles/inspector.js:142
+msgid "Circle Size"
+msgstr "Cirkelgrootte"
+
+#: src/blocks/share/inspector.js:147
+#: src/blocks/social-profiles/inspector.js:151
+msgid "Button Size"
+msgstr "Knopgrootte"
+
+#: src/blocks/share/inspector.js:155
+msgid "Icons"
+msgstr "Pictogrammen"
+
+#: src/blocks/share/inspector.js:157 src/blocks/social-profiles/edit.js:205
+#: src/blocks/social-profiles/index.php:72
+msgid "Twitter"
+msgstr "Twitter"
+
+#: src/blocks/share/inspector.js:162 src/blocks/social-profiles/edit.js:159
+#: src/blocks/social-profiles/index.php:68
+msgid "Facebook"
+msgstr "Facebook"
+
+#: src/blocks/share/inspector.js:167 src/blocks/social-profiles/edit.js:299
+#: src/blocks/social-profiles/index.php:80
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: src/blocks/share/inspector.js:172 src/blocks/social-profiles/edit.js:347
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
+#: includes/class-coblocks-form.php:321
+msgid "Email"
+msgstr "E-mail"
+
+#: src/blocks/share/inspector.js:182
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: src/blocks/share/inspector.js:187
+msgid "Google"
+msgstr "Google"
+
+#: src/blocks/share/inspector.js:192
+msgid "Reddit"
+msgstr "Reddit"
+
+#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:36
+msgid "Share button colors are enabled."
+msgstr "De kleuren voor deelknoppen zijn ingeschakeld."
+
+#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:37
+msgid "Toggle to use official colors from each social media platform."
+msgstr ""
+"Schakel dit in om de officiële kleuren van elk platform voor sociale media "
+"te gebruiken."
+
+#: src/blocks/social-profiles/edit.js:142
+msgid "Add Facebook Profile"
+msgstr "Facebook-profiel toevoegen"
+
+#: src/blocks/social-profiles/edit.js:174
+msgid "https://facebook.com/"
+msgstr "https://facebook.com/"
+
+#: src/blocks/social-profiles/edit.js:188
+msgid "Add Twitter Profile"
+msgstr "Twitter-profiel toevoegen"
+
+#: src/blocks/social-profiles/edit.js:220
+msgid "https://twitter.com/"
+msgstr "https://twitter.com/"
+
+#: src/blocks/social-profiles/edit.js:234
+msgid "Add Instagram Profile"
+msgstr "Instagram-profiel toevoegen"
+
+#: src/blocks/social-profiles/edit.js:251
+#: src/blocks/social-profiles/index.php:76
+msgid "Instagram"
+msgstr "Instagram"
+
+#: src/blocks/social-profiles/edit.js:266
+msgid "https://instagram.com/"
+msgstr "https://instagram.com/"
+
+#: src/blocks/social-profiles/edit.js:282
+msgid "Add Pinterest Profile"
+msgstr "Pinterest-profiel toevoegen"
+
+#: src/blocks/social-profiles/edit.js:314
+msgid "https://pinterest.com/"
+msgstr "https://pinterest.com/"
+
+#: src/blocks/social-profiles/edit.js:330
+msgid "Add LinkedIn Profile"
+msgstr "LinkedIn-profiel toevoegen"
+
+#: src/blocks/social-profiles/edit.js:362
+msgid "https://linkedin.com/"
+msgstr "https://linkedin.com/"
+
+#: src/blocks/social-profiles/edit.js:376
+msgid "Add YouTube Profile"
+msgstr "YouTube-profiel toevoegen"
+
+#: src/blocks/social-profiles/edit.js:393
+#: src/blocks/social-profiles/index.php:89
+msgid "YouTube"
+msgstr "YouTube"
+
+#: src/blocks/social-profiles/edit.js:408
+msgid "https://youtube.com/"
+msgstr "https://youtube.com/"
+
+#: src/blocks/social-profiles/edit.js:422
+msgid "Add Yelp Profile"
+msgstr "Yelp-profiel toevoegen"
+
+#: src/blocks/social-profiles/edit.js:439
+#: src/blocks/social-profiles/index.php:93
+msgid "Yelp"
+msgstr "Yelp"
+
+#: src/blocks/social-profiles/edit.js:454
+msgid "https://yelp.com/"
+msgstr "https://yelp.com/"
+
+#: src/blocks/social-profiles/edit.js:468
+msgid "Add Houzz Profile"
+msgstr "Houzz-profiel toevoegen"
+
+#: src/blocks/social-profiles/edit.js:485
+#: src/blocks/social-profiles/index.php:97
+msgid "Houzz"
+msgstr "Houzz"
+
+#: src/blocks/social-profiles/edit.js:500
+msgid "https://houzz.com/"
+msgstr "https://houzz.com/"
+
+#: src/blocks/social-profiles/index.js:25
+#, fuzzy
+msgid "Grow your audience with links to social media profiles."
+msgstr "Geef links weer naar profielen op sociale media."
+
+#: src/blocks/social-profiles/inspector.js:159
+msgid "Profile Links"
+msgstr "Profiellinks"
+
+#: src/components/background/controls.js:53
+msgid "Edit Background"
+msgstr "Achtergrond bewerken"
+
+#: src/components/background/controls.js:72
+msgid "Remove Background"
+msgstr "Achtergrond verwijderen"
+
+#: src/components/background/controls.js:96
+msgid "Background"
+msgstr "Achtergrond"
+
+#: src/components/background/panel.js:113
+msgid "Background Settings"
+msgstr "Achtergrondinstellingen"
+
+#: src/components/background/panel.js:119
+msgid "Fixed Background"
+msgstr "Herstelde achtergrond"
+
+#: src/components/background/panel.js:135
+msgid "Background Opacity"
+msgstr "Transparantie achtergrond"
+
+#: src/components/background/panel.js:168
+msgid "Repeat"
+msgstr "Herhalen"
+
+#: src/components/background/panel.js:177
+msgid "Position"
+msgstr "Positie"
+
+#: src/components/background/panel.js:185
+msgid "Display"
+msgstr "Weergeven"
+
+#: src/components/background/panel.js:193
+msgid "Mute Video"
+msgstr "Video dempen"
+
+#: src/components/background/panel.js:194
+msgid "Muting the background video."
+msgstr "De achtergrondvideo wordt gedempt."
+
+#: src/components/background/panel.js:194
+msgid "Toggle to mute the video."
+msgstr "Schakel dit in om de video te dempen."
+
+#: src/components/background/panel.js:201
+msgid "Loop Video"
+msgstr "Video herhalen"
+
+#: src/components/background/panel.js:202
+msgid "Looping the background video."
+msgstr "De achtergrondvideo wordt herhaald."
+
+#: src/components/background/panel.js:202
+msgid "Toggle to loop the video."
+msgstr "Schakel dit in om de video te herhalen."
+
+#: src/components/background/panel.js:211
+msgid "Remove background"
+msgstr "Achtergrond verwijderen"
+
+#: src/components/background/panel.js:232
+msgid "Remove "
+msgstr "Verwijderen "
+
+#: src/components/block-gallery/gallery-image.js:189
+msgid "Move Image Backward"
+msgstr "Afbeelding naar achteren verplaatsen"
+
+#: src/components/block-gallery/gallery-image.js:197
+msgid "Move Image Forward"
+msgstr "Afbeelding naar voren verplaatsen"
+
+#: src/components/block-gallery/gallery-link-settings.js:67
+msgid "Link To"
+msgstr "Link naar"
+
+#. %s: Type of gallery
+#: src/components/block-gallery/gallery-placeholder.js:71
+msgid "%s Gallery"
+msgstr "Galerij %s"
+
+#: src/components/block-gallery/gallery-uploader.js:53
+msgid "Upload an image"
+msgstr "Een afbeelding uploaden"
+
+#: src/components/block-gallery/options/link-options.js:11
+msgid "Media File"
+msgstr "Mediabestand"
+
+#: src/components/block-gallery/options/link-options.js:12
+msgid "Attachment Page"
+msgstr "Bijlagepagina"
+
+#: src/components/block-gallery/options/link-options.js:13
+msgid "Custom URL"
+msgstr "Aangepaste URL"
+
+#: src/components/crop-settings/index.js:275
+msgid "Crop settings image placeholder"
+msgstr ""
+
+#: src/components/crop-settings/index.js:304
+#, fuzzy
+msgid "Image Orientation"
+msgstr "Oriëntatie"
+
+#: src/components/crop-settings/index.js:310
+msgid "Rotate counter-clockwise"
+msgstr ""
+
+#: src/components/crop-settings/index.js:316
+msgid "Rotate clockwise"
+msgstr ""
+
+#: src/components/crop-settings/index.js:325
+msgid "Reset image cropping options"
+msgstr ""
+
+#: src/components/crop-settings/index.js:327
+#, fuzzy
+msgid "Reset All"
+msgstr "Opnieuw instellen"
+
+#: src/components/dimensions-control/index.js:442
+msgid "Select Units"
+msgstr "Eenheden selecteren"
+
+#. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
+#: src/components/dimensions-control/index.js:453
+msgid "%s Units"
+msgstr "Eenheden %s"
+
+#. %s: a texual label
+#: src/components/dimensions-control/index.js:468
+msgid "Turn off advanced %s settings"
+msgstr "Geavanceerde instellingen %s uitschakelen"
+
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:640
+msgid "%s Top"
+msgstr "Top %s"
+
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:651
+msgid "%s Right"
+msgstr "Rechts %s"
+
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:662
+msgid "%s Bottom"
+msgstr "Onder %s"
+
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:673
+msgid "%s Left"
+msgstr "Links %s"
+
+#: src/components/dimensions-control/index.js:679
+msgid "Unsync"
+msgstr "Niet meer synchroniseren"
+
+#: src/components/dimensions-control/index.js:679
+msgid "Sync"
+msgstr "Synchroniseren"
+
+#: src/components/dimensions-control/index.js:682
+msgid "Sync Units"
+msgstr "Eenheden synchronisatie"
+
+#: src/components/dimensions-control/index.js:699
+msgid "Top"
+msgstr "Boven"
+
+#: src/components/dimensions-control/index.js:700
+msgid "Right"
+msgstr "Rechts"
+
+#: src/components/dimensions-control/index.js:701
+msgid "Bottom"
+msgstr "Onder"
+
+#: src/components/dimensions-control/index.js:702
+msgid "Left"
+msgstr "Links"
+
+#. %s:  a texual label
+#: src/components/dimensions-control/index.js:722
+msgid "Advanced %s settings"
+msgstr "Geavanceerde instellingen %s"
+
+#: src/components/dimensions-control/index.js:725
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#: src/components/font-family/index.js:16
+msgid "Default"
+msgstr "Standaard"
+
+#: src/components/grid-control/index.js:122
+msgid "Layout"
+msgstr "Lay-out"
+
+#: src/components/grid-control/index.js:123
+msgid "Select Layout"
+msgstr "Lay-out selecteren"
+
+#: src/components/grid-control/index.js:161
+msgid "Fullscreen"
+msgstr "Volledig scherm"
+
+#: src/components/grid-control/index.js:179
+msgid "Fullscreen mode is enabled."
+msgstr "De modus voor volledig scherm is ingeschakeld."
+
+#: src/components/grid-control/index.js:179
+msgid "Toggle to enable fullscreen mode."
+msgstr "Schakel dit in om de modus voor volledig scherm in te schakelen."
+
+# %s: heading level e.g: "1", "2", "3"
+#. %d: heading level e.g: "1", "2", "3"
+#: src/components/heading-toolbar/index.js:18
+msgid "Heading %d"
+msgstr "Kop %d"
+
+#: src/components/inline-color-picker/index.js:30
+msgid "Custom color picker"
+msgstr "Aangepaste kleuren kiezen"
+
+#: src/components/media-filter-control/index.js:84
+msgid "Apply filter"
+msgstr "Filter toepassen"
+
+#: src/components/responsive-base-control/index.js:68
+msgid "Height"
+msgstr "Hoogte"
+
+# Control name
+#. %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#: src/components/responsive-tabs-control/index.js:65
+msgid "Mobile %s"
+msgstr "Mobiel %s"
+
+#: src/components/size-control/index.js:180
+msgid "Select Size"
+msgstr "Grootte selecteren"
+
+#: src/components/size-control/index.js:69
+msgid "Extra Large"
+msgstr "Extra groot"
+
+#: src/components/slider-panel/autoplay-options.js:10
+msgid "One Second"
+msgstr "Eén seconde"
+
+#: src/components/slider-panel/autoplay-options.js:11
+msgid "Two Seconds"
+msgstr "Twee seconden"
+
+#: src/components/slider-panel/autoplay-options.js:12
+msgid "Three Seconds"
+msgstr "Drie seconden"
+
+#: src/components/slider-panel/autoplay-options.js:13
+msgid "Four Seconds"
+msgstr "Vier seconden"
+
+#: src/components/slider-panel/autoplay-options.js:14
+msgid "Five Seconds"
+msgstr "Vijf seconden"
+
+#: src/components/slider-panel/autoplay-options.js:15
+#, fuzzy
+msgid "Six Seconds"
+msgstr "Zes seconden"
+
+#: src/components/slider-panel/autoplay-options.js:16
+msgid "Seven Seconds"
+msgstr "Zeven seconden"
+
+#: src/components/slider-panel/autoplay-options.js:17
+msgid "Eight Seconds"
+msgstr "Acht seconden"
+
+#: src/components/slider-panel/autoplay-options.js:18
+msgid "Nine Seconds"
+msgstr "Negen seconden"
+
+#: src/components/slider-panel/autoplay-options.js:19
+msgid "Ten Seconds"
+msgstr "Tien seconden"
+
+#: src/components/slider-panel/index.js:102
+msgid "Free Scroll"
+msgstr ""
+
+#: src/components/slider-panel/index.js:108
+msgid "Arrow Navigation"
+msgstr "Pijlnavigatie"
+
+#: src/components/slider-panel/index.js:114
+msgid "Dot Navigation"
+msgstr "Stipnavigatie"
+
+#: src/components/slider-panel/index.js:120
+msgid "Align Cells"
+msgstr ""
+
+#: src/components/slider-panel/index.js:24
+msgid "seconds"
+msgstr "seconden"
+
+#: src/components/slider-panel/index.js:24
+msgid "second"
+msgstr "seconde"
+
+# 1. Speed of the slider, 2: Time until the slide advances
+#. 1. Speed of the slider, 2: Time until the slide advances
+#: src/components/slider-panel/index.js:27
+msgid "Advancing after %1$d %2$s."
+msgstr "Doorgaan na %1$d %2$s."
+
+# 1. Speed of the slider, 2: Time until the slide advances
+#. 1. Speed of the slider, 2: Time until the slide advances
+#: src/components/slider-panel/index.js:27
+msgid "Automatically advance to the next slide."
+msgstr "Ga automatisch door naar de volgende dia."
+
+#: src/components/slider-panel/index.js:31
+#, fuzzy
+msgid "Dragging and flicking enabled."
+msgstr "Slepen en knijpen zijn ingeschakeld op desktops en mobiele apparaten."
+
+#: src/components/slider-panel/index.js:31
+#, fuzzy
+msgid "Toggle to enable drag functionality."
+msgstr ""
+"Schakel dit in om de sleepfunctie in te schakelen op desktops en mobiele "
+"apparaten."
+
+#: src/components/slider-panel/index.js:35
+msgid "Showing slide navigation arrows."
+msgstr "De pijlen voor navigatie in dia's worden weergegeven."
+
+#: src/components/slider-panel/index.js:35
+msgid "Toggle to show slide navigation arrows."
+msgstr "Schakel dit in om de pijlen voor navigatie in dia's weer te geven."
+
+#: src/components/slider-panel/index.js:39
+#, fuzzy
+msgid "Showing dot navigation."
+msgstr "De pijlen voor stipnavigatie worden weergegeven."
+
+#: src/components/slider-panel/index.js:39
+msgid "Toggle to show dot navigation."
+msgstr "Schakel dit in om de stipnavigatie weer te geven."
+
+#: src/components/slider-panel/index.js:43
+#, fuzzy
+msgid "Aligning slides to the left."
+msgstr "De ruimte in de container."
+
+#: src/components/slider-panel/index.js:43
+#, fuzzy
+msgid "Aligning slides to the center."
+msgstr "De ruimte in de container."
+
+#: src/components/slider-panel/index.js:46
+#, fuzzy
+msgid "Pausing autoplay when hovering."
+msgstr "Schakel dit in om de video te dempen."
+
+#: src/components/slider-panel/index.js:46
+#, fuzzy
+msgid "Toggle to pause autoplay when hovered."
+msgstr "Schakel dit in om de video te dempen."
+
+#: src/components/slider-panel/index.js:50
+#, fuzzy
+msgid "Scrolling without fixed slides enabled."
+msgstr "Schakel dit in om de video te herhalen."
+
+#: src/components/slider-panel/index.js:50
+#, fuzzy
+msgid "Toggle to scroll without fixed slides."
+msgstr "Schakel dit in om de video te herhalen."
+
+#: src/components/slider-panel/index.js:72
+msgid "Slider Settings"
+msgstr "Instellingen schuifregelaar"
+
+#: src/components/slider-panel/index.js:74
+msgid "Autoplay"
+msgstr "Automatisch afspelen"
+
+#: src/components/slider-panel/index.js:81
+msgid "Transition Speed"
+msgstr "Overgangssnelheid"
+
+#: src/components/slider-panel/index.js:88
+msgid "Pause on Hover"
+msgstr ""
+
+#: src/components/slider-panel/index.js:96
+msgid "Draggable"
+msgstr "Sleepbaar"
+
+#: src/components/typography-controls/index.js:164
+msgid "Font"
+msgstr "Lettertype"
+
+#: src/components/typography-controls/index.js:171
+msgid "Weight"
+msgstr "Gewicht"
+
+#: src/components/typography-controls/index.js:180
+msgid "Transform"
+msgstr "Transformeren"
+
+#: src/components/typography-controls/index.js:200
+msgid "Line Height"
+msgstr "Regelhoogte"
+
+#: src/components/typography-controls/index.js:211
+msgid "Letter Spacing"
+msgstr "Letterafstand"
+
+#: src/components/typography-controls/index.js:223
+msgid "No Top Spacing"
+msgstr "Geen ruimte bovenkant"
+
+#: src/components/typography-controls/index.js:228
+msgid "No Bottom Spacing"
+msgstr "Geen ruimte onderkant"
+
+#: src/components/typography-controls/index.js:59
+msgid "Change typography"
+msgstr "Typografie wijzigen"
+
+#: src/extensions/advanced-controls/index.js:109
+msgid "Stack on Mobile"
+msgstr "Stapel op mobiel apparaat"
+
+#: src/extensions/advanced-controls/index.js:116
+msgid "Responsiveness is enabled."
+msgstr "Reactieve modus is ingeschakeld."
+
+#: src/extensions/advanced-controls/index.js:117
+msgid "Toggle to stack elements on top of each other on smaller viewports."
+msgstr ""
+"Schakel dit in om elementen op elkaar te stapelen bij kleinere viewports."
+
+#: src/extensions/advanced-controls/index.js:125
+msgid "Remove Top Spacing"
+msgstr "Ruimte bovenkant verwijderen"
+
+#: src/extensions/advanced-controls/index.js:135
+#, fuzzy
+msgid "Toggle to add top margin back."
+msgstr "Schakel dit in om een schaduw aan de kaart toe te voegen."
+
+#: src/extensions/advanced-controls/index.js:135
+#, fuzzy
+msgid "Toggle to remove any top margin."
+msgstr "Schakel dit in om de stipnavigatie weer te geven."
+
+#: src/extensions/advanced-controls/index.js:140
+msgid "Remove Bottom Spacing"
+msgstr "Ruimte onderkant verwijderen"
+
+#: src/extensions/advanced-controls/index.js:163
+#, fuzzy
+msgid "Toggle to add bottom margin back."
+msgstr "Schakel dit in om een schaduw aan de kaart toe te voegen."
+
+#: src/extensions/advanced-controls/index.js:163
+#, fuzzy
+msgid "Toggle to remove any bottom margin."
+msgstr "Schakel dit in om de stipnavigatie weer te geven."
+
+#: src/extensions/button-controls/index.js:71
+msgid "Display Fullwidth"
+msgstr "Volledige breedte weergeven"
+
+#: src/extensions/button-controls/index.js:74
+msgid "Displaying as full width."
+msgstr "Wordt op volledige breedte weergegeven."
+
+#: src/extensions/button-controls/index.js:74
+msgid "Toggle to display button as full width."
+msgstr "Schakel dit in om de knop op volledige breedte weer te geven."
+
+#: src/extensions/image-crop/index.js:169
+#, fuzzy
+msgid "Crop Settings"
+msgstr "Hero-instellingen"
+
+#: src/formats/uppercase/index.js:35
+msgid "Uppercase"
+msgstr "Hoofdletters"
+
+#: src/sidebars/block-manager/components/modal.js:132
+msgid "Manage Blocks"
+msgstr "Blokken beheren"
+
+#: src/sidebars/block-manager/components/modal.js:136
+msgid "Block Manager"
+msgstr "Blokbeheer"
+
+#: src/sidebars/block-manager/components/modal.js:138
+msgid "Close"
+msgstr "Sluiten"
+
+#: src/sidebars/block-manager/components/modal.js:147
+msgid "Search for a block"
+msgstr "Zoeken naar een blok"
+
+#: src/sidebars/block-manager/components/options/disable-blocks.js:170
+msgid "This block is added to the page and cannot currently be disabled"
+msgstr ""
+"Dit blok wordt toegevoegd aan de pagina en kan momenteel niet worden "
+"uitgeschakeld"
+
+#: src/sidebars/block-manager/components/options/disable-blocks.js:185
+msgid "Disable all"
+msgstr "Alles uitschakelen"
+
+#. %s: search text
+#: src/sidebars/block-manager/components/options/disable-blocks.js:233
+msgid "No \"%s\" blocks found."
+msgstr "Geen blokken voor %s gevonden."
+
+#. %s: Plugin title, i.e. CoBlocks
+#: src/utils/block-category.js:21
+msgid "%s Galleries"
+msgstr "Galerijen %s"
+
+#: src/blocks/accordion/accordion-item/controls.js:28
+#, fuzzy
+msgctxt "Toggle label to display the accordion open"
+msgid "Display open"
+msgstr "Weergave open"
+
+#: src/blocks/accordion/accordion-item/edit.js:65
+#, fuzzy
+msgctxt "Accordion is the block name"
+msgid "Add accordion title..."
+msgstr "Accordeontitel toevoegen..."
+
+#: src/blocks/accordion/accordion-item/index.js:26
+#, fuzzy
+msgctxt "This is an inner block for the Accordion Block."
+msgid "Accordion Item"
+msgstr "Accordeonitem"
+
+#: src/blocks/accordion/accordion-item/index.js:29
+#: src/blocks/accordion/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "tabs"
+msgstr "tabbladen"
+
+#: src/blocks/accordion/accordion-item/index.js:29
+#: src/blocks/accordion/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "faq"
+msgstr "veelgestelde vragen"
+
+#: src/blocks/alert/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "notice"
+msgstr "kennisgeving"
+
+#: src/blocks/alert/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "message"
+msgstr "bericht"
+
+#: src/blocks/author/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "biography"
+msgstr "biografie"
+
+#: src/blocks/author/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "profile"
+msgstr "profiel"
+
+#: src/blocks/buttons/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "link"
+msgstr "link"
+
+#: src/blocks/buttons/index.js:31 src/blocks/hero/index.js:43
+#, fuzzy
+msgctxt "block keyword"
+msgid "cta"
+msgstr "cta"
+
+#: src/blocks/click-to-tweet/index.js:31 src/blocks/social-profiles/index.js:28
+#, fuzzy
+msgctxt "block keyword"
+msgid "share"
+msgstr "delen"
+
+#: src/blocks/click-to-tweet/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "twitter"
+msgstr "twitter"
+
+#: src/blocks/dynamic-separator/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "spacer"
+msgstr "tussenstuk"
+
+#: src/blocks/features/index.js:37
+#, fuzzy
+msgctxt "block keyword"
+msgid "services"
+msgstr "services"
+
+#: src/blocks/food-and-drinks/food-item/index.js:29
+#: src/blocks/food-and-drinks/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "menu"
+msgstr "menu"
+
+#: src/blocks/food-and-drinks/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "restaurant"
+msgstr "restaurant"
+
+#: src/blocks/form/fields/date/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "calendar"
+msgstr "Standaard"
+
+#: src/blocks/form/fields/date/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "day month year"
+msgstr "een jaar"
+
+#: src/blocks/form/fields/email/index.js:22
+#, fuzzy
+msgctxt "block keyword"
+msgid "e-mail"
+msgstr "e-mail"
+
+#: src/blocks/form/fields/email/index.js:22
+#, fuzzy
+msgctxt "block keyword"
+msgid "mail"
+msgstr "mail"
+
+#: src/blocks/form/fields/name/index.js:22
+#, fuzzy
+msgctxt "block keyword"
+msgid "first name"
+msgstr "Achternaam"
+
+#: src/blocks/form/fields/name/index.js:22
+#, fuzzy
+msgctxt "block keyword"
+msgid "last name"
+msgstr "Achternaam"
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "telephone"
+msgstr ""
+
+#: src/blocks/form/fields/phone/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "cellular"
+msgstr "Rond"
+
+# Control name
+#: src/blocks/form/fields/phone/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "mobile"
+msgstr "Mobiel %s"
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Choose"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "Select"
+msgstr "Grootte selecteren"
+
+#: src/blocks/form/fields/radio/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "Option"
+msgstr "Bijschriften"
+
+#: src/blocks/form/fields/textarea/index.js:22
+#, fuzzy
+msgctxt "block keyword"
+msgid "Textarea"
+msgstr "Tekstgedeelte"
+
+#: src/blocks/form/fields/textarea/index.js:22
+#, fuzzy
+msgctxt "block keyword"
+msgid "Multiline text"
+msgstr "Meerregelige tekst"
+
+#: src/blocks/form/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "email"
+msgstr "e-mail"
+
+#: src/blocks/form/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "about"
+msgstr "over"
+
+#: src/blocks/form/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "contact"
+msgstr "contact"
+
+#: src/blocks/gallery-carousel/index.js:38
+#: src/blocks/gallery-collage/index.js:36
+#: src/blocks/gallery-masonry/index.js:37
+#: src/blocks/gallery-stacked/index.js:37
+#, fuzzy
+msgctxt "block keyword"
+msgid "gallery"
+msgstr "galerij"
+
+#: src/blocks/gallery-carousel/index.js:38
+#: src/blocks/gallery-collage/index.js:36
+#: src/blocks/gallery-masonry/index.js:37
+#: src/blocks/gallery-stacked/index.js:37
+#, fuzzy
+msgctxt "block keyword"
+msgid "photos"
+msgstr "foto's"
+
+#: src/blocks/gallery-masonry/index.js:37
+#: src/blocks/gallery-stacked/index.js:37
+#, fuzzy
+msgctxt "block keyword"
+msgid "lightbox"
+msgstr "Nacht"
+
+#: src/blocks/gif/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "animated"
+msgstr "geanimeerd"
+
+#: src/blocks/gist/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "code"
+msgstr "code"
+
+#: src/blocks/hero/index.js:43
+#, fuzzy
+msgctxt "block keyword"
+msgid "button"
+msgstr "knop"
+
+#: src/blocks/hero/index.js:43
+#, fuzzy
+msgctxt "block keyword"
+msgid "call to action"
+msgstr "call-to-action"
+
+#: src/blocks/highlight/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "text"
+msgstr "tekst"
+
+#: src/blocks/highlight/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "paragraph"
+msgstr "paragraaf"
+
+#: src/blocks/icon/index.js:35 src/blocks/social-profiles/index.js:28
+#, fuzzy
+msgctxt "block keyword"
+msgid "icons"
+msgstr "pictogrammen"
+
+#: src/blocks/logos/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "clients"
+msgstr "klanten"
+
+#: src/blocks/logos/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "proof"
+msgstr "bewijs"
+
+#: src/blocks/logos/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "testimonials"
+msgstr "getuigenissen"
+
+#: src/blocks/map/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "address"
+msgstr "adres"
+
+#: src/blocks/map/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "maps"
+msgstr "kaarten"
+
+#: src/blocks/map/index.js:30
+#, fuzzy
+msgctxt "block keyword"
+msgid "google"
+msgstr "google"
+
+#: src/blocks/media-card/index.js:38
+#, fuzzy
+msgctxt "block keyword"
+msgid "image"
+msgstr "afbeelding"
+
+#: src/blocks/media-card/index.js:38
+#, fuzzy
+msgctxt "block keyword"
+msgid "video"
+msgstr "video"
+
+#: src/blocks/post-carousel/index.js:29
+msgctxt "block keyword"
+msgid "posts"
+msgstr ""
+
+#: src/blocks/post-carousel/index.js:29
+msgctxt "block keyword"
+msgid "slider"
+msgstr ""
+
+#: src/blocks/post-carousel/index.js:29 src/blocks/posts/index.js:29
+msgctxt "block keyword"
+msgid "latest"
+msgstr ""
+
+#: src/blocks/posts/index.js:29
+msgctxt "block keyword"
+msgid "blog"
+msgstr ""
+
+#: src/blocks/posts/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "rss"
+msgstr "adres"
+
+#: src/blocks/pricing-table/index.js:31
+#: src/blocks/pricing-table/pricing-table-item/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "landing"
+msgstr "landing"
+
+#: src/blocks/pricing-table/index.js:31
+#: src/blocks/pricing-table/pricing-table-item/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "comparison"
+msgstr "vergelijking"
+
+#: src/blocks/row/index.js:40
+#, fuzzy
+msgctxt "block keyword"
+msgid "rows"
+msgstr "rijen"
+
+#: src/blocks/row/index.js:40
+#, fuzzy
+msgctxt "block keyword"
+msgid "columns"
+msgstr "kolommen"
+
+#: src/blocks/row/index.js:40
+#, fuzzy
+msgctxt "block keyword"
+msgid "layouts"
+msgstr "lay-outs"
+
+#: src/blocks/services/index.js:29
+#, fuzzy
+msgctxt "block keyword"
+msgid "features"
+msgstr "functies"
+
+#: src/blocks/shape-divider/index.js:31
+#, fuzzy
+msgctxt "block keyword"
+msgid "separator"
+msgstr "scheiding"
+
+#: src/blocks/share/index.js:28
+#, fuzzy
+msgctxt "block keyword"
+msgid "social"
+msgstr "sociaal"
+
+#: src/blocks/social-profiles/index.js:28
+#, fuzzy
+msgctxt "block keyword"
+msgid "links"
+msgstr "koppelingen"
+
+#: src/blocks/accordion/accordion-item/inspector.js:65
+#, fuzzy
+msgctxt "Visually display open as opposed to closed."
+msgid "Display Open"
+msgstr "Weergave open"
+
+#: src/blocks/accordion/edit.js:74
+#, fuzzy
+msgctxt "Add a child element for the Accordion block"
+msgid "Add Accordion Item"
+msgstr "Accordeonitem toevoegen"
+
+#: src/blocks/accordion/index.js:27
+#, fuzzy
+msgctxt "block title"
+msgid "Accordion"
+msgstr "Accordeon"
+
+#: src/blocks/alert/edit.js:102
+#, fuzzy
+msgctxt "Placeholder text for input box"
+msgid "Write text..."
+msgstr "Tekst schrijven..."
+
+#: src/blocks/alert/edit.js:94
+#, fuzzy
+msgctxt "Placeholder text for input box"
+msgid "Write title..."
+msgstr "Titel schrijven..."
+
+#: src/blocks/alert/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Alert"
+msgstr "Waarschuwing"
+
+#: src/blocks/author/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Author"
+msgstr "Auteur"
+
+#: src/blocks/buttons/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Buttons"
+msgstr "Knoppen"
+
+#: src/blocks/click-to-tweet/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Click to Tweet"
+msgstr "Klik op te tweeten"
+
+#: src/blocks/dynamic-separator/index.js:27
+#, fuzzy
+msgctxt "block name"
+msgid "Dynamic HR"
+msgstr "Dynamische HR"
+
+#: src/blocks/features/feature/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Feature"
+msgstr "Kenmerk"
+
+#: src/blocks/features/index.js:34
+#, fuzzy
+msgctxt "block name"
+msgid "Features"
+msgstr "Functies"
+
+#: src/blocks/food-and-drinks/food-item/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Food Item"
+msgstr "Etenswaar"
+
+#: src/blocks/food-and-drinks/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Food & Drinks"
+msgstr "Eten en drinken"
+
+#: src/blocks/form/fields/date/index.js:19
+msgctxt "block name"
+msgid "Date"
+msgstr ""
+
+#: src/blocks/form/fields/email/index.js:19
+#, fuzzy
+msgctxt "block name"
+msgid "Email"
+msgstr "E-mail"
+
+#: src/blocks/form/fields/name/index.js:19
+#, fuzzy
+msgctxt "block name"
+msgid "Name"
+msgstr "Naam"
+
+#: src/blocks/form/fields/phone/index.js:19
+msgctxt "block name"
+msgid "Phone"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:19
+#, fuzzy
+msgctxt "block name"
+msgid "Radio"
+msgstr "Radius"
+
+#: src/blocks/form/fields/textarea/index.js:19
+#, fuzzy
+msgctxt "block name"
+msgid "Textarea"
+msgstr "Tekstgedeelte"
+
+#: src/blocks/form/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Form"
+msgstr "Formulier"
+
+#: src/blocks/gallery-carousel/index.js:34
+#, fuzzy
+msgctxt "block name"
+msgid "Carousel"
+msgstr "Carrousel"
+
+#: src/blocks/gallery-collage/index.js:33
+#, fuzzy
+msgctxt "block name"
+msgid "Collage"
+msgstr "Instellingen afbeelding"
+
+#: src/blocks/gallery-masonry/index.js:34
+#, fuzzy
+msgctxt "block name"
+msgid "Masonry"
+msgstr "Gemetselde stijl"
+
+#: src/blocks/gallery-stacked/index.js:34
+#, fuzzy
+msgctxt "block name"
+msgid "Stacked"
+msgstr "Gestapeld"
+
+#: src/blocks/gif/index.js:26
+msgctxt "block name"
+msgid "Gif"
+msgstr ""
+
+#: src/blocks/gist/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Gist"
+msgstr "Gist-URL"
+
+#: src/blocks/hero/index.js:40
+#, fuzzy
+msgctxt "block name"
+msgid "Hero"
+msgstr "Hero"
+
+#: src/blocks/highlight/index.js:27
+#, fuzzy
+msgctxt "block name"
+msgid "Highlight"
+msgstr "Opvallend"
+
+#: src/blocks/icon/index.js:32
+#, fuzzy
+msgctxt "block name"
+msgid "Icon"
+msgstr "Pictogram"
+
+#: src/blocks/logos/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Logos & Badges"
+msgstr "Logo's en badges"
+
+#: src/blocks/map/index.js:27
+#, fuzzy
+msgctxt "block name"
+msgid "Map"
+msgstr "Kaart"
+
+#: src/blocks/media-card/index.js:35
+#, fuzzy
+msgctxt "block name"
+msgid "Media Card"
+msgstr "Mediakaart"
+
+#: src/blocks/post-carousel/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Post Carousel"
+msgstr "Carrousel"
+
+#: src/blocks/posts/index.js:26
+msgctxt "block name"
+msgid "Posts"
+msgstr ""
+
+#: src/blocks/pricing-table/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Pricing Table"
+msgstr "Tariefoverzicht"
+
+#: src/blocks/pricing-table/pricing-table-item/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Pricing Table Item"
+msgstr "Item tariefoverzicht"
+
+#: src/blocks/row/column/index.js:29
+#, fuzzy
+msgctxt "block name"
+msgid "Column"
+msgstr "Kolom"
+
+#: src/blocks/row/index.js:37
+#, fuzzy
+msgctxt "block name"
+msgid "Row"
+msgstr "Rij"
+
+#: src/blocks/services/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Services"
+msgstr "Services"
+
+#: src/blocks/services/service/index.js:26
+#, fuzzy
+msgctxt "block name"
+msgid "Service"
+msgstr "Service"
+
+#: src/blocks/shape-divider/index.js:28
+#, fuzzy
+msgctxt "block name"
+msgid "Shape Divider"
+msgstr "Vormverdeelstuk"
+
+#: src/blocks/share/index.js:24
+#, fuzzy
+msgctxt "block name"
+msgid "Share"
+msgstr "Delen"
+
+#: src/blocks/social-profiles/index.js:24
+#, fuzzy
+msgctxt "block name"
+msgid "Social Profiles"
+msgstr "Sociale profielen"
+
+#: src/blocks/alert/index.js:33
+#, fuzzy
+msgctxt "block style"
+msgid "Info"
+msgstr "Info"
+
+#: src/blocks/alert/index.js:34
+#, fuzzy
+msgctxt "block style"
+msgid "Success"
+msgstr "Geslaagd"
+
+#: src/blocks/alert/index.js:35
+#, fuzzy
+msgctxt "block style"
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: src/blocks/alert/index.js:36
+#, fuzzy
+msgctxt "block style"
+msgid "Error"
+msgstr "Fout"
+
+#: src/blocks/dynamic-separator/index.js:32
+msgctxt "block style"
+msgid "Dot"
+msgstr "Stip"
+
+#: src/blocks/dynamic-separator/index.js:33
+msgctxt "block style"
+msgid "Line"
+msgstr "Lijn"
+
+#: src/blocks/dynamic-separator/index.js:34
+msgctxt "block style"
+msgid "Fullwidth"
+msgstr "Volledige breedte"
+
+#: src/blocks/food-and-drinks/edit.js:35
+#, fuzzy
+msgctxt "block style"
+msgid "Grid"
+msgstr "Raster"
+
+#: src/blocks/food-and-drinks/edit.js:42
+#, fuzzy
+msgctxt "block style"
+msgid "List"
+msgstr "Vermelden"
+
+#: src/blocks/gallery-collage/index.js:40
+#: src/extensions/image-styles/index.js:15
+#, fuzzy
+msgctxt "block style"
+msgid "Default"
+msgstr "Standaard"
+
+#: src/blocks/gallery-collage/index.js:45
+msgctxt "block style"
+msgid "Tiled"
+msgstr ""
+
+#: src/blocks/gallery-collage/index.js:49
+#, fuzzy
+msgctxt "block style"
+msgid "Layered"
+msgstr "Lagen"
+
+#: src/blocks/icon/index.js:37
+msgctxt "block style"
+msgid "Outlined"
+msgstr "Uitgelijnd"
+
+#: src/blocks/icon/index.js:38
+msgctxt "block style"
+msgid "Filled"
+msgstr "Opgevuld"
+
+#: src/blocks/posts/edit.js:49
+#, fuzzy
+msgctxt "block style"
+msgid "Stacked"
+msgstr "Gestapeld"
+
+#: src/blocks/posts/edit.js:55
+#, fuzzy
+msgctxt "block style"
+msgid "Horizontal"
+msgstr "Horizontaal herhalen"
+
+#: src/blocks/shape-divider/index.js:38
+msgctxt "block style"
+msgid "Wavy"
+msgstr "Golvend"
+
+#: src/blocks/shape-divider/index.js:39
+msgctxt "block style"
+msgid "Hills"
+msgstr "Heuvels"
+
+#: src/blocks/shape-divider/index.js:40
+msgctxt "block style"
+msgid "Waves"
+msgstr "Golven"
+
+#: src/blocks/shape-divider/index.js:41
+msgctxt "block style"
+msgid "Angled"
+msgstr "Gehoekt"
+
+#: src/blocks/shape-divider/index.js:42
+msgctxt "block style"
+msgid "Sloped"
+msgstr "Aflopend"
+
+#: src/blocks/shape-divider/index.js:43
+msgctxt "block style"
+msgid "Rounded"
+msgstr "Afgerond"
+
+#: src/blocks/shape-divider/index.js:44
+msgctxt "block style"
+msgid "Triangle"
+msgstr "Driehoek"
+
+#: src/blocks/shape-divider/index.js:45
+msgctxt "block style"
+msgid "Pointed"
+msgstr "Gepunt"
+
+#: src/blocks/share/index.js:30 src/blocks/social-profiles/index.js:30
+msgctxt "block style"
+msgid "Mask"
+msgstr "Masker"
+
+#: src/blocks/share/index.js:31 src/blocks/social-profiles/index.js:31
+msgctxt "block style"
+msgid "Icon"
+msgstr "Pictogram"
+
+#: src/blocks/share/index.js:32 src/blocks/social-profiles/index.js:32
+msgctxt "block style"
+msgid "Text"
+msgstr "Tekst"
+
+#: src/blocks/share/index.js:33 src/blocks/social-profiles/index.js:33
+msgctxt "block style"
+msgid "Icon & Text"
+msgstr "Pictogram en tekst"
+
+#: src/blocks/share/index.js:34 src/blocks/social-profiles/index.js:34
+msgctxt "block style"
+msgid "Circular"
+msgstr "Rond"
+
+#: src/extensions/image-styles/index.js:21
+#, fuzzy
+msgctxt "block style"
+msgid "Bottom Wave"
+msgstr "Onder links"
+
+#: src/extensions/image-styles/index.js:27
+#, fuzzy
+msgctxt "block style"
+msgid "Top Wave"
+msgstr "Boven links"
+
+#: src/blocks/author/edit.js:63
+#, fuzzy
+msgctxt "image to represent the post author"
+msgid "Drop to upload as avatar"
+msgstr "Neerzetten om als avatar toe te voegen"
+
+#: src/blocks/author/edit.js:149
+#, fuzzy
+msgctxt "content placeholder"
+msgid "Author link…"
+msgstr "Auteur"
+
+#: src/blocks/features/feature/edit.js:31
+msgctxt "content placeholder"
+msgid "Add feature title..."
+msgstr "Functietitel toevoegen..."
+
+#: src/blocks/features/feature/edit.js:31
+msgctxt "content placeholder"
+msgid "Feature Title"
+msgstr "Functietitel"
+
+#: src/blocks/features/feature/edit.js:32
+msgctxt "content placeholder"
+msgid "Add feature content"
+msgstr "Functiecontent toevoegen"
+
+#: src/blocks/features/feature/edit.js:32
+msgctxt "content placeholder"
+msgid "This is a feature block that you can use to highlight features."
+msgstr "Dit is een functieblok waarmee je functies kunt uitlichten."
 
 #: src/blocks/hero/edit.js:35
 #, fuzzy
@@ -43,6 +3382,1052 @@ msgstr ""
 msgctxt "content placeholder"
 msgid "Secondary button…"
 msgstr ""
+
+#: src/blocks/media-card/edit.js:46
+msgctxt "content placeholder"
+msgid "Add heading..."
+msgstr "Kop toevoegen..."
+
+#: src/blocks/media-card/edit.js:46
+msgctxt "content placeholder"
+msgid "Media Card"
+msgstr "Mediakaart"
+
+#: src/blocks/media-card/edit.js:47
+msgctxt "content placeholder"
+msgid "Add content..."
+msgstr "Content toevoegen..."
+
+#: src/blocks/media-card/edit.js:47
+msgctxt "content placeholder"
+msgid ""
+"Replace this text with descriptive copy to go along with the card image. "
+"Then add more blocks to this card, such as buttons, lists or images."
+msgstr ""
+"Vervang deze tekst door een beschrijving die wordt toegevoegd aan de "
+"kaartafbeelding. Voeg dan meer blokken toe aan deze kaart, zoals knoppen, "
+"lijsten of afbeeldingen."
+
+#: src/blocks/services/service/edit.js:204
+msgctxt "content placeholder"
+msgid "Write title..."
+msgstr "Titel schrijven..."
+
+#: src/blocks/services/service/edit.js:210
+msgctxt "content placeholder"
+msgid "Write description..."
+msgstr "Beschrijving opstellen..."
+
+#: src/blocks/buttons/inspector.js:28
+#, fuzzy
+msgctxt "block settings"
+msgid "Buttons Settings"
+msgstr "Instellingen knoppen"
+
+#: src/blocks/buttons/inspector.js:43
+#, fuzzy
+msgctxt "visually stack buttons one on top of another"
+msgid "Stack on mobile"
+msgstr "Stapel op mobiel apparaat"
+
+#: src/blocks/dynamic-separator/inspector.js:43
+#, fuzzy
+msgctxt "hr is html markup - horizonal rule"
+msgid "Dynamic HR Settings"
+msgstr "Instellingen dynamische HR"
+
+#: src/blocks/gallery-collage/inspector.js:55
+#, fuzzy
+msgctxt "label for no gutter option"
+msgid "None"
+msgstr "Geen"
+
+#: src/blocks/gallery-collage/inspector.js:84
+#, fuzzy
+msgctxt "abbreviation for \"Short\" size"
+msgid "None"
+msgstr "Geen"
+
+#: src/blocks/gallery-collage/inspector.js:60
+#, fuzzy
+msgctxt "label for small gutter option"
+msgid "Small"
+msgstr "Klein"
+
+#: src/blocks/gallery-collage/inspector.js:89 src/blocks/posts/inspector.js:58
+msgctxt "abbreviation for \"Small\" size"
+msgid "S"
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:65
+#, fuzzy
+msgctxt "label for medium gutter option"
+msgid "Medium"
+msgstr "Gemiddeld"
+
+#: src/blocks/gallery-collage/inspector.js:94 src/blocks/posts/inspector.js:63
+msgctxt "abbreviation for \"Medium\" size"
+msgid "M"
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:70
+#, fuzzy
+msgctxt "label for large gutter option"
+msgid "Large"
+msgstr "Groot"
+
+#: src/blocks/gallery-collage/inspector.js:99 src/blocks/posts/inspector.js:68
+msgctxt "abbreviation for \"Large\" size"
+msgid "L"
+msgstr ""
+
+#: src/blocks/posts/inspector.js:73
+msgctxt "abbreviation for \"Large\" size"
+msgid "XL"
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:75
+#, fuzzy
+msgctxt "label for extra large gutter option"
+msgid "Extra Large"
+msgstr "Extra groot"
+
+#: src/blocks/gallery-collage/inspector.js:76
+msgctxt "abbreviation for \"Extra Large\" size"
+msgid "XL"
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:83
+#, fuzzy
+msgctxt "label for no shadow option"
+msgid "None"
+msgstr "Geen"
+
+#: src/blocks/gallery-collage/inspector.js:88
+#, fuzzy
+msgctxt "label for small shadow option"
+msgid "Small"
+msgstr "Klein"
+
+#: src/blocks/gallery-collage/inspector.js:93
+#, fuzzy
+msgctxt "label for medium shadow option"
+msgid "Medium"
+msgstr "Gemiddeld"
+
+#: src/blocks/gallery-collage/inspector.js:98
+#, fuzzy
+msgctxt "label for large shadow option"
+msgid "Large"
+msgstr "Groot"
+
+#: src/blocks/icon/svgs.js:102
+msgctxt "label"
+msgid "Add Circle"
+msgstr "Cirkel toevoegen"
+
+#: src/blocks/icon/svgs.js:108
+msgctxt "label"
+msgid "Minus Circle"
+msgstr "Minus cirkel"
+
+#: src/blocks/icon/svgs.js:114
+msgctxt "label"
+msgid "Pie Chart"
+msgstr "Cirkeldiagram"
+
+#: src/blocks/icon/svgs.js:119
+msgctxt "label"
+msgid "Scatter Plot"
+msgstr "Spreidingsplot"
+
+#: src/blocks/icon/svgs.js:125
+msgctxt "label"
+msgid "Poll"
+msgstr "Peiling"
+
+#: src/blocks/icon/svgs.js:131
+msgctxt "label"
+msgid "Emoticon"
+msgstr "Emoticon"
+
+#: src/blocks/icon/svgs.js:137
+msgctxt "label"
+msgid "Functions"
+msgstr "Functies"
+
+#: src/blocks/icon/svgs.js:14
+msgctxt "label"
+msgid "CoBlocks"
+msgstr "CoBlocks"
+
+#: src/blocks/icon/svgs.js:142
+msgctxt "label"
+msgid "Doodle"
+msgstr "Doodle"
+
+#: src/blocks/icon/svgs.js:147
+msgctxt "label"
+msgid "Font"
+msgstr "Lettertype"
+
+#: src/blocks/icon/svgs.js:153
+msgctxt "label"
+msgid "Heart"
+msgstr "Hart"
+
+#: src/blocks/icon/svgs.js:159
+msgctxt "label"
+msgid "Star"
+msgstr "Markeren"
+
+#: src/blocks/icon/svgs.js:165
+msgctxt "label"
+msgid "Desktop"
+msgstr "Desktop"
+
+#: src/blocks/icon/svgs.js:171
+msgctxt "label"
+msgid "Devices"
+msgstr "Apparaten"
+
+#: src/blocks/icon/svgs.js:176
+msgctxt "label"
+msgid "Laptop"
+msgstr "Laptop"
+
+#: src/blocks/icon/svgs.js:181
+msgctxt "label"
+msgid "Tablet"
+msgstr "Tablet"
+
+#: src/blocks/icon/svgs.js:186
+msgctxt "label"
+msgid "Watch"
+msgstr "Volgen"
+
+#: src/blocks/icon/svgs.js:19
+msgctxt "label"
+msgid "Audio"
+msgstr "Audio"
+
+#: src/blocks/icon/svgs.js:192
+msgctxt "label"
+msgid "Keyboard"
+msgstr "Toetsenbord"
+
+#: src/blocks/icon/svgs.js:197
+msgctxt "label"
+msgid "Hub"
+msgstr "Hub"
+
+#: src/blocks/icon/svgs.js:208
+msgctxt "label"
+msgid "Email"
+msgstr "E-mail"
+
+#: src/blocks/icon/svgs.js:213
+msgctxt "label"
+msgid "Reply"
+msgstr "Beantwoorden"
+
+#: src/blocks/icon/svgs.js:218
+msgctxt "label"
+msgid "Send"
+msgstr "Verzenden"
+
+#: src/blocks/icon/svgs.js:224
+msgctxt "label"
+msgid "Signal"
+msgstr "Signaal"
+
+#: src/blocks/icon/svgs.js:229
+msgctxt "label"
+msgid "Blocks"
+msgstr "Blokken"
+
+#: src/blocks/icon/svgs.js:235
+msgctxt "label"
+msgid "Marker"
+msgstr "Markering"
+
+#: src/blocks/icon/svgs.js:241
+msgctxt "label"
+msgid "Mountains"
+msgstr "Bergen"
+
+#: src/blocks/icon/svgs.js:247
+msgctxt "label"
+msgid "Waves"
+msgstr "Golven"
+
+#: src/blocks/icon/svgs.js:25
+msgctxt "label"
+msgid "Album"
+msgstr "Album"
+
+#: src/blocks/icon/svgs.js:252
+msgctxt "label"
+msgid "Globe"
+msgstr "Globe"
+
+#: src/blocks/icon/svgs.js:257
+msgctxt "label"
+msgid "City"
+msgstr "Plaatsnaam"
+
+#: src/blocks/icon/svgs.js:262
+msgctxt "label"
+msgid "Dining"
+msgstr "Dineren"
+
+#: src/blocks/icon/svgs.js:267
+msgctxt "label"
+msgid "Couch"
+msgstr "Bank"
+
+#: src/blocks/icon/svgs.js:273
+msgctxt "label"
+msgid "Cake"
+msgstr "Taart"
+
+#: src/blocks/icon/svgs.js:279
+msgctxt "label"
+msgid "Flower"
+msgstr "Bloem"
+
+#: src/blocks/icon/svgs.js:285
+msgctxt "label"
+msgid "Vintage Filter"
+msgstr "Vintage filter"
+
+#: src/blocks/icon/svgs.js:291
+msgctxt "label"
+msgid "Build"
+msgstr "Bouwen"
+
+#: src/blocks/icon/svgs.js:297
+msgctxt "label"
+msgid "Credit Card"
+msgstr "Creditcard"
+
+#: src/blocks/icon/svgs.js:302
+msgctxt "label"
+msgid "Extension"
+msgstr "Extensie"
+
+#: src/blocks/icon/svgs.js:308
+msgctxt "label"
+msgid "Fingerprint"
+msgstr "Vingerafdruk"
+
+#: src/blocks/icon/svgs.js:31
+msgctxt "label"
+msgid "Headset"
+msgstr "Headset"
+
+#: src/blocks/icon/svgs.js:313
+msgctxt "label"
+msgid "Translate"
+msgstr "Vertalen"
+
+#: src/blocks/icon/svgs.js:318
+msgctxt "label"
+msgid "New"
+msgstr "Nieuw"
+
+#: src/blocks/icon/svgs.js:324
+msgctxt "label"
+msgid "Flare"
+msgstr "Flare"
+
+#: src/blocks/icon/svgs.js:329
+msgctxt "label"
+msgid "Layers"
+msgstr "Lagen"
+
+#: src/blocks/icon/svgs.js:334
+msgctxt "label"
+msgid "Shipping"
+msgstr "Verzending"
+
+#: src/blocks/icon/svgs.js:339
+msgctxt "label"
+msgid "Snowflake"
+msgstr "Sneeuwvlok"
+
+#: src/blocks/icon/svgs.js:344
+msgctxt "label"
+msgid "School"
+msgstr "School"
+
+#: src/blocks/icon/svgs.js:349
+msgctxt "label"
+msgid "Fire"
+msgstr "Vuur"
+
+#: src/blocks/icon/svgs.js:354
+msgctxt "label"
+msgid "Update"
+msgstr "Update"
+
+#: src/blocks/icon/svgs.js:36
+msgctxt "label"
+msgid "Volume"
+msgstr "Volume"
+
+#: src/blocks/icon/svgs.js:42
+msgctxt "label"
+msgid "Voice"
+msgstr "Stem"
+
+#: src/blocks/icon/svgs.js:48
+msgctxt "label"
+msgid "Aperture"
+msgstr "Sluitingstijd"
+
+#: src/blocks/icon/svgs.js:54
+msgctxt "label"
+msgid "Camera"
+msgstr "Camera"
+
+#: src/blocks/icon/svgs.js:60
+msgctxt "label"
+msgid "Gallery"
+msgstr "Galerij"
+
+#: src/blocks/icon/svgs.js:66
+msgctxt "label"
+msgid "Video"
+msgstr "Video"
+
+#: src/blocks/icon/svgs.js:72
+msgctxt "label"
+msgid "Film"
+msgstr "Film"
+
+#: src/blocks/icon/svgs.js:78
+msgctxt "label"
+msgid "Color Lens"
+msgstr "Kleurlens"
+
+#: src/blocks/icon/svgs.js:84
+msgctxt "label"
+msgid "Color Picker"
+msgstr "Kleurenkiezer"
+
+#: src/blocks/icon/svgs.js:90
+msgctxt "label"
+msgid "Paint"
+msgstr "Verf"
+
+#: src/blocks/icon/svgs.js:96
+msgctxt "label"
+msgid "Brush"
+msgstr "Kwast"
+
+#: src/blocks/icon/svgs.js:109
+msgctxt "tags"
+msgid "add minus circle insert plus round math"
+msgstr "toevoegen minus cirkel invoegen plus rond wiskunde"
+
+#: src/blocks/icon/svgs.js:115
+msgctxt "tags"
+msgid "stats round circle pie chart graph"
+msgstr "statistieken rond cirkel cirkeldiagram grafiek"
+
+#: src/blocks/icon/svgs.js:120
+msgctxt "tags"
+msgid "stats round circle pie chart graph dots data"
+msgstr "statistieken rond cirkel cirkeldiagram grafiek stippen gegevens"
+
+#: src/blocks/icon/svgs.js:126
+msgctxt "tags"
+msgid "chart graph stats data graph"
+msgstr "diagram grafiek statistieken gegevens overzicht"
+
+#: src/blocks/icon/svgs.js:132
+msgctxt "tags"
+msgid "happy emotion emoticon smile fun joy"
+msgstr "blij emotie emoticon lach pret plezier"
+
+#: src/blocks/icon/svgs.js:138
+msgctxt "tags"
+msgid "code greek math"
+msgstr "code grieks wiskunde"
+
+#: src/blocks/icon/svgs.js:143
+msgctxt "tags"
+msgid "drawing doodle art creative type font pencil marker"
+msgstr "tekenen doodle kunst creatief type lettertype potlood markeerstift"
+
+#: src/blocks/icon/svgs.js:15
+msgctxt "tags"
+msgid "blocks block build gutenberg design"
+msgstr "blokken blok bouwen gutenburg ontwerp"
+
+#: src/blocks/icon/svgs.js:154
+msgctxt "tags"
+msgid "love shape valentine kiss"
+msgstr "liefde vorm valentijn kus"
+
+#: src/blocks/icon/svgs.js:160
+msgctxt "tags"
+msgid "rate vote plus favorite like"
+msgstr "recensie stemmen plus favoriet leuk"
+
+#: src/blocks/icon/svgs.js:177
+msgctxt "tags"
+msgid "computer apple montior device pc desk office"
+msgstr "computer apple monitor apparaat pc bureau kantoor"
+
+#: src/blocks/icon/svgs.js:182
+msgctxt "tags"
+msgid "computer ipad surface apple montior device pc desk office"
+msgstr "computer ipad surface apple monitor apparaat pc bureau kantoor"
+
+#: src/blocks/icon/svgs.js:187
+msgctxt "tags"
+msgid "device apple mac"
+msgstr "apparaat apple mac"
+
+#: src/blocks/icon/svgs.js:193
+msgctxt "tags"
+msgid "computer ipad surface apple device pc desk office"
+msgstr "computer ipad surface apple apparaat pc bureau kantoor"
+
+#: src/blocks/icon/svgs.js:198
+msgctxt "tags"
+msgid "usb connect hub device social"
+msgstr "usb verbinden hun apparaat sociaal"
+
+#: src/blocks/icon/svgs.js:20
+msgctxt "tags"
+msgid "music microphone podcast song artist creative media audio"
+msgstr "muziek microfoon podcast nummer artiest creatief media audio"
+
+#: src/blocks/icon/svgs.js:209
+msgctxt "tags"
+msgid "email mail os read letter"
+msgstr "e-mail mail os lezen brief"
+
+#: src/blocks/icon/svgs.js:225
+msgctxt "tags"
+msgid "wifi radio waves"
+msgstr "wifi radio golven"
+
+#: src/blocks/icon/svgs.js:236
+msgctxt "tags"
+msgid "map directions about check checkbox"
+msgstr "kaart richting over vinken selectievakje"
+
+#: src/blocks/icon/svgs.js:242
+msgctxt "tags"
+msgid "hills landscape minimal outdoors outside"
+msgstr "heuvels landschap minimaal buiten"
+
+#: src/blocks/icon/svgs.js:248
+msgctxt "tags"
+msgid "ocean outside outdoors water fun summer minimal"
+msgstr "oceaan buiten water leuk zomer minimaal"
+
+#: src/blocks/icon/svgs.js:253
+msgctxt "tags"
+msgid "world public global earth location map"
+msgstr "wereld publiek wereldwijd aarde locatie kaart"
+
+#: src/blocks/icon/svgs.js:258
+msgctxt "tags"
+msgid "location map public business corporation building town skyscraper"
+msgstr "locatie kaart publiek bedrijf onderneming gebouw stad wolkenkrabber"
+
+#: src/blocks/icon/svgs.js:263
+msgctxt "tags"
+msgid "food drink restaurant menu fork spoon taste"
+msgstr "eten drinken restaurant menu vork lepel smaak"
+
+#: src/blocks/icon/svgs.js:268
+msgctxt "tags"
+msgid "weekend chill relax chair"
+msgstr "weekend chillen ontspannen stoel"
+
+#: src/blocks/icon/svgs.js:274
+msgctxt "tags"
+msgid "fun party happy celebration taste food"
+msgstr "leuk feestje blij vieren smaak eten"
+
+#: src/blocks/icon/svgs.js:280
+msgctxt "tags"
+msgid "petal scent smell nice relax landscape gardening outdoors outside"
+msgstr "bloemblad geur ruiken lekker ontspannen landschap tuinieren buiten"
+
+#: src/blocks/icon/svgs.js:292
+msgctxt "tags"
+msgid "blocks block box boxes square build widgets"
+msgstr "blokken blokvak vakken vierkant bouwen widgets"
+
+#: src/blocks/icon/svgs.js:298
+msgctxt "tags"
+msgid "money cash checkout shop commerce ecommerce"
+msgstr "geld contant betalen winkelen winkel e-commerce"
+
+#: src/blocks/icon/svgs.js:303
+msgctxt "tags"
+msgid "puzzle plugin widget team together"
+msgstr "puzzel plug-in widget team samen"
+
+#: src/blocks/icon/svgs.js:309
+msgctxt "tags"
+msgid "security bio defense biometric safe secure"
+msgstr "beveiliging bio bescherming biometrisch veilig beveiligd"
+
+#: src/blocks/icon/svgs.js:314
+msgctxt "tags"
+msgid "language global world speech"
+msgstr "taal wereldwijd wereld spraak"
+
+#: src/blocks/icon/svgs.js:319
+msgctxt "tags"
+msgid "music microphone song artist creative media audio badge"
+msgstr "muziek microfoon nummer artiest creatief media audio badge"
+
+#: src/blocks/icon/svgs.js:32
+msgctxt "tags"
+msgid "microphone audio beats bose headphones"
+msgstr "microfoon audio beats bose koptelefoon"
+
+#: src/blocks/icon/svgs.js:325
+msgctxt "tags"
+msgid "flower camera photography artist creative"
+msgstr "bloem camera fotografie artiest creatief"
+
+#: src/blocks/icon/svgs.js:330
+msgctxt "tags"
+msgid "design creative build develop engineer"
+msgstr "ontwerp creatief bouwen ontwikkelen techniek"
+
+#: src/blocks/icon/svgs.js:335
+msgctxt "tags"
+msgid "shop commence ecommence woo cart ship"
+msgstr "winkelen commerce e-commerce woo winkelwagen verzenden"
+
+#: src/blocks/icon/svgs.js:340
+msgctxt "tags"
+msgid "cold ice frozen chill winter season global"
+msgstr "koud ijs bevroren klappertanden winter seizoen wereldwijd"
+
+#: src/blocks/icon/svgs.js:345
+msgctxt "tags"
+msgid "education graduate graduation degree diploma college"
+msgstr "onderwijs afstuderen student graad diploma universiteit hbo"
+
+#: src/blocks/icon/svgs.js:350
+msgctxt "tags"
+msgid "hot trending trendy design"
+msgstr "hot trending populair ontwerp"
+
+#: src/blocks/icon/svgs.js:355
+msgctxt "tags"
+msgid "improve add upload software"
+msgstr "verbeteren toevoegen uploaden software"
+
+#: src/blocks/icon/svgs.js:37
+msgctxt "tags"
+msgid "music microphone song artist creative media audio"
+msgstr "muziek microfoon nummer artiest creatief media audio"
+
+#: src/blocks/icon/svgs.js:43
+msgctxt "tags"
+msgid ""
+"microphone podcast computer device music microphone song artist creative "
+"media audio"
+msgstr ""
+"microfoon podcast computer apparaat muziek microfoon nummer artiest creatief "
+"media audio"
+
+#: src/blocks/icon/svgs.js:49
+msgctxt "tags"
+msgid "photo photographer photography camera film creative media"
+msgstr "foto fotograaf fotografie camera film creatief media"
+
+#: src/blocks/icon/svgs.js:55
+msgctxt "tags"
+msgid "photo photographer photography camera aperture film creative media"
+msgstr "foto fotograaf fotografie camera sluitingstijd film creatief media"
+
+#: src/blocks/icon/svgs.js:61
+msgctxt "tags"
+msgid "photo photos image media camera aperture collection"
+msgstr "foto foto's afbeelding media camera sluitingstijd collectie"
+
+#: src/blocks/icon/svgs.js:67
+msgctxt "tags"
+msgid "film videography director producer media creative"
+msgstr "film videografie regisseur producent media creatief"
+
+#: src/blocks/icon/svgs.js:73
+msgctxt "tags"
+msgid ""
+"video videography director producer media creative camera photographer "
+"photography aperture"
+msgstr ""
+"film videografie regisseur producent media creatief camera fotograaf "
+"fotografie sluitingstijd"
+
+#: src/blocks/icon/svgs.js:85
+msgctxt "tags"
+msgid "palette design colors artist paint creative media"
+msgstr "palet ontwerp kleuren artiest verf creatief media"
+
+#: src/blocks/icon/svgs.js:91
+msgctxt "tags"
+msgid "palette design colors artist creative media"
+msgstr "palet ontwerp kleuren artiest creatief media"
+
+#: src/blocks/icon/svgs.js:97
+msgctxt "tags"
+msgid "palette design colors artist creative media paint paintbrush"
+msgstr "palet ontwerp kleuren artiest creatief media verf kwast"
+
+#: src/blocks/map/styles.js:12
+#, fuzzy
+msgctxt "block styles"
+msgid "Standard"
+msgstr "Standaard"
+
+#: src/blocks/map/styles.js:16
+#, fuzzy
+msgctxt "block styles"
+msgid "Silver"
+msgstr "Zilver"
+
+#: src/blocks/map/styles.js:20
+#, fuzzy
+msgctxt "block styles"
+msgid "Retro"
+msgstr "Retro"
+
+#: src/blocks/map/styles.js:24
+#, fuzzy
+msgctxt "block styles"
+msgid "Dark"
+msgstr "Donker"
+
+#: src/blocks/map/styles.js:28
+#, fuzzy
+msgctxt "block styles"
+msgid "Night"
+msgstr "Nacht"
+
+#: src/blocks/map/styles.js:32
+#, fuzzy
+msgctxt "block styles"
+msgid "Aubergine"
+msgstr "Aubergine"
+
+#: src/extensions/button-styles/index.js:16
+#, fuzzy
+msgctxt "block styles"
+msgid "Circular"
+msgstr "Rond"
+
+#: src/extensions/button-styles/index.js:22
+#, fuzzy
+msgctxt "block styles"
+msgid "3D"
+msgstr "3D"
+
+#: src/extensions/button-styles/index.js:28
+#, fuzzy
+msgctxt "block styles"
+msgid "Shadow"
+msgstr "Schaduw"
+
+#: src/extensions/list-styles/index.js:15
+#, fuzzy
+msgctxt "block styles"
+msgid "Default"
+msgstr "Standaard"
+
+#: src/extensions/list-styles/index.js:21
+#, fuzzy
+msgctxt "block styles"
+msgid "None"
+msgstr "Geen"
+
+#: src/extensions/list-styles/index.js:27
+#, fuzzy
+msgctxt "block styles"
+msgid "Checkbox"
+msgstr "Selectievakje"
+
+#: src/blocks/post-carousel/edit.js:302 src/blocks/posts/edit.js:437
+#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
+#, fuzzy
+msgctxt "placeholder when a post has no title"
+msgid "(no title)"
+msgstr "Menutitel..."
+
+#: src/blocks/posts/inspector.js:57
+#, fuzzy
+msgctxt "label for small size option"
+msgid "Small"
+msgstr "Klein"
+
+#: src/blocks/posts/inspector.js:62
+#, fuzzy
+msgctxt "label for medium size option"
+msgid "Medium"
+msgstr "Gemiddeld"
+
+#: src/blocks/posts/inspector.js:67
+#, fuzzy
+msgctxt "label for large size option"
+msgid "Large"
+msgstr "Groot"
+
+#: src/blocks/posts/inspector.js:72
+#, fuzzy
+msgctxt "label for large size option"
+msgid "Extra Large"
+msgstr "Extra groot"
+
+#: src/components/background/panel.js:102
+#, fuzzy
+msgctxt "block layout"
+msgid "Auto"
+msgstr "Auto"
+
+#: src/components/background/panel.js:103
+#, fuzzy
+msgctxt "block layout"
+msgid "Cover"
+msgstr "Omslag"
+
+#: src/components/background/panel.js:104
+#, fuzzy
+msgctxt "block layout"
+msgid "Contain"
+msgstr "Bevat"
+
+#: src/components/background/panel.js:83
+#: src/components/grid-control/index.js:35
+#, fuzzy
+msgctxt "block layout"
+msgid "Top Left"
+msgstr "Boven links"
+
+#: src/components/background/panel.js:84
+#: src/components/grid-control/index.js:36
+#, fuzzy
+msgctxt "block layout"
+msgid "Top Center"
+msgstr "Boven centraal"
+
+#: src/components/background/panel.js:85
+#: src/components/grid-control/index.js:37
+#, fuzzy
+msgctxt "block layout"
+msgid "Top Right"
+msgstr "Boven rechts"
+
+#: src/components/background/panel.js:86
+#: src/components/grid-control/index.js:48
+#, fuzzy
+msgctxt "block layout"
+msgid "Center Left"
+msgstr "Centraal links"
+
+#: src/components/background/panel.js:87
+#: src/components/grid-control/index.js:49
+#, fuzzy
+msgctxt "block layout"
+msgid "Center Center"
+msgstr "Centraal midden"
+
+#: src/components/background/panel.js:88
+#: src/components/grid-control/index.js:50
+#, fuzzy
+msgctxt "block layout"
+msgid "Center Right"
+msgstr "Centraal rechts"
+
+#: src/components/background/panel.js:89
+#: src/components/grid-control/index.js:41
+#, fuzzy
+msgctxt "block layout"
+msgid "Bottom Left"
+msgstr "Onder links"
+
+#: src/components/background/panel.js:90
+#: src/components/grid-control/index.js:42
+#, fuzzy
+msgctxt "block layout"
+msgid "Bottom Center"
+msgstr "Onder centraal"
+
+#: src/components/background/panel.js:91
+#: src/components/grid-control/index.js:43
+#, fuzzy
+msgctxt "block layout"
+msgid "Bottom Right"
+msgstr "Onder rechts"
+
+#: src/components/background/panel.js:95
+#, fuzzy
+msgctxt "block layout"
+msgid "No Repeat"
+msgstr "Geen herhaling"
+
+#: src/components/background/panel.js:96
+#, fuzzy
+msgctxt "block layout"
+msgid "Repeat"
+msgstr "Herhalen"
+
+#: src/components/background/panel.js:97
+#, fuzzy
+msgctxt "block layout"
+msgid "Repeat Horizontally"
+msgstr "Horizontaal herhalen"
+
+#: src/components/background/panel.js:98
+#, fuzzy
+msgctxt "block layout"
+msgid "Repeat Vertically"
+msgstr "Verticaal herhalen"
+
+#: src/components/block-gallery/gallery-link-settings.js:80
+#, fuzzy
+msgctxt ""
+"HTML attribute that specifies the a relationship between the two pages."
+msgid "Link Rel"
+msgstr "Link Rel"
+
+#: src/components/block-gallery/options/caption-options.js:10
+#, fuzzy
+msgctxt "visual style option"
+msgid "Dark"
+msgstr "Donker"
+
+#: src/components/block-gallery/options/caption-options.js:11
+#, fuzzy
+msgctxt "visual style option"
+msgid "Light"
+msgstr "Licht"
+
+#: src/components/block-gallery/options/caption-options.js:12
+#, fuzzy
+msgctxt "visual style option"
+msgid "None"
+msgstr "Geen"
+
+#: src/components/crop-settings/index.js:280
+#, fuzzy
+msgctxt "label for horizontal positioning input"
+msgid "Horizontal Pos."
+msgstr "Horizontaal herhalen"
+
+#: src/components/crop-settings/index.js:288
+msgctxt "label for vertical positioning input"
+msgid "Vertical Pos."
+msgstr ""
+
+#: src/components/crop-settings/index.js:297
+#, fuzzy
+msgctxt "label for the control that allows zooming in on the image"
+msgid "Image Zoom"
+msgstr "Afbeelding"
+
+#: src/components/dimensions-control/index.js:389
+#, fuzzy
+msgctxt "A size unit for CSS markup"
+msgid "Pixel"
+msgstr "Pixel"
+
+#: src/components/dimensions-control/index.js:393
+#, fuzzy
+msgctxt "A size unit for CSS markup"
+msgid "Em"
+msgstr "Em"
+
+#: src/components/dimensions-control/index.js:397
+#, fuzzy
+msgctxt "A size unit for CSS markup"
+msgid "Percentage"
+msgstr "Percentage"
+
+#: src/components/media-filter-control/index.js:31
+#, fuzzy
+msgctxt "image styles"
+msgid "Original"
+msgstr "Origineel"
+
+#: src/components/media-filter-control/index.js:39
+#, fuzzy
+msgctxt "image styles"
+msgid "Grayscale Filter"
+msgstr "Grijswaarden"
+
+#: src/components/media-filter-control/index.js:47
+#, fuzzy
+msgctxt "image styles"
+msgid "Sepia Filter"
+msgstr "Mediabestand"
+
+#: src/components/media-filter-control/index.js:55
+#, fuzzy
+msgctxt "image styles"
+msgid "Saturation Filter"
+msgstr "Verzadiging"
+
+#: src/components/media-filter-control/index.js:63
+#, fuzzy
+msgctxt "image styles"
+msgid "Dim Filter"
+msgstr "Vintage filter"
+
+#: src/components/media-filter-control/index.js:71
+#, fuzzy
+msgctxt "image styles"
+msgid "Vintage Filter"
+msgstr "Vintage filter"
+
+#: src/components/typography-controls/index.js:103
+#, fuzzy
+msgctxt "typography styles"
+msgid "Capitalize"
+msgstr "Hoofdletters gebruiken"
+
+#: src/components/typography-controls/index.js:107
+#, fuzzy
+msgctxt "typography styles"
+msgid "Normal"
+msgstr "Normaal"
+
+#: src/components/typography-controls/index.js:84
+#, fuzzy
+msgctxt "typography styles"
+msgid "Bold"
+msgstr "Vet"
+
+#: src/components/typography-controls/index.js:91
+#, fuzzy
+msgctxt "typography styles"
+msgid "Default"
+msgstr "Standaard"
+
+#: src/components/typography-controls/index.js:95
+#, fuzzy
+msgctxt "typography styles"
+msgid "Uppercase"
+msgstr "Hoofdletters"
+
+#: src/components/typography-controls/index.js:99
+#, fuzzy
+msgctxt "typography styles"
+msgid "Lowercase"
+msgstr "Kleine letters"
 
 #. Plugin Name of the plugin
 msgid "CoBlocks"
@@ -167,10 +4552,6 @@ msgstr ""
 "Geheime reCaptcha-sleutel van Google om het formulier tegen spam te "
 "beschermen"
 
-#: includes/class-coblocks-form.php:234 includes/class-coblocks-form.php:321
-msgid "Email"
-msgstr "E-mail"
-
 #: includes/class-coblocks-form.php:268
 msgid "Name"
 msgstr "Naam"
@@ -211,1948 +4592,22 @@ msgstr "Je bericht is verzonden:"
 msgid "Google Map API key for map rendering"
 msgstr "API-sleutel van Google Maps om kaarten weer te geven"
 
-#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
-#, fuzzy
-msgctxt "placeholder when a post has no title"
-msgid "(no title)"
-msgstr "Menutitel..."
-
-#: src/blocks/post-carousel/index.php:366 src/blocks/posts/index.php:385
-msgid "Read more"
-msgstr ""
-
-#: src/blocks/share/index.php:133
-msgid "Share on Facebook"
-msgstr "Delen op Facebook"
-
-#: src/blocks/share/index.php:137
-msgid "Share on Twitter"
-msgstr "Delen op Twitter"
-
-#: src/blocks/share/index.php:141
-msgid "Share on Pinterest"
-msgstr "Delen op Pinterest"
-
 #: src/blocks/share/index.php:145
 msgid "Share on Linkedin"
 msgstr "Delen op LinkedIn"
-
-#: src/blocks/share/index.php:149
-msgid "Share via Email"
-msgstr "Delen via e-mail"
-
-#: src/blocks/share/index.php:153
-msgid "Share on Tumblr"
-msgstr "Delen op Tumblr"
-
-#: src/blocks/share/index.php:157
-msgid "Share on Google"
-msgstr "Delen op Google"
-
-#: src/blocks/share/index.php:161
-msgid "Share on Reddit"
-msgstr "Delen op Reddit"
-
-#: src/blocks/social-profiles/index.php:68
-msgid "Facebook"
-msgstr "Facebook"
-
-#: src/blocks/social-profiles/index.php:72
-msgid "Twitter"
-msgstr "Twitter"
-
-#: src/blocks/social-profiles/index.php:76
-msgid "Instagram"
-msgstr "Instagram"
-
-#: src/blocks/social-profiles/index.php:80
-msgid "Pinterest"
-msgstr "Pinterest"
 
 #: src/blocks/social-profiles/index.php:84
 msgid "Linkedin"
 msgstr "Linkedin"
 
-#: src/blocks/social-profiles/index.php:89
-msgid "YouTube"
-msgstr "YouTube"
-
-#: src/blocks/social-profiles/index.php:93
-msgid "Yelp"
-msgstr "Yelp"
-
-#: src/blocks/social-profiles/index.php:97
-msgid "Houzz"
-msgstr "Houzz"
-
-#~ msgid "Add collapsable accordion items to accordions."
-#~ msgstr "Voeg items toe aan de opvouwbare accordeon."
-
-#~ msgid "Accordion item is open by default."
-#~ msgstr "Het accordeonitem wordt standaard geopend."
-
-#~ msgid "Toggle to set this accordion item to be open by default."
-#~ msgstr ""
-#~ "Schakel dit in om het accordeonitem standaard op open in te stellen."
-
-#~ msgid "Accordion Item Settings"
-#~ msgstr "Instellingen accordeonitem"
-
-#~ msgid "Color Settings"
-#~ msgstr "Kleurinstellingen"
-
-#~ msgid "Background Color"
-#~ msgstr "Achtergrondkleur"
-
-#~ msgid "Title Text Color"
-#~ msgstr "Kleur titeltekst"
-
-#~ msgid "Organize content within collapsable accordion items."
-#~ msgstr "Organiseer de content met accordeonitems die je kunt samenvouwen."
-
-#~ msgid "Accordion Settings"
-#~ msgstr "Instellingen accordeon"
-
-#~ msgid "Internet Explorer Support"
-#~ msgstr "Ondersteuning Internet Explorer"
-
-#~ msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
-#~ msgstr ""
-#~ "Voeg ondersteuning voor Internet Explorer toe door een JavaScript "
-#~ "polyfill te laden."
-
-#~ msgid ""
-#~ "Supporting Internet Explorer by loading a JavaScript polyfill on this "
-#~ "page."
-#~ msgstr ""
-#~ "Internet Explorer wordt ondersteund door op deze pagina een JavaScript "
-#~ "polyfill te laden."
-
-#, fuzzy
-#~ msgid "Provide contextual feedback messages or notices."
-#~ msgstr "Voer contextuele feedbackberichten in."
-
-#~ msgid "Text Color"
-#~ msgstr "Tekstkleur"
-
-#, fuzzy
-#~ msgid "Edit avatar"
-#~ msgstr "Galerij bewerken"
-
-#, fuzzy
-#~ msgid "Write author name…"
-#~ msgstr "Bijschrift schrijven..."
-
-#, fuzzy
-#~ msgid "Author Settings"
-#~ msgstr "Formulierinstellingen"
-
-#~ msgid "Prompt visitors to take action with multiple buttons, side by side."
-#~ msgstr ""
-#~ "Vraag bezoekers actie te ondernemen met meerdere knoppen naast elkaar."
-
-#~ msgid "Buttons"
-#~ msgstr "Knoppen"
-
-#~ msgid "Stacking buttons on mobile."
-#~ msgstr "De knoppen worden op het mobiele apparaat gestapeld."
-
-#~ msgid "Toggle to stack buttons on mobile."
-#~ msgstr "Schakel dit in om de knoppen op het mobiele apparaat te stapelen."
-
-#~ msgid "Twitter Username"
-#~ msgstr "Twitter-gebruikersnaam"
-
-#~ msgid "Username"
-#~ msgstr "Gebruikersnaam"
-
-#~ msgid "Add button..."
-#~ msgstr "Knop toevoegen..."
-
-# the text of the click to tweet element
-#~ msgid "Add a quote to tweet..."
-#~ msgstr "Een citaat toevoegen om te tweeten..."
-
-#~ msgid "Add a quote for readers to tweet via Twitter."
-#~ msgstr "Voeg een citaat voor lezers toe om via Twitter te tweeten."
-
-#~ msgid "Text Settings"
-#~ msgstr "Tekstinstellingen"
-
-#~ msgid "Button Color"
-#~ msgstr "Knopkleur"
-
-#~ msgid "Add a resizable spacer between other blocks."
-#~ msgstr ""
-#~ "Voer een tussenstuk tussen andere blokken toe waarvan je de grootte kunt "
-#~ "aanpassen."
-
-#~ msgid "Height in pixels"
-#~ msgstr "Hoogte in pixels"
-
-#~ msgid "Height for the dynamic separator element in pixels."
-#~ msgstr "Hoogte in pixels voor dynamisch scheidingselement."
-
-#~ msgid "Color"
-#~ msgstr "Kleur"
-
-#~ msgid "Add as backround"
-#~ msgstr "Toevoegen als achtergrond"
-
-#~ msgid "A singular child column within a parent features block."
-#~ msgstr ""
-#~ "Een enkele onderliggende kolom binnen een bovenliggend blok met functies."
-
-#~ msgid "Feature Settings"
-#~ msgstr "Functie-instellingen"
-
-#~ msgid "Padding"
-#~ msgstr "Opvulling"
-
-#~ msgid "Add up to three columns of small notes for your product or service."
-#~ msgstr ""
-#~ "Voeg tot drie kolommen met kleine notities toe voor je product of service."
-
-#~ msgid "Margin"
-#~ msgstr "Marge"
-
-#~ msgid "Gutter"
-#~ msgstr "Rugmarge"
-
-#~ msgid "Space between each column."
-#~ msgstr "De ruimte tussen de kolommen."
-
-#~ msgid "Small"
-#~ msgstr "Klein"
-
-#~ msgid "Medium"
-#~ msgstr "Gemiddeld"
-
-#~ msgid "Large"
-#~ msgstr "Groot"
-
-#~ msgid "Features Settings"
-#~ msgstr "Functie-instellingen"
-
-#~ msgid "Columns"
-#~ msgstr "Kolommen"
-
-#~ msgid "Add Menu Section"
-#~ msgstr "Menusectie toevoegen"
-
-#~ msgid "Menu title..."
-#~ msgstr "Menutitel..."
-
-#~ msgid "Drop image to replace"
-#~ msgstr "Afbeelding neerzetten om te vervangen"
-
-#~ msgid "Remove Image"
-#~ msgstr "Afbeelding verwijderen"
-
-#~ msgid "Add title..."
-#~ msgstr "Titel toevoegen..."
-
-#~ msgid "Spicy"
-#~ msgstr "Pittig"
-
-#~ msgid "Hot"
-#~ msgstr "Heet"
-
-#~ msgid "Vegetarian"
-#~ msgstr "Vegetarisch"
-
-#~ msgid "Gluten Free"
-#~ msgstr "Zonder gluten"
-
-#~ msgid "Pescatarian"
-#~ msgstr "Pescatarisch"
-
-#~ msgid "Vegan"
-#~ msgstr "Veganistisch"
-
-#~ msgid "Add description..."
-#~ msgstr "Beschrijving toevoegen..."
-
-#~ msgid "$0.00"
-#~ msgstr "$ 0,00"
-
-#~ msgid "A food and drink item within the Food & Drinks block."
-#~ msgstr "Eten of drinken binnen het blok voor Eten en drinken."
-
-#~ msgid "Item Settings"
-#~ msgstr "Iteminstellingen"
-
-#~ msgid "Image"
-#~ msgstr "Afbeelding"
-
-#~ msgid "Showing an image for this item."
-#~ msgstr "Een afbeelding van dit item wordt weergegeven."
-
-#~ msgid "Toggle to show an image for this item."
-#~ msgstr "Schakel dit in om een afbeelding van dit item weer te geven."
-
-#~ msgid "Price"
-#~ msgstr "Prijs"
-
-#~ msgid "Showing the price for this item."
-#~ msgstr "De prijs van dit item wordt weergegeven."
-
-#~ msgid "Toggle to show the price for this item."
-#~ msgstr "Schakel dit in om de prijs van dit item weer te geven."
-
-#~ msgid "Item Attributes"
-#~ msgstr "Itemeigenschappen"
-
-#~ msgid "Spicier"
-#~ msgstr "Pittiger"
-
-#~ msgid "Image Settings"
-#~ msgstr "Instellingen afbeelding"
-
-#~ msgid "Alt Text (Alternative Text)"
-#~ msgstr "Alternatieve tekst"
-
-#~ msgid "Describe the purpose of the image"
-#~ msgstr "Beschrijf het doel van de afbeelding"
-
-#~ msgid "Leave empty if the image is purely decorative."
-#~ msgstr "Laat dit leeg als het een decoratieve afbeelding is."
-
-#~ msgid "Focal Point"
-#~ msgstr "Focuspunt"
-
-#~ msgid "Display a menu or price list."
-#~ msgstr "Geef een menu of prijslijst weer."
-
-#~ msgid "Styles"
-#~ msgstr "Stijlen"
-
-#~ msgid "Food & Drinks Settings"
-#~ msgstr "Instellingen voor Eten en drinken"
-
-#~ msgid "Images"
-#~ msgstr "Afbeeldingen"
-
-#~ msgid "Showing images for each item"
-#~ msgstr "Voor elk item worden afbeeldingen weergegeven"
-
-#~ msgid "Toggle to show images for each item."
-#~ msgstr "Schakel dit in om voor elk item afbeeldingen weer te geven."
-
-#~ msgid "Prices"
-#~ msgstr "Prijzen"
-
-#~ msgid "Showing the price of each item"
-#~ msgstr "De prijs van elk item wordt weergegeven"
-
-#~ msgid "Toggle to show the price of each item."
-#~ msgstr "Schakel dit in om de prijs van elk item weer te geven."
-
-#~ msgid "%s is not a valid email address."
-#~ msgstr "‌‌%s is geen geldig e-mailadres."
-
-#~ msgid "%s and %s are not a valid email address."
-#~ msgstr "‌‌%s en %s zijn geen geldige e-mailadressen."
-
-#~ msgid "%s are not a valid email address."
-#~ msgstr "‌‌%s is geen geldig e-mailadres."
-
-#~ msgid "Email address"
-#~ msgstr "E-mailadres"
-
-#~ msgid "name@example.com"
-#~ msgstr "naam@voorbeeld.com"
-
-#~ msgid "Subject"
-#~ msgstr "Onderwerp"
-
-#~ msgid "Form Settings"
-#~ msgstr "Formulierinstellingen"
-
-#~ msgid "Google reCAPTCHA"
-#~ msgstr "reCAPTCHA van Google"
-
-#~ msgid ""
-#~ "Add your reCAPTCHA site and secret keys to protect your form from spam."
-#~ msgstr ""
-#~ "Voeg je reCAPTCHA-site en geheime sleutels toe om je formulier te "
-#~ "beschermen tegen spam."
-
-#~ msgid "Generate keys"
-#~ msgstr "Sleutels genereren"
-
-#~ msgid "My keys"
-#~ msgstr "Mijn sleutels"
-
-#~ msgid "Get help"
-#~ msgstr "Hulp ontvangen"
-
-#~ msgid "Site Key"
-#~ msgstr "Sitesleutel"
-
-#~ msgid "Secret Key"
-#~ msgstr "Geheime code"
-
-#~ msgid "Saving"
-#~ msgstr "Opslaan"
-
-#~ msgid "Save"
-#~ msgstr "Opslaan"
-
-#~ msgid "Remove"
-#~ msgstr "Verwijderen"
-
 #~ msgid "An email address field."
 #~ msgstr "Een veld voor een e-mailadres."
-
-#~ msgid "Add label…"
-#~ msgstr "Label toevoegen..."
-
-#~ msgid "Required"
-#~ msgstr "Vereist"
-
-#~ msgid "Name Field Settings"
-#~ msgstr "Instellingen naamveld"
-
-#~ msgid "Last Name"
-#~ msgstr "Achternaam"
-
-#~ msgid "Showing both first and last name fields."
-#~ msgstr "De velden voor de voor- en achternaam worden weergegeven."
-
-#~ msgid "Toggle to add a last name field."
-#~ msgstr "Schakel dit in om een veld voor de achternaam toe te voegen."
 
 #~ msgid "A text field for names."
 #~ msgstr "Een tekstveld voor namen."
 
-#~ msgid "A text box for longer responses."
-#~ msgstr "Een tekstvak voor langere antwoorden."
-
-#~ msgid "Add a simple form to your page."
-#~ msgstr "Voeg een eenvoudig formulier toe aan je pagina."
-
-#, fuzzy
-#~ msgid "Subject example"
-#~ msgstr "Onderwerp"
-
-#~ msgid "Add text…"
-#~ msgstr "Tekst toevoegen..."
-
-#~ msgid "Button Text Color"
-#~ msgstr "Kleur knoptekst"
-
-#~ msgid "Edit gallery"
-#~ msgstr "Galerij bewerken"
-
-#~ msgid "Carousel"
-#~ msgstr "Carrousel"
-
-# %1$d is the order number of the image, %2$d is the total number of images.
-#~ msgid "image %1$d of %2$d in gallery"
-#~ msgstr "afbeelding %1$d van %2$d in galerij"
-
-#~ msgid "Write caption…"
-#~ msgstr "Bijschrift schrijven..."
-
-#~ msgid "Display multiple images in a beautiful carousel gallery."
-#~ msgstr "Geef meerdere afbeeldingen weer in een mooie carrouselgalerij."
-
-#, fuzzy
-#~ msgid "Responsive Height"
-#~ msgstr "Regelhoogte"
-
-#, fuzzy
-#~ msgid "Showing thumbnail navigation."
-#~ msgstr "De pijlen voor stipnavigatie worden weergegeven."
-
-#, fuzzy
-#~ msgid "Toggle to show thumbnails."
-#~ msgstr "Schakel dit in om mediabijschriften weer te geven."
-
-#, fuzzy
-#~ msgid "Carousel Settings"
-#~ msgstr "Kleurinstellingen"
-
-#~ msgid "Size"
-#~ msgstr "Grootte"
-
-#~ msgid "Rounded Corners"
-#~ msgstr "Afgeronde hoeken"
-
-#~ msgid "Apply"
-#~ msgstr "Toepassen"
-
-#, fuzzy
-#~ msgid "Write caption..."
-#~ msgstr "Beschrijving opstellen..."
-
-#, fuzzy
-#~ msgid "Assemble images into a beautiful collage gallery."
-#~ msgstr "Geef meerdere afbeeldingen weer in een mooie carrouselgalerij."
-
-#, fuzzy
-#~ msgid "Collage Settings"
-#~ msgstr "Instellingen afbeelding"
-
-#~ msgid "Shadow"
-#~ msgstr "Schaduw"
-
-#~ msgid "Captions"
-#~ msgstr "Bijschriften"
-
-#~ msgid "Caption Style"
-#~ msgstr "Bijschriftstijl"
-
-#~ msgid "Showing captions for each media item."
-#~ msgstr "Voor elk media-item wordt een bijschrift weergegeven."
-
-#~ msgid "Toggle to show media captions."
-#~ msgstr "Schakel dit in om mediabijschriften weer te geven."
-
-#~ msgid "Masonry"
-#~ msgstr "Gemetselde stijl"
-
-#~ msgid "Display multiple images in an organized masonry gallery."
-#~ msgstr ""
-#~ "Geef meerdere afbeeldingen weer in een georganiseerde gemetselde galerij."
-
-#, fuzzy
-#~ msgid "Toggle to enable the image lightbox."
-#~ msgstr "Schakel dit in om de beheeropties voor de kaart in te schakelen."
-
-#, fuzzy
-#~ msgid "Masonry Settings"
-#~ msgstr "Kaartinstellingen"
-
-#~ msgid "Column Size"
-#~ msgstr "Kolomgrootte"
-
-#~ msgid "Add rounded corners to the gallery items."
-#~ msgstr "Voeg afgeronde hoeken toe aan de galerij-items."
-
-#, fuzzy
-#~ msgid "Lightbox"
-#~ msgstr "Licht"
-
-#~ msgid "Stacked"
-#~ msgstr "Gestapeld"
-
-#~ msgid "Display multiple images in an single column stacked gallery."
-#~ msgstr ""
-#~ "Geef meerdere afbeeldingen weer in een enkele gestapelde kolom met een "
-#~ "galerij."
-
-#~ msgid "Box Shadow"
-#~ msgstr "Vakschaduw"
-
-#~ msgid "Fullwidth images are enabled."
-#~ msgstr "Afbeeldingen op volledige breedte zijn ingeschakeld."
-
-#~ msgid ""
-#~ "Toggle to fill the available gallery area with completely fullwidth "
-#~ "images."
-#~ msgstr ""
-#~ "Schakel dit in om de beschikbare ruimte in de galerij op te vullen met "
-#~ "afbeeldingen op volledige breedte."
-
-#, fuzzy
-#~ msgid "Stacked Settings"
-#~ msgstr "Iteminstellingen"
-
-#~ msgid "Fullwidth Images"
-#~ msgstr "Afbeeldingen op volledige breedte"
-
-#~ msgid "Fullwidth Image"
-#~ msgstr "Afbeelding op volledige breedte"
-
-#~ msgid "Remove gif"
-#~ msgstr "GIF verwijderen"
-
-#~ msgid "This gif has an empty alt attribute"
-#~ msgstr "Deze GIF heeft een leeg alt-attribuut"
-
-#~ msgid "Search for that perfect gif on Giphy"
-#~ msgstr "Ga op zoek naar die perfecte GIF op Giphy"
-
-#~ msgid "Search for gifs"
-#~ msgstr "Zoeken naar GIFs"
-
-#~ msgid "Pick a gif, any gif."
-#~ msgstr "Kies de allerbeste GIF."
-
-#~ msgid "Gif Settings"
-#~ msgstr "GIF-instellingen"
-
-#~ msgid "Display meta"
-#~ msgstr "Meta weergeven"
-
-#~ msgid "Edit Gist"
-#~ msgstr "Gist bewerken"
-
-#~ msgid "View Gist"
-#~ msgstr "Gist weergeven"
-
-#~ msgid "GitHub File"
-#~ msgstr "GitHub-bestand"
-
-#~ msgid "File"
-#~ msgstr "Bestand"
-
-#~ msgid "View this gist on GitHub"
-#~ msgstr "Deze gist op GitHub weergeven"
-
-#~ msgid "Gist URL"
-#~ msgstr "Gist-URL"
-
-#~ msgid "Add GitHub Gist URL..."
-#~ msgstr "Gist-URL voor GitHub toevoegen..."
-
-#~ msgid "Loading Gist"
-#~ msgstr "Gist laden"
-
-#, fuzzy
-#~ msgid "Embed GitHub gists by adding a gist link."
-#~ msgstr "Sluit de GitHub-gists in door de link naar de gist toe te voegen."
-
-#~ msgid "Showing gist meta data."
-#~ msgstr "De metadata van de gist worden weergegeven."
-
-#~ msgid "Toggle to show the gist meta data."
-#~ msgstr "Schakel dit in om de metadata van de gist weer te geven."
-
-#~ msgid "Gist Settings"
-#~ msgstr "Gistinstellingen"
-
-#~ msgid "Gist File"
-#~ msgstr "Gistbestand"
-
-#~ msgid "Gist Meta"
-#~ msgstr "Gistmeta"
-
-#~ msgid "Change layout"
-#~ msgstr "Lay-out wijzigen"
-
-#~ msgid ""
-#~ "An introductory area of a page accompanied by a small amount of text and "
-#~ "a call to action."
-#~ msgstr ""
-#~ "Een inleidend onderdeel van een pagina samen met een kleine hoeveelheid "
-#~ "tekst en een call-to-action."
-
-#~ msgid "Content width in pixels"
-#~ msgstr "Breedte van content in pixels"
-
-#~ msgid "Hero Settings"
-#~ msgstr "Hero-instellingen"
-
-#~ msgid "Space inside of the container."
-#~ msgstr "De ruimte in de container."
-
-#~ msgid "Top Left"
-#~ msgstr "Boven links"
-
-#~ msgid "Top Center"
-#~ msgstr "Boven centraal"
-
-#~ msgid "Top Right"
-#~ msgstr "Boven rechts"
-
-#~ msgid "Center Left"
-#~ msgstr "Centraal links"
-
-#~ msgid "Center Center"
-#~ msgstr "Centraal midden"
-
-#~ msgid "Center Right"
-#~ msgstr "Centraal rechts"
-
-#~ msgid "Bottom Left"
-#~ msgstr "Onder links"
-
-#~ msgid "Bottom Center"
-#~ msgstr "Onder centraal"
-
-#~ msgid "Bottom Right"
-#~ msgstr "Onder rechts"
-
-#~ msgid "Add highlighted text..."
-#~ msgstr "Gemarkeerde tekst toevoegen..."
-
-#~ msgid "Huge"
-#~ msgstr "Zeer groot"
-
-#~ msgid "Add a stylized graphic symbol to communicate something more."
-#~ msgstr ""
-#~ "Voeg een gestileerd grafisch symbool toe om wat meer informatie over te "
-#~ "brengen."
-
-#~ msgid "Icon Settings"
-#~ msgstr "Pictograminstellingen"
-
-#~ msgid "Reset"
-#~ msgstr "Opnieuw instellen"
-
-#, fuzzy
-#~ msgid "Apply custom size"
-#~ msgstr "Aangepaste grootte %s"
-
-#, fuzzy
-#~ msgid "Custom"
-#~ msgstr "Aangepast"
-
-#~ msgid "Radius"
-#~ msgstr "Radius"
-
-#~ msgid "Icon Search"
-#~ msgstr "Pictogram zoeken"
-
-#~ msgid "No results found."
-#~ msgstr "Geen resultaten gevonden."
-
-#~ msgid "Link Settings"
-#~ msgstr "Linkinstellingen"
-
-#~ msgid "Link URL"
-#~ msgstr "URL link"
-
-#~ msgid "Link Rel"
-#~ msgstr "Link Rel"
-
-#~ msgid "Opening in New Tab"
-#~ msgstr "Wordt in een nieuw tabblad geopend"
-
-#~ msgid "Open in New Tab"
-#~ msgstr "Openen in nieuw tabblad"
-
-#~ msgid "Icon Color"
-#~ msgstr "Pictogramkleur"
-
-#~ msgid "Edit logos"
-#~ msgstr "Logo's bewerken"
-
-#~ msgid "Logos & Badges"
-#~ msgstr "Logo's en badges"
-
-#~ msgid "Drag images, upload new ones or select files from your library."
-#~ msgstr ""
-#~ "Sleep afbeeldingen, upload nieuwe of selecteer bestanden uit je "
-#~ "bibliotheek."
-
-#~ msgid "Add logos, badges, or certifications to build credibility."
-#~ msgstr ""
-#~ "Voeg logo's, badges of certificaten toe en vergroot je geloofwaardigheid."
-
-#~ msgid "Logos Settings"
-#~ msgstr "Logo-instellingen"
-
-#~ msgid "Black & White"
-#~ msgstr "Zwart-wit"
-
-#~ msgid "Toggle to add a black and white filter."
-#~ msgstr "Schakel dit in om een zwart-wit filter toe te voegen."
-
-#~ msgid "Edit Location"
-#~ msgstr "Locatie bewerken"
-
-#~ msgid "Map style"
-#~ msgstr "Kaartstijl"
-
-#~ msgid "Invalid API key, or too many requests"
-#~ msgstr "Ongeldige API-code of te veel verzoeken"
-
-#~ msgid "Google Map"
-#~ msgstr "Google Maps"
-
-#~ msgid "Enter a location or address to drop a pin on a Google map."
-#~ msgstr ""
-#~ "Voer een locatie of adres in om een pin neer te zetten op een kaart van "
-#~ "Google."
-
-#~ msgid "Search for a place or address…"
-#~ msgstr "Zoeken naar een plaats of adres..."
-
-#, fuzzy
-#~ msgid "Add an address or location to drop a pin on a Google map."
-#~ msgstr "Voeg een adres toe en zet een pin neer op een kaart van Google."
-
-#~ msgid "Select Map Style"
-#~ msgstr "Kaartstijl selecteren"
-
-#~ msgid "Map Settings"
-#~ msgstr "Kaartinstellingen"
-
-#~ msgid "Height for the map in pixels"
-#~ msgstr "Hoogte voor de kaart in pixels"
-
-#~ msgid "Zoom Level"
-#~ msgstr "Zoomniveau"
-
-#~ msgid "Marker Size"
-#~ msgstr "Grootte markering"
-
-#~ msgid "Fine control options are enabled."
-#~ msgstr "De opties voor gedetailleerd beheer zijn ingeschakeld."
-
-#~ msgid "Toggle to enable map control options."
-#~ msgstr "Schakel dit in om de beheeropties voor de kaart in te schakelen."
-
-#~ msgid "Map Controls"
-#~ msgstr "Functies kaart"
-
-#~ msgid "Map Type"
-#~ msgstr "Kaarttype"
-
-#~ msgid "Switching between standard and satellite map views is enabled."
-#~ msgstr "Schakelen tussen de standaard- en satellietkaart is ingeschakeld."
-
-#~ msgid "Toggle to enable switching between standard and satellite maps."
-#~ msgstr ""
-#~ "Schakel dit in om te schakelen tussen standaard- en satellietkaarten."
-
-#~ msgid "Zoom Controls"
-#~ msgstr "Zoomfunctie"
-
-#~ msgid "Showing map zoom controls."
-#~ msgstr "De functie om in te zoomen wordt weergegeven."
-
-#~ msgid "Toggle to enable zooming in and out on the map with zoom controls."
-#~ msgstr ""
-#~ "Schakel dit in om in en uit te zoomen op de kaart met de zoomfunctie."
-
-#~ msgid "Street View"
-#~ msgstr "Straatweergave"
-
-#~ msgid "Showing the street view map control."
-#~ msgstr "De functie voor de straatweergave van de kaart wordt weergegeven."
-
-#~ msgid "Toggle to show the street view control at the bottom right."
-#~ msgstr ""
-#~ "Schakel dit in om de functie voor straatweergave rechtsonderin weer te "
-#~ "geven."
-
-#~ msgid "Fullscreen Toggle"
-#~ msgstr "Volledig scherm in- en uitschakelen"
-
-#~ msgid "Showing the fullscreen map control."
-#~ msgstr "De functie voor de kaart op volledig scherm wordt weergegeven."
-
-#~ msgid "Toggle to show the fullscreen map control."
-#~ msgstr ""
-#~ "Schakel dit in om de functie voor de kaart op volledig scherm weer te "
-#~ "geven."
-
-#~ msgid "Google Maps API Key"
-#~ msgstr "API-sleutel voor Google Maps"
-
-#~ msgid ""
-#~ "Add your Google Maps API key. Updating this API key will set all your "
-#~ "maps to use the new key."
-#~ msgstr ""
-#~ "Voeg je API-sleutel voor Google Maps toe. Als je deze API-sleutel "
-#~ "bijwerkt, maken al je kaarten gebruik van de nieuwe sleutel."
-
 #~ msgid "Retrieve your key"
 #~ msgstr "Je sleutel ophalen"
-
-#~ msgid "Need help?"
-#~ msgstr "Hulp nodig?"
-
-#~ msgid "Enter Google API Key…"
-#~ msgstr "De API-sleutel van Google invoeren..."
-
-#~ msgid "Saved"
-#~ msgstr "Opgeslagen"
-
-#~ msgid "Media on right"
-#~ msgstr "Media rechts"
-
-#~ msgid "Media on left"
-#~ msgstr "Media links"
-
-#~ msgid "Add an image or video with an offset card side-by-side."
-#~ msgstr "Voeg een afbeelding of video toe met kaart ernaast."
-
-#~ msgid "Card Shadow"
-#~ msgstr "Kaartschaduw"
-
-#~ msgid "Showing card shadow."
-#~ msgstr "De schaduw van de kaart wordt weergegeven."
-
-#~ msgid "Toggle to add a card shadow."
-#~ msgstr "Schakel dit in om een schaduw aan de kaart toe te voegen."
-
-#~ msgid " %s Shadow"
-#~ msgstr " Schaduw %s"
-
-#~ msgid "Showing %s shadow."
-#~ msgstr "Schaduw van %s wordt weergegeven."
-
-#~ msgid "Toggle to add an %s shadow"
-#~ msgstr "Schakel dit in om een schaduw van %s toe te voegen."
-
-#~ msgid "Media Card Settings"
-#~ msgstr "Instellingen mediakaart"
-
-#~ msgid "Max Width"
-#~ msgstr "Max. breedte"
-
-#~ msgid "Media"
-#~ msgstr "Media"
-
-#~ msgid "Drop to replace media"
-#~ msgstr "Neerzetten om media te vervangen"
-
-#~ msgid "Edit media"
-#~ msgstr "Media bewerken"
-
-#, fuzzy
-#~ msgid "Edit RSS URL"
-#~ msgstr "Gist-URL"
-
-#, fuzzy
-#~ msgid "Post Carousel"
-#~ msgstr "Carrousel"
-
-#, fuzzy
-#~ msgid "https://example.com/feed…"
-#~ msgstr "https://yelp.com/"
-
-#, fuzzy
-#~ msgid "Use URL"
-#~ msgstr "Gist-URL"
-
-#, fuzzy
-#~ msgid "Post Carousel Settings"
-#~ msgstr "Kleurinstellingen"
-
-#, fuzzy
-#~ msgid "Showing the publish date."
-#~ msgstr "De prijs van dit item wordt weergegeven."
-
-#, fuzzy
-#~ msgid "Toggle to show the publish date."
-#~ msgstr "Schakel dit in om de metadata van de gist weer te geven."
-
-#, fuzzy
-#~ msgid "Showing the post content."
-#~ msgstr "De knop voor call-to-action wordt weergegeven."
-
-#, fuzzy
-#~ msgid "Toggle to show the post content."
-#~ msgstr "Schakel dit in om de metadata van de gist weer te geven."
-
-#, fuzzy
-#~ msgid "Feed Settings"
-#~ msgstr "Functie-instellingen"
-
-#, fuzzy
-#~ msgid "Image on left"
-#~ msgstr "Media links"
-
-#, fuzzy
-#~ msgid "Image on right"
-#~ msgstr "Media rechts"
-
-#, fuzzy
-#~ msgid "Thumbnail Size"
-#~ msgstr "Kolomgrootte"
-
-#, fuzzy
-#~ msgid "Posts Settings"
-#~ msgstr "Gistinstellingen"
-
-#, fuzzy
-#~ msgid "One Pricing Table"
-#~ msgstr "Tariefoverzicht"
-
-#, fuzzy
-#~ msgid "Two Pricing Tables"
-#~ msgstr "Tariefoverzicht"
-
-#, fuzzy
-#~ msgid "Three Pricing Tables"
-#~ msgstr "Tariefoverzicht"
-
-#, fuzzy
-#~ msgid "Four Pricing Tables"
-#~ msgstr "Tariefoverzicht"
-
-#, fuzzy
-#~ msgid "Change pricing table count"
-#~ msgstr "Voeg tariefoverzichten toe."
-
-#, fuzzy
-#~ msgid "Plan %d"
-#~ msgstr "Abonnement %s"
-
-#~ msgid "Add features"
-#~ msgstr "Functies toevoegen"
-
-#~ msgid "Buy Now"
-#~ msgstr "Nu kopen"
-
-#~ msgid "Plan A"
-#~ msgstr "Abonnement A"
-
-#~ msgid "$"
-#~ msgstr "$"
-
-#, fuzzy
-#~ msgid "Add backround to column"
-#~ msgstr "Achtergrond toevoegen aan %s"
-
-#~ msgid "An immediate child of a row."
-#~ msgstr "Een onmiddellijk onderliggend element van een rij."
-
-#~ msgid "Column Settings"
-#~ msgstr "Kolominstellingen"
-
-#~ msgid "Space around the container."
-#~ msgstr "De ruimte rondom de container."
-
-#~ msgid "Width"
-#~ msgstr "Breedte"
-
-#, fuzzy
-#~ msgid "Change row block layout"
-#~ msgstr "Lay-out wijzigen"
-
-#~ msgid "one"
-#~ msgstr "één"
-
-#~ msgid "two"
-#~ msgstr "twee"
-
-#~ msgid "three"
-#~ msgstr "drie"
-
-#~ msgid "four"
-#~ msgstr "vier"
-
-#, fuzzy
-#~ msgid "Add backround to row"
-#~ msgstr "Achtergrond toevoegen aan %s"
-
-#~ msgid "One Column"
-#~ msgstr "Eén kolom"
-
-#~ msgid "Two Columns"
-#~ msgstr "Twee kolommen"
-
-#~ msgid "Three Columns"
-#~ msgstr "Drie kolommen"
-
-#~ msgid "Four Columns"
-#~ msgstr "Vier kolommen"
-
-#~ msgid "Row Layout"
-#~ msgstr "Lay-out rij"
-
-#~ msgid "Row"
-#~ msgstr "Rij"
-
-#~ msgid "Now select a layout for this %s column row."
-#~ msgstr "Selecteer nu een lay-out voor deze rij van %s kolom(men)."
-
-#~ msgid "Select the number of columns for this row."
-#~ msgstr "Selecteer het aantal kolommen voor deze rij."
-
-#~ msgid "Select Row Columns"
-#~ msgstr "Rijkolommen selecteren"
-
-#~ msgid "Select Row Layout"
-#~ msgstr "Lay-out van rij selecteren"
-
-#~ msgid "Back to Columns"
-#~ msgstr "Terug naar kolommen"
-
-#~ msgid ""
-#~ "Add a structured wrapper for column blocks, then add content blocks you’d "
-#~ "like to the columns."
-#~ msgstr ""
-#~ "Voeg een gestructureerde omslag toe voor kolomblokken en voeg dan de "
-#~ "gewenste contentblokken toe aan de kolommen."
-
-#~ msgid "Row Settings"
-#~ msgstr "Rij-instellingen"
-
-#~ msgid "None"
-#~ msgstr "Geen"
-
-#~ msgid "Square"
-#~ msgstr "Vierkant"
-
-#~ msgid "Circle"
-#~ msgstr "Cirkel"
-
-#~ msgid "Add up to four columns of services to display."
-#~ msgstr "Voeg tot vier kolommen met services toe om weer te geven."
-
-#~ msgid "Services Settings"
-#~ msgstr "Instellingen services"
-
-#~ msgid "Heading Level"
-#~ msgstr "Kopniveau"
-
-#~ msgid "Action Buttons"
-#~ msgstr "Actieknoppen"
-
-#~ msgid "Showing the call to action buttons."
-#~ msgstr "De knoppen voor call-to-actions worden weergegeven."
-
-#~ msgid "Toggle to show call to action buttons."
-#~ msgstr "Schakel dit in om de knoppen voor call-to-actions weer te geven."
-
-#~ msgid "A single service item within a services block."
-#~ msgstr "Een enkel service-item binnen een blok met services."
-
-#~ msgid "Service Settings"
-#~ msgstr "Service-instellingen"
-
-#~ msgid "Action Button"
-#~ msgstr "Actieknop"
-
-#~ msgid "Showing the call to action button."
-#~ msgstr "De knop voor call-to-action wordt weergegeven."
-
-#~ msgid "Toggle to show a call to action button."
-#~ msgstr "Schakel dit in om een knop voor een call-to-action weer te geven."
-
-#~ msgid "Flip horiztonally"
-#~ msgstr "Horizontaal draaien"
-
-#~ msgid "Flip vertically"
-#~ msgstr "Verticaal draaien"
-
-#~ msgid "Add a shape divider to visually distinquish page sections."
-#~ msgstr ""
-#~ "Voeg een vormverdeelstuk toe om de paginasecties op visuele wijze van "
-#~ "elkaar te onderscheiden."
-
-#~ msgid "Divider Settings"
-#~ msgstr "Instellingen scheiding"
-
-#~ msgid "Shape Height in pixels"
-#~ msgstr "Hoogte vorm in pixels"
-
-#~ msgid "Background Height in pixels"
-#~ msgstr "Hoogte achtergrond in pixels"
-
-#~ msgid "Shape Color"
-#~ msgstr "Vormkleur"
-
-#~ msgid "Share on LinkedIn"
-#~ msgstr "Delen op LinkedIn"
-
-#~ msgid "Add social sharing links to help you get likes and shares."
-#~ msgstr ""
-#~ "Voeg links naar sociale media toe om meer vind-ik-leuks en gedeelde items "
-#~ "te krijgen."
-
-#~ msgid "Social Colors"
-#~ msgstr "Kleuren sociale media"
-
-#~ msgid "Icon Size"
-#~ msgstr "Pictogramgrootte"
-
-#~ msgid "Circle Size"
-#~ msgstr "Cirkelgrootte"
-
-#~ msgid "Button Size"
-#~ msgstr "Knopgrootte"
-
-#~ msgid "Icons"
-#~ msgstr "Pictogrammen"
-
-#~ msgid "LinkedIn"
-#~ msgstr "LinkedIn"
-
-#~ msgid "Tumblr"
-#~ msgstr "Tumblr"
-
-#~ msgid "Google"
-#~ msgstr "Google"
-
-#~ msgid "Reddit"
-#~ msgstr "Reddit"
-
-#~ msgid "Share button colors are enabled."
-#~ msgstr "De kleuren voor deelknoppen zijn ingeschakeld."
-
-#~ msgid "Toggle to use official colors from each social media platform."
-#~ msgstr ""
-#~ "Schakel dit in om de officiële kleuren van elk platform voor sociale "
-#~ "media te gebruiken."
-
-#~ msgid "Add Facebook Profile"
-#~ msgstr "Facebook-profiel toevoegen"
-
-#~ msgid "https://facebook.com/"
-#~ msgstr "https://facebook.com/"
-
-#~ msgid "Add Twitter Profile"
-#~ msgstr "Twitter-profiel toevoegen"
-
-#~ msgid "https://twitter.com/"
-#~ msgstr "https://twitter.com/"
-
-#~ msgid "Add Instagram Profile"
-#~ msgstr "Instagram-profiel toevoegen"
-
-#~ msgid "https://instagram.com/"
-#~ msgstr "https://instagram.com/"
-
-#~ msgid "Add Pinterest Profile"
-#~ msgstr "Pinterest-profiel toevoegen"
-
-#~ msgid "https://pinterest.com/"
-#~ msgstr "https://pinterest.com/"
-
-#~ msgid "Add LinkedIn Profile"
-#~ msgstr "LinkedIn-profiel toevoegen"
-
-#~ msgid "https://linkedin.com/"
-#~ msgstr "https://linkedin.com/"
-
-#~ msgid "Add YouTube Profile"
-#~ msgstr "YouTube-profiel toevoegen"
-
-#~ msgid "https://youtube.com/"
-#~ msgstr "https://youtube.com/"
-
-#~ msgid "Add Yelp Profile"
-#~ msgstr "Yelp-profiel toevoegen"
-
-#~ msgid "https://yelp.com/"
-#~ msgstr "https://yelp.com/"
-
-#~ msgid "Add Houzz Profile"
-#~ msgstr "Houzz-profiel toevoegen"
-
-#~ msgid "https://houzz.com/"
-#~ msgstr "https://houzz.com/"
-
-#, fuzzy
-#~ msgid "Grow your audience with links to social media profiles."
-#~ msgstr "Geef links weer naar profielen op sociale media."
-
-#~ msgid "Profile Links"
-#~ msgstr "Profiellinks"
-
-#~ msgid "Edit Background"
-#~ msgstr "Achtergrond bewerken"
-
-#~ msgid "Remove Background"
-#~ msgstr "Achtergrond verwijderen"
-
-#~ msgid "Background"
-#~ msgstr "Achtergrond"
-
-#~ msgid "Background Settings"
-#~ msgstr "Achtergrondinstellingen"
-
-#~ msgid "Fixed Background"
-#~ msgstr "Herstelde achtergrond"
-
-#~ msgid "Background Opacity"
-#~ msgstr "Transparantie achtergrond"
-
-#~ msgid "Repeat"
-#~ msgstr "Herhalen"
-
-#~ msgid "Position"
-#~ msgstr "Positie"
-
-#~ msgid "Display"
-#~ msgstr "Weergeven"
-
-#~ msgid "Mute Video"
-#~ msgstr "Video dempen"
-
-#~ msgid "Muting the background video."
-#~ msgstr "De achtergrondvideo wordt gedempt."
-
-#~ msgid "Toggle to mute the video."
-#~ msgstr "Schakel dit in om de video te dempen."
-
-#~ msgid "Loop Video"
-#~ msgstr "Video herhalen"
-
-#~ msgid "Looping the background video."
-#~ msgstr "De achtergrondvideo wordt herhaald."
-
-#~ msgid "Toggle to loop the video."
-#~ msgstr "Schakel dit in om de video te herhalen."
-
-#~ msgid "Remove background"
-#~ msgstr "Achtergrond verwijderen"
-
-#~ msgid "Remove "
-#~ msgstr "Verwijderen "
-
-#~ msgid "Move Image Backward"
-#~ msgstr "Afbeelding naar achteren verplaatsen"
-
-#~ msgid "Move Image Forward"
-#~ msgstr "Afbeelding naar voren verplaatsen"
-
-#~ msgid "Link To"
-#~ msgstr "Link naar"
-
-#~ msgid "%s Gallery"
-#~ msgstr "Galerij %s"
-
-#~ msgid "Upload an image"
-#~ msgstr "Een afbeelding uploaden"
-
-#~ msgid "Media File"
-#~ msgstr "Mediabestand"
-
-#~ msgid "Attachment Page"
-#~ msgstr "Bijlagepagina"
-
-#~ msgid "Custom URL"
-#~ msgstr "Aangepaste URL"
-
-#, fuzzy
-#~ msgid "Image Orientation"
-#~ msgstr "Oriëntatie"
-
-#, fuzzy
-#~ msgid "Reset All"
-#~ msgstr "Opnieuw instellen"
-
-#~ msgid "Select Units"
-#~ msgstr "Eenheden selecteren"
-
-#~ msgid "%s Units"
-#~ msgstr "Eenheden %s"
-
-#~ msgid "Turn off advanced %s settings"
-#~ msgstr "Geavanceerde instellingen %s uitschakelen"
-
-#~ msgid "%s Top"
-#~ msgstr "Top %s"
-
-#~ msgid "%s Right"
-#~ msgstr "Rechts %s"
-
-#~ msgid "%s Bottom"
-#~ msgstr "Onder %s"
-
-#~ msgid "%s Left"
-#~ msgstr "Links %s"
-
-#~ msgid "Unsync"
-#~ msgstr "Niet meer synchroniseren"
-
-#~ msgid "Sync"
-#~ msgstr "Synchroniseren"
-
-#~ msgid "Sync Units"
-#~ msgstr "Eenheden synchronisatie"
-
-#~ msgid "Top"
-#~ msgstr "Boven"
-
-#~ msgid "Right"
-#~ msgstr "Rechts"
-
-#~ msgid "Bottom"
-#~ msgstr "Onder"
-
-#~ msgid "Left"
-#~ msgstr "Links"
-
-#~ msgid "Advanced %s settings"
-#~ msgstr "Geavanceerde instellingen %s"
-
-#~ msgid "Advanced"
-#~ msgstr "Geavanceerd"
-
-#~ msgid "Default"
-#~ msgstr "Standaard"
-
-#~ msgid "Layout"
-#~ msgstr "Lay-out"
-
-#~ msgid "Select Layout"
-#~ msgstr "Lay-out selecteren"
-
-#~ msgid "Fullscreen"
-#~ msgstr "Volledig scherm"
-
-#~ msgid "Fullscreen mode is enabled."
-#~ msgstr "De modus voor volledig scherm is ingeschakeld."
-
-#~ msgid "Toggle to enable fullscreen mode."
-#~ msgstr "Schakel dit in om de modus voor volledig scherm in te schakelen."
-
-# %s: heading level e.g: "1", "2", "3"
-#~ msgid "Heading %d"
-#~ msgstr "Kop %d"
-
-#~ msgid "Custom color picker"
-#~ msgstr "Aangepaste kleuren kiezen"
-
-#~ msgid "Apply filter"
-#~ msgstr "Filter toepassen"
-
-#~ msgid "Height"
-#~ msgstr "Hoogte"
-
-# Control name
-#~ msgid "Mobile %s"
-#~ msgstr "Mobiel %s"
-
-#~ msgid "Select Size"
-#~ msgstr "Grootte selecteren"
-
-#~ msgid "Extra Large"
-#~ msgstr "Extra groot"
-
-#~ msgid "One Second"
-#~ msgstr "Eén seconde"
-
-#~ msgid "Two Seconds"
-#~ msgstr "Twee seconden"
-
-#~ msgid "Three Seconds"
-#~ msgstr "Drie seconden"
-
-#~ msgid "Four Seconds"
-#~ msgstr "Vier seconden"
-
-#~ msgid "Five Seconds"
-#~ msgstr "Vijf seconden"
-
-#, fuzzy
-#~ msgid "Six Seconds"
-#~ msgstr "Zes seconden"
-
-#~ msgid "Seven Seconds"
-#~ msgstr "Zeven seconden"
-
-#~ msgid "Eight Seconds"
-#~ msgstr "Acht seconden"
-
-#~ msgid "Nine Seconds"
-#~ msgstr "Negen seconden"
-
-#~ msgid "Ten Seconds"
-#~ msgstr "Tien seconden"
-
-#~ msgid "Arrow Navigation"
-#~ msgstr "Pijlnavigatie"
-
-#~ msgid "Dot Navigation"
-#~ msgstr "Stipnavigatie"
-
-#~ msgid "seconds"
-#~ msgstr "seconden"
-
-#~ msgid "second"
-#~ msgstr "seconde"
-
-# 1. Speed of the slider, 2: Time until the slide advances
-#~ msgid "Advancing after %1$d %2$s."
-#~ msgstr "Doorgaan na %1$d %2$s."
-
-# 1. Speed of the slider, 2: Time until the slide advances
-#~ msgid "Automatically advance to the next slide."
-#~ msgstr "Ga automatisch door naar de volgende dia."
-
-#, fuzzy
-#~ msgid "Dragging and flicking enabled."
-#~ msgstr ""
-#~ "Slepen en knijpen zijn ingeschakeld op desktops en mobiele apparaten."
-
-#, fuzzy
-#~ msgid "Toggle to enable drag functionality."
-#~ msgstr ""
-#~ "Schakel dit in om de sleepfunctie in te schakelen op desktops en mobiele "
-#~ "apparaten."
-
-#~ msgid "Showing slide navigation arrows."
-#~ msgstr "De pijlen voor navigatie in dia's worden weergegeven."
-
-#~ msgid "Toggle to show slide navigation arrows."
-#~ msgstr "Schakel dit in om de pijlen voor navigatie in dia's weer te geven."
-
-#, fuzzy
-#~ msgid "Showing dot navigation."
-#~ msgstr "De pijlen voor stipnavigatie worden weergegeven."
-
-#~ msgid "Toggle to show dot navigation."
-#~ msgstr "Schakel dit in om de stipnavigatie weer te geven."
-
-#, fuzzy
-#~ msgid "Aligning slides to the center."
-#~ msgstr "De ruimte in de container."
-
-#, fuzzy
-#~ msgid "Toggle to pause autoplay when hovered."
-#~ msgstr "Schakel dit in om de video te dempen."
-
-#, fuzzy
-#~ msgid "Toggle to scroll without fixed slides."
-#~ msgstr "Schakel dit in om de video te herhalen."
-
-#~ msgid "Slider Settings"
-#~ msgstr "Instellingen schuifregelaar"
-
-#~ msgid "Autoplay"
-#~ msgstr "Automatisch afspelen"
-
-#~ msgid "Transition Speed"
-#~ msgstr "Overgangssnelheid"
-
-#~ msgid "Draggable"
-#~ msgstr "Sleepbaar"
-
-#~ msgid "Font"
-#~ msgstr "Lettertype"
-
-#~ msgid "Weight"
-#~ msgstr "Gewicht"
-
-#~ msgid "Transform"
-#~ msgstr "Transformeren"
-
-#~ msgid "Line Height"
-#~ msgstr "Regelhoogte"
-
-#~ msgid "Letter Spacing"
-#~ msgstr "Letterafstand"
-
-#~ msgid "No Top Spacing"
-#~ msgstr "Geen ruimte bovenkant"
-
-#~ msgid "No Bottom Spacing"
-#~ msgstr "Geen ruimte onderkant"
-
-#~ msgid "Change typography"
-#~ msgstr "Typografie wijzigen"
-
-#~ msgid "Stack on Mobile"
-#~ msgstr "Stapel op mobiel apparaat"
-
-#~ msgid "Responsiveness is enabled."
-#~ msgstr "Reactieve modus is ingeschakeld."
-
-#~ msgid "Toggle to stack elements on top of each other on smaller viewports."
-#~ msgstr ""
-#~ "Schakel dit in om elementen op elkaar te stapelen bij kleinere viewports."
-
-#~ msgid "Remove Top Spacing"
-#~ msgstr "Ruimte bovenkant verwijderen"
-
-#, fuzzy
-#~ msgid "Toggle to add top margin back."
-#~ msgstr "Schakel dit in om een schaduw aan de kaart toe te voegen."
-
-#, fuzzy
-#~ msgid "Toggle to remove any top margin."
-#~ msgstr "Schakel dit in om de stipnavigatie weer te geven."
-
-#~ msgid "Remove Bottom Spacing"
-#~ msgstr "Ruimte onderkant verwijderen"
-
-#, fuzzy
-#~ msgid "Toggle to add bottom margin back."
-#~ msgstr "Schakel dit in om een schaduw aan de kaart toe te voegen."
-
-#, fuzzy
-#~ msgid "Toggle to remove any bottom margin."
-#~ msgstr "Schakel dit in om de stipnavigatie weer te geven."
-
-#~ msgid "Display Fullwidth"
-#~ msgstr "Volledige breedte weergeven"
-
-#~ msgid "Displaying as full width."
-#~ msgstr "Wordt op volledige breedte weergegeven."
-
-#~ msgid "Toggle to display button as full width."
-#~ msgstr "Schakel dit in om de knop op volledige breedte weer te geven."
-
-#, fuzzy
-#~ msgid "Crop Settings"
-#~ msgstr "Hero-instellingen"
-
-#~ msgid "Uppercase"
-#~ msgstr "Hoofdletters"
-
-#~ msgid "Manage Blocks"
-#~ msgstr "Blokken beheren"
-
-#~ msgid "Block Manager"
-#~ msgstr "Blokbeheer"
-
-#~ msgid "Close"
-#~ msgstr "Sluiten"
-
-#~ msgid "Search for a block"
-#~ msgstr "Zoeken naar een blok"
-
-#~ msgid "This block is added to the page and cannot currently be disabled"
-#~ msgstr ""
-#~ "Dit blok wordt toegevoegd aan de pagina en kan momenteel niet worden "
-#~ "uitgeschakeld"
-
-#~ msgid "Disable all"
-#~ msgstr "Alles uitschakelen"
-
-#~ msgid "No \"%s\" blocks found."
-#~ msgstr "Geen blokken voor %s gevonden."
-
-#~ msgid "%s Galleries"
-#~ msgstr "Galerijen %s"
-
-#, fuzzy
-#~ msgctxt "Toggle label to display the accordion open"
-#~ msgid "Display open"
-#~ msgstr "Weergave open"
-
-#, fuzzy
-#~ msgctxt "Accordion is the block name"
-#~ msgid "Add accordion title..."
-#~ msgstr "Accordeontitel toevoegen..."
-
-#, fuzzy
-#~ msgctxt "This is an inner block for the Accordion Block."
-#~ msgid "Accordion Item"
-#~ msgstr "Accordeonitem"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "tabs"
-#~ msgstr "tabbladen"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "faq"
-#~ msgstr "veelgestelde vragen"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "notice"
-#~ msgstr "kennisgeving"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "message"
-#~ msgstr "bericht"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "biography"
-#~ msgstr "biografie"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "profile"
-#~ msgstr "profiel"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "link"
-#~ msgstr "link"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "cta"
-#~ msgstr "cta"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "share"
-#~ msgstr "delen"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "twitter"
-#~ msgstr "twitter"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "spacer"
-#~ msgstr "tussenstuk"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "services"
-#~ msgstr "services"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "menu"
-#~ msgstr "menu"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "restaurant"
-#~ msgstr "restaurant"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "e-mail"
-#~ msgstr "e-mail"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "mail"
-#~ msgstr "mail"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "last name"
-#~ msgstr "Achternaam"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "Textarea"
-#~ msgstr "Tekstgedeelte"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "Multiline text"
-#~ msgstr "Meerregelige tekst"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "email"
-#~ msgstr "e-mail"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "about"
-#~ msgstr "over"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "contact"
-#~ msgstr "contact"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "gallery"
-#~ msgstr "galerij"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "photos"
-#~ msgstr "foto's"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "lightbox"
-#~ msgstr "Nacht"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "animated"
-#~ msgstr "geanimeerd"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "code"
-#~ msgstr "code"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "button"
-#~ msgstr "knop"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "call to action"
-#~ msgstr "call-to-action"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "text"
-#~ msgstr "tekst"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "paragraph"
-#~ msgstr "paragraaf"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "icons"
-#~ msgstr "pictogrammen"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "clients"
-#~ msgstr "klanten"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "proof"
-#~ msgstr "bewijs"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "testimonials"
-#~ msgstr "getuigenissen"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "address"
-#~ msgstr "adres"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "maps"
-#~ msgstr "kaarten"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "google"
-#~ msgstr "google"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "image"
-#~ msgstr "afbeelding"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "video"
-#~ msgstr "video"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "rss"
-#~ msgstr "adres"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "landing"
-#~ msgstr "landing"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "comparison"
-#~ msgstr "vergelijking"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "rows"
-#~ msgstr "rijen"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "columns"
-#~ msgstr "kolommen"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "layouts"
-#~ msgstr "lay-outs"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "features"
-#~ msgstr "functies"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "separator"
-#~ msgstr "scheiding"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "social"
-#~ msgstr "sociaal"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "links"
-#~ msgstr "koppelingen"
-
-#, fuzzy
-#~ msgctxt "Visually display open as opposed to closed."
-#~ msgid "Display Open"
-#~ msgstr "Weergave open"
-
-#, fuzzy
-#~ msgctxt "Add a child element for the Accordion block"
-#~ msgid "Add Accordion Item"
-#~ msgstr "Accordeonitem toevoegen"
-
-#, fuzzy
-#~ msgctxt "block title"
-#~ msgid "Accordion"
-#~ msgstr "Accordeon"
-
-#, fuzzy
-#~ msgctxt "Placeholder text for input box"
-#~ msgid "Write text..."
-#~ msgstr "Tekst schrijven..."
-
-#, fuzzy
-#~ msgctxt "Placeholder text for input box"
-#~ msgid "Write title..."
-#~ msgstr "Titel schrijven..."
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Alert"
-#~ msgstr "Waarschuwing"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Author"
-#~ msgstr "Auteur"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Buttons"
-#~ msgstr "Knoppen"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Click to Tweet"
-#~ msgstr "Klik op te tweeten"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Dynamic HR"
-#~ msgstr "Dynamische HR"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Feature"
-#~ msgstr "Kenmerk"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Features"
-#~ msgstr "Functies"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Food Item"
-#~ msgstr "Etenswaar"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Food & Drinks"
-#~ msgstr "Eten en drinken"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Email"
-#~ msgstr "E-mail"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Name"
-#~ msgstr "Naam"
 
 #, fuzzy
 #~ msgctxt "block name"
@@ -2160,1085 +4615,8 @@ msgstr "Houzz"
 #~ msgstr "Bericht"
 
 #, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Form"
-#~ msgstr "Formulier"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Carousel"
-#~ msgstr "Carrousel"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Masonry"
-#~ msgstr "Gemetselde stijl"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Stacked"
-#~ msgstr "Gestapeld"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Gist"
-#~ msgstr "Gist-URL"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Hero"
-#~ msgstr "Hero"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Highlight"
-#~ msgstr "Opvallend"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Icon"
-#~ msgstr "Pictogram"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Logos & Badges"
-#~ msgstr "Logo's en badges"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Map"
-#~ msgstr "Kaart"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Media Card"
-#~ msgstr "Mediakaart"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Post Carousel"
-#~ msgstr "Carrousel"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Pricing Table"
-#~ msgstr "Tariefoverzicht"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Pricing Table Item"
-#~ msgstr "Item tariefoverzicht"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Column"
-#~ msgstr "Kolom"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Row"
-#~ msgstr "Rij"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Services"
-#~ msgstr "Services"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Service"
-#~ msgstr "Service"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Shape Divider"
-#~ msgstr "Vormverdeelstuk"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Share"
-#~ msgstr "Delen"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Social Profiles"
-#~ msgstr "Sociale profielen"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Info"
-#~ msgstr "Info"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Success"
-#~ msgstr "Geslaagd"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Warning"
-#~ msgstr "Waarschuwing"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Error"
-#~ msgstr "Fout"
-
-#~ msgctxt "block style"
-#~ msgid "Dot"
-#~ msgstr "Stip"
-
-#~ msgctxt "block style"
-#~ msgid "Line"
-#~ msgstr "Lijn"
-
-#~ msgctxt "block style"
-#~ msgid "Fullwidth"
-#~ msgstr "Volledige breedte"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Grid"
-#~ msgstr "Raster"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "List"
-#~ msgstr "Vermelden"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Default"
-#~ msgstr "Standaard"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Layered"
-#~ msgstr "Lagen"
-
-#~ msgctxt "block style"
-#~ msgid "Outlined"
-#~ msgstr "Uitgelijnd"
-
-#~ msgctxt "block style"
-#~ msgid "Filled"
-#~ msgstr "Opgevuld"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Stacked"
-#~ msgstr "Gestapeld"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Horizontal"
-#~ msgstr "Horizontaal herhalen"
-
-#~ msgctxt "block style"
-#~ msgid "Wavy"
-#~ msgstr "Golvend"
-
-#~ msgctxt "block style"
-#~ msgid "Hills"
-#~ msgstr "Heuvels"
-
-#~ msgctxt "block style"
-#~ msgid "Waves"
-#~ msgstr "Golven"
-
-#~ msgctxt "block style"
-#~ msgid "Angled"
-#~ msgstr "Gehoekt"
-
-#~ msgctxt "block style"
-#~ msgid "Sloped"
-#~ msgstr "Aflopend"
-
-#~ msgctxt "block style"
-#~ msgid "Rounded"
-#~ msgstr "Afgerond"
-
-#~ msgctxt "block style"
-#~ msgid "Triangle"
-#~ msgstr "Driehoek"
-
-#~ msgctxt "block style"
-#~ msgid "Pointed"
-#~ msgstr "Gepunt"
-
-#~ msgctxt "block style"
-#~ msgid "Mask"
-#~ msgstr "Masker"
-
-#~ msgctxt "block style"
-#~ msgid "Icon"
-#~ msgstr "Pictogram"
-
-#~ msgctxt "block style"
-#~ msgid "Text"
-#~ msgstr "Tekst"
-
-#~ msgctxt "block style"
-#~ msgid "Icon & Text"
-#~ msgstr "Pictogram en tekst"
-
-#~ msgctxt "block style"
-#~ msgid "Circular"
-#~ msgstr "Rond"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Bottom Wave"
-#~ msgstr "Onder links"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Top Wave"
-#~ msgstr "Boven links"
-
-#, fuzzy
-#~ msgctxt "image to represent the post author"
-#~ msgid "Drop to upload as avatar"
-#~ msgstr "Neerzetten om als avatar toe te voegen"
-
-#, fuzzy
-#~ msgctxt "content placeholder"
-#~ msgid "Author link…"
-#~ msgstr "Auteur"
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add feature title..."
-#~ msgstr "Functietitel toevoegen..."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Feature Title"
-#~ msgstr "Functietitel"
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add feature content"
-#~ msgstr "Functiecontent toevoegen"
-
-#~ msgctxt "content placeholder"
-#~ msgid "This is a feature block that you can use to highlight features."
-#~ msgstr "Dit is een functieblok waarmee je functies kunt uitlichten."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add heading..."
-#~ msgstr "Kop toevoegen..."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Media Card"
-#~ msgstr "Mediakaart"
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add content..."
-#~ msgstr "Content toevoegen..."
-
-#~ msgctxt "content placeholder"
-#~ msgid ""
-#~ "Replace this text with descriptive copy to go along with the card image. "
-#~ "Then add more blocks to this card, such as buttons, lists or images."
-#~ msgstr ""
-#~ "Vervang deze tekst door een beschrijving die wordt toegevoegd aan de "
-#~ "kaartafbeelding. Voeg dan meer blokken toe aan deze kaart, zoals knoppen, "
-#~ "lijsten of afbeeldingen."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Write title..."
-#~ msgstr "Titel schrijven..."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Write description..."
-#~ msgstr "Beschrijving opstellen..."
-
-#, fuzzy
-#~ msgctxt "block settings"
-#~ msgid "Buttons Settings"
-#~ msgstr "Instellingen knoppen"
-
-#, fuzzy
-#~ msgctxt "visually stack buttons one on top of another"
-#~ msgid "Stack on mobile"
-#~ msgstr "Stapel op mobiel apparaat"
-
-#, fuzzy
-#~ msgctxt "hr is html markup - horizonal rule"
-#~ msgid "Dynamic HR Settings"
-#~ msgstr "Instellingen dynamische HR"
-
-#, fuzzy
-#~ msgctxt "label for no gutter option"
-#~ msgid "None"
-#~ msgstr "Geen"
-
-#, fuzzy
-#~ msgctxt "abbreviation for \"Short\" size"
-#~ msgid "None"
-#~ msgstr "Geen"
-
-#, fuzzy
-#~ msgctxt "label for small gutter option"
-#~ msgid "Small"
-#~ msgstr "Klein"
-
-#, fuzzy
-#~ msgctxt "label for medium gutter option"
-#~ msgid "Medium"
-#~ msgstr "Gemiddeld"
-
-#, fuzzy
-#~ msgctxt "label for large gutter option"
-#~ msgid "Large"
-#~ msgstr "Groot"
-
-#, fuzzy
-#~ msgctxt "label for extra large gutter option"
-#~ msgid "Extra Large"
-#~ msgstr "Extra groot"
-
-#, fuzzy
-#~ msgctxt "label for no shadow option"
-#~ msgid "None"
-#~ msgstr "Geen"
-
-#, fuzzy
-#~ msgctxt "label for small shadow option"
-#~ msgid "Small"
-#~ msgstr "Klein"
-
-#, fuzzy
-#~ msgctxt "label for medium shadow option"
-#~ msgid "Medium"
-#~ msgstr "Gemiddeld"
-
-#, fuzzy
-#~ msgctxt "label for large shadow option"
-#~ msgid "Large"
-#~ msgstr "Groot"
-
-#~ msgctxt "label"
-#~ msgid "Add Circle"
-#~ msgstr "Cirkel toevoegen"
-
-#~ msgctxt "label"
-#~ msgid "Minus Circle"
-#~ msgstr "Minus cirkel"
-
-#~ msgctxt "label"
-#~ msgid "Pie Chart"
-#~ msgstr "Cirkeldiagram"
-
-#~ msgctxt "label"
-#~ msgid "Scatter Plot"
-#~ msgstr "Spreidingsplot"
-
-#~ msgctxt "label"
-#~ msgid "Poll"
-#~ msgstr "Peiling"
-
-#~ msgctxt "label"
-#~ msgid "Emoticon"
-#~ msgstr "Emoticon"
-
-#~ msgctxt "label"
-#~ msgid "Functions"
-#~ msgstr "Functies"
-
-#~ msgctxt "label"
-#~ msgid "CoBlocks"
-#~ msgstr "CoBlocks"
-
-#~ msgctxt "label"
-#~ msgid "Doodle"
-#~ msgstr "Doodle"
-
-#~ msgctxt "label"
-#~ msgid "Font"
-#~ msgstr "Lettertype"
-
-#~ msgctxt "label"
-#~ msgid "Heart"
-#~ msgstr "Hart"
-
-#~ msgctxt "label"
-#~ msgid "Star"
-#~ msgstr "Markeren"
-
-#~ msgctxt "label"
-#~ msgid "Desktop"
-#~ msgstr "Desktop"
-
-#~ msgctxt "label"
-#~ msgid "Devices"
-#~ msgstr "Apparaten"
-
-#~ msgctxt "label"
-#~ msgid "Laptop"
-#~ msgstr "Laptop"
-
-#~ msgctxt "label"
-#~ msgid "Tablet"
-#~ msgstr "Tablet"
-
-#~ msgctxt "label"
-#~ msgid "Watch"
-#~ msgstr "Volgen"
-
-#~ msgctxt "label"
-#~ msgid "Audio"
-#~ msgstr "Audio"
-
-#~ msgctxt "label"
-#~ msgid "Keyboard"
-#~ msgstr "Toetsenbord"
-
-#~ msgctxt "label"
-#~ msgid "Hub"
-#~ msgstr "Hub"
-
-#~ msgctxt "label"
-#~ msgid "Email"
-#~ msgstr "E-mail"
-
-#~ msgctxt "label"
-#~ msgid "Reply"
-#~ msgstr "Beantwoorden"
-
-#~ msgctxt "label"
-#~ msgid "Send"
-#~ msgstr "Verzenden"
-
-#~ msgctxt "label"
-#~ msgid "Signal"
-#~ msgstr "Signaal"
-
-#~ msgctxt "label"
-#~ msgid "Blocks"
-#~ msgstr "Blokken"
-
-#~ msgctxt "label"
-#~ msgid "Marker"
-#~ msgstr "Markering"
-
-#~ msgctxt "label"
-#~ msgid "Mountains"
-#~ msgstr "Bergen"
-
-#~ msgctxt "label"
-#~ msgid "Waves"
-#~ msgstr "Golven"
-
-#~ msgctxt "label"
-#~ msgid "Album"
-#~ msgstr "Album"
-
-#~ msgctxt "label"
-#~ msgid "Globe"
-#~ msgstr "Globe"
-
-#~ msgctxt "label"
-#~ msgid "City"
-#~ msgstr "Plaatsnaam"
-
-#~ msgctxt "label"
-#~ msgid "Dining"
-#~ msgstr "Dineren"
-
-#~ msgctxt "label"
-#~ msgid "Couch"
-#~ msgstr "Bank"
-
-#~ msgctxt "label"
-#~ msgid "Cake"
-#~ msgstr "Taart"
-
-#~ msgctxt "label"
-#~ msgid "Flower"
-#~ msgstr "Bloem"
-
-#~ msgctxt "label"
-#~ msgid "Vintage Filter"
-#~ msgstr "Vintage filter"
-
-#~ msgctxt "label"
-#~ msgid "Build"
-#~ msgstr "Bouwen"
-
-#~ msgctxt "label"
-#~ msgid "Credit Card"
-#~ msgstr "Creditcard"
-
-#~ msgctxt "label"
-#~ msgid "Extension"
-#~ msgstr "Extensie"
-
-#~ msgctxt "label"
-#~ msgid "Fingerprint"
-#~ msgstr "Vingerafdruk"
-
-#~ msgctxt "label"
-#~ msgid "Headset"
-#~ msgstr "Headset"
-
-#~ msgctxt "label"
-#~ msgid "Translate"
-#~ msgstr "Vertalen"
-
-#~ msgctxt "label"
-#~ msgid "New"
-#~ msgstr "Nieuw"
-
-#~ msgctxt "label"
-#~ msgid "Flare"
-#~ msgstr "Flare"
-
-#~ msgctxt "label"
-#~ msgid "Layers"
-#~ msgstr "Lagen"
-
-#~ msgctxt "label"
-#~ msgid "Shipping"
-#~ msgstr "Verzending"
-
-#~ msgctxt "label"
-#~ msgid "Snowflake"
-#~ msgstr "Sneeuwvlok"
-
-#~ msgctxt "label"
-#~ msgid "School"
-#~ msgstr "School"
-
-#~ msgctxt "label"
-#~ msgid "Fire"
-#~ msgstr "Vuur"
-
-#~ msgctxt "label"
-#~ msgid "Update"
-#~ msgstr "Update"
-
-#~ msgctxt "label"
-#~ msgid "Volume"
-#~ msgstr "Volume"
-
-#~ msgctxt "label"
-#~ msgid "Voice"
-#~ msgstr "Stem"
-
-#~ msgctxt "label"
-#~ msgid "Aperture"
-#~ msgstr "Sluitingstijd"
-
-#~ msgctxt "label"
-#~ msgid "Camera"
-#~ msgstr "Camera"
-
-#~ msgctxt "label"
-#~ msgid "Gallery"
-#~ msgstr "Galerij"
-
-#~ msgctxt "label"
-#~ msgid "Video"
-#~ msgstr "Video"
-
-#~ msgctxt "label"
-#~ msgid "Film"
-#~ msgstr "Film"
-
-#~ msgctxt "label"
-#~ msgid "Color Lens"
-#~ msgstr "Kleurlens"
-
-#~ msgctxt "label"
-#~ msgid "Color Picker"
-#~ msgstr "Kleurenkiezer"
-
-#~ msgctxt "label"
-#~ msgid "Paint"
-#~ msgstr "Verf"
-
-#~ msgctxt "label"
-#~ msgid "Brush"
-#~ msgstr "Kwast"
-
-#~ msgctxt "tags"
-#~ msgid "add minus circle insert plus round math"
-#~ msgstr "toevoegen minus cirkel invoegen plus rond wiskunde"
-
-#~ msgctxt "tags"
-#~ msgid "stats round circle pie chart graph"
-#~ msgstr "statistieken rond cirkel cirkeldiagram grafiek"
-
-#~ msgctxt "tags"
-#~ msgid "stats round circle pie chart graph dots data"
-#~ msgstr "statistieken rond cirkel cirkeldiagram grafiek stippen gegevens"
-
-#~ msgctxt "tags"
-#~ msgid "chart graph stats data graph"
-#~ msgstr "diagram grafiek statistieken gegevens overzicht"
-
-#~ msgctxt "tags"
-#~ msgid "happy emotion emoticon smile fun joy"
-#~ msgstr "blij emotie emoticon lach pret plezier"
-
-#~ msgctxt "tags"
-#~ msgid "code greek math"
-#~ msgstr "code grieks wiskunde"
-
-#~ msgctxt "tags"
-#~ msgid "drawing doodle art creative type font pencil marker"
-#~ msgstr "tekenen doodle kunst creatief type lettertype potlood markeerstift"
-
-#~ msgctxt "tags"
-#~ msgid "blocks block build gutenberg design"
-#~ msgstr "blokken blok bouwen gutenburg ontwerp"
-
-#~ msgctxt "tags"
-#~ msgid "love shape valentine kiss"
-#~ msgstr "liefde vorm valentijn kus"
-
-#~ msgctxt "tags"
-#~ msgid "rate vote plus favorite like"
-#~ msgstr "recensie stemmen plus favoriet leuk"
-
-#~ msgctxt "tags"
-#~ msgid "computer apple montior device pc desk office"
-#~ msgstr "computer apple monitor apparaat pc bureau kantoor"
-
-#~ msgctxt "tags"
-#~ msgid "computer ipad surface apple montior device pc desk office"
-#~ msgstr "computer ipad surface apple monitor apparaat pc bureau kantoor"
-
-#~ msgctxt "tags"
-#~ msgid "device apple mac"
-#~ msgstr "apparaat apple mac"
-
-#~ msgctxt "tags"
-#~ msgid "computer ipad surface apple device pc desk office"
-#~ msgstr "computer ipad surface apple apparaat pc bureau kantoor"
-
-#~ msgctxt "tags"
-#~ msgid "usb connect hub device social"
-#~ msgstr "usb verbinden hun apparaat sociaal"
-
-#~ msgctxt "tags"
-#~ msgid "music microphone podcast song artist creative media audio"
-#~ msgstr "muziek microfoon podcast nummer artiest creatief media audio"
-
-#~ msgctxt "tags"
-#~ msgid "email mail os read letter"
-#~ msgstr "e-mail mail os lezen brief"
-
-#~ msgctxt "tags"
-#~ msgid "wifi radio waves"
-#~ msgstr "wifi radio golven"
-
-#~ msgctxt "tags"
-#~ msgid "map directions about check checkbox"
-#~ msgstr "kaart richting over vinken selectievakje"
-
-#~ msgctxt "tags"
-#~ msgid "hills landscape minimal outdoors outside"
-#~ msgstr "heuvels landschap minimaal buiten"
-
-#~ msgctxt "tags"
-#~ msgid "ocean outside outdoors water fun summer minimal"
-#~ msgstr "oceaan buiten water leuk zomer minimaal"
-
-#~ msgctxt "tags"
-#~ msgid "world public global earth location map"
-#~ msgstr "wereld publiek wereldwijd aarde locatie kaart"
-
-#~ msgctxt "tags"
-#~ msgid "location map public business corporation building town skyscraper"
-#~ msgstr "locatie kaart publiek bedrijf onderneming gebouw stad wolkenkrabber"
-
-#~ msgctxt "tags"
-#~ msgid "food drink restaurant menu fork spoon taste"
-#~ msgstr "eten drinken restaurant menu vork lepel smaak"
-
-#~ msgctxt "tags"
-#~ msgid "weekend chill relax chair"
-#~ msgstr "weekend chillen ontspannen stoel"
-
-#~ msgctxt "tags"
-#~ msgid "fun party happy celebration taste food"
-#~ msgstr "leuk feestje blij vieren smaak eten"
-
-#~ msgctxt "tags"
-#~ msgid "petal scent smell nice relax landscape gardening outdoors outside"
-#~ msgstr "bloemblad geur ruiken lekker ontspannen landschap tuinieren buiten"
-
-#~ msgctxt "tags"
-#~ msgid "blocks block box boxes square build widgets"
-#~ msgstr "blokken blokvak vakken vierkant bouwen widgets"
-
-#~ msgctxt "tags"
-#~ msgid "money cash checkout shop commerce ecommerce"
-#~ msgstr "geld contant betalen winkelen winkel e-commerce"
-
-#~ msgctxt "tags"
-#~ msgid "puzzle plugin widget team together"
-#~ msgstr "puzzel plug-in widget team samen"
-
-#~ msgctxt "tags"
-#~ msgid "security bio defense biometric safe secure"
-#~ msgstr "beveiliging bio bescherming biometrisch veilig beveiligd"
-
-#~ msgctxt "tags"
-#~ msgid "language global world speech"
-#~ msgstr "taal wereldwijd wereld spraak"
-
-#~ msgctxt "tags"
-#~ msgid "music microphone song artist creative media audio badge"
-#~ msgstr "muziek microfoon nummer artiest creatief media audio badge"
-
-#~ msgctxt "tags"
-#~ msgid "microphone audio beats bose headphones"
-#~ msgstr "microfoon audio beats bose koptelefoon"
-
-#~ msgctxt "tags"
-#~ msgid "flower camera photography artist creative"
-#~ msgstr "bloem camera fotografie artiest creatief"
-
-#~ msgctxt "tags"
-#~ msgid "design creative build develop engineer"
-#~ msgstr "ontwerp creatief bouwen ontwikkelen techniek"
-
-#~ msgctxt "tags"
-#~ msgid "shop commence ecommence woo cart ship"
-#~ msgstr "winkelen commerce e-commerce woo winkelwagen verzenden"
-
-#~ msgctxt "tags"
-#~ msgid "cold ice frozen chill winter season global"
-#~ msgstr "koud ijs bevroren klappertanden winter seizoen wereldwijd"
-
-#~ msgctxt "tags"
-#~ msgid "education graduate graduation degree diploma college"
-#~ msgstr "onderwijs afstuderen student graad diploma universiteit hbo"
-
-#~ msgctxt "tags"
-#~ msgid "hot trending trendy design"
-#~ msgstr "hot trending populair ontwerp"
-
-#~ msgctxt "tags"
-#~ msgid "improve add upload software"
-#~ msgstr "verbeteren toevoegen uploaden software"
-
-#~ msgctxt "tags"
-#~ msgid "music microphone song artist creative media audio"
-#~ msgstr "muziek microfoon nummer artiest creatief media audio"
-
-#~ msgctxt "tags"
-#~ msgid ""
-#~ "microphone podcast computer device music microphone song artist creative "
-#~ "media audio"
-#~ msgstr ""
-#~ "microfoon podcast computer apparaat muziek microfoon nummer artiest "
-#~ "creatief media audio"
-
-#~ msgctxt "tags"
-#~ msgid "photo photographer photography camera film creative media"
-#~ msgstr "foto fotograaf fotografie camera film creatief media"
-
-#~ msgctxt "tags"
-#~ msgid "photo photographer photography camera aperture film creative media"
-#~ msgstr "foto fotograaf fotografie camera sluitingstijd film creatief media"
-
-#~ msgctxt "tags"
-#~ msgid "photo photos image media camera aperture collection"
-#~ msgstr "foto foto's afbeelding media camera sluitingstijd collectie"
-
-#~ msgctxt "tags"
-#~ msgid "film videography director producer media creative"
-#~ msgstr "film videografie regisseur producent media creatief"
-
-#~ msgctxt "tags"
-#~ msgid ""
-#~ "video videography director producer media creative camera photographer "
-#~ "photography aperture"
-#~ msgstr ""
-#~ "film videografie regisseur producent media creatief camera fotograaf "
-#~ "fotografie sluitingstijd"
-
-#~ msgctxt "tags"
-#~ msgid "palette design colors artist paint creative media"
-#~ msgstr "palet ontwerp kleuren artiest verf creatief media"
-
-#~ msgctxt "tags"
-#~ msgid "palette design colors artist creative media"
-#~ msgstr "palet ontwerp kleuren artiest creatief media"
-
-#~ msgctxt "tags"
-#~ msgid "palette design colors artist creative media paint paintbrush"
-#~ msgstr "palet ontwerp kleuren artiest creatief media verf kwast"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Standard"
-#~ msgstr "Standaard"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Silver"
-#~ msgstr "Zilver"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Retro"
-#~ msgstr "Retro"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Dark"
-#~ msgstr "Donker"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Night"
-#~ msgstr "Nacht"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Aubergine"
-#~ msgstr "Aubergine"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Circular"
-#~ msgstr "Rond"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "3D"
-#~ msgstr "3D"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Shadow"
-#~ msgstr "Schaduw"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Default"
-#~ msgstr "Standaard"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "None"
-#~ msgstr "Geen"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Checkbox"
-#~ msgstr "Selectievakje"
-
-#, fuzzy
-#~ msgctxt "label for small size option"
-#~ msgid "Small"
-#~ msgstr "Klein"
-
-#, fuzzy
-#~ msgctxt "label for medium size option"
-#~ msgid "Medium"
-#~ msgstr "Gemiddeld"
-
-#, fuzzy
-#~ msgctxt "label for large size option"
-#~ msgid "Large"
-#~ msgstr "Groot"
-
-#, fuzzy
-#~ msgctxt "label for large size option"
-#~ msgid "Extra Large"
-#~ msgstr "Extra groot"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Auto"
-#~ msgstr "Auto"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Cover"
-#~ msgstr "Omslag"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Contain"
-#~ msgstr "Bevat"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Top Left"
-#~ msgstr "Boven links"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Top Center"
-#~ msgstr "Boven centraal"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Top Right"
-#~ msgstr "Boven rechts"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Center Left"
-#~ msgstr "Centraal links"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Center Center"
-#~ msgstr "Centraal midden"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Center Right"
-#~ msgstr "Centraal rechts"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Bottom Left"
-#~ msgstr "Onder links"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Bottom Center"
-#~ msgstr "Onder centraal"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Bottom Right"
-#~ msgstr "Onder rechts"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "No Repeat"
-#~ msgstr "Geen herhaling"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Repeat"
-#~ msgstr "Herhalen"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Repeat Horizontally"
-#~ msgstr "Horizontaal herhalen"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Repeat Vertically"
-#~ msgstr "Verticaal herhalen"
-
-#, fuzzy
-#~ msgctxt ""
-#~ "HTML attribute that specifies the a relationship between the two pages."
-#~ msgid "Link Rel"
-#~ msgstr "Link Rel"
-
-#, fuzzy
-#~ msgctxt "visual style option"
-#~ msgid "Dark"
-#~ msgstr "Donker"
-
-#, fuzzy
-#~ msgctxt "visual style option"
-#~ msgid "Light"
-#~ msgstr "Licht"
-
-#, fuzzy
-#~ msgctxt "visual style option"
-#~ msgid "None"
-#~ msgstr "Geen"
-
-#, fuzzy
-#~ msgctxt "label for the control that allows zooming in on the image"
-#~ msgid "Image Zoom"
-#~ msgstr "Afbeelding"
-
-#, fuzzy
-#~ msgctxt "A size unit for CSS markup"
-#~ msgid "Pixel"
-#~ msgstr "Pixel"
-
-#, fuzzy
-#~ msgctxt "A size unit for CSS markup"
-#~ msgid "Em"
-#~ msgstr "Em"
-
-#, fuzzy
-#~ msgctxt "A size unit for CSS markup"
-#~ msgid "Percentage"
-#~ msgstr "Percentage"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Original"
-#~ msgstr "Origineel"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Grayscale Filter"
-#~ msgstr "Grijswaarden"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Sepia Filter"
-#~ msgstr "Mediabestand"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Saturation Filter"
-#~ msgstr "Verzadiging"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Dim Filter"
-#~ msgstr "Vintage filter"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Vintage Filter"
-#~ msgstr "Vintage filter"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Capitalize"
-#~ msgstr "Hoofdletters gebruiken"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Normal"
-#~ msgstr "Normaal"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Bold"
-#~ msgstr "Vet"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Default"
-#~ msgstr "Standaard"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Uppercase"
-#~ msgstr "Hoofdletters"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Lowercase"
-#~ msgstr "Kleine letters"
-
-#, fuzzy
 #~ msgid "%d years"
 #~ msgstr "%s jaar"
-
-#~ msgid "a year"
-#~ msgstr "een jaar"
 
 #, fuzzy
 #~ msgid "%d weeks"
