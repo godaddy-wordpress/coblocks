@@ -149,7 +149,7 @@ export class Edit extends Component {
 		const dropZone = (
 			<BackgroundDropZone
 				{ ...this.props }
-				label={ __( 'Add backround to hero' ) }
+				label={ __( 'Add background to hero' ) }
 			/>
 		);
 

@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-10-11T16:01:45+00:00\n"
+"POT-Creation-Date: 2019-10-16T16:33:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -208,7 +208,7 @@ msgstr ""
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:100
 #: src/blocks/hero/inspector.js:108
-#: src/blocks/map/inspector.js:128
+#: src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr ""
 
@@ -223,7 +223,7 @@ msgstr ""
 #: src/blocks/features/edit.js:78
 #: src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
-msgid "Add as backround"
+msgid "Add as background"
 msgstr ""
 
 #: src/blocks/features/feature/index.js:29
@@ -462,7 +462,7 @@ msgid "Display a menu or price list."
 msgstr ""
 
 #: src/blocks/food-and-drinks/inspector.js:26
-#: src/blocks/map/inspector.js:103
+#: src/blocks/map/inspector.js:107
 #: src/blocks/posts/inspector.js:187
 #: src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
@@ -498,82 +498,94 @@ msgid "Toggle to show the price of each item."
 msgstr ""
 
 #. %s: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:164
+#: src/blocks/form/edit.js:171
 msgid "%s is not a valid email address."
 msgstr ""
 
 #. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:174
+#: src/blocks/form/edit.js:181
 msgid "%s and %s are not a valid email address."
 msgstr ""
 
 #. %s1: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:182
+#: src/blocks/form/edit.js:189
 msgid "%s are not a valid email address."
 msgstr ""
 
-#: src/blocks/form/edit.js:240
+#: src/blocks/form/edit.js:247
 msgid "Email address"
 msgstr ""
 
-#: src/blocks/form/edit.js:241
+#: src/blocks/form/edit.js:248
 msgid "name@example.com"
 msgstr ""
 
-#: src/blocks/form/edit.js:251
+#: src/blocks/form/edit.js:258
 msgid "Subject"
 msgstr ""
 
-#: src/blocks/form/edit.js:281
+#: src/blocks/form/edit.js:288
 msgid "Form Settings"
 msgstr ""
 
-#: src/blocks/form/edit.js:286
+#: src/blocks/form/edit.js:293
 msgid "Google reCAPTCHA"
 msgstr ""
 
-#: src/blocks/form/edit.js:289
+#: src/blocks/form/edit.js:296
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr ""
 
-#: src/blocks/form/edit.js:295
+#: src/blocks/form/edit.js:302
 msgid "Generate keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:296
+#: src/blocks/form/edit.js:303
 msgid "My keys"
 msgstr ""
 
-#: src/blocks/form/edit.js:299
+#: src/blocks/form/edit.js:306
 msgid "Get help"
 msgstr ""
 
-#: src/blocks/form/edit.js:303
+#: src/blocks/form/edit.js:310
 msgid "Site Key"
 msgstr ""
 
-#: src/blocks/form/edit.js:309
+#: src/blocks/form/edit.js:316
 msgid "Secret Key"
 msgstr ""
 
-#: src/blocks/form/edit.js:323
+#: src/blocks/form/edit.js:330
 #: src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr ""
 
-#: src/blocks/form/edit.js:323
-#: src/blocks/map/inspector.js:227
+#: src/blocks/form/edit.js:330
+#: src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr ""
 
-#: src/blocks/form/edit.js:338
-#: src/blocks/map/inspector.js:235
+#: src/blocks/form/edit.js:345
+#: src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr ""
 
+#: src/blocks/form/fields/coblocks-option.js:61
+msgid "Write option…"
+msgstr ""
+
+#: src/blocks/form/fields/coblocks-option.js:70
+msgid "Remove Option"
+msgstr ""
+
+#: src/blocks/form/fields/date/index.js:21
+msgid "A field for requesting date selections with a date picker."
+msgstr ""
+
 #: src/blocks/form/fields/email/index.js:20
-msgid "An email address field."
+msgid "A field for collecting a validated email address."
 msgstr ""
 
 #: src/blocks/form/fields/field-label.js:22
@@ -583,6 +595,10 @@ msgstr ""
 
 #: src/blocks/form/fields/field-label.js:30
 msgid "Required"
+msgstr ""
+
+#: src/blocks/form/fields/multi-field.js:102
+msgid "Add Option"
 msgstr ""
 
 #: src/blocks/form/fields/name/edit.js:69
@@ -602,7 +618,15 @@ msgid "Toggle to add a last name field."
 msgstr ""
 
 #: src/blocks/form/fields/name/index.js:20
-msgid "A text field for names."
+msgid "A text field for collecting the first and last names."
+msgstr ""
+
+#: src/blocks/form/fields/phone/index.js:21
+msgid "A phone number to allow visitors to give you a phone number."
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:21
+msgid "A field with multiple options where only one choice can be made."
 msgstr ""
 
 #: src/blocks/form/fields/textarea/index.js:20
@@ -610,7 +634,7 @@ msgid "A text box for longer responses."
 msgstr ""
 
 #: src/blocks/form/index.js:27
-msgid "Add a simple form to your page."
+msgid "Add a contact form to your page."
 msgstr ""
 
 #: src/blocks/form/index.js:36
@@ -697,7 +721,7 @@ msgid "Rounded Corners"
 msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:174
-#: src/blocks/map/edit.js:307
+#: src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr ""
@@ -852,7 +876,7 @@ msgstr ""
 msgid "File"
 msgstr ""
 
-#: src/blocks/gist/deprecated.js:30
+#: src/blocks/gist/deprecated.js:36
 #: src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr ""
@@ -899,7 +923,7 @@ msgid "Change layout"
 msgstr ""
 
 #: src/blocks/hero/edit.js:152
-msgid "Add backround to hero"
+msgid "Add background to hero"
 msgstr ""
 
 #: src/blocks/hero/index.js:41
@@ -994,7 +1018,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:170
-#: src/components/dimensions-control/index.js:489
+#: src/components/dimensions-control/index.js:470
 #: src/components/size-control/index.js:198
 msgid "Reset"
 msgstr ""
@@ -1084,24 +1108,25 @@ msgstr ""
 msgid "Map style"
 msgstr ""
 
-#: src/blocks/map/edit.js:191
+#: src/blocks/map/deprecated.js:96
+#: src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50
+msgid "Google Map"
+msgstr ""
+
+#: src/blocks/map/edit.js:195
 msgid "Invalid API key, or too many requests"
 msgstr ""
 
 #: src/blocks/map/edit.js:294
-#: src/blocks/map/save.js:48
-msgid "Google Map"
-msgstr ""
-
-#: src/blocks/map/edit.js:295
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/edit.js:302
+#: src/blocks/map/edit.js:301
 msgid "Search for a place or address…"
 msgstr ""
 
-#: src/blocks/map/edit.js:321
+#: src/blocks/map/edit.js:320
 msgid "Cancel"
 msgstr ""
 
@@ -1109,107 +1134,107 @@ msgstr ""
 msgid "Add an address or location to drop a pin on a Google map."
 msgstr ""
 
-#: src/blocks/map/inspector.js:105
+#: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
 msgstr ""
 
-#: src/blocks/map/inspector.js:126
+#: src/blocks/map/inspector.js:130
 msgid "Map Settings"
 msgstr ""
 
-#: src/blocks/map/inspector.js:131
+#: src/blocks/map/inspector.js:135
 msgid "Height for the map in pixels"
 msgstr ""
 
-#: src/blocks/map/inspector.js:140
+#: src/blocks/map/inspector.js:144
 msgid "Zoom Level"
 msgstr ""
 
-#: src/blocks/map/inspector.js:151
+#: src/blocks/map/inspector.js:155
 msgid "Marker Size"
 msgstr ""
 
-#: src/blocks/map/inspector.js:166
+#: src/blocks/map/inspector.js:170
 msgid "Fine control options are enabled."
 msgstr ""
 
-#: src/blocks/map/inspector.js:166
+#: src/blocks/map/inspector.js:170
 msgid "Toggle to enable map control options."
 msgstr ""
 
-#: src/blocks/map/inspector.js:174
+#: src/blocks/map/inspector.js:178
 msgid "Map Controls"
 msgstr ""
 
-#: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:182
 msgid "Map Type"
 msgstr ""
 
-#: src/blocks/map/inspector.js:181
+#: src/blocks/map/inspector.js:185
 msgid "Switching between standard and satellite map views is enabled."
 msgstr ""
 
-#: src/blocks/map/inspector.js:181
+#: src/blocks/map/inspector.js:185
 msgid "Toggle to enable switching between standard and satellite maps."
 msgstr ""
 
-#: src/blocks/map/inspector.js:184
+#: src/blocks/map/inspector.js:188
 msgid "Zoom Controls"
 msgstr ""
 
-#: src/blocks/map/inspector.js:187
+#: src/blocks/map/inspector.js:191
 msgid "Showing map zoom controls."
 msgstr ""
 
-#: src/blocks/map/inspector.js:187
+#: src/blocks/map/inspector.js:191
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
 msgstr ""
 
-#: src/blocks/map/inspector.js:190
+#: src/blocks/map/inspector.js:194
 msgid "Street View"
 msgstr ""
 
-#: src/blocks/map/inspector.js:193
+#: src/blocks/map/inspector.js:197
 msgid "Showing the street view map control."
 msgstr ""
 
-#: src/blocks/map/inspector.js:193
+#: src/blocks/map/inspector.js:197
 msgid "Toggle to show the street view control at the bottom right."
 msgstr ""
 
-#: src/blocks/map/inspector.js:196
+#: src/blocks/map/inspector.js:200
 msgid "Fullscreen Toggle"
 msgstr ""
 
-#: src/blocks/map/inspector.js:199
+#: src/blocks/map/inspector.js:203
 msgid "Showing the fullscreen map control."
 msgstr ""
 
-#: src/blocks/map/inspector.js:199
+#: src/blocks/map/inspector.js:203
 msgid "Toggle to show the fullscreen map control."
 msgstr ""
 
-#: src/blocks/map/inspector.js:204
+#: src/blocks/map/inspector.js:208
 msgid "Google Maps API Key"
 msgstr ""
 
-#: src/blocks/map/inspector.js:208
-msgid "Add your Google Maps API key. Updating this API key will set all your maps to use the new key."
-msgstr ""
-
-#: src/blocks/map/inspector.js:211
-msgid "Retrieve your key"
-msgstr ""
-
 #: src/blocks/map/inspector.js:212
+msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgstr ""
+
+#: src/blocks/map/inspector.js:215
+msgid "Get a key"
+msgstr ""
+
+#: src/blocks/map/inspector.js:216
 msgid "Need help?"
 msgstr ""
 
-#: src/blocks/map/inspector.js:218
+#: src/blocks/map/inspector.js:222
 msgid "Enter Google API Key…"
 msgstr ""
 
-#: src/blocks/map/inspector.js:227
+#: src/blocks/map/inspector.js:231
 msgid "Saved"
 msgstr ""
 
@@ -1460,7 +1485,7 @@ msgid "A pricing table to help visitors compare products and plans."
 msgstr ""
 
 #: src/blocks/row/column/edit.js:90
-msgid "Add backround to column"
+msgid "Add background to column"
 msgstr ""
 
 #: src/blocks/row/column/index.js:30
@@ -1480,7 +1505,7 @@ msgstr ""
 msgid "Width"
 msgstr ""
 
-#: src/blocks/row/controls.js:70
+#: src/blocks/row/controls.js:74
 msgid "Change row block layout"
 msgstr ""
 
@@ -1501,7 +1526,7 @@ msgid "four"
 msgstr ""
 
 #: src/blocks/row/edit.js:169
-msgid "Add backround to row"
+msgid "Add background to row"
 msgstr ""
 
 #: src/blocks/row/edit.js:174
@@ -1787,8 +1812,8 @@ msgid "LinkedIn"
 msgstr ""
 
 #: src/blocks/share/inspector.js:177
-#: includes/class-coblocks-form.php:210
-#: includes/class-coblocks-form.php:297
+#: includes/class-coblocks-form.php:234
+#: includes/class-coblocks-form.php:321
 msgid "Email"
 msgstr ""
 
@@ -2031,74 +2056,74 @@ msgstr ""
 msgid "Reset All"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:461
+#: src/components/dimensions-control/index.js:442
 msgid "Select Units"
 msgstr ""
 
 #. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
-#: src/components/dimensions-control/index.js:472
+#: src/components/dimensions-control/index.js:453
 msgid "%s Units"
 msgstr ""
 
 #. %s: a texual label
-#: src/components/dimensions-control/index.js:487
+#: src/components/dimensions-control/index.js:468
 msgid "Turn off advanced %s settings"
 msgstr ""
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:659
+#: src/components/dimensions-control/index.js:640
 msgid "%s Top"
 msgstr ""
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:670
+#: src/components/dimensions-control/index.js:651
 msgid "%s Right"
 msgstr ""
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:681
+#: src/components/dimensions-control/index.js:662
 msgid "%s Bottom"
 msgstr ""
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:692
+#: src/components/dimensions-control/index.js:673
 msgid "%s Left"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:698
+#: src/components/dimensions-control/index.js:679
 msgid "Unsync"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:698
+#: src/components/dimensions-control/index.js:679
 msgid "Sync"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:701
+#: src/components/dimensions-control/index.js:682
 msgid "Sync Units"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:718
+#: src/components/dimensions-control/index.js:699
 msgid "Top"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:719
+#: src/components/dimensions-control/index.js:700
 msgid "Right"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:720
+#: src/components/dimensions-control/index.js:701
 msgid "Bottom"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:721
+#: src/components/dimensions-control/index.js:702
 msgid "Left"
 msgstr ""
 
 #. %s:  a texual label
-#: src/components/dimensions-control/index.js:741
+#: src/components/dimensions-control/index.js:722
 msgid "Advanced %s settings"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:744
+#: src/components/dimensions-control/index.js:725
 msgid "Advanced"
 msgstr ""
 
@@ -2382,7 +2407,7 @@ msgstr ""
 msgid "Crop Settings"
 msgstr ""
 
-#: src/formats/uppercase/index.js:36
+#: src/formats/uppercase/index.js:35
 msgid "Uppercase"
 msgstr ""
 
@@ -2425,7 +2450,7 @@ msgctxt "Toggle label to display the accordion open"
 msgid "Display open"
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/edit.js:67
+#: src/blocks/accordion/accordion-item/edit.js:65
 msgctxt "Accordion is the block name"
 msgid "Add accordion title..."
 msgstr ""
@@ -2510,6 +2535,16 @@ msgctxt "block keyword"
 msgid "restaurant"
 msgstr ""
 
+#: src/blocks/form/fields/date/index.js:20
+msgctxt "block keyword"
+msgid "calendar"
+msgstr ""
+
+#: src/blocks/form/fields/date/index.js:20
+msgctxt "block keyword"
+msgid "day month year"
+msgstr ""
+
 #: src/blocks/form/fields/email/index.js:22
 msgctxt "block keyword"
 msgid "e-mail"
@@ -2528,6 +2563,36 @@ msgstr ""
 #: src/blocks/form/fields/name/index.js:22
 msgctxt "block keyword"
 msgid "last name"
+msgstr ""
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "telephone"
+msgstr ""
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "cellular"
+msgstr ""
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "mobile"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Choose"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Select"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Option"
 msgstr ""
 
 #: src/blocks/form/fields/textarea/index.js:22
@@ -2796,6 +2861,11 @@ msgctxt "block name"
 msgid "Food & Drinks"
 msgstr ""
 
+#: src/blocks/form/fields/date/index.js:19
+msgctxt "block name"
+msgid "Date"
+msgstr ""
+
 #: src/blocks/form/fields/email/index.js:19
 msgctxt "block name"
 msgid "Email"
@@ -2806,9 +2876,19 @@ msgctxt "block name"
 msgid "Name"
 msgstr ""
 
+#: src/blocks/form/fields/phone/index.js:19
+msgctxt "block name"
+msgid "Phone"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:19
+msgctxt "block name"
+msgid "Radio"
+msgstr ""
+
 #: src/blocks/form/fields/textarea/index.js:19
 msgctxt "block name"
-msgid "Message"
+msgid "Textarea"
 msgstr ""
 
 #: src/blocks/form/index.js:26
@@ -4037,17 +4117,17 @@ msgctxt "label for the control that allows zooming in on the image"
 msgid "Image Zoom"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:408
+#: src/components/dimensions-control/index.js:389
 msgctxt "A size unit for CSS markup"
 msgid "Pixel"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:412
+#: src/components/dimensions-control/index.js:393
 msgctxt "A size unit for CSS markup"
 msgid "Em"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:416
+#: src/components/dimensions-control/index.js:397
 msgctxt "A size unit for CSS markup"
 msgid "Percentage"
 msgstr ""
@@ -4142,81 +4222,7 @@ msgid "Review CoBlocks on WordPress.org"
 msgstr ""
 
 #: includes/admin/class-coblocks-action-links.php:41
-#: includes/admin/class-coblocks-feedback.php:282
 msgid "Leave a Review"
-msgstr ""
-
-#. translators: %d: Number of years
-#: includes/admin/class-coblocks-feedback.php:92
-msgid "%d years"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:94
-msgid "a year"
-msgstr ""
-
-#. translators: %d: Number of weeks
-#: includes/admin/class-coblocks-feedback.php:101
-msgid "%d weeks"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:103
-msgid "a week"
-msgstr ""
-
-#. translators: %d: Number of days
-#: includes/admin/class-coblocks-feedback.php:110
-msgid "%d days"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:112
-msgid "a day"
-msgstr ""
-
-#. translators: %d: Number of hours
-#: includes/admin/class-coblocks-feedback.php:119
-msgid "%d hours"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:121
-msgid "an hour"
-msgstr ""
-
-#. translators: %d: Number of minutes
-#: includes/admin/class-coblocks-feedback.php:128
-msgid "%d minutes"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:130
-msgid "a minute"
-msgstr ""
-
-#. translators: %d: Number of seconds
-#: includes/admin/class-coblocks-feedback.php:137
-msgid "%d seconds"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:139
-msgid "a second"
-msgstr ""
-
-#. translators: %s: Plugin Name
-#: includes/admin/class-coblocks-feedback.php:271
-msgid "%s WordPress Plugin"
-msgstr ""
-
-#. translators: %s: Plugin Name
-#: includes/admin/class-coblocks-feedback.php:275
-msgid "Are you enjoying %s?"
-msgstr ""
-
-#. translators: %s: Plugin Name, 2. Time which the plugin has been in use for
-#: includes/admin/class-coblocks-feedback.php:278
-msgid "You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We'd really appreciate it!"
-msgstr ""
-
-#: includes/admin/class-coblocks-feedback.php:283
-msgid "No thanks / I already have"
 msgstr ""
 
 #: includes/admin/class-coblocks-getting-started-page.php:121
@@ -4277,31 +4283,43 @@ msgstr ""
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr ""
 
-#: includes/class-coblocks-form.php:244
+#: includes/class-coblocks-form.php:268
 msgid "Name"
 msgstr ""
 
-#: includes/class-coblocks-form.php:248
+#: includes/class-coblocks-form.php:272
 msgid "First"
 msgstr ""
 
-#: includes/class-coblocks-form.php:249
+#: includes/class-coblocks-form.php:273
 msgid "Last"
 msgstr ""
 
-#: includes/class-coblocks-form.php:325
+#: includes/class-coblocks-form.php:349
 msgid "Message"
 msgstr ""
 
-#: includes/class-coblocks-form.php:390
+#: includes/class-coblocks-form.php:387
+msgid "Date"
+msgstr ""
+
+#: includes/class-coblocks-form.php:415
+msgid "Phone"
+msgstr ""
+
+#: includes/class-coblocks-form.php:451
+msgid "Choose one"
+msgstr ""
+
+#: includes/class-coblocks-form.php:522
 msgid "Submit"
 msgstr ""
 
-#: includes/class-coblocks-form.php:598
+#: includes/class-coblocks-form.php:730
 msgid "Your message was sent:"
 msgstr ""
 
-#: includes/class-coblocks-google-map-block.php:122
+#: includes/class-coblocks-google-map-block.php:124
 msgid "Google Map API key for map rendering"
 msgstr ""
 

@@ -1,9 +1,9 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.12.1\n"
+"Project-Id-Version: CoBlocks 1.15.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"POT-Creation-Date: 2019-10-11T16:01:45+00:00\n"
+"POT-Creation-Date: 2019-10-16T16:11:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -208,7 +208,7 @@ msgstr "다른 블록 사이에 크기 조정이 가능한 공백을 추가합�
 
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:100
-#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:128
+#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr "높이(픽셀)"
 
@@ -222,7 +222,8 @@ msgstr "색상"
 
 #: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
-msgid "Add as backround"
+#, fuzzy
+msgid "Add as background"
 msgstr "배경으로 추가"
 
 #: src/blocks/features/feature/index.js:29
@@ -443,7 +444,7 @@ msgstr "초점"
 msgid "Display a menu or price list."
 msgstr "메뉴 또는 가격 목록을 표시합니다."
 
-#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:103
+#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
 #: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
 msgid "Styles"
@@ -478,82 +479,97 @@ msgid "Toggle to show the price of each item."
 msgstr "각 항목의 가격을 표시하려면 토글합니다."
 
 #. %s: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:164
+#: src/blocks/form/edit.js:171
 msgid "%s is not a valid email address."
 msgstr "‌‌%s은(는) 올바른 이메일 주소가 아닙니다."
 
 #. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:174
+#: src/blocks/form/edit.js:181
 msgid "%s and %s are not a valid email address."
 msgstr "‌‌%s 및 %s은(는) 올바른 이메일 주소가 아닙니다."
 
 #. %s1: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:182
+#: src/blocks/form/edit.js:189
 msgid "%s are not a valid email address."
 msgstr "‌‌%s은(는) 올바른 이메일 주소가 아닙니다."
 
-#: src/blocks/form/edit.js:240
+#: src/blocks/form/edit.js:247
 msgid "Email address"
 msgstr "이메일 주소"
 
-#: src/blocks/form/edit.js:241
+#: src/blocks/form/edit.js:248
 msgid "name@example.com"
 msgstr "name@example.com"
 
-#: src/blocks/form/edit.js:251
+#: src/blocks/form/edit.js:258
 msgid "Subject"
 msgstr "제목"
 
-#: src/blocks/form/edit.js:281
+#: src/blocks/form/edit.js:288
 msgid "Form Settings"
 msgstr "양식 설정"
 
-#: src/blocks/form/edit.js:286
+#: src/blocks/form/edit.js:293
 msgid "Google reCAPTCHA"
 msgstr "Google reCAPTCHA"
 
-#: src/blocks/form/edit.js:289
+#: src/blocks/form/edit.js:296
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr ""
 "스팸으로부터 귀하의 양식을 보호하도록 reCAPTCHA 사이트 및 비밀 키를 추가합니"
 "다."
 
-#: src/blocks/form/edit.js:295
+#: src/blocks/form/edit.js:302
 msgid "Generate keys"
 msgstr "키 생성"
 
-#: src/blocks/form/edit.js:296
+#: src/blocks/form/edit.js:303
 msgid "My keys"
 msgstr "나의 키"
 
-#: src/blocks/form/edit.js:299
+#: src/blocks/form/edit.js:306
 msgid "Get help"
 msgstr "지원 받기"
 
-#: src/blocks/form/edit.js:303
+#: src/blocks/form/edit.js:310
 msgid "Site Key"
 msgstr "사이트 키"
 
-#: src/blocks/form/edit.js:309
+#: src/blocks/form/edit.js:316
 msgid "Secret Key"
 msgstr "비밀 키"
 
-#: src/blocks/form/edit.js:323 src/blocks/gallery-collage/edit.js:174
+#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr "저장하기"
 
-#: src/blocks/form/edit.js:323 src/blocks/map/inspector.js:227
+#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr "저장"
 
-#: src/blocks/form/edit.js:338 src/blocks/map/inspector.js:235
+#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr "제거"
 
+#: src/blocks/form/fields/coblocks-option.js:61
+#, fuzzy
+msgid "Write option…"
+msgstr "캡션 쓰기..."
+
+#: src/blocks/form/fields/coblocks-option.js:70
+#, fuzzy
+msgid "Remove Option"
+msgstr "제거 "
+
+#: src/blocks/form/fields/date/index.js:21
+msgid "A field for requesting date selections with a date picker."
+msgstr ""
+
 #: src/blocks/form/fields/email/index.js:20
-msgid "An email address field."
-msgstr "이메일 주소 필드."
+#, fuzzy
+msgid "A field for collecting a validated email address."
+msgstr "‌‌%s은(는) 올바른 이메일 주소가 아닙니다."
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
@@ -563,6 +579,11 @@ msgstr "레이블 추가..."
 #: src/blocks/form/fields/field-label.js:30
 msgid "Required"
 msgstr "요청됨"
+
+#: src/blocks/form/fields/multi-field.js:102
+#, fuzzy
+msgid "Add Option"
+msgstr "설명 추가..."
 
 #: src/blocks/form/fields/name/edit.js:69
 msgid "Name Field Settings"
@@ -581,15 +602,25 @@ msgid "Toggle to add a last name field."
 msgstr "성 필드를 추가하려면 토글합니다."
 
 #: src/blocks/form/fields/name/index.js:20
-msgid "A text field for names."
-msgstr "이름 텍스트 필드."
+#, fuzzy
+msgid "A text field for collecting the first and last names."
+msgstr "이름 및 성 필드 모두 표시합니다."
+
+#: src/blocks/form/fields/phone/index.js:21
+msgid "A phone number to allow visitors to give you a phone number."
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:21
+msgid "A field with multiple options where only one choice can be made."
+msgstr ""
 
 #: src/blocks/form/fields/textarea/index.js:20
 msgid "A text box for longer responses."
 msgstr "더 긴 응답을 위한 텍스트 상자."
 
 #: src/blocks/form/index.js:27
-msgid "Add a simple form to your page."
+#, fuzzy
+msgid "Add a contact form to your page."
 msgstr "페이지에 간단한 양식을 추가합니다."
 
 #: src/blocks/form/index.js:36
@@ -634,8 +665,9 @@ msgid "Display multiple images in a beautiful carousel gallery."
 msgstr "아름다운 회전식 갤러리에서 여러 개의 이미지를 표시합니다."
 
 #: src/blocks/gallery-carousel/inspector.js:109
+#, fuzzy
 msgid "Thumbnails"
-msgstr ""
+msgstr "열 크기"
 
 #: src/blocks/gallery-carousel/inspector.js:119
 #, fuzzy
@@ -657,8 +689,9 @@ msgid "Percentage based height is activated."
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:44
+#, fuzzy
 msgid "Toggle for percentage based height."
-msgstr ""
+msgstr "지도 제어 옵션을 설정하려면 토글합니다."
 
 #: src/blocks/gallery-carousel/inspector.js:68
 #, fuzzy
@@ -678,7 +711,7 @@ msgstr "크기"
 msgid "Rounded Corners"
 msgstr "둥근 모서리"
 
-#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:307
+#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr "적용"
@@ -842,7 +875,7 @@ msgstr "GitHub 파일"
 msgid "File"
 msgstr "파일"
 
-#: src/blocks/gist/deprecated.js:30 src/blocks/gist/save.js:29
+#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr "GitHub에서 이 gist 보기"
 
@@ -889,7 +922,7 @@ msgstr "레이아웃 변경"
 
 #: src/blocks/hero/edit.js:152
 #, fuzzy
-msgid "Add backround to hero"
+msgid "Add background to hero"
 msgstr "%s에 배경 추가"
 
 #: src/blocks/hero/index.js:41
@@ -984,7 +1017,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:170
-#: src/components/dimensions-control/index.js:489
+#: src/components/dimensions-control/index.js:470
 #: src/components/size-control/index.js:198
 msgid "Reset"
 msgstr "재설정"
@@ -1077,23 +1110,24 @@ msgstr "위치 편집"
 msgid "Map style"
 msgstr "지도 스타일"
 
-#: src/blocks/map/edit.js:191
-msgid "Invalid API key, or too many requests"
-msgstr "잘못된 API 키 또는 너무 많은 요청"
-
-#: src/blocks/map/edit.js:294 src/blocks/map/save.js:48
+#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50
 msgid "Google Map"
 msgstr "Google 지도"
 
-#: src/blocks/map/edit.js:295
+#: src/blocks/map/edit.js:195
+msgid "Invalid API key, or too many requests"
+msgstr "잘못된 API 키 또는 너무 많은 요청"
+
+#: src/blocks/map/edit.js:294
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr "Google 지도에 핀을 고정하려면 위치 또는 주소를 입력합니다."
 
-#: src/blocks/map/edit.js:302
+#: src/blocks/map/edit.js:301
 msgid "Search for a place or address…"
 msgstr "장소 또는 주소 검색..."
 
-#: src/blocks/map/edit.js:321
+#: src/blocks/map/edit.js:320
 msgid "Cancel"
 msgstr ""
 
@@ -1102,111 +1136,113 @@ msgstr ""
 msgid "Add an address or location to drop a pin on a Google map."
 msgstr "주소를 추가하고 Google 지도에 핀을 고정합니다."
 
-#: src/blocks/map/inspector.js:105
+#: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
 msgstr "지도 스타일 선택"
 
-#: src/blocks/map/inspector.js:126
+#: src/blocks/map/inspector.js:130
 msgid "Map Settings"
 msgstr "지도 설정"
 
-#: src/blocks/map/inspector.js:131
+#: src/blocks/map/inspector.js:135
 msgid "Height for the map in pixels"
 msgstr "지도 높이(픽셀)"
 
-#: src/blocks/map/inspector.js:140
+#: src/blocks/map/inspector.js:144
 msgid "Zoom Level"
 msgstr "확대/축소 수준"
 
-#: src/blocks/map/inspector.js:151
+#: src/blocks/map/inspector.js:155
 msgid "Marker Size"
 msgstr "표식 크기"
 
-#: src/blocks/map/inspector.js:166
+#: src/blocks/map/inspector.js:170
 msgid "Fine control options are enabled."
 msgstr "세부 제어 옵션이 설정되었습니다."
 
-#: src/blocks/map/inspector.js:166
+#: src/blocks/map/inspector.js:170
 msgid "Toggle to enable map control options."
 msgstr "지도 제어 옵션을 설정하려면 토글합니다."
 
-#: src/blocks/map/inspector.js:174
+#: src/blocks/map/inspector.js:178
 msgid "Map Controls"
 msgstr "지도 제어"
 
-#: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:182
 msgid "Map Type"
 msgstr "지도 유형"
 
-#: src/blocks/map/inspector.js:181
+#: src/blocks/map/inspector.js:185
 msgid "Switching between standard and satellite map views is enabled."
 msgstr "표준 및 위성 지도 보기 사이의 전환이 설정되었습니다."
 
-#: src/blocks/map/inspector.js:181
+#: src/blocks/map/inspector.js:185
 msgid "Toggle to enable switching between standard and satellite maps."
 msgstr "표준 및 위성 지도 사이의 전환을 설정하려면 토글합니다."
 
-#: src/blocks/map/inspector.js:184
+#: src/blocks/map/inspector.js:188
 msgid "Zoom Controls"
 msgstr "확대/축소 제어"
 
-#: src/blocks/map/inspector.js:187
+#: src/blocks/map/inspector.js:191
 msgid "Showing map zoom controls."
 msgstr "지도 확대/축소 제어를 표시합니다."
 
-#: src/blocks/map/inspector.js:187
+#: src/blocks/map/inspector.js:191
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
 msgstr "확대/축소 제어가 있는 지도에서 확대 및 축소를 설정하려면 토글합니다."
 
-#: src/blocks/map/inspector.js:190
+#: src/blocks/map/inspector.js:194
 msgid "Street View"
 msgstr "스트리트 뷰"
 
-#: src/blocks/map/inspector.js:193
+#: src/blocks/map/inspector.js:197
 msgid "Showing the street view map control."
 msgstr "스트리트 뷰 지도 제어를 표시합니다."
 
-#: src/blocks/map/inspector.js:193
+#: src/blocks/map/inspector.js:197
 msgid "Toggle to show the street view control at the bottom right."
 msgstr "오른쪽 하단에 스트리트 뷰 제어를 표시하려면 토글합니다."
 
-#: src/blocks/map/inspector.js:196
+#: src/blocks/map/inspector.js:200
 msgid "Fullscreen Toggle"
 msgstr "전체 화면 토글"
 
-#: src/blocks/map/inspector.js:199
+#: src/blocks/map/inspector.js:203
 msgid "Showing the fullscreen map control."
 msgstr "전체 화면 지도 제어를 표시합니다."
 
-#: src/blocks/map/inspector.js:199
+#: src/blocks/map/inspector.js:203
 msgid "Toggle to show the fullscreen map control."
 msgstr "전체 화면 지도 제어를 표시하려면 토글합니다."
 
-#: src/blocks/map/inspector.js:204
+#: src/blocks/map/inspector.js:208
 msgid "Google Maps API Key"
 msgstr "Google 지도 API 키"
 
-#: src/blocks/map/inspector.js:208
+#: src/blocks/map/inspector.js:212
+#, fuzzy
 msgid ""
-"Add your Google Maps API key. Updating this API key will set all your maps "
-"to use the new key."
+"Add a Google Maps API key. Updating this API key will set all your maps to "
+"use the new key."
 msgstr ""
 "귀하의 Google 지도 API 키를 추가합니다. 이 API 키를 업데이트하면 귀하의 모든 "
 "지도가 새 키를 사용하도록 설정합니다."
 
-#: src/blocks/map/inspector.js:211
-msgid "Retrieve your key"
-msgstr "키 검색"
+#: src/blocks/map/inspector.js:215
+#, fuzzy
+msgid "Get a key"
+msgstr "키 생성"
 
-#: src/blocks/map/inspector.js:212
+#: src/blocks/map/inspector.js:216
 msgid "Need help?"
 msgstr "도움이 필요하신가요?"
 
-#: src/blocks/map/inspector.js:218
+#: src/blocks/map/inspector.js:222
 msgid "Enter Google API Key…"
 msgstr "Google API 키 입력..."
 
-#: src/blocks/map/inspector.js:227
+#: src/blocks/map/inspector.js:231
 msgid "Saved"
 msgstr "저장됨"
 
@@ -1329,8 +1365,9 @@ msgid "Post Carousel Settings"
 msgstr "색 설정"
 
 #: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
+#, fuzzy
 msgid "Post Date"
-msgstr ""
+msgstr "회전식"
 
 #: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
 #, fuzzy
@@ -1343,8 +1380,9 @@ msgid "Toggle to show the publish date."
 msgstr "gist 메타데이터를 표시하려면 토글합니다."
 
 #: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
+#, fuzzy
 msgid "Post Content"
-msgstr ""
+msgstr "회전식"
 
 #: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
 #, fuzzy
@@ -1457,7 +1495,7 @@ msgstr ""
 
 #: src/blocks/row/column/edit.js:90
 #, fuzzy
-msgid "Add backround to column"
+msgid "Add background to column"
 msgstr "%s에 배경 추가"
 
 #: src/blocks/row/column/index.js:30
@@ -1476,7 +1514,7 @@ msgstr "컨테이너 주변의 공간입니다."
 msgid "Width"
 msgstr "너비"
 
-#: src/blocks/row/controls.js:70
+#: src/blocks/row/controls.js:74
 #, fuzzy
 msgid "Change row block layout"
 msgstr "레이아웃 변경"
@@ -1499,7 +1537,7 @@ msgstr "4"
 
 #: src/blocks/row/edit.js:169
 #, fuzzy
-msgid "Add backround to row"
+msgid "Add background to row"
 msgstr "%s에 배경 추가"
 
 #: src/blocks/row/edit.js:174
@@ -1776,8 +1814,8 @@ msgstr "Pinterest"
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:210
-#: includes/class-coblocks-form.php:297
+#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
+#: includes/class-coblocks-form.php:321
 msgid "Email"
 msgstr "이메일"
 
@@ -2021,74 +2059,74 @@ msgstr ""
 msgid "Reset All"
 msgstr "재설정"
 
-#: src/components/dimensions-control/index.js:461
+#: src/components/dimensions-control/index.js:442
 msgid "Select Units"
 msgstr "단위 선택"
 
 #. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
-#: src/components/dimensions-control/index.js:472
+#: src/components/dimensions-control/index.js:453
 msgid "%s Units"
 msgstr "%s 단위"
 
 #. %s: a texual label
-#: src/components/dimensions-control/index.js:487
+#: src/components/dimensions-control/index.js:468
 msgid "Turn off advanced %s settings"
 msgstr "고급 %s 설정 끄기"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:659
+#: src/components/dimensions-control/index.js:640
 msgid "%s Top"
 msgstr "%s 상단"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:670
+#: src/components/dimensions-control/index.js:651
 msgid "%s Right"
 msgstr "%s 오른쪽"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:681
+#: src/components/dimensions-control/index.js:662
 msgid "%s Bottom"
 msgstr "%s 하단"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:692
+#: src/components/dimensions-control/index.js:673
 msgid "%s Left"
 msgstr "%s 왼쪽"
 
-#: src/components/dimensions-control/index.js:698
+#: src/components/dimensions-control/index.js:679
 msgid "Unsync"
 msgstr "비동기화"
 
-#: src/components/dimensions-control/index.js:698
+#: src/components/dimensions-control/index.js:679
 msgid "Sync"
 msgstr "동기화"
 
-#: src/components/dimensions-control/index.js:701
+#: src/components/dimensions-control/index.js:682
 msgid "Sync Units"
 msgstr "동기화 단위"
 
-#: src/components/dimensions-control/index.js:718
+#: src/components/dimensions-control/index.js:699
 msgid "Top"
 msgstr "상단"
 
-#: src/components/dimensions-control/index.js:719
+#: src/components/dimensions-control/index.js:700
 msgid "Right"
 msgstr "오른쪽"
 
-#: src/components/dimensions-control/index.js:720
+#: src/components/dimensions-control/index.js:701
 msgid "Bottom"
 msgstr "하단"
 
-#: src/components/dimensions-control/index.js:721
+#: src/components/dimensions-control/index.js:702
 msgid "Left"
 msgstr "왼쪽"
 
 #. %s:  a texual label
-#: src/components/dimensions-control/index.js:741
+#: src/components/dimensions-control/index.js:722
 msgid "Advanced %s settings"
 msgstr "고급 %s 설정"
 
-#: src/components/dimensions-control/index.js:744
+#: src/components/dimensions-control/index.js:725
 msgid "Advanced"
 msgstr "고급"
 
@@ -2253,8 +2291,9 @@ msgid "Toggle to show dot navigation."
 msgstr "점선 탐색을 표시하려면 토글합니다."
 
 #: src/components/slider-panel/index.js:43
+#, fuzzy
 msgid "Aligning slides to the left."
-msgstr ""
+msgstr "컨테이너 내부 공간입니다."
 
 #: src/components/slider-panel/index.js:43
 #, fuzzy
@@ -2262,8 +2301,9 @@ msgid "Aligning slides to the center."
 msgstr "컨테이너 내부 공간입니다."
 
 #: src/components/slider-panel/index.js:46
+#, fuzzy
 msgid "Pausing autoplay when hovering."
-msgstr ""
+msgstr "비디오를 음소거하려면 토글합니다."
 
 #: src/components/slider-panel/index.js:46
 #, fuzzy
@@ -2271,8 +2311,9 @@ msgid "Toggle to pause autoplay when hovered."
 msgstr "비디오를 음소거하려면 토글합니다."
 
 #: src/components/slider-panel/index.js:50
+#, fuzzy
 msgid "Scrolling without fixed slides enabled."
-msgstr ""
+msgstr "비디오를 반복 재생하려면 토글합니다."
 
 #: src/components/slider-panel/index.js:50
 #, fuzzy
@@ -2388,7 +2429,7 @@ msgstr "전체 너비로 버튼을 표시하려면 토글합니다."
 msgid "Crop Settings"
 msgstr "‌‌Hero 설정"
 
-#: src/formats/uppercase/index.js:36
+#: src/formats/uppercase/index.js:35
 msgid "Uppercase"
 msgstr "대문자"
 
@@ -2432,7 +2473,7 @@ msgctxt "Toggle label to display the accordion open"
 msgid "Display open"
 msgstr "열기 표시"
 
-#: src/blocks/accordion/accordion-item/edit.js:67
+#: src/blocks/accordion/accordion-item/edit.js:65
 #, fuzzy
 msgctxt "Accordion is the block name"
 msgid "Add accordion title..."
@@ -2531,6 +2572,18 @@ msgctxt "block keyword"
 msgid "restaurant"
 msgstr "음식점"
 
+#: src/blocks/form/fields/date/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "calendar"
+msgstr "표준"
+
+#: src/blocks/form/fields/date/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "day month year"
+msgstr "1년"
+
 #: src/blocks/form/fields/email/index.js:22
 #, fuzzy
 msgctxt "block keyword"
@@ -2544,15 +2597,51 @@ msgid "mail"
 msgstr "메일"
 
 #: src/blocks/form/fields/name/index.js:22
+#, fuzzy
 msgctxt "block keyword"
 msgid "first name"
-msgstr ""
+msgstr "성"
 
 #: src/blocks/form/fields/name/index.js:22
 #, fuzzy
 msgctxt "block keyword"
 msgid "last name"
 msgstr "성"
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "telephone"
+msgstr ""
+
+#: src/blocks/form/fields/phone/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "cellular"
+msgstr "원형"
+
+# Control name
+#: src/blocks/form/fields/phone/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "mobile"
+msgstr "모바일 %s"
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Choose"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "Select"
+msgstr "크기 선택"
+
+#: src/blocks/form/fields/radio/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "Option"
+msgstr "캡션"
 
 #: src/blocks/form/fields/textarea/index.js:22
 #, fuzzy
@@ -2865,6 +2954,11 @@ msgctxt "block name"
 msgid "Food & Drinks"
 msgstr "식품 및 음료"
 
+#: src/blocks/form/fields/date/index.js:19
+msgctxt "block name"
+msgid "Date"
+msgstr ""
+
 #: src/blocks/form/fields/email/index.js:19
 #, fuzzy
 msgctxt "block name"
@@ -2877,11 +2971,22 @@ msgctxt "block name"
 msgid "Name"
 msgstr "이름"
 
+#: src/blocks/form/fields/phone/index.js:19
+msgctxt "block name"
+msgid "Phone"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:19
+#, fuzzy
+msgctxt "block name"
+msgid "Radio"
+msgstr "반지름"
+
 #: src/blocks/form/fields/textarea/index.js:19
 #, fuzzy
 msgctxt "block name"
-msgid "Message"
-msgstr "메시지"
+msgid "Textarea"
+msgstr "텍스트 영역"
 
 #: src/blocks/form/index.js:26
 #, fuzzy
@@ -2896,9 +3001,10 @@ msgid "Carousel"
 msgstr "회전식"
 
 #: src/blocks/gallery-collage/index.js:33
+#, fuzzy
 msgctxt "block name"
 msgid "Collage"
-msgstr ""
+msgstr "이미지 설정"
 
 #: src/blocks/gallery-masonry/index.js:34
 #, fuzzy
@@ -4185,9 +4291,10 @@ msgid "None"
 msgstr "없음"
 
 #: src/components/crop-settings/index.js:280
+#, fuzzy
 msgctxt "label for horizontal positioning input"
 msgid "Horizontal Pos."
-msgstr ""
+msgstr "가로로 반복"
 
 #: src/components/crop-settings/index.js:288
 msgctxt "label for vertical positioning input"
@@ -4200,19 +4307,19 @@ msgctxt "label for the control that allows zooming in on the image"
 msgid "Image Zoom"
 msgstr "이미지"
 
-#: src/components/dimensions-control/index.js:408
+#: src/components/dimensions-control/index.js:389
 #, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Pixel"
 msgstr "픽셀"
 
-#: src/components/dimensions-control/index.js:412
+#: src/components/dimensions-control/index.js:393
 #, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Em"
 msgstr "Em"
 
-#: src/components/dimensions-control/index.js:416
+#: src/components/dimensions-control/index.js:397
 #, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Percentage"
@@ -4325,92 +4432,8 @@ msgid "Review CoBlocks on WordPress.org"
 msgstr ""
 
 #: includes/admin/class-coblocks-action-links.php:41
-#: includes/admin/class-coblocks-feedback.php:282
 msgid "Leave a Review"
 msgstr "리뷰 쓰기"
-
-#. translators: %d: Number of years
-#: includes/admin/class-coblocks-feedback.php:92
-#, fuzzy
-msgid "%d years"
-msgstr "%s년"
-
-#: includes/admin/class-coblocks-feedback.php:94
-msgid "a year"
-msgstr "1년"
-
-#. translators: %d: Number of weeks
-#: includes/admin/class-coblocks-feedback.php:101
-#, fuzzy
-msgid "%d weeks"
-msgstr "%s주"
-
-#: includes/admin/class-coblocks-feedback.php:103
-msgid "a week"
-msgstr "1주"
-
-#. translators: %d: Number of days
-#: includes/admin/class-coblocks-feedback.php:110
-#, fuzzy
-msgid "%d days"
-msgstr "%s일"
-
-#: includes/admin/class-coblocks-feedback.php:112
-msgid "a day"
-msgstr "1일"
-
-#. translators: %d: Number of hours
-#: includes/admin/class-coblocks-feedback.php:119
-#, fuzzy
-msgid "%d hours"
-msgstr "%s시간"
-
-#: includes/admin/class-coblocks-feedback.php:121
-msgid "an hour"
-msgstr "1시간"
-
-#. translators: %d: Number of minutes
-#: includes/admin/class-coblocks-feedback.php:128
-#, fuzzy
-msgid "%d minutes"
-msgstr "%s분"
-
-#: includes/admin/class-coblocks-feedback.php:130
-msgid "a minute"
-msgstr "1분"
-
-#. translators: %d: Number of seconds
-#: includes/admin/class-coblocks-feedback.php:137
-#, fuzzy
-msgid "%d seconds"
-msgstr "%s초"
-
-#: includes/admin/class-coblocks-feedback.php:139
-msgid "a second"
-msgstr "1초"
-
-#. translators: %s: Plugin Name
-#: includes/admin/class-coblocks-feedback.php:271
-msgid "%s WordPress Plugin"
-msgstr "%s 워드프레스 플러그인"
-
-#. translators: %s: Plugin Name
-#: includes/admin/class-coblocks-feedback.php:275
-msgid "Are you enjoying %s?"
-msgstr "%s이(가) 마음에 드시나요?"
-
-#. translators: %s: Plugin Name, 2. Time which the plugin has been in use for
-#: includes/admin/class-coblocks-feedback.php:278
-msgid ""
-"You have been using %1$s for %2$s now. Mind leaving a review to let us know "
-"know what you think? We'd really appreciate it!"
-msgstr ""
-"귀하는 현재 %2$s 동안 %1$s을(를) 사용하고 있습니다. 리뷰를 남겨 귀하의 생각"
-"을 알려주시겠어요? 정말 감사합니다!"
-
-#: includes/admin/class-coblocks-feedback.php:283
-msgid "No thanks / I already have"
-msgstr "감사하지만 필요 없습니다. / 이미 갖고 있습니다."
 
 #: includes/admin/class-coblocks-getting-started-page.php:121
 msgid ""
@@ -4492,31 +4515,43 @@ msgstr "스팸 방지 양식을 위한 Google reCAPTCHA 사이트 키"
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr "스팸 방지 양식을 위한 Google reCAPTCHA 비밀 키"
 
-#: includes/class-coblocks-form.php:244
+#: includes/class-coblocks-form.php:268
 msgid "Name"
 msgstr "이름"
 
-#: includes/class-coblocks-form.php:248
+#: includes/class-coblocks-form.php:272
 msgid "First"
 msgstr "이름"
 
-#: includes/class-coblocks-form.php:249
+#: includes/class-coblocks-form.php:273
 msgid "Last"
 msgstr "성"
 
-#: includes/class-coblocks-form.php:325
+#: includes/class-coblocks-form.php:349
 msgid "Message"
 msgstr "메시지"
 
-#: includes/class-coblocks-form.php:390
+#: includes/class-coblocks-form.php:387
+msgid "Date"
+msgstr ""
+
+#: includes/class-coblocks-form.php:415
+msgid "Phone"
+msgstr ""
+
+#: includes/class-coblocks-form.php:451
+msgid "Choose one"
+msgstr ""
+
+#: includes/class-coblocks-form.php:522
 msgid "Submit"
 msgstr "제출"
 
-#: includes/class-coblocks-form.php:598
+#: includes/class-coblocks-form.php:730
 msgid "Your message was sent:"
 msgstr "메시지가 전송됨:"
 
-#: includes/class-coblocks-google-map-block.php:122
+#: includes/class-coblocks-google-map-block.php:124
 msgid "Google Map API key for map rendering"
 msgstr "맵 렌더링을 위한 Google 지도 API 키"
 
@@ -4527,6 +4562,75 @@ msgstr "LinkedIn에 공유하기"
 #: src/blocks/social-profiles/index.php:84
 msgid "Linkedin"
 msgstr "LinkedIn"
+
+#~ msgid "An email address field."
+#~ msgstr "이메일 주소 필드."
+
+#~ msgid "A text field for names."
+#~ msgstr "이름 텍스트 필드."
+
+#~ msgid "Retrieve your key"
+#~ msgstr "키 검색"
+
+#, fuzzy
+#~ msgctxt "block name"
+#~ msgid "Message"
+#~ msgstr "메시지"
+
+#, fuzzy
+#~ msgid "%d years"
+#~ msgstr "%s년"
+
+#, fuzzy
+#~ msgid "%d weeks"
+#~ msgstr "%s주"
+
+#~ msgid "a week"
+#~ msgstr "1주"
+
+#, fuzzy
+#~ msgid "%d days"
+#~ msgstr "%s일"
+
+#~ msgid "a day"
+#~ msgstr "1일"
+
+#, fuzzy
+#~ msgid "%d hours"
+#~ msgstr "%s시간"
+
+#~ msgid "an hour"
+#~ msgstr "1시간"
+
+#, fuzzy
+#~ msgid "%d minutes"
+#~ msgstr "%s분"
+
+#~ msgid "a minute"
+#~ msgstr "1분"
+
+#, fuzzy
+#~ msgid "%d seconds"
+#~ msgstr "%s초"
+
+#~ msgid "a second"
+#~ msgstr "1초"
+
+#~ msgid "%s WordPress Plugin"
+#~ msgstr "%s 워드프레스 플러그인"
+
+#~ msgid "Are you enjoying %s?"
+#~ msgstr "%s이(가) 마음에 드시나요?"
+
+#~ msgid ""
+#~ "You have been using %1$s for %2$s now. Mind leaving a review to let us "
+#~ "know know what you think? We'd really appreciate it!"
+#~ msgstr ""
+#~ "귀하는 현재 %2$s 동안 %1$s을(를) 사용하고 있습니다. 리뷰를 남겨 귀하의 생"
+#~ "각을 알려주시겠어요? 정말 감사합니다!"
+
+#~ msgid "No thanks / I already have"
+#~ msgstr "감사하지만 필요 없습니다. / 이미 갖고 있습니다."
 
 #~ msgid "Alert Type"
 #~ msgstr "알림 유형"

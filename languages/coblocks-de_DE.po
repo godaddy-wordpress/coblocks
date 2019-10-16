@@ -1,9 +1,9 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.12.1\n"
+"Project-Id-Version: CoBlocks 1.15.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"POT-Creation-Date: 2019-10-11T16:01:45+00:00\n"
+"POT-Creation-Date: 2019-10-16T16:11:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -213,7 +213,7 @@ msgstr ""
 
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:100
-#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:128
+#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr "Höhe in Pixel"
 
@@ -227,7 +227,8 @@ msgstr "Farbe"
 
 #: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
-msgid "Add as backround"
+#, fuzzy
+msgid "Add as background"
 msgstr "Als Hintergrund hinzufügen"
 
 #: src/blocks/features/feature/index.js:29
@@ -452,7 +453,7 @@ msgstr "Fokus"
 msgid "Display a menu or price list."
 msgstr "Zeigt eine Speisekarte oder Preisliste an."
 
-#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:103
+#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
 #: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
 msgid "Styles"
@@ -487,82 +488,97 @@ msgid "Toggle to show the price of each item."
 msgstr "Umschalten, um den Preis für jeden Artikel anzuzeigen."
 
 #. %s: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:164
+#: src/blocks/form/edit.js:171
 msgid "%s is not a valid email address."
 msgstr "%s ist keine gültige E-Mail-Adresse."
 
 #. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:174
+#: src/blocks/form/edit.js:181
 msgid "%s and %s are not a valid email address."
 msgstr "%s und %s sind keine gültigen E-Mail-Adressen."
 
 #. %s1: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:182
+#: src/blocks/form/edit.js:189
 msgid "%s are not a valid email address."
 msgstr "%s sind keine gültigen E-Mail-Adressen."
 
-#: src/blocks/form/edit.js:240
+#: src/blocks/form/edit.js:247
 msgid "Email address"
 msgstr "E-Mail-Adresse"
 
-#: src/blocks/form/edit.js:241
+#: src/blocks/form/edit.js:248
 msgid "name@example.com"
 msgstr "name@example.com"
 
-#: src/blocks/form/edit.js:251
+#: src/blocks/form/edit.js:258
 msgid "Subject"
 msgstr "Betreff"
 
-#: src/blocks/form/edit.js:281
+#: src/blocks/form/edit.js:288
 msgid "Form Settings"
 msgstr "Formulareinstellungen"
 
-#: src/blocks/form/edit.js:286
+#: src/blocks/form/edit.js:293
 msgid "Google reCAPTCHA"
 msgstr "Google reCAPTCHA"
 
-#: src/blocks/form/edit.js:289
+#: src/blocks/form/edit.js:296
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr ""
 "Füge deine reCAPTCHA-Site- und -Geheimschlüssel hinzu, um dein Formular vor "
 "Spam zu schützen."
 
-#: src/blocks/form/edit.js:295
+#: src/blocks/form/edit.js:302
 msgid "Generate keys"
 msgstr "Schlüssel generieren"
 
-#: src/blocks/form/edit.js:296
+#: src/blocks/form/edit.js:303
 msgid "My keys"
 msgstr "Meine Schlüssel"
 
-#: src/blocks/form/edit.js:299
+#: src/blocks/form/edit.js:306
 msgid "Get help"
 msgstr "Hilfe erhalten"
 
-#: src/blocks/form/edit.js:303
+#: src/blocks/form/edit.js:310
 msgid "Site Key"
 msgstr "Siteschlüssel"
 
-#: src/blocks/form/edit.js:309
+#: src/blocks/form/edit.js:316
 msgid "Secret Key"
 msgstr "Geheimer Schlüssel"
 
-#: src/blocks/form/edit.js:323 src/blocks/gallery-collage/edit.js:174
+#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr "Speichern"
 
-#: src/blocks/form/edit.js:323 src/blocks/map/inspector.js:227
+#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr "Speichern"
 
-#: src/blocks/form/edit.js:338 src/blocks/map/inspector.js:235
+#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr "Entfernen"
 
+#: src/blocks/form/fields/coblocks-option.js:61
+#, fuzzy
+msgid "Write option…"
+msgstr "Bildtext schreiben…"
+
+#: src/blocks/form/fields/coblocks-option.js:70
+#, fuzzy
+msgid "Remove Option"
+msgstr "Entfernen "
+
+#: src/blocks/form/fields/date/index.js:21
+msgid "A field for requesting date selections with a date picker."
+msgstr ""
+
 #: src/blocks/form/fields/email/index.js:20
-msgid "An email address field."
-msgstr "Feld für eine E-Mail-Adresse."
+#, fuzzy
+msgid "A field for collecting a validated email address."
+msgstr "%s ist keine gültige E-Mail-Adresse."
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
@@ -572,6 +588,11 @@ msgstr "Beschriftung hinzufügen…"
 #: src/blocks/form/fields/field-label.js:30
 msgid "Required"
 msgstr "Erforderlich"
+
+#: src/blocks/form/fields/multi-field.js:102
+#, fuzzy
+msgid "Add Option"
+msgstr "Beschreibung hinzufügen…"
 
 #: src/blocks/form/fields/name/edit.js:69
 msgid "Name Field Settings"
@@ -590,15 +611,25 @@ msgid "Toggle to add a last name field."
 msgstr "Umschalten, um ein Feld für den Nachnamen hinzuzufügen."
 
 #: src/blocks/form/fields/name/index.js:20
-msgid "A text field for names."
-msgstr "Ein Textfeld für Namen."
+#, fuzzy
+msgid "A text field for collecting the first and last names."
+msgstr "Die Felder für Vor- und Nachname werden angezeigt."
+
+#: src/blocks/form/fields/phone/index.js:21
+msgid "A phone number to allow visitors to give you a phone number."
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:21
+msgid "A field with multiple options where only one choice can be made."
+msgstr ""
 
 #: src/blocks/form/fields/textarea/index.js:20
 msgid "A text box for longer responses."
 msgstr "Textfeld für längere Antworten."
 
 #: src/blocks/form/index.js:27
-msgid "Add a simple form to your page."
+#, fuzzy
+msgid "Add a contact form to your page."
 msgstr "Hiermit fügst du deiner Seite ein einfaches Formular hinzu."
 
 #: src/blocks/form/index.js:36
@@ -643,8 +674,9 @@ msgid "Display multiple images in a beautiful carousel gallery."
 msgstr "Zeigt mehrere Bilder in einer ansprechenden Karussellgalerie an."
 
 #: src/blocks/gallery-carousel/inspector.js:109
+#, fuzzy
 msgid "Thumbnails"
-msgstr ""
+msgstr "Spaltenbreite"
 
 #: src/blocks/gallery-carousel/inspector.js:119
 #, fuzzy
@@ -666,8 +698,9 @@ msgid "Percentage based height is activated."
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:44
+#, fuzzy
 msgid "Toggle for percentage based height."
-msgstr ""
+msgstr "Umschalten, um Optionen zur Detailsteuerung zu aktivieren."
 
 #: src/blocks/gallery-carousel/inspector.js:68
 #, fuzzy
@@ -687,7 +720,7 @@ msgstr "Größe"
 msgid "Rounded Corners"
 msgstr "Gerundete Ecken"
 
-#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:307
+#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr "Übernehmen"
@@ -852,7 +885,7 @@ msgstr "GitHub-Datei"
 msgid "File"
 msgstr "Datei"
 
-#: src/blocks/gist/deprecated.js:30 src/blocks/gist/save.js:29
+#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr "Diesen Gist auf GitHub anzeigen"
 
@@ -899,7 +932,7 @@ msgstr "Layout ändern"
 
 #: src/blocks/hero/edit.js:152
 #, fuzzy
-msgid "Add backround to hero"
+msgid "Add background to hero"
 msgstr "Hintergrund zu %s hinzufügen"
 
 #: src/blocks/hero/index.js:41
@@ -998,7 +1031,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:170
-#: src/components/dimensions-control/index.js:489
+#: src/components/dimensions-control/index.js:470
 #: src/components/size-control/index.js:198
 msgid "Reset"
 msgstr "Zurücksetzen"
@@ -1093,25 +1126,26 @@ msgstr "Standort bearbeiten"
 msgid "Map style"
 msgstr "Kartenstil"
 
-#: src/blocks/map/edit.js:191
-msgid "Invalid API key, or too many requests"
-msgstr "API-Schlüssel ungültig oder zu viele Anfragen"
-
-#: src/blocks/map/edit.js:294 src/blocks/map/save.js:48
+#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50
 msgid "Google Map"
 msgstr "Google Maps-Karte"
 
-#: src/blocks/map/edit.js:295
+#: src/blocks/map/edit.js:195
+msgid "Invalid API key, or too many requests"
+msgstr "API-Schlüssel ungültig oder zu viele Anfragen"
+
+#: src/blocks/map/edit.js:294
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 "Gib einen Standort oder eine Adresse ein, um in Google Maps einen Marker zu "
 "setzen."
 
-#: src/blocks/map/edit.js:302
+#: src/blocks/map/edit.js:301
 msgid "Search for a place or address…"
 msgstr "Nach einem Ort oder einer Adresse suchen…"
 
-#: src/blocks/map/edit.js:321
+#: src/blocks/map/edit.js:320
 msgid "Cancel"
 msgstr ""
 
@@ -1121,118 +1155,120 @@ msgid "Add an address or location to drop a pin on a Google map."
 msgstr ""
 "Füge eine Adresse hinzu und setze einen Marker auf einer Google Maps-Karte."
 
-#: src/blocks/map/inspector.js:105
+#: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
 msgstr "Kartenstil auswählen"
 
-#: src/blocks/map/inspector.js:126
+#: src/blocks/map/inspector.js:130
 msgid "Map Settings"
 msgstr "Karteneinstellungen"
 
-#: src/blocks/map/inspector.js:131
+#: src/blocks/map/inspector.js:135
 msgid "Height for the map in pixels"
 msgstr "Höhe der Karte in Pixel"
 
-#: src/blocks/map/inspector.js:140
+#: src/blocks/map/inspector.js:144
 msgid "Zoom Level"
 msgstr "Zoomstufe"
 
-#: src/blocks/map/inspector.js:151
+#: src/blocks/map/inspector.js:155
 msgid "Marker Size"
 msgstr "Markergröße"
 
-#: src/blocks/map/inspector.js:166
+#: src/blocks/map/inspector.js:170
 msgid "Fine control options are enabled."
 msgstr "Optionen zur Detailsteuerung sind aktiviert."
 
-#: src/blocks/map/inspector.js:166
+#: src/blocks/map/inspector.js:170
 msgid "Toggle to enable map control options."
 msgstr "Umschalten, um Optionen zur Detailsteuerung zu aktivieren."
 
-#: src/blocks/map/inspector.js:174
+#: src/blocks/map/inspector.js:178
 msgid "Map Controls"
 msgstr "Kartensteuerelemente"
 
-#: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:182
 msgid "Map Type"
 msgstr "Kartentyp"
 
-#: src/blocks/map/inspector.js:181
+#: src/blocks/map/inspector.js:185
 msgid "Switching between standard and satellite map views is enabled."
 msgstr ""
 "Die Umschaltung zwischen Standard- und Satellitendarstellung der Karte ist "
 "aktiviert."
 
-#: src/blocks/map/inspector.js:181
+#: src/blocks/map/inspector.js:185
 msgid "Toggle to enable switching between standard and satellite maps."
 msgstr ""
 "Umschalten, um die Umschaltung zwischen Standard- und Satellitenkarten zu "
 "aktivieren."
 
-#: src/blocks/map/inspector.js:184
+#: src/blocks/map/inspector.js:188
 msgid "Zoom Controls"
 msgstr "Zoomsteuerelemente"
 
-#: src/blocks/map/inspector.js:187
+#: src/blocks/map/inspector.js:191
 msgid "Showing map zoom controls."
 msgstr "Die Zoomsteuerelemente für die Karte werden angezeigt."
 
-#: src/blocks/map/inspector.js:187
+#: src/blocks/map/inspector.js:191
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
 msgstr ""
 "Umschalten, um das Vergrößern und Verkleinern der Kartenansicht mit den "
 "Zoomsteuerelementen zu aktivieren."
 
-#: src/blocks/map/inspector.js:190
+#: src/blocks/map/inspector.js:194
 msgid "Street View"
 msgstr "Street View"
 
-#: src/blocks/map/inspector.js:193
+#: src/blocks/map/inspector.js:197
 msgid "Showing the street view map control."
 msgstr "Das Kartensteuerelement für Street View wird angezeigt."
 
-#: src/blocks/map/inspector.js:193
+#: src/blocks/map/inspector.js:197
 msgid "Toggle to show the street view control at the bottom right."
 msgstr "Umschalten, um das Street View-Steuerelement unten rechts anzuzeigen."
 
-#: src/blocks/map/inspector.js:196
+#: src/blocks/map/inspector.js:200
 msgid "Fullscreen Toggle"
 msgstr "Vollbildumschalter"
 
-#: src/blocks/map/inspector.js:199
+#: src/blocks/map/inspector.js:203
 msgid "Showing the fullscreen map control."
 msgstr "Das Vollbild-Kartensteuerelement wird angezeigt."
 
-#: src/blocks/map/inspector.js:199
+#: src/blocks/map/inspector.js:203
 msgid "Toggle to show the fullscreen map control."
 msgstr "Umschalten, um das Vollbild-Kartensteuerelement anzuzeigen."
 
-#: src/blocks/map/inspector.js:204
+#: src/blocks/map/inspector.js:208
 msgid "Google Maps API Key"
 msgstr "Google Maps-API-Schlüssel"
 
-#: src/blocks/map/inspector.js:208
+#: src/blocks/map/inspector.js:212
+#, fuzzy
 msgid ""
-"Add your Google Maps API key. Updating this API key will set all your maps "
-"to use the new key."
+"Add a Google Maps API key. Updating this API key will set all your maps to "
+"use the new key."
 msgstr ""
 "Füge deinen Google Maps-API-Schlüssel hinzu. Wenn du diesen API-Schlüssel "
 "aktualisierst, wird die Verwendung des neuen Schlüssels für alle deine "
 "Karten festgelegt."
 
-#: src/blocks/map/inspector.js:211
-msgid "Retrieve your key"
-msgstr "Schlüssel abrufen"
+#: src/blocks/map/inspector.js:215
+#, fuzzy
+msgid "Get a key"
+msgstr "Schlüssel generieren"
 
-#: src/blocks/map/inspector.js:212
+#: src/blocks/map/inspector.js:216
 msgid "Need help?"
 msgstr "Brauchst du Hilfe?"
 
-#: src/blocks/map/inspector.js:218
+#: src/blocks/map/inspector.js:222
 msgid "Enter Google API Key…"
 msgstr "Google-API-Schlüssel eingeben…"
 
-#: src/blocks/map/inspector.js:227
+#: src/blocks/map/inspector.js:231
 msgid "Saved"
 msgstr "Gespeichert"
 
@@ -1357,8 +1393,9 @@ msgid "Post Carousel Settings"
 msgstr "Farbeinstellungen"
 
 #: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
+#, fuzzy
 msgid "Post Date"
-msgstr ""
+msgstr "Karussell"
 
 #: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
 #, fuzzy
@@ -1371,8 +1408,9 @@ msgid "Toggle to show the publish date."
 msgstr "Umschalten, um die Metadaten zum Gist anzuzeigen."
 
 #: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
+#, fuzzy
 msgid "Post Content"
-msgstr ""
+msgstr "Karussell"
 
 #: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
 #, fuzzy
@@ -1485,7 +1523,7 @@ msgstr ""
 
 #: src/blocks/row/column/edit.js:90
 #, fuzzy
-msgid "Add backround to column"
+msgid "Add background to column"
 msgstr "Hintergrund zu %s hinzufügen"
 
 #: src/blocks/row/column/index.js:30
@@ -1504,7 +1542,7 @@ msgstr "Platz um den Container"
 msgid "Width"
 msgstr "Breite"
 
-#: src/blocks/row/controls.js:70
+#: src/blocks/row/controls.js:74
 #, fuzzy
 msgid "Change row block layout"
 msgstr "Layout ändern"
@@ -1527,7 +1565,7 @@ msgstr "4"
 
 #: src/blocks/row/edit.js:169
 #, fuzzy
-msgid "Add backround to row"
+msgid "Add background to row"
 msgstr "Hintergrund zu %s hinzufügen"
 
 #: src/blocks/row/edit.js:174
@@ -1809,8 +1847,8 @@ msgstr "Pinterest"
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:210
-#: includes/class-coblocks-form.php:297
+#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
+#: includes/class-coblocks-form.php:321
 msgid "Email"
 msgstr "E-Mail"
 
@@ -2056,74 +2094,74 @@ msgstr ""
 msgid "Reset All"
 msgstr "Zurücksetzen"
 
-#: src/components/dimensions-control/index.js:461
+#: src/components/dimensions-control/index.js:442
 msgid "Select Units"
 msgstr "Einheiten auswählen"
 
 #. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
-#: src/components/dimensions-control/index.js:472
+#: src/components/dimensions-control/index.js:453
 msgid "%s Units"
 msgstr "%s Einheiten"
 
 #. %s: a texual label
-#: src/components/dimensions-control/index.js:487
+#: src/components/dimensions-control/index.js:468
 msgid "Turn off advanced %s settings"
 msgstr "Erweiterte %s-Einstellungen ausschalten"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:659
+#: src/components/dimensions-control/index.js:640
 msgid "%s Top"
 msgstr "%s oben"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:670
+#: src/components/dimensions-control/index.js:651
 msgid "%s Right"
 msgstr "%s rechts"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:681
+#: src/components/dimensions-control/index.js:662
 msgid "%s Bottom"
 msgstr "%s unten"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:692
+#: src/components/dimensions-control/index.js:673
 msgid "%s Left"
 msgstr "%s links"
 
-#: src/components/dimensions-control/index.js:698
+#: src/components/dimensions-control/index.js:679
 msgid "Unsync"
 msgstr "Synchronisierung aufheben"
 
-#: src/components/dimensions-control/index.js:698
+#: src/components/dimensions-control/index.js:679
 msgid "Sync"
 msgstr "Synchronisieren"
 
-#: src/components/dimensions-control/index.js:701
+#: src/components/dimensions-control/index.js:682
 msgid "Sync Units"
 msgstr "Einheiten synchronisieren"
 
-#: src/components/dimensions-control/index.js:718
+#: src/components/dimensions-control/index.js:699
 msgid "Top"
 msgstr "Seitenanfang"
 
-#: src/components/dimensions-control/index.js:719
+#: src/components/dimensions-control/index.js:700
 msgid "Right"
 msgstr "Rechts"
 
-#: src/components/dimensions-control/index.js:720
+#: src/components/dimensions-control/index.js:701
 msgid "Bottom"
 msgstr "Unten"
 
-#: src/components/dimensions-control/index.js:721
+#: src/components/dimensions-control/index.js:702
 msgid "Left"
 msgstr "Links"
 
 #. %s:  a texual label
-#: src/components/dimensions-control/index.js:741
+#: src/components/dimensions-control/index.js:722
 msgid "Advanced %s settings"
 msgstr "Erweiterte Einstellungen für %s"
 
-#: src/components/dimensions-control/index.js:744
+#: src/components/dimensions-control/index.js:725
 msgid "Advanced"
 msgstr "Erweitert"
 
@@ -2288,8 +2326,9 @@ msgid "Toggle to show dot navigation."
 msgstr "Umschalten, um Pfeile zur Punktnavigation anzuzeigen."
 
 #: src/components/slider-panel/index.js:43
+#, fuzzy
 msgid "Aligning slides to the left."
-msgstr ""
+msgstr "Platz im Container."
 
 #: src/components/slider-panel/index.js:43
 #, fuzzy
@@ -2297,8 +2336,9 @@ msgid "Aligning slides to the center."
 msgstr "Platz im Container."
 
 #: src/components/slider-panel/index.js:46
+#, fuzzy
 msgid "Pausing autoplay when hovering."
-msgstr ""
+msgstr "Umschalten, um das Video stummzuschalten."
 
 #: src/components/slider-panel/index.js:46
 #, fuzzy
@@ -2306,8 +2346,9 @@ msgid "Toggle to pause autoplay when hovered."
 msgstr "Umschalten, um das Video stummzuschalten."
 
 #: src/components/slider-panel/index.js:50
+#, fuzzy
 msgid "Scrolling without fixed slides enabled."
-msgstr ""
+msgstr "Umschalten, um das Video in eine Endlosschleife wiederzugeben."
 
 #: src/components/slider-panel/index.js:50
 #, fuzzy
@@ -2425,7 +2466,7 @@ msgstr "Für Anzeige in voller Breite umschalten."
 msgid "Crop Settings"
 msgstr "Hero-Einstellungen"
 
-#: src/formats/uppercase/index.js:36
+#: src/formats/uppercase/index.js:35
 msgid "Uppercase"
 msgstr "Großbuchstaben"
 
@@ -2471,7 +2512,7 @@ msgctxt "Toggle label to display the accordion open"
 msgid "Display open"
 msgstr "Offene anzeigen"
 
-#: src/blocks/accordion/accordion-item/edit.js:67
+#: src/blocks/accordion/accordion-item/edit.js:65
 #, fuzzy
 msgctxt "Accordion is the block name"
 msgid "Add accordion title..."
@@ -2570,6 +2611,18 @@ msgctxt "block keyword"
 msgid "restaurant"
 msgstr "Restaurant"
 
+#: src/blocks/form/fields/date/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "calendar"
+msgstr "Standard"
+
+#: src/blocks/form/fields/date/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "day month year"
+msgstr "ein Jahr"
+
 #: src/blocks/form/fields/email/index.js:22
 #, fuzzy
 msgctxt "block keyword"
@@ -2583,15 +2636,51 @@ msgid "mail"
 msgstr "Mail"
 
 #: src/blocks/form/fields/name/index.js:22
+#, fuzzy
 msgctxt "block keyword"
 msgid "first name"
-msgstr ""
+msgstr "Nachname"
 
 #: src/blocks/form/fields/name/index.js:22
 #, fuzzy
 msgctxt "block keyword"
 msgid "last name"
 msgstr "Nachname"
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "telephone"
+msgstr ""
+
+#: src/blocks/form/fields/phone/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "cellular"
+msgstr "Kreisförmig"
+
+# Control name
+#: src/blocks/form/fields/phone/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "mobile"
+msgstr "Mobil %s"
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Choose"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "Select"
+msgstr "Größe auswählen"
+
+#: src/blocks/form/fields/radio/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "Option"
+msgstr "Beschriftungen"
 
 #: src/blocks/form/fields/textarea/index.js:22
 #, fuzzy
@@ -2904,6 +2993,11 @@ msgctxt "block name"
 msgid "Food & Drinks"
 msgstr "Essen und Trinken"
 
+#: src/blocks/form/fields/date/index.js:19
+msgctxt "block name"
+msgid "Date"
+msgstr ""
+
 #: src/blocks/form/fields/email/index.js:19
 #, fuzzy
 msgctxt "block name"
@@ -2916,11 +3010,22 @@ msgctxt "block name"
 msgid "Name"
 msgstr "Name"
 
+#: src/blocks/form/fields/phone/index.js:19
+msgctxt "block name"
+msgid "Phone"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:19
+#, fuzzy
+msgctxt "block name"
+msgid "Radio"
+msgstr "Radius"
+
 #: src/blocks/form/fields/textarea/index.js:19
 #, fuzzy
 msgctxt "block name"
-msgid "Message"
-msgstr "Nachricht"
+msgid "Textarea"
+msgstr "Textbereich"
 
 #: src/blocks/form/index.js:26
 #, fuzzy
@@ -2935,9 +3040,10 @@ msgid "Carousel"
 msgstr "Karussell"
 
 #: src/blocks/gallery-collage/index.js:33
+#, fuzzy
 msgctxt "block name"
 msgid "Collage"
-msgstr ""
+msgstr "Bildeinstellungen"
 
 #: src/blocks/gallery-masonry/index.js:34
 #, fuzzy
@@ -4233,9 +4339,10 @@ msgid "None"
 msgstr "Keine"
 
 #: src/components/crop-settings/index.js:280
+#, fuzzy
 msgctxt "label for horizontal positioning input"
 msgid "Horizontal Pos."
-msgstr ""
+msgstr "Horizontal wiederholen"
 
 #: src/components/crop-settings/index.js:288
 msgctxt "label for vertical positioning input"
@@ -4248,19 +4355,19 @@ msgctxt "label for the control that allows zooming in on the image"
 msgid "Image Zoom"
 msgstr "Bild"
 
-#: src/components/dimensions-control/index.js:408
+#: src/components/dimensions-control/index.js:389
 #, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Pixel"
 msgstr "Pixel"
 
-#: src/components/dimensions-control/index.js:412
+#: src/components/dimensions-control/index.js:393
 #, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Em"
 msgstr "Geviertstrich"
 
-#: src/components/dimensions-control/index.js:416
+#: src/components/dimensions-control/index.js:397
 #, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Percentage"
@@ -4375,93 +4482,8 @@ msgid "Review CoBlocks on WordPress.org"
 msgstr ""
 
 #: includes/admin/class-coblocks-action-links.php:41
-#: includes/admin/class-coblocks-feedback.php:282
 msgid "Leave a Review"
 msgstr "Bewertung hinterlassen"
-
-#. translators: %d: Number of years
-#: includes/admin/class-coblocks-feedback.php:92
-#, fuzzy
-msgid "%d years"
-msgstr "%s Jahre"
-
-#: includes/admin/class-coblocks-feedback.php:94
-msgid "a year"
-msgstr "ein Jahr"
-
-#. translators: %d: Number of weeks
-#: includes/admin/class-coblocks-feedback.php:101
-#, fuzzy
-msgid "%d weeks"
-msgstr "%s Wochen"
-
-#: includes/admin/class-coblocks-feedback.php:103
-msgid "a week"
-msgstr "eine Woche"
-
-#. translators: %d: Number of days
-#: includes/admin/class-coblocks-feedback.php:110
-#, fuzzy
-msgid "%d days"
-msgstr "%s Tage"
-
-#: includes/admin/class-coblocks-feedback.php:112
-msgid "a day"
-msgstr "ein Tag"
-
-#. translators: %d: Number of hours
-#: includes/admin/class-coblocks-feedback.php:119
-#, fuzzy
-msgid "%d hours"
-msgstr "%s Stunden"
-
-#: includes/admin/class-coblocks-feedback.php:121
-msgid "an hour"
-msgstr "eine Stunde"
-
-#. translators: %d: Number of minutes
-#: includes/admin/class-coblocks-feedback.php:128
-#, fuzzy
-msgid "%d minutes"
-msgstr "%s Minuten"
-
-#: includes/admin/class-coblocks-feedback.php:130
-msgid "a minute"
-msgstr "eine Minute"
-
-#. translators: %d: Number of seconds
-#: includes/admin/class-coblocks-feedback.php:137
-#, fuzzy
-msgid "%d seconds"
-msgstr "%s Sekunden"
-
-#: includes/admin/class-coblocks-feedback.php:139
-msgid "a second"
-msgstr "eine Sekunde"
-
-#. translators: %s: Plugin Name
-#: includes/admin/class-coblocks-feedback.php:271
-msgid "%s WordPress Plugin"
-msgstr "%s-WordPress-Plugin"
-
-#. translators: %s: Plugin Name
-#: includes/admin/class-coblocks-feedback.php:275
-msgid "Are you enjoying %s?"
-msgstr "Gefällt dir %s gut?"
-
-#. translators: %s: Plugin Name, 2. Time which the plugin has been in use for
-#: includes/admin/class-coblocks-feedback.php:278
-msgid ""
-"You have been using %1$s for %2$s now. Mind leaving a review to let us know "
-"know what you think? We'd really appreciate it!"
-msgstr ""
-"Du benutzt %1$s jetzt seit %2$s. Möchtest du vielleicht eine Bewertung "
-"abgeben, damit wir deine Meinung erfahren? Wir würden das sehr zu schätzen "
-"wissen!"
-
-#: includes/admin/class-coblocks-feedback.php:283
-msgid "No thanks / I already have"
-msgstr "Nein danke/Habe ich bereits"
 
 #: includes/admin/class-coblocks-getting-started-page.php:121
 msgid ""
@@ -4551,31 +4573,43 @@ msgstr ""
 "Geheimer Schlüssel für Google reCAPTCHA, um deine Formulare vor Spam zu "
 "schützen"
 
-#: includes/class-coblocks-form.php:244
+#: includes/class-coblocks-form.php:268
 msgid "Name"
 msgstr "Name"
 
-#: includes/class-coblocks-form.php:248
+#: includes/class-coblocks-form.php:272
 msgid "First"
 msgstr "Erste"
 
-#: includes/class-coblocks-form.php:249
+#: includes/class-coblocks-form.php:273
 msgid "Last"
 msgstr "Letzte"
 
-#: includes/class-coblocks-form.php:325
+#: includes/class-coblocks-form.php:349
 msgid "Message"
 msgstr "Nachricht"
 
-#: includes/class-coblocks-form.php:390
+#: includes/class-coblocks-form.php:387
+msgid "Date"
+msgstr ""
+
+#: includes/class-coblocks-form.php:415
+msgid "Phone"
+msgstr ""
+
+#: includes/class-coblocks-form.php:451
+msgid "Choose one"
+msgstr ""
+
+#: includes/class-coblocks-form.php:522
 msgid "Submit"
 msgstr "Absenden"
 
-#: includes/class-coblocks-form.php:598
+#: includes/class-coblocks-form.php:730
 msgid "Your message was sent:"
 msgstr "Deine Mitteilung wurde versandt:"
 
-#: includes/class-coblocks-google-map-block.php:122
+#: includes/class-coblocks-google-map-block.php:124
 msgid "Google Map API key for map rendering"
 msgstr "Google Maps-API-Schlüssel zum Rendern von Karten"
 
@@ -4586,6 +4620,76 @@ msgstr "Auf LinkedIn teilen"
 #: src/blocks/social-profiles/index.php:84
 msgid "Linkedin"
 msgstr "LinkedIn"
+
+#~ msgid "An email address field."
+#~ msgstr "Feld für eine E-Mail-Adresse."
+
+#~ msgid "A text field for names."
+#~ msgstr "Ein Textfeld für Namen."
+
+#~ msgid "Retrieve your key"
+#~ msgstr "Schlüssel abrufen"
+
+#, fuzzy
+#~ msgctxt "block name"
+#~ msgid "Message"
+#~ msgstr "Nachricht"
+
+#, fuzzy
+#~ msgid "%d years"
+#~ msgstr "%s Jahre"
+
+#, fuzzy
+#~ msgid "%d weeks"
+#~ msgstr "%s Wochen"
+
+#~ msgid "a week"
+#~ msgstr "eine Woche"
+
+#, fuzzy
+#~ msgid "%d days"
+#~ msgstr "%s Tage"
+
+#~ msgid "a day"
+#~ msgstr "ein Tag"
+
+#, fuzzy
+#~ msgid "%d hours"
+#~ msgstr "%s Stunden"
+
+#~ msgid "an hour"
+#~ msgstr "eine Stunde"
+
+#, fuzzy
+#~ msgid "%d minutes"
+#~ msgstr "%s Minuten"
+
+#~ msgid "a minute"
+#~ msgstr "eine Minute"
+
+#, fuzzy
+#~ msgid "%d seconds"
+#~ msgstr "%s Sekunden"
+
+#~ msgid "a second"
+#~ msgstr "eine Sekunde"
+
+#~ msgid "%s WordPress Plugin"
+#~ msgstr "%s-WordPress-Plugin"
+
+#~ msgid "Are you enjoying %s?"
+#~ msgstr "Gefällt dir %s gut?"
+
+#~ msgid ""
+#~ "You have been using %1$s for %2$s now. Mind leaving a review to let us "
+#~ "know know what you think? We'd really appreciate it!"
+#~ msgstr ""
+#~ "Du benutzt %1$s jetzt seit %2$s. Möchtest du vielleicht eine Bewertung "
+#~ "abgeben, damit wir deine Meinung erfahren? Wir würden das sehr zu "
+#~ "schätzen wissen!"
+
+#~ msgid "No thanks / I already have"
+#~ msgstr "Nein danke/Habe ich bereits"
 
 #~ msgid "Alert Type"
 #~ msgstr "Meldungstyp"

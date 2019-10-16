@@ -319,7 +319,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_textarea() {
 
-		$this->expectOutputRegex( '/<textarea name="field-message\[value\]" id="message" class="coblocks-field coblocks-textarea" rows="20"><\/textarea>/' );
+		$this->expectOutputRegex( '/<textarea name="field-message\[value\]" id="message" class="coblocks-field coblocks-textarea" rows="20" ><\/textarea>/' );
 
 		echo $this->coblocks_form->render_field_textarea( [], '' );
 

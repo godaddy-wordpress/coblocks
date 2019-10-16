@@ -1,9 +1,9 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.12.1\n"
+"Project-Id-Version: CoBlocks 1.15.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"POT-Creation-Date: 2019-10-11T16:01:45+00:00\n"
+"POT-Creation-Date: 2019-10-16T16:11:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -216,7 +216,7 @@ msgstr ""
 
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:100
-#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:128
+#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr "Ύψος σε pixel"
 
@@ -230,7 +230,8 @@ msgstr "Χρώμα"
 
 #: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
-msgid "Add as backround"
+#, fuzzy
+msgid "Add as background"
 msgstr "Προσθήκη ως φόντου"
 
 #: src/blocks/features/feature/index.js:29
@@ -453,7 +454,7 @@ msgstr "Σημείο εστίασης"
 msgid "Display a menu or price list."
 msgstr "Προβολή ενός μενού ή τιμοκαταλόγου."
 
-#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:103
+#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
 #: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
 msgid "Styles"
@@ -488,82 +489,97 @@ msgid "Toggle to show the price of each item."
 msgstr "Κάντε εναλλαγή για προβολή της τιμής για κάθε στοιχείο."
 
 #. %s: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:164
+#: src/blocks/form/edit.js:171
 msgid "%s is not a valid email address."
 msgstr "Το %s δεν είναι έγκυρη διεύθυνση email."
 
 #. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:174
+#: src/blocks/form/edit.js:181
 msgid "%s and %s are not a valid email address."
 msgstr "Τα %s και %s δεν είναι έγκυρες διευθύνσεις email."
 
 #. %s1: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:182
+#: src/blocks/form/edit.js:189
 msgid "%s are not a valid email address."
 msgstr "Τα %s δεν είναι έγκυρη διεύθυνση email"
 
-#: src/blocks/form/edit.js:240
+#: src/blocks/form/edit.js:247
 msgid "Email address"
 msgstr "Διεύθυνση email"
 
-#: src/blocks/form/edit.js:241
+#: src/blocks/form/edit.js:248
 msgid "name@example.com"
 msgstr "name@example.com"
 
-#: src/blocks/form/edit.js:251
+#: src/blocks/form/edit.js:258
 msgid "Subject"
 msgstr "Θέμα"
 
-#: src/blocks/form/edit.js:281
+#: src/blocks/form/edit.js:288
 msgid "Form Settings"
 msgstr "Ρυθμίσεις φορμών"
 
-#: src/blocks/form/edit.js:286
+#: src/blocks/form/edit.js:293
 msgid "Google reCAPTCHA"
 msgstr "Google reCAPTCHA"
 
-#: src/blocks/form/edit.js:289
+#: src/blocks/form/edit.js:296
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr ""
 "Προσθέστε τον κλειδί ιστότοπου reCAPTCHA και το μυστικό κλειδί σας για "
 "προστασία της φόρμας σας από spam."
 
-#: src/blocks/form/edit.js:295
+#: src/blocks/form/edit.js:302
 msgid "Generate keys"
 msgstr "Δημιουργία κλειδιών"
 
-#: src/blocks/form/edit.js:296
+#: src/blocks/form/edit.js:303
 msgid "My keys"
 msgstr "Τα κλειδιά μου"
 
-#: src/blocks/form/edit.js:299
+#: src/blocks/form/edit.js:306
 msgid "Get help"
 msgstr "Λήψη βοήθειας"
 
-#: src/blocks/form/edit.js:303
+#: src/blocks/form/edit.js:310
 msgid "Site Key"
 msgstr "Κλειδί ιστότοπου"
 
-#: src/blocks/form/edit.js:309
+#: src/blocks/form/edit.js:316
 msgid "Secret Key"
 msgstr "Μυστικό κλειδί"
 
-#: src/blocks/form/edit.js:323 src/blocks/gallery-collage/edit.js:174
+#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr "Γίνεται αποθήκευση"
 
-#: src/blocks/form/edit.js:323 src/blocks/map/inspector.js:227
+#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: src/blocks/form/edit.js:338 src/blocks/map/inspector.js:235
+#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr "Κατάργηση"
 
+#: src/blocks/form/fields/coblocks-option.js:61
+#, fuzzy
+msgid "Write option…"
+msgstr "Γράψτε μια λεζάντα..."
+
+#: src/blocks/form/fields/coblocks-option.js:70
+#, fuzzy
+msgid "Remove Option"
+msgstr "Αφαίρεση "
+
+#: src/blocks/form/fields/date/index.js:21
+msgid "A field for requesting date selections with a date picker."
+msgstr ""
+
 #: src/blocks/form/fields/email/index.js:20
-msgid "An email address field."
-msgstr "Ένα πεδίο διεύθυνσης email."
+#, fuzzy
+msgid "A field for collecting a validated email address."
+msgstr "Το %s δεν είναι έγκυρη διεύθυνση email."
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
@@ -573,6 +589,11 @@ msgstr "Προσθήκη ετικέτας..."
 #: src/blocks/form/fields/field-label.js:30
 msgid "Required"
 msgstr "Απαιτείται"
+
+#: src/blocks/form/fields/multi-field.js:102
+#, fuzzy
+msgid "Add Option"
+msgstr "Προσθήκη περιγραφής..."
 
 #: src/blocks/form/fields/name/edit.js:69
 msgid "Name Field Settings"
@@ -591,15 +612,25 @@ msgid "Toggle to add a last name field."
 msgstr "Κάντε εναλλαγή για προσθήκη ενός πεδίου για το επώνυμο."
 
 #: src/blocks/form/fields/name/index.js:20
-msgid "A text field for names."
-msgstr "Ένα πεδίο κειμένου για ονόματα."
+#, fuzzy
+msgid "A text field for collecting the first and last names."
+msgstr "Εμφανίζονται και τα δύο πεδία, για όνομα και επώνυμο."
+
+#: src/blocks/form/fields/phone/index.js:21
+msgid "A phone number to allow visitors to give you a phone number."
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:21
+msgid "A field with multiple options where only one choice can be made."
+msgstr ""
 
 #: src/blocks/form/fields/textarea/index.js:20
 msgid "A text box for longer responses."
 msgstr "Ένα πλαίσιο κειμένου για πιο μακροσκελείς απαντήσεις."
 
 #: src/blocks/form/index.js:27
-msgid "Add a simple form to your page."
+#, fuzzy
+msgid "Add a contact form to your page."
 msgstr "Προσθέστε μια απλή φόρμα στη σελίδα σας."
 
 #: src/blocks/form/index.js:36
@@ -644,8 +675,9 @@ msgid "Display multiple images in a beautiful carousel gallery."
 msgstr "Προβάλετε πολλές εικόνες σε μια πανέμορφη συλλογή με μορφή καρουσέλ."
 
 #: src/blocks/gallery-carousel/inspector.js:109
+#, fuzzy
 msgid "Thumbnails"
-msgstr ""
+msgstr "Μέγεθος στήλης"
 
 #: src/blocks/gallery-carousel/inspector.js:119
 #, fuzzy
@@ -667,8 +699,9 @@ msgid "Percentage based height is activated."
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:44
+#, fuzzy
 msgid "Toggle for percentage based height."
-msgstr ""
+msgstr "Κάντε εναλλαγή για ενεργοποίηση των επιλογών στοιχείων ελέγχου χάρτη."
 
 #: src/blocks/gallery-carousel/inspector.js:68
 #, fuzzy
@@ -688,7 +721,7 @@ msgstr "Μέγεθος"
 msgid "Rounded Corners"
 msgstr "Στρογγυλεμένες γωνίες"
 
-#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:307
+#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr "Εφαρμογή"
@@ -854,7 +887,7 @@ msgstr "Αρχείο GitHub"
 msgid "File"
 msgstr "Αρχείο"
 
-#: src/blocks/gist/deprecated.js:30 src/blocks/gist/save.js:29
+#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr "Προβολή αυτού του gist στο GitHub"
 
@@ -901,7 +934,7 @@ msgstr "Αλλαγή διάταξης"
 
 #: src/blocks/hero/edit.js:152
 #, fuzzy
-msgid "Add backround to hero"
+msgid "Add background to hero"
 msgstr "Προσθήκη φόντου στο %s"
 
 #: src/blocks/hero/index.js:41
@@ -999,7 +1032,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:170
-#: src/components/dimensions-control/index.js:489
+#: src/components/dimensions-control/index.js:470
 #: src/components/size-control/index.js:198
 msgid "Reset"
 msgstr "Επαναφορά"
@@ -1093,25 +1126,26 @@ msgstr "Επεξεργασία θέσης"
 msgid "Map style"
 msgstr "Στυλ χάρτη"
 
-#: src/blocks/map/edit.js:191
-msgid "Invalid API key, or too many requests"
-msgstr "Μη έγκυρο κλειδί API ή υπερβολικός αριθμός αιτημάτων"
-
-#: src/blocks/map/edit.js:294 src/blocks/map/save.js:48
+#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50
 msgid "Google Map"
 msgstr "Χάρτης Google"
 
-#: src/blocks/map/edit.js:295
+#: src/blocks/map/edit.js:195
+msgid "Invalid API key, or too many requests"
+msgstr "Μη έγκυρο κλειδί API ή υπερβολικός αριθμός αιτημάτων"
+
+#: src/blocks/map/edit.js:294
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr ""
 "Καταχωρήστε μια τοποθεσία ή διεύθυνση για να προστεθεί μια καρφίτσα σε έναν "
 "χάρτη Google."
 
-#: src/blocks/map/edit.js:302
+#: src/blocks/map/edit.js:301
 msgid "Search for a place or address…"
 msgstr "Κάντε αναζήτηση για έναν τόπο ή μια διεύθυνση..."
 
-#: src/blocks/map/edit.js:321
+#: src/blocks/map/edit.js:320
 msgid "Cancel"
 msgstr ""
 
@@ -1121,118 +1155,120 @@ msgid "Add an address or location to drop a pin on a Google map."
 msgstr ""
 "Προσθέστε μια διεύθυνση για να προστεθεί καρφίτσα σε έναν χάρτη Google."
 
-#: src/blocks/map/inspector.js:105
+#: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
 msgstr "Επιλογή στυλ χάρτη"
 
-#: src/blocks/map/inspector.js:126
+#: src/blocks/map/inspector.js:130
 msgid "Map Settings"
 msgstr "Ρυθμίσεις χάρτη"
 
-#: src/blocks/map/inspector.js:131
+#: src/blocks/map/inspector.js:135
 msgid "Height for the map in pixels"
 msgstr "Ύψος χάρτη σε pixel"
 
-#: src/blocks/map/inspector.js:140
+#: src/blocks/map/inspector.js:144
 msgid "Zoom Level"
 msgstr "Επίπεδο ζουμ"
 
-#: src/blocks/map/inspector.js:151
+#: src/blocks/map/inspector.js:155
 msgid "Marker Size"
 msgstr "Μέγεθος σημαντήρα"
 
-#: src/blocks/map/inspector.js:166
+#: src/blocks/map/inspector.js:170
 msgid "Fine control options are enabled."
 msgstr "Οι επιλογές λεπτομερούς στοιχείων ελέγχου είναι ενεργοποιημένες."
 
-#: src/blocks/map/inspector.js:166
+#: src/blocks/map/inspector.js:170
 msgid "Toggle to enable map control options."
 msgstr "Κάντε εναλλαγή για ενεργοποίηση των επιλογών στοιχείων ελέγχου χάρτη."
 
-#: src/blocks/map/inspector.js:174
+#: src/blocks/map/inspector.js:178
 msgid "Map Controls"
 msgstr "Στοιχεία ελέγχου χάρτη"
 
-#: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:182
 msgid "Map Type"
 msgstr "Τύπος χάρτη"
 
-#: src/blocks/map/inspector.js:181
+#: src/blocks/map/inspector.js:185
 msgid "Switching between standard and satellite map views is enabled."
 msgstr ""
 "Η μετάβαση μεταξύ τυπικής προβολής και προβολής δορυφορικού χάρτη είναι "
 "ενεργοποιημένη."
 
-#: src/blocks/map/inspector.js:181
+#: src/blocks/map/inspector.js:185
 msgid "Toggle to enable switching between standard and satellite maps."
 msgstr ""
 "Κάντε εναλλαγή για ενεργοποίηση της μετάβασης μεταξύ τυπικής προβολής και "
 "προβολής δορυφορικού χάρτη."
 
-#: src/blocks/map/inspector.js:184
+#: src/blocks/map/inspector.js:188
 msgid "Zoom Controls"
 msgstr "Στοιχεία ελέγχου ζουμ"
 
-#: src/blocks/map/inspector.js:187
+#: src/blocks/map/inspector.js:191
 msgid "Showing map zoom controls."
 msgstr "Προβολή των στοιχείων ελέγχου ζουμ χάρτη."
 
-#: src/blocks/map/inspector.js:187
+#: src/blocks/map/inspector.js:191
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
 msgstr ""
 "Κάντε εναλλαγή για ενεργοποίηση της μεγέθυνσης και σμίκρυνσης του χάρτη με "
 "τα στοιχεία ελέγχου ζουμ."
 
-#: src/blocks/map/inspector.js:190
+#: src/blocks/map/inspector.js:194
 msgid "Street View"
 msgstr "Street View"
 
-#: src/blocks/map/inspector.js:193
+#: src/blocks/map/inspector.js:197
 msgid "Showing the street view map control."
 msgstr "Προβολή του στοιχείου ελέγχου χάρτη Street View."
 
-#: src/blocks/map/inspector.js:193
+#: src/blocks/map/inspector.js:197
 msgid "Toggle to show the street view control at the bottom right."
 msgstr ""
 "Κάντε εναλλαγή για προβολή του στοιχείου ελέγχου Street View κάτω δεξιά."
 
-#: src/blocks/map/inspector.js:196
+#: src/blocks/map/inspector.js:200
 msgid "Fullscreen Toggle"
 msgstr "Εναλλαγή πλήρους οθόνης"
 
-#: src/blocks/map/inspector.js:199
+#: src/blocks/map/inspector.js:203
 msgid "Showing the fullscreen map control."
 msgstr "Προβολή του στοιχείου ελέγχου χάρτη πλήρους οθόνης."
 
-#: src/blocks/map/inspector.js:199
+#: src/blocks/map/inspector.js:203
 msgid "Toggle to show the fullscreen map control."
 msgstr "Κάντε εναλλαγή για προβολή του στοιχείου ελέγχου χάρτη πλήρους οθόνης."
 
-#: src/blocks/map/inspector.js:204
+#: src/blocks/map/inspector.js:208
 msgid "Google Maps API Key"
 msgstr "Κλειδί API Χαρτών Google"
 
-#: src/blocks/map/inspector.js:208
+#: src/blocks/map/inspector.js:212
+#, fuzzy
 msgid ""
-"Add your Google Maps API key. Updating this API key will set all your maps "
-"to use the new key."
+"Add a Google Maps API key. Updating this API key will set all your maps to "
+"use the new key."
 msgstr ""
 "Προσθέστε το κλειδί σας API για τους Χάρτες Google. Αν ενημερώσετε αυτό το "
 "κλειδί API όλοι οι χάρτες σας θα ρυθμιστούν να χρησιμοποιούν το νέο κλειδί."
 
-#: src/blocks/map/inspector.js:211
-msgid "Retrieve your key"
-msgstr "Ανάκτηση του κλειδιού σας"
+#: src/blocks/map/inspector.js:215
+#, fuzzy
+msgid "Get a key"
+msgstr "Δημιουργία κλειδιών"
 
-#: src/blocks/map/inspector.js:212
+#: src/blocks/map/inspector.js:216
 msgid "Need help?"
 msgstr "Θέλετε βοήθεια;"
 
-#: src/blocks/map/inspector.js:218
+#: src/blocks/map/inspector.js:222
 msgid "Enter Google API Key…"
 msgstr "Καταχώρηση κλειδιού Google API..."
 
-#: src/blocks/map/inspector.js:227
+#: src/blocks/map/inspector.js:231
 msgid "Saved"
 msgstr "Αποθηκεύτηκε"
 
@@ -1355,8 +1391,9 @@ msgid "Post Carousel Settings"
 msgstr "Ρυθμίσεις χρώματος"
 
 #: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
+#, fuzzy
 msgid "Post Date"
-msgstr ""
+msgstr "Καρουσέλ"
 
 #: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
 #, fuzzy
@@ -1369,8 +1406,9 @@ msgid "Toggle to show the publish date."
 msgstr "Κάντε εναλλαγή για προβολή των μετα-δεδομένων του gist."
 
 #: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
+#, fuzzy
 msgid "Post Content"
-msgstr ""
+msgstr "Καρουσέλ"
 
 #: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
 #, fuzzy
@@ -1483,7 +1521,7 @@ msgstr ""
 
 #: src/blocks/row/column/edit.js:90
 #, fuzzy
-msgid "Add backround to column"
+msgid "Add background to column"
 msgstr "Προσθήκη φόντου στο %s"
 
 #: src/blocks/row/column/index.js:30
@@ -1502,7 +1540,7 @@ msgstr "Κενό διάστημα γύρω από τον περιέκτη."
 msgid "Width"
 msgstr "Πλάτος"
 
-#: src/blocks/row/controls.js:70
+#: src/blocks/row/controls.js:74
 #, fuzzy
 msgid "Change row block layout"
 msgstr "Αλλαγή διάταξης"
@@ -1525,7 +1563,7 @@ msgstr "τεσσάρων"
 
 #: src/blocks/row/edit.js:169
 #, fuzzy
-msgid "Add backround to row"
+msgid "Add background to row"
 msgstr "Προσθήκη φόντου στο %s"
 
 #: src/blocks/row/edit.js:174
@@ -1806,8 +1844,8 @@ msgstr "Pinterest"
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:210
-#: includes/class-coblocks-form.php:297
+#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
+#: includes/class-coblocks-form.php:321
 msgid "Email"
 msgstr "Email"
 
@@ -2053,74 +2091,74 @@ msgstr ""
 msgid "Reset All"
 msgstr "Επαναφορά"
 
-#: src/components/dimensions-control/index.js:461
+#: src/components/dimensions-control/index.js:442
 msgid "Select Units"
 msgstr "Επιλογή μονάδων"
 
 #. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
-#: src/components/dimensions-control/index.js:472
+#: src/components/dimensions-control/index.js:453
 msgid "%s Units"
 msgstr "Μονάδες: %s"
 
 #. %s: a texual label
-#: src/components/dimensions-control/index.js:487
+#: src/components/dimensions-control/index.js:468
 msgid "Turn off advanced %s settings"
 msgstr "Απενεργοποίηση προηγμένων ρυθμίσεων %s"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:659
+#: src/components/dimensions-control/index.js:640
 msgid "%s Top"
 msgstr "Επάνω: %s"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:670
+#: src/components/dimensions-control/index.js:651
 msgid "%s Right"
 msgstr "Δεξιά: %s"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:681
+#: src/components/dimensions-control/index.js:662
 msgid "%s Bottom"
 msgstr "Κάτω: %s"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:692
+#: src/components/dimensions-control/index.js:673
 msgid "%s Left"
 msgstr "Αριστερά: %s"
 
-#: src/components/dimensions-control/index.js:698
+#: src/components/dimensions-control/index.js:679
 msgid "Unsync"
 msgstr "Κατάργηση συγχρονισμού"
 
-#: src/components/dimensions-control/index.js:698
+#: src/components/dimensions-control/index.js:679
 msgid "Sync"
 msgstr "Συγχρονισμός"
 
-#: src/components/dimensions-control/index.js:701
+#: src/components/dimensions-control/index.js:682
 msgid "Sync Units"
 msgstr "Συγχρονισμός μονάδων"
 
-#: src/components/dimensions-control/index.js:718
+#: src/components/dimensions-control/index.js:699
 msgid "Top"
 msgstr "Επάνω"
 
-#: src/components/dimensions-control/index.js:719
+#: src/components/dimensions-control/index.js:700
 msgid "Right"
 msgstr "Δεξιά"
 
-#: src/components/dimensions-control/index.js:720
+#: src/components/dimensions-control/index.js:701
 msgid "Bottom"
 msgstr "Κάτω"
 
-#: src/components/dimensions-control/index.js:721
+#: src/components/dimensions-control/index.js:702
 msgid "Left"
 msgstr "Αριστερά"
 
 #. %s:  a texual label
-#: src/components/dimensions-control/index.js:741
+#: src/components/dimensions-control/index.js:722
 msgid "Advanced %s settings"
 msgstr "Προηγμένες ρυθμίσεις %s"
 
-#: src/components/dimensions-control/index.js:744
+#: src/components/dimensions-control/index.js:725
 msgid "Advanced"
 msgstr "Προηγμένες"
 
@@ -2289,8 +2327,9 @@ msgid "Toggle to show dot navigation."
 msgstr "Κάντε εναλλαγή για προβολή κουκκίδων πλοήγησης."
 
 #: src/components/slider-panel/index.js:43
+#, fuzzy
 msgid "Aligning slides to the left."
-msgstr ""
+msgstr "Κενό διάστημα εντός του περιέκτη."
 
 #: src/components/slider-panel/index.js:43
 #, fuzzy
@@ -2298,8 +2337,9 @@ msgid "Aligning slides to the center."
 msgstr "Κενό διάστημα εντός του περιέκτη."
 
 #: src/components/slider-panel/index.js:46
+#, fuzzy
 msgid "Pausing autoplay when hovering."
-msgstr ""
+msgstr "Εναλλαγή για σίγαση του βίντεο."
 
 #: src/components/slider-panel/index.js:46
 #, fuzzy
@@ -2307,8 +2347,9 @@ msgid "Toggle to pause autoplay when hovered."
 msgstr "Εναλλαγή για σίγαση του βίντεο."
 
 #: src/components/slider-panel/index.js:50
+#, fuzzy
 msgid "Scrolling without fixed slides enabled."
-msgstr ""
+msgstr "Κάντε εναλλαγή για συνεχή αναπαραγωγή του βίντεο."
 
 #: src/components/slider-panel/index.js:50
 #, fuzzy
@@ -2426,7 +2467,7 @@ msgstr "Κάντε εναλλαγή για προβολή του κουμπιο�
 msgid "Crop Settings"
 msgstr "Ρυθμίσεις Hero"
 
-#: src/formats/uppercase/index.js:36
+#: src/formats/uppercase/index.js:35
 msgid "Uppercase"
 msgstr "Κεφαλαία"
 
@@ -2472,7 +2513,7 @@ msgctxt "Toggle label to display the accordion open"
 msgid "Display open"
 msgstr "Προβολή ανοικτών"
 
-#: src/blocks/accordion/accordion-item/edit.js:67
+#: src/blocks/accordion/accordion-item/edit.js:65
 #, fuzzy
 msgctxt "Accordion is the block name"
 msgid "Add accordion title..."
@@ -2571,6 +2612,18 @@ msgctxt "block keyword"
 msgid "restaurant"
 msgstr "εστιατόριο"
 
+#: src/blocks/form/fields/date/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "calendar"
+msgstr "Κανονικό"
+
+#: src/blocks/form/fields/date/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "day month year"
+msgstr "ένα έτος"
+
 #: src/blocks/form/fields/email/index.js:22
 #, fuzzy
 msgctxt "block keyword"
@@ -2584,15 +2637,51 @@ msgid "mail"
 msgstr "mail"
 
 #: src/blocks/form/fields/name/index.js:22
+#, fuzzy
 msgctxt "block keyword"
 msgid "first name"
-msgstr ""
+msgstr "Επώνυμο"
 
 #: src/blocks/form/fields/name/index.js:22
 #, fuzzy
 msgctxt "block keyword"
 msgid "last name"
 msgstr "Επώνυμο"
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "telephone"
+msgstr ""
+
+#: src/blocks/form/fields/phone/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "cellular"
+msgstr "Κυκλικό"
+
+# Control name
+#: src/blocks/form/fields/phone/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "mobile"
+msgstr "Κινητό %s"
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Choose"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "Select"
+msgstr "Επιλογή μεγέθους"
+
+#: src/blocks/form/fields/radio/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "Option"
+msgstr "Λεζάντες"
 
 #: src/blocks/form/fields/textarea/index.js:22
 #, fuzzy
@@ -2905,6 +2994,11 @@ msgctxt "block name"
 msgid "Food & Drinks"
 msgstr "Τρόφιμα και ποτά"
 
+#: src/blocks/form/fields/date/index.js:19
+msgctxt "block name"
+msgid "Date"
+msgstr ""
+
 #: src/blocks/form/fields/email/index.js:19
 #, fuzzy
 msgctxt "block name"
@@ -2917,11 +3011,22 @@ msgctxt "block name"
 msgid "Name"
 msgstr "Ονοματεπώνυμο"
 
+#: src/blocks/form/fields/phone/index.js:19
+msgctxt "block name"
+msgid "Phone"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:19
+#, fuzzy
+msgctxt "block name"
+msgid "Radio"
+msgstr "Radius"
+
 #: src/blocks/form/fields/textarea/index.js:19
 #, fuzzy
 msgctxt "block name"
-msgid "Message"
-msgstr "Μήνυμα"
+msgid "Textarea"
+msgstr "Περιοχή κειμένου"
 
 #: src/blocks/form/index.js:26
 #, fuzzy
@@ -2936,9 +3041,10 @@ msgid "Carousel"
 msgstr "Καρουσέλ"
 
 #: src/blocks/gallery-collage/index.js:33
+#, fuzzy
 msgctxt "block name"
 msgid "Collage"
-msgstr ""
+msgstr "Ρυθμίσεις εικόνων"
 
 #: src/blocks/gallery-masonry/index.js:34
 #, fuzzy
@@ -4236,9 +4342,10 @@ msgid "None"
 msgstr "Κανένα"
 
 #: src/components/crop-settings/index.js:280
+#, fuzzy
 msgctxt "label for horizontal positioning input"
 msgid "Horizontal Pos."
-msgstr ""
+msgstr "Επανάληψη οριζόντια"
 
 #: src/components/crop-settings/index.js:288
 msgctxt "label for vertical positioning input"
@@ -4251,19 +4358,19 @@ msgctxt "label for the control that allows zooming in on the image"
 msgid "Image Zoom"
 msgstr "Εικόνα"
 
-#: src/components/dimensions-control/index.js:408
+#: src/components/dimensions-control/index.js:389
 #, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Pixel"
 msgstr "Pixel"
 
-#: src/components/dimensions-control/index.js:412
+#: src/components/dimensions-control/index.js:393
 #, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Em"
 msgstr "Em"
 
-#: src/components/dimensions-control/index.js:416
+#: src/components/dimensions-control/index.js:397
 #, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Percentage"
@@ -4378,92 +4485,8 @@ msgid "Review CoBlocks on WordPress.org"
 msgstr ""
 
 #: includes/admin/class-coblocks-action-links.php:41
-#: includes/admin/class-coblocks-feedback.php:282
 msgid "Leave a Review"
 msgstr "Αφήστε μια κριτική"
-
-#. translators: %d: Number of years
-#: includes/admin/class-coblocks-feedback.php:92
-#, fuzzy
-msgid "%d years"
-msgstr "%s έτη"
-
-#: includes/admin/class-coblocks-feedback.php:94
-msgid "a year"
-msgstr "ένα έτος"
-
-#. translators: %d: Number of weeks
-#: includes/admin/class-coblocks-feedback.php:101
-#, fuzzy
-msgid "%d weeks"
-msgstr "%s εβδομάδες"
-
-#: includes/admin/class-coblocks-feedback.php:103
-msgid "a week"
-msgstr "μία εβδομάδα"
-
-#. translators: %d: Number of days
-#: includes/admin/class-coblocks-feedback.php:110
-#, fuzzy
-msgid "%d days"
-msgstr "%s ημέρες"
-
-#: includes/admin/class-coblocks-feedback.php:112
-msgid "a day"
-msgstr "μία ημέρα"
-
-#. translators: %d: Number of hours
-#: includes/admin/class-coblocks-feedback.php:119
-#, fuzzy
-msgid "%d hours"
-msgstr "%s ώρες"
-
-#: includes/admin/class-coblocks-feedback.php:121
-msgid "an hour"
-msgstr "μία ώρα"
-
-#. translators: %d: Number of minutes
-#: includes/admin/class-coblocks-feedback.php:128
-#, fuzzy
-msgid "%d minutes"
-msgstr "%s λεπτά"
-
-#: includes/admin/class-coblocks-feedback.php:130
-msgid "a minute"
-msgstr "ένα λεπτό"
-
-#. translators: %d: Number of seconds
-#: includes/admin/class-coblocks-feedback.php:137
-#, fuzzy
-msgid "%d seconds"
-msgstr "%s δευτερόλεπτα"
-
-#: includes/admin/class-coblocks-feedback.php:139
-msgid "a second"
-msgstr "ένα δευτερόλεπτο"
-
-#. translators: %s: Plugin Name
-#: includes/admin/class-coblocks-feedback.php:271
-msgid "%s WordPress Plugin"
-msgstr "Προσθήκη WordPress %s"
-
-#. translators: %s: Plugin Name
-#: includes/admin/class-coblocks-feedback.php:275
-msgid "Are you enjoying %s?"
-msgstr "Σας αρέσει το %s;"
-
-#. translators: %s: Plugin Name, 2. Time which the plugin has been in use for
-#: includes/admin/class-coblocks-feedback.php:278
-msgid ""
-"You have been using %1$s for %2$s now. Mind leaving a review to let us know "
-"know what you think? We'd really appreciate it!"
-msgstr ""
-"Χρησιμοποιείτε το %1$s για %2$s μέχρι στιγμής. Θα θέλατε να μας αφήσετε μια "
-"κριτική και να μας πείτε πώς σας φαίνεται; Θα το εκτιμήσουμε ιδιαίτερα!"
-
-#: includes/admin/class-coblocks-feedback.php:283
-msgid "No thanks / I already have"
-msgstr "Όχι ευχαριστώ / Το έχω ήδη κάνει"
 
 #: includes/admin/class-coblocks-getting-started-page.php:121
 msgid ""
@@ -4549,31 +4572,43 @@ msgstr "Κλειδί ιστότοπου Google reCaptcha για προστασί
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr "Μυστικό κλειδί Google reCaptcha για προστασία φόρμας από spam"
 
-#: includes/class-coblocks-form.php:244
+#: includes/class-coblocks-form.php:268
 msgid "Name"
 msgstr "Ονοματεπώνυμο"
 
-#: includes/class-coblocks-form.php:248
+#: includes/class-coblocks-form.php:272
 msgid "First"
 msgstr "Όνομα"
 
-#: includes/class-coblocks-form.php:249
+#: includes/class-coblocks-form.php:273
 msgid "Last"
 msgstr "Επώνυμο"
 
-#: includes/class-coblocks-form.php:325
+#: includes/class-coblocks-form.php:349
 msgid "Message"
 msgstr "Μήνυμα"
 
-#: includes/class-coblocks-form.php:390
+#: includes/class-coblocks-form.php:387
+msgid "Date"
+msgstr ""
+
+#: includes/class-coblocks-form.php:415
+msgid "Phone"
+msgstr ""
+
+#: includes/class-coblocks-form.php:451
+msgid "Choose one"
+msgstr ""
+
+#: includes/class-coblocks-form.php:522
 msgid "Submit"
 msgstr "Υποβολή"
 
-#: includes/class-coblocks-form.php:598
+#: includes/class-coblocks-form.php:730
 msgid "Your message was sent:"
 msgstr "Το μήνυμά σας στάλθηκε:"
 
-#: includes/class-coblocks-google-map-block.php:122
+#: includes/class-coblocks-google-map-block.php:124
 msgid "Google Map API key for map rendering"
 msgstr "Κλειδί API Χαρτών Google για απεικόνιση χάρτη"
 
@@ -4584,6 +4619,76 @@ msgstr "Διαμοιρασμός στο LinkedIn"
 #: src/blocks/social-profiles/index.php:84
 msgid "Linkedin"
 msgstr "Linkedin"
+
+#~ msgid "An email address field."
+#~ msgstr "Ένα πεδίο διεύθυνσης email."
+
+#~ msgid "A text field for names."
+#~ msgstr "Ένα πεδίο κειμένου για ονόματα."
+
+#~ msgid "Retrieve your key"
+#~ msgstr "Ανάκτηση του κλειδιού σας"
+
+#, fuzzy
+#~ msgctxt "block name"
+#~ msgid "Message"
+#~ msgstr "Μήνυμα"
+
+#, fuzzy
+#~ msgid "%d years"
+#~ msgstr "%s έτη"
+
+#, fuzzy
+#~ msgid "%d weeks"
+#~ msgstr "%s εβδομάδες"
+
+#~ msgid "a week"
+#~ msgstr "μία εβδομάδα"
+
+#, fuzzy
+#~ msgid "%d days"
+#~ msgstr "%s ημέρες"
+
+#~ msgid "a day"
+#~ msgstr "μία ημέρα"
+
+#, fuzzy
+#~ msgid "%d hours"
+#~ msgstr "%s ώρες"
+
+#~ msgid "an hour"
+#~ msgstr "μία ώρα"
+
+#, fuzzy
+#~ msgid "%d minutes"
+#~ msgstr "%s λεπτά"
+
+#~ msgid "a minute"
+#~ msgstr "ένα λεπτό"
+
+#, fuzzy
+#~ msgid "%d seconds"
+#~ msgstr "%s δευτερόλεπτα"
+
+#~ msgid "a second"
+#~ msgstr "ένα δευτερόλεπτο"
+
+#~ msgid "%s WordPress Plugin"
+#~ msgstr "Προσθήκη WordPress %s"
+
+#~ msgid "Are you enjoying %s?"
+#~ msgstr "Σας αρέσει το %s;"
+
+#~ msgid ""
+#~ "You have been using %1$s for %2$s now. Mind leaving a review to let us "
+#~ "know know what you think? We'd really appreciate it!"
+#~ msgstr ""
+#~ "Χρησιμοποιείτε το %1$s για %2$s μέχρι στιγμής. Θα θέλατε να μας αφήσετε "
+#~ "μια κριτική και να μας πείτε πώς σας φαίνεται; Θα το εκτιμήσουμε "
+#~ "ιδιαίτερα!"
+
+#~ msgid "No thanks / I already have"
+#~ msgstr "Όχι ευχαριστώ / Το έχω ήδη κάνει"
 
 #~ msgid "Alert Type"
 #~ msgstr "Τύπος ειδοποίησης"

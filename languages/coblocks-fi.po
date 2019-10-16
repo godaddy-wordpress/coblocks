@@ -1,9 +1,9 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.12.1\n"
+"Project-Id-Version: CoBlocks 1.15.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"POT-Creation-Date: 2019-10-11T16:01:45+00:00\n"
+"POT-Creation-Date: 2019-10-16T16:11:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -215,7 +215,7 @@ msgstr "Lisää kooltaan muokattavissa oleva tyhjä väli muiden lohkojen välii
 
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:100
-#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:128
+#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr "Korkeus kuvapisteinä"
 
@@ -229,7 +229,8 @@ msgstr "Väri"
 
 #: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
-msgid "Add as backround"
+#, fuzzy
+msgid "Add as background"
 msgstr "Lisää taustana"
 
 #: src/blocks/features/feature/index.js:29
@@ -452,7 +453,7 @@ msgstr "Keskipiste"
 msgid "Display a menu or price list."
 msgstr "Näytä ruokalista tai hinnasto"
 
-#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:103
+#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
 #: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
 msgid "Styles"
@@ -487,82 +488,97 @@ msgid "Toggle to show the price of each item."
 msgstr "Käytä vaihtopainiketta, jos haluat näyttää kunkin tuotteen hinnan."
 
 #. %s: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:164
+#: src/blocks/form/edit.js:171
 msgid "%s is not a valid email address."
 msgstr "‌‌%s ei ole kelvollinen sähköpostiosoite."
 
 #. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:174
+#: src/blocks/form/edit.js:181
 msgid "%s and %s are not a valid email address."
 msgstr "%s ja %s eivät ole kelvollisia sähköpostiosoitteita."
 
 #. %s1: Placeholder for email address provided by user.
-#: src/blocks/form/edit.js:182
+#: src/blocks/form/edit.js:189
 msgid "%s are not a valid email address."
 msgstr "‌‌%s eivät ole kelvollisia sähköpostiosoitteita."
 
-#: src/blocks/form/edit.js:240
+#: src/blocks/form/edit.js:247
 msgid "Email address"
 msgstr "Sähköpostiosoite"
 
-#: src/blocks/form/edit.js:241
+#: src/blocks/form/edit.js:248
 msgid "name@example.com"
 msgstr "nimi@esimerkki.com"
 
-#: src/blocks/form/edit.js:251
+#: src/blocks/form/edit.js:258
 msgid "Subject"
 msgstr "Aihe"
 
-#: src/blocks/form/edit.js:281
+#: src/blocks/form/edit.js:288
 msgid "Form Settings"
 msgstr "Lomakkeen asetukset"
 
-#: src/blocks/form/edit.js:286
+#: src/blocks/form/edit.js:293
 msgid "Google reCAPTCHA"
 msgstr "Google reCAPTCHA"
 
-#: src/blocks/form/edit.js:289
+#: src/blocks/form/edit.js:296
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr ""
 "Lisäämällä reCAPTCHA-todennuksen ja salaiset avaimet voit suojata lomakkeesi "
 "roskapostilta."
 
-#: src/blocks/form/edit.js:295
+#: src/blocks/form/edit.js:302
 msgid "Generate keys"
 msgstr "Luo avaimet"
 
-#: src/blocks/form/edit.js:296
+#: src/blocks/form/edit.js:303
 msgid "My keys"
 msgstr "Omat avaimet"
 
-#: src/blocks/form/edit.js:299
+#: src/blocks/form/edit.js:306
 msgid "Get help"
 msgstr "Pyydä ohjeita"
 
-#: src/blocks/form/edit.js:303
+#: src/blocks/form/edit.js:310
 msgid "Site Key"
 msgstr "Sivustoavain"
 
-#: src/blocks/form/edit.js:309
+#: src/blocks/form/edit.js:316
 msgid "Secret Key"
 msgstr "Salainen avain"
 
-#: src/blocks/form/edit.js:323 src/blocks/gallery-collage/edit.js:174
+#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr "Tallennetaan"
 
-#: src/blocks/form/edit.js:323 src/blocks/map/inspector.js:227
+#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr "Tallenna"
 
-#: src/blocks/form/edit.js:338 src/blocks/map/inspector.js:235
+#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr "Poista"
 
+#: src/blocks/form/fields/coblocks-option.js:61
+#, fuzzy
+msgid "Write option…"
+msgstr "Kirjoita kuvateksti..."
+
+#: src/blocks/form/fields/coblocks-option.js:70
+#, fuzzy
+msgid "Remove Option"
+msgstr "Poista "
+
+#: src/blocks/form/fields/date/index.js:21
+msgid "A field for requesting date selections with a date picker."
+msgstr ""
+
 #: src/blocks/form/fields/email/index.js:20
-msgid "An email address field."
-msgstr "Sähköpostiosoitteen kenttä."
+#, fuzzy
+msgid "A field for collecting a validated email address."
+msgstr "‌‌%s ei ole kelvollinen sähköpostiosoite."
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
@@ -572,6 +588,11 @@ msgstr "Lisää selite..."
 #: src/blocks/form/fields/field-label.js:30
 msgid "Required"
 msgstr "Vaaditaan"
+
+#: src/blocks/form/fields/multi-field.js:102
+#, fuzzy
+msgid "Add Option"
+msgstr "Lisää kuvaus..."
 
 #: src/blocks/form/fields/name/edit.js:69
 msgid "Name Field Settings"
@@ -590,15 +611,25 @@ msgid "Toggle to add a last name field."
 msgstr "Käytä vaihtopainiketta, jos haluat lisätä Sukunimi-kentän."
 
 #: src/blocks/form/fields/name/index.js:20
-msgid "A text field for names."
-msgstr "Tekstikenttä nimiä varten."
+#, fuzzy
+msgid "A text field for collecting the first and last names."
+msgstr "Sekä Etunimi- että Sukunimi-kenttä näytetään."
+
+#: src/blocks/form/fields/phone/index.js:21
+msgid "A phone number to allow visitors to give you a phone number."
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:21
+msgid "A field with multiple options where only one choice can be made."
+msgstr ""
 
 #: src/blocks/form/fields/textarea/index.js:20
 msgid "A text box for longer responses."
 msgstr "Tekstiruutu pidempiä vastauksia varten."
 
 #: src/blocks/form/index.js:27
-msgid "Add a simple form to your page."
+#, fuzzy
+msgid "Add a contact form to your page."
 msgstr "Lisää sivustoosi yksinkertainen lomake."
 
 #: src/blocks/form/index.js:36
@@ -643,8 +674,9 @@ msgid "Display multiple images in a beautiful carousel gallery."
 msgstr "Esitä kuvavalikoima näyttävässä karusellinäkymässä."
 
 #: src/blocks/gallery-carousel/inspector.js:109
+#, fuzzy
 msgid "Thumbnails"
-msgstr ""
+msgstr "Palstan koko"
 
 #: src/blocks/gallery-carousel/inspector.js:119
 #, fuzzy
@@ -666,8 +698,10 @@ msgid "Percentage based height is activated."
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:44
+#, fuzzy
 msgid "Toggle for percentage based height."
 msgstr ""
+"Käytä vaihtopainiketta, jos haluat ottaa kartan ohjaussäätimet käyttöön."
 
 #: src/blocks/gallery-carousel/inspector.js:68
 #, fuzzy
@@ -687,7 +721,7 @@ msgstr "Koko"
 msgid "Rounded Corners"
 msgstr "Pyöristetyt kulmat"
 
-#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:307
+#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr "Käytä"
@@ -853,7 +887,7 @@ msgstr "GitHub-tiedosto"
 msgid "File"
 msgstr "Tiedosto"
 
-#: src/blocks/gist/deprecated.js:30 src/blocks/gist/save.js:29
+#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr "Tarkastele tätä GiST-koodikatkelmaa GitHub-palvelussa"
 
@@ -900,7 +934,7 @@ msgstr "Muuta asettelua"
 
 #: src/blocks/hero/edit.js:152
 #, fuzzy
-msgid "Add backround to hero"
+msgid "Add background to hero"
 msgstr "Lisää tausta: %s"
 
 #: src/blocks/hero/index.js:41
@@ -997,7 +1031,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:170
-#: src/components/dimensions-control/index.js:489
+#: src/components/dimensions-control/index.js:470
 #: src/components/size-control/index.js:198
 msgid "Reset"
 msgstr "Palauta"
@@ -1092,23 +1126,24 @@ msgstr "Muokkaa sijaintia"
 msgid "Map style"
 msgstr "Kartan tyyli"
 
-#: src/blocks/map/edit.js:191
-msgid "Invalid API key, or too many requests"
-msgstr "Virheellinen API-avain tai liikaa pyyntöjä"
-
-#: src/blocks/map/edit.js:294 src/blocks/map/save.js:48
+#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50
 msgid "Google Map"
 msgstr "Google Map"
 
-#: src/blocks/map/edit.js:295
+#: src/blocks/map/edit.js:195
+msgid "Invalid API key, or too many requests"
+msgstr "Virheellinen API-avain tai liikaa pyyntöjä"
+
+#: src/blocks/map/edit.js:294
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr "Pudota nuppineula Google-kartalle antamalla sijainti tai osoite."
 
-#: src/blocks/map/edit.js:302
+#: src/blocks/map/edit.js:301
 msgid "Search for a place or address…"
 msgstr "Etsi paikkaa tai osoitetta..."
 
-#: src/blocks/map/edit.js:321
+#: src/blocks/map/edit.js:320
 msgid "Cancel"
 msgstr ""
 
@@ -1117,120 +1152,122 @@ msgstr ""
 msgid "Add an address or location to drop a pin on a Google map."
 msgstr "Lisää osoite ja pudota nuppineula Google-kartalle."
 
-#: src/blocks/map/inspector.js:105
+#: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
 msgstr "Valitse kartan tyyli"
 
-#: src/blocks/map/inspector.js:126
+#: src/blocks/map/inspector.js:130
 msgid "Map Settings"
 msgstr "Kartan asetukset"
 
-#: src/blocks/map/inspector.js:131
+#: src/blocks/map/inspector.js:135
 msgid "Height for the map in pixels"
 msgstr "Kartan korkeus kuvapisteinä"
 
-#: src/blocks/map/inspector.js:140
+#: src/blocks/map/inspector.js:144
 msgid "Zoom Level"
 msgstr "Zoomaustaso"
 
-#: src/blocks/map/inspector.js:151
+#: src/blocks/map/inspector.js:155
 msgid "Marker Size"
 msgstr "Merkinnän koko"
 
-#: src/blocks/map/inspector.js:166
+#: src/blocks/map/inspector.js:170
 msgid "Fine control options are enabled."
 msgstr "Tarkat säätötoiminnot on otettu käyttöön."
 
-#: src/blocks/map/inspector.js:166
+#: src/blocks/map/inspector.js:170
 msgid "Toggle to enable map control options."
 msgstr ""
 "Käytä vaihtopainiketta, jos haluat ottaa kartan ohjaussäätimet käyttöön."
 
-#: src/blocks/map/inspector.js:174
+#: src/blocks/map/inspector.js:178
 msgid "Map Controls"
 msgstr "Kartan säätötoiminnot"
 
-#: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:182
 msgid "Map Type"
 msgstr "Kartan tyyppi"
 
-#: src/blocks/map/inspector.js:181
+#: src/blocks/map/inspector.js:185
 msgid "Switching between standard and satellite map views is enabled."
 msgstr ""
 "Siirtyminen vakiotyyppisten ja satelliittikarttojen välillä on otettu "
 "käyttöön."
 
-#: src/blocks/map/inspector.js:181
+#: src/blocks/map/inspector.js:185
 msgid "Toggle to enable switching between standard and satellite maps."
 msgstr ""
 "Käytä vaihtopainiketta, jos haluat ottaa käyttöön siirtymisen "
 "vakiotyyppisten ja satelliittikarttojen välillä."
 
-#: src/blocks/map/inspector.js:184
+#: src/blocks/map/inspector.js:188
 msgid "Zoom Controls"
 msgstr "Zoomausohjaimet"
 
-#: src/blocks/map/inspector.js:187
+#: src/blocks/map/inspector.js:191
 msgid "Showing map zoom controls."
 msgstr "Kartan zoomausohjaimet näytetään."
 
-#: src/blocks/map/inspector.js:187
+#: src/blocks/map/inspector.js:191
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
 msgstr ""
 "Käytä vaihtopainiketta, jos haluat ottaa käyttöön kartan lähentämisen ja "
 "loitontamisen zoomausohjaimilla."
 
-#: src/blocks/map/inspector.js:190
+#: src/blocks/map/inspector.js:194
 msgid "Street View"
 msgstr "Katunäkymä"
 
-#: src/blocks/map/inspector.js:193
+#: src/blocks/map/inspector.js:197
 msgid "Showing the street view map control."
 msgstr "Katunäkymäohjain näytetään."
 
-#: src/blocks/map/inspector.js:193
+#: src/blocks/map/inspector.js:197
 msgid "Toggle to show the street view control at the bottom right."
 msgstr ""
 "Käytä vaihtopainiketta, jos haluat näyttää katunäkymäohjaimet oikeassa "
 "alakulmassa."
 
-#: src/blocks/map/inspector.js:196
+#: src/blocks/map/inspector.js:200
 msgid "Fullscreen Toggle"
 msgstr "Koko näytön tila"
 
-#: src/blocks/map/inspector.js:199
+#: src/blocks/map/inspector.js:203
 msgid "Showing the fullscreen map control."
 msgstr "Koko näytön karttaohjain näytetään."
 
-#: src/blocks/map/inspector.js:199
+#: src/blocks/map/inspector.js:203
 msgid "Toggle to show the fullscreen map control."
 msgstr "Käytä vaihtopainiketta, jos haluat näyttää koko näytön karttaohjaimen."
 
-#: src/blocks/map/inspector.js:204
+#: src/blocks/map/inspector.js:208
 msgid "Google Maps API Key"
 msgstr "Google Maps -API-avain"
 
-#: src/blocks/map/inspector.js:208
+#: src/blocks/map/inspector.js:212
+#, fuzzy
 msgid ""
-"Add your Google Maps API key. Updating this API key will set all your maps "
-"to use the new key."
+"Add a Google Maps API key. Updating this API key will set all your maps to "
+"use the new key."
 msgstr ""
 "Lisää Google Maps -API-avaimesi. Tämän API-avaimen päivittäminen määrittää "
 "kaikki karttasi käyttämään uutta avainta."
 
-#: src/blocks/map/inspector.js:211
-msgid "Retrieve your key"
-msgstr "Nouda avaimesi"
+#: src/blocks/map/inspector.js:215
+#, fuzzy
+msgid "Get a key"
+msgstr "Luo avaimet"
 
-#: src/blocks/map/inspector.js:212
+#: src/blocks/map/inspector.js:216
 msgid "Need help?"
 msgstr "Tarvitsetko apua?"
 
-#: src/blocks/map/inspector.js:218
+#: src/blocks/map/inspector.js:222
 msgid "Enter Google API Key…"
 msgstr "Anna Google-API-avain…"
 
-#: src/blocks/map/inspector.js:227
+#: src/blocks/map/inspector.js:231
 msgid "Saved"
 msgstr "Tallennettu"
 
@@ -1353,8 +1390,9 @@ msgid "Post Carousel Settings"
 msgstr "Väriasetukset"
 
 #: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
+#, fuzzy
 msgid "Post Date"
-msgstr ""
+msgstr "Karuselli"
 
 #: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
 #, fuzzy
@@ -1367,8 +1405,9 @@ msgid "Toggle to show the publish date."
 msgstr "Käytä vaihtopainiketta, jos haluat näyttää GiST-metatiedot."
 
 #: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
+#, fuzzy
 msgid "Post Content"
-msgstr ""
+msgstr "Karuselli"
 
 #: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
 #, fuzzy
@@ -1481,7 +1520,7 @@ msgstr ""
 
 #: src/blocks/row/column/edit.js:90
 #, fuzzy
-msgid "Add backround to column"
+msgid "Add background to column"
 msgstr "Lisää tausta: %s"
 
 #: src/blocks/row/column/index.js:30
@@ -1500,7 +1539,7 @@ msgstr "Tila osiosäilön ympärillä."
 msgid "Width"
 msgstr "Leveys"
 
-#: src/blocks/row/controls.js:70
+#: src/blocks/row/controls.js:74
 #, fuzzy
 msgid "Change row block layout"
 msgstr "Muuta asettelua"
@@ -1523,7 +1562,7 @@ msgstr "neljä"
 
 #: src/blocks/row/edit.js:169
 #, fuzzy
-msgid "Add backround to row"
+msgid "Add background to row"
 msgstr "Lisää tausta: %s"
 
 #: src/blocks/row/edit.js:174
@@ -1802,8 +1841,8 @@ msgstr "Pinterest"
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:210
-#: includes/class-coblocks-form.php:297
+#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
+#: includes/class-coblocks-form.php:321
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -2050,74 +2089,74 @@ msgstr ""
 msgid "Reset All"
 msgstr "Palauta"
 
-#: src/components/dimensions-control/index.js:461
+#: src/components/dimensions-control/index.js:442
 msgid "Select Units"
 msgstr "Valitse yksiköt"
 
 #. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
-#: src/components/dimensions-control/index.js:472
+#: src/components/dimensions-control/index.js:453
 msgid "%s Units"
 msgstr "%s – yksiköt"
 
 #. %s: a texual label
-#: src/components/dimensions-control/index.js:487
+#: src/components/dimensions-control/index.js:468
 msgid "Turn off advanced %s settings"
 msgstr "Poista %s-lisäasetukset käytöstä"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:659
+#: src/components/dimensions-control/index.js:640
 msgid "%s Top"
 msgstr "%s – yläosa"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:670
+#: src/components/dimensions-control/index.js:651
 msgid "%s Right"
 msgstr "%s – oikea"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:681
+#: src/components/dimensions-control/index.js:662
 msgid "%s Bottom"
 msgstr "%s – alaosa"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:692
+#: src/components/dimensions-control/index.js:673
 msgid "%s Left"
 msgstr "%s – vasen"
 
-#: src/components/dimensions-control/index.js:698
+#: src/components/dimensions-control/index.js:679
 msgid "Unsync"
 msgstr "Poista synkronointi"
 
-#: src/components/dimensions-control/index.js:698
+#: src/components/dimensions-control/index.js:679
 msgid "Sync"
 msgstr "Synkronoi"
 
-#: src/components/dimensions-control/index.js:701
+#: src/components/dimensions-control/index.js:682
 msgid "Sync Units"
 msgstr "Synkronoi yksiköt"
 
-#: src/components/dimensions-control/index.js:718
+#: src/components/dimensions-control/index.js:699
 msgid "Top"
 msgstr "Ylä"
 
-#: src/components/dimensions-control/index.js:719
+#: src/components/dimensions-control/index.js:700
 msgid "Right"
 msgstr "Oikea"
 
-#: src/components/dimensions-control/index.js:720
+#: src/components/dimensions-control/index.js:701
 msgid "Bottom"
 msgstr "Alhaalla"
 
-#: src/components/dimensions-control/index.js:721
+#: src/components/dimensions-control/index.js:702
 msgid "Left"
 msgstr "Vasen"
 
 #. %s:  a texual label
-#: src/components/dimensions-control/index.js:741
+#: src/components/dimensions-control/index.js:722
 msgid "Advanced %s settings"
 msgstr "%s-lisäasetukset"
 
-#: src/components/dimensions-control/index.js:744
+#: src/components/dimensions-control/index.js:725
 msgid "Advanced"
 msgstr "Lisäasetukset"
 
@@ -2286,8 +2325,9 @@ msgid "Toggle to show dot navigation."
 msgstr "Käytä vaihtopainiketta, jos haluat pistenavigoinnin."
 
 #: src/components/slider-panel/index.js:43
+#, fuzzy
 msgid "Aligning slides to the left."
-msgstr ""
+msgstr "Tila osiosäilön sisällä."
 
 #: src/components/slider-panel/index.js:43
 #, fuzzy
@@ -2295,8 +2335,9 @@ msgid "Aligning slides to the center."
 msgstr "Tila osiosäilön sisällä."
 
 #: src/components/slider-panel/index.js:46
+#, fuzzy
 msgid "Pausing autoplay when hovering."
-msgstr ""
+msgstr "Käytä vaihtopainiketta, jos haluat mykistää videon."
 
 #: src/components/slider-panel/index.js:46
 #, fuzzy
@@ -2304,8 +2345,10 @@ msgid "Toggle to pause autoplay when hovered."
 msgstr "Käytä vaihtopainiketta, jos haluat mykistää videon."
 
 #: src/components/slider-panel/index.js:50
+#, fuzzy
 msgid "Scrolling without fixed slides enabled."
 msgstr ""
+"Käytä vaihtopainiketta, jos haluat asettaa videon jatkuvasti toistettavaksi."
 
 #: src/components/slider-panel/index.js:50
 #, fuzzy
@@ -2425,7 +2468,7 @@ msgstr ""
 msgid "Crop Settings"
 msgstr "Sankariosion asetukset"
 
-#: src/formats/uppercase/index.js:36
+#: src/formats/uppercase/index.js:35
 msgid "Uppercase"
 msgstr "Isot kirjaimet"
 
@@ -2470,7 +2513,7 @@ msgctxt "Toggle label to display the accordion open"
 msgid "Display open"
 msgstr "Näyttö avoimena"
 
-#: src/blocks/accordion/accordion-item/edit.js:67
+#: src/blocks/accordion/accordion-item/edit.js:65
 #, fuzzy
 msgctxt "Accordion is the block name"
 msgid "Add accordion title..."
@@ -2569,6 +2612,18 @@ msgctxt "block keyword"
 msgid "restaurant"
 msgstr "ravintola"
 
+#: src/blocks/form/fields/date/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "calendar"
+msgstr "Vakio"
+
+#: src/blocks/form/fields/date/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "day month year"
+msgstr "vuosi"
+
 #: src/blocks/form/fields/email/index.js:22
 #, fuzzy
 msgctxt "block keyword"
@@ -2582,15 +2637,51 @@ msgid "mail"
 msgstr "sähköposti"
 
 #: src/blocks/form/fields/name/index.js:22
+#, fuzzy
 msgctxt "block keyword"
 msgid "first name"
-msgstr ""
+msgstr "Sukunimi"
 
 #: src/blocks/form/fields/name/index.js:22
 #, fuzzy
 msgctxt "block keyword"
 msgid "last name"
 msgstr "Sukunimi"
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "telephone"
+msgstr ""
+
+#: src/blocks/form/fields/phone/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "cellular"
+msgstr "Ympyrä"
+
+# Control name
+#: src/blocks/form/fields/phone/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "mobile"
+msgstr "Matkapuhelin %s"
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Choose"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "Select"
+msgstr "Valitse koko"
+
+#: src/blocks/form/fields/radio/index.js:20
+#, fuzzy
+msgctxt "block keyword"
+msgid "Option"
+msgstr "Kuvatekstit"
 
 #: src/blocks/form/fields/textarea/index.js:22
 #, fuzzy
@@ -2903,6 +2994,11 @@ msgctxt "block name"
 msgid "Food & Drinks"
 msgstr "Ruoka ja juomat"
 
+#: src/blocks/form/fields/date/index.js:19
+msgctxt "block name"
+msgid "Date"
+msgstr ""
+
 #: src/blocks/form/fields/email/index.js:19
 #, fuzzy
 msgctxt "block name"
@@ -2915,11 +3011,22 @@ msgctxt "block name"
 msgid "Name"
 msgstr "Nimi"
 
+#: src/blocks/form/fields/phone/index.js:19
+msgctxt "block name"
+msgid "Phone"
+msgstr ""
+
+#: src/blocks/form/fields/radio/index.js:19
+#, fuzzy
+msgctxt "block name"
+msgid "Radio"
+msgstr "Säde"
+
 #: src/blocks/form/fields/textarea/index.js:19
 #, fuzzy
 msgctxt "block name"
-msgid "Message"
-msgstr "Viesti"
+msgid "Textarea"
+msgstr "Tekstialue"
 
 #: src/blocks/form/index.js:26
 #, fuzzy
@@ -2934,9 +3041,10 @@ msgid "Carousel"
 msgstr "Karuselli"
 
 #: src/blocks/gallery-collage/index.js:33
+#, fuzzy
 msgctxt "block name"
 msgid "Collage"
-msgstr ""
+msgstr "Kuvan asetukset"
 
 #: src/blocks/gallery-masonry/index.js:34
 #, fuzzy
@@ -4233,9 +4341,10 @@ msgid "None"
 msgstr "Ei mitään"
 
 #: src/components/crop-settings/index.js:280
+#, fuzzy
 msgctxt "label for horizontal positioning input"
 msgid "Horizontal Pos."
-msgstr ""
+msgstr "Toista vaakasuunnassa"
 
 #: src/components/crop-settings/index.js:288
 msgctxt "label for vertical positioning input"
@@ -4248,19 +4357,19 @@ msgctxt "label for the control that allows zooming in on the image"
 msgid "Image Zoom"
 msgstr "Kuva"
 
-#: src/components/dimensions-control/index.js:408
+#: src/components/dimensions-control/index.js:389
 #, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Pixel"
 msgstr "Kuvapiste"
 
-#: src/components/dimensions-control/index.js:412
+#: src/components/dimensions-control/index.js:393
 #, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Em"
 msgstr "Em"
 
-#: src/components/dimensions-control/index.js:416
+#: src/components/dimensions-control/index.js:397
 #, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Percentage"
@@ -4374,92 +4483,8 @@ msgid "Review CoBlocks on WordPress.org"
 msgstr ""
 
 #: includes/admin/class-coblocks-action-links.php:41
-#: includes/admin/class-coblocks-feedback.php:282
 msgid "Leave a Review"
 msgstr "Jätä arvostelu"
-
-#. translators: %d: Number of years
-#: includes/admin/class-coblocks-feedback.php:92
-#, fuzzy
-msgid "%d years"
-msgstr "%s vuotta"
-
-#: includes/admin/class-coblocks-feedback.php:94
-msgid "a year"
-msgstr "vuosi"
-
-#. translators: %d: Number of weeks
-#: includes/admin/class-coblocks-feedback.php:101
-#, fuzzy
-msgid "%d weeks"
-msgstr "%s viikkoa"
-
-#: includes/admin/class-coblocks-feedback.php:103
-msgid "a week"
-msgstr "viikko"
-
-#. translators: %d: Number of days
-#: includes/admin/class-coblocks-feedback.php:110
-#, fuzzy
-msgid "%d days"
-msgstr "%s päivää"
-
-#: includes/admin/class-coblocks-feedback.php:112
-msgid "a day"
-msgstr "päivä"
-
-#. translators: %d: Number of hours
-#: includes/admin/class-coblocks-feedback.php:119
-#, fuzzy
-msgid "%d hours"
-msgstr "%s tuntia"
-
-#: includes/admin/class-coblocks-feedback.php:121
-msgid "an hour"
-msgstr "tunti"
-
-#. translators: %d: Number of minutes
-#: includes/admin/class-coblocks-feedback.php:128
-#, fuzzy
-msgid "%d minutes"
-msgstr "%s minuuttia"
-
-#: includes/admin/class-coblocks-feedback.php:130
-msgid "a minute"
-msgstr "minuutti"
-
-#. translators: %d: Number of seconds
-#: includes/admin/class-coblocks-feedback.php:137
-#, fuzzy
-msgid "%d seconds"
-msgstr "%s sekuntia"
-
-#: includes/admin/class-coblocks-feedback.php:139
-msgid "a second"
-msgstr "sekunti"
-
-#. translators: %s: Plugin Name
-#: includes/admin/class-coblocks-feedback.php:271
-msgid "%s WordPress Plugin"
-msgstr "%s WordPress -laajennus"
-
-#. translators: %s: Plugin Name
-#: includes/admin/class-coblocks-feedback.php:275
-msgid "Are you enjoying %s?"
-msgstr "Onko %s mieleesi?"
-
-#. translators: %s: Plugin Name, 2. Time which the plugin has been in use for
-#: includes/admin/class-coblocks-feedback.php:278
-msgid ""
-"You have been using %1$s for %2$s now. Mind leaving a review to let us know "
-"know what you think? We'd really appreciate it!"
-msgstr ""
-"Olet nyt käyttänyt tätä tuotetta (%1$s) %2$s ajan. Voisitko jättää meille "
-"mielipiteesi siitä? Arvostaisimme tätä kovasti!"
-
-#: includes/admin/class-coblocks-feedback.php:283
-msgid "No thanks / I already have"
-msgstr "Ei kiitos / olen jo tehnyt tämän"
 
 #: includes/admin/class-coblocks-getting-started-page.php:121
 msgid ""
@@ -4542,31 +4567,43 @@ msgstr "Googlen reCAPTCHA-sivustoavain lomakkeiden roskapostisuojaukseen"
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr "Googlen salainen reCAPTCHA-avain lomakkeiden roskapostisuojaukseen"
 
-#: includes/class-coblocks-form.php:244
+#: includes/class-coblocks-form.php:268
 msgid "Name"
 msgstr "Nimi"
 
-#: includes/class-coblocks-form.php:248
+#: includes/class-coblocks-form.php:272
 msgid "First"
 msgstr "Etunimi"
 
-#: includes/class-coblocks-form.php:249
+#: includes/class-coblocks-form.php:273
 msgid "Last"
 msgstr "Sukunimi"
 
-#: includes/class-coblocks-form.php:325
+#: includes/class-coblocks-form.php:349
 msgid "Message"
 msgstr "Viesti"
 
-#: includes/class-coblocks-form.php:390
+#: includes/class-coblocks-form.php:387
+msgid "Date"
+msgstr ""
+
+#: includes/class-coblocks-form.php:415
+msgid "Phone"
+msgstr ""
+
+#: includes/class-coblocks-form.php:451
+msgid "Choose one"
+msgstr ""
+
+#: includes/class-coblocks-form.php:522
 msgid "Submit"
 msgstr "Lähetä"
 
-#: includes/class-coblocks-form.php:598
+#: includes/class-coblocks-form.php:730
 msgid "Your message was sent:"
 msgstr "Viestisi lähetettiin:"
 
-#: includes/class-coblocks-google-map-block.php:122
+#: includes/class-coblocks-google-map-block.php:124
 msgid "Google Map API key for map rendering"
 msgstr "Google Maps -palvelun API-avain karttojen muodostukseen"
 
@@ -4577,6 +4614,75 @@ msgstr "Jaa LinkedIn-palvelussa"
 #: src/blocks/social-profiles/index.php:84
 msgid "Linkedin"
 msgstr "LinkedIn"
+
+#~ msgid "An email address field."
+#~ msgstr "Sähköpostiosoitteen kenttä."
+
+#~ msgid "A text field for names."
+#~ msgstr "Tekstikenttä nimiä varten."
+
+#~ msgid "Retrieve your key"
+#~ msgstr "Nouda avaimesi"
+
+#, fuzzy
+#~ msgctxt "block name"
+#~ msgid "Message"
+#~ msgstr "Viesti"
+
+#, fuzzy
+#~ msgid "%d years"
+#~ msgstr "%s vuotta"
+
+#, fuzzy
+#~ msgid "%d weeks"
+#~ msgstr "%s viikkoa"
+
+#~ msgid "a week"
+#~ msgstr "viikko"
+
+#, fuzzy
+#~ msgid "%d days"
+#~ msgstr "%s päivää"
+
+#~ msgid "a day"
+#~ msgstr "päivä"
+
+#, fuzzy
+#~ msgid "%d hours"
+#~ msgstr "%s tuntia"
+
+#~ msgid "an hour"
+#~ msgstr "tunti"
+
+#, fuzzy
+#~ msgid "%d minutes"
+#~ msgstr "%s minuuttia"
+
+#~ msgid "a minute"
+#~ msgstr "minuutti"
+
+#, fuzzy
+#~ msgid "%d seconds"
+#~ msgstr "%s sekuntia"
+
+#~ msgid "a second"
+#~ msgstr "sekunti"
+
+#~ msgid "%s WordPress Plugin"
+#~ msgstr "%s WordPress -laajennus"
+
+#~ msgid "Are you enjoying %s?"
+#~ msgstr "Onko %s mieleesi?"
+
+#~ msgid ""
+#~ "You have been using %1$s for %2$s now. Mind leaving a review to let us "
+#~ "know know what you think? We'd really appreciate it!"
+#~ msgstr ""
+#~ "Olet nyt käyttänyt tätä tuotetta (%1$s) %2$s ajan. Voisitko jättää meille "
+#~ "mielipiteesi siitä? Arvostaisimme tätä kovasti!"
+
+#~ msgid "No thanks / I already have"
+#~ msgstr "Ei kiitos / olen jo tehnyt tämän"
 
 #~ msgid "Alert Type"
 #~ msgstr "Hälytystyyppi"

@@ -33,6 +33,11 @@
 		margin-left: 5px;
 	}
 
+	.coblocks-radio-label + *:not(.coblocks-radio-label),
+	.coblocks-radio-label + .coblocks-field.verify + .coblocks-form__submit {
+		margin-top: 1.25rem;
+	}
+
 	.coblocks-form__inline-fields {
 		align-items: center;
 		display: flex;

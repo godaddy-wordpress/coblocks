@@ -24,7 +24,7 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	title: _x( 'Form', 'block name' ),
-	description: __( 'Add a simple form to your page.' ),
+	description: __( 'Add a contact form to your page.' ),
 	icon,
 	keywords: [ _x( 'email', 'block keyword' ), _x( 'about', 'block keyword' ), _x( 'contact', 'block keyword' ) ],
 	supports: {

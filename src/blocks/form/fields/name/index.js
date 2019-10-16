@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import edit from './edit';
-import icons from '../../icons';
+import icon from './icon';
 import metadata from './block.json';
 
 /**
@@ -17,13 +17,13 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	title: _x( 'Name', 'block name' ),
-	description: __( 'A text field for names.' ),
-	icon: icons.textarea,
+	description: __( 'A text field for collecting the first and last names.' ),
+	icon,
 	keywords: [ _x( 'first name', 'block keyword' ), _x( 'last name', 'block keyword' ), 'email' ],
+	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,
 		html: false,
-		inserter: false,
 	},
 	attributes,
 	edit,
