@@ -644,7 +644,7 @@ class CoBlocks_Form {
 		 * @param array   $_POST   Submitted form data.
 		 * @param integer $post_id Current post ID.
 		 */
-		$shortcode_email = (array) apply_filters( 'coblocks_form_shortcode_email', $_POST['field-email']['value'], $_POST, $post_id	);
+		$shortcode_email = (array) apply_filters( 'coblocks_form_shortcode_email', $_POST['field-email']['value'], $_POST, $post_id );
 
 		/**
 		 * Filter subject name shortcodes.
@@ -698,11 +698,11 @@ class CoBlocks_Form {
 			$post_id
 		);
 
-		$shortCodeRegex = "/\[(.*?)\]/i";
-		if ( preg_match_all($shortCodeRegex, $subject, $matches_out)) {
-			foreach ($matches_out[0] as &$value ) {
-				if (strtolower(str_replace(' ', '', $value)) === '[email]') $subject = str_replace($value, $shortcode_email[0], $subject );
-				if (strtolower(str_replace(' ', '', $value)) === '[name]') $subject = str_replace($value, $shortcode_name[0], $subject );
+		$short_code_regex = '/\[(.*?)\]/i';
+		if ( preg_match_all( $shortCodeRegex, $subject, $matches_out ) ) {
+			foreach ( $matches_out[ 0 ] as &$value ) {
+				if ( strtolower(str_replace(' ', '', $value)) === '[email]' ) $subject = str_replace($value, $shortcode_email[ 0 ], $subject );
+				if ( strtolower(str_replace(' ', '', $value)) === '[name]' ) $subject = str_replace($value, $shortcode_name[ 0 ], $subject );
 			}
 		}
 
