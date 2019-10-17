@@ -13,7 +13,6 @@ import { Component, Fragment } from '@wordpress/element';
 import { InspectorControls, InspectorAdvancedControls } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl, BaseControl } from '@wordpress/components';
 
-const carouselMax = 1000;
 const carouselMin = 200;
 
 /**
@@ -125,17 +124,11 @@ class Inspector extends Component {
 											this.setHeightTo( carouselMin );
 											return;
 										}
-										if ( ( inputValue > carouselMax ) && inputValue !== undefined ) {
-											this.setTemporayInput( inputValue );
-											this.setHeightTo( carouselMax );
-											return;
-										}
 										this.setTemporayInput( null );
 										this.setHeightTo( inputValue );
 									} }
 									value={ temporaryInput || height }
 									min={ carouselMin }
-									max={ carouselMax }
 									step="10"
 								/>
 							</BaseControl>
