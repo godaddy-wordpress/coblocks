@@ -47,15 +47,19 @@ class EventItem extends Component {
 		// Here we are checking whether the ordering of items has been changed, in order to put proper item on its page
 		const prevInnerBlocksSorted = cloneDeep( prevProps.innerBlocks );
 		const currentInnerBlockSorted = cloneDeep( this.props.innerBlocks );
+
 		prevInnerBlocksSorted.sort( function( a, b ) {
 			return a.clientId.localeCompare( b.clientId );
 		} );
+
 		currentInnerBlockSorted.sort( function( a, b ) {
 			return a.clientId.localeCompare( b.clientId );
 		} );
+
 		// The purpose of sameSorted check is that we check if content of the items has been changed
 		const sameSorted = JSON.stringify( prevInnerBlocksSorted ) === JSON.stringify( currentInnerBlockSorted );
 		const sameUnsorted = JSON.stringify( prevProps.innerBlocks ) === JSON.stringify( this.props.innerBlocks );
+
 		// Only if the content of the events is the same, and the ordering is different, then we can go through each item
 		// to find its place on the page.
 		if ( sameSorted && ! sameUnsorted ) {
