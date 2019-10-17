@@ -4,7 +4,7 @@
 import './styles/editor.scss';
 import './styles/style.scss';
 
-import icons from './icons';
+import icons from '../icons';
 import edit from './edit';
 import save from './save';
 
@@ -88,6 +88,7 @@ const attributes = {
 const settings = {
 	title,
 	description: __( 'A event item within the events block.' ),
+	icon,
 	keywords,
 	attributes,
 	supports: {
@@ -101,4 +102,4 @@ const settings = {
 	save,
 };
 
-export { name, title, icon, settings, category };
+export { name, title, settings, category };

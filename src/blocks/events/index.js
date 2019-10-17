@@ -24,6 +24,7 @@ const icon = icons.events;
 const settings = {
 	title: __( 'Events' ),
 	description: __( 'Add events or display any public calendar.' ),
+	icon,
 	keywords: [ __( 'events' ), __( 'calendar' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
@@ -32,4 +33,4 @@ const settings = {
 	save,
 };
 
-export { metadata, name, category, icon, settings };
+export { metadata, name, category, settings };
