@@ -3,14 +3,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CoBlocks 1.15.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"POT-Creation-Date: 2019-10-16T16:11:33+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-10-16T16:33:01+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
 
@@ -24,38 +23,48 @@ msgstr "アコーディオンアイテムはデフォルトで開いています
 
 #: src/blocks/accordion/accordion-item/inspector.js:34
 msgid "Toggle to set this accordion item to be open by default."
-msgstr ""
-"切り替えると、このアコーディオンアイテムをデフォルトで開くように設定します。"
+msgstr "切り替えると、このアコーディオンアイテムをデフォルトで開くように設定します。"
 
 #: src/blocks/accordion/accordion-item/inspector.js:63
 msgid "Accordion Item Settings"
 msgstr "アコーディオンアイテム設定"
 
 #: src/blocks/accordion/accordion-item/inspector.js:72
-#: src/blocks/alert/inspector.js:49 src/blocks/author/inspector.js:50
+#: src/blocks/alert/inspector.js:49
+#: src/blocks/author/inspector.js:50
 #: src/blocks/click-to-tweet/inspector.js:60
 #: src/blocks/dynamic-separator/inspector.js:60
 #: src/blocks/features/feature/inspector.js:92
-#: src/blocks/features/inspector.js:173 src/blocks/form/submit-button.js:118
-#: src/blocks/hero/inspector.js:137 src/blocks/highlight/inspector.js:43
-#: src/blocks/icon/inspector.js:302 src/blocks/media-card/inspector.js:132
+#: src/blocks/features/inspector.js:173
+#: src/blocks/form/submit-button.js:118
+#: src/blocks/hero/inspector.js:137
+#: src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:302
+#: src/blocks/media-card/inspector.js:132
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
-#: src/blocks/row/column/inspector.js:165 src/blocks/row/inspector.js:211
-#: src/blocks/shape-divider/inspector.js:92 src/blocks/share/inspector.js:200
+#: src/blocks/row/column/inspector.js:165
+#: src/blocks/row/inspector.js:211
+#: src/blocks/shape-divider/inspector.js:92
+#: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:206
 #: src/extensions/colors/index.js:59
 msgid "Color Settings"
 msgstr "色設定"
 
 #: src/blocks/accordion/accordion-item/inspector.js:78
-#: src/blocks/alert/inspector.js:55 src/blocks/author/inspector.js:56
+#: src/blocks/alert/inspector.js:55
+#: src/blocks/author/inspector.js:56
 #: src/blocks/features/feature/inspector.js:110
-#: src/blocks/features/inspector.js:191 src/blocks/hero/inspector.js:150
-#: src/blocks/highlight/inspector.js:49 src/blocks/icon/inspector.js:326
+#: src/blocks/features/inspector.js:191
+#: src/blocks/hero/inspector.js:150
+#: src/blocks/highlight/inspector.js:49
+#: src/blocks/icon/inspector.js:326
 #: src/blocks/media-card/inspector.js:146
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
-#: src/blocks/row/column/inspector.js:171 src/blocks/row/inspector.js:227
-#: src/blocks/shape-divider/inspector.js:103 src/blocks/share/inspector.js:99
+#: src/blocks/row/column/inspector.js:171
+#: src/blocks/row/inspector.js:227
+#: src/blocks/shape-divider/inspector.js:103
+#: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:103
 #: src/extensions/colors/index.js:47
 msgid "Background Color"
@@ -79,75 +88,65 @@ msgstr "Internet Explorerサポート"
 
 #: src/blocks/accordion/inspector.js:31
 msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
-msgstr ""
-"JavaScriptのポリフィルを読み込んで、Internet Explorerへのサポートを追加しま"
-"す。"
+msgstr "JavaScriptのポリフィルを読み込んで、Internet Explorerへのサポートを追加します。"
 
 #: src/blocks/accordion/inspector.js:31
-msgid ""
-"Supporting Internet Explorer by loading a JavaScript polyfill on this page."
-msgstr ""
-"このページにJavaScriptのポリフィルを読み込んで、Internet Explorerをサポートし"
-"ます。"
+msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgstr "このページにJavaScriptのポリフィルを読み込んで、Internet Explorerをサポートします。"
 
 #: src/blocks/alert/index.js:29
-#, fuzzy
 msgid "Provide contextual feedback messages or notices."
-msgstr "文脈にそったフィードバックのメッセージを表示します。"
+msgstr "Provide contextual feedback messages or notices."
 
 #: src/blocks/alert/index.js:45
 msgid "This is an alert block"
-msgstr ""
+msgstr "This is an alert block"
 
 #: src/blocks/alert/index.js:46
-msgid ""
-"An alert is a message that displays outside the flow of typical content. "
-"Alerts provide contextual feedback, typically asking readers to take an "
-"action."
-msgstr ""
+msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
+msgstr "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
 
-#: src/blocks/alert/inspector.js:60 src/blocks/author/inspector.js:61
+#: src/blocks/alert/inspector.js:60
+#: src/blocks/author/inspector.js:61
 #: src/blocks/click-to-tweet/inspector.js:66
 #: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:195 src/blocks/hero/inspector.js:155
+#: src/blocks/features/inspector.js:195
+#: src/blocks/hero/inspector.js:155
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
-#: src/blocks/row/column/inspector.js:176 src/blocks/row/inspector.js:232
-#: src/blocks/share/inspector.js:66 src/blocks/social-profiles/inspector.js:95
+#: src/blocks/row/column/inspector.js:176
+#: src/blocks/row/inspector.js:232
+#: src/blocks/share/inspector.js:66
+#: src/blocks/social-profiles/inspector.js:95
 #: src/extensions/colors/index.js:54
 msgid "Text Color"
 msgstr "テキスト色"
 
 #: src/blocks/author/controls.js:36
-#, fuzzy
 msgid "Edit avatar"
-msgstr "ギャラリーを編集"
+msgstr "Edit avatar"
 
 #. placeholder text used for the author name
 #: src/blocks/author/edit.js:127
-#, fuzzy
 msgid "Write author name…"
-msgstr "キャプションを入力..."
+msgstr "Write author name…"
 
 #. placeholder text used for the biography
 #: src/blocks/author/edit.js:141
-msgid ""
-"Write a biography that distills objective credibility and authority to your "
-"readers…"
-msgstr ""
+msgid "Write a biography that distills objective credibility and authority to your readers…"
+msgstr "Write a biography that distills objective credibility and authority to your readers…"
 
 #: src/blocks/author/index.js:29
 msgid "Add an author biography to build credibility and authority."
-msgstr ""
+msgstr "Add an author biography to build credibility and authority."
 
 #: src/blocks/author/index.js:35
 msgid "Born to express, not to impress. A maker making the world I want."
-msgstr ""
+msgstr "Born to express, not to impress. A maker making the world I want."
 
 #: src/blocks/author/inspector.js:41
-#, fuzzy
 msgid "Author Settings"
-msgstr "フォーム設定"
+msgstr "Author Settings"
 
 #: src/blocks/buttons/index.js:29
 msgid "Prompt visitors to take action with multiple buttons, side by side."
@@ -177,7 +176,6 @@ msgstr "ユーザー名"
 msgid "Add button..."
 msgstr "ボタンを追加..."
 
-# the text of the click to tweet element
 #. the text of the click to tweet element
 #: src/blocks/click-to-tweet/edit.js:82
 msgid "Add a quote to tweet..."
@@ -188,10 +186,8 @@ msgid "Add a quote for readers to tweet via Twitter."
 msgstr "Twitterのツイートに引用を追加します。"
 
 #: src/blocks/click-to-tweet/index.js:34
-msgid ""
-"The easiest way to promote and advertise your blog, website, and business on "
-"Twitter."
-msgstr ""
+msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
+msgstr "The easiest way to promote and advertise your blog, website, and business on Twitter."
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
@@ -199,7 +195,8 @@ msgid "Text Settings"
 msgstr "テキスト設定"
 
 #: src/blocks/click-to-tweet/inspector.js:71
-#: src/blocks/form/submit-button.js:127 src/blocks/share/inspector.js:86
+#: src/blocks/form/submit-button.js:127
+#: src/blocks/share/inspector.js:86
 #: src/blocks/social-profiles/inspector.js:90
 msgid "Button Color"
 msgstr "ボタン色"
@@ -210,7 +207,8 @@ msgstr "サイズ調整のできるスペーサーをブロック間に追加し
 
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:100
-#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
+#: src/blocks/hero/inspector.js:108
+#: src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr "高さ（ピクセル）"
 
@@ -222,11 +220,11 @@ msgstr "ピクセルで表した動的区切り要素の高さです。"
 msgid "Color"
 msgstr "色"
 
-#: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
+#: src/blocks/features/edit.js:78
+#: src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
-#, fuzzy
 msgid "Add as background"
-msgstr "背景として追加"
+msgstr "Add as background"
 
 #: src/blocks/features/feature/index.js:29
 msgid "A singular child column within a parent features block."
@@ -237,9 +235,12 @@ msgid "Feature Settings"
 msgstr "特集設定"
 
 #: src/blocks/features/feature/inspector.js:71
-#: src/blocks/features/inspector.js:143 src/blocks/hero/inspector.js:84
-#: src/blocks/icon/inspector.js:217 src/blocks/media-card/inspector.js:62
-#: src/blocks/row/column/inspector.js:133 src/blocks/row/inspector.js:180
+#: src/blocks/features/inspector.js:143
+#: src/blocks/hero/inspector.js:84
+#: src/blocks/icon/inspector.js:217
+#: src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:133
+#: src/blocks/row/inspector.js:180
 #: src/components/background/panel.js:146
 msgid "Padding"
 msgstr "パディング"
@@ -248,7 +249,8 @@ msgstr "パディング"
 msgid "Add up to three columns of small notes for your product or service."
 msgstr "商品やサービスの短いメモを最大3カラムまで追加できます。"
 
-#: src/blocks/features/inspector.js:122 src/blocks/row/column/inspector.js:111
+#: src/blocks/features/inspector.js:122
+#: src/blocks/row/column/inspector.js:111
 #: src/blocks/row/inspector.js:157
 #: src/components/dimensions-control/index.js:295
 msgid "Margin"
@@ -257,33 +259,41 @@ msgstr "マージン"
 #: src/blocks/features/inspector.js:164
 #: src/blocks/gallery-carousel/inspector.js:84
 #: src/blocks/gallery-collage/inspector.js:108
-#: src/blocks/gallery-stacked/inspector.js:91 src/blocks/row/inspector.js:202
+#: src/blocks/gallery-stacked/inspector.js:91
+#: src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
 msgid "Gutter"
 msgstr "ガター"
 
-#: src/blocks/features/inspector.js:167 src/blocks/row/inspector.js:205
+#: src/blocks/features/inspector.js:167
+#: src/blocks/row/inspector.js:205
 msgid "Space between each column."
 msgstr "カラム間の余白です。"
 
-#: src/blocks/features/inspector.js:86 src/blocks/icon/icon-size-select.js:16
-#: src/blocks/row/inspector.js:99 src/blocks/share/inspector.js:72
+#: src/blocks/features/inspector.js:86
+#: src/blocks/icon/icon-size-select.js:16
+#: src/blocks/row/inspector.js:99
+#: src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:76
 #: src/components/dimensions-control/dimensions-select.js:15
 #: src/components/size-control/index.js:116
 msgid "Small"
 msgstr "小"
 
-#: src/blocks/features/inspector.js:87 src/blocks/icon/icon-size-select.js:21
-#: src/blocks/row/inspector.js:100 src/blocks/share/inspector.js:73
+#: src/blocks/features/inspector.js:87
+#: src/blocks/icon/icon-size-select.js:21
+#: src/blocks/row/inspector.js:100
+#: src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:77
 #: src/components/dimensions-control/dimensions-select.js:20
 #: src/components/size-control/index.js:120
 msgid "Medium"
 msgstr "中"
 
-#: src/blocks/features/inspector.js:88 src/blocks/icon/icon-size-select.js:26
-#: src/blocks/row/inspector.js:101 src/blocks/share/inspector.js:74
+#: src/blocks/features/inspector.js:88
+#: src/blocks/icon/icon-size-select.js:26
+#: src/blocks/row/inspector.js:101
+#: src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:25
 #: src/components/size-control/index.js:65
@@ -294,8 +304,10 @@ msgstr "大"
 msgid "Features Settings"
 msgstr "特集設定"
 
-#: src/blocks/features/inspector.js:96 src/blocks/post-carousel/inspector.js:70
-#: src/blocks/posts/inspector.js:110 src/blocks/services/inspector.js:69
+#: src/blocks/features/inspector.js:96
+#: src/blocks/post-carousel/inspector.js:70
+#: src/blocks/posts/inspector.js:110
+#: src/blocks/services/inspector.js:69
 msgid "Columns"
 msgstr "カラム"
 
@@ -328,7 +340,7 @@ msgstr "タイトルを追加..."
 #: src/blocks/food-and-drinks/food-item/inspector.js:45
 #: src/blocks/food-and-drinks/food-item/save.js:66
 msgid "Popular"
-msgstr ""
+msgstr "Popular"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:256
 #: src/blocks/food-and-drinks/food-item/inspector.js:60
@@ -419,19 +431,22 @@ msgid "Image Settings"
 msgstr "画像設定"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:84
-#: src/blocks/gif/inspector.js:31 src/blocks/media-card/inspector.js:95
+#: src/blocks/gif/inspector.js:31
+#: src/blocks/media-card/inspector.js:95
 #: src/blocks/services/service/inspector.js:33
 msgid "Alt Text (Alternative Text)"
 msgstr "altテキスト（代替テキスト）"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:90
-#: src/blocks/gif/inspector.js:37 src/blocks/media-card/inspector.js:101
+#: src/blocks/gif/inspector.js:37
+#: src/blocks/media-card/inspector.js:101
 #: src/blocks/services/service/inspector.js:39
 msgid "Describe the purpose of the image"
 msgstr "画像の目的を説明"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:92
-#: src/blocks/gif/inspector.js:39 src/blocks/media-card/inspector.js:103
+#: src/blocks/gif/inspector.js:39
+#: src/blocks/media-card/inspector.js:103
 #: src/blocks/services/service/inspector.js:41
 msgid "Leave empty if the image is purely decorative."
 msgstr "画像の目的が装飾のみの場合は空にします。"
@@ -446,8 +461,10 @@ msgstr "フォーカルポイント"
 msgid "Display a menu or price list."
 msgstr "メニューや価格表を表示します。"
 
-#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
-#: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
+#: src/blocks/food-and-drinks/inspector.js:26
+#: src/blocks/map/inspector.js:107
+#: src/blocks/posts/inspector.js:187
+#: src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
 msgid "Styles"
 msgstr "スタイル"
@@ -539,37 +556,37 @@ msgstr "サイトキー"
 msgid "Secret Key"
 msgstr "秘密キー"
 
-#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
+#: src/blocks/form/edit.js:330
+#: src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr "保存中"
 
-#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
+#: src/blocks/form/edit.js:330
+#: src/blocks/map/inspector.js:231
 msgid "Save"
-msgstr "保存"
+msgstr "Save"
 
-#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
+#: src/blocks/form/edit.js:345
+#: src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr "削除"
 
 #: src/blocks/form/fields/coblocks-option.js:61
-#, fuzzy
 msgid "Write option…"
-msgstr "キャプションを入力..."
+msgstr "Write option…"
 
 #: src/blocks/form/fields/coblocks-option.js:70
-#, fuzzy
 msgid "Remove Option"
-msgstr "削除 "
+msgstr "Remove Option"
 
 #: src/blocks/form/fields/date/index.js:21
 msgid "A field for requesting date selections with a date picker."
-msgstr ""
+msgstr "A field for requesting date selections with a date picker."
 
 #: src/blocks/form/fields/email/index.js:20
-#, fuzzy
 msgid "A field for collecting a validated email address."
-msgstr "%sは有効なメールアドレスではありません。"
+msgstr "A field for collecting a validated email address."
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
@@ -581,9 +598,8 @@ msgid "Required"
 msgstr "必須"
 
 #: src/blocks/form/fields/multi-field.js:102
-#, fuzzy
 msgid "Add Option"
-msgstr "説明を追加..."
+msgstr "Add Option"
 
 #: src/blocks/form/fields/name/edit.js:69
 msgid "Name Field Settings"
@@ -602,31 +618,28 @@ msgid "Toggle to add a last name field."
 msgstr "切り替えると、姓のフィールドを追加します。"
 
 #: src/blocks/form/fields/name/index.js:20
-#, fuzzy
 msgid "A text field for collecting the first and last names."
-msgstr "姓と名のフィールドを両方表示しています。"
+msgstr "A text field for collecting the first and last names."
 
 #: src/blocks/form/fields/phone/index.js:21
 msgid "A phone number to allow visitors to give you a phone number."
-msgstr ""
+msgstr "A phone number to allow visitors to give you a phone number."
 
 #: src/blocks/form/fields/radio/index.js:21
 msgid "A field with multiple options where only one choice can be made."
-msgstr ""
+msgstr "A field with multiple options where only one choice can be made."
 
 #: src/blocks/form/fields/textarea/index.js:20
 msgid "A text box for longer responses."
 msgstr "長い応答のためのテキストボックスです。"
 
 #: src/blocks/form/index.js:27
-#, fuzzy
 msgid "Add a contact form to your page."
-msgstr "ページに簡易フォームを追加します。"
+msgstr "Add a contact form to your page."
 
 #: src/blocks/form/index.js:36
-#, fuzzy
 msgid "Subject example"
-msgstr "件名"
+msgstr "Subject example"
 
 #: src/blocks/form/submit-button.js:107
 msgid "Add text…"
@@ -646,7 +659,6 @@ msgstr "ギャラリーを編集"
 msgid "Carousel"
 msgstr "カルーセル"
 
-# %1$d is the order number of the image, %2$d is the total number of images.
 #. %1$d is the order number of the image, %2$d is the total number of images.
 #: src/blocks/gallery-carousel/edit.js:310
 #: src/blocks/gallery-masonry/edit.js:219
@@ -654,7 +666,8 @@ msgstr "カルーセル"
 msgid "image %1$d of %2$d in gallery"
 msgstr "ギャラリーの画像%1$d/%2$d"
 
-#: src/blocks/gallery-carousel/edit.js:376 src/blocks/gif/edit.js:243
+#: src/blocks/gallery-carousel/edit.js:376
+#: src/blocks/gif/edit.js:243
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:230
 msgid "Write caption…"
@@ -665,71 +678,65 @@ msgid "Display multiple images in a beautiful carousel gallery."
 msgstr "複数の画像を美しいカルーセルギャラリーで表示します。"
 
 #: src/blocks/gallery-carousel/inspector.js:109
-#, fuzzy
 msgid "Thumbnails"
-msgstr "カラムサイズ"
+msgstr "Thumbnails"
 
 #: src/blocks/gallery-carousel/inspector.js:119
-#, fuzzy
 msgid "Responsive Height"
-msgstr "行の高さ"
+msgstr "Responsive Height"
 
 #: src/blocks/gallery-carousel/inspector.js:40
-#, fuzzy
 msgid "Showing thumbnail navigation."
-msgstr "ドットナビゲーションの矢印を表示しています。"
+msgstr "Showing thumbnail navigation."
 
 #: src/blocks/gallery-carousel/inspector.js:40
-#, fuzzy
 msgid "Toggle to show thumbnails."
-msgstr "切り替えると、メディアにキャプションを表示します。"
+msgstr "Toggle to show thumbnails."
 
 #: src/blocks/gallery-carousel/inspector.js:44
 msgid "Percentage based height is activated."
-msgstr ""
+msgstr "Percentage based height is activated."
 
 #: src/blocks/gallery-carousel/inspector.js:44
-#, fuzzy
 msgid "Toggle for percentage based height."
-msgstr "切り替えると、マップの調整オプションを有効にします。"
+msgstr "Toggle for percentage based height."
 
 #: src/blocks/gallery-carousel/inspector.js:68
-#, fuzzy
 msgid "Carousel Settings"
-msgstr "色設定"
+msgstr "Carousel Settings"
 
-#: src/blocks/gallery-carousel/inspector.js:71 src/blocks/icon/inspector.js:173
+#: src/blocks/gallery-carousel/inspector.js:71
+#: src/blocks/icon/inspector.js:173
 #: src/components/typography-controls/index.js:189
 msgid "Size"
 msgstr "サイズ"
 
 #: src/blocks/gallery-carousel/inspector.js:90
 #: src/blocks/gallery-masonry/inspector.js:83
-#: src/blocks/gallery-stacked/inspector.js:95 src/blocks/share/inspector.js:120
+#: src/blocks/gallery-stacked/inspector.js:95
+#: src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:124
 #: src/components/background/panel.js:156
 msgid "Rounded Corners"
 msgstr "角丸"
 
-#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
+#: src/blocks/gallery-collage/edit.js:174
+#: src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr "適用"
 
 #: src/blocks/gallery-collage/edit.js:183
-#, fuzzy
 msgid "Write caption..."
-msgstr "説明を入力..."
+msgstr "Write caption..."
 
 #: src/blocks/gallery-collage/index.js:34
-#, fuzzy
 msgid "Assemble images into a beautiful collage gallery."
-msgstr "複数の画像を美しいカルーセルギャラリーで表示します。"
+msgstr "Assemble images into a beautiful collage gallery."
 
 #: src/blocks/gallery-collage/inspector.js:105
-#, fuzzy
 msgid "Collage Settings"
-msgstr "画像設定"
+msgstr "Collage Settings"
 
 #: src/blocks/gallery-collage/inspector.js:128
 msgid "Shadow"
@@ -769,18 +776,16 @@ msgstr "複数の画像を整頓されたMasonryギャラリーで表示しま�
 #: src/blocks/gallery-masonry/inspector.js:53
 #: src/blocks/gallery-stacked/inspector.js:56
 msgid "Image lightbox is enabled."
-msgstr ""
+msgstr "Image lightbox is enabled."
 
 #: src/blocks/gallery-masonry/inspector.js:53
 #: src/blocks/gallery-stacked/inspector.js:56
-#, fuzzy
 msgid "Toggle to enable the image lightbox."
-msgstr "切り替えると、マップの調整オプションを有効にします。"
+msgstr "Toggle to enable the image lightbox."
 
 #: src/blocks/gallery-masonry/inspector.js:73
-#, fuzzy
 msgid "Masonry Settings"
-msgstr "マップ設定"
+msgstr "Masonry Settings"
 
 #: src/blocks/gallery-masonry/inspector.js:76
 msgid "Column Size"
@@ -792,9 +797,8 @@ msgstr "ギャラリーアイテムに角丸を追加します。"
 
 #: src/blocks/gallery-masonry/inspector.js:92
 #: src/blocks/gallery-stacked/inspector.js:123
-#, fuzzy
 msgid "Lightbox"
-msgstr "ライト"
+msgstr "Lightbox"
 
 #: src/blocks/gallery-stacked/edit.js:168
 msgid "Stacked"
@@ -813,14 +817,12 @@ msgid "Fullwidth images are enabled."
 msgstr "全幅画像が有効です。"
 
 #: src/blocks/gallery-stacked/inspector.js:48
-msgid ""
-"Toggle to fill the available gallery area with completely fullwidth images."
+msgid "Toggle to fill the available gallery area with completely fullwidth images."
 msgstr "切り替えると、ギャラリーエリアを全幅画像で埋めます。"
 
 #: src/blocks/gallery-stacked/inspector.js:80
-#, fuzzy
 msgid "Stacked Settings"
-msgstr "アイテム設定"
+msgstr "Stacked Settings"
 
 #: src/blocks/gallery-stacked/inspector.js:83
 msgid "Fullwidth Images"
@@ -874,11 +876,13 @@ msgstr "GitHubファイル"
 msgid "File"
 msgstr "ファイル"
 
-#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
+#: src/blocks/gist/deprecated.js:36
+#: src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr "GitHubでこのGistを表示"
 
-#: src/blocks/gist/edit.js:124 src/blocks/gist/inspector.js:51
+#: src/blocks/gist/edit.js:124
+#: src/blocks/gist/inspector.js:51
 msgid "Gist URL"
 msgstr "Gist URL"
 
@@ -891,9 +895,8 @@ msgid "Loading Gist"
 msgstr "Gistを読み込んでいます"
 
 #: src/blocks/gist/index.js:29
-#, fuzzy
 msgid "Embed GitHub gists by adding a gist link."
-msgstr "Gistのリンクを追加してGitHub Gistを埋め込みます。"
+msgstr "Embed GitHub gists by adding a gist link."
 
 #: src/blocks/gist/inspector.js:31
 msgid "Showing gist meta data."
@@ -920,14 +923,11 @@ msgid "Change layout"
 msgstr "レイアウトを変更"
 
 #: src/blocks/hero/edit.js:152
-#, fuzzy
 msgid "Add background to hero"
-msgstr "%sに背景を追加"
+msgstr "Add background to hero"
 
 #: src/blocks/hero/index.js:41
-msgid ""
-"An introductory area of a page accompanied by a small amount of text and a "
-"call to action."
+msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
 msgstr "短いテキストとCTAを含む、ページの導入エリアです。"
 
 #: src/blocks/hero/inspector.js:127
@@ -938,8 +938,10 @@ msgstr "コンテンツの幅（ピクセル）"
 msgid "Hero Settings"
 msgstr "ヒーロー設定"
 
-#: src/blocks/hero/inspector.js:85 src/blocks/media-card/inspector.js:63
-#: src/blocks/row/column/inspector.js:134 src/blocks/row/inspector.js:181
+#: src/blocks/hero/inspector.js:85
+#: src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:134
+#: src/blocks/row/inspector.js:181
 msgid "Space inside of the container."
 msgstr "コンテナ内のスペースです。"
 
@@ -985,35 +987,35 @@ msgstr "ハイライト表示のテキストを追加..."
 
 #: src/blocks/highlight/index.js:28
 msgid "Draw attention and emphasize important narrative."
-msgstr ""
+msgstr "Draw attention and emphasize important narrative."
 
 #: src/blocks/highlight/index.js:33
-msgid ""
-"Add a highlight effect to paragraph text in order to grab attention and "
-"emphasize important narrative."
-msgstr ""
+msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
+msgstr "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
 
-#: src/blocks/icon/icon-size-select.js:30 src/blocks/row/inspector.js:102
+#: src/blocks/icon/icon-size-select.js:30
+#: src/blocks/row/inspector.js:102
 #: src/components/dimensions-control/dimensions-select.js:30
 msgid "Huge"
 msgstr "特大"
 
 #: src/blocks/icon/icon-size-select.js:79
 msgid "Choose icon size preset"
-msgstr ""
+msgstr "Choose icon size preset"
 
 #: src/blocks/icon/index.js:33
 msgid "Add a stylized graphic symbol to communicate something more."
 msgstr "図案化したグラフィックシンボルを追加して分かりやすくします。"
 
-#: src/blocks/icon/inspector.js:155 src/blocks/share/inspector.js:111
+#: src/blocks/icon/inspector.js:155
+#: src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:115
 msgid "Icon Settings"
 msgstr "アイコン設定"
 
 #: src/blocks/icon/inspector.js:168
 msgid "Reset icon size"
-msgstr ""
+msgstr "Reset icon size"
 
 #: src/blocks/icon/inspector.js:170
 #: src/components/dimensions-control/index.js:470
@@ -1022,12 +1024,10 @@ msgid "Reset"
 msgstr "リセット"
 
 #: src/blocks/icon/inspector.js:198
-#, fuzzy
 msgid "Apply custom size"
-msgstr "%sのカスタムサイズ"
+msgstr "Apply custom size"
 
 #: src/blocks/icon/inspector.js:201
-#, fuzzy
 msgid "Custom"
 msgstr "カスタム"
 
@@ -1065,7 +1065,8 @@ msgstr "新しいタブで開いています"
 msgid "Open in New Tab"
 msgstr "新しいタブで開く"
 
-#: src/blocks/icon/inspector.js:309 src/blocks/share/inspector.js:104
+#: src/blocks/icon/inspector.js:309
+#: src/blocks/share/inspector.js:104
 #: src/blocks/social-profiles/inspector.js:108
 msgid "Icon Color"
 msgstr "アイコン色"
@@ -1081,8 +1082,7 @@ msgstr "ロゴ＆バッジ"
 #: src/blocks/logos/edit.js:70
 #: src/components/block-gallery/gallery-placeholder.js:72
 msgid "Drag images, upload new ones or select files from your library."
-msgstr ""
-"画像をドラッグ、新規アップロード、またはライブラリからファイルを選択します。"
+msgstr "画像をドラッグ、新規アップロード、またはライブラリからファイルを選択します。"
 
 #: src/blocks/logos/index.js:27
 msgid "Add logos, badges, or certifications to build credibility."
@@ -1108,7 +1108,8 @@ msgstr "場所を編集"
 msgid "Map style"
 msgstr "マップのスタイル"
 
-#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
+#: src/blocks/map/deprecated.js:96
+#: src/blocks/map/edit.js:293
 #: src/blocks/map/save.js:50
 msgid "Google Map"
 msgstr "Googleマップ"
@@ -1127,12 +1128,11 @@ msgstr "場所または住所を検索..."
 
 #: src/blocks/map/edit.js:320
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: src/blocks/map/index.js:28
-#, fuzzy
 msgid "Add an address or location to drop a pin on a Google map."
-msgstr "住所を追加してGoogleマップにピンを立てます。"
+msgstr "Add an address or location to drop a pin on a Google map."
 
 #: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
@@ -1219,18 +1219,12 @@ msgid "Google Maps API Key"
 msgstr "GoogleマップのAPIキー"
 
 #: src/blocks/map/inspector.js:212
-#, fuzzy
-msgid ""
-"Add a Google Maps API key. Updating this API key will set all your maps to "
-"use the new key."
-msgstr ""
-"GoogleマップのAPIキーを追加します。このAPIキーを更新すると、すべてのマップで"
-"新しいキーが使われます。"
+msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgstr "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
 
 #: src/blocks/map/inspector.js:215
-#, fuzzy
 msgid "Get a key"
-msgstr "キーを生成"
+msgstr "Get a key"
 
 #: src/blocks/map/inspector.js:216
 msgid "Need help?"
@@ -1303,173 +1297,172 @@ msgstr "ドロップしてメディアを置き換える"
 msgid "Edit media"
 msgstr "メディアを編集"
 
-#: src/blocks/post-carousel/edit.js:123 src/blocks/posts/edit.js:247
-#, fuzzy
+#: src/blocks/post-carousel/edit.js:123
+#: src/blocks/posts/edit.js:247
 msgid "Edit RSS URL"
-msgstr "Gist URL"
+msgstr "Edit RSS URL"
 
 #: src/blocks/post-carousel/edit.js:178
-#, fuzzy
 msgid "Post Carousel"
-msgstr "カルーセル"
+msgstr "Post Carousel"
 
-#: src/blocks/post-carousel/edit.js:184 src/blocks/posts/edit.js:295
+#: src/blocks/post-carousel/edit.js:184
+#: src/blocks/posts/edit.js:295
 msgid "No posts found. Start publishing or add posts from an %s feed."
-msgstr ""
+msgstr "No posts found. Start publishing or add posts from an %s feed."
 
-#: src/blocks/post-carousel/edit.js:187 src/blocks/posts/edit.js:298
+#: src/blocks/post-carousel/edit.js:187
+#: src/blocks/posts/edit.js:298
 msgid "Retrieve an External Feed"
-msgstr ""
+msgstr "Retrieve an External Feed"
 
-#: src/blocks/post-carousel/edit.js:193 src/blocks/posts/edit.js:304
+#: src/blocks/post-carousel/edit.js:193
+#: src/blocks/posts/edit.js:304
 msgid "Use External Feed"
-msgstr ""
+msgstr "Use External Feed"
 
 #. %s: RSS
-#: src/blocks/post-carousel/edit.js:216 src/blocks/posts/edit.js:332
+#: src/blocks/post-carousel/edit.js:216
+#: src/blocks/posts/edit.js:332
 msgid "%s Feed"
-msgstr ""
+msgstr "%s Feed"
 
-#: src/blocks/post-carousel/edit.js:217 src/blocks/posts/edit.js:333
+#: src/blocks/post-carousel/edit.js:217
+#: src/blocks/posts/edit.js:333
 msgid "%s URLs are generally located at the /feed/ directory of a site."
-msgstr ""
+msgstr "%s URLs are generally located at the /feed/ directory of a site."
 
-#: src/blocks/post-carousel/edit.js:221 src/blocks/posts/edit.js:337
-#, fuzzy
+#: src/blocks/post-carousel/edit.js:221
+#: src/blocks/posts/edit.js:337
 msgid "https://example.com/feed…"
-msgstr "https://yelp.com/"
+msgstr "https://example.com/feed…"
 
-#: src/blocks/post-carousel/edit.js:227 src/blocks/posts/edit.js:343
-#, fuzzy
+#: src/blocks/post-carousel/edit.js:227
+#: src/blocks/posts/edit.js:343
 msgid "Use URL"
-msgstr "Gist URL"
+msgstr "Use URL"
 
-#: src/blocks/post-carousel/edit.js:320 src/blocks/posts/edit.js:463
-#: src/blocks/post-carousel/index.php:366 src/blocks/posts/index.php:385
+#: src/blocks/post-carousel/edit.js:320
+#: src/blocks/posts/edit.js:463
+#: src/blocks/post-carousel/index.php:366
+#: src/blocks/posts/index.php:385
 msgid "Read more"
-msgstr ""
+msgstr "さらに読む"
 
 #: src/blocks/post-carousel/index.js:27
 msgid "Display posts or an external blog feed as a carousel."
-msgstr ""
+msgstr "Display posts or an external blog feed as a carousel."
 
-#: src/blocks/post-carousel/inspector.js:108 src/blocks/posts/inspector.js:174
+#: src/blocks/post-carousel/inspector.js:108
+#: src/blocks/posts/inspector.js:174
 msgid "Number of posts"
-msgstr ""
+msgstr "Number of posts"
 
 #: src/blocks/post-carousel/inspector.js:38
-#, fuzzy
 msgid "Post Carousel Settings"
-msgstr "色設定"
+msgstr "Post Carousel Settings"
 
-#: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
-#, fuzzy
+#: src/blocks/post-carousel/inspector.js:41
+#: src/blocks/posts/inspector.js:81
 msgid "Post Date"
-msgstr "カルーセル"
+msgstr "Post Date"
 
-#: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
-#, fuzzy
+#: src/blocks/post-carousel/inspector.js:45
+#: src/blocks/posts/inspector.js:85
 msgid "Showing the publish date."
-msgstr "このアイテムの価格を表示しています。"
+msgstr "Showing the publish date."
 
-#: src/blocks/post-carousel/inspector.js:46 src/blocks/posts/inspector.js:86
-#, fuzzy
+#: src/blocks/post-carousel/inspector.js:46
+#: src/blocks/posts/inspector.js:86
 msgid "Toggle to show the publish date."
-msgstr "切り替えると、Gistのメタデータを表示します。"
+msgstr "Toggle to show the publish date."
 
-#: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
-#, fuzzy
+#: src/blocks/post-carousel/inspector.js:51
+#: src/blocks/posts/inspector.js:91
 msgid "Post Content"
-msgstr "カルーセル"
+msgstr "Post Content"
 
-#: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
-#, fuzzy
+#: src/blocks/post-carousel/inspector.js:55
+#: src/blocks/posts/inspector.js:95
 msgid "Showing the post content."
-msgstr "Call to Actionボタンを表示しています。"
+msgstr "Showing the post content."
 
-#: src/blocks/post-carousel/inspector.js:56 src/blocks/posts/inspector.js:96
-#, fuzzy
+#: src/blocks/post-carousel/inspector.js:56
+#: src/blocks/posts/inspector.js:96
 msgid "Toggle to show the post content."
-msgstr "切り替えると、Gistのメタデータを表示します。"
+msgstr "Toggle to show the post content."
 
-#: src/blocks/post-carousel/inspector.js:62 src/blocks/posts/inspector.js:102
+#: src/blocks/post-carousel/inspector.js:62
+#: src/blocks/posts/inspector.js:102
 msgid "Max words in content"
-msgstr ""
+msgstr "Max words in content"
 
-#: src/blocks/post-carousel/inspector.js:86 src/blocks/posts/inspector.js:152
-#, fuzzy
+#: src/blocks/post-carousel/inspector.js:86
+#: src/blocks/posts/inspector.js:152
 msgid "Feed Settings"
-msgstr "特集設定"
+msgstr "Feed Settings"
 
-#: src/blocks/post-carousel/inspector.js:90 src/blocks/posts/inspector.js:156
+#: src/blocks/post-carousel/inspector.js:90
+#: src/blocks/posts/inspector.js:156
 msgid "My Blog"
-msgstr ""
+msgstr "マイブログ"
 
-#: src/blocks/post-carousel/inspector.js:91 src/blocks/posts/inspector.js:157
+#: src/blocks/post-carousel/inspector.js:91
+#: src/blocks/posts/inspector.js:157
 msgid "External Feed"
-msgstr ""
+msgstr "External Feed"
 
 #: src/blocks/posts/edit.js:260
-#, fuzzy
 msgid "Image on left"
-msgstr "左にメディア"
+msgstr "Image on left"
 
 #: src/blocks/posts/edit.js:265
-#, fuzzy
 msgid "Image on right"
-msgstr "右にメディア"
+msgstr "Image on right"
 
 #: src/blocks/posts/edit.js:289
 msgid "Blog Posts"
-msgstr ""
+msgstr "ブログ投稿"
 
 #: src/blocks/posts/index.js:27
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
-msgstr ""
+msgstr "Display posts or an RSS feed as stacked or horizontal cards."
 
 #: src/blocks/posts/inspector.js:129
-#, fuzzy
 msgid "Thumbnail Size"
-msgstr "カラムサイズ"
+msgstr "Thumbnail Size"
 
 #: src/blocks/posts/inspector.js:78
-#, fuzzy
 msgid "Posts Settings"
-msgstr "Gist設定"
+msgstr "Posts Settings"
 
 #: src/blocks/pricing-table/controls.js:17
-#, fuzzy
 msgid "One Pricing Table"
-msgstr "価格表"
+msgstr "One Pricing Table"
 
 #: src/blocks/pricing-table/controls.js:22
-#, fuzzy
 msgid "Two Pricing Tables"
-msgstr "価格表"
+msgstr "Two Pricing Tables"
 
 #: src/blocks/pricing-table/controls.js:27
-#, fuzzy
 msgid "Three Pricing Tables"
-msgstr "価格表"
+msgstr "Three Pricing Tables"
 
 #: src/blocks/pricing-table/controls.js:32
-#, fuzzy
 msgid "Four Pricing Tables"
-msgstr "価格表"
+msgstr "Four Pricing Tables"
 
 #: src/blocks/pricing-table/controls.js:62
-#, fuzzy
 msgid "Change pricing table count"
-msgstr "価格表を追加します。"
+msgstr "Change pricing table count"
 
 #: src/blocks/pricing-table/edit.js:39
-#, fuzzy
 msgid "Plan %d"
-msgstr "プラン%s"
+msgstr "プラン%d"
 
 #: src/blocks/pricing-table/index.js:29
 msgid "Add pricing tables to help visitors compare products and plans."
-msgstr ""
+msgstr "Add pricing tables to help visitors compare products and plans."
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:112
 msgid "Add features"
@@ -1489,12 +1482,11 @@ msgstr "$"
 
 #: src/blocks/pricing-table/pricing-table-item/index.js:27
 msgid "A pricing table to help visitors compare products and plans."
-msgstr ""
+msgstr "A pricing table to help visitors compare products and plans."
 
 #: src/blocks/row/column/edit.js:90
-#, fuzzy
 msgid "Add background to column"
-msgstr "%sに背景を追加"
+msgstr "Add background to column"
 
 #: src/blocks/row/column/index.js:30
 msgid "An immediate child of a row."
@@ -1504,7 +1496,8 @@ msgstr "行のすぐ下に表示されます。"
 msgid "Column Settings"
 msgstr "カラム設定"
 
-#: src/blocks/row/column/inspector.js:112 src/blocks/row/inspector.js:158
+#: src/blocks/row/column/inspector.js:112
+#: src/blocks/row/inspector.js:158
 msgid "Space around the container."
 msgstr "コンテナの周囲の余白です。"
 
@@ -1513,9 +1506,8 @@ msgid "Width"
 msgstr "幅"
 
 #: src/blocks/row/controls.js:74
-#, fuzzy
 msgid "Change row block layout"
-msgstr "レイアウトを変更"
+msgstr "Change row block layout"
 
 #: src/blocks/row/edit.js:121
 msgid "one"
@@ -1534,9 +1526,8 @@ msgid "four"
 msgstr "4"
 
 #: src/blocks/row/edit.js:169
-#, fuzzy
 msgid "Add background to row"
-msgstr "%sに背景を追加"
+msgstr "Add background to row"
 
 #: src/blocks/row/edit.js:174
 msgid "One Column"
@@ -1575,7 +1566,8 @@ msgstr "この行のカラム数を選びます。"
 msgid "Select Row Columns"
 msgstr "行のカラム数を選ぶ"
 
-#: src/blocks/row/edit.js:236 src/blocks/row/inspector.js:121
+#: src/blocks/row/edit.js:236
+#: src/blocks/row/inspector.js:121
 msgid "Select Row Layout"
 msgstr "行のレイアウトを選ぶ"
 
@@ -1584,12 +1576,8 @@ msgid "Back to Columns"
 msgstr "カラムに戻る"
 
 #: src/blocks/row/index.js:38
-msgid ""
-"Add a structured wrapper for column blocks, then add content blocks you’d "
-"like to the columns."
-msgstr ""
-"カラムブロックに構造ラッパーを追加してから、カラムにコンテンツブロックを追加"
-"します。"
+msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
+msgstr "カラムブロックに構造ラッパーを追加してから、カラムにコンテンツブロックを追加します。"
 
 #: src/blocks/row/inspector.js:153
 msgid "Row Settings"
@@ -1603,55 +1591,55 @@ msgstr "なし"
 
 #: src/blocks/row/layouts.js:13
 msgid "Equal Split"
-msgstr ""
+msgstr "Equal Split"
 
 #: src/blocks/row/layouts.js:14
 msgid "Two Thirds / One Third"
-msgstr ""
+msgstr "Two Thirds / One Third"
 
 #: src/blocks/row/layouts.js:15
 msgid "One Third / Two Thirds"
-msgstr ""
+msgstr "One Third / Two Thirds"
 
 #: src/blocks/row/layouts.js:16
 msgid "Three Quarters / Quarter"
-msgstr ""
+msgstr "Three Quarters / Quarter"
 
 #: src/blocks/row/layouts.js:17
 msgid "Quarter / Three Quarters"
-msgstr ""
+msgstr "Quarter / Three Quarters"
 
 #: src/blocks/row/layouts.js:20
 msgid "Thirds"
-msgstr ""
+msgstr "Thirds"
 
 #: src/blocks/row/layouts.js:21
 msgid "Half / Quarter / Quarter"
-msgstr ""
+msgstr "Half / Quarter / Quarter"
 
 #: src/blocks/row/layouts.js:22
 msgid "Quarter / Quarter/ Half"
-msgstr ""
+msgstr "Quarter / Quarter/ Half"
 
 #: src/blocks/row/layouts.js:23
 msgid "Quarter / Half / Quarter"
-msgstr ""
+msgstr "Quarter / Half / Quarter"
 
 #: src/blocks/row/layouts.js:24
 msgid "One Fifth/ Three Fifths / One Fifth"
-msgstr ""
+msgstr "One Fifth/ Three Fifths / One Fifth"
 
 #: src/blocks/row/layouts.js:27
 msgid "Quarters"
-msgstr ""
+msgstr "四半期"
 
 #: src/blocks/row/layouts.js:28
 msgid "Two Fifths / Fifth / Fifth / Fifth"
-msgstr ""
+msgstr "Two Fifths / Fifth / Fifth / Fifth"
 
 #: src/blocks/row/layouts.js:29
 msgid "Fifth / Fifth / Fifth / Two Fifths"
-msgstr ""
+msgstr "Fifth / Fifth / Fifth / Two Fifths"
 
 #: src/blocks/services/edit.js:44
 msgid "Square"
@@ -1733,15 +1721,18 @@ msgstr "背景の高さ（ピクセル）"
 msgid "Shape Color"
 msgstr "シェイプ色"
 
-#: src/blocks/share/edit.js:113 src/blocks/share/index.php:133
+#: src/blocks/share/edit.js:113
+#: src/blocks/share/index.php:133
 msgid "Share on Facebook"
 msgstr "Facebookでシェア"
 
-#: src/blocks/share/edit.js:121 src/blocks/share/index.php:137
+#: src/blocks/share/edit.js:121
+#: src/blocks/share/index.php:137
 msgid "Share on Twitter"
 msgstr "‌‌Twitterでシェア"
 
-#: src/blocks/share/edit.js:129 src/blocks/share/index.php:141
+#: src/blocks/share/edit.js:129
+#: src/blocks/share/index.php:141
 msgid "Share on Pinterest"
 msgstr "Pinterestでシェア"
 
@@ -1749,19 +1740,23 @@ msgstr "Pinterestでシェア"
 msgid "Share on LinkedIn"
 msgstr "LinkedInでシェア"
 
-#: src/blocks/share/edit.js:145 src/blocks/share/index.php:149
+#: src/blocks/share/edit.js:145
+#: src/blocks/share/index.php:149
 msgid "Share via Email"
 msgstr "メールでシェア"
 
-#: src/blocks/share/edit.js:153 src/blocks/share/index.php:153
+#: src/blocks/share/edit.js:153
+#: src/blocks/share/index.php:153
 msgid "Share on Tumblr"
 msgstr "Tumblrでシェア"
 
-#: src/blocks/share/edit.js:161 src/blocks/share/index.php:157
+#: src/blocks/share/edit.js:161
+#: src/blocks/share/index.php:157
 msgid "Share on Google"
 msgstr "Googleでシェア"
 
-#: src/blocks/share/edit.js:169 src/blocks/share/index.php:161
+#: src/blocks/share/edit.js:169
+#: src/blocks/share/index.php:161
 msgid "Share on Reddit"
 msgstr "Redditでシェア"
 
@@ -1793,26 +1788,31 @@ msgstr "ボタンサイズ"
 msgid "Icons"
 msgstr "アイコン"
 
-#: src/blocks/share/inspector.js:157 src/blocks/social-profiles/edit.js:205
+#: src/blocks/share/inspector.js:157
+#: src/blocks/social-profiles/edit.js:205
 #: src/blocks/social-profiles/index.php:72
 msgid "Twitter"
 msgstr "Twitter"
 
-#: src/blocks/share/inspector.js:162 src/blocks/social-profiles/edit.js:159
+#: src/blocks/share/inspector.js:162
+#: src/blocks/social-profiles/edit.js:159
 #: src/blocks/social-profiles/index.php:68
 msgid "Facebook"
 msgstr "Facebook"
 
-#: src/blocks/share/inspector.js:167 src/blocks/social-profiles/edit.js:299
+#: src/blocks/share/inspector.js:167
+#: src/blocks/social-profiles/edit.js:299
 #: src/blocks/social-profiles/index.php:80
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: src/blocks/share/inspector.js:172 src/blocks/social-profiles/edit.js:347
+#: src/blocks/share/inspector.js:172
+#: src/blocks/social-profiles/edit.js:347
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
+#: src/blocks/share/inspector.js:177
+#: includes/class-coblocks-form.php:234
 #: includes/class-coblocks-form.php:321
 msgid "Email"
 msgstr "メールアドレス"
@@ -1829,14 +1829,15 @@ msgstr "Google"
 msgid "Reddit"
 msgstr "Reddit"
 
-#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:36
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:36
 msgid "Share button colors are enabled."
 msgstr "シェアボタンの色は有効です。"
 
-#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:37
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:37
 msgid "Toggle to use official colors from each social media platform."
-msgstr ""
-"切り替えると、ソーシャル メディア プラットフォームの公式カラーを使います。"
+msgstr "切り替えると、ソーシャル メディア プラットフォームの公式カラーを使います。"
 
 #: src/blocks/social-profiles/edit.js:142
 msgid "Add Facebook Profile"
@@ -1923,9 +1924,8 @@ msgid "https://houzz.com/"
 msgstr "https://houzz.com/"
 
 #: src/blocks/social-profiles/index.js:25
-#, fuzzy
 msgid "Grow your audience with links to social media profiles."
-msgstr "ソーシャルメディアのプロフィールへのリンクを表示します。"
+msgstr "Grow your audience with links to social media profiles."
 
 #: src/blocks/social-profiles/inspector.js:159
 msgid "Profile Links"
@@ -2034,29 +2034,27 @@ msgstr "カスタムURL"
 
 #: src/components/crop-settings/index.js:275
 msgid "Crop settings image placeholder"
-msgstr ""
+msgstr "Crop settings image placeholder"
 
 #: src/components/crop-settings/index.js:304
-#, fuzzy
 msgid "Image Orientation"
-msgstr "向き"
+msgstr "Image Orientation"
 
 #: src/components/crop-settings/index.js:310
 msgid "Rotate counter-clockwise"
-msgstr ""
+msgstr "Rotate counter-clockwise"
 
 #: src/components/crop-settings/index.js:316
 msgid "Rotate clockwise"
-msgstr ""
+msgstr "Rotate clockwise"
 
 #: src/components/crop-settings/index.js:325
 msgid "Reset image cropping options"
-msgstr ""
+msgstr "Reset image cropping options"
 
 #: src/components/crop-settings/index.js:327
-#, fuzzy
 msgid "Reset All"
-msgstr "リセット"
+msgstr "Reset All"
 
 #: src/components/dimensions-control/index.js:442
 msgid "Select Units"
@@ -2153,7 +2151,6 @@ msgstr "全画面モードが有効です。"
 msgid "Toggle to enable fullscreen mode."
 msgstr "切り替えると、全画面モードを有効にします。"
 
-# %s: heading level e.g: "1", "2", "3"
 #. %d: heading level e.g: "1", "2", "3"
 #: src/components/heading-toolbar/index.js:18
 msgid "Heading %d"
@@ -2171,7 +2168,6 @@ msgstr "フィルターを適用"
 msgid "Height"
 msgstr "高さ"
 
-# Control name
 #. %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
 #: src/components/responsive-tabs-control/index.js:65
 msgid "Mobile %s"
@@ -2206,9 +2202,8 @@ msgid "Five Seconds"
 msgstr "5秒"
 
 #: src/components/slider-panel/autoplay-options.js:15
-#, fuzzy
 msgid "Six Seconds"
-msgstr "6秒"
+msgstr "Six Seconds"
 
 #: src/components/slider-panel/autoplay-options.js:16
 msgid "Seven Seconds"
@@ -2228,7 +2223,7 @@ msgstr "10秒"
 
 #: src/components/slider-panel/index.js:102
 msgid "Free Scroll"
-msgstr ""
+msgstr "Free Scroll"
 
 #: src/components/slider-panel/index.js:108
 msgid "Arrow Navigation"
@@ -2240,7 +2235,7 @@ msgstr "ドットナビゲーション"
 
 #: src/components/slider-panel/index.js:120
 msgid "Align Cells"
-msgstr ""
+msgstr "Align Cells"
 
 #: src/components/slider-panel/index.js:24
 msgid "seconds"
@@ -2250,27 +2245,23 @@ msgstr "秒"
 msgid "second"
 msgstr "秒"
 
-# 1. Speed of the slider, 2: Time until the slide advances
 #. 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Advancing after %1$d %2$s."
 msgstr "%1$d%2$s後に進みます。"
 
-# 1. Speed of the slider, 2: Time until the slide advances
 #. 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Automatically advance to the next slide."
 msgstr "自動的に次のスライドに進めます。"
 
 #: src/components/slider-panel/index.js:31
-#, fuzzy
 msgid "Dragging and flicking enabled."
-msgstr "デスクトップとモバイル端末でドラッグとフリックが有効です。"
+msgstr "Dragging and flicking enabled."
 
 #: src/components/slider-panel/index.js:31
-#, fuzzy
 msgid "Toggle to enable drag functionality."
-msgstr "切り替えると、デスクトップとモバイル端末でドラッグ機能を有効にします。"
+msgstr "Toggle to enable drag functionality."
 
 #: src/components/slider-panel/index.js:35
 msgid "Showing slide navigation arrows."
@@ -2281,43 +2272,36 @@ msgid "Toggle to show slide navigation arrows."
 msgstr "切り替えると、スライドナビゲーションの矢印を表示します。"
 
 #: src/components/slider-panel/index.js:39
-#, fuzzy
 msgid "Showing dot navigation."
-msgstr "ドットナビゲーションの矢印を表示しています。"
+msgstr "Showing dot navigation."
 
 #: src/components/slider-panel/index.js:39
 msgid "Toggle to show dot navigation."
 msgstr "切り替えると、ドットナビゲーションを表示します。"
 
 #: src/components/slider-panel/index.js:43
-#, fuzzy
 msgid "Aligning slides to the left."
-msgstr "コンテナ内のスペースです。"
+msgstr "Aligning slides to the left."
 
 #: src/components/slider-panel/index.js:43
-#, fuzzy
 msgid "Aligning slides to the center."
-msgstr "コンテナ内のスペースです。"
+msgstr "Aligning slides to the center."
 
 #: src/components/slider-panel/index.js:46
-#, fuzzy
 msgid "Pausing autoplay when hovering."
-msgstr "切り替えると、動画をミュート再生します。"
+msgstr "Pausing autoplay when hovering."
 
 #: src/components/slider-panel/index.js:46
-#, fuzzy
 msgid "Toggle to pause autoplay when hovered."
-msgstr "切り替えると、動画をミュート再生します。"
+msgstr "Toggle to pause autoplay when hovered."
 
 #: src/components/slider-panel/index.js:50
-#, fuzzy
 msgid "Scrolling without fixed slides enabled."
-msgstr "切り替えると、動画をループ再生します。"
+msgstr "Scrolling without fixed slides enabled."
 
 #: src/components/slider-panel/index.js:50
-#, fuzzy
 msgid "Toggle to scroll without fixed slides."
-msgstr "切り替えると、動画をループ再生します。"
+msgstr "Toggle to scroll without fixed slides."
 
 #: src/components/slider-panel/index.js:72
 msgid "Slider Settings"
@@ -2333,7 +2317,7 @@ msgstr "遷移速度"
 
 #: src/components/slider-panel/index.js:88
 msgid "Pause on Hover"
-msgstr ""
+msgstr "Pause on Hover"
 
 #: src/components/slider-panel/index.js:96
 msgid "Draggable"
@@ -2388,28 +2372,24 @@ msgid "Remove Top Spacing"
 msgstr "上部の余白を削除"
 
 #: src/extensions/advanced-controls/index.js:135
-#, fuzzy
 msgid "Toggle to add top margin back."
-msgstr "切り替えると、カードの影を追加します。"
+msgstr "Toggle to add top margin back."
 
 #: src/extensions/advanced-controls/index.js:135
-#, fuzzy
 msgid "Toggle to remove any top margin."
-msgstr "切り替えると、ドットナビゲーションを表示します。"
+msgstr "Toggle to remove any top margin."
 
 #: src/extensions/advanced-controls/index.js:140
 msgid "Remove Bottom Spacing"
 msgstr "下部の余白を削除"
 
 #: src/extensions/advanced-controls/index.js:163
-#, fuzzy
 msgid "Toggle to add bottom margin back."
-msgstr "切り替えると、カードの影を追加します。"
+msgstr "Toggle to add bottom margin back."
 
 #: src/extensions/advanced-controls/index.js:163
-#, fuzzy
 msgid "Toggle to remove any bottom margin."
-msgstr "切り替えると、ドットナビゲーションを表示します。"
+msgstr "Toggle to remove any bottom margin."
 
 #: src/extensions/button-controls/index.js:71
 msgid "Display Fullwidth"
@@ -2424,9 +2404,8 @@ msgid "Toggle to display button as full width."
 msgstr "切り替えると、ボタンを全幅で表示します。"
 
 #: src/extensions/image-crop/index.js:169
-#, fuzzy
 msgid "Crop Settings"
-msgstr "ヒーロー設定"
+msgstr "Crop Settings"
 
 #: src/formats/uppercase/index.js:35
 msgid "Uppercase"
@@ -2467,142 +2446,121 @@ msgid "%s Galleries"
 msgstr "%sギャラリー"
 
 #: src/blocks/accordion/accordion-item/controls.js:28
-#, fuzzy
 msgctxt "Toggle label to display the accordion open"
 msgid "Display open"
 msgstr "開いて表示"
 
 #: src/blocks/accordion/accordion-item/edit.js:65
-#, fuzzy
 msgctxt "Accordion is the block name"
 msgid "Add accordion title..."
 msgstr "アコーディオンタイトルを追加..."
 
 #: src/blocks/accordion/accordion-item/index.js:26
-#, fuzzy
 msgctxt "This is an inner block for the Accordion Block."
 msgid "Accordion Item"
 msgstr "アコーディオンアイテム"
 
 #: src/blocks/accordion/accordion-item/index.js:29
 #: src/blocks/accordion/index.js:30
-#, fuzzy
 msgctxt "block keyword"
 msgid "tabs"
 msgstr "タブ"
 
 #: src/blocks/accordion/accordion-item/index.js:29
 #: src/blocks/accordion/index.js:30
-#, fuzzy
 msgctxt "block keyword"
 msgid "faq"
 msgstr "よくある質問"
 
 #: src/blocks/alert/index.js:31
-#, fuzzy
 msgctxt "block keyword"
 msgid "notice"
 msgstr "お知らせ"
 
 #: src/blocks/alert/index.js:31
-#, fuzzy
 msgctxt "block keyword"
 msgid "message"
 msgstr "メッセージ"
 
 #: src/blocks/author/index.js:31
-#, fuzzy
 msgctxt "block keyword"
 msgid "biography"
 msgstr "経歴"
 
 #: src/blocks/author/index.js:31
-#, fuzzy
 msgctxt "block keyword"
 msgid "profile"
 msgstr "プロフィール"
 
 #: src/blocks/buttons/index.js:31
-#, fuzzy
 msgctxt "block keyword"
 msgid "link"
 msgstr "リンク"
 
-#: src/blocks/buttons/index.js:31 src/blocks/hero/index.js:43
-#, fuzzy
+#: src/blocks/buttons/index.js:31
+#: src/blocks/hero/index.js:43
 msgctxt "block keyword"
 msgid "cta"
 msgstr "CTA"
 
-#: src/blocks/click-to-tweet/index.js:31 src/blocks/social-profiles/index.js:28
-#, fuzzy
+#: src/blocks/click-to-tweet/index.js:31
+#: src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "share"
 msgstr "シェア"
 
 #: src/blocks/click-to-tweet/index.js:31
-#, fuzzy
 msgctxt "block keyword"
 msgid "twitter"
 msgstr "Twitter"
 
 #: src/blocks/dynamic-separator/index.js:30
-#, fuzzy
 msgctxt "block keyword"
 msgid "spacer"
 msgstr "スペーサー"
 
 #: src/blocks/features/index.js:37
-#, fuzzy
 msgctxt "block keyword"
 msgid "services"
 msgstr "サービス"
 
 #: src/blocks/food-and-drinks/food-item/index.js:29
 #: src/blocks/food-and-drinks/index.js:29
-#, fuzzy
 msgctxt "block keyword"
 msgid "menu"
 msgstr "メニュー"
 
 #: src/blocks/food-and-drinks/index.js:29
-#, fuzzy
 msgctxt "block keyword"
 msgid "restaurant"
 msgstr "飲食店"
 
 #: src/blocks/form/fields/date/index.js:20
-#, fuzzy
 msgctxt "block keyword"
 msgid "calendar"
-msgstr "スタンダード"
+msgstr "カレンダー"
 
 #: src/blocks/form/fields/date/index.js:20
-#, fuzzy
 msgctxt "block keyword"
 msgid "day month year"
-msgstr "1年"
+msgstr "day month year"
 
 #: src/blocks/form/fields/email/index.js:22
-#, fuzzy
 msgctxt "block keyword"
 msgid "e-mail"
 msgstr "メールアドレス"
 
 #: src/blocks/form/fields/email/index.js:22
-#, fuzzy
 msgctxt "block keyword"
 msgid "mail"
 msgstr "メールアドレス"
 
 #: src/blocks/form/fields/name/index.js:22
-#, fuzzy
 msgctxt "block keyword"
 msgid "first name"
-msgstr "姓"
+msgstr "名"
 
 #: src/blocks/form/fields/name/index.js:22
-#, fuzzy
 msgctxt "block keyword"
 msgid "last name"
 msgstr "姓"
@@ -2610,64 +2568,54 @@ msgstr "姓"
 #: src/blocks/form/fields/phone/index.js:20
 msgctxt "block keyword"
 msgid "telephone"
-msgstr ""
+msgstr "telephone"
 
 #: src/blocks/form/fields/phone/index.js:20
-#, fuzzy
 msgctxt "block keyword"
 msgid "cellular"
-msgstr "円形"
+msgstr "cellular"
 
-# Control name
 #: src/blocks/form/fields/phone/index.js:20
-#, fuzzy
 msgctxt "block keyword"
 msgid "mobile"
-msgstr "モバイル%s"
+msgstr "モバイル"
 
 #: src/blocks/form/fields/radio/index.js:20
 msgctxt "block keyword"
 msgid "Choose"
-msgstr ""
+msgstr "選択"
 
 #: src/blocks/form/fields/radio/index.js:20
-#, fuzzy
 msgctxt "block keyword"
 msgid "Select"
-msgstr "サイズを選択"
+msgstr "選択"
 
 #: src/blocks/form/fields/radio/index.js:20
-#, fuzzy
 msgctxt "block keyword"
 msgid "Option"
-msgstr "キャプション"
+msgstr "Option"
 
 #: src/blocks/form/fields/textarea/index.js:22
-#, fuzzy
 msgctxt "block keyword"
 msgid "Textarea"
 msgstr "テキストエリア"
 
 #: src/blocks/form/fields/textarea/index.js:22
-#, fuzzy
 msgctxt "block keyword"
 msgid "Multiline text"
 msgstr "複数行テキスト"
 
 #: src/blocks/form/index.js:29
-#, fuzzy
 msgctxt "block keyword"
 msgid "email"
 msgstr "メールアドレス"
 
 #: src/blocks/form/index.js:29
-#, fuzzy
 msgctxt "block keyword"
 msgid "about"
 msgstr "概要"
 
 #: src/blocks/form/index.js:29
-#, fuzzy
 msgctxt "block keyword"
 msgid "contact"
 msgstr "連絡先"
@@ -2676,7 +2624,6 @@ msgstr "連絡先"
 #: src/blocks/gallery-collage/index.js:36
 #: src/blocks/gallery-masonry/index.js:37
 #: src/blocks/gallery-stacked/index.js:37
-#, fuzzy
 msgctxt "block keyword"
 msgid "gallery"
 msgstr "ギャラリー"
@@ -2685,104 +2632,88 @@ msgstr "ギャラリー"
 #: src/blocks/gallery-collage/index.js:36
 #: src/blocks/gallery-masonry/index.js:37
 #: src/blocks/gallery-stacked/index.js:37
-#, fuzzy
 msgctxt "block keyword"
 msgid "photos"
 msgstr "写真"
 
 #: src/blocks/gallery-masonry/index.js:37
 #: src/blocks/gallery-stacked/index.js:37
-#, fuzzy
 msgctxt "block keyword"
 msgid "lightbox"
-msgstr "夜"
+msgstr "lightbox"
 
 #: src/blocks/gif/index.js:29
-#, fuzzy
 msgctxt "block keyword"
 msgid "animated"
 msgstr "アニメーション"
 
 #: src/blocks/gist/index.js:31
-#, fuzzy
 msgctxt "block keyword"
 msgid "code"
 msgstr "コード"
 
 #: src/blocks/hero/index.js:43
-#, fuzzy
 msgctxt "block keyword"
 msgid "button"
 msgstr "ボタン"
 
 #: src/blocks/hero/index.js:43
-#, fuzzy
 msgctxt "block keyword"
 msgid "call to action"
 msgstr "Call to Action"
 
 #: src/blocks/highlight/index.js:30
-#, fuzzy
 msgctxt "block keyword"
 msgid "text"
 msgstr "テキスト"
 
 #: src/blocks/highlight/index.js:30
-#, fuzzy
 msgctxt "block keyword"
 msgid "paragraph"
 msgstr "段落"
 
-#: src/blocks/icon/index.js:35 src/blocks/social-profiles/index.js:28
-#, fuzzy
+#: src/blocks/icon/index.js:35
+#: src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "icons"
 msgstr "アイコン"
 
 #: src/blocks/logos/index.js:29
-#, fuzzy
 msgctxt "block keyword"
 msgid "clients"
 msgstr "クライアント"
 
 #: src/blocks/logos/index.js:29
-#, fuzzy
 msgctxt "block keyword"
 msgid "proof"
 msgstr "証明"
 
 #: src/blocks/logos/index.js:29
-#, fuzzy
 msgctxt "block keyword"
 msgid "testimonials"
 msgstr "証明書"
 
 #: src/blocks/map/index.js:30
-#, fuzzy
 msgctxt "block keyword"
 msgid "address"
 msgstr "住所"
 
 #: src/blocks/map/index.js:30
-#, fuzzy
 msgctxt "block keyword"
 msgid "maps"
 msgstr "マップ"
 
 #: src/blocks/map/index.js:30
-#, fuzzy
 msgctxt "block keyword"
 msgid "google"
 msgstr "Google"
 
 #: src/blocks/media-card/index.js:38
-#, fuzzy
 msgctxt "block keyword"
 msgid "image"
 msgstr "画像"
 
 #: src/blocks/media-card/index.js:38
-#, fuzzy
 msgctxt "block keyword"
 msgid "video"
 msgstr "動画"
@@ -2790,165 +2721,142 @@ msgstr "動画"
 #: src/blocks/post-carousel/index.js:29
 msgctxt "block keyword"
 msgid "posts"
-msgstr ""
+msgstr "投稿"
 
 #: src/blocks/post-carousel/index.js:29
 msgctxt "block keyword"
 msgid "slider"
-msgstr ""
+msgstr "slider"
 
-#: src/blocks/post-carousel/index.js:29 src/blocks/posts/index.js:29
+#: src/blocks/post-carousel/index.js:29
+#: src/blocks/posts/index.js:29
 msgctxt "block keyword"
 msgid "latest"
-msgstr ""
+msgstr "最新"
 
 #: src/blocks/posts/index.js:29
 msgctxt "block keyword"
 msgid "blog"
-msgstr ""
+msgstr "ブログ"
 
 #: src/blocks/posts/index.js:29
-#, fuzzy
 msgctxt "block keyword"
 msgid "rss"
-msgstr "住所"
+msgstr "RSS"
 
 #: src/blocks/pricing-table/index.js:31
 #: src/blocks/pricing-table/pricing-table-item/index.js:29
-#, fuzzy
 msgctxt "block keyword"
 msgid "landing"
 msgstr "ランディング"
 
 #: src/blocks/pricing-table/index.js:31
 #: src/blocks/pricing-table/pricing-table-item/index.js:29
-#, fuzzy
 msgctxt "block keyword"
 msgid "comparison"
 msgstr "比較"
 
 #: src/blocks/row/index.js:40
-#, fuzzy
 msgctxt "block keyword"
 msgid "rows"
 msgstr "行"
 
 #: src/blocks/row/index.js:40
-#, fuzzy
 msgctxt "block keyword"
 msgid "columns"
 msgstr "カラム"
 
 #: src/blocks/row/index.js:40
-#, fuzzy
 msgctxt "block keyword"
 msgid "layouts"
 msgstr "レイアウト"
 
 #: src/blocks/services/index.js:29
-#, fuzzy
 msgctxt "block keyword"
 msgid "features"
 msgstr "特集"
 
 #: src/blocks/shape-divider/index.js:31
-#, fuzzy
 msgctxt "block keyword"
 msgid "separator"
 msgstr "区切り"
 
 #: src/blocks/share/index.js:28
-#, fuzzy
 msgctxt "block keyword"
 msgid "social"
 msgstr "ソーシャル"
 
 #: src/blocks/social-profiles/index.js:28
-#, fuzzy
 msgctxt "block keyword"
 msgid "links"
 msgstr "リンク"
 
 #: src/blocks/accordion/accordion-item/inspector.js:65
-#, fuzzy
 msgctxt "Visually display open as opposed to closed."
 msgid "Display Open"
 msgstr "ディスプレイを開く"
 
 #: src/blocks/accordion/edit.js:74
-#, fuzzy
 msgctxt "Add a child element for the Accordion block"
 msgid "Add Accordion Item"
 msgstr "アコーディオンアイテムを追加"
 
 #: src/blocks/accordion/index.js:27
-#, fuzzy
 msgctxt "block title"
 msgid "Accordion"
 msgstr "アコーディオン"
 
 #: src/blocks/alert/edit.js:102
-#, fuzzy
 msgctxt "Placeholder text for input box"
 msgid "Write text..."
 msgstr "テキストを入力..."
 
 #: src/blocks/alert/edit.js:94
-#, fuzzy
 msgctxt "Placeholder text for input box"
 msgid "Write title..."
 msgstr "タイトルを入力..."
 
 #: src/blocks/alert/index.js:28
-#, fuzzy
 msgctxt "block name"
 msgid "Alert"
 msgstr "アラート"
 
 #: src/blocks/author/index.js:28
-#, fuzzy
 msgctxt "block name"
 msgid "Author"
 msgstr "作成者"
 
 #: src/blocks/buttons/index.js:28
-#, fuzzy
 msgctxt "block name"
 msgid "Buttons"
 msgstr "ボタン"
 
 #: src/blocks/click-to-tweet/index.js:28
-#, fuzzy
 msgctxt "block name"
 msgid "Click to Tweet"
 msgstr "クリックしてツイート"
 
 #: src/blocks/dynamic-separator/index.js:27
-#, fuzzy
 msgctxt "block name"
 msgid "Dynamic HR"
 msgstr "動的水平線"
 
 #: src/blocks/features/feature/index.js:28
-#, fuzzy
 msgctxt "block name"
 msgid "Feature"
 msgstr "特集"
 
 #: src/blocks/features/index.js:34
-#, fuzzy
 msgctxt "block name"
 msgid "Features"
 msgstr "特集"
 
 #: src/blocks/food-and-drinks/food-item/index.js:26
-#, fuzzy
 msgctxt "block name"
 msgid "Food Item"
 msgstr "食品アイテム"
 
 #: src/blocks/food-and-drinks/index.js:26
-#, fuzzy
 msgctxt "block name"
 msgid "Food & Drinks"
 msgstr "食品＆飲料"
@@ -2956,16 +2864,14 @@ msgstr "食品＆飲料"
 #: src/blocks/form/fields/date/index.js:19
 msgctxt "block name"
 msgid "Date"
-msgstr ""
+msgstr "日付"
 
 #: src/blocks/form/fields/email/index.js:19
-#, fuzzy
 msgctxt "block name"
 msgid "Email"
 msgstr "メールアドレス"
 
 #: src/blocks/form/fields/name/index.js:19
-#, fuzzy
 msgctxt "block name"
 msgid "Name"
 msgstr "名前"
@@ -2973,46 +2879,39 @@ msgstr "名前"
 #: src/blocks/form/fields/phone/index.js:19
 msgctxt "block name"
 msgid "Phone"
-msgstr ""
+msgstr "電話番号"
 
 #: src/blocks/form/fields/radio/index.js:19
-#, fuzzy
 msgctxt "block name"
 msgid "Radio"
-msgstr "半径"
+msgstr "ラジオ"
 
 #: src/blocks/form/fields/textarea/index.js:19
-#, fuzzy
 msgctxt "block name"
 msgid "Textarea"
 msgstr "テキストエリア"
 
 #: src/blocks/form/index.js:26
-#, fuzzy
 msgctxt "block name"
 msgid "Form"
 msgstr "フォーム"
 
 #: src/blocks/gallery-carousel/index.js:34
-#, fuzzy
 msgctxt "block name"
 msgid "Carousel"
 msgstr "カルーセル"
 
 #: src/blocks/gallery-collage/index.js:33
-#, fuzzy
 msgctxt "block name"
 msgid "Collage"
-msgstr "画像設定"
+msgstr "Collage"
 
 #: src/blocks/gallery-masonry/index.js:34
-#, fuzzy
 msgctxt "block name"
 msgid "Masonry"
 msgstr "Masonry"
 
 #: src/blocks/gallery-stacked/index.js:34
-#, fuzzy
 msgctxt "block name"
 msgid "Stacked"
 msgstr "スタック"
@@ -3020,135 +2919,114 @@ msgstr "スタック"
 #: src/blocks/gif/index.js:26
 msgctxt "block name"
 msgid "Gif"
-msgstr ""
+msgstr "Gif"
 
 #: src/blocks/gist/index.js:28
-#, fuzzy
 msgctxt "block name"
 msgid "Gist"
-msgstr "Gist URL"
+msgstr "Gist"
 
 #: src/blocks/hero/index.js:40
-#, fuzzy
 msgctxt "block name"
 msgid "Hero"
 msgstr "ヒーロー"
 
 #: src/blocks/highlight/index.js:27
-#, fuzzy
 msgctxt "block name"
 msgid "Highlight"
 msgstr "ハイライト"
 
 #: src/blocks/icon/index.js:32
-#, fuzzy
 msgctxt "block name"
 msgid "Icon"
 msgstr "アイコン"
 
 #: src/blocks/logos/index.js:26
-#, fuzzy
 msgctxt "block name"
 msgid "Logos & Badges"
 msgstr "ロゴ＆バッジ"
 
 #: src/blocks/map/index.js:27
-#, fuzzy
 msgctxt "block name"
 msgid "Map"
 msgstr "マップ"
 
 #: src/blocks/media-card/index.js:35
-#, fuzzy
 msgctxt "block name"
 msgid "Media Card"
 msgstr "メディアカード"
 
 #: src/blocks/post-carousel/index.js:26
-#, fuzzy
 msgctxt "block name"
 msgid "Post Carousel"
-msgstr "カルーセル"
+msgstr "Post Carousel"
 
 #: src/blocks/posts/index.js:26
 msgctxt "block name"
 msgid "Posts"
-msgstr ""
+msgstr "投稿"
 
 #: src/blocks/pricing-table/index.js:28
-#, fuzzy
 msgctxt "block name"
 msgid "Pricing Table"
 msgstr "価格表"
 
 #: src/blocks/pricing-table/pricing-table-item/index.js:26
-#, fuzzy
 msgctxt "block name"
 msgid "Pricing Table Item"
 msgstr "価格表のアイテム"
 
 #: src/blocks/row/column/index.js:29
-#, fuzzy
 msgctxt "block name"
 msgid "Column"
 msgstr "カラム"
 
 #: src/blocks/row/index.js:37
-#, fuzzy
 msgctxt "block name"
 msgid "Row"
 msgstr "行"
 
 #: src/blocks/services/index.js:26
-#, fuzzy
 msgctxt "block name"
 msgid "Services"
 msgstr "サービス"
 
 #: src/blocks/services/service/index.js:26
-#, fuzzy
 msgctxt "block name"
 msgid "Service"
 msgstr "サービス"
 
 #: src/blocks/shape-divider/index.js:28
-#, fuzzy
 msgctxt "block name"
 msgid "Shape Divider"
 msgstr "シェイプ区切り"
 
 #: src/blocks/share/index.js:24
-#, fuzzy
 msgctxt "block name"
 msgid "Share"
 msgstr "シェア"
 
 #: src/blocks/social-profiles/index.js:24
-#, fuzzy
 msgctxt "block name"
 msgid "Social Profiles"
 msgstr "ソーシャルメディアのプロフィール"
 
 #: src/blocks/alert/index.js:33
-#, fuzzy
 msgctxt "block style"
 msgid "Info"
 msgstr "情報"
 
 #: src/blocks/alert/index.js:34
-#, fuzzy
 msgctxt "block style"
 msgid "Success"
 msgstr "成功"
 
 #: src/blocks/alert/index.js:35
-#, fuzzy
 msgctxt "block style"
 msgid "Warning"
 msgstr "警告"
 
 #: src/blocks/alert/index.js:36
-#, fuzzy
 msgctxt "block style"
 msgid "Error"
 msgstr "エラー"
@@ -3169,20 +3047,17 @@ msgid "Fullwidth"
 msgstr "全幅"
 
 #: src/blocks/food-and-drinks/edit.js:35
-#, fuzzy
 msgctxt "block style"
 msgid "Grid"
 msgstr "グリッド"
 
 #: src/blocks/food-and-drinks/edit.js:42
-#, fuzzy
 msgctxt "block style"
 msgid "List"
 msgstr "リスト"
 
 #: src/blocks/gallery-collage/index.js:40
 #: src/extensions/image-styles/index.js:15
-#, fuzzy
 msgctxt "block style"
 msgid "Default"
 msgstr "デフォルト"
@@ -3190,13 +3065,12 @@ msgstr "デフォルト"
 #: src/blocks/gallery-collage/index.js:45
 msgctxt "block style"
 msgid "Tiled"
-msgstr ""
+msgstr "Tiled"
 
 #: src/blocks/gallery-collage/index.js:49
-#, fuzzy
 msgctxt "block style"
 msgid "Layered"
-msgstr "レイヤー"
+msgstr "Layered"
 
 #: src/blocks/icon/index.js:37
 msgctxt "block style"
@@ -3209,16 +3083,14 @@ msgid "Filled"
 msgstr "フィルド"
 
 #: src/blocks/posts/edit.js:49
-#, fuzzy
 msgctxt "block style"
 msgid "Stacked"
 msgstr "スタック"
 
 #: src/blocks/posts/edit.js:55
-#, fuzzy
 msgctxt "block style"
 msgid "Horizontal"
-msgstr "水平方向に繰り返す"
+msgstr "Horizontal"
 
 #: src/blocks/shape-divider/index.js:38
 msgctxt "block style"
@@ -3260,54 +3132,55 @@ msgctxt "block style"
 msgid "Pointed"
 msgstr "ポインテッド"
 
-#: src/blocks/share/index.js:30 src/blocks/social-profiles/index.js:30
+#: src/blocks/share/index.js:30
+#: src/blocks/social-profiles/index.js:30
 msgctxt "block style"
 msgid "Mask"
 msgstr "マスク"
 
-#: src/blocks/share/index.js:31 src/blocks/social-profiles/index.js:31
+#: src/blocks/share/index.js:31
+#: src/blocks/social-profiles/index.js:31
 msgctxt "block style"
 msgid "Icon"
 msgstr "アイコン"
 
-#: src/blocks/share/index.js:32 src/blocks/social-profiles/index.js:32
+#: src/blocks/share/index.js:32
+#: src/blocks/social-profiles/index.js:32
 msgctxt "block style"
 msgid "Text"
 msgstr "テキスト"
 
-#: src/blocks/share/index.js:33 src/blocks/social-profiles/index.js:33
+#: src/blocks/share/index.js:33
+#: src/blocks/social-profiles/index.js:33
 msgctxt "block style"
 msgid "Icon & Text"
 msgstr "アイコン＆テキスト"
 
-#: src/blocks/share/index.js:34 src/blocks/social-profiles/index.js:34
+#: src/blocks/share/index.js:34
+#: src/blocks/social-profiles/index.js:34
 msgctxt "block style"
 msgid "Circular"
 msgstr "円形"
 
 #: src/extensions/image-styles/index.js:21
-#, fuzzy
 msgctxt "block style"
 msgid "Bottom Wave"
-msgstr "左下"
+msgstr "Bottom Wave"
 
 #: src/extensions/image-styles/index.js:27
-#, fuzzy
 msgctxt "block style"
 msgid "Top Wave"
-msgstr "左上"
+msgstr "Top Wave"
 
 #: src/blocks/author/edit.js:63
-#, fuzzy
 msgctxt "image to represent the post author"
 msgid "Drop to upload as avatar"
-msgstr "ドロップしてアバターとして追加する"
+msgstr "Drop to upload as avatar"
 
 #: src/blocks/author/edit.js:149
-#, fuzzy
 msgctxt "content placeholder"
 msgid "Author link…"
-msgstr "作成者"
+msgstr "Author link…"
 
 #: src/blocks/features/feature/edit.js:31
 msgctxt "content placeholder"
@@ -3330,29 +3203,24 @@ msgid "This is a feature block that you can use to highlight features."
 msgstr "特集を強調するために使用する特集ブロックです。"
 
 #: src/blocks/hero/edit.js:35
-#, fuzzy
 msgctxt "content placeholder"
 msgid "Add hero heading…"
-msgstr "ヒーローの見出しを追加..."
+msgstr "Add hero heading…"
 
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
-msgid ""
-"Add hero content, which is typically an introductory area of a page "
-"accompanied by call to action or two."
-msgstr ""
-"通常、CTAなどをともなうページの導入エリアとして使用されるヒーローのコンテンツ"
-"を追加します。"
+msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
+msgstr "通常、CTAなどをともなうページの導入エリアとして使用されるヒーローのコンテンツを追加します。"
 
 #: src/blocks/hero/edit.js:39
 msgctxt "content placeholder"
 msgid "Primary button…"
-msgstr ""
+msgstr "Primary button…"
 
 #: src/blocks/hero/edit.js:40
 msgctxt "content placeholder"
 msgid "Secondary button…"
-msgstr ""
+msgstr "Secondary button…"
 
 #: src/blocks/media-card/edit.js:46
 msgctxt "content placeholder"
@@ -3371,12 +3239,8 @@ msgstr "コンテンツを追加..."
 
 #: src/blocks/media-card/edit.js:47
 msgctxt "content placeholder"
-msgid ""
-"Replace this text with descriptive copy to go along with the card image. "
-"Then add more blocks to this card, such as buttons, lists or images."
-msgstr ""
-"このテキストを説明的なコピーに置き換えてカード画像に合わせます。それから、ボ"
-"タンやリスト、画像などのブロックをこのカードに追加します。"
+msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
+msgstr "このテキストを説明的なコピーに置き換えてカード画像に合わせます。それから、ボタンやリスト、画像などのブロックをこのカードに追加します。"
 
 #: src/blocks/services/service/edit.js:204
 msgctxt "content placeholder"
@@ -3389,75 +3253,69 @@ msgid "Write description..."
 msgstr "説明を入力..."
 
 #: src/blocks/buttons/inspector.js:28
-#, fuzzy
 msgctxt "block settings"
 msgid "Buttons Settings"
 msgstr "ボタン設定"
 
 #: src/blocks/buttons/inspector.js:43
-#, fuzzy
 msgctxt "visually stack buttons one on top of another"
 msgid "Stack on mobile"
 msgstr "モバイルで積み重ねる"
 
 #: src/blocks/dynamic-separator/inspector.js:43
-#, fuzzy
 msgctxt "hr is html markup - horizonal rule"
 msgid "Dynamic HR Settings"
 msgstr "動的水平線設定"
 
 #: src/blocks/gallery-collage/inspector.js:55
-#, fuzzy
 msgctxt "label for no gutter option"
 msgid "None"
 msgstr "なし"
 
 #: src/blocks/gallery-collage/inspector.js:84
-#, fuzzy
 msgctxt "abbreviation for \"Short\" size"
 msgid "None"
 msgstr "なし"
 
 #: src/blocks/gallery-collage/inspector.js:60
-#, fuzzy
 msgctxt "label for small gutter option"
 msgid "Small"
 msgstr "小"
 
-#: src/blocks/gallery-collage/inspector.js:89 src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:89
+#: src/blocks/posts/inspector.js:58
 msgctxt "abbreviation for \"Small\" size"
 msgid "S"
-msgstr ""
+msgstr "秒"
 
 #: src/blocks/gallery-collage/inspector.js:65
-#, fuzzy
 msgctxt "label for medium gutter option"
 msgid "Medium"
 msgstr "中"
 
-#: src/blocks/gallery-collage/inspector.js:94 src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:94
+#: src/blocks/posts/inspector.js:63
 msgctxt "abbreviation for \"Medium\" size"
 msgid "M"
-msgstr ""
+msgstr "メートル"
 
 #: src/blocks/gallery-collage/inspector.js:70
-#, fuzzy
 msgctxt "label for large gutter option"
 msgid "Large"
 msgstr "大"
 
-#: src/blocks/gallery-collage/inspector.js:99 src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:99
+#: src/blocks/posts/inspector.js:68
 msgctxt "abbreviation for \"Large\" size"
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: src/blocks/posts/inspector.js:73
 msgctxt "abbreviation for \"Large\" size"
 msgid "XL"
-msgstr ""
+msgstr "XL"
 
 #: src/blocks/gallery-collage/inspector.js:75
-#, fuzzy
 msgctxt "label for extra large gutter option"
 msgid "Extra Large"
 msgstr "特大"
@@ -3465,28 +3323,24 @@ msgstr "特大"
 #: src/blocks/gallery-collage/inspector.js:76
 msgctxt "abbreviation for \"Extra Large\" size"
 msgid "XL"
-msgstr ""
+msgstr "XL"
 
 #: src/blocks/gallery-collage/inspector.js:83
-#, fuzzy
 msgctxt "label for no shadow option"
 msgid "None"
 msgstr "なし"
 
 #: src/blocks/gallery-collage/inspector.js:88
-#, fuzzy
 msgctxt "label for small shadow option"
 msgid "Small"
 msgstr "小"
 
 #: src/blocks/gallery-collage/inspector.js:93
-#, fuzzy
 msgctxt "label for medium shadow option"
 msgid "Medium"
 msgstr "中"
 
 #: src/blocks/gallery-collage/inspector.js:98
-#, fuzzy
 msgctxt "label for large shadow option"
 msgid "Large"
 msgstr "大"
@@ -3594,7 +3448,7 @@ msgstr "ハブ"
 #: src/blocks/icon/svgs.js:208
 msgctxt "label"
 msgid "Email"
-msgstr "メール"
+msgstr "メールアドレス"
 
 #: src/blocks/icon/svgs.js:213
 msgctxt "label"
@@ -3679,7 +3533,7 @@ msgstr "作成"
 #: src/blocks/icon/svgs.js:297
 msgctxt "label"
 msgid "Credit Card"
-msgstr "クレジットカード"
+msgstr "Credit Card"
 
 #: src/blocks/icon/svgs.js:302
 msgctxt "label"
@@ -3874,9 +3728,7 @@ msgstr "usb 接続 ハブ 端末 ソーシャル"
 #: src/blocks/icon/svgs.js:20
 msgctxt "tags"
 msgid "music microphone podcast song artist creative media audio"
-msgstr ""
-"音楽 マイク ポッドキャスト 曲 アーティスト クリエイティブ メディア オーディ"
-"オ 音声"
+msgstr "音楽 マイク ポッドキャスト 曲 アーティスト クリエイティブ メディア オーディオ 音声"
 
 #: src/blocks/icon/svgs.js:209
 msgctxt "tags"
@@ -3961,8 +3813,7 @@ msgstr "言語 グローバル 世界 音声"
 #: src/blocks/icon/svgs.js:319
 msgctxt "tags"
 msgid "music microphone song artist creative media audio badge"
-msgstr ""
-"音楽 マイク 曲 アーティスト クリエイティブ メディア オーディオ 音声 バッジ"
+msgstr "音楽 マイク 曲 アーティスト クリエイティブ メディア オーディオ 音声 バッジ"
 
 #: src/blocks/icon/svgs.js:32
 msgctxt "tags"
@@ -4011,12 +3862,8 @@ msgstr "音楽 マイク 曲 アーティスト クリエイティブ メディ�
 
 #: src/blocks/icon/svgs.js:43
 msgctxt "tags"
-msgid ""
-"microphone podcast computer device music microphone song artist creative "
-"media audio"
-msgstr ""
-"マイク ポッドキャスト コンピューター 端末 音楽 曲 アーティスト クリエイティ"
-"ブ メディア オーディオ"
+msgid "microphone podcast computer device music microphone song artist creative media audio"
+msgstr "マイク ポッドキャスト コンピューター 端末 音楽 曲 アーティスト クリエイティブ メディア オーディオ"
 
 #: src/blocks/icon/svgs.js:49
 msgctxt "tags"
@@ -4036,17 +3883,12 @@ msgstr "写真 画像 メディア カメラ 絞り値 コレクション"
 #: src/blocks/icon/svgs.js:67
 msgctxt "tags"
 msgid "film videography director producer media creative"
-msgstr ""
-"フィルム ビデオ撮影 ディレクター プロデューサー メディア クリエイティブ"
+msgstr "フィルム ビデオ撮影 ディレクター プロデューサー メディア クリエイティブ"
 
 #: src/blocks/icon/svgs.js:73
 msgctxt "tags"
-msgid ""
-"video videography director producer media creative camera photographer "
-"photography aperture"
-msgstr ""
-"動画 ビデオ撮影 ディレクター プロデューサー メディア クリエイティブ カメラ 写"
-"真家 写真撮影 絞り値"
+msgid "video videography director producer media creative camera photographer photography aperture"
+msgstr "動画 ビデオ撮影 ディレクター プロデューサー メディア クリエイティブ カメラ 写真家 写真撮影 絞り値"
 
 #: src/blocks/icon/svgs.js:85
 msgctxt "tags"
@@ -4061,346 +3903,291 @@ msgstr "パレット デザイン 色 アーティスト クリエイティブ �
 #: src/blocks/icon/svgs.js:97
 msgctxt "tags"
 msgid "palette design colors artist creative media paint paintbrush"
-msgstr ""
-"パレット デザイン 色 アーティスト クリエイティブ メディア ペイント ペイントブ"
-"ラシ"
+msgstr "パレット デザイン 色 アーティスト クリエイティブ メディア ペイント ペイントブラシ"
 
 #: src/blocks/map/styles.js:12
-#, fuzzy
 msgctxt "block styles"
 msgid "Standard"
 msgstr "スタンダード"
 
 #: src/blocks/map/styles.js:16
-#, fuzzy
 msgctxt "block styles"
 msgid "Silver"
 msgstr "シルバー"
 
 #: src/blocks/map/styles.js:20
-#, fuzzy
 msgctxt "block styles"
 msgid "Retro"
 msgstr "レトロ"
 
 #: src/blocks/map/styles.js:24
-#, fuzzy
 msgctxt "block styles"
 msgid "Dark"
 msgstr "ダーク"
 
 #: src/blocks/map/styles.js:28
-#, fuzzy
 msgctxt "block styles"
 msgid "Night"
 msgstr "夜"
 
 #: src/blocks/map/styles.js:32
-#, fuzzy
 msgctxt "block styles"
 msgid "Aubergine"
 msgstr "オーベルジーヌ"
 
 #: src/extensions/button-styles/index.js:16
-#, fuzzy
 msgctxt "block styles"
 msgid "Circular"
 msgstr "円形"
 
 #: src/extensions/button-styles/index.js:22
-#, fuzzy
 msgctxt "block styles"
 msgid "3D"
 msgstr "3D"
 
 #: src/extensions/button-styles/index.js:28
-#, fuzzy
 msgctxt "block styles"
 msgid "Shadow"
 msgstr "影"
 
 #: src/extensions/list-styles/index.js:15
-#, fuzzy
 msgctxt "block styles"
 msgid "Default"
 msgstr "デフォルト"
 
 #: src/extensions/list-styles/index.js:21
-#, fuzzy
 msgctxt "block styles"
 msgid "None"
 msgstr "なし"
 
 #: src/extensions/list-styles/index.js:27
-#, fuzzy
 msgctxt "block styles"
 msgid "Checkbox"
 msgstr "チェックボックス"
 
-#: src/blocks/post-carousel/edit.js:302 src/blocks/posts/edit.js:437
-#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
-#, fuzzy
+#: src/blocks/post-carousel/edit.js:302
+#: src/blocks/posts/edit.js:437
+#: src/blocks/post-carousel/index.php:185
+#: src/blocks/posts/index.php:202
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
-msgstr "メニュータイトル..."
+msgstr "(no title)"
 
 #: src/blocks/posts/inspector.js:57
-#, fuzzy
 msgctxt "label for small size option"
 msgid "Small"
 msgstr "小"
 
 #: src/blocks/posts/inspector.js:62
-#, fuzzy
 msgctxt "label for medium size option"
 msgid "Medium"
 msgstr "中"
 
 #: src/blocks/posts/inspector.js:67
-#, fuzzy
 msgctxt "label for large size option"
 msgid "Large"
 msgstr "大"
 
 #: src/blocks/posts/inspector.js:72
-#, fuzzy
 msgctxt "label for large size option"
 msgid "Extra Large"
 msgstr "特大"
 
 #: src/components/background/panel.js:102
-#, fuzzy
 msgctxt "block layout"
 msgid "Auto"
 msgstr "自動"
 
 #: src/components/background/panel.js:103
-#, fuzzy
 msgctxt "block layout"
 msgid "Cover"
 msgstr "カバー"
 
 #: src/components/background/panel.js:104
-#, fuzzy
 msgctxt "block layout"
 msgid "Contain"
 msgstr "含む"
 
 #: src/components/background/panel.js:83
 #: src/components/grid-control/index.js:35
-#, fuzzy
 msgctxt "block layout"
 msgid "Top Left"
 msgstr "左上"
 
 #: src/components/background/panel.js:84
 #: src/components/grid-control/index.js:36
-#, fuzzy
 msgctxt "block layout"
 msgid "Top Center"
 msgstr "中央上"
 
 #: src/components/background/panel.js:85
 #: src/components/grid-control/index.js:37
-#, fuzzy
 msgctxt "block layout"
 msgid "Top Right"
 msgstr "右上"
 
 #: src/components/background/panel.js:86
 #: src/components/grid-control/index.js:48
-#, fuzzy
 msgctxt "block layout"
 msgid "Center Left"
 msgstr "左中央"
 
 #: src/components/background/panel.js:87
 #: src/components/grid-control/index.js:49
-#, fuzzy
 msgctxt "block layout"
 msgid "Center Center"
 msgstr "中央"
 
 #: src/components/background/panel.js:88
 #: src/components/grid-control/index.js:50
-#, fuzzy
 msgctxt "block layout"
 msgid "Center Right"
 msgstr "右中央"
 
 #: src/components/background/panel.js:89
 #: src/components/grid-control/index.js:41
-#, fuzzy
 msgctxt "block layout"
 msgid "Bottom Left"
 msgstr "左下"
 
 #: src/components/background/panel.js:90
 #: src/components/grid-control/index.js:42
-#, fuzzy
 msgctxt "block layout"
 msgid "Bottom Center"
 msgstr "中央下"
 
 #: src/components/background/panel.js:91
 #: src/components/grid-control/index.js:43
-#, fuzzy
 msgctxt "block layout"
 msgid "Bottom Right"
 msgstr "右下"
 
 #: src/components/background/panel.js:95
-#, fuzzy
 msgctxt "block layout"
 msgid "No Repeat"
 msgstr "繰り返さない"
 
 #: src/components/background/panel.js:96
-#, fuzzy
 msgctxt "block layout"
 msgid "Repeat"
 msgstr "繰り返し"
 
 #: src/components/background/panel.js:97
-#, fuzzy
 msgctxt "block layout"
 msgid "Repeat Horizontally"
 msgstr "水平方向に繰り返す"
 
 #: src/components/background/panel.js:98
-#, fuzzy
 msgctxt "block layout"
 msgid "Repeat Vertically"
 msgstr "垂直方向に繰り返す"
 
 #: src/components/block-gallery/gallery-link-settings.js:80
-#, fuzzy
-msgctxt ""
-"HTML attribute that specifies the a relationship between the two pages."
+msgctxt "HTML attribute that specifies the a relationship between the two pages."
 msgid "Link Rel"
 msgstr "リンクの関係"
 
 #: src/components/block-gallery/options/caption-options.js:10
-#, fuzzy
 msgctxt "visual style option"
 msgid "Dark"
 msgstr "ダーク"
 
 #: src/components/block-gallery/options/caption-options.js:11
-#, fuzzy
 msgctxt "visual style option"
 msgid "Light"
 msgstr "ライト"
 
 #: src/components/block-gallery/options/caption-options.js:12
-#, fuzzy
 msgctxt "visual style option"
 msgid "None"
 msgstr "なし"
 
 #: src/components/crop-settings/index.js:280
-#, fuzzy
 msgctxt "label for horizontal positioning input"
 msgid "Horizontal Pos."
-msgstr "水平方向に繰り返す"
+msgstr "Horizontal Pos."
 
 #: src/components/crop-settings/index.js:288
 msgctxt "label for vertical positioning input"
 msgid "Vertical Pos."
-msgstr ""
+msgstr "Vertical Pos."
 
 #: src/components/crop-settings/index.js:297
-#, fuzzy
 msgctxt "label for the control that allows zooming in on the image"
 msgid "Image Zoom"
-msgstr "画像"
+msgstr "Image Zoom"
 
 #: src/components/dimensions-control/index.js:389
-#, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Pixel"
 msgstr "ピクセル"
 
 #: src/components/dimensions-control/index.js:393
-#, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Em"
 msgstr "em"
 
 #: src/components/dimensions-control/index.js:397
-#, fuzzy
 msgctxt "A size unit for CSS markup"
 msgid "Percentage"
 msgstr "割合"
 
 #: src/components/media-filter-control/index.js:31
-#, fuzzy
 msgctxt "image styles"
 msgid "Original"
 msgstr "オリジナル"
 
 #: src/components/media-filter-control/index.js:39
-#, fuzzy
 msgctxt "image styles"
 msgid "Grayscale Filter"
-msgstr "モノクロ"
+msgstr "Grayscale Filter"
 
 #: src/components/media-filter-control/index.js:47
-#, fuzzy
 msgctxt "image styles"
 msgid "Sepia Filter"
-msgstr "メディアファイル"
+msgstr "Sepia Filter"
 
 #: src/components/media-filter-control/index.js:55
-#, fuzzy
 msgctxt "image styles"
 msgid "Saturation Filter"
-msgstr "彩度"
+msgstr "Saturation Filter"
 
 #: src/components/media-filter-control/index.js:63
-#, fuzzy
 msgctxt "image styles"
 msgid "Dim Filter"
-msgstr "ビンテージフィルター"
+msgstr "Dim Filter"
 
 #: src/components/media-filter-control/index.js:71
-#, fuzzy
 msgctxt "image styles"
 msgid "Vintage Filter"
 msgstr "ビンテージフィルター"
 
 #: src/components/typography-controls/index.js:103
-#, fuzzy
 msgctxt "typography styles"
 msgid "Capitalize"
 msgstr "頭文字を大文字にする"
 
 #: src/components/typography-controls/index.js:107
-#, fuzzy
 msgctxt "typography styles"
 msgid "Normal"
 msgstr "標準"
 
 #: src/components/typography-controls/index.js:84
-#, fuzzy
 msgctxt "typography styles"
 msgid "Bold"
 msgstr "太字"
 
 #: src/components/typography-controls/index.js:91
-#, fuzzy
 msgctxt "typography styles"
 msgid "Default"
 msgstr "デフォルト"
 
 #: src/components/typography-controls/index.js:95
-#, fuzzy
 msgctxt "typography styles"
 msgid "Uppercase"
 msgstr "大文字"
 
 #: src/components/typography-controls/index.js:99
-#, fuzzy
 msgctxt "typography styles"
 msgid "Lowercase"
 msgstr "小文字"
@@ -4414,15 +4201,8 @@ msgid "https://coblocks.com"
 msgstr "https://coblocks.com"
 
 #. Description of the plugin
-msgid ""
-"CoBlocks is a suite of professional <strong>page building content blocks</"
-"strong> for the WordPress Gutenberg block editor. Our blocks are hyper-"
-"focused on empowering makers to build beautifully rich pages in WordPress."
-msgstr ""
-"CoBlocksは、ブロックエディタのWordPress Gutenberg向けに、プロフェッショナルな"
-"<strong>ページ作成用コンテンツブロック</strong>を豊富にそろえたツールです。"
-"WordPressで美しくてリッチなページを作成する方のニーズにフォーカスしたブロック"
-"をご用意しています。"
+msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
+msgstr "CoBlocksは、ブロックエディタのWordPress Gutenberg向けに、プロフェッショナルな<strong>ページ作成用コンテンツブロック</strong>を豊富にそろえたツールです。WordPressで美しくてリッチなページを作成する方のニーズにフォーカスしたブロックをご用意しています。"
 
 #. Author of the plugin
 msgid "GoDaddy"
@@ -4432,38 +4212,27 @@ msgstr "GoDaddy"
 msgid "https://www.godaddy.com"
 msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:77 class-coblocks.php:89
+#: class-coblocks.php:77
+#: class-coblocks.php:89
 msgid "Cheating huh?"
 msgstr "冗談でしょう？"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Review CoBlocks on WordPress.org"
-msgstr ""
+msgstr "Review CoBlocks on WordPress.org"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Leave a Review"
 msgstr "レビューを書く"
 
 #: includes/admin/class-coblocks-getting-started-page.php:121
-msgid ""
-"Thanks for choosing CoBlocks, the premier page builder for the new WordPress "
-"block editor."
-msgstr ""
-"WordPressブロックエディタ用の優れたページビルダー、CoBlocksをご利用いただき誠"
-"にありがとうございます。"
+msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
+msgstr "WordPressブロックエディタ用の優れたページビルダー、CoBlocksをご利用いただき誠にありがとうございます。"
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
 #: includes/admin/class-coblocks-getting-started-page.php:127
-msgid ""
-"You've just added lots of useful blocks and a new page builder toolkit to "
-"the WordPress editor. CoBlocks gives you a game-changing set of features: "
-"%1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom "
-"typography controls%2$s."
-msgstr ""
-"WordPressエディタに、多彩で便利なブロックと新しいページビルダーツールキットを"
-"追加しました。CoBlocksは%1$s多彩なブロック%2$s、%1$sページ作成体験%2$s、そし"
-"て%1$sカスタムのタイポグラフィコントロール%2$sを含む、数々の革新的な機能を提"
-"供します。"
+msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
+msgstr "WordPressエディタに、多彩で便利なブロックと新しいページビルダーツールキットを追加しました。CoBlocksは%1$s多彩なブロック%2$s、%1$sページ作成体験%2$s、そして%1$sカスタムのタイポグラフィコントロール%2$sを含む、数々の革新的な機能を提供します。"
 
 #: includes/admin/class-coblocks-getting-started-page.php:134
 msgid "Here are a few videos to help you get started:"
@@ -4490,23 +4259,13 @@ msgstr "メディアカードブロックの使い方を見る"
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:153
-msgid ""
-"Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let "
-"you know when new video tutorials are released."
-msgstr ""
-"気に入っていただけましたか？%1$s弊社のYouTubeチャンネルを登録%2$sすると、新し"
-"いチュートリアル動画の配信時にお知らせします。"
+msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
+msgstr "気に入っていただけましたか？%1$s弊社のYouTubeチャンネルを登録%2$sすると、新しいチュートリアル動画の配信時にお知らせします。"
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:164
-msgid ""
-"If you have any questions or feedback, let us know on %1$sTwitter%4$s or our "
-"%2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you "
-"want to stay up to date with what's new and upcoming at CoBlocks."
-msgstr ""
-"ご質問やご意見がありましたら、%1$sTwitter%4$sまたは%2$sFacebookグループ%4$sに"
-"投稿してください。また、%3$s弊社のニュースレターにご登録%4$sいただくと、"
-"CoBlocksの最新情報や今後の予定をチェックできます。"
+msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
+msgstr "ご質問やご意見がありましたら、%1$sTwitter%4$sまたは%2$sFacebookグループ%4$sに投稿してください。また、%3$s弊社のニュースレターにご登録%4$sいただくと、CoBlocksの最新情報や今後の予定をチェックできます。"
 
 #: includes/admin/class-coblocks-getting-started-page.php:173
 msgid "Enjoy!"
@@ -4542,15 +4301,15 @@ msgstr "メッセージ"
 
 #: includes/class-coblocks-form.php:387
 msgid "Date"
-msgstr ""
+msgstr "日付"
 
 #: includes/class-coblocks-form.php:415
 msgid "Phone"
-msgstr ""
+msgstr "電話番号"
 
 #: includes/class-coblocks-form.php:451
 msgid "Choose one"
-msgstr ""
+msgstr "Choose one"
 
 #: includes/class-coblocks-form.php:522
 msgid "Submit"
@@ -4571,156 +4330,3 @@ msgstr "LinkedInでシェア"
 #: src/blocks/social-profiles/index.php:84
 msgid "Linkedin"
 msgstr "LinkedIn"
-
-#~ msgid "An email address field."
-#~ msgstr "メールアドレスのフィールドです。"
-
-#~ msgid "A text field for names."
-#~ msgstr "名前のテキストフィールドです。"
-
-#~ msgid "Retrieve your key"
-#~ msgstr "キーを取得"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Message"
-#~ msgstr "メッセージ"
-
-#, fuzzy
-#~ msgid "%d years"
-#~ msgstr "%s年"
-
-#, fuzzy
-#~ msgid "%d weeks"
-#~ msgstr "%s週間"
-
-#~ msgid "a week"
-#~ msgstr "1週間"
-
-#, fuzzy
-#~ msgid "%d days"
-#~ msgstr "%s日"
-
-#~ msgid "a day"
-#~ msgstr "1日"
-
-#, fuzzy
-#~ msgid "%d hours"
-#~ msgstr "%s時間"
-
-#~ msgid "an hour"
-#~ msgstr "1時間"
-
-#, fuzzy
-#~ msgid "%d minutes"
-#~ msgstr "%s分"
-
-#~ msgid "a minute"
-#~ msgstr "1分"
-
-#, fuzzy
-#~ msgid "%d seconds"
-#~ msgstr "%s秒"
-
-#~ msgid "a second"
-#~ msgstr "1秒"
-
-#~ msgid "%s WordPress Plugin"
-#~ msgstr "%s WordPressプラグイン"
-
-#~ msgid "Are you enjoying %s?"
-#~ msgstr "%sをお楽しみいただいていますか？"
-
-#~ msgid ""
-#~ "You have been using %1$s for %2$s now. Mind leaving a review to let us "
-#~ "know know what you think? We'd really appreciate it!"
-#~ msgstr ""
-#~ "%1$sを%2$sお使いいただいています。ぜひご感想をお寄せください。ご協力よろし"
-#~ "くお願いいたします。"
-
-#~ msgid "No thanks / I already have"
-#~ msgstr "今はしない／すでに書いた"
-
-#~ msgid "Alert Type"
-#~ msgstr "アラートタイプ"
-
-#~ msgid "Edit image"
-#~ msgstr "画像を編集"
-
-#~ msgid "Remove image"
-#~ msgstr "画像を削除"
-
-#~ msgid "Heading..."
-#~ msgstr "見出し..."
-
-#~ msgid "Author Name"
-#~ msgstr "作成者名"
-
-#~ msgid "Write biography..."
-#~ msgstr "経歴を入力..."
-
-#~ msgid "Add an author biography."
-#~ msgstr "作成者の経歴を追加します。"
-
-#~ msgid "%s Settings"
-#~ msgstr "%s設定"
-
-#~ msgid "Caption Color"
-#~ msgstr "キャプション色"
-
-#~ msgid "Highlight text."
-#~ msgstr "テキストを強調表示します。"
-
-# %s: number of tables
-#~ msgid "%s Tables"
-#~ msgstr "%sテーブル"
-
-#~ msgid "Pricing Table Settings"
-#~ msgstr "価格表設定"
-
-#~ msgid "Tables"
-#~ msgstr "テーブル"
-
-#~ msgid "A column placed within the pricing table block."
-#~ msgstr "価格表ブロック内のカラムです。"
-
-#~ msgid "Sepia"
-#~ msgstr "セピア"
-
-#~ msgid "Dim"
-#~ msgstr "淡色"
-
-#~ msgid "Vintage"
-#~ msgstr "ビンテージ"
-
-#~ msgid "Select Orientation"
-#~ msgstr "向きを選択"
-
-#~ msgid "Top margin is removed on this block."
-#~ msgstr "このブロックでは上部のマージンが削除されます。"
-
-#~ msgid "Toggle to remove any margin applied to the top of this block."
-#~ msgstr ""
-#~ "切り替えると、このブロックの上部にできるマージンをすべて削除します。"
-
-#~ msgid "Bottom margin is removed on this block."
-#~ msgstr "このブロックでは下部のマージンが削除されます。"
-
-#~ msgid "Toggle to remove any margin applied to the bottom of this block."
-#~ msgstr ""
-#~ "切り替えると、このブロックの下部にできるマージンをすべて削除します。"
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add primary action..."
-#~ msgstr "プライマリアクションを追加..."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add secondary action..."
-#~ msgstr "セカンダリアクションを追加..."
-
-#~ msgctxt "size name"
-#~ msgid "Normal"
-#~ msgstr "標準"
-
-#~ msgid "Get started with CoBlocks here:"
-#~ msgstr "ここからCoBlocksを始めましょう："
