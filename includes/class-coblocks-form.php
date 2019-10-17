@@ -599,11 +599,8 @@ class CoBlocks_Form {
 
 		}
 
-		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
-		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
-
+		$post_id = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 		$to      = isset( $atts['to'] ) ? sanitize_email( $atts['to'] ) : get_option( 'admin_email' );
-		$subject = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : $post_title;
 
 		unset( $_POST['form-submit'], $_POST['_wp_http_referer'], $_POST['action'], $_POST['form-hash'], $_POST['coblocks-verify-email'] );
 
@@ -671,7 +668,7 @@ class CoBlocks_Form {
 		 * @param array   $_POST   Submitted form data.
 		 * @param integer $post_id Current post ID.
 		 */
-		$subject = (string) apply_filters( 'coblocks_form_email_subject', $subject, $_POST, $post_id );
+		$subject = (string) apply_filters( 'coblocks_form_email_subject', $this->setup_email_subject( $atts, $post_id ), $_POST, $post_id );
 
 		/**
 		 * Filter the form email content.
@@ -698,18 +695,6 @@ class CoBlocks_Form {
 			$post_id
 		);
 
-		$short_code_regex = '/\[(.*?)\]/i';
-		if ( preg_match_all( $short_code_regex, $subject, $matches_out ) ) {
-			foreach ( $matches_out[0] as &$value ) {
-				if ( strtolower( str_replace( ' ', '', $value ) ) === '[email]' ) {
-					$subject = str_replace( $value, $shortcode_email[0], $subject );
-				}
-				if ( strtolower( str_replace( ' ', '', $value ) ) === '[name]' ) {
-					$subject = str_replace( $value, $shortcode_name[0], $subject );
-				}
-			}
-		}
-
 		add_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
 
 		$email = wp_mail( $to, $subject, $email_content, $email_headers );
@@ -726,6 +711,48 @@ class CoBlocks_Form {
 		do_action( 'coblocks_form_submit', $_POST, $atts, $email );
 
 		return $email;
+
+	}
+
+	/**
+	 * Setup the email subject line, replacing any found shortcodes.
+	 * Note: [email] will be replaced with the value of field-email
+	 *       [name] will be replaced with the value of field-name etc.
+	 *
+	 * @param  array   $atts    Block attributes array.
+	 * @param  integer $post_id Post ID.
+	 *
+	 * @return string Email subject.
+	 */
+	private function setup_email_subject( $atts, $post_id ) {
+
+		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
+		$subject    = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : $post_title;
+
+		preg_match_all( '/\[(.*?)\]/i', $subject, $matches );
+
+		if ( isset( $matches[1] ) ) {
+
+			array_walk(
+				$matches[1],
+				function( $match, $key ) use ( $matches, &$subject ) {
+					$slug_match = strtolower( preg_replace( '/\s+/', '', $match ) );
+					$value      = isset( $_POST[ "field-{$slug_match}" ]['value'] ) ? $_POST[ "field-{$slug_match}" ]['value'] : "[{$matches[0][ $key ]}]";
+					/**
+					 * Filter the matched shortcode value.
+					 *
+					 * @param string  $value      Email content.
+					 * @param string  $slug_match Matched string.
+					 */
+					$replacement = (string) apply_filters( 'coblocks_form_shortcode_match', $value, $slug_match );
+
+					$subject = str_replace( $matches[0][ $key ], $replacement, $subject );
+				}
+			);
+
+		}
+
+		return $subject;
 
 	}
 
