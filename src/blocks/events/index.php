@@ -19,18 +19,19 @@ function coblocks_render_events_block( $attributes, $content ) {
 		try {
 			$ical = new \CoBlocks_ICal_ICal(
 				'ICal.ics',
+				// Default values.
 				array(
-					'defaultSpan'                 => 2,     // Default value
-					'defaultTimeZone'             => 'UTC',
-					'defaultWeekStart'            => 'MO',  // Default value
-					'disableCharacterReplacement' => false, // Default value
-					'filterDaysAfter'             => null,  // Default value
-					'filterDaysBefore'            => null,  // Default value
-					'skipRecurrence'              => false, // Default value
-					'useTimeZoneWithRRules'       => false, // Default value
+					'default_span'                  => 2,
+					'default_time_zone'             => 'UTC',
+					'default_week_start'            => 'MO',
+					'disable_character_replacement' => false,
+					'filter_days_after'             => null,
+					'filter_days_before'            => null,
+					'skip_recurrence'               => false,
+					'use_timezone_with_r_rules'     => false,
 				)
 			);
-			$ical->initUrl( $attributes['externalCalendarUrl'] );
+			$ical->init_url( $attributes['externalCalendarUrl'] );
 
 			if ( 'all' === $attributes['eventsRange'] ) {
 				$events = $ical->eventsFromRange();
@@ -59,8 +60,8 @@ function coblocks_render_events_block( $attributes, $content ) {
 				$page_num       = (int) ( $i / $attributes['eventsToShow'] );
 				$events_layout .= sprintf( '<div class="wp-block-coblocks-event-item" data-page="%1$s"><div class="wp-block-coblocks-event-item__content">', $page_num );
 
-				$dtstart           = $ical->iCalDateToDateTime( $event->dtstart_array[3] );
-				$dtend             = $ical->iCalDateToDateTime( $event->dtend_array[3] );
+				$dtstart           = $ical->ical_date_to_date_time( $event->dtstart_array[3] );
+				$dtend             = $ical->ical_date_to_date_time( $event->dtend_array[3] );
 				$start_date_string = strtotime( $dtstart->format( 'YmdHis' ) );
 				$end_date_string   = strtotime( $dtend->format( 'YmdHis' ) );
 				$day               = date( 'D', $start_date_string );
