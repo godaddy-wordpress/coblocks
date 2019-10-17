@@ -263,9 +263,6 @@ class FormEdit extends Component {
 					}
 					onChange={ this.onChangeSubject }
 				/>
-				{
-					'In the Subject field you can use these mail-tags: [name] [email]'
-				}
 			</Fragment>
 		);
 	}

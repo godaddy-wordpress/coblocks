@@ -638,24 +638,6 @@ class CoBlocks_Form {
 		$this->email_content .= '</ul>';
 
 		/**
-		 * Filter subject email shortcode.
-		 *
-		 * @param array   $_POST['field-email']['value'] email field content.
-		 * @param array   $_POST   Submitted form data.
-		 * @param integer $post_id Current post ID.
-		 */
-		$shortcode_email = (array) apply_filters( 'coblocks_form_shortcode_email', $_POST['field-email']['value'], $_POST, $post_id	);
-
-		/**
-		 * Filter subject name shortcodes.
-		 *
-		 * @param array   $_POST['field-name']['value'] name field content.
-		 * @param array   $_POST                        Submitted form data.
-		 * @param integer $post_id                      Current post ID.
-		 */
-		$shortcode_name = (array) apply_filters( 'coblocks_form_shortcode_name', $_POST['field-name']['value'], $_POST, $post_id );
-
-		/**
 		 * Filter the email to
 		 *
 		 * @param string  $to      Email to.
@@ -697,14 +679,6 @@ class CoBlocks_Form {
 			$_POST,
 			$post_id
 		);
-
-		$shortCodeRegex = "/\[(.*?)\]/i";
-		if ( preg_match_all($shortCodeRegex, $subject, $matches_out)) {
-			foreach ($matches_out[0] as &$value ) {
-				if (strtolower(str_replace(' ', '', $value)) === '[email]') $subject = str_replace($value, $shortcode_email[0], $subject );
-				if (strtolower(str_replace(' ', '', $value)) === '[name]') $subject = str_replace($value, $shortcode_name[0], $subject );
-			}
-		}
 
 		add_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
 
