@@ -183,6 +183,7 @@ class Edit extends Component {
 		const { setAttributes } = this.props;
 		return (
 			<MediaPlaceholder
+				className="wp-block-coblocks-service__figure"
 				allowedTypes={ [ 'image' ] }
 				multiple={ false }
 				icon="format-image"
