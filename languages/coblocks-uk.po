@@ -3,14 +3,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CoBlocks 1.16.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"POT-Creation-Date: 2019-10-17T20:17:54+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-10-17T20:17:54+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
 
@@ -31,30 +30,41 @@ msgid "Accordion Item Settings"
 msgstr "Настройки елемента гармошки"
 
 #: src/blocks/accordion/accordion-item/inspector.js:72
-#: src/blocks/alert/inspector.js:49 src/blocks/author/inspector.js:50
+#: src/blocks/alert/inspector.js:49
+#: src/blocks/author/inspector.js:50
 #: src/blocks/click-to-tweet/inspector.js:60
 #: src/blocks/dynamic-separator/inspector.js:60
 #: src/blocks/features/feature/inspector.js:92
-#: src/blocks/features/inspector.js:173 src/blocks/form/submit-button.js:118
-#: src/blocks/hero/inspector.js:137 src/blocks/highlight/inspector.js:43
-#: src/blocks/icon/inspector.js:302 src/blocks/media-card/inspector.js:132
+#: src/blocks/features/inspector.js:173
+#: src/blocks/form/submit-button.js:118
+#: src/blocks/hero/inspector.js:137
+#: src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:302
+#: src/blocks/media-card/inspector.js:132
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
-#: src/blocks/row/column/inspector.js:165 src/blocks/row/inspector.js:211
-#: src/blocks/shape-divider/inspector.js:92 src/blocks/share/inspector.js:200
+#: src/blocks/row/column/inspector.js:165
+#: src/blocks/row/inspector.js:211
+#: src/blocks/shape-divider/inspector.js:92
+#: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:206
 #: src/extensions/colors/index.js:59
 msgid "Color Settings"
 msgstr "Настройки кольорів"
 
 #: src/blocks/accordion/accordion-item/inspector.js:78
-#: src/blocks/alert/inspector.js:55 src/blocks/author/inspector.js:56
+#: src/blocks/alert/inspector.js:55
+#: src/blocks/author/inspector.js:56
 #: src/blocks/features/feature/inspector.js:110
-#: src/blocks/features/inspector.js:191 src/blocks/hero/inspector.js:150
-#: src/blocks/highlight/inspector.js:49 src/blocks/icon/inspector.js:326
+#: src/blocks/features/inspector.js:191
+#: src/blocks/hero/inspector.js:150
+#: src/blocks/highlight/inspector.js:49
+#: src/blocks/icon/inspector.js:326
 #: src/blocks/media-card/inspector.js:146
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
-#: src/blocks/row/column/inspector.js:171 src/blocks/row/inspector.js:227
-#: src/blocks/shape-divider/inspector.js:103 src/blocks/share/inspector.js:99
+#: src/blocks/row/column/inspector.js:171
+#: src/blocks/row/inspector.js:227
+#: src/blocks/shape-divider/inspector.js:103
+#: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:103
 #: src/extensions/colors/index.js:47
 msgid "Background Color"
@@ -66,9 +76,7 @@ msgstr "Колір тексту заголовка"
 
 #: src/blocks/accordion/index.js:28
 msgid "Organize content within collapsable accordion items."
-msgstr ""
-"Систематизуйте вміст у вигляді елементів гармошки, які можуть згортатися й "
-"розгортатися."
+msgstr "Систематизуйте вміст у вигляді елементів гармошки, які можуть згортатися й розгортатися."
 
 #: src/blocks/accordion/inspector.js:27
 msgid "Accordion Settings"
@@ -80,82 +88,69 @@ msgstr "Підтримка Internet Explorer"
 
 #: src/blocks/accordion/inspector.js:31
 msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
-msgstr ""
-"Додайте підтримку для Internet Explorer, завантаживши полізаповнення "
-"JavaScript."
+msgstr "Додайте підтримку для Internet Explorer, завантаживши полізаповнення JavaScript."
 
 #: src/blocks/accordion/inspector.js:31
-msgid ""
-"Supporting Internet Explorer by loading a JavaScript polyfill on this page."
-msgstr ""
-"Щоб забезпечити підтримку для Internet Explorer, завантажте полізаповнення "
-"JavaScript на цій сторінці."
+msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgstr "Щоб забезпечити підтримку для Internet Explorer, завантажте полізаповнення JavaScript на цій сторінці."
 
 #: src/blocks/alert/index.js:29
 msgid "Provide contextual feedback messages or notices."
-msgstr "Provide contextual feedback messages or notices."
+msgstr "Надання повідомлень-відгуків або сповіщень з урахуванням контексту."
 
 #: src/blocks/alert/index.js:45
 msgid "This is an alert block"
-msgstr "This is an alert block"
+msgstr "Це блок сповіщення"
 
 #: src/blocks/alert/index.js:46
-msgid ""
-"An alert is a message that displays outside the flow of typical content. "
-"Alerts provide contextual feedback, typically asking readers to take an "
-"action."
-msgstr ""
-"An alert is a message that displays outside the flow of typical content. "
-"Alerts provide contextual feedback, typically asking readers to take an "
-"action."
+msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
+msgstr "Сповіщення — це повідомлення, яке відображається поза потоком типового вмісту. У сповіщеннях надаються відгуки з урахуванням контексту, в яких читачів звичайно просять виконати певну дію."
 
-#: src/blocks/alert/inspector.js:60 src/blocks/author/inspector.js:61
+#: src/blocks/alert/inspector.js:60
+#: src/blocks/author/inspector.js:61
 #: src/blocks/click-to-tweet/inspector.js:66
 #: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:195 src/blocks/hero/inspector.js:155
+#: src/blocks/features/inspector.js:195
+#: src/blocks/hero/inspector.js:155
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
-#: src/blocks/row/column/inspector.js:176 src/blocks/row/inspector.js:232
-#: src/blocks/share/inspector.js:66 src/blocks/social-profiles/inspector.js:95
+#: src/blocks/row/column/inspector.js:176
+#: src/blocks/row/inspector.js:232
+#: src/blocks/share/inspector.js:66
+#: src/blocks/social-profiles/inspector.js:95
 #: src/extensions/colors/index.js:54
 msgid "Text Color"
 msgstr "Колір тексту"
 
 #: src/blocks/author/controls.js:36
 msgid "Edit avatar"
-msgstr "Edit avatar"
+msgstr "Змінити аватар"
 
 #. placeholder text used for the author name
 #: src/blocks/author/edit.js:127
 msgid "Write author name…"
-msgstr "Write author name…"
+msgstr "Написати ім'я автора..."
 
 #. placeholder text used for the biography
 #: src/blocks/author/edit.js:141
-msgid ""
-"Write a biography that distills objective credibility and authority to your "
-"readers…"
-msgstr ""
-"Write a biography that distills objective credibility and authority to your "
-"readers…"
+msgid "Write a biography that distills objective credibility and authority to your readers…"
+msgstr "Напишіть біографію, яка підсилює об’єктивну довіру та авторитет у ваших читачів..."
 
 #: src/blocks/author/index.js:29
 msgid "Add an author biography to build credibility and authority."
-msgstr "Add an author biography to build credibility and authority."
+msgstr "Додайте біографію автора, щоб створити довіру та авторитет."
 
 #: src/blocks/author/index.js:35
 msgid "Born to express, not to impress. A maker making the world I want."
-msgstr "Born to express, not to impress. A maker making the world I want."
+msgstr "Виражайте, а не вражайте. Створюйте те, що бажаєте."
 
 #: src/blocks/author/inspector.js:41
 msgid "Author Settings"
-msgstr "Author Settings"
+msgstr "Настройки автора"
 
 #: src/blocks/buttons/index.js:29
 msgid "Prompt visitors to take action with multiple buttons, side by side."
-msgstr ""
-"Запропонуйте відвідувачам можливі дії за допомогою кнопок, розташованих "
-"поруч."
+msgstr "Запропонуйте відвідувачам можливі дії за допомогою кнопок, розташованих поруч."
 
 #: src/blocks/buttons/inspector.js:30
 msgid "Buttons"
@@ -191,12 +186,8 @@ msgid "Add a quote for readers to tweet via Twitter."
 msgstr "Додайте коментар для читачів через Twitter."
 
 #: src/blocks/click-to-tweet/index.js:34
-msgid ""
-"The easiest way to promote and advertise your blog, website, and business on "
-"Twitter."
-msgstr ""
-"The easiest way to promote and advertise your blog, website, and business on "
-"Twitter."
+msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
+msgstr "Найлегший шлях до просування та рекламування вашого блогу, веб-сайту та бізнесу в Twitter."
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
@@ -204,7 +195,8 @@ msgid "Text Settings"
 msgstr "Настройки тексту"
 
 #: src/blocks/click-to-tweet/inspector.js:71
-#: src/blocks/form/submit-button.js:127 src/blocks/share/inspector.js:86
+#: src/blocks/form/submit-button.js:127
+#: src/blocks/share/inspector.js:86
 #: src/blocks/social-profiles/inspector.js:90
 msgid "Button Color"
 msgstr "Колір кнопки"
@@ -215,7 +207,8 @@ msgstr "Додайте роздільник між іншими блоками �
 
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:100
-#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
+#: src/blocks/hero/inspector.js:108
+#: src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr "Висота в пікселах"
 
@@ -227,10 +220,11 @@ msgstr "Висота динамічного розділового елемен�
 msgid "Color"
 msgstr "Колір"
 
-#: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
+#: src/blocks/features/edit.js:78
+#: src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
 msgid "Add as background"
-msgstr "Add as background"
+msgstr "Додати як фон"
 
 #: src/blocks/features/feature/index.js:29
 msgid "A singular child column within a parent features block."
@@ -241,9 +235,12 @@ msgid "Feature Settings"
 msgstr "Настройки особливості"
 
 #: src/blocks/features/feature/inspector.js:71
-#: src/blocks/features/inspector.js:143 src/blocks/hero/inspector.js:84
-#: src/blocks/icon/inspector.js:217 src/blocks/media-card/inspector.js:62
-#: src/blocks/row/column/inspector.js:133 src/blocks/row/inspector.js:180
+#: src/blocks/features/inspector.js:143
+#: src/blocks/hero/inspector.js:84
+#: src/blocks/icon/inspector.js:217
+#: src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:133
+#: src/blocks/row/inspector.js:180
 #: src/components/background/panel.js:146
 msgid "Padding"
 msgstr "Заповнення"
@@ -252,7 +249,8 @@ msgstr "Заповнення"
 msgid "Add up to three columns of small notes for your product or service."
 msgstr "Додайте один-три стовпці стислих нотаток про ваш товар або послугу."
 
-#: src/blocks/features/inspector.js:122 src/blocks/row/column/inspector.js:111
+#: src/blocks/features/inspector.js:122
+#: src/blocks/row/column/inspector.js:111
 #: src/blocks/row/inspector.js:157
 #: src/components/dimensions-control/index.js:295
 msgid "Margin"
@@ -261,33 +259,41 @@ msgstr "Поле"
 #: src/blocks/features/inspector.js:164
 #: src/blocks/gallery-carousel/inspector.js:84
 #: src/blocks/gallery-collage/inspector.js:108
-#: src/blocks/gallery-stacked/inspector.js:91 src/blocks/row/inspector.js:202
+#: src/blocks/gallery-stacked/inspector.js:91
+#: src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
 msgid "Gutter"
 msgstr "Корінець"
 
-#: src/blocks/features/inspector.js:167 src/blocks/row/inspector.js:205
+#: src/blocks/features/inspector.js:167
+#: src/blocks/row/inspector.js:205
 msgid "Space between each column."
 msgstr "Проміжок між стовпцями."
 
-#: src/blocks/features/inspector.js:86 src/blocks/icon/icon-size-select.js:16
-#: src/blocks/row/inspector.js:99 src/blocks/share/inspector.js:72
+#: src/blocks/features/inspector.js:86
+#: src/blocks/icon/icon-size-select.js:16
+#: src/blocks/row/inspector.js:99
+#: src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:76
 #: src/components/dimensions-control/dimensions-select.js:15
 #: src/components/size-control/index.js:116
 msgid "Small"
 msgstr "Малий"
 
-#: src/blocks/features/inspector.js:87 src/blocks/icon/icon-size-select.js:21
-#: src/blocks/row/inspector.js:100 src/blocks/share/inspector.js:73
+#: src/blocks/features/inspector.js:87
+#: src/blocks/icon/icon-size-select.js:21
+#: src/blocks/row/inspector.js:100
+#: src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:77
 #: src/components/dimensions-control/dimensions-select.js:20
 #: src/components/size-control/index.js:120
 msgid "Medium"
 msgstr "Cередній"
 
-#: src/blocks/features/inspector.js:88 src/blocks/icon/icon-size-select.js:26
-#: src/blocks/row/inspector.js:101 src/blocks/share/inspector.js:74
+#: src/blocks/features/inspector.js:88
+#: src/blocks/icon/icon-size-select.js:26
+#: src/blocks/row/inspector.js:101
+#: src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:25
 #: src/components/size-control/index.js:65
@@ -298,8 +304,10 @@ msgstr "Великий"
 msgid "Features Settings"
 msgstr "Настройки особливостей"
 
-#: src/blocks/features/inspector.js:96 src/blocks/post-carousel/inspector.js:70
-#: src/blocks/posts/inspector.js:110 src/blocks/services/inspector.js:69
+#: src/blocks/features/inspector.js:96
+#: src/blocks/post-carousel/inspector.js:70
+#: src/blocks/posts/inspector.js:110
+#: src/blocks/services/inspector.js:69
 msgid "Columns"
 msgstr "Стовпці"
 
@@ -332,7 +340,7 @@ msgstr "Додати заголовок..."
 #: src/blocks/food-and-drinks/food-item/inspector.js:45
 #: src/blocks/food-and-drinks/food-item/save.js:66
 msgid "Popular"
-msgstr "Popular"
+msgstr "Популярний"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:256
 #: src/blocks/food-and-drinks/food-item/inspector.js:60
@@ -423,19 +431,22 @@ msgid "Image Settings"
 msgstr "Настройки зображення"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:84
-#: src/blocks/gif/inspector.js:31 src/blocks/media-card/inspector.js:95
+#: src/blocks/gif/inspector.js:31
+#: src/blocks/media-card/inspector.js:95
 #: src/blocks/services/service/inspector.js:33
 msgid "Alt Text (Alternative Text)"
 msgstr "Текст заміщення (альтернативний текст"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:90
-#: src/blocks/gif/inspector.js:37 src/blocks/media-card/inspector.js:101
+#: src/blocks/gif/inspector.js:37
+#: src/blocks/media-card/inspector.js:101
 #: src/blocks/services/service/inspector.js:39
 msgid "Describe the purpose of the image"
 msgstr "Опишіть мету цього зображення"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:92
-#: src/blocks/gif/inspector.js:39 src/blocks/media-card/inspector.js:103
+#: src/blocks/gif/inspector.js:39
+#: src/blocks/media-card/inspector.js:103
 #: src/blocks/services/service/inspector.js:41
 msgid "Leave empty if the image is purely decorative."
 msgstr "Залиште поле пустим, якщо це лише прикраса."
@@ -450,8 +461,10 @@ msgstr "Точка уваги"
 msgid "Display a menu or price list."
 msgstr "Відображення меню або прайсу."
 
-#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
-#: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
+#: src/blocks/food-and-drinks/inspector.js:26
+#: src/blocks/map/inspector.js:107
+#: src/blocks/posts/inspector.js:187
+#: src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
 msgid "Styles"
 msgstr "Стилі"
@@ -521,9 +534,7 @@ msgstr "Google reCAPTCHA"
 
 #: src/blocks/form/edit.js:296
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
-msgstr ""
-"Додайте ключ сайту та секретний ключ eCAPTCHA , щоб захистити вашу форму від "
-"спаму."
+msgstr "Додайте ключ сайту та секретний ключ eCAPTCHA , щоб захистити вашу форму від спаму."
 
 #: src/blocks/form/edit.js:302
 msgid "Generate keys"
@@ -545,34 +556,37 @@ msgstr "Ключ сайту"
 msgid "Secret Key"
 msgstr "Секретний ключ"
 
-#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
+#: src/blocks/form/edit.js:330
+#: src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr "Збереження"
 
-#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
+#: src/blocks/form/edit.js:330
+#: src/blocks/map/inspector.js:231
 msgid "Save"
-msgstr "Save"
+msgstr "Зберегти"
 
-#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
+#: src/blocks/form/edit.js:345
+#: src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr "Видалити"
 
 #: src/blocks/form/fields/coblocks-option.js:61
 msgid "Write option…"
-msgstr "Write option…"
+msgstr "Написати варіант..."
 
 #: src/blocks/form/fields/coblocks-option.js:70
 msgid "Remove Option"
-msgstr "Remove Option"
+msgstr "Видалити варіант"
 
 #: src/blocks/form/fields/date/index.js:21
 msgid "A field for requesting date selections with a date picker."
-msgstr "A field for requesting date selections with a date picker."
+msgstr "Поле для запиту дати з календариком."
 
 #: src/blocks/form/fields/email/index.js:20
 msgid "A field for collecting a validated email address."
-msgstr "A field for collecting a validated email address."
+msgstr "Поле для отримання правильної адреси електронної пошти."
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
@@ -585,7 +599,7 @@ msgstr "Обов'язково"
 
 #: src/blocks/form/fields/multi-field.js:102
 msgid "Add Option"
-msgstr "Add Option"
+msgstr "Додати варіант"
 
 #: src/blocks/form/fields/name/edit.js:69
 msgid "Name Field Settings"
@@ -605,15 +619,15 @@ msgstr "Перемкніть, щоб додати поле для прізвищ
 
 #: src/blocks/form/fields/name/index.js:20
 msgid "A text field for collecting the first and last names."
-msgstr "A text field for collecting the first and last names."
+msgstr "Текстове поле для отримання імен і прізвищ."
 
 #: src/blocks/form/fields/phone/index.js:21
 msgid "A phone number to allow visitors to give you a phone number."
-msgstr "A phone number to allow visitors to give you a phone number."
+msgstr "Поле, в якому відвідувачі можуть указати номер телефону."
 
 #: src/blocks/form/fields/radio/index.js:21
 msgid "A field with multiple options where only one choice can be made."
-msgstr "A field with multiple options where only one choice can be made."
+msgstr "Поле з кількома варіантами, з яких можна вибрати лише один."
 
 #: src/blocks/form/fields/textarea/index.js:20
 msgid "A text box for longer responses."
@@ -621,11 +635,11 @@ msgstr "Блок тексту для довших відповідей."
 
 #: src/blocks/form/index.js:27
 msgid "Add a contact form to your page."
-msgstr "Add a contact form to your page."
+msgstr "Додати на сторінку форму звернення."
 
 #: src/blocks/form/index.js:36
 msgid "Subject example"
-msgstr "Subject example"
+msgstr "Зразок теми"
 
 #: src/blocks/form/submit-button.js:107
 msgid "Add text…"
@@ -652,7 +666,8 @@ msgstr "Карусель"
 msgid "image %1$d of %2$d in gallery"
 msgstr "зображення %1$d з %2$d у галереї"
 
-#: src/blocks/gallery-carousel/edit.js:376 src/blocks/gif/edit.js:243
+#: src/blocks/gallery-carousel/edit.js:376
+#: src/blocks/gif/edit.js:243
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:230
 msgid "Write caption…"
@@ -660,66 +675,68 @@ msgstr "Напишіть підпис..."
 
 #: src/blocks/gallery-carousel/index.js:35
 msgid "Display multiple images in a beautiful carousel gallery."
-msgstr ""
-"Показ кількох зображень у привабливій галереї, яка діє за принципом каруселі."
+msgstr "Показ кількох зображень у привабливій галереї, яка діє за принципом каруселі."
 
 #: src/blocks/gallery-carousel/inspector.js:109
 msgid "Thumbnails"
-msgstr "Thumbnails"
+msgstr "Мініатюри"
 
 #: src/blocks/gallery-carousel/inspector.js:119
 msgid "Responsive Height"
-msgstr "Responsive Height"
+msgstr "Адаптивна висота"
 
 #: src/blocks/gallery-carousel/inspector.js:40
 msgid "Showing thumbnail navigation."
-msgstr "Showing thumbnail navigation."
+msgstr "Показ навігації мініатюрами."
 
 #: src/blocks/gallery-carousel/inspector.js:40
 msgid "Toggle to show thumbnails."
-msgstr "Toggle to show thumbnails."
+msgstr "Перемкнути на показ мініатюр."
 
 #: src/blocks/gallery-carousel/inspector.js:44
 msgid "Percentage based height is activated."
-msgstr "Percentage based height is activated."
+msgstr "Активовано висоту у відсотках."
 
 #: src/blocks/gallery-carousel/inspector.js:44
 msgid "Toggle for percentage based height."
-msgstr "Toggle for percentage based height."
+msgstr "Перемкнути на висоту у відсотках."
 
 #: src/blocks/gallery-carousel/inspector.js:68
 msgid "Carousel Settings"
-msgstr "Carousel Settings"
+msgstr "Настройки каруселі"
 
-#: src/blocks/gallery-carousel/inspector.js:71 src/blocks/icon/inspector.js:173
+#: src/blocks/gallery-carousel/inspector.js:71
+#: src/blocks/icon/inspector.js:173
 #: src/components/typography-controls/index.js:189
 msgid "Size"
 msgstr "Розмір"
 
 #: src/blocks/gallery-carousel/inspector.js:90
 #: src/blocks/gallery-masonry/inspector.js:83
-#: src/blocks/gallery-stacked/inspector.js:95 src/blocks/share/inspector.js:120
+#: src/blocks/gallery-stacked/inspector.js:95
+#: src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:124
 #: src/components/background/panel.js:156
 msgid "Rounded Corners"
 msgstr "Заокруглені кути"
 
-#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
+#: src/blocks/gallery-collage/edit.js:174
+#: src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr "Застосувати"
 
 #: src/blocks/gallery-collage/edit.js:183
 msgid "Write caption..."
-msgstr "Write caption..."
+msgstr "Написати підпис..."
 
 #: src/blocks/gallery-collage/index.js:34
 msgid "Assemble images into a beautiful collage gallery."
-msgstr "Assemble images into a beautiful collage gallery."
+msgstr "Зробити із зображень приємний колаж або галерею."
 
 #: src/blocks/gallery-collage/inspector.js:105
 msgid "Collage Settings"
-msgstr "Collage Settings"
+msgstr "Настройки колажу"
 
 #: src/blocks/gallery-collage/inspector.js:128
 msgid "Shadow"
@@ -754,23 +771,21 @@ msgstr "Кам'яна кладка"
 
 #: src/blocks/gallery-masonry/index.js:35
 msgid "Display multiple images in an organized masonry gallery."
-msgstr ""
-"Показ кількох зображень у впорядкованій галереї, яка має вигляд кам’яної "
-"кладки."
+msgstr "Показ кількох зображень у впорядкованій галереї, яка має вигляд кам’яної кладки."
 
 #: src/blocks/gallery-masonry/inspector.js:53
 #: src/blocks/gallery-stacked/inspector.js:56
 msgid "Image lightbox is enabled."
-msgstr "Image lightbox is enabled."
+msgstr "Увімкнуто лайтбокс для зображень."
 
 #: src/blocks/gallery-masonry/inspector.js:53
 #: src/blocks/gallery-stacked/inspector.js:56
 msgid "Toggle to enable the image lightbox."
-msgstr "Toggle to enable the image lightbox."
+msgstr "Перемкнути на лайтбокс для зображень."
 
 #: src/blocks/gallery-masonry/inspector.js:73
 msgid "Masonry Settings"
-msgstr "Masonry Settings"
+msgstr "Настройки кладки"
 
 #: src/blocks/gallery-masonry/inspector.js:76
 msgid "Column Size"
@@ -783,7 +798,7 @@ msgstr "Заокруглення кутів елементів галереї."
 #: src/blocks/gallery-masonry/inspector.js:92
 #: src/blocks/gallery-stacked/inspector.js:123
 msgid "Lightbox"
-msgstr "Lightbox"
+msgstr "Лайтбокс"
 
 #: src/blocks/gallery-stacked/edit.js:168
 msgid "Stacked"
@@ -802,15 +817,12 @@ msgid "Fullwidth images are enabled."
 msgstr "Дозволено показ повноширинних зображень."
 
 #: src/blocks/gallery-stacked/inspector.js:48
-msgid ""
-"Toggle to fill the available gallery area with completely fullwidth images."
-msgstr ""
-"Перемкніть, щоб заповнити доступну площину галереї повністю повношириними "
-"зображеннями."
+msgid "Toggle to fill the available gallery area with completely fullwidth images."
+msgstr "Перемкніть, щоб заповнити доступну площину галереї повністю повношириними зображеннями."
 
 #: src/blocks/gallery-stacked/inspector.js:80
 msgid "Stacked Settings"
-msgstr "Stacked Settings"
+msgstr "Настройки накладення"
 
 #: src/blocks/gallery-stacked/inspector.js:83
 msgid "Fullwidth Images"
@@ -864,11 +876,13 @@ msgstr "Файл GitHub"
 msgid "File"
 msgstr "Файл"
 
-#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
+#: src/blocks/gist/deprecated.js:36
+#: src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr "Переглянути цей Gist-фрагмент на GitHub"
 
-#: src/blocks/gist/edit.js:124 src/blocks/gist/inspector.js:51
+#: src/blocks/gist/edit.js:124
+#: src/blocks/gist/inspector.js:51
 msgid "Gist URL"
 msgstr "Gist URL"
 
@@ -882,7 +896,7 @@ msgstr "Завантаження Gist"
 
 #: src/blocks/gist/index.js:29
 msgid "Embed GitHub gists by adding a gist link."
-msgstr "Embed GitHub gists by adding a gist link."
+msgstr "Вбудувати gist-фрагменти з GitHub, додавши посилання на них."
 
 #: src/blocks/gist/inspector.js:31
 msgid "Showing gist meta data."
@@ -910,15 +924,11 @@ msgstr "Змінити макет"
 
 #: src/blocks/hero/edit.js:152
 msgid "Add background to hero"
-msgstr "Add background to hero"
+msgstr "Додати фон для hero"
 
 #: src/blocks/hero/index.js:41
-msgid ""
-"An introductory area of a page accompanied by a small amount of text and a "
-"call to action."
-msgstr ""
-"Вступна частина сторінки, яка супроводжується невеликим текстом і закликом "
-"до дії."
+msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
+msgstr "Вступна частина сторінки, яка супроводжується невеликим текстом і закликом до дії."
 
 #: src/blocks/hero/inspector.js:127
 msgid "Content width in pixels"
@@ -928,8 +938,10 @@ msgstr "Ширина вмісту в пікселах"
 msgid "Hero Settings"
 msgstr "‌‌Настройки Hero"
 
-#: src/blocks/hero/inspector.js:85 src/blocks/media-card/inspector.js:63
-#: src/blocks/row/column/inspector.js:134 src/blocks/row/inspector.js:181
+#: src/blocks/hero/inspector.js:85
+#: src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:134
+#: src/blocks/row/inspector.js:181
 msgid "Space inside of the container."
 msgstr "Проміжок у контейнері"
 
@@ -975,38 +987,35 @@ msgstr "Додати виділений текст..."
 
 #: src/blocks/highlight/index.js:28
 msgid "Draw attention and emphasize important narrative."
-msgstr "Draw attention and emphasize important narrative."
+msgstr "Привернути увагу та підкреслити щось важливе."
 
 #: src/blocks/highlight/index.js:33
-msgid ""
-"Add a highlight effect to paragraph text in order to grab attention and "
-"emphasize important narrative."
-msgstr ""
-"Add a highlight effect to paragraph text in order to grab attention and "
-"emphasize important narrative."
+msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
+msgstr "Застосувати до абзацу ефект висвітлення, щоб привернути увагу та підкреслити щось важливе."
 
-#: src/blocks/icon/icon-size-select.js:30 src/blocks/row/inspector.js:102
+#: src/blocks/icon/icon-size-select.js:30
+#: src/blocks/row/inspector.js:102
 #: src/components/dimensions-control/dimensions-select.js:30
 msgid "Huge"
 msgstr "Великий"
 
 #: src/blocks/icon/icon-size-select.js:79
 msgid "Choose icon size preset"
-msgstr "Choose icon size preset"
+msgstr "Вибрати налаштування розміру значка"
 
 #: src/blocks/icon/index.js:33
 msgid "Add a stylized graphic symbol to communicate something more."
-msgstr ""
-"Додайте стилізований графічний символ, який додатково про щось сповіщає."
+msgstr "Додайте стилізований графічний символ, який додатково про щось сповіщає."
 
-#: src/blocks/icon/inspector.js:155 src/blocks/share/inspector.js:111
+#: src/blocks/icon/inspector.js:155
+#: src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:115
 msgid "Icon Settings"
 msgstr "Настройки значка"
 
 #: src/blocks/icon/inspector.js:168
 msgid "Reset icon size"
-msgstr "Reset icon size"
+msgstr "Скинути розмір значка"
 
 #: src/blocks/icon/inspector.js:170
 #: src/components/dimensions-control/index.js:470
@@ -1016,7 +1025,7 @@ msgstr "Перезавантажити"
 
 #: src/blocks/icon/inspector.js:198
 msgid "Apply custom size"
-msgstr "Apply custom size"
+msgstr "Застосувати власний розмір"
 
 #: src/blocks/icon/inspector.js:201
 msgid "Custom"
@@ -1056,7 +1065,8 @@ msgstr "Відкриття на новій вкладці"
 msgid "Open in New Tab"
 msgstr "Відкрити на новій вкладці"
 
-#: src/blocks/icon/inspector.js:309 src/blocks/share/inspector.js:104
+#: src/blocks/icon/inspector.js:309
+#: src/blocks/share/inspector.js:104
 #: src/blocks/social-profiles/inspector.js:108
 msgid "Icon Color"
 msgstr "Колір значка"
@@ -1072,13 +1082,11 @@ msgstr "Логотипи та емблеми"
 #: src/blocks/logos/edit.js:70
 #: src/components/block-gallery/gallery-placeholder.js:72
 msgid "Drag images, upload new ones or select files from your library."
-msgstr ""
-"Перетягніть зображення, завантажте нові або виберіть файли в бібліотеці"
+msgstr "Перетягніть зображення, завантажте нові або виберіть файли в бібліотеці"
 
 #: src/blocks/logos/index.js:27
 msgid "Add logos, badges, or certifications to build credibility."
-msgstr ""
-"Додайте логотипи, емблеми та сертифікати, щоб зміцнити довіру відвідувачів."
+msgstr "Додайте логотипи, емблеми та сертифікати, щоб зміцнити довіру відвідувачів."
 
 #: src/blocks/logos/inspector.js:12
 msgid "Logos Settings"
@@ -1100,7 +1108,8 @@ msgstr "Змінити розташування"
 msgid "Map style"
 msgstr "Стиль мапи"
 
-#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
+#: src/blocks/map/deprecated.js:96
+#: src/blocks/map/edit.js:293
 #: src/blocks/map/save.js:50
 msgid "Google Map"
 msgstr "Google Map"
@@ -1111,8 +1120,7 @@ msgstr "Неправильний ключ API або надто багато з�
 
 #: src/blocks/map/edit.js:294
 msgid "Enter a location or address to drop a pin on a Google map."
-msgstr ""
-"Введіть розташування або адресу, щоб поставити позначку на мапі Google."
+msgstr "Введіть розташування або адресу, щоб поставити позначку на мапі Google."
 
 #: src/blocks/map/edit.js:301
 msgid "Search for a place or address…"
@@ -1124,7 +1132,7 @@ msgstr "Скасувати"
 
 #: src/blocks/map/index.js:28
 msgid "Add an address or location to drop a pin on a Google map."
-msgstr "Add an address or location to drop a pin on a Google map."
+msgstr "Додати адресу або розташування або адресу, щоб поставити позначку на мапі Google."
 
 #: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
@@ -1168,8 +1176,7 @@ msgstr "Дозволено перемикання між стандартним 
 
 #: src/blocks/map/inspector.js:185
 msgid "Toggle to enable switching between standard and satellite maps."
-msgstr ""
-"Перемкніть, щоб дозволити перемикання між стандартною та супутниковою мапою."
+msgstr "Перемкніть, щоб дозволити перемикання між стандартною та супутниковою мапою."
 
 #: src/blocks/map/inspector.js:188
 msgid "Zoom Controls"
@@ -1181,9 +1188,7 @@ msgstr "Показ елементів керування масштабом ма
 
 #: src/blocks/map/inspector.js:191
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
-msgstr ""
-"Перемкніть, щоб дозволити збільшення та зменшення масштабу мапи за допомогою "
-"елементів керування."
+msgstr "Перемкніть, щоб дозволити збільшення та зменшення масштабу мапи за допомогою елементів керування."
 
 #: src/blocks/map/inspector.js:194
 msgid "Street View"
@@ -1195,9 +1200,7 @@ msgstr "Показ елемента керування виглядом з ву�
 
 #: src/blocks/map/inspector.js:197
 msgid "Toggle to show the street view control at the bottom right."
-msgstr ""
-"Перемкніть, щоб внизу справа відображався елемент керування виглядом з "
-"вулиць."
+msgstr "Перемкніть, щоб внизу справа відображався елемент керування виглядом з вулиць."
 
 #: src/blocks/map/inspector.js:200
 msgid "Fullscreen Toggle"
@@ -1209,24 +1212,19 @@ msgstr "Показ елемента керування повноекранни�
 
 #: src/blocks/map/inspector.js:203
 msgid "Toggle to show the fullscreen map control."
-msgstr ""
-"Перемкніть, щоб показувати елемент керування повноекранним режимом мапи."
+msgstr "Перемкніть, щоб показувати елемент керування повноекранним режимом мапи."
 
 #: src/blocks/map/inspector.js:208
 msgid "Google Maps API Key"
 msgstr "Ключ Google Maps API"
 
 #: src/blocks/map/inspector.js:212
-msgid ""
-"Add a Google Maps API key. Updating this API key will set all your maps to "
-"use the new key."
-msgstr ""
-"Add a Google Maps API key. Updating this API key will set all your maps to "
-"use the new key."
+msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgstr "Додати ключ Google Maps API. У разі оновлення цього ключа API всі ваші мапи будуть використовувати новий ключ."
 
 #: src/blocks/map/inspector.js:215
 msgid "Get a key"
-msgstr "Get a key"
+msgstr "Отримати ключ"
 
 #: src/blocks/map/inspector.js:216
 msgid "Need help?"
@@ -1299,107 +1297,128 @@ msgstr "Перетягніть, щоб замінити мультимедіа"
 msgid "Edit media"
 msgstr "Редагувати мультимедіа"
 
-#: src/blocks/post-carousel/edit.js:123 src/blocks/posts/edit.js:247
+#: src/blocks/post-carousel/edit.js:123
+#: src/blocks/posts/edit.js:247
 msgid "Edit RSS URL"
-msgstr "Edit RSS URL"
+msgstr "Змінити URL RSS"
 
 #: src/blocks/post-carousel/edit.js:178
 msgid "Post Carousel"
-msgstr "Post Carousel"
+msgstr "Карусель дописів"
 
-#: src/blocks/post-carousel/edit.js:184 src/blocks/posts/edit.js:295
+#: src/blocks/post-carousel/edit.js:184
+#: src/blocks/posts/edit.js:295
 msgid "No posts found. Start publishing or add posts from an %s feed."
-msgstr "No posts found. Start publishing or add posts from an %s feed."
+msgstr "Дописи не знайдено. Почніть публікацію або додайте дописи з каналу %s."
 
-#: src/blocks/post-carousel/edit.js:187 src/blocks/posts/edit.js:298
+#: src/blocks/post-carousel/edit.js:187
+#: src/blocks/posts/edit.js:298
 msgid "Retrieve an External Feed"
-msgstr "Retrieve an External Feed"
+msgstr "Отримати зовнішній канал"
 
-#: src/blocks/post-carousel/edit.js:193 src/blocks/posts/edit.js:304
+#: src/blocks/post-carousel/edit.js:193
+#: src/blocks/posts/edit.js:304
 msgid "Use External Feed"
-msgstr "Use External Feed"
+msgstr "Використати зовнішній канал"
 
 #. %s: RSS
-#: src/blocks/post-carousel/edit.js:216 src/blocks/posts/edit.js:332
+#: src/blocks/post-carousel/edit.js:216
+#: src/blocks/posts/edit.js:332
 msgid "%s Feed"
-msgstr "%s Feed"
+msgstr "Канал %s"
 
-#: src/blocks/post-carousel/edit.js:217 src/blocks/posts/edit.js:333
+#: src/blocks/post-carousel/edit.js:217
+#: src/blocks/posts/edit.js:333
 msgid "%s URLs are generally located at the /feed/ directory of a site."
-msgstr "%s URLs are generally located at the /feed/ directory of a site."
+msgstr "URL-адрес %s звичайно розташовані в каталозі /feed/ на сайті."
 
-#: src/blocks/post-carousel/edit.js:221 src/blocks/posts/edit.js:337
+#: src/blocks/post-carousel/edit.js:221
+#: src/blocks/posts/edit.js:337
 msgid "https://example.com/feed…"
 msgstr "https://example.com/feed…"
 
-#: src/blocks/post-carousel/edit.js:227 src/blocks/posts/edit.js:343
+#: src/blocks/post-carousel/edit.js:227
+#: src/blocks/posts/edit.js:343
 msgid "Use URL"
-msgstr "Use URL"
+msgstr "Використати URL"
 
-#: src/blocks/post-carousel/edit.js:320 src/blocks/posts/edit.js:463
-#: src/blocks/post-carousel/index.php:368 src/blocks/posts/index.php:385
+#: src/blocks/post-carousel/edit.js:320
+#: src/blocks/posts/edit.js:463
+#: src/blocks/post-carousel/index.php:368
+#: src/blocks/posts/index.php:385
 msgid "Read more"
-msgstr "Read more"
+msgstr "Докладніше"
 
 #: src/blocks/post-carousel/index.js:27
 msgid "Display posts or an external blog feed as a carousel."
-msgstr "Display posts or an external blog feed as a carousel."
+msgstr "Показувати дописи або канал зовнішнього блогу у вигляді каруселі."
 
-#: src/blocks/post-carousel/inspector.js:108 src/blocks/posts/inspector.js:174
+#: src/blocks/post-carousel/inspector.js:108
+#: src/blocks/posts/inspector.js:174
 msgid "Number of posts"
-msgstr "Number of posts"
+msgstr "Кількість дописів"
 
 #: src/blocks/post-carousel/inspector.js:38
 msgid "Post Carousel Settings"
-msgstr "Post Carousel Settings"
+msgstr "Настройки каруселі дописів"
 
-#: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
+#: src/blocks/post-carousel/inspector.js:41
+#: src/blocks/posts/inspector.js:81
 msgid "Post Date"
-msgstr "Post Date"
+msgstr "Дата допису"
 
-#: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
+#: src/blocks/post-carousel/inspector.js:45
+#: src/blocks/posts/inspector.js:85
 msgid "Showing the publish date."
-msgstr "Showing the publish date."
+msgstr "Показ дати публікації."
 
-#: src/blocks/post-carousel/inspector.js:46 src/blocks/posts/inspector.js:86
+#: src/blocks/post-carousel/inspector.js:46
+#: src/blocks/posts/inspector.js:86
 msgid "Toggle to show the publish date."
-msgstr "Toggle to show the publish date."
+msgstr "Перемкнути на показ дати публікації."
 
-#: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
+#: src/blocks/post-carousel/inspector.js:51
+#: src/blocks/posts/inspector.js:91
 msgid "Post Content"
-msgstr "Post Content"
+msgstr "Вміст допису"
 
-#: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
+#: src/blocks/post-carousel/inspector.js:55
+#: src/blocks/posts/inspector.js:95
 msgid "Showing the post content."
-msgstr "Showing the post content."
+msgstr "Показ вмісту допису."
 
-#: src/blocks/post-carousel/inspector.js:56 src/blocks/posts/inspector.js:96
+#: src/blocks/post-carousel/inspector.js:56
+#: src/blocks/posts/inspector.js:96
 msgid "Toggle to show the post content."
-msgstr "Toggle to show the post content."
+msgstr "Перемкнути на показ вмісту допису."
 
-#: src/blocks/post-carousel/inspector.js:62 src/blocks/posts/inspector.js:102
+#: src/blocks/post-carousel/inspector.js:62
+#: src/blocks/posts/inspector.js:102
 msgid "Max words in content"
-msgstr "Max words in content"
+msgstr "Макс. кількість слів у дописі"
 
-#: src/blocks/post-carousel/inspector.js:86 src/blocks/posts/inspector.js:152
+#: src/blocks/post-carousel/inspector.js:86
+#: src/blocks/posts/inspector.js:152
 msgid "Feed Settings"
-msgstr "Feed Settings"
+msgstr "Настройки каналу"
 
-#: src/blocks/post-carousel/inspector.js:90 src/blocks/posts/inspector.js:156
+#: src/blocks/post-carousel/inspector.js:90
+#: src/blocks/posts/inspector.js:156
 msgid "My Blog"
 msgstr "Мій блог"
 
-#: src/blocks/post-carousel/inspector.js:91 src/blocks/posts/inspector.js:157
+#: src/blocks/post-carousel/inspector.js:91
+#: src/blocks/posts/inspector.js:157
 msgid "External Feed"
-msgstr "External Feed"
+msgstr "Зовнішній канал"
 
 #: src/blocks/posts/edit.js:260
 msgid "Image on left"
-msgstr "Image on left"
+msgstr "Зображення ліворуч"
 
 #: src/blocks/posts/edit.js:265
 msgid "Image on right"
-msgstr "Image on right"
+msgstr "Зображення праворуч"
 
 #: src/blocks/posts/edit.js:289
 msgid "Blog Posts"
@@ -1407,35 +1426,35 @@ msgstr "Публікації в блозі"
 
 #: src/blocks/posts/index.js:27
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
-msgstr "Display posts or an RSS feed as stacked or horizontal cards."
+msgstr "Показувати дописи або канал RSS у вигляді накладених або горизонтальних карток."
 
 #: src/blocks/posts/inspector.js:129
 msgid "Thumbnail Size"
-msgstr "Thumbnail Size"
+msgstr "Розмір мініатюри"
 
 #: src/blocks/posts/inspector.js:78
 msgid "Posts Settings"
-msgstr "Posts Settings"
+msgstr "Настройки дописів"
 
 #: src/blocks/pricing-table/controls.js:17
 msgid "One Pricing Table"
-msgstr "One Pricing Table"
+msgstr "Одна таблиця цін"
 
 #: src/blocks/pricing-table/controls.js:22
 msgid "Two Pricing Tables"
-msgstr "Two Pricing Tables"
+msgstr "Дві таблиці цін"
 
 #: src/blocks/pricing-table/controls.js:27
 msgid "Three Pricing Tables"
-msgstr "Three Pricing Tables"
+msgstr "Три таблиці цін"
 
 #: src/blocks/pricing-table/controls.js:32
 msgid "Four Pricing Tables"
-msgstr "Four Pricing Tables"
+msgstr "Чотири таблиці цін"
 
 #: src/blocks/pricing-table/controls.js:62
 msgid "Change pricing table count"
-msgstr "Change pricing table count"
+msgstr "Змінити кількість таблиць цін"
 
 #: src/blocks/pricing-table/edit.js:39
 msgid "Plan %d"
@@ -1443,7 +1462,7 @@ msgstr "План %d"
 
 #: src/blocks/pricing-table/index.js:29
 msgid "Add pricing tables to help visitors compare products and plans."
-msgstr "Add pricing tables to help visitors compare products and plans."
+msgstr "Додати таблиці цін, щоб відвідувачі могли порівнювати товари та пакети послуг."
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:112
 msgid "Add features"
@@ -1463,11 +1482,11 @@ msgstr "$"
 
 #: src/blocks/pricing-table/pricing-table-item/index.js:27
 msgid "A pricing table to help visitors compare products and plans."
-msgstr "A pricing table to help visitors compare products and plans."
+msgstr "Таблиця цін, яка допомагає відвідувачам порівнювати товари та пакети послуг."
 
 #: src/blocks/row/column/edit.js:90
 msgid "Add background to column"
-msgstr "Add background to column"
+msgstr "Додати фон для стовпця"
 
 #: src/blocks/row/column/index.js:30
 msgid "An immediate child of a row."
@@ -1477,7 +1496,8 @@ msgstr "Безпосередній дочірній елемент рядка."
 msgid "Column Settings"
 msgstr "Настройки стовпців"
 
-#: src/blocks/row/column/inspector.js:112 src/blocks/row/inspector.js:158
+#: src/blocks/row/column/inspector.js:112
+#: src/blocks/row/inspector.js:158
 msgid "Space around the container."
 msgstr "Проміжок навколо контейнера."
 
@@ -1487,7 +1507,7 @@ msgstr "Ширина"
 
 #: src/blocks/row/controls.js:74
 msgid "Change row block layout"
-msgstr "Change row block layout"
+msgstr "Змінити компонування блоку рядків"
 
 #: src/blocks/row/edit.js:121
 msgid "one"
@@ -1507,7 +1527,7 @@ msgstr "4"
 
 #: src/blocks/row/edit.js:169
 msgid "Add background to row"
-msgstr "Add background to row"
+msgstr "Додати фон для рядка"
 
 #: src/blocks/row/edit.js:174
 msgid "One Column"
@@ -1546,7 +1566,8 @@ msgstr "Виберіть кількість стовпців у цьому ря�
 msgid "Select Row Columns"
 msgstr "Виберіть стовпці рядка"
 
-#: src/blocks/row/edit.js:236 src/blocks/row/inspector.js:121
+#: src/blocks/row/edit.js:236
+#: src/blocks/row/inspector.js:121
 msgid "Select Row Layout"
 msgstr "Виберіть макет рядка"
 
@@ -1555,12 +1576,8 @@ msgid "Back to Columns"
 msgstr "Повернутися до стовпців"
 
 #: src/blocks/row/index.js:38
-msgid ""
-"Add a structured wrapper for column blocks, then add content blocks you’d "
-"like to the columns."
-msgstr ""
-"Додайте структуровану обгортку для блоків стовпців, потім додайте бажані "
-"блоки вмісту для стовпців."
+msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
+msgstr "Додайте структуровану обгортку для блоків стовпців, потім додайте бажані блоки вмісту для стовпців."
 
 #: src/blocks/row/inspector.js:153
 msgid "Row Settings"
@@ -1574,43 +1591,43 @@ msgstr "Немає"
 
 #: src/blocks/row/layouts.js:13
 msgid "Equal Split"
-msgstr "Equal Split"
+msgstr "Розділення порівну"
 
 #: src/blocks/row/layouts.js:14
 msgid "Two Thirds / One Third"
-msgstr "Two Thirds / One Third"
+msgstr "Дві третини / одна третина"
 
 #: src/blocks/row/layouts.js:15
 msgid "One Third / Two Thirds"
-msgstr "One Third / Two Thirds"
+msgstr "Одна третина / дві третини"
 
 #: src/blocks/row/layouts.js:16
 msgid "Three Quarters / Quarter"
-msgstr "Three Quarters / Quarter"
+msgstr "Три чверті / одна чверть"
 
 #: src/blocks/row/layouts.js:17
 msgid "Quarter / Three Quarters"
-msgstr "Quarter / Three Quarters"
+msgstr "Одна чверть / три чверті"
 
 #: src/blocks/row/layouts.js:20
 msgid "Thirds"
-msgstr "Thirds"
+msgstr "Третини"
 
 #: src/blocks/row/layouts.js:21
 msgid "Half / Quarter / Quarter"
-msgstr "Half / Quarter / Quarter"
+msgstr "Половина / чверть / чверть"
 
 #: src/blocks/row/layouts.js:22
 msgid "Quarter / Quarter/ Half"
-msgstr "Quarter / Quarter/ Half"
+msgstr "Чверть / чверть / половина"
 
 #: src/blocks/row/layouts.js:23
 msgid "Quarter / Half / Quarter"
-msgstr "Quarter / Half / Quarter"
+msgstr "Чверть / половина / чверть"
 
 #: src/blocks/row/layouts.js:24
 msgid "One Fifth/ Three Fifths / One Fifth"
-msgstr "One Fifth/ Three Fifths / One Fifth"
+msgstr "Одна п’ята / три п’ятих / одна п’ята"
 
 #: src/blocks/row/layouts.js:27
 msgid "Quarters"
@@ -1618,11 +1635,11 @@ msgstr "Квартали"
 
 #: src/blocks/row/layouts.js:28
 msgid "Two Fifths / Fifth / Fifth / Fifth"
-msgstr "Two Fifths / Fifth / Fifth / Fifth"
+msgstr "Дві п’ятих / одна п’ята / одна п’ята / одна п’ята"
 
 #: src/blocks/row/layouts.js:29
 msgid "Fifth / Fifth / Fifth / Two Fifths"
-msgstr "Fifth / Fifth / Fifth / Two Fifths"
+msgstr "Одна п’ята / одна п’ята / одна п’ята / дві п’ятих"
 
 #: src/blocks/services/edit.js:44
 msgid "Square"
@@ -1686,9 +1703,7 @@ msgstr "Перевернути по вертикалі"
 
 #: src/blocks/shape-divider/index.js:29
 msgid "Add a shape divider to visually distinquish page sections."
-msgstr ""
-"Додайте фігурний роздільник, який допомагає візуально розрізняти розділи "
-"сторінки."
+msgstr "Додайте фігурний роздільник, який допомагає візуально розрізняти розділи сторінки."
 
 #: src/blocks/shape-divider/inspector.js:53
 msgid "Divider Settings"
@@ -1706,15 +1721,18 @@ msgstr "Висота тла в пікселах"
 msgid "Shape Color"
 msgstr "Колір фігури"
 
-#: src/blocks/share/edit.js:113 src/blocks/share/index.php:132
+#: src/blocks/share/edit.js:113
+#: src/blocks/share/index.php:132
 msgid "Share on Facebook"
 msgstr "Опублікувати в Facebook"
 
-#: src/blocks/share/edit.js:121 src/blocks/share/index.php:136
+#: src/blocks/share/edit.js:121
+#: src/blocks/share/index.php:136
 msgid "Share on Twitter"
 msgstr "Опублікувати у Twitter"
 
-#: src/blocks/share/edit.js:129 src/blocks/share/index.php:140
+#: src/blocks/share/edit.js:129
+#: src/blocks/share/index.php:140
 msgid "Share on Pinterest"
 msgstr "Опублікувати в Pinterest"
 
@@ -1722,27 +1740,29 @@ msgstr "Опублікувати в Pinterest"
 msgid "Share on LinkedIn"
 msgstr "Опублікувати в LinkedIn"
 
-#: src/blocks/share/edit.js:145 src/blocks/share/index.php:148
+#: src/blocks/share/edit.js:145
+#: src/blocks/share/index.php:148
 msgid "Share via Email"
 msgstr "Поділитися через електронну пошту"
 
-#: src/blocks/share/edit.js:153 src/blocks/share/index.php:152
+#: src/blocks/share/edit.js:153
+#: src/blocks/share/index.php:152
 msgid "Share on Tumblr"
 msgstr "Опублікувати в Tumblr"
 
-#: src/blocks/share/edit.js:161 src/blocks/share/index.php:156
+#: src/blocks/share/edit.js:161
+#: src/blocks/share/index.php:156
 msgid "Share on Google"
 msgstr "Опублікувати в Google"
 
-#: src/blocks/share/edit.js:169 src/blocks/share/index.php:160
+#: src/blocks/share/edit.js:169
+#: src/blocks/share/index.php:160
 msgid "Share on Reddit"
 msgstr "Опублікувати в Reddit"
 
 #: src/blocks/share/index.js:25
 msgid "Add social sharing links to help you get likes and shares."
-msgstr ""
-"Додайте посилання в соціальних мережах, щоб отримати більше «лайків» і "
-"сприяти поширенню."
+msgstr "Додайте посилання в соціальних мережах, щоб отримати більше «лайків» і сприяти поширенню."
 
 #: src/blocks/share/inspector.js:113
 #: src/blocks/social-profiles/inspector.js:117
@@ -1768,26 +1788,31 @@ msgstr "Розмір кнопки"
 msgid "Icons"
 msgstr "Значки"
 
-#: src/blocks/share/inspector.js:157 src/blocks/social-profiles/edit.js:205
+#: src/blocks/share/inspector.js:157
+#: src/blocks/social-profiles/edit.js:205
 #: src/blocks/social-profiles/index.php:71
 msgid "Twitter"
 msgstr "Twitter"
 
-#: src/blocks/share/inspector.js:162 src/blocks/social-profiles/edit.js:159
+#: src/blocks/share/inspector.js:162
+#: src/blocks/social-profiles/edit.js:159
 #: src/blocks/social-profiles/index.php:67
 msgid "Facebook"
 msgstr "Facebook"
 
-#: src/blocks/share/inspector.js:167 src/blocks/social-profiles/edit.js:299
+#: src/blocks/share/inspector.js:167
+#: src/blocks/social-profiles/edit.js:299
 #: src/blocks/social-profiles/index.php:79
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: src/blocks/share/inspector.js:172 src/blocks/social-profiles/edit.js:347
+#: src/blocks/share/inspector.js:172
+#: src/blocks/social-profiles/edit.js:347
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
+#: src/blocks/share/inspector.js:177
+#: includes/class-coblocks-form.php:234
 #: includes/class-coblocks-form.php:319
 msgid "Email"
 msgstr "Електронна пошта"
@@ -1804,14 +1829,15 @@ msgstr "Google"
 msgid "Reddit"
 msgstr "Reddit"
 
-#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:36
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:36
 msgid "Share button colors are enabled."
 msgstr "Дозволено кольори кнопок поширення."
 
-#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:37
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:37
 msgid "Toggle to use official colors from each social media platform."
-msgstr ""
-"Перемкніть, щоб використовувати офіційні кольори кожної соціальної мережі"
+msgstr "Перемкніть, щоб використовувати офіційні кольори кожної соціальної мережі"
 
 #: src/blocks/social-profiles/edit.js:142
 msgid "Add Facebook Profile"
@@ -1899,7 +1925,7 @@ msgstr "https://houzz.com/"
 
 #: src/blocks/social-profiles/index.js:25
 msgid "Grow your audience with links to social media profiles."
-msgstr "Grow your audience with links to social media profiles."
+msgstr "Збільште вашу аудиторію за допомогою посилань на профілі в соціальних мережах."
 
 #: src/blocks/social-profiles/inspector.js:159
 msgid "Profile Links"
@@ -2008,27 +2034,27 @@ msgstr "Користувацька URL-адреса"
 
 #: src/components/crop-settings/index.js:275
 msgid "Crop settings image placeholder"
-msgstr "Crop settings image placeholder"
+msgstr "Обітнути заповнювач для зображення"
 
 #: src/components/crop-settings/index.js:304
 msgid "Image Orientation"
-msgstr "Image Orientation"
+msgstr "Oрієнтація зображення"
 
 #: src/components/crop-settings/index.js:310
 msgid "Rotate counter-clockwise"
-msgstr "Rotate counter-clockwise"
+msgstr "Повернути проти годинникової стрілки"
 
 #: src/components/crop-settings/index.js:316
 msgid "Rotate clockwise"
-msgstr "Rotate clockwise"
+msgstr "Повернути за годинниковою стрілкою"
 
 #: src/components/crop-settings/index.js:325
 msgid "Reset image cropping options"
-msgstr "Reset image cropping options"
+msgstr "Скинути зображення з обтинанням варіантів"
 
 #: src/components/crop-settings/index.js:327
 msgid "Reset All"
-msgstr "Reset All"
+msgstr "Скинути все"
 
 #: src/components/dimensions-control/index.js:442
 msgid "Select Units"
@@ -2177,7 +2203,7 @@ msgstr "П’ять секунд"
 
 #: src/components/slider-panel/autoplay-options.js:15
 msgid "Six Seconds"
-msgstr "Six Seconds"
+msgstr "Шість секунд"
 
 #: src/components/slider-panel/autoplay-options.js:16
 msgid "Seven Seconds"
@@ -2197,7 +2223,7 @@ msgstr "Десять секунд"
 
 #: src/components/slider-panel/index.js:102
 msgid "Free Scroll"
-msgstr "Free Scroll"
+msgstr "Вільне прокручування"
 
 #: src/components/slider-panel/index.js:108
 msgid "Arrow Navigation"
@@ -2209,7 +2235,7 @@ msgstr "Навігація крапками"
 
 #: src/components/slider-panel/index.js:120
 msgid "Align Cells"
-msgstr "Align Cells"
+msgstr "Вирівняти клітинки"
 
 #: src/components/slider-panel/index.js:24
 msgid "seconds"
@@ -2231,11 +2257,11 @@ msgstr "Автоматично переходити до наступного с
 
 #: src/components/slider-panel/index.js:31
 msgid "Dragging and flicking enabled."
-msgstr "Dragging and flicking enabled."
+msgstr "Увімкнуто перетягування та струшування."
 
 #: src/components/slider-panel/index.js:31
 msgid "Toggle to enable drag functionality."
-msgstr "Toggle to enable drag functionality."
+msgstr "Перемкнути для ввімкнення перетягування."
 
 #: src/components/slider-panel/index.js:35
 msgid "Showing slide navigation arrows."
@@ -2247,7 +2273,7 @@ msgstr "Перемкніть, щоб показувати стрілки нав�
 
 #: src/components/slider-panel/index.js:39
 msgid "Showing dot navigation."
-msgstr "Showing dot navigation."
+msgstr "Показ навігації крапками."
 
 #: src/components/slider-panel/index.js:39
 msgid "Toggle to show dot navigation."
@@ -2255,27 +2281,27 @@ msgstr "Перемкніть, щоб показувати засоби наві�
 
 #: src/components/slider-panel/index.js:43
 msgid "Aligning slides to the left."
-msgstr "Aligning slides to the left."
+msgstr "Вирівнювання слайдів з лівого блоку."
 
 #: src/components/slider-panel/index.js:43
 msgid "Aligning slides to the center."
-msgstr "Aligning slides to the center."
+msgstr "Вирівнювання слайдів по центру."
 
 #: src/components/slider-panel/index.js:46
 msgid "Pausing autoplay when hovering."
-msgstr "Pausing autoplay when hovering."
+msgstr "Припинення автовідтворення, коли наводять курсор."
 
 #: src/components/slider-panel/index.js:46
 msgid "Toggle to pause autoplay when hovered."
-msgstr "Toggle to pause autoplay when hovered."
+msgstr "Перемкнути на припинення автовідтворення при наведенні"
 
 #: src/components/slider-panel/index.js:50
 msgid "Scrolling without fixed slides enabled."
-msgstr "Scrolling without fixed slides enabled."
+msgstr "Увімкнуто прокручування без фіксованих слайдів."
 
 #: src/components/slider-panel/index.js:50
 msgid "Toggle to scroll without fixed slides."
-msgstr "Toggle to scroll without fixed slides."
+msgstr "Перемкнути на прокручування без фіксованих слайдів."
 
 #: src/components/slider-panel/index.js:72
 msgid "Slider Settings"
@@ -2291,7 +2317,7 @@ msgstr "Швидкість переходу"
 
 #: src/components/slider-panel/index.js:88
 msgid "Pause on Hover"
-msgstr "Pause on Hover"
+msgstr "Припиняти при наведенні"
 
 #: src/components/slider-panel/index.js:96
 msgid "Draggable"
@@ -2347,11 +2373,11 @@ msgstr "Видалити проміжок вгорі"
 
 #: src/extensions/advanced-controls/index.js:135
 msgid "Toggle to add top margin back."
-msgstr "Toggle to add top margin back."
+msgstr "Перемкнути на додавання поля вгорі."
 
 #: src/extensions/advanced-controls/index.js:135
 msgid "Toggle to remove any top margin."
-msgstr "Toggle to remove any top margin."
+msgstr "Перемкнути на видалення поля вгорі."
 
 #: src/extensions/advanced-controls/index.js:140
 msgid "Remove Bottom Spacing"
@@ -2359,11 +2385,11 @@ msgstr "Видалити проміжок внизу"
 
 #: src/extensions/advanced-controls/index.js:163
 msgid "Toggle to add bottom margin back."
-msgstr "Toggle to add bottom margin back."
+msgstr "Перемкнути на додавання поля внизу."
 
 #: src/extensions/advanced-controls/index.js:163
 msgid "Toggle to remove any bottom margin."
-msgstr "Toggle to remove any bottom margin."
+msgstr "Перемкнути на видалення поля внизу."
 
 #: src/extensions/button-controls/index.js:71
 msgid "Display Fullwidth"
@@ -2379,7 +2405,7 @@ msgstr "Перемкніть, щоб показувати кнопку з пов
 
 #: src/extensions/image-crop/index.js:172
 msgid "Crop Settings"
-msgstr "Crop Settings"
+msgstr "Настройки обтинання."
 
 #: src/formats/uppercase/index.js:35
 msgid "Uppercase"
@@ -2425,10 +2451,9 @@ msgid "Display open"
 msgstr "Показувати у відкритому стані"
 
 #: src/blocks/accordion/accordion-item/edit.js:65
-#, fuzzy
 msgctxt "Accordion is the block name"
 msgid "Write accordion item title..."
-msgstr "Додати заголовок гармошки..."
+msgstr "Write accordion item title..."
 
 #: src/blocks/accordion/accordion-item/index.js:26
 msgctxt "This is an inner block for the Accordion Block."
@@ -2472,12 +2497,14 @@ msgctxt "block keyword"
 msgid "link"
 msgstr "посилання"
 
-#: src/blocks/buttons/index.js:31 src/blocks/hero/index.js:43
+#: src/blocks/buttons/index.js:31
+#: src/blocks/hero/index.js:43
 msgctxt "block keyword"
 msgid "cta"
 msgstr "заклик до дії"
 
-#: src/blocks/click-to-tweet/index.js:31 src/blocks/social-profiles/index.js:28
+#: src/blocks/click-to-tweet/index.js:31
+#: src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "share"
 msgstr "поширення"
@@ -2516,7 +2543,7 @@ msgstr "календар"
 #: src/blocks/form/fields/date/index.js:20
 msgctxt "block keyword"
 msgid "day month year"
-msgstr "day month year"
+msgstr "день місяць рік"
 
 #: src/blocks/form/fields/email/index.js:22
 msgctxt "block keyword"
@@ -2541,17 +2568,17 @@ msgstr "прізвище"
 #: src/blocks/form/fields/phone/index.js:20
 msgctxt "block keyword"
 msgid "telephone"
-msgstr "telephone"
+msgstr "телефон"
 
 #: src/blocks/form/fields/phone/index.js:20
 msgctxt "block keyword"
 msgid "cellular"
-msgstr "cellular"
+msgstr "стільниковий"
 
 #: src/blocks/form/fields/phone/index.js:20
 msgctxt "block keyword"
 msgid "mobile"
-msgstr "mobile"
+msgstr "мобільний"
 
 #: src/blocks/form/fields/radio/index.js:20
 msgctxt "block keyword"
@@ -2566,7 +2593,7 @@ msgstr "Вибрати"
 #: src/blocks/form/fields/radio/index.js:20
 msgctxt "block keyword"
 msgid "Option"
-msgstr "Option"
+msgstr "Варіант"
 
 #: src/blocks/form/fields/textarea/index.js:22
 msgctxt "block keyword"
@@ -2613,7 +2640,7 @@ msgstr "фотографії"
 #: src/blocks/gallery-stacked/index.js:37
 msgctxt "block keyword"
 msgid "lightbox"
-msgstr "lightbox"
+msgstr "лайтбокс"
 
 #: src/blocks/gif/index.js:29
 msgctxt "block keyword"
@@ -2645,7 +2672,8 @@ msgctxt "block keyword"
 msgid "paragraph"
 msgstr "абзац"
 
-#: src/blocks/icon/index.js:35 src/blocks/social-profiles/index.js:28
+#: src/blocks/icon/index.js:35
+#: src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "icons"
 msgstr "значки"
@@ -2693,17 +2721,18 @@ msgstr "відео"
 #: src/blocks/post-carousel/index.js:29
 msgctxt "block keyword"
 msgid "posts"
-msgstr "posts"
+msgstr "дописи"
 
 #: src/blocks/post-carousel/index.js:29
 msgctxt "block keyword"
 msgid "slider"
-msgstr "slider"
+msgstr "повзунок"
 
-#: src/blocks/post-carousel/index.js:29 src/blocks/posts/index.js:29
+#: src/blocks/post-carousel/index.js:29
+#: src/blocks/posts/index.js:29
 msgctxt "block keyword"
 msgid "latest"
-msgstr "latest"
+msgstr "останній"
 
 #: src/blocks/posts/index.js:29
 msgctxt "block keyword"
@@ -2875,7 +2904,7 @@ msgstr "Карусель"
 #: src/blocks/gallery-collage/index.js:33
 msgctxt "block name"
 msgid "Collage"
-msgstr "Collage"
+msgstr "Колаж"
 
 #: src/blocks/gallery-masonry/index.js:34
 msgctxt "block name"
@@ -2890,7 +2919,7 @@ msgstr "Один на одному"
 #: src/blocks/gif/index.js:26
 msgctxt "block name"
 msgid "Gif"
-msgstr "Gif"
+msgstr "GIF"
 
 #: src/blocks/gist/index.js:28
 msgctxt "block name"
@@ -2930,7 +2959,7 @@ msgstr "Картка мультимедіа"
 #: src/blocks/post-carousel/index.js:26
 msgctxt "block name"
 msgid "Post Carousel"
-msgstr "Post Carousel"
+msgstr "Карусель дописів"
 
 #: src/blocks/posts/index.js:26
 msgctxt "block name"
@@ -3036,12 +3065,12 @@ msgstr "За промовчанням"
 #: src/blocks/gallery-collage/index.js:45
 msgctxt "block style"
 msgid "Tiled"
-msgstr "Tiled"
+msgstr "Плитка"
 
 #: src/blocks/gallery-collage/index.js:49
 msgctxt "block style"
 msgid "Layered"
-msgstr "Layered"
+msgstr "Шари"
 
 #: src/blocks/icon/index.js:37
 msgctxt "block style"
@@ -3061,7 +3090,7 @@ msgstr "Один на одному"
 #: src/blocks/posts/edit.js:55
 msgctxt "block style"
 msgid "Horizontal"
-msgstr "Horizontal"
+msgstr "По горизонталі"
 
 #: src/blocks/shape-divider/index.js:38
 msgctxt "block style"
@@ -3103,27 +3132,32 @@ msgctxt "block style"
 msgid "Pointed"
 msgstr "Загострений"
 
-#: src/blocks/share/index.js:30 src/blocks/social-profiles/index.js:30
+#: src/blocks/share/index.js:30
+#: src/blocks/social-profiles/index.js:30
 msgctxt "block style"
 msgid "Mask"
 msgstr "Маска"
 
-#: src/blocks/share/index.js:31 src/blocks/social-profiles/index.js:31
+#: src/blocks/share/index.js:31
+#: src/blocks/social-profiles/index.js:31
 msgctxt "block style"
 msgid "Icon"
 msgstr "Значок"
 
-#: src/blocks/share/index.js:32 src/blocks/social-profiles/index.js:32
+#: src/blocks/share/index.js:32
+#: src/blocks/social-profiles/index.js:32
 msgctxt "block style"
 msgid "Text"
 msgstr "Текст"
 
-#: src/blocks/share/index.js:33 src/blocks/social-profiles/index.js:33
+#: src/blocks/share/index.js:33
+#: src/blocks/social-profiles/index.js:33
 msgctxt "block style"
 msgid "Icon & Text"
 msgstr "Значок і текст"
 
-#: src/blocks/share/index.js:34 src/blocks/social-profiles/index.js:34
+#: src/blocks/share/index.js:34
+#: src/blocks/social-profiles/index.js:34
 msgctxt "block style"
 msgid "Circular"
 msgstr "Коло"
@@ -3131,22 +3165,22 @@ msgstr "Коло"
 #: src/extensions/image-styles/index.js:21
 msgctxt "block style"
 msgid "Bottom Wave"
-msgstr "Bottom Wave"
+msgstr "Хвиля внизу"
 
 #: src/extensions/image-styles/index.js:27
 msgctxt "block style"
 msgid "Top Wave"
-msgstr "Top Wave"
+msgstr "Хвиля вгорі"
 
 #: src/blocks/author/edit.js:63
 msgctxt "image to represent the post author"
 msgid "Drop to upload as avatar"
-msgstr "Drop to upload as avatar"
+msgstr "Перетягніть, щоб завантажити як аватар"
 
 #: src/blocks/author/edit.js:149
 msgctxt "content placeholder"
 msgid "Author link…"
-msgstr "Author link…"
+msgstr "Посилання на автора..."
 
 #: src/blocks/features/feature/edit.js:31
 msgctxt "content placeholder"
@@ -3166,33 +3200,27 @@ msgstr "Додайте вміст особливості"
 #: src/blocks/features/feature/edit.js:32
 msgctxt "content placeholder"
 msgid "This is a feature block that you can use to highlight features."
-msgstr ""
-"Це блок особливості, який можна використовувати для виокремлення "
-"особливостей."
+msgstr "Це блок особливості, який можна використовувати для виокремлення особливостей."
 
 #: src/blocks/hero/edit.js:35
 msgctxt "content placeholder"
 msgid "Add hero heading…"
-msgstr "Add hero heading…"
+msgstr "Додати заголовок hero..."
 
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
-msgid ""
-"Add hero content, which is typically an introductory area of a page "
-"accompanied by call to action or two."
-msgstr ""
-"Додайте вміст hero, зазвичай це вступна частина сторінки, яка "
-"супроводжується одним чи двома закликами до дії."
+msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
+msgstr "Додайте вміст hero, зазвичай це вступна частина сторінки, яка супроводжується одним чи двома закликами до дії."
 
 #: src/blocks/hero/edit.js:39
 msgctxt "content placeholder"
 msgid "Primary button…"
-msgstr "Primary button…"
+msgstr "Основна кнопка..."
 
 #: src/blocks/hero/edit.js:40
 msgctxt "content placeholder"
 msgid "Secondary button…"
-msgstr "Secondary button…"
+msgstr "Допоміжна кнопка..."
 
 #: src/blocks/media-card/edit.js:46
 msgctxt "content placeholder"
@@ -3211,12 +3239,8 @@ msgstr "Додайте вміст..."
 
 #: src/blocks/media-card/edit.js:47
 msgctxt "content placeholder"
-msgid ""
-"Replace this text with descriptive copy to go along with the card image. "
-"Then add more blocks to this card, such as buttons, lists or images."
-msgstr ""
-"Замініть цей текст на опис, який додається до зображення на картці. Потім "
-"додайте на цю картку інші блоки, наприклад кнопки, списки або зображення."
+msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
+msgstr "Замініть цей текст на опис, який додається до зображення на картці. Потім додайте на цю картку інші блоки, наприклад кнопки, списки або зображення."
 
 #: src/blocks/services/service/edit.js:205
 msgctxt "content placeholder"
@@ -3258,7 +3282,8 @@ msgctxt "label for small gutter option"
 msgid "Small"
 msgstr "Малий"
 
-#: src/blocks/gallery-collage/inspector.js:89 src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:89
+#: src/blocks/posts/inspector.js:58
 msgctxt "abbreviation for \"Small\" size"
 msgid "S"
 msgstr "S"
@@ -3268,7 +3293,8 @@ msgctxt "label for medium gutter option"
 msgid "Medium"
 msgstr "Cередній"
 
-#: src/blocks/gallery-collage/inspector.js:94 src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:94
+#: src/blocks/posts/inspector.js:63
 msgctxt "abbreviation for \"Medium\" size"
 msgid "M"
 msgstr "M"
@@ -3278,7 +3304,8 @@ msgctxt "label for large gutter option"
 msgid "Large"
 msgstr "Великий"
 
-#: src/blocks/gallery-collage/inspector.js:99 src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:99
+#: src/blocks/posts/inspector.js:68
 msgctxt "abbreviation for \"Large\" size"
 msgid "L"
 msgstr "L"
@@ -3506,7 +3533,7 @@ msgstr "Створюйте"
 #: src/blocks/icon/svgs.js:297
 msgctxt "label"
 msgid "Credit Card"
-msgstr "Credit Card"
+msgstr "Кредитна карта"
 
 #: src/blocks/icon/svgs.js:302
 msgctxt "label"
@@ -3835,12 +3862,8 @@ msgstr "музика мікрофон пісня артист твір муль�
 
 #: src/blocks/icon/svgs.js:43
 msgctxt "tags"
-msgid ""
-"microphone podcast computer device music microphone song artist creative "
-"media audio"
-msgstr ""
-"мікрофон подкаст комп’ютер пристрій музика пісня артист твір мультимедіа "
-"аудіо"
+msgid "microphone podcast computer device music microphone song artist creative media audio"
+msgstr "мікрофон подкаст комп’ютер пристрій музика пісня артист твір мультимедіа аудіо"
 
 #: src/blocks/icon/svgs.js:49
 msgctxt "tags"
@@ -3864,12 +3887,8 @@ msgstr "фільм відеографія режисер автор мульти
 
 #: src/blocks/icon/svgs.js:73
 msgctxt "tags"
-msgid ""
-"video videography director producer media creative camera photographer "
-"photography aperture"
-msgstr ""
-"відео відеографія режисер автор мультимедіа творчі камера фотограф "
-"фотографія отвір"
+msgid "video videography director producer media creative camera photographer photography aperture"
+msgstr "відео відеографія режисер автор мультимедіа творчі камера фотограф фотографія отвір"
 
 #: src/blocks/icon/svgs.js:85
 msgctxt "tags"
@@ -3946,11 +3965,13 @@ msgctxt "block styles"
 msgid "Checkbox"
 msgstr "Прапорець"
 
-#: src/blocks/post-carousel/edit.js:302 src/blocks/posts/edit.js:437
-#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
+#: src/blocks/post-carousel/edit.js:302
+#: src/blocks/posts/edit.js:437
+#: src/blocks/post-carousel/index.php:185
+#: src/blocks/posts/index.php:202
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
-msgstr "(no title)"
+msgstr "(без назви)"
 
 #: src/blocks/posts/inspector.js:57
 msgctxt "label for small size option"
@@ -4062,8 +4083,7 @@ msgid "Repeat Vertically"
 msgstr "Повторювати по вертикалі"
 
 #: src/components/block-gallery/gallery-link-settings.js:80
-msgctxt ""
-"HTML attribute that specifies the a relationship between the two pages."
+msgctxt "HTML attribute that specifies the a relationship between the two pages."
 msgid "Link Rel"
 msgstr "REL посилання"
 
@@ -4085,17 +4105,17 @@ msgstr "Немає"
 #: src/components/crop-settings/index.js:280
 msgctxt "label for horizontal positioning input"
 msgid "Horizontal Pos."
-msgstr "Horizontal Pos."
+msgstr "Поз. по горизонталі"
 
 #: src/components/crop-settings/index.js:288
 msgctxt "label for vertical positioning input"
 msgid "Vertical Pos."
-msgstr "Vertical Pos."
+msgstr "Поз. по вертикалі"
 
 #: src/components/crop-settings/index.js:297
 msgctxt "label for the control that allows zooming in on the image"
 msgid "Image Zoom"
-msgstr "Image Zoom"
+msgstr "Масштаб зображення"
 
 #: src/components/dimensions-control/index.js:389
 msgctxt "A size unit for CSS markup"
@@ -4120,22 +4140,22 @@ msgstr "Оригінал"
 #: src/components/media-filter-control/index.js:39
 msgctxt "image styles"
 msgid "Grayscale Filter"
-msgstr "Grayscale Filter"
+msgstr "Фільтр - Відтінки сірого"
 
 #: src/components/media-filter-control/index.js:47
 msgctxt "image styles"
 msgid "Sepia Filter"
-msgstr "Sepia Filter"
+msgstr "Фільтр - Сепія"
 
 #: src/components/media-filter-control/index.js:55
 msgctxt "image styles"
 msgid "Saturation Filter"
-msgstr "Saturation Filter"
+msgstr "Фільтр - Насичення"
 
 #: src/components/media-filter-control/index.js:63
 msgctxt "image styles"
 msgid "Dim Filter"
-msgstr "Dim Filter"
+msgstr "Фільтр - Затемнення"
 
 #: src/components/media-filter-control/index.js:71
 msgctxt "image styles"
@@ -4181,14 +4201,8 @@ msgid "https://coblocks.com"
 msgstr "https://coblocks.com"
 
 #. Description of the plugin
-msgid ""
-"CoBlocks is a suite of professional <strong>page building content blocks</"
-"strong> for the WordPress Gutenberg block editor. Our blocks are hyper-"
-"focused on empowering makers to build beautifully rich pages in WordPress."
-msgstr ""
-"CoBlocks — це набір професійних <strong>блоків вмісту для створення сторінок "
-"</strong>, призначених для редактора блоків WordPress Gutenberg. Завдяки "
-"нашим блокам хто завгодно може створювати вражаючі сторінки у WordPress."
+msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
+msgstr "CoBlocks — це набір професійних <strong>блоків вмісту для створення сторінок </strong>, призначених для редактора блоків WordPress Gutenberg. Завдяки нашим блокам хто завгодно може створювати вражаючі сторінки у WordPress."
 
 #. Author of the plugin
 msgid "GoDaddy"
@@ -4198,38 +4212,27 @@ msgstr "GoDaddy"
 msgid "https://www.godaddy.com"
 msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:84 class-coblocks.php:96
+#: class-coblocks.php:84
+#: class-coblocks.php:96
 msgid "Cheating huh?"
 msgstr "А це чесно?"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Review CoBlocks on WordPress.org"
-msgstr "Review CoBlocks on WordPress.org"
+msgstr "Огляд блоків CoBlocks на WordPress.org"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Leave a Review"
 msgstr "Залишити відгук"
 
 #: includes/admin/class-coblocks-getting-started-page.php:120
-msgid ""
-"Thanks for choosing CoBlocks, the premier page builder for the new WordPress "
-"block editor."
-msgstr ""
-"Дякуємо за вибір CoBlocks — найкращого конструктора сторінок для нового "
-"редактора блоків WordPress."
+msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
+msgstr "Дякуємо за вибір CoBlocks — найкращого конструктора сторінок для нового редактора блоків WordPress."
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
 #: includes/admin/class-coblocks-getting-started-page.php:126
-msgid ""
-"You've just added lots of useful blocks and a new page builder toolkit to "
-"the WordPress editor. CoBlocks gives you a game-changing set of features: "
-"%1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom "
-"typography controls%2$s."
-msgstr ""
-"Ви щойно додали велику кількість корисних блоків і новий набір інструментів "
-"для побудови сторінок у редактор WordPress. CoBlocks пропонує вам неймовірні "
-"можливості: %1$s десятки блоків%2$s, %1$sпобудовник сторінок%2$s і %1$s "
-"нестандартні засоби керування типографікою%2$s."
+msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
+msgstr "Ви щойно додали велику кількість корисних блоків і новий набір інструментів для побудови сторінок у редактор WordPress. CoBlocks пропонує вам неймовірні можливості: %1$s десятки блоків%2$s, %1$sпобудовник сторінок%2$s і %1$s нестандартні засоби керування типографікою%2$s."
 
 #: includes/admin/class-coblocks-getting-started-page.php:133
 msgid "Here are a few videos to help you get started:"
@@ -4256,23 +4259,13 @@ msgstr "Подивіться, як використовувати блок «К�
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:152
-msgid ""
-"Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let "
-"you know when new video tutorials are released."
-msgstr ""
-"Вам подобається? %1$sПідпишіться на наш канал YouTube%2$s, і ми будемо "
-"сповіщати вас про вихід нових посібників для відео."
+msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
+msgstr "Вам подобається? %1$sПідпишіться на наш канал YouTube%2$s, і ми будемо сповіщати вас про вихід нових посібників для відео."
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:163
-msgid ""
-"If you have any questions or feedback, let us know on %1$sTwitter%4$s or our "
-"%2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you "
-"want to stay up to date with what's new and upcoming at CoBlocks."
-msgstr ""
-"Якщо ви маєте будь-які запитання чи відгуки, повідомте нам у %1$sTwitter%4$s "
-"або в нашій %2$sгрупі Facebook%4$s. Також %3$sпідпишіться на нашу розсилку "
-"новин%4$s, якщо бажаєте бути в курсі справ CoBlocks."
+msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
+msgstr "Якщо ви маєте будь-які запитання чи відгуки, повідомте нам у %1$sTwitter%4$s або в нашій %2$sгрупі Facebook%4$s. Також %3$sпідпишіться на нашу розсилку новин%4$s, якщо бажаєте бути в курсі справ CoBlocks."
 
 #: includes/admin/class-coblocks-getting-started-page.php:172
 msgid "Enjoy!"
@@ -4316,7 +4309,7 @@ msgstr "Телефон"
 
 #: includes/class-coblocks-form.php:448
 msgid "Choose one"
-msgstr "Choose one"
+msgstr "Виберіть один варіант"
 
 #: includes/class-coblocks-form.php:520
 msgid "Submit"
