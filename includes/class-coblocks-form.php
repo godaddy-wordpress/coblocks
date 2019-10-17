@@ -701,8 +701,12 @@ class CoBlocks_Form {
 		$short_code_regex = '/\[(.*?)\]/i';
 		if ( preg_match_all( $short_code_regex, $subject, $matches_out ) ) {
 			foreach ( $matches_out[0] as &$value ) {
-				if ( strtolower( str_replace( ' ', '', $value ) ) === '[email]' ) $subject = str_replace( $value, $shortcode_email[0], $subject );
-				if ( strtolower( str_replace( ' ', '', $value ) ) === '[name]' )  $subject = str_replace( $value, $shortcode_name[0], $subject );
+				if ( strtolower( str_replace( ' ', '', $value ) ) === '[email]' ) {
+					$subject = str_replace( $value, $shortcode_email[0], $subject );
+				}
+				if ( strtolower( str_replace( ' ', '', $value ) ) === '[name]' ) {
+					$subject = str_replace( $value, $shortcode_name[0], $subject );
+				}
 			}
 		}
 
