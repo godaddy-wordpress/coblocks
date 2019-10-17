@@ -1,52 +1,57 @@
 ( function( $ ) {
 	'use strict';
-	$(document).ready(function() {
+	$( document ).ready( function() {
+		observer.observe( document.body, {
+			childList: true,
+			subtree: true,
+			attributes: false,
+			characterData: false,
+		} );
+	} );
 
-		observer.observe(document.body, {
-			childList: true
-			, subtree: true
-			, attributes: false
-			, characterData: false
-		})
-	});
-	var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+	const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
+	const observer = new MutationObserver( function( mutations ) {
+		mutations.forEach( function( mutation ) {
+			if ( ! mutation.addedNodes ) {
+				return;
+			}
 
-	var observer = new MutationObserver(function(mutations) {
-		mutations.forEach(function(mutation) {
-			if (!mutation.addedNodes) return
-
-			for (var i = 0; i < mutation.addedNodes.length; i++) {
+			for ( let i = 0; i < mutation.addedNodes.length; i++ ) {
 				// do things to your newly added nodes here
-				var node = mutation.addedNodes[i];
+				const node = mutation.addedNodes[ i ];
 
-				if (node.className === "coblocks-ical-events") {
+				if ( node.className === 'coblocks-ical-events' ) {
 					initializePagination();
 				}
 			}
-		})
-	})
+		} );
+	} );
 
 	function initializePagination() {
-		var moreEvents = $( '.wp-block-coblocks-events__more-events-wrapper' );
-		var nextPageIconContainer = $( '<div/>', { class: 'coblocks-events__next-page-icon-container' } );
-		var previousPageIconContainer = $( '<div/>', { class: 'coblocks-events__previous-page-icon-container' } );
-		var nextPageIcon = $( '<div/>', { class: 'next-page-icon' } );
-		var previousPageIcon = $( '<div/>', { class: 'previous-page-icon' } );
+		const moreEvents = $( '.wp-block-coblocks-events__more-events-wrapper' );
+		const nextPageIconContainer = $( '<div/>', { class: 'coblocks-events__next-page-icon-container' } );
+		const previousPageIconContainer = $( '<div/>', { class: 'coblocks-events__previous-page-icon-container' } );
+		const nextPageIcon = $( '<div/>', { class: 'next-page-icon' } );
+		const previousPageIcon = $( '<div/>', { class: 'previous-page-icon' } );
 
 		nextPageIconContainer.append( nextPageIcon );
 		previousPageIconContainer.append( previousPageIcon );
+
 		if ( moreEvents ) {
 			moreEvents.prepend( previousPageIconContainer );
 			moreEvents.append( nextPageIconContainer );
 		}
 
-		var currentPage = 0;
+		let currentPage = 0;
+
 		// Initially set only first page items to be shown
 		$( '.wp-block-coblocks-event-item' ).css( 'display', 'none' );
 		$( '.wp-block-coblocks-event-item[data-page="' + currentPage + '"]' ).css( 'display', 'initial' );
+
 		previousPageIconContainer.css( 'display', 'none' );
-		var totalPageCount = Number( $( '.wp-block-coblocks-event-item' ).last().attr( 'data-page' ) );
+
+		const totalPageCount = Number( $( '.wp-block-coblocks-event-item' ).last().attr( 'data-page' ) );
 
 		nextPageIconContainer.click( function() {
 			currentPage++;
@@ -68,5 +73,4 @@
 			$( '.wp-block-coblocks-event-item[data-page="' + currentPage + '"]' ).css( 'display', 'initial' );
 		} );
 	}
-
 }( jQuery ) );

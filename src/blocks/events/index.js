@@ -17,7 +17,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Block constants.
  */
-const { name, category, attributes } = metadata;
+const { name, category } = metadata;
 
 const icon = icons.events;
 

@@ -2,7 +2,6 @@
  * Internal dependencies.
  */
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
-import icons from './icons';
 import classnames from 'classnames';
 
 /**

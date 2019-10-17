@@ -4,7 +4,6 @@
 import CustomAppender from './appender';
 import InspectorControls from './inspector';
 import applyWithColors from './colors';
-import icons from './icons';
 import { cloneDeep } from 'lodash';
 
 /**
@@ -152,7 +151,7 @@ class EventItem extends Component {
 
 		dispatch( 'core/editor' ).insertBlock( newEventBlock[ 0 ], this.props.innerBlocks.length, clientId );
 
-		this.props.innerBlocks.map( ( key, value ) => {
+		this.props.innerBlocks.map( ( key ) => {
 			key.originalContent = '';
 			if ( key.attributes.pageNum !== newItemPageNumber ) {
 				key.originalContent = key.originalContent.replace( 'wp-block-coblocks-event-item', 'wp-block-coblocks-event-item hide-item' );
@@ -167,24 +166,10 @@ class EventItem extends Component {
 			isSelected,
 			clientId,
 			selectedParentClientId,
-			textColor,
 			setAttributes,
 		} = this.props;
 
 		attributes.childrenLength = select( 'core/block-editor' ).getBlock( clientId ).innerBlocks.length;
-
-		const { editing } = this.state;
-
-		const textClasses = classnames(
-			{
-				'has-text-color': textColor.color,
-				[ textColor.class ]: textColor.class,
-			}
-		);
-
-		const textStyles = {
-			color: textColor.color,
-		};
 
 		const toolbarControls = [
 			{

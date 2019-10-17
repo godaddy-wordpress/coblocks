@@ -2,7 +2,6 @@
  * Internal dependencies.
  */
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
-import icons from './icons';
 
 /**
  * External dependencies.
@@ -10,7 +9,6 @@ import icons from './icons';
 import classnames from 'classnames';
 import InspectorControls from './inspector';
 import applyWithColors from '.././colors';
-import {get, isEqual, isUndefined} from 'lodash';
 
 /**
  * WordPress dependencies.
@@ -19,50 +17,6 @@ const { RichText } = wp.blockEditor;
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { dispatch, select } from '@wordpress/data';
-
-/**
- * Handle creation and removal of placeholder elements so that we always have one available to use.
- *
- * @param {Integer} childClientId The child block's ClientId.
- * @param {String} blockName The block to insert.
- * @param {Object} blockAttributes The attributes for the placeholder block.
- */
-const handlePlaceholderPlacement = (
-	childClientId,
-	blockName,
-	blockAttributes = {}
-) => {
-	const itemClientId = select( 'core/block-editor' ).getBlockRootClientId(
-		childClientId
-	);
-
-	const eventItems = select( 'core/block-editor' ).getBlocksByClientId( itemClientId )[ 0 ]
-		.innerBlocks;
-
-	const placeholders = eventItems.filter(
-		item => item.name === blockName && isEmpty( item.attributes )
-	);
-
-	// Remove trailing placholders if there are more than one.
-	dispatch( 'core/block-editor' ).removeBlocks(
-		placeholders
-			.filter( ( item, index ) => item.clientId !== childClientId && index !== 0 )
-			.map( item => item.clientId ),
-		false
-	);
-
-	// Add a placeholder if there are none.
-	if ( placeholders.length === 0 ) {
-		const newEventItem = wp.blocks.createBlock( blockName, blockAttributes );
-		dispatch( 'core/editor' ).insertBlocks(
-			newEventItem,
-			eventItems.length,
-			itemClientId,
-			false
-		);
-	}
-};
 
 const isEmpty = attributes => {
 	const attributesToCheck = [ 'title', 'description', 'eventDay', 'eventMonth', 'eventDate', 'eventTime', 'eventLocation' ];
@@ -74,7 +28,7 @@ const isEmpty = attributes => {
 };
 
 class EventsEdit extends Component {
-	componentDidUpdate( prevProps ) {
+	componentDidUpdate() {
 		if ( ( this.props.attributes.externalChange ) ) {
 			this.props.setAttributes( { textColor: this.props.attributes.textColor, externalChange: false } );
 			this.props.setTextColor( this.props.attributes.textColor );

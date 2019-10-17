@@ -15,7 +15,6 @@ const Inspector = props => {
 	const {
 		attributes,
 		textColor,
-		setTextColor,
 		onToggleCalendarLink,
 		onUpdateTextColor,
 		onChangeVisibleEvents,
