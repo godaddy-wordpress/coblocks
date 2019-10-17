@@ -1,6 +1,6 @@
-== Changelog ==
 
-= 1.15.0 =
+1.15.0 / 2019-10-03
+===================
 
 ### Features
 * Add [new Collage Gallery](https://github.com/godaddy/coblocks/pull/907) block
@@ -39,8 +39,8 @@
 * Fix [alignment of images within the Features block](https://github.com/godaddy/coblocks/pull/885)
 * Fix [background image upload error](https://github.com/godaddy/coblocks/pull/906) when using drag and drop on the Hero block
 
-
-= 1.14.0 =
+1.14.0 / 2019-09-19
+===================
 
 ### Features
 * Add new [Crop Settings panel](https://github.com/godaddy/coblocks/pull/749) to the Image and Cover blocks to allow image cropping
