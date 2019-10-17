@@ -1,16 +1,15 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.16.0\n"
+"Project-Id-Version: CoBlocks 1.15.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"POT-Creation-Date: 2019-10-17T19:43:03+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-10-16T16:33:01+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
 
@@ -31,30 +30,41 @@ msgid "Accordion Item Settings"
 msgstr "折叠项设置"
 
 #: src/blocks/accordion/accordion-item/inspector.js:72
-#: src/blocks/alert/inspector.js:49 src/blocks/author/inspector.js:50
+#: src/blocks/alert/inspector.js:49
+#: src/blocks/author/inspector.js:50
 #: src/blocks/click-to-tweet/inspector.js:60
 #: src/blocks/dynamic-separator/inspector.js:60
 #: src/blocks/features/feature/inspector.js:92
-#: src/blocks/features/inspector.js:173 src/blocks/form/submit-button.js:118
-#: src/blocks/hero/inspector.js:137 src/blocks/highlight/inspector.js:43
-#: src/blocks/icon/inspector.js:302 src/blocks/media-card/inspector.js:132
+#: src/blocks/features/inspector.js:173
+#: src/blocks/form/submit-button.js:118
+#: src/blocks/hero/inspector.js:137
+#: src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:302
+#: src/blocks/media-card/inspector.js:132
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
-#: src/blocks/row/column/inspector.js:165 src/blocks/row/inspector.js:211
-#: src/blocks/shape-divider/inspector.js:92 src/blocks/share/inspector.js:200
+#: src/blocks/row/column/inspector.js:165
+#: src/blocks/row/inspector.js:211
+#: src/blocks/shape-divider/inspector.js:92
+#: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:206
 #: src/extensions/colors/index.js:59
 msgid "Color Settings"
 msgstr "颜色设置"
 
 #: src/blocks/accordion/accordion-item/inspector.js:78
-#: src/blocks/alert/inspector.js:55 src/blocks/author/inspector.js:56
+#: src/blocks/alert/inspector.js:55
+#: src/blocks/author/inspector.js:56
 #: src/blocks/features/feature/inspector.js:110
-#: src/blocks/features/inspector.js:191 src/blocks/hero/inspector.js:150
-#: src/blocks/highlight/inspector.js:49 src/blocks/icon/inspector.js:326
+#: src/blocks/features/inspector.js:191
+#: src/blocks/hero/inspector.js:150
+#: src/blocks/highlight/inspector.js:49
+#: src/blocks/icon/inspector.js:326
 #: src/blocks/media-card/inspector.js:146
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
-#: src/blocks/row/column/inspector.js:171 src/blocks/row/inspector.js:227
-#: src/blocks/shape-divider/inspector.js:103 src/blocks/share/inspector.js:99
+#: src/blocks/row/column/inspector.js:171
+#: src/blocks/row/inspector.js:227
+#: src/blocks/shape-divider/inspector.js:103
+#: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:103
 #: src/extensions/colors/index.js:47
 msgid "Background Color"
@@ -81,8 +91,7 @@ msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
 msgstr "通过加载一个 JavaScript polyfill 添加对 Internet Explorer 的支持。"
 
 #: src/blocks/accordion/inspector.js:31
-msgid ""
-"Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
 msgstr "通过在此页面上加载一个 JavaScript polyfill 来支持 Internet Explorer。"
 
 #: src/blocks/alert/index.js:29
@@ -94,23 +103,21 @@ msgid "This is an alert block"
 msgstr "This is an alert block"
 
 #: src/blocks/alert/index.js:46
-msgid ""
-"An alert is a message that displays outside the flow of typical content. "
-"Alerts provide contextual feedback, typically asking readers to take an "
-"action."
-msgstr ""
-"An alert is a message that displays outside the flow of typical content. "
-"Alerts provide contextual feedback, typically asking readers to take an "
-"action."
+msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
+msgstr "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
 
-#: src/blocks/alert/inspector.js:60 src/blocks/author/inspector.js:61
+#: src/blocks/alert/inspector.js:60
+#: src/blocks/author/inspector.js:61
 #: src/blocks/click-to-tweet/inspector.js:66
 #: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:195 src/blocks/hero/inspector.js:155
+#: src/blocks/features/inspector.js:195
+#: src/blocks/hero/inspector.js:155
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
-#: src/blocks/row/column/inspector.js:176 src/blocks/row/inspector.js:232
-#: src/blocks/share/inspector.js:66 src/blocks/social-profiles/inspector.js:95
+#: src/blocks/row/column/inspector.js:176
+#: src/blocks/row/inspector.js:232
+#: src/blocks/share/inspector.js:66
+#: src/blocks/social-profiles/inspector.js:95
 #: src/extensions/colors/index.js:54
 msgid "Text Color"
 msgstr "文本颜色"
@@ -126,12 +133,8 @@ msgstr "Write author name…"
 
 #. placeholder text used for the biography
 #: src/blocks/author/edit.js:141
-msgid ""
-"Write a biography that distills objective credibility and authority to your "
-"readers…"
-msgstr ""
-"Write a biography that distills objective credibility and authority to your "
-"readers…"
+msgid "Write a biography that distills objective credibility and authority to your readers…"
+msgstr "Write a biography that distills objective credibility and authority to your readers…"
 
 #: src/blocks/author/index.js:29
 msgid "Add an author biography to build credibility and authority."
@@ -183,12 +186,8 @@ msgid "Add a quote for readers to tweet via Twitter."
 msgstr "添加引用以供读者通过 Twitter 推送。"
 
 #: src/blocks/click-to-tweet/index.js:34
-msgid ""
-"The easiest way to promote and advertise your blog, website, and business on "
-"Twitter."
-msgstr ""
-"The easiest way to promote and advertise your blog, website, and business on "
-"Twitter."
+msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
+msgstr "The easiest way to promote and advertise your blog, website, and business on Twitter."
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
@@ -196,7 +195,8 @@ msgid "Text Settings"
 msgstr "文本设置"
 
 #: src/blocks/click-to-tweet/inspector.js:71
-#: src/blocks/form/submit-button.js:127 src/blocks/share/inspector.js:86
+#: src/blocks/form/submit-button.js:127
+#: src/blocks/share/inspector.js:86
 #: src/blocks/social-profiles/inspector.js:90
 msgid "Button Color"
 msgstr "按钮颜色"
@@ -207,7 +207,8 @@ msgstr "在其他模块之间添加可调整大小的间隔区。"
 
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:100
-#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
+#: src/blocks/hero/inspector.js:108
+#: src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr "高度（像素）"
 
@@ -219,7 +220,8 @@ msgstr "动态分隔符元素的高度，以像素为单位。"
 msgid "Color"
 msgstr "颜色"
 
-#: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
+#: src/blocks/features/edit.js:78
+#: src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
 msgid "Add as background"
 msgstr "Add as background"
@@ -233,9 +235,12 @@ msgid "Feature Settings"
 msgstr "功能设置"
 
 #: src/blocks/features/feature/inspector.js:71
-#: src/blocks/features/inspector.js:143 src/blocks/hero/inspector.js:84
-#: src/blocks/icon/inspector.js:217 src/blocks/media-card/inspector.js:62
-#: src/blocks/row/column/inspector.js:133 src/blocks/row/inspector.js:180
+#: src/blocks/features/inspector.js:143
+#: src/blocks/hero/inspector.js:84
+#: src/blocks/icon/inspector.js:217
+#: src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:133
+#: src/blocks/row/inspector.js:180
 #: src/components/background/panel.js:146
 msgid "Padding"
 msgstr "填充"
@@ -244,7 +249,8 @@ msgstr "填充"
 msgid "Add up to three columns of small notes for your product or service."
 msgstr "为您的产品或服务添加最多三列小注释。"
 
-#: src/blocks/features/inspector.js:122 src/blocks/row/column/inspector.js:111
+#: src/blocks/features/inspector.js:122
+#: src/blocks/row/column/inspector.js:111
 #: src/blocks/row/inspector.js:157
 #: src/components/dimensions-control/index.js:295
 msgid "Margin"
@@ -253,33 +259,41 @@ msgstr "边距"
 #: src/blocks/features/inspector.js:164
 #: src/blocks/gallery-carousel/inspector.js:84
 #: src/blocks/gallery-collage/inspector.js:108
-#: src/blocks/gallery-stacked/inspector.js:91 src/blocks/row/inspector.js:202
+#: src/blocks/gallery-stacked/inspector.js:91
+#: src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
 msgid "Gutter"
 msgstr "槽宽"
 
-#: src/blocks/features/inspector.js:167 src/blocks/row/inspector.js:205
+#: src/blocks/features/inspector.js:167
+#: src/blocks/row/inspector.js:205
 msgid "Space between each column."
 msgstr "各列之间的间隔。"
 
-#: src/blocks/features/inspector.js:86 src/blocks/icon/icon-size-select.js:16
-#: src/blocks/row/inspector.js:99 src/blocks/share/inspector.js:72
+#: src/blocks/features/inspector.js:86
+#: src/blocks/icon/icon-size-select.js:16
+#: src/blocks/row/inspector.js:99
+#: src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:76
 #: src/components/dimensions-control/dimensions-select.js:15
 #: src/components/size-control/index.js:116
 msgid "Small"
 msgstr "小"
 
-#: src/blocks/features/inspector.js:87 src/blocks/icon/icon-size-select.js:21
-#: src/blocks/row/inspector.js:100 src/blocks/share/inspector.js:73
+#: src/blocks/features/inspector.js:87
+#: src/blocks/icon/icon-size-select.js:21
+#: src/blocks/row/inspector.js:100
+#: src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:77
 #: src/components/dimensions-control/dimensions-select.js:20
 #: src/components/size-control/index.js:120
 msgid "Medium"
 msgstr "中"
 
-#: src/blocks/features/inspector.js:88 src/blocks/icon/icon-size-select.js:26
-#: src/blocks/row/inspector.js:101 src/blocks/share/inspector.js:74
+#: src/blocks/features/inspector.js:88
+#: src/blocks/icon/icon-size-select.js:26
+#: src/blocks/row/inspector.js:101
+#: src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:25
 #: src/components/size-control/index.js:65
@@ -290,8 +304,10 @@ msgstr "大"
 msgid "Features Settings"
 msgstr "功能设置"
 
-#: src/blocks/features/inspector.js:96 src/blocks/post-carousel/inspector.js:70
-#: src/blocks/posts/inspector.js:110 src/blocks/services/inspector.js:69
+#: src/blocks/features/inspector.js:96
+#: src/blocks/post-carousel/inspector.js:70
+#: src/blocks/posts/inspector.js:110
+#: src/blocks/services/inspector.js:69
 msgid "Columns"
 msgstr "列"
 
@@ -415,19 +431,22 @@ msgid "Image Settings"
 msgstr "图片设置"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:84
-#: src/blocks/gif/inspector.js:31 src/blocks/media-card/inspector.js:95
+#: src/blocks/gif/inspector.js:31
+#: src/blocks/media-card/inspector.js:95
 #: src/blocks/services/service/inspector.js:33
 msgid "Alt Text (Alternative Text)"
 msgstr "Alt Text（替代文本）"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:90
-#: src/blocks/gif/inspector.js:37 src/blocks/media-card/inspector.js:101
+#: src/blocks/gif/inspector.js:37
+#: src/blocks/media-card/inspector.js:101
 #: src/blocks/services/service/inspector.js:39
 msgid "Describe the purpose of the image"
 msgstr "描述该图片的用途"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:92
-#: src/blocks/gif/inspector.js:39 src/blocks/media-card/inspector.js:103
+#: src/blocks/gif/inspector.js:39
+#: src/blocks/media-card/inspector.js:103
 #: src/blocks/services/service/inspector.js:41
 msgid "Leave empty if the image is purely decorative."
 msgstr "如果图片只是装饰用途，则保持空白。"
@@ -442,8 +461,10 @@ msgstr "焦点"
 msgid "Display a menu or price list."
 msgstr "显示菜单或价目表。"
 
-#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
-#: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
+#: src/blocks/food-and-drinks/inspector.js:26
+#: src/blocks/map/inspector.js:107
+#: src/blocks/posts/inspector.js:187
+#: src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
 msgid "Styles"
 msgstr "样式"
@@ -535,16 +556,19 @@ msgstr "网站密钥"
 msgid "Secret Key"
 msgstr "密钥"
 
-#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
+#: src/blocks/form/edit.js:330
+#: src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr "正在保存"
 
-#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
+#: src/blocks/form/edit.js:330
+#: src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr "Save"
 
-#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
+#: src/blocks/form/edit.js:345
+#: src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr "删除"
 
@@ -642,7 +666,8 @@ msgstr "滚动"
 msgid "image %1$d of %2$d in gallery"
 msgstr "图片库中的第 %1$d 张图片（共 %2$d 张）"
 
-#: src/blocks/gallery-carousel/edit.js:376 src/blocks/gif/edit.js:243
+#: src/blocks/gallery-carousel/edit.js:376
+#: src/blocks/gif/edit.js:243
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:230
 msgid "Write caption…"
@@ -680,20 +705,23 @@ msgstr "Toggle for percentage based height."
 msgid "Carousel Settings"
 msgstr "Carousel Settings"
 
-#: src/blocks/gallery-carousel/inspector.js:71 src/blocks/icon/inspector.js:173
+#: src/blocks/gallery-carousel/inspector.js:71
+#: src/blocks/icon/inspector.js:173
 #: src/components/typography-controls/index.js:189
 msgid "Size"
 msgstr "大小"
 
 #: src/blocks/gallery-carousel/inspector.js:90
 #: src/blocks/gallery-masonry/inspector.js:83
-#: src/blocks/gallery-stacked/inspector.js:95 src/blocks/share/inspector.js:120
+#: src/blocks/gallery-stacked/inspector.js:95
+#: src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:124
 #: src/components/background/panel.js:156
 msgid "Rounded Corners"
 msgstr "圆角"
 
-#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
+#: src/blocks/gallery-collage/edit.js:174
+#: src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr "应用"
@@ -789,8 +817,7 @@ msgid "Fullwidth images are enabled."
 msgstr "全宽图片已启用。"
 
 #: src/blocks/gallery-stacked/inspector.js:48
-msgid ""
-"Toggle to fill the available gallery area with completely fullwidth images."
+msgid "Toggle to fill the available gallery area with completely fullwidth images."
 msgstr "进行切换，用全宽图片完全填充可用的图片库区域。"
 
 #: src/blocks/gallery-stacked/inspector.js:80
@@ -849,11 +876,13 @@ msgstr "GitHub 文件"
 msgid "File"
 msgstr "文件"
 
-#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
+#: src/blocks/gist/deprecated.js:36
+#: src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr "查看 GitHub 上的此 gist"
 
-#: src/blocks/gist/edit.js:124 src/blocks/gist/inspector.js:51
+#: src/blocks/gist/edit.js:124
+#: src/blocks/gist/inspector.js:51
 msgid "Gist URL"
 msgstr "Gist URL"
 
@@ -898,9 +927,7 @@ msgid "Add background to hero"
 msgstr "Add background to hero"
 
 #: src/blocks/hero/index.js:41
-msgid ""
-"An introductory area of a page accompanied by a small amount of text and a "
-"call to action."
+msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
 msgstr "一个页面的介绍性区域，配有少量文字和行动号召。"
 
 #: src/blocks/hero/inspector.js:127
@@ -911,8 +938,10 @@ msgstr "内容宽度（像素）"
 msgid "Hero Settings"
 msgstr "首页设置"
 
-#: src/blocks/hero/inspector.js:85 src/blocks/media-card/inspector.js:63
-#: src/blocks/row/column/inspector.js:134 src/blocks/row/inspector.js:181
+#: src/blocks/hero/inspector.js:85
+#: src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:134
+#: src/blocks/row/inspector.js:181
 msgid "Space inside of the container."
 msgstr "容器内部空间。"
 
@@ -961,14 +990,11 @@ msgid "Draw attention and emphasize important narrative."
 msgstr "Draw attention and emphasize important narrative."
 
 #: src/blocks/highlight/index.js:33
-msgid ""
-"Add a highlight effect to paragraph text in order to grab attention and "
-"emphasize important narrative."
-msgstr ""
-"Add a highlight effect to paragraph text in order to grab attention and "
-"emphasize important narrative."
+msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
+msgstr "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
 
-#: src/blocks/icon/icon-size-select.js:30 src/blocks/row/inspector.js:102
+#: src/blocks/icon/icon-size-select.js:30
+#: src/blocks/row/inspector.js:102
 #: src/components/dimensions-control/dimensions-select.js:30
 msgid "Huge"
 msgstr "巨大"
@@ -981,7 +1007,8 @@ msgstr "Choose icon size preset"
 msgid "Add a stylized graphic symbol to communicate something more."
 msgstr "添加特定风格的图形符号，以传达更多信息。"
 
-#: src/blocks/icon/inspector.js:155 src/blocks/share/inspector.js:111
+#: src/blocks/icon/inspector.js:155
+#: src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:115
 msgid "Icon Settings"
 msgstr "图标设置"
@@ -1038,7 +1065,8 @@ msgstr "在新选项卡中打开"
 msgid "Open in New Tab"
 msgstr "在新选项卡中打开"
 
-#: src/blocks/icon/inspector.js:309 src/blocks/share/inspector.js:104
+#: src/blocks/icon/inspector.js:309
+#: src/blocks/share/inspector.js:104
 #: src/blocks/social-profiles/inspector.js:108
 msgid "Icon Color"
 msgstr "图标颜色"
@@ -1080,7 +1108,8 @@ msgstr "编辑地点"
 msgid "Map style"
 msgstr "地图样式"
 
-#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
+#: src/blocks/map/deprecated.js:96
+#: src/blocks/map/edit.js:293
 #: src/blocks/map/save.js:50
 msgid "Google Map"
 msgstr "Google 地图"
@@ -1190,12 +1219,8 @@ msgid "Google Maps API Key"
 msgstr "Google 地图 API 密钥"
 
 #: src/blocks/map/inspector.js:212
-msgid ""
-"Add a Google Maps API key. Updating this API key will set all your maps to "
-"use the new key."
-msgstr ""
-"Add a Google Maps API key. Updating this API key will set all your maps to "
-"use the new key."
+msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgstr "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
 
 #: src/blocks/map/inspector.js:215
 msgid "Get a key"
@@ -1272,7 +1297,8 @@ msgstr "拖放以替换媒体"
 msgid "Edit media"
 msgstr "编辑媒体"
 
-#: src/blocks/post-carousel/edit.js:123 src/blocks/posts/edit.js:247
+#: src/blocks/post-carousel/edit.js:123
+#: src/blocks/posts/edit.js:247
 msgid "Edit RSS URL"
 msgstr "Edit RSS URL"
 
@@ -1280,37 +1306,46 @@ msgstr "Edit RSS URL"
 msgid "Post Carousel"
 msgstr "Post Carousel"
 
-#: src/blocks/post-carousel/edit.js:184 src/blocks/posts/edit.js:295
+#: src/blocks/post-carousel/edit.js:184
+#: src/blocks/posts/edit.js:295
 msgid "No posts found. Start publishing or add posts from an %s feed."
 msgstr "No posts found. Start publishing or add posts from an %s feed."
 
-#: src/blocks/post-carousel/edit.js:187 src/blocks/posts/edit.js:298
+#: src/blocks/post-carousel/edit.js:187
+#: src/blocks/posts/edit.js:298
 msgid "Retrieve an External Feed"
 msgstr "Retrieve an External Feed"
 
-#: src/blocks/post-carousel/edit.js:193 src/blocks/posts/edit.js:304
+#: src/blocks/post-carousel/edit.js:193
+#: src/blocks/posts/edit.js:304
 msgid "Use External Feed"
 msgstr "Use External Feed"
 
 #. %s: RSS
-#: src/blocks/post-carousel/edit.js:216 src/blocks/posts/edit.js:332
+#: src/blocks/post-carousel/edit.js:216
+#: src/blocks/posts/edit.js:332
 msgid "%s Feed"
 msgstr "%s Feed"
 
-#: src/blocks/post-carousel/edit.js:217 src/blocks/posts/edit.js:333
+#: src/blocks/post-carousel/edit.js:217
+#: src/blocks/posts/edit.js:333
 msgid "%s URLs are generally located at the /feed/ directory of a site."
 msgstr "%s URLs are generally located at the /feed/ directory of a site."
 
-#: src/blocks/post-carousel/edit.js:221 src/blocks/posts/edit.js:337
+#: src/blocks/post-carousel/edit.js:221
+#: src/blocks/posts/edit.js:337
 msgid "https://example.com/feed…"
 msgstr "https://example.com/feed…"
 
-#: src/blocks/post-carousel/edit.js:227 src/blocks/posts/edit.js:343
+#: src/blocks/post-carousel/edit.js:227
+#: src/blocks/posts/edit.js:343
 msgid "Use URL"
 msgstr "Use URL"
 
-#: src/blocks/post-carousel/edit.js:320 src/blocks/posts/edit.js:463
-#: src/blocks/post-carousel/index.php:368 src/blocks/posts/index.php:385
+#: src/blocks/post-carousel/edit.js:320
+#: src/blocks/posts/edit.js:463
+#: src/blocks/post-carousel/index.php:366
+#: src/blocks/posts/index.php:385
 msgid "Read more"
 msgstr "阅读更多"
 
@@ -1318,7 +1353,8 @@ msgstr "阅读更多"
 msgid "Display posts or an external blog feed as a carousel."
 msgstr "Display posts or an external blog feed as a carousel."
 
-#: src/blocks/post-carousel/inspector.js:108 src/blocks/posts/inspector.js:174
+#: src/blocks/post-carousel/inspector.js:108
+#: src/blocks/posts/inspector.js:174
 msgid "Number of posts"
 msgstr "Number of posts"
 
@@ -1326,43 +1362,53 @@ msgstr "Number of posts"
 msgid "Post Carousel Settings"
 msgstr "Post Carousel Settings"
 
-#: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
+#: src/blocks/post-carousel/inspector.js:41
+#: src/blocks/posts/inspector.js:81
 msgid "Post Date"
 msgstr "Post Date"
 
-#: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
+#: src/blocks/post-carousel/inspector.js:45
+#: src/blocks/posts/inspector.js:85
 msgid "Showing the publish date."
 msgstr "Showing the publish date."
 
-#: src/blocks/post-carousel/inspector.js:46 src/blocks/posts/inspector.js:86
+#: src/blocks/post-carousel/inspector.js:46
+#: src/blocks/posts/inspector.js:86
 msgid "Toggle to show the publish date."
 msgstr "Toggle to show the publish date."
 
-#: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
+#: src/blocks/post-carousel/inspector.js:51
+#: src/blocks/posts/inspector.js:91
 msgid "Post Content"
 msgstr "Post Content"
 
-#: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
+#: src/blocks/post-carousel/inspector.js:55
+#: src/blocks/posts/inspector.js:95
 msgid "Showing the post content."
 msgstr "Showing the post content."
 
-#: src/blocks/post-carousel/inspector.js:56 src/blocks/posts/inspector.js:96
+#: src/blocks/post-carousel/inspector.js:56
+#: src/blocks/posts/inspector.js:96
 msgid "Toggle to show the post content."
 msgstr "Toggle to show the post content."
 
-#: src/blocks/post-carousel/inspector.js:62 src/blocks/posts/inspector.js:102
+#: src/blocks/post-carousel/inspector.js:62
+#: src/blocks/posts/inspector.js:102
 msgid "Max words in content"
 msgstr "Max words in content"
 
-#: src/blocks/post-carousel/inspector.js:86 src/blocks/posts/inspector.js:152
+#: src/blocks/post-carousel/inspector.js:86
+#: src/blocks/posts/inspector.js:152
 msgid "Feed Settings"
 msgstr "Feed Settings"
 
-#: src/blocks/post-carousel/inspector.js:90 src/blocks/posts/inspector.js:156
+#: src/blocks/post-carousel/inspector.js:90
+#: src/blocks/posts/inspector.js:156
 msgid "My Blog"
 msgstr "我的博客"
 
-#: src/blocks/post-carousel/inspector.js:91 src/blocks/posts/inspector.js:157
+#: src/blocks/post-carousel/inspector.js:91
+#: src/blocks/posts/inspector.js:157
 msgid "External Feed"
 msgstr "External Feed"
 
@@ -1450,7 +1496,8 @@ msgstr "一行的直接子级。"
 msgid "Column Settings"
 msgstr "列设置"
 
-#: src/blocks/row/column/inspector.js:112 src/blocks/row/inspector.js:158
+#: src/blocks/row/column/inspector.js:112
+#: src/blocks/row/inspector.js:158
 msgid "Space around the container."
 msgstr "容器周围的空间。"
 
@@ -1519,7 +1566,8 @@ msgstr "选择此行的列数。"
 msgid "Select Row Columns"
 msgstr "选择行列数"
 
-#: src/blocks/row/edit.js:236 src/blocks/row/inspector.js:121
+#: src/blocks/row/edit.js:236
+#: src/blocks/row/inspector.js:121
 msgid "Select Row Layout"
 msgstr "选择行布局"
 
@@ -1528,9 +1576,7 @@ msgid "Back to Columns"
 msgstr "返回到列"
 
 #: src/blocks/row/index.js:38
-msgid ""
-"Add a structured wrapper for column blocks, then add content blocks you’d "
-"like to the columns."
+msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
 msgstr "为列模块添加结构化的包装器，然后将所需内容模块添加到列。"
 
 #: src/blocks/row/inspector.js:153
@@ -1675,15 +1721,18 @@ msgstr "背景高度（像素）"
 msgid "Shape Color"
 msgstr "形状颜色"
 
-#: src/blocks/share/edit.js:113 src/blocks/share/index.php:132
+#: src/blocks/share/edit.js:113
+#: src/blocks/share/index.php:133
 msgid "Share on Facebook"
 msgstr "在 Facebook 上分享"
 
-#: src/blocks/share/edit.js:121 src/blocks/share/index.php:136
+#: src/blocks/share/edit.js:121
+#: src/blocks/share/index.php:137
 msgid "Share on Twitter"
 msgstr "在 Twitter 上分享"
 
-#: src/blocks/share/edit.js:129 src/blocks/share/index.php:140
+#: src/blocks/share/edit.js:129
+#: src/blocks/share/index.php:141
 msgid "Share on Pinterest"
 msgstr "在 Pinterest 上分享"
 
@@ -1691,19 +1740,23 @@ msgstr "在 Pinterest 上分享"
 msgid "Share on LinkedIn"
 msgstr "在 LinkedIn 上分享"
 
-#: src/blocks/share/edit.js:145 src/blocks/share/index.php:148
+#: src/blocks/share/edit.js:145
+#: src/blocks/share/index.php:149
 msgid "Share via Email"
 msgstr "通过电子邮件分享"
 
-#: src/blocks/share/edit.js:153 src/blocks/share/index.php:152
+#: src/blocks/share/edit.js:153
+#: src/blocks/share/index.php:153
 msgid "Share on Tumblr"
 msgstr "在 Tumblr 上分享"
 
-#: src/blocks/share/edit.js:161 src/blocks/share/index.php:156
+#: src/blocks/share/edit.js:161
+#: src/blocks/share/index.php:157
 msgid "Share on Google"
 msgstr "在 Google 上分享"
 
-#: src/blocks/share/edit.js:169 src/blocks/share/index.php:160
+#: src/blocks/share/edit.js:169
+#: src/blocks/share/index.php:161
 msgid "Share on Reddit"
 msgstr "在 Reddit 上分享"
 
@@ -1735,27 +1788,32 @@ msgstr "按钮大小"
 msgid "Icons"
 msgstr "图标"
 
-#: src/blocks/share/inspector.js:157 src/blocks/social-profiles/edit.js:205
-#: src/blocks/social-profiles/index.php:71
+#: src/blocks/share/inspector.js:157
+#: src/blocks/social-profiles/edit.js:205
+#: src/blocks/social-profiles/index.php:72
 msgid "Twitter"
 msgstr "Twitter"
 
-#: src/blocks/share/inspector.js:162 src/blocks/social-profiles/edit.js:159
-#: src/blocks/social-profiles/index.php:67
+#: src/blocks/share/inspector.js:162
+#: src/blocks/social-profiles/edit.js:159
+#: src/blocks/social-profiles/index.php:68
 msgid "Facebook"
 msgstr "Facebook"
 
-#: src/blocks/share/inspector.js:167 src/blocks/social-profiles/edit.js:299
-#: src/blocks/social-profiles/index.php:79
+#: src/blocks/share/inspector.js:167
+#: src/blocks/social-profiles/edit.js:299
+#: src/blocks/social-profiles/index.php:80
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: src/blocks/share/inspector.js:172 src/blocks/social-profiles/edit.js:347
+#: src/blocks/share/inspector.js:172
+#: src/blocks/social-profiles/edit.js:347
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
-#: includes/class-coblocks-form.php:319
+#: src/blocks/share/inspector.js:177
+#: includes/class-coblocks-form.php:234
+#: includes/class-coblocks-form.php:321
 msgid "Email"
 msgstr "电子邮件"
 
@@ -1771,11 +1829,13 @@ msgstr "Google"
 msgid "Reddit"
 msgstr "Reddit"
 
-#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:36
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:36
 msgid "Share button colors are enabled."
 msgstr "分享按钮颜色已启用。"
 
-#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:37
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:37
 msgid "Toggle to use official colors from each social media platform."
 msgstr "进行切换，使用各个社交媒体平台的官方颜色。"
 
@@ -1800,7 +1860,7 @@ msgid "Add Instagram Profile"
 msgstr "添加 Instagram 个人资料"
 
 #: src/blocks/social-profiles/edit.js:251
-#: src/blocks/social-profiles/index.php:75
+#: src/blocks/social-profiles/index.php:76
 msgid "Instagram"
 msgstr "Instagram"
 
@@ -1829,7 +1889,7 @@ msgid "Add YouTube Profile"
 msgstr "添加 YouTube 个人资料"
 
 #: src/blocks/social-profiles/edit.js:393
-#: src/blocks/social-profiles/index.php:88
+#: src/blocks/social-profiles/index.php:89
 msgid "YouTube"
 msgstr "YouTube"
 
@@ -1842,7 +1902,7 @@ msgid "Add Yelp Profile"
 msgstr "添加 Yelp 个人资料"
 
 #: src/blocks/social-profiles/edit.js:439
-#: src/blocks/social-profiles/index.php:92
+#: src/blocks/social-profiles/index.php:93
 msgid "Yelp"
 msgstr "Yelp"
 
@@ -1855,7 +1915,7 @@ msgid "Add Houzz Profile"
 msgstr "添加 Houzz 个人资料"
 
 #: src/blocks/social-profiles/edit.js:485
-#: src/blocks/social-profiles/index.php:96
+#: src/blocks/social-profiles/index.php:97
 msgid "Houzz"
 msgstr "Houzz"
 
@@ -2343,7 +2403,7 @@ msgstr "显示为全宽。"
 msgid "Toggle to display button as full width."
 msgstr "进行切换，将按钮显示为全宽。"
 
-#: src/extensions/image-crop/index.js:172
+#: src/extensions/image-crop/index.js:169
 msgid "Crop Settings"
 msgstr "Crop Settings"
 
@@ -2391,9 +2451,8 @@ msgid "Display open"
 msgstr "显示打开"
 
 #: src/blocks/accordion/accordion-item/edit.js:65
-#, fuzzy
 msgctxt "Accordion is the block name"
-msgid "Write accordion item title..."
+msgid "Add accordion title..."
 msgstr "添加折叠项标题..."
 
 #: src/blocks/accordion/accordion-item/index.js:26
@@ -2438,12 +2497,14 @@ msgctxt "block keyword"
 msgid "link"
 msgstr "链接"
 
-#: src/blocks/buttons/index.js:31 src/blocks/hero/index.js:43
+#: src/blocks/buttons/index.js:31
+#: src/blocks/hero/index.js:43
 msgctxt "block keyword"
 msgid "cta"
 msgstr "cta"
 
-#: src/blocks/click-to-tweet/index.js:31 src/blocks/social-profiles/index.js:28
+#: src/blocks/click-to-tweet/index.js:31
+#: src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "share"
 msgstr "分享"
@@ -2611,7 +2672,8 @@ msgctxt "block keyword"
 msgid "paragraph"
 msgstr "段落"
 
-#: src/blocks/icon/index.js:35 src/blocks/social-profiles/index.js:28
+#: src/blocks/icon/index.js:35
+#: src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "icons"
 msgstr "图标"
@@ -2666,7 +2728,8 @@ msgctxt "block keyword"
 msgid "slider"
 msgstr "slider"
 
-#: src/blocks/post-carousel/index.js:29 src/blocks/posts/index.js:29
+#: src/blocks/post-carousel/index.js:29
+#: src/blocks/posts/index.js:29
 msgctxt "block keyword"
 msgid "latest"
 msgstr "最近"
@@ -3069,27 +3132,32 @@ msgctxt "block style"
 msgid "Pointed"
 msgstr "点状"
 
-#: src/blocks/share/index.js:30 src/blocks/social-profiles/index.js:30
+#: src/blocks/share/index.js:30
+#: src/blocks/social-profiles/index.js:30
 msgctxt "block style"
 msgid "Mask"
 msgstr "掩饰"
 
-#: src/blocks/share/index.js:31 src/blocks/social-profiles/index.js:31
+#: src/blocks/share/index.js:31
+#: src/blocks/social-profiles/index.js:31
 msgctxt "block style"
 msgid "Icon"
 msgstr "图标"
 
-#: src/blocks/share/index.js:32 src/blocks/social-profiles/index.js:32
+#: src/blocks/share/index.js:32
+#: src/blocks/social-profiles/index.js:32
 msgctxt "block style"
 msgid "Text"
 msgstr "文本"
 
-#: src/blocks/share/index.js:33 src/blocks/social-profiles/index.js:33
+#: src/blocks/share/index.js:33
+#: src/blocks/social-profiles/index.js:33
 msgctxt "block style"
 msgid "Icon & Text"
 msgstr "图标和文本"
 
-#: src/blocks/share/index.js:34 src/blocks/social-profiles/index.js:34
+#: src/blocks/share/index.js:34
+#: src/blocks/social-profiles/index.js:34
 msgctxt "block style"
 msgid "Circular"
 msgstr "圆形"
@@ -3141,9 +3209,7 @@ msgstr "Add hero heading…"
 
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
-msgid ""
-"Add hero content, which is typically an introductory area of a page "
-"accompanied by call to action or two."
+msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
 msgstr "添加首页内容，通常是页面的介绍性区域，配有行动号召或两个。"
 
 #: src/blocks/hero/edit.js:39
@@ -3173,19 +3239,15 @@ msgstr "添加内容..."
 
 #: src/blocks/media-card/edit.js:47
 msgctxt "content placeholder"
-msgid ""
-"Replace this text with descriptive copy to go along with the card image. "
-"Then add more blocks to this card, such as buttons, lists or images."
-msgstr ""
-"将此文本替换为与卡图片相配的描述性副本。然后向此卡中添加更多模块，如按钮、列"
-"表或图片。"
+msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
+msgstr "将此文本替换为与卡图片相配的描述性副本。然后向此卡中添加更多模块，如按钮、列表或图片。"
 
-#: src/blocks/services/service/edit.js:205
+#: src/blocks/services/service/edit.js:204
 msgctxt "content placeholder"
 msgid "Write title..."
 msgstr "编写标题..."
 
-#: src/blocks/services/service/edit.js:211
+#: src/blocks/services/service/edit.js:210
 msgctxt "content placeholder"
 msgid "Write description..."
 msgstr "编写描述..."
@@ -3220,7 +3282,8 @@ msgctxt "label for small gutter option"
 msgid "Small"
 msgstr "小"
 
-#: src/blocks/gallery-collage/inspector.js:89 src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:89
+#: src/blocks/posts/inspector.js:58
 msgctxt "abbreviation for \"Small\" size"
 msgid "S"
 msgstr "秒"
@@ -3230,7 +3293,8 @@ msgctxt "label for medium gutter option"
 msgid "Medium"
 msgstr "中"
 
-#: src/blocks/gallery-collage/inspector.js:94 src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:94
+#: src/blocks/posts/inspector.js:63
 msgctxt "abbreviation for \"Medium\" size"
 msgid "M"
 msgstr "米"
@@ -3240,7 +3304,8 @@ msgctxt "label for large gutter option"
 msgid "Large"
 msgstr "大"
 
-#: src/blocks/gallery-collage/inspector.js:99 src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:99
+#: src/blocks/posts/inspector.js:68
 msgctxt "abbreviation for \"Large\" size"
 msgid "L"
 msgstr "L"
@@ -3797,9 +3862,7 @@ msgstr "音乐 麦克风 歌曲 艺术家 创意 媒体 音频"
 
 #: src/blocks/icon/svgs.js:43
 msgctxt "tags"
-msgid ""
-"microphone podcast computer device music microphone song artist creative "
-"media audio"
+msgid "microphone podcast computer device music microphone song artist creative media audio"
 msgstr "麦克风 播客 计算机 设备 音乐 麦克风 歌曲 艺术家 创意 媒体 音频"
 
 #: src/blocks/icon/svgs.js:49
@@ -3824,9 +3887,7 @@ msgstr "电影 摄像 导演 制片人 媒体 创意"
 
 #: src/blocks/icon/svgs.js:73
 msgctxt "tags"
-msgid ""
-"video videography director producer media creative camera photographer "
-"photography aperture"
+msgid "video videography director producer media creative camera photographer photography aperture"
 msgstr "视频 摄像 导演 制片人 媒体 创意 相机 摄影师 摄影 光圈"
 
 #: src/blocks/icon/svgs.js:85
@@ -3904,8 +3965,10 @@ msgctxt "block styles"
 msgid "Checkbox"
 msgstr "复选框"
 
-#: src/blocks/post-carousel/edit.js:302 src/blocks/posts/edit.js:437
-#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
+#: src/blocks/post-carousel/edit.js:302
+#: src/blocks/posts/edit.js:437
+#: src/blocks/post-carousel/index.php:185
+#: src/blocks/posts/index.php:202
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
 msgstr "(no title)"
@@ -4020,8 +4083,7 @@ msgid "Repeat Vertically"
 msgstr "垂直重复"
 
 #: src/components/block-gallery/gallery-link-settings.js:80
-msgctxt ""
-"HTML attribute that specifies the a relationship between the two pages."
+msgctxt "HTML attribute that specifies the a relationship between the two pages."
 msgid "Link Rel"
 msgstr "链接 Rel"
 
@@ -4139,14 +4201,8 @@ msgid "https://coblocks.com"
 msgstr "https://coblocks.com"
 
 #. Description of the plugin
-msgid ""
-"CoBlocks is a suite of professional <strong>page building content blocks</"
-"strong> for the WordPress Gutenberg block editor. Our blocks are hyper-"
-"focused on empowering makers to build beautifully rich pages in WordPress."
-msgstr ""
-"CoBlocks 是用于 WordPress Gutenberg 模块编辑器的一套专业<strong>网页构建内容"
-"模块</strong>。我们的模块侧重点是让制作者能够在 WordPress 中构建内容丰富的精"
-"美页面。"
+msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
+msgstr "CoBlocks 是用于 WordPress Gutenberg 模块编辑器的一套专业<strong>网页构建内容模块</strong>。我们的模块侧重点是让制作者能够在 WordPress 中构建内容丰富的精美页面。"
 
 #. Author of the plugin
 msgid "GoDaddy"
@@ -4156,7 +4212,8 @@ msgstr "GoDaddy"
 msgid "https://www.godaddy.com"
 msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:84 class-coblocks.php:96
+#: class-coblocks.php:77
+#: class-coblocks.php:89
 msgid "Cheating huh?"
 msgstr "作弊啊？"
 
@@ -4168,71 +4225,53 @@ msgstr "Review CoBlocks on WordPress.org"
 msgid "Leave a Review"
 msgstr "留下评论"
 
-#: includes/admin/class-coblocks-getting-started-page.php:120
-msgid ""
-"Thanks for choosing CoBlocks, the premier page builder for the new WordPress "
-"block editor."
+#: includes/admin/class-coblocks-getting-started-page.php:121
+msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
 msgstr "感谢您选择 CoBlocks，适用于新 WordPress 模块编辑器的首要页面构建器。"
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
-#: includes/admin/class-coblocks-getting-started-page.php:126
-msgid ""
-"You've just added lots of useful blocks and a new page builder toolkit to "
-"the WordPress editor. CoBlocks gives you a game-changing set of features: "
-"%1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom "
-"typography controls%2$s."
-msgstr ""
-"我们刚向 WordPress 编辑器中添加了很多有用的模块和一个新的页面构建工具包。"
-"CoBlocks 为您提供一组颠覆性的功能：%1$s几十个模块%2$s、%1$s页面构建器体验%2$s"
-"和%1$s自定义排版控制%2$s。"
+#: includes/admin/class-coblocks-getting-started-page.php:127
+msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
+msgstr "我们刚向 WordPress 编辑器中添加了很多有用的模块和一个新的页面构建工具包。CoBlocks 为您提供一组颠覆性的功能：%1$s几十个模块%2$s、%1$s页面构建器体验%2$s和%1$s自定义排版控制%2$s。"
 
-#: includes/admin/class-coblocks-getting-started-page.php:133
+#: includes/admin/class-coblocks-getting-started-page.php:134
 msgid "Here are a few videos to help you get started:"
 msgstr "这里有一些视频，可帮助您入门："
 
 #. translators: CoBlocks plugin name
-#: includes/admin/class-coblocks-getting-started-page.php:137
+#: includes/admin/class-coblocks-getting-started-page.php:138
 msgid "Watch how to create your first page with %s"
 msgstr "观看如何使用 %s 创建您的第一个网页"
 
-#: includes/admin/class-coblocks-getting-started-page.php:138
+#: includes/admin/class-coblocks-getting-started-page.php:139
 msgid "Watch how to create your first page"
 msgstr "观看如何创建您的第一个网页"
 
-#: includes/admin/class-coblocks-getting-started-page.php:140
 #: includes/admin/class-coblocks-getting-started-page.php:141
+#: includes/admin/class-coblocks-getting-started-page.php:142
 msgid "Watch how to use the Row and Shape Divider blocks"
 msgstr "观看如何使用行和形状分割器模块"
 
-#: includes/admin/class-coblocks-getting-started-page.php:143
 #: includes/admin/class-coblocks-getting-started-page.php:144
+#: includes/admin/class-coblocks-getting-started-page.php:145
 msgid "Watch how to use the Media Card block"
 msgstr "观看如何使用媒体卡模块"
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:152
-msgid ""
-"Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let "
-"you know when new video tutorials are released."
-msgstr ""
-"喜欢吗？%1$s订阅我们的 YouTube 频道%2$s，当发布新的视频教程时，我们会通知您。"
+#: includes/admin/class-coblocks-getting-started-page.php:153
+msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
+msgstr "喜欢吗？%1$s订阅我们的 YouTube 频道%2$s，当发布新的视频教程时，我们会通知您。"
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:163
-msgid ""
-"If you have any questions or feedback, let us know on %1$sTwitter%4$s or our "
-"%2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you "
-"want to stay up to date with what's new and upcoming at CoBlocks."
-msgstr ""
-"如果您有任何问题或反馈，请通过 %1$sTwitter%4$s 或我们的 %2$sFacebook 群组%4$s"
-"告诉我们。另外，如果您想跟上 CoBlocks 的新功能，掌握最新情况，请%3$s订阅我们"
-"的内部通讯%4$s。"
+#: includes/admin/class-coblocks-getting-started-page.php:164
+msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
+msgstr "如果您有任何问题或反馈，请通过 %1$sTwitter%4$s 或我们的 %2$sFacebook 群组%4$s告诉我们。另外，如果您想跟上 CoBlocks 的新功能，掌握最新情况，请%3$s订阅我们的内部通讯%4$s。"
 
-#: includes/admin/class-coblocks-getting-started-page.php:172
+#: includes/admin/class-coblocks-getting-started-page.php:173
 msgid "Enjoy!"
 msgstr "祝使用愉快！"
 
-#: includes/class-coblocks-block-settings.php:72
+#: includes/class-coblocks-block-settings.php:80
 msgid "Enable or disable blocks"
 msgstr "启用或禁用模块"
 
@@ -4244,50 +4283,50 @@ msgstr "用于表单垃圾防护的 Google reCaptcha 网站密钥"
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr "用于表单垃圾防护的 Google reCaptcha 密钥"
 
-#: includes/class-coblocks-form.php:267
+#: includes/class-coblocks-form.php:268
 msgid "Name"
 msgstr "名称"
 
-#: includes/class-coblocks-form.php:271
+#: includes/class-coblocks-form.php:272
 msgid "First"
 msgstr "首页"
 
-#: includes/class-coblocks-form.php:272
+#: includes/class-coblocks-form.php:273
 msgid "Last"
 msgstr "最后一页"
 
-#: includes/class-coblocks-form.php:346
+#: includes/class-coblocks-form.php:349
 msgid "Message"
 msgstr "信息"
 
-#: includes/class-coblocks-form.php:384
+#: includes/class-coblocks-form.php:387
 msgid "Date"
 msgstr "日期"
 
-#: includes/class-coblocks-form.php:412
+#: includes/class-coblocks-form.php:415
 msgid "Phone"
 msgstr "电话"
 
-#: includes/class-coblocks-form.php:448
+#: includes/class-coblocks-form.php:451
 msgid "Choose one"
 msgstr "Choose one"
 
-#: includes/class-coblocks-form.php:520
+#: includes/class-coblocks-form.php:522
 msgid "Submit"
 msgstr "提交"
 
-#: includes/class-coblocks-form.php:723
+#: includes/class-coblocks-form.php:730
 msgid "Your message was sent:"
 msgstr "您的消息已发送："
 
-#: includes/class-coblocks-google-map-block.php:116
+#: includes/class-coblocks-google-map-block.php:124
 msgid "Google Map API key for map rendering"
 msgstr "用于地图渲染的 Google 地图 API 密钥"
 
-#: src/blocks/share/index.php:144
+#: src/blocks/share/index.php:145
 msgid "Share on Linkedin"
 msgstr "在 Linkedin 上分享"
 
-#: src/blocks/social-profiles/index.php:83
+#: src/blocks/social-profiles/index.php:84
 msgid "Linkedin"
 msgstr "Linkedin"
