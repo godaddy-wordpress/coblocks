@@ -3,6 +3,33 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 
+	&.columns-2 > *,
+	&.columns-3 > *,
+	&.columns-4 > * {
+		// 600px+
+		@include break-small() {
+			flex-basis: 50%;
+			max-width: calc(100% / 2 - #{map-get($margin, 2)});
+		}
+	}
+
+	&.columns-3 > *,
+	&.columns-4 > * {
+		// 782px+
+		@include break-medium() {
+			flex-basis: 33.33%;
+			max-width: calc(100% / 3 - #{map-get($margin, 3)});
+		}
+	}
+
+	&.columns-4 > * {
+		// 1280px+
+		@include break-wide() {
+			flex-basis: 25%;
+			max-width: calc(100% / 4 - #{map-get($margin, 3)});
+		}
+	}
+
 	&.alignfull {
 		padding-left: map-get($padding, 2);
 		padding-right: map-get($padding, 2);
@@ -28,33 +55,6 @@
 		@include break-wide() {
 			padding-left: map-get($padding, 4);
 			padding-right: map-get($padding, 4);
-		}
-	}
-
-	&-2 > *,
-	&-3 > *,
-	&-4 > * {
-		// 600px+
-		@include break-small() {
-			flex-basis: 50%;
-			max-width: calc(100% / 2 - #{map-get($margin, 2)});
-		}
-	}
-
-	&-3 > *,
-	&-4 > * {
-		// 782px+
-		@include break-medium() {
-			flex-basis: 33.33%;
-			max-width: calc(100% / 3 - #{map-get($margin, 3)});
-		}
-	}
-
-	&-4 > * {
-		// 1280px+
-		@include break-wide() {
-			flex-basis: 25%;
-			max-width: calc(100% / 4 - #{map-get($margin, 3)});
 		}
 	}
 }
