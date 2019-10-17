@@ -2518,7 +2518,7 @@ class CoBlocks_ICal {
 
 				$replace    = $replacements[ $key ];
 				$search_len = mb_strlen( $search, $encoding );
-				$offset     = mb_strpos( $subject, $search, 0, $encoding
+				$offset     = mb_strpos( $subject, $search, 0, $encoding );
 
 				$sb = [];
 				while ( false !== $offset ) {
