@@ -447,6 +447,7 @@ class CoBlocks_Form {
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
 		$label_slug = sanitize_title( $label );
+		$filed_name = isset( $atts['label'] ) ? $atts['label'] : 'radio';
 
 		ob_start();
 
@@ -456,9 +457,8 @@ class CoBlocks_Form {
 
 			printf(
 				'<label class="coblocks-radio-label">
-					<input type="radio" name="field-%1$s[value]" value="%2$s" class="radio"> %3$s
+					<input type="radio" name="field-radio[value]" value="%1$s" class="radio"> %2$s
 				</label>',
-				esc_attr( $label_slug ),
 				esc_attr( $value ),
 				esc_html( $value )
 			);
