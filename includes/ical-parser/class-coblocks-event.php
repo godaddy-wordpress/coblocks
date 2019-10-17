@@ -156,7 +156,7 @@ class CoBlocks_ICal_Event {
 	 * @param  string $html HTML template to use
 	 * @return string
 	 */
-	public function printData( $html = self::HTML_TEMPLATE ) {
+	public function print_data( $html = self::HTML_TEMPLATE ) {
 		$data   = array(
 			'SUMMARY'       => $this->summary,
 			'DTSTART'       => $this->dtstart,

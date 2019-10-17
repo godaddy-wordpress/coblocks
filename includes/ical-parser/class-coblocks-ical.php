@@ -2118,7 +2118,7 @@ class CoBlocks_ICal {
 	 * @return string
 	 */
 	public function calendar_description() {
-		 return isset( $this->cal['VCALENDAR']['X-WR-CALDESC'] ) ? $this->cal['VCALENDAR']['X-WR-CALDESC'] : '';
+		return isset( $this->cal['VCALENDAR']['X-WR-CALDESC'] ) ? $this->cal['VCALENDAR']['X-WR-CALDESC'] : '';
 	}
 
 	/**
