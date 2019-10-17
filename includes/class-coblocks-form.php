@@ -737,7 +737,7 @@ class CoBlocks_Form {
 				$matches[1],
 				function( $match, $key ) use ( $matches, &$subject ) {
 					$slug_match = strtolower( preg_replace( '/\s+/', '', $match ) );
-					$value      = isset( $_POST[ "field-{$slug_match}" ]['value'] ) ? $_POST[ "field-{$slug_match}" ]['value'] : "[{$matches[0][ $key ]}]";
+					$value      = isset( $_POST[ "field-{$slug_match}" ]['value'] ) ? $_POST[ "field-{$slug_match}" ]['value'] : $matches[0][ $key ];
 					/**
 					 * Filter the matched shortcode value.
 					 *
