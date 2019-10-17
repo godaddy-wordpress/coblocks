@@ -87,22 +87,16 @@ const attributes = {
 
 const settings = {
 	title,
-
 	description: __( 'A event item within the events block.' ),
-
 	keywords,
-
 	attributes,
-
 	supports: {
 		inserter: false,
 		customClassName: false,
 		reusable: false,
 		html: false,
 	},
-
 	parent: [ 'coblocks/events' ],
-
 	edit,
 	save,
 };
