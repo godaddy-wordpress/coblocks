@@ -123,9 +123,7 @@ msgstr "अवतार संपादित करा"
 #. translators: placeholder text used for the author name
 #: src/blocks/author/edit.js:127
 msgid "Write author name…"
-msgstr ""
-"\n"
-"लेखकाचे नाव लिहा..."
+msgstr "लेखकाचे नाव लिहा..."
 
 #. placeholder text used for the biography
 #. translators: placeholder text used for the biography
@@ -152,9 +150,7 @@ msgstr "लेखक सेटिंग्ज"
 
 #: src/blocks/buttons/index.js:29
 msgid "Prompt visitors to take action with multiple buttons, side by side."
-msgstr ""
-"\n"
-"एकाधिक बटणांसह, अभ्यागतांना कृती करण्यास प्रवृत्त करा."
+msgstr "एकाधिक बटणांसह, अभ्यागतांना कृती करण्यास प्रवृत्त करा."
 
 #: src/blocks/buttons/inspector.js:30
 msgid "Buttons"
@@ -166,9 +162,7 @@ msgstr "मोबाइलवरील स्टॅकींग बटणे."
 
 #: src/blocks/buttons/inspector.js:48
 msgid "Toggle to stack buttons on mobile."
-msgstr ""
-"\n"
-"मोबाइलवर बटणे स्टॅक करण्यासाठी टॉगल करा."
+msgstr "मोबाइलवर बटणे स्टॅक करण्यासाठी टॉगल करा."
 
 #: src/blocks/click-to-tweet/controls.js:44
 #: src/blocks/click-to-tweet/controls.js:37
@@ -376,9 +370,7 @@ msgstr "वेगन"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:386
 msgid "Add description..."
-msgstr ""
-"\n"
-"वर्णन जोडा..."
+msgstr "वर्णन जोडा..."
 
 #: src/blocks/food-and-drinks/food-item/edit.js:395
 msgid "$0.00"
@@ -532,15 +524,11 @@ msgstr "Google reCAPTCHA"
 
 #: src/blocks/form/edit.js:296
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
-msgstr ""
-"\n"
-"आपला फॉर्म स्पॅमपासून संरक्षित करण्यासाठी आपली reCAPTCHA साइट आणि गोपनीय की जोडा."
+msgstr "आपला फॉर्म स्पॅमपासून संरक्षित करण्यासाठी आपली reCAPTCHA साइट आणि गोपनीय की जोडा."
 
 #: src/blocks/form/edit.js:302
 msgid "Generate keys"
-msgstr ""
-"\n"
-"की व्युत्पन्न करा"
+msgstr "की व्युत्पन्न करा"
 
 #: src/blocks/form/edit.js:303
 msgid "My keys"
@@ -983,9 +971,7 @@ msgstr "तळाकडून उजवीकडे"
 
 #: src/blocks/highlight/edit.js:113
 msgid "Add highlighted text..."
-msgstr ""
-"\n"
-"हायलाइट केलेला मजकूर जोडा..."
+msgstr "हायलाइट केलेला मजकूर जोडा..."
 
 #: src/blocks/highlight/index.js:28
 msgid "Draw attention and emphasize important narrative."
@@ -1010,9 +996,7 @@ msgstr "चिन्ह आकार प्रीसेट निवडा"
 
 #: src/blocks/icon/index.js:33
 msgid "Add a stylized graphic symbol to communicate something more."
-msgstr ""
-"\n"
-"काहीतरी अधिक संप्रेषण करण्यासाठी एक शैलीकृत ग्राफिक चिन्ह जोडा."
+msgstr "काहीतरी अधिक संप्रेषण करण्यासाठी एक शैलीकृत ग्राफिक चिन्ह जोडा."
 
 #: src/blocks/icon/inspector.js:155 src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:115
@@ -1039,9 +1023,7 @@ msgstr "सानुकूल"
 
 #: src/blocks/icon/inspector.js:209
 msgid "Radius"
-msgstr ""
-"\n"
-"त्रिज्या"
+msgstr "त्रिज्या"
 
 #: src/blocks/icon/inspector.js:229
 msgid "Icon Search"
@@ -1090,9 +1072,7 @@ msgstr "लोगो आणि बिल्ले"
 #: src/blocks/logos/edit.js:70
 #: src/components/block-gallery/gallery-placeholder.js:72
 msgid "Drag images, upload new ones or select files from your library."
-msgstr ""
-"\n"
-"प्रतिमा ड्रॅग करा, नवीन अपलोड करा किंवा आपल्या ग्रंथालयातून फायली निवडा."
+msgstr "प्रतिमा ड्रॅग करा, नवीन अपलोड करा किंवा आपल्या ग्रंथालयातून फायली निवडा."
 
 #: src/blocks/logos/index.js:27
 msgid "Add logos, badges, or certifications to build credibility."
@@ -1129,9 +1109,7 @@ msgstr "अवैध API की किंवा बर्‍याच विन�
 
 #: src/blocks/map/edit.js:294
 msgid "Enter a location or address to drop a pin on a Google map."
-msgstr ""
-"\n"
-"Google map वर पिन टाकण्यासाठी एक स्थान किंवा पत्ता प्रविष्ट करा."
+msgstr "Google map वर पिन टाकण्यासाठी एक स्थान किंवा पत्ता प्रविष्ट करा."
 
 #: src/blocks/map/edit.js:301
 msgid "Search for a place or address…"
@@ -1143,9 +1121,7 @@ msgstr "रद्द करा"
 
 #: src/blocks/map/index.js:28
 msgid "Add an address or location to drop a pin on a Google map."
-msgstr ""
-"\n"
-"Google map वर पिन टाकण्यासाठी एक स्थान किंवा पत्ता प्रविष्ट करा."
+msgstr "Google map वर पिन टाकण्यासाठी एक स्थान किंवा पत्ता प्रविष्ट करा."
 
 #: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
@@ -1187,15 +1163,11 @@ msgstr "नकाशा प्रकार"
 
 #: src/blocks/map/inspector.js:185
 msgid "Switching between standard and satellite map views is enabled."
-msgstr ""
-"\n"
-"मानक आणि उपग्रह नकाशे दृश्यांमधील स्विचिंग सक्षम केले आहे."
+msgstr "मानक आणि उपग्रह नकाशे दृश्यांमधील स्विचिंग सक्षम केले आहे."
 
 #: src/blocks/map/inspector.js:185
 msgid "Toggle to enable switching between standard and satellite maps."
-msgstr ""
-"\n"
-"मानक आणि उपग्रह नकाशांमधील स्विचिंग सक्षम करण्यासाठी टॉगल करा."
+msgstr "मानक आणि उपग्रह नकाशांमधील स्विचिंग सक्षम करण्यासाठी टॉगल करा."
 
 #: src/blocks/map/inspector.js:188
 msgid "Zoom Controls"
@@ -1505,9 +1477,7 @@ msgstr "स्तंभ सेटिंग"
 
 #: src/blocks/row/column/inspector.js:112 src/blocks/row/inspector.js:158
 msgid "Space around the container."
-msgstr ""
-"\n"
-"कंटेनर भोवतीची जागा."
+msgstr "कंटेनर भोवतीची जागा."
 
 #: src/blocks/row/column/inspector.js:155
 msgid "Width"
@@ -1587,9 +1557,7 @@ msgstr "मागे स्तंभावर जा"
 msgid ""
 "Add a structured wrapper for column blocks, then add content blocks you’d "
 "like to the columns."
-msgstr ""
-"\n"
-"स्तंभ ब्लॉक्ससाठी संरचित रॅपर जोडा, त्यानंतर स्तंभांमध्येआपल्याला आवडणारे सामग्री ब्लॉक जोडा."
+msgstr "स्तंभ ब्लॉक्ससाठी संरचित रॅपर जोडा, त्यानंतर स्तंभांमध्येआपल्याला आवडणारे सामग्री ब्लॉक जोडा."
 
 #: src/blocks/row/inspector.js:153
 msgid "Row Settings"
@@ -1711,15 +1679,11 @@ msgstr "क्षैतिजरित्या फ्लिप करा"
 
 #: src/blocks/shape-divider/controls.js:33
 msgid "Flip vertically"
-msgstr ""
-"\n"
-"अनुलंबरित्या फ्लिप करा"
+msgstr "अनुलंबरित्या फ्लिप करा"
 
 #: src/blocks/shape-divider/index.js:29
 msgid "Add a shape divider to visually distinquish page sections."
-msgstr ""
-"\n"
-"पृष्ठ विभाग दृश्यमानपणे वेगळे करण्यासाठी आकार विभाजक जोडा."
+msgstr "पृष्ठ विभाग दृश्यमानपणे वेगळे करण्यासाठी आकार विभाजक जोडा."
 
 #: src/blocks/shape-divider/inspector.js:53
 msgid "Divider Settings"
@@ -1843,9 +1807,7 @@ msgstr "सामायिक करा बटण रंग सक्षम क�
 
 #: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:37
 msgid "Toggle to use official colors from each social media platform."
-msgstr ""
-"\n"
-"प्रत्येक सामाजिक मीडिया प्लॅटफॉर्मवरुन अधिकृत रंग वापरण्यासाठी टॉगल करा."
+msgstr "प्रत्येक सामाजिक मीडिया प्लॅटफॉर्मवरुन अधिकृत रंग वापरण्यासाठी टॉगल करा."
 
 #: src/blocks/social-profiles/edit.js:142
 msgid "Add Facebook Profile"
@@ -1959,9 +1921,7 @@ msgstr "पार्श्वभूमी सेटिंग"
 
 #: src/components/background/panel.js:119
 msgid "Fixed Background"
-msgstr ""
-"\n"
-"निश्चित पार्श्वभूमी"
+msgstr "निश्चित पार्श्वभूमी"
 
 #: src/components/background/panel.js:135
 msgid "Background Opacity"
@@ -1993,9 +1953,7 @@ msgstr ""
 
 #: src/components/background/panel.js:194
 msgid "Toggle to mute the video."
-msgstr ""
-"\n"
-"व्हिडिओ नि:शब्द करण्यासाठी टॉगल करा."
+msgstr "व्हिडिओ नि:शब्द करण्यासाठी टॉगल करा."
 
 #: src/components/background/panel.js:201
 msgid "Loop Video"
@@ -2023,15 +1981,11 @@ msgstr "काढून टाका "
 
 #: src/components/block-gallery/gallery-image.js:189
 msgid "Move Image Backward"
-msgstr ""
-"\n"
-"प्रतिमा मागे हलवा"
+msgstr "प्रतिमा मागे हलवा"
 
 #: src/components/block-gallery/gallery-image.js:197
 msgid "Move Image Forward"
-msgstr ""
-"\n"
-"प्रतिमा पुढे हलवा"
+msgstr "प्रतिमा पुढे हलवा"
 
 #: src/components/block-gallery/gallery-link-settings.js:67
 msgid "Link To"
@@ -2045,9 +1999,7 @@ msgstr "%s गॅलरी"
 
 #: src/components/block-gallery/gallery-uploader.js:53
 msgid "Upload an image"
-msgstr ""
-"\n"
-"प्रतिमा अपलोड करा"
+msgstr "प्रतिमा अपलोड करा"
 
 #: src/components/block-gallery/options/link-options.js:11
 msgid "Media File"
@@ -2308,9 +2260,7 @@ msgstr "%1$d %2$s नंतर प्रगती करत आहे."
 #. 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Automatically advance to the next slide."
-msgstr ""
-"\n"
-"पुढील स्लाइड स्वयंचलितपणे प्रगत करा."
+msgstr "पुढील स्लाइड स्वयंचलितपणे प्रगत करा."
 
 #: src/components/slider-panel/index.js:31
 msgid "Dragging and flicking enabled."
@@ -2370,9 +2320,7 @@ msgstr "स्वयंप्ले"
 
 #: src/components/slider-panel/index.js:81
 msgid "Transition Speed"
-msgstr ""
-"\n"
-"संक्रमण वेग"
+msgstr "संक्रमण वेग"
 
 #: src/components/slider-panel/index.js:88
 msgid "Pause on Hover"
@@ -2488,9 +2436,7 @@ msgstr "ब्लॉकसाठी शोधा"
 
 #: src/sidebars/block-manager/components/options/disable-blocks.js:170
 msgid "This block is added to the page and cannot currently be disabled"
-msgstr ""
-"\n"
-"हा ब्लॉक पृष्ठावर जोडला गेला आहे आणि सध्या अक्षम केला जाऊ शकत नाही"
+msgstr "हा ब्लॉक पृष्ठावर जोडला गेला आहे आणि सध्या अक्षम केला जाऊ शकत नाही"
 
 #: src/sidebars/block-manager/components/options/disable-blocks.js:185
 msgid "Disable all"
@@ -3312,9 +3258,7 @@ msgstr "शीर्षक लिहा..."
 #: src/blocks/services/service/edit.js:211
 msgctxt "content placeholder"
 msgid "Write description..."
-msgstr ""
-"\n"
-"वर्णन लिहा..."
+msgstr "वर्णन लिहा..."
 
 #: src/blocks/buttons/inspector.js:28
 msgctxt "block settings"
@@ -3453,9 +3397,7 @@ msgstr "CoBlocks"
 #: src/blocks/icon/svgs.js:142
 msgctxt "label"
 msgid "Doodle"
-msgstr ""
-"\n"
-"डूडल"
+msgstr "डूडल"
 
 #: src/blocks/icon/svgs.js:147
 msgctxt "label"
@@ -3891,9 +3833,7 @@ msgstr "भाषा जागतिक जग भाषण"
 #: src/blocks/icon/svgs.js:319
 msgctxt "tags"
 msgid "music microphone song artist creative media audio badge"
-msgstr ""
-"\n"
-"संगीत \n"
+msgstr "संगीत \n"
 "मायक्रोफोन गाणे कलाकार \n"
 "सर्जनशील मीडिया ऑडिओ बिल्ला"
 
@@ -3946,9 +3886,7 @@ msgstr "सुधारणे जोडा अपलोड सॉफ्टवे
 #: src/blocks/icon/svgs.js:37 src/blocks/icon/svgs.js:26
 msgctxt "tags"
 msgid "music microphone song artist creative media audio"
-msgstr ""
-"\n"
-"संगीत \n"
+msgstr "संगीत \n"
 "मायक्रोफोन गाणे कलाकार \n"
 "सर्जनशील मीडिया ऑडिओ"
 
@@ -4188,9 +4126,7 @@ msgstr "क्षैतिजरित्या पुनरावृत्त�
 #: src/components/background/panel.js:98
 msgctxt "block layout"
 msgid "Repeat Vertically"
-msgstr ""
-"\n"
-"अनुलंबरित्या पुनरावृत्ती करा"
+msgstr "अनुलंबरित्या पुनरावृत्ती करा"
 
 #: src/components/block-gallery/gallery-link-settings.js:80
 msgctxt ""
@@ -4241,9 +4177,7 @@ msgstr "Em"
 #: src/components/dimensions-control/index.js:397
 msgctxt "A size unit for CSS markup"
 msgid "Percentage"
-msgstr ""
-"\n"
-"टक्केवारी"
+msgstr "टक्केवारी"
 
 #: src/components/media-filter-control/index.js:31
 msgctxt "image styles"
