@@ -235,11 +235,6 @@ class GalleryCarouselEdit extends Component {
 			marginTop: gutter > 0 && ! responsiveHeight ? ( gutter / 2 ) + 'px' : undefined,
 		};
 
-		const captionClasses = classnames(
-			'coblocks-gallery--caption',
-			'coblocks-gallery--primary-caption', {}
-		);
-
 		const navFigureClasses = classnames(
 			'coblocks--figure', {
 				[ `has-margin-left-${ gutter }` ]: gutter > 0,
@@ -379,8 +374,19 @@ class GalleryCarouselEdit extends Component {
 					</div> : null
 				}
 
-				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }
-
+				{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
+					<RichText
+						tagName="figcaption"
+						placeholder={ __( 'Write caption…' ) }
+						value={ primaryCaption }
+						className="coblocks-gallery--caption coblocks-gallery--primary-caption"
+						unstableOnFocus={ this.onFocusCaption }
+						onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
+						isSelected={ this.state.captionFocused }
+						keepPlaceholderOnFocus
+						inlineToolbar
+					/>
+				) }
 			</Fragment>
 		);
 	}
