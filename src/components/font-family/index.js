@@ -13,7 +13,7 @@ import { BaseControl } from '@wordpress/components';
 function FontFamilyPicker( { label, value, help, instanceId, onChange, className, ...props } ) {
 	const id = `inspector-coblocks-font-family-${ instanceId }`;
 	const systemFonts = [
-		{ value: '', label: __( 'Default' ) },
+		{ value: '', label: __( 'Default', 'coblocks' ) },
 		{ value: 'Arial', label: 'Arial' },
 		{ value: 'Helvetica', label: 'Helvetica' },
 		{ value: 'Times New Roman', label: 'Times New Roman' },

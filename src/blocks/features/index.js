@@ -31,10 +31,10 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Features', 'block name' ),
-	description: __( 'Add up to three columns of small notes for your product or service.' ),
+	title: _x( 'Features', 'block name', 'coblocks' ),
+	description: __( 'Add up to three columns of small notes for your product or service.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'services', 'block keyword' ), 'coblocks' ],
+	keywords: [ _x( 'services', 'block keyword', 'coblocks' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,

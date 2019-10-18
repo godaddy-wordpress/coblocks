@@ -25,12 +25,12 @@ class Controls extends Component {
 
 		const toolbarControls = [ {
 			icon: icons.flipY,
-			title: __( 'Flip horiztonally' ),
+			title: __( 'Flip horiztonally', 'coblocks' ),
 			isActive: !! verticalFlip,
 			onClick: () => setAttributes( { verticalFlip: ! verticalFlip } ),
 		}, {
 			icon: icons.flipX,
-			title: __( 'Flip vertically' ),
+			title: __( 'Flip vertically', 'coblocks' ),
 			isActive: !! horizontalFlip,
 			onClick: () => setAttributes( { horizontalFlip: ! horizontalFlip } ),
 		} ];

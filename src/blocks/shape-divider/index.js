@@ -25,24 +25,24 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Shape Divider', 'block name' ),
-	description: __( 'Add a shape divider to visually distinquish page sections.' ),
+	title: _x( 'Shape Divider', 'block name', 'coblocks' ),
+	description: __( 'Add a shape divider to visually distinquish page sections.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'separator', 'block keyword' ), 'hr', 'svg' ],
+	keywords: [ _x( 'separator', 'block keyword', 'coblocks' ), 'hr', 'svg' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 
 	},
 	styles: [
-		{ name: 'wavy', label: _x( 'Wavy', 'block style' ), isDefault: true },
-		{ name: 'hills', label: _x( 'Hills', 'block style' ) },
-		{ name: 'waves', label: _x( 'Waves', 'block style' ) },
-		{ name: 'angled', label: _x( 'Angled', 'block style' ) },
-		{ name: 'sloped', label: _x( 'Sloped', 'block style' ) },
-		{ name: 'rounded', label: _x( 'Rounded', 'block style' ) },
-		{ name: 'triangle', label: _x( 'Triangle', 'block style' ) },
-		{ name: 'pointed', label: _x( 'Pointed', 'block style' ) },
+		{ name: 'wavy', label: _x( 'Wavy', 'block style', 'coblocks' ), isDefault: true },
+		{ name: 'hills', label: _x( 'Hills', 'block style', 'coblocks' ) },
+		{ name: 'waves', label: _x( 'Waves', 'block style', 'coblocks' ) },
+		{ name: 'angled', label: _x( 'Angled', 'block style', 'coblocks' ) },
+		{ name: 'sloped', label: _x( 'Sloped', 'block style', 'coblocks' ) },
+		{ name: 'rounded', label: _x( 'Rounded', 'block style', 'coblocks' ) },
+		{ name: 'triangle', label: _x( 'Triangle', 'block style', 'coblocks' ) },
+		{ name: 'pointed', label: _x( 'Pointed', 'block style', 'coblocks' ) },
 	],
 	example: {
 		attributes: {

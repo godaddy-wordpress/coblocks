@@ -186,7 +186,7 @@ class GalleryImage extends Component {
 									icon={ verticalMoving ? 'arrow-up' : 'arrow-left' }
 									onClick={ ! isFirstItem && onMoveBackward }
 									className="coblocks-gallery-item__button"
-									label={ __( 'Move Image Backward' ) }
+									label={ __( 'Move Image Backward', 'coblocks' ) }
 									aria-disabled={ isFirstItem }
 									disabled={ ! isSelected }
 								/>
@@ -194,7 +194,7 @@ class GalleryImage extends Component {
 									icon={ verticalMoving ? 'arrow-down' : 'arrow-right' }
 									onClick={ ! isLastItem && onMoveForward }
 									className="coblocks-gallery-item__button"
-									label={ __( 'Move Image Forward' ) }
+									label={ __( 'Move Image Forward', 'coblocks' ) }
 									aria-disabled={ isLastItem }
 									disabled={ ! isSelected }
 								/>
@@ -205,7 +205,7 @@ class GalleryImage extends Component {
 								icon="no-alt"
 								onClick={ onRemove }
 								className="coblocks-gallery-item__button"
-								label={ __( 'Remove Image' ) }
+								label={ __( 'Remove Image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
 						</div>
@@ -218,7 +218,7 @@ class GalleryImage extends Component {
 									value={ imgLink }
 									onChange={ ( value ) => setAttributes( { imgLink: value } ) }
 								/>
-								<IconButton icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving' ) : __( 'Apply' ) } onClick={ this.saveCustomLink } type="submit" />
+								<IconButton icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ this.saveCustomLink } type="submit" />
 							</form>
 						}
 					</Fragment>
@@ -227,7 +227,7 @@ class GalleryImage extends Component {
 				{ ( supportsCaption === true ) && ( ! RichText.isEmpty( caption ) || isSelected ) && captions ? (
 					<RichText
 						tagName="figcaption"
-						placeholder={ __( 'Write caption…' ) }
+						placeholder={ __( 'Write caption…', 'coblocks' ) }
 						className="coblocks-gallery--caption"
 						style={ captionStyles }
 						value={ caption }

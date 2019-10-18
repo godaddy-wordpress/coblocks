@@ -91,7 +91,7 @@ class Edit extends Component {
 				>
 					{ ( ! RichText.isEmpty( title ) || isSelected ) && (
 						<RichText
-							placeholder={ _x( 'Write title...', 'Placeholder text for input box' ) }
+							placeholder={ _x( 'Write title...', 'Placeholder text for input box', 'coblocks' ) }
 							value={ title }
 							className="wp-block-coblocks-alert__title"
 							onChange={ ( value ) => setAttributes( { title: value } ) }
@@ -99,7 +99,7 @@ class Edit extends Component {
 						/>
 					) }
 					<RichText
-						placeholder={ _x( 'Write text...', 'Placeholder text for input box' ) }
+						placeholder={ _x( 'Write text...', 'Placeholder text for input box', 'coblocks' ) }
 						value={ value }
 						className="wp-block-coblocks-alert__text"
 						onChange={ ( value ) => setAttributes( { value: value } ) }

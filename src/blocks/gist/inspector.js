@@ -28,7 +28,7 @@ class Inspector extends Component {
 	}
 
 	getGistMetaHelp( checked ) {
-		return checked ? __( 'Showing gist meta data.' ) : __( 'Toggle to show the gist meta data.' );
+		return checked ? __( 'Showing gist meta data.', 'coblocks' ) : __( 'Toggle to show the gist meta data.', 'coblocks' );
 	}
 
 	render() {
@@ -46,19 +46,19 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Gist Settings' ) }>
+					<PanelBody title={ __( 'Gist Settings', 'coblocks' ) }>
 						<TextControl
-							label={ __( 'Gist URL' ) }
+							label={ __( 'Gist URL', 'coblocks' ) }
 							value={ url }
 							onChange={ this.updateURL }
 						/>
 						<TextControl
-							label={ __( 'Gist File' ) }
+							label={ __( 'Gist File', 'coblocks' ) }
 							value={ file }
 							onChange={ this.updateFile }
 						/>
 						<ToggleControl
-							label={ __( 'Gist Meta' ) }
+							label={ __( 'Gist Meta', 'coblocks' ) }
 							checked={ !! meta }
 							onChange={ () => setAttributes( { meta: ! meta } ) }
 							help={ this.getGistMetaHelp }

@@ -24,10 +24,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Map', 'block name' ),
-	description: __( 'Add an address or location to drop a pin on a Google map.' ),
+	title: _x( 'Map', 'block name', 'coblocks' ),
+	description: __( 'Add an address or location to drop a pin on a Google map.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'address', 'block keyword' ), _x( 'maps', 'block keyword' ), _x( 'google', 'block keyword' ) ],
+	keywords: [ _x( 'address', 'block keyword', 'coblocks' ), _x( 'maps', 'block keyword', 'coblocks' ), _x( 'google', 'block keyword', 'coblocks' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,

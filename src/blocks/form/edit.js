@@ -168,7 +168,7 @@ class FormEdit extends Component {
 				if ( errors[ 0 ] && errors[ 0 ].email ) {
 					return sprintf(
 						/* translators: %s: Placeholder for email address provided by user.  */
-						__( '%s is not a valid email address.' ),
+						__( '%s is not a valid email address.', 'coblocks' ),
 						errors[ 0 ].email
 					);
 				}
@@ -178,7 +178,7 @@ class FormEdit extends Component {
 			if ( errors.length === 2 ) {
 				return sprintf(
 					/* translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.  */
-					__( '%s and %s are not a valid email address.' ),
+					__( '%s and %s are not a valid email address.', 'coblocks' ),
 					errors[ 0 ].email,
 					errors[ 1 ].email
 				);
@@ -186,7 +186,7 @@ class FormEdit extends Component {
 			const inValidEmails = errors.map( error => error.email );
 			return sprintf(
 				/* translators: %s1: Placeholder for email address provided by user. */
-				__( '%s are not a valid email address.' ),
+				__( '%s are not a valid email address.', 'coblocks' ),
 				inValidEmails.join( ', ' )
 			);
 		}
@@ -244,8 +244,8 @@ class FormEdit extends Component {
 					aria-describedby={ `contact-form-${ instanceId }-email-${
 						this.hasEmailError() ? 'error' : 'help'
 					}` }
-					label={ __( 'Email address' ) }
-					placeholder={ __( 'name@example.com' ) }
+					label={ __( 'Email address', 'coblocks' ) }
+					placeholder={ __( 'name@example.com', 'coblocks' ) }
 					onKeyDown={ this.preventEnterSubmittion }
 					value={ to || '' === to ? to : coblocksBlockData.form.adminEmail }
 					onBlur={ this.onBlurTo }
@@ -255,7 +255,7 @@ class FormEdit extends Component {
 					{ this.getfieldEmailError( fieldEmailError ) }
 				</Notice>
 				<TextControl
-					label={ __( 'Subject' ) }
+					label={ __( 'Subject', 'coblocks' ) }
 					value={
 						subject || '' === subject ?
 							subject :
@@ -285,35 +285,35 @@ class FormEdit extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Form Settings' ) }>
+					<PanelBody title={ __( 'Form Settings', 'coblocks' ) }>
 						{ this.renderToAndSubjectFields() }
 						{ applyFilters( 'coblocks.advanced_forms_cta' ) }
 					</PanelBody>
 					<PanelBody
-						title={ __( 'Google reCAPTCHA' ) }
+						title={ __( 'Google reCAPTCHA', 'coblocks' ) }
 						initialOpen={ this.state.recaptchaSecretKey ? false : true }
 					>
-						<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.' ) }</p>
+						<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.', 'coblocks' ) }</p>
 						<p>
 							<Fragment>
 								<ExternalLink href={ RETRIEVE_KEY_URL }>
 									{ this.state.recaptchaSiteKey === '' &&
 									this.state.recaptchaSecretKey === '' ?
-										__( 'Generate keys' ) :
-										__( 'My keys' ) }
+										__( 'Generate keys', 'coblocks' ) :
+										__( 'My keys', 'coblocks' ) }
 								</ExternalLink>
 								|&nbsp;
-								<ExternalLink href={ HELP_URL }>{ __( 'Get help' ) }</ExternalLink>
+								<ExternalLink href={ HELP_URL }>{ __( 'Get help', 'coblocks' ) }</ExternalLink>
 							</Fragment>
 						</p>
 						<TextControl
-							label={ __( 'Site Key' ) }
+							label={ __( 'Site Key', 'coblocks' ) }
 							value={ this.state.recaptchaSiteKey }
 							onChange={ value => this.setState( { recaptchaSiteKey: value } ) }
 							className="components-block-coblocks-form-recaptcha-key__custom-input"
 						/>
 						<TextControl
-							label={ __( 'Secret Key' ) }
+							label={ __( 'Secret Key', 'coblocks' ) }
 							value={ this.state.recaptchaSecretKey }
 							onChange={ value => this.setState( { recaptchaSecretKey: value } ) }
 							className="components-block-coblocks-form-recaptcha-key__custom-input"
@@ -327,7 +327,7 @@ class FormEdit extends Component {
 									this.state.recaptchaSecretKey === ''
 								}
 							>
-								{ this.state.isSaving ? __( 'Saving' ) : __( 'Save' ) }
+								{ this.state.isSaving ? __( 'Saving', 'coblocks' ) : __( 'Save', 'coblocks' ) }
 							</Button>
 							{ this.state.recaptchaSiteKey !== '' &&
 								this.state.recaptchaSecretKey !== '' && (
@@ -342,7 +342,7 @@ class FormEdit extends Component {
 												this.state.recaptchaSecretKey === ''
 										}
 									>
-										{ __( 'Remove' ) }
+										{ __( 'Remove', 'coblocks' ) }
 									</Button>
 								</Fragment>
 							) }

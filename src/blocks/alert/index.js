@@ -25,15 +25,15 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Alert', 'block name' ),
-	description: __( 'Provide contextual feedback messages or notices.' ),
+	title: _x( 'Alert', 'block name', 'coblocks' ),
+	description: __( 'Provide contextual feedback messages or notices.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'notice', 'block keyword' ), _x( 'message', 'block keyword' ), 'coblocks' ],
+	keywords: [ _x( 'notice', 'block keyword', 'coblocks' ), _x( 'message', 'block keyword', 'coblocks' ), 'coblocks' ],
 	styles: [
-		{ name: 'info', label: _x( 'Info', 'block style' ), isDefault: true },
-		{ name: 'success', label: _x( 'Success', 'block style' ) },
-		{ name: 'warning', label: _x( 'Warning', 'block style' ) },
-		{ name: 'error', label: _x( 'Error', 'block style' ) },
+		{ name: 'info', label: _x( 'Info', 'block style', 'coblocks' ), isDefault: true },
+		{ name: 'success', label: _x( 'Success', 'block style', 'coblocks' ) },
+		{ name: 'warning', label: _x( 'Warning', 'block style', 'coblocks' ) },
+		{ name: 'error', label: _x( 'Error', 'block style', 'coblocks' ) },
 	],
 	supports: {
 		align: true,
@@ -42,8 +42,8 @@ const settings = {
 	},
 	example: {
 		attributes: {
-			title: __( 'This is an alert block' ),
-			value: __( 'An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action.' ),
+			title: __( 'This is an alert block', 'coblocks' ),
+			value: __( 'An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action.', 'coblocks' ),
 		},
 	},
 	attributes,

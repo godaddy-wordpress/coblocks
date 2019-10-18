@@ -25,10 +25,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Pricing Table', 'block name' ),
-	description: __( 'Add pricing tables to help visitors compare products and plans.' ),
+	title: _x( 'Pricing Table', 'block name', 'coblocks' ),
+	description: __( 'Add pricing tables to help visitors compare products and plans.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'landing', 'block keyword' ), _x( 'comparison', 'block keyword' ), 'coblocks' ],
+	keywords: [ _x( 'landing', 'block keyword', 'coblocks' ), _x( 'comparison', 'block keyword', 'coblocks' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,

@@ -25,8 +25,8 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Feature', 'block name' ),
-	description: __( 'A singular child column within a parent features block.' ),
+	title: _x( 'Feature', 'block name', 'coblocks' ),
+	description: __( 'A singular child column within a parent features block.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/features' ],
 	supports: {

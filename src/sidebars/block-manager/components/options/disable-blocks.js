@@ -167,7 +167,7 @@ class DisableBlocks extends Component {
 			<Fragment>
 				{ this.state.hasError ?
 					<div className="coblocks-block-manager__error">
-						{ __( 'This block is added to the page and cannot currently be disabled' ) }
+						{ __( 'This block is added to the page and cannot currently be disabled', 'coblocks' ) }
 					</div> :
 					null }
 				{ Object.keys( allBlocks ).length > 0 ?
@@ -182,7 +182,7 @@ class DisableBlocks extends Component {
 
 										{ ( ! this.props.keyword && category.title ) ?
 											<ToggleControl
-												label={ __( 'Disable all' ) }
+												label={ __( 'Disable all', 'coblocks' ) }
 												checked={ savedSettings[ 'mainCategory-' + category.slug ] ? true : false }
 												onChange={ () => {
 													onToggle( 'mainCategory-' + category.slug, category.slug );
@@ -230,7 +230,7 @@ class DisableBlocks extends Component {
 					<section className="coblocks-block-manager__section coblocks-block-manager__section--noresults ">
 						<p className="editor-inserter__no-results">{
 							/* translators: %s: search text  */
-							sprintf( __( 'No "%s" blocks found.' ), this.props.keyword )
+							sprintf( __( 'No "%s" blocks found.', 'coblocks' ), this.props.keyword )
 						}</p>
 					</section>
 				}

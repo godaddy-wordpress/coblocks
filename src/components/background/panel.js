@@ -80,28 +80,28 @@ class BackgroundPanel extends Component {
 		} = attributes;
 
 		const backgroundPositionOptions = [
-			{ value: 'top left', label: _x( 'Top Left', 'block layout' ) },
-			{ value: 'top center', label: _x( 'Top Center', 'block layout' ) },
-			{ value: 'top right', label: _x( 'Top Right', 'block layout' ) },
-			{ value: 'center left', label: _x( 'Center Left', 'block layout' ) },
-			{ value: 'center center', label: _x( 'Center Center', 'block layout' ) },
-			{ value: 'center right', label: _x( 'Center Right', 'block layout' ) },
-			{ value: 'bottom left', label: _x( 'Bottom Left', 'block layout' ) },
-			{ value: 'bottom center', label: _x( 'Bottom Center', 'block layout' ) },
-			{ value: 'bottom right', label: _x( 'Bottom Right', 'block layout' ) },
+			{ value: 'top left', label: _x( 'Top Left', 'block layout', 'coblocks' ) },
+			{ value: 'top center', label: _x( 'Top Center', 'block layout', 'coblocks' ) },
+			{ value: 'top right', label: _x( 'Top Right', 'block layout', 'coblocks' ) },
+			{ value: 'center left', label: _x( 'Center Left', 'block layout', 'coblocks' ) },
+			{ value: 'center center', label: _x( 'Center Center', 'block layout', 'coblocks' ) },
+			{ value: 'center right', label: _x( 'Center Right', 'block layout', 'coblocks' ) },
+			{ value: 'bottom left', label: _x( 'Bottom Left', 'block layout', 'coblocks' ) },
+			{ value: 'bottom center', label: _x( 'Bottom Center', 'block layout', 'coblocks' ) },
+			{ value: 'bottom right', label: _x( 'Bottom Right', 'block layout', 'coblocks' ) },
 		];
 
 		const backgroundRepeatOptions = [
-			{ value: 'no-repeat', label: _x( 'No Repeat', 'block layout' ) },
-			{ value: 'repeat', label: _x( 'Repeat', 'block layout' ) },
-			{ value: 'repeat-x', label: _x( 'Repeat Horizontally', 'block layout' ) },
-			{ value: 'repeat-y', label: _x( 'Repeat Vertically', 'block layout' ) },
+			{ value: 'no-repeat', label: _x( 'No Repeat', 'block layout', 'coblocks' ) },
+			{ value: 'repeat', label: _x( 'Repeat', 'block layout', 'coblocks' ) },
+			{ value: 'repeat-x', label: _x( 'Repeat Horizontally', 'block layout', 'coblocks' ) },
+			{ value: 'repeat-y', label: _x( 'Repeat Vertically', 'block layout', 'coblocks' ) },
 		];
 
 		const backgroundSizeOptions = [
-			{ value: 'auto', label: _x( 'Auto', 'block layout' ) },
-			{ value: 'cover', label: _x( 'Cover', 'block layout' ) },
-			{ value: 'contain', label: _x( 'Contain', 'block layout' ) },
+			{ value: 'auto', label: _x( 'Auto', 'block layout', 'coblocks' ) },
+			{ value: 'cover', label: _x( 'Cover', 'block layout', 'coblocks' ) },
+			{ value: 'contain', label: _x( 'Contain', 'block layout', 'coblocks' ) },
 		];
 
 		const backgroundSizeDefault = 'cover';
@@ -110,20 +110,20 @@ class BackgroundPanel extends Component {
 			<Fragment>
 				{ backgroundImg && (
 					<PanelBody
-						title={ __( 'Background Settings' ) }
+						title={ __( 'Background Settings', 'coblocks' ) }
 						initialOpen={ false }
 						className="components-panel__body--coblocks-background-panel"
 					>
 						{ backgroundType === 'image' && (
 							<ToggleControl
-								label={ __( 'Fixed Background' ) }
+								label={ __( 'Fixed Background', 'coblocks' ) }
 								checked={ !! hasParallax }
 								onChange={ () => setAttributes( { hasParallax: ! hasParallax } ) }
 							/>
 						) }
 						{ ! hasParallax && FocalPointPicker && backgroundType === 'image' && backgroundRepeat !== 'repeat' && (
 							<FocalPointPicker
-								label={ __( 'Focal Point' ) }
+								label={ __( 'Focal Point', 'coblocks' ) }
 								url={ backgroundImg }
 								value={ focalPoint }
 								onChange={ ( value ) => setAttributes( { focalPoint: value } ) }
@@ -132,7 +132,7 @@ class BackgroundPanel extends Component {
 						) }
 						{ hasOverlay && (
 							<RangeControl
-								label={ __( 'Background Opacity' ) }
+								label={ __( 'Background Opacity', 'coblocks' ) }
 								value={ backgroundOverlay }
 								onChange={ ( nextBackgroundOverlay ) => setAttributes( { backgroundOverlay: nextBackgroundOverlay } ) }
 								min={ 0 }
@@ -143,7 +143,7 @@ class BackgroundPanel extends Component {
 						{ hasGalleryControls && (
 							<Fragment>
 								<ResponsiveTabsControl { ...this.props }
-									label={ __( 'Padding' ) }
+									label={ __( 'Padding', 'coblocks' ) }
 									value={ backgroundPadding }
 									valueMobile={ backgroundPaddingMobile }
 									onChange={ this.setBackgroundPaddingTo }
@@ -153,7 +153,7 @@ class BackgroundPanel extends Component {
 								/>
 								{ ( ( ! isEmpty( backgroundImg ) || ! isEmpty( backgroundColor.color ) ) && backgroundPadding > 0 ) && align !== 'full' &&
 									<RangeControl
-										label={ __( 'Rounded Corners' ) }
+										label={ __( 'Rounded Corners', 'coblocks' ) }
 										value={ backgroundRadius }
 										onChange={ ( nextBackgroundRadius ) => setAttributes( { backgroundRadius: nextBackgroundRadius } ) }
 										min={ 0 }
@@ -165,7 +165,7 @@ class BackgroundPanel extends Component {
 						) }
 						{ backgroundType === 'image' && (
 							<SelectControl
-								label={ __( 'Repeat' ) }
+								label={ __( 'Repeat', 'coblocks' ) }
 								className="components-background-display-select--coblocks"
 								value={ backgroundRepeat ? backgroundRepeat : 'no-repeat' }
 								options={ backgroundRepeatOptions }
@@ -174,7 +174,7 @@ class BackgroundPanel extends Component {
 						) }
 						{ ! FocalPointPicker && backgroundType === 'image' && (
 							<SelectControl
-								label={ __( 'Position' ) }
+								label={ __( 'Position', 'coblocks' ) }
 								value={ backgroundPosition ? backgroundPosition : 'center center' }
 								options={ backgroundPositionOptions }
 								onChange={ ( nextbackgroundPosition ) => setAttributes( { backgroundPosition: nextbackgroundPosition } ) }
@@ -182,7 +182,7 @@ class BackgroundPanel extends Component {
 						) }
 						{ backgroundRepeat === 'no-repeat' && backgroundType === 'image' && (
 							<SelectControl
-								label={ __( 'Display' ) }
+								label={ __( 'Display', 'coblocks' ) }
 								value={ backgroundSize ? backgroundSize : backgroundSizeDefault }
 								options={ backgroundSizeOptions }
 								onChange={ ( nextbackgroundSize ) => setAttributes( { backgroundSize: nextbackgroundSize } ) }
@@ -190,16 +190,16 @@ class BackgroundPanel extends Component {
 						) }
 						{ backgroundType === 'video' && (
 							<ToggleControl
-								label={ __( 'Mute Video' ) }
-								help={ videoMuted ? __( 'Muting the background video.' ) : __( 'Toggle to mute the video.' ) }
+								label={ __( 'Mute Video', 'coblocks' ) }
+								help={ videoMuted ? __( 'Muting the background video.', 'coblocks' ) : __( 'Toggle to mute the video.', 'coblocks' ) }
 								checked={ !! videoMuted }
 								onChange={ () => setAttributes( { videoMuted: ! videoMuted } ) }
 							/>
 						) }
 						{ backgroundType === 'video' && (
 							<ToggleControl
-								label={ __( 'Loop Video' ) }
-								help={ videoLoop ? __( 'Looping the background video.' ) : __( 'Toggle to loop the video.' ) }
+								label={ __( 'Loop Video', 'coblocks' ) }
+								help={ videoLoop ? __( 'Looping the background video.', 'coblocks' ) : __( 'Toggle to loop the video.', 'coblocks' ) }
 								checked={ !! videoLoop }
 								onChange={ () => setAttributes( { videoLoop: ! videoLoop } ) }
 							/>
@@ -208,7 +208,7 @@ class BackgroundPanel extends Component {
 							className="components-button--coblocks-remove-background-image"
 							type="button"
 							isDefault
-							label={ __( 'Remove background' ) }
+							label={ __( 'Remove background', 'coblocks' ) }
 							onClick={ () => {
 								setAttributes( {
 									backgroundImg: '',

@@ -13,21 +13,21 @@ export default class IconSizeSelect extends Component {
 		this.state = {
 			utilitySizes: [
 				{
-					name: __( 'Small' ),
+					name: __( 'Small', 'coblocks' ),
 					size: 40,
 					slug: 'small',
 				},
 				{
-					name: __( 'Medium' ),
+					name: __( 'Medium', 'coblocks' ),
 					size: this.props.padding ? DEFAULT_ICON_SIZE + 28 : DEFAULT_ICON_SIZE,
 					slug: 'medium',
 				},
 				{
-					name: __( 'Large' ),
+					name: __( 'Large', 'coblocks' ),
 					size: 120,
 					slug: 'large',
 				}, {
-					name: __( 'Huge' ),
+					name: __( 'Huge', 'coblocks' ),
 					size: 200,
 					slug: 'huge',
 				},
@@ -76,7 +76,7 @@ export default class IconSizeSelect extends Component {
 		return (
 			<Fragment>
 				<SelectControl
-					label={ __( 'Choose icon size preset' ) }
+					label={ __( 'Choose icon size preset', 'coblocks' ) }
 					hideLabelFromVision={ true }
 					value={ iconSize }
 					onChange={ this.onChangeValue }

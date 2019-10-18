@@ -31,7 +31,7 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  */
 class Inspector extends Component {
 	getDisplayOpenHelp( checked ) {
-		return checked ? __( 'Accordion item is open by default.' ) : __( 'Toggle to set this accordion item to be open by default.' );
+		return checked ? __( 'Accordion item is open by default.', 'coblocks' ) : __( 'Toggle to set this accordion item to be open by default.', 'coblocks' );
 	}
 
 	setBorderColor() {
@@ -60,27 +60,27 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Accordion Item Settings' ) }>
+					<PanelBody title={ __( 'Accordion Item Settings', 'coblocks' ) }>
 						<ToggleControl
-							label={ _x( 'Display Open', 'Visually display open as opposed to closed.' ) }
+							label={ _x( 'Display Open', 'Visually display open as opposed to closed.', 'coblocks' ) }
 							checked={ !! open }
 							help={ this.getDisplayOpenHelp }
 							onChange={ () => setAttributes( { open: ! open } ) }
 						/>
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: this.setBorderColor(),
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'coblocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Title Text Color' ),
+								label: __( 'Title Text Color', 'coblocks' ),
 							},
 						] }
 					>

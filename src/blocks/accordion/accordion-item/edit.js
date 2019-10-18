@@ -62,7 +62,7 @@ class Edit extends Component {
 				>
 					<RichText
 						tagName="p"
-						placeholder={ _x( 'Write accordion item title...', 'Accordion is the block name' ) }
+						placeholder={ _x( 'Write accordion item title...', 'Accordion is the block name', 'coblocks' ) }
 						value={ title }
 						className={ classnames(
 							`${ className }__title`, {

@@ -48,7 +48,7 @@ class Controls extends Component {
 									render={ ( { open } ) => (
 										<IconButton
 											className="components-toolbar__control"
-											label={ __( 'Edit logos' ) }
+											label={ __( 'Edit logos', 'coblocks' ) }
 											icon="edit"
 											onClick={ open }
 										/>
