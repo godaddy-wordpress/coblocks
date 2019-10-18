@@ -1,15 +1,16 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.16.0\n"
+"Project-Id-Version: CoBlocks 1.16.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
+"POT-Creation-Date: 2019-10-18T18:40:31+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-10-17T20:17:54+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
 
@@ -23,50 +24,42 @@ msgstr "Haitarinäkymän kohde on oletuksena auki."
 
 #: src/blocks/accordion/accordion-item/inspector.js:34
 msgid "Toggle to set this accordion item to be open by default."
-msgstr "Käytä vaihtopainiketta, jos haluat asettaa tämän haitarinäkymän kohteen oletusarvoisesti avoimeksi."
+msgstr ""
+"Käytä vaihtopainiketta, jos haluat asettaa tämän haitarinäkymän kohteen "
+"oletusarvoisesti avoimeksi."
 
 #: src/blocks/accordion/accordion-item/inspector.js:63
 msgid "Accordion Item Settings"
 msgstr "Haitarinäkymän kohteiden asetukset"
 
 #: src/blocks/accordion/accordion-item/inspector.js:72
-#: src/blocks/alert/inspector.js:49
-#: src/blocks/author/inspector.js:50
+#: src/blocks/alert/inspector.js:49 src/blocks/author/inspector.js:50
 #: src/blocks/click-to-tweet/inspector.js:60
 #: src/blocks/dynamic-separator/inspector.js:60
 #: src/blocks/features/feature/inspector.js:92
-#: src/blocks/features/inspector.js:173
-#: src/blocks/form/submit-button.js:118
-#: src/blocks/hero/inspector.js:137
-#: src/blocks/highlight/inspector.js:43
-#: src/blocks/icon/inspector.js:302
-#: src/blocks/media-card/inspector.js:132
+#: src/blocks/features/inspector.js:173 src/blocks/form/submit-button.js:118
+#: src/blocks/hero/inspector.js:137 src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:302 src/blocks/media-card/inspector.js:132
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
-#: src/blocks/row/column/inspector.js:165
-#: src/blocks/row/inspector.js:211
-#: src/blocks/shape-divider/inspector.js:92
-#: src/blocks/share/inspector.js:200
+#: src/blocks/row/column/inspector.js:165 src/blocks/row/inspector.js:211
+#: src/blocks/shape-divider/inspector.js:92 src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:206
 #: src/extensions/colors/index.js:59
 msgid "Color Settings"
 msgstr "Väriasetukset"
 
 #: src/blocks/accordion/accordion-item/inspector.js:78
-#: src/blocks/alert/inspector.js:55
-#: src/blocks/author/inspector.js:56
+#: src/blocks/alert/inspector.js:55 src/blocks/author/inspector.js:56
 #: src/blocks/features/feature/inspector.js:110
-#: src/blocks/features/inspector.js:191
-#: src/blocks/hero/inspector.js:150
-#: src/blocks/highlight/inspector.js:49
-#: src/blocks/icon/inspector.js:326
+#: src/blocks/features/inspector.js:191 src/blocks/hero/inspector.js:150
+#: src/blocks/highlight/inspector.js:49 src/blocks/icon/inspector.js:326
 #: src/blocks/media-card/inspector.js:146
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
-#: src/blocks/row/column/inspector.js:171
-#: src/blocks/row/inspector.js:227
-#: src/blocks/shape-divider/inspector.js:103
-#: src/blocks/share/inspector.js:99
+#: src/blocks/row/column/inspector.js:171 src/blocks/row/inspector.js:227
+#: src/blocks/shape-divider/inspector.js:103 src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:103
-#: src/extensions/colors/index.js:47
+#: src/extensions/colors/index.js:47 src/blocks/share/inspector.js:81
+#: src/blocks/social-profiles/inspector.js:85
 msgid "Background Color"
 msgstr "Taustaväri"
 
@@ -76,7 +69,8 @@ msgstr "Nimiketekstin väri"
 
 #: src/blocks/accordion/index.js:28
 msgid "Organize content within collapsable accordion items."
-msgstr "Järjestä sisältö kutistettavissa olevien haitarinäkymäkohteiden sisällä."
+msgstr ""
+"Järjestä sisältö kutistettavissa olevien haitarinäkymäkohteiden sisällä."
 
 #: src/blocks/accordion/inspector.js:27
 msgid "Accordion Settings"
@@ -88,11 +82,15 @@ msgstr "Internet Explorer -tuki"
 
 #: src/blocks/accordion/inspector.js:31
 msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
-msgstr "Lisää Internet Explorer -tuki lataamalla JavaScript-muotoinen polyfill-koodi."
+msgstr ""
+"Lisää Internet Explorer -tuki lataamalla JavaScript-muotoinen polyfill-koodi."
 
 #: src/blocks/accordion/inspector.js:31
-msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
-msgstr "Internet Explorerin tuki voidaan lisätä lataamalla JavaScript-muotoinen polyfill-koodi tälle sivulle."
+msgid ""
+"Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgstr ""
+"Internet Explorerin tuki voidaan lisätä lataamalla JavaScript-muotoinen "
+"polyfill-koodi tälle sivulle."
 
 #: src/blocks/alert/index.js:29
 msgid "Provide contextual feedback messages or notices."
@@ -103,21 +101,23 @@ msgid "This is an alert block"
 msgstr "Tämä on hälytyslohko"
 
 #: src/blocks/alert/index.js:46
-msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
-msgstr "Hälytys on ilmoitus, joka näytetään normaalin sisältövirran ulkopuolella. Hälytykset tarjoavat kontekstiin perustuvaa palautetta ja kehottavat yleensä lukijaa suorittamaan jonkin tietyn toimen."
+msgid ""
+"An alert is a message that displays outside the flow of typical content. "
+"Alerts provide contextual feedback, typically asking readers to take an "
+"action."
+msgstr ""
+"Hälytys on ilmoitus, joka näytetään normaalin sisältövirran ulkopuolella. "
+"Hälytykset tarjoavat kontekstiin perustuvaa palautetta ja kehottavat yleensä "
+"lukijaa suorittamaan jonkin tietyn toimen."
 
-#: src/blocks/alert/inspector.js:60
-#: src/blocks/author/inspector.js:61
+#: src/blocks/alert/inspector.js:60 src/blocks/author/inspector.js:61
 #: src/blocks/click-to-tweet/inspector.js:66
 #: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:195
-#: src/blocks/hero/inspector.js:155
+#: src/blocks/features/inspector.js:195 src/blocks/hero/inspector.js:155
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
-#: src/blocks/row/column/inspector.js:176
-#: src/blocks/row/inspector.js:232
-#: src/blocks/share/inspector.js:66
-#: src/blocks/social-profiles/inspector.js:95
+#: src/blocks/row/column/inspector.js:176 src/blocks/row/inspector.js:232
+#: src/blocks/share/inspector.js:66 src/blocks/social-profiles/inspector.js:95
 #: src/extensions/colors/index.js:54
 msgid "Text Color"
 msgstr "Tekstin väri"
@@ -127,14 +127,20 @@ msgid "Edit avatar"
 msgstr "Muokkaa avatar-hahmoa"
 
 #. placeholder text used for the author name
+#. translators: placeholder text used for the author name
 #: src/blocks/author/edit.js:127
 msgid "Write author name…"
 msgstr "Kirjoita tekijän nimi..."
 
 #. placeholder text used for the biography
+#. translators: placeholder text used for the biography
 #: src/blocks/author/edit.js:141
-msgid "Write a biography that distills objective credibility and authority to your readers…"
-msgstr "Kirjoita elämäkerta, joka antaa lukijoillesi luotettavan ja uskottavan vaikutelman..."
+msgid ""
+"Write a biography that distills objective credibility and authority to your "
+"readers…"
+msgstr ""
+"Kirjoita elämäkerta, joka antaa lukijoillesi luotettavan ja uskottavan "
+"vaikutelman..."
 
 #: src/blocks/author/index.js:29
 msgid "Add an author biography to build credibility and authority."
@@ -142,7 +148,9 @@ msgstr "Lisää tekijän elämäkerta, joka luo luotettavuutta ja uskottavuutta.
 
 #: src/blocks/author/index.js:35
 msgid "Born to express, not to impress. A maker making the world I want."
-msgstr "Asioiden ilmaiseminen on tärkeintä – ei vain vaikutuksen tekeminen. Kaiken taustalla on tavoite tehdä maailmasta parempi paikka."
+msgstr ""
+"Asioiden ilmaiseminen on tärkeintä – ei vain vaikutuksen tekeminen. Kaiken "
+"taustalla on tavoite tehdä maailmasta parempi paikka."
 
 #: src/blocks/author/inspector.js:41
 msgid "Author Settings"
@@ -150,7 +158,9 @@ msgstr "Tekijän asetukset"
 
 #: src/blocks/buttons/index.js:29
 msgid "Prompt visitors to take action with multiple buttons, side by side."
-msgstr "Kehota vierailijoita suorittamaan tiettyjä toimintoja vierekkäin esitettävien painikkeiden avulla."
+msgstr ""
+"Kehota vierailijoita suorittamaan tiettyjä toimintoja vierekkäin "
+"esitettävien painikkeiden avulla."
 
 #: src/blocks/buttons/inspector.js:30
 msgid "Buttons"
@@ -162,9 +172,12 @@ msgstr "Painikkeiden esittäminen pinona mobiililaitteissa."
 
 #: src/blocks/buttons/inspector.js:48
 msgid "Toggle to stack buttons on mobile."
-msgstr "Käytä vaihtopainiketta, jos haluat esittää painikkeet pinona mobiililaitteissa."
+msgstr ""
+"Käytä vaihtopainiketta, jos haluat esittää painikkeet pinona "
+"mobiililaitteissa."
 
 #: src/blocks/click-to-tweet/controls.js:44
+#: src/blocks/click-to-tweet/controls.js:37
 msgid "Twitter Username"
 msgstr "Twitter-käyttäjänimi"
 
@@ -177,6 +190,7 @@ msgid "Add button..."
 msgstr "Lisää painike..."
 
 #. the text of the click to tweet element
+#. translators: the text of the click to tweet element
 #: src/blocks/click-to-tweet/edit.js:82
 msgid "Add a quote to tweet..."
 msgstr "Lisää lainaus twiittiin..."
@@ -186,8 +200,12 @@ msgid "Add a quote for readers to tweet via Twitter."
 msgstr "Lisää lainaus, jonka lukijat voivat jakaa Twitterin kautta."
 
 #: src/blocks/click-to-tweet/index.js:34
-msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
-msgstr "Helpoin tapa markkinoida blogiasi, verkkosivustoasi ja yritystäsi Twitterin kautta."
+msgid ""
+"The easiest way to promote and advertise your blog, website, and business on "
+"Twitter."
+msgstr ""
+"Helpoin tapa markkinoida blogiasi, verkkosivustoasi ja yritystäsi Twitterin "
+"kautta."
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
@@ -195,8 +213,7 @@ msgid "Text Settings"
 msgstr "Tekstin asetukset"
 
 #: src/blocks/click-to-tweet/inspector.js:71
-#: src/blocks/form/submit-button.js:127
-#: src/blocks/share/inspector.js:86
+#: src/blocks/form/submit-button.js:127 src/blocks/share/inspector.js:86
 #: src/blocks/social-profiles/inspector.js:90
 msgid "Button Color"
 msgstr "Painikkeen väri"
@@ -207,8 +224,7 @@ msgstr "Lisää kooltaan muokattavissa oleva tyhjä väli muiden lohkojen välii
 
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:100
-#: src/blocks/hero/inspector.js:108
-#: src/blocks/map/inspector.js:132
+#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr "Korkeus kuvapisteinä"
 
@@ -220,8 +236,7 @@ msgstr "Dynaamisen erotinelementin korkeus kuvapisteinä"
 msgid "Color"
 msgstr "Väri"
 
-#: src/blocks/features/edit.js:78
-#: src/blocks/features/feature/edit.js:63
+#: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
 msgid "Add as background"
 msgstr "Lisää taustana"
@@ -235,22 +250,20 @@ msgid "Feature Settings"
 msgstr "Ominaisuuden asetukset"
 
 #: src/blocks/features/feature/inspector.js:71
-#: src/blocks/features/inspector.js:143
-#: src/blocks/hero/inspector.js:84
-#: src/blocks/icon/inspector.js:217
-#: src/blocks/media-card/inspector.js:62
-#: src/blocks/row/column/inspector.js:133
-#: src/blocks/row/inspector.js:180
+#: src/blocks/features/inspector.js:143 src/blocks/hero/inspector.js:84
+#: src/blocks/icon/inspector.js:217 src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:133 src/blocks/row/inspector.js:180
 #: src/components/background/panel.js:146
 msgid "Padding"
 msgstr "Sisämarginaalit"
 
 #: src/blocks/features/index.js:35
 msgid "Add up to three columns of small notes for your product or service."
-msgstr "Lisää enimmillään kolme palstaa pieniä muistiinpanoja, jotka koskevat tarjoamaasi tuotetta tai palvelua."
+msgstr ""
+"Lisää enimmillään kolme palstaa pieniä muistiinpanoja, jotka koskevat "
+"tarjoamaasi tuotetta tai palvelua."
 
-#: src/blocks/features/inspector.js:122
-#: src/blocks/row/column/inspector.js:111
+#: src/blocks/features/inspector.js:122 src/blocks/row/column/inspector.js:111
 #: src/blocks/row/inspector.js:157
 #: src/components/dimensions-control/index.js:295
 msgid "Margin"
@@ -259,41 +272,35 @@ msgstr "Marginaali"
 #: src/blocks/features/inspector.js:164
 #: src/blocks/gallery-carousel/inspector.js:84
 #: src/blocks/gallery-collage/inspector.js:108
-#: src/blocks/gallery-stacked/inspector.js:91
-#: src/blocks/row/inspector.js:202
+#: src/blocks/gallery-stacked/inspector.js:91 src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
+#: src/blocks/gallery-carousel/inspector.js:78
+#: src/blocks/gallery-collage/inspector.js:107
 msgid "Gutter"
 msgstr "Sidontareunus"
 
-#: src/blocks/features/inspector.js:167
-#: src/blocks/row/inspector.js:205
+#: src/blocks/features/inspector.js:167 src/blocks/row/inspector.js:205
 msgid "Space between each column."
 msgstr "Tila kunkin palstan välissä."
 
-#: src/blocks/features/inspector.js:86
-#: src/blocks/icon/icon-size-select.js:16
-#: src/blocks/row/inspector.js:99
-#: src/blocks/share/inspector.js:72
+#: src/blocks/features/inspector.js:86 src/blocks/icon/icon-size-select.js:16
+#: src/blocks/row/inspector.js:99 src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:76
 #: src/components/dimensions-control/dimensions-select.js:15
 #: src/components/size-control/index.js:116
 msgid "Small"
 msgstr "Pieni"
 
-#: src/blocks/features/inspector.js:87
-#: src/blocks/icon/icon-size-select.js:21
-#: src/blocks/row/inspector.js:100
-#: src/blocks/share/inspector.js:73
+#: src/blocks/features/inspector.js:87 src/blocks/icon/icon-size-select.js:21
+#: src/blocks/row/inspector.js:100 src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:77
 #: src/components/dimensions-control/dimensions-select.js:20
 #: src/components/size-control/index.js:120
 msgid "Medium"
 msgstr "Keskikokoinen"
 
-#: src/blocks/features/inspector.js:88
-#: src/blocks/icon/icon-size-select.js:26
-#: src/blocks/row/inspector.js:101
-#: src/blocks/share/inspector.js:74
+#: src/blocks/features/inspector.js:88 src/blocks/icon/icon-size-select.js:26
+#: src/blocks/row/inspector.js:101 src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:25
 #: src/components/size-control/index.js:65
@@ -304,14 +311,13 @@ msgstr "Suuri"
 msgid "Features Settings"
 msgstr "Ominaisuuksien asetukset"
 
-#: src/blocks/features/inspector.js:96
-#: src/blocks/post-carousel/inspector.js:70
-#: src/blocks/posts/inspector.js:110
-#: src/blocks/services/inspector.js:69
+#: src/blocks/features/inspector.js:96 src/blocks/post-carousel/inspector.js:70
+#: src/blocks/posts/inspector.js:110 src/blocks/services/inspector.js:69
 msgid "Columns"
 msgstr "Palstat"
 
 #: src/blocks/food-and-drinks/appender.js:22
+#: src/blocks/food-and-drinks/appender.js:17
 msgid "Add Menu Section"
 msgstr "Lisää valikko-osio"
 
@@ -431,22 +437,19 @@ msgid "Image Settings"
 msgstr "Kuvan asetukset"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:84
-#: src/blocks/gif/inspector.js:31
-#: src/blocks/media-card/inspector.js:95
+#: src/blocks/gif/inspector.js:31 src/blocks/media-card/inspector.js:95
 #: src/blocks/services/service/inspector.js:33
 msgid "Alt Text (Alternative Text)"
 msgstr "Vaihtoehtoinen teksti"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:90
-#: src/blocks/gif/inspector.js:37
-#: src/blocks/media-card/inspector.js:101
+#: src/blocks/gif/inspector.js:37 src/blocks/media-card/inspector.js:101
 #: src/blocks/services/service/inspector.js:39
 msgid "Describe the purpose of the image"
 msgstr "Kuvaile tämän kuvan tarkoitus"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:92
-#: src/blocks/gif/inspector.js:39
-#: src/blocks/media-card/inspector.js:103
+#: src/blocks/gif/inspector.js:39 src/blocks/media-card/inspector.js:103
 #: src/blocks/services/service/inspector.js:41
 msgid "Leave empty if the image is purely decorative."
 msgstr "Jätä tyhjäksi, jos kyseessä on vain kuvituskuva."
@@ -461,10 +464,8 @@ msgstr "Keskipiste"
 msgid "Display a menu or price list."
 msgstr "Näytä ruokalista tai hinnasto"
 
-#: src/blocks/food-and-drinks/inspector.js:26
-#: src/blocks/map/inspector.js:107
-#: src/blocks/posts/inspector.js:187
-#: src/blocks/row/inspector.js:119
+#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
+#: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
 msgid "Styles"
 msgstr "Tyylit"
@@ -498,16 +499,19 @@ msgid "Toggle to show the price of each item."
 msgstr "Käytä vaihtopainiketta, jos haluat näyttää kunkin tuotteen hinnan."
 
 #. %s: Placeholder for email address provided by user.
+#. translators: %s: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:171
 msgid "%s is not a valid email address."
 msgstr "‌‌%s ei ole kelvollinen sähköpostiosoite."
 
 #. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:181
 msgid "%s and %s are not a valid email address."
 msgstr "%s ja %s eivät ole kelvollisia sähköpostiosoitteita."
 
 #. %s1: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:189
 msgid "%s are not a valid email address."
 msgstr "‌‌%s eivät ole kelvollisia sähköpostiosoitteita."
@@ -534,7 +538,9 @@ msgstr "Google reCAPTCHA"
 
 #: src/blocks/form/edit.js:296
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
-msgstr "Lisäämällä reCAPTCHA-todennuksen ja salaiset avaimet voit suojata lomakkeesi roskapostilta."
+msgstr ""
+"Lisäämällä reCAPTCHA-todennuksen ja salaiset avaimet voit suojata lomakkeesi "
+"roskapostilta."
 
 #: src/blocks/form/edit.js:302
 msgid "Generate keys"
@@ -556,19 +562,16 @@ msgstr "Sivustoavain"
 msgid "Secret Key"
 msgstr "Salainen avain"
 
-#: src/blocks/form/edit.js:330
-#: src/blocks/gallery-collage/edit.js:174
+#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr "Tallennetaan"
 
-#: src/blocks/form/edit.js:330
-#: src/blocks/map/inspector.js:231
+#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr "Tallenna"
 
-#: src/blocks/form/edit.js:345
-#: src/blocks/map/inspector.js:240
+#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr "Poista"
 
@@ -590,6 +593,7 @@ msgstr "Kenttä, jonka kautta pyydetään vahvistettua sähköpostiosoitetta."
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
+#: src/blocks/form/fields/name/edit.js:49
 msgid "Add label…"
 msgstr "Lisää selite..."
 
@@ -598,6 +602,7 @@ msgid "Required"
 msgstr "Vaaditaan"
 
 #: src/blocks/form/fields/multi-field.js:102
+#: src/blocks/form/fields/multi-field.js:99
 msgid "Add Option"
 msgstr "Lisää vaihtoehto"
 
@@ -623,11 +628,14 @@ msgstr "Tekstikenttä, jonka kautta kerätään etu- ja sukunimiä."
 
 #: src/blocks/form/fields/phone/index.js:21
 msgid "A phone number to allow visitors to give you a phone number."
-msgstr "Puhelinnumerokenttä, jonka avulla vierailijat voivat antaa puhelinnumeronsa."
+msgstr ""
+"Puhelinnumerokenttä, jonka avulla vierailijat voivat antaa puhelinnumeronsa."
 
 #: src/blocks/form/fields/radio/index.js:21
 msgid "A field with multiple options where only one choice can be made."
-msgstr "Useita vaihtoehtoja sisältävä kenttä, joka sallii vain yhden vaihtoehdon valinnan."
+msgstr ""
+"Useita vaihtoehtoja sisältävä kenttä, joka sallii vain yhden vaihtoehdon "
+"valinnan."
 
 #: src/blocks/form/fields/textarea/index.js:20
 msgid "A text box for longer responses."
@@ -660,14 +668,15 @@ msgid "Carousel"
 msgstr "Karuselli"
 
 #. %1$d is the order number of the image, %2$d is the total number of images.
+#. translators: %1$d is the order number of the image, %2$d is the total number of images
+#. translators: %1$d is the order number of the image, %2$d is the total number of images.
 #: src/blocks/gallery-carousel/edit.js:310
 #: src/blocks/gallery-masonry/edit.js:219
 #: src/blocks/gallery-stacked/edit.js:191
 msgid "image %1$d of %2$d in gallery"
 msgstr "Kuva %1$d / %2$d galleriassa"
 
-#: src/blocks/gallery-carousel/edit.js:376
-#: src/blocks/gif/edit.js:243
+#: src/blocks/gallery-carousel/edit.js:376 src/blocks/gif/edit.js:243
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:230
 msgid "Write caption…"
@@ -705,23 +714,21 @@ msgstr "Prosenttipohjainen korkeus käytössä/pois."
 msgid "Carousel Settings"
 msgstr "Karusellin asetukset"
 
-#: src/blocks/gallery-carousel/inspector.js:71
-#: src/blocks/icon/inspector.js:173
+#: src/blocks/gallery-carousel/inspector.js:71 src/blocks/icon/inspector.js:173
 #: src/components/typography-controls/index.js:189
+#: src/blocks/icon/inspector.js:106
 msgid "Size"
 msgstr "Koko"
 
 #: src/blocks/gallery-carousel/inspector.js:90
 #: src/blocks/gallery-masonry/inspector.js:83
-#: src/blocks/gallery-stacked/inspector.js:95
-#: src/blocks/share/inspector.js:120
+#: src/blocks/gallery-stacked/inspector.js:95 src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:124
 #: src/components/background/panel.js:156
 msgid "Rounded Corners"
 msgstr "Pyöristetyt kulmat"
 
-#: src/blocks/gallery-collage/edit.js:174
-#: src/blocks/map/edit.js:306
+#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr "Käytä"
@@ -739,6 +746,7 @@ msgid "Collage Settings"
 msgstr "Kollaasin asetukset"
 
 #: src/blocks/gallery-collage/inspector.js:128
+#: src/blocks/gallery-collage/inspector.js:127
 msgid "Shadow"
 msgstr "Varjostus"
 
@@ -817,8 +825,11 @@ msgid "Fullwidth images are enabled."
 msgstr "Täyden leveyden kuvat on otettu käyttöön."
 
 #: src/blocks/gallery-stacked/inspector.js:48
-msgid "Toggle to fill the available gallery area with completely fullwidth images."
-msgstr "Käytä vaihtopainiketta, jos haluat täyttää käytettävissä olevan galleria-alueen täyden leveyden kuvilla."
+msgid ""
+"Toggle to fill the available gallery area with completely fullwidth images."
+msgstr ""
+"Käytä vaihtopainiketta, jos haluat täyttää käytettävissä olevan galleria-"
+"alueen täyden leveyden kuvilla."
 
 #: src/blocks/gallery-stacked/inspector.js:80
 msgid "Stacked Settings"
@@ -868,7 +879,7 @@ msgstr "Muokkaa GiST-koodikatkelmaa"
 msgid "View Gist"
 msgstr "Tarkastele GiST-koodikatkelmaa"
 
-#: src/blocks/gist/controls.js:68
+#: src/blocks/gist/controls.js:68 src/blocks/gist/controls.js:61
 msgid "GitHub File"
 msgstr "GitHub-tiedosto"
 
@@ -876,13 +887,11 @@ msgstr "GitHub-tiedosto"
 msgid "File"
 msgstr "Tiedosto"
 
-#: src/blocks/gist/deprecated.js:36
-#: src/blocks/gist/save.js:29
+#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr "Tarkastele tätä GiST-koodikatkelmaa GitHub-palvelussa"
 
-#: src/blocks/gist/edit.js:124
-#: src/blocks/gist/inspector.js:51
+#: src/blocks/gist/edit.js:124 src/blocks/gist/inspector.js:51
 msgid "Gist URL"
 msgstr "GiST-koodikatkelman URL"
 
@@ -927,8 +936,12 @@ msgid "Add background to hero"
 msgstr "Lisää sankariosion tausta"
 
 #: src/blocks/hero/index.js:41
-msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
-msgstr "Sivun esittelyosio, joka sisältää pienen määrän tekstiä sekä toimintakehotteen."
+msgid ""
+"An introductory area of a page accompanied by a small amount of text and a "
+"call to action."
+msgstr ""
+"Sivun esittelyosio, joka sisältää pienen määrän tekstiä sekä "
+"toimintakehotteen."
 
 #: src/blocks/hero/inspector.js:127
 msgid "Content width in pixels"
@@ -938,10 +951,8 @@ msgstr "Sisällön leveys kuvapisteinä"
 msgid "Hero Settings"
 msgstr "Sankariosion asetukset"
 
-#: src/blocks/hero/inspector.js:85
-#: src/blocks/media-card/inspector.js:63
-#: src/blocks/row/column/inspector.js:134
-#: src/blocks/row/inspector.js:181
+#: src/blocks/hero/inspector.js:85 src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:134 src/blocks/row/inspector.js:181
 msgid "Space inside of the container."
 msgstr "Tila osiosäilön sisällä."
 
@@ -990,11 +1001,14 @@ msgid "Draw attention and emphasize important narrative."
 msgstr "Herätä huomiota ja korosta tärkeitä kertomuksia."
 
 #: src/blocks/highlight/index.js:33
-msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
-msgstr "Herätä lukijoiden huomio ja korosta tärkeitä kertomuksia lisäämällä tekstikappaleisiin korostustehosteita."
+msgid ""
+"Add a highlight effect to paragraph text in order to grab attention and "
+"emphasize important narrative."
+msgstr ""
+"Herätä lukijoiden huomio ja korosta tärkeitä kertomuksia lisäämällä "
+"tekstikappaleisiin korostustehosteita."
 
-#: src/blocks/icon/icon-size-select.js:30
-#: src/blocks/row/inspector.js:102
+#: src/blocks/icon/icon-size-select.js:30 src/blocks/row/inspector.js:102
 #: src/components/dimensions-control/dimensions-select.js:30
 msgid "Huge"
 msgstr "Valtava"
@@ -1007,8 +1021,7 @@ msgstr "Valitse kuvakkeen esimääritetty koko"
 msgid "Add a stylized graphic symbol to communicate something more."
 msgstr "Lisää stilisoitu graafinen symboli haluamasi viestin välittämiseksi."
 
-#: src/blocks/icon/inspector.js:155
-#: src/blocks/share/inspector.js:111
+#: src/blocks/icon/inspector.js:155 src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:115
 msgid "Icon Settings"
 msgstr "Kuvakkeen asetukset"
@@ -1065,9 +1078,9 @@ msgstr "Avataan uudessa välilehdessä"
 msgid "Open in New Tab"
 msgstr "Avaa uudessa välilehdessä"
 
-#: src/blocks/icon/inspector.js:309
-#: src/blocks/share/inspector.js:104
-#: src/blocks/social-profiles/inspector.js:108
+#: src/blocks/icon/inspector.js:309 src/blocks/share/inspector.js:104
+#: src/blocks/social-profiles/inspector.js:108 src/blocks/share/inspector.js:68
+#: src/blocks/social-profiles/inspector.js:95
 msgid "Icon Color"
 msgstr "Kuvakkeen väri"
 
@@ -1082,11 +1095,15 @@ msgstr "Logot ja merkit"
 #: src/blocks/logos/edit.js:70
 #: src/components/block-gallery/gallery-placeholder.js:72
 msgid "Drag images, upload new ones or select files from your library."
-msgstr "Vedä kuvia haluamaasi kohtaan, siirrä uusia kuvia palvelimeen tai valitse tiedostoja omasta kirjastostasi."
+msgstr ""
+"Vedä kuvia haluamaasi kohtaan, siirrä uusia kuvia palvelimeen tai valitse "
+"tiedostoja omasta kirjastostasi."
 
 #: src/blocks/logos/index.js:27
 msgid "Add logos, badges, or certifications to build credibility."
-msgstr "Lisäämällä logoja, merkkejä ja sertifikaatteja voit rakentaa luotettavaa vaikutelmaa."
+msgstr ""
+"Lisäämällä logoja, merkkejä ja sertifikaatteja voit rakentaa luotettavaa "
+"vaikutelmaa."
 
 #: src/blocks/logos/inspector.js:12
 msgid "Logos Settings"
@@ -1108,9 +1125,8 @@ msgstr "Muokkaa sijaintia"
 msgid "Map style"
 msgstr "Kartan tyyli"
 
-#: src/blocks/map/deprecated.js:96
-#: src/blocks/map/edit.js:293
-#: src/blocks/map/save.js:50
+#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50 src/blocks/map/edit.js:241
 msgid "Google Map"
 msgstr "Google Map"
 
@@ -1126,13 +1142,14 @@ msgstr "Pudota nuppineula Google-kartalle antamalla sijainti tai osoite."
 msgid "Search for a place or address…"
 msgstr "Etsi paikkaa tai osoitetta..."
 
-#: src/blocks/map/edit.js:320
+#: src/blocks/map/edit.js:320 src/blocks/map/edit.js:312
 msgid "Cancel"
 msgstr "Peruuta"
 
 #: src/blocks/map/index.js:28
 msgid "Add an address or location to drop a pin on a Google map."
-msgstr "Pudota nuppineula Google-kartalle osoitteen tai sijainnin lisäämiseksi."
+msgstr ""
+"Pudota nuppineula Google-kartalle osoitteen tai sijainnin lisäämiseksi."
 
 #: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
@@ -1160,9 +1177,10 @@ msgstr "Tarkat säätötoiminnot on otettu käyttöön."
 
 #: src/blocks/map/inspector.js:170
 msgid "Toggle to enable map control options."
-msgstr "Käytä vaihtopainiketta, jos haluat ottaa kartan ohjaussäätimet käyttöön."
+msgstr ""
+"Käytä vaihtopainiketta, jos haluat ottaa kartan ohjaussäätimet käyttöön."
 
-#: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:178 src/blocks/map/inspector.js:167
 msgid "Map Controls"
 msgstr "Kartan säätötoiminnot"
 
@@ -1172,11 +1190,15 @@ msgstr "Kartan tyyppi"
 
 #: src/blocks/map/inspector.js:185
 msgid "Switching between standard and satellite map views is enabled."
-msgstr "Siirtyminen vakiotyyppisten ja satelliittikarttojen välillä on otettu käyttöön."
+msgstr ""
+"Siirtyminen vakiotyyppisten ja satelliittikarttojen välillä on otettu "
+"käyttöön."
 
 #: src/blocks/map/inspector.js:185
 msgid "Toggle to enable switching between standard and satellite maps."
-msgstr "Käytä vaihtopainiketta, jos haluat ottaa käyttöön siirtymisen vakiotyyppisten ja satelliittikarttojen välillä."
+msgstr ""
+"Käytä vaihtopainiketta, jos haluat ottaa käyttöön siirtymisen "
+"vakiotyyppisten ja satelliittikarttojen välillä."
 
 #: src/blocks/map/inspector.js:188
 msgid "Zoom Controls"
@@ -1188,7 +1210,9 @@ msgstr "Kartan zoomausohjaimet näytetään."
 
 #: src/blocks/map/inspector.js:191
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
-msgstr "Käytä vaihtopainiketta, jos haluat ottaa käyttöön kartan lähentämisen ja loitontamisen zoomausohjaimilla."
+msgstr ""
+"Käytä vaihtopainiketta, jos haluat ottaa käyttöön kartan lähentämisen ja "
+"loitontamisen zoomausohjaimilla."
 
 #: src/blocks/map/inspector.js:194
 msgid "Street View"
@@ -1200,7 +1224,9 @@ msgstr "Katunäkymäohjain näytetään."
 
 #: src/blocks/map/inspector.js:197
 msgid "Toggle to show the street view control at the bottom right."
-msgstr "Käytä vaihtopainiketta, jos haluat näyttää katunäkymäohjaimet oikeassa alakulmassa."
+msgstr ""
+"Käytä vaihtopainiketta, jos haluat näyttää katunäkymäohjaimet oikeassa "
+"alakulmassa."
 
 #: src/blocks/map/inspector.js:200
 msgid "Fullscreen Toggle"
@@ -1219,8 +1245,12 @@ msgid "Google Maps API Key"
 msgstr "Google Maps -API-avain"
 
 #: src/blocks/map/inspector.js:212
-msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
-msgstr "Lisää Google Maps -API-avain Tämän API-avaimen päivittäminen määrittää kaikki karttasi käyttämään uutta avainta."
+msgid ""
+"Add a Google Maps API key. Updating this API key will set all your maps to "
+"use the new key."
+msgstr ""
+"Lisää Google Maps -API-avain Tämän API-avaimen päivittäminen määrittää "
+"kaikki karttasi käyttämään uutta avainta."
 
 #: src/blocks/map/inspector.js:215
 msgid "Get a key"
@@ -1263,16 +1293,19 @@ msgid "Toggle to add a card shadow."
 msgstr "Käytä vaihtopainiketta, jos haluat lisätä kortin varjostuksen."
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:118
 msgid " %s Shadow"
 msgstr " %s – varjostus"
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:124
 msgid "Showing %s shadow."
 msgstr "Varjostus näytetään – %s."
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:126
 msgid "Toggle to add an %s shadow"
 msgstr "Käytä vaihtopainiketta, jos haluat lisätä varjostuksen (%s)."
@@ -1297,8 +1330,7 @@ msgstr "Korvaa media pudottamalla sisältö tähän"
 msgid "Edit media"
 msgstr "Muokkaa mediaa"
 
-#: src/blocks/post-carousel/edit.js:123
-#: src/blocks/posts/edit.js:247
+#: src/blocks/post-carousel/edit.js:123 src/blocks/posts/edit.js:247
 msgid "Edit RSS URL"
 msgstr "Muokkaa RSS URL -osoitetta"
 
@@ -1306,46 +1338,39 @@ msgstr "Muokkaa RSS URL -osoitetta"
 msgid "Post Carousel"
 msgstr "Julkaisukaruselli"
 
-#: src/blocks/post-carousel/edit.js:184
-#: src/blocks/posts/edit.js:295
+#: src/blocks/post-carousel/edit.js:184 src/blocks/posts/edit.js:295
 msgid "No posts found. Start publishing or add posts from an %s feed."
-msgstr "Julkaisuja ei löydetty. Aloita julkaiseminen tai lisää julkaisuja %s-syötteestä."
+msgstr ""
+"Julkaisuja ei löydetty. Aloita julkaiseminen tai lisää julkaisuja %s-"
+"syötteestä."
 
-#: src/blocks/post-carousel/edit.js:187
-#: src/blocks/posts/edit.js:298
+#: src/blocks/post-carousel/edit.js:187 src/blocks/posts/edit.js:298
 msgid "Retrieve an External Feed"
 msgstr "Nouda ulkoinen syöte"
 
-#: src/blocks/post-carousel/edit.js:193
-#: src/blocks/posts/edit.js:304
+#: src/blocks/post-carousel/edit.js:193 src/blocks/posts/edit.js:304
 msgid "Use External Feed"
 msgstr "Käytä ulkoista syötettä"
 
 #. %s: RSS
-#: src/blocks/post-carousel/edit.js:216
-#: src/blocks/posts/edit.js:332
+#: src/blocks/post-carousel/edit.js:216 src/blocks/posts/edit.js:332
 msgid "%s Feed"
 msgstr "%s-syöte"
 
-#: src/blocks/post-carousel/edit.js:217
-#: src/blocks/posts/edit.js:333
+#: src/blocks/post-carousel/edit.js:217 src/blocks/posts/edit.js:333
 msgid "%s URLs are generally located at the /feed/ directory of a site."
 msgstr "%s-URL-osoitteet sijaitsevat normaalisti sivuston /feed/-hakemistossa."
 
-#: src/blocks/post-carousel/edit.js:221
-#: src/blocks/posts/edit.js:337
+#: src/blocks/post-carousel/edit.js:221 src/blocks/posts/edit.js:337
 msgid "https://example.com/feed…"
 msgstr "https://example.com/feed…"
 
-#: src/blocks/post-carousel/edit.js:227
-#: src/blocks/posts/edit.js:343
+#: src/blocks/post-carousel/edit.js:227 src/blocks/posts/edit.js:343
 msgid "Use URL"
 msgstr "Käytä URL-osoitetta"
 
-#: src/blocks/post-carousel/edit.js:320
-#: src/blocks/posts/edit.js:463
-#: src/blocks/post-carousel/index.php:368
-#: src/blocks/posts/index.php:385
+#: src/blocks/post-carousel/edit.js:320 src/blocks/posts/edit.js:463
+#: src/blocks/post-carousel/index.php:368 src/blocks/posts/index.php:385
 msgid "Read more"
 msgstr "Lisätietoja"
 
@@ -1353,8 +1378,7 @@ msgstr "Lisätietoja"
 msgid "Display posts or an external blog feed as a carousel."
 msgstr "Näytä julkaisut tai ulkoinen blogisyöte karusellina."
 
-#: src/blocks/post-carousel/inspector.js:108
-#: src/blocks/posts/inspector.js:174
+#: src/blocks/post-carousel/inspector.js:108 src/blocks/posts/inspector.js:174
 msgid "Number of posts"
 msgstr "Julkaisujen lukumäärä"
 
@@ -1362,53 +1386,43 @@ msgstr "Julkaisujen lukumäärä"
 msgid "Post Carousel Settings"
 msgstr "Julkaisukarusellin asetukset"
 
-#: src/blocks/post-carousel/inspector.js:41
-#: src/blocks/posts/inspector.js:81
+#: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
 msgid "Post Date"
 msgstr "Julkaisun päivämäärä"
 
-#: src/blocks/post-carousel/inspector.js:45
-#: src/blocks/posts/inspector.js:85
+#: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
 msgid "Showing the publish date."
 msgstr "Julkaisupäivä näytetään."
 
-#: src/blocks/post-carousel/inspector.js:46
-#: src/blocks/posts/inspector.js:86
+#: src/blocks/post-carousel/inspector.js:46 src/blocks/posts/inspector.js:86
 msgid "Toggle to show the publish date."
 msgstr "Näytä/piilota julkaisupäivä."
 
-#: src/blocks/post-carousel/inspector.js:51
-#: src/blocks/posts/inspector.js:91
+#: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
 msgid "Post Content"
 msgstr "Julkaisun sisältö"
 
-#: src/blocks/post-carousel/inspector.js:55
-#: src/blocks/posts/inspector.js:95
+#: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
 msgid "Showing the post content."
 msgstr "Julkaisun sisältö näytetään."
 
-#: src/blocks/post-carousel/inspector.js:56
-#: src/blocks/posts/inspector.js:96
+#: src/blocks/post-carousel/inspector.js:56 src/blocks/posts/inspector.js:96
 msgid "Toggle to show the post content."
 msgstr "Näytä/piilota julkaisun sisältö."
 
-#: src/blocks/post-carousel/inspector.js:62
-#: src/blocks/posts/inspector.js:102
+#: src/blocks/post-carousel/inspector.js:62 src/blocks/posts/inspector.js:102
 msgid "Max words in content"
 msgstr "Sisällön sanojen enimmäismäärä"
 
-#: src/blocks/post-carousel/inspector.js:86
-#: src/blocks/posts/inspector.js:152
+#: src/blocks/post-carousel/inspector.js:86 src/blocks/posts/inspector.js:152
 msgid "Feed Settings"
 msgstr "Syötteen asetukset"
 
-#: src/blocks/post-carousel/inspector.js:90
-#: src/blocks/posts/inspector.js:156
+#: src/blocks/post-carousel/inspector.js:90 src/blocks/posts/inspector.js:156
 msgid "My Blog"
 msgstr "Oma blogi"
 
-#: src/blocks/post-carousel/inspector.js:91
-#: src/blocks/posts/inspector.js:157
+#: src/blocks/post-carousel/inspector.js:91 src/blocks/posts/inspector.js:157
 msgid "External Feed"
 msgstr "Ulkoinen syöte"
 
@@ -1426,9 +1440,10 @@ msgstr "Blogikirjoitukset"
 
 #: src/blocks/posts/index.js:27
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
-msgstr "Näytä julkaisut tai RSS-syöte pinottuina tai vaakasuuntaisina kortteina."
+msgstr ""
+"Näytä julkaisut tai RSS-syöte pinottuina tai vaakasuuntaisina kortteina."
 
-#: src/blocks/posts/inspector.js:129
+#: src/blocks/posts/inspector.js:129 src/blocks/posts/inspector.js:121
 msgid "Thumbnail Size"
 msgstr "Pikkukuvan koko"
 
@@ -1456,13 +1471,16 @@ msgstr "Neljä hinnoittelutaulukkoa"
 msgid "Change pricing table count"
 msgstr "Muuta hinnoittelutaulukkojen määrää"
 
+#. translators: %d: a digit 1-3
 #: src/blocks/pricing-table/edit.js:39
 msgid "Plan %d"
 msgstr "Sopimus %d"
 
 #: src/blocks/pricing-table/index.js:29
 msgid "Add pricing tables to help visitors compare products and plans."
-msgstr "Lisää hinnoittelutaulukkoja, joiden avulla vierailijat voivat vertailla tuotteita ja sopimuksia."
+msgstr ""
+"Lisää hinnoittelutaulukkoja, joiden avulla vierailijat voivat vertailla "
+"tuotteita ja sopimuksia."
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:112
 msgid "Add features"
@@ -1482,7 +1500,9 @@ msgstr "$"
 
 #: src/blocks/pricing-table/pricing-table-item/index.js:27
 msgid "A pricing table to help visitors compare products and plans."
-msgstr "Hinnoittelutaulukko, joka auttaa vierailijoita vertailemaan tuotteita ja sopimuksia."
+msgstr ""
+"Hinnoittelutaulukko, joka auttaa vierailijoita vertailemaan tuotteita ja "
+"sopimuksia."
 
 #: src/blocks/row/column/edit.js:90
 msgid "Add background to column"
@@ -1496,8 +1516,7 @@ msgstr "Rivin välitön alaelementti."
 msgid "Column Settings"
 msgstr "Palsta-asetukset"
 
-#: src/blocks/row/column/inspector.js:112
-#: src/blocks/row/inspector.js:158
+#: src/blocks/row/column/inspector.js:112 src/blocks/row/inspector.js:158
 msgid "Space around the container."
 msgstr "Tila osiosäilön ympärillä."
 
@@ -1554,6 +1573,7 @@ msgid "Row"
 msgstr "Rivi"
 
 #. %s: 'one' 'two' 'three' and 'four'
+#. translators: %s: 'one' 'two' 'three' and 'four'
 #: src/blocks/row/edit.js:205
 msgid "Now select a layout for this %s column row."
 msgstr "Valitse seuraavaksi tämän %s palstan rivin asettelu."
@@ -1566,8 +1586,7 @@ msgstr "Valitse palstojen lukumäärä tätä riviä varten."
 msgid "Select Row Columns"
 msgstr "Valitse rivin palstat"
 
-#: src/blocks/row/edit.js:236
-#: src/blocks/row/inspector.js:121
+#: src/blocks/row/edit.js:236 src/blocks/row/inspector.js:121
 msgid "Select Row Layout"
 msgstr "Valitse rivin asettelu"
 
@@ -1576,8 +1595,12 @@ msgid "Back to Columns"
 msgstr "Takaisin palstoihin"
 
 #: src/blocks/row/index.js:38
-msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
-msgstr "Lisää palstalohkoihin strukturoitu paketoija, ja lisää sitten haluamasi sisältölohkot palstoihin."
+msgid ""
+"Add a structured wrapper for column blocks, then add content blocks you’d "
+"like to the columns."
+msgstr ""
+"Lisää palstalohkoihin strukturoitu paketoija, ja lisää sitten haluamasi "
+"sisältölohkot palstoihin."
 
 #: src/blocks/row/inspector.js:153
 msgid "Row Settings"
@@ -1721,18 +1744,15 @@ msgstr "Taustan korkeus kuvapisteinä"
 msgid "Shape Color"
 msgstr "Muodon väri"
 
-#: src/blocks/share/edit.js:113
-#: src/blocks/share/index.php:132
+#: src/blocks/share/edit.js:113 src/blocks/share/index.php:132
 msgid "Share on Facebook"
 msgstr "Jaa Facebookissa"
 
-#: src/blocks/share/edit.js:121
-#: src/blocks/share/index.php:136
+#: src/blocks/share/edit.js:121 src/blocks/share/index.php:136
 msgid "Share on Twitter"
 msgstr "Jaa Twitterissä"
 
-#: src/blocks/share/edit.js:129
-#: src/blocks/share/index.php:140
+#: src/blocks/share/edit.js:129 src/blocks/share/index.php:140
 msgid "Share on Pinterest"
 msgstr "Jaa Pinterest-palvelussa"
 
@@ -1740,29 +1760,27 @@ msgstr "Jaa Pinterest-palvelussa"
 msgid "Share on LinkedIn"
 msgstr "Jaa LinkedIn-palvelussa"
 
-#: src/blocks/share/edit.js:145
-#: src/blocks/share/index.php:148
+#: src/blocks/share/edit.js:145 src/blocks/share/index.php:148
 msgid "Share via Email"
 msgstr "Jaa sähköpostitse"
 
-#: src/blocks/share/edit.js:153
-#: src/blocks/share/index.php:152
+#: src/blocks/share/edit.js:153 src/blocks/share/index.php:152
 msgid "Share on Tumblr"
 msgstr "Jaa Twitterissä"
 
-#: src/blocks/share/edit.js:161
-#: src/blocks/share/index.php:156
+#: src/blocks/share/edit.js:161 src/blocks/share/index.php:156
 msgid "Share on Google"
 msgstr "Jaa Googlen kautta"
 
-#: src/blocks/share/edit.js:169
-#: src/blocks/share/index.php:160
+#: src/blocks/share/edit.js:169 src/blocks/share/index.php:160
 msgid "Share on Reddit"
 msgstr "Jaa Reddit-palvelussa"
 
 #: src/blocks/share/index.js:25
 msgid "Add social sharing links to help you get likes and shares."
-msgstr "Sisällön jakaminen sosiaalisessa mediassa auttaa sinua saamaan lisää tykkäyksiä ja jakoja."
+msgstr ""
+"Sisällön jakaminen sosiaalisessa mediassa auttaa sinua saamaan lisää "
+"tykkäyksiä ja jakoja."
 
 #: src/blocks/share/inspector.js:113
 #: src/blocks/social-profiles/inspector.js:117
@@ -1788,31 +1806,26 @@ msgstr "Painikkeen koko"
 msgid "Icons"
 msgstr "Kuvakkeet"
 
-#: src/blocks/share/inspector.js:157
-#: src/blocks/social-profiles/edit.js:205
+#: src/blocks/share/inspector.js:157 src/blocks/social-profiles/edit.js:205
 #: src/blocks/social-profiles/index.php:71
 msgid "Twitter"
 msgstr "Twitter"
 
-#: src/blocks/share/inspector.js:162
-#: src/blocks/social-profiles/edit.js:159
+#: src/blocks/share/inspector.js:162 src/blocks/social-profiles/edit.js:159
 #: src/blocks/social-profiles/index.php:67
 msgid "Facebook"
 msgstr "Facebook-"
 
-#: src/blocks/share/inspector.js:167
-#: src/blocks/social-profiles/edit.js:299
+#: src/blocks/share/inspector.js:167 src/blocks/social-profiles/edit.js:299
 #: src/blocks/social-profiles/index.php:79
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: src/blocks/share/inspector.js:172
-#: src/blocks/social-profiles/edit.js:347
+#: src/blocks/share/inspector.js:172 src/blocks/social-profiles/edit.js:347
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: src/blocks/share/inspector.js:177
-#: includes/class-coblocks-form.php:234
+#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
 #: includes/class-coblocks-form.php:319
 msgid "Email"
 msgstr "Sähköposti"
@@ -1829,15 +1842,15 @@ msgstr "Google"
 msgid "Reddit"
 msgstr "Reddit"
 
-#: src/blocks/share/inspector.js:25
-#: src/blocks/social-profiles/inspector.js:36
+#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:36
 msgid "Share button colors are enabled."
 msgstr "Jakopainikkeiden värit on otettu käyttöön."
 
-#: src/blocks/share/inspector.js:25
-#: src/blocks/social-profiles/inspector.js:37
+#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:37
 msgid "Toggle to use official colors from each social media platform."
-msgstr "Käytä vaihtopainiketta, jos haluat käyttää kunkin sosiaalisen median virallisia värejä."
+msgstr ""
+"Käytä vaihtopainiketta, jos haluat käyttää kunkin sosiaalisen median "
+"virallisia värejä."
 
 #: src/blocks/social-profiles/edit.js:142
 msgid "Add Facebook Profile"
@@ -1940,6 +1953,8 @@ msgid "Remove Background"
 msgstr "Poista tausta"
 
 #: src/components/background/controls.js:96
+#: src/components/background/controls.js:81
+#: src/components/background/controls.js:82
 msgid "Background"
 msgstr "Tausta"
 
@@ -1989,7 +2004,8 @@ msgstr "Taustavideo toistetaan jatkuvasti."
 
 #: src/components/background/panel.js:202
 msgid "Toggle to loop the video."
-msgstr "Käytä vaihtopainiketta, jos haluat asettaa videon jatkuvasti toistettavaksi."
+msgstr ""
+"Käytä vaihtopainiketta, jos haluat asettaa videon jatkuvasti toistettavaksi."
 
 #: src/components/background/panel.js:211
 msgid "Remove background"
@@ -2012,6 +2028,7 @@ msgid "Link To"
 msgstr "Linkitä kohteeseen:"
 
 #. %s: Type of gallery
+#. translators: %s: Type of gallery
 #: src/components/block-gallery/gallery-placeholder.js:71
 msgid "%s Gallery"
 msgstr "%s – galleria"
@@ -2033,6 +2050,7 @@ msgid "Custom URL"
 msgstr "Mukautettu URL"
 
 #: src/components/crop-settings/index.js:275
+#: src/components/crop-settings/index.js:272
 msgid "Crop settings image placeholder"
 msgstr "Rajausasetusten kuvan paikkamerkki"
 
@@ -2061,44 +2079,65 @@ msgid "Select Units"
 msgstr "Valitse yksiköt"
 
 #. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
+#. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
 #: src/components/dimensions-control/index.js:453
+#: src/components/dimensions-control/index.js:445
 msgid "%s Units"
 msgstr "%s – yksiköt"
 
 #. %s: a texual label
+#. translators: %s: a texual label
 #: src/components/dimensions-control/index.js:468
 msgid "Turn off advanced %s settings"
 msgstr "Poista %s-lisäasetukset käytöstä"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:640
+#: src/components/dimensions-control/index.js:512
+#: src/components/dimensions-control/index.js:576
 msgid "%s Top"
 msgstr "%s – yläosa"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:651
+#: src/components/dimensions-control/index.js:523
+#: src/components/dimensions-control/index.js:587
 msgid "%s Right"
 msgstr "%s – oikea"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:662
+#: src/components/dimensions-control/index.js:534
+#: src/components/dimensions-control/index.js:598
 msgid "%s Bottom"
 msgstr "%s – alaosa"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:673
+#: src/components/dimensions-control/index.js:545
+#: src/components/dimensions-control/index.js:609
 msgid "%s Left"
 msgstr "%s – vasen"
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Unsync"
 msgstr "Poista synkronointi"
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Sync"
 msgstr "Synkronoi"
 
 #: src/components/dimensions-control/index.js:682
+#: src/components/dimensions-control/index.js:554
+#: src/components/dimensions-control/index.js:618
 msgid "Sync Units"
 msgstr "Synkronoi yksiköt"
 
@@ -2119,6 +2158,7 @@ msgid "Left"
 msgstr "Vasen"
 
 #. %s:  a texual label
+#. translators: %s:  a texual label
 #: src/components/dimensions-control/index.js:722
 msgid "Advanced %s settings"
 msgstr "%s-lisäasetukset"
@@ -2152,6 +2192,7 @@ msgid "Toggle to enable fullscreen mode."
 msgstr "Käytä vaihtopainiketta, jos haluat ottaa käyttöön koko näytön tilan."
 
 #. %d: heading level e.g: "1", "2", "3"
+#. translators: %d: heading level e.g: "1", "2", "3"
 #: src/components/heading-toolbar/index.js:18
 msgid "Heading %d"
 msgstr "Otsikko %d"
@@ -2169,6 +2210,7 @@ msgid "Height"
 msgstr "Korkeus"
 
 #. %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#. translators: %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
 #: src/components/responsive-tabs-control/index.js:65
 msgid "Mobile %s"
 msgstr "Matkapuhelin %s"
@@ -2246,6 +2288,7 @@ msgid "second"
 msgstr "sekunti"
 
 #. 1. Speed of the slider, 2: Time until the slide advances
+#. translators: 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Advancing after %1$d %2$s."
 msgstr "Automaattinen siirtymä %1$d%2$s jälkeen."
@@ -2365,7 +2408,9 @@ msgstr "Reagoivuus on otettu käyttöön."
 
 #: src/extensions/advanced-controls/index.js:117
 msgid "Toggle to stack elements on top of each other on smaller viewports."
-msgstr "Käytä vaihtopainiketta, jos haluat pinota elementtejä toistensa päälle pienemmissä näyttöikkunoissa."
+msgstr ""
+"Käytä vaihtopainiketta, jos haluat pinota elementtejä toistensa päälle "
+"pienemmissä näyttöikkunoissa."
 
 #: src/extensions/advanced-controls/index.js:125
 msgid "Remove Top Spacing"
@@ -2401,13 +2446,14 @@ msgstr "Näytetään täydessä leveydessä."
 
 #: src/extensions/button-controls/index.js:74
 msgid "Toggle to display button as full width."
-msgstr "Käytä vaihtopainiketta, jos haluat näyttää painikkeen täydessä leveydessä."
+msgstr ""
+"Käytä vaihtopainiketta, jos haluat näyttää painikkeen täydessä leveydessä."
 
 #: src/extensions/image-crop/index.js:172
 msgid "Crop Settings"
 msgstr "Rajausasetukset"
 
-#: src/formats/uppercase/index.js:35
+#: src/formats/uppercase/index.js:35 src/formats/uppercase/index.js:20
 msgid "Uppercase"
 msgstr "Isot kirjaimet"
 
@@ -2429,18 +2475,21 @@ msgstr "Etsi lohkoa"
 
 #: src/sidebars/block-manager/components/options/disable-blocks.js:170
 msgid "This block is added to the page and cannot currently be disabled"
-msgstr "Tämä lohko lisätään sivulle, eikä tätä voida tällä hetkellä poistaa käytöstä"
+msgstr ""
+"Tämä lohko lisätään sivulle, eikä tätä voida tällä hetkellä poistaa käytöstä"
 
 #: src/sidebars/block-manager/components/options/disable-blocks.js:185
 msgid "Disable all"
 msgstr "Poista kaikki käytöstä"
 
 #. %s: search text
+#. translators: %s: search text
 #: src/sidebars/block-manager/components/options/disable-blocks.js:233
 msgid "No \"%s\" blocks found."
 msgstr "Tämäntyyppisiä lohkoja ei löydetty: \"%s\"."
 
 #. %s: Plugin title, i.e. CoBlocks
+#. translators: %s: Plugin title, i.e. CoBlocks
 #: src/utils/block-category.js:21
 msgid "%s Galleries"
 msgstr "%s – galleriat"
@@ -2497,14 +2546,12 @@ msgctxt "block keyword"
 msgid "link"
 msgstr "linkki"
 
-#: src/blocks/buttons/index.js:31
-#: src/blocks/hero/index.js:43
+#: src/blocks/buttons/index.js:31 src/blocks/hero/index.js:43
 msgctxt "block keyword"
 msgid "cta"
 msgstr "cta"
 
-#: src/blocks/click-to-tweet/index.js:31
-#: src/blocks/social-profiles/index.js:28
+#: src/blocks/click-to-tweet/index.js:31 src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "share"
 msgstr "jaa"
@@ -2672,8 +2719,7 @@ msgctxt "block keyword"
 msgid "paragraph"
 msgstr "kappale"
 
-#: src/blocks/icon/index.js:35
-#: src/blocks/social-profiles/index.js:28
+#: src/blocks/icon/index.js:35 src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "icons"
 msgstr "kuvakkeet"
@@ -2728,8 +2774,7 @@ msgctxt "block keyword"
 msgid "slider"
 msgstr "diaesitys"
 
-#: src/blocks/post-carousel/index.js:29
-#: src/blocks/posts/index.js:29
+#: src/blocks/post-carousel/index.js:29 src/blocks/posts/index.js:29
 msgctxt "block keyword"
 msgid "latest"
 msgstr "viimeisin"
@@ -3132,32 +3177,27 @@ msgctxt "block style"
 msgid "Pointed"
 msgstr "Kärki"
 
-#: src/blocks/share/index.js:30
-#: src/blocks/social-profiles/index.js:30
+#: src/blocks/share/index.js:30 src/blocks/social-profiles/index.js:30
 msgctxt "block style"
 msgid "Mask"
 msgstr "Maski"
 
-#: src/blocks/share/index.js:31
-#: src/blocks/social-profiles/index.js:31
+#: src/blocks/share/index.js:31 src/blocks/social-profiles/index.js:31
 msgctxt "block style"
 msgid "Icon"
 msgstr "kuvake"
 
-#: src/blocks/share/index.js:32
-#: src/blocks/social-profiles/index.js:32
+#: src/blocks/share/index.js:32 src/blocks/social-profiles/index.js:32
 msgctxt "block style"
 msgid "Text"
 msgstr "Teksti"
 
-#: src/blocks/share/index.js:33
-#: src/blocks/social-profiles/index.js:33
+#: src/blocks/share/index.js:33 src/blocks/social-profiles/index.js:33
 msgctxt "block style"
 msgid "Icon & Text"
 msgstr "Kuvake ja teksti"
 
-#: src/blocks/share/index.js:34
-#: src/blocks/social-profiles/index.js:34
+#: src/blocks/share/index.js:34 src/blocks/social-profiles/index.js:34
 msgctxt "block style"
 msgid "Circular"
 msgstr "Ympyrä"
@@ -3200,7 +3240,9 @@ msgstr "Lisää ominaisuuden sisältö"
 #: src/blocks/features/feature/edit.js:32
 msgctxt "content placeholder"
 msgid "This is a feature block that you can use to highlight features."
-msgstr "Tämä on ominaisuuslohko, jonka avulla voit tuoda esille haluamiasi ominaisuuksia."
+msgstr ""
+"Tämä on ominaisuuslohko, jonka avulla voit tuoda esille haluamiasi "
+"ominaisuuksia."
 
 #: src/blocks/hero/edit.js:35
 msgctxt "content placeholder"
@@ -3209,8 +3251,12 @@ msgstr "Lisää sankariosion otsikko..."
 
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
-msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
-msgstr "Lisää sankarisisältö. Tällä tarkoitetaan näkyvällä tavalla esillä olevaa sivun esittelyosiota, johon sisältyy usein mukaan myös jokin toimintakehote."
+msgid ""
+"Add hero content, which is typically an introductory area of a page "
+"accompanied by call to action or two."
+msgstr ""
+"Lisää sankarisisältö. Tällä tarkoitetaan näkyvällä tavalla esillä olevaa "
+"sivun esittelyosiota, johon sisältyy usein mukaan myös jokin toimintakehote."
 
 #: src/blocks/hero/edit.js:39
 msgctxt "content placeholder"
@@ -3239,8 +3285,13 @@ msgstr "Lisää sisältöä..."
 
 #: src/blocks/media-card/edit.js:47
 msgctxt "content placeholder"
-msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
-msgstr "Korvaa tämä teksti kuvauksella, joka sopii yhteen korttisi kuvan kanssa. Lisää tämän jälkeen tähän korttiin muita lohkoja, kuten painikkeita, listoja tai kuvia."
+msgid ""
+"Replace this text with descriptive copy to go along with the card image. "
+"Then add more blocks to this card, such as buttons, lists or images."
+msgstr ""
+"Korvaa tämä teksti kuvauksella, joka sopii yhteen korttisi kuvan kanssa. "
+"Lisää tämän jälkeen tähän korttiin muita lohkoja, kuten painikkeita, listoja "
+"tai kuvia."
 
 #: src/blocks/services/service/edit.js:205
 msgctxt "content placeholder"
@@ -3273,6 +3324,7 @@ msgid "None"
 msgstr "Ei mitään"
 
 #: src/blocks/gallery-collage/inspector.js:84
+#: src/blocks/gallery-collage/inspector.js:56
 msgctxt "abbreviation for \"Short\" size"
 msgid "None"
 msgstr "Ei mitään"
@@ -3282,8 +3334,8 @@ msgctxt "label for small gutter option"
 msgid "Small"
 msgstr "Pieni"
 
-#: src/blocks/gallery-collage/inspector.js:89
-#: src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:89 src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:61
 msgctxt "abbreviation for \"Small\" size"
 msgid "S"
 msgstr "S"
@@ -3293,8 +3345,8 @@ msgctxt "label for medium gutter option"
 msgid "Medium"
 msgstr "Keskikokoinen"
 
-#: src/blocks/gallery-collage/inspector.js:94
-#: src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:94 src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:66
 msgctxt "abbreviation for \"Medium\" size"
 msgid "M"
 msgstr "M"
@@ -3304,8 +3356,8 @@ msgctxt "label for large gutter option"
 msgid "Large"
 msgstr "Suuri"
 
-#: src/blocks/gallery-collage/inspector.js:99
-#: src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:99 src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:71
 msgctxt "abbreviation for \"Large\" size"
 msgid "L"
 msgstr "L"
@@ -3445,7 +3497,7 @@ msgctxt "label"
 msgid "Hub"
 msgstr "Keskus"
 
-#: src/blocks/icon/svgs.js:208
+#: src/blocks/icon/svgs.js:208 src/blocks/icon/svgs.js:202
 msgctxt "label"
 msgid "Email"
 msgstr "Sähköposti"
@@ -3650,7 +3702,7 @@ msgctxt "label"
 msgid "Brush"
 msgstr "Sivellin"
 
-#: src/blocks/icon/svgs.js:109
+#: src/blocks/icon/svgs.js:109 src/blocks/icon/svgs.js:103
 msgctxt "tags"
 msgid "add minus circle insert plus round math"
 msgstr "lisää miinusympyrä liitä plus pyöreä matematiikka"
@@ -3700,7 +3752,7 @@ msgctxt "tags"
 msgid "rate vote plus favorite like"
 msgstr "arvioi äänestä plus suosikki tykkäys"
 
-#: src/blocks/icon/svgs.js:177
+#: src/blocks/icon/svgs.js:177 src/blocks/icon/svgs.js:166
 msgctxt "tags"
 msgid "computer apple montior device pc desk office"
 msgstr "tietokone apple näyttö laite pc office"
@@ -3715,7 +3767,7 @@ msgctxt "tags"
 msgid "device apple mac"
 msgstr "laite apple mac"
 
-#: src/blocks/icon/svgs.js:193
+#: src/blocks/icon/svgs.js:193 src/blocks/icon/svgs.js:172
 msgctxt "tags"
 msgid "computer ipad surface apple device pc desk office"
 msgstr "tietokone ipad surface apple laite pc office"
@@ -3728,9 +3780,10 @@ msgstr "usb liitä yhdistä laite sosiaalinen keskitin"
 #: src/blocks/icon/svgs.js:20
 msgctxt "tags"
 msgid "music microphone podcast song artist creative media audio"
-msgstr "musiikki mikrofoni podcast laulu kappale artisti luova media audio ääni"
+msgstr ""
+"musiikki mikrofoni podcast laulu kappale artisti luova media audio ääni"
 
-#: src/blocks/icon/svgs.js:209
+#: src/blocks/icon/svgs.js:209 src/blocks/icon/svgs.js:203
 msgctxt "tags"
 msgid "email mail os read letter"
 msgstr "sähköposti posti käyttöjärjestelmä lue viesti kirje"
@@ -3785,7 +3838,7 @@ msgctxt "tags"
 msgid "petal scent smell nice relax landscape gardening outdoors outside"
 msgstr "kukka tuoksu ihana rentoudu maisema puutarha puutarhanhoito ulkona"
 
-#: src/blocks/icon/svgs.js:292
+#: src/blocks/icon/svgs.js:292 src/blocks/icon/svgs.js:230
 msgctxt "tags"
 msgid "blocks block box boxes square build widgets"
 msgstr "lohkot blokit ruudut neliö suunnittelu widgetit"
@@ -3820,7 +3873,7 @@ msgctxt "tags"
 msgid "microphone audio beats bose headphones"
 msgstr "mikrofoni ääni beats bose kuulokkeet"
 
-#: src/blocks/icon/svgs.js:325
+#: src/blocks/icon/svgs.js:325 src/blocks/icon/svgs.js:286
 msgctxt "tags"
 msgid "flower camera photography artist creative"
 msgstr "kukka kamera valokuvaus artisti taiteilija luova"
@@ -3855,15 +3908,19 @@ msgctxt "tags"
 msgid "improve add upload software"
 msgstr "kehitä paranna lisää lataa palvelin ohjelmisto"
 
-#: src/blocks/icon/svgs.js:37
+#: src/blocks/icon/svgs.js:37 src/blocks/icon/svgs.js:26
 msgctxt "tags"
 msgid "music microphone song artist creative media audio"
 msgstr "musiikki mikrofoni laulu kappale artisti luova media audio ääni"
 
 #: src/blocks/icon/svgs.js:43
 msgctxt "tags"
-msgid "microphone podcast computer device music microphone song artist creative media audio"
-msgstr "mikrofoni podcast tietokone laite musiikki laulu kappale artisti luova media audio ääni"
+msgid ""
+"microphone podcast computer device music microphone song artist creative "
+"media audio"
+msgstr ""
+"mikrofoni podcast tietokone laite musiikki laulu kappale artisti luova media "
+"audio ääni"
 
 #: src/blocks/icon/svgs.js:49
 msgctxt "tags"
@@ -3887,13 +3944,18 @@ msgstr "filmi elokuva video videokuvaus ohjaaja tuottaja media luova"
 
 #: src/blocks/icon/svgs.js:73
 msgctxt "tags"
-msgid "video videography director producer media creative camera photographer photography aperture"
-msgstr "video videokuvaus ohjaaja tuottaja media luova kamera valokuvaaja valokuvaus aukko"
+msgid ""
+"video videography director producer media creative camera photographer "
+"photography aperture"
+msgstr ""
+"video videokuvaus ohjaaja tuottaja media luova kamera valokuvaaja valokuvaus "
+"aukko"
 
-#: src/blocks/icon/svgs.js:85
+#: src/blocks/icon/svgs.js:85 src/blocks/icon/svgs.js:79
 msgctxt "tags"
 msgid "palette design colors artist paint creative media"
-msgstr "paletti design suunnittelu värit artisti taiteilija maalaus luova media"
+msgstr ""
+"paletti design suunnittelu värit artisti taiteilija maalaus luova media"
 
 #: src/blocks/icon/svgs.js:91
 msgctxt "tags"
@@ -3903,7 +3965,9 @@ msgstr "paletti design suunnittelu värit artisti taiteilija luova media"
 #: src/blocks/icon/svgs.js:97
 msgctxt "tags"
 msgid "palette design colors artist creative media paint paintbrush"
-msgstr "paletti design suunnittelu värit artisti taiteilija luova media maalaus sivellin"
+msgstr ""
+"paletti design suunnittelu värit artisti taiteilija luova media maalaus "
+"sivellin"
 
 #: src/blocks/map/styles.js:12
 msgctxt "block styles"
@@ -3965,10 +4029,8 @@ msgctxt "block styles"
 msgid "Checkbox"
 msgstr "Valintaruutu"
 
-#: src/blocks/post-carousel/edit.js:302
-#: src/blocks/posts/edit.js:437
-#: src/blocks/post-carousel/index.php:185
-#: src/blocks/posts/index.php:202
+#: src/blocks/post-carousel/edit.js:302 src/blocks/posts/edit.js:437
+#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
 msgstr "(ei otsikkoa)"
@@ -4028,18 +4090,21 @@ msgstr "Yläoikea"
 
 #: src/components/background/panel.js:86
 #: src/components/grid-control/index.js:48
+#: src/components/grid-control/index.js:38
 msgctxt "block layout"
 msgid "Center Left"
 msgstr "Keskiosan vasemmalla"
 
 #: src/components/background/panel.js:87
 #: src/components/grid-control/index.js:49
+#: src/components/grid-control/index.js:39
 msgctxt "block layout"
 msgid "Center Center"
 msgstr "Keskiosan keskellä"
 
 #: src/components/background/panel.js:88
 #: src/components/grid-control/index.js:50
+#: src/components/grid-control/index.js:40
 msgctxt "block layout"
 msgid "Center Right"
 msgstr "Keskiosan oikealla"
@@ -4083,7 +4148,8 @@ msgid "Repeat Vertically"
 msgstr "Toista pystysuunnassa"
 
 #: src/components/block-gallery/gallery-link-settings.js:80
-msgctxt "HTML attribute that specifies the a relationship between the two pages."
+msgctxt ""
+"HTML attribute that specifies the a relationship between the two pages."
 msgid "Link Rel"
 msgstr "Linkkisuhde"
 
@@ -4168,6 +4234,7 @@ msgid "Capitalize"
 msgstr "Isot kirjaimet"
 
 #: src/components/typography-controls/index.js:107
+#: src/components/typography-controls/index.js:80
 msgctxt "typography styles"
 msgid "Normal"
 msgstr "Normaali"
@@ -4178,6 +4245,7 @@ msgid "Bold"
 msgstr "Lihavoitu"
 
 #: src/components/typography-controls/index.js:91
+#: src/components/typography-controls/index.js:76
 msgctxt "typography styles"
 msgid "Default"
 msgstr "Oletus"
@@ -4201,8 +4269,15 @@ msgid "https://coblocks.com"
 msgstr "https://coblocks.com"
 
 #. Description of the plugin
-msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
-msgstr "CoBlocks on kokoelma ammattimaisia <strong>verkkosivujen sisältölohkoja </strong> WordPressin Gutenberg-lohkoeditoria varten. Lohkomme ovat erittäin tarkoin suunniteltuja, ja niiden avulla suunnittelijat voivat luoda ainutlaatuisen näyttäviä sivuja WordPressiä käyttäen."
+msgid ""
+"CoBlocks is a suite of professional <strong>page building content blocks</"
+"strong> for the WordPress Gutenberg block editor. Our blocks are hyper-"
+"focused on empowering makers to build beautifully rich pages in WordPress."
+msgstr ""
+"CoBlocks on kokoelma ammattimaisia <strong>verkkosivujen sisältölohkoja </"
+"strong> WordPressin Gutenberg-lohkoeditoria varten. Lohkomme ovat erittäin "
+"tarkoin suunniteltuja, ja niiden avulla suunnittelijat voivat luoda "
+"ainutlaatuisen näyttäviä sivuja WordPressiä käyttäen."
 
 #. Author of the plugin
 msgid "GoDaddy"
@@ -4212,8 +4287,7 @@ msgstr "GoDaddy"
 msgid "https://www.godaddy.com"
 msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:84
-#: class-coblocks.php:96
+#: class-coblocks.php:84 class-coblocks.php:96
 msgid "Cheating huh?"
 msgstr "Melkein niin kuin huijausta, vai mitä?"
 
@@ -4226,13 +4300,25 @@ msgid "Leave a Review"
 msgstr "Jätä arvostelu"
 
 #: includes/admin/class-coblocks-getting-started-page.php:120
-msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
-msgstr "Kiitos, että valitsit CoBlocks-paketin. Se on alan parhaimmistoa edustava verkkosivujen suunnittelutyökalu WordPressin uudelle lohkoeditorille."
+msgid ""
+"Thanks for choosing CoBlocks, the premier page builder for the new WordPress "
+"block editor."
+msgstr ""
+"Kiitos, että valitsit CoBlocks-paketin. Se on alan parhaimmistoa edustava "
+"verkkosivujen suunnittelutyökalu WordPressin uudelle lohkoeditorille."
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
 #: includes/admin/class-coblocks-getting-started-page.php:126
-msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
-msgstr "Olet juuri lisännyt WordPress-editoriin joukon hyödyllisiä lohkoelementtejä ja kattavan uuden työkaluvalikoiman. CoBlocks tarjoaa sinulle mullistavan valikoiman uusia ominaisuuksia: %1$s kymmeniä eri lohkoja%2$s, %1$s kätevät suunnittelutoiminnot %2$s ja %1$s mukautetut typografiavalinnat%2$s."
+msgid ""
+"You've just added lots of useful blocks and a new page builder toolkit to "
+"the WordPress editor. CoBlocks gives you a game-changing set of features: "
+"%1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom "
+"typography controls%2$s."
+msgstr ""
+"Olet juuri lisännyt WordPress-editoriin joukon hyödyllisiä lohkoelementtejä "
+"ja kattavan uuden työkaluvalikoiman. CoBlocks tarjoaa sinulle mullistavan "
+"valikoiman uusia ominaisuuksia: %1$s kymmeniä eri lohkoja%2$s, %1$s kätevät "
+"suunnittelutoiminnot %2$s ja %1$s mukautetut typografiavalinnat%2$s."
 
 #: includes/admin/class-coblocks-getting-started-page.php:133
 msgid "Here are a few videos to help you get started:"
@@ -4259,13 +4345,24 @@ msgstr "Katso video mediakorttilohkon käytöstä"
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:152
-msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
-msgstr "Pidätkö näkemästäsi? %1$sTilaamalla YouTube-kanavamme%2$s saat tiedon aina, kun olemme julkaisseet uusia opastusvideoita."
+msgid ""
+"Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let "
+"you know when new video tutorials are released."
+msgstr ""
+"Pidätkö näkemästäsi? %1$sTilaamalla YouTube-kanavamme%2$s saat tiedon aina, "
+"kun olemme julkaisseet uusia opastusvideoita."
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:163
-msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
-msgstr "Jos sinulla on kysymyksiä tai palautetta, ota meihin yhteyttä %1$sTwitterin%4$s tai %2$sFacebook-ryhmämme%4$s kautta. Voit myös %3$stilata uutiskirjeemme%4$s, jos haluat pysyä ajan tasalla CoBlocks-pakettiin tehtävistä muutoksista ja uusista ominaisuuksista."
+msgid ""
+"If you have any questions or feedback, let us know on %1$sTwitter%4$s or our "
+"%2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you "
+"want to stay up to date with what's new and upcoming at CoBlocks."
+msgstr ""
+"Jos sinulla on kysymyksiä tai palautetta, ota meihin yhteyttä %1$sTwitterin"
+"%4$s tai %2$sFacebook-ryhmämme%4$s kautta. Voit myös %3$stilata "
+"uutiskirjeemme%4$s, jos haluat pysyä ajan tasalla CoBlocks-pakettiin "
+"tehtävistä muutoksista ja uusista ominaisuuksista."
 
 #: includes/admin/class-coblocks-getting-started-page.php:172
 msgid "Enjoy!"
@@ -4322,6 +4419,17 @@ msgstr "Viestisi lähetettiin:"
 #: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
 msgstr "Google Maps -palvelun API-avain karttojen muodostukseen"
+
+#: src/blocks/post-carousel/index.php:40 src/blocks/posts/index.php:40
+#, fuzzy
+msgid "RSS Error:"
+msgstr "Virhe"
+
+#: src/blocks/post-carousel/index.php:51 src/blocks/posts/index.php:51
+msgid ""
+"An error has occurred, which probably means the feed is down. Try again "
+"later."
+msgstr ""
 
 #: src/blocks/share/index.php:144
 msgid "Share on Linkedin"

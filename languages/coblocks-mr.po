@@ -1,15 +1,16 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.16.0\n"
+"Project-Id-Version: CoBlocks 1.16.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
+"POT-Creation-Date: 2019-10-18T18:40:31+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-10-17T20:17:54+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
 
@@ -30,43 +31,33 @@ msgid "Accordion Item Settings"
 msgstr "एकॉर्डियन आयटम सेटींग"
 
 #: src/blocks/accordion/accordion-item/inspector.js:72
-#: src/blocks/alert/inspector.js:49
-#: src/blocks/author/inspector.js:50
+#: src/blocks/alert/inspector.js:49 src/blocks/author/inspector.js:50
 #: src/blocks/click-to-tweet/inspector.js:60
 #: src/blocks/dynamic-separator/inspector.js:60
 #: src/blocks/features/feature/inspector.js:92
-#: src/blocks/features/inspector.js:173
-#: src/blocks/form/submit-button.js:118
-#: src/blocks/hero/inspector.js:137
-#: src/blocks/highlight/inspector.js:43
-#: src/blocks/icon/inspector.js:302
-#: src/blocks/media-card/inspector.js:132
+#: src/blocks/features/inspector.js:173 src/blocks/form/submit-button.js:118
+#: src/blocks/hero/inspector.js:137 src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:302 src/blocks/media-card/inspector.js:132
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
-#: src/blocks/row/column/inspector.js:165
-#: src/blocks/row/inspector.js:211
-#: src/blocks/shape-divider/inspector.js:92
-#: src/blocks/share/inspector.js:200
+#: src/blocks/row/column/inspector.js:165 src/blocks/row/inspector.js:211
+#: src/blocks/shape-divider/inspector.js:92 src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:206
 #: src/extensions/colors/index.js:59
 msgid "Color Settings"
 msgstr "रंग सेटींग"
 
 #: src/blocks/accordion/accordion-item/inspector.js:78
-#: src/blocks/alert/inspector.js:55
-#: src/blocks/author/inspector.js:56
+#: src/blocks/alert/inspector.js:55 src/blocks/author/inspector.js:56
 #: src/blocks/features/feature/inspector.js:110
-#: src/blocks/features/inspector.js:191
-#: src/blocks/hero/inspector.js:150
-#: src/blocks/highlight/inspector.js:49
-#: src/blocks/icon/inspector.js:326
+#: src/blocks/features/inspector.js:191 src/blocks/hero/inspector.js:150
+#: src/blocks/highlight/inspector.js:49 src/blocks/icon/inspector.js:326
 #: src/blocks/media-card/inspector.js:146
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
-#: src/blocks/row/column/inspector.js:171
-#: src/blocks/row/inspector.js:227
-#: src/blocks/shape-divider/inspector.js:103
-#: src/blocks/share/inspector.js:99
+#: src/blocks/row/column/inspector.js:171 src/blocks/row/inspector.js:227
+#: src/blocks/shape-divider/inspector.js:103 src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:103
-#: src/extensions/colors/index.js:47
+#: src/extensions/colors/index.js:47 src/blocks/share/inspector.js:81
+#: src/blocks/social-profiles/inspector.js:85
 msgid "Background Color"
 msgstr "पार्श्वभूमी रंग"
 
@@ -91,7 +82,8 @@ msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
 msgstr "JavaScript polyfill लोड करून इंटरनेट एक्सप्लोररसाठी समर्थन जोडा."
 
 #: src/blocks/accordion/inspector.js:31
-msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgid ""
+"Supporting Internet Explorer by loading a JavaScript polyfill on this page."
 msgstr "JavaScript polyfill या पृष्ठावर लोड करून इंटरनेट एक्सप्लोररला समर्थन करा."
 
 #: src/blocks/alert/index.js:29
@@ -103,21 +95,22 @@ msgid "This is an alert block"
 msgstr "हे सतर्कता अवरोधन आहे"
 
 #: src/blocks/alert/index.js:46
-msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
-msgstr "सतर्कता एक संदेश आहे जो ठराविक सामग्रीच्या प्रवाहाबाहेर प्रदर्शित होतो.. सतर्कता संदर्भ अभिप्राय प्रदान करतात सामान्यतः वाचकांना कृती करण्यास सांगतात."
+msgid ""
+"An alert is a message that displays outside the flow of typical content. "
+"Alerts provide contextual feedback, typically asking readers to take an "
+"action."
+msgstr ""
+"सतर्कता एक संदेश आहे जो ठराविक सामग्रीच्या प्रवाहाबाहेर प्रदर्शित होतो.. सतर्कता संदर्भ "
+"अभिप्राय प्रदान करतात सामान्यतः वाचकांना कृती करण्यास सांगतात."
 
-#: src/blocks/alert/inspector.js:60
-#: src/blocks/author/inspector.js:61
+#: src/blocks/alert/inspector.js:60 src/blocks/author/inspector.js:61
 #: src/blocks/click-to-tweet/inspector.js:66
 #: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:195
-#: src/blocks/hero/inspector.js:155
+#: src/blocks/features/inspector.js:195 src/blocks/hero/inspector.js:155
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
-#: src/blocks/row/column/inspector.js:176
-#: src/blocks/row/inspector.js:232
-#: src/blocks/share/inspector.js:66
-#: src/blocks/social-profiles/inspector.js:95
+#: src/blocks/row/column/inspector.js:176 src/blocks/row/inspector.js:232
+#: src/blocks/share/inspector.js:66 src/blocks/social-profiles/inspector.js:95
 #: src/extensions/colors/index.js:54
 msgid "Text Color"
 msgstr "मजकूर रंग"
@@ -127,14 +120,23 @@ msgid "Edit avatar"
 msgstr "अवतार संपादित करा"
 
 #. placeholder text used for the author name
+#. translators: placeholder text used for the author name
 #: src/blocks/author/edit.js:127
 msgid "Write author name…"
-msgstr "\nलेखकाचे नाव लिहा..."
+msgstr ""
+"\n"
+"लेखकाचे नाव लिहा..."
 
 #. placeholder text used for the biography
+#. translators: placeholder text used for the biography
 #: src/blocks/author/edit.js:141
-msgid "Write a biography that distills objective credibility and authority to your readers…"
-msgstr "जीवनचरित्र लिहा जाच्यातून तुमच्या वाचकांना उद्दिष्ट क्रेडेबिलिटी आणि ऑथोरिटी याचा पुरेपूर बोध होईल\n..."
+msgid ""
+"Write a biography that distills objective credibility and authority to your "
+"readers…"
+msgstr ""
+"जीवनचरित्र लिहा जाच्यातून तुमच्या वाचकांना उद्दिष्ट क्रेडेबिलिटी आणि ऑथोरिटी याचा पुरेपूर "
+"बोध होईल\n"
+"..."
 
 #: src/blocks/author/index.js:29
 msgid "Add an author biography to build credibility and authority."
@@ -150,7 +152,9 @@ msgstr "लेखक सेटिंग्ज"
 
 #: src/blocks/buttons/index.js:29
 msgid "Prompt visitors to take action with multiple buttons, side by side."
-msgstr "\nएकाधिक बटणांसह, अभ्यागतांना कृती करण्यास प्रवृत्त करा."
+msgstr ""
+"\n"
+"एकाधिक बटणांसह, अभ्यागतांना कृती करण्यास प्रवृत्त करा."
 
 #: src/blocks/buttons/inspector.js:30
 msgid "Buttons"
@@ -162,9 +166,12 @@ msgstr "मोबाइलवरील स्टॅकींग बटणे."
 
 #: src/blocks/buttons/inspector.js:48
 msgid "Toggle to stack buttons on mobile."
-msgstr "\nमोबाइलवर बटणे स्टॅक करण्यासाठी टॉगल करा."
+msgstr ""
+"\n"
+"मोबाइलवर बटणे स्टॅक करण्यासाठी टॉगल करा."
 
 #: src/blocks/click-to-tweet/controls.js:44
+#: src/blocks/click-to-tweet/controls.js:37
 msgid "Twitter Username"
 msgstr "Twitter वापरकर्तानाव"
 
@@ -177,6 +184,7 @@ msgid "Add button..."
 msgstr "बटण जोडा..."
 
 #. the text of the click to tweet element
+#. translators: the text of the click to tweet element
 #: src/blocks/click-to-tweet/edit.js:82
 msgid "Add a quote to tweet..."
 msgstr "ट्वीट करण्यासाठी कोट जोडा..."
@@ -186,8 +194,12 @@ msgid "Add a quote for readers to tweet via Twitter."
 msgstr "Twitter द्वारे ट्वीट करताना वाचकांसाठी कोट जोडा."
 
 #: src/blocks/click-to-tweet/index.js:34
-msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
-msgstr "तुमचा ब्लॉग, वेबसाइट आणि Twitter वरील व्यवसायाचा प्रचार करण्याचा आणि जाहिरात करण्याचा सोपा मार्ग."
+msgid ""
+"The easiest way to promote and advertise your blog, website, and business on "
+"Twitter."
+msgstr ""
+"तुमचा ब्लॉग, वेबसाइट आणि Twitter वरील व्यवसायाचा प्रचार करण्याचा आणि जाहिरात "
+"करण्याचा सोपा मार्ग."
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
@@ -195,8 +207,7 @@ msgid "Text Settings"
 msgstr "मजकूर सेटिंग"
 
 #: src/blocks/click-to-tweet/inspector.js:71
-#: src/blocks/form/submit-button.js:127
-#: src/blocks/share/inspector.js:86
+#: src/blocks/form/submit-button.js:127 src/blocks/share/inspector.js:86
 #: src/blocks/social-profiles/inspector.js:90
 msgid "Button Color"
 msgstr "बटण रंग"
@@ -207,8 +218,7 @@ msgstr "इतर ब्लॉक्समध्ये आकार बदलण
 
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:100
-#: src/blocks/hero/inspector.js:108
-#: src/blocks/map/inspector.js:132
+#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr "पिक्सेल्स मध्ये उंची"
 
@@ -220,8 +230,7 @@ msgstr "पिक्सेल्स मधील डायनॅमिक वि
 msgid "Color"
 msgstr "रंग"
 
-#: src/blocks/features/edit.js:78
-#: src/blocks/features/feature/edit.js:63
+#: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
 msgid "Add as background"
 msgstr "पार्श्वभूमी म्हणून जोडा"
@@ -235,12 +244,9 @@ msgid "Feature Settings"
 msgstr "वैशिष्ट्य सेटिंग"
 
 #: src/blocks/features/feature/inspector.js:71
-#: src/blocks/features/inspector.js:143
-#: src/blocks/hero/inspector.js:84
-#: src/blocks/icon/inspector.js:217
-#: src/blocks/media-card/inspector.js:62
-#: src/blocks/row/column/inspector.js:133
-#: src/blocks/row/inspector.js:180
+#: src/blocks/features/inspector.js:143 src/blocks/hero/inspector.js:84
+#: src/blocks/icon/inspector.js:217 src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:133 src/blocks/row/inspector.js:180
 #: src/components/background/panel.js:146
 msgid "Padding"
 msgstr "पॅ‍डिंग"
@@ -249,8 +255,7 @@ msgstr "पॅ‍डिंग"
 msgid "Add up to three columns of small notes for your product or service."
 msgstr "आपले उत्पादन किंवा सेवांसाठी लहान नोंदी असलेले तीन स्तंभ जोडा."
 
-#: src/blocks/features/inspector.js:122
-#: src/blocks/row/column/inspector.js:111
+#: src/blocks/features/inspector.js:122 src/blocks/row/column/inspector.js:111
 #: src/blocks/row/inspector.js:157
 #: src/components/dimensions-control/index.js:295
 msgid "Margin"
@@ -259,41 +264,35 @@ msgstr "समास"
 #: src/blocks/features/inspector.js:164
 #: src/blocks/gallery-carousel/inspector.js:84
 #: src/blocks/gallery-collage/inspector.js:108
-#: src/blocks/gallery-stacked/inspector.js:91
-#: src/blocks/row/inspector.js:202
+#: src/blocks/gallery-stacked/inspector.js:91 src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
+#: src/blocks/gallery-carousel/inspector.js:78
+#: src/blocks/gallery-collage/inspector.js:107
 msgid "Gutter"
 msgstr "समोरासमोरील पृष्ठांमधील कोरी जागा"
 
-#: src/blocks/features/inspector.js:167
-#: src/blocks/row/inspector.js:205
+#: src/blocks/features/inspector.js:167 src/blocks/row/inspector.js:205
 msgid "Space between each column."
 msgstr "प्रत्येक स्तंभामधील जागा."
 
-#: src/blocks/features/inspector.js:86
-#: src/blocks/icon/icon-size-select.js:16
-#: src/blocks/row/inspector.js:99
-#: src/blocks/share/inspector.js:72
+#: src/blocks/features/inspector.js:86 src/blocks/icon/icon-size-select.js:16
+#: src/blocks/row/inspector.js:99 src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:76
 #: src/components/dimensions-control/dimensions-select.js:15
 #: src/components/size-control/index.js:116
 msgid "Small"
 msgstr "लहान"
 
-#: src/blocks/features/inspector.js:87
-#: src/blocks/icon/icon-size-select.js:21
-#: src/blocks/row/inspector.js:100
-#: src/blocks/share/inspector.js:73
+#: src/blocks/features/inspector.js:87 src/blocks/icon/icon-size-select.js:21
+#: src/blocks/row/inspector.js:100 src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:77
 #: src/components/dimensions-control/dimensions-select.js:20
 #: src/components/size-control/index.js:120
 msgid "Medium"
 msgstr "मध्यम"
 
-#: src/blocks/features/inspector.js:88
-#: src/blocks/icon/icon-size-select.js:26
-#: src/blocks/row/inspector.js:101
-#: src/blocks/share/inspector.js:74
+#: src/blocks/features/inspector.js:88 src/blocks/icon/icon-size-select.js:26
+#: src/blocks/row/inspector.js:101 src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:25
 #: src/components/size-control/index.js:65
@@ -304,14 +303,13 @@ msgstr "मोठे"
 msgid "Features Settings"
 msgstr "वैशिष्ट्ये सेटिंग"
 
-#: src/blocks/features/inspector.js:96
-#: src/blocks/post-carousel/inspector.js:70
-#: src/blocks/posts/inspector.js:110
-#: src/blocks/services/inspector.js:69
+#: src/blocks/features/inspector.js:96 src/blocks/post-carousel/inspector.js:70
+#: src/blocks/posts/inspector.js:110 src/blocks/services/inspector.js:69
 msgid "Columns"
 msgstr "स्तंभ"
 
 #: src/blocks/food-and-drinks/appender.js:22
+#: src/blocks/food-and-drinks/appender.js:17
 msgid "Add Menu Section"
 msgstr "मेनू विभाग जोडा"
 
@@ -378,7 +376,9 @@ msgstr "वेगन"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:386
 msgid "Add description..."
-msgstr "\nवर्णन जोडा..."
+msgstr ""
+"\n"
+"वर्णन जोडा..."
 
 #: src/blocks/food-and-drinks/food-item/edit.js:395
 msgid "$0.00"
@@ -431,22 +431,19 @@ msgid "Image Settings"
 msgstr "प्रतिमा सेटिंग"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:84
-#: src/blocks/gif/inspector.js:31
-#: src/blocks/media-card/inspector.js:95
+#: src/blocks/gif/inspector.js:31 src/blocks/media-card/inspector.js:95
 #: src/blocks/services/service/inspector.js:33
 msgid "Alt Text (Alternative Text)"
 msgstr "Alt Text (Alternative Text)"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:90
-#: src/blocks/gif/inspector.js:37
-#: src/blocks/media-card/inspector.js:101
+#: src/blocks/gif/inspector.js:37 src/blocks/media-card/inspector.js:101
 #: src/blocks/services/service/inspector.js:39
 msgid "Describe the purpose of the image"
 msgstr "प्रतिमेचा उद्देश स्पष्ट करा"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:92
-#: src/blocks/gif/inspector.js:39
-#: src/blocks/media-card/inspector.js:103
+#: src/blocks/gif/inspector.js:39 src/blocks/media-card/inspector.js:103
 #: src/blocks/services/service/inspector.js:41
 msgid "Leave empty if the image is purely decorative."
 msgstr "प्रतिमा संपूर्णपणे सजावट केलेली असल्यास रिक्त सोडा."
@@ -461,10 +458,8 @@ msgstr "केंद्र बिंदू"
 msgid "Display a menu or price list."
 msgstr "आपला मेनु किंवा किंमत सूची प्रदर्शित करा."
 
-#: src/blocks/food-and-drinks/inspector.js:26
-#: src/blocks/map/inspector.js:107
-#: src/blocks/posts/inspector.js:187
-#: src/blocks/row/inspector.js:119
+#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
+#: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
 msgid "Styles"
 msgstr "शैली"
@@ -498,16 +493,19 @@ msgid "Toggle to show the price of each item."
 msgstr "या आयटमसाठी किंमत दाखवण्याकरिता टॉगल करा."
 
 #. %s: Placeholder for email address provided by user.
+#. translators: %s: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:171
 msgid "%s is not a valid email address."
 msgstr "‌‌%s वैध ईमेल पत्ता नाही."
 
 #. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:181
 msgid "%s and %s are not a valid email address."
 msgstr "%s आणि %s वैध ईमेल पत्ते नाहीत."
 
 #. %s1: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:189
 msgid "%s are not a valid email address."
 msgstr "‌‌%s वैध ईमेल पत्ते नाहीत."
@@ -534,11 +532,15 @@ msgstr "Google reCAPTCHA"
 
 #: src/blocks/form/edit.js:296
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
-msgstr "\nआपला फॉर्म स्पॅमपासून संरक्षित करण्यासाठी आपली reCAPTCHA साइट आणि गोपनीय की जोडा."
+msgstr ""
+"\n"
+"आपला फॉर्म स्पॅमपासून संरक्षित करण्यासाठी आपली reCAPTCHA साइट आणि गोपनीय की जोडा."
 
 #: src/blocks/form/edit.js:302
 msgid "Generate keys"
-msgstr "\nकी व्युत्पन्न करा"
+msgstr ""
+"\n"
+"की व्युत्पन्न करा"
 
 #: src/blocks/form/edit.js:303
 msgid "My keys"
@@ -556,19 +558,16 @@ msgstr "साइट की"
 msgid "Secret Key"
 msgstr "गुप्त की"
 
-#: src/blocks/form/edit.js:330
-#: src/blocks/gallery-collage/edit.js:174
+#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr "जतन करत आहे"
 
-#: src/blocks/form/edit.js:330
-#: src/blocks/map/inspector.js:231
+#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr "जतन करा"
 
-#: src/blocks/form/edit.js:345
-#: src/blocks/map/inspector.js:240
+#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr "काढा"
 
@@ -590,6 +589,7 @@ msgstr "वैध ईमेल पत्ता संकलित करण्�
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
+#: src/blocks/form/fields/name/edit.js:49
 msgid "Add label…"
 msgstr "लेबल जोडा..."
 
@@ -598,6 +598,7 @@ msgid "Required"
 msgstr "आवश्यक"
 
 #: src/blocks/form/fields/multi-field.js:102
+#: src/blocks/form/fields/multi-field.js:99
 msgid "Add Option"
 msgstr "पर्याय जोडा"
 
@@ -660,14 +661,15 @@ msgid "Carousel"
 msgstr "करोसेल"
 
 #. %1$d is the order number of the image, %2$d is the total number of images.
+#. translators: %1$d is the order number of the image, %2$d is the total number of images
+#. translators: %1$d is the order number of the image, %2$d is the total number of images.
 #: src/blocks/gallery-carousel/edit.js:310
 #: src/blocks/gallery-masonry/edit.js:219
 #: src/blocks/gallery-stacked/edit.js:191
 msgid "image %1$d of %2$d in gallery"
 msgstr "गॅलरीमध्ये %2$d पैकी%1$d प्रतिमा"
 
-#: src/blocks/gallery-carousel/edit.js:376
-#: src/blocks/gif/edit.js:243
+#: src/blocks/gallery-carousel/edit.js:376 src/blocks/gif/edit.js:243
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:230
 msgid "Write caption…"
@@ -705,23 +707,21 @@ msgstr "टक्केवारीवर आधारीत उंचीसा�
 msgid "Carousel Settings"
 msgstr "केरोसेल सेटिंग्ज"
 
-#: src/blocks/gallery-carousel/inspector.js:71
-#: src/blocks/icon/inspector.js:173
+#: src/blocks/gallery-carousel/inspector.js:71 src/blocks/icon/inspector.js:173
 #: src/components/typography-controls/index.js:189
+#: src/blocks/icon/inspector.js:106
 msgid "Size"
 msgstr "आकारमान"
 
 #: src/blocks/gallery-carousel/inspector.js:90
 #: src/blocks/gallery-masonry/inspector.js:83
-#: src/blocks/gallery-stacked/inspector.js:95
-#: src/blocks/share/inspector.js:120
+#: src/blocks/gallery-stacked/inspector.js:95 src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:124
 #: src/components/background/panel.js:156
 msgid "Rounded Corners"
 msgstr "गोल कोपरे"
 
-#: src/blocks/gallery-collage/edit.js:174
-#: src/blocks/map/edit.js:306
+#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr "लागू करा"
@@ -739,6 +739,7 @@ msgid "Collage Settings"
 msgstr "कोलाज सेटिंग्ज"
 
 #: src/blocks/gallery-collage/inspector.js:128
+#: src/blocks/gallery-collage/inspector.js:127
 msgid "Shadow"
 msgstr "सावली"
 
@@ -817,7 +818,8 @@ msgid "Fullwidth images are enabled."
 msgstr "पूर्ण रूंदी प्रतिमा सक्षम आहेत."
 
 #: src/blocks/gallery-stacked/inspector.js:48
-msgid "Toggle to fill the available gallery area with completely fullwidth images."
+msgid ""
+"Toggle to fill the available gallery area with completely fullwidth images."
 msgstr "उपलब्ध असलेले गॅलरी क्षेत्र पूर्णपणे पूर्ण रूंदी प्रतिमांसह भरण्यासाठी टॉगल करा."
 
 #: src/blocks/gallery-stacked/inspector.js:80
@@ -868,7 +870,7 @@ msgstr "Gist संपादित करा"
 msgid "View Gist"
 msgstr "Gist पहा"
 
-#: src/blocks/gist/controls.js:68
+#: src/blocks/gist/controls.js:68 src/blocks/gist/controls.js:61
 msgid "GitHub File"
 msgstr "GitHub फाइल"
 
@@ -876,13 +878,11 @@ msgstr "GitHub फाइल"
 msgid "File"
 msgstr "फाइल"
 
-#: src/blocks/gist/deprecated.js:36
-#: src/blocks/gist/save.js:29
+#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr "हे gist GitHub वर पहा"
 
-#: src/blocks/gist/edit.js:124
-#: src/blocks/gist/inspector.js:51
+#: src/blocks/gist/edit.js:124 src/blocks/gist/inspector.js:51
 msgid "Gist URL"
 msgstr "Gist URL"
 
@@ -927,7 +927,9 @@ msgid "Add background to hero"
 msgstr "हीरोवर पार्श्वभूमी जोडा"
 
 #: src/blocks/hero/index.js:41
-msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
+msgid ""
+"An introductory area of a page accompanied by a small amount of text and a "
+"call to action."
 msgstr "पृष्ठाचे प्रास्तविक क्षेत्र हे लहान मजकूर आणि कॉल टू अॅक्शन सह आहे."
 
 #: src/blocks/hero/inspector.js:127
@@ -938,10 +940,8 @@ msgstr "सामग्रीची रूंदी पिक्सेल्स�
 msgid "Hero Settings"
 msgstr "हिरो सेटिंग"
 
-#: src/blocks/hero/inspector.js:85
-#: src/blocks/media-card/inspector.js:63
-#: src/blocks/row/column/inspector.js:134
-#: src/blocks/row/inspector.js:181
+#: src/blocks/hero/inspector.js:85 src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:134 src/blocks/row/inspector.js:181
 msgid "Space inside of the container."
 msgstr "कंटेनरच्या आतील जागा"
 
@@ -983,18 +983,23 @@ msgstr "तळाकडून उजवीकडे"
 
 #: src/blocks/highlight/edit.js:113
 msgid "Add highlighted text..."
-msgstr "\nहायलाइट केलेला मजकूर जोडा..."
+msgstr ""
+"\n"
+"हायलाइट केलेला मजकूर जोडा..."
 
 #: src/blocks/highlight/index.js:28
 msgid "Draw attention and emphasize important narrative."
 msgstr "लक्ष वेधून घ्या आणि महत्त्वाच्या कथेवर जोर द्या."
 
 #: src/blocks/highlight/index.js:33
-msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
-msgstr "लक्ष वेधण्यासाठी आणि महत्त्वाच्या कथांवर जोर देण्यासाठी परिच्छेदाच्या मजकूरावर हायलाइट प्रभाव जोडा."
+msgid ""
+"Add a highlight effect to paragraph text in order to grab attention and "
+"emphasize important narrative."
+msgstr ""
+"लक्ष वेधण्यासाठी आणि महत्त्वाच्या कथांवर जोर देण्यासाठी परिच्छेदाच्या मजकूरावर हायलाइट "
+"प्रभाव जोडा."
 
-#: src/blocks/icon/icon-size-select.js:30
-#: src/blocks/row/inspector.js:102
+#: src/blocks/icon/icon-size-select.js:30 src/blocks/row/inspector.js:102
 #: src/components/dimensions-control/dimensions-select.js:30
 msgid "Huge"
 msgstr "खूप मोठे"
@@ -1005,10 +1010,11 @@ msgstr "चिन्ह आकार प्रीसेट निवडा"
 
 #: src/blocks/icon/index.js:33
 msgid "Add a stylized graphic symbol to communicate something more."
-msgstr "\nकाहीतरी अधिक संप्रेषण करण्यासाठी एक शैलीकृत ग्राफिक चिन्ह जोडा."
+msgstr ""
+"\n"
+"काहीतरी अधिक संप्रेषण करण्यासाठी एक शैलीकृत ग्राफिक चिन्ह जोडा."
 
-#: src/blocks/icon/inspector.js:155
-#: src/blocks/share/inspector.js:111
+#: src/blocks/icon/inspector.js:155 src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:115
 msgid "Icon Settings"
 msgstr "आयकॉन सेटिंग"
@@ -1033,7 +1039,9 @@ msgstr "सानुकूल"
 
 #: src/blocks/icon/inspector.js:209
 msgid "Radius"
-msgstr "\nत्रिज्या"
+msgstr ""
+"\n"
+"त्रिज्या"
 
 #: src/blocks/icon/inspector.js:229
 msgid "Icon Search"
@@ -1065,9 +1073,9 @@ msgstr "नवीन टॅबमध्ये उघडत आहे"
 msgid "Open in New Tab"
 msgstr "नवीन टॅबमध्ये उघडा"
 
-#: src/blocks/icon/inspector.js:309
-#: src/blocks/share/inspector.js:104
-#: src/blocks/social-profiles/inspector.js:108
+#: src/blocks/icon/inspector.js:309 src/blocks/share/inspector.js:104
+#: src/blocks/social-profiles/inspector.js:108 src/blocks/share/inspector.js:68
+#: src/blocks/social-profiles/inspector.js:95
 msgid "Icon Color"
 msgstr "आयकॉन रंग"
 
@@ -1082,7 +1090,9 @@ msgstr "लोगो आणि बिल्ले"
 #: src/blocks/logos/edit.js:70
 #: src/components/block-gallery/gallery-placeholder.js:72
 msgid "Drag images, upload new ones or select files from your library."
-msgstr "\nप्रतिमा ड्रॅग करा, नवीन अपलोड करा किंवा आपल्या ग्रंथालयातून फायली निवडा."
+msgstr ""
+"\n"
+"प्रतिमा ड्रॅग करा, नवीन अपलोड करा किंवा आपल्या ग्रंथालयातून फायली निवडा."
 
 #: src/blocks/logos/index.js:27
 msgid "Add logos, badges, or certifications to build credibility."
@@ -1108,9 +1118,8 @@ msgstr "स्थान संपादित करा"
 msgid "Map style"
 msgstr "नकाशा शैली"
 
-#: src/blocks/map/deprecated.js:96
-#: src/blocks/map/edit.js:293
-#: src/blocks/map/save.js:50
+#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50 src/blocks/map/edit.js:241
 msgid "Google Map"
 msgstr "Google Map"
 
@@ -1120,19 +1129,23 @@ msgstr "अवैध API की किंवा बर्‍याच विन�
 
 #: src/blocks/map/edit.js:294
 msgid "Enter a location or address to drop a pin on a Google map."
-msgstr "\nGoogle map वर पिन टाकण्यासाठी एक स्थान किंवा पत्ता प्रविष्ट करा."
+msgstr ""
+"\n"
+"Google map वर पिन टाकण्यासाठी एक स्थान किंवा पत्ता प्रविष्ट करा."
 
 #: src/blocks/map/edit.js:301
 msgid "Search for a place or address…"
 msgstr "स्थान किंवा पत्त्यासाठी शोधा..."
 
-#: src/blocks/map/edit.js:320
+#: src/blocks/map/edit.js:320 src/blocks/map/edit.js:312
 msgid "Cancel"
 msgstr "रद्द करा"
 
 #: src/blocks/map/index.js:28
 msgid "Add an address or location to drop a pin on a Google map."
-msgstr "\nGoogle map वर पिन टाकण्यासाठी एक स्थान किंवा पत्ता प्रविष्ट करा."
+msgstr ""
+"\n"
+"Google map वर पिन टाकण्यासाठी एक स्थान किंवा पत्ता प्रविष्ट करा."
 
 #: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
@@ -1156,13 +1169,15 @@ msgstr "मार्कर आकार"
 
 #: src/blocks/map/inspector.js:170
 msgid "Fine control options are enabled."
-msgstr "छान \nनियंत्रण पर्याय सक्षम केले आहेत."
+msgstr ""
+"छान \n"
+"नियंत्रण पर्याय सक्षम केले आहेत."
 
 #: src/blocks/map/inspector.js:170
 msgid "Toggle to enable map control options."
 msgstr "नकाशा नियंत्रण पर्यायांना सक्षम करण्याकरिता टॉगल करा."
 
-#: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:178 src/blocks/map/inspector.js:167
 msgid "Map Controls"
 msgstr "नकाशा नियंत्रणे"
 
@@ -1172,11 +1187,15 @@ msgstr "नकाशा प्रकार"
 
 #: src/blocks/map/inspector.js:185
 msgid "Switching between standard and satellite map views is enabled."
-msgstr "\nमानक आणि उपग्रह नकाशे दृश्यांमधील स्विचिंग सक्षम केले आहे."
+msgstr ""
+"\n"
+"मानक आणि उपग्रह नकाशे दृश्यांमधील स्विचिंग सक्षम केले आहे."
 
 #: src/blocks/map/inspector.js:185
 msgid "Toggle to enable switching between standard and satellite maps."
-msgstr "\nमानक आणि उपग्रह नकाशांमधील स्विचिंग सक्षम करण्यासाठी टॉगल करा."
+msgstr ""
+"\n"
+"मानक आणि उपग्रह नकाशांमधील स्विचिंग सक्षम करण्यासाठी टॉगल करा."
 
 #: src/blocks/map/inspector.js:188
 msgid "Zoom Controls"
@@ -1219,8 +1238,12 @@ msgid "Google Maps API Key"
 msgstr "Google Maps API की"
 
 #: src/blocks/map/inspector.js:212
-msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
-msgstr "Google Maps API की जोडा. \nही API की अद्यतनित केल्याने नवीन की वापरण्यासाठी तुमचे सर्व नकाशे सेट होतील."
+msgid ""
+"Add a Google Maps API key. Updating this API key will set all your maps to "
+"use the new key."
+msgstr ""
+"Google Maps API की जोडा. \n"
+"ही API की अद्यतनित केल्याने नवीन की वापरण्यासाठी तुमचे सर्व नकाशे सेट होतील."
 
 #: src/blocks/map/inspector.js:215
 msgid "Get a key"
@@ -1263,16 +1286,19 @@ msgid "Toggle to add a card shadow."
 msgstr "कार्डची सावली जोडण्याकरिता टॉगल करा."
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:118
 msgid " %s Shadow"
 msgstr " %s सावली"
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:124
 msgid "Showing %s shadow."
 msgstr "%s सावली दाखवत आहे."
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:126
 msgid "Toggle to add an %s shadow"
 msgstr "%s सावली जोडण्याकरिता टॉगल करा."
@@ -1297,8 +1323,7 @@ msgstr "मीडिया पुनर्स्थित करण्यास�
 msgid "Edit media"
 msgstr "मीडिया संपादित करा"
 
-#: src/blocks/post-carousel/edit.js:123
-#: src/blocks/posts/edit.js:247
+#: src/blocks/post-carousel/edit.js:123 src/blocks/posts/edit.js:247
 msgid "Edit RSS URL"
 msgstr "RSS URL संपादित करा"
 
@@ -1306,46 +1331,38 @@ msgstr "RSS URL संपादित करा"
 msgid "Post Carousel"
 msgstr "पोस्ट करोसेल"
 
-#: src/blocks/post-carousel/edit.js:184
-#: src/blocks/posts/edit.js:295
+#: src/blocks/post-carousel/edit.js:184 src/blocks/posts/edit.js:295
 msgid "No posts found. Start publishing or add posts from an %s feed."
-msgstr "कोणत्याही पोस्ट आढळल्या नाहीत. %s फीड वरून प्रकाशित करणे सुरू करा किंवा पोस्ट जोडा."
+msgstr ""
+"कोणत्याही पोस्ट आढळल्या नाहीत. %s फीड वरून प्रकाशित करणे सुरू करा किंवा पोस्ट जोडा."
 
-#: src/blocks/post-carousel/edit.js:187
-#: src/blocks/posts/edit.js:298
+#: src/blocks/post-carousel/edit.js:187 src/blocks/posts/edit.js:298
 msgid "Retrieve an External Feed"
 msgstr "बाह्य फीड पुनर्प्राप्त करा"
 
-#: src/blocks/post-carousel/edit.js:193
-#: src/blocks/posts/edit.js:304
+#: src/blocks/post-carousel/edit.js:193 src/blocks/posts/edit.js:304
 msgid "Use External Feed"
 msgstr "बाह्य फीड वापरा"
 
 #. %s: RSS
-#: src/blocks/post-carousel/edit.js:216
-#: src/blocks/posts/edit.js:332
+#: src/blocks/post-carousel/edit.js:216 src/blocks/posts/edit.js:332
 msgid "%s Feed"
 msgstr "%s फीड"
 
-#: src/blocks/post-carousel/edit.js:217
-#: src/blocks/posts/edit.js:333
+#: src/blocks/post-carousel/edit.js:217 src/blocks/posts/edit.js:333
 msgid "%s URLs are generally located at the /feed/ directory of a site."
 msgstr "%s URLs सामान्यतः फीड/साइटची निर्देशिकेवर स्थित असतात."
 
-#: src/blocks/post-carousel/edit.js:221
-#: src/blocks/posts/edit.js:337
+#: src/blocks/post-carousel/edit.js:221 src/blocks/posts/edit.js:337
 msgid "https://example.com/feed…"
 msgstr "https://example.com/feed…"
 
-#: src/blocks/post-carousel/edit.js:227
-#: src/blocks/posts/edit.js:343
+#: src/blocks/post-carousel/edit.js:227 src/blocks/posts/edit.js:343
 msgid "Use URL"
 msgstr "URL वापरा"
 
-#: src/blocks/post-carousel/edit.js:320
-#: src/blocks/posts/edit.js:463
-#: src/blocks/post-carousel/index.php:368
-#: src/blocks/posts/index.php:385
+#: src/blocks/post-carousel/edit.js:320 src/blocks/posts/edit.js:463
+#: src/blocks/post-carousel/index.php:368 src/blocks/posts/index.php:385
 msgid "Read more"
 msgstr "अधिक वाचा"
 
@@ -1353,8 +1370,7 @@ msgstr "अधिक वाचा"
 msgid "Display posts or an external blog feed as a carousel."
 msgstr "पोस्ट प्रकाशित करा किंवा बाह्य ब्लॉग फीड केरोसेल म्हणून वापरा."
 
-#: src/blocks/post-carousel/inspector.js:108
-#: src/blocks/posts/inspector.js:174
+#: src/blocks/post-carousel/inspector.js:108 src/blocks/posts/inspector.js:174
 msgid "Number of posts"
 msgstr "पोस्टची संख्या"
 
@@ -1362,53 +1378,43 @@ msgstr "पोस्टची संख्या"
 msgid "Post Carousel Settings"
 msgstr "पोस्ट केरोसेल सेटिंग्ज"
 
-#: src/blocks/post-carousel/inspector.js:41
-#: src/blocks/posts/inspector.js:81
+#: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
 msgid "Post Date"
 msgstr "तारीख पोस्ट करा"
 
-#: src/blocks/post-carousel/inspector.js:45
-#: src/blocks/posts/inspector.js:85
+#: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
 msgid "Showing the publish date."
 msgstr "प्रकाशित ताऱीख दर्शवत आहे."
 
-#: src/blocks/post-carousel/inspector.js:46
-#: src/blocks/posts/inspector.js:86
+#: src/blocks/post-carousel/inspector.js:46 src/blocks/posts/inspector.js:86
 msgid "Toggle to show the publish date."
 msgstr "प्रकाशित तारीख दर्शवण्यासाठी टॉगल करा."
 
-#: src/blocks/post-carousel/inspector.js:51
-#: src/blocks/posts/inspector.js:91
+#: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
 msgid "Post Content"
 msgstr "पोस्ट सामग्री"
 
-#: src/blocks/post-carousel/inspector.js:55
-#: src/blocks/posts/inspector.js:95
+#: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
 msgid "Showing the post content."
 msgstr "पोस्ट सामग्री दर्शवत आहे."
 
-#: src/blocks/post-carousel/inspector.js:56
-#: src/blocks/posts/inspector.js:96
+#: src/blocks/post-carousel/inspector.js:56 src/blocks/posts/inspector.js:96
 msgid "Toggle to show the post content."
 msgstr "पोस्ट सामग्री दर्शवण्यासाठी टॉगल करा."
 
-#: src/blocks/post-carousel/inspector.js:62
-#: src/blocks/posts/inspector.js:102
+#: src/blocks/post-carousel/inspector.js:62 src/blocks/posts/inspector.js:102
 msgid "Max words in content"
 msgstr "सामग्रीतील कमाल शब्द"
 
-#: src/blocks/post-carousel/inspector.js:86
-#: src/blocks/posts/inspector.js:152
+#: src/blocks/post-carousel/inspector.js:86 src/blocks/posts/inspector.js:152
 msgid "Feed Settings"
 msgstr "फीड सेटिंग्ज"
 
-#: src/blocks/post-carousel/inspector.js:90
-#: src/blocks/posts/inspector.js:156
+#: src/blocks/post-carousel/inspector.js:90 src/blocks/posts/inspector.js:156
 msgid "My Blog"
 msgstr "माझा ब्लॉग"
 
-#: src/blocks/post-carousel/inspector.js:91
-#: src/blocks/posts/inspector.js:157
+#: src/blocks/post-carousel/inspector.js:91 src/blocks/posts/inspector.js:157
 msgid "External Feed"
 msgstr "बाह्य फीड"
 
@@ -1428,7 +1434,7 @@ msgstr "ब्लॉग पोस्ट"
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
 msgstr "रचलेली किंवा क्षैतिज कार्ड म्हणून पोस्ट किंवा RSS फीड प्रदर्शित करा."
 
-#: src/blocks/posts/inspector.js:129
+#: src/blocks/posts/inspector.js:129 src/blocks/posts/inspector.js:121
 msgid "Thumbnail Size"
 msgstr "लघुप्रतिमा आकारमान"
 
@@ -1456,6 +1462,7 @@ msgstr "चार किंमत सारणी"
 msgid "Change pricing table count"
 msgstr "किंमत सारणी गणना बदला"
 
+#. translators: %d: a digit 1-3
 #: src/blocks/pricing-table/edit.js:39
 msgid "Plan %d"
 msgstr "योजना %d"
@@ -1496,10 +1503,11 @@ msgstr "लगतची उपपंक्ती."
 msgid "Column Settings"
 msgstr "स्तंभ सेटिंग"
 
-#: src/blocks/row/column/inspector.js:112
-#: src/blocks/row/inspector.js:158
+#: src/blocks/row/column/inspector.js:112 src/blocks/row/inspector.js:158
 msgid "Space around the container."
-msgstr "\nकंटेनर भोवतीची जागा."
+msgstr ""
+"\n"
+"कंटेनर भोवतीची जागा."
 
 #: src/blocks/row/column/inspector.js:155
 msgid "Width"
@@ -1554,6 +1562,7 @@ msgid "Row"
 msgstr "पंक्ती"
 
 #. %s: 'one' 'two' 'three' and 'four'
+#. translators: %s: 'one' 'two' 'three' and 'four'
 #: src/blocks/row/edit.js:205
 msgid "Now select a layout for this %s column row."
 msgstr "%s या स्तंभ पंक्तीसाठी आता लेआउट निवडा."
@@ -1566,8 +1575,7 @@ msgstr "या पंक्तीसाठी स्तंभांची सं
 msgid "Select Row Columns"
 msgstr "पंक्ती स्तंभ निवडा"
 
-#: src/blocks/row/edit.js:236
-#: src/blocks/row/inspector.js:121
+#: src/blocks/row/edit.js:236 src/blocks/row/inspector.js:121
 msgid "Select Row Layout"
 msgstr "पंक्ती लेआउट निवडा"
 
@@ -1576,8 +1584,12 @@ msgid "Back to Columns"
 msgstr "मागे स्तंभावर जा"
 
 #: src/blocks/row/index.js:38
-msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
-msgstr "\nस्तंभ ब्लॉक्ससाठी संरचित रॅपर जोडा, त्यानंतर स्तंभांमध्येआपल्याला आवडणारे सामग्री ब्लॉक जोडा."
+msgid ""
+"Add a structured wrapper for column blocks, then add content blocks you’d "
+"like to the columns."
+msgstr ""
+"\n"
+"स्तंभ ब्लॉक्ससाठी संरचित रॅपर जोडा, त्यानंतर स्तंभांमध्येआपल्याला आवडणारे सामग्री ब्लॉक जोडा."
 
 #: src/blocks/row/inspector.js:153
 msgid "Row Settings"
@@ -1699,11 +1711,15 @@ msgstr "क्षैतिजरित्या फ्लिप करा"
 
 #: src/blocks/shape-divider/controls.js:33
 msgid "Flip vertically"
-msgstr "\nअनुलंबरित्या फ्लिप करा"
+msgstr ""
+"\n"
+"अनुलंबरित्या फ्लिप करा"
 
 #: src/blocks/shape-divider/index.js:29
 msgid "Add a shape divider to visually distinquish page sections."
-msgstr "\nपृष्ठ विभाग दृश्यमानपणे वेगळे करण्यासाठी आकार विभाजक जोडा."
+msgstr ""
+"\n"
+"पृष्ठ विभाग दृश्यमानपणे वेगळे करण्यासाठी आकार विभाजक जोडा."
 
 #: src/blocks/shape-divider/inspector.js:53
 msgid "Divider Settings"
@@ -1715,24 +1731,23 @@ msgstr "पिक्सेल्स मध्ये आकाराची उं
 
 #: src/blocks/shape-divider/inspector.js:73
 msgid "Background Height in pixels"
-msgstr "पिक्सेल्स मध्ये \nपार्श्वभूमी उंची"
+msgstr ""
+"पिक्सेल्स मध्ये \n"
+"पार्श्वभूमी उंची"
 
 #: src/blocks/shape-divider/inspector.js:98
 msgid "Shape Color"
 msgstr "आकार रंग"
 
-#: src/blocks/share/edit.js:113
-#: src/blocks/share/index.php:132
+#: src/blocks/share/edit.js:113 src/blocks/share/index.php:132
 msgid "Share on Facebook"
 msgstr "Facebook वर सामायिक करा"
 
-#: src/blocks/share/edit.js:121
-#: src/blocks/share/index.php:136
+#: src/blocks/share/edit.js:121 src/blocks/share/index.php:136
 msgid "Share on Twitter"
 msgstr "Twitter वर सामायिक करा"
 
-#: src/blocks/share/edit.js:129
-#: src/blocks/share/index.php:140
+#: src/blocks/share/edit.js:129 src/blocks/share/index.php:140
 msgid "Share on Pinterest"
 msgstr "Pinterest वर सामायिक करा"
 
@@ -1740,29 +1755,27 @@ msgstr "Pinterest वर सामायिक करा"
 msgid "Share on LinkedIn"
 msgstr "Linkedin वर सामायिक करा"
 
-#: src/blocks/share/edit.js:145
-#: src/blocks/share/index.php:148
+#: src/blocks/share/edit.js:145 src/blocks/share/index.php:148
 msgid "Share via Email"
 msgstr "ईमेलद्वारे सामायिक करा"
 
-#: src/blocks/share/edit.js:153
-#: src/blocks/share/index.php:152
+#: src/blocks/share/edit.js:153 src/blocks/share/index.php:152
 msgid "Share on Tumblr"
 msgstr "Tumblr वर सामायिक करा"
 
-#: src/blocks/share/edit.js:161
-#: src/blocks/share/index.php:156
+#: src/blocks/share/edit.js:161 src/blocks/share/index.php:156
 msgid "Share on Google"
 msgstr "Google वर सामायिक करा"
 
-#: src/blocks/share/edit.js:169
-#: src/blocks/share/index.php:160
+#: src/blocks/share/edit.js:169 src/blocks/share/index.php:160
 msgid "Share on Reddit"
 msgstr "Reddit वर सामायिक करा"
 
 #: src/blocks/share/index.js:25
 msgid "Add social sharing links to help you get likes and shares."
-msgstr "आपल्याला पसंती आणि सामायिकीकरणे मिळविण्यात मदत करण्यासाठी सामाजिक सामायिकीकरण लिंक जोडा."
+msgstr ""
+"आपल्याला पसंती आणि सामायिकीकरणे मिळविण्यात मदत करण्यासाठी सामाजिक सामायिकीकरण लिंक "
+"जोडा."
 
 #: src/blocks/share/inspector.js:113
 #: src/blocks/social-profiles/inspector.js:117
@@ -1788,31 +1801,26 @@ msgstr "बटण आकार"
 msgid "Icons"
 msgstr "आयकॉन्स"
 
-#: src/blocks/share/inspector.js:157
-#: src/blocks/social-profiles/edit.js:205
+#: src/blocks/share/inspector.js:157 src/blocks/social-profiles/edit.js:205
 #: src/blocks/social-profiles/index.php:71
 msgid "Twitter"
 msgstr "Twitter"
 
-#: src/blocks/share/inspector.js:162
-#: src/blocks/social-profiles/edit.js:159
+#: src/blocks/share/inspector.js:162 src/blocks/social-profiles/edit.js:159
 #: src/blocks/social-profiles/index.php:67
 msgid "Facebook"
 msgstr "Facebook"
 
-#: src/blocks/share/inspector.js:167
-#: src/blocks/social-profiles/edit.js:299
+#: src/blocks/share/inspector.js:167 src/blocks/social-profiles/edit.js:299
 #: src/blocks/social-profiles/index.php:79
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: src/blocks/share/inspector.js:172
-#: src/blocks/social-profiles/edit.js:347
+#: src/blocks/share/inspector.js:172 src/blocks/social-profiles/edit.js:347
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: src/blocks/share/inspector.js:177
-#: includes/class-coblocks-form.php:234
+#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
 #: includes/class-coblocks-form.php:319
 msgid "Email"
 msgstr "ईमेल"
@@ -1829,15 +1837,15 @@ msgstr "Google"
 msgid "Reddit"
 msgstr "Reddit"
 
-#: src/blocks/share/inspector.js:25
-#: src/blocks/social-profiles/inspector.js:36
+#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:36
 msgid "Share button colors are enabled."
 msgstr "सामायिक करा बटण रंग सक्षम केले आहेत."
 
-#: src/blocks/share/inspector.js:25
-#: src/blocks/social-profiles/inspector.js:37
+#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:37
 msgid "Toggle to use official colors from each social media platform."
-msgstr "\nप्रत्येक सामाजिक मीडिया प्लॅटफॉर्मवरुन अधिकृत रंग वापरण्यासाठी टॉगल करा."
+msgstr ""
+"\n"
+"प्रत्येक सामाजिक मीडिया प्लॅटफॉर्मवरुन अधिकृत रंग वापरण्यासाठी टॉगल करा."
 
 #: src/blocks/social-profiles/edit.js:142
 msgid "Add Facebook Profile"
@@ -1940,6 +1948,8 @@ msgid "Remove Background"
 msgstr "पार्श्वभूमी काढून टाका"
 
 #: src/components/background/controls.js:96
+#: src/components/background/controls.js:81
+#: src/components/background/controls.js:82
 msgid "Background"
 msgstr "पार्श्वभूमी"
 
@@ -1949,7 +1959,9 @@ msgstr "पार्श्वभूमी सेटिंग"
 
 #: src/components/background/panel.js:119
 msgid "Fixed Background"
-msgstr "\nनिश्चित पार्श्वभूमी"
+msgstr ""
+"\n"
+"निश्चित पार्श्वभूमी"
 
 #: src/components/background/panel.js:135
 msgid "Background Opacity"
@@ -1969,23 +1981,33 @@ msgstr "प्रदर्शित करा"
 
 #: src/components/background/panel.js:193
 msgid "Mute Video"
-msgstr "नि:शब्द \nव्हिडिओ"
+msgstr ""
+"नि:शब्द \n"
+"व्हिडिओ"
 
 #: src/components/background/panel.js:194
 msgid "Muting the background video."
-msgstr "पार्श्वभूमीचा \nव्हिडिओ नि:शब्द करा."
+msgstr ""
+"पार्श्वभूमीचा \n"
+"व्हिडिओ नि:शब्द करा."
 
 #: src/components/background/panel.js:194
 msgid "Toggle to mute the video."
-msgstr "\nव्हिडिओ नि:शब्द करण्यासाठी टॉगल करा."
+msgstr ""
+"\n"
+"व्हिडिओ नि:शब्द करण्यासाठी टॉगल करा."
 
 #: src/components/background/panel.js:201
 msgid "Loop Video"
-msgstr "लूप \nव्हिडिओ"
+msgstr ""
+"लूप \n"
+"व्हिडिओ"
 
 #: src/components/background/panel.js:202
 msgid "Looping the background video."
-msgstr "पार्श्वभूमीचा \nव्हिडिओ लूप करत आहे"
+msgstr ""
+"पार्श्वभूमीचा \n"
+"व्हिडिओ लूप करत आहे"
 
 #: src/components/background/panel.js:202
 msgid "Toggle to loop the video."
@@ -2001,24 +2023,31 @@ msgstr "काढून टाका "
 
 #: src/components/block-gallery/gallery-image.js:189
 msgid "Move Image Backward"
-msgstr "\nप्रतिमा मागे हलवा"
+msgstr ""
+"\n"
+"प्रतिमा मागे हलवा"
 
 #: src/components/block-gallery/gallery-image.js:197
 msgid "Move Image Forward"
-msgstr "\nप्रतिमा पुढे हलवा"
+msgstr ""
+"\n"
+"प्रतिमा पुढे हलवा"
 
 #: src/components/block-gallery/gallery-link-settings.js:67
 msgid "Link To"
 msgstr "ला लिंक केले"
 
 #. %s: Type of gallery
+#. translators: %s: Type of gallery
 #: src/components/block-gallery/gallery-placeholder.js:71
 msgid "%s Gallery"
 msgstr "%s गॅलरी"
 
 #: src/components/block-gallery/gallery-uploader.js:53
 msgid "Upload an image"
-msgstr "\nप्रतिमा अपलोड करा"
+msgstr ""
+"\n"
+"प्रतिमा अपलोड करा"
 
 #: src/components/block-gallery/options/link-options.js:11
 msgid "Media File"
@@ -2033,6 +2062,7 @@ msgid "Custom URL"
 msgstr "सानुकूल URL"
 
 #: src/components/crop-settings/index.js:275
+#: src/components/crop-settings/index.js:272
 msgid "Crop settings image placeholder"
 msgstr "क्रॉप करा सेटिंग्ज प्रतिमा प्लेसहोल्डर"
 
@@ -2061,44 +2091,65 @@ msgid "Select Units"
 msgstr "एकक निवडा"
 
 #. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
+#. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
 #: src/components/dimensions-control/index.js:453
+#: src/components/dimensions-control/index.js:445
 msgid "%s Units"
 msgstr "%s एकके"
 
 #. %s: a texual label
+#. translators: %s: a texual label
 #: src/components/dimensions-control/index.js:468
 msgid "Turn off advanced %s settings"
 msgstr "%s प्रगत सेटिंग्ज बंद करा"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:640
+#: src/components/dimensions-control/index.js:512
+#: src/components/dimensions-control/index.js:576
 msgid "%s Top"
 msgstr "%s वर"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:651
+#: src/components/dimensions-control/index.js:523
+#: src/components/dimensions-control/index.js:587
 msgid "%s Right"
 msgstr "%s उजवा"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:662
+#: src/components/dimensions-control/index.js:534
+#: src/components/dimensions-control/index.js:598
 msgid "%s Bottom"
 msgstr "%s तळ"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:673
+#: src/components/dimensions-control/index.js:545
+#: src/components/dimensions-control/index.js:609
 msgid "%s Left"
 msgstr "%s डावा"
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Unsync"
 msgstr "संकालन नाही"
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Sync"
 msgstr "संकालन करा"
 
 #: src/components/dimensions-control/index.js:682
+#: src/components/dimensions-control/index.js:554
+#: src/components/dimensions-control/index.js:618
 msgid "Sync Units"
 msgstr "संकालन एकके"
 
@@ -2119,6 +2170,7 @@ msgid "Left"
 msgstr "डावा"
 
 #. %s:  a texual label
+#. translators: %s:  a texual label
 #: src/components/dimensions-control/index.js:722
 msgid "Advanced %s settings"
 msgstr "प्रगत %s सेटिंग"
@@ -2152,6 +2204,7 @@ msgid "Toggle to enable fullscreen mode."
 msgstr "पूर्णस्क्रीन मोड सक्षम करण्याकरिता टॉगल करा."
 
 #. %d: heading level e.g: "1", "2", "3"
+#. translators: %d: heading level e.g: "1", "2", "3"
 #: src/components/heading-toolbar/index.js:18
 msgid "Heading %d"
 msgstr "शीर्षक %d"
@@ -2169,6 +2222,7 @@ msgid "Height"
 msgstr "उंची"
 
 #. %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#. translators: %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
 #: src/components/responsive-tabs-control/index.js:65
 msgid "Mobile %s"
 msgstr "मोबाइल %s"
@@ -2246,6 +2300,7 @@ msgid "second"
 msgstr "सेकंद"
 
 #. 1. Speed of the slider, 2: Time until the slide advances
+#. translators: 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Advancing after %1$d %2$s."
 msgstr "%1$d %2$s नंतर प्रगती करत आहे."
@@ -2253,7 +2308,9 @@ msgstr "%1$d %2$s नंतर प्रगती करत आहे."
 #. 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Automatically advance to the next slide."
-msgstr "\nपुढील स्लाइड स्वयंचलितपणे प्रगत करा."
+msgstr ""
+"\n"
+"पुढील स्लाइड स्वयंचलितपणे प्रगत करा."
 
 #: src/components/slider-panel/index.js:31
 msgid "Dragging and flicking enabled."
@@ -2313,7 +2370,9 @@ msgstr "स्वयंप्ले"
 
 #: src/components/slider-panel/index.js:81
 msgid "Transition Speed"
-msgstr "\nसंक्रमण वेग"
+msgstr ""
+"\n"
+"संक्रमण वेग"
 
 #: src/components/slider-panel/index.js:88
 msgid "Pause on Hover"
@@ -2407,7 +2466,7 @@ msgstr "बटण पूर्णरूंदी सारखे प्रदर
 msgid "Crop Settings"
 msgstr "क्रॉप करा सेटिंग्ज"
 
-#: src/formats/uppercase/index.js:35
+#: src/formats/uppercase/index.js:35 src/formats/uppercase/index.js:20
 msgid "Uppercase"
 msgstr "अपरकेस"
 
@@ -2429,18 +2488,22 @@ msgstr "ब्लॉकसाठी शोधा"
 
 #: src/sidebars/block-manager/components/options/disable-blocks.js:170
 msgid "This block is added to the page and cannot currently be disabled"
-msgstr "\nहा ब्लॉक पृष्ठावर जोडला गेला आहे आणि सध्या अक्षम केला जाऊ शकत नाही"
+msgstr ""
+"\n"
+"हा ब्लॉक पृष्ठावर जोडला गेला आहे आणि सध्या अक्षम केला जाऊ शकत नाही"
 
 #: src/sidebars/block-manager/components/options/disable-blocks.js:185
 msgid "Disable all"
 msgstr "सर्व अक्षम करा"
 
 #. %s: search text
+#. translators: %s: search text
 #: src/sidebars/block-manager/components/options/disable-blocks.js:233
 msgid "No \"%s\" blocks found."
 msgstr "\"%s\" ब्लॉक सापडत नाही."
 
 #. %s: Plugin title, i.e. CoBlocks
+#. translators: %s: Plugin title, i.e. CoBlocks
 #: src/utils/block-category.js:21
 msgid "%s Galleries"
 msgstr "%s गॅलरी"
@@ -2497,14 +2560,12 @@ msgctxt "block keyword"
 msgid "link"
 msgstr "लिंक"
 
-#: src/blocks/buttons/index.js:31
-#: src/blocks/hero/index.js:43
+#: src/blocks/buttons/index.js:31 src/blocks/hero/index.js:43
 msgctxt "block keyword"
 msgid "cta"
 msgstr "cta"
 
-#: src/blocks/click-to-tweet/index.js:31
-#: src/blocks/social-profiles/index.js:28
+#: src/blocks/click-to-tweet/index.js:31 src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "share"
 msgstr "सामायिक करा"
@@ -2672,8 +2733,7 @@ msgctxt "block keyword"
 msgid "paragraph"
 msgstr "परिच्छेद"
 
-#: src/blocks/icon/index.js:35
-#: src/blocks/social-profiles/index.js:28
+#: src/blocks/icon/index.js:35 src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "icons"
 msgstr "आयकॉन्स"
@@ -2728,8 +2788,7 @@ msgctxt "block keyword"
 msgid "slider"
 msgstr "स्लाइडर"
 
-#: src/blocks/post-carousel/index.js:29
-#: src/blocks/posts/index.js:29
+#: src/blocks/post-carousel/index.js:29 src/blocks/posts/index.js:29
 msgctxt "block keyword"
 msgid "latest"
 msgstr "नवीनतम"
@@ -3132,32 +3191,27 @@ msgctxt "block style"
 msgid "Pointed"
 msgstr "टोकदार"
 
-#: src/blocks/share/index.js:30
-#: src/blocks/social-profiles/index.js:30
+#: src/blocks/share/index.js:30 src/blocks/social-profiles/index.js:30
 msgctxt "block style"
 msgid "Mask"
 msgstr "मुखवटा"
 
-#: src/blocks/share/index.js:31
-#: src/blocks/social-profiles/index.js:31
+#: src/blocks/share/index.js:31 src/blocks/social-profiles/index.js:31
 msgctxt "block style"
 msgid "Icon"
 msgstr "आयकॉन"
 
-#: src/blocks/share/index.js:32
-#: src/blocks/social-profiles/index.js:32
+#: src/blocks/share/index.js:32 src/blocks/social-profiles/index.js:32
 msgctxt "block style"
 msgid "Text"
 msgstr "मजकूर"
 
-#: src/blocks/share/index.js:33
-#: src/blocks/social-profiles/index.js:33
+#: src/blocks/share/index.js:33 src/blocks/social-profiles/index.js:33
 msgctxt "block style"
 msgid "Icon & Text"
 msgstr "आयकॉन & मजकूर"
 
-#: src/blocks/share/index.js:34
-#: src/blocks/social-profiles/index.js:34
+#: src/blocks/share/index.js:34 src/blocks/social-profiles/index.js:34
 msgctxt "block style"
 msgid "Circular"
 msgstr "परिपत्रक"
@@ -3209,8 +3263,12 @@ msgstr "हिरो शीर्षक जोडा..."
 
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
-msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
-msgstr "कॉल टू अॅक्शन किंवा दोघांसह विशिष्टरित्या पृष्‍ठाचा परिचयात्मक भाग असलेली हिरो सामग्री जोडा."
+msgid ""
+"Add hero content, which is typically an introductory area of a page "
+"accompanied by call to action or two."
+msgstr ""
+"कॉल टू अॅक्शन किंवा दोघांसह विशिष्टरित्या पृष्‍ठाचा परिचयात्मक भाग असलेली हिरो सामग्री "
+"जोडा."
 
 #: src/blocks/hero/edit.js:39
 msgctxt "content placeholder"
@@ -3239,8 +3297,12 @@ msgstr "सामग्री जोडा..."
 
 #: src/blocks/media-card/edit.js:47
 msgctxt "content placeholder"
-msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
-msgstr "कार्ड प्रतिमेसह जाण्यासाठी हा मजकूर वर्णनात्मक प्रतीने बदला. \nनंतर या कार्डमध्ये अधिक ब्लॉक्स जोडा, जसे की बटणे, सारण्या किंवा प्रतिमा."
+msgid ""
+"Replace this text with descriptive copy to go along with the card image. "
+"Then add more blocks to this card, such as buttons, lists or images."
+msgstr ""
+"कार्ड प्रतिमेसह जाण्यासाठी हा मजकूर वर्णनात्मक प्रतीने बदला. \n"
+"नंतर या कार्डमध्ये अधिक ब्लॉक्स जोडा, जसे की बटणे, सारण्या किंवा प्रतिमा."
 
 #: src/blocks/services/service/edit.js:205
 msgctxt "content placeholder"
@@ -3250,7 +3312,9 @@ msgstr "शीर्षक लिहा..."
 #: src/blocks/services/service/edit.js:211
 msgctxt "content placeholder"
 msgid "Write description..."
-msgstr "\nवर्णन लिहा..."
+msgstr ""
+"\n"
+"वर्णन लिहा..."
 
 #: src/blocks/buttons/inspector.js:28
 msgctxt "block settings"
@@ -3273,6 +3337,7 @@ msgid "None"
 msgstr "काहीही नाही"
 
 #: src/blocks/gallery-collage/inspector.js:84
+#: src/blocks/gallery-collage/inspector.js:56
 msgctxt "abbreviation for \"Short\" size"
 msgid "None"
 msgstr "काहीही नाही"
@@ -3282,8 +3347,8 @@ msgctxt "label for small gutter option"
 msgid "Small"
 msgstr "लहान"
 
-#: src/blocks/gallery-collage/inspector.js:89
-#: src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:89 src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:61
 msgctxt "abbreviation for \"Small\" size"
 msgid "S"
 msgstr "s"
@@ -3293,8 +3358,8 @@ msgctxt "label for medium gutter option"
 msgid "Medium"
 msgstr "मध्यम"
 
-#: src/blocks/gallery-collage/inspector.js:94
-#: src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:94 src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:66
 msgctxt "abbreviation for \"Medium\" size"
 msgid "M"
 msgstr "मी"
@@ -3304,8 +3369,8 @@ msgctxt "label for large gutter option"
 msgid "Large"
 msgstr "मोठे"
 
-#: src/blocks/gallery-collage/inspector.js:99
-#: src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:99 src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:71
 msgctxt "abbreviation for \"Large\" size"
 msgid "L"
 msgstr "L"
@@ -3388,7 +3453,9 @@ msgstr "CoBlocks"
 #: src/blocks/icon/svgs.js:142
 msgctxt "label"
 msgid "Doodle"
-msgstr "\nडूडल"
+msgstr ""
+"\n"
+"डूडल"
 
 #: src/blocks/icon/svgs.js:147
 msgctxt "label"
@@ -3445,7 +3512,7 @@ msgctxt "label"
 msgid "Hub"
 msgstr "हब"
 
-#: src/blocks/icon/svgs.js:208
+#: src/blocks/icon/svgs.js:208 src/blocks/icon/svgs.js:202
 msgctxt "label"
 msgid "Email"
 msgstr "ईमेल"
@@ -3650,7 +3717,7 @@ msgctxt "label"
 msgid "Brush"
 msgstr "ब्रश"
 
-#: src/blocks/icon/svgs.js:109
+#: src/blocks/icon/svgs.js:109 src/blocks/icon/svgs.js:103
 msgctxt "tags"
 msgid "add minus circle insert plus round math"
 msgstr "जोडा काढा वर्तुळ प्रविष्ट करा अधिक गोल गणित"
@@ -3683,7 +3750,9 @@ msgstr "कोड ग्रीक गणित"
 #: src/blocks/icon/svgs.js:143
 msgctxt "tags"
 msgid "drawing doodle art creative type font pencil marker"
-msgstr "चित्र काढणे डूडल कला \nसर्जनशील प्रकार फॉन्ट पेन्सिल मार्कर"
+msgstr ""
+"चित्र काढणे डूडल कला \n"
+"सर्जनशील प्रकार फॉन्ट पेन्सिल मार्कर"
 
 #: src/blocks/icon/svgs.js:15
 msgctxt "tags"
@@ -3700,7 +3769,7 @@ msgctxt "tags"
 msgid "rate vote plus favorite like"
 msgstr "श्रेणी मत अधिक आवडते आवडणे"
 
-#: src/blocks/icon/svgs.js:177
+#: src/blocks/icon/svgs.js:177 src/blocks/icon/svgs.js:166
 msgctxt "tags"
 msgid "computer apple montior device pc desk office"
 msgstr "संगणक सफरचंद मॉनिटर उपकरण पीसी डेस्क कार्यालय"
@@ -3715,7 +3784,7 @@ msgctxt "tags"
 msgid "device apple mac"
 msgstr "उपकरण सफरचंद mac"
 
-#: src/blocks/icon/svgs.js:193
+#: src/blocks/icon/svgs.js:193 src/blocks/icon/svgs.js:172
 msgctxt "tags"
 msgid "computer ipad surface apple device pc desk office"
 msgstr "संगणक आयपॅड पृष्ठभाग सफरचंद उपकरण पीसी डेस्क कार्यालय"
@@ -3728,9 +3797,12 @@ msgstr "युएसबी कनेक्ट हब उपकरण साम�
 #: src/blocks/icon/svgs.js:20
 msgctxt "tags"
 msgid "music microphone podcast song artist creative media audio"
-msgstr "संगीत \nमायक्रोफोन पोडकास्ट गाणे कलाकार \nसर्जनशील मीडिया ऑडिओ"
+msgstr ""
+"संगीत \n"
+"मायक्रोफोन पोडकास्ट गाणे कलाकार \n"
+"सर्जनशील मीडिया ऑडिओ"
 
-#: src/blocks/icon/svgs.js:209
+#: src/blocks/icon/svgs.js:209 src/blocks/icon/svgs.js:203
 msgctxt "tags"
 msgid "email mail os read letter"
 msgstr "ईमेल मेल os वाचणे पत्र"
@@ -3768,7 +3840,9 @@ msgstr "ठिकाण नकाशा सार्वजनिक व्यव
 #: src/blocks/icon/svgs.js:263
 msgctxt "tags"
 msgid "food drink restaurant menu fork spoon taste"
-msgstr "खाद्यपदार्थ पेय रेस्टॉरंट मेनु \nकाटा चमचा चव"
+msgstr ""
+"खाद्यपदार्थ पेय रेस्टॉरंट मेनु \n"
+"काटा चमचा चव"
 
 #: src/blocks/icon/svgs.js:268
 msgctxt "tags"
@@ -3783,9 +3857,11 @@ msgstr "मजा मेजवानी आनंदी उत्सव चव �
 #: src/blocks/icon/svgs.js:280
 msgctxt "tags"
 msgid "petal scent smell nice relax landscape gardening outdoors outside"
-msgstr "पाकळी अत्तर वास छान आराम रमणीय भूप्रदेश \nबागकाम घराबाहेर बाहेर"
+msgstr ""
+"पाकळी अत्तर वास छान आराम रमणीय भूप्रदेश \n"
+"बागकाम घराबाहेर बाहेर"
 
-#: src/blocks/icon/svgs.js:292
+#: src/blocks/icon/svgs.js:292 src/blocks/icon/svgs.js:230
 msgctxt "tags"
 msgid "blocks block box boxes square build widgets"
 msgstr "ब्लॉक्स ब्लॉक बॉक्स बॉक्सेस चौकोन निर्माण विजेट"
@@ -3803,7 +3879,9 @@ msgstr "कोडे प्लगइन विजेट कार्यसंघ
 #: src/blocks/icon/svgs.js:309
 msgctxt "tags"
 msgid "security bio defense biometric safe secure"
-msgstr "सुरक्षा बायो \nसंरक्षण बायोमेट्रिक सुरक्षित सुरक्षित"
+msgstr ""
+"सुरक्षा बायो \n"
+"संरक्षण बायोमेट्रिक सुरक्षित सुरक्षित"
 
 #: src/blocks/icon/svgs.js:314
 msgctxt "tags"
@@ -3813,22 +3891,32 @@ msgstr "भाषा जागतिक जग भाषण"
 #: src/blocks/icon/svgs.js:319
 msgctxt "tags"
 msgid "music microphone song artist creative media audio badge"
-msgstr "\nसंगीत \nमायक्रोफोन गाणे कलाकार \nसर्जनशील मीडिया ऑडिओ बिल्ला"
+msgstr ""
+"\n"
+"संगीत \n"
+"मायक्रोफोन गाणे कलाकार \n"
+"सर्जनशील मीडिया ऑडिओ बिल्ला"
 
 #: src/blocks/icon/svgs.js:32
 msgctxt "tags"
 msgid "microphone audio beats bose headphones"
-msgstr "मायक्रोफोन गाणे ठेका बोस \nहेडफोन"
+msgstr ""
+"मायक्रोफोन गाणे ठेका बोस \n"
+"हेडफोन"
 
-#: src/blocks/icon/svgs.js:325
+#: src/blocks/icon/svgs.js:325 src/blocks/icon/svgs.js:286
 msgctxt "tags"
 msgid "flower camera photography artist creative"
-msgstr "फूल कॅमेरा छायाचित्रण कलाकार \nसर्जनशील"
+msgstr ""
+"फूल कॅमेरा छायाचित्रण कलाकार \n"
+"सर्जनशील"
 
 #: src/blocks/icon/svgs.js:330
 msgctxt "tags"
 msgid "design creative build develop engineer"
-msgstr "डिझाइन \nसर्जनशील निर्माण विकसित अभियंता"
+msgstr ""
+"डिझाइन \n"
+"सर्जनशील निर्माण विकसित अभियंता"
 
 #: src/blocks/icon/svgs.js:335
 msgctxt "tags"
@@ -3855,25 +3943,38 @@ msgctxt "tags"
 msgid "improve add upload software"
 msgstr "सुधारणे जोडा अपलोड सॉफ्टवेअर"
 
-#: src/blocks/icon/svgs.js:37
+#: src/blocks/icon/svgs.js:37 src/blocks/icon/svgs.js:26
 msgctxt "tags"
 msgid "music microphone song artist creative media audio"
-msgstr "\nसंगीत \nमायक्रोफोन गाणे कलाकार \nसर्जनशील मीडिया ऑडिओ"
+msgstr ""
+"\n"
+"संगीत \n"
+"मायक्रोफोन गाणे कलाकार \n"
+"सर्जनशील मीडिया ऑडिओ"
 
 #: src/blocks/icon/svgs.js:43
 msgctxt "tags"
-msgid "microphone podcast computer device music microphone song artist creative media audio"
-msgstr "मायक्रोफोन पोडकास्ट संगणक उपकरण \nसंगीत मायक्रोफोन गाणे कलाकार \nसर्जनशील मीडिया ऑडिओ"
+msgid ""
+"microphone podcast computer device music microphone song artist creative "
+"media audio"
+msgstr ""
+"मायक्रोफोन पोडकास्ट संगणक उपकरण \n"
+"संगीत मायक्रोफोन गाणे कलाकार \n"
+"सर्जनशील मीडिया ऑडिओ"
 
 #: src/blocks/icon/svgs.js:49
 msgctxt "tags"
 msgid "photo photographer photography camera film creative media"
-msgstr "फोटो छायाचित्रकार छायाचित्रण कॅमेरा चित्रपट \nसर्जनशील मीडिया"
+msgstr ""
+"फोटो छायाचित्रकार छायाचित्रण कॅमेरा चित्रपट \n"
+"सर्जनशील मीडिया"
 
 #: src/blocks/icon/svgs.js:55
 msgctxt "tags"
 msgid "photo photographer photography camera aperture film creative media"
-msgstr "फोटो छायाचित्रकार छायाचित्रण कॅमेरा छिद्र चित्रपट \nसर्जनशील मीडिया"
+msgstr ""
+"फोटो छायाचित्रकार छायाचित्रण कॅमेरा छिद्र चित्रपट \n"
+"सर्जनशील मीडिया"
 
 #: src/blocks/icon/svgs.js:61
 msgctxt "tags"
@@ -3883,14 +3984,20 @@ msgstr "फोटो फोटोज प्रतिमा मीडिया �
 #: src/blocks/icon/svgs.js:67
 msgctxt "tags"
 msgid "film videography director producer media creative"
-msgstr "चित्रपट \nव्हिडिओग्राफी दिग्दर्शक निर्माता मीडिया सर्जनशील"
+msgstr ""
+"चित्रपट \n"
+"व्हिडिओग्राफी दिग्दर्शक निर्माता मीडिया सर्जनशील"
 
 #: src/blocks/icon/svgs.js:73
 msgctxt "tags"
-msgid "video videography director producer media creative camera photographer photography aperture"
-msgstr "व्हिडिओ व्हिडिओग्राफी दिग्दर्शक निर्माता मीडिया सर्जनशील कॅमेरा छायाचित्रकार छायाचित्रण छिद्र"
+msgid ""
+"video videography director producer media creative camera photographer "
+"photography aperture"
+msgstr ""
+"व्हिडिओ व्हिडिओग्राफी दिग्दर्शक निर्माता मीडिया सर्जनशील कॅमेरा छायाचित्रकार छायाचित्रण "
+"छिद्र"
 
-#: src/blocks/icon/svgs.js:85
+#: src/blocks/icon/svgs.js:85 src/blocks/icon/svgs.js:79
 msgctxt "tags"
 msgid "palette design colors artist paint creative media"
 msgstr "पॅलेट डिझाइन रंग कलाकार रंग सर्जनशील मीडिया"
@@ -3965,10 +4072,8 @@ msgctxt "block styles"
 msgid "Checkbox"
 msgstr "चेकबॉक्स"
 
-#: src/blocks/post-carousel/edit.js:302
-#: src/blocks/posts/edit.js:437
-#: src/blocks/post-carousel/index.php:185
-#: src/blocks/posts/index.php:202
+#: src/blocks/post-carousel/edit.js:302 src/blocks/posts/edit.js:437
+#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
 msgstr "(शीर्षक नाही)"
@@ -4028,18 +4133,21 @@ msgstr "शीर्षकडून उजवीकडे"
 
 #: src/components/background/panel.js:86
 #: src/components/grid-control/index.js:48
+#: src/components/grid-control/index.js:38
 msgctxt "block layout"
 msgid "Center Left"
 msgstr "मध्याकडून डावीकडे"
 
 #: src/components/background/panel.js:87
 #: src/components/grid-control/index.js:49
+#: src/components/grid-control/index.js:39
 msgctxt "block layout"
 msgid "Center Center"
 msgstr "मध्य मध्य"
 
 #: src/components/background/panel.js:88
 #: src/components/grid-control/index.js:50
+#: src/components/grid-control/index.js:40
 msgctxt "block layout"
 msgid "Center Right"
 msgstr "मध्याकडून उजवीकडे"
@@ -4080,10 +4188,13 @@ msgstr "क्षैतिजरित्या पुनरावृत्त�
 #: src/components/background/panel.js:98
 msgctxt "block layout"
 msgid "Repeat Vertically"
-msgstr "\nअनुलंबरित्या पुनरावृत्ती करा"
+msgstr ""
+"\n"
+"अनुलंबरित्या पुनरावृत्ती करा"
 
 #: src/components/block-gallery/gallery-link-settings.js:80
-msgctxt "HTML attribute that specifies the a relationship between the two pages."
+msgctxt ""
+"HTML attribute that specifies the a relationship between the two pages."
 msgid "Link Rel"
 msgstr "लिंक Rel"
 
@@ -4130,7 +4241,9 @@ msgstr "Em"
 #: src/components/dimensions-control/index.js:397
 msgctxt "A size unit for CSS markup"
 msgid "Percentage"
-msgstr "\nटक्केवारी"
+msgstr ""
+"\n"
+"टक्केवारी"
 
 #: src/components/media-filter-control/index.js:31
 msgctxt "image styles"
@@ -4168,6 +4281,7 @@ msgid "Capitalize"
 msgstr "मोठे अक्षर लिहीणे"
 
 #: src/components/typography-controls/index.js:107
+#: src/components/typography-controls/index.js:80
 msgctxt "typography styles"
 msgid "Normal"
 msgstr "सामान्य"
@@ -4178,6 +4292,7 @@ msgid "Bold"
 msgstr "ठळक"
 
 #: src/components/typography-controls/index.js:91
+#: src/components/typography-controls/index.js:76
 msgctxt "typography styles"
 msgid "Default"
 msgstr "डिफॉल्ट"
@@ -4201,8 +4316,14 @@ msgid "https://coblocks.com"
 msgstr "https://coblocks.com"
 
 #. Description of the plugin
-msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
-msgstr "CoBlocks हे WordPress Gutenberg ब्लॉक संपादकासाठी असलेला व्यावसायिक <strong>पृष्ठ निर्माण करणे सामग्री ब्लॉक्सचा</strong> एक संच आहे. आमचे ब्लॉक्स WordPress मधील सुंदर समृद्ध पृष्ठे निर्माण करण्यासाठी निर्मात्यांना सक्षम बनवण्यावर अधिक लक्षकेंद्रित करतात."
+msgid ""
+"CoBlocks is a suite of professional <strong>page building content blocks</"
+"strong> for the WordPress Gutenberg block editor. Our blocks are hyper-"
+"focused on empowering makers to build beautifully rich pages in WordPress."
+msgstr ""
+"CoBlocks हे WordPress Gutenberg ब्लॉक संपादकासाठी असलेला व्यावसायिक <strong>पृष्ठ "
+"निर्माण करणे सामग्री ब्लॉक्सचा</strong> एक संच आहे. आमचे ब्लॉक्स WordPress मधील सुंदर "
+"समृद्ध पृष्ठे निर्माण करण्यासाठी निर्मात्यांना सक्षम बनवण्यावर अधिक लक्षकेंद्रित करतात."
 
 #. Author of the plugin
 msgid "GoDaddy"
@@ -4212,8 +4333,7 @@ msgstr "GoDaddy"
 msgid "https://www.godaddy.com"
 msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:84
-#: class-coblocks.php:96
+#: class-coblocks.php:84 class-coblocks.php:96
 msgid "Cheating huh?"
 msgstr "फसवणूक करत आहे हह?"
 
@@ -4226,13 +4346,24 @@ msgid "Leave a Review"
 msgstr "पुनरावलोकन करा"
 
 #: includes/admin/class-coblocks-getting-started-page.php:120
-msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
-msgstr "नवीन WordPress ब्लॉॅक संपादकासाठी प्रीमियर पृष्ठ निर्माता, CoBlocks निवडल्याबद्दल धन्यवाद."
+msgid ""
+"Thanks for choosing CoBlocks, the premier page builder for the new WordPress "
+"block editor."
+msgstr ""
+"नवीन WordPress ब्लॉॅक संपादकासाठी प्रीमियर पृष्ठ निर्माता, CoBlocks निवडल्याबद्दल "
+"धन्यवाद."
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
 #: includes/admin/class-coblocks-getting-started-page.php:126
-msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
-msgstr "आपण आत्ताच बर्‍याच उपयुक्त ब्लॉक्स आणि WordPress संपादकात नवीन पृष्ठ निर्माता टूलकिट जोडली आहे. CoBlocks आपल्याला खेळ-बदलणार्‍या वैशिष्ट्यांचा सेट देते: %1$s दहापट ब्लॉक्स%2$s, एक %1$sपृष्ठ-निर्माता अनुभव%2$s आणि %1$s सानुकूल टायपोग्राफी नियंत्रणे%2$s."
+msgid ""
+"You've just added lots of useful blocks and a new page builder toolkit to "
+"the WordPress editor. CoBlocks gives you a game-changing set of features: "
+"%1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom "
+"typography controls%2$s."
+msgstr ""
+"आपण आत्ताच बर्‍याच उपयुक्त ब्लॉक्स आणि WordPress संपादकात नवीन पृष्ठ निर्माता टूलकिट "
+"जोडली आहे. CoBlocks आपल्याला खेळ-बदलणार्‍या वैशिष्ट्यांचा सेट देते: %1$s दहापट ब्लॉक्स"
+"%2$s, एक %1$sपृष्ठ-निर्माता अनुभव%2$s आणि %1$s सानुकूल टायपोग्राफी नियंत्रणे%2$s."
 
 #: includes/admin/class-coblocks-getting-started-page.php:133
 msgid "Here are a few videos to help you get started:"
@@ -4259,13 +4390,23 @@ msgstr "मीडिया कार्ड अवरोधित करा क�
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:152
-msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
-msgstr "आपण जे पाहता त्याप्रमाणे? %1$s आमच्या YouTube चॅनलची सदस्यता घ्या %2$s आणि नवीन व्हिडीओ ट्युटोरिअल्स केव्हा प्रकाशित केले जातात ते आम्ही आपल्याला कळवू."
+msgid ""
+"Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let "
+"you know when new video tutorials are released."
+msgstr ""
+"आपण जे पाहता त्याप्रमाणे? %1$s आमच्या YouTube चॅनलची सदस्यता घ्या %2$s आणि नवीन "
+"व्हिडीओ ट्युटोरिअल्स केव्हा प्रकाशित केले जातात ते आम्ही आपल्याला कळवू."
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:163
-msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
-msgstr "आपल्याला काही प्रश्न किंवा अभिप्राय असल्यास, आम्हाला %1$sTwitter%4$s किंवा आमच्या %2$sFacebook संघावर%4$s कळवा. आपल्याला CoBlocks वरील नवीन आणि आगामी गोष्टींसह, अद्ययावत रहायचे असल्यास आमच्या%3$sवृत्तपत्राची सदस्यता देखील घ्या%4$s."
+msgid ""
+"If you have any questions or feedback, let us know on %1$sTwitter%4$s or our "
+"%2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you "
+"want to stay up to date with what's new and upcoming at CoBlocks."
+msgstr ""
+"आपल्याला काही प्रश्न किंवा अभिप्राय असल्यास, आम्हाला %1$sTwitter%4$s किंवा आमच्या "
+"%2$sFacebook संघावर%4$s कळवा. आपल्याला CoBlocks वरील नवीन आणि आगामी गोष्टींसह, "
+"अद्ययावत रहायचे असल्यास आमच्या%3$sवृत्तपत्राची सदस्यता देखील घ्या%4$s."
 
 #: includes/admin/class-coblocks-getting-started-page.php:172
 msgid "Enjoy!"
@@ -4322,6 +4463,17 @@ msgstr "आपला संदेश पाठवला गेला:"
 #: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
 msgstr "नकाशा प्रस्तुत करण्यासाठी Google Map API की"
+
+#: src/blocks/post-carousel/index.php:40 src/blocks/posts/index.php:40
+#, fuzzy
+msgid "RSS Error:"
+msgstr "त्रुटी"
+
+#: src/blocks/post-carousel/index.php:51 src/blocks/posts/index.php:51
+msgid ""
+"An error has occurred, which probably means the feed is down. Try again "
+"later."
+msgstr ""
 
 #: src/blocks/share/index.php:144
 msgid "Share on Linkedin"

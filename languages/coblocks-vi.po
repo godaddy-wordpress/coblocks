@@ -1,15 +1,16 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.16.0\n"
+"Project-Id-Version: CoBlocks 1.16.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
+"POT-Creation-Date: 2019-10-18T18:40:31+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-10-17T20:17:54+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
 
@@ -23,50 +24,41 @@ msgstr "Mục nội dung có thể thu gọn được mở theo mặc định."
 
 #: src/blocks/accordion/accordion-item/inspector.js:34
 msgid "Toggle to set this accordion item to be open by default."
-msgstr "Bật tắt để cài đặt mục nội dung có thể thu gọn này được mở theo mặc định."
+msgstr ""
+"Bật tắt để cài đặt mục nội dung có thể thu gọn này được mở theo mặc định."
 
 #: src/blocks/accordion/accordion-item/inspector.js:63
 msgid "Accordion Item Settings"
 msgstr "Các cài đặt của mục nội dung có thể thu gọn"
 
 #: src/blocks/accordion/accordion-item/inspector.js:72
-#: src/blocks/alert/inspector.js:49
-#: src/blocks/author/inspector.js:50
+#: src/blocks/alert/inspector.js:49 src/blocks/author/inspector.js:50
 #: src/blocks/click-to-tweet/inspector.js:60
 #: src/blocks/dynamic-separator/inspector.js:60
 #: src/blocks/features/feature/inspector.js:92
-#: src/blocks/features/inspector.js:173
-#: src/blocks/form/submit-button.js:118
-#: src/blocks/hero/inspector.js:137
-#: src/blocks/highlight/inspector.js:43
-#: src/blocks/icon/inspector.js:302
-#: src/blocks/media-card/inspector.js:132
+#: src/blocks/features/inspector.js:173 src/blocks/form/submit-button.js:118
+#: src/blocks/hero/inspector.js:137 src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:302 src/blocks/media-card/inspector.js:132
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
-#: src/blocks/row/column/inspector.js:165
-#: src/blocks/row/inspector.js:211
-#: src/blocks/shape-divider/inspector.js:92
-#: src/blocks/share/inspector.js:200
+#: src/blocks/row/column/inspector.js:165 src/blocks/row/inspector.js:211
+#: src/blocks/shape-divider/inspector.js:92 src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:206
 #: src/extensions/colors/index.js:59
 msgid "Color Settings"
 msgstr "Cài đặt Màu"
 
 #: src/blocks/accordion/accordion-item/inspector.js:78
-#: src/blocks/alert/inspector.js:55
-#: src/blocks/author/inspector.js:56
+#: src/blocks/alert/inspector.js:55 src/blocks/author/inspector.js:56
 #: src/blocks/features/feature/inspector.js:110
-#: src/blocks/features/inspector.js:191
-#: src/blocks/hero/inspector.js:150
-#: src/blocks/highlight/inspector.js:49
-#: src/blocks/icon/inspector.js:326
+#: src/blocks/features/inspector.js:191 src/blocks/hero/inspector.js:150
+#: src/blocks/highlight/inspector.js:49 src/blocks/icon/inspector.js:326
 #: src/blocks/media-card/inspector.js:146
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
-#: src/blocks/row/column/inspector.js:171
-#: src/blocks/row/inspector.js:227
-#: src/blocks/shape-divider/inspector.js:103
-#: src/blocks/share/inspector.js:99
+#: src/blocks/row/column/inspector.js:171 src/blocks/row/inspector.js:227
+#: src/blocks/shape-divider/inspector.js:103 src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:103
-#: src/extensions/colors/index.js:47
+#: src/extensions/colors/index.js:47 src/blocks/share/inspector.js:81
+#: src/blocks/social-profiles/inspector.js:85
 msgid "Background Color"
 msgstr "Màu nền"
 
@@ -88,11 +80,15 @@ msgstr "Hỗ trợ Internet Explorer"
 
 #: src/blocks/accordion/inspector.js:31
 msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
-msgstr "Thêm hỗ trợ cho Internet Explorer bằng cách tải một đoạn mã của JavaScript."
+msgstr ""
+"Thêm hỗ trợ cho Internet Explorer bằng cách tải một đoạn mã của JavaScript."
 
 #: src/blocks/accordion/inspector.js:31
-msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
-msgstr "Hỗ trợ Internet Explorer bằng cách tải một đoạn mã của JavaScript trên trang này."
+msgid ""
+"Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgstr ""
+"Hỗ trợ Internet Explorer bằng cách tải một đoạn mã của JavaScript trên trang "
+"này."
 
 #: src/blocks/alert/index.js:29
 msgid "Provide contextual feedback messages or notices."
@@ -103,21 +99,23 @@ msgid "This is an alert block"
 msgstr "Đây là một khối cảnh báo"
 
 #: src/blocks/alert/index.js:46
-msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
-msgstr "Một cảnh báo là một tin nhắn hiện thị bên ngoài luồng nội dung điển hình. Các cảnh báo đưa ra các phản hồi theo tình huống, chủ yếu yêu cầu người đọc thực hiện các thao tác."
+msgid ""
+"An alert is a message that displays outside the flow of typical content. "
+"Alerts provide contextual feedback, typically asking readers to take an "
+"action."
+msgstr ""
+"Một cảnh báo là một tin nhắn hiện thị bên ngoài luồng nội dung điển hình. "
+"Các cảnh báo đưa ra các phản hồi theo tình huống, chủ yếu yêu cầu người đọc "
+"thực hiện các thao tác."
 
-#: src/blocks/alert/inspector.js:60
-#: src/blocks/author/inspector.js:61
+#: src/blocks/alert/inspector.js:60 src/blocks/author/inspector.js:61
 #: src/blocks/click-to-tweet/inspector.js:66
 #: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:195
-#: src/blocks/hero/inspector.js:155
+#: src/blocks/features/inspector.js:195 src/blocks/hero/inspector.js:155
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
-#: src/blocks/row/column/inspector.js:176
-#: src/blocks/row/inspector.js:232
-#: src/blocks/share/inspector.js:66
-#: src/blocks/social-profiles/inspector.js:95
+#: src/blocks/row/column/inspector.js:176 src/blocks/row/inspector.js:232
+#: src/blocks/share/inspector.js:66 src/blocks/social-profiles/inspector.js:95
 #: src/extensions/colors/index.js:54
 msgid "Text Color"
 msgstr "Màu văn bản"
@@ -127,14 +125,20 @@ msgid "Edit avatar"
 msgstr "Chỉnh sửa hình đại diện"
 
 #. placeholder text used for the author name
+#. translators: placeholder text used for the author name
 #: src/blocks/author/edit.js:127
 msgid "Write author name…"
 msgstr "Viết tên tác giả..."
 
 #. placeholder text used for the biography
+#. translators: placeholder text used for the biography
 #: src/blocks/author/edit.js:141
-msgid "Write a biography that distills objective credibility and authority to your readers…"
-msgstr "Viết một tiểu sử thể hiện mức độ tin cậy và thẩm quyền khách quan cho người đọc..."
+msgid ""
+"Write a biography that distills objective credibility and authority to your "
+"readers…"
+msgstr ""
+"Viết một tiểu sử thể hiện mức độ tin cậy và thẩm quyền khách quan cho người "
+"đọc..."
 
 #: src/blocks/author/index.js:29
 msgid "Add an author biography to build credibility and authority."
@@ -142,7 +146,9 @@ msgstr "Thêm tiểu sử một tác giả để xây dựng uy tín và thẩm 
 
 #: src/blocks/author/index.js:35
 msgid "Born to express, not to impress. A maker making the world I want."
-msgstr "Sinh ra để chia sẻ, không phải gây ấn tượng. Người khởi tạo tạo ra thế giới mà tôi muốn."
+msgstr ""
+"Sinh ra để chia sẻ, không phải gây ấn tượng. Người khởi tạo tạo ra thế giới "
+"mà tôi muốn."
 
 #: src/blocks/author/inspector.js:41
 msgid "Author Settings"
@@ -165,6 +171,7 @@ msgid "Toggle to stack buttons on mobile."
 msgstr "Bật tắt để xếp chồng các nút trên di động."
 
 #: src/blocks/click-to-tweet/controls.js:44
+#: src/blocks/click-to-tweet/controls.js:37
 msgid "Twitter Username"
 msgstr "Tên người dùng Twitter"
 
@@ -177,6 +184,7 @@ msgid "Add button..."
 msgstr "Thêm nút..."
 
 #. the text of the click to tweet element
+#. translators: the text of the click to tweet element
 #: src/blocks/click-to-tweet/edit.js:82
 msgid "Add a quote to tweet..."
 msgstr "Thêm một câu trích dẫn cho bài đăng..."
@@ -186,8 +194,12 @@ msgid "Add a quote for readers to tweet via Twitter."
 msgstr "Thêm một câu trích dẫn cho độc giả để đăng qua Twitter."
 
 #: src/blocks/click-to-tweet/index.js:34
-msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
-msgstr "Cách dễ nhất để quảng bá và quảng cáo cho blog, website và doanh nghiệp của bạn trên Twitter."
+msgid ""
+"The easiest way to promote and advertise your blog, website, and business on "
+"Twitter."
+msgstr ""
+"Cách dễ nhất để quảng bá và quảng cáo cho blog, website và doanh nghiệp của "
+"bạn trên Twitter."
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
@@ -195,8 +207,7 @@ msgid "Text Settings"
 msgstr "Cài đặt văn bản"
 
 #: src/blocks/click-to-tweet/inspector.js:71
-#: src/blocks/form/submit-button.js:127
-#: src/blocks/share/inspector.js:86
+#: src/blocks/form/submit-button.js:127 src/blocks/share/inspector.js:86
 #: src/blocks/social-profiles/inspector.js:90
 msgid "Button Color"
 msgstr "Màu nút"
@@ -207,8 +218,7 @@ msgstr "Thêm một ký tự cách có thể thay đổi kích cỡ giữa các 
 
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:100
-#: src/blocks/hero/inspector.js:108
-#: src/blocks/map/inspector.js:132
+#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr "Chiều cao tính bằng pixel"
 
@@ -220,8 +230,7 @@ msgstr "Chiều cao cho phần tử dấu tách động tính theo pixel."
 msgid "Color"
 msgstr "Màu sắc"
 
-#: src/blocks/features/edit.js:78
-#: src/blocks/features/feature/edit.js:63
+#: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
 msgid "Add as background"
 msgstr "Thêm như phông nền"
@@ -235,12 +244,9 @@ msgid "Feature Settings"
 msgstr "Cài đặt Tính năng"
 
 #: src/blocks/features/feature/inspector.js:71
-#: src/blocks/features/inspector.js:143
-#: src/blocks/hero/inspector.js:84
-#: src/blocks/icon/inspector.js:217
-#: src/blocks/media-card/inspector.js:62
-#: src/blocks/row/column/inspector.js:133
-#: src/blocks/row/inspector.js:180
+#: src/blocks/features/inspector.js:143 src/blocks/hero/inspector.js:84
+#: src/blocks/icon/inspector.js:217 src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:133 src/blocks/row/inspector.js:180
 #: src/components/background/panel.js:146
 msgid "Padding"
 msgstr "Phần đệm"
@@ -249,8 +255,7 @@ msgstr "Phần đệm"
 msgid "Add up to three columns of small notes for your product or service."
 msgstr "Thêm lên đến ba cột ghi chú nhỏ cho sản phẩm hoặc dịch vụ của bạn."
 
-#: src/blocks/features/inspector.js:122
-#: src/blocks/row/column/inspector.js:111
+#: src/blocks/features/inspector.js:122 src/blocks/row/column/inspector.js:111
 #: src/blocks/row/inspector.js:157
 #: src/components/dimensions-control/index.js:295
 msgid "Margin"
@@ -259,41 +264,35 @@ msgstr "Lề"
 #: src/blocks/features/inspector.js:164
 #: src/blocks/gallery-carousel/inspector.js:84
 #: src/blocks/gallery-collage/inspector.js:108
-#: src/blocks/gallery-stacked/inspector.js:91
-#: src/blocks/row/inspector.js:202
+#: src/blocks/gallery-stacked/inspector.js:91 src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
+#: src/blocks/gallery-carousel/inspector.js:78
+#: src/blocks/gallery-collage/inspector.js:107
 msgid "Gutter"
 msgstr "Máng ngăn"
 
-#: src/blocks/features/inspector.js:167
-#: src/blocks/row/inspector.js:205
+#: src/blocks/features/inspector.js:167 src/blocks/row/inspector.js:205
 msgid "Space between each column."
 msgstr "Khoảng cách giữa mỗi cột."
 
-#: src/blocks/features/inspector.js:86
-#: src/blocks/icon/icon-size-select.js:16
-#: src/blocks/row/inspector.js:99
-#: src/blocks/share/inspector.js:72
+#: src/blocks/features/inspector.js:86 src/blocks/icon/icon-size-select.js:16
+#: src/blocks/row/inspector.js:99 src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:76
 #: src/components/dimensions-control/dimensions-select.js:15
 #: src/components/size-control/index.js:116
 msgid "Small"
 msgstr "Nhỏ"
 
-#: src/blocks/features/inspector.js:87
-#: src/blocks/icon/icon-size-select.js:21
-#: src/blocks/row/inspector.js:100
-#: src/blocks/share/inspector.js:73
+#: src/blocks/features/inspector.js:87 src/blocks/icon/icon-size-select.js:21
+#: src/blocks/row/inspector.js:100 src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:77
 #: src/components/dimensions-control/dimensions-select.js:20
 #: src/components/size-control/index.js:120
 msgid "Medium"
 msgstr "Trung bình"
 
-#: src/blocks/features/inspector.js:88
-#: src/blocks/icon/icon-size-select.js:26
-#: src/blocks/row/inspector.js:101
-#: src/blocks/share/inspector.js:74
+#: src/blocks/features/inspector.js:88 src/blocks/icon/icon-size-select.js:26
+#: src/blocks/row/inspector.js:101 src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:25
 #: src/components/size-control/index.js:65
@@ -304,14 +303,13 @@ msgstr "Lớn"
 msgid "Features Settings"
 msgstr "Cài đặt các tính năng"
 
-#: src/blocks/features/inspector.js:96
-#: src/blocks/post-carousel/inspector.js:70
-#: src/blocks/posts/inspector.js:110
-#: src/blocks/services/inspector.js:69
+#: src/blocks/features/inspector.js:96 src/blocks/post-carousel/inspector.js:70
+#: src/blocks/posts/inspector.js:110 src/blocks/services/inspector.js:69
 msgid "Columns"
 msgstr "Các cột"
 
 #: src/blocks/food-and-drinks/appender.js:22
+#: src/blocks/food-and-drinks/appender.js:17
 msgid "Add Menu Section"
 msgstr "Thêm Mục Menu"
 
@@ -431,22 +429,19 @@ msgid "Image Settings"
 msgstr "Cài đặt Ảnh"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:84
-#: src/blocks/gif/inspector.js:31
-#: src/blocks/media-card/inspector.js:95
+#: src/blocks/gif/inspector.js:31 src/blocks/media-card/inspector.js:95
 #: src/blocks/services/service/inspector.js:33
 msgid "Alt Text (Alternative Text)"
 msgstr "Văn bản thay thế"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:90
-#: src/blocks/gif/inspector.js:37
-#: src/blocks/media-card/inspector.js:101
+#: src/blocks/gif/inspector.js:37 src/blocks/media-card/inspector.js:101
 #: src/blocks/services/service/inspector.js:39
 msgid "Describe the purpose of the image"
 msgstr "Miêu tả mục đích của ảnh"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:92
-#: src/blocks/gif/inspector.js:39
-#: src/blocks/media-card/inspector.js:103
+#: src/blocks/gif/inspector.js:39 src/blocks/media-card/inspector.js:103
 #: src/blocks/services/service/inspector.js:41
 msgid "Leave empty if the image is purely decorative."
 msgstr "Hãy để trống nếu ảnh chỉ là để trang trí."
@@ -461,10 +456,8 @@ msgstr "Tiêu điểm"
 msgid "Display a menu or price list."
 msgstr "Hiển thị một menu hay danh sách giá."
 
-#: src/blocks/food-and-drinks/inspector.js:26
-#: src/blocks/map/inspector.js:107
-#: src/blocks/posts/inspector.js:187
-#: src/blocks/row/inspector.js:119
+#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
+#: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
 msgid "Styles"
 msgstr "Phong cách"
@@ -498,16 +491,19 @@ msgid "Toggle to show the price of each item."
 msgstr "Bật tắt để hiển thị giá cho từng mục."
 
 #. %s: Placeholder for email address provided by user.
+#. translators: %s: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:171
 msgid "%s is not a valid email address."
 msgstr "%s không phải là một địa chỉ email hợp lệ."
 
 #. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:181
 msgid "%s and %s are not a valid email address."
 msgstr "%s và %skhông phải là các địa chỉ email hợp lệ."
 
 #. %s1: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:189
 msgid "%s are not a valid email address."
 msgstr "%s không phải là địa chỉ email hợp lệ."
@@ -534,7 +530,9 @@ msgstr "reCAPTCHA của Google"
 
 #: src/blocks/form/edit.js:296
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
-msgstr "Thêm trang reCAPTCHA của bạn và các khóa bí mật để bảo vệ biểu mẫu của bạn khỏi thư rác."
+msgstr ""
+"Thêm trang reCAPTCHA của bạn và các khóa bí mật để bảo vệ biểu mẫu của bạn "
+"khỏi thư rác."
 
 #: src/blocks/form/edit.js:302
 msgid "Generate keys"
@@ -556,19 +554,16 @@ msgstr "Khóa của trang"
 msgid "Secret Key"
 msgstr "Khóa bí mật"
 
-#: src/blocks/form/edit.js:330
-#: src/blocks/gallery-collage/edit.js:174
+#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr "Đang lưu"
 
-#: src/blocks/form/edit.js:330
-#: src/blocks/map/inspector.js:231
+#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr "Lưu"
 
-#: src/blocks/form/edit.js:345
-#: src/blocks/map/inspector.js:240
+#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr "Xóa"
 
@@ -590,6 +585,7 @@ msgstr "Một trường để thu thập địa chỉ email đã được xác t
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
+#: src/blocks/form/fields/name/edit.js:49
 msgid "Add label…"
 msgstr "Thêm nhãn…"
 
@@ -598,6 +594,7 @@ msgid "Required"
 msgstr "Được yêu cầu"
 
 #: src/blocks/form/fields/multi-field.js:102
+#: src/blocks/form/fields/multi-field.js:99
 msgid "Add Option"
 msgstr "Thêm tùy chọn"
 
@@ -627,7 +624,8 @@ msgstr "Một số điện thoại cho phép khách truy cập cho bạn một s
 
 #: src/blocks/form/fields/radio/index.js:21
 msgid "A field with multiple options where only one choice can be made."
-msgstr "Một trường với nhiều tùy chọn nhưng chỉ được chọn một tùy chọn duy nhất."
+msgstr ""
+"Một trường với nhiều tùy chọn nhưng chỉ được chọn một tùy chọn duy nhất."
 
 #: src/blocks/form/fields/textarea/index.js:20
 msgid "A text box for longer responses."
@@ -660,14 +658,15 @@ msgid "Carousel"
 msgstr "xem băng chuyền"
 
 #. %1$d is the order number of the image, %2$d is the total number of images.
+#. translators: %1$d is the order number of the image, %2$d is the total number of images
+#. translators: %1$d is the order number of the image, %2$d is the total number of images.
 #: src/blocks/gallery-carousel/edit.js:310
 #: src/blocks/gallery-masonry/edit.js:219
 #: src/blocks/gallery-stacked/edit.js:191
 msgid "image %1$d of %2$d in gallery"
 msgstr "ảnh %1$d trong số %2$d trong thư viện"
 
-#: src/blocks/gallery-carousel/edit.js:376
-#: src/blocks/gif/edit.js:243
+#: src/blocks/gallery-carousel/edit.js:376 src/blocks/gif/edit.js:243
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:230
 msgid "Write caption…"
@@ -705,23 +704,21 @@ msgstr "Bật tắt chiều cao theo tỷ lệ phần trăm."
 msgid "Carousel Settings"
 msgstr "Cài đặt xếp chuỗi ngang"
 
-#: src/blocks/gallery-carousel/inspector.js:71
-#: src/blocks/icon/inspector.js:173
+#: src/blocks/gallery-carousel/inspector.js:71 src/blocks/icon/inspector.js:173
 #: src/components/typography-controls/index.js:189
+#: src/blocks/icon/inspector.js:106
 msgid "Size"
 msgstr "Kích cỡ"
 
 #: src/blocks/gallery-carousel/inspector.js:90
 #: src/blocks/gallery-masonry/inspector.js:83
-#: src/blocks/gallery-stacked/inspector.js:95
-#: src/blocks/share/inspector.js:120
+#: src/blocks/gallery-stacked/inspector.js:95 src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:124
 #: src/components/background/panel.js:156
 msgid "Rounded Corners"
 msgstr "Các góc tròn"
 
-#: src/blocks/gallery-collage/edit.js:174
-#: src/blocks/map/edit.js:306
+#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr "Áp dụng"
@@ -739,6 +736,7 @@ msgid "Collage Settings"
 msgstr "Cài đặt ảnh ghép"
 
 #: src/blocks/gallery-collage/inspector.js:128
+#: src/blocks/gallery-collage/inspector.js:127
 msgid "Shadow"
 msgstr "Bóng"
 
@@ -817,7 +815,8 @@ msgid "Fullwidth images are enabled."
 msgstr "Đã bật ảnh đủ độ rộng."
 
 #: src/blocks/gallery-stacked/inspector.js:48
-msgid "Toggle to fill the available gallery area with completely fullwidth images."
+msgid ""
+"Toggle to fill the available gallery area with completely fullwidth images."
 msgstr "Bật tắt để phủ các vùng thư viện khả dụng với toàn các ảnh đủ độ rộng."
 
 #: src/blocks/gallery-stacked/inspector.js:80
@@ -868,7 +867,7 @@ msgstr "Chỉnh sửa lưu trữ mã"
 msgid "View Gist"
 msgstr "Xem lưu trữ mã"
 
-#: src/blocks/gist/controls.js:68
+#: src/blocks/gist/controls.js:68 src/blocks/gist/controls.js:61
 msgid "GitHub File"
 msgstr "Tập tin GitHub"
 
@@ -876,13 +875,11 @@ msgstr "Tập tin GitHub"
 msgid "File"
 msgstr "Tập tin"
 
-#: src/blocks/gist/deprecated.js:36
-#: src/blocks/gist/save.js:29
+#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr "Xem lưu trữ mã này trên GitHub"
 
-#: src/blocks/gist/edit.js:124
-#: src/blocks/gist/inspector.js:51
+#: src/blocks/gist/edit.js:124 src/blocks/gist/inspector.js:51
 msgid "Gist URL"
 msgstr "URL của lưu trữ mã"
 
@@ -927,8 +924,12 @@ msgid "Add background to hero"
 msgstr "Thêm phông nền cho trang chính"
 
 #: src/blocks/hero/index.js:41
-msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
-msgstr "Một đoạn giới thiệu của trang được kèm theo với một đoạn văn bản nhỏ và kêu gọi thao tác."
+msgid ""
+"An introductory area of a page accompanied by a small amount of text and a "
+"call to action."
+msgstr ""
+"Một đoạn giới thiệu của trang được kèm theo với một đoạn văn bản nhỏ và kêu "
+"gọi thao tác."
 
 #: src/blocks/hero/inspector.js:127
 msgid "Content width in pixels"
@@ -938,10 +939,8 @@ msgstr "Chiều rộng của nội dung tính theo pixel"
 msgid "Hero Settings"
 msgstr "Cài đặt Nội dung chính"
 
-#: src/blocks/hero/inspector.js:85
-#: src/blocks/media-card/inspector.js:63
-#: src/blocks/row/column/inspector.js:134
-#: src/blocks/row/inspector.js:181
+#: src/blocks/hero/inspector.js:85 src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:134 src/blocks/row/inspector.js:181
 msgid "Space inside of the container."
 msgstr "Không gian bên trong của vùng chứa."
 
@@ -990,11 +989,14 @@ msgid "Draw attention and emphasize important narrative."
 msgstr "Thu hút sự chú ý và nhấn mạnh vào nội dung quan trọng."
 
 #: src/blocks/highlight/index.js:33
-msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
-msgstr "Thêm hiệu ứng tô màu vào phần đoạn văn bản để thu hút sự chú ý và nhấn mạnh vào nội dung quan trọng."
+msgid ""
+"Add a highlight effect to paragraph text in order to grab attention and "
+"emphasize important narrative."
+msgstr ""
+"Thêm hiệu ứng tô màu vào phần đoạn văn bản để thu hút sự chú ý và nhấn mạnh "
+"vào nội dung quan trọng."
 
-#: src/blocks/icon/icon-size-select.js:30
-#: src/blocks/row/inspector.js:102
+#: src/blocks/icon/icon-size-select.js:30 src/blocks/row/inspector.js:102
 #: src/components/dimensions-control/dimensions-select.js:30
 msgid "Huge"
 msgstr "Khổng lồ"
@@ -1007,8 +1009,7 @@ msgstr "Chọn cài đặt lại kích thước biểu tượng"
 msgid "Add a stylized graphic symbol to communicate something more."
 msgstr "Thêm một biểu tượng đồ họa cách điệu để truyền tải nhiều ý nghĩa hơn."
 
-#: src/blocks/icon/inspector.js:155
-#: src/blocks/share/inspector.js:111
+#: src/blocks/icon/inspector.js:155 src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:115
 msgid "Icon Settings"
 msgstr "Cài đặt của biểu tượng"
@@ -1065,9 +1066,9 @@ msgstr "Đang mở trong một thẻ mới"
 msgid "Open in New Tab"
 msgstr "Mở trong một thẻ mới"
 
-#: src/blocks/icon/inspector.js:309
-#: src/blocks/share/inspector.js:104
-#: src/blocks/social-profiles/inspector.js:108
+#: src/blocks/icon/inspector.js:309 src/blocks/share/inspector.js:104
+#: src/blocks/social-profiles/inspector.js:108 src/blocks/share/inspector.js:68
+#: src/blocks/social-profiles/inspector.js:95
 msgid "Icon Color"
 msgstr "Màu của biểu tượng"
 
@@ -1108,9 +1109,8 @@ msgstr "Chỉnh sửa Địa điểm"
 msgid "Map style"
 msgstr "Kiểu bản đồ"
 
-#: src/blocks/map/deprecated.js:96
-#: src/blocks/map/edit.js:293
-#: src/blocks/map/save.js:50
+#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50 src/blocks/map/edit.js:241
 msgid "Google Map"
 msgstr "Bản đồ của Google"
 
@@ -1126,7 +1126,7 @@ msgstr "Nhập một địa điểm hay địa chỉ để thả ghim trên bả
 msgid "Search for a place or address…"
 msgstr "Tìm kiếm một nơi hay địa chỉ…"
 
-#: src/blocks/map/edit.js:320
+#: src/blocks/map/edit.js:320 src/blocks/map/edit.js:312
 msgid "Cancel"
 msgstr "Hủy"
 
@@ -1162,7 +1162,7 @@ msgstr "Đã bật các tùy chọn kiểm soát hoàn toàn."
 msgid "Toggle to enable map control options."
 msgstr "Bật tắt để bật các tùy chọn kiểm soát bản đồ."
 
-#: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:178 src/blocks/map/inspector.js:167
 msgid "Map Controls"
 msgstr "Kiểm soát bản đồ"
 
@@ -1188,7 +1188,8 @@ msgstr "Hiển thị kiểm soát thu phóng bản đồ."
 
 #: src/blocks/map/inspector.js:191
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
-msgstr "Bật tắt để bật phóng to và thu nhỏ trên bản đồ với kiểm soát thu phóng."
+msgstr ""
+"Bật tắt để bật phóng to và thu nhỏ trên bản đồ với kiểm soát thu phóng."
 
 #: src/blocks/map/inspector.js:194
 msgid "Street View"
@@ -1219,8 +1220,12 @@ msgid "Google Maps API Key"
 msgstr "Khóa API của Bản đồ Google"
 
 #: src/blocks/map/inspector.js:212
-msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
-msgstr "Thêm một khóa API của Bản đồ Google. Cập nhật khóa API này sẽ cài đặt tất cả bản đồ của bạn sử dụng khóa mới."
+msgid ""
+"Add a Google Maps API key. Updating this API key will set all your maps to "
+"use the new key."
+msgstr ""
+"Thêm một khóa API của Bản đồ Google. Cập nhật khóa API này sẽ cài đặt tất cả "
+"bản đồ của bạn sử dụng khóa mới."
 
 #: src/blocks/map/inspector.js:215
 msgid "Get a key"
@@ -1263,16 +1268,19 @@ msgid "Toggle to add a card shadow."
 msgstr "Bật tắt để thêm bóng cho thẻ."
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:118
 msgid " %s Shadow"
 msgstr " Bóng %s"
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:124
 msgid "Showing %s shadow."
 msgstr "Hiển thị bóng %s."
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:126
 msgid "Toggle to add an %s shadow"
 msgstr "Bật tắt để thêm bóng cho %s"
@@ -1297,8 +1305,7 @@ msgstr "Thả để thay thế truyền thông"
 msgid "Edit media"
 msgstr "Chỉnh sửa truyền thông"
 
-#: src/blocks/post-carousel/edit.js:123
-#: src/blocks/posts/edit.js:247
+#: src/blocks/post-carousel/edit.js:123 src/blocks/posts/edit.js:247
 msgid "Edit RSS URL"
 msgstr "Chỉnh sửa RSS URL"
 
@@ -1306,46 +1313,39 @@ msgstr "Chỉnh sửa RSS URL"
 msgid "Post Carousel"
 msgstr "Bài viết xếp chuỗi ngang"
 
-#: src/blocks/post-carousel/edit.js:184
-#: src/blocks/posts/edit.js:295
+#: src/blocks/post-carousel/edit.js:184 src/blocks/posts/edit.js:295
 msgid "No posts found. Start publishing or add posts from an %s feed."
-msgstr "Không tìm thấy bài viết. Bắt đầu xuất bản hoặc thêm bài viết từ một nguồn cấp %s."
+msgstr ""
+"Không tìm thấy bài viết. Bắt đầu xuất bản hoặc thêm bài viết từ một nguồn "
+"cấp %s."
 
-#: src/blocks/post-carousel/edit.js:187
-#: src/blocks/posts/edit.js:298
+#: src/blocks/post-carousel/edit.js:187 src/blocks/posts/edit.js:298
 msgid "Retrieve an External Feed"
 msgstr "Lấy lại một nguồn cấp bên ngoài"
 
-#: src/blocks/post-carousel/edit.js:193
-#: src/blocks/posts/edit.js:304
+#: src/blocks/post-carousel/edit.js:193 src/blocks/posts/edit.js:304
 msgid "Use External Feed"
 msgstr "Sử dụng nguồn cấp bên ngoài"
 
 #. %s: RSS
-#: src/blocks/post-carousel/edit.js:216
-#: src/blocks/posts/edit.js:332
+#: src/blocks/post-carousel/edit.js:216 src/blocks/posts/edit.js:332
 msgid "%s Feed"
 msgstr "Nguồn cấp tin %s"
 
-#: src/blocks/post-carousel/edit.js:217
-#: src/blocks/posts/edit.js:333
+#: src/blocks/post-carousel/edit.js:217 src/blocks/posts/edit.js:333
 msgid "%s URLs are generally located at the /feed/ directory of a site."
 msgstr "%s URLs thường nằm trong thư mục /feed/ của một trang."
 
-#: src/blocks/post-carousel/edit.js:221
-#: src/blocks/posts/edit.js:337
+#: src/blocks/post-carousel/edit.js:221 src/blocks/posts/edit.js:337
 msgid "https://example.com/feed…"
 msgstr "https://example.com/feed…"
 
-#: src/blocks/post-carousel/edit.js:227
-#: src/blocks/posts/edit.js:343
+#: src/blocks/post-carousel/edit.js:227 src/blocks/posts/edit.js:343
 msgid "Use URL"
 msgstr "Sử dụng URL"
 
-#: src/blocks/post-carousel/edit.js:320
-#: src/blocks/posts/edit.js:463
-#: src/blocks/post-carousel/index.php:368
-#: src/blocks/posts/index.php:385
+#: src/blocks/post-carousel/edit.js:320 src/blocks/posts/edit.js:463
+#: src/blocks/post-carousel/index.php:368 src/blocks/posts/index.php:385
 msgid "Read more"
 msgstr "Tham khảo thêm"
 
@@ -1353,8 +1353,7 @@ msgstr "Tham khảo thêm"
 msgid "Display posts or an external blog feed as a carousel."
 msgstr "Hiện thị bài viết hoặc một nguồn cấp blog bên ngoài theo chuỗi ngang."
 
-#: src/blocks/post-carousel/inspector.js:108
-#: src/blocks/posts/inspector.js:174
+#: src/blocks/post-carousel/inspector.js:108 src/blocks/posts/inspector.js:174
 msgid "Number of posts"
 msgstr "Số lượng bài viết"
 
@@ -1362,53 +1361,43 @@ msgstr "Số lượng bài viết"
 msgid "Post Carousel Settings"
 msgstr "Cài đặt bài viết xếp chuỗi ngang"
 
-#: src/blocks/post-carousel/inspector.js:41
-#: src/blocks/posts/inspector.js:81
+#: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
 msgid "Post Date"
 msgstr "Ngày đăng bài viết"
 
-#: src/blocks/post-carousel/inspector.js:45
-#: src/blocks/posts/inspector.js:85
+#: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
 msgid "Showing the publish date."
 msgstr "Hiển thị ngày đăng bài."
 
-#: src/blocks/post-carousel/inspector.js:46
-#: src/blocks/posts/inspector.js:86
+#: src/blocks/post-carousel/inspector.js:46 src/blocks/posts/inspector.js:86
 msgid "Toggle to show the publish date."
 msgstr "Bật tắt để hiển thị ngày đăng bài."
 
-#: src/blocks/post-carousel/inspector.js:51
-#: src/blocks/posts/inspector.js:91
+#: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
 msgid "Post Content"
 msgstr "Nội dung bài viết"
 
-#: src/blocks/post-carousel/inspector.js:55
-#: src/blocks/posts/inspector.js:95
+#: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
 msgid "Showing the post content."
 msgstr "Hiển thị nội dung bài viết."
 
-#: src/blocks/post-carousel/inspector.js:56
-#: src/blocks/posts/inspector.js:96
+#: src/blocks/post-carousel/inspector.js:56 src/blocks/posts/inspector.js:96
 msgid "Toggle to show the post content."
 msgstr "Bật tắt để hiển thị nội dung bài viết."
 
-#: src/blocks/post-carousel/inspector.js:62
-#: src/blocks/posts/inspector.js:102
+#: src/blocks/post-carousel/inspector.js:62 src/blocks/posts/inspector.js:102
 msgid "Max words in content"
 msgstr "Số từ tối đa trong nội dung"
 
-#: src/blocks/post-carousel/inspector.js:86
-#: src/blocks/posts/inspector.js:152
+#: src/blocks/post-carousel/inspector.js:86 src/blocks/posts/inspector.js:152
 msgid "Feed Settings"
 msgstr "Thiết lập nguồn cấp"
 
-#: src/blocks/post-carousel/inspector.js:90
-#: src/blocks/posts/inspector.js:156
+#: src/blocks/post-carousel/inspector.js:90 src/blocks/posts/inspector.js:156
 msgid "My Blog"
 msgstr "Blog của tôi"
 
-#: src/blocks/post-carousel/inspector.js:91
-#: src/blocks/posts/inspector.js:157
+#: src/blocks/post-carousel/inspector.js:91 src/blocks/posts/inspector.js:157
 msgid "External Feed"
 msgstr "Nguồn cấp bên ngoài"
 
@@ -1426,9 +1415,11 @@ msgstr "Bài đăng blog"
 
 #: src/blocks/posts/index.js:27
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
-msgstr "Hiển thị bài viết hoặc một nguồn cấp RSS theo các thẻ xếp chồng hoặc nằm ngang."
+msgstr ""
+"Hiển thị bài viết hoặc một nguồn cấp RSS theo các thẻ xếp chồng hoặc nằm "
+"ngang."
 
-#: src/blocks/posts/inspector.js:129
+#: src/blocks/posts/inspector.js:129 src/blocks/posts/inspector.js:121
 msgid "Thumbnail Size"
 msgstr "Kích cỡ hình thu nhỏ"
 
@@ -1456,13 +1447,15 @@ msgstr "Bốn bảng giá"
 msgid "Change pricing table count"
 msgstr "Thay đổi số bảng giá"
 
+#. translators: %d: a digit 1-3
 #: src/blocks/pricing-table/edit.js:39
 msgid "Plan %d"
 msgstr "Gói %d"
 
 #: src/blocks/pricing-table/index.js:29
 msgid "Add pricing tables to help visitors compare products and plans."
-msgstr "Thêm các bảng giá để giúp khách truy cập so sánh các sản phẩm và các gói."
+msgstr ""
+"Thêm các bảng giá để giúp khách truy cập so sánh các sản phẩm và các gói."
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:112
 msgid "Add features"
@@ -1496,8 +1489,7 @@ msgstr "Một hàng phụ tức thì của dòng."
 msgid "Column Settings"
 msgstr "Các cài đặt của cột"
 
-#: src/blocks/row/column/inspector.js:112
-#: src/blocks/row/inspector.js:158
+#: src/blocks/row/column/inspector.js:112 src/blocks/row/inspector.js:158
 msgid "Space around the container."
 msgstr "Khoảng cách chung quanh vùng chứa."
 
@@ -1554,6 +1546,7 @@ msgid "Row"
 msgstr "Hàng"
 
 #. %s: 'one' 'two' 'three' and 'four'
+#. translators: %s: 'one' 'two' 'three' and 'four'
 #: src/blocks/row/edit.js:205
 msgid "Now select a layout for this %s column row."
 msgstr "Giờ bạn hãy bố cục cho hàng của cột %s này."
@@ -1566,8 +1559,7 @@ msgstr "Chọn số cột cho hàng này."
 msgid "Select Row Columns"
 msgstr "Chọn các cột cho hàng"
 
-#: src/blocks/row/edit.js:236
-#: src/blocks/row/inspector.js:121
+#: src/blocks/row/edit.js:236 src/blocks/row/inspector.js:121
 msgid "Select Row Layout"
 msgstr "Chọn bố cục cho hàng"
 
@@ -1576,8 +1568,12 @@ msgid "Back to Columns"
 msgstr "Quay trở lại các cột"
 
 #: src/blocks/row/index.js:38
-msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
-msgstr "Thêm một trình bao bọc có cấu trúc cho các khối của cột, sau đó thêm khối nội dung bạn muốn cho các cột."
+msgid ""
+"Add a structured wrapper for column blocks, then add content blocks you’d "
+"like to the columns."
+msgstr ""
+"Thêm một trình bao bọc có cấu trúc cho các khối của cột, sau đó thêm khối "
+"nội dung bạn muốn cho các cột."
 
 #: src/blocks/row/inspector.js:153
 msgid "Row Settings"
@@ -1721,18 +1717,15 @@ msgstr "Nền của hình dạng tính bằng pixel"
 msgid "Shape Color"
 msgstr "Màu sắc của hình dạng"
 
-#: src/blocks/share/edit.js:113
-#: src/blocks/share/index.php:132
+#: src/blocks/share/edit.js:113 src/blocks/share/index.php:132
 msgid "Share on Facebook"
 msgstr "Chia sẻ trên Facebook"
 
-#: src/blocks/share/edit.js:121
-#: src/blocks/share/index.php:136
+#: src/blocks/share/edit.js:121 src/blocks/share/index.php:136
 msgid "Share on Twitter"
 msgstr "Chia sẻ trên Twitter"
 
-#: src/blocks/share/edit.js:129
-#: src/blocks/share/index.php:140
+#: src/blocks/share/edit.js:129 src/blocks/share/index.php:140
 msgid "Share on Pinterest"
 msgstr "Chia sẻ trên Pinterest"
 
@@ -1740,29 +1733,26 @@ msgstr "Chia sẻ trên Pinterest"
 msgid "Share on LinkedIn"
 msgstr "Chia sẻ trên LinkedIn"
 
-#: src/blocks/share/edit.js:145
-#: src/blocks/share/index.php:148
+#: src/blocks/share/edit.js:145 src/blocks/share/index.php:148
 msgid "Share via Email"
 msgstr "Chia sẻ qua Email"
 
-#: src/blocks/share/edit.js:153
-#: src/blocks/share/index.php:152
+#: src/blocks/share/edit.js:153 src/blocks/share/index.php:152
 msgid "Share on Tumblr"
 msgstr "Chia sẻ trên Tumblr"
 
-#: src/blocks/share/edit.js:161
-#: src/blocks/share/index.php:156
+#: src/blocks/share/edit.js:161 src/blocks/share/index.php:156
 msgid "Share on Google"
 msgstr "Chia sẻ trên Google"
 
-#: src/blocks/share/edit.js:169
-#: src/blocks/share/index.php:160
+#: src/blocks/share/edit.js:169 src/blocks/share/index.php:160
 msgid "Share on Reddit"
 msgstr "Chia sẻ trên Reddit"
 
 #: src/blocks/share/index.js:25
 msgid "Add social sharing links to help you get likes and shares."
-msgstr "Thêm các liên kết chia sẻ mạng xã hội để giúp bạn được thích và chia sẻ."
+msgstr ""
+"Thêm các liên kết chia sẻ mạng xã hội để giúp bạn được thích và chia sẻ."
 
 #: src/blocks/share/inspector.js:113
 #: src/blocks/social-profiles/inspector.js:117
@@ -1788,31 +1778,26 @@ msgstr "Kích cỡ của nút"
 msgid "Icons"
 msgstr "Các biểu tượng"
 
-#: src/blocks/share/inspector.js:157
-#: src/blocks/social-profiles/edit.js:205
+#: src/blocks/share/inspector.js:157 src/blocks/social-profiles/edit.js:205
 #: src/blocks/social-profiles/index.php:71
 msgid "Twitter"
 msgstr "Twitter"
 
-#: src/blocks/share/inspector.js:162
-#: src/blocks/social-profiles/edit.js:159
+#: src/blocks/share/inspector.js:162 src/blocks/social-profiles/edit.js:159
 #: src/blocks/social-profiles/index.php:67
 msgid "Facebook"
 msgstr "Facebook"
 
-#: src/blocks/share/inspector.js:167
-#: src/blocks/social-profiles/edit.js:299
+#: src/blocks/share/inspector.js:167 src/blocks/social-profiles/edit.js:299
 #: src/blocks/social-profiles/index.php:79
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: src/blocks/share/inspector.js:172
-#: src/blocks/social-profiles/edit.js:347
+#: src/blocks/share/inspector.js:172 src/blocks/social-profiles/edit.js:347
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: src/blocks/share/inspector.js:177
-#: includes/class-coblocks-form.php:234
+#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
 #: includes/class-coblocks-form.php:319
 msgid "Email"
 msgstr "Email"
@@ -1829,13 +1814,11 @@ msgstr "Google"
 msgid "Reddit"
 msgstr "Reddit"
 
-#: src/blocks/share/inspector.js:25
-#: src/blocks/social-profiles/inspector.js:36
+#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:36
 msgid "Share button colors are enabled."
 msgstr "Đã bật chia sẻ màu cho các nút."
 
-#: src/blocks/share/inspector.js:25
-#: src/blocks/social-profiles/inspector.js:37
+#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:37
 msgid "Toggle to use official colors from each social media platform."
 msgstr "Bật tắt để sử dụng màu chính thức từ từng nền tảng phương tiện xã hội."
 
@@ -1940,6 +1923,8 @@ msgid "Remove Background"
 msgstr "Xóa nền"
 
 #: src/components/background/controls.js:96
+#: src/components/background/controls.js:81
+#: src/components/background/controls.js:82
 msgid "Background"
 msgstr "Nền"
 
@@ -2012,6 +1997,7 @@ msgid "Link To"
 msgstr "Liên kết đến"
 
 #. %s: Type of gallery
+#. translators: %s: Type of gallery
 #: src/components/block-gallery/gallery-placeholder.js:71
 msgid "%s Gallery"
 msgstr "Thư viện %s"
@@ -2033,6 +2019,7 @@ msgid "Custom URL"
 msgstr "URL tùy chỉnh"
 
 #: src/components/crop-settings/index.js:275
+#: src/components/crop-settings/index.js:272
 msgid "Crop settings image placeholder"
 msgstr "Cài đặt cắt giữ chỗ hình ảnh"
 
@@ -2061,44 +2048,65 @@ msgid "Select Units"
 msgstr "Chọn các đơn vị"
 
 #. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
+#. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
 #: src/components/dimensions-control/index.js:453
+#: src/components/dimensions-control/index.js:445
 msgid "%s Units"
 msgstr "%s Đơn vị"
 
 #. %s: a texual label
+#. translators: %s: a texual label
 #: src/components/dimensions-control/index.js:468
 msgid "Turn off advanced %s settings"
 msgstr "Tắt các cài đặt %s nâng cao"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:640
+#: src/components/dimensions-control/index.js:512
+#: src/components/dimensions-control/index.js:576
 msgid "%s Top"
 msgstr "%s Phía trên"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:651
+#: src/components/dimensions-control/index.js:523
+#: src/components/dimensions-control/index.js:587
 msgid "%s Right"
 msgstr "%s Bên phải"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:662
+#: src/components/dimensions-control/index.js:534
+#: src/components/dimensions-control/index.js:598
 msgid "%s Bottom"
 msgstr "%s Phía dưới"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:673
+#: src/components/dimensions-control/index.js:545
+#: src/components/dimensions-control/index.js:609
 msgid "%s Left"
 msgstr "%s Bên trái"
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Unsync"
 msgstr "Không đồng bộ hóa"
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Sync"
 msgstr "Đồng bộ hóa"
 
 #: src/components/dimensions-control/index.js:682
+#: src/components/dimensions-control/index.js:554
+#: src/components/dimensions-control/index.js:618
 msgid "Sync Units"
 msgstr "Đồng bộ hóa các đơn vị"
 
@@ -2119,6 +2127,7 @@ msgid "Left"
 msgstr "Bên trái"
 
 #. %s:  a texual label
+#. translators: %s:  a texual label
 #: src/components/dimensions-control/index.js:722
 msgid "Advanced %s settings"
 msgstr "Các cài đặt %s nâng cao"
@@ -2152,6 +2161,7 @@ msgid "Toggle to enable fullscreen mode."
 msgstr "Bật tắt để bật chế độ toàn màn hình."
 
 #. %d: heading level e.g: "1", "2", "3"
+#. translators: %d: heading level e.g: "1", "2", "3"
 #: src/components/heading-toolbar/index.js:18
 msgid "Heading %d"
 msgstr "Đề mục %d"
@@ -2169,6 +2179,7 @@ msgid "Height"
 msgstr "Chiều cao"
 
 #. %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#. translators: %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
 #: src/components/responsive-tabs-control/index.js:65
 msgid "Mobile %s"
 msgstr "Di động %s"
@@ -2246,6 +2257,7 @@ msgid "second"
 msgstr "giây"
 
 #. 1. Speed of the slider, 2: Time until the slide advances
+#. translators: 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Advancing after %1$d %2$s."
 msgstr "Tiếp tục sau %1$d %2$s."
@@ -2407,7 +2419,7 @@ msgstr "Bật tắt để hiển thị nút theo đủ độ rộng."
 msgid "Crop Settings"
 msgstr "Cài đặt cắt"
 
-#: src/formats/uppercase/index.js:35
+#: src/formats/uppercase/index.js:35 src/formats/uppercase/index.js:20
 msgid "Uppercase"
 msgstr "Chữ hoa"
 
@@ -2436,11 +2448,13 @@ msgid "Disable all"
 msgstr "Tắt tất cả"
 
 #. %s: search text
+#. translators: %s: search text
 #: src/sidebars/block-manager/components/options/disable-blocks.js:233
 msgid "No \"%s\" blocks found."
 msgstr "Không tìm thấy khối \"%s\" nào."
 
 #. %s: Plugin title, i.e. CoBlocks
+#. translators: %s: Plugin title, i.e. CoBlocks
 #: src/utils/block-category.js:21
 msgid "%s Galleries"
 msgstr "Các thư viện %s"
@@ -2497,14 +2511,12 @@ msgctxt "block keyword"
 msgid "link"
 msgstr "liên kết"
 
-#: src/blocks/buttons/index.js:31
-#: src/blocks/hero/index.js:43
+#: src/blocks/buttons/index.js:31 src/blocks/hero/index.js:43
 msgctxt "block keyword"
 msgid "cta"
 msgstr "CTA"
 
-#: src/blocks/click-to-tweet/index.js:31
-#: src/blocks/social-profiles/index.js:28
+#: src/blocks/click-to-tweet/index.js:31 src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "share"
 msgstr "chia sẻ"
@@ -2672,8 +2684,7 @@ msgctxt "block keyword"
 msgid "paragraph"
 msgstr "đoạn văn"
 
-#: src/blocks/icon/index.js:35
-#: src/blocks/social-profiles/index.js:28
+#: src/blocks/icon/index.js:35 src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "icons"
 msgstr "các biểu tượng"
@@ -2728,8 +2739,7 @@ msgctxt "block keyword"
 msgid "slider"
 msgstr "thanh trượt"
 
-#: src/blocks/post-carousel/index.js:29
-#: src/blocks/posts/index.js:29
+#: src/blocks/post-carousel/index.js:29 src/blocks/posts/index.js:29
 msgctxt "block keyword"
 msgid "latest"
 msgstr "mới nhất"
@@ -3132,32 +3142,27 @@ msgctxt "block style"
 msgid "Pointed"
 msgstr "Nhọn"
 
-#: src/blocks/share/index.js:30
-#: src/blocks/social-profiles/index.js:30
+#: src/blocks/share/index.js:30 src/blocks/social-profiles/index.js:30
 msgctxt "block style"
 msgid "Mask"
 msgstr "Mặt nạ"
 
-#: src/blocks/share/index.js:31
-#: src/blocks/social-profiles/index.js:31
+#: src/blocks/share/index.js:31 src/blocks/social-profiles/index.js:31
 msgctxt "block style"
 msgid "Icon"
 msgstr "Biểu tượng"
 
-#: src/blocks/share/index.js:32
-#: src/blocks/social-profiles/index.js:32
+#: src/blocks/share/index.js:32 src/blocks/social-profiles/index.js:32
 msgctxt "block style"
 msgid "Text"
 msgstr "Văn bản"
 
-#: src/blocks/share/index.js:33
-#: src/blocks/social-profiles/index.js:33
+#: src/blocks/share/index.js:33 src/blocks/social-profiles/index.js:33
 msgctxt "block style"
 msgid "Icon & Text"
 msgstr "Biểu tượng & Văn bản"
 
-#: src/blocks/share/index.js:34
-#: src/blocks/social-profiles/index.js:34
+#: src/blocks/share/index.js:34 src/blocks/social-profiles/index.js:34
 msgctxt "block style"
 msgid "Circular"
 msgstr "Vòng tròn"
@@ -3200,7 +3205,8 @@ msgstr "Thêm tiêu đề của tính năng"
 #: src/blocks/features/feature/edit.js:32
 msgctxt "content placeholder"
 msgid "This is a feature block that you can use to highlight features."
-msgstr "Đây là khối tính năng mà bạn có thể sử dụng để làm nổi bật các tính năng."
+msgstr ""
+"Đây là khối tính năng mà bạn có thể sử dụng để làm nổi bật các tính năng."
 
 #: src/blocks/hero/edit.js:35
 msgctxt "content placeholder"
@@ -3209,8 +3215,12 @@ msgstr "Thêm đầu trang chính..."
 
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
-msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
-msgstr "Thêm nội dung chính mà thường là phần giới thiệu của trang, kèm theo là một hay hai kêu gọi thao tác."
+msgid ""
+"Add hero content, which is typically an introductory area of a page "
+"accompanied by call to action or two."
+msgstr ""
+"Thêm nội dung chính mà thường là phần giới thiệu của trang, kèm theo là một "
+"hay hai kêu gọi thao tác."
 
 #: src/blocks/hero/edit.js:39
 msgctxt "content placeholder"
@@ -3239,8 +3249,12 @@ msgstr "Thêm nội dung..."
 
 #: src/blocks/media-card/edit.js:47
 msgctxt "content placeholder"
-msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
-msgstr "Thay thế văn bản này với bản sao có mô tả phù hợp với ảnh của thẻ. Sau đó thêm nhiều khối cho thẻ này, chẳng hạn như nút, danh sách hay ảnh."
+msgid ""
+"Replace this text with descriptive copy to go along with the card image. "
+"Then add more blocks to this card, such as buttons, lists or images."
+msgstr ""
+"Thay thế văn bản này với bản sao có mô tả phù hợp với ảnh của thẻ. Sau đó "
+"thêm nhiều khối cho thẻ này, chẳng hạn như nút, danh sách hay ảnh."
 
 #: src/blocks/services/service/edit.js:205
 msgctxt "content placeholder"
@@ -3273,6 +3287,7 @@ msgid "None"
 msgstr "Không có"
 
 #: src/blocks/gallery-collage/inspector.js:84
+#: src/blocks/gallery-collage/inspector.js:56
 msgctxt "abbreviation for \"Short\" size"
 msgid "None"
 msgstr "Không có"
@@ -3282,8 +3297,8 @@ msgctxt "label for small gutter option"
 msgid "Small"
 msgstr "Nhỏ"
 
-#: src/blocks/gallery-collage/inspector.js:89
-#: src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:89 src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:61
 msgctxt "abbreviation for \"Small\" size"
 msgid "S"
 msgstr "S"
@@ -3293,8 +3308,8 @@ msgctxt "label for medium gutter option"
 msgid "Medium"
 msgstr "Trung bình"
 
-#: src/blocks/gallery-collage/inspector.js:94
-#: src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:94 src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:66
 msgctxt "abbreviation for \"Medium\" size"
 msgid "M"
 msgstr "M"
@@ -3304,8 +3319,8 @@ msgctxt "label for large gutter option"
 msgid "Large"
 msgstr "Lớn"
 
-#: src/blocks/gallery-collage/inspector.js:99
-#: src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:99 src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:71
 msgctxt "abbreviation for \"Large\" size"
 msgid "L"
 msgstr "L"
@@ -3445,7 +3460,7 @@ msgctxt "label"
 msgid "Hub"
 msgstr "Hub"
 
-#: src/blocks/icon/svgs.js:208
+#: src/blocks/icon/svgs.js:208 src/blocks/icon/svgs.js:202
 msgctxt "label"
 msgid "Email"
 msgstr "Email"
@@ -3650,7 +3665,7 @@ msgctxt "label"
 msgid "Brush"
 msgstr "Chổi vẽ"
 
-#: src/blocks/icon/svgs.js:109
+#: src/blocks/icon/svgs.js:109 src/blocks/icon/svgs.js:103
 msgctxt "tags"
 msgid "add minus circle insert plus round math"
 msgstr "thêm hình tròn có dấu trừ chèn hình tròn dấu cộng toán học"
@@ -3700,7 +3715,7 @@ msgctxt "tags"
 msgid "rate vote plus favorite like"
 msgstr "đánh giá bình chọn cộng thêm thích, yêu thích nhất"
 
-#: src/blocks/icon/svgs.js:177
+#: src/blocks/icon/svgs.js:177 src/blocks/icon/svgs.js:166
 msgctxt "tags"
 msgid "computer apple montior device pc desk office"
 msgstr "máy tính apple thiết bị giám sát pc để bàn văn phòng"
@@ -3715,7 +3730,7 @@ msgctxt "tags"
 msgid "device apple mac"
 msgstr "thiết bị apple mac"
 
-#: src/blocks/icon/svgs.js:193
+#: src/blocks/icon/svgs.js:193 src/blocks/icon/svgs.js:172
 msgctxt "tags"
 msgid "computer ipad surface apple device pc desk office"
 msgstr "máy tính ipad bề mặt thiết bị apple pc để bàn văn phòng"
@@ -3730,7 +3745,7 @@ msgctxt "tags"
 msgid "music microphone podcast song artist creative media audio"
 msgstr "nhạc micrô podcast bài hát nghệ sĩ sáng truyền thông âm thanh"
 
-#: src/blocks/icon/svgs.js:209
+#: src/blocks/icon/svgs.js:209 src/blocks/icon/svgs.js:203
 msgctxt "tags"
 msgid "email mail os read letter"
 msgstr "email thư os đọc thư"
@@ -3763,7 +3778,9 @@ msgstr "thế giới công chúng toàn cầu trái đất địa điểm bản 
 #: src/blocks/icon/svgs.js:258
 msgctxt "tags"
 msgid "location map public business corporation building town skyscraper"
-msgstr "bản đồ địa điểm công cộng công ty kinh doanh xây dựng thị trấn tòa nhà chọc trời"
+msgstr ""
+"bản đồ địa điểm công cộng công ty kinh doanh xây dựng thị trấn tòa nhà chọc "
+"trời"
 
 #: src/blocks/icon/svgs.js:263
 msgctxt "tags"
@@ -3783,9 +3800,10 @@ msgstr "vui vẻ bữa tiệc kỷ niệm hạnh phục thử món ăn"
 #: src/blocks/icon/svgs.js:280
 msgctxt "tags"
 msgid "petal scent smell nice relax landscape gardening outdoors outside"
-msgstr "ngửi mùi cánh hoa tuyệt vời thư giãn phong cảnh làm vườn ngoài trời bên ngoài"
+msgstr ""
+"ngửi mùi cánh hoa tuyệt vời thư giãn phong cảnh làm vườn ngoài trời bên ngoài"
 
-#: src/blocks/icon/svgs.js:292
+#: src/blocks/icon/svgs.js:292 src/blocks/icon/svgs.js:230
 msgctxt "tags"
 msgid "blocks block box boxes square build widgets"
 msgstr "khối hộp hình vuông công cụ tiện ích xây dựng"
@@ -3813,14 +3831,15 @@ msgstr "ngôn ngữ toàn cầu thế giới diễn văn"
 #: src/blocks/icon/svgs.js:319
 msgctxt "tags"
 msgid "music microphone song artist creative media audio badge"
-msgstr "nhạc micrô podcast bài hát nghệ sĩ sáng tạo truyền thông âm thanh huy hiệu"
+msgstr ""
+"nhạc micrô podcast bài hát nghệ sĩ sáng tạo truyền thông âm thanh huy hiệu"
 
 #: src/blocks/icon/svgs.js:32
 msgctxt "tags"
 msgid "microphone audio beats bose headphones"
 msgstr "micrô âm thanh nhịp tai nghe bose"
 
-#: src/blocks/icon/svgs.js:325
+#: src/blocks/icon/svgs.js:325 src/blocks/icon/svgs.js:286
 msgctxt "tags"
 msgid "flower camera photography artist creative"
 msgstr "hoa máy ảnh nghệ thuật nhiếp ảnh nghệ sĩ sáng tạo"
@@ -3855,25 +3874,32 @@ msgctxt "tags"
 msgid "improve add upload software"
 msgstr "cải tiến thêm phần mềm tải lên"
 
-#: src/blocks/icon/svgs.js:37
+#: src/blocks/icon/svgs.js:37 src/blocks/icon/svgs.js:26
 msgctxt "tags"
 msgid "music microphone song artist creative media audio"
 msgstr "nhạc micrô podcast bài hát nghệ sĩ sáng tạo truyền thông âm thanh"
 
 #: src/blocks/icon/svgs.js:43
 msgctxt "tags"
-msgid "microphone podcast computer device music microphone song artist creative media audio"
-msgstr "micrô podcast máy tính thiết bị âm nhạc loa bài hát nghệ sĩ sáng tạo truyền thông audio"
+msgid ""
+"microphone podcast computer device music microphone song artist creative "
+"media audio"
+msgstr ""
+"micrô podcast máy tính thiết bị âm nhạc loa bài hát nghệ sĩ sáng tạo truyền "
+"thông audio"
 
 #: src/blocks/icon/svgs.js:49
 msgctxt "tags"
 msgid "photo photographer photography camera film creative media"
-msgstr "ảnh nhiếp ảnh gia nghệ thuật nhiếp ảnh máy ảnh phim sáng tạo truyền thông"
+msgstr ""
+"ảnh nhiếp ảnh gia nghệ thuật nhiếp ảnh máy ảnh phim sáng tạo truyền thông"
 
 #: src/blocks/icon/svgs.js:55
 msgctxt "tags"
 msgid "photo photographer photography camera aperture film creative media"
-msgstr "ảnh nhiếp ảnh gia nghệ thuật nhiếp ảnh máy ảnh khẩu độ phim sáng tạo truyền thông"
+msgstr ""
+"ảnh nhiếp ảnh gia nghệ thuật nhiếp ảnh máy ảnh khẩu độ phim sáng tạo truyền "
+"thông"
 
 #: src/blocks/icon/svgs.js:61
 msgctxt "tags"
@@ -3887,10 +3913,14 @@ msgstr "phim quay phim nhiếp ảnh đạo diễn nhà sản xuất truyền th
 
 #: src/blocks/icon/svgs.js:73
 msgctxt "tags"
-msgid "video videography director producer media creative camera photographer photography aperture"
-msgstr "video quay phim nhiếp ảnh đạo diễn nhà sản xuất truyền thông sáng tạo camera nhiếp ảnh gia nhiếp ảnh khẩu độ"
+msgid ""
+"video videography director producer media creative camera photographer "
+"photography aperture"
+msgstr ""
+"video quay phim nhiếp ảnh đạo diễn nhà sản xuất truyền thông sáng tạo camera "
+"nhiếp ảnh gia nhiếp ảnh khẩu độ"
 
-#: src/blocks/icon/svgs.js:85
+#: src/blocks/icon/svgs.js:85 src/blocks/icon/svgs.js:79
 msgctxt "tags"
 msgid "palette design colors artist paint creative media"
 msgstr "bảng thiết kế màu nghệ sĩ sơn sáng tạo truyền thông"
@@ -3965,10 +3995,8 @@ msgctxt "block styles"
 msgid "Checkbox"
 msgstr "Hộp kiểm"
 
-#: src/blocks/post-carousel/edit.js:302
-#: src/blocks/posts/edit.js:437
-#: src/blocks/post-carousel/index.php:185
-#: src/blocks/posts/index.php:202
+#: src/blocks/post-carousel/edit.js:302 src/blocks/posts/edit.js:437
+#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
 msgstr "(không có tiêu đề)"
@@ -4028,18 +4056,21 @@ msgstr "Phía trên bên phải"
 
 #: src/components/background/panel.js:86
 #: src/components/grid-control/index.js:48
+#: src/components/grid-control/index.js:38
 msgctxt "block layout"
 msgid "Center Left"
 msgstr "Ở giữa bên trái"
 
 #: src/components/background/panel.js:87
 #: src/components/grid-control/index.js:49
+#: src/components/grid-control/index.js:39
 msgctxt "block layout"
 msgid "Center Center"
 msgstr "Chính giữa"
 
 #: src/components/background/panel.js:88
 #: src/components/grid-control/index.js:50
+#: src/components/grid-control/index.js:40
 msgctxt "block layout"
 msgid "Center Right"
 msgstr "Ở giữa bên phải"
@@ -4083,7 +4114,8 @@ msgid "Repeat Vertically"
 msgstr "Lặp dọc"
 
 #: src/components/block-gallery/gallery-link-settings.js:80
-msgctxt "HTML attribute that specifies the a relationship between the two pages."
+msgctxt ""
+"HTML attribute that specifies the a relationship between the two pages."
 msgid "Link Rel"
 msgstr "REl của liên kết"
 
@@ -4168,6 +4200,7 @@ msgid "Capitalize"
 msgstr "Viết hoa"
 
 #: src/components/typography-controls/index.js:107
+#: src/components/typography-controls/index.js:80
 msgctxt "typography styles"
 msgid "Normal"
 msgstr "Bình thường"
@@ -4178,6 +4211,7 @@ msgid "Bold"
 msgstr "In đậm"
 
 #: src/components/typography-controls/index.js:91
+#: src/components/typography-controls/index.js:76
 msgctxt "typography styles"
 msgid "Default"
 msgstr "Mặc định"
@@ -4201,8 +4235,14 @@ msgid "https://coblocks.com"
 msgstr "https://coblocks.com"
 
 #. Description of the plugin
-msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
-msgstr "CoBlocks là bộ <strong>khối nội dung giúp xây dựng trang</strong> cho trình biên tập khối WordPress Gutenberg. Các khối của chúng tôi là căn siêu nét để giúp xây dựng các trang phong phú và quyến rũ trong WordPress."
+msgid ""
+"CoBlocks is a suite of professional <strong>page building content blocks</"
+"strong> for the WordPress Gutenberg block editor. Our blocks are hyper-"
+"focused on empowering makers to build beautifully rich pages in WordPress."
+msgstr ""
+"CoBlocks là bộ <strong>khối nội dung giúp xây dựng trang</strong> cho trình "
+"biên tập khối WordPress Gutenberg. Các khối của chúng tôi là căn siêu nét để "
+"giúp xây dựng các trang phong phú và quyến rũ trong WordPress."
 
 #. Author of the plugin
 msgid "GoDaddy"
@@ -4212,8 +4252,7 @@ msgstr "GoDaddy"
 msgid "https://www.godaddy.com"
 msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:84
-#: class-coblocks.php:96
+#: class-coblocks.php:84 class-coblocks.php:96
 msgid "Cheating huh?"
 msgstr "Lừa dối, hở?"
 
@@ -4226,13 +4265,25 @@ msgid "Leave a Review"
 msgstr "Để lại đánh giá"
 
 #: includes/admin/class-coblocks-getting-started-page.php:120
-msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
-msgstr "Cảm ơn bạn đã sử dụng CoBlocks, trình dựng trang cao cấp dành cho trình biên tập khối WordPress mới."
+msgid ""
+"Thanks for choosing CoBlocks, the premier page builder for the new WordPress "
+"block editor."
+msgstr ""
+"Cảm ơn bạn đã sử dụng CoBlocks, trình dựng trang cao cấp dành cho trình biên "
+"tập khối WordPress mới."
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
 #: includes/admin/class-coblocks-getting-started-page.php:126
-msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
-msgstr "Bạn vừa thêm nhiều khối hữu dụng và một bộ công cụ trình dựng trang mới cho trình biên tập WordPress. CoBlocks sẽ cung cấp bộ tính năng thay đổi thế cờ : %1$s mười khối%2$s, một %1$s trải nghiệm trình dựng trang %2$s và %1$s kiểm soát sắp kiểu chữ tùy chỉnh %2$s."
+msgid ""
+"You've just added lots of useful blocks and a new page builder toolkit to "
+"the WordPress editor. CoBlocks gives you a game-changing set of features: "
+"%1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom "
+"typography controls%2$s."
+msgstr ""
+"Bạn vừa thêm nhiều khối hữu dụng và một bộ công cụ trình dựng trang mới cho "
+"trình biên tập WordPress. CoBlocks sẽ cung cấp bộ tính năng thay đổi thế "
+"cờ : %1$s mười khối%2$s, một %1$s trải nghiệm trình dựng trang %2$s và %1$s "
+"kiểm soát sắp kiểu chữ tùy chỉnh %2$s."
 
 #: includes/admin/class-coblocks-getting-started-page.php:133
 msgid "Here are a few videos to help you get started:"
@@ -4259,13 +4310,24 @@ msgstr "Xem cách sử dụng khối Thẻ Truyền thông"
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:152
-msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
-msgstr "Bạn có thích những gì bạn thấy? Vui lòng %1$sĐăng ký kênh YouTube của chúng tôi%2$s và chúng tôi sẽ cho bạn biết khi video hướng dẫn mới được phát hành."
+msgid ""
+"Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let "
+"you know when new video tutorials are released."
+msgstr ""
+"Bạn có thích những gì bạn thấy? Vui lòng %1$sĐăng ký kênh YouTube của chúng "
+"tôi%2$s và chúng tôi sẽ cho bạn biết khi video hướng dẫn mới được phát hành."
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:163
-msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
-msgstr "Nếu bạn có bất kỳ câu hỏi hay phản hồi gì, hãy cho chúng tôi biết trên %1$sTwitter%4$s hoặc %2$snhóm Facebook %4$s của chúng tôi. Bên cạnh đó, bạn hãy %3$sđăng ký bản tin của chúng tôi%4$s nếu bạn muốn cập nhật tin tức mới nhất và sắp phát hành tại CoBlocks."
+msgid ""
+"If you have any questions or feedback, let us know on %1$sTwitter%4$s or our "
+"%2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you "
+"want to stay up to date with what's new and upcoming at CoBlocks."
+msgstr ""
+"Nếu bạn có bất kỳ câu hỏi hay phản hồi gì, hãy cho chúng tôi biết trên "
+"%1$sTwitter%4$s hoặc %2$snhóm Facebook %4$s của chúng tôi. Bên cạnh đó, bạn "
+"hãy %3$sđăng ký bản tin của chúng tôi%4$s nếu bạn muốn cập nhật tin tức mới "
+"nhất và sắp phát hành tại CoBlocks."
 
 #: includes/admin/class-coblocks-getting-started-page.php:172
 msgid "Enjoy!"
@@ -4322,6 +4384,17 @@ msgstr "Tin nhắn của bạn đã được gửi:"
 #: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
 msgstr "Khóa API của bản đồ Google để hiển thị bản đồ"
+
+#: src/blocks/post-carousel/index.php:40 src/blocks/posts/index.php:40
+#, fuzzy
+msgid "RSS Error:"
+msgstr "Lỗi"
+
+#: src/blocks/post-carousel/index.php:51 src/blocks/posts/index.php:51
+msgid ""
+"An error has occurred, which probably means the feed is down. Try again "
+"later."
+msgstr ""
 
 #: src/blocks/share/index.php:144
 msgid "Share on Linkedin"
