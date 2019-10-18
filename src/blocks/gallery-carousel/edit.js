@@ -142,9 +142,7 @@ class GalleryCarouselEdit extends Component {
 
 	onThumbnailClick( e ) {
 		console.log( e );
-		// this.flkty.on( 'settle', () => {
-		// 	console.log( `current index is ${ this.flkty.selectedIndex }` );
-		// } );
+		// might be able to control the selected element by tracking the clicked image.
 	}
 
 	render() {
@@ -256,12 +254,6 @@ class GalleryCarouselEdit extends Component {
 		const flickityStyles = {
 			height: height ? height + 'px' : undefined,
 		};
-
-		// const classes = classnames(
-		// 	className, {
-		// 		'has-responsive-height': responsiveHeight,
-		// 	}
-		// );
 
 		if ( ! hasImages ) {
 			return (
