@@ -50,7 +50,7 @@ function BackgroundControls( props ) {
 										icon="edit"
 										role="menuitem"
 										onClick={ open } >
-										{ __( 'Edit Background' ) }
+										{ __( 'Edit Background', 'coblocks' ) }
 									</MenuItem>
 								) }
 							/>
@@ -69,7 +69,7 @@ function BackgroundControls( props ) {
 										openPopover: ! openPopover,
 									} );
 								} } >
-								{ __( 'Remove Background' ) }
+								{ __( 'Remove Background', 'coblocks' ) }
 							</MenuItem>
 						</Popover>
 					) }
@@ -78,8 +78,8 @@ function BackgroundControls( props ) {
 							className="components-dropdown-menu__toggle"
 							icon={ icons.background }
 							aria-haspopup="true"
-							label={ __( 'Background' ) }
-							tooltip={ __( 'Background' ) }
+							label={ __( 'Background', 'coblocks' ) }
+							tooltip={ __( 'Background', 'coblocks' ) }
 							onClick={ () => setAttributes( { openPopover: ! openPopover } ) }
 						>
 							<span className="components-dropdown-menu__indicator" />
@@ -93,7 +93,7 @@ function BackgroundControls( props ) {
 							render={ ( { open } ) => (
 								<IconButton
 									className="components-toolbar__control"
-									label={ __( 'Background' ) }
+									label={ __( 'Background', 'coblocks' ) }
 									icon={ icons.background }
 									onClick={ open }
 								/>

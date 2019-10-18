@@ -52,7 +52,7 @@ class Controls extends Component {
 									render={ ( { open } ) => (
 										<IconButton
 											className="components-toolbar__control"
-											label={ __( 'Edit gallery' ) }
+											label={ __( 'Edit gallery', 'coblocks' ) }
 											icon="edit"
 											onClick={ open }
 										/>

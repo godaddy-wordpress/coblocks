@@ -68,8 +68,8 @@ class GalleryPlaceholder extends Component {
 					icon={ ! hasImages && <BlockIcon icon={ this.props.icon } /> }
 					labels={ {
 						/* translators: %s: Type of gallery */
-						title: ! hasImages && sprintf( __( '%s Gallery' ), this.props.label ),
-						instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.' ),
+						title: ! hasImages && sprintf( __( '%s Gallery', 'coblocks' ), this.props.label ),
+						instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.', 'coblocks' ),
 					} }
 					onSelect={ this.onSelectImages }
 					accept="image/*"

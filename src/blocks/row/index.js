@@ -34,10 +34,10 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Row', 'block name' ),
-	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.' ),
+	title: _x( 'Row', 'block name', 'coblocks' ),
+	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.', 'coblocks' ),
 	icon,
-	keywords: [	_x( 'rows', 'block keyword' ), _x( 'columns', 'block keyword' ), _x( 'layouts', 'block keyword' )	],
+	keywords: [	_x( 'rows', 'block keyword', 'coblocks' ), _x( 'columns', 'block keyword', 'coblocks' ), _x( 'layouts', 'block keyword', 'coblocks' )	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		anchor: true,

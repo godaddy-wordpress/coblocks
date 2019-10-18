@@ -23,10 +23,10 @@ const { __, _x } = wp.i18n;
 const { name, category, supports } = metadata;
 
 const settings = {
-	title: _x( 'Post Carousel', 'block name' ),
-	description: __( 'Display posts or an external blog feed as a carousel.' ),
+	title: _x( 'Post Carousel', 'block name', 'coblocks' ),
+	description: __( 'Display posts or an external blog feed as a carousel.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'posts', 'block keyword' ), _x( 'slider', 'block keyword' ), _x( 'latest', 'block keyword' ) ],
+	keywords: [ _x( 'posts', 'block keyword', 'coblocks' ), _x( 'slider', 'block keyword', 'coblocks' ), _x( 'latest', 'block keyword', 'coblocks' ) ],
 	supports,
 	transforms,
 	edit,

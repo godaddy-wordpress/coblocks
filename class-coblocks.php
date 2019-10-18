@@ -168,7 +168,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		public function block_localization() {
 			if ( function_exists( 'wp_set_script_translations' ) ) {
-				wp_set_script_translations( 'coblocks-editor', 'coblocks' );
+				wp_set_script_translations( 'coblocks-editor', 'coblocks', COBLOCKS_PLUGIN_DIR . '/languages' );
 			}
 		}
 

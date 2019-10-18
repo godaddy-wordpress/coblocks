@@ -37,11 +37,11 @@ class Inspector extends Component {
 	}
 
 	getThumbnailNavigationHelp( checked ) {
-		return checked ? __( 'Showing thumbnail navigation.' ) : __( 'Toggle to show thumbnails.' );
+		return checked ? __( 'Showing thumbnail navigation.', 'coblocks' ) : __( 'Toggle to show thumbnails.', 'coblocks' );
 	}
 
 	getResponsiveHeightHelp( checked ) {
-		return checked ? __( 'Percentage based height is activated.' ) : __( 'Toggle for percentage based height.' );
+		return checked ? __( 'Percentage based height is activated.', 'coblocks' ) : __( 'Toggle for percentage based height.', 'coblocks' );
 	}
 
 	render() {
@@ -65,29 +65,29 @@ class Inspector extends Component {
 			isSelected && (
 				<Fragment>
 					<InspectorControls>
-						<PanelBody title={ __( 'Carousel Settings' ) } >
+						<PanelBody title={ __( 'Carousel Settings', 'coblocks' ) } >
 							<SizeControl { ...this.props }
 								type={ 'grid' }
-								label={ __( 'Size' ) }
+								label={ __( 'Size', 'coblocks' ) }
 								onChange={ this.setSizeControl }
 								value={ gridSize }
 								resetValue={ 'xlrg' }
 							/>
 							{ gridSize !== null && ( align === 'wide' || align === 'full' ) &&
 								<ResponsiveTabsControl { ...this.props }
-									label={ __( 'Gutter' ) }
+									label={ __( 'Gutter', 'coblocks' ) }
 									max={ 20 }
 								/>
 							}
 							{ gridSize !== 'xlrg' && ! align &&
 								<ResponsiveTabsControl { ...this.props }
-									label={ __( 'Gutter' ) }
+									label={ __( 'Gutter', 'coblocks' ) }
 									max={ 20 }
 								/>
 							}
 							{ gutter > 0 &&
 								<RangeControl
-									label={ __( 'Rounded Corners' ) }
+									label={ __( 'Rounded Corners', 'coblocks' ) }
 									value={ radius }
 									onChange={ this.setRadiusTo }
 									min={ 0 }
@@ -97,7 +97,7 @@ class Inspector extends Component {
 							}
 							{ ! responsiveHeight &&
 								<RangeControl
-									label={ __( 'Height in pixels' ) }
+									label={ __( 'Height in pixels', 'coblocks' ) }
 									value={ height }
 									onChange={ this.setHeightTo }
 									min={ 200 }
@@ -106,7 +106,7 @@ class Inspector extends Component {
 								/>
 							}
 							<ToggleControl
-								label={ __( 'Thumbnails' ) }
+								label={ __( 'Thumbnails', 'coblocks' ) }
 								checked={ !! thumbnails }
 								onChange={ () => setAttributes( { thumbnails: ! thumbnails } ) }
 								help={ this.getThumbnailNavigationHelp }
@@ -116,7 +116,7 @@ class Inspector extends Component {
 					</InspectorControls>
 					<InspectorAdvancedControls>
 						<ToggleControl
-							label={ __( 'Responsive Height' ) }
+							label={ __( 'Responsive Height', 'coblocks' ) }
 							checked={ !! responsiveHeight }
 							onChange={ () => setAttributes( { responsiveHeight: ! responsiveHeight } ) }
 							help={ this.getResponsiveHeightHelp }

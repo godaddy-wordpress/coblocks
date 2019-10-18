@@ -9,11 +9,11 @@ const Inspector = props => {
 	return (
 		<InspectorControls>
 			<PanelBody
-				title={ __( 'Logos Settings' ) }
+				title={ __( 'Logos Settings', 'coblocks' ) }
 			>
 				<ToggleControl
-					label={ __( 'Black & White' ) }
-					help={ __( 'Toggle to add a black and white filter.' ) }
+					label={ __( 'Black & White', 'coblocks' ) }
+					help={ __( 'Toggle to add a black and white filter.', 'coblocks' ) }
 					checked={ props.attributes.grayscale }
 					onChange={ () => props.setAttributes( { grayscale: ! props.attributes.grayscale } ) }
 				/>

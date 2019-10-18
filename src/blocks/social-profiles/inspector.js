@@ -33,8 +33,8 @@ import {
 class Inspector extends Component {
 	getHasColorsHelp( checked ) {
 		return checked ?
-			__( 'Share button colors are enabled.' ) :
-			__( 'Toggle to use official colors from each social media platform.' );
+			__( 'Share button colors are enabled.', 'coblocks' ) :
+			__( 'Toggle to use official colors from each social media platform.', 'coblocks' );
 	}
 
 	render() {
@@ -73,26 +73,26 @@ class Inspector extends Component {
 		const isCircularStyle = includes( className, 'is-style-circular' );
 
 		const options = [
-			{ value: 'sml', label: __( 'Small' ) },
-			{ value: 'med', label: __( 'Medium' ) },
-			{ value: 'lrg', label: __( 'Large' ) },
+			{ value: 'sml', label: __( 'Small', 'coblocks' ) },
+			{ value: 'med', label: __( 'Medium', 'coblocks' ) },
+			{ value: 'lrg', label: __( 'Large', 'coblocks' ) },
 		];
 
 		const defaultColors = [
 			{
 				value: blockBackgroundColor.color,
 				onChange: setBlockBackgroundColor,
-				label: __( 'Background Color' ),
+				label: __( 'Background Color', 'coblocks' ),
 			},
 			{
 				value: backgroundColor.color,
 				onChange: setBackgroundColor,
-				label: __( 'Button Color' ),
+				label: __( 'Button Color', 'coblocks' ),
 			},
 			{
 				value: textColor.color,
 				onChange: setTextColor,
-				label: ! isTextStyle ? __( 'Icon Color' ) : __( 'Text Color' ),
+				label: ! isTextStyle ? __( 'Icon Color', 'coblocks' ) : __( 'Text Color', 'coblocks' ),
 			},
 		];
 
@@ -100,28 +100,28 @@ class Inspector extends Component {
 			{
 				value: blockBackgroundColor.color,
 				onChange: setBlockBackgroundColor,
-				label: __( 'Background Color' ),
+				label: __( 'Background Color', 'coblocks' ),
 			},
 			{
 				value: backgroundColor.color,
 				onChange: setBackgroundColor,
-				label: __( 'Icon Color' ),
+				label: __( 'Icon Color', 'coblocks' ),
 			},
 		];
 
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Icon Settings' ) }>
+					<PanelBody title={ __( 'Icon Settings', 'coblocks' ) }>
 						<ToggleControl
-							label={ __( 'Social Colors' ) }
+							label={ __( 'Social Colors', 'coblocks' ) }
 							checked={ !! hasColors }
 							onChange={ () => setAttributes( { hasColors: ! hasColors } ) }
 							help={ this.getHasColorsHelp }
 						/>
 						{ ! isMaskStyle && ! isCircularStyle && (
 							<RangeControl
-								label={ __( 'Rounded Corners' ) }
+								label={ __( 'Rounded Corners', 'coblocks' ) }
 								value={ borderRadius }
 								onChange={ value => setAttributes( { borderRadius: value } ) }
 								min={ 0 }
@@ -130,7 +130,7 @@ class Inspector extends Component {
 						) }
 						{ ( isMaskStyle || isCircularStyle ) && (
 							<RangeControl
-								label={ __( 'Icon Size' ) }
+								label={ __( 'Icon Size', 'coblocks' ) }
 								value={ iconSize }
 								onChange={ value => setAttributes( { iconSize: value } ) }
 								min={ 16 }
@@ -139,7 +139,7 @@ class Inspector extends Component {
 						) }
 						{ isCircularStyle && (
 							<RangeControl
-								label={ __( 'Circle Size' ) }
+								label={ __( 'Circle Size', 'coblocks' ) }
 								value={ padding }
 								onChange={ value => setAttributes( { padding: value } ) }
 								min={ 10 }
@@ -148,7 +148,7 @@ class Inspector extends Component {
 						) }
 						{ ! isMaskStyle && ! isCircularStyle && (
 							<SelectControl
-								label={ __( 'Button Size' ) }
+								label={ __( 'Button Size', 'coblocks' ) }
 								value={ size }
 								options={ options }
 								onChange={ value => setAttributes( { size: value } ) }
@@ -156,7 +156,7 @@ class Inspector extends Component {
 							/>
 						) }
 					</PanelBody>
-					<PanelBody title={ __( 'Profile Links' ) } initialOpen={ false }>
+					<PanelBody title={ __( 'Profile Links', 'coblocks' ) } initialOpen={ false }>
 						<div className="components-social-links-list">
 							<TextControl
 								label="Facebook"
@@ -203,7 +203,7 @@ class Inspector extends Component {
 
 					{ ! hasColors && (
 						<PanelColorSettings
-							title={ __( 'Color Settings' ) }
+							title={ __( 'Color Settings', 'coblocks' ) }
 							initialOpen={ false }
 							colorSettings={ ! isMaskStyle ? defaultColors : maskColors }
 						>

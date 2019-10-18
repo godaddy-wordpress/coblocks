@@ -134,7 +134,7 @@ export default class Gist extends Component {
 				<Placeholder
 					key="placeholder"
 					icon={ icons.github }
-					label={ __( 'Loading Gist' ) }
+					label={ __( 'Loading Gist', 'coblocks' ) }
 				>
 					<Spinner />
 				</Placeholder>

@@ -153,7 +153,7 @@ class Edit extends Component {
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.replaceImage }
-				label={ __( 'Drop image to replace' ) }
+				label={ __( 'Drop image to replace', 'coblocks' ) }
 			/>
 		);
 
@@ -166,7 +166,7 @@ class Edit extends Component {
 								icon="no-alt"
 								onClick={ () => setAttributes( { imageUrl: '' } ) }
 								className="coblocks-gallery-item__button"
-								label={ __( 'Remove Image' ) }
+								label={ __( 'Remove Image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
 						</div>
@@ -202,13 +202,13 @@ class Edit extends Component {
 			[
 				'core/heading',
 				{
-					placeholder: _x( 'Write title...', 'content placeholder' ),
+					placeholder: _x( 'Write title...', 'content placeholder', 'coblocks' ),
 					level: attributes.headingLevel,
 				},
 			],
 			[
 				'core/paragraph',
-				{ placeholder: _x( 'Write description...', 'content placeholder' ) },
+				{ placeholder: _x( 'Write description...', 'content placeholder', 'coblocks' ) },
 			],
 		];
 

@@ -58,7 +58,7 @@ class CoBlocksFieldOption extends Component {
 					type="text"
 					className="coblocks-option__input"
 					value={ option }
-					placeholder={ __( 'Write option…' ) }
+					placeholder={ __( 'Write option…', 'coblocks' ) }
 					onChange={ this.onChangeOption }
 					onKeyDown={ this.onKeyPress }
 					ref={ this.textInput }
@@ -67,7 +67,7 @@ class CoBlocksFieldOption extends Component {
 					<IconButton
 						className="coblocks-option__remove"
 						icon="trash"
-						label={ __( 'Remove Option' ) }
+						label={ __( 'Remove Option', 'coblocks' ) }
 						onClick={ this.onDeleteOption }
 					/>
 				) }
