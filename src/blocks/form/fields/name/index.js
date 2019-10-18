@@ -17,7 +17,7 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	title: _x( 'Name', 'block name' ),
-	description: __( 'A text field for collecting the first and last names.' ),
+	description: __( 'A text field for collecting the first and last names.', 'coblocks' ),
 	icon,
 	keywords: [ _x( 'first name', 'block keyword' ), _x( 'last name', 'block keyword' ), 'email' ],
 	parent: [ 'coblocks/form' ],
