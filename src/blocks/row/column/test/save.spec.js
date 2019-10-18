@@ -28,11 +28,9 @@ describe( name, () => {
 	} );
 
 	it( 'should render', () => {
-		block.attributes.columns = 2;
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
-		expect( serializedBlock ).toContain( 'data-columns="2"' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );
