@@ -3,7 +3,6 @@
  */
 import classnames from 'classnames';
 import filter from 'lodash/filter';
-import Flickity from 'react-flickity-component';
 
 /**
  * Internal dependencies
@@ -236,6 +235,11 @@ class GalleryCarouselEdit extends Component {
 			marginTop: gutter > 0 && ! responsiveHeight ? ( gutter / 2 ) + 'px' : undefined,
 		};
 
+		const captionClasses = classnames(
+			'coblocks-gallery--caption',
+			'coblocks-gallery--primary-caption', {}
+		);
+
 		const navFigureClasses = classnames(
 			'coblocks--figure', {
 				[ `has-margin-left-${ gutter }` ]: gutter > 0,
@@ -244,6 +248,16 @@ class GalleryCarouselEdit extends Component {
 				[ `has-margin-right-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
 		);
+
+		const flickityStyles = {
+			height: height ? height + 'px' : undefined,
+		};
+
+		// const classes = classnames(
+		// 	className, {
+		// 		'has-responsive-height': responsiveHeight,
+		// 	}
+		// );
 
 		if ( ! hasImages ) {
 			return (
@@ -297,13 +311,10 @@ class GalleryCarouselEdit extends Component {
 					{ dropZone }
 					<div className={ className }>
 						<div className={ innerClasses }>
-							<Flickity
+							<div
 								className={ flickityClasses }
-								disableImagesLoaded={ false }
-								flickityRef={ c => this.flkty = c }
-								options={ flickityOptions }
-								reloadOnUpdate={ true }
-								updateOnEachImageLoad={ true }
+								style={ responsiveHeight ? undefined : flickityStyles }
+								data-flickity={ JSON.stringify( flickityOptions ) }
 							>
 								{ images.map( ( img, index ) => {
 									// translators: %1$d is the order number of the image, %2$d is the total number of images
@@ -341,48 +352,35 @@ class GalleryCarouselEdit extends Component {
 										/>
 									</div>
 								) }
-							</Flickity>
+							</div>
 						</div>
 					</div>
 				</ResizableBox>
-				<div className={ className }>
-					<div
-						className={ innerClasses }
-						style={ navStyles }
-					>
-						<Flickity
-							className={ navClasses }
-							options={ navOptions }
-							disableImagesLoaded={ false }
-							reloadOnUpdate={ true }
-							flickityRef={ c => this.flkty = c }
-							updateOnEachImageLoad={ true }
-						>
-							{ images.map( ( image ) => {
-								return (
-									<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
-										<figure className={ navFigureClasses }>
-											<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
-										</figure>
-									</div>
-								);
-							} ) }
-						</Flickity>
-					</div>
-				</div>
-				{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
-					<RichText
-						tagName="figcaption"
-						placeholder={ __( 'Write caption…' ) }
-						value={ primaryCaption }
-						className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-						unstableOnFocus={ this.onFocusCaption }
-						onChange={ ( value ) => setAttributes( { primaryCaption: value } ) }
-						isSelected={ this.state.captionFocused }
-						keepPlaceholderOnFocus
-						inlineToolbar
-					/>
-				) }
+
+				{ thumbnails ?
+					<div className={ className }>
+						<div className={ innerClasses }>
+							<div
+								className={ navClasses }
+								style={ navStyles }
+								data-flickity={ JSON.stringify( navOptions ) }
+							>
+								{ images.map( ( image ) => {
+									return (
+										<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
+											<figure className={ navFigureClasses }>
+												<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
+											</figure>
+										</div>
+									);
+								} ) }
+							</div>
+						</div>
+					</div> : null
+				}
+
+				{ ! RichText.isEmpty( primaryCaption ) && <RichText.Content tagName="figcaption" className={ captionClasses } value={ primaryCaption } /> }
+
 			</Fragment>
 		);
 	}
