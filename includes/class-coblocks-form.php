@@ -446,12 +446,11 @@ class CoBlocks_Form {
 		$the_options = array_filter( $atts['options'] );
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
-		$label_slug = sanitize_title( $label );
-		$filed_name = isset( $atts['label'] ) ? $atts['label'] : 'radio';
+		$label_slug = sanitize_title( $label ) !== 'choose-one' ? sanitize_title( $label ) : 'radio';
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label_slug );
 
 		foreach ( $the_options as $value ) {
 
@@ -459,7 +458,7 @@ class CoBlocks_Form {
 				'<label class="coblocks-radio-label">
 					<input type="radio" name="field-%1$s[value]" value="%2$s" class="radio"> %3$s
 				</label>',
-				esc_attr( $filed_name ),
+				esc_attr( $label_slug ),
 				esc_attr( $value ),
 				esc_html( $value )
 			);
