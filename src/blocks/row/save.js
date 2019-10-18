@@ -51,9 +51,9 @@ function Save( { attributes } ) {
 			[ textClass ]: textClass,
 			[ `has-${ gutter }-gutter` ]: gutter,
 			'has-padding': paddingSize && paddingSize !== 'no',
-			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
+			[ `has-${ paddingSize }-padding` ]: paddingSize && ( ! [ 'no', 'advanced' ].includes( paddingSize ) ),
 			'has-margin': marginSize && marginSize !== 'no',
-			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
+			[ `has-${ marginSize }-margin` ]: marginSize && ( ! [ 'no', 'advanced' ].includes( marginSize ) ),
 			'is-stacked-on-mobile': isStackedOnMobile,
 		} );
 

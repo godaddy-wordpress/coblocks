@@ -35,7 +35,6 @@ function Deprecation( { attributes } ) {
 	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 	let classlist = {
-		[ `coblocks-row--${ id }` ]: id,
 		'has-text-color': textColor || customTextColor,
 		[ textClass ]: textClass,
 	};
@@ -55,9 +54,9 @@ function Deprecation( { attributes } ) {
 		...BackgroundClasses( attributes ), {
 			[ `has-${ gutter }-gutter` ]: gutter,
 			'has-padding': paddingSize && paddingSize !== 'no',
-			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
+			[ `has-${ paddingSize }-padding` ]: paddingSize && ( ! [ 'no', 'advanced' ].includes( paddingSize ) ),
 			'has-margin': marginSize && marginSize !== 'no',
-			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
+			[ `has-${ marginSize }-margin` ]: marginSize && ( ! [ 'no', 'advanced' ].includes( marginSize ) ),
 			'is-stacked-on-mobile': isStackedOnMobile,
 		} );
 
@@ -98,10 +97,14 @@ function DeprecationVideo( { attributes } ) {
 	const textClass = getColorClassName( 'color', textColor );
 	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-	const classes = classnames( {
-		[ `coblocks-row--${ id }` ]: id,
-		[ `coblocks-row-${ coblocks.id }` ]: coblocks && ( typeof coblocks.id !== 'undefined' ),
-	} );
+	let classlist = {};
+
+	if ( coblocks && ( typeof coblocks.id !== 'undefined' ) ) {
+		classlist = Object.assign( classlist, [ `coblocks-row-${ coblocks.id }` ] );
+		classlist = Object.assign( classlist, [ `coblocks-row--${ id }` ] );
+	}
+
+	const classes = classnames( classlist );
 
 	const innerClasses = classnames(
 		'wp-block-coblocks-row__inner',
@@ -110,9 +113,9 @@ function DeprecationVideo( { attributes } ) {
 			[ textClass ]: textClass,
 			[ `has-${ gutter }-gutter` ]: gutter,
 			'has-padding': paddingSize && paddingSize !== 'no',
-			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
+			[ `has-${ paddingSize }-padding` ]: paddingSize && ( ! [ 'no', 'advanced' ].includes( paddingSize ) ),
 			'has-margin': marginSize && marginSize !== 'no',
-			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
+			[ `has-${ marginSize }-margin` ]: marginSize && ( ! [ 'no', 'advanced' ].includes( marginSize ) ),
 			'is-stacked-on-mobile': isStackedOnMobile,
 		} );
 
