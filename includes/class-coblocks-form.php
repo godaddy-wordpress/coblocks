@@ -457,8 +457,9 @@ class CoBlocks_Form {
 
 			printf(
 				'<label class="coblocks-radio-label">
-					<input type="radio" name="field-radio[value]" value="%1$s" class="radio"> %2$s
+					<input type="radio" name="field-%1$s[value]" value="%2$s" class="radio"> %3$s
 				</label>',
+				esc_attr( $filed_name ),
 				esc_attr( $value ),
 				esc_html( $value )
 			);
