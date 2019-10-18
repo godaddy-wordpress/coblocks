@@ -1,14 +1,14 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.15.0\n"
+"Project-Id-Version: CoBlocks 1.16.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-10-16T16:33:01+00:00\n"
+"POT-Creation-Date: 2019-10-17T20:17:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -96,15 +96,15 @@ msgstr "การทำให้รองรับ Internet Explorer โดย�
 
 #: src/blocks/alert/index.js:29
 msgid "Provide contextual feedback messages or notices."
-msgstr "Provide contextual feedback messages or notices."
+msgstr "แสดงประกาศแจ้งหรือข้อความเสนอแนะตามสถานการณ์"
 
 #: src/blocks/alert/index.js:45
 msgid "This is an alert block"
-msgstr "This is an alert block"
+msgstr "นี่เป็นบล็อคแจ้งเตือน"
 
 #: src/blocks/alert/index.js:46
 msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
-msgstr "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
+msgstr "การแจ้งเตือนคือข้อความที่แสดงนอกส่วนของเนื้อหาปกติ การแจ้งเตือนจะให้ข้อเสนอแนะตามสถานการณ์ ปกติแล้วจะขอให้ผู้อ่านดำเนินการอย่างใดอย่างหนึ่ง"
 
 #: src/blocks/alert/inspector.js:60
 #: src/blocks/author/inspector.js:61
@@ -124,29 +124,29 @@ msgstr "สีข้อความ"
 
 #: src/blocks/author/controls.js:36
 msgid "Edit avatar"
-msgstr "Edit avatar"
+msgstr "แก้ไขรูปประจำตัว"
 
 #. placeholder text used for the author name
 #: src/blocks/author/edit.js:127
 msgid "Write author name…"
-msgstr "Write author name…"
+msgstr "เขียนชื่อผู้เขียน..."
 
 #. placeholder text used for the biography
 #: src/blocks/author/edit.js:141
 msgid "Write a biography that distills objective credibility and authority to your readers…"
-msgstr "Write a biography that distills objective credibility and authority to your readers…"
+msgstr "เขียนชีวประวัติที่สรุปความน่าเชื่อถือที่เป็นกลางและอำนาจหน้าที่ให้ผู้อ่านทราบ..."
 
 #: src/blocks/author/index.js:29
 msgid "Add an author biography to build credibility and authority."
-msgstr "Add an author biography to build credibility and authority."
+msgstr "เพิ่มชีวประวัติผู้เขียนเพื่อสร้างความน่าเชื่อถือและอำนาจหน้าที่"
 
 #: src/blocks/author/index.js:35
 msgid "Born to express, not to impress. A maker making the world I want."
-msgstr "Born to express, not to impress. A maker making the world I want."
+msgstr "เกิดขึ้นเพื่อแสดงออก ไม่ใช่เพื่อสร้างความประทับใจ ผู้สร้างจะสร้างโลกที่ฉันต้องการ"
 
 #: src/blocks/author/inspector.js:41
 msgid "Author Settings"
-msgstr "Author Settings"
+msgstr "การตั้งค่าผู้เขียน"
 
 #: src/blocks/buttons/index.js:29
 msgid "Prompt visitors to take action with multiple buttons, side by side."
@@ -187,7 +187,7 @@ msgstr "เพิ่มคำพูดอ้างอิงสำหรับผ
 
 #: src/blocks/click-to-tweet/index.js:34
 msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
-msgstr "The easiest way to promote and advertise your blog, website, and business on Twitter."
+msgstr "วิธีที่ง่ายที่สุดในการโปรโมทและโฆษณาบล็อก เว็บไซต์ และธุรกิจทาง Twitter"
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
@@ -224,7 +224,7 @@ msgstr "สี"
 #: src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
 msgid "Add as background"
-msgstr "Add as background"
+msgstr "เพิ่มเป็นพื้นหลัง"
 
 #: src/blocks/features/feature/index.js:29
 msgid "A singular child column within a parent features block."
@@ -340,7 +340,7 @@ msgstr "เพิ่มชื่อเรื่อง..."
 #: src/blocks/food-and-drinks/food-item/inspector.js:45
 #: src/blocks/food-and-drinks/food-item/save.js:66
 msgid "Popular"
-msgstr "Popular"
+msgstr "ยอดที่นิยม"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:256
 #: src/blocks/food-and-drinks/food-item/inspector.js:60
@@ -565,7 +565,7 @@ msgstr "การบันทึก"
 #: src/blocks/form/edit.js:330
 #: src/blocks/map/inspector.js:231
 msgid "Save"
-msgstr "Save"
+msgstr "บันทึก"
 
 #: src/blocks/form/edit.js:345
 #: src/blocks/map/inspector.js:240
@@ -574,19 +574,19 @@ msgstr "นำออก"
 
 #: src/blocks/form/fields/coblocks-option.js:61
 msgid "Write option…"
-msgstr "Write option…"
+msgstr "เขียนตัวเลือก..."
 
 #: src/blocks/form/fields/coblocks-option.js:70
 msgid "Remove Option"
-msgstr "Remove Option"
+msgstr "ลบตัวเลือกออก..."
 
 #: src/blocks/form/fields/date/index.js:21
 msgid "A field for requesting date selections with a date picker."
-msgstr "A field for requesting date selections with a date picker."
+msgstr "ฟิลด์สำหรับขอวันที่เลือกด้วยระบบเลือกวันที่"
 
 #: src/blocks/form/fields/email/index.js:20
 msgid "A field for collecting a validated email address."
-msgstr "A field for collecting a validated email address."
+msgstr "ฟิลด์สำหรับเก็บที่อยู่อีเมลที่ผ่านการตรวจสอบแล้ว"
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
@@ -599,7 +599,7 @@ msgstr "ต้องระบุ"
 
 #: src/blocks/form/fields/multi-field.js:102
 msgid "Add Option"
-msgstr "Add Option"
+msgstr "เพิ่มตัวเลือก"
 
 #: src/blocks/form/fields/name/edit.js:69
 msgid "Name Field Settings"
@@ -619,15 +619,15 @@ msgstr "เปลี่ยนให้เพิ่มช่องนามสก
 
 #: src/blocks/form/fields/name/index.js:20
 msgid "A text field for collecting the first and last names."
-msgstr "A text field for collecting the first and last names."
+msgstr "ฟิลด์ข้อความสำหรับเก็บชื่อและนามสกุล"
 
 #: src/blocks/form/fields/phone/index.js:21
 msgid "A phone number to allow visitors to give you a phone number."
-msgstr "A phone number to allow visitors to give you a phone number."
+msgstr "หมายเลขโทรศัพท์ที่อนุญาตให้ผู้เข้าชมแจ้งหมายเลขโทรศัพท์ให้คุณทราบ"
 
 #: src/blocks/form/fields/radio/index.js:21
 msgid "A field with multiple options where only one choice can be made."
-msgstr "A field with multiple options where only one choice can be made."
+msgstr "ฟิลด์ที่มีหลายตัวเลือกซึ่งสามารถเลือกได้เพียงรายการเดียว"
 
 #: src/blocks/form/fields/textarea/index.js:20
 msgid "A text box for longer responses."
@@ -635,11 +635,11 @@ msgstr "กล่องข้อความสำหรับการตอบ
 
 #: src/blocks/form/index.js:27
 msgid "Add a contact form to your page."
-msgstr "Add a contact form to your page."
+msgstr "เพิ่มแบบฟอร์มข้อมูลติดต่อในหน้าของคุณ"
 
 #: src/blocks/form/index.js:36
 msgid "Subject example"
-msgstr "Subject example"
+msgstr "ตัวอย่างหัวเรื่อง"
 
 #: src/blocks/form/submit-button.js:107
 msgid "Add text…"
@@ -679,31 +679,31 @@ msgstr "แสดงหลายภาพในแกลเลอรีแบบ
 
 #: src/blocks/gallery-carousel/inspector.js:109
 msgid "Thumbnails"
-msgstr "Thumbnails"
+msgstr "รูปขนาดย่อ"
 
 #: src/blocks/gallery-carousel/inspector.js:119
 msgid "Responsive Height"
-msgstr "Responsive Height"
+msgstr "ความสูงที่ปรับตามขนาดหน้าจอได้"
 
 #: src/blocks/gallery-carousel/inspector.js:40
 msgid "Showing thumbnail navigation."
-msgstr "Showing thumbnail navigation."
+msgstr "การแสดงการนำทางรูปขนาดย่อ"
 
 #: src/blocks/gallery-carousel/inspector.js:40
 msgid "Toggle to show thumbnails."
-msgstr "Toggle to show thumbnails."
+msgstr "สลับไปแสดงรูปขนาดย่อ"
 
 #: src/blocks/gallery-carousel/inspector.js:44
 msgid "Percentage based height is activated."
-msgstr "Percentage based height is activated."
+msgstr "เปิดใช้งานความสูงเป็นเปอร์เซ็นต์"
 
 #: src/blocks/gallery-carousel/inspector.js:44
 msgid "Toggle for percentage based height."
-msgstr "Toggle for percentage based height."
+msgstr "สลับไปที่ความสูงเป็นเปอร์เซ็นต์"
 
 #: src/blocks/gallery-carousel/inspector.js:68
 msgid "Carousel Settings"
-msgstr "Carousel Settings"
+msgstr "การตั้งค่าแถบหมุน"
 
 #: src/blocks/gallery-carousel/inspector.js:71
 #: src/blocks/icon/inspector.js:173
@@ -728,15 +728,15 @@ msgstr "นำไปใช้"
 
 #: src/blocks/gallery-collage/edit.js:183
 msgid "Write caption..."
-msgstr "Write caption..."
+msgstr "เขียนคำบรรยาย..."
 
 #: src/blocks/gallery-collage/index.js:34
 msgid "Assemble images into a beautiful collage gallery."
-msgstr "Assemble images into a beautiful collage gallery."
+msgstr "นำรูปภาพมาประกอบกันเป็นแกลเลอรีภาพปะติดที่สวยงาม"
 
 #: src/blocks/gallery-collage/inspector.js:105
 msgid "Collage Settings"
-msgstr "Collage Settings"
+msgstr "การตั้งค่าภาพปะติด"
 
 #: src/blocks/gallery-collage/inspector.js:128
 msgid "Shadow"
@@ -776,16 +776,16 @@ msgstr "แสดงหลายภาพในแกลเลอรีแบบ
 #: src/blocks/gallery-masonry/inspector.js:53
 #: src/blocks/gallery-stacked/inspector.js:56
 msgid "Image lightbox is enabled."
-msgstr "Image lightbox is enabled."
+msgstr "เปิดใช้งานกล่องไฟรูปภาพแล้ว"
 
 #: src/blocks/gallery-masonry/inspector.js:53
 #: src/blocks/gallery-stacked/inspector.js:56
 msgid "Toggle to enable the image lightbox."
-msgstr "Toggle to enable the image lightbox."
+msgstr "สลับเพื่อเปิดกล่องไฟรูปภาพ"
 
 #: src/blocks/gallery-masonry/inspector.js:73
 msgid "Masonry Settings"
-msgstr "Masonry Settings"
+msgstr "การตั้งค่ารายการแบบเรียงอิฐ"
 
 #: src/blocks/gallery-masonry/inspector.js:76
 msgid "Column Size"
@@ -798,7 +798,7 @@ msgstr "เพิ่มมุมโค้งมนให้กับรายก
 #: src/blocks/gallery-masonry/inspector.js:92
 #: src/blocks/gallery-stacked/inspector.js:123
 msgid "Lightbox"
-msgstr "Lightbox"
+msgstr "กล่องไฟ"
 
 #: src/blocks/gallery-stacked/edit.js:168
 msgid "Stacked"
@@ -822,7 +822,7 @@ msgstr "เปลี่ยนให้ใส่ภาพเต็มความ
 
 #: src/blocks/gallery-stacked/inspector.js:80
 msgid "Stacked Settings"
-msgstr "Stacked Settings"
+msgstr "การตั้งค่ารายการแบบเรียงซ้อน"
 
 #: src/blocks/gallery-stacked/inspector.js:83
 msgid "Fullwidth Images"
@@ -896,7 +896,7 @@ msgstr "กำลังโหลดกิสต์"
 
 #: src/blocks/gist/index.js:29
 msgid "Embed GitHub gists by adding a gist link."
-msgstr "Embed GitHub gists by adding a gist link."
+msgstr "ฝังกิสต์ของ GitHub โดยเพิ่มลิงก์ของกิสต์"
 
 #: src/blocks/gist/inspector.js:31
 msgid "Showing gist meta data."
@@ -924,7 +924,7 @@ msgstr "เปลี่ยนเค้าโครง"
 
 #: src/blocks/hero/edit.js:152
 msgid "Add background to hero"
-msgstr "Add background to hero"
+msgstr "เพิ่มพื้นหลังให้ฮีโร่"
 
 #: src/blocks/hero/index.js:41
 msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
@@ -987,11 +987,11 @@ msgstr "เพิ่มข้อความที่เน้น..."
 
 #: src/blocks/highlight/index.js:28
 msgid "Draw attention and emphasize important narrative."
-msgstr "Draw attention and emphasize important narrative."
+msgstr "ดึงดูดความสนใจและเน้นคำบรรยายที่สำคัญ"
 
 #: src/blocks/highlight/index.js:33
 msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
-msgstr "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
+msgstr "เพิ่มลูกเล่นเน้นข้อความลงในข้อความย่อหน้าเพื่อดึงดูดความสนใจและเน้นคำบรรยายที่สำคัญ"
 
 #: src/blocks/icon/icon-size-select.js:30
 #: src/blocks/row/inspector.js:102
@@ -1001,7 +1001,7 @@ msgstr "ใหญ่มาก"
 
 #: src/blocks/icon/icon-size-select.js:79
 msgid "Choose icon size preset"
-msgstr "Choose icon size preset"
+msgstr "เลือกตั้งค่าขนาดไอคอนล่วงหน้า"
 
 #: src/blocks/icon/index.js:33
 msgid "Add a stylized graphic symbol to communicate something more."
@@ -1015,7 +1015,7 @@ msgstr "การตั้งค่าไอคอน"
 
 #: src/blocks/icon/inspector.js:168
 msgid "Reset icon size"
-msgstr "Reset icon size"
+msgstr "รีเซ็ตขนาดไอคอน"
 
 #: src/blocks/icon/inspector.js:170
 #: src/components/dimensions-control/index.js:470
@@ -1025,7 +1025,7 @@ msgstr "รีเซ็ต"
 
 #: src/blocks/icon/inspector.js:198
 msgid "Apply custom size"
-msgstr "Apply custom size"
+msgstr "ใช้ขนาดที่กำหนดเอง"
 
 #: src/blocks/icon/inspector.js:201
 msgid "Custom"
@@ -1132,7 +1132,7 @@ msgstr "ยกเลิก"
 
 #: src/blocks/map/index.js:28
 msgid "Add an address or location to drop a pin on a Google map."
-msgstr "Add an address or location to drop a pin on a Google map."
+msgstr "เพิ่มตำแหน่งหรือที่อยู่เพื่อปักหมุดบน Google Map"
 
 #: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
@@ -1220,11 +1220,11 @@ msgstr "คีย์ API ของ Google Maps"
 
 #: src/blocks/map/inspector.js:212
 msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
-msgstr "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgstr "เพิ่มคีย์ API ของ Google Maps การอัปเดตคีย์ API นี้จะตั้งค่าแผนที่ทั้งหมดของคุณให้ใช้คีย์ใหม่"
 
 #: src/blocks/map/inspector.js:215
 msgid "Get a key"
-msgstr "Get a key"
+msgstr "รับคีย์"
 
 #: src/blocks/map/inspector.js:216
 msgid "Need help?"
@@ -1300,37 +1300,37 @@ msgstr "แก้ไขสื่อ"
 #: src/blocks/post-carousel/edit.js:123
 #: src/blocks/posts/edit.js:247
 msgid "Edit RSS URL"
-msgstr "Edit RSS URL"
+msgstr "แก้ไข URL ของ RSS"
 
 #: src/blocks/post-carousel/edit.js:178
 msgid "Post Carousel"
-msgstr "Post Carousel"
+msgstr "โพสต์แถบหมุน"
 
 #: src/blocks/post-carousel/edit.js:184
 #: src/blocks/posts/edit.js:295
 msgid "No posts found. Start publishing or add posts from an %s feed."
-msgstr "No posts found. Start publishing or add posts from an %s feed."
+msgstr "ไม่พบโพสต์ใดๆ เริ่มเผยแพร่หรือเพิ่มโพสต์จากฟีด %s"
 
 #: src/blocks/post-carousel/edit.js:187
 #: src/blocks/posts/edit.js:298
 msgid "Retrieve an External Feed"
-msgstr "Retrieve an External Feed"
+msgstr "เรียกข้อมูลฟีดภายนอก"
 
 #: src/blocks/post-carousel/edit.js:193
 #: src/blocks/posts/edit.js:304
 msgid "Use External Feed"
-msgstr "Use External Feed"
+msgstr "ใช้ฟีดภายนอก"
 
 #. %s: RSS
 #: src/blocks/post-carousel/edit.js:216
 #: src/blocks/posts/edit.js:332
 msgid "%s Feed"
-msgstr "%s Feed"
+msgstr "ฟีด %s"
 
 #: src/blocks/post-carousel/edit.js:217
 #: src/blocks/posts/edit.js:333
 msgid "%s URLs are generally located at the /feed/ directory of a site."
-msgstr "%s URLs are generally located at the /feed/ directory of a site."
+msgstr "โดยทั่วไปแล้วจะพบ URL %s ได้ในไดเรกทอรี /feed/ ของเว็บไซต์"
 
 #: src/blocks/post-carousel/edit.js:221
 #: src/blocks/posts/edit.js:337
@@ -1340,67 +1340,67 @@ msgstr "https://example.com/feed…"
 #: src/blocks/post-carousel/edit.js:227
 #: src/blocks/posts/edit.js:343
 msgid "Use URL"
-msgstr "Use URL"
+msgstr "ใช้ URL"
 
 #: src/blocks/post-carousel/edit.js:320
 #: src/blocks/posts/edit.js:463
-#: src/blocks/post-carousel/index.php:366
+#: src/blocks/post-carousel/index.php:368
 #: src/blocks/posts/index.php:385
 msgid "Read more"
 msgstr "อ่านเพิ่มเติม"
 
 #: src/blocks/post-carousel/index.js:27
 msgid "Display posts or an external blog feed as a carousel."
-msgstr "Display posts or an external blog feed as a carousel."
+msgstr "แสดงโพสต์หรือฟีดบล็อกภายนอกเป็นแถบหมุน"
 
 #: src/blocks/post-carousel/inspector.js:108
 #: src/blocks/posts/inspector.js:174
 msgid "Number of posts"
-msgstr "Number of posts"
+msgstr "จำนวนโพสต์"
 
 #: src/blocks/post-carousel/inspector.js:38
 msgid "Post Carousel Settings"
-msgstr "Post Carousel Settings"
+msgstr "การตั้งค่าแถบหมุนของโพสต์"
 
 #: src/blocks/post-carousel/inspector.js:41
 #: src/blocks/posts/inspector.js:81
 msgid "Post Date"
-msgstr "Post Date"
+msgstr "วันที่โพสต์"
 
 #: src/blocks/post-carousel/inspector.js:45
 #: src/blocks/posts/inspector.js:85
 msgid "Showing the publish date."
-msgstr "Showing the publish date."
+msgstr "แสดงวันที่เผยแพร่"
 
 #: src/blocks/post-carousel/inspector.js:46
 #: src/blocks/posts/inspector.js:86
 msgid "Toggle to show the publish date."
-msgstr "Toggle to show the publish date."
+msgstr "สลับไปแสดงวันที่เผยแพร่"
 
 #: src/blocks/post-carousel/inspector.js:51
 #: src/blocks/posts/inspector.js:91
 msgid "Post Content"
-msgstr "Post Content"
+msgstr "เนื้อหาของโพสต์"
 
 #: src/blocks/post-carousel/inspector.js:55
 #: src/blocks/posts/inspector.js:95
 msgid "Showing the post content."
-msgstr "Showing the post content."
+msgstr "แสดงเนื้อหาของโพสต์"
 
 #: src/blocks/post-carousel/inspector.js:56
 #: src/blocks/posts/inspector.js:96
 msgid "Toggle to show the post content."
-msgstr "Toggle to show the post content."
+msgstr "สลับไปแสดงเนื้อหาของโพสต์"
 
 #: src/blocks/post-carousel/inspector.js:62
 #: src/blocks/posts/inspector.js:102
 msgid "Max words in content"
-msgstr "Max words in content"
+msgstr "จำนวนคำสูงสุดในเนื้อหา"
 
 #: src/blocks/post-carousel/inspector.js:86
 #: src/blocks/posts/inspector.js:152
 msgid "Feed Settings"
-msgstr "Feed Settings"
+msgstr "‌‌การตั้งค่าฟีด"
 
 #: src/blocks/post-carousel/inspector.js:90
 #: src/blocks/posts/inspector.js:156
@@ -1410,15 +1410,15 @@ msgstr "บล็อกของฉัน"
 #: src/blocks/post-carousel/inspector.js:91
 #: src/blocks/posts/inspector.js:157
 msgid "External Feed"
-msgstr "External Feed"
+msgstr "ฟีดภายนอก"
 
 #: src/blocks/posts/edit.js:260
 msgid "Image on left"
-msgstr "Image on left"
+msgstr "รูปภาพอยู่ทางซ้าย"
 
 #: src/blocks/posts/edit.js:265
 msgid "Image on right"
-msgstr "Image on right"
+msgstr "รูปภาพอยู่ทางขวา"
 
 #: src/blocks/posts/edit.js:289
 msgid "Blog Posts"
@@ -1426,35 +1426,35 @@ msgstr "โพสต์บนบล็อก"
 
 #: src/blocks/posts/index.js:27
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
-msgstr "Display posts or an RSS feed as stacked or horizontal cards."
+msgstr "แสดงโพสต์หรือฟีด RSS เป็นแบบเรียงซ้อนหรือแบบการ์ดแนวนอน"
 
 #: src/blocks/posts/inspector.js:129
 msgid "Thumbnail Size"
-msgstr "Thumbnail Size"
+msgstr "ขนาดของรูปขนาดย่อ"
 
 #: src/blocks/posts/inspector.js:78
 msgid "Posts Settings"
-msgstr "Posts Settings"
+msgstr "การตั้งค่าโพสต์"
 
 #: src/blocks/pricing-table/controls.js:17
 msgid "One Pricing Table"
-msgstr "One Pricing Table"
+msgstr "หนึ่งตารางราคา"
 
 #: src/blocks/pricing-table/controls.js:22
 msgid "Two Pricing Tables"
-msgstr "Two Pricing Tables"
+msgstr "สองตารางราคา"
 
 #: src/blocks/pricing-table/controls.js:27
 msgid "Three Pricing Tables"
-msgstr "Three Pricing Tables"
+msgstr "สามตารางราคา"
 
 #: src/blocks/pricing-table/controls.js:32
 msgid "Four Pricing Tables"
-msgstr "Four Pricing Tables"
+msgstr "สี่ตารางราคา"
 
 #: src/blocks/pricing-table/controls.js:62
 msgid "Change pricing table count"
-msgstr "Change pricing table count"
+msgstr "เปลี่ยนจำนวนตารางราคา"
 
 #: src/blocks/pricing-table/edit.js:39
 msgid "Plan %d"
@@ -1462,7 +1462,7 @@ msgstr "แผน %d"
 
 #: src/blocks/pricing-table/index.js:29
 msgid "Add pricing tables to help visitors compare products and plans."
-msgstr "Add pricing tables to help visitors compare products and plans."
+msgstr "เพิ่มตารางราคาเพื่อช่วยให้ผู้เข้าชมเปรียบเทียบผลิตภัณฑ์และแผนบริการได้"
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:112
 msgid "Add features"
@@ -1482,11 +1482,11 @@ msgstr "$"
 
 #: src/blocks/pricing-table/pricing-table-item/index.js:27
 msgid "A pricing table to help visitors compare products and plans."
-msgstr "A pricing table to help visitors compare products and plans."
+msgstr "ตารางราคาที่จะช่วยให้ผู้เข้าชมเปรียบเทียบผลิตภัณฑ์และแผนบริการได้"
 
 #: src/blocks/row/column/edit.js:90
 msgid "Add background to column"
-msgstr "Add background to column"
+msgstr "เพิ่มพื้นหลังให้คอลัมน์"
 
 #: src/blocks/row/column/index.js:30
 msgid "An immediate child of a row."
@@ -1507,7 +1507,7 @@ msgstr "ความกว้าง"
 
 #: src/blocks/row/controls.js:74
 msgid "Change row block layout"
-msgstr "Change row block layout"
+msgstr "เปลี่ยนเค้าโครงบล็อคแบบแถว"
 
 #: src/blocks/row/edit.js:121
 msgid "one"
@@ -1527,7 +1527,7 @@ msgstr "สี่"
 
 #: src/blocks/row/edit.js:169
 msgid "Add background to row"
-msgstr "Add background to row"
+msgstr "เพิ่มพื้นหลังให้แถว"
 
 #: src/blocks/row/edit.js:174
 msgid "One Column"
@@ -1591,43 +1591,43 @@ msgstr "ไม่มี"
 
 #: src/blocks/row/layouts.js:13
 msgid "Equal Split"
-msgstr "Equal Split"
+msgstr "แบ่งเท่ากัน"
 
 #: src/blocks/row/layouts.js:14
 msgid "Two Thirds / One Third"
-msgstr "Two Thirds / One Third"
+msgstr "สองในสาม / หนึ่งในสาม"
 
 #: src/blocks/row/layouts.js:15
 msgid "One Third / Two Thirds"
-msgstr "One Third / Two Thirds"
+msgstr "หนึ่งในสาม / สองในสาม"
 
 #: src/blocks/row/layouts.js:16
 msgid "Three Quarters / Quarter"
-msgstr "Three Quarters / Quarter"
+msgstr "สามในสี่ / หนึ่งในสี่"
 
 #: src/blocks/row/layouts.js:17
 msgid "Quarter / Three Quarters"
-msgstr "Quarter / Three Quarters"
+msgstr "หนึ่งในสี่ / สามในสี่"
 
 #: src/blocks/row/layouts.js:20
 msgid "Thirds"
-msgstr "Thirds"
+msgstr "แบ่งสามส่วน"
 
 #: src/blocks/row/layouts.js:21
 msgid "Half / Quarter / Quarter"
-msgstr "Half / Quarter / Quarter"
+msgstr "ครึ่ง / หนึ่งในสี่ / หนึ่งในสี่"
 
 #: src/blocks/row/layouts.js:22
 msgid "Quarter / Quarter/ Half"
-msgstr "Quarter / Quarter/ Half"
+msgstr "หนึ่งในสี่ / หนึ่งในสี่ / ครึ่ง"
 
 #: src/blocks/row/layouts.js:23
 msgid "Quarter / Half / Quarter"
-msgstr "Quarter / Half / Quarter"
+msgstr "หนึ่งในสี่ / ครึ่ง / หนึ่งในสี่"
 
 #: src/blocks/row/layouts.js:24
 msgid "One Fifth/ Three Fifths / One Fifth"
-msgstr "One Fifth/ Three Fifths / One Fifth"
+msgstr "หนึ่งในห้า / สามในห้า / หนึ่งในห้า"
 
 #: src/blocks/row/layouts.js:27
 msgid "Quarters"
@@ -1635,11 +1635,11 @@ msgstr "ไตรมาส"
 
 #: src/blocks/row/layouts.js:28
 msgid "Two Fifths / Fifth / Fifth / Fifth"
-msgstr "Two Fifths / Fifth / Fifth / Fifth"
+msgstr "สองในห้า / หนึ่งในห้า / หนึ่งในห้า / หนึ่งในห้า"
 
 #: src/blocks/row/layouts.js:29
 msgid "Fifth / Fifth / Fifth / Two Fifths"
-msgstr "Fifth / Fifth / Fifth / Two Fifths"
+msgstr "หนึ่งในห้า / หนึ่งในห้า / หนึ่งในห้า / สองในห้า"
 
 #: src/blocks/services/edit.js:44
 msgid "Square"
@@ -1722,17 +1722,17 @@ msgid "Shape Color"
 msgstr "สีรูปร่าง"
 
 #: src/blocks/share/edit.js:113
-#: src/blocks/share/index.php:133
+#: src/blocks/share/index.php:132
 msgid "Share on Facebook"
 msgstr "แชร์ใน Facebook"
 
 #: src/blocks/share/edit.js:121
-#: src/blocks/share/index.php:137
+#: src/blocks/share/index.php:136
 msgid "Share on Twitter"
 msgstr "แชร์ใน Twitter"
 
 #: src/blocks/share/edit.js:129
-#: src/blocks/share/index.php:141
+#: src/blocks/share/index.php:140
 msgid "Share on Pinterest"
 msgstr "แชร์ใน Pinterest"
 
@@ -1741,22 +1741,22 @@ msgid "Share on LinkedIn"
 msgstr "แชร์ใน LinkedIn"
 
 #: src/blocks/share/edit.js:145
-#: src/blocks/share/index.php:149
+#: src/blocks/share/index.php:148
 msgid "Share via Email"
 msgstr "แชร์ทางอีเมล"
 
 #: src/blocks/share/edit.js:153
-#: src/blocks/share/index.php:153
+#: src/blocks/share/index.php:152
 msgid "Share on Tumblr"
 msgstr "แชร์ใน Tumblr"
 
 #: src/blocks/share/edit.js:161
-#: src/blocks/share/index.php:157
+#: src/blocks/share/index.php:156
 msgid "Share on Google"
 msgstr "แชร์ใน Google"
 
 #: src/blocks/share/edit.js:169
-#: src/blocks/share/index.php:161
+#: src/blocks/share/index.php:160
 msgid "Share on Reddit"
 msgstr "แชร์ใน Reddit"
 
@@ -1790,19 +1790,19 @@ msgstr "ไอคอน"
 
 #: src/blocks/share/inspector.js:157
 #: src/blocks/social-profiles/edit.js:205
-#: src/blocks/social-profiles/index.php:72
+#: src/blocks/social-profiles/index.php:71
 msgid "Twitter"
 msgstr "Twitter"
 
 #: src/blocks/share/inspector.js:162
 #: src/blocks/social-profiles/edit.js:159
-#: src/blocks/social-profiles/index.php:68
+#: src/blocks/social-profiles/index.php:67
 msgid "Facebook"
 msgstr "Facebook"
 
 #: src/blocks/share/inspector.js:167
 #: src/blocks/social-profiles/edit.js:299
-#: src/blocks/social-profiles/index.php:80
+#: src/blocks/social-profiles/index.php:79
 msgid "Pinterest"
 msgstr "Pinterest"
 
@@ -1813,7 +1813,7 @@ msgstr "LinkedIn"
 
 #: src/blocks/share/inspector.js:177
 #: includes/class-coblocks-form.php:234
-#: includes/class-coblocks-form.php:321
+#: includes/class-coblocks-form.php:319
 msgid "Email"
 msgstr "อีเมล"
 
@@ -1860,7 +1860,7 @@ msgid "Add Instagram Profile"
 msgstr "เพิ่มโปรไฟล์ Instagram"
 
 #: src/blocks/social-profiles/edit.js:251
-#: src/blocks/social-profiles/index.php:76
+#: src/blocks/social-profiles/index.php:75
 msgid "Instagram"
 msgstr "Instagram"
 
@@ -1889,7 +1889,7 @@ msgid "Add YouTube Profile"
 msgstr "เพิ่มโปรไฟล์ YouTube"
 
 #: src/blocks/social-profiles/edit.js:393
-#: src/blocks/social-profiles/index.php:89
+#: src/blocks/social-profiles/index.php:88
 msgid "YouTube"
 msgstr "YouTube"
 
@@ -1902,7 +1902,7 @@ msgid "Add Yelp Profile"
 msgstr "เพิ่มโปรไฟล์ Yelp"
 
 #: src/blocks/social-profiles/edit.js:439
-#: src/blocks/social-profiles/index.php:93
+#: src/blocks/social-profiles/index.php:92
 msgid "Yelp"
 msgstr "Yelp"
 
@@ -1915,7 +1915,7 @@ msgid "Add Houzz Profile"
 msgstr "เพิ่มโปรไฟล์ Houzz"
 
 #: src/blocks/social-profiles/edit.js:485
-#: src/blocks/social-profiles/index.php:97
+#: src/blocks/social-profiles/index.php:96
 msgid "Houzz"
 msgstr "Houzz"
 
@@ -1925,7 +1925,7 @@ msgstr "https://houzz.com/"
 
 #: src/blocks/social-profiles/index.js:25
 msgid "Grow your audience with links to social media profiles."
-msgstr "Grow your audience with links to social media profiles."
+msgstr "เพิ่มจำนวนผู้เข้าชมด้วยลิงก์ไปยังโปรไฟล์โซเชียลมีเดีย"
 
 #: src/blocks/social-profiles/inspector.js:159
 msgid "Profile Links"
@@ -2034,27 +2034,27 @@ msgstr "URL ที่กำหนดเอง"
 
 #: src/components/crop-settings/index.js:275
 msgid "Crop settings image placeholder"
-msgstr "Crop settings image placeholder"
+msgstr "การตั้งค่าครอบตัดตัวยึดรูปภาพ"
 
 #: src/components/crop-settings/index.js:304
 msgid "Image Orientation"
-msgstr "Image Orientation"
+msgstr "การวางแนวรูปภาพ"
 
 #: src/components/crop-settings/index.js:310
 msgid "Rotate counter-clockwise"
-msgstr "Rotate counter-clockwise"
+msgstr "หมุนทวนเข็มนาฬิกา"
 
 #: src/components/crop-settings/index.js:316
 msgid "Rotate clockwise"
-msgstr "Rotate clockwise"
+msgstr "หมุนตามเข็มนาฬิกา"
 
 #: src/components/crop-settings/index.js:325
 msgid "Reset image cropping options"
-msgstr "Reset image cropping options"
+msgstr "รีเซ็ตตัวเลือกการครอบตัดรูปภาพ"
 
 #: src/components/crop-settings/index.js:327
 msgid "Reset All"
-msgstr "Reset All"
+msgstr "รีเซ็ตทั้งหมด"
 
 #: src/components/dimensions-control/index.js:442
 msgid "Select Units"
@@ -2203,7 +2203,7 @@ msgstr "ห้าวินาที"
 
 #: src/components/slider-panel/autoplay-options.js:15
 msgid "Six Seconds"
-msgstr "Six Seconds"
+msgstr "หกวินาที"
 
 #: src/components/slider-panel/autoplay-options.js:16
 msgid "Seven Seconds"
@@ -2223,7 +2223,7 @@ msgstr "สิบวินาที"
 
 #: src/components/slider-panel/index.js:102
 msgid "Free Scroll"
-msgstr "Free Scroll"
+msgstr "เลื่อนอิสระ"
 
 #: src/components/slider-panel/index.js:108
 msgid "Arrow Navigation"
@@ -2235,7 +2235,7 @@ msgstr "การนำทางด้วยจุด"
 
 #: src/components/slider-panel/index.js:120
 msgid "Align Cells"
-msgstr "Align Cells"
+msgstr "จัดแนวเซลล์"
 
 #: src/components/slider-panel/index.js:24
 msgid "seconds"
@@ -2257,11 +2257,11 @@ msgstr "ไปที่ภาพนิ่งต่อไปโดยอัตโ
 
 #: src/components/slider-panel/index.js:31
 msgid "Dragging and flicking enabled."
-msgstr "Dragging and flicking enabled."
+msgstr "เปิดใช้งานการลากและสะบัด"
 
 #: src/components/slider-panel/index.js:31
 msgid "Toggle to enable drag functionality."
-msgstr "Toggle to enable drag functionality."
+msgstr "สลับไปเปิดใช้งานฟังก์ชันการลาก"
 
 #: src/components/slider-panel/index.js:35
 msgid "Showing slide navigation arrows."
@@ -2273,7 +2273,7 @@ msgstr "เปลี่ยนให้แสดงลูกศรนำทาง
 
 #: src/components/slider-panel/index.js:39
 msgid "Showing dot navigation."
-msgstr "Showing dot navigation."
+msgstr "การแสดงการนำทางด้วยจุด"
 
 #: src/components/slider-panel/index.js:39
 msgid "Toggle to show dot navigation."
@@ -2281,27 +2281,27 @@ msgstr "เปลี่ยนให้แสดงการนำทางด้
 
 #: src/components/slider-panel/index.js:43
 msgid "Aligning slides to the left."
-msgstr "Aligning slides to the left."
+msgstr "การจัดแนวสไลด์ให้ชิดซ้าย"
 
 #: src/components/slider-panel/index.js:43
 msgid "Aligning slides to the center."
-msgstr "Aligning slides to the center."
+msgstr "การจัดแนวสไลด์ให้อยู่ตรงกลาง"
 
 #: src/components/slider-panel/index.js:46
 msgid "Pausing autoplay when hovering."
-msgstr "Pausing autoplay when hovering."
+msgstr "การหยุดการเล่นอัตโนมัติขณะเลื่อนเมาส์"
 
 #: src/components/slider-panel/index.js:46
 msgid "Toggle to pause autoplay when hovered."
-msgstr "Toggle to pause autoplay when hovered."
+msgstr "สลับไปหยุดการเล่นอัตโนมัติขณะเลื่อนเมาส์"
 
 #: src/components/slider-panel/index.js:50
 msgid "Scrolling without fixed slides enabled."
-msgstr "Scrolling without fixed slides enabled."
+msgstr "เปิดใช้งานการเลื่อนโดยที่สไลด์ไม่ตายตัว"
 
 #: src/components/slider-panel/index.js:50
 msgid "Toggle to scroll without fixed slides."
-msgstr "Toggle to scroll without fixed slides."
+msgstr "สลับไปเป็นการเลื่อนโดยที่สไลด์ไม่ตายตัว"
 
 #: src/components/slider-panel/index.js:72
 msgid "Slider Settings"
@@ -2317,7 +2317,7 @@ msgstr "ความเร็วในการเปลี่ยน"
 
 #: src/components/slider-panel/index.js:88
 msgid "Pause on Hover"
-msgstr "Pause on Hover"
+msgstr "หยุดเมื่อเลื่อนเมาส์"
 
 #: src/components/slider-panel/index.js:96
 msgid "Draggable"
@@ -2373,11 +2373,11 @@ msgstr "เอาช่องว่างด้านบนออก"
 
 #: src/extensions/advanced-controls/index.js:135
 msgid "Toggle to add top margin back."
-msgstr "Toggle to add top margin back."
+msgstr "สลับไปเพิ่มขอบด้านบนกลับคืน"
 
 #: src/extensions/advanced-controls/index.js:135
 msgid "Toggle to remove any top margin."
-msgstr "Toggle to remove any top margin."
+msgstr "สลับไปลบขอบด้านบนใดๆ ออก"
 
 #: src/extensions/advanced-controls/index.js:140
 msgid "Remove Bottom Spacing"
@@ -2385,11 +2385,11 @@ msgstr "เอาช่องว่างด้านล่างออก"
 
 #: src/extensions/advanced-controls/index.js:163
 msgid "Toggle to add bottom margin back."
-msgstr "Toggle to add bottom margin back."
+msgstr "สลับไปเพิ่มขอบด้านล่างกลับคืน"
 
 #: src/extensions/advanced-controls/index.js:163
 msgid "Toggle to remove any bottom margin."
-msgstr "Toggle to remove any bottom margin."
+msgstr "สลับไปลบขอบด้านล่างใดๆ ออก"
 
 #: src/extensions/button-controls/index.js:71
 msgid "Display Fullwidth"
@@ -2403,9 +2403,9 @@ msgstr "การแสดงให้เต็มความกว้าง"
 msgid "Toggle to display button as full width."
 msgstr "เปลี่ยนให้แสดงปุ่มเต็มความกว้าง"
 
-#: src/extensions/image-crop/index.js:169
+#: src/extensions/image-crop/index.js:172
 msgid "Crop Settings"
-msgstr "Crop Settings"
+msgstr "การตั้งค่าการครอบตัด"
 
 #: src/formats/uppercase/index.js:35
 msgid "Uppercase"
@@ -2452,8 +2452,8 @@ msgstr "เปิดให้แสดงผล"
 
 #: src/blocks/accordion/accordion-item/edit.js:65
 msgctxt "Accordion is the block name"
-msgid "Add accordion title..."
-msgstr "เพิ่มชื่อแอคคอร์เดียน..."
+msgid "Write accordion item title..."
+msgstr "Write accordion item title..."
 
 #: src/blocks/accordion/accordion-item/index.js:26
 msgctxt "This is an inner block for the Accordion Block."
@@ -2543,7 +2543,7 @@ msgstr "ปฏิทิน"
 #: src/blocks/form/fields/date/index.js:20
 msgctxt "block keyword"
 msgid "day month year"
-msgstr "day month year"
+msgstr "วันเดือนปี"
 
 #: src/blocks/form/fields/email/index.js:22
 msgctxt "block keyword"
@@ -2568,12 +2568,12 @@ msgstr "นามสกุล"
 #: src/blocks/form/fields/phone/index.js:20
 msgctxt "block keyword"
 msgid "telephone"
-msgstr "telephone"
+msgstr "โทรศัพท์"
 
 #: src/blocks/form/fields/phone/index.js:20
 msgctxt "block keyword"
 msgid "cellular"
-msgstr "cellular"
+msgstr "มือถือ"
 
 #: src/blocks/form/fields/phone/index.js:20
 msgctxt "block keyword"
@@ -2593,7 +2593,7 @@ msgstr "เลือก"
 #: src/blocks/form/fields/radio/index.js:20
 msgctxt "block keyword"
 msgid "Option"
-msgstr "Option"
+msgstr "ตัวเลือก"
 
 #: src/blocks/form/fields/textarea/index.js:22
 msgctxt "block keyword"
@@ -2640,7 +2640,7 @@ msgstr "ภาพถ่าย"
 #: src/blocks/gallery-stacked/index.js:37
 msgctxt "block keyword"
 msgid "lightbox"
-msgstr "lightbox"
+msgstr "กล่องไฟ"
 
 #: src/blocks/gif/index.js:29
 msgctxt "block keyword"
@@ -2726,7 +2726,7 @@ msgstr "โพสต์"
 #: src/blocks/post-carousel/index.js:29
 msgctxt "block keyword"
 msgid "slider"
-msgstr "slider"
+msgstr "ตัวเลื่อน"
 
 #: src/blocks/post-carousel/index.js:29
 #: src/blocks/posts/index.js:29
@@ -2904,7 +2904,7 @@ msgstr "แถบหมุน"
 #: src/blocks/gallery-collage/index.js:33
 msgctxt "block name"
 msgid "Collage"
-msgstr "Collage"
+msgstr "ภาพปะติด"
 
 #: src/blocks/gallery-masonry/index.js:34
 msgctxt "block name"
@@ -2924,7 +2924,7 @@ msgstr "Gif"
 #: src/blocks/gist/index.js:28
 msgctxt "block name"
 msgid "Gist"
-msgstr "Gist"
+msgstr "กิสต์"
 
 #: src/blocks/hero/index.js:40
 msgctxt "block name"
@@ -2959,7 +2959,7 @@ msgstr "การ์ดสื่อ"
 #: src/blocks/post-carousel/index.js:26
 msgctxt "block name"
 msgid "Post Carousel"
-msgstr "Post Carousel"
+msgstr "โพสต์แถบหมุน"
 
 #: src/blocks/posts/index.js:26
 msgctxt "block name"
@@ -3065,12 +3065,12 @@ msgstr "ค่าเริ่มต้น"
 #: src/blocks/gallery-collage/index.js:45
 msgctxt "block style"
 msgid "Tiled"
-msgstr "Tiled"
+msgstr "แบบปูกระเบื้อง"
 
 #: src/blocks/gallery-collage/index.js:49
 msgctxt "block style"
 msgid "Layered"
-msgstr "Layered"
+msgstr "แบบทับซ้อน"
 
 #: src/blocks/icon/index.js:37
 msgctxt "block style"
@@ -3090,7 +3090,7 @@ msgstr "เรียงซ้อน"
 #: src/blocks/posts/edit.js:55
 msgctxt "block style"
 msgid "Horizontal"
-msgstr "Horizontal"
+msgstr "แนวนอน"
 
 #: src/blocks/shape-divider/index.js:38
 msgctxt "block style"
@@ -3165,22 +3165,22 @@ msgstr "วงแหวน"
 #: src/extensions/image-styles/index.js:21
 msgctxt "block style"
 msgid "Bottom Wave"
-msgstr "Bottom Wave"
+msgstr "คลื่นด้านบน"
 
 #: src/extensions/image-styles/index.js:27
 msgctxt "block style"
 msgid "Top Wave"
-msgstr "Top Wave"
+msgstr "คลื่นด้านล่าง"
 
 #: src/blocks/author/edit.js:63
 msgctxt "image to represent the post author"
 msgid "Drop to upload as avatar"
-msgstr "Drop to upload as avatar"
+msgstr "วางเพื่ออัปโหลดเป็นรูปประจำตัว"
 
 #: src/blocks/author/edit.js:149
 msgctxt "content placeholder"
 msgid "Author link…"
-msgstr "Author link…"
+msgstr "ลิงก์ผู้เขียน..."
 
 #: src/blocks/features/feature/edit.js:31
 msgctxt "content placeholder"
@@ -3205,7 +3205,7 @@ msgstr "นี่เป็นบล็อคคุณลักษณะที่
 #: src/blocks/hero/edit.js:35
 msgctxt "content placeholder"
 msgid "Add hero heading…"
-msgstr "Add hero heading…"
+msgstr "เพิ่มหัวเรื่องแบบฮีโร่..."
 
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
@@ -3215,12 +3215,12 @@ msgstr "เพิ่มเนื้อหาแบบฮีโร่ ซึ่�
 #: src/blocks/hero/edit.js:39
 msgctxt "content placeholder"
 msgid "Primary button…"
-msgstr "Primary button…"
+msgstr "ปุ่มหลัก..."
 
 #: src/blocks/hero/edit.js:40
 msgctxt "content placeholder"
 msgid "Secondary button…"
-msgstr "Secondary button…"
+msgstr "ปุ่มรอง..."
 
 #: src/blocks/media-card/edit.js:46
 msgctxt "content placeholder"
@@ -3242,12 +3242,12 @@ msgctxt "content placeholder"
 msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
 msgstr "แทนที่ข้อความนี้ด้วยคำบรรยายที่เข้ากับภาพในการ์ด จากนั้นเพิ่มบล็อคลงในการ์ดนี้ เช่น ปุ่ม รายชื่อ หรือรูปภาพ"
 
-#: src/blocks/services/service/edit.js:204
+#: src/blocks/services/service/edit.js:205
 msgctxt "content placeholder"
 msgid "Write title..."
 msgstr "เขียนชื่อเรื่อง..."
 
-#: src/blocks/services/service/edit.js:210
+#: src/blocks/services/service/edit.js:211
 msgctxt "content placeholder"
 msgid "Write description..."
 msgstr "เขียนคำอธิบาย..."
@@ -3533,7 +3533,7 @@ msgstr "สร้าง"
 #: src/blocks/icon/svgs.js:297
 msgctxt "label"
 msgid "Credit Card"
-msgstr "Credit Card"
+msgstr "บัตรเครดิต"
 
 #: src/blocks/icon/svgs.js:302
 msgctxt "label"
@@ -3971,7 +3971,7 @@ msgstr "ช่องทำเครื่องหมาย"
 #: src/blocks/posts/index.php:202
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
-msgstr "(no title)"
+msgstr "(ไม่มีชื่อเรื่อง)"
 
 #: src/blocks/posts/inspector.js:57
 msgctxt "label for small size option"
@@ -4105,17 +4105,17 @@ msgstr "ไม่มี"
 #: src/components/crop-settings/index.js:280
 msgctxt "label for horizontal positioning input"
 msgid "Horizontal Pos."
-msgstr "Horizontal Pos."
+msgstr "ตำแหน่งแนวนอน"
 
 #: src/components/crop-settings/index.js:288
 msgctxt "label for vertical positioning input"
 msgid "Vertical Pos."
-msgstr "Vertical Pos."
+msgstr "ตำแหน่งแนวตั้ง"
 
 #: src/components/crop-settings/index.js:297
 msgctxt "label for the control that allows zooming in on the image"
 msgid "Image Zoom"
-msgstr "Image Zoom"
+msgstr "ย่อ/ขยายรูปภาพ"
 
 #: src/components/dimensions-control/index.js:389
 msgctxt "A size unit for CSS markup"
@@ -4140,22 +4140,22 @@ msgstr "ดั้งเดิม"
 #: src/components/media-filter-control/index.js:39
 msgctxt "image styles"
 msgid "Grayscale Filter"
-msgstr "Grayscale Filter"
+msgstr "ตัวกรองสีขาวดำ"
 
 #: src/components/media-filter-control/index.js:47
 msgctxt "image styles"
 msgid "Sepia Filter"
-msgstr "Sepia Filter"
+msgstr "ตัวกรองสีซีเปีย"
 
 #: src/components/media-filter-control/index.js:55
 msgctxt "image styles"
 msgid "Saturation Filter"
-msgstr "Saturation Filter"
+msgstr "ตัวกรองความอิ่มตัว"
 
 #: src/components/media-filter-control/index.js:63
 msgctxt "image styles"
 msgid "Dim Filter"
-msgstr "Dim Filter"
+msgstr "ตัวกรองแสงหม่น"
 
 #: src/components/media-filter-control/index.js:71
 msgctxt "image styles"
@@ -4212,66 +4212,66 @@ msgstr "GoDaddy"
 msgid "https://www.godaddy.com"
 msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:77
-#: class-coblocks.php:89
+#: class-coblocks.php:84
+#: class-coblocks.php:96
 msgid "Cheating huh?"
 msgstr "โกงหรือ"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Review CoBlocks on WordPress.org"
-msgstr "Review CoBlocks on WordPress.org"
+msgstr "ดู CoBlocks ใน WordPress.org"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Leave a Review"
 msgstr "แสดงความคิดเห็น"
 
-#: includes/admin/class-coblocks-getting-started-page.php:121
+#: includes/admin/class-coblocks-getting-started-page.php:120
 msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
 msgstr "ขอขอบคุณที่เลือก CoBlocks โปรแกรมสร้างเพจที่ดีที่สุดสำหรับตัวแก้ไขบล็อคใหม่ของ WordPress"
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
-#: includes/admin/class-coblocks-getting-started-page.php:127
+#: includes/admin/class-coblocks-getting-started-page.php:126
 msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
 msgstr "คุณได้เพิ่มบล็อคที่เป็นประโยชน์มากมายและชุดอุปกรณ์สร้างเพจใหม่ในตัวแก้ไข WordPress CoBlocks มอบคุณลักษณะที่จะเปลี่ยนเกมให้คุณ: %1$s บล็อคหลายสิบบล็อค %2$s %1$s ประสบการณ์ในการสร้างเพจ %2$s และ %1$s ระบบควบคุมการออกแบบตัวอักษรที่กำหนดเอง%2$s"
 
-#: includes/admin/class-coblocks-getting-started-page.php:134
+#: includes/admin/class-coblocks-getting-started-page.php:133
 msgid "Here are a few videos to help you get started:"
 msgstr "ต่อไปนี้เป็นวิดีโอที่จะช่วยคุณในการเริ่มใช้งาน:"
 
 #. translators: CoBlocks plugin name
-#: includes/admin/class-coblocks-getting-started-page.php:138
+#: includes/admin/class-coblocks-getting-started-page.php:137
 msgid "Watch how to create your first page with %s"
 msgstr "ลองชมดูว่าจะสร้างหน้าแรกของคุณด้วย %s ได้อย่างไร"
 
-#: includes/admin/class-coblocks-getting-started-page.php:139
+#: includes/admin/class-coblocks-getting-started-page.php:138
 msgid "Watch how to create your first page"
 msgstr "ลองชมดูว่าจะสร้างหน้าแรกของคุณได้อย่างไร"
 
+#: includes/admin/class-coblocks-getting-started-page.php:140
 #: includes/admin/class-coblocks-getting-started-page.php:141
-#: includes/admin/class-coblocks-getting-started-page.php:142
 msgid "Watch how to use the Row and Shape Divider blocks"
 msgstr "ลองชมดูว่าจะใช้บล็อคแถวและบล็อคตัวแบ่งหน้าจอแบบรูปร่างอย่างไร"
 
+#: includes/admin/class-coblocks-getting-started-page.php:143
 #: includes/admin/class-coblocks-getting-started-page.php:144
-#: includes/admin/class-coblocks-getting-started-page.php:145
 msgid "Watch how to use the Media Card block"
 msgstr "ดูวิธีใช้บล็อคแบบการ์ดสื่อ"
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:153
+#: includes/admin/class-coblocks-getting-started-page.php:152
 msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
 msgstr "ชอบสิ่งที่คุณเห็นไหม %1$sสมัครสมาชิกช่อง YouTube ของเรา%2$s แล้วเราจะแจ้งให้คุณทราบเมื่อออกวิดีโอสาธิตใหม่"
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:164
+#: includes/admin/class-coblocks-getting-started-page.php:163
 msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
 msgstr "หากคุณมีข้อสงสัยหรือข้อเสนอแนะใดๆ บอกให้เรารู้ได้ที่ %1$sTwitter%4$s หรือ %2$sกลุ่ม Facebook%4$s ของเรา นอกจากนี้ %3$sสมัครรับจดหมายข่าวของเรา%4$s หากคุณไม่ต้องการพลาดข่าวสารว่ามีอะไรใหม่ที่กำลังจะเกิดขึ้นที่ CoBlocks"
 
-#: includes/admin/class-coblocks-getting-started-page.php:173
+#: includes/admin/class-coblocks-getting-started-page.php:172
 msgid "Enjoy!"
 msgstr "ใช้งานได้เต็มที่เลย!"
 
-#: includes/class-coblocks-block-settings.php:80
+#: includes/class-coblocks-block-settings.php:72
 msgid "Enable or disable blocks"
 msgstr "เปิดหรือปิดใช้งานบล็อค"
 
@@ -4283,50 +4283,50 @@ msgstr "คีย์เว็บไซต์ Google reCaptcha เพื่อป
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr "คีย์ลับ Google reCaptcha เพื่อป้องกันการสแปมแบบฟอร์ม"
 
-#: includes/class-coblocks-form.php:268
+#: includes/class-coblocks-form.php:267
 msgid "Name"
 msgstr "ชื่อ"
 
-#: includes/class-coblocks-form.php:272
+#: includes/class-coblocks-form.php:271
 msgid "First"
 msgstr "แรก"
 
-#: includes/class-coblocks-form.php:273
+#: includes/class-coblocks-form.php:272
 msgid "Last"
 msgstr "สุดท้าย"
 
-#: includes/class-coblocks-form.php:349
+#: includes/class-coblocks-form.php:346
 msgid "Message"
 msgstr "ข้อความ"
 
-#: includes/class-coblocks-form.php:387
+#: includes/class-coblocks-form.php:384
 msgid "Date"
 msgstr "วันที่"
 
-#: includes/class-coblocks-form.php:415
+#: includes/class-coblocks-form.php:412
 msgid "Phone"
 msgstr "โทรศัพท์"
 
-#: includes/class-coblocks-form.php:451
+#: includes/class-coblocks-form.php:448
 msgid "Choose one"
-msgstr "Choose one"
+msgstr "เลือกหนึ่งรูปแบบ"
 
-#: includes/class-coblocks-form.php:522
+#: includes/class-coblocks-form.php:520
 msgid "Submit"
 msgstr "ส่ง"
 
-#: includes/class-coblocks-form.php:730
+#: includes/class-coblocks-form.php:723
 msgid "Your message was sent:"
 msgstr "ส่งข้อความของคุณแล้ว:"
 
-#: includes/class-coblocks-google-map-block.php:124
+#: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
 msgstr "คีย์ API ของ Google Map เพื่อสร้างแผนที่"
 
-#: src/blocks/share/index.php:145
+#: src/blocks/share/index.php:144
 msgid "Share on Linkedin"
 msgstr "แชร์ทาง LinkedIn"
 
-#: src/blocks/social-profiles/index.php:84
+#: src/blocks/social-profiles/index.php:83
 msgid "Linkedin"
 msgstr "LinkedIn"

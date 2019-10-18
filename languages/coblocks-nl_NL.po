@@ -1,14 +1,14 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.15.0\n"
+"Project-Id-Version: CoBlocks 1.16.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-10-16T16:33:01+00:00\n"
+"POT-Creation-Date: 2019-10-17T20:17:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -96,15 +96,15 @@ msgstr "Internet Explorer wordt ondersteund door op deze pagina een JavaScript p
 
 #: src/blocks/alert/index.js:29
 msgid "Provide contextual feedback messages or notices."
-msgstr "Provide contextual feedback messages or notices."
+msgstr "Voer contextuele feedbackberichten of mededelingen in."
 
 #: src/blocks/alert/index.js:45
 msgid "This is an alert block"
-msgstr "This is an alert block"
+msgstr "Dit is een meldingsblok"
 
 #: src/blocks/alert/index.js:46
 msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
-msgstr "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
+msgstr "Een melding is een bericht dat buiten de stroom van gebruikelijk content om wordt weergegeven. Meldingen bieden contextuele feedback, waarbij lezers gewoonlijk wordt gevraagd om een actie uit te voeren."
 
 #: src/blocks/alert/inspector.js:60
 #: src/blocks/author/inspector.js:61
@@ -124,29 +124,29 @@ msgstr "Tekstkleur"
 
 #: src/blocks/author/controls.js:36
 msgid "Edit avatar"
-msgstr "Edit avatar"
+msgstr "Avatar bewerken"
 
 #. placeholder text used for the author name
 #: src/blocks/author/edit.js:127
 msgid "Write author name…"
-msgstr "Write author name…"
+msgstr "Auteursnaam schrijven..."
 
 #. placeholder text used for the biography
 #: src/blocks/author/edit.js:141
 msgid "Write a biography that distills objective credibility and authority to your readers…"
-msgstr "Write a biography that distills objective credibility and authority to your readers…"
+msgstr "Schrijf een biografie die objectieve geloofwaardigheid en autoriteit oproept bij je lezers…"
 
 #: src/blocks/author/index.js:29
 msgid "Add an author biography to build credibility and authority."
-msgstr "Add an author biography to build credibility and authority."
+msgstr "Voeg een auteursbiografie toe om geloofwaardigheid en autoriteit op te bouwen."
 
 #: src/blocks/author/index.js:35
 msgid "Born to express, not to impress. A maker making the world I want."
-msgstr "Born to express, not to impress. A maker making the world I want."
+msgstr "Geboren om zich uit te drukken, niet om indruk te maken. Een maker die de wereld naar wens maakt."
 
 #: src/blocks/author/inspector.js:41
 msgid "Author Settings"
-msgstr "Author Settings"
+msgstr "Auteurinstellingen"
 
 #: src/blocks/buttons/index.js:29
 msgid "Prompt visitors to take action with multiple buttons, side by side."
@@ -187,7 +187,7 @@ msgstr "Voeg een citaat voor lezers toe om via Twitter te tweeten."
 
 #: src/blocks/click-to-tweet/index.js:34
 msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
-msgstr "The easiest way to promote and advertise your blog, website, and business on Twitter."
+msgstr "De eenvoudigste manier om je blog, website en bedrijf te promoten en om te adverteren, is op Twitter."
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
@@ -224,7 +224,7 @@ msgstr "Kleur"
 #: src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
 msgid "Add as background"
-msgstr "Add as background"
+msgstr "Toevoegen als achtergrond"
 
 #: src/blocks/features/feature/index.js:29
 msgid "A singular child column within a parent features block."
@@ -340,7 +340,7 @@ msgstr "Titel toevoegen..."
 #: src/blocks/food-and-drinks/food-item/inspector.js:45
 #: src/blocks/food-and-drinks/food-item/save.js:66
 msgid "Popular"
-msgstr "Popular"
+msgstr "Populair"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:256
 #: src/blocks/food-and-drinks/food-item/inspector.js:60
@@ -565,7 +565,7 @@ msgstr "Opslaan"
 #: src/blocks/form/edit.js:330
 #: src/blocks/map/inspector.js:231
 msgid "Save"
-msgstr "Save"
+msgstr "Opslaan"
 
 #: src/blocks/form/edit.js:345
 #: src/blocks/map/inspector.js:240
@@ -574,19 +574,19 @@ msgstr "Verwijderen"
 
 #: src/blocks/form/fields/coblocks-option.js:61
 msgid "Write option…"
-msgstr "Write option…"
+msgstr "Optie schrijven..."
 
 #: src/blocks/form/fields/coblocks-option.js:70
 msgid "Remove Option"
-msgstr "Remove Option"
+msgstr "Optie verwijderen"
 
 #: src/blocks/form/fields/date/index.js:21
 msgid "A field for requesting date selections with a date picker."
-msgstr "A field for requesting date selections with a date picker."
+msgstr "Een veld voor het aanvragen van datumselecties met een datumkiezer."
 
 #: src/blocks/form/fields/email/index.js:20
 msgid "A field for collecting a validated email address."
-msgstr "A field for collecting a validated email address."
+msgstr "Een veld voor het verzamelen van gevalideerd e-mailadressen."
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
@@ -599,7 +599,7 @@ msgstr "Vereist"
 
 #: src/blocks/form/fields/multi-field.js:102
 msgid "Add Option"
-msgstr "Add Option"
+msgstr "Optie toevoegen"
 
 #: src/blocks/form/fields/name/edit.js:69
 msgid "Name Field Settings"
@@ -619,15 +619,15 @@ msgstr "Schakel dit in om een veld voor de achternaam toe te voegen."
 
 #: src/blocks/form/fields/name/index.js:20
 msgid "A text field for collecting the first and last names."
-msgstr "A text field for collecting the first and last names."
+msgstr "Een tekstveld voor het verzamelen van voor- en achternamen"
 
 #: src/blocks/form/fields/phone/index.js:21
 msgid "A phone number to allow visitors to give you a phone number."
-msgstr "A phone number to allow visitors to give you a phone number."
+msgstr "Een telefoonveld, zodat bezoekers je een telefoonnummer kunnen geven."
 
 #: src/blocks/form/fields/radio/index.js:21
 msgid "A field with multiple options where only one choice can be made."
-msgstr "A field with multiple options where only one choice can be made."
+msgstr "Een veld met meerdere opties waarin slechts één optie kan worden gekozen."
 
 #: src/blocks/form/fields/textarea/index.js:20
 msgid "A text box for longer responses."
@@ -635,11 +635,11 @@ msgstr "Een tekstvak voor langere antwoorden."
 
 #: src/blocks/form/index.js:27
 msgid "Add a contact form to your page."
-msgstr "Add a contact form to your page."
+msgstr "Voeg een contactformulier toe aan je pagina."
 
 #: src/blocks/form/index.js:36
 msgid "Subject example"
-msgstr "Subject example"
+msgstr "Voorbeeld van onderwerp"
 
 #: src/blocks/form/submit-button.js:107
 msgid "Add text…"
@@ -679,31 +679,31 @@ msgstr "Geef meerdere afbeeldingen weer in een mooie carrouselgalerij."
 
 #: src/blocks/gallery-carousel/inspector.js:109
 msgid "Thumbnails"
-msgstr "Thumbnails"
+msgstr "Miniaturen"
 
 #: src/blocks/gallery-carousel/inspector.js:119
 msgid "Responsive Height"
-msgstr "Responsive Height"
+msgstr "Responsieve hoogte"
 
 #: src/blocks/gallery-carousel/inspector.js:40
 msgid "Showing thumbnail navigation."
-msgstr "Showing thumbnail navigation."
+msgstr "Miniaturennavigatie wordt weergeven."
 
 #: src/blocks/gallery-carousel/inspector.js:40
 msgid "Toggle to show thumbnails."
-msgstr "Toggle to show thumbnails."
+msgstr "Schakel om miniaturen weer te geven."
 
 #: src/blocks/gallery-carousel/inspector.js:44
 msgid "Percentage based height is activated."
-msgstr "Percentage based height is activated."
+msgstr "Percentage op basis van hoogte is geactiveerd."
 
 #: src/blocks/gallery-carousel/inspector.js:44
 msgid "Toggle for percentage based height."
-msgstr "Toggle for percentage based height."
+msgstr "Schakel voor een percentage op basis van de hoogte."
 
 #: src/blocks/gallery-carousel/inspector.js:68
 msgid "Carousel Settings"
-msgstr "Carousel Settings"
+msgstr "Carrouselinstellingen"
 
 #: src/blocks/gallery-carousel/inspector.js:71
 #: src/blocks/icon/inspector.js:173
@@ -728,15 +728,15 @@ msgstr "Toepassen"
 
 #: src/blocks/gallery-collage/edit.js:183
 msgid "Write caption..."
-msgstr "Write caption..."
+msgstr "Bijschrift schrijven..."
 
 #: src/blocks/gallery-collage/index.js:34
 msgid "Assemble images into a beautiful collage gallery."
-msgstr "Assemble images into a beautiful collage gallery."
+msgstr "Verzamel afbeeldingen voor een fraaie collagegalerie."
 
 #: src/blocks/gallery-collage/inspector.js:105
 msgid "Collage Settings"
-msgstr "Collage Settings"
+msgstr "Collage-instellingen"
 
 #: src/blocks/gallery-collage/inspector.js:128
 msgid "Shadow"
@@ -776,16 +776,16 @@ msgstr "Geef meerdere afbeeldingen weer in een georganiseerde gemetselde galerij
 #: src/blocks/gallery-masonry/inspector.js:53
 #: src/blocks/gallery-stacked/inspector.js:56
 msgid "Image lightbox is enabled."
-msgstr "Image lightbox is enabled."
+msgstr "Afbeeldingslichtbak ingeschakeld."
 
 #: src/blocks/gallery-masonry/inspector.js:53
 #: src/blocks/gallery-stacked/inspector.js:56
 msgid "Toggle to enable the image lightbox."
-msgstr "Toggle to enable the image lightbox."
+msgstr "Schakel om de afbeeldingslichtbak in te schakelen."
 
 #: src/blocks/gallery-masonry/inspector.js:73
 msgid "Masonry Settings"
-msgstr "Masonry Settings"
+msgstr "Metselwerkinstellingen"
 
 #: src/blocks/gallery-masonry/inspector.js:76
 msgid "Column Size"
@@ -798,7 +798,7 @@ msgstr "Voeg afgeronde hoeken toe aan de galerij-items."
 #: src/blocks/gallery-masonry/inspector.js:92
 #: src/blocks/gallery-stacked/inspector.js:123
 msgid "Lightbox"
-msgstr "Lightbox"
+msgstr "Lichtbak"
 
 #: src/blocks/gallery-stacked/edit.js:168
 msgid "Stacked"
@@ -822,7 +822,7 @@ msgstr "Schakel dit in om de beschikbare ruimte in de galerij op te vullen met a
 
 #: src/blocks/gallery-stacked/inspector.js:80
 msgid "Stacked Settings"
-msgstr "Stacked Settings"
+msgstr "Gestapelde instellingen"
 
 #: src/blocks/gallery-stacked/inspector.js:83
 msgid "Fullwidth Images"
@@ -896,7 +896,7 @@ msgstr "Gist laden"
 
 #: src/blocks/gist/index.js:29
 msgid "Embed GitHub gists by adding a gist link."
-msgstr "Embed GitHub gists by adding a gist link."
+msgstr "Sluit GitHub-gists in door een gistlink toe te voegen."
 
 #: src/blocks/gist/inspector.js:31
 msgid "Showing gist meta data."
@@ -924,7 +924,7 @@ msgstr "Lay-out wijzigen"
 
 #: src/blocks/hero/edit.js:152
 msgid "Add background to hero"
-msgstr "Add background to hero"
+msgstr "Achtergrond aan hero toevoegen"
 
 #: src/blocks/hero/index.js:41
 msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
@@ -987,11 +987,11 @@ msgstr "Gemarkeerde tekst toevoegen..."
 
 #: src/blocks/highlight/index.js:28
 msgid "Draw attention and emphasize important narrative."
-msgstr "Draw attention and emphasize important narrative."
+msgstr "Trek de aandacht en benadruk belangrijke passages."
 
 #: src/blocks/highlight/index.js:33
 msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
-msgstr "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
+msgstr "Voeg een markeringseffect toe aan alineatekst om de aandacht te trekken en belangrijke passages te benadrukken."
 
 #: src/blocks/icon/icon-size-select.js:30
 #: src/blocks/row/inspector.js:102
@@ -1001,7 +1001,7 @@ msgstr "Zeer groot"
 
 #: src/blocks/icon/icon-size-select.js:79
 msgid "Choose icon size preset"
-msgstr "Choose icon size preset"
+msgstr "Vooraf ingestelde pictogramgrootte kiezen"
 
 #: src/blocks/icon/index.js:33
 msgid "Add a stylized graphic symbol to communicate something more."
@@ -1015,7 +1015,7 @@ msgstr "Pictograminstellingen"
 
 #: src/blocks/icon/inspector.js:168
 msgid "Reset icon size"
-msgstr "Reset icon size"
+msgstr "Pictogramgrootte opnieuw instellen"
 
 #: src/blocks/icon/inspector.js:170
 #: src/components/dimensions-control/index.js:470
@@ -1025,7 +1025,7 @@ msgstr "Opnieuw instellen"
 
 #: src/blocks/icon/inspector.js:198
 msgid "Apply custom size"
-msgstr "Apply custom size"
+msgstr "Aangepaste grootte toepassen"
 
 #: src/blocks/icon/inspector.js:201
 msgid "Custom"
@@ -1132,7 +1132,7 @@ msgstr "Annuleren"
 
 #: src/blocks/map/index.js:28
 msgid "Add an address or location to drop a pin on a Google map."
-msgstr "Add an address or location to drop a pin on a Google map."
+msgstr "Voer een locatie of adres in om een pin op een Google-kaart te plaatsen."
 
 #: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
@@ -1220,11 +1220,11 @@ msgstr "API-sleutel voor Google Maps"
 
 #: src/blocks/map/inspector.js:212
 msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
-msgstr "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgstr "Voeg een API-sleutel voor Google Maps toe. Als je deze API-sleutel bijwerkt, maken al je kaarten gebruik van de nieuwe sleutel."
 
 #: src/blocks/map/inspector.js:215
 msgid "Get a key"
-msgstr "Get a key"
+msgstr "Een sleutel ophalen"
 
 #: src/blocks/map/inspector.js:216
 msgid "Need help?"
@@ -1300,37 +1300,37 @@ msgstr "Media bewerken"
 #: src/blocks/post-carousel/edit.js:123
 #: src/blocks/posts/edit.js:247
 msgid "Edit RSS URL"
-msgstr "Edit RSS URL"
+msgstr "RSS-URL bewerken"
 
 #: src/blocks/post-carousel/edit.js:178
 msgid "Post Carousel"
-msgstr "Post Carousel"
+msgstr "Carrousel plaatsen"
 
 #: src/blocks/post-carousel/edit.js:184
 #: src/blocks/posts/edit.js:295
 msgid "No posts found. Start publishing or add posts from an %s feed."
-msgstr "No posts found. Start publishing or add posts from an %s feed."
+msgstr "Geen berichten gevonden. Begin met publiceren of voeg berichten toe vanuit een %s-feed."
 
 #: src/blocks/post-carousel/edit.js:187
 #: src/blocks/posts/edit.js:298
 msgid "Retrieve an External Feed"
-msgstr "Retrieve an External Feed"
+msgstr "Een externe feed ophalen"
 
 #: src/blocks/post-carousel/edit.js:193
 #: src/blocks/posts/edit.js:304
 msgid "Use External Feed"
-msgstr "Use External Feed"
+msgstr "Externe feed gebruiken"
 
 #. %s: RSS
 #: src/blocks/post-carousel/edit.js:216
 #: src/blocks/posts/edit.js:332
 msgid "%s Feed"
-msgstr "%s Feed"
+msgstr "%s-feed"
 
 #: src/blocks/post-carousel/edit.js:217
 #: src/blocks/posts/edit.js:333
 msgid "%s URLs are generally located at the /feed/ directory of a site."
-msgstr "%s URLs are generally located at the /feed/ directory of a site."
+msgstr "%s-URL‘s bevinden zich gewoonlijk in de map /feed/ van de site."
 
 #: src/blocks/post-carousel/edit.js:221
 #: src/blocks/posts/edit.js:337
@@ -1340,67 +1340,67 @@ msgstr "https://example.com/feed…"
 #: src/blocks/post-carousel/edit.js:227
 #: src/blocks/posts/edit.js:343
 msgid "Use URL"
-msgstr "Use URL"
+msgstr "URL gebruiken"
 
 #: src/blocks/post-carousel/edit.js:320
 #: src/blocks/posts/edit.js:463
-#: src/blocks/post-carousel/index.php:366
+#: src/blocks/post-carousel/index.php:368
 #: src/blocks/posts/index.php:385
 msgid "Read more"
-msgstr "Read more"
+msgstr "Meer informatie"
 
 #: src/blocks/post-carousel/index.js:27
 msgid "Display posts or an external blog feed as a carousel."
-msgstr "Display posts or an external blog feed as a carousel."
+msgstr "Geef berichten of een externe blogfeed weer als een carrousel."
 
 #: src/blocks/post-carousel/inspector.js:108
 #: src/blocks/posts/inspector.js:174
 msgid "Number of posts"
-msgstr "Number of posts"
+msgstr "Aantal berichten"
 
 #: src/blocks/post-carousel/inspector.js:38
 msgid "Post Carousel Settings"
-msgstr "Post Carousel Settings"
+msgstr "Instellingen voor carrouselplaatsing"
 
 #: src/blocks/post-carousel/inspector.js:41
 #: src/blocks/posts/inspector.js:81
 msgid "Post Date"
-msgstr "Post Date"
+msgstr "Berichtdatum"
 
 #: src/blocks/post-carousel/inspector.js:45
 #: src/blocks/posts/inspector.js:85
 msgid "Showing the publish date."
-msgstr "Showing the publish date."
+msgstr "De publicatiedatum wordt weergegeven."
 
 #: src/blocks/post-carousel/inspector.js:46
 #: src/blocks/posts/inspector.js:86
 msgid "Toggle to show the publish date."
-msgstr "Toggle to show the publish date."
+msgstr "Schakel om de publicatiedatum weer te geven."
 
 #: src/blocks/post-carousel/inspector.js:51
 #: src/blocks/posts/inspector.js:91
 msgid "Post Content"
-msgstr "Post Content"
+msgstr "Content plaatsen"
 
 #: src/blocks/post-carousel/inspector.js:55
 #: src/blocks/posts/inspector.js:95
 msgid "Showing the post content."
-msgstr "Showing the post content."
+msgstr "De berichtcontent wordt weergegeven."
 
 #: src/blocks/post-carousel/inspector.js:56
 #: src/blocks/posts/inspector.js:96
 msgid "Toggle to show the post content."
-msgstr "Toggle to show the post content."
+msgstr "Schakel om de berichtcontent weer te geven."
 
 #: src/blocks/post-carousel/inspector.js:62
 #: src/blocks/posts/inspector.js:102
 msgid "Max words in content"
-msgstr "Max words in content"
+msgstr "Maximale aantal woorden in content"
 
 #: src/blocks/post-carousel/inspector.js:86
 #: src/blocks/posts/inspector.js:152
 msgid "Feed Settings"
-msgstr "Feed Settings"
+msgstr "Feedinstellingen"
 
 #: src/blocks/post-carousel/inspector.js:90
 #: src/blocks/posts/inspector.js:156
@@ -1410,15 +1410,15 @@ msgstr "Mijn blog"
 #: src/blocks/post-carousel/inspector.js:91
 #: src/blocks/posts/inspector.js:157
 msgid "External Feed"
-msgstr "External Feed"
+msgstr "Externe feed"
 
 #: src/blocks/posts/edit.js:260
 msgid "Image on left"
-msgstr "Image on left"
+msgstr "Afbeelding links"
 
 #: src/blocks/posts/edit.js:265
 msgid "Image on right"
-msgstr "Image on right"
+msgstr "Afbeelding rechts"
 
 #: src/blocks/posts/edit.js:289
 msgid "Blog Posts"
@@ -1426,35 +1426,35 @@ msgstr "Blogberichten"
 
 #: src/blocks/posts/index.js:27
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
-msgstr "Display posts or an RSS feed as stacked or horizontal cards."
+msgstr "Geef berichten of een RSS-feed weer als gestapelde of horizontale kaarten."
 
 #: src/blocks/posts/inspector.js:129
 msgid "Thumbnail Size"
-msgstr "Thumbnail Size"
+msgstr "Miniatuurgrootte"
 
 #: src/blocks/posts/inspector.js:78
 msgid "Posts Settings"
-msgstr "Posts Settings"
+msgstr "Instellingen berichten"
 
 #: src/blocks/pricing-table/controls.js:17
 msgid "One Pricing Table"
-msgstr "One Pricing Table"
+msgstr "Eén tariefoverzicht"
 
 #: src/blocks/pricing-table/controls.js:22
 msgid "Two Pricing Tables"
-msgstr "Two Pricing Tables"
+msgstr "Twee tariefoverzichten"
 
 #: src/blocks/pricing-table/controls.js:27
 msgid "Three Pricing Tables"
-msgstr "Three Pricing Tables"
+msgstr "Drie tariefoverzichten"
 
 #: src/blocks/pricing-table/controls.js:32
 msgid "Four Pricing Tables"
-msgstr "Four Pricing Tables"
+msgstr "Vier tariefoverzichten"
 
 #: src/blocks/pricing-table/controls.js:62
 msgid "Change pricing table count"
-msgstr "Change pricing table count"
+msgstr "Aantal tariefoverzichten wijzigen"
 
 #: src/blocks/pricing-table/edit.js:39
 msgid "Plan %d"
@@ -1462,7 +1462,7 @@ msgstr "Abonnement %d"
 
 #: src/blocks/pricing-table/index.js:29
 msgid "Add pricing tables to help visitors compare products and plans."
-msgstr "Add pricing tables to help visitors compare products and plans."
+msgstr "Voeg tariefoverzichten toe om bezoekers te helpen bij het vergelijken van producten en abonnementen."
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:112
 msgid "Add features"
@@ -1482,11 +1482,11 @@ msgstr "$"
 
 #: src/blocks/pricing-table/pricing-table-item/index.js:27
 msgid "A pricing table to help visitors compare products and plans."
-msgstr "A pricing table to help visitors compare products and plans."
+msgstr "Een tariefoverzicht helpt bezoekers bij het vergelijken van producten en abonnementen."
 
 #: src/blocks/row/column/edit.js:90
 msgid "Add background to column"
-msgstr "Add background to column"
+msgstr "Achtergrond toevoegen aan kolom"
 
 #: src/blocks/row/column/index.js:30
 msgid "An immediate child of a row."
@@ -1507,7 +1507,7 @@ msgstr "Breedte"
 
 #: src/blocks/row/controls.js:74
 msgid "Change row block layout"
-msgstr "Change row block layout"
+msgstr "Blokkenlay-out van rij wijzigen"
 
 #: src/blocks/row/edit.js:121
 msgid "one"
@@ -1527,7 +1527,7 @@ msgstr "vier"
 
 #: src/blocks/row/edit.js:169
 msgid "Add background to row"
-msgstr "Add background to row"
+msgstr "Achtergrond aan rij toevoegen"
 
 #: src/blocks/row/edit.js:174
 msgid "One Column"
@@ -1591,43 +1591,43 @@ msgstr "Geen"
 
 #: src/blocks/row/layouts.js:13
 msgid "Equal Split"
-msgstr "Equal Split"
+msgstr "Gelijkmatig splitsen"
 
 #: src/blocks/row/layouts.js:14
 msgid "Two Thirds / One Third"
-msgstr "Two Thirds / One Third"
+msgstr "Twee derde/een derde"
 
 #: src/blocks/row/layouts.js:15
 msgid "One Third / Two Thirds"
-msgstr "One Third / Two Thirds"
+msgstr "Een derde/twee derde"
 
 #: src/blocks/row/layouts.js:16
 msgid "Three Quarters / Quarter"
-msgstr "Three Quarters / Quarter"
+msgstr "Drie vierde/een vierde"
 
 #: src/blocks/row/layouts.js:17
 msgid "Quarter / Three Quarters"
-msgstr "Quarter / Three Quarters"
+msgstr "Een vierde/drie vierden"
 
 #: src/blocks/row/layouts.js:20
 msgid "Thirds"
-msgstr "Thirds"
+msgstr "Derden"
 
 #: src/blocks/row/layouts.js:21
 msgid "Half / Quarter / Quarter"
-msgstr "Half / Quarter / Quarter"
+msgstr "Helft/vierde/vierde"
 
 #: src/blocks/row/layouts.js:22
 msgid "Quarter / Quarter/ Half"
-msgstr "Quarter / Quarter/ Half"
+msgstr "Vierde/vierde/helft"
 
 #: src/blocks/row/layouts.js:23
 msgid "Quarter / Half / Quarter"
-msgstr "Quarter / Half / Quarter"
+msgstr "Vierde/helft/vierde"
 
 #: src/blocks/row/layouts.js:24
 msgid "One Fifth/ Three Fifths / One Fifth"
-msgstr "One Fifth/ Three Fifths / One Fifth"
+msgstr "Een vijfde/drie vijfde/een vijfde"
 
 #: src/blocks/row/layouts.js:27
 msgid "Quarters"
@@ -1635,11 +1635,11 @@ msgstr "Kwartalen"
 
 #: src/blocks/row/layouts.js:28
 msgid "Two Fifths / Fifth / Fifth / Fifth"
-msgstr "Two Fifths / Fifth / Fifth / Fifth"
+msgstr "Twee vijfde/een vijfde/een vijfde/een vijfde"
 
 #: src/blocks/row/layouts.js:29
 msgid "Fifth / Fifth / Fifth / Two Fifths"
-msgstr "Fifth / Fifth / Fifth / Two Fifths"
+msgstr "Een vijfde/een vijfde/een vijfde/twee vijfde"
 
 #: src/blocks/services/edit.js:44
 msgid "Square"
@@ -1722,17 +1722,17 @@ msgid "Shape Color"
 msgstr "Vormkleur"
 
 #: src/blocks/share/edit.js:113
-#: src/blocks/share/index.php:133
+#: src/blocks/share/index.php:132
 msgid "Share on Facebook"
 msgstr "Delen op Facebook"
 
 #: src/blocks/share/edit.js:121
-#: src/blocks/share/index.php:137
+#: src/blocks/share/index.php:136
 msgid "Share on Twitter"
 msgstr "Delen op Twitter"
 
 #: src/blocks/share/edit.js:129
-#: src/blocks/share/index.php:141
+#: src/blocks/share/index.php:140
 msgid "Share on Pinterest"
 msgstr "Delen op Pinterest"
 
@@ -1741,22 +1741,22 @@ msgid "Share on LinkedIn"
 msgstr "Delen op LinkedIn"
 
 #: src/blocks/share/edit.js:145
-#: src/blocks/share/index.php:149
+#: src/blocks/share/index.php:148
 msgid "Share via Email"
 msgstr "Delen via e-mail"
 
 #: src/blocks/share/edit.js:153
-#: src/blocks/share/index.php:153
+#: src/blocks/share/index.php:152
 msgid "Share on Tumblr"
 msgstr "Delen op Tumblr"
 
 #: src/blocks/share/edit.js:161
-#: src/blocks/share/index.php:157
+#: src/blocks/share/index.php:156
 msgid "Share on Google"
 msgstr "Delen op Google"
 
 #: src/blocks/share/edit.js:169
-#: src/blocks/share/index.php:161
+#: src/blocks/share/index.php:160
 msgid "Share on Reddit"
 msgstr "Delen op Reddit"
 
@@ -1790,19 +1790,19 @@ msgstr "Pictogrammen"
 
 #: src/blocks/share/inspector.js:157
 #: src/blocks/social-profiles/edit.js:205
-#: src/blocks/social-profiles/index.php:72
+#: src/blocks/social-profiles/index.php:71
 msgid "Twitter"
 msgstr "Twitter"
 
 #: src/blocks/share/inspector.js:162
 #: src/blocks/social-profiles/edit.js:159
-#: src/blocks/social-profiles/index.php:68
+#: src/blocks/social-profiles/index.php:67
 msgid "Facebook"
 msgstr "Facebook"
 
 #: src/blocks/share/inspector.js:167
 #: src/blocks/social-profiles/edit.js:299
-#: src/blocks/social-profiles/index.php:80
+#: src/blocks/social-profiles/index.php:79
 msgid "Pinterest"
 msgstr "Pinterest"
 
@@ -1813,7 +1813,7 @@ msgstr "LinkedIn"
 
 #: src/blocks/share/inspector.js:177
 #: includes/class-coblocks-form.php:234
-#: includes/class-coblocks-form.php:321
+#: includes/class-coblocks-form.php:319
 msgid "Email"
 msgstr "E-mail"
 
@@ -1860,7 +1860,7 @@ msgid "Add Instagram Profile"
 msgstr "Instagram-profiel toevoegen"
 
 #: src/blocks/social-profiles/edit.js:251
-#: src/blocks/social-profiles/index.php:76
+#: src/blocks/social-profiles/index.php:75
 msgid "Instagram"
 msgstr "Instagram"
 
@@ -1889,7 +1889,7 @@ msgid "Add YouTube Profile"
 msgstr "YouTube-profiel toevoegen"
 
 #: src/blocks/social-profiles/edit.js:393
-#: src/blocks/social-profiles/index.php:89
+#: src/blocks/social-profiles/index.php:88
 msgid "YouTube"
 msgstr "YouTube"
 
@@ -1902,7 +1902,7 @@ msgid "Add Yelp Profile"
 msgstr "Yelp-profiel toevoegen"
 
 #: src/blocks/social-profiles/edit.js:439
-#: src/blocks/social-profiles/index.php:93
+#: src/blocks/social-profiles/index.php:92
 msgid "Yelp"
 msgstr "Yelp"
 
@@ -1915,7 +1915,7 @@ msgid "Add Houzz Profile"
 msgstr "Houzz-profiel toevoegen"
 
 #: src/blocks/social-profiles/edit.js:485
-#: src/blocks/social-profiles/index.php:97
+#: src/blocks/social-profiles/index.php:96
 msgid "Houzz"
 msgstr "Houzz"
 
@@ -1925,7 +1925,7 @@ msgstr "https://houzz.com/"
 
 #: src/blocks/social-profiles/index.js:25
 msgid "Grow your audience with links to social media profiles."
-msgstr "Grow your audience with links to social media profiles."
+msgstr "Bouw meer publiek op met links naar sociale mediaprofielen."
 
 #: src/blocks/social-profiles/inspector.js:159
 msgid "Profile Links"
@@ -2034,27 +2034,27 @@ msgstr "Aangepaste URL"
 
 #: src/components/crop-settings/index.js:275
 msgid "Crop settings image placeholder"
-msgstr "Crop settings image placeholder"
+msgstr "Instellingen bijsnijden tijdelijke aanduiding afbeelding"
 
 #: src/components/crop-settings/index.js:304
 msgid "Image Orientation"
-msgstr "Image Orientation"
+msgstr "Afdrukstand van afbeelding"
 
 #: src/components/crop-settings/index.js:310
 msgid "Rotate counter-clockwise"
-msgstr "Rotate counter-clockwise"
+msgstr "Linksom draaien"
 
 #: src/components/crop-settings/index.js:316
 msgid "Rotate clockwise"
-msgstr "Rotate clockwise"
+msgstr "Rechtsom draaien"
 
 #: src/components/crop-settings/index.js:325
 msgid "Reset image cropping options"
-msgstr "Reset image cropping options"
+msgstr "Opties bijsnijden afbeelding opnieuw instellen"
 
 #: src/components/crop-settings/index.js:327
 msgid "Reset All"
-msgstr "Reset All"
+msgstr "Alles opnieuw instellen"
 
 #: src/components/dimensions-control/index.js:442
 msgid "Select Units"
@@ -2203,7 +2203,7 @@ msgstr "Vijf seconden"
 
 #: src/components/slider-panel/autoplay-options.js:15
 msgid "Six Seconds"
-msgstr "Six Seconds"
+msgstr "Zes seconden"
 
 #: src/components/slider-panel/autoplay-options.js:16
 msgid "Seven Seconds"
@@ -2223,7 +2223,7 @@ msgstr "Tien seconden"
 
 #: src/components/slider-panel/index.js:102
 msgid "Free Scroll"
-msgstr "Free Scroll"
+msgstr "Vrijelijk schuiven"
 
 #: src/components/slider-panel/index.js:108
 msgid "Arrow Navigation"
@@ -2235,7 +2235,7 @@ msgstr "Stipnavigatie"
 
 #: src/components/slider-panel/index.js:120
 msgid "Align Cells"
-msgstr "Align Cells"
+msgstr "Cellen uitlijnen"
 
 #: src/components/slider-panel/index.js:24
 msgid "seconds"
@@ -2257,11 +2257,11 @@ msgstr "Ga automatisch door naar de volgende dia."
 
 #: src/components/slider-panel/index.js:31
 msgid "Dragging and flicking enabled."
-msgstr "Dragging and flicking enabled."
+msgstr "Slepen en vegen zijn ingeschakeld."
 
 #: src/components/slider-panel/index.js:31
 msgid "Toggle to enable drag functionality."
-msgstr "Toggle to enable drag functionality."
+msgstr "Schakel om de functionaliteit voor slepen in te schakelen."
 
 #: src/components/slider-panel/index.js:35
 msgid "Showing slide navigation arrows."
@@ -2273,7 +2273,7 @@ msgstr "Schakel dit in om de pijlen voor navigatie in dia's weer te geven."
 
 #: src/components/slider-panel/index.js:39
 msgid "Showing dot navigation."
-msgstr "Showing dot navigation."
+msgstr "Stipnavigatie wordt weergegeven."
 
 #: src/components/slider-panel/index.js:39
 msgid "Toggle to show dot navigation."
@@ -2281,27 +2281,27 @@ msgstr "Schakel dit in om de stipnavigatie weer te geven."
 
 #: src/components/slider-panel/index.js:43
 msgid "Aligning slides to the left."
-msgstr "Aligning slides to the left."
+msgstr "Dia‘s links uitlijnen"
 
 #: src/components/slider-panel/index.js:43
 msgid "Aligning slides to the center."
-msgstr "Aligning slides to the center."
+msgstr "Dia‘s centreren"
 
 #: src/components/slider-panel/index.js:46
 msgid "Pausing autoplay when hovering."
-msgstr "Pausing autoplay when hovering."
+msgstr "Automatisch afspelen onderbreken bij aanwijzen"
 
 #: src/components/slider-panel/index.js:46
 msgid "Toggle to pause autoplay when hovered."
-msgstr "Toggle to pause autoplay when hovered."
+msgstr "Schakel om automatisch afspelen te onderbreken bij aanwijzen."
 
 #: src/components/slider-panel/index.js:50
 msgid "Scrolling without fixed slides enabled."
-msgstr "Scrolling without fixed slides enabled."
+msgstr "Schuiven zonder vaste dia‘s wordt ingeschakeld."
 
 #: src/components/slider-panel/index.js:50
 msgid "Toggle to scroll without fixed slides."
-msgstr "Toggle to scroll without fixed slides."
+msgstr "Schakel om te schuiven zonder vaste dia‘s."
 
 #: src/components/slider-panel/index.js:72
 msgid "Slider Settings"
@@ -2317,7 +2317,7 @@ msgstr "Overgangssnelheid"
 
 #: src/components/slider-panel/index.js:88
 msgid "Pause on Hover"
-msgstr "Pause on Hover"
+msgstr "Onderbreken bij aanwijzen"
 
 #: src/components/slider-panel/index.js:96
 msgid "Draggable"
@@ -2373,11 +2373,11 @@ msgstr "Ruimte bovenkant verwijderen"
 
 #: src/extensions/advanced-controls/index.js:135
 msgid "Toggle to add top margin back."
-msgstr "Toggle to add top margin back."
+msgstr "Schakel om de bovenste marge opnieuw toe te voegen."
 
 #: src/extensions/advanced-controls/index.js:135
 msgid "Toggle to remove any top margin."
-msgstr "Toggle to remove any top margin."
+msgstr "Schakel om bovenste marges te verwijderen."
 
 #: src/extensions/advanced-controls/index.js:140
 msgid "Remove Bottom Spacing"
@@ -2385,11 +2385,11 @@ msgstr "Ruimte onderkant verwijderen"
 
 #: src/extensions/advanced-controls/index.js:163
 msgid "Toggle to add bottom margin back."
-msgstr "Toggle to add bottom margin back."
+msgstr "Schakel om de onderste marge opnieuw toe te voegen."
 
 #: src/extensions/advanced-controls/index.js:163
 msgid "Toggle to remove any bottom margin."
-msgstr "Toggle to remove any bottom margin."
+msgstr "Schakel om onderste marges te verwijderen."
 
 #: src/extensions/button-controls/index.js:71
 msgid "Display Fullwidth"
@@ -2403,9 +2403,9 @@ msgstr "Wordt op volledige breedte weergegeven."
 msgid "Toggle to display button as full width."
 msgstr "Schakel dit in om de knop op volledige breedte weer te geven."
 
-#: src/extensions/image-crop/index.js:169
+#: src/extensions/image-crop/index.js:172
 msgid "Crop Settings"
-msgstr "Crop Settings"
+msgstr "Instellingen voor bijsnijden"
 
 #: src/formats/uppercase/index.js:35
 msgid "Uppercase"
@@ -2452,8 +2452,8 @@ msgstr "Weergave open"
 
 #: src/blocks/accordion/accordion-item/edit.js:65
 msgctxt "Accordion is the block name"
-msgid "Add accordion title..."
-msgstr "Accordeontitel toevoegen..."
+msgid "Write accordion item title..."
+msgstr "Write accordion item title..."
 
 #: src/blocks/accordion/accordion-item/index.js:26
 msgctxt "This is an inner block for the Accordion Block."
@@ -2543,7 +2543,7 @@ msgstr "agenda"
 #: src/blocks/form/fields/date/index.js:20
 msgctxt "block keyword"
 msgid "day month year"
-msgstr "day month year"
+msgstr "dag maand jaar"
 
 #: src/blocks/form/fields/email/index.js:22
 msgctxt "block keyword"
@@ -2568,17 +2568,17 @@ msgstr "achternaam"
 #: src/blocks/form/fields/phone/index.js:20
 msgctxt "block keyword"
 msgid "telephone"
-msgstr "telephone"
+msgstr "telefoon"
 
 #: src/blocks/form/fields/phone/index.js:20
 msgctxt "block keyword"
 msgid "cellular"
-msgstr "cellular"
+msgstr "mobiel"
 
 #: src/blocks/form/fields/phone/index.js:20
 msgctxt "block keyword"
 msgid "mobile"
-msgstr "mobile"
+msgstr "mobiel"
 
 #: src/blocks/form/fields/radio/index.js:20
 msgctxt "block keyword"
@@ -2593,7 +2593,7 @@ msgstr "Selecteer"
 #: src/blocks/form/fields/radio/index.js:20
 msgctxt "block keyword"
 msgid "Option"
-msgstr "Option"
+msgstr "Optie"
 
 #: src/blocks/form/fields/textarea/index.js:22
 msgctxt "block keyword"
@@ -2640,7 +2640,7 @@ msgstr "foto's"
 #: src/blocks/gallery-stacked/index.js:37
 msgctxt "block keyword"
 msgid "lightbox"
-msgstr "lightbox"
+msgstr "lichtbak"
 
 #: src/blocks/gif/index.js:29
 msgctxt "block keyword"
@@ -2721,18 +2721,18 @@ msgstr "video"
 #: src/blocks/post-carousel/index.js:29
 msgctxt "block keyword"
 msgid "posts"
-msgstr "posts"
+msgstr "berichten"
 
 #: src/blocks/post-carousel/index.js:29
 msgctxt "block keyword"
 msgid "slider"
-msgstr "slider"
+msgstr "schuifregelaar"
 
 #: src/blocks/post-carousel/index.js:29
 #: src/blocks/posts/index.js:29
 msgctxt "block keyword"
 msgid "latest"
-msgstr "latest"
+msgstr "recentste"
 
 #: src/blocks/posts/index.js:29
 msgctxt "block keyword"
@@ -2742,7 +2742,7 @@ msgstr "blog"
 #: src/blocks/posts/index.js:29
 msgctxt "block keyword"
 msgid "rss"
-msgstr "rss"
+msgstr "RSS"
 
 #: src/blocks/pricing-table/index.js:31
 #: src/blocks/pricing-table/pricing-table-item/index.js:29
@@ -2959,7 +2959,7 @@ msgstr "Mediakaart"
 #: src/blocks/post-carousel/index.js:26
 msgctxt "block name"
 msgid "Post Carousel"
-msgstr "Post Carousel"
+msgstr "Carrousel plaatsen"
 
 #: src/blocks/posts/index.js:26
 msgctxt "block name"
@@ -3065,12 +3065,12 @@ msgstr "Standaard"
 #: src/blocks/gallery-collage/index.js:45
 msgctxt "block style"
 msgid "Tiled"
-msgstr "Tiled"
+msgstr "Tegels"
 
 #: src/blocks/gallery-collage/index.js:49
 msgctxt "block style"
 msgid "Layered"
-msgstr "Layered"
+msgstr "Gelaagd"
 
 #: src/blocks/icon/index.js:37
 msgctxt "block style"
@@ -3090,7 +3090,7 @@ msgstr "Gestapeld"
 #: src/blocks/posts/edit.js:55
 msgctxt "block style"
 msgid "Horizontal"
-msgstr "Horizontal"
+msgstr "Horizontaal"
 
 #: src/blocks/shape-divider/index.js:38
 msgctxt "block style"
@@ -3165,22 +3165,22 @@ msgstr "Rond"
 #: src/extensions/image-styles/index.js:21
 msgctxt "block style"
 msgid "Bottom Wave"
-msgstr "Bottom Wave"
+msgstr "Golf onderkant"
 
 #: src/extensions/image-styles/index.js:27
 msgctxt "block style"
 msgid "Top Wave"
-msgstr "Top Wave"
+msgstr "Golf bovenkant"
 
 #: src/blocks/author/edit.js:63
 msgctxt "image to represent the post author"
 msgid "Drop to upload as avatar"
-msgstr "Drop to upload as avatar"
+msgstr "Neerzetten voor uploaden als avatar"
 
 #: src/blocks/author/edit.js:149
 msgctxt "content placeholder"
 msgid "Author link…"
-msgstr "Author link…"
+msgstr "Link auteur…"
 
 #: src/blocks/features/feature/edit.js:31
 msgctxt "content placeholder"
@@ -3205,7 +3205,7 @@ msgstr "Dit is een functieblok waarmee je functies kunt uitlichten."
 #: src/blocks/hero/edit.js:35
 msgctxt "content placeholder"
 msgid "Add hero heading…"
-msgstr "Add hero heading…"
+msgstr "Hero-kop toevoegen..."
 
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
@@ -3215,12 +3215,12 @@ msgstr "Voeg herocontent toe, hetgeen meestal een inleidend onderdeel van een pa
 #: src/blocks/hero/edit.js:39
 msgctxt "content placeholder"
 msgid "Primary button…"
-msgstr "Primary button…"
+msgstr "Primaire knop..."
 
 #: src/blocks/hero/edit.js:40
 msgctxt "content placeholder"
 msgid "Secondary button…"
-msgstr "Secondary button…"
+msgstr "Secundaire knop..."
 
 #: src/blocks/media-card/edit.js:46
 msgctxt "content placeholder"
@@ -3242,12 +3242,12 @@ msgctxt "content placeholder"
 msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
 msgstr "Vervang deze tekst door een beschrijving die wordt toegevoegd aan de kaartafbeelding. Voeg dan meer blokken toe aan deze kaart, zoals knoppen, lijsten of afbeeldingen."
 
-#: src/blocks/services/service/edit.js:204
+#: src/blocks/services/service/edit.js:205
 msgctxt "content placeholder"
 msgid "Write title..."
 msgstr "Titel schrijven..."
 
-#: src/blocks/services/service/edit.js:210
+#: src/blocks/services/service/edit.js:211
 msgctxt "content placeholder"
 msgid "Write description..."
 msgstr "Beschrijving opstellen..."
@@ -3533,7 +3533,7 @@ msgstr "Bouwen"
 #: src/blocks/icon/svgs.js:297
 msgctxt "label"
 msgid "Credit Card"
-msgstr "Credit Card"
+msgstr "Creditcard"
 
 #: src/blocks/icon/svgs.js:302
 msgctxt "label"
@@ -3971,7 +3971,7 @@ msgstr "Selectievakje"
 #: src/blocks/posts/index.php:202
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
-msgstr "(no title)"
+msgstr "(naamloos)"
 
 #: src/blocks/posts/inspector.js:57
 msgctxt "label for small size option"
@@ -4105,17 +4105,17 @@ msgstr "Geen"
 #: src/components/crop-settings/index.js:280
 msgctxt "label for horizontal positioning input"
 msgid "Horizontal Pos."
-msgstr "Horizontal Pos."
+msgstr "Horizontale positie"
 
 #: src/components/crop-settings/index.js:288
 msgctxt "label for vertical positioning input"
 msgid "Vertical Pos."
-msgstr "Vertical Pos."
+msgstr "Verticale positie"
 
 #: src/components/crop-settings/index.js:297
 msgctxt "label for the control that allows zooming in on the image"
 msgid "Image Zoom"
-msgstr "Image Zoom"
+msgstr "In-/uitzoomen op afbeelding"
 
 #: src/components/dimensions-control/index.js:389
 msgctxt "A size unit for CSS markup"
@@ -4140,22 +4140,22 @@ msgstr "Origineel"
 #: src/components/media-filter-control/index.js:39
 msgctxt "image styles"
 msgid "Grayscale Filter"
-msgstr "Grayscale Filter"
+msgstr "Filter voor grijswaarden"
 
 #: src/components/media-filter-control/index.js:47
 msgctxt "image styles"
 msgid "Sepia Filter"
-msgstr "Sepia Filter"
+msgstr "Filter voor sepia"
 
 #: src/components/media-filter-control/index.js:55
 msgctxt "image styles"
 msgid "Saturation Filter"
-msgstr "Saturation Filter"
+msgstr "Filter voor verzadiging"
 
 #: src/components/media-filter-control/index.js:63
 msgctxt "image styles"
 msgid "Dim Filter"
-msgstr "Dim Filter"
+msgstr "Filter voor dimmen"
 
 #: src/components/media-filter-control/index.js:71
 msgctxt "image styles"
@@ -4212,66 +4212,66 @@ msgstr "GoDaddy"
 msgid "https://www.godaddy.com"
 msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:77
-#: class-coblocks.php:89
+#: class-coblocks.php:84
+#: class-coblocks.php:96
 msgid "Cheating huh?"
 msgstr "Dat is niet eerlijk!"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Review CoBlocks on WordPress.org"
-msgstr "Review CoBlocks on WordPress.org"
+msgstr "CoBlocks op WordPress.org bekijken"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Leave a Review"
 msgstr "Een recensie schrijven"
 
-#: includes/admin/class-coblocks-getting-started-page.php:121
+#: includes/admin/class-coblocks-getting-started-page.php:120
 msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
 msgstr "Bedankt voor het kiezen van CoBlocks, de beste manier om pagina's te bouwen voor de nieuwe blokeditor van WordPress."
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
-#: includes/admin/class-coblocks-getting-started-page.php:127
+#: includes/admin/class-coblocks-getting-started-page.php:126
 msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
 msgstr "Je hebt allerlei handige blokken toegevoegd aan de WordPress-editor samen met een nieuwe toolkit om pagina's te bouwen. Met CoBlocks heb je allerlei baanbrekende functies: %1$s tientallen blokken%2$s, een %1$s geweldige oplossing om pagina's te bouwen %2$s en %1$s functies voor aangepaste typografie%2$s."
 
-#: includes/admin/class-coblocks-getting-started-page.php:134
+#: includes/admin/class-coblocks-getting-started-page.php:133
 msgid "Here are a few videos to help you get started:"
 msgstr "Hier zijn een paar video's om aan de slag te gaan:"
 
 #. translators: CoBlocks plugin name
-#: includes/admin/class-coblocks-getting-started-page.php:138
+#: includes/admin/class-coblocks-getting-started-page.php:137
 msgid "Watch how to create your first page with %s"
 msgstr "Kijk hoe je je eerste pagina maakt met %s"
 
-#: includes/admin/class-coblocks-getting-started-page.php:139
+#: includes/admin/class-coblocks-getting-started-page.php:138
 msgid "Watch how to create your first page"
 msgstr "Kijk hoe je je eerste pagina maakt"
 
+#: includes/admin/class-coblocks-getting-started-page.php:140
 #: includes/admin/class-coblocks-getting-started-page.php:141
-#: includes/admin/class-coblocks-getting-started-page.php:142
 msgid "Watch how to use the Row and Shape Divider blocks"
 msgstr "Kijk hoe je de blokken voor rijen en het verdelen van vormen gebruikt"
 
+#: includes/admin/class-coblocks-getting-started-page.php:143
 #: includes/admin/class-coblocks-getting-started-page.php:144
-#: includes/admin/class-coblocks-getting-started-page.php:145
 msgid "Watch how to use the Media Card block"
 msgstr "Meer informatie over het gebruik van het Media Card-blok"
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:153
+#: includes/admin/class-coblocks-getting-started-page.php:152
 msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
 msgstr "Ziet dat er goed uit? %1$sAbonneer je op ons YouTube-kanaal%2$s en ontvang een melding van nieuwe videolessen."
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:164
+#: includes/admin/class-coblocks-getting-started-page.php:163
 msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
 msgstr "Stuur vragen of feedback op via %1$sTwitter%4$s of onze %2$sFacebook-groep %4$s. En %3$sabonneer je op onze nieuwsbrief%4$s als je op de hoogte wilt blijven van alle nieuwe ontwikkelingen bij CoBlocks."
 
-#: includes/admin/class-coblocks-getting-started-page.php:173
+#: includes/admin/class-coblocks-getting-started-page.php:172
 msgid "Enjoy!"
 msgstr "Veel plezier!"
 
-#: includes/class-coblocks-block-settings.php:80
+#: includes/class-coblocks-block-settings.php:72
 msgid "Enable or disable blocks"
 msgstr "Blokken in- of uitschakelen"
 
@@ -4283,50 +4283,50 @@ msgstr "reCaptcha-sitesleutel van Google om het formulier tegen spam te bescherm
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr "Geheime reCaptcha-sleutel van Google om het formulier tegen spam te beschermen"
 
-#: includes/class-coblocks-form.php:268
+#: includes/class-coblocks-form.php:267
 msgid "Name"
 msgstr "Naam"
 
-#: includes/class-coblocks-form.php:272
+#: includes/class-coblocks-form.php:271
 msgid "First"
 msgstr "Eerste"
 
-#: includes/class-coblocks-form.php:273
+#: includes/class-coblocks-form.php:272
 msgid "Last"
 msgstr "Laatste"
 
-#: includes/class-coblocks-form.php:349
+#: includes/class-coblocks-form.php:346
 msgid "Message"
 msgstr "Bericht"
 
-#: includes/class-coblocks-form.php:387
+#: includes/class-coblocks-form.php:384
 msgid "Date"
 msgstr "Datum"
 
-#: includes/class-coblocks-form.php:415
+#: includes/class-coblocks-form.php:412
 msgid "Phone"
 msgstr "Telefoon"
 
-#: includes/class-coblocks-form.php:451
+#: includes/class-coblocks-form.php:448
 msgid "Choose one"
-msgstr "Choose one"
+msgstr "Een optie kiezen"
 
-#: includes/class-coblocks-form.php:522
+#: includes/class-coblocks-form.php:520
 msgid "Submit"
 msgstr "Verzenden"
 
-#: includes/class-coblocks-form.php:730
+#: includes/class-coblocks-form.php:723
 msgid "Your message was sent:"
 msgstr "Je bericht is verzonden:"
 
-#: includes/class-coblocks-google-map-block.php:124
+#: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
 msgstr "API-sleutel van Google Maps om kaarten weer te geven"
 
-#: src/blocks/share/index.php:145
+#: src/blocks/share/index.php:144
 msgid "Share on Linkedin"
 msgstr "Delen op LinkedIn"
 
-#: src/blocks/social-profiles/index.php:84
+#: src/blocks/social-profiles/index.php:83
 msgid "Linkedin"
 msgstr "Linkedin"

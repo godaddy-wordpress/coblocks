@@ -1,14 +1,14 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.15.0\n"
+"Project-Id-Version: CoBlocks 1.16.0\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-10-16T16:33:01+00:00\n"
+"POT-Creation-Date: 2019-10-17T20:17:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -96,15 +96,15 @@ msgstr "Mendukung Internet Explorer dengan memuat polyfill JavaScript di halaman
 
 #: src/blocks/alert/index.js:29
 msgid "Provide contextual feedback messages or notices."
-msgstr "Provide contextual feedback messages or notices."
+msgstr "Berikan pesan atau pemberitahuan umpan balik kontekstual."
 
 #: src/blocks/alert/index.js:45
 msgid "This is an alert block"
-msgstr "This is an alert block"
+msgstr "Ini adalah blok peringatan"
 
 #: src/blocks/alert/index.js:46
 msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
-msgstr "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
+msgstr "Peringatan adalah pesan yang muncul di luar alur konten umum. Peringatan memberi umpan balik kontekstual yang biasanya meminta pembaca melakukan tindakan."
 
 #: src/blocks/alert/inspector.js:60
 #: src/blocks/author/inspector.js:61
@@ -129,24 +129,24 @@ msgstr "Edit avatar"
 #. placeholder text used for the author name
 #: src/blocks/author/edit.js:127
 msgid "Write author name…"
-msgstr "Write author name…"
+msgstr "Tulis nama lain…"
 
 #. placeholder text used for the biography
 #: src/blocks/author/edit.js:141
 msgid "Write a biography that distills objective credibility and authority to your readers…"
-msgstr "Write a biography that distills objective credibility and authority to your readers…"
+msgstr "Tulis biografi yang mempunyai kredibilitas dan kekuatan tujuan bagi pembaca Anda…"
 
 #: src/blocks/author/index.js:29
 msgid "Add an author biography to build credibility and authority."
-msgstr "Add an author biography to build credibility and authority."
+msgstr "Tambahkan biografi penulis untuk membangun kredibilitas dan kekuatan."
 
 #: src/blocks/author/index.js:35
 msgid "Born to express, not to impress. A maker making the world I want."
-msgstr "Born to express, not to impress. A maker making the world I want."
+msgstr "Hadir untuk memberi ruang ekspresi, bukan memberi kesan. Pembuat yang menciptakan dunia yang saya mau."
 
 #: src/blocks/author/inspector.js:41
 msgid "Author Settings"
-msgstr "Author Settings"
+msgstr "Pengaturan Penulis"
 
 #: src/blocks/buttons/index.js:29
 msgid "Prompt visitors to take action with multiple buttons, side by side."
@@ -187,7 +187,7 @@ msgstr "Tambahkan harga untuk di-tweet pembaca melalui Twitter."
 
 #: src/blocks/click-to-tweet/index.js:34
 msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
-msgstr "The easiest way to promote and advertise your blog, website, and business on Twitter."
+msgstr "Cara termudah mempromosikan dan mengiklankan blog, situs web, dan bisnis Anda di Twitter."
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
@@ -224,7 +224,7 @@ msgstr "Warna"
 #: src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
 msgid "Add as background"
-msgstr "Add as background"
+msgstr "Tambahkan sebagai latar belakang"
 
 #: src/blocks/features/feature/index.js:29
 msgid "A singular child column within a parent features block."
@@ -340,7 +340,7 @@ msgstr "Tambah judul..."
 #: src/blocks/food-and-drinks/food-item/inspector.js:45
 #: src/blocks/food-and-drinks/food-item/save.js:66
 msgid "Popular"
-msgstr "Popular"
+msgstr "Populer"
 
 #: src/blocks/food-and-drinks/food-item/edit.js:256
 #: src/blocks/food-and-drinks/food-item/inspector.js:60
@@ -565,7 +565,7 @@ msgstr "Menyimpan"
 #: src/blocks/form/edit.js:330
 #: src/blocks/map/inspector.js:231
 msgid "Save"
-msgstr "Save"
+msgstr "Simpan"
 
 #: src/blocks/form/edit.js:345
 #: src/blocks/map/inspector.js:240
@@ -574,7 +574,7 @@ msgstr "Hapus"
 
 #: src/blocks/form/fields/coblocks-option.js:61
 msgid "Write option…"
-msgstr "Write option…"
+msgstr "Tulis opsi…"
 
 #: src/blocks/form/fields/coblocks-option.js:70
 msgid "Remove Option"
@@ -582,11 +582,11 @@ msgstr "Hapus Opsi"
 
 #: src/blocks/form/fields/date/index.js:21
 msgid "A field for requesting date selections with a date picker."
-msgstr "A field for requesting date selections with a date picker."
+msgstr "Bidang untuk meminta pilihan tanggal dengan pemilih tanggal."
 
 #: src/blocks/form/fields/email/index.js:20
 msgid "A field for collecting a validated email address."
-msgstr "A field for collecting a validated email address."
+msgstr "Bidang untuk mengumpulkan alamat email tervalidasi."
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
@@ -599,7 +599,7 @@ msgstr "Wajib Diisi"
 
 #: src/blocks/form/fields/multi-field.js:102
 msgid "Add Option"
-msgstr "Add Option"
+msgstr "Tambah Opsi"
 
 #: src/blocks/form/fields/name/edit.js:69
 msgid "Name Field Settings"
@@ -619,15 +619,15 @@ msgstr "Alihkan untuk menambahkan bidang nama belakang."
 
 #: src/blocks/form/fields/name/index.js:20
 msgid "A text field for collecting the first and last names."
-msgstr "A text field for collecting the first and last names."
+msgstr "Bidang teks untuk mengumpulkan nama depan dan belakang."
 
 #: src/blocks/form/fields/phone/index.js:21
 msgid "A phone number to allow visitors to give you a phone number."
-msgstr "A phone number to allow visitors to give you a phone number."
+msgstr "Nomor telepon agar pengunjung memberikan nomor telepon."
 
 #: src/blocks/form/fields/radio/index.js:21
 msgid "A field with multiple options where only one choice can be made."
-msgstr "A field with multiple options where only one choice can be made."
+msgstr "Bidang dengan beberapa opsi di mana hanya satu pilihan yang bisa dibuat."
 
 #: src/blocks/form/fields/textarea/index.js:20
 msgid "A text box for longer responses."
@@ -635,11 +635,11 @@ msgstr "Kotak teks untuk tanggapan yang panjang."
 
 #: src/blocks/form/index.js:27
 msgid "Add a contact form to your page."
-msgstr "Add a contact form to your page."
+msgstr "Tambahkan formulir kontak ke halaman Anda."
 
 #: src/blocks/form/index.js:36
 msgid "Subject example"
-msgstr "Subject example"
+msgstr "Contoh judul"
 
 #: src/blocks/form/submit-button.js:107
 msgid "Add text…"
@@ -679,31 +679,31 @@ msgstr "Tampilkan beberapa gambar dalam galeri carousel yang menarik."
 
 #: src/blocks/gallery-carousel/inspector.js:109
 msgid "Thumbnails"
-msgstr "Thumbnails"
+msgstr "Thumbnail"
 
 #: src/blocks/gallery-carousel/inspector.js:119
 msgid "Responsive Height"
-msgstr "Responsive Height"
+msgstr "Tinggi Responsif"
 
 #: src/blocks/gallery-carousel/inspector.js:40
 msgid "Showing thumbnail navigation."
-msgstr "Showing thumbnail navigation."
+msgstr "Menampilkan navigasi thumbnail."
 
 #: src/blocks/gallery-carousel/inspector.js:40
 msgid "Toggle to show thumbnails."
-msgstr "Toggle to show thumbnails."
+msgstr "Alihkan untuk menampilkan thumbnail."
 
 #: src/blocks/gallery-carousel/inspector.js:44
 msgid "Percentage based height is activated."
-msgstr "Percentage based height is activated."
+msgstr "Persentase berdasarkan tinggi sudah diaktifkan."
 
 #: src/blocks/gallery-carousel/inspector.js:44
 msgid "Toggle for percentage based height."
-msgstr "Toggle for percentage based height."
+msgstr "Alihkan untuk persentase berdasarkan tinggi."
 
 #: src/blocks/gallery-carousel/inspector.js:68
 msgid "Carousel Settings"
-msgstr "Carousel Settings"
+msgstr "Pengaturan Carousel"
 
 #: src/blocks/gallery-carousel/inspector.js:71
 #: src/blocks/icon/inspector.js:173
@@ -728,15 +728,15 @@ msgstr "Terapkan"
 
 #: src/blocks/gallery-collage/edit.js:183
 msgid "Write caption..."
-msgstr "Write caption..."
+msgstr "Tulis keterangan..."
 
 #: src/blocks/gallery-collage/index.js:34
 msgid "Assemble images into a beautiful collage gallery."
-msgstr "Assemble images into a beautiful collage gallery."
+msgstr "Susun gambar menjadi galeri kolase yang indah."
 
 #: src/blocks/gallery-collage/inspector.js:105
 msgid "Collage Settings"
-msgstr "Collage Settings"
+msgstr "Pengaturan Kolase"
 
 #: src/blocks/gallery-collage/inspector.js:128
 msgid "Shadow"
@@ -776,16 +776,16 @@ msgstr "Tampilkan beberapa gambar di galeri masonry yang tertata."
 #: src/blocks/gallery-masonry/inspector.js:53
 #: src/blocks/gallery-stacked/inspector.js:56
 msgid "Image lightbox is enabled."
-msgstr "Image lightbox is enabled."
+msgstr "Lightbox gambar diaktifkan."
 
 #: src/blocks/gallery-masonry/inspector.js:53
 #: src/blocks/gallery-stacked/inspector.js:56
 msgid "Toggle to enable the image lightbox."
-msgstr "Toggle to enable the image lightbox."
+msgstr "Alihkan untuk mengaktifkan lightbox gambar."
 
 #: src/blocks/gallery-masonry/inspector.js:73
 msgid "Masonry Settings"
-msgstr "Masonry Settings"
+msgstr "Pengaturan Masonry"
 
 #: src/blocks/gallery-masonry/inspector.js:76
 msgid "Column Size"
@@ -822,7 +822,7 @@ msgstr "Alihkan untuk mengisi area galeri yang tersedia dengan gambar lebar penu
 
 #: src/blocks/gallery-stacked/inspector.js:80
 msgid "Stacked Settings"
-msgstr "Stacked Settings"
+msgstr "Pengaturan Bertumpuk"
 
 #: src/blocks/gallery-stacked/inspector.js:83
 msgid "Fullwidth Images"
@@ -896,7 +896,7 @@ msgstr "Memuat Gist"
 
 #: src/blocks/gist/index.js:29
 msgid "Embed GitHub gists by adding a gist link."
-msgstr "Embed GitHub gists by adding a gist link."
+msgstr "Sematkan Gist GitHub dengan menambahkan tautan Gist."
 
 #: src/blocks/gist/inspector.js:31
 msgid "Showing gist meta data."
@@ -924,7 +924,7 @@ msgstr "Ubah tata letak"
 
 #: src/blocks/hero/edit.js:152
 msgid "Add background to hero"
-msgstr "Add background to hero"
+msgstr "Tambahkan latar belakang untuk hero"
 
 #: src/blocks/hero/index.js:41
 msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
@@ -987,11 +987,11 @@ msgstr "Tambahkan teks yang disorot..."
 
 #: src/blocks/highlight/index.js:28
 msgid "Draw attention and emphasize important narrative."
-msgstr "Draw attention and emphasize important narrative."
+msgstr "Dapatkan perhatian dan tonjolkan narasi penting."
 
 #: src/blocks/highlight/index.js:33
 msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
-msgstr "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
+msgstr "Tambahkan efek sorotan ke teks paragraf untuk menarik perhatian dan menonjolkan narasi penting."
 
 #: src/blocks/icon/icon-size-select.js:30
 #: src/blocks/row/inspector.js:102
@@ -1001,7 +1001,7 @@ msgstr "Besar"
 
 #: src/blocks/icon/icon-size-select.js:79
 msgid "Choose icon size preset"
-msgstr "Choose icon size preset"
+msgstr "Pilih pra-atur ukuran ikon"
 
 #: src/blocks/icon/index.js:33
 msgid "Add a stylized graphic symbol to communicate something more."
@@ -1015,7 +1015,7 @@ msgstr "Pengaturan Ikon"
 
 #: src/blocks/icon/inspector.js:168
 msgid "Reset icon size"
-msgstr "Reset icon size"
+msgstr "Reset ukuran ikon"
 
 #: src/blocks/icon/inspector.js:170
 #: src/components/dimensions-control/index.js:470
@@ -1025,7 +1025,7 @@ msgstr "Reset"
 
 #: src/blocks/icon/inspector.js:198
 msgid "Apply custom size"
-msgstr "Apply custom size"
+msgstr "Terapkan ukuran kustom"
 
 #: src/blocks/icon/inspector.js:201
 msgid "Custom"
@@ -1132,7 +1132,7 @@ msgstr "Batalkan"
 
 #: src/blocks/map/index.js:28
 msgid "Add an address or location to drop a pin on a Google map."
-msgstr "Add an address or location to drop a pin on a Google map."
+msgstr "Tambahkan alamat atau lokasi untuk meletakkan pin di peta Google."
 
 #: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
@@ -1220,11 +1220,11 @@ msgstr "Kunci Api Peta Google"
 
 #: src/blocks/map/inspector.js:212
 msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
-msgstr "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgstr "Tambahkan kunci API Google Maps. Memperbarui kunci API ini akan mengatur semua peta Anda untuk menggunakan kunci baru."
 
 #: src/blocks/map/inspector.js:215
 msgid "Get a key"
-msgstr "Get a key"
+msgstr "Dapatkan kunci"
 
 #: src/blocks/map/inspector.js:216
 msgid "Need help?"
@@ -1300,37 +1300,37 @@ msgstr "Edit media"
 #: src/blocks/post-carousel/edit.js:123
 #: src/blocks/posts/edit.js:247
 msgid "Edit RSS URL"
-msgstr "Edit RSS URL"
+msgstr "Edit URL RSS"
 
 #: src/blocks/post-carousel/edit.js:178
 msgid "Post Carousel"
-msgstr "Post Carousel"
+msgstr "Posting Carousel"
 
 #: src/blocks/post-carousel/edit.js:184
 #: src/blocks/posts/edit.js:295
 msgid "No posts found. Start publishing or add posts from an %s feed."
-msgstr "No posts found. Start publishing or add posts from an %s feed."
+msgstr "Tidak ditemukan postingan. Mulai terbitkan atau tambahkan postingan dari feed %s."
 
 #: src/blocks/post-carousel/edit.js:187
 #: src/blocks/posts/edit.js:298
 msgid "Retrieve an External Feed"
-msgstr "Retrieve an External Feed"
+msgstr "Ambil Feed Eksternal"
 
 #: src/blocks/post-carousel/edit.js:193
 #: src/blocks/posts/edit.js:304
 msgid "Use External Feed"
-msgstr "Use External Feed"
+msgstr "Gunakan Feed Eksternal"
 
 #. %s: RSS
 #: src/blocks/post-carousel/edit.js:216
 #: src/blocks/posts/edit.js:332
 msgid "%s Feed"
-msgstr "%s Feed"
+msgstr "Feed %s"
 
 #: src/blocks/post-carousel/edit.js:217
 #: src/blocks/posts/edit.js:333
 msgid "%s URLs are generally located at the /feed/ directory of a site."
-msgstr "%s URLs are generally located at the /feed/ directory of a site."
+msgstr "URL %s umumnya terletak di direktori /feed/ situs."
 
 #: src/blocks/post-carousel/edit.js:221
 #: src/blocks/posts/edit.js:337
@@ -1340,67 +1340,67 @@ msgstr "https://example.com/feed…"
 #: src/blocks/post-carousel/edit.js:227
 #: src/blocks/posts/edit.js:343
 msgid "Use URL"
-msgstr "Use URL"
+msgstr "Gunakan URL"
 
 #: src/blocks/post-carousel/edit.js:320
 #: src/blocks/posts/edit.js:463
-#: src/blocks/post-carousel/index.php:366
+#: src/blocks/post-carousel/index.php:368
 #: src/blocks/posts/index.php:385
 msgid "Read more"
-msgstr "Read more"
+msgstr "Baca selengkapnya"
 
 #: src/blocks/post-carousel/index.js:27
 msgid "Display posts or an external blog feed as a carousel."
-msgstr "Display posts or an external blog feed as a carousel."
+msgstr "Tampilkan postingan atau feed blog eksternal sebagai carousel."
 
 #: src/blocks/post-carousel/inspector.js:108
 #: src/blocks/posts/inspector.js:174
 msgid "Number of posts"
-msgstr "Number of posts"
+msgstr "Jumlah postingan"
 
 #: src/blocks/post-carousel/inspector.js:38
 msgid "Post Carousel Settings"
-msgstr "Post Carousel Settings"
+msgstr "Posting Pengaturan Carousel"
 
 #: src/blocks/post-carousel/inspector.js:41
 #: src/blocks/posts/inspector.js:81
 msgid "Post Date"
-msgstr "Post Date"
+msgstr "Tanggal Posting"
 
 #: src/blocks/post-carousel/inspector.js:45
 #: src/blocks/posts/inspector.js:85
 msgid "Showing the publish date."
-msgstr "Showing the publish date."
+msgstr "Menampilkan tanggal penerbitan."
 
 #: src/blocks/post-carousel/inspector.js:46
 #: src/blocks/posts/inspector.js:86
 msgid "Toggle to show the publish date."
-msgstr "Toggle to show the publish date."
+msgstr "Alihkan untuk menampilkan tanggal penerbitan."
 
 #: src/blocks/post-carousel/inspector.js:51
 #: src/blocks/posts/inspector.js:91
 msgid "Post Content"
-msgstr "Post Content"
+msgstr "Konten Postingan"
 
 #: src/blocks/post-carousel/inspector.js:55
 #: src/blocks/posts/inspector.js:95
 msgid "Showing the post content."
-msgstr "Showing the post content."
+msgstr "Menampilkan konten postingan."
 
 #: src/blocks/post-carousel/inspector.js:56
 #: src/blocks/posts/inspector.js:96
 msgid "Toggle to show the post content."
-msgstr "Toggle to show the post content."
+msgstr "Alihkan untuk menampilkan konten postingan."
 
 #: src/blocks/post-carousel/inspector.js:62
 #: src/blocks/posts/inspector.js:102
 msgid "Max words in content"
-msgstr "Max words in content"
+msgstr "Jumlah kata maksimal dalam konten"
 
 #: src/blocks/post-carousel/inspector.js:86
 #: src/blocks/posts/inspector.js:152
 msgid "Feed Settings"
-msgstr "Feed Settings"
+msgstr "Pengaturan Feed"
 
 #: src/blocks/post-carousel/inspector.js:90
 #: src/blocks/posts/inspector.js:156
@@ -1410,15 +1410,15 @@ msgstr "Blog Saya"
 #: src/blocks/post-carousel/inspector.js:91
 #: src/blocks/posts/inspector.js:157
 msgid "External Feed"
-msgstr "External Feed"
+msgstr "Feed Eksternal"
 
 #: src/blocks/posts/edit.js:260
 msgid "Image on left"
-msgstr "Image on left"
+msgstr "Gambar di kiri"
 
 #: src/blocks/posts/edit.js:265
 msgid "Image on right"
-msgstr "Image on right"
+msgstr "Gambar di kanan"
 
 #: src/blocks/posts/edit.js:289
 msgid "Blog Posts"
@@ -1426,35 +1426,35 @@ msgstr "Postingan Blog."
 
 #: src/blocks/posts/index.js:27
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
-msgstr "Display posts or an RSS feed as stacked or horizontal cards."
+msgstr "Tampilkan postingan atau feed RSS kartu bertumpuk atau horizontal."
 
 #: src/blocks/posts/inspector.js:129
 msgid "Thumbnail Size"
-msgstr "Thumbnail Size"
+msgstr "Ukuran Thumbnail"
 
 #: src/blocks/posts/inspector.js:78
 msgid "Posts Settings"
-msgstr "Posts Settings"
+msgstr "Pengaturan Postingan"
 
 #: src/blocks/pricing-table/controls.js:17
 msgid "One Pricing Table"
-msgstr "One Pricing Table"
+msgstr "Satu Tabel Harga"
 
 #: src/blocks/pricing-table/controls.js:22
 msgid "Two Pricing Tables"
-msgstr "Two Pricing Tables"
+msgstr "Dua Tabel Harga"
 
 #: src/blocks/pricing-table/controls.js:27
 msgid "Three Pricing Tables"
-msgstr "Three Pricing Tables"
+msgstr "Tiga Tabel Harga"
 
 #: src/blocks/pricing-table/controls.js:32
 msgid "Four Pricing Tables"
-msgstr "Four Pricing Tables"
+msgstr "Empat Tabel Harga"
 
 #: src/blocks/pricing-table/controls.js:62
 msgid "Change pricing table count"
-msgstr "Change pricing table count"
+msgstr "Ubah jumlah tabel harga"
 
 #: src/blocks/pricing-table/edit.js:39
 msgid "Plan %d"
@@ -1462,7 +1462,7 @@ msgstr "Paket %d"
 
 #: src/blocks/pricing-table/index.js:29
 msgid "Add pricing tables to help visitors compare products and plans."
-msgstr "Add pricing tables to help visitors compare products and plans."
+msgstr "Tambahkan tabel harga agar membantu pengunjung membandingkan produk dan paket."
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:112
 msgid "Add features"
@@ -1482,11 +1482,11 @@ msgstr "$"
 
 #: src/blocks/pricing-table/pricing-table-item/index.js:27
 msgid "A pricing table to help visitors compare products and plans."
-msgstr "A pricing table to help visitors compare products and plans."
+msgstr "Tabel harga untuk membantu pengunjung membandingkan produk dan paket."
 
 #: src/blocks/row/column/edit.js:90
 msgid "Add background to column"
-msgstr "Add background to column"
+msgstr "Tambahkan latar belakang ke kolom"
 
 #: src/blocks/row/column/index.js:30
 msgid "An immediate child of a row."
@@ -1507,7 +1507,7 @@ msgstr "Lebar"
 
 #: src/blocks/row/controls.js:74
 msgid "Change row block layout"
-msgstr "Change row block layout"
+msgstr "Ubah tata letak blok baris"
 
 #: src/blocks/row/edit.js:121
 msgid "one"
@@ -1527,7 +1527,7 @@ msgstr "empat"
 
 #: src/blocks/row/edit.js:169
 msgid "Add background to row"
-msgstr "Add background to row"
+msgstr "Tambahkan latar belakang ke baris"
 
 #: src/blocks/row/edit.js:174
 msgid "One Column"
@@ -1591,43 +1591,43 @@ msgstr "Tidak Ada"
 
 #: src/blocks/row/layouts.js:13
 msgid "Equal Split"
-msgstr "Equal Split"
+msgstr "Dibagi Sama"
 
 #: src/blocks/row/layouts.js:14
 msgid "Two Thirds / One Third"
-msgstr "Two Thirds / One Third"
+msgstr "Dua Pertiga/Sepertiga"
 
 #: src/blocks/row/layouts.js:15
 msgid "One Third / Two Thirds"
-msgstr "One Third / Two Thirds"
+msgstr "Sepertiga/Dua Pertiga"
 
 #: src/blocks/row/layouts.js:16
 msgid "Three Quarters / Quarter"
-msgstr "Three Quarters / Quarter"
+msgstr "Tiga Perempat/Seperempat"
 
 #: src/blocks/row/layouts.js:17
 msgid "Quarter / Three Quarters"
-msgstr "Quarter / Three Quarters"
+msgstr "Seperempat/Tiga Perempat"
 
 #: src/blocks/row/layouts.js:20
 msgid "Thirds"
-msgstr "Thirds"
+msgstr "Sepertiga"
 
 #: src/blocks/row/layouts.js:21
 msgid "Half / Quarter / Quarter"
-msgstr "Half / Quarter / Quarter"
+msgstr "Setengah/Seperempat/Seperempat"
 
 #: src/blocks/row/layouts.js:22
 msgid "Quarter / Quarter/ Half"
-msgstr "Quarter / Quarter/ Half"
+msgstr "Seperempat/Seperempat/Setengah"
 
 #: src/blocks/row/layouts.js:23
 msgid "Quarter / Half / Quarter"
-msgstr "Quarter / Half / Quarter"
+msgstr "Seperempat/Setengah/Seperempat"
 
 #: src/blocks/row/layouts.js:24
 msgid "One Fifth/ Three Fifths / One Fifth"
-msgstr "One Fifth/ Three Fifths / One Fifth"
+msgstr "Seperlima/Tiga Perlima/Seperlima"
 
 #: src/blocks/row/layouts.js:27
 msgid "Quarters"
@@ -1635,11 +1635,11 @@ msgstr "Kuartal"
 
 #: src/blocks/row/layouts.js:28
 msgid "Two Fifths / Fifth / Fifth / Fifth"
-msgstr "Two Fifths / Fifth / Fifth / Fifth"
+msgstr "Dua Perlima/Seperlima/Seperlima/Seperlima"
 
 #: src/blocks/row/layouts.js:29
 msgid "Fifth / Fifth / Fifth / Two Fifths"
-msgstr "Fifth / Fifth / Fifth / Two Fifths"
+msgstr "Seperlima/Seperlima/Seperlima/Dua Perlima"
 
 #: src/blocks/services/edit.js:44
 msgid "Square"
@@ -1722,17 +1722,17 @@ msgid "Shape Color"
 msgstr "Warna Bentuk"
 
 #: src/blocks/share/edit.js:113
-#: src/blocks/share/index.php:133
+#: src/blocks/share/index.php:132
 msgid "Share on Facebook"
 msgstr "Bagikan di Facebook"
 
 #: src/blocks/share/edit.js:121
-#: src/blocks/share/index.php:137
+#: src/blocks/share/index.php:136
 msgid "Share on Twitter"
 msgstr "Bagikan di Twitter"
 
 #: src/blocks/share/edit.js:129
-#: src/blocks/share/index.php:141
+#: src/blocks/share/index.php:140
 msgid "Share on Pinterest"
 msgstr "Bagikan di Pinterest"
 
@@ -1741,22 +1741,22 @@ msgid "Share on LinkedIn"
 msgstr "Bagikan di LinkedIn"
 
 #: src/blocks/share/edit.js:145
-#: src/blocks/share/index.php:149
+#: src/blocks/share/index.php:148
 msgid "Share via Email"
 msgstr "Bagikan melalui Email"
 
 #: src/blocks/share/edit.js:153
-#: src/blocks/share/index.php:153
+#: src/blocks/share/index.php:152
 msgid "Share on Tumblr"
 msgstr "Bagikan di Tumblr"
 
 #: src/blocks/share/edit.js:161
-#: src/blocks/share/index.php:157
+#: src/blocks/share/index.php:156
 msgid "Share on Google"
 msgstr "Bagikan di Google"
 
 #: src/blocks/share/edit.js:169
-#: src/blocks/share/index.php:161
+#: src/blocks/share/index.php:160
 msgid "Share on Reddit"
 msgstr "Bagikan di Reddit"
 
@@ -1790,19 +1790,19 @@ msgstr "Ikon"
 
 #: src/blocks/share/inspector.js:157
 #: src/blocks/social-profiles/edit.js:205
-#: src/blocks/social-profiles/index.php:72
+#: src/blocks/social-profiles/index.php:71
 msgid "Twitter"
 msgstr "Twitter"
 
 #: src/blocks/share/inspector.js:162
 #: src/blocks/social-profiles/edit.js:159
-#: src/blocks/social-profiles/index.php:68
+#: src/blocks/social-profiles/index.php:67
 msgid "Facebook"
 msgstr "Facebook"
 
 #: src/blocks/share/inspector.js:167
 #: src/blocks/social-profiles/edit.js:299
-#: src/blocks/social-profiles/index.php:80
+#: src/blocks/social-profiles/index.php:79
 msgid "Pinterest"
 msgstr "Pinterest"
 
@@ -1813,7 +1813,7 @@ msgstr "LinkedIn"
 
 #: src/blocks/share/inspector.js:177
 #: includes/class-coblocks-form.php:234
-#: includes/class-coblocks-form.php:321
+#: includes/class-coblocks-form.php:319
 msgid "Email"
 msgstr "Email"
 
@@ -1860,7 +1860,7 @@ msgid "Add Instagram Profile"
 msgstr "Tambahkan Profil Instagram"
 
 #: src/blocks/social-profiles/edit.js:251
-#: src/blocks/social-profiles/index.php:76
+#: src/blocks/social-profiles/index.php:75
 msgid "Instagram"
 msgstr "Instagram"
 
@@ -1889,7 +1889,7 @@ msgid "Add YouTube Profile"
 msgstr "Tambahkan Profil YouTube"
 
 #: src/blocks/social-profiles/edit.js:393
-#: src/blocks/social-profiles/index.php:89
+#: src/blocks/social-profiles/index.php:88
 msgid "YouTube"
 msgstr "YouTube"
 
@@ -1902,7 +1902,7 @@ msgid "Add Yelp Profile"
 msgstr "Tambahkan Profil Yelp"
 
 #: src/blocks/social-profiles/edit.js:439
-#: src/blocks/social-profiles/index.php:93
+#: src/blocks/social-profiles/index.php:92
 msgid "Yelp"
 msgstr "Yelp"
 
@@ -1915,7 +1915,7 @@ msgid "Add Houzz Profile"
 msgstr "Tambahkan Profil Houzz"
 
 #: src/blocks/social-profiles/edit.js:485
-#: src/blocks/social-profiles/index.php:97
+#: src/blocks/social-profiles/index.php:96
 msgid "Houzz"
 msgstr "Houzz"
 
@@ -1925,7 +1925,7 @@ msgstr "https://houzz.com/"
 
 #: src/blocks/social-profiles/index.js:25
 msgid "Grow your audience with links to social media profiles."
-msgstr "Grow your audience with links to social media profiles."
+msgstr "Tingkatkan jumlah kunjungan Anda dengan tautan ke profil media sosial."
 
 #: src/blocks/social-profiles/inspector.js:159
 msgid "Profile Links"
@@ -2034,27 +2034,27 @@ msgstr "URL Kustom"
 
 #: src/components/crop-settings/index.js:275
 msgid "Crop settings image placeholder"
-msgstr "Crop settings image placeholder"
+msgstr "Placeholder gambar pengaturan pangkas"
 
 #: src/components/crop-settings/index.js:304
 msgid "Image Orientation"
-msgstr "Image Orientation"
+msgstr "Orientasi Gambar"
 
 #: src/components/crop-settings/index.js:310
 msgid "Rotate counter-clockwise"
-msgstr "Rotate counter-clockwise"
+msgstr "Putar berlawanan arah jarum jam"
 
 #: src/components/crop-settings/index.js:316
 msgid "Rotate clockwise"
-msgstr "Rotate clockwise"
+msgstr "Putar searah jarum jam"
 
 #: src/components/crop-settings/index.js:325
 msgid "Reset image cropping options"
-msgstr "Reset image cropping options"
+msgstr "Reset opsi pemangkasan gambar"
 
 #: src/components/crop-settings/index.js:327
 msgid "Reset All"
-msgstr "Reset All"
+msgstr "Reset Semua"
 
 #: src/components/dimensions-control/index.js:442
 msgid "Select Units"
@@ -2203,7 +2203,7 @@ msgstr "Lima Detik"
 
 #: src/components/slider-panel/autoplay-options.js:15
 msgid "Six Seconds"
-msgstr "Six Seconds"
+msgstr "Enam Detik"
 
 #: src/components/slider-panel/autoplay-options.js:16
 msgid "Seven Seconds"
@@ -2223,7 +2223,7 @@ msgstr "Sepuluh Detik"
 
 #: src/components/slider-panel/index.js:102
 msgid "Free Scroll"
-msgstr "Free Scroll"
+msgstr "Gulir Gratis"
 
 #: src/components/slider-panel/index.js:108
 msgid "Arrow Navigation"
@@ -2235,7 +2235,7 @@ msgstr "Navigasi Titik"
 
 #: src/components/slider-panel/index.js:120
 msgid "Align Cells"
-msgstr "Align Cells"
+msgstr "Ratakan Sel"
 
 #: src/components/slider-panel/index.js:24
 msgid "seconds"
@@ -2257,11 +2257,11 @@ msgstr "Otomatis maju ke slide berikutnya."
 
 #: src/components/slider-panel/index.js:31
 msgid "Dragging and flicking enabled."
-msgstr "Dragging and flicking enabled."
+msgstr "Menyeret dan menggeser diaktifkan."
 
 #: src/components/slider-panel/index.js:31
 msgid "Toggle to enable drag functionality."
-msgstr "Toggle to enable drag functionality."
+msgstr "Alihkan untuk mengaktifkan fungsi seret."
 
 #: src/components/slider-panel/index.js:35
 msgid "Showing slide navigation arrows."
@@ -2273,7 +2273,7 @@ msgstr "Alihkan untuk menampilkan panah navigasi slide."
 
 #: src/components/slider-panel/index.js:39
 msgid "Showing dot navigation."
-msgstr "Showing dot navigation."
+msgstr "Menampilkan navigasi titik."
 
 #: src/components/slider-panel/index.js:39
 msgid "Toggle to show dot navigation."
@@ -2281,27 +2281,27 @@ msgstr "Alihkan untuk menampilkan navigasi titik."
 
 #: src/components/slider-panel/index.js:43
 msgid "Aligning slides to the left."
-msgstr "Aligning slides to the left."
+msgstr "Meratakan slide ke kiri."
 
 #: src/components/slider-panel/index.js:43
 msgid "Aligning slides to the center."
-msgstr "Aligning slides to the center."
+msgstr "Meratakan slide ke tengah."
 
 #: src/components/slider-panel/index.js:46
 msgid "Pausing autoplay when hovering."
-msgstr "Pausing autoplay when hovering."
+msgstr "Menjeda putar otomatis saat kursor diarahkan."
 
 #: src/components/slider-panel/index.js:46
 msgid "Toggle to pause autoplay when hovered."
-msgstr "Toggle to pause autoplay when hovered."
+msgstr "Alihkan untuk menjeda putar otomatis saat kursor diarahkan."
 
 #: src/components/slider-panel/index.js:50
 msgid "Scrolling without fixed slides enabled."
-msgstr "Scrolling without fixed slides enabled."
+msgstr "Menggulir tanpa mengaktifkan slide tetap."
 
 #: src/components/slider-panel/index.js:50
 msgid "Toggle to scroll without fixed slides."
-msgstr "Toggle to scroll without fixed slides."
+msgstr "Alihkan untuk menggulir tanpa slide tetap."
 
 #: src/components/slider-panel/index.js:72
 msgid "Slider Settings"
@@ -2317,7 +2317,7 @@ msgstr "Kecepatan Transisi"
 
 #: src/components/slider-panel/index.js:88
 msgid "Pause on Hover"
-msgstr "Pause on Hover"
+msgstr "Jeda saat Kursor Diarahkan"
 
 #: src/components/slider-panel/index.js:96
 msgid "Draggable"
@@ -2373,11 +2373,11 @@ msgstr "Hapus Spasi Atas"
 
 #: src/extensions/advanced-controls/index.js:135
 msgid "Toggle to add top margin back."
-msgstr "Toggle to add top margin back."
+msgstr "Alihkan untuk menambahkan kembali margin atas."
 
 #: src/extensions/advanced-controls/index.js:135
 msgid "Toggle to remove any top margin."
-msgstr "Toggle to remove any top margin."
+msgstr "Alihkan untuk menghapus semua margin atas."
 
 #: src/extensions/advanced-controls/index.js:140
 msgid "Remove Bottom Spacing"
@@ -2385,11 +2385,11 @@ msgstr "Hapus Spasi Bawah"
 
 #: src/extensions/advanced-controls/index.js:163
 msgid "Toggle to add bottom margin back."
-msgstr "Toggle to add bottom margin back."
+msgstr "Alihkan untuk menambahkan kembali margin bawah."
 
 #: src/extensions/advanced-controls/index.js:163
 msgid "Toggle to remove any bottom margin."
-msgstr "Toggle to remove any bottom margin."
+msgstr "Alihkan untuk menghapus semua margin bawah."
 
 #: src/extensions/button-controls/index.js:71
 msgid "Display Fullwidth"
@@ -2403,9 +2403,9 @@ msgstr "Menampilkan sebagai lebar penuh."
 msgid "Toggle to display button as full width."
 msgstr "Alihkan untuk menampilkan tombol sebagai lebar penuh."
 
-#: src/extensions/image-crop/index.js:169
+#: src/extensions/image-crop/index.js:172
 msgid "Crop Settings"
-msgstr "Crop Settings"
+msgstr "Pengaturan Pangkas"
 
 #: src/formats/uppercase/index.js:35
 msgid "Uppercase"
@@ -2452,8 +2452,8 @@ msgstr "Tampilkan dalam keadaan terbuka"
 
 #: src/blocks/accordion/accordion-item/edit.js:65
 msgctxt "Accordion is the block name"
-msgid "Add accordion title..."
-msgstr "Tambahkan judul accordion..."
+msgid "Write accordion item title..."
+msgstr "Write accordion item title..."
 
 #: src/blocks/accordion/accordion-item/index.js:26
 msgctxt "This is an inner block for the Accordion Block."
@@ -2543,7 +2543,7 @@ msgstr "kalender"
 #: src/blocks/form/fields/date/index.js:20
 msgctxt "block keyword"
 msgid "day month year"
-msgstr "day month year"
+msgstr "hari bulan tahun"
 
 #: src/blocks/form/fields/email/index.js:22
 msgctxt "block keyword"
@@ -2568,17 +2568,17 @@ msgstr "nama belakang"
 #: src/blocks/form/fields/phone/index.js:20
 msgctxt "block keyword"
 msgid "telephone"
-msgstr "telephone"
+msgstr "telepon"
 
 #: src/blocks/form/fields/phone/index.js:20
 msgctxt "block keyword"
 msgid "cellular"
-msgstr "cellular"
+msgstr "seluler"
 
 #: src/blocks/form/fields/phone/index.js:20
 msgctxt "block keyword"
 msgid "mobile"
-msgstr "mobile"
+msgstr "ponsel"
 
 #: src/blocks/form/fields/radio/index.js:20
 msgctxt "block keyword"
@@ -2721,7 +2721,7 @@ msgstr "video"
 #: src/blocks/post-carousel/index.js:29
 msgctxt "block keyword"
 msgid "posts"
-msgstr "posts"
+msgstr "postingan"
 
 #: src/blocks/post-carousel/index.js:29
 msgctxt "block keyword"
@@ -2732,7 +2732,7 @@ msgstr "slider"
 #: src/blocks/posts/index.js:29
 msgctxt "block keyword"
 msgid "latest"
-msgstr "latest"
+msgstr "terkini"
 
 #: src/blocks/posts/index.js:29
 msgctxt "block keyword"
@@ -2904,7 +2904,7 @@ msgstr "Carousel"
 #: src/blocks/gallery-collage/index.js:33
 msgctxt "block name"
 msgid "Collage"
-msgstr "Collage"
+msgstr "Kolase"
 
 #: src/blocks/gallery-masonry/index.js:34
 msgctxt "block name"
@@ -2959,7 +2959,7 @@ msgstr "Kartu Media"
 #: src/blocks/post-carousel/index.js:26
 msgctxt "block name"
 msgid "Post Carousel"
-msgstr "Post Carousel"
+msgstr "Posting Carousel"
 
 #: src/blocks/posts/index.js:26
 msgctxt "block name"
@@ -3065,12 +3065,12 @@ msgstr "Default"
 #: src/blocks/gallery-collage/index.js:45
 msgctxt "block style"
 msgid "Tiled"
-msgstr "Tiled"
+msgstr "Gaya Ubin"
 
 #: src/blocks/gallery-collage/index.js:49
 msgctxt "block style"
 msgid "Layered"
-msgstr "Layered"
+msgstr "Berlapis"
 
 #: src/blocks/icon/index.js:37
 msgctxt "block style"
@@ -3165,22 +3165,22 @@ msgstr "Melingkar"
 #: src/extensions/image-styles/index.js:21
 msgctxt "block style"
 msgid "Bottom Wave"
-msgstr "Bottom Wave"
+msgstr "Gelombang Bawah"
 
 #: src/extensions/image-styles/index.js:27
 msgctxt "block style"
 msgid "Top Wave"
-msgstr "Top Wave"
+msgstr "Gelombang Atas"
 
 #: src/blocks/author/edit.js:63
 msgctxt "image to represent the post author"
 msgid "Drop to upload as avatar"
-msgstr "Drop to upload as avatar"
+msgstr "Letakkan untuk diunggah sebagai avatar"
 
 #: src/blocks/author/edit.js:149
 msgctxt "content placeholder"
 msgid "Author link…"
-msgstr "Author link…"
+msgstr "Tautan penulis…"
 
 #: src/blocks/features/feature/edit.js:31
 msgctxt "content placeholder"
@@ -3205,7 +3205,7 @@ msgstr "Ini adalah blok fitur yang bisa Anda gunakan untuk menyorot fitur."
 #: src/blocks/hero/edit.js:35
 msgctxt "content placeholder"
 msgid "Add hero heading…"
-msgstr "Add hero heading…"
+msgstr "Tambahkan judul hero…"
 
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
@@ -3215,12 +3215,12 @@ msgstr "Tambahkan konten hero, yang umumnya adalah area pendahuluan halaman yang
 #: src/blocks/hero/edit.js:39
 msgctxt "content placeholder"
 msgid "Primary button…"
-msgstr "Primary button…"
+msgstr "Tombol primer…"
 
 #: src/blocks/hero/edit.js:40
 msgctxt "content placeholder"
 msgid "Secondary button…"
-msgstr "Secondary button…"
+msgstr "Tombol sekunder…"
 
 #: src/blocks/media-card/edit.js:46
 msgctxt "content placeholder"
@@ -3242,12 +3242,12 @@ msgctxt "content placeholder"
 msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
 msgstr "Ganti teks ini dengan salinan deskripsi untuk disertakan dengan gambar kartu. Lalu tambahkan lebih banyak blok ke kartu ini, seperti tombol, daftar, atau gambar."
 
-#: src/blocks/services/service/edit.js:204
+#: src/blocks/services/service/edit.js:205
 msgctxt "content placeholder"
 msgid "Write title..."
 msgstr "Tulis judul..."
 
-#: src/blocks/services/service/edit.js:210
+#: src/blocks/services/service/edit.js:211
 msgctxt "content placeholder"
 msgid "Write description..."
 msgstr "Tulis deskripsi..."
@@ -3533,7 +3533,7 @@ msgstr "Buat"
 #: src/blocks/icon/svgs.js:297
 msgctxt "label"
 msgid "Credit Card"
-msgstr "Credit Card"
+msgstr "Kartu Kredit"
 
 #: src/blocks/icon/svgs.js:302
 msgctxt "label"
@@ -3971,7 +3971,7 @@ msgstr "Kotak Centang"
 #: src/blocks/posts/index.php:202
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
-msgstr "(no title)"
+msgstr "(tanpa judul)"
 
 #: src/blocks/posts/inspector.js:57
 msgctxt "label for small size option"
@@ -4105,17 +4105,17 @@ msgstr "Tidak Ada"
 #: src/components/crop-settings/index.js:280
 msgctxt "label for horizontal positioning input"
 msgid "Horizontal Pos."
-msgstr "Horizontal Pos."
+msgstr "Pos. Horizontal"
 
 #: src/components/crop-settings/index.js:288
 msgctxt "label for vertical positioning input"
 msgid "Vertical Pos."
-msgstr "Vertical Pos."
+msgstr "Pos. Vertikal"
 
 #: src/components/crop-settings/index.js:297
 msgctxt "label for the control that allows zooming in on the image"
 msgid "Image Zoom"
-msgstr "Image Zoom"
+msgstr "Zoom Gambar"
 
 #: src/components/dimensions-control/index.js:389
 msgctxt "A size unit for CSS markup"
@@ -4140,22 +4140,22 @@ msgstr "Asli"
 #: src/components/media-filter-control/index.js:39
 msgctxt "image styles"
 msgid "Grayscale Filter"
-msgstr "Grayscale Filter"
+msgstr "Filter Hitam Putih"
 
 #: src/components/media-filter-control/index.js:47
 msgctxt "image styles"
 msgid "Sepia Filter"
-msgstr "Sepia Filter"
+msgstr "Filter Sepia"
 
 #: src/components/media-filter-control/index.js:55
 msgctxt "image styles"
 msgid "Saturation Filter"
-msgstr "Saturation Filter"
+msgstr "Filter Saturasi"
 
 #: src/components/media-filter-control/index.js:63
 msgctxt "image styles"
 msgid "Dim Filter"
-msgstr "Dim Filter"
+msgstr "Filter Redup"
 
 #: src/components/media-filter-control/index.js:71
 msgctxt "image styles"
@@ -4212,66 +4212,66 @@ msgstr "GoDaddy"
 msgid "https://www.godaddy.com"
 msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:77
-#: class-coblocks.php:89
+#: class-coblocks.php:84
+#: class-coblocks.php:96
 msgid "Cheating huh?"
 msgstr "Selingkuh?"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Review CoBlocks on WordPress.org"
-msgstr "Review CoBlocks on WordPress.org"
+msgstr "Periksa CoBlocks di WordPress.org"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Leave a Review"
 msgstr "Tulis Ulasan"
 
-#: includes/admin/class-coblocks-getting-started-page.php:121
+#: includes/admin/class-coblocks-getting-started-page.php:120
 msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
 msgstr "Terima kasih telah memilih CoBlocks, pembuat halaman premier untuk editor blok WordPress yang baru."
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
-#: includes/admin/class-coblocks-getting-started-page.php:127
+#: includes/admin/class-coblocks-getting-started-page.php:126
 msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
 msgstr "Anda baru saja menambahkan banyak blok berguna dan toolkit pembuat halaman baru ke editor WordPress. CoBlocks menyediakan rangkaian fitur berpengaruh: %1$s puluhan blok%2$s, %1$s pengalaman pembuat halaman %2$s dan %1$s kontrol tipografi kustom%2$s."
 
-#: includes/admin/class-coblocks-getting-started-page.php:134
+#: includes/admin/class-coblocks-getting-started-page.php:133
 msgid "Here are a few videos to help you get started:"
 msgstr "Berikut ini beberapa video untuk membantu Anda mulai menggunakannya:"
 
 #. translators: CoBlocks plugin name
-#: includes/admin/class-coblocks-getting-started-page.php:138
+#: includes/admin/class-coblocks-getting-started-page.php:137
 msgid "Watch how to create your first page with %s"
 msgstr "Lihat cara membuat halaman pertama Anda dengan %s"
 
-#: includes/admin/class-coblocks-getting-started-page.php:139
+#: includes/admin/class-coblocks-getting-started-page.php:138
 msgid "Watch how to create your first page"
 msgstr "Lihat cara membuat halaman pertama Anda"
 
+#: includes/admin/class-coblocks-getting-started-page.php:140
 #: includes/admin/class-coblocks-getting-started-page.php:141
-#: includes/admin/class-coblocks-getting-started-page.php:142
 msgid "Watch how to use the Row and Shape Divider blocks"
 msgstr "Lihat cara menggunakan blok Baris dan Pemisah Bentuk"
 
+#: includes/admin/class-coblocks-getting-started-page.php:143
 #: includes/admin/class-coblocks-getting-started-page.php:144
-#: includes/admin/class-coblocks-getting-started-page.php:145
 msgid "Watch how to use the Media Card block"
 msgstr "Lihat cara menggunakan blok Kartu Media"
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:153
+#: includes/admin/class-coblocks-getting-started-page.php:152
 msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
 msgstr "Suka yang Anda lihat? %1$sBerlangganan saluran YouTube kami%2$s dan kami akan memberi tahu Anda jika ada tutorial video baru yang dirilis."
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:164
+#: includes/admin/class-coblocks-getting-started-page.php:163
 msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
 msgstr "Jika ada pertanyaan atau masukan, beri tahu kami di %1$sTwitter%4$s atau %2$sgrup Facebook%4$s kami. Selain itu, %3$sberlangganan buletin kami%4$s jika Anda ingin terus mendapatkan info terkini tentang apa yang baru dan akan hadir di CoBlocks."
 
-#: includes/admin/class-coblocks-getting-started-page.php:173
+#: includes/admin/class-coblocks-getting-started-page.php:172
 msgid "Enjoy!"
 msgstr "Nikmati!"
 
-#: includes/class-coblocks-block-settings.php:80
+#: includes/class-coblocks-block-settings.php:72
 msgid "Enable or disable blocks"
 msgstr "Aktifkan atau nonaktifkan blok"
 
@@ -4283,50 +4283,50 @@ msgstr "Kunci situs reCaptcha Google untuk perlindungan spam formulir"
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr "Kunci rahasia reCaptcha Google untuk perlindungan spam formulir"
 
-#: includes/class-coblocks-form.php:268
+#: includes/class-coblocks-form.php:267
 msgid "Name"
 msgstr "Nama"
 
-#: includes/class-coblocks-form.php:272
+#: includes/class-coblocks-form.php:271
 msgid "First"
 msgstr "Pertama"
 
-#: includes/class-coblocks-form.php:273
+#: includes/class-coblocks-form.php:272
 msgid "Last"
 msgstr "Terakhir"
 
-#: includes/class-coblocks-form.php:349
+#: includes/class-coblocks-form.php:346
 msgid "Message"
 msgstr "Pesan"
 
-#: includes/class-coblocks-form.php:387
+#: includes/class-coblocks-form.php:384
 msgid "Date"
 msgstr "Tanggal"
 
-#: includes/class-coblocks-form.php:415
+#: includes/class-coblocks-form.php:412
 msgid "Phone"
 msgstr "Telepon"
 
-#: includes/class-coblocks-form.php:451
+#: includes/class-coblocks-form.php:448
 msgid "Choose one"
-msgstr "Choose one"
+msgstr "Pilih satu"
 
-#: includes/class-coblocks-form.php:522
+#: includes/class-coblocks-form.php:520
 msgid "Submit"
 msgstr "Kirim"
 
-#: includes/class-coblocks-form.php:730
+#: includes/class-coblocks-form.php:723
 msgid "Your message was sent:"
 msgstr "Pesan Anda terkirim:"
 
-#: includes/class-coblocks-google-map-block.php:124
+#: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
 msgstr "Kunci API Peta Google untuk pemuatan peta"
 
-#: src/blocks/share/index.php:145
+#: src/blocks/share/index.php:144
 msgid "Share on Linkedin"
 msgstr "Bagikan di LinkedIn"
 
-#: src/blocks/social-profiles/index.php:84
+#: src/blocks/social-profiles/index.php:83
 msgid "Linkedin"
 msgstr "LinkedIn"

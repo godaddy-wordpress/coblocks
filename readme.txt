@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.2.2
 Requires PHP: 5.6
-Stable tag: 1.15.0
+Stable tag: 1.16.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -116,38 +116,63 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Features
-* Add [new Collage Gallery](https://github.com/godaddy/coblocks/pull/907) block
-* Add [new CSS utility classes](https://github.com/godaddy/coblocks/pull/941) to enable better design integration with themes
-* Add [new thumbnail navigation and responsive height controls](https://github.com/godaddy/coblocks/pull/839) to the Carousel block
-* Add [new lightbox support](https://github.com/godaddy/coblocks/pull/840) to Masonry and Stacked gallery blocks
+* Add new [radio, phone, and date picker fields](https://github.com/godaddy/coblocks/pull/969) to the Form block
+* Add new [Post Carousel block](https://github.com/godaddy/coblocks/pull/966) to display a slideshow of blog posts
+* Add new [Posts block](https://github.com/godaddy/coblocks/pull/736) to display blogroll or RSS feed posts
+* Add new ["Popular" menu item option](https://github.com/godaddy/coblocks/pull/958) to the Food and Drinks block
+* Add the [Reply-To header to emails](https://github.com/godaddy/coblocks/pull/953) sent from the Form block
 
 ### Enhancements
-* Improve the [experience of the Map block](https://github.com/godaddy/coblocks/pull/936) when applying an address
-* [Remove redirect](https://github.com/godaddy/coblocks/pull/925) to plugin's admin page when activating CoBlocks
-* Convert [Alert block text alignment](https://github.com/godaddy/coblocks/pull/880) setting to use utility classes
-* Convert [Click-to-Tweet block text alignment](https://github.com/godaddy/coblocks/pull/881) setting to use utility classes
-* Convert [Pricing Table block text alignment](https://github.com/godaddy/coblocks/pull/882) setting to use utility classes
-* Convert [Row block text alignment](https://github.com/godaddy/coblocks/pull/884) setting to use utility classes
-* Convert [Share block text alignment](https://github.com/godaddy/coblocks/pull/897) setting to use utility classes
-* Convert [Icon block text alignment](https://github.com/godaddy/coblocks/pull/932) setting to use utility classes
-* [Update Media Card toolbar icons](https://github.com/godaddy/coblocks/pull/935) to match the improved Gutenberg iconography
-* [Update the Services block icons](https://github.com/godaddy/coblocks/pull/934)
-* [Remove orientation sidebar controls](https://github.com/godaddy/coblocks/pull/914) on the Shape Divider block
-* Improve the [Map block description](https://github.com/godaddy/coblocks/pull/910)
-* [Prevent Styles panel opening by default](https://github.com/godaddy/coblocks/pull/909) on the Food and Drinks block
-* [Disable HTML editing](https://github.com/godaddy/coblocks/pull/908) of gallery blocks
-* Add [block icon to the media placeholder](https://github.com/godaddy/coblocks/pull/927) on the Logos and Badges block
-* [Remove the default block appender](https://github.com/godaddy/coblocks/pull/892) (added in Gutenberg 6.5) on the Row block
-* [Display the "Add" accordion item button](https://github.com/godaddy/coblocks/pull/836) only when the parent block is selected
-* [Remove background color and image support](https://github.com/godaddy/coblocks/pull/913) from gallery blocks
-* [Add top/bottom margin removal](https://github.com/godaddy/coblocks/pull/912) toggles to the gallery blocks
-* Removed a screenshot to [prevent a potential trademark violation](https://github.com/godaddy/coblocks/pull/911)
-* Minor code cleanups ([#924](https://github.com/godaddy/coblocks/pull/924), [#928](https://github.com/godaddy/coblocks/pull/928), [#931](https://github.com/godaddy/coblocks/pull/931), [#933](https://github.com/godaddy/coblocks/pull/933))
+* [Improve placeholder text](https://github.com/godaddy/coblocks/pull/1007) in the Accordion block
+* [Remove allowedBlocks limitation](https://github.com/godaddy/coblocks/pull/939) from the Accordion Item
+* Improve the Map block [Google Maps API key UX](https://github.com/godaddy/coblocks/pull/974)
+* Add [local language support](https://github.com/godaddy/coblocks/pull/964) for Map block
+* Add [missing responsive margin/padding units](https://github.com/godaddy/coblocks/pull/543) to Hero and Column blocks
+* Fix translations and add i18n generation to build process ([#1012](https://github.com/godaddy/coblocks/pull/1012), [#1005](https://github.com/godaddy/coblocks/pull/1005), [#982](https://github.com/godaddy/coblocks/pull/982))
+* [Tag each release of CoBlocks](https://github.com/godaddy/coblocks/pull/949) on the WordPress.org SVN during deployment
+* Improve [Pricing Table block stability](https://github.com/godaddy/coblocks/pull/1003) through block validation testing
+* Improve [Media Card block stability](https://github.com/godaddy/coblocks/pull/1002) through block validation testing
+* Improve [Map block stability](https://github.com/godaddy/coblocks/pull/1001) through block validation testing
+* Improve [Logos block stability](https://github.com/godaddy/coblocks/pull/1000) through block validation testing
+* Improve [Icon block stability](https://github.com/godaddy/coblocks/pull/999) through block validation testing
+* Improve [Gist block stability](https://github.com/godaddy/coblocks/pull/998) through block validation testing
+* Improve [Gif block stability](https://github.com/godaddy/coblocks/pull/997) through block validation testing
+* Improve [Form block stability](https://github.com/godaddy/coblocks/pull/962) through block validation testing
+* Improve [Carousel Gallery block stability](https://github.com/godaddy/coblocks/pull/968) through block validation testing
+* Improve [Masonry Gallery block stability](https://github.com/godaddy/coblocks/pull/967) through block validation testing
+* Improve [Stacked Gallery block stability](https://github.com/godaddy/coblocks/pull/965) through block validation testing
+* Improve [Food and Drinks block stability](https://github.com/godaddy/coblocks/pull/961) through block validation testing
+* Improve [Features block stability](https://github.com/godaddy/coblocks/pull/960) through block validation testing
+* Improve [Dynamic Separator block stability](https://github.com/godaddy/coblocks/pull/959) through block validation testing
+* Improve [Click to Tweet block stability](https://github.com/godaddy/coblocks/pull/956) through block validation testing
+* Improve [Button block stability](https://github.com/godaddy/coblocks/pull/955) through block validation testing
+* Improve [Author block stability](https://github.com/godaddy/coblocks/pull/952) through block validation testing
+* Improve [Accordion block stability](https://github.com/godaddy/coblocks/pull/957) through block validation testing
+* Improve [Alert block stability](https://github.com/godaddy/coblocks/pull/951) through block validation testing
+* Improve deprecation tests by [exposing actionable information](https://github.com/godaddy/coblocks/pull/970)
+* Update ES module [imports for testing](https://github.com/godaddy/coblocks/pull/948)
+* Run eslint and jest tests for [staged files pre-commit](https://github.com/godaddy/coblocks/pull/942)
+* [Remove "Leave a Review" feedback notice](https://github.com/godaddy/coblocks/pull/993)
+* [Remove unused ResizableSpacer component](https://github.com/godaddy/coblocks/pull/978)
+* Convert Map block [height slider control to number input](https://github.com/godaddy/coblocks/pull/977)
+* Add a [CODEOWNERS file for GitHub](https://github.com/godaddy/coblocks/pull/971) to provide better reviewer suggestions
+* [Remove development source files from the plugin](https://github.com/godaddy/coblocks/pull/963)
+* [Add PHP development dependencies with composer](https://github.com/godaddy/coblocks/pull/988)
 
 ### Bug Fixes
-* [Remove inherit colors fallback](https://github.com/godaddy/coblocks/pull/940) from the Authors, Features, Media Card, and Row blocks
-* [Fix the block icon](https://github.com/godaddy/coblocks/pull/937) shown in the Food Item block's sidebar and toolbar
-* Fix [incorrect image height](https://github.com/godaddy/coblocks/pull/929) being applied on the Masonry block
-* Prevent the [style preview from resizing](https://github.com/godaddy/coblocks/pull/887) when resizing an image
-* Fix [alignment of images within the Features block](https://github.com/godaddy/coblocks/pull/885)
-* Fix [background image upload error](https://github.com/godaddy/coblocks/pull/906) when using drag and drop on the Hero block
+* Ensure image [placeholders maintain aspect ratio](https://github.com/godaddy/coblocks/pull/1014) of the selected style
+* Fix the block validation error when the [Hero block background color is removed](https://github.com/godaddy/coblocks/pull/995)
+* Resolve [PHP warnings](https://github.com/godaddy/coblocks/pull/985) with WordPress 5.3 Beta
+* Fix [links opening in a new tab](https://github.com/godaddy/coblocks/pull/1008) in the Icon block
+* Add ['0' as a valid value](https://github.com/godaddy/coblocks/pull/726) for the Dimensions Control
+* Fix [missing viewBox values](https://github.com/godaddy/coblocks/pull/990) on block icons
+* Do not [show layout styles toolbar](https://github.com/godaddy/coblocks/pull/994) until a layout is selected
+* Ensure [style previews of the Icon block](https://github.com/godaddy/coblocks/pull/996) display the selected icon
+* Fix [image links being erased](https://github.com/godaddy/coblocks/pull/984) when a Gallery block is updated
+* [Fix deprecation for the CoBlocks Block Manager](https://github.com/godaddy/coblocks/pull/989)
+* Resolve missing text format controls because of [missing script dependencies](https://github.com/godaddy/coblocks/pull/986)
+* Prevent [systems fonts](https://github.com/godaddy/coblocks/pull/976) from attempting to load from Google Fonts
+* [Fix Media Card block icon](https://github.com/godaddy/coblocks/pull/973)
+* [Prevent our BlockManager from loading](https://github.com/godaddy/coblocks/pull/972) if Core's exist
+* [Add icon to Map block placeholder](https://github.com/godaddy/coblocks/pull/946)
+* Remove unnecessary statement within [deployment scripts](https://github.com/godaddy/coblocks/pull/954)
