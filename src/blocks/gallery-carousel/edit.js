@@ -3,6 +3,7 @@
  */
 import classnames from 'classnames';
 import filter from 'lodash/filter';
+import Flickity from 'react-flickity-component';
 
 /**
  * Internal dependencies
@@ -34,6 +35,7 @@ class GalleryCarouselEdit extends Component {
 		this.setImageAttributes = this.setImageAttributes.bind( this );
 		this.onFocusCaption = this.onFocusCaption.bind( this );
 		this.onItemClick = this.onItemClick.bind( this );
+		this.onThumbnailClick = this.onThumbnailClick.bind( this );
 
 		this.state = {
 			selectedImage: null,
@@ -138,6 +140,13 @@ class GalleryCarouselEdit extends Component {
 		}
 	}
 
+	onThumbnailClick( e ) {
+		console.log( e );
+		// this.flkty.on( 'settle', () => {
+		// 	console.log( `current index is ${ this.flkty.selectedIndex }` );
+		// } );
+	}
+
 	render() {
 		const {
 			attributes,
@@ -223,11 +232,11 @@ class GalleryCarouselEdit extends Component {
 		const navOptions = {
 			asNavFor: '.has-carousel',
 			draggable: false,
-			pageDots: true,
+			pageDots: false,
 			prevNextButtons: false,
 			wrapAround: true,
 			autoPlay: false,
-			thumbnails: false,
+			thumbnails: true,
 			cellAlign: 'left',
 		};
 
@@ -355,21 +364,25 @@ class GalleryCarouselEdit extends Component {
 				{ thumbnails ?
 					<div className={ className }>
 						<div className={ innerClasses }>
-							<div
+							<Flickity
 								className={ navClasses }
 								style={ navStyles }
+								disableImagesLoaded={ true }
+								options={ navOptions }
+								reloadOnUpdate={ true }
+								updateOnEachImageLoad={ true }
 								data-flickity={ JSON.stringify( navOptions ) }
 							>
 								{ images.map( ( image ) => {
 									return (
-										<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
+										<div className="coblocks--item-thumbnail" key={ image.id || image.url } onClick={ ( e ) => this.onThumbnailClick( e ) } >
 											<figure className={ navFigureClasses }>
 												<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
 											</figure>
 										</div>
 									);
 								} ) }
-							</div>
+							</Flickity>
 						</div>
 					</div> : null
 				}
