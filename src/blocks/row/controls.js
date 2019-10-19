@@ -6,7 +6,7 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-import { layoutOptions } from './layouts';
+import { layoutOptions } from './utilities';
 import rowIcons from './icons';
 import { BackgroundControls } from '../../components/background';
 

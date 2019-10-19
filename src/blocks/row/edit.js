@@ -7,7 +7,7 @@ import map from 'lodash/map';
 /**
  * Internal dependencies
  */
-import { layoutOptions } from './layouts';
+import { template, allowedBlocks, layoutOptions } from './utilities';
 import Inspector from './inspector';
 import Controls from './controls';
 import applyWithColors from './colors';
@@ -23,86 +23,6 @@ import { compose } from '@wordpress/compose';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { ButtonGroup, Button, IconButton, Tooltip, Placeholder, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
-
-/**
- * Allowed blocks constant is passed to InnerBlocks precisely as specified here.
- * The contents of the array should never change.
- * The array should contain the name of each block that is allowed.
- * In columns block, the only block we allow is 'core/column'.
- *
- * @constant
- * @type {string[]}
-*/
-const ALLOWED_BLOCKS = [ 'coblocks/column' ];
-
-const TEMPLATE = {
-	100: [
-		[ 'coblocks/column', { width: '100' } ],
-	],
-	'50-50': [
-		[ 'coblocks/column', { width: '50' } ],
-		[ 'coblocks/column', { width: '50' } ],
-	],
-	'25-75': [
-		[ 'coblocks/column', { width: '25' } ],
-		[ 'coblocks/column', { width: '75' } ],
-	],
-	'75-25': [
-		[ 'coblocks/column', { width: '75' } ],
-		[ 'coblocks/column', { width: '25' } ],
-	],
-	'66-33': [
-		[ 'coblocks/column', { width: '66' } ],
-		[ 'coblocks/column', { width: '33' } ],
-	],
-	'33-66': [
-		[ 'coblocks/column', { width: '33' } ],
-		[ 'coblocks/column', { width: '66' } ],
-	],
-	'33-33-33': [
-		[ 'coblocks/column', { width: '33.33' } ],
-		[ 'coblocks/column', { width: '33.33' } ],
-		[ 'coblocks/column', { width: '33.33' } ],
-	],
-	'50-25-25': [
-		[ 'coblocks/column', { width: '50' } ],
-		[ 'coblocks/column', { width: '25' } ],
-		[ 'coblocks/column', { width: '25' } ],
-	],
-	'25-25-50': [
-		[ 'coblocks/column', { width: '25' } ],
-		[ 'coblocks/column', { width: '25' } ],
-		[ 'coblocks/column', { width: '50' } ],
-	],
-	'25-50-25': [
-		[ 'coblocks/column', { width: '25' } ],
-		[ 'coblocks/column', { width: '50' } ],
-		[ 'coblocks/column', { width: '25' } ],
-	],
-	'20-60-20': [
-		[ 'coblocks/column', { width: '20' } ],
-		[ 'coblocks/column', { width: '60' } ],
-		[ 'coblocks/column', { width: '20' } ],
-	],
-	'25-25-25-25': [
-		[ 'coblocks/column', { width: '25' } ],
-		[ 'coblocks/column', { width: '25' } ],
-		[ 'coblocks/column', { width: '25' } ],
-		[ 'coblocks/column', { width: '25' } ],
-	],
-	'40-20-20-20': [
-		[ 'coblocks/column', { width: '40' } ],
-		[ 'coblocks/column', { width: '20' } ],
-		[ 'coblocks/column', { width: '20' } ],
-		[ 'coblocks/column', { width: '20' } ],
-	],
-	'20-20-20-40': [
-		[ 'coblocks/column', { width: '20' } ],
-		[ 'coblocks/column', { width: '20' } ],
-		[ 'coblocks/column', { width: '20' } ],
-		[ 'coblocks/column', { width: '40' } ],
-	],
-};
 
 /**
  * Block edit function
@@ -328,9 +248,9 @@ class Edit extends Component {
 					<div className={ innerClasses } style={ innerStyles }>
 						{ BackgroundVideo( attributes ) }
 						<InnerBlocks
-							template={ TEMPLATE[ layout ] }
+							template={ template[ layout ] }
 							templateLock="all"
-							allowedBlocks={ ALLOWED_BLOCKS }
+							allowedBlocks={ allowedBlocks }
 							templateInsertUpdatesSelection={ columns === 1 }
 							renderAppender={ () => ( null ) } />
 					</div>

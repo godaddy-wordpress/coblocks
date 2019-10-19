@@ -10,7 +10,7 @@ import './styles/style.scss';
 import edit from './edit';
 import deprecated from './deprecated';
 import DimensionsAttributes from '../../components/dimensions-control/attributes';
-import getEditWrapperProps from './getEditWrapperProps';
+import { getEditWrapperProps } from './utilities';
 import icon from './icon';
 import metadata from './block.json';
 import save from './save';
