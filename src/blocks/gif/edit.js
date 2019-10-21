@@ -1,4 +1,4 @@
-/*global $*/
+/*global jQuery*/
 
 /**
  * External dependencies
