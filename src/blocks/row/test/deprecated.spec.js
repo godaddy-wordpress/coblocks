@@ -7,7 +7,7 @@ import googleFonts from '../../../components/font-family/fonts';
 
 const variations = {
 	className: [ undefined, '', 'random classes' ],
-	anchor: [ undefined, '', 'anchor-name' ],
+	anchor: [ undefined, '' ], // TODO: figure out how to test this core attribute.
 	align: [ '', 'wide', 'full', 'left', 'center', 'right' ],
 	gutter: [ 'none', 'small', 'medium', 'large', 'xlarge' ],
 	layout: [ undefined, '', '100', '50-50', '25-75', '75-25', '66-33', '33-66', '33-33-33', '50-25-25', '25-25-50', '25-50-25', '20-60-20', '25-25-25-25', '40-20-20-20', '20-20-20-40' ],
