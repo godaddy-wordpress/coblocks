@@ -49,16 +49,16 @@ function Deprecation( { attributes } ) {
 		color: textClass ? undefined : customTextColor,
 	};
 
-	const innerClasses = classnames(
+	const innerClasses = [
 		'wp-block-coblocks-row__inner',
-		...BackgroundClasses( attributes ), {
-			[ `has-${ gutter }-gutter` ]: gutter,
-			'has-padding': paddingSize && paddingSize !== 'no',
-			[ `has-${ paddingSize }-padding` ]: paddingSize && ( ! [ 'no', 'advanced' ].includes( paddingSize ) ),
-			'has-margin': marginSize && marginSize !== 'no',
-			[ `has-${ marginSize }-margin` ]: marginSize && ( ! [ 'no', 'advanced' ].includes( marginSize ) ),
-			'is-stacked-on-mobile': isStackedOnMobile,
-		} );
+		...BackgroundClasses( attributes ),
+		{ [ `has-${ gutter }-gutter` ]: gutter },
+		{ 'has-padding': paddingSize && paddingSize !== 'no' },
+		{ [ `has-${ paddingSize }-padding` ]: ! [ 'advanced' ].includes( paddingSize ) },
+		{ 'has-margin': marginSize && marginSize !== 'no' },
+		{ [ `has-${ marginSize }-margin` ]: ! [ 'advanced' ].includes( marginSize ) },
+		{ 'is-stacked-on-mobile': isStackedOnMobile },
+	];
 
 	const innerStyles = {
 		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
@@ -106,18 +106,18 @@ function DeprecationVideo( { attributes } ) {
 
 	const classes = classnames( classlist );
 
-	const innerClasses = classnames(
+	const innerClasses = [
 		'wp-block-coblocks-row__inner',
-		...BackgroundClasses( attributes ), {
-			'has-text-color': textColor || customTextColor,
-			[ textClass ]: textClass,
-			[ `has-${ gutter }-gutter` ]: gutter,
-			'has-padding': paddingSize && paddingSize !== 'no',
-			[ `has-${ paddingSize }-padding` ]: paddingSize && ( ! [ 'no', 'advanced' ].includes( paddingSize ) ),
-			'has-margin': marginSize && marginSize !== 'no',
-			[ `has-${ marginSize }-margin` ]: marginSize && ( ! [ 'no', 'advanced' ].includes( marginSize ) ),
-			'is-stacked-on-mobile': isStackedOnMobile,
-		} );
+		...BackgroundClasses( attributes ),
+		{ 'has-text-color': textColor || customTextColor },
+		{ [ textClass ]: textClass },
+		{ [ `has-${ gutter }-gutter` ]: gutter },
+		{ 'has-padding': paddingSize && paddingSize !== 'no' },
+		{ [ `has-${ paddingSize }-padding` ]: ! [ 'advanced' ].includes( paddingSize ) },
+		{ 'has-margin': marginSize && marginSize !== 'no' },
+		{ [ `has-${ marginSize }-margin` ]: ! [ 'advanced' ].includes( marginSize ) },
+		{ 'is-stacked-on-mobile': isStackedOnMobile },
+	];
 
 	const innerStyles = {
 		backgroundColor: backgroundClass ? undefined : customBackgroundColor,

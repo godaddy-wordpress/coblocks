@@ -2,6 +2,6 @@
 
 exports[`coblocks/row should render 1`] = `
 "<!-- wp:coblocks/row {\\"columns\\":2} -->
-<div class=\\"wp-block-coblocks-row\\" data-columns=\\"2\\"><div class=\\"wp-block-coblocks-row__inner has-medium-gutter\\"></div></div>
+<div class=\\"wp-block-coblocks-row\\" data-columns=\\"2\\"><div class=\\"wp-block-coblocks-row__inner has-medium-gutter has-no-padding has-no-margin\\"></div></div>
 <!-- /wp:coblocks/row -->"
 `;
