@@ -164,7 +164,6 @@
 		}
 
 		.components-button {
-			background: $light-gray-300;
 			border: 0;
 			border-radius: 0 !important;
 			box-shadow: none;
@@ -175,21 +174,6 @@
 			svg {
 				display: none;
 			}
-
-			&:hover {
-				background: $light-gray-500;
-				box-shadow: inset 0 0 0 1px $dark-gray-500, inset 0 0 0 2px $white;
-			}
-
-			&:active:enabled {
-				background: $light-gray-500;
-				box-shadow: inset 0 0 0 1px $dark-gray-500, inset 0 0 0 2px $white;
-			}
-
-			&:focus:enabled {
-				background: $light-gray-500;
-				box-shadow: inset 0 0 0 1px $dark-gray-500, inset 0 0 0 2px $white;
-			}
 		}
 
 		.is-selected {
@@ -197,10 +181,13 @@
 		}
 
 		.is-selected .components-button {
-			background: $dark-gray-500;
+			background: color(theme(button) shade(25%));
+			text-decoration: none;
 
 			&:focus:enabled {
-				background: $dark-gray-500;
+				background: color(theme(button) shade(25%));
+				border-color: color(theme(button) shade(25%));
+				text-decoration: none;
 			}
 		}
 
