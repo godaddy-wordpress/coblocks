@@ -39,20 +39,20 @@
 		}
 
 		&:hover {
-				background: #f1f1f1;
-				border-color: color(theme(button) shade(25%));
-				color: color(theme(button) shade(25%));
-				text-decoration: none;
+			background: #f1f1f1;
+			border-color: color(theme(button) shade(25%));
+			color: color(theme(button) shade(25%));
+			text-decoration: none;
 		}
 
 		&:focus:enabled {
-				background: #f3f5f6;
-				color: color(theme(button) shade(25%));
-				border-color: color(theme(button) shade(5%));
-				box-shadow: 0 0 0 $border-width color(theme(button) shade(5%));
-				text-decoration: none;
+			background: #f3f5f6;
+			color: color(theme(button) shade(25%));
+			border-color: color(theme(button) shade(5%));
+			box-shadow: 0 0 0 $border-width color(theme(button) shade(5%));
+			text-decoration: none;
+
 		}
-		
 
 		&:active:enabled {
 			background: #f3f5f6;
@@ -73,12 +73,6 @@
 				background: color(theme(button) shade(10%));
 				border-color: color(theme(button) shade(10%));
 				color: $white;
-			}
-
-			&:focus:enabled {
-				box-shadow:
-					0 0 0 $border-width $white,
-					0 0 0 3px color(theme(button));
 			}
 
 			&:active:enabled {
