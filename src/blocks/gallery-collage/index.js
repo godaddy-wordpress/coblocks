@@ -30,23 +30,23 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Collage', 'block name' ),
-	description: __( 'Assemble images into a beautiful collage gallery.' ),
+	title: _x( 'Collage', 'block name', 'coblocks' ),
+	description: __( 'Assemble images into a beautiful collage gallery.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ) ],
+	keywords: [ _x( 'gallery', 'block keyword', 'coblocks' ), _x( 'photos', 'block keyword', 'coblocks' ) ],
 	styles: [
 		{
 			name: 'default',
-			label: _x( 'Default', 'block style' ),
+			label: _x( 'Default', 'block style', 'coblocks' ),
 			isDefault: true,
 		},
 		{
 			name: 'tiled',
-			label: _x( 'Tiled', 'block style' ),
+			label: _x( 'Tiled', 'block style', 'coblocks' ),
 		},
 		{
 			name: 'layered',
-			label: _x( 'Layered', 'block style' ),
+			label: _x( 'Layered', 'block style', 'coblocks' ),
 		},
 	],
 	supports: {

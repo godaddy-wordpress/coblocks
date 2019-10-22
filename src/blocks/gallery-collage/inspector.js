@@ -27,7 +27,7 @@ class Inspector extends Component {
 	}
 
 	getCaptionsHelp( checked ) {
-		return checked ? __( 'Showing captions for each media item.' ) : __( 'Toggle to show media captions.' );
+		return checked ? __( 'Showing captions for each media item.', 'coblocks' ) : __( 'Toggle to show media captions.', 'coblocks' );
 	}
 
 	setShadowTo( value ) {
@@ -52,60 +52,60 @@ class Inspector extends Component {
 		const gutterOptions = [
 			{
 				value: 0,
-				label: _x( 'None', 'label for no gutter option' ),
-				shortName: _x( 'None', 'abbreviation for "Short" size' ),
+				label: _x( 'None', 'label for no gutter option', 'coblocks' ),
+				shortName: _x( 'None', 'abbreviation for "Short" size', 'coblocks' ),
 			},
 			{
 				value: 1,
-				label: _x( 'Small', 'label for small gutter option' ),
-				shortName: _x( 'S', 'abbreviation for "Small" size' ),
+				label: _x( 'Small', 'label for small gutter option', 'coblocks' ),
+				shortName: _x( 'S', 'abbreviation for "Small" size', 'coblocks' ),
 			},
 			{
 				value: 2,
-				label: _x( 'Medium', 'label for medium gutter option' ),
-				shortName: _x( 'M', 'abbreviation for "Medium" size' ),
+				label: _x( 'Medium', 'label for medium gutter option', 'coblocks' ),
+				shortName: _x( 'M', 'abbreviation for "Medium" size', 'coblocks' ),
 			},
 			{
 				value: 3,
-				label: _x( 'Large', 'label for large gutter option' ),
-				shortName: _x( 'L', 'abbreviation for "Large" size' ),
+				label: _x( 'Large', 'label for large gutter option', 'coblocks' ),
+				shortName: _x( 'L', 'abbreviation for "Large" size', 'coblocks' ),
 			},
 			{
 				value: 4,
-				label: _x( 'Extra Large', 'label for extra large gutter option' ),
-				shortName: _x( 'XL', 'abbreviation for "Extra Large" size' ),
+				label: _x( 'Extra Large', 'label for extra large gutter option', 'coblocks' ),
+				shortName: _x( 'XL', 'abbreviation for "Extra Large" size', 'coblocks' ),
 			},
 		];
 
 		const shadowOptions = [
 			{
 				value: 'none',
-				label: _x( 'None', 'label for no shadow option' ),
-				shortName: _x( 'None', 'abbreviation for "Short" size' ),
+				label: _x( 'None', 'label for no shadow option', 'coblocks' ),
+				shortName: _x( 'None', 'abbreviation for "Short" size', 'coblocks' ),
 			},
 			{
 				value: 'sm',
-				label: _x( 'Small', 'label for small shadow option' ),
-				shortName: _x( 'S', 'abbreviation for "Small" size' ),
+				label: _x( 'Small', 'label for small shadow option', 'coblocks' ),
+				shortName: _x( 'S', 'abbreviation for "Small" size', 'coblocks' ),
 			},
 			{
 				value: 'md',
-				label: _x( 'Medium', 'label for medium shadow option' ),
-				shortName: _x( 'M', 'abbreviation for "Medium" size' ),
+				label: _x( 'Medium', 'label for medium shadow option', 'coblocks' ),
+				shortName: _x( 'M', 'abbreviation for "Medium" size', 'coblocks' ),
 			},
 			{
 				value: 'lg',
-				label: _x( 'Large', 'label for large shadow option' ),
-				shortName: _x( 'L', 'abbreviation for "Large" size' ),
+				label: _x( 'Large', 'label for large shadow option', 'coblocks' ),
+				shortName: _x( 'L', 'abbreviation for "Large" size', 'coblocks' ),
 			},
 		];
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Collage Settings' ) }>
+				<PanelBody title={ __( 'Collage Settings', 'coblocks' ) }>
 					{ enableGutter &&
-						<BaseControl label={ __( 'Gutter' ) }>
-							<ButtonGroup aria-label={ __( 'Gutter' ) }>
+						<BaseControl label={ __( 'Gutter', 'coblocks' ) }>
+							<ButtonGroup aria-label={ __( 'Gutter', 'coblocks' ) }>
 								{ gutterOptions.map( ( option ) => {
 									const isCurrent = gutter === option.value;
 									return (
@@ -124,8 +124,8 @@ class Inspector extends Component {
 						</BaseControl>
 					}
 					{ ! enableGutter &&
-						<BaseControl label={ __( 'Shadow' ) }>
-							<ButtonGroup aria-label={ __( 'Shadow' ) }>
+						<BaseControl label={ __( 'Shadow', 'coblocks' ) }>
+							<ButtonGroup aria-label={ __( 'Shadow', 'coblocks' ) }>
 								{ shadowOptions.map( ( option ) => {
 									const isCurrent = shadow === option.value;
 									return (
@@ -144,13 +144,13 @@ class Inspector extends Component {
 						</BaseControl>
 					}
 					{ enableCaptions && <ToggleControl
-						label={ __( 'Captions' ) }
+						label={ __( 'Captions', 'coblocks' ) }
 						checked={ !! captions }
 						onChange={ () => setAttributes( { captions: ! captions } ) }
 						help={ this.getCaptionsHelp }
 					/> }
 					{ captions && <SelectControl
-						label={ __( 'Caption Style' ) }
+						label={ __( 'Caption Style', 'coblocks' ) }
 						value={ captionStyle }
 						onChange={ this.setCaptionStyleTo }
 						options={ captionOptions }

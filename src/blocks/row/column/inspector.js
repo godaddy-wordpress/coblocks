@@ -105,11 +105,11 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Column Settings' ) } className="components-panel__body--column-settings">
+					<PanelBody title={ __( 'Column Settings', 'coblocks' ) } className="components-panel__body--column-settings">
 						<DimensionsControl { ...this.props }
 							type={ 'margin' }
-							label={ __( 'Margin' ) }
-							help={ __( 'Space around the container.' ) }
+							label={ __( 'Margin', 'coblocks' ) }
+							help={ __( 'Space around the container.', 'coblocks' ) }
 							valueTop={ marginTop }
 							valueRight={ marginRight }
 							valueBottom={ marginBottom }
@@ -130,8 +130,8 @@ class Inspector extends Component {
 						/>
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
-							label={ __( 'Padding' ) }
-							help={ __( 'Space inside of the container.' ) }
+							label={ __( 'Padding', 'coblocks' ) }
+							help={ __( 'Space inside of the container.', 'coblocks' ) }
 							valueTop={ paddingTop }
 							valueRight={ paddingRight }
 							valueBottom={ paddingBottom }
@@ -152,7 +152,7 @@ class Inspector extends Component {
 						/>
 						{ ( lastId !== clientId ) ?
 							<RangeControl
-								label={ __( 'Width' ) }
+								label={ __( 'Width', 'coblocks' ) }
 								value={ parseFloat( width ) }
 								onChange={ ( newWidth ) => onChangeWidth( newWidth ) }
 								min={ 10.00 }
@@ -162,18 +162,18 @@ class Inspector extends Component {
 							null }
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'coblocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', 'coblocks' ),
 							},
 						] }
 					>

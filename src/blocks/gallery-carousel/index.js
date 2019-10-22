@@ -31,11 +31,11 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Carousel', 'block name' ),
-	description: __( 'Display multiple images in a beautiful carousel gallery.' ),
+	title: _x( 'Carousel', 'block name', 'coblocks' ),
+	description: __( 'Display multiple images in a beautiful carousel gallery.', 'coblocks' ),
 	attributes,
 	icon,
-	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ) ],
+	keywords: [ _x( 'gallery', 'block keyword', 'coblocks' ), _x( 'photos', 'block keyword', 'coblocks' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,

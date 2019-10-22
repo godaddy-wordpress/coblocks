@@ -32,10 +32,10 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Media Card', 'block name' ),
-	description: __( 'Add an image or video with an offset card side-by-side.' ),
+	title: _x( 'Media Card', 'block name', 'coblocks' ),
+	description: __( 'Add an image or video with an offset card side-by-side.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'image', 'block keyword' ), _x( 'video', 'block keyword' ), 'coblocks' ],
+	keywords: [ _x( 'image', 'block keyword', 'coblocks' ), _x( 'video', 'block keyword', 'coblocks' ), 'coblocks' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		stackedOnMobile: true,

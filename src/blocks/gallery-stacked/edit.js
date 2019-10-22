@@ -165,7 +165,7 @@ class GalleryStackedEdit extends Component {
 			return (
 				<GalleryPlaceholder
 					{ ...this.props }
-					label={ __( 'Stacked' ) }
+					label={ __( 'Stacked', 'coblocks' ) }
 					icon={ icon }
 				/>
 			);
@@ -188,7 +188,7 @@ class GalleryStackedEdit extends Component {
 					<ul className={ innerClasses }>
 						{ images.map( ( img, index ) => {
 							// translators: %1$d is the order number of the image, %2$d is the total number of images.
-							const ariaLabel = sprintf( __( 'image %1$d of %2$d in gallery' ), ( index + 1 ), images.length );
+							const ariaLabel = sprintf( __( 'image %1$d of %2$d in gallery', 'coblocks' ), ( index + 1 ), images.length );
 
 							return (
 								<li className="coblocks-gallery--item" key={ img.id || img.url }>

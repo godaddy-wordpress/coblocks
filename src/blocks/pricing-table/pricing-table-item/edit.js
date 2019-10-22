@@ -27,7 +27,7 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
  * @type {string[]}
 */
 const ALLOWED_BLOCKS = [ 'core/button' ];
-const TEMPLATE = [ [ 'core/button', { placeholder: __( 'Buy Now' ) } ] ];
+const TEMPLATE = [ [ 'core/button', { placeholder: __( 'Buy Now', 'coblocks' ) } ] ];
 
 /**
  * Block edit function
@@ -79,7 +79,7 @@ class Edit extends Component {
 						className="wp-block-coblocks-pricing-table-item__title"
 						onChange={ ( nextTitle ) => setAttributes( { title: nextTitle } ) }
 						value={ title }
-						placeholder={ placeholder || __( 'Plan A' ) }
+						placeholder={ placeholder || __( 'Plan A', 'coblocks' ) }
 						formattingControls={ formattingControls }
 						keepPlaceholderOnFocus
 					/>
@@ -89,7 +89,7 @@ class Edit extends Component {
 							className="wp-block-coblocks-pricing-table-item__currency"
 							onChange={ ( nextCurrency ) => setAttributes( { currency: nextCurrency } ) }
 							value={ currency }
-							placeholder={ __( '$' ) }
+							placeholder={ __( '$', 'coblocks' ) }
 							formattingControls={ formattingControls }
 							keepPlaceholderOnFocus
 						/>
@@ -109,7 +109,7 @@ class Edit extends Component {
 						className="wp-block-coblocks-pricing-table-item__features"
 						onChange={ ( nextFeatures ) => setAttributes( { features: nextFeatures } ) }
 						value={ features }
-						placeholder={ __( 'Add features' ) }
+						placeholder={ __( 'Add features', 'coblocks' ) }
 						keepPlaceholderOnFocus
 					/>
 					<InnerBlocks

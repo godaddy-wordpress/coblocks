@@ -46,7 +46,7 @@ function CoBlocksFieldName( props ) {
 								onChange={ value => {
 									setAttributes( { labelFirstName: value } );
 								} }
-								placeholder={ __( 'Add label…' ) }
+								placeholder={ __( 'Add label…', 'coblocks' ) }
 							/>
 						</div>
 						<div className="coblocks-form__inline-field">
@@ -58,7 +58,7 @@ function CoBlocksFieldName( props ) {
 								onChange={ value => {
 									setAttributes( { labelLastName: value } );
 								} }
-								placeholder={ __( 'Add label…' ) }
+								placeholder={ __( 'Add label…', 'coblocks' ) }
 							/>
 						</div>
 					</div>				:
@@ -66,13 +66,13 @@ function CoBlocksFieldName( props ) {
 				}
 			</div>
 			<InspectorControls>
-				<PanelBody title={ __( 'Name Field Settings' ) }>
+				<PanelBody title={ __( 'Name Field Settings', 'coblocks' ) }>
 					<ToggleControl
-						label={ __( 'Last Name' ) }
+						label={ __( 'Last Name', 'coblocks' ) }
 						className="coblocks-field-label__required"
 						checked={ hasLastName }
 						onChange={ value => setAttributes( { hasLastName: value } ) }
-						help={ !! hasLastName ? __( 'Showing both first and last name fields.' ) : __( 'Toggle to add a last name field.' ) }
+						help={ !! hasLastName ? __( 'Showing both first and last name fields.', 'coblocks' ) : __( 'Toggle to add a last name field.', 'coblocks' ) }
 					/>
 				</PanelBody>
 			</InspectorControls>

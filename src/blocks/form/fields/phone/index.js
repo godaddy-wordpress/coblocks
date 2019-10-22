@@ -16,9 +16,9 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Phone', 'block name' ),
-	keywords: [ _x( 'telephone', 'block keyword' ), _x( 'cellular', 'block keyword' ), _x( 'mobile', 'block keyword' ) ],
-	description: __( 'A phone number to allow visitors to give you a phone number.' ),
+	title: _x( 'Phone', 'block name', 'coblocks' ),
+	keywords: [ _x( 'telephone', 'block keyword', 'coblocks' ), _x( 'cellular', 'block keyword', 'coblocks' ), _x( 'mobile', 'block keyword', 'coblocks' ) ],
+	description: __( 'A phone number to allow visitors to give you a phone number.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/form' ],
 	supports: {

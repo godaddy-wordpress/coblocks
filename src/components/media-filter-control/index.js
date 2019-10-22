@@ -28,7 +28,7 @@ class MediaFilterControl extends Component {
 		const filterControls = [
 			{
 				icon: icons.none,
-				title: _x( 'Original', 'image styles' ),
+				title: _x( 'Original', 'image styles', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'none' } );
 				},
@@ -36,7 +36,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.grayscale,
-				title: _x( 'Grayscale Filter', 'image styles' ),
+				title: _x( 'Grayscale Filter', 'image styles', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'grayscale' } );
 				},
@@ -44,7 +44,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.sepia,
-				title: _x( 'Sepia Filter', 'image styles' ),
+				title: _x( 'Sepia Filter', 'image styles', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'sepia' } );
 				},
@@ -52,7 +52,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.saturation,
-				title: _x( 'Saturation Filter', 'image styles' ),
+				title: _x( 'Saturation Filter', 'image styles', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'saturation' } );
 				},
@@ -60,7 +60,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.dark,
-				title: _x( 'Dim Filter', 'image styles' ),
+				title: _x( 'Dim Filter', 'image styles', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'dim' } );
 				},
@@ -68,7 +68,7 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.vintage,
-				title: _x( 'Vintage Filter', 'image styles' ),
+				title: _x( 'Vintage Filter', 'image styles', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'vintage' } );
 				},
@@ -81,7 +81,7 @@ class MediaFilterControl extends Component {
 				<DropdownMenu
 					hasArrowIndicator
 					icon={ icons.filter }
-					label={ __( 'Apply filter' ) }
+					label={ __( 'Apply filter', 'coblocks' ) }
 					controls={ filterControls }
 					className="components-coblocks-media-filter"
 				/>

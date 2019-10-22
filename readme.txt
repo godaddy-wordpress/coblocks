@@ -5,8 +5,8 @@ Contributors: coblocks, godaddy, richtabor, phpbits, eherman24, jonathanbardo, j
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.2.2
-Requires PHP: 5.2.4
-Stable tag: 1.15.0
+Requires PHP: 5.6
+Stable tag: 1.16.1
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,39 +115,6 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Features
-* Add [new Collage Gallery](https://github.com/godaddy/coblocks/pull/907) block
-* Add [new CSS utility classes](https://github.com/godaddy/coblocks/pull/941) to enable better design integration with themes
-* Add [new thumbnail navigation and responsive height controls](https://github.com/godaddy/coblocks/pull/839) to the Carousel block
-* Add [new lightbox support](https://github.com/godaddy/coblocks/pull/840) to Masonry and Stacked gallery blocks
-
-### Enhancements
-* Improve the [experience of the Map block](https://github.com/godaddy/coblocks/pull/936) when applying an address
-* [Remove redirect](https://github.com/godaddy/coblocks/pull/925) to plugin's admin page when activating CoBlocks
-* Convert [Alert block text alignment](https://github.com/godaddy/coblocks/pull/880) setting to use utility classes
-* Convert [Click-to-Tweet block text alignment](https://github.com/godaddy/coblocks/pull/881) setting to use utility classes
-* Convert [Pricing Table block text alignment](https://github.com/godaddy/coblocks/pull/882) setting to use utility classes
-* Convert [Row block text alignment](https://github.com/godaddy/coblocks/pull/884) setting to use utility classes
-* Convert [Share block text alignment](https://github.com/godaddy/coblocks/pull/897) setting to use utility classes
-* Convert [Icon block text alignment](https://github.com/godaddy/coblocks/pull/932) setting to use utility classes
-* [Update Media Card toolbar icons](https://github.com/godaddy/coblocks/pull/935) to match the improved Gutenberg iconography
-* [Update the Services block icons](https://github.com/godaddy/coblocks/pull/934)
-* [Remove orientation sidebar controls](https://github.com/godaddy/coblocks/pull/914) on the Shape Divider block
-* Improve the [Map block description](https://github.com/godaddy/coblocks/pull/910)
-* [Prevent Styles panel opening by default](https://github.com/godaddy/coblocks/pull/909) on the Food and Drinks block
-* [Disable HTML editing](https://github.com/godaddy/coblocks/pull/908) of gallery blocks
-* Add [block icon to the media placeholder](https://github.com/godaddy/coblocks/pull/927) on the Logos and Badges block
-* [Remove the default block appender](https://github.com/godaddy/coblocks/pull/892) (added in Gutenberg 6.5) on the Row block
-* [Display the "Add" accordion item button](https://github.com/godaddy/coblocks/pull/836) only when the parent block is selected
-* [Remove background color and image support](https://github.com/godaddy/coblocks/pull/913) from gallery blocks
-* [Add top/bottom margin removal](https://github.com/godaddy/coblocks/pull/912) toggles to the gallery blocks
-* Removed a screenshot to [prevent a potential trademark violation](https://github.com/godaddy/coblocks/pull/911)
-* Minor code cleanups ([#924](https://github.com/godaddy/coblocks/pull/924), [#928](https://github.com/godaddy/coblocks/pull/928), [#931](https://github.com/godaddy/coblocks/pull/931), [#933](https://github.com/godaddy/coblocks/pull/933))
-
 ### Bug Fixes
-* [Remove inherit colors fallback](https://github.com/godaddy/coblocks/pull/940) from the Authors, Features, Media Card, and Row blocks
-* [Fix the block icon](https://github.com/godaddy/coblocks/pull/937) shown in the Food Item block's sidebar and toolbar
-* Fix [incorrect image height](https://github.com/godaddy/coblocks/pull/929) being applied on the Masonry block
-* Prevent the [style preview from resizing](https://github.com/godaddy/coblocks/pull/887) when resizing an image
-* Fix [alignment of images within the Features block](https://github.com/godaddy/coblocks/pull/885)
-* Fix [background image upload error](https://github.com/godaddy/coblocks/pull/906) when using drag and drop on the Hero block
+* Ensure [translations are loaded](https://github.com/godaddy/coblocks/pull/1024) in the Block Editor
+* Use [COBLOCKS_VERSION](https://github.com/godaddy/coblocks/pull/1025) when registering scripts

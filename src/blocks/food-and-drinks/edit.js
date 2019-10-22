@@ -24,7 +24,7 @@ const TokenList = wp.tokenList;
 const ALLOWED_BLOCKS = [ 'coblocks/food-item' ];
 
 const TEMPLATE = [
-	[ 'core/heading', { level: 3, placeholder: __( 'Menu title...' ), align: 'center' } ],
+	[ 'core/heading', { level: 3, placeholder: __( 'Menu title...', 'coblocks' ), align: 'center' } ],
 	[ 'coblocks/food-item' ],
 	[ 'coblocks/food-item' ],
 ];
@@ -32,14 +32,14 @@ const TEMPLATE = [
 const layoutOptions = [
 	{
 		name: 'grid',
-		label: _x( 'Grid', 'block style' ),
+		label: _x( 'Grid', 'block style', 'coblocks' ),
 		icon: icons.layoutGridIcon,
 		iconWithImages: icons.layoutGridIconWithImages,
 		isDefault: true,
 	},
 	{
 		name: 'list',
-		label: _x( 'List', 'block style' ),
+		label: _x( 'List', 'block style', 'coblocks' ),
 		icon: icons.layoutListIcon,
 		iconWithImages: icons.layoutListIconWithImages,
 	},

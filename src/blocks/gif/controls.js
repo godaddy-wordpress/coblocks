@@ -41,7 +41,7 @@ class Controls extends Component {
 						{ url &&
 							<IconButton
 								className="components-toolbar__control"
-								label={ __( 'Remove gif' ) }
+								label={ __( 'Remove gif', 'coblocks' ) }
 								icon="trash"
 								onClick={ () => setAttributes( { url: '', width: '', height: '' } ) }
 							/>

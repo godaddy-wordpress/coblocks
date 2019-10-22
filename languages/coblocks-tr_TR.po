@@ -1,9 +1,9 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.12.1\n"
+"Project-Id-Version: CoBlocks 1.16.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"POT-Creation-Date: 2019-10-15T20:39:03+00:00\n"
+"POT-Creation-Date: 2019-10-18T18:40:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,16 +14,3228 @@ msgstr ""
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
 
+#: src/blocks/accordion/accordion-item/index.js:27
+msgid "Add collapsable accordion items to accordions."
+msgstr "Akordeonlara daraltılabilir akordeon öğeler ekleyin."
+
+#: src/blocks/accordion/accordion-item/inspector.js:34
+msgid "Accordion item is open by default."
+msgstr "Akordeon öğe varsayılan olarak açıktır."
+
+#: src/blocks/accordion/accordion-item/inspector.js:34
+msgid "Toggle to set this accordion item to be open by default."
+msgstr ""
+"Bu akordeon öğeyi varsayılan olarak açık ayarlamak için düğmeyi tıklayın."
+
+#: src/blocks/accordion/accordion-item/inspector.js:63
+msgid "Accordion Item Settings"
+msgstr "Akordeon Öğe Ayarları"
+
+#: src/blocks/accordion/accordion-item/inspector.js:72
+#: src/blocks/alert/inspector.js:49 src/blocks/author/inspector.js:50
+#: src/blocks/click-to-tweet/inspector.js:60
+#: src/blocks/dynamic-separator/inspector.js:60
+#: src/blocks/features/feature/inspector.js:92
+#: src/blocks/features/inspector.js:173 src/blocks/form/submit-button.js:118
+#: src/blocks/hero/inspector.js:137 src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:302 src/blocks/media-card/inspector.js:132
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:48
+#: src/blocks/row/column/inspector.js:165 src/blocks/row/inspector.js:211
+#: src/blocks/shape-divider/inspector.js:92 src/blocks/share/inspector.js:200
+#: src/blocks/social-profiles/inspector.js:206
+#: src/extensions/colors/index.js:59
+msgid "Color Settings"
+msgstr "Renk Ayarları"
+
+#: src/blocks/accordion/accordion-item/inspector.js:78
+#: src/blocks/alert/inspector.js:55 src/blocks/author/inspector.js:56
+#: src/blocks/features/feature/inspector.js:110
+#: src/blocks/features/inspector.js:191 src/blocks/hero/inspector.js:150
+#: src/blocks/highlight/inspector.js:49 src/blocks/icon/inspector.js:326
+#: src/blocks/media-card/inspector.js:146
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:53
+#: src/blocks/row/column/inspector.js:171 src/blocks/row/inspector.js:227
+#: src/blocks/shape-divider/inspector.js:103 src/blocks/share/inspector.js:99
+#: src/blocks/social-profiles/inspector.js:103
+#: src/extensions/colors/index.js:47 src/blocks/share/inspector.js:81
+#: src/blocks/social-profiles/inspector.js:85
+msgid "Background Color"
+msgstr "Arkaplan Rengi"
+
+#: src/blocks/accordion/accordion-item/inspector.js:83
+msgid "Title Text Color"
+msgstr "Başlık Metin Rengi"
+
+#: src/blocks/accordion/index.js:28
+msgid "Organize content within collapsable accordion items."
+msgstr "Akordeon öğelerde yer alan içerikleri organize edin."
+
+#: src/blocks/accordion/inspector.js:27
+msgid "Accordion Settings"
+msgstr "Akordeon Ayarları"
+
+#: src/blocks/accordion/inspector.js:29
+msgid "Internet Explorer Support"
+msgstr "Internet Explorer Desteği"
+
+#: src/blocks/accordion/inspector.js:31
+msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
+msgstr ""
+"Bir JavaScript polyfill’i yükleyerek Internet Explorer desteği ekleyin."
+
+#: src/blocks/accordion/inspector.js:31
+msgid ""
+"Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgstr ""
+"Bu sayfaya bir JavaScript polyfill’i yükleyerek Internet Explorer’ı "
+"desteklemek."
+
+#: src/blocks/alert/index.js:29
+msgid "Provide contextual feedback messages or notices."
+msgstr "Bağlamsal geri bildirim mesajları veya bildirimler sağlayın."
+
+#: src/blocks/alert/index.js:45
+msgid "This is an alert block"
+msgstr "Bu satır bir uyarı satırıdır"
+
+#: src/blocks/alert/index.js:46
+msgid ""
+"An alert is a message that displays outside the flow of typical content. "
+"Alerts provide contextual feedback, typically asking readers to take an "
+"action."
+msgstr ""
+"Uyarılar, genel içeriğin dışında gösterilen mesajlardır. Uyarılar, "
+"okuyucuların genellikle eyleme geçmesini gerektiren bağlamsal geri "
+"bildirimlerdir."
+
+#: src/blocks/alert/inspector.js:60 src/blocks/author/inspector.js:61
+#: src/blocks/click-to-tweet/inspector.js:66
+#: src/blocks/features/feature/inspector.js:114
+#: src/blocks/features/inspector.js:195 src/blocks/hero/inspector.js:155
+#: src/blocks/highlight/inspector.js:54
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:58
+#: src/blocks/row/column/inspector.js:176 src/blocks/row/inspector.js:232
+#: src/blocks/share/inspector.js:66 src/blocks/social-profiles/inspector.js:95
+#: src/extensions/colors/index.js:54
+msgid "Text Color"
+msgstr "Metin Rengi"
+
+#: src/blocks/author/controls.js:36
+msgid "Edit avatar"
+msgstr "Avatarı düzenleyin"
+
+#. placeholder text used for the author name
+#. translators: placeholder text used for the author name
+#: src/blocks/author/edit.js:127
+msgid "Write author name…"
+msgstr "Yazar adı girin..."
+
+#. placeholder text used for the biography
+#. translators: placeholder text used for the biography
+#: src/blocks/author/edit.js:141
+msgid ""
+"Write a biography that distills objective credibility and authority to your "
+"readers…"
+msgstr ""
+"Okuyucularınızın nezdinde tarafsız bir şekilde güven ve güç kazanmanızı "
+"sağlayacak bir biyografi yazın..."
+
+#: src/blocks/author/index.js:29
+msgid "Add an author biography to build credibility and authority."
+msgstr "Güven ve güç inşa etmek üzere bir yazar biyografisi ekleyin."
+
+#: src/blocks/author/index.js:35
+msgid "Born to express, not to impress. A maker making the world I want."
+msgstr ""
+"Göz boyamak için değil, tüm dürüstlüğümle var olmak için buradayım. "
+"Ürettiklerimle istediğim dünyayı yaratmaya çalışıyorum."
+
+#: src/blocks/author/inspector.js:41
+msgid "Author Settings"
+msgstr "Yazar Ayarları"
+
+#: src/blocks/buttons/index.js:29
+msgid "Prompt visitors to take action with multiple buttons, side by side."
+msgstr ""
+"Yan yana yerleştireceğiniz düğmeler aracılığıyla ziyaretçilerinizi işlem "
+"yapmaya yönlendirin."
+
+#: src/blocks/buttons/inspector.js:30
+msgid "Buttons"
+msgstr "Düğmeler"
+
+#: src/blocks/buttons/inspector.js:48
+msgid "Stacking buttons on mobile."
+msgstr "Mobilde düğmeleri gruplandırma"
+
+#: src/blocks/buttons/inspector.js:48
+msgid "Toggle to stack buttons on mobile."
+msgstr "Mobilde düğmeleri gruplandırmak için düğmeyi tıklayın."
+
+#: src/blocks/click-to-tweet/controls.js:44
+#: src/blocks/click-to-tweet/controls.js:37
+msgid "Twitter Username"
+msgstr "Twitter Kullanıcı Adı"
+
+#: src/blocks/click-to-tweet/controls.js:48
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+#: src/blocks/click-to-tweet/edit.js:109
+msgid "Add button..."
+msgstr "Düğme ekleyin..."
+
+#. the text of the click to tweet element
+#. translators: the text of the click to tweet element
+#: src/blocks/click-to-tweet/edit.js:82
+msgid "Add a quote to tweet..."
+msgstr "Tweet’lenecek bir alıntı ekleyin..."
+
+#: src/blocks/click-to-tweet/index.js:29
+msgid "Add a quote for readers to tweet via Twitter."
+msgstr "Kullanıcılarınızın Twitter’da paylaşabileceği bir alıntı ekleyin."
+
+#: src/blocks/click-to-tweet/index.js:34
+msgid ""
+"The easiest way to promote and advertise your blog, website, and business on "
+"Twitter."
+msgstr ""
+"Twitter’da blog sayfanızı, web sitenizi ve işletmenizi tanıtarak bunların "
+"reklamını yapmanın en kolay yolu."
+
+#: src/blocks/click-to-tweet/inspector.js:52
+#: src/blocks/highlight/inspector.js:35
+msgid "Text Settings"
+msgstr "Metin Ayarları"
+
+#: src/blocks/click-to-tweet/inspector.js:71
+#: src/blocks/form/submit-button.js:127 src/blocks/share/inspector.js:86
+#: src/blocks/social-profiles/inspector.js:90
+msgid "Button Color"
+msgstr "Düğme Rengi"
+
+#: src/blocks/dynamic-separator/index.js:28
+msgid "Add a resizable spacer between other blocks."
+msgstr "Diğer bloklar arasına yeniden boyutlandırılabilir bir ayırıcı ekleyin."
+
+#: src/blocks/dynamic-separator/inspector.js:44
+#: src/blocks/gallery-carousel/inspector.js:100
+#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
+msgid "Height in pixels"
+msgstr "Piksel cinsinden yükseklik"
+
+#: src/blocks/dynamic-separator/inspector.js:52
+msgid "Height for the dynamic separator element in pixels."
+msgstr "Dinamik ayıraç öğesi için piksel cinsinden yükseklik."
+
+#: src/blocks/dynamic-separator/inspector.js:66
+msgid "Color"
+msgstr "Renk"
+
+#: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
+#: src/blocks/media-card/edit.js:173
+msgid "Add as background"
+msgstr "Arka plan olarak ekleyin"
+
+#: src/blocks/features/feature/index.js:29
+msgid "A singular child column within a parent features block."
+msgstr "Üst özellik blokunun içinde yer alan tekil alt sütun."
+
+#: src/blocks/features/feature/inspector.js:68
+msgid "Feature Settings"
+msgstr "Özellik Ayarları"
+
+#: src/blocks/features/feature/inspector.js:71
+#: src/blocks/features/inspector.js:143 src/blocks/hero/inspector.js:84
+#: src/blocks/icon/inspector.js:217 src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:133 src/blocks/row/inspector.js:180
+#: src/components/background/panel.js:146
+msgid "Padding"
+msgstr "Doldurma"
+
+#: src/blocks/features/index.js:35
+msgid "Add up to three columns of small notes for your product or service."
+msgstr "Ürün veya hizmetinize üç sütuna kadar küçük notlar ekleyebilirsiniz."
+
+#: src/blocks/features/inspector.js:122 src/blocks/row/column/inspector.js:111
+#: src/blocks/row/inspector.js:157
+#: src/components/dimensions-control/index.js:295
+msgid "Margin"
+msgstr "Kenar boşluğu"
+
+#: src/blocks/features/inspector.js:164
+#: src/blocks/gallery-carousel/inspector.js:84
+#: src/blocks/gallery-collage/inspector.js:108
+#: src/blocks/gallery-stacked/inspector.js:91 src/blocks/row/inspector.js:202
+#: src/components/responsive-tabs-control/index.js:31
+#: src/blocks/gallery-carousel/inspector.js:78
+#: src/blocks/gallery-collage/inspector.js:107
+msgid "Gutter"
+msgstr "Cilt payı"
+
+#: src/blocks/features/inspector.js:167 src/blocks/row/inspector.js:205
+msgid "Space between each column."
+msgstr "Her sütunun arasındaki boşluk."
+
+#: src/blocks/features/inspector.js:86 src/blocks/icon/icon-size-select.js:16
+#: src/blocks/row/inspector.js:99 src/blocks/share/inspector.js:72
+#: src/blocks/social-profiles/inspector.js:76
+#: src/components/dimensions-control/dimensions-select.js:15
+#: src/components/size-control/index.js:116
+msgid "Small"
+msgstr "Küçük"
+
+#: src/blocks/features/inspector.js:87 src/blocks/icon/icon-size-select.js:21
+#: src/blocks/row/inspector.js:100 src/blocks/share/inspector.js:73
+#: src/blocks/social-profiles/inspector.js:77
+#: src/components/dimensions-control/dimensions-select.js:20
+#: src/components/size-control/index.js:120
+msgid "Medium"
+msgstr "Orta"
+
+#: src/blocks/features/inspector.js:88 src/blocks/icon/icon-size-select.js:26
+#: src/blocks/row/inspector.js:101 src/blocks/share/inspector.js:74
+#: src/blocks/social-profiles/inspector.js:78
+#: src/components/dimensions-control/dimensions-select.js:25
+#: src/components/size-control/index.js:65
+msgid "Large"
+msgstr "Büyük"
+
+#: src/blocks/features/inspector.js:94
+msgid "Features Settings"
+msgstr "Özellik Ayarları"
+
+#: src/blocks/features/inspector.js:96 src/blocks/post-carousel/inspector.js:70
+#: src/blocks/posts/inspector.js:110 src/blocks/services/inspector.js:69
+msgid "Columns"
+msgstr "Sütunlar"
+
+#: src/blocks/food-and-drinks/appender.js:22
+#: src/blocks/food-and-drinks/appender.js:17
+msgid "Add Menu Section"
+msgstr "Menü Bölümü Ekleyin"
+
+#: src/blocks/food-and-drinks/edit.js:27
+msgid "Menu title..."
+msgstr "Menü başlığı..."
+
+#: src/blocks/food-and-drinks/food-item/edit.js:147
+#: src/blocks/gallery-collage/edit.js:140
+#: src/blocks/services/service/edit.js:156
+msgid "Drop image to replace"
+msgstr "Yenilemek için görseli bırakın"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:160
+#: src/blocks/gallery-collage/edit.js:160
+#: src/blocks/services/service/edit.js:169
+#: src/components/block-gallery/gallery-image.js:208
+msgid "Remove Image"
+msgstr "Görseli kaldır"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:225
+msgid "Add title..."
+msgstr "Başlık ekleyin..."
+
+#: src/blocks/food-and-drinks/food-item/edit.js:238
+#: src/blocks/food-and-drinks/food-item/inspector.js:45
+#: src/blocks/food-and-drinks/food-item/save.js:66
+msgid "Popular"
+msgstr "Popüler"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:256
+#: src/blocks/food-and-drinks/food-item/inspector.js:60
+#: src/blocks/food-and-drinks/food-item/save.js:74
+msgid "Spicy"
+msgstr "Baharatlı"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:276
+msgid "Hot"
+msgstr "Öne Çıkanlar"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:298
+#: src/blocks/food-and-drinks/food-item/inspector.js:75
+#: src/blocks/food-and-drinks/food-item/save.js:90
+msgid "Vegetarian"
+msgstr "Vejetaryen"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:324
+#: src/blocks/food-and-drinks/food-item/inspector.js:50
+#: src/blocks/food-and-drinks/food-item/save.js:98
+msgid "Gluten Free"
+msgstr "Glutensiz"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:347
+#: src/blocks/food-and-drinks/food-item/inspector.js:55
+#: src/blocks/food-and-drinks/food-item/save.js:106
+msgid "Pescatarian"
+msgstr "Pesketaryen"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:368
+#: src/blocks/food-and-drinks/food-item/inspector.js:70
+#: src/blocks/food-and-drinks/food-item/save.js:114
+msgid "Vegan"
+msgstr "Vegan"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:386
+msgid "Add description..."
+msgstr "Açıklama ekleyin..."
+
+#: src/blocks/food-and-drinks/food-item/edit.js:395
+msgid "$0.00"
+msgstr "0,00 USD"
+
+#: src/blocks/food-and-drinks/food-item/index.js:27
+msgid "A food and drink item within the Food & Drinks block."
+msgstr "Yiyecek ve İçecek blokunda yer alan bir yiyecek veya içecek ürünü."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:19
+msgid "Item Settings"
+msgstr "Ürün Ayarları"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:21
+msgid "Image"
+msgstr "Görüntü"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:24
+msgid "Showing an image for this item."
+msgstr "Bu ürün için bir görsel göstermek."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:25
+msgid "Toggle to show an image for this item."
+msgstr "Bu ürünün bir görselini göstermek için düğmeyi tıklayın."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:31
+msgid "Price"
+msgstr "Fiyat"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:34
+msgid "Showing the price for this item."
+msgstr "Bu ürünün fiyatını göstermek."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:35
+msgid "Toggle to show the price for this item."
+msgstr "Bu ürünün fiyatını göstermek için düğmeyi tıklayın."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:42
+msgid "Item Attributes"
+msgstr "Ürün Nitelikleri"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:65
+#: src/blocks/food-and-drinks/food-item/save.js:82
+msgid "Spicier"
+msgstr "Daha Baharatlı"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:82
+#: src/blocks/services/service/inspector.js:31
+msgid "Image Settings"
+msgstr "Görüntü Ayarları"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:84
+#: src/blocks/gif/inspector.js:31 src/blocks/media-card/inspector.js:95
+#: src/blocks/services/service/inspector.js:33
+msgid "Alt Text (Alternative Text)"
+msgstr "Alt. Metin (Alternatif Metin)"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:90
+#: src/blocks/gif/inspector.js:37 src/blocks/media-card/inspector.js:101
+#: src/blocks/services/service/inspector.js:39
+msgid "Describe the purpose of the image"
+msgstr "Görselin amacını açıklayın"
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:92
+#: src/blocks/gif/inspector.js:39 src/blocks/media-card/inspector.js:103
+#: src/blocks/services/service/inspector.js:41
+msgid "Leave empty if the image is purely decorative."
+msgstr "Görseli sadece dekoratif amaçlı kullanıyorsanız bu kısmı boş bırakın."
+
+#: src/blocks/food-and-drinks/food-item/inspector.js:97
+#: src/blocks/services/service/inspector.js:46
+#: src/components/background/panel.js:126
+msgid "Focal Point"
+msgstr "Odak Noktası"
+
+#: src/blocks/food-and-drinks/index.js:27
+msgid "Display a menu or price list."
+msgstr "Menü veya fiyat listesi sergileyin."
+
+#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
+#: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
+#: src/blocks/services/inspector.js:32
+msgid "Styles"
+msgstr "Stiller"
+
+#: src/blocks/food-and-drinks/inspector.js:59
+msgid "Food & Drinks Settings"
+msgstr "Yiyecek ve İçecek Ayarları"
+
+#: src/blocks/food-and-drinks/inspector.js:61
+msgid "Images"
+msgstr "Görseller"
+
+#: src/blocks/food-and-drinks/inspector.js:64
+msgid "Showing images for each item"
+msgstr "Her ürün için resim gösterme"
+
+#: src/blocks/food-and-drinks/inspector.js:65
+msgid "Toggle to show images for each item."
+msgstr "Her ürün için resim göstermek üzere düğmeyi tıklayın."
+
+#: src/blocks/food-and-drinks/inspector.js:71
+msgid "Prices"
+msgstr "Fiyatlar"
+
+#: src/blocks/food-and-drinks/inspector.js:74
+msgid "Showing the price of each item"
+msgstr "Her ürünün fiyatını gösterme"
+
+#: src/blocks/food-and-drinks/inspector.js:75
+msgid "Toggle to show the price of each item."
+msgstr "Her ürünün fiyatını göstermek için düğmeyi tıklayın."
+
+#. %s: Placeholder for email address provided by user.
+#. translators: %s: Placeholder for email address provided by user.
+#: src/blocks/form/edit.js:171
+msgid "%s is not a valid email address."
+msgstr "%s geçersiz bir e-posta adresidir."
+
+#. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#: src/blocks/form/edit.js:181
+msgid "%s and %s are not a valid email address."
+msgstr "%s ve %s geçersiz e-posta adresleridir."
+
+#. %s1: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user.
+#: src/blocks/form/edit.js:189
+msgid "%s are not a valid email address."
+msgstr "%s geçersiz e-posta adresleridir."
+
+#: src/blocks/form/edit.js:247
+msgid "Email address"
+msgstr "E-posta adresi"
+
+#: src/blocks/form/edit.js:248
+msgid "name@example.com"
+msgstr "ad@ornek.com"
+
+#: src/blocks/form/edit.js:258
+msgid "Subject"
+msgstr "Konu"
+
+#: src/blocks/form/edit.js:288
+msgid "Form Settings"
+msgstr "Form Ayarları"
+
+#: src/blocks/form/edit.js:293
+msgid "Google reCAPTCHA"
+msgstr "Google reCAPTCHA"
+
+#: src/blocks/form/edit.js:296
+msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
+msgstr ""
+"Formunuzu istenmeyen e-postalara karşı korumak için reCAPTCHA site ve gizli "
+"anahtarlarını ekleyin."
+
+#: src/blocks/form/edit.js:302
+msgid "Generate keys"
+msgstr "Anahtarlar oluşturun"
+
+#: src/blocks/form/edit.js:303
+msgid "My keys"
+msgstr "Anahtarlarım"
+
+#: src/blocks/form/edit.js:306
+msgid "Get help"
+msgstr "Yardım alın"
+
+#: src/blocks/form/edit.js:310
+msgid "Site Key"
+msgstr "Site Anahtarı"
+
+#: src/blocks/form/edit.js:316
+msgid "Secret Key"
+msgstr "Gizli Anahtar"
+
+#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
+#: src/components/block-gallery/gallery-image.js:221
+msgid "Saving"
+msgstr "Kaydediliyor"
+
+#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
+msgid "Save"
+msgstr "Kaydet"
+
+#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
+msgid "Remove"
+msgstr "Kaldır"
+
+#: src/blocks/form/fields/coblocks-option.js:61
+msgid "Write option…"
+msgstr "Seçenek ekleyin..."
+
+#: src/blocks/form/fields/coblocks-option.js:70
+msgid "Remove Option"
+msgstr "Seçeneği Kaldır"
+
+#: src/blocks/form/fields/date/index.js:21
+msgid "A field for requesting date selections with a date picker."
+msgstr "Tarih seçme aracıyla tarih seçim talebinde bulunabileceğiniz alan."
+
+#: src/blocks/form/fields/email/index.js:20
+msgid "A field for collecting a validated email address."
+msgstr "Doğrulanan e-posta adreslerinin toplanması için kullanılan alan."
+
+#: src/blocks/form/fields/field-label.js:22
+#: src/blocks/form/fields/name/edit.js:61
+#: src/blocks/form/fields/name/edit.js:49
+msgid "Add label…"
+msgstr "Etiket ekleyin..."
+
+#: src/blocks/form/fields/field-label.js:30
+msgid "Required"
+msgstr "Zorunlu"
+
+#: src/blocks/form/fields/multi-field.js:102
+#: src/blocks/form/fields/multi-field.js:99
+msgid "Add Option"
+msgstr "Seçenek Ekle"
+
+#: src/blocks/form/fields/name/edit.js:69
+msgid "Name Field Settings"
+msgstr "Ad Alanı Ayarları"
+
+#: src/blocks/form/fields/name/edit.js:71
+msgid "Last Name"
+msgstr "Soyadı"
+
+#: src/blocks/form/fields/name/edit.js:75
+msgid "Showing both first and last name fields."
+msgstr "Hem ad hem de soyadı alanlarını göstermek."
+
+#: src/blocks/form/fields/name/edit.js:75
+msgid "Toggle to add a last name field."
+msgstr "Soyadı alanı eklemek düğmeyi tıklayın."
+
+#: src/blocks/form/fields/name/index.js:20
+msgid "A text field for collecting the first and last names."
+msgstr "Ad ve soyadı toplamak için kullanılan metin alanı."
+
+#: src/blocks/form/fields/phone/index.js:21
+msgid "A phone number to allow visitors to give you a phone number."
+msgstr ""
+"Ziyaretçilerin size telefon numarasını vermesini sağlamak için kullanılan "
+"alan."
+
+#: src/blocks/form/fields/radio/index.js:21
+msgid "A field with multiple options where only one choice can be made."
+msgstr "Yalnızca bir seçimin belirlenebildiği çok seçenekli alan."
+
+#: src/blocks/form/fields/textarea/index.js:20
+msgid "A text box for longer responses."
+msgstr "Daha uzun yanıtlar için metin kutusu."
+
+#: src/blocks/form/index.js:27
+msgid "Add a contact form to your page."
+msgstr "Sayfanıza basit bir iletişim formu ekleyin."
+
+#: src/blocks/form/index.js:36
+msgid "Subject example"
+msgstr "Konu örneği"
+
+#: src/blocks/form/submit-button.js:107
+msgid "Add text…"
+msgstr "Metin ekleyin..."
+
+#: src/blocks/form/submit-button.js:135
+msgid "Button Text Color"
+msgstr "Düğme Metin Rengi"
+
+#: src/blocks/gallery-carousel/controls.js:55
+#: src/blocks/gallery-masonry/controls.js:55
+#: src/blocks/gallery-stacked/controls.js:55
+msgid "Edit gallery"
+msgstr "Galeriyi düzenleyin"
+
+#: src/blocks/gallery-carousel/edit.js:252
+msgid "Carousel"
+msgstr "Döngü Görünümü"
+
+#. %1$d is the order number of the image, %2$d is the total number of images.
+#. translators: %1$d is the order number of the image, %2$d is the total number of images
+#. translators: %1$d is the order number of the image, %2$d is the total number of images.
+#: src/blocks/gallery-carousel/edit.js:310
+#: src/blocks/gallery-masonry/edit.js:219
+#: src/blocks/gallery-stacked/edit.js:191
+msgid "image %1$d of %2$d in gallery"
+msgstr "Galerideki %1$d %2$d sıralı görsel"
+
+#: src/blocks/gallery-carousel/edit.js:376 src/blocks/gif/edit.js:243
+#: src/blocks/gist/edit.js:103
+#: src/components/block-gallery/gallery-image.js:230
+msgid "Write caption…"
+msgstr "Resim yazısı yazın..."
+
+#: src/blocks/gallery-carousel/index.js:35
+msgid "Display multiple images in a beautiful carousel gallery."
+msgstr "Döngü görünümlü galeride birden fazla görseli sergileyin."
+
+#: src/blocks/gallery-carousel/inspector.js:109
+msgid "Thumbnails"
+msgstr "Küçük resimler"
+
+#: src/blocks/gallery-carousel/inspector.js:119
+msgid "Responsive Height"
+msgstr "Esnek Yükseklik"
+
+#: src/blocks/gallery-carousel/inspector.js:40
+msgid "Showing thumbnail navigation."
+msgstr "Küçük resimlerle gezinti bölümü görüntüleniyor."
+
+#: src/blocks/gallery-carousel/inspector.js:40
+msgid "Toggle to show thumbnails."
+msgstr "Küçük resimleri göstermek için çubuğu kaydırın."
+
+#: src/blocks/gallery-carousel/inspector.js:44
+msgid "Percentage based height is activated."
+msgstr "Yüzde tabanlı yükseklik etkinleştirildi."
+
+#: src/blocks/gallery-carousel/inspector.js:44
+msgid "Toggle for percentage based height."
+msgstr "Yüzde tabanlı yükseklik için çubuğu kaydırın."
+
+#: src/blocks/gallery-carousel/inspector.js:68
+msgid "Carousel Settings"
+msgstr "Döngü Görünümü Ayarları"
+
+#: src/blocks/gallery-carousel/inspector.js:71 src/blocks/icon/inspector.js:173
+#: src/components/typography-controls/index.js:189
+#: src/blocks/icon/inspector.js:106
+msgid "Size"
+msgstr "Boyut"
+
+#: src/blocks/gallery-carousel/inspector.js:90
+#: src/blocks/gallery-masonry/inspector.js:83
+#: src/blocks/gallery-stacked/inspector.js:95 src/blocks/share/inspector.js:120
+#: src/blocks/social-profiles/inspector.js:124
+#: src/components/background/panel.js:156
+msgid "Rounded Corners"
+msgstr "Yuvarlatılmış Köşeler"
+
+#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
+#: src/components/block-gallery/gallery-image.js:221
+msgid "Apply"
+msgstr "Uygula"
+
+#: src/blocks/gallery-collage/edit.js:183
+msgid "Write caption..."
+msgstr "Resim yazısı yazın..."
+
+#: src/blocks/gallery-collage/index.js:34
+msgid "Assemble images into a beautiful collage gallery."
+msgstr "Görselleri bir araya getirerek, harika bir kolaj galerisi oluşturun."
+
+#: src/blocks/gallery-collage/inspector.js:105
+msgid "Collage Settings"
+msgstr "Kolaj Ayarları"
+
+#: src/blocks/gallery-collage/inspector.js:128
+#: src/blocks/gallery-collage/inspector.js:127
+msgid "Shadow"
+msgstr "Gölge"
+
+#: src/blocks/gallery-collage/inspector.js:147
+#: src/blocks/gallery-masonry/inspector.js:98
+#: src/blocks/gallery-stacked/inspector.js:111
+msgid "Captions"
+msgstr "Resim Yazıları"
+
+#: src/blocks/gallery-collage/inspector.js:153
+#: src/blocks/gallery-masonry/inspector.js:105
+msgid "Caption Style"
+msgstr "Resim Yazısı Stili"
+
+#: src/blocks/gallery-collage/inspector.js:30
+#: src/blocks/gallery-masonry/inspector.js:49
+#: src/blocks/gallery-stacked/inspector.js:52
+msgid "Showing captions for each media item."
+msgstr "Her medya öğesi için resim yazısı göstermek."
+
+#: src/blocks/gallery-collage/inspector.js:30
+#: src/blocks/gallery-masonry/inspector.js:49
+#: src/blocks/gallery-stacked/inspector.js:52
+msgid "Toggle to show media captions."
+msgstr "Resim yazılarını göstermek için düğmeyi tıklayın."
+
+#: src/blocks/gallery-masonry/edit.js:188
+msgid "Masonry"
+msgstr "Duvar Yapımı"
+
+#: src/blocks/gallery-masonry/index.js:35
+msgid "Display multiple images in an organized masonry gallery."
+msgstr "Düzenli bir duvar yapımı galerisinde birden fazla görseli sergileyin."
+
+#: src/blocks/gallery-masonry/inspector.js:53
+#: src/blocks/gallery-stacked/inspector.js:56
+msgid "Image lightbox is enabled."
+msgstr "Görsel ışık kutusu etkin."
+
+#: src/blocks/gallery-masonry/inspector.js:53
+#: src/blocks/gallery-stacked/inspector.js:56
+msgid "Toggle to enable the image lightbox."
+msgstr "Görsel ışık kutusunu etkinleştirmek için çubuğu kaydırın."
+
+#: src/blocks/gallery-masonry/inspector.js:73
+msgid "Masonry Settings"
+msgstr "Duvar Görünümü Ayarları"
+
+#: src/blocks/gallery-masonry/inspector.js:76
+msgid "Column Size"
+msgstr "Sütun Boyutu"
+
+#: src/blocks/gallery-masonry/inspector.js:84
+msgid "Add rounded corners to the gallery items."
+msgstr "Galeri öğelerine yuvarlatılmış köşeler ekleyin."
+
+#: src/blocks/gallery-masonry/inspector.js:92
+#: src/blocks/gallery-stacked/inspector.js:123
+msgid "Lightbox"
+msgstr "Işık Kutusu"
+
+#: src/blocks/gallery-stacked/edit.js:168
+msgid "Stacked"
+msgstr "Yığın"
+
+#: src/blocks/gallery-stacked/index.js:35
+msgid "Display multiple images in an single column stacked gallery."
+msgstr "Tek sütunluk yığın galerisinde birden fazla görseli sergileyin."
+
+#: src/blocks/gallery-stacked/inspector.js:105
+msgid "Box Shadow"
+msgstr "Kutu Gölgesi"
+
+#: src/blocks/gallery-stacked/inspector.js:48
+msgid "Fullwidth images are enabled."
+msgstr "Tam genişlikli görseller etkinleştirildi."
+
+#: src/blocks/gallery-stacked/inspector.js:48
+msgid ""
+"Toggle to fill the available gallery area with completely fullwidth images."
+msgstr ""
+"Uygun galeri alanını bütünüyle tam genişlikli görsellerle doldurmak için "
+"düğmeyi tıklayın."
+
+#: src/blocks/gallery-stacked/inspector.js:80
+msgid "Stacked Settings"
+msgstr "Yığın Ayarları"
+
+#: src/blocks/gallery-stacked/inspector.js:83
+msgid "Fullwidth Images"
+msgstr "Tam Genişlikli Görseller"
+
+#: src/blocks/gallery-stacked/inspector.js:83
+msgid "Fullwidth Image"
+msgstr "Tam Genişlikli Görsel"
+
+#: src/blocks/gif/controls.js:44
+msgid "Remove gif"
+msgstr "GIF dosyasını kaldır"
+
+#: src/blocks/gif/edit.js:152
+msgid "This gif has an empty alt attribute"
+msgstr "Bu GIF dosyasının ALT özniteliği boş"
+
+#: src/blocks/gif/edit.js:283
+msgid "Search for that perfect gif on Giphy"
+msgstr "Aklınızdaki o mükemmel GIF dosyasını bulmak için Giphy’de arama yapın"
+
+#: src/blocks/gif/edit.js:289
+msgid "Search for gifs"
+msgstr "GIF dosyası arayın"
+
+#: src/blocks/gif/index.js:27
+msgid "Pick a gif, any gif."
+msgstr "Dilediğiniz GIF dosyasını seçin, herhangi biri olur."
+
+#: src/blocks/gif/inspector.js:29
+msgid "Gif Settings"
+msgstr "GIF Ayarları"
+
+#: src/blocks/gist/controls.js:29
+msgid "Display meta"
+msgstr "Metayı görüntüle"
+
+#: src/blocks/gist/controls.js:42
+msgid "Edit Gist"
+msgstr "Özeti Düzenle"
+
+#: src/blocks/gist/controls.js:49
+msgid "View Gist"
+msgstr "Özeti Görüntüle"
+
+#: src/blocks/gist/controls.js:68 src/blocks/gist/controls.js:61
+msgid "GitHub File"
+msgstr "GitHub Dosyası"
+
+#: src/blocks/gist/controls.js:72
+msgid "File"
+msgstr "Dosya"
+
+#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
+msgid "View this gist on GitHub"
+msgstr "Bu özeti GitHub’da görüntüleyin"
+
+#: src/blocks/gist/edit.js:124 src/blocks/gist/inspector.js:51
+msgid "Gist URL"
+msgstr "Özet URL’si"
+
+#: src/blocks/gist/edit.js:129
+msgid "Add GitHub Gist URL..."
+msgstr "GitHub Özet URL’si ekleyin..."
+
+#: src/blocks/gist/gist.js:137
+msgid "Loading Gist"
+msgstr "Özet Yükleme"
+
+#: src/blocks/gist/index.js:29
+msgid "Embed GitHub gists by adding a gist link."
+msgstr "Özet bağlantısını ekleyerek GitHub özetlerini gömülü olarak ekleyin."
+
+#: src/blocks/gist/inspector.js:31
+msgid "Showing gist meta data."
+msgstr "Özet meta verilerini gösterme"
+
+#: src/blocks/gist/inspector.js:31
+msgid "Toggle to show the gist meta data."
+msgstr "Özet meta verisini göstermek için düğmeyi tıklayın."
+
+#: src/blocks/gist/inspector.js:49
+msgid "Gist Settings"
+msgstr "Özet Ayarları"
+
+#: src/blocks/gist/inspector.js:56
+msgid "Gist File"
+msgstr "Özet Dosyası"
+
+#: src/blocks/gist/inspector.js:61
+msgid "Gist Meta"
+msgstr "Özet Meta Verisi"
+
+#: src/blocks/hero/controls.js:32
+msgid "Change layout"
+msgstr "Sayfa düzenini değiştir"
+
 #: src/blocks/hero/edit.js:152
-#, fuzzy
 msgid "Add background to hero"
-msgstr "%s sayfasına arkaplan ekle"
+msgstr "Ana site üst bilgisine arka plan ekleyin"
+
+#: src/blocks/hero/index.js:41
+msgid ""
+"An introductory area of a page accompanied by a small amount of text and a "
+"call to action."
+msgstr ""
+"Sayfanın küçük bir metin ve eylem çağrısıyla ile beraber tanıtıcı bölümü."
+
+#: src/blocks/hero/inspector.js:127
+msgid "Content width in pixels"
+msgstr "Piksel cinsinden içerik genişliği"
+
+#: src/blocks/hero/inspector.js:81
+msgid "Hero Settings"
+msgstr "‌‌Ana Site Ayarları"
+
+#: src/blocks/hero/inspector.js:85 src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:134 src/blocks/row/inspector.js:181
+msgid "Space inside of the container."
+msgstr "Kapsayıcı içindeki alan."
+
+#: src/blocks/hero/layouts.js:12
+msgid "Top Left"
+msgstr "Sol Üst"
+
+#: src/blocks/hero/layouts.js:13
+msgid "Top Center"
+msgstr "Orta Üst"
+
+#: src/blocks/hero/layouts.js:14
+msgid "Top Right"
+msgstr "Sağ Üst"
+
+#: src/blocks/hero/layouts.js:15
+msgid "Center Left"
+msgstr "Orta Sol"
+
+#: src/blocks/hero/layouts.js:16
+msgid "Center Center"
+msgstr "Orta Orta"
+
+#: src/blocks/hero/layouts.js:17
+msgid "Center Right"
+msgstr "Orta Sağ"
+
+#: src/blocks/hero/layouts.js:18
+msgid "Bottom Left"
+msgstr "Sol Alt"
+
+#: src/blocks/hero/layouts.js:19
+msgid "Bottom Center"
+msgstr "Orta Alt"
+
+#: src/blocks/hero/layouts.js:20
+msgid "Bottom Right"
+msgstr "Sağ Alt"
+
+#: src/blocks/highlight/edit.js:113
+msgid "Add highlighted text..."
+msgstr "Vurgulanan metni ekleyin..."
+
+#: src/blocks/highlight/index.js:28
+msgid "Draw attention and emphasize important narrative."
+msgstr "Anlatılması gereken önemli bölümlerin üzerinde durarak dikkat çekin."
+
+#: src/blocks/highlight/index.js:33
+msgid ""
+"Add a highlight effect to paragraph text in order to grab attention and "
+"emphasize important narrative."
+msgstr ""
+"Anlatılması gereken önemli bölümlerin üzerinde durarak dikkat çekmek için "
+"paragraf metnini vurgulayın."
+
+#: src/blocks/icon/icon-size-select.js:30 src/blocks/row/inspector.js:102
+#: src/components/dimensions-control/dimensions-select.js:30
+msgid "Huge"
+msgstr "Çok Büyük"
+
+#: src/blocks/icon/icon-size-select.js:79
+msgid "Choose icon size preset"
+msgstr "Simge boyutu ön ayarını seçin"
+
+#: src/blocks/icon/index.js:33
+msgid "Add a stylized graphic symbol to communicate something more."
+msgstr "Daha fazla şey anlatmak için biçimlendirilmiş grafik sembol ekleyin."
+
+#: src/blocks/icon/inspector.js:155 src/blocks/share/inspector.js:111
+#: src/blocks/social-profiles/inspector.js:115
+msgid "Icon Settings"
+msgstr "Simge Ayarları"
+
+#: src/blocks/icon/inspector.js:168
+msgid "Reset icon size"
+msgstr "Simge boyutunu sıfırlayın"
+
+#: src/blocks/icon/inspector.js:170
+#: src/components/dimensions-control/index.js:470
+#: src/components/size-control/index.js:198
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: src/blocks/icon/inspector.js:198
+msgid "Apply custom size"
+msgstr "Özelleştirilmiş boyutu uygulayın"
+
+#: src/blocks/icon/inspector.js:201
+msgid "Custom"
+msgstr "Özel"
+
+#: src/blocks/icon/inspector.js:209
+msgid "Radius"
+msgstr "Yarıçap"
+
+#: src/blocks/icon/inspector.js:229
+msgid "Icon Search"
+msgstr "Simge Araması"
+
+#: src/blocks/icon/inspector.js:278
+msgid "No results found."
+msgstr "Bir sonuç bulunamadı."
+
+#: src/blocks/icon/inspector.js:284
+#: src/components/block-gallery/gallery-link-settings.js:63
+msgid "Link Settings"
+msgstr "Bağlantı Ayarları"
+
+#: src/blocks/icon/inspector.js:287
+msgid "Link URL"
+msgstr "Bağlantı URL'si"
+
+#: src/blocks/icon/inspector.js:292
+msgid "Link Rel"
+msgstr "Göreli Oran"
+
+#: src/blocks/icon/inspector.js:297
+msgid "Opening in New Tab"
+msgstr "Yeni Sekmede Açmak"
+
+#: src/blocks/icon/inspector.js:297
+#: src/components/block-gallery/gallery-link-settings.js:75
+msgid "Open in New Tab"
+msgstr "Yeni Sekmede Aç"
+
+#: src/blocks/icon/inspector.js:309 src/blocks/share/inspector.js:104
+#: src/blocks/social-profiles/inspector.js:108 src/blocks/share/inspector.js:68
+#: src/blocks/social-profiles/inspector.js:95
+msgid "Icon Color"
+msgstr "Simge Rengi"
+
+#: src/blocks/logos/controls.js:51
+msgid "Edit logos"
+msgstr "Logoları düzenle"
+
+#: src/blocks/logos/edit.js:69
+msgid "Logos & Badges"
+msgstr "Logolar ve Rozetler"
+
+#: src/blocks/logos/edit.js:70
+#: src/components/block-gallery/gallery-placeholder.js:72
+msgid "Drag images, upload new ones or select files from your library."
+msgstr ""
+"Görselleri sürükleyin, yenilerini yükleyin veya kütüphanenizden dosya seçin."
+
+#: src/blocks/logos/index.js:27
+msgid "Add logos, badges, or certifications to build credibility."
+msgstr "Güven kazanmak için logo, rozet veya sertifika ekleyin."
+
+#: src/blocks/logos/inspector.js:12
+msgid "Logos Settings"
+msgstr "Logo Ayarları"
+
+#: src/blocks/logos/inspector.js:15
+msgid "Black & White"
+msgstr "Siyah - Beyaz"
+
+#: src/blocks/logos/inspector.js:16
+msgid "Toggle to add a black and white filter."
+msgstr "Siyah beyaz bir filtre eklemek için düğmeyi tıklayın."
+
+#: src/blocks/map/controls.js:30
+msgid "Edit Location"
+msgstr "Konumu Düzenle"
+
+#: src/blocks/map/controls.js:42
+msgid "Map style"
+msgstr "Harita stili"
+
+#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50 src/blocks/map/edit.js:241
+msgid "Google Map"
+msgstr "Google Haritalar"
+
+#: src/blocks/map/edit.js:195
+msgid "Invalid API key, or too many requests"
+msgstr "API anahtarı geçersiz veya çok sayıda istek var"
+
+#: src/blocks/map/edit.js:294
+msgid "Enter a location or address to drop a pin on a Google map."
+msgstr "Google haritası üzerinde raptiye bırakmak için konum veya adres girin."
+
+#: src/blocks/map/edit.js:301
+msgid "Search for a place or address…"
+msgstr "Yer veya adres arayın..."
+
+#: src/blocks/map/edit.js:320 src/blocks/map/edit.js:312
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/blocks/map/index.js:28
+msgid "Add an address or location to drop a pin on a Google map."
+msgstr "Google haritası üzerinde işaretlenecek bir adres veya konum ekleyin."
+
+#: src/blocks/map/inspector.js:109
+msgid "Select Map Style"
+msgstr "Harita Stilini Seçin"
+
+#: src/blocks/map/inspector.js:130
+msgid "Map Settings"
+msgstr "Harita Ayarları"
+
+#: src/blocks/map/inspector.js:135
+msgid "Height for the map in pixels"
+msgstr "Piksel cinsinden harita için yükseklik"
+
+#: src/blocks/map/inspector.js:144
+msgid "Zoom Level"
+msgstr "Yakınlaştırma Düzeyi"
+
+#: src/blocks/map/inspector.js:155
+msgid "Marker Size"
+msgstr "İşaretçi Boyutu"
+
+#: src/blocks/map/inspector.js:170
+msgid "Fine control options are enabled."
+msgstr "İnce kontrol seçenekleri etkinleştirildi."
+
+#: src/blocks/map/inspector.js:170
+msgid "Toggle to enable map control options."
+msgstr "Harita kontrol seçeneklerini etkinleştirmek için düğmeyi tıklayın."
+
+#: src/blocks/map/inspector.js:178 src/blocks/map/inspector.js:167
+msgid "Map Controls"
+msgstr "Harita Kontrolleri"
+
+#: src/blocks/map/inspector.js:182
+msgid "Map Type"
+msgstr "Harita Türü"
+
+#: src/blocks/map/inspector.js:185
+msgid "Switching between standard and satellite map views is enabled."
+msgstr ""
+"Standart ve uydu harita görüntüleri arasında geçiş yapma özelliği "
+"etkinleştirildi."
+
+#: src/blocks/map/inspector.js:185
+msgid "Toggle to enable switching between standard and satellite maps."
+msgstr ""
+"Standart ve uydu harita görüntüleri arasında geçiş yapma özelliğini "
+"etkinleştirmek için düğmeyi tıklayın."
+
+#: src/blocks/map/inspector.js:188
+msgid "Zoom Controls"
+msgstr "Yakınlaştırma Kontrolleri"
+
+#: src/blocks/map/inspector.js:191
+msgid "Showing map zoom controls."
+msgstr "Harita yakınlaştırma kontrollerini gösterme."
+
+#: src/blocks/map/inspector.js:191
+msgid "Toggle to enable zooming in and out on the map with zoom controls."
+msgstr ""
+"Harita üzerinde yakınlaştırma kontrollerini kullanarak yakınlaştırma ve "
+"uzaklaştırmayı etkinleştirmek için düğmeyi tıklayın."
+
+#: src/blocks/map/inspector.js:194
+msgid "Street View"
+msgstr "Sokak Görünümü"
+
+#: src/blocks/map/inspector.js:197
+msgid "Showing the street view map control."
+msgstr "Sokak görünümü için harita kontrolünü göstermek."
+
+#: src/blocks/map/inspector.js:197
+msgid "Toggle to show the street view control at the bottom right."
+msgstr ""
+"Sağ alt kısımda sokak görünümü harita kontrolünü göstermek için düğmeyi "
+"tıklayın."
+
+#: src/blocks/map/inspector.js:200
+msgid "Fullscreen Toggle"
+msgstr "Tam Ekran Açma/Kapama"
+
+#: src/blocks/map/inspector.js:203
+msgid "Showing the fullscreen map control."
+msgstr "Tam ekran harita kontrolünü gösterme."
+
+#: src/blocks/map/inspector.js:203
+msgid "Toggle to show the fullscreen map control."
+msgstr "Tam ekran harita kontrolünü göstermek için düğmeyi tıklayın."
+
+#: src/blocks/map/inspector.js:208
+msgid "Google Maps API Key"
+msgstr "Google Haritalar API Anahtarı"
+
+#: src/blocks/map/inspector.js:212
+msgid ""
+"Add a Google Maps API key. Updating this API key will set all your maps to "
+"use the new key."
+msgstr ""
+"Google Haritalar API anahtarı ekleyin. Bu API anahtarını güncellediğinizde "
+"tüm haritalarınız yeni anahtarı kullanır."
+
+#: src/blocks/map/inspector.js:215
+msgid "Get a key"
+msgstr "Anahtar alın"
+
+#: src/blocks/map/inspector.js:216
+msgid "Need help?"
+msgstr "Yardıma mı ihtiyacınız var?"
+
+#: src/blocks/map/inspector.js:222
+msgid "Enter Google API Key…"
+msgstr "Google API anahtarını girin..."
+
+#: src/blocks/map/inspector.js:231
+msgid "Saved"
+msgstr "Kaydedildi"
+
+#: src/blocks/media-card/controls.js:28
+msgid "Media on right"
+msgstr "Sağdaki medya"
+
+#: src/blocks/media-card/controls.js:33
+msgid "Media on left"
+msgstr "Soldaki medya"
+
+#: src/blocks/media-card/index.js:36
+msgid "Add an image or video with an offset card side-by-side."
+msgstr "Ofset kart ile yan yana bir görsel veya video ekleyin"
+
+#: src/blocks/media-card/inspector.js:109
+msgid "Card Shadow"
+msgstr "Kart Gölgesi"
+
+#: src/blocks/media-card/inspector.js:112
+msgid "Showing card shadow."
+msgstr "Kart gölgesini gösterme."
+
+#: src/blocks/media-card/inspector.js:112
+msgid "Toggle to add a card shadow."
+msgstr "Kart gölgesi eklemek için düğmeyi tıklayın."
+
+#. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:118
+msgid " %s Shadow"
+msgstr " %s Gölgesi"
+
+#. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:124
+msgid "Showing %s shadow."
+msgstr "%s gölgesini gösterme."
+
+#. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:126
+msgid "Toggle to add an %s shadow"
+msgstr "%s gölgesi eklemek için düğmeyi tıklayın."
+
+#: src/blocks/media-card/inspector.js:59
+msgid "Media Card Settings"
+msgstr "Medya Kartı Ayarları"
+
+#: src/blocks/media-card/inspector.js:84
+msgid "Max Width"
+msgstr "Maksimum Genişlik"
+
+#: src/blocks/media-card/media-container.js:100
+msgid "Media"
+msgstr "Medya"
+
+#: src/blocks/media-card/media-container.js:120
+msgid "Drop to replace media"
+msgstr "Yenilemek için medyayı bırakın"
+
+#: src/blocks/media-card/media-container.js:37
+msgid "Edit media"
+msgstr "Medyayı düzenleyin"
+
+#: src/blocks/post-carousel/edit.js:123 src/blocks/posts/edit.js:247
+msgid "Edit RSS URL"
+msgstr "RSS URL’sini düzenleyin"
+
+#: src/blocks/post-carousel/edit.js:178
+msgid "Post Carousel"
+msgstr "Gönderi Döngü Görünümü"
+
+#: src/blocks/post-carousel/edit.js:184 src/blocks/posts/edit.js:295
+msgid "No posts found. Start publishing or add posts from an %s feed."
+msgstr ""
+"Hiçbir gönderi bulunamadı. %s akışı kullanarak gönderi ekleyin veya "
+"gönderilerinizi yayınlamaya başlayın."
+
+#: src/blocks/post-carousel/edit.js:187 src/blocks/posts/edit.js:298
+msgid "Retrieve an External Feed"
+msgstr "Harici Akışı kaydedin"
+
+#: src/blocks/post-carousel/edit.js:193 src/blocks/posts/edit.js:304
+msgid "Use External Feed"
+msgstr "Harici Akışı kullanın"
+
+#. %s: RSS
+#: src/blocks/post-carousel/edit.js:216 src/blocks/posts/edit.js:332
+msgid "%s Feed"
+msgstr "%s Akışı"
+
+#: src/blocks/post-carousel/edit.js:217 src/blocks/posts/edit.js:333
+msgid "%s URLs are generally located at the /feed/ directory of a site."
+msgstr "%s URL’leri, sitelerin genellikle /feed/ dizininde bulunur."
+
+#: src/blocks/post-carousel/edit.js:221 src/blocks/posts/edit.js:337
+msgid "https://example.com/feed…"
+msgstr "https://example.com/feed…"
+
+#: src/blocks/post-carousel/edit.js:227 src/blocks/posts/edit.js:343
+msgid "Use URL"
+msgstr "URL kullanın"
+
+#: src/blocks/post-carousel/edit.js:320 src/blocks/posts/edit.js:463
+#: src/blocks/post-carousel/index.php:368 src/blocks/posts/index.php:385
+msgid "Read more"
+msgstr "Daha fazlasını okuyun"
+
+#: src/blocks/post-carousel/index.js:27
+msgid "Display posts or an external blog feed as a carousel."
+msgstr "Gönderileri veya harici blog akışlarını döngü görünümüyle yayınlayın."
+
+#: src/blocks/post-carousel/inspector.js:108 src/blocks/posts/inspector.js:174
+msgid "Number of posts"
+msgstr "Gönderi sayısı"
+
+#: src/blocks/post-carousel/inspector.js:38
+msgid "Post Carousel Settings"
+msgstr "Gönderi Döngü Görünümü Ayarları"
+
+#: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
+msgid "Post Date"
+msgstr "Gönderi Tarihi"
+
+#: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
+msgid "Showing the publish date."
+msgstr "Yayınlanma tarihi görüntüleniyor."
+
+#: src/blocks/post-carousel/inspector.js:46 src/blocks/posts/inspector.js:86
+msgid "Toggle to show the publish date."
+msgstr "Yayınlanma tarihini göstermek için çubuğu kaydırın."
+
+#: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
+msgid "Post Content"
+msgstr "Gönderi İçeriği"
+
+#: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
+msgid "Showing the post content."
+msgstr "Gönderi içeriği görüntüleniyor."
+
+#: src/blocks/post-carousel/inspector.js:56 src/blocks/posts/inspector.js:96
+msgid "Toggle to show the post content."
+msgstr "Gönderi içeriğini göstermek için çubuğu kaydırın."
+
+#: src/blocks/post-carousel/inspector.js:62 src/blocks/posts/inspector.js:102
+msgid "Max words in content"
+msgstr "İçerikteki maksimum sözcük sayısı"
+
+#: src/blocks/post-carousel/inspector.js:86 src/blocks/posts/inspector.js:152
+msgid "Feed Settings"
+msgstr "Akış Ayarları"
+
+#: src/blocks/post-carousel/inspector.js:90 src/blocks/posts/inspector.js:156
+msgid "My Blog"
+msgstr "Blog Sayfam"
+
+#: src/blocks/post-carousel/inspector.js:91 src/blocks/posts/inspector.js:157
+msgid "External Feed"
+msgstr "Harici Akış"
+
+#: src/blocks/posts/edit.js:260
+msgid "Image on left"
+msgstr "Soldaki görsel"
+
+#: src/blocks/posts/edit.js:265
+msgid "Image on right"
+msgstr "Sağdaki görsel"
+
+#: src/blocks/posts/edit.js:289
+msgid "Blog Posts"
+msgstr "Blog Gönderileri"
+
+#: src/blocks/posts/index.js:27
+msgid "Display posts or an RSS feed as stacked or horizontal cards."
+msgstr ""
+"Gönderileri veya RSS akışlarını yığın veya yatay kartlar biçiminde "
+"görüntüleyin."
+
+#: src/blocks/posts/inspector.js:129 src/blocks/posts/inspector.js:121
+msgid "Thumbnail Size"
+msgstr "Küçük Resim Boyutu"
+
+#: src/blocks/posts/inspector.js:78
+msgid "Posts Settings"
+msgstr "Gönderi Ayarları"
+
+#: src/blocks/pricing-table/controls.js:17
+msgid "One Pricing Table"
+msgstr "Bir Fiyatlandırma Tablosu"
+
+#: src/blocks/pricing-table/controls.js:22
+msgid "Two Pricing Tables"
+msgstr "İki Fiyatlandırma Tablosu"
+
+#: src/blocks/pricing-table/controls.js:27
+msgid "Three Pricing Tables"
+msgstr "Üç Fiyatlandırma Tablosu"
+
+#: src/blocks/pricing-table/controls.js:32
+msgid "Four Pricing Tables"
+msgstr "Dört Fiyatlandırma Tablosu"
+
+#: src/blocks/pricing-table/controls.js:62
+msgid "Change pricing table count"
+msgstr "Fiyatlandırma tablolarının sayısını değiştirin"
+
+#. translators: %d: a digit 1-3
+#: src/blocks/pricing-table/edit.js:39
+msgid "Plan %d"
+msgstr "Plan %d"
+
+#: src/blocks/pricing-table/index.js:29
+msgid "Add pricing tables to help visitors compare products and plans."
+msgstr ""
+"Ziyaretçilerin fiyatları ve planları karşılaştırabilmesi için fiyatlandırma "
+"tabloları ekleyin."
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:112
+msgid "Add features"
+msgstr "Özellik ekleyin"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:30
+msgid "Buy Now"
+msgstr "Şimdi Satın Al"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:82
+msgid "Plan A"
+msgstr "A Planı"
+
+#: src/blocks/pricing-table/pricing-table-item/edit.js:92
+msgid "$"
+msgstr "$"
+
+#: src/blocks/pricing-table/pricing-table-item/index.js:27
+msgid "A pricing table to help visitors compare products and plans."
+msgstr ""
+"Ziyaretçilerin fiyatları ve planları karşılaştırabilmesi için fiyatlandırma "
+"tablosu."
+
+#: src/blocks/row/column/edit.js:90
+msgid "Add background to column"
+msgstr "Ana sütuna arka plan ekleyin"
+
+#: src/blocks/row/column/index.js:30
+msgid "An immediate child of a row."
+msgstr "Satırın bir alt satırı."
+
+#: src/blocks/row/column/inspector.js:108
+msgid "Column Settings"
+msgstr "Sütun Ayarları"
+
+#: src/blocks/row/column/inspector.js:112 src/blocks/row/inspector.js:158
+msgid "Space around the container."
+msgstr "Kapsayıcının etrafındaki alan."
+
+#: src/blocks/row/column/inspector.js:155
+msgid "Width"
+msgstr "Genişlik"
+
+#: src/blocks/row/controls.js:74
+msgid "Change row block layout"
+msgstr "Sıra satır düzenini değiştirin"
+
+#: src/blocks/row/edit.js:121
+msgid "one"
+msgstr "bir"
+
+#: src/blocks/row/edit.js:123
+msgid "two"
+msgstr "iki"
+
+#: src/blocks/row/edit.js:125
+msgid "three"
+msgstr "üç"
+
+#: src/blocks/row/edit.js:127
+msgid "four"
+msgstr "dört"
+
+#: src/blocks/row/edit.js:169
+msgid "Add background to row"
+msgstr "Sıraya arka plan ekleyin"
+
+#: src/blocks/row/edit.js:174
+msgid "One Column"
+msgstr "Bir Sütun"
+
+#: src/blocks/row/edit.js:175
+msgid "Two Columns"
+msgstr "İki Sütun"
+
+#: src/blocks/row/edit.js:176
+msgid "Three Columns"
+msgstr "Üç Sütun"
+
+#: src/blocks/row/edit.js:177
+msgid "Four Columns"
+msgstr "Dört Sütun"
+
+#: src/blocks/row/edit.js:202
+msgid "Row Layout"
+msgstr "Satır Düzeni"
+
+#: src/blocks/row/edit.js:202
+msgid "Row"
+msgstr "Satır"
+
+#. %s: 'one' 'two' 'three' and 'four'
+#. translators: %s: 'one' 'two' 'three' and 'four'
+#: src/blocks/row/edit.js:205
+msgid "Now select a layout for this %s column row."
+msgstr "Şimdi bu %s sütun satırı için bir düzen seçin."
+
+#: src/blocks/row/edit.js:206
+msgid "Select the number of columns for this row."
+msgstr "Bu satır için sütun sayısını belirleyin."
+
+#: src/blocks/row/edit.js:211
+msgid "Select Row Columns"
+msgstr "Satır Sütunlarını Seçin"
+
+#: src/blocks/row/edit.js:236 src/blocks/row/inspector.js:121
+msgid "Select Row Layout"
+msgstr "Satır Düzenini Seçin"
+
+#: src/blocks/row/edit.js:246
+msgid "Back to Columns"
+msgstr "Sütunlara Geri Dönün"
+
+#: src/blocks/row/index.js:38
+msgid ""
+"Add a structured wrapper for column blocks, then add content blocks you’d "
+"like to the columns."
+msgstr ""
+"Sütun bloklarına yapılandırılmış bir sarmalayıcı ekledikten sonra sütunlara "
+"istediğiniz içerik bloklarını ekleyin."
+
+#: src/blocks/row/inspector.js:153
+msgid "Row Settings"
+msgstr "Satır Ayarları"
+
+#: src/blocks/row/inspector.js:98
+#: src/components/block-gallery/options/link-options.js:10
+#: src/components/dimensions-control/dimensions-select.js:10
+msgid "None"
+msgstr "Yok"
+
+#: src/blocks/row/layouts.js:13
+msgid "Equal Split"
+msgstr "Eşit Bölme"
+
+#: src/blocks/row/layouts.js:14
+msgid "Two Thirds / One Third"
+msgstr "Üçte İki / Üçte Bir"
+
+#: src/blocks/row/layouts.js:15
+msgid "One Third / Two Thirds"
+msgstr "Üçte Bir / Üçte İki"
+
+#: src/blocks/row/layouts.js:16
+msgid "Three Quarters / Quarter"
+msgstr "Dörtte Üç / Dörtte Bir"
+
+#: src/blocks/row/layouts.js:17
+msgid "Quarter / Three Quarters"
+msgstr "Dörtte Bir / Dörtte Üç"
+
+#: src/blocks/row/layouts.js:20
+msgid "Thirds"
+msgstr "Üçlük"
+
+#: src/blocks/row/layouts.js:21
+msgid "Half / Quarter / Quarter"
+msgstr "Yarım / Dörtte Bir / Dörtte Bir"
+
+#: src/blocks/row/layouts.js:22
+msgid "Quarter / Quarter/ Half"
+msgstr "Dörtte Bir / Dörtte Bir / Yarım"
+
+#: src/blocks/row/layouts.js:23
+msgid "Quarter / Half / Quarter"
+msgstr "Dörtte Bir / Yarım / Dörtte Bir"
+
+#: src/blocks/row/layouts.js:24
+msgid "One Fifth/ Three Fifths / One Fifth"
+msgstr "Beşte Bir / Beşte Üç / Beşte Bir"
+
+#: src/blocks/row/layouts.js:27
+msgid "Quarters"
+msgstr "Çeyrekler"
+
+#: src/blocks/row/layouts.js:28
+msgid "Two Fifths / Fifth / Fifth / Fifth"
+msgstr "Beşte İki / Beşlik / Beşlik / Beşlik"
+
+#: src/blocks/row/layouts.js:29
+msgid "Fifth / Fifth / Fifth / Two Fifths"
+msgstr "Beşlik / Beşlik / Beşlik / Beşte İki"
+
+#: src/blocks/services/edit.js:44
+msgid "Square"
+msgstr "Kare"
+
+#: src/blocks/services/edit.js:49
+msgid "Circle"
+msgstr "Daire"
+
+#: src/blocks/services/index.js:27
+msgid "Add up to four columns of services to display."
+msgstr "Görüntülemek için en fazla dört sütun ekleyin."
+
+#: src/blocks/services/inspector.js:67
+msgid "Services Settings"
+msgstr "Hizmet Ayarları"
+
+#: src/blocks/services/inspector.js:75
+msgid "Heading Level"
+msgstr "Başlık Düzeyi"
+
+#: src/blocks/services/inspector.js:83
+msgid "Action Buttons"
+msgstr "Eylem Düğmeleri"
+
+#: src/blocks/services/inspector.js:87
+msgid "Showing the call to action buttons."
+msgstr "Eylem çağrısı düğmelerini gösterme."
+
+#: src/blocks/services/inspector.js:88
+msgid "Toggle to show call to action buttons."
+msgstr "Eylem çağrısı düğmelerini göstermek için düğmeyi tıklayın."
+
+#: src/blocks/services/service/index.js:27
+msgid "A single service item within a services block."
+msgstr "Hizmetler blokundaki tek bir hizmet öğesi."
+
+#: src/blocks/services/service/inspector.js:18
+msgid "Service Settings"
+msgstr "Hizmet Ayarları"
+
+#: src/blocks/services/service/inspector.js:20
+msgid "Action Button"
+msgstr "Eylem Düğmesi"
+
+#: src/blocks/services/service/inspector.js:23
+msgid "Showing the call to action button."
+msgstr "Eylem çağrısı düğmesini gösterme."
+
+#: src/blocks/services/service/inspector.js:24
+msgid "Toggle to show a call to action button."
+msgstr "Eylem çağrısı düğmesini göstermek için düğmeyi tıklayın."
+
+#: src/blocks/shape-divider/controls.js:28
+msgid "Flip horiztonally"
+msgstr "Yatay çevir"
+
+#: src/blocks/shape-divider/controls.js:33
+msgid "Flip vertically"
+msgstr "Dikey çevir"
+
+#: src/blocks/shape-divider/index.js:29
+msgid "Add a shape divider to visually distinquish page sections."
+msgstr ""
+"Sayfanın bölümlerini gözle görülür bir şekilde birbirinden ayırmak için bir "
+"şekil bölücü ekleyin."
+
+#: src/blocks/shape-divider/inspector.js:53
+msgid "Divider Settings"
+msgstr "Bölücü Ayarları"
+
+#: src/blocks/shape-divider/inspector.js:55
+msgid "Shape Height in pixels"
+msgstr "Piksel cinsinden Şekil Yüksekliği"
+
+#: src/blocks/shape-divider/inspector.js:73
+msgid "Background Height in pixels"
+msgstr "Piksel Cinsinden Arkaplan Yüksekliği"
+
+#: src/blocks/shape-divider/inspector.js:98
+msgid "Shape Color"
+msgstr "Şekil Rengi"
+
+#: src/blocks/share/edit.js:113 src/blocks/share/index.php:132
+msgid "Share on Facebook"
+msgstr "Facebook’ta Paylaş"
+
+#: src/blocks/share/edit.js:121 src/blocks/share/index.php:136
+msgid "Share on Twitter"
+msgstr "Twitter'da Paylaş"
+
+#: src/blocks/share/edit.js:129 src/blocks/share/index.php:140
+msgid "Share on Pinterest"
+msgstr "Pinterest'te Paylaş"
+
+#: src/blocks/share/edit.js:137
+msgid "Share on LinkedIn"
+msgstr "LinkedIn’de Paylaş"
+
+#: src/blocks/share/edit.js:145 src/blocks/share/index.php:148
+msgid "Share via Email"
+msgstr "E-posta ile paylaş"
+
+#: src/blocks/share/edit.js:153 src/blocks/share/index.php:152
+msgid "Share on Tumblr"
+msgstr "Tumblr’da Paylaş"
+
+#: src/blocks/share/edit.js:161 src/blocks/share/index.php:156
+msgid "Share on Google"
+msgstr "Google’da Paylaş"
+
+#: src/blocks/share/edit.js:169 src/blocks/share/index.php:160
+msgid "Share on Reddit"
+msgstr "Reddit’te Paylaş"
+
+#: src/blocks/share/index.js:25
+msgid "Add social sharing links to help you get likes and shares."
+msgstr ""
+"Gönderilerinizin beğenilmesine ve paylaşılmasına yardımcı olacak sosyal "
+"paylaşım bağlantıları ekleyin."
+
+#: src/blocks/share/inspector.js:113
+#: src/blocks/social-profiles/inspector.js:117
+msgid "Social Colors"
+msgstr "Sosyal Medya Renkleri"
+
+#: src/blocks/share/inspector.js:129
+#: src/blocks/social-profiles/inspector.js:133
+msgid "Icon Size"
+msgstr "Simge Boyutu"
+
+#: src/blocks/share/inspector.js:138
+#: src/blocks/social-profiles/inspector.js:142
+msgid "Circle Size"
+msgstr "Daire Boyutu"
+
+#: src/blocks/share/inspector.js:147
+#: src/blocks/social-profiles/inspector.js:151
+msgid "Button Size"
+msgstr "Düğme Boyutu"
+
+#: src/blocks/share/inspector.js:155
+msgid "Icons"
+msgstr "Simgeler"
+
+#: src/blocks/share/inspector.js:157 src/blocks/social-profiles/edit.js:205
+#: src/blocks/social-profiles/index.php:71
+msgid "Twitter"
+msgstr "Twitter"
+
+#: src/blocks/share/inspector.js:162 src/blocks/social-profiles/edit.js:159
+#: src/blocks/social-profiles/index.php:67
+msgid "Facebook"
+msgstr "Facebook"
+
+#: src/blocks/share/inspector.js:167 src/blocks/social-profiles/edit.js:299
+#: src/blocks/social-profiles/index.php:79
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: src/blocks/share/inspector.js:172 src/blocks/social-profiles/edit.js:347
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
+#: includes/class-coblocks-form.php:319
+msgid "Email"
+msgstr "E-posta"
+
+#: src/blocks/share/inspector.js:182
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: src/blocks/share/inspector.js:187
+msgid "Google"
+msgstr "Google"
+
+#: src/blocks/share/inspector.js:192
+msgid "Reddit"
+msgstr "Reddit"
+
+#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:36
+msgid "Share button colors are enabled."
+msgstr "Paylaş düğmesi renkleri etkinleştirildi."
+
+#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:37
+msgid "Toggle to use official colors from each social media platform."
+msgstr ""
+"Her sosyal medya platformunun kendisine ait resmi renklerini kullanmak için "
+"düğmeyi tıklayın."
+
+#: src/blocks/social-profiles/edit.js:142
+msgid "Add Facebook Profile"
+msgstr "Facebook Profili Ekleyin"
+
+#: src/blocks/social-profiles/edit.js:174
+msgid "https://facebook.com/"
+msgstr "https://facebook.com/"
+
+#: src/blocks/social-profiles/edit.js:188
+msgid "Add Twitter Profile"
+msgstr "Twitter Profili Ekleyin"
+
+#: src/blocks/social-profiles/edit.js:220
+msgid "https://twitter.com/"
+msgstr "https://twitter.com/"
+
+#: src/blocks/social-profiles/edit.js:234
+msgid "Add Instagram Profile"
+msgstr "Instagram Profili Ekleyin"
+
+#: src/blocks/social-profiles/edit.js:251
+#: src/blocks/social-profiles/index.php:75
+msgid "Instagram"
+msgstr "Instagram"
+
+#: src/blocks/social-profiles/edit.js:266
+msgid "https://instagram.com/"
+msgstr "https://instagram.com/"
+
+#: src/blocks/social-profiles/edit.js:282
+msgid "Add Pinterest Profile"
+msgstr "Pinterest Profili Ekleyin"
+
+#: src/blocks/social-profiles/edit.js:314
+msgid "https://pinterest.com/"
+msgstr "https://pinterest.com/"
+
+#: src/blocks/social-profiles/edit.js:330
+msgid "Add LinkedIn Profile"
+msgstr "LinkedIn Profili Ekleyin"
+
+#: src/blocks/social-profiles/edit.js:362
+msgid "https://linkedin.com/"
+msgstr "https://linkedin.com/"
+
+#: src/blocks/social-profiles/edit.js:376
+msgid "Add YouTube Profile"
+msgstr "YouTube Profili Ekleyin"
+
+#: src/blocks/social-profiles/edit.js:393
+#: src/blocks/social-profiles/index.php:88
+msgid "YouTube"
+msgstr "YouTube"
+
+#: src/blocks/social-profiles/edit.js:408
+msgid "https://youtube.com/"
+msgstr "https://youtube.com/"
+
+#: src/blocks/social-profiles/edit.js:422
+msgid "Add Yelp Profile"
+msgstr "Yelp Profili Ekleyin"
+
+#: src/blocks/social-profiles/edit.js:439
+#: src/blocks/social-profiles/index.php:92
+msgid "Yelp"
+msgstr "Yelp"
+
+#: src/blocks/social-profiles/edit.js:454
+msgid "https://yelp.com/"
+msgstr "https://yelp.com/"
+
+#: src/blocks/social-profiles/edit.js:468
+msgid "Add Houzz Profile"
+msgstr "Houzz Profili Ekleyin"
+
+#: src/blocks/social-profiles/edit.js:485
+#: src/blocks/social-profiles/index.php:96
+msgid "Houzz"
+msgstr "Houzz"
+
+#: src/blocks/social-profiles/edit.js:500
+msgid "https://houzz.com/"
+msgstr "https://houzz.com/"
+
+#: src/blocks/social-profiles/index.js:25
+msgid "Grow your audience with links to social media profiles."
+msgstr ""
+"Sosyal medya profillerinize bağlantılar ekleyerek hedef kitlenizi büyütün"
+
+#: src/blocks/social-profiles/inspector.js:159
+msgid "Profile Links"
+msgstr "Profil Bağlantıları"
+
+#: src/components/background/controls.js:53
+msgid "Edit Background"
+msgstr "Arkaplanı Düzenleyin"
+
+#: src/components/background/controls.js:72
+msgid "Remove Background"
+msgstr "Arkaplanı Kaldırın"
+
+#: src/components/background/controls.js:96
+#: src/components/background/controls.js:81
+#: src/components/background/controls.js:82
+msgid "Background"
+msgstr "Arkaplan"
+
+#: src/components/background/panel.js:113
+msgid "Background Settings"
+msgstr "Arkaplan Ayarları"
+
+#: src/components/background/panel.js:119
+msgid "Fixed Background"
+msgstr "Sabit Arkaplan"
+
+#: src/components/background/panel.js:135
+msgid "Background Opacity"
+msgstr "Arka Plan Opaklığı"
+
+#: src/components/background/panel.js:168
+msgid "Repeat"
+msgstr "Yinele"
+
+#: src/components/background/panel.js:177
+msgid "Position"
+msgstr "Konum"
+
+#: src/components/background/panel.js:185
+msgid "Display"
+msgstr "Görüntüle"
+
+#: src/components/background/panel.js:193
+msgid "Mute Video"
+msgstr "Videonun Sesini Kapat"
+
+#: src/components/background/panel.js:194
+msgid "Muting the background video."
+msgstr "Arkaplan videosunun sesini kapatma."
+
+#: src/components/background/panel.js:194
+msgid "Toggle to mute the video."
+msgstr "Videonun sesini kapatmak için düğmeyi tıklayın."
+
+#: src/components/background/panel.js:201
+msgid "Loop Video"
+msgstr "Videoyu Döngüye Sok"
+
+#: src/components/background/panel.js:202
+msgid "Looping the background video."
+msgstr "Arkaplan videosunu döngüye sokma."
+
+#: src/components/background/panel.js:202
+msgid "Toggle to loop the video."
+msgstr "Videoyu döngüye sokmak için düğmeyi tıklayın."
+
+#: src/components/background/panel.js:211
+msgid "Remove background"
+msgstr "Arkaplanı kaldırın"
+
+#: src/components/background/panel.js:232
+msgid "Remove "
+msgstr "Kaldır "
+
+#: src/components/block-gallery/gallery-image.js:189
+msgid "Move Image Backward"
+msgstr "Görseli Geri Taşı"
+
+#: src/components/block-gallery/gallery-image.js:197
+msgid "Move Image Forward"
+msgstr "Görseli İleri Taşı"
+
+#: src/components/block-gallery/gallery-link-settings.js:67
+msgid "Link To"
+msgstr "Şuraya Bağlantı:"
+
+#. %s: Type of gallery
+#. translators: %s: Type of gallery
+#: src/components/block-gallery/gallery-placeholder.js:71
+msgid "%s Gallery"
+msgstr "%s Galerisi"
+
+#: src/components/block-gallery/gallery-uploader.js:53
+msgid "Upload an image"
+msgstr "Bir görsel yükle"
+
+#: src/components/block-gallery/options/link-options.js:11
+msgid "Media File"
+msgstr "Medya Dosyası"
+
+#: src/components/block-gallery/options/link-options.js:12
+msgid "Attachment Page"
+msgstr "Ek Sayfası"
+
+#: src/components/block-gallery/options/link-options.js:13
+msgid "Custom URL"
+msgstr "Özelleştirilmiş URL"
+
+#: src/components/crop-settings/index.js:275
+#: src/components/crop-settings/index.js:272
+msgid "Crop settings image placeholder"
+msgstr "Kırpma ayarları görseli yer tutucu"
+
+#: src/components/crop-settings/index.js:304
+msgid "Image Orientation"
+msgstr "Görsel Yönlendirme"
+
+#: src/components/crop-settings/index.js:310
+msgid "Rotate counter-clockwise"
+msgstr "Saat yönünün tersine döndür"
+
+#: src/components/crop-settings/index.js:316
+msgid "Rotate clockwise"
+msgstr "Saat yönünde döndür"
+
+#: src/components/crop-settings/index.js:325
+msgid "Reset image cropping options"
+msgstr "Görsel kırpma seçeneklerini sıfırla"
+
+#: src/components/crop-settings/index.js:327
+msgid "Reset All"
+msgstr "Tümünü Sıfırla"
+
+#: src/components/dimensions-control/index.js:442
+msgid "Select Units"
+msgstr "Birim Seçin"
+
+#. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
+#. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
+#: src/components/dimensions-control/index.js:453
+#: src/components/dimensions-control/index.js:445
+msgid "%s Units"
+msgstr "%s Birim"
+
+#. %s: a texual label
+#. translators: %s: a texual label
+#: src/components/dimensions-control/index.js:468
+msgid "Turn off advanced %s settings"
+msgstr "Gelişmiş %s ayarlarını kapatın"
+
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:640
+#: src/components/dimensions-control/index.js:512
+#: src/components/dimensions-control/index.js:576
+msgid "%s Top"
+msgstr "%s Üst"
+
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:651
+#: src/components/dimensions-control/index.js:523
+#: src/components/dimensions-control/index.js:587
+msgid "%s Right"
+msgstr "%s Sağ"
+
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:662
+#: src/components/dimensions-control/index.js:534
+#: src/components/dimensions-control/index.js:598
+msgid "%s Bottom"
+msgstr "%s Aşağı"
+
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:673
+#: src/components/dimensions-control/index.js:545
+#: src/components/dimensions-control/index.js:609
+msgid "%s Left"
+msgstr "%s Sol"
+
+#: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
+msgid "Unsync"
+msgstr "Eşitlemeyi Kaldır"
+
+#: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
+msgid "Sync"
+msgstr "Senkronize Et"
+
+#: src/components/dimensions-control/index.js:682
+#: src/components/dimensions-control/index.js:554
+#: src/components/dimensions-control/index.js:618
+msgid "Sync Units"
+msgstr "Birimleri Eşitle"
+
+#: src/components/dimensions-control/index.js:699
+msgid "Top"
+msgstr "Yukarı"
+
+#: src/components/dimensions-control/index.js:700
+msgid "Right"
+msgstr "Sağ"
+
+#: src/components/dimensions-control/index.js:701
+msgid "Bottom"
+msgstr "Aşağı"
+
+#: src/components/dimensions-control/index.js:702
+msgid "Left"
+msgstr "Sol"
+
+#. %s:  a texual label
+#. translators: %s:  a texual label
+#: src/components/dimensions-control/index.js:722
+msgid "Advanced %s settings"
+msgstr "Gelişmiş %s ayarları"
+
+#: src/components/dimensions-control/index.js:725
+msgid "Advanced"
+msgstr "Gelişmiş"
+
+#: src/components/font-family/index.js:16
+msgid "Default"
+msgstr "Varsayılan"
+
+#: src/components/grid-control/index.js:122
+msgid "Layout"
+msgstr "Sayfa Düzeni"
+
+#: src/components/grid-control/index.js:123
+msgid "Select Layout"
+msgstr "Sayfa Düzeni Seç"
+
+#: src/components/grid-control/index.js:161
+msgid "Fullscreen"
+msgstr "Tam Ekran"
+
+#: src/components/grid-control/index.js:179
+msgid "Fullscreen mode is enabled."
+msgstr "Tam ekran modu etkinleştirildi."
+
+#: src/components/grid-control/index.js:179
+msgid "Toggle to enable fullscreen mode."
+msgstr "Tam ekran modunu etkinleştirmek için düğmeyi tıklayın."
+
+#. %d: heading level e.g: "1", "2", "3"
+#. translators: %d: heading level e.g: "1", "2", "3"
+#: src/components/heading-toolbar/index.js:18
+msgid "Heading %d"
+msgstr "Başlık %d"
+
+#: src/components/inline-color-picker/index.js:30
+msgid "Custom color picker"
+msgstr "Kişiselleştirilmiş renk seçici"
+
+#: src/components/media-filter-control/index.js:84
+msgid "Apply filter"
+msgstr "Filtreyi uygula"
+
+#: src/components/responsive-base-control/index.js:68
+msgid "Height"
+msgstr "Yükseklik"
+
+#. %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#. translators: %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#: src/components/responsive-tabs-control/index.js:65
+msgid "Mobile %s"
+msgstr "Mobil %s"
+
+#: src/components/size-control/index.js:180
+msgid "Select Size"
+msgstr "Boyut Seçin"
+
+#: src/components/size-control/index.js:69
+msgid "Extra Large"
+msgstr "Çok Büyük"
+
+#: src/components/slider-panel/autoplay-options.js:10
+msgid "One Second"
+msgstr "Bir Saniye"
+
+#: src/components/slider-panel/autoplay-options.js:11
+msgid "Two Seconds"
+msgstr "İki Saniye"
+
+#: src/components/slider-panel/autoplay-options.js:12
+msgid "Three Seconds"
+msgstr "Üç Saniye"
+
+#: src/components/slider-panel/autoplay-options.js:13
+msgid "Four Seconds"
+msgstr "Dört Saniye"
+
+#: src/components/slider-panel/autoplay-options.js:14
+msgid "Five Seconds"
+msgstr "Beş Saniye"
+
+#: src/components/slider-panel/autoplay-options.js:15
+msgid "Six Seconds"
+msgstr "Altı Saniye"
+
+#: src/components/slider-panel/autoplay-options.js:16
+msgid "Seven Seconds"
+msgstr "Yedi Saniye"
+
+#: src/components/slider-panel/autoplay-options.js:17
+msgid "Eight Seconds"
+msgstr "Sekiz Saniye"
+
+#: src/components/slider-panel/autoplay-options.js:18
+msgid "Nine Seconds"
+msgstr "Dokuz Saniye"
+
+#: src/components/slider-panel/autoplay-options.js:19
+msgid "Ten Seconds"
+msgstr "On Saniye"
+
+#: src/components/slider-panel/index.js:102
+msgid "Free Scroll"
+msgstr "Serbest Ekran Kaydırma"
+
+#: src/components/slider-panel/index.js:108
+msgid "Arrow Navigation"
+msgstr "Oklu Gezinti"
+
+#: src/components/slider-panel/index.js:114
+msgid "Dot Navigation"
+msgstr "Noktalı Gezinti"
+
+#: src/components/slider-panel/index.js:120
+msgid "Align Cells"
+msgstr "Hücreleri Hizala"
+
+#: src/components/slider-panel/index.js:24
+msgid "seconds"
+msgstr "saniye"
+
+#: src/components/slider-panel/index.js:24
+msgid "second"
+msgstr "saniye"
+
+#. 1. Speed of the slider, 2: Time until the slide advances
+#. translators: 1. Speed of the slider, 2: Time until the slide advances
+#: src/components/slider-panel/index.js:27
+msgid "Advancing after %1$d %2$s."
+msgstr "%1$d %2$s sonrasında ilerleme."
+
+#. 1. Speed of the slider, 2: Time until the slide advances
+#: src/components/slider-panel/index.js:27
+msgid "Automatically advance to the next slide."
+msgstr "Otomatik olarak sonraki slayda geçer."
+
+#: src/components/slider-panel/index.js:31
+msgid "Dragging and flicking enabled."
+msgstr "Sürükleme ve bırakma etkin."
+
+#: src/components/slider-panel/index.js:31
+msgid "Toggle to enable drag functionality."
+msgstr "Sürükleme işlevini etkinleştirmek için çubuğu kaydırın."
+
+#: src/components/slider-panel/index.js:35
+msgid "Showing slide navigation arrows."
+msgstr "Slayt gezinti oklarını gösterme."
+
+#: src/components/slider-panel/index.js:35
+msgid "Toggle to show slide navigation arrows."
+msgstr "Slayt gezinti oklarını göstermek için düğmeyi tıklayın."
+
+#: src/components/slider-panel/index.js:39
+msgid "Showing dot navigation."
+msgstr "Noktalı gezinti seçeneği görüntüleniyor."
+
+#: src/components/slider-panel/index.js:39
+msgid "Toggle to show dot navigation."
+msgstr "Nokta ile gezintiyi göstermek için düğmeyi tıklayın."
+
+#: src/components/slider-panel/index.js:43
+msgid "Aligning slides to the left."
+msgstr "Slaytlar sola hizalanıyor."
+
+#: src/components/slider-panel/index.js:43
+msgid "Aligning slides to the center."
+msgstr "Slaytlar ortaya hizalanıyor."
+
+#: src/components/slider-panel/index.js:46
+msgid "Pausing autoplay when hovering."
+msgstr "Öğe üzerinde gezinme sırasında otomatik oynatma duraklatılıyor."
+
+#: src/components/slider-panel/index.js:46
+msgid "Toggle to pause autoplay when hovered."
+msgstr ""
+"Öğe üzerine gelinince otomatik oynatmayı duraklatmak için çubuğu kaydırın."
+
+#: src/components/slider-panel/index.js:50
+msgid "Scrolling without fixed slides enabled."
+msgstr "Sabit slaytlar etkinleştirilmeden ekran kaydırma etkin."
+
+#: src/components/slider-panel/index.js:50
+msgid "Toggle to scroll without fixed slides."
+msgstr "Sabit slayt olmadan ekranı kaydırmak için çubuğu kaydırın."
+
+#: src/components/slider-panel/index.js:72
+msgid "Slider Settings"
+msgstr "Kaydırıcı Ayarları"
+
+#: src/components/slider-panel/index.js:74
+msgid "Autoplay"
+msgstr "Otomatik Oynatma"
+
+#: src/components/slider-panel/index.js:81
+msgid "Transition Speed"
+msgstr "Geçiş Hızı"
+
+#: src/components/slider-panel/index.js:88
+msgid "Pause on Hover"
+msgstr "Öğe Üzerine Gezinme Sırasında Duraklatma"
+
+#: src/components/slider-panel/index.js:96
+msgid "Draggable"
+msgstr "Sürüklenebilir"
+
+#: src/components/typography-controls/index.js:164
+msgid "Font"
+msgstr "Yazı Tipi"
+
+#: src/components/typography-controls/index.js:171
+msgid "Weight"
+msgstr "Ağırlık"
+
+#: src/components/typography-controls/index.js:180
+msgid "Transform"
+msgstr "Dönüştür"
+
+#: src/components/typography-controls/index.js:200
+msgid "Line Height"
+msgstr "Satır Yüksekliği"
+
+#: src/components/typography-controls/index.js:211
+msgid "Letter Spacing"
+msgstr "Harf Aralığı"
+
+#: src/components/typography-controls/index.js:223
+msgid "No Top Spacing"
+msgstr "Üst Boşluk Yok"
+
+#: src/components/typography-controls/index.js:228
+msgid "No Bottom Spacing"
+msgstr "Alt Boşluk Yok"
+
+#: src/components/typography-controls/index.js:59
+msgid "Change typography"
+msgstr "Tipografiyi değiştir"
+
+#: src/extensions/advanced-controls/index.js:109
+msgid "Stack on Mobile"
+msgstr "Mobilde Gruplandırma"
+
+#: src/extensions/advanced-controls/index.js:116
+msgid "Responsiveness is enabled."
+msgstr "Duyarlılık etkinleştirildi."
+
+#: src/extensions/advanced-controls/index.js:117
+msgid "Toggle to stack elements on top of each other on smaller viewports."
+msgstr ""
+"Öğeleri daha küçük görünüm pencerelerinde üst üste yığmak için düğmeyi "
+"tıklayın."
+
+#: src/extensions/advanced-controls/index.js:125
+msgid "Remove Top Spacing"
+msgstr "Üst Boşluğu Kaldır"
+
+#: src/extensions/advanced-controls/index.js:135
+msgid "Toggle to add top margin back."
+msgstr "Üst alan boşluğunu tekrar eklemek için çubuğu kaydırın."
+
+#: src/extensions/advanced-controls/index.js:135
+msgid "Toggle to remove any top margin."
+msgstr "Üst alan boşluğunu kaldırmak için çubuğu kaydırın."
+
+#: src/extensions/advanced-controls/index.js:140
+msgid "Remove Bottom Spacing"
+msgstr "Alt Boşluğu Kaldır"
+
+#: src/extensions/advanced-controls/index.js:163
+msgid "Toggle to add bottom margin back."
+msgstr "Alt alan boşluğunu tekrar eklemek için çubuğu kaydırın."
+
+#: src/extensions/advanced-controls/index.js:163
+msgid "Toggle to remove any bottom margin."
+msgstr "Alt alan boşluğunu kaldırmak için çubuğu kaydırın."
+
+#: src/extensions/button-controls/index.js:71
+msgid "Display Fullwidth"
+msgstr "Tam Genişlikli Görüntüle"
+
+#: src/extensions/button-controls/index.js:74
+msgid "Displaying as full width."
+msgstr "Tam genişlikli olarak görüntüleniyor."
+
+#: src/extensions/button-controls/index.js:74
+msgid "Toggle to display button as full width."
+msgstr "Düğmeyi tam genişlikli olarak görüntülemek için düğmeyi tıklayın."
+
+#: src/extensions/image-crop/index.js:172
+msgid "Crop Settings"
+msgstr "Kırpma Ayarları"
+
+#: src/formats/uppercase/index.js:35 src/formats/uppercase/index.js:20
+msgid "Uppercase"
+msgstr "Büyük Harf"
+
+#: src/sidebars/block-manager/components/modal.js:132
+msgid "Manage Blocks"
+msgstr "Blokları Yönetin"
+
+#: src/sidebars/block-manager/components/modal.js:136
+msgid "Block Manager"
+msgstr "Blok Yöneticisi"
+
+#: src/sidebars/block-manager/components/modal.js:138
+msgid "Close"
+msgstr "Kapat"
+
+#: src/sidebars/block-manager/components/modal.js:147
+msgid "Search for a block"
+msgstr "Bir blok arayın"
+
+#: src/sidebars/block-manager/components/options/disable-blocks.js:170
+msgid "This block is added to the page and cannot currently be disabled"
+msgstr "Bu blok sayfaya eklenmiş olup şu anda devre dışı bırakılamaz"
+
+#: src/sidebars/block-manager/components/options/disable-blocks.js:185
+msgid "Disable all"
+msgstr "Tümünü devre dışı bırakın"
+
+#. %s: search text
+#. translators: %s: search text
+#: src/sidebars/block-manager/components/options/disable-blocks.js:233
+msgid "No \"%s\" blocks found."
+msgstr "\"%s\" bloku bulunamadı."
+
+#. %s: Plugin title, i.e. CoBlocks
+#. translators: %s: Plugin title, i.e. CoBlocks
+#: src/utils/block-category.js:21
+msgid "%s Galleries"
+msgstr "%s Galerileri"
+
+#: src/blocks/accordion/accordion-item/controls.js:28
+msgctxt "Toggle label to display the accordion open"
+msgid "Display open"
+msgstr "Görüntüleme açık"
+
+#: src/blocks/accordion/accordion-item/edit.js:65
+msgctxt "Accordion is the block name"
+msgid "Write accordion item title..."
+msgstr "Write accordion item title..."
+
+#: src/blocks/accordion/accordion-item/index.js:26
+msgctxt "This is an inner block for the Accordion Block."
+msgid "Accordion Item"
+msgstr "Akordeon Öğe"
+
+#: src/blocks/accordion/accordion-item/index.js:29
+#: src/blocks/accordion/index.js:30
+msgctxt "block keyword"
+msgid "tabs"
+msgstr "sekmeler"
+
+#: src/blocks/accordion/accordion-item/index.js:29
+#: src/blocks/accordion/index.js:30
+msgctxt "block keyword"
+msgid "faq"
+msgstr "sss"
+
+#: src/blocks/alert/index.js:31
+msgctxt "block keyword"
+msgid "notice"
+msgstr "uyarı"
+
+#: src/blocks/alert/index.js:31
+msgctxt "block keyword"
+msgid "message"
+msgstr "mesaj"
+
+#: src/blocks/author/index.js:31
+msgctxt "block keyword"
+msgid "biography"
+msgstr "biyografi"
+
+#: src/blocks/author/index.js:31
+msgctxt "block keyword"
+msgid "profile"
+msgstr "profil"
+
+#: src/blocks/buttons/index.js:31
+msgctxt "block keyword"
+msgid "link"
+msgstr "bağlantı"
+
+#: src/blocks/buttons/index.js:31 src/blocks/hero/index.js:43
+msgctxt "block keyword"
+msgid "cta"
+msgstr "cta"
+
+#: src/blocks/click-to-tweet/index.js:31 src/blocks/social-profiles/index.js:28
+msgctxt "block keyword"
+msgid "share"
+msgstr "paylaş"
+
+#: src/blocks/click-to-tweet/index.js:31
+msgctxt "block keyword"
+msgid "twitter"
+msgstr "twitter"
+
+#: src/blocks/dynamic-separator/index.js:30
+msgctxt "block keyword"
+msgid "spacer"
+msgstr "ayırıcı"
+
+#: src/blocks/features/index.js:37
+msgctxt "block keyword"
+msgid "services"
+msgstr "hizmetler"
+
+#: src/blocks/food-and-drinks/food-item/index.js:29
+#: src/blocks/food-and-drinks/index.js:29
+msgctxt "block keyword"
+msgid "menu"
+msgstr "menü"
+
+#: src/blocks/food-and-drinks/index.js:29
+msgctxt "block keyword"
+msgid "restaurant"
+msgstr "restoran"
+
+#: src/blocks/form/fields/date/index.js:20
+msgctxt "block keyword"
+msgid "calendar"
+msgstr "takvim"
+
+#: src/blocks/form/fields/date/index.js:20
+msgctxt "block keyword"
+msgid "day month year"
+msgstr "gün ay yıl"
+
+#: src/blocks/form/fields/email/index.js:22
+msgctxt "block keyword"
+msgid "e-mail"
+msgstr "e-posta"
+
+#: src/blocks/form/fields/email/index.js:22
+msgctxt "block keyword"
+msgid "mail"
+msgstr "posta"
+
+#: src/blocks/form/fields/name/index.js:22
+msgctxt "block keyword"
+msgid "first name"
+msgstr "adı"
+
+#: src/blocks/form/fields/name/index.js:22
+msgctxt "block keyword"
+msgid "last name"
+msgstr "soyadı"
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "telephone"
+msgstr "telefon"
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "cellular"
+msgstr "hücresel"
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "mobile"
+msgstr "mobil"
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Choose"
+msgstr "Seç"
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Select"
+msgstr "Seç"
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Option"
+msgstr "Seçenek"
+
+#: src/blocks/form/fields/textarea/index.js:22
+msgctxt "block keyword"
+msgid "Textarea"
+msgstr "Metinalanı"
+
+#: src/blocks/form/fields/textarea/index.js:22
+msgctxt "block keyword"
+msgid "Multiline text"
+msgstr "Çok satırlı metin"
+
+#: src/blocks/form/index.js:29
+msgctxt "block keyword"
+msgid "email"
+msgstr "e-posta"
+
+#: src/blocks/form/index.js:29
+msgctxt "block keyword"
+msgid "about"
+msgstr "hakkında"
+
+#: src/blocks/form/index.js:29
+msgctxt "block keyword"
+msgid "contact"
+msgstr "irtibat kişisi"
+
+#: src/blocks/gallery-carousel/index.js:38
+#: src/blocks/gallery-collage/index.js:36
+#: src/blocks/gallery-masonry/index.js:37
+#: src/blocks/gallery-stacked/index.js:37
+msgctxt "block keyword"
+msgid "gallery"
+msgstr "galeri"
+
+#: src/blocks/gallery-carousel/index.js:38
+#: src/blocks/gallery-collage/index.js:36
+#: src/blocks/gallery-masonry/index.js:37
+#: src/blocks/gallery-stacked/index.js:37
+msgctxt "block keyword"
+msgid "photos"
+msgstr "fotoğraflar"
+
+#: src/blocks/gallery-masonry/index.js:37
+#: src/blocks/gallery-stacked/index.js:37
+msgctxt "block keyword"
+msgid "lightbox"
+msgstr "ışık kutusu"
+
+#: src/blocks/gif/index.js:29
+msgctxt "block keyword"
+msgid "animated"
+msgstr "animasyonlu"
+
+#: src/blocks/gist/index.js:31
+msgctxt "block keyword"
+msgid "code"
+msgstr "kod"
+
+#: src/blocks/hero/index.js:43
+msgctxt "block keyword"
+msgid "button"
+msgstr "düğme"
+
+#: src/blocks/hero/index.js:43
+msgctxt "block keyword"
+msgid "call to action"
+msgstr "eylem çağrısı"
+
+#: src/blocks/highlight/index.js:30
+msgctxt "block keyword"
+msgid "text"
+msgstr "metin"
+
+#: src/blocks/highlight/index.js:30
+msgctxt "block keyword"
+msgid "paragraph"
+msgstr "paragraf"
+
+#: src/blocks/icon/index.js:35 src/blocks/social-profiles/index.js:28
+msgctxt "block keyword"
+msgid "icons"
+msgstr "simgeler"
+
+#: src/blocks/logos/index.js:29
+msgctxt "block keyword"
+msgid "clients"
+msgstr "istemciler"
+
+#: src/blocks/logos/index.js:29
+msgctxt "block keyword"
+msgid "proof"
+msgstr "kanıt"
+
+#: src/blocks/logos/index.js:29
+msgctxt "block keyword"
+msgid "testimonials"
+msgstr "referanslar"
+
+#: src/blocks/map/index.js:30
+msgctxt "block keyword"
+msgid "address"
+msgstr "adres"
+
+#: src/blocks/map/index.js:30
+msgctxt "block keyword"
+msgid "maps"
+msgstr "haritalar"
+
+#: src/blocks/map/index.js:30
+msgctxt "block keyword"
+msgid "google"
+msgstr "google"
+
+#: src/blocks/media-card/index.js:38
+msgctxt "block keyword"
+msgid "image"
+msgstr "görsel"
+
+#: src/blocks/media-card/index.js:38
+msgctxt "block keyword"
+msgid "video"
+msgstr "video"
+
+#: src/blocks/post-carousel/index.js:29
+msgctxt "block keyword"
+msgid "posts"
+msgstr "gönderiler"
+
+#: src/blocks/post-carousel/index.js:29
+msgctxt "block keyword"
+msgid "slider"
+msgstr "kaydırıcı"
+
+#: src/blocks/post-carousel/index.js:29 src/blocks/posts/index.js:29
+msgctxt "block keyword"
+msgid "latest"
+msgstr "en yeniler"
+
+#: src/blocks/posts/index.js:29
+msgctxt "block keyword"
+msgid "blog"
+msgstr "blog"
+
+#: src/blocks/posts/index.js:29
+msgctxt "block keyword"
+msgid "rss"
+msgstr "rss"
+
+#: src/blocks/pricing-table/index.js:31
+#: src/blocks/pricing-table/pricing-table-item/index.js:29
+msgctxt "block keyword"
+msgid "landing"
+msgstr "giriş sayfası"
+
+#: src/blocks/pricing-table/index.js:31
+#: src/blocks/pricing-table/pricing-table-item/index.js:29
+msgctxt "block keyword"
+msgid "comparison"
+msgstr "karşılaştırma"
+
+#: src/blocks/row/index.js:40
+msgctxt "block keyword"
+msgid "rows"
+msgstr "satırlar"
+
+#: src/blocks/row/index.js:40
+msgctxt "block keyword"
+msgid "columns"
+msgstr "sütunlar"
+
+#: src/blocks/row/index.js:40
+msgctxt "block keyword"
+msgid "layouts"
+msgstr "sayfa düzenleri"
+
+#: src/blocks/services/index.js:29
+msgctxt "block keyword"
+msgid "features"
+msgstr "özellikler"
+
+#: src/blocks/shape-divider/index.js:31
+msgctxt "block keyword"
+msgid "separator"
+msgstr "ayırıcı"
+
+#: src/blocks/share/index.js:28
+msgctxt "block keyword"
+msgid "social"
+msgstr "sosyal"
+
+#: src/blocks/social-profiles/index.js:28
+msgctxt "block keyword"
+msgid "links"
+msgstr "bağlantılar"
+
+#: src/blocks/accordion/accordion-item/inspector.js:65
+msgctxt "Visually display open as opposed to closed."
+msgid "Display Open"
+msgstr "Görüntüleme Açık"
+
+#: src/blocks/accordion/edit.js:74
+msgctxt "Add a child element for the Accordion block"
+msgid "Add Accordion Item"
+msgstr "Akordeon Öğe Ekleyin"
+
+#: src/blocks/accordion/index.js:27
+msgctxt "block title"
+msgid "Accordion"
+msgstr "Akordeon"
+
+#: src/blocks/alert/edit.js:102
+msgctxt "Placeholder text for input box"
+msgid "Write text..."
+msgstr "Metin yazın..."
+
+#: src/blocks/alert/edit.js:94
+msgctxt "Placeholder text for input box"
+msgid "Write title..."
+msgstr "Başlık yazın..."
+
+#: src/blocks/alert/index.js:28
+msgctxt "block name"
+msgid "Alert"
+msgstr "Bildirim"
+
+#: src/blocks/author/index.js:28
+msgctxt "block name"
+msgid "Author"
+msgstr "Yazar"
+
+#: src/blocks/buttons/index.js:28
+msgctxt "block name"
+msgid "Buttons"
+msgstr "Düğmeler"
+
+#: src/blocks/click-to-tweet/index.js:28
+msgctxt "block name"
+msgid "Click to Tweet"
+msgstr "Tweet Göndermek için Tıklayın"
+
+#: src/blocks/dynamic-separator/index.js:27
+msgctxt "block name"
+msgid "Dynamic HR"
+msgstr "Dynamic HR"
+
+#: src/blocks/features/feature/index.js:28
+msgctxt "block name"
+msgid "Feature"
+msgstr "Özellik"
+
+#: src/blocks/features/index.js:34
+msgctxt "block name"
+msgid "Features"
+msgstr "Özellikler"
+
+#: src/blocks/food-and-drinks/food-item/index.js:26
+msgctxt "block name"
+msgid "Food Item"
+msgstr "Yemek Ürünü"
+
+#: src/blocks/food-and-drinks/index.js:26
+msgctxt "block name"
+msgid "Food & Drinks"
+msgstr "Yiyecek ve İçecekler"
+
+#: src/blocks/form/fields/date/index.js:19
+msgctxt "block name"
+msgid "Date"
+msgstr "Tarih"
+
+#: src/blocks/form/fields/email/index.js:19
+msgctxt "block name"
+msgid "Email"
+msgstr "E-posta"
+
+#: src/blocks/form/fields/name/index.js:19
+msgctxt "block name"
+msgid "Name"
+msgstr "Ad"
+
+#: src/blocks/form/fields/phone/index.js:19
+msgctxt "block name"
+msgid "Phone"
+msgstr "Telefon"
+
+#: src/blocks/form/fields/radio/index.js:19
+msgctxt "block name"
+msgid "Radio"
+msgstr "Radyo"
+
+#: src/blocks/form/fields/textarea/index.js:19
+msgctxt "block name"
+msgid "Textarea"
+msgstr "Metinalanı"
+
+#: src/blocks/form/index.js:26
+msgctxt "block name"
+msgid "Form"
+msgstr "Form"
+
+#: src/blocks/gallery-carousel/index.js:34
+msgctxt "block name"
+msgid "Carousel"
+msgstr "Döngü Görünümü"
+
+#: src/blocks/gallery-collage/index.js:33
+msgctxt "block name"
+msgid "Collage"
+msgstr "Kolaj"
+
+#: src/blocks/gallery-masonry/index.js:34
+msgctxt "block name"
+msgid "Masonry"
+msgstr "Duvar Yapımı"
+
+#: src/blocks/gallery-stacked/index.js:34
+msgctxt "block name"
+msgid "Stacked"
+msgstr "Yığın"
+
+#: src/blocks/gif/index.js:26
+msgctxt "block name"
+msgid "Gif"
+msgstr "Gif"
+
+#: src/blocks/gist/index.js:28
+msgctxt "block name"
+msgid "Gist"
+msgstr "Özet Dosyası"
+
+#: src/blocks/hero/index.js:40
+msgctxt "block name"
+msgid "Hero"
+msgstr "Ana Site"
+
+#: src/blocks/highlight/index.js:27
+msgctxt "block name"
+msgid "Highlight"
+msgstr "Vurgula"
+
+#: src/blocks/icon/index.js:32
+msgctxt "block name"
+msgid "Icon"
+msgstr "Simge"
+
+#: src/blocks/logos/index.js:26
+msgctxt "block name"
+msgid "Logos & Badges"
+msgstr "Logolar ve Rozetler"
+
+#: src/blocks/map/index.js:27
+msgctxt "block name"
+msgid "Map"
+msgstr "Harita"
+
+#: src/blocks/media-card/index.js:35
+msgctxt "block name"
+msgid "Media Card"
+msgstr "Medya Kartı"
+
+#: src/blocks/post-carousel/index.js:26
+msgctxt "block name"
+msgid "Post Carousel"
+msgstr "Gönderi Döngü Görünümü"
+
+#: src/blocks/posts/index.js:26
+msgctxt "block name"
+msgid "Posts"
+msgstr "Gönderiler"
+
+#: src/blocks/pricing-table/index.js:28
+msgctxt "block name"
+msgid "Pricing Table"
+msgstr "Fiyatlandırma Tablosu"
+
+#: src/blocks/pricing-table/pricing-table-item/index.js:26
+msgctxt "block name"
+msgid "Pricing Table Item"
+msgstr "Fiyatlandırma Tablosu Öğesi"
+
+#: src/blocks/row/column/index.js:29
+msgctxt "block name"
+msgid "Column"
+msgstr "Sütun"
+
+#: src/blocks/row/index.js:37
+msgctxt "block name"
+msgid "Row"
+msgstr "Satır"
+
+#: src/blocks/services/index.js:26
+msgctxt "block name"
+msgid "Services"
+msgstr "Hizmetler"
+
+#: src/blocks/services/service/index.js:26
+msgctxt "block name"
+msgid "Service"
+msgstr "Hizmet"
+
+#: src/blocks/shape-divider/index.js:28
+msgctxt "block name"
+msgid "Shape Divider"
+msgstr "Şekil Bölücü"
+
+#: src/blocks/share/index.js:24
+msgctxt "block name"
+msgid "Share"
+msgstr "Paylaş"
+
+#: src/blocks/social-profiles/index.js:24
+msgctxt "block name"
+msgid "Social Profiles"
+msgstr "Sosyal Profiller"
+
+#: src/blocks/alert/index.js:33
+msgctxt "block style"
+msgid "Info"
+msgstr "Bilgi"
+
+#: src/blocks/alert/index.js:34
+msgctxt "block style"
+msgid "Success"
+msgstr "Başarılı"
+
+#: src/blocks/alert/index.js:35
+msgctxt "block style"
+msgid "Warning"
+msgstr "Uyarı"
+
+#: src/blocks/alert/index.js:36
+msgctxt "block style"
+msgid "Error"
+msgstr "Hata"
+
+#: src/blocks/dynamic-separator/index.js:32
+msgctxt "block style"
+msgid "Dot"
+msgstr "Nokta"
+
+#: src/blocks/dynamic-separator/index.js:33
+msgctxt "block style"
+msgid "Line"
+msgstr "Satır"
+
+#: src/blocks/dynamic-separator/index.js:34
+msgctxt "block style"
+msgid "Fullwidth"
+msgstr "Tam Genişlikli"
+
+#: src/blocks/food-and-drinks/edit.js:35
+msgctxt "block style"
+msgid "Grid"
+msgstr "Dağıtımlı"
+
+#: src/blocks/food-and-drinks/edit.js:42
+msgctxt "block style"
+msgid "List"
+msgstr "Liste"
+
+#: src/blocks/gallery-collage/index.js:40
+#: src/extensions/image-styles/index.js:15
+msgctxt "block style"
+msgid "Default"
+msgstr "Varsayılan"
+
+#: src/blocks/gallery-collage/index.js:45
+msgctxt "block style"
+msgid "Tiled"
+msgstr "Bölünmüş"
+
+#: src/blocks/gallery-collage/index.js:49
+msgctxt "block style"
+msgid "Layered"
+msgstr "Katmanlı"
+
+#: src/blocks/icon/index.js:37
+msgctxt "block style"
+msgid "Outlined"
+msgstr "Ana Hatlı"
+
+#: src/blocks/icon/index.js:38
+msgctxt "block style"
+msgid "Filled"
+msgstr "Dolgulu"
+
+#: src/blocks/posts/edit.js:49
+msgctxt "block style"
+msgid "Stacked"
+msgstr "Yığın"
+
+#: src/blocks/posts/edit.js:55
+msgctxt "block style"
+msgid "Horizontal"
+msgstr "Yatay"
+
+#: src/blocks/shape-divider/index.js:38
+msgctxt "block style"
+msgid "Wavy"
+msgstr "Dalgalı"
+
+#: src/blocks/shape-divider/index.js:39
+msgctxt "block style"
+msgid "Hills"
+msgstr "Tepeler"
+
+#: src/blocks/shape-divider/index.js:40
+msgctxt "block style"
+msgid "Waves"
+msgstr "Dalgalar"
+
+#: src/blocks/shape-divider/index.js:41
+msgctxt "block style"
+msgid "Angled"
+msgstr "Açılı"
+
+#: src/blocks/shape-divider/index.js:42
+msgctxt "block style"
+msgid "Sloped"
+msgstr "Eğimli"
+
+#: src/blocks/shape-divider/index.js:43
+msgctxt "block style"
+msgid "Rounded"
+msgstr "Yuvarlatılmış"
+
+#: src/blocks/shape-divider/index.js:44
+msgctxt "block style"
+msgid "Triangle"
+msgstr "Üçgen"
+
+#: src/blocks/shape-divider/index.js:45
+msgctxt "block style"
+msgid "Pointed"
+msgstr "Köşeli"
+
+#: src/blocks/share/index.js:30 src/blocks/social-profiles/index.js:30
+msgctxt "block style"
+msgid "Mask"
+msgstr "Maske"
+
+#: src/blocks/share/index.js:31 src/blocks/social-profiles/index.js:31
+msgctxt "block style"
+msgid "Icon"
+msgstr "Simge"
+
+#: src/blocks/share/index.js:32 src/blocks/social-profiles/index.js:32
+msgctxt "block style"
+msgid "Text"
+msgstr "Metin"
+
+#: src/blocks/share/index.js:33 src/blocks/social-profiles/index.js:33
+msgctxt "block style"
+msgid "Icon & Text"
+msgstr "Simge ve Metin"
+
+#: src/blocks/share/index.js:34 src/blocks/social-profiles/index.js:34
+msgctxt "block style"
+msgid "Circular"
+msgstr "Dairesel"
+
+#: src/extensions/image-styles/index.js:21
+msgctxt "block style"
+msgid "Bottom Wave"
+msgstr "Alt Dalga"
+
+#: src/extensions/image-styles/index.js:27
+msgctxt "block style"
+msgid "Top Wave"
+msgstr "Üst Dalga"
+
+#: src/blocks/author/edit.js:63
+msgctxt "image to represent the post author"
+msgid "Drop to upload as avatar"
+msgstr "Avatar olarak yüklemek için bırakın"
+
+#: src/blocks/author/edit.js:149
+msgctxt "content placeholder"
+msgid "Author link…"
+msgstr "Yazar bağlantısı..."
+
+#: src/blocks/features/feature/edit.js:31
+msgctxt "content placeholder"
+msgid "Add feature title..."
+msgstr "Özellik başlığı ekleyin..."
+
+#: src/blocks/features/feature/edit.js:31
+msgctxt "content placeholder"
+msgid "Feature Title"
+msgstr "Özellik Başlığı"
+
+#: src/blocks/features/feature/edit.js:32
+msgctxt "content placeholder"
+msgid "Add feature content"
+msgstr "Özellik içeriği ekleyin..."
+
+#: src/blocks/features/feature/edit.js:32
+msgctxt "content placeholder"
+msgid "This is a feature block that you can use to highlight features."
+msgstr ""
+"Bu blok, özellikleri vurgulamak için kullanabileceğiniz bir özellik blokudur."
 
 #: src/blocks/hero/edit.js:35
-#, fuzzy
 msgctxt "content placeholder"
 msgid "Add hero heading…"
-msgstr "Ana site başlığı ekleyin..."
+msgstr "Ana site üst bilgisi ekleyin..."
 
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
@@ -37,12 +3249,1002 @@ msgstr ""
 #: src/blocks/hero/edit.js:39
 msgctxt "content placeholder"
 msgid "Primary button…"
-msgstr ""
+msgstr "Birincil düğme..."
 
 #: src/blocks/hero/edit.js:40
 msgctxt "content placeholder"
 msgid "Secondary button…"
+msgstr "İkincil düğme..."
+
+#: src/blocks/media-card/edit.js:46
+msgctxt "content placeholder"
+msgid "Add heading..."
+msgstr "Başlık ekleyin..."
+
+#: src/blocks/media-card/edit.js:46
+msgctxt "content placeholder"
+msgid "Media Card"
+msgstr "Medya Kartı"
+
+#: src/blocks/media-card/edit.js:47
+msgctxt "content placeholder"
+msgid "Add content..."
+msgstr "İçerik ekleyin..."
+
+#: src/blocks/media-card/edit.js:47
+msgctxt "content placeholder"
+msgid ""
+"Replace this text with descriptive copy to go along with the card image. "
+"Then add more blocks to this card, such as buttons, lists or images."
 msgstr ""
+"Bu metnin yerine karttaki görselin yanında yer alacak açıklayıcı bir metin "
+"koyun. Ardından bu karta düğme, liste veya görsel gibi daha fazla blok "
+"ekleyin."
+
+#: src/blocks/services/service/edit.js:205
+msgctxt "content placeholder"
+msgid "Write title..."
+msgstr "Başlık yazın..."
+
+#: src/blocks/services/service/edit.js:211
+msgctxt "content placeholder"
+msgid "Write description..."
+msgstr "Açıklama yazın..."
+
+#: src/blocks/buttons/inspector.js:28
+msgctxt "block settings"
+msgid "Buttons Settings"
+msgstr "Düğme Ayarları"
+
+#: src/blocks/buttons/inspector.js:43
+msgctxt "visually stack buttons one on top of another"
+msgid "Stack on mobile"
+msgstr "Mobilde gruplandırma"
+
+#: src/blocks/dynamic-separator/inspector.js:43
+msgctxt "hr is html markup - horizonal rule"
+msgid "Dynamic HR Settings"
+msgstr "Dynamic HR Ayarları"
+
+#: src/blocks/gallery-collage/inspector.js:55
+msgctxt "label for no gutter option"
+msgid "None"
+msgstr "Yok"
+
+#: src/blocks/gallery-collage/inspector.js:84
+#: src/blocks/gallery-collage/inspector.js:56
+msgctxt "abbreviation for \"Short\" size"
+msgid "None"
+msgstr "Yok"
+
+#: src/blocks/gallery-collage/inspector.js:60
+msgctxt "label for small gutter option"
+msgid "Small"
+msgstr "Küçük"
+
+#: src/blocks/gallery-collage/inspector.js:89 src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:61
+msgctxt "abbreviation for \"Small\" size"
+msgid "S"
+msgstr "S"
+
+#: src/blocks/gallery-collage/inspector.js:65
+msgctxt "label for medium gutter option"
+msgid "Medium"
+msgstr "Orta"
+
+#: src/blocks/gallery-collage/inspector.js:94 src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:66
+msgctxt "abbreviation for \"Medium\" size"
+msgid "M"
+msgstr "M"
+
+#: src/blocks/gallery-collage/inspector.js:70
+msgctxt "label for large gutter option"
+msgid "Large"
+msgstr "Büyük"
+
+#: src/blocks/gallery-collage/inspector.js:99 src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:71
+msgctxt "abbreviation for \"Large\" size"
+msgid "L"
+msgstr "L"
+
+#: src/blocks/posts/inspector.js:73
+msgctxt "abbreviation for \"Large\" size"
+msgid "XL"
+msgstr "XL"
+
+#: src/blocks/gallery-collage/inspector.js:75
+msgctxt "label for extra large gutter option"
+msgid "Extra Large"
+msgstr "Çok Büyük"
+
+#: src/blocks/gallery-collage/inspector.js:76
+msgctxt "abbreviation for \"Extra Large\" size"
+msgid "XL"
+msgstr "XL"
+
+#: src/blocks/gallery-collage/inspector.js:83
+msgctxt "label for no shadow option"
+msgid "None"
+msgstr "Yok"
+
+#: src/blocks/gallery-collage/inspector.js:88
+msgctxt "label for small shadow option"
+msgid "Small"
+msgstr "Küçük"
+
+#: src/blocks/gallery-collage/inspector.js:93
+msgctxt "label for medium shadow option"
+msgid "Medium"
+msgstr "Orta"
+
+#: src/blocks/gallery-collage/inspector.js:98
+msgctxt "label for large shadow option"
+msgid "Large"
+msgstr "Büyük"
+
+#: src/blocks/icon/svgs.js:102
+msgctxt "label"
+msgid "Add Circle"
+msgstr "Daire Ekleyin"
+
+#: src/blocks/icon/svgs.js:108
+msgctxt "label"
+msgid "Minus Circle"
+msgstr "Eksi Daire"
+
+#: src/blocks/icon/svgs.js:114
+msgctxt "label"
+msgid "Pie Chart"
+msgstr "Pasta Grafiği"
+
+#: src/blocks/icon/svgs.js:119
+msgctxt "label"
+msgid "Scatter Plot"
+msgstr "Dağılım"
+
+#: src/blocks/icon/svgs.js:125
+msgctxt "label"
+msgid "Poll"
+msgstr "Anket"
+
+#: src/blocks/icon/svgs.js:131
+msgctxt "label"
+msgid "Emoticon"
+msgstr "İfade"
+
+#: src/blocks/icon/svgs.js:137
+msgctxt "label"
+msgid "Functions"
+msgstr "Fonksiyonlar"
+
+#: src/blocks/icon/svgs.js:14
+msgctxt "label"
+msgid "CoBlocks"
+msgstr "CoBlocks"
+
+#: src/blocks/icon/svgs.js:142
+msgctxt "label"
+msgid "Doodle"
+msgstr "Karalama"
+
+#: src/blocks/icon/svgs.js:147
+msgctxt "label"
+msgid "Font"
+msgstr "Yazı Tipi"
+
+#: src/blocks/icon/svgs.js:153
+msgctxt "label"
+msgid "Heart"
+msgstr "Kalp"
+
+#: src/blocks/icon/svgs.js:159
+msgctxt "label"
+msgid "Star"
+msgstr "Yıldız ekle"
+
+#: src/blocks/icon/svgs.js:165
+msgctxt "label"
+msgid "Desktop"
+msgstr "Masaüstü"
+
+#: src/blocks/icon/svgs.js:171
+msgctxt "label"
+msgid "Devices"
+msgstr "Cihazlar"
+
+#: src/blocks/icon/svgs.js:176
+msgctxt "label"
+msgid "Laptop"
+msgstr "Dizüstü bilgisayar"
+
+#: src/blocks/icon/svgs.js:181
+msgctxt "label"
+msgid "Tablet"
+msgstr "Tablet"
+
+#: src/blocks/icon/svgs.js:186
+msgctxt "label"
+msgid "Watch"
+msgstr "İzle"
+
+#: src/blocks/icon/svgs.js:19
+msgctxt "label"
+msgid "Audio"
+msgstr "Ses"
+
+#: src/blocks/icon/svgs.js:192
+msgctxt "label"
+msgid "Keyboard"
+msgstr "Klavye"
+
+#: src/blocks/icon/svgs.js:197
+msgctxt "label"
+msgid "Hub"
+msgstr "Merkez"
+
+#: src/blocks/icon/svgs.js:208 src/blocks/icon/svgs.js:202
+msgctxt "label"
+msgid "Email"
+msgstr "E-posta"
+
+#: src/blocks/icon/svgs.js:213
+msgctxt "label"
+msgid "Reply"
+msgstr "Yanıtla"
+
+#: src/blocks/icon/svgs.js:218
+msgctxt "label"
+msgid "Send"
+msgstr "Gönder"
+
+#: src/blocks/icon/svgs.js:224
+msgctxt "label"
+msgid "Signal"
+msgstr "Sinyal"
+
+#: src/blocks/icon/svgs.js:229
+msgctxt "label"
+msgid "Blocks"
+msgstr "Bloklar"
+
+#: src/blocks/icon/svgs.js:235
+msgctxt "label"
+msgid "Marker"
+msgstr "İşaretleyici"
+
+#: src/blocks/icon/svgs.js:241
+msgctxt "label"
+msgid "Mountains"
+msgstr "Dağlar"
+
+#: src/blocks/icon/svgs.js:247
+msgctxt "label"
+msgid "Waves"
+msgstr "Dalgalar"
+
+#: src/blocks/icon/svgs.js:25
+msgctxt "label"
+msgid "Album"
+msgstr "Albüm"
+
+#: src/blocks/icon/svgs.js:252
+msgctxt "label"
+msgid "Globe"
+msgstr "Küre"
+
+#: src/blocks/icon/svgs.js:257
+msgctxt "label"
+msgid "City"
+msgstr "Şehir"
+
+#: src/blocks/icon/svgs.js:262
+msgctxt "label"
+msgid "Dining"
+msgstr "Yemek"
+
+#: src/blocks/icon/svgs.js:267
+msgctxt "label"
+msgid "Couch"
+msgstr "Kanepe"
+
+#: src/blocks/icon/svgs.js:273
+msgctxt "label"
+msgid "Cake"
+msgstr "Pasta"
+
+#: src/blocks/icon/svgs.js:279
+msgctxt "label"
+msgid "Flower"
+msgstr "Çiçek"
+
+#: src/blocks/icon/svgs.js:285
+msgctxt "label"
+msgid "Vintage Filter"
+msgstr "Klasik Filtre"
+
+#: src/blocks/icon/svgs.js:291
+msgctxt "label"
+msgid "Build"
+msgstr "Oluşturun"
+
+#: src/blocks/icon/svgs.js:297
+msgctxt "label"
+msgid "Credit Card"
+msgstr "Kredi Kartı"
+
+#: src/blocks/icon/svgs.js:302
+msgctxt "label"
+msgid "Extension"
+msgstr "Uzantı"
+
+#: src/blocks/icon/svgs.js:308
+msgctxt "label"
+msgid "Fingerprint"
+msgstr "Parmak izi"
+
+#: src/blocks/icon/svgs.js:31
+msgctxt "label"
+msgid "Headset"
+msgstr "Kulaklık"
+
+#: src/blocks/icon/svgs.js:313
+msgctxt "label"
+msgid "Translate"
+msgstr "Çevir"
+
+#: src/blocks/icon/svgs.js:318
+msgctxt "label"
+msgid "New"
+msgstr "Yeni"
+
+#: src/blocks/icon/svgs.js:324
+msgctxt "label"
+msgid "Flare"
+msgstr "Titrek Işık"
+
+#: src/blocks/icon/svgs.js:329
+msgctxt "label"
+msgid "Layers"
+msgstr "Katmanlar"
+
+#: src/blocks/icon/svgs.js:334
+msgctxt "label"
+msgid "Shipping"
+msgstr "Gönderim"
+
+#: src/blocks/icon/svgs.js:339
+msgctxt "label"
+msgid "Snowflake"
+msgstr "Kar Tanesi"
+
+#: src/blocks/icon/svgs.js:344
+msgctxt "label"
+msgid "School"
+msgstr "Okul"
+
+#: src/blocks/icon/svgs.js:349
+msgctxt "label"
+msgid "Fire"
+msgstr "Ateş"
+
+#: src/blocks/icon/svgs.js:354
+msgctxt "label"
+msgid "Update"
+msgstr "Güncelleme"
+
+#: src/blocks/icon/svgs.js:36
+msgctxt "label"
+msgid "Volume"
+msgstr "Ses Düzeyi"
+
+#: src/blocks/icon/svgs.js:42
+msgctxt "label"
+msgid "Voice"
+msgstr "Ses"
+
+#: src/blocks/icon/svgs.js:48
+msgctxt "label"
+msgid "Aperture"
+msgstr "Delik"
+
+#: src/blocks/icon/svgs.js:54
+msgctxt "label"
+msgid "Camera"
+msgstr "Kamera"
+
+#: src/blocks/icon/svgs.js:60
+msgctxt "label"
+msgid "Gallery"
+msgstr "Galeri"
+
+#: src/blocks/icon/svgs.js:66
+msgctxt "label"
+msgid "Video"
+msgstr "Video"
+
+#: src/blocks/icon/svgs.js:72
+msgctxt "label"
+msgid "Film"
+msgstr "Film"
+
+#: src/blocks/icon/svgs.js:78
+msgctxt "label"
+msgid "Color Lens"
+msgstr "Renkli Lens"
+
+#: src/blocks/icon/svgs.js:84
+msgctxt "label"
+msgid "Color Picker"
+msgstr "Renk Seçici"
+
+#: src/blocks/icon/svgs.js:90
+msgctxt "label"
+msgid "Paint"
+msgstr "Boya"
+
+#: src/blocks/icon/svgs.js:96
+msgctxt "label"
+msgid "Brush"
+msgstr "Fırça"
+
+#: src/blocks/icon/svgs.js:109 src/blocks/icon/svgs.js:103
+msgctxt "tags"
+msgid "add minus circle insert plus round math"
+msgstr "ekleme eksi daire yerleştirme artı yuvarlak matematik"
+
+#: src/blocks/icon/svgs.js:115
+msgctxt "tags"
+msgid "stats round circle pie chart graph"
+msgstr "istatistikler yuvarlak daire pasta grafiği grafik"
+
+#: src/blocks/icon/svgs.js:120
+msgctxt "tags"
+msgid "stats round circle pie chart graph dots data"
+msgstr "istatistikler yuvarlak daire pasta grafiği noktalar veri"
+
+#: src/blocks/icon/svgs.js:126
+msgctxt "tags"
+msgid "chart graph stats data graph"
+msgstr "şema grafik istatistikler veri grafiği"
+
+#: src/blocks/icon/svgs.js:132
+msgctxt "tags"
+msgid "happy emotion emoticon smile fun joy"
+msgstr "mutlu duygu ifade gülücük eğlence neşe"
+
+#: src/blocks/icon/svgs.js:138
+msgctxt "tags"
+msgid "code greek math"
+msgstr "kod yunanca matematik"
+
+#: src/blocks/icon/svgs.js:143
+msgctxt "tags"
+msgid "drawing doodle art creative type font pencil marker"
+msgstr "çizim karalama sanat yaratıcı tip yazı tipi kalem işaretleyici"
+
+#: src/blocks/icon/svgs.js:15
+msgctxt "tags"
+msgid "blocks block build gutenberg design"
+msgstr "bloklar blok yapı gutenberg tasarım"
+
+#: src/blocks/icon/svgs.js:154
+msgctxt "tags"
+msgid "love shape valentine kiss"
+msgstr "aşk şekil sevgililer günü öpücük"
+
+#: src/blocks/icon/svgs.js:160
+msgctxt "tags"
+msgid "rate vote plus favorite like"
+msgstr "puanla oy ver artı favori beğeni"
+
+#: src/blocks/icon/svgs.js:177 src/blocks/icon/svgs.js:166
+msgctxt "tags"
+msgid "computer apple montior device pc desk office"
+msgstr "bilgisayar apple monitör pc masa ofis"
+
+#: src/blocks/icon/svgs.js:182
+msgctxt "tags"
+msgid "computer ipad surface apple montior device pc desk office"
+msgstr "bilgisayar ipad yüzey apple monitör cihaz pc masa ofis"
+
+#: src/blocks/icon/svgs.js:187
+msgctxt "tags"
+msgid "device apple mac"
+msgstr "cihaz apple mac"
+
+#: src/blocks/icon/svgs.js:193 src/blocks/icon/svgs.js:172
+msgctxt "tags"
+msgid "computer ipad surface apple device pc desk office"
+msgstr "bilgisayar ipad yüzey apple monitör cihaz pc masa ofis"
+
+#: src/blocks/icon/svgs.js:198
+msgctxt "tags"
+msgid "usb connect hub device social"
+msgstr "usb bağlantı merkez cihaz sosyal"
+
+#: src/blocks/icon/svgs.js:20
+msgctxt "tags"
+msgid "music microphone podcast song artist creative media audio"
+msgstr "müzik mikrofon podcast şarkı sanatçı yaratıcı medya ses"
+
+#: src/blocks/icon/svgs.js:209 src/blocks/icon/svgs.js:203
+msgctxt "tags"
+msgid "email mail os read letter"
+msgstr "e-posta posta işletim sistemi oku mektup"
+
+#: src/blocks/icon/svgs.js:225
+msgctxt "tags"
+msgid "wifi radio waves"
+msgstr "wifi radyo dalgaları"
+
+#: src/blocks/icon/svgs.js:236
+msgctxt "tags"
+msgid "map directions about check checkbox"
+msgstr "harita yönler hakkında kontrol onay kutusu"
+
+#: src/blocks/icon/svgs.js:242
+msgctxt "tags"
+msgid "hills landscape minimal outdoors outside"
+msgstr "tepeler manzara minimal dış mekan dışarısı"
+
+#: src/blocks/icon/svgs.js:248
+msgctxt "tags"
+msgid "ocean outside outdoors water fun summer minimal"
+msgstr "okyanus dışarısı dış mekan su eğlence yaz minimal"
+
+#: src/blocks/icon/svgs.js:253
+msgctxt "tags"
+msgid "world public global earth location map"
+msgstr "dünya halka açık işletme şirket bina şehir gökdelen"
+
+#: src/blocks/icon/svgs.js:258
+msgctxt "tags"
+msgid "location map public business corporation building town skyscraper"
+msgstr "konum harita halka açık işletme şirket bina şehir gökdelen"
+
+#: src/blocks/icon/svgs.js:263
+msgctxt "tags"
+msgid "food drink restaurant menu fork spoon taste"
+msgstr "yemek içecek restoran menü çatal kaşık tat"
+
+#: src/blocks/icon/svgs.js:268
+msgctxt "tags"
+msgid "weekend chill relax chair"
+msgstr "hafta sonu sakin rahat sandalye"
+
+#: src/blocks/icon/svgs.js:274
+msgctxt "tags"
+msgid "fun party happy celebration taste food"
+msgstr "eğlence parti mutlu kutlama tat yemek"
+
+#: src/blocks/icon/svgs.js:280
+msgctxt "tags"
+msgid "petal scent smell nice relax landscape gardening outdoors outside"
+msgstr "çiçek yaprağı koku hoş rahat manzara bahçıvanlık dış mekan dışarısı"
+
+#: src/blocks/icon/svgs.js:292 src/blocks/icon/svgs.js:230
+msgctxt "tags"
+msgid "blocks block box boxes square build widgets"
+msgstr "bloklar blok kutu kutular kare yapı widgetlar"
+
+#: src/blocks/icon/svgs.js:298
+msgctxt "tags"
+msgid "money cash checkout shop commerce ecommerce"
+msgstr "para nakit ödeme mağaza ticaret e-ticaret"
+
+#: src/blocks/icon/svgs.js:303
+msgctxt "tags"
+msgid "puzzle plugin widget team together"
+msgstr "yapboz eklenti widget ekip birlikte"
+
+#: src/blocks/icon/svgs.js:309
+msgctxt "tags"
+msgid "security bio defense biometric safe secure"
+msgstr "güvenlik biyografi savunma biyometrik güvenli güvenilir"
+
+#: src/blocks/icon/svgs.js:314
+msgctxt "tags"
+msgid "language global world speech"
+msgstr "dil küresel dünya konuşma"
+
+#: src/blocks/icon/svgs.js:319
+msgctxt "tags"
+msgid "music microphone song artist creative media audio badge"
+msgstr "müzik mikrofon şarkı sanatçı yaratıcı medya ses rozet"
+
+#: src/blocks/icon/svgs.js:32
+msgctxt "tags"
+msgid "microphone audio beats bose headphones"
+msgstr "mikrofon ses ritim bose kulaklık"
+
+#: src/blocks/icon/svgs.js:325 src/blocks/icon/svgs.js:286
+msgctxt "tags"
+msgid "flower camera photography artist creative"
+msgstr "çiçek kamera fotoğraf sanatçı yaratıcı"
+
+#: src/blocks/icon/svgs.js:330
+msgctxt "tags"
+msgid "design creative build develop engineer"
+msgstr "tasarım yaratıcı yapı gelişme mühendis"
+
+#: src/blocks/icon/svgs.js:335
+msgctxt "tags"
+msgid "shop commence ecommence woo cart ship"
+msgstr "mağaza ticaret e-ticaret woo cart gemi"
+
+#: src/blocks/icon/svgs.js:340
+msgctxt "tags"
+msgid "cold ice frozen chill winter season global"
+msgstr "soğuk buz donmuş serin kış mevsimi küresel"
+
+#: src/blocks/icon/svgs.js:345
+msgctxt "tags"
+msgid "education graduate graduation degree diploma college"
+msgstr "eğitim mezuniyet mezun olmak lisans diploma üniversite"
+
+#: src/blocks/icon/svgs.js:350
+msgctxt "tags"
+msgid "hot trending trendy design"
+msgstr "popüler trend son moda tasarım"
+
+#: src/blocks/icon/svgs.js:355
+msgctxt "tags"
+msgid "improve add upload software"
+msgstr "geliştir ekle yükle yazılım"
+
+#: src/blocks/icon/svgs.js:37 src/blocks/icon/svgs.js:26
+msgctxt "tags"
+msgid "music microphone song artist creative media audio"
+msgstr "müzik mikrofon şarkı sanatçı yaratıcı medya ses"
+
+#: src/blocks/icon/svgs.js:43
+msgctxt "tags"
+msgid ""
+"microphone podcast computer device music microphone song artist creative "
+"media audio"
+msgstr ""
+"mikrofon podcast bilgisayar cihaz müzik mikrofon şarkı sanatçı yaratıcı "
+"medya ses"
+
+#: src/blocks/icon/svgs.js:49
+msgctxt "tags"
+msgid "photo photographer photography camera film creative media"
+msgstr "fotoğraf fotoğrafçı kamera film yaratıcı medya"
+
+#: src/blocks/icon/svgs.js:55
+msgctxt "tags"
+msgid "photo photographer photography camera aperture film creative media"
+msgstr ""
+"fotoğraf fotoğrafçı fotoğrafçılık kamera diyafram açıklığı film yaratıcı "
+"medya"
+
+#: src/blocks/icon/svgs.js:61
+msgctxt "tags"
+msgid "photo photos image media camera aperture collection"
+msgstr "fotoğraf fotoğraflar görsel medya kamera diyafram açıklığı koleksiyon"
+
+#: src/blocks/icon/svgs.js:67
+msgctxt "tags"
+msgid "film videography director producer media creative"
+msgstr "film videografi yönetmen yapımcı medya yaratıcı"
+
+#: src/blocks/icon/svgs.js:73
+msgctxt "tags"
+msgid ""
+"video videography director producer media creative camera photographer "
+"photography aperture"
+msgstr ""
+"video videografi yönetmen yapımcı medya yaratıcı kamera fotoğrafçı "
+"fotoğrafçılık diyafram açıklığı"
+
+#: src/blocks/icon/svgs.js:85 src/blocks/icon/svgs.js:79
+msgctxt "tags"
+msgid "palette design colors artist paint creative media"
+msgstr "palet tasarım renkler sanatçı boya yaratıcı medya"
+
+#: src/blocks/icon/svgs.js:91
+msgctxt "tags"
+msgid "palette design colors artist creative media"
+msgstr "palet tasarım renkler sanatçı yaratıcı medya"
+
+#: src/blocks/icon/svgs.js:97
+msgctxt "tags"
+msgid "palette design colors artist creative media paint paintbrush"
+msgstr "palet tasarım renkler sanatçı yaratıcı medya boya boya fırçası"
+
+#: src/blocks/map/styles.js:12
+msgctxt "block styles"
+msgid "Standard"
+msgstr "Standart"
+
+#: src/blocks/map/styles.js:16
+msgctxt "block styles"
+msgid "Silver"
+msgstr "Gümüş"
+
+#: src/blocks/map/styles.js:20
+msgctxt "block styles"
+msgid "Retro"
+msgstr "Retro"
+
+#: src/blocks/map/styles.js:24
+msgctxt "block styles"
+msgid "Dark"
+msgstr "Koyu"
+
+#: src/blocks/map/styles.js:28
+msgctxt "block styles"
+msgid "Night"
+msgstr "Gece"
+
+#: src/blocks/map/styles.js:32
+msgctxt "block styles"
+msgid "Aubergine"
+msgstr "Patlıcan Moru"
+
+#: src/extensions/button-styles/index.js:16
+msgctxt "block styles"
+msgid "Circular"
+msgstr "Dairesel"
+
+#: src/extensions/button-styles/index.js:22
+msgctxt "block styles"
+msgid "3D"
+msgstr "3D"
+
+#: src/extensions/button-styles/index.js:28
+msgctxt "block styles"
+msgid "Shadow"
+msgstr "Gölge"
+
+#: src/extensions/list-styles/index.js:15
+msgctxt "block styles"
+msgid "Default"
+msgstr "Varsayılan"
+
+#: src/extensions/list-styles/index.js:21
+msgctxt "block styles"
+msgid "None"
+msgstr "Yok"
+
+#: src/extensions/list-styles/index.js:27
+msgctxt "block styles"
+msgid "Checkbox"
+msgstr "Onay kutusu"
+
+#: src/blocks/post-carousel/edit.js:302 src/blocks/posts/edit.js:437
+#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
+msgctxt "placeholder when a post has no title"
+msgid "(no title)"
+msgstr "(başlık yok)"
+
+#: src/blocks/posts/inspector.js:57
+msgctxt "label for small size option"
+msgid "Small"
+msgstr "Küçük"
+
+#: src/blocks/posts/inspector.js:62
+msgctxt "label for medium size option"
+msgid "Medium"
+msgstr "Orta"
+
+#: src/blocks/posts/inspector.js:67
+msgctxt "label for large size option"
+msgid "Large"
+msgstr "Büyük"
+
+#: src/blocks/posts/inspector.js:72
+msgctxt "label for large size option"
+msgid "Extra Large"
+msgstr "Çok Büyük"
+
+#: src/components/background/panel.js:102
+msgctxt "block layout"
+msgid "Auto"
+msgstr "Otomotiv"
+
+#: src/components/background/panel.js:103
+msgctxt "block layout"
+msgid "Cover"
+msgstr "Kapak Resmi"
+
+#: src/components/background/panel.js:104
+msgctxt "block layout"
+msgid "Contain"
+msgstr "Şunu İçeren:"
+
+#: src/components/background/panel.js:83
+#: src/components/grid-control/index.js:35
+msgctxt "block layout"
+msgid "Top Left"
+msgstr "Sol Üst"
+
+#: src/components/background/panel.js:84
+#: src/components/grid-control/index.js:36
+msgctxt "block layout"
+msgid "Top Center"
+msgstr "Orta Üst"
+
+#: src/components/background/panel.js:85
+#: src/components/grid-control/index.js:37
+msgctxt "block layout"
+msgid "Top Right"
+msgstr "Sağ Üst"
+
+#: src/components/background/panel.js:86
+#: src/components/grid-control/index.js:48
+#: src/components/grid-control/index.js:38
+msgctxt "block layout"
+msgid "Center Left"
+msgstr "Orta Sol"
+
+#: src/components/background/panel.js:87
+#: src/components/grid-control/index.js:49
+#: src/components/grid-control/index.js:39
+msgctxt "block layout"
+msgid "Center Center"
+msgstr "Orta Orta"
+
+#: src/components/background/panel.js:88
+#: src/components/grid-control/index.js:50
+#: src/components/grid-control/index.js:40
+msgctxt "block layout"
+msgid "Center Right"
+msgstr "Orta Sağ"
+
+#: src/components/background/panel.js:89
+#: src/components/grid-control/index.js:41
+msgctxt "block layout"
+msgid "Bottom Left"
+msgstr "Sol Alt"
+
+#: src/components/background/panel.js:90
+#: src/components/grid-control/index.js:42
+msgctxt "block layout"
+msgid "Bottom Center"
+msgstr "Orta Alt"
+
+#: src/components/background/panel.js:91
+#: src/components/grid-control/index.js:43
+msgctxt "block layout"
+msgid "Bottom Right"
+msgstr "Sağ Alt"
+
+#: src/components/background/panel.js:95
+msgctxt "block layout"
+msgid "No Repeat"
+msgstr "Tekrarlama Yok"
+
+#: src/components/background/panel.js:96
+msgctxt "block layout"
+msgid "Repeat"
+msgstr "Yinele"
+
+#: src/components/background/panel.js:97
+msgctxt "block layout"
+msgid "Repeat Horizontally"
+msgstr "Yatay Olarak Tekrarla"
+
+#: src/components/background/panel.js:98
+msgctxt "block layout"
+msgid "Repeat Vertically"
+msgstr "Dikey Olarak Tekrarla"
+
+#: src/components/block-gallery/gallery-link-settings.js:80
+msgctxt ""
+"HTML attribute that specifies the a relationship between the two pages."
+msgid "Link Rel"
+msgstr "Göreli Oran"
+
+#: src/components/block-gallery/options/caption-options.js:10
+msgctxt "visual style option"
+msgid "Dark"
+msgstr "Koyu"
+
+#: src/components/block-gallery/options/caption-options.js:11
+msgctxt "visual style option"
+msgid "Light"
+msgstr "Açık"
+
+#: src/components/block-gallery/options/caption-options.js:12
+msgctxt "visual style option"
+msgid "None"
+msgstr "Yok"
+
+#: src/components/crop-settings/index.js:280
+msgctxt "label for horizontal positioning input"
+msgid "Horizontal Pos."
+msgstr "Yatay Poz."
+
+#: src/components/crop-settings/index.js:288
+msgctxt "label for vertical positioning input"
+msgid "Vertical Pos."
+msgstr "Dikey Poz."
+
+#: src/components/crop-settings/index.js:297
+msgctxt "label for the control that allows zooming in on the image"
+msgid "Image Zoom"
+msgstr "Görsel Büyütme"
+
+#: src/components/dimensions-control/index.js:389
+msgctxt "A size unit for CSS markup"
+msgid "Pixel"
+msgstr "Piksel"
+
+#: src/components/dimensions-control/index.js:393
+msgctxt "A size unit for CSS markup"
+msgid "Em"
+msgstr "Em"
+
+#: src/components/dimensions-control/index.js:397
+msgctxt "A size unit for CSS markup"
+msgid "Percentage"
+msgstr "Yüzde"
+
+#: src/components/media-filter-control/index.js:31
+msgctxt "image styles"
+msgid "Original"
+msgstr "Orijinal"
+
+#: src/components/media-filter-control/index.js:39
+msgctxt "image styles"
+msgid "Grayscale Filter"
+msgstr "Gri Tonlama Filtresi"
+
+#: src/components/media-filter-control/index.js:47
+msgctxt "image styles"
+msgid "Sepia Filter"
+msgstr "Sepya Filtre"
+
+#: src/components/media-filter-control/index.js:55
+msgctxt "image styles"
+msgid "Saturation Filter"
+msgstr "Canlılık Filtresi"
+
+#: src/components/media-filter-control/index.js:63
+msgctxt "image styles"
+msgid "Dim Filter"
+msgstr "Karartma Filtresi"
+
+#: src/components/media-filter-control/index.js:71
+msgctxt "image styles"
+msgid "Vintage Filter"
+msgstr "Klasik Filtre"
+
+#: src/components/typography-controls/index.js:103
+msgctxt "typography styles"
+msgid "Capitalize"
+msgstr "Büyük Harf Yap"
+
+#: src/components/typography-controls/index.js:107
+#: src/components/typography-controls/index.js:80
+msgctxt "typography styles"
+msgid "Normal"
+msgstr "Normal"
+
+#: src/components/typography-controls/index.js:84
+msgctxt "typography styles"
+msgid "Bold"
+msgstr "Kalın"
+
+#: src/components/typography-controls/index.js:91
+#: src/components/typography-controls/index.js:76
+msgctxt "typography styles"
+msgid "Default"
+msgstr "Varsayılan"
+
+#: src/components/typography-controls/index.js:95
+msgctxt "typography styles"
+msgid "Uppercase"
+msgstr "Büyük Harf"
+
+#: src/components/typography-controls/index.js:99
+msgctxt "typography styles"
+msgid "Lowercase"
+msgstr "Küçük Harf"
 
 #. Plugin Name of the plugin
 msgid "CoBlocks"
@@ -71,19 +4273,19 @@ msgstr "GoDaddy"
 msgid "https://www.godaddy.com"
 msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:77 class-coblocks.php:89
+#: class-coblocks.php:84 class-coblocks.php:96
 msgid "Cheating huh?"
 msgstr "Hile mi yapıyorsunuz?"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Review CoBlocks on WordPress.org"
-msgstr ""
+msgstr "WordPress.org’da CoBlocks’u değerlendirin"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Leave a Review"
 msgstr "Yorum Paylaşın"
 
-#: includes/admin/class-coblocks-getting-started-page.php:121
+#: includes/admin/class-coblocks-getting-started-page.php:120
 msgid ""
 "Thanks for choosing CoBlocks, the premier page builder for the new WordPress "
 "block editor."
@@ -92,7 +4294,7 @@ msgstr ""
 "CoBlocks’u tercih ettiğiniz için teşekkür ederiz."
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
-#: includes/admin/class-coblocks-getting-started-page.php:127
+#: includes/admin/class-coblocks-getting-started-page.php:126
 msgid ""
 "You've just added lots of useful blocks and a new page builder toolkit to "
 "the WordPress editor. CoBlocks gives you a game-changing set of features: "
@@ -104,31 +4306,31 @@ msgstr ""
 "sunar: %1$s onlarca blok%2$s, bir %1$s sayfa oluşturucu deneyimi %2$s ve "
 "%1$s özelleştirilmiş tipografi kontrolleri%2$s."
 
-#: includes/admin/class-coblocks-getting-started-page.php:134
+#: includes/admin/class-coblocks-getting-started-page.php:133
 msgid "Here are a few videos to help you get started:"
 msgstr "Başlarken size yardımcı olacak birkaç video:"
 
 #. translators: CoBlocks plugin name
-#: includes/admin/class-coblocks-getting-started-page.php:138
+#: includes/admin/class-coblocks-getting-started-page.php:137
 msgid "Watch how to create your first page with %s"
 msgstr "%s ile ilk sayfanızı nasıl oluşturacağınızı izleyin"
 
-#: includes/admin/class-coblocks-getting-started-page.php:139
+#: includes/admin/class-coblocks-getting-started-page.php:138
 msgid "Watch how to create your first page"
 msgstr "İlk sayfanızı nasıl oluşturacağınızı izleyin"
 
+#: includes/admin/class-coblocks-getting-started-page.php:140
 #: includes/admin/class-coblocks-getting-started-page.php:141
-#: includes/admin/class-coblocks-getting-started-page.php:142
 msgid "Watch how to use the Row and Shape Divider blocks"
 msgstr "Satır ve Şekil Ayırıcı blokları nasıl kullanacağınızı izleyin"
 
+#: includes/admin/class-coblocks-getting-started-page.php:143
 #: includes/admin/class-coblocks-getting-started-page.php:144
-#: includes/admin/class-coblocks-getting-started-page.php:145
 msgid "Watch how to use the Media Card block"
 msgstr "Medya Kartı blokunu nasıl kullanacağınızı izleyin"
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:153
+#: includes/admin/class-coblocks-getting-started-page.php:152
 msgid ""
 "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let "
 "you know when new video tutorials are released."
@@ -137,7 +4339,7 @@ msgstr ""
 "eğitici videolar çıktığında sizi bilgilendirelim."
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:164
+#: includes/admin/class-coblocks-getting-started-page.php:163
 msgid ""
 "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our "
 "%2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you "
@@ -148,11 +4350,11 @@ msgstr ""
 "Ayrıca, CoBlocks’taki yeniliklerden ve gelişmelerden haberdar olmak için "
 "%3$sbültenimize abone olabilirsiniz%4$s."
 
-#: includes/admin/class-coblocks-getting-started-page.php:173
+#: includes/admin/class-coblocks-getting-started-page.php:172
 msgid "Enjoy!"
 msgstr "Keyfini çıkarın!"
 
-#: includes/class-coblocks-block-settings.php:80
+#: includes/class-coblocks-block-settings.php:72
 msgid "Enable or disable blocks"
 msgstr "Blokları etkinleştirin veya devre dışı bırakın"
 
@@ -166,3214 +4368,61 @@ msgid "Google reCaptcha secret key for form spam protection"
 msgstr ""
 "Form kaynaklı istenmeyen posta koruması için Google reCaptcha gizli anahtarı"
 
-#: includes/class-coblocks-form.php:234 includes/class-coblocks-form.php:321
-msgid "Email"
-msgstr "E-posta"
-
-#: includes/class-coblocks-form.php:268
+#: includes/class-coblocks-form.php:267
 msgid "Name"
 msgstr "Ad"
 
-#: includes/class-coblocks-form.php:272
+#: includes/class-coblocks-form.php:271
 msgid "First"
 msgstr "İlk"
 
-#: includes/class-coblocks-form.php:273
+#: includes/class-coblocks-form.php:272
 msgid "Last"
 msgstr "Son"
 
-#: includes/class-coblocks-form.php:349
+#: includes/class-coblocks-form.php:346
 msgid "Message"
 msgstr "Mesaj"
 
-#: includes/class-coblocks-form.php:387
+#: includes/class-coblocks-form.php:384
 msgid "Date"
-msgstr ""
+msgstr "Tarih"
 
-#: includes/class-coblocks-form.php:415
+#: includes/class-coblocks-form.php:412
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
-#: includes/class-coblocks-form.php:451
+#: includes/class-coblocks-form.php:448
 msgid "Choose one"
-msgstr ""
+msgstr "Seçim yapın"
 
-#: includes/class-coblocks-form.php:522
+#: includes/class-coblocks-form.php:520
 msgid "Submit"
 msgstr "Gönder"
 
-#: includes/class-coblocks-form.php:730
+#: includes/class-coblocks-form.php:723
 msgid "Your message was sent:"
 msgstr "Mesajınız gönderildi:"
 
-#: includes/class-coblocks-google-map-block.php:124
+#: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
 msgstr "Harita oluşturma için Google Haritalar API anahtarı"
 
-#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
+#: src/blocks/post-carousel/index.php:40 src/blocks/posts/index.php:40
 #, fuzzy
-msgctxt "placeholder when a post has no title"
-msgid "(no title)"
-msgstr "Menü başlığı..."
+msgid "RSS Error:"
+msgstr "Hata"
 
-#: src/blocks/post-carousel/index.php:366 src/blocks/posts/index.php:385
-msgid "Read more"
+#: src/blocks/post-carousel/index.php:51 src/blocks/posts/index.php:51
+msgid ""
+"An error has occurred, which probably means the feed is down. Try again "
+"later."
 msgstr ""
 
-#: src/blocks/share/index.php:133
-msgid "Share on Facebook"
-msgstr "Facebook’ta Paylaş"
-
-#: src/blocks/share/index.php:137
-msgid "Share on Twitter"
-msgstr "Twitter'da Paylaş"
-
-#: src/blocks/share/index.php:141
-msgid "Share on Pinterest"
-msgstr "Pinterest'te Paylaş"
-
-#: src/blocks/share/index.php:145
+#: src/blocks/share/index.php:144
 msgid "Share on Linkedin"
 msgstr "Linkedin'de Paylaş"
 
-#: src/blocks/share/index.php:149
-msgid "Share via Email"
-msgstr "E-posta ile paylaş"
-
-#: src/blocks/share/index.php:153
-msgid "Share on Tumblr"
-msgstr "Tumblr’da Paylaş"
-
-#: src/blocks/share/index.php:157
-msgid "Share on Google"
-msgstr "Google’da Paylaş"
-
-#: src/blocks/share/index.php:161
-msgid "Share on Reddit"
-msgstr "Reddit’te Paylaş"
-
-#: src/blocks/social-profiles/index.php:68
-msgid "Facebook"
-msgstr "Facebook"
-
-#: src/blocks/social-profiles/index.php:72
-msgid "Twitter"
-msgstr "Twitter"
-
-#: src/blocks/social-profiles/index.php:76
-msgid "Instagram"
-msgstr "Instagram"
-
-#: src/blocks/social-profiles/index.php:80
-msgid "Pinterest"
-msgstr "Pinterest"
-
-#: src/blocks/social-profiles/index.php:84
+#: src/blocks/social-profiles/index.php:83
 msgid "Linkedin"
 msgstr "Linkedin"
-
-#: src/blocks/social-profiles/index.php:89
-msgid "YouTube"
-msgstr "YouTube"
-
-#: src/blocks/social-profiles/index.php:93
-msgid "Yelp"
-msgstr "Yelp"
-
-#: src/blocks/social-profiles/index.php:97
-msgid "Houzz"
-msgstr "Houzz"
-
-#~ msgid "Add collapsable accordion items to accordions."
-#~ msgstr "Akordeonlara daraltılabilir akordeon öğeler ekleyin."
-
-#~ msgid "Accordion item is open by default."
-#~ msgstr "Akordeon öğe varsayılan olarak açıktır."
-
-#~ msgid "Toggle to set this accordion item to be open by default."
-#~ msgstr ""
-#~ "Bu akordeon öğeyi varsayılan olarak açık ayarlamak için düğmeyi tıklayın."
-
-#~ msgid "Accordion Item Settings"
-#~ msgstr "Akordeon Öğe Ayarları"
-
-#~ msgid "Color Settings"
-#~ msgstr "Renk Ayarları"
-
-#~ msgid "Background Color"
-#~ msgstr "Arkaplan Rengi"
-
-#~ msgid "Title Text Color"
-#~ msgstr "Başlık Metin Rengi"
-
-#~ msgid "Organize content within collapsable accordion items."
-#~ msgstr "Akordeon öğelerde yer alan içerikleri organize edin."
-
-#~ msgid "Accordion Settings"
-#~ msgstr "Akordeon Ayarları"
-
-#~ msgid "Internet Explorer Support"
-#~ msgstr "Internet Explorer Desteği"
-
-#~ msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
-#~ msgstr ""
-#~ "Bir JavaScript polyfill’i yükleyerek Internet Explorer desteği ekleyin."
-
-#~ msgid ""
-#~ "Supporting Internet Explorer by loading a JavaScript polyfill on this "
-#~ "page."
-#~ msgstr ""
-#~ "Bu sayfaya bir JavaScript polyfill’i yükleyerek Internet Explorer’ı "
-#~ "desteklemek."
-
-#, fuzzy
-#~ msgid "Provide contextual feedback messages or notices."
-#~ msgstr "İçeriksel geri bildirim mesajları sağlayın."
-
-#~ msgid "Text Color"
-#~ msgstr "Metin Rengi"
-
-#, fuzzy
-#~ msgid "Edit avatar"
-#~ msgstr "Galeriyi düzenleyin"
-
-#, fuzzy
-#~ msgid "Write author name…"
-#~ msgstr "Resim yazısı yazın..."
-
-#, fuzzy
-#~ msgid "Author Settings"
-#~ msgstr "Form Ayarları"
-
-#~ msgid "Prompt visitors to take action with multiple buttons, side by side."
-#~ msgstr ""
-#~ "Yan yana yerleştireceğiniz düğmeler aracılığıyla ziyaretçilerinizi işlem "
-#~ "yapmaya yönlendirin."
-
-#~ msgid "Buttons"
-#~ msgstr "Düğmeler"
-
-#~ msgid "Stacking buttons on mobile."
-#~ msgstr "Mobilde düğmeleri gruplandırma"
-
-#~ msgid "Toggle to stack buttons on mobile."
-#~ msgstr "Mobilde düğmeleri gruplandırmak için düğmeyi tıklayın."
-
-#~ msgid "Twitter Username"
-#~ msgstr "Twitter Kullanıcı Adı"
-
-#~ msgid "Username"
-#~ msgstr "Kullanıcı adı"
-
-#~ msgid "Add button..."
-#~ msgstr "Düğme ekleyin..."
-
-# the text of the click to tweet element
-#~ msgid "Add a quote to tweet..."
-#~ msgstr "Tweet’lenecek bir alıntı ekleyin..."
-
-#~ msgid "Add a quote for readers to tweet via Twitter."
-#~ msgstr "Kullanıcılarınızın Twitter’da paylaşabileceği bir alıntı ekleyin."
-
-#~ msgid "Text Settings"
-#~ msgstr "Metin Ayarları"
-
-#~ msgid "Button Color"
-#~ msgstr "Düğme Rengi"
-
-#~ msgid "Add a resizable spacer between other blocks."
-#~ msgstr ""
-#~ "Diğer bloklar arasına yeniden boyutlandırılabilir bir ayırıcı ekleyin."
-
-#~ msgid "Height in pixels"
-#~ msgstr "Piksel cinsinden yükseklik"
-
-#~ msgid "Height for the dynamic separator element in pixels."
-#~ msgstr "Dinamik ayıraç öğesi için piksel cinsinden yükseklik."
-
-#~ msgid "Color"
-#~ msgstr "Renk"
-
-#~ msgid "Add as backround"
-#~ msgstr "Arkaplan olarak ekleyin"
-
-#~ msgid "A singular child column within a parent features block."
-#~ msgstr "Üst özellik blokunun içinde yer alan tekil alt sütun."
-
-#~ msgid "Feature Settings"
-#~ msgstr "Özellik Ayarları"
-
-#~ msgid "Padding"
-#~ msgstr "Doldurma"
-
-#~ msgid "Add up to three columns of small notes for your product or service."
-#~ msgstr ""
-#~ "Ürün veya hizmetinize üç sütuna kadar küçük notlar ekleyebilirsiniz."
-
-#~ msgid "Margin"
-#~ msgstr "Kenar boşluğu"
-
-#~ msgid "Gutter"
-#~ msgstr "Cilt payı"
-
-#~ msgid "Space between each column."
-#~ msgstr "Her sütunun arasındaki boşluk."
-
-#~ msgid "Small"
-#~ msgstr "Küçük"
-
-#~ msgid "Medium"
-#~ msgstr "Orta"
-
-#~ msgid "Large"
-#~ msgstr "Büyük"
-
-#~ msgid "Features Settings"
-#~ msgstr "Özellik Ayarları"
-
-#~ msgid "Columns"
-#~ msgstr "Sütunlar"
-
-#~ msgid "Add Menu Section"
-#~ msgstr "Menü Bölümü Ekleyin"
-
-#~ msgid "Menu title..."
-#~ msgstr "Menü başlığı..."
-
-#~ msgid "Drop image to replace"
-#~ msgstr "Yenilemek için görseli bırakın"
-
-#~ msgid "Remove Image"
-#~ msgstr "Görseli kaldır"
-
-#~ msgid "Add title..."
-#~ msgstr "Başlık ekleyin..."
-
-#~ msgid "Spicy"
-#~ msgstr "Baharatlı"
-
-#~ msgid "Hot"
-#~ msgstr "Öne Çıkanlar"
-
-#~ msgid "Vegetarian"
-#~ msgstr "Vejetaryen"
-
-#~ msgid "Gluten Free"
-#~ msgstr "Glutensiz"
-
-#~ msgid "Pescatarian"
-#~ msgstr "Pesketaryen"
-
-#~ msgid "Vegan"
-#~ msgstr "Vegan"
-
-#~ msgid "Add description..."
-#~ msgstr "Açıklama ekleyin..."
-
-#~ msgid "$0.00"
-#~ msgstr "0,00 USD"
-
-#~ msgid "A food and drink item within the Food & Drinks block."
-#~ msgstr "Yiyecek ve İçecek blokunda yer alan bir yiyecek veya içecek ürünü."
-
-#~ msgid "Item Settings"
-#~ msgstr "Ürün Ayarları"
-
-#~ msgid "Image"
-#~ msgstr "Görüntü"
-
-#~ msgid "Showing an image for this item."
-#~ msgstr "Bu ürün için bir görsel göstermek."
-
-#~ msgid "Toggle to show an image for this item."
-#~ msgstr "Bu ürünün bir görselini göstermek için düğmeyi tıklayın."
-
-#~ msgid "Price"
-#~ msgstr "Fiyat"
-
-#~ msgid "Showing the price for this item."
-#~ msgstr "Bu ürünün fiyatını göstermek."
-
-#~ msgid "Toggle to show the price for this item."
-#~ msgstr "Bu ürünün fiyatını göstermek için düğmeyi tıklayın."
-
-#~ msgid "Item Attributes"
-#~ msgstr "Ürün Nitelikleri"
-
-#~ msgid "Spicier"
-#~ msgstr "Daha Baharatlı"
-
-#~ msgid "Image Settings"
-#~ msgstr "Görüntü Ayarları"
-
-#~ msgid "Alt Text (Alternative Text)"
-#~ msgstr "Alt. Metin (Alternatif Metin)"
-
-#~ msgid "Describe the purpose of the image"
-#~ msgstr "Görselin amacını açıklayın"
-
-#~ msgid "Leave empty if the image is purely decorative."
-#~ msgstr ""
-#~ "Görseli sadece dekoratif amaçlı kullanıyorsanız bu kısmı boş bırakın."
-
-#~ msgid "Focal Point"
-#~ msgstr "Odak Noktası"
-
-#~ msgid "Display a menu or price list."
-#~ msgstr "Menü veya fiyat listesi sergileyin."
-
-#~ msgid "Styles"
-#~ msgstr "Stiller"
-
-#~ msgid "Food & Drinks Settings"
-#~ msgstr "Yiyecek ve İçecek Ayarları"
-
-#~ msgid "Images"
-#~ msgstr "Görseller"
-
-#~ msgid "Showing images for each item"
-#~ msgstr "Her ürün için resim gösterme"
-
-#~ msgid "Toggle to show images for each item."
-#~ msgstr "Her ürün için resim göstermek üzere düğmeyi tıklayın."
-
-#~ msgid "Prices"
-#~ msgstr "Fiyatlar"
-
-#~ msgid "Showing the price of each item"
-#~ msgstr "Her ürünün fiyatını gösterme"
-
-#~ msgid "Toggle to show the price of each item."
-#~ msgstr "Her ürünün fiyatını göstermek için düğmeyi tıklayın."
-
-#~ msgid "%s is not a valid email address."
-#~ msgstr "%s geçersiz bir e-posta adresidir."
-
-#~ msgid "%s and %s are not a valid email address."
-#~ msgstr "%s ve %s geçersiz e-posta adresleridir."
-
-#~ msgid "%s are not a valid email address."
-#~ msgstr "%s geçersiz e-posta adresleridir."
-
-#~ msgid "Email address"
-#~ msgstr "E-posta adresi"
-
-#~ msgid "name@example.com"
-#~ msgstr "ad@ornek.com"
-
-#~ msgid "Subject"
-#~ msgstr "Konu"
-
-#~ msgid "Form Settings"
-#~ msgstr "Form Ayarları"
-
-#~ msgid "Google reCAPTCHA"
-#~ msgstr "Google reCAPTCHA"
-
-#~ msgid ""
-#~ "Add your reCAPTCHA site and secret keys to protect your form from spam."
-#~ msgstr ""
-#~ "Formunuzu istenmeyen e-postalara karşı korumak için reCAPTCHA site ve "
-#~ "gizli anahtarlarını ekleyin."
-
-#~ msgid "Generate keys"
-#~ msgstr "Anahtarlar oluşturun"
-
-#~ msgid "My keys"
-#~ msgstr "Anahtarlarım"
-
-#~ msgid "Get help"
-#~ msgstr "Yardım alın"
-
-#~ msgid "Site Key"
-#~ msgstr "Site Anahtarı"
-
-#~ msgid "Secret Key"
-#~ msgstr "Gizli Anahtar"
-
-#~ msgid "Saving"
-#~ msgstr "Kaydediliyor"
-
-#~ msgid "Save"
-#~ msgstr "Kaydet"
-
-#~ msgid "Remove"
-#~ msgstr "Kaldır"
-
-#~ msgid "An email address field."
-#~ msgstr "Bir e-posta adresi alanı."
-
-#~ msgid "Add label…"
-#~ msgstr "Etiket ekleyin..."
-
-#~ msgid "Required"
-#~ msgstr "Zorunlu"
-
-#~ msgid "Name Field Settings"
-#~ msgstr "Ad Alanı Ayarları"
-
-#~ msgid "Last Name"
-#~ msgstr "Soyadı"
-
-#~ msgid "Showing both first and last name fields."
-#~ msgstr "Hem ad hem de soyadı alanlarını göstermek."
-
-#~ msgid "Toggle to add a last name field."
-#~ msgstr "Soyadı alanı eklemek düğmeyi tıklayın."
-
-#~ msgid "A text field for names."
-#~ msgstr "Adlar için bir metin alanı."
-
-#~ msgid "A text box for longer responses."
-#~ msgstr "Daha uzun yanıtlar için metin kutusu."
-
-#~ msgid "Add a simple form to your page."
-#~ msgstr "Sayfanıza basit bir form ekleyin."
-
-#, fuzzy
-#~ msgid "Subject example"
-#~ msgstr "Konu"
-
-#~ msgid "Add text…"
-#~ msgstr "Metin ekleyin..."
-
-#~ msgid "Button Text Color"
-#~ msgstr "Düğme Metin Rengi"
-
-#~ msgid "Edit gallery"
-#~ msgstr "Galeriyi düzenleyin"
-
-#~ msgid "Carousel"
-#~ msgstr "Döngü Görünümü"
-
-# %1$d is the order number of the image, %2$d is the total number of images.
-#~ msgid "image %1$d of %2$d in gallery"
-#~ msgstr "Galerideki %1$d %2$d sıralı görsel"
-
-#~ msgid "Write caption…"
-#~ msgstr "Resim yazısı yazın..."
-
-#~ msgid "Display multiple images in a beautiful carousel gallery."
-#~ msgstr "Döngü görünümlü galeride birden fazla görseli sergileyin."
-
-#, fuzzy
-#~ msgid "Responsive Height"
-#~ msgstr "Satır Yüksekliği"
-
-#, fuzzy
-#~ msgid "Showing thumbnail navigation."
-#~ msgstr "Nokta gezinti oklarını gösterme."
-
-#, fuzzy
-#~ msgid "Toggle to show thumbnails."
-#~ msgstr "Resim yazılarını göstermek için düğmeyi tıklayın."
-
-#, fuzzy
-#~ msgid "Carousel Settings"
-#~ msgstr "Renk Ayarları"
-
-#~ msgid "Size"
-#~ msgstr "Boyut"
-
-#~ msgid "Rounded Corners"
-#~ msgstr "Yuvarlatılmış Köşeler"
-
-#~ msgid "Apply"
-#~ msgstr "Uygula"
-
-#, fuzzy
-#~ msgid "Write caption..."
-#~ msgstr "Açıklama yazın..."
-
-#, fuzzy
-#~ msgid "Assemble images into a beautiful collage gallery."
-#~ msgstr "Döngü görünümlü galeride birden fazla görseli sergileyin."
-
-#, fuzzy
-#~ msgid "Collage Settings"
-#~ msgstr "Görüntü Ayarları"
-
-#~ msgid "Shadow"
-#~ msgstr "Gölge"
-
-#~ msgid "Captions"
-#~ msgstr "Resim Yazıları"
-
-#~ msgid "Caption Style"
-#~ msgstr "Resim Yazısı Stili"
-
-#~ msgid "Showing captions for each media item."
-#~ msgstr "Her medya öğesi için resim yazısı göstermek."
-
-#~ msgid "Toggle to show media captions."
-#~ msgstr "Resim yazılarını göstermek için düğmeyi tıklayın."
-
-#~ msgid "Masonry"
-#~ msgstr "Duvar Yapımı"
-
-#~ msgid "Display multiple images in an organized masonry gallery."
-#~ msgstr ""
-#~ "Düzenli bir duvar yapımı galerisinde birden fazla görseli sergileyin."
-
-#, fuzzy
-#~ msgid "Toggle to enable the image lightbox."
-#~ msgstr "Harita kontrol seçeneklerini etkinleştirmek için düğmeyi tıklayın."
-
-#, fuzzy
-#~ msgid "Masonry Settings"
-#~ msgstr "Harita Ayarları"
-
-#~ msgid "Column Size"
-#~ msgstr "Sütun Boyutu"
-
-#~ msgid "Add rounded corners to the gallery items."
-#~ msgstr "Galeri öğelerine yuvarlatılmış köşeler ekleyin."
-
-#, fuzzy
-#~ msgid "Lightbox"
-#~ msgstr "Açık"
-
-#~ msgid "Stacked"
-#~ msgstr "Yığın"
-
-#~ msgid "Display multiple images in an single column stacked gallery."
-#~ msgstr "Tek sütunluk yığın galerisinde birden fazla görseli sergileyin."
-
-#~ msgid "Box Shadow"
-#~ msgstr "Kutu Gölgesi"
-
-#~ msgid "Fullwidth images are enabled."
-#~ msgstr "Tam genişlikli görseller etkinleştirildi."
-
-#~ msgid ""
-#~ "Toggle to fill the available gallery area with completely fullwidth "
-#~ "images."
-#~ msgstr ""
-#~ "Uygun galeri alanını bütünüyle tam genişlikli görsellerle doldurmak için "
-#~ "düğmeyi tıklayın."
-
-#, fuzzy
-#~ msgid "Stacked Settings"
-#~ msgstr "Ürün Ayarları"
-
-#~ msgid "Fullwidth Images"
-#~ msgstr "Tam Genişlikli Görseller"
-
-#~ msgid "Fullwidth Image"
-#~ msgstr "Tam Genişlikli Görsel"
-
-#~ msgid "Remove gif"
-#~ msgstr "GIF dosyasını kaldır"
-
-#~ msgid "This gif has an empty alt attribute"
-#~ msgstr "Bu GIF dosyasının ALT özniteliği boş"
-
-#~ msgid "Search for that perfect gif on Giphy"
-#~ msgstr ""
-#~ "Aklınızdaki o mükemmel GIF dosyasını bulmak için Giphy’de arama yapın"
-
-#~ msgid "Search for gifs"
-#~ msgstr "GIF dosyası arayın"
-
-#~ msgid "Pick a gif, any gif."
-#~ msgstr "Dilediğiniz GIF dosyasını seçin, herhangi biri olur."
-
-#~ msgid "Gif Settings"
-#~ msgstr "GIF Ayarları"
-
-#~ msgid "Display meta"
-#~ msgstr "Metayı görüntüle"
-
-#~ msgid "Edit Gist"
-#~ msgstr "Özeti Düzenle"
-
-#~ msgid "View Gist"
-#~ msgstr "Özeti Görüntüle"
-
-#~ msgid "GitHub File"
-#~ msgstr "GitHub Dosyası"
-
-#~ msgid "File"
-#~ msgstr "Dosya"
-
-#~ msgid "View this gist on GitHub"
-#~ msgstr "Bu özeti GitHub’da görüntüleyin"
-
-#~ msgid "Gist URL"
-#~ msgstr "Özet URL’si"
-
-#~ msgid "Add GitHub Gist URL..."
-#~ msgstr "GitHub Özet URL’si ekleyin..."
-
-#~ msgid "Loading Gist"
-#~ msgstr "Özet Yükleme"
-
-#, fuzzy
-#~ msgid "Embed GitHub gists by adding a gist link."
-#~ msgstr ""
-#~ "Özet bağlantısını ekleyerek GitHub özetlerini gömülü olarak ekleyin."
-
-#~ msgid "Showing gist meta data."
-#~ msgstr "Özet meta verilerini gösterme"
-
-#~ msgid "Toggle to show the gist meta data."
-#~ msgstr "Özet meta verisini göstermek için düğmeyi tıklayın."
-
-#~ msgid "Gist Settings"
-#~ msgstr "Özet Ayarları"
-
-#~ msgid "Gist File"
-#~ msgstr "Özet Dosyası"
-
-#~ msgid "Gist Meta"
-#~ msgstr "Özet Meta Verisi"
-
-#~ msgid "Change layout"
-#~ msgstr "Sayfa düzenini değiştir"
-
-#~ msgid ""
-#~ "An introductory area of a page accompanied by a small amount of text and "
-#~ "a call to action."
-#~ msgstr ""
-#~ "Sayfanın küçük bir metin ve eylem çağrısıyla ile beraber tanıtıcı bölümü."
-
-#~ msgid "Content width in pixels"
-#~ msgstr "Piksel cinsinden içerik genişliği"
-
-#~ msgid "Hero Settings"
-#~ msgstr "‌‌Ana Site Ayarları"
-
-#~ msgid "Space inside of the container."
-#~ msgstr "Kapsayıcı içindeki alan."
-
-#~ msgid "Top Left"
-#~ msgstr "Sol Üst"
-
-#~ msgid "Top Center"
-#~ msgstr "Orta Üst"
-
-#~ msgid "Top Right"
-#~ msgstr "Sağ Üst"
-
-#~ msgid "Center Left"
-#~ msgstr "Orta Sol"
-
-#~ msgid "Center Center"
-#~ msgstr "Orta Orta"
-
-#~ msgid "Center Right"
-#~ msgstr "Orta Sağ"
-
-#~ msgid "Bottom Left"
-#~ msgstr "Sol Alt"
-
-#~ msgid "Bottom Center"
-#~ msgstr "Orta Alt"
-
-#~ msgid "Bottom Right"
-#~ msgstr "Sağ Alt"
-
-#~ msgid "Add highlighted text..."
-#~ msgstr "Vurgulanan metni ekleyin..."
-
-#~ msgid "Huge"
-#~ msgstr "Çok Büyük"
-
-#~ msgid "Add a stylized graphic symbol to communicate something more."
-#~ msgstr ""
-#~ "Daha fazla şey anlatmak için biçimlendirilmiş grafik sembol ekleyin."
-
-#~ msgid "Icon Settings"
-#~ msgstr "Simge Ayarları"
-
-#~ msgid "Reset"
-#~ msgstr "Sıfırla"
-
-#, fuzzy
-#~ msgid "Apply custom size"
-#~ msgstr "Kişiselleştirilmiş %s boyutu"
-
-#, fuzzy
-#~ msgid "Custom"
-#~ msgstr "Özel"
-
-#~ msgid "Radius"
-#~ msgstr "Yarıçap"
-
-#~ msgid "Icon Search"
-#~ msgstr "Simge Araması"
-
-#~ msgid "No results found."
-#~ msgstr "Bir sonuç bulunamadı."
-
-#~ msgid "Link Settings"
-#~ msgstr "Bağlantı Ayarları"
-
-#~ msgid "Link URL"
-#~ msgstr "Bağlantı URL'si"
-
-#~ msgid "Link Rel"
-#~ msgstr "Göreli Oran"
-
-#~ msgid "Opening in New Tab"
-#~ msgstr "Yeni Sekmede Açmak"
-
-#~ msgid "Open in New Tab"
-#~ msgstr "Yeni Sekmede Aç"
-
-#~ msgid "Icon Color"
-#~ msgstr "Simge Rengi"
-
-#~ msgid "Edit logos"
-#~ msgstr "Logoları düzenle"
-
-#~ msgid "Logos & Badges"
-#~ msgstr "Logolar ve Rozetler"
-
-#~ msgid "Drag images, upload new ones or select files from your library."
-#~ msgstr ""
-#~ "Görselleri sürükleyin, yenilerini yükleyin veya kütüphanenizden dosya "
-#~ "seçin."
-
-#~ msgid "Add logos, badges, or certifications to build credibility."
-#~ msgstr "Güven kazanmak için logo, rozet veya sertifika ekleyin."
-
-#~ msgid "Logos Settings"
-#~ msgstr "Logo Ayarları"
-
-#~ msgid "Black & White"
-#~ msgstr "Siyah - Beyaz"
-
-#~ msgid "Toggle to add a black and white filter."
-#~ msgstr "Siyah beyaz bir filtre eklemek için düğmeyi tıklayın."
-
-#~ msgid "Edit Location"
-#~ msgstr "Konumu Düzenle"
-
-#~ msgid "Map style"
-#~ msgstr "Harita stili"
-
-#~ msgid "Invalid API key, or too many requests"
-#~ msgstr "API anahtarı geçersiz veya çok sayıda istek var"
-
-#~ msgid "Google Map"
-#~ msgstr "Google Haritalar"
-
-#~ msgid "Enter a location or address to drop a pin on a Google map."
-#~ msgstr ""
-#~ "Google haritası üzerinde raptiye bırakmak için konum veya adres girin."
-
-#~ msgid "Search for a place or address…"
-#~ msgstr "Yer veya adres arayın..."
-
-#, fuzzy
-#~ msgid "Add an address or location to drop a pin on a Google map."
-#~ msgstr "Bir adres ekleyin ve Google haritası üzerinde raptiye bırakın."
-
-#~ msgid "Select Map Style"
-#~ msgstr "Harita Stilini Seçin"
-
-#~ msgid "Map Settings"
-#~ msgstr "Harita Ayarları"
-
-#~ msgid "Height for the map in pixels"
-#~ msgstr "Piksel cinsinden harita için yükseklik"
-
-#~ msgid "Zoom Level"
-#~ msgstr "Yakınlaştırma Düzeyi"
-
-#~ msgid "Marker Size"
-#~ msgstr "İşaretçi Boyutu"
-
-#~ msgid "Fine control options are enabled."
-#~ msgstr "İnce kontrol seçenekleri etkinleştirildi."
-
-#~ msgid "Toggle to enable map control options."
-#~ msgstr "Harita kontrol seçeneklerini etkinleştirmek için düğmeyi tıklayın."
-
-#~ msgid "Map Controls"
-#~ msgstr "Harita Kontrolleri"
-
-#~ msgid "Map Type"
-#~ msgstr "Harita Türü"
-
-#~ msgid "Switching between standard and satellite map views is enabled."
-#~ msgstr ""
-#~ "Standart ve uydu harita görüntüleri arasında geçiş yapma özelliği "
-#~ "etkinleştirildi."
-
-#~ msgid "Toggle to enable switching between standard and satellite maps."
-#~ msgstr ""
-#~ "Standart ve uydu harita görüntüleri arasında geçiş yapma özelliğini "
-#~ "etkinleştirmek için düğmeyi tıklayın."
-
-#~ msgid "Zoom Controls"
-#~ msgstr "Yakınlaştırma Kontrolleri"
-
-#~ msgid "Showing map zoom controls."
-#~ msgstr "Harita yakınlaştırma kontrollerini gösterme."
-
-#~ msgid "Toggle to enable zooming in and out on the map with zoom controls."
-#~ msgstr ""
-#~ "Harita üzerinde yakınlaştırma kontrollerini kullanarak yakınlaştırma ve "
-#~ "uzaklaştırmayı etkinleştirmek için düğmeyi tıklayın."
-
-#~ msgid "Street View"
-#~ msgstr "Sokak Görünümü"
-
-#~ msgid "Showing the street view map control."
-#~ msgstr "Sokak görünümü için harita kontrolünü göstermek."
-
-#~ msgid "Toggle to show the street view control at the bottom right."
-#~ msgstr ""
-#~ "Sağ alt kısımda sokak görünümü harita kontrolünü göstermek için düğmeyi "
-#~ "tıklayın."
-
-#~ msgid "Fullscreen Toggle"
-#~ msgstr "Tam Ekran Açma/Kapama"
-
-#~ msgid "Showing the fullscreen map control."
-#~ msgstr "Tam ekran harita kontrolünü gösterme."
-
-#~ msgid "Toggle to show the fullscreen map control."
-#~ msgstr "Tam ekran harita kontrolünü göstermek için düğmeyi tıklayın."
-
-#~ msgid "Google Maps API Key"
-#~ msgstr "Google Haritalar API Anahtarı"
-
-#~ msgid ""
-#~ "Add your Google Maps API key. Updating this API key will set all your "
-#~ "maps to use the new key."
-#~ msgstr ""
-#~ "Google Haritalar API anahtarınızı ekleyin. Bu API anahtarını "
-#~ "güncellediğinizde tüm haritalarınız yeni anahtarı kullanır."
-
-#~ msgid "Retrieve your key"
-#~ msgstr "Anahtarınızı alın"
-
-#~ msgid "Need help?"
-#~ msgstr "Yardıma mı ihtiyacınız var?"
-
-#~ msgid "Enter Google API Key…"
-#~ msgstr "Google API anahtarını girin..."
-
-#~ msgid "Saved"
-#~ msgstr "Kaydedildi"
-
-#~ msgid "Media on right"
-#~ msgstr "Sağdaki medya"
-
-#~ msgid "Media on left"
-#~ msgstr "Soldaki medya"
-
-#~ msgid "Add an image or video with an offset card side-by-side."
-#~ msgstr "Ofset kart ile yan yana bir görsel veya video ekleyin"
-
-#~ msgid "Card Shadow"
-#~ msgstr "Kart Gölgesi"
-
-#~ msgid "Showing card shadow."
-#~ msgstr "Kart gölgesini gösterme."
-
-#~ msgid "Toggle to add a card shadow."
-#~ msgstr "Kart gölgesi eklemek için düğmeyi tıklayın."
-
-#~ msgid " %s Shadow"
-#~ msgstr " %s Gölgesi"
-
-#~ msgid "Showing %s shadow."
-#~ msgstr "%s gölgesini gösterme."
-
-#~ msgid "Toggle to add an %s shadow"
-#~ msgstr "%s gölgesi eklemek için düğmeyi tıklayın."
-
-#~ msgid "Media Card Settings"
-#~ msgstr "Medya Kartı Ayarları"
-
-#~ msgid "Max Width"
-#~ msgstr "Maksimum Genişlik"
-
-#~ msgid "Media"
-#~ msgstr "Medya"
-
-#~ msgid "Drop to replace media"
-#~ msgstr "Yenilemek için medyayı bırakın"
-
-#~ msgid "Edit media"
-#~ msgstr "Medyayı düzenleyin"
-
-#, fuzzy
-#~ msgid "Edit RSS URL"
-#~ msgstr "Özet URL’si"
-
-#, fuzzy
-#~ msgid "Post Carousel"
-#~ msgstr "Döngü Görünümü"
-
-#, fuzzy
-#~ msgid "https://example.com/feed…"
-#~ msgstr "https://yelp.com/"
-
-#, fuzzy
-#~ msgid "Use URL"
-#~ msgstr "Özet URL’si"
-
-#, fuzzy
-#~ msgid "Post Carousel Settings"
-#~ msgstr "Renk Ayarları"
-
-#, fuzzy
-#~ msgid "Showing the publish date."
-#~ msgstr "Bu ürünün fiyatını göstermek."
-
-#, fuzzy
-#~ msgid "Toggle to show the publish date."
-#~ msgstr "Özet meta verisini göstermek için düğmeyi tıklayın."
-
-#, fuzzy
-#~ msgid "Showing the post content."
-#~ msgstr "Eylem çağrısı düğmesini gösterme."
-
-#, fuzzy
-#~ msgid "Toggle to show the post content."
-#~ msgstr "Özet meta verisini göstermek için düğmeyi tıklayın."
-
-#, fuzzy
-#~ msgid "Feed Settings"
-#~ msgstr "Özellik Ayarları"
-
-#, fuzzy
-#~ msgid "Image on left"
-#~ msgstr "Soldaki medya"
-
-#, fuzzy
-#~ msgid "Image on right"
-#~ msgstr "Sağdaki medya"
-
-#, fuzzy
-#~ msgid "Thumbnail Size"
-#~ msgstr "Sütun Boyutu"
-
-#, fuzzy
-#~ msgid "Posts Settings"
-#~ msgstr "Özet Ayarları"
-
-#, fuzzy
-#~ msgid "One Pricing Table"
-#~ msgstr "Fiyatlandırma Tablosu"
-
-#, fuzzy
-#~ msgid "Two Pricing Tables"
-#~ msgstr "Fiyatlandırma Tablosu"
-
-#, fuzzy
-#~ msgid "Three Pricing Tables"
-#~ msgstr "Fiyatlandırma Tablosu"
-
-#, fuzzy
-#~ msgid "Four Pricing Tables"
-#~ msgstr "Fiyatlandırma Tablosu"
-
-#, fuzzy
-#~ msgid "Change pricing table count"
-#~ msgstr "Fiyatlandırma tabloları ekleyin."
-
-#, fuzzy
-#~ msgid "Plan %d"
-#~ msgstr "Plan %s"
-
-#~ msgid "Add features"
-#~ msgstr "Özellik ekleyin"
-
-#~ msgid "Buy Now"
-#~ msgstr "Şimdi Satın Al"
-
-#~ msgid "Plan A"
-#~ msgstr "A Planı"
-
-#~ msgid "$"
-#~ msgstr "$"
-
-#, fuzzy
-#~ msgid "Add backround to column"
-#~ msgstr "%s sayfasına arkaplan ekle"
-
-#~ msgid "An immediate child of a row."
-#~ msgstr "Satırın bir alt satırı."
-
-#~ msgid "Column Settings"
-#~ msgstr "Sütun Ayarları"
-
-#~ msgid "Space around the container."
-#~ msgstr "Kapsayıcının etrafındaki alan."
-
-#~ msgid "Width"
-#~ msgstr "Genişlik"
-
-#, fuzzy
-#~ msgid "Change row block layout"
-#~ msgstr "Sayfa düzenini değiştir"
-
-#~ msgid "one"
-#~ msgstr "bir"
-
-#~ msgid "two"
-#~ msgstr "iki"
-
-#~ msgid "three"
-#~ msgstr "üç"
-
-#~ msgid "four"
-#~ msgstr "dört"
-
-#, fuzzy
-#~ msgid "Add backround to row"
-#~ msgstr "%s sayfasına arkaplan ekle"
-
-#~ msgid "One Column"
-#~ msgstr "Bir Sütun"
-
-#~ msgid "Two Columns"
-#~ msgstr "İki Sütun"
-
-#~ msgid "Three Columns"
-#~ msgstr "Üç Sütun"
-
-#~ msgid "Four Columns"
-#~ msgstr "Dört Sütun"
-
-#~ msgid "Row Layout"
-#~ msgstr "Satır Düzeni"
-
-#~ msgid "Row"
-#~ msgstr "Satır"
-
-#~ msgid "Now select a layout for this %s column row."
-#~ msgstr "Şimdi bu %s sütun satırı için bir düzen seçin."
-
-#~ msgid "Select the number of columns for this row."
-#~ msgstr "Bu satır için sütun sayısını belirleyin."
-
-#~ msgid "Select Row Columns"
-#~ msgstr "Satır Sütunlarını Seçin"
-
-#~ msgid "Select Row Layout"
-#~ msgstr "Satır Düzenini Seçin"
-
-#~ msgid "Back to Columns"
-#~ msgstr "Sütunlara Geri Dönün"
-
-#~ msgid ""
-#~ "Add a structured wrapper for column blocks, then add content blocks you’d "
-#~ "like to the columns."
-#~ msgstr ""
-#~ "Sütun bloklarına yapılandırılmış bir sarmalayıcı ekledikten sonra "
-#~ "sütunlara istediğiniz içerik bloklarını ekleyin."
-
-#~ msgid "Row Settings"
-#~ msgstr "Satır Ayarları"
-
-#~ msgid "None"
-#~ msgstr "Yok"
-
-#~ msgid "Square"
-#~ msgstr "Kare"
-
-#~ msgid "Circle"
-#~ msgstr "Daire"
-
-#~ msgid "Add up to four columns of services to display."
-#~ msgstr "Görüntülemek için en fazla dört sütun ekleyin."
-
-#~ msgid "Services Settings"
-#~ msgstr "Hizmet Ayarları"
-
-#~ msgid "Heading Level"
-#~ msgstr "Başlık Düzeyi"
-
-#~ msgid "Action Buttons"
-#~ msgstr "Eylem Düğmeleri"
-
-#~ msgid "Showing the call to action buttons."
-#~ msgstr "Eylem çağrısı düğmelerini gösterme."
-
-#~ msgid "Toggle to show call to action buttons."
-#~ msgstr "Eylem çağrısı düğmelerini göstermek için düğmeyi tıklayın."
-
-#~ msgid "A single service item within a services block."
-#~ msgstr "Hizmetler blokundaki tek bir hizmet öğesi."
-
-#~ msgid "Service Settings"
-#~ msgstr "Hizmet Ayarları"
-
-#~ msgid "Action Button"
-#~ msgstr "Eylem Düğmesi"
-
-#~ msgid "Showing the call to action button."
-#~ msgstr "Eylem çağrısı düğmesini gösterme."
-
-#~ msgid "Toggle to show a call to action button."
-#~ msgstr "Eylem çağrısı düğmesini göstermek için düğmeyi tıklayın."
-
-#~ msgid "Flip horiztonally"
-#~ msgstr "Yatay çevir"
-
-#~ msgid "Flip vertically"
-#~ msgstr "Dikey çevir"
-
-#~ msgid "Add a shape divider to visually distinquish page sections."
-#~ msgstr ""
-#~ "Sayfanın bölümlerini gözle görülür bir şekilde birbirinden ayırmak için "
-#~ "bir şekil bölücü ekleyin."
-
-#~ msgid "Divider Settings"
-#~ msgstr "Bölücü Ayarları"
-
-#~ msgid "Shape Height in pixels"
-#~ msgstr "Piksel cinsinden Şekil Yüksekliği"
-
-#~ msgid "Background Height in pixels"
-#~ msgstr "Piksel Cinsinden Arkaplan Yüksekliği"
-
-#~ msgid "Shape Color"
-#~ msgstr "Şekil Rengi"
-
-#~ msgid "Share on LinkedIn"
-#~ msgstr "LinkedIn’de Paylaş"
-
-#~ msgid "Add social sharing links to help you get likes and shares."
-#~ msgstr ""
-#~ "Gönderilerinizin beğenilmesine ve paylaşılmasına yardımcı olacak sosyal "
-#~ "paylaşım bağlantıları ekleyin."
-
-#~ msgid "Social Colors"
-#~ msgstr "Sosyal Medya Renkleri"
-
-#~ msgid "Icon Size"
-#~ msgstr "Simge Boyutu"
-
-#~ msgid "Circle Size"
-#~ msgstr "Daire Boyutu"
-
-#~ msgid "Button Size"
-#~ msgstr "Düğme Boyutu"
-
-#~ msgid "Icons"
-#~ msgstr "Simgeler"
-
-#~ msgid "LinkedIn"
-#~ msgstr "LinkedIn"
-
-#~ msgid "Tumblr"
-#~ msgstr "Tumblr"
-
-#~ msgid "Google"
-#~ msgstr "Google"
-
-#~ msgid "Reddit"
-#~ msgstr "Reddit"
-
-#~ msgid "Share button colors are enabled."
-#~ msgstr "Paylaş düğmesi renkleri etkinleştirildi."
-
-#~ msgid "Toggle to use official colors from each social media platform."
-#~ msgstr ""
-#~ "Her sosyal medya platformunun kendisine ait resmi renklerini kullanmak "
-#~ "için düğmeyi tıklayın."
-
-#~ msgid "Add Facebook Profile"
-#~ msgstr "Facebook Profili Ekleyin"
-
-#~ msgid "https://facebook.com/"
-#~ msgstr "https://facebook.com/"
-
-#~ msgid "Add Twitter Profile"
-#~ msgstr "Twitter Profili Ekleyin"
-
-#~ msgid "https://twitter.com/"
-#~ msgstr "https://twitter.com/"
-
-#~ msgid "Add Instagram Profile"
-#~ msgstr "Instagram Profili Ekleyin"
-
-#~ msgid "https://instagram.com/"
-#~ msgstr "https://instagram.com/"
-
-#~ msgid "Add Pinterest Profile"
-#~ msgstr "Pinterest Profili Ekleyin"
-
-#~ msgid "https://pinterest.com/"
-#~ msgstr "https://pinterest.com/"
-
-#~ msgid "Add LinkedIn Profile"
-#~ msgstr "LinkedIn Profili Ekleyin"
-
-#~ msgid "https://linkedin.com/"
-#~ msgstr "https://linkedin.com/"
-
-#~ msgid "Add YouTube Profile"
-#~ msgstr "YouTube Profili Ekleyin"
-
-#~ msgid "https://youtube.com/"
-#~ msgstr "https://youtube.com/"
-
-#~ msgid "Add Yelp Profile"
-#~ msgstr "Yelp Profili Ekleyin"
-
-#~ msgid "https://yelp.com/"
-#~ msgstr "https://yelp.com/"
-
-#~ msgid "Add Houzz Profile"
-#~ msgstr "Houzz Profili Ekleyin"
-
-#~ msgid "https://houzz.com/"
-#~ msgstr "https://houzz.com/"
-
-#, fuzzy
-#~ msgid "Grow your audience with links to social media profiles."
-#~ msgstr "Sosyal medya profillerinin bağlantılarını görüntüleyin."
-
-#~ msgid "Profile Links"
-#~ msgstr "Profil Bağlantıları"
-
-#~ msgid "Edit Background"
-#~ msgstr "Arkaplanı Düzenleyin"
-
-#~ msgid "Remove Background"
-#~ msgstr "Arkaplanı Kaldırın"
-
-#~ msgid "Background"
-#~ msgstr "Arkaplan"
-
-#~ msgid "Background Settings"
-#~ msgstr "Arkaplan Ayarları"
-
-#~ msgid "Fixed Background"
-#~ msgstr "Sabit Arkaplan"
-
-#~ msgid "Background Opacity"
-#~ msgstr "Arka Plan Opaklığı"
-
-#~ msgid "Repeat"
-#~ msgstr "Yinele"
-
-#~ msgid "Position"
-#~ msgstr "Konum"
-
-#~ msgid "Display"
-#~ msgstr "Görüntüle"
-
-#~ msgid "Mute Video"
-#~ msgstr "Videonun Sesini Kapat"
-
-#~ msgid "Muting the background video."
-#~ msgstr "Arkaplan videosunun sesini kapatma."
-
-#~ msgid "Toggle to mute the video."
-#~ msgstr "Videonun sesini kapatmak için düğmeyi tıklayın."
-
-#~ msgid "Loop Video"
-#~ msgstr "Videoyu Döngüye Sok"
-
-#~ msgid "Looping the background video."
-#~ msgstr "Arkaplan videosunu döngüye sokma."
-
-#~ msgid "Toggle to loop the video."
-#~ msgstr "Videoyu döngüye sokmak için düğmeyi tıklayın."
-
-#~ msgid "Remove background"
-#~ msgstr "Arkaplanı kaldırın"
-
-#~ msgid "Remove "
-#~ msgstr "Kaldır "
-
-#~ msgid "Move Image Backward"
-#~ msgstr "Görseli Geri Taşı"
-
-#~ msgid "Move Image Forward"
-#~ msgstr "Görseli İleri Taşı"
-
-#~ msgid "Link To"
-#~ msgstr "Şuraya Bağlantı:"
-
-#~ msgid "%s Gallery"
-#~ msgstr "%s Galerisi"
-
-#~ msgid "Upload an image"
-#~ msgstr "Bir görsel yükle"
-
-#~ msgid "Media File"
-#~ msgstr "Medya Dosyası"
-
-#~ msgid "Attachment Page"
-#~ msgstr "Ek Sayfası"
-
-#~ msgid "Custom URL"
-#~ msgstr "Özelleştirilmiş URL"
-
-#, fuzzy
-#~ msgid "Image Orientation"
-#~ msgstr "Yönlendirme"
-
-#, fuzzy
-#~ msgid "Reset All"
-#~ msgstr "Sıfırla"
-
-#~ msgid "Select Units"
-#~ msgstr "Birim Seçin"
-
-#~ msgid "%s Units"
-#~ msgstr "%s Birim"
-
-#~ msgid "Turn off advanced %s settings"
-#~ msgstr "Gelişmiş %s ayarlarını kapatın"
-
-#~ msgid "%s Top"
-#~ msgstr "%s Üst"
-
-#~ msgid "%s Right"
-#~ msgstr "%s Sağ"
-
-#~ msgid "%s Bottom"
-#~ msgstr "%s Aşağı"
-
-#~ msgid "%s Left"
-#~ msgstr "%s Sol"
-
-#~ msgid "Unsync"
-#~ msgstr "Eşitlemeyi Kaldır"
-
-#~ msgid "Sync"
-#~ msgstr "Senkronize Et"
-
-#~ msgid "Sync Units"
-#~ msgstr "Birimleri Eşitle"
-
-#~ msgid "Top"
-#~ msgstr "Yukarı"
-
-#~ msgid "Right"
-#~ msgstr "Sağ"
-
-#~ msgid "Bottom"
-#~ msgstr "Aşağı"
-
-#~ msgid "Left"
-#~ msgstr "Sol"
-
-#~ msgid "Advanced %s settings"
-#~ msgstr "Gelişmiş %s ayarları"
-
-#~ msgid "Advanced"
-#~ msgstr "Gelişmiş"
-
-#~ msgid "Default"
-#~ msgstr "Varsayılan"
-
-#~ msgid "Layout"
-#~ msgstr "Sayfa Düzeni"
-
-#~ msgid "Select Layout"
-#~ msgstr "Sayfa Düzeni Seç"
-
-#~ msgid "Fullscreen"
-#~ msgstr "Tam Ekran"
-
-#~ msgid "Fullscreen mode is enabled."
-#~ msgstr "Tam ekran modu etkinleştirildi."
-
-#~ msgid "Toggle to enable fullscreen mode."
-#~ msgstr "Tam ekran modunu etkinleştirmek için düğmeyi tıklayın."
-
-# %s: heading level e.g: "1", "2", "3"
-#~ msgid "Heading %d"
-#~ msgstr "Başlık %d"
-
-#~ msgid "Custom color picker"
-#~ msgstr "Kişiselleştirilmiş renk seçici"
-
-#~ msgid "Apply filter"
-#~ msgstr "Filtreyi uygula"
-
-#~ msgid "Height"
-#~ msgstr "Yükseklik"
-
-# Control name
-#~ msgid "Mobile %s"
-#~ msgstr "Mobil %s"
-
-#~ msgid "Select Size"
-#~ msgstr "Boyut Seçin"
-
-#~ msgid "Extra Large"
-#~ msgstr "Çok Büyük"
-
-#~ msgid "One Second"
-#~ msgstr "Bir Saniye"
-
-#~ msgid "Two Seconds"
-#~ msgstr "İki Saniye"
-
-#~ msgid "Three Seconds"
-#~ msgstr "Üç Saniye"
-
-#~ msgid "Four Seconds"
-#~ msgstr "Dört Saniye"
-
-#~ msgid "Five Seconds"
-#~ msgstr "Beş Saniye"
-
-#, fuzzy
-#~ msgid "Six Seconds"
-#~ msgstr "Altı Saniye"
-
-#~ msgid "Seven Seconds"
-#~ msgstr "Yedi Saniye"
-
-#~ msgid "Eight Seconds"
-#~ msgstr "Sekiz Saniye"
-
-#~ msgid "Nine Seconds"
-#~ msgstr "Dokuz Saniye"
-
-#~ msgid "Ten Seconds"
-#~ msgstr "On Saniye"
-
-#~ msgid "Arrow Navigation"
-#~ msgstr "Oklu Gezinti"
-
-#~ msgid "Dot Navigation"
-#~ msgstr "Noktalı Gezinti"
-
-#~ msgid "seconds"
-#~ msgstr "saniye"
-
-#~ msgid "second"
-#~ msgstr "saniye"
-
-# 1. Speed of the slider, 2: Time until the slide advances
-#~ msgid "Advancing after %1$d %2$s."
-#~ msgstr "%1$d %2$s sonrasında ilerleme."
-
-# 1. Speed of the slider, 2: Time until the slide advances
-#~ msgid "Automatically advance to the next slide."
-#~ msgstr "Otomatik olarak sonraki slayda geçer."
-
-#, fuzzy
-#~ msgid "Dragging and flicking enabled."
-#~ msgstr ""
-#~ "Masaüstü ve mobil cihazlarda sürükleme ve hızlı kaydırma özellikleri "
-#~ "etkinleştirildi."
-
-#, fuzzy
-#~ msgid "Toggle to enable drag functionality."
-#~ msgstr ""
-#~ "Sürükleme fonksiyonunu masaüstü ve mobil cihazlarda etkinleştirmek için "
-#~ "düğmeyi tıklayın."
-
-#~ msgid "Showing slide navigation arrows."
-#~ msgstr "Slayt gezinti oklarını gösterme."
-
-#~ msgid "Toggle to show slide navigation arrows."
-#~ msgstr "Slayt gezinti oklarını göstermek için düğmeyi tıklayın."
-
-#, fuzzy
-#~ msgid "Showing dot navigation."
-#~ msgstr "Nokta gezinti oklarını gösterme."
-
-#~ msgid "Toggle to show dot navigation."
-#~ msgstr "Nokta ile gezintiyi göstermek için düğmeyi tıklayın."
-
-#, fuzzy
-#~ msgid "Aligning slides to the center."
-#~ msgstr "Kapsayıcı içindeki alan."
-
-#, fuzzy
-#~ msgid "Toggle to pause autoplay when hovered."
-#~ msgstr "Videonun sesini kapatmak için düğmeyi tıklayın."
-
-#, fuzzy
-#~ msgid "Toggle to scroll without fixed slides."
-#~ msgstr "Videoyu döngüye sokmak için düğmeyi tıklayın."
-
-#~ msgid "Slider Settings"
-#~ msgstr "Kaydırıcı Ayarları"
-
-#~ msgid "Autoplay"
-#~ msgstr "Otomatik Oynatma"
-
-#~ msgid "Transition Speed"
-#~ msgstr "Geçiş Hızı"
-
-#~ msgid "Draggable"
-#~ msgstr "Sürüklenebilir"
-
-#~ msgid "Font"
-#~ msgstr "Yazı Tipi"
-
-#~ msgid "Weight"
-#~ msgstr "Ağırlık"
-
-#~ msgid "Transform"
-#~ msgstr "Dönüştür"
-
-#~ msgid "Line Height"
-#~ msgstr "Satır Yüksekliği"
-
-#~ msgid "Letter Spacing"
-#~ msgstr "Harf Aralığı"
-
-#~ msgid "No Top Spacing"
-#~ msgstr "Üst Boşluk Yok"
-
-#~ msgid "No Bottom Spacing"
-#~ msgstr "Alt Boşluk Yok"
-
-#~ msgid "Change typography"
-#~ msgstr "Tipografiyi değiştir"
-
-#~ msgid "Stack on Mobile"
-#~ msgstr "Mobilde Gruplandırma"
-
-#~ msgid "Responsiveness is enabled."
-#~ msgstr "Duyarlılık etkinleştirildi."
-
-#~ msgid "Toggle to stack elements on top of each other on smaller viewports."
-#~ msgstr ""
-#~ "Öğeleri daha küçük görünüm pencerelerinde üst üste yığmak için düğmeyi "
-#~ "tıklayın."
-
-#~ msgid "Remove Top Spacing"
-#~ msgstr "Üst Boşluğu Kaldır"
-
-#, fuzzy
-#~ msgid "Toggle to add top margin back."
-#~ msgstr "Kart gölgesi eklemek için düğmeyi tıklayın."
-
-#, fuzzy
-#~ msgid "Toggle to remove any top margin."
-#~ msgstr "Nokta ile gezintiyi göstermek için düğmeyi tıklayın."
-
-#~ msgid "Remove Bottom Spacing"
-#~ msgstr "Alt Boşluğu Kaldır"
-
-#, fuzzy
-#~ msgid "Toggle to add bottom margin back."
-#~ msgstr "Kart gölgesi eklemek için düğmeyi tıklayın."
-
-#, fuzzy
-#~ msgid "Toggle to remove any bottom margin."
-#~ msgstr "Nokta ile gezintiyi göstermek için düğmeyi tıklayın."
-
-#~ msgid "Display Fullwidth"
-#~ msgstr "Tam Genişlikli Görüntüle"
-
-#~ msgid "Displaying as full width."
-#~ msgstr "Tam genişlikli olarak görüntüleniyor."
-
-#~ msgid "Toggle to display button as full width."
-#~ msgstr "Düğmeyi tam genişlikli olarak görüntülemek için düğmeyi tıklayın."
-
-#, fuzzy
-#~ msgid "Crop Settings"
-#~ msgstr "‌‌Ana Site Ayarları"
-
-#~ msgid "Uppercase"
-#~ msgstr "Büyük Harf"
-
-#~ msgid "Manage Blocks"
-#~ msgstr "Blokları Yönetin"
-
-#~ msgid "Block Manager"
-#~ msgstr "Blok Yöneticisi"
-
-#~ msgid "Close"
-#~ msgstr "Kapat"
-
-#~ msgid "Search for a block"
-#~ msgstr "Bir blok arayın"
-
-#~ msgid "This block is added to the page and cannot currently be disabled"
-#~ msgstr "Bu blok sayfaya eklenmiş olup şu anda devre dışı bırakılamaz"
-
-#~ msgid "Disable all"
-#~ msgstr "Tümünü devre dışı bırakın"
-
-#~ msgid "No \"%s\" blocks found."
-#~ msgstr "\"%s\" bloku bulunamadı."
-
-#~ msgid "%s Galleries"
-#~ msgstr "%s Galerileri"
-
-#, fuzzy
-#~ msgctxt "Toggle label to display the accordion open"
-#~ msgid "Display open"
-#~ msgstr "Görüntüleme açık"
-
-#, fuzzy
-#~ msgctxt "Accordion is the block name"
-#~ msgid "Add accordion title..."
-#~ msgstr "Akordeon başlık ekleyin..."
-
-#, fuzzy
-#~ msgctxt "This is an inner block for the Accordion Block."
-#~ msgid "Accordion Item"
-#~ msgstr "Akordeon Öğe"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "tabs"
-#~ msgstr "sekmeler"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "faq"
-#~ msgstr "sss"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "notice"
-#~ msgstr "uyarı"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "message"
-#~ msgstr "mesaj"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "biography"
-#~ msgstr "biyografi"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "profile"
-#~ msgstr "profil"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "link"
-#~ msgstr "bağlantı"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "cta"
-#~ msgstr "cta"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "share"
-#~ msgstr "paylaş"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "twitter"
-#~ msgstr "twitter"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "spacer"
-#~ msgstr "ayırıcı"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "services"
-#~ msgstr "hizmetler"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "menu"
-#~ msgstr "menü"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "restaurant"
-#~ msgstr "restoran"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "e-mail"
-#~ msgstr "e-posta"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "mail"
-#~ msgstr "posta"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "last name"
-#~ msgstr "Soyadı"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "Textarea"
-#~ msgstr "Metinalanı"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "Multiline text"
-#~ msgstr "Çok satırlı metin"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "email"
-#~ msgstr "e-posta"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "about"
-#~ msgstr "hakkında"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "contact"
-#~ msgstr "irtibat kişisi"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "gallery"
-#~ msgstr "galeri"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "photos"
-#~ msgstr "fotoğraflar"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "lightbox"
-#~ msgstr "Gece"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "animated"
-#~ msgstr "animasyonlu"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "code"
-#~ msgstr "kod"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "button"
-#~ msgstr "düğme"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "call to action"
-#~ msgstr "eylem çağrısı"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "text"
-#~ msgstr "metin"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "paragraph"
-#~ msgstr "paragraf"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "icons"
-#~ msgstr "simgeler"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "clients"
-#~ msgstr "istemciler"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "proof"
-#~ msgstr "kanıt"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "testimonials"
-#~ msgstr "referanslar"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "address"
-#~ msgstr "adres"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "maps"
-#~ msgstr "haritalar"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "google"
-#~ msgstr "google"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "image"
-#~ msgstr "görsel"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "video"
-#~ msgstr "video"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "rss"
-#~ msgstr "adres"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "landing"
-#~ msgstr "giriş sayfası"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "comparison"
-#~ msgstr "karşılaştırma"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "rows"
-#~ msgstr "satırlar"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "columns"
-#~ msgstr "sütunlar"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "layouts"
-#~ msgstr "sayfa düzenleri"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "features"
-#~ msgstr "özellikler"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "separator"
-#~ msgstr "ayırıcı"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "social"
-#~ msgstr "sosyal"
-
-#, fuzzy
-#~ msgctxt "block keyword"
-#~ msgid "links"
-#~ msgstr "bağlantılar"
-
-#, fuzzy
-#~ msgctxt "Visually display open as opposed to closed."
-#~ msgid "Display Open"
-#~ msgstr "Görüntüleme Açık"
-
-#, fuzzy
-#~ msgctxt "Add a child element for the Accordion block"
-#~ msgid "Add Accordion Item"
-#~ msgstr "Akordeon Öğe Ekleyin"
-
-#, fuzzy
-#~ msgctxt "block title"
-#~ msgid "Accordion"
-#~ msgstr "Akordeon"
-
-#, fuzzy
-#~ msgctxt "Placeholder text for input box"
-#~ msgid "Write text..."
-#~ msgstr "Metin yazın..."
-
-#, fuzzy
-#~ msgctxt "Placeholder text for input box"
-#~ msgid "Write title..."
-#~ msgstr "Başlık yazın..."
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Alert"
-#~ msgstr "Bildirim"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Author"
-#~ msgstr "Yazar"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Buttons"
-#~ msgstr "Düğmeler"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Click to Tweet"
-#~ msgstr "Tweet Göndermek için Tıklayın"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Dynamic HR"
-#~ msgstr "Dynamic HR"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Feature"
-#~ msgstr "Özellik"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Features"
-#~ msgstr "Özellikler"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Food Item"
-#~ msgstr "Yemek Ürünü"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Food & Drinks"
-#~ msgstr "Yiyecek ve İçecekler"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Email"
-#~ msgstr "E-posta"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Name"
-#~ msgstr "Ad"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Message"
-#~ msgstr "Mesaj"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Form"
-#~ msgstr "Form"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Carousel"
-#~ msgstr "Döngü Görünümü"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Masonry"
-#~ msgstr "Duvar Yapımı"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Stacked"
-#~ msgstr "Yığın"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Gist"
-#~ msgstr "Özet URL’si"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Hero"
-#~ msgstr "Ana Site"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Highlight"
-#~ msgstr "Vurgula"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Icon"
-#~ msgstr "Simge"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Logos & Badges"
-#~ msgstr "Logolar ve Rozetler"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Map"
-#~ msgstr "Harita"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Media Card"
-#~ msgstr "Medya Kartı"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Post Carousel"
-#~ msgstr "Döngü Görünümü"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Pricing Table"
-#~ msgstr "Fiyatlandırma Tablosu"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Pricing Table Item"
-#~ msgstr "Fiyatlandırma Tablosu Öğesi"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Column"
-#~ msgstr "Sütun"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Row"
-#~ msgstr "Satır"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Services"
-#~ msgstr "Hizmetler"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Service"
-#~ msgstr "Hizmet"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Shape Divider"
-#~ msgstr "Şekil Bölücü"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Share"
-#~ msgstr "Paylaş"
-
-#, fuzzy
-#~ msgctxt "block name"
-#~ msgid "Social Profiles"
-#~ msgstr "Sosyal Profiller"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Info"
-#~ msgstr "Bilgi"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Success"
-#~ msgstr "Başarılı"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Warning"
-#~ msgstr "Uyarı"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Error"
-#~ msgstr "Hata"
-
-#~ msgctxt "block style"
-#~ msgid "Dot"
-#~ msgstr "Nokta"
-
-#~ msgctxt "block style"
-#~ msgid "Line"
-#~ msgstr "Satır"
-
-#~ msgctxt "block style"
-#~ msgid "Fullwidth"
-#~ msgstr "Tam Genişlikli"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Grid"
-#~ msgstr "Dağıtımlı"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "List"
-#~ msgstr "Liste"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Default"
-#~ msgstr "Varsayılan"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Layered"
-#~ msgstr "Katmanlar"
-
-#~ msgctxt "block style"
-#~ msgid "Outlined"
-#~ msgstr "Ana Hatlı"
-
-#~ msgctxt "block style"
-#~ msgid "Filled"
-#~ msgstr "Dolgulu"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Stacked"
-#~ msgstr "Yığın"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Horizontal"
-#~ msgstr "Yatay Olarak Tekrarla"
-
-#~ msgctxt "block style"
-#~ msgid "Wavy"
-#~ msgstr "Dalgalı"
-
-#~ msgctxt "block style"
-#~ msgid "Hills"
-#~ msgstr "Tepeler"
-
-#~ msgctxt "block style"
-#~ msgid "Waves"
-#~ msgstr "Dalgalar"
-
-#~ msgctxt "block style"
-#~ msgid "Angled"
-#~ msgstr "Açılı"
-
-#~ msgctxt "block style"
-#~ msgid "Sloped"
-#~ msgstr "Eğimli"
-
-#~ msgctxt "block style"
-#~ msgid "Rounded"
-#~ msgstr "Yuvarlatılmış"
-
-#~ msgctxt "block style"
-#~ msgid "Triangle"
-#~ msgstr "Üçgen"
-
-#~ msgctxt "block style"
-#~ msgid "Pointed"
-#~ msgstr "Köşeli"
-
-#~ msgctxt "block style"
-#~ msgid "Mask"
-#~ msgstr "Maske"
-
-#~ msgctxt "block style"
-#~ msgid "Icon"
-#~ msgstr "Simge"
-
-#~ msgctxt "block style"
-#~ msgid "Text"
-#~ msgstr "Metin"
-
-#~ msgctxt "block style"
-#~ msgid "Icon & Text"
-#~ msgstr "Simge ve Metin"
-
-#~ msgctxt "block style"
-#~ msgid "Circular"
-#~ msgstr "Dairesel"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Bottom Wave"
-#~ msgstr "Sol Alt"
-
-#, fuzzy
-#~ msgctxt "block style"
-#~ msgid "Top Wave"
-#~ msgstr "Sol Üst"
-
-#, fuzzy
-#~ msgctxt "image to represent the post author"
-#~ msgid "Drop to upload as avatar"
-#~ msgstr "Avatar olarak eklemek için bırakın"
-
-#, fuzzy
-#~ msgctxt "content placeholder"
-#~ msgid "Author link…"
-#~ msgstr "Yazar"
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add feature title..."
-#~ msgstr "Özellik başlığı ekleyin..."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Feature Title"
-#~ msgstr "Özellik Başlığı"
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add feature content"
-#~ msgstr "Özellik içeriği ekleyin..."
-
-#~ msgctxt "content placeholder"
-#~ msgid "This is a feature block that you can use to highlight features."
-#~ msgstr ""
-#~ "Bu blok, özellikleri vurgulamak için kullanabileceğiniz bir özellik "
-#~ "blokudur."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add heading..."
-#~ msgstr "Başlık ekleyin..."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Media Card"
-#~ msgstr "Medya Kartı"
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add content..."
-#~ msgstr "İçerik ekleyin..."
-
-#~ msgctxt "content placeholder"
-#~ msgid ""
-#~ "Replace this text with descriptive copy to go along with the card image. "
-#~ "Then add more blocks to this card, such as buttons, lists or images."
-#~ msgstr ""
-#~ "Bu metnin yerine karttaki görselin yanında yer alacak açıklayıcı bir "
-#~ "metin koyun. Ardından bu karta düğme, liste veya görsel gibi daha fazla "
-#~ "blok ekleyin."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Write title..."
-#~ msgstr "Başlık yazın..."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Write description..."
-#~ msgstr "Açıklama yazın..."
-
-#, fuzzy
-#~ msgctxt "block settings"
-#~ msgid "Buttons Settings"
-#~ msgstr "Düğme Ayarları"
-
-#, fuzzy
-#~ msgctxt "visually stack buttons one on top of another"
-#~ msgid "Stack on mobile"
-#~ msgstr "Mobilde gruplandırma"
-
-#, fuzzy
-#~ msgctxt "hr is html markup - horizonal rule"
-#~ msgid "Dynamic HR Settings"
-#~ msgstr "Dynamic HR Ayarları"
-
-#, fuzzy
-#~ msgctxt "label for no gutter option"
-#~ msgid "None"
-#~ msgstr "Yok"
-
-#, fuzzy
-#~ msgctxt "abbreviation for \"Short\" size"
-#~ msgid "None"
-#~ msgstr "Yok"
-
-#, fuzzy
-#~ msgctxt "label for small gutter option"
-#~ msgid "Small"
-#~ msgstr "Küçük"
-
-#, fuzzy
-#~ msgctxt "label for medium gutter option"
-#~ msgid "Medium"
-#~ msgstr "Orta"
-
-#, fuzzy
-#~ msgctxt "label for large gutter option"
-#~ msgid "Large"
-#~ msgstr "Büyük"
-
-#, fuzzy
-#~ msgctxt "label for extra large gutter option"
-#~ msgid "Extra Large"
-#~ msgstr "Çok Büyük"
-
-#, fuzzy
-#~ msgctxt "label for no shadow option"
-#~ msgid "None"
-#~ msgstr "Yok"
-
-#, fuzzy
-#~ msgctxt "label for small shadow option"
-#~ msgid "Small"
-#~ msgstr "Küçük"
-
-#, fuzzy
-#~ msgctxt "label for medium shadow option"
-#~ msgid "Medium"
-#~ msgstr "Orta"
-
-#, fuzzy
-#~ msgctxt "label for large shadow option"
-#~ msgid "Large"
-#~ msgstr "Büyük"
-
-#~ msgctxt "label"
-#~ msgid "Add Circle"
-#~ msgstr "Daire Ekleyin"
-
-#~ msgctxt "label"
-#~ msgid "Minus Circle"
-#~ msgstr "Eksi Daire"
-
-#~ msgctxt "label"
-#~ msgid "Pie Chart"
-#~ msgstr "Pasta Grafiği"
-
-#~ msgctxt "label"
-#~ msgid "Scatter Plot"
-#~ msgstr "Dağılım"
-
-#~ msgctxt "label"
-#~ msgid "Poll"
-#~ msgstr "Anket"
-
-#~ msgctxt "label"
-#~ msgid "Emoticon"
-#~ msgstr "İfade"
-
-#~ msgctxt "label"
-#~ msgid "Functions"
-#~ msgstr "Fonksiyonlar"
-
-#~ msgctxt "label"
-#~ msgid "CoBlocks"
-#~ msgstr "CoBlocks"
-
-#~ msgctxt "label"
-#~ msgid "Doodle"
-#~ msgstr "Karalama"
-
-#~ msgctxt "label"
-#~ msgid "Font"
-#~ msgstr "Yazı Tipi"
-
-#~ msgctxt "label"
-#~ msgid "Heart"
-#~ msgstr "Kalp"
-
-#~ msgctxt "label"
-#~ msgid "Star"
-#~ msgstr "Yıldız ekle"
-
-#~ msgctxt "label"
-#~ msgid "Desktop"
-#~ msgstr "Masaüstü"
-
-#~ msgctxt "label"
-#~ msgid "Devices"
-#~ msgstr "Cihazlar"
-
-#~ msgctxt "label"
-#~ msgid "Laptop"
-#~ msgstr "Dizüstü bilgisayar"
-
-#~ msgctxt "label"
-#~ msgid "Tablet"
-#~ msgstr "Tablet"
-
-#~ msgctxt "label"
-#~ msgid "Watch"
-#~ msgstr "İzle"
-
-#~ msgctxt "label"
-#~ msgid "Audio"
-#~ msgstr "Ses"
-
-#~ msgctxt "label"
-#~ msgid "Keyboard"
-#~ msgstr "Klavye"
-
-#~ msgctxt "label"
-#~ msgid "Hub"
-#~ msgstr "Merkez"
-
-#~ msgctxt "label"
-#~ msgid "Email"
-#~ msgstr "E-posta"
-
-#~ msgctxt "label"
-#~ msgid "Reply"
-#~ msgstr "Yanıtla"
-
-#~ msgctxt "label"
-#~ msgid "Send"
-#~ msgstr "Gönder"
-
-#~ msgctxt "label"
-#~ msgid "Signal"
-#~ msgstr "Sinyal"
-
-#~ msgctxt "label"
-#~ msgid "Blocks"
-#~ msgstr "Bloklar"
-
-#~ msgctxt "label"
-#~ msgid "Marker"
-#~ msgstr "İşaretleyici"
-
-#~ msgctxt "label"
-#~ msgid "Mountains"
-#~ msgstr "Dağlar"
-
-#~ msgctxt "label"
-#~ msgid "Waves"
-#~ msgstr "Dalgalar"
-
-#~ msgctxt "label"
-#~ msgid "Album"
-#~ msgstr "Albüm"
-
-#~ msgctxt "label"
-#~ msgid "Globe"
-#~ msgstr "Küre"
-
-#~ msgctxt "label"
-#~ msgid "City"
-#~ msgstr "Şehir"
-
-#~ msgctxt "label"
-#~ msgid "Dining"
-#~ msgstr "Yemek"
-
-#~ msgctxt "label"
-#~ msgid "Couch"
-#~ msgstr "Kanepe"
-
-#~ msgctxt "label"
-#~ msgid "Cake"
-#~ msgstr "Pasta"
-
-#~ msgctxt "label"
-#~ msgid "Flower"
-#~ msgstr "Çiçek"
-
-#~ msgctxt "label"
-#~ msgid "Vintage Filter"
-#~ msgstr "Klasik Filtre"
-
-#~ msgctxt "label"
-#~ msgid "Build"
-#~ msgstr "Oluşturun"
-
-#~ msgctxt "label"
-#~ msgid "Credit Card"
-#~ msgstr "Kredi Kartı"
-
-#~ msgctxt "label"
-#~ msgid "Extension"
-#~ msgstr "Uzantı"
-
-#~ msgctxt "label"
-#~ msgid "Fingerprint"
-#~ msgstr "Parmak izi"
-
-#~ msgctxt "label"
-#~ msgid "Headset"
-#~ msgstr "Kulaklık"
-
-#~ msgctxt "label"
-#~ msgid "Translate"
-#~ msgstr "Çevir"
-
-#~ msgctxt "label"
-#~ msgid "New"
-#~ msgstr "Yeni"
-
-#~ msgctxt "label"
-#~ msgid "Flare"
-#~ msgstr "Titrek Işık"
-
-#~ msgctxt "label"
-#~ msgid "Layers"
-#~ msgstr "Katmanlar"
-
-#~ msgctxt "label"
-#~ msgid "Shipping"
-#~ msgstr "Gönderim"
-
-#~ msgctxt "label"
-#~ msgid "Snowflake"
-#~ msgstr "Kar Tanesi"
-
-#~ msgctxt "label"
-#~ msgid "School"
-#~ msgstr "Okul"
-
-#~ msgctxt "label"
-#~ msgid "Fire"
-#~ msgstr "Ateş"
-
-#~ msgctxt "label"
-#~ msgid "Update"
-#~ msgstr "Güncelleme"
-
-#~ msgctxt "label"
-#~ msgid "Volume"
-#~ msgstr "Ses Düzeyi"
-
-#~ msgctxt "label"
-#~ msgid "Voice"
-#~ msgstr "Ses"
-
-#~ msgctxt "label"
-#~ msgid "Aperture"
-#~ msgstr "Delik"
-
-#~ msgctxt "label"
-#~ msgid "Camera"
-#~ msgstr "Kamera"
-
-#~ msgctxt "label"
-#~ msgid "Gallery"
-#~ msgstr "Galeri"
-
-#~ msgctxt "label"
-#~ msgid "Video"
-#~ msgstr "Video"
-
-#~ msgctxt "label"
-#~ msgid "Film"
-#~ msgstr "Film"
-
-#~ msgctxt "label"
-#~ msgid "Color Lens"
-#~ msgstr "Renkli Lens"
-
-#~ msgctxt "label"
-#~ msgid "Color Picker"
-#~ msgstr "Renk Seçici"
-
-#~ msgctxt "label"
-#~ msgid "Paint"
-#~ msgstr "Boya"
-
-#~ msgctxt "label"
-#~ msgid "Brush"
-#~ msgstr "Fırça"
-
-#~ msgctxt "tags"
-#~ msgid "add minus circle insert plus round math"
-#~ msgstr "ekleme eksi daire yerleştirme artı yuvarlak matematik"
-
-#~ msgctxt "tags"
-#~ msgid "stats round circle pie chart graph"
-#~ msgstr "istatistikler yuvarlak daire pasta grafiği grafik"
-
-#~ msgctxt "tags"
-#~ msgid "stats round circle pie chart graph dots data"
-#~ msgstr "istatistikler yuvarlak daire pasta grafiği noktalar veri"
-
-#~ msgctxt "tags"
-#~ msgid "chart graph stats data graph"
-#~ msgstr "şema grafik istatistikler veri grafiği"
-
-#~ msgctxt "tags"
-#~ msgid "happy emotion emoticon smile fun joy"
-#~ msgstr "mutlu duygu ifade gülücük eğlence neşe"
-
-#~ msgctxt "tags"
-#~ msgid "code greek math"
-#~ msgstr "kod yunanca matematik"
-
-#~ msgctxt "tags"
-#~ msgid "drawing doodle art creative type font pencil marker"
-#~ msgstr "çizim karalama sanat yaratıcı tip yazı tipi kalem işaretleyici"
-
-#~ msgctxt "tags"
-#~ msgid "blocks block build gutenberg design"
-#~ msgstr "bloklar blok yapı gutenberg tasarım"
-
-#~ msgctxt "tags"
-#~ msgid "love shape valentine kiss"
-#~ msgstr "aşk şekil sevgililer günü öpücük"
-
-#~ msgctxt "tags"
-#~ msgid "rate vote plus favorite like"
-#~ msgstr "puanla oy ver artı favori beğeni"
-
-#~ msgctxt "tags"
-#~ msgid "computer apple montior device pc desk office"
-#~ msgstr "bilgisayar apple monitör pc masa ofis"
-
-#~ msgctxt "tags"
-#~ msgid "computer ipad surface apple montior device pc desk office"
-#~ msgstr "bilgisayar ipad yüzey apple monitör cihaz pc masa ofis"
-
-#~ msgctxt "tags"
-#~ msgid "device apple mac"
-#~ msgstr "cihaz apple mac"
-
-#~ msgctxt "tags"
-#~ msgid "computer ipad surface apple device pc desk office"
-#~ msgstr "bilgisayar ipad yüzey apple monitör cihaz pc masa ofis"
-
-#~ msgctxt "tags"
-#~ msgid "usb connect hub device social"
-#~ msgstr "usb bağlantı merkez cihaz sosyal"
-
-#~ msgctxt "tags"
-#~ msgid "music microphone podcast song artist creative media audio"
-#~ msgstr "müzik mikrofon podcast şarkı sanatçı yaratıcı medya ses"
-
-#~ msgctxt "tags"
-#~ msgid "email mail os read letter"
-#~ msgstr "e-posta posta işletim sistemi oku mektup"
-
-#~ msgctxt "tags"
-#~ msgid "wifi radio waves"
-#~ msgstr "wifi radyo dalgaları"
-
-#~ msgctxt "tags"
-#~ msgid "map directions about check checkbox"
-#~ msgstr "harita yönler hakkında kontrol onay kutusu"
-
-#~ msgctxt "tags"
-#~ msgid "hills landscape minimal outdoors outside"
-#~ msgstr "tepeler manzara minimal dış mekan dışarısı"
-
-#~ msgctxt "tags"
-#~ msgid "ocean outside outdoors water fun summer minimal"
-#~ msgstr "okyanus dışarısı dış mekan su eğlence yaz minimal"
-
-#~ msgctxt "tags"
-#~ msgid "world public global earth location map"
-#~ msgstr "dünya halka açık işletme şirket bina şehir gökdelen"
-
-#~ msgctxt "tags"
-#~ msgid "location map public business corporation building town skyscraper"
-#~ msgstr "konum harita halka açık işletme şirket bina şehir gökdelen"
-
-#~ msgctxt "tags"
-#~ msgid "food drink restaurant menu fork spoon taste"
-#~ msgstr "yemek içecek restoran menü çatal kaşık tat"
-
-#~ msgctxt "tags"
-#~ msgid "weekend chill relax chair"
-#~ msgstr "hafta sonu sakin rahat sandalye"
-
-#~ msgctxt "tags"
-#~ msgid "fun party happy celebration taste food"
-#~ msgstr "eğlence parti mutlu kutlama tat yemek"
-
-#~ msgctxt "tags"
-#~ msgid "petal scent smell nice relax landscape gardening outdoors outside"
-#~ msgstr "çiçek yaprağı koku hoş rahat manzara bahçıvanlık dış mekan dışarısı"
-
-#~ msgctxt "tags"
-#~ msgid "blocks block box boxes square build widgets"
-#~ msgstr "bloklar blok kutu kutular kare yapı widgetlar"
-
-#~ msgctxt "tags"
-#~ msgid "money cash checkout shop commerce ecommerce"
-#~ msgstr "para nakit ödeme mağaza ticaret e-ticaret"
-
-#~ msgctxt "tags"
-#~ msgid "puzzle plugin widget team together"
-#~ msgstr "yapboz eklenti widget ekip birlikte"
-
-#~ msgctxt "tags"
-#~ msgid "security bio defense biometric safe secure"
-#~ msgstr "güvenlik biyografi savunma biyometrik güvenli güvenilir"
-
-#~ msgctxt "tags"
-#~ msgid "language global world speech"
-#~ msgstr "dil küresel dünya konuşma"
-
-#~ msgctxt "tags"
-#~ msgid "music microphone song artist creative media audio badge"
-#~ msgstr "müzik mikrofon şarkı sanatçı yaratıcı medya ses rozet"
-
-#~ msgctxt "tags"
-#~ msgid "microphone audio beats bose headphones"
-#~ msgstr "mikrofon ses ritim bose kulaklık"
-
-#~ msgctxt "tags"
-#~ msgid "flower camera photography artist creative"
-#~ msgstr "çiçek kamera fotoğraf sanatçı yaratıcı"
-
-#~ msgctxt "tags"
-#~ msgid "design creative build develop engineer"
-#~ msgstr "tasarım yaratıcı yapı gelişme mühendis"
-
-#~ msgctxt "tags"
-#~ msgid "shop commence ecommence woo cart ship"
-#~ msgstr "mağaza ticaret e-ticaret woo cart gemi"
-
-#~ msgctxt "tags"
-#~ msgid "cold ice frozen chill winter season global"
-#~ msgstr "soğuk buz donmuş serin kış mevsimi küresel"
-
-#~ msgctxt "tags"
-#~ msgid "education graduate graduation degree diploma college"
-#~ msgstr "eğitim mezuniyet mezun olmak lisans diploma üniversite"
-
-#~ msgctxt "tags"
-#~ msgid "hot trending trendy design"
-#~ msgstr "popüler trend son moda tasarım"
-
-#~ msgctxt "tags"
-#~ msgid "improve add upload software"
-#~ msgstr "geliştir ekle yükle yazılım"
-
-#~ msgctxt "tags"
-#~ msgid "music microphone song artist creative media audio"
-#~ msgstr "müzik mikrofon şarkı sanatçı yaratıcı medya ses"
-
-#~ msgctxt "tags"
-#~ msgid ""
-#~ "microphone podcast computer device music microphone song artist creative "
-#~ "media audio"
-#~ msgstr ""
-#~ "mikrofon podcast bilgisayar cihaz müzik mikrofon şarkı sanatçı yaratıcı "
-#~ "medya ses"
-
-#~ msgctxt "tags"
-#~ msgid "photo photographer photography camera film creative media"
-#~ msgstr "fotoğraf fotoğrafçı kamera film yaratıcı medya"
-
-#~ msgctxt "tags"
-#~ msgid "photo photographer photography camera aperture film creative media"
-#~ msgstr ""
-#~ "fotoğraf fotoğrafçı fotoğrafçılık kamera diyafram açıklığı film yaratıcı "
-#~ "medya"
-
-#~ msgctxt "tags"
-#~ msgid "photo photos image media camera aperture collection"
-#~ msgstr ""
-#~ "fotoğraf fotoğraflar görsel medya kamera diyafram açıklığı koleksiyon"
-
-#~ msgctxt "tags"
-#~ msgid "film videography director producer media creative"
-#~ msgstr "film videografi yönetmen yapımcı medya yaratıcı"
-
-#~ msgctxt "tags"
-#~ msgid ""
-#~ "video videography director producer media creative camera photographer "
-#~ "photography aperture"
-#~ msgstr ""
-#~ "video videografi yönetmen yapımcı medya yaratıcı kamera fotoğrafçı "
-#~ "fotoğrafçılık diyafram açıklığı"
-
-#~ msgctxt "tags"
-#~ msgid "palette design colors artist paint creative media"
-#~ msgstr "palet tasarım renkler sanatçı boya yaratıcı medya"
-
-#~ msgctxt "tags"
-#~ msgid "palette design colors artist creative media"
-#~ msgstr "palet tasarım renkler sanatçı yaratıcı medya"
-
-#~ msgctxt "tags"
-#~ msgid "palette design colors artist creative media paint paintbrush"
-#~ msgstr "palet tasarım renkler sanatçı yaratıcı medya boya boya fırçası"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Standard"
-#~ msgstr "Standart"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Silver"
-#~ msgstr "Gümüş"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Retro"
-#~ msgstr "Retro"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Dark"
-#~ msgstr "Koyu"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Night"
-#~ msgstr "Gece"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Aubergine"
-#~ msgstr "Patlıcan Moru"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Circular"
-#~ msgstr "Dairesel"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "3D"
-#~ msgstr "3D"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Shadow"
-#~ msgstr "Gölge"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Default"
-#~ msgstr "Varsayılan"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "None"
-#~ msgstr "Yok"
-
-#, fuzzy
-#~ msgctxt "block styles"
-#~ msgid "Checkbox"
-#~ msgstr "Onay kutusu"
-
-#, fuzzy
-#~ msgctxt "label for small size option"
-#~ msgid "Small"
-#~ msgstr "Küçük"
-
-#, fuzzy
-#~ msgctxt "label for medium size option"
-#~ msgid "Medium"
-#~ msgstr "Orta"
-
-#, fuzzy
-#~ msgctxt "label for large size option"
-#~ msgid "Large"
-#~ msgstr "Büyük"
-
-#, fuzzy
-#~ msgctxt "label for large size option"
-#~ msgid "Extra Large"
-#~ msgstr "Çok Büyük"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Auto"
-#~ msgstr "Otomotiv"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Cover"
-#~ msgstr "Kapak Resmi"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Contain"
-#~ msgstr "Şunu İçeren:"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Top Left"
-#~ msgstr "Sol Üst"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Top Center"
-#~ msgstr "Orta Üst"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Top Right"
-#~ msgstr "Sağ Üst"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Center Left"
-#~ msgstr "Orta Sol"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Center Center"
-#~ msgstr "Orta Orta"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Center Right"
-#~ msgstr "Orta Sağ"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Bottom Left"
-#~ msgstr "Sol Alt"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Bottom Center"
-#~ msgstr "Orta Alt"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Bottom Right"
-#~ msgstr "Sağ Alt"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "No Repeat"
-#~ msgstr "Tekrarlama Yok"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Repeat"
-#~ msgstr "Yinele"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Repeat Horizontally"
-#~ msgstr "Yatay Olarak Tekrarla"
-
-#, fuzzy
-#~ msgctxt "block layout"
-#~ msgid "Repeat Vertically"
-#~ msgstr "Dikey Olarak Tekrarla"
-
-#, fuzzy
-#~ msgctxt ""
-#~ "HTML attribute that specifies the a relationship between the two pages."
-#~ msgid "Link Rel"
-#~ msgstr "Göreli Oran"
-
-#, fuzzy
-#~ msgctxt "visual style option"
-#~ msgid "Dark"
-#~ msgstr "Koyu"
-
-#, fuzzy
-#~ msgctxt "visual style option"
-#~ msgid "Light"
-#~ msgstr "Açık"
-
-#, fuzzy
-#~ msgctxt "visual style option"
-#~ msgid "None"
-#~ msgstr "Yok"
-
-#, fuzzy
-#~ msgctxt "label for the control that allows zooming in on the image"
-#~ msgid "Image Zoom"
-#~ msgstr "Görüntü"
-
-#, fuzzy
-#~ msgctxt "A size unit for CSS markup"
-#~ msgid "Pixel"
-#~ msgstr "Piksel"
-
-#, fuzzy
-#~ msgctxt "A size unit for CSS markup"
-#~ msgid "Em"
-#~ msgstr "Em"
-
-#, fuzzy
-#~ msgctxt "A size unit for CSS markup"
-#~ msgid "Percentage"
-#~ msgstr "Yüzde"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Original"
-#~ msgstr "Orijinal"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Grayscale Filter"
-#~ msgstr "Gri ton"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Sepia Filter"
-#~ msgstr "Medya Dosyası"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Saturation Filter"
-#~ msgstr "Doygunluk"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Dim Filter"
-#~ msgstr "Klasik Filtre"
-
-#, fuzzy
-#~ msgctxt "image styles"
-#~ msgid "Vintage Filter"
-#~ msgstr "Klasik Filtre"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Capitalize"
-#~ msgstr "Büyük Harf Yap"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Normal"
-#~ msgstr "Normal"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Bold"
-#~ msgstr "Kalın"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Default"
-#~ msgstr "Varsayılan"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Uppercase"
-#~ msgstr "Büyük Harf"
-
-#, fuzzy
-#~ msgctxt "typography styles"
-#~ msgid "Lowercase"
-#~ msgstr "Küçük Harf"
-
-#, fuzzy
-#~ msgid "%d years"
-#~ msgstr "%s yıl"
-
-#~ msgid "a year"
-#~ msgstr "bir yıl"
-
-#, fuzzy
-#~ msgid "%d weeks"
-#~ msgstr "%s hafta"
-
-#~ msgid "a week"
-#~ msgstr "bir hafta"
-
-#, fuzzy
-#~ msgid "%d days"
-#~ msgstr "%s gün"
-
-#~ msgid "a day"
-#~ msgstr "bir gün"
-
-#, fuzzy
-#~ msgid "%d hours"
-#~ msgstr "%s saat"
-
-#~ msgid "an hour"
-#~ msgstr "bir saat"
-
-#, fuzzy
-#~ msgid "%d minutes"
-#~ msgstr "%s dakika"
-
-#~ msgid "a minute"
-#~ msgstr "bir dakika"
-
-#, fuzzy
-#~ msgid "%d seconds"
-#~ msgstr "%s saniye"
-
-#~ msgid "a second"
-#~ msgstr "bir saniye"
-
-#~ msgid "%s WordPress Plugin"
-#~ msgstr "%s WordPress Eklentisi"
-
-#~ msgid "Are you enjoying %s?"
-#~ msgstr "%s kullanımından memnun musunuz?"
-
-#~ msgid ""
-#~ "You have been using %1$s for %2$s now. Mind leaving a review to let us "
-#~ "know know what you think? We'd really appreciate it!"
-#~ msgstr ""
-#~ "%2$s boyunca %1$s kullanıyorsunuz. Düşüncelerinizi bizimle paylaşmak için "
-#~ "bir inceleme yazısı bırakmak ister misiniz? Çok memnun oluruz!"
-
-#~ msgid "No thanks / I already have"
-#~ msgstr "Hayır teşekkürler / Zaten yaptım"
-
-#~ msgid "Alert Type"
-#~ msgstr "Uyarı Türü"
-
-#~ msgid "Edit image"
-#~ msgstr "Görseli düzenle"
-
-#~ msgid "Remove image"
-#~ msgstr "Görseli kaldır"
-
-#~ msgid "Heading..."
-#~ msgstr "Başlık..."
-
-#~ msgid "Author Name"
-#~ msgstr "Yazar Adı"
-
-#~ msgid "Write biography..."
-#~ msgstr "Biyografi yazın..."
-
-#~ msgid "Add an author biography."
-#~ msgstr "Yazar biyografisi ekleyin."
-
-#~ msgid "%s Settings"
-#~ msgstr "%s Ayarları"
-
-#~ msgid "Caption Color"
-#~ msgstr "Resim Yazısı Rengi"
-
-#~ msgid "Highlight text."
-#~ msgstr "Metni vurgulayın."
-
-# %s: number of tables
-#~ msgid "%s Tables"
-#~ msgstr "%s Tabloları"
-
-#~ msgid "Pricing Table Settings"
-#~ msgstr "Fiyatlandırma Tablosu Ayarları"
-
-#~ msgid "Tables"
-#~ msgstr "Tablolar"
-
-#~ msgid "A column placed within the pricing table block."
-#~ msgstr "Fiyatlandırma tablosu blokuna yerleştirilmiş bir sütun."
-
-#~ msgid "Sepia"
-#~ msgstr "Sepya"
-
-#~ msgid "Dim"
-#~ msgstr "Solma"
-
-#~ msgid "Vintage"
-#~ msgstr "Klasik"
-
-#~ msgid "Select Orientation"
-#~ msgstr "Yönlendirme Seçin"
-
-#~ msgid "Top margin is removed on this block."
-#~ msgstr "Bu bloktaki üst kenar boşluğu kaldırıldı."
-
-#~ msgid "Toggle to remove any margin applied to the top of this block."
-#~ msgstr ""
-#~ "Bu blokun üstüne uygulanan herhangi bir kenar boşluğunu kaldırmak için "
-#~ "düğmeyi tıklayın."
-
-#~ msgid "Bottom margin is removed on this block."
-#~ msgstr "Bu bloktaki alt kenar boşluğu kaldırıldı."
-
-#~ msgid "Toggle to remove any margin applied to the bottom of this block."
-#~ msgstr ""
-#~ "Bu blokun altına uygulanan herhangi bir kenar boşluğunu kaldırmak için "
-#~ "düğmeyi tıklayın."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add primary action..."
-#~ msgstr "Birincil eylem ekleyin..."
-
-#~ msgctxt "content placeholder"
-#~ msgid "Add secondary action..."
-#~ msgstr "İkincil eylem ekleyin..."
-
-#~ msgctxt "size name"
-#~ msgid "Normal"
-#~ msgstr "Normal"
-
-#~ msgid "Get started with CoBlocks here:"
-#~ msgstr "CoBlocks’u kullanmaya başlayın:"

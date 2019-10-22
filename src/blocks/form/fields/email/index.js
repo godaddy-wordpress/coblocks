@@ -16,10 +16,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Email', 'block name' ),
-	description: __( 'A field for collecting a validated email address.' ),
+	title: _x( 'Email', 'block name', 'coblocks' ),
+	description: __( 'A field for collecting a validated email address.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'e-mail', 'block keyword' ), _x( 'mail', 'block keyword' ) ],
+	keywords: [ _x( 'e-mail', 'block keyword', 'coblocks' ), _x( 'mail', 'block keyword', 'coblocks' ) ],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

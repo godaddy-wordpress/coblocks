@@ -46,13 +46,13 @@ const TokenList = wp.tokenList;
 const styleOptions = [
 	{
 		name: 'stacked',
-		label: _x( 'Stacked', 'block style' ),
+		label: _x( 'Stacked', 'block style', 'coblocks' ),
 		icon: icons.styleStacked,
 		isDefault: true,
 	},
 	{
 		name: 'horizontal',
-		label: _x( 'Horizontal', 'block style' ),
+		label: _x( 'Horizontal', 'block style', 'coblocks' ),
 		icon: icons.styleHorizontalImageRight,
 		iconAlt: icons.styleHorizontalImageLeft,
 	},
@@ -244,7 +244,7 @@ class PostsEdit extends Component {
 		const editToolbarControls = [
 			{
 				icon: 'edit',
-				title: __( 'Edit RSS URL' ),
+				title: __( 'Edit RSS URL', 'coblocks' ),
 				onClick: () => this.setState( { editing: true } ),
 			},
 		];
@@ -257,12 +257,12 @@ class PostsEdit extends Component {
 
 		const toolbarControls = [ {
 			icon: icons.imageLeft,
-			title: __( 'Image on left' ),
+			title: __( 'Image on left', 'coblocks' ),
 			isActive: listPosition === 'left',
 			onClick: () => setAttributes( { listPosition: 'left' } ),
 		}, {
 			icon: icons.imageRight,
-			title: __( 'Image on right' ),
+			title: __( 'Image on right', 'coblocks' ),
 			isActive: listPosition === 'right',
 			onClick: () => setAttributes( { listPosition: 'right' } ),
 		} ];
@@ -286,22 +286,22 @@ class PostsEdit extends Component {
 					/>
 					<Placeholder
 						icon={ <BlockIcon icon={ icon } /> }
-						label={ __( 'Blog Posts' ) }
+						label={ __( 'Blog Posts', 'coblocks' ) }
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
 							<Fragment>
 								{ /* translators: %s: RSS */ }
-								{ sprintf( __( 'No posts found. Start publishing or add posts from an %s feed.' ), 'RSS' ) }
+								{ sprintf( __( 'No posts found. Start publishing or add posts from an %s feed.', 'coblocks' ), 'RSS' ) }
 								<Button
 									className="components-placeholder__cancel-button"
-									title={ __( 'Retrieve an External Feed' ) }
+									title={ __( 'Retrieve an External Feed', 'coblocks' ) }
 									isLink
 									onClick={ () => {
 										setAttributes( { postFeedType: 'external' } );
 									} }
 								>
-									{ __( 'Use External Feed' ) }
+									{ __( 'Use External Feed', 'coblocks' ) }
 								</Button>
 							</Fragment>
 						}
@@ -329,18 +329,18 @@ class PostsEdit extends Component {
 					<Placeholder
 						icon={ <BlockIcon icon={ icon } /> }
 						/* translators: %s: RSS */
-						label={ sprintf( __( '%s Feed' ), 'RSS' ) }
-						instructions={ sprintf( __( '%s URLs are generally located at the /feed/ directory of a site.' ), 'RSS' ) }
+						label={ sprintf( __( '%s Feed', 'coblocks' ), 'RSS' ) }
+						instructions={ sprintf( __( '%s URLs are generally located at the /feed/ directory of a site.', 'coblocks' ), 'RSS' ) }
 					>
 						<form onSubmit={ this.onSubmitURL }>
 							<TextControl
-								placeholder={ __( 'https://example.com/feed…' ) }
+								placeholder={ __( 'https://example.com/feed…', 'coblocks' ) }
 								value={ externalRssUrl }
 								onChange={ ( value ) => setAttributes( { externalRssUrl: value } ) }
 								className={ 'components-placeholder__input' }
 							/>
 							<Button isLarge type="submit" disabled={ ! externalRssUrl }>
-								{ __( 'Use URL' ) }
+								{ __( 'Use URL', 'coblocks' ) }
 							</Button>
 						</form>
 					</Placeholder>
@@ -434,7 +434,7 @@ class PostsEdit extends Component {
 															{ titleTrimmed }
 														</RawHTML>
 													) :
-														_x( '(no title)', 'placeholder when a post has no title' )
+														_x( '(no title)', 'placeholder when a post has no title', 'coblocks' )
 													}
 												</a>
 											</Disabled>
@@ -460,7 +460,7 @@ class PostsEdit extends Component {
 													className="wp-block-coblocks-posts__more-link block self-start mt-3"
 													onChange={ ( newPostLink ) => setAttributes( { postLink: newPostLink } ) }
 													value={ postLink }
-													placeholder={ __( 'Read more' ) }
+													placeholder={ __( 'Read more', 'coblocks' ) }
 													multiline={ false }
 													withoutInteractiveFormatting={ false }
 													isSelected={ false }

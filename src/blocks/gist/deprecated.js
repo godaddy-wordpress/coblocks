@@ -33,7 +33,7 @@ const deprecated = [
 				<div className={ classes }>
 					<script src={ src } />
 					<noscript>
-						<a href={ noscriptSrc }>{ __( 'View this gist on GitHub' ) }</a>
+						<a href={ noscriptSrc }>{ __( 'View this gist on GitHub', 'coblocks' ) }</a>
 					</noscript>
 				</div>
 			);

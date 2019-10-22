@@ -14,12 +14,12 @@ const CustomAppender = ( { onClick = noop } ) => {
 		<div className="coblocks-list-appender">
 			<IconButton
 				icon="insert"
-				label={ __( 'Add Menu Section' ) }
+				label={ __( 'Add Menu Section', 'coblocks' ) }
 				labelPosition="bottom"
 				className="coblocks-list-appender__toggle"
 				onClick={ onClick }
 			>
-				{ __( 'Add Menu Section' ) }
+				{ __( 'Add Menu Section', 'coblocks' ) }
 			</IconButton>
 		</div>
 	);

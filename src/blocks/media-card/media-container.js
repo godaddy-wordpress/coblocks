@@ -34,7 +34,7 @@ class MediaContainer extends Component {
 						render={ ( { open } ) => (
 							<IconButton
 								className="components-toolbar__control"
-								label={ __( 'Edit media' ) }
+								label={ __( 'Edit media', 'coblocks' ) }
 								icon="edit"
 								onClick={ open }
 							/>
@@ -97,7 +97,7 @@ class MediaContainer extends Component {
 					<MediaPlaceholder
 						icon="format-image"
 						labels={ {
-							title: __( 'Media' ),
+							title: __( 'Media', 'coblocks' ),
 						} }
 						className={ figureClass }
 						onSelect={ onSelectMedia }
@@ -117,7 +117,7 @@ class MediaContainer extends Component {
 			<Fragment>
 				<DropZone
 					onFilesDrop={ onDropMedia }
-					label={ __( 'Drop to replace media' ) }
+					label={ __( 'Drop to replace media', 'coblocks' ) }
 				/>
 			</Fragment>
 		);

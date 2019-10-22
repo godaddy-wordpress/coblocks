@@ -47,7 +47,7 @@ function Save( { attributes } ) {
 			{
 				! hasApiKey &&
 				<iframe
-					title={ __( 'Google Map' ) }
+					title={ __( 'Google Map', 'coblocks' ) }
 					frameBorder="0"
 					style={ { width: '100%', minHeight: height + 'px' } }
 					src={ `https://www.google.com/maps?q=${ encodeURIComponent( address ) }&output=embed&hl=${ locale }&z=${ zoom }` }

@@ -27,7 +27,7 @@ export default function InlineColorPicker( { disableCustomColors = false, value,
 							<Button
 								aria-expanded={ isOpen }
 								onClick={ onToggle }
-								aria-label={ __( 'Custom color picker' ) }
+								aria-label={ __( 'Custom color picker', 'coblocks' ) }
 								isLink
 							>
 								<span className="components-color-palette__custom-color-gradient"></span>

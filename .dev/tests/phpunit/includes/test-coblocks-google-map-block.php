@@ -53,23 +53,19 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 		$new_reflection = new CoBlocks_Google_Map_Block();
 
 		$expected = [
-			'version' => '1.15.0',
 			'slug'    => 'coblocks',
 			'url'     => str_replace( '/.dev/tests/phpunit', '', untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) ) ), // Fix inconsistencies path between plugin and unit tests
 		];
 
-		$version = $reflection->getProperty( '_version' );
-		$slug    = $reflection->getProperty( '_slug' );
-		$url     = $reflection->getProperty( '_url' );
+		$slug = $reflection->getProperty( 'slug' );
+		$url  = $reflection->getProperty( 'url' );
 
-		$version->setAccessible( true );
 		$slug->setAccessible( true );
 		$url->setAccessible( true );
 
 		$check = [
-			'version' => $version->getValue( $new_reflection ),
-			'slug'    => $slug->getValue( $new_reflection ),
-			'url'     => $url->getValue( $new_reflection ),
+			'slug' => $slug->getValue( $new_reflection ),
+			'url'  => $url->getValue( $new_reflection ),
 		];
 
 		$this->assertEquals( $expected, $check );

@@ -23,10 +23,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Accordion Item', 'This is an inner block for the Accordion Block.' ),
-	description: __( 'Add collapsable accordion items to accordions.' ),
+	title: _x( 'Accordion Item', 'This is an inner block for the Accordion Block.', 'coblocks' ),
+	description: __( 'Add collapsable accordion items to accordions.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'tabs', 'block keyword' ), _x( 'faq', 'block keyword' ), 'coblocks' ],
+	keywords: [ _x( 'tabs', 'block keyword', 'coblocks' ), _x( 'faq', 'block keyword', 'coblocks' ), 'coblocks' ],
 	parent: [ 'coblocks/accordion' ],
 	supports: {
 		reusable: false,

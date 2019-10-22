@@ -93,7 +93,7 @@ const deprecatedUserLocale = ( { attributes } ) => {
 		<div style={ backgroundStyles } { ...dataMap }>
 			{ ! hasApiKey && (
 				<iframe
-					title={ __( 'Google Map' ) }
+					title={ __( 'Google Map', 'coblocks' ) }
 					frameBorder="0"
 					style={ { width: '100%', minHeight: height + 'px' } }
 					src={

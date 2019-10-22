@@ -37,7 +37,7 @@ function coblocks_render_posts_block( $attributes ) {
 
 		if ( is_wp_error( $recent_posts ) ) {
 
-			return '<div class="components-placeholder"><div class="notice notice-error"><strong>' . __( 'RSS Error:' ) . '</strong> ' . $recent_posts->get_error_message() . '</div></div>';
+			return '<div class="components-placeholder"><div class="notice notice-error"><strong>' . __( 'RSS Error:', 'coblocks' ) . '</strong> ' . $recent_posts->get_error_message() . '</div></div>';
 
 		}
 
@@ -48,7 +48,7 @@ function coblocks_render_posts_block( $attributes ) {
 
 			unset( $recent_posts );
 
-			return '<div class="components-placeholder"><div class="notice notice-error">' . __( 'An error has occurred, which probably means the feed is down. Try again later.' ) . '</div></div>';
+			return '<div class="components-placeholder"><div class="notice notice-error">' . __( 'An error has occurred, which probably means the feed is down. Try again later.', 'coblocks' ) . '</div></div>';
 
 		}
 
@@ -305,7 +305,7 @@ function coblocks_get_rss_post_info( $posts ) {
 
 	foreach ( $posts as $post ) {
 
-		$title = esc_html( trim( strip_tags( $post->get_title() ) ) );
+		$title = esc_html( trim( wp_strip_all_tags( $post->get_title() ) ) );
 
 		$formatted_post = null;
 

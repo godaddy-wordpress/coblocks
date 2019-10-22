@@ -69,7 +69,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 		$reflection_method->invoke( coblocks() );
 
 		$expected = [
-			'version' => '1.15.0',
+			'version' => '1.16.1',
 			'has_pro'     => false,
 			'plugin_dir'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_path( __FILE__ ) ),
 			'plugin_url'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_url( __FILE__ ) ),
@@ -89,20 +89,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 		];
 
 		$this->assertEquals( $expected, $check );
-
-	}
-
-	/**
-	 * Test the define function sets a constant properly
-	 */
-	public function test_define() {
-
-		$reflection_method = new ReflectionMethod( 'CoBlocks', 'define' );
-
-		$reflection_method->setAccessible( true );
-		$reflection_method->invoke( coblocks(), 'COBLOCKS_TEST_CONSTANT', 'TEST_VALUE' );
-
-		$this->assertEquals( COBLOCKS_TEST_CONSTANT, 'TEST_VALUE' );
 
 	}
 
