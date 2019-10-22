@@ -31,14 +31,8 @@
 		margin: 0;
 		padding: 4px;
 
-		&:hover {
-			background: $light-gray-200;
-			color: $dark-gray-900;
-		}
-
 		&:focus {
 			box-shadow: 0 0 0 2px theme(primary);
-			color: $dark-gray-900;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
 		}
@@ -47,7 +41,6 @@
 	& &__button.components-button.is-default {
 		align-items: center;
 		background: $white;
-		border: 1px solid rgba(25, 30, 35, 0.2);
 		border-radius: 4px !important;
 		box-shadow: none;
 		display: flex;
@@ -61,13 +54,8 @@
 		text-align: center;
 		width: 90px;
 
-		svg {
-			fill: $dark-gray-500;
-		}
-
 		&:focus {
 			box-shadow: 0 0 0 4px $light-gray-200, 0 0 0 6px theme(toggle);
-			color: $dark-gray-900;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
 		}
