@@ -179,7 +179,7 @@ function coblocks_register_social_profiles_block() {
 		return;
 	}
 
-	// Load attributes from block.json
+	// Load attributes from block.json.
 	ob_start();
 	include COBLOCKS_PLUGIN_DIR . 'src/blocks/social-profiles/block.json';
 	$metadata = json_decode( ob_get_clean(), true );
