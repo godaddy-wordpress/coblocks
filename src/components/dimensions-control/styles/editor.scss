@@ -82,10 +82,7 @@
 		}
 
 		input[type="number"].components-coblocks-dimensions-control__number {
-			color: color(theme(button) shade(6%));
 			border-color: color(theme(button) shade(6%));
-			background: #f3f5f6;
-
 			border-radius: 0;
 			height: 30px;
 			margin: 0 -1px 0 0;
@@ -93,9 +90,7 @@
 			width: 25%;
 
 			&:hover {
-				background: #f1f1f1;
 				border-color: color(theme(button) shade(25%));
-				color: color(theme(button) shade(25%));
 				text-decoration: none;
 			}
 
