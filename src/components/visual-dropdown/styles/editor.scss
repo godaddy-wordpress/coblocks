@@ -140,14 +140,6 @@
 		.components-coblocks-visual-dropdown__button.components-button {
 			margin-bottom: 0;
 			width: 100% !important;
-
-			&:focus {
-				box-shadow: 0 0 0 4px $white, 0 0 0 6px theme(toggle);
-			}
-
-			&:active:enabled {
-				box-shadow: 0 0 0 4px $white, 0 0 0 6px theme(toggle);
-			}
 		}
 	}
 }
@@ -160,6 +152,23 @@
 // Make the column width numer input wider to accommodate two decimal places.
 .components-panel__body--column-settings .components-range-control__number {
 	width: 63px;
+}
+
+.components-coblocks-visual-dropdown__popover { 
+	
+	.components-coblocks-visual-dropdown__button-wrapper:hover {
+		background: $light-gray-200;
+		color: $dark-gray-900;
+		border: 1px solid rgba(25, 30, 35, 0.2);
+	}
+	
+	.components-coblocks-visual-dropdown__button-wrapper {
+		border: 1px solid rgba(25, 30, 35, 0.2);
+
+		&.is-selected {
+			border: 1px solid rgba(25, 30, 35, 0.2);
+		}
+	}
 }
 
 .components-coblocks-visual-dropdown__popover:not(.is-mobile) {
