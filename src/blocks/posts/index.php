@@ -86,32 +86,26 @@ function coblocks_render_posts_block( $attributes ) {
  * @return string Returns the block content for the list and grid styles.
  */
 function coblocks_posts( $posts, $attributes ) {
-	$class       = '';
-	$class_name  = '';
+	$class       = [ 'list-none', 'ml-0', 'pl-0', 'pt-3' ];
+	$class_name  = [ 'wp-block-coblocks-posts' ];
 	$block_style = strpos( $attributes['className'], 'is-style-stacked' ) !== false ? 'stacked' : 'horizontal';
 
 	if ( isset( $attributes['className'] ) ) {
-
-		$class_name .= $attributes['className'];
-
+		array_push( $class_name, $attributes['className'] );
 	}
 
 	if ( isset( $attributes['align'] ) ) {
-
-		$class_name .= ' align' . $attributes['align'];
-
+		array_push( $class_name, 'align' . $attributes['align'] );
 	}
 
 	if ( isset( $attributes['columns'] ) ) {
-
-		$class .= 'columns columns-' . $attributes['columns'];
-
+		array_push( $class_name, 'columns columns-' . $attributes['columns'] );
 	}
 
 	$block_content = sprintf(
-		'<div class="%1$s"><div class="%2$s list-none ml-0 pl-0 pt-3">',
-		esc_attr( $class_name ),
-		esc_attr( $class )
+		'<div class="%1$s"><div class="%2$s">',
+		esc_attr( implode( ' ', $class_name ) ),
+		esc_attr( implode( ' ', $class ) )
 	);
 
 	$list_items_markup = '';
@@ -339,79 +333,20 @@ function coblocks_get_rss_post_info( $posts ) {
  * Registers the `posts` block on server.
  */
 function coblocks_register_posts_block() {
-
+	// Return early if this function does not exist.
 	if ( ! function_exists( 'register_block_type' ) ) {
-
 		return;
-
 	}
 
+	// Load attributes from block.json.
+	ob_start();
+	include COBLOCKS_PLUGIN_DIR . 'src/blocks/posts/block.json';
+	$metadata = json_decode( ob_get_clean(), true );
+
 	register_block_type(
-		'coblocks/posts',
+		$metadata['name'],
 		array(
-			'attributes'      => array(
-				'className'          => array(
-					'type' => 'string',
-				),
-				'align'              => array(
-					'type' => 'string',
-				),
-				'postFeedType'       => array(
-					'type'    => 'string',
-					'default' => 'internal',
-				),
-				'externalRssUrl'     => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'postsToShow'        => array(
-					'type'    => 'number',
-					'default' => 2,
-				),
-				'displayPostContent' => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'displayPostDate'    => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'displayPostLink'    => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'postLink'           => array(
-					'type'    => 'string',
-					'default' => __( 'Read more', 'coblocks' ),
-				),
-				'excerptLength'      => array(
-					'type'    => 'number',
-					'default' => 12,
-				),
-				'imageSize'          => array(
-					'type'    => 'string',
-					'default' => 'w-1/7 sm:w-1/5 h-1/7 sm:h-1/5',
-				),
-				'listPosition'       => array(
-					'type'    => 'string',
-					'default' => 'right',
-				),
-				'columns'            => array(
-					'type'    => 'number',
-					'default' => 2,
-				),
-				'order'              => array(
-					'type'    => 'string',
-					'default' => 'desc',
-				),
-				'orderBy'            => array(
-					'type'    => 'string',
-					'default' => 'date',
-				),
-				'categories'         => array(
-					'type' => 'string',
-				),
-			),
+			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_posts_block',
 		)
 	);

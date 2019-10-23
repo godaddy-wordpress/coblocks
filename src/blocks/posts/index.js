@@ -20,14 +20,17 @@ import { __, _x } from '@wordpress/i18n';
 /**
  * Block constants
  */
-const { name, category, supports } = metadata;
+const { name, category } = metadata;
 
 const settings = {
 	title: _x( 'Posts', 'block name', 'coblocks' ),
 	description: __( 'Display posts or an RSS feed as stacked or horizontal cards.', 'coblocks' ),
 	icon,
 	keywords: [ _x( 'blog', 'block keyword', 'coblocks' ), _x( 'rss', 'block keyword', 'coblocks' ), _x( 'latest', 'block keyword', 'coblocks' ) ],
-	supports,
+	supports: {
+		align: [ 'wide', 'full' ],
+		html: false,
+	},
 	transforms,
 	edit,
 	save() {
@@ -35,4 +38,4 @@ const settings = {
 	},
 };
 
-export { name, category, metadata, settings };
+export { name, category, settings };
