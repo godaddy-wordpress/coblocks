@@ -3,14 +3,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CoBlocks 1.16.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"POT-Creation-Date: 2019-10-18T18:40:31+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-10-18T18:40:31+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
 
@@ -24,41 +23,51 @@ msgstr "L’elemento menu a fisarmonica è aperto per impostazione predefinita."
 
 #: src/blocks/accordion/accordion-item/inspector.js:34
 msgid "Toggle to set this accordion item to be open by default."
-msgstr ""
-"Alterna l’impostazione predefinita di questo elemento menu a fisarmonica "
-"aperto."
+msgstr "Alterna l’impostazione predefinita di questo elemento menu a fisarmonica aperto."
 
 #: src/blocks/accordion/accordion-item/inspector.js:63
 msgid "Accordion Item Settings"
 msgstr "Impostazioni elemento menu a fisarmonica"
 
 #: src/blocks/accordion/accordion-item/inspector.js:72
-#: src/blocks/alert/inspector.js:49 src/blocks/author/inspector.js:50
+#: src/blocks/alert/inspector.js:49
+#: src/blocks/author/inspector.js:50
 #: src/blocks/click-to-tweet/inspector.js:60
 #: src/blocks/dynamic-separator/inspector.js:60
 #: src/blocks/features/feature/inspector.js:92
-#: src/blocks/features/inspector.js:173 src/blocks/form/submit-button.js:118
-#: src/blocks/hero/inspector.js:137 src/blocks/highlight/inspector.js:43
-#: src/blocks/icon/inspector.js:302 src/blocks/media-card/inspector.js:132
+#: src/blocks/features/inspector.js:173
+#: src/blocks/form/submit-button.js:118
+#: src/blocks/hero/inspector.js:137
+#: src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:302
+#: src/blocks/media-card/inspector.js:132
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
-#: src/blocks/row/column/inspector.js:165 src/blocks/row/inspector.js:211
-#: src/blocks/shape-divider/inspector.js:92 src/blocks/share/inspector.js:200
+#: src/blocks/row/column/inspector.js:165
+#: src/blocks/row/inspector.js:211
+#: src/blocks/shape-divider/inspector.js:92
+#: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:206
 #: src/extensions/colors/index.js:59
 msgid "Color Settings"
 msgstr "Impostazioni colore"
 
 #: src/blocks/accordion/accordion-item/inspector.js:78
-#: src/blocks/alert/inspector.js:55 src/blocks/author/inspector.js:56
+#: src/blocks/alert/inspector.js:55
+#: src/blocks/author/inspector.js:56
 #: src/blocks/features/feature/inspector.js:110
-#: src/blocks/features/inspector.js:191 src/blocks/hero/inspector.js:150
-#: src/blocks/highlight/inspector.js:49 src/blocks/icon/inspector.js:326
+#: src/blocks/features/inspector.js:191
+#: src/blocks/hero/inspector.js:150
+#: src/blocks/highlight/inspector.js:49
+#: src/blocks/icon/inspector.js:326
 #: src/blocks/media-card/inspector.js:146
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
-#: src/blocks/row/column/inspector.js:171 src/blocks/row/inspector.js:227
-#: src/blocks/shape-divider/inspector.js:103 src/blocks/share/inspector.js:99
+#: src/blocks/row/column/inspector.js:171
+#: src/blocks/row/inspector.js:227
+#: src/blocks/shape-divider/inspector.js:103
+#: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:103
-#: src/extensions/colors/index.js:47 src/blocks/share/inspector.js:81
+#: src/extensions/colors/index.js:47
+#: src/blocks/share/inspector.js:81
 #: src/blocks/social-profiles/inspector.js:85
 msgid "Background Color"
 msgstr "Colore dello sfondo"
@@ -69,9 +78,7 @@ msgstr "Colore testo titolo"
 
 #: src/blocks/accordion/index.js:28
 msgid "Organize content within collapsable accordion items."
-msgstr ""
-"Organizza il contenuto all’interno degli elementi menu a fisarmonica "
-"comprimibili."
+msgstr "Organizza il contenuto all’interno degli elementi menu a fisarmonica comprimibili."
 
 #: src/blocks/accordion/inspector.js:27
 msgid "Accordion Settings"
@@ -83,16 +90,11 @@ msgstr "Supporto Internet Explorer"
 
 #: src/blocks/accordion/inspector.js:31
 msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
-msgstr ""
-"Aggiungi il supporto di Internet Explorer tramite il caricamento di un "
-"polyfill JavaScript."
+msgstr "Aggiungi il supporto di Internet Explorer tramite il caricamento di un polyfill JavaScript."
 
 #: src/blocks/accordion/inspector.js:31
-msgid ""
-"Supporting Internet Explorer by loading a JavaScript polyfill on this page."
-msgstr ""
-"Supporto di Internet Explorer tramite il caricamento di un polyfill "
-"JavaScript in questa pagina."
+msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgstr "Supporto di Internet Explorer tramite il caricamento di un polyfill JavaScript in questa pagina."
 
 #: src/blocks/alert/index.js:29
 msgid "Provide contextual feedback messages or notices."
@@ -103,23 +105,21 @@ msgid "This is an alert block"
 msgstr "Questo è un blocco avvisi"
 
 #: src/blocks/alert/index.js:46
-msgid ""
-"An alert is a message that displays outside the flow of typical content. "
-"Alerts provide contextual feedback, typically asking readers to take an "
-"action."
-msgstr ""
-"Un avviso è un messaggio che viene visualizzato al di fuori del flusso di "
-"contenuto tipico. Gli avvisi forniscono feedback contestuale e, in genere, "
-"chiedono al lettore di intervenire."
+msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
+msgstr "Un avviso è un messaggio che viene visualizzato al di fuori del flusso di contenuto tipico. Gli avvisi forniscono feedback contestuale e, in genere, chiedono al lettore di intervenire."
 
-#: src/blocks/alert/inspector.js:60 src/blocks/author/inspector.js:61
+#: src/blocks/alert/inspector.js:60
+#: src/blocks/author/inspector.js:61
 #: src/blocks/click-to-tweet/inspector.js:66
 #: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:195 src/blocks/hero/inspector.js:155
+#: src/blocks/features/inspector.js:195
+#: src/blocks/hero/inspector.js:155
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
-#: src/blocks/row/column/inspector.js:176 src/blocks/row/inspector.js:232
-#: src/blocks/share/inspector.js:66 src/blocks/social-profiles/inspector.js:95
+#: src/blocks/row/column/inspector.js:176
+#: src/blocks/row/inspector.js:232
+#: src/blocks/share/inspector.js:66
+#: src/blocks/social-profiles/inspector.js:95
 #: src/extensions/colors/index.js:54
 msgid "Text Color"
 msgstr "Colore testo"
@@ -137,23 +137,16 @@ msgstr "Scrivi nome autore..."
 #. placeholder text used for the biography
 #. translators: placeholder text used for the biography
 #: src/blocks/author/edit.js:141
-msgid ""
-"Write a biography that distills objective credibility and authority to your "
-"readers…"
-msgstr ""
-"Scrivi una biografia che trasmetta ai lettori credibilità oggettiva e "
-"autorità…"
+msgid "Write a biography that distills objective credibility and authority to your readers…"
+msgstr "Scrivi una biografia che trasmetta ai lettori credibilità oggettiva e autorità…"
 
 #: src/blocks/author/index.js:29
 msgid "Add an author biography to build credibility and authority."
-msgstr ""
-"Aggiungi una biografica dell’autore per trasmettere credibilità e autorità."
+msgstr "Aggiungi una biografica dell’autore per trasmettere credibilità e autorità."
 
 #: src/blocks/author/index.js:35
 msgid "Born to express, not to impress. A maker making the world I want."
-msgstr ""
-"Nato per esprimere, non per impressionare. Un esecutore del mondo che "
-"desidero."
+msgstr "Nato per esprimere, non per impressionare. Un esecutore del mondo che desidero."
 
 #: src/blocks/author/inspector.js:41
 msgid "Author Settings"
@@ -161,8 +154,7 @@ msgstr "Impostazioni autore"
 
 #: src/blocks/buttons/index.js:29
 msgid "Prompt visitors to take action with multiple buttons, side by side."
-msgstr ""
-"Richiedi ai visitatori di intervenire con più pulsanti, fianco a fianco."
+msgstr "Richiedi ai visitatori di intervenire con più pulsanti, fianco a fianco."
 
 #: src/blocks/buttons/inspector.js:30
 msgid "Buttons"
@@ -200,12 +192,8 @@ msgid "Add a quote for readers to tweet via Twitter."
 msgstr "Aggiungi un commento per i lettori da tweettare via Twitter."
 
 #: src/blocks/click-to-tweet/index.js:34
-msgid ""
-"The easiest way to promote and advertise your blog, website, and business on "
-"Twitter."
-msgstr ""
-"Il modo più semplice per promuovere e pubblicizzare il tuo blog, sito web e "
-"business su Twitter."
+msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
+msgstr "Il modo più semplice per promuovere e pubblicizzare il tuo blog, sito web e business su Twitter."
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
@@ -213,7 +201,8 @@ msgid "Text Settings"
 msgstr "Impostazioni testo"
 
 #: src/blocks/click-to-tweet/inspector.js:71
-#: src/blocks/form/submit-button.js:127 src/blocks/share/inspector.js:86
+#: src/blocks/form/submit-button.js:127
+#: src/blocks/share/inspector.js:86
 #: src/blocks/social-profiles/inspector.js:90
 msgid "Button Color"
 msgstr "Colore pulsante"
@@ -224,7 +213,8 @@ msgstr "Aggiungi uno spaziatore ridimensionabile tra gli altri blocchi."
 
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:100
-#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
+#: src/blocks/hero/inspector.js:108
+#: src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr "Altezza in pixel"
 
@@ -236,34 +226,37 @@ msgstr "Altezza dell’elemento separatore dinamico in pixel."
 msgid "Color"
 msgstr "Colore"
 
-#: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
+#: src/blocks/features/edit.js:78
+#: src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
 msgid "Add as background"
 msgstr "Aggiungi come sfondo"
 
 #: src/blocks/features/feature/index.js:29
 msgid "A singular child column within a parent features block."
-msgstr ""
-"Una singola colonna figlia all’interno di un blocco caratteristiche padre."
+msgstr "Una singola colonna figlia all’interno di un blocco caratteristiche padre."
 
 #: src/blocks/features/feature/inspector.js:68
 msgid "Feature Settings"
 msgstr "Impostazioni caratteristica"
 
 #: src/blocks/features/feature/inspector.js:71
-#: src/blocks/features/inspector.js:143 src/blocks/hero/inspector.js:84
-#: src/blocks/icon/inspector.js:217 src/blocks/media-card/inspector.js:62
-#: src/blocks/row/column/inspector.js:133 src/blocks/row/inspector.js:180
+#: src/blocks/features/inspector.js:143
+#: src/blocks/hero/inspector.js:84
+#: src/blocks/icon/inspector.js:217
+#: src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:133
+#: src/blocks/row/inspector.js:180
 #: src/components/background/panel.js:146
 msgid "Padding"
 msgstr "Spaziatura interna"
 
 #: src/blocks/features/index.js:35
 msgid "Add up to three columns of small notes for your product or service."
-msgstr ""
-"Aggiungi fino a tre colonne di piccole note per il tuo prodotto o servizio."
+msgstr "Aggiungi fino a tre colonne di piccole note per il tuo prodotto o servizio."
 
-#: src/blocks/features/inspector.js:122 src/blocks/row/column/inspector.js:111
+#: src/blocks/features/inspector.js:122
+#: src/blocks/row/column/inspector.js:111
 #: src/blocks/row/inspector.js:157
 #: src/components/dimensions-control/index.js:295
 msgid "Margin"
@@ -272,35 +265,43 @@ msgstr "Margine"
 #: src/blocks/features/inspector.js:164
 #: src/blocks/gallery-carousel/inspector.js:84
 #: src/blocks/gallery-collage/inspector.js:108
-#: src/blocks/gallery-stacked/inspector.js:91 src/blocks/row/inspector.js:202
+#: src/blocks/gallery-stacked/inspector.js:91
+#: src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
 #: src/blocks/gallery-carousel/inspector.js:78
 #: src/blocks/gallery-collage/inspector.js:107
 msgid "Gutter"
 msgstr "Rilegatura"
 
-#: src/blocks/features/inspector.js:167 src/blocks/row/inspector.js:205
+#: src/blocks/features/inspector.js:167
+#: src/blocks/row/inspector.js:205
 msgid "Space between each column."
 msgstr "Spazio tra ogni colonna."
 
-#: src/blocks/features/inspector.js:86 src/blocks/icon/icon-size-select.js:16
-#: src/blocks/row/inspector.js:99 src/blocks/share/inspector.js:72
+#: src/blocks/features/inspector.js:86
+#: src/blocks/icon/icon-size-select.js:16
+#: src/blocks/row/inspector.js:99
+#: src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:76
 #: src/components/dimensions-control/dimensions-select.js:15
 #: src/components/size-control/index.js:116
 msgid "Small"
 msgstr "Piccolo"
 
-#: src/blocks/features/inspector.js:87 src/blocks/icon/icon-size-select.js:21
-#: src/blocks/row/inspector.js:100 src/blocks/share/inspector.js:73
+#: src/blocks/features/inspector.js:87
+#: src/blocks/icon/icon-size-select.js:21
+#: src/blocks/row/inspector.js:100
+#: src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:77
 #: src/components/dimensions-control/dimensions-select.js:20
 #: src/components/size-control/index.js:120
 msgid "Medium"
 msgstr "Medio"
 
-#: src/blocks/features/inspector.js:88 src/blocks/icon/icon-size-select.js:26
-#: src/blocks/row/inspector.js:101 src/blocks/share/inspector.js:74
+#: src/blocks/features/inspector.js:88
+#: src/blocks/icon/icon-size-select.js:26
+#: src/blocks/row/inspector.js:101
+#: src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:25
 #: src/components/size-control/index.js:65
@@ -311,8 +312,10 @@ msgstr "Grande"
 msgid "Features Settings"
 msgstr "Impostazioni caratteristiche"
 
-#: src/blocks/features/inspector.js:96 src/blocks/post-carousel/inspector.js:70
-#: src/blocks/posts/inspector.js:110 src/blocks/services/inspector.js:69
+#: src/blocks/features/inspector.js:96
+#: src/blocks/post-carousel/inspector.js:70
+#: src/blocks/posts/inspector.js:110
+#: src/blocks/services/inspector.js:69
 msgid "Columns"
 msgstr "Colonne"
 
@@ -392,8 +395,7 @@ msgstr "$ 0,00"
 
 #: src/blocks/food-and-drinks/food-item/index.js:27
 msgid "A food and drink item within the Food & Drinks block."
-msgstr ""
-"Aggiungi un elemento cibo/bevanda all’interno del blocco Cibo e bevande."
+msgstr "Aggiungi un elemento cibo/bevanda all’interno del blocco Cibo e bevande."
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:19
 msgid "Item Settings"
@@ -438,19 +440,22 @@ msgid "Image Settings"
 msgstr "Impostazioni immagine"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:84
-#: src/blocks/gif/inspector.js:31 src/blocks/media-card/inspector.js:95
+#: src/blocks/gif/inspector.js:31
+#: src/blocks/media-card/inspector.js:95
 #: src/blocks/services/service/inspector.js:33
 msgid "Alt Text (Alternative Text)"
 msgstr "Testo alternativo"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:90
-#: src/blocks/gif/inspector.js:37 src/blocks/media-card/inspector.js:101
+#: src/blocks/gif/inspector.js:37
+#: src/blocks/media-card/inspector.js:101
 #: src/blocks/services/service/inspector.js:39
 msgid "Describe the purpose of the image"
 msgstr "Descrivi lo scopo dell’immagine"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:92
-#: src/blocks/gif/inspector.js:39 src/blocks/media-card/inspector.js:103
+#: src/blocks/gif/inspector.js:39
+#: src/blocks/media-card/inspector.js:103
 #: src/blocks/services/service/inspector.js:41
 msgid "Leave empty if the image is purely decorative."
 msgstr "Lascia vuoto se l’immagine è puramente decorativa."
@@ -465,8 +470,10 @@ msgstr "Punto focale"
 msgid "Display a menu or price list."
 msgstr "Aggiungi un menu o listino prezzi."
 
-#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
-#: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
+#: src/blocks/food-and-drinks/inspector.js:26
+#: src/blocks/map/inspector.js:107
+#: src/blocks/posts/inspector.js:187
+#: src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
 msgid "Styles"
 msgstr "Stili"
@@ -539,9 +546,7 @@ msgstr "reCAPTCHA Google"
 
 #: src/blocks/form/edit.js:296
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
-msgstr ""
-"Aggiungi il tuo sito reCAPTCHA e i tuoi codici segreti per proteggere il tuo "
-"modulo dalla posta indesiderata."
+msgstr "Aggiungi il tuo sito reCAPTCHA e i tuoi codici segreti per proteggere il tuo modulo dalla posta indesiderata."
 
 #: src/blocks/form/edit.js:302
 msgid "Generate keys"
@@ -563,16 +568,19 @@ msgstr "Codice sito"
 msgid "Secret Key"
 msgstr "Codice segreto"
 
-#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
+#: src/blocks/form/edit.js:330
+#: src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr "Salvataggio"
 
-#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
+#: src/blocks/form/edit.js:330
+#: src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr "Salva"
 
-#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
+#: src/blocks/form/edit.js:345
+#: src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr "Rimuovi"
 
@@ -586,8 +594,7 @@ msgstr "Rimuovi opzione"
 
 #: src/blocks/form/fields/date/index.js:21
 msgid "A field for requesting date selections with a date picker."
-msgstr ""
-"Campo per richiedere la selezione di una data mediante un selettore date."
+msgstr "Campo per richiedere la selezione di una data mediante un selettore date."
 
 #: src/blocks/form/fields/email/index.js:20
 msgid "A field for collecting a validated email address."
@@ -630,14 +637,11 @@ msgstr "Campo di testo per la raccolta del nome e del cognome."
 
 #: src/blocks/form/fields/phone/index.js:21
 msgid "A phone number to allow visitors to give you a phone number."
-msgstr ""
-"Numero di telefono per consentire ai visitatori di lasciare un numero di "
-"telefono."
+msgstr "Numero di telefono per consentire ai visitatori di lasciare un numero di telefono."
 
 #: src/blocks/form/fields/radio/index.js:21
 msgid "A field with multiple options where only one choice can be made."
-msgstr ""
-"Campo con più opzioni in cui è possibile effettuare una sola selezione."
+msgstr "Campo con più opzioni in cui è possibile effettuare una sola selezione."
 
 #: src/blocks/form/fields/textarea/index.js:20
 msgid "A text box for longer responses."
@@ -678,7 +682,8 @@ msgstr "Carosello"
 msgid "image %1$d of %2$d in gallery"
 msgstr "immagine %1$d di %2$d in galleria"
 
-#: src/blocks/gallery-carousel/edit.js:376 src/blocks/gif/edit.js:243
+#: src/blocks/gallery-carousel/edit.js:376
+#: src/blocks/gif/edit.js:243
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:230
 msgid "Write caption…"
@@ -716,7 +721,8 @@ msgstr "Commuta per attivare altezza basata sulla percentuale."
 msgid "Carousel Settings"
 msgstr "Impostazioni carosello"
 
-#: src/blocks/gallery-carousel/inspector.js:71 src/blocks/icon/inspector.js:173
+#: src/blocks/gallery-carousel/inspector.js:71
+#: src/blocks/icon/inspector.js:173
 #: src/components/typography-controls/index.js:189
 #: src/blocks/icon/inspector.js:106
 msgid "Size"
@@ -724,13 +730,15 @@ msgstr "Dimensione"
 
 #: src/blocks/gallery-carousel/inspector.js:90
 #: src/blocks/gallery-masonry/inspector.js:83
-#: src/blocks/gallery-stacked/inspector.js:95 src/blocks/share/inspector.js:120
+#: src/blocks/gallery-stacked/inspector.js:95
+#: src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:124
 #: src/components/background/panel.js:156
 msgid "Rounded Corners"
 msgstr "Angoli arrotondati"
 
-#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
+#: src/blocks/gallery-collage/edit.js:174
+#: src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr "Applica"
@@ -741,8 +749,7 @@ msgstr "Scrivi didascalia..."
 
 #: src/blocks/gallery-collage/index.js:34
 msgid "Assemble images into a beautiful collage gallery."
-msgstr ""
-"Assembla diverse immagini in un bellissimo collage per la tua galleria."
+msgstr "Assembla diverse immagini in un bellissimo collage per la tua galleria."
 
 #: src/blocks/gallery-collage/inspector.js:105
 msgid "Collage Settings"
@@ -782,8 +789,7 @@ msgstr "Muratura"
 
 #: src/blocks/gallery-masonry/index.js:35
 msgid "Display multiple images in an organized masonry gallery."
-msgstr ""
-"Visualizza più immagini in una galleria organizzata come un’opera muraria."
+msgstr "Visualizza più immagini in una galleria organizzata come un’opera muraria."
 
 #: src/blocks/gallery-masonry/inspector.js:53
 #: src/blocks/gallery-stacked/inspector.js:56
@@ -818,8 +824,7 @@ msgstr "Impilata"
 
 #: src/blocks/gallery-stacked/index.js:35
 msgid "Display multiple images in an single column stacked gallery."
-msgstr ""
-"Visualizza più immagini in una galleria impilata in una singola colonna."
+msgstr "Visualizza più immagini in una galleria impilata in una singola colonna."
 
 #: src/blocks/gallery-stacked/inspector.js:105
 msgid "Box Shadow"
@@ -830,11 +835,8 @@ msgid "Fullwidth images are enabled."
 msgstr "Sono abilitate le immagini a tutta larghezza."
 
 #: src/blocks/gallery-stacked/inspector.js:48
-msgid ""
-"Toggle to fill the available gallery area with completely fullwidth images."
-msgstr ""
-"Alterna lo riempimento della galleria disponibile con immagini a tutta "
-"larghezza."
+msgid "Toggle to fill the available gallery area with completely fullwidth images."
+msgstr "Alterna lo riempimento della galleria disponibile con immagini a tutta larghezza."
 
 #: src/blocks/gallery-stacked/inspector.js:80
 msgid "Stacked Settings"
@@ -884,7 +886,8 @@ msgstr "Modifica Gist"
 msgid "View Gist"
 msgstr "Visualizza Gist"
 
-#: src/blocks/gist/controls.js:68 src/blocks/gist/controls.js:61
+#: src/blocks/gist/controls.js:68
+#: src/blocks/gist/controls.js:61
 msgid "GitHub File"
 msgstr "File GitHub"
 
@@ -892,11 +895,13 @@ msgstr "File GitHub"
 msgid "File"
 msgstr "File"
 
-#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
+#: src/blocks/gist/deprecated.js:36
+#: src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr "Visualizza questo Gist su GitHub"
 
-#: src/blocks/gist/edit.js:124 src/blocks/gist/inspector.js:51
+#: src/blocks/gist/edit.js:124
+#: src/blocks/gist/inspector.js:51
 msgid "Gist URL"
 msgstr "URL Gist"
 
@@ -941,12 +946,8 @@ msgid "Add background to hero"
 msgstr "Aggiungi sfondo a hero"
 
 #: src/blocks/hero/index.js:41
-msgid ""
-"An introductory area of a page accompanied by a small amount of text and a "
-"call to action."
-msgstr ""
-"Un’area introduttiva della pagina accompagnata da una piccola parte di testo "
-"e da un invito all’azione."
+msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
+msgstr "Un’area introduttiva della pagina accompagnata da una piccola parte di testo e da un invito all’azione."
 
 #: src/blocks/hero/inspector.js:127
 msgid "Content width in pixels"
@@ -956,8 +957,10 @@ msgstr "Larghezza contenuto in pixel"
 msgid "Hero Settings"
 msgstr "Impostazioni hero"
 
-#: src/blocks/hero/inspector.js:85 src/blocks/media-card/inspector.js:63
-#: src/blocks/row/column/inspector.js:134 src/blocks/row/inspector.js:181
+#: src/blocks/hero/inspector.js:85
+#: src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:134
+#: src/blocks/row/inspector.js:181
 msgid "Space inside of the container."
 msgstr "Spazio all’interno del contenitore."
 
@@ -1006,14 +1009,11 @@ msgid "Draw attention and emphasize important narrative."
 msgstr "Dai enfasi e richiama l’attenzione su elementi narrativi importanti."
 
 #: src/blocks/highlight/index.js:33
-msgid ""
-"Add a highlight effect to paragraph text in order to grab attention and "
-"emphasize important narrative."
-msgstr ""
-"Aggiungi un effetto di evidenziazione al testo del paragrafo per enfatizzare "
-"e richiamare l’attenzione su elementi narrativi importanti."
+msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
+msgstr "Aggiungi un effetto di evidenziazione al testo del paragrafo per enfatizzare e richiamare l’attenzione su elementi narrativi importanti."
 
-#: src/blocks/icon/icon-size-select.js:30 src/blocks/row/inspector.js:102
+#: src/blocks/icon/icon-size-select.js:30
+#: src/blocks/row/inspector.js:102
 #: src/components/dimensions-control/dimensions-select.js:30
 msgid "Huge"
 msgstr "Enorme"
@@ -1026,7 +1026,8 @@ msgstr "Scegli dimensione icona preimpostata"
 msgid "Add a stylized graphic symbol to communicate something more."
 msgstr "Aggiungi un simbolo grafico stilizzato per comunicare qualcosa in più."
 
-#: src/blocks/icon/inspector.js:155 src/blocks/share/inspector.js:111
+#: src/blocks/icon/inspector.js:155
+#: src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:115
 msgid "Icon Settings"
 msgstr "Impostazioni icona"
@@ -1083,8 +1084,10 @@ msgstr "Apertura in una nuova scheda"
 msgid "Open in New Tab"
 msgstr "Apri in nuova scheda"
 
-#: src/blocks/icon/inspector.js:309 src/blocks/share/inspector.js:104
-#: src/blocks/social-profiles/inspector.js:108 src/blocks/share/inspector.js:68
+#: src/blocks/icon/inspector.js:309
+#: src/blocks/share/inspector.js:104
+#: src/blocks/social-profiles/inspector.js:108
+#: src/blocks/share/inspector.js:68
 #: src/blocks/social-profiles/inspector.js:95
 msgid "Icon Color"
 msgstr "Colore icona"
@@ -1100,8 +1103,7 @@ msgstr "Loghi e badge"
 #: src/blocks/logos/edit.js:70
 #: src/components/block-gallery/gallery-placeholder.js:72
 msgid "Drag images, upload new ones or select files from your library."
-msgstr ""
-"Trascina immagini, carica nuove immagini o seleziona file dalla libreria."
+msgstr "Trascina immagini, carica nuove immagini o seleziona file dalla libreria."
 
 #: src/blocks/logos/index.js:27
 msgid "Add logos, badges, or certifications to build credibility."
@@ -1127,8 +1129,10 @@ msgstr "Modifica località"
 msgid "Map style"
 msgstr "Stile mappa"
 
-#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
-#: src/blocks/map/save.js:50 src/blocks/map/edit.js:241
+#: src/blocks/map/deprecated.js:96
+#: src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50
+#: src/blocks/map/edit.js:241
 msgid "Google Map"
 msgstr "Mappe di Google"
 
@@ -1138,23 +1142,20 @@ msgstr "Chiave API non valida, o troppe richieste"
 
 #: src/blocks/map/edit.js:294
 msgid "Enter a location or address to drop a pin on a Google map."
-msgstr ""
-"Immetti una posizione o un indirizzo per inserire un segnaposto in una mappa "
-"di Google."
+msgstr "Immetti una posizione o un indirizzo per inserire un segnaposto in una mappa di Google."
 
 #: src/blocks/map/edit.js:301
 msgid "Search for a place or address…"
 msgstr "Cerca un luogo o un indirizzo…"
 
-#: src/blocks/map/edit.js:320 src/blocks/map/edit.js:312
+#: src/blocks/map/edit.js:320
+#: src/blocks/map/edit.js:312
 msgid "Cancel"
 msgstr "Scadenza"
 
 #: src/blocks/map/index.js:28
 msgid "Add an address or location to drop a pin on a Google map."
-msgstr ""
-"Aggiungi un indirizzo o posizione per inserire un segnaposto in una mappa di "
-"Google."
+msgstr "Aggiungi un indirizzo o posizione per inserire un segnaposto in una mappa di Google."
 
 #: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
@@ -1184,7 +1185,8 @@ msgstr "Le opzioni di controllo fine sono abilitate."
 msgid "Toggle to enable map control options."
 msgstr "Alterna l’abilitazione delle opzioni di controllo delle mappe."
 
-#: src/blocks/map/inspector.js:178 src/blocks/map/inspector.js:167
+#: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:167
 msgid "Map Controls"
 msgstr "Controlli mappe"
 
@@ -1194,9 +1196,7 @@ msgstr "Tipo di mappa"
 
 #: src/blocks/map/inspector.js:185
 msgid "Switching between standard and satellite map views is enabled."
-msgstr ""
-"Il passaggio tra la visualizzazione della mappa standard e satellitare è "
-"abilitato."
+msgstr "Il passaggio tra la visualizzazione della mappa standard e satellitare è abilitato."
 
 #: src/blocks/map/inspector.js:185
 msgid "Toggle to enable switching between standard and satellite maps."
@@ -1212,8 +1212,7 @@ msgstr "Visualizzazione dei controlli zoom della mappa."
 
 #: src/blocks/map/inspector.js:191
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
-msgstr ""
-"Alterna l’abilitazione dei controlli zoom per ingrandire e ridurre la mappa."
+msgstr "Alterna l’abilitazione dei controlli zoom per ingrandire e ridurre la mappa."
 
 #: src/blocks/map/inspector.js:194
 msgid "Street View"
@@ -1225,9 +1224,7 @@ msgstr "Visualizzazione del controllo mappa Street View."
 
 #: src/blocks/map/inspector.js:197
 msgid "Toggle to show the street view control at the bottom right."
-msgstr ""
-"Alterna la visualizzazione del controllo Street View in fondo a destra nella "
-"mappa."
+msgstr "Alterna la visualizzazione del controllo Street View in fondo a destra nella mappa."
 
 #: src/blocks/map/inspector.js:200
 msgid "Fullscreen Toggle"
@@ -1246,12 +1243,8 @@ msgid "Google Maps API Key"
 msgstr "Chiave API Google Maps"
 
 #: src/blocks/map/inspector.js:212
-msgid ""
-"Add a Google Maps API key. Updating this API key will set all your maps to "
-"use the new key."
-msgstr ""
-"Aggiungi chiave API di Google Maps. Aggiornando questa chiave API, tutte le "
-"mappe verranno impostate per l’impiego della nuova chiave."
+msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgstr "Aggiungi chiave API di Google Maps. Aggiornando questa chiave API, tutte le mappe verranno impostate per l’impiego della nuova chiave."
 
 #: src/blocks/map/inspector.js:215
 msgid "Get a key"
@@ -1279,8 +1272,7 @@ msgstr "Media a sinistra"
 
 #: src/blocks/media-card/index.js:36
 msgid "Add an image or video with an offset card side-by-side."
-msgstr ""
-"Aggiungi un'immagine o un video con una scheda sfalsata, fianco a fianco."
+msgstr "Aggiungi un'immagine o un video con una scheda sfalsata, fianco a fianco."
 
 #: src/blocks/media-card/inspector.js:109
 msgid "Card Shadow"
@@ -1332,7 +1324,8 @@ msgstr "Rilascia per sostituire media"
 msgid "Edit media"
 msgstr "Modifica media"
 
-#: src/blocks/post-carousel/edit.js:123 src/blocks/posts/edit.js:247
+#: src/blocks/post-carousel/edit.js:123
+#: src/blocks/posts/edit.js:247
 msgid "Edit RSS URL"
 msgstr "Modifica URL RSS"
 
@@ -1340,38 +1333,46 @@ msgstr "Modifica URL RSS"
 msgid "Post Carousel"
 msgstr "Carosello post"
 
-#: src/blocks/post-carousel/edit.js:184 src/blocks/posts/edit.js:295
+#: src/blocks/post-carousel/edit.js:184
+#: src/blocks/posts/edit.js:295
 msgid "No posts found. Start publishing or add posts from an %s feed."
-msgstr ""
-"Nessun post trovato. Inizia pubblicando o aggiungendo post da un feed %s."
+msgstr "Nessun post trovato. Inizia pubblicando o aggiungendo post da un feed %s."
 
-#: src/blocks/post-carousel/edit.js:187 src/blocks/posts/edit.js:298
+#: src/blocks/post-carousel/edit.js:187
+#: src/blocks/posts/edit.js:298
 msgid "Retrieve an External Feed"
 msgstr "Recupera un feed esterno"
 
-#: src/blocks/post-carousel/edit.js:193 src/blocks/posts/edit.js:304
+#: src/blocks/post-carousel/edit.js:193
+#: src/blocks/posts/edit.js:304
 msgid "Use External Feed"
 msgstr "Usa feed esterno"
 
 #. %s: RSS
-#: src/blocks/post-carousel/edit.js:216 src/blocks/posts/edit.js:332
+#: src/blocks/post-carousel/edit.js:216
+#: src/blocks/posts/edit.js:332
 msgid "%s Feed"
 msgstr "Feed %s"
 
-#: src/blocks/post-carousel/edit.js:217 src/blocks/posts/edit.js:333
+#: src/blocks/post-carousel/edit.js:217
+#: src/blocks/posts/edit.js:333
 msgid "%s URLs are generally located at the /feed/ directory of a site."
 msgstr "Gli URL %s si trovano generalmente nella directory /feed/ del sito."
 
-#: src/blocks/post-carousel/edit.js:221 src/blocks/posts/edit.js:337
+#: src/blocks/post-carousel/edit.js:221
+#: src/blocks/posts/edit.js:337
 msgid "https://example.com/feed…"
 msgstr "https://example.com/feed…"
 
-#: src/blocks/post-carousel/edit.js:227 src/blocks/posts/edit.js:343
+#: src/blocks/post-carousel/edit.js:227
+#: src/blocks/posts/edit.js:343
 msgid "Use URL"
 msgstr "Usa URL"
 
-#: src/blocks/post-carousel/edit.js:320 src/blocks/posts/edit.js:463
-#: src/blocks/post-carousel/index.php:368 src/blocks/posts/index.php:385
+#: src/blocks/post-carousel/edit.js:320
+#: src/blocks/posts/edit.js:463
+#: src/blocks/post-carousel/index.php:368
+#: src/blocks/posts/index.php:385
 msgid "Read more"
 msgstr "Per saperne di più"
 
@@ -1379,7 +1380,8 @@ msgstr "Per saperne di più"
 msgid "Display posts or an external blog feed as a carousel."
 msgstr "Visualizza post o un feed di blog esterno sotto forma di carosello."
 
-#: src/blocks/post-carousel/inspector.js:108 src/blocks/posts/inspector.js:174
+#: src/blocks/post-carousel/inspector.js:108
+#: src/blocks/posts/inspector.js:174
 msgid "Number of posts"
 msgstr "Numero di post"
 
@@ -1387,43 +1389,53 @@ msgstr "Numero di post"
 msgid "Post Carousel Settings"
 msgstr "Impostazioni carosello post"
 
-#: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
+#: src/blocks/post-carousel/inspector.js:41
+#: src/blocks/posts/inspector.js:81
 msgid "Post Date"
 msgstr "Data post"
 
-#: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
+#: src/blocks/post-carousel/inspector.js:45
+#: src/blocks/posts/inspector.js:85
 msgid "Showing the publish date."
 msgstr "Visualizzazione della data di pubblicazione."
 
-#: src/blocks/post-carousel/inspector.js:46 src/blocks/posts/inspector.js:86
+#: src/blocks/post-carousel/inspector.js:46
+#: src/blocks/posts/inspector.js:86
 msgid "Toggle to show the publish date."
 msgstr "Commuta per visualizzare la data di pubblicazione."
 
-#: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
+#: src/blocks/post-carousel/inspector.js:51
+#: src/blocks/posts/inspector.js:91
 msgid "Post Content"
 msgstr "Pubblica contenuto"
 
-#: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
+#: src/blocks/post-carousel/inspector.js:55
+#: src/blocks/posts/inspector.js:95
 msgid "Showing the post content."
 msgstr "Visualizzazione del contenuto del post."
 
-#: src/blocks/post-carousel/inspector.js:56 src/blocks/posts/inspector.js:96
+#: src/blocks/post-carousel/inspector.js:56
+#: src/blocks/posts/inspector.js:96
 msgid "Toggle to show the post content."
 msgstr "Commuta per visualizzare il contenuto del post."
 
-#: src/blocks/post-carousel/inspector.js:62 src/blocks/posts/inspector.js:102
+#: src/blocks/post-carousel/inspector.js:62
+#: src/blocks/posts/inspector.js:102
 msgid "Max words in content"
 msgstr "Num. max parole del contenuto"
 
-#: src/blocks/post-carousel/inspector.js:86 src/blocks/posts/inspector.js:152
+#: src/blocks/post-carousel/inspector.js:86
+#: src/blocks/posts/inspector.js:152
 msgid "Feed Settings"
 msgstr "Impostazioni feed"
 
-#: src/blocks/post-carousel/inspector.js:90 src/blocks/posts/inspector.js:156
+#: src/blocks/post-carousel/inspector.js:90
+#: src/blocks/posts/inspector.js:156
 msgid "My Blog"
 msgstr "Il mio blog"
 
-#: src/blocks/post-carousel/inspector.js:91 src/blocks/posts/inspector.js:157
+#: src/blocks/post-carousel/inspector.js:91
+#: src/blocks/posts/inspector.js:157
 msgid "External Feed"
 msgstr "Feed esterno"
 
@@ -1443,7 +1455,8 @@ msgstr "Post del blog"
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
 msgstr "Visualizza i post o un feed RSS come schede orizzontali impilate."
 
-#: src/blocks/posts/inspector.js:129 src/blocks/posts/inspector.js:121
+#: src/blocks/posts/inspector.js:129
+#: src/blocks/posts/inspector.js:121
 msgid "Thumbnail Size"
 msgstr "Dimensioni miniatura"
 
@@ -1478,9 +1491,7 @@ msgstr "Piano %d"
 
 #: src/blocks/pricing-table/index.js:29
 msgid "Add pricing tables to help visitors compare products and plans."
-msgstr ""
-"Aggiungi tabelle prezzi per aiutare i visitatori a confrontare prodotti e "
-"piani."
+msgstr "Aggiungi tabelle prezzi per aiutare i visitatori a confrontare prodotti e piani."
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:112
 msgid "Add features"
@@ -1500,8 +1511,7 @@ msgstr "$"
 
 #: src/blocks/pricing-table/pricing-table-item/index.js:27
 msgid "A pricing table to help visitors compare products and plans."
-msgstr ""
-"Tabella prezzi per aiutare i visitatori a confrontare prodotti e piani."
+msgstr "Tabella prezzi per aiutare i visitatori a confrontare prodotti e piani."
 
 #: src/blocks/row/column/edit.js:90
 msgid "Add background to column"
@@ -1515,7 +1525,8 @@ msgstr "Il figlio diretto di una riga."
 msgid "Column Settings"
 msgstr "Impostazioni colonna"
 
-#: src/blocks/row/column/inspector.js:112 src/blocks/row/inspector.js:158
+#: src/blocks/row/column/inspector.js:112
+#: src/blocks/row/inspector.js:158
 msgid "Space around the container."
 msgstr "Spazio attorno al contenitore."
 
@@ -1585,7 +1596,8 @@ msgstr "Seleziona il numero di colonne per questa riga."
 msgid "Select Row Columns"
 msgstr "Seleziona colonne riga"
 
-#: src/blocks/row/edit.js:236 src/blocks/row/inspector.js:121
+#: src/blocks/row/edit.js:236
+#: src/blocks/row/inspector.js:121
 msgid "Select Row Layout"
 msgstr "Seleziona layout riga"
 
@@ -1594,12 +1606,8 @@ msgid "Back to Columns"
 msgstr "Torna a colonne"
 
 #: src/blocks/row/index.js:38
-msgid ""
-"Add a structured wrapper for column blocks, then add content blocks you’d "
-"like to the columns."
-msgstr ""
-"Aggiungi un involucro strutturato per i blocchi di colonne, quindi aggiungi "
-"i blocchi di contenuti che desideri alle colonne."
+msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
+msgstr "Aggiungi un involucro strutturato per i blocchi di colonne, quindi aggiungi i blocchi di contenuti che desideri alle colonne."
 
 #: src/blocks/row/inspector.js:153
 msgid "Row Settings"
@@ -1725,9 +1733,7 @@ msgstr "Ruota verticalmente"
 
 #: src/blocks/shape-divider/index.js:29
 msgid "Add a shape divider to visually distinquish page sections."
-msgstr ""
-"Aggiungi un separatore forma per distinguere visivamente le sezioni della "
-"pagina."
+msgstr "Aggiungi un separatore forma per distinguere visivamente le sezioni della pagina."
 
 #: src/blocks/shape-divider/inspector.js:53
 msgid "Divider Settings"
@@ -1745,15 +1751,18 @@ msgstr "Altezza sfondo in pixel"
 msgid "Shape Color"
 msgstr "Colore forma"
 
-#: src/blocks/share/edit.js:113 src/blocks/share/index.php:132
+#: src/blocks/share/edit.js:113
+#: src/blocks/share/index.php:132
 msgid "Share on Facebook"
 msgstr "Condividi su Facebook"
 
-#: src/blocks/share/edit.js:121 src/blocks/share/index.php:136
+#: src/blocks/share/edit.js:121
+#: src/blocks/share/index.php:136
 msgid "Share on Twitter"
 msgstr "Condividi su Twitter"
 
-#: src/blocks/share/edit.js:129 src/blocks/share/index.php:140
+#: src/blocks/share/edit.js:129
+#: src/blocks/share/index.php:140
 msgid "Share on Pinterest"
 msgstr "Condivisi su Pinterest"
 
@@ -1761,27 +1770,29 @@ msgstr "Condivisi su Pinterest"
 msgid "Share on LinkedIn"
 msgstr "Condividi su LinkedIn"
 
-#: src/blocks/share/edit.js:145 src/blocks/share/index.php:148
+#: src/blocks/share/edit.js:145
+#: src/blocks/share/index.php:148
 msgid "Share via Email"
 msgstr "Condividi via email"
 
-#: src/blocks/share/edit.js:153 src/blocks/share/index.php:152
+#: src/blocks/share/edit.js:153
+#: src/blocks/share/index.php:152
 msgid "Share on Tumblr"
 msgstr "Condividi su Tumblr"
 
-#: src/blocks/share/edit.js:161 src/blocks/share/index.php:156
+#: src/blocks/share/edit.js:161
+#: src/blocks/share/index.php:156
 msgid "Share on Google"
 msgstr "Condividi su Google"
 
-#: src/blocks/share/edit.js:169 src/blocks/share/index.php:160
+#: src/blocks/share/edit.js:169
+#: src/blocks/share/index.php:160
 msgid "Share on Reddit"
 msgstr "Condividi su Reddit"
 
 #: src/blocks/share/index.js:25
 msgid "Add social sharing links to help you get likes and shares."
-msgstr ""
-"Aggiungi dei link di condivisione sui social network per ottenere like e "
-"favorire la condivisione."
+msgstr "Aggiungi dei link di condivisione sui social network per ottenere like e favorire la condivisione."
 
 #: src/blocks/share/inspector.js:113
 #: src/blocks/social-profiles/inspector.js:117
@@ -1807,26 +1818,31 @@ msgstr "Dimensione pulsante"
 msgid "Icons"
 msgstr "Icone"
 
-#: src/blocks/share/inspector.js:157 src/blocks/social-profiles/edit.js:205
+#: src/blocks/share/inspector.js:157
+#: src/blocks/social-profiles/edit.js:205
 #: src/blocks/social-profiles/index.php:71
 msgid "Twitter"
 msgstr "Twitter"
 
-#: src/blocks/share/inspector.js:162 src/blocks/social-profiles/edit.js:159
+#: src/blocks/share/inspector.js:162
+#: src/blocks/social-profiles/edit.js:159
 #: src/blocks/social-profiles/index.php:67
 msgid "Facebook"
 msgstr "Facebook"
 
-#: src/blocks/share/inspector.js:167 src/blocks/social-profiles/edit.js:299
+#: src/blocks/share/inspector.js:167
+#: src/blocks/social-profiles/edit.js:299
 #: src/blocks/social-profiles/index.php:79
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: src/blocks/share/inspector.js:172 src/blocks/social-profiles/edit.js:347
+#: src/blocks/share/inspector.js:172
+#: src/blocks/social-profiles/edit.js:347
 msgid "LinkedIn"
 msgstr "Linkedin"
 
-#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
+#: src/blocks/share/inspector.js:177
+#: includes/class-coblocks-form.php:234
 #: includes/class-coblocks-form.php:319
 msgid "Email"
 msgstr "Email"
@@ -1843,14 +1859,15 @@ msgstr "Google"
 msgid "Reddit"
 msgstr "Reddit"
 
-#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:36
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:36
 msgid "Share button colors are enabled."
 msgstr "I colori del pulsante di condivisone sono abilitati."
 
-#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:37
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:37
 msgid "Toggle to use official colors from each social media platform."
-msgstr ""
-"Alterna l’uso dei colori ufficiali di ciascuna piattaforma di social media."
+msgstr "Alterna l’uso dei colori ufficiali di ciascuna piattaforma di social media."
 
 #: src/blocks/social-profiles/edit.js:142
 msgid "Add Facebook Profile"
@@ -2335,9 +2352,7 @@ msgstr "Pausa della riproduzione automatica al passaggio del mouse."
 
 #: src/components/slider-panel/index.js:46
 msgid "Toggle to pause autoplay when hovered."
-msgstr ""
-"Commuta per attivare la pausa della riproduzione automatica al passaggio del "
-"mouse."
+msgstr "Commuta per attivare la pausa della riproduzione automatica al passaggio del mouse."
 
 #: src/components/slider-panel/index.js:50
 msgid "Scrolling without fixed slides enabled."
@@ -2409,9 +2424,7 @@ msgstr "Velocità di risposta abilitata."
 
 #: src/extensions/advanced-controls/index.js:117
 msgid "Toggle to stack elements on top of each other on smaller viewports."
-msgstr ""
-"Alterna l’impilamento degli elementi uno sull’altro in riquadri di piccole "
-"dimensioni."
+msgstr "Alterna l’impilamento degli elementi uno sull’altro in riquadri di piccole dimensioni."
 
 #: src/extensions/advanced-controls/index.js:125
 msgid "Remove Top Spacing"
@@ -2453,7 +2466,8 @@ msgstr "Alterna la visualizzazione del pulsante a tutta larghezza."
 msgid "Crop Settings"
 msgstr "Impostazioni ritaglio"
 
-#: src/formats/uppercase/index.js:35 src/formats/uppercase/index.js:20
+#: src/formats/uppercase/index.js:35
+#: src/formats/uppercase/index.js:20
 msgid "Uppercase"
 msgstr "Tutto maiuscolo"
 
@@ -2475,9 +2489,7 @@ msgstr "Cerca un blocco"
 
 #: src/sidebars/block-manager/components/options/disable-blocks.js:170
 msgid "This block is added to the page and cannot currently be disabled"
-msgstr ""
-"Questo blocco è stato aggiunto alla pagina e al momento non può essere "
-"disabilitato"
+msgstr "Questo blocco è stato aggiunto alla pagina e al momento non può essere disabilitato"
 
 #: src/sidebars/block-manager/components/options/disable-blocks.js:185
 msgid "Disable all"
@@ -2547,12 +2559,14 @@ msgctxt "block keyword"
 msgid "link"
 msgstr "link"
 
-#: src/blocks/buttons/index.js:31 src/blocks/hero/index.js:43
+#: src/blocks/buttons/index.js:31
+#: src/blocks/hero/index.js:43
 msgctxt "block keyword"
 msgid "cta"
 msgstr "cta"
 
-#: src/blocks/click-to-tweet/index.js:31 src/blocks/social-profiles/index.js:28
+#: src/blocks/click-to-tweet/index.js:31
+#: src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "share"
 msgstr "condividi"
@@ -2720,7 +2734,8 @@ msgctxt "block keyword"
 msgid "paragraph"
 msgstr "paragrafo"
 
-#: src/blocks/icon/index.js:35 src/blocks/social-profiles/index.js:28
+#: src/blocks/icon/index.js:35
+#: src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "icons"
 msgstr "icone"
@@ -2775,7 +2790,8 @@ msgctxt "block keyword"
 msgid "slider"
 msgstr "dispositivo di scorrimento"
 
-#: src/blocks/post-carousel/index.js:29 src/blocks/posts/index.js:29
+#: src/blocks/post-carousel/index.js:29
+#: src/blocks/posts/index.js:29
 msgctxt "block keyword"
 msgid "latest"
 msgstr "più recente"
@@ -3178,27 +3194,32 @@ msgctxt "block style"
 msgid "Pointed"
 msgstr "Appuntito"
 
-#: src/blocks/share/index.js:30 src/blocks/social-profiles/index.js:30
+#: src/blocks/share/index.js:30
+#: src/blocks/social-profiles/index.js:30
 msgctxt "block style"
 msgid "Mask"
 msgstr "Maschera"
 
-#: src/blocks/share/index.js:31 src/blocks/social-profiles/index.js:31
+#: src/blocks/share/index.js:31
+#: src/blocks/social-profiles/index.js:31
 msgctxt "block style"
 msgid "Icon"
 msgstr "Icona"
 
-#: src/blocks/share/index.js:32 src/blocks/social-profiles/index.js:32
+#: src/blocks/share/index.js:32
+#: src/blocks/social-profiles/index.js:32
 msgctxt "block style"
 msgid "Text"
 msgstr "Testo"
 
-#: src/blocks/share/index.js:33 src/blocks/social-profiles/index.js:33
+#: src/blocks/share/index.js:33
+#: src/blocks/social-profiles/index.js:33
 msgctxt "block style"
 msgid "Icon & Text"
 msgstr "Icona e testo"
 
-#: src/blocks/share/index.js:34 src/blocks/social-profiles/index.js:34
+#: src/blocks/share/index.js:34
+#: src/blocks/social-profiles/index.js:34
 msgctxt "block style"
 msgid "Circular"
 msgstr "Circolare"
@@ -3241,9 +3262,7 @@ msgstr "Aggiungi contenuto caratteristica"
 #: src/blocks/features/feature/edit.js:32
 msgctxt "content placeholder"
 msgid "This is a feature block that you can use to highlight features."
-msgstr ""
-"Questo blocco caratteristiche può essere utilizzato per evidenziare delle "
-"caratteristiche."
+msgstr "Questo blocco caratteristiche può essere utilizzato per evidenziare delle caratteristiche."
 
 #: src/blocks/hero/edit.js:35
 msgctxt "content placeholder"
@@ -3252,12 +3271,8 @@ msgstr "Aggiungi intestazione hero..."
 
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
-msgid ""
-"Add hero content, which is typically an introductory area of a page "
-"accompanied by call to action or two."
-msgstr ""
-"Aggiungi il contenuto hero, che in genere corrisponde a un’area introduttiva "
-"della pagina accompagnata da uno o due inviti all’azione."
+msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
+msgstr "Aggiungi il contenuto hero, che in genere corrisponde a un’area introduttiva della pagina accompagnata da uno o due inviti all’azione."
 
 #: src/blocks/hero/edit.js:39
 msgctxt "content placeholder"
@@ -3286,13 +3301,8 @@ msgstr "Aggiungi contenuto..."
 
 #: src/blocks/media-card/edit.js:47
 msgctxt "content placeholder"
-msgid ""
-"Replace this text with descriptive copy to go along with the card image. "
-"Then add more blocks to this card, such as buttons, lists or images."
-msgstr ""
-"Sostituisci questo testo con il testo descrittivo che deve accompagnare "
-"l’immagine della scheda. Quindi aggiungi altri blocchi alla scheda, come "
-"pulsanti, elenchi o immagini."
+msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
+msgstr "Sostituisci questo testo con il testo descrittivo che deve accompagnare l’immagine della scheda. Quindi aggiungi altri blocchi alla scheda, come pulsanti, elenchi o immagini."
 
 #: src/blocks/services/service/edit.js:205
 msgctxt "content placeholder"
@@ -3335,7 +3345,8 @@ msgctxt "label for small gutter option"
 msgid "Small"
 msgstr "Piccolo"
 
-#: src/blocks/gallery-collage/inspector.js:89 src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:89
+#: src/blocks/posts/inspector.js:58
 #: src/blocks/gallery-collage/inspector.js:61
 msgctxt "abbreviation for \"Small\" size"
 msgid "S"
@@ -3346,7 +3357,8 @@ msgctxt "label for medium gutter option"
 msgid "Medium"
 msgstr "Medio"
 
-#: src/blocks/gallery-collage/inspector.js:94 src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:94
+#: src/blocks/posts/inspector.js:63
 #: src/blocks/gallery-collage/inspector.js:66
 msgctxt "abbreviation for \"Medium\" size"
 msgid "M"
@@ -3357,7 +3369,8 @@ msgctxt "label for large gutter option"
 msgid "Large"
 msgstr "Grande"
 
-#: src/blocks/gallery-collage/inspector.js:99 src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:99
+#: src/blocks/posts/inspector.js:68
 #: src/blocks/gallery-collage/inspector.js:71
 msgctxt "abbreviation for \"Large\" size"
 msgid "L"
@@ -3498,7 +3511,8 @@ msgctxt "label"
 msgid "Hub"
 msgstr "Hub"
 
-#: src/blocks/icon/svgs.js:208 src/blocks/icon/svgs.js:202
+#: src/blocks/icon/svgs.js:208
+#: src/blocks/icon/svgs.js:202
 msgctxt "label"
 msgid "Email"
 msgstr "Email"
@@ -3703,7 +3717,8 @@ msgctxt "label"
 msgid "Brush"
 msgstr "Spazzola"
 
-#: src/blocks/icon/svgs.js:109 src/blocks/icon/svgs.js:103
+#: src/blocks/icon/svgs.js:109
+#: src/blocks/icon/svgs.js:103
 msgctxt "tags"
 msgid "add minus circle insert plus round math"
 msgstr "addizione sottrazione cerchio inserire più arrotondare matematica"
@@ -3736,8 +3751,7 @@ msgstr "codice greco matematica"
 #: src/blocks/icon/svgs.js:143
 msgctxt "tags"
 msgid "drawing doodle art creative type font pencil marker"
-msgstr ""
-"disegnare scarabocchio arte creatività carattere font matita evidenziatore"
+msgstr "disegnare scarabocchio arte creatività carattere font matita evidenziatore"
 
 #: src/blocks/icon/svgs.js:15
 msgctxt "tags"
@@ -3754,7 +3768,8 @@ msgctxt "tags"
 msgid "rate vote plus favorite like"
 msgstr "classificare votare più preferito like"
 
-#: src/blocks/icon/svgs.js:177 src/blocks/icon/svgs.js:166
+#: src/blocks/icon/svgs.js:177
+#: src/blocks/icon/svgs.js:166
 msgctxt "tags"
 msgid "computer apple montior device pc desk office"
 msgstr "computer apple monitor dispositivo pc scrivania ufficio"
@@ -3769,7 +3784,8 @@ msgctxt "tags"
 msgid "device apple mac"
 msgstr "dispositivo apple mac"
 
-#: src/blocks/icon/svgs.js:193 src/blocks/icon/svgs.js:172
+#: src/blocks/icon/svgs.js:193
+#: src/blocks/icon/svgs.js:172
 msgctxt "tags"
 msgid "computer ipad surface apple device pc desk office"
 msgstr "computer ipad navigare apple dispositivo pc scrivania ufficio"
@@ -3784,7 +3800,8 @@ msgctxt "tags"
 msgid "music microphone podcast song artist creative media audio"
 msgstr "musica microfono podcast brano artista creatività media audio"
 
-#: src/blocks/icon/svgs.js:209 src/blocks/icon/svgs.js:203
+#: src/blocks/icon/svgs.js:209
+#: src/blocks/icon/svgs.js:203
 msgctxt "tags"
 msgid "email mail os read letter"
 msgstr "email posta sistema operativo leggere lettera"
@@ -3837,11 +3854,10 @@ msgstr "divertimento party felicità celebrazione gusto cibo"
 #: src/blocks/icon/svgs.js:280
 msgctxt "tags"
 msgid "petal scent smell nice relax landscape gardening outdoors outside"
-msgstr ""
-"petalo profumo annusare bello relax paesaggio giardinaggio aria aperta "
-"esterno"
+msgstr "petalo profumo annusare bello relax paesaggio giardinaggio aria aperta esterno"
 
-#: src/blocks/icon/svgs.js:292 src/blocks/icon/svgs.js:230
+#: src/blocks/icon/svgs.js:292
+#: src/blocks/icon/svgs.js:230
 msgctxt "tags"
 msgid "blocks block box boxes square build widgets"
 msgstr "blocchi blocco casella caselle quadrato creare widget"
@@ -3876,7 +3892,8 @@ msgctxt "tags"
 msgid "microphone audio beats bose headphones"
 msgstr "microfono audio beat bose cuffie"
 
-#: src/blocks/icon/svgs.js:325 src/blocks/icon/svgs.js:286
+#: src/blocks/icon/svgs.js:325
+#: src/blocks/icon/svgs.js:286
 msgctxt "tags"
 msgid "flower camera photography artist creative"
 msgstr "fiore fotocamera fotografia artista creatività"
@@ -3911,19 +3928,16 @@ msgctxt "tags"
 msgid "improve add upload software"
 msgstr "migliorare aggiungere caricare software"
 
-#: src/blocks/icon/svgs.js:37 src/blocks/icon/svgs.js:26
+#: src/blocks/icon/svgs.js:37
+#: src/blocks/icon/svgs.js:26
 msgctxt "tags"
 msgid "music microphone song artist creative media audio"
 msgstr "musica microfono brano artista creatività media audio"
 
 #: src/blocks/icon/svgs.js:43
 msgctxt "tags"
-msgid ""
-"microphone podcast computer device music microphone song artist creative "
-"media audio"
-msgstr ""
-"microfono podcast computer dispositivo musica brano artista creatività media "
-"audio"
+msgid "microphone podcast computer device music microphone song artist creative media audio"
+msgstr "microfono podcast computer dispositivo musica brano artista creatività media audio"
 
 #: src/blocks/icon/svgs.js:49
 msgctxt "tags"
@@ -3947,14 +3961,11 @@ msgstr "film videografia regista produttore media creatività"
 
 #: src/blocks/icon/svgs.js:73
 msgctxt "tags"
-msgid ""
-"video videography director producer media creative camera photographer "
-"photography aperture"
-msgstr ""
-"film videografia regista produttore media creatività fotocamera fotografo "
-"fotografia apertura"
+msgid "video videography director producer media creative camera photographer photography aperture"
+msgstr "film videografia regista produttore media creatività fotocamera fotografo fotografia apertura"
 
-#: src/blocks/icon/svgs.js:85 src/blocks/icon/svgs.js:79
+#: src/blocks/icon/svgs.js:85
+#: src/blocks/icon/svgs.js:79
 msgctxt "tags"
 msgid "palette design colors artist paint creative media"
 msgstr "tavolozza progetto colori artista dipingere creatività media"
@@ -4029,8 +4040,10 @@ msgctxt "block styles"
 msgid "Checkbox"
 msgstr "Casella di controllo"
 
-#: src/blocks/post-carousel/edit.js:302 src/blocks/posts/edit.js:437
-#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
+#: src/blocks/post-carousel/edit.js:302
+#: src/blocks/posts/edit.js:437
+#: src/blocks/post-carousel/index.php:185
+#: src/blocks/posts/index.php:202
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
 msgstr "(nessun titolo)"
@@ -4148,8 +4161,7 @@ msgid "Repeat Vertically"
 msgstr "Ripeti verticalmente"
 
 #: src/components/block-gallery/gallery-link-settings.js:80
-msgctxt ""
-"HTML attribute that specifies the a relationship between the two pages."
+msgctxt "HTML attribute that specifies the a relationship between the two pages."
 msgid "Link Rel"
 msgstr "Link relazionale"
 
@@ -4269,16 +4281,8 @@ msgid "https://coblocks.com"
 msgstr "https://coblocks.com"
 
 #. Description of the plugin
-msgid ""
-"CoBlocks is a suite of professional <strong>page building content blocks</"
-"strong> for the WordPress Gutenberg block editor. Our blocks are hyper-"
-"focused on empowering makers to build beautifully rich pages in WordPress."
-msgstr ""
-"CoBlocks è una suite professionale di <strong>blocchi di contenuto per la "
-"creazione di pagine web</strong> con l’editor di blocchi Gutenberg di "
-"WordPress. I nostri blocchi sono appositamente studiati per consentire agli "
-"sviluppatori di creare pagine web accattivanti e ricche di contenuti in "
-"WordPress."
+msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
+msgstr "CoBlocks è una suite professionale di <strong>blocchi di contenuto per la creazione di pagine web</strong> con l’editor di blocchi Gutenberg di WordPress. I nostri blocchi sono appositamente studiati per consentire agli sviluppatori di creare pagine web accattivanti e ricche di contenuti in WordPress."
 
 #. Author of the plugin
 msgid "GoDaddy"
@@ -4288,9 +4292,10 @@ msgstr "GoDaddy"
 msgid "https://www.godaddy.com"
 msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:84 class-coblocks.php:96
+#: class-coblocks.php:84
+#: class-coblocks.php:96
 msgid "Cheating huh?"
-msgstr "Scherzi?"
+msgstr "Accesso non consentito"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Review CoBlocks on WordPress.org"
@@ -4301,25 +4306,13 @@ msgid "Leave a Review"
 msgstr "Scrivi una recensione"
 
 #: includes/admin/class-coblocks-getting-started-page.php:120
-msgid ""
-"Thanks for choosing CoBlocks, the premier page builder for the new WordPress "
-"block editor."
-msgstr ""
-"Grazie per aver scelto CoBlocks, la più completa suite per la creazione di "
-"pagine per il nuovo editor di blocchi WordPress."
+msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
+msgstr "Grazie per aver scelto CoBlocks, la più completa suite per la creazione di pagine per il nuovo editor di blocchi WordPress."
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
 #: includes/admin/class-coblocks-getting-started-page.php:126
-msgid ""
-"You've just added lots of useful blocks and a new page builder toolkit to "
-"the WordPress editor. CoBlocks gives you a game-changing set of features: "
-"%1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom "
-"typography controls%2$s."
-msgstr ""
-"Hai appena aggiunto tanti utili blocchi e un nuovo toolkit per la creazione "
-"di pagine nell’editor WordPress. CoBlocks offre una serie di rivoluzionarie "
-"funzioni: %1$s decine di blocchi%2$s, un’%1$sesperienza di creazione pagine "
-"senza confronti%2$s e %1$scontrolli tipografici personalizzati%2$s."
+msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
+msgstr "Hai appena aggiunto tanti utili blocchi e un nuovo toolkit per la creazione di pagine nell’editor WordPress. CoBlocks offre una serie di funzioni rivoluzionarie: %1$sdecine di blocchi%2$s, un’%1$sesperienza di creazione pagine senza confronti%2$s e %1$scontrolli tipografici personalizzati%2$s."
 
 #: includes/admin/class-coblocks-getting-started-page.php:133
 msgid "Here are a few videos to help you get started:"
@@ -4337,7 +4330,7 @@ msgstr "Guarda come creare la tua prima pagina"
 #: includes/admin/class-coblocks-getting-started-page.php:140
 #: includes/admin/class-coblocks-getting-started-page.php:141
 msgid "Watch how to use the Row and Shape Divider blocks"
-msgstr "Guarda come usare i blocchi Riga e Separatore forma"
+msgstr "Guarda come usare i blocchi Separatore riga e Separatore forma"
 
 #: includes/admin/class-coblocks-getting-started-page.php:143
 #: includes/admin/class-coblocks-getting-started-page.php:144
@@ -4346,23 +4339,13 @@ msgstr "Scopri come usare il blocco Scheda media"
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:152
-msgid ""
-"Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let "
-"you know when new video tutorials are released."
-msgstr ""
-"Ti piace ciò che vedi? %1$sAbbonati al nostro canale YouTube%2$s per sapere "
-"quando vengono pubblicati nuovi tutorial video."
+msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
+msgstr "Ti piace ciò che vedi? %1$sAbbonati al nostro canale YouTube%2$s per sapere quando vengono pubblicati nuovi tutorial video."
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:163
-msgid ""
-"If you have any questions or feedback, let us know on %1$sTwitter%4$s or our "
-"%2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you "
-"want to stay up to date with what's new and upcoming at CoBlocks."
-msgstr ""
-"Se hai domande o feedback, contattaci su %1$sTwitter%4$s o tramite il nostro "
-"%2$sgruppo Facebook %4$s. Inoltre, %3$sabbonati alla nostra newsletter%4$s "
-"per ricevere aggiornamenti su tutte le novità di CoBlocks."
+msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
+msgstr "Se hai domande o feedback, contattaci su %1$sTwitter%4$s o tramite il nostro %2$sgruppo Facebook %4$s. Inoltre, %3$sabbonati alla nostra newsletter%4$s per ricevere aggiornamenti su tutte le novità di CoBlocks."
 
 #: includes/admin/class-coblocks-getting-started-page.php:172
 msgid "Enjoy!"
@@ -4374,15 +4357,11 @@ msgstr "Abilita o disabilita blocchi"
 
 #: includes/class-coblocks-form.php:67
 msgid "Google reCaptcha site key for form spam protection"
-msgstr ""
-"Codice sito reCAPTCHA di Google per la protezione dalla posta indesiderata "
-"nei moduli"
+msgstr "Codice sito reCAPTCHA di Google per la protezione dalla posta indesiderata nei moduli"
 
 #: includes/class-coblocks-form.php:79
 msgid "Google reCaptcha secret key for form spam protection"
-msgstr ""
-"Codice segreto reCAPTCHA di Google per la protezione dalla posta "
-"indesiderata nei moduli"
+msgstr "Codice segreto reCAPTCHA di Google per la protezione dalla posta indesiderata nei moduli"
 
 #: includes/class-coblocks-form.php:267
 msgid "Name"
@@ -4422,18 +4401,17 @@ msgstr "Il tuo messaggio è stato inviato:"
 
 #: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
-msgstr "Chiave API Google Map per il rendering delle mappe"
+msgstr "Chiave API Google Maps per il rendering delle mappe"
 
-#: src/blocks/post-carousel/index.php:40 src/blocks/posts/index.php:40
-#, fuzzy
+#: src/blocks/post-carousel/index.php:40
+#: src/blocks/posts/index.php:40
 msgid "RSS Error:"
-msgstr "Errore"
+msgstr "RSS Error:"
 
-#: src/blocks/post-carousel/index.php:51 src/blocks/posts/index.php:51
-msgid ""
-"An error has occurred, which probably means the feed is down. Try again "
-"later."
-msgstr ""
+#: src/blocks/post-carousel/index.php:51
+#: src/blocks/posts/index.php:51
+msgid "An error has occurred, which probably means the feed is down. Try again later."
+msgstr "An error has occurred, which probably means the feed is down. Try again later."
 
 #: src/blocks/share/index.php:144
 msgid "Share on Linkedin"
@@ -4441,4 +4419,4 @@ msgstr "Condividi su LinkedIn"
 
 #: src/blocks/social-profiles/index.php:83
 msgid "Linkedin"
-msgstr "Linkedin"
+msgstr "LinkedIn"

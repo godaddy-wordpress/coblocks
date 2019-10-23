@@ -3,14 +3,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CoBlocks 1.16.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
-"POT-Creation-Date: 2019-10-18T18:40:31+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-10-18T18:40:31+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
 
@@ -24,40 +23,51 @@ msgstr "Akordeon öğe varsayılan olarak açıktır."
 
 #: src/blocks/accordion/accordion-item/inspector.js:34
 msgid "Toggle to set this accordion item to be open by default."
-msgstr ""
-"Bu akordeon öğeyi varsayılan olarak açık ayarlamak için düğmeyi tıklayın."
+msgstr "Bu akordeon öğeyi varsayılan olarak açık ayarlamak için düğmeyi tıklayın."
 
 #: src/blocks/accordion/accordion-item/inspector.js:63
 msgid "Accordion Item Settings"
 msgstr "Akordeon Öğe Ayarları"
 
 #: src/blocks/accordion/accordion-item/inspector.js:72
-#: src/blocks/alert/inspector.js:49 src/blocks/author/inspector.js:50
+#: src/blocks/alert/inspector.js:49
+#: src/blocks/author/inspector.js:50
 #: src/blocks/click-to-tweet/inspector.js:60
 #: src/blocks/dynamic-separator/inspector.js:60
 #: src/blocks/features/feature/inspector.js:92
-#: src/blocks/features/inspector.js:173 src/blocks/form/submit-button.js:118
-#: src/blocks/hero/inspector.js:137 src/blocks/highlight/inspector.js:43
-#: src/blocks/icon/inspector.js:302 src/blocks/media-card/inspector.js:132
+#: src/blocks/features/inspector.js:173
+#: src/blocks/form/submit-button.js:118
+#: src/blocks/hero/inspector.js:137
+#: src/blocks/highlight/inspector.js:43
+#: src/blocks/icon/inspector.js:302
+#: src/blocks/media-card/inspector.js:132
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
-#: src/blocks/row/column/inspector.js:165 src/blocks/row/inspector.js:211
-#: src/blocks/shape-divider/inspector.js:92 src/blocks/share/inspector.js:200
+#: src/blocks/row/column/inspector.js:165
+#: src/blocks/row/inspector.js:211
+#: src/blocks/shape-divider/inspector.js:92
+#: src/blocks/share/inspector.js:200
 #: src/blocks/social-profiles/inspector.js:206
 #: src/extensions/colors/index.js:59
 msgid "Color Settings"
 msgstr "Renk Ayarları"
 
 #: src/blocks/accordion/accordion-item/inspector.js:78
-#: src/blocks/alert/inspector.js:55 src/blocks/author/inspector.js:56
+#: src/blocks/alert/inspector.js:55
+#: src/blocks/author/inspector.js:56
 #: src/blocks/features/feature/inspector.js:110
-#: src/blocks/features/inspector.js:191 src/blocks/hero/inspector.js:150
-#: src/blocks/highlight/inspector.js:49 src/blocks/icon/inspector.js:326
+#: src/blocks/features/inspector.js:191
+#: src/blocks/hero/inspector.js:150
+#: src/blocks/highlight/inspector.js:49
+#: src/blocks/icon/inspector.js:326
 #: src/blocks/media-card/inspector.js:146
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
-#: src/blocks/row/column/inspector.js:171 src/blocks/row/inspector.js:227
-#: src/blocks/shape-divider/inspector.js:103 src/blocks/share/inspector.js:99
+#: src/blocks/row/column/inspector.js:171
+#: src/blocks/row/inspector.js:227
+#: src/blocks/shape-divider/inspector.js:103
+#: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:103
-#: src/extensions/colors/index.js:47 src/blocks/share/inspector.js:81
+#: src/extensions/colors/index.js:47
+#: src/blocks/share/inspector.js:81
 #: src/blocks/social-profiles/inspector.js:85
 msgid "Background Color"
 msgstr "Arkaplan Rengi"
@@ -80,15 +90,11 @@ msgstr "Internet Explorer Desteği"
 
 #: src/blocks/accordion/inspector.js:31
 msgid "Add support for Internet Explorer by loading a JavaScript polyfill."
-msgstr ""
-"Bir JavaScript polyfill’i yükleyerek Internet Explorer desteği ekleyin."
+msgstr "Bir JavaScript polyfill’i yükleyerek Internet Explorer desteği ekleyin."
 
 #: src/blocks/accordion/inspector.js:31
-msgid ""
-"Supporting Internet Explorer by loading a JavaScript polyfill on this page."
-msgstr ""
-"Bu sayfaya bir JavaScript polyfill’i yükleyerek Internet Explorer’ı "
-"desteklemek."
+msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
+msgstr "Bu sayfaya bir JavaScript polyfill’i yükleyerek Internet Explorer’ı desteklemek."
 
 #: src/blocks/alert/index.js:29
 msgid "Provide contextual feedback messages or notices."
@@ -99,23 +105,21 @@ msgid "This is an alert block"
 msgstr "Bu satır bir uyarı satırıdır"
 
 #: src/blocks/alert/index.js:46
-msgid ""
-"An alert is a message that displays outside the flow of typical content. "
-"Alerts provide contextual feedback, typically asking readers to take an "
-"action."
-msgstr ""
-"Uyarılar, genel içeriğin dışında gösterilen mesajlardır. Uyarılar, "
-"okuyucuların genellikle eyleme geçmesini gerektiren bağlamsal geri "
-"bildirimlerdir."
+msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
+msgstr "Uyarılar, genel içeriğin dışında gösterilen mesajlardır. Uyarılar, okuyucuların genellikle eyleme geçmesini gerektiren bağlamsal geri bildirimlerdir."
 
-#: src/blocks/alert/inspector.js:60 src/blocks/author/inspector.js:61
+#: src/blocks/alert/inspector.js:60
+#: src/blocks/author/inspector.js:61
 #: src/blocks/click-to-tweet/inspector.js:66
 #: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:195 src/blocks/hero/inspector.js:155
+#: src/blocks/features/inspector.js:195
+#: src/blocks/hero/inspector.js:155
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
-#: src/blocks/row/column/inspector.js:176 src/blocks/row/inspector.js:232
-#: src/blocks/share/inspector.js:66 src/blocks/social-profiles/inspector.js:95
+#: src/blocks/row/column/inspector.js:176
+#: src/blocks/row/inspector.js:232
+#: src/blocks/share/inspector.js:66
+#: src/blocks/social-profiles/inspector.js:95
 #: src/extensions/colors/index.js:54
 msgid "Text Color"
 msgstr "Metin Rengi"
@@ -133,12 +137,8 @@ msgstr "Yazar adı girin..."
 #. placeholder text used for the biography
 #. translators: placeholder text used for the biography
 #: src/blocks/author/edit.js:141
-msgid ""
-"Write a biography that distills objective credibility and authority to your "
-"readers…"
-msgstr ""
-"Okuyucularınızın nezdinde tarafsız bir şekilde güven ve güç kazanmanızı "
-"sağlayacak bir biyografi yazın..."
+msgid "Write a biography that distills objective credibility and authority to your readers…"
+msgstr "Okuyucularınızın nezdinde tarafsız bir şekilde güven ve güç kazanmanızı sağlayacak bir biyografi yazın..."
 
 #: src/blocks/author/index.js:29
 msgid "Add an author biography to build credibility and authority."
@@ -146,9 +146,7 @@ msgstr "Güven ve güç inşa etmek üzere bir yazar biyografisi ekleyin."
 
 #: src/blocks/author/index.js:35
 msgid "Born to express, not to impress. A maker making the world I want."
-msgstr ""
-"Göz boyamak için değil, tüm dürüstlüğümle var olmak için buradayım. "
-"Ürettiklerimle istediğim dünyayı yaratmaya çalışıyorum."
+msgstr "Göz boyamak için değil, tüm dürüstlüğümle var olmak için buradayım. Ürettiklerimle istediğim dünyayı yaratmaya çalışıyorum."
 
 #: src/blocks/author/inspector.js:41
 msgid "Author Settings"
@@ -156,9 +154,7 @@ msgstr "Yazar Ayarları"
 
 #: src/blocks/buttons/index.js:29
 msgid "Prompt visitors to take action with multiple buttons, side by side."
-msgstr ""
-"Yan yana yerleştireceğiniz düğmeler aracılığıyla ziyaretçilerinizi işlem "
-"yapmaya yönlendirin."
+msgstr "Yan yana yerleştireceğiniz düğmeler aracılığıyla ziyaretçilerinizi işlem yapmaya yönlendirin."
 
 #: src/blocks/buttons/inspector.js:30
 msgid "Buttons"
@@ -196,12 +192,8 @@ msgid "Add a quote for readers to tweet via Twitter."
 msgstr "Kullanıcılarınızın Twitter’da paylaşabileceği bir alıntı ekleyin."
 
 #: src/blocks/click-to-tweet/index.js:34
-msgid ""
-"The easiest way to promote and advertise your blog, website, and business on "
-"Twitter."
-msgstr ""
-"Twitter’da blog sayfanızı, web sitenizi ve işletmenizi tanıtarak bunların "
-"reklamını yapmanın en kolay yolu."
+msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
+msgstr "Twitter’da blog sayfanızı, web sitenizi ve işletmenizi tanıtarak bunların reklamını yapmanın en kolay yolu."
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
@@ -209,7 +201,8 @@ msgid "Text Settings"
 msgstr "Metin Ayarları"
 
 #: src/blocks/click-to-tweet/inspector.js:71
-#: src/blocks/form/submit-button.js:127 src/blocks/share/inspector.js:86
+#: src/blocks/form/submit-button.js:127
+#: src/blocks/share/inspector.js:86
 #: src/blocks/social-profiles/inspector.js:90
 msgid "Button Color"
 msgstr "Düğme Rengi"
@@ -220,7 +213,8 @@ msgstr "Diğer bloklar arasına yeniden boyutlandırılabilir bir ayırıcı ekl
 
 #: src/blocks/dynamic-separator/inspector.js:44
 #: src/blocks/gallery-carousel/inspector.js:100
-#: src/blocks/hero/inspector.js:108 src/blocks/map/inspector.js:132
+#: src/blocks/hero/inspector.js:108
+#: src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr "Piksel cinsinden yükseklik"
 
@@ -232,7 +226,8 @@ msgstr "Dinamik ayıraç öğesi için piksel cinsinden yükseklik."
 msgid "Color"
 msgstr "Renk"
 
-#: src/blocks/features/edit.js:78 src/blocks/features/feature/edit.js:63
+#: src/blocks/features/edit.js:78
+#: src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
 msgid "Add as background"
 msgstr "Arka plan olarak ekleyin"
@@ -246,9 +241,12 @@ msgid "Feature Settings"
 msgstr "Özellik Ayarları"
 
 #: src/blocks/features/feature/inspector.js:71
-#: src/blocks/features/inspector.js:143 src/blocks/hero/inspector.js:84
-#: src/blocks/icon/inspector.js:217 src/blocks/media-card/inspector.js:62
-#: src/blocks/row/column/inspector.js:133 src/blocks/row/inspector.js:180
+#: src/blocks/features/inspector.js:143
+#: src/blocks/hero/inspector.js:84
+#: src/blocks/icon/inspector.js:217
+#: src/blocks/media-card/inspector.js:62
+#: src/blocks/row/column/inspector.js:133
+#: src/blocks/row/inspector.js:180
 #: src/components/background/panel.js:146
 msgid "Padding"
 msgstr "Doldurma"
@@ -257,7 +255,8 @@ msgstr "Doldurma"
 msgid "Add up to three columns of small notes for your product or service."
 msgstr "Ürün veya hizmetinize üç sütuna kadar küçük notlar ekleyebilirsiniz."
 
-#: src/blocks/features/inspector.js:122 src/blocks/row/column/inspector.js:111
+#: src/blocks/features/inspector.js:122
+#: src/blocks/row/column/inspector.js:111
 #: src/blocks/row/inspector.js:157
 #: src/components/dimensions-control/index.js:295
 msgid "Margin"
@@ -266,35 +265,43 @@ msgstr "Kenar boşluğu"
 #: src/blocks/features/inspector.js:164
 #: src/blocks/gallery-carousel/inspector.js:84
 #: src/blocks/gallery-collage/inspector.js:108
-#: src/blocks/gallery-stacked/inspector.js:91 src/blocks/row/inspector.js:202
+#: src/blocks/gallery-stacked/inspector.js:91
+#: src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
 #: src/blocks/gallery-carousel/inspector.js:78
 #: src/blocks/gallery-collage/inspector.js:107
 msgid "Gutter"
 msgstr "Cilt payı"
 
-#: src/blocks/features/inspector.js:167 src/blocks/row/inspector.js:205
+#: src/blocks/features/inspector.js:167
+#: src/blocks/row/inspector.js:205
 msgid "Space between each column."
 msgstr "Her sütunun arasındaki boşluk."
 
-#: src/blocks/features/inspector.js:86 src/blocks/icon/icon-size-select.js:16
-#: src/blocks/row/inspector.js:99 src/blocks/share/inspector.js:72
+#: src/blocks/features/inspector.js:86
+#: src/blocks/icon/icon-size-select.js:16
+#: src/blocks/row/inspector.js:99
+#: src/blocks/share/inspector.js:72
 #: src/blocks/social-profiles/inspector.js:76
 #: src/components/dimensions-control/dimensions-select.js:15
 #: src/components/size-control/index.js:116
 msgid "Small"
 msgstr "Küçük"
 
-#: src/blocks/features/inspector.js:87 src/blocks/icon/icon-size-select.js:21
-#: src/blocks/row/inspector.js:100 src/blocks/share/inspector.js:73
+#: src/blocks/features/inspector.js:87
+#: src/blocks/icon/icon-size-select.js:21
+#: src/blocks/row/inspector.js:100
+#: src/blocks/share/inspector.js:73
 #: src/blocks/social-profiles/inspector.js:77
 #: src/components/dimensions-control/dimensions-select.js:20
 #: src/components/size-control/index.js:120
 msgid "Medium"
 msgstr "Orta"
 
-#: src/blocks/features/inspector.js:88 src/blocks/icon/icon-size-select.js:26
-#: src/blocks/row/inspector.js:101 src/blocks/share/inspector.js:74
+#: src/blocks/features/inspector.js:88
+#: src/blocks/icon/icon-size-select.js:26
+#: src/blocks/row/inspector.js:101
+#: src/blocks/share/inspector.js:74
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:25
 #: src/components/size-control/index.js:65
@@ -305,8 +312,10 @@ msgstr "Büyük"
 msgid "Features Settings"
 msgstr "Özellik Ayarları"
 
-#: src/blocks/features/inspector.js:96 src/blocks/post-carousel/inspector.js:70
-#: src/blocks/posts/inspector.js:110 src/blocks/services/inspector.js:69
+#: src/blocks/features/inspector.js:96
+#: src/blocks/post-carousel/inspector.js:70
+#: src/blocks/posts/inspector.js:110
+#: src/blocks/services/inspector.js:69
 msgid "Columns"
 msgstr "Sütunlar"
 
@@ -431,19 +440,22 @@ msgid "Image Settings"
 msgstr "Görüntü Ayarları"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:84
-#: src/blocks/gif/inspector.js:31 src/blocks/media-card/inspector.js:95
+#: src/blocks/gif/inspector.js:31
+#: src/blocks/media-card/inspector.js:95
 #: src/blocks/services/service/inspector.js:33
 msgid "Alt Text (Alternative Text)"
 msgstr "Alt. Metin (Alternatif Metin)"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:90
-#: src/blocks/gif/inspector.js:37 src/blocks/media-card/inspector.js:101
+#: src/blocks/gif/inspector.js:37
+#: src/blocks/media-card/inspector.js:101
 #: src/blocks/services/service/inspector.js:39
 msgid "Describe the purpose of the image"
 msgstr "Görselin amacını açıklayın"
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:92
-#: src/blocks/gif/inspector.js:39 src/blocks/media-card/inspector.js:103
+#: src/blocks/gif/inspector.js:39
+#: src/blocks/media-card/inspector.js:103
 #: src/blocks/services/service/inspector.js:41
 msgid "Leave empty if the image is purely decorative."
 msgstr "Görseli sadece dekoratif amaçlı kullanıyorsanız bu kısmı boş bırakın."
@@ -458,8 +470,10 @@ msgstr "Odak Noktası"
 msgid "Display a menu or price list."
 msgstr "Menü veya fiyat listesi sergileyin."
 
-#: src/blocks/food-and-drinks/inspector.js:26 src/blocks/map/inspector.js:107
-#: src/blocks/posts/inspector.js:187 src/blocks/row/inspector.js:119
+#: src/blocks/food-and-drinks/inspector.js:26
+#: src/blocks/map/inspector.js:107
+#: src/blocks/posts/inspector.js:187
+#: src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
 msgid "Styles"
 msgstr "Stiller"
@@ -532,9 +546,7 @@ msgstr "Google reCAPTCHA"
 
 #: src/blocks/form/edit.js:296
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
-msgstr ""
-"Formunuzu istenmeyen e-postalara karşı korumak için reCAPTCHA site ve gizli "
-"anahtarlarını ekleyin."
+msgstr "Formunuzu istenmeyen e-postalara karşı korumak için reCAPTCHA site ve gizli anahtarlarını ekleyin."
 
 #: src/blocks/form/edit.js:302
 msgid "Generate keys"
@@ -556,16 +568,19 @@ msgstr "Site Anahtarı"
 msgid "Secret Key"
 msgstr "Gizli Anahtar"
 
-#: src/blocks/form/edit.js:330 src/blocks/gallery-collage/edit.js:174
+#: src/blocks/form/edit.js:330
+#: src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr "Kaydediliyor"
 
-#: src/blocks/form/edit.js:330 src/blocks/map/inspector.js:231
+#: src/blocks/form/edit.js:330
+#: src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/blocks/form/edit.js:345 src/blocks/map/inspector.js:240
+#: src/blocks/form/edit.js:345
+#: src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr "Kaldır"
 
@@ -622,9 +637,7 @@ msgstr "Ad ve soyadı toplamak için kullanılan metin alanı."
 
 #: src/blocks/form/fields/phone/index.js:21
 msgid "A phone number to allow visitors to give you a phone number."
-msgstr ""
-"Ziyaretçilerin size telefon numarasını vermesini sağlamak için kullanılan "
-"alan."
+msgstr "Ziyaretçilerin size telefon numarasını vermesini sağlamak için kullanılan alan."
 
 #: src/blocks/form/fields/radio/index.js:21
 msgid "A field with multiple options where only one choice can be made."
@@ -669,7 +682,8 @@ msgstr "Döngü Görünümü"
 msgid "image %1$d of %2$d in gallery"
 msgstr "Galerideki %1$d %2$d sıralı görsel"
 
-#: src/blocks/gallery-carousel/edit.js:376 src/blocks/gif/edit.js:243
+#: src/blocks/gallery-carousel/edit.js:376
+#: src/blocks/gif/edit.js:243
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:230
 msgid "Write caption…"
@@ -707,7 +721,8 @@ msgstr "Yüzde tabanlı yükseklik için çubuğu kaydırın."
 msgid "Carousel Settings"
 msgstr "Döngü Görünümü Ayarları"
 
-#: src/blocks/gallery-carousel/inspector.js:71 src/blocks/icon/inspector.js:173
+#: src/blocks/gallery-carousel/inspector.js:71
+#: src/blocks/icon/inspector.js:173
 #: src/components/typography-controls/index.js:189
 #: src/blocks/icon/inspector.js:106
 msgid "Size"
@@ -715,13 +730,15 @@ msgstr "Boyut"
 
 #: src/blocks/gallery-carousel/inspector.js:90
 #: src/blocks/gallery-masonry/inspector.js:83
-#: src/blocks/gallery-stacked/inspector.js:95 src/blocks/share/inspector.js:120
+#: src/blocks/gallery-stacked/inspector.js:95
+#: src/blocks/share/inspector.js:120
 #: src/blocks/social-profiles/inspector.js:124
 #: src/components/background/panel.js:156
 msgid "Rounded Corners"
 msgstr "Yuvarlatılmış Köşeler"
 
-#: src/blocks/gallery-collage/edit.js:174 src/blocks/map/edit.js:306
+#: src/blocks/gallery-collage/edit.js:174
+#: src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr "Uygula"
@@ -818,11 +835,8 @@ msgid "Fullwidth images are enabled."
 msgstr "Tam genişlikli görseller etkinleştirildi."
 
 #: src/blocks/gallery-stacked/inspector.js:48
-msgid ""
-"Toggle to fill the available gallery area with completely fullwidth images."
-msgstr ""
-"Uygun galeri alanını bütünüyle tam genişlikli görsellerle doldurmak için "
-"düğmeyi tıklayın."
+msgid "Toggle to fill the available gallery area with completely fullwidth images."
+msgstr "Uygun galeri alanını bütünüyle tam genişlikli görsellerle doldurmak için düğmeyi tıklayın."
 
 #: src/blocks/gallery-stacked/inspector.js:80
 msgid "Stacked Settings"
@@ -872,7 +886,8 @@ msgstr "Özeti Düzenle"
 msgid "View Gist"
 msgstr "Özeti Görüntüle"
 
-#: src/blocks/gist/controls.js:68 src/blocks/gist/controls.js:61
+#: src/blocks/gist/controls.js:68
+#: src/blocks/gist/controls.js:61
 msgid "GitHub File"
 msgstr "GitHub Dosyası"
 
@@ -880,11 +895,13 @@ msgstr "GitHub Dosyası"
 msgid "File"
 msgstr "Dosya"
 
-#: src/blocks/gist/deprecated.js:36 src/blocks/gist/save.js:29
+#: src/blocks/gist/deprecated.js:36
+#: src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr "Bu özeti GitHub’da görüntüleyin"
 
-#: src/blocks/gist/edit.js:124 src/blocks/gist/inspector.js:51
+#: src/blocks/gist/edit.js:124
+#: src/blocks/gist/inspector.js:51
 msgid "Gist URL"
 msgstr "Özet URL’si"
 
@@ -929,11 +946,8 @@ msgid "Add background to hero"
 msgstr "Ana site üst bilgisine arka plan ekleyin"
 
 #: src/blocks/hero/index.js:41
-msgid ""
-"An introductory area of a page accompanied by a small amount of text and a "
-"call to action."
-msgstr ""
-"Sayfanın küçük bir metin ve eylem çağrısıyla ile beraber tanıtıcı bölümü."
+msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
+msgstr "Sayfanın küçük bir metin ve eylem çağrısıyla ile beraber tanıtıcı bölümü."
 
 #: src/blocks/hero/inspector.js:127
 msgid "Content width in pixels"
@@ -943,8 +957,10 @@ msgstr "Piksel cinsinden içerik genişliği"
 msgid "Hero Settings"
 msgstr "‌‌Ana Site Ayarları"
 
-#: src/blocks/hero/inspector.js:85 src/blocks/media-card/inspector.js:63
-#: src/blocks/row/column/inspector.js:134 src/blocks/row/inspector.js:181
+#: src/blocks/hero/inspector.js:85
+#: src/blocks/media-card/inspector.js:63
+#: src/blocks/row/column/inspector.js:134
+#: src/blocks/row/inspector.js:181
 msgid "Space inside of the container."
 msgstr "Kapsayıcı içindeki alan."
 
@@ -993,14 +1009,11 @@ msgid "Draw attention and emphasize important narrative."
 msgstr "Anlatılması gereken önemli bölümlerin üzerinde durarak dikkat çekin."
 
 #: src/blocks/highlight/index.js:33
-msgid ""
-"Add a highlight effect to paragraph text in order to grab attention and "
-"emphasize important narrative."
-msgstr ""
-"Anlatılması gereken önemli bölümlerin üzerinde durarak dikkat çekmek için "
-"paragraf metnini vurgulayın."
+msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
+msgstr "Anlatılması gereken önemli bölümlerin üzerinde durarak dikkat çekmek için paragraf metnini vurgulayın."
 
-#: src/blocks/icon/icon-size-select.js:30 src/blocks/row/inspector.js:102
+#: src/blocks/icon/icon-size-select.js:30
+#: src/blocks/row/inspector.js:102
 #: src/components/dimensions-control/dimensions-select.js:30
 msgid "Huge"
 msgstr "Çok Büyük"
@@ -1013,7 +1026,8 @@ msgstr "Simge boyutu ön ayarını seçin"
 msgid "Add a stylized graphic symbol to communicate something more."
 msgstr "Daha fazla şey anlatmak için biçimlendirilmiş grafik sembol ekleyin."
 
-#: src/blocks/icon/inspector.js:155 src/blocks/share/inspector.js:111
+#: src/blocks/icon/inspector.js:155
+#: src/blocks/share/inspector.js:111
 #: src/blocks/social-profiles/inspector.js:115
 msgid "Icon Settings"
 msgstr "Simge Ayarları"
@@ -1070,8 +1084,10 @@ msgstr "Yeni Sekmede Açmak"
 msgid "Open in New Tab"
 msgstr "Yeni Sekmede Aç"
 
-#: src/blocks/icon/inspector.js:309 src/blocks/share/inspector.js:104
-#: src/blocks/social-profiles/inspector.js:108 src/blocks/share/inspector.js:68
+#: src/blocks/icon/inspector.js:309
+#: src/blocks/share/inspector.js:104
+#: src/blocks/social-profiles/inspector.js:108
+#: src/blocks/share/inspector.js:68
 #: src/blocks/social-profiles/inspector.js:95
 msgid "Icon Color"
 msgstr "Simge Rengi"
@@ -1087,8 +1103,7 @@ msgstr "Logolar ve Rozetler"
 #: src/blocks/logos/edit.js:70
 #: src/components/block-gallery/gallery-placeholder.js:72
 msgid "Drag images, upload new ones or select files from your library."
-msgstr ""
-"Görselleri sürükleyin, yenilerini yükleyin veya kütüphanenizden dosya seçin."
+msgstr "Görselleri sürükleyin, yenilerini yükleyin veya kütüphanenizden dosya seçin."
 
 #: src/blocks/logos/index.js:27
 msgid "Add logos, badges, or certifications to build credibility."
@@ -1114,8 +1129,10 @@ msgstr "Konumu Düzenle"
 msgid "Map style"
 msgstr "Harita stili"
 
-#: src/blocks/map/deprecated.js:96 src/blocks/map/edit.js:293
-#: src/blocks/map/save.js:50 src/blocks/map/edit.js:241
+#: src/blocks/map/deprecated.js:96
+#: src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50
+#: src/blocks/map/edit.js:241
 msgid "Google Map"
 msgstr "Google Haritalar"
 
@@ -1131,7 +1148,8 @@ msgstr "Google haritası üzerinde raptiye bırakmak için konum veya adres giri
 msgid "Search for a place or address…"
 msgstr "Yer veya adres arayın..."
 
-#: src/blocks/map/edit.js:320 src/blocks/map/edit.js:312
+#: src/blocks/map/edit.js:320
+#: src/blocks/map/edit.js:312
 msgid "Cancel"
 msgstr "İptal"
 
@@ -1167,7 +1185,8 @@ msgstr "İnce kontrol seçenekleri etkinleştirildi."
 msgid "Toggle to enable map control options."
 msgstr "Harita kontrol seçeneklerini etkinleştirmek için düğmeyi tıklayın."
 
-#: src/blocks/map/inspector.js:178 src/blocks/map/inspector.js:167
+#: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:167
 msgid "Map Controls"
 msgstr "Harita Kontrolleri"
 
@@ -1177,15 +1196,11 @@ msgstr "Harita Türü"
 
 #: src/blocks/map/inspector.js:185
 msgid "Switching between standard and satellite map views is enabled."
-msgstr ""
-"Standart ve uydu harita görüntüleri arasında geçiş yapma özelliği "
-"etkinleştirildi."
+msgstr "Standart ve uydu harita görüntüleri arasında geçiş yapma özelliği etkinleştirildi."
 
 #: src/blocks/map/inspector.js:185
 msgid "Toggle to enable switching between standard and satellite maps."
-msgstr ""
-"Standart ve uydu harita görüntüleri arasında geçiş yapma özelliğini "
-"etkinleştirmek için düğmeyi tıklayın."
+msgstr "Standart ve uydu harita görüntüleri arasında geçiş yapma özelliğini etkinleştirmek için düğmeyi tıklayın."
 
 #: src/blocks/map/inspector.js:188
 msgid "Zoom Controls"
@@ -1197,9 +1212,7 @@ msgstr "Harita yakınlaştırma kontrollerini gösterme."
 
 #: src/blocks/map/inspector.js:191
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
-msgstr ""
-"Harita üzerinde yakınlaştırma kontrollerini kullanarak yakınlaştırma ve "
-"uzaklaştırmayı etkinleştirmek için düğmeyi tıklayın."
+msgstr "Harita üzerinde yakınlaştırma kontrollerini kullanarak yakınlaştırma ve uzaklaştırmayı etkinleştirmek için düğmeyi tıklayın."
 
 #: src/blocks/map/inspector.js:194
 msgid "Street View"
@@ -1211,9 +1224,7 @@ msgstr "Sokak görünümü için harita kontrolünü göstermek."
 
 #: src/blocks/map/inspector.js:197
 msgid "Toggle to show the street view control at the bottom right."
-msgstr ""
-"Sağ alt kısımda sokak görünümü harita kontrolünü göstermek için düğmeyi "
-"tıklayın."
+msgstr "Sağ alt kısımda sokak görünümü harita kontrolünü göstermek için düğmeyi tıklayın."
 
 #: src/blocks/map/inspector.js:200
 msgid "Fullscreen Toggle"
@@ -1232,12 +1243,8 @@ msgid "Google Maps API Key"
 msgstr "Google Haritalar API Anahtarı"
 
 #: src/blocks/map/inspector.js:212
-msgid ""
-"Add a Google Maps API key. Updating this API key will set all your maps to "
-"use the new key."
-msgstr ""
-"Google Haritalar API anahtarı ekleyin. Bu API anahtarını güncellediğinizde "
-"tüm haritalarınız yeni anahtarı kullanır."
+msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgstr "Google Haritalar API anahtarı ekleyin. Bu API anahtarını güncellediğinizde tüm haritalarınız yeni anahtarı kullanır."
 
 #: src/blocks/map/inspector.js:215
 msgid "Get a key"
@@ -1317,7 +1324,8 @@ msgstr "Yenilemek için medyayı bırakın"
 msgid "Edit media"
 msgstr "Medyayı düzenleyin"
 
-#: src/blocks/post-carousel/edit.js:123 src/blocks/posts/edit.js:247
+#: src/blocks/post-carousel/edit.js:123
+#: src/blocks/posts/edit.js:247
 msgid "Edit RSS URL"
 msgstr "RSS URL’sini düzenleyin"
 
@@ -1325,39 +1333,46 @@ msgstr "RSS URL’sini düzenleyin"
 msgid "Post Carousel"
 msgstr "Gönderi Döngü Görünümü"
 
-#: src/blocks/post-carousel/edit.js:184 src/blocks/posts/edit.js:295
+#: src/blocks/post-carousel/edit.js:184
+#: src/blocks/posts/edit.js:295
 msgid "No posts found. Start publishing or add posts from an %s feed."
-msgstr ""
-"Hiçbir gönderi bulunamadı. %s akışı kullanarak gönderi ekleyin veya "
-"gönderilerinizi yayınlamaya başlayın."
+msgstr "Hiçbir gönderi bulunamadı. %s akışı kullanarak gönderi ekleyin veya gönderilerinizi yayınlamaya başlayın."
 
-#: src/blocks/post-carousel/edit.js:187 src/blocks/posts/edit.js:298
+#: src/blocks/post-carousel/edit.js:187
+#: src/blocks/posts/edit.js:298
 msgid "Retrieve an External Feed"
 msgstr "Harici Akışı kaydedin"
 
-#: src/blocks/post-carousel/edit.js:193 src/blocks/posts/edit.js:304
+#: src/blocks/post-carousel/edit.js:193
+#: src/blocks/posts/edit.js:304
 msgid "Use External Feed"
 msgstr "Harici Akışı kullanın"
 
 #. %s: RSS
-#: src/blocks/post-carousel/edit.js:216 src/blocks/posts/edit.js:332
+#: src/blocks/post-carousel/edit.js:216
+#: src/blocks/posts/edit.js:332
 msgid "%s Feed"
 msgstr "%s Akışı"
 
-#: src/blocks/post-carousel/edit.js:217 src/blocks/posts/edit.js:333
+#: src/blocks/post-carousel/edit.js:217
+#: src/blocks/posts/edit.js:333
 msgid "%s URLs are generally located at the /feed/ directory of a site."
 msgstr "%s URL’leri, sitelerin genellikle /feed/ dizininde bulunur."
 
-#: src/blocks/post-carousel/edit.js:221 src/blocks/posts/edit.js:337
+#: src/blocks/post-carousel/edit.js:221
+#: src/blocks/posts/edit.js:337
 msgid "https://example.com/feed…"
 msgstr "https://example.com/feed…"
 
-#: src/blocks/post-carousel/edit.js:227 src/blocks/posts/edit.js:343
+#: src/blocks/post-carousel/edit.js:227
+#: src/blocks/posts/edit.js:343
 msgid "Use URL"
 msgstr "URL kullanın"
 
-#: src/blocks/post-carousel/edit.js:320 src/blocks/posts/edit.js:463
-#: src/blocks/post-carousel/index.php:368 src/blocks/posts/index.php:385
+#: src/blocks/post-carousel/edit.js:320
+#: src/blocks/posts/edit.js:463
+#: src/blocks/post-carousel/index.php:368
+#: src/blocks/posts/index.php:385
 msgid "Read more"
 msgstr "Daha fazlasını okuyun"
 
@@ -1365,7 +1380,8 @@ msgstr "Daha fazlasını okuyun"
 msgid "Display posts or an external blog feed as a carousel."
 msgstr "Gönderileri veya harici blog akışlarını döngü görünümüyle yayınlayın."
 
-#: src/blocks/post-carousel/inspector.js:108 src/blocks/posts/inspector.js:174
+#: src/blocks/post-carousel/inspector.js:108
+#: src/blocks/posts/inspector.js:174
 msgid "Number of posts"
 msgstr "Gönderi sayısı"
 
@@ -1373,43 +1389,53 @@ msgstr "Gönderi sayısı"
 msgid "Post Carousel Settings"
 msgstr "Gönderi Döngü Görünümü Ayarları"
 
-#: src/blocks/post-carousel/inspector.js:41 src/blocks/posts/inspector.js:81
+#: src/blocks/post-carousel/inspector.js:41
+#: src/blocks/posts/inspector.js:81
 msgid "Post Date"
 msgstr "Gönderi Tarihi"
 
-#: src/blocks/post-carousel/inspector.js:45 src/blocks/posts/inspector.js:85
+#: src/blocks/post-carousel/inspector.js:45
+#: src/blocks/posts/inspector.js:85
 msgid "Showing the publish date."
 msgstr "Yayınlanma tarihi görüntüleniyor."
 
-#: src/blocks/post-carousel/inspector.js:46 src/blocks/posts/inspector.js:86
+#: src/blocks/post-carousel/inspector.js:46
+#: src/blocks/posts/inspector.js:86
 msgid "Toggle to show the publish date."
 msgstr "Yayınlanma tarihini göstermek için çubuğu kaydırın."
 
-#: src/blocks/post-carousel/inspector.js:51 src/blocks/posts/inspector.js:91
+#: src/blocks/post-carousel/inspector.js:51
+#: src/blocks/posts/inspector.js:91
 msgid "Post Content"
 msgstr "Gönderi İçeriği"
 
-#: src/blocks/post-carousel/inspector.js:55 src/blocks/posts/inspector.js:95
+#: src/blocks/post-carousel/inspector.js:55
+#: src/blocks/posts/inspector.js:95
 msgid "Showing the post content."
 msgstr "Gönderi içeriği görüntüleniyor."
 
-#: src/blocks/post-carousel/inspector.js:56 src/blocks/posts/inspector.js:96
+#: src/blocks/post-carousel/inspector.js:56
+#: src/blocks/posts/inspector.js:96
 msgid "Toggle to show the post content."
 msgstr "Gönderi içeriğini göstermek için çubuğu kaydırın."
 
-#: src/blocks/post-carousel/inspector.js:62 src/blocks/posts/inspector.js:102
+#: src/blocks/post-carousel/inspector.js:62
+#: src/blocks/posts/inspector.js:102
 msgid "Max words in content"
 msgstr "İçerikteki maksimum sözcük sayısı"
 
-#: src/blocks/post-carousel/inspector.js:86 src/blocks/posts/inspector.js:152
+#: src/blocks/post-carousel/inspector.js:86
+#: src/blocks/posts/inspector.js:152
 msgid "Feed Settings"
 msgstr "Akış Ayarları"
 
-#: src/blocks/post-carousel/inspector.js:90 src/blocks/posts/inspector.js:156
+#: src/blocks/post-carousel/inspector.js:90
+#: src/blocks/posts/inspector.js:156
 msgid "My Blog"
 msgstr "Blog Sayfam"
 
-#: src/blocks/post-carousel/inspector.js:91 src/blocks/posts/inspector.js:157
+#: src/blocks/post-carousel/inspector.js:91
+#: src/blocks/posts/inspector.js:157
 msgid "External Feed"
 msgstr "Harici Akış"
 
@@ -1427,11 +1453,10 @@ msgstr "Blog Gönderileri"
 
 #: src/blocks/posts/index.js:27
 msgid "Display posts or an RSS feed as stacked or horizontal cards."
-msgstr ""
-"Gönderileri veya RSS akışlarını yığın veya yatay kartlar biçiminde "
-"görüntüleyin."
+msgstr "Gönderileri veya RSS akışlarını yığın veya yatay kartlar biçiminde görüntüleyin."
 
-#: src/blocks/posts/inspector.js:129 src/blocks/posts/inspector.js:121
+#: src/blocks/posts/inspector.js:129
+#: src/blocks/posts/inspector.js:121
 msgid "Thumbnail Size"
 msgstr "Küçük Resim Boyutu"
 
@@ -1466,9 +1491,7 @@ msgstr "Plan %d"
 
 #: src/blocks/pricing-table/index.js:29
 msgid "Add pricing tables to help visitors compare products and plans."
-msgstr ""
-"Ziyaretçilerin fiyatları ve planları karşılaştırabilmesi için fiyatlandırma "
-"tabloları ekleyin."
+msgstr "Ziyaretçilerin fiyatları ve planları karşılaştırabilmesi için fiyatlandırma tabloları ekleyin."
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:112
 msgid "Add features"
@@ -1488,9 +1511,7 @@ msgstr "$"
 
 #: src/blocks/pricing-table/pricing-table-item/index.js:27
 msgid "A pricing table to help visitors compare products and plans."
-msgstr ""
-"Ziyaretçilerin fiyatları ve planları karşılaştırabilmesi için fiyatlandırma "
-"tablosu."
+msgstr "Ziyaretçilerin fiyatları ve planları karşılaştırabilmesi için fiyatlandırma tablosu."
 
 #: src/blocks/row/column/edit.js:90
 msgid "Add background to column"
@@ -1504,7 +1525,8 @@ msgstr "Satırın bir alt satırı."
 msgid "Column Settings"
 msgstr "Sütun Ayarları"
 
-#: src/blocks/row/column/inspector.js:112 src/blocks/row/inspector.js:158
+#: src/blocks/row/column/inspector.js:112
+#: src/blocks/row/inspector.js:158
 msgid "Space around the container."
 msgstr "Kapsayıcının etrafındaki alan."
 
@@ -1574,7 +1596,8 @@ msgstr "Bu satır için sütun sayısını belirleyin."
 msgid "Select Row Columns"
 msgstr "Satır Sütunlarını Seçin"
 
-#: src/blocks/row/edit.js:236 src/blocks/row/inspector.js:121
+#: src/blocks/row/edit.js:236
+#: src/blocks/row/inspector.js:121
 msgid "Select Row Layout"
 msgstr "Satır Düzenini Seçin"
 
@@ -1583,12 +1606,8 @@ msgid "Back to Columns"
 msgstr "Sütunlara Geri Dönün"
 
 #: src/blocks/row/index.js:38
-msgid ""
-"Add a structured wrapper for column blocks, then add content blocks you’d "
-"like to the columns."
-msgstr ""
-"Sütun bloklarına yapılandırılmış bir sarmalayıcı ekledikten sonra sütunlara "
-"istediğiniz içerik bloklarını ekleyin."
+msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
+msgstr "Sütun bloklarına yapılandırılmış bir sarmalayıcı ekledikten sonra sütunlara istediğiniz içerik bloklarını ekleyin."
 
 #: src/blocks/row/inspector.js:153
 msgid "Row Settings"
@@ -1714,9 +1733,7 @@ msgstr "Dikey çevir"
 
 #: src/blocks/shape-divider/index.js:29
 msgid "Add a shape divider to visually distinquish page sections."
-msgstr ""
-"Sayfanın bölümlerini gözle görülür bir şekilde birbirinden ayırmak için bir "
-"şekil bölücü ekleyin."
+msgstr "Sayfanın bölümlerini gözle görülür bir şekilde birbirinden ayırmak için bir şekil bölücü ekleyin."
 
 #: src/blocks/shape-divider/inspector.js:53
 msgid "Divider Settings"
@@ -1734,15 +1751,18 @@ msgstr "Piksel Cinsinden Arkaplan Yüksekliği"
 msgid "Shape Color"
 msgstr "Şekil Rengi"
 
-#: src/blocks/share/edit.js:113 src/blocks/share/index.php:132
+#: src/blocks/share/edit.js:113
+#: src/blocks/share/index.php:132
 msgid "Share on Facebook"
 msgstr "Facebook’ta Paylaş"
 
-#: src/blocks/share/edit.js:121 src/blocks/share/index.php:136
+#: src/blocks/share/edit.js:121
+#: src/blocks/share/index.php:136
 msgid "Share on Twitter"
 msgstr "Twitter'da Paylaş"
 
-#: src/blocks/share/edit.js:129 src/blocks/share/index.php:140
+#: src/blocks/share/edit.js:129
+#: src/blocks/share/index.php:140
 msgid "Share on Pinterest"
 msgstr "Pinterest'te Paylaş"
 
@@ -1750,27 +1770,29 @@ msgstr "Pinterest'te Paylaş"
 msgid "Share on LinkedIn"
 msgstr "LinkedIn’de Paylaş"
 
-#: src/blocks/share/edit.js:145 src/blocks/share/index.php:148
+#: src/blocks/share/edit.js:145
+#: src/blocks/share/index.php:148
 msgid "Share via Email"
 msgstr "E-posta ile paylaş"
 
-#: src/blocks/share/edit.js:153 src/blocks/share/index.php:152
+#: src/blocks/share/edit.js:153
+#: src/blocks/share/index.php:152
 msgid "Share on Tumblr"
 msgstr "Tumblr’da Paylaş"
 
-#: src/blocks/share/edit.js:161 src/blocks/share/index.php:156
+#: src/blocks/share/edit.js:161
+#: src/blocks/share/index.php:156
 msgid "Share on Google"
 msgstr "Google’da Paylaş"
 
-#: src/blocks/share/edit.js:169 src/blocks/share/index.php:160
+#: src/blocks/share/edit.js:169
+#: src/blocks/share/index.php:160
 msgid "Share on Reddit"
 msgstr "Reddit’te Paylaş"
 
 #: src/blocks/share/index.js:25
 msgid "Add social sharing links to help you get likes and shares."
-msgstr ""
-"Gönderilerinizin beğenilmesine ve paylaşılmasına yardımcı olacak sosyal "
-"paylaşım bağlantıları ekleyin."
+msgstr "Gönderilerinizin beğenilmesine ve paylaşılmasına yardımcı olacak sosyal paylaşım bağlantıları ekleyin."
 
 #: src/blocks/share/inspector.js:113
 #: src/blocks/social-profiles/inspector.js:117
@@ -1796,26 +1818,31 @@ msgstr "Düğme Boyutu"
 msgid "Icons"
 msgstr "Simgeler"
 
-#: src/blocks/share/inspector.js:157 src/blocks/social-profiles/edit.js:205
+#: src/blocks/share/inspector.js:157
+#: src/blocks/social-profiles/edit.js:205
 #: src/blocks/social-profiles/index.php:71
 msgid "Twitter"
 msgstr "Twitter"
 
-#: src/blocks/share/inspector.js:162 src/blocks/social-profiles/edit.js:159
+#: src/blocks/share/inspector.js:162
+#: src/blocks/social-profiles/edit.js:159
 #: src/blocks/social-profiles/index.php:67
 msgid "Facebook"
 msgstr "Facebook"
 
-#: src/blocks/share/inspector.js:167 src/blocks/social-profiles/edit.js:299
+#: src/blocks/share/inspector.js:167
+#: src/blocks/social-profiles/edit.js:299
 #: src/blocks/social-profiles/index.php:79
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: src/blocks/share/inspector.js:172 src/blocks/social-profiles/edit.js:347
+#: src/blocks/share/inspector.js:172
+#: src/blocks/social-profiles/edit.js:347
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: src/blocks/share/inspector.js:177 includes/class-coblocks-form.php:234
+#: src/blocks/share/inspector.js:177
+#: includes/class-coblocks-form.php:234
 #: includes/class-coblocks-form.php:319
 msgid "Email"
 msgstr "E-posta"
@@ -1832,15 +1859,15 @@ msgstr "Google"
 msgid "Reddit"
 msgstr "Reddit"
 
-#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:36
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:36
 msgid "Share button colors are enabled."
 msgstr "Paylaş düğmesi renkleri etkinleştirildi."
 
-#: src/blocks/share/inspector.js:25 src/blocks/social-profiles/inspector.js:37
+#: src/blocks/share/inspector.js:25
+#: src/blocks/social-profiles/inspector.js:37
 msgid "Toggle to use official colors from each social media platform."
-msgstr ""
-"Her sosyal medya platformunun kendisine ait resmi renklerini kullanmak için "
-"düğmeyi tıklayın."
+msgstr "Her sosyal medya platformunun kendisine ait resmi renklerini kullanmak için düğmeyi tıklayın."
 
 #: src/blocks/social-profiles/edit.js:142
 msgid "Add Facebook Profile"
@@ -1928,8 +1955,7 @@ msgstr "https://houzz.com/"
 
 #: src/blocks/social-profiles/index.js:25
 msgid "Grow your audience with links to social media profiles."
-msgstr ""
-"Sosyal medya profillerinize bağlantılar ekleyerek hedef kitlenizi büyütün"
+msgstr "Sosyal medya profillerinize bağlantılar ekleyerek hedef kitlenizi büyütün"
 
 #: src/blocks/social-profiles/inspector.js:159
 msgid "Profile Links"
@@ -2326,8 +2352,7 @@ msgstr "Öğe üzerinde gezinme sırasında otomatik oynatma duraklatılıyor."
 
 #: src/components/slider-panel/index.js:46
 msgid "Toggle to pause autoplay when hovered."
-msgstr ""
-"Öğe üzerine gelinince otomatik oynatmayı duraklatmak için çubuğu kaydırın."
+msgstr "Öğe üzerine gelinince otomatik oynatmayı duraklatmak için çubuğu kaydırın."
 
 #: src/components/slider-panel/index.js:50
 msgid "Scrolling without fixed slides enabled."
@@ -2399,9 +2424,7 @@ msgstr "Duyarlılık etkinleştirildi."
 
 #: src/extensions/advanced-controls/index.js:117
 msgid "Toggle to stack elements on top of each other on smaller viewports."
-msgstr ""
-"Öğeleri daha küçük görünüm pencerelerinde üst üste yığmak için düğmeyi "
-"tıklayın."
+msgstr "Öğeleri daha küçük görünüm pencerelerinde üst üste yığmak için düğmeyi tıklayın."
 
 #: src/extensions/advanced-controls/index.js:125
 msgid "Remove Top Spacing"
@@ -2443,7 +2466,8 @@ msgstr "Düğmeyi tam genişlikli olarak görüntülemek için düğmeyi tıklay
 msgid "Crop Settings"
 msgstr "Kırpma Ayarları"
 
-#: src/formats/uppercase/index.js:35 src/formats/uppercase/index.js:20
+#: src/formats/uppercase/index.js:35
+#: src/formats/uppercase/index.js:20
 msgid "Uppercase"
 msgstr "Büyük Harf"
 
@@ -2535,12 +2559,14 @@ msgctxt "block keyword"
 msgid "link"
 msgstr "bağlantı"
 
-#: src/blocks/buttons/index.js:31 src/blocks/hero/index.js:43
+#: src/blocks/buttons/index.js:31
+#: src/blocks/hero/index.js:43
 msgctxt "block keyword"
 msgid "cta"
 msgstr "cta"
 
-#: src/blocks/click-to-tweet/index.js:31 src/blocks/social-profiles/index.js:28
+#: src/blocks/click-to-tweet/index.js:31
+#: src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "share"
 msgstr "paylaş"
@@ -2708,7 +2734,8 @@ msgctxt "block keyword"
 msgid "paragraph"
 msgstr "paragraf"
 
-#: src/blocks/icon/index.js:35 src/blocks/social-profiles/index.js:28
+#: src/blocks/icon/index.js:35
+#: src/blocks/social-profiles/index.js:28
 msgctxt "block keyword"
 msgid "icons"
 msgstr "simgeler"
@@ -2763,7 +2790,8 @@ msgctxt "block keyword"
 msgid "slider"
 msgstr "kaydırıcı"
 
-#: src/blocks/post-carousel/index.js:29 src/blocks/posts/index.js:29
+#: src/blocks/post-carousel/index.js:29
+#: src/blocks/posts/index.js:29
 msgctxt "block keyword"
 msgid "latest"
 msgstr "en yeniler"
@@ -3166,27 +3194,32 @@ msgctxt "block style"
 msgid "Pointed"
 msgstr "Köşeli"
 
-#: src/blocks/share/index.js:30 src/blocks/social-profiles/index.js:30
+#: src/blocks/share/index.js:30
+#: src/blocks/social-profiles/index.js:30
 msgctxt "block style"
 msgid "Mask"
 msgstr "Maske"
 
-#: src/blocks/share/index.js:31 src/blocks/social-profiles/index.js:31
+#: src/blocks/share/index.js:31
+#: src/blocks/social-profiles/index.js:31
 msgctxt "block style"
 msgid "Icon"
 msgstr "Simge"
 
-#: src/blocks/share/index.js:32 src/blocks/social-profiles/index.js:32
+#: src/blocks/share/index.js:32
+#: src/blocks/social-profiles/index.js:32
 msgctxt "block style"
 msgid "Text"
 msgstr "Metin"
 
-#: src/blocks/share/index.js:33 src/blocks/social-profiles/index.js:33
+#: src/blocks/share/index.js:33
+#: src/blocks/social-profiles/index.js:33
 msgctxt "block style"
 msgid "Icon & Text"
 msgstr "Simge ve Metin"
 
-#: src/blocks/share/index.js:34 src/blocks/social-profiles/index.js:34
+#: src/blocks/share/index.js:34
+#: src/blocks/social-profiles/index.js:34
 msgctxt "block style"
 msgid "Circular"
 msgstr "Dairesel"
@@ -3229,8 +3262,7 @@ msgstr "Özellik içeriği ekleyin..."
 #: src/blocks/features/feature/edit.js:32
 msgctxt "content placeholder"
 msgid "This is a feature block that you can use to highlight features."
-msgstr ""
-"Bu blok, özellikleri vurgulamak için kullanabileceğiniz bir özellik blokudur."
+msgstr "Bu blok, özellikleri vurgulamak için kullanabileceğiniz bir özellik blokudur."
 
 #: src/blocks/hero/edit.js:35
 msgctxt "content placeholder"
@@ -3239,12 +3271,8 @@ msgstr "Ana site üst bilgisi ekleyin..."
 
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
-msgid ""
-"Add hero content, which is typically an introductory area of a page "
-"accompanied by call to action or two."
-msgstr ""
-"Genellikle bir veya iki eylem çağrısıyla birlikte sayfanın giriş kısmını "
-"oluşturan ana site içeriğini ekleyin."
+msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
+msgstr "Genellikle bir veya iki eylem çağrısıyla birlikte sayfanın giriş kısmını oluşturan ana içeriği ekleyin."
 
 #: src/blocks/hero/edit.js:39
 msgctxt "content placeholder"
@@ -3273,13 +3301,8 @@ msgstr "İçerik ekleyin..."
 
 #: src/blocks/media-card/edit.js:47
 msgctxt "content placeholder"
-msgid ""
-"Replace this text with descriptive copy to go along with the card image. "
-"Then add more blocks to this card, such as buttons, lists or images."
-msgstr ""
-"Bu metnin yerine karttaki görselin yanında yer alacak açıklayıcı bir metin "
-"koyun. Ardından bu karta düğme, liste veya görsel gibi daha fazla blok "
-"ekleyin."
+msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
+msgstr "Bu metnin yerine karttaki görselin yanında yer alacak açıklayıcı bir metin koyun. Ardından bu karta düğme, liste veya görsel gibi daha fazla blok ekleyin."
 
 #: src/blocks/services/service/edit.js:205
 msgctxt "content placeholder"
@@ -3322,7 +3345,8 @@ msgctxt "label for small gutter option"
 msgid "Small"
 msgstr "Küçük"
 
-#: src/blocks/gallery-collage/inspector.js:89 src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:89
+#: src/blocks/posts/inspector.js:58
 #: src/blocks/gallery-collage/inspector.js:61
 msgctxt "abbreviation for \"Small\" size"
 msgid "S"
@@ -3333,7 +3357,8 @@ msgctxt "label for medium gutter option"
 msgid "Medium"
 msgstr "Orta"
 
-#: src/blocks/gallery-collage/inspector.js:94 src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:94
+#: src/blocks/posts/inspector.js:63
 #: src/blocks/gallery-collage/inspector.js:66
 msgctxt "abbreviation for \"Medium\" size"
 msgid "M"
@@ -3344,7 +3369,8 @@ msgctxt "label for large gutter option"
 msgid "Large"
 msgstr "Büyük"
 
-#: src/blocks/gallery-collage/inspector.js:99 src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:99
+#: src/blocks/posts/inspector.js:68
 #: src/blocks/gallery-collage/inspector.js:71
 msgctxt "abbreviation for \"Large\" size"
 msgid "L"
@@ -3485,7 +3511,8 @@ msgctxt "label"
 msgid "Hub"
 msgstr "Merkez"
 
-#: src/blocks/icon/svgs.js:208 src/blocks/icon/svgs.js:202
+#: src/blocks/icon/svgs.js:208
+#: src/blocks/icon/svgs.js:202
 msgctxt "label"
 msgid "Email"
 msgstr "E-posta"
@@ -3690,7 +3717,8 @@ msgctxt "label"
 msgid "Brush"
 msgstr "Fırça"
 
-#: src/blocks/icon/svgs.js:109 src/blocks/icon/svgs.js:103
+#: src/blocks/icon/svgs.js:109
+#: src/blocks/icon/svgs.js:103
 msgctxt "tags"
 msgid "add minus circle insert plus round math"
 msgstr "ekleme eksi daire yerleştirme artı yuvarlak matematik"
@@ -3740,7 +3768,8 @@ msgctxt "tags"
 msgid "rate vote plus favorite like"
 msgstr "puanla oy ver artı favori beğeni"
 
-#: src/blocks/icon/svgs.js:177 src/blocks/icon/svgs.js:166
+#: src/blocks/icon/svgs.js:177
+#: src/blocks/icon/svgs.js:166
 msgctxt "tags"
 msgid "computer apple montior device pc desk office"
 msgstr "bilgisayar apple monitör pc masa ofis"
@@ -3755,7 +3784,8 @@ msgctxt "tags"
 msgid "device apple mac"
 msgstr "cihaz apple mac"
 
-#: src/blocks/icon/svgs.js:193 src/blocks/icon/svgs.js:172
+#: src/blocks/icon/svgs.js:193
+#: src/blocks/icon/svgs.js:172
 msgctxt "tags"
 msgid "computer ipad surface apple device pc desk office"
 msgstr "bilgisayar ipad yüzey apple monitör cihaz pc masa ofis"
@@ -3770,7 +3800,8 @@ msgctxt "tags"
 msgid "music microphone podcast song artist creative media audio"
 msgstr "müzik mikrofon podcast şarkı sanatçı yaratıcı medya ses"
 
-#: src/blocks/icon/svgs.js:209 src/blocks/icon/svgs.js:203
+#: src/blocks/icon/svgs.js:209
+#: src/blocks/icon/svgs.js:203
 msgctxt "tags"
 msgid "email mail os read letter"
 msgstr "e-posta posta işletim sistemi oku mektup"
@@ -3825,7 +3856,8 @@ msgctxt "tags"
 msgid "petal scent smell nice relax landscape gardening outdoors outside"
 msgstr "çiçek yaprağı koku hoş rahat manzara bahçıvanlık dış mekan dışarısı"
 
-#: src/blocks/icon/svgs.js:292 src/blocks/icon/svgs.js:230
+#: src/blocks/icon/svgs.js:292
+#: src/blocks/icon/svgs.js:230
 msgctxt "tags"
 msgid "blocks block box boxes square build widgets"
 msgstr "bloklar blok kutu kutular kare yapı widgetlar"
@@ -3860,7 +3892,8 @@ msgctxt "tags"
 msgid "microphone audio beats bose headphones"
 msgstr "mikrofon ses ritim bose kulaklık"
 
-#: src/blocks/icon/svgs.js:325 src/blocks/icon/svgs.js:286
+#: src/blocks/icon/svgs.js:325
+#: src/blocks/icon/svgs.js:286
 msgctxt "tags"
 msgid "flower camera photography artist creative"
 msgstr "çiçek kamera fotoğraf sanatçı yaratıcı"
@@ -3895,19 +3928,16 @@ msgctxt "tags"
 msgid "improve add upload software"
 msgstr "geliştir ekle yükle yazılım"
 
-#: src/blocks/icon/svgs.js:37 src/blocks/icon/svgs.js:26
+#: src/blocks/icon/svgs.js:37
+#: src/blocks/icon/svgs.js:26
 msgctxt "tags"
 msgid "music microphone song artist creative media audio"
 msgstr "müzik mikrofon şarkı sanatçı yaratıcı medya ses"
 
 #: src/blocks/icon/svgs.js:43
 msgctxt "tags"
-msgid ""
-"microphone podcast computer device music microphone song artist creative "
-"media audio"
-msgstr ""
-"mikrofon podcast bilgisayar cihaz müzik mikrofon şarkı sanatçı yaratıcı "
-"medya ses"
+msgid "microphone podcast computer device music microphone song artist creative media audio"
+msgstr "mikrofon podcast bilgisayar cihaz müzik mikrofon şarkı sanatçı yaratıcı medya ses"
 
 #: src/blocks/icon/svgs.js:49
 msgctxt "tags"
@@ -3917,9 +3947,7 @@ msgstr "fotoğraf fotoğrafçı kamera film yaratıcı medya"
 #: src/blocks/icon/svgs.js:55
 msgctxt "tags"
 msgid "photo photographer photography camera aperture film creative media"
-msgstr ""
-"fotoğraf fotoğrafçı fotoğrafçılık kamera diyafram açıklığı film yaratıcı "
-"medya"
+msgstr "fotoğraf fotoğrafçı fotoğrafçılık kamera diyafram açıklığı film yaratıcı medya"
 
 #: src/blocks/icon/svgs.js:61
 msgctxt "tags"
@@ -3933,14 +3961,11 @@ msgstr "film videografi yönetmen yapımcı medya yaratıcı"
 
 #: src/blocks/icon/svgs.js:73
 msgctxt "tags"
-msgid ""
-"video videography director producer media creative camera photographer "
-"photography aperture"
-msgstr ""
-"video videografi yönetmen yapımcı medya yaratıcı kamera fotoğrafçı "
-"fotoğrafçılık diyafram açıklığı"
+msgid "video videography director producer media creative camera photographer photography aperture"
+msgstr "video videografi yönetmen yapımcı medya yaratıcı kamera fotoğrafçı fotoğrafçılık diyafram açıklığı"
 
-#: src/blocks/icon/svgs.js:85 src/blocks/icon/svgs.js:79
+#: src/blocks/icon/svgs.js:85
+#: src/blocks/icon/svgs.js:79
 msgctxt "tags"
 msgid "palette design colors artist paint creative media"
 msgstr "palet tasarım renkler sanatçı boya yaratıcı medya"
@@ -4015,8 +4040,10 @@ msgctxt "block styles"
 msgid "Checkbox"
 msgstr "Onay kutusu"
 
-#: src/blocks/post-carousel/edit.js:302 src/blocks/posts/edit.js:437
-#: src/blocks/post-carousel/index.php:185 src/blocks/posts/index.php:202
+#: src/blocks/post-carousel/edit.js:302
+#: src/blocks/posts/edit.js:437
+#: src/blocks/post-carousel/index.php:185
+#: src/blocks/posts/index.php:202
 msgctxt "placeholder when a post has no title"
 msgid "(no title)"
 msgstr "(başlık yok)"
@@ -4134,8 +4161,7 @@ msgid "Repeat Vertically"
 msgstr "Dikey Olarak Tekrarla"
 
 #: src/components/block-gallery/gallery-link-settings.js:80
-msgctxt ""
-"HTML attribute that specifies the a relationship between the two pages."
+msgctxt "HTML attribute that specifies the a relationship between the two pages."
 msgid "Link Rel"
 msgstr "Göreli Oran"
 
@@ -4255,15 +4281,8 @@ msgid "https://coblocks.com"
 msgstr "https://coblocks.com"
 
 #. Description of the plugin
-msgid ""
-"CoBlocks is a suite of professional <strong>page building content blocks</"
-"strong> for the WordPress Gutenberg block editor. Our blocks are hyper-"
-"focused on empowering makers to build beautifully rich pages in WordPress."
-msgstr ""
-"CoBlocks, WordPress Gutenberg blok düzenleyici için profesyonel "
-"<strong>sayfa oluşturan içerik blokları</strong> paketidir. Bloklarımız, "
-"tamamen site yaratıcılarının WordPress’te güzel ve zengin içerikli sayfalar "
-"oluşturmasına yardımcı olmak üzere tasarlanmıştır."
+msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
+msgstr "CoBlocks, WordPress Gutenberg blok düzenleyici için profesyonel <strong>sayfa oluşturan içerik blokları</strong> paketidir. Bloklarımız, tamamen site yaratıcılarının WordPress’te güzel ve zengin içerikli sayfalar oluşturmasına yardımcı olmak üzere tasarlanmıştır."
 
 #. Author of the plugin
 msgid "GoDaddy"
@@ -4273,9 +4292,10 @@ msgstr "GoDaddy"
 msgid "https://www.godaddy.com"
 msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:84 class-coblocks.php:96
+#: class-coblocks.php:84
+#: class-coblocks.php:96
 msgid "Cheating huh?"
-msgstr "Hile mi yapıyorsunuz?"
+msgstr "Bir işler mi çeviriyorsunuz?"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Review CoBlocks on WordPress.org"
@@ -4286,25 +4306,13 @@ msgid "Leave a Review"
 msgstr "Yorum Paylaşın"
 
 #: includes/admin/class-coblocks-getting-started-page.php:120
-msgid ""
-"Thanks for choosing CoBlocks, the premier page builder for the new WordPress "
-"block editor."
-msgstr ""
-"Yeni WordPress blok düzenleyicisinin kullandığı üst düzey sayfa oluşturucu "
-"CoBlocks’u tercih ettiğiniz için teşekkür ederiz."
+msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
+msgstr "Yeni WordPress blok düzenleyicisinin kullandığı üst düzey sayfa oluşturucu CoBlocks’u tercih ettiğiniz için teşekkür ederiz."
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
 #: includes/admin/class-coblocks-getting-started-page.php:126
-msgid ""
-"You've just added lots of useful blocks and a new page builder toolkit to "
-"the WordPress editor. CoBlocks gives you a game-changing set of features: "
-"%1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom "
-"typography controls%2$s."
-msgstr ""
-"WordPress düzenleyicisine bir sürü yararlı blok ve yeni bir sayfa oluşturucu "
-"eklediniz. CoBlocks size oyunun kurallarını değiştiren bir dizi özellik "
-"sunar: %1$s onlarca blok%2$s, bir %1$s sayfa oluşturucu deneyimi %2$s ve "
-"%1$s özelleştirilmiş tipografi kontrolleri%2$s."
+msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
+msgstr "WordPress düzenleyicisine bir sürü yararlı blok ve yeni bir sayfa oluşturucu eklediniz. CoBlocks size ezber bozan bir dizi özellik sunar: %1$s onlarca blok%2$s, bir %1$s sayfa oluşturucu deneyimi %2$s ve %1$s özelleştirilmiş tipografi kontrolleri%2$s."
 
 #: includes/admin/class-coblocks-getting-started-page.php:133
 msgid "Here are a few videos to help you get started:"
@@ -4331,24 +4339,13 @@ msgstr "Medya Kartı blokunu nasıl kullanacağınızı izleyin"
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:152
-msgid ""
-"Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let "
-"you know when new video tutorials are released."
-msgstr ""
-"Gördüklerinizi beğendiniz mi? %1$sYouTube kanalımıza abone olun%2$s ve yeni "
-"eğitici videolar çıktığında sizi bilgilendirelim."
+msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
+msgstr "Gördüklerinizi beğendiniz mi? %1$sYouTube kanalımıza abone olun%2$s ve yeni eğitici videolar çıktığında sizi bilgilendirelim."
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
 #: includes/admin/class-coblocks-getting-started-page.php:163
-msgid ""
-"If you have any questions or feedback, let us know on %1$sTwitter%4$s or our "
-"%2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you "
-"want to stay up to date with what's new and upcoming at CoBlocks."
-msgstr ""
-"Herhangi bir sorunuz veya bildirmek istediğiniz bir görüşünüz varsa, lütfen "
-"bunu %1$sTwitter’da%4$s veya %2$sFacebook grubumuzda%4$s bizimle paylaşın. "
-"Ayrıca, CoBlocks’taki yeniliklerden ve gelişmelerden haberdar olmak için "
-"%3$sbültenimize abone olabilirsiniz%4$s."
+msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
+msgstr "Herhangi bir sorunuz veya bildirmek istediğiniz bir görüşünüz varsa, lütfen bunu %1$sTwitter’da%4$s veya %2$sFacebook grubumuzda%4$s bizimle paylaşın. Ayrıca, CoBlocks’taki yeniliklerden ve gelişmelerden haberdar olmak için %3$sbültenimize abone olabilirsiniz%4$s."
 
 #: includes/admin/class-coblocks-getting-started-page.php:172
 msgid "Enjoy!"
@@ -4360,13 +4357,11 @@ msgstr "Blokları etkinleştirin veya devre dışı bırakın"
 
 #: includes/class-coblocks-form.php:67
 msgid "Google reCaptcha site key for form spam protection"
-msgstr ""
-"Form kaynaklı istenmeyen posta koruması için Google reCaptcha site anahtarı"
+msgstr "Form kaynaklı istenmeyen posta koruması için Google reCaptcha site anahtarı"
 
 #: includes/class-coblocks-form.php:79
 msgid "Google reCaptcha secret key for form spam protection"
-msgstr ""
-"Form kaynaklı istenmeyen posta koruması için Google reCaptcha gizli anahtarı"
+msgstr "Form kaynaklı istenmeyen posta koruması için Google reCaptcha gizli anahtarı"
 
 #: includes/class-coblocks-form.php:267
 msgid "Name"
@@ -4408,16 +4403,15 @@ msgstr "Mesajınız gönderildi:"
 msgid "Google Map API key for map rendering"
 msgstr "Harita oluşturma için Google Haritalar API anahtarı"
 
-#: src/blocks/post-carousel/index.php:40 src/blocks/posts/index.php:40
-#, fuzzy
+#: src/blocks/post-carousel/index.php:40
+#: src/blocks/posts/index.php:40
 msgid "RSS Error:"
-msgstr "Hata"
+msgstr "RSS Error:"
 
-#: src/blocks/post-carousel/index.php:51 src/blocks/posts/index.php:51
-msgid ""
-"An error has occurred, which probably means the feed is down. Try again "
-"later."
-msgstr ""
+#: src/blocks/post-carousel/index.php:51
+#: src/blocks/posts/index.php:51
+msgid "An error has occurred, which probably means the feed is down. Try again later."
+msgstr "An error has occurred, which probably means the feed is down. Try again later."
 
 #: src/blocks/share/index.php:144
 msgid "Share on Linkedin"
