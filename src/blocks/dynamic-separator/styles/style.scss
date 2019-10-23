@@ -22,6 +22,17 @@
 		text-align: center;
 		top: calc(50% - 18px);
 	}
+	
+	&::after {
+		background: none;
+		content: inherit;
+		display: inherit;
+		height: 100%;
+		position: inherit;
+		top: inherit;
+		transform: none;
+		width: 100%;
+	}
 
 	&.is-style-line::before,
 	&.is-style-fullwidth::before {
