@@ -312,11 +312,9 @@ function coblocks_get_rss_post_carousel_info( $posts ) {
  * Registers the `post-carousel` block on server.
  */
 function coblocks_register_post_carousel_block() {
-
+	// Return early if this function does not exist.
 	if ( ! function_exists( 'register_block_type' ) ) {
-
 		return;
-
 	}
 
 	$dir = CoBlocks()->asset_source( 'js' );
@@ -329,72 +327,15 @@ function coblocks_register_post_carousel_block() {
 		true
 	);
 
+	// Load attributes from block.json.
+	ob_start();
+	include COBLOCKS_PLUGIN_DIR . 'src/blocks/post-carousel/block.json';
+	$metadata = json_decode( ob_get_clean(), true );
+
 	register_block_type(
-		'coblocks/post-carousel',
+		$metadata['name'],
 		array(
-			'attributes'      => array(
-				'className'          => array(
-					'type' => 'string',
-				),
-				'align'              => array(
-					'type' => 'string',
-				),
-				'postFeedType'       => array(
-					'type'    => 'string',
-					'default' => 'internal',
-				),
-				'externalRssUrl'     => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'postsToShow'        => array(
-					'type'    => 'number',
-					'default' => 4,
-				),
-				'displayPostContent' => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'displayPostDate'    => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'displayPostLink'    => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'postLink'           => array(
-					'type'    => 'string',
-					'default' => __( 'Read more', 'coblocks' ),
-				),
-				'excerptLength'      => array(
-					'type'    => 'number',
-					'default' => 12,
-				),
-				'imageSize'          => array(
-					'type'    => 'string',
-					'default' => 'w-1/7 sm:w-1/5 h-1/7 sm:h-1/5',
-				),
-				'listPosition'       => array(
-					'type'    => 'string',
-					'default' => 'right',
-				),
-				'columns'            => array(
-					'type'    => 'number',
-					'default' => 2,
-				),
-				'order'              => array(
-					'type'    => 'string',
-					'default' => 'desc',
-				),
-				'orderBy'            => array(
-					'type'    => 'string',
-					'default' => 'date',
-				),
-				'categories'         => array(
-					'type' => 'string',
-				),
-			),
+			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_post_carousel_block',
 			'editor_script'   => 'coblocks-slick-initializer',
 		)
