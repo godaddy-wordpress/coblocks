@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/field-radio should render 1`] = `"<!-- wp:coblocks/field-radio /-->"`;
+
+exports[`coblocks/field-select should render 1`] = `"<!-- wp:coblocks/field-select /-->"`;

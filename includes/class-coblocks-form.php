@@ -182,6 +182,22 @@ class CoBlocks_Form {
 			]
 		);
 
+		register_block_type(
+			'coblocks/field-select',
+			[
+				'parent'          => [ 'coblocks/form' ],
+				'render_callback' => [ $this, 'render_field_select' ],
+			]
+		);
+
+		register_block_type(
+			'coblocks/field-checkbox',
+			[
+				'parent'          => [ 'coblocks/form' ],
+				'render_callback' => [ $this, 'render_field_checkbox' ],
+			]
+		);
+
 		/**
 		 * Fires when the coblocks/form block and sub-blocks are registered
 		 */
@@ -457,6 +473,94 @@ class CoBlocks_Form {
 			printf(
 				'<label class="coblocks-radio-label">
 					<input type="radio" name="field-%1$s[value]" value="%2$s" class="radio"> %3$s
+				</label>',
+				esc_attr( $label_slug ),
+				esc_attr( $value ),
+				esc_html( $value )
+			);
+
+		}
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Render the select field
+	 *
+	 * @param  array $atts    Block attributes.
+	 * @param  mixed $content Block content.
+	 *
+	 * @return mixed Markup for the select field.
+	 */
+	public function render_field_select( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+
+		if ( empty( $atts['options'] ) ) {
+
+			return;
+
+		}
+
+		$the_options = array_filter( $atts['options'] );
+
+		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Select', 'coblocks' );
+		$label_slug = sanitize_title( $label );
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label );
+
+		printf(
+			'<select class="select" name="field-%1$s[value]">',
+			esc_attr( $label_slug )
+		);
+
+		foreach ( $the_options as $value ) {
+
+			printf(
+				'<option value="%1$s">%2$s</option>',
+				esc_attr( $value ),
+				esc_html( $value )
+			);
+
+		}
+
+		print( '</select>' );
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Render the checkbox field
+	 *
+	 * @param  array $atts    Block attributes.
+	 * @param  mixed $content Block content.
+	 *
+	 * @return mixed Markup for the checkbox field.
+	 */
+	public function render_field_checkbox( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+
+		if ( empty( $atts['options'] ) ) {
+
+			return;
+
+		}
+
+		$the_options = array_filter( $atts['options'] );
+
+		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Select', 'coblocks' );
+		$label_slug = sanitize_title( $label );
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label );
+
+		foreach ( $the_options as $value ) {
+
+			printf(
+				'<label class="coblocks-checkbox-label">
+					<input type="checkbox" name="field-%1$s[value][]" value="%2$s" class="checkbox"> %3$s
 				</label>',
 				esc_attr( $label_slug ),
 				esc_attr( $value ),

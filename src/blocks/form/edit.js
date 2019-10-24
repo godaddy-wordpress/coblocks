@@ -24,14 +24,8 @@ import { applyFilters } from '@wordpress/hooks';
 /**
  * Block constants
  */
-const ALLOWED_BLOCKS = [
-	'coblocks/field-date',
-	'coblocks/field-phone',
-	'coblocks/field-radio',
-	'coblocks/field-name',
-	'coblocks/field-email',
-	'coblocks/field-textarea',
-];
+// Note: Child form blocks are automatically allowed
+const ALLOWED_BLOCKS = [];
 
 /**
  * Get settings

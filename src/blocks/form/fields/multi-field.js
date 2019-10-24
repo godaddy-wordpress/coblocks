@@ -75,23 +75,31 @@ class CoBlocksFieldMultiple extends Component {
 						/>
 					}
 				>
-					<ol
-						className="coblocks-field-multiple__list"
-						id={ `coblocks-field-multiple-${ instanceId }` }
-					>
-						{ options.map( ( option, index ) => (
-							<CoBlocksFieldOption
-								type={ type }
-								key={ index }
-								option={ option }
-								index={ index }
-								onChangeOption={ this.onChangeOption }
-								onAddOption={ this.addNewOption }
-								isInFocus={ index === inFocus && isSelected }
-								isSelected={ isSelected }
-							/>
-						) ) }
-					</ol>
+					{ ! isSelected && 'select' === type ? (
+						<select>
+							{ options.map( ( option, index ) => (
+								<option value={ option } key={ index }>{ option }</option>
+							) ) }
+						</select>
+					) : (
+						<ol
+							className="coblocks-field-multiple__list"
+							id={ `coblocks-field-multiple-${ instanceId }` }
+						>
+							{ options.map( ( option, index ) => (
+								<CoBlocksFieldOption
+									type={ type }
+									key={ index }
+									option={ option }
+									index={ index }
+									onChangeOption={ this.onChangeOption }
+									onAddOption={ this.addNewOption }
+									isInFocus={ index === inFocus && isSelected }
+									isSelected={ isSelected }
+								/>
+							) ) }
+						</ol>
+					) }
 					{ isSelected && (
 						<IconButton
 							className="coblocks-field-multiple__add-option"

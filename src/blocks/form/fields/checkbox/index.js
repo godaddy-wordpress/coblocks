@@ -16,9 +16,9 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Radio', 'block name', 'coblocks' ),
-	keywords: [ _x( 'Choose', 'block keyword', 'coblocks' ), _x( 'Select', 'block keyword', 'coblocks' ), _x( 'Option', 'block keyword', 'coblocks' ) ],
-	description: __( 'A field with multiple options where only one choice can be made.', 'coblocks' ),
+	title: _x( 'Checkbox', 'block name', 'coblocks' ),
+	keywords: [ _x( 'Checkbox', 'block keyword', 'coblocks' ), _x( 'Check', 'block keyword', 'coblocks' ), _x( 'Option', 'block keyword', 'coblocks' ) ],
+	description: __( 'A checkbox field with multiple options where only one choice can be made.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/form' ],
 	supports: {
@@ -26,7 +26,7 @@ const settings = {
 		html: false,
 	},
 	attributes,
-	edit: editMultiField( 'radio' ),
+	edit: editMultiField( 'checkbox' ),
 	save: () => null,
 };
 

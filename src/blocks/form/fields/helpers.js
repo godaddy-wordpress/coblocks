@@ -1,9 +1,9 @@
 /**
  * Internal dependencies
  */
-import CoBlocksFieldMultiple from '../multi-field';
+import CoBlocksFieldMultiple from './multi-field';
 
-function CoBlocksFieldRadio( props ) {
+export const editMultiField = type => props => {
 	const { attributes, setAttributes, isSelected } = props;
 	const { required, label, options } = attributes;
 
@@ -13,10 +13,8 @@ function CoBlocksFieldRadio( props ) {
 			required={ required }
 			options={ options }
 			setAttributes={ setAttributes }
-			type="radio"
+			type={ type }
 			isSelected={ isSelected }
 		/>
 	);
-}
-
-export default CoBlocksFieldRadio;
+};
