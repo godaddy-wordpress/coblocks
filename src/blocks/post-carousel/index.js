@@ -15,19 +15,22 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
+import { __, _x } from '@wordpress/i18n';
 
 /**
  * Block constants
  */
-const { name, category, supports } = metadata;
+const { name, category } = metadata;
 
 const settings = {
 	title: _x( 'Post Carousel', 'block name', 'coblocks' ),
 	description: __( 'Display posts or an external blog feed as a carousel.', 'coblocks' ),
 	icon,
 	keywords: [ _x( 'posts', 'block keyword', 'coblocks' ), _x( 'slider', 'block keyword', 'coblocks' ), _x( 'latest', 'block keyword', 'coblocks' ) ],
-	supports,
+	supports: {
+		align: [ 'wide', 'full' ],
+		html: false,
+	},
 	transforms,
 	edit,
 	save() {
@@ -35,4 +38,4 @@ const settings = {
 	},
 };
 
-export { name, category, metadata, settings };
+export { name, category, settings };
