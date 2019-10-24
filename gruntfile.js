@@ -200,10 +200,7 @@ module.exports = function( grunt ) {
 				],
 			},
 			languages: {
-				src: [
-					'languages/coblocks.pot',
-					'languages/*.po',
-				],
+				src: 'languages/coblocks.pot',
 				overwrite: true,
 				replacements: [
 					{
