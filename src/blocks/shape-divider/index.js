@@ -44,11 +44,6 @@ const settings = {
 		{ name: 'triangle', label: _x( 'Triangle', 'block style', 'coblocks' ) },
 		{ name: 'pointed', label: _x( 'Pointed', 'block style', 'coblocks' ) },
 	],
-	example: {
-		attributes: {
-			height: 100,
-		},
-	},
 	attributes,
 	transforms,
 	edit,
