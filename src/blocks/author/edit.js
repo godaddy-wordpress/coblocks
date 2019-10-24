@@ -150,7 +150,7 @@ class AuthorEdit extends Component {
 							template={ [ [ 'core/button', { placeholder: _x( 'Author link…', 'content placeholder', 'coblocks' ) } ] ] }
 							templateLock="all"
 							allowedBlocks={ [ 'core/button' ] }
-							templateInsertUpdatesSelection={ true }
+							templateInsertUpdatesSelection={ false }
 						/>
 					</div>
 				</div>
