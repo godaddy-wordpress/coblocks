@@ -1,38 +1,35 @@
-.wp-block-coblocks-dynamic-separator {
+.wp-block-coblocks-dynamic-separator.wp-block-separator {
 	background: none !important;
-	border: 0;
+	border: 0 !important;
 	max-width: 100% !important;
-	opacity: 1;
-	padding: 0;
 	position: relative;
 	width: 100%;
 
 	&::before {
-		content: "...";
-		display: inline-block;
-		font-size: 22px;
-		font-weight: 400;
 		left: 0;
-		letter-spacing: 0.95em;
-		line-height: 1;
-		margin-left: 21px;
-		margin-right: auto;
-		position: absolute;
+		position: absolute !important;
 		right: 0;
-		text-align: center;
 		top: calc(50% - 18px);
 	}
+}
 
+.wp-block-coblocks-dynamic-separator {
 	&.is-style-line::before,
 	&.is-style-fullwidth::before {
 		background: currentColor;
 		content: "";
 		display: block;
 		height: 1px;
-		margin-left: auto;
+		left: 50%;
 		max-width: 120px;
 		top: 50%;
+		transform: translateX(-50%);
 		width: 15vw;
+	}
+
+	&.is-style-line::after,
+	&.is-style-fullwidth::after {
+		display: none;
 	}
 
 	&.is-style-fullwidth::before {
@@ -40,16 +37,14 @@
 		width: 100%;
 	}
 
-	&:not(.has-text-color) {
-		&::before {
-			color: rgb(41, 41, 41);
-		}
+	&:not(.has-text-color)::before {
+		color: currentColor;
 	}
 
 	&.is-style-line:not(.has-text-color),
 	&.is-style-fullwidth:not(.has-text-color) {
 		&::before {
-			background: rgba(0, 0, 0, 0.15);
+			background: currentColor;
 		}
 	}
 }

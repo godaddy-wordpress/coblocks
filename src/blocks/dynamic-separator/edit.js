@@ -35,7 +35,7 @@ class DynamicSeparatorEdit extends Component {
 			<Fragment>
 				{ isSelected && <Inspector { ...this.props } /> }
 				<ResizableBox
-					className={ classnames( className, {
+					className={ classnames( className, 'wp-block-separator', {
 						'is-selected': isSelected,
 						'has-text-color': color.color,
 						[ color.class ]: color.class,
@@ -47,6 +47,7 @@ class DynamicSeparatorEdit extends Component {
 						height,
 					} }
 					minHeight="20"
+					minWidth="100%"
 					enable={ {
 						top: false,
 						right: false,

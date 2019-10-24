@@ -18,7 +18,8 @@ const save = ( { attributes, className } ) => {
 	const colorClass = getColorClassName( 'color', color );
 
 	const classes = classnames(
-		className, {
+		className,
+		'wp-block-separator', {
 			'has-text-color': color || customColor,
 			[ colorClass ]: colorClass,
 		} );
