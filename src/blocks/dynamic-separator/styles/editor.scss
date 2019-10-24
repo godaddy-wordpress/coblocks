@@ -2,15 +2,15 @@
 	background: $light-gray-200;
 }
 
-// .is-twentytwenty {
-.wp-block-coblocks-dynamic-separator {
-	color: #6d6d6d;
+.is-twentytwenty {
+	.wp-block-coblocks-dynamic-separator {
+		color: #6d6d6d;
 
-	&.is-style-dots::before {
-		font-size: 32px;
-		font-weight: 700;
-		letter-spacing: 1em;
-		padding-left: 1em;
+		&.is-style-dots::before {
+			font-size: 32px;
+			font-weight: 700;
+			letter-spacing: 1em;
+			padding-left: 1em;
+		}
 	}
 }
-// }
