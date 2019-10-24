@@ -49,7 +49,6 @@ class AuthorEdit extends Component {
 			backgroundColor,
 			textColor,
 			fontSize,
-			clientId,
 		} = this.props;
 
 		const {
@@ -82,8 +81,6 @@ class AuthorEdit extends Component {
 
 		const onUploadImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
 
-		const child = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId )[ 0 ].innerBlocks[ 0 ];
-		console.log( child );
 		return (
 			<Fragment>
 				{ isSelected && (
