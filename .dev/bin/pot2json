@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+
+if ( ! isset( $argv[1], $argv[2] ) ) {
+	echo "Error: Missing required arguments\n";
+	exit;
+}
+
+$input  = preg_grep( '/^msgid "(.+?)"$/', explode( PHP_EOL, file_get_contents( $argv[1] ) ) );
+$output = [];
+
+foreach ( $input as $line ) {
+	$value = preg_replace( '/^msgid "(.+?)"$/', '$1', $line );
+	$output[ md5( $value ) ] = $value;
+}
+
+$target = is_readable( $argv[2] ) ? json_decode( file_get_contents( $argv[2] ), true ) : [];
+
+if ( $target == $output ) {
+	echo "Done. No changes.\n";
+	exit;
+}
+
+$added   = $target ? count( array_diff_key( $output, $target ) ) : 0;
+$removed = $target ? count( array_diff_key( $target, $output ) ) : 0;
+
+file_put_contents( $argv[2], json_encode( $output, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT ), LOCK_EX );
+
+printf( "Done. Saved %d strings, %d added, %d removed.\n", count( $output ), $added, $removed );
+exit;
