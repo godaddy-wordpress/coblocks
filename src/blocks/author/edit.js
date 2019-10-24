@@ -49,6 +49,7 @@ class AuthorEdit extends Component {
 			backgroundColor,
 			textColor,
 			fontSize,
+			clientId,
 		} = this.props;
 
 		const {
@@ -81,6 +82,8 @@ class AuthorEdit extends Component {
 
 		const onUploadImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
 
+		const child = wp.data.select( 'core/block-editor' ).getBlocksByClientId( clientId )[ 0 ].innerBlocks[ 0 ];
+		console.log( child );
 		return (
 			<Fragment>
 				{ isSelected && (
@@ -94,7 +97,8 @@ class AuthorEdit extends Component {
 					/>
 				) }
 				<div className={ classes } style={ styles }>
-					{ dropZone }
+
+					{ !! isSelected ? { dropZone } &&
 					<figure className={ `${ className }__avatar` }>
 						<MediaUploadCheck>
 							<MediaUpload
@@ -115,7 +119,7 @@ class AuthorEdit extends Component {
 							>
 							</MediaUpload>
 						</MediaUploadCheck>
-					</figure>
+					</figure> : null }
 					<div className={ `${ className }__content` }>
 						<RichText
 							identifier="name"
@@ -149,7 +153,7 @@ class AuthorEdit extends Component {
 							template={ [ [ 'core/button', { placeholder: _x( 'Author link…', 'content placeholder', 'coblocks' ) } ] ] }
 							templateLock="all"
 							allowedBlocks={ [ 'core/button' ] }
-							templateInsertUpdatesSelection={ false }
+							templateInsertUpdatesSelection={ true }
 						/>
 					</div>
 				</div>
