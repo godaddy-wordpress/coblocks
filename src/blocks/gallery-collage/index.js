@@ -52,6 +52,19 @@ const settings = {
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
+	example: {
+		attributes: {
+			gutter: 2,
+			images: [
+				{ index: '0', url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-1.jpg' },
+				{ index: '1', url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-2.jpg' },
+				{ index: '2', url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-3.jpg' },
+				{ index: '3', url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-4.jpg' },
+				{ index: '4', url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-5.jpg' },
+
+			],
+		},
+	},
 	attributes,
 	transforms,
 	edit,
