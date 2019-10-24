@@ -8,6 +8,7 @@ import './styles/editor.scss';
  */
 import edit from './edit';
 import icon from './icon';
+import metadata from './block.json';
 import { transforms } from './transforms';
 
 /**
@@ -18,13 +19,12 @@ import { __, _x } from '@wordpress/i18n';
 /**
  * Block constants
  */
-const name = 'coblocks/social-profiles';
+const { name, category } = metadata;
 
 const settings = {
 	title: _x( 'Social Profiles', 'block name', 'coblocks' ),
 	description: __( 'Grow your audience with links to social media profiles.', 'coblocks' ),
 	icon,
-	category: 'coblocks',
 	keywords: [ _x( 'share', 'block keyword', 'coblocks' ), _x( 'links', 'block keyword', 'coblocks' ), _x( 'icons', 'block keyword', 'coblocks' ) ],
 	styles: [
 		{ name: 'mask', label: _x( 'Mask', 'block style', 'coblocks' ) },
@@ -54,4 +54,4 @@ const settings = {
 	},
 };
 
-export { name, settings };
+export { name, category, settings };

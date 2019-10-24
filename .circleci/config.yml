@@ -103,9 +103,6 @@ jobs:
       - run:
           name: Update npm
           command: sudo npm install -g npm@latest
-      - run:
-          name: Install Grunt.js
-          command: sudo npm install -g grunt-cli
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
@@ -117,7 +114,7 @@ jobs:
             - node_modules
       - run:
           name: Run eslint
-          command: grunt eslint
+          command: npx grunt eslint
       - run:
           name: Run jest tests
           command: JEST_JUNIT_OUTPUT_DIR="/tmp/artifacts/code-coverage/jest/" JEST_JUNIT_OUTPUT_NAME="results.xml" npm test -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
