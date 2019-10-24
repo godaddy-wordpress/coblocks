@@ -18,7 +18,6 @@ class CoBlocks_Posts_Index_Tests extends WP_UnitTestCase {
 		parent::tearDown();
 
 		unset( $GLOBALS['current_screen'] );
-		unset( $GLOBALS['post'] );
 	}
 
 	/**
