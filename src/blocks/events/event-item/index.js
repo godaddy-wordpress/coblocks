@@ -20,7 +20,7 @@ const name = 'coblocks/event-item';
 
 const category = 'coblocks';
 
-const title = __( 'Event Item' );
+const title = __( 'Event Item', 'coblocks' );
 
 const icon = icons.eventItem;
 
@@ -87,7 +87,7 @@ const attributes = {
 
 const settings = {
 	title,
-	description: __( 'A event item within the events block.' ),
+	description: __( 'A event item within the events block.', 'coblocks' ),
 	icon,
 	keywords,
 	attributes,

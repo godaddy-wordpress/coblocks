@@ -25,26 +25,26 @@ const Inspector = props => {
 		{
 			value: textColor.color,
 			onChange: onUpdateTextColor,
-			label: __( 'Text Color' ),
+			label: __( 'Text Color', 'coblocks' ),
 		},
 	];
 
 	const eventsRange = [
-		{ value: '1 week', label: __( '1 Week' ) },
-		{ value: '2 weeks', label: __( '2 Weeks' ) },
-		{ value: '1 month', label: __( '1 Month' ) },
-		{ value: 'all', label: __( 'Fetch all' ) },
+		{ value: '1 week', label: __( '1 Week', 'coblocks' ) },
+		{ value: '2 weeks', label: __( '2 Weeks', 'coblocks' ) },
+		{ value: '1 month', label: __( '1 Month', 'coblocks' ) },
+		{ value: 'all', label: __( 'Fetch all', 'coblocks' ) },
 	];
 
 	return (
 		<InspectorControls>
 			<PanelBody title={ __( 'Events Settings' ) } initialOpen={ true }>
 				<ToggleControl
-					label={ __( 'Link a Calendar' ) }
+					label={ __( 'Link a Calendar', 'coblocks' ) }
 					help={
 						attributes.linkACalendar ?
-							__( 'Showing your public calendar.' ) :
-							__( 'Toggle to link a public calendar.' )
+							__( 'Showing your public calendar.', 'coblocks' ) :
+							__( 'Toggle to link a public calendar.', 'coblocks' )
 					}
 					checked={ attributes.linkACalendar }
 					onChange={ onToggleCalendarLink }
@@ -54,12 +54,12 @@ const Inspector = props => {
 					label={ __( 'Period' ) }
 					value={ attributes.eventsRange }
 					options={ eventsRange }
-					help={ __( 'Show the events from the period (100 events max).' ) }
+					help={ __( 'Show events from the period (100 events max).', 'coblocks' ) }
 					onChange={ ( value ) => setAttributes( { eventsRange: value } ) }
 				/>
 				}
 				<RangeControl
-					label={ __( 'Number of events to show per page' ) }
+					label={ __( 'Number of events to show per page', 'coblocks' ) }
 					value={ attributes.eventsToShow }
 					onChange={ onChangeVisibleEvents }
 					min={ 5 }

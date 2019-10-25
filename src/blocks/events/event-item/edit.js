@@ -70,7 +70,7 @@ class EventsEdit extends Component {
 								value={ attributes.eventDay }
 								tagName="p"
 								wrapperClassName="wp-block-coblocks-event-item__day"
-								placeholder={ __( 'Day...' ) }
+								placeholder={ __( 'Day…', 'coblocks' ) }
 								onChange={ eventDay => setAttributes( { eventDay } ) }
 								{ ...richTextAttributes }
 							/>
@@ -78,7 +78,7 @@ class EventsEdit extends Component {
 								value={ attributes.eventMonth }
 								tagName="h4"
 								wrapperClassName="wp-block-coblocks-event-item__month"
-								placeholder={ __( 'Month...' ) }
+								placeholder={ __( 'Month…', 'coblocks' ) }
 								onChange={ eventMonth => setAttributes( { eventMonth } ) }
 								{ ...richTextAttributes }
 							/>
@@ -86,7 +86,7 @@ class EventsEdit extends Component {
 								value={ attributes.eventDate }
 								tagName="h4"
 								wrapperClassName="wp-block-coblocks-event-item__date"
-								placeholder={ __( 'Date...' ) }
+								placeholder={ __( 'Date…', 'coblocks' ) }
 								onChange={ eventDate => setAttributes( { eventDate } ) }
 								{ ...richTextAttributes }
 							/>
@@ -96,7 +96,7 @@ class EventsEdit extends Component {
 								value={ attributes.title }
 								tagName="h4"
 								wrapperClassName="wp-block-coblocks-event-item__heading"
-								placeholder={ __( 'Write event title...' ) }
+								placeholder={ __( 'Write event title…', 'coblocks' ) }
 								onChange={ title => setAttributes( { title } ) }
 								{ ...richTextAttributes }
 							/>
@@ -104,7 +104,7 @@ class EventsEdit extends Component {
 								value={ attributes.description }
 								tagName="p"
 								wrapperClassName="wp-block-coblocks-event-item__description"
-								placeholder={ __( 'Write event description...' ) }
+								placeholder={ __( 'Write event description…' ) }
 								onChange={ description => setAttributes( { description } ) }
 								{ ...richTextAttributes }
 							/>
@@ -122,7 +122,7 @@ class EventsEdit extends Component {
 								value={ attributes.eventLocation }
 								tagName="p"
 								wrapperClassName="wp-block-coblocks-event-item__location"
-								placeholder={ __( 'Write location...' ) }
+								placeholder={ __( 'Write location…' ) }
 								onChange={ eventLocation => setAttributes( { eventLocation } ) }
 								{ ...richTextAttributes }
 							/>

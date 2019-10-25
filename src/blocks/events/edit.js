@@ -197,13 +197,13 @@ class EventItem extends Component {
 					>
 						<form onSubmit={ this.onSubmitURL }>
 							<TextControl
-								placeholder={ __( 'Enter URL here…' ) }
+								placeholder={ __( 'Enter URL here…', 'coblocks' ) }
 								value={ attributes.externalCalendarUrl }
 								onChange={ ( value ) => setAttributes( { externalCalendarUrl: value } ) }
 								className={ 'components-placeholder__input' }
 							/>
 							<Button isLarge type="submit">
-								{ __( 'Use URL' ) }
+								{ __( 'Use URL', 'coblocks' ) }
 							</Button>
 						</form>
 					</Placeholder>

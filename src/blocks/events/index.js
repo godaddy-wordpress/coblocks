@@ -22,10 +22,10 @@ const { name, category } = metadata;
 const icon = icons.events;
 
 const settings = {
-	title: __( 'Events' ),
-	description: __( 'Add events or display any public calendar.' ),
+	title: __( 'Events', 'coblocks' ),
+	description: __( 'Add events or display any public calendar.', 'coblocks' ),
 	icon,
-	keywords: [ __( 'events' ), __( 'calendar' ) ],
+	keywords: [ __( 'events', 'coblocks' ), __( 'calendar', 'coblocks' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 	},

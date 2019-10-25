@@ -19,7 +19,7 @@ const CustomAppender = ( { onClick = noop } ) => {
 				className="coblocks-list-appender__toggle"
 				onClick={ onClick }
 			>
-				{ __( 'Add Event' ) }
+				{ __( 'Add Event', 'coblocks' ) }
 			</IconButton>
 		</div>
 	);
