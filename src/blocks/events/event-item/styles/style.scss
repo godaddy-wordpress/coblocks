@@ -1,15 +1,9 @@
 .wp-block-coblocks-event-item {
-	background-color: #fafafa;
-	display: block;
+	background-color: #eee;
 	flex: 1 100%;
 	width: 100%;
 
-	// On small screens, we are no longer using row direction but column.
-	@include break-small() {
-		flex-direction: column;
-	}
-
-	.wp-block-coblocks-event-item__date {
+	.wp-block-coblocks-events__date {
 		flex-basis: 20%;
 		max-width: 20%;
 		padding-right: 24px;
@@ -23,7 +17,7 @@
 		word-break: break-word;
 	}
 
-	.wp-block-coblocks-event-item__time-and-location {
+	.wp-block-coblocks-events__details {
 		flex-basis: 30%;
 		max-width: 30%;
 		padding-left: 24px;

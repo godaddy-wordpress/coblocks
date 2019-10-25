@@ -52,6 +52,12 @@
 	display: flex;
 }
 
+@include break-medium() {
+	.md\:flex {
+		display: flex;
+	}
+}
+
 .flex-0 {
 	flex: 0 0 auto;
 }

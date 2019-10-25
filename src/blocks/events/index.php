@@ -50,7 +50,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 		$custom_text_color = is_array( $attributes ) && isset( $attributes['customTextColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['textColor'] ) ) ? "color: {$attributes['customTextColor']};" : '';
 		$align             = is_array( $attributes ) && isset( $attributes['align'] ) ? "align{$attributes['align']} " : '';
 
-		$class = 'wp-block-coblocks-events';
+		$class = 'wp-block-coblocks-events md:flex justify-between';
 		if ( isset( $attributes['className'] ) ) {
 			$class .= ' ' . $attributes['className'];
 		}
@@ -63,7 +63,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 
 		foreach ( $events as $i => $event ) {
 			$page_num       = (int) ( $i / $attributes['eventsToShow'] );
-			$events_layout .= sprintf( '<div class="wp-block-coblocks-event-item" data-page="%1$s"><div class="wp-block-coblocks-event-item__content flex justify-between">', $page_num );
+			$events_layout .= sprintf( '<div class="wp-block-coblocks-event-item" data-page="%1$s">', $page_num );
 
 			$dtstart           = $ical->ical_date_to_date_time( $event->dtstart_array[3] );
 			$dtend             = $ical->ical_date_to_date_time( $event->dtend_array[3] );
@@ -79,7 +79,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$desctiption       = $event->description;
 			$location          = $event->location;
 			$events_layout    .= sprintf(
-				'<div class="wp-block-coblocks-event-item__date has-text-color %1$s" style="%2$s"><p class="wp-block-coblocks-event-item__day display-block">%3$s</p><h4 class="wp-block-coblocks-event-item__month display-block">%4$s</h4><h4 class="wp-block-coblocks-event-item__year display-block">%5$s</h4></div>',
+				'<div class="wp-block-coblocks-events__date has-text-color %1$s" style="%2$s"><p class="wp-block-coblocks-events__day display-block">%3$s</p><h4 class="wp-block-coblocks-event-item__month display-block">%4$s</h4><h4 class="wp-block-coblocks-event-item__year display-block">%5$s</h4></div>',
 				esc_attr( $text_color_class ),
 				esc_attr( $custom_text_color ),
 				$day,
@@ -96,14 +96,14 @@ function coblocks_render_events_block( $attributes, $content ) {
 			);
 
 			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-event-item__time-and-location has-text-color %1$s" style="%2$s"><h5 class="wp-block-coblocks-event-item__time">%3$s</h5><p class="wp-block-coblocks-event-item__location">%4$s</p></div>',
+				'<div class="wp-block-coblocks-events__details has-text-color %1$s" style="%2$s"><h5 class="wp-block-coblocks-event-item__time">%3$s</h5><p class="wp-block-coblocks-event-item__location">%4$s</p></div>',
 				esc_attr( $text_color_class ),
 				esc_attr( $custom_text_color ),
 				$time_string,
 				$location
 			);
 
-			$events_layout .= '</div></div>';
+			$events_layout .= '</div>';
 		}
 
 		if ( count( $events ) > $attributes['eventsToShow'] ) {

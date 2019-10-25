@@ -32,52 +32,51 @@ export default function save( { attributes } ) {
 	};
 
 	return isEmpty( attributes ) ? null : (
-		<div data-page={ String( attributes.pageNum ) }
-			className={ attributes.className }
+		<div
+			className="md:flex justify-between"
+			data-page={ String( attributes.pageNum ) }
 		>
-			<div className="wp-block-coblocks-event-item__content flex justify-between">
-				<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__date' ) } style={ textStyles }>
-					<RichText.Content
-						tagName="p"
-						className="wp-block-coblocks-event-item__day display-block"
-						value={ attributes.eventDay }
-					/>
-					<RichText.Content
-						value={ attributes.eventMonth }
-						tagName="h4"
-						className="wp-block-coblocks-event-item__month display-block"
-					/>
-					<RichText.Content
-						value={ attributes.eventYear }
-						tagName="h4"
-						className="wp-block-coblocks-event-item__year display-block"
-					/>
-				</div>
-				<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__heading-wrapper' ) } style={ textStyles }>
-					<RichText.Content
-						value={ attributes.title }
-						tagName="h4"
-						className="wp-block-coblocks-event-item__heading display-block"
-					/>
-					<RichText.Content
-						value={ attributes.description }
-						tagName="p"
-						className="wp-block-coblocks-event-item__description display-block"
-						itemprop="description"
-					/>
-				</div>
-				<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__time-and-location' ) } style={ textStyles }>
-					<RichText.Content
-						value={ attributes.eventTime }
-						tagName="h5"
-						className="wp-block-coblocks-event-item__time display-block"
-					/>
-					<RichText.Content
-						value={ attributes.eventLocation }
-						tagName="p"
-						className="wp-block-coblocks-event-item__location display-block"
-					/>
-				</div>
+			<div className={ classnames( textClasses, 'wp-block-coblocks-events__date' ) } style={ textStyles }>
+				<RichText.Content
+					tagName="span"
+					className="wp-block-coblocks-events__day display-block"
+					value={ attributes.eventDay }
+				/>
+				<RichText.Content
+					value={ attributes.eventMonth }
+					tagName="span"
+					className="wp-block-coblocks-event-item__month display-block"
+				/>
+				<RichText.Content
+					value={ attributes.eventYear }
+					tagName="span"
+					className="wp-block-coblocks-event-item__year display-block"
+				/>
+			</div>
+			<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__heading-wrapper' ) } style={ textStyles }>
+				<RichText.Content
+					value={ attributes.title }
+					tagName="span"
+					className="wp-block-coblocks-event-item__heading display-block"
+				/>
+				<RichText.Content
+					value={ attributes.description }
+					tagName="span"
+					className="wp-block-coblocks-event-item__description display-block"
+					itemprop="description"
+				/>
+			</div>
+			<div className={ classnames( textClasses, 'wp-block-coblocks-events__details' ) } style={ textStyles }>
+				<RichText.Content
+					value={ attributes.eventTime }
+					tagName="span"
+					className="wp-block-coblocks-event-item__time display-block"
+				/>
+				<RichText.Content
+					value={ attributes.eventLocation }
+					tagName="span"
+					className="wp-block-coblocks-event-item__location display-block"
+				/>
 			</div>
 		</div>
 	);

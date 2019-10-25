@@ -54,79 +54,81 @@ class EventsEdit extends Component {
 				<InspectorControls { ...this.props }
 				/>
 				<div data-page={ String( attributes.pageNum ) }
-					className={ classnames( className, {
-						'is-empty': isEmpty( attributes ),
-						'page-last-item': attributes.lastItem,
-					}, 'coblocks-custom-event-item' ) }
+					className={ classnames(
+						className,
+						'md:flex',
+						'justify-between', {
+							'is-empty': isEmpty( attributes ),
+							'page-last-item': attributes.lastItem,
+						}, )
+					}
 				>
-					<div className="wp-block-coblocks-event-item__content flex justify-between">
-						<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__date' ) } style={ textStyles }>
-							<RichText
-								value={ attributes.eventDay }
-								tagName="span"
-								className="wp-block-coblocks-event-item__day display-block"
-								placeholder={ __( 'Day…', 'coblocks' ) }
-								onChange={ eventDay => setAttributes( { eventDay } ) }
-								keepPlaceholderOnFocus
-							/>
-							<RichText
-								value={ attributes.eventMonth }
-								tagName="span"
-								className="wp-block-coblocks-event-item__month display-block"
-								placeholder={ __( 'Month…', 'coblocks' ) }
-								onChange={ eventMonth => setAttributes( { eventMonth } ) }
-								keepPlaceholderOnFocus
-							/>
-							<RichText
-								value={ attributes.eventYear }
-								tagName="span"
-								className="wp-block-coblocks-event-item__year display-block"
-								placeholder={ __( 'Year…', 'coblocks' ) }
-								onChange={ eventYear => setAttributes( { eventYear } ) }
-								keepPlaceholderOnFocus
-							/>
-						</div>
-						<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__heading-wrapper' ) } style={ textStyles }>
-							<RichText
-								value={ attributes.title }
-								tagName="span"
-								className="wp-block-coblocks-event-item__heading display-block"
-								placeholder={ __( 'Write event title…', 'coblocks' ) }
-								onChange={ title => setAttributes( { title } ) }
-								keepPlaceholderOnFocus
-							/>
-							<RichText
-								value={ attributes.description }
-								tagName="span"
-								className="wp-block-coblocks-event-item__description display-block"
-								placeholder={ __( 'Write event description…' ) }
-								onChange={ description => setAttributes( { description } ) }
-								keepPlaceholderOnFocus
-							/>
-						</div>
-						<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__time-and-location' ) } style={ textStyles }>
-							<RichText
-								value={ attributes.eventTime }
-								tagName="span"
-								className="wp-block-coblocks-event-item__time display-block"
-								placeholder={ __( 'Time…' ) }
-								onChange={ eventTime => setAttributes( { eventTime } ) }
-								keepPlaceholderOnFocus
-							/>
-							<RichText
-								value={ attributes.eventLocation }
-								tagName="span"
-								className="wp-block-coblocks-event-item__location display-block"
-								placeholder={ __( 'Location…' ) }
-								onChange={ eventLocation => setAttributes( { eventLocation } ) }
-								keepPlaceholderOnFocus
-							/>
-						</div>
+					<div className={ classnames( textClasses, 'wp-block-coblocks-events__date' ) } style={ textStyles }>
+						<RichText
+							value={ attributes.eventDay }
+							tagName="span"
+							className="wp-block-coblocks-events__day display-block"
+							placeholder={ __( 'Day…', 'coblocks' ) }
+							onChange={ eventDay => setAttributes( { eventDay } ) }
+							keepPlaceholderOnFocus
+						/>
+						<RichText
+							value={ attributes.eventMonth }
+							tagName="span"
+							className="wp-block-coblocks-event-item__month display-block"
+							placeholder={ __( 'Month…', 'coblocks' ) }
+							onChange={ eventMonth => setAttributes( { eventMonth } ) }
+							keepPlaceholderOnFocus
+						/>
+						<RichText
+							value={ attributes.eventYear }
+							tagName="span"
+							className="wp-block-coblocks-event-item__year display-block"
+							placeholder={ __( 'Year…', 'coblocks' ) }
+							onChange={ eventYear => setAttributes( { eventYear } ) }
+							keepPlaceholderOnFocus
+						/>
+					</div>
+					<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__heading-wrapper' ) } style={ textStyles }>
+						<RichText
+							value={ attributes.title }
+							tagName="span"
+							className="wp-block-coblocks-event-item__heading display-block"
+							placeholder={ __( 'Write event title…', 'coblocks' ) }
+							onChange={ title => setAttributes( { title } ) }
+							keepPlaceholderOnFocus
+						/>
+						<RichText
+							value={ attributes.description }
+							tagName="span"
+							className="wp-block-coblocks-event-item__description display-block"
+							placeholder={ __( 'Write event description…' ) }
+							onChange={ description => setAttributes( { description } ) }
+							keepPlaceholderOnFocus
+						/>
+					</div>
+					<div className={ classnames( textClasses, 'wp-block-coblocks-events__details' ) } style={ textStyles }>
+						<RichText
+							value={ attributes.eventTime }
+							tagName="span"
+							className="wp-block-coblocks-event-item__time display-block"
+							placeholder={ __( 'Time…' ) }
+							onChange={ eventTime => setAttributes( { eventTime } ) }
+							keepPlaceholderOnFocus
+						/>
+						<RichText
+							value={ attributes.eventLocation }
+							tagName="span"
+							className="wp-block-coblocks-event-item__location display-block"
+							placeholder={ __( 'Location…' ) }
+							onChange={ eventLocation => setAttributes( { eventLocation } ) }
+							keepPlaceholderOnFocus
+						/>
 					</div>
 					{ attributes.lastItem &&
-					<div className="event-item-last" style={ textStyles }>
-						<div><span>PAGE BREAK</span></div>
-					</div>
+						<div className="event-item-last" style={ textStyles }>
+							<div><span>PAGE BREAK</span></div>
+						</div>
 					}
 				</div>
 			</Fragment>
