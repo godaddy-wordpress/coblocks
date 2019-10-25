@@ -206,12 +206,12 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Events block.
-		if ( has_block( $this->_slug . '/events' ) ) {
+		if ( has_block( $this->slug . '/events' ) ) {
 			wp_enqueue_script(
-				$this->_slug . '-events-pagination-front',
-				$dir . $this->_slug . '-events-pagination-front' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$this->slug . '-events-pagination-front',
+				$dir . $this->slug . '-events-pagination-front' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
-				$this->_version,
+				COBLOCKS_VERSION,
 				true
 			);
 		}
