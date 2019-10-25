@@ -3,7 +3,6 @@
  */
 import CustomAppender from './appender';
 import InspectorControls from './inspector';
-import applyWithColors from './colors';
 import { cloneDeep } from 'lodash';
 
 /**
@@ -37,7 +36,6 @@ class EventItem extends Component {
 
 		this.onSubmitURL = this.onSubmitURL.bind( this );
 		this.updateInnerAttributes = this.updateInnerAttributes.bind( this );
-		this.updateTextColor = this.updateTextColor.bind( this );
 		this.toggleCalendarLink = this.toggleCalendarLink.bind( this );
 		this.changeVisibleEvents = this.changeVisibleEvents.bind( this );
 		this.insertNewItem = this.insertNewItem.bind( this );
@@ -89,14 +87,6 @@ class EventItem extends Component {
 		} );
 	}
 
-	updateTextColor( value ) {
-		const { setTextColor } = this.props;
-
-		setTextColor( value );
-
-		this.updateInnerAttributes( 'coblocks/event-item', { textColor: value, externalChange: true } );
-	}
-
 	toggleCalendarLink() {
 		const { attributes, setAttributes } = this.props;
 
@@ -143,7 +133,6 @@ class EventItem extends Component {
 			wp.blocks.createBlock(
 				blockName,
 				Object.assign( {}, blockAttributes, {
-					textColor: attributes.textColor,
 					pageNum: newItemPageNumber,
 					lastItem: lastItemOnPage,
 				} )
@@ -189,7 +178,6 @@ class EventItem extends Component {
 				<Fragment>
 					<InspectorControls
 						{ ...this.props }
-						onUpdateTextColor={ this.updateTextColor }
 						onToggleCalendarLink={ this.toggleCalendarLink }
 					/>
 					<Placeholder
@@ -221,7 +209,6 @@ class EventItem extends Component {
 				}
 				<InspectorControls
 					{ ...this.props }
-					onUpdateTextColor={ this.updateTextColor }
 					onToggleCalendarLink={ this.toggleCalendarLink }
 					onChangeVisibleEvents={ this.changeVisibleEvents }
 				/>
@@ -266,4 +253,4 @@ const applyWithSelect = withSelect( ( select, blockData ) => {
 	};
 } );
 
-export default compose( [ applyWithSelect, applyWithColors ] )( EventItem );
+export default compose( [ applyWithSelect ] )( EventItem );

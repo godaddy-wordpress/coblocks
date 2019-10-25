@@ -1,20 +1,20 @@
 /**
- * Internal dependencies.
- */
-import { hasEmptyAttributes } from '../../../utils/block-helpers';
-
-/**
  * External dependencies.
  */
 import classnames from 'classnames';
+
+/**
+ * Internal dependencies.
+ */
+import { hasEmptyAttributes } from '../../../utils/block-helpers';
+import applyWithColors from './colors';
 import InspectorControls from './inspector';
-import applyWithColors from '.././colors';
 
 /**
  * WordPress dependencies.
  */
-const { RichText } = wp.blockEditor;
 import { __ } from '@wordpress/i18n';
+import { RichText } from '@wordpress/block-editor';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 
@@ -38,13 +38,6 @@ class EventsEdit extends Component {
 	render() {
 		const { className, attributes, setAttributes, textColor } = this.props;
 
-		const textClasses = classnames(
-			{
-				'has-text-color': textColor.color,
-				[ textColor.class ]: textColor.class,
-			}
-		);
-
 		const textStyles = {
 			color: textColor.color,
 		};
@@ -55,17 +48,16 @@ class EventsEdit extends Component {
 				/>
 				<div
 					data-page={ String( attributes.pageNum ) }
-					className={ classnames(
-						className,
-						'md:flex',
-						'justify-between', {
-							'is-empty': isEmpty( attributes ),
-							'page-last-item': attributes.lastItem,
-						}, )
+					className={ classnames( className, 'md:flex', 'justify-between', {
+						'has-text-color': textColor.color,
+						[ textColor.class ]: textColor.class,
+						'is-empty': isEmpty( attributes ),
+						'page-last-item': attributes.lastItem,
+					}, )
 					}
 					style={ textStyles }
 				>
-					<div className={ classnames( textClasses, 'wp-block-coblocks-events__date' ) }>
+					<div className="wp-block-coblocks-events__date">
 						<RichText
 							value={ attributes.eventDay }
 							tagName="span"
@@ -91,7 +83,7 @@ class EventsEdit extends Component {
 							keepPlaceholderOnFocus
 						/>
 					</div>
-					<div className={ classnames( textClasses, 'wp-block-coblocks-events__content' ) }>
+					<div className="wp-block-coblocks-events__content">
 						<RichText
 							value={ attributes.title }
 							tagName="span"
@@ -109,7 +101,7 @@ class EventsEdit extends Component {
 							keepPlaceholderOnFocus
 						/>
 					</div>
-					<div className={ classnames( textClasses, 'wp-block-coblocks-events__details' ) }>
+					<div className="wp-block-coblocks-events__details">
 						<RichText
 							value={ attributes.eventTime }
 							tagName="span"

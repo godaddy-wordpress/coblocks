@@ -79,26 +79,20 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$desctiption       = $event->description;
 			$location          = $event->location;
 			$events_layout    .= sprintf(
-				'<div class="wp-block-coblocks-events__date has-text-color %1$s"><p class="wp-block-coblocks-events__day display-block">%3$s</p><h4 class="wp-block-coblocks-events__month display-block">%4$s</h4><h4 class="wp-block-coblocks-events__year display-block">%5$s</h4></div>',
-				esc_attr( $text_color_class ),
-				esc_attr( $custom_text_color ),
+				'<div class="wp-block-coblocks-events__date"><p class="wp-block-coblocks-events__day display-block">%1$s</p><h4 class="wp-block-coblocks-events__month display-block">%2$s</h4><h4 class="wp-block-coblocks-events__year display-block">%3$s</h4></div>',
 				$day,
 				$month,
 				$day_of_month
 			);
 
 			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-events__content has-text-color %1$s"><h4 class="wp-block-coblocks-events__title">%3$s</h4><p class="wp-block-coblocks-events__description">%4$s</p></div>',
-				esc_attr( $text_color_class ),
-				esc_attr( $custom_text_color ),
+				'<div class="wp-block-coblocks-events__content"><h4 class="wp-block-coblocks-events__title">%1$s</h4><p class="wp-block-coblocks-events__description">%2$s</p></div>',
 				$title,
 				$desctiption
 			);
 
 			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-events__details has-text-color %1$s"><h5 class="wp-block-coblocks-events__time">%3$s</h5><p class="wp-block-coblocks-events__location">%4$s</p></div>',
-				esc_attr( $text_color_class ),
-				esc_attr( $custom_text_color ),
+				'<div class="wp-block-coblocks-events__details"><h5 class="wp-block-coblocks-events__time">%1$s</h5><p class="wp-block-coblocks-events__location">%2$s</p></div>',
 				$time_string,
 				$location
 			);
@@ -108,9 +102,8 @@ function coblocks_render_events_block( $attributes, $content ) {
 
 		if ( count( $events ) > $attributes['eventsToShow'] ) {
 			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-events__more-events-wrapper flex has-text-color %1$s" style="%2$s"><p>More Events</p></div>',
-				esc_attr( $text_color_class ),
-				esc_attr( $custom_text_color )
+				'<div class="wp-block-coblocks-events__more-events-wrapper flex %1$s"><p>%1$s</p></div>',
+				__( 'More Events', 'coblocks' )
 			);
 		}
 

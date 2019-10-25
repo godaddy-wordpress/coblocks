@@ -1,4 +1,7 @@
-import applyWithColors from '.././colors';
+/**
+ * Internal dependencies.
+ */
+import applyWithColors from './colors';
 
 /**
  * WordPress dependencies.

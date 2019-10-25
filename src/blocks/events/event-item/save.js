@@ -1,8 +1,12 @@
 /**
+ * External dependencies.
+ */
+import classnames from 'classnames';
+
+/**
  * Internal dependencies.
  */
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
-import classnames from 'classnames';
 
 /**
  * WordPress dependencies.
@@ -21,23 +25,18 @@ const isEmpty = attributes => {
 export default function save( { attributes } ) {
 	const colorClass = getColorClassName( 'color', attributes.textColor );
 
-	const textClasses = classnames(
-		attributes.className, {
-			'has-text-color': attributes.textColor || attributes.customTextColor,
-			[ colorClass ]: colorClass,
-		} );
-
-	const textStyles = {
-		color: colorClass ? undefined : attributes.customTextColor,
-	};
+	const classes = classnames( attributes.className, 'md:flex', 'justify-between', {
+		'has-text-color': attributes.textColor || attributes.customTextColor,
+		[ colorClass ]: colorClass,
+	} );
 
 	return isEmpty( attributes ) ? null : (
 		<div
-			className="md:flex justify-between"
+			className={ classes }
 			data-page={ String( attributes.pageNum ) }
-			style={ textStyles }
+			style={ { color: colorClass ? undefined : attributes.customTextColor } }
 		>
-			<div className={ classnames( textClasses, 'wp-block-coblocks-events__date' ) }>
+			<div className="wp-block-coblocks-events__date">
 				<RichText.Content
 					tagName="span"
 					className="wp-block-coblocks-events__day display-block"
@@ -54,7 +53,7 @@ export default function save( { attributes } ) {
 					className="wp-block-coblocks-events__year display-block"
 				/>
 			</div>
-			<div className={ classnames( textClasses, 'wp-block-coblocks-events__content' ) }>
+			<div className="wp-block-coblocks-events__content">
 				<RichText.Content
 					value={ attributes.title }
 					tagName="span"
@@ -67,7 +66,7 @@ export default function save( { attributes } ) {
 					itemprop="description"
 				/>
 			</div>
-			<div className={ classnames( textClasses, 'wp-block-coblocks-events__details' ) }>
+			<div className="wp-block-coblocks-events__details">
 				<RichText.Content
 					value={ attributes.eventTime }
 					tagName="span"
