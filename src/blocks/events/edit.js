@@ -154,7 +154,7 @@ class EventItem extends Component {
 
 		this.props.innerBlocks.push( newEventBlock[ 0 ] );
 
-		dispatch( 'core/editor' ).insertBlock( newEventBlock[ 0 ], this.props.innerBlocks.length, clientId );
+		dispatch( 'core/block-editor' ).insertBlock( newEventBlock[ 0 ], this.props.innerBlocks.length, clientId );
 
 		this.props.innerBlocks.map( ( key ) => {
 			key.originalContent = '';
