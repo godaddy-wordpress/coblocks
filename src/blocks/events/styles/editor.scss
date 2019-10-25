@@ -6,12 +6,10 @@
 		}
 	}
 
-	.block-editor-inner-blocks {
-		width: 100%;
-	}
-
 	.coblocks-list-appender {
-		flex: 1 100%;
+		margin-bottom: -14px;
+		margin-left: -14px;
+		margin-right: -14px;
 	}
 
 	.coblocks-list-appender__toggle {
@@ -22,7 +20,7 @@
 		color: $dark-gray-500;
 		display: flex;
 		justify-content: center;
-		margin-top: 3.25em;
+		margin-top: 14px;
 		outline: 1px dashed $dark-gray-150;
 		padding: 16px;
 		width: 100%;
