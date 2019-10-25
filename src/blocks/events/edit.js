@@ -111,6 +111,7 @@ class EventItem extends Component {
 		event.preventDefault();
 
 		const { externalCalendarUrl } = this.props.attributes;
+
 		if ( externalCalendarUrl ) {
 			this.setState( { editing: false } );
 		}

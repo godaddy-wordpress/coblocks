@@ -1,99 +1,34 @@
 /**
- * Internal dependencies.
+ * Styles.
  */
 import './styles/editor.scss';
 import './styles/style.scss';
 
-import icons from '../icons';
+/**
+ * Internal dependencies.
+ */
 import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
 import save from './save';
 
 /**
  * WordPress dependencies.
  */
-import { __ } from '@wordpress/i18n';
+import { __, _x } from '@wordpress/i18n';
 
 /**
  * Block constants.
  */
-const name = 'coblocks/event-item';
-
-const category = 'coblocks';
-
-const title = __( 'Event Item', 'coblocks' );
-
-const icon = icons.eventItem;
-
-const keywords = [];
-
-const attributes = {
-	title: {
-		type: 'string',
-		source: 'html',
-		selector: '.wp-block-coblocks-event-item__heading',
-		default: '',
-	},
-	description: {
-		type: 'string',
-		source: 'html',
-		selector: '.wp-block-coblocks-event-item__description',
-		default: '',
-	},
-	eventDay: {
-		type: 'string',
-		source: 'html',
-		selector: '.wp-block-coblocks-event-item__day',
-		default: '',
-	},
-	eventMonth: {
-		type: 'string',
-		source: 'html',
-		selector: '.wp-block-coblocks-event-item__month',
-		default: '',
-	},
-	eventDate: {
-		type: 'string',
-		source: 'html',
-		selector: '.wp-block-coblocks-event-item__date',
-		default: '',
-	},
-	eventTime: {
-		type: 'string',
-		source: 'html',
-		selector: '.wp-block-coblocks-event-item__time',
-		default: '',
-	},
-	eventLocation: {
-		type: 'string',
-		source: 'html',
-		selector: '.wp-block-coblocks-event-item__location',
-		default: '',
-	},
-	textColor: {
-		type: 'string',
-	},
-	customTextColor: {
-		type: 'string',
-	},
-	pageNum: {
-		type: 'number',
-		default: 0,
-	},
-	lastItem: {
-		type: 'bool',
-		default: false,
-	},
-};
+const { name, category, attributes } = metadata;
 
 const settings = {
-	title,
-	description: __( 'A event item within the events block.', 'coblocks' ),
+	title: _x( 'Event Item', 'block name', 'coblocks' ),
+	description: __( 'An event within the events block.', 'coblocks' ),
 	icon,
-	keywords,
 	attributes,
 	supports: {
 		inserter: false,
-		customClassName: false,
 		reusable: false,
 		html: false,
 	},
@@ -102,4 +37,4 @@ const settings = {
 	save,
 };
 
-export { name, title, settings, category };
+export { name, category, icon, metadata, settings };

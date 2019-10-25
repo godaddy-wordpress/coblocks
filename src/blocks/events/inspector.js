@@ -21,13 +21,11 @@ const Inspector = props => {
 		setAttributes,
 	} = props;
 
-	const defaultColors = [
-		{
-			value: textColor.color,
-			onChange: onUpdateTextColor,
-			label: __( 'Text Color', 'coblocks' ),
-		},
-	];
+	const {
+		eventsToShow,
+		linkACalendar,
+		externalCalendarUrl,
+	} = attributes;
 
 	const eventsRange = [
 		{ value: '1 week', label: __( '1 Week', 'coblocks' ) },
@@ -42,34 +40,40 @@ const Inspector = props => {
 				<ToggleControl
 					label={ __( 'Link a Calendar', 'coblocks' ) }
 					help={
-						attributes.linkACalendar ?
-							__( 'Showing your public calendar.', 'coblocks' ) :
+						linkACalendar ?
+							__( 'Showing public calendar.', 'coblocks' ) :
 							__( 'Toggle to link a public calendar.', 'coblocks' )
 					}
-					checked={ attributes.linkACalendar }
+					checked={ linkACalendar }
 					onChange={ onToggleCalendarLink }
 				/>
-				{ attributes.linkACalendar &&
-				<SelectControl
-					label={ __( 'Period' ) }
-					value={ attributes.eventsRange }
-					options={ eventsRange }
-					help={ __( 'Show events from the period (100 events max).', 'coblocks' ) }
-					onChange={ ( value ) => setAttributes( { eventsRange: value } ) }
-				/>
-				}
 				<RangeControl
-					label={ __( 'Number of events to show per page', 'coblocks' ) }
-					value={ attributes.eventsToShow }
+					label={ __( 'Events per page', 'coblocks' ) }
+					value={ eventsToShow }
 					onChange={ onChangeVisibleEvents }
 					min={ 5 }
 					max={ 15 }
 				/>
+				{ linkACalendar && externalCalendarUrl &&
+					<SelectControl
+						label={ __( 'Period' ) }
+						value={ eventsRange }
+						options={ eventsRange }
+						help={ __( 'Show events from the period (100 events max).', 'coblocks' ) }
+						onChange={ ( value ) => setAttributes( { eventsRange: value } ) }
+					/>
+				}
 			</PanelBody>
 			<PanelColorSettings
 				title={ __( 'Color Settings' ) }
 				initialOpen={ false }
-				colorSettings={ defaultColors }
+				colorSettings={ [
+					{
+						value: textColor.color,
+						onChange: onUpdateTextColor,
+						label: __( 'Text Color', 'coblocks' ),
+					},
+				] }
 			>
 				<ContrastChecker
 					{ ...{
