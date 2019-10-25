@@ -28,8 +28,8 @@ const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/
 
 const TEMPLATE = [
 	[ 'coblocks/icon', { hasContentAlign: false } ],
-	[ 'core/heading', { placeholder: _x( 'Add feature title...', 'content placeholder' ), content: _x( 'Feature Title', 'content placeholder' ), level: 4 } ],
-	[ 'core/paragraph', { placeholder: _x( 'Add feature content', 'content placeholder' ), content: _x( 'This is a feature block that you can use to highlight features.', 'content placeholder' ) } ],
+	[ 'core/heading', { placeholder: _x( 'Add feature title...', 'content placeholder', 'coblocks' ), content: _x( 'Feature Title', 'content placeholder', 'coblocks' ), level: 4 } ],
+	[ 'core/paragraph', { placeholder: _x( 'Add feature content', 'content placeholder', 'coblocks' ), content: _x( 'This is a feature block that you can use to highlight features.', 'content placeholder', 'coblocks' ) } ],
 ];
 
 /**
@@ -60,7 +60,7 @@ class Edit extends Component {
 		const dropZone = (
 			<BackgroundDropZone
 				{ ...this.props }
-				label={ __( 'Add as backround' ) }
+				label={ __( 'Add as background', 'coblocks' ) }
 			/>
 		);
 

@@ -29,19 +29,14 @@ export const DEFAULT_ICON_SIZE = 60;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Icon', 'block name' ),
-	description: __( 'Add a stylized graphic symbol to communicate something more.' ),
+	title: _x( 'Icon', 'block name', 'coblocks' ),
+	description: __( 'Add a stylized graphic symbol to communicate something more.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'icons', 'block keyword' ), 'svg', 'coblocks' ],
+	keywords: [ _x( 'icons', 'block keyword', 'coblocks' ), 'svg', 'coblocks' ],
 	styles: [
-		{ name: 'outlined', label: _x( 'Outlined', 'block style' ), isDefault: true },
-		{ name: 'filled', label: _x( 'Filled', 'block style' ) },
+		{ name: 'outlined', label: _x( 'Outlined', 'block style', 'coblocks' ), isDefault: true },
+		{ name: 'filled', label: _x( 'Filled', 'block style', 'coblocks' ) },
 	],
-	example: {
-		attributes: {
-			width: 260,
-		},
-	},
 	attributes,
 	edit,
 	save,

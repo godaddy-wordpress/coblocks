@@ -158,6 +158,30 @@ class CoBlocks_Form {
 			]
 		);
 
+		register_block_type(
+			'coblocks/field-date',
+			[
+				'parent'          => [ 'coblocks/form' ],
+				'render_callback' => [ $this, 'render_field_date' ],
+			]
+		);
+
+		register_block_type(
+			'coblocks/field-phone',
+			[
+				'parent'          => [ 'coblocks/form' ],
+				'render_callback' => [ $this, 'render_field_phone' ],
+			]
+		);
+
+		register_block_type(
+			'coblocks/field-radio',
+			[
+				'parent'          => [ 'coblocks/form' ],
+				'render_callback' => [ $this, 'render_field_radio' ],
+			]
+		);
+
 		/**
 		 * Fires when the coblocks/form block and sub-blocks are registered
 		 */
@@ -175,7 +199,7 @@ class CoBlocks_Form {
 	 */
 	public function render_form( $atts, $content ) {
 
-		$this->form_hash      = sha1( json_encode( $atts ) . $content );
+		$this->form_hash      = sha1( wp_json_encode( $atts ) . $content );
 		$submitted_hash       = filter_input( INPUT_POST, 'form-hash', FILTER_SANITIZE_STRING );
 		$recaptcha_site_key   = get_option( 'coblocks_google_recaptcha_site_key' );
 		$recaptcha_secret_key = get_option( 'coblocks_google_recaptcha_secret_key' );
@@ -206,7 +230,7 @@ class CoBlocks_Form {
 			?>
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( untrailingslashit( get_the_permalink() ) ), $this->form_hash ) ); ?>" method="post">
-				<?php echo do_blocks( $content ); ?>
+				<?php echo do_blocks( $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<input class="coblocks-field verify" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>" tabindex="-1">
 				<div class="coblocks-form__submit wp-block-button">
 					<?php $this->render_submit_button( $atts ); ?>
@@ -235,11 +259,10 @@ class CoBlocks_Form {
 	 * Render the name field
 	 *
 	 * @param  array $atts    Block attributes.
-	 * @param  mixed $content Block content.
 	 *
 	 * @return mixed Markup for the name field.
 	 */
-	public function render_field_name( $atts, $content ) {
+	public function render_field_name( $atts ) {
 
 		$label            = isset( $atts['label'] ) ? $atts['label'] : __( 'Name', 'coblocks' );
 		$label_slug       = sanitize_title( $label );
@@ -288,11 +311,10 @@ class CoBlocks_Form {
 	 * Render the email field
 	 *
 	 * @param  array $atts    Block attributes.
-	 * @param  mixed $content Block content.
 	 *
 	 * @return mixed Markup for the email field.
 	 */
-	public function render_field_email( $atts, $content ) {
+	public function render_field_email( $atts ) {
 
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Email', 'coblocks' );
 		$label_slug    = sanitize_title( $label );
@@ -316,15 +338,14 @@ class CoBlocks_Form {
 	 * Render the textarea field
 	 *
 	 * @param  array $atts    Block attributes.
-	 * @param  mixed $content Block content.
 	 *
 	 * @return mixed Markup for the textarea field.
 	 */
-	public function render_field_textarea( $atts, $content ) {
+	public function render_field_textarea( $atts ) {
 
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Message', 'coblocks' );
 		$label_slug    = sanitize_title( $label );
-		$required_attr = ( isset( $is_required ) && $is_required ) ? 'required' : '';
+		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
 		ob_start();
 
@@ -332,9 +353,117 @@ class CoBlocks_Form {
 
 		?>
 
-		<textarea name="field-<?php echo esc_attr( $label_slug ); ?>[value]" id="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-field coblocks-textarea" rows="20"></textarea>
+		<textarea name="field-<?php echo esc_attr( $label_slug ); ?>[value]" id="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-field coblocks-textarea" rows="20" <?php echo esc_attr( $required_attr ); ?>></textarea>
 
 		<?php
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Render the date field
+	 *
+	 * @param  array $atts    Block attributes.
+	 * @param  mixed $content Block content.
+	 *
+	 * @return mixed Markup for the date field.
+	 */
+	public function render_field_date( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+
+		wp_enqueue_script(
+			'coblocks-datepicker',
+			CoBlocks()->asset_source( 'js' ) . 'coblocks-datepicker' . COBLOCKS_ASSET_SUFFIX . '.js',
+			array( 'jquery', 'jquery-ui-datepicker' ),
+			COBLOCKS_VERSION,
+			true
+		);
+
+		wp_localize_jquery_ui_datepicker();
+
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Date', 'coblocks' );
+		$label_slug    = sanitize_title( $label );
+		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label );
+
+		?>
+
+		<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--date" <?php echo esc_attr( $required_attr ); ?> />
+
+		<?php
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Render the phone field
+	 *
+	 * @param  array $atts    Block attributes.
+	 * @param  mixed $content Block content.
+	 *
+	 * @return mixed Markup for the phone field.
+	 */
+	public function render_field_phone( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Phone', 'coblocks' );
+		$label_slug    = sanitize_title( $label );
+		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label );
+
+		?>
+
+		<input type="tel" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--telephone" <?php echo esc_attr( $required_attr ); ?> />
+
+		<?php
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Render the radio field
+	 *
+	 * @param  array $atts    Block attributes.
+	 * @param  mixed $content Block content.
+	 *
+	 * @return mixed Markup for the radio field.
+	 */
+	public function render_field_radio( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+
+		if ( empty( $atts['options'] ) ) {
+
+			return;
+
+		}
+
+		$the_options = array_filter( $atts['options'] );
+
+		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
+		$label_slug = sanitize_title( $label );
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label );
+
+		foreach ( $the_options as $value ) {
+
+			printf(
+				'<label class="coblocks-radio-label">
+					<input type="radio" name="field-%1$s[value]" value="%2$s" class="radio"> %3$s
+				</label>',
+				esc_attr( $label_slug ),
+				esc_attr( $value ),
+				esc_html( $value )
+			);
+
+		}
 
 		return ob_get_clean();
 
@@ -344,10 +473,11 @@ class CoBlocks_Form {
 	 * Generate the form field label.
 	 *
 	 * @param  array $atts Block attributes.
+	 * @param  mixed $field_label Block content.
 	 *
 	 * @return mixed Form field label markup.
 	 */
-	private function render_field_label( $atts, $field_label ) {
+	public function render_field_label( $atts, $field_label ) {
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : $field_label;
 		$label_slug = sanitize_title( $label );
@@ -385,7 +515,7 @@ class CoBlocks_Form {
 	 *
 	 * @return mixed Form submit button markup.
 	 */
-	private function render_submit_button( $atts ) {
+	public function render_submit_button( $atts ) {
 
 		$btn_text  = isset( $atts['submitButtonText'] ) ? $atts['submitButtonText'] : __( 'Submit', 'coblocks' );
 		$btn_class = isset( $atts['submitButtonClasses'] ) ? $atts['submitButtonClasses'] : '';
@@ -403,22 +533,17 @@ class CoBlocks_Form {
 
 		}
 
-		if ( ! empty( $styles ) ) {
-
-			$styles = " style='{$styles}'";
-
-		}
-
 		?>
 
-		<button type="submit" class="wp-block-button__link <?php echo esc_attr( $btn_class ); ?>"<?php echo $styles; ?>><?php echo esc_html( $btn_text ); ?></button>
+		<button type="submit" class="wp-block-button__link <?php echo esc_attr( $btn_class ); ?>" style="<?php echo esc_attr( $styles ); ?>"><?php echo esc_html( $btn_text ); ?></button>
 
 		<?php
-
 	}
 
 	/**
 	 * Process the form submission
+	 *
+	 * @param  array $atts Block attributes.
 	 *
 	 * @return bool True when an email is sent, else false.
 	 */
@@ -502,7 +627,7 @@ class CoBlocks_Form {
 
 			if ( is_array( $data['value'] ) ) {
 
-				$data['value'] = implode( ' ', $data['value'] );
+				$data['value'] = implode( ', ', $data['value'] );
 
 			}
 
@@ -641,7 +766,7 @@ class CoBlocks_Form {
 	/**
 	 * Verify recaptcha to prevent spam
 	 *
-	 * @param string $recaptcha_token The recaptcha token submitted with the form
+	 * @param string $recaptcha_token The recaptcha token submitted with the form.
 	 *
 	 * @return bool True when token is valid, else false
 	 */

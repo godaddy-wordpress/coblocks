@@ -1,0 +1,86 @@
+{
+	"name": "coblocks/social-profiles",
+	"category": "coblocks",
+	"attributes": {
+		"align": {
+			"type": "string",
+			"enum": [ "wide", "full" ]
+		},
+		"className": {
+			"type": "string"
+		},
+		"hasColors": {
+			"type": "boolean",
+			"default": true
+		},
+		"borderRadius": {
+			"type": "number",
+			"default": 40
+		},
+		"size": {
+			"type": "string",
+			"default": "med"
+		},
+		"iconSize": {
+			"type": "number",
+			"default": 22
+		},
+		"padding": {
+			"type": "number",
+			"default": 16
+		},
+		"textAlign": {
+			"type": "string"
+		},
+		"backgroundColor": {
+			"type": "string"
+		},
+		"customBackgroundColor": {
+			"type": "string"
+		},
+		"blockBackgroundColor": {
+			"type": "string"
+		},
+		"customBlockBackgroundColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"customTextColor": {
+			"type": "string"
+		},
+		"facebook": {
+			"type": "string",
+			"default": ""
+		},
+		"twitter": {
+			"type": "string",
+			"default": ""
+		},
+		"instagram": {
+			"type": "string",
+			"default": ""
+		},
+		"pinterest": {
+			"type": "string",
+			"default": ""
+		},
+		"linkedin": {
+			"type": "string",
+			"default": ""
+		},
+		"youtube": {
+			"type": "string",
+			"default": ""
+		},
+		"yelp": {
+			"type": "string",
+			"default": ""
+		},
+		"houzz": {
+			"type": "string",
+			"default": ""
+		}
+	}
+}

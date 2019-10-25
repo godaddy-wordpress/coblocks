@@ -144,7 +144,7 @@ class FoodAndDrinksEdit extends Component {
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.replaceImage }
-				label={ __( 'Drop image to replace' ) }
+				label={ __( 'Drop image to replace', 'coblocks' ) }
 			/>
 		);
 
@@ -157,7 +157,7 @@ class FoodAndDrinksEdit extends Component {
 								icon="no-alt"
 								onClick={ () => setAttributes( { url: '' } ) }
 								className="coblocks-gallery-item__button"
-								label={ __( 'Remove Image' ) }
+								label={ __( 'Remove Image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
 						</div>
@@ -222,7 +222,7 @@ class FoodAndDrinksEdit extends Component {
 								value={ attributes.title }
 								tagName="h4"
 								wrapperClassName="wp-block-coblocks-food-item__heading"
-								placeholder={ __( 'Add title...' ) }
+								placeholder={ __( 'Add title...', 'coblocks' ) }
 								onChange={ title => setAttributes( { title } ) }
 								{ ...richTextAttributes }
 							/>
@@ -235,7 +235,7 @@ class FoodAndDrinksEdit extends Component {
 											onClick={ () =>
 												setAttributes( { popular: ! attributes.popular } )
 											}
-											label={ __( 'Popular' ) }
+											label={ __( 'Popular', 'coblocks' ) }
 											isToggled={ attributes.popular }
 										/>
 									</span>
@@ -253,7 +253,7 @@ class FoodAndDrinksEdit extends Component {
 											icon={ icons.spicy }
 											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicy"
 											onClick={ this.setSpicyTo }
-											label={ __( 'Spicy' ) }
+											label={ __( 'Spicy', 'coblocks' ) }
 											isToggled={ attributes.spicy }
 										/>
 									</span>
@@ -273,7 +273,7 @@ class FoodAndDrinksEdit extends Component {
 											onClick={ () =>
 												setAttributes( { spicier: ! attributes.spicier } )
 											}
-											label={ __( 'Hot' ) }
+											label={ __( 'Hot', 'coblocks' ) }
 											isToggled={ attributes.spicier }
 										/>
 									</span>
@@ -295,7 +295,7 @@ class FoodAndDrinksEdit extends Component {
 													vegetarian: ! attributes.vegetarian,
 												} )
 											}
-											label={ __( 'Vegetarian' ) }
+											label={ __( 'Vegetarian', 'coblocks' ) }
 											isToggled={ attributes.vegetarian }
 										/>
 									</span>
@@ -321,7 +321,7 @@ class FoodAndDrinksEdit extends Component {
 														glutenFree: ! attributes.glutenFree,
 													} )
 												}
-												label={ __( 'Gluten Free' ) }
+												label={ __( 'Gluten Free', 'coblocks' ) }
 												isToggled={ attributes.glutenFree }
 											/>
 										</span>
@@ -344,7 +344,7 @@ class FoodAndDrinksEdit extends Component {
 													pescatarian: ! attributes.pescatarian,
 												} )
 											}
-											label={ __( 'Pescatarian' ) }
+											label={ __( 'Pescatarian', 'coblocks' ) }
 											isToggled={ attributes.pescatarian }
 										/>
 									</span>
@@ -365,7 +365,7 @@ class FoodAndDrinksEdit extends Component {
 											onClick={ () =>
 												setAttributes( { vegan: ! attributes.vegan } )
 											}
-											label={ __( 'Vegan' ) }
+											label={ __( 'Vegan', 'coblocks' ) }
 											isToggled={ attributes.vegan }
 										/>
 									</span>
@@ -383,7 +383,7 @@ class FoodAndDrinksEdit extends Component {
 							value={ attributes.description }
 							tagName="p"
 							wrapperClassName="wp-block-coblocks-food-item__description"
-							placeholder={ __( 'Add description...' ) }
+							placeholder={ __( 'Add description...', 'coblocks' ) }
 							onChange={ description => setAttributes( { description } ) }
 							{ ...richTextAttributes }
 						/>
@@ -392,7 +392,7 @@ class FoodAndDrinksEdit extends Component {
 								value={ attributes.price }
 								tagName="p"
 								wrapperClassName="wp-block-coblocks-food-item__price"
-								placeholder={ __( '$0.00' ) }
+								placeholder={ __( '$0.00', 'coblocks' ) }
 								onChange={ price => setAttributes( { price } ) }
 								{ ...richTextAttributes }
 							/>

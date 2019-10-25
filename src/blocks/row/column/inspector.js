@@ -50,19 +50,39 @@ class Inspector extends Component {
 
 		const {
 			width,
-			paddingTop,
-			paddingRight,
-			paddingBottom,
-			paddingLeft,
 			marginTop,
 			marginRight,
 			marginBottom,
 			marginLeft,
+			marginTopTablet,
+			marginRightTablet,
+			marginBottomTablet,
+			marginLeftTablet,
+			marginTopMobile,
+			marginRightMobile,
+			marginBottomMobile,
+			marginLeftMobile,
 			marginUnit,
+			marginSyncUnits,
+			marginSyncUnitsTablet,
+			marginSyncUnitsMobile,
+			marginSize,
+			paddingTop,
+			paddingRight,
+			paddingBottom,
+			paddingLeft,
+			paddingTopTablet,
+			paddingRightTablet,
+			paddingBottomTablet,
+			paddingLeftTablet,
+			paddingTopMobile,
+			paddingRightMobile,
+			paddingBottomMobile,
+			paddingLeftMobile,
 			paddingUnit,
 			paddingSyncUnits,
-			marginSyncUnits,
-			marginSize,
+			paddingSyncUnitsTablet,
+			paddingSyncUnitsMobile,
 			paddingSize,
 		} = attributes;
 
@@ -85,34 +105,54 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Column Settings' ) } className="components-panel__body--column-settings">
+					<PanelBody title={ __( 'Column Settings', 'coblocks' ) } className="components-panel__body--column-settings">
 						<DimensionsControl { ...this.props }
 							type={ 'margin' }
-							label={ __( 'Margin' ) }
-							help={ __( 'Space around the container.' ) }
+							label={ __( 'Margin', 'coblocks' ) }
+							help={ __( 'Space around the container.', 'coblocks' ) }
 							valueTop={ marginTop }
 							valueRight={ marginRight }
 							valueBottom={ marginBottom }
 							valueLeft={ marginLeft }
+							valueTopTablet={ marginTopTablet }
+							valueRightTablet={ marginRightTablet }
+							valueBottomTablet={ marginBottomTablet }
+							valueLeftTablet={ marginLeftTablet }
+							valueTopMobile={ marginTopMobile }
+							valueRightMobile={ marginRightMobile }
+							valueBottomMobile={ marginBottomMobile }
+							valueLeftMobile={ marginLeftMobile }
 							unit={ marginUnit }
 							syncUnits={ marginSyncUnits }
+							syncUnitsTablet={ marginSyncUnitsTablet }
+							syncUnitsMobile={ marginSyncUnitsMobile }
 							dimensionSize={ marginSize }
 						/>
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
-							label={ __( 'Padding' ) }
-							help={ __( 'Space inside of the container.' ) }
+							label={ __( 'Padding', 'coblocks' ) }
+							help={ __( 'Space inside of the container.', 'coblocks' ) }
 							valueTop={ paddingTop }
 							valueRight={ paddingRight }
 							valueBottom={ paddingBottom }
 							valueLeft={ paddingLeft }
+							valueTopTablet={ paddingTopTablet }
+							valueRightTablet={ paddingRightTablet }
+							valueBottomTablet={ paddingBottomTablet }
+							valueLeftTablet={ paddingLeftTablet }
+							valueTopMobile={ paddingTopMobile }
+							valueRightMobile={ paddingRightMobile }
+							valueBottomMobile={ paddingBottomMobile }
+							valueLeftMobile={ paddingLeftMobile }
 							unit={ paddingUnit }
 							syncUnits={ paddingSyncUnits }
+							syncUnitsTablet={ paddingSyncUnitsTablet }
+							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
 						/>
 						{ ( lastId !== clientId ) ?
 							<RangeControl
-								label={ __( 'Width' ) }
+								label={ __( 'Width', 'coblocks' ) }
 								value={ parseFloat( width ) }
 								onChange={ ( newWidth ) => onChangeWidth( newWidth ) }
 								min={ 10.00 }
@@ -122,18 +162,18 @@ class Inspector extends Component {
 							null }
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'coblocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', 'coblocks' ),
 							},
 						] }
 					>

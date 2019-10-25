@@ -68,7 +68,7 @@ class ModalSettings extends Component {
 					optionSettings = JSON.parse( optionSettings );
 
 					//get current blocks
-					const currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
+					const currentBlocks = wp.data.select( 'core/block-editor' ).getBlocks();
 					const blockNames = MapInnerBlocks( currentBlocks );
 
 					map( optionSettings, ( visible, block ) => {
@@ -129,13 +129,13 @@ class ModalSettings extends Component {
 						this.setState( { isOpen: true } );
 					} }
 				>
-					{ __( 'Manage Blocks' ) }
+					{ __( 'Manage Blocks', 'coblocks' ) }
 				</PluginMoreMenuItem>
 				{ this.state.isOpen ?
 					<Modal
-						title={ __( 'Block Manager' ) }
+						title={ __( 'Block Manager', 'coblocks' ) }
 						onRequestClose={ () => closeModal() }
-						closeLabel={ __( 'Close' ) }
+						closeLabel={ __( 'Close', 'coblocks' ) }
 						icon={ brandAssets.modalIcon }
 						className="coblocks-modal-component components-modal--coblocks-block-manager"
 					>
@@ -144,7 +144,7 @@ class ModalSettings extends Component {
 								type="search"
 								autoComplete="off"
 								autofocus="autofocus"
-								placeholder={ __( 'Search for a block' ) }
+								placeholder={ __( 'Search for a block', 'coblocks' ) }
 								value={ this.state.searchValue }
 								onChange={ ( evt ) => {
 									filterList( evt );

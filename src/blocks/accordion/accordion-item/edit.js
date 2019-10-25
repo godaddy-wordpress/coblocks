@@ -21,8 +21,6 @@ import { InnerBlocks, RichText } from '@wordpress/block-editor';
 /**
  * Constants
  */
-const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/list', 'core/image', 'core/columns', 'core/column', 'coblocks/row', 'coblocks/column', 'coblocks/highlight', 'coblocks/alert', 'coblocks/social' ];
-
 const TEMPLATE = [ [ 'core/paragraph', { placeholder: 'Add content...' } ] ];
 
 /**
@@ -64,7 +62,7 @@ class Edit extends Component {
 				>
 					<RichText
 						tagName="p"
-						placeholder={ _x( 'Add accordion title...', 'Accordion is the block name' ) }
+						placeholder={ _x( 'Write accordion item title...', 'Accordion is the block name', 'coblocks' ) }
 						value={ title }
 						className={ classnames(
 							`${ className }__title`, {
@@ -91,7 +89,6 @@ class Edit extends Component {
 						style={ { borderColor: backgroundColor.color } }
 					>
 						<InnerBlocks
-							allowedBlocks={ ALLOWED_BLOCKS }
 							template={ TEMPLATE }
 							templateInsertUpdatesSelection={ false }
 						/>

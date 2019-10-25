@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/dynamic-separator should render 1`] = `
+"<!-- wp:coblocks/dynamic-separator -->
+<hr class=\\"wp-block-coblocks-dynamic-separator\\" style=\\"height:50px\\"/>
+<!-- /wp:coblocks/dynamic-separator -->"
+`;

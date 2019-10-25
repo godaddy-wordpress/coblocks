@@ -69,7 +69,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 		$reflection_method->invoke( coblocks() );
 
 		$expected = [
-			'version' => '1.15.0',
+			'version' => '1.16.1',
 			'has_pro'     => false,
 			'plugin_dir'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_path( __FILE__ ) ),
 			'plugin_url'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_url( __FILE__ ) ),
@@ -93,20 +93,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test the define function sets a constant properly
-	 */
-	public function test_define() {
-
-		$reflection_method = new ReflectionMethod( 'CoBlocks', 'define' );
-
-		$reflection_method->setAccessible( true );
-		$reflection_method->invoke( coblocks(), 'COBLOCKS_TEST_CONSTANT', 'TEST_VALUE' );
-
-		$this->assertEquals( COBLOCKS_TEST_CONSTANT, 'TEST_VALUE' );
-
-	}
-
-	/**
 	 * Test core plugin files were included
 	 */
 	public function test_included_files() {
@@ -125,7 +111,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 			COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-getting-started-page.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php',
-			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-feedback.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php',
 		];
 
@@ -172,7 +157,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_js_asset_source() {
 
-		$this->assertRegexp( '/\/wp-content\/plugins\/coblocks\/dist\/js\//', coblocks()->asset_source( 'js' ) );
+		$this->assertRegexp( '/\/coblocks\/dist\/js\//', coblocks()->asset_source( 'js' ) );
 
 	}
 
@@ -181,7 +166,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_css_asset_source() {
 
-		$this->assertRegexp( '/\/wp-content\/plugins\/coblocks\/dist\/css\//', coblocks()->asset_source( 'css' ) );
+		$this->assertRegexp( '/\/coblocks\/dist\/css\//', coblocks()->asset_source( 'css' ) );
 
 	}
 
@@ -190,7 +175,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_custom_css_asset_source() {
 
-		$this->assertRegexp( '/\/wp-content\/plugins\/coblocks\/dist\/css\/custom/', coblocks()->asset_source( 'css', 'custom' ) );
+		$this->assertRegexp( '/\/coblocks\/dist\/css\/custom/', coblocks()->asset_source( 'css', 'custom' ) );
 
 	}
 

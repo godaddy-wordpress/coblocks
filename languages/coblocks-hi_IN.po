@@ -1,43 +1,21 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.12.1\n"
+"Project-Id-Version: CoBlocks 1.16.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-08-27T16:28:38+00:00\n"
+"POT-Creation-Date: 2019-10-18T18:40:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
 
-#: src/blocks/accordion/accordion-item/controls.js:28
-msgid "Display open"
-msgstr "प्रदर्शन खुला"
-
-#: src/blocks/accordion/accordion-item/edit.js:67
-msgid "Add accordion title..."
-msgstr "एकॉर्डियन शीर्षक जोड़ें..."
-
-#: src/blocks/accordion/accordion-item/index.js:24
-msgid "Accordion Item"
-msgstr "एकॉर्डियन आइटम"
-
-#: src/blocks/accordion/accordion-item/index.js:26
+#: src/blocks/accordion/accordion-item/index.js:27
 msgid "Add collapsable accordion items to accordions."
 msgstr "एकॉर्डियन में मिश्रित करने योग्य एकॉर्डियन आइटम जोड़ें"
-
-#: src/blocks/accordion/accordion-item/index.js:28
-#: src/blocks/accordion/index.js:30
-msgid "tabs"
-msgstr "टैब्स"
-
-#: src/blocks/accordion/accordion-item/index.js:28
-#: src/blocks/accordion/index.js:30
-msgid "faq"
-msgstr "सामान्य प्रश्न"
 
 #: src/blocks/accordion/accordion-item/inspector.js:34
 msgid "Accordion item is open by default."
@@ -51,66 +29,52 @@ msgstr "डिफ़ॉल्ट रूप से खुले रहने क�
 msgid "Accordion Item Settings"
 msgstr "एकॉर्डियन आइटम सेटिंग्स"
 
-#: src/blocks/accordion/accordion-item/inspector.js:65
-msgid "Display Open"
-msgstr "प्रदर्शन खुला"
-
 #: src/blocks/accordion/accordion-item/inspector.js:72
 #: src/blocks/alert/inspector.js:49
+#: src/blocks/author/inspector.js:50
 #: src/blocks/click-to-tweet/inspector.js:60
 #: src/blocks/dynamic-separator/inspector.js:60
 #: src/blocks/features/feature/inspector.js:92
 #: src/blocks/features/inspector.js:173
 #: src/blocks/form/submit-button.js:118
-#: src/blocks/gallery-carousel/inspector.js:165
-#: src/blocks/gallery-masonry/inspector.js:167
-#: src/blocks/gallery-stacked/inspector.js:184
-#: src/blocks/hero/inspector.js:117
+#: src/blocks/hero/inspector.js:137
 #: src/blocks/highlight/inspector.js:43
-#: src/blocks/icon/inspector.js:353
-#: src/blocks/media-card/inspector.js:124
+#: src/blocks/icon/inspector.js:302
+#: src/blocks/media-card/inspector.js:132
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
-#: src/blocks/row/column/inspector.js:125
-#: src/blocks/row/inspector.js:244
-#: src/blocks/shape-divider/inspector.js:102
-#: src/blocks/share/inspector.js:179
-#: src/blocks/social-profiles/inspector.js:193
+#: src/blocks/row/column/inspector.js:165
+#: src/blocks/row/inspector.js:211
+#: src/blocks/shape-divider/inspector.js:92
+#: src/blocks/share/inspector.js:200
+#: src/blocks/social-profiles/inspector.js:206
 #: src/extensions/colors/index.js:59
 msgid "Color Settings"
 msgstr "रंग की सेटिंग्स"
 
 #: src/blocks/accordion/accordion-item/inspector.js:78
-#: src/blocks/alert/inspector.js:54
+#: src/blocks/alert/inspector.js:55
+#: src/blocks/author/inspector.js:56
 #: src/blocks/features/feature/inspector.js:110
 #: src/blocks/features/inspector.js:191
-#: src/blocks/gallery-carousel/inspector.js:80
-#: src/blocks/gallery-masonry/inspector.js:93
-#: src/blocks/gallery-stacked/inspector.js:96
-#: src/blocks/hero/inspector.js:130
+#: src/blocks/hero/inspector.js:150
 #: src/blocks/highlight/inspector.js:49
-#: src/blocks/icon/inspector.js:377
-#: src/blocks/media-card/inspector.js:138
+#: src/blocks/icon/inspector.js:326
+#: src/blocks/media-card/inspector.js:146
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
-#: src/blocks/row/column/inspector.js:131
-#: src/blocks/row/inspector.js:260
-#: src/blocks/shape-divider/inspector.js:113
-#: src/blocks/share/inspector.js:80
-#: src/blocks/social-profiles/inspector.js:92
+#: src/blocks/row/column/inspector.js:171
+#: src/blocks/row/inspector.js:227
+#: src/blocks/shape-divider/inspector.js:103
+#: src/blocks/share/inspector.js:99
+#: src/blocks/social-profiles/inspector.js:103
 #: src/extensions/colors/index.js:47
+#: src/blocks/share/inspector.js:81
+#: src/blocks/social-profiles/inspector.js:85
 msgid "Background Color"
 msgstr "पृष्ठभूमि रंग"
 
 #: src/blocks/accordion/accordion-item/inspector.js:83
 msgid "Title Text Color"
 msgstr "शीर्षक पाठ रंग"
-
-#: src/blocks/accordion/edit.js:111
-msgid "Add Accordion Item"
-msgstr "एकॉर्डियन आइटम जोड़ें"
-
-#: src/blocks/accordion/index.js:26
-msgid "Accordion"
-msgstr "एकॉर्डियन"
 
 #: src/blocks/accordion/index.js:28
 msgid "Organize content within collapsable accordion items."
@@ -132,137 +96,69 @@ msgstr "JavaScript पॉलीफ़िल को लोड करके Intern
 msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
 msgstr "इस पेज पर JavaScript पॉलीफ़िल को लोड करके Internet Explorer के लिए समर्थन करना."
 
-#: src/blocks/alert/controls.js:103
-msgid "Warning"
-msgstr "चेतावनी"
+#: src/blocks/alert/index.js:29
+msgid "Provide contextual feedback messages or notices."
+msgstr "प्रासंगिक प्रतिक्रिया संदेश या नोटिस दें."
 
-#: src/blocks/alert/controls.js:111
-msgid "Error"
-msgstr "त्रुटि"
+#: src/blocks/alert/index.js:45
+msgid "This is an alert block"
+msgstr "यह एक अलर्ट ब्लॉक है"
 
-#: src/blocks/alert/controls.js:76
-msgid "Alert Type"
-msgstr "अलर्ट प्रकार"
+#: src/blocks/alert/index.js:46
+msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
+msgstr "अलर्ट एक संदेश है, जो खास सामग्री के बाहर प्रदर्शित होता है. अलर्ट एक प्रासंगिक प्रतिक्रिया देता है, जो विशिष्ट रूप से रीडर्स को कोई कार्यवाही लेने के लिए कहता है."
 
-#: src/blocks/alert/controls.js:80
-#: src/components/font-family/index.js:16
-#: src/components/typography-controls/index.js:91
-#: src/extensions/list-styles/index.js:15
-msgid "Default"
-msgstr "डिफ़ॉल्ट"
-
-#: src/blocks/alert/controls.js:87
-msgid "Info"
-msgstr "जानकारी"
-
-#: src/blocks/alert/controls.js:95
-msgid "Success"
-msgstr "सफल"
-
-#: src/blocks/alert/edit.js:74
-msgid "Write title..."
-msgstr "शीर्षक लिखें..."
-
-#: src/blocks/alert/edit.js:82
-msgid "Write text..."
-msgstr "पाठ लिखें..."
-
-#: src/blocks/alert/index.js:25
-msgid "Alert"
-msgstr "अलर्ट"
-
-#: src/blocks/alert/index.js:30
-msgid "Provide contextual feedback messages."
-msgstr "प्रासंगिक प्रतिक्रिया संदेश दें."
-
-#: src/blocks/alert/index.js:32
-msgid "notice"
-msgstr "सूचना"
-
-#: src/blocks/alert/index.js:32
-msgid "message"
-msgstr "संदेश"
-
-#: src/blocks/alert/inspector.js:59
+#: src/blocks/alert/inspector.js:60
+#: src/blocks/author/inspector.js:61
 #: src/blocks/click-to-tweet/inspector.js:66
 #: src/blocks/features/feature/inspector.js:114
 #: src/blocks/features/inspector.js:195
-#: src/blocks/hero/inspector.js:135
+#: src/blocks/hero/inspector.js:155
 #: src/blocks/highlight/inspector.js:54
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:58
-#: src/blocks/row/column/inspector.js:136
-#: src/blocks/row/inspector.js:265
-#: src/blocks/share/inspector.js:72
-#: src/blocks/social-profiles/inspector.js:84
+#: src/blocks/row/column/inspector.js:176
+#: src/blocks/row/inspector.js:232
+#: src/blocks/share/inspector.js:66
+#: src/blocks/social-profiles/inspector.js:95
 #: src/extensions/colors/index.js:54
 msgid "Text Color"
 msgstr "पाठ रंग"
 
-#: src/blocks/author/controls.js:41
-msgid "Edit image"
-msgstr "छवि संपादित करें"
+#: src/blocks/author/controls.js:36
+msgid "Edit avatar"
+msgstr "अवतार को संपादित करें"
 
-#: src/blocks/author/controls.js:49
-msgid "Remove image"
-msgstr "छवि निकालें"
+#. placeholder text used for the author name
+#. translators: placeholder text used for the author name
+#: src/blocks/author/edit.js:127
+msgid "Write author name…"
+msgstr "लेखक का नाम लिखें..."
 
-#: src/blocks/author/edit.js:102
-msgid "Drop to add as avatar"
-msgstr "अवतार के रूप में जोड़ने के लिए छोड़ें"
+#. placeholder text used for the biography
+#. translators: placeholder text used for the biography
+#: src/blocks/author/edit.js:141
+msgid "Write a biography that distills objective credibility and authority to your readers…"
+msgstr "अपने पाठकों के लिए कोई ऐसी जीवनी लिखें जो उद्देश्य विश्वसनीयता और अधिकार को पूरा करता हो..."
 
-#: src/blocks/author/edit.js:143
-msgid "Heading..."
-msgstr "शीर्षक..."
+#: src/blocks/author/index.js:29
+msgid "Add an author biography to build credibility and authority."
+msgstr "विश्वसनीयता और अधिकार को बनाए रखने के लिेए किसी लेखक की जीवनी को जोड़ें."
 
-#: src/blocks/author/edit.js:154
-msgid "Author Name"
-msgstr "लेखक का नाम"
+#: src/blocks/author/index.js:35
+msgid "Born to express, not to impress. A maker making the world I want."
+msgstr "अपने भाव की अभिव्यक्ति करें, न कि किसी को प्रभावित करने की कोशिश. मेरी पसंद की दुनिया बनाना."
 
-#: src/blocks/author/edit.js:165
-msgid "Write biography..."
-msgstr "बायोग्राफ़ी लिखें..."
+#: src/blocks/author/inspector.js:41
+msgid "Author Settings"
+msgstr "लेखक सेटिंग"
 
-#: src/blocks/author/index.js:26
-msgid "Author"
-msgstr "लेखक"
-
-#: src/blocks/author/index.js:28
-msgid "Add an author biography."
-msgstr "लेखक की बायोग्राफ़ी जोड़ें"
-
-#: src/blocks/author/index.js:30
-msgid "biography"
-msgstr "बायोग्राफ़ी"
-
-#: src/blocks/author/index.js:30
-msgid "profile"
-msgstr "प्रोफ़ाइल"
-
-#: src/blocks/buttons/index.js:30
-#: src/blocks/buttons/inspector.js:30
-msgid "Buttons"
-msgstr "बटन"
-
-#: src/blocks/buttons/index.js:31
+#: src/blocks/buttons/index.js:29
 msgid "Prompt visitors to take action with multiple buttons, side by side."
 msgstr "एक के पास मौजूद एक कई बटन के द्वारा आगंतुकों को कार्रवाई करने के लिए प्रेरित करें."
 
-#: src/blocks/buttons/index.js:32
-msgid "link"
-msgstr "लिंक"
-
-#: src/blocks/buttons/index.js:32
-#: src/blocks/hero/index.js:45
-msgid "cta"
-msgstr "cta"
-
-#: src/blocks/buttons/inspector.js:28
-msgid "Buttons Settings"
-msgstr "बटन सेटिंग्स"
-
-#: src/blocks/buttons/inspector.js:43
-msgid "Stack on mobile"
-msgstr "मोबाइल पर स्टैक"
+#: src/blocks/buttons/inspector.js:30
+msgid "Buttons"
+msgstr "बटन"
 
 #: src/blocks/buttons/inspector.js:48
 msgid "Stacking buttons on mobile."
@@ -273,6 +169,7 @@ msgid "Toggle to stack buttons on mobile."
 msgstr "मोबाइल पर स्टैक बटन के लिए टॉगल करें."
 
 #: src/blocks/click-to-tweet/controls.js:44
+#: src/blocks/click-to-tweet/controls.js:37
 msgid "Twitter Username"
 msgstr "Twitter उपयोगकर्ता का नाम"
 
@@ -280,31 +177,23 @@ msgstr "Twitter उपयोगकर्ता का नाम"
 msgid "Username"
 msgstr "उपयोगकर्ता का नाम"
 
-#: src/blocks/click-to-tweet/edit.js:107
+#: src/blocks/click-to-tweet/edit.js:109
 msgid "Add button..."
 msgstr "बटन जोड़ें..."
 
-# the text of the click to tweet element
-#: src/blocks/click-to-tweet/edit.js:80
+#. the text of the click to tweet element
+#. translators: the text of the click to tweet element
+#: src/blocks/click-to-tweet/edit.js:82
 msgid "Add a quote to tweet..."
 msgstr "ट्वीट करने के लिए कोट जोड़ें..."
 
-#: src/blocks/click-to-tweet/index.js:25
-msgid "Click to Tweet"
-msgstr "ट्वीट करने के लिए क्लिक करें"
-
-#: src/blocks/click-to-tweet/index.js:27
+#: src/blocks/click-to-tweet/index.js:29
 msgid "Add a quote for readers to tweet via Twitter."
 msgstr "पाठकों को Twitter के माध्यम से ट्वीट करने के लिए कोट जोड़ें."
 
-#: src/blocks/click-to-tweet/index.js:29
-#: src/blocks/social-profiles/index.js:23
-msgid "share"
-msgstr "साझा करें"
-
-#: src/blocks/click-to-tweet/index.js:29
-msgid "twitter"
-msgstr "twitter"
+#: src/blocks/click-to-tweet/index.js:34
+msgid "The easiest way to promote and advertise your blog, website, and business on Twitter."
+msgstr "Twitter पर अपने ब्लॉग, वेबसाइट, और बिज़नेस को बढ़ावा देने और विज्ञापन करने का एक आसान तरीका."
 
 #: src/blocks/click-to-tweet/inspector.js:52
 #: src/blocks/highlight/inspector.js:35
@@ -313,29 +202,19 @@ msgstr "पाठ सेटिंग्स"
 
 #: src/blocks/click-to-tweet/inspector.js:71
 #: src/blocks/form/submit-button.js:127
+#: src/blocks/share/inspector.js:86
+#: src/blocks/social-profiles/inspector.js:90
 msgid "Button Color"
 msgstr "बटन का रंग"
 
-#: src/blocks/dynamic-separator/index.js:24
-msgid "Dynamic HR"
-msgstr "डायनमिक HR"
-
-#: src/blocks/dynamic-separator/index.js:29
+#: src/blocks/dynamic-separator/index.js:28
 msgid "Add a resizable spacer between other blocks."
 msgstr "अन्य ब्लॉक के बीच आकार बदलने योग्य स्पेसर जोड़ें."
 
-#: src/blocks/dynamic-separator/index.js:31
-msgid "spacer"
-msgstr "स्पेसर"
-
-#: src/blocks/dynamic-separator/inspector.js:43
-msgid "Dynamic HR Settings"
-msgstr "डायनमिक HR सेटिंग्स"
-
 #: src/blocks/dynamic-separator/inspector.js:44
-#: src/blocks/gallery-carousel/inspector.js:142
-#: src/blocks/hero/inspector.js:88
-#: src/blocks/map/inspector.js:133
+#: src/blocks/gallery-carousel/inspector.js:100
+#: src/blocks/hero/inspector.js:108
+#: src/blocks/map/inspector.js:132
 msgid "Height in pixels"
 msgstr "पिक्सेल में ऊँचाई"
 
@@ -350,14 +229,10 @@ msgstr "रंग"
 #: src/blocks/features/edit.js:78
 #: src/blocks/features/feature/edit.js:63
 #: src/blocks/media-card/edit.js:173
-msgid "Add as backround"
+msgid "Add as background"
 msgstr "पृष्ठभूमि के रूप में जोड़ें"
 
-#: src/blocks/features/feature/index.js:20
-msgid "Feature"
-msgstr "सुविधा"
-
-#: src/blocks/features/feature/index.js:42
+#: src/blocks/features/feature/index.js:29
 msgid "A singular child column within a parent features block."
 msgstr "पेरेंट फ़ीचर ब्लॉक में एकल चाइल्ड कॉलम."
 
@@ -367,72 +242,67 @@ msgstr "सुविधा सेटिंग्स"
 
 #: src/blocks/features/feature/inspector.js:71
 #: src/blocks/features/inspector.js:143
-#: src/blocks/hero/inspector.js:74
-#: src/blocks/icon/inspector.js:268
+#: src/blocks/hero/inspector.js:84
+#: src/blocks/icon/inspector.js:217
 #: src/blocks/media-card/inspector.js:62
-#: src/blocks/row/column/inspector.js:103
-#: src/blocks/row/inspector.js:213
+#: src/blocks/row/column/inspector.js:133
+#: src/blocks/row/inspector.js:180
 #: src/components/background/panel.js:146
 msgid "Padding"
 msgstr "पैडिंग"
 
-#: src/blocks/features/index.js:23
-msgid "Features"
-msgstr "सुविधाएं"
-
-#: src/blocks/features/index.js:36
+#: src/blocks/features/index.js:35
 msgid "Add up to three columns of small notes for your product or service."
 msgstr "अपने उत्पाद या सेवा के लिए संक्षिप्त टिप्पणी वाले तीन तक कॉलम जोड़ें."
 
-#: src/blocks/features/index.js:38
-msgid "services"
-msgstr "सेवाएँ"
-
 #: src/blocks/features/inspector.js:122
-#: src/blocks/row/column/inspector.js:91
-#: src/blocks/row/inspector.js:190
+#: src/blocks/row/column/inspector.js:111
+#: src/blocks/row/inspector.js:157
 #: src/components/dimensions-control/index.js:295
 msgid "Margin"
 msgstr "मार्जिन"
 
 #: src/blocks/features/inspector.js:164
-#: src/blocks/gallery-carousel/inspector.js:137
-#: src/blocks/gallery-stacked/inspector.js:145
-#: src/blocks/row/inspector.js:235
+#: src/blocks/gallery-carousel/inspector.js:84
+#: src/blocks/gallery-collage/inspector.js:108
+#: src/blocks/gallery-stacked/inspector.js:91
+#: src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
+#: src/blocks/gallery-carousel/inspector.js:78
+#: src/blocks/gallery-collage/inspector.js:107
 msgid "Gutter"
 msgstr "गटर"
 
 #: src/blocks/features/inspector.js:167
-#: src/blocks/row/inspector.js:238
+#: src/blocks/row/inspector.js:205
 msgid "Space between each column."
 msgstr "प्रत्येक कॉलम के बीच जगह"
 
 #: src/blocks/features/inspector.js:86
-#: src/blocks/icon/inspector.js:154
+#: src/blocks/icon/icon-size-select.js:16
 #: src/blocks/row/inspector.js:99
-#: src/blocks/share/inspector.js:58
-#: src/blocks/social-profiles/inspector.js:70
+#: src/blocks/share/inspector.js:72
+#: src/blocks/social-profiles/inspector.js:76
 #: src/components/dimensions-control/dimensions-select.js:15
 #: src/components/size-control/index.js:116
 msgid "Small"
 msgstr "छोटा"
 
 #: src/blocks/features/inspector.js:87
-#: src/blocks/icon/inspector.js:159
+#: src/blocks/icon/icon-size-select.js:21
 #: src/blocks/row/inspector.js:100
-#: src/blocks/share/inspector.js:59
-#: src/blocks/social-profiles/inspector.js:71
+#: src/blocks/share/inspector.js:73
+#: src/blocks/social-profiles/inspector.js:77
 #: src/components/dimensions-control/dimensions-select.js:20
 #: src/components/size-control/index.js:120
 msgid "Medium"
 msgstr "मध्यम"
 
 #: src/blocks/features/inspector.js:88
-#: src/blocks/icon/inspector.js:164
+#: src/blocks/icon/icon-size-select.js:26
 #: src/blocks/row/inspector.js:101
-#: src/blocks/share/inspector.js:60
-#: src/blocks/social-profiles/inspector.js:72
+#: src/blocks/share/inspector.js:74
+#: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:25
 #: src/components/size-control/index.js:65
 msgid "Large"
@@ -443,11 +313,14 @@ msgid "Features Settings"
 msgstr "सुविधा सेटिंग्स"
 
 #: src/blocks/features/inspector.js:96
+#: src/blocks/post-carousel/inspector.js:70
+#: src/blocks/posts/inspector.js:110
 #: src/blocks/services/inspector.js:69
 msgid "Columns"
 msgstr "कॉलम"
 
 #: src/blocks/food-and-drinks/appender.js:22
+#: src/blocks/food-and-drinks/appender.js:17
 msgid "Add Menu Section"
 msgstr "मेनू अनुभाग जोड़ें"
 
@@ -455,76 +328,72 @@ msgstr "मेनू अनुभाग जोड़ें"
 msgid "Menu title..."
 msgstr "मेनू शीर्षक..."
 
-#: src/blocks/food-and-drinks/edit.js:35
-msgid "Grid"
-msgstr "ग्रिड"
-
-#: src/blocks/food-and-drinks/edit.js:42
-msgid "List"
-msgstr "सूची"
-
-#: src/blocks/food-and-drinks/food-item/edit.js:144
-#: src/blocks/services/service/edit.js:146
+#: src/blocks/food-and-drinks/food-item/edit.js:147
+#: src/blocks/gallery-collage/edit.js:140
+#: src/blocks/services/service/edit.js:156
 msgid "Drop image to replace"
 msgstr "बदलने के लिए छवि छोड़ें"
 
-#: src/blocks/food-and-drinks/food-item/edit.js:157
-#: src/blocks/services/service/edit.js:159
+#: src/blocks/food-and-drinks/food-item/edit.js:160
+#: src/blocks/gallery-collage/edit.js:160
+#: src/blocks/services/service/edit.js:169
 #: src/components/block-gallery/gallery-image.js:208
 msgid "Remove Image"
 msgstr "छवि निकालें"
 
-#: src/blocks/food-and-drinks/food-item/edit.js:222
+#: src/blocks/food-and-drinks/food-item/edit.js:225
 msgid "Add title..."
 msgstr "शीर्षक जोड़ें..."
 
-#: src/blocks/food-and-drinks/food-item/edit.js:233
-#: src/blocks/food-and-drinks/food-item/inspector.js:55
-#: src/blocks/food-and-drinks/food-item/save.js:65
+#: src/blocks/food-and-drinks/food-item/edit.js:238
+#: src/blocks/food-and-drinks/food-item/inspector.js:45
+#: src/blocks/food-and-drinks/food-item/save.js:66
+msgid "Popular"
+msgstr "मशहूर"
+
+#: src/blocks/food-and-drinks/food-item/edit.js:256
+#: src/blocks/food-and-drinks/food-item/inspector.js:60
+#: src/blocks/food-and-drinks/food-item/save.js:74
 msgid "Spicy"
 msgstr "तीखा"
 
-#: src/blocks/food-and-drinks/food-item/edit.js:253
+#: src/blocks/food-and-drinks/food-item/edit.js:276
 msgid "Hot"
 msgstr "अत्यंत प्रचलित"
 
-#: src/blocks/food-and-drinks/food-item/edit.js:275
-#: src/blocks/food-and-drinks/food-item/inspector.js:70
-#: src/blocks/food-and-drinks/food-item/save.js:81
+#: src/blocks/food-and-drinks/food-item/edit.js:298
+#: src/blocks/food-and-drinks/food-item/inspector.js:75
+#: src/blocks/food-and-drinks/food-item/save.js:90
 msgid "Vegetarian"
 msgstr "शाकाहार"
 
-#: src/blocks/food-and-drinks/food-item/edit.js:301
-#: src/blocks/food-and-drinks/food-item/inspector.js:45
-#: src/blocks/food-and-drinks/food-item/save.js:89
+#: src/blocks/food-and-drinks/food-item/edit.js:324
+#: src/blocks/food-and-drinks/food-item/inspector.js:50
+#: src/blocks/food-and-drinks/food-item/save.js:98
 msgid "Gluten Free"
 msgstr "ग्लूटेन मुक्त"
 
-#: src/blocks/food-and-drinks/food-item/edit.js:324
-#: src/blocks/food-and-drinks/food-item/inspector.js:50
-#: src/blocks/food-and-drinks/food-item/save.js:97
+#: src/blocks/food-and-drinks/food-item/edit.js:347
+#: src/blocks/food-and-drinks/food-item/inspector.js:55
+#: src/blocks/food-and-drinks/food-item/save.js:106
 msgid "Pescatarian"
 msgstr "पेस्केटैरियन"
 
-#: src/blocks/food-and-drinks/food-item/edit.js:345
-#: src/blocks/food-and-drinks/food-item/inspector.js:65
-#: src/blocks/food-and-drinks/food-item/save.js:105
+#: src/blocks/food-and-drinks/food-item/edit.js:368
+#: src/blocks/food-and-drinks/food-item/inspector.js:70
+#: src/blocks/food-and-drinks/food-item/save.js:114
 msgid "Vegan"
 msgstr "वीगन"
 
-#: src/blocks/food-and-drinks/food-item/edit.js:363
+#: src/blocks/food-and-drinks/food-item/edit.js:386
 msgid "Add description..."
 msgstr "वर्णन जोड़ें..."
 
-#: src/blocks/food-and-drinks/food-item/edit.js:372
+#: src/blocks/food-and-drinks/food-item/edit.js:395
 msgid "$0.00"
 msgstr "$0.00"
 
-#: src/blocks/food-and-drinks/food-item/index.js:21
-msgid "Food Item"
-msgstr "खाद्य पदार्थ"
-
-#: src/blocks/food-and-drinks/food-item/index.js:30
+#: src/blocks/food-and-drinks/food-item/index.js:27
 msgid "A food and drink item within the Food & Drinks block."
 msgstr "खाद्य और पेय ब्लॉक के भीतर खाद्य और पेय पदार्थ."
 
@@ -560,62 +429,51 @@ msgstr "इस आइटम के लिए कीमत दिखाने क
 msgid "Item Attributes"
 msgstr "आइटम की विशेषताएं"
 
-#: src/blocks/food-and-drinks/food-item/inspector.js:60
-#: src/blocks/food-and-drinks/food-item/save.js:73
+#: src/blocks/food-and-drinks/food-item/inspector.js:65
+#: src/blocks/food-and-drinks/food-item/save.js:82
 msgid "Spicier"
 msgstr "मसालेदार"
 
-#: src/blocks/food-and-drinks/food-item/inspector.js:77
+#: src/blocks/food-and-drinks/food-item/inspector.js:82
 #: src/blocks/services/service/inspector.js:31
 msgid "Image Settings"
 msgstr "छवि की सेटिंग्स"
 
-#: src/blocks/food-and-drinks/food-item/inspector.js:79
+#: src/blocks/food-and-drinks/food-item/inspector.js:84
 #: src/blocks/gif/inspector.js:31
 #: src/blocks/media-card/inspector.js:95
 #: src/blocks/services/service/inspector.js:33
 msgid "Alt Text (Alternative Text)"
 msgstr "सभी पाठ (वैकल्पिक पाठ)"
 
-#: src/blocks/food-and-drinks/food-item/inspector.js:85
+#: src/blocks/food-and-drinks/food-item/inspector.js:90
 #: src/blocks/gif/inspector.js:37
 #: src/blocks/media-card/inspector.js:101
 #: src/blocks/services/service/inspector.js:39
 msgid "Describe the purpose of the image"
 msgstr "छवि का उद्देश्य बताएँ"
 
-#: src/blocks/food-and-drinks/food-item/inspector.js:87
+#: src/blocks/food-and-drinks/food-item/inspector.js:92
 #: src/blocks/gif/inspector.js:39
 #: src/blocks/media-card/inspector.js:103
 #: src/blocks/services/service/inspector.js:41
 msgid "Leave empty if the image is purely decorative."
 msgstr "यदि छवि पूरी तरह से सजावटी है, तो खाली छोड़ दें."
 
-#: src/blocks/food-and-drinks/food-item/inspector.js:92
+#: src/blocks/food-and-drinks/food-item/inspector.js:97
 #: src/blocks/services/service/inspector.js:46
 #: src/components/background/panel.js:126
 msgid "Focal Point"
 msgstr "फोकल प्वाइंट"
 
-#: src/blocks/food-and-drinks/index.js:24
-msgid "Food & Drinks"
-msgstr "भोजन और पेय"
-
-#: src/blocks/food-and-drinks/index.js:26
+#: src/blocks/food-and-drinks/index.js:27
 msgid "Display a menu or price list."
 msgstr "मेनू या मूल्य सूची प्रदर्शित करें."
 
-#: src/blocks/food-and-drinks/index.js:28
-msgid "restaurant"
-msgstr "रेस्तरां"
-
-#: src/blocks/food-and-drinks/index.js:28
-msgid "menu"
-msgstr "मेनू"
-
 #: src/blocks/food-and-drinks/inspector.js:26
-#: src/blocks/map/inspector.js:98
-#: src/blocks/row/inspector.js:152
+#: src/blocks/map/inspector.js:107
+#: src/blocks/posts/inspector.js:187
+#: src/blocks/row/inspector.js:119
 #: src/blocks/services/inspector.js:32
 msgid "Styles"
 msgstr "शैलियां"
@@ -648,134 +506,103 @@ msgstr "प्रत्येक आइटम के लिए मूल्य �
 msgid "Toggle to show the price of each item."
 msgstr "इस आइटम के लिए मूल्य दिखाने के लिए टॉगल करें."
 
-#: src/blocks/form/edit.js:109
-#: src/blocks/share/inspector.js:156
-#: includes/class-coblocks-form.php:210
-#: includes/class-coblocks-form.php:297
-msgid "Email"
-msgstr "ईमेल"
-
-#: src/blocks/form/edit.js:110
-msgid "e-mail"
-msgstr "ई-मेल"
-
-#: src/blocks/form/edit.js:110
-msgid "mail"
-msgstr "मेल"
-
-#: src/blocks/form/edit.js:111
-msgid "An email address field."
-msgstr "ईमेल पता फ़ील्ड."
-
-#: src/blocks/form/edit.js:120
-#: includes/class-coblocks-form.php:325
-msgid "Message"
-msgstr "संदेश"
-
-#: src/blocks/form/edit.js:121
-msgid "Textarea"
-msgstr "टेक्स्ट क्षेत्र"
-
-#: src/blocks/form/edit.js:121
-msgid "Multiline text"
-msgstr "मल्टीलाइन पाठ"
-
-#: src/blocks/form/edit.js:122
-msgid "A text box for longer responses."
-msgstr "लंबी प्रतिक्रियाओं के लिए पाठ बॉक्स."
-
-#: src/blocks/form/edit.js:289
+#. %s: Placeholder for email address provided by user.
+#. translators: %s: Placeholder for email address provided by user.
+#: src/blocks/form/edit.js:171
 msgid "%s is not a valid email address."
 msgstr "%s कोई मान्य ईमेल पता नहीं है."
 
-#: src/blocks/form/edit.js:298
+#. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#: src/blocks/form/edit.js:181
 msgid "%s and %s are not a valid email address."
 msgstr "%s और %s कोई मान्य ईमेल पते नहीं हैं."
 
-#: src/blocks/form/edit.js:305
+#. %s1: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user.
+#: src/blocks/form/edit.js:189
 msgid "%s are not a valid email address."
 msgstr "%s कोई मान्य ईमेल पता नहीं है."
 
-#: src/blocks/form/edit.js:363
+#: src/blocks/form/edit.js:247
 msgid "Email address"
 msgstr "ईमेल पता"
 
-#: src/blocks/form/edit.js:364
+#: src/blocks/form/edit.js:248
 msgid "name@example.com"
 msgstr "name@example.com"
 
-#: src/blocks/form/edit.js:374
+#: src/blocks/form/edit.js:258
 msgid "Subject"
 msgstr "विषय"
 
-#: src/blocks/form/edit.js:404
+#: src/blocks/form/edit.js:288
 msgid "Form Settings"
 msgstr "फ़ॉर्म सेटिंग्स"
 
-#: src/blocks/form/edit.js:409
+#: src/blocks/form/edit.js:293
 msgid "Google reCAPTCHA"
 msgstr "Google reCAPTCHA"
 
-#: src/blocks/form/edit.js:412
+#: src/blocks/form/edit.js:296
 msgid "Add your reCAPTCHA site and secret keys to protect your form from spam."
 msgstr "अपनी reCAPTCHA साइट जोड़ें और स्पैम से आपके फ़ॉर्म को सुरक्षित करने के लिए गुप्त कुंजी."
 
-#: src/blocks/form/edit.js:418
+#: src/blocks/form/edit.js:302
 msgid "Generate keys"
 msgstr "कुंजियाँ जनरेट करें"
 
-#: src/blocks/form/edit.js:419
+#: src/blocks/form/edit.js:303
 msgid "My keys"
 msgstr "मेरी कुंजी"
 
-#: src/blocks/form/edit.js:422
+#: src/blocks/form/edit.js:306
 msgid "Get help"
 msgstr "सहायता प्राप्त करें"
 
-#: src/blocks/form/edit.js:426
+#: src/blocks/form/edit.js:310
 msgid "Site Key"
 msgstr "साइट कुंजी"
 
-#: src/blocks/form/edit.js:432
+#: src/blocks/form/edit.js:316
 msgid "Secret Key"
 msgstr "गुप्त कुंजी"
 
-#: src/blocks/form/edit.js:446
+#: src/blocks/form/edit.js:330
+#: src/blocks/gallery-collage/edit.js:174
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr "सहेज रहे हैं"
 
-#: src/blocks/form/edit.js:446
-#: src/blocks/map/inspector.js:221
+#: src/blocks/form/edit.js:330
+#: src/blocks/map/inspector.js:231
 msgid "Save"
 msgstr "सहेजें"
 
-#: src/blocks/form/edit.js:461
-#: src/blocks/map/inspector.js:229
+#: src/blocks/form/edit.js:345
+#: src/blocks/map/inspector.js:240
 msgid "Remove"
 msgstr "निकालें"
 
-#: src/blocks/form/edit.js:57
-#: includes/class-coblocks-form.php:248
-msgid "First"
-msgstr "पहले"
+#: src/blocks/form/fields/coblocks-option.js:61
+msgid "Write option…"
+msgstr "विकल्प लिखें..."
 
-#: src/blocks/form/edit.js:61
-#: includes/class-coblocks-form.php:249
-msgid "Last"
-msgstr "अंतिम"
+#: src/blocks/form/fields/coblocks-option.js:70
+msgid "Remove Option"
+msgstr "विकल्प हटाएं"
 
-#: src/blocks/form/edit.js:88
-#: includes/class-coblocks-form.php:244
-msgid "Name"
-msgstr "नाम"
+#: src/blocks/form/fields/date/index.js:21
+msgid "A field for requesting date selections with a date picker."
+msgstr "दिनांक पिकर के साथ दिनांक चयन के अनुरोध के लिए स्थान."
 
-#: src/blocks/form/edit.js:89
-msgid "A text field for names."
-msgstr "नाम के लिए पाठ फ़ील्ड"
+#: src/blocks/form/fields/email/index.js:20
+msgid "A field for collecting a validated email address."
+msgstr "सत्यापित ईमेल पता के लिए स्थान."
 
 #: src/blocks/form/fields/field-label.js:22
-#: src/blocks/form/fields/field-name.js:67
+#: src/blocks/form/fields/name/edit.js:61
+#: src/blocks/form/fields/name/edit.js:49
 msgid "Add label…"
 msgstr "लेबल जोड़ें..."
 
@@ -783,41 +610,50 @@ msgstr "लेबल जोड़ें..."
 msgid "Required"
 msgstr "आवश्यक"
 
-#: src/blocks/form/fields/field-name.js:75
+#: src/blocks/form/fields/multi-field.js:102
+#: src/blocks/form/fields/multi-field.js:99
+msgid "Add Option"
+msgstr "विकल्प जोड़ें"
+
+#: src/blocks/form/fields/name/edit.js:69
 msgid "Name Field Settings"
 msgstr "नाम फ़ील्ड सेटिंग्स"
 
-#: src/blocks/form/fields/field-name.js:77
+#: src/blocks/form/fields/name/edit.js:71
 msgid "Last Name"
 msgstr "अंतिम नाम"
 
-#: src/blocks/form/fields/field-name.js:81
+#: src/blocks/form/fields/name/edit.js:75
 msgid "Showing both first and last name fields."
 msgstr "पहले और अंतिम नाम फ़ील्ड दोनों दिखाना."
 
-#: src/blocks/form/fields/field-name.js:81
+#: src/blocks/form/fields/name/edit.js:75
 msgid "Toggle to add a last name field."
 msgstr "अंतिम नाम फ़ील्ड जोड़ने के लिए टॉगल करें."
 
-#: src/blocks/form/index.js:25
-msgid "Form"
-msgstr "फ़ॉर्म"
+#: src/blocks/form/fields/name/index.js:20
+msgid "A text field for collecting the first and last names."
+msgstr "पहले और आखिरी नाम के लिए एक पाठ स्थान."
+
+#: src/blocks/form/fields/phone/index.js:21
+msgid "A phone number to allow visitors to give you a phone number."
+msgstr "विजिटर्स को आपको फ़ोन नंबर देने की अनुमति के लिए एक फ़ोन नंबर."
+
+#: src/blocks/form/fields/radio/index.js:21
+msgid "A field with multiple options where only one choice can be made."
+msgstr "बहु-विकल्प स्थान जहां सिर्फ एक विकल्प को चुना जा सकता है."
+
+#: src/blocks/form/fields/textarea/index.js:20
+msgid "A text box for longer responses."
+msgstr "लंबी प्रतिक्रियाओं के लिए पाठ बॉक्स."
 
 #: src/blocks/form/index.js:27
-msgid "Add a simple form to your page."
-msgstr "अपने पेज में सामान्य फ़ॉर्म जोड़ें."
+msgid "Add a contact form to your page."
+msgstr "अपने पेज में संपर्क फ़ॉर्म जोड़ें."
 
-#: src/blocks/form/index.js:29
-msgid "email"
-msgstr "ईमेल"
-
-#: src/blocks/form/index.js:29
-msgid "about"
-msgstr "इसके बारे में"
-
-#: src/blocks/form/index.js:29
-msgid "contact"
-msgstr "संपर्क"
+#: src/blocks/form/index.js:36
+msgid "Subject example"
+msgstr "विषय उदाहरण"
 
 #: src/blocks/form/submit-button.js:107
 msgid "Add text…"
@@ -827,159 +663,212 @@ msgstr "पाठ जोड़ें…"
 msgid "Button Text Color"
 msgstr "बटन पाठ रंग"
 
-#: src/blocks/gallery-carousel/controls.js:53
-#: src/blocks/gallery-masonry/controls.js:53
-#: src/blocks/gallery-stacked/controls.js:53
+#: src/blocks/gallery-carousel/controls.js:55
+#: src/blocks/gallery-masonry/controls.js:55
+#: src/blocks/gallery-stacked/controls.js:55
 msgid "Edit gallery"
 msgstr "गैलरी संपादित करें"
 
-# %1$d is the order number of the image, %2$d is the total number of images.
-#: src/blocks/gallery-carousel/edit.js:292
-#: src/blocks/gallery-masonry/edit.js:239
-#: src/blocks/gallery-stacked/edit.js:197
+#: src/blocks/gallery-carousel/edit.js:252
+msgid "Carousel"
+msgstr "कैरोसल"
+
+#. %1$d is the order number of the image, %2$d is the total number of images.
+#. translators: %1$d is the order number of the image, %2$d is the total number of images
+#. translators: %1$d is the order number of the image, %2$d is the total number of images.
+#: src/blocks/gallery-carousel/edit.js:310
+#: src/blocks/gallery-masonry/edit.js:219
+#: src/blocks/gallery-stacked/edit.js:191
 msgid "image %1$d of %2$d in gallery"
 msgstr "गैलरी में %2$d की %1$dछवि"
 
-#: src/blocks/gallery-carousel/edit.js:333
-#: src/blocks/gif/edit.js:248
+#: src/blocks/gallery-carousel/edit.js:376
+#: src/blocks/gif/edit.js:243
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:230
 msgid "Write caption…"
 msgstr "कैप्शन लिखें..."
 
-#: src/blocks/gallery-carousel/index.js:24
-msgid "Carousel"
-msgstr "कैरोसल"
-
-#: src/blocks/gallery-carousel/index.js:38
+#: src/blocks/gallery-carousel/index.js:35
 msgid "Display multiple images in a beautiful carousel gallery."
 msgstr "सुंदर कैरोसल गैलरी में कई छवियाँ दिखाएं"
 
-#: src/blocks/gallery-carousel/index.js:42
-#: src/blocks/gallery-masonry/index.js:43
-#: src/blocks/gallery-stacked/index.js:42
-msgid "gallery"
-msgstr "गैलरी"
-
-#: src/blocks/gallery-carousel/index.js:42
-#: src/blocks/gallery-masonry/index.js:43
-#: src/blocks/gallery-stacked/index.js:42
-msgid "photos"
-msgstr "फ़ोटो"
+#: src/blocks/gallery-carousel/inspector.js:109
+msgid "Thumbnails"
+msgstr "थंबनेल"
 
 #: src/blocks/gallery-carousel/inspector.js:119
-#: src/blocks/gallery-masonry/inspector.js:127
-#: src/blocks/gallery-stacked/inspector.js:134
-msgid "%s Settings"
-msgstr "%s सेटिंग्स"
+msgid "Responsive Height"
+msgstr "सक्रियता का स्तर"
 
-#: src/blocks/gallery-carousel/inspector.js:124
-#: src/blocks/icon/inspector.js:197
+#: src/blocks/gallery-carousel/inspector.js:40
+msgid "Showing thumbnail navigation."
+msgstr "थंबनेल नेविगेशन दिखाना."
+
+#: src/blocks/gallery-carousel/inspector.js:40
+msgid "Toggle to show thumbnails."
+msgstr "थंबनेल दिखाने के लिए टॉगल करें."
+
+#: src/blocks/gallery-carousel/inspector.js:44
+msgid "Percentage based height is activated."
+msgstr "प्रतिशत आधारित ऊंचाई सक्रिय है."
+
+#: src/blocks/gallery-carousel/inspector.js:44
+msgid "Toggle for percentage based height."
+msgstr "प्रतिशत आधारित ऊंचाई के लिए टॉगल करें."
+
+#: src/blocks/gallery-carousel/inspector.js:68
+msgid "Carousel Settings"
+msgstr "कैरोसल सेटिंग"
+
+#: src/blocks/gallery-carousel/inspector.js:71
+#: src/blocks/icon/inspector.js:173
 #: src/components/typography-controls/index.js:189
+#: src/blocks/icon/inspector.js:106
 msgid "Size"
 msgstr "आकार"
 
-#: src/blocks/gallery-carousel/inspector.js:150
-#: src/blocks/gallery-masonry/inspector.js:137
-#: src/blocks/gallery-stacked/inspector.js:149
-#: src/blocks/share/inspector.js:99
-#: src/blocks/social-profiles/inspector.js:111
+#: src/blocks/gallery-carousel/inspector.js:90
+#: src/blocks/gallery-masonry/inspector.js:83
+#: src/blocks/gallery-stacked/inspector.js:95
+#: src/blocks/share/inspector.js:120
+#: src/blocks/social-profiles/inspector.js:124
 #: src/components/background/panel.js:156
 msgid "Rounded Corners"
 msgstr "घुमावदार कोने"
 
-#: src/blocks/gallery-carousel/inspector.js:88
-#: src/blocks/gallery-masonry/inspector.js:101
-#: src/blocks/gallery-stacked/inspector.js:104
-msgid "Caption Color"
-msgstr "कैप्शन का रंग"
+#: src/blocks/gallery-collage/edit.js:174
+#: src/blocks/map/edit.js:306
+#: src/components/block-gallery/gallery-image.js:221
+msgid "Apply"
+msgstr "लागू करें"
 
-#: src/blocks/gallery-masonry/index.js:24
-msgid "Masonry"
-msgstr "मिस्त्री"
+#: src/blocks/gallery-collage/edit.js:183
+msgid "Write caption..."
+msgstr "कैप्शन लिखें..."
 
-#: src/blocks/gallery-masonry/index.js:39
-msgid "Display multiple images in an organized masonry gallery."
-msgstr "किसी संगठित मिस्त्री गैलरी में कई छवि प्रदर्शित होती हैं."
+#: src/blocks/gallery-collage/index.js:34
+msgid "Assemble images into a beautiful collage gallery."
+msgstr "एक खूबसूरत कोलाज गैलरी में छवियों को एकत्रित करना."
 
-#: src/blocks/gallery-masonry/inspector.js:130
-msgid "Column Size"
-msgstr "कॉलम का आकार"
+#: src/blocks/gallery-collage/inspector.js:105
+msgid "Collage Settings"
+msgstr "कोलाज सेटिंग"
 
-#: src/blocks/gallery-masonry/inspector.js:138
-msgid "Add rounded corners to the gallery items."
-msgstr "गैलरी आइटम मे ंघुमावदार कोने जोड़ें."
+#: src/blocks/gallery-collage/inspector.js:128
+#: src/blocks/gallery-collage/inspector.js:127
+msgid "Shadow"
+msgstr "शैडो"
 
-#: src/blocks/gallery-masonry/inspector.js:146
-#: src/blocks/gallery-stacked/inspector.js:165
+#: src/blocks/gallery-collage/inspector.js:147
+#: src/blocks/gallery-masonry/inspector.js:98
+#: src/blocks/gallery-stacked/inspector.js:111
 msgid "Captions"
 msgstr "कैप्शन"
 
-#: src/blocks/gallery-masonry/inspector.js:153
+#: src/blocks/gallery-collage/inspector.js:153
+#: src/blocks/gallery-masonry/inspector.js:105
 msgid "Caption Style"
 msgstr "कैप्शन स्टाइल"
 
-#: src/blocks/gallery-masonry/inspector.js:52
-#: src/blocks/gallery-stacked/inspector.js:55
+#: src/blocks/gallery-collage/inspector.js:30
+#: src/blocks/gallery-masonry/inspector.js:49
+#: src/blocks/gallery-stacked/inspector.js:52
 msgid "Showing captions for each media item."
 msgstr "प्रत्येक मीडिया आइटम के लिए कैप्शन दिखाना."
 
-#: src/blocks/gallery-masonry/inspector.js:52
-#: src/blocks/gallery-stacked/inspector.js:55
+#: src/blocks/gallery-collage/inspector.js:30
+#: src/blocks/gallery-masonry/inspector.js:49
+#: src/blocks/gallery-stacked/inspector.js:52
 msgid "Toggle to show media captions."
 msgstr "मी़डिया कैप्शन दिखाने के लिए टॉगल करें."
 
-#: src/blocks/gallery-stacked/index.js:24
+#: src/blocks/gallery-masonry/edit.js:188
+msgid "Masonry"
+msgstr "मिस्त्री"
+
+#: src/blocks/gallery-masonry/index.js:35
+msgid "Display multiple images in an organized masonry gallery."
+msgstr "किसी संगठित मिस्त्री गैलरी में कई छवि प्रदर्शित होती हैं."
+
+#: src/blocks/gallery-masonry/inspector.js:53
+#: src/blocks/gallery-stacked/inspector.js:56
+msgid "Image lightbox is enabled."
+msgstr "छवि लाइटबॉक्स सक्षम है."
+
+#: src/blocks/gallery-masonry/inspector.js:53
+#: src/blocks/gallery-stacked/inspector.js:56
+msgid "Toggle to enable the image lightbox."
+msgstr "छवि लाइटबॉक्स को सक्षम करने के लिए टॉगल करें."
+
+#: src/blocks/gallery-masonry/inspector.js:73
+msgid "Masonry Settings"
+msgstr "मैसन्री सेटिंग"
+
+#: src/blocks/gallery-masonry/inspector.js:76
+msgid "Column Size"
+msgstr "कॉलम का आकार"
+
+#: src/blocks/gallery-masonry/inspector.js:84
+msgid "Add rounded corners to the gallery items."
+msgstr "गैलरी आइटम मे ंघुमावदार कोने जोड़ें."
+
+#: src/blocks/gallery-masonry/inspector.js:92
+#: src/blocks/gallery-stacked/inspector.js:123
+msgid "Lightbox"
+msgstr "लाइटबॉक्स"
+
+#: src/blocks/gallery-stacked/edit.js:168
 msgid "Stacked"
 msgstr "स्टैक किया गया"
 
-#: src/blocks/gallery-stacked/index.js:38
+#: src/blocks/gallery-stacked/index.js:35
 msgid "Display multiple images in an single column stacked gallery."
 msgstr "एकल कॉलम स्टैक की गई गैलरी में कई छवियां दिखाएं."
 
-#: src/blocks/gallery-stacked/inspector.js:137
-msgid "Fullwidth Images"
-msgstr "पूर्ण-चौड़ाई छवियां"
-
-#: src/blocks/gallery-stacked/inspector.js:137
-msgid "Fullwidth Image"
-msgstr "पूर्ण-चौड़ाई छवि"
-
-#: src/blocks/gallery-stacked/inspector.js:159
+#: src/blocks/gallery-stacked/inspector.js:105
 msgid "Box Shadow"
 msgstr "बॉक्स शैडो"
 
-#: src/blocks/gallery-stacked/inspector.js:51
+#: src/blocks/gallery-stacked/inspector.js:48
 msgid "Fullwidth images are enabled."
 msgstr "पूर्ण-चौड़ाई छवियां सक्षम हैं"
 
-#: src/blocks/gallery-stacked/inspector.js:51
+#: src/blocks/gallery-stacked/inspector.js:48
 msgid "Toggle to fill the available gallery area with completely fullwidth images."
 msgstr "उपलब्ध गैलरी क्षेत्र को पूरी चौड़ाई की छवियों के साथ भरने के लिए टॉगल करें."
+
+#: src/blocks/gallery-stacked/inspector.js:80
+msgid "Stacked Settings"
+msgstr "स्टैक की गई सेटिंग"
+
+#: src/blocks/gallery-stacked/inspector.js:83
+msgid "Fullwidth Images"
+msgstr "पूर्ण-चौड़ाई छवियां"
+
+#: src/blocks/gallery-stacked/inspector.js:83
+msgid "Fullwidth Image"
+msgstr "पूर्ण-चौड़ाई छवि"
 
 #: src/blocks/gif/controls.js:44
 msgid "Remove gif"
 msgstr "gif निकालें"
 
-#: src/blocks/gif/edit.js:153
+#: src/blocks/gif/edit.js:152
 msgid "This gif has an empty alt attribute"
 msgstr "इस gif में खाली alt विशेषता है"
 
-#: src/blocks/gif/edit.js:288
+#: src/blocks/gif/edit.js:283
 msgid "Search for that perfect gif on Giphy"
 msgstr "Giphy पर उस सही gif के लिए खोजें"
 
-#: src/blocks/gif/edit.js:294
+#: src/blocks/gif/edit.js:289
 msgid "Search for gifs"
 msgstr "gif खोजें"
 
-#: src/blocks/gif/index.js:28
+#: src/blocks/gif/index.js:27
 msgid "Pick a gif, any gif."
 msgstr "कोई gif चुनें, कोई भी gif."
-
-#: src/blocks/gif/index.js:30
-msgid "animated"
-msgstr "एनीमेटेड"
 
 #: src/blocks/gif/inspector.js:29
 msgid "Gif Settings"
@@ -998,6 +887,7 @@ msgid "View Gist"
 msgstr "Gist देखें"
 
 #: src/blocks/gist/controls.js:68
+#: src/blocks/gist/controls.js:61
 msgid "GitHub File"
 msgstr "GitHub फ़ाइल"
 
@@ -1005,7 +895,7 @@ msgstr "GitHub फ़ाइल"
 msgid "File"
 msgstr "फ़ाइल"
 
-#: src/blocks/gist/deprecated.js:30
+#: src/blocks/gist/deprecated.js:36
 #: src/blocks/gist/save.js:29
 msgid "View this gist on GitHub"
 msgstr "GitHub पर इस gist को देखें"
@@ -1024,12 +914,8 @@ msgid "Loading Gist"
 msgstr "Gist लोड हो रहा है"
 
 #: src/blocks/gist/index.js:29
-msgid "Embed GitHub gists by adding the gist link."
-msgstr "gist लिंक जोड़कर एम्बेड की गई GitHub gist"
-
-#: src/blocks/gist/index.js:31
-msgid "code"
-msgstr "कोड"
+msgid "Embed GitHub gists by adding a gist link."
+msgstr "gist लिंक जोड़कर एम्बेड की गई GitHub gist."
 
 #: src/blocks/gist/inspector.js:31
 msgid "Showing gist meta data."
@@ -1052,207 +938,157 @@ msgid "Gist Meta"
 msgstr "Gist मेटा"
 
 #: src/blocks/hero/controls.js:32
-#: src/blocks/row/controls.js:71
 msgid "Change layout"
 msgstr "लेआउट बदलें"
 
-#: src/blocks/hero/edit.js:157
-#: src/blocks/row/column/edit.js:92
-#: src/blocks/row/edit.js:170
-msgid "Add backround to %s"
-msgstr "%s में पृष्ठभूमि जोड़ें"
+#: src/blocks/hero/edit.js:152
+msgid "Add background to hero"
+msgstr "हीरो में पृष्ठभूमि जोड़ें"
 
-#: src/blocks/hero/index.js:27
-msgid "Hero"
-msgstr "हीरो"
-
-#: src/blocks/hero/index.js:43
+#: src/blocks/hero/index.js:41
 msgid "An introductory area of a page accompanied by a small amount of text and a call to action."
 msgstr "पेज का परिचय देने वाला क्षेत्र पाठ जिसमें थोड़ा-सा पाठ रहेगा और कार्रवाई के लिए कॉल करें होगा."
 
-#: src/blocks/hero/index.js:45
-msgid "button"
-msgstr "बटन"
-
-#: src/blocks/hero/index.js:45
-msgid "call to action"
-msgstr "कार्रवाई के लिए कॉल करें"
-
-#: src/blocks/hero/inspector.js:107
+#: src/blocks/hero/inspector.js:127
 msgid "Content width in pixels"
 msgstr "पिक्सेल में सामग्री की चौड़ाई"
 
-#: src/blocks/hero/inspector.js:71
+#: src/blocks/hero/inspector.js:81
 msgid "Hero Settings"
 msgstr "हीरो सेटिंग्स"
 
-#: src/blocks/hero/inspector.js:75
+#: src/blocks/hero/inspector.js:85
 #: src/blocks/media-card/inspector.js:63
-#: src/blocks/row/column/inspector.js:104
-#: src/blocks/row/inspector.js:214
+#: src/blocks/row/column/inspector.js:134
+#: src/blocks/row/inspector.js:181
 msgid "Space inside of the container."
 msgstr "कंटेनर के अंदर जगह."
 
 #: src/blocks/hero/layouts.js:12
-#: src/components/background/panel.js:83
-#: src/components/grid-control/index.js:35
 msgid "Top Left"
 msgstr "शीर्ष बायां"
 
 #: src/blocks/hero/layouts.js:13
-#: src/components/background/panel.js:84
-#: src/components/grid-control/index.js:36
 msgid "Top Center"
 msgstr "शीर्ष केंद्र"
 
 #: src/blocks/hero/layouts.js:14
-#: src/components/background/panel.js:85
-#: src/components/grid-control/index.js:37
 msgid "Top Right"
 msgstr "शीर्ष दायां"
 
 #: src/blocks/hero/layouts.js:15
-#: src/components/background/panel.js:86
-#: src/components/grid-control/index.js:48
 msgid "Center Left"
 msgstr "केंद्र बायां"
 
 #: src/blocks/hero/layouts.js:16
-#: src/components/background/panel.js:87
-#: src/components/grid-control/index.js:49
 msgid "Center Center"
 msgstr "केंद्र केंद्र"
 
 #: src/blocks/hero/layouts.js:17
-#: src/components/background/panel.js:88
-#: src/components/grid-control/index.js:50
 msgid "Center Right"
 msgstr "केंद्र दायां"
 
 #: src/blocks/hero/layouts.js:18
-#: src/components/background/panel.js:89
-#: src/components/grid-control/index.js:41
 msgid "Bottom Left"
 msgstr "नीचे बायां"
 
 #: src/blocks/hero/layouts.js:19
-#: src/components/background/panel.js:90
-#: src/components/grid-control/index.js:42
 msgid "Bottom Center"
 msgstr "नीचे केंद्र"
 
 #: src/blocks/hero/layouts.js:20
-#: src/components/background/panel.js:91
-#: src/components/grid-control/index.js:43
 msgid "Bottom Right"
 msgstr "नीचे दायां"
 
-#: src/blocks/highlight/edit.js:108
+#: src/blocks/highlight/edit.js:113
 msgid "Add highlighted text..."
 msgstr "हाइलाइट किया गया पाठ जोड़ें..."
 
-#: src/blocks/highlight/index.js:22
-msgid "Highlight"
-msgstr "हाइलाइट"
+#: src/blocks/highlight/index.js:28
+msgid "Draw attention and emphasize important narrative."
+msgstr "ध्यान आकर्षित करें और आवश्यक विवरण पर ज़ोर दें."
 
-#: src/blocks/highlight/index.js:29
-msgid "Highlight text."
-msgstr "हाइलाइट"
+#: src/blocks/highlight/index.js:33
+msgid "Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative."
+msgstr "ध्यान आकर्षित करने और आवश्यक विवरण पर ध्यान देने के लिए पैराग्राफ पाठ को हाइलाइट करें."
 
-#: src/blocks/highlight/index.js:31
-msgid "text"
-msgstr "पाठ"
-
-#: src/blocks/highlight/index.js:31
-msgid "paragraph"
-msgstr "पैराग्राफ़"
-
-#: src/blocks/icon/index.js:27
-msgid "Icon"
-msgstr "आइकन"
-
-#: src/blocks/icon/index.js:34
-msgid "Add a stylized graphic symbol to communicate something more."
-msgstr "कुछ और संचार करने के लिए स्टाइल वाला ग्राफ़िक प्रतीक जोड़ें."
-
-#: src/blocks/icon/index.js:36
-#: src/blocks/social-profiles/index.js:23
-msgid "icons"
-msgstr "आइकन"
-
-#: src/blocks/icon/inspector.js:168
+#: src/blocks/icon/icon-size-select.js:30
 #: src/blocks/row/inspector.js:102
 #: src/components/dimensions-control/dimensions-select.js:30
 msgid "Huge"
 msgstr "बड़ा"
 
-#: src/blocks/icon/inspector.js:179
-#: src/blocks/share/inspector.js:90
-#: src/blocks/social-profiles/inspector.js:102
+#: src/blocks/icon/icon-size-select.js:79
+msgid "Choose icon size preset"
+msgstr "प्रीसेट आइकन आकार चुनें"
+
+#: src/blocks/icon/index.js:33
+msgid "Add a stylized graphic symbol to communicate something more."
+msgstr "कुछ और संचार करने के लिए स्टाइल वाला ग्राफ़िक प्रतीक जोड़ें."
+
+#: src/blocks/icon/inspector.js:155
+#: src/blocks/share/inspector.js:111
+#: src/blocks/social-profiles/inspector.js:115
 msgid "Icon Settings"
 msgstr "आइकन सेटिंग्स"
 
-#: src/blocks/icon/inspector.js:192
-#: src/components/dimensions-control/index.js:484
-msgid "Turn off advanced %s settings"
-msgstr "उन्नत %s सेटिंग्स बंद करें"
+#: src/blocks/icon/inspector.js:168
+msgid "Reset icon size"
+msgstr "आइकना आकार रीसेट करें"
 
-#: src/blocks/icon/inspector.js:194
-#: src/components/dimensions-control/index.js:486
+#: src/blocks/icon/inspector.js:170
+#: src/components/dimensions-control/index.js:470
 #: src/components/size-control/index.js:198
 msgid "Reset"
 msgstr "रीसेट करें"
 
-#: src/blocks/icon/inspector.js:221
-msgid "Custom %s size"
-msgstr "कस्टम %s आकार"
+#: src/blocks/icon/inspector.js:198
+msgid "Apply custom size"
+msgstr "कस्टम आकार लागू करें"
 
-#: src/blocks/icon/inspector.js:249
-#: src/components/dimensions-control/index.js:725
-msgid "Advanced %s settings"
-msgstr "उन्नत %s सेटिंग"
+#: src/blocks/icon/inspector.js:201
+msgid "Custom"
+msgstr "सीमा-शुल्क"
 
-#: src/blocks/icon/inspector.js:252
-#: src/components/dimensions-control/index.js:728
-msgid "Advanced"
-msgstr "उन्नत"
-
-#: src/blocks/icon/inspector.js:260
+#: src/blocks/icon/inspector.js:209
 msgid "Radius"
 msgstr "त्रिज्या"
 
-#: src/blocks/icon/inspector.js:280
+#: src/blocks/icon/inspector.js:229
 msgid "Icon Search"
 msgstr "आइकन खोज"
 
-#: src/blocks/icon/inspector.js:329
+#: src/blocks/icon/inspector.js:278
 msgid "No results found."
 msgstr "कोई परिणाम नहीं मिला."
 
-#: src/blocks/icon/inspector.js:335
+#: src/blocks/icon/inspector.js:284
 #: src/components/block-gallery/gallery-link-settings.js:63
 msgid "Link Settings"
 msgstr "लिंक सेटिंग्स"
 
-#: src/blocks/icon/inspector.js:338
+#: src/blocks/icon/inspector.js:287
 msgid "Link URL"
 msgstr "लिंक URL"
 
-#: src/blocks/icon/inspector.js:343
-#: src/components/block-gallery/gallery-link-settings.js:80
+#: src/blocks/icon/inspector.js:292
 msgid "Link Rel"
 msgstr "लिंक Rel"
 
-#: src/blocks/icon/inspector.js:348
+#: src/blocks/icon/inspector.js:297
 msgid "Opening in New Tab"
 msgstr "नई टैब में खोलना"
 
-#: src/blocks/icon/inspector.js:348
+#: src/blocks/icon/inspector.js:297
 #: src/components/block-gallery/gallery-link-settings.js:75
 msgid "Open in New Tab"
 msgstr "नई टैब में खोलें"
 
-#: src/blocks/icon/inspector.js:360
+#: src/blocks/icon/inspector.js:309
+#: src/blocks/share/inspector.js:104
+#: src/blocks/social-profiles/inspector.js:108
+#: src/blocks/share/inspector.js:68
+#: src/blocks/social-profiles/inspector.js:95
 msgid "Icon Color"
 msgstr "आइकन का रंग"
 
@@ -1261,30 +1097,17 @@ msgid "Edit logos"
 msgstr "लोगो संपादित करें"
 
 #: src/blocks/logos/edit.js:69
-#: src/blocks/logos/index.js:28
 msgid "Logos & Badges"
 msgstr "लोगो और बैज"
 
 #: src/blocks/logos/edit.js:70
-#: src/components/block-gallery/gallery-placeholder.js:71
+#: src/components/block-gallery/gallery-placeholder.js:72
 msgid "Drag images, upload new ones or select files from your library."
 msgstr "छवियां खींचें, नए अपलोड करें या अपनी लाइब्रेरी से फ़ाइलों का चयन करें."
 
-#: src/blocks/logos/index.js:29
+#: src/blocks/logos/index.js:27
 msgid "Add logos, badges, or certifications to build credibility."
 msgstr "विश्वसनीयता बनाने के लिए लोगो, बैजेस या प्रमाणपत्र जोड़ें."
-
-#: src/blocks/logos/index.js:30
-msgid "clients"
-msgstr "क्लायंट्स"
-
-#: src/blocks/logos/index.js:30
-msgid "proof"
-msgstr "प्रमाण"
-
-#: src/blocks/logos/index.js:30
-msgid "testimonials"
-msgstr "विवरण"
 
 #: src/blocks/logos/inspector.js:12
 msgid "Logos Settings"
@@ -1306,176 +1129,138 @@ msgstr "स्थान संपादित करें"
 msgid "Map style"
 msgstr "मैप स्टाइल"
 
-#: src/blocks/map/edit.js:188
-msgid "Invalid API key, or too many requests"
-msgstr "अमान्य API कुंजी या कई सारे अनुरोध"
-
-#: src/blocks/map/edit.js:295
-#: src/blocks/map/save.js:48
+#: src/blocks/map/deprecated.js:96
+#: src/blocks/map/edit.js:293
+#: src/blocks/map/save.js:50
+#: src/blocks/map/edit.js:241
 msgid "Google Map"
 msgstr "Google Map"
 
-#: src/blocks/map/edit.js:296
+#: src/blocks/map/edit.js:195
+msgid "Invalid API key, or too many requests"
+msgstr "अमान्य API कुंजी या कई सारे अनुरोध"
+
+#: src/blocks/map/edit.js:294
 msgid "Enter a location or address to drop a pin on a Google map."
 msgstr "Google मैप पर पिन छोड़ने के लिए कोई स्थान या पता दर्ज करें."
 
-#: src/blocks/map/edit.js:303
+#: src/blocks/map/edit.js:301
 msgid "Search for a place or address…"
 msgstr "स्थान या पते के लिए खोजें..."
 
-#: src/blocks/map/edit.js:308
-#: src/components/block-gallery/gallery-image.js:221
-msgid "Apply"
-msgstr "लागू करें"
+#: src/blocks/map/edit.js:320
+#: src/blocks/map/edit.js:312
+msgid "Cancel"
+msgstr "रद्द करें"
 
-#: src/blocks/map/index.js:24
-msgid "Map"
-msgstr "मैप"
+#: src/blocks/map/index.js:28
+msgid "Add an address or location to drop a pin on a Google map."
+msgstr "Google मैप पर pin छोड़ने के लिए कोई स्थान या पता दर्ज करें."
 
-#: src/blocks/map/index.js:29
-msgid "Add an address and drop a pin on a Google map."
-msgstr "कोई पता जोड़ें और Google मैप पर पिन छोड़ें."
-
-#: src/blocks/map/index.js:31
-msgid "address"
-msgstr "पता"
-
-#: src/blocks/map/index.js:31
-msgid "maps"
-msgstr "मैप"
-
-#: src/blocks/map/index.js:31
-msgid "google"
-msgstr "google"
-
-#: src/blocks/map/inspector.js:100
+#: src/blocks/map/inspector.js:109
 msgid "Select Map Style"
 msgstr "मैप स्टाइल चुनें"
 
-#: src/blocks/map/inspector.js:121
+#: src/blocks/map/inspector.js:130
 msgid "Map Settings"
 msgstr "मैप सेटिंग्स"
 
-#: src/blocks/map/inspector.js:124
-msgid "Zoom Level"
-msgstr "ज़ूम स्तर"
-
-#: src/blocks/map/inspector.js:134
+#: src/blocks/map/inspector.js:135
 msgid "Height for the map in pixels"
 msgstr "पिक्सेल में मैप के लिए उँचाई"
 
-#: src/blocks/map/inspector.js:145
+#: src/blocks/map/inspector.js:144
+msgid "Zoom Level"
+msgstr "ज़ूम स्तर"
+
+#: src/blocks/map/inspector.js:155
 msgid "Marker Size"
 msgstr "मार्कर का आकार"
 
-#: src/blocks/map/inspector.js:160
+#: src/blocks/map/inspector.js:170
 msgid "Fine control options are enabled."
 msgstr "बेहतर नियंत्रण विकल्प सक्षम हैं."
 
-#: src/blocks/map/inspector.js:160
+#: src/blocks/map/inspector.js:170
 msgid "Toggle to enable map control options."
 msgstr "मैप नियंत्रण विकल्पों को सक्षम करने के लिए टॉगल करें."
 
-#: src/blocks/map/inspector.js:168
+#: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:167
 msgid "Map Controls"
 msgstr "मैप नियंत्रण"
 
-#: src/blocks/map/inspector.js:172
+#: src/blocks/map/inspector.js:182
 msgid "Map Type"
 msgstr "मैप प्रकार"
 
-#: src/blocks/map/inspector.js:175
+#: src/blocks/map/inspector.js:185
 msgid "Switching between standard and satellite map views is enabled."
 msgstr "मानक और सैटलाइट मैप दृश्यों के बीच स्विच करना सक्षम है."
 
-#: src/blocks/map/inspector.js:175
+#: src/blocks/map/inspector.js:185
 msgid "Toggle to enable switching between standard and satellite maps."
 msgstr "मानक और सैटलाइट मैप के बीच स्विच सक्षम करने लिए टॉगल करें."
 
-#: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:188
 msgid "Zoom Controls"
 msgstr "ज़ूम नियंत्रण"
 
-#: src/blocks/map/inspector.js:181
+#: src/blocks/map/inspector.js:191
 msgid "Showing map zoom controls."
 msgstr "मैप ज़ूम नियंत्रण दिखाना."
 
-#: src/blocks/map/inspector.js:181
+#: src/blocks/map/inspector.js:191
 msgid "Toggle to enable zooming in and out on the map with zoom controls."
 msgstr "ज़ूम नियंत्रण के साथ मैप पर ज़ूम इन और आउट सक्षम करने के लिए टॉगल करें."
 
-#: src/blocks/map/inspector.js:184
+#: src/blocks/map/inspector.js:194
 msgid "Street View"
 msgstr "स्ट्रीट दृश्य"
 
-#: src/blocks/map/inspector.js:187
+#: src/blocks/map/inspector.js:197
 msgid "Showing the street view map control."
 msgstr "स्ट्रीट दृश्य मैप नियंत्रण दिखाना."
 
-#: src/blocks/map/inspector.js:187
+#: src/blocks/map/inspector.js:197
 msgid "Toggle to show the street view control at the bottom right."
 msgstr "नीचे दाईं ओर स्ट्रीट दृश्य नियंत्रण दिखाने के लिए टॉगल करें."
 
-#: src/blocks/map/inspector.js:190
+#: src/blocks/map/inspector.js:200
 msgid "Fullscreen Toggle"
 msgstr "पूर्ण स्क्रीन टॉगल करना"
 
-#: src/blocks/map/inspector.js:193
+#: src/blocks/map/inspector.js:203
 msgid "Showing the fullscreen map control."
 msgstr "पूर्ण स्क्रीन मैप नियंत्रण दिखाना."
 
-#: src/blocks/map/inspector.js:193
+#: src/blocks/map/inspector.js:203
 msgid "Toggle to show the fullscreen map control."
 msgstr "पूर्ण स्क्रीन मैप नियंत्रण दिखाने के लिए टॉगल करें."
 
-#: src/blocks/map/inspector.js:198
+#: src/blocks/map/inspector.js:208
 msgid "Google Maps API Key"
 msgstr "Google Maps API कुंजी"
 
-#: src/blocks/map/inspector.js:202
-msgid "Add your Google Maps API key. Updating this API key will set all your maps to use the new key."
-msgstr "अपने Google Maps API कुंजी में जोड़ें. इस API कुंजी को अपडेट करने से नई कुंजी का उपयोग करने के लिए अपने सभी मैप सेट हो जाएंगे."
+#: src/blocks/map/inspector.js:212
+msgid "Add a Google Maps API key. Updating this API key will set all your maps to use the new key."
+msgstr "एक Google Maps API कुंजी जोड़ें इस API कुंजी को अपडेट करने से नई कुंजी का उपयोग करने के लिए अपने सभी मैप सेट हो जाएंगे."
 
-#: src/blocks/map/inspector.js:205
-msgid "Retrieve your key"
-msgstr "अपनी कुंजी पुनः प्राप्त करें"
+#: src/blocks/map/inspector.js:215
+msgid "Get a key"
+msgstr "कोई कुंंजी प्राप्त करें"
 
-#: src/blocks/map/inspector.js:206
+#: src/blocks/map/inspector.js:216
 msgid "Need help?"
 msgstr "मदद चाहिए?"
 
-#: src/blocks/map/inspector.js:212
+#: src/blocks/map/inspector.js:222
 msgid "Enter Google API Key…"
 msgstr "Google API कुंजी दर्ज करें…"
 
-#: src/blocks/map/inspector.js:221
+#: src/blocks/map/inspector.js:231
 msgid "Saved"
 msgstr "सहेजा गया"
-
-#: src/blocks/map/styles.js:12
-msgid "Standard"
-msgstr "मानक"
-
-#: src/blocks/map/styles.js:16
-msgid "Silver"
-msgstr "सिल्वर"
-
-#: src/blocks/map/styles.js:20
-msgid "Retro"
-msgstr "रेट्रो"
-
-#: src/blocks/map/styles.js:24
-#: src/components/block-gallery/options/caption-options.js:10
-msgid "Dark"
-msgstr "अंधेरा"
-
-#: src/blocks/map/styles.js:28
-msgid "Night"
-msgstr "रात"
-
-#: src/blocks/map/styles.js:32
-msgid "Aubergine"
-msgstr "बैंगनी"
 
 #: src/blocks/media-card/controls.js:28
 msgid "Media on right"
@@ -1485,21 +1270,9 @@ msgstr "दाईं ओर स्थित मीडिया"
 msgid "Media on left"
 msgstr "बाईं ओर स्थित मीडिया"
 
-#: src/blocks/media-card/index.js:26
-msgid "Media Card"
-msgstr "मीडिया कार्ड"
-
-#: src/blocks/media-card/index.js:37
+#: src/blocks/media-card/index.js:36
 msgid "Add an image or video with an offset card side-by-side."
 msgstr "ऑफ़सेट कार्ड के साथ कोई छवि या वीडियो जोड़ें."
-
-#: src/blocks/media-card/index.js:39
-msgid "image"
-msgstr "छवि"
-
-#: src/blocks/media-card/index.js:39
-msgid "video"
-msgstr "वीडियो"
 
 #: src/blocks/media-card/inspector.js:109
 msgid "Card Shadow"
@@ -1513,15 +1286,21 @@ msgstr "कार्ड शैडो दिखाना."
 msgid "Toggle to add a card shadow."
 msgstr "कार्ड शैडो जोड़ने के लिए टॉगल करें."
 
-#: src/blocks/media-card/inspector.js:116
+#. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:118
 msgid " %s Shadow"
 msgstr " %s शैडो"
 
-#: src/blocks/media-card/inspector.js:119
+#. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:124
 msgid "Showing %s shadow."
 msgstr "%s शैडो दिखाना."
 
-#: src/blocks/media-card/inspector.js:119
+#. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:126
 msgid "Toggle to add an %s shadow"
 msgstr "%s शैडो जोड़ने के लिए टॉगल करें"
 
@@ -1545,40 +1324,174 @@ msgstr "मीडिया बदलने के लिए छोड़ें"
 msgid "Edit media"
 msgstr "मीडिया संपादित करें"
 
-# %s: number of tables
-#: src/blocks/pricing-table/controls.js:38
-msgid "%s Tables"
-msgstr "%s तालिकाएं"
+#: src/blocks/post-carousel/edit.js:123
+#: src/blocks/posts/edit.js:247
+msgid "Edit RSS URL"
+msgstr "RSS URL संपादित करें"
 
+#: src/blocks/post-carousel/edit.js:178
+msgid "Post Carousel"
+msgstr "कैरोसल पोस्ट करें"
+
+#: src/blocks/post-carousel/edit.js:184
+#: src/blocks/posts/edit.js:295
+msgid "No posts found. Start publishing or add posts from an %s feed."
+msgstr "कोई पोस्ट नहीं मिला %s फीड से प्रकाशन शुरू करें या पोस्ट जो़ड़ना शुरू करें."
+
+#: src/blocks/post-carousel/edit.js:187
+#: src/blocks/posts/edit.js:298
+msgid "Retrieve an External Feed"
+msgstr "कोई बाह्य फीड पुनः प्राप्त करें"
+
+#: src/blocks/post-carousel/edit.js:193
+#: src/blocks/posts/edit.js:304
+msgid "Use External Feed"
+msgstr "बाह्य फ़ड का उपयोग करें"
+
+#. %s: RSS
+#: src/blocks/post-carousel/edit.js:216
+#: src/blocks/posts/edit.js:332
+msgid "%s Feed"
+msgstr "%s फीड"
+
+#: src/blocks/post-carousel/edit.js:217
+#: src/blocks/posts/edit.js:333
+msgid "%s URLs are generally located at the /feed/ directory of a site."
+msgstr "%s URLs सामान्यतः /फीड/ डायरेक्टरी पर स्थित होता है."
+
+#: src/blocks/post-carousel/edit.js:221
+#: src/blocks/posts/edit.js:337
+msgid "https://example.com/feed…"
+msgstr "https://example.com/feed…"
+
+#: src/blocks/post-carousel/edit.js:227
+#: src/blocks/posts/edit.js:343
+msgid "Use URL"
+msgstr "URL का उपयोग करें"
+
+#: src/blocks/post-carousel/edit.js:320
+#: src/blocks/posts/edit.js:463
+#: src/blocks/post-carousel/index.php:368
+#: src/blocks/posts/index.php:385
+msgid "Read more"
+msgstr "और पढ़ें"
+
+#: src/blocks/post-carousel/index.js:27
+msgid "Display posts or an external blog feed as a carousel."
+msgstr "पोस्ट या किसी बाह्य ब्लॉग फीड को कैरोसल के रूप में प्रदर्शित करें."
+
+#: src/blocks/post-carousel/inspector.js:108
+#: src/blocks/posts/inspector.js:174
+msgid "Number of posts"
+msgstr "पोस्ट की संख्या"
+
+#: src/blocks/post-carousel/inspector.js:38
+msgid "Post Carousel Settings"
+msgstr "कैरोसल सेटिंग पोस्ट करें"
+
+#: src/blocks/post-carousel/inspector.js:41
+#: src/blocks/posts/inspector.js:81
+msgid "Post Date"
+msgstr "पोस्ट करने का दिनांक"
+
+#: src/blocks/post-carousel/inspector.js:45
+#: src/blocks/posts/inspector.js:85
+msgid "Showing the publish date."
+msgstr "प्रकाशन दिनांक दिखाना."
+
+#: src/blocks/post-carousel/inspector.js:46
+#: src/blocks/posts/inspector.js:86
+msgid "Toggle to show the publish date."
+msgstr "प्रकाशन दिनांक दिखाने के लिए टॉगल करें."
+
+#: src/blocks/post-carousel/inspector.js:51
+#: src/blocks/posts/inspector.js:91
+msgid "Post Content"
+msgstr "पोस्ट सामग्री"
+
+#: src/blocks/post-carousel/inspector.js:55
+#: src/blocks/posts/inspector.js:95
+msgid "Showing the post content."
+msgstr "पोस्ट सामग्री दिखाना."
+
+#: src/blocks/post-carousel/inspector.js:56
+#: src/blocks/posts/inspector.js:96
+msgid "Toggle to show the post content."
+msgstr "पोस्ट सामग्री दिखाने के लिए टॉगल करें."
+
+#: src/blocks/post-carousel/inspector.js:62
+#: src/blocks/posts/inspector.js:102
+msgid "Max words in content"
+msgstr "सामग्री में अधिकतम शब्द"
+
+#: src/blocks/post-carousel/inspector.js:86
+#: src/blocks/posts/inspector.js:152
+msgid "Feed Settings"
+msgstr "फीड सेटिंग"
+
+#: src/blocks/post-carousel/inspector.js:90
+#: src/blocks/posts/inspector.js:156
+msgid "My Blog"
+msgstr "मेरा ब्लॉग"
+
+#: src/blocks/post-carousel/inspector.js:91
+#: src/blocks/posts/inspector.js:157
+msgid "External Feed"
+msgstr "बाह्य फीड"
+
+#: src/blocks/posts/edit.js:260
+msgid "Image on left"
+msgstr "बाईं ओर की छवि"
+
+#: src/blocks/posts/edit.js:265
+msgid "Image on right"
+msgstr "दाईं ओर की छवि"
+
+#: src/blocks/posts/edit.js:289
+msgid "Blog Posts"
+msgstr "ब्लॉग पोस्ट"
+
+#: src/blocks/posts/index.js:27
+msgid "Display posts or an RSS feed as stacked or horizontal cards."
+msgstr "स्टैक किए गए या होरिजेंटल कार्ड के रूप में पोस्ट या कोई RSS फीड प्रदर्शित करें."
+
+#: src/blocks/posts/inspector.js:129
+#: src/blocks/posts/inspector.js:121
+msgid "Thumbnail Size"
+msgstr "थंबलनेल का आकार"
+
+#: src/blocks/posts/inspector.js:78
+msgid "Posts Settings"
+msgstr "पोस्ट सेटिंग"
+
+#: src/blocks/pricing-table/controls.js:17
+msgid "One Pricing Table"
+msgstr "मूल्य निर्धारण तालिका एक"
+
+#: src/blocks/pricing-table/controls.js:22
+msgid "Two Pricing Tables"
+msgstr "मूल्य निर्धारण तालिका दो"
+
+#: src/blocks/pricing-table/controls.js:27
+msgid "Three Pricing Tables"
+msgstr "मूल्य निर्धारण तालिका तीन"
+
+#: src/blocks/pricing-table/controls.js:32
+msgid "Four Pricing Tables"
+msgstr "मूल्य निर्धारण तालिका चार"
+
+#: src/blocks/pricing-table/controls.js:62
+msgid "Change pricing table count"
+msgstr "मूल्य निर्धारण तालिका संख्या बदलें"
+
+#. translators: %d: a digit 1-3
 #: src/blocks/pricing-table/edit.js:39
-msgid "Plan %s"
-msgstr "%s प्लान"
-
-#: src/blocks/pricing-table/index.js:22
-msgid "Pricing Table"
-msgstr "मूल्य निर्धारण तालिका"
+msgid "Plan %d"
+msgstr "%d प्लान"
 
 #: src/blocks/pricing-table/index.js:29
-msgid "Add pricing tables."
-msgstr "मूल्य निर्धारण तालिका जोड़ें."
-
-#: src/blocks/pricing-table/index.js:31
-#: src/blocks/pricing-table/pricing-table-item/index.js:31
-msgid "landing"
-msgstr "लैंडिंग"
-
-#: src/blocks/pricing-table/index.js:31
-#: src/blocks/pricing-table/pricing-table-item/index.js:31
-msgid "comparison"
-msgstr "तुलना करें"
-
-#: src/blocks/pricing-table/inspector.js:26
-msgid "Pricing Table Settings"
-msgstr "मूल्य निर्धारण तालिका सेटिंग्स"
-
-#: src/blocks/pricing-table/inspector.js:28
-msgid "Tables"
-msgstr "तालिकाएं"
+msgid "Add pricing tables to help visitors compare products and plans."
+msgstr "विजिटर्स को उत्पादों और योजनाओं की तुलना में मदद के लिए मूल्य निर्धारण तालिका जोड़ें."
 
 #: src/blocks/pricing-table/pricing-table-item/edit.js:112
 msgid "Add features"
@@ -1596,129 +1509,167 @@ msgstr "A प्लान"
 msgid "$"
 msgstr "$"
 
-#: src/blocks/pricing-table/pricing-table-item/index.js:22
-msgid "Pricing Table Item"
-msgstr "मूल्य निर्धारण तालिका आइटम"
+#: src/blocks/pricing-table/pricing-table-item/index.js:27
+msgid "A pricing table to help visitors compare products and plans."
+msgstr "मूल्य निर्धारण तालिका विजिटर्स को उत्पादों और योजनाओं की तुलना में मदद करती है."
 
-#: src/blocks/pricing-table/pricing-table-item/index.js:29
-msgid "A column placed within the pricing table block."
-msgstr "मूल्य निर्धारण तालिका ब्लॉक के भीतर रखा गया कॉलम."
+#: src/blocks/row/column/edit.js:90
+msgid "Add background to column"
+msgstr "कॉलम में पृष्ठभूमि जोड़ें"
 
-#: src/blocks/row/column/index.js:22
-msgid "Column"
-msgstr "कॉलम"
-
-#: src/blocks/row/column/index.js:36
+#: src/blocks/row/column/index.js:30
 msgid "An immediate child of a row."
 msgstr "पंक्ति का इमिडिएट चाइल्ड."
 
-#: src/blocks/row/column/inspector.js:115
-msgid "Width"
-msgstr "चौड़ाई"
-
-#: src/blocks/row/column/inspector.js:88
+#: src/blocks/row/column/inspector.js:108
 msgid "Column Settings"
 msgstr "कॉलम सेटिंग्स"
 
-#: src/blocks/row/column/inspector.js:92
-#: src/blocks/row/inspector.js:191
+#: src/blocks/row/column/inspector.js:112
+#: src/blocks/row/inspector.js:158
 msgid "Space around the container."
 msgstr "कंटेनर के आसपास की जगह."
 
-#: src/blocks/row/edit.js:122
+#: src/blocks/row/column/inspector.js:155
+msgid "Width"
+msgstr "चौड़ाई"
+
+#: src/blocks/row/controls.js:74
+msgid "Change row block layout"
+msgstr "पंक्ति ब्लॉक लेआउट को बदलें"
+
+#: src/blocks/row/edit.js:121
 msgid "one"
 msgstr "एक"
 
-#: src/blocks/row/edit.js:124
+#: src/blocks/row/edit.js:123
 msgid "two"
 msgstr "दो"
 
-#: src/blocks/row/edit.js:126
+#: src/blocks/row/edit.js:125
 msgid "three"
 msgstr "तीन"
 
-#: src/blocks/row/edit.js:128
+#: src/blocks/row/edit.js:127
 msgid "four"
 msgstr "चार"
 
-#: src/blocks/row/edit.js:175
+#: src/blocks/row/edit.js:169
+msgid "Add background to row"
+msgstr "पृष्ठभूमि में पंक्ति को जोड़ें"
+
+#: src/blocks/row/edit.js:174
 msgid "One Column"
 msgstr "एक कॉलम"
 
-#: src/blocks/row/edit.js:176
+#: src/blocks/row/edit.js:175
 msgid "Two Columns"
 msgstr "दो कॉलम"
 
-#: src/blocks/row/edit.js:177
+#: src/blocks/row/edit.js:176
 msgid "Three Columns"
 msgstr "तीन कॉलम"
 
-#: src/blocks/row/edit.js:178
+#: src/blocks/row/edit.js:177
 msgid "Four Columns"
 msgstr "चार कॉलम"
 
-#: src/blocks/row/edit.js:203
+#: src/blocks/row/edit.js:202
 msgid "Row Layout"
 msgstr "पंक्ति का लेआउट"
 
-#: src/blocks/row/edit.js:203
-#: src/blocks/row/index.js:26
+#: src/blocks/row/edit.js:202
 msgid "Row"
 msgstr "पंक्ति"
 
-#: src/blocks/row/edit.js:204
+#. %s: 'one' 'two' 'three' and 'four'
+#. translators: %s: 'one' 'two' 'three' and 'four'
+#: src/blocks/row/edit.js:205
 msgid "Now select a layout for this %s column row."
 msgstr "अब इस %s स्तंभ पंक्ति के लिए लेआउट चुनें."
 
-#: src/blocks/row/edit.js:204
+#: src/blocks/row/edit.js:206
 msgid "Select the number of columns for this row."
 msgstr "इस पंक्ति के लिए स्तंभ की संख्या चुनें."
 
-#: src/blocks/row/edit.js:208
+#: src/blocks/row/edit.js:211
 msgid "Select Row Columns"
 msgstr "स्तंभ पंक्तियां चुनें"
 
-#: src/blocks/row/edit.js:233
-#: src/blocks/row/inspector.js:154
+#: src/blocks/row/edit.js:236
+#: src/blocks/row/inspector.js:121
 msgid "Select Row Layout"
 msgstr "पंक्ति का लेआउट चुनें"
 
-#: src/blocks/row/edit.js:243
+#: src/blocks/row/edit.js:246
 msgid "Back to Columns"
 msgstr "स्तंभ पर वापस जाएं"
 
-#: src/blocks/row/index.js:40
+#: src/blocks/row/index.js:38
 msgid "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
 msgstr "स्तंभ ब्लॉक के लिए संरचित रैपर जोड़ें, फिर स्तंभ को पसंद करने के लिए सामग्री ब्लॉक जोड़ें."
 
-#: src/blocks/row/index.js:42
-msgid "rows"
-msgstr "पंक्तियां"
-
-#: src/blocks/row/index.js:42
-msgid "columns"
-msgstr "स्तंभ"
-
-#: src/blocks/row/index.js:42
-msgid "layouts"
-msgstr "लेआउट"
-
-#: src/blocks/row/inspector.js:117
-#: src/components/grid-control/index.js:122
-msgid "Layout"
-msgstr "लेआउट"
-
-#: src/blocks/row/inspector.js:186
+#: src/blocks/row/inspector.js:153
 msgid "Row Settings"
 msgstr "पंक्ति की सेटिंग्स"
 
 #: src/blocks/row/inspector.js:98
-#: src/components/block-gallery/options/caption-options.js:12
 #: src/components/block-gallery/options/link-options.js:10
 #: src/components/dimensions-control/dimensions-select.js:10
-#: src/extensions/list-styles/index.js:21
 msgid "None"
 msgstr "कोई नहीं"
+
+#: src/blocks/row/layouts.js:13
+msgid "Equal Split"
+msgstr "एक समान विभाजन"
+
+#: src/blocks/row/layouts.js:14
+msgid "Two Thirds / One Third"
+msgstr "दो-तिहाई / एक-तिहाई"
+
+#: src/blocks/row/layouts.js:15
+msgid "One Third / Two Thirds"
+msgstr "एक-तिहाई / दो-तिहाई"
+
+#: src/blocks/row/layouts.js:16
+msgid "Three Quarters / Quarter"
+msgstr "तीन चौथाई / चौथाई"
+
+#: src/blocks/row/layouts.js:17
+msgid "Quarter / Three Quarters"
+msgstr "चौथाई / तीन चौथाई"
+
+#: src/blocks/row/layouts.js:20
+msgid "Thirds"
+msgstr "तिहाई"
+
+#: src/blocks/row/layouts.js:21
+msgid "Half / Quarter / Quarter"
+msgstr "आधा / चौथाई / चौथाई"
+
+#: src/blocks/row/layouts.js:22
+msgid "Quarter / Quarter/ Half"
+msgstr "चौथाई / चौथाई / आधा"
+
+#: src/blocks/row/layouts.js:23
+msgid "Quarter / Half / Quarter"
+msgstr "चौथाई / आधा / चौथाई"
+
+#: src/blocks/row/layouts.js:24
+msgid "One Fifth/ Three Fifths / One Fifth"
+msgstr "एक का पांचवां भाग / एक तिहाई / एक का पांचवां भाग"
+
+#: src/blocks/row/layouts.js:27
+msgid "Quarters"
+msgstr "तिमाही"
+
+#: src/blocks/row/layouts.js:28
+msgid "Two Fifths / Fifth / Fifth / Fifth"
+msgstr "दो बट्टा पांच / पांचवां / पांचवां / पांचवां"
+
+#: src/blocks/row/layouts.js:29
+msgid "Fifth / Fifth / Fifth / Two Fifths"
+msgstr "पांचवां / पांचवां / पांचवां / दो बट्टा पांच"
 
 #: src/blocks/services/edit.js:44
 msgid "Square"
@@ -1728,17 +1679,9 @@ msgstr "वर्गाकार"
 msgid "Circle"
 msgstr "सर्कल"
 
-#: src/blocks/services/index.js:28
-msgid "Services"
-msgstr "सेवाएं"
-
-#: src/blocks/services/index.js:29
+#: src/blocks/services/index.js:27
 msgid "Add up to four columns of services to display."
 msgstr "प्रदर्शित करने के लिए सेवाओं के चार स्तंभ जोड़ें."
-
-#: src/blocks/services/index.js:30
-msgid "features"
-msgstr "सुविधाएं"
 
 #: src/blocks/services/inspector.js:67
 msgid "Services Settings"
@@ -1760,11 +1703,7 @@ msgstr "कार्रवाई के लिए कॉल करें बट�
 msgid "Toggle to show call to action buttons."
 msgstr "कार्रवाई के लिए कॉल करें बटन दिखाने हेतु टॉगल करें."
 
-#: src/blocks/services/service/index.js:28
-msgid "Service"
-msgstr "सेवा"
-
-#: src/blocks/services/service/index.js:29
+#: src/blocks/services/service/index.js:27
 msgid "A single service item within a services block."
 msgstr "सेवा ब्लॉक के भीतर एकल सेवा आइटम."
 
@@ -1785,149 +1724,138 @@ msgid "Toggle to show a call to action button."
 msgstr "कार्रवाई के लिए कॉल करें बटन दिखाने हेतु टॉगल करें."
 
 #: src/blocks/shape-divider/controls.js:28
-#: src/components/orientation/index.js:59
 msgid "Flip horiztonally"
 msgstr "क्षैतिज रूप से फ़्लिप करें"
 
 #: src/blocks/shape-divider/controls.js:33
-#: src/components/orientation/index.js:48
 msgid "Flip vertically"
 msgstr "लंबवत  रूप से फ़्लिप करें"
 
-#: src/blocks/shape-divider/index.js:23
-msgid "Shape Divider"
-msgstr "शेप डिवाइडर"
-
-#: src/blocks/shape-divider/index.js:30
+#: src/blocks/shape-divider/index.js:29
 msgid "Add a shape divider to visually distinquish page sections."
 msgstr "विज़ुअल रूप से अलग पेज अनुभागों के लिए शेप डिवाइडर जोड़ें."
 
-#: src/blocks/shape-divider/index.js:32
-msgid "separator"
-msgstr "सेपरेटर"
-
-#: src/blocks/shape-divider/inspector.js:108
-msgid "Shape Color"
-msgstr "शेप रंग"
-
-#: src/blocks/shape-divider/inspector.js:56
+#: src/blocks/shape-divider/inspector.js:53
 msgid "Divider Settings"
 msgstr "डिवाइडर सेटिंग्स"
 
-#: src/blocks/shape-divider/inspector.js:58
+#: src/blocks/shape-divider/inspector.js:55
 msgid "Shape Height in pixels"
 msgstr "पिक्सेल में शेप ऊँचाई"
 
-#: src/blocks/shape-divider/inspector.js:76
+#: src/blocks/shape-divider/inspector.js:73
 msgid "Background Height in pixels"
 msgstr "पिक्सेल में पृष्ठभूमि ऊँचाई"
 
-#: src/blocks/shape-divider/inspector.js:94
-msgid "Orientation"
-msgstr "अभिविन्यास"
+#: src/blocks/shape-divider/inspector.js:98
+msgid "Shape Color"
+msgstr "शेप रंग"
 
-#: src/blocks/share/edit.js:102
-#: src/blocks/share/index.php:133
-msgid "Share on Twitter"
-msgstr "Twitter पर साझा करें"
-
-#: src/blocks/share/edit.js:110
-#: src/blocks/share/index.php:137
+#: src/blocks/share/edit.js:113
+#: src/blocks/share/index.php:132
 msgid "Share on Facebook"
 msgstr "Facebook पर साझा करें"
 
-#: src/blocks/share/edit.js:118
-#: src/blocks/share/index.php:141
+#: src/blocks/share/edit.js:121
+#: src/blocks/share/index.php:136
+msgid "Share on Twitter"
+msgstr "Twitter पर साझा करें"
+
+#: src/blocks/share/edit.js:129
+#: src/blocks/share/index.php:140
 msgid "Share on Pinterest"
 msgstr "Pinterest पर साझा करें"
 
-#: src/blocks/share/edit.js:126
+#: src/blocks/share/edit.js:137
 msgid "Share on LinkedIn"
 msgstr "Linkedin पर साझा करें"
 
-#: src/blocks/share/edit.js:134
-#: src/blocks/share/index.php:149
+#: src/blocks/share/edit.js:145
+#: src/blocks/share/index.php:148
 msgid "Share via Email"
 msgstr "ईमेल के माध्यम से साझा करें"
 
-#: src/blocks/share/edit.js:142
-#: src/blocks/share/index.php:153
+#: src/blocks/share/edit.js:153
+#: src/blocks/share/index.php:152
 msgid "Share on Tumblr"
 msgstr "Tumblr पर साझा करें"
 
-#: src/blocks/share/edit.js:150
-#: src/blocks/share/index.php:157
+#: src/blocks/share/edit.js:161
+#: src/blocks/share/index.php:156
 msgid "Share on Google"
 msgstr "Google पर साझा करें"
 
-#: src/blocks/share/edit.js:158
-#: src/blocks/share/index.php:161
+#: src/blocks/share/edit.js:169
+#: src/blocks/share/index.php:160
 msgid "Share on Reddit"
 msgstr "Reddit पर साझा करें"
 
-#: src/blocks/share/index.js:19
-msgid "Share"
-msgstr "साझा करें"
-
-#: src/blocks/share/index.js:23
-msgid "social"
-msgstr "सामाजिक"
-
-#: src/blocks/share/index.js:28
+#: src/blocks/share/index.js:25
 msgid "Add social sharing links to help you get likes and shares."
 msgstr "पसंद और साझा पाने में अपनी मदद करने के लिए सामाजिक साझाकरण लिंक जोड़ें."
 
-#: src/blocks/share/inspector.js:108
-#: src/blocks/social-profiles/inspector.js:120
+#: src/blocks/share/inspector.js:113
+#: src/blocks/social-profiles/inspector.js:117
+msgid "Social Colors"
+msgstr "सामाजिक रंग"
+
+#: src/blocks/share/inspector.js:129
+#: src/blocks/social-profiles/inspector.js:133
 msgid "Icon Size"
 msgstr "आइकन का आकार"
 
-#: src/blocks/share/inspector.js:117
-#: src/blocks/social-profiles/inspector.js:129
+#: src/blocks/share/inspector.js:138
+#: src/blocks/social-profiles/inspector.js:142
 msgid "Circle Size"
 msgstr "सर्कल आकार"
 
-#: src/blocks/share/inspector.js:126
-#: src/blocks/social-profiles/inspector.js:138
+#: src/blocks/share/inspector.js:147
+#: src/blocks/social-profiles/inspector.js:151
 msgid "Button Size"
 msgstr "बटन आकार"
 
-#: src/blocks/share/inspector.js:134
+#: src/blocks/share/inspector.js:155
 msgid "Icons"
 msgstr "आइकन"
 
-#: src/blocks/share/inspector.js:136
-#: src/blocks/social-profiles/edit.js:196
-#: src/blocks/social-profiles/index.php:72
+#: src/blocks/share/inspector.js:157
+#: src/blocks/social-profiles/edit.js:205
+#: src/blocks/social-profiles/index.php:71
 msgid "Twitter"
 msgstr "Twitter"
 
-#: src/blocks/share/inspector.js:141
-#: src/blocks/social-profiles/edit.js:150
-#: src/blocks/social-profiles/index.php:68
+#: src/blocks/share/inspector.js:162
+#: src/blocks/social-profiles/edit.js:159
+#: src/blocks/social-profiles/index.php:67
 msgid "Facebook"
 msgstr "Facebook"
 
-#: src/blocks/share/inspector.js:146
-#: src/blocks/social-profiles/edit.js:290
-#: src/blocks/social-profiles/index.php:80
+#: src/blocks/share/inspector.js:167
+#: src/blocks/social-profiles/edit.js:299
+#: src/blocks/social-profiles/index.php:79
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: src/blocks/share/inspector.js:151
-#: src/blocks/social-profiles/edit.js:338
+#: src/blocks/share/inspector.js:172
+#: src/blocks/social-profiles/edit.js:347
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: src/blocks/share/inspector.js:161
+#: src/blocks/share/inspector.js:177
+#: includes/class-coblocks-form.php:234
+#: includes/class-coblocks-form.php:319
+msgid "Email"
+msgstr "ईमेल"
+
+#: src/blocks/share/inspector.js:182
 msgid "Tumblr"
 msgstr "Tumblr"
 
-#: src/blocks/share/inspector.js:166
+#: src/blocks/share/inspector.js:187
 msgid "Google"
 msgstr "Google"
 
-#: src/blocks/share/inspector.js:171
+#: src/blocks/share/inspector.js:192
 msgid "Reddit"
 msgstr "Reddit"
 
@@ -1941,108 +1869,95 @@ msgstr "साझा करें बटन के रंग सक्षम क
 msgid "Toggle to use official colors from each social media platform."
 msgstr "प्रत्येक सामाजिक मीडिया प्लेटफ़ॉर्म से आधिकारिक रंगों का उपयोग करने के लिए टॉगल करें."
 
-#: src/blocks/share/inspector.js:92
-#: src/blocks/social-profiles/inspector.js:104
-msgid "Social Colors"
-msgstr "सामाजिक रंग"
-
-#: src/blocks/social-profiles/edit.js:133
+#: src/blocks/social-profiles/edit.js:142
 msgid "Add Facebook Profile"
 msgstr "Facebook प्रोफ़ाइल जोड़ें"
 
-#: src/blocks/social-profiles/edit.js:165
+#: src/blocks/social-profiles/edit.js:174
 msgid "https://facebook.com/"
 msgstr "https://facebook.com/"
 
-#: src/blocks/social-profiles/edit.js:179
+#: src/blocks/social-profiles/edit.js:188
 msgid "Add Twitter Profile"
 msgstr "Twitter प्रोफ़ाइल जोड़ें"
 
-#: src/blocks/social-profiles/edit.js:211
+#: src/blocks/social-profiles/edit.js:220
 msgid "https://twitter.com/"
 msgstr "https://twitter.com/"
 
-#: src/blocks/social-profiles/edit.js:225
+#: src/blocks/social-profiles/edit.js:234
 msgid "Add Instagram Profile"
 msgstr "Instagram प्रोफ़ाइल जोड़ें"
 
-#: src/blocks/social-profiles/edit.js:242
-#: src/blocks/social-profiles/index.php:76
+#: src/blocks/social-profiles/edit.js:251
+#: src/blocks/social-profiles/index.php:75
 msgid "Instagram"
 msgstr "Instagram"
 
-#: src/blocks/social-profiles/edit.js:257
+#: src/blocks/social-profiles/edit.js:266
 msgid "https://instagram.com/"
 msgstr "https://instagram.com/"
 
-#: src/blocks/social-profiles/edit.js:273
+#: src/blocks/social-profiles/edit.js:282
 msgid "Add Pinterest Profile"
 msgstr "Pinterest प्रोफ़ाइल जोड़ें"
 
-#: src/blocks/social-profiles/edit.js:305
+#: src/blocks/social-profiles/edit.js:314
 msgid "https://pinterest.com/"
 msgstr "https://pinterest.com/"
 
-#: src/blocks/social-profiles/edit.js:321
+#: src/blocks/social-profiles/edit.js:330
 msgid "Add LinkedIn Profile"
 msgstr "LinkedIn प्रोफ़ाइल जोड़ें"
 
-#: src/blocks/social-profiles/edit.js:353
+#: src/blocks/social-profiles/edit.js:362
 msgid "https://linkedin.com/"
 msgstr "https://linkedin.com/"
 
-#: src/blocks/social-profiles/edit.js:367
+#: src/blocks/social-profiles/edit.js:376
 msgid "Add YouTube Profile"
 msgstr "YouTube प्रोफ़ाइल जोड़ें"
 
-#: src/blocks/social-profiles/edit.js:384
-#: src/blocks/social-profiles/index.php:89
+#: src/blocks/social-profiles/edit.js:393
+#: src/blocks/social-profiles/index.php:88
 msgid "YouTube"
 msgstr "YouTube"
 
-#: src/blocks/social-profiles/edit.js:399
+#: src/blocks/social-profiles/edit.js:408
 msgid "https://youtube.com/"
 msgstr "https://youtube.com/"
 
-#: src/blocks/social-profiles/edit.js:413
+#: src/blocks/social-profiles/edit.js:422
 msgid "Add Yelp Profile"
 msgstr "Yelp प्रोफ़ाइल जोड़ें"
 
-#: src/blocks/social-profiles/edit.js:430
-#: src/blocks/social-profiles/index.php:93
+#: src/blocks/social-profiles/edit.js:439
+#: src/blocks/social-profiles/index.php:92
 msgid "Yelp"
 msgstr "Yelp"
 
-#: src/blocks/social-profiles/edit.js:445
+#: src/blocks/social-profiles/edit.js:454
 msgid "https://yelp.com/"
 msgstr "https://yelp.com/"
 
-#: src/blocks/social-profiles/edit.js:459
+#: src/blocks/social-profiles/edit.js:468
 msgid "Add Houzz Profile"
 msgstr "Houzz प्रोफ़ाइल जोड़ें"
 
-#: src/blocks/social-profiles/edit.js:476
-#: src/blocks/social-profiles/index.php:97
+#: src/blocks/social-profiles/edit.js:485
+#: src/blocks/social-profiles/index.php:96
 msgid "Houzz"
 msgstr "Houzz"
 
-#: src/blocks/social-profiles/edit.js:491
+#: src/blocks/social-profiles/edit.js:500
 msgid "https://houzz.com/"
 msgstr "https://houzz.com/"
 
-#: src/blocks/social-profiles/index.js:19
-msgid "Social Profiles"
-msgstr "सामाजिक प्रोफ़ाइल"
+#: src/blocks/social-profiles/index.js:25
+msgid "Grow your audience with links to social media profiles."
+msgstr "सामाजिक मीडिया प्रोफ़ाइल की लिंक के साथ ऑडियंस में बढ़ोतरी करें."
 
-#: src/blocks/social-profiles/index.js:23
-msgid "links"
-msgstr "लिंक"
-
-#: src/blocks/social-profiles/index.js:28
-msgid "Display links to social media profiles."
-msgstr "सामाजिक मीडिया प्रोफ़ाइल के लिंक प्रदर्शित करें."
-
-#: src/blocks/social-profiles/inspector.js:146
+#: src/blocks/social-profiles/inspector.js:159
 msgid "Profile Links"
 msgstr "प्रोफ़ाइल लिंक"
 
@@ -2055,20 +1970,10 @@ msgid "Remove Background"
 msgstr "पृष्ठभूमि निकालें"
 
 #: src/components/background/controls.js:96
+#: src/components/background/controls.js:81
+#: src/components/background/controls.js:82
 msgid "Background"
 msgstr "पृष्ठभूमि"
-
-#: src/components/background/panel.js:102
-msgid "Auto"
-msgstr "ऑटो"
-
-#: src/components/background/panel.js:103
-msgid "Cover"
-msgstr "कवर"
-
-#: src/components/background/panel.js:104
-msgid "Contain"
-msgstr "शामिल"
 
 #: src/components/background/panel.js:113
 msgid "Background Settings"
@@ -2126,18 +2031,6 @@ msgstr "पृष्ठभूमि निकालें"
 msgid "Remove "
 msgstr "निकालें "
 
-#: src/components/background/panel.js:95
-msgid "No Repeat"
-msgstr "कोई दोहराव नहीं"
-
-#: src/components/background/panel.js:97
-msgid "Repeat Horizontally"
-msgstr "क्षैतिज रूप से दोहराएं"
-
-#: src/components/background/panel.js:98
-msgid "Repeat Vertically"
-msgstr "लंबवत रूप से दोहराएं"
-
 #: src/components/block-gallery/gallery-image.js:189
 msgid "Move Image Backward"
 msgstr "छवि को पीछे ले जाएं"
@@ -2150,17 +2043,15 @@ msgstr "छवि को आगे ले जाएं"
 msgid "Link To"
 msgstr "इससे लिंक करें"
 
-#: src/components/block-gallery/gallery-placeholder.js:70
+#. %s: Type of gallery
+#. translators: %s: Type of gallery
+#: src/components/block-gallery/gallery-placeholder.js:71
 msgid "%s Gallery"
 msgstr "%s गैलरी"
 
 #: src/components/block-gallery/gallery-uploader.js:53
 msgid "Upload an image"
 msgstr "कोई छवि अपलोड करें"
-
-#: src/components/block-gallery/options/caption-options.js:11
-msgid "Light"
-msgstr "प्रकाश"
 
 #: src/components/block-gallery/options/link-options.js:11
 msgid "Media File"
@@ -2174,69 +2065,131 @@ msgstr "अटैचमेंट पेज"
 msgid "Custom URL"
 msgstr "कस्टम URL"
 
-#: src/components/dimensions-control/index.js:408
-msgid "Pixel"
-msgstr "पिक्सेल"
+#: src/components/crop-settings/index.js:275
+#: src/components/crop-settings/index.js:272
+msgid "Crop settings image placeholder"
+msgstr "सेटिंग छवि प्लेसहोल्डर को क्रॉप करें"
 
-#: src/components/dimensions-control/index.js:412
-msgid "Em"
-msgstr "Em"
+#: src/components/crop-settings/index.js:304
+msgid "Image Orientation"
+msgstr "छवि अभिविन्यास"
 
-#: src/components/dimensions-control/index.js:416
-msgid "Percentage"
-msgstr "प्रतिशत"
+#: src/components/crop-settings/index.js:310
+msgid "Rotate counter-clockwise"
+msgstr "घड़ी की सूई की विपरीत दिशा में घुमाएं"
 
-#: src/components/dimensions-control/index.js:461
+#: src/components/crop-settings/index.js:316
+msgid "Rotate clockwise"
+msgstr "घड़ी की सूई की दिशा में घुमाएं"
+
+#: src/components/crop-settings/index.js:325
+msgid "Reset image cropping options"
+msgstr "छवि क्रॉप के विकल्प को रीसेट करें"
+
+#: src/components/crop-settings/index.js:327
+msgid "Reset All"
+msgstr "सभी को रीसेट करें"
+
+#: src/components/dimensions-control/index.js:442
 msgid "Select Units"
 msgstr "यूनिट चुनें"
 
-#: src/components/dimensions-control/index.js:470
+#. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
+#. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
+#: src/components/dimensions-control/index.js:453
+#: src/components/dimensions-control/index.js:445
 msgid "%s Units"
 msgstr "%s यूनिट"
 
-#: src/components/dimensions-control/index.js:647
+#. %s: a texual label
+#. translators: %s: a texual label
+#: src/components/dimensions-control/index.js:468
+msgid "Turn off advanced %s settings"
+msgstr "उन्नत %s सेटिंग्स बंद करें"
+
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:640
+#: src/components/dimensions-control/index.js:512
+#: src/components/dimensions-control/index.js:576
 msgid "%s Top"
 msgstr "%s शीर्ष"
 
-#: src/components/dimensions-control/index.js:657
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:651
+#: src/components/dimensions-control/index.js:523
+#: src/components/dimensions-control/index.js:587
 msgid "%s Right"
 msgstr "%s दाएं"
 
-#: src/components/dimensions-control/index.js:667
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:662
+#: src/components/dimensions-control/index.js:534
+#: src/components/dimensions-control/index.js:598
 msgid "%s Bottom"
 msgstr "%s नीचे"
 
-#: src/components/dimensions-control/index.js:677
+#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:673
+#: src/components/dimensions-control/index.js:545
+#: src/components/dimensions-control/index.js:609
 msgid "%s Left"
 msgstr "%s बाएं"
 
-#: src/components/dimensions-control/index.js:683
+#: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Unsync"
 msgstr "सिंक न करें"
 
-#: src/components/dimensions-control/index.js:683
+#: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Sync"
 msgstr "सिंक करें"
 
-#: src/components/dimensions-control/index.js:686
+#: src/components/dimensions-control/index.js:682
+#: src/components/dimensions-control/index.js:554
+#: src/components/dimensions-control/index.js:618
 msgid "Sync Units"
 msgstr "यूनिट सिंक करें"
 
-#: src/components/dimensions-control/index.js:703
+#: src/components/dimensions-control/index.js:699
 msgid "Top"
 msgstr "शीर्ष"
 
-#: src/components/dimensions-control/index.js:704
+#: src/components/dimensions-control/index.js:700
 msgid "Right"
 msgstr "दाएं"
 
-#: src/components/dimensions-control/index.js:705
+#: src/components/dimensions-control/index.js:701
 msgid "Bottom"
 msgstr "नीचे"
 
-#: src/components/dimensions-control/index.js:706
+#: src/components/dimensions-control/index.js:702
 msgid "Left"
 msgstr "बाएं"
+
+#. %s:  a texual label
+#. translators: %s:  a texual label
+#: src/components/dimensions-control/index.js:722
+msgid "Advanced %s settings"
+msgstr "उन्नत %s सेटिंग"
+
+#: src/components/dimensions-control/index.js:725
+msgid "Advanced"
+msgstr "उन्नत"
+
+#: src/components/font-family/index.js:16
+msgid "Default"
+msgstr "डिफ़ॉल्ट"
+
+#: src/components/grid-control/index.js:122
+msgid "Layout"
+msgstr "लेआउट"
 
 #: src/components/grid-control/index.js:123
 msgid "Select Layout"
@@ -2254,7 +2207,8 @@ msgstr "पूर्णस्क्रीन मोड सक्षम है."
 msgid "Toggle to enable fullscreen mode."
 msgstr "पूर्णस्क्रीन मोड सक्षम करने के लिए टॉगल करें."
 
-# %s: heading level e.g: "1", "2", "3"
+#. %d: heading level e.g: "1", "2", "3"
+#. translators: %d: heading level e.g: "1", "2", "3"
 #: src/components/heading-toolbar/index.js:18
 msgid "Heading %d"
 msgstr "%d शीर्षक"
@@ -2263,43 +2217,16 @@ msgstr "%d शीर्षक"
 msgid "Custom color picker"
 msgstr "कस्टम रंग पिकर"
 
-#: src/components/media-filter-control/index.js:32
-msgid "Original"
-msgstr "मूल"
-
-#: src/components/media-filter-control/index.js:40
-msgid "Grayscale"
-msgstr "ग्रेस्केल"
-
-#: src/components/media-filter-control/index.js:48
-msgid "Sepia"
-msgstr "गहरा काला रंग"
-
-#: src/components/media-filter-control/index.js:56
-msgid "Saturation"
-msgstr "सैचुरेशन"
-
-#: src/components/media-filter-control/index.js:64
-msgid "Dim"
-msgstr "धूंधला"
-
-#: src/components/media-filter-control/index.js:72
-msgid "Vintage"
-msgstr "विंटेज"
-
 #: src/components/media-filter-control/index.js:84
 msgid "Apply filter"
 msgstr "फ़िल्टर लागू करें"
-
-#: src/components/orientation/index.js:47
-msgid "Select Orientation"
-msgstr "अभिविन्यास चुनें"
 
 #: src/components/responsive-base-control/index.js:68
 msgid "Height"
 msgstr "उँचाई"
 
-# Control name
+#. %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#. translators: %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
 #: src/components/responsive-tabs-control/index.js:65
 msgid "Mobile %s"
 msgstr "%s मोबाइल"
@@ -2333,7 +2260,7 @@ msgid "Five Seconds"
 msgstr "पाँच सेकंड"
 
 #: src/components/slider-panel/autoplay-options.js:15
-msgid "Six Second"
+msgid "Six Seconds"
 msgstr "छह सेकंड"
 
 #: src/components/slider-panel/autoplay-options.js:16
@@ -2352,6 +2279,22 @@ msgstr "नौ सेकंड"
 msgid "Ten Seconds"
 msgstr "दस सेकंड"
 
+#: src/components/slider-panel/index.js:102
+msgid "Free Scroll"
+msgstr "निशुल्क स्क्रॉल"
+
+#: src/components/slider-panel/index.js:108
+msgid "Arrow Navigation"
+msgstr "तीर नेविगेशन"
+
+#: src/components/slider-panel/index.js:114
+msgid "Dot Navigation"
+msgstr "डॉट नेविगेशन"
+
+#: src/components/slider-panel/index.js:120
+msgid "Align Cells"
+msgstr "सेल्स को श्रेणीबद्ध करें"
+
 #: src/components/slider-panel/index.js:24
 msgid "seconds"
 msgstr "सेकंड"
@@ -2360,23 +2303,24 @@ msgstr "सेकंड"
 msgid "second"
 msgstr "सेकंड"
 
-# 1. Speed of the slider, 2: Time until the slide advances
+#. 1. Speed of the slider, 2: Time until the slide advances
+#. translators: 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Advancing after %1$d %2$s."
 msgstr "%1$d %2$s के बाद.आगे बढ़ना."
 
-# 1. Speed of the slider, 2: Time until the slide advances
+#. 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Automatically advance to the next slide."
 msgstr "स्वचालित रूप से अगली स्लाइड पर जाएं."
 
 #: src/components/slider-panel/index.js:31
-msgid "Dragging and flicking enabled on desktop and mobile devices."
-msgstr "डेस्कटॉप और मोबाइल डिवाइस पर खींचना और फ़्लिक सक्षम करना."
+msgid "Dragging and flicking enabled."
+msgstr "ड्रैग और फ्लिक करना सक्षम है."
 
 #: src/components/slider-panel/index.js:31
-msgid "Toggle to enable drag functionality on desktop and mobile devices."
-msgstr "डेस्कटॉप और मोबाइल डिवाइस पर किसी चीज़ को खींच कर ले जाने की कार्यक्षमता को सक्षम करने के लिए टॉगल करें."
+msgid "Toggle to enable drag functionality."
+msgstr "ड्रैग कार्यक्षमता सक्षम करने के लिए टॉगल करें."
 
 #: src/components/slider-panel/index.js:35
 msgid "Showing slide navigation arrows."
@@ -2387,44 +2331,56 @@ msgid "Toggle to show slide navigation arrows."
 msgstr "स्लाइड नेविगेशन तीर दिखाने के लिए टॉगल करें."
 
 #: src/components/slider-panel/index.js:39
-msgid "Showing dot navigation arrows."
-msgstr "डॉट नेविगेशन तीर दिखाना."
+msgid "Showing dot navigation."
+msgstr "डॉट नेविगेशन दिखाना."
 
 #: src/components/slider-panel/index.js:39
 msgid "Toggle to show dot navigation."
 msgstr "डॉट नेविगेशन दिखाने के लिए टॉगल करें."
 
-#: src/components/slider-panel/index.js:58
+#: src/components/slider-panel/index.js:43
+msgid "Aligning slides to the left."
+msgstr "स्लाइड्स को बाईं ओर श्रेणीबद्ध करना."
+
+#: src/components/slider-panel/index.js:43
+msgid "Aligning slides to the center."
+msgstr "स्लाइड्स को केंद्र में श्रेणीबद्ध करना."
+
+#: src/components/slider-panel/index.js:46
+msgid "Pausing autoplay when hovering."
+msgstr "हॉवरिंग के समय ऑटोप्ले को रोकना."
+
+#: src/components/slider-panel/index.js:46
+msgid "Toggle to pause autoplay when hovered."
+msgstr "हॉवर होेते समय ऑटोप्ले रोकने के लिए टॉगल करें."
+
+#: src/components/slider-panel/index.js:50
+msgid "Scrolling without fixed slides enabled."
+msgstr "स्थायी स्लाइड्स सक्षम किए बिना स्क्रॉल करना."
+
+#: src/components/slider-panel/index.js:50
+msgid "Toggle to scroll without fixed slides."
+msgstr "स्थायी स्लाइड्स स्क्रॉल करने के लिए टॉगल करें."
+
+#: src/components/slider-panel/index.js:72
 msgid "Slider Settings"
 msgstr "स्लाइडर सेटिंग्स"
 
-#: src/components/slider-panel/index.js:60
+#: src/components/slider-panel/index.js:74
 msgid "Autoplay"
 msgstr "ऑटोप्ले"
 
-#: src/components/slider-panel/index.js:66
+#: src/components/slider-panel/index.js:81
 msgid "Transition Speed"
 msgstr "लेनदेन गति"
 
-#: src/components/slider-panel/index.js:73
+#: src/components/slider-panel/index.js:88
+msgid "Pause on Hover"
+msgstr "हॉवर पर रोंके"
+
+#: src/components/slider-panel/index.js:96
 msgid "Draggable"
 msgstr "खींचने योग्य"
-
-#: src/components/slider-panel/index.js:79
-msgid "Arrow Navigation"
-msgstr "तीर नेविगेशन"
-
-#: src/components/slider-panel/index.js:85
-msgid "Dot Navigation"
-msgstr "डॉट नेविगेशन"
-
-#: src/components/typography-controls/index.js:103
-msgid "Capitalize"
-msgstr "बड़े अक्षरों में करना"
-
-#: src/components/typography-controls/index.js:107
-msgid "Normal"
-msgstr "सामान्य"
 
 #: src/components/typography-controls/index.js:164
 msgid "Font"
@@ -2458,19 +2414,6 @@ msgstr "कोई बॉटम स्पेसिंग नहीं"
 msgid "Change typography"
 msgstr "टाइपोग्राफ़ी बदलें"
 
-#: src/components/typography-controls/index.js:84
-msgid "Bold"
-msgstr "बोल्ड"
-
-#: src/components/typography-controls/index.js:95
-#: src/formats/uppercase/index.js:36
-msgid "Uppercase"
-msgstr "बड़ा अक्षर"
-
-#: src/components/typography-controls/index.js:99
-msgid "Lowercase"
-msgstr "छोटा अक्षर"
-
 #: src/extensions/advanced-controls/index.js:109
 msgid "Stack on Mobile"
 msgstr "मोबाइल पर स्टैक"
@@ -2487,25 +2430,25 @@ msgstr "छोटे व्यूपोर्ट पर एक दूसरे �
 msgid "Remove Top Spacing"
 msgstr "शीर्ष स्पेसिंग निकालें"
 
-#: src/extensions/advanced-controls/index.js:137
-msgid "Top margin is removed on this block."
-msgstr "इस ब्लॉक पर शीर्ष मार्जिन हटा दिया जाता है."
+#: src/extensions/advanced-controls/index.js:135
+msgid "Toggle to add top margin back."
+msgstr "ऊपर की मार्जिन को फिर से जोड़ने के लिए टॉगल करें."
 
-#: src/extensions/advanced-controls/index.js:138
-msgid "Toggle to remove any margin applied to the top of this block."
-msgstr "इस ब्लॉक के शीर्ष पर लागू किसी भी मार्जिन को निकालने के लिए टॉगल करें."
+#: src/extensions/advanced-controls/index.js:135
+msgid "Toggle to remove any top margin."
+msgstr "किसी ऊपर की मार्जिन को हटाने के लिए टॉगल करें."
 
-#: src/extensions/advanced-controls/index.js:146
+#: src/extensions/advanced-controls/index.js:140
 msgid "Remove Bottom Spacing"
 msgstr "नीचे स्पेसिंग निकालें"
 
-#: src/extensions/advanced-controls/index.js:171
-msgid "Bottom margin is removed on this block."
-msgstr "इस ब्लॉक पर निचली मार्जिन हटा दी जाती है."
+#: src/extensions/advanced-controls/index.js:163
+msgid "Toggle to add bottom margin back."
+msgstr "नीचेे की मार्जिन को फिर से जोड़ने के लिए टॉगल करें."
 
-#: src/extensions/advanced-controls/index.js:172
-msgid "Toggle to remove any margin applied to the bottom of this block."
-msgstr "इस ब्लॉक के नीचे लागू किसी भी मार्जिन को निकालने के लिए टॉगल करें."
+#: src/extensions/advanced-controls/index.js:163
+msgid "Toggle to remove any bottom margin."
+msgstr "किसी नीचे की मार्जिन को हटाने के लिए टॉगल करें."
 
 #: src/extensions/button-controls/index.js:71
 msgid "Display Fullwidth"
@@ -2519,21 +2462,14 @@ msgstr "पूर्ण चौड़ाई के रूप में प्र�
 msgid "Toggle to display button as full width."
 msgstr "पूर्ण चौड़ाई के रूप में बटन प्रदर्शित करने के लिए टॉगल करें."
 
-#: src/extensions/button-styles/index.js:16
-msgid "Circular"
-msgstr "सर्कुलर"
+#: src/extensions/image-crop/index.js:172
+msgid "Crop Settings"
+msgstr "क्रॉप सेटिंग"
 
-#: src/extensions/button-styles/index.js:22
-msgid "3D"
-msgstr "3D"
-
-#: src/extensions/button-styles/index.js:28
-msgid "Shadow"
-msgstr "शैडो"
-
-#: src/extensions/list-styles/index.js:27
-msgid "Checkbox"
-msgstr "चेकबॉक्स"
+#: src/formats/uppercase/index.js:35
+#: src/formats/uppercase/index.js:20
+msgid "Uppercase"
+msgstr "बड़ा अक्षर"
 
 #: src/sidebars/block-manager/components/modal.js:132
 msgid "Manage Blocks"
@@ -2559,108 +2495,754 @@ msgstr "यह ब्लॉक पेज पर जोड़ा जाता ह
 msgid "Disable all"
 msgstr "सभी अक्षम करें‌‌"
 
-#: src/sidebars/block-manager/components/options/disable-blocks.js:231
+#. %s: search text
+#. translators: %s: search text
+#: src/sidebars/block-manager/components/options/disable-blocks.js:233
 msgid "No \"%s\" blocks found."
 msgstr "कोई \"%s\" ब्लॉक मिले."
 
-#: src/utils/block-category.js:20
+#. %s: Plugin title, i.e. CoBlocks
+#. translators: %s: Plugin title, i.e. CoBlocks
+#: src/utils/block-category.js:21
 msgid "%s Galleries"
 msgstr "%s गैलरीज़"
 
-#: src/blocks/dynamic-separator/index.js:36
+#: src/blocks/accordion/accordion-item/controls.js:28
+msgctxt "Toggle label to display the accordion open"
+msgid "Display open"
+msgstr "प्रदर्शन खुला"
+
+#: src/blocks/accordion/accordion-item/edit.js:65
+msgctxt "Accordion is the block name"
+msgid "Write accordion item title..."
+msgstr "Write accordion item title..."
+
+#: src/blocks/accordion/accordion-item/index.js:26
+msgctxt "This is an inner block for the Accordion Block."
+msgid "Accordion Item"
+msgstr "एकॉर्डियन आइटम"
+
+#: src/blocks/accordion/accordion-item/index.js:29
+#: src/blocks/accordion/index.js:30
+msgctxt "block keyword"
+msgid "tabs"
+msgstr "टैब्स"
+
+#: src/blocks/accordion/accordion-item/index.js:29
+#: src/blocks/accordion/index.js:30
+msgctxt "block keyword"
+msgid "faq"
+msgstr "सामान्य प्रश्न"
+
+#: src/blocks/alert/index.js:31
+msgctxt "block keyword"
+msgid "notice"
+msgstr "सूचना"
+
+#: src/blocks/alert/index.js:31
+msgctxt "block keyword"
+msgid "message"
+msgstr "संदेश"
+
+#: src/blocks/author/index.js:31
+msgctxt "block keyword"
+msgid "biography"
+msgstr "बायोग्राफ़ी"
+
+#: src/blocks/author/index.js:31
+msgctxt "block keyword"
+msgid "profile"
+msgstr "प्रोफ़ाइल"
+
+#: src/blocks/buttons/index.js:31
+msgctxt "block keyword"
+msgid "link"
+msgstr "लिंक"
+
+#: src/blocks/buttons/index.js:31
+#: src/blocks/hero/index.js:43
+msgctxt "block keyword"
+msgid "cta"
+msgstr "cta"
+
+#: src/blocks/click-to-tweet/index.js:31
+#: src/blocks/social-profiles/index.js:28
+msgctxt "block keyword"
+msgid "share"
+msgstr "साझा करें"
+
+#: src/blocks/click-to-tweet/index.js:31
+msgctxt "block keyword"
+msgid "twitter"
+msgstr "twitter"
+
+#: src/blocks/dynamic-separator/index.js:30
+msgctxt "block keyword"
+msgid "spacer"
+msgstr "स्पेसर"
+
+#: src/blocks/features/index.js:37
+msgctxt "block keyword"
+msgid "services"
+msgstr "सेवाएँ"
+
+#: src/blocks/food-and-drinks/food-item/index.js:29
+#: src/blocks/food-and-drinks/index.js:29
+msgctxt "block keyword"
+msgid "menu"
+msgstr "मेनू"
+
+#: src/blocks/food-and-drinks/index.js:29
+msgctxt "block keyword"
+msgid "restaurant"
+msgstr "रेस्तरां"
+
+#: src/blocks/form/fields/date/index.js:20
+msgctxt "block keyword"
+msgid "calendar"
+msgstr "कैलेंडर"
+
+#: src/blocks/form/fields/date/index.js:20
+msgctxt "block keyword"
+msgid "day month year"
+msgstr "दिन माह वर्ष"
+
+#: src/blocks/form/fields/email/index.js:22
+msgctxt "block keyword"
+msgid "e-mail"
+msgstr "ई-मेल"
+
+#: src/blocks/form/fields/email/index.js:22
+msgctxt "block keyword"
+msgid "mail"
+msgstr "मेल"
+
+#: src/blocks/form/fields/name/index.js:22
+msgctxt "block keyword"
+msgid "first name"
+msgstr "प्रथम नाम"
+
+#: src/blocks/form/fields/name/index.js:22
+msgctxt "block keyword"
+msgid "last name"
+msgstr "अंतिम नाम"
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "telephone"
+msgstr "टेलीफ़ोन"
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "cellular"
+msgstr "cellular"
+
+#: src/blocks/form/fields/phone/index.js:20
+msgctxt "block keyword"
+msgid "mobile"
+msgstr "मोबाइल"
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Choose"
+msgstr "चुनें"
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Select"
+msgstr "चुनें"
+
+#: src/blocks/form/fields/radio/index.js:20
+msgctxt "block keyword"
+msgid "Option"
+msgstr "विकल्प"
+
+#: src/blocks/form/fields/textarea/index.js:22
+msgctxt "block keyword"
+msgid "Textarea"
+msgstr "टेक्स्ट क्षेत्र"
+
+#: src/blocks/form/fields/textarea/index.js:22
+msgctxt "block keyword"
+msgid "Multiline text"
+msgstr "मल्टीलाइन पाठ"
+
+#: src/blocks/form/index.js:29
+msgctxt "block keyword"
+msgid "email"
+msgstr "ईमेल"
+
+#: src/blocks/form/index.js:29
+msgctxt "block keyword"
+msgid "about"
+msgstr "इसके बारे में"
+
+#: src/blocks/form/index.js:29
+msgctxt "block keyword"
+msgid "contact"
+msgstr "संपर्क"
+
+#: src/blocks/gallery-carousel/index.js:38
+#: src/blocks/gallery-collage/index.js:36
+#: src/blocks/gallery-masonry/index.js:37
+#: src/blocks/gallery-stacked/index.js:37
+msgctxt "block keyword"
+msgid "gallery"
+msgstr "गैलरी"
+
+#: src/blocks/gallery-carousel/index.js:38
+#: src/blocks/gallery-collage/index.js:36
+#: src/blocks/gallery-masonry/index.js:37
+#: src/blocks/gallery-stacked/index.js:37
+msgctxt "block keyword"
+msgid "photos"
+msgstr "फ़ोटो"
+
+#: src/blocks/gallery-masonry/index.js:37
+#: src/blocks/gallery-stacked/index.js:37
+msgctxt "block keyword"
+msgid "lightbox"
+msgstr "लाइटबॉक्स"
+
+#: src/blocks/gif/index.js:29
+msgctxt "block keyword"
+msgid "animated"
+msgstr "एनीमेटेड"
+
+#: src/blocks/gist/index.js:31
+msgctxt "block keyword"
+msgid "code"
+msgstr "कोड"
+
+#: src/blocks/hero/index.js:43
+msgctxt "block keyword"
+msgid "button"
+msgstr "बटन"
+
+#: src/blocks/hero/index.js:43
+msgctxt "block keyword"
+msgid "call to action"
+msgstr "कार्रवाई के लिए कॉल करें"
+
+#: src/blocks/highlight/index.js:30
+msgctxt "block keyword"
+msgid "text"
+msgstr "पाठ"
+
+#: src/blocks/highlight/index.js:30
+msgctxt "block keyword"
+msgid "paragraph"
+msgstr "पैराग्राफ़"
+
+#: src/blocks/icon/index.js:35
+#: src/blocks/social-profiles/index.js:28
+msgctxt "block keyword"
+msgid "icons"
+msgstr "आइकन"
+
+#: src/blocks/logos/index.js:29
+msgctxt "block keyword"
+msgid "clients"
+msgstr "क्लायंट्स"
+
+#: src/blocks/logos/index.js:29
+msgctxt "block keyword"
+msgid "proof"
+msgstr "प्रमाण"
+
+#: src/blocks/logos/index.js:29
+msgctxt "block keyword"
+msgid "testimonials"
+msgstr "विवरण"
+
+#: src/blocks/map/index.js:30
+msgctxt "block keyword"
+msgid "address"
+msgstr "पता"
+
+#: src/blocks/map/index.js:30
+msgctxt "block keyword"
+msgid "maps"
+msgstr "मैप"
+
+#: src/blocks/map/index.js:30
+msgctxt "block keyword"
+msgid "google"
+msgstr "google"
+
+#: src/blocks/media-card/index.js:38
+msgctxt "block keyword"
+msgid "image"
+msgstr "छवि"
+
+#: src/blocks/media-card/index.js:38
+msgctxt "block keyword"
+msgid "video"
+msgstr "वीडियो"
+
+#: src/blocks/post-carousel/index.js:29
+msgctxt "block keyword"
+msgid "posts"
+msgstr "पोस्ट"
+
+#: src/blocks/post-carousel/index.js:29
+msgctxt "block keyword"
+msgid "slider"
+msgstr "स्लाइडर"
+
+#: src/blocks/post-carousel/index.js:29
+#: src/blocks/posts/index.js:29
+msgctxt "block keyword"
+msgid "latest"
+msgstr "नवीनतम"
+
+#: src/blocks/posts/index.js:29
+msgctxt "block keyword"
+msgid "blog"
+msgstr "ब्लॉग"
+
+#: src/blocks/posts/index.js:29
+msgctxt "block keyword"
+msgid "rss"
+msgstr "rss"
+
+#: src/blocks/pricing-table/index.js:31
+#: src/blocks/pricing-table/pricing-table-item/index.js:29
+msgctxt "block keyword"
+msgid "landing"
+msgstr "लैंडिंग"
+
+#: src/blocks/pricing-table/index.js:31
+#: src/blocks/pricing-table/pricing-table-item/index.js:29
+msgctxt "block keyword"
+msgid "comparison"
+msgstr "तुलना करें"
+
+#: src/blocks/row/index.js:40
+msgctxt "block keyword"
+msgid "rows"
+msgstr "पंक्तियां"
+
+#: src/blocks/row/index.js:40
+msgctxt "block keyword"
+msgid "columns"
+msgstr "स्तंभ"
+
+#: src/blocks/row/index.js:40
+msgctxt "block keyword"
+msgid "layouts"
+msgstr "लेआउट"
+
+#: src/blocks/services/index.js:29
+msgctxt "block keyword"
+msgid "features"
+msgstr "सुविधाएं"
+
+#: src/blocks/shape-divider/index.js:31
+msgctxt "block keyword"
+msgid "separator"
+msgstr "सेपरेटर"
+
+#: src/blocks/share/index.js:28
+msgctxt "block keyword"
+msgid "social"
+msgstr "सामाजिक"
+
+#: src/blocks/social-profiles/index.js:28
+msgctxt "block keyword"
+msgid "links"
+msgstr "लिंक"
+
+#: src/blocks/accordion/accordion-item/inspector.js:65
+msgctxt "Visually display open as opposed to closed."
+msgid "Display Open"
+msgstr "प्रदर्शन खुला"
+
+#: src/blocks/accordion/edit.js:74
+msgctxt "Add a child element for the Accordion block"
+msgid "Add Accordion Item"
+msgstr "एकॉर्डियन आइटम जोड़ें"
+
+#: src/blocks/accordion/index.js:27
+msgctxt "block title"
+msgid "Accordion"
+msgstr "एकॉर्डियन"
+
+#: src/blocks/alert/edit.js:102
+msgctxt "Placeholder text for input box"
+msgid "Write text..."
+msgstr "पाठ लिखें..."
+
+#: src/blocks/alert/edit.js:94
+msgctxt "Placeholder text for input box"
+msgid "Write title..."
+msgstr "शीर्षक लिखें..."
+
+#: src/blocks/alert/index.js:28
+msgctxt "block name"
+msgid "Alert"
+msgstr "अलर्ट"
+
+#: src/blocks/author/index.js:28
+msgctxt "block name"
+msgid "Author"
+msgstr "लेखक"
+
+#: src/blocks/buttons/index.js:28
+msgctxt "block name"
+msgid "Buttons"
+msgstr "बटन"
+
+#: src/blocks/click-to-tweet/index.js:28
+msgctxt "block name"
+msgid "Click to Tweet"
+msgstr "ट्वीट करने के लिए क्लिक करें"
+
+#: src/blocks/dynamic-separator/index.js:27
+msgctxt "block name"
+msgid "Dynamic HR"
+msgstr "डायनमिक HR"
+
+#: src/blocks/features/feature/index.js:28
+msgctxt "block name"
+msgid "Feature"
+msgstr "सुविधा"
+
+#: src/blocks/features/index.js:34
+msgctxt "block name"
+msgid "Features"
+msgstr "सुविधाएं"
+
+#: src/blocks/food-and-drinks/food-item/index.js:26
+msgctxt "block name"
+msgid "Food Item"
+msgstr "खाद्य पदार्थ"
+
+#: src/blocks/food-and-drinks/index.js:26
+msgctxt "block name"
+msgid "Food & Drinks"
+msgstr "भोजन और पेय"
+
+#: src/blocks/form/fields/date/index.js:19
+msgctxt "block name"
+msgid "Date"
+msgstr "दिनांक"
+
+#: src/blocks/form/fields/email/index.js:19
+msgctxt "block name"
+msgid "Email"
+msgstr "ईमेल"
+
+#: src/blocks/form/fields/name/index.js:19
+msgctxt "block name"
+msgid "Name"
+msgstr "नाम"
+
+#: src/blocks/form/fields/phone/index.js:19
+msgctxt "block name"
+msgid "Phone"
+msgstr "फ़ोन"
+
+#: src/blocks/form/fields/radio/index.js:19
+msgctxt "block name"
+msgid "Radio"
+msgstr "रेडियो"
+
+#: src/blocks/form/fields/textarea/index.js:19
+msgctxt "block name"
+msgid "Textarea"
+msgstr "टेक्स्ट क्षेत्र"
+
+#: src/blocks/form/index.js:26
+msgctxt "block name"
+msgid "Form"
+msgstr "फ़ॉर्म"
+
+#: src/blocks/gallery-carousel/index.js:34
+msgctxt "block name"
+msgid "Carousel"
+msgstr "कैरोसल"
+
+#: src/blocks/gallery-collage/index.js:33
+msgctxt "block name"
+msgid "Collage"
+msgstr "कोलाज"
+
+#: src/blocks/gallery-masonry/index.js:34
+msgctxt "block name"
+msgid "Masonry"
+msgstr "मिस्त्री"
+
+#: src/blocks/gallery-stacked/index.js:34
+msgctxt "block name"
+msgid "Stacked"
+msgstr "स्टैक किया गया"
+
+#: src/blocks/gif/index.js:26
+msgctxt "block name"
+msgid "Gif"
+msgstr "Gif"
+
+#: src/blocks/gist/index.js:28
+msgctxt "block name"
+msgid "Gist"
+msgstr "सारांश"
+
+#: src/blocks/hero/index.js:40
+msgctxt "block name"
+msgid "Hero"
+msgstr "हीरो"
+
+#: src/blocks/highlight/index.js:27
+msgctxt "block name"
+msgid "Highlight"
+msgstr "हाइलाइट"
+
+#: src/blocks/icon/index.js:32
+msgctxt "block name"
+msgid "Icon"
+msgstr "आइकन"
+
+#: src/blocks/logos/index.js:26
+msgctxt "block name"
+msgid "Logos & Badges"
+msgstr "लोगो और बैज"
+
+#: src/blocks/map/index.js:27
+msgctxt "block name"
+msgid "Map"
+msgstr "मैप"
+
+#: src/blocks/media-card/index.js:35
+msgctxt "block name"
+msgid "Media Card"
+msgstr "मीडिया कार्ड"
+
+#: src/blocks/post-carousel/index.js:26
+msgctxt "block name"
+msgid "Post Carousel"
+msgstr "कैरोसल पोस्ट करें"
+
+#: src/blocks/posts/index.js:26
+msgctxt "block name"
+msgid "Posts"
+msgstr "पोस्ट"
+
+#: src/blocks/pricing-table/index.js:28
+msgctxt "block name"
+msgid "Pricing Table"
+msgstr "मूल्य निर्धारण तालिका"
+
+#: src/blocks/pricing-table/pricing-table-item/index.js:26
+msgctxt "block name"
+msgid "Pricing Table Item"
+msgstr "मूल्य निर्धारण तालिका आइटम"
+
+#: src/blocks/row/column/index.js:29
+msgctxt "block name"
+msgid "Column"
+msgstr "कॉलम"
+
+#: src/blocks/row/index.js:37
+msgctxt "block name"
+msgid "Row"
+msgstr "पंक्ति"
+
+#: src/blocks/services/index.js:26
+msgctxt "block name"
+msgid "Services"
+msgstr "सेवाएं"
+
+#: src/blocks/services/service/index.js:26
+msgctxt "block name"
+msgid "Service"
+msgstr "सेवा"
+
+#: src/blocks/shape-divider/index.js:28
+msgctxt "block name"
+msgid "Shape Divider"
+msgstr "शेप डिवाइडर"
+
+#: src/blocks/share/index.js:24
+msgctxt "block name"
+msgid "Share"
+msgstr "साझा करें"
+
+#: src/blocks/social-profiles/index.js:24
+msgctxt "block name"
+msgid "Social Profiles"
+msgstr "सामाजिक प्रोफ़ाइल"
+
+#: src/blocks/alert/index.js:33
+msgctxt "block style"
+msgid "Info"
+msgstr "जानकारी"
+
+#: src/blocks/alert/index.js:34
+msgctxt "block style"
+msgid "Success"
+msgstr "सफल"
+
+#: src/blocks/alert/index.js:35
+msgctxt "block style"
+msgid "Warning"
+msgstr "चेतावनी"
+
+#: src/blocks/alert/index.js:36
+msgctxt "block style"
+msgid "Error"
+msgstr "त्रुटि"
+
+#: src/blocks/dynamic-separator/index.js:32
 msgctxt "block style"
 msgid "Dot"
 msgstr "डॉट"
 
-#: src/blocks/dynamic-separator/index.js:37
+#: src/blocks/dynamic-separator/index.js:33
 msgctxt "block style"
 msgid "Line"
 msgstr "लाइन"
 
-#: src/blocks/dynamic-separator/index.js:38
+#: src/blocks/dynamic-separator/index.js:34
 msgctxt "block style"
 msgid "Fullwidth"
 msgstr "पूर्ण-चौड़ाई"
 
-#: src/blocks/icon/index.js:41
+#: src/blocks/food-and-drinks/edit.js:35
+msgctxt "block style"
+msgid "Grid"
+msgstr "ग्रिड"
+
+#: src/blocks/food-and-drinks/edit.js:42
+msgctxt "block style"
+msgid "List"
+msgstr "सूची"
+
+#: src/blocks/gallery-collage/index.js:40
+#: src/extensions/image-styles/index.js:15
+msgctxt "block style"
+msgid "Default"
+msgstr "डिफ़ॉल्ट"
+
+#: src/blocks/gallery-collage/index.js:45
+msgctxt "block style"
+msgid "Tiled"
+msgstr "टाइल्ड"
+
+#: src/blocks/gallery-collage/index.js:49
+msgctxt "block style"
+msgid "Layered"
+msgstr "लैअर्ड"
+
+#: src/blocks/icon/index.js:37
 msgctxt "block style"
 msgid "Outlined"
 msgstr "आउटलाइन किया गया"
 
-#: src/blocks/icon/index.js:42
+#: src/blocks/icon/index.js:38
 msgctxt "block style"
 msgid "Filled"
 msgstr "फ़िल्ड"
 
-#: src/blocks/shape-divider/index.js:43
+#: src/blocks/posts/edit.js:49
+msgctxt "block style"
+msgid "Stacked"
+msgstr "स्टैक किया गया"
+
+#: src/blocks/posts/edit.js:55
+msgctxt "block style"
+msgid "Horizontal"
+msgstr "होरिजेंटल"
+
+#: src/blocks/shape-divider/index.js:38
 msgctxt "block style"
 msgid "Wavy"
 msgstr "वेवी"
 
-#: src/blocks/shape-divider/index.js:44
+#: src/blocks/shape-divider/index.js:39
 msgctxt "block style"
 msgid "Hills"
 msgstr "हिल्स"
 
-#: src/blocks/shape-divider/index.js:45
+#: src/blocks/shape-divider/index.js:40
 msgctxt "block style"
 msgid "Waves"
 msgstr "वेव्स"
 
-#: src/blocks/shape-divider/index.js:46
+#: src/blocks/shape-divider/index.js:41
 msgctxt "block style"
 msgid "Angled"
 msgstr "एंगल्ड"
 
-#: src/blocks/shape-divider/index.js:47
+#: src/blocks/shape-divider/index.js:42
 msgctxt "block style"
 msgid "Sloped"
 msgstr "स्लोप्ड"
 
-#: src/blocks/shape-divider/index.js:48
+#: src/blocks/shape-divider/index.js:43
 msgctxt "block style"
 msgid "Rounded"
 msgstr "राउंडेड"
 
-#: src/blocks/shape-divider/index.js:49
+#: src/blocks/shape-divider/index.js:44
 msgctxt "block style"
 msgid "Triangle"
 msgstr "ट्राएंगल"
 
-#: src/blocks/shape-divider/index.js:50
+#: src/blocks/shape-divider/index.js:45
 msgctxt "block style"
 msgid "Pointed"
 msgstr "पॉइंटेड"
 
-#: src/blocks/share/index.js:33
-#: src/blocks/social-profiles/index.js:33
+#: src/blocks/share/index.js:30
+#: src/blocks/social-profiles/index.js:30
 msgctxt "block style"
 msgid "Mask"
 msgstr "मास्क"
 
-#: src/blocks/share/index.js:34
-#: src/blocks/social-profiles/index.js:34
+#: src/blocks/share/index.js:31
+#: src/blocks/social-profiles/index.js:31
 msgctxt "block style"
 msgid "Icon"
 msgstr "आइकन"
 
-#: src/blocks/share/index.js:35
-#: src/blocks/social-profiles/index.js:35
+#: src/blocks/share/index.js:32
+#: src/blocks/social-profiles/index.js:32
 msgctxt "block style"
 msgid "Text"
 msgstr "पाठ"
 
-#: src/blocks/share/index.js:36
-#: src/blocks/social-profiles/index.js:36
+#: src/blocks/share/index.js:33
+#: src/blocks/social-profiles/index.js:33
 msgctxt "block style"
 msgid "Icon & Text"
 msgstr "आइकन और पाठ"
 
-#: src/blocks/share/index.js:37
-#: src/blocks/social-profiles/index.js:37
+#: src/blocks/share/index.js:34
+#: src/blocks/social-profiles/index.js:34
 msgctxt "block style"
 msgid "Circular"
 msgstr "सर्कुलर"
+
+#: src/extensions/image-styles/index.js:21
+msgctxt "block style"
+msgid "Bottom Wave"
+msgstr "अंतिम संकेत"
+
+#: src/extensions/image-styles/index.js:27
+msgctxt "block style"
+msgid "Top Wave"
+msgstr "शीर्ष संकेत"
+
+#: src/blocks/author/edit.js:63
+msgctxt "image to represent the post author"
+msgid "Drop to upload as avatar"
+msgstr "अवतार के रूप में अपलोड करने के लिए छोड़ें"
+
+#: src/blocks/author/edit.js:149
+msgctxt "content placeholder"
+msgid "Author link…"
+msgstr "लेखक की लिंक..."
 
 #: src/blocks/features/feature/edit.js:31
 msgctxt "content placeholder"
@@ -2682,25 +3264,25 @@ msgctxt "content placeholder"
 msgid "This is a feature block that you can use to highlight features."
 msgstr "यह ऐसी फ़ीचर ब्लॉक है जिसका उपयोग आप सुविधाओं को हाइलाइट करने के लिए कर सकते हैं."
 
-#: src/blocks/hero/edit.js:36
+#: src/blocks/hero/edit.js:35
 msgctxt "content placeholder"
-msgid "Add hero heading..."
+msgid "Add hero heading…"
 msgstr "हीरो शीर्षक जोड़ें..."
 
-#: src/blocks/hero/edit.js:37
+#: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
 msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
-msgstr "ऐसी हीरो सामग्री जोड़ें, जो आमतौर पर कार्रवाई के लिए कॉल करें या दो के साथ पेज का परिचयात्मक क्षेत्र है."
+msgstr "मुख्य सामग्री जोड़ें, जो आमतौर पर कार्रवाई के लिए कॉल करें या दो के साथ पेज का परिचयात्मक भाग है."
+
+#: src/blocks/hero/edit.js:39
+msgctxt "content placeholder"
+msgid "Primary button…"
+msgstr "प्राथमिक बटन..."
 
 #: src/blocks/hero/edit.js:40
 msgctxt "content placeholder"
-msgid "Add primary action..."
-msgstr "प्राथमिक कार्रवाई जोड़ें..."
-
-#: src/blocks/hero/edit.js:41
-msgctxt "content placeholder"
-msgid "Add secondary action..."
-msgstr "द्धितीयक कार्रवाई जोड़ें..."
+msgid "Secondary button…"
+msgstr "द्वितीयक बटन..."
 
 #: src/blocks/media-card/edit.js:46
 msgctxt "content placeholder"
@@ -2722,25 +3304,112 @@ msgctxt "content placeholder"
 msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
 msgstr "कार्ड छवि के साथ साथ जाने के लिए वर्णनात्मक प्रतिलिपि के साथ इस पाठ को बदलें. फिर इस कार्ड में और ब्लॉक जोड़ें, जैसे बटन, सूची या छवियां."
 
-#: src/blocks/services/service/edit.js:194
+#: src/blocks/services/service/edit.js:205
 msgctxt "content placeholder"
 msgid "Write title..."
 msgstr "शीर्षक लिखें..."
 
-#: src/blocks/services/service/edit.js:200
+#: src/blocks/services/service/edit.js:211
 msgctxt "content placeholder"
 msgid "Write description..."
 msgstr "वर्णन लिखें..."
 
-#: src/blocks/icon/inspector.js:223
-msgctxt "size name"
-msgid "Normal"
-msgstr "सामान्य"
+#: src/blocks/buttons/inspector.js:28
+msgctxt "block settings"
+msgid "Buttons Settings"
+msgstr "बटन सेटिंग्स"
 
-#: src/blocks/icon/inspector.js:223
-msgctxt "size name"
-msgid "Custom"
-msgstr "सीमा-शुल्क"
+#: src/blocks/buttons/inspector.js:43
+msgctxt "visually stack buttons one on top of another"
+msgid "Stack on mobile"
+msgstr "मोबाइल पर स्टैक"
+
+#: src/blocks/dynamic-separator/inspector.js:43
+msgctxt "hr is html markup - horizonal rule"
+msgid "Dynamic HR Settings"
+msgstr "डायनमिक HR सेटिंग्स"
+
+#: src/blocks/gallery-collage/inspector.js:55
+msgctxt "label for no gutter option"
+msgid "None"
+msgstr "कोई नहीं"
+
+#: src/blocks/gallery-collage/inspector.js:84
+#: src/blocks/gallery-collage/inspector.js:56
+msgctxt "abbreviation for \"Short\" size"
+msgid "None"
+msgstr "कोई नहीं"
+
+#: src/blocks/gallery-collage/inspector.js:60
+msgctxt "label for small gutter option"
+msgid "Small"
+msgstr "छोटा"
+
+#: src/blocks/gallery-collage/inspector.js:89
+#: src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:61
+msgctxt "abbreviation for \"Small\" size"
+msgid "S"
+msgstr "s"
+
+#: src/blocks/gallery-collage/inspector.js:65
+msgctxt "label for medium gutter option"
+msgid "Medium"
+msgstr "मध्यम"
+
+#: src/blocks/gallery-collage/inspector.js:94
+#: src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:66
+msgctxt "abbreviation for \"Medium\" size"
+msgid "M"
+msgstr "मी"
+
+#: src/blocks/gallery-collage/inspector.js:70
+msgctxt "label for large gutter option"
+msgid "Large"
+msgstr "बड़ा"
+
+#: src/blocks/gallery-collage/inspector.js:99
+#: src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:71
+msgctxt "abbreviation for \"Large\" size"
+msgid "L"
+msgstr "L"
+
+#: src/blocks/posts/inspector.js:73
+msgctxt "abbreviation for \"Large\" size"
+msgid "XL"
+msgstr "XL"
+
+#: src/blocks/gallery-collage/inspector.js:75
+msgctxt "label for extra large gutter option"
+msgid "Extra Large"
+msgstr "अधिक बड़ा"
+
+#: src/blocks/gallery-collage/inspector.js:76
+msgctxt "abbreviation for \"Extra Large\" size"
+msgid "XL"
+msgstr "XL"
+
+#: src/blocks/gallery-collage/inspector.js:83
+msgctxt "label for no shadow option"
+msgid "None"
+msgstr "कोई नहीं"
+
+#: src/blocks/gallery-collage/inspector.js:88
+msgctxt "label for small shadow option"
+msgid "Small"
+msgstr "छोटा"
+
+#: src/blocks/gallery-collage/inspector.js:93
+msgctxt "label for medium shadow option"
+msgid "Medium"
+msgstr "मध्यम"
+
+#: src/blocks/gallery-collage/inspector.js:98
+msgctxt "label for large shadow option"
+msgid "Large"
+msgstr "बड़ा"
 
 #: src/blocks/icon/svgs.js:102
 msgctxt "label"
@@ -2843,6 +3512,7 @@ msgid "Hub"
 msgstr "हब"
 
 #: src/blocks/icon/svgs.js:208
+#: src/blocks/icon/svgs.js:202
 msgctxt "label"
 msgid "Email"
 msgstr "ईमेल"
@@ -2990,7 +3660,7 @@ msgstr "फ़ायर"
 #: src/blocks/icon/svgs.js:354
 msgctxt "label"
 msgid "Update"
-msgstr "अपडेट"
+msgstr "अपडेट करें"
 
 #: src/blocks/icon/svgs.js:36
 msgctxt "label"
@@ -3048,6 +3718,7 @@ msgid "Brush"
 msgstr "ब्रश"
 
 #: src/blocks/icon/svgs.js:109
+#: src/blocks/icon/svgs.js:103
 msgctxt "tags"
 msgid "add minus circle insert plus round math"
 msgstr "माइनस सर्कल इंसर्ट प्लस राउंड मैथ जोड़ें"
@@ -3098,6 +3769,7 @@ msgid "rate vote plus favorite like"
 msgstr "रेट वोट प्लस पसंदीदा पसंद"
 
 #: src/blocks/icon/svgs.js:177
+#: src/blocks/icon/svgs.js:166
 msgctxt "tags"
 msgid "computer apple montior device pc desk office"
 msgstr "कंप्यूटर apple मॉनिटर डिवाइस पीसी डेस्क ऑफ़िस"
@@ -3113,6 +3785,7 @@ msgid "device apple mac"
 msgstr "डिवाइस apple mac"
 
 #: src/blocks/icon/svgs.js:193
+#: src/blocks/icon/svgs.js:172
 msgctxt "tags"
 msgid "computer ipad surface apple device pc desk office"
 msgstr "कंप्यूटर ipad सर्फ़ेस apple डिवाइस पीसी डेस्क ऑफ़िस"
@@ -3128,6 +3801,7 @@ msgid "music microphone podcast song artist creative media audio"
 msgstr "संगीत माइक्रोफ़ोन पॉडकास्ट साँग आर्टिस्ट क्रिएटिव मीडिया ऑडियो"
 
 #: src/blocks/icon/svgs.js:209
+#: src/blocks/icon/svgs.js:203
 msgctxt "tags"
 msgid "email mail os read letter"
 msgstr "ईमेल मेल ओएस पढ़ें लेटर"
@@ -3183,6 +3857,7 @@ msgid "petal scent smell nice relax landscape gardening outdoors outside"
 msgstr "पेटल खुशबू महक अच्छा आराम परिदृश्य गार्डनिंग आउटडोर आउटसाइड"
 
 #: src/blocks/icon/svgs.js:292
+#: src/blocks/icon/svgs.js:230
 msgctxt "tags"
 msgid "blocks block box boxes square build widgets"
 msgstr "ब्लॉक ब्लॉक बॉक्स बॉक्सेज़ स्कॉयर बिल्ड विजेट्स"
@@ -3218,6 +3893,7 @@ msgid "microphone audio beats bose headphones"
 msgstr "माइक्रोफ़ोन ऑडियो बीट्स बोस हेडफ़ोन्स"
 
 #: src/blocks/icon/svgs.js:325
+#: src/blocks/icon/svgs.js:286
 msgctxt "tags"
 msgid "flower camera photography artist creative"
 msgstr "फ़्लावर कैमरा फ़ोटोग्राफ़ी कलाकार क्रिएटिव"
@@ -3253,6 +3929,7 @@ msgid "improve add upload software"
 msgstr "बेहतर जोड़ें अपलोड सॉफ्टवेयर"
 
 #: src/blocks/icon/svgs.js:37
+#: src/blocks/icon/svgs.js:26
 msgctxt "tags"
 msgid "music microphone song artist creative media audio"
 msgstr "संगीत माइक्रोफ़ोन गाने कलाकार रचनात्मक मीडिया ऑडियो"
@@ -3288,6 +3965,7 @@ msgid "video videography director producer media creative camera photographer ph
 msgstr "वीडियो वीडियोग्राफी निर्देशक रचनात्मक मीडिया रचनात्मक कैमरा फ़ोटोग्राफर फ़ोटोग्राफी अपर्चर"
 
 #: src/blocks/icon/svgs.js:85
+#: src/blocks/icon/svgs.js:79
 msgctxt "tags"
 msgid "palette design colors artist paint creative media"
 msgstr "पैलेट डिज़ाइन रंग कलाकार पेंट रचनात्मक मीडिया"
@@ -3302,12 +3980,299 @@ msgctxt "tags"
 msgid "palette design colors artist creative media paint paintbrush"
 msgstr "पैलेट डिज़ाइन रंग कलाकार रचनात्मक मीडिया पेंट पेंटब्रश"
 
+#: src/blocks/map/styles.js:12
+msgctxt "block styles"
+msgid "Standard"
+msgstr "मानक"
+
+#: src/blocks/map/styles.js:16
+msgctxt "block styles"
+msgid "Silver"
+msgstr "सिल्वर"
+
+#: src/blocks/map/styles.js:20
+msgctxt "block styles"
+msgid "Retro"
+msgstr "रेट्रो"
+
+#: src/blocks/map/styles.js:24
+msgctxt "block styles"
+msgid "Dark"
+msgstr "अंधेरा"
+
+#: src/blocks/map/styles.js:28
+msgctxt "block styles"
+msgid "Night"
+msgstr "रात"
+
+#: src/blocks/map/styles.js:32
+msgctxt "block styles"
+msgid "Aubergine"
+msgstr "बैंगनी"
+
+#: src/extensions/button-styles/index.js:16
+msgctxt "block styles"
+msgid "Circular"
+msgstr "सर्कुलर"
+
+#: src/extensions/button-styles/index.js:22
+msgctxt "block styles"
+msgid "3D"
+msgstr "3D"
+
+#: src/extensions/button-styles/index.js:28
+msgctxt "block styles"
+msgid "Shadow"
+msgstr "शैडो"
+
+#: src/extensions/list-styles/index.js:15
+msgctxt "block styles"
+msgid "Default"
+msgstr "डिफ़ॉल्ट"
+
+#: src/extensions/list-styles/index.js:21
+msgctxt "block styles"
+msgid "None"
+msgstr "कोई नहीं"
+
+#: src/extensions/list-styles/index.js:27
+msgctxt "block styles"
+msgid "Checkbox"
+msgstr "चेकबॉक्स"
+
+#: src/blocks/post-carousel/edit.js:302
+#: src/blocks/posts/edit.js:437
+#: src/blocks/post-carousel/index.php:185
+#: src/blocks/posts/index.php:202
+msgctxt "placeholder when a post has no title"
+msgid "(no title)"
+msgstr "(कोई शीर्षक नहीं)"
+
+#: src/blocks/posts/inspector.js:57
+msgctxt "label for small size option"
+msgid "Small"
+msgstr "छोटा"
+
+#: src/blocks/posts/inspector.js:62
+msgctxt "label for medium size option"
+msgid "Medium"
+msgstr "मध्यम"
+
+#: src/blocks/posts/inspector.js:67
+msgctxt "label for large size option"
+msgid "Large"
+msgstr "बड़ा"
+
+#: src/blocks/posts/inspector.js:72
+msgctxt "label for large size option"
+msgid "Extra Large"
+msgstr "अधिक बड़ा"
+
+#: src/components/background/panel.js:102
+msgctxt "block layout"
+msgid "Auto"
+msgstr "ऑटो"
+
+#: src/components/background/panel.js:103
+msgctxt "block layout"
+msgid "Cover"
+msgstr "कवर"
+
+#: src/components/background/panel.js:104
+msgctxt "block layout"
+msgid "Contain"
+msgstr "शामिल"
+
+#: src/components/background/panel.js:83
+#: src/components/grid-control/index.js:35
+msgctxt "block layout"
+msgid "Top Left"
+msgstr "शीर्ष बायां"
+
+#: src/components/background/panel.js:84
+#: src/components/grid-control/index.js:36
+msgctxt "block layout"
+msgid "Top Center"
+msgstr "शीर्ष केंद्र"
+
+#: src/components/background/panel.js:85
+#: src/components/grid-control/index.js:37
+msgctxt "block layout"
+msgid "Top Right"
+msgstr "शीर्ष दायां"
+
+#: src/components/background/panel.js:86
+#: src/components/grid-control/index.js:48
+#: src/components/grid-control/index.js:38
+msgctxt "block layout"
+msgid "Center Left"
+msgstr "केंद्र बायां"
+
+#: src/components/background/panel.js:87
+#: src/components/grid-control/index.js:49
+#: src/components/grid-control/index.js:39
+msgctxt "block layout"
+msgid "Center Center"
+msgstr "केंद्र केंद्र"
+
+#: src/components/background/panel.js:88
+#: src/components/grid-control/index.js:50
+#: src/components/grid-control/index.js:40
+msgctxt "block layout"
+msgid "Center Right"
+msgstr "केंद्र दायां"
+
+#: src/components/background/panel.js:89
+#: src/components/grid-control/index.js:41
+msgctxt "block layout"
+msgid "Bottom Left"
+msgstr "नीचे बायां"
+
+#: src/components/background/panel.js:90
+#: src/components/grid-control/index.js:42
+msgctxt "block layout"
+msgid "Bottom Center"
+msgstr "नीचे केंद्र"
+
+#: src/components/background/panel.js:91
+#: src/components/grid-control/index.js:43
+msgctxt "block layout"
+msgid "Bottom Right"
+msgstr "नीचे दायां"
+
+#: src/components/background/panel.js:95
+msgctxt "block layout"
+msgid "No Repeat"
+msgstr "कोई दोहराव नहीं"
+
+#: src/components/background/panel.js:96
+msgctxt "block layout"
+msgid "Repeat"
+msgstr "दोहराएं"
+
+#: src/components/background/panel.js:97
+msgctxt "block layout"
+msgid "Repeat Horizontally"
+msgstr "क्षैतिज रूप से दोहराएं"
+
+#: src/components/background/panel.js:98
+msgctxt "block layout"
+msgid "Repeat Vertically"
+msgstr "लंबवत रूप से दोहराएं"
+
+#: src/components/block-gallery/gallery-link-settings.js:80
+msgctxt "HTML attribute that specifies the a relationship between the two pages."
+msgid "Link Rel"
+msgstr "लिंक Rel"
+
+#: src/components/block-gallery/options/caption-options.js:10
+msgctxt "visual style option"
+msgid "Dark"
+msgstr "अंधेरा"
+
+#: src/components/block-gallery/options/caption-options.js:11
+msgctxt "visual style option"
+msgid "Light"
+msgstr "प्रकाश"
+
+#: src/components/block-gallery/options/caption-options.js:12
+msgctxt "visual style option"
+msgid "None"
+msgstr "कोई नहीं"
+
+#: src/components/crop-settings/index.js:280
+msgctxt "label for horizontal positioning input"
+msgid "Horizontal Pos."
+msgstr "होरिजेंटल पोज."
+
+#: src/components/crop-settings/index.js:288
+msgctxt "label for vertical positioning input"
+msgid "Vertical Pos."
+msgstr "वर्टिकल पोज."
+
+#: src/components/crop-settings/index.js:297
+msgctxt "label for the control that allows zooming in on the image"
+msgid "Image Zoom"
+msgstr "छवि को ज़ूम करें"
+
+#: src/components/dimensions-control/index.js:389
+msgctxt "A size unit for CSS markup"
+msgid "Pixel"
+msgstr "पिक्सेल"
+
+#: src/components/dimensions-control/index.js:393
+msgctxt "A size unit for CSS markup"
+msgid "Em"
+msgstr "Em"
+
+#: src/components/dimensions-control/index.js:397
+msgctxt "A size unit for CSS markup"
+msgid "Percentage"
+msgstr "प्रतिशत"
+
+#: src/components/media-filter-control/index.js:31
+msgctxt "image styles"
+msgid "Original"
+msgstr "मूल"
+
+#: src/components/media-filter-control/index.js:39
+msgctxt "image styles"
+msgid "Grayscale Filter"
+msgstr "ग्रेस्केल फ़िल्टर"
+
+#: src/components/media-filter-control/index.js:47
+msgctxt "image styles"
+msgid "Sepia Filter"
+msgstr "सेपिया फ़िल्टर"
+
+#: src/components/media-filter-control/index.js:55
+msgctxt "image styles"
+msgid "Saturation Filter"
+msgstr "सैचुरेशन फ़िल्टर"
+
+#: src/components/media-filter-control/index.js:63
+msgctxt "image styles"
+msgid "Dim Filter"
+msgstr "धूंधला फ़िल्टर"
+
+#: src/components/media-filter-control/index.js:71
+msgctxt "image styles"
+msgid "Vintage Filter"
+msgstr "विंटेज फ़िल्टर"
+
+#: src/components/typography-controls/index.js:103
+msgctxt "typography styles"
+msgid "Capitalize"
+msgstr "बड़े अक्षरों में करना"
+
+#: src/components/typography-controls/index.js:107
+#: src/components/typography-controls/index.js:80
+msgctxt "typography styles"
+msgid "Normal"
+msgstr "सामान्य"
+
+#: src/components/typography-controls/index.js:84
+msgctxt "typography styles"
+msgid "Bold"
+msgstr "बोल्ड"
+
+#: src/components/typography-controls/index.js:91
+#: src/components/typography-controls/index.js:76
+msgctxt "typography styles"
+msgid "Default"
+msgstr "डिफ़ॉल्ट"
+
+#: src/components/typography-controls/index.js:95
+msgctxt "typography styles"
+msgid "Uppercase"
+msgstr "बड़ा अक्षर"
+
+#: src/components/typography-controls/index.js:99
+msgctxt "typography styles"
+msgid "Lowercase"
+msgstr "छोटा अक्षर"
+
 #. Plugin Name of the plugin
-#: includes/admin/class-coblocks-feedback.php:311
-#: includes/admin/class-coblocks-getting-started-page.php:46
-#: includes/admin/class-coblocks-getting-started-page.php:47
-#: includes/admin/class-coblocks-getting-started-page.php:58
-#: includes/admin/class-coblocks-getting-started-page.php:59
 msgid "CoBlocks"
 msgstr "CoBlocks"
 
@@ -3327,166 +4292,131 @@ msgstr "GoDaddy"
 msgid "https://www.godaddy.com"
 msgstr "https://www.godaddy.com"
 
-#: class-coblocks.php:77
-#: class-coblocks.php:89
+#: class-coblocks.php:84
+#: class-coblocks.php:96
 msgid "Cheating huh?"
-msgstr "धोखाधड़ी, हां??"
+msgstr "अनाधिकृत प्रवेश करना चाहते हैं?"
 
-#. translators: Number of years
-#: includes/admin/class-coblocks-feedback.php:92
-msgid "%s years"
-msgstr "%s वर्ष"
+#: includes/admin/class-coblocks-action-links.php:41
+msgid "Review CoBlocks on WordPress.org"
+msgstr "WordPress.org पर CoBlocks की समीक्षा करें"
 
-#: includes/admin/class-coblocks-feedback.php:94
-msgid "a year"
-msgstr "वर्ष"
-
-#. translators: Number of weeks
-#: includes/admin/class-coblocks-feedback.php:101
-msgid "%s weeks"
-msgstr "%s सप्ताह"
-
-#: includes/admin/class-coblocks-feedback.php:103
-msgid "a week"
-msgstr "सप्ताह में"
-
-#. translators: Number of days
-#: includes/admin/class-coblocks-feedback.php:110
-msgid "%s days"
-msgstr "%s दिन"
-
-#: includes/admin/class-coblocks-feedback.php:112
-msgid "a day"
-msgstr "दिन में"
-
-#. translators: Number of hours
-#: includes/admin/class-coblocks-feedback.php:119
-msgid "%s hours"
-msgstr "%s घंटें"
-
-#: includes/admin/class-coblocks-feedback.php:121
-msgid "an hour"
-msgstr "एक घंटे"
-
-#. translators: Number of minutes
-#: includes/admin/class-coblocks-feedback.php:128
-msgid "%s minutes"
-msgstr "%s मिनट"
-
-#: includes/admin/class-coblocks-feedback.php:130
-msgid "a minute"
-msgstr "मिनट"
-
-#. translators: Number of seconds
-#: includes/admin/class-coblocks-feedback.php:137
-msgid "%s seconds"
-msgstr "%s सेकंड्स"
-
-#: includes/admin/class-coblocks-feedback.php:139
-msgid "a second"
-msgstr "सेकंड में"
-
-#. translators: 1. Name
-#: includes/admin/class-coblocks-feedback.php:271
-msgid "%s WordPress Plugin"
-msgstr "%s WordPress प्लगइन"
-
-#. translators: 1. Name
-#: includes/admin/class-coblocks-feedback.php:275
-msgid "Are you enjoying %s?"
-msgstr "क्या आप %s मज़े कर रहे हैं?"
-
-#. translators: 1. Name, 2. Time
-#: includes/admin/class-coblocks-feedback.php:278
-msgid "You have been using %1$s for %2$s now. Mind leaving a review to let us know know what you think? We'd really appreciate it!"
-msgstr "आप अभी %2$s के लिए %1$s का उपयोग कर रहे हैं. क्या आप समीक्षा लिखकर हमें यह बताना नहीं चाहेंगे कि आपका क्या विचार हैं? हम वास्तव में इसकी सराहना करेंगे!"
-
-#: includes/admin/class-coblocks-feedback.php:282
+#: includes/admin/class-coblocks-action-links.php:41
 msgid "Leave a Review"
 msgstr "एक समीक्षा लिखें"
 
-#: includes/admin/class-coblocks-feedback.php:283
-msgid "No thanks / I already have"
-msgstr "नहीं धन्यवाद / मेरे पास पहले से है"
-
-#: includes/admin/class-coblocks-getting-started-page.php:122
+#: includes/admin/class-coblocks-getting-started-page.php:120
 msgid "Thanks for choosing CoBlocks, the premier page builder for the new WordPress block editor."
 msgstr "CoBlocks चुनने के लिए धन्यवाद, नए WordPress ब्लॉक एडिटर के लिए प्रमुख पेज बिल्डर."
 
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
-#: includes/admin/class-coblocks-getting-started-page.php:128
+#: includes/admin/class-coblocks-getting-started-page.php:126
 msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
 msgstr "आपन अभीे WordPress संपादक में बहुत सारे उपयोगी ब्लॉक और नया पेज बिल्डर टूलकिट जोड़ा है. CoBlock आपको खेल परिवर्तन वाली सुविधाओं का सेट देता है: %1$s दस ब्लॉक%2$s, %1$s पेज बिल्डर अनुभव %2$s और%1$sकस्टम टाइपोग्राफी नियंत्रण%2$s."
 
-#: includes/admin/class-coblocks-getting-started-page.php:135
+#: includes/admin/class-coblocks-getting-started-page.php:133
 msgid "Here are a few videos to help you get started:"
 msgstr "शुरू करने में आपकी सहायता के लिए यहां कुछ वीडियो दिए गए हैं:"
 
 #. translators: CoBlocks plugin name
-#: includes/admin/class-coblocks-getting-started-page.php:139
+#: includes/admin/class-coblocks-getting-started-page.php:137
 msgid "Watch how to create your first page with %s"
 msgstr "देखें कि %s के साथ अपना पहला पेज कैसे बना सकते हैं"
 
-#: includes/admin/class-coblocks-getting-started-page.php:140
+#: includes/admin/class-coblocks-getting-started-page.php:138
 msgid "Watch how to create your first page"
 msgstr "देखें कि अपना पहला पेज कैसे बना सकते हैं"
 
-#: includes/admin/class-coblocks-getting-started-page.php:142
-#: includes/admin/class-coblocks-getting-started-page.php:143
+#: includes/admin/class-coblocks-getting-started-page.php:140
+#: includes/admin/class-coblocks-getting-started-page.php:141
 msgid "Watch how to use the Row and Shape Divider blocks"
 msgstr "देखें कि पंक्ति और शेप डिवाइडर ब्लॉक का उपयोग कैसे करें"
 
-#: includes/admin/class-coblocks-getting-started-page.php:145
-#: includes/admin/class-coblocks-getting-started-page.php:146
+#: includes/admin/class-coblocks-getting-started-page.php:143
+#: includes/admin/class-coblocks-getting-started-page.php:144
 msgid "Watch how to use the Media Card block"
 msgstr "मीडिया कार्ड ब्लॉक का उपयोग करने का तरीका देखें"
 
 #. translators: 1: Opening <a> tag to the CoBlocks YouTube channel, 2: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:154
+#: includes/admin/class-coblocks-getting-started-page.php:152
 msgid "Like what you see? %1$sSubscribe to our YouTube channel%2$s and we'll let you know when new video tutorials are released."
 msgstr "आपने जो देखा वह आपको पसंद है? %1$sहमारे YouTube चैनल पर सब्सक्राइब करें%2$s और नए वीडियो ट्यूटोरियल जारी होने पर हम आपको बताएंगे."
 
 #. translators: 1: Opening <a> tag to the CoBlocks Twitter account, 2: Opening <a> tag to the CoBlocks Facebook group, 3: Opening <a> tag to the CoBlocks newsletter,  4: Closing </a> tag
-#: includes/admin/class-coblocks-getting-started-page.php:165
+#: includes/admin/class-coblocks-getting-started-page.php:163
 msgid "If you have any questions or feedback, let us know on %1$sTwitter%4$s or our %2$sFacebook group %4$s. Also, %3$ssubscribe to our newsletter%4$s if you want to stay up to date with what's new and upcoming at CoBlocks."
 msgstr "यदि आपके कोई प्रश्न या प्रतिक्रिया है, तो हमें %1$sTwitter%4$s या हमारे %2$sFacebook समूह %4$s पर बताएं. इसके अलावा, अगर आप CoBlock में नए और आगामी समय के साथ रहना चाहते हैं, तो %3$sहमारे न्यूज़लेटर को सब्सक्राइब करें%4$s."
 
-#: includes/admin/class-coblocks-getting-started-page.php:174
+#: includes/admin/class-coblocks-getting-started-page.php:172
 msgid "Enjoy!"
 msgstr "आनंद लें!"
 
-#: includes/admin/class-coblocks-getting-started-page.php:207
-msgid "Get started with CoBlocks here:"
-msgstr "यहाँ CoBlocks के साथ शुरू करें:"
-
-#: includes/class-coblocks-block-settings.php:80
+#: includes/class-coblocks-block-settings.php:72
 msgid "Enable or disable blocks"
 msgstr "ब्लॉक को सक्षम या अक्षम करें"
 
 #: includes/class-coblocks-form.php:67
 msgid "Google reCaptcha site key for form spam protection"
-msgstr "फ़ॉर्म स्पैम सुरक्षा के लिए Google reCaptcha साइट कुंजी"
+msgstr "फ़ॉर्म स्पैम सुरक्षा के लिए Google reCAPTCHA साइट कुंजी"
 
 #: includes/class-coblocks-form.php:79
 msgid "Google reCaptcha secret key for form spam protection"
-msgstr "फ़ॉर्म स्पैम सुरक्षा के लिए Google reCaptcha गुप्त कुंजी"
+msgstr "फ़ॉर्म स्पैम सुरक्षा के लिए Google reCAPTCHA गुप्त कुंजी"
 
-#: includes/class-coblocks-form.php:390
+#: includes/class-coblocks-form.php:267
+msgid "Name"
+msgstr "नाम"
+
+#: includes/class-coblocks-form.php:271
+msgid "First"
+msgstr "पहला"
+
+#: includes/class-coblocks-form.php:272
+msgid "Last"
+msgstr "अंतिम"
+
+#: includes/class-coblocks-form.php:346
+msgid "Message"
+msgstr "संदेश"
+
+#: includes/class-coblocks-form.php:384
+msgid "Date"
+msgstr "दिनांक"
+
+#: includes/class-coblocks-form.php:412
+msgid "Phone"
+msgstr "फ़ोन"
+
+#: includes/class-coblocks-form.php:448
+msgid "Choose one"
+msgstr "कोई एक चुनें"
+
+#: includes/class-coblocks-form.php:520
 msgid "Submit"
 msgstr "सबमिट करें"
 
-#: includes/class-coblocks-form.php:561
+#: includes/class-coblocks-form.php:723
 msgid "Your message was sent:"
 msgstr "आपका संदेश भेज दिया गया था:"
 
-#: includes/class-coblocks-google-map-block.php:122
+#: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
-msgstr "मैप रेंडरिंग के लिए Google मैप API कुंजी"
+msgstr "मैप रेंडरिंग के लिए Google Map API कुंजी"
 
-#: src/blocks/share/index.php:145
+#: src/blocks/post-carousel/index.php:40
+#: src/blocks/posts/index.php:40
+msgid "RSS Error:"
+msgstr "RSS Error:"
+
+#: src/blocks/post-carousel/index.php:51
+#: src/blocks/posts/index.php:51
+msgid "An error has occurred, which probably means the feed is down. Try again later."
+msgstr "An error has occurred, which probably means the feed is down. Try again later."
+
+#: src/blocks/share/index.php:144
 msgid "Share on Linkedin"
-msgstr "Linkedin पर साझा करें"
+msgstr "LinkedIn पर साझा करें"
 
-#: src/blocks/social-profiles/index.php:84
+#: src/blocks/social-profiles/index.php:83
 msgid "Linkedin"
 msgstr "LinkedIn"

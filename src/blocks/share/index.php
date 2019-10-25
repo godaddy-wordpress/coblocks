@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Server-side rendering of the `coblocks/social` block.
  *
@@ -96,7 +95,7 @@ function coblocks_render_share_block( $attributes ) {
 	$border_radius    = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : '';
 	$has_padding      = is_array( $attributes ) && isset( $attributes['padding'] ) ? 'has-padding' : '';
 
-	$has_backround           = '';
+	$has_background          = '';
 	$background_color_class  = '';
 	$custom_background_color = '';
 	$has_color               = '';
@@ -106,11 +105,11 @@ function coblocks_render_share_block( $attributes ) {
 	$padding                 = '';
 
 	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) !== false ) {
-		$has_backround           = is_array( $attributes ) && isset( $attributes['hasColors'] ) && ( isset( $attributes['backgroundColor'] ) || isset( $attributes['customBackgroundColor'] ) ) && ( $attributes['hasColors'] || ( $attributes['backgroundColor'] || $attributes['customBackgroundColor'] ) ) ? 'has-text-color' : '';
+		$has_background          = is_array( $attributes ) && isset( $attributes['hasColors'] ) && ( isset( $attributes['backgroundColor'] ) || isset( $attributes['customBackgroundColor'] ) ) && ( $attributes['hasColors'] || ( $attributes['backgroundColor'] || $attributes['customBackgroundColor'] ) ) ? 'has-text-color' : '';
 		$background_color_class  = is_array( $attributes ) && isset( $attributes['backgroundColor'] ) ? "has-{$attributes['backgroundColor']}-color" : false;
 		$custom_background_color = is_array( $attributes ) && isset( $attributes['customBackgroundColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['backgroundColor'] ) ) ? "color: {$attributes['customBackgroundColor']};" : '';
 	} else {
-		$has_backround           = is_array( $attributes ) && isset( $attributes['hasColors'] ) && ( isset( $attributes['backgroundColor'] ) || isset( $attributes['customBackgroundColor'] ) ) && ( $attributes['hasColors'] || ( isset( $attributes['backgroundColor'] ) || $attributes['customBackgroundColor'] ) ) ? 'has-background' : '';
+		$has_background          = is_array( $attributes ) && isset( $attributes['hasColors'] ) && ( isset( $attributes['backgroundColor'] ) || isset( $attributes['customBackgroundColor'] ) ) && ( $attributes['hasColors'] || ( isset( $attributes['backgroundColor'] ) || $attributes['customBackgroundColor'] ) ) ? 'has-background' : '';
 		$background_color_class  = is_array( $attributes ) && isset( $attributes['backgroundColor'] ) ? "has-{$attributes['backgroundColor']}-background-color" : false;
 		$custom_background_color = is_array( $attributes ) && isset( $attributes['customBackgroundColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['backgroundColor'] ) ) ? "background-color: {$attributes['customBackgroundColor']};" : '';
 
@@ -178,7 +177,7 @@ function coblocks_render_share_block( $attributes ) {
 				</li>',
 				esc_url( $platform['url'] ),
 				esc_html( $platform['text'] ),
-				esc_attr( $has_backround ),
+				esc_attr( $has_background ),
 				esc_attr( $border_radius ),
 				esc_attr( $icon_size ),
 				esc_attr( $custom_background_color ),
@@ -244,94 +243,18 @@ function coblocks_register_share_block() {
 		return;
 	}
 
+	// Load attributes from block.json.
+	ob_start();
+	include COBLOCKS_PLUGIN_DIR . 'src/blocks/share/block.json';
+	$metadata = json_decode( ob_get_clean(), true );
+
 	register_block_type(
-		'coblocks/social',
+		$metadata['name'],
 		array(
 			'editor_script'   => 'coblocks-editor',
 			'editor_style'    => 'coblocks-editor',
 			'style'           => 'coblocks-frontend',
-			'attributes'      => array(
-				'align'                      => array(
-					'type' => 'string',
-					'enum' => array( 'wide', 'full' ),
-				),
-				'className'                  => array(
-					'type' => 'string',
-				),
-				'hasColors'                  => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'borderRadius'               => array(
-					'type'    => 'number',
-					'default' => 40,
-				),
-				'size'                       => array(
-					'type'    => 'string',
-					'default' => 'med',
-				),
-				'iconSize'                   => array(
-					'type'    => 'number',
-					'default' => 22,
-				),
-				'padding'                    => array(
-					'type'    => 'number',
-					'default' => 16,
-				),
-				'textAlign'                  => array(
-					'type' => 'string',
-				),
-				'backgroundColor'            => array(
-					'type' => 'string',
-				),
-				'blockBackgroundColor'       => array(
-					'type' => 'string',
-				),
-				'customBlockBackgroundColor' => array(
-					'type' => 'string',
-				),
-				'customBackgroundColor'      => array(
-					'type' => 'string',
-				),
-				'textColor'                  => array(
-					'type' => 'string',
-				),
-				'customTextColor'            => array(
-					'type' => 'string',
-				),
-				'twitter'                    => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'facebook'                   => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'pinterest'                  => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'linkedin'                   => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'tumblr'                     => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'reddit'                     => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'email'                      => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'google'                     => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-			),
+			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_share_block',
 		)
 	);

@@ -60,6 +60,10 @@ class Controls extends Component {
 			selectedRows = parseInt( columns.toString().split( '-' ) );
 		}
 
+		if ( ! layout ) {
+			return null;
+		}
+
 		return (
 			<Fragment>
 				<BlockControls>
@@ -67,7 +71,7 @@ class Controls extends Component {
 						<Toolbar
 							isCollapsed={ true }
 							icon={ this.layoutIcon() }
-							label={ __( 'Change row block layout' ) }
+							label={ __( 'Change row block layout', 'coblocks' ) }
 							controls={ map( layoutOptions[ selectedRows ], ( { name, key, smallIcon } ) => {
 								return {
 									title: name,

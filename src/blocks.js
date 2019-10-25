@@ -24,7 +24,7 @@ import './extensions/image-styles';
 import './extensions/image-crop';
 
 // Formats
-import './formats/';
+import './formats';
 
 // Sidebars
 import './sidebars/block-manager';
@@ -51,6 +51,12 @@ import * as features from './blocks/features';
 import * as foodAndDrinks from './blocks/food-and-drinks';
 import * as foodItem from './blocks/food-and-drinks/food-item';
 import * as form from './blocks/form';
+import * as fieldDate from './blocks/form/fields/date';
+import * as fieldEmail from './blocks/form/fields/email';
+import * as fieldName from './blocks/form/fields/name';
+import * as fieldRadio from './blocks/form/fields/radio';
+import * as fieldTelephone from './blocks/form/fields/phone';
+import * as fieldTextarea from './blocks/form/fields/textarea';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
 import * as hero from './blocks/hero';
@@ -110,6 +116,12 @@ export const registerCoBlocksBlocks = () => {
 		eventItem,
 		feature,
 		features,
+		fieldDate,
+		fieldEmail,
+		fieldName,
+		fieldRadio,
+		fieldTelephone,
+		fieldTextarea,
 		foodAndDrinks,
 		foodItem,
 		form,
@@ -135,4 +147,5 @@ export const registerCoBlocksBlocks = () => {
 		stacked,
 	].forEach( registerBlock );
 };
+
 registerCoBlocksBlocks();

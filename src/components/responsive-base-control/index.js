@@ -65,7 +65,7 @@ class ResponsiveBaseControl extends Component {
 
 	render() {
 		const {
-			label = __( 'Height' ),
+			label = __( 'Height', 'coblocks' ),
 			height,
 			heightTablet,
 			heightMobile,

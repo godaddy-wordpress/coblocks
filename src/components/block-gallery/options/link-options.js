@@ -7,10 +7,10 @@ import { __ } from '@wordpress/i18n';
  * Link options.
  */
 const linkOptions = [
-	{ value: 'none', label: __( 'None' ) },
-	{ value: 'media', label: __( 'Media File' ) },
-	{ value: 'attachment', label: __( 'Attachment Page' ) },
-	{ value: 'custom', label: __( 'Custom URL' ) },
+	{ value: 'none', label: __( 'None', 'coblocks' ) },
+	{ value: 'media', label: __( 'Media File', 'coblocks' ) },
+	{ value: 'attachment', label: __( 'Attachment Page', 'coblocks' ) },
+	{ value: 'custom', label: __( 'Custom URL', 'coblocks' ) },
 
 ];
 

@@ -24,7 +24,7 @@ class Controls extends Component {
 
 	onSelectImages( images ) {
 		this.props.setAttributes( {
-			images: images.map( ( image ) => helper.pickRelevantMediaFiles( image ) ),
+			images: images.map( ( image ) => helper.pickRelevantMediaFiles( image, this.props.attributes.images ) ),
 		} );
 	}
 
@@ -52,7 +52,7 @@ class Controls extends Component {
 									render={ ( { open } ) => (
 										<IconButton
 											className="components-toolbar__control"
-											label={ __( 'Edit gallery' ) }
+											label={ __( 'Edit gallery', 'coblocks' ) }
 											icon="edit"
 											onClick={ open }
 										/>

@@ -153,35 +153,35 @@ class DimensionsControl extends Component {
 			const paddingUnit = block.attributes.paddingUnit;
 			const marginUnit = block.attributes.marginUnit;
 			const padding = {
-				paddingTop: ( block.attributes.paddingTop ) ? block.attributes.paddingTop + paddingUnit : null,
-				paddingRight: ( block.attributes.paddingRight ) ? block.attributes.paddingRight + paddingUnit : null,
-				paddingBottom: ( block.attributes.paddingBottom ) ? block.attributes.paddingBottom + paddingUnit : null,
-				paddingLeft: ( block.attributes.paddingLeft ) ? block.attributes.paddingLeft + paddingUnit : null,
-				paddingTopTablet: ( block.attributes.paddingTopTablet ) ? block.attributes.paddingTopTablet + paddingUnit : null,
-				paddingRightTablet: ( block.attributes.paddingRightTablet ) ? block.attributes.paddingRightTablet + paddingUnit : null,
-				paddingBottomTablet: ( block.attributes.paddingBottomTablet ) ? block.attributes.paddingBottomTablet + paddingUnit : null,
-				paddingLeftTablet: ( block.attributes.paddingLeftTablet ) ? block.attributes.paddingLeftTablet + paddingUnit : null,
-				paddingTopMobile: ( block.attributes.paddingTopMobile ) ? block.attributes.paddingTopMobile + paddingUnit : null,
-				paddingRightMobile: ( block.attributes.paddingRightMobile ) ? block.attributes.paddingRightMobile + paddingUnit : null,
-				paddingBottomMobile: ( block.attributes.paddingBottomMobile ) ? block.attributes.paddingBottomMobile + paddingUnit : null,
-				paddingLeftMobile: ( block.attributes.paddingLeftMobile ) ? block.attributes.paddingLeftMobile + paddingUnit : null,
+				paddingTop: ( typeof block.attributes.paddingTop !== 'undefined' ) ? block.attributes.paddingTop + paddingUnit : null,
+				paddingRight: ( typeof block.attributes.paddingRight !== 'undefined' ) ? block.attributes.paddingRight + paddingUnit : null,
+				paddingBottom: ( typeof block.attributes.paddingBottom !== 'undefined' ) ? block.attributes.paddingBottom + paddingUnit : null,
+				paddingLeft: ( typeof block.attributes.paddingLeft !== 'undefined' ) ? block.attributes.paddingLeft + paddingUnit : null,
+				paddingTopTablet: ( typeof block.attributes.paddingTopTablet !== 'undefined' ) ? block.attributes.paddingTopTablet + paddingUnit : null,
+				paddingRightTablet: ( typeof block.attributes.paddingRightTablet !== 'undefined' ) ? block.attributes.paddingRightTablet + paddingUnit : null,
+				paddingBottomTablet: ( typeof block.attributes.paddingBottomTablet !== 'undefined' ) ? block.attributes.paddingBottomTablet + paddingUnit : null,
+				paddingLeftTablet: ( typeof block.attributes.paddingLeftTablet !== 'undefined' ) ? block.attributes.paddingLeftTablet + paddingUnit : null,
+				paddingTopMobile: ( typeof block.attributes.paddingTopMobile !== 'undefined' ) ? block.attributes.paddingTopMobile + paddingUnit : null,
+				paddingRightMobile: ( typeof block.attributes.paddingRightMobile !== 'undefined' ) ? block.attributes.paddingRightMobile + paddingUnit : null,
+				paddingBottomMobile: ( typeof block.attributes.paddingBottomMobile !== 'undefined' ) ? block.attributes.paddingBottomMobile + paddingUnit : null,
+				paddingLeftMobile: ( typeof block.attributes.paddingLeftMobile !== 'undefined' ) ? block.attributes.paddingLeftMobile + paddingUnit : null,
 			};
 			const margin = {
-				marginTop: ( block.attributes.marginTop ) ? block.attributes.marginTop + marginUnit : null,
-				marginRight: ( block.attributes.marginRight ) ? block.attributes.marginRight + marginUnit : null,
-				marginBottom: ( block.attributes.marginBottom ) ? block.attributes.marginBottom + marginUnit : null,
-				marginLeft: ( block.attributes.marginLeft ) ? block.attributes.marginLeft + marginUnit : null,
-				marginTopTablet: ( block.attributes.marginTopTablet ) ? block.attributes.marginTopTablet + marginUnit : null,
-				marginRightTablet: ( block.attributes.marginRightTablet ) ? block.attributes.marginRightTablet + marginUnit : null,
-				marginBottomTablet: ( block.attributes.marginBottomTablet ) ? block.attributes.marginBottomTablet + marginUnit : null,
-				marginLeftTablet: ( block.attributes.marginLeftTablet ) ? block.attributes.marginLeftTablet + marginUnit : null,
-				marginTopMobile: ( block.attributes.marginTopMobile ) ? block.attributes.marginTopMobile + marginUnit : null,
-				marginRightMobile: ( block.attributes.marginRightMobile ) ? block.attributes.marginRightMobile + marginUnit : null,
-				marginBottomMobile: ( block.attributes.marginBottomMobile ) ? block.attributes.marginBottomMobile + marginUnit : null,
-				marginLeftMobile: ( block.attributes.marginLeftMobile ) ? block.attributes.marginLeftMobile + marginUnit : null,
+				marginTop: ( typeof block.attributes.marginTop !== 'undefined' ) ? block.attributes.marginTop + marginUnit : null,
+				marginRight: ( typeof block.attributes.marginRight !== 'undefined' ) ? block.attributes.marginRight + marginUnit : null,
+				marginBottom: ( typeof block.attributes.marginBottom !== 'undefined' ) ? block.attributes.marginBottom + marginUnit : null,
+				marginLeft: ( typeof block.attributes.marginLeft !== 'undefined' ) ? block.attributes.marginLeft + marginUnit : null,
+				marginTopTablet: ( typeof block.attributes.marginTopTablet !== 'undefined' ) ? block.attributes.marginTopTablet + marginUnit : null,
+				marginRightTablet: ( typeof block.attributes.marginRightTablet !== 'undefined' ) ? block.attributes.marginRightTablet + marginUnit : null,
+				marginBottomTablet: ( typeof block.attributes.marginBottomTablet !== 'undefined' ) ? block.attributes.marginBottomTablet + marginUnit : null,
+				marginLeftTablet: ( typeof block.attributes.marginLeftTablet !== 'undefined' ) ? block.attributes.marginLeftTablet + marginUnit : null,
+				marginTopMobile: ( typeof block.attributes.marginTopMobile !== 'undefined' ) ? block.attributes.marginTopMobile + marginUnit : null,
+				marginRightMobile: ( typeof block.attributes.marginRightMobile !== 'undefined' ) ? block.attributes.marginRightMobile + marginUnit : null,
+				marginBottomMobile: ( typeof block.attributes.marginBottomMobile !== 'undefined' ) ? block.attributes.marginBottomMobile + marginUnit : null,
+				marginLeftMobile: ( typeof block.attributes.marginLeftMobile !== 'undefined' ) ? block.attributes.marginLeftMobile + marginUnit : null,
 			};
 
-			if ( typeof meta._coblocks_dimensions === 'undefined' || ( typeof meta._coblocks_dimensions !== 'undefined' && meta._coblocks_dimensions === '' ) ) {
+			if ( typeof meta === 'undefined' || typeof meta._coblocks_dimensions === 'undefined' || ( typeof meta._coblocks_dimensions !== 'undefined' && meta._coblocks_dimensions === '' ) ) {
 				dimensions = {};
 			} else {
 				dimensions = JSON.parse( meta._coblocks_dimensions );
@@ -218,29 +218,29 @@ class DimensionsControl extends Component {
 			//add responsive styling for tablet device
 			responsiveCss += '@media only screen and (max-width: 768px) {';
 			responsiveCss += '.' + id + ' > div{';
-			if ( padding.paddingTopTablet ) {
+			if ( typeof padding.paddingTopTablet !== 'undefined' ) {
 				responsiveCss += 'padding-top: ' + padding.paddingTopTablet + ' !important;';
 			}
-			if ( padding.paddingBottomTablet ) {
+			if ( typeof padding.paddingBottomTablet !== 'undefined' ) {
 				responsiveCss += 'padding-bottom: ' + padding.paddingBottomTablet + ' !important;';
 			}
-			if ( padding.paddingRightTablet ) {
+			if ( typeof padding.paddingRightTablet !== 'undefined' ) {
 				responsiveCss += 'padding-right: ' + padding.paddingRightTablet + ' !important;';
 			}
-			if ( padding.paddingLeftTablet ) {
+			if ( typeof padding.paddingLeftTablet !== 'undefined' ) {
 				responsiveCss += 'padding-left: ' + padding.paddingLeftTablet + ' !important;';
 			}
 
-			if ( margin.marginTopTablet ) {
+			if ( typeof margin.marginTopTablet !== 'undefined' ) {
 				responsiveCss += 'margin-top: ' + margin.marginTopTablet + ' !important;';
 			}
-			if ( margin.marginBottomTablet ) {
+			if ( typeof margin.marginBottomTablet !== 'undefined' ) {
 				responsiveCss += 'margin-bottom: ' + margin.marginBottomTablet + ' !important;';
 			}
-			if ( margin.marginRightTablet ) {
+			if ( typeof margin.marginRightTablet !== 'undefined' ) {
 				responsiveCss += 'margin-right: ' + margin.marginRightTablet + ' !important;';
 			}
-			if ( margin.marginleLtTablet ) {
+			if ( typeof margin.marginleLtTablet !== 'undefined' ) {
 				responsiveCss += 'margin-left: ' + margin.marginLeftTablet + ' !important;';
 			}
 
@@ -249,29 +249,29 @@ class DimensionsControl extends Component {
 
 			responsiveCss += '@media only screen and (max-width: 514px) {';
 			responsiveCss += '.' + id + ' > div{';
-			if ( padding.paddingTopMobile ) {
+			if ( typeof padding.paddingTopMobile !== 'undefined' ) {
 				responsiveCss += 'padding-top: ' + padding.paddingTopMobile + ' !important;';
 			}
-			if ( padding.paddingBottomMobile ) {
+			if ( typeof padding.paddingBottomMobile !== 'undefined' ) {
 				responsiveCss += 'padding-bottom: ' + padding.paddingBottomMobile + ' !important;';
 			}
-			if ( padding.paddingRightMobile ) {
+			if ( typeof padding.paddingRightMobile !== 'undefined' ) {
 				responsiveCss += 'padding-right: ' + padding.paddingRightMobile + ' !important;';
 			}
-			if ( padding.paddingLeftMobile ) {
+			if ( typeof padding.paddingLeftMobile !== 'undefined' ) {
 				responsiveCss += 'padding-left: ' + padding.paddingLeftMobile + ' !important;';
 			}
 
-			if ( margin.marginTopMobile ) {
+			if ( typeof margin.marginTopMobile !== 'undefined' ) {
 				responsiveCss += 'margin-top: ' + margin.marginTopMobile + ' !important;';
 			}
-			if ( margin.marginBottomMobile ) {
+			if ( typeof margin.marginBottomMobile !== 'undefined' ) {
 				responsiveCss += 'margin-bottom: ' + margin.marginBottomMobile + ' !important;';
 			}
-			if ( margin.marginRightMobile ) {
+			if ( typeof margin.marginRightMobile !== 'undefined' ) {
 				responsiveCss += 'margin-right: ' + margin.marginRightMobile + ' !important;';
 			}
-			if ( margin.marginleLtMobile ) {
+			if ( typeof margin.marginleLtMobile !== 'undefined' ) {
 				responsiveCss += 'margin-left: ' + margin.marginLeftMobile + ' !important;';
 			}
 
@@ -292,8 +292,7 @@ class DimensionsControl extends Component {
 		const {
 			help,
 			instanceId,
-			label = __( 'Margin' ),
-			onChange,
+			label = __( 'Margin', 'coblocks' ),
 			type = 'margin',
 			unit,
 			valueBottom,
@@ -325,14 +324,8 @@ class DimensionsControl extends Component {
 
 		const id = `inspector-coblocks-dimensions-control-${ instanceId }`;
 
-		const resetValue = () => onChange();
-
 		const onChangeTopValue = ( event ) => {
-			const newValue = event.target.value;
-			if ( newValue === '' ) {
-				resetValue();
-				return;
-			}
+			const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
 
 			let device = '';
 			if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' && typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
@@ -340,18 +333,14 @@ class DimensionsControl extends Component {
 			}
 
 			if ( this.props[ 'syncUnits' + device ] ) {
-				this.onChangeAll( Number( newValue ), device );
+				this.onChangeAll( newValue, device );
 			} else {
-				this.onChangeTop( Number( newValue ), device );
+				this.onChangeTop( newValue, device );
 			}
 		};
 
 		const onChangeRightValue = ( event ) => {
-			const newValue = event.target.value;
-			if ( newValue === '' ) {
-				resetValue();
-				return;
-			}
+			const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
 
 			let device = '';
 			if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' && typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
@@ -359,18 +348,14 @@ class DimensionsControl extends Component {
 			}
 
 			if ( this.props[ 'syncUnits' + device ] ) {
-				this.onChangeAll( Number( newValue ), device );
+				this.onChangeAll( newValue, device );
 			} else {
-				this.onChangeRight( Number( newValue ), device );
+				this.onChangeRight( newValue, device );
 			}
 		};
 
 		const onChangeBottomValue = ( event ) => {
-			const newValue = event.target.value;
-			if ( newValue === '' ) {
-				resetValue();
-				return;
-			}
+			const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
 
 			let device = '';
 			if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' && typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
@@ -378,18 +363,14 @@ class DimensionsControl extends Component {
 			}
 
 			if ( this.props[ 'syncUnits' + device ] ) {
-				this.onChangeAll( Number( newValue ), device );
+				this.onChangeAll( newValue, device );
 			} else {
-				this.onChangeBottom( Number( newValue ), device );
+				this.onChangeBottom( newValue, device );
 			}
 		};
 
 		const onChangeLeftValue = ( event ) => {
-			const newValue = event.target.value;
-			if ( newValue === '' ) {
-				resetValue();
-				return;
-			}
+			const newValue = ( event.target.value === '' ) ? undefined : Number( event.target.value );
 
 			let device = '';
 			if ( typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' && typeof event.target.getAttribute( 'data-device-type' ) !== 'undefined' ) {
@@ -397,23 +378,23 @@ class DimensionsControl extends Component {
 			}
 
 			if ( this.props[ 'syncUnits' + device ] ) {
-				this.onChangeAll( Number( newValue ), device );
+				this.onChangeAll( newValue, device );
 			} else {
-				this.onChangeLeft( Number( newValue ), device );
+				this.onChangeLeft( newValue, device );
 			}
 		};
 
 		const unitSizes = [
 			{
-				name: _x( 'Pixel', 'A size unit for CSS markup' ),
+				name: _x( 'Pixel', 'A size unit for CSS markup', 'coblocks' ),
 				unitValue: 'px',
 			},
 			{
-				name: _x( 'Em', 'A size unit for CSS markup' ),
+				name: _x( 'Em', 'A size unit for CSS markup', 'coblocks' ),
 				unitValue: 'em',
 			},
 			{
-				name: _x( 'Percentage', 'A size unit for CSS markup' ),
+				name: _x( 'Percentage', 'A size unit for CSS markup', 'coblocks' ),
 				unitValue: '%',
 			},
 		];
@@ -458,10 +439,10 @@ class DimensionsControl extends Component {
 							<div className="components-coblocks-dimensions-control__header">
 								{ label && <p className={ 'components-coblocks-dimensions-control__label' }>{ label }</p> }
 								<div className="components-coblocks-dimensions-control__actions">
-									<ButtonGroup className="components-coblocks-dimensions-control__units" aria-label={ __( 'Select Units' ) }>
+									<ButtonGroup className="components-coblocks-dimensions-control__units" aria-label={ __( 'Select Units', 'coblocks' ) }>
 										{ map( unitSizes, ( { unitValue, name } ) => (
 											/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
-											<Tooltip text={ sprintf( __( '%s Units' ), name ) }>
+											<Tooltip text={ sprintf( __( '%s Units', 'coblocks' ), name ) }>
 												<Button
 													key={ unitValue }
 													className={ 'components-coblocks-dimensions-control__units--' + name }
@@ -469,7 +450,7 @@ class DimensionsControl extends Component {
 													isPrimary={ unit === unitValue }
 													aria-pressed={ unit === unitValue }
 													/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
-													aria-label={ sprintf( __( '%s Units' ), name ) }
+													aria-label={ sprintf( __( '%s Units', 'coblocks' ), name ) }
 													onClick={ () => this.onChangeUnits( unitValue ) }
 												>
 													{ unitValue }
@@ -484,9 +465,9 @@ class DimensionsControl extends Component {
 										isSmall
 										isDefault
 										/* translators: %s: a texual label  */
-										aria-label={ sprintf( __( 'Turn off advanced %s settings' ), label.toLowerCase() ) }
+										aria-label={ sprintf( __( 'Turn off advanced %s settings', 'coblocks' ), label.toLowerCase() ) }
 									>
-										{ __( 'Reset' ) }
+										{ __( 'Reset', 'coblocks' ) }
 									</Button>
 								</div>
 							</div>
@@ -528,9 +509,9 @@ class DimensionsControl extends Component {
 															type="number"
 															onChange={ onChangeTopValue }
 															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Top' ), label ) }
+															aria-label={ sprintf( __( '%s Top', 'coblocks' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueTopMobile ? valueTopMobile : '' }
+															value={ valueTopMobile !== '' ? valueTopMobile : '' }
 															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Mobile"
 														/>
@@ -539,9 +520,9 @@ class DimensionsControl extends Component {
 															type="number"
 															onChange={ onChangeRightValue }
 															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Right' ), label ) }
+															aria-label={ sprintf( __( '%s Right', 'coblocks' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueRightMobile ? valueRightMobile : '' }
+															value={ valueRightMobile !== '' ? valueRightMobile : '' }
 															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Mobile"
 														/>
@@ -550,9 +531,9 @@ class DimensionsControl extends Component {
 															type="number"
 															onChange={ onChangeBottomValue }
 															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Bottom' ), label ) }
+															aria-label={ sprintf( __( '%s Bottom', 'coblocks' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueBottomMobile ? valueBottomMobile : '' }
+															value={ valueBottomMobile !== '' ? valueBottomMobile : '' }
 															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Mobile"
 														/>
@@ -561,16 +542,16 @@ class DimensionsControl extends Component {
 															type="number"
 															onChange={ onChangeLeftValue }
 															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Left' ), label ) }
+															aria-label={ sprintf( __( '%s Left', 'coblocks' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueLeftMobile ? valueLeftMobile : '' }
+															value={ valueLeftMobile !== '' ? valueLeftMobile : '' }
 															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Mobile"
 														/>
-														<Tooltip text={ !! syncUnitsMobile ? __( 'Unsync' ) : __( 'Sync' ) } >
+														<Tooltip text={ !! syncUnitsMobile ? __( 'Unsync', 'coblocks' ) : __( 'Sync', 'coblocks' ) } >
 															<Button
 																className="components-coblocks-dimensions-control_sync"
-																aria-label={ __( 'Sync Units' ) }
+																aria-label={ __( 'Sync Units', 'coblocks' ) }
 																isPrimary={ syncUnitsMobile ? syncUnitsMobile : false }
 																aria-pressed={ syncUnitsMobile ? syncUnitsMobile : false }
 																onClick={ ( value ) => this.syncUnits( value, 'Mobile' ) }
@@ -592,9 +573,9 @@ class DimensionsControl extends Component {
 															type="number"
 															onChange={ onChangeTopValue }
 															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Top' ), label ) }
+															aria-label={ sprintf( __( '%s Top', 'coblocks' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueTopTablet ? valueTopTablet : '' }
+															value={ valueTopTablet !== '' ? valueTopTablet : '' }
 															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Tablet"
 														/>
@@ -603,9 +584,9 @@ class DimensionsControl extends Component {
 															type="number"
 															onChange={ onChangeRightValue }
 															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Right' ), label ) }
+															aria-label={ sprintf( __( '%s Right', 'coblocks' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueRightTablet ? valueRightTablet : '' }
+															value={ valueRightTablet !== '' ? valueRightTablet : '' }
 															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Tablet"
 														/>
@@ -614,9 +595,9 @@ class DimensionsControl extends Component {
 															type="number"
 															onChange={ onChangeBottomValue }
 															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Bottom' ), label ) }
+															aria-label={ sprintf( __( '%s Bottom', 'coblocks' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueBottomTablet ? valueBottomTablet : '' }
+															value={ valueBottomTablet !== '' ? valueBottomTablet : '' }
 															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Tablet"
 														/>
@@ -625,16 +606,16 @@ class DimensionsControl extends Component {
 															type="number"
 															onChange={ onChangeLeftValue }
 															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Left' ), label ) }
+															aria-label={ sprintf( __( '%s Left', 'coblocks' ), label ) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
-															value={ valueLeftTablet ? valueLeftTablet : '' }
+															value={ valueLeftTablet !== '' ? valueLeftTablet : '' }
 															min={ type === 'padding' ? 0 : undefined }
 															data-device-type="Tablet"
 														/>
-														<Tooltip text={ !! syncUnitsTablet ? __( 'Unsync' ) : __( 'Sync' ) } >
+														<Tooltip text={ !! syncUnitsTablet ? __( 'Unsync', 'coblocks' ) : __( 'Sync', 'coblocks' ) } >
 															<Button
 																className="components-coblocks-dimensions-control_sync"
-																aria-label={ __( 'Sync Units' ) }
+																aria-label={ __( 'Sync Units', 'coblocks' ) }
 																isPrimary={ syncUnitsTablet ? syncUnitsTablet : false }
 																aria-pressed={ syncUnitsTablet ? syncUnitsTablet : false }
 																onClick={ ( value ) => this.syncUnits( value, 'Tablet' ) }
@@ -656,9 +637,9 @@ class DimensionsControl extends Component {
 														type="number"
 														onChange={ onChangeTopValue }
 														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-														aria-label={ sprintf( __( '%s Top' ), label ) }
+														aria-label={ sprintf( __( '%s Top', 'coblocks' ), label ) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
-														value={ valueTop ? valueTop : '' }
+														value={ valueTop !== '' ? valueTop : '' }
 														min={ type === 'padding' ? 0 : undefined }
 														data-device-type=""
 													/>
@@ -667,9 +648,9 @@ class DimensionsControl extends Component {
 														type="number"
 														onChange={ onChangeRightValue }
 														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-														aria-label={ sprintf( __( '%s Right' ), label ) }
+														aria-label={ sprintf( __( '%s Right', 'coblocks' ), label ) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
-														value={ valueRight ? valueRight : '' }
+														value={ valueRight !== '' ? valueRight : '' }
 														min={ type === 'padding' ? 0 : undefined }
 														data-device-type=""
 													/>
@@ -678,9 +659,9 @@ class DimensionsControl extends Component {
 														type="number"
 														onChange={ onChangeBottomValue }
 														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-														aria-label={ sprintf( __( '%s Bottom' ), label ) }
+														aria-label={ sprintf( __( '%s Bottom', 'coblocks' ), label ) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
-														value={ valueBottom ? valueBottom : '' }
+														value={ valueBottom !== '' ? valueBottom : '' }
 														min={ type === 'padding' ? 0 : undefined }
 														data-device-type=""
 													/>
@@ -689,16 +670,16 @@ class DimensionsControl extends Component {
 														type="number"
 														onChange={ onChangeLeftValue }
 														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-														aria-label={ sprintf( __( '%s Left' ), label ) }
+														aria-label={ sprintf( __( '%s Left', 'coblocks' ), label ) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
-														value={ valueLeft ? valueLeft : '' }
+														value={ valueLeft !== '' ? valueLeft : '' }
 														min={ type === 'padding' ? 0 : undefined }
 														data-device-type=""
 													/>
-													<Tooltip text={ !! syncUnits ? __( 'Unsync' ) : __( 'Sync' ) } >
+													<Tooltip text={ !! syncUnits ? __( 'Unsync', 'coblocks' ) : __( 'Sync', 'coblocks' ) } >
 														<Button
 															className="components-coblocks-dimensions-control_sync"
-															aria-label={ __( 'Sync Units' ) }
+															aria-label={ __( 'Sync Units', 'coblocks' ) }
 															isPrimary={ syncUnits ? syncUnits : false }
 															aria-pressed={ syncUnits ? syncUnits : false }
 															onClick={ ( value ) => this.syncUnits( value, '' ) }
@@ -715,10 +696,10 @@ class DimensionsControl extends Component {
 								}
 							</TabPanel>
 							<div className="components-coblocks-dimensions-control__input-labels">
-								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Top' ) }</span>
-								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Right' ) }</span>
-								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Bottom' ) }</span>
-								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Left' ) }</span>
+								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Top', 'coblocks' ) }</span>
+								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Right', 'coblocks' ) }</span>
+								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Bottom', 'coblocks' ) }</span>
+								<span className="components-coblocks-dimensions-control__number-label">{ __( 'Left', 'coblocks' ) }</span>
 								<span className="components-coblocks-dimensions-control__number-label-blank"></span>
 							</div>
 						</Fragment>						:
@@ -738,10 +719,10 @@ class DimensionsControl extends Component {
 
 									isDefault
 									/* translators: %s:  a texual label */
-									aria-label={ sprintf( __( 'Advanced %s settings' ), label.toLowerCase() ) }
+									aria-label={ sprintf( __( 'Advanced %s settings', 'coblocks' ), label.toLowerCase() ) }
 									isPrimary={ dimensionSize === 'advanced' }
 								>
-									{ __( 'Advanced' ) }
+									{ __( 'Advanced', 'coblocks' ) }
 								</Button>
 							</div>
 						</BaseControl>

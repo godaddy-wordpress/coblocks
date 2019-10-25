@@ -41,12 +41,12 @@ const layoutOptions = [
 	},
 	{
 		name: 'square',
-		label: __( 'Square' ),
+		label: __( 'Square', 'coblocks' ),
 		icon: icons.serviceSquare,
 	},
 	{
 		name: 'circle',
-		label: __( 'Circle' ),
+		label: __( 'Circle', 'coblocks' ),
 		icon: icons.serviceCircle,
 		defaultAlign: 'center',
 	},

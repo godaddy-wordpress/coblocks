@@ -27,18 +27,14 @@ const MAX_ICON_SIZE = 400;
 
 export { MIN_ICON_SIZE, MAX_ICON_SIZE };
 
-/**
- * Block edit function
- */
 class Edit extends Component {
 	componentDidMount() {
-		// Randomized the default icon when first added.
-		const defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
-		const rand = defaultIcons[ Math.floor( Math.random() * defaultIcons.length ) ];
-
-		// CHeck if the icon is the default.
-		if ( this.props.attributes.iconRand === true ) {
-			this.props.setAttributes( { icon: rand, iconRand: false } );
+		// Check if the icon is the default.
+		if ( this.props.attributes.icon === '' ) {
+			// Randomized the default icon when first added.
+			const defaultIcons = [ 'aperture', 'gesture', 'scatter_plot', 'waves', 'blocks', 'coblocks', 'drafts', 'device_hub', 'marker' ];
+			const rand = defaultIcons[ Math.floor( Math.random() * defaultIcons.length ) ];
+			this.props.setAttributes( { icon: rand } );
 		}
 	}
 

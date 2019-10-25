@@ -9,19 +9,14 @@ import emailValidator from 'email-validator';
 /**
  * Internal dependencies
  */
-import icons from './icons';
-import CoBlocksField from './fields/field';
-import CoBlocksFieldName from './fields/field-name';
-import CoBlocksFieldTextarea from './fields/field-textarea';
 import Notice from './notice';
 import SubmitButton from './submit-button';
 
 /**
  * WordPress dependencies
  */
-import { __, _x, sprintf } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { registerBlockType, getBlockType } from '@wordpress/blocks';
 import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
 import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
@@ -29,113 +24,14 @@ import { applyFilters } from '@wordpress/hooks';
 /**
  * Block constants
  */
-const ALLOWED_BLOCKS = [];
-
-const FieldDefaults = {
-	category: 'coblocks',
-	parent: [ 'coblocks/form' ],
-	supports: {
-		reusable: false,
-		html: false,
-		inserter: false,
-	},
-	attributes: {
-		label: {
-			type: 'string',
-			default: null,
-		},
-		required: {
-			type: 'boolean',
-			default: false,
-		},
-		hasLastName: {
-			type: 'boolean',
-			default: false,
-		},
-		labelFirstName: {
-			type: 'string',
-			default: __( 'First' ),
-		},
-		labelLastName: {
-			type: 'string',
-			default: __( 'Last' ),
-		},
-	},
-	save: () => null,
-};
-
-const getFieldLabel = ( { attributes, name: blockName } ) => {
-	return null === attributes.label ?
-		getBlockType( blockName ).title :
-		attributes.label;
-};
-
-const editField = type => props => (
-	<CoBlocksField
-		type={ type }
-		label={ getFieldLabel( props ) }
-		required={ props.attributes.required }
-		setAttributes={ props.setAttributes }
-		isSelected={ props.isSelected }
-	/>
-);
-
-export const childBlocks = [
-	{
-		name: 'coblocks/field-name',
-		settings: {
-			...FieldDefaults,
-			title: _x( 'Name', 'block name' ),
-			description: __( 'A text field for names.' ),
-			icon: icons.name,
-			edit: props => (
-				<CoBlocksFieldName
-					type={ 'name' }
-					label={ getFieldLabel( props ) }
-					labelFirstName={ props.attributes.labelFirstName }
-					labelLastName={ props.attributes.labelLastName }
-					required={ props.attributes.required }
-					hasLastName={ props.attributes.hasLastName }
-					setAttributes={ props.setAttributes }
-					isSelected={ props.isSelected }
-				/>
-			),
-		},
-	},
-	{
-		name: 'coblocks/field-email',
-		settings: {
-			...FieldDefaults,
-			title: _x( 'Email', 'block name' ),
-			keywords: [ _x( 'e-mail', 'block keyword' ), _x( 'mail', 'block keyword' ), 'email' ],
-			description: __( 'An email address field.' ),
-			icon: icons.email,
-			edit: editField( 'email' ),
-		},
-	},
-	{
-		name: 'coblocks/field-textarea',
-		settings: {
-			...FieldDefaults,
-			title: _x( 'Message', 'block name' ),
-			keywords: [ _x( 'Textarea', 'block keyword' ), 'textarea', _x( 'Multiline text', 'block keyword' ) ],
-			description: __( 'A text box for longer responses.' ),
-			icon: icons.textarea,
-			edit: props => (
-				<CoBlocksFieldTextarea
-					label={ getFieldLabel( props ) }
-					required={ props.attributes.required }
-					setAttributes={ props.setAttributes }
-					isSelected={ props.isSelected }
-				/>
-			),
-		},
-	},
+const ALLOWED_BLOCKS = [
+	'coblocks/field-date',
+	'coblocks/field-phone',
+	'coblocks/field-radio',
+	'coblocks/field-name',
+	'coblocks/field-email',
+	'coblocks/field-textarea',
 ];
-
-childBlocks.forEach( childBlock =>
-	registerBlockType( childBlock.name, childBlock.settings )
-);
 
 /**
  * Get settings
@@ -146,24 +42,9 @@ wp.api.loadPromise.then( () => {
 } );
 
 const FORM_TEMPLATE = [
-	[
-		'coblocks/field-name',
-		{
-			required: false,
-		},
-	],
-	[
-		'coblocks/field-email',
-		{
-			required: true,
-		},
-	],
-	[
-		'coblocks/field-textarea',
-		{
-			required: true,
-		},
-	],
+	[ 'coblocks/field-name', { required: false } ],
+	[ 'coblocks/field-email', { required: true } ],
+	[ 'coblocks/field-textarea', { required: true } ],
 ];
 
 const RETRIEVE_KEY_URL = 'https://g.co/recaptcha/v3';
@@ -287,7 +168,7 @@ class FormEdit extends Component {
 				if ( errors[ 0 ] && errors[ 0 ].email ) {
 					return sprintf(
 						/* translators: %s: Placeholder for email address provided by user.  */
-						__( '%s is not a valid email address.' ),
+						__( '%s is not a valid email address.', 'coblocks' ),
 						errors[ 0 ].email
 					);
 				}
@@ -297,7 +178,7 @@ class FormEdit extends Component {
 			if ( errors.length === 2 ) {
 				return sprintf(
 					/* translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.  */
-					__( '%s and %s are not a valid email address.' ),
+					__( '%s and %s are not a valid email address.', 'coblocks' ),
 					errors[ 0 ].email,
 					errors[ 1 ].email
 				);
@@ -305,7 +186,7 @@ class FormEdit extends Component {
 			const inValidEmails = errors.map( error => error.email );
 			return sprintf(
 				/* translators: %s1: Placeholder for email address provided by user. */
-				__( '%s are not a valid email address.' ),
+				__( '%s are not a valid email address.', 'coblocks' ),
 				inValidEmails.join( ', ' )
 			);
 		}
@@ -363,8 +244,8 @@ class FormEdit extends Component {
 					aria-describedby={ `contact-form-${ instanceId }-email-${
 						this.hasEmailError() ? 'error' : 'help'
 					}` }
-					label={ __( 'Email address' ) }
-					placeholder={ __( 'name@example.com' ) }
+					label={ __( 'Email address', 'coblocks' ) }
+					placeholder={ __( 'name@example.com', 'coblocks' ) }
 					onKeyDown={ this.preventEnterSubmittion }
 					value={ to || '' === to ? to : coblocksBlockData.form.adminEmail }
 					onBlur={ this.onBlurTo }
@@ -374,7 +255,7 @@ class FormEdit extends Component {
 					{ this.getfieldEmailError( fieldEmailError ) }
 				</Notice>
 				<TextControl
-					label={ __( 'Subject' ) }
+					label={ __( 'Subject', 'coblocks' ) }
 					value={
 						subject || '' === subject ?
 							subject :
@@ -404,35 +285,35 @@ class FormEdit extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Form Settings' ) }>
+					<PanelBody title={ __( 'Form Settings', 'coblocks' ) }>
 						{ this.renderToAndSubjectFields() }
 						{ applyFilters( 'coblocks.advanced_forms_cta' ) }
 					</PanelBody>
 					<PanelBody
-						title={ __( 'Google reCAPTCHA' ) }
+						title={ __( 'Google reCAPTCHA', 'coblocks' ) }
 						initialOpen={ this.state.recaptchaSecretKey ? false : true }
 					>
-						<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.' ) }</p>
+						<p>{ __( 'Add your reCAPTCHA site and secret keys to protect your form from spam.', 'coblocks' ) }</p>
 						<p>
 							<Fragment>
 								<ExternalLink href={ RETRIEVE_KEY_URL }>
 									{ this.state.recaptchaSiteKey === '' &&
 									this.state.recaptchaSecretKey === '' ?
-										__( 'Generate keys' ) :
-										__( 'My keys' ) }
+										__( 'Generate keys', 'coblocks' ) :
+										__( 'My keys', 'coblocks' ) }
 								</ExternalLink>
 								|&nbsp;
-								<ExternalLink href={ HELP_URL }>{ __( 'Get help' ) }</ExternalLink>
+								<ExternalLink href={ HELP_URL }>{ __( 'Get help', 'coblocks' ) }</ExternalLink>
 							</Fragment>
 						</p>
 						<TextControl
-							label={ __( 'Site Key' ) }
+							label={ __( 'Site Key', 'coblocks' ) }
 							value={ this.state.recaptchaSiteKey }
 							onChange={ value => this.setState( { recaptchaSiteKey: value } ) }
 							className="components-block-coblocks-form-recaptcha-key__custom-input"
 						/>
 						<TextControl
-							label={ __( 'Secret Key' ) }
+							label={ __( 'Secret Key', 'coblocks' ) }
 							value={ this.state.recaptchaSecretKey }
 							onChange={ value => this.setState( { recaptchaSecretKey: value } ) }
 							className="components-block-coblocks-form-recaptcha-key__custom-input"
@@ -446,7 +327,7 @@ class FormEdit extends Component {
 									this.state.recaptchaSecretKey === ''
 								}
 							>
-								{ this.state.isSaving ? __( 'Saving' ) : __( 'Save' ) }
+								{ this.state.isSaving ? __( 'Saving', 'coblocks' ) : __( 'Save', 'coblocks' ) }
 							</Button>
 							{ this.state.recaptchaSiteKey !== '' &&
 								this.state.recaptchaSecretKey !== '' && (
@@ -461,7 +342,7 @@ class FormEdit extends Component {
 												this.state.recaptchaSecretKey === ''
 										}
 									>
-										{ __( 'Remove' ) }
+										{ __( 'Remove', 'coblocks' ) }
 									</Button>
 								</Fragment>
 							) }
@@ -471,7 +352,6 @@ class FormEdit extends Component {
 				<div className={ classes }>
 					<InnerBlocks
 						allowedBlocks={ ALLOWED_BLOCKS }
-						templateLock={ true }
 						templateInsertUpdatesSelection={ false }
 						renderAppender={ () => null }
 						template={ FORM_TEMPLATE }

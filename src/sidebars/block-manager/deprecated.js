@@ -29,7 +29,7 @@ function deprecateBlockManager() {
 				optionSettings = JSON.parse( optionSettings );
 
 				if ( typeof optionSettings.deprecated === 'undefined' ) {
-					const currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
+					const currentBlocks = wp.data.select( 'core/block-editor' ).getBlocks();
 					const blockNames = MapInnerBlocks( currentBlocks );
 					const hideBlockTypes = [];
 
@@ -58,6 +58,6 @@ function deprecateBlockManager() {
 	} );
 }
 
-if ( typeof dispatcher !== 'undefined' || ! dispatcher.hasOwnProperty( 'hideBlockTypes' ) ) {
+if ( typeof dispatcher !== 'undefined' && ! Object.keys( dispatcher ).includes( 'hideBlockTypes' ) ) {
 	deprecateBlockManager();
 }

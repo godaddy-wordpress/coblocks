@@ -95,6 +95,8 @@ class Edit extends Component {
 	updateApiKey( apiKey = this.state.apiKey ) {
 		const { attributes, setAttributes } = this.props;
 
+		apiKey = apiKey.trim();
+
 		this.saveApiKey( apiKey );
 
 		if ( apiKey === '' ) {
@@ -148,6 +150,8 @@ class Edit extends Component {
 			zoom,
 		} = attributes;
 
+		const locale = document.documentElement.lang;
+
 		const renderMap = () => {
 			setAttributes( { address: this.state.address, pinned: true } );
 		};
@@ -168,8 +172,8 @@ class Edit extends Component {
 		const GoogleMapApiRender = compose(
 			withProps( {
 				googleMapURL:
-					'https://maps.googleapis.com/maps/api/js?key=' +
-					this.state.apiKey +
+					`https://maps.googleapis.com/maps/api/js?key=${ this.state.apiKey }` +
+					`&language=${ locale }` +
 					'&v=3.exp&libraries=geometry,drawing,places',
 				loadingElement: <div style={ { height: '100%' } } />,
 				containerElement: <div style={ { height: '100%' } } />,
@@ -188,7 +192,7 @@ class Edit extends Component {
 							if ( status !== 'OK' ) {
 								this.props.props.setAttributes( {
 									pinned: false,
-									hasError: __( 'Invalid API key, or too many requests' ),
+									hasError: __( 'Invalid API key, or too many requests', 'coblocks' ),
 								} );
 								return;
 							}
@@ -234,15 +238,10 @@ class Edit extends Component {
 				<div style={ { width: '100%', height, position: 'absolute' } } />
 				<div className="iframe__overflow-wrapper">
 					<iframe
-						title={ __( 'Google Map' ) }
+						title={ __( 'Google Map', 'coblocks' ) }
 						frameBorder="0"
 						style={ { width: '100%', minHeight: height + 'px' } }
-						src={
-							'https://www.google.com/maps?q=' +
-							encodeURIComponent( address ) +
-							'&language=ja&output=embed&hl=%s&z=' +
-							zoom
-						}
+						src={ `https://www.google.com/maps?q=${ encodeURIComponent( address ) }&output=embed&hl=${ locale }&z=${ zoom }` }
 					/>
 				</div>
 			</Fragment>
@@ -291,7 +290,7 @@ class Edit extends Component {
 				) : (
 					<Placeholder
 						icon={ <BlockIcon icon={ icon } /> }
-						label={ __( 'Google Map' ) }
+						label={ __( 'Google Map', 'coblocks' ) }
 						instructions={ __(
 							'Enter a location or address to drop a pin on a Google map.'
 						) }
@@ -299,18 +298,18 @@ class Edit extends Component {
 						<TextControl
 							className="components-placeholder__input"
 							value={ this.state.address }
-							placeholder={ __( 'Search for a place or address…' ) }
+							placeholder={ __( 'Search for a place or address…', 'coblocks' ) }
 							onChange={ nextAddress => this.setState( { address: nextAddress } ) }
 							onKeyDown={ ( { keyCode } ) => handleKeyDown( keyCode ) }
 						/>
 						<Button isLarge type="button" onClick={ renderMap } disabled={ ! this.state.address }>
-							{ __( 'Apply' ) }
+							{ __( 'Apply', 'coblocks' ) }
 						</Button>
 
 						{ address && (
 							<Button
 								className="components-placeholder__cancel-button"
-								title={ __( 'Cancel' ) }
+								title={ __( 'Cancel', 'coblocks' ) }
 								isLink
 								onClick={ () => {
 									setAttributes( { pinned: ! pinned } );
@@ -318,7 +317,7 @@ class Edit extends Component {
 								} }
 								disabled={ ! address }
 							>
-								{ __( 'Cancel' ) }
+								{ __( 'Cancel', 'coblocks' ) }
 							</Button>
 						) }
 						{ attributes.lng && attributes.hasError && (

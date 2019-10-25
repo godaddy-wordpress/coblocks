@@ -55,8 +55,18 @@ class Inspector extends Component {
 			paddingRight,
 			paddingBottom,
 			paddingLeft,
+			paddingTopTablet,
+			paddingRightTablet,
+			paddingBottomTablet,
+			paddingLeftTablet,
+			paddingTopMobile,
+			paddingRightMobile,
+			paddingBottomMobile,
+			paddingLeftMobile,
 			paddingUnit,
 			paddingSyncUnits,
+			paddingSyncUnitsTablet,
+			paddingSyncUnitsMobile,
 			paddingSize,
 			saveCoBlocksMeta,
 			height,
@@ -68,24 +78,34 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Hero Settings' ) }>
+					<PanelBody title={ __( 'Hero Settings', 'coblocks' ) }>
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
-							label={ __( 'Padding' ) }
-							help={ __( 'Space inside of the container.' ) }
+							label={ __( 'Padding', 'coblocks' ) }
+							help={ __( 'Space inside of the container.', 'coblocks' ) }
 							valueTop={ paddingTop }
 							valueRight={ paddingRight }
 							valueBottom={ paddingBottom }
 							valueLeft={ paddingLeft }
+							valueTopTablet={ paddingTopTablet }
+							valueRightTablet={ paddingRightTablet }
+							valueBottomTablet={ paddingBottomTablet }
+							valueLeftTablet={ paddingLeftTablet }
+							valueTopMobile={ paddingTopMobile }
+							valueRightMobile={ paddingRightMobile }
+							valueBottomMobile={ paddingBottomMobile }
+							valueLeftMobile={ paddingLeftMobile }
 							unit={ paddingUnit }
 							syncUnits={ paddingSyncUnits }
+							syncUnitsTablet={ paddingSyncUnitsTablet }
+							syncUnitsMobile={ paddingSyncUnitsMobile }
 							dimensionSize={ paddingSize }
 							saveCoBlocksMeta={ saveCoBlocksMeta }
 						/>
 						<CSSGridControl { ...this.props } />
 						{ ! fullscreen && (
 							<ResponsiveBaseControl { ...this.props }
-								label={ __( 'Height in pixels' ) }
+								label={ __( 'Height in pixels', 'coblocks' ) }
 								height={ height }
 								heightTablet={ heightTablet }
 								heightMobile={ heightMobile }
@@ -104,7 +124,7 @@ class Inspector extends Component {
 							/>
 						) }
 						<RangeControl
-							label={ __( 'Content width in pixels' ) }
+							label={ __( 'Content width in pixels', 'coblocks' ) }
 							value={ parseInt( maxWidth ) }
 							onChange={ ( nextMaxWidth ) => setAttributes( { maxWidth: parseInt( nextMaxWidth ) } ) }
 							min={ 400 }
@@ -114,7 +134,7 @@ class Inspector extends Component {
 						/>
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
@@ -127,12 +147,12 @@ class Inspector extends Component {
 										setAttributes( { paddingSize: 'huge' } );
 									}
 								},
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'coblocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', 'coblocks' ),
 							},
 						] }
 					>

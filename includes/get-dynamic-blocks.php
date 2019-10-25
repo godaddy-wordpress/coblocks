@@ -11,6 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Register server-side code for individual blocks.
-foreach ( glob( dirname( dirname( __FILE__ ) ) . '/src/blocks/*/index.php' ) as $block_logic ) {
-	require_once $block_logic;
+foreach ( glob( dirname( dirname( __FILE__ ) ) . '/src/blocks/*/index.php' ) as $coblocks_block_logic ) {
+	require_once $coblocks_block_logic;
 }

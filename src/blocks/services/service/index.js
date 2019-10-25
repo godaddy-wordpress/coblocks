@@ -23,8 +23,8 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Service', 'block name' ),
-	description: __( 'A single service item within a services block.' ),
+	title: _x( 'Service', 'block name', 'coblocks' ),
+	description: __( 'A single service item within a services block.', 'coblocks' ),
 	icon,
 	keywords: [],
 	supports: {

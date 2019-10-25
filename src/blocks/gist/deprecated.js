@@ -4,12 +4,18 @@
 import classnames from 'classnames';
 
 /**
+ * Internal dependencies
+ */
+import metadata from './block.json';
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
 
 const deprecated = [
 	{
+		attributes: metadata.attributes,
 		save( { attributes } ) {
 			const { url, file, meta } = attributes;
 
@@ -27,7 +33,7 @@ const deprecated = [
 				<div className={ classes }>
 					<script src={ src } />
 					<noscript>
-						<a href={ noscriptSrc }>{ __( 'View this gist on GitHub' ) }</a>
+						<a href={ noscriptSrc }>{ __( 'View this gist on GitHub', 'coblocks' ) }</a>
 					</noscript>
 				</div>
 			);
