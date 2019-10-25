@@ -22,10 +22,10 @@
 			"source": "html",
 			"selector": ".wp-block-coblocks-event-item__month"
 		},
-		"eventDate": {
+		"eventYear": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-event-item__date"
+			"selector": ".wp-block-coblocks-event-item__year"
 		},
 		"eventTime": {
 			"type": "string",

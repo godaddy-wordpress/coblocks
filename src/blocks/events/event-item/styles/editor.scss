@@ -1,39 +1,39 @@
 .wp-block-coblocks-event-item {
-	&.page-last-item {
-		border-bottom: none;
-		padding-bottom: 75px;
-	}
+	// &.page-last-item {
+	// 	border-bottom: none;
+	// 	padding-bottom: 75px;
+	// }
 
-	.event-item-last {
-		bottom: 0;
-		left: 50%;
-		position: absolute;
-		text-align: center;
-		transform: translateX(-50%);
-		width: 100%;
+	// .event-item-last {
+	// 	bottom: 0;
+	// 	left: 50%;
+	// 	position: absolute;
+	// 	text-align: center;
+	// 	transform: translateX(-50%);
+	// 	width: 100%;
 
-		div {
-			position: relative;
-			z-index: 1;
+	// 	div {
+	// 		position: relative;
+	// 		z-index: 1;
 
-			&::before {
-				border-top: 2px solid #dfdfdf;
-				bottom: 0;
-				content: "";
-				left: 0;
-				margin: 0 auto;
-				position: absolute; // positioning must be absolute here, and relative positioning must be applied to the parent
-				right: 0;
-				top: 50%;
-				width: 95%;
-				z-index: -1;
-			}
+	// 		&::before {
+	// 			border-top: 2px solid #dfdfdf;
+	// 			bottom: 0;
+	// 			content: "";
+	// 			left: 0;
+	// 			margin: 0 auto;
+	// 			position: absolute; // positioning must be absolute here, and relative positioning must be applied to the parent
+	// 			right: 0;
+	// 			top: 50%;
+	// 			width: 95%;
+	// 			z-index: -1;
+	// 		}
 
-			span {
-				// to hide the lines from behind the text, you have to set the background color the same as the container
-				background: #fff;
-				padding: 0 15px;
-			}
-		}
-	}
+	// 		span {
+	// 			// to hide the lines from behind the text, you have to set the background color the same as the container
+	// 			background: #fff;
+	// 			padding: 0 15px;
+	// 		}
+	// 	}
+	// }
 }

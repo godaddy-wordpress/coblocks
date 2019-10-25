@@ -10,6 +10,7 @@
 		margin-bottom: -14px;
 		margin-left: -14px;
 		margin-right: -14px;
+		margin-top: 28px;
 	}
 
 	.coblocks-list-appender__toggle {
@@ -20,7 +21,6 @@
 		color: $dark-gray-500;
 		display: flex;
 		justify-content: center;
-		margin-top: 14px;
 		outline: 1px dashed $dark-gray-150;
 		padding: 16px;
 		width: 100%;
@@ -33,7 +33,7 @@
 
 	// Hide appender on Gutenberg 5.9+
 	.block-list-appender {
-		display: none;
+		display: none !important;
 	}
 
 	.wp-block:first-child [data-block] {

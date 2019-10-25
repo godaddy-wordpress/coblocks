@@ -1,13 +1,17 @@
 .wp-block-coblocks-event-item {
-	background-color: #eee;
+	background-color: #fafafa;
 	display: block;
 	flex: 1 100%;
-	padding: 40px 0;
 	width: 100%;
 
-	.wp-block-coblocks-event-item__dates {
-		flex-basis: 25%;
-		max-width: 25%;
+	// On small screens, we are no longer using row direction but column.
+	@include break-small() {
+		flex-direction: column;
+	}
+
+	.wp-block-coblocks-event-item__date {
+		flex-basis: 20%;
+		max-width: 20%;
 		padding-right: 24px;
 		word-break: break-word;
 	}
@@ -19,21 +23,18 @@
 		word-break: break-word;
 	}
 
-	.show-more-details::before {
-		content: "+ ";
-	}
-
 	.wp-block-coblocks-event-item__time-and-location {
-		flex-basis: 25%;
-		max-width: 25%;
+		flex-basis: 30%;
+		max-width: 30%;
 		padding-left: 24px;
 		text-align: right;
 		word-break: break-word;
 	}
 
 	.wp-block-coblocks-event-item__time {
-		h5 {
-			margin: 0;
-		}
+	}
+
+	.show-more-details::before {
+		content: "+ ";
 	}
 }

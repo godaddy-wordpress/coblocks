@@ -79,7 +79,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$desctiption       = $event->description;
 			$location          = $event->location;
 			$events_layout    .= sprintf(
-				'<div class="wp-block-coblocks-event-item__dates has-text-color %1$s" style="%2$s"><p class="wp-block-coblocks-event-item__day">%3$s</p><h4 class="wp-block-coblocks-event-item__month">%4$s</h4><h4 class="wp-block-coblocks-event-item__date">%5$s</h4></div>',
+				'<div class="wp-block-coblocks-event-item__date has-text-color %1$s" style="%2$s"><p class="wp-block-coblocks-event-item__day display-block">%3$s</p><h4 class="wp-block-coblocks-event-item__month display-block">%4$s</h4><h4 class="wp-block-coblocks-event-item__year display-block">%5$s</h4></div>',
 				esc_attr( $text_color_class ),
 				esc_attr( $custom_text_color ),
 				$day,

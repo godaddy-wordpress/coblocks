@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import { RichText, getColorClassName } from '@wordpress/block-editor';
 
 const isEmpty = attributes => {
-	const attributesToCheck = [ 'title', 'description', 'eventDay', 'eventMonth', 'eventDate', 'eventTime', 'eventLocation' ];
+	const attributesToCheck = [ 'title', 'description', 'eventDay', 'eventMonth', 'eventYear', 'eventTime', 'eventLocation' ];
 	const newAttributes = Object.entries( attributes ).filter( ( [ key ] ) =>
 		attributesToCheck.includes( key )
 	);
@@ -36,33 +36,33 @@ export default function save( { attributes } ) {
 			className={ attributes.className }
 		>
 			<div className="wp-block-coblocks-event-item__content flex justify-between">
-				<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__dates' ) } style={ textStyles }>
+				<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__date' ) } style={ textStyles }>
 					<RichText.Content
 						tagName="p"
-						className="wp-block-coblocks-event-item__day"
+						className="wp-block-coblocks-event-item__day display-block"
 						value={ attributes.eventDay }
 					/>
 					<RichText.Content
 						value={ attributes.eventMonth }
 						tagName="h4"
-						className="wp-block-coblocks-event-item__month"
+						className="wp-block-coblocks-event-item__month display-block"
 					/>
 					<RichText.Content
-						value={ attributes.eventDate }
+						value={ attributes.eventYear }
 						tagName="h4"
-						className="wp-block-coblocks-event-item__date"
+						className="wp-block-coblocks-event-item__year display-block"
 					/>
 				</div>
 				<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__heading-wrapper' ) } style={ textStyles }>
 					<RichText.Content
 						value={ attributes.title }
 						tagName="h4"
-						className="wp-block-coblocks-event-item__heading"
+						className="wp-block-coblocks-event-item__heading display-block"
 					/>
 					<RichText.Content
 						value={ attributes.description }
 						tagName="p"
-						className="wp-block-coblocks-event-item__description"
+						className="wp-block-coblocks-event-item__description display-block"
 						itemprop="description"
 					/>
 				</div>
@@ -70,12 +70,12 @@ export default function save( { attributes } ) {
 					<RichText.Content
 						value={ attributes.eventTime }
 						tagName="h5"
-						className="wp-block-coblocks-event-item__time"
+						className="wp-block-coblocks-event-item__time display-block"
 					/>
 					<RichText.Content
 						value={ attributes.eventLocation }
 						tagName="p"
-						className="wp-block-coblocks-event-item__location"
+						className="wp-block-coblocks-event-item__location display-block"
 					/>
 				</div>
 			</div>
