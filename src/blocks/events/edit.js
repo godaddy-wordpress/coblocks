@@ -215,9 +215,9 @@ class EventItem extends Component {
 		return (
 			<Fragment>
 				{ attributes.linkACalendar &&
-				<BlockControls>
-					<Toolbar controls={ toolbarControls } />
-				</BlockControls>
+					<BlockControls>
+						<Toolbar controls={ toolbarControls } />
+					</BlockControls>
 				}
 				<InspectorControls
 					{ ...this.props }
@@ -226,29 +226,29 @@ class EventItem extends Component {
 					onChangeVisibleEvents={ this.changeVisibleEvents }
 				/>
 				{ ! attributes.linkACalendar &&
-				<div data-current-page-num={ String( attributes.currentPage ) }
-					className={ classnames( className, {
-						'child-selected': isSelected || clientId === selectedParentClientId,
-					}, 'coblocks-custom-event' ) }
-				>
-					{ ! attributes.linkACalendar &&
-					<InnerBlocks
-						allowedBlocks={ ALLOWED_BLOCKS }
-						template={ TEMPLATE }
-						templateInsertUpdatesSelection={ false }
-					/>
-					}
-					{ ( isSelected || clientId === selectedParentClientId ) && ! attributes.linkACalendar && (
-						<CustomAppender onClick={ this.insertNewItem } />
-					) }
-				</div>
+					<div
+						data-current-page-num={ String( attributes.currentPage ) }
+						className={ classnames( className, {
+							'child-selected': isSelected || clientId === selectedParentClientId,
+						}, 'coblocks-custom-event' ) }
+					>
+						{ ! attributes.linkACalendar &&
+							<InnerBlocks
+								allowedBlocks={ ALLOWED_BLOCKS }
+								template={ TEMPLATE }
+								templateInsertUpdatesSelection={ false }
+							/>
+						}
+						{ ( isSelected || clientId === selectedParentClientId ) && ! attributes.linkACalendar && (
+							<CustomAppender onClick={ this.insertNewItem } />
+						) }
+					</div>
 				}
 				{ attributes.linkACalendar &&
-				<ServerSideRender
-					block="coblocks/events"
-					attributes={ this.props.attributes }
-					className="coblocks-ical-events"
-				/>
+					<ServerSideRender
+						block="coblocks/events"
+						attributes={ this.props.attributes }
+					/>
 				}
 			</Fragment>
 		);
