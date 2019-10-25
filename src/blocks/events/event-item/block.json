@@ -5,37 +5,44 @@
 		"title": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-event-item__heading"
+			"selector": ".wp-block-coblocks-events__title",
+			"default": "Rich's Birthday Party"
 		},
 		"description": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-event-item__description"
+			"selector": ".wp-block-coblocks-events__description",
+			"default": "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor."
 		},
 		"eventDay": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-event-item__day"
+			"selector": ".wp-block-coblocks-events__day",
+			"default": "21"
 		},
 		"eventMonth": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-event-item__month"
+			"selector": ".wp-block-coblocks-events__month",
+			"default": "September"
 		},
 		"eventYear": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-event-item__year"
+			"selector": ".wp-block-coblocks-events__year",
+			"default": "2019"
 		},
 		"eventTime": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-event-item__time"
+			"selector": ".wp-block-coblocks-events__time",
+			"default": "7:00pm"
 		},
 		"eventLocation": {
 			"type": "string",
 			"source": "html",
-			"selector": ".wp-block-coblocks-event-item__location"
+			"selector": ".wp-block-coblocks-events__location",
+			"default": "NYC"
 		},
 		"textColor": {
 			"type": "string"

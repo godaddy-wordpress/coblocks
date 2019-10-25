@@ -53,7 +53,8 @@ class EventsEdit extends Component {
 			<Fragment>
 				<InspectorControls { ...this.props }
 				/>
-				<div data-page={ String( attributes.pageNum ) }
+				<div
+					data-page={ String( attributes.pageNum ) }
 					className={ classnames(
 						className,
 						'md:flex',
@@ -62,8 +63,9 @@ class EventsEdit extends Component {
 							'page-last-item': attributes.lastItem,
 						}, )
 					}
+					style={ textStyles }
 				>
-					<div className={ classnames( textClasses, 'wp-block-coblocks-events__date' ) } style={ textStyles }>
+					<div className={ classnames( textClasses, 'wp-block-coblocks-events__date' ) }>
 						<RichText
 							value={ attributes.eventDay }
 							tagName="span"
@@ -75,7 +77,7 @@ class EventsEdit extends Component {
 						<RichText
 							value={ attributes.eventMonth }
 							tagName="span"
-							className="wp-block-coblocks-event-item__month display-block"
+							className="wp-block-coblocks-events__month display-block"
 							placeholder={ __( 'Month…', 'coblocks' ) }
 							onChange={ eventMonth => setAttributes( { eventMonth } ) }
 							keepPlaceholderOnFocus
@@ -83,17 +85,17 @@ class EventsEdit extends Component {
 						<RichText
 							value={ attributes.eventYear }
 							tagName="span"
-							className="wp-block-coblocks-event-item__year display-block"
+							className="wp-block-coblocks-events__year display-block"
 							placeholder={ __( 'Year…', 'coblocks' ) }
 							onChange={ eventYear => setAttributes( { eventYear } ) }
 							keepPlaceholderOnFocus
 						/>
 					</div>
-					<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__heading-wrapper' ) } style={ textStyles }>
+					<div className={ classnames( textClasses, 'wp-block-coblocks-events__content' ) }>
 						<RichText
 							value={ attributes.title }
 							tagName="span"
-							className="wp-block-coblocks-event-item__heading display-block"
+							className="wp-block-coblocks-events__title display-block"
 							placeholder={ __( 'Write event title…', 'coblocks' ) }
 							onChange={ title => setAttributes( { title } ) }
 							keepPlaceholderOnFocus
@@ -101,17 +103,17 @@ class EventsEdit extends Component {
 						<RichText
 							value={ attributes.description }
 							tagName="span"
-							className="wp-block-coblocks-event-item__description display-block"
+							className="wp-block-coblocks-events__description display-block"
 							placeholder={ __( 'Write event description…' ) }
 							onChange={ description => setAttributes( { description } ) }
 							keepPlaceholderOnFocus
 						/>
 					</div>
-					<div className={ classnames( textClasses, 'wp-block-coblocks-events__details' ) } style={ textStyles }>
+					<div className={ classnames( textClasses, 'wp-block-coblocks-events__details' ) }>
 						<RichText
 							value={ attributes.eventTime }
 							tagName="span"
-							className="wp-block-coblocks-event-item__time display-block"
+							className="wp-block-coblocks-events__time display-block"
 							placeholder={ __( 'Time…' ) }
 							onChange={ eventTime => setAttributes( { eventTime } ) }
 							keepPlaceholderOnFocus
@@ -119,14 +121,14 @@ class EventsEdit extends Component {
 						<RichText
 							value={ attributes.eventLocation }
 							tagName="span"
-							className="wp-block-coblocks-event-item__location display-block"
+							className="wp-block-coblocks-events__location display-block"
 							placeholder={ __( 'Location…' ) }
 							onChange={ eventLocation => setAttributes( { eventLocation } ) }
 							keepPlaceholderOnFocus
 						/>
 					</div>
 					{ attributes.lastItem &&
-						<div className="event-item-last" style={ textStyles }>
+						<div className="event-item-last">
 							<div><span>PAGE BREAK</span></div>
 						</div>
 					}

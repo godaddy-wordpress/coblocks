@@ -79,7 +79,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$desctiption       = $event->description;
 			$location          = $event->location;
 			$events_layout    .= sprintf(
-				'<div class="wp-block-coblocks-events__date has-text-color %1$s" style="%2$s"><p class="wp-block-coblocks-events__day display-block">%3$s</p><h4 class="wp-block-coblocks-event-item__month display-block">%4$s</h4><h4 class="wp-block-coblocks-event-item__year display-block">%5$s</h4></div>',
+				'<div class="wp-block-coblocks-events__date has-text-color %1$s" style="%2$s"><p class="wp-block-coblocks-events__day display-block">%3$s</p><h4 class="wp-block-coblocks-events__month display-block">%4$s</h4><h4 class="wp-block-coblocks-events__year display-block">%5$s</h4></div>',
 				esc_attr( $text_color_class ),
 				esc_attr( $custom_text_color ),
 				$day,
@@ -88,7 +88,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 			);
 
 			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-event-item__heading-wrapper has-text-color %1$s" style="%2$s"><h4 class="wp-block-coblocks-event-item__heading">%3$s</h4><p class="wp-block-coblocks-event-item__description">%4$s</p></div>',
+				'<div class="wp-block-coblocks-events__content has-text-color %1$s" style="%2$s"><h4 class="wp-block-coblocks-events__title">%3$s</h4><p class="wp-block-coblocks-events__description">%4$s</p></div>',
 				esc_attr( $text_color_class ),
 				esc_attr( $custom_text_color ),
 				$title,
@@ -96,7 +96,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 			);
 
 			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-events__details has-text-color %1$s" style="%2$s"><h5 class="wp-block-coblocks-event-item__time">%3$s</h5><p class="wp-block-coblocks-event-item__location">%4$s</p></div>',
+				'<div class="wp-block-coblocks-events__details has-text-color %1$s" style="%2$s"><h5 class="wp-block-coblocks-events__time">%3$s</h5><p class="wp-block-coblocks-events__location">%4$s</p></div>',
 				esc_attr( $text_color_class ),
 				esc_attr( $custom_text_color ),
 				$time_string,
