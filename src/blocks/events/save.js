@@ -1,8 +1,12 @@
+/**
+ * External dependencies.
+ */
 import classnames from 'classnames';
 
 /**
  * WordPress dependencies.
  */
+import { __ } from '@wordpress/i18n';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 export default function save( { className, attributes } ) {
@@ -21,7 +25,9 @@ export default function save( { className, attributes } ) {
 		<div className={ className }>
 			<InnerBlocks.Content />
 			{ attributes.childrenLength > attributes.eventsToShow &&
-			<div className={ classnames( textClasses, 'wp-block-coblocks-events__more-events-wrapper' ) } style={ textStyles }><p>More Events</p></div>
+				<div className={ classnames( textClasses, 'wp-block-coblocks-events__more-events-wrapper', 'flex' ) } style={ textStyles }>
+					<p>{ __( 'More Events', 'coblocks' ) }</p>
+				</div>
 			}
 		</div>
 	);

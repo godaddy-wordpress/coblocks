@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Server-side rendering of the `events` block.
+ * Server-side rendering of the `coblocks/events` block.
  *
- * @package WordPress
+ * @package CoBlocks
  */
 
 /**
@@ -63,7 +63,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 
 		foreach ( $events as $i => $event ) {
 			$page_num       = (int) ( $i / $attributes['eventsToShow'] );
-			$events_layout .= sprintf( '<div class="wp-block-coblocks-event-item" data-page="%1$s"><div class="wp-block-coblocks-event-item__content">', $page_num );
+			$events_layout .= sprintf( '<div class="wp-block-coblocks-event-item" data-page="%1$s"><div class="wp-block-coblocks-event-item__content flex justify-between">', $page_num );
 
 			$dtstart           = $ical->ical_date_to_date_time( $event->dtstart_array[3] );
 			$dtend             = $ical->ical_date_to_date_time( $event->dtend_array[3] );
@@ -108,7 +108,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 
 		if ( count( $events ) > $attributes['eventsToShow'] ) {
 			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-events__more-events-wrapper has-text-color %1$s" style="%2$s"><p>More Events</p></div>',
+				'<div class="wp-block-coblocks-events__more-events-wrapper flex has-text-color %1$s" style="%2$s"><p>More Events</p></div>',
 				esc_attr( $text_color_class ),
 				esc_attr( $custom_text_color )
 			);
@@ -149,6 +149,12 @@ function coblocks_register_events_block() {
 		'coblocks/events',
 		array(
 			'attributes'      => array(
+				'align'               => array(
+					'type' => 'string',
+				),
+				'className'           => array(
+					'type' => 'string',
+				),
 				'linkACalendar'       => array(
 					'type'    => 'boolean',
 					'default' => false,
@@ -156,15 +162,6 @@ function coblocks_register_events_block() {
 				'externalCalendarUrl' => array(
 					'type'    => 'string',
 					'default' => '',
-				),
-				'className'           => array(
-					'type' => 'string',
-				),
-				'textColor'           => array(
-					'type' => 'string',
-				),
-				'customTextColor'     => array(
-					'type' => 'string',
 				),
 				'eventsRange'         => array(
 					'type'    => 'string',
@@ -182,9 +179,11 @@ function coblocks_register_events_block() {
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'align'               => array(
-					'type'    => 'string',
-					'default' => 'wide',
+				'textColor'           => array(
+					'type' => 'string',
+				),
+				'customTextColor'     => array(
+					'type' => 'string',
 				),
 			),
 			'render_callback' => 'coblocks_render_events_block',

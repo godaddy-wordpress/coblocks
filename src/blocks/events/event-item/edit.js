@@ -59,7 +59,7 @@ class EventsEdit extends Component {
 						'page-last-item': attributes.lastItem,
 					}, 'coblocks-custom-event-item' ) }
 				>
-					<div className="wp-block-coblocks-event-item__content">
+					<div className="wp-block-coblocks-event-item__content flex justify-between">
 						<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__dates' ) } style={ textStyles }>
 							<RichText
 								value={ attributes.eventDay }

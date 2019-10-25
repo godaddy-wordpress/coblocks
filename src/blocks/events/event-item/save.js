@@ -35,7 +35,7 @@ export default function save( { attributes } ) {
 		<div data-page={ String( attributes.pageNum ) }
 			className={ attributes.className }
 		>
-			<div className="wp-block-coblocks-event-item__content">
+			<div className="wp-block-coblocks-event-item__content flex justify-between">
 				<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__dates' ) } style={ textStyles }>
 					<RichText.Content
 						tagName="p"
