@@ -63,7 +63,7 @@ class EventsEdit extends Component {
 						<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__dates' ) } style={ textStyles }>
 							<RichText
 								value={ attributes.eventDay }
-								tagName="p"
+								tagName="span"
 								className="wp-block-coblocks-event-item__day"
 								placeholder={ __( 'Day…', 'coblocks' ) }
 								onChange={ eventDay => setAttributes( { eventDay } ) }
@@ -71,7 +71,7 @@ class EventsEdit extends Component {
 							/>
 							<RichText
 								value={ attributes.eventMonth }
-								tagName="h4"
+								tagName="span"
 								className="wp-block-coblocks-event-item__month"
 								placeholder={ __( 'Month…', 'coblocks' ) }
 								onChange={ eventMonth => setAttributes( { eventMonth } ) }
@@ -79,7 +79,7 @@ class EventsEdit extends Component {
 							/>
 							<RichText
 								value={ attributes.eventDate }
-								tagName="h4"
+								tagName="span"
 								className="wp-block-coblocks-event-item__date"
 								placeholder={ __( 'Date…', 'coblocks' ) }
 								onChange={ eventDate => setAttributes( { eventDate } ) }
@@ -89,7 +89,7 @@ class EventsEdit extends Component {
 						<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__heading-wrapper' ) } style={ textStyles }>
 							<RichText
 								value={ attributes.title }
-								tagName="h4"
+								tagName="span"
 								className="wp-block-coblocks-event-item__heading"
 								placeholder={ __( 'Write event title…', 'coblocks' ) }
 								onChange={ title => setAttributes( { title } ) }
@@ -97,7 +97,7 @@ class EventsEdit extends Component {
 							/>
 							<RichText
 								value={ attributes.description }
-								tagName="p"
+								tagName="span"
 								className="wp-block-coblocks-event-item__description"
 								placeholder={ __( 'Write event description…' ) }
 								onChange={ description => setAttributes( { description } ) }
@@ -107,7 +107,7 @@ class EventsEdit extends Component {
 						<div className={ classnames( textClasses, 'wp-block-coblocks-event-item__time-and-location' ) } style={ textStyles }>
 							<RichText
 								value={ attributes.eventTime }
-								tagName="h5"
+								tagName="span"
 								className="wp-block-coblocks-event-item__time"
 								placeholder={ __( '10:00pm - 1:00am' ) }
 								onChange={ eventTime => setAttributes( { eventTime } ) }
@@ -115,7 +115,7 @@ class EventsEdit extends Component {
 							/>
 							<RichText
 								value={ attributes.eventLocation }
-								tagName="p"
+								tagName="span"
 								className="wp-block-coblocks-event-item__location"
 								placeholder={ __( 'Write location…' ) }
 								onChange={ eventLocation => setAttributes( { eventLocation } ) }
