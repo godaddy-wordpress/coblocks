@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { IconButton } from '@wordpress/components';
-import { Component, createRef } from '@wordpress/element';
+import { Component, createRef, Fragment } from '@wordpress/element';
 
 class CoBlocksFieldOption extends Component {
 	constructor( ...args ) {
@@ -54,22 +54,27 @@ class CoBlocksFieldOption extends Component {
 				{ type && type !== 'select' && (
 					<input className="coblocks-option__type" type={ type } disabled />
 				) }
-				<input
-					type="text"
-					className="coblocks-option__input"
-					value={ option }
-					placeholder={ __( 'Write option…', 'coblocks' ) }
-					onChange={ this.onChangeOption }
-					onKeyDown={ this.onKeyPress }
-					ref={ this.textInput }
-				/>
+				{ ! isSelected && type && type !== 'select' && (
+					option
+				) }
 				{ isSelected && (
-					<IconButton
-						className="coblocks-option__remove"
-						icon="trash"
-						label={ __( 'Remove Option', 'coblocks' ) }
-						onClick={ this.onDeleteOption }
-					/>
+					<Fragment>
+						<input
+							type="text"
+							className="coblocks-option__input"
+							value={ option }
+							placeholder={ __( 'Write option…', 'coblocks' ) }
+							onChange={ this.onChangeOption }
+							onKeyDown={ this.onKeyPress }
+							ref={ this.textInput }
+						/>
+						<IconButton
+							className="coblocks-option__remove"
+							icon="trash"
+							label={ __( 'Remove Option', 'coblocks' ) }
+							onClick={ this.onDeleteOption }
+						/>
+					</Fragment>
 				) }
 			</li>
 		);

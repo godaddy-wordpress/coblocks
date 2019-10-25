@@ -5,6 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { BaseControl, IconButton } from '@wordpress/components';
 import { Component, Fragment } from '@wordpress/element';
 import { withInstanceId } from '@wordpress/compose';
+import classnames from 'classnames';
 
 /**
  * Internal dependencies
@@ -52,13 +53,16 @@ class CoBlocksFieldMultiple extends Component {
 	}
 
 	render() {
-		const { type, instanceId, required, label, setAttributes, isSelected } = this.props;
+		const { type, instanceId, required, label, setAttributes, isSelected, isInline } = this.props;
 		let { options } = this.props;
 		let { inFocus } = this.state;
 		if ( ! options.length ) {
 			options = [ '' ];
 			inFocus = 0;
 		}
+
+		console.log( 'Is This inline?' );
+		console.log( isInline );
 
 		return (
 			<Fragment>
@@ -83,7 +87,11 @@ class CoBlocksFieldMultiple extends Component {
 						</select>
 					) : (
 						<ol
-							className="coblocks-field-multiple__list"
+							className={
+								classnames(
+									'coblocks-field-multiple__list',
+									{ 'is-inline': isInline }
+								) }
 							id={ `coblocks-field-multiple-${ instanceId }` }
 						>
 							{ options.map( ( option, index ) => (

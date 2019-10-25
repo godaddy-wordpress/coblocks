@@ -99,6 +99,17 @@
 	.form-errors .form-error-message {
 		color: $alert-red;
 	}
+
+	.coblocks--inline {
+		display: flex;
+		flex-direction: row;
+		flex-flow: row wrap;
+		margin-bottom: 1.25rem;
+
+		label {
+			margin-right: 8px;
+		}
+	}
 }
 
 .is-twentysixteen,

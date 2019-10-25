@@ -13,6 +13,10 @@
 		"options": {
 			"type": "array",
 			"default": []
+		},
+		"isInline": {
+			"type": "boolean",
+			"default": false
 		}
 	}
 }

@@ -95,6 +95,29 @@
 	.coblocks-field-multiple__list {
 		margin: 0;
 		padding-left: 0;
+
+		&.is-inline {
+			display: flex;
+			flex-direction: row;
+			flex-flow: row wrap;
+
+			.coblocks-option {
+				margin-right: 12px;
+			}
+		}
+	}
+
+	div[data-type="coblocks/field-checkbox"].is-selected,
+	div[data-type="coblocks/field-radio"].is-selected,
+	div[data-type="coblocks/field-checkbox"].is-typing,
+	div[data-type="coblocks/field-radio"].is-typing {
+		.is-inline {
+			display: block;
+
+			.coblocks-option {
+				margin-right: 0;
+			}
+		}
 	}
 
 	.coblocks-option__type.coblocks-option__type {

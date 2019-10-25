@@ -468,6 +468,12 @@ class CoBlocks_Form {
 
 		$this->render_field_label( $atts, $label );
 
+		if ( $atts['isInline'] ) {
+
+			print( '<div class="coblocks--inline">' );
+
+		}
+
 		foreach ( $the_options as $value ) {
 
 			printf(
@@ -478,6 +484,12 @@ class CoBlocks_Form {
 				esc_attr( $value ),
 				esc_html( $value )
 			);
+
+		}
+
+		if ( $atts['isInline'] ) {
+
+			print( '</div>' );
 
 		}
 
@@ -556,6 +568,12 @@ class CoBlocks_Form {
 
 		$this->render_field_label( $atts, $label );
 
+		if ( $atts['isInline'] ) {
+
+			print( '<div class="coblocks--inline">' );
+
+		}
+
 		foreach ( $the_options as $value ) {
 
 			printf(
@@ -566,6 +584,12 @@ class CoBlocks_Form {
 				esc_attr( $value ),
 				esc_html( $value )
 			);
+
+		}
+
+		if ( $atts['isInline'] ) {
+
+			print( '</div>' );
 
 		}
 
