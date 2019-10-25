@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { editMultiField } from '../helpers';
+import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
 
@@ -16,10 +16,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Checkbox', 'block name', 'coblocks' ),
-	keywords: [ _x( 'Checkbox', 'block keyword', 'coblocks' ), _x( 'Check', 'block keyword', 'coblocks' ), _x( 'Option', 'block keyword', 'coblocks' ) ],
-	description: __( 'A checkbox field with multiple options where only one choice can be made.', 'coblocks' ),
+	title: _x( 'Hidden', 'block name', 'coblocks' ),
+	description: __( 'A hidden text field for collecting additional data.', 'coblocks' ),
 	icon,
+	keywords: [ _x( 'Hidden', 'block keyword', 'coblocks' ), _x( 'Input', 'block keyword', 'coblocks' ), 'text' ],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,
@@ -27,7 +27,7 @@ const settings = {
 		customClassName: false,
 	},
 	attributes,
-	edit: editMultiField( 'checkbox' ),
+	edit,
 	save: () => null,
 };
 

@@ -30,6 +30,7 @@ const settings = {
 	supports: {
 		reusable: false,
 		html: false,
+		customClassName: false,
 	},
 	example: {
 		attributes: {

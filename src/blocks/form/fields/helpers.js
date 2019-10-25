@@ -2,8 +2,8 @@
  * Internal dependencies
  */
 import CoBlocksFieldMultiple from './multi-field';
-import { InspectorControls, RichText } from '@wordpress/block-editor';
-import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, ToggleControl } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 

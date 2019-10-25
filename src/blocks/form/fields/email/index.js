@@ -25,6 +25,7 @@ const settings = {
 		reusable: false,
 		html: false,
 		multiple: false,
+		customClassName: false,
 	},
 	attributes,
 	edit,

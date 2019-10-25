@@ -57,6 +57,8 @@ import * as fieldTelephone from './blocks/form/fields/phone';
 import * as fieldTextarea from './blocks/form/fields/textarea';
 import * as fieldSelect from './blocks/form/fields/select';
 import * as fieldCheckbox from './blocks/form/fields/checkbox';
+import * as fieldWebsite from './blocks/form/fields/website';
+import * as fieldHidden from './blocks/form/fields/hidden';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
 import * as hero from './blocks/hero';
@@ -122,6 +124,8 @@ export const registerCoBlocksBlocks = () => {
 		fieldTextarea,
 		fieldSelect,
 		fieldCheckbox,
+		fieldWebsite,
+		fieldHidden,
 		foodAndDrinks,
 		foodItem,
 		form,

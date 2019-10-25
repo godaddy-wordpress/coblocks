@@ -134,69 +134,30 @@ class CoBlocks_Form {
 			]
 		);
 
-		register_block_type(
-			'coblocks/field-name',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_name' ],
-			]
-		);
+		$form_blocks = [
+			'name',
+			'email',
+			'textarea',
+			'date',
+			'phone',
+			'radio',
+			'select',
+			'checkbox',
+			'website',
+			'hidden',
+		];
 
-		register_block_type(
-			'coblocks/field-email',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_email' ],
-			]
-		);
+		foreach ( $form_blocks as $form_block ) {
 
-		register_block_type(
-			'coblocks/field-textarea',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_textarea' ],
-			]
-		);
+			register_block_type(
+				"coblocks/field-${form_block}",
+				[
+					'parent'          => [ 'coblocks/form' ],
+					'render_callback' => [ $this, "render_field_${form_block}" ],
+				]
+			);
 
-		register_block_type(
-			'coblocks/field-date',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_date' ],
-			]
-		);
-
-		register_block_type(
-			'coblocks/field-phone',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_phone' ],
-			]
-		);
-
-		register_block_type(
-			'coblocks/field-radio',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_radio' ],
-			]
-		);
-
-		register_block_type(
-			'coblocks/field-select',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_select' ],
-			]
-		);
-
-		register_block_type(
-			'coblocks/field-checkbox',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_checkbox' ],
-			]
-		);
+		}
 
 		/**
 		 * Fires when the coblocks/form block and sub-blocks are registered
@@ -380,12 +341,11 @@ class CoBlocks_Form {
 	/**
 	 * Render the date field
 	 *
-	 * @param  array $atts    Block attributes.
-	 * @param  mixed $content Block content.
+	 * @param  array $atts Block attributes.
 	 *
 	 * @return mixed Markup for the date field.
 	 */
-	public function render_field_date( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+	public function render_field_date( $atts ) {
 
 		wp_enqueue_script(
 			'coblocks-datepicker',
@@ -418,12 +378,11 @@ class CoBlocks_Form {
 	/**
 	 * Render the phone field
 	 *
-	 * @param  array $atts    Block attributes.
-	 * @param  mixed $content Block content.
+	 * @param  array $atts Block attributes.
 	 *
 	 * @return mixed Markup for the phone field.
 	 */
-	public function render_field_phone( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+	public function render_field_phone( $atts ) {
 
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Phone', 'coblocks' );
 		$label_slug    = sanitize_title( $label );
@@ -446,12 +405,11 @@ class CoBlocks_Form {
 	/**
 	 * Render the radio field
 	 *
-	 * @param  array $atts    Block attributes.
-	 * @param  mixed $content Block content.
+	 * @param  array $atts Block attributes.
 	 *
 	 * @return mixed Markup for the radio field.
 	 */
-	public function render_field_radio( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+	public function render_field_radio( $atts ) {
 
 		if ( empty( $atts['options'] ) ) {
 
@@ -500,12 +458,11 @@ class CoBlocks_Form {
 	/**
 	 * Render the select field
 	 *
-	 * @param  array $atts    Block attributes.
-	 * @param  mixed $content Block content.
+	 * @param  array $atts Block attributes.
 	 *
 	 * @return mixed Markup for the select field.
 	 */
-	public function render_field_select( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+	public function render_field_select( $atts ) {
 
 		if ( empty( $atts['options'] ) ) {
 
@@ -546,12 +503,11 @@ class CoBlocks_Form {
 	/**
 	 * Render the checkbox field
 	 *
-	 * @param  array $atts    Block attributes.
-	 * @param  mixed $content Block content.
+	 * @param  array $atts Block attributes.
 	 *
 	 * @return mixed Markup for the checkbox field.
 	 */
-	public function render_field_checkbox( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+	public function render_field_checkbox( $atts ) {
 
 		if ( empty( $atts['options'] ) ) {
 
@@ -598,6 +554,62 @@ class CoBlocks_Form {
 	}
 
 	/**
+	 * Render the website field
+	 *
+	 * @param  array $atts Block attributes.
+	 *
+	 * @return mixed Markup for the website field.
+	 */
+	public function render_field_website( $atts ) {
+
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Website', 'coblocks' );
+		$label_slug    = sanitize_title( $label );
+		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label );
+
+		?>
+
+		<input type="url" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--website" <?php echo esc_attr( $required_attr ); ?> />
+
+		<?php
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Render the hidden field
+	 *
+	 * @param  array $atts Block attributes.
+	 *
+	 * @return mixed Markup for the hidden field.
+	 */
+	public function render_field_hidden( $atts ) {
+
+		$atts['hidden'] = true;
+
+		$value      = isset( $atts['value'] ) ? $atts['value'] : '';
+		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Hidden', 'coblocks' );
+		$label_slug = sanitize_title( $label );
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label );
+
+		?>
+
+		<input type="hidden" value="<?php echo esc_attr( $value ); ?>" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--hidden" />
+
+		<?php
+
+		return ob_get_clean();
+
+	}
+
+	/**
 	 * Generate the form field label.
 	 *
 	 * @param  array $atts Block attributes.
@@ -620,16 +632,27 @@ class CoBlocks_Form {
 		$required_label = empty( $required_attr ) ? '' : sprintf( ' <span class="required">%s</span>', $required_text );
 
 		/*
-		 * Format an array of allowed HTML tags and attributes for the $copyrighttext value.
+		 * Format an array of allowed HTML tags and attributes for the $required_label value.
 		 *
 		 * @link https://codex.wordpress.org/Function_Reference/wp_kses
 		 */
 		$allowed_html = array(
 			'span' => array( 'class' => array() ),
 		);
+
+		if ( ! isset( $atts['hidden'] ) ) {
+
+			printf(
+				'<label for="%1$s" class="coblocks-label">%2$s%3$s</label>',
+				esc_attr( $label_slug ),
+				esc_html( $label ),
+				wp_kses( $required_label, $allowed_html )
+			);
+
+		}
+
 		?>
 
-		<label for="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-label"><?php echo esc_html( $label ); ?><?php echo wp_kses( $required_label, $allowed_html ); ?></label>
 		<input type="hidden" name="field-<?php echo esc_attr( $label_slug ); ?>[label]" value="<?php echo esc_attr( $label ); ?>">
 
 		<?php

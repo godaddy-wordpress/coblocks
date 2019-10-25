@@ -61,9 +61,6 @@ class CoBlocksFieldMultiple extends Component {
 			inFocus = 0;
 		}
 
-		console.log( 'Is This inline?' );
-		console.log( isInline );
-
 		return (
 			<Fragment>
 				<BaseControl

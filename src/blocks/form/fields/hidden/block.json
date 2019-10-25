@@ -1,0 +1,14 @@
+{
+	"name": "coblocks/field-hidden",
+	"category": "coblocks",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Hidden"
+		},
+		"value": {
+			"type": "string",
+			"default": ""
+		}
+	}
+}
