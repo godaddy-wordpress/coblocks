@@ -179,7 +179,7 @@ class EventItem extends Component {
 		const toolbarControls = [
 			{
 				icon: 'edit',
-				title: __( 'Edit Calendar URL' ),
+				title: __( 'Edit Calendar URL', 'coblocks' ),
 				onClick: () => this.setState( { editing: true } ),
 			},
 		];
@@ -260,7 +260,6 @@ const applyWithSelect = withSelect( ( select, blockData ) => {
 	const parentClientId = select( 'core/block-editor' ).getBlockRootClientId(
 		selectedClientId
 	);
-
 	return {
 		selectedParentClientId: parentClientId,
 		innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
