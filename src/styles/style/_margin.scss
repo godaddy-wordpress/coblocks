@@ -33,6 +33,24 @@
 	}
 }
 
+@include break-medium() {
+	.md\:mt {
+		@include utilities($margin, "margin-top", "-");
+	}
+
+	.md\:mb {
+		@include utilities($margin, "margin-bottom", "-");
+	}
+
+	.md\:mr {
+		@include utilities($margin, "margin-right", "-");
+	}
+
+	.md\:ml {
+		@include utilities($margin, "margin-left", "-");
+	}
+}
+
 // Shim as Gutenberg removes margin-bottom from lists.
 // @todo, this should be moved into the editor styles.
 .editor-styles-wrapper {

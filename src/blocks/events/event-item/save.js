@@ -36,28 +36,30 @@ export default function save( { attributes } ) {
 			data-page={ String( attributes.pageNum ) }
 			style={ { color: colorClass ? undefined : attributes.customTextColor } }
 		>
-			<div className="wp-block-coblocks-events__date">
+			<div className="wp-block-coblocks-events__date flex mb-3 md:mb-0 md:display-block">
 				<RichText.Content
 					tagName="span"
-					className="wp-block-coblocks-events__day display-block"
+					className="wp-block-coblocks-events__day display-block font-bold mb-1"
 					value={ attributes.eventDay }
 				/>
-				<RichText.Content
-					value={ attributes.eventMonth }
-					tagName="span"
-					className="wp-block-coblocks-events__month display-block"
-				/>
-				<RichText.Content
-					value={ attributes.eventYear }
-					tagName="span"
-					className="wp-block-coblocks-events__year display-block"
-				/>
+				<div>
+					<RichText.Content
+						value={ attributes.eventMonth }
+						tagName="span"
+						className="wp-block-coblocks-events__month display-block mb-1"
+					/>
+					<RichText.Content
+						value={ attributes.eventYear }
+						tagName="span"
+						className="wp-block-coblocks-events__year display-block mb-1"
+					/>
+				</div>
 			</div>
-			<div className="wp-block-coblocks-events__content">
+			<div className="wp-block-coblocks-events__content mb-3 md:mb-0">
 				<RichText.Content
 					value={ attributes.title }
 					tagName="span"
-					className="wp-block-coblocks-events__title display-block"
+					className="wp-block-coblocks-events__title display-block font-bold mb-1"
 				/>
 				<RichText.Content
 					value={ attributes.description }
@@ -66,11 +68,11 @@ export default function save( { attributes } ) {
 					itemprop="description"
 				/>
 			</div>
-			<div className="wp-block-coblocks-events__details">
+			<div className="wp-block-coblocks-events__details md:text-right">
 				<RichText.Content
 					value={ attributes.eventTime }
 					tagName="span"
-					className="wp-block-coblocks-events__time display-block"
+					className="wp-block-coblocks-events__time display-block mb-1"
 				/>
 				<RichText.Content
 					value={ attributes.eventLocation }

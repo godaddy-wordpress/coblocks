@@ -28,6 +28,10 @@
 	display: block;
 }
 
+.font-bold {
+	font-weight: 700;
+}
+
 .relative {
 	position: relative;
 }
@@ -55,6 +59,14 @@
 @include break-medium() {
 	.md\:flex {
 		display: flex;
+	}
+
+	.md\:display-block {
+		display: block;
+	}
+
+	.md\:text-right {
+		text-align: right;
 	}
 }
 

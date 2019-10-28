@@ -57,37 +57,39 @@ class EventsEdit extends Component {
 					}
 					style={ textStyles }
 				>
-					<div className="wp-block-coblocks-events__date">
+					<div className="wp-block-coblocks-events__date flex mb-3 md:mb-0 md:display-block">
 						<RichText
 							value={ attributes.eventDay }
 							tagName="span"
-							className="wp-block-coblocks-events__day display-block"
+							className="wp-block-coblocks-events__day display-block font-bold mb-1"
 							placeholder={ __( 'Day…', 'coblocks' ) }
 							onChange={ eventDay => setAttributes( { eventDay } ) }
 							keepPlaceholderOnFocus
 						/>
-						<RichText
-							value={ attributes.eventMonth }
-							tagName="span"
-							className="wp-block-coblocks-events__month display-block"
-							placeholder={ __( 'Month…', 'coblocks' ) }
-							onChange={ eventMonth => setAttributes( { eventMonth } ) }
-							keepPlaceholderOnFocus
-						/>
-						<RichText
-							value={ attributes.eventYear }
-							tagName="span"
-							className="wp-block-coblocks-events__year display-block"
-							placeholder={ __( 'Year…', 'coblocks' ) }
-							onChange={ eventYear => setAttributes( { eventYear } ) }
-							keepPlaceholderOnFocus
-						/>
+						<div>
+							<RichText
+								value={ attributes.eventMonth }
+								tagName="span"
+								className="wp-block-coblocks-events__month display-block mb-1"
+								placeholder={ __( 'Month…', 'coblocks' ) }
+								onChange={ eventMonth => setAttributes( { eventMonth } ) }
+								keepPlaceholderOnFocus
+							/>
+							<RichText
+								value={ attributes.eventYear }
+								tagName="span"
+								className="wp-block-coblocks-events__year display-block mb-1"
+								placeholder={ __( 'Year…', 'coblocks' ) }
+								onChange={ eventYear => setAttributes( { eventYear } ) }
+								keepPlaceholderOnFocus
+							/>
+						</div>
 					</div>
-					<div className="wp-block-coblocks-events__content">
+					<div className="wp-block-coblocks-events__content mb-5">
 						<RichText
 							value={ attributes.title }
 							tagName="span"
-							className="wp-block-coblocks-events__title display-block"
+							className="wp-block-coblocks-events__title display-block font-bold mb-1"
 							placeholder={ __( 'Write event title…', 'coblocks' ) }
 							onChange={ title => setAttributes( { title } ) }
 							keepPlaceholderOnFocus
@@ -101,11 +103,11 @@ class EventsEdit extends Component {
 							keepPlaceholderOnFocus
 						/>
 					</div>
-					<div className="wp-block-coblocks-events__details">
+					<div className="wp-block-coblocks-events__details md:text-right">
 						<RichText
 							value={ attributes.eventTime }
 							tagName="span"
-							className="wp-block-coblocks-events__time display-block"
+							className="wp-block-coblocks-events__time display-block mb-1"
 							placeholder={ __( 'Time…' ) }
 							onChange={ eventTime => setAttributes( { eventTime } ) }
 							keepPlaceholderOnFocus
