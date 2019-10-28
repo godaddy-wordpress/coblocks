@@ -133,8 +133,8 @@ function coblocks_register_events_block() {
 	$dir = CoBlocks()->asset_source( 'js' );
 
 	wp_register_script(
-		'coblocks-events-pagination',
-		$dir . 'coblocks-events-pagination' . COBLOCKS_ASSET_SUFFIX . '.js',
+		'coblocks-events',
+		$dir . 'coblocks-events' . COBLOCKS_ASSET_SUFFIX . '.js',
 		array( 'jquery' )
 	);
 
@@ -180,7 +180,7 @@ function coblocks_register_events_block() {
 				),
 			),
 			'render_callback' => 'coblocks_render_events_block',
-			'editor_script'   => 'coblocks-events-pagination',
+			'editor_script'   => 'coblocks-events',
 		)
 	);
 }
