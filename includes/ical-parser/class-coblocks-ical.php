@@ -557,8 +557,8 @@ class CoBlocks_ICal {
 		// Ideally you would use `PHP_INT_MIN` from PHP 7
 		$php_int_min = -2147483648;
 
-		$this->window_min_timestamp = is_null( $this->filter_days_before ) ? $php_int_min : ( new \DateTime( 'now' ) )->sub( new \date_interval( 'P' . $this->filter_days_before . 'D' ) )->getTimestamp();
-		$this->window_max_timestamp = is_null( $this->filter_days_after ) ? PHP_INT_MAX : ( new \DateTime( 'now' ) )->add( new \date_interval( 'P' . $this->filter_days_after . 'D' ) )->getTimestamp();
+		$this->window_min_timestamp = is_null( $this->filter_days_before ) ? $php_int_min : ( new \DateTime( 'now' ) )->sub( new \DateInterval( 'P' . $this->filter_days_before . 'D' ) )->getTimestamp();
+		$this->window_max_timestamp = is_null( $this->filter_days_after ) ? PHP_INT_MAX : ( new \DateTime( 'now' ) )->add( new \DateInterval( 'P' . $this->filter_days_after . 'D' ) )->getTimestamp();
 
 		$this->should_filter_by_window = ! is_null( $this->filter_days_before ) || ! is_null( $this->filter_days_after );
 
@@ -934,7 +934,7 @@ class CoBlocks_ICal {
 						$this->cal[ $key1 ][ $key2 ][ "{$keyword}_array" ][] = $value;
 
 						if ( 'DURATION' === $keyword ) {
-							$duration = new \date_interval( $value );
+							$duration = new \DateInterval( $value );
 							array_push( $this->cal[ $key1 ][ $key2 ][ "{$keyword}_array" ], $duration );
 						}
 					}
@@ -1110,11 +1110,11 @@ class CoBlocks_ICal {
 		// PHP, on the other hand, uses negative numbers for that. Thus we don't
 		// need to special case them.
 		if ( 'Z' === $date[4] ) {
-			$date_timezone = new \date_timezone( self::TIME_ZONE_UTC );
+			$date_timezone = new \DateTimeZone( self::TIME_ZONE_UTC );
 		} elseif ( ! empty( $date[1] ) ) {
 			$date_timezone = $this->timezone_string_to_date_timezone( $date[1] );
 		} else {
-			$date_timezone = new \date_timezone( $this->default_time_zone );
+			$date_timezone = new \DateTimeZone( $this->default_time_zone );
 		}
 
 		// The exclamation mark at the start of the format string indicates that if a
@@ -1159,8 +1159,8 @@ class CoBlocks_ICal {
 			$duration  = end( $date_array );
 			$date_time = $this->parse_duration( $event['DTSTART'], $duration, null );
 		} else {
-			$date_time = new \DateTime( $date_array[1], new \date_timezone( self::TIME_ZONE_UTC ) );
-			$date_time->setTimezone( new \date_timezone( $this->calendar_timezone() ) );
+			$date_time = new \DateTime( $date_array[1], new \DateTimeZone( self::TIME_ZONE_UTC ) );
+			$date_time->setTimezone( new \DateTimeZone( $this->calendar_timezone() ) );
 		}
 
 		// Force time zone
@@ -2204,24 +2204,24 @@ class CoBlocks_ICal {
 
 		if ( ! is_null( $range_start ) ) {
 			try {
-				$range_start = new \DateTime( $range_start, new \date_timezone( $this->default_time_zone ) );
+				$range_start = new \DateTime( $range_start, new \DateTimeZone( $this->default_time_zone ) );
 			} catch ( \Exception $e ) {
 				error_log( "ICal::events_from_range: Invalid date passed ({$range_start})" );
 				$range_start = false;
 			}
 		} else {
-			$range_start = new \DateTime( 'now', new \date_timezone( $this->default_time_zone ) );
+			$range_start = new \DateTime( 'now', new \DateTimeZone( $this->default_time_zone ) );
 		}
 
 		if ( ! is_null( $range_end ) ) {
 			try {
-				$range_end = new \DateTime( $range_end, new \date_timezone( $this->default_time_zone ) );
+				$range_end = new \DateTime( $range_end, new \DateTimeZone( $this->default_time_zone ) );
 			} catch ( \Exception $e ) {
 				error_log( "ICal::events_from_range: Invalid date passed ({$range_end})" );
 				$range_end = false;
 			}
 		} else {
-			$range_end = new \DateTime( 'now', new \date_timezone( $this->default_time_zone ) );
+			$range_end = new \DateTime( 'now', new \DateTimeZone( $this->default_time_zone ) );
 			$range_end->modify( '+20 years' );
 		}
 
@@ -2264,8 +2264,8 @@ class CoBlocks_ICal {
 	 * @return array
 	 */
 	public function events_from_interval( $interval ) {
-		$range_start = new \DateTime( 'now', new \date_timezone( $this->default_time_zone ) );
-		$range_end   = new \DateTime( 'now', new \date_timezone( $this->default_time_zone ) );
+		$range_start = new \DateTime( 'now', new \DateTimeZone( $this->default_time_zone ) );
+		$range_end   = new \DateTime( 'now', new \DateTimeZone( $this->default_time_zone ) );
 
 		$date_interval = \date_interval::createFromDateString( $interval );
 		$range_end->add( $date_interval );
@@ -2719,18 +2719,18 @@ class CoBlocks_ICal {
 		$timezone_string = html_entity_decode( $timezone_string );
 
 		if ( $this->is_valid_iana_timezone_id( $timezone_string ) ) {
-			return new \date_timezone( $timezone_string );
+			return new \DateTimeZone( $timezone_string );
 		}
 
 		if ( $this->is_valid_cldr_timezone_id( $timezone_string ) ) {
-			return new \date_timezone( self::$cldr_timezones_map[ $timezone_string ] );
+			return new \DateTimeZone( self::$cldr_timezones_map[ $timezone_string ] );
 		}
 
 		if ( $this->is_valid_windows_timezone_id( $timezone_string ) ) {
-			return new \date_timezone( self::$windows_timezones_map[ $timezone_string ] );
+			return new \DateTimeZone( self::$windows_timezones_map[ $timezone_string ] );
 		}
 
-		return new \date_timezone( $this->default_time_zone );
+		return new \DateTimeZone( $this->default_time_zone );
 	}
 
 	/**

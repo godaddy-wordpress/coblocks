@@ -17,6 +17,7 @@ const Inspector = props => {
 		eventsToShow,
 		linkACalendar,
 		externalCalendarUrl,
+		childrenLength,
 	} = attributes;
 
 	const eventsRange = [
@@ -39,13 +40,15 @@ const Inspector = props => {
 					checked={ linkACalendar }
 					onChange={ onToggleCalendarLink }
 				/>
-				<RangeControl
-					label={ __( 'Events per page', 'coblocks' ) }
-					value={ eventsToShow }
-					onChange={ onChangeVisibleEvents }
-					min={ 5 }
-					max={ 15 }
-				/>
+				{ childrenLength > 5 &&
+					<RangeControl
+						label={ __( 'Events per page', 'coblocks' ) }
+						value={ eventsToShow }
+						onChange={ onChangeVisibleEvents }
+						min={ 5 }
+						max={ 15 }
+					/>
+				}
 				{ linkACalendar && externalCalendarUrl &&
 					<SelectControl
 						label={ __( 'Period' ) }

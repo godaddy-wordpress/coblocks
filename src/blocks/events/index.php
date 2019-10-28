@@ -39,9 +39,9 @@ function coblocks_render_events_block( $attributes, $content ) {
 		$ical->init_url( $attributes['externalCalendarUrl'] );
 
 		if ( 'all' === $attributes['eventsRange'] ) {
-			$events = $ical->eventsFromRange();
+			$events = $ical->events_from_range();
 		} else {
-			$events = $ical->eventsFromInterval( $attributes['eventsRange'] );
+			$events = $ical->events_from_interval( $attributes['eventsRange'] );
 		}
 		// we limit the events to 100
 		$events = array_slice( $events, 0, 100 );

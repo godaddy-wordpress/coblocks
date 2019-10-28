@@ -2,6 +2,9 @@
 	"name": "coblocks/events",
 	"category": "coblocks",
 	"attributes": {
+		"align": {
+			"type": "string"
+		},
 		"linkACalendar": {
 			"type": "boolean",
 			"default": false
@@ -9,6 +12,28 @@
 		"externalCalendarUrl": {
 			"type": "string",
 			"default": ""
+		},
+		"eventsRange": {
+			"type": "string",
+			"default": "all"
+		},
+		"eventsToShow": {
+			"type": "number",
+			"default": 5
+		},
+		"currentPage": {
+			"type": "number",
+			"default": 0
+		},
+		"childrenLength": {
+			"type": "number",
+			"default": 0
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"customTextColor": {
+			"type": "string"
 		}
 	}
 }
