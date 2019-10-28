@@ -39,9 +39,9 @@ function coblocks_render_events_block( $attributes, $content ) {
 		$ical->init_url( $attributes['externalCalendarUrl'] );
 
 		if ( 'all' === $attributes['eventsRange'] ) {
-			$events = $ical->eventsFromRange();
+			$events = $ical->events_from_range();
 		} else {
-			$events = $ical->eventsFromInterval( $attributes['eventsRange'] );
+			$events = $ical->events_from_interval( $attributes['eventsRange'] );
 		}
 		// we limit the events to 100
 		$events = array_slice( $events, 0, 100 );
@@ -133,8 +133,8 @@ function coblocks_register_events_block() {
 	$dir = CoBlocks()->asset_source( 'js' );
 
 	wp_register_script(
-		'coblocks-events-pagination',
-		$dir . 'coblocks-events-pagination' . COBLOCKS_ASSET_SUFFIX . '.js',
+		'coblocks-events',
+		$dir . 'coblocks-events' . COBLOCKS_ASSET_SUFFIX . '.js',
 		array( 'jquery' )
 	);
 
@@ -180,7 +180,7 @@ function coblocks_register_events_block() {
 				),
 			),
 			'render_callback' => 'coblocks_render_events_block',
-			'editor_script'   => 'coblocks-events-pagination',
+			'editor_script'   => 'coblocks-events',
 		)
 	);
 }
