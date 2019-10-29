@@ -1,5 +1,10 @@
+.is-twentytwenty {
+	.wp-block-coblocks-dynamic-separator {
+		background: none !important;
+	}
+}
+
 .wp-block-coblocks-dynamic-separator.wp-block-separator {
-	background: none !important;
 	border: 0 !important;
 	max-width: 100% !important;
 	position: relative;
@@ -45,13 +50,6 @@
 	&.is-style-fullwidth:not(.has-text-color) {
 		&::before {
 			background: currentColor;
-		}
-	}
-
-	.is-twentytwenty {
-		hr,
-		&.wp-block-coblocks-dynamic-separator {
-			background: none !important;
 		}
 	}
 }
