@@ -47,11 +47,12 @@
 			background: currentColor;
 		}
 	}
-}
 
-.is-twentytwenty {
-	hr,
-	&.wp-block-coblocks-dynamic-separator {
-		background: none !important;
+	.is-twentytwenty {
+		hr,
+		&.wp-block-coblocks-dynamic-separator {
+			background: none !important;
+		}
 	}
 }
+
