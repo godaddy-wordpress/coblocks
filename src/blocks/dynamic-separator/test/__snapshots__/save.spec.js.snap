@@ -2,6 +2,6 @@
 
 exports[`coblocks/dynamic-separator should render 1`] = `
 "<!-- wp:coblocks/dynamic-separator -->
-<hr class=\\"wp-block-coblocks-dynamic-separator wp-block-separator is-style-dots\\" style=\\"height:50px\\"/>
+<div class=\\"wp-block-coblocks-dynamic-separator wp-block-separator is-style-dots\\" style=\\"height:50px\\"></div>
 <!-- /wp:coblocks/dynamic-separator -->"
 `;

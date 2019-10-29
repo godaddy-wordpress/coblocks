@@ -23,20 +23,17 @@ const save = ( { attributes } ) => {
 		height: height ? height + 'px' : undefined,
 	};
 
-	let hrClasses = classnames(
-		className,
-		'wp-block-separator', {
-			'has-text-color': color || customColor,
-			[ colorClass ]: colorClass,
-		} );
+	let divClasses = classnames(	className, 'wp-block-separator',
+		{ 'has-text-color': color || customColor,
+			[ colorClass ]: colorClass } );
 
 	// Set class for default style
-	hrClasses = classnames( hrClasses, {
-		'is-style-dots': ! hrClasses.includes( 'is-style-line' ) && ! hrClasses.includes( 'is-style-fullwidth' ) && ! hrClasses.includes( 'is-style-dots' ),
+	divClasses = classnames( divClasses, {
+		'is-style-dots': ! divClasses.includes( 'is-style-line' ) && ! divClasses.includes( 'is-style-fullwidth' ) && ! divClasses.includes( 'is-style-dots' ),
 	} );
 
 	return (
-		<hr className={ hrClasses } style={ styles }></hr>
+		<div className={ divClasses } style={ styles } />
 	);
 };
 
