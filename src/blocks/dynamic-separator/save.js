@@ -8,29 +8,35 @@ import classnames from 'classnames';
  */
 import { getColorClassName } from '@wordpress/block-editor';
 
-const save = ( { attributes, className } ) => {
+const save = ( { attributes } ) => {
 	const {
 		color,
 		customColor,
 		height,
+		className,
 	} = attributes;
 
 	const colorClass = getColorClassName( 'color', color );
-
-	const classes = classnames(
-		className,
-		'wp-block-separator', {
-			'has-text-color': color || customColor,
-			[ colorClass ]: colorClass,
-		} );
 
 	const styles = {
 		color: colorClass ? undefined : customColor,
 		height: height ? height + 'px' : undefined,
 	};
 
+	let hrClasses = classnames(
+		className,
+		'wp-block-separator', {
+			'has-text-color': color || customColor,
+			[ colorClass ]: colorClass,
+		} );
+
+	// Set class for default style
+	hrClasses = classnames( hrClasses, {
+		'is-style-dots': ! hrClasses.includes( 'is-style-line' ) && ! hrClasses.includes( 'is-style-fullwidth' ) && ! hrClasses.includes( 'is-style-dots' ),
+	} );
+
 	return (
-		<hr className={ classes } style={ styles }></hr>
+		<hr className={ hrClasses } style={ styles }></hr>
 	);
 };
 

@@ -31,15 +31,18 @@ class DynamicSeparatorEdit extends Component {
 
 		const { height } = attributes;
 
+		const hrClasses = classnames( className, 'wp-block-separator', {
+			'is-selected': isSelected,
+			'has-text-color': color.color,
+			[ color.class ]: color.class,
+			'is-style-dots': ! className.includes( 'is-style-line' ) && ! className.includes( 'is-style-fullwidth' ) && ! className.includes( 'is-style-dots' ),
+		} );
+
 		return (
 			<Fragment>
 				{ isSelected && <Inspector { ...this.props } /> }
 				<ResizableBox
-					className={ classnames( className, 'wp-block-separator', {
-						'is-selected': isSelected,
-						'has-text-color': color.color,
-						[ color.class ]: color.class,
-					} ) }
+					className={ hrClasses }
 					style={ {
 						color: color.color,
 					} }
