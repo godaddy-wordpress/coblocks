@@ -9,6 +9,7 @@
 	max-width: 100% !important;
 	position: relative;
 	width: 100%;
+	margin: 4rem 0;
 
 	&::before {
 		left: 0;
@@ -18,7 +19,16 @@
 	}
 }
 
+hr.wp-block-coblocks-dynamic-separator {
+	padding-left: 50%;
+}
+
 .wp-block-coblocks-dynamic-separator {
+	background: none !important;
+    border: 0;
+    max-width: 100% !important;
+	width: 100% !important;
+
 	&.is-style-line::before,
 	&.is-style-fullwidth::before {
 		background: currentColor;
