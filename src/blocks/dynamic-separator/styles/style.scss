@@ -48,3 +48,10 @@
 		}
 	}
 }
+
+.is-twentytwenty {
+	hr,
+	&.wp-block-coblocks-dynamic-separator {
+		background: none !important;
+	}
+}
