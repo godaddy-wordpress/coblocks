@@ -48,6 +48,7 @@ class CoBlocks_Register_Blocks {
 		$this->slug = 'coblocks';
 
 		add_action( 'init', array( $this, 'register_blocks' ), 99 );
+		add_filter( 'excerpt_allowed_blocks', array( $this, 'excerpt_allowed_blocks' ) );
 	}
 
 	/**
@@ -153,6 +154,21 @@ class CoBlocks_Register_Blocks {
 				'style'         => $slug . '-frontend',
 			)
 		);
+	}
+
+	/**
+	 * Filters the list of blocks that can contribute to the excerpt.
+	 *
+	 * If a dynamic block is added to this list, it must not generate another
+	 * excerpt, as this will cause an infinite loop to occur.
+	 *
+	 * @param array $allowed_blocks The list of allowed blocks.
+	 */
+	public function excerpt_allowed_blocks( $allowed_blocks ) {
+		$allowed_blocks[] = 'coblocks/row';
+		$allowed_blocks[] = 'coblocks/column';
+
+		return $allowed_blocks;
 	}
 }
 
