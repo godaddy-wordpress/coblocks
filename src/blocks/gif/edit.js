@@ -14,7 +14,7 @@ import { compose } from '@wordpress/compose';
 import { Placeholder, Spinner, ResizableBox } from '@wordpress/components';
 import { withViewportMatch } from '@wordpress/viewport';
 import { withSelect } from '@wordpress/data';
-import { RichText } from '@wordpress/block-editor';
+import { BlockIcon, RichText } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
@@ -278,7 +278,7 @@ class Edit extends Component {
 			<Fragment>
 				<Placeholder
 					key="placeholder"
-					icon={ icons.gif }
+					icon={ <BlockIcon icon={ icons.gif } /> }
 					label="Gif"
 					instructions={ __( 'Search for that perfect gif on Giphy', 'coblocks' ) }
 					className={ className }>
