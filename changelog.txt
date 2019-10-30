@@ -1,4 +1,11 @@
 
+1.16.1 / 2019-10-18
+===================
+
+### Bug Fixes
+* Ensure [translations are loaded](https://github.com/godaddy/coblocks/pull/1024) in the Block Editor
+* Use [COBLOCKS_VERSION](https://github.com/godaddy/coblocks/pull/1025) when registering scripts
+
 1.16.0 / 2019-10-17
 ===================
 

@@ -32,22 +32,22 @@ class CSSGridControl extends Component {
 		 * This will make us of existing block instead of creating new one
 		 */
 		let layoutOptions = [
-			{ value: 'top-left', label: _x( 'Top Left', 'block layout' ) },
-			{ value: 'top-center', label: _x( 'Top Center', 'block layout' ) },
-			{ value: 'top-right', label: _x( 'Top Right', 'block layout' ) },
-			{ value: 'center-left', label: _x( 'Center Left', 'block layout' ) },
-			{ value: 'center-center', label: _x( 'Center Center', 'block layout' ) },
-			{ value: 'center-right', label: _x( 'Center Right', 'block layout' ) },
-			{ value: 'bottom-left', label: _x( 'Bottom Left', 'block layout' ) },
-			{ value: 'bottom-center', label: _x( 'Bottom Center', 'block layout' ) },
-			{ value: 'bottom-right', label: _x( 'Bottom Right', 'block layout' ) },
+			{ value: 'top-left', label: _x( 'Top Left', 'block layout', 'coblocks' ) },
+			{ value: 'top-center', label: _x( 'Top Center', 'block layout', 'coblocks' ) },
+			{ value: 'top-right', label: _x( 'Top Right', 'block layout', 'coblocks' ) },
+			{ value: 'center-left', label: _x( 'Center Left', 'block layout', 'coblocks' ) },
+			{ value: 'center-center', label: _x( 'Center Center', 'block layout', 'coblocks' ) },
+			{ value: 'center-right', label: _x( 'Center Right', 'block layout', 'coblocks' ) },
+			{ value: 'bottom-left', label: _x( 'Bottom Left', 'block layout', 'coblocks' ) },
+			{ value: 'bottom-center', label: _x( 'Bottom Center', 'block layout', 'coblocks' ) },
+			{ value: 'bottom-right', label: _x( 'Bottom Right', 'block layout', 'coblocks' ) },
 		];
 
 		if ( ! fullscreen ) {
 			layoutOptions = [
-				{ value: 'center-left', label: _x( 'Center Left', 'block layout' ) },
-				{ value: 'center-center', label: _x( 'Center Center', 'block layout' ) },
-				{ value: 'center-right', label: _x( 'Center Right', 'block layout' ) },
+				{ value: 'center-left', label: _x( 'Center Left', 'block layout', 'coblocks' ) },
+				{ value: 'center-center', label: _x( 'Center Center', 'block layout', 'coblocks' ) },
+				{ value: 'center-right', label: _x( 'Center Right', 'block layout', 'coblocks' ) },
 			];
 		}
 
@@ -119,8 +119,8 @@ class CSSGridControl extends Component {
 		return (
 			<Fragment>
 				<div className={ classes }>
-					<p className="components-base-control__label">{ __( 'Layout' ) }</p>
-					<ButtonGroup aria-label={ __( 'Select Layout' ) }>
+					<p className="components-base-control__label">{ __( 'Layout', 'coblocks' ) }</p>
+					<ButtonGroup aria-label={ __( 'Select Layout', 'coblocks' ) }>
 						{ map( layoutOptions, ( { label, value }, index ) => {
 							if ( tooltip ) {
 								return (
@@ -158,7 +158,7 @@ class CSSGridControl extends Component {
 					</ButtonGroup>
 				</div>
 				<ToggleControl
-					label={ __( 'Fullscreen' ) }
+					label={ __( 'Fullscreen', 'coblocks' ) }
 					checked={ !! fullscreen }
 					onChange={ () => {
 						if ( fullscreen ) {
@@ -176,7 +176,7 @@ class CSSGridControl extends Component {
 						}
 						setAttributes( { fullscreen: ! fullscreen } );
 					} }
-					help={ !! fullscreen ? __( 'Fullscreen mode is enabled.' ) : __( 'Toggle to enable fullscreen mode.' ) }
+					help={ !! fullscreen ? __( 'Fullscreen mode is enabled.', 'coblocks' ) : __( 'Toggle to enable fullscreen mode.', 'coblocks' ) }
 				/>
 			</Fragment>
 		);

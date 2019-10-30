@@ -26,17 +26,17 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Gif Settings' ) }>
+					<PanelBody title={ __( 'Gif Settings', 'coblocks' ) }>
 						<TextareaControl
-							label={ __( 'Alt Text (Alternative Text)' ) }
+							label={ __( 'Alt Text (Alternative Text)', 'coblocks' ) }
 							value={ alt }
 							onChange={ this.updateAlt }
 							help={
 								<Fragment>
 									<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
-										{ __( 'Describe the purpose of the image' ) }
+										{ __( 'Describe the purpose of the image', 'coblocks' ) }
 									</ExternalLink>
-									{ __( 'Leave empty if the image is purely decorative.' ) }
+									{ __( 'Leave empty if the image is purely decorative.', 'coblocks' ) }
 								</Fragment>
 							}
 						/>

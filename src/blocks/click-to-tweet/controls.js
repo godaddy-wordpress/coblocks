@@ -34,18 +34,18 @@ class Controls extends Component {
 					<Toolbar>
 						<div className={ `${ className }__via-wrapper` }>
 							<label
-								aria-label={ __( 'Twitter Username' ) }
+								aria-label={ __( 'Twitter Username', 'coblocks' ) }
 								className={ `${ className }__via-label` }
 								htmlFor={ `${ className }__via` }
 							>
 								{ icons.at }
 							</label>
 							<input
-								aria-label={ __( 'Twitter Username' ) }
+								aria-label={ __( 'Twitter Username', 'coblocks' ) }
 								className={ `${ className }__via` }
 								id={ `${ className }__via` }
 								onChange={ ( event ) => setAttributes( { via: event.target.value } ) }
-								placeholder={ __( 'Username' ) }
+								placeholder={ __( 'Username', 'coblocks' ) }
 								type="text"
 								value={ via }
 							/>

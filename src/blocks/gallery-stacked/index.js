@@ -31,10 +31,10 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Stacked', 'block name' ),
-	description: __( 'Display multiple images in an single column stacked gallery.' ),
+	title: _x( 'Stacked', 'block name', 'coblocks' ),
+	description: __( 'Display multiple images in an single column stacked gallery.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ), _x( 'lightbox', 'block keyword' ) ],
+	keywords: [ _x( 'gallery', 'block keyword', 'coblocks' ), _x( 'photos', 'block keyword', 'coblocks' ), _x( 'lightbox', 'block keyword', 'coblocks' ) ],
 	supports: {
 		align: [ 'wide', 'full', 'left', 'center', 'right' ],
 		html: false,

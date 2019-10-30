@@ -26,8 +26,8 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Column', 'block name' ),
-	description: __( 'An immediate child of a row.' ),
+	title: _x( 'Column', 'block name', 'coblocks' ),
+	description: __( 'An immediate child of a row.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/row' ],
 	supports: {

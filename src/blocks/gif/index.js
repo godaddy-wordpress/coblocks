@@ -23,10 +23,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Gif', 'block name' ),
-	description: __( 'Pick a gif, any gif.' ),
+	title: _x( 'Gif', 'block name', 'coblocks' ),
+	description: __( 'Pick a gif, any gif.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'animated', 'block keyword' ), 'coblocks' ],
+	keywords: [ _x( 'animated', 'block keyword', 'coblocks' ), 'coblocks' ],
 	supports: {
 		customClassName: false,
 		html: false,

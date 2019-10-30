@@ -97,7 +97,7 @@ class CoBlocks_Block_Assets {
 			$this->slug . '-editor',
 			$this->url . '/dist/blocks.build.js',
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-rich-text', 'wp-editor' ),
-			time(),
+			COBLOCKS_VERSION,
 			false
 		);
 

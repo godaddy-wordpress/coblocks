@@ -60,7 +60,7 @@ class AuthorEdit extends Component {
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.addImage }
-				label={ _x( 'Drop to upload as avatar', 'image to represent the post author' ) }
+				label={ _x( 'Drop to upload as avatar', 'image to represent the post author', 'coblocks' ) }
 			/>
 		);
 
@@ -124,7 +124,7 @@ class AuthorEdit extends Component {
 							className={ `${ className }__name` }
 							placeholder={
 								// translators: placeholder text used for the author name
-								__( 'Write author name…' )
+								__( 'Write author name…', 'coblocks' )
 							}
 							value={ name }
 							onChange={ ( nextName ) => {
@@ -138,7 +138,7 @@ class AuthorEdit extends Component {
 							className={ `${ className }__biography` }
 							placeholder={
 								// translators: placeholder text used for the biography
-								__( 'Write a biography that distills objective credibility and authority to your readers…' )
+								__( 'Write a biography that distills objective credibility and authority to your readers…', 'coblocks' )
 							}
 							value={ biography }
 							onChange={ ( nextBio ) => {
@@ -146,7 +146,7 @@ class AuthorEdit extends Component {
 							} }
 						/>
 						<InnerBlocks
-							template={ [ [ 'core/button', { placeholder: _x( 'Author link…', 'content placeholder' ) } ] ] }
+							template={ [ [ 'core/button', { placeholder: _x( 'Author link…', 'content placeholder', 'coblocks' ) } ] ] }
 							templateLock="all"
 							allowedBlocks={ [ 'core/button' ] }
 							templateInsertUpdatesSelection={ false }

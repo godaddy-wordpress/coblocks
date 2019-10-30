@@ -29,7 +29,7 @@ const Inspector = props => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
+			<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 				<div className={ classnames(
 					'editor-block-styles',
 					'block-editor-block-styles',
@@ -64,15 +64,15 @@ const Inspector = props => {
 					) ) }
 				</div>
 			</PanelBody>
-			<PanelBody title={ __( 'Services Settings' ) }>
+			<PanelBody title={ __( 'Services Settings', 'coblocks' ) }>
 				<RangeControl
-					label={ __( 'Columns' ) }
+					label={ __( 'Columns', 'coblocks' ) }
 					value={ attributes.columns }
 					min={ 1 }
 					max={ 4 }
 					onChange={ columns => setAttributes( { columns } ) }
 				/>
-				<p>{ __( 'Heading Level' ) }</p>
+				<p>{ __( 'Heading Level', 'coblocks' ) }</p>
 				<HeadingToolbar
 					minLevel={ 1 }
 					maxLevel={ 7 }
@@ -80,12 +80,12 @@ const Inspector = props => {
 					onChange={ onChangeHeadingLevel }
 				/>
 				<ToggleControl
-					label={ __( 'Action Buttons' ) }
+					label={ __( 'Action Buttons', 'coblocks' ) }
 					className="components-toggle-control--services-action-button"
 					help={
 						attributes.buttons ?
-							__( 'Showing the call to action buttons.' ) :
-							__( 'Toggle to show call to action buttons.' )
+							__( 'Showing the call to action buttons.', 'coblocks' ) :
+							__( 'Toggle to show call to action buttons.', 'coblocks' )
 					}
 					checked={ attributes.buttons }
 					onChange={ onToggleCtas }

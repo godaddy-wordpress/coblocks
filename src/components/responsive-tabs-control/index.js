@@ -28,7 +28,7 @@ class ResponsiveTabsControl extends Component {
 
 	render() {
 		const {
-			label = __( 'Gutter' ),
+			label = __( 'Gutter', 'coblocks' ),
 			max = 50,
 			min = 0,
 			onChange = this.setGutterTo,
@@ -62,7 +62,7 @@ class ResponsiveTabsControl extends Component {
 								return (
 									<RangeControl
 										/* translators: %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width' */
-										label={ sprintf( __( 'Mobile %s' ), label ) }
+										label={ sprintf( __( 'Mobile %s', 'coblocks' ), label ) }
 										value={ valueMobile }
 										onChange={ ( valueMobile ) => onChangeMobile( valueMobile ) }
 										min={ min }

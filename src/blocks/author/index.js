@@ -25,14 +25,14 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Author', 'block name' ),
-	description: __( 'Add an author biography to build credibility and authority.' ),
+	title: _x( 'Author', 'block name', 'coblocks' ),
+	description: __( 'Add an author biography to build credibility and authority.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'biography', 'block keyword' ), _x( 'profile', 'block keyword' ), 'coblocks' ],
+	keywords: [ _x( 'biography', 'block keyword', 'coblocks' ), _x( 'profile', 'block keyword', 'coblocks' ), 'coblocks' ],
 	example: {
 		attributes: {
 			name: 'Jane Doe',
-			biography: __( 'Born to express, not to impress. A maker making the world I want.' ),
+			biography: __( 'Born to express, not to impress. A maker making the world I want.', 'coblocks' ),
 			imgUrl: '/wp-content/plugins/coblocks/dist/images/examples/author.jpg',
 		},
 	},

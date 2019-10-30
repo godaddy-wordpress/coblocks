@@ -1,14 +1,14 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.16.0\n"
+"Project-Id-Version: CoBlocks 1.16.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-10-17T20:17:54+00:00\n"
+"POT-Creation-Date: 2019-10-18T18:40:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -67,6 +67,8 @@ msgstr "Farveindstillinger"
 #: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:103
 #: src/extensions/colors/index.js:47
+#: src/blocks/share/inspector.js:81
+#: src/blocks/social-profiles/inspector.js:85
 msgid "Background Color"
 msgstr "Baggrundsfarve"
 
@@ -92,7 +94,7 @@ msgstr "Tilføj understøttelse af Internet Explorer ved at indlæse JavaScript-
 
 #: src/blocks/accordion/inspector.js:31
 msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
-msgstr "Understøtter Internet Explorer ved at indlæse JavaScript-polyfill på denne side."
+msgstr "Understøt Internet Explorer ved at indlæse JavaScript-polyfill på denne side."
 
 #: src/blocks/alert/index.js:29
 msgid "Provide contextual feedback messages or notices."
@@ -127,11 +129,13 @@ msgid "Edit avatar"
 msgstr "Rediger avatar"
 
 #. placeholder text used for the author name
+#. translators: placeholder text used for the author name
 #: src/blocks/author/edit.js:127
 msgid "Write author name…"
 msgstr "Skriv forfatterens navn"
 
 #. placeholder text used for the biography
+#. translators: placeholder text used for the biography
 #: src/blocks/author/edit.js:141
 msgid "Write a biography that distills objective credibility and authority to your readers…"
 msgstr "Skriv en biografi som giver dine læsere en følelse af objektiv troværdighed og autoritet ..."
@@ -165,6 +169,7 @@ msgid "Toggle to stack buttons on mobile."
 msgstr "Skift for at stable knapper på mobil."
 
 #: src/blocks/click-to-tweet/controls.js:44
+#: src/blocks/click-to-tweet/controls.js:37
 msgid "Twitter Username"
 msgstr "Twitter-brugernavn"
 
@@ -177,6 +182,7 @@ msgid "Add button..."
 msgstr "Tilføj knap ..."
 
 #. the text of the click to tweet element
+#. translators: the text of the click to tweet element
 #: src/blocks/click-to-tweet/edit.js:82
 msgid "Add a quote to tweet..."
 msgstr "Tilføj et citat i tweet ..."
@@ -262,6 +268,8 @@ msgstr "Margin"
 #: src/blocks/gallery-stacked/inspector.js:91
 #: src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
+#: src/blocks/gallery-carousel/inspector.js:78
+#: src/blocks/gallery-collage/inspector.js:107
 msgid "Gutter"
 msgstr "Indbindingsmargin"
 
@@ -312,6 +320,7 @@ msgid "Columns"
 msgstr "Kolonner"
 
 #: src/blocks/food-and-drinks/appender.js:22
+#: src/blocks/food-and-drinks/appender.js:17
 msgid "Add Menu Section"
 msgstr "Tilføj menuafsnit"
 
@@ -459,7 +468,7 @@ msgstr "Fokuspunkt"
 
 #: src/blocks/food-and-drinks/index.js:27
 msgid "Display a menu or price list."
-msgstr "Vis en menu eller prisliste"
+msgstr "Vis menukort eller prisliste"
 
 #: src/blocks/food-and-drinks/inspector.js:26
 #: src/blocks/map/inspector.js:107
@@ -498,16 +507,19 @@ msgid "Toggle to show the price of each item."
 msgstr "Slå til for at vise prisen for hvert emne."
 
 #. %s: Placeholder for email address provided by user.
+#. translators: %s: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:171
 msgid "%s is not a valid email address."
 msgstr "%s er ikke en gyldig mailadresse."
 
 #. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:181
 msgid "%s and %s are not a valid email address."
 msgstr "%s og %s er ikke en gyldig mailadresse."
 
 #. %s1: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:189
 msgid "%s are not a valid email address."
 msgstr "%s er ikke en gyldig mailadresse."
@@ -590,6 +602,7 @@ msgstr "Et felt til at indsamle en bekræftet e-mailadresse."
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
+#: src/blocks/form/fields/name/edit.js:49
 msgid "Add label…"
 msgstr "Tilføj mærkat ..."
 
@@ -598,6 +611,7 @@ msgid "Required"
 msgstr "Obligatorisk"
 
 #: src/blocks/form/fields/multi-field.js:102
+#: src/blocks/form/fields/multi-field.js:99
 msgid "Add Option"
 msgstr "Tilføj indstilling"
 
@@ -660,6 +674,8 @@ msgid "Carousel"
 msgstr "Karrusel"
 
 #. %1$d is the order number of the image, %2$d is the total number of images.
+#. translators: %1$d is the order number of the image, %2$d is the total number of images
+#. translators: %1$d is the order number of the image, %2$d is the total number of images.
 #: src/blocks/gallery-carousel/edit.js:310
 #: src/blocks/gallery-masonry/edit.js:219
 #: src/blocks/gallery-stacked/edit.js:191
@@ -708,6 +724,7 @@ msgstr "Karruselindstillinger"
 #: src/blocks/gallery-carousel/inspector.js:71
 #: src/blocks/icon/inspector.js:173
 #: src/components/typography-controls/index.js:189
+#: src/blocks/icon/inspector.js:106
 msgid "Size"
 msgstr "Størrelse"
 
@@ -739,6 +756,7 @@ msgid "Collage Settings"
 msgstr "Collageindstillinger"
 
 #: src/blocks/gallery-collage/inspector.js:128
+#: src/blocks/gallery-collage/inspector.js:127
 msgid "Shadow"
 msgstr "Skygge"
 
@@ -834,7 +852,7 @@ msgstr "Billede i fuld bredde"
 
 #: src/blocks/gif/controls.js:44
 msgid "Remove gif"
-msgstr "Fjern gif"
+msgstr "Fjern Gif"
 
 #: src/blocks/gif/edit.js:152
 msgid "This gif has an empty alt attribute"
@@ -869,6 +887,7 @@ msgid "View Gist"
 msgstr "Vis Gist"
 
 #: src/blocks/gist/controls.js:68
+#: src/blocks/gist/controls.js:61
 msgid "GitHub File"
 msgstr "GitHub-fil"
 
@@ -1068,6 +1087,8 @@ msgstr "Åbn i et nyt faneblad"
 #: src/blocks/icon/inspector.js:309
 #: src/blocks/share/inspector.js:104
 #: src/blocks/social-profiles/inspector.js:108
+#: src/blocks/share/inspector.js:68
+#: src/blocks/social-profiles/inspector.js:95
 msgid "Icon Color"
 msgstr "Ikonfarver"
 
@@ -1111,8 +1132,9 @@ msgstr "Kortstil"
 #: src/blocks/map/deprecated.js:96
 #: src/blocks/map/edit.js:293
 #: src/blocks/map/save.js:50
+#: src/blocks/map/edit.js:241
 msgid "Google Map"
-msgstr "Google kort"
+msgstr "Google Maps"
 
 #: src/blocks/map/edit.js:195
 msgid "Invalid API key, or too many requests"
@@ -1127,6 +1149,7 @@ msgid "Search for a place or address…"
 msgstr "Søg efter et sted eller en adresse ..."
 
 #: src/blocks/map/edit.js:320
+#: src/blocks/map/edit.js:312
 msgid "Cancel"
 msgstr "Annullér"
 
@@ -1163,6 +1186,7 @@ msgid "Toggle to enable map control options."
 msgstr "Slå til for at aktivere indstillinger for kortstyring."
 
 #: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:167
 msgid "Map Controls"
 msgstr "Kortindstillinger"
 
@@ -1263,16 +1287,19 @@ msgid "Toggle to add a card shadow."
 msgstr "Slå til for at tilføje en kortskygge."
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:118
 msgid " %s Shadow"
-msgstr " %s Skygge"
+msgstr " %s-Skygge"
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:124
 msgid "Showing %s shadow."
 msgstr "Viser %s-skygge."
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:126
 msgid "Toggle to add an %s shadow"
 msgstr "Slå til for at tilføje en %s-skygge"
@@ -1429,6 +1456,7 @@ msgid "Display posts or an RSS feed as stacked or horizontal cards."
 msgstr "Vis indlæg eller et RSS-feed som stablede eller horisontale kort."
 
 #: src/blocks/posts/inspector.js:129
+#: src/blocks/posts/inspector.js:121
 msgid "Thumbnail Size"
 msgstr "Miniaturebilledestørrelse"
 
@@ -1456,6 +1484,7 @@ msgstr "Fire pristabeller"
 msgid "Change pricing table count"
 msgstr "Skift antal pristabeller"
 
+#. translators: %d: a digit 1-3
 #: src/blocks/pricing-table/edit.js:39
 msgid "Plan %d"
 msgstr "Aftale %d"
@@ -1554,6 +1583,7 @@ msgid "Row"
 msgstr "Række"
 
 #. %s: 'one' 'two' 'three' and 'four'
+#. translators: %s: 'one' 'two' 'three' and 'four'
 #: src/blocks/row/edit.js:205
 msgid "Now select a layout for this %s column row."
 msgstr "Vælg nu et layout for denne række med %s kolonner."
@@ -1767,7 +1797,7 @@ msgstr "Tilføj links til social deling så du får flere “synes godt om” og
 #: src/blocks/share/inspector.js:113
 #: src/blocks/social-profiles/inspector.js:117
 msgid "Social Colors"
-msgstr "Sociale farver"
+msgstr "Farver til sociale farver"
 
 #: src/blocks/share/inspector.js:129
 #: src/blocks/social-profiles/inspector.js:133
@@ -1940,6 +1970,8 @@ msgid "Remove Background"
 msgstr "Fjern baggrund"
 
 #: src/components/background/controls.js:96
+#: src/components/background/controls.js:81
+#: src/components/background/controls.js:82
 msgid "Background"
 msgstr "Baggrund"
 
@@ -2012,9 +2044,10 @@ msgid "Link To"
 msgstr "Hyperlink til"
 
 #. %s: Type of gallery
+#. translators: %s: Type of gallery
 #: src/components/block-gallery/gallery-placeholder.js:71
 msgid "%s Gallery"
-msgstr "%s galleri"
+msgstr "%s-galleri"
 
 #: src/components/block-gallery/gallery-uploader.js:53
 msgid "Upload an image"
@@ -2033,6 +2066,7 @@ msgid "Custom URL"
 msgstr "Brugerdefineret URL-adresse"
 
 #: src/components/crop-settings/index.js:275
+#: src/components/crop-settings/index.js:272
 msgid "Crop settings image placeholder"
 msgstr "Pladsholder for indstillinger for beskæring af billede"
 
@@ -2061,44 +2095,65 @@ msgid "Select Units"
 msgstr "Vælg enheder"
 
 #. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
+#. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
 #: src/components/dimensions-control/index.js:453
+#: src/components/dimensions-control/index.js:445
 msgid "%s Units"
 msgstr "%s enheder"
 
 #. %s: a texual label
+#. translators: %s: a texual label
 #: src/components/dimensions-control/index.js:468
 msgid "Turn off advanced %s settings"
 msgstr "Slå aktiverede indstillinger for %s fra"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:640
+#: src/components/dimensions-control/index.js:512
+#: src/components/dimensions-control/index.js:576
 msgid "%s Top"
-msgstr "%s top"
+msgstr "%s øverst"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:651
+#: src/components/dimensions-control/index.js:523
+#: src/components/dimensions-control/index.js:587
 msgid "%s Right"
 msgstr "%s højre"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:662
+#: src/components/dimensions-control/index.js:534
+#: src/components/dimensions-control/index.js:598
 msgid "%s Bottom"
 msgstr "%s nederst"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:673
+#: src/components/dimensions-control/index.js:545
+#: src/components/dimensions-control/index.js:609
 msgid "%s Left"
 msgstr "%s venstre"
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Unsync"
 msgstr "Stands synkronisering"
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Sync"
 msgstr "Synkroniser"
 
 #: src/components/dimensions-control/index.js:682
+#: src/components/dimensions-control/index.js:554
+#: src/components/dimensions-control/index.js:618
 msgid "Sync Units"
 msgstr "Synkroniser enheder"
 
@@ -2119,6 +2174,7 @@ msgid "Left"
 msgstr "Venstre"
 
 #. %s:  a texual label
+#. translators: %s:  a texual label
 #: src/components/dimensions-control/index.js:722
 msgid "Advanced %s settings"
 msgstr "Avancerede indstillinger for %s"
@@ -2152,6 +2208,7 @@ msgid "Toggle to enable fullscreen mode."
 msgstr "Slå til for at aktivere fuldskærmstilstand."
 
 #. %d: heading level e.g: "1", "2", "3"
+#. translators: %d: heading level e.g: "1", "2", "3"
 #: src/components/heading-toolbar/index.js:18
 msgid "Heading %d"
 msgstr "Overskrift %d"
@@ -2169,6 +2226,7 @@ msgid "Height"
 msgstr "Højde"
 
 #. %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#. translators: %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
 #: src/components/responsive-tabs-control/index.js:65
 msgid "Mobile %s"
 msgstr "Mobil %s"
@@ -2246,6 +2304,7 @@ msgid "second"
 msgstr "sekund"
 
 #. 1. Speed of the slider, 2: Time until the slide advances
+#. translators: 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Advancing after %1$d %2$s."
 msgstr "Går videre efter %1$d %2$s."
@@ -2408,6 +2467,7 @@ msgid "Crop Settings"
 msgstr "Indstillinger for beskæring"
 
 #: src/formats/uppercase/index.js:35
+#: src/formats/uppercase/index.js:20
 msgid "Uppercase"
 msgstr "Store bogstaver"
 
@@ -2436,11 +2496,13 @@ msgid "Disable all"
 msgstr "Deaktivér alle"
 
 #. %s: search text
+#. translators: %s: search text
 #: src/sidebars/block-manager/components/options/disable-blocks.js:233
 msgid "No \"%s\" blocks found."
 msgstr "Ingen \"%s\"-blokke fundet."
 
 #. %s: Plugin title, i.e. CoBlocks
+#. translators: %s: Plugin title, i.e. CoBlocks
 #: src/utils/block-category.js:21
 msgid "%s Galleries"
 msgstr "%s gallerier"
@@ -2686,7 +2748,7 @@ msgstr "kunder"
 #: src/blocks/logos/index.js:29
 msgctxt "block keyword"
 msgid "proof"
-msgstr "beviser"
+msgstr "demonstration"
 
 #: src/blocks/logos/index.js:29
 msgctxt "block keyword"
@@ -2701,7 +2763,7 @@ msgstr "adresse"
 #: src/blocks/map/index.js:30
 msgctxt "block keyword"
 msgid "maps"
-msgstr "kort"
+msgstr "maps"
 
 #: src/blocks/map/index.js:30
 msgctxt "block keyword"
@@ -3210,7 +3272,7 @@ msgstr "Tilføj helteoverskrift ..."
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
 msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
-msgstr "Tilføj heltemateriale, som typisk er et introduktionsafsnit på en side sammen med én eller to opfordringer til handling."
+msgstr "Tilføj heromateriale, som typisk er et introduktionsafsnit på en side sammen med én eller to opfordringer til handling."
 
 #: src/blocks/hero/edit.js:39
 msgctxt "content placeholder"
@@ -3273,6 +3335,7 @@ msgid "None"
 msgstr "Ingen"
 
 #: src/blocks/gallery-collage/inspector.js:84
+#: src/blocks/gallery-collage/inspector.js:56
 msgctxt "abbreviation for \"Short\" size"
 msgid "None"
 msgstr "Ingen"
@@ -3284,6 +3347,7 @@ msgstr "Lille"
 
 #: src/blocks/gallery-collage/inspector.js:89
 #: src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:61
 msgctxt "abbreviation for \"Small\" size"
 msgid "S"
 msgstr "S"
@@ -3295,6 +3359,7 @@ msgstr "Medium"
 
 #: src/blocks/gallery-collage/inspector.js:94
 #: src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:66
 msgctxt "abbreviation for \"Medium\" size"
 msgid "M"
 msgstr "M"
@@ -3306,6 +3371,7 @@ msgstr "Stor"
 
 #: src/blocks/gallery-collage/inspector.js:99
 #: src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:71
 msgctxt "abbreviation for \"Large\" size"
 msgid "L"
 msgstr "L"
@@ -3353,7 +3419,7 @@ msgstr "Tilføj cirkel"
 #: src/blocks/icon/svgs.js:108
 msgctxt "label"
 msgid "Minus Circle"
-msgstr "Minus cirkel"
+msgstr "Minus i cirkel"
 
 #: src/blocks/icon/svgs.js:114
 msgctxt "label"
@@ -3428,7 +3494,7 @@ msgstr "Tablet"
 #: src/blocks/icon/svgs.js:186
 msgctxt "label"
 msgid "Watch"
-msgstr "Hold øje med"
+msgstr "Se"
 
 #: src/blocks/icon/svgs.js:19
 msgctxt "label"
@@ -3446,6 +3512,7 @@ msgid "Hub"
 msgstr "Hub"
 
 #: src/blocks/icon/svgs.js:208
+#: src/blocks/icon/svgs.js:202
 msgctxt "label"
 msgid "Email"
 msgstr "E-mail"
@@ -3563,7 +3630,7 @@ msgstr "Ny"
 #: src/blocks/icon/svgs.js:324
 msgctxt "label"
 msgid "Flare"
-msgstr "Nødsignal"
+msgstr "Glimt"
 
 #: src/blocks/icon/svgs.js:329
 msgctxt "label"
@@ -3608,7 +3675,7 @@ msgstr "Stemme"
 #: src/blocks/icon/svgs.js:48
 msgctxt "label"
 msgid "Aperture"
-msgstr "Åbning"
+msgstr "Blænde"
 
 #: src/blocks/icon/svgs.js:54
 msgctxt "label"
@@ -3643,7 +3710,7 @@ msgstr "Farvevælger"
 #: src/blocks/icon/svgs.js:90
 msgctxt "label"
 msgid "Paint"
-msgstr "Maling"
+msgstr "Malerrulle"
 
 #: src/blocks/icon/svgs.js:96
 msgctxt "label"
@@ -3651,9 +3718,10 @@ msgid "Brush"
 msgstr "Pensel"
 
 #: src/blocks/icon/svgs.js:109
+#: src/blocks/icon/svgs.js:103
 msgctxt "tags"
 msgid "add minus circle insert plus round math"
-msgstr "tilføj påklistret rabatcirkel med afrunding"
+msgstr "læg sammen minus cirkel indsæt plus rund matematik"
 
 #: src/blocks/icon/svgs.js:115
 msgctxt "tags"
@@ -3701,6 +3769,7 @@ msgid "rate vote plus favorite like"
 msgstr "takst stemme samt favorit synes godt om"
 
 #: src/blocks/icon/svgs.js:177
+#: src/blocks/icon/svgs.js:166
 msgctxt "tags"
 msgid "computer apple montior device pc desk office"
 msgstr "computer apple monitor enhed pc skrivebord kontor"
@@ -3716,6 +3785,7 @@ msgid "device apple mac"
 msgstr "enhed apple mac"
 
 #: src/blocks/icon/svgs.js:193
+#: src/blocks/icon/svgs.js:172
 msgctxt "tags"
 msgid "computer ipad surface apple device pc desk office"
 msgstr "computer ipad overflade apple enhed pc skrivebord kontor"
@@ -3731,6 +3801,7 @@ msgid "music microphone podcast song artist creative media audio"
 msgstr "musik mikrofon podcast sang kunstner kreativ medie audio"
 
 #: src/blocks/icon/svgs.js:209
+#: src/blocks/icon/svgs.js:203
 msgctxt "tags"
 msgid "email mail os read letter"
 msgstr "e-mail mail os læs brev"
@@ -3768,7 +3839,7 @@ msgstr "placering kort offentlig virksomhed koncern bygning by skyskraber"
 #: src/blocks/icon/svgs.js:263
 msgctxt "tags"
 msgid "food drink restaurant menu fork spoon taste"
-msgstr "mad drikke restaurant gaffel ske smag"
+msgstr "mad drikke restaurant menukort gaffel ske smag"
 
 #: src/blocks/icon/svgs.js:268
 msgctxt "tags"
@@ -3786,6 +3857,7 @@ msgid "petal scent smell nice relax landscape gardening outdoors outside"
 msgstr "kronblad duft lugt dejlig afslapning landskab havearbejde udendørs udenfor"
 
 #: src/blocks/icon/svgs.js:292
+#: src/blocks/icon/svgs.js:230
 msgctxt "tags"
 msgid "blocks block box boxes square build widgets"
 msgstr "bloker blok kasse kasser firkant build widgets"
@@ -3821,6 +3893,7 @@ msgid "microphone audio beats bose headphones"
 msgstr "microfon audio beats bose hovedtelefoner"
 
 #: src/blocks/icon/svgs.js:325
+#: src/blocks/icon/svgs.js:286
 msgctxt "tags"
 msgid "flower camera photography artist creative"
 msgstr "blomst kamera fotografi kunstner kreativ"
@@ -3833,7 +3906,7 @@ msgstr "design kreativ build udvikling ingeniør"
 #: src/blocks/icon/svgs.js:335
 msgctxt "tags"
 msgid "shop commence ecommence woo cart ship"
-msgstr "butik begynd ecommence woo indkøbsvogn fragt"
+msgstr "butik handel ehandel woo indkøbsvogn fragt"
 
 #: src/blocks/icon/svgs.js:340
 msgctxt "tags"
@@ -3856,6 +3929,7 @@ msgid "improve add upload software"
 msgstr "forbedring tilføj upload software"
 
 #: src/blocks/icon/svgs.js:37
+#: src/blocks/icon/svgs.js:26
 msgctxt "tags"
 msgid "music microphone song artist creative media audio"
 msgstr "musik podcast sang kunstner kreativ medie audio"
@@ -3891,6 +3965,7 @@ msgid "video videography director producer media creative camera photographer ph
 msgstr "video videografi instruktør producer medier kreativ kamera fotograf fotografi blænde"
 
 #: src/blocks/icon/svgs.js:85
+#: src/blocks/icon/svgs.js:79
 msgctxt "tags"
 msgid "palette design colors artist paint creative media"
 msgstr "palet design farver kunstner maling kreativ medie"
@@ -4028,18 +4103,21 @@ msgstr "Øverst til højre"
 
 #: src/components/background/panel.js:86
 #: src/components/grid-control/index.js:48
+#: src/components/grid-control/index.js:38
 msgctxt "block layout"
 msgid "Center Left"
 msgstr "I midten til venstre"
 
 #: src/components/background/panel.js:87
 #: src/components/grid-control/index.js:49
+#: src/components/grid-control/index.js:39
 msgctxt "block layout"
 msgid "Center Center"
 msgstr "Centrum"
 
 #: src/components/background/panel.js:88
 #: src/components/grid-control/index.js:50
+#: src/components/grid-control/index.js:40
 msgctxt "block layout"
 msgid "Center Right"
 msgstr "I midten til højre"
@@ -4095,7 +4173,7 @@ msgstr "Mørk"
 #: src/components/block-gallery/options/caption-options.js:11
 msgctxt "visual style option"
 msgid "Light"
-msgstr "Lys"
+msgstr "Enkel"
 
 #: src/components/block-gallery/options/caption-options.js:12
 msgctxt "visual style option"
@@ -4125,7 +4203,7 @@ msgstr "Pixel"
 #: src/components/dimensions-control/index.js:393
 msgctxt "A size unit for CSS markup"
 msgid "Em"
-msgstr "Em"
+msgstr "em"
 
 #: src/components/dimensions-control/index.js:397
 msgctxt "A size unit for CSS markup"
@@ -4168,6 +4246,7 @@ msgid "Capitalize"
 msgstr "Brug stort forbogstav"
 
 #: src/components/typography-controls/index.js:107
+#: src/components/typography-controls/index.js:80
 msgctxt "typography styles"
 msgid "Normal"
 msgstr "Normal"
@@ -4178,6 +4257,7 @@ msgid "Bold"
 msgstr "Fed"
 
 #: src/components/typography-controls/index.js:91
+#: src/components/typography-controls/index.js:76
 msgctxt "typography styles"
 msgid "Default"
 msgstr "Standardindstilling"
@@ -4277,11 +4357,11 @@ msgstr "Aktivér eller deaktivér blokke"
 
 #: includes/class-coblocks-form.php:67
 msgid "Google reCaptcha site key for form spam protection"
-msgstr "Sitenøgle til Google reCaptcha til at beskytte mod formularspam"
+msgstr "Sitenøgle til Google reCAPTCHA for at beskytte mod formularspam"
 
 #: includes/class-coblocks-form.php:79
 msgid "Google reCaptcha secret key for form spam protection"
-msgstr "Hemmelig nøgle til Google reCaptcha til at beskytte mod formularspam"
+msgstr "Hemmelig nøgle til Google reCAPTCHA til at beskytte mod formularspam"
 
 #: includes/class-coblocks-form.php:267
 msgid "Name"
@@ -4289,11 +4369,11 @@ msgstr "Navn"
 
 #: includes/class-coblocks-form.php:271
 msgid "First"
-msgstr "Første"
+msgstr "Fornavn"
 
 #: includes/class-coblocks-form.php:272
 msgid "Last"
-msgstr "Sidste"
+msgstr "Efternavn"
 
 #: includes/class-coblocks-form.php:346
 msgid "Message"
@@ -4322,6 +4402,16 @@ msgstr "Din meddelelse blev sendt:"
 #: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
 msgstr "Google Map API-nøgle til kortgengivelse"
+
+#: src/blocks/post-carousel/index.php:40
+#: src/blocks/posts/index.php:40
+msgid "RSS Error:"
+msgstr "RSS Error:"
+
+#: src/blocks/post-carousel/index.php:51
+#: src/blocks/posts/index.php:51
+msgid "An error has occurred, which probably means the feed is down. Try again later."
+msgstr "An error has occurred, which probably means the feed is down. Try again later."
 
 #: src/blocks/share/index.php:144
 msgid "Share on Linkedin"

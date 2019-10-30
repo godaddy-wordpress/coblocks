@@ -27,7 +27,7 @@ function Controls( { attributes, setAttributes, apiKey } ) {
 	const toolbarControls = [
 		{
 			icon: icons.mapEdit,
-			title: __( 'Edit Location' ),
+			title: __( 'Edit Location', 'coblocks' ),
 			isActive: ! pinned,
 			onClick: () => setAttributes( { pinned: ! pinned } ),
 		},
@@ -39,7 +39,7 @@ function Controls( { attributes, setAttributes, apiKey } ) {
 				<Toolbar>
 					<VisualDropdown
 						icon={ icons.style }
-						label={ __( 'Map style' ) }
+						label={ __( 'Map style', 'coblocks' ) }
 						controls={ [
 							map( styleOptions, ( { value, label } ) => ( {
 								title: label,

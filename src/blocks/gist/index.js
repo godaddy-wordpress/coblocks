@@ -25,10 +25,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Gist', 'block name' ),
-	description: __( 'Embed GitHub gists by adding a gist link.' ),
+	title: _x( 'Gist', 'block name', 'coblocks' ),
+	description: __( 'Embed GitHub gists by adding a gist link.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'code', 'block keyword' ), 'github', 'coblocks' ],
+	keywords: [ _x( 'code', 'block keyword', 'coblocks' ), 'github', 'coblocks' ],
 	supports: {
 		html: false,
 		align: [ 'wide' ],

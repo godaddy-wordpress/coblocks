@@ -95,11 +95,11 @@ class Inspector extends Component {
 		} = attributes;
 
 		const gutterOptions = [
-			{ value: 'no', label: __( 'None' ) },
-			{ value: 'small', label: __( 'Small' ) },
-			{ value: 'medium', label: __( 'Medium' ) },
-			{ value: 'large', label: __( 'Large' ) },
-			{ value: 'huge', label: __( 'Huge' ) },
+			{ value: 'no', label: __( 'None', 'coblocks' ) },
+			{ value: 'small', label: __( 'Small', 'coblocks' ) },
+			{ value: 'medium', label: __( 'Medium', 'coblocks' ) },
+			{ value: 'large', label: __( 'Large', 'coblocks' ) },
+			{ value: 'huge', label: __( 'Huge', 'coblocks' ) },
 		];
 
 		let selectedRows = 1;
@@ -116,9 +116,9 @@ class Inspector extends Component {
 						{ layout &&
 						<Fragment>
 							{ selectedRows > 1 &&
-								<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
+								<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 									<div className="components-coblocks-visual-dropdown">
-										<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
+										<ButtonGroup aria-label={ __( 'Select Row Layout', 'coblocks' ) }>
 											{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
 												<Tooltip text={ name }>
 													<div className={ ( key === layout ) ? 'components-coblocks-visual-dropdown__button-wrapper is-selected' : 'components-coblocks-visual-dropdown__button-wrapper' }>
@@ -150,12 +150,12 @@ class Inspector extends Component {
 							}
 							{ layout &&
 								<Fragment>
-									<PanelBody title={ __( 'Row Settings' ) }>
+									<PanelBody title={ __( 'Row Settings', 'coblocks' ) }>
 										{ hasMarginControl &&
 											<DimensionsControl { ...this.props }
 												type={ 'margin' }
-												label={ __( 'Margin' ) }
-												help={ __( 'Space around the container.' ) }
+												label={ __( 'Margin', 'coblocks' ) }
+												help={ __( 'Space around the container.', 'coblocks' ) }
 												valueTop={ marginTop }
 												valueRight={ marginRight }
 												valueBottom={ marginBottom }
@@ -177,8 +177,8 @@ class Inspector extends Component {
 										}
 										<DimensionsControl { ...this.props }
 											type={ 'padding' }
-											label={ __( 'Padding' ) }
-											help={ __( 'Space inside of the container.' ) }
+											label={ __( 'Padding', 'coblocks' ) }
+											help={ __( 'Space inside of the container.', 'coblocks' ) }
 											valueTop={ paddingTop }
 											valueRight={ paddingRight }
 											valueBottom={ paddingBottom }
@@ -199,16 +199,16 @@ class Inspector extends Component {
 										/>
 										{ selectedRows >= 2 &&
 											<SelectControl
-												label={ __( 'Gutter' ) }
+												label={ __( 'Gutter', 'coblocks' ) }
 												value={ gutter }
 												options={ gutterOptions }
-												help={ __( 'Space between each column.' ) }
+												help={ __( 'Space between each column.', 'coblocks' ) }
 												onChange={ ( value ) => setAttributes( { gutter: value } ) }
 											/>
 										}
 									</PanelBody>
 									<PanelColorSettings
-										title={ __( 'Color Settings' ) }
+										title={ __( 'Color Settings', 'coblocks' ) }
 										initialOpen={ false }
 										colorSettings={ [
 											{
@@ -224,12 +224,12 @@ class Inspector extends Component {
 														setAttributes( { paddingSize: 'no' } );
 													}
 												},
-												label: __( 'Background Color' ),
+												label: __( 'Background Color', 'coblocks' ),
 											},
 											{
 												value: textColor.color,
 												onChange: setTextColor,
-												label: __( 'Text Color' ),
+												label: __( 'Text Color', 'coblocks' ),
 											},
 										] }
 									>

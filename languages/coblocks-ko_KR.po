@@ -1,14 +1,14 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.16.0\n"
+"Project-Id-Version: CoBlocks 1.16.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-10-17T20:17:54+00:00\n"
+"POT-Creation-Date: 2019-10-18T18:40:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -67,6 +67,8 @@ msgstr "색 설정"
 #: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:103
 #: src/extensions/colors/index.js:47
+#: src/blocks/share/inspector.js:81
+#: src/blocks/social-profiles/inspector.js:85
 msgid "Background Color"
 msgstr "배경색"
 
@@ -127,11 +129,13 @@ msgid "Edit avatar"
 msgstr "아바타 편집"
 
 #. placeholder text used for the author name
+#. translators: placeholder text used for the author name
 #: src/blocks/author/edit.js:127
 msgid "Write author name…"
 msgstr "작성자 이름 쓰기..."
 
 #. placeholder text used for the biography
+#. translators: placeholder text used for the biography
 #: src/blocks/author/edit.js:141
 msgid "Write a biography that distills objective credibility and authority to your readers…"
 msgstr "귀하의 독자들에게 객관적인 신뢰성과 권위를 보여주는 약력을 작성하세요..."
@@ -165,6 +169,7 @@ msgid "Toggle to stack buttons on mobile."
 msgstr "모바일에서 버튼을 스택하려면 토글합니다."
 
 #: src/blocks/click-to-tweet/controls.js:44
+#: src/blocks/click-to-tweet/controls.js:37
 msgid "Twitter Username"
 msgstr "Twitter 사용자 이름"
 
@@ -177,6 +182,7 @@ msgid "Add button..."
 msgstr "버튼 추가..."
 
 #. the text of the click to tweet element
+#. translators: the text of the click to tweet element
 #: src/blocks/click-to-tweet/edit.js:82
 msgid "Add a quote to tweet..."
 msgstr "트윗할 인용 추가..."
@@ -254,7 +260,7 @@ msgstr "귀하의 제품 또는 서비스에 대한 간단한 노트를 최대 3
 #: src/blocks/row/inspector.js:157
 #: src/components/dimensions-control/index.js:295
 msgid "Margin"
-msgstr "여백"
+msgstr "바깥 여백"
 
 #: src/blocks/features/inspector.js:164
 #: src/blocks/gallery-carousel/inspector.js:84
@@ -262,6 +268,8 @@ msgstr "여백"
 #: src/blocks/gallery-stacked/inspector.js:91
 #: src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
+#: src/blocks/gallery-carousel/inspector.js:78
+#: src/blocks/gallery-collage/inspector.js:107
 msgid "Gutter"
 msgstr "제본용 여백"
 
@@ -312,8 +320,9 @@ msgid "Columns"
 msgstr "열"
 
 #: src/blocks/food-and-drinks/appender.js:22
+#: src/blocks/food-and-drinks/appender.js:17
 msgid "Add Menu Section"
-msgstr "메뉴 섹션 추가"
+msgstr "메뉴 추가 섹션"
 
 #: src/blocks/food-and-drinks/edit.js:27
 msgid "Menu title..."
@@ -386,7 +395,7 @@ msgstr "$0.00"
 
 #: src/blocks/food-and-drinks/food-item/index.js:27
 msgid "A food and drink item within the Food & Drinks block."
-msgstr "식품 및 음료 블록의 식품 및 음료 항목."
+msgstr "식음료 블록의 식품 및 음료 항목."
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:19
 msgid "Item Settings"
@@ -471,7 +480,7 @@ msgstr "스타일"
 
 #: src/blocks/food-and-drinks/inspector.js:59
 msgid "Food & Drinks Settings"
-msgstr "식품 및 음료 설정"
+msgstr "식음료 설정"
 
 #: src/blocks/food-and-drinks/inspector.js:61
 msgid "Images"
@@ -498,16 +507,19 @@ msgid "Toggle to show the price of each item."
 msgstr "각 항목의 가격을 표시하려면 토글합니다."
 
 #. %s: Placeholder for email address provided by user.
+#. translators: %s: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:171
 msgid "%s is not a valid email address."
 msgstr "‌‌%s은(는) 올바른 이메일 주소가 아닙니다."
 
 #. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:181
 msgid "%s and %s are not a valid email address."
-msgstr "‌‌%s 및 %s은(는) 올바른 이메일 주소가 아닙니다."
+msgstr "‌‌‌‌%s 및 %s‌‌은(는) 올바른 이메일 주소가 아닙니다."
 
 #. %s1: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:189
 msgid "%s are not a valid email address."
 msgstr "‌‌%s은(는) 올바른 이메일 주소가 아닙니다."
@@ -590,6 +602,7 @@ msgstr "확인된 이메일 주소를 수집하기 위한 필드."
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
+#: src/blocks/form/fields/name/edit.js:49
 msgid "Add label…"
 msgstr "레이블 추가..."
 
@@ -598,6 +611,7 @@ msgid "Required"
 msgstr "요청됨"
 
 #: src/blocks/form/fields/multi-field.js:102
+#: src/blocks/form/fields/multi-field.js:99
 msgid "Add Option"
 msgstr "옵션 추가"
 
@@ -660,6 +674,8 @@ msgid "Carousel"
 msgstr "회전식"
 
 #. %1$d is the order number of the image, %2$d is the total number of images.
+#. translators: %1$d is the order number of the image, %2$d is the total number of images
+#. translators: %1$d is the order number of the image, %2$d is the total number of images.
 #: src/blocks/gallery-carousel/edit.js:310
 #: src/blocks/gallery-masonry/edit.js:219
 #: src/blocks/gallery-stacked/edit.js:191
@@ -708,6 +724,7 @@ msgstr "회전식 설정"
 #: src/blocks/gallery-carousel/inspector.js:71
 #: src/blocks/icon/inspector.js:173
 #: src/components/typography-controls/index.js:189
+#: src/blocks/icon/inspector.js:106
 msgid "Size"
 msgstr "크기"
 
@@ -718,7 +735,7 @@ msgstr "크기"
 #: src/blocks/social-profiles/inspector.js:124
 #: src/components/background/panel.js:156
 msgid "Rounded Corners"
-msgstr "둥근 모서리"
+msgstr "둥근 모양"
 
 #: src/blocks/gallery-collage/edit.js:174
 #: src/blocks/map/edit.js:306
@@ -739,6 +756,7 @@ msgid "Collage Settings"
 msgstr "콜라주 설정"
 
 #: src/blocks/gallery-collage/inspector.js:128
+#: src/blocks/gallery-collage/inspector.js:127
 msgid "Shadow"
 msgstr "그림자"
 
@@ -802,11 +820,11 @@ msgstr "라이트박스"
 
 #: src/blocks/gallery-stacked/edit.js:168
 msgid "Stacked"
-msgstr "쌓기"
+msgstr "누적형"
 
 #: src/blocks/gallery-stacked/index.js:35
 msgid "Display multiple images in an single column stacked gallery."
-msgstr "열이 한 개만 쌓여 있는 갤러리에 여러 이미지를 표시합니다."
+msgstr "열이 한 개인 누적형 갤러리에 여러 이미지를 표시합니다."
 
 #: src/blocks/gallery-stacked/inspector.js:105
 msgid "Box Shadow"
@@ -869,6 +887,7 @@ msgid "View Gist"
 msgstr "gist 보기"
 
 #: src/blocks/gist/controls.js:68
+#: src/blocks/gist/controls.js:61
 msgid "GitHub File"
 msgstr "GitHub 파일"
 
@@ -983,7 +1002,7 @@ msgstr "오른쪽 하단"
 
 #: src/blocks/highlight/edit.js:113
 msgid "Add highlighted text..."
-msgstr "하이라이트 텍스트"
+msgstr "하이라이트 텍스트 추가..."
 
 #: src/blocks/highlight/index.js:28
 msgid "Draw attention and emphasize important narrative."
@@ -1054,7 +1073,7 @@ msgstr "링크 URL"
 
 #: src/blocks/icon/inspector.js:292
 msgid "Link Rel"
-msgstr "링크 관계"
+msgstr "Link Rel"
 
 #: src/blocks/icon/inspector.js:297
 msgid "Opening in New Tab"
@@ -1068,6 +1087,8 @@ msgstr "새 탭에서 열기"
 #: src/blocks/icon/inspector.js:309
 #: src/blocks/share/inspector.js:104
 #: src/blocks/social-profiles/inspector.js:108
+#: src/blocks/share/inspector.js:68
+#: src/blocks/social-profiles/inspector.js:95
 msgid "Icon Color"
 msgstr "아이콘 색"
 
@@ -1111,6 +1132,7 @@ msgstr "지도 스타일"
 #: src/blocks/map/deprecated.js:96
 #: src/blocks/map/edit.js:293
 #: src/blocks/map/save.js:50
+#: src/blocks/map/edit.js:241
 msgid "Google Map"
 msgstr "Google 지도"
 
@@ -1127,6 +1149,7 @@ msgid "Search for a place or address…"
 msgstr "장소 또는 주소 검색..."
 
 #: src/blocks/map/edit.js:320
+#: src/blocks/map/edit.js:312
 msgid "Cancel"
 msgstr "취소"
 
@@ -1163,6 +1186,7 @@ msgid "Toggle to enable map control options."
 msgstr "지도 제어 옵션을 설정하려면 토글합니다."
 
 #: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:167
 msgid "Map Controls"
 msgstr "지도 제어"
 
@@ -1263,16 +1287,19 @@ msgid "Toggle to add a card shadow."
 msgstr "카드 그림자를 추가하려면 토글합니다."
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:118
 msgid " %s Shadow"
 msgstr " %s 그림자"
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:124
 msgid "Showing %s shadow."
 msgstr "%s 그림자를 표시합니다."
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:126
 msgid "Toggle to add an %s shadow"
 msgstr "%s 그림자를 추가하려면 토글합니다."
@@ -1429,6 +1456,7 @@ msgid "Display posts or an RSS feed as stacked or horizontal cards."
 msgstr "게시물 또는 RSS 피트를 쌓기 또는 가로 카드 형식으로 표시합니다."
 
 #: src/blocks/posts/inspector.js:129
+#: src/blocks/posts/inspector.js:121
 msgid "Thumbnail Size"
 msgstr "축소파 그림 크기"
 
@@ -1456,6 +1484,7 @@ msgstr "가격표 네 개"
 msgid "Change pricing table count"
 msgstr "가격표 수 변경"
 
+#. translators: %d: a digit 1-3
 #: src/blocks/pricing-table/edit.js:39
 msgid "Plan %d"
 msgstr "플랜 %d"
@@ -1554,9 +1583,10 @@ msgid "Row"
 msgstr "행"
 
 #. %s: 'one' 'two' 'three' and 'four'
+#. translators: %s: 'one' 'two' 'three' and 'four'
 #: src/blocks/row/edit.js:205
 msgid "Now select a layout for this %s column row."
-msgstr "이제 이 %s 열 행의 레이아웃을 선택합니다."
+msgstr "이제 이 %s열 행의 레이아웃을 선택합니다."
 
 #: src/blocks/row/edit.js:206
 msgid "Select the number of columns for this row."
@@ -1940,6 +1970,8 @@ msgid "Remove Background"
 msgstr "배경 제거"
 
 #: src/components/background/controls.js:96
+#: src/components/background/controls.js:81
+#: src/components/background/controls.js:82
 msgid "Background"
 msgstr "배경"
 
@@ -2012,6 +2044,7 @@ msgid "Link To"
 msgstr "링크 대상:"
 
 #. %s: Type of gallery
+#. translators: %s: Type of gallery
 #: src/components/block-gallery/gallery-placeholder.js:71
 msgid "%s Gallery"
 msgstr "%s 갤러리"
@@ -2033,6 +2066,7 @@ msgid "Custom URL"
 msgstr "사용자 지정 URL"
 
 #: src/components/crop-settings/index.js:275
+#: src/components/crop-settings/index.js:272
 msgid "Crop settings image placeholder"
 msgstr "자르기 설정 이미지 자리 표시자"
 
@@ -2061,46 +2095,67 @@ msgid "Select Units"
 msgstr "단위 선택"
 
 #. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
+#. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
 #: src/components/dimensions-control/index.js:453
+#: src/components/dimensions-control/index.js:445
 msgid "%s Units"
 msgstr "%s 단위"
 
 #. %s: a texual label
+#. translators: %s: a texual label
 #: src/components/dimensions-control/index.js:468
 msgid "Turn off advanced %s settings"
 msgstr "고급 %s 설정 끄기"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:640
+#: src/components/dimensions-control/index.js:512
+#: src/components/dimensions-control/index.js:576
 msgid "%s Top"
 msgstr "%s 상단"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:651
+#: src/components/dimensions-control/index.js:523
+#: src/components/dimensions-control/index.js:587
 msgid "%s Right"
 msgstr "%s 오른쪽"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:662
+#: src/components/dimensions-control/index.js:534
+#: src/components/dimensions-control/index.js:598
 msgid "%s Bottom"
 msgstr "%s 하단"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:673
+#: src/components/dimensions-control/index.js:545
+#: src/components/dimensions-control/index.js:609
 msgid "%s Left"
 msgstr "%s 왼쪽"
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Unsync"
 msgstr "비동기화"
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Sync"
 msgstr "동기화"
 
 #: src/components/dimensions-control/index.js:682
+#: src/components/dimensions-control/index.js:554
+#: src/components/dimensions-control/index.js:618
 msgid "Sync Units"
-msgstr "동기화 단위"
+msgstr "단위 동기화"
 
 #: src/components/dimensions-control/index.js:699
 msgid "Top"
@@ -2119,6 +2174,7 @@ msgid "Left"
 msgstr "왼쪽"
 
 #. %s:  a texual label
+#. translators: %s:  a texual label
 #: src/components/dimensions-control/index.js:722
 msgid "Advanced %s settings"
 msgstr "고급 %s 설정"
@@ -2152,6 +2208,7 @@ msgid "Toggle to enable fullscreen mode."
 msgstr "전체 화면 모드를 설정하려면 토글합니다."
 
 #. %d: heading level e.g: "1", "2", "3"
+#. translators: %d: heading level e.g: "1", "2", "3"
 #: src/components/heading-toolbar/index.js:18
 msgid "Heading %d"
 msgstr "머리글 %d"
@@ -2169,6 +2226,7 @@ msgid "Height"
 msgstr "높이"
 
 #. %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#. translators: %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
 #: src/components/responsive-tabs-control/index.js:65
 msgid "Mobile %s"
 msgstr "모바일 %s"
@@ -2246,6 +2304,7 @@ msgid "second"
 msgstr "초"
 
 #. 1. Speed of the slider, 2: Time until the slide advances
+#. translators: 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Advancing after %1$d %2$s."
 msgstr "%1$d %2$s 후로 진행"
@@ -2329,7 +2388,7 @@ msgstr "글꼴"
 
 #: src/components/typography-controls/index.js:171
 msgid "Weight"
-msgstr "무게"
+msgstr "두께"
 
 #: src/components/typography-controls/index.js:180
 msgid "Transform"
@@ -2408,6 +2467,7 @@ msgid "Crop Settings"
 msgstr "자르기 설정"
 
 #: src/formats/uppercase/index.js:35
+#: src/formats/uppercase/index.js:20
 msgid "Uppercase"
 msgstr "대문자"
 
@@ -2436,11 +2496,13 @@ msgid "Disable all"
 msgstr "모두 사용 안 함"
 
 #. %s: search text
+#. translators: %s: search text
 #: src/sidebars/block-manager/components/options/disable-blocks.js:233
 msgid "No \"%s\" blocks found."
 msgstr "‘%s’ 블록을 찾을 수 없음."
 
 #. %s: Plugin title, i.e. CoBlocks
+#. translators: %s: Plugin title, i.e. CoBlocks
 #: src/utils/block-category.js:21
 msgid "%s Galleries"
 msgstr "%s 갤러리"
@@ -2448,7 +2510,7 @@ msgstr "%s 갤러리"
 #: src/blocks/accordion/accordion-item/controls.js:28
 msgctxt "Toggle label to display the accordion open"
 msgid "Display open"
-msgstr "열기 표시"
+msgstr "펼침 표시"
 
 #: src/blocks/accordion/accordion-item/edit.js:65
 msgctxt "Accordion is the block name"
@@ -2686,7 +2748,7 @@ msgstr "고객"
 #: src/blocks/logos/index.js:29
 msgctxt "block keyword"
 msgid "proof"
-msgstr "증명"
+msgstr "검증"
 
 #: src/blocks/logos/index.js:29
 msgctxt "block keyword"
@@ -2794,7 +2856,7 @@ msgstr "링크"
 #: src/blocks/accordion/accordion-item/inspector.js:65
 msgctxt "Visually display open as opposed to closed."
 msgid "Display Open"
-msgstr "열기 표시"
+msgstr "펼침 표시"
 
 #: src/blocks/accordion/edit.js:74
 msgctxt "Add a child element for the Accordion block"
@@ -2839,7 +2901,7 @@ msgstr "트윗하려면 클릭"
 #: src/blocks/dynamic-separator/index.js:27
 msgctxt "block name"
 msgid "Dynamic HR"
-msgstr "Dynamic HR(구분선)"
+msgstr "동적 가로줄"
 
 #: src/blocks/features/feature/index.js:28
 msgctxt "block name"
@@ -2859,7 +2921,7 @@ msgstr "식품"
 #: src/blocks/food-and-drinks/index.js:26
 msgctxt "block name"
 msgid "Food & Drinks"
-msgstr "식품 및 음료"
+msgstr "식음료"
 
 #: src/blocks/form/fields/date/index.js:19
 msgctxt "block name"
@@ -2914,7 +2976,7 @@ msgstr "석조"
 #: src/blocks/gallery-stacked/index.js:34
 msgctxt "block name"
 msgid "Stacked"
-msgstr "쌓기"
+msgstr "누적형"
 
 #: src/blocks/gif/index.js:26
 msgctxt "block name"
@@ -3085,7 +3147,7 @@ msgstr "채워짐"
 #: src/blocks/posts/edit.js:49
 msgctxt "block style"
 msgid "Stacked"
-msgstr "쌓기"
+msgstr "누적형"
 
 #: src/blocks/posts/edit.js:55
 msgctxt "block style"
@@ -3105,7 +3167,7 @@ msgstr "언덕"
 #: src/blocks/shape-divider/index.js:40
 msgctxt "block style"
 msgid "Waves"
-msgstr "물결"
+msgstr "파동"
 
 #: src/blocks/shape-divider/index.js:41
 msgctxt "block style"
@@ -3265,7 +3327,7 @@ msgstr "모바일에서 스택"
 #: src/blocks/dynamic-separator/inspector.js:43
 msgctxt "hr is html markup - horizonal rule"
 msgid "Dynamic HR Settings"
-msgstr "동적 HR 설정"
+msgstr "동적 가로줄 설정"
 
 #: src/blocks/gallery-collage/inspector.js:55
 msgctxt "label for no gutter option"
@@ -3273,6 +3335,7 @@ msgid "None"
 msgstr "없음"
 
 #: src/blocks/gallery-collage/inspector.js:84
+#: src/blocks/gallery-collage/inspector.js:56
 msgctxt "abbreviation for \"Short\" size"
 msgid "None"
 msgstr "없음"
@@ -3284,6 +3347,7 @@ msgstr "작게"
 
 #: src/blocks/gallery-collage/inspector.js:89
 #: src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:61
 msgctxt "abbreviation for \"Small\" size"
 msgid "S"
 msgstr "초"
@@ -3295,6 +3359,7 @@ msgstr "보통"
 
 #: src/blocks/gallery-collage/inspector.js:94
 #: src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:66
 msgctxt "abbreviation for \"Medium\" size"
 msgid "M"
 msgstr "m"
@@ -3306,6 +3371,7 @@ msgstr "크게"
 
 #: src/blocks/gallery-collage/inspector.js:99
 #: src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:71
 msgctxt "abbreviation for \"Large\" size"
 msgid "L"
 msgstr "L"
@@ -3368,7 +3434,7 @@ msgstr "산점도"
 #: src/blocks/icon/svgs.js:125
 msgctxt "label"
 msgid "Poll"
-msgstr "설문"
+msgstr "투표"
 
 #: src/blocks/icon/svgs.js:131
 msgctxt "label"
@@ -3446,6 +3512,7 @@ msgid "Hub"
 msgstr "허브"
 
 #: src/blocks/icon/svgs.js:208
+#: src/blocks/icon/svgs.js:202
 msgctxt "label"
 msgid "Email"
 msgstr "이메일"
@@ -3483,7 +3550,7 @@ msgstr "산"
 #: src/blocks/icon/svgs.js:247
 msgctxt "label"
 msgid "Waves"
-msgstr "물결"
+msgstr "파동"
 
 #: src/blocks/icon/svgs.js:25
 msgctxt "label"
@@ -3538,7 +3605,7 @@ msgstr "신용 카드"
 #: src/blocks/icon/svgs.js:302
 msgctxt "label"
 msgid "Extension"
-msgstr "확장자"
+msgstr "확장"
 
 #: src/blocks/icon/svgs.js:308
 msgctxt "label"
@@ -3573,12 +3640,12 @@ msgstr "레이어"
 #: src/blocks/icon/svgs.js:334
 msgctxt "label"
 msgid "Shipping"
-msgstr "선박"
+msgstr "운송"
 
 #: src/blocks/icon/svgs.js:339
 msgctxt "label"
 msgid "Snowflake"
-msgstr "눈꽃"
+msgstr "눈송이"
 
 #: src/blocks/icon/svgs.js:344
 msgctxt "label"
@@ -3638,7 +3705,7 @@ msgstr "컬러 렌즈"
 #: src/blocks/icon/svgs.js:84
 msgctxt "label"
 msgid "Color Picker"
-msgstr "색상 선택"
+msgstr "컬러 선택"
 
 #: src/blocks/icon/svgs.js:90
 msgctxt "label"
@@ -3651,6 +3718,7 @@ msgid "Brush"
 msgstr "브러시"
 
 #: src/blocks/icon/svgs.js:109
+#: src/blocks/icon/svgs.js:103
 msgctxt "tags"
 msgid "add minus circle insert plus round math"
 msgstr "추가 빼기 원 삽입 더하기 원형 수학"
@@ -3701,6 +3769,7 @@ msgid "rate vote plus favorite like"
 msgstr "평가 투표 추가 즐겨찾기 좋아요"
 
 #: src/blocks/icon/svgs.js:177
+#: src/blocks/icon/svgs.js:166
 msgctxt "tags"
 msgid "computer apple montior device pc desk office"
 msgstr "컴퓨터 Apple 모니터 기기 PC 데스크 오피스"
@@ -3716,6 +3785,7 @@ msgid "device apple mac"
 msgstr "기기 Apple Mac"
 
 #: src/blocks/icon/svgs.js:193
+#: src/blocks/icon/svgs.js:172
 msgctxt "tags"
 msgid "computer ipad surface apple device pc desk office"
 msgstr "컴퓨터 iPad 표면 Apple 기기 PC 데스크 오피스"
@@ -3731,6 +3801,7 @@ msgid "music microphone podcast song artist creative media audio"
 msgstr "음악 마이크 팟캐스트 노래 아티스트 창조 미디어 오디오"
 
 #: src/blocks/icon/svgs.js:209
+#: src/blocks/icon/svgs.js:203
 msgctxt "tags"
 msgid "email mail os read letter"
 msgstr "이메일 메일 OS 읽기 문자"
@@ -3768,7 +3839,7 @@ msgstr "위치 지도 공공 비즈니스 회사 빌딩 도시 고층 빌딩"
 #: src/blocks/icon/svgs.js:263
 msgctxt "tags"
 msgid "food drink restaurant menu fork spoon taste"
-msgstr "식품 음료 식당 메뉴 포크 숟가락 맛"
+msgstr "식음료 식당 메뉴 포크 숟가락 맛"
 
 #: src/blocks/icon/svgs.js:268
 msgctxt "tags"
@@ -3786,6 +3857,7 @@ msgid "petal scent smell nice relax landscape gardening outdoors outside"
 msgstr "꽃잎 향기 냄새 멋진 이완 풍경 가드닝 실외 바깥"
 
 #: src/blocks/icon/svgs.js:292
+#: src/blocks/icon/svgs.js:230
 msgctxt "tags"
 msgid "blocks block box boxes square build widgets"
 msgstr "블록 블락 상자 박스 네모 구축 위젯"
@@ -3821,6 +3893,7 @@ msgid "microphone audio beats bose headphones"
 msgstr "마이크 오디오 비트 Bose 헤드폰"
 
 #: src/blocks/icon/svgs.js:325
+#: src/blocks/icon/svgs.js:286
 msgctxt "tags"
 msgid "flower camera photography artist creative"
 msgstr "꽃 카메라 사진 아티스트 창조"
@@ -3856,6 +3929,7 @@ msgid "improve add upload software"
 msgstr "개선 추가 업로드 소프트웨어"
 
 #: src/blocks/icon/svgs.js:37
+#: src/blocks/icon/svgs.js:26
 msgctxt "tags"
 msgid "music microphone song artist creative media audio"
 msgstr "음악 마이크 노래 아티스트 창조 미디어 오디오"
@@ -3891,6 +3965,7 @@ msgid "video videography director producer media creative camera photographer ph
 msgstr "비디오 동영상 감독 프로듀서 비디어 창조 카메라 사진 작가 사진 조리개"
 
 #: src/blocks/icon/svgs.js:85
+#: src/blocks/icon/svgs.js:79
 msgctxt "tags"
 msgid "palette design colors artist paint creative media"
 msgstr "팔레트 디자인 색상 아티스트 페인트 창조 미디어"
@@ -3928,7 +4003,7 @@ msgstr "다크"
 #: src/blocks/map/styles.js:28
 msgctxt "block styles"
 msgid "Night"
-msgstr "밤"
+msgstr "나이트"
 
 #: src/blocks/map/styles.js:32
 msgctxt "block styles"
@@ -3996,17 +4071,17 @@ msgstr "아주 크게"
 #: src/components/background/panel.js:102
 msgctxt "block layout"
 msgid "Auto"
-msgstr "자동"
+msgstr "Auto"
 
 #: src/components/background/panel.js:103
 msgctxt "block layout"
 msgid "Cover"
-msgstr "커버"
+msgstr "Cover"
 
 #: src/components/background/panel.js:104
 msgctxt "block layout"
 msgid "Contain"
-msgstr "포함"
+msgstr "Contain"
 
 #: src/components/background/panel.js:83
 #: src/components/grid-control/index.js:35
@@ -4028,18 +4103,21 @@ msgstr "오른쪽 상단"
 
 #: src/components/background/panel.js:86
 #: src/components/grid-control/index.js:48
+#: src/components/grid-control/index.js:38
 msgctxt "block layout"
 msgid "Center Left"
 msgstr "왼쪽 중앙"
 
 #: src/components/background/panel.js:87
 #: src/components/grid-control/index.js:49
+#: src/components/grid-control/index.js:39
 msgctxt "block layout"
 msgid "Center Center"
 msgstr "가운데 중앙"
 
 #: src/components/background/panel.js:88
 #: src/components/grid-control/index.js:50
+#: src/components/grid-control/index.js:40
 msgctxt "block layout"
 msgid "Center Right"
 msgstr "오른쪽 중앙"
@@ -4085,7 +4163,7 @@ msgstr "세로로 반복"
 #: src/components/block-gallery/gallery-link-settings.js:80
 msgctxt "HTML attribute that specifies the a relationship between the two pages."
 msgid "Link Rel"
-msgstr "링크 관계"
+msgstr "Link Rel"
 
 #: src/components/block-gallery/options/caption-options.js:10
 msgctxt "visual style option"
@@ -4095,7 +4173,7 @@ msgstr "다크"
 #: src/components/block-gallery/options/caption-options.js:11
 msgctxt "visual style option"
 msgid "Light"
-msgstr "라이트"
+msgstr "Light"
 
 #: src/components/block-gallery/options/caption-options.js:12
 msgctxt "visual style option"
@@ -4168,6 +4246,7 @@ msgid "Capitalize"
 msgstr "대문자로 시작"
 
 #: src/components/typography-controls/index.js:107
+#: src/components/typography-controls/index.js:80
 msgctxt "typography styles"
 msgid "Normal"
 msgstr "보통"
@@ -4178,6 +4257,7 @@ msgid "Bold"
 msgstr "굵게"
 
 #: src/components/typography-controls/index.js:91
+#: src/components/typography-controls/index.js:76
 msgctxt "typography styles"
 msgid "Default"
 msgstr "기본"
@@ -4322,6 +4402,16 @@ msgstr "메시지가 전송됨:"
 #: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
 msgstr "맵 렌더링을 위한 Google 지도 API 키"
+
+#: src/blocks/post-carousel/index.php:40
+#: src/blocks/posts/index.php:40
+msgid "RSS Error:"
+msgstr "RSS Error:"
+
+#: src/blocks/post-carousel/index.php:51
+#: src/blocks/posts/index.php:51
+msgid "An error has occurred, which probably means the feed is down. Try again later."
+msgstr "An error has occurred, which probably means the feed is down. Try again later."
 
 #: src/blocks/share/index.php:144
 msgid "Share on Linkedin"

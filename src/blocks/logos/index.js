@@ -23,10 +23,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Logos & Badges', 'block name' ),
-	description: __( 'Add logos, badges, or certifications to build credibility.' ),
+	title: _x( 'Logos & Badges', 'block name', 'coblocks' ),
+	description: __( 'Add logos, badges, or certifications to build credibility.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'clients', 'block keyword' ), _x( 'proof', 'block keyword' ), _x( 'testimonials', 'block keyword' ) ],
+	keywords: [ _x( 'clients', 'block keyword', 'coblocks' ), _x( 'proof', 'block keyword', 'coblocks' ), _x( 'testimonials', 'block keyword', 'coblocks' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 	},

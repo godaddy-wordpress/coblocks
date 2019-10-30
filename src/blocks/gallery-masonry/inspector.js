@@ -46,11 +46,11 @@ class Inspector extends Component {
 	}
 
 	getCaptionsHelp( checked ) {
-		return checked ? __( 'Showing captions for each media item.' ) : __( 'Toggle to show media captions.' );
+		return checked ? __( 'Showing captions for each media item.', 'coblocks' ) : __( 'Toggle to show media captions.', 'coblocks' );
 	}
 
 	getLightboxHelp( checked ) {
-		return checked ? __( 'Image lightbox is enabled.' ) : __( 'Toggle to enable the image lightbox.' );
+		return checked ? __( 'Image lightbox is enabled.', 'coblocks' ) : __( 'Toggle to enable the image lightbox.', 'coblocks' );
 	}
 
 	render() {
@@ -70,18 +70,18 @@ class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Masonry Settings' ) }>
+				<PanelBody title={ __( 'Masonry Settings', 'coblocks' ) }>
 					<SizeControl { ...this.props }
 						type={ 'grid' }
-						label={ __( 'Column Size' ) }
+						label={ __( 'Column Size', 'coblocks' ) }
 						onChange={ this.setSizeControl }
 						value={ gridSize }
 						resetValue={ 'xlrg' }
 					/>
 					<ResponsiveTabsControl { ...this.props } />
 					{ gutter > 0 && <RangeControl
-						label={ __( 'Rounded Corners' ) }
-						aria-label={ __( 'Add rounded corners to the gallery items.' ) }
+						label={ __( 'Rounded Corners', 'coblocks' ) }
+						aria-label={ __( 'Add rounded corners to the gallery items.', 'coblocks' ) }
 						value={ radius }
 						onChange={ this.setRadiusTo }
 						min={ 0 }
@@ -89,20 +89,20 @@ class Inspector extends Component {
 						step={ 1 }
 					/> }
 					<ToggleControl
-						label={ __( 'Lightbox' ) }
+						label={ __( 'Lightbox', 'coblocks' ) }
 						checked={ !! lightbox }
 						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 						help={ this.getLightboxHelp }
 					/>
 					<ToggleControl
-						label={ __( 'Captions' ) }
+						label={ __( 'Captions', 'coblocks' ) }
 						checked={ !! captions }
 						onChange={ () => setAttributes( { captions: ! captions } ) }
 						help={ this.getCaptionsHelp }
 					/>
 					{ captions &&
 					<SelectControl
-						label={ __( 'Caption Style' ) }
+						label={ __( 'Caption Style', 'coblocks' ) }
 						value={ captionStyle }
 						onChange={ this.setCaptionStyleTo }
 						options={ captionOptions }

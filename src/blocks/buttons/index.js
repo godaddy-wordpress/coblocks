@@ -25,10 +25,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Buttons', 'block name' ),
-	description: __( 'Prompt visitors to take action with multiple buttons, side by side.' ),
+	title: _x( 'Buttons', 'block name', 'coblocks' ),
+	description: __( 'Prompt visitors to take action with multiple buttons, side by side.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'link', 'block keyword' ), _x( 'cta', 'block keyword' ), 'coblocks' ],
+	keywords: [ _x( 'link', 'block keyword', 'coblocks' ), _x( 'cta', 'block keyword', 'coblocks' ), 'coblocks' ],
 	attributes,
 	transforms,
 	edit,

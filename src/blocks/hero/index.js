@@ -37,10 +37,10 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Hero', 'block name' ),
-	description: __( 'An introductory area of a page accompanied by a small amount of text and a call to action.' ),
+	title: _x( 'Hero', 'block name', 'coblocks' ),
+	description: __( 'An introductory area of a page accompanied by a small amount of text and a call to action.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'button', 'block keyword' ), _x( 'cta', 'block keyword' ), _x( 'call to action', 'block keyword' ) ],
+	keywords: [ _x( 'button', 'block keyword', 'coblocks' ), _x( 'cta', 'block keyword', 'coblocks' ), _x( 'call to action', 'block keyword', 'coblocks' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,

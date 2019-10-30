@@ -1,14 +1,14 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.16.0\n"
+"Project-Id-Version: CoBlocks 1.16.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-10-17T20:17:54+00:00\n"
+"POT-Creation-Date: 2019-10-18T18:40:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -67,6 +67,8 @@ msgstr ""
 #: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:103
 #: src/extensions/colors/index.js:47
+#: src/blocks/share/inspector.js:81
+#: src/blocks/social-profiles/inspector.js:85
 msgid "Background Color"
 msgstr ""
 
@@ -127,11 +129,13 @@ msgid "Edit avatar"
 msgstr ""
 
 #. placeholder text used for the author name
+#. translators: placeholder text used for the author name
 #: src/blocks/author/edit.js:127
 msgid "Write author name…"
 msgstr ""
 
 #. placeholder text used for the biography
+#. translators: placeholder text used for the biography
 #: src/blocks/author/edit.js:141
 msgid "Write a biography that distills objective credibility and authority to your readers…"
 msgstr ""
@@ -165,6 +169,7 @@ msgid "Toggle to stack buttons on mobile."
 msgstr ""
 
 #: src/blocks/click-to-tweet/controls.js:44
+#: src/blocks/click-to-tweet/controls.js:37
 msgid "Twitter Username"
 msgstr ""
 
@@ -177,6 +182,7 @@ msgid "Add button..."
 msgstr ""
 
 #. the text of the click to tweet element
+#. translators: the text of the click to tweet element
 #: src/blocks/click-to-tweet/edit.js:82
 msgid "Add a quote to tweet..."
 msgstr ""
@@ -262,6 +268,8 @@ msgstr ""
 #: src/blocks/gallery-stacked/inspector.js:91
 #: src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
+#: src/blocks/gallery-carousel/inspector.js:78
+#: src/blocks/gallery-collage/inspector.js:107
 msgid "Gutter"
 msgstr ""
 
@@ -312,6 +320,7 @@ msgid "Columns"
 msgstr ""
 
 #: src/blocks/food-and-drinks/appender.js:22
+#: src/blocks/food-and-drinks/appender.js:17
 msgid "Add Menu Section"
 msgstr ""
 
@@ -498,16 +507,19 @@ msgid "Toggle to show the price of each item."
 msgstr ""
 
 #. %s: Placeholder for email address provided by user.
+#. translators: %s: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:171
 msgid "%s is not a valid email address."
 msgstr ""
 
 #. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:181
 msgid "%s and %s are not a valid email address."
 msgstr ""
 
 #. %s1: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:189
 msgid "%s are not a valid email address."
 msgstr ""
@@ -590,6 +602,7 @@ msgstr ""
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
+#: src/blocks/form/fields/name/edit.js:49
 msgid "Add label…"
 msgstr ""
 
@@ -598,6 +611,7 @@ msgid "Required"
 msgstr ""
 
 #: src/blocks/form/fields/multi-field.js:102
+#: src/blocks/form/fields/multi-field.js:99
 msgid "Add Option"
 msgstr ""
 
@@ -660,6 +674,8 @@ msgid "Carousel"
 msgstr ""
 
 #. %1$d is the order number of the image, %2$d is the total number of images.
+#. translators: %1$d is the order number of the image, %2$d is the total number of images
+#. translators: %1$d is the order number of the image, %2$d is the total number of images.
 #: src/blocks/gallery-carousel/edit.js:310
 #: src/blocks/gallery-masonry/edit.js:219
 #: src/blocks/gallery-stacked/edit.js:191
@@ -708,6 +724,7 @@ msgstr ""
 #: src/blocks/gallery-carousel/inspector.js:71
 #: src/blocks/icon/inspector.js:173
 #: src/components/typography-controls/index.js:189
+#: src/blocks/icon/inspector.js:106
 msgid "Size"
 msgstr ""
 
@@ -739,6 +756,7 @@ msgid "Collage Settings"
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:128
+#: src/blocks/gallery-collage/inspector.js:127
 msgid "Shadow"
 msgstr ""
 
@@ -869,6 +887,7 @@ msgid "View Gist"
 msgstr ""
 
 #: src/blocks/gist/controls.js:68
+#: src/blocks/gist/controls.js:61
 msgid "GitHub File"
 msgstr ""
 
@@ -1068,6 +1087,8 @@ msgstr ""
 #: src/blocks/icon/inspector.js:309
 #: src/blocks/share/inspector.js:104
 #: src/blocks/social-profiles/inspector.js:108
+#: src/blocks/share/inspector.js:68
+#: src/blocks/social-profiles/inspector.js:95
 msgid "Icon Color"
 msgstr ""
 
@@ -1111,6 +1132,7 @@ msgstr ""
 #: src/blocks/map/deprecated.js:96
 #: src/blocks/map/edit.js:293
 #: src/blocks/map/save.js:50
+#: src/blocks/map/edit.js:241
 msgid "Google Map"
 msgstr ""
 
@@ -1127,6 +1149,7 @@ msgid "Search for a place or address…"
 msgstr ""
 
 #: src/blocks/map/edit.js:320
+#: src/blocks/map/edit.js:312
 msgid "Cancel"
 msgstr ""
 
@@ -1163,6 +1186,7 @@ msgid "Toggle to enable map control options."
 msgstr ""
 
 #: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:167
 msgid "Map Controls"
 msgstr ""
 
@@ -1263,16 +1287,19 @@ msgid "Toggle to add a card shadow."
 msgstr ""
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:118
 msgid " %s Shadow"
 msgstr ""
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:124
 msgid "Showing %s shadow."
 msgstr ""
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:126
 msgid "Toggle to add an %s shadow"
 msgstr ""
@@ -1429,6 +1456,7 @@ msgid "Display posts or an RSS feed as stacked or horizontal cards."
 msgstr ""
 
 #: src/blocks/posts/inspector.js:129
+#: src/blocks/posts/inspector.js:121
 msgid "Thumbnail Size"
 msgstr ""
 
@@ -1456,6 +1484,7 @@ msgstr ""
 msgid "Change pricing table count"
 msgstr ""
 
+#. translators: %d: a digit 1-3
 #: src/blocks/pricing-table/edit.js:39
 msgid "Plan %d"
 msgstr ""
@@ -1554,6 +1583,7 @@ msgid "Row"
 msgstr ""
 
 #. %s: 'one' 'two' 'three' and 'four'
+#. translators: %s: 'one' 'two' 'three' and 'four'
 #: src/blocks/row/edit.js:205
 msgid "Now select a layout for this %s column row."
 msgstr ""
@@ -1940,6 +1970,8 @@ msgid "Remove Background"
 msgstr ""
 
 #: src/components/background/controls.js:96
+#: src/components/background/controls.js:81
+#: src/components/background/controls.js:82
 msgid "Background"
 msgstr ""
 
@@ -2012,6 +2044,7 @@ msgid "Link To"
 msgstr ""
 
 #. %s: Type of gallery
+#. translators: %s: Type of gallery
 #: src/components/block-gallery/gallery-placeholder.js:71
 msgid "%s Gallery"
 msgstr ""
@@ -2033,6 +2066,7 @@ msgid "Custom URL"
 msgstr ""
 
 #: src/components/crop-settings/index.js:275
+#: src/components/crop-settings/index.js:272
 msgid "Crop settings image placeholder"
 msgstr ""
 
@@ -2061,44 +2095,65 @@ msgid "Select Units"
 msgstr ""
 
 #. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
+#. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
 #: src/components/dimensions-control/index.js:453
+#: src/components/dimensions-control/index.js:445
 msgid "%s Units"
 msgstr ""
 
 #. %s: a texual label
+#. translators: %s: a texual label
 #: src/components/dimensions-control/index.js:468
 msgid "Turn off advanced %s settings"
 msgstr ""
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:640
+#: src/components/dimensions-control/index.js:512
+#: src/components/dimensions-control/index.js:576
 msgid "%s Top"
 msgstr ""
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:651
+#: src/components/dimensions-control/index.js:523
+#: src/components/dimensions-control/index.js:587
 msgid "%s Right"
 msgstr ""
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:662
+#: src/components/dimensions-control/index.js:534
+#: src/components/dimensions-control/index.js:598
 msgid "%s Bottom"
 msgstr ""
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:673
+#: src/components/dimensions-control/index.js:545
+#: src/components/dimensions-control/index.js:609
 msgid "%s Left"
 msgstr ""
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Unsync"
 msgstr ""
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Sync"
 msgstr ""
 
 #: src/components/dimensions-control/index.js:682
+#: src/components/dimensions-control/index.js:554
+#: src/components/dimensions-control/index.js:618
 msgid "Sync Units"
 msgstr ""
 
@@ -2119,6 +2174,7 @@ msgid "Left"
 msgstr ""
 
 #. %s:  a texual label
+#. translators: %s:  a texual label
 #: src/components/dimensions-control/index.js:722
 msgid "Advanced %s settings"
 msgstr ""
@@ -2152,6 +2208,7 @@ msgid "Toggle to enable fullscreen mode."
 msgstr ""
 
 #. %d: heading level e.g: "1", "2", "3"
+#. translators: %d: heading level e.g: "1", "2", "3"
 #: src/components/heading-toolbar/index.js:18
 msgid "Heading %d"
 msgstr ""
@@ -2169,6 +2226,7 @@ msgid "Height"
 msgstr ""
 
 #. %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#. translators: %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
 #: src/components/responsive-tabs-control/index.js:65
 msgid "Mobile %s"
 msgstr ""
@@ -2246,6 +2304,7 @@ msgid "second"
 msgstr ""
 
 #. 1. Speed of the slider, 2: Time until the slide advances
+#. translators: 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Advancing after %1$d %2$s."
 msgstr ""
@@ -2408,6 +2467,7 @@ msgid "Crop Settings"
 msgstr ""
 
 #: src/formats/uppercase/index.js:35
+#: src/formats/uppercase/index.js:20
 msgid "Uppercase"
 msgstr ""
 
@@ -2436,11 +2496,13 @@ msgid "Disable all"
 msgstr ""
 
 #. %s: search text
+#. translators: %s: search text
 #: src/sidebars/block-manager/components/options/disable-blocks.js:233
 msgid "No \"%s\" blocks found."
 msgstr ""
 
 #. %s: Plugin title, i.e. CoBlocks
+#. translators: %s: Plugin title, i.e. CoBlocks
 #: src/utils/block-category.js:21
 msgid "%s Galleries"
 msgstr ""
@@ -3273,6 +3335,7 @@ msgid "None"
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:84
+#: src/blocks/gallery-collage/inspector.js:56
 msgctxt "abbreviation for \"Short\" size"
 msgid "None"
 msgstr ""
@@ -3284,6 +3347,7 @@ msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:89
 #: src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:61
 msgctxt "abbreviation for \"Small\" size"
 msgid "S"
 msgstr ""
@@ -3295,6 +3359,7 @@ msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:94
 #: src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:66
 msgctxt "abbreviation for \"Medium\" size"
 msgid "M"
 msgstr ""
@@ -3306,6 +3371,7 @@ msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:99
 #: src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:71
 msgctxt "abbreviation for \"Large\" size"
 msgid "L"
 msgstr ""
@@ -3446,6 +3512,7 @@ msgid "Hub"
 msgstr ""
 
 #: src/blocks/icon/svgs.js:208
+#: src/blocks/icon/svgs.js:202
 msgctxt "label"
 msgid "Email"
 msgstr ""
@@ -3651,6 +3718,7 @@ msgid "Brush"
 msgstr ""
 
 #: src/blocks/icon/svgs.js:109
+#: src/blocks/icon/svgs.js:103
 msgctxt "tags"
 msgid "add minus circle insert plus round math"
 msgstr ""
@@ -3701,6 +3769,7 @@ msgid "rate vote plus favorite like"
 msgstr ""
 
 #: src/blocks/icon/svgs.js:177
+#: src/blocks/icon/svgs.js:166
 msgctxt "tags"
 msgid "computer apple montior device pc desk office"
 msgstr ""
@@ -3716,6 +3785,7 @@ msgid "device apple mac"
 msgstr ""
 
 #: src/blocks/icon/svgs.js:193
+#: src/blocks/icon/svgs.js:172
 msgctxt "tags"
 msgid "computer ipad surface apple device pc desk office"
 msgstr ""
@@ -3731,6 +3801,7 @@ msgid "music microphone podcast song artist creative media audio"
 msgstr ""
 
 #: src/blocks/icon/svgs.js:209
+#: src/blocks/icon/svgs.js:203
 msgctxt "tags"
 msgid "email mail os read letter"
 msgstr ""
@@ -3786,6 +3857,7 @@ msgid "petal scent smell nice relax landscape gardening outdoors outside"
 msgstr ""
 
 #: src/blocks/icon/svgs.js:292
+#: src/blocks/icon/svgs.js:230
 msgctxt "tags"
 msgid "blocks block box boxes square build widgets"
 msgstr ""
@@ -3821,6 +3893,7 @@ msgid "microphone audio beats bose headphones"
 msgstr ""
 
 #: src/blocks/icon/svgs.js:325
+#: src/blocks/icon/svgs.js:286
 msgctxt "tags"
 msgid "flower camera photography artist creative"
 msgstr ""
@@ -3856,6 +3929,7 @@ msgid "improve add upload software"
 msgstr ""
 
 #: src/blocks/icon/svgs.js:37
+#: src/blocks/icon/svgs.js:26
 msgctxt "tags"
 msgid "music microphone song artist creative media audio"
 msgstr ""
@@ -3891,6 +3965,7 @@ msgid "video videography director producer media creative camera photographer ph
 msgstr ""
 
 #: src/blocks/icon/svgs.js:85
+#: src/blocks/icon/svgs.js:79
 msgctxt "tags"
 msgid "palette design colors artist paint creative media"
 msgstr ""
@@ -4028,18 +4103,21 @@ msgstr ""
 
 #: src/components/background/panel.js:86
 #: src/components/grid-control/index.js:48
+#: src/components/grid-control/index.js:38
 msgctxt "block layout"
 msgid "Center Left"
 msgstr ""
 
 #: src/components/background/panel.js:87
 #: src/components/grid-control/index.js:49
+#: src/components/grid-control/index.js:39
 msgctxt "block layout"
 msgid "Center Center"
 msgstr ""
 
 #: src/components/background/panel.js:88
 #: src/components/grid-control/index.js:50
+#: src/components/grid-control/index.js:40
 msgctxt "block layout"
 msgid "Center Right"
 msgstr ""
@@ -4168,6 +4246,7 @@ msgid "Capitalize"
 msgstr ""
 
 #: src/components/typography-controls/index.js:107
+#: src/components/typography-controls/index.js:80
 msgctxt "typography styles"
 msgid "Normal"
 msgstr ""
@@ -4178,6 +4257,7 @@ msgid "Bold"
 msgstr ""
 
 #: src/components/typography-controls/index.js:91
+#: src/components/typography-controls/index.js:76
 msgctxt "typography styles"
 msgid "Default"
 msgstr ""
@@ -4321,6 +4401,16 @@ msgstr ""
 
 #: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
+msgstr ""
+
+#: src/blocks/post-carousel/index.php:40
+#: src/blocks/posts/index.php:40
+msgid "RSS Error:"
+msgstr ""
+
+#: src/blocks/post-carousel/index.php:51
+#: src/blocks/posts/index.php:51
+msgid "An error has occurred, which probably means the feed is down. Try again later."
 msgstr ""
 
 #: src/blocks/share/index.php:144

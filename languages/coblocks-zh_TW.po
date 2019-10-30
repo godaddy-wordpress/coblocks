@@ -1,14 +1,14 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.16.0\n"
+"Project-Id-Version: CoBlocks 1.16.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-10-17T20:17:54+00:00\n"
+"POT-Creation-Date: 2019-10-18T18:40:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -67,6 +67,8 @@ msgstr "色彩設定"
 #: src/blocks/share/inspector.js:99
 #: src/blocks/social-profiles/inspector.js:103
 #: src/extensions/colors/index.js:47
+#: src/blocks/share/inspector.js:81
+#: src/blocks/social-profiles/inspector.js:85
 msgid "Background Color"
 msgstr "背景色彩"
 
@@ -127,11 +129,13 @@ msgid "Edit avatar"
 msgstr "編輯頭像"
 
 #. placeholder text used for the author name
+#. translators: placeholder text used for the author name
 #: src/blocks/author/edit.js:127
 msgid "Write author name…"
 msgstr "填寫作者名稱…"
 
 #. placeholder text used for the biography
+#. translators: placeholder text used for the biography
 #: src/blocks/author/edit.js:141
 msgid "Write a biography that distills objective credibility and authority to your readers…"
 msgstr "撰寫自傳，藉此向讀者傳達客觀的公信力及可靠度…"
@@ -165,6 +169,7 @@ msgid "Toggle to stack buttons on mobile."
 msgstr "切換此選項即可在行動裝置上堆疊按鈕。"
 
 #: src/blocks/click-to-tweet/controls.js:44
+#: src/blocks/click-to-tweet/controls.js:37
 msgid "Twitter Username"
 msgstr "Twitter 使用者名稱"
 
@@ -177,6 +182,7 @@ msgid "Add button..."
 msgstr "新增按鈕..."
 
 #. the text of the click to tweet element
+#. translators: the text of the click to tweet element
 #: src/blocks/click-to-tweet/edit.js:82
 msgid "Add a quote to tweet..."
 msgstr "在推文內新增引言..."
@@ -262,6 +268,8 @@ msgstr "邊界"
 #: src/blocks/gallery-stacked/inspector.js:91
 #: src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
+#: src/blocks/gallery-carousel/inspector.js:78
+#: src/blocks/gallery-collage/inspector.js:107
 msgid "Gutter"
 msgstr "裝訂邊"
 
@@ -312,6 +320,7 @@ msgid "Columns"
 msgstr "欄"
 
 #: src/blocks/food-and-drinks/appender.js:22
+#: src/blocks/food-and-drinks/appender.js:17
 msgid "Add Menu Section"
 msgstr "新增選單區段"
 
@@ -498,16 +507,19 @@ msgid "Toggle to show the price of each item."
 msgstr "切換此選項即可顯示每個項目的價格。"
 
 #. %s: Placeholder for email address provided by user.
+#. translators: %s: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:171
 msgid "%s is not a valid email address."
 msgstr "%s 並非有效的 email 地址。"
 
 #. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:181
 msgid "%s and %s are not a valid email address."
 msgstr "%s 及 %s 並非有效的 email 地址。"
 
 #. %s1: Placeholder for email address provided by user.
+#. translators: %s1: Placeholder for email address provided by user.
 #: src/blocks/form/edit.js:189
 msgid "%s are not a valid email address."
 msgstr "%s 並非有效的 email 地址。"
@@ -590,6 +602,7 @@ msgstr "收集認證 email 地址的欄位。"
 
 #: src/blocks/form/fields/field-label.js:22
 #: src/blocks/form/fields/name/edit.js:61
+#: src/blocks/form/fields/name/edit.js:49
 msgid "Add label…"
 msgstr "新增標籤..."
 
@@ -598,6 +611,7 @@ msgid "Required"
 msgstr "必填"
 
 #: src/blocks/form/fields/multi-field.js:102
+#: src/blocks/form/fields/multi-field.js:99
 msgid "Add Option"
 msgstr "新增選項"
 
@@ -660,6 +674,8 @@ msgid "Carousel"
 msgstr "浮動切換"
 
 #. %1$d is the order number of the image, %2$d is the total number of images.
+#. translators: %1$d is the order number of the image, %2$d is the total number of images
+#. translators: %1$d is the order number of the image, %2$d is the total number of images.
 #: src/blocks/gallery-carousel/edit.js:310
 #: src/blocks/gallery-masonry/edit.js:219
 #: src/blocks/gallery-stacked/edit.js:191
@@ -708,6 +724,7 @@ msgstr "浮動切換設定"
 #: src/blocks/gallery-carousel/inspector.js:71
 #: src/blocks/icon/inspector.js:173
 #: src/components/typography-controls/index.js:189
+#: src/blocks/icon/inspector.js:106
 msgid "Size"
 msgstr "大小"
 
@@ -739,6 +756,7 @@ msgid "Collage Settings"
 msgstr "拼貼設定"
 
 #: src/blocks/gallery-collage/inspector.js:128
+#: src/blocks/gallery-collage/inspector.js:127
 msgid "Shadow"
 msgstr "陰影"
 
@@ -869,6 +887,7 @@ msgid "View Gist"
 msgstr "檢視 Gist"
 
 #: src/blocks/gist/controls.js:68
+#: src/blocks/gist/controls.js:61
 msgid "GitHub File"
 msgstr "GitHub 檔案"
 
@@ -1068,6 +1087,8 @@ msgstr "在新分頁中開啟"
 #: src/blocks/icon/inspector.js:309
 #: src/blocks/share/inspector.js:104
 #: src/blocks/social-profiles/inspector.js:108
+#: src/blocks/share/inspector.js:68
+#: src/blocks/social-profiles/inspector.js:95
 msgid "Icon Color"
 msgstr "圖示色彩"
 
@@ -1111,6 +1132,7 @@ msgstr "地圖樣式"
 #: src/blocks/map/deprecated.js:96
 #: src/blocks/map/edit.js:293
 #: src/blocks/map/save.js:50
+#: src/blocks/map/edit.js:241
 msgid "Google Map"
 msgstr "Google 地圖"
 
@@ -1127,6 +1149,7 @@ msgid "Search for a place or address…"
 msgstr "搜尋地區或地址..."
 
 #: src/blocks/map/edit.js:320
+#: src/blocks/map/edit.js:312
 msgid "Cancel"
 msgstr "取消"
 
@@ -1163,6 +1186,7 @@ msgid "Toggle to enable map control options."
 msgstr "切換此選項即可啟用地圖控制選項。"
 
 #: src/blocks/map/inspector.js:178
+#: src/blocks/map/inspector.js:167
 msgid "Map Controls"
 msgstr "地圖控制"
 
@@ -1263,16 +1287,19 @@ msgid "Toggle to add a card shadow."
 msgstr "切換此選項即可新增卡片陰影。"
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:118
 msgid " %s Shadow"
 msgstr " %s陰影"
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:124
 msgid "Showing %s shadow."
 msgstr "顯示%s陰影"
 
 #. %s: Placeholder is either 'Card, or 'Image'
+#. translators: %s: Placeholder is either 'Card, or 'Image'
 #: src/blocks/media-card/inspector.js:126
 msgid "Toggle to add an %s shadow"
 msgstr "切換此選項即可新增%s陰影"
@@ -1429,6 +1456,7 @@ msgid "Display posts or an RSS feed as stacked or horizontal cards."
 msgstr "以堆疊或橫向卡片顯示貼文或 RSS 摘要。"
 
 #: src/blocks/posts/inspector.js:129
+#: src/blocks/posts/inspector.js:121
 msgid "Thumbnail Size"
 msgstr "縮圖大小"
 
@@ -1456,6 +1484,7 @@ msgstr "四項價格表格"
 msgid "Change pricing table count"
 msgstr "變更價格表格的項目數"
 
+#. translators: %d: a digit 1-3
 #: src/blocks/pricing-table/edit.js:39
 msgid "Plan %d"
 msgstr "方案 %d"
@@ -1554,6 +1583,7 @@ msgid "Row"
 msgstr "列"
 
 #. %s: 'one' 'two' 'three' and 'four'
+#. translators: %s: 'one' 'two' 'three' and 'four'
 #: src/blocks/row/edit.js:205
 msgid "Now select a layout for this %s column row."
 msgstr "請為此 %s 欄的列選擇版面配置。"
@@ -1940,6 +1970,8 @@ msgid "Remove Background"
 msgstr "移除背景"
 
 #: src/components/background/controls.js:96
+#: src/components/background/controls.js:81
+#: src/components/background/controls.js:82
 msgid "Background"
 msgstr "背景"
 
@@ -2012,6 +2044,7 @@ msgid "Link To"
 msgstr "連結至"
 
 #. %s: Type of gallery
+#. translators: %s: Type of gallery
 #: src/components/block-gallery/gallery-placeholder.js:71
 msgid "%s Gallery"
 msgstr "%s圖庫"
@@ -2033,6 +2066,7 @@ msgid "Custom URL"
 msgstr "自訂網址"
 
 #: src/components/crop-settings/index.js:275
+#: src/components/crop-settings/index.js:272
 msgid "Crop settings image placeholder"
 msgstr "裁剪設定圖片預留位置"
 
@@ -2061,44 +2095,65 @@ msgid "Select Units"
 msgstr "選擇單位"
 
 #. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
+#. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
 #: src/components/dimensions-control/index.js:453
+#: src/components/dimensions-control/index.js:445
 msgid "%s Units"
 msgstr "%s單位"
 
 #. %s: a texual label
+#. translators: %s: a texual label
 #: src/components/dimensions-control/index.js:468
 msgid "Turn off advanced %s settings"
 msgstr "開啟進階 %s 設定"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:640
+#: src/components/dimensions-control/index.js:512
+#: src/components/dimensions-control/index.js:576
 msgid "%s Top"
 msgstr "頂端%s"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:651
+#: src/components/dimensions-control/index.js:523
+#: src/components/dimensions-control/index.js:587
 msgid "%s Right"
 msgstr "右方%s"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:662
+#: src/components/dimensions-control/index.js:534
+#: src/components/dimensions-control/index.js:598
 msgid "%s Bottom"
 msgstr "底部%s"
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
 #: src/components/dimensions-control/index.js:673
+#: src/components/dimensions-control/index.js:545
+#: src/components/dimensions-control/index.js:609
 msgid "%s Left"
 msgstr "左方%s"
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Unsync"
 msgstr "非同步"
 
 #: src/components/dimensions-control/index.js:679
+#: src/components/dimensions-control/index.js:551
+#: src/components/dimensions-control/index.js:615
 msgid "Sync"
 msgstr "同步"
 
 #: src/components/dimensions-control/index.js:682
+#: src/components/dimensions-control/index.js:554
+#: src/components/dimensions-control/index.js:618
 msgid "Sync Units"
 msgstr "同步單位"
 
@@ -2119,6 +2174,7 @@ msgid "Left"
 msgstr "左方"
 
 #. %s:  a texual label
+#. translators: %s:  a texual label
 #: src/components/dimensions-control/index.js:722
 msgid "Advanced %s settings"
 msgstr "進階 %s 設定"
@@ -2152,6 +2208,7 @@ msgid "Toggle to enable fullscreen mode."
 msgstr "切換此選項即可啟用全螢幕模式。"
 
 #. %d: heading level e.g: "1", "2", "3"
+#. translators: %d: heading level e.g: "1", "2", "3"
 #: src/components/heading-toolbar/index.js:18
 msgid "Heading %d"
 msgstr "標題 %d"
@@ -2169,6 +2226,7 @@ msgid "Height"
 msgstr "高度"
 
 #. %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#. translators: %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
 #: src/components/responsive-tabs-control/index.js:65
 msgid "Mobile %s"
 msgstr "行動裝置%s"
@@ -2246,6 +2304,7 @@ msgid "second"
 msgstr "秒"
 
 #. 1. Speed of the slider, 2: Time until the slide advances
+#. translators: 1. Speed of the slider, 2: Time until the slide advances
 #: src/components/slider-panel/index.js:27
 msgid "Advancing after %1$d %2$s."
 msgstr "%1$d %2$s後換下一張。"
@@ -2408,6 +2467,7 @@ msgid "Crop Settings"
 msgstr "裁剪設定"
 
 #: src/formats/uppercase/index.js:35
+#: src/formats/uppercase/index.js:20
 msgid "Uppercase"
 msgstr "大寫"
 
@@ -2436,11 +2496,13 @@ msgid "Disable all"
 msgstr "停用全部"
 
 #. %s: search text
+#. translators: %s: search text
 #: src/sidebars/block-manager/components/options/disable-blocks.js:233
 msgid "No \"%s\" blocks found."
 msgstr "系統找不到「%s」區塊。"
 
 #. %s: Plugin title, i.e. CoBlocks
+#. translators: %s: Plugin title, i.e. CoBlocks
 #: src/utils/block-category.js:21
 msgid "%s Galleries"
 msgstr "%s圖庫"
@@ -3210,7 +3272,7 @@ msgstr "新增主頁標題…"
 #: src/blocks/hero/edit.js:36
 msgctxt "content placeholder"
 msgid "Add hero content, which is typically an introductory area of a page accompanied by call to action or two."
-msgstr "新增主頁內容，此區域一般用來介紹頁面，通常也會附上些許行動呼籲。"
+msgstr "新增主圖內容，此區域一般用來介紹頁面，通常也會附上些許行動呼籲。"
 
 #: src/blocks/hero/edit.js:39
 msgctxt "content placeholder"
@@ -3273,6 +3335,7 @@ msgid "None"
 msgstr "無"
 
 #: src/blocks/gallery-collage/inspector.js:84
+#: src/blocks/gallery-collage/inspector.js:56
 msgctxt "abbreviation for \"Short\" size"
 msgid "None"
 msgstr "無"
@@ -3284,6 +3347,7 @@ msgstr "小"
 
 #: src/blocks/gallery-collage/inspector.js:89
 #: src/blocks/posts/inspector.js:58
+#: src/blocks/gallery-collage/inspector.js:61
 msgctxt "abbreviation for \"Small\" size"
 msgid "S"
 msgstr "秒"
@@ -3295,6 +3359,7 @@ msgstr "中"
 
 #: src/blocks/gallery-collage/inspector.js:94
 #: src/blocks/posts/inspector.js:63
+#: src/blocks/gallery-collage/inspector.js:66
 msgctxt "abbreviation for \"Medium\" size"
 msgid "M"
 msgstr "公尺 (m)"
@@ -3306,6 +3371,7 @@ msgstr "大"
 
 #: src/blocks/gallery-collage/inspector.js:99
 #: src/blocks/posts/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:71
 msgctxt "abbreviation for \"Large\" size"
 msgid "L"
 msgstr "大"
@@ -3446,6 +3512,7 @@ msgid "Hub"
 msgstr "中心"
 
 #: src/blocks/icon/svgs.js:208
+#: src/blocks/icon/svgs.js:202
 msgctxt "label"
 msgid "Email"
 msgstr "email"
@@ -3651,6 +3718,7 @@ msgid "Brush"
 msgstr "筆刷"
 
 #: src/blocks/icon/svgs.js:109
+#: src/blocks/icon/svgs.js:103
 msgctxt "tags"
 msgid "add minus circle insert plus round math"
 msgstr "新增減號圓形插入加號圓形數學"
@@ -3701,6 +3769,7 @@ msgid "rate vote plus favorite like"
 msgstr "評分投票加號最愛喜歡"
 
 #: src/blocks/icon/svgs.js:177
+#: src/blocks/icon/svgs.js:166
 msgctxt "tags"
 msgid "computer apple montior device pc desk office"
 msgstr "電腦 apple 螢幕裝置 pc 桌面辦公室"
@@ -3716,6 +3785,7 @@ msgid "device apple mac"
 msgstr "裝置 apple mac"
 
 #: src/blocks/icon/svgs.js:193
+#: src/blocks/icon/svgs.js:172
 msgctxt "tags"
 msgid "computer ipad surface apple device pc desk office"
 msgstr "電腦 ipad surface apple 裝置 pc 桌面辦公室"
@@ -3731,6 +3801,7 @@ msgid "music microphone podcast song artist creative media audio"
 msgstr "音樂麥克風廣播歌曲歌手創作媒體音訊"
 
 #: src/blocks/icon/svgs.js:209
+#: src/blocks/icon/svgs.js:203
 msgctxt "tags"
 msgid "email mail os read letter"
 msgstr "email 郵件 os 閱讀信件"
@@ -3786,6 +3857,7 @@ msgid "petal scent smell nice relax landscape gardening outdoors outside"
 msgstr "花瓣香味聞起來好香放鬆風景花園室外外面"
 
 #: src/blocks/icon/svgs.js:292
+#: src/blocks/icon/svgs.js:230
 msgctxt "tags"
 msgid "blocks block box boxes square build widgets"
 msgstr "區塊區塊方塊方塊正方形建立小工具"
@@ -3821,6 +3893,7 @@ msgid "microphone audio beats bose headphones"
 msgstr "麥克風音訊節拍 bose 耳機"
 
 #: src/blocks/icon/svgs.js:325
+#: src/blocks/icon/svgs.js:286
 msgctxt "tags"
 msgid "flower camera photography artist creative"
 msgstr "花朵相機相片藝術家創作"
@@ -3856,6 +3929,7 @@ msgid "improve add upload software"
 msgstr "改善新增上傳軟體"
 
 #: src/blocks/icon/svgs.js:37
+#: src/blocks/icon/svgs.js:26
 msgctxt "tags"
 msgid "music microphone song artist creative media audio"
 msgstr "音樂麥克風歌曲歌手創作媒體音訊"
@@ -3891,6 +3965,7 @@ msgid "video videography director producer media creative camera photographer ph
 msgstr "影片攝影導演製片媒體創作相機攝影失攝影光圈"
 
 #: src/blocks/icon/svgs.js:85
+#: src/blocks/icon/svgs.js:79
 msgctxt "tags"
 msgid "palette design colors artist paint creative media"
 msgstr "調色盤設計色彩藝術家彩繪創作媒體"
@@ -4028,18 +4103,21 @@ msgstr "右上方"
 
 #: src/components/background/panel.js:86
 #: src/components/grid-control/index.js:48
+#: src/components/grid-control/index.js:38
 msgctxt "block layout"
 msgid "Center Left"
 msgstr "中間靠左"
 
 #: src/components/background/panel.js:87
 #: src/components/grid-control/index.js:49
+#: src/components/grid-control/index.js:39
 msgctxt "block layout"
 msgid "Center Center"
 msgstr "正中間"
 
 #: src/components/background/panel.js:88
 #: src/components/grid-control/index.js:50
+#: src/components/grid-control/index.js:40
 msgctxt "block layout"
 msgid "Center Right"
 msgstr "中間靠右"
@@ -4168,6 +4246,7 @@ msgid "Capitalize"
 msgstr "大寫"
 
 #: src/components/typography-controls/index.js:107
+#: src/components/typography-controls/index.js:80
 msgctxt "typography styles"
 msgid "Normal"
 msgstr "正常"
@@ -4178,6 +4257,7 @@ msgid "Bold"
 msgstr "粗體"
 
 #: src/components/typography-controls/index.js:91
+#: src/components/typography-controls/index.js:76
 msgctxt "typography styles"
 msgid "Default"
 msgstr "預設"
@@ -4202,7 +4282,7 @@ msgstr "https://coblocks.com"
 
 #. Description of the plugin
 msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
-msgstr "CoBlocks 是供 WordPress Gutenberg 區塊編輯工具使用的<strong>網頁製作內容區塊</strong>套件我們提供專門讓創作者使用的區塊，可助您製作美觀而豐富的 WordPress 頁面。"
+msgstr "CoBlocks 是供 WordPress Gutenberg 區塊編輯工具使用的<strong>頁面建置內容區塊\n</strong>套件我們提供專門讓創作者使用的區塊，可助您製作美觀而豐富的 WordPress 頁面。"
 
 #. Author of the plugin
 msgid "GoDaddy"
@@ -4215,7 +4295,7 @@ msgstr "https://www.godaddy.com"
 #: class-coblocks.php:84
 #: class-coblocks.php:96
 msgid "Cheating huh?"
-msgstr "想作弊？"
+msgstr "想偷偷來呀？\n"
 
 #: includes/admin/class-coblocks-action-links.php:41
 msgid "Review CoBlocks on WordPress.org"
@@ -4232,7 +4312,7 @@ msgstr "感謝您選擇使用 CoBlocks，專為新 WordPress 區塊編輯工具�
 #. translators: 1: Opening <strong> tag, 2: Closing </strong> tag
 #: includes/admin/class-coblocks-getting-started-page.php:126
 msgid "You've just added lots of useful blocks and a new page builder toolkit to the WordPress editor. CoBlocks gives you a game-changing set of features: %1$s tens of blocks%2$s, a %1$s page-builder experience %2$s and %1$s custom typography controls%2$s."
-msgstr "您已經在 WordPress 編輯工具中加入不少十分實用的區塊，還有一組全新的網頁製作工具組。CoBlocks 可以為您提供前所未有的功能：%1$s 數十種區塊%2$s、%1$s 網頁製作工具體驗 %2$s 還有 %1$s 自訂印刷樣式控制功能%2$s。"
+msgstr "您已經在 WordPress 編輯工具中加入不少十分實用的區塊，還有一組全新的網頁製作工具組。CoBlocks 可以為您提供革命性的功能：%1$s 數十種區塊%2$s、%1$s 網頁製作工具體驗 %2$s 還有 %1$s 自訂印刷樣式控制功能%2$s。"
 
 #: includes/admin/class-coblocks-getting-started-page.php:133
 msgid "Here are a few videos to help you get started:"
@@ -4250,7 +4330,7 @@ msgstr "立即觀看如何建立第一個網頁"
 #: includes/admin/class-coblocks-getting-started-page.php:140
 #: includes/admin/class-coblocks-getting-started-page.php:141
 msgid "Watch how to use the Row and Shape Divider blocks"
-msgstr "立即觀看如何使用列與形狀分隔線區塊"
+msgstr "立即觀看如何使用列與圖形分割區塊"
 
 #: includes/admin/class-coblocks-getting-started-page.php:143
 #: includes/admin/class-coblocks-getting-started-page.php:144
@@ -4322,6 +4402,16 @@ msgstr "系統已送出您的訊息："
 #: includes/class-coblocks-google-map-block.php:116
 msgid "Google Map API key for map rendering"
 msgstr "地圖轉譯用 Google Map API 金鑰"
+
+#: src/blocks/post-carousel/index.php:40
+#: src/blocks/posts/index.php:40
+msgid "RSS Error:"
+msgstr "RSS Error:"
+
+#: src/blocks/post-carousel/index.php:51
+#: src/blocks/posts/index.php:51
+msgid "An error has occurred, which probably means the feed is down. Try again later."
+msgstr "An error has occurred, which probably means the feed is down. Try again later."
 
 #: src/blocks/share/index.php:144
 msgid "Share on Linkedin"

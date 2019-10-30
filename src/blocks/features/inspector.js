@@ -83,17 +83,17 @@ class Inspector extends Component {
 		} = attributes;
 
 		const gutterOptions = [
-			{ value: 'small', label: __( 'Small' ) },
-			{ value: 'medium', label: __( 'Medium' ) },
-			{ value: 'large', label: __( 'Large' ) },
+			{ value: 'small', label: __( 'Small', 'coblocks' ) },
+			{ value: 'medium', label: __( 'Medium', 'coblocks' ) },
+			{ value: 'large', label: __( 'Large', 'coblocks' ) },
 		];
 
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Features Settings' ) } className="components-coblocks-block-sidebar--features">
+					<PanelBody title={ __( 'Features Settings', 'coblocks' ) } className="components-coblocks-block-sidebar--features">
 						<RangeControl
-							label={ __( 'Columns' ) }
+							label={ __( 'Columns', 'coblocks' ) }
 							value={ columns }
 							onChange={ ( nextCount ) => {
 								setAttributes( {
@@ -119,7 +119,7 @@ class Inspector extends Component {
 						/>
 						<DimensionsControl { ...this.props }
 							type={ 'margin' }
-							label={ __( 'Margin' ) }
+							label={ __( 'Margin', 'coblocks' ) }
 							valueTop={ marginTop }
 							valueRight={ marginRight }
 							valueBottom={ marginBottom }
@@ -140,7 +140,7 @@ class Inspector extends Component {
 						/>
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
-							label={ __( 'Padding' ) }
+							label={ __( 'Padding', 'coblocks' ) }
 							valueTop={ paddingTop }
 							valueRight={ paddingRight }
 							valueBottom={ paddingBottom }
@@ -161,16 +161,16 @@ class Inspector extends Component {
 						/>
 						{ columns >= 2 &&
 						<SelectControl
-							label={ __( 'Gutter' ) }
+							label={ __( 'Gutter', 'coblocks' ) }
 							value={ gutter }
 							options={ gutterOptions }
-							help={ __( 'Space between each column.' ) }
+							help={ __( 'Space between each column.', 'coblocks' ) }
 							onChange={ ( value ) => setAttributes( { gutter: value } ) }
 						/>
 						}
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
@@ -188,11 +188,11 @@ class Inspector extends Component {
 										setAttributes( { paddingSize: 'no' } );
 									}
 								},
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'coblocks' ),
 							}, {
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', 'coblocks' ),
 							},
 						] }
 					>

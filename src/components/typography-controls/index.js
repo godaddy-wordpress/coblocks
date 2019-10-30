@@ -56,7 +56,7 @@ class TypographyControls extends Component {
 			attributes,
 			setAttributes,
 			icon = icons.typography,
-			label = __( 'Change typography' ),
+			label = __( 'Change typography', 'coblocks' ),
 		} = this.props;
 
 		const {
@@ -73,38 +73,38 @@ class TypographyControls extends Component {
 		const weight = [
 			{
 				value: '',
-				label: _x( 'Default', 'typography styles' ),
+				label: _x( 'Default', 'typography styles', 'coblocks' ),
 			},
 			{
 				value: 'normal',
-				label: _x( 'Normal', 'typography styles' ),
+				label: _x( 'Normal', 'typography styles', 'coblocks' ),
 			},
 			{
 				value: 'bold',
-				label: _x( 'Bold', 'typography styles' ),
+				label: _x( 'Bold', 'typography styles', 'coblocks' ),
 			},
 		];
 
 		const transform = [
 			{
 				value: '',
-				label: _x( 'Default', 'typography styles' ),
+				label: _x( 'Default', 'typography styles', 'coblocks' ),
 			},
 			{
 				value: 'uppercase',
-				label: _x( 'Uppercase', 'typography styles' ),
+				label: _x( 'Uppercase', 'typography styles', 'coblocks' ),
 			},
 			{
 				value: 'lowercase',
-				label: _x( 'Lowercase', 'typography styles' ),
+				label: _x( 'Lowercase', 'typography styles', 'coblocks' ),
 			},
 			{
 				value: 'capitalize',
-				label: _x( 'Capitalize', 'typography styles' ),
+				label: _x( 'Capitalize', 'typography styles', 'coblocks' ),
 			},
 			{
 				value: 'initial',
-				label: _x( 'Normal', 'typography styles' ),
+				label: _x( 'Normal', 'typography styles', 'coblocks' ),
 			},
 		];
 
@@ -161,14 +161,14 @@ class TypographyControls extends Component {
 						<Fragment>
 							<div className="components-coblocks-typography-dropdown__inner">
 								<FontFamilyPicker
-									label={ __( 'Font' ) }
+									label={ __( 'Font', 'coblocks' ) }
 									value={ fontFamily }
 									onChange={ ( nextFontFamily ) => onFontChange( nextFontFamily, onClose ) }
 									className="components-base-control--with-flex components-coblocks-typography-dropdown__inner--font"
 								/>
 								{ ( ( typeof attributes.textPanelFontWeight === 'undefined' || ( typeof attributes.textPanelFontWeight !== 'undefined' && typeof attributes.textPanelFontWeight === 'undefined' ) ) ) ?
 									<SelectControl
-										label={ __( 'Weight' ) }
+										label={ __( 'Weight', 'coblocks' ) }
 										value={ fontWeight }
 										options={ weight }
 										onChange={ ( nextFontWeight ) => setAttributes( { fontWeight: nextFontWeight } ) }
@@ -177,7 +177,7 @@ class TypographyControls extends Component {
 								}
 								{ ( ( typeof attributes.textPanelTextTransform === 'undefined' || ( typeof attributes.textPanelTextTransform !== 'undefined' && typeof attributes.textPanelTextTransform === 'undefined' ) ) ) ?
 									<SelectControl
-										label={ __( 'Transform' ) }
+										label={ __( 'Transform', 'coblocks' ) }
 										value={ textTransform }
 										options={ transform }
 										onChange={ ( nextTextTransform ) => setAttributes( { textTransform: nextTextTransform } ) }
@@ -186,7 +186,7 @@ class TypographyControls extends Component {
 								}
 								{ ( ( typeof attributes.textPanelHideSize === 'undefined' || ( typeof attributes.textPanelHideSize !== 'undefined' && typeof attributes.textPanelHideSize === 'undefined' ) ) ) ?
 									<RangeControl
-										label={ __( 'Size' ) }
+										label={ __( 'Size', 'coblocks' ) }
 										value={ parseFloat( customFontSize ) || null }
 										onChange={ ( nextFontSize ) => setAttributes( { customFontSize: nextFontSize } ) }
 										min={ 1 }
@@ -197,7 +197,7 @@ class TypographyControls extends Component {
 								}
 								{ ( ( typeof attributes.textPanelLineHeight === 'undefined' || ( typeof attributes.textPanelLineHeight !== 'undefined' && typeof attributes.textPanelLineHeight === 'undefined' ) ) ) ?
 									<RangeControl
-										label={ __( 'Line Height' ) }
+										label={ __( 'Line Height', 'coblocks' ) }
 										value={ parseFloat( lineHeight ) || null }
 										onChange={ ( nextLineHeight ) => setAttributes( { lineHeight: nextLineHeight } ) }
 										min={ 1 }
@@ -208,7 +208,7 @@ class TypographyControls extends Component {
 								}
 								{ ( ( typeof attributes.textPanelLetterSpacing === 'undefined' || ( typeof attributes.textPanelLetterSpacing !== 'undefined' && typeof attributes.textPanelLetterSpacing === 'undefined' ) ) ) ?
 									<RangeControl
-										label={ __( 'Letter Spacing' ) }
+										label={ __( 'Letter Spacing', 'coblocks' ) }
 										value={ parseFloat( letterSpacing ) || null }
 										onChange={ ( nextLetterSpacing ) => setAttributes( { letterSpacing: nextLetterSpacing } ) }
 										min={ -1 }
@@ -220,12 +220,12 @@ class TypographyControls extends Component {
 								{ ( ( typeof attributes.textPanelShowSpacingControls !== 'undefined' && attributes.textPanelShowSpacingControls ) ) &&
 									<div className="components-coblocks-typography-dropdown__footer">
 										<ToggleControl
-											label={ __( 'No Top Spacing' ) }
+											label={ __( 'No Top Spacing', 'coblocks' ) }
 											checked={ !! noTopSpacing }
 											onChange={ () => setAttributes( { noTopSpacing: ! noTopSpacing } ) }
 										/>
 										<ToggleControl
-											label={ __( 'No Bottom Spacing' ) }
+											label={ __( 'No Bottom Spacing', 'coblocks' ) }
 											checked={ !! noBottomSpacing }
 											onChange={ () => setAttributes( { noBottomSpacing: ! noBottomSpacing } ) }
 										/>

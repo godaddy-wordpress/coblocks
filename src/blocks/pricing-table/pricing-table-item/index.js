@@ -23,10 +23,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Pricing Table Item', 'block name' ),
-	description: __( 'A pricing table to help visitors compare products and plans.' ),
+	title: _x( 'Pricing Table Item', 'block name', 'coblocks' ),
+	description: __( 'A pricing table to help visitors compare products and plans.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'landing', 'block keyword' ), _x( 'comparison', 'block keyword' ), 'coblocks' ],
+	keywords: [ _x( 'landing', 'block keyword', 'coblocks' ), _x( 'comparison', 'block keyword', 'coblocks' ), 'coblocks' ],
 	parent: [ 'coblocks/pricing-table' ],
 	supports: {
 		html: false,

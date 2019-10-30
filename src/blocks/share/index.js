@@ -9,6 +9,7 @@ import './styles/style.scss';
  */
 import edit from './edit';
 import icon from './icon';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -18,20 +19,19 @@ import { __, _x } from '@wordpress/i18n';
 /**
  * Block constants
  */
-const name = 'coblocks/social';
+const { name, category } = metadata;
 
 const settings = {
-	title: _x( 'Share', 'block name' ),
-	description: __( 'Add social sharing links to help you get likes and shares.' ),
+	title: _x( 'Share', 'block name', 'coblocks' ),
+	description: __( 'Add social sharing links to help you get likes and shares.', 'coblocks' ),
 	icon,
-	category: 'coblocks',
-	keywords: [ _x( 'social', 'block keyword' ), 'coblocks' ],
+	keywords: [ _x( 'social', 'block keyword', 'coblocks' ), 'coblocks' ],
 	styles: [
-		{ name: 'mask', label: _x( 'Mask', 'block style' ) },
-		{ name: 'icon', label: _x( 'Icon', 'block style' ), isDefault: true },
-		{ name: 'text', label: _x( 'Text', 'block style' ) },
-		{ name: 'icon-and-text', label: _x( 'Icon & Text', 'block style' ) },
-		{ name: 'circular', label: _x( 'Circular', 'block style' ) },
+		{ name: 'mask', label: _x( 'Mask', 'block style', 'coblocks' ) },
+		{ name: 'icon', label: _x( 'Icon', 'block style', 'coblocks' ), isDefault: true },
+		{ name: 'text', label: _x( 'Text', 'block style', 'coblocks' ) },
+		{ name: 'icon-and-text', label: _x( 'Icon & Text', 'block style', 'coblocks' ) },
+		{ name: 'circular', label: _x( 'Circular', 'block style', 'coblocks' ) },
 	],
 	example: {
 		attributes: {
@@ -55,4 +55,4 @@ const settings = {
 	},
 };
 
-export { name, settings };
+export { name, category, settings };

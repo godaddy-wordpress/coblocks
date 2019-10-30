@@ -26,7 +26,7 @@ class Controls extends Component {
 		const customControls = [
 			{
 				icon: 'info',
-				title: __( 'Display meta' ),
+				title: __( 'Display meta', 'coblocks' ),
 				onClick: () => setAttributes( { meta: ! meta } ),
 				isActive: meta === true,
 			},
@@ -39,14 +39,14 @@ class Controls extends Component {
 						{ preview ? (
 							<IconButton
 								className="components-icon-button components-toolbar__control"
-								label={ __( 'Edit Gist' ) }
+								label={ __( 'Edit Gist', 'coblocks' ) }
 								onClick={ () => setState( { preview: false } ) }
 								icon="edit"
 							/>
 						) : (
 							<IconButton
 								className="components-icon-button components-toolbar__control"
-								label={ __( 'View Gist' ) }
+								label={ __( 'View Gist', 'coblocks' ) }
 								onClick={ () => setState( { preview: true } ) }
 								icon="welcome-view-site"
 							/>
@@ -58,18 +58,18 @@ class Controls extends Component {
 					) : (
 						<Toolbar>
 							<label
-								aria-label={ __( 'GitHub File' ) }
+								aria-label={ __( 'GitHub File', 'coblocks' ) }
 								className={ `${ className }__file-label` }
 								htmlFor={ `${ className }__file` }
 							>
 								{ icons.file }
 							</label>
 							<input
-								aria-label={ __( 'GitHub File' ) }
+								aria-label={ __( 'GitHub File', 'coblocks' ) }
 								className={ `${ className }__file` }
 								id={ `${ className }__file` }
 								onChange={ event => setAttributes( { file: event.target.value } ) }
-								placeholder={ __( 'File' ) }
+								placeholder={ __( 'File', 'coblocks' ) }
 								type="text"
 								value={ file }
 							/>

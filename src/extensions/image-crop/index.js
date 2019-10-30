@@ -169,7 +169,7 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 			<Fragment>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody title={ __( 'Crop Settings' ) } initialOpen={ false }>
+					<PanelBody title={ __( 'Crop Settings', 'coblocks' ) } initialOpen={ false }>
 						<CropControl
 							attachmentId={ currentAttributes.id }
 							offsetX={ cropX }

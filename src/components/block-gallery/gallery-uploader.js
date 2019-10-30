@@ -50,7 +50,7 @@ class GalleryUploader extends Component {
 						accept="image/*"
 						icon="insert"
 					>
-						<span>{ __( 'Upload an image' ) }</span>
+						<span>{ __( 'Upload an image', 'coblocks' ) }</span>
 					</FormFileUpload>
 				</div>
 			</Fragment>

@@ -149,7 +149,7 @@ class Edit extends Component {
 								if ( alt ) {
 									defaultedAlt = alt;
 								} else {
-									defaultedAlt = __( 'This gif has an empty alt attribute' );
+									defaultedAlt = __( 'This gif has an empty alt attribute', 'coblocks' );
 								}
 
 								// Disable reason: Image itself is not meant to be
@@ -240,7 +240,7 @@ class Edit extends Component {
 						{ ( ! RichText.isEmpty( caption ) || isSelected ) && (
 							<RichText
 								tagName="figcaption"
-								placeholder={ __( 'Write caption…' ) }
+								placeholder={ __( 'Write caption…', 'coblocks' ) }
 								value={ caption }
 								unstableOnFocus={ this.onFocusCaption }
 								onChange={ ( value ) => setAttributes( { caption: value } ) }
@@ -280,13 +280,13 @@ class Edit extends Component {
 					key="placeholder"
 					icon={ icons.gif }
 					label="Gif"
-					instructions={ __( 'Search for that perfect gif on Giphy' ) }
+					instructions={ __( 'Search for that perfect gif on Giphy', 'coblocks' ) }
 					className={ className }>
 					{ icons.giphy }
 					<input
 						key="search-field"
 						type="text"
-						placeholder={ __( 'Search for gifs' ) }
+						placeholder={ __( 'Search for gifs', 'coblocks' ) }
 						onChange={ ( event ) => fetchGifs( event.target.value ) }
 					/>
 					<ul

@@ -31,10 +31,10 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Masonry', 'block name' ),
-	description: __( 'Display multiple images in an organized masonry gallery.' ),
+	title: _x( 'Masonry', 'block name', 'coblocks' ),
+	description: __( 'Display multiple images in an organized masonry gallery.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'gallery', 'block keyword' ), _x( 'photos', 'block keyword' ), _x( 'lightbox', 'block keyword' ) ],
+	keywords: [ _x( 'gallery', 'block keyword', 'coblocks' ), _x( 'photos', 'block keyword', 'coblocks' ), _x( 'lightbox', 'block keyword', 'coblocks' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,

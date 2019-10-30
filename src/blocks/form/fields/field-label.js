@@ -19,7 +19,7 @@ const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, req
 						}
 						setAttributes( { label: value } );
 					} }
-					placeholder={ __( 'Add label…' ) }
+					placeholder={ __( 'Add label…', 'coblocks' ) }
 				/>
 				{ required && (
 					<span className="required">*</span>
@@ -27,7 +27,7 @@ const CoBlocksFieldLabel = ( { setAttributes, label, resetFocus, isSelected, req
 			</div>
 			{ isSelected && (
 				<ToggleControl
-					label={ __( 'Required' ) }
+					label={ __( 'Required', 'coblocks' ) }
 					className="coblocks-field-label__required"
 					checked={ required }
 					onChange={ value => setAttributes( { required: value } ) }

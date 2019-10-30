@@ -118,13 +118,13 @@ class Edit extends Component {
 
 	numberToText( columns ) {
 		if ( columns === 1 ) {
-			return __( 'one' );
+			return __( 'one', 'coblocks' );
 		} else if ( columns === 2 ) {
-			return __( 'two' );
+			return __( 'two', 'coblocks' );
 		} else if ( columns === 3 ) {
-			return __( 'three' );
+			return __( 'three', 'coblocks' );
 		} else if ( columns === 4 ) {
-			return __( 'four' );
+			return __( 'four', 'coblocks' );
 		}
 	}
 
@@ -166,15 +166,15 @@ class Edit extends Component {
 		const dropZone = (
 			<BackgroundDropZone
 				{ ...this.props }
-				label={ __( 'Add background to row' ) }
+				label={ __( 'Add background to row', 'coblocks' ) }
 			/>
 		);
 
 		const columnOptions = [
-			{ columns: 1, name: __( 'One Column' ), icon: rowIcons.colOne, key: '100' },
-			{ columns: 2, name: __( 'Two Columns' ), icon: rowIcons.colTwo },
-			{ columns: 3, name: __( 'Three Columns' ), icon: rowIcons.colThree },
-			{ columns: 4, name: __( 'Four Columns' ), icon: rowIcons.colFour },
+			{ columns: 1, name: __( 'One Column', 'coblocks' ), icon: rowIcons.colOne, key: '100' },
+			{ columns: 2, name: __( 'Two Columns', 'coblocks' ), icon: rowIcons.colTwo },
+			{ columns: 3, name: __( 'Three Columns', 'coblocks' ), icon: rowIcons.colThree },
+			{ columns: 4, name: __( 'Four Columns', 'coblocks' ), icon: rowIcons.colFour },
 		];
 
 		let selectedRows = 1;
@@ -199,16 +199,16 @@ class Edit extends Component {
 					<Placeholder
 						key="placeholder"
 						icon={ columns ? rowIcons.layout : rowIcons.row }
-						label={ columns ? __( 'Row Layout' ) : __( 'Row' ) }
+						label={ columns ? __( 'Row Layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
 						instructions={ columns ?
 							/* translators: %s: 'one' 'two' 'three' and 'four' */
-							sprintf( __( 'Now select a layout for this %s column row.' ), this.numberToText( columns ) ) :
-							__( 'Select the number of columns for this row.' )
+							sprintf( __( 'Now select a layout for this %s column row.', 'coblocks' ), this.numberToText( columns ) ) :
+							__( 'Select the number of columns for this row.', 'coblocks' )
 						}
 						className={ 'components-coblocks-visual-dropdown' }
 					>
 						{ ! columns ?
-							<ButtonGroup aria-label={ __( 'Select Row Columns' ) }>
+							<ButtonGroup aria-label={ __( 'Select Row Columns', 'coblocks' ) }>
 								{ map( columnOptions, ( { name, key, icon, columns } ) => (
 									<Tooltip text={ name }>
 										<div className="components-coblocks-visual-dropdown__button-wrapper">
@@ -233,7 +233,7 @@ class Edit extends Component {
 								) ) }
 							</ButtonGroup> :
 							<Fragment>
-								<ButtonGroup aria-label={ __( 'Select Row Layout' ) }>
+								<ButtonGroup aria-label={ __( 'Select Row Layout', 'coblocks' ) }>
 									<IconButton
 										icon="exit"
 										className="components-coblocks-visual-dropdown__back"
@@ -243,7 +243,7 @@ class Edit extends Component {
 											} );
 											this.setState( { layoutSelection: true } );
 										} }
-										label={ __( 'Back to Columns' ) }
+										label={ __( 'Back to Columns', 'coblocks' ) }
 									/>
 									{ map( layoutOptions[ selectedRows ], ( { name, key, icon } ) => (
 										<Tooltip text={ name }>

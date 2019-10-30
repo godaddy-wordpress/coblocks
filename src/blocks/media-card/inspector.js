@@ -56,11 +56,11 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Media Card Settings' ) } className="block-coblocks__inspector-block-settings-panel-body">
+					<PanelBody title={ __( 'Media Card Settings', 'coblocks' ) } className="block-coblocks__inspector-block-settings-panel-body">
 						<DimensionsControl { ...this.props }
 							type={ 'padding' }
-							label={ __( 'Padding' ) }
-							help={ __( 'Space inside of the container.' ) }
+							label={ __( 'Padding', 'coblocks' ) }
+							help={ __( 'Space inside of the container.', 'coblocks' ) }
 							valueTop={ paddingTop }
 							valueRight={ paddingRight }
 							valueBottom={ paddingBottom }
@@ -81,7 +81,7 @@ class Inspector extends Component {
 						/>
 						{ ( 'full' === align || 'wide' === align ) && (
 							<RangeControl
-								label={ __( 'Max Width' ) }
+								label={ __( 'Max Width', 'coblocks' ) }
 								className="components-block-coblocks-media-card-maxwidth-range"
 								value={ parseFloat( maxWidth ) }
 								onChange={ ( nextMaxWidth ) => setAttributes( { maxWidth: nextMaxWidth } ) }
@@ -92,44 +92,44 @@ class Inspector extends Component {
 						) }
 						{ mediaUrl && mediaType === 'image' && (
 							<TextareaControl
-								label={ __( 'Alt Text (Alternative Text)' ) }
+								label={ __( 'Alt Text (Alternative Text)', 'coblocks' ) }
 								value={ mediaAlt }
 								onChange={ ( nextMediaAlt ) => setAttributes( { mediaAlt: nextMediaAlt } ) }
 								help={
 									<Fragment>
 										<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
-											{ __( 'Describe the purpose of the image' ) }
+											{ __( 'Describe the purpose of the image', 'coblocks' ) }
 										</ExternalLink>
-										{ __( 'Leave empty if the image is purely decorative.' ) }
+										{ __( 'Leave empty if the image is purely decorative.', 'coblocks' ) }
 									</Fragment>
 								}
 							/>
 						) }
 						<ToggleControl
-							label={ __( 'Card Shadow' ) }
+							label={ __( 'Card Shadow', 'coblocks' ) }
 							checked={ !! hasCardShadow }
 							onChange={ () => setAttributes( { hasCardShadow: ! hasCardShadow } ) }
-							help={ !! hasCardShadow ? __( 'Showing card shadow.' ) : __( 'Toggle to add a card shadow.' ) }
+							help={ !! hasCardShadow ? __( 'Showing card shadow.', 'coblocks' ) : __( 'Toggle to add a card shadow.', 'coblocks' ) }
 						/>
 						{ mediaType && (
 							<ToggleControl
 								label={
 									/* translators: %s: Placeholder is either 'Card, or 'Image'   */
-									sprintf( __( ' %s Shadow' ), mediaType.charAt( 0 ).toUpperCase() + mediaType.slice( 1 ) )
+									sprintf( __( ' %s Shadow', 'coblocks' ), mediaType.charAt( 0 ).toUpperCase() + mediaType.slice( 1 ) )
 								}
 								checked={ !! hasImgShadow }
 								onChange={ () => setAttributes( { hasImgShadow: ! hasImgShadow } ) }
 								help={ !! hasImgShadow ?
 									/* translators: %s: Placeholder is either 'Card, or 'Image'   */
-									sprintf( __( 'Showing %s shadow.' ), mediaType ) :
+									sprintf( __( 'Showing %s shadow.', 'coblocks' ), mediaType ) :
 									/* translators: %s: Placeholder is either 'Card, or 'Image'   */
-									sprintf( __( 'Toggle to add an %s shadow' ), mediaType )
+									sprintf( __( 'Toggle to add an %s shadow', 'coblocks' ), mediaType )
 								}
 							/>
 						) }
 					</PanelBody>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
@@ -143,7 +143,7 @@ class Inspector extends Component {
 										setAttributes( { paddingSize: 'no' } );
 									}
 								},
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'coblocks' ),
 							},
 						] }
 					>

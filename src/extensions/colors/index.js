@@ -44,19 +44,19 @@ class ColorSettings extends Component {
 			colorSettings.push( {
 				value: customBackgroundColor,
 				onChange: ( nextcustomBackgroundColor ) => setAttributes( { customBackgroundColor: nextcustomBackgroundColor } ),
-				label: __( 'Background Color' ),
+				label: __( 'Background Color', 'coblocks' ),
 			} );
 		}
 
 		colorSettings.push( {
 			value: customTextColor,
 			onChange: ( nextcustomTextColor ) => setAttributes( { customTextColor: nextcustomTextColor } ),
-			label: __( 'Text Color' ),
+			label: __( 'Text Color', 'coblocks' ),
 		} );
 
 		return (
 			<PanelColorSettings
-				title={ __( 'Color Settings' ) }
+				title={ __( 'Color Settings', 'coblocks' ) }
 				initialOpen={ false }
 				colorSettings={ colorSettings }
 			>

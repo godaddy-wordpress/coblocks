@@ -23,10 +23,10 @@ const { __, _x } = wp.i18n;
 const { name, category, supports } = metadata;
 
 const settings = {
-	title: _x( 'Posts', 'block name' ),
-	description: __( 'Display posts or an RSS feed as stacked or horizontal cards.' ),
+	title: _x( 'Posts', 'block name', 'coblocks' ),
+	description: __( 'Display posts or an RSS feed as stacked or horizontal cards.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'blog', 'block keyword' ), _x( 'rss', 'block keyword' ), _x( 'latest', 'block keyword' ) ],
+	keywords: [ _x( 'blog', 'block keyword', 'coblocks' ), _x( 'rss', 'block keyword', 'coblocks' ), _x( 'latest', 'block keyword', 'coblocks' ) ],
 	supports,
 	transforms,
 	edit,

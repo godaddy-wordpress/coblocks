@@ -137,7 +137,7 @@ class GalleryCollageEdit extends Component {
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ files => this.uploadImage( files, index ) }
-				label={ __( 'Drop image to replace' ) }
+				label={ __( 'Drop image to replace', 'coblocks' ) }
 			/>
 		);
 
@@ -157,7 +157,7 @@ class GalleryCollageEdit extends Component {
 									icon="no-alt"
 									onClick={ () => this.removeImage( index ) }
 									className="coblocks-gallery-item__button"
-									label={ __( 'Remove Image' ) }
+									label={ __( 'Remove Image', 'coblocks' ) }
 									disabled={ ! isSelected }
 								/>
 							</div>
@@ -171,7 +171,7 @@ class GalleryCollageEdit extends Component {
 									value={ image.imgLink }
 									onChange={ ( imgLink ) => this.updateImageAttributes( index, { imgLink } ) }
 								/>
-								<IconButton icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving' ) : __( 'Apply' ) } onClick={ this.saveCustomLink } type="submit" />
+								<IconButton icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ this.saveCustomLink } type="submit" />
 							</form>
 						}
 						{ dropZone }
@@ -180,7 +180,7 @@ class GalleryCollageEdit extends Component {
 						{ enableCaptions && this.props.attributes.captions && ( image.caption || isSelected ) &&
 							<RichText
 								tagName="figcaption"
-								placeholder={ __( 'Write caption...' ) }
+								placeholder={ __( 'Write caption...', 'coblocks' ) }
 								className="coblocks-gallery--caption"
 								value={ image.caption }
 								onChange={ ( caption ) => this.updateImageAttributes( index, { caption } ) }
