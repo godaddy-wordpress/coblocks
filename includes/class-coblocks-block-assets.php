@@ -111,13 +111,15 @@ class CoBlocks_Block_Assets {
 		 */
 		$email_to = (string) apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), $post_id );
 
+		$default_subject = __( 'Form submission from [email]', 'coblocks' );
+
 		wp_localize_script(
 			$this->slug . '-editor',
 			'coblocksBlockData',
 			[
 				'form'                           => [
 					'adminEmail'   => $email_to,
-					'emailSubject' => $post_title,
+					'emailSubject' => $default_subject,
 				],
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
