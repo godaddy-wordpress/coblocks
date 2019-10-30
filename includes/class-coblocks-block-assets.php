@@ -205,6 +205,8 @@ class CoBlocks_Block_Assets {
 			);
 		}
 
+		// @todo: Uncomment this block. Temporarily disabled.
+		// @codingStandardsIgnoreStart
 		// Events block.
 		// if ( has_block( $this->slug . '/events' ) ) {
 		// 	wp_enqueue_script(
@@ -215,6 +217,7 @@ class CoBlocks_Block_Assets {
 		// 		true
 		// 	);
 		// }
+		// @codingStandardsIgnoreEnd
 	}
 
 }

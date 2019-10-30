@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Server-side rendering of the `coblocks/events` block.
  *
@@ -10,6 +9,7 @@
  * Renders the `events` block on server.
  *
  * @param array $attributes The block attributes.
+ * @param array $content    The post content.
  *
  * @return string Returns the events content.
  */
@@ -43,7 +43,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 		} else {
 			$events = $ical->events_from_interval( $attributes['eventsRange'] );
 		}
-		// we limit the events to 100
+		// Limit to 100 events.
 		$events = array_slice( $events, 0, 100 );
 
 		$text_color_class  = is_array( $attributes ) && isset( $attributes['textColor'] ) ? "has-{$attributes['textColor']}-color" : false;
@@ -135,7 +135,9 @@ function coblocks_register_events_block() {
 	wp_register_script(
 		'coblocks-events',
 		$dir . 'coblocks-events' . COBLOCKS_ASSET_SUFFIX . '.js',
-		array( 'jquery' )
+		array( 'jquery' ),
+		COBLOCKS_VERSION,
+		true
 	);
 
 	register_block_type(
