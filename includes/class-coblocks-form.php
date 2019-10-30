@@ -646,11 +646,10 @@ class CoBlocks_Form {
 		/**
 		 * Filter the email subject
 		 *
-		 * @param string  $subject Email subject.
-		 * @param array   $_POST   Submitted form data.
-		 * @param integer $post_id Current post ID.
+		 * @param string $subject Email subject.
+		 * @param array  $_POST   Submitted form data.
 		 */
-		$subject = (string) apply_filters( 'coblocks_form_email_subject', $this->setup_email_subject( $atts, $post_id ), $_POST, $post_id );
+		$subject = (string) apply_filters( 'coblocks_form_email_subject', $this->setup_email_subject( $atts ), $_POST );
 
 		/**
 		 * Filter the form email content.
@@ -701,15 +700,14 @@ class CoBlocks_Form {
 	 * Note: [email] will be replaced with the value of field-email
 	 *       [name] will be replaced with the value of field-name etc.
 	 *
-	 * @param  array   $atts    Block attributes array.
-	 * @param  integer $post_id Post ID.
+	 * @param  array $atts Block attributes array.
 	 *
 	 * @return string Email subject.
 	 */
-	private function setup_email_subject( $atts, $post_id ) {
+	private function setup_email_subject( $atts ) {
 
-		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
-		$subject    = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : $post_title;
+		$default_subject = __( 'Form submission from [email]', 'coblocks' );
+		$subject         = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : $default_subject;
 
 		preg_match_all( '/\[(.*?)\]/i', $subject, $matches );
 
