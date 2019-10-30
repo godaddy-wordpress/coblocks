@@ -40,7 +40,7 @@ class CoBlocks_Posts_Index_Tests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test the social block markup returns correctly
+	 * Test the posts block markup returns correctly
 	 */
 	public function test_coblocks_render_posts_block() {
 		$attributes = [
@@ -67,7 +67,7 @@ class CoBlocks_Posts_Index_Tests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test the share block is registered
+	 * Test the posts block is registered
 	 *
 	 * @expectedIncorrectUsage WP_Block_Type_Registry::register
 	 */
