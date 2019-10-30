@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 /**
  * Internal dependencies
  */
-import icons from './../../utils/icons';
+import icon from './icon';
 
 /**
  * WordPress dependencies
@@ -134,7 +134,7 @@ export default class Gist extends Component {
 			return (
 				<Placeholder
 					key="placeholder"
-					icon={ <BlockIcon icon={ icons.github } /> }
+					icon={ <BlockIcon icon={ icon } /> }
 					label={ __( 'Loading Gist', 'coblocks' ) }
 				>
 					<Spinner />

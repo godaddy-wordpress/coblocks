@@ -21,6 +21,7 @@ import { BlockIcon, RichText } from '@wordpress/block-editor';
  */
 import Controls from './controls';
 import icons from './../../utils/icons';
+import icon from './icon';
 import Inspector from './inspector';
 import Size from './size';
 
@@ -278,7 +279,7 @@ class Edit extends Component {
 			<Fragment>
 				<Placeholder
 					key="placeholder"
-					icon={ <BlockIcon icon={ icons.gif } /> }
+					icon={ <BlockIcon icon={ icon } /> }
 					label="Gif"
 					instructions={ __( 'Search for that perfect gif on Giphy', 'coblocks' ) }
 					className={ className }>
