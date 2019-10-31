@@ -41,7 +41,6 @@ module.exports = function( grunt ) {
 							'src/**/*.php',
 							'dist/**',
 							'includes/**',
-							'languages/coblocks.pot',
 							'!**/*.{ai,eps,psd}',
 						],
 						dest: 'build/<%= pkg.name %>',
