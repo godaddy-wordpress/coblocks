@@ -25,7 +25,15 @@ if ( ! is_writable( dirname( $argv[3] ) ) || ( file_exists( $argv[3] ) && ! is_w
 	exit;
 }
 
-$output = 'msgid ""' . PHP_EOL . 'msgstr ""' . PHP_EOL . PHP_EOL;
+$output = <<<PO
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+"X-Generator: json2po\\n"
+PO;
+
+$output .= PHP_EOL . PHP_EOL;
 
 foreach ( $msgids as $hash => $msgid ) {
 	$output .= sprintf( '#: %s', $hash );
