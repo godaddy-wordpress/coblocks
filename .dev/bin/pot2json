@@ -22,7 +22,7 @@ $output = [];
 
 foreach ( $input as $line ) {
 	$value = preg_replace( '/^msgid "(.+?)"$/', '$1', $line );
-	$output[ md5( $value ) ] = $value;
+	$output[ md5( $value ) ] = stripcslashes( $value );
 }
 
 $target = is_readable( $argv[2] ) ? json_decode( file_get_contents( $argv[2] ), true ) : [];
