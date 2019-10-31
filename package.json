@@ -119,6 +119,7 @@
 		"memize": "^1.0.5",
 		"node-sass": "^4.12.0",
 		"ora": "^1.3.0",
+		"po2json": "^1.0.0-alpha",
 		"postcss": "7.0.13",
 		"postcss-color-function": "^4.1.0",
 		"postcss-loader": "^2.0.10",
