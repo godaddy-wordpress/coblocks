@@ -21,7 +21,5 @@ sandbox.json
 /.idea/
 **/.DS_Store
 languages/coblocks-js.pot
-languages/*.json
-!languages/coblocks.json
 languages/*.mo
 languages/*.po
