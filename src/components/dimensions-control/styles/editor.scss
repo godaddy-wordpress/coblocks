@@ -132,7 +132,9 @@
 		}
 
 		&__units--Pixel,
-		&__units--Em {
+		&__units--Em,
+		&__units--VW,
+		&__units--VH  {
 			border-radius: 3px !important;
 			margin-right: 2px;
 		}

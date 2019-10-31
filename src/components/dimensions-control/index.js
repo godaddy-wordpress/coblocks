@@ -394,6 +394,14 @@ class DimensionsControl extends Component {
 				unitValue: 'em',
 			},
 			{
+				name: _x( 'VH', 'A size unit for CSS markup', 'coblocks' ),
+				unitValue: 'vh',
+			},
+			{
+				name: _x( 'VW', 'A size unit for CSS markup', 'coblocks' ),
+				unitValue: 'vw',
+			},
+			{
 				name: _x( 'Percentage', 'A size unit for CSS markup', 'coblocks' ),
 				unitValue: '%',
 			},
