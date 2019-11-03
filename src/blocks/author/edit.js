@@ -12,7 +12,7 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { Component, Fragment } from '@wordpress/element';
 import { mediaUpload } from '@wordpress/editor';
@@ -60,7 +60,7 @@ class AuthorEdit extends Component {
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.addImage }
-				label={ _x( 'Drop to upload as avatar', 'image to represent the post author', 'coblocks' ) }
+				label={ __( 'Drop to upload as avatar', 'coblocks' ) }
 			/>
 		);
 
@@ -146,7 +146,7 @@ class AuthorEdit extends Component {
 							} }
 						/>
 						<InnerBlocks
-							template={ [ [ 'core/button', { placeholder: _x( 'Author link…', 'content placeholder', 'coblocks' ) } ] ] }
+							template={ [ [ 'core/button', { placeholder: __( 'Author link…', 'coblocks' ) } ] ] }
 							templateLock="all"
 							allowedBlocks={ [ 'core/button' ] }
 							templateInsertUpdatesSelection={ false }

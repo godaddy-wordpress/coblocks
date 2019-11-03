@@ -14,7 +14,7 @@ import { transforms } from './transforms';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -22,16 +22,16 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category } = metadata;
 
 const settings = {
-	title: _x( 'Social Profiles', 'block name', 'coblocks' ),
+	title: __( 'Social Profiles', 'coblocks' ),
 	description: __( 'Grow your audience with links to social media profiles.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'share', 'block keyword', 'coblocks' ), _x( 'links', 'block keyword', 'coblocks' ), _x( 'icons', 'block keyword', 'coblocks' ) ],
+	keywords: [ __( 'share', 'coblocks' ), __( 'links', 'coblocks' ), __( 'icons', 'coblocks' ) ],
 	styles: [
-		{ name: 'mask', label: _x( 'Mask', 'block style', 'coblocks' ) },
-		{ name: 'icon', label: _x( 'Icon', 'block style', 'coblocks' ), isDefault: true },
-		{ name: 'text', label: _x( 'Text', 'block style', 'coblocks' ) },
-		{ name: 'icon-and-text', label: _x( 'Icon & Text', 'block style', 'coblocks' ) },
-		{ name: 'circular', label: _x( 'Circular', 'block style', 'coblocks' ) },
+		{ name: 'mask', label: __( 'Mask', 'coblocks' ) },
+		{ name: 'icon', label: __( 'Icon', 'coblocks' ), isDefault: true },
+		{ name: 'text', label: __( 'Text', 'coblocks' ) },
+		{ name: 'icon-and-text', label: __( 'Icon & Text', 'coblocks' ) },
+		{ name: 'circular', label: __( 'Circular', 'coblocks' ) },
 	],
 	example: {
 		attributes: {

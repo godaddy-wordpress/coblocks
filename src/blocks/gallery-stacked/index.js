@@ -18,7 +18,7 @@ import { GalleryAttributes } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -31,10 +31,10 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Stacked', 'block name', 'coblocks' ),
+	title: __( 'Stacked', 'coblocks' ),
 	description: __( 'Display multiple images in an single column stacked gallery.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'gallery', 'block keyword', 'coblocks' ), _x( 'photos', 'block keyword', 'coblocks' ), _x( 'lightbox', 'block keyword', 'coblocks' ) ],
+	keywords: [ __( 'gallery', 'coblocks' ), __( 'photos', 'coblocks' ), __( 'lightbox', 'coblocks' ) ],
 	supports: {
 		align: [ 'wide', 'full', 'left', 'center', 'right' ],
 		html: false,

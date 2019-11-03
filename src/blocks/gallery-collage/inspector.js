@@ -7,7 +7,7 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl, SelectControl, ButtonGroup, Button, BaseControl } from '@wordpress/components';
@@ -52,51 +52,51 @@ class Inspector extends Component {
 		const gutterOptions = [
 			{
 				value: 0,
-				label: _x( 'None', 'label for no gutter option', 'coblocks' ),
-				shortName: _x( 'None', 'abbreviation for "Short" size', 'coblocks' ),
+				label: __( 'None', 'coblocks' ),
+				shortName: __( 'None', 'coblocks' ),
 			},
 			{
 				value: 1,
-				label: _x( 'Small', 'label for small gutter option', 'coblocks' ),
-				shortName: _x( 'S', 'abbreviation for "Small" size', 'coblocks' ),
+				label: __( 'Small', 'coblocks' ),
+				shortName: __( 'S', 'coblocks' ),
 			},
 			{
 				value: 2,
-				label: _x( 'Medium', 'label for medium gutter option', 'coblocks' ),
-				shortName: _x( 'M', 'abbreviation for "Medium" size', 'coblocks' ),
+				label: __( 'Medium', 'coblocks' ),
+				shortName: __( 'M', 'coblocks' ),
 			},
 			{
 				value: 3,
-				label: _x( 'Large', 'label for large gutter option', 'coblocks' ),
-				shortName: _x( 'L', 'abbreviation for "Large" size', 'coblocks' ),
+				label: __( 'Large', 'coblocks' ),
+				shortName: __( 'L', 'coblocks' ),
 			},
 			{
 				value: 4,
-				label: _x( 'Extra Large', 'label for extra large gutter option', 'coblocks' ),
-				shortName: _x( 'XL', 'abbreviation for "Extra Large" size', 'coblocks' ),
+				label: __( 'Extra Large', 'coblocks' ),
+				shortName: __( 'XL', 'coblocks' ),
 			},
 		];
 
 		const shadowOptions = [
 			{
 				value: 'none',
-				label: _x( 'None', 'label for no shadow option', 'coblocks' ),
-				shortName: _x( 'None', 'abbreviation for "Short" size', 'coblocks' ),
+				label: __( 'None', 'coblocks' ),
+				shortName: __( 'None', 'coblocks' ),
 			},
 			{
 				value: 'sm',
-				label: _x( 'Small', 'label for small shadow option', 'coblocks' ),
-				shortName: _x( 'S', 'abbreviation for "Small" size', 'coblocks' ),
+				label: __( 'Small', 'coblocks' ),
+				shortName: __( 'S', 'coblocks' ),
 			},
 			{
 				value: 'md',
-				label: _x( 'Medium', 'label for medium shadow option', 'coblocks' ),
-				shortName: _x( 'M', 'abbreviation for "Medium" size', 'coblocks' ),
+				label: __( 'Medium', 'coblocks' ),
+				shortName: __( 'M', 'coblocks' ),
 			},
 			{
 				value: 'lg',
-				label: _x( 'Large', 'label for large shadow option', 'coblocks' ),
-				shortName: _x( 'L', 'abbreviation for "Large" size', 'coblocks' ),
+				label: __( 'Large', 'coblocks' ),
+				shortName: __( 'L', 'coblocks' ),
 			},
 		];
 

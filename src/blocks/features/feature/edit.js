@@ -14,7 +14,7 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
@@ -28,8 +28,8 @@ const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/
 
 const TEMPLATE = [
 	[ 'coblocks/icon', { hasContentAlign: false } ],
-	[ 'core/heading', { placeholder: _x( 'Add feature title...', 'content placeholder', 'coblocks' ), content: _x( 'Feature Title', 'content placeholder', 'coblocks' ), level: 4 } ],
-	[ 'core/paragraph', { placeholder: _x( 'Add feature content', 'content placeholder', 'coblocks' ), content: _x( 'This is a feature block that you can use to highlight features.', 'content placeholder', 'coblocks' ) } ],
+	[ 'core/heading', { placeholder: __( 'Add feature title...', 'coblocks' ), content: __( 'Feature Title', 'coblocks' ), level: 4 } ],
+	[ 'core/paragraph', { placeholder: __( 'Add feature content', 'coblocks' ), content: __( 'This is a feature block that you can use to highlight features.', 'coblocks' ) } ],
 ];
 
 /**

@@ -8,7 +8,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -16,8 +16,8 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Phone', 'block name', 'coblocks' ),
-	keywords: [ _x( 'telephone', 'block keyword', 'coblocks' ), _x( 'cellular', 'block keyword', 'coblocks' ), _x( 'mobile', 'block keyword', 'coblocks' ) ],
+	title: __( 'Phone', 'coblocks' ),
+	keywords: [ __( 'telephone', 'coblocks' ), __( 'cellular', 'coblocks' ), __( 'mobile', 'coblocks' ) ],
 	description: __( 'A phone number to allow visitors to give you a phone number.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/form' ],

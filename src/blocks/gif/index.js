@@ -15,7 +15,7 @@ import save from './save';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -23,10 +23,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Gif', 'block name', 'coblocks' ),
+	title: __( 'Gif', 'coblocks' ),
 	description: __( 'Pick a gif, any gif.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'animated', 'block keyword', 'coblocks' ), 'coblocks' ],
+	keywords: [ __( 'animated', 'coblocks' ), 'coblocks' ],
 	supports: {
 		customClassName: false,
 		html: false,

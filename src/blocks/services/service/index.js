@@ -15,7 +15,7 @@ import save from './save';
 /**
  * WordPress dependencies.
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants.
@@ -23,7 +23,7 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Service', 'block name', 'coblocks' ),
+	title: __( 'Service', 'coblocks' ),
 	description: __( 'A single service item within a services block.', 'coblocks' ),
 	icon,
 	keywords: [],

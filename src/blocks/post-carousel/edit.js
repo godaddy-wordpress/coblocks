@@ -15,7 +15,7 @@ import icon from './icon';
  * WordPress dependencies
  */
 import apiFetch from '@wordpress/api-fetch';
-import { __, _x, sprintf } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { Component, RawHTML, Fragment } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
@@ -299,7 +299,7 @@ class PostCarousel extends Component {
 																{ titleTrimmed }
 															</RawHTML>
 														) :
-															_x( '(no title)', 'placeholder when a post has no title', 'coblocks' )
+															__( '(no title)', 'coblocks' )
 														}
 													</a>
 												</Disabled>

@@ -14,7 +14,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect, dispatch, select } from '@wordpress/data';
@@ -32,14 +32,14 @@ const TEMPLATE = [
 const layoutOptions = [
 	{
 		name: 'grid',
-		label: _x( 'Grid', 'block style', 'coblocks' ),
+		label: __( 'Grid', 'coblocks' ),
 		icon: icons.layoutGridIcon,
 		iconWithImages: icons.layoutGridIconWithImages,
 		isDefault: true,
 	},
 	{
 		name: 'list',
-		label: _x( 'List', 'block style', 'coblocks' ),
+		label: __( 'List', 'coblocks' ),
 		icon: icons.layoutListIcon,
 		iconWithImages: icons.layoutListIconWithImages,
 	},

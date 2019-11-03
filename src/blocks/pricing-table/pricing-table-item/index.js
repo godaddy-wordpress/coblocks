@@ -15,7 +15,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -23,10 +23,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Pricing Table Item', 'block name', 'coblocks' ),
+	title: __( 'Pricing Table Item', 'coblocks' ),
 	description: __( 'A pricing table to help visitors compare products and plans.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'landing', 'block keyword', 'coblocks' ), _x( 'comparison', 'block keyword', 'coblocks' ), 'coblocks' ],
+	keywords: [ __( 'landing', 'coblocks' ), __( 'comparison', 'coblocks' ), 'coblocks' ],
 	parent: [ 'coblocks/pricing-table' ],
 	supports: {
 		html: false,

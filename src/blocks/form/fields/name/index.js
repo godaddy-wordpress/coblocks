@@ -8,7 +8,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -16,10 +16,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Name', 'block name', 'coblocks' ),
+	title: __( 'Name', 'coblocks' ),
 	description: __( 'A text field for collecting the first and last names.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'first name', 'block keyword', 'coblocks' ), _x( 'last name', 'block keyword', 'coblocks' ), 'email' ],
+	keywords: [ __( 'first name', 'coblocks' ), __( 'last name', 'coblocks' ), 'email' ],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

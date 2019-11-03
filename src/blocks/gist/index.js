@@ -17,7 +17,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -25,10 +25,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Gist', 'block name', 'coblocks' ),
+	title: __( 'Gist', 'coblocks' ),
 	description: __( 'Embed GitHub gists by adding a gist link.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'code', 'block keyword', 'coblocks' ), 'github', 'coblocks' ],
+	keywords: [ __( 'code', 'coblocks' ), 'github', 'coblocks' ],
 	supports: {
 		html: false,
 		align: [ 'wide' ],
