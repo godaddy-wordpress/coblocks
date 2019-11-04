@@ -394,11 +394,11 @@ class DimensionsControl extends Component {
 				unitValue: 'em',
 			},
 			{
-				name: _x( 'VH', 'A size unit for CSS markup', 'coblocks' ),
+				name: _x( 'Viewport Height', 'A "vh" size unit for CSS markup', 'coblocks' ),
 				unitValue: 'vh',
 			},
 			{
-				name: _x( 'VW', 'A size unit for CSS markup', 'coblocks' ),
+				name: _x( 'Viewport Width', 'A "vw" size unit for CSS markup', 'coblocks' ),
 				unitValue: 'vw',
 			},
 			{
