@@ -28,7 +28,7 @@ class Controls extends Component {
 						'Gist'
 					),
 				onClick: () => setState( { preview: ! preview } ),
-				isActive: preview,
+				isActive: ! preview,
 			},
 		];
 
