@@ -25,7 +25,12 @@ import { applyFilters } from '@wordpress/hooks';
  * Block constants
  */
 // Note: Child form blocks are automatically allowed
-const ALLOWED_BLOCKS = [];
+const ALLOWED_BLOCKS = [
+	'core/heading',
+	'core/paragraph',
+	'core/separator',
+	'core/spacer',
+];
 
 /**
  * Get settings
