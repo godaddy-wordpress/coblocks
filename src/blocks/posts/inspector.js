@@ -74,23 +74,20 @@ const Inspector = props => {
 		},
 	];
 
-	const columnCountByPosts = ( selectedColumns ) => {
+	const columnsCountOnChange = ( selectedColumns ) => {
 		const { postsToShow } = attributes;
 		setAttributes( { columns:
 			( selectedColumns > postsToShow ) ? postsToShow : selectedColumns,
 		} );
 	};
 
-	const postCountByColumn = ( selectedPosts ) => {
+	const postsCountOnChange = ( selectedPosts ) => {
 		const { columns } = attributes;
+		const changedAttributes = { postsToShow: selectedPosts };
 		if ( columns > selectedPosts || ( selectedPosts === 1 && columns !== 1 ) ) {
-			setAttributes( {
-				columns: selectedPosts,
-				postsToShow: selectedPosts,
-			} );
-			return;
+			Object.assign( changedAttributes, { columns: selectedPosts } );
 		}
-		setAttributes( { postsToShow: selectedPosts } );
+		setAttributes( changedAttributes );
 	};
 
 	const settings = (
@@ -130,7 +127,7 @@ const Inspector = props => {
 					value={ columns }
 					onChange={ ( value ) => {
 						onUserModifiedColumn();
-						columnCountByPosts( value );
+						columnsCountOnChange( value );
 					} }
 					min={ isStackedStyle ? Math.min( 2, postCount ) : 1 }
 					max={ isHorizontalStyle ? 2 : Math.min( 4, postCount ) }
@@ -192,7 +189,7 @@ const Inspector = props => {
 					<RangeControl
 						label={ __( 'Number of posts', 'coblocks' ) }
 						value={ postsToShow }
-						onChange={ ( value ) => postCountByColumn( value ) }
+						onChange={ ( value ) => postsCountOnChange( value ) }
 						min={ 1 }
 						max={ 20 }
 					/>
