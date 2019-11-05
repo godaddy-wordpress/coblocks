@@ -34,23 +34,20 @@ class Inspector extends Component {
 			columns,
 		} = attributes;
 
-		const columnCountByPosts = ( selectedColumns ) => {
+		const columnsOnChange = ( selectedColumns ) => {
 			const { postsToShow } = attributes;
 			setAttributes( { columns:
 				( selectedColumns > postsToShow ) ? postsToShow : selectedColumns,
 			} );
 		};
 
-		const postCountByColumn = ( selectedPosts ) => {
+		const postsOnChange = ( selectedPosts ) => {
 			const { columns } = attributes;
+			const changedAttributes = { postsToShow: selectedPosts };
 			if ( columns > selectedPosts || ( selectedPosts === 1 && columns !== 1 ) ) {
-				setAttributes( {
-					columns: selectedPosts,
-					postsToShow: selectedPosts,
-				} );
-				return;
+				Object.assign( changedAttributes, { columns: selectedPosts } );
 			}
-			setAttributes( { postsToShow: selectedPosts } );
+			setAttributes( changedAttributes );
 		};
 
 		const settings = (
@@ -88,7 +85,7 @@ class Inspector extends Component {
 					<RangeControl
 						label={ __( 'Columns', 'coblocks' ) }
 						value={ columns }
-						onChange={ ( value ) => columnCountByPosts( value ) }
+						onChange={ ( value ) => columnsOnChange( value ) }
 						min={ Math.min( 2, postCount ) }
 						max={ Math.min( 4, postCount ) }
 						required
@@ -124,7 +121,7 @@ class Inspector extends Component {
 							<RangeControl
 								label={ __( 'Number of posts', 'coblocks' ) }
 								value={ postsToShow }
-								onChange={ ( value ) => postCountByColumn( value ) }
+								onChange={ ( value ) => postsOnChange( value ) }
 								min={ 1 }
 								max={ 20 }
 							/>
