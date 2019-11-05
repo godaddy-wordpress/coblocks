@@ -637,7 +637,7 @@ class CoBlocks_Form {
 		 */
 		$required_text  = (string) apply_filters( 'coblocks_form_label_required_text', '&#42;', $field_label );
 		$required_attr  = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
-		$required_label = empty( $required_attr ) ? '' : sprintf( ' <span class="required">%s</span>', $required_text );
+		$required_label = empty( $required_attr ) ? '' : sprintf( ' <span class="required">%s</span>', esc_html( $required_text ) );
 
 		/*
 		 * Format an array of allowed HTML tags and attributes for the $required_label value.
