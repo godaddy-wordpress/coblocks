@@ -424,6 +424,8 @@ class CoBlocks_Form {
 
 		ob_start();
 
+		print( '<div class="coblocks-field">' );
+
 		$this->render_field_label( $atts, $label );
 
 		if ( $atts['isInline'] ) {
@@ -450,6 +452,8 @@ class CoBlocks_Form {
 			print( '</div>' );
 
 		}
+
+		print( '</div>' );
 
 		return ob_get_clean();
 
@@ -480,7 +484,7 @@ class CoBlocks_Form {
 		$this->render_field_label( $atts, $label );
 
 		printf(
-			'<select class="select" name="field-%1$s[value]">',
+			'<select class="select coblocks-field" name="field-%1$s[value]">',
 			esc_attr( $label_slug )
 		);
 
@@ -522,6 +526,8 @@ class CoBlocks_Form {
 
 		ob_start();
 
+		print( '<div class="coblocks-field">' );
+
 		$this->render_field_label( $atts, $label );
 
 		if ( $atts['isInline'] ) {
@@ -548,6 +554,8 @@ class CoBlocks_Form {
 			print( '</div>' );
 
 		}
+
+		print( '</div>' );
 
 		return ob_get_clean();
 
