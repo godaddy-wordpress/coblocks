@@ -34,11 +34,11 @@ const settings = {
 		{ name: 'line', label: _x( 'Line', 'block style', 'coblocks' ) },
 		{ name: 'fullwidth', label: _x( 'Fullwidth', 'block style', 'coblocks' ) },
 	],
-	example: {
-		attributes: {
-			height: 100,
-		},
-	},
+	// example: {
+	// 	attributes: {
+	// 		height: 100,
+	// 	},
+	// },
 	attributes,
 	transforms,
 	deprecated,
