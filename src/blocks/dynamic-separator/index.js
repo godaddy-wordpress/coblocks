@@ -11,6 +11,7 @@ import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
 import save from './save';
+import deprecated from './deprecated';
 import transforms from './transforms';
 
 /**
@@ -40,6 +41,7 @@ const settings = {
 	},
 	attributes,
 	transforms,
+	deprecated,
 	edit,
 	save,
 };
