@@ -44,18 +44,18 @@ function Save( { attributes } ) {
 		classes = classnames( classes, `coblocks-row-${ coblocks.id }` );
 	}
 
-	const innerClasses = classnames(
+	const innerClasses = [
 		'wp-block-coblocks-row__inner',
-		...BackgroundClasses( attributes ), {
-			'has-text-color': textColor || customTextColor,
-			[ textClass ]: textClass,
-			[ `has-${ gutter }-gutter` ]: gutter,
-			'has-padding': paddingSize && paddingSize !== 'no',
-			[ `has-${ paddingSize }-padding` ]: paddingSize && ( paddingSize !== 'advanced' ),
-			'has-margin': marginSize && marginSize !== 'no',
-			[ `has-${ marginSize }-margin` ]: marginSize && ( marginSize !== 'advanced' ),
-			'is-stacked-on-mobile': isStackedOnMobile,
-		} );
+		...BackgroundClasses( attributes ),
+		{ 'has-text-color': textColor || customTextColor },
+		{ [ textClass ]: textClass },
+		{ [ `has-${ gutter }-gutter` ]: gutter },
+		{ 'has-padding': paddingSize && paddingSize !== 'no' },
+		{ [ `has-${ paddingSize }-padding` ]: ! [ 'advanced' ].includes( paddingSize ) },
+		{ 'has-margin': marginSize && marginSize !== 'no' },
+		{ [ `has-${ marginSize }-margin` ]: ! [ 'advanced' ].includes( marginSize ) },
+		{ 'is-stacked-on-mobile': isStackedOnMobile },
+	];
 
 	const innerStyles = {
 		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
@@ -66,7 +66,7 @@ function Save( { attributes } ) {
 
 	return (
 		<div className={ classes } data-id={ id } data-columns={ columns } data-layout={ layout } >
-			<div className={ innerClasses } style={ innerStyles }>
+			<div className={ classnames( innerClasses ) } style={ innerStyles }>
 				{ BackgroundVideo( attributes ) }
 				<InnerBlocks.Content />
 			</div>

@@ -26,6 +26,8 @@
 .wp-block[data-type="coblocks/gallery-collage"] {
 	ul {
 		list-style-type: none;
+		margin: 0;
+		padding: 0;
 	}
 
 	&[data-align="full"] .wp-block-coblocks-gallery-collage ul {

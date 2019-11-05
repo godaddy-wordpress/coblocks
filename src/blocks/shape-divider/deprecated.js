@@ -7,6 +7,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import { getDividerFromStyle } from './utils';
+import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -15,6 +16,9 @@ import { getColorClassName } from '@wordpress/block-editor';
 
 const deprecated = [
 	{
+		attributes: {
+			...metadata.attributes,
+		},
 		save( { attributes, className } ) {
 			const {
 				backgroundColor,

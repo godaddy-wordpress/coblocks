@@ -130,6 +130,7 @@ class AuthorEdit extends Component {
 							onChange={ ( nextName ) => {
 								setAttributes( { name: nextName } );
 							} }
+							keepPlaceholderOnFocus={ true }
 						/>
 						<RichText
 							identifier="biography"
@@ -144,6 +145,7 @@ class AuthorEdit extends Component {
 							onChange={ ( nextBio ) => {
 								setAttributes( { biography: nextBio } );
 							} }
+							keepPlaceholderOnFocus={ true }
 						/>
 						<InnerBlocks
 							template={ [ [ 'core/button', { placeholder: _x( 'Author link…', 'content placeholder', 'coblocks' ) } ] ] }
