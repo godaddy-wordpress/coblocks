@@ -54,7 +54,7 @@ const settings = {
 	},
 	example: {
 		attributes: {
-			gutter: 2,
+			gutter: 1,
 			images: [
 				{ index: '0', url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-1.jpg' },
 				{ index: '1', url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-2.jpg' },
