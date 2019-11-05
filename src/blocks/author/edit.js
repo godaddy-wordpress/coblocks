@@ -83,6 +83,7 @@ class AuthorEdit extends Component {
 		};
 
 		const onUploadImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
+
 		return (
 			<Fragment>
 				{ isSelected && (
@@ -96,7 +97,6 @@ class AuthorEdit extends Component {
 					/>
 				) }
 				<div className={ classes } style={ styles }>
-
 					{ ( !! isSelected || clientId === selectedParentClientId ) ? { dropZone } &&
 					<figure className={ `${ className }__avatar` }>
 						<MediaUploadCheck>
