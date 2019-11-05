@@ -86,7 +86,7 @@ class Inspector extends Component {
 						label={ __( 'Columns', 'coblocks' ) }
 						value={ columns }
 						onChange={ ( value ) => columnsOnChange( value ) }
-						min={ Math.min( 2, postCount ) }
+						min={ 1 }
 						max={ Math.min( 4, postCount ) }
 						required
 					/>
