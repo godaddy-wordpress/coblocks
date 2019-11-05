@@ -428,7 +428,7 @@ class CoBlocks_Form {
 
 		$this->render_field_label( $atts, $label );
 
-		if ( $atts['isInline'] ) {
+		if ( isset( $atts['isInline'] ) ) {
 
 			print( '<div class="coblocks--inline">' );
 
@@ -447,7 +447,7 @@ class CoBlocks_Form {
 
 		}
 
-		if ( $atts['isInline'] ) {
+		if ( isset( $atts['isInline'] ) ) {
 
 			print( '</div>' );
 
@@ -530,7 +530,7 @@ class CoBlocks_Form {
 
 		$this->render_field_label( $atts, $label );
 
-		if ( $atts['isInline'] ) {
+		if ( isset( $atts['isInline'] ) ) {
 
 			print( '<div class="coblocks--inline">' );
 
@@ -549,7 +549,7 @@ class CoBlocks_Form {
 
 		}
 
-		if ( $atts['isInline'] ) {
+		if ( isset( $atts['isInline'] ) ) {
 
 			print( '</div>' );
 
