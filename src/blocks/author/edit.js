@@ -14,10 +14,11 @@ import Inspector from './inspector';
  */
 import { __, _x } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { Component, Fragment } from '@wordpress/element';
 import { mediaUpload } from '@wordpress/editor';
-import { RichText, InnerBlocks, MediaUpload, MediaUploadCheck, withColors, withFontSizes } from '@wordpress/block-editor';
+import { withSelect, select } from '@wordpress/data';
+import { Component, Fragment } from '@wordpress/element';
 import { Button, Dashicon, DropZone } from '@wordpress/components';
+import { RichText, InnerBlocks, MediaUpload, MediaUploadCheck, withColors, withFontSizes } from '@wordpress/block-editor';
 
 class AuthorEdit extends Component {
 	constructor() {
@@ -43,12 +44,14 @@ class AuthorEdit extends Component {
 	render() {
 		const {
 			attributes,
-			className,
-			isSelected,
-			setAttributes,
 			backgroundColor,
-			textColor,
+			className,
+			clientId,
 			fontSize,
+			isSelected,
+			selectedParentClientId,
+			setAttributes,
+			textColor,
 		} = this.props;
 
 		const {
@@ -80,7 +83,6 @@ class AuthorEdit extends Component {
 		};
 
 		const onUploadImage = ( media ) => setAttributes( { imgUrl: media.url, imgId: media.id } );
-
 		return (
 			<Fragment>
 				{ isSelected && (
@@ -95,7 +97,7 @@ class AuthorEdit extends Component {
 				) }
 				<div className={ classes } style={ styles }>
 
-					{ !! isSelected ? { dropZone } &&
+					{ ( !! isSelected || clientId === selectedParentClientId ) ? { dropZone } &&
 					<figure className={ `${ className }__avatar` }>
 						<MediaUploadCheck>
 							<MediaUpload
@@ -159,7 +161,19 @@ class AuthorEdit extends Component {
 	}
 }
 
+const applyWithSelect = withSelect( () => {
+	const selectedClientId = select( 'core/block-editor' ).getBlockSelectionStart();
+	const parentClientId = select( 'core/block-editor' ).getBlockRootClientId(
+		selectedClientId
+	);
+
+	return {
+		selectedParentClientId: parentClientId,
+	};
+} );
+
 export default compose( [
 	withColors( 'backgroundColor', { textColor: 'color' } ),
 	withFontSizes( 'fontSize' ),
+	applyWithSelect,
 ] )( AuthorEdit );
