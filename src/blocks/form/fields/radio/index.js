@@ -17,7 +17,7 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	title: _x( 'Radio', 'block name', 'coblocks' ),
-	keywords: [ _x( 'Choose', 'block keyword', 'coblocks' ), _x( 'Select', 'block keyword', 'coblocks' ), _x( 'Option', 'block keyword', 'coblocks' ) ],
+	keywords: [ _x( 'choose', 'block keyword', 'coblocks' ), _x( 'select', 'block keyword', 'coblocks' ), _x( 'option', 'block keyword', 'coblocks' ) ],
 	description: __( 'A field with multiple options where only one choice can be made.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/form' ],
