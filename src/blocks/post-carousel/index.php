@@ -182,7 +182,7 @@ function coblocks_post_carousel( $posts, $attributes ) {
 
 		if ( ! $title ) {
 
-			$title = __( '(no title)', 'coblocks' );
+			$title = _x( '(no title)', 'placeholder when a post has no title', 'coblocks' );
 
 		}
 

@@ -193,7 +193,7 @@ function coblocks_posts( $posts, $attributes ) {
 
 		if ( ! $title ) {
 
-			$title = __( '(no title)', 'coblocks' );
+			$title = _x( '(no title)', 'placeholder when a post has no title', 'coblocks' );
 
 		}
 
