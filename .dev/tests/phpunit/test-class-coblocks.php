@@ -109,7 +109,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 			COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-accordion-ie-support.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-settings.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php',
-			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-getting-started-page.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php',
 		];
