@@ -1,3 +1,14 @@
 .wp-block-coblocks-accordion.alignfull {
 	padding: 0 12px;
 }
+
+.is-twentytwenty {
+	.wp-block-coblocks-accordion-item__title {
+		background-color: #000;
+		color: $white;
+	}
+
+	.wp-block-coblocks-accordion-item__content {
+		border-color: #000;
+	}
+}
