@@ -23,8 +23,8 @@ const settings = {
 	keywords: [
 		/* translators: block keyword.  */
 		__( 'text', 'coblocks' ),
-    /* translators: block keyword.  */
-		__( 'message text', 'coblocks' ) ],
+		/* translators: block keyword.  */
+		__( 'message text', 'coblocks' ),
 		/* translators: block keyword.  */
 		__( 'multiline text', 'coblocks' ) ],
 	parent: [ 'coblocks/form' ],
