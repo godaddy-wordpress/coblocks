@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import edit from './edit';
+import { editMultiField } from '../helpers';
 import icon from './icon';
 import metadata from './block.json';
 
@@ -16,10 +16,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Textarea', 'block name', 'coblocks' ),
-	description: __( 'A text box for longer responses.', 'coblocks' ),
+	title: _x( 'Select', 'block name', 'coblocks' ),
+	keywords: [ _x( 'dropdown', 'block keyword', 'coblocks' ), _x( 'option', 'block keyword', 'coblocks' ) ],
+	description: __( 'A dropdown field with multiple options where only one choice can be made.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'text', 'block keyword', 'coblocks' ), _x( 'message', 'block keyword', 'coblocks' ), _x( 'multiline', 'block keyword', 'coblocks' ) ],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,
@@ -27,7 +27,7 @@ const settings = {
 		customClassName: false,
 	},
 	attributes,
-	edit,
+	edit: editMultiField( 'select' ),
 	save: () => null,
 };
 

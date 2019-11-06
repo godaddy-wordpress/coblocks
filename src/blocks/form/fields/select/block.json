@@ -1,10 +1,10 @@
 {
-	"name": "coblocks/field-radio",
+	"name": "coblocks/field-select",
 	"category": "coblocks",
 	"attributes": {
 		"label": {
 			"type": "string",
-			"default": "Choose one"
+			"default": "Select"
 		},
 		"required": {
 			"type": "boolean",
@@ -13,10 +13,6 @@
 		"options": {
 			"type": "array",
 			"default": []
-		},
-		"isInline": {
-			"type": "boolean",
-			"default": false
 		}
 	}
 }

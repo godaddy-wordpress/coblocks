@@ -5,6 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { BaseControl, IconButton } from '@wordpress/components';
 import { Component, Fragment } from '@wordpress/element';
 import { withInstanceId } from '@wordpress/compose';
+import classnames from 'classnames';
 
 /**
  * Internal dependencies
@@ -52,7 +53,7 @@ class CoBlocksFieldMultiple extends Component {
 	}
 
 	render() {
-		const { type, instanceId, required, label, setAttributes, isSelected } = this.props;
+		const { type, instanceId, required, label, setAttributes, isSelected, isInline } = this.props;
 		let { options } = this.props;
 		let { inFocus } = this.state;
 		if ( ! options.length ) {
@@ -75,31 +76,43 @@ class CoBlocksFieldMultiple extends Component {
 						/>
 					}
 				>
-					<ol
-						className="coblocks-field-multiple__list"
-						id={ `coblocks-field-multiple-${ instanceId }` }
-					>
-						{ options.map( ( option, index ) => (
-							<CoBlocksFieldOption
-								type={ type }
-								key={ index }
-								option={ option }
-								index={ index }
-								onChangeOption={ this.onChangeOption }
-								onAddOption={ this.addNewOption }
-								isInFocus={ index === inFocus && isSelected }
-								isSelected={ isSelected }
-							/>
-						) ) }
-					</ol>
+					{ ! isSelected && 'select' === type ? (
+						<select>
+							{ options.map( ( option, index ) => (
+								<option value={ option } key={ index }>{ option }</option>
+							) ) }
+						</select>
+					) : (
+						<ol
+							className={
+								classnames(
+									'coblocks-field-multiple__list',
+									{ 'is-inline': isInline }
+								) }
+							id={ `coblocks-field-multiple-${ instanceId }` }
+						>
+							{ options.map( ( option, index ) => (
+								<CoBlocksFieldOption
+									type={ type }
+									key={ index }
+									option={ option }
+									index={ index }
+									onChangeOption={ this.onChangeOption }
+									onAddOption={ this.addNewOption }
+									isInFocus={ index === inFocus && isSelected }
+									isSelected={ isSelected }
+								/>
+							) ) }
+						</ol>
+					) }
 					{ isSelected && (
 						<IconButton
 							className="coblocks-field-multiple__add-option"
 							icon="insert"
-							label={ __( 'Add Option', 'coblocks' ) }
+							label={ 'radio' === type || 'select' === type ? __( 'Add Option', 'coblocks' ) : __( 'Add Checkbox', 'coblocks' ) }
 							onClick={ this.addNewOption }
 						>
-							{ __( 'Add Option', 'coblocks' ) }
+							{ 'radio' === type || 'select' === type ? __( 'Add Option', 'coblocks' ) : __( 'Add Checkbox', 'coblocks' ) }
 						</IconButton>
 					) }
 				</BaseControl>

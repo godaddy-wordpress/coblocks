@@ -1,10 +1,10 @@
 {
-	"name": "coblocks/field-radio",
+	"name": "coblocks/field-checkbox",
 	"category": "coblocks",
 	"attributes": {
 		"label": {
 			"type": "string",
-			"default": "Choose one"
+			"default": "Checkbox"
 		},
 		"required": {
 			"type": "boolean",

@@ -1,0 +1,14 @@
+{
+	"name": "coblocks/field-website",
+	"category": "coblocks",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Website"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}

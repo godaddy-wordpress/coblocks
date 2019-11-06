@@ -16,10 +16,10 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Textarea', 'block name', 'coblocks' ),
-	description: __( 'A text box for longer responses.', 'coblocks' ),
+	title: _x( 'Website', 'block name', 'coblocks' ),
+	description: __( 'A text field for collecting a URL.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'text', 'block keyword', 'coblocks' ), _x( 'message', 'block keyword', 'coblocks' ), _x( 'multiline', 'block keyword', 'coblocks' ) ],
+	keywords: [ _x( 'link', 'block keyword', 'coblocks' ), _x( 'hyperlink', 'block keyword', 'coblocks' ), 'url' ],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

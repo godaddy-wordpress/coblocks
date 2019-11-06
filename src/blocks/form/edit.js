@@ -21,6 +21,9 @@ import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/compone
 import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 
+/**
+ * Block constants
+ */
 // Note: Child form blocks are automatically allowed
 const ALLOWED_BLOCKS = [
 	'core/heading',
