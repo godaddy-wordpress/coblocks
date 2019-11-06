@@ -9,3 +9,12 @@
 hr.wp-block-coblocks-dynamic-separator {
 	background: none !important;
 }
+
+.is-twentynineteen {
+	.wp-block-coblocks-dynamic-separator{ 
+		.wp-block-separator {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+	}
+}
