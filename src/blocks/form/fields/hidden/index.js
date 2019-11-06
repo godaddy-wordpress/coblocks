@@ -19,7 +19,7 @@ const settings = {
 	title: _x( 'Hidden', 'block name', 'coblocks' ),
 	description: __( 'A hidden text field for collecting additional data.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'Hidden', 'block keyword', 'coblocks' ), _x( 'Input', 'block keyword', 'coblocks' ), 'text' ],
+	keywords: [ _x( 'input', 'block keyword', 'coblocks' ), _x( 'text', 'block keyword', 'coblocks' ) ],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,
