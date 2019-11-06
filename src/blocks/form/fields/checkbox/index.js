@@ -17,8 +17,8 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	title: _x( 'Checkbox', 'block name', 'coblocks' ),
-	keywords: [ _x( 'option', 'block keyword', 'coblocks' ) ],
-	description: __( 'A checkbox field where multiple checkboxes can be selected.', 'coblocks' ),
+	keywords: [ _x( 'Checkbox', 'block keyword', 'coblocks' ), _x( 'Check', 'block keyword', 'coblocks' ), _x( 'Option', 'block keyword', 'coblocks' ) ],
+	description: __( 'A checkbox field with multiple options where only one choice can be made.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/form' ],
 	supports: {

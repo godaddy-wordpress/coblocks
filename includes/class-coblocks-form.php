@@ -424,9 +424,11 @@ class CoBlocks_Form {
 
 		ob_start();
 
+		print( '<div class="coblocks-field">' );
+
 		$this->render_field_label( $atts, $label );
 
-		if ( ! empty( $atts['isInline'] ) ) {
+		if ( isset( $atts['isInline'] ) ) {
 
 			print( '<div class="coblocks--inline">' );
 
@@ -445,11 +447,13 @@ class CoBlocks_Form {
 
 		}
 
-		if ( ! empty( $atts['isInline'] ) ) {
+		if ( isset( $atts['isInline'] ) ) {
 
 			print( '</div>' );
 
 		}
+
+		print( '</div>' );
 
 		return ob_get_clean();
 
@@ -480,7 +484,7 @@ class CoBlocks_Form {
 		$this->render_field_label( $atts, $label );
 
 		printf(
-			'<select class="select" name="field-%1$s[value]">',
+			'<select class="select coblocks-field" name="field-%1$s[value]">',
 			esc_attr( $label_slug )
 		);
 
@@ -522,9 +526,11 @@ class CoBlocks_Form {
 
 		ob_start();
 
+		print( '<div class="coblocks-field">' );
+
 		$this->render_field_label( $atts, $label );
 
-		if ( ! empty( $atts['isInline'] ) ) {
+		if ( isset( $atts['isInline'] ) ) {
 
 			print( '<div class="coblocks--inline">' );
 
@@ -543,11 +549,13 @@ class CoBlocks_Form {
 
 		}
 
-		if ( ! empty( $atts['isInline'] ) ) {
+		if ( isset( $atts['isInline'] ) ) {
 
 			print( '</div>' );
 
 		}
+
+		print( '</div>' );
 
 		return ob_get_clean();
 
@@ -629,7 +637,7 @@ class CoBlocks_Form {
 		 */
 		$required_text  = (string) apply_filters( 'coblocks_form_label_required_text', '&#42;', $field_label );
 		$required_attr  = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
-		$required_label = empty( $required_attr ) ? '' : sprintf( ' <span class="required">%s</span>', $required_text );
+		$required_label = empty( $required_attr ) ? '' : sprintf( ' <span class="required">%s</span>', esc_html( $required_text ) );
 
 		/*
 		 * Format an array of allowed HTML tags and attributes for the $required_label value.

@@ -17,7 +17,7 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	title: _x( 'Select', 'block name', 'coblocks' ),
-	keywords: [ _x( 'Dropdown', 'block keyword', 'coblocks' ), _x( 'Option', 'block keyword', 'coblocks' ) ],
+	keywords: [ _x( 'Select', 'block keyword', 'coblocks' ), _x( 'Dropdown', 'block keyword', 'coblocks' ), _x( 'Option', 'block keyword', 'coblocks' ) ],
 	description: __( 'A dropdown field with multiple options where only one choice can be made.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/form' ],
