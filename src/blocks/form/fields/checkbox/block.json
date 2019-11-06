@@ -1,0 +1,22 @@
+{
+	"name": "coblocks/field-checkbox",
+	"category": "coblocks",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Checkbox"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		},
+		"options": {
+			"type": "array",
+			"default": []
+		},
+		"isInline": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}

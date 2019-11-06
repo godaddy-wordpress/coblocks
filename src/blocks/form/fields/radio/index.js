@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import edit from './edit';
+import { editMultiField } from '../helpers';
 import icon from './icon';
 import metadata from './block.json';
 
@@ -20,20 +20,21 @@ const settings = {
 	title: __( 'Radio', 'coblocks' ),
 	keywords: [
 		/* translators: block keyword.  */
-		__( 'Choose', 'coblocks' ),
+		__( 'choose', 'coblocks' ),
 		/* translators: block keyword.  */
-		__( 'Select', 'coblocks' ),
+		__( 'select', 'coblocks' ),
 		/* translators: block keyword.  */
-		__( 'Option', 'coblocks' ) ],
+		__( 'option', 'coblocks' ) ],
 	description: __( 'A field with multiple options where only one choice can be made.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,
 		html: false,
+		customClassName: false,
 	},
 	attributes,
-	edit,
+	edit: editMultiField( 'radio' ),
 	save: () => null,
 };
 

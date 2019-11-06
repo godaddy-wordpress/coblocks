@@ -22,14 +22,16 @@ const settings = {
 	icon,
 	keywords: [
 		/* translators: block keyword.  */
-		__( 'Textarea', 'coblocks' ),
-		'textarea',
+		__( 'text', 'coblocks' ),
+    /* translators: block keyword.  */
+		__( 'message text', 'coblocks' ) ],
 		/* translators: block keyword.  */
-		__( 'Multiline text', 'coblocks' ) ],
+		__( 'multiline text', 'coblocks' ) ],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,
 		html: false,
+		customClassName: false,
 	},
 	attributes,
 	edit,
