@@ -1,15 +1,6 @@
 .wp-block-coblocks-dynamic-separator {
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	width:100%;
 
 	.wp-block-separator {
-		width: 100%;
-	}
-
-	.is-style-wide:not(.editor-block-list__block-edit) {
-		position: absolute !important;
 		bottom: -50% !important;
 	}
 }
