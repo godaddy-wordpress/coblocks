@@ -19,7 +19,7 @@ const settings = {
 	title: _x( 'Website', 'block name', 'coblocks' ),
 	description: __( 'A text field for collecting a URL.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'Website', 'block keyword', 'coblocks' ), _x( 'URL', 'block keyword', 'coblocks' ), 'text' ],
+	keywords: [ _x( 'link', 'block keyword', 'coblocks' ), _x( 'hyperlink', 'block keyword', 'coblocks' ), 'url' ],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,
