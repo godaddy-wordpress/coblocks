@@ -1,15 +1,9 @@
 /**
- * Internal dependencies
- */
-import applyWithColors from './colors';
-
-/**
  * WordPress dependencies
  */
 import { __, _x } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
-import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, BaseControl } from '@wordpress/components';
 
 /**
@@ -29,8 +23,6 @@ class Inspector extends Component {
 		const {
 			attributes,
 			setAttributes,
-			setColor,
-			color,
 		} = this.props;
 
 		const {
@@ -56,24 +48,10 @@ class Inspector extends Component {
 							/>
 						</BaseControl>
 					</PanelBody>
-					<PanelColorSettings
-						title={ __( 'Color Settings', 'coblocks' ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: color.color,
-								onChange: setColor,
-								label: __( 'Color', 'coblocks' ),
-							},
-						] }
-					>
-					</PanelColorSettings>
 				</InspectorControls>
 			</Fragment>
 		);
 	}
 }
 
-export default compose( [
-	applyWithColors,
-] )( Inspector );
+export default Inspector;

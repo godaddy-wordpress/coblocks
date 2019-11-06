@@ -29,16 +29,11 @@ const settings = {
 	description: __( 'Add a resizable spacer between other blocks.', 'coblocks' ),
 	icon,
 	keywords: [ _x( 'spacer', 'block keyword', 'coblocks' ), 'hr', 'coblocks' ],
-	styles: [
-		{ name: 'dots', label: _x( 'Dot', 'block style', 'coblocks' ), isDefault: true },
-		{ name: 'line', label: _x( 'Line', 'block style', 'coblocks' ) },
-		{ name: 'fullwidth', label: _x( 'Fullwidth', 'block style', 'coblocks' ) },
-	],
-	// example: {
-	// 	attributes: {
-	// 		height: 100,
-	// 	},
-	// },
+	example: {
+		attributes: {
+			height: 100,
+		},
+	},
 	attributes,
 	transforms,
 	deprecated,

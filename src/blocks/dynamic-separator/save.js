@@ -1,35 +1,19 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
-import { getColorClassName } from '@wordpress/block-editor';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const save = ( { attributes, className } ) => {
-	const {
-		color,
-		customColor,
-		height,
-	} = attributes;
-
-	const colorClass = getColorClassName( 'color', color );
-
-	const classes = classnames(
-		className, {
-			'has-text-color': color || customColor,
-			[ colorClass ]: colorClass,
-		} );
+	const {	height	} = attributes;
 
 	const styles = {
-		color: colorClass ? undefined : customColor,
 		height: height ? height + 'px' : undefined,
 	};
 
 	return (
-		<hr className={ classes } style={ styles }></hr>
+		<div style={ styles } className={ className }>
+			<InnerBlocks.Content />
+		</div>
 	);
 };
 

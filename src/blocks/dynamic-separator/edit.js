@@ -7,17 +7,15 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import Inspector from './inspector';
-import applyWithColors from './colors';
 
 /**
  * WordPress dependencies
  */
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { getBlockType } from '@wordpress/blocks';
 import { ResizableBox } from '@wordpress/components';
-import { withDispatch, withSelect, select } from '@wordpress/data';
-import { InnerBlocks, getColorClassName } from '@wordpress/block-editor';
+import { withSelect, select } from '@wordpress/data';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Constants
@@ -36,53 +34,22 @@ class DynamicSeparatorEdit extends Component {
 			setAttributes,
 			clientId,
 			selectedParentClientId,
-			color,
-			// block,
-			supportedStyles,
-			// type,
 		} = this.props;
 
-		console.log( setBlockStyles );
-		console.log( supportedStyles );
-
-		const getSeparatorId = () => {
-			const innerBlockId = select( 'core/block-editor' ).getBlock( clientId ).innerBlocks[ 0 ].clientId;
-			const separator = select( 'core/block-editor' ).getBlock( innerBlockId );
-			// console.log( innerBlockId );
-			return separator;
-		};
-		// block styles set here: https://github.com/WordPress/gutenberg/blob/master/packages/block-editor/src/components/block-styles/index.js
-		// const setBlockStyles = () => withDispatch( ( dispatch ) => {
-		// 	return {
-		// 		onChangeClassName( newClassName ) {
-		// 			dispatch( 'core/block-editor' ).updateBlockAttributes( getSeparatorId, {
-		// 				className: newClassName,
-		// 			} );
-		// 		},
-		// 	};
-		// } );
-
-		// console.log( clientId === selectedParentClientId && getSeparatorAttributes() );
-
-		const { height, customColor } = attributes;
-
-		const colorClass = getColorClassName( 'color', color );
+		const { height } = attributes;
 
 		const styles = {
-			color: colorClass ? undefined : customColor,
 			height: height ? height + 'px' : undefined,
 		};
-
 		return (
 
 			<Fragment>
-				{ isSelected && <Inspector { ...this.props } /> }
+				{ ( isSelected || clientId === selectedParentClientId ) && <Inspector { ...this.props } /> }
 				<ResizableBox
 					className={ classnames( {
 						'is-selected': isSelected,
-						'has-text-color': color.color,
-						[ color.class ]: color.class,
 					} ) }
+					size={ { height } }
 					minHeight="0"
 					enable={ {
 						top: false,
@@ -116,7 +83,6 @@ class DynamicSeparatorEdit extends Component {
 }
 
 const applyWithSelect = withSelect( () => {
-	const { getBlockStyles } = select( 'core/blocks' );
 	const selectedClientId = select( 'core/block-editor' ).getBlockSelectionStart();
 	const parentClientId = select( 'core/block-editor' ).getBlockRootClientId(
 		selectedClientId
@@ -124,8 +90,7 @@ const applyWithSelect = withSelect( () => {
 
 	return {
 		selectedParentClientId: parentClientId,
-		supportedStyles: getBlockStyles( 'core/separator' ),
 	};
 } );
 
-export default compose( [ applyWithColors, applyWithSelect ] )( DynamicSeparatorEdit );
+export default compose( [ applyWithSelect ] )( DynamicSeparatorEdit );
