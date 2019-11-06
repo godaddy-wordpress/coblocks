@@ -31,10 +31,17 @@ const attributes = {
 };
 
 const settings = {
+	/* translators: block name.  */
 	title: __( 'Masonry', 'coblocks' ),
 	description: __( 'Display multiple images in an organized masonry gallery.', 'coblocks' ),
 	icon,
-	keywords: [ __( 'gallery', 'coblocks' ), __( 'photos', 'coblocks' ), __( 'lightbox', 'coblocks' ) ],
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'gallery', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'photos', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'lightbox', 'coblocks' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,

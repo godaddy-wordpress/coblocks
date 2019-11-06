@@ -16,8 +16,13 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
+	/* translators: block name.  */
 	title: __( 'Date', 'coblocks' ),
-	keywords: [ __( 'calendar', 'coblocks' ), __( 'day month year', 'coblocks' ) ],
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'calendar', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'day month year', 'coblocks' ) ],
 	description: __( 'A field for requesting date selections with a date picker.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/form' ],

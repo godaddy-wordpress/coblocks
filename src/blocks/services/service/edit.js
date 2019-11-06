@@ -202,13 +202,13 @@ class Edit extends Component {
 			[
 				'core/heading',
 				{
-					placeholder: __( 'Write title...', 'coblocks' ),
+					placeholder: /* translators: content placeholder. */__( 'Write title...', 'coblocks' ),
 					level: attributes.headingLevel,
 				},
 			],
 			[
 				'core/paragraph',
-				{ placeholder: __( 'Write description...', 'coblocks' ) },
+				{ placeholder: /* translators: content placeholder. */ __( 'Write description...', 'coblocks' ) },
 			],
 		];
 

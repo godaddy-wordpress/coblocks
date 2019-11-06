@@ -43,8 +43,8 @@ const TEMPLATE = [
 	[ 'coblocks/row', { columns: 1, layout: '100', paddingSize: 'huge', hasMarginControl: false, hasStackedControl: false, hasAlignmentControls: false, customBackgroundColor: '#FFFFFF' }, [
 		[ 'coblocks/column', { width: '100' },
 			[
-				[ 'core/heading', { placeholder: __( 'Add heading...', 'coblocks' ), content: __( 'Media Card', 'coblocks' ), level: 3 } ],
-				[ 'core/paragraph', { placeholder: __( 'Add content...', 'coblocks' ), content: __( 'Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'coblocks' ) } ],
+				[ 'core/heading', { placeholder: /* translators: content placeholder. */ __( 'Add heading...', 'coblocks' ), content: /* translators: content placeholder. */ __( 'Media Card', 'coblocks' ), level: 3 } ],
+				[ 'core/paragraph', { placeholder: /* translators: content placeholder. */ __( 'Add content...', 'coblocks' ), content: /* translators: content placeholder. */ __( 'Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'coblocks' ) } ],
 			],
 		],
 	] ],

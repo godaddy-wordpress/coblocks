@@ -32,12 +32,12 @@ import { isBlobURL } from '@wordpress/blob';
 */
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row', 'coblocks/column', 'coblocks/buttons' ];
 const TEMPLATE = [
-	[ 'core/heading', { placeholder: __( 'Add hero heading…', 'coblocks' ), level: 2 } ],
+	[ 'core/heading', { placeholder: /* translators: content placeholder.  */ __( 'Add hero heading…', 'coblocks' ), level: 2 } ],
 	[ 'core/paragraph', { placeholder: __( 'Add hero content, which is typically an introductory area of a page accompanied by call to action or two.', 'coblocks' ) } ],
 	[ 'coblocks/buttons', { contentAlign: 'left', items: 2, gutter: 'medium' },
 		[
-			[ 'core/button', { placeholder: __( 'Primary button…', 'coblocks' ) } ],
-			[ 'core/button', { placeholder: __( 'Secondary button…', 'coblocks' ), className: 'is-style-outline' } ],
+			[ 'core/button', { placeholder: /* translators: content placeholder.  */ __( 'Primary button…', 'coblocks' ) } ],
+			[ 'core/button', { placeholder: /* translators: content placeholder.  */ __( 'Secondary button…', 'coblocks' ), className: 'is-style-outline' } ],
 		],
 	],
 ];

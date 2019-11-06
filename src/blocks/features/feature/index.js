@@ -25,6 +25,7 @@ const attributes = {
 };
 
 const settings = {
+	/* translators: block name.  */
 	title: __( 'Feature', 'coblocks' ),
 	description: __( 'A singular child column within a parent features block.', 'coblocks' ),
 	icon,

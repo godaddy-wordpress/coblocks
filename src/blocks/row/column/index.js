@@ -26,6 +26,7 @@ const attributes = {
 };
 
 const settings = {
+	/* translators: block name. */
 	title: __( 'Column', 'coblocks' ),
 	description: __( 'An immediate child of a row.', 'coblocks' ),
 	icon,

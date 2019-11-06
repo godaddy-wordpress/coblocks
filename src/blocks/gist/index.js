@@ -25,10 +25,13 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
+	/* translators: block name.  */
 	title: __( 'Gist', 'coblocks' ),
 	description: __( 'Embed GitHub gists by adding a gist link.', 'coblocks' ),
 	icon,
-	keywords: [ __( 'code', 'coblocks' ), 'github', 'coblocks' ],
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'code', 'coblocks' ), 'github', 'coblocks' ],
 	supports: {
 		html: false,
 		align: [ 'wide' ],

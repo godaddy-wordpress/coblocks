@@ -32,14 +32,14 @@ const TEMPLATE = [
 const layoutOptions = [
 	{
 		name: 'grid',
-		label: __( 'Grid', 'coblocks' ),
+		label: /* translators: block style.  */ __( 'Grid', 'coblocks' ),
 		icon: icons.layoutGridIcon,
 		iconWithImages: icons.layoutGridIconWithImages,
 		isDefault: true,
 	},
 	{
 		name: 'list',
-		label: __( 'List', 'coblocks' ),
+		label: /* translators: block style.  */ __( 'List', 'coblocks' ),
 		icon: icons.layoutListIcon,
 		iconWithImages: icons.layoutListIconWithImages,
 	},

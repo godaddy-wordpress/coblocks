@@ -16,8 +16,15 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
+	/* translators: block name.  */
 	title: __( 'Radio', 'coblocks' ),
-	keywords: [ __( 'Choose', 'coblocks' ), __( 'Select', 'coblocks' ), __( 'Option', 'coblocks' ) ],
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'Choose', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'Select', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'Option', 'coblocks' ) ],
 	description: __( 'A field with multiple options where only one choice can be made.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/form' ],

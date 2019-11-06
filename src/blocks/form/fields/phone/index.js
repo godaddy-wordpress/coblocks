@@ -16,8 +16,15 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
+	/* translators: block name.  */
 	title: __( 'Phone', 'coblocks' ),
-	keywords: [ __( 'telephone', 'coblocks' ), __( 'cellular', 'coblocks' ), __( 'mobile', 'coblocks' ) ],
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'telephone', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'cellular', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'mobile', 'coblocks' ) ],
 	description: __( 'A phone number to allow visitors to give you a phone number.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/form' ],

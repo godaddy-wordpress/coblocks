@@ -28,8 +28,8 @@ const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/
 
 const TEMPLATE = [
 	[ 'coblocks/icon', { hasContentAlign: false } ],
-	[ 'core/heading', { placeholder: __( 'Add feature title...', 'coblocks' ), content: __( 'Feature Title', 'coblocks' ), level: 4 } ],
-	[ 'core/paragraph', { placeholder: __( 'Add feature content', 'coblocks' ), content: __( 'This is a feature block that you can use to highlight features.', 'coblocks' ) } ],
+	[ 'core/heading', { placeholder: /* translators: content placeholder.  */ __( 'Add feature title...', 'coblocks' ), content: /* translators: content placeholder.  */ __( 'Feature Title', 'coblocks' ), level: 4 } ],
+	[ 'core/paragraph', { placeholder: /* translators: content placeholder.  */ __( 'Add feature content', 'coblocks' ), content: /* translators: content placeholder.  */ __( 'This is a feature block that you can use to highlight features.', 'coblocks' ) } ],
 ];
 
 /**

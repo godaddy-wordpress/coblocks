@@ -24,10 +24,15 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
+	/* translators: block name. */
 	title: __( 'Highlight', 'coblocks' ),
 	description: __( 'Draw attention and emphasize important narrative.', 'coblocks' ),
 	icon,
-	keywords: [ __( 'text', 'coblocks' ), __( 'paragraph', 'coblocks' ), 'coblocks' ],
+	keywords: [
+		/* translators: block keyword. */
+		__( 'text', 'coblocks' ),
+		/* translators: block keyword. */
+		__( 'paragraph', 'coblocks' ), 'coblocks' ],
 	example: {
 		attributes: {
 			content: __( 'Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative.', 'coblocks' ),

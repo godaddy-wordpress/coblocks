@@ -23,10 +23,11 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
+	/* translators: block name. */
 	title: __( 'Services', 'coblocks' ),
 	description: __( 'Add up to four columns of services to display.', 'coblocks' ),
 	icon,
-	keywords: [ __( 'features', 'coblocks' ) ],
+	keywords: [ /* translators: block keyword. */ __( 'features', 'coblocks' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		reusable: false,

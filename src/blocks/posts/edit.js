@@ -46,13 +46,13 @@ const TokenList = wp.tokenList;
 const styleOptions = [
 	{
 		name: 'stacked',
-		label: __( 'Stacked', 'coblocks' ),
+		label: /* translators: block style. */ __( 'Stacked', 'coblocks' ),
 		icon: icons.styleStacked,
 		isDefault: true,
 	},
 	{
 		name: 'horizontal',
-		label: __( 'Horizontal', 'coblocks' ),
+		label: /* translators: block style. */ __( 'Horizontal', 'coblocks' ),
 		icon: icons.styleHorizontalImageRight,
 		iconAlt: icons.styleHorizontalImageLeft,
 	},
@@ -434,7 +434,7 @@ class PostsEdit extends Component {
 															{ titleTrimmed }
 														</RawHTML>
 													) :
-														__( '(no title)', 'coblocks' )
+														/* translators: placeholder when a post has no title. */ __( '(no title)', 'coblocks' )
 													}
 												</a>
 											</Disabled>

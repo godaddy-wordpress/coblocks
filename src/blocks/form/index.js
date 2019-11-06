@@ -23,10 +23,17 @@ import { InnerBlocks } from '@wordpress/block-editor';
 const { name, category, attributes } = metadata;
 
 const settings = {
+	/* translators: block name.  */
 	title: __( 'Form', 'coblocks' ),
 	description: __( 'Add a contact form to your page.', 'coblocks' ),
 	icon,
-	keywords: [ __( 'email', 'coblocks' ), __( 'about', 'coblocks' ), __( 'contact', 'coblocks' ) ],
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'email', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'about', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'contact', 'coblocks' ) ],
 	supports: {
 		reusable: false,
 		html: false,

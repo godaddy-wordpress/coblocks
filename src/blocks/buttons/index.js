@@ -25,10 +25,16 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
+	/* translators: block name.  */
 	title: __( 'Buttons', 'coblocks' ),
 	description: __( 'Prompt visitors to take action with multiple buttons, side by side.', 'coblocks' ),
 	icon,
-	keywords: [ __( 'link', 'coblocks' ), __( 'cta', 'coblocks' ), 'coblocks' ],
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'link', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'cta', 'coblocks' ),
+		'coblocks' ],
 	attributes,
 	transforms,
 	edit,

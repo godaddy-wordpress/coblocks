@@ -22,16 +22,23 @@ import { __ } from '@wordpress/i18n';
 const { name, category } = metadata;
 
 const settings = {
+	/* translators: block name. */
 	title: __( 'Social Profiles', 'coblocks' ),
 	description: __( 'Grow your audience with links to social media profiles.', 'coblocks' ),
 	icon,
-	keywords: [ __( 'share', 'coblocks' ), __( 'links', 'coblocks' ), __( 'icons', 'coblocks' ) ],
+	keywords: [
+		/* translators: block keyword. */
+		__( 'share', 'coblocks' ),
+		/* translators: block keyword. */
+		__( 'links', 'coblocks' ),
+		/* translators: block keyword. */
+		__( 'icons', 'coblocks' ) ],
 	styles: [
-		{ name: 'mask', label: __( 'Mask', 'coblocks' ) },
-		{ name: 'icon', label: __( 'Icon', 'coblocks' ), isDefault: true },
-		{ name: 'text', label: __( 'Text', 'coblocks' ) },
-		{ name: 'icon-and-text', label: __( 'Icon & Text', 'coblocks' ) },
-		{ name: 'circular', label: __( 'Circular', 'coblocks' ) },
+		{ name: 'mask', label: /* translators: block style. */ __( 'Mask', 'coblocks' ) },
+		{ name: 'icon', label: /* translators: block style. */ __( 'Icon', 'coblocks' ), isDefault: true },
+		{ name: 'text', label: /* translators: block style. */ __( 'Text', 'coblocks' ) },
+		{ name: 'icon-and-text', label: /* translators: block style. */ __( 'Icon & Text', 'coblocks' ) },
+		{ name: 'circular', label: /* translators: block style. */ __( 'Circular', 'coblocks' ) },
 	],
 	example: {
 		attributes: {

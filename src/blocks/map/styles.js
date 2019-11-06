@@ -9,26 +9,26 @@ import { __ } from '@wordpress/i18n';
 export const styleOptions = [
 	{
 		value: 'standard',
-		label: __( 'Standard', 'coblocks' ),
+		label: /* translators: block styles. */ __( 'Standard', 'coblocks' ),
 	},
 	{
 		value: 'silver',
-		label: __( 'Silver', 'coblocks' ),
+		label: /* translators: block styles. */ __( 'Silver', 'coblocks' ),
 	},
 	{
 		value: 'retro',
-		label: __( 'Retro', 'coblocks' ),
+		label: /* translators: block styles. */ __( 'Retro', 'coblocks' ),
 	},
 	{
 		value: 'dark',
-		label: __( 'Dark', 'coblocks' ),
+		label: /* translators: block styles. */ __( 'Dark', 'coblocks' ),
 	},
 	{
 		value: 'night',
-		label: __( 'Night', 'coblocks' ),
+		label: /* translators: block styles. */ __( 'Night', 'coblocks' ),
 	},
 	{
 		value: 'aubergine',
-		label: __( 'Aubergine', 'coblocks' ),
+		label: /* translators: block styles. */ __( 'Aubergine', 'coblocks' ),
 	},
 ];

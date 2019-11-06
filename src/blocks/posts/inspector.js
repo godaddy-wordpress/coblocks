@@ -54,23 +54,23 @@ const Inspector = props => {
 	const sizeOptions = [
 		{
 			value: 'w-1/7 h-1/7',
-			label: __( 'Small', 'coblocks' ),
-			shortName: __( 'S', 'coblocks' ),
+			label: /* translators: label for small size option. */ __( 'Small', 'coblocks' ),
+			shortName: /* translators: abbreviation for "Small" size. */ __( 'S', 'coblocks' ),
 		},
 		{
 			value: 'w-1/7 sm:w-1/5 h-1/7 sm:h-1/5',
-			label: __( 'Medium', 'coblocks' ),
-			shortName: __( 'M', 'coblocks' ),
+			label: /* translators: label for medium size option. */ __( 'Medium', 'coblocks' ),
+			shortName: /* translators: abbreviation for "Medium" size. */ __( 'M', 'coblocks' ),
 		},
 		{
 			value: 'w-1/7 sm:w-1/3 h-1/7 sm:h-1/3',
-			label: __( 'Large', 'coblocks' ),
-			shortName: __( 'L', 'coblocks' ),
+			label: /* translators: label for large size option. */ __( 'Large', 'coblocks' ),
+			shortName: /* translators: abbreviation for "Large" size. */ __( 'L', 'coblocks' ),
 		},
 		{
 			value: 'w-1/7 sm:w-1/3 md:w-1/2 h-1/7 sm:h-1/3 md:h-1/2',
-			label: __( 'Extra Large', 'coblocks' ),
-			shortName: __( 'XL', 'coblocks' ),
+			label: /* translators: label for extra large size option. */ __( 'Extra Large', 'coblocks' ),
+			shortName: /* translators: abbreviation for "Extra Large" size. */ __( 'XL', 'coblocks' ),
 		},
 	];
 

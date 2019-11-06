@@ -24,14 +24,19 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
+	/* translators: block name.  */
 	title: __( 'Dynamic HR', 'coblocks' ),
 	description: __( 'Add a resizable spacer between other blocks.', 'coblocks' ),
 	icon,
-	keywords: [ __( 'spacer', 'coblocks' ), 'hr', 'coblocks' ],
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'spacer', 'coblocks' ),
+		'hr',
+		'coblocks' ],
 	styles: [
-		{ name: 'dots', label: __( 'Dot', 'coblocks' ), isDefault: true },
-		{ name: 'line', label: __( 'Line', 'coblocks' ) },
-		{ name: 'fullwidth', label: __( 'Fullwidth', 'coblocks' ) },
+		{ name: 'dots', label: /* translators: block style.  */ __( 'Dot', 'coblocks' ), isDefault: true },
+		{ name: 'line', label: /* translators: block style.  */ __( 'Line', 'coblocks' ) },
+		{ name: 'fullwidth', label: /* translators: block style.  */ __( 'Fullwidth', 'coblocks' ) },
 	],
 	example: {
 		attributes: {

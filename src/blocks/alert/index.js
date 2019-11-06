@@ -25,15 +25,21 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
+	/* translators: block name */
 	title: __( 'Alert', 'coblocks' ),
 	description: __( 'Provide contextual feedback messages or notices.', 'coblocks' ),
 	icon,
-	keywords: [ __( 'notice', 'coblocks' ), __( 'message', 'coblocks' ), 'coblocks' ],
+	keywords: [
+		/* translators: block keyword */
+		__( 'notice', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'message', 'coblocks' ),
+		'coblocks' ],
 	styles: [
-		{ name: 'info', label: __( 'Info', 'coblocks' ), isDefault: true },
-		{ name: 'success', label: __( 'Success', 'coblocks' ) },
-		{ name: 'warning', label: __( 'Warning', 'coblocks' ) },
-		{ name: 'error', label: __( 'Error', 'coblocks' ) },
+		{ name: 'info', label: /* translators: block style */ __( 'Info', 'coblocks' ), isDefault: true },
+		{ name: 'success', label: /* translators: block style */ __( 'Success', 'coblocks' ) },
+		{ name: 'warning', label: /* translators: block style */ __( 'Warning', 'coblocks' ) },
+		{ name: 'error', label: /* translators: block style */ __( 'Error', 'coblocks' ) },
 	],
 	supports: {
 		align: true,

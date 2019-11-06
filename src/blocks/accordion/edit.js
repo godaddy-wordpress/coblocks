@@ -71,6 +71,7 @@ class Edit extends Component {
 							<IconButton
 								isLarge
 								className="block-editor-button-block-appender components-coblocks-add-accordion-item__button"
+								/* translators: Add a child element for the Accordion block */
 								label={ __( 'Add Accordion Item', 'coblocks' ) }
 								icon="insert"
 								onClick={ () => {

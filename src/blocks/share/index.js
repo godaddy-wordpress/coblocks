@@ -22,16 +22,17 @@ import { __ } from '@wordpress/i18n';
 const { name, category } = metadata;
 
 const settings = {
+	/* translators: block name. */
 	title: __( 'Share', 'coblocks' ),
 	description: __( 'Add social sharing links to help you get likes and shares.', 'coblocks' ),
 	icon,
-	keywords: [ __( 'social', 'coblocks' ), 'coblocks' ],
+	keywords: [ /* translators: block keyword. */ __( 'social', 'coblocks' ), 'coblocks' ],
 	styles: [
-		{ name: 'mask', label: __( 'Mask', 'coblocks' ) },
-		{ name: 'icon', label: __( 'Icon', 'coblocks' ), isDefault: true },
-		{ name: 'text', label: __( 'Text', 'coblocks' ) },
-		{ name: 'icon-and-text', label: __( 'Icon & Text', 'coblocks' ) },
-		{ name: 'circular', label: __( 'Circular', 'coblocks' ) },
+		{ name: 'mask', label: /* translators: block style. */ __( 'Mask', 'coblocks' ) },
+		{ name: 'icon', label: /* translators: block style. */ __( 'Icon', 'coblocks' ), isDefault: true },
+		{ name: 'text', label: /* translators: block style. */ __( 'Text', 'coblocks' ) },
+		{ name: 'icon-and-text', label: /* translators: block style. */ __( 'Icon & Text', 'coblocks' ) },
+		{ name: 'circular', label: /* translators: block style. */ __( 'Circular', 'coblocks' ) },
 	],
 	example: {
 		attributes: {

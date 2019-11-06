@@ -40,7 +40,9 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Dynamic HR Settings', 'coblocks' ) }>
+					<PanelBody
+						/* translators: hr is html markup - horizonal rule.  */
+						title={ __( 'Dynamic HR Settings', 'coblocks' ) }>
 						<BaseControl label={ __( 'Height in pixels', 'coblocks' ) }>
 							<input
 								type="number"

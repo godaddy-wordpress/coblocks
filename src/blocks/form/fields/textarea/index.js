@@ -16,10 +16,16 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
+	/* translators: block name.  */
 	title: __( 'Textarea', 'coblocks' ),
 	description: __( 'A text box for longer responses.', 'coblocks' ),
 	icon,
-	keywords: [ __( 'Textarea', 'coblocks' ), 'textarea', __( 'Multiline text', 'coblocks' ) ],
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'Textarea', 'coblocks' ),
+		'textarea',
+		/* translators: block keyword.  */
+		__( 'Multiline text', 'coblocks' ) ],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,
