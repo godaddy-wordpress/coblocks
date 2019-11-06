@@ -4,3 +4,8 @@
 		bottom: -50% !important;
 	}
 }
+
+// Used for deprecated blocks before they are converted to new style.
+hr.wp-block-coblocks-dynamic-separator {
+	background: none !important;
+}
