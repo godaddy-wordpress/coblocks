@@ -9,7 +9,7 @@ import { SVG, Path, G } from '@wordpress/components';
 const icons = {};
 
 icons.service43 = (
-	<SVG viewBox="0 0 56 32" xmlns="http://www.w3.org/2000/svg">
+	<SVG height="32" viewBox="0 0 56 32" width="56" xmlns="http://www.w3.org/2000/svg">
 		<G fill="currentColor" fillRule="evenodd">
 			<Path d="m0 3h24v19.253906h-24z" />
 			<Path className="service-svg-moving-path" d="m0 24h16v.8785807 1.1214193h-16z" />
@@ -22,7 +22,7 @@ icons.service43 = (
 );
 
 icons.service169 = (
-	<SVG viewBox="0 0 56 32" xmlns="http://www.w3.org/2000/svg">
+	<SVG height="32" viewBox="0 0 56 32" width="56" xmlns="http://www.w3.org/2000/svg">
 		<G fill="currentColor" fillRule="evenodd">
 			<Path d="m0 5h24v14h-24z" />
 			<Path d="m32 5h24v14h-24z" />
@@ -35,7 +35,7 @@ icons.service169 = (
 );
 
 icons.serviceSquare = (
-	<SVG viewBox="0 0 56 32" xmlns="http://www.w3.org/2000/svg">
+	<SVG height="32" viewBox="0 0 56 32" width="56" xmlns="http://www.w3.org/2000/svg">
 		<G fill="currentColor" fillRule="evenodd">
 			<Path d="m0 0h24v24h-24z" />
 			<Path d="m32 0h24v24h-24z" />
@@ -48,7 +48,7 @@ icons.serviceSquare = (
 );
 
 icons.serviceCircle = (
-	<SVG viewBox="0 0 56 32" xmlns="http://www.w3.org/2000/svg">
+	<SVG height="32" viewBox="0 0 56 32" width="56" xmlns="http://www.w3.org/2000/svg">
 		<G fill="currentColor" fillRule="evenodd">
 			<circle cx="12" cy="12" r="12" />
 			<Path className="service-svg-moving-path" d="m0 26h16v.8785807 1.1214193h-16z" />
