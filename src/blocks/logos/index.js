@@ -15,7 +15,7 @@ import save from './save';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants.
@@ -23,10 +23,17 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Logos & Badges', 'block name', 'coblocks' ),
+	/* translators: block name. */
+	title: __( 'Logos & Badges', 'coblocks' ),
 	description: __( 'Add logos, badges, or certifications to build credibility.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'clients', 'block keyword', 'coblocks' ), _x( 'proof', 'block keyword', 'coblocks' ), _x( 'testimonials', 'block keyword', 'coblocks' ) ],
+	keywords: [
+		/* translators: block keyword. */
+		__( 'clients', 'coblocks' ),
+		/* translators: block keyword. */
+		__( 'proof', 'coblocks' ),
+		/* translators: block keyword. */
+		__( 'testimonials', 'coblocks' ) ],
 	supports: {
 		align: [ 'wide', 'full' ],
 	},

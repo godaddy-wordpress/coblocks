@@ -14,7 +14,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
@@ -23,10 +23,17 @@ import { InnerBlocks } from '@wordpress/block-editor';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Form', 'block name', 'coblocks' ),
+	/* translators: block name.  */
+	title: __( 'Form', 'coblocks' ),
 	description: __( 'Add a contact form to your page.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'email', 'block keyword', 'coblocks' ), _x( 'about', 'block keyword', 'coblocks' ), _x( 'contact', 'block keyword', 'coblocks' ) ],
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'email', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'about', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'contact', 'coblocks' ) ],
 	supports: {
 		reusable: false,
 		html: false,

@@ -16,7 +16,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -24,14 +24,19 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Dynamic HR', 'block name', 'coblocks' ),
+	/* translators: block name.  */
+	title: __( 'Dynamic HR', 'coblocks' ),
 	description: __( 'Add a resizable spacer between other blocks.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'spacer', 'block keyword', 'coblocks' ), 'hr', 'coblocks' ],
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'spacer', 'coblocks' ),
+		'hr',
+		'coblocks' ],
 	styles: [
-		{ name: 'dots', label: _x( 'Dot', 'block style', 'coblocks' ), isDefault: true },
-		{ name: 'line', label: _x( 'Line', 'block style', 'coblocks' ) },
-		{ name: 'fullwidth', label: _x( 'Fullwidth', 'block style', 'coblocks' ) },
+		{ name: 'dots', label: /* translators: block style.  */ __( 'Dot', 'coblocks' ), isDefault: true },
+		{ name: 'line', label: /* translators: block style.  */ __( 'Line', 'coblocks' ) },
+		{ name: 'fullwidth', label: /* translators: block style.  */ __( 'Fullwidth', 'coblocks' ) },
 	],
 	example: {
 		attributes: {

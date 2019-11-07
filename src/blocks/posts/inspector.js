@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
@@ -54,23 +54,23 @@ const Inspector = props => {
 	const sizeOptions = [
 		{
 			value: 'w-1/7 h-1/7',
-			label: _x( 'Small', 'label for small size option', 'coblocks' ),
-			shortName: _x( 'S', 'abbreviation for "Small" size', 'coblocks' ),
+			label: /* translators: label for small size option. */ __( 'Small', 'coblocks' ),
+			shortName: /* translators: abbreviation for "Small" size. */ __( 'S', 'coblocks' ),
 		},
 		{
 			value: 'w-1/7 sm:w-1/5 h-1/7 sm:h-1/5',
-			label: _x( 'Medium', 'label for medium size option', 'coblocks' ),
-			shortName: _x( 'M', 'abbreviation for "Medium" size', 'coblocks' ),
+			label: /* translators: label for medium size option. */ __( 'Medium', 'coblocks' ),
+			shortName: /* translators: abbreviation for "Medium" size. */ __( 'M', 'coblocks' ),
 		},
 		{
 			value: 'w-1/7 sm:w-1/3 h-1/7 sm:h-1/3',
-			label: _x( 'Large', 'label for large size option', 'coblocks' ),
-			shortName: _x( 'L', 'abbreviation for "Large" size', 'coblocks' ),
+			label: /* translators: label for large size option. */ __( 'Large', 'coblocks' ),
+			shortName: /* translators: abbreviation for "Large" size. */ __( 'L', 'coblocks' ),
 		},
 		{
 			value: 'w-1/7 sm:w-1/3 md:w-1/2 h-1/7 sm:h-1/3 md:h-1/2',
-			label: _x( 'Extra Large', 'label for large size option', 'coblocks' ),
-			shortName: _x( 'XL', 'abbreviation for "Large" size', 'coblocks' ),
+			label: /* translators: label for extra large size option. */ __( 'Extra Large', 'coblocks' ),
+			shortName: /* translators: abbreviation for "Extra Large" size. */ __( 'XL', 'coblocks' ),
 		},
 	];
 

@@ -15,7 +15,7 @@ import save from './save';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -23,10 +23,16 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Accordion Item', 'This is an inner block for the Accordion Block.', 'coblocks' ),
+	/* translators: This is an inner block for the Accordion Block.  */
+	title: __( 'Accordion Item', 'coblocks' ),
 	description: __( 'Add collapsable accordion items to accordions.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'tabs', 'block keyword', 'coblocks' ), _x( 'faq', 'block keyword', 'coblocks' ), 'coblocks' ],
+	keywords: [
+		/* translators: block keyword  */
+		__( 'tabs', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'faq', 'coblocks' ),
+		'coblocks' ],
 	parent: [ 'coblocks/accordion' ],
 	supports: {
 		reusable: false,

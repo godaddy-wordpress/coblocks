@@ -17,7 +17,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -25,24 +25,25 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Shape Divider', 'block name', 'coblocks' ),
+	/* translators: block name. */
+	title: __( 'Shape Divider', 'coblocks' ),
 	description: __( 'Add a shape divider to visually distinquish page sections.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'separator', 'block keyword', 'coblocks' ), 'hr', 'svg' ],
+	keywords: [ /* translators: block keyword. */ __( 'separator', 'coblocks' ), 'hr', 'svg' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 
 	},
 	styles: [
-		{ name: 'wavy', label: _x( 'Wavy', 'block style', 'coblocks' ), isDefault: true },
-		{ name: 'hills', label: _x( 'Hills', 'block style', 'coblocks' ) },
-		{ name: 'waves', label: _x( 'Waves', 'block style', 'coblocks' ) },
-		{ name: 'angled', label: _x( 'Angled', 'block style', 'coblocks' ) },
-		{ name: 'sloped', label: _x( 'Sloped', 'block style', 'coblocks' ) },
-		{ name: 'rounded', label: _x( 'Rounded', 'block style', 'coblocks' ) },
-		{ name: 'triangle', label: _x( 'Triangle', 'block style', 'coblocks' ) },
-		{ name: 'pointed', label: _x( 'Pointed', 'block style', 'coblocks' ) },
+		{ name: 'wavy', label: /* translators: block style. */ __( 'Wavy', 'coblocks' ), isDefault: true },
+		{ name: 'hills', label: /* translators: block style. */ __( 'Hills', 'coblocks' ) },
+		{ name: 'waves', label: /* translators: block style. */ __( 'Waves', 'coblocks' ) },
+		{ name: 'angled', label: /* translators: block style. */ __( 'Angled', 'coblocks' ) },
+		{ name: 'sloped', label: /* translators: block style. */ __( 'Sloped', 'coblocks' ) },
+		{ name: 'rounded', label: /* translators: block style. */ __( 'Rounded', 'coblocks' ) },
+		{ name: 'triangle', label: /* translators: block style. */ __( 'Triangle', 'coblocks' ) },
+		{ name: 'pointed', label: /* translators: block style. */ __( 'Pointed', 'coblocks' ) },
 	],
 	example: {
 		attributes: {
