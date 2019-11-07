@@ -16,7 +16,7 @@ import MediaContainer from './media-container';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InnerBlocks } from '@wordpress/block-editor';
@@ -43,8 +43,8 @@ const TEMPLATE = [
 	[ 'coblocks/row', { columns: 1, layout: '100', paddingSize: 'huge', hasMarginControl: false, hasStackedControl: false, hasAlignmentControls: false, customBackgroundColor: '#FFFFFF' }, [
 		[ 'coblocks/column', { width: '100' },
 			[
-				[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder', 'coblocks' ), content: _x( 'Media Card', 'content placeholder', 'coblocks' ), level: 3 } ],
-				[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder', 'coblocks' ), content: _x( 'Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'content placeholder', 'coblocks' ) } ],
+				[ 'core/heading', { placeholder: /* translators: content placeholder. */ __( 'Add heading...', 'coblocks' ), content: /* translators: content placeholder. */ __( 'Media Card', 'coblocks' ), level: 3 } ],
+				[ 'core/paragraph', { placeholder: /* translators: content placeholder. */ __( 'Add content...', 'coblocks' ), content: /* translators: content placeholder. */ __( 'Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'coblocks' ) } ],
 			],
 		],
 	] ],

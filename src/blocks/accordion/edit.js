@@ -8,7 +8,7 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-import { _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { IconButton } from '@wordpress/components';
@@ -71,7 +71,8 @@ class Edit extends Component {
 							<IconButton
 								isLarge
 								className="block-editor-button-block-appender components-coblocks-add-accordion-item__button"
-								label={ _x( 'Add Accordion Item', 'Add a child element for the Accordion block', 'coblocks' ) }
+								/* translators: Add a child element for the Accordion block */
+								label={ __( 'Add Accordion Item', 'coblocks' ) }
 								icon="insert"
 								onClick={ () => {
 									if ( items[ 0 ].innerBlocks ) {

@@ -17,7 +17,7 @@ import { GalleryAttributes } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies.
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants.
@@ -30,23 +30,28 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Collage', 'block name', 'coblocks' ),
+	/* translators: block name.  */
+	title: __( 'Collage', 'coblocks' ),
 	description: __( 'Assemble images into a beautiful collage gallery.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'gallery', 'block keyword', 'coblocks' ), _x( 'photos', 'block keyword', 'coblocks' ) ],
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'gallery', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'photos', 'coblocks' ) ],
 	styles: [
 		{
 			name: 'default',
-			label: _x( 'Default', 'block style', 'coblocks' ),
+			label: /* translators: block style.  */ __( 'Default', 'coblocks' ),
 			isDefault: true,
 		},
 		{
 			name: 'tiled',
-			label: _x( 'Tiled', 'block style', 'coblocks' ),
+			label: /* translators: block style.  */ __( 'Tiled', 'coblocks' ),
 		},
 		{
 			name: 'layered',
-			label: _x( 'Layered', 'block style', 'coblocks' ),
+			label: /* translators: block style.  */ __( 'Layered', 'coblocks' ),
 		},
 	],
 	supports: {

@@ -8,7 +8,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -16,10 +16,17 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Textarea', 'block name', 'coblocks' ),
+	/* translators: block name.  */
+	title: __( 'Textarea', 'coblocks' ),
 	description: __( 'A text box for longer responses.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'text', 'block keyword', 'coblocks' ), _x( 'message', 'block keyword', 'coblocks' ), _x( 'multiline', 'block keyword', 'coblocks' ) ],
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'text', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'message text', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'multiline text', 'coblocks' ) ],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

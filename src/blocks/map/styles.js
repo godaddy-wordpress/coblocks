@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Map styles
@@ -9,26 +9,26 @@ import { _x } from '@wordpress/i18n';
 export const styleOptions = [
 	{
 		value: 'standard',
-		label: _x( 'Standard', 'block styles', 'coblocks' ),
+		label: /* translators: block styles. */ __( 'Standard', 'coblocks' ),
 	},
 	{
 		value: 'silver',
-		label: _x( 'Silver', 'block styles', 'coblocks' ),
+		label: /* translators: block styles. */ __( 'Silver', 'coblocks' ),
 	},
 	{
 		value: 'retro',
-		label: _x( 'Retro', 'block styles', 'coblocks' ),
+		label: /* translators: block styles. */ __( 'Retro', 'coblocks' ),
 	},
 	{
 		value: 'dark',
-		label: _x( 'Dark', 'block styles', 'coblocks' ),
+		label: /* translators: block styles. */ __( 'Dark', 'coblocks' ),
 	},
 	{
 		value: 'night',
-		label: _x( 'Night', 'block styles', 'coblocks' ),
+		label: /* translators: block styles. */ __( 'Night', 'coblocks' ),
 	},
 	{
 		value: 'aubergine',
-		label: _x( 'Aubergine', 'block styles', 'coblocks' ),
+		label: /* translators: block styles. */ __( 'Aubergine', 'coblocks' ),
 	},
 ];

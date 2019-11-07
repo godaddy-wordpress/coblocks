@@ -8,7 +8,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -16,8 +16,15 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Radio', 'block name', 'coblocks' ),
-	keywords: [ _x( 'choose', 'block keyword', 'coblocks' ), _x( 'select', 'block keyword', 'coblocks' ), _x( 'option', 'block keyword', 'coblocks' ) ],
+	/* translators: block name.  */
+	title: __( 'Radio', 'coblocks' ),
+	keywords: [
+		/* translators: block keyword.  */
+		__( 'choose', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'select', 'coblocks' ),
+		/* translators: block keyword.  */
+		__( 'option', 'coblocks' ) ],
 	description: __( 'A field with multiple options where only one choice can be made.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/form' ],
