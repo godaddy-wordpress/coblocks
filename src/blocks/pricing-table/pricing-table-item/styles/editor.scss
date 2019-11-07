@@ -28,7 +28,7 @@
 	.editor-block-list__block-edit {
 		height: 100%;
 
-		> div:not(.editor-block-contextual-toolbar) {
+		> [data-block] {
 			@media (min-width: 600px) {
 				display: flex;
 				height: 100%;
