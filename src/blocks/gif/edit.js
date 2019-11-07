@@ -1,4 +1,4 @@
-/*global $*/
+/*global jQuery*/
 
 /**
  * External dependencies
@@ -114,7 +114,7 @@ class Edit extends Component {
 
 			setAttributes( { fetching: true } );
 
-			$.getJSON( GIPHY_URL + encodeURI( search ) )
+			jQuery.getJSON( GIPHY_URL + encodeURI( search ) )
 				.success( function fetchSuccess( data ) {
 					setAttributes( { fetching: false, matches: data.data } );
 				} )
