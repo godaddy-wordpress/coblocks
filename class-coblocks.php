@@ -158,7 +158,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @return void
 		 */
 		public function load_textdomain() {
-			load_plugin_textdomain( 'coblocks', false, dirname( plugin_basename( COBLOCKS_PLUGIN_DIR ) ) . '/languages/' );
+			load_plugin_textdomain( 'coblocks', false, basename( COBLOCKS_PLUGIN_DIR ) . '/languages' );
 		}
 
 		/**
