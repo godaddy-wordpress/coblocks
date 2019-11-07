@@ -23,11 +23,16 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name.  */
+	/* translators: block name */
 	title: __( 'Gif', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Pick a gif, any gif.', 'coblocks' ),
 	icon,
-	keywords: [ /* translators: block keyword.  */ __( 'animated', 'coblocks' ), 'coblocks' ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'animated', 'coblocks' ),
+	],
 	supports: {
 		customClassName: false,
 		html: false,

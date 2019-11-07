@@ -31,16 +31,19 @@ const attributes = {
 };
 
 const settings = {
-	/* translators: block name.  */
+	/* translators: block name */
 	title: __( 'Carousel', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Display multiple images in a beautiful carousel gallery.', 'coblocks' ),
 	attributes,
 	icon,
 	keywords: [
-		/* translators: block keyword.  */
+		'coblocks',
+		/* translators: block keyword */
 		__( 'gallery', 'coblocks' ),
-		/* translators: block keyword.  */
-		__( 'photos', 'coblocks' ) ],
+		/* translators: block keyword */
+		__( 'photos', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,

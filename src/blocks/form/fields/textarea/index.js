@@ -30,17 +30,20 @@ const metadata = {
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name.  */
+	/* translators: block name */
 	title: __( 'Textarea', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'A text box for longer responses.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword.  */
+		'coblocks',
+		/* translators: block keyword */
 		__( 'text', 'coblocks' ),
-		/* translators: block keyword.  */
+		/* translators: block keyword */
 		__( 'message text', 'coblocks' ),
-		/* translators: block keyword.  */
-		__( 'multiline text', 'coblocks' ) ],
+		/* translators: block keyword */
+		__( 'multiline text', 'coblocks' ),
+	],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

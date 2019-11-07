@@ -24,16 +24,18 @@ import { InnerBlocks } from '@wordpress/block-editor';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block title */
+	/* translators: block name */
 	title: __( 'Accordion', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Organize content within collapsable accordion items.', 'coblocks' ),
 	icon,
 	keywords: [
+		'coblocks',
 		/* translators: block keyword */
 		__( 'tabs', 'coblocks' ),
 		/* translators: block keyword */
 		__( 'faq', 'coblocks' ),
-		'coblocks' ],
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,

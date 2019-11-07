@@ -37,17 +37,20 @@ const attributes = {
 };
 
 const settings = {
-	/* translators: block name. */
+	/* translators: block name */
 	title: __( 'Hero', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'An introductory area of a page accompanied by a small amount of text and a call to action.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword. */
+		'coblocks',
+		/* translators: block keyword */
 		__( 'button', 'coblocks' ),
-		/* translators: shorthand for "call to action" - block keyword.  */
+		/* translators: block keyword, abbreviation for "call to action" */
 		__( 'cta', 'coblocks' ),
-		/* translators: block keyword. */
-		__( 'call to action', 'coblocks' ) ],
+		/* translators: block keyword */
+		__( 'call to action', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,

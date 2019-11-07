@@ -42,15 +42,20 @@ const metadata = {
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name.  */
+	/* translators: block name */
 	title: __( 'Name', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'A text field for collecting the first and last names.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword.  */
+		'coblocks',
+		/* translators: block keyword */
+		__( 'email', 'coblocks' ),
+		/* translators: block keyword */
 		__( 'first name', 'coblocks' ),
-		/* translators: block keyword.  */
-		__( 'last name', 'coblocks' ), 'email' ],
+		/* translators: block keyword */
+		__( 'last name', 'coblocks' ),
+	],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

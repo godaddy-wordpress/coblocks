@@ -25,7 +25,7 @@ class Controls extends Component {
 		const customControls = [
 			{
 				icon: icons.open,
-				/* translators: Toggle label to display the accordion open.  */
+				/* translators: toggle label to display the accordion open */
 				title: __( 'Display open', 'coblocks' ),
 				onClick: () => setAttributes( { open: ! open } ),
 				isActive: open === true,

@@ -23,17 +23,24 @@ import { __ } from '@wordpress/i18n';
 const { name, category } = metadata;
 
 const settings = {
-	/* translators: block name. */
+	/* translators: block name */
 	title: __( 'Post Carousel', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Display posts or an external blog feed as a carousel.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword. */
-		__( 'posts', 'coblocks' ),
-		/* translators: block keyword. */
+		'coblocks',
+		/* translators: block keyword */
 		__( 'slider', 'coblocks' ),
-		/* translators: block keyword. */
-		__( 'latest', 'coblocks' ) ],
+		/* translators: block keyword */
+		__( 'posts', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'blog', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'latest', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'rss', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,

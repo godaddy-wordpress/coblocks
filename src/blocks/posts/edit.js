@@ -46,13 +46,15 @@ const TokenList = wp.tokenList;
 const styleOptions = [
 	{
 		name: 'stacked',
-		label: /* translators: block style. */ __( 'Stacked', 'coblocks' ),
+		/* translators: block style */
+		label: __( 'Stacked', 'coblocks' ),
 		icon: icons.styleStacked,
 		isDefault: true,
 	},
 	{
 		name: 'horizontal',
-		label: /* translators: block style. */ __( 'Horizontal', 'coblocks' ),
+		/* translators: block style */
+		label: __( 'Horizontal', 'coblocks' ),
 		icon: icons.styleHorizontalImageRight,
 		iconAlt: icons.styleHorizontalImageLeft,
 	},

@@ -14,7 +14,7 @@ import DimensionsSelect from './dimensions-select';
 /**
  * WordPress dependencies
  */
-import { __, _x, sprintf } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { withInstanceId } from '@wordpress/compose';
 import { dispatch } from '@wordpress/data';
 import { Component, Fragment } from '@wordpress/element';
@@ -386,23 +386,28 @@ class DimensionsControl extends Component {
 
 		const unitSizes = [
 			{
-				name: _x( 'Pixel', 'A size unit for CSS markup', 'coblocks' ),
+				/* translators: a unit of size (px) for css markup */
+				name: __( 'Pixel', 'coblocks' ),
 				unitValue: 'px',
 			},
 			{
-				name: _x( 'Em', 'A size unit for CSS markup', 'coblocks' ),
+				/* translators: a unit of size (em) for css markup */
+				name: __( 'Em', 'coblocks' ),
 				unitValue: 'em',
 			},
 			{
-				name: _x( 'Viewport Width', 'A "vw" size unit for CSS markup', 'coblocks' ),
+				/* translators: a unit of size (vw) for css markup */
+				name: __( 'Viewport Width', 'coblocks' ),
 				unitValue: 'vw',
 			},
 			{
-				name: _x( 'Viewport Height', 'A "vh" size unit for CSS markup', 'coblocks' ),
+				/* translators: a unit of size (vh) for css markup */
+				name: __( 'Viewport Height', 'coblocks' ),
 				unitValue: 'vh',
 			},
 			{
-				name: _x( 'Percentage', 'A size unit for CSS markup', 'coblocks' ),
+				/* translators: a unit of size for css markup */
+				name: __( 'Percentage', 'coblocks' ),
 				unitValue: '%',
 			},
 		];
