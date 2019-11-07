@@ -9,7 +9,6 @@ import './styles/style.scss';
  */
 import edit from './edit';
 import icon from './icon';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -20,6 +19,34 @@ import { InnerBlocks } from '@wordpress/block-editor';
 /**
  * Block constants
  */
+const metadata = {
+	name: 'coblocks/form',
+	category: 'coblocks',
+	attributes: {
+		subject: {
+			type: 'string',
+			default: null,
+		},
+		to: {
+			type: 'string',
+			default: null,
+		},
+		submitButtonText: {
+			type: 'string',
+			default: __( 'Submit', 'coblocks' ),
+		},
+		customBackgroundButtonColor: {
+			type: 'string',
+		},
+		customTextButtonColor: {
+			type: 'string',
+		},
+		submitButtonClasses: {
+			type: 'string',
+		},
+	},
+};
+
 const { name, category, attributes } = metadata;
 
 const settings = {
