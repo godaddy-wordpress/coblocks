@@ -11,6 +11,7 @@ import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
 import save from './save';
+import deprecated from './deprecated';
 
 /**
  * WordPress dependencies.
@@ -33,6 +34,7 @@ const settings = {
 		reusable: false,
 		html: false,
 	},
+	deprecated,
 	parent: [ 'coblocks/food-and-drinks' ],
 	attributes,
 	edit,
