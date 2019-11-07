@@ -3,7 +3,6 @@
  */
 import edit from './edit';
 import icon from './icon';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -13,6 +12,21 @@ import { __ } from '@wordpress/i18n';
 /**
  * Block constants
  */
+const metadata = {
+	name: 'coblocks/field-email',
+	category: 'coblocks',
+	attributes: {
+		label: {
+			type: 'string',
+			default: __( 'Email', 'coblocks' ),
+		},
+		required: {
+			type: 'boolean',
+			default: false,
+		},
+	},
+};
+
 const { name, category, attributes } = metadata;
 
 const settings = {

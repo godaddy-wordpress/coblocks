@@ -3,7 +3,6 @@
  */
 import { editMultiField } from '../helpers';
 import icon from './icon';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -13,6 +12,25 @@ import { __, _x } from '@wordpress/i18n';
 /**
  * Block constants
  */
+const metadata = {
+	name: 'coblocks/field-select',
+	category: 'coblocks',
+	attributes: {
+		label: {
+			type: 'string',
+			default: __( 'Select', 'coblocks' ),
+		},
+		required: {
+			type: 'boolean',
+			default: false,
+		},
+		options: {
+			type: 'array',
+			default: [],
+		},
+	},
+};
+
 const { name, category, attributes } = metadata;
 
 const settings = {
