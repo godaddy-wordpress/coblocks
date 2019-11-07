@@ -10,9 +10,7 @@ const icons = {};
 
 icons.layoutGridIcon = (
 	<SVG
-		height="26"
 		viewBox="0 0 56 26"
-		width="56"
 		xmlns="http://www.w3.org/2000/svg"
 	>
 		<G fill="currentColor" fillRule="evenodd">
@@ -30,9 +28,7 @@ icons.layoutGridIcon = (
 
 icons.layoutGridIconWithImages = (
 	<SVG
-		height="26"
 		viewBox="0 0 56 26"
-		width="56"
 		xmlns="http://www.w3.org/2000/svg"
 	>
 		<G fillRule="evenodd">
@@ -50,9 +46,7 @@ icons.layoutGridIconWithImages = (
 
 icons.layoutListIcon = (
 	<SVG
-		height="26"
 		viewBox="0 0 56 26"
-		width="56"
 		xmlns="http://www.w3.org/2000/svg"
 	>
 		<G fill="currentColor" fillRule="evenodd">
@@ -68,9 +62,7 @@ icons.layoutListIcon = (
 
 icons.layoutListIconWithImages = (
 	<SVG
-		height="26"
 		viewBox="0 0 56 26"
-		width="56"
 		xmlns="http://www.w3.org/2000/svg"
 	>
 		<G fill="currentColor" fillRule="evenodd">
