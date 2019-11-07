@@ -48,7 +48,6 @@ const Inspector = props => {
 		imageSize,
 	} = attributes;
 
-	const isStackedStyle = ( 'stacked' === activeStyle.name );
 	const isHorizontalStyle = ( 'horizontal' === activeStyle.name );
 
 	const sizeOptions = [
@@ -90,6 +89,10 @@ const Inspector = props => {
 		setAttributes( changedAttributes );
 	};
 
+	if ( isHorizontalStyle && columns !== 1 ) {
+		columnsCountOnChange( 2 );
+	}
+
 	const settings = (
 		<PanelBody title={ __( 'Posts Settings', 'coblocks' ) }>
 			<Fragment>
@@ -129,8 +132,8 @@ const Inspector = props => {
 						onUserModifiedColumn();
 						columnsCountOnChange( value );
 					} }
-					min={ isStackedStyle ? Math.min( 2, postCount ) : 1 }
-					max={ isHorizontalStyle ? 2 : Math.min( 4, postCount ) }
+					min={ 1 }
+					max={ isHorizontalStyle ? Math.min( 2, postCount ) : Math.min( 4, postCount ) }
 					required
 				/>
 				{ isHorizontalStyle && hasFeaturedImage &&
