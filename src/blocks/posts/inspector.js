@@ -48,7 +48,6 @@ const Inspector = props => {
 		imageSize,
 	} = attributes;
 
-	const isStackedStyle = ( 'stacked' === activeStyle.name );
 	const isHorizontalStyle = ( 'horizontal' === activeStyle.name );
 
 	const sizeOptions = [
@@ -73,6 +72,26 @@ const Inspector = props => {
 			shortName: /* translators: abbreviation for "Extra Large" size. */ __( 'XL', 'coblocks' ),
 		},
 	];
+
+	const columnsCountOnChange = ( selectedColumns ) => {
+		const { postsToShow } = attributes;
+		setAttributes( { columns:
+			( selectedColumns > postsToShow ) ? postsToShow : selectedColumns,
+		} );
+	};
+
+	const postsCountOnChange = ( selectedPosts ) => {
+		const { columns } = attributes;
+		const changedAttributes = { postsToShow: selectedPosts };
+		if ( columns > selectedPosts || ( selectedPosts === 1 && columns !== 1 ) ) {
+			Object.assign( changedAttributes, { columns: selectedPosts } );
+		}
+		setAttributes( changedAttributes );
+	};
+
+	if ( isHorizontalStyle && columns !== 1 ) {
+		columnsCountOnChange( 2 );
+	}
 
 	const settings = (
 		<PanelBody title={ __( 'Posts Settings', 'coblocks' ) }>
@@ -111,10 +130,10 @@ const Inspector = props => {
 					value={ columns }
 					onChange={ ( value ) => {
 						onUserModifiedColumn();
-						setAttributes( { columns: value } );
+						columnsCountOnChange( value );
 					} }
-					min={ isStackedStyle ? 2 : 1 }
-					max={ isHorizontalStyle ? 2 : Math.min( 4, postCount ) }
+					min={ 1 }
+					max={ isHorizontalStyle ? Math.min( 2, postCount ) : Math.min( 4, postCount ) }
 					required
 				/>
 				{ isHorizontalStyle && hasFeaturedImage &&
@@ -173,7 +192,7 @@ const Inspector = props => {
 					<RangeControl
 						label={ __( 'Number of posts', 'coblocks' ) }
 						value={ postsToShow }
-						onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+						onChange={ ( value ) => postsCountOnChange( value ) }
 						min={ 1 }
 						max={ 20 }
 					/>
