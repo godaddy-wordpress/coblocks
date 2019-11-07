@@ -46,7 +46,7 @@ const settings = {
 		'coblocks',
 		/* translators: block keyword */
 		__( 'button', 'coblocks' ),
-		/* translators: block keyword, abbreviation for "call to action" */
+		/* translators: block keyword (abbreviation for "call to action") */
 		__( 'cta', 'coblocks' ),
 		/* translators: block keyword */
 		__( 'call to action', 'coblocks' ),
