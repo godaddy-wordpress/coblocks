@@ -74,7 +74,8 @@ class Edit extends Component {
 					<div className={ `${ className }__inner` }>
 						<InnerBlocks
 							template={ getCount( count ) }
-							allowedBlocks={ ALLOWED_BLOCKS } />
+							allowedBlocks={ ALLOWED_BLOCKS }
+							__experimentalMoverDirection={ 'horizontal' } />
 					</div>
 				</div>
 			</Fragment>
