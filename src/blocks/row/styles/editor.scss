@@ -45,8 +45,8 @@
 
 	.wp-block-coblocks-row__inner > .editor-inner-blocks > .editor-block-list__layout {
 		display: flex;
-		margin-left: -15px;
-		margin-right: -15px;
+		margin-left: 0; // ** was -15px ** --AD
+		margin-right: 0; // ** was -15px ** --AD
 
 		@include break-small() {
 			flex-wrap: nowrap;
@@ -156,7 +156,7 @@
 
 	// This max-width is used to constrain the main editor column, not children.
 	.editor-block-list__block {
-		max-width: none;
+		max-width: none !important; // ** '!important' added to force stretch the row at alignfull ** --AD
 	}
 
 	// Width tag that pops up.
