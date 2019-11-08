@@ -208,7 +208,10 @@ class Edit extends Component {
 			],
 			[
 				'core/paragraph',
-				{ placeholder: /* translators: content placeholder. */ __( 'Write description...', 'coblocks' ) },
+				{
+					/* translators: content placeholder */
+					placeholder: __( 'Write description...', 'coblocks' ),
+				},
 			],
 		];
 
