@@ -23,16 +23,18 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: This is an inner block for the Accordion Block.  */
+	/* translators: block name */
 	title: __( 'Accordion Item', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add collapsable accordion items to accordions.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword  */
-		__( 'tabs', 'coblocks' ),
+		'coblocks',
 		/* translators: block keyword */
+		__( 'tabs', 'coblocks' ),
+		/* translators: block keyword (abbreviation for "frequently asked questions") */
 		__( 'faq', 'coblocks' ),
-		'coblocks' ],
+	],
 	parent: [ 'coblocks/accordion' ],
 	supports: {
 		reusable: false,

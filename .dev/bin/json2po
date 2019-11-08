@@ -41,7 +41,7 @@ foreach ( $msgids as $hash => $msgid ) {
 	$output .= sprintf( 'msgid "%s"', addcslashes( stripcslashes( $msgid ), '"' ) );
 	$output .= PHP_EOL;
 	if ( isset( $msgstrs[ $hash ] ) ) {
-		$output .= sprintf( 'msgstr "%s"', addcslashes( stripcslashes( $msgstrs[ $hash ] ), '"' ) );
+		$output .= sprintf( 'msgstr "%s"', addcslashes( str_replace( [ "\r", "\n", "\t" ], [ '\\r', '\\n', '\\t' ], stripcslashes( $msgstrs[ $hash ] ) ), '"' ) );
 	} else {
 		$output .= 'msgstr ""';
 	}

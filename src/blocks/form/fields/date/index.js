@@ -30,15 +30,22 @@ const metadata = {
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name.  */
+	/* translators: block name */
 	title: __( 'Date', 'coblocks' ),
-	keywords: [
-		/* translators: block keyword.  */
-		__( 'calendar', 'coblocks' ),
-		/* translators: block keyword.  */
-		__( 'day month year', 'coblocks' ) ],
+	/* translators: block description */
 	description: __( 'A field for requesting date selections with a date picker.', 'coblocks' ),
 	icon,
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'calendar', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'day', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'month', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'year', 'coblocks' ),
+	],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

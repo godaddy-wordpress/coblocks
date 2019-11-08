@@ -30,15 +30,18 @@ const metadata = {
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name.  */
+	/* translators: block name */
 	title: __( 'Email', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'A field for collecting a validated email address.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword.  */
+		'coblocks',
+		/* translators: block keyword */
 		__( 'e-mail', 'coblocks' ),
-		/* translators: block keyword.  */
-		__( 'mail', 'coblocks' ) ],
+		/* translators: block keyword */
+		__( 'mail', 'coblocks' ),
+	],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

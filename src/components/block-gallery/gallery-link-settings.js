@@ -6,7 +6,7 @@ import linkOptions from './options/link-options';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { SelectControl, ToggleControl, PanelBody, TextControl } from '@wordpress/components';
 
@@ -77,7 +77,8 @@ class GalleryLinkSettings extends Component {
 									checked={ target === '_blank' }
 								/>
 								<TextControl
-									label={ _x( 'Link Rel', 'HTML attribute that specifies the a relationship between the two pages.', 'coblocks' ) }
+									/* translators: html attribute that specifies the relationship between two pages */
+									label={ __( 'Link Rel', 'coblocks' ) }
 									value={ rel }
 									onChange={ ( value ) => setAttributes( { rel: value } ) }
 								/>

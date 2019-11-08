@@ -31,17 +31,20 @@ const attributes = {
 };
 
 const settings = {
-	/* translators: block name.  */
+	/* translators: block name */
 	title: __( 'Stacked', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Display multiple images in an single column stacked gallery.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword.  */
+		'coblocks',
+		/* translators: block keyword */
 		__( 'gallery', 'coblocks' ),
-		/* translators: block keyword.  */
+		/* translators: block keyword */
 		__( 'photos', 'coblocks' ),
-		/* translators: block keyword.  */
-		__( 'lightbox', 'coblocks' ) ],
+		/* translators: block keyword */
+		__( 'lightbox', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full', 'left', 'center', 'right' ],
 		html: false,

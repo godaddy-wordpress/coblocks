@@ -23,17 +23,22 @@ import { __ } from '@wordpress/i18n';
 const { name, category } = metadata;
 
 const settings = {
-	/* translators: block name. */
+	/* translators: block name */
 	title: __( 'Posts', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Display posts or an RSS feed as stacked or horizontal cards.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword. */
+		'coblocks',
+		/* translators: block keyword */
+		__( 'posts', 'coblocks' ),
+		/* translators: block keyword */
 		__( 'blog', 'coblocks' ),
-		/* translators: block keyword. */
+		/* translators: block keyword */
+		__( 'latest', 'coblocks' ),
+		/* translators: block keyword */
 		__( 'rss', 'coblocks' ),
-		/* translators: block keyword. */
-		__( 'latest', 'coblocks' ) ],
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,

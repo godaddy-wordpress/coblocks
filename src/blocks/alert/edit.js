@@ -91,7 +91,7 @@ class Edit extends Component {
 				>
 					{ ( ! RichText.isEmpty( title ) || isSelected ) && (
 						<RichText
-							/* translators: Placeholder text for input box */
+							/* translators: placeholder text for input box */
 							placeholder={ __( 'Write title...', 'coblocks' ) }
 							value={ title }
 							className="wp-block-coblocks-alert__title"
@@ -100,7 +100,7 @@ class Edit extends Component {
 						/>
 					) }
 					<RichText
-						/* translators: Placeholder text for input box */
+						/* translators: placeholder text for input box */
 						placeholder={ __( 'Write text...', 'coblocks' ) }
 						value={ value }
 						className="wp-block-coblocks-alert__text"

@@ -7,7 +7,7 @@ import icon from './icon';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -38,10 +38,16 @@ const metadata = {
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Checkbox', 'block name', 'coblocks' ),
-	keywords: [ _x( 'option', 'block keyword', 'coblocks' ) ],
+	/* translators: block name */
+	title: __( 'Checkbox', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'A checkbox field with multiple options where multiple choices can be made.', 'coblocks' ),
 	icon,
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'option', 'coblocks' ),
+	],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

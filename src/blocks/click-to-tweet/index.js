@@ -25,16 +25,18 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name.  */
+	/* translators: block name */
 	title: __( 'Click to Tweet', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add a quote for readers to tweet via Twitter.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword.  */
+		'coblocks',
+		/* translators: block keyword */
 		__( 'share', 'coblocks' ),
-		/* translators: block keyword.  */
+		/* translators: block keyword */
 		__( 'twitter', 'coblocks' ),
-		'coblocks' ],
+	],
 	example: {
 		attributes: {
 			content: __( 'The easiest way to promote and advertise your blog, website, and business on Twitter.', 'coblocks' ),

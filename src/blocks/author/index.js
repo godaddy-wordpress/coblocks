@@ -25,19 +25,23 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name.  */
+	/* translators: block name */
 	title: __( 'Author', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add an author biography to build credibility and authority.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword.  */
+		'coblocks',
+		/* translators: block keyword */
 		__( 'biography', 'coblocks' ),
-		/* translators: block keyword.  */
+		/* translators: block keyword */
 		__( 'profile', 'coblocks' ),
-		'coblocks' ],
+	],
 	example: {
 		attributes: {
-			name: 'Jane Doe',
+			/* translators: example female name */
+			name: __( 'Jane Doe', 'coblocks' ),
+			/* translators: example biography */
 			biography: __( 'Born to express, not to impress. A maker making the world I want.', 'coblocks' ),
 			imgUrl: '/wp-content/plugins/coblocks/dist/images/examples/author.jpg',
 		},
