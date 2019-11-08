@@ -76,11 +76,6 @@ module.exports = function( grunt ) {
 				implementation: require( 'node-sass' ),
 				sourceMap: false,
 			},
-			getting_started: {
-				files: {
-					'dist/css/coblocks-getting-started.css': 'src/styles/getting-started.scss',
-				},
-			},
 		},
 
 		cssmin: {
@@ -88,17 +83,6 @@ module.exports = function( grunt ) {
 				processImport: false,
 				roundingPrecision: -1,
 				shorthandCompacting: false,
-			},
-			getting_started: {
-				files: [
-					{
-						expand: true,
-						cwd: 'dist/css/',
-						src: 'coblocks-getting-started.css',
-						dest: 'dist/css/',
-						ext: '.min.css',
-					},
-				],
 			},
 		},
 
