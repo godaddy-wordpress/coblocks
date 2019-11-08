@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-11-07T22:59:11+00:00\n"
+"POT-Creation-Date: 2019-11-08T19:22:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -19,10 +19,10 @@ msgstr ""
 msgid "Display open"
 msgstr ""
 
-#. content placeholder.
-#. translators: content placeholder.
+#. content placeholder
+#. translators: content placeholder
 #: src/blocks/accordion/accordion-item/edit.js:24
-#: src/blocks/media-card/edit.js:47
+#: src/blocks/media-card/edit.js:75
 msgid "Add content..."
 msgstr ""
 
@@ -51,9 +51,8 @@ msgstr ""
 msgid "tabs"
 msgstr ""
 
-#. block keyword
+#. block keyword (abbreviation for "frequently asked questions")
 #. translators: block keyword (abbreviation for "frequently asked questions")
-#. translators: block keyword
 #: src/blocks/accordion/accordion-item/index.js:36
 #: src/blocks/accordion/index.js:37
 msgid "faq"
@@ -71,8 +70,8 @@ msgstr ""
 msgid "Accordion Item Settings"
 msgstr ""
 
-#. Visually display open as opposed to closed.
-#. translators: Visually display open as opposed to closed.
+#. visually display open as opposed to closed
+#. translators: visually display open as opposed to closed
 #: src/blocks/accordion/accordion-item/inspector.js:66
 msgid "Display Open"
 msgstr ""
@@ -88,7 +87,7 @@ msgstr ""
 #: src/blocks/hero/inspector.js:137
 #: src/blocks/highlight/inspector.js:43
 #: src/blocks/icon/inspector.js:302
-#: src/blocks/media-card/inspector.js:132
+#: src/blocks/media-card/inspector.js:141
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:48
 #: src/blocks/row/column/inspector.js:165
 #: src/blocks/row/inspector.js:211
@@ -107,7 +106,7 @@ msgstr ""
 #: src/blocks/hero/inspector.js:150
 #: src/blocks/highlight/inspector.js:49
 #: src/blocks/icon/inspector.js:326
-#: src/blocks/media-card/inspector.js:146
+#: src/blocks/media-card/inspector.js:155
 #: src/blocks/pricing-table/pricing-table-item/inspector.js:53
 #: src/blocks/row/column/inspector.js:171
 #: src/blocks/row/inspector.js:227
@@ -158,15 +157,14 @@ msgstr ""
 msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
 msgstr ""
 
-#. Placeholder text for input box
-#. translators: Placeholder text for input box
+#. placeholder text for input box
+#. translators: placeholder text for input box
 #: src/blocks/alert/edit.js:104
 msgid "Write text..."
 msgstr ""
 
-#. content placeholder.
-#. translators: Placeholder text for input box
-#. translators: content placeholder.
+#. placeholder text for input box
+#. translators: placeholder text for input box
 #: src/blocks/alert/edit.js:95
 #: src/blocks/services/service/edit.js:205
 msgid "Write title..."
@@ -331,8 +329,8 @@ msgstr ""
 msgid "link"
 msgstr ""
 
-#. block keyword, abbreviation for "call to action"
-#. translators: block keyword, abbreviation for "call to action"
+#. block keyword (abbreviation for "call to action")
+#. translators: block keyword (abbreviation for "call to action")
 #: src/blocks/buttons/index.js:38
 #: src/blocks/hero/index.js:50
 msgid "cta"
@@ -483,32 +481,32 @@ msgid "Color"
 msgstr ""
 
 #: src/blocks/features/edit.js:78
-#: src/blocks/features/feature/edit.js:63
-#: src/blocks/media-card/edit.js:173
+#: src/blocks/features/feature/edit.js:85
+#: src/blocks/media-card/edit.js:206
 msgid "Add as background"
 msgstr ""
 
-#. content placeholder.
-#. translators: content placeholder.
-#: src/blocks/features/feature/edit.js:31
+#. content placeholder
+#. translators: content placeholder
+#: src/blocks/features/feature/edit.js:40
 msgid "Add feature title..."
 msgstr ""
 
-#. content placeholder.
-#. translators: content placeholder.
-#: src/blocks/features/feature/edit.js:31
+#. content placeholder
+#. translators: content placeholder
+#: src/blocks/features/feature/edit.js:42
 msgid "Feature Title"
 msgstr ""
 
-#. content placeholder.
-#. translators: content placeholder.
-#: src/blocks/features/feature/edit.js:32
+#. content placeholder
+#. translators: content placeholder
+#: src/blocks/features/feature/edit.js:50
 msgid "Add feature content"
 msgstr ""
 
-#. content placeholder.
-#. translators: content placeholder.
-#: src/blocks/features/feature/edit.js:32
+#. content placeholder
+#. translators: content placeholder
+#: src/blocks/features/feature/edit.js:52
 msgid "This is a feature block that you can use to highlight features."
 msgstr ""
 
@@ -580,7 +578,7 @@ msgstr ""
 msgid "Space between each column."
 msgstr ""
 
-#. translators: label for small size option.
+#. translators: label for small size option
 #: src/blocks/features/inspector.js:86
 #: src/blocks/gallery-collage/inspector.js:92
 #: src/blocks/icon/icon-size-select.js:16
@@ -594,7 +592,7 @@ msgstr ""
 msgid "Small"
 msgstr ""
 
-#. translators: label for medium size option.
+#. translators: label for medium size option
 #: src/blocks/features/inspector.js:87
 #: src/blocks/gallery-collage/inspector.js:98
 #: src/blocks/icon/icon-size-select.js:21
@@ -608,7 +606,7 @@ msgstr ""
 msgid "Medium"
 msgstr ""
 
-#. translators: label for large size option.
+#. translators: label for large size option
 #: src/blocks/features/inspector.js:88
 #: src/blocks/gallery-collage/inspector.js:104
 #: src/blocks/icon/icon-size-select.js:26
@@ -861,22 +859,22 @@ msgstr ""
 msgid "Toggle to show the price of each item."
 msgstr ""
 
-#. %s: Placeholder for email address provided by user.
-#. translators: %s: Placeholder for email address provided by user.
+#. %s: placeholder for an email address
+#. translators: %s: placeholder for an email address
 #: src/blocks/form/edit.js:170
 msgid "%s is not a valid email address."
 msgstr ""
 
-#. %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
-#. translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.
+#. %s1: placeholder for an email address. %s2: placeholder for an email address
+#. translators: %s1: placeholder for an email address. %s2: placeholder for an email address
 #: src/blocks/form/edit.js:180
-msgid "%s and %s are not a valid email address."
+msgid "%s and %s are not valid email addresses."
 msgstr ""
 
-#. %s1: Placeholder for email address provided by user.
-#. translators: %s1: Placeholder for email address provided by user.
+#. %s1: placeholder for comma separated email addresses
+#. translators: %s1: placeholder for comma separated email addresses
 #: src/blocks/form/edit.js:188
-msgid "%s are not a valid email address."
+msgid "%s are not valid email addresses."
 msgstr ""
 
 #: src/blocks/form/edit.js:246
@@ -1052,15 +1050,21 @@ msgstr ""
 msgid "Display Settings"
 msgstr ""
 
-#: src/blocks/form/fields/helpers.js:29
+#. field type eg: checkbox
+#. translators: field type eg: checkbox
+#: src/blocks/form/fields/helpers.js:31
 msgid "Inline %s"
 msgstr ""
 
-#: src/blocks/form/fields/helpers.js:33
+#. field type eg: checkbox
+#. translators: field type eg: checkbox
+#: src/blocks/form/fields/helpers.js:39
 msgid "Displaying the %s inline."
 msgstr ""
 
-#: src/blocks/form/fields/helpers.js:33
+#. field type eg: checkbox
+#. translators: field type eg: checkbox
+#: src/blocks/form/fields/helpers.js:43
 msgid "Toggle to display the %s inline."
 msgstr ""
 
@@ -1372,16 +1376,15 @@ msgstr ""
 msgid "Carousel"
 msgstr ""
 
-#. %1$d is the order number of the image, %2$d is the total number of images.
+#. %1$d is the order number of the image, %2$d is the total number of images
 #. translators: %1$d is the order number of the image, %2$d is the total number of images
-#. translators: %1$d is the order number of the image, %2$d is the total number of images.
-#: src/blocks/gallery-carousel/edit.js:310
-#: src/blocks/gallery-masonry/edit.js:219
-#: src/blocks/gallery-stacked/edit.js:191
+#: src/blocks/gallery-carousel/edit.js:311
+#: src/blocks/gallery-masonry/edit.js:220
+#: src/blocks/gallery-stacked/edit.js:192
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
-#: src/blocks/gallery-carousel/edit.js:376
+#: src/blocks/gallery-carousel/edit.js:380
 #: src/blocks/gif/edit.js:244
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:230
@@ -1502,20 +1505,18 @@ msgstr ""
 msgid "Layered"
 msgstr ""
 
-#. abbreviation for "Medium" size.
+#. abbreviation for medium size
 #. translators: abbreviation for medium size
-#. translators: label for medium size option.
-#. translators: abbreviation for "Medium" size.
+#. translators: label for medium size option
 #: src/blocks/gallery-collage/inspector.js:100
 #: src/blocks/posts/inspector.js:62
 #: src/blocks/gallery-collage/inspector.js:68
 msgid "M"
 msgstr ""
 
-#. abbreviation for "Large" size.
+#. abbreviation for large size
 #. translators: abbreviation for large size
-#. translators: label for large size option.
-#. translators: abbreviation for "Large" size.
+#. translators: label for large size option
 #: src/blocks/gallery-collage/inspector.js:106
 #: src/blocks/posts/inspector.js:67
 #: src/blocks/gallery-collage/inspector.js:74
@@ -1557,17 +1558,16 @@ msgstr ""
 msgid "Toggle to show media captions."
 msgstr ""
 
-#. translators: label for extra large size option.
+#. translators: label for extra large size option
 #: src/blocks/gallery-collage/inspector.js:78
 #: src/blocks/posts/inspector.js:71
 #: src/components/size-control/index.js:69
 msgid "Extra Large"
 msgstr ""
 
-#. abbreviation for "Extra Large" size.
+#. abbreviation for extra large size
 #. translators: abbreviation for extra large size
-#. translators: label for extra large size option.
-#. translators: abbreviation for "Extra Large" size.
+#. translators: label for extra large size option
 #: src/blocks/gallery-collage/inspector.js:80
 #: src/blocks/posts/inspector.js:72
 msgid "XL"
@@ -1588,10 +1588,9 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#. abbreviation for "Small" size.
+#. abbreviation for small size
 #. translators: abbreviation for small size
-#. translators: label for small size option.
-#. translators: abbreviation for "Small" size.
+#. translators: label for small size option
 #: src/blocks/gallery-collage/inspector.js:94
 #: src/blocks/posts/inspector.js:57
 #: src/blocks/gallery-collage/inspector.js:62
@@ -1647,6 +1646,7 @@ msgstr ""
 
 #. block style
 #. translators: block name
+#. translators: block style
 #: src/blocks/gallery-stacked/edit.js:168
 #: src/blocks/gallery-stacked/index.js:35
 #: src/blocks/posts/edit.js:50
@@ -1721,14 +1721,14 @@ msgstr ""
 msgid "Gif Settings"
 msgstr ""
 
-#. %s: "Gist", the name of a code sharing platform.
-#. translators: %s: "Gist", the name of a code sharing platform.
+#. %s: "Gist", the name of a code sharing platform
+#. translators: %s: "Gist", the name of a code sharing platform
 #: src/blocks/gist/controls.js:22
 msgid "Return to %s"
 msgstr ""
 
-#. %s: "Gist", the name of a code sharing platform.
-#. translators: %s: "Gist", the name of a code sharing platform.
+#. %s: "Gist", the name of a code sharing platform
+#. translators: %s: "Gist", the name of a code sharing platform
 #: src/blocks/gist/controls.js:27
 msgid "Edit %s URL"
 msgstr ""
@@ -2010,7 +2010,7 @@ msgid "Reset icon size"
 msgstr ""
 
 #: src/blocks/icon/inspector.js:170
-#: src/components/dimensions-control/index.js:483
+#: src/components/dimensions-control/index.js:492
 #: src/components/size-control/index.js:198
 msgid "Reset"
 msgstr ""
@@ -2154,13 +2154,6 @@ msgid "code greek math"
 msgstr ""
 
 #. label.
-#. Plugin Name of the plugin
-#. translators: label.
-#: src/blocks/icon/svgs.js:14
-msgid "CoBlocks"
-msgstr ""
-
-#. label.
 #. translators: label.
 #: src/blocks/icon/svgs.js:142
 msgid "Doodle"
@@ -2187,7 +2180,6 @@ msgid "font text typography"
 msgstr ""
 
 #. tags.
-#. translators: label.
 #. translators: tags.
 #: src/blocks/icon/svgs.js:15
 msgid "blocks block build gutenberg design"
@@ -2831,7 +2823,7 @@ msgid "Logos & Badges"
 msgstr ""
 
 #: src/blocks/logos/edit.js:70
-#: src/components/block-gallery/gallery-placeholder.js:72
+#: src/components/block-gallery/gallery-placeholder.js:75
 msgid "Drag images, upload new ones or select files from your library."
 msgstr ""
 
@@ -3102,23 +3094,23 @@ msgstr ""
 msgid "Media on left"
 msgstr ""
 
-#. content placeholder.
-#. translators: content placeholder.
-#: src/blocks/media-card/edit.js:46
+#. content placeholder
+#. translators: content placeholder
+#: src/blocks/media-card/edit.js:65
 msgid "Add heading..."
 msgstr ""
 
 #. block name
-#. translators: content placeholder.
+#. translators: content placeholder
 #. translators: block name
-#: src/blocks/media-card/edit.js:46
+#: src/blocks/media-card/edit.js:67
 #: src/blocks/media-card/index.js:36
 msgid "Media Card"
 msgstr ""
 
-#. content placeholder.
-#. translators: content placeholder.
-#: src/blocks/media-card/edit.js:47
+#. content placeholder
+#. translators: content placeholder
+#: src/blocks/media-card/edit.js:77
 msgid "Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images."
 msgstr ""
 
@@ -3154,19 +3146,19 @@ msgstr ""
 
 #. %s: Placeholder is either 'Card, or 'Image'
 #. translators: %s: Placeholder is either 'Card, or 'Image'
-#: src/blocks/media-card/inspector.js:118
+#: src/blocks/media-card/inspector.js:119
 msgid " %s Shadow"
 msgstr ""
 
-#. %s: Placeholder is either 'Card, or 'Image'
-#. translators: %s: Placeholder is either 'Card, or 'Image'
-#: src/blocks/media-card/inspector.js:124
+#. %s: placeholder is either 'Card, or 'Image'
+#. translators: %s: placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:128
 msgid "Showing %s shadow."
 msgstr ""
 
-#. %s: Placeholder is either 'Card, or 'Image'
-#. translators: %s: Placeholder is either 'Card, or 'Image'
-#: src/blocks/media-card/inspector.js:126
+#. %s: placeholder is either 'Card, or 'Image'
+#. translators: %s: placeholder is either 'Card, or 'Image'
+#: src/blocks/media-card/inspector.js:133
 msgid "Toggle to add an %s shadow"
 msgstr ""
 
@@ -3202,50 +3194,50 @@ msgstr ""
 msgid "Post Carousel"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:184
-#: src/blocks/posts/edit.js:297
-msgid "No posts found. Start publishing or add posts from an %s feed."
+#: src/blocks/post-carousel/edit.js:183
+#: src/blocks/posts/edit.js:296
+msgid "No posts found. Start publishing or add posts from an RSS feed."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:187
-#: src/blocks/posts/edit.js:300
+#: src/blocks/post-carousel/edit.js:186
+#: src/blocks/posts/edit.js:299
 msgid "Retrieve an External Feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:193
-#: src/blocks/posts/edit.js:306
+#: src/blocks/post-carousel/edit.js:192
+#: src/blocks/posts/edit.js:305
 msgid "Use External Feed"
 msgstr ""
 
-#. %s: RSS
-#: src/blocks/post-carousel/edit.js:216
-#: src/blocks/posts/edit.js:334
-msgid "%s Feed"
+#: src/blocks/post-carousel/edit.js:214
+#: src/blocks/posts/edit.js:332
+msgid "RSS Feed"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:217
-#: src/blocks/posts/edit.js:335
-msgid "%s URLs are generally located at the /feed/ directory of a site."
+#: src/blocks/post-carousel/edit.js:215
+#: src/blocks/posts/edit.js:333
+msgid "RSS URLs are generally located at the /feed/ directory of a site."
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:221
-#: src/blocks/posts/edit.js:339
+#: src/blocks/post-carousel/edit.js:219
+#: src/blocks/posts/edit.js:337
 msgid "https://example.com/feed…"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:227
-#: src/blocks/posts/edit.js:345
+#: src/blocks/post-carousel/edit.js:225
+#: src/blocks/posts/edit.js:343
 msgid "Use URL"
 msgstr ""
 
-#. placeholder when a post has no title.
-#: src/blocks/post-carousel/edit.js:302
-#: src/blocks/posts/edit.js:439
+#. placeholder when a post has no title
+#. translators: placeholder when a post has no title
+#: src/blocks/post-carousel/edit.js:301
+#: src/blocks/posts/edit.js:438
 msgid "(no title)"
 msgstr ""
 
-#: src/blocks/post-carousel/edit.js:320
-#: src/blocks/posts/edit.js:465
+#: src/blocks/post-carousel/edit.js:319
+#: src/blocks/posts/edit.js:464
 msgid "Read more"
 msgstr ""
 
@@ -3361,6 +3353,7 @@ msgid "Blog Posts"
 msgstr ""
 
 #. block style
+#. translators: block style
 #: src/blocks/posts/edit.js:57
 msgid "Horizontal"
 msgstr ""
@@ -3406,8 +3399,9 @@ msgstr ""
 msgid "Change pricing table count"
 msgstr ""
 
+#. %d: a digit 1-3
 #. translators: %d: a digit 1-3
-#: src/blocks/pricing-table/edit.js:39
+#: src/blocks/pricing-table/edit.js:40
 msgid "Plan %d"
 msgstr ""
 
@@ -3547,24 +3541,24 @@ msgstr ""
 
 #. %s: 'one' 'two' 'three' and 'four'
 #. translators: %s: 'one' 'two' 'three' and 'four'
-#: src/blocks/row/edit.js:205
+#: src/blocks/row/edit.js:206
 msgid "Now select a layout for this %s column row."
 msgstr ""
 
-#: src/blocks/row/edit.js:206
+#: src/blocks/row/edit.js:209
 msgid "Select the number of columns for this row."
 msgstr ""
 
-#: src/blocks/row/edit.js:211
+#: src/blocks/row/edit.js:214
 msgid "Select Row Columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:236
+#: src/blocks/row/edit.js:239
 #: src/blocks/row/inspector.js:121
 msgid "Select Row Layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:246
+#: src/blocks/row/edit.js:249
 msgid "Back to Columns"
 msgstr ""
 
@@ -3694,9 +3688,9 @@ msgstr ""
 msgid "Toggle to show call to action buttons."
 msgstr ""
 
-#. content placeholder.
-#. translators: content placeholder.
-#: src/blocks/services/service/edit.js:211
+#. content placeholder
+#. translators: content placeholder
+#: src/blocks/services/service/edit.js:213
 msgid "Write description..."
 msgstr ""
 
@@ -4195,7 +4189,7 @@ msgstr ""
 
 #. %s: Type of gallery
 #. translators: %s: Type of gallery
-#: src/components/block-gallery/gallery-placeholder.js:71
+#: src/components/block-gallery/gallery-placeholder.js:72
 msgid "%s Gallery"
 msgstr ""
 
@@ -4300,90 +4294,93 @@ msgstr ""
 
 #. %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
 #. translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage'
-#: src/components/dimensions-control/index.js:466
-#: src/components/dimensions-control/index.js:458
+#: src/components/dimensions-control/index.js:470
+#: src/components/dimensions-control/index.js:459
 msgid "%s Units"
 msgstr ""
 
 #. %s: a texual label
 #. translators: %s: a texual label
-#: src/components/dimensions-control/index.js:481
+#: src/components/dimensions-control/index.js:488
 msgid "Turn off advanced %s settings"
 msgstr ""
 
-#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. %s: values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
 #. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:653
-#: src/components/dimensions-control/index.js:525
-#: src/components/dimensions-control/index.js:589
+#: src/components/dimensions-control/index.js:687
+#: src/components/dimensions-control/index.js:535
+#: src/components/dimensions-control/index.js:611
 msgid "%s Top"
 msgstr ""
 
-#. %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:664
-#: src/components/dimensions-control/index.js:536
-#: src/components/dimensions-control/index.js:600
+#. %s: values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
+#: src/components/dimensions-control/index.js:701
+#: src/components/dimensions-control/index.js:549
+#: src/components/dimensions-control/index.js:625
 msgid "%s Right"
 msgstr ""
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
 #. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:675
-#: src/components/dimensions-control/index.js:547
-#: src/components/dimensions-control/index.js:611
+#: src/components/dimensions-control/index.js:715
+#: src/components/dimensions-control/index.js:563
+#: src/components/dimensions-control/index.js:639
 msgid "%s Bottom"
 msgstr ""
 
 #. %s:  values associated with CSS syntax, 'Margin', 'Padding'
+#. translators: %s: values associated with CSS syntax, 'Margin', 'Padding'
 #. translators: %s:  values associated with CSS syntax, 'Margin', 'Padding'
-#: src/components/dimensions-control/index.js:686
-#: src/components/dimensions-control/index.js:558
-#: src/components/dimensions-control/index.js:622
+#: src/components/dimensions-control/index.js:729
+#: src/components/dimensions-control/index.js:577
+#: src/components/dimensions-control/index.js:653
 msgid "%s Left"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:692
-#: src/components/dimensions-control/index.js:564
-#: src/components/dimensions-control/index.js:628
+#: src/components/dimensions-control/index.js:736
+#: src/components/dimensions-control/index.js:585
+#: src/components/dimensions-control/index.js:661
 msgid "Unsync"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:692
-#: src/components/dimensions-control/index.js:564
-#: src/components/dimensions-control/index.js:628
+#: src/components/dimensions-control/index.js:736
+#: src/components/dimensions-control/index.js:585
+#: src/components/dimensions-control/index.js:661
 msgid "Sync"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:695
-#: src/components/dimensions-control/index.js:567
-#: src/components/dimensions-control/index.js:631
+#: src/components/dimensions-control/index.js:739
+#: src/components/dimensions-control/index.js:588
+#: src/components/dimensions-control/index.js:664
 msgid "Sync Units"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:712
+#: src/components/dimensions-control/index.js:756
 msgid "Top"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:713
+#: src/components/dimensions-control/index.js:757
 msgid "Right"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:714
+#: src/components/dimensions-control/index.js:758
 msgid "Bottom"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:715
+#: src/components/dimensions-control/index.js:759
 msgid "Left"
 msgstr ""
 
-#. %s:  a texual label
-#. translators: %s:  a texual label
-#: src/components/dimensions-control/index.js:735
+#. %s: a texual label
+#. translators: %s: a texual label
+#: src/components/dimensions-control/index.js:780
 msgid "Advanced %s settings"
 msgstr ""
 
-#: src/components/dimensions-control/index.js:738
+#: src/components/dimensions-control/index.js:785
 msgid "Advanced"
 msgstr ""
 
@@ -4409,7 +4406,7 @@ msgstr ""
 
 #. %d: heading level e.g: "1", "2", "3"
 #. translators: %d: heading level e.g: "1", "2", "3"
-#: src/components/heading-toolbar/index.js:18
+#: src/components/heading-toolbar/index.js:19
 msgid "Heading %d"
 msgstr ""
 
@@ -4455,9 +4452,9 @@ msgstr ""
 msgid "Height"
 msgstr ""
 
-#. %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
-#. translators: %s:  values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
-#: src/components/responsive-tabs-control/index.js:65
+#. %s: values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#. translators: %s: values associated with CSS syntax, 'Width', 'Gutter', 'Height in pixels', 'Width'
+#: src/components/responsive-tabs-control/index.js:66
 msgid "Mobile %s"
 msgstr ""
 
@@ -4505,19 +4502,23 @@ msgstr ""
 msgid "Ten Seconds"
 msgstr ""
 
-#: src/components/slider-panel/index.js:102
+#: src/components/slider-panel/index.js:100
+msgid "Draggable"
+msgstr ""
+
+#: src/components/slider-panel/index.js:106
 msgid "Free Scroll"
 msgstr ""
 
-#: src/components/slider-panel/index.js:108
+#: src/components/slider-panel/index.js:112
 msgid "Arrow Navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:114
+#: src/components/slider-panel/index.js:118
 msgid "Dot Navigation"
 msgstr ""
 
-#: src/components/slider-panel/index.js:120
+#: src/components/slider-panel/index.js:124
 msgid "Align Cells"
 msgstr ""
 
@@ -4529,83 +4530,78 @@ msgstr ""
 msgid "second"
 msgstr ""
 
-#. 1. Speed of the slider, 2: Time until the slide advances
-#. translators: 1. Speed of the slider, 2: Time until the slide advances
-#: src/components/slider-panel/index.js:27
+#. %1$d: Speed of the slider, %2$d: Time until the slide advances
+#. translators: %1$d: Speed of the slider, %2$d: Time until the slide advances
+#: src/components/slider-panel/index.js:28
 msgid "Advancing after %1$d %2$s."
 msgstr ""
 
-#. 1. Speed of the slider, 2: Time until the slide advances
-#: src/components/slider-panel/index.js:27
+#: src/components/slider-panel/index.js:31
 msgid "Automatically advance to the next slide."
 msgstr ""
 
-#: src/components/slider-panel/index.js:31
+#: src/components/slider-panel/index.js:35
 msgid "Dragging and flicking enabled."
 msgstr ""
 
-#: src/components/slider-panel/index.js:31
+#: src/components/slider-panel/index.js:35
 msgid "Toggle to enable drag functionality."
 msgstr ""
 
-#: src/components/slider-panel/index.js:35
+#: src/components/slider-panel/index.js:39
 msgid "Showing slide navigation arrows."
 msgstr ""
 
-#: src/components/slider-panel/index.js:35
+#: src/components/slider-panel/index.js:39
 msgid "Toggle to show slide navigation arrows."
 msgstr ""
 
-#: src/components/slider-panel/index.js:39
+#: src/components/slider-panel/index.js:43
 msgid "Showing dot navigation."
 msgstr ""
 
-#: src/components/slider-panel/index.js:39
+#: src/components/slider-panel/index.js:43
 msgid "Toggle to show dot navigation."
 msgstr ""
 
-#: src/components/slider-panel/index.js:43
+#: src/components/slider-panel/index.js:47
 msgid "Aligning slides to the left."
 msgstr ""
 
-#: src/components/slider-panel/index.js:43
+#: src/components/slider-panel/index.js:47
 msgid "Aligning slides to the center."
 msgstr ""
 
-#: src/components/slider-panel/index.js:46
+#: src/components/slider-panel/index.js:50
 msgid "Pausing autoplay when hovering."
 msgstr ""
 
-#: src/components/slider-panel/index.js:46
+#: src/components/slider-panel/index.js:50
 msgid "Toggle to pause autoplay when hovered."
 msgstr ""
 
-#: src/components/slider-panel/index.js:50
+#: src/components/slider-panel/index.js:54
 msgid "Scrolling without fixed slides enabled."
 msgstr ""
 
-#: src/components/slider-panel/index.js:50
+#: src/components/slider-panel/index.js:54
 msgid "Toggle to scroll without fixed slides."
 msgstr ""
 
-#: src/components/slider-panel/index.js:72
+#: src/components/slider-panel/index.js:76
 msgid "Slider Settings"
 msgstr ""
 
-#: src/components/slider-panel/index.js:74
+#: src/components/slider-panel/index.js:78
 msgid "Autoplay"
 msgstr ""
 
-#: src/components/slider-panel/index.js:81
+#: src/components/slider-panel/index.js:85
 msgid "Transition Speed"
 msgstr ""
 
-#: src/components/slider-panel/index.js:88
+#: src/components/slider-panel/index.js:92
 msgid "Pause on Hover"
-msgstr ""
-
-#: src/components/slider-panel/index.js:96
-msgid "Draggable"
 msgstr ""
 
 #. translators: typography style
@@ -4764,14 +4760,18 @@ msgstr ""
 
 #. %s: search text
 #. translators: %s: search text
-#: src/sidebars/block-manager/components/options/disable-blocks.js:233
+#: src/sidebars/block-manager/components/options/disable-blocks.js:234
 msgid "No \"%s\" blocks found."
 msgstr ""
 
-#. %s: Plugin title, i.e. CoBlocks
-#. translators: %s: Plugin title, i.e. CoBlocks
-#: src/utils/block-category.js:21
+#. %s: Plugin title "CoBlocks"
+#. translators: %s: Plugin title "CoBlocks"
+#: src/utils/block-category.js:22
 msgid "%s Galleries"
+msgstr ""
+
+#. Plugin Name of the plugin
+msgid "CoBlocks"
 msgstr ""
 
 #. Plugin URI of the plugin
