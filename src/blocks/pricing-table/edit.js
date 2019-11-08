@@ -77,6 +77,7 @@ class PricingTableEdit extends Component {
 					<div className={ `${ className }__inner` }>
 						<InnerBlocks
 							template={ getCount( count ) }
+							templateLock="insert"
 							allowedBlocks={ ALLOWED_BLOCKS }
 							__experimentalMoverDirection={ count > 1 ? 'horizontal' : 'vertical' } />
 					</div>
