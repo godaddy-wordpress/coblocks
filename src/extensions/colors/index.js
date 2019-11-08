@@ -40,7 +40,7 @@ class ColorSettings extends Component {
 
 		const colorSettings = [];
 
-		if ( ! [ 'core/heading', 'core/list', 'core/quote' ].includes( name ) ) {
+		if ( ! [ 'core/list', 'core/quote' ].includes( name ) ) {
 			colorSettings.push( {
 				value: customBackgroundColor,
 				onChange: ( nextcustomBackgroundColor ) => setAttributes( { customBackgroundColor: nextcustomBackgroundColor } ),
