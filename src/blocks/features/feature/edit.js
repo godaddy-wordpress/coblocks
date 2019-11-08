@@ -27,9 +27,31 @@ import { isBlobURL } from '@wordpress/blob';
 const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/image', 'coblocks/highlight' ];
 
 const TEMPLATE = [
-	[ 'coblocks/icon', { hasContentAlign: false } ],
-	[ 'core/heading', { placeholder: /* translators: content placeholder.  */ __( 'Add feature title...', 'coblocks' ), content: /* translators: content placeholder.  */ __( 'Feature Title', 'coblocks' ), level: 4 } ],
-	[ 'core/paragraph', { placeholder: /* translators: content placeholder.  */ __( 'Add feature content', 'coblocks' ), content: /* translators: content placeholder.  */ __( 'This is a feature block that you can use to highlight features.', 'coblocks' ) } ],
+	[
+		'coblocks/icon',
+		{
+			hasContentAlign: false,
+		},
+	],
+	[
+		'core/heading',
+		{
+			/* translators: content placeholder */
+			placeholder: __( 'Add feature title...', 'coblocks' ),
+			/* translators: content placeholder */
+			content: __( 'Feature Title', 'coblocks' ),
+			level: 4,
+		},
+	],
+	[
+		'core/paragraph',
+		{
+			/* translators: content placeholder */
+			placeholder: __( 'Add feature content', 'coblocks' ),
+			/* translators: content placeholder */
+			content: __( 'This is a feature block that you can use to highlight features.', 'coblocks' ),
+		},
+	],
 ];
 
 /**

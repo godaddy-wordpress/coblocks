@@ -299,7 +299,8 @@ class PostCarousel extends Component {
 																{ titleTrimmed }
 															</RawHTML>
 														) :
-															/* translators: placeholder when a post has no title. */ __( '(no title)', 'coblocks' )
+															/* translators: placeholder when a post has no title */
+															__( '(no title)', 'coblocks' )
 														}
 													</a>
 												</Disabled>
