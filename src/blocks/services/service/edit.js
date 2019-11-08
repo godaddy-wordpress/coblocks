@@ -202,7 +202,7 @@ class Edit extends Component {
 			[
 				'core/heading',
 				{
-					placeholder: /* translators: content placeholder. */__( 'Write title...', 'coblocks' ),
+					placeholder: /* translators: placeholder text for input box */ __( 'Write title...', 'coblocks' ),
 					level: attributes.headingLevel,
 				},
 			],

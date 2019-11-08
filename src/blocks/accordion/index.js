@@ -33,7 +33,7 @@ const settings = {
 		'coblocks',
 		/* translators: block keyword */
 		__( 'tabs', 'coblocks' ),
-		/* translators: block keyword */
+		/* translators: block keyword (abbreviation for "frequently asked questions") */
 		__( 'faq', 'coblocks' ),
 	],
 	supports: {

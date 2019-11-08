@@ -114,16 +114,25 @@ class Inspector extends Component {
 						{ mediaType && (
 							<ToggleControl
 								label={
-									/* translators: %s: Placeholder is either 'Card, or 'Image'   */
-									sprintf( __( ' %s Shadow', 'coblocks' ), mediaType.charAt( 0 ).toUpperCase() + mediaType.slice( 1 ) )
+									sprintf(
+										/* translators: %s: Placeholder is either 'Card, or 'Image' */
+										__( ' %s Shadow', 'coblocks' ),
+										mediaType.charAt( 0 ).toUpperCase() + mediaType.slice( 1 )
+									)
 								}
 								checked={ !! hasImgShadow }
 								onChange={ () => setAttributes( { hasImgShadow: ! hasImgShadow } ) }
 								help={ !! hasImgShadow ?
-									/* translators: %s: Placeholder is either 'Card, or 'Image'   */
-									sprintf( __( 'Showing %s shadow.', 'coblocks' ), mediaType ) :
-									/* translators: %s: Placeholder is either 'Card, or 'Image'   */
-									sprintf( __( 'Toggle to add an %s shadow', 'coblocks' ), mediaType )
+									sprintf(
+										/* translators: %s: placeholder is either 'Card, or 'Image' */
+										__( 'Showing %s shadow.', 'coblocks' ),
+										mediaType
+									) :
+									sprintf(
+										/* translators: %s: placeholder is either 'Card, or 'Image' */
+										__( 'Toggle to add an %s shadow', 'coblocks' ),
+										mediaType
+									)
 								}
 							/>
 						) }

@@ -201,8 +201,11 @@ class Edit extends Component {
 						icon={ <BlockIcon icon={ columns ? rowIcons.layout : rowIcons.row } /> }
 						label={ columns ? __( 'Row Layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
 						instructions={ columns ?
-							/* translators: %s: 'one' 'two' 'three' and 'four' */
-							sprintf( __( 'Now select a layout for this %s column row.', 'coblocks' ), this.numberToText( columns ) ) :
+							sprintf(
+								/* translators: %s: 'one' 'two' 'three' and 'four' */
+								__( 'Now select a layout for this %s column row.', 'coblocks' ),
+								this.numberToText( columns )
+							) :
 							__( 'Select the number of columns for this row.', 'coblocks' )
 						}
 						className={ 'components-coblocks-visual-dropdown' }
