@@ -3,23 +3,49 @@
  */
 import { editMultiField } from '../helpers';
 import icon from './icon';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
  */
+const metadata = {
+	name: 'coblocks/field-select',
+	category: 'coblocks',
+	attributes: {
+		label: {
+			type: 'string',
+			default: __( 'Select', 'coblocks' ),
+		},
+		required: {
+			type: 'boolean',
+			default: false,
+		},
+		options: {
+			type: 'array',
+			default: [],
+		},
+	},
+};
+
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Select', 'block name', 'coblocks' ),
-	keywords: [ _x( 'dropdown', 'block keyword', 'coblocks' ), _x( 'option', 'block keyword', 'coblocks' ) ],
+	/* translators: block name */
+	title: __( 'Select', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'A dropdown field with multiple options where only one choice can be made.', 'coblocks' ),
 	icon,
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'dropdown', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'option', 'coblocks' ),
+	],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

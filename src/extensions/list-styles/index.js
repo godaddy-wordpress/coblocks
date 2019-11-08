@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { registerBlockStyle } from '@wordpress/blocks';
 
 /**
@@ -12,19 +12,21 @@ import './styles/style.scss';
 // Default list style for reset.
 registerBlockStyle( 'core/list', {
 	name: 'default',
-	label: _x( 'Default', 'block styles', 'coblocks' ),
+	/* translators: block style */
+	label: __( 'Default', 'coblocks' ),
 	isDefault: true,
 } );
 
 registerBlockStyle( 'core/list', {
 	name: 'none',
-	label: _x( 'None', 'block styles', 'coblocks' ),
+	/* translators: block style */
+	label: __( 'None', 'coblocks' ),
 	isDefault: false,
 } );
 
 registerBlockStyle( 'core/list', {
 	name: 'checkbox',
-	label: _x( 'Checkbox', 'block styles', 'coblocks' ),
+	/* translators: block style */
+	label: __( 'Checkbox', 'coblocks' ),
 	isDefault: false,
 } );
-

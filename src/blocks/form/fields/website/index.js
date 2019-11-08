@@ -3,23 +3,47 @@
  */
 import edit from './edit';
 import icon from './icon';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
  */
+const metadata = {
+	name: 'coblocks/field-website',
+	category: 'coblocks',
+	attributes: {
+		label: {
+			type: 'string',
+			default: __( 'Website', 'coblocks' ),
+		},
+		required: {
+			type: 'boolean',
+			default: false,
+		},
+	},
+};
+
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Website', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Website', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'A text field for collecting a URL.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'link', 'block keyword', 'coblocks' ), _x( 'hyperlink', 'block keyword', 'coblocks' ), 'url' ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'link', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'hyperlink', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'url', 'coblocks' ),
+	],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

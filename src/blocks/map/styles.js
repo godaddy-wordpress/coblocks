@@ -9,26 +9,32 @@ import { __ } from '@wordpress/i18n';
 export const styleOptions = [
 	{
 		value: 'standard',
-		label: /* translators: block styles. */ __( 'Standard', 'coblocks' ),
+		/* translators: block style */
+		label: __( 'Standard', 'coblocks' ),
 	},
 	{
 		value: 'silver',
-		label: /* translators: block styles. */ __( 'Silver', 'coblocks' ),
+		/* translators: block style */
+		label: __( 'Silver', 'coblocks' ),
 	},
 	{
 		value: 'retro',
-		label: /* translators: block styles. */ __( 'Retro', 'coblocks' ),
+		/* translators: block style */
+		label: __( 'Retro', 'coblocks' ),
 	},
 	{
 		value: 'dark',
-		label: /* translators: block styles. */ __( 'Dark', 'coblocks' ),
+		/* translators: block style */
+		label: __( 'Dark', 'coblocks' ),
 	},
 	{
 		value: 'night',
-		label: /* translators: block styles. */ __( 'Night', 'coblocks' ),
+		/* translators: block style */
+		label: __( 'Night', 'coblocks' ),
 	},
 	{
 		value: 'aubergine',
-		label: /* translators: block styles. */ __( 'Aubergine', 'coblocks' ),
+		/* translators: block style */
+		label: __( 'Aubergine', 'coblocks' ),
 	},
 ];

@@ -3,23 +3,45 @@
  */
 import edit from './edit';
 import icon from './icon';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
  */
+const metadata = {
+	name: 'coblocks/field-hidden',
+	category: 'coblocks',
+	attributes: {
+		label: {
+			type: 'string',
+			default: __( 'Hidden', 'coblocks' ),
+		},
+		value: {
+			type: 'string',
+			default: '',
+		},
+	},
+};
+
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Hidden', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Hidden', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'A hidden text field for collecting additional data.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'input', 'block keyword', 'coblocks' ), _x( 'text', 'block keyword', 'coblocks' ) ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'input', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'text', 'coblocks' ),
+	],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,

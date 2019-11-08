@@ -41,7 +41,7 @@ class Inspector extends Component {
 			<Fragment>
 				<InspectorControls>
 					<PanelBody
-						/* translators: hr is html markup - horizonal rule.  */
+						/* translators: hr is html markup (horizonal rule) */
 						title={ __( 'Dynamic HR Settings', 'coblocks' ) }>
 						<BaseControl label={ __( 'Height in pixels', 'coblocks' ) }>
 							<input

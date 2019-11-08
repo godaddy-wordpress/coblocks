@@ -9,7 +9,6 @@ import './styles/style.scss';
  */
 import edit from './edit';
 import icon from './icon';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
@@ -20,20 +19,51 @@ import { InnerBlocks } from '@wordpress/block-editor';
 /**
  * Block constants
  */
+const metadata = {
+	name: 'coblocks/form',
+	category: 'coblocks',
+	attributes: {
+		subject: {
+			type: 'string',
+			default: null,
+		},
+		to: {
+			type: 'string',
+			default: null,
+		},
+		submitButtonText: {
+			type: 'string',
+			default: __( 'Submit', 'coblocks' ),
+		},
+		customBackgroundButtonColor: {
+			type: 'string',
+		},
+		customTextButtonColor: {
+			type: 'string',
+		},
+		submitButtonClasses: {
+			type: 'string',
+		},
+	},
+};
+
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name.  */
+	/* translators: block name */
 	title: __( 'Form', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add a contact form to your page.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword.  */
+		'coblocks',
+		/* translators: block keyword */
 		__( 'email', 'coblocks' ),
-		/* translators: block keyword.  */
+		/* translators: block keyword */
 		__( 'about', 'coblocks' ),
-		/* translators: block keyword.  */
-		__( 'contact', 'coblocks' ) ],
+		/* translators: block keyword */
+		__( 'contact', 'coblocks' ),
+	],
 	supports: {
 		reusable: false,
 		html: false,

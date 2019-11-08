@@ -27,19 +27,38 @@ const { name, category, attributes } = metadata;
 const settings = {
 	/* translators: block name */
 	title: __( 'Alert', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Provide contextual feedback messages or notices.', 'coblocks' ),
 	icon,
 	keywords: [
+		'coblocks',
 		/* translators: block keyword */
 		__( 'notice', 'coblocks' ),
 		/* translators: block keyword */
 		__( 'message', 'coblocks' ),
-		'coblocks' ],
+	],
 	styles: [
-		{ name: 'info', label: /* translators: block style */ __( 'Info', 'coblocks' ), isDefault: true },
-		{ name: 'success', label: /* translators: block style */ __( 'Success', 'coblocks' ) },
-		{ name: 'warning', label: /* translators: block style */ __( 'Warning', 'coblocks' ) },
-		{ name: 'error', label: /* translators: block style */ __( 'Error', 'coblocks' ) },
+		{
+			name: 'info',
+			/* translators: block style */
+			label: __( 'Info', 'coblocks' ),
+			isDefault: true,
+		},
+		{
+			name: 'success',
+			/* translators: block style */
+			label: __( 'Success', 'coblocks' ),
+		},
+		{
+			name: 'warning',
+			/* translators: block style */
+			label: __( 'Warning', 'coblocks' ),
+		},
+		{
+			name: 'error',
+			/* translators: block style */
+			label: __( 'Error', 'coblocks' ),
+		},
 	],
 	supports: {
 		align: true,

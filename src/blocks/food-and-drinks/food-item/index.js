@@ -24,11 +24,16 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name.  */
+	/* translators: block name */
 	title: __( 'Food Item', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'A food and drink item within the Food & Drinks block.', 'coblocks' ),
 	icon,
-	keywords: /* translators: block keyword.  */ __( 'menu', 'coblocks' ),
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'menu', 'coblocks' ),
+	],
 	supports: {
 		inserter: false,
 		customClassName: false,

@@ -23,15 +23,18 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name.  */
+	/* translators: block name */
 	title: __( 'Food & Drinks', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Display a menu or price list.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword.  */
+		'coblocks',
+		/* translators: block keyword */
 		__( 'restaurant', 'coblocks' ),
-		/* translators: block keyword.  */
-		__( 'menu', 'coblocks' ) ],
+		/* translators: block keyword */
+		__( 'menu', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide' ],
 	},

@@ -60,7 +60,7 @@ class AuthorEdit extends Component {
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.addImage }
-				/* translators: image to represent the post author.  */
+				/* translators: image to represent the post author */
 				label={ __( 'Drop to upload as avatar', 'coblocks' ) }
 			/>
 		);
@@ -149,7 +149,7 @@ class AuthorEdit extends Component {
 							keepPlaceholderOnFocus={ true }
 						/>
 						<InnerBlocks
-							template={ [ [ 'core/button', { placeholder: /* translators: content placeholder.  */ __( 'Author link…', 'coblocks' ) } ] ] }
+							template={ [ [ 'core/button', { placeholder: /* translators: content placeholder */ __( 'Author link…', 'coblocks' ) } ] ] }
 							templateLock="all"
 							allowedBlocks={ [ 'core/button' ] }
 							templateInsertUpdatesSelection={ false }

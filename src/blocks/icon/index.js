@@ -29,16 +29,29 @@ export const DEFAULT_ICON_SIZE = 60;
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name. */
+	/* translators: block name */
 	title: __( 'Icon', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add a stylized graphic symbol to communicate something more.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword. */
-		__( 'icons', 'coblocks' ), 'svg', 'coblocks' ],
+		'coblocks',
+		'svg',
+		/* translators: block keyword */
+		__( 'icons', 'coblocks' ),
+	],
 	styles: [
-		{ name: 'outlined', label: /* translators: block style. */ __( 'Outlined', 'coblocks' ), isDefault: true },
-		{ name: 'filled', label: /* translators: block style. */ __( 'Filled', 'coblocks' ) },
+		{
+			name: 'outlined',
+			/* translators: block style */
+			label: __( 'Outlined', 'coblocks' ),
+			isDefault: true,
+		},
+		{
+			name: 'filled',
+			/* translators: block style */
+			label: __( 'Filled', 'coblocks' ),
+		},
 	],
 	attributes,
 	edit,

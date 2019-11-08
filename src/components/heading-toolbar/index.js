@@ -14,8 +14,11 @@ class HeadingToolbar extends Component {
 	createLevelControl( targetLevel, selectedLevel, onChange ) {
 		return {
 			icon: 'heading',
-			// translators: %d: heading level e.g: "1", "2", "3"
-			title: sprintf( __( 'Heading %d', 'coblocks' ), targetLevel ),
+			title: sprintf(
+				/* translators: %d: heading level e.g: "1", "2", "3" */
+				__( 'Heading %d', 'coblocks' ),
+				targetLevel
+			),
 			isActive: targetLevel === selectedLevel,
 			onClick: () => onChange( targetLevel ),
 			subscript: String( targetLevel ),

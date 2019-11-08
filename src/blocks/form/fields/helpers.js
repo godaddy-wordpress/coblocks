@@ -26,11 +26,23 @@ export const editMultiField = type => props => {
 				<InspectorControls>
 					<PanelBody title={ __( 'Display Settings', 'coblocks' ) }>
 						<ToggleControl
-							label={ sprintf( __( 'Inline %s', 'coblocks' ), type ) }
+							label={ sprintf(
+								/* translators: field type eg: checkbox */
+								__( 'Inline %s', 'coblocks' ),
+								type
+							) }
 							className="coblocks-field-label__required"
 							checked={ isInline }
 							onChange={ value => setAttributes( { isInline: value } ) }
-							help={ !! isInline ? sprintf( __( 'Displaying the %s inline.', 'coblocks' ), type ) : sprintf( __( 'Toggle to display the %s inline.', 'coblocks' ), type ) }
+							help={ !! isInline ? sprintf(
+								/* translators: field type eg: checkbox */
+								__( 'Displaying the %s inline.', 'coblocks' ),
+								type
+							) : sprintf(
+								/* translators: field type eg: checkbox */
+								__( 'Toggle to display the %s inline.', 'coblocks' ),
+								type
+							) }
 						/>
 					</PanelBody>
 				</InspectorControls>

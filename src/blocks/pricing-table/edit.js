@@ -35,8 +35,11 @@ const ALLOWED_BLOCKS = [ 'coblocks/pricing-table-item' ];
  * @return {Object[]} Columns layout configuration.
  */
 const getCount = memoize( ( count ) => {
-	/* translators: %d: a digit 1-3 */
-	return times( count, ( index ) => [ 'coblocks/pricing-table-item', { placeholder: sprintf( __( 'Plan %d', 'coblocks' ), parseInt( index + 1 ) ) } ] );
+	return times( count, ( index ) => [ 'coblocks/pricing-table-item', { placeholder: sprintf(
+		/* translators: %d: a digit 1-3 */
+		__( 'Plan %d', 'coblocks' ),
+		parseInt( index + 1 )
+	) } ] );
 } );
 
 /**

@@ -34,17 +34,20 @@ const attributes = {
 };
 
 const settings = {
-	/* translators: block name. */
+	/* translators: block name */
 	title: __( 'Row', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.', 'coblocks' ),
 	icon,
 	keywords: [
-		/* translators: block keyword. */
+		'coblocks',
+		/* translators: block keyword */
 		__( 'rows', 'coblocks' ),
-		/* translators: block keyword. */
+		/* translators: block keyword */
 		__( 'columns', 'coblocks' ),
-		/* translators: block keyword. */
-		__( 'layouts', 'coblocks' )	],
+		/* translators: block keyword */
+		__( 'layouts', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		anchor: true,

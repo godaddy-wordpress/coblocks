@@ -23,8 +23,9 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	/* translators: block name. */
+	/* translators: block name */
 	title: __( 'Service', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'A single service item within a services block.', 'coblocks' ),
 	icon,
 	keywords: [],

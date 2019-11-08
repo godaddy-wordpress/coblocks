@@ -22,17 +22,43 @@ import { __ } from '@wordpress/i18n';
 const { name, category } = metadata;
 
 const settings = {
-	/* translators: block name. */
+	/* translators: block name */
 	title: __( 'Share', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add social sharing links to help you get likes and shares.', 'coblocks' ),
 	icon,
-	keywords: [ /* translators: block keyword. */ __( 'social', 'coblocks' ), 'coblocks' ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'social', 'coblocks' ),
+	],
 	styles: [
-		{ name: 'mask', label: /* translators: block style. */ __( 'Mask', 'coblocks' ) },
-		{ name: 'icon', label: /* translators: block style. */ __( 'Icon', 'coblocks' ), isDefault: true },
-		{ name: 'text', label: /* translators: block style. */ __( 'Text', 'coblocks' ) },
-		{ name: 'icon-and-text', label: /* translators: block style. */ __( 'Icon & Text', 'coblocks' ) },
-		{ name: 'circular', label: /* translators: block style. */ __( 'Circular', 'coblocks' ) },
+		{
+			name: 'mask',
+			/* translators: block style */
+			label: __( 'Mask', 'coblocks' ),
+		},
+		{
+			name: 'icon',
+			/* translators: block style */
+			label: __( 'Icon', 'coblocks' ),
+			isDefault: true,
+		},
+		{
+			name: 'text',
+			/* translators: block style */
+			label: __( 'Text', 'coblocks' ),
+		},
+		{
+			name: 'icon-and-text',
+			/* translators: block style */
+			label: __( 'Icon & Text', 'coblocks' ),
+		},
+		{
+			name: 'circular',
+			/* translators: block style */
+			label: __( 'Circular', 'coblocks' ),
+		},
 	],
 	example: {
 		attributes: {
@@ -49,7 +75,6 @@ const settings = {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-
 	edit,
 	save() {
 		return null;

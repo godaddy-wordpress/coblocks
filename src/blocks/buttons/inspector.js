@@ -26,7 +26,7 @@ class Inspector extends Component {
 			<Fragment>
 				<InspectorControls>
 					<PanelBody
-						/* translators: block settings.  */
+						/* translators: block settings */
 						title={ __( 'Buttons Settings', 'coblocks' ) }>
 						<RangeControl
 							label={ __( 'Buttons', 'coblocks' ) }
@@ -42,7 +42,7 @@ class Inspector extends Component {
 							max={ 4 }
 						/>
 						<ToggleControl
-							/* translators: visually stack buttons one on top of another.  */
+							/* translators: visually stack buttons one on top of another */
 							label={ __( 'Stack on mobile', 'coblocks' ) }
 							checked={ isStackedOnMobile }
 							onChange={ () => setAttributes( {
