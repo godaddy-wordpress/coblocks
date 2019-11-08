@@ -50,8 +50,8 @@ const settings = {
 		attributes: {
 			align: 'wide',
 			mediaType: 'image',
-			mediaUrl: '/wp-content/plugins/coblocks/dist/images/examples/gallery-5.jpg',
-			mediaWidth: 65,
+			mediaUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Enjoying_summer.jpg/400px-Enjoying_summer.jpg',
+			mediaWidth: 45,
 		},
 	},
 	attributes,
