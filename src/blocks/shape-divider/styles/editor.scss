@@ -104,14 +104,14 @@
 			}
 
 			&__svg-wrapper {
-				min-height: 100px;
+				margin-bottom: -0.075em;
 				margin-top: 0;
-				margin-bottom: -.075em;
+				min-height: 100px;
 			}
 
 			&.is-vertically-flipped &__svg-wrapper {
-				margin-top: -.075em;
 				margin-bottom: 0;
+				margin-top: -0.075em;
 			}
 		}
 	}
