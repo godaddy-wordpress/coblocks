@@ -134,22 +134,24 @@ class Inspector extends Component {
 					}
 					{ ! enableGutter &&
 						<BaseControl label={ __( 'Shadow', 'coblocks' ) }>
-							<ButtonGroup aria-label={ __( 'Shadow', 'coblocks' ) }>
-								{ shadowOptions.map( ( option ) => {
-									const isCurrent = shadow === option.value;
-									return (
-										<Button
-											key={ `option-${ option.value }` }
-											isLarge
-											isPrimary={ isCurrent }
-											aria-pressed={ isCurrent }
-											onClick={ () => setAttributes( { shadow: option.value } ) }
-										>
-											{ option.shortName }
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
+							<PanelRow>
+								<ButtonGroup aria-label={ __( 'Shadow', 'coblocks' ) }>
+									{ shadowOptions.map( ( option ) => {
+										const isCurrent = shadow === option.value;
+										return (
+											<Button
+												key={ `option-${ option.value }` }
+												isLarge
+												isPrimary={ isCurrent }
+												aria-pressed={ isCurrent }
+												onClick={ () => setAttributes( { shadow: option.value } ) }
+											>
+												{ option.shortName }
+											</Button>
+										);
+									} ) }
+								</ButtonGroup>
+							</PanelRow>
 						</BaseControl>
 					}
 					{ enableCaptions && <ToggleControl
