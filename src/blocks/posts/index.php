@@ -86,8 +86,8 @@ function coblocks_render_posts_block( $attributes ) {
  * @return string Returns the block content for the list and grid styles.
  */
 function coblocks_posts( $posts, $attributes ) {
-	$class       = [ 'list-none', 'ml-0', 'pl-0', 'pt-3' ];
-	$class_name  = [ 'wp-block-coblocks-posts' ];
+	$class       = array( 'list-none', 'ml-0', 'pl-0', 'pt-3' );
+	$class_name  = array( 'wp-block-coblocks-posts' );
 	$block_style = strpos( $attributes['className'], 'is-style-stacked' ) !== false ? 'stacked' : 'horizontal';
 
 	if ( isset( $attributes['className'] ) ) {
@@ -256,7 +256,7 @@ function coblocks_posts( $posts, $attributes ) {
  */
 function coblocks_get_post_info( $posts ) {
 
-	$formatted_posts = [];
+	$formatted_posts = array();
 
 	foreach ( $posts as $post ) {
 
@@ -295,7 +295,7 @@ function coblocks_get_post_info( $posts ) {
  */
 function coblocks_get_rss_post_info( $posts ) {
 
-	$formatted_posts = [];
+	$formatted_posts = array();
 
 	foreach ( $posts as $post ) {
 

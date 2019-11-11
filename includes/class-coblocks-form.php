@@ -46,10 +46,10 @@ class CoBlocks_Form {
 	 */
 	public function __construct() {
 
-		add_action( 'init', [ $this, 'register_settings' ] );
-		add_action( 'init', [ $this, 'register_form_blocks' ] );
+		add_action( 'init', array( $this, 'register_settings' ) );
+		add_action( 'init', array( $this, 'register_form_blocks' ) );
 
-		add_action( 'wp_enqueue_scripts', [ $this, 'form_recaptcha_assets' ] );
+		add_action( 'wp_enqueue_scripts', array( $this, 'form_recaptcha_assets' ) );
 
 	}
 
@@ -113,9 +113,9 @@ class CoBlocks_Form {
 			wp_localize_script(
 				'coblocks-google-recaptcha',
 				'coblocksFormBlockAtts',
-				[
+				array(
 					'recaptchaSiteKey' => $recaptcha_site_key,
-				]
+				)
 			);
 
 		}
@@ -129,12 +129,12 @@ class CoBlocks_Form {
 
 		register_block_type(
 			'coblocks/form',
-			[
-				'render_callback' => [ $this, 'render_form' ],
-			]
+			array(
+				'render_callback' => array( $this, 'render_form' ),
+			)
 		);
 
-		$form_blocks = [
+		$form_blocks = array(
 			'name',
 			'email',
 			'textarea',
@@ -145,16 +145,16 @@ class CoBlocks_Form {
 			'checkbox',
 			'website',
 			'hidden',
-		];
+		);
 
 		foreach ( $form_blocks as $form_block ) {
 
 			register_block_type(
 				"coblocks/field-${form_block}",
-				[
-					'parent'          => [ 'coblocks/form' ],
-					'render_callback' => [ $this, "render_field_${form_block}" ],
-				]
+				array(
+					'parent'          => array( 'coblocks/form' ),
+					'render_callback' => array( $this, "render_field_${form_block}" ),
+				)
 			);
 
 		}
@@ -832,18 +832,18 @@ class CoBlocks_Form {
 		 */
 		$email_headers = (array) apply_filters(
 			'coblocks_form_email_headers',
-			[
+			array(
 				"Reply-To: {$_POST['field-email']['value']}",
-			],
+			),
 			$_POST,
 			$post_id
 		);
 
-		add_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
+		add_filter( 'wp_mail_content_type', array( $this, 'enable_html_email' ) );
 
 		$email = wp_mail( $to, $subject, $email_content, $email_headers );
 
-		remove_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
+		remove_filter( 'wp_mail_content_type', array( $this, 'enable_html_email' ) );
 
 		/**
 		 * Fires when a form is submitted.
@@ -933,13 +933,13 @@ class CoBlocks_Form {
 
 		$verify_token_request = wp_remote_post(
 			self::GCAPTCHA_VERIFY_URL,
-			[
+			array(
 				'timeout' => 30,
-				'body'    => [
+				'body'    => array(
 					'secret'   => get_option( 'coblocks_google_recaptcha_secret_key' ),
 					'response' => $recaptcha_token,
-				],
-			]
+				),
+			)
 		);
 
 		if ( is_wp_error( $verify_token_request ) ) {
