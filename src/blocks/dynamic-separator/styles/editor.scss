@@ -45,12 +45,3 @@
 		}
 	}
 }
-
-.is-twentytwenty {
-	.wp-block-coblocks-dynamic-separator.is-style-line:not(.has-text-color),
-	.wp-block-coblocks-dynamic-separator.is-style-fullwidth:not(.has-text-color) {
-		&::before {
-			background: #6d6d6d;
-		}
-	}
-}

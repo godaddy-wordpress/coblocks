@@ -40,14 +40,14 @@
 		width: 100%;
 	}
 
-	&:not(.has-text-color) {
+	&:not(.has-background) {
 		&::before {
 			color: rgb(41, 41, 41);
 		}
 	}
 
-	&.is-style-line:not(.has-text-color),
-	&.is-style-fullwidth:not(.has-text-color) {
+	&.is-style-line:not(.has-background),
+	&.is-style-fullwidth:not(.has-background) {
 		&::before {
 			background: rgba(0, 0, 0, 0.15);
 		}
@@ -84,6 +84,13 @@
 		&.is-style-fullwidth::before {
 			max-width: 100%;
 			width: 100%;
+		}
+	}
+
+	.wp-block-coblocks-dynamic-separator.is-style-line:not(.has-background),
+	.wp-block-coblocks-dynamic-separator.is-style-fullwidth:not(.has-background) {
+		&::before {
+			background: #6d6d6d; // Color from TwentyTwenty
 		}
 	}
 }
