@@ -10,7 +10,7 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl, SelectControl, ButtonGroup, Button, BaseControl } from '@wordpress/components';
+import { PanelBody, PanelRow, ToggleControl, SelectControl, ButtonGroup, Button, BaseControl } from '@wordpress/components';
 
 /**
  * Inspector controls
@@ -112,42 +112,46 @@ class Inspector extends Component {
 				<PanelBody title={ __( 'Collage Settings', 'coblocks' ) }>
 					{ enableGutter &&
 						<BaseControl label={ __( 'Gutter', 'coblocks' ) }>
-							<ButtonGroup aria-label={ __( 'Gutter', 'coblocks' ) }>
-								{ gutterOptions.map( ( option ) => {
-									const isCurrent = gutter === option.value;
-									return (
-										<Button
-											key={ `option-${ option.value }` }
-											isLarge
-											isPrimary={ isCurrent }
-											aria-pressed={ isCurrent }
-											onClick={ () => setAttributes( { gutter: option.value } ) }
-										>
-											{ option.shortName }
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
+							<PanelRow>
+								<ButtonGroup aria-label={ __( 'Gutter', 'coblocks' ) }>
+									{ gutterOptions.map( ( option ) => {
+										const isCurrent = gutter === option.value;
+										return (
+											<Button
+												key={ `option-${ option.value }` }
+												isLarge
+												isPrimary={ isCurrent }
+												aria-pressed={ isCurrent }
+												onClick={ () => setAttributes( { gutter: option.value } ) }
+											>
+												{ option.shortName }
+											</Button>
+										);
+									} ) }
+								</ButtonGroup>
+							</PanelRow>
 						</BaseControl>
 					}
 					{ ! enableGutter &&
 						<BaseControl label={ __( 'Shadow', 'coblocks' ) }>
-							<ButtonGroup aria-label={ __( 'Shadow', 'coblocks' ) }>
-								{ shadowOptions.map( ( option ) => {
-									const isCurrent = shadow === option.value;
-									return (
-										<Button
-											key={ `option-${ option.value }` }
-											isLarge
-											isPrimary={ isCurrent }
-											aria-pressed={ isCurrent }
-											onClick={ () => setAttributes( { shadow: option.value } ) }
-										>
-											{ option.shortName }
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
+							<PanelRow>
+								<ButtonGroup aria-label={ __( 'Shadow', 'coblocks' ) }>
+									{ shadowOptions.map( ( option ) => {
+										const isCurrent = shadow === option.value;
+										return (
+											<Button
+												key={ `option-${ option.value }` }
+												isLarge
+												isPrimary={ isCurrent }
+												aria-pressed={ isCurrent }
+												onClick={ () => setAttributes( { shadow: option.value } ) }
+											>
+												{ option.shortName }
+											</Button>
+										);
+									} ) }
+								</ButtonGroup>
+							</PanelRow>
 						</BaseControl>
 					}
 					{ enableCaptions && <ToggleControl
