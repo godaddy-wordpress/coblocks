@@ -82,16 +82,37 @@
 
 .block-editor-block-styles__item-preview {
 	.wp-block-coblocks-shape-divider {
-		height: 200px;
+		height: 100%;
 		overflow: hidden;
 
 		&__alt-wrapper {
-			min-height: 100px;
+			min-height: 50%;
 		}
 
 		&__svg-wrapper {
-			min-height: 100px;
-			margin-bottom: -.075em;
+			min-height: 50%;
+		}
+	}
+
+	//! Gutenberg 6.3+ introduced a new block style preview.
+	.block-editor-block-preview__content[style*="transform:"] {
+		.wp-block-coblocks-shape-divider {
+			height: 200px;
+
+			&__alt-wrapper {
+				min-height: 100px;
+			}
+
+			&__svg-wrapper {
+				min-height: 100px;
+				margin-top: 0;
+				margin-bottom: -.075em;
+			}
+
+			&.is-vertically-flipped &__svg-wrapper {
+				margin-top: -.075em;
+				margin-bottom: 0;
+			}
 		}
 	}
 }
