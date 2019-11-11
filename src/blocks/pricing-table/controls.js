@@ -40,6 +40,7 @@ class Controls extends Component {
 		const {
 			attributes,
 			setAttributes,
+			updateTables,
 		} = this.props;
 
 		const {
@@ -66,7 +67,10 @@ class Controls extends Component {
 							return {
 								...control,
 								isActive,
-								onClick: () => setAttributes( { count: parseInt( control.count ) } ),
+								onClick: () => {
+									setAttributes( { count: parseInt( control.count ) } );
+									updateTables( count, parseInt( control.count ) );
+								},
 							};
 						} ) }
 					/>
