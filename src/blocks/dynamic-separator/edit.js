@@ -37,7 +37,7 @@ class DynamicSeparatorEdit extends Component {
 				<ResizableBox
 					className={ classnames( className, {
 						'is-selected': isSelected,
-						'has-text-color': color.color,
+						'has-background': color.color,
 						[ color.class ]: color.class,
 					} ) }
 					style={ {
