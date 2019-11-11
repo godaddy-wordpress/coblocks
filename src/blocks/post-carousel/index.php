@@ -333,7 +333,7 @@ function coblocks_register_post_carousel_block() {
 	$metadata = json_decode( ob_get_clean(), true );
 
 	register_block_type(
-		$metadata['name'],
+		'coblocks/post-carousel',
 		array(
 			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_post_carousel_block',
