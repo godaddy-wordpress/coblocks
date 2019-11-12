@@ -31,6 +31,9 @@ const metadata = {
 			type: 'string',
 			default: null,
 		},
+		layout: {
+			type: 'string',
+		},
 		submitButtonText: {
 			type: 'string',
 			default: __( 'Submit', 'coblocks' ),

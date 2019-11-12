@@ -5,19 +5,21 @@
  */
 import classnames from 'classnames';
 import emailValidator from 'email-validator';
+import map from 'lodash/map';
 
 /**
  * Internal dependencies
  */
 import Notice from './notice';
 import SubmitButton from './submit-button';
+import { TEMPLATE_OPTIONS } from './layouts';
 
 /**
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
+import { Placeholder, IconButton, ButtonGroup, Button, PanelBody, TextControl, ExternalLink, Tooltip } from '@wordpress/components';
 import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 
@@ -39,12 +41,6 @@ let settings;
 wp.api.loadPromise.then( () => {
 	settings = new wp.api.models.Settings();
 } );
-
-const FORM_TEMPLATE = [
-	[ 'coblocks/field-name', { required: false } ],
-	[ 'coblocks/field-email', { required: true } ],
-	[ 'coblocks/field-textarea', { required: true } ],
-];
 
 const RETRIEVE_KEY_URL = 'https://g.co/recaptcha/v3';
 const HELP_URL = 'https://developers.google.com/recaptcha/docs/v3';
@@ -70,6 +66,7 @@ class FormEdit extends Component {
 			isSavedKey: false,
 			isSaving: false,
 			keySaved: false,
+			templateSelection: false,
 		};
 
 		const to = arguments[ 0 ].attributes.to ? arguments[ 0 ].attributes.to : '';
@@ -274,12 +271,65 @@ class FormEdit extends Component {
 	render() {
 		const {
 			className,
+			setAttributes,
+			attributes,
 		} = this.props;
+
+		const { layout } = attributes;
 
 		const classes = classnames(
 			className,
 			'coblocks-form',
 		);
+
+		if ( ! this.state.templateSelection ) {
+			return (
+				<Fragment>
+					<Placeholder
+						key="placeholder"
+						// icon={ <BlockIcon icon={ columns ? rowIcons.layout : rowIcons.row } /> }
+						label={ __( 'From Templates', 'coblocks' ) }
+						instructions={ __( 'Select the template that fits your needs.', 'coblocks' ) }
+						className={ 'components-coblocks-visual-dropdown' }
+					>
+						<Fragment>
+							<ButtonGroup aria-label={ __( 'Select Row Layout', 'coblocks' ) }>
+								<IconButton
+									icon="exit"
+									className="components-coblocks-visual-dropdown__back"
+									onClick={ () => {
+										setAttributes( {
+											columns: null,
+										} );
+										this.setState( { templateSelection: false } );
+									} }
+									label={ __( 'Back to Columns', 'coblocks' ) }
+								/>
+								{ map( TEMPLATE_OPTIONS, ( { template, title, icon } ) => (
+									<Tooltip text={ title }>
+										<div className="components-coblocks-visual-dropdown__button-wrapper">
+											<Button
+												key={ title }
+												className="components-coblocks-visual-dropdown__button"
+												isSmall
+												onClick={ () => {
+													setAttributes( {
+														layout: template,
+													} );
+													this.setState( { templateSelection: true } );
+												} }
+											>
+												{ icon }
+											</Button>
+										</div>
+									</Tooltip>
+								) ) }
+							</ButtonGroup>
+						</Fragment>
+					</Placeholder>
+				</Fragment>
+			);
+		}
 
 		return (
 			<Fragment>
@@ -353,7 +403,7 @@ class FormEdit extends Component {
 						allowedBlocks={ ALLOWED_BLOCKS }
 						templateInsertUpdatesSelection={ false }
 						renderAppender={ () => null }
-						template={ FORM_TEMPLATE }
+						template={ layout }
 					/>
 					<SubmitButton { ...this.props } />
 				</div>
