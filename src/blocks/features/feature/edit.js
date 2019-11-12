@@ -37,7 +37,7 @@ const TEMPLATE = [
 		'core/heading',
 		{
 			/* translators: content placeholder */
-			placeholder: __( 'Add feature title...', 'coblocks' ),
+			placeholder: __( 'Add feature title…', 'coblocks' ),
 			/* translators: content placeholder */
 			content: __( 'Feature Title', 'coblocks' ),
 			level: 4,
