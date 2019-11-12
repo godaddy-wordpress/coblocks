@@ -1,0 +1,18 @@
+{
+	"name": "coblocks/food-and-drinks",
+	"category": "coblocks",
+	"attributes": {
+		"showImages": {
+			"type": "boolean",
+			"default": false
+		},
+		"showPrices": {
+			"type": "boolean",
+			"default": true
+		},
+		"columns": {
+			"type": "number",
+			"default": 2
+		}
+	}
+}

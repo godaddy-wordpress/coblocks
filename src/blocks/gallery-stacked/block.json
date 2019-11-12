@@ -1,0 +1,25 @@
+{
+	"name": "coblocks/gallery-stacked",
+	"category": "coblocks-galleries",
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"captionStyle": {
+			"type": "string"
+		},
+		"fullwidth": {
+			"type": "boolean",
+			"default": true
+		},
+		"gutter": {
+			"type": "number",
+			"default": 0
+		},
+		"gutterMobile": {
+			"type": "number",
+			"default": 0
+		}
+	}
+}

@@ -7,9 +7,7 @@ function applyStyle( attributes, name ) {
 		textTransform,
 	} = attributes;
 
-	const allowedBlocks = [ 'core/heading' ];
-
-	let style = {
+	const style = {
 		lineHeight: lineHeight || null,
 		fontFamily: fontFamily || null,
 		fontWeight: fontWeight || null,
@@ -18,18 +16,14 @@ function applyStyle( attributes, name ) {
 	};
 
 	if ( typeof attributes.customFontSize !== 'undefined' ) {
-		style.fontSize = attributes.customFontSize + 'px' || null;
+		style.fontSize = attributes.customFontSize + 'px';
 	}
 
 	if ( typeof attributes.customTextColor !== 'undefined' ) {
-		style.color = attributes.customTextColor || null;
+		style.color = attributes.customTextColor;
 	}
 
-	if ( typeof attributes.customBackgroundColor !== 'undefined' ) {
-		style.backgroundColor = attributes.customBackgroundColor || null;
-	}
-
-	if ( name == 'coblocks/column' && typeof attributes.width !== 'undefined' ) {
+	if ( name === 'coblocks/column' && typeof attributes.width !== 'undefined' ) {
 		style.width = attributes.width + '%';
 	}
 

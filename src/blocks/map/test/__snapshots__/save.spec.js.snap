@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/map should render 1`] = `
+"<!-- wp:coblocks/map {\\"address\\":\\"New York\\"} -->
+<div style=\\"min-height:400px\\" data-map-attr=\\"/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q\\" class=\\"wp-block-coblocks-map\\"><iframe title=\\"Google Map\\" frameborder=\\"0\\" style=\\"width:100%;min-height:400px\\" src=\\"https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12\\"></iframe></div>
+<!-- /wp:coblocks/map -->"
+`;

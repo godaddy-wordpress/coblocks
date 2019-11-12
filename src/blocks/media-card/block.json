@@ -1,0 +1,48 @@
+{
+	"name": "coblocks/media-card",
+	"category": "coblocks",
+	"attributes": {
+		"mediaPosition": {
+			"type": "string",
+			"default": "left"
+		},
+		"mediaAlt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "figure img",
+			"attribute": "alt",
+			"default": ""
+		},
+		"mediaId": {
+			"type": "number"
+		},
+		"mediaUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "div div figure video, div div figure img",
+			"attribute": "src"
+		},
+		"mediaType": {
+			"type": "string"
+		},
+		"mediaWidth": {
+			"type": "number",
+			"default": 55
+		},
+		"align": {
+			"type": "string",
+			"default": "wide"
+		},
+		"maxWidth": {
+			"type": "number"
+		},
+		"hasImgShadow": {
+			"type": "boolean",
+			"default": false
+		},
+		"hasCardShadow": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}

@@ -2,10 +2,7 @@
 /**
  * Add body classes to particular themes to help style them.
  *
- * @package   @@pkg.title
- * @author    @@pkg.author
- * @link      @@pkg.author_uri
- * @license   @@pkg.license
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
@@ -14,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main @@pkg.title Class
+ * Generate theme-specific body and admin classes.
  *
  * @since 1.0.0
  */
@@ -47,6 +44,7 @@ class CoBlocks_Body_Classes {
 	 */
 	public function themes() {
 		$themes = array(
+			'twentytwenty',
 			'twentynineteen',
 			'twentyseventeen',
 			'twentysixteen',
@@ -104,7 +102,7 @@ class CoBlocks_Body_Classes {
 		}
 
 		if ( $this->is_active_theme( $this->themes() ) ) {
-			$classes .= 'is-' . $this->theme_slug();
+			$classes .= ' is-' . $this->theme_slug();
 		}
 
 		return $classes;

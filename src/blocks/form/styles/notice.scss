@@ -1,0 +1,25 @@
+.coblocks-form__notice {
+	display: flex;
+	font-size: 13px;
+	font-style: italic;
+	line-height: 1.4;
+	margin-bottom: 1.4em;
+	margin-top: -1.25em;
+
+	svg {
+		margin-right: 5px;
+		min-width: 24px;
+	}
+
+	> span {
+		margin-top: 2px;
+	}
+
+	&.is-error {
+		color: $alert-red;
+
+		svg {
+			fill: $alert-red;
+		}
+	}
+}

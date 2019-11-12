@@ -2,10 +2,7 @@
 /**
  * Register blocks.
  *
- * @package   CoBlocks
- * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
- * @link      https://coblocks.com
- * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
@@ -38,17 +35,17 @@ class CoBlocks_Register_Blocks {
 	}
 
 	/**
-	 * The Plugin version.
+	 * The Plugin slug.
 	 *
-	 * @var string $_slug
+	 * @var string $slug
 	 */
-	private $_slug;
+	private $slug;
 
 	/**
 	 * The Constructor.
 	 */
-	private function __construct() {
-		$this->_slug = 'coblocks';
+	public function __construct() {
+		$this->slug = 'coblocks';
 
 		add_action( 'init', array( $this, 'register_blocks' ), 99 );
 	}
@@ -66,59 +63,91 @@ class CoBlocks_Register_Blocks {
 		}
 
 		// Shortcut for the slug.
-		$slug = $this->_slug;
+		$slug = $this->slug;
 
 		register_block_type(
-			$slug . '/accordion', array(
+			$slug . '/accordion',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/alert', array(
+			$slug . '/alert',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/author', array(
+			$slug . '/author',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/click-to-tweet', array(
+			$slug . '/click-to-tweet',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/dynamic-separator', array(
+			$slug . '/dynamic-separator',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/gif', array(
+			$slug . '/gif',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/gist', array(
+			$slug . '/gist',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',
 			)
 		);
 		register_block_type(
-			$slug . '/highlight', array(
+			$slug . '/highlight',
+			array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+		register_block_type(
+			$slug . '/gallery-carousel',
+			array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+		register_block_type(
+			$slug . '/gallery-masonry',
+			array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+		register_block_type(
+			$slug . '/gallery-stacked',
+			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
 				'style'         => $slug . '-frontend',

@@ -1,0 +1,133 @@
+.is-twentysixteen,
+.is-twentyseventeen,
+.is-twentythirteen,
+.is-twentytwelve {
+	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
+		font-style: italic;
+		margin-bottom: 0;
+		text-align: left;
+	}
+}
+
+.is-twentynineteen {
+	@include coblocksGalleryEditorBlocks {
+		margin-bottom: 48px;
+		margin-top: 50px;
+	}
+
+	.coblocks-gallery--primary-caption {
+		margin-bottom: -10px;
+	}
+}
+
+.is-twentyfifteen {
+	@include coblocksGalleryEditorBlocks {
+		margin-bottom: 42px;
+		margin-top: 42px;
+	}
+
+	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
+		color: #707070;
+		font-family: "Noto Sans", sans-serif;
+		font-size: 12px;
+		line-height: 1.5;
+		margin-bottom: -5px;
+
+		@media screen and (min-width: 46.25em) {
+			font-size: 14px;
+		}
+
+		@media screen and (min-width: 55em) {
+			font-size: 16px;
+		}
+
+		@media screen and (min-width: 59.6875em) {
+			font-size: 12px;
+		}
+
+		@media screen and (min-width: 68.75em) {
+			font-size: 14px;
+		}
+
+		@media screen and (min-width: 77.5em) {
+			font-size: 16px;
+		}
+	}
+}
+
+.is-twentyfourteen {
+	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
+		font-style: italic;
+		margin-bottom: -7px;
+		margin-top: 8px;
+		padding: 0;
+		text-align: left;
+	}
+}
+
+.is-twentythirteen {
+	@include coblocksGalleryEditorBlocks {
+		margin-bottom: 40px;
+		margin-top: 40px;
+	}
+
+	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
+		margin-top: 8px;
+		padding: 0;
+	}
+}
+
+.is-twentytwelve {
+	// Override the theme's border radius behavior for our blocks.
+	.coblocks-gallery:not([class*="border-radius"]) img {
+		border-radius: inherit;
+	}
+
+	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
+		margin-top: 1.1em;
+		padding: 0;
+	}
+
+	.wp-block[data-type="coblocks-gallery/stacked"] figcaption {
+		text-align: center !important;
+	}
+}
+
+.is-twentyeleven {
+	// Override the theme's padding/border effect on our blocks.
+	.coblocks-gallery img {
+		border: 0;
+		max-width: 100%;
+		padding: 0;
+	}
+
+	.coblocks-gallery--primary-caption.editor-rich-text__tinymce {
+		font-family: Georgia, serif;
+		font-size: 12px;
+		margin-bottom: -5px;
+		padding: 2px 0 0 40px;
+		text-align: left;
+
+		&::before {
+			color: #666;
+			content: "\2014";
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 600;
+			left: 10px;
+			margin-right: 5px;
+			position: absolute;
+			top: 0;
+		}
+	}
+
+	.wp-block[data-type="coblocks-gallery/stacked"] figcaption {
+		padding-left: 1em;
+		padding-right: 1em;
+		text-align: center;
+
+		&::before {
+			display: none;
+		}
+	}
+}

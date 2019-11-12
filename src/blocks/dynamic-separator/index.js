@@ -1,127 +1,69 @@
 /**
- * External dependencies
+ * Styles.
  */
-import classnames from 'classnames';
-import omit from 'lodash/omit';
+import './styles/editor.scss';
+import './styles/style.scss';
 
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
-import './styles/style.scss';
-import Edit from './components/edit';
-import icons from './../../utils/icons';
+import deprecated from './deprecated';
+import edit from './edit';
+import icon from './icon';
+import metadata from './block.json';
+import save from './save';
+import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
-const { getColorClassName } = wp.editor;
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
  */
-const name = 'dynamic-separator';
-
-const title = __( 'Dynamic HR' );
-
-const icon = icons.hr;
-
-const keywords = [
-	__( 'hr' ),
-	__( 'separator' ),
-	__( 'coblocks' ),
-];
-
-const blockAttributes = {
-	height: {
-		type: 'number',
-		default: 50,
-	},
-	color: {
-		type: 'string',
-	},
-	customColor: {
-		type: 'string',
-	},
-};
+const { name, category, attributes } = metadata;
 
 const settings = {
-
-	title: title,
-
-	description: __( 'Add a resizable spacer between other blocks.' ),
-
-	keywords: keywords,
-
-	attributes: blockAttributes,
-
-	styles: [
-		{ name: 'dots', label: __( 'Dot' ), isDefault: true },
-		{ name: 'line', label: __( 'Line' ) },
-		{ name: 'fullwidth', label: __( 'Fullwidth' ) },
+	/* translators: block name */
+	title: __( 'Dynamic HR', 'coblocks' ),
+	/* translators: block description */
+	description: __( 'Add a resizable spacer between other blocks.', 'coblocks' ),
+	icon,
+	keywords: [
+		'coblocks',
+		'hr',
+		/* translators: block keyword */
+		__( 'spacer', 'coblocks' ),
 	],
-
-	transforms: {
-		from: [
-			{
-				type: 'block',
-				blocks: [ 'core/spacer' ],
-				transform: ( { height } ) => createBlock( `coblocks/${ name }`, {
-					height: height,
-				} ),
-			},
-			{
-				type: 'block',
-				blocks: [ 'core/separator' ],
-				transform: () => createBlock( `coblocks/${ name }` ),
-			},
-		],
-		to: [
-			{
-				type: 'block',
-				blocks: [ 'core/spacer' ],
-				transform: ( { height } ) => createBlock( 'core/spacer', {
-					height: height,
-				} ),
-			},
-			{
-				type: 'block',
-				blocks: [ 'core/separator' ],
-				transform: () => createBlock( 'core/separator' ),
-			},
-		],
+	styles: [
+		{
+			name: 'dots',
+			/* translators: block style */
+			label: __( 'Dot', 'coblocks' ),
+			isDefault: true,
+		},
+		{
+			name: 'line',
+			/* translators: block style */
+			label: __( 'Line', 'coblocks' ),
+		},
+		{
+			name: 'fullwidth',
+			/* translators: block style */
+			label: __( 'Fullwidth', 'coblocks' ),
+		},
+	],
+	example: {
+		attributes: {
+			height: 100,
+		},
 	},
-
-	edit: Edit,
-
-	save( { attributes, className } ) {
-
-		const {
-			color,
-			customColor,
-			height,
-		} = attributes;
-
-		const colorClass = getColorClassName( 'color', color );
-
-		const classes = classnames(
-			className, {
-			'has-text-color': color || customColor,
-			[ colorClass ]: colorClass,
-		} );
-
-		const styles = {
-			color: colorClass ? undefined : customColor,
-			height: height ? height + 'px' : undefined,
-		};
-
-		return (
-			<hr className={ classes } style={ styles }></hr>
-		);
-	},
+	attributes,
+	transforms,
+	edit,
+	save,
+	deprecated,
 };
 
-export { name, title, icon, settings };
-
+export { name, category, metadata, settings };

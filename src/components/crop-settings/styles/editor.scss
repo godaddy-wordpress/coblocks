@@ -1,0 +1,54 @@
+.components-coblocks-image-control {
+	background-color: $light-gray-200;
+	margin-bottom: 0 !important;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+
+	> div {
+		margin: 14px;
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+
+		&:first-child {
+			opacity: 0.5;
+			overflow: visible;
+		}
+
+		&:last-child {
+			cursor: move;
+		}
+
+		img {
+			display: block;
+			will-change: transform;
+		}
+	}
+
+	&.is-zoomed div:first-child {
+		img {
+			filter: blur(6px) saturate(0.7) brightness(1.1);
+		}
+	}
+}
+
+.components-panel__body .components-coblocks-offset-control {
+	> .components-base-control {
+		margin-bottom: 15px;
+	}
+}
+
+.components-panel__body .components-range-control.components-coblocks-zoom-control {
+	margin-bottom: 14px;
+}
+
+.components-coblocks-rotate-control {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 12px;
+	margin-top: -8px;
+}

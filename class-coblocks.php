@@ -1,14 +1,14 @@
 <?php
 /**
  * Plugin Name: CoBlocks
- * Plugin URI: https://coblocks.com/
+ * Plugin URI: https://coblocks.com
  * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
- * Author: CoBlocks
- * Author URI: https://coblocks.com/
- * Version: 1.9.4
+ * Author: GoDaddy
+ * Author URI: https://www.godaddy.com
+ * Version: 1.17.0
  * Text Domain: coblocks
- * Domain Path: languages
- * Tested up to: @@pkg.tested_up_to
+ * Domain Path: /languages
+ * Tested up to: 5.3
  *
  * CoBlocks is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,16 +18,22 @@
  * You should have received a copy of the GNU General Public License
  * along with CoBlocks. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   CoBlocks
- * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
- * @link      https://coblocks.com
- * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+define( 'COBLOCKS_VERSION', '1.17.0' );
+define( 'COBLOCKS_HAS_PRO', false );
+define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
+define( 'COBLOCKS_PLUGIN_BASE', plugin_basename( __FILE__ ) );
+define( 'COBLOCKS_REVIEW_URL', 'https://wordpress.org/support/plugin/coblocks/reviews/?filter=5' );
+define( 'COBLOCKS_ASSET_SUFFIX', SCRIPT_DEBUG ? null : '.min' );
 
 if ( ! class_exists( 'CoBlocks' ) ) :
 	/**
@@ -58,8 +64,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof CoBlocks ) ) {
 				self::$instance = new CoBlocks();
 				self::$instance->init();
-				self::$instance->constants();
-				self::$instance->asset_suffix();
 				self::$instance->includes();
 			}
 			return self::$instance;
@@ -77,7 +81,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		public function __clone() {
 			// Cloning instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'coblocks' ), '1.0' );
 		}
 
 		/**
@@ -89,38 +93,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		public function __wakeup() {
 			// Unserializing instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', '@@textdomain' ), '1.0' );
-		}
-
-		/**
-		 * Setup plugin constants.
-		 *
-		 * @access private
-		 * @since 1.0.0
-		 * @return void
-		 */
-		private function constants() {
-			$this->define( 'COBLOCKS_DEBUG', true );
-			$this->define( 'COBLOCKS_VERSION', '@@pkg.version' );
-			$this->define( 'COBLOCKS_HAS_PRO', false );
-			$this->define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-			$this->define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-			$this->define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
-			$this->define( 'COBLOCKS_PLUGIN_BASE', plugin_basename( __FILE__ ) );
-			$this->define( 'COBLOCKS_SHOP_URL', 'https://coblocks.com/' );
-			$this->define( 'COBLOCKS_REVIEW_URL', 'https://wordpress.org/support/plugin/coblocks/reviews/?filter=5' );
-		}
-
-		/**
-		 * Define constant if not already set.
-		 *
-		 * @param  string|string $name Name of the definition.
-		 * @param  string|bool   $value Default value.
-		 */
-		private function define( $name, $value ) {
-			if ( ! defined( $name ) ) {
-				define( $name, $value );
-			}
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'coblocks' ), '1.0' );
 		}
 
 		/**
@@ -135,20 +108,18 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-register-blocks.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-generated-styles.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-body-classes.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-form.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-font-loader.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-meta.php';
-			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-google-map.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-google-map-block.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-accordion-ie-support.php';
-			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-settings.php';
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-settings.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
-				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-getting-started-page.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php';
-				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-admin-footer.php';
-				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-feedback.php';
 				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php';
-				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-url-generator.php';
+				require_once COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-crop-settings.php';
 			}
 		}
 
@@ -163,19 +134,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		}
 
 		/**
-		 * Change the plugin's minified or src file name, based on debug mode.
-		 *
-		 * @since 1.0.0
-		 */
-		public function asset_suffix() {
-			if ( true === COBLOCKS_DEBUG ) {
-				define( 'COBLOCKS_ASSET_SUFFIX', null );
-			} else {
-				define( 'COBLOCKS_ASSET_SUFFIX', '.min' );
-			}
-		}
-
-		/**
 		 * If debug is on, serve unminified source assets.
 		 *
 		 * @since 1.0.0
@@ -185,39 +143,9 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		public function asset_source( $type = 'js', $directory = null ) {
 
 			if ( 'js' === $type ) {
-				if ( true === COBLOCKS_DEBUG ) {
-					return COBLOCKS_PLUGIN_URL . 'src/' . $type . '/' . $directory;
-				} else {
-					return COBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
-				}
+				return SCRIPT_DEBUG ? COBLOCKS_PLUGIN_URL . 'src/' . $type . '/' . $directory : COBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
 			} else {
 				return COBLOCKS_PLUGIN_URL . 'dist/css/' . $directory;
-			}
-		}
-
-		/**
-		 * Check if pro exists.
-		 *
-		 * @access public
-		 */
-		public function has_pro() {
-			if ( true === COBLOCKS_HAS_PRO ) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-
-		/**
-		 * Check if pro is activated.
-		 *
-		 * @access public
-		 */
-		public function is_pro() {
-			if ( class_exists( 'CoBlocks_Pro' ) ) {
-				return true;
-			} else {
-				return false;
 			}
 		}
 
@@ -229,7 +157,7 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @return void
 		 */
 		public function load_textdomain() {
-			load_plugin_textdomain( 'coblocks', false, dirname( plugin_basename( COBLOCKS_PLUGIN_DIR ) ) . '/languages/' );
+			load_plugin_textdomain( 'coblocks', false, basename( COBLOCKS_PLUGIN_DIR ) . '/languages' );
 		}
 
 		/**
@@ -239,8 +167,17 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 */
 		public function block_localization() {
 			if ( function_exists( 'wp_set_script_translations' ) ) {
-				wp_set_script_translations( 'coblocks-editor', 'coblocks' );
+				wp_set_script_translations( 'coblocks-editor', 'coblocks', COBLOCKS_PLUGIN_DIR . '/languages' );
 			}
+		}
+
+		/**
+		 * Is an AMP endpoint.
+		 *
+		 * @return bool Whether the current response will be AMP.
+		 */
+		public function is_amp() {
+			return function_exists( 'is_amp_endpoint' ) && is_amp_endpoint();
 		}
 	}
 endif;

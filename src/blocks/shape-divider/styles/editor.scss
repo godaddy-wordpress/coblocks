@@ -30,8 +30,8 @@
 		width: 100%;
 
 		&::after {
-			background: #0085ba;
-			border: 2px solid #fff;
+			background: theme(primary);
+			border: 2px solid $white;
 			border-radius: 50%;
 			bottom: 4px;
 			content: "";
@@ -60,7 +60,7 @@
 
 	.wp-block-coblocks-shape-divider__svg-wrapper.is-resizing::after,
 	.wp-block-coblocks-shape-divider__alt-wrapper.is-resizing::after {
-		background: #0085ba;
+		background: theme(primary);
 		opacity: 1;
 	}
 
@@ -91,6 +91,7 @@
 		}
 
 		&__svg-wrapper {
+			bottom: -1px;
 			height: 60px !important;
 		}
 
@@ -168,3 +169,11 @@
 		}
 	}
 }
+
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content .wp-block-coblocks-shape-divider {
+	.wp-block-coblocks-shape-divider__alt-wrapper {
+		margin-top: -1px;
+	}
+}
+

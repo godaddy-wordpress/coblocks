@@ -1,5 +1,5 @@
 /**
- * Set the attributes for the Background Image Panel
+ * Set the attributes for the Background Panel
  * @type {Object}
  */
 const BackgroundAttributes = {

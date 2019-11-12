@@ -1,9 +1,16 @@
 /**
- * Custom icons
+ * WordPress dependencies
  */
+import { SVG, Path, G } from '@wordpress/components';
+
 const icons = {};
 
 icons.typography =
-<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g transform="translate(3 3)"><path d="m.995 16v2h16v-2z"/><path d="m8 0-5.5 14h2.25l1.12-3h6.25l1.12 3h2.25l-5.49-14zm-1.38 9 2.38-6.33 2.38 6.33z"/></g></svg>
+	<SVG height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+		<G fill="currentColor" fillRule="nonzero">
+			<Path d="m3 16v2h14v-2z" />
+			<Path d="m9.11555556 2-4.88888889 12.4444444h2l.99555555-2.6666666h5.55555558l.9955555 2.6666666h2l-4.88-12.4444444zm-1.22666667 8 2.11555551-5.62666667 2.1155556 5.62666667z" />
+		</G>
+	</SVG>;
 
 export default icons;

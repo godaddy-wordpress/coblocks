@@ -1,0 +1,15 @@
+{
+	"name": "coblocks/feature",
+	"category": "coblocks",
+	"attributes": {
+		"textColor": {
+			"type": "string"
+		},
+		"customTextColor": {
+			"type": "string"
+		},
+		"contentAlign": {
+			"type": "string"
+		}
+	}
+}

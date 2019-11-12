@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/food-and-drinks should render 1`] = `
+"<!-- wp:coblocks/food-and-drinks -->
+<div class=\\"wp-block-coblocks-food-and-drinks\\" data-columns=\\"2\\" itemscope itemtype=\\"http://schema.org/Menu\\"></div>
+<!-- /wp:coblocks/food-and-drinks -->"
+`;

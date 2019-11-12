@@ -1,11 +1,62 @@
-.pb-0 {
-	padding-bottom: 0 !important;
+.pt {
+	@include utilities($padding, "padding-top", "-");
 }
 
-.pt-0 {
-	padding-top: 0 !important;
+.pr {
+	@include utilities($padding, "padding-right", "-");
 }
 
+.pb {
+	@include utilities($padding, "padding-bottom", "-");
+}
+
+.pl {
+	@include utilities($padding, "padding-left", "-");
+}
+
+.pt-full {
+	padding-top: 100%;
+}
+
+// 600px +
+@include break-small() {
+	.sm\:pt {
+		@include utilities($padding__sm, "padding-top", "-");
+	}
+
+	.sm\:pr {
+		@include utilities($padding__sm, "padding-right", "-");
+	}
+
+	.sm\:pb {
+		@include utilities($padding__sm, "padding-bottom", "-");
+	}
+
+	.sm\:pl {
+		@include utilities($padding__sm, "padding-left", "-");
+	}
+}
+
+// 1440 +
+@include break-huge() {
+	.lg\:pt {
+		@include utilities($padding__lg, "padding-top", "-");
+	}
+
+	.lg\:pr {
+		@include utilities($padding__lg, "padding-right", "-");
+	}
+
+	.lg\:pb {
+		@include utilities($padding__lg, "padding-bottom", "-");
+	}
+
+	.lg\:pl {
+		@include utilities($padding__lg, "padding-left", "-");
+	}
+}
+
+// Old utilities.
 .has-small-padding {
 	padding: 14px;
 }

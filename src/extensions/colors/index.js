@@ -8,10 +8,10 @@ import ColorTransforms from './transform';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { compose } = wp.compose;
-const { withColors, PanelColorSettings } = wp.editor;
+import { __ } from '@wordpress/i18n';
+import { Component } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
+import { withColors, PanelColorSettings } from '@wordpress/block-editor';
 
 /**
  * Export
@@ -25,48 +25,44 @@ export {
 /**
  * Color Settings
  */
-function ColorSettings( props, options ) {
+class ColorSettings extends Component {
+	render() {
+		const {
+			name,
+			attributes,
+			setAttributes,
+		} = this.props;
 
-	const {
-		name,
-		attributes,
-		fallbackTextColor,
-		setAttributes,
-		setTextColor,
-		textColor,
-	} = props;
+		const {
+			customTextColor,
+			customBackgroundColor,
+		} = attributes;
 
-	const {
-		customTextColor,
-		customBackgroundColor,
-	} = attributes;
+		const colorSettings = [];
 
-	let colorSettings = [];
+		if ( ! [ 'core/list', 'core/quote' ].includes( name ) ) {
+			colorSettings.push( {
+				value: customBackgroundColor,
+				onChange: ( nextcustomBackgroundColor ) => setAttributes( { customBackgroundColor: nextcustomBackgroundColor } ),
+				label: __( 'Background Color', 'coblocks' ),
+			} );
+		}
 
-	if( ![ 'core/heading', 'core/list', 'core/quote' ].includes( name ) ){
-		colorSettings.push({
-			value: customBackgroundColor,
-			onChange: ( nextcustomBackgroundColor ) => setAttributes( {  customBackgroundColor: nextcustomBackgroundColor } ),
-			label: __( 'Background Color' ),
-		});
-	}
+		colorSettings.push( {
+			value: customTextColor,
+			onChange: ( nextcustomTextColor ) => setAttributes( { customTextColor: nextcustomTextColor } ),
+			label: __( 'Text Color', 'coblocks' ),
+		} );
 
-	colorSettings.push({
-		value: customTextColor,
-		onChange: ( nextcustomTextColor ) => setAttributes( {  customTextColor: nextcustomTextColor } ),
-		label: __( 'Text Color' ),
-	});
-
-	return [
-		<Fragment>
+		return (
 			<PanelColorSettings
-				title={ __( 'Color Settings' ) }
+				title={ __( 'Color Settings', 'coblocks' ) }
 				initialOpen={ false }
 				colorSettings={ colorSettings }
 			>
 			</PanelColorSettings>
-		</Fragment>
-	];
+		);
+	}
 }
 
 export default compose( [

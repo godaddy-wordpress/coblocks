@@ -2,18 +2,21 @@
  * Internal dependencies
  */
 import './styles/editor.scss';
-import icons from './../../utils/icons';
 import ModalSettings from './components/modal';
 
 /**
  * WordPress dependencies
  */
-const { registerPlugin } = wp.plugins;
+import { registerPlugin } from '@wordpress/plugins';
+import { dispatch } from '@wordpress/data';
+const dispatcher = dispatch( 'core/edit-post' );
 
 /**
  * Register Plugin
  */
-registerPlugin( 'coblocks-block-manager', {
-	icon: false,
-	render: ModalSettings,
-} );
+if ( typeof dispatcher !== 'undefined' && ! Object.keys( dispatcher ).includes( 'hideBlockTypes' ) ) {
+	registerPlugin( 'coblocks-block-manager', {
+		icon: false,
+		render: ModalSettings,
+	} );
+}

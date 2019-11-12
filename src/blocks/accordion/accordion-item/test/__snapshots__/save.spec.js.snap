@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/accordion-item should render with content 1`] = `
+"<!-- wp:coblocks/accordion-item {\\"title\\":\\"Accordion title\\"} -->
+<div class=\\"wp-block-coblocks-accordion-item\\"><details><summary class=\\"wp-block-coblocks-accordion-item__title\\">Accordion title</summary><div class=\\"wp-block-coblocks-accordion-item__content\\"></div></details></div>
+<!-- /wp:coblocks/accordion-item -->"
+`;

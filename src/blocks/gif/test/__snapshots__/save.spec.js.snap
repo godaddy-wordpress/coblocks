@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/gif should render 1`] = `
+"<!-- wp:coblocks/gif -->
+<figure class=\\"wp-block-coblocks-gif\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.gif\\" alt=\\"\\"/></figure>
+<!-- /wp:coblocks/gif -->"
+`;

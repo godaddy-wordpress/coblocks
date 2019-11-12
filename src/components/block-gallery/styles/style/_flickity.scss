@@ -1,0 +1,174 @@
+.flickity-enabled {
+	position: relative;
+
+	&:focus {
+		outline: none;
+	}
+
+	&.is-draggable {
+		user-select: none;
+	}
+}
+
+.flickity-viewport {
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+
+	.is-cropped & {
+		height: 100% !important;
+	}
+}
+
+.flickity-slider {
+	height: 100%;
+	position: absolute;
+	width: 100%;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport {
+	cursor: move;
+	cursor: -webkit-grab;
+	cursor: grab;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
+	cursor: -webkit-grabbing;
+	cursor: grabbing;
+}
+
+.flickity-button {
+	background: hsla(0, 0%, 100%, 0.75);
+	border: none;
+	color: $black;
+	padding: 0;
+	position: absolute;
+	transition: background 100ms, opacity 100ms;
+
+	&:hover {
+		background: $white;
+		cursor: pointer;
+	}
+
+	&:focus {
+		background: $white;
+		border: none;
+		box-shadow: 0 0 0 2px $black;
+		outline: none;
+	}
+
+	&:active {
+		border: none;
+		opacity: 0.6;
+	}
+
+	&:disabled {
+		cursor: auto;
+		opacity: 0.25;
+		pointer-events: none;
+	}
+}
+
+.flickity-button-icon {
+	fill: $black;
+	transform: translate3d(0, 0, 0);
+}
+
+.flickity-prev-next-button {
+	border-radius: 9px;
+	height: 72px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 57px;
+
+	.has-top-left-carousel-arrows & {
+		border-radius: 4px;
+		height: 42px;
+		top: 20px;
+		transform: none;
+		width: 42px;
+
+		&.previous {
+			left: 20px;
+		}
+
+		&.next {
+			left: calc(25px + 42px);
+		}
+	}
+}
+
+.flickity-prev-next-button.previous {
+	left: 10px;
+
+	@media (min-width: 600px) {
+		left: 20px;
+	}
+}
+
+.flickity-prev-next-button.next {
+	right: 10px;
+
+	@media (min-width: 600px) {
+		right: 20px;
+	}
+}
+
+.flickity-rtl .flickity-prev-next-button.previous {
+	left: auto;
+	right: 10px;
+
+	@media (min-width: 600px) {
+		right: 20px;
+	}
+}
+
+.flickity-rtl .flickity-prev-next-button.next {
+	left: 10px;
+	right: auto;
+
+	@media (min-width: 600px) {
+		left: 20px;
+	}
+}
+
+.flickity-prev-next-button .flickity-button-icon {
+	height: 50%;
+	left: 23%;
+	position: absolute;
+	top: 25%;
+	width: 50%;
+}
+
+.previous.flickity-prev-next-button .flickity-button-icon {
+	left: 26%;
+}
+
+.flickity-page-dots {
+	bottom: 18px;
+	line-height: 1;
+	list-style: none;
+	margin: 0 !important;
+	padding: 0 !important;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+.flickity-rtl .flickity-page-dots {
+	direction: rtl;
+}
+
+.flickity-page-dots .dot {
+	background: hsla(0, 0%, 0, 0.3);
+	border-radius: 50%;
+	cursor: pointer;
+	display: inline-block;
+	height: 9px;
+	margin: 0 6px;
+	width: 9px;
+}
+
+.flickity-page-dots .dot.is-selected {
+	background: hsla(0, 0, 100%, 0.75);
+}

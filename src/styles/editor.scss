@@ -1,11 +1,8 @@
+// Common
 @import "../common";
-
-// Style icons
-@import "editor/icons";
 
 // Style various inspector region and block toolbar controls
 @import "editor/is-transient";
-@import "editor/numerals-control";
 
 // Mobile classes
 @import "editor/stacked";
@@ -20,7 +17,7 @@
 		margin-right: 0.7em;
 
 		svg {
-			fill: #23282d; // Same color as modal headings.
+			fill: $dark-gray-800; // Same color as modal headings.
 			position: relative;
 			top: 0.16em;
 		}
@@ -63,4 +60,33 @@
 
 .components-coblocks-icon-menu-dropdown {
 	padding: 3px;
+}
+
+.components-coblocks-block-settings-sidebar {
+	.components-external-link {
+		color: theme(outlines);
+
+		&:hover {
+			color: color(theme(outlines) shade(25%));
+		}
+	}
+}
+
+.wp-block[data-align="full"] > .editor-block-list__block-edit [data-block] > div > .columns {
+	padding-left: map-get($padding, 2);
+	padding-right: map-get($padding, 2);
+
+	@media (min-width: 480px) {
+		padding-left: map-get($padding, 3);
+		padding-right: map-get($padding, 3);
+	}
+
+	&.columns-3,
+	&.columns-4 {
+		// 1280px+
+		@include break-medium() {
+			padding-left: map-get($padding, 4);
+			padding-right: map-get($padding, 4);
+		}
+	}
 }

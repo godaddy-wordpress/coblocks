@@ -1,0 +1,16 @@
+{
+	"name": "coblocks/dynamic-separator",
+	"category": "coblocks",
+	"attributes": {
+		"height": {
+			"type": "number",
+			"default": 50
+		},
+		"color": {
+			"type": "string"
+		},
+		"customColor": {
+			"type": "string"
+		}
+	}
+}

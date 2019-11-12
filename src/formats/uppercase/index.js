@@ -6,22 +6,21 @@ import formatIcons from './icons';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Fragment } = wp.element;
-const { toggleFormat } = wp.richText;
-const { RichTextToolbarButton, RichTextShortcut } = wp.editor;
+import { __ } from '@wordpress/i18n';
+import { Fragment } from '@wordpress/element';
+import { toggleFormat } from '@wordpress/rich-text';
+import { RichTextToolbarButton, RichTextShortcut } from '@wordpress/block-editor';
 
 /**
  * Block constants
  */
 const name = 'coblocks/uppercase';
 
-export const uppercase = {
-	name,
-	title: __( 'Uppercase' ),
+const settings = {
+	title: __( 'Uppercase', 'coblocks' ),
 	tagName: 'span',
 	className: 'uppercase',
-	edit( { isActive, value, onChange } ) {
+	edit: ( { isActive, value, onChange } ) => {
 		const onToggle = () => onChange( toggleFormat( value, { type: name } ) );
 
 		return (
@@ -33,7 +32,7 @@ export const uppercase = {
 				/>
 				<RichTextToolbarButton
 					icon={ formatIcons.uppercase }
-					title={ __( 'Uppercase' ) }
+					title={ __( 'Uppercase', 'coblocks' ) }
 					onClick={ onToggle }
 					isActive={ isActive }
 					shortcutType="access"
@@ -41,6 +40,7 @@ export const uppercase = {
 				/>
 			</Fragment>
 		);
-
 	},
 };
+
+export { name, settings };

@@ -1,0 +1,171 @@
+workflows:
+  version: 2
+  main:
+    jobs:
+      # Support PHP Versions
+      # http://php.net/supported-versions.php
+      - php56-build:
+          filters:
+            tags:
+              only: /.*/
+      - php72-build: # Will be deprecated on 30 Nov 2020
+          filters:
+            tags:
+              only: /.*/
+      - jest:
+          filters:
+            tags:
+              only: /.*/
+      - deploy:
+          requires:
+            - php56-build
+            - php72-build
+            - jest
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
+
+version: 2
+jobs:
+  php56-build:
+    docker:
+      - image: circleci/php:5.6
+      - image: circleci/mysql:5.7
+    steps:
+      - checkout
+      - run:
+          name: "Setup Environment Variables"
+          command: |
+            echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $BASH_ENV
+            source /home/circleci/.bashrc
+      - run:
+          name: "Install Dependencies"
+          command: |
+            bash .dev/bin/install-dependencies.sh
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+      - run:
+          name: "Run PHPCS"
+          command: composer run lint -- -v
+      - run:
+          name: "Run PHPUnit - Single Site - Generate Coverage Reports"
+          command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+      - store_artifacts:
+          path: /tmp/artifacts/code-coverage/
+          destination: phpunit-coverage
+      - store_test_results:
+          path: /tmp/artifacts/code-coverage/
+      - run:
+          name: "Run PHPUnit - Multi Site"
+          command: WP_MULTISITE=1 composer run test
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+
+  php72-build:
+    docker:
+      - image: circleci/php:7.2
+      - image: circleci/mysql:5.7
+    steps:
+      - checkout
+      - run:
+          name: "Setup Environment Variables"
+          command: |
+            echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $BASH_ENV
+            source /home/circleci/.bashrc
+      - run:
+          name: "Install Dependencies"
+          command: |
+            bash .dev/bin/install-dependencies.sh
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+      - run:
+          name: "Run PHPCS"
+          command: composer run lint -- -v
+      - run:
+          name: "Run PHPUnit - Single Site - Generate Coverage Reports"
+          command: composer run test -- --coverage-html=/tmp/artifacts/code-coverage/phpunit/html --log-junit=/tmp/artifacts/code-coverage/phpunit/results.xml
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+      - store_artifacts:
+          path: /tmp/artifacts/code-coverage/
+          destination: phpunit-coverage
+      - store_test_results:
+          path: /tmp/artifacts/code-coverage/
+      - run:
+          name: "Run PHPUnit - Multi Site"
+          command: WP_MULTISITE=1 composer run test
+          working_directory: /tmp/wordpress/wp-content/plugins/coblocks
+
+  jest:
+    docker:
+      - image: circleci/node:latest-browsers-legacy
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Run eslint
+          command: npx grunt eslint
+      - run:
+          name: Run jest tests
+          command: JEST_JUNIT_OUTPUT_DIR="/tmp/artifacts/code-coverage/jest/" JEST_JUNIT_OUTPUT_NAME="results.xml" npm test -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
+      - store_artifacts:
+          path: /tmp/artifacts/code-coverage/
+          destination: jest-coverage
+      - store_test_results:
+          path: /tmp/artifacts/code-coverage/
+
+  deploy:
+    docker:
+      - image: circleci/golang:latest-node-browsers-legacy
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - run:
+          name: Install Grunt.js
+          command: sudo npm install -g grunt-cli
+      - run:
+          name: Install SVN
+          command: sudo apt-get update && sudo apt-get install subversion
+      - run:
+          name: Install PHP
+          command: sudo apt-get install php libapache2-mod-php php-mbstring
+      - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
+      - run:
+          name: Install WPCLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
+          name: Install ghr
+          command: |
+            go get -u github.com/tcnksm/ghr
+      - run:
+          name: Install node packages
+          command: npm install
+      - run:
+          name: Build the plugin
+          command: |
+            mkdir -p /tmp/artifacts
+            grunt build
+            grunt compress
+            mv build/*.zip /tmp/artifacts
+      - deploy:
+          name: Deploy the plugin
+          command: bash .dev/bin/deploy-plugin.sh
+      - store_artifacts:
+          path: /tmp/artifacts

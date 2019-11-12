@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/form should render with form details 1`] = `"<!-- wp:coblocks/form {\\"subject\\":\\"Form subject\\",\\"to\\":\\"Form to text\\",\\"submitButtonText\\":\\"Form submit button text\\"} /-->"`;

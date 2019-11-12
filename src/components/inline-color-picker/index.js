@@ -11,13 +11,10 @@ import './styles/editor.scss';
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { ColorPicker, Tooltip, Dropdown, Button } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { ColorPicker, Dropdown, Button } from '@wordpress/components';
 
 export default function InlineColorPicker( { disableCustomColors = false, value, onChange, className } ) {
-	function applyOrUnset( color ) {
-		return () => onChange( value === color ? undefined : color );
-	}
 	const classes = classnames( 'components-color-palette', 'components-coblocks-inline-color-picker', className );
 	return (
 		<div className={ classes }>
@@ -30,10 +27,10 @@ export default function InlineColorPicker( { disableCustomColors = false, value,
 							<Button
 								aria-expanded={ isOpen }
 								onClick={ onToggle }
-								aria-label={ __( 'Custom color picker' ) }
+								aria-label={ __( 'Custom color picker', 'coblocks' ) }
 								isLink
 							>
-								<span class="components-color-palette__custom-color-gradient"></span>
+								<span className="components-color-palette__custom-color-gradient"></span>
 							</Button>
 						) }
 						renderContent={ () => (

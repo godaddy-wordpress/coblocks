@@ -1,0 +1,61 @@
+$gutter: 1em;
+
+.wp-block-coblocks-services {
+	@include break-small() {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	&.alignfull {
+		padding-left: $gutter * 2;
+		padding-right: $gutter * 2;
+	}
+
+	> .wp-block-coblocks-service:last-child {
+		margin-bottom: 0;
+	}
+
+	@include break-small() {
+		&[data-columns="2"] > .wp-block-coblocks-service {
+			flex-basis: 50%;
+			max-width: calc(100% / 2 - #{$gutter});
+		}
+
+		&[data-columns="3"] > .wp-block-coblocks-service {
+			flex-basis: 33.333%;
+			max-width: calc(100% / 3 - #{$gutter});
+		}
+	}
+
+	@media (min-width: #{ ($break-small) }) and (max-width: #{ ($break-wide) }) {
+		&[data-columns="4"] > .wp-block-coblocks-service {
+			flex-basis: 50%;
+			margin-bottom: 3em;
+			max-width: calc(100% / 2 - #{$gutter});
+
+			&:nth-child(1),
+			&:nth-child(3) {
+				margin-left: 0;
+			}
+
+			&:nth-child(2),
+			&:nth-child(4) {
+				margin-right: 0;
+			}
+
+			&:nth-child(3),
+			&:nth-child(4) {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	@include break-wide() {
+		&[data-columns="4"] > .wp-block-coblocks-service {
+			flex-basis: 25%;
+			max-width: calc(100% / 4 - #{$gutter} * 1.4);
+		}
+	}
+}

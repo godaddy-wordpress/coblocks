@@ -1,10 +1,19 @@
-.wp-block[data-type="coblocks/alert"]{
-	background: transparent !important;
-}
+.block-editor-block-styles .wp-block-coblocks-alert {
+	background-color: $alert-default-background-color !important;
+	color: $alert-default-color !important;
 
-.wp-block-coblocks-alert {
+	&.is-style-warning {
+		background-color: $alert-warning-background-color !important;
+		color: $alert-warning-color !important;
+	}
 
-	&__title {
-		margin-bottom: 0.65em;
+	&.is-style-error {
+		background-color: $alert-error-background-color !important;
+		color: $alert-error-color !important;
+	}
+
+	&.is-style-success {
+		background-color: $alert-success-background-color !important;
+		color: $alert-success-color !important;
 	}
 }

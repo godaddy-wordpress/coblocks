@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/highlight should render with content 1`] = `
+"<!-- wp:coblocks/highlight -->
+<p class=\\"wp-block-coblocks-highlight\\"><mark class=\\"wp-block-coblocks-highlight__content\\">highlighted content</mark></p>
+<!-- /wp:coblocks/highlight -->"
+`;

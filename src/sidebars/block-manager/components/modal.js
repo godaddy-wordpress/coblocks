@@ -2,7 +2,6 @@
  * External dependencies
  */
 import map from 'lodash/map';
-import apiFetch from '@wordpress/api-fetch';
 
 /**
  * Internal dependencies
@@ -14,36 +13,33 @@ import MapInnerBlocks from './map-innerblocks';
 /**
  * WordPress dependencies
  */
-const { __, sprintf } = wp.i18n;
-const { Fragment, Component } = wp.element;
-const { Button, Modal, TextControl } = wp.components;
-const { PluginMoreMenuItem } = wp.editPost;
-const { getCategories, getBlockTypes, unregisterBlockType } = wp.blocks;
-
+import { __ } from '@wordpress/i18n';
+import { Fragment, Component } from '@wordpress/element';
+import { Modal, TextControl } from '@wordpress/components';
+import { PluginMoreMenuItem } from '@wordpress/edit-post';
+import { getCategories, getBlockTypes, unregisterBlockType } from '@wordpress/blocks';
 
 /**
  * Render plugin
  */
 class ModalSettings extends Component {
-
-	constructor( props ) {
+	constructor() {
 		super( ...arguments );
 
 		//assign blocks per category
-		let blocksPerCategory = {};
+		const blocksPerCategory = {};
 		{ map( getCategories(), ( category ) => {
 			blocksPerCategory[ category.slug ] = category;
-			blocksPerCategory[ category.slug ][ 'blocks' ] = {};
-		} ) }
+			blocksPerCategory[ category.slug ].blocks = {};
+		} ); }
 
 		{ map( getBlockTypes(), ( block ) => {
-			if( ![ 'core/paragraph' ].includes( block.name ) && ! block.parent ){
-				blocksPerCategory[ block.category ][ 'blocks' ][ block.name ] = block;
+			if ( ! [ 'core/paragraph' ].includes( block.name ) && ! block.parent ) {
+				blocksPerCategory[ block.category ].blocks[ block.name ] = block;
 			}
+		} ); }
 
-		} ) }
-
-		this.state   = {
+		this.state = {
 			settings: '',
 			isOpen: false,
 			isSaving: false,
@@ -52,7 +48,7 @@ class ModalSettings extends Component {
 			allBlocks: blocksPerCategory,
 			getBlockTypes: getBlockTypes(),
 			searchResults: {},
-		}
+		};
 
 		let settings;
 
@@ -60,37 +56,34 @@ class ModalSettings extends Component {
 		wp.api.loadPromise.then( () => {
 			settings = new wp.api.models.Settings();
 
-			settings.on( 'change:coblocks_settings_api', ( model ) => {
-				const getSettings = model.get( 'coblocks_settings_api' );
+			settings.on( 'change:coblocks_settings_api', () => {
 				this.setState( { settings: settings.get( 'coblocks_settings_api' ) } );
-			});
+			} );
 
 			settings.fetch().then( response => {
 				let optionSettings = response.coblocks_settings_api;
-				if( optionSettings.length < 1 ){
+				if ( optionSettings.length < 1 ) {
 					optionSettings = {};
-				}else{
+				} else {
 					optionSettings = JSON.parse( optionSettings );
 
 					//get current blocks
-					let currentBlocks = wp.data.select( 'core/editor' ).getBlocks();
-					let blockNames	  = MapInnerBlocks( currentBlocks );
-					
+					const currentBlocks = wp.data.select( 'core/block-editor' ).getBlocks();
+					const blockNames = MapInnerBlocks( currentBlocks );
+
 					map( optionSettings, ( visible, block ) => {
-						if( visible && !block.includes( 'mainCategory-' ) && !blockNames[ block ] ){
+						if ( visible && ! block.includes( 'mainCategory-' ) && ! blockNames[ block ] ) {
 							unregisterBlockType( block );
 						}
-					} )
-
+					} );
 				}
-				this.setState({ settings: optionSettings });
-				this.setState({ isLoaded: true });
-			});
-		});
+				this.setState( { settings: optionSettings } );
+				this.setState( { isLoaded: true } );
+			} );
+		} );
 	}
 
 	render() {
-
 		const closeModal = () => (
 			this.setState( { isOpen: false } )
 		);
@@ -98,36 +91,36 @@ class ModalSettings extends Component {
 		const filterList = ( evt ) => {
 			this.setState( { searchValue: evt } );
 
-			var filtered = {};
-			var getAllBlocks = this.state.allBlocks;
+			const filtered = {};
+			const getAllBlocks = this.state.allBlocks;
 
-			var updatedList = Object.entries( this.state.getBlockTypes ).filter(function(item){
-				var text = item[0] + ' ' + item[1].title  + ' ';
-				if( item[1].keywords ){
-					text += item[1].keywords.map( e => e ).join(' ');
+			const updatedList = Object.entries( this.state.getBlockTypes ).filter( function( item ) {
+				let text = item[ 0 ] + ' ' + item[ 1 ].title + ' ';
+				if ( item[ 1 ].keywords ) {
+					text += item[ 1 ].keywords.map( e => e ).join( ' ' );
 				}
 				return text.toLowerCase().search(
-					evt.toLowerCase()) !== -1;
-			});
+					evt.toLowerCase() ) !== -1;
+			} );
 
-			if( updatedList ){
-				updatedList.forEach(([key, value]) => {
-					if( !filtered[ value.category ] ){
+			if ( updatedList ) {
+				updatedList.forEach( ( [ , value ] ) => {
+					if ( ! filtered[ value.category ] ) {
 						filtered[ value.category ] = {
 							slug: value.category,
 							title: getAllBlocks[ value.category ].title,
 							blocks: {},
-						}
+						};
 					}
-					if( ![ 'core/paragraph' ].includes( value.name ) && ! value.parent ){
-						filtered[ value.category ]['blocks'][ value.name ] = value;
+					if ( ! [ 'core/paragraph' ].includes( value.name ) && ! value.parent ) {
+						filtered[ value.category ].blocks[ value.name ] = value;
 					}
-				});
+				} );
 			}
 
-			this.setState({ searchResults: filtered });
-		}
-		
+			this.setState( { searchResults: filtered } );
+		};
+
 		return (
 			<Fragment>
 				<PluginMoreMenuItem
@@ -136,35 +129,35 @@ class ModalSettings extends Component {
 						this.setState( { isOpen: true } );
 					} }
 				>
-					{ __( 'Manage Blocks' ) }
+					{ __( 'Manage Blocks', 'coblocks' ) }
 				</PluginMoreMenuItem>
 				{ this.state.isOpen ?
 					<Modal
-						title={ __( 'Block Manager' ) }
+						title={ __( 'Block Manager', 'coblocks' ) }
 						onRequestClose={ () => closeModal() }
-						closeLabel={ __( 'Close' ) }
+						closeLabel={ __( 'Close', 'coblocks' ) }
 						icon={ brandAssets.modalIcon }
-						className='coblocks-modal-component components-modal--coblocks-block-manager'
+						className="coblocks-modal-component components-modal--coblocks-block-manager"
 					>
 						<div className="coblocks-block-manager__search">
 							<TextControl
-								type='search'
-								autocomplete="off"
+								type="search"
+								autoComplete="off"
 								autofocus="autofocus"
-								placeholder={ __( 'Search for a block' ) }
+								placeholder={ __( 'Search for a block', 'coblocks' ) }
 								value={ this.state.searchValue }
-								onChange={ (evt) => {
-										filterList( evt );
-									}
+								onChange={ ( evt ) => {
+									filterList( evt );
+								}
 								}
 							/>
 						</div>
 						<DisableBlocks optionSettings={ this.state.settings } allBlocks={ this.state.allBlocks } keyword={ this.state.searchValue } searchResults={ this.state.searchResults } />
-					</Modal>
-				: null }
+					</Modal> :
+					null }
 			</Fragment>
 		);
 	}
-};
+}
 
 export default ModalSettings;

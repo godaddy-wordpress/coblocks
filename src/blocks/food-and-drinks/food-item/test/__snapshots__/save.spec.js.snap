@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/food-item should render with content 1`] = `
+"<!-- wp:coblocks/food-item -->
+<div class=\\"wp-block-coblocks-food-item\\" itemscope itemtype=\\"http://schema.org/MenuItem\\"><div class=\\"wp-block-coblocks-food-item__content\\"><div class=\\"wp-block-coblocks-food-item__heading-wrapper\\"><h4 class=\\"wp-block-coblocks-food-item__heading\\" itemprop=\\"name\\">Food item title</h4></div><p class=\\"wp-block-coblocks-food-item__description\\" itemprop=\\"description\\">Food item description</p><p class=\\"wp-block-coblocks-food-item__price\\" itemprop=\\"offers\\" itemscope itemtype=\\"http://schema.org/Offer\\"><span itemprop=\\"price\\">$1.00</span></p></div></div>
+<!-- /wp:coblocks/food-item -->"
+`;

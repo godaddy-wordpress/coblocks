@@ -5,27 +5,16 @@ import classnames from 'classnames';
 import map from 'lodash/map';
 
 /**
- * Internal dependencies
- */
-import CSSGridAttributes from './attributes';
-
-/**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { withInstanceId } = wp.compose;
-const { dispatch, select } = wp.data;
-const { Component, Fragment } = wp.element;
-const { ButtonGroup, Button, Tooltip, ToggleControl } = wp.components;
+import { __ } from '@wordpress/i18n';
+import { withInstanceId } from '@wordpress/compose';
+import { dispatch } from '@wordpress/data';
+import { Component, Fragment } from '@wordpress/element';
+import { ButtonGroup, Button, Tooltip, ToggleControl } from '@wordpress/components';
 
 class CSSGridControl extends Component {
-
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
-
 		const {
 			attributes,
 			clientId,
@@ -43,26 +32,75 @@ class CSSGridControl extends Component {
 		 * This will make us of existing block instead of creating new one
 		 */
 		let layoutOptions = [
-			{ value: 'top-left', label: __( 'Top Left' ) },
-			{ value: 'top-center', label: __( 'Top Center' ) },
-			{ value: 'top-right', label: __( 'Top Right' ) },
-			{ value: 'center-left', label: __( 'Center Left' ) },
-			{ value: 'center-center', label: __( 'Center Center' ) },
-			{ value: 'center-right', label: __( 'Center Right' ) },
-			{ value: 'bottom-left', label: __( 'Bottom Left' ) },
-			{ value: 'bottom-center', label: __( 'Bottom Center' ) },
-			{ value: 'bottom-right', label: __( 'Bottom Right' ) },
+			{
+				value: 'top-left',
+				/* translators: block layout */
+				label: __( 'Top Left', 'coblocks' ),
+			},
+			{
+				value: 'top-center',
+				/* translators: block layout */
+				label: __( 'Top Center', 'coblocks' ),
+			},
+			{
+				value: 'top-right',
+				/* translators: block layout */
+				label: __( 'Top Right', 'coblocks' ),
+			},
+			{
+				value: 'center-left',
+				/* translators: block layout */
+				label: __( 'Center Left', 'coblocks' ),
+			},
+			{
+				value: 'center-center',
+				/* translators: block layout */
+				label: __( 'Center Center', 'coblocks' ),
+			},
+			{
+				value: 'center-right',
+				/* translators: block layout */
+				label: __( 'Center Right', 'coblocks' ),
+			},
+			{
+				value: 'bottom-left',
+				/* translators: block layout */
+				label: __( 'Bottom Left', 'coblocks' ),
+			},
+			{
+				value: 'bottom-center',
+				/* translators: block layout */
+				label: __( 'Bottom Center', 'coblocks' ),
+			},
+			{
+				value: 'bottom-right',
+				/* translators: block layout */
+				label: __( 'Bottom Right', 'coblocks' ),
+			},
 		];
 
-		if( !fullscreen ){
+		if ( ! fullscreen ) {
 			layoutOptions = [
-				{ value: 'center-left', label: __( 'Center Left' ) },
-				{ value: 'center-center', label: __( 'Center Center' ) },
-				{ value: 'center-right', label: __( 'Center Right' ) },
+				{
+					value: 'center-left',
+					/* translators: block layout */
+					label: __( 'Center Left', 'coblocks' ),
+				},
+				{
+					value: 'center-center',
+					/* translators: block layout */
+					label: __( 'Center Center', 'coblocks' ),
+				},
+				{
+					value: 'center-right',
+					/* translators: block layout */
+					label: __( 'Center Right', 'coblocks' ),
+				},
 			];
 		}
 
-		let layoutAttributes = {};
+		const layoutAttributes = {};
+
 		//top
 		layoutAttributes[ 'top-left' ] = {
 			wrapper: {
@@ -120,8 +158,6 @@ class CSSGridControl extends Component {
 			},
 		};
 
-		let getBlockContents = select( 'core/editor' ).getBlock( clientId );
-
 		const classes = classnames(
 			'components-base-control',
 			'components-coblocks-css-grid-selector', {
@@ -132,69 +168,68 @@ class CSSGridControl extends Component {
 		return (
 			<Fragment>
 				<div className={ classes }>
-					<label className="components-base-control__label" >{ __( 'Layout' ) }</label>
-					<ButtonGroup aria-label={ __( 'Select Layout' ) }>
-					{ map( layoutOptions, ( { label, value, icon } ) => {
-						 if( tooltip ){
-						 	return (
-						 		<Tooltip text={ label }>
-									<div className={ ( value == layout ) ? 'is-selected' : null }>
-										<Button
-											isSmall
-											onClick={ () => {
-												setAttributes( { layout: value } );
-												if( layoutAttributes[ value ].wrapper ){
-													dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
-												}
-											} }
-										>
-										</Button>
-									</div>
-								</Tooltip>
-							)
-						 }else{
-						 	return(
-						 		<div className={ ( value == layout ) ? 'is-selected' : null }>
+					<p className="components-base-control__label">{ __( 'Layout', 'coblocks' ) }</p>
+					<ButtonGroup aria-label={ __( 'Select Layout', 'coblocks' ) }>
+						{ map( layoutOptions, ( { label, value }, index ) => {
+							if ( tooltip ) {
+								return (
+									<Tooltip text={ label } key={ `grid-tooltip-${ index }` }>
+										<div className={ ( value === layout ) ? 'is-selected' : null }>
+											<Button
+												isSmall
+												onClick={ () => {
+													setAttributes( { layout: value } );
+													if ( layoutAttributes[ value ].wrapper ) {
+														dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+													}
+												} }
+											>
+											</Button>
+										</div>
+									</Tooltip>
+								);
+							}
+							return (
+								<div className={ ( value === layout ) ? 'is-selected' : null }>
 									<Button
 										isSmall
 										onClick={ () => {
 											setAttributes( { layout: value } );
-											if( layoutAttributes[ value ].wrapper ){
-												dispatch( 'core/editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
+											if ( layoutAttributes[ value ].wrapper ) {
+												dispatch( 'core/block-editor' ).updateBlockAttributes( clientId, layoutAttributes[ value ].wrapper );
 											}
 										} }
 									>
 									</Button>
 								</div>
-						 	)
-						 }
-					} ) }
+							);
+						} ) }
 					</ButtonGroup>
 				</div>
 				<ToggleControl
-					label={ __( 'Fullscreen' ) }
+					label={ __( 'Fullscreen', 'coblocks' ) }
 					checked={ !! fullscreen }
 					onChange={ () => {
-						if( fullscreen ){
-							if( [ 'bottom-left', 'top-left' ].includes( layout ) ){
-								setAttributes( {  layout: 'center-left' } )
+						if ( fullscreen ) {
+							if ( [ 'bottom-left', 'top-left' ].includes( layout ) ) {
+								setAttributes( { layout: 'center-left' } );
 							}
 
-							if( [ 'bottom-center', 'top-center' ].includes( layout ) ){
-								setAttributes( {  layout: 'center-center' } )
+							if ( [ 'bottom-center', 'top-center' ].includes( layout ) ) {
+								setAttributes( { layout: 'center-center' } );
 							}
 
-							if( [ 'bottom-right', 'top-right' ].includes( layout ) ){
-								setAttributes( {  layout: 'center-right' } )
+							if ( [ 'bottom-right', 'top-right' ].includes( layout ) ) {
+								setAttributes( { layout: 'center-right' } );
 							}
 						}
-						setAttributes( {  fullscreen: ! fullscreen } )
+						setAttributes( { fullscreen: ! fullscreen } );
 					} }
-					help={ !! fullscreen ? __( 'Fullscreen mode is enabled.' ) : __( 'Toggle to enable fullscreen mode.' ) }
+					help={ !! fullscreen ? __( 'Fullscreen mode is enabled.', 'coblocks' ) : __( 'Toggle to enable fullscreen mode.', 'coblocks' ) }
 				/>
 			</Fragment>
 		);
 	}
 }
 
-export default withInstanceId( CSSGridControl  );
+export default withInstanceId( CSSGridControl );

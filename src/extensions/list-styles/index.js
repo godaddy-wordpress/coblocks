@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { registerBlockStyle } = wp.blocks;
+import { __ } from '@wordpress/i18n';
+import { registerBlockStyle } from '@wordpress/blocks';
 
 /**
  * Internal Dependencies
@@ -10,22 +10,23 @@ const { registerBlockStyle } = wp.blocks;
 import './styles/style.scss';
 
 // Default list style for reset.
-registerBlockStyle('core/list', {
+registerBlockStyle( 'core/list', {
 	name: 'default',
-	label: __( 'Default' ),
+	/* translators: block style */
+	label: __( 'Default', 'coblocks' ),
 	isDefault: true,
-});
+} );
 
-registerBlockStyle('core/list', {
+registerBlockStyle( 'core/list', {
 	name: 'none',
-	label: __( 'None' ),
+	/* translators: block style */
+	label: __( 'None', 'coblocks' ),
 	isDefault: false,
-});
+} );
 
-registerBlockStyle('core/list', {
+registerBlockStyle( 'core/list', {
 	name: 'checkbox',
-	label: __( 'Checkbox' ),
+	/* translators: block style */
+	label: __( 'Checkbox', 'coblocks' ),
 	isDefault: false,
-});
-
-
+} );

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/gallery-masonry should render 1`] = `
+"<!-- wp:coblocks/gallery-masonry -->
+<div class=\\"wp-block-coblocks-gallery-masonry\\"><div class=\\"coblocks-gallery has-no-alignment has-caption-style-dark has-gutter\\"><ul class=\\"has-grid-xlrg has-gutter-15 has-gutter-mobile-15\\"><li class=\\"coblocks-gallery--item\\"><figure class=\\"coblocks-gallery--figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li></ul></div></div>
+<!-- /wp:coblocks/gallery-masonry -->"
+`;

@@ -1,11 +1,8 @@
 <?php
 /**
- * Load assets and meta for browser legacy support
+ * Load assets and meta for browser legacy support.
  *
- * @package   CoBlocks
- * @author    Rich Tabor & Jeffrey Carandang from CoBlocks
- * @link      https://coblocks.com
- * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * @package CoBlocks
  */
 
 // Exit if accessed directly.
@@ -40,31 +37,23 @@ class CoBlocks_Accordion_IE_Support {
 	/**
 	 * The base URL path (without trailing slash).
 	 *
-	 * @var string $_url
+	 * @var string $url
 	 */
-	private $_url;
+	private $url;
 
 	/**
-	 * The Plugin version.
+	 * The Plugin slug.
 	 *
-	 * @var string $_version
+	 * @var string $slug
 	 */
-	private $_version;
-
-	/**
-	 * The Plugin version.
-	 *
-	 * @var string $_slug
-	 */
-	private $_slug;
+	private $slug;
 
 	/**
 	 * The Constructor.
 	 */
-	private function __construct() {
-		$this->_version = COBLOCKS_VERSION;
-		$this->_slug    = 'coblocks';
-		$this->_url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+	public function __construct() {
+		$this->slug = 'coblocks';
+		$this->url  = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
 		add_action( 'the_post', array( $this, 'load_assets' ) );
@@ -79,6 +68,13 @@ class CoBlocks_Accordion_IE_Support {
 
 		global $post;
 
+		// Validate Post ID.
+		if ( ! isset( $post->ID ) || empty( $post->ID ) ) {
+
+			return;
+
+		}
+
 		$legacy_support = get_post_meta( $post->ID, '_coblocks_accordion_ie_support', true );
 
 		// Determine whether a $post contains an Accordion block.
@@ -87,10 +83,10 @@ class CoBlocks_Accordion_IE_Support {
 			$dir = CoBlocks()->asset_source( 'js' );
 
 			wp_enqueue_script(
-				$this->_slug . '-accordion-polyfill',
-				$dir . $this->_slug . '-accordion-polyfill' . COBLOCKS_ASSET_SUFFIX . '.js',
+				$this->slug . '-accordion-polyfill',
+				$dir . $this->slug . '-accordion-polyfill' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array(),
-				$this->_version,
+				COBLOCKS_VERSION,
 				true
 			);
 		}

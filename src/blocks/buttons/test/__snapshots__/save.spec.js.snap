@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/buttons should render with content 1`] = `
+"<!-- wp:coblocks/buttons -->
+<div class=\\"wp-block-coblocks-buttons\\"><div class=\\"wp-block-coblocks-buttons__inner flex-align-left\\"></div></div>
+<!-- /wp:coblocks/buttons -->"
+`;

@@ -1,0 +1,67 @@
+{
+	"name": "coblocks/post-carousel",
+	"category": "coblocks",
+	"attributes": {
+		"className": {
+			"type": "string"
+		},
+		"align": {
+			"type": "string"
+		},
+		"postFeedType": {
+			"type": "string",
+			"default": "internal"
+		},
+		"externalRssUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"postsToShow": {
+			"type": "number",
+			"default": 4
+		},
+		"displayPostContent": {
+			"type": "boolean",
+			"default": true
+		},
+		"displayPostDate": {
+			"type": "boolean",
+			"default": true
+		},
+		"displayPostLink": {
+			"type": "boolean",
+			"default": false
+		},
+		"postLink": {
+			"type": "string",
+			"default": "Read more"
+		},
+		"excerptLength": {
+			"type": "number",
+			"default": 12
+		},
+		"imageSize": {
+			"type": "string",
+			"default": "w-1/7 sm:w-1/5 h-1/7 sm:h-1/5"
+		},
+		"listPosition": {
+			"type": "string",
+			"default": "right"
+		},
+		"columns": {
+			"type": "number",
+			"default": 2
+		},
+		"order": {
+			"type": "string",
+			"default": "desc"
+		},
+		"orderBy": {
+			"type": "string",
+			"default": "date"
+		},
+		"categories": {
+			"type": "string"
+		}
+	}
+}
