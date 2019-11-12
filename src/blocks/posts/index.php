@@ -344,7 +344,7 @@ function coblocks_register_posts_block() {
 	$metadata = json_decode( ob_get_clean(), true );
 
 	register_block_type(
-		$metadata['name'],
+		'coblocks/posts',
 		array(
 			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_posts_block',

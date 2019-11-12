@@ -185,7 +185,7 @@ function coblocks_register_social_profiles_block() {
 	$metadata = json_decode( ob_get_clean(), true );
 
 	register_block_type(
-		$metadata['name'],
+		'coblocks/social-profiles',
 		array(
 			'editor_script'   => 'coblocks-editor',
 			'editor_style'    => 'coblocks-editor',
