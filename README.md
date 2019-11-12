@@ -78,7 +78,7 @@ Before contributing, please read the [guidelines for contributing](https://githu
 New to open source/free software? Here is a selection of issues we've made **especially for first-timers**.
 [Good first issues](https://github.com/godaddy/coblocks/labels/good%20first%20issue)
 
-We're here to help, so just raise  an [issue](https://github.com/godaddy/coblocks/issues/new) and ask if one looks interesting or if you have questions.
+We're here to help, so just raise an [issue](https://github.com/godaddy/coblocks/issues/new) and ask if one looks interesting or if you have questions.
 
 
 ## Screenshots
