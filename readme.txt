@@ -168,3 +168,7 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * Tweak [Accordion block default background color](https://github.com/godaddy/coblocks/pull/1095) for improved theme compatibility
 * Fix [Collage Block layouts](https://github.com/godaddy/coblocks/pull/1067) for the TwentyTwenty theme
 * [Scope column styles](https://github.com/godaddy/coblocks/pull/1035) to the Posts block
+
+### 1.17.1
+* Add server rendered [block's json files](https://github.com/godaddy/coblocks/pull/1121) to build
+* Use external [Wikipedia CC licensed images](https://github.com/godaddy/coblocks/pull/1106) in block examples
