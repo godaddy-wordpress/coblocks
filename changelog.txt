@@ -1,4 +1,11 @@
 
+1.17.1 / 2019-11-12
+===================
+
+### Bug Fixes
+* Add server rendered [block's json files](https://github.com/godaddy/coblocks/pull/1121) to build
+* Use external [Wikipedia CC licensed images](https://github.com/godaddy/coblocks/pull/1106) in block examples
+
 1.17.0 / 2019-11-11
 ===================
 
