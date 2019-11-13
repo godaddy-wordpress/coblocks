@@ -23,6 +23,8 @@ import { Component, Fragment } from '@wordpress/element';
 import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
 import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
+import { compose } from '@wordpress/compose';
+import { withSelect, select } from '@wordpress/data';
 
 /**
  * Get settings
@@ -276,6 +278,25 @@ class FormEdit extends Component {
 		setAttributes( { submitButtonText, layout } );
 	}
 
+	componentDidMount() {
+		const {	clientId, checkForInnerBlocks } = this.props;
+		const hasInnerBlocks = () => {
+			const block = checkForInnerBlocks( clientId );
+			let hasBlocks = false;
+			map( block, ( props ) => {
+				if ( typeof( props.innerBlocks !== undefined ) && props.innerBlocks.length > 0 ) {
+					hasBlocks = true;
+				}
+			} );
+			return hasBlocks;
+		};
+		if ( hasInnerBlocks() === true ) {
+			this.setState( {
+				templateSelection: true,
+			} );
+		}
+	}
+
 	render() {
 		const {
 			className,
@@ -378,4 +399,12 @@ class FormEdit extends Component {
 	}
 }
 
-export default FormEdit;
+const applyWithSelect = withSelect( () => {
+	const checkForInnerBlocks = select( 'core/block-editor' ).getBlocksByClientId;
+
+	return {
+		checkForInnerBlocks,
+	};
+} );
+
+export default compose( applyWithSelect )( FormEdit );
