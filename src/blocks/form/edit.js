@@ -38,7 +38,7 @@ wp.api.loadPromise.then( () => {
 const RETRIEVE_KEY_URL = 'https://g.co/recaptcha/v3';
 const HELP_URL = 'https://developers.google.com/recaptcha/docs/v3';
 // Note: Child form blocks are automatically allowed
-const ALLOWED_BLOCKS = [ 'core/heading',	'core/paragraph', 'core/separator', 'core/spacer' ];
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/separator', 'core/spacer' ];
 
 class FormEdit extends Component {
 	constructor() {
