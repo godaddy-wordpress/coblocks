@@ -73,46 +73,48 @@ class FormEdit extends Component {
 			.map( this.getToValidationError )
 			.filter( Boolean );
 
-		settings.on( 'change:coblocks_google_recaptcha_site_key', model => {
-			const recaptchaSiteKey = model.get( 'coblocks_google_recaptcha_site_key' );
-			this.setState( {
-				recaptchaSiteKey: settings.get( 'coblocks_google_recaptcha_site_key' ),
-				isSavedKey: recaptchaSiteKey === '' ? false : true,
+		if ( typeof settings !== 'undefined' ) {
+			settings.on( 'change:coblocks_google_recaptcha_site_key', model => {
+				const recaptchaSiteKey = model.get( 'coblocks_google_recaptcha_site_key' );
+				this.setState( {
+					recaptchaSiteKey: settings.get( 'coblocks_google_recaptcha_site_key' ),
+					isSavedKey: recaptchaSiteKey === '' ? false : true,
+				} );
 			} );
-		} );
 
-		settings.on( 'change:coblocks_google_recaptcha_secret_key', model => {
-			const recaptchaSecretKey = model.get(
-				'coblocks_google_recaptcha_secret_key'
-			);
-			this.setState( {
-				recaptchaSecretKey: settings.get(
+			settings.on( 'change:coblocks_google_recaptcha_secret_key', model => {
+				const recaptchaSecretKey = model.get(
 					'coblocks_google_recaptcha_secret_key'
-				),
-				isSavedKey: recaptchaSecretKey === '' ? false : true,
+				);
+				this.setState( {
+					recaptchaSecretKey: settings.get(
+						'coblocks_google_recaptcha_secret_key'
+					),
+					isSavedKey: recaptchaSecretKey === '' ? false : true,
+				} );
 			} );
-		} );
 
-		settings.fetch().then( response => {
-			this.setState( {
-				recaptchaSiteKey: response.coblocks_google_recaptcha_site_key,
+			settings.fetch().then( response => {
+				this.setState( {
+					recaptchaSiteKey: response.coblocks_google_recaptcha_site_key,
+				} );
+				if ( this.state.recaptchaSiteKey && this.state.recaptchaSiteKey !== '' ) {
+					this.setState( { isSavedKey: true } );
+				}
 			} );
-			if ( this.state.recaptchaSiteKey && this.state.recaptchaSiteKey !== '' ) {
-				this.setState( { isSavedKey: true } );
-			}
-		} );
 
-		settings.fetch().then( response => {
-			this.setState( {
-				recaptchaSecretKey: response.coblocks_google_recaptcha_secret_key,
-			} );
-			if (
-				this.state.recaptchaSecretKey &&
+			settings.fetch().then( response => {
+				this.setState( {
+					recaptchaSecretKey: response.coblocks_google_recaptcha_secret_key,
+				} );
+				if (
+					this.state.recaptchaSecretKey &&
 				this.state.recaptchaSecretKey !== ''
-			) {
-				this.setState( { isSavedKey: true } );
-			}
-		} );
+				) {
+					this.setState( { isSavedKey: true } );
+				}
+			} );
+		}
 	}
 
 	onChangeSubject( subject ) {
@@ -284,7 +286,7 @@ class FormEdit extends Component {
 			const block = checkForInnerBlocks( clientId );
 			let hasBlocks = false;
 			map( block, ( props ) => {
-				if ( ( typeof props.innerBlocks !== undefined ) && props.innerBlocks.length > 0 ) {
+				if ( ( typeof props.innerBlocks !== 'undefined' ) && props.innerBlocks.length > 0 ) {
 					hasBlocks = true;
 				}
 			} );
