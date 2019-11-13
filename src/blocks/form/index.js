@@ -36,7 +36,6 @@ const metadata = {
 		},
 		submitButtonText: {
 			type: 'string',
-			default: __( 'Submit', 'coblocks' ),
 		},
 		customBackgroundButtonColor: {
 			type: 'string',

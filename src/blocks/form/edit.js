@@ -6,33 +6,23 @@
 import classnames from 'classnames';
 import emailValidator from 'email-validator';
 import map from 'lodash/map';
+import isEqual from 'lodash/isEqual';
 
 /**
  * Internal dependencies
  */
 import Notice from './notice';
 import SubmitButton from './submit-button';
-import { TEMPLATE_OPTIONS } from './layouts';
+import { TEMPLATE_OPTIONS, ALLOWED_BLOCKS } from './layouts';
 
 /**
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { Placeholder, IconButton, ButtonGroup, Button, PanelBody, TextControl, ExternalLink, Tooltip } from '@wordpress/components';
+import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/components';
 import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
-
-/**
- * Block constants
- */
-// Note: Child form blocks are automatically allowed
-const ALLOWED_BLOCKS = [
-	'core/heading',
-	'core/paragraph',
-	'core/separator',
-	'core/spacer',
-];
 
 /**
  * Get settings
@@ -59,6 +49,7 @@ class FormEdit extends Component {
 		this.hasEmailError = this.hasEmailError.bind( this );
 		this.saveRecaptchaKey = this.saveRecaptchaKey.bind( this );
 		this.removeRecaptchaKey = this.removeRecaptchaKey.bind( this );
+		this.setTemplate = this.setTemplate.bind( this );
 
 		this.state = {
 			toError: error && error.length ? error : null,
@@ -268,10 +259,21 @@ class FormEdit extends Component {
 		return fieldEmailError && fieldEmailError.length > 0;
 	}
 
+	setTemplate( layout ) {
+		const { setAttributes } = this.props;
+		let submitButtonText;
+		map( TEMPLATE_OPTIONS, ( elem ) => {
+			if ( isEqual( elem.template, layout ) ) {
+				submitButtonText = elem.submitButtonText;
+			}
+		} );
+		this.setState( { templateSelection: true } );
+		setAttributes( { submitButtonText, layout } );
+	}
+
 	render() {
 		const {
 			className,
-			setAttributes,
 			attributes,
 		} = this.props;
 
@@ -281,55 +283,6 @@ class FormEdit extends Component {
 			className,
 			'coblocks-form',
 		);
-
-		if ( ! this.state.templateSelection ) {
-			return (
-				<Fragment>
-					<Placeholder
-						key="placeholder"
-						// icon={ <BlockIcon icon={ columns ? rowIcons.layout : rowIcons.row } /> }
-						label={ __( 'From Templates', 'coblocks' ) }
-						instructions={ __( 'Select the template that fits your needs.', 'coblocks' ) }
-						className={ 'components-coblocks-visual-dropdown' }
-					>
-						<Fragment>
-							<ButtonGroup aria-label={ __( 'Select Row Layout', 'coblocks' ) }>
-								<IconButton
-									icon="exit"
-									className="components-coblocks-visual-dropdown__back"
-									onClick={ () => {
-										setAttributes( {
-											columns: null,
-										} );
-										this.setState( { templateSelection: false } );
-									} }
-									label={ __( 'Back to Columns', 'coblocks' ) }
-								/>
-								{ map( TEMPLATE_OPTIONS, ( { template, title, icon } ) => (
-									<Tooltip text={ title }>
-										<div className="components-coblocks-visual-dropdown__button-wrapper">
-											<Button
-												key={ title }
-												className="components-coblocks-visual-dropdown__button"
-												isSmall
-												onClick={ () => {
-													setAttributes( {
-														layout: template,
-													} );
-													this.setState( { templateSelection: true } );
-												} }
-											>
-												{ icon }
-											</Button>
-										</div>
-									</Tooltip>
-								) ) }
-							</ButtonGroup>
-						</Fragment>
-					</Placeholder>
-				</Fragment>
-			);
-		}
 
 		return (
 			<Fragment>
@@ -400,12 +353,17 @@ class FormEdit extends Component {
 				</InspectorControls>
 				<div className={ classes }>
 					<InnerBlocks
+						__experimentalTemplateOptions={ TEMPLATE_OPTIONS }
+						__experimentalOnSelectTemplateOption={ ( chosenTemplate ) => {
+							this.setTemplate( chosenTemplate );
+						} }
+						__experimentalAllowTemplateOptionSkip
+						template={ ! this.state.templateSelection ? null : layout }
 						allowedBlocks={ ALLOWED_BLOCKS }
-						templateInsertUpdatesSelection={ false }
 						renderAppender={ () => null }
-						template={ layout }
+						templateInsertUpdatesSelection={ false }
 					/>
-					<SubmitButton { ...this.props } />
+					{ this.state.templateSelection && <SubmitButton { ...this.props } /> }
 				</div>
 			</Fragment>
 		);
