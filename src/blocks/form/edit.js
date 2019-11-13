@@ -284,7 +284,7 @@ class FormEdit extends Component {
 			const block = checkForInnerBlocks( clientId );
 			let hasBlocks = false;
 			map( block, ( props ) => {
-				if ( ( typeof( props.innerBlocks ) !== undefined ) && props.innerBlocks.length > 0 ) {
+				if ( ( typeof props.innerBlocks !== undefined ) && props.innerBlocks.length > 0 ) {
 					hasBlocks = true;
 				}
 			} );
