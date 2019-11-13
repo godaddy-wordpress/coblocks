@@ -8,10 +8,6 @@ import {
 } from '@wordpress/components';
 
 /**
- * Block constants
- */
-
-/**
  * Template option choices for predefined columns layouts.
  *
  * @constant
@@ -56,12 +52,4 @@ export const TEMPLATE_OPTIONS = [
 		],
 		submitButtonText: __( 'Book Appointment', 'coblocks' ),
 	},
-];
-
-// Note: Child form blocks are automatically allowed
-export const ALLOWED_BLOCKS = [
-	'core/heading',
-	'core/paragraph',
-	'core/separator',
-	'core/spacer',
 ];

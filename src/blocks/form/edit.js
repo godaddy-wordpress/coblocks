@@ -13,7 +13,7 @@ import isEqual from 'lodash/isEqual';
  */
 import Notice from './notice';
 import SubmitButton from './submit-button';
-import { TEMPLATE_OPTIONS, ALLOWED_BLOCKS } from './layouts';
+import { TEMPLATE_OPTIONS } from './layouts';
 
 /**
  * WordPress dependencies
@@ -32,8 +32,13 @@ wp.api.loadPromise.then( () => {
 	settings = new wp.api.models.Settings();
 } );
 
+/**
+ * Block constants
+ */
 const RETRIEVE_KEY_URL = 'https://g.co/recaptcha/v3';
 const HELP_URL = 'https://developers.google.com/recaptcha/docs/v3';
+// Note: Child form blocks are automatically allowed
+const ALLOWED_BLOCKS = [ 'core/heading',	'core/paragraph', 'core/separator', 'core/spacer' ];
 
 class FormEdit extends Component {
 	constructor() {
@@ -355,6 +360,9 @@ class FormEdit extends Component {
 					<InnerBlocks
 						__experimentalTemplateOptions={ TEMPLATE_OPTIONS }
 						__experimentalOnSelectTemplateOption={ ( chosenTemplate ) => {
+							if ( chosenTemplate === undefined ) {
+								chosenTemplate = TEMPLATE_OPTIONS[ 0 ].template;
+							}
 							this.setTemplate( chosenTemplate );
 						} }
 						__experimentalAllowTemplateOptionSkip
