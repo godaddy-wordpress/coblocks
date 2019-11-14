@@ -169,6 +169,9 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 * Fix [Collage Block layouts](https://github.com/godaddy/coblocks/pull/1067) for the TwentyTwenty theme
 * [Scope column styles](https://github.com/godaddy/coblocks/pull/1035) to the Posts block
 
-### 1.17.1
-* Add server rendered [block's json files](https://github.com/godaddy/coblocks/pull/1121) to build
-* Use external [Wikipedia CC licensed images](https://github.com/godaddy/coblocks/pull/1106) in block examples
+### 1.17.2
+* Fix [posts block render loop](https://github.com/godaddy/coblocks/pull/1131)
+* Fix [posts grid not displaying as columns](https://github.com/godaddy/coblocks/pull/1127)
+* [Replace Media Card block MediaPlaceholder icon](https://github.com/godaddy/coblocks/pull/1125) with image/video icon
+* [Remove](https://github.com/godaddy/coblocks/pull/1124) unused example images
+* [Replace](https://github.com/godaddy/coblocks/pull/1119) ... with horizontal ellipsis (…)
