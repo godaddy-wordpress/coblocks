@@ -110,7 +110,7 @@ export class Edit extends Component {
 				<p className={ className } style={ { textAlign: align } }>
 					<RichText
 						tagName="mark"
-						placeholder={ __( 'Add highlighted text...', 'coblocks' ) }
+						placeholder={ __( 'Add highlighted text…', 'coblocks' ) }
 						value={ content }
 						onChange={ ( value ) => setAttributes( { content: value } ) }
 						onMerge={ mergeBlocks }
