@@ -65,7 +65,7 @@ Need help? This is a developer's portal for CoBlocks and should not be used for 
 
 ## Contributions
 
-Thank you for thinking about contributing to CoBlocks plugin! If you're unsure of anything, know that you're 💯 welcome to submit an issue or pull request on any topic. The worst that can happen is that you'll be politely directed to the best location to ask your question or to change something in your pull request. We appreciate any sort of contribution and don't want a wall of rules to get in the way of that.
+Thank you for thinking about contributing to CoBlocks plugin! If you're unsure of anything, know that you're 💯 welcome to submit an issue or pull request on any topic. The worst that can happen is that you'll be politely directed to the best location to ask your question or to change something in your pull request. We appreciate any and all contributions and don't want a wall of rules to get in the way of that.
 
 Before contributing, please read the [guidelines for contributing](https://github.com/godaddy/coblocks/blob/master/.github/CONTRIBUTING.md) to CoBlocks. Anyone is welcome to contribute. If you find a 🐞 or an issue, [create an issue](https://github.com/godaddy/coblocks/issues/new). Here are ways to contribute:
 
