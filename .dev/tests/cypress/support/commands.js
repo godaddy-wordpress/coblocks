@@ -1,8 +1,18 @@
-beforeEach( function() {
-  Cypress.Cookies.preserveOnce( 'wordpress_test_cookie' );
-  Cypress.Cookies.preserveOnce( 'wporg_locale' );
-  Cypress.Cookies.preserveOnce( 'wporg_logged_in' );
-  Cypress.Cookies.preserveOnce( 'wporg_sec' );
+import { loginToSite, createNewPost, disableGutenbergTips } from '../helpers';
+
+before( function() {
+  var specFile  = Cypress.spec['name'],
+      fileBase  = ( specFile.split( '/' ).pop().replace( '.js', '' ) ),
+      blockName = fileBase.charAt( 0 ).toUpperCase() + fileBase.slice( 1 );
+
+  loginToSite();
+  createNewPost( blockName );
+  disableGutenbergTips();
+} );
+
+// Maintain WordPress logged in state
+Cypress.Cookies.defaults( {
+  whitelist: /wordpress_.*/
 } );
 
 // Custom uploadFile command

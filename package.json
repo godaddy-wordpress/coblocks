@@ -25,7 +25,8 @@
 		"json2po": "cd languages && find . -name \\*.json ! -name 'coblocks*.json' -execdir sh -c '../.dev/bin/json2po coblocks.json \"$0\" coblocks-`basename $0 .json`.po' '{}' \\;",
 		"po2mo": "cd languages && find . -name \\*.po -execdir sh -c 'msgfmt \"$0\" -o `basename $0 .po`.mo' '{}' \\;",
 		"po2jed": "cd languages && find . -name \\*.po -execdir sh -c 'po2json \"$0\" `basename $0 .po`-coblocks-editor.json -f jed' '{}' \\;",
-		"deploy-i18n": "./node_modules/.bin/cypress run -s './.dev/tests/cypress/integration/deploy-translations.js'"
+		"deploy-i18n": "./node_modules/.bin/cypress run -s './.dev/tests/cypress/integration/deploy-translations.js'",
+		"test-e2e": "./node_modules/.bin/cypress run --spec '.dev/tests/cypress/integration/block-tests/**/*'"
 	},
 	"locales": {
 		"da_DK": "Dansk",
@@ -80,7 +81,7 @@
 		"core-js": "^3.1.4",
 		"cross-env": "^5.0.1",
 		"cross-spawn": "^5.1.0",
-		"cypress": "^3.4.1",
+		"cypress": "^3.6.1",
 		"delete-empty": "^2.0.0",
 		"email-validator": "2.0.4",
 		"eslint": "^4.19.1",
