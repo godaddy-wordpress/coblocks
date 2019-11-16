@@ -133,6 +133,7 @@ jobs:
     docker:
       - image: circleci/php:latest-node-browsers-legacy
       - image: circleci/mysql:5.7
+      - image: cypress/browsers:latest
     steps:
       - checkout
       - run:
@@ -170,7 +171,10 @@ jobs:
           path: /tmp/wordpress
       - run:
           name: "Run end to end tests (Cypress.io)"
-          command: npm run test-e2e
+          command: |
+            touch wp_creds.json
+            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > wp_creds.json
+            npm run test-e2e
           path: /tmp/wordpress/wp-content/plugins/coblocks
       # - store_artifacts:
       #     path: /tmp/artifacts/code-coverage/
