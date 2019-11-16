@@ -12,10 +12,10 @@ workflows:
       #     filters:
       #       tags:
       #         only: /.*/
-      - jest:
-          filters:
-            tags:
-              only: /.*/
+      # - jest:
+      #     filters:
+      #       tags:
+      #         only: /.*/
       - e2e:
           filters:
             tags:
@@ -131,8 +131,8 @@ jobs:
 
   e2e:
     docker:
-      - image: circleci/php:7.2
-      - image: circleci/mysql:5.7
+      - image: circleci/php:latest-node-browsers-legacy
+      - image: circleci/mysql:latest
     steps:
       - checkout
       - run: echo 127.0.0.1 http://coblocks.test | sudo tee -a /etc/hosts
