@@ -44,7 +44,7 @@ export function loginToSite() {
 export function createNewPost( blockName ) {
 
   cy.visit( testURL + '/wp-admin/post-new.php?post_type=page' );
-  disableGutenbergTips();
+  disableGutenbergFeatures();
   cy.get( 'textarea.editor-post-title__input' )
     .type( 'CoBlocks ' + blockName + ' Tests' );
 
@@ -53,12 +53,13 @@ export function createNewPost( blockName ) {
 /**
  * Disable Gutenberg Tips
  */
-export function disableGutenbergTips() {
+export function disableGutenbergFeatures() {
   cy.window().then( ( win ) => {
     if ( ! win.wp.data.select('core/nux').areTipsEnabled() ) {
       return;
     }
     win.wp.data.dispatch( 'core/nux' ).disableTips();
+    win.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
   } );
 }
 
@@ -89,21 +90,10 @@ export function addCoBlocksBlockToPage( blockID ) {
  * From inside the WordPress editor open the CoBlocks Gutenberg editor panel
  */
 export function savePage() {
-
-  cy.get( '.edit-post-header__settings' ).then( ( $headerSettingsBar ) => {
-    if ( $headerSettingsBar.find( 'button.is-primary' ).length ) {
-      cy.get( '.edit-post-header__settings button.is-primary' ).then( ( $publishBtn ) => {
-        $publishBtn.click();
-        if ( $publishBtn.text( 'Publish' ) ) {
-          cy.get( '.editor-post-publish-panel button.is-primary' )
-            .click();
-          cy.get( '.components-snackbar__content' ).contains( 'Page published' );
-        } else { // Update
-          cy.get( '.components-snackbar__content' ).contains( 'Page updated' );
-        }
-      } );
-    }
-  } );
+  cy.get( '.edit-post-header__settings button.is-primary' ).click();
+  cy.get( '.components-snackbar-list__notice-container' ).should( 'be.visible' );
+  // Reload the page to ensure that we're not hitting any block errors
+  cy.reload();
 }
 
 /**
@@ -111,7 +101,7 @@ export function savePage() {
  */
 export function checkForBlockErrors( blockID = '' ) {
   cy.get( '#editor' ).then( ( $editor ) => {
-    disableGutenbergTips();
+    disableGutenbergFeatures();
     cy.get( '.block-editor-warning' ).should( 'not.exist' );
     if ( ! blockID.length ) {
       return;
@@ -124,8 +114,16 @@ export function checkForBlockErrors( blockID = '' ) {
  * View the currently edited page on the front of site
  */
 export function viewPage() {
-  cy.get( '#wp-admin-bar-view' )
-    .click();
+  cy.get( '#wpadminbar' ).then( ( $adminBar ) => {
+    if ( Cypress.$( $adminBar ).find( '#wp-admin-bar-view' ).length ) {
+      cy.get( '#wp-admin-bar-view' )
+        .click();
+    }
+    if ( Cypress.$( $adminBar ).find( '#wp-admin-bar-preview' ).length ) {
+      cy.get( '#wp-admin-bar-view' )
+        .click();
+    }
+  } );
 }
 
 /**
@@ -134,4 +132,10 @@ export function viewPage() {
 export function editPage() {
   cy.get( '#wp-admin-bar-edit' )
     .click();
+}
+
+export function clearBlocks() {
+  cy.window().then( ( win ) => {
+    win.wp.data.dispatch( 'core/editor' ).resetBlocks( [] );
+  } );
 }

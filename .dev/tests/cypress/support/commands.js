@@ -1,4 +1,4 @@
-import { loginToSite, createNewPost, disableGutenbergTips } from '../helpers';
+import { loginToSite, createNewPost, disableGutenbergFeatures } from '../helpers';
 
 before( function() {
   var specFile  = Cypress.spec['name'],
@@ -7,7 +7,7 @@ before( function() {
 
   loginToSite();
   createNewPost( blockName );
-  disableGutenbergTips();
+  disableGutenbergFeatures();
 } );
 
 // Maintain WordPress logged in state
