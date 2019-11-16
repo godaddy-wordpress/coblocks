@@ -1,7 +1,5 @@
 workflows:
   version: 2.1
-  orbs:
-    cypress: cypress-io/cypress@1
   main:
     jobs:
       # Support PHP Versions
@@ -170,6 +168,11 @@ jobs:
             wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass=''
             wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email
           path: /tmp/wordpress
+      - run:
+          name: "Install WordPress"
+          command: sudo wp server --host=0.0.0.0 --port=80 --allow-root
+          path: /tmp/wordpress
+          background: true
       - run:
           name: "Run end to end tests (Cypress.io)"
           command: |
