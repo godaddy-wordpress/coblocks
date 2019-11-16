@@ -130,10 +130,11 @@ jobs:
           path: /tmp/artifacts/code-coverage/
 
   e2e:
+    orbs:
+      cypress: cypress-io/cypress@1
     docker:
       - image: circleci/php:latest-node-browsers-legacy
       - image: circleci/mysql:5.7
-      - image: cypress/browsers:latest
     steps:
       - checkout
       - run:
