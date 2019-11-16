@@ -137,8 +137,7 @@ jobs:
       - checkout
       - run:
           name: Disable xdebug
-          command: |
-              sudo sed -i 's/^zend_extension/;zend_extension/g' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - run:
           name: Update hosts
           command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
@@ -194,7 +193,6 @@ jobs:
             touch wp_creds.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > wp_creds.json
             npm run test-e2e
-          path: /tmp/wordpress/wp-content/plugins/coblocks
       # - store_artifacts:
       #     path: /tmp/artifacts/code-coverage/
       #     destination: phpunit-coverage
