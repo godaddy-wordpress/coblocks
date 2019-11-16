@@ -131,10 +131,14 @@ jobs:
 
   e2e:
     docker:
-      - image: circleci/php:7.2-node-browsers-legacy
+      - image: circleci/php:latest-node-browsers-legacy
       - image: circleci/mysql:5.7
     steps:
       - checkout
+      - run:
+        name: Disable xdebug
+        command: |
+            sudo sed -i 's/^zend_extension/;zend_extension/g' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - run:
           name: Update hosts
           command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
