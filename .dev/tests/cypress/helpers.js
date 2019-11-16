@@ -93,7 +93,7 @@ export function savePage() {
   cy.get( '.edit-post-header__settings button.is-primary' ).click();
   cy.get( '.components-snackbar-list__notice-container' ).should( 'be.visible' );
   // Reload the page to ensure that we're not hitting any block errors
-  cy.wait( 1 ).reload();
+  cy.reload();
 }
 
 /**
@@ -115,13 +115,12 @@ export function checkForBlockErrors( blockID = '' ) {
  */
 export function viewPage() {
   cy.get( '#wpadminbar' ).then( ( $adminBar ) => {
-    if ( Cypress.$( $adminBar ).find( '#wp-admin-bar-view' ).length ) {
-      cy.get( '#wp-admin-bar-view' )
-        .click();
+    if ( Cypress.$( '#wp-admin-bar-view' ).length ) {
+      alert( Cypress.$( '#wp-admin-bar-view a' ).attr( 'href' ) );
+      cy.visit( Cypress.$( '#wp-admin-bar-view a' ).attr( 'href' ) );
     }
-    if ( Cypress.$( $adminBar ).find( '#wp-admin-bar-preview' ).length ) {
-      cy.get( '#wp-admin-bar-preview' )
-        .click();
+    if ( Cypress.$( '#wp-admin-bar-preview' ).length ) {
+      cy.visit( Cypress.$( '#wp-admin-bar-preview a' ).attr( 'href' ) );
     }
   } );
 }
