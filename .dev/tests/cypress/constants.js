@@ -7,7 +7,10 @@ try {
   wpUsername  = wpCreds.wpUsername;
   wpPassword  = wpCreds.wpPassword
   testURL     = wpCreds.testURL;
-} catch ( ex ) {
+} catch ( error ) {
+  if ( 'MODULE_NOT_FOUND' !== error.code ) {
+    throw error;
+  }
   wpUsername = 'admin';
   wpPassword = 'password'
   testURL    = 'http://coblocks.test';
