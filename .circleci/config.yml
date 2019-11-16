@@ -141,8 +141,14 @@ jobs:
       - run:
           name: Update npm
           command: sudo npm install -g npm@latest
+      - run:
+          name: Install Grunt.js
+          command: sudo npm install -g grunt-cli
       - restore_cache:
           key: e2e-dependency-cache--{{ checksum "package.json" }}
+      - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
       - run:
           name: Install node packages
           command: npm install
@@ -155,13 +161,17 @@ jobs:
           name: "Install Dependencies"
           command: |
             bash .dev/bin/install-dependencies.sh
-            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: Install WPCLI
           command: |
             curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
             chmod +x wp-cli.phar
             sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
+          name: Build the plugin
+          command: |
+            grunt build
+            cp -a ./build/coblocks/ /tmp/wordpress/wp-content/plugins/
       - run:
           name: "Install WordPress"
           command: |
