@@ -93,7 +93,7 @@ export function savePage() {
   cy.get( '.edit-post-header__settings button.is-primary' ).click();
   cy.get( '.components-snackbar-list__notice-container' ).should( 'be.visible' );
   // Reload the page to ensure that we're not hitting any block errors
-  cy.reload();
+  cy.wait( 1 ).reload();
 }
 
 /**
