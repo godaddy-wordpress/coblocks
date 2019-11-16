@@ -169,7 +169,7 @@ jobs:
           path: /tmp/wordpress
       - run:
           name: "Run end to end tests (Cypress.io)"
-          command: npx run test-e2e
+          command: npm run test-e2e
           path: /tmp/wordpress/wp-content/plugins/coblocks
       # - store_artifacts:
       #     path: /tmp/artifacts/code-coverage/
