@@ -132,10 +132,12 @@ jobs:
   e2e:
     docker:
       - image: circleci/php:latest-node-browsers-legacy
-      - image: circleci/mysql:latest
+      - image: circleci/mysql:5.7
     steps:
       - checkout
-      - run: echo 127.0.0.1 http://coblocks.test | sudo tee -a /etc/hosts
+      - run:
+          name: Update hosts
+          command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
       - run:
           name: Update npm
           command: sudo npm install -g npm@latest
