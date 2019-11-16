@@ -116,7 +116,6 @@ export function checkForBlockErrors( blockID = '' ) {
 export function viewPage() {
   cy.get( '#wpadminbar' ).then( ( $adminBar ) => {
     if ( Cypress.$( '#wp-admin-bar-view' ).length ) {
-      alert( Cypress.$( '#wp-admin-bar-view a' ).attr( 'href' ) );
       cy.visit( Cypress.$( '#wp-admin-bar-view a' ).attr( 'href' ) );
     }
     if ( Cypress.$( '#wp-admin-bar-preview' ).length ) {
