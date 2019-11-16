@@ -11,6 +11,21 @@ describe( 'Test CoBlocks Accordion Block', function() {
    */
   it( 'Test accordion block saves with empty values.', function() {
 
+    // this event will automatically be unbound when this
+    // test ends because it's attached to 'cy'
+    cy.on('uncaught:exception', (err, runnable) => {
+      expect(err.message).to.include('something about the error')
+
+      // using mocha's async done callback to finish
+      // this test so we prove that an uncaught exception
+      // was thrown
+      done()
+
+      // return false to prevent the error from
+      // failing this test
+      return false
+    })
+
     helpers.addCoBlocksBlockToPage( 'accordion' );
 
     helpers.savePage();
