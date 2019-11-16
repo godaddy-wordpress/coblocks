@@ -136,22 +136,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Disable xdebug
-          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-      - run:
           name: Update hosts
           command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
       - run:
           name: Update npm
           command: sudo npm install -g npm@latest
-      - run:
-          name: Install Grunt.js
-          command: sudo npm install -g grunt-cli
       - restore_cache:
           key: e2e-dependency-cache--{{ checksum "package.json" }}
-      - run:
-          name: Install gettext
-          command: sudo apt-get install gettext
       - run:
           name: Install node packages
           command: npm install
@@ -164,17 +155,14 @@ jobs:
           name: "Install Dependencies"
           command: |
             bash .dev/bin/install-dependencies.sh
+            npm run build
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: Install WPCLI
           command: |
             curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
             chmod +x wp-cli.phar
             sudo mv wp-cli.phar /usr/local/bin/wp
-      - run:
-          name: Build the plugin
-          command: |
-            grunt build
-            cp -a ./build/coblocks/ /tmp/wordpress/wp-content/plugins/
       - run:
           name: "Install WordPress"
           command: |
@@ -193,6 +181,7 @@ jobs:
             touch wp_creds.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > wp_creds.json
             npm run test-e2e
+          path: /tmp/wordpress/wp-content/plugins/coblocks
       # - store_artifacts:
       #     path: /tmp/artifacts/code-coverage/
       #     destination: phpunit-coverage
