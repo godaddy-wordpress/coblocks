@@ -116,10 +116,8 @@ export function checkForBlockErrors( blockID = '' ) {
 export function viewPage() {
   cy.get( '#wpadminbar' ).then( ( $adminBar ) => {
     if ( Cypress.$( '#wp-admin-bar-view' ).length ) {
-      cy.visit( Cypress.$( '#wp-admin-bar-view a' ).attr( 'href' ) );
-    }
-    if ( Cypress.$( '#wp-admin-bar-preview' ).length ) {
-      cy.visit( Cypress.$( '#wp-admin-bar-preview a' ).attr( 'href' ) );
+      cy.get( '#wp-admin-bar-view' )
+        .click();
     }
   } );
 }
