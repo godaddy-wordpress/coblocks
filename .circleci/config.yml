@@ -131,7 +131,7 @@ jobs:
 
   e2e:
     docker:
-      - image: circleci/php:latest-node-browsers-legacy
+      - image: circleci/php:7.2-node-browsers-legacy
       - image: circleci/mysql:5.7
     steps:
       - checkout
