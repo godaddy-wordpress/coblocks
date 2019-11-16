@@ -142,13 +142,14 @@ jobs:
           name: Update npm
           command: sudo npm install -g npm@latest
       - restore_cache:
-          key: e2e-dependency-cache-{{ checksum "package.json" }}
+          key: e2e-dependency-cache--{{ checksum "package.json" }}
       - run:
           name: Install node packages
           command: npm install
       - save_cache:
-          key: e2e-dependency-cache-{{ checksum "package.json" }}
+          key: e2e-dependency-cache--{{ checksum "package.json" }}
           paths:
+            - node_modules
             - ~/.cache
       - run:
           name: "Install Dependencies"

@@ -1,5 +1,4 @@
 {
-  "modifyObstructiveCode": false,
   "chromeWebSecurity": false,
   "fixturesFolder": "languages",
   "integrationFolder": ".dev/tests/cypress/integration",
