@@ -155,7 +155,6 @@ jobs:
           name: "Install Dependencies"
           command: |
             bash .dev/bin/install-dependencies.sh
-            npm run build
             cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
       - run:
           name: Install WPCLI
@@ -163,6 +162,11 @@ jobs:
             curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
             chmod +x wp-cli.phar
             sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
+          name: Build the plugin
+          command: |
+            ./node_modules/.bin/grunt build
+            cp -a ./build/coblocks /tmp/wordpress/wp-content/plugins/
       - run:
           name: "Install WordPress"
           command: |

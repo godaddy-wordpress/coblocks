@@ -120,7 +120,7 @@ export function viewPage() {
         .click();
     }
     if ( Cypress.$( $adminBar ).find( '#wp-admin-bar-preview' ).length ) {
-      cy.get( '#wp-admin-bar-view' )
+      cy.get( '#wp-admin-bar-preview' )
         .click();
     }
   } );
