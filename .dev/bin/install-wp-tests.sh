@@ -150,6 +150,11 @@ install_db() {
 
 	# create database
 	mysqladmin create $DB_NAME --user="$DB_USER" --password="$DB_PASS"$EXTRA
+
+	if [ "$CIRCLE_JOB" == 'e2e' ]; then
+		# create the e2e test database
+		mysqladmin create coblocks --user="$DB_USER" --password="$DB_PASS"$EXTRA
+	fi
 }
 
 install_wp

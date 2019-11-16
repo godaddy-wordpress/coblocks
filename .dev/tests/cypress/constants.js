@@ -8,9 +8,9 @@ try {
   wpPassword  = wpCreds.wpPassword
   testURL     = wpCreds.testURL;
 } catch ( ex ) {
-  wpUsername = 'username';
+  wpUsername = 'admin';
   wpPassword = 'password'
-  testURL    = 'https://coblocks.test';
+  testURL    = 'http://coblocks.test';
 }
 
 export { wpUsername, wpPassword, testURL };
