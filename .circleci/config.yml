@@ -1,5 +1,7 @@
 workflows:
   version: 2.1
+  orbs:
+    cypress: cypress-io/cypress@1
   main:
     jobs:
       # Support PHP Versions
@@ -130,8 +132,6 @@ jobs:
           path: /tmp/artifacts/code-coverage/
 
   e2e:
-    orbs:
-      cypress: cypress-io/cypress@1
     docker:
       - image: circleci/php:latest-node-browsers-legacy
       - image: circleci/mysql:5.7
