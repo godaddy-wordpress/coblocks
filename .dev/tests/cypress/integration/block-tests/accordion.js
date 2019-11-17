@@ -182,8 +182,8 @@ describe( 'Test CoBlocks Accordion Block', function() {
 
     helpers.editPage();
 
-    cy.get( '.wp-block[data-type="coblocks/accordion-item"]:nth-child(2) p.wp-block-coblocks-accordion-item__title' )
-      .click();
+    cy.get( '.wp-block[data-type="coblocks/accordion-item"]:nth-child(2)' )
+      .click( 'left' );
 
     cy.get( '.editor-block-mover button[aria-label="Move up"]' )
       .click();
