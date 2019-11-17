@@ -8,41 +8,43 @@ import { wpUsername, wpPassword, testURL } from './constants';
  */
 export function loginToSite() {
 
-  cy.document().then( ( doc ) => {
+  cy.get( 'html' ).then( ( $html ) => {
 
-    cy.get( 'html' ).then( ( $html ) => {
+    // Editor page, do nothing.
+    if ( $html.find( '.block-editor-page' ).length ) {
 
-      // Editor page, do nothing.
-      if ( $html.find( '.block-editor-page' ).length ) {
+      return;
 
-        return;
+    } else {
 
-      } else {
+      cy.visit( testURL + '/wp-admin' );
 
-        cy.visit( testURL + '/wp-admin' );
+      cy.wait( 2000 );
 
-        cy.url().then( ( $url ) => {
+      cy.url().then( ( $url ) => {
 
-          if ( $url.includes( '/wp-login.php' ) ) {
+        if ( $url.includes( '/wp-login.php' ) ) {
 
-            cy.get( '#user_login' )
-              .type( wpUsername );
+          cy.get( 'body.js' ).then( ( $body ) => {
 
-            cy.get( '#user_pass' )
-              .type( wpPassword );
+          } );
 
-            cy.get( '#wp-submit' )
-              .click();
+          cy.get( '#user_login' )
+            .type( wpUsername );
 
-            cy.get( '.wrap h1' )
-              .should( 'contain', 'Dashboard' );
-          }
+          cy.get( '#user_pass' )
+            .type( wpPassword );
 
-        } );
+          cy.get( '#wp-submit' )
+            .click();
 
-      }
+          cy.get( '.wrap h1' )
+            .should( 'contain', 'Dashboard' );
+        }
 
-    } );
+      } );
+
+    }
 
   } );
 
