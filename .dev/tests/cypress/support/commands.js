@@ -1,12 +1,8 @@
-import { loginToSite, createNewPost, disableGutenbergFeatures } from '../helpers';
+import { loginToSite, createNewPost, disableGutenbergFeatures, getBlockName } from '../helpers';
 
 before( function() {
-  var specFile  = Cypress.spec['name'],
-      fileBase  = ( specFile.split( '/' ).pop().replace( '.js', '' ) ),
-      blockName = fileBase.charAt( 0 ).toUpperCase() + fileBase.slice( 1 );
-
   loginToSite();
-  createNewPost( blockName );
+  createNewPost();
   disableGutenbergFeatures();
 } );
 
