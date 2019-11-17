@@ -19,15 +19,11 @@ export function loginToSite() {
 
       cy.visit( testURL + '/wp-admin' );
 
-      cy.wait( 2000 );
-
       cy.url().then( ( $url ) => {
 
         if ( $url.includes( '/wp-login.php' ) ) {
 
-          cy.get( 'body.js' ).then( ( $body ) => {
-
-          } );
+          cy.wait( 2000 );
 
           cy.get( '#user_login' )
             .type( wpUsername );
