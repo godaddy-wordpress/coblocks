@@ -224,12 +224,9 @@ class Edit extends Component {
 								</li>
 							);
 						} ) }
-						{ isSelected && (
-							<GalleryUploader { ...this.props }
-								gutter={ gutter }
-								gutterMobile={ gutterMobile }
-							/>
-						) }
+						<li className="coblocks-gallery--item--uploader">
+							<GalleryUploader { ...this.props } />
+						</li>
 					</ul>
 				</div>
 			</Fragment>

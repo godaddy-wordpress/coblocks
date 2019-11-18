@@ -1,178 +1,157 @@
-.editor-block-list__block[data-type="blockgallery/offset"] {
+.editor-block-list__block[data-type="coblocks/gallery-offset"] {
 
-	.blockgallery--item .is-selected::after {
+	.coblocks-gallery--item .is-selected::after {
 		bottom: -0.05em;
 	}
 
-	// // Fixes an issue where figures are set to display 100% if alignfull is set.
-	// .blockgallery--figure {
-	// 	width: auto !important;
-	// }
-
-	// Fix issue where selected images are not wider than the viewport.
-	.coblocks-gallery--item:not(.is-appender) .coblocks-gallery--figure {
-		display: inline-block;
-	}
-
-	.has-fullwidth-images .coblocks-gallery--figure {
-		width: 100% !important;
+	// Fixes an issue where figures are set to display 100% if alignfull is set.
+	.coblocks-gallery--figure {
+		width: auto !important;
 	}
 
 	// Fullwidth upload image button.
-	// .coblocks-gallery--item-uploader {
+	.coblocks-gallery--item-uploader {
 
-	// 	.components-form-file-upload,
-	// 	.components-blockgallery-gallery-item__upload {
-	// 		height: 100%;
-	// 		width: 100%;
-	// 		min-width: 300px;
-	// 	}
-	// }
+		.components-form-file-upload,
+		.components-coblocks-gallery-item__upload {
+			height: 100%;
+			width: 100%;
+			min-width: 300px;
+		}
+	}
 
 	// Captions.
-	// .editor-rich-text {
-	// 	bottom: 0;
-	// 	left: 0;
-	// 	max-height: 100%;
-	// 	overflow-y: auto;
-	// 	position: absolute;
-	// 	right: 0;
-	// 	width: 100%;
+	.editor-rich-text {
+		bottom: 0;
+		left: 0;
+		max-height: 100%;
+		overflow-y: auto;
+		position: absolute;
+		right: 0;
+		width: 100%;
 
-	// 	.editor-rich-text__tinymce {
-	// 		color: inherit;
+		.editor-rich-text__tinymce {
+			color: inherit;
 
-	// 		a {
-	// 			color: inherit;
-	// 		}
+			a {
+				color: inherit;
+			}
 
-	// 		&:not(.mce-content-body) {
-	// 			opacity: 0.6;
-	// 		}
+			&:not(.mce-content-body) {
+				opacity: 0.6;
+			}
 
-	// 		&:focus a[data-mce-selected] {
-	// 			opacity: 0.2;
-	// 		}
-	// 	}
-	// }
+			&:focus a[data-mce-selected] {
+				opacity: 0.2;
+			}
+		}
+	}
 
 	.editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
 		position: relative !important;
 		overflow: hidden;
 	}
 
-	// .is-selected .editor-rich-text {
-	// 	// IE calculates this incorrectly, so leave it to modern browsers.
-	// 	@supports (position: sticky) {
-	// 		bottom: 3px;
-	// 		left: 3px;
-	// 		right: 3px;
-	// 		width: calc(100% - 6px);
-	// 		margin-top: -3px;
-	// 	}
-
-	// 	figcaption {
-	// 		padding-bottom: 5px !important;
-	// 	}
-
-	// 	// Override negative margins so this toolbar isn't hidden by overflow.
-	// 	// Overflow is needed for long captions.
-	// 	.editor-rich-text__inline-toolbar {
-	// 		// top: 0;
-	// 	}
-
-	// 	// Make extra space for the inline toolbar.
-	// 	.editor-rich-text__tinymce {
-	// 		padding-top: 48px;
-	// 	}
-	// }
-}
-
-.has-bricks-grid-sml {
-
-	.components-form-file-upload,
-	.components-blockgallery-gallery-item__upload {
-
-		@media screen and (min-width: 800px) {
-			min-height: 250px !important;
+	.is-selected .editor-rich-text {
+		// IE calculates this incorrectly, so leave it to modern browsers.
+		@supports (position: sticky) {
+			bottom: 3px;
+			left: 3px;
+			right: 3px;
+			width: calc(100% - 6px);
+			margin-top: -3px;
 		}
 
-		@media screen and (min-width: 1200px) {
-			min-height: 300px !important;
+		figcaption {
+			padding-bottom: 5px !important;
+		}
+
+		// Override negative margins so this toolbar isn't hidden by overflow.
+		// Overflow is needed for long captions.
+		.editor-rich-text__inline-toolbar {
+			// top: 0;
+		}
+
+		// Make extra space for the inline toolbar.
+		.editor-rich-text__tinymce {
+			padding-top: 48px;
 		}
 	}
+
+
+.coblocks-gallery {
+    list-style: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0
 }
 
-.has-bricks-grid-med {
-
-	.components-form-file-upload,
-	.components-blockgallery-gallery-item__upload {
-
-		@media screen and (min-width: 700px) {
-			min-height: 250px !important;
-		}
-
-		@media screen and (min-width: 1000px) {
-			min-height: 300px !important;
-		}
-
-		@media screen and (min-width: 1400px) {
-			min-height: 400px !important;
-		}
-	}
+.coblocks-gallery--item {
+    list-style: none !important;
+    margin: 0;
+    padding: 0 !important
 }
 
-.has-bricks-grid-lrg {
-
-	.components-form-file-upload,
-	.components-blockgallery-gallery-item__upload {
-
-		@media screen and (min-width: 300px) {
-			min-height: 180px !important;
-		}
-
-		@media screen and (min-width: 600px) {
-			min-height: 300px !important;
-		}
-
-		@media screen and (min-width: 1000px) {
-			min-height: 350px !important;
-		}
-
-		@media screen and (min-width: 1400px) {
-			min-height: 450px !important;
-		}
-
-		@media screen and (min-width: 1900px) {
-			min-height: 550px !important;
-		}
-	}
+.coblocks-gallery--item figure {
+    margin: 0;
+    position: relative
 }
 
-.has-bricks-grid-xlrg {
+.coblocks-gallery--item img {
+    vertical-align: middle;
+    opacity: 1 !important
+}
 
-	.components-form-file-upload,
-	.components-blockgallery-gallery-item__upload {
+.coblocks-gallery .coblocks-gallery--item figcaption {
+    margin: 0 !important
+}
 
-		@media screen and (min-width: 300px) {
-			min-height: 200px !important;
-		}
+.coblocks-gallery:not(.has-padding) {
+    padding: 0 !important
+}
 
-		@media screen and (min-width: 600px) {
-			min-height: 350px !important;
-		}
+.coblocks-gallery:not(.has-margin) .coblocks-gallery--item {
+    margin: auto !important
+}
 
-		@media screen and (min-width: 1000px) {
-			min-height: 400px !important;
-			min-width: 400px !important;
-		}
+.coblocks-gallery.is-cropped .coblocks-gallery--item a,
+.coblocks-gallery.is-cropped .coblocks-gallery--item img,
+.coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail a,
+.coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail img {
+    width: 100%
+}
 
-		@media screen and (min-width: 1400px) {
-			min-height: 550px !important;
-		}
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+    .coblocks-gallery.is-cropped .coblocks-gallery--item a,
+    .coblocks-gallery.is-cropped .coblocks-gallery--item img,
+    .coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail a,
+    .coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail img {
+        -ms-flex: 1;
+        flex: 1;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover
+    }
+}
 
-		@media screen and (min-width: 1900px) {
-			min-height: 650px !important;
-		}
-	}
+.alignfull ul.coblocks-gallery,
+.alignwide ul.coblocks-gallery {
+    max-width: 100%
+}
+
+.coblocks-gallery--item-thumbnail {
+    list-style: none !important;
+    margin: 0;
+    padding: 0
+}
+
+.coblocks-gallery--item-thumbnail figure {
+    margin: 0;
+    position: relative
+}
+
+.coblocks-gallery--item-thumbnail img {
+    vertical-align: middle
+}
+
 }
