@@ -1,0 +1,54 @@
+.wp-block-blockgallery-offset {
+	text-align: center;
+
+	ul {
+		padding: 0 !important;
+		list-style: none !important;
+	}
+
+	li {
+		display: inline-block;
+		margin: 0 !important;
+		position: relative;
+		text-align: left;
+
+		a {
+			bottom: 0;
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+
+		img {
+			vertical-align: bottom;
+			width: 100%;
+
+			@media screen and (min-width: 300px) {
+				max-height: 140px;
+				width: auto;
+			}
+
+			@media screen and (min-width: 700px) {
+				max-height: 200px;
+			}
+		}
+	}
+
+	figcaption {
+		position: absolute !important;
+		bottom: 0;
+		width: 100%;
+		max-height: 100% !important;
+		overflow: auto;
+		padding: 30px 10px 10px !important;
+		opacity: 1;
+		text-align: center;
+		font-size: 13px;
+		background: linear-gradient(0deg, rgba($color: $black, $alpha: 0.7) 0, rgba($color: $black, $alpha: 0.3) 50%, transparent);
+
+		@media screen and (max-width: 699px) {
+			display: none;
+		}
+	}
+}

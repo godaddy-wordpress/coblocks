@@ -79,6 +79,7 @@ import * as shapeDivider from './blocks/shape-divider';
 import * as share from './blocks/share';
 import * as socialProfiles from './blocks/social-profiles';
 import * as stacked from './blocks/gallery-stacked';
+import * as offset from './blocks/gallery-offset';
 
 /**
  * Function to register an individual block.
@@ -149,6 +150,7 @@ export const registerCoBlocksBlocks = () => {
 		share,
 		socialProfiles,
 		stacked,
+		offset,
 	].forEach( registerBlock );
 };
 
