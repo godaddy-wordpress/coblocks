@@ -11,7 +11,7 @@ describe( 'Test CoBlocks Accordion Block', function() {
   var accordionData = [
     {
       'title': 'What is the best way to contact you?',
-      'text': 'You can reach us by calling (123) 456-789.',
+      'text': 'You can reach us by calling (123) 456-7890.',
     },
     {
       'title': 'What are your hours of operation?',
@@ -45,8 +45,6 @@ describe( 'Test CoBlocks Accordion Block', function() {
    * save and it displays properly without errors.
    */
   it( 'Test accordion block saves and displays correctly.', function() {
-
-    helpers.clearBlocks();
 
     helpers.addCoBlocksBlockToPage();
 
@@ -89,14 +87,12 @@ describe( 'Test CoBlocks Accordion Block', function() {
    */
   it( 'Test accordion block "Display Open" attribute works.', function() {
 
-    helpers.clearBlocks();
-
     helpers.addCoBlocksBlockToPage();
 
     cy.get( '.wp-block-coblocks-accordion-item p.wp-block-coblocks-accordion-item__title' )
       .type( accordionData[0].title );
 
-    helpers.toggleCheckbox( 'Display Open' );
+    helpers.toggleSettingCheckbox( 'Display Open' );
 
     cy.get( '.wp-block-coblocks-accordion-item p.wp-block-paragraph' )
       .type( accordionData[0].text );
@@ -126,8 +122,6 @@ describe( 'Test CoBlocks Accordion Block', function() {
    * Test that multiple accordion items display as expected, including a re-order
    */
   it( 'Test multiple accordion items display as expected.', function() {
-
-    helpers.clearBlocks();
 
     helpers.addCoBlocksBlockToPage();
 
@@ -230,8 +224,6 @@ describe( 'Test CoBlocks Accordion Block', function() {
    */
   it( 'Test the accordion block color settings.', function() {
 
-    helpers.clearBlocks();
-
     helpers.addCoBlocksBlockToPage();
 
     cy.get( '.wp-block-coblocks-accordion-item p.wp-block-coblocks-accordion-item__title' )
@@ -279,11 +271,9 @@ describe( 'Test CoBlocks Accordion Block', function() {
   } );
 
   /**
-   * Test the accordion block content text settings
+   * Test the accordion block content font settings
    */
   it( 'Test the accordion block text settings.', function() {
-
-    helpers.clearBlocks();
 
     helpers.addCoBlocksBlockToPage();
 
@@ -299,7 +289,7 @@ describe( 'Test CoBlocks Accordion Block', function() {
     cy.get( '.wp-block-coblocks-accordion-item p.wp-block-paragraph' )
       .should( 'have.class', 'has-large-font-size' );
 
-    helpers.toggleCheckbox( 'Drop Cap' );
+    helpers.toggleSettingCheckbox( 'Drop Cap' );
 
     cy.get( '.wp-block-coblocks-accordion-item p.wp-block-paragraph' )
       .should( 'have.class', 'has-drop-cap' );
@@ -341,8 +331,6 @@ describe( 'Test CoBlocks Accordion Block', function() {
    */
   it( 'Test the accordion block custom classes.', function() {
 
-    helpers.clearBlocks();
-
     helpers.addCoBlocksBlockToPage();
 
     cy.get( '.wp-block-coblocks-accordion-item p.wp-block-coblocks-accordion-item__title' )
@@ -356,6 +344,9 @@ describe( 'Test CoBlocks Accordion Block', function() {
     helpers.savePage();
 
     helpers.checkForBlockErrors();
+
+    cy.get( '.wp-block-coblocks-accordion' )
+      .should( 'have.class', 'my-custom-class' );
 
     helpers.viewPage();
 

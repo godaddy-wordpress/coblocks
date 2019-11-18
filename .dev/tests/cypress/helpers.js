@@ -83,11 +83,19 @@ export function disableGutenbergFeatures() {
 /**
  * From inside the WordPress editor open the CoBlocks Gutenberg editor panel
  *
- * @param string blockID Optional ID to check for in the DOM.
- *               Note: If no blockID is specified, getBlockSlug() attempts to
- *               retreive the block from the spec file.
+ * @param bool   clearEditor Whether or not to clear all blocks on the page before
+ *                           adding a new block to the page.
+ * @param string blockID     Optional ID to check for in the DOM.
+ *                           Note: If no blockID is specified, getBlockSlug()
+ *                           attempts to retreive the block from the spec file.
  */
-export function addCoBlocksBlockToPage( blockID = '' ) {
+export function addCoBlocksBlockToPage( clearEditor = true, blockID = '' ) {
+
+  if ( clearEditor ) {
+
+    clearBlocks();
+
+  }
 
   if ( ! blockID.length ) {
 
@@ -95,17 +103,30 @@ export function addCoBlocksBlockToPage( blockID = '' ) {
 
   }
 
-  cy.get( '.edit-post-visual-editor .block-editor-inserter__toggle' )
+  cy.get( '.block-list-appender .wp-block .block-editor-inserter__toggle' )
     .click();
 
-  cy.contains( 'Most Used' )
-    .click();
+  // Close 'Most Used' panel
+  cy.get( '.components-panel__body-title' )
+    .contains( 'Most Used' )
+    .then( ( $mostUsedPanel ) => {
+      var $parentPanel = Cypress.$( $mostUsedPanel ).closest( 'div.components-panel__body' );
+      if ( $parentPanel.hasClass( 'is-opened' ) ) {
+        $mostUsedPanel.click();
+      }
+    } );
 
+  // Show CoBlocks panel
   cy.get( '.components-panel__body-title' )
     .contains( 'CoBlocks' )
-    .click();
+    .then( ( $mostUsedPanel ) => {
+      var $parentPanel = Cypress.$( $mostUsedPanel ).closest( 'div.components-panel__body' );
+      if ( ! $parentPanel.hasClass( 'is-opened' ) ) {
+        $mostUsedPanel.click();
+      }
+    } );
 
-  cy.get( '.editor-block-list-item-coblocks-' + blockID )
+  cy.get( '.components-panel__body.is-opened .editor-block-list-item-coblocks-' + blockID )
     .click();
 
   // Make sure the block was added to our page
@@ -231,15 +252,7 @@ export function getBlockSlug() {
  */
 export function setColorSetting( settingName, hexColor ) {
 
-  cy.get( '.editor-panel-color-settings' ).then( ( $panelTop ) => {
-    if ( ! $panelTop.hasClass( 'is-opened' ) ) {
-      cy.get( '.editor-panel-color-settings' )
-        .click();
-
-      cy.get( '.editor-panel-color-settings .block-editor-color-palette-control' )
-        .should( 'be.visible' );
-    }
-  } );
+  openSettingsPanel( 'Color Settings' );
 
   var elementSelector;
 
@@ -263,12 +276,27 @@ export function setColorSetting( settingName, hexColor ) {
 }
 
 /**
+ * Open a certain settings panel in the right hand sidebar of the editor
+ *
+ * @param string panelText The panel label text to open. eg: Color Settings
+ */
+export function openSettingsPanel( panelText ) {
+
+  cy.get( '.components-panel__body-title' ).contains( panelText ).then( ( $panelTop ) => {
+    var $parentPanel = Cypress.$( $panelTop ).closest( 'div.components-panel__body' );
+    if ( ! $parentPanel.hasClass( 'is-opened' ) ) {
+      $panelTop.click();
+    }
+  } );
+
+}
+
+/**
  * Toggle an checkbox in the settings panel of the block editor
  *
- * @param  string checkboxLabelText The checkbox label text. eg:
- * @return {[type]}                   [description]
+ * @param  string checkboxLabelText The checkbox label text. eg: Drop Cap
  */
-export function toggleCheckbox( checkboxLabelText ) {
+export function toggleSettingCheckbox( checkboxLabelText ) {
 
   cy.get( '.components-toggle-control__label' )
     .contains( checkboxLabelText )
