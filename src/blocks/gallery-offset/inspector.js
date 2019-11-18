@@ -26,6 +26,7 @@ class Inspector extends Component {
 		this.setShadowTo = this.setShadowTo.bind( this );
 		this.setSizeControl = this.setSizeControl.bind( this );
 		this.setCaptionStyleTo = this.setCaptionStyleTo.bind( this );
+		this.setFullwidthTo = this.setFullwidthTo.bind( this );
 	}
 
 	setLinkTo( value ) {
@@ -38,6 +39,10 @@ class Inspector extends Component {
 
 	setShadowTo( value ) {
 		this.props.setAttributes( { shadow: value } );
+	}
+
+	setFullwidthTo() {
+		this.props.setAttributes( { fullwidth: ! this.props.attributes.fullwidth, shadow: 'none' } );
 	}
 
 	setSizeControl( value ) {

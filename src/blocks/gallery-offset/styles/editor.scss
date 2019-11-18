@@ -4,79 +4,88 @@
 		bottom: -0.05em;
 	}
 
-	// Fixes an issue where figures are set to display 100% if alignfull is set.
-	.blockgallery--figure {
-		width: auto !important;
+	// // Fixes an issue where figures are set to display 100% if alignfull is set.
+	// .blockgallery--figure {
+	// 	width: auto !important;
+	// }
+
+	// Fix issue where selected images are not wider than the viewport.
+	.coblocks-gallery--item:not(.is-appender) .coblocks-gallery--figure {
+		display: inline-block;
+	}
+
+	.has-fullwidth-images .coblocks-gallery--figure {
+		width: 100% !important;
 	}
 
 	// Fullwidth upload image button.
-	.blockgallery--item-uploader {
+	// .coblocks-gallery--item-uploader {
 
-		.components-form-file-upload,
-		.components-blockgallery-gallery-item__upload {
-			height: 100%;
-			width: 100%;
-			min-width: 300px;
-		}
-	}
+	// 	.components-form-file-upload,
+	// 	.components-blockgallery-gallery-item__upload {
+	// 		height: 100%;
+	// 		width: 100%;
+	// 		min-width: 300px;
+	// 	}
+	// }
 
 	// Captions.
-	.editor-rich-text {
-		bottom: 0;
-		left: 0;
-		max-height: 100%;
-		overflow-y: auto;
-		position: absolute;
-		right: 0;
-		width: 100%;
+	// .editor-rich-text {
+	// 	bottom: 0;
+	// 	left: 0;
+	// 	max-height: 100%;
+	// 	overflow-y: auto;
+	// 	position: absolute;
+	// 	right: 0;
+	// 	width: 100%;
 
-		.editor-rich-text__tinymce {
-			color: inherit;
+	// 	.editor-rich-text__tinymce {
+	// 		color: inherit;
 
-			a {
-				color: inherit;
-			}
+	// 		a {
+	// 			color: inherit;
+	// 		}
 
-			&:not(.mce-content-body) {
-				opacity: 0.6;
-			}
+	// 		&:not(.mce-content-body) {
+	// 			opacity: 0.6;
+	// 		}
 
-			&:focus a[data-mce-selected] {
-				opacity: 0.2;
-			}
-		}
-	}
+	// 		&:focus a[data-mce-selected] {
+	// 			opacity: 0.2;
+	// 		}
+	// 	}
+	// }
 
 	.editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
 		position: relative !important;
 		overflow: hidden;
 	}
 
-	.is-selected .editor-rich-text {
-		// IE calculates this incorrectly, so leave it to modern browsers.
-		@supports (position: sticky) {
-			bottom: 3px;
-			left: 3px;
-			right: 3px;
-			width: calc(100% - 6px);
-			margin-top: -3px;
-		}
+	// .is-selected .editor-rich-text {
+	// 	// IE calculates this incorrectly, so leave it to modern browsers.
+	// 	@supports (position: sticky) {
+	// 		bottom: 3px;
+	// 		left: 3px;
+	// 		right: 3px;
+	// 		width: calc(100% - 6px);
+	// 		margin-top: -3px;
+	// 	}
 
-		figcaption {
-			padding-bottom: 5px !important;
-		}
+	// 	figcaption {
+	// 		padding-bottom: 5px !important;
+	// 	}
 
-		// Override negative margins so this toolbar isn't hidden by overflow.
-		// Overflow is needed for long captions.
-		.editor-rich-text__inline-toolbar {
-			// top: 0;
-		}
+	// 	// Override negative margins so this toolbar isn't hidden by overflow.
+	// 	// Overflow is needed for long captions.
+	// 	.editor-rich-text__inline-toolbar {
+	// 		// top: 0;
+	// 	}
 
-		// Make extra space for the inline toolbar.
-		.editor-rich-text__tinymce {
-			padding-top: 48px;
-		}
-	}
+	// 	// Make extra space for the inline toolbar.
+	// 	.editor-rich-text__tinymce {
+	// 		padding-top: 48px;
+	// 	}
+	// }
 }
 
 .has-bricks-grid-sml {

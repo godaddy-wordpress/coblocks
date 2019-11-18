@@ -136,12 +136,14 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
+			align,
 			captions,
 			contentAlign,
 			gridSize,
 			gutter,
 			gutterMobile,
 			images,
+			fullwidth,
 			linkTo,
 			shadow,
 		} = attributes;
@@ -153,10 +155,12 @@ class Edit extends Component {
 			/>
 		);
 
-		const wrapperClasses = classnames(
+		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
 			`has-bricks-grid-${ gridSize }`,
 			`has-${ contentAlign }-content`, {
+				'has-fullwidth-images': fullwidth,
+				[ `align${ align }` ]: align,
 				'has-margin': gutter > 0,
 				[ `has-gutter-${ gutter }` ]: gutter > 0,
 				[ `has-gutter-mobile-${ gutterMobile }` ]: gutterMobile > 0,
@@ -181,7 +185,7 @@ class Edit extends Component {
 				{ noticeUI }
 				{ dropZone }
 				<div className={ className }>
-					<ul className={ wrapperClasses }>
+					<ul className={ innerClasses }>
 						{ images.map( ( img, index ) => {
 							const ariaLabel = sprintf(
 								/* translators: %1$d is the order number of the image, %2$d is the total number of images */
@@ -191,7 +195,7 @@ class Edit extends Component {
 							);
 
 							return (
-								<li className="blockgallery--item" key={ img.id || img.url }>
+								<li className="coblocks-gallery--item" key={ img.id || img.url }>
 									<GalleryImage
 										url={ img.url }
 										alt={ img.alt }
