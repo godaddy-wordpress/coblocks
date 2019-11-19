@@ -238,7 +238,7 @@ class GalleryCarouselEdit extends Component {
 
 		const carouselGalleryPlaceholder = (
 			<Fragment>
-				{ noticeUI }
+				{ ! hasImages ? noticeUI : null }
 				<GalleryPlaceholder
 					{ ...this.props }
 					label={ __( 'Carousel', 'coblocks' ) }
