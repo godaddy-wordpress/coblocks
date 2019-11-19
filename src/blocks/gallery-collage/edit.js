@@ -16,9 +16,9 @@ import * as helper from './../../utils/helper';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withNotices, DropZone, Spinner, IconButton, Dashicon } from '@wordpress/components';
+import { withNotices, Spinner, IconButton, Dashicon } from '@wordpress/components';
 import { MediaPlaceholder, RichText, URLInput } from '@wordpress/block-editor';
-import { mediaUpload } from '@wordpress/editor';
+import { withSelect } from '@wordpress/data';
 import { isBlobURL } from '@wordpress/blob';
 
 class GalleryCollageEdit extends Component {
@@ -35,7 +35,7 @@ class GalleryCollageEdit extends Component {
 
 		this.setupImageLocations = this.setupImageLocations.bind( this );
 		this.onSelectImage = this.onSelectImage.bind( this );
-		this.uploadImage = this.uploadImage.bind( this );
+		this.onUploadError = this.onUploadError.bind( this );
 		this.replaceImage = this.replaceImage.bind( this );
 		this.removeImage = this.removeImage.bind( this );
 		this.gutterClasses = this.gutterClasses.bind( this );
@@ -86,12 +86,10 @@ class GalleryCollageEdit extends Component {
 		}
 	}
 
-	uploadImage( files, index ) {
-		mediaUpload( {
-			allowedTypes: [ 'image' ],
-			filesList: files,
-			onFileChange: ( [ image ] ) => this.replaceImage( image, index ),
-		} );
+	onUploadError( message ) {
+		const { noticeOperations } = this.props;
+		noticeOperations.removeAllNotices();
+		noticeOperations.createErrorNotice( message );
 	}
 
 	replaceImage( image, index ) {
@@ -134,13 +132,6 @@ class GalleryCollageEdit extends Component {
 		const isSelected = this.props.isSelected && this.state.selectedImage === image.index;
 		const enableCaptions = ! this.props.className.includes( 'is-style-layered' );
 
-		const dropZone = (
-			<DropZone
-				onFilesDrop={ files => this.uploadImage( files, index ) }
-				label={ __( 'Drop image to replace', 'coblocks' ) }
-			/>
-		);
-
 		return (
 			<Fragment>
 				<a onClick={ () => this.onSelectImage( image.index ) }>
@@ -174,7 +165,6 @@ class GalleryCollageEdit extends Component {
 								<IconButton icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ this.saveCustomLink } type="submit" />
 							</form>
 						}
-						{ dropZone }
 						{ isBlobURL( image.url ) && <Spinner /> }
 						<img src={ image.url } alt={ image.alt } />
 						{ enableCaptions && this.props.attributes.captions && ( image.caption || isSelected ) &&
@@ -249,19 +239,27 @@ class GalleryCollageEdit extends Component {
 	}
 
 	renderPlaceholder( index ) {
+		const image = this.props.attributes.images.filter( image => parseInt( image.index ) === parseInt( index ) ).pop() || false;
+		const hasImage = !! image;
+
 		return (
 			<MediaPlaceholder
+				addToGallery={ true }
 				className={ classnames( 'wp-block-coblocks-gallery-collage__figure', {
 					[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
 				} ) }
 				allowedTypes={ [ 'image' ] }
+				disableMediaButtons={ hasImage ? true : false }
+				accept="image/*"
 				multiple={ false }
 				icon={ false }
 				labels={ {
 					title: ' ',
 					instructions: ' ',
 				} }
+
 				onSelect={ image => this.replaceImage( image, index ) }
+				onError={ this.onUploadError }
 			/>
 		);
 	}
@@ -300,7 +298,8 @@ class GalleryCollageEdit extends Component {
 									key={ `image-${ theIndex }` }
 									className={ classnames( 'wp-block-coblocks-gallery-collage__item', this.gutterClasses( index ) ) }
 								>
-									{ !! img.url ? this.renderImage( theIndex ) : this.renderPlaceholder( theIndex ) }
+									{ !! img.url ? this.renderImage( theIndex ) : null }
+									{ this.renderPlaceholder( theIndex ) }
 								</li>
 							);
 						} ) }
@@ -312,5 +311,10 @@ class GalleryCollageEdit extends Component {
 }
 
 export default compose( [
+	withSelect( ( select ) => {
+		const { getSettings } = select( 'core/block-editor' );
+		const { mediaUpload } = getSettings();
+		return { mediaUpload };
+	} ),
 	withNotices,
 ] )( GalleryCollageEdit );
