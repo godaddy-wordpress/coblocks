@@ -7,14 +7,8 @@ import MediaFilterControl from '../../components/media-filter-control';
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
-import { IconButton, Toolbar } from '@wordpress/components';
-import {
-	BlockControls,
-	MediaUpload,
-	MediaUploadCheck,
-} from '@wordpress/block-editor';
+import { Component } from '@wordpress/element';
+import { BlockControls } from '@wordpress/block-editor';
 
 class Controls extends Component {
 	constructor() {
@@ -37,30 +31,9 @@ class Controls extends Component {
 		return (
 			<BlockControls>
 				{ hasImages && (
-					<Fragment>
-						<MediaFilterControl
-							{ ...this.props }
-						/>
-						<Toolbar>
-							<MediaUploadCheck>
-								<MediaUpload
-									onSelect={ this.onSelectImages }
-									allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
-									multiple
-									gallery
-									value={ images.map( ( img ) => img.id ) }
-									render={ ( { open } ) => (
-										<IconButton
-											className="components-toolbar__control"
-											label={ __( 'Edit gallery', 'coblocks' ) }
-											icon="edit"
-											onClick={ open }
-										/>
-									) }
-								/>
-							</MediaUploadCheck>
-						</Toolbar>
-					</Fragment>
+					<MediaFilterControl
+						{ ...this.props }
+					/>
 				) }
 			</BlockControls>
 		);
