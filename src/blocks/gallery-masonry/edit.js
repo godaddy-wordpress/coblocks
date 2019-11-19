@@ -14,7 +14,6 @@ import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
-import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -181,14 +180,15 @@ class GalleryMasonryEdit extends Component {
 			}
 		);
 
+		const masonryGalleryPlaceholder = (
+			<GalleryPlaceholder
+				{ ...this.props }
+				label={ __( 'Masonry', 'coblocks' ) }
+				icon={ icon }
+			/> );
+
 		if ( ! hasImages ) {
-			return (
-				<GalleryPlaceholder
-					{ ...this.props }
-					label={ __( 'Masonry', 'coblocks' ) }
-					icon={ icon }
-				/>
-			);
+			return masonryGalleryPlaceholder;
 		}
 
 		return (
@@ -246,11 +246,9 @@ class GalleryMasonryEdit extends Component {
 									</li>
 								);
 							} ) }
-							<li className="coblocks-gallery--item">
-								<GalleryUploader { ...this.props } />
-							</li>
 						</Masonry>
 					</div>
+					{ masonryGalleryPlaceholder }
 				</div>
 			</Fragment>
 		);
