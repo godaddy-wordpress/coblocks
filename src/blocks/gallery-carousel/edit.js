@@ -13,8 +13,6 @@ import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
-import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
-import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -165,13 +163,6 @@ class GalleryCarouselEdit extends Component {
 
 		const hasImages = !! images.length;
 
-		// An additional dropzone to wrap the entire gallery in.
-		const dropZone = (
-			<GalleryDropZone
-				{ ...this.props }
-			/>
-		);
-
 		const innerClasses = classnames(
 			'is-cropped',
 			...GalleryClasses( attributes ), {
@@ -245,14 +236,18 @@ class GalleryCarouselEdit extends Component {
 			}
 		);
 
-		if ( ! hasImages ) {
-			return (
+		const carouselGalleryPlaceholder = (
+			<Fragment>
+				{ noticeUI }
 				<GalleryPlaceholder
 					{ ...this.props }
 					label={ __( 'Carousel', 'coblocks' ) }
 					icon={ icon }
 				/>
-			);
+			</Fragment> );
+
+		if ( ! hasImages ) {
+			return carouselGalleryPlaceholder;
 		}
 
 		return (
@@ -294,7 +289,6 @@ class GalleryCarouselEdit extends Component {
 						} );
 					} }
 				>
-					{ dropZone }
 					<div className={ className }>
 						<div className={ innerClasses }>
 							<Flickity
@@ -335,20 +329,11 @@ class GalleryCarouselEdit extends Component {
 										</div>
 									);
 								} ) }
-								{ isSelected && (
-									<div className="coblocks-gallery--item">
-										<GalleryUploader { ...this.props }
-											gutter={ gutter }
-											gutterMobile={ gutterMobile }
-											marginRight={ true }
-											marginLeft={ true }
-										/>
-									</div>
-								) }
 							</Flickity>
 						</div>
 					</div>
 				</ResizableBox>
+				{ carouselGalleryPlaceholder }
 				<div className={ className }>
 					<div
 						className={ innerClasses }
