@@ -141,8 +141,6 @@ class GalleryStackedEdit extends Component {
 			lightbox,
 		} = attributes;
 
-		const hasImages = !! images.length;
-
 		const classes = classnames(
 			className, {
 				'has-lightbox': lightbox,
@@ -167,10 +165,6 @@ class GalleryStackedEdit extends Component {
 				icon={ icon }
 			/>
 		);
-
-		if ( ! hasImages ) {
-			return stackedGalleryPlaceholder;
-		}
 
 		return (
 			<Fragment>
