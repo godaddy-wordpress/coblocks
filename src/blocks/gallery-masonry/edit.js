@@ -13,7 +13,6 @@ import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
-import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -153,15 +152,6 @@ class GalleryMasonryEdit extends Component {
 			lightbox,
 		} = attributes;
 
-		const hasImages = !! images.length;
-
-		// An additional dropzone to wrap the entire gallery in.
-		const dropZone = (
-			<GalleryDropZone
-				{ ...this.props }
-			/>
-		);
-
 		const sidebarIsOpened = editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
 
 		const innerClasses = classnames(
@@ -187,10 +177,6 @@ class GalleryMasonryEdit extends Component {
 				icon={ icon }
 			/> );
 
-		if ( ! hasImages ) {
-			return masonryGalleryPlaceholder;
-		}
-
 		return (
 			<Fragment>
 				{ isSelected &&
@@ -206,7 +192,6 @@ class GalleryMasonryEdit extends Component {
 				{ noticeUI }
 				<div className={ className }>
 					<div className={ innerClasses }>
-						{ dropZone }
 						<Masonry
 							elementType={ 'ul' }
 							className={ masonryClasses }
