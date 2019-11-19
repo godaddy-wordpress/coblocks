@@ -87,6 +87,15 @@ class GalleryCollageEdit extends Component {
 		}
 	}
 
+	uploadImage( files, index ) {
+		const { mediaUpload } = this.props;
+		mediaUpload( {
+			allowedTypes: [ 'image' ],
+			filesList: files,
+			onFileChange: ( [ image ] ) => this.replaceImage( image, index ),
+		} );
+	}
+
 	onUploadError( message ) {
 		const { noticeOperations } = this.props;
 		noticeOperations.removeAllNotices();
@@ -122,15 +131,6 @@ class GalleryCollageEdit extends Component {
 		];
 
 		this.setupImageLocations( images );
-	}
-
-	uploadImage( files, index ) {
-		const { mediaUpload } = this.props;
-		mediaUpload( {
-			allowedTypes: [ 'image' ],
-			filesList: files,
-			onFileChange: ( [ image ] ) => this.replaceImage( image, index ),
-		} );
 	}
 
 	saveCustomLink() {
@@ -182,11 +182,7 @@ class GalleryCollageEdit extends Component {
 								<IconButton icon={ this.state.isSaved ? 'saved' : 'editor-break' } label={ this.state.isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ this.saveCustomLink } type="submit" />
 							</form>
 						}
-						<form
-							onSubmit={ ( event ) => event.preventDefault() }>
-							{ dropZone }
-						</form>
-
+						{ dropZone }
 						{ isBlobURL( image.url ) && <Spinner /> }
 						<img src={ image.url } alt={ image.alt } />
 						{ enableCaptions && this.props.attributes.captions && ( image.caption || isSelected ) &&
