@@ -128,3 +128,16 @@
 		max-width: 100%
 	}
 }
+
+.block-editor-block-preview__content .wp-block-coblocks-gallery-offset {
+	ul {
+		list-style-type: none;
+		.coblocks-gallery--item img {
+				max-height: 200px !important;
+		}
+	}
+
+	.coblocks-gallery--item--uploader {
+		display: none;
+	}
+}
