@@ -158,7 +158,6 @@ class Edit extends Component {
 			`has-bricks-grid-${ gridSize }`,
 			`has-${ contentAlign }-content`, {
 				[ `align${ align }` ]: align,
-				// 'has-margin': gutter > 0,
 				[ `has-gutter-${ gutter }` ]: gutter > 0,
 				[ `has-gutter-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
@@ -210,12 +209,10 @@ class Edit extends Component {
 										supportsCaption={ true }
 										imgLink={ img.imgLink }
 										linkTo={ linkTo }
-										// marginBottom={ true }
 										isFirstItem={ index === 0 }
 										isLastItem={ ( index + 1 ) === images.length }
 										onMoveBackward={ this.onMoveBackward( index ) }
 										onMoveForward={ this.onMoveForward( index ) }
-										// verticalMoving={ true }
 										fontSize={ fontSize.size }
 									/>
 								</li>

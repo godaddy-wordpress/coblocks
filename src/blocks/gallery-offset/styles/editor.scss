@@ -5,19 +5,16 @@
 	}
 
 	// Fixes an issue where figures are set to display 100% if alignfull is set.
-	.coblocks-gallery--figure {
+	.coblocks-gallery--figure:not(.components-coblocks-gallery-uploader-wrapper) {
 		width: auto !important;
 	}
 
 	// Fullwidth upload image button.
-	.coblocks-gallery--item-uploader {
-
-		.components-form-file-upload,
-		.components-coblocks-gallery-item__upload {
-			height: 100%;
-			width: 100%;
-			min-width: 300px;
-		}
+	.coblocks-gallery--item--uploader {
+		border: 1px dashed $dark-gray-150;
+		margin-bottom: 0; // Remove unnecessary margin applied to the core appender.
+		outline: none;
+		width: 100%;
 	}
 
 	// Captions.
