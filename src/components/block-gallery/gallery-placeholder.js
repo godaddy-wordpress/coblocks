@@ -15,8 +15,7 @@ import * as helper from './../../utils/helper';
 import { __, sprintf } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { MediaPlaceholder, BlockIcon } from '@wordpress/block-editor';
-import { compose } from '@wordpress/compose';
-import { withSelect } from '@wordpress/data';
+import { mediaUpload } from '@wordpress/editor';
 import { getBlobByURL, isBlobURL, revokeBlobURL } from '@wordpress/blob';
 
 class GalleryPlaceholder extends Component {
@@ -39,7 +38,7 @@ class GalleryPlaceholder extends Component {
 	}
 
 	componentDidMount() {
-		const { attributes, mediaUpload } = this.props;
+		const { attributes } = this.props;
 		const { images } = attributes;
 		if ( every( images, ( { url } ) => isBlobURL( url ) ) ) {
 			const filesList = map( images, ( { url } ) => getBlobByURL( url ) );
@@ -108,10 +107,4 @@ class GalleryPlaceholder extends Component {
 	}
 }
 
-export default compose( [
-	withSelect( ( select ) => {
-		const { getSettings } = select( 'core/block-editor' );
-		const { mediaUpload } = getSettings();
-		return { mediaUpload };
-	} ),
-] )( GalleryPlaceholder );
+export default GalleryPlaceholder;
