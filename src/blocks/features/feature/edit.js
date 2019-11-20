@@ -14,7 +14,7 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
@@ -27,9 +27,31 @@ import { isBlobURL } from '@wordpress/blob';
 const ALLOWED_BLOCKS = [ 'core/button', 'core/paragraph', 'core/heading', 'core/image', 'coblocks/highlight' ];
 
 const TEMPLATE = [
-	[ 'coblocks/icon', { hasContentAlign: false } ],
-	[ 'core/heading', { placeholder: _x( 'Add feature title...', 'content placeholder', 'coblocks' ), content: _x( 'Feature Title', 'content placeholder', 'coblocks' ), level: 4 } ],
-	[ 'core/paragraph', { placeholder: _x( 'Add feature content', 'content placeholder', 'coblocks' ), content: _x( 'This is a feature block that you can use to highlight features.', 'content placeholder', 'coblocks' ) } ],
+	[
+		'coblocks/icon',
+		{
+			hasContentAlign: false,
+		},
+	],
+	[
+		'core/heading',
+		{
+			/* translators: content placeholder */
+			placeholder: __( 'Add feature title…', 'coblocks' ),
+			/* translators: content placeholder */
+			content: __( 'Feature Title', 'coblocks' ),
+			level: 4,
+		},
+	],
+	[
+		'core/paragraph',
+		{
+			/* translators: content placeholder */
+			placeholder: __( 'Add feature content', 'coblocks' ),
+			/* translators: content placeholder */
+			content: __( 'This is a feature block that you can use to highlight features.', 'coblocks' ),
+		},
+	],
 ];
 
 /**

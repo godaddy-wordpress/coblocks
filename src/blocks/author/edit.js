@@ -12,7 +12,7 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { mediaUpload } from '@wordpress/editor';
 import { withSelect, select } from '@wordpress/data';
@@ -63,7 +63,8 @@ class AuthorEdit extends Component {
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.addImage }
-				label={ _x( 'Drop to upload as avatar', 'image to represent the post author', 'coblocks' ) }
+				/* translators: image to represent the post author */
+				label={ __( 'Drop to upload as avatar', 'coblocks' ) }
 			/>
 		);
 
@@ -126,13 +127,14 @@ class AuthorEdit extends Component {
 							tagName="span"
 							className={ `${ className }__name` }
 							placeholder={
-								// translators: placeholder text used for the author name
+								/* translators: placeholder text used for the author name */
 								__( 'Write author name…', 'coblocks' )
 							}
 							value={ name }
 							onChange={ ( nextName ) => {
 								setAttributes( { name: nextName } );
 							} }
+							keepPlaceholderOnFocus={ true }
 						/>
 						<RichText
 							identifier="biography"
@@ -140,16 +142,17 @@ class AuthorEdit extends Component {
 							tagName="p"
 							className={ `${ className }__biography` }
 							placeholder={
-								// translators: placeholder text used for the biography
+								/* translators: placeholder text used for the biography */
 								__( 'Write a biography that distills objective credibility and authority to your readers…', 'coblocks' )
 							}
 							value={ biography }
 							onChange={ ( nextBio ) => {
 								setAttributes( { biography: nextBio } );
 							} }
+							keepPlaceholderOnFocus={ true }
 						/>
 						<InnerBlocks
-							template={ [ [ 'core/button', { placeholder: _x( 'Author link…', 'content placeholder', 'coblocks' ) } ] ] }
+							template={ [ [ 'core/button', { placeholder: /* translators: content placeholder */ __( 'Author link…', 'coblocks' ) } ] ] }
 							templateLock="all"
 							allowedBlocks={ [ 'core/button' ] }
 							templateInsertUpdatesSelection={ false }

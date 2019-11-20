@@ -5,7 +5,8 @@
 		margin-bottom: 3px;
 	}
 
-	.coblocks-field {
+	.coblocks-field,
+	select {
 		margin: 0 0 1.25rem 0;
 		width: 100%;
 
@@ -97,6 +98,17 @@
 
 	.form-errors .form-error-message {
 		color: $alert-red;
+	}
+
+	.coblocks--inline {
+		display: flex;
+		flex-direction: row;
+		flex-flow: row wrap;
+		margin-bottom: 1.25rem;
+
+		label {
+			margin-right: 8px;
+		}
 	}
 }
 

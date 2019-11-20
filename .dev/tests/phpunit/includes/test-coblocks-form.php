@@ -326,6 +326,211 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Test the datepicker script is enqueued
+	 */
+	public function test_field_date_scripts() {
+
+		$this->coblocks_form->render_field_date( [], '' );
+
+		global $wp_scripts;
+
+		$this->assertArrayHasKey( 'coblocks-datepicker', $wp_scripts->registered );
+
+	}
+
+	/**
+	 * Test the date field markup is as expected
+	 */
+	public function test_render_field_date() {
+
+		$this->expectOutputRegex( '/<input type="text" id="date" name="field-date\[value\]" class="coblocks-field coblocks-field--date"  \/>/' );
+
+		echo $this->coblocks_form->render_field_date( [], '' );
+
+	}
+
+	/**
+	 * Test the phone field markup is as expected
+	 */
+	public function test_render_field_phone() {
+
+		$this->expectOutputRegex( '/<input type="tel" id="phone" name="field-phone\[value\]" class="coblocks-field coblocks-field--telephone"  \/>/' );
+
+		echo $this->coblocks_form->render_field_phone( [], '' );
+
+	}
+
+	/**
+	 * Test the radio field markup is as expected, when no options are passed in
+	 */
+	public function test_render_field_radio_empty_options() {
+
+		$this->assertEquals(
+			$this->coblocks_form->render_field_radio(
+				[
+					'options' => [],
+				],
+				''
+			),
+			null
+		);
+
+	}
+
+	/**
+	 * Test the radio field markup is as expected
+	 */
+	public function test_render_field_radio() {
+
+		$this->expectOutputRegex( '/<input type="radio" name="field-choose-one\[value\]" value="Option 2" class="radio"> Option 2/' );
+
+		echo $this->coblocks_form->render_field_radio(
+			[
+				'options' => [
+					'option-1' => 'Option 1',
+					'option-2' => 'Option 2',
+				],
+			],
+			''
+		);
+
+	}
+
+	/**
+	 * Test the inline radio field markup is as expected
+	 */
+	public function test_render_field_radio_inline() {
+
+		$this->expectOutputRegex( '/<div class="coblocks--inline">/' );
+
+		echo $this->coblocks_form->render_field_radio(
+			[
+				'options' => [
+					'option-1' => 'Option 1',
+					'option-2' => 'Option 2',
+				],
+				'isInline' => true,
+			],
+			''
+		);
+
+	}
+
+	/**
+	 * Test the select field markup is as expected, when no options are passed in
+	 */
+	public function test_render_field_select_empty_options() {
+
+		$this->assertEquals(
+			$this->coblocks_form->render_field_select(
+				[
+					'options' => [],
+				],
+				''
+			),
+			null
+		);
+
+	}
+
+	/**
+	 * Test the select field markup is as expected
+	 */
+	public function test_render_field_select() {
+
+		$this->expectOutputRegex( '/<select class="select coblocks-field" name="field-select\[value\]"><option value="Option 1">Option 1<\/option><option value="Option 2">Option 2<\/option><\/select>/' );
+
+		echo $this->coblocks_form->render_field_select(
+			[
+				'options' => [
+					'option-1' => 'Option 1',
+					'option-2' => 'Option 2',
+				],
+			],
+			''
+		);
+
+	}
+
+	/**
+	 * Test the checkbox field markup is as expected, when no options are passed in
+	 */
+	public function test_render_field_checkbox_empty_options() {
+
+		$this->assertEquals(
+			$this->coblocks_form->render_field_checkbox(
+				[
+					'options' => [],
+				],
+				''
+			),
+			null
+		);
+
+	}
+
+	/**
+	 * Test the checkbox field markup is as expected
+	 */
+	public function test_render_field_checkbox() {
+
+		$this->expectOutputRegex( '/<input type="checkbox" name="field-select\[value\]\[\]" value="Option 2" class="checkbox"> Option 2/' );
+
+		echo $this->coblocks_form->render_field_checkbox(
+			[
+				'options' => [
+					'option-1' => 'Option 1',
+					'option-2' => 'Option 2',
+				],
+			],
+			''
+		);
+
+	}
+
+	/**
+	 * Test the inline checkbox field markup is as expected
+	 */
+	public function test_render_field_checkbox_inline() {
+
+		$this->expectOutputRegex( '/<div class="coblocks--inline">/' );
+
+		echo $this->coblocks_form->render_field_checkbox(
+			[
+				'options' => [
+					'option-1' => 'Option 1',
+					'option-2' => 'Option 2',
+				],
+				'isInline' => true,
+			],
+			''
+		);
+
+	}
+
+	/**
+	 * Test the website field markup is as expected
+	 */
+	public function test_render_field_website() {
+
+		$this->expectOutputRegex( '/<input type="url" id="website" name="field-website\[value\]" class="coblocks-field coblocks-field--website"  \/>/' );
+
+		echo $this->coblocks_form->render_field_website( [], '' );
+
+	}
+
+	/**
+	 * Test the hidden field markup is as expected
+	 */
+	public function test_render_field_hidden() {
+
+		$this->expectOutputRegex( '/<input type="hidden" value="" id="hidden" name="field-hidden\[value\]" class="coblocks-field coblocks-field--hidden" \/>/' );
+
+		echo $this->coblocks_form->render_field_hidden( [], '' );
+
+	}
+
+	/**
 	 * Test the field label markup is as expected
 	 */
 	public function test_render_field_label() {

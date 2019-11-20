@@ -187,8 +187,12 @@ class GalleryStackedEdit extends Component {
 				<div className={ classes }>
 					<ul className={ innerClasses }>
 						{ images.map( ( img, index ) => {
-							// translators: %1$d is the order number of the image, %2$d is the total number of images.
-							const ariaLabel = sprintf( __( 'image %1$d of %2$d in gallery', 'coblocks' ), ( index + 1 ), images.length );
+							const ariaLabel = sprintf(
+								/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+								__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+								( index + 1 ),
+								images.length
+							);
 
 							return (
 								<li className="coblocks-gallery--item" key={ img.id || img.url }>

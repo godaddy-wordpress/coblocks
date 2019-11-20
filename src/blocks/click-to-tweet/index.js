@@ -17,7 +17,7 @@ import deprecated from './deprecated';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -25,10 +25,18 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Click to Tweet', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Click to Tweet', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add a quote for readers to tweet via Twitter.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'share', 'block keyword', 'coblocks' ), _x( 'twitter', 'block keyword', 'coblocks' ), 'coblocks' ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'share', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'twitter', 'coblocks' ),
+	],
 	example: {
 		attributes: {
 			content: __( 'The easiest way to promote and advertise your blog, website, and business on Twitter.', 'coblocks' ),

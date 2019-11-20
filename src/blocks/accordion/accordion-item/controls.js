@@ -6,7 +6,7 @@ import icons from './../../../utils/icons';
 /**
  * WordPress dependencies
  */
-import { _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { BlockControls } from '@wordpress/block-editor';
 import { Toolbar } from '@wordpress/components';
@@ -25,7 +25,8 @@ class Controls extends Component {
 		const customControls = [
 			{
 				icon: icons.open,
-				title: _x( 'Display open', 'Toggle label to display the accordion open', 'coblocks' ),
+				/* translators: toggle label to display the accordion open */
+				title: __( 'Display open', 'coblocks' ),
 				onClick: () => setAttributes( { open: ! open } ),
 				isActive: open === true,
 			},

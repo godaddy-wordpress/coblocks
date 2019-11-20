@@ -13,7 +13,7 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies
  */
-import { _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { RichText } from '@wordpress/block-editor';
@@ -91,7 +91,8 @@ class Edit extends Component {
 				>
 					{ ( ! RichText.isEmpty( title ) || isSelected ) && (
 						<RichText
-							placeholder={ _x( 'Write title...', 'Placeholder text for input box', 'coblocks' ) }
+							/* translators: placeholder text for input box */
+							placeholder={ __( 'Write title…', 'coblocks' ) }
 							value={ title }
 							className="wp-block-coblocks-alert__title"
 							onChange={ ( value ) => setAttributes( { title: value } ) }
@@ -99,7 +100,8 @@ class Edit extends Component {
 						/>
 					) }
 					<RichText
-						placeholder={ _x( 'Write text...', 'Placeholder text for input box', 'coblocks' ) }
+						/* translators: placeholder text for input box */
+						placeholder={ __( 'Write text…', 'coblocks' ) }
 						value={ value }
 						className="wp-block-coblocks-alert__text"
 						onChange={ ( value ) => setAttributes( { value: value } ) }

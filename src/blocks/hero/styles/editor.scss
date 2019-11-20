@@ -1,17 +1,3 @@
-:-ms-fullscreen,
-:root .components-coblocks-css-grid-selector {
-	.components-button-group {
-		display: flex;
-		flex-wrap: wrap;
-
-		.components-button {
-			display: table-cell;
-			padding: 18px;
-			width: 50%;
-		}
-	}
-}
-
 .wp-block[data-type="coblocks/hero"] {
 	background: transparent !important;
 
@@ -164,7 +150,6 @@
 		}
 
 		.components-button {
-			background: $light-gray-300;
 			border: 0;
 			border-radius: 0 !important;
 			box-shadow: none;
@@ -175,21 +160,6 @@
 			svg {
 				display: none;
 			}
-
-			&:hover {
-				background: $light-gray-500;
-				box-shadow: inset 0 0 0 1px $dark-gray-500, inset 0 0 0 2px $white;
-			}
-
-			&:active:enabled {
-				background: $light-gray-500;
-				box-shadow: inset 0 0 0 1px $dark-gray-500, inset 0 0 0 2px $white;
-			}
-
-			&:focus:enabled {
-				background: $light-gray-500;
-				box-shadow: inset 0 0 0 1px $dark-gray-500, inset 0 0 0 2px $white;
-			}
 		}
 
 		.is-selected {
@@ -197,10 +167,12 @@
 		}
 
 		.is-selected .components-button {
-			background: $dark-gray-500;
+			background: color(theme(button) shade(6%));
+			text-decoration: none;
 
 			&:focus:enabled {
-				background: $dark-gray-500;
+				background: color(theme(button) shade(6%));
+				border-color: color(theme(button) shade(6%));
 			}
 		}
 

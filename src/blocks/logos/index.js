@@ -15,7 +15,7 @@ import save from './save';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants.
@@ -23,10 +23,24 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Logos & Badges', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Logos & Badges', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add logos, badges, or certifications to build credibility.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'clients', 'block keyword', 'coblocks' ), _x( 'proof', 'block keyword', 'coblocks' ), _x( 'testimonials', 'block keyword', 'coblocks' ) ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'clients', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'proof', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'testimonials', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'awards', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'seal', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
@@ -34,8 +48,8 @@ const settings = {
 		attributes: {
 			align: 'full',
 			images: [
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/logo-1.jpg', width: 420 },
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/logo-2.jpg', width: 340 },
+				{ url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Wordpress-Logo.svg/600px-Wordpress-Logo.svg.png', width: 420 },
+				{ url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/WordPress.svg/640px-WordPress.svg.png', width: 340 },
 			],
 		},
 	},

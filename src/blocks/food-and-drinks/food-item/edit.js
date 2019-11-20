@@ -222,7 +222,7 @@ class FoodAndDrinksEdit extends Component {
 								value={ attributes.title }
 								tagName="h4"
 								wrapperClassName="wp-block-coblocks-food-item__heading"
-								placeholder={ __( 'Add title...', 'coblocks' ) }
+								placeholder={ __( 'Add title…', 'coblocks' ) }
 								onChange={ title => setAttributes( { title } ) }
 								{ ...richTextAttributes }
 							/>
@@ -383,7 +383,7 @@ class FoodAndDrinksEdit extends Component {
 							value={ attributes.description }
 							tagName="p"
 							wrapperClassName="wp-block-coblocks-food-item__description"
-							placeholder={ __( 'Add description...', 'coblocks' ) }
+							placeholder={ __( 'Add description…', 'coblocks' ) }
 							onChange={ description => setAttributes( { description } ) }
 							{ ...richTextAttributes }
 						/>

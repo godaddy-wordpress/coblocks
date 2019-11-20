@@ -14,10 +14,22 @@
 	}
 
 	.components-toggle-control {
-		border-top: 1px solid $light-gray-500;
-		color: $dark-gray-500;
 		margin: 16px -16px -16px;
 		padding: 18px 16px 14px;
 		width: calc(100% + 32px);
+	}
+}
+
+:-ms-fullscreen .components-coblocks-css-grid-selector,
+:root .components-coblocks-css-grid-selector {
+	.components-button-group {
+		display: flex;
+		flex-wrap: wrap;
+
+		.components-button {
+			display: table-cell;
+			padding: 18px;
+			width: 50%;
+		}
 	}
 }

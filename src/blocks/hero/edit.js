@@ -14,7 +14,7 @@ import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZon
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
@@ -32,12 +32,44 @@ import { isBlobURL } from '@wordpress/blob';
 */
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row', 'coblocks/column', 'coblocks/buttons' ];
 const TEMPLATE = [
-	[ 'core/heading', { placeholder: _x( 'Add hero heading…', 'content placeholder', 'coblocks' ), level: 2 } ],
-	[ 'core/paragraph', { placeholder: _x( 'Add hero content, which is typically an introductory area of a page accompanied by call to action or two.', 'content placeholder', 'coblocks' ) } ],
-	[ 'coblocks/buttons', { contentAlign: 'left', items: 2, gutter: 'medium' },
+	[
+		'core/heading',
+		{
+			/* translators: content placeholder */
+			placeholder: __( 'Add hero heading…', 'coblocks' ),
+			level: 2,
+		},
+	],
+	[
+		'core/paragraph',
+		{
+			/* translators: content placeholder */
+			placeholder: __( 'Add hero content, which is typically an introductory area of a page accompanied by call to action or two.', 'coblocks' ),
+		},
+	],
+	[
+		'coblocks/buttons',
+		{
+			contentAlign: 'left',
+			items: 2,
+			gutter: 'medium',
+		},
 		[
-			[ 'core/button', { placeholder: _x( 'Primary button…', 'content placeholder', 'coblocks' ) } ],
-			[ 'core/button', { placeholder: _x( 'Secondary button…', 'content placeholder', 'coblocks' ), className: 'is-style-outline' } ],
+			[
+				'core/button',
+				{
+					/* translators: content placeholder */
+					placeholder: __( 'Primary button…', 'coblocks' ),
+				},
+			],
+			[
+				'core/button',
+				{
+					/* translators: content placeholder */
+					placeholder: __( 'Secondary button…', 'coblocks' ),
+					className: 'is-style-outline',
+				},
+			],
 		],
 	],
 ];

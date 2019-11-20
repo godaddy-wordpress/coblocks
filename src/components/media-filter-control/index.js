@@ -7,7 +7,7 @@ import './styles/style.scss';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import {
 	Toolbar,
@@ -28,7 +28,8 @@ class MediaFilterControl extends Component {
 		const filterControls = [
 			{
 				icon: icons.none,
-				title: _x( 'Original', 'image styles', 'coblocks' ),
+				/* translators: image style */
+				title: __( 'Original', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'none' } );
 				},
@@ -36,7 +37,8 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.grayscale,
-				title: _x( 'Grayscale Filter', 'image styles', 'coblocks' ),
+				/* translators: image style */
+				title: __( 'Grayscale Filter', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'grayscale' } );
 				},
@@ -44,7 +46,8 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.sepia,
-				title: _x( 'Sepia Filter', 'image styles', 'coblocks' ),
+				/* translators: image style */
+				title: __( 'Sepia Filter', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'sepia' } );
 				},
@@ -52,7 +55,8 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.saturation,
-				title: _x( 'Saturation Filter', 'image styles', 'coblocks' ),
+				/* translators: image style */
+				title: __( 'Saturation Filter', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'saturation' } );
 				},
@@ -60,7 +64,8 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.dark,
-				title: _x( 'Dim Filter', 'image styles', 'coblocks' ),
+				/* translators: image style */
+				title: __( 'Dim Filter', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'dim' } );
 				},
@@ -68,7 +73,8 @@ class MediaFilterControl extends Component {
 			},
 			{
 				icon: icons.vintage,
-				title: _x( 'Vintage Filter', 'image styles', 'coblocks' ),
+				/* translators: image style */
+				title: __( 'Vintage Filter', 'coblocks' ),
 				onClick: () => {
 					setAttributes( { filter: 'vintage' } );
 				},

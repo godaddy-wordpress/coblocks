@@ -15,19 +15,34 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-const { __, _x } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
  */
-const { name, category, supports } = metadata;
+const { name, category } = metadata;
 
 const settings = {
-	title: _x( 'Posts', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Posts', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Display posts or an RSS feed as stacked or horizontal cards.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'blog', 'block keyword', 'coblocks' ), _x( 'rss', 'block keyword', 'coblocks' ), _x( 'latest', 'block keyword', 'coblocks' ) ],
-	supports,
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'posts', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'blog', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'latest', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'rss', 'coblocks' ),
+	],
+	supports: {
+		align: [ 'wide', 'full' ],
+		html: false,
+	},
 	transforms,
 	edit,
 	save() {
@@ -35,4 +50,4 @@ const settings = {
 	},
 };
 
-export { name, category, metadata, settings };
+export { name, category, settings };

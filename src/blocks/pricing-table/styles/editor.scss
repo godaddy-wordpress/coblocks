@@ -41,9 +41,8 @@ $gutter: 1em;
 		}
 	}
 
-	.editor-block-mover,
 	.block-list-appender {
-		display: none;
+		display: none !important;
 	}
 }
 
