@@ -93,6 +93,7 @@ class GalleryCollageEdit extends Component {
 			allowedTypes: [ 'image' ],
 			filesList: files,
 			onFileChange: ( [ image ] ) => this.replaceImage( image, index ),
+			onError: this.onUploadError,
 		} );
 	}
 
