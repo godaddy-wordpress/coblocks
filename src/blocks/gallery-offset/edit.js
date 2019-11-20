@@ -12,6 +12,7 @@ import GalleryPlaceholder from '../../components/block-gallery/gallery-placehold
 import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import Inspector from './inspector';
+import Controls from './controls';
 import { icon } from './';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
@@ -182,6 +183,7 @@ class Edit extends Component {
 
 		return (
 			<Fragment>
+				<Controls { ...this.props } />
 				<Inspector
 					{ ...this.props }
 				/>
