@@ -20,7 +20,7 @@ import { BackgroundClasses, BackgroundDropZone, BackgroundVideo } from '../../co
 import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { BlockIcon, InnerBlocks } from '@wordpress/block-editor';
 import { ButtonGroup, Button, IconButton, Tooltip, Placeholder, Spinner } from '@wordpress/components';
 import { isBlobURL } from '@wordpress/blob';
 
@@ -198,11 +198,14 @@ class Edit extends Component {
 					) }
 					<Placeholder
 						key="placeholder"
-						icon={ columns ? rowIcons.layout : rowIcons.row }
+						icon={ <BlockIcon icon={ columns ? rowIcons.layout : rowIcons.row } /> }
 						label={ columns ? __( 'Row Layout', 'coblocks' ) : __( 'Row', 'coblocks' ) }
 						instructions={ columns ?
-							/* translators: %s: 'one' 'two' 'three' and 'four' */
-							sprintf( __( 'Now select a layout for this %s column row.', 'coblocks' ), this.numberToText( columns ) ) :
+							sprintf(
+								/* translators: %s: 'one' 'two' 'three' and 'four' */
+								__( 'Now select a layout for this %s column row.', 'coblocks' ),
+								this.numberToText( columns )
+							) :
 							__( 'Select the number of columns for this row.', 'coblocks' )
 						}
 						className={ 'components-coblocks-visual-dropdown' }

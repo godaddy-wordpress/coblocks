@@ -7,6 +7,12 @@
 		margin-top: 0;
 	}
 
+	.block-editor-block-mover.is-horizontal {
+		left: 0;
+		margin-left: 8px;
+		position: absolute;
+	}
+
 	.wp-block-coblocks-pricing-table-item {
 		flex-basis: 100% !important;
 		margin: 0;
@@ -28,7 +34,7 @@
 	.editor-block-list__block-edit {
 		height: 100%;
 
-		> div:not(.editor-block-contextual-toolbar) {
+		> [data-block] {
 			@media (min-width: 600px) {
 				display: flex;
 				height: 100%;

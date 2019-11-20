@@ -14,7 +14,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies.
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect, dispatch, select } from '@wordpress/data';
@@ -24,7 +24,7 @@ const TokenList = wp.tokenList;
 const ALLOWED_BLOCKS = [ 'coblocks/food-item' ];
 
 const TEMPLATE = [
-	[ 'core/heading', { level: 3, placeholder: __( 'Menu title...', 'coblocks' ), align: 'center' } ],
+	[ 'core/heading', { level: 3, placeholder: __( 'Menu title…', 'coblocks' ), align: 'center' } ],
 	[ 'coblocks/food-item' ],
 	[ 'coblocks/food-item' ],
 ];
@@ -32,14 +32,16 @@ const TEMPLATE = [
 const layoutOptions = [
 	{
 		name: 'grid',
-		label: _x( 'Grid', 'block style', 'coblocks' ),
+		/* translators: block style */
+		label: __( 'Grid', 'coblocks' ),
 		icon: icons.layoutGridIcon,
 		iconWithImages: icons.layoutGridIconWithImages,
 		isDefault: true,
 	},
 	{
 		name: 'list',
-		label: _x( 'List', 'block style', 'coblocks' ),
+		/* translators: block style */
+		label: __( 'List', 'coblocks' ),
 		icon: icons.layoutListIcon,
 		iconWithImages: icons.layoutListIconWithImages,
 	},

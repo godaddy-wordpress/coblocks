@@ -69,7 +69,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 		$reflection_method->invoke( coblocks() );
 
 		$expected = [
-			'version' => '1.16.1',
+			'version' => '1.17.2',
 			'has_pro'     => false,
 			'plugin_dir'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_path( __FILE__ ) ),
 			'plugin_url'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_url( __FILE__ ) ),
@@ -109,7 +109,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 			COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-accordion-ie-support.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-settings.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php',
-			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-getting-started-page.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php',
 		];

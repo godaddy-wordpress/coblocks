@@ -115,14 +115,14 @@ class CoBlocks_Block_Assets {
 		wp_localize_script(
 			$this->slug . '-editor',
 			'coblocksBlockData',
-			[
-				'form'                           => [
+			array(
+				'form'                           => array(
 					'adminEmail'   => $email_to,
 					'emailSubject' => $post_title,
-				],
+				),
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
-			]
+			)
 		);
 
 	}

@@ -180,7 +180,7 @@ class GalleryCollageEdit extends Component {
 						{ enableCaptions && this.props.attributes.captions && ( image.caption || isSelected ) &&
 							<RichText
 								tagName="figcaption"
-								placeholder={ __( 'Write caption...', 'coblocks' ) }
+								placeholder={ __( 'Write caption…', 'coblocks' ) }
 								className="coblocks-gallery--caption"
 								value={ image.caption }
 								onChange={ ( caption ) => this.updateImageAttributes( index, { caption } ) }

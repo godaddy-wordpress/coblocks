@@ -15,7 +15,7 @@ import icon from './icon';
  * WordPress dependencies
  */
 import apiFetch from '@wordpress/api-fetch';
-import { __, _x, sprintf } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { Component, RawHTML, Fragment } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
@@ -180,8 +180,7 @@ class PostCarousel extends Component {
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
 							<Fragment>
-								{ /* translators: %s: RSS */ }
-								{ sprintf( __( 'No posts found. Start publishing or add posts from an %s feed.', 'coblocks' ), 'RSS' ) }
+								{ __( 'No posts found. Start publishing or add posts from an RSS feed.', 'coblocks' ) }
 								<Button
 									className="components-placeholder__cancel-button"
 									title={ __( 'Retrieve an External Feed', 'coblocks' ) }
@@ -212,9 +211,8 @@ class PostCarousel extends Component {
 					/>
 					<Placeholder
 						icon={ <BlockIcon icon={ icon } /> }
-						/* translators: %s: RSS */
-						label={ sprintf( __( '%s Feed', 'coblocks' ), 'RSS' ) }
-						instructions={ sprintf( __( '%s URLs are generally located at the /feed/ directory of a site.', 'coblocks' ), 'RSS' ) }
+						label={ __( 'RSS Feed', 'coblocks' ) }
+						instructions={ __( 'RSS URLs are generally located at the /feed/ directory of a site.', 'coblocks' ) }
 					>
 						<form onSubmit={ this.onSubmitURL }>
 							<TextControl
@@ -299,7 +297,8 @@ class PostCarousel extends Component {
 																{ titleTrimmed }
 															</RawHTML>
 														) :
-															_x( '(no title)', 'placeholder when a post has no title', 'coblocks' )
+															/* translators: placeholder when a post has no title */
+															__( '(no title)', 'coblocks' )
 														}
 													</a>
 												</Disabled>

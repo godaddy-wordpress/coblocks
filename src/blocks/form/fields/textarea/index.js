@@ -3,27 +3,52 @@
  */
 import edit from './edit';
 import icon from './icon';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
  */
+const metadata = {
+	name: 'coblocks/field-textarea',
+	category: 'coblocks',
+	attributes: {
+		label: {
+			type: 'string',
+			default: __( 'Message', 'coblocks' ),
+		},
+		required: {
+			type: 'boolean',
+			default: false,
+		},
+	},
+};
+
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Textarea', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Textarea', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'A text box for longer responses.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'Textarea', 'block keyword', 'coblocks' ), 'textarea', _x( 'Multiline text', 'block keyword', 'coblocks' ) ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'text', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'message text', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'multiline text', 'coblocks' ),
+	],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,
 		html: false,
+		customClassName: false,
 	},
 	attributes,
 	edit,

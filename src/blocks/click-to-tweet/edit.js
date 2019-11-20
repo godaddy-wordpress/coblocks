@@ -79,7 +79,7 @@ class Edit extends Component {
 						tagName="p"
 						multiline="false"
 						/* translators: the text of the click to tweet element */
-						placeholder={ __( 'Add a quote to tweet...', 'coblocks' ) }
+						placeholder={ __( 'Add a quote to tweet…', 'coblocks' ) }
 						value={ content }
 						formattingControls={ [] } // disable controls
 						className={ classnames(
@@ -106,7 +106,7 @@ class Edit extends Component {
 					<RichText
 						tagName="span"
 						multiline="false"
-						placeholder={ __( 'Add button...', 'coblocks' ) }
+						placeholder={ __( 'Add button…', 'coblocks' ) }
 						value={ buttonText }
 						formattingControls={ [] } // disable controls
 						className={ classnames(

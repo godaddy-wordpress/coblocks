@@ -14,7 +14,7 @@ import metadata from './block.json';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -22,16 +22,43 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category } = metadata;
 
 const settings = {
-	title: _x( 'Share', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Share', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add social sharing links to help you get likes and shares.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'social', 'block keyword', 'coblocks' ), 'coblocks' ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'social', 'coblocks' ),
+	],
 	styles: [
-		{ name: 'mask', label: _x( 'Mask', 'block style', 'coblocks' ) },
-		{ name: 'icon', label: _x( 'Icon', 'block style', 'coblocks' ), isDefault: true },
-		{ name: 'text', label: _x( 'Text', 'block style', 'coblocks' ) },
-		{ name: 'icon-and-text', label: _x( 'Icon & Text', 'block style', 'coblocks' ) },
-		{ name: 'circular', label: _x( 'Circular', 'block style', 'coblocks' ) },
+		{
+			name: 'mask',
+			/* translators: block style */
+			label: __( 'Mask', 'coblocks' ),
+		},
+		{
+			name: 'icon',
+			/* translators: block style */
+			label: __( 'Icon', 'coblocks' ),
+			isDefault: true,
+		},
+		{
+			name: 'text',
+			/* translators: block style */
+			label: __( 'Text', 'coblocks' ),
+		},
+		{
+			name: 'icon-and-text',
+			/* translators: block style */
+			label: __( 'Icon & Text', 'coblocks' ),
+		},
+		{
+			name: 'circular',
+			/* translators: block style */
+			label: __( 'Circular', 'coblocks' ),
+		},
 	],
 	example: {
 		attributes: {
@@ -48,7 +75,6 @@ const settings = {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
 	},
-
 	edit,
 	save() {
 		return null;

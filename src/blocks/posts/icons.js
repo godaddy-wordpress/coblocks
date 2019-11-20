@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { SVG, Path } = wp.components;
+import { SVG, Path } from '@wordpress/components';
 
 /**
  * Block user interface icons

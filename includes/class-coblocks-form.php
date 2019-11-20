@@ -46,10 +46,10 @@ class CoBlocks_Form {
 	 */
 	public function __construct() {
 
-		add_action( 'init', [ $this, 'register_settings' ] );
-		add_action( 'init', [ $this, 'register_form_blocks' ] );
+		add_action( 'init', array( $this, 'register_settings' ) );
+		add_action( 'init', array( $this, 'register_form_blocks' ) );
 
-		add_action( 'wp_enqueue_scripts', [ $this, 'form_recaptcha_assets' ] );
+		add_action( 'wp_enqueue_scripts', array( $this, 'form_recaptcha_assets' ) );
 
 	}
 
@@ -113,9 +113,9 @@ class CoBlocks_Form {
 			wp_localize_script(
 				'coblocks-google-recaptcha',
 				'coblocksFormBlockAtts',
-				[
+				array(
 					'recaptchaSiteKey' => $recaptcha_site_key,
-				]
+				)
 			);
 
 		}
@@ -129,58 +129,35 @@ class CoBlocks_Form {
 
 		register_block_type(
 			'coblocks/form',
-			[
-				'render_callback' => [ $this, 'render_form' ],
-			]
+			array(
+				'render_callback' => array( $this, 'render_form' ),
+			)
 		);
 
-		register_block_type(
-			'coblocks/field-name',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_name' ],
-			]
+		$form_blocks = array(
+			'name',
+			'email',
+			'textarea',
+			'date',
+			'phone',
+			'radio',
+			'select',
+			'checkbox',
+			'website',
+			'hidden',
 		);
 
-		register_block_type(
-			'coblocks/field-email',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_email' ],
-			]
-		);
+		foreach ( $form_blocks as $form_block ) {
 
-		register_block_type(
-			'coblocks/field-textarea',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_textarea' ],
-			]
-		);
+			register_block_type(
+				"coblocks/field-${form_block}",
+				array(
+					'parent'          => array( 'coblocks/form' ),
+					'render_callback' => array( $this, "render_field_${form_block}" ),
+				)
+			);
 
-		register_block_type(
-			'coblocks/field-date',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_date' ],
-			]
-		);
-
-		register_block_type(
-			'coblocks/field-phone',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_phone' ],
-			]
-		);
-
-		register_block_type(
-			'coblocks/field-radio',
-			[
-				'parent'          => [ 'coblocks/form' ],
-				'render_callback' => [ $this, 'render_field_radio' ],
-			]
-		);
+		}
 
 		/**
 		 * Fires when the coblocks/form block and sub-blocks are registered
@@ -364,12 +341,11 @@ class CoBlocks_Form {
 	/**
 	 * Render the date field
 	 *
-	 * @param  array $atts    Block attributes.
-	 * @param  mixed $content Block content.
+	 * @param  array $atts Block attributes.
 	 *
 	 * @return mixed Markup for the date field.
 	 */
-	public function render_field_date( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+	public function render_field_date( $atts ) {
 
 		wp_enqueue_script(
 			'coblocks-datepicker',
@@ -402,12 +378,11 @@ class CoBlocks_Form {
 	/**
 	 * Render the phone field
 	 *
-	 * @param  array $atts    Block attributes.
-	 * @param  mixed $content Block content.
+	 * @param  array $atts Block attributes.
 	 *
 	 * @return mixed Markup for the phone field.
 	 */
-	public function render_field_phone( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+	public function render_field_phone( $atts ) {
 
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Phone', 'coblocks' );
 		$label_slug    = sanitize_title( $label );
@@ -430,12 +405,11 @@ class CoBlocks_Form {
 	/**
 	 * Render the radio field
 	 *
-	 * @param  array $atts    Block attributes.
-	 * @param  mixed $content Block content.
+	 * @param  array $atts Block attributes.
 	 *
 	 * @return mixed Markup for the radio field.
 	 */
-	public function render_field_radio( $atts, $content ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+	public function render_field_radio( $atts ) {
 
 		if ( empty( $atts['options'] ) ) {
 
@@ -450,7 +424,15 @@ class CoBlocks_Form {
 
 		ob_start();
 
+		print( '<div class="coblocks-field">' );
+
 		$this->render_field_label( $atts, $label );
+
+		if ( isset( $atts['isInline'] ) ) {
+
+			print( '<div class="coblocks--inline">' );
+
+		}
 
 		foreach ( $the_options as $value ) {
 
@@ -464,6 +446,172 @@ class CoBlocks_Form {
 			);
 
 		}
+
+		if ( isset( $atts['isInline'] ) ) {
+
+			print( '</div>' );
+
+		}
+
+		print( '</div>' );
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Render the select field
+	 *
+	 * @param  array $atts Block attributes.
+	 *
+	 * @return mixed Markup for the select field.
+	 */
+	public function render_field_select( $atts ) {
+
+		if ( empty( $atts['options'] ) ) {
+
+			return;
+
+		}
+
+		$the_options = array_filter( $atts['options'] );
+
+		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Select', 'coblocks' );
+		$label_slug = sanitize_title( $label );
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label );
+
+		printf(
+			'<select class="select coblocks-field" name="field-%1$s[value]">',
+			esc_attr( $label_slug )
+		);
+
+		foreach ( $the_options as $value ) {
+
+			printf(
+				'<option value="%1$s">%2$s</option>',
+				esc_attr( $value ),
+				esc_html( $value )
+			);
+
+		}
+
+		print( '</select>' );
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Render the checkbox field
+	 *
+	 * @param  array $atts Block attributes.
+	 *
+	 * @return mixed Markup for the checkbox field.
+	 */
+	public function render_field_checkbox( $atts ) {
+
+		if ( empty( $atts['options'] ) ) {
+
+			return;
+
+		}
+
+		$the_options = array_filter( $atts['options'] );
+
+		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Select', 'coblocks' );
+		$label_slug = sanitize_title( $label );
+
+		ob_start();
+
+		print( '<div class="coblocks-field">' );
+
+		$this->render_field_label( $atts, $label );
+
+		if ( isset( $atts['isInline'] ) ) {
+
+			print( '<div class="coblocks--inline">' );
+
+		}
+
+		foreach ( $the_options as $value ) {
+
+			printf(
+				'<label class="coblocks-checkbox-label">
+					<input type="checkbox" name="field-%1$s[value][]" value="%2$s" class="checkbox"> %3$s
+				</label>',
+				esc_attr( $label_slug ),
+				esc_attr( $value ),
+				esc_html( $value )
+			);
+
+		}
+
+		if ( isset( $atts['isInline'] ) ) {
+
+			print( '</div>' );
+
+		}
+
+		print( '</div>' );
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Render the website field
+	 *
+	 * @param  array $atts Block attributes.
+	 *
+	 * @return mixed Markup for the website field.
+	 */
+	public function render_field_website( $atts ) {
+
+		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Website', 'coblocks' );
+		$label_slug    = sanitize_title( $label );
+		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label );
+
+		?>
+
+		<input type="url" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--website" <?php echo esc_attr( $required_attr ); ?> />
+
+		<?php
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Render the hidden field
+	 *
+	 * @param  array $atts Block attributes.
+	 *
+	 * @return mixed Markup for the hidden field.
+	 */
+	public function render_field_hidden( $atts ) {
+
+		$atts['hidden'] = true;
+
+		$value      = isset( $atts['value'] ) ? $atts['value'] : '';
+		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Hidden', 'coblocks' );
+		$label_slug = sanitize_title( $label );
+
+		ob_start();
+
+		$this->render_field_label( $atts, $label );
+
+		?>
+
+		<input type="hidden" value="<?php echo esc_attr( $value ); ?>" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--hidden" />
+
+		<?php
 
 		return ob_get_clean();
 
@@ -489,19 +637,30 @@ class CoBlocks_Form {
 		 */
 		$required_text  = (string) apply_filters( 'coblocks_form_label_required_text', '&#42;', $field_label );
 		$required_attr  = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
-		$required_label = empty( $required_attr ) ? '' : sprintf( ' <span class="required">%s</span>', $required_text );
+		$required_label = empty( $required_attr ) ? '' : sprintf( ' <span class="required">%s</span>', esc_html( $required_text ) );
 
 		/*
-		 * Format an array of allowed HTML tags and attributes for the $copyrighttext value.
+		 * Format an array of allowed HTML tags and attributes for the $required_label value.
 		 *
 		 * @link https://codex.wordpress.org/Function_Reference/wp_kses
 		 */
 		$allowed_html = array(
 			'span' => array( 'class' => array() ),
 		);
+
+		if ( ! isset( $atts['hidden'] ) ) {
+
+			printf(
+				'<label for="%1$s" class="coblocks-label">%2$s%3$s</label>',
+				esc_attr( $label_slug ),
+				esc_html( $label ),
+				wp_kses( $required_label, $allowed_html )
+			);
+
+		}
+
 		?>
 
-		<label for="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-label"><?php echo esc_html( $label ); ?><?php echo wp_kses( $required_label, $allowed_html ); ?></label>
 		<input type="hidden" name="field-<?php echo esc_attr( $label_slug ); ?>[label]" value="<?php echo esc_attr( $label ); ?>">
 
 		<?php
@@ -673,18 +832,18 @@ class CoBlocks_Form {
 		 */
 		$email_headers = (array) apply_filters(
 			'coblocks_form_email_headers',
-			[
+			array(
 				"Reply-To: {$_POST['field-email']['value']}",
-			],
+			),
 			$_POST,
 			$post_id
 		);
 
-		add_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
+		add_filter( 'wp_mail_content_type', array( $this, 'enable_html_email' ) );
 
 		$email = wp_mail( $to, $subject, $email_content, $email_headers );
 
-		remove_filter( 'wp_mail_content_type', [ $this, 'enable_html_email' ] );
+		remove_filter( 'wp_mail_content_type', array( $this, 'enable_html_email' ) );
 
 		/**
 		 * Fires when a form is submitted.
@@ -774,13 +933,13 @@ class CoBlocks_Form {
 
 		$verify_token_request = wp_remote_post(
 			self::GCAPTCHA_VERIFY_URL,
-			[
+			array(
 				'timeout' => 30,
-				'body'    => [
+				'body'    => array(
 					'secret'   => get_option( 'coblocks_google_recaptcha_secret_key' ),
 					'response' => $recaptcha_token,
-				],
-			]
+				),
+			)
 		);
 
 		if ( is_wp_error( $verify_token_request ) ) {

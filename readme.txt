@@ -4,9 +4,9 @@ Plugin URI: https://www.coblocks.com
 Contributors: coblocks, godaddy, richtabor, phpbits, eherman24, jonathanbardo, jrtashjian, sbalakr2, dmatuszak, paranoia1906
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.2.2
+Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.16.1
+Stable tag: 1.17.2
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,6 +115,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+### Enhancements
+* [Replace Media Card block MediaPlaceholder icon](https://github.com/godaddy/coblocks/pull/1125) with image/video icon
+* [Remove](https://github.com/godaddy/coblocks/pull/1124) unused example images
+* [Replace](https://github.com/godaddy/coblocks/pull/1119) ... with horizontal ellipsis (…)
+
 ### Bug Fixes
-* Ensure [translations are loaded](https://github.com/godaddy/coblocks/pull/1024) in the Block Editor
-* Use [COBLOCKS_VERSION](https://github.com/godaddy/coblocks/pull/1025) when registering scripts
+* Fix [posts block render loop](https://github.com/godaddy/coblocks/pull/1131)
+* Fix [posts grid not displaying as columns](https://github.com/godaddy/coblocks/pull/1127)

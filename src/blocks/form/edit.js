@@ -24,13 +24,12 @@ import { applyFilters } from '@wordpress/hooks';
 /**
  * Block constants
  */
+// Note: Child form blocks are automatically allowed
 const ALLOWED_BLOCKS = [
-	'coblocks/field-date',
-	'coblocks/field-phone',
-	'coblocks/field-radio',
-	'coblocks/field-name',
-	'coblocks/field-email',
-	'coblocks/field-textarea',
+	'core/heading',
+	'core/paragraph',
+	'core/separator',
+	'core/spacer',
 ];
 
 /**
@@ -167,7 +166,7 @@ class FormEdit extends Component {
 			if ( errors.length === 1 ) {
 				if ( errors[ 0 ] && errors[ 0 ].email ) {
 					return sprintf(
-						/* translators: %s: Placeholder for email address provided by user.  */
+						/* translators: %s: placeholder for an email address */
 						__( '%s is not a valid email address.', 'coblocks' ),
 						errors[ 0 ].email
 					);
@@ -177,16 +176,16 @@ class FormEdit extends Component {
 
 			if ( errors.length === 2 ) {
 				return sprintf(
-					/* translators: %s1: Placeholder for email address provided by user. %s2: Placeholder for email address provided by user.  */
-					__( '%s and %s are not a valid email address.', 'coblocks' ),
+					/* translators: %s1: placeholder for an email address. %s2: placeholder for an email address */
+					__( '%s and %s are not valid email addresses.', 'coblocks' ),
 					errors[ 0 ].email,
 					errors[ 1 ].email
 				);
 			}
 			const inValidEmails = errors.map( error => error.email );
 			return sprintf(
-				/* translators: %s1: Placeholder for email address provided by user. */
-				__( '%s are not a valid email address.', 'coblocks' ),
+				/* translators: %s1: placeholder for comma separated email addresses */
+				__( '%s are not valid email addresses.', 'coblocks' ),
 				inValidEmails.join( ', ' )
 			);
 		}

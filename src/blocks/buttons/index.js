@@ -17,7 +17,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -25,10 +25,20 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Buttons', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Buttons', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Prompt visitors to take action with multiple buttons, side by side.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'link', 'block keyword', 'coblocks' ), _x( 'cta', 'block keyword', 'coblocks' ), 'coblocks' ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'link', 'coblocks' ),
+		/* translators: block keyword (abbreviation for "call to action") */
+		__( 'cta', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'call to action', 'coblocks' ),
+	],
 	attributes,
 	transforms,
 	edit,

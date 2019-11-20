@@ -15,7 +15,7 @@ import save from './save';
 /**
  * WordPress dependencies.
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants.
@@ -23,10 +23,16 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Services', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Services', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add up to four columns of services to display.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'features', 'block keyword', 'coblocks' ) ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'features', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		reusable: false,

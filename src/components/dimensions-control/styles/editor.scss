@@ -3,11 +3,8 @@
 		position: relative;
 
 		&__mobile-controls-item {
-			background: $white;
-			border: 1px solid $dark-gray-150;
-			border-radius: 4px 0 0 4px;
+			border-radius: 3px 0 0 3px;
 			box-shadow: none;
-			color: $dark-gray-500;
 			display: none;
 			font-size: 10px;
 			height: 30px;
@@ -26,14 +23,7 @@
 				display: block;
 			}
 
-			&:hover {
-				border-color: $dark-gray-500;
-				color: $dark-gray-900;
-			}
-
 			&:focus:enabled {
-				background: $dark-gray-500 !important;
-				border-color: $dark-gray-500;
 				box-shadow: inset 0 0 0 1px $white;
 
 				svg {
@@ -69,7 +59,7 @@
 		.components-base-control__label {
 			margin-bottom: 5px;
 		}
-		
+
 		.components-base-control__help {
 			margin-top: -8px;
 		}
@@ -85,6 +75,7 @@
 
 		input[type="number"].components-coblocks-dimensions-control__number {
 			border-radius: 0;
+			box-shadow: none !important;
 			height: 30px;
 			margin: 0 -1px 0 0;
 			padding-right: 1px;
@@ -97,6 +88,7 @@
 
 		&__input-labels {
 			display: flex;
+			margin-bottom: -3px;
 			margin-left: 26px; // Same value as &__inputs + 1
 
 			span {
@@ -110,11 +102,11 @@
 		}
 
 		&__number-label {
+			color: $dark-gray-300;
 			display: block;
 			font-size: 11px;
 			margin-bottom: 1px;
 			margin-top: 3px;
-			opacity: 0.66;
 		}
 
 		&__label {
@@ -131,55 +123,18 @@
 			top: -2px;
 		}
 
-		&__units--Pixel,
-		&__units--Em {
-			border-radius: 3px !important;
-			margin-right: 2px;
-		}
-
-		&__units--Percentage {
-			border-radius: 3px !important;
-		}
-
-		.components-coblocks-dimensions-control__header
-			.components-color-palette__clear {
-			background: $white;
-			border: 1px solid $light-gray-500;
-			box-shadow: none;
-			color: $dark-gray-500;
+		.components-coblocks-dimensions-control__header .components-color-palette__clear {
 			height: 22px;
 			line-height: 20px;
-			margin-left: 12px;
+			margin-left: 10px;
 			padding-left: 6px;
 			padding-right: 6px;
 			position: relative;
 			top: -1px;
-
-			&:hover {
-				border-color: $dark-gray-500;
-				color: $dark-gray-900;
-			}
-
-			&:active:enabled {
-				background: $white;
-				border-color: #999;
-				box-shadow: none;
-			}
-
-			&:focus {
-				background: $white;
-				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
-				outline: 2px solid transparent;
-				outline-offset: -2px;
-			}
 		}
 
 		&__units {
 			.components-button {
-				background: $white;
-				border-color: $light-gray-500;
-				box-shadow: none !important;
-				color: $dark-gray-300;
 				font-size: 10px;
 				height: 22px;
 				justify-content: center;
@@ -190,55 +145,15 @@
 				text-shadow: none;
 				text-transform: uppercase;
 				top: -1px;
-				width: 22px;
-
-				&:hover {
-					border-color: $dark-gray-500;
-					color: $dark-gray-900;
-				}
-
-				&:focus {
-					background: $dark-gray-500;
-					box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
-					outline: 2px solid transparent;
-					outline-offset: -2px;
-				}
-
-				&:not(.is-primary):hover {
-					background: $white;
-					box-shadow: none;
-					color: $dark-gray-900;
-				}
-
-				&.is-primary {
-					background: $dark-gray-500;
-					border-color: $dark-gray-500;
-					color: $white;
-					cursor: default;
-					z-index: 1;
-
-					&:focus {
-						background: $dark-gray-500;
-						box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
-					}
-
-					&:active:enabled {
-						background: $dark-gray-500;
-						border-color: $dark-gray-500;
-						box-shadow: none;
-					}
-				}
+				width: 24px;
 			}
 		}
 
 		&_sync.components-button.is-small {
-			background: $white;
-			border: 1px solid $dark-gray-150;
-			border-bottom-right-radius: 4px;
 			border-radius: 0;
-			border-top-right-radius: 4px;
+			border-bottom-right-radius: 3px;
+			border-top-right-radius: 3px;
 			box-shadow: none;
-			color: $dark-gray-500;
 			height: auto;
 			justify-content: center;
 			padding: 0;
@@ -247,69 +162,14 @@
 			width: 30px;
 
 			svg {
-				fill: $dark-gray-500;
+				fill: currentColor;
 				height: 18px;
 				width: 18px;
-			}
-
-			&:focus {
-				background: $dark-gray-500 !important;
-				border-color: $dark-gray-500;
-				box-shadow: 0 0 0 0 $dark-gray-500, inset 0 0 0 1px $white;
-				color: $white !important;
-				outline: 2px solid transparent;
-				outline-offset: -2px;
-
-				svg {
-					fill: $white !important;
-				}
-			}
-
-			&:not(.is-primary) {
-				cursor: default;
-			}
-
-			&:not(.is-primary):active:enabled,
-			&:not(.is-primary):focus:enabled {
-				box-shadow: none;
-				color: $white !important;
-			}
-
-			&:not(.is-primary):hover {
-				background: $white;
-				border-color: $dark-gray-500;
-				box-shadow: none;
-				color: $dark-gray-500;
-				cursor: pointer;
-
-				svg {
-					fill: $dark-gray-500;
-				}
-			}
-
-			&.is-primary {
-				background: $dark-gray-500;
-				border-color: $dark-gray-500;
-				color: $white !important;
-
-				svg {
-					fill: $white !important;
-				}
-
-				&:focus {
-					background: $dark-gray-500;
-				}
-
-				&:active:enabled {
-					background: $dark-gray-500;
-					border-color: $dark-gray-500;
-					box-shadow: none;
-				}
 			}
 		}
 
 		.components-font-size-picker__controls {
-			margin-bottom: 0px;
+			margin-bottom: 0;
 		}
 	}
 }
@@ -345,13 +205,13 @@
 	.components-coblocks-dimensions-control {
 		.components-font-size-picker__select {
 			width: 115px;
-			margin-bottom: 0px !important;
+			margin-bottom: 0 !important;
 		}
 
 		.components-font-size-picker__controls {
-			max-width: $sidebar-width - (2 * $panel-padding);
 			display: flex;
 			justify-content: space-between;
+			max-width: $sidebar-width - (2 * $panel-padding);
 		}
 
 		.components-font-size-picker__select .components-base-control__label {
