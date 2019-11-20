@@ -13,7 +13,6 @@ import { Component, Fragment } from '@wordpress/element';
 import { InspectorControls, FontSizePicker, withFontSizes } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 import { compose } from '@wordpress/compose';
-import { withSelect } from '@wordpress/data';
 
 /**
  * Inspector controls
@@ -66,7 +65,6 @@ class Inspector extends Component {
 			attributes,
 			setAttributes,
 			isSelected,
-			wideControlsEnabled = false,
 			setFontSize,
 			fontSize,
 		} = this.props;
@@ -77,7 +75,6 @@ class Inspector extends Component {
 			images,
 			lightbox,
 			radius,
-			fullwidth,
 			shadow,
 			captions,
 		} = attributes;
@@ -87,14 +84,6 @@ class Inspector extends Component {
 				<Fragment>
 					<InspectorControls>
 						<PanelBody title={ __( 'Offset Settings' ) }>
-							{ wideControlsEnabled &&
-							<ToggleControl
-								label={ images.length > 1 ? __( 'Fullwidth Images', 'coblocks' ) : __( 'Fullwidth Image', 'coblocks' ) }
-								checked={ !! fullwidth }
-								help={ this.getFullwidthImagesHelp }
-								onChange={ this.setFullwidthTo }
-							/>
-							}
 							<SizeControl { ...this.props }
 								label={ __( 'Size' ) }
 								type={ 'reverse-grid' }
@@ -147,8 +136,5 @@ class Inspector extends Component {
 }
 
 export default compose( [
-	withSelect( ( select ) => ( {
-		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
-	} ) ),
 	withFontSizes( 'fontSize' ),
 ] )( Inspector );

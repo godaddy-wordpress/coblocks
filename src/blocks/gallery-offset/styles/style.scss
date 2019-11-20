@@ -1,4 +1,4 @@
-.wp-block-blockgallery-offset {
+.wp-block-coblocks-gallery-offset {
 	text-align: center;
 
 	ul {
@@ -51,4 +51,95 @@
 			display: none;
 		}
 	}
+	
+	@media screen and (min-width: 800px) {
+		.has-bricks-grid-sml .coblocks-gallery--item img {
+			max-height: 250px !important
+		}
+	}
+	
+	@media screen and (min-width: 1200px) {
+		.has-bricks-grid-sml .coblocks-gallery--item img {
+			max-height: 300px !important
+		}
+	}
+	
+	@media screen and (min-width: 700px) {
+		.has-bricks-grid-med .coblocks-gallery--item img {
+			max-height: 250px !important
+		}
+	}
+	
+	@media screen and (min-width: 1000px) {
+		.has-bricks-grid-med .coblocks-gallery--item img {
+			max-height: 300px !important
+		}
+	}
+	
+	@media screen and (min-width: 1400px) {
+		.has-bricks-grid-med .coblocks-gallery--item img {
+			max-height: 400px !important
+		}
+	}
+	
+	@media screen and (min-width: 300px) {
+		.has-bricks-grid-lrg .coblocks-gallery--item img {
+			max-height: 180px !important
+		}
+	}
+	
+	@media screen and (min-width: 600px) {
+		.has-bricks-grid-lrg .coblocks-gallery--item img {
+			max-height: 300px !important
+		}
+	}
+	
+	@media screen and (min-width: 1000px) {
+		.has-bricks-grid-lrg .coblocks-gallery--item img {
+			max-height: 350px !important
+		}
+	}
+	
+	@media screen and (min-width: 1400px) {
+		.has-bricks-grid-lrg .coblocks-gallery--item img {
+			max-height: 450px !important
+		}
+	}
+	
+	@media screen and (min-width: 1900px) {
+		.has-bricks-grid-lrg .coblocks-gallery--item img {
+			max-height: 550px !important
+		}
+	}
+	
+	@media screen and (min-width: 300px) {
+		.has-bricks-grid-xlrg .coblocks-gallery--item img {
+			max-height: 200px !important
+		}
+	}
+	
+	@media screen and (min-width: 600px) {
+		.has-bricks-grid-xlrg .coblocks-gallery--item img {
+			max-height: 350px !important
+		}
+	}
+	
+	@media screen and (min-width: 1000px) {
+		.has-bricks-grid-xlrg .coblocks-gallery--item img {
+			max-height: 400px !important
+		}
+	}
+	
+	@media screen and (min-width: 1400px) {
+		.has-bricks-grid-xlrg .coblocks-gallery--item img {
+			max-height: 550px !important
+		}
+	}
+	
+	@media screen and (min-width: 1900px) {
+		.has-bricks-grid-xlrg .coblocks-gallery--item img {
+			max-height: 650px !important
+		}
+	}
+
 }

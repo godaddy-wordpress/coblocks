@@ -66,92 +66,68 @@
 			padding-bottom: 5px !important;
 		}
 
-		// Override negative margins so this toolbar isn't hidden by overflow.
-		// Overflow is needed for long captions.
-		.editor-rich-text__inline-toolbar {
-			// top: 0;
-		}
-
 		// Make extra space for the inline toolbar.
 		.editor-rich-text__tinymce {
 			padding-top: 48px;
 		}
 	}
 
+	.coblocks-gallery {
+		list-style: none !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		padding: 0
+	}
 
-.coblocks-gallery {
-    list-style: none !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding: 0
-}
+	.coblocks-gallery--item {
+		list-style: none !important;
+		margin: 0;
+		padding: 0 !important
+	}
 
-.coblocks-gallery--item {
-    list-style: none !important;
-    margin: 0;
-    padding: 0 !important
-}
+	.coblocks-gallery--item figure {
+		position: relative
+	}
 
-.coblocks-gallery--item figure {
-    margin: 0;
-    position: relative
-}
+	.coblocks-gallery--item img {
+		vertical-align: middle;
+		opacity: 1 !important
+	}
 
-.coblocks-gallery--item img {
-    vertical-align: middle;
-    opacity: 1 !important
-}
+	.coblocks-gallery .coblocks-gallery--item figcaption {
+		margin: 0 !important
+	}
 
-.coblocks-gallery .coblocks-gallery--item figcaption {
-    margin: 0 !important
-}
+	.coblocks-gallery:not(.has-padding) {
+		padding: 0 !important
+	}
 
-.coblocks-gallery:not(.has-padding) {
-    padding: 0 !important
-}
+	.coblocks-gallery:not(.has-margin) .coblocks-gallery--item {
+		margin: auto !important
+	}
 
-.coblocks-gallery:not(.has-margin) .coblocks-gallery--item {
-    margin: auto !important
-}
+	.coblocks-gallery.is-cropped .coblocks-gallery--item a,
+	.coblocks-gallery.is-cropped .coblocks-gallery--item img,
+	.coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail a,
+	.coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail img {
+		width: 100%
+	}
 
-.coblocks-gallery.is-cropped .coblocks-gallery--item a,
-.coblocks-gallery.is-cropped .coblocks-gallery--item img,
-.coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail a,
-.coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail img {
-    width: 100%
-}
+	@supports ((position: -webkit-sticky) or (position: sticky)) {
+		.coblocks-gallery.is-cropped .coblocks-gallery--item a,
+		.coblocks-gallery.is-cropped .coblocks-gallery--item img,
+		.coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail a,
+		.coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail img {
+			-ms-flex: 1;
+			flex: 1;
+			height: 100%;
+			-o-object-fit: cover;
+			object-fit: cover
+		}
+	}
 
-@supports ((position: -webkit-sticky) or (position: sticky)) {
-    .coblocks-gallery.is-cropped .coblocks-gallery--item a,
-    .coblocks-gallery.is-cropped .coblocks-gallery--item img,
-    .coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail a,
-    .coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail img {
-        -ms-flex: 1;
-        flex: 1;
-        height: 100%;
-        -o-object-fit: cover;
-        object-fit: cover
-    }
-}
-
-.alignfull ul.coblocks-gallery,
-.alignwide ul.coblocks-gallery {
-    max-width: 100%
-}
-
-.coblocks-gallery--item-thumbnail {
-    list-style: none !important;
-    margin: 0;
-    padding: 0
-}
-
-.coblocks-gallery--item-thumbnail figure {
-    margin: 0;
-    position: relative
-}
-
-.coblocks-gallery--item-thumbnail img {
-    vertical-align: middle
-}
-
+	.alignfull ul.coblocks-gallery,
+	.alignwide ul.coblocks-gallery {
+		max-width: 100%
+	}
 }

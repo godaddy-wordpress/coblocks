@@ -11,7 +11,6 @@ import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
-
 import Inspector from './inspector';
 import { icon } from './';
 import { GalleryClasses } from '../../components/block-gallery/shared';
@@ -143,7 +142,6 @@ class Edit extends Component {
 			gutter,
 			gutterMobile,
 			images,
-			fullwidth,
 			linkTo,
 			shadow,
 		} = attributes;
@@ -159,9 +157,8 @@ class Edit extends Component {
 			...GalleryClasses( attributes ),
 			`has-bricks-grid-${ gridSize }`,
 			`has-${ contentAlign }-content`, {
-				'has-fullwidth-images': fullwidth,
 				[ `align${ align }` ]: align,
-				'has-margin': gutter > 0,
+				// 'has-margin': gutter > 0,
 				[ `has-gutter-${ gutter }` ]: gutter > 0,
 				[ `has-gutter-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 			}
@@ -213,12 +210,12 @@ class Edit extends Component {
 										supportsCaption={ true }
 										imgLink={ img.imgLink }
 										linkTo={ linkTo }
-										marginBottom={ true }
+										// marginBottom={ true }
 										isFirstItem={ index === 0 }
 										isLastItem={ ( index + 1 ) === images.length }
 										onMoveBackward={ this.onMoveBackward( index ) }
 										onMoveForward={ this.onMoveForward( index ) }
-										verticalMoving={ true }
+										// verticalMoving={ true }
 										fontSize={ fontSize.size }
 									/>
 								</li>
@@ -236,9 +233,6 @@ class Edit extends Component {
 
 export default compose( [
 	withSelect( ( select ) => ( {
-		editorSidebarOpened: select( 'core/edit-post' ).isEditorSidebarOpened(),
-		pluginSidebarOpened: select( 'core/edit-post' ).isPluginSidebarOpened(),
-		publishSidebarOpened: select( 'core/edit-post' ).isPublishSidebarOpened(),
 		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
 	} ) ),
 	withFontSizes( 'fontSize' ),
