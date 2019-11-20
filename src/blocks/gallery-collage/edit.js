@@ -18,6 +18,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withNotices, DropZone, Spinner, IconButton, Dashicon } from '@wordpress/components';
 import { MediaPlaceholder, RichText, URLInput } from '@wordpress/block-editor';
+import { mediaUpload } from '@wordpress/editor';
 import { withSelect } from '@wordpress/data';
 import { isBlobURL } from '@wordpress/blob';
 
@@ -88,7 +89,6 @@ class GalleryCollageEdit extends Component {
 	}
 
 	uploadImage( files, index ) {
-		const { mediaUpload } = this.props;
 		mediaUpload( {
 			allowedTypes: [ 'image' ],
 			filesList: files,
