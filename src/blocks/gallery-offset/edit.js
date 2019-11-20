@@ -144,6 +144,7 @@ class Edit extends Component {
 			images,
 			linkTo,
 			shadow,
+			lightbox,
 		} = attributes;
 
 		const dropZone = (
@@ -151,6 +152,12 @@ class Edit extends Component {
 				{ ...this.props }
 				label={ __( 'Drop to add to the offset gallery' ) }
 			/>
+		);
+
+		const wrapperClasses = classnames(
+			className, {
+				'has-lightbox': lightbox,
+			}
 		);
 
 		const innerClasses = classnames(
@@ -180,7 +187,7 @@ class Edit extends Component {
 				/>
 				{ noticeUI }
 				{ dropZone }
-				<div className={ className }>
+				<div className={ wrapperClasses }>
 					<ul className={ innerClasses }>
 						{ images.map( ( img, index ) => {
 							const ariaLabel = sprintf(

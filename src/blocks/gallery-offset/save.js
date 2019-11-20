@@ -27,13 +27,19 @@ const save = ( { attributes, className } ) => {
 		linkTo,
 		shadow,
 		captions,
+		lightbox,
 	} = attributes;
 
 	const wrapperClasses = classnames(
+		className, {
+			'has-lightbox': lightbox,
+		}
+	);
+
+	const innerClasses = classnames(
 		...GalleryClasses( attributes ),
 		`has-bricks-grid-${ gridSize }`,
 		`has-${ contentAlign }-content`, {
-			'has-margin': gutter > 0,
 			[ `has-gutter-${ gutter }` ]: gutter > 0,
 			[ `has-gutter-mobile-${ gutterMobile }` ]: gutterMobile > 0,
 		}
@@ -58,8 +64,8 @@ const save = ( { attributes, className } ) => {
 	};
 
 	return (
-		<div className={ className }>
-			<ul className={ wrapperClasses } >
+		<div className={ wrapperClasses }>
+			<ul className={ innerClasses } >
 				{ images.map( ( image ) => {
 					let href;
 

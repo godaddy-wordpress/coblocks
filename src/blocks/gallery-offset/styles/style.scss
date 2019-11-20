@@ -142,4 +142,10 @@
 		}
 	}
 
+	ul.has-lightbox > li > .coblocks-gallery--figure {
+		&:hover {
+			cursor: zoom-in;
+		}
+	}
+
 }
