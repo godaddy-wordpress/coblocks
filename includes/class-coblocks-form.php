@@ -241,8 +241,10 @@ class CoBlocks_Form {
 	 */
 	public function render_field_name( $atts ) {
 
+		static $name_count = 1;
+
 		$label            = isset( $atts['label'] ) ? $atts['label'] : __( 'Name', 'coblocks' );
-		$label_slug       = sanitize_title( $label );
+		$label_slug       = $name_count > 1 ? sanitize_title( $label . '-' . $name_count ) : sanitize_title( $label );
 		$required_attr    = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 		$has_last_name    = ( isset( $atts['hasLastName'] ) && $atts['hasLastName'] );
 		$label_first_name = isset( $atts['labelFirstName'] ) ? $atts['labelFirstName'] : __( 'First', 'coblocks' );
@@ -250,7 +252,7 @@ class CoBlocks_Form {
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $name_count );
 
 		if ( $has_last_name ) {
 
@@ -270,6 +272,8 @@ class CoBlocks_Form {
 
 			<?php
 
+			$name_count++;
+
 			return ob_get_clean();
 
 		}
@@ -279,6 +283,8 @@ class CoBlocks_Form {
 		<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--name" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
+
+		$name_count++;
 
 		return ob_get_clean();
 
@@ -320,19 +326,23 @@ class CoBlocks_Form {
 	 */
 	public function render_field_textarea( $atts ) {
 
+		static $textarea_count = 1;
+
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Message', 'coblocks' );
-		$label_slug    = sanitize_title( $label );
+		$label_slug    = $textarea_count > 1 ? sanitize_title( $label . '-' . $textarea_count ) : sanitize_title( $label );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $textarea_count );
 
 		?>
 
 		<textarea name="field-<?php echo esc_attr( $label_slug ); ?>[value]" id="<?php echo esc_attr( $label_slug ); ?>" class="coblocks-field coblocks-textarea" rows="20" <?php echo esc_attr( $required_attr ); ?>></textarea>
 
 		<?php
+
+		$textarea_count++;
 
 		return ob_get_clean();
 
@@ -347,6 +357,8 @@ class CoBlocks_Form {
 	 */
 	public function render_field_date( $atts ) {
 
+		static $date_count = 1;
+
 		wp_enqueue_script(
 			'coblocks-datepicker',
 			CoBlocks()->asset_source( 'js' ) . 'coblocks-datepicker' . COBLOCKS_ASSET_SUFFIX . '.js',
@@ -358,18 +370,20 @@ class CoBlocks_Form {
 		wp_localize_jquery_ui_datepicker();
 
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Date', 'coblocks' );
-		$label_slug    = sanitize_title( $label );
+		$label_slug    = $date_count > 1 ? sanitize_title( $label . '-' . $date_count ) : sanitize_title( $label );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $date_count );
 
 		?>
 
-		<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--date" <?php echo esc_attr( $required_attr ); ?> />
+		<input type="text" id="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--date" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
+
+		$date_count++;
 
 		return ob_get_clean();
 
@@ -384,19 +398,23 @@ class CoBlocks_Form {
 	 */
 	public function render_field_phone( $atts ) {
 
+		static $phone_count = 1;
+
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Phone', 'coblocks' );
-		$label_slug    = sanitize_title( $label );
+		$label_slug    = $phone_count > 1 ? sanitize_title( $label . '-' . $phone_count ) : sanitize_title( $label );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $phone_count );
 
 		?>
 
 		<input type="tel" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--telephone" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
+
+		$phone_count++;
 
 		return ob_get_clean();
 
@@ -417,16 +435,18 @@ class CoBlocks_Form {
 
 		}
 
+		static $radio_count = 1;
+
 		$the_options = array_filter( $atts['options'] );
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
-		$label_slug = sanitize_title( $label );
+		$label_slug = $radio_count > 1 ? sanitize_title( $label . '-' . $radio_count ) : sanitize_title( $label );
 
 		ob_start();
 
 		print( '<div class="coblocks-field">' );
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $radio_count );
 
 		if ( isset( $atts['isInline'] ) ) {
 
@@ -455,6 +475,8 @@ class CoBlocks_Form {
 
 		print( '</div>' );
 
+		$radio_count++;
+
 		return ob_get_clean();
 
 	}
@@ -474,14 +496,16 @@ class CoBlocks_Form {
 
 		}
 
+		static $select_count = 1;
+
 		$the_options = array_filter( $atts['options'] );
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Select', 'coblocks' );
-		$label_slug = sanitize_title( $label );
+		$label_slug = $select_count > 1 ? sanitize_title( $label . '-' . $select_count ) : sanitize_title( $label );
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $select_count );
 
 		printf(
 			'<select class="select coblocks-field" name="field-%1$s[value]">',
@@ -499,6 +523,8 @@ class CoBlocks_Form {
 		}
 
 		print( '</select>' );
+
+		$select_count++;
 
 		return ob_get_clean();
 
@@ -519,16 +545,18 @@ class CoBlocks_Form {
 
 		}
 
+		static $checkbox_count = 1;
+
 		$the_options = array_filter( $atts['options'] );
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Select', 'coblocks' );
-		$label_slug = sanitize_title( $label );
+		$label_slug = $checkbox_count > 1 ? sanitize_title( $label . '-' . $checkbox_count ) : sanitize_title( $label );
 
 		ob_start();
 
 		print( '<div class="coblocks-field">' );
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $checkbox_count );
 
 		if ( isset( $atts['isInline'] ) ) {
 
@@ -557,6 +585,8 @@ class CoBlocks_Form {
 
 		print( '</div>' );
 
+		$checkbox_count++;
+
 		return ob_get_clean();
 
 	}
@@ -570,19 +600,23 @@ class CoBlocks_Form {
 	 */
 	public function render_field_website( $atts ) {
 
+		static $website_count = 1;
+
 		$label         = isset( $atts['label'] ) ? $atts['label'] : __( 'Website', 'coblocks' );
-		$label_slug    = sanitize_title( $label );
+		$label_slug    = $website_count > 1 ? sanitize_title( $label . '-' . $website_count ) : sanitize_title( $label );
 		$required_attr = ( isset( $atts['required'] ) && $atts['required'] ) ? 'required' : '';
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $website_count );
 
 		?>
 
 		<input type="url" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--website" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
+
+		$website_count++;
 
 		return ob_get_clean();
 
@@ -597,21 +631,25 @@ class CoBlocks_Form {
 	 */
 	public function render_field_hidden( $atts ) {
 
+		static $hidden_count = 1;
+
 		$atts['hidden'] = true;
 
 		$value      = isset( $atts['value'] ) ? $atts['value'] : '';
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Hidden', 'coblocks' );
-		$label_slug = sanitize_title( $label );
+		$label_slug = $hidden_count > 1 ? sanitize_title( $label . '-' . $hidden_count ) : sanitize_title( $label );
 
 		ob_start();
 
-		$this->render_field_label( $atts, $label );
+		$this->render_field_label( $atts, $label, $hidden_count );
 
 		?>
 
 		<input type="hidden" value="<?php echo esc_attr( $value ); ?>" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--hidden" />
 
 		<?php
+
+		$hidden_count++;
 
 		return ob_get_clean();
 
@@ -620,15 +658,16 @@ class CoBlocks_Form {
 	/**
 	 * Generate the form field label.
 	 *
-	 * @param  array $atts Block attributes.
+	 * @param  array $atts        Block attributes.
 	 * @param  mixed $field_label Block content.
+	 * @param  int   $count       Number of times the field has been rendered in the form.
 	 *
 	 * @return mixed Form field label markup.
 	 */
-	public function render_field_label( $atts, $field_label ) {
+	public function render_field_label( $atts, $field_label, $count = 1 ) {
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : $field_label;
-		$label_slug = sanitize_title( $label );
+		$label_slug = $count > 1 ? sanitize_title( $label . '-' . $count ) : sanitize_title( $label );
 
 		/**
 		 * Filter the required text in the field label.
