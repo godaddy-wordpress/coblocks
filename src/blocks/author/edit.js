@@ -60,6 +60,8 @@ class AuthorEdit extends Component {
 			name,
 		} = attributes;
 
+		const hasImage = !! imgUrl;
+
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.addImage }
@@ -97,28 +99,29 @@ class AuthorEdit extends Component {
 					/>
 				) }
 				<div className={ classes } style={ styles }>
-					{ ( !! isSelected || clientId === selectedParentClientId ) ? { dropZone } &&
-					<figure className={ `${ className }__avatar` }>
-						<MediaUploadCheck>
-							<MediaUpload
-								onSelect={ onUploadImage }
-								allowedTypes={ [ 'image' ] }
-								value={ imgUrl }
-								render={ ( { open } ) => (
-									<Button onClick={ open }>
-										{ ! imgUrl ?
-											<Dashicon icon="format-image" /> :
-											<img className={ `${ className }__avatar-img` }
-												src={ imgUrl }
-												alt="avatar"
-											/>
-										}
-									</Button>
-								) }
-							>
-							</MediaUpload>
-						</MediaUploadCheck>
-					</figure> : null }
+					{ dropZone }
+					{ ( !! isSelected || clientId === selectedParentClientId || hasImage ) ?
+						<figure className={ `${ className }__avatar` }>
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={ onUploadImage }
+									allowedTypes={ [ 'image' ] }
+									value={ imgUrl }
+									render={ ( { open } ) => (
+										<Button onClick={ open }>
+											{ ! imgUrl ?
+												<Dashicon icon="format-image" /> :
+												<img className={ `${ className }__avatar-img` }
+													src={ imgUrl }
+													alt="avatar"
+												/>
+											}
+										</Button>
+									) }
+								>
+								</MediaUpload>
+							</MediaUploadCheck>
+						</figure> : null }
 					<div className={ `${ className }__content` }>
 						<RichText
 							identifier="name"
