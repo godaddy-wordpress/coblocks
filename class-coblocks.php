@@ -27,7 +27,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'COBLOCKS_VERSION', '1.17.2' );
-define( 'COBLOCKS_HAS_PRO', false );
 define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
