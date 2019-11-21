@@ -54,9 +54,9 @@ const settings = {
 			gridSize: 'lrg',
 			gutter: 5,
 			images: [
-				{ url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/St_Pancras_Railway_Station_2012-06-23.jpg/711px-St_Pancras_Railway_Station_2012-06-23.jpg' },
-				{ url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Beautiful_river_landscape_in_the_fall.jpg/640px-Beautiful_river_landscape_in_the_fall.jpg' },
-				{ url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Landscape_of_Jackson_Hole%2C_October_2010.jpg/640px-Landscape_of_Jackson_Hole%2C_October_2010.jpg' },
+				{ url: 'https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg' },
+				{ url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
+				{ url: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg' },
 			],
 		},
 	},

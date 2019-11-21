@@ -34,6 +34,10 @@ class Inspector extends Component {
 		this.props.setAttributes( { shadow: value } );
 	}
 
+	getLightboxHelp( checked ) {
+		return checked ? __( 'Image lightbox is enabled.', 'coblocks' ) : __( 'Toggle to enable the image lightbox.', 'coblocks' );
+	}
+
 	render() {
 		const {
 			attributes,
@@ -47,6 +51,7 @@ class Inspector extends Component {
 			shadow,
 			captions,
 			captionStyle,
+			lightbox,
 		} = attributes;
 
 		const gutterOptions = [
@@ -166,6 +171,12 @@ class Inspector extends Component {
 						onChange={ this.setCaptionStyleTo }
 						options={ captionOptions }
 					/> }
+					<ToggleControl
+						label={ __( 'Lightbox', 'coblocks' ) }
+						checked={ !! lightbox }
+						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+						help={ this.getLightboxHelp }
+					/>
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
 			</InspectorControls>
