@@ -179,6 +179,7 @@ class GalleryMasonryEdit extends Component {
 					{ ...this.props }
 					label={ __( 'Masonry', 'coblocks' ) }
 					icon={ icon }
+					gutter={ gutter }
 				/>
 			</Fragment> );
 
@@ -240,10 +241,9 @@ class GalleryMasonryEdit extends Component {
 									</li>
 								);
 							} ) }
-							{ isSelected ? masonryGalleryPlaceholder : null }
 						</Masonry>
 					</div>
-
+					{ isSelected ? masonryGalleryPlaceholder : null }
 				</div>
 			</Fragment>
 		);

@@ -167,6 +167,7 @@ class GalleryStackedEdit extends Component {
 					{ ...this.props }
 					label={ __( 'Stacked', 'coblocks' ) }
 					icon={ icon }
+					gutter={ gutter }
 				/>
 			</Fragment> );
 
