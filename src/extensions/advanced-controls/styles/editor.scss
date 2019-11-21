@@ -1,5 +1,5 @@
 .editor-styles-wrapper {
-	.wp-block.editor-block-list__block[data-coblocks-bottom-spacing="1"][data-type="core/image"] {
+	.wp-block[data-coblocks-bottom-spacing="1"][data-type="core/image"] {
 		.editor-rich-text {
 			display: none;
 		}
@@ -9,7 +9,7 @@
 		}
 	}
 
-	.wp-block.editor-block-list__block[data-coblocks-top-spacing="1"]:not(:first-child) {
+	.wp-block[data-coblocks-top-spacing="1"]:not(:first-child) {
 		margin-top: 0 !important;
 
 		// Ensure that blocks with custom margin settings using our dimensions control
@@ -30,7 +30,7 @@
 		}
 	}
 
-	.wp-block.editor-block-list__block[data-coblocks-bottom-spacing="1"]:not(:last-child) {
+	.wp-block[data-coblocks-bottom-spacing="1"]:not(:last-child) {
 		margin-bottom: 0 !important;
 
 		// Ensure that blocks with custom margin settings using our dimensions control
@@ -54,7 +54,7 @@
 		// Hide the inserter on blocks that follow a vertically resizable block
 		// that does not have margin bottom applied.
 		&[data-type="coblocks/map"] {
-			+ .editor-block-list__block[data-coblocks-bottom-spacing="1"] {
+			+ .wp-block[data-coblocks-bottom-spacing="1"] {
 				> .editor-block-list__insertion-point {
 					display: none;
 				}
@@ -73,12 +73,10 @@
 
 	//Make sure block is on the top z-index.
 	.wp-block {
-		&.editor-block-list__block {
-			&.is-selected {
-				&[data-coblocks-top-spacing="1"],
-				&[data-coblocks-bottom-spacing="1"] {
-					z-index: 29;
-				}
+		&.is-selected {
+			&[data-coblocks-top-spacing="1"],
+			&[data-coblocks-bottom-spacing="1"] {
+				z-index: 29;
 			}
 		}
 	}
