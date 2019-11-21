@@ -333,7 +333,6 @@ class GalleryCarouselEdit extends Component {
 						</div>
 					</div>
 				</ResizableBox>
-				{ carouselGalleryPlaceholder }
 				{ thumbnails &&
 					<div className={ className }>
 						<div
@@ -361,6 +360,7 @@ class GalleryCarouselEdit extends Component {
 						</div>
 					</div>
 				}
+				{ carouselGalleryPlaceholder }
 				{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
 					<RichText
 						tagName="figcaption"
