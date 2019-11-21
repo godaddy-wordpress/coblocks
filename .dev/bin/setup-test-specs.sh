@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-function join { local IFS="$1"; shift; echo "$*"; }
-
 CHANGEDFILES=$(git diff-tree --no-commit-id --name-only -r HEAD)
 SPECS=()
 SPECSTRING=''
@@ -28,13 +26,12 @@ do
   fi
 done
 
+# No spec files to run
 if [ ${#SPECS[@]} -eq 0 ]; then
   circleci-agent step halt
 fi
 
-GREEN='\033[0;33m'
-NC='\033[0m'
-printf "\n${GREEN}Running the following Cypress spec files: ${SPECS[@]}${NC}\n"
+printf "\n\033[0;33mRunning the following Cypress spec files: ${SPECS[@]}\033[0m\n"
 
 # Store $SPECSTRING value in /tmp/specstring file for later use
 echo $SPECSTRING > /tmp/specstring
