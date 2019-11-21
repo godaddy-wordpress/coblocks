@@ -22,8 +22,8 @@
 		}
 	}
 
-	//hide image placeholder - necessary in 5.3 untill GB 6.9+ is merged into core.
-	.wp-block-coblocks-gallery-collage__figure:nth-child(2) { 
+	//Hide image placeholder - necessary in 5.3 until GB 6.9+ is merged.
+	.wp-block-coblocks-gallery-collage__figure:nth-child(2) {
 		display: none;
 	}
 }

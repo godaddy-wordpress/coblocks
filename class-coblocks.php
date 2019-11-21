@@ -27,7 +27,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'COBLOCKS_VERSION', '1.17.2' );
-define( 'COBLOCKS_HAS_PRO', false );
 define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
@@ -113,7 +112,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-meta.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-google-map-block.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-accordion-ie-support.php';
-			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-settings.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
