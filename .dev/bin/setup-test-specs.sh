@@ -33,4 +33,8 @@ if [ ${#SPECS[@]} -eq 0 ]; then
   circleci-agent step halt
 fi
 
+GREEN='\033[0;33m'
+NC='\033[0m'
+echo "\n${GREEN}Running the following Cypress spec files: ${SPECS[@]}${NC}\n"
+
 source $BASH_ENV
