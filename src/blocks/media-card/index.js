@@ -53,7 +53,7 @@ const settings = {
 		attributes: {
 			align: 'wide',
 			mediaType: 'image',
-			mediaUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Enjoying_summer.jpg/400px-Enjoying_summer.jpg',
+			mediaUrl: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg',
 			mediaWidth: 45,
 		},
 	},
