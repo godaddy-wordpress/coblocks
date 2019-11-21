@@ -1,5 +1,5 @@
 .editor-styles-wrapper {
-	.wp-block.wp-block[data-coblocks-bottom-spacing="1"][data-type="core/image"] {
+	.wp-block[data-coblocks-bottom-spacing="1"][data-type="core/image"] {
 		.editor-rich-text {
 			display: none;
 		}
@@ -9,7 +9,7 @@
 		}
 	}
 
-	.wp-block.wp-block[data-coblocks-top-spacing="1"]:not(:first-child) {
+	.wp-block[data-coblocks-top-spacing="1"]:not(:first-child) {
 		margin-top: 0 !important;
 
 		// Ensure that blocks with custom margin settings using our dimensions control
@@ -30,7 +30,7 @@
 		}
 	}
 
-	.wp-block.wp-block[data-coblocks-bottom-spacing="1"]:not(:last-child) {
+	.wp-block[data-coblocks-bottom-spacing="1"]:not(:last-child) {
 		margin-bottom: 0 !important;
 
 		// Ensure that blocks with custom margin settings using our dimensions control
@@ -73,12 +73,10 @@
 
 	//Make sure block is on the top z-index.
 	.wp-block {
-		&.wp-block {
-			&.is-selected {
-				&[data-coblocks-top-spacing="1"],
-				&[data-coblocks-bottom-spacing="1"] {
-					z-index: 29;
-				}
+		&.is-selected {
+			&[data-coblocks-top-spacing="1"],
+			&[data-coblocks-bottom-spacing="1"] {
+				z-index: 29;
 			}
 		}
 	}
