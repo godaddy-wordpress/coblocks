@@ -1,14 +1,14 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.17.1\n"
+"Project-Id-Version: CoBlocks 1.17.2\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-11-12T17:50:33+00:00\n"
+"POT-Creation-Date: 2019-11-14T19:55:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -23,13 +23,13 @@ msgstr ""
 #. translators: content placeholder
 #: src/blocks/accordion/accordion-item/edit.js:24
 #: src/blocks/media-card/edit.js:75
-msgid "Add content..."
+msgid "Add content…"
 msgstr ""
 
 #. Accordion is the block name
 #. translators: Accordion is the block name
 #: src/blocks/accordion/accordion-item/edit.js:66
-msgid "Write accordion item title..."
+msgid "Write accordion item title…"
 msgstr ""
 
 #. block name
@@ -160,14 +160,14 @@ msgstr ""
 #. placeholder text for input box
 #. translators: placeholder text for input box
 #: src/blocks/alert/edit.js:104
-msgid "Write text..."
+msgid "Write text…"
 msgstr ""
 
 #. placeholder text for input box
 #. translators: placeholder text for input box
 #: src/blocks/alert/edit.js:95
 #: src/blocks/services/service/edit.js:205
-msgid "Write title..."
+msgid "Write title…"
 msgstr ""
 
 #. block name
@@ -373,13 +373,13 @@ msgid "Username"
 msgstr ""
 
 #: src/blocks/click-to-tweet/edit.js:109
-msgid "Add button..."
+msgid "Add button…"
 msgstr ""
 
 #. the text of the click to tweet element
 #. translators: the text of the click to tweet element
 #: src/blocks/click-to-tweet/edit.js:82
-msgid "Add a quote to tweet..."
+msgid "Add a quote to tweet…"
 msgstr ""
 
 #. block name
@@ -489,7 +489,7 @@ msgstr ""
 #. content placeholder
 #. translators: content placeholder
 #: src/blocks/features/feature/edit.js:40
-msgid "Add feature title..."
+msgid "Add feature title…"
 msgstr ""
 
 #. content placeholder
@@ -637,7 +637,7 @@ msgid "Add Menu Section"
 msgstr ""
 
 #: src/blocks/food-and-drinks/edit.js:27
-msgid "Menu title..."
+msgid "Menu title…"
 msgstr ""
 
 #. block style
@@ -714,7 +714,7 @@ msgid "Remove Image"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:225
-msgid "Add title..."
+msgid "Add title…"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:276
@@ -722,7 +722,7 @@ msgid "Hot"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:386
-msgid "Add description..."
+msgid "Add description…"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:395
@@ -1395,6 +1395,7 @@ msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
 #: src/blocks/gallery-carousel/edit.js:380
+#: src/blocks/gallery-collage/edit.js:183
 #: src/blocks/gif/edit.js:244
 #: src/blocks/gist/edit.js:103
 #: src/components/block-gallery/gallery-image.js:230
@@ -1473,10 +1474,6 @@ msgstr ""
 #: src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
-msgstr ""
-
-#: src/blocks/gallery-collage/edit.js:183
-msgid "Write caption..."
 msgstr ""
 
 #. block name
@@ -1754,7 +1751,7 @@ msgid "Gist URL"
 msgstr ""
 
 #: src/blocks/gist/edit.js:129
-msgid "Add GitHub Gist URL..."
+msgid "Add GitHub Gist URL…"
 msgstr ""
 
 #: src/blocks/gist/gist.js:138
@@ -1940,7 +1937,7 @@ msgid "Bottom Right"
 msgstr ""
 
 #: src/blocks/highlight/edit.js:113
-msgid "Add highlighted text..."
+msgid "Add highlighted text…"
 msgstr ""
 
 #. block name
@@ -3351,7 +3348,7 @@ msgstr ""
 #. content placeholder
 #. translators: content placeholder
 #: src/blocks/media-card/edit.js:65
-msgid "Add heading..."
+msgid "Add heading…"
 msgstr ""
 
 #. block name
@@ -3424,15 +3421,15 @@ msgstr ""
 msgid "Max Width"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:100
-msgid "Media"
+#: src/blocks/media-card/media-container.js:101
+msgid "Media area"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:120
+#: src/blocks/media-card/media-container.js:121
 msgid "Drop to replace media"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:37
+#: src/blocks/media-card/media-container.js:38
 msgid "Edit media"
 msgstr ""
 
@@ -3945,7 +3942,7 @@ msgstr ""
 #. content placeholder
 #. translators: content placeholder
 #: src/blocks/services/service/edit.js:213
-msgid "Write description..."
+msgid "Write description…"
 msgstr ""
 
 #. block name

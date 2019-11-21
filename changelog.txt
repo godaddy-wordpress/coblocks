@@ -1,4 +1,16 @@
 
+1.17.2 / 2019-11-14
+===================
+
+### Bug Fixes
+* Fix [posts block render loop](https://github.com/godaddy/coblocks/pull/1131)
+* Fix [posts grid not displaying as columns](https://github.com/godaddy/coblocks/pull/1127)
+
+### Enhancements
+* [Replace Media Card block MediaPlaceholder icon](https://github.com/godaddy/coblocks/pull/1125) with image/video icon
+* [Remove](https://github.com/godaddy/coblocks/pull/1124) unused example images
+* [Replace](https://github.com/godaddy/coblocks/pull/1119) ... with horizontal ellipsis (…)
+
 1.17.1 / 2019-11-12
 ===================
 

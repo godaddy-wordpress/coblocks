@@ -24,7 +24,7 @@ const TokenList = wp.tokenList;
 const ALLOWED_BLOCKS = [ 'coblocks/food-item' ];
 
 const TEMPLATE = [
-	[ 'core/heading', { level: 3, placeholder: __( 'Menu title...', 'coblocks' ), align: 'center' } ],
+	[ 'core/heading', { level: 3, placeholder: __( 'Menu title…', 'coblocks' ), align: 'center' } ],
 	[ 'coblocks/food-item' ],
 	[ 'coblocks/food-item' ],
 ];

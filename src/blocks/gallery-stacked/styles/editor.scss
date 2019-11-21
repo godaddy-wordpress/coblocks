@@ -1,4 +1,4 @@
-.editor-block-list__block[data-type="coblocks/gallery-stacked"] {
+.wp-block[data-type="coblocks/gallery-stacked"] {
 	&[data-align="left"],
 	&[data-align="right"] {
 		.wp-block-coblocks-gallery-stacked {
@@ -15,26 +15,13 @@
 		width: 100% !important;
 	}
 
-	// Fixes issue where the outline does not fully render due to the outside nature of the core outline style applied.
-	.is-appender,
-	.components-coblocks-gallery-uploader {
-		border: 1px dashed $dark-gray-150;
-		margin-bottom: 0; // Remove unnecessary margin applied to the core appender.
-		outline: none;
-		width: 100%;
-
-		&:hover {
-			border-color: $dark-gray-500;
-		}
-	}
-
-	li:last-child .coblocks-gallery--figure {
-		width: 100% !important;
-	}
-
 	// Tweak the position of the figcaption if Custom URL is set.
 	.components-coblocks-gallery-item__image-link + img + .editor-rich-text {
 		margin-bottom: 35px;
+	}
+
+	li:nth-last-of-type(1) figure {
+		margin-bottom: 0 !important;
 	}
 }
 
@@ -50,4 +37,12 @@
 			display: none;
 		}
 	}
+}
+
+// Needed until GB 6.9 is merged into core or backward support.
+// Hide the placeholder when not selected.
+.editor-block-list__block[data-type="coblocks/gallery-stacked"]:not(.is-selected) {
+	div.components-form-file-upload {
+		display: none;
+	} 
 }

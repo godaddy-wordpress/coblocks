@@ -89,7 +89,7 @@ export class Edit extends Component {
 			align,
 		} = attributes;
 
-		const classes = classnames( `${ className }__content`,
+		const classes = classnames( 'wp-block-coblocks-highlight__content',
 			backgroundColor && {
 				'has-background': backgroundColor.color,
 				[ backgroundColor.class ]: backgroundColor.class,
@@ -110,7 +110,7 @@ export class Edit extends Component {
 				<p className={ className } style={ { textAlign: align } }>
 					<RichText
 						tagName="mark"
-						placeholder={ __( 'Add highlighted text...', 'coblocks' ) }
+						placeholder={ __( 'Add highlighted text…', 'coblocks' ) }
 						value={ content }
 						onChange={ ( value ) => setAttributes( { content: value } ) }
 						onMerge={ mergeBlocks }

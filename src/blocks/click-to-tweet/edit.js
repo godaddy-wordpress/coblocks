@@ -79,11 +79,11 @@ class Edit extends Component {
 						tagName="p"
 						multiline="false"
 						/* translators: the text of the click to tweet element */
-						placeholder={ __( 'Add a quote to tweet...', 'coblocks' ) }
+						placeholder={ __( 'Add a quote to tweet…', 'coblocks' ) }
 						value={ content }
 						formattingControls={ [] } // disable controls
 						className={ classnames(
-							`${ className }__text`, {
+							'wp-block-coblocks-click-to-tweet__text', {
 								'has-text-color': textColor.color,
 								[ textColor.class ]: textColor.class,
 								[ fontSize.class ]: fontSize.class,
@@ -106,11 +106,11 @@ class Edit extends Component {
 					<RichText
 						tagName="span"
 						multiline="false"
-						placeholder={ __( 'Add button...', 'coblocks' ) }
+						placeholder={ __( 'Add button…', 'coblocks' ) }
 						value={ buttonText }
 						formattingControls={ [] } // disable controls
 						className={ classnames(
-							`${ className }__twitter-btn`, {
+							'wp-block-coblocks-click-to-tweet__twitter-btn', {
 								'has-button-color': buttonColor.color,
 								[ buttonColor.class ]: buttonColor.class,
 							}

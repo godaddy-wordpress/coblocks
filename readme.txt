@@ -6,7 +6,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.17.1
+Stable tag: 1.17.2
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,60 +115,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-### Features
-* Add [support for WordPress 5.3](https://github.com/godaddy/coblocks/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aclosed+label%3A%22wp+5.3%22)
-* Add [support for the TwentyTwenty theme](https://github.com/godaddy/coblocks/pulls?q=is%3Apr+is%3Aclosed+label%3A%22%5BTheme%5D+2020%22)
-* Introduce [Select Form block](https://github.com/godaddy/coblocks/pull/1072) field
-* Introduce [Checkbox Form block](https://github.com/godaddy/coblocks/pull/1072) field
-* Introduce [Website Form block](https://github.com/godaddy/coblocks/pull/1072) field
-* Introduce [Hidden Form block](https://github.com/godaddy/coblocks/pull/1072) field
-
 ### Enhancements
-* Add [block movers](https://github.com/godaddy/coblocks/pull/1100) to Pricing Table items
-* Tweak [Dynamic HR styling](https://github.com/godaddy/coblocks/pull/1109) for TwentyTwenty
-* [Remove CoBlocks getting started guide](https://github.com/godaddy/coblocks/pull/1097)
-* Ensure [SVGs which provide additional context are accessible](https://github.com/godaddy/coblocks/pull/1098)
-* [Improve translation](https://github.com/godaddy/coblocks/pull/1102) support
-* Bump WordPress [Core support to 5.3](https://github.com/godaddy/coblocks/pull/1065)
-* Add [translatable default values](https://github.com/godaddy/coblocks/pull/1101) for the Form block and fields
-* Tweak [VisualDropdown component styling](https://github.com/godaddy/coblocks/pull/1096) for WordPress 5.3
-* Tweak [DimensionsControl component styling](https://github.com/godaddy/coblocks/pull/1056) for WordPress 5.3
-* Allow [theme colors in Row block](https://github.com/godaddy/coblocks/pull/1055) placeholder
-* Add [block preview for Collage Gallery](https://github.com/godaddy/coblocks/pull/1071) block
-* Use BlockIcon component for [Placeholder Icons](https://github.com/godaddy/coblocks/pull/1085)
-* [Enable certain core blocks in the form block](https://github.com/godaddy/coblocks/pull/1091)
-* [Improve UX of Author block text placeholders](https://github.com/godaddy/coblocks/pull/1076)
-* Enhance [DimensionsControls with vw and vh](https://github.com/godaddy/coblocks/pull/1087) units
-* [Clean up Gist block toolbar](https://github.com/godaddy/coblocks/pull/1089)
-* Switch [i18n string management to a JSON-based system](https://github.com/godaddy/coblocks/pull/1073)
-* Improve [Posts block stability](https://github.com/godaddy/coblocks/pull/1069) through block validation testing
-* Improve [Collage Gallery block stability](https://github.com/godaddy/coblocks/pull/1075) through block validation testing
-* Improve [Post Carousel block stability](https://github.com/godaddy/coblocks/pull/1070) through block validation testing
-* Improve [Social Profiles block stability](https://github.com/godaddy/coblocks/pull/1057) through block validation testing
-* Improve [Share block stability](https://github.com/godaddy/coblocks/pull/1059) through block validation testing
-* Improve [Shape Divider block stability](https://github.com/godaddy/coblocks/pull/1060) through block validation testing
-* Improve [Services block stability](https://github.com/godaddy/coblocks/pull/1034) through block validation testing
-* Improve [Row block stability](https://github.com/godaddy/coblocks/pull/1032) through block validation testing
-* Use [number input for height controls](https://github.com/godaddy/coblocks/pull/1013) Carousel block
-* [Replace "Cheating Huh?"](https://github.com/godaddy/coblocks/pull/1042) with a less insulting message
-* Add TwentyTwenty as an [auto-generated theme classes](https://github.com/godaddy/coblocks/pull/1078)
-* Update code style for the [latest WordPress Core Guidelines](https://github.com/godaddy/coblocks/pull/1113)
+* [Replace Media Card block MediaPlaceholder icon](https://github.com/godaddy/coblocks/pull/1125) with image/video icon
+* [Remove](https://github.com/godaddy/coblocks/pull/1124) unused example images
+* [Replace](https://github.com/godaddy/coblocks/pull/1119) ... with horizontal ellipsis (…)
 
 ### Bug Fixes
-* [Use string name](https://github.com/godaddy/coblocks/pull/1115) in server side rendered block registration
-* Fix Grunt build issues (https://github.com/godaddy/coblocks/pull/1114)
-* Fix [label position on Gutter and Thumbnail](https://github.com/godaddy/coblocks/pull/1112) size controls
-* [Remove custom colors panel](https://github.com/godaddy/coblocks/pull/1108) from Heading block
-* [Add proper !important styles](https://github.com/godaddy/coblocks/pull/1107) for the advanced top/bottom margin
-* Use the [jQuery global to avoid script conflicts](https://github.com/godaddy/coblocks/pull/1038) with Gif block
-* Fix code [display styles of the Gist block](https://github.com/godaddy/coblocks/pull/1066) with the TwentyTwenty theme
-* [Improve the column control](https://github.com/godaddy/coblocks/pull/1084) of the Posts and Post Carousel blocks
-* Remove preview [example for the Shape Divider](https://github.com/godaddy/coblocks/pull/1077) block
-* [Replace _x() with __()](https://github.com/godaddy/coblocks/pull/1094) translation functions due to unexpected bug in Core
-* Tweak [Accordion block default background color](https://github.com/godaddy/coblocks/pull/1095) for improved theme compatibility
-* Fix [Collage Block layouts](https://github.com/godaddy/coblocks/pull/1067) for the TwentyTwenty theme
-* [Scope column styles](https://github.com/godaddy/coblocks/pull/1035) to the Posts block
-
-### 1.17.1
-* Add server rendered [block's json files](https://github.com/godaddy/coblocks/pull/1121) to build
-* Use external [Wikipedia CC licensed images](https://github.com/godaddy/coblocks/pull/1106) in block examples
+* Fix [posts block render loop](https://github.com/godaddy/coblocks/pull/1131)
+* Fix [posts grid not displaying as columns](https://github.com/godaddy/coblocks/pull/1127)
