@@ -54,9 +54,9 @@ const settings = {
 			gridSize: 'lrg',
 			gutter: 5,
 			images: [
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-1.jpg' },
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-2.jpg' },
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-3.jpg' },
+				{ url: 'https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg' },
+				{ url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
+				{ url: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg' },
 			],
 		},
 	},

@@ -39,6 +39,10 @@ module.exports = function( grunt ) {
 							'LICENSE',
 							'readme.txt',
 							'src/**/*.php',
+							'src/blocks/post-carousel/*.json',
+							'src/blocks/posts/*.json',
+							'src/blocks/share/*.json',
+							'src/blocks/social-profiles/*.json',
 							'dist/**',
 							'includes/**',
 							'!**/*.{ai,eps,psd}',
@@ -71,21 +75,6 @@ module.exports = function( grunt ) {
 			},
 		},
 
-		sass: {
-			options: {
-				implementation: require( 'node-sass' ),
-				sourceMap: false,
-			},
-		},
-
-		cssmin: {
-			options: {
-				processImport: false,
-				roundingPrecision: -1,
-				shorthandCompacting: false,
-			},
-		},
-
 		uglify: {
 			options: {
 				ASCIIOnly: true,
@@ -114,17 +103,6 @@ module.exports = function( grunt ) {
 				cwd: '.wordpress-org/',
 				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
 				dest: '.wordpress-org/',
-			},
-		},
-
-		watch: {
-			css: {
-				files: [ 'src/styles/**/*.scss' ],
-				tasks: [ 'sass', 'cssmin' ],
-			},
-			js: {
-				files: [ 'src/js/**/*.js' ],
-				tasks: [ 'uglify' ],
 			},
 		},
 
@@ -210,9 +188,9 @@ module.exports = function( grunt ) {
 
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
-	grunt.registerTask( 'default', [ 'sass', 'cssmin', 'uglify', 'shell:cgb_start' ] );
+	grunt.registerTask( 'default', [ 'uglify', 'shell:cgb_start' ] );
 	grunt.registerTask( 'check', [ 'devUpdate' ] );
-	grunt.registerTask( 'build', [ 'shell:cgb_build', 'sass', 'cssmin', 'uglify', 'imagemin', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
+	grunt.registerTask( 'build', [ 'shell:cgb_build', 'uglify', 'imagemin', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
 	grunt.registerTask( 'update-pot', [ 'shell:translations' ] );
 	grunt.registerTask( 'version', [ 'replace' ] );
 };

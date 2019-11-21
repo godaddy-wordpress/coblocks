@@ -12,6 +12,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 import {
 	PanelBody,
+	PanelRow,
 	ToggleControl,
 	RangeControl,
 	QueryControls,
@@ -89,7 +90,7 @@ const Inspector = props => {
 		setAttributes( changedAttributes );
 	};
 
-	if ( isHorizontalStyle && columns !== 1 ) {
+	if ( isHorizontalStyle && columns > 2 ) {
 		columnsCountOnChange( 2 );
 	}
 
@@ -145,22 +146,24 @@ const Inspector = props => {
 							}
 						) }
 					>
-						<ButtonGroup aria-label={ __( 'Thumbnail Size', 'coblocks' ) }>
-							{ sizeOptions.map( ( option ) => {
-								const isCurrent = imageSize === option.value;
-								return (
-									<Button
-										key={ `option-${ option.value }` }
-										isLarge
-										isPrimary={ isCurrent }
-										aria-pressed={ isCurrent }
-										onClick={ () => setAttributes( { imageSize: option.value } ) }
-									>
-										{ option.shortName }
-									</Button>
-								);
-							} ) }
-						</ButtonGroup>
+						<PanelRow>
+							<ButtonGroup aria-label={ __( 'Thumbnail Size', 'coblocks' ) }>
+								{ sizeOptions.map( ( option ) => {
+									const isCurrent = imageSize === option.value;
+									return (
+										<Button
+											key={ `option-${ option.value }` }
+											isLarge
+											isPrimary={ isCurrent }
+											aria-pressed={ isCurrent }
+											onClick={ () => setAttributes( { imageSize: option.value } ) }
+										>
+											{ option.shortName }
+										</Button>
+									);
+								} ) }
+							</ButtonGroup>
+						</PanelRow>
 					</BaseControl>
 				}
 			</Fragment>

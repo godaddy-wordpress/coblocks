@@ -163,7 +163,7 @@
 	}
 
 	// This max-width is used to constrain the main editor column, not children.
-	.editor-block-list__block {
+	.wp-block {
 		max-width: none;
 	}
 
@@ -490,7 +490,7 @@ div[data-type="coblocks/row"].is-resizing .has-huge-gutter .components-resizable
 }
 
 .wp-block[data-type="coblocks/row"][data-columns="1"] {
-	.editor-block-list__block {
+	.wp-block {
 		max-width: 100% !important;
 	}
 }

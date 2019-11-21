@@ -10,7 +10,7 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl, SelectControl, ButtonGroup, Button, BaseControl } from '@wordpress/components';
+import { PanelBody, PanelRow, ToggleControl, SelectControl, ButtonGroup, Button, BaseControl } from '@wordpress/components';
 
 /**
  * Inspector controls
@@ -34,6 +34,10 @@ class Inspector extends Component {
 		this.props.setAttributes( { shadow: value } );
 	}
 
+	getLightboxHelp( checked ) {
+		return checked ? __( 'Image lightbox is enabled.', 'coblocks' ) : __( 'Toggle to enable the image lightbox.', 'coblocks' );
+	}
+
 	render() {
 		const {
 			attributes,
@@ -47,6 +51,7 @@ class Inspector extends Component {
 			shadow,
 			captions,
 			captionStyle,
+			lightbox,
 		} = attributes;
 
 		const gutterOptions = [
@@ -112,42 +117,46 @@ class Inspector extends Component {
 				<PanelBody title={ __( 'Collage Settings', 'coblocks' ) }>
 					{ enableGutter &&
 						<BaseControl label={ __( 'Gutter', 'coblocks' ) }>
-							<ButtonGroup aria-label={ __( 'Gutter', 'coblocks' ) }>
-								{ gutterOptions.map( ( option ) => {
-									const isCurrent = gutter === option.value;
-									return (
-										<Button
-											key={ `option-${ option.value }` }
-											isLarge
-											isPrimary={ isCurrent }
-											aria-pressed={ isCurrent }
-											onClick={ () => setAttributes( { gutter: option.value } ) }
-										>
-											{ option.shortName }
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
+							<PanelRow>
+								<ButtonGroup aria-label={ __( 'Gutter', 'coblocks' ) }>
+									{ gutterOptions.map( ( option ) => {
+										const isCurrent = gutter === option.value;
+										return (
+											<Button
+												key={ `option-${ option.value }` }
+												isLarge
+												isPrimary={ isCurrent }
+												aria-pressed={ isCurrent }
+												onClick={ () => setAttributes( { gutter: option.value } ) }
+											>
+												{ option.shortName }
+											</Button>
+										);
+									} ) }
+								</ButtonGroup>
+							</PanelRow>
 						</BaseControl>
 					}
 					{ ! enableGutter &&
 						<BaseControl label={ __( 'Shadow', 'coblocks' ) }>
-							<ButtonGroup aria-label={ __( 'Shadow', 'coblocks' ) }>
-								{ shadowOptions.map( ( option ) => {
-									const isCurrent = shadow === option.value;
-									return (
-										<Button
-											key={ `option-${ option.value }` }
-											isLarge
-											isPrimary={ isCurrent }
-											aria-pressed={ isCurrent }
-											onClick={ () => setAttributes( { shadow: option.value } ) }
-										>
-											{ option.shortName }
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
+							<PanelRow>
+								<ButtonGroup aria-label={ __( 'Shadow', 'coblocks' ) }>
+									{ shadowOptions.map( ( option ) => {
+										const isCurrent = shadow === option.value;
+										return (
+											<Button
+												key={ `option-${ option.value }` }
+												isLarge
+												isPrimary={ isCurrent }
+												aria-pressed={ isCurrent }
+												onClick={ () => setAttributes( { shadow: option.value } ) }
+											>
+												{ option.shortName }
+											</Button>
+										);
+									} ) }
+								</ButtonGroup>
+							</PanelRow>
 						</BaseControl>
 					}
 					{ enableCaptions && <ToggleControl
@@ -162,6 +171,12 @@ class Inspector extends Component {
 						onChange={ this.setCaptionStyleTo }
 						options={ captionOptions }
 					/> }
+					<ToggleControl
+						label={ __( 'Lightbox', 'coblocks' ) }
+						checked={ !! lightbox }
+						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+						help={ this.getLightboxHelp }
+					/>
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
 			</InspectorControls>

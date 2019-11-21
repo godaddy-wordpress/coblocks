@@ -53,8 +53,8 @@ const settings = {
 		attributes: {
 			align: 'wide',
 			mediaType: 'image',
-			mediaUrl: '/wp-content/plugins/coblocks/dist/images/examples/gallery-5.jpg',
-			mediaWidth: 65,
+			mediaUrl: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg',
+			mediaWidth: 45,
 		},
 	},
 	attributes,

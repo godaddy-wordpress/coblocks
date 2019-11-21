@@ -19,7 +19,7 @@ const save = ( { attributes, className } ) => {
 
 	const classes = classnames(
 		className, {
-			'has-text-color': color || customColor,
+			'has-background': color || customColor,
 			[ colorClass ]: colorClass,
 		} );
 

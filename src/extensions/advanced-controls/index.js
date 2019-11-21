@@ -115,7 +115,7 @@ const withAdvancedControls = createHigherOrderComponent( BlockEdit => {
 									!! isStackedOnMobile ?
 										__( 'Responsiveness is enabled.', 'coblocks' ) :
 										__(
-											'Toggle to stack elements on top of each other on smaller viewports.'
+											'Toggle to stack elements on top of each other on smaller viewports.', 'coblocks'
 										)
 								}
 							/>

@@ -151,3 +151,10 @@
 		transform: scale(1.125);
 	}
 }
+
+.has-lightbox {
+	figure:hover {
+		cursor: zoom-in;
+	}
+}
+

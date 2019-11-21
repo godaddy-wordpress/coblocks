@@ -67,11 +67,11 @@ const settings = {
 		attributes: {
 			gutter: 1,
 			images: [
-				{ index: '0', url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-1.jpg' },
-				{ index: '1', url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-2.jpg' },
-				{ index: '2', url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-3.jpg' },
-				{ index: '3', url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-4.jpg' },
-				{ index: '4', url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-5.jpg' },
+				{ index: 0, url: 'https://s.w.org/images/core/5.3/Sediment_off_the_Yucatan_Peninsula.jpg' },
+				{ index: 1, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
+				{ index: 2, url: 'https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg' },
+				{ index: 3, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
+				{ index: 4, url: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg' },
 
 			],
 		},
