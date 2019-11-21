@@ -50,7 +50,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 		$custom_text_color = is_array( $attributes ) && isset( $attributes['customTextColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['textColor'] ) ) ? "color: {$attributes['customTextColor']};" : '';
 		$align             = is_array( $attributes ) && isset( $attributes['align'] ) ? "align{$attributes['align']} " : '';
 
-		$class = 'wp-block-coblocks-events md:flex justify-between';
+		$class = 'wp-block-coblocks-events justify-between';
 		if ( isset( $attributes['className'] ) ) {
 			$class .= ' ' . $attributes['className'];
 		}
@@ -63,7 +63,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 
 		foreach ( $events as $i => $event ) {
 			$page_num       = (int) ( $i / $attributes['eventsToShow'] );
-			$events_layout .= sprintf( '<div class="wp-block-coblocks-event-item" data-page="%1$s">', $page_num );
+			$events_layout .= sprintf( '<div class="wp-block-coblocks-event-item md:flex" data-page="%1$s">', $page_num );
 
 			$dtstart           = $ical->ical_date_to_date_time( $event->dtstart_array[3] );
 			$dtend             = $ical->ical_date_to_date_time( $event->dtend_array[3] );

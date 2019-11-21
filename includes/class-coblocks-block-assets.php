@@ -205,18 +205,17 @@ class CoBlocks_Block_Assets {
 			);
 		}
 
-		// @todo: Uncomment this block. Temporarily disabled.
 		// @codingStandardsIgnoreStart
 		// Events block.
-		// if ( has_block( $this->slug . '/events' ) ) {
-		// 	wp_enqueue_script(
-		// 		$this->slug . '-events',
-		// 		$dir . $this->slug . '-events-front' . COBLOCKS_ASSET_SUFFIX . '.js',
-		// 		array( 'jquery' ),
-		// 		COBLOCKS_VERSION,
-		// 		true
-		// 	);
-		// }
+		 if ( has_block( $this->slug . '/events' ) ) {
+		 	wp_enqueue_script(
+		 		$this->slug . '-events-front',
+		 		$dir . $this->slug . '-events-front' . COBLOCKS_ASSET_SUFFIX . '.js',
+		 		array( 'jquery' ),
+		 		COBLOCKS_VERSION,
+		 		true
+		 	);
+		 }
 		// @codingStandardsIgnoreEnd
 	}
 

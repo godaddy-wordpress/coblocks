@@ -18,7 +18,7 @@
 
 	// Initially set only first page items to be shown
 	$( '.wp-block-coblocks-event-item' ).css( 'display', 'none' );
-	$( '.wp-block-coblocks-event-item[data-page="' + currentPage + '"]' ).css( 'display', 'initial' );
+	$( '.wp-block-coblocks-event-item[data-page="' + currentPage + '"]' ).css( 'display', 'flex' );
 
 	previousPageIconContainer.css( 'display', 'none' );
 
@@ -31,7 +31,7 @@
 		}
 		previousPageIconContainer.css( 'display', 'flex' );
 		$( '.wp-block-coblocks-event-item' ).css( 'display', 'none' );
-		$( '.wp-block-coblocks-event-item[data-page="' + currentPage + '"]' ).css( 'display', 'initial' );
+		$( '.wp-block-coblocks-event-item[data-page="' + currentPage + '"]' ).css( 'display', 'flex' );
 	} );
 
 	previousPageIconContainer.click( function() {
@@ -41,6 +41,6 @@
 			previousPageIconContainer.css( 'display', 'none' );
 		}
 		$( '.wp-block-coblocks-event-item' ).css( 'display', 'none' );
-		$( '.wp-block-coblocks-event-item[data-page="' + currentPage + '"]' ).css( 'display', 'initial' );
+		$( '.wp-block-coblocks-event-item[data-page="' + currentPage + '"]' ).css( 'display', 'flex' );
 	} );
 }( jQuery ) );
