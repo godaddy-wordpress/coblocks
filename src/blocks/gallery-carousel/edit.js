@@ -243,6 +243,9 @@ class GalleryCarouselEdit extends Component {
 					{ ...this.props }
 					label={ __( 'Carousel', 'coblocks' ) }
 					icon={ icon }
+					gutter={ gutter * 2 }
+					gutterMobile={ gutterMobile * 2 }
+					marginTop={ true }
 				/>
 			</Fragment> );
 
