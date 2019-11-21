@@ -4,8 +4,8 @@ function join { local IFS="$1"; shift; echo "$*"; }
 
 CHANGEDFILES=$(git diff-tree --no-commit-id --name-only -r HEAD)
 
-export SPECS=()
-export SPECSTRING=''
+export SPECS=() >> $BASH_ENV
+export SPECSTRING='' >> $BASH_ENV
 
 for FILE in $CHANGEDFILES
 do
@@ -32,3 +32,5 @@ done
 if [ ${#SPECS[@]} -eq 0 ]; then
   circleci-agent step halt
 fi
+
+source $BASH_ENV
