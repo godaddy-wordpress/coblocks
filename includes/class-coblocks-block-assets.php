@@ -187,19 +187,11 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Lightbox.
-		if ( has_block( $this->slug . '/gallery-masonry' ) || has_block( $this->slug . '/gallery-stacked' ) || has_block( $this->slug . '/gallery-offset' ) ) {
+		if ( has_block( $this->slug . '/gallery-masonry' ) || has_block( $this->slug . '/gallery-stacked' ) || has_block( $this->slug . '/gallery-collage' ) || has_block( $this->slug . '/gallery-offset' ) ) {
 			wp_enqueue_script(
 				$this->slug . '-lightbox',
 				$dir . $this->slug . '-lightbox' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
-				COBLOCKS_VERSION,
-				true
-			);
-
-			wp_enqueue_script(
-				$this->slug . '-masonry',
-				$dir . $this->slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
-				array( 'jquery', 'masonry', 'imagesloaded' ),
 				COBLOCKS_VERSION,
 				true
 			);
