@@ -66,3 +66,11 @@
 		opacity: 1;
 	}
 }
+
+// Needed until GB 6.9 is merged into core or backward support.
+// Hide the placeholder when not selected.
+.editor-block-list__block[data-type="coblocks/gallery-carousel"]:not(.is-selected) {
+		div.components-form-file-upload {
+			display: none;
+		} 
+}
