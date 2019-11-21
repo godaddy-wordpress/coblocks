@@ -19,7 +19,6 @@ import { compose } from '@wordpress/compose';
 import { withNotices, DropZone, Spinner, IconButton, Dashicon } from '@wordpress/components';
 import { MediaPlaceholder, RichText, URLInput } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
-import { withSelect } from '@wordpress/data';
 import { isBlobURL } from '@wordpress/blob';
 
 class GalleryCollageEdit extends Component {
@@ -329,11 +328,4 @@ class GalleryCollageEdit extends Component {
 	}
 }
 
-export default compose( [
-	withSelect( ( select ) => {
-		const { getSettings } = select( 'core/block-editor' );
-		const { mediaUpload } = getSettings();
-		return { mediaUpload };
-	} ),
-	withNotices,
-] )( GalleryCollageEdit );
+export default compose( [ withNotices ] )( GalleryCollageEdit );
