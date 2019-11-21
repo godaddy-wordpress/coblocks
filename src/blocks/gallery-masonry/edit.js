@@ -175,6 +175,7 @@ class GalleryMasonryEdit extends Component {
 				{ ...this.props }
 				label={ __( 'Masonry', 'coblocks' ) }
 				icon={ icon }
+				gutter={ gutter }
 			/> );
 
 		return (

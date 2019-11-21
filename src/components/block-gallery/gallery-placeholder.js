@@ -1,7 +1,6 @@
 /**
  * External Dependencies
  */
-import classnames from 'classnames';
 import { every, forEach, map } from 'lodash';
 
 /**
@@ -55,12 +54,7 @@ class GalleryPlaceholder extends Component {
 		const {
 			attributes,
 			gutter,
-			gutterMobile,
 			isSelected,
-			marginBottom,
-			marginLeft,
-			marginRight,
-			marginTop,
 		} = this.props;
 
 		const {
@@ -69,40 +63,34 @@ class GalleryPlaceholder extends Component {
 
 		const hasImages = !! images.length;
 
-		const classes = classnames(
-			'coblocks-gallery--figure', {
-				[ `has-margin-top-${ gutter }` ]: marginTop && gutter > 0,
-				[ `has-margin-top-mobile-${ gutterMobile }` ]: marginTop && gutterMobile > 0,
-				[ `has-margin-right-${ gutter }` ]: marginRight && gutter > 0,
-				[ `has-margin-right-mobile-${ gutterMobile }` ]: marginRight && gutterMobile > 0,
-				[ `has-margin-bottom-${ gutter }` ]: marginBottom && gutter > 0,
-				[ `has-margin-bottom-mobile-${ gutterMobile }` ]: marginBottom && gutterMobile > 0,
-				[ `has-margin-left-${ gutter }` ]: marginLeft && gutter > 0,
-				[ `has-margin-left-mobile-${ gutterMobile }` ]: marginLeft && gutterMobile > 0,
-			} );
+		const styles = {
+			marginTop: gutter + 'px',
+		};
 
 		return (
-			<MediaPlaceholder
-				addToGallery={ hasImages }
-				isAppender={ hasImages }
-				className={ classes }
-				disableMediaButtons={ hasImages && ! isSelected }
-				icon={ ! hasImages && <BlockIcon icon={ this.props.icon } /> }
-				labels={ {
-					title: ! hasImages && sprintf(
-						/* translators: %s: Type of gallery */
-						__( '%s Gallery', 'coblocks' ),
-						this.props.label
-					),
-					instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.', 'coblocks' ),
-				} }
-				onSelect={ this.onSelectImages }
-				accept="image/*"
-				allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
-				multiple
-				value={ hasImages ? images : undefined }
-				onError={ this.onUploadError }
-			/>
+			<div style={ styles }>
+				<MediaPlaceholder
+					addToGallery={ hasImages }
+					isAppender={ hasImages }
+					className="coblocks-gallery--figure"
+					disableMediaButtons={ hasImages && ! isSelected }
+					icon={ ! hasImages && <BlockIcon icon={ this.props.icon } /> }
+					labels={ {
+						title: ! hasImages && sprintf(
+							/* translators: %s: Type of gallery */
+							__( '%s Gallery', 'coblocks' ),
+							this.props.label
+						),
+						instructions: ! hasImages && __( 'Drag images, upload new ones or select files from your library.', 'coblocks' ),
+					} }
+					onSelect={ this.onSelectImages }
+					accept="image/*"
+					allowedTypes={ helper.ALLOWED_GALLERY_MEDIA_TYPES }
+					multiple
+					value={ hasImages ? images : undefined }
+					onError={ this.onUploadError }
+				/>
+			</div>
 		);
 	}
 }
