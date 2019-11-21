@@ -260,12 +260,12 @@ class CoBlocks_Form {
 
 			<div class="coblocks-form__inline-fields">
 				<div class="coblocks-form__inline-field">
-					<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="coblocks-field coblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
+					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-firstname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="coblocks-field coblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
 					<small class="coblocks-form__subtext"><?php echo esc_html( $label_first_name ); ?></small>
 				</div>
 
 				<div class="coblocks-form__inline-field">
-					<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
+					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-lastname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="coblocks-field coblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
 					<small class="coblocks-form__subtext"><?php echo esc_html( $label_last_name ); ?></small>
 				</div>
 			</div>
@@ -280,7 +280,7 @@ class CoBlocks_Form {
 
 		?>
 
-		<input type="text" id="<?php echo esc_attr( sanitize_title( $label ) ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--name" <?php echo esc_attr( $required_attr ); ?> />
+		<input type="text" id="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--name" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
 
