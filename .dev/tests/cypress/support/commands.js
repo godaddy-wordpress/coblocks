@@ -1,4 +1,4 @@
-import { loginToSite, createNewPost, disableGutenbergFeatures, getBlockName } from '../helpers';
+import { loginToSite, createNewPost, disableGutenbergFeatures } from '../helpers';
 
 before( function() {
   loginToSite();

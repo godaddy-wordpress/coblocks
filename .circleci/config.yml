@@ -185,8 +185,8 @@ jobs:
       - run:
           name: "Run end to end tests (Cypress.io)"
           command: |
-            touch wp_creds.json
-            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > wp_creds.json
+            touch .dev/tests/cypress/wp_creds.json
+            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > .dev/tests/cypress/wp_creds.json
             npm run test-e2e
           path: /tmp/wordpress/wp-content/plugins/coblocks
       # - store_artifacts:
