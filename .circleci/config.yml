@@ -136,6 +136,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Setup changed test files
+          command: |
+            bash .dev/bin/setup-test-specs.sh
+            if [ ${#SPECS[@]} -eq 0 ]; then
+              exit 0
+            fi
+      - run:
           name: Disable xdebug PHP extension
           command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - run:
@@ -187,13 +194,8 @@ jobs:
           command: |
             touch .dev/tests/cypress/wp_creds.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > .dev/tests/cypress/wp_creds.json
-            npm run test-e2e
+            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --spec "${SPECSTRING}"
           path: /tmp/wordpress/wp-content/plugins/coblocks
-      # - store_artifacts:
-      #     path: /tmp/artifacts/code-coverage/
-      #     destination: phpunit-coverage
-      # - store_test_results:
-      #     path: /tmp/artifacts/code-coverage/
 
   deploy:
     docker:
