@@ -228,7 +228,7 @@ class GalleryStackedEdit extends Component {
 								</li>
 							);
 						} ) }
-						{ isSelected ? stackedGalleryPlaceholder : null }
+						{ stackedGalleryPlaceholder }
 					</ul>
 				</div>
 			</Fragment>

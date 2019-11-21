@@ -181,7 +181,8 @@ class GalleryMasonryEdit extends Component {
 					icon={ icon }
 					gutter={ gutter }
 				/>
-			</Fragment> );
+			</Fragment>
+		);
 
 		if ( ! hasImages ) {
 			return masonryGalleryPlaceholder;
@@ -243,7 +244,7 @@ class GalleryMasonryEdit extends Component {
 							} ) }
 						</Masonry>
 					</div>
-					{ isSelected ? masonryGalleryPlaceholder : null }
+					{ masonryGalleryPlaceholder }
 				</div>
 			</Fragment>
 		);

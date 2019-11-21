@@ -361,7 +361,7 @@ class GalleryCarouselEdit extends Component {
 						</div>
 					</div>
 				}
-				{ isSelected ? carouselGalleryPlaceholder : null }
+				{ carouselGalleryPlaceholder }
 				{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
 					<RichText
 						tagName="figcaption"
