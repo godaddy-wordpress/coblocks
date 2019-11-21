@@ -62,7 +62,7 @@ const TEMPLATE = [
 						'core/heading',
 						{
 							/* translators: content placeholder */
-							placeholder: __( 'Add heading...', 'coblocks' ),
+							placeholder: __( 'Add heading…', 'coblocks' ),
 							/* translators: content placeholder */
 							content: __( 'Media Card', 'coblocks' ),
 							level: 3,
@@ -72,7 +72,7 @@ const TEMPLATE = [
 						'core/paragraph',
 						{
 							/* translators: content placeholder */
-							placeholder: __( 'Add content...', 'coblocks' ),
+							placeholder: __( 'Add content…', 'coblocks' ),
 							/* translators: content placeholder */
 							content: __( 'Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'coblocks' ),
 						},

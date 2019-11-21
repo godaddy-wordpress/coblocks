@@ -91,7 +91,7 @@ class CoBlocks_Accordion_IE_Support_Tests extends WP_UnitTestCase {
 		$post_id = wp_insert_post(
 			[
 				'post_author'  => 1,
-				'post_content' => '<!-- wp:coblocks/accordion --><div class="wp-block-coblocks-accordion"><!-- wp:coblocks/accordion-item {"title":"Accordion Title 1"} --><div class="wp-block-coblocks-accordion-item"><details><summary class="wp-block-coblocks-accordion-item__title">Accordion Title 1</summary><div class="wp-block-coblocks-accordion-item__content"><!-- wp:paragraph {"placeholder":"Add content..."} --><p>Accordion Content 1</p><!-- /wp:paragraph --></div></details></div><!-- /wp:coblocks/accordion-item --></div><!-- /wp:coblocks/accordion -->',
+				'post_content' => '<!-- wp:coblocks/accordion --><div class="wp-block-coblocks-accordion"><!-- wp:coblocks/accordion-item {"title":"Accordion Title 1"} --><div class="wp-block-coblocks-accordion-item"><details><summary class="wp-block-coblocks-accordion-item__title">Accordion Title 1</summary><div class="wp-block-coblocks-accordion-item__content"><!-- wp:paragraph {"placeholder":"Add content…"} --><p>Accordion Content 1</p><!-- /wp:paragraph --></div></details></div><!-- /wp:coblocks/accordion-item --></div><!-- /wp:coblocks/accordion -->',
 				'post_title'   => 'CoBlocks Accordion',
 				'post_status'  => 'publish',
 			]

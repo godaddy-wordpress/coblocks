@@ -1,4 +1,4 @@
-.editor-block-list__block[data-type="coblocks/dynamic-separator"] {
+.wp-block[data-type="coblocks/dynamic-separator"] {
 	.wp-block-coblocks-dynamic-separator {
 		&::before {
 			transition: width 300ms cubic-bezier(0.645, 0.045, 0.355, 1), max-width 300ms cubic-bezier(0.645, 0.045, 0.355, 1);

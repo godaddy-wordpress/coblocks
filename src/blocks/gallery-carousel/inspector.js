@@ -108,7 +108,7 @@ class Inspector extends Component {
 							}
 							{ ! responsiveHeight &&
 							<BaseControl
-								label={ __( 'Height in pixels' ) }
+								label={ __( 'Height in pixels', 'coblocks' ) }
 								className={ 'block-height-control' }
 							>
 								<input

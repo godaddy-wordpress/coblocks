@@ -1,4 +1,4 @@
-.editor-block-list__block[data-type="coblocks/form"] {
+.wp-block[data-type="coblocks/form"] {
 	.components-base-control,
 	.coblocks-option__input {
 		font-family: inherit;
@@ -161,7 +161,7 @@
 	}
 }
 
-.editor-block-list__block[data-type="coblocks/field-select"] .coblocks-field-multiple__add-option {
+.wp-block[data-type="coblocks/field-select"] .coblocks-field-multiple__add-option {
 	margin-left: 0;
 }
 

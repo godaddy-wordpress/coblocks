@@ -19,6 +19,7 @@ const save = ( { attributes } ) => {
 		rel,
 		target,
 		shadow,
+		lightbox,
 	} = attributes;
 
 	const classes = classnames( 'wp-block-coblocks-gallery-collage__figure', {
@@ -29,6 +30,7 @@ const save = ( { attributes } ) => {
 		<div className={ classnames( attributes.className, {
 			[ `has-filter-${ filter }` ]: filter !== 'none',
 			[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
+			'has-lightbox': lightbox,
 		} ) }>
 			<ul>
 				{ images.sort( ( a, b ) => parseInt( a.index ) - parseInt( b.index ) ).map( ( image, index ) => {
