@@ -3,9 +3,8 @@
 function join { local IFS="$1"; shift; echo "$*"; }
 
 CHANGEDFILES=$(git diff-tree --no-commit-id --name-only -r HEAD)
-
-export SPECS=() >> $BASH_ENV
-export SPECSTRING='' >> $BASH_ENV
+SPECS=()
+SPECSTRING=''
 
 for FILE in $CHANGEDFILES
 do
@@ -37,4 +36,5 @@ GREEN='\033[0;33m'
 NC='\033[0m'
 printf "\n${GREEN}Running the following Cypress spec files: ${SPECS[@]}${NC}\n"
 
-source $BASH_ENV
+# Store $SPECSTRING value in /tmp/specstring file for later use
+echo $SPECSTRING > /tmp/specstring
