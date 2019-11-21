@@ -14,10 +14,11 @@ import Inspector from './inspector';
  */
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { Component, Fragment } from '@wordpress/element';
 import { mediaUpload } from '@wordpress/editor';
-import { RichText, InnerBlocks, MediaUpload, MediaUploadCheck, withColors, withFontSizes } from '@wordpress/block-editor';
+import { withSelect, select } from '@wordpress/data';
+import { Component, Fragment } from '@wordpress/element';
 import { Button, Dashicon, DropZone } from '@wordpress/components';
+import { RichText, InnerBlocks, MediaUpload, MediaUploadCheck, withColors, withFontSizes } from '@wordpress/block-editor';
 
 class AuthorEdit extends Component {
 	constructor() {
@@ -43,12 +44,14 @@ class AuthorEdit extends Component {
 	render() {
 		const {
 			attributes,
-			className,
-			isSelected,
-			setAttributes,
 			backgroundColor,
-			textColor,
+			className,
+			clientId,
 			fontSize,
+			isSelected,
+			selectedParentClientId,
+			setAttributes,
+			textColor,
 		} = this.props;
 
 		const {
@@ -56,6 +59,8 @@ class AuthorEdit extends Component {
 			imgUrl,
 			name,
 		} = attributes;
+
+		const hasImage = !! imgUrl;
 
 		const dropZone = (
 			<DropZone
@@ -96,27 +101,28 @@ class AuthorEdit extends Component {
 				) }
 				<div className={ classes } style={ styles }>
 					{ dropZone }
-					<figure className={ `${ className }__avatar` }>
-						<MediaUploadCheck>
-							<MediaUpload
-								onSelect={ onUploadImage }
-								allowedTypes={ [ 'image' ] }
-								value={ imgUrl }
-								render={ ( { open } ) => (
-									<Button onClick={ open }>
-										{ ! imgUrl ?
-											<Dashicon icon="format-image" /> :
-											<img className={ `${ className }__avatar-img` }
-												src={ imgUrl }
-												alt="avatar"
-											/>
-										}
-									</Button>
-								) }
-							>
-							</MediaUpload>
-						</MediaUploadCheck>
-					</figure>
+					{ ( !! isSelected || clientId === selectedParentClientId || hasImage ) ?
+						<figure className={ `${ className }__avatar` }>
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={ onUploadImage }
+									allowedTypes={ [ 'image' ] }
+									value={ imgUrl }
+									render={ ( { open } ) => (
+										<Button onClick={ open }>
+											{ ! imgUrl ?
+												<Dashicon icon="format-image" /> :
+												<img className={ `${ className }__avatar-img` }
+													src={ imgUrl }
+													alt="avatar"
+												/>
+											}
+										</Button>
+									) }
+								>
+								</MediaUpload>
+							</MediaUploadCheck>
+						</figure> : null }
 					<div className={ `${ className }__content` }>
 						<RichText
 							identifier="name"
@@ -161,7 +167,19 @@ class AuthorEdit extends Component {
 	}
 }
 
+const applyWithSelect = withSelect( () => {
+	const selectedClientId = select( 'core/block-editor' ).getBlockSelectionStart();
+	const parentClientId = select( 'core/block-editor' ).getBlockRootClientId(
+		selectedClientId
+	);
+
+	return {
+		selectedParentClientId: parentClientId,
+	};
+} );
+
 export default compose( [
 	withColors( 'backgroundColor', { textColor: 'color' } ),
 	withFontSizes( 'fontSize' ),
+	applyWithSelect,
 ] )( AuthorEdit );
