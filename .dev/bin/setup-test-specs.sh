@@ -2,9 +2,7 @@
 
 function join { local IFS="$1"; shift; echo "$*"; }
 
-CHANGEDFILES=".dev/tests/cypress/support/commands.js .dev/tests/cypress/support/commands.js src/blocks/accordion/edit.js src/blocks/accordion/test/save.spec.js src/blocks/accordion/styles/editor.scss src/blocks/author/deprecated.js src/blocks/author/save.js src/blocks/alert/styles/editor.scss"
-
-# CHANGEDFILES=$(git diff-tree --no-commit-id --name-only -r HEAD)
+CHANGEDFILES=$(git diff-tree --no-commit-id --name-only -r HEAD)
 
 export SPECS=()
 export SPECSTRING=''
@@ -30,3 +28,7 @@ do
     fi
   fi
 done
+
+if [ ${#SPECS[@]} -eq 0 ]; then
+  circleci-agent step halt
+fi
