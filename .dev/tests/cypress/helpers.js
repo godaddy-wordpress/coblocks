@@ -224,7 +224,7 @@ export function clearBlocks() {
 export function getBlockName() {
 
   var specFile  = Cypress.spec['name'],
-      fileBase  = ( specFile.split( '/' ).pop().replace( '.js', '' ) ),
+      fileBase  = ( specFile.split( '/' ).pop().replace( '.cypress.js', '' ) ),
       blockName = fileBase.charAt( 0 ).toUpperCase() + fileBase.slice( 1 );
 
   return blockName;
@@ -238,7 +238,7 @@ export function getBlockName() {
 export function getBlockSlug() {
 
   var specFile  = Cypress.spec['name'],
-      fileBase  = ( specFile.split( '/' ).pop().replace( '.js', '' ) );
+      fileBase  = ( specFile.split( '/' ).pop().replace( '.cypress.js', '' ) );
 
   return fileBase;
 

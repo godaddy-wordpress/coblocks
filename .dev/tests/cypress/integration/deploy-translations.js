@@ -1,5 +1,5 @@
 const pkg     = require( '../../../../package.json' );
-const wpCreds = require( '../../../../wp_creds.json' );
+const wpCreds = require( './wp_creds.json' );
 
 describe( 'Deploy .po files from Coblocks to WordPress.org', function() {
 

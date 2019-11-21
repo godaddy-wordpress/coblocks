@@ -1,7 +1,7 @@
 /*
  * Include our constants
  */
-import * as helpers from '../../helpers';
+import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Accordion Block', function() {
 

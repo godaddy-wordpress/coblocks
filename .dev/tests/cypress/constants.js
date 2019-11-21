@@ -1,4 +1,4 @@
-var wpCreds     = require( '../../../wp_creds.json' ),
+var wpCreds     = require( './wp_creds.json' ),
     wpUsername  = wpCreds.wpUsername,
     wpPassword  = wpCreds.wpPassword,
     testURL     = wpCreds.testURL;
