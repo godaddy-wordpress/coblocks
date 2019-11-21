@@ -234,7 +234,7 @@ class GalleryMasonryEdit extends Component {
 							} ) }
 						</Masonry>
 					</div>
-					{ masonryGalleryPlaceholder }
+					{ isSelected ? masonryGalleryPlaceholder : null }
 				</div>
 			</Fragment>
 		);

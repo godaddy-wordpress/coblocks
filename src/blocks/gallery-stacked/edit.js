@@ -163,6 +163,7 @@ class GalleryStackedEdit extends Component {
 				{ ...this.props }
 				label={ __( 'Stacked', 'coblocks' ) }
 				icon={ icon }
+				gutter={ gutter }
 			/>
 		);
 
@@ -219,7 +220,7 @@ class GalleryStackedEdit extends Component {
 								</li>
 							);
 						} ) }
-						{ stackedGalleryPlaceholder }
+						{ isSelected ? stackedGalleryPlaceholder : null }
 					</ul>
 				</div>
 			</Fragment>
