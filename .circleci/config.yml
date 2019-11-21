@@ -138,9 +138,9 @@ jobs:
       - run:
           name: Setup changed test files
           command: |
-            source .dev/bin/setup-test-specs.sh
+            bash .dev/bin/setup-test-specs.sh
             if [ ${#SPECS[@]} -eq 0 ]; then
-              circleci-agent step halt
+              # circleci-agent step halt
             fi
       - run:
           name: Disable xdebug PHP extension
