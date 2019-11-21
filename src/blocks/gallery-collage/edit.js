@@ -35,6 +35,7 @@ class GalleryCollageEdit extends Component {
 
 		this.setupImageLocations = this.setupImageLocations.bind( this );
 		this.onSelectImage = this.onSelectImage.bind( this );
+		this.onUploadError = this.onUploadError.bind( this );
 		this.uploadImage = this.uploadImage.bind( this );
 		this.replaceImage = this.replaceImage.bind( this );
 		this.removeImage = this.removeImage.bind( this );
@@ -91,7 +92,14 @@ class GalleryCollageEdit extends Component {
 			allowedTypes: [ 'image' ],
 			filesList: files,
 			onFileChange: ( [ image ] ) => this.replaceImage( image, index ),
+			onError: this.onUploadError,
 		} );
+	}
+
+	onUploadError( message ) {
+		const { noticeOperations } = this.props;
+		noticeOperations.removeAllNotices();
+		noticeOperations.createErrorNotice( message );
 	}
 
 	replaceImage( image, index ) {
@@ -249,12 +257,19 @@ class GalleryCollageEdit extends Component {
 	}
 
 	renderPlaceholder( index ) {
+		const image = this.props.attributes.images.filter( image => parseInt( image.index ) === parseInt( index ) ).pop() || false;
+		const hasImage = !! image;
+
 		return (
 			<MediaPlaceholder
+				addToGallery={ true }
 				className={ classnames( 'wp-block-coblocks-gallery-collage__figure', {
 					[ `shadow-${ this.props.attributes.shadow }` ]: this.props.attributes.shadow,
 				} ) }
 				allowedTypes={ [ 'image' ] }
+				disableDropZone={ hasImage }
+				disableMediaButtons={ hasImage }
+				accept="image/*"
 				multiple={ false }
 				icon={ false }
 				labels={ {
@@ -262,6 +277,7 @@ class GalleryCollageEdit extends Component {
 					instructions: ' ',
 				} }
 				onSelect={ image => this.replaceImage( image, index ) }
+				onError={ this.onUploadError }
 			/>
 		);
 	}
@@ -302,7 +318,8 @@ class GalleryCollageEdit extends Component {
 									key={ `image-${ theIndex }` }
 									className={ classnames( 'wp-block-coblocks-gallery-collage__item', this.gutterClasses( index ) ) }
 								>
-									{ !! img.url ? this.renderImage( theIndex ) : this.renderPlaceholder( theIndex ) }
+									{ !! img.url ? this.renderImage( theIndex ) : null }
+									{ this.renderPlaceholder( theIndex ) }
 								</li>
 							);
 						} ) }
@@ -313,6 +330,4 @@ class GalleryCollageEdit extends Component {
 	}
 }
 
-export default compose( [
-	withNotices,
-] )( GalleryCollageEdit );
+export default compose( [ withNotices ] )( GalleryCollageEdit );

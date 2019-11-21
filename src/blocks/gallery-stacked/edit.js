@@ -12,7 +12,6 @@ import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
-import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -161,14 +160,19 @@ class GalleryStackedEdit extends Component {
 			}
 		);
 
-		if ( ! hasImages ) {
-			return (
+		const stackedGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
 				<GalleryPlaceholder
 					{ ...this.props }
 					label={ __( 'Stacked', 'coblocks' ) }
 					icon={ icon }
+					gutter={ gutter }
 				/>
-			);
+			</Fragment> );
+
+		if ( ! hasImages ) {
+			return stackedGalleryPlaceholder;
 		}
 
 		return (
@@ -224,9 +228,7 @@ class GalleryStackedEdit extends Component {
 								</li>
 							);
 						} ) }
-						<li className="coblocks-gallery--item">
-							<GalleryUploader { ...this.props } />
-						</li>
+						{ stackedGalleryPlaceholder }
 					</ul>
 				</div>
 			</Fragment>
