@@ -276,6 +276,7 @@ class GalleryCollageEdit extends Component {
 		const {
 			captionStyle,
 			filter,
+			lightbox,
 		} = attributes;
 
 		const enableGutter = ! className.includes( 'is-style-layered' );
@@ -289,6 +290,7 @@ class GalleryCollageEdit extends Component {
 				<div className={ classnames( className, {
 					[ `has-filter-${ filter }` ]: filter !== 'none',
 					[ `has-caption-style-${ captionStyle }` ]: captionStyle !== undefined,
+					'has-lightbox': lightbox,
 				} ) }
 				>
 					<ul>
