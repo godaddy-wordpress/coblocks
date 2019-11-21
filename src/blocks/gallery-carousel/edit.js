@@ -365,7 +365,7 @@ class GalleryCarouselEdit extends Component {
 				{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
 					<RichText
 						tagName="figcaption"
-						placeholder={ __( 'Write caption…', 'coblocks' ) }
+						placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
 						value={ primaryCaption }
 						className="coblocks-gallery--caption coblocks-gallery--primary-caption"
 						unstableOnFocus={ this.onFocusCaption }
