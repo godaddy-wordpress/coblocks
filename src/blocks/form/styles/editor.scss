@@ -268,7 +268,8 @@
 	> .block-editor-block-list__block-edit
 	> [data-block]
 	> div
-	> .block-editor-inner-blocks {
+	> .block-editor-inner-blocks
+	.editor-block-list__layout {
 	padding: 14px;
 	padding-bottom: 0;
 }
