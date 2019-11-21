@@ -232,9 +232,10 @@ class GalleryMasonryEdit extends Component {
 									</li>
 								);
 							} ) }
+							{ isSelected ? masonryGalleryPlaceholder : null }
 						</Masonry>
 					</div>
-					{ isSelected ? masonryGalleryPlaceholder : null }
+
 				</div>
 			</Fragment>
 		);
