@@ -141,6 +141,8 @@ class GalleryStackedEdit extends Component {
 			lightbox,
 		} = attributes;
 
+		const hasImages = !! images.length;
+
 		const classes = classnames(
 			className, {
 				'has-lightbox': lightbox,
@@ -159,13 +161,18 @@ class GalleryStackedEdit extends Component {
 		);
 
 		const stackedGalleryPlaceholder = (
-			<GalleryPlaceholder
-				{ ...this.props }
-				label={ __( 'Stacked', 'coblocks' ) }
-				icon={ icon }
-				gutter={ gutter }
-			/>
-		);
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
+				<GalleryPlaceholder
+					{ ...this.props }
+					label={ __( 'Stacked', 'coblocks' ) }
+					icon={ icon }
+				/>
+			</Fragment> );
+
+		if ( ! hasImages ) {
+			return stackedGalleryPlaceholder;
+		}
 
 		return (
 			<Fragment>

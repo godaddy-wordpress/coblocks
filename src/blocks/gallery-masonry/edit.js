@@ -152,6 +152,8 @@ class GalleryMasonryEdit extends Component {
 			lightbox,
 		} = attributes;
 
+		const hasImages = !! images.length;
+
 		const sidebarIsOpened = editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
 
 		const innerClasses = classnames(
@@ -171,12 +173,18 @@ class GalleryMasonryEdit extends Component {
 		);
 
 		const masonryGalleryPlaceholder = (
-			<GalleryPlaceholder
-				{ ...this.props }
-				label={ __( 'Masonry', 'coblocks' ) }
-				icon={ icon }
-				gutter={ gutter }
-			/> );
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
+				<GalleryPlaceholder
+					{ ...this.props }
+					label={ __( 'Masonry', 'coblocks' ) }
+					icon={ icon }
+				/>
+			</Fragment> );
+
+		if ( ! hasImages ) {
+			return masonryGalleryPlaceholder;
+		}
 
 		return (
 			<Fragment>
