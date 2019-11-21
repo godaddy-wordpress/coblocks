@@ -138,7 +138,7 @@ jobs:
       - run:
           name: Setup changed test files
           command: |
-            bash .dev/bin/setup-test-specs.sh
+            source .dev/bin/setup-test-specs.sh
             if [ ${#SPECS[@]} -eq 0 ]; then
               circleci-agent step halt
             fi
