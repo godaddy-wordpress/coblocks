@@ -140,7 +140,7 @@ jobs:
           command: |
             bash .dev/bin/setup-test-specs.sh
             if [ ${#SPECS[@]} -eq 0 ]; then
-              exit 0
+              circleci-agent step halt
             fi
       - run:
           name: Disable xdebug PHP extension
