@@ -66,7 +66,7 @@ class Edit extends Component {
 						placeholder={ __( 'Write accordion item title…', 'coblocks' ) }
 						value={ title }
 						className={ classnames(
-							`${ className }__title`, {
+							'wp-block-coblocks-accordion-item__title', {
 								'has-background': backgroundColor.color,
 								'has-text-color': textColor.color,
 							}
@@ -86,7 +86,7 @@ class Edit extends Component {
 						} }
 					/>
 					<div
-						className={ `${ className }__content` }
+						className="wp-block-coblocks-accordion-item__content"
 						style={ { borderColor: backgroundColor.color } }
 					>
 						<InnerBlocks

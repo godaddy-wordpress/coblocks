@@ -102,7 +102,7 @@ class AuthorEdit extends Component {
 				<div className={ classes } style={ styles }>
 					{ dropZone }
 					{ ( !! isSelected || clientId === selectedParentClientId || hasImage ) ?
-						<figure className={ `${ className }__avatar` }>
+						<figure className="wp-block-coblocks-author__avatar">
 							<MediaUploadCheck>
 								<MediaUpload
 									onSelect={ onUploadImage }
@@ -112,7 +112,7 @@ class AuthorEdit extends Component {
 										<Button onClick={ open }>
 											{ ! imgUrl ?
 												<Dashicon icon="format-image" /> :
-												<img className={ `${ className }__avatar-img` }
+												<img className="wp-block-coblocks-author__avatar-img"
 													src={ imgUrl }
 													alt="avatar"
 												/>
@@ -128,7 +128,7 @@ class AuthorEdit extends Component {
 							identifier="name"
 							multiline={ false }
 							tagName="span"
-							className={ `${ className }__name` }
+							className="wp-block-coblocks-author__name"
 							placeholder={
 								/* translators: placeholder text used for the author name */
 								__( 'Write author name…', 'coblocks' )
@@ -143,7 +143,7 @@ class AuthorEdit extends Component {
 							identifier="biography"
 							multiline={ false }
 							tagName="p"
-							className={ `${ className }__biography` }
+							className="wp-block-coblocks-author__biography"
 							placeholder={
 								/* translators: placeholder text used for the biography */
 								__( 'Write a biography that distills objective credibility and authority to your readers…', 'coblocks' )
