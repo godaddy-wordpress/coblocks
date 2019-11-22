@@ -1,37 +1,11 @@
-.editor-block-list__block[data-type="coblocks/gallery-carousel"] {
-	&.editor-block-list__block[data-align="full"] > .editor-block-list__block-edit figure {
+.wp-block[data-type="coblocks/gallery-carousel"] {
+	&.wp-block[data-align="full"] > .editor-block-list__block-edit figure {
 		width: auto;
 	}
 
-	// Fixes issue where the outline does not fully render due to the outside nature of the core outline style applied.
-	.is-appender {
-		border: 1px dashed $dark-gray-150;
-		height: 100%;
-		margin-bottom: 0;
-		outline: none;
-		width: 100%;
-
-		&:hover {
-			border-color: $dark-gray-500;
-		}
-	}
-
 	// Set the appender to full height (second is the pre Gutenberg 5.6 method).
-	.coblocks-gallery--figure .components-form-file-upload,
-	.components-coblocks-gallery-uploader-wrapper {
+	.coblocks-gallery--figure .components-form-file-upload {
 		height: 100%;
-	}
-
-	.components-coblocks-gallery-uploader {
-		border: 1px dashed $dark-gray-150;
-		height: 100%;
-		margin-bottom: 0;
-		outline: none;
-		width: 100%;
-
-		&:hover {
-			border-color: $dark-gray-500;
-		}
 	}
 
 	// Fixes issue with multiple dropzones displaying when dropping in an image.
@@ -91,4 +65,12 @@
 	.flickity-button:disabled {
 		opacity: 1;
 	}
+}
+
+// Needed until GB 6.9 is merged into core or backward support.
+// Hide the placeholder when not selected.
+.editor-block-list__block[data-type="coblocks/gallery-carousel"]:not(.is-selected) {
+		div.components-form-file-upload {
+			display: none;
+		} 
 }

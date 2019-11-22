@@ -90,7 +90,7 @@ const Inspector = props => {
 		setAttributes( changedAttributes );
 	};
 
-	if ( isHorizontalStyle && columns !== 1 ) {
+	if ( isHorizontalStyle && columns > 2 ) {
 		columnsCountOnChange( 2 );
 	}
 

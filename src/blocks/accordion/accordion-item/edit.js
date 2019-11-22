@@ -21,7 +21,7 @@ import { InnerBlocks, RichText } from '@wordpress/block-editor';
 /**
  * Constants
  */
-const TEMPLATE = [ [ 'core/paragraph', { placeholder: __( 'Add content...', 'coblocks' ) } ] ];
+const TEMPLATE = [ [ 'core/paragraph', { placeholder: __( 'Add content…', 'coblocks' ) } ] ];
 
 /**
  * Block edit function
@@ -63,10 +63,10 @@ class Edit extends Component {
 					<RichText
 						tagName="p"
 						/* translators: Accordion is the block name  */
-						placeholder={ __( 'Write accordion item title...', 'coblocks' ) }
+						placeholder={ __( 'Write accordion item title…', 'coblocks' ) }
 						value={ title }
 						className={ classnames(
-							`${ className }__title`, {
+							'wp-block-coblocks-accordion-item__title', {
 								'has-background': backgroundColor.color,
 								'has-text-color': textColor.color,
 							}
@@ -86,7 +86,7 @@ class Edit extends Component {
 						} }
 					/>
 					<div
-						className={ `${ className }__content` }
+						className="wp-block-coblocks-accordion-item__content"
 						style={ { borderColor: backgroundColor.color } }
 					>
 						<InnerBlocks

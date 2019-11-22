@@ -1,14 +1,14 @@
 # Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 1.17.1\n"
+"Project-Id-Version: CoBlocks 1.17.3\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-11-12T17:50:33+00:00\n"
+"POT-Creation-Date: 2019-11-21T21:58:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: coblocks\n"
@@ -23,13 +23,13 @@ msgstr ""
 #. translators: content placeholder
 #: src/blocks/accordion/accordion-item/edit.js:24
 #: src/blocks/media-card/edit.js:75
-msgid "Add content..."
+msgid "Add content…"
 msgstr ""
 
 #. Accordion is the block name
 #. translators: Accordion is the block name
 #: src/blocks/accordion/accordion-item/edit.js:66
-msgid "Write accordion item title..."
+msgid "Write accordion item title…"
 msgstr ""
 
 #. block name
@@ -160,14 +160,14 @@ msgstr ""
 #. placeholder text for input box
 #. translators: placeholder text for input box
 #: src/blocks/alert/edit.js:104
-msgid "Write text..."
+msgid "Write text…"
 msgstr ""
 
 #. placeholder text for input box
 #. translators: placeholder text for input box
 #: src/blocks/alert/edit.js:95
 #: src/blocks/services/service/edit.js:205
-msgid "Write title..."
+msgid "Write title…"
 msgstr ""
 
 #. block name
@@ -248,25 +248,25 @@ msgstr ""
 
 #. placeholder text used for the author name
 #. translators: placeholder text used for the author name
-#: src/blocks/author/edit.js:128
+#: src/blocks/author/edit.js:134
 msgid "Write author name…"
 msgstr ""
 
 #. placeholder text used for the biography
 #. translators: placeholder text used for the biography
-#: src/blocks/author/edit.js:143
+#: src/blocks/author/edit.js:149
 msgid "Write a biography that distills objective credibility and authority to your readers…"
 msgstr ""
 
 #. content placeholder
 #. translators: content placeholder
-#: src/blocks/author/edit.js:152
+#: src/blocks/author/edit.js:158
 msgid "Author link…"
 msgstr ""
 
 #. image to represent the post author
 #. translators: image to represent the post author
-#: src/blocks/author/edit.js:64
+#: src/blocks/author/edit.js:69
 msgid "Drop to upload as avatar"
 msgstr ""
 
@@ -363,23 +363,23 @@ msgstr ""
 msgid "Toggle to stack buttons on mobile."
 msgstr ""
 
-#: src/blocks/click-to-tweet/controls.js:44
-#: src/blocks/click-to-tweet/controls.js:37
+#: src/blocks/click-to-tweet/controls.js:43
+#: src/blocks/click-to-tweet/controls.js:36
 msgid "Twitter Username"
 msgstr ""
 
-#: src/blocks/click-to-tweet/controls.js:48
+#: src/blocks/click-to-tweet/controls.js:47
 msgid "Username"
 msgstr ""
 
 #: src/blocks/click-to-tweet/edit.js:109
-msgid "Add button..."
+msgid "Add button…"
 msgstr ""
 
 #. the text of the click to tweet element
 #. translators: the text of the click to tweet element
 #: src/blocks/click-to-tweet/edit.js:82
-msgid "Add a quote to tweet..."
+msgid "Add a quote to tweet…"
 msgstr ""
 
 #. block name
@@ -489,7 +489,7 @@ msgstr ""
 #. content placeholder
 #. translators: content placeholder
 #: src/blocks/features/feature/edit.js:40
-msgid "Add feature title..."
+msgid "Add feature title…"
 msgstr ""
 
 #. content placeholder
@@ -564,12 +564,12 @@ msgstr ""
 
 #: src/blocks/features/inspector.js:164
 #: src/blocks/gallery-carousel/inspector.js:95
-#: src/blocks/gallery-collage/inspector.js:116
+#: src/blocks/gallery-collage/inspector.js:121
 #: src/blocks/gallery-stacked/inspector.js:91
 #: src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
 #: src/blocks/gallery-carousel/inspector.js:89
-#: src/blocks/gallery-collage/inspector.js:114
+#: src/blocks/gallery-collage/inspector.js:119
 msgid "Gutter"
 msgstr ""
 
@@ -580,7 +580,7 @@ msgstr ""
 
 #. translators: label for small size option
 #: src/blocks/features/inspector.js:86
-#: src/blocks/gallery-collage/inspector.js:92
+#: src/blocks/gallery-collage/inspector.js:97
 #: src/blocks/icon/icon-size-select.js:16
 #: src/blocks/posts/inspector.js:57
 #: src/blocks/row/inspector.js:99
@@ -588,13 +588,13 @@ msgstr ""
 #: src/blocks/social-profiles/inspector.js:76
 #: src/components/dimensions-control/dimensions-select.js:15
 #: src/components/size-control/index.js:116
-#: src/blocks/gallery-collage/inspector.js:60
+#: src/blocks/gallery-collage/inspector.js:65
 msgid "Small"
 msgstr ""
 
 #. translators: label for medium size option
 #: src/blocks/features/inspector.js:87
-#: src/blocks/gallery-collage/inspector.js:98
+#: src/blocks/gallery-collage/inspector.js:103
 #: src/blocks/icon/icon-size-select.js:21
 #: src/blocks/posts/inspector.js:62
 #: src/blocks/row/inspector.js:100
@@ -602,13 +602,13 @@ msgstr ""
 #: src/blocks/social-profiles/inspector.js:77
 #: src/components/dimensions-control/dimensions-select.js:20
 #: src/components/size-control/index.js:120
-#: src/blocks/gallery-collage/inspector.js:66
+#: src/blocks/gallery-collage/inspector.js:71
 msgid "Medium"
 msgstr ""
 
 #. translators: label for large size option
 #: src/blocks/features/inspector.js:88
-#: src/blocks/gallery-collage/inspector.js:104
+#: src/blocks/gallery-collage/inspector.js:109
 #: src/blocks/icon/icon-size-select.js:26
 #: src/blocks/posts/inspector.js:67
 #: src/blocks/row/inspector.js:101
@@ -616,7 +616,7 @@ msgstr ""
 #: src/blocks/social-profiles/inspector.js:78
 #: src/components/dimensions-control/dimensions-select.js:25
 #: src/components/size-control/index.js:65
-#: src/blocks/gallery-collage/inspector.js:72
+#: src/blocks/gallery-collage/inspector.js:77
 msgid "Large"
 msgstr ""
 
@@ -637,7 +637,7 @@ msgid "Add Menu Section"
 msgstr ""
 
 #: src/blocks/food-and-drinks/edit.js:27
-msgid "Menu title..."
+msgid "Menu title…"
 msgstr ""
 
 #. block style
@@ -701,20 +701,20 @@ msgid "Gluten Free"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:147
-#: src/blocks/gallery-collage/edit.js:140
+#: src/blocks/gallery-collage/edit.js:148
 #: src/blocks/services/service/edit.js:156
 msgid "Drop image to replace"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:160
-#: src/blocks/gallery-collage/edit.js:160
+#: src/blocks/gallery-collage/edit.js:168
 #: src/blocks/services/service/edit.js:169
 #: src/components/block-gallery/gallery-image.js:208
 msgid "Remove Image"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:225
-msgid "Add title..."
+msgid "Add title…"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:276
@@ -722,7 +722,7 @@ msgid "Hot"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:386
-msgid "Add description..."
+msgid "Add description…"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:395
@@ -929,7 +929,7 @@ msgid "Secret Key"
 msgstr ""
 
 #: src/blocks/form/edit.js:329
-#: src/blocks/gallery-collage/edit.js:174
+#: src/blocks/gallery-collage/edit.js:182
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Saving"
 msgstr ""
@@ -978,7 +978,7 @@ msgstr ""
 #. block name
 #. translators: block name
 #: src/blocks/form/fields/date/index.js:34
-#: includes/class-coblocks-form.php:360
+#: includes/class-coblocks-form.php:372
 #: src/blocks/form/fields/date/index.js:21
 msgid "Date"
 msgstr ""
@@ -1021,7 +1021,7 @@ msgstr ""
 #: src/blocks/icon/svgs.js:276
 #: src/blocks/share/inspector.js:177
 #: includes/class-coblocks-form.php:211
-#: includes/class-coblocks-form.php:296
+#: includes/class-coblocks-form.php:302
 #: src/blocks/form/fields/email/index.js:21
 #: src/blocks/icon/deprecated/svgs.js:202
 #: src/blocks/icon/svgs.js:268
@@ -1089,7 +1089,7 @@ msgstr ""
 #. block name
 #. translators: block name
 #: src/blocks/form/fields/hidden/index.js:34
-#: includes/class-coblocks-form.php:603
+#: includes/class-coblocks-form.php:639
 #: src/blocks/form/fields/hidden/index.js:21
 msgid "Hidden"
 msgstr ""
@@ -1141,19 +1141,19 @@ msgid "Toggle to add a last name field."
 msgstr ""
 
 #: src/blocks/form/fields/name/index.js:33
-#: includes/class-coblocks-form.php:248
+#: includes/class-coblocks-form.php:250
 msgid "First"
 msgstr ""
 
 #: src/blocks/form/fields/name/index.js:37
-#: includes/class-coblocks-form.php:249
+#: includes/class-coblocks-form.php:251
 msgid "Last"
 msgstr ""
 
 #. block name
 #. translators: block name
 #: src/blocks/form/fields/name/index.js:46
-#: includes/class-coblocks-form.php:244
+#: includes/class-coblocks-form.php:246
 #: src/blocks/form/fields/name/index.js:21
 msgid "Name"
 msgstr ""
@@ -1186,7 +1186,7 @@ msgstr ""
 #. block name
 #. translators: block name
 #: src/blocks/form/fields/phone/index.js:34
-#: includes/class-coblocks-form.php:387
+#: includes/class-coblocks-form.php:403
 #: src/blocks/form/fields/phone/index.js:21
 msgid "Phone"
 msgstr ""
@@ -1228,7 +1228,7 @@ msgid "fax"
 msgstr ""
 
 #: src/blocks/form/fields/radio/index.js:21
-#: includes/class-coblocks-form.php:422
+#: includes/class-coblocks-form.php:442
 msgid "Choose one"
 msgstr ""
 
@@ -1259,8 +1259,8 @@ msgstr ""
 #. block name
 #. translators: block name
 #: src/blocks/form/fields/select/index.js:38
-#: includes/class-coblocks-form.php:479
-#: includes/class-coblocks-form.php:524
+#: includes/class-coblocks-form.php:503
+#: includes/class-coblocks-form.php:552
 #: src/blocks/form/fields/select/index.js:21
 msgid "Select"
 msgstr ""
@@ -1278,7 +1278,7 @@ msgid "dropdown"
 msgstr ""
 
 #: src/blocks/form/fields/textarea/index.js:21
-#: includes/class-coblocks-form.php:323
+#: includes/class-coblocks-form.php:331
 msgid "Message"
 msgstr ""
 
@@ -1309,7 +1309,7 @@ msgstr ""
 #. block name
 #. translators: block name
 #: src/blocks/form/fields/website/index.js:34
-#: includes/class-coblocks-form.php:573
+#: includes/class-coblocks-form.php:605
 #: src/blocks/form/fields/website/index.js:21
 msgid "Website"
 msgstr ""
@@ -1333,7 +1333,7 @@ msgid "url"
 msgstr ""
 
 #: src/blocks/form/index.js:36
-#: includes/class-coblocks-form.php:679
+#: includes/class-coblocks-form.php:718
 msgid "Submit"
 msgstr ""
 
@@ -1373,32 +1373,23 @@ msgstr ""
 msgid "Button Text Color"
 msgstr ""
 
-#: src/blocks/gallery-carousel/controls.js:55
-#: src/blocks/gallery-masonry/controls.js:55
-#: src/blocks/gallery-stacked/controls.js:55
-msgid "Edit gallery"
-msgstr ""
-
 #. block name
 #. translators: block name
-#: src/blocks/gallery-carousel/edit.js:252
+#: src/blocks/gallery-carousel/edit.js:244
 #: src/blocks/gallery-carousel/index.js:35
 msgid "Carousel"
 msgstr ""
 
 #. %1$d is the order number of the image, %2$d is the total number of images
 #. translators: %1$d is the order number of the image, %2$d is the total number of images
-#: src/blocks/gallery-carousel/edit.js:311
-#: src/blocks/gallery-masonry/edit.js:220
-#: src/blocks/gallery-stacked/edit.js:192
+#: src/blocks/gallery-carousel/edit.js:306
+#: src/blocks/gallery-masonry/edit.js:216
+#: src/blocks/gallery-stacked/edit.js:196
 msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
-#: src/blocks/gallery-carousel/edit.js:380
-#: src/blocks/gif/edit.js:244
-#: src/blocks/gist/edit.js:103
-#: src/components/block-gallery/gallery-image.js:230
-msgid "Write caption…"
+#: src/blocks/gallery-carousel/edit.js:368
+msgid "Write gallery caption…"
 msgstr ""
 
 #. block description
@@ -1469,14 +1460,17 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-#: src/blocks/gallery-collage/edit.js:174
+#: src/blocks/gallery-collage/edit.js:182
 #: src/blocks/map/edit.js:306
 #: src/components/block-gallery/gallery-image.js:221
 msgid "Apply"
 msgstr ""
 
-#: src/blocks/gallery-collage/edit.js:183
-msgid "Write caption..."
+#: src/blocks/gallery-collage/edit.js:191
+#: src/blocks/gif/edit.js:244
+#: src/blocks/gist/edit.js:103
+#: src/components/block-gallery/gallery-image.js:230
+msgid "Write caption…"
 msgstr ""
 
 #. block name
@@ -1497,6 +1491,7 @@ msgstr ""
 #: src/blocks/gallery-collage/index.js:49
 #: src/components/font-family/index.js:16
 #: src/components/typography-controls/index.js:95
+#: src/extensions/cover-styles/index.js:16
 #: src/extensions/image-styles/index.js:16
 #: src/extensions/list-styles/index.js:16
 #: src/components/typography-controls/index.js:77
@@ -1518,42 +1513,48 @@ msgstr ""
 #. abbreviation for medium size
 #. translators: abbreviation for medium size
 #. translators: label for medium size option
-#: src/blocks/gallery-collage/inspector.js:100
+#: src/blocks/gallery-collage/inspector.js:105
 #: src/blocks/posts/inspector.js:63
-#: src/blocks/gallery-collage/inspector.js:68
+#: src/blocks/gallery-collage/inspector.js:73
 msgid "M"
 msgstr ""
 
 #. abbreviation for large size
 #. translators: abbreviation for large size
 #. translators: label for large size option
-#: src/blocks/gallery-collage/inspector.js:106
+#: src/blocks/gallery-collage/inspector.js:111
 #: src/blocks/posts/inspector.js:68
-#: src/blocks/gallery-collage/inspector.js:74
+#: src/blocks/gallery-collage/inspector.js:79
 msgid "L"
 msgstr ""
 
-#: src/blocks/gallery-collage/inspector.js:112
+#: src/blocks/gallery-collage/inspector.js:117
 msgid "Collage Settings"
 msgstr ""
 
 #. block style
 #. translators: block style
-#: src/blocks/gallery-collage/inspector.js:138
+#: src/blocks/gallery-collage/inspector.js:143
 #: src/extensions/button-styles/index.js:31
-#: src/blocks/gallery-collage/inspector.js:136
+#: src/blocks/gallery-collage/inspector.js:141
 msgid "Shadow"
 msgstr ""
 
-#: src/blocks/gallery-collage/inspector.js:158
+#: src/blocks/gallery-collage/inspector.js:163
 #: src/blocks/gallery-masonry/inspector.js:98
 #: src/blocks/gallery-stacked/inspector.js:111
 msgid "Captions"
 msgstr ""
 
-#: src/blocks/gallery-collage/inspector.js:164
+#: src/blocks/gallery-collage/inspector.js:169
 #: src/blocks/gallery-masonry/inspector.js:105
 msgid "Caption Style"
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:175
+#: src/blocks/gallery-masonry/inspector.js:92
+#: src/blocks/gallery-stacked/inspector.js:123
+msgid "Lightbox"
 msgstr ""
 
 #: src/blocks/gallery-collage/inspector.js:30
@@ -1568,8 +1569,20 @@ msgstr ""
 msgid "Toggle to show media captions."
 msgstr ""
 
+#: src/blocks/gallery-collage/inspector.js:38
+#: src/blocks/gallery-masonry/inspector.js:53
+#: src/blocks/gallery-stacked/inspector.js:56
+msgid "Image lightbox is enabled."
+msgstr ""
+
+#: src/blocks/gallery-collage/inspector.js:38
+#: src/blocks/gallery-masonry/inspector.js:53
+#: src/blocks/gallery-stacked/inspector.js:56
+msgid "Toggle to enable the image lightbox."
+msgstr ""
+
 #. translators: label for extra large size option
-#: src/blocks/gallery-collage/inspector.js:78
+#: src/blocks/gallery-collage/inspector.js:83
 #: src/blocks/posts/inspector.js:72
 #: src/components/size-control/index.js:69
 msgid "Extra Large"
@@ -1578,7 +1591,7 @@ msgstr ""
 #. abbreviation for extra large size
 #. translators: abbreviation for extra large size
 #. translators: label for extra large size option
-#: src/blocks/gallery-collage/inspector.js:80
+#: src/blocks/gallery-collage/inspector.js:85
 #: src/blocks/posts/inspector.js:73
 msgid "XL"
 msgstr ""
@@ -1586,30 +1599,30 @@ msgstr ""
 #. block style
 #. translators: visual style option
 #. translators: block style
-#: src/blocks/gallery-collage/inspector.js:88
+#: src/blocks/gallery-collage/inspector.js:93
 #: src/blocks/row/inspector.js:98
 #: src/components/block-gallery/options/caption-options.js:23
 #: src/components/block-gallery/options/link-options.js:10
 #: src/components/dimensions-control/dimensions-select.js:10
 #: src/extensions/list-styles/index.js:23
-#: src/blocks/gallery-collage/inspector.js:55
-#: src/blocks/gallery-collage/inspector.js:56
-#: src/blocks/gallery-collage/inspector.js:87
+#: src/blocks/gallery-collage/inspector.js:60
+#: src/blocks/gallery-collage/inspector.js:61
+#: src/blocks/gallery-collage/inspector.js:92
 msgid "None"
 msgstr ""
 
 #. abbreviation for small size
 #. translators: abbreviation for small size
 #. translators: label for small size option
-#: src/blocks/gallery-collage/inspector.js:94
+#: src/blocks/gallery-collage/inspector.js:99
 #: src/blocks/posts/inspector.js:58
-#: src/blocks/gallery-collage/inspector.js:62
+#: src/blocks/gallery-collage/inspector.js:67
 msgid "S"
 msgstr ""
 
 #. block name
 #. translators: block name
-#: src/blocks/gallery-masonry/edit.js:188
+#: src/blocks/gallery-masonry/edit.js:180
 #: src/blocks/gallery-masonry/index.js:35
 msgid "Masonry"
 msgstr ""
@@ -1627,16 +1640,6 @@ msgstr ""
 msgid "lightbox"
 msgstr ""
 
-#: src/blocks/gallery-masonry/inspector.js:53
-#: src/blocks/gallery-stacked/inspector.js:56
-msgid "Image lightbox is enabled."
-msgstr ""
-
-#: src/blocks/gallery-masonry/inspector.js:53
-#: src/blocks/gallery-stacked/inspector.js:56
-msgid "Toggle to enable the image lightbox."
-msgstr ""
-
 #: src/blocks/gallery-masonry/inspector.js:73
 msgid "Masonry Settings"
 msgstr ""
@@ -1647,11 +1650,6 @@ msgstr ""
 
 #: src/blocks/gallery-masonry/inspector.js:84
 msgid "Add rounded corners to the gallery items."
-msgstr ""
-
-#: src/blocks/gallery-masonry/inspector.js:92
-#: src/blocks/gallery-stacked/inspector.js:123
-msgid "Lightbox"
 msgstr ""
 
 #. block style
@@ -1754,7 +1752,7 @@ msgid "Gist URL"
 msgstr ""
 
 #: src/blocks/gist/edit.js:129
-msgid "Add GitHub Gist URL..."
+msgid "Add GitHub Gist URL…"
 msgstr ""
 
 #: src/blocks/gist/gist.js:138
@@ -1940,7 +1938,7 @@ msgid "Bottom Right"
 msgstr ""
 
 #: src/blocks/highlight/edit.js:113
-msgid "Add highlighted text..."
+msgid "Add highlighted text…"
 msgstr ""
 
 #. block name
@@ -3077,7 +3075,7 @@ msgid "Logos & Badges"
 msgstr ""
 
 #: src/blocks/logos/edit.js:70
-#: src/components/block-gallery/gallery-placeholder.js:75
+#: src/components/block-gallery/gallery-placeholder.js:84
 msgid "Drag images, upload new ones or select files from your library."
 msgstr ""
 
@@ -3351,7 +3349,7 @@ msgstr ""
 #. content placeholder
 #. translators: content placeholder
 #: src/blocks/media-card/edit.js:65
-msgid "Add heading..."
+msgid "Add heading…"
 msgstr ""
 
 #. block name
@@ -3424,15 +3422,15 @@ msgstr ""
 msgid "Max Width"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:100
-msgid "Media"
+#: src/blocks/media-card/media-container.js:101
+msgid "Media area"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:120
+#: src/blocks/media-card/media-container.js:121
 msgid "Drop to replace media"
 msgstr ""
 
-#: src/blocks/media-card/media-container.js:37
+#: src/blocks/media-card/media-container.js:38
 msgid "Edit media"
 msgstr ""
 
@@ -3945,7 +3943,7 @@ msgstr ""
 #. content placeholder
 #. translators: content placeholder
 #: src/blocks/services/service/edit.js:213
-msgid "Write description..."
+msgid "Write description…"
 msgstr ""
 
 #. block name
@@ -4443,12 +4441,8 @@ msgstr ""
 
 #. %s: Type of gallery
 #. translators: %s: Type of gallery
-#: src/components/block-gallery/gallery-placeholder.js:72
+#: src/components/block-gallery/gallery-placeholder.js:81
 msgid "%s Gallery"
-msgstr ""
-
-#: src/components/block-gallery/gallery-uploader.js:53
-msgid "Upload an image"
 msgstr ""
 
 #. visual style option
@@ -4972,50 +4966,22 @@ msgstr ""
 msgid "3D"
 msgstr ""
 
-#: src/extensions/image-crop/index.js:172
-msgid "Crop Settings"
-msgstr ""
-
 #. block style
 #. translators: block style
+#: src/extensions/cover-styles/index.js:23
 #: src/extensions/image-styles/index.js:23
 msgid "Bottom Wave"
 msgstr ""
 
 #. block style
 #. translators: block style
+#: src/extensions/cover-styles/index.js:30
 #: src/extensions/image-styles/index.js:30
 msgid "Top Wave"
 msgstr ""
 
-#: src/sidebars/block-manager/components/modal.js:132
-msgid "Manage Blocks"
-msgstr ""
-
-#: src/sidebars/block-manager/components/modal.js:136
-msgid "Block Manager"
-msgstr ""
-
-#: src/sidebars/block-manager/components/modal.js:138
-msgid "Close"
-msgstr ""
-
-#: src/sidebars/block-manager/components/modal.js:147
-msgid "Search for a block"
-msgstr ""
-
-#: src/sidebars/block-manager/components/options/disable-blocks.js:170
-msgid "This block is added to the page and cannot currently be disabled"
-msgstr ""
-
-#: src/sidebars/block-manager/components/options/disable-blocks.js:185
-msgid "Disable all"
-msgstr ""
-
-#. %s: search text
-#. translators: %s: search text
-#: src/sidebars/block-manager/components/options/disable-blocks.js:234
-msgid "No \"%s\" blocks found."
+#: src/extensions/image-crop/index.js:172
+msgid "Crop Settings"
 msgstr ""
 
 #. %s: Plugin title "CoBlocks"
@@ -5040,8 +5006,8 @@ msgstr ""
 msgid "https://www.godaddy.com"
 msgstr ""
 
-#: class-coblocks.php:84
-#: class-coblocks.php:96
+#: class-coblocks.php:83
+#: class-coblocks.php:95
 msgid "Something went wrong."
 msgstr ""
 
@@ -5053,10 +5019,6 @@ msgstr ""
 msgid "Leave a Review"
 msgstr ""
 
-#: includes/class-coblocks-block-settings.php:72
-msgid "Enable or disable blocks"
-msgstr ""
-
 #: includes/class-coblocks-form.php:67
 msgid "Google reCaptcha site key for form spam protection"
 msgstr ""
@@ -5065,7 +5027,7 @@ msgstr ""
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr ""
 
-#: includes/class-coblocks-form.php:882
+#: includes/class-coblocks-form.php:921
 msgid "Your message was sent:"
 msgstr ""
 

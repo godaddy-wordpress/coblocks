@@ -69,8 +69,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 		$reflection_method->invoke( coblocks() );
 
 		$expected = [
-			'version' => '1.17.1',
-			'has_pro'     => false,
+			'version' => '1.17.3',
 			'plugin_dir'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_path( __FILE__ ) ),
 			'plugin_url'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_url( __FILE__ ) ),
 			'plugin_file' => str_replace( '.dev/tests/phpunit/test-class-coblocks.php', 'class-coblocks.php', __FILE__ ),
@@ -80,7 +79,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 
 		$check = [
 			'version'     => COBLOCKS_VERSION,
-			'has_pro'     => COBLOCKS_HAS_PRO,
 			'plugin_dir'  => COBLOCKS_PLUGIN_DIR,
 			'plugin_url'  => COBLOCKS_PLUGIN_URL,
 			'plugin_file' => COBLOCKS_PLUGIN_FILE,
@@ -107,7 +105,6 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 			COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-meta.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-google-map-block.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-accordion-ie-support.php',
-			COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-settings.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php',

@@ -99,7 +99,7 @@ function coblocks_posts( $posts, $attributes ) {
 	}
 
 	if ( isset( $attributes['columns'] ) ) {
-		array_push( $class_name, 'columns columns-' . $attributes['columns'] );
+		array_push( $class, 'columns columns-' . $attributes['columns'] );
 	}
 
 	$block_content = sprintf(
