@@ -89,7 +89,7 @@ export class Edit extends Component {
 			align,
 		} = attributes;
 
-		const classes = classnames( `${ className }__content`,
+		const classes = classnames( 'wp-block-coblocks-highlight__content',
 			backgroundColor && {
 				'has-background': backgroundColor.color,
 				[ backgroundColor.class ]: backgroundColor.class,

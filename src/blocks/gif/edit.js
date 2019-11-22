@@ -292,7 +292,7 @@ class Edit extends Component {
 					/>
 					<ul
 						key="results"
-						className={ `${ className }__results` }
+						className="wp-block-coblocks-gif__results"
 					>
 						{ results }
 					</ul>
