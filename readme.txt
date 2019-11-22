@@ -80,7 +80,7 @@ The vision for CoBlocks is to create a suite of Gutenberg blocks to help folks m
 * [Like us on Facebook](https://www.facebook.com/coblocks/)
 
 ## Built with developers in mind
-Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/godaddy/coblocks) and join the party. 🎉
+Extensible, adaptable, and open source — CoBlocks is created with theme and plugin developers in mind. If you're intersted to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoBlocks on GitHub](https://github.com/godaddy-wordpress/coblocks) and join the party. 🎉
 
 
 == Screenshots ==
@@ -116,21 +116,21 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* [Update Gallery blocks](https://github.com/godaddy/coblocks/pull/1142) to use core UX patterns
-* [Hide avatar placeholder](https://github.com/godaddy/coblocks/pull/1074) on Author block when not in use
-* Add [top and bottom wave style](https://github.com/godaddy/coblocks/pull/1123) to core Cover block
-* Add [lightbox support to the Collage block](https://github.com/godaddy/coblocks/pull/1141)
+* [Update Gallery blocks](https://github.com/godaddy-wordpress/coblocks/pull/1142) to use core UX patterns
+* [Hide avatar placeholder](https://github.com/godaddy-wordpress/coblocks/pull/1074) on Author block when not in use
+* Add [top and bottom wave style](https://github.com/godaddy-wordpress/coblocks/pull/1123) to core Cover block
+* Add [lightbox support to the Collage block](https://github.com/godaddy-wordpress/coblocks/pull/1141)
 
 ### Bug Fixes
-* Explicitly set block classnames instead of using the generated className prop ([#1152](https://github.com/godaddy/coblocks/pull/1152) and [#1150](https://github.com/godaddy/coblocks/pull/1150))
-* Allow fields to have identical [display labels](https://github.com/godaddy/coblocks/pull/1146)
-* Ensure avatar image [styles override core styles](https://github.com/godaddy/coblocks/pull/1137)
-* Ensure all __() functions [use a text domain](https://github.com/godaddy/coblocks/pull/1135)
+* Explicitly set block classnames instead of using the generated className prop ([#1152](https://github.com/godaddy-wordpress/coblocks/pull/1152) and [#1150](https://github.com/godaddy-wordpress/coblocks/pull/1150))
+* Allow fields to have identical [display labels](https://github.com/godaddy-wordpress/coblocks/pull/1146)
+* Ensure avatar image [styles override core styles](https://github.com/godaddy-wordpress/coblocks/pull/1137)
+* Ensure all __() functions [use a text domain](https://github.com/godaddy-wordpress/coblocks/pull/1135)
 
 ### Misc
-* [Remove excess admin styles from src](https://github.com/godaddy/coblocks/pull/1118)
-* [Update example images](https://github.com/godaddy/coblocks/pull/1134) to use those from WordPress core
-* Update [classes used in editor styling](https://github.com/godaddy/coblocks/pull/1138) for consistency
-* [Remove CoBlocks Block Manager](https://github.com/godaddy/coblocks/pull/1110)
-* [Remove unused constant](https://github.com/godaddy/coblocks/pull/1148)
-* [Ignore externals on `svn co`](https://github.com/godaddy/coblocks/pull/1147)
+* [Remove excess admin styles from src](https://github.com/godaddy-wordpress/coblocks/pull/1118)
+* [Update example images](https://github.com/godaddy-wordpress/coblocks/pull/1134) to use those from WordPress core
+* Update [classes used in editor styling](https://github.com/godaddy-wordpress/coblocks/pull/1138) for consistency
+* [Remove CoBlocks Block Manager](https://github.com/godaddy-wordpress/coblocks/pull/1110)
+* [Remove unused constant](https://github.com/godaddy-wordpress/coblocks/pull/1148)
+* [Ignore externals on `svn co`](https://github.com/godaddy-wordpress/coblocks/pull/1147)

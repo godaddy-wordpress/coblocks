@@ -1,6 +1,6 @@
 # CoBlocks: Page Builder Blocks for Gutenberg
 
-[![CircleCI](https://circleci.com/gh/godaddy/coblocks.svg?style=svg)](https://circleci.com/gh/godaddy/coblocks) [![WordPress plugin](https://img.shields.io/wordpress/plugin/dt/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress](https://img.shields.io/wordpress/v/coblocks.svg?style=flat)]() [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://github.com/richtabor/coblocks/blob/master/license.txt)
+[![CircleCI](https://circleci.com/gh/godaddy/coblocks.svg?style=svg)](https://circleci.com/gh/godaddy-wordpress/coblocks) [![WordPress plugin](https://img.shields.io/wordpress/plugin/dt/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress](https://img.shields.io/wordpress/v/coblocks.svg?style=flat)]() [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://github.com/richtabor/coblocks/blob/master/license.txt)
 
 [CoBlocks](https://coblocks.com?utm_medium=github&utm_source=github&utm_campaign=readme&utm_content=coblocks) is a suite of professional page building content blocks for the WordPress Gutenberg block editor. This the most innovative collection of page building WordPress blocks for the new Gutenberg block editor. We will make you rethink what WordPress is capable of.
 
@@ -53,7 +53,7 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 
 ## Development
 
-1. Clone the GitHub repository: `https://github.com/godaddy/coblocks.git`
+1. Clone the GitHub repository: `https://github.com/godaddy-wordpress/coblocks.git`
 2. Browse to the folder in the command line.
 3. Run the `npm install` command to install the plugin's dependencies within a /node_modules/ folder.
 4. Run the `npm start` command for development.
@@ -65,9 +65,9 @@ Need help? This is a developer's portal for CoBlocks and should not be used for 
 
 ## Contributions
 
-Please read the [guidelines for contributing](https://github.com/godaddy/coblocks/blob/master/.github/CONTRIBUTING.md) to CoBlocks. Anyone is welcome to contribute. If you find a 🐞 or an issue, [create an issue](https://github.com/godaddy/coblocks/issues/new). Here are ways to contribute:
+Please read the [guidelines for contributing](https://github.com/godaddy-wordpress/coblocks/blob/master/.github/CONTRIBUTING.md) to CoBlocks. Anyone is welcome to contribute. If you find a 🐞 or an issue, [create an issue](https://github.com/godaddy-wordpress/coblocks/issues/new). Here are ways to contribute:
 
-1. Raise an [issue](https://github.com/godaddy/coblocks/issues/new)
+1. Raise an [issue](https://github.com/godaddy-wordpress/coblocks/issues/new)
 2. Send a pull request with your bug fixes and/or new features
 3. Provide feedback and suggestions
 
