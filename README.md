@@ -63,23 +63,26 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 
 Need help? This is a developer's portal for CoBlocks and should not be used for general support and queries. Please visit the [CoBlocks support forum on WordPress.org](https://wordpress.org/support/plugin/coblocks) for assistance.
 
-## Contributions
+## Contributors
 
-Thank you for thinking about contributing to CoBlocks plugin! If you're unsure of anything, know that you're 💯 welcome to submit an issue or pull request on any topic. The worst that can happen is that you'll be politely directed to the best location to ask your question or to change something in your pull request. We appreciate any and all contributions and don't want a wall of rules to get in the way of that.
+CoBlocks is built by [contributors and volunteers](https://github.com/godaddy/coblocks/blob/master/CONTRIBUTORS.md) around the globe.
 
-Before contributing, please read the [guidelines for contributing](https://github.com/godaddy/coblocks/blob/master/.github/CONTRIBUTING.md) to CoBlocks. Anyone is welcome to contribute. If you find a 🐞 or an issue, [create an issue](https://github.com/godaddy/coblocks/issues/new). Here are ways to contribute:
+## How You Can Contribute
 
-1. Raise an [issue](https://github.com/godaddy/coblocks/issues/new)
-2. Send a pull request with your bug fixes and/or new features
-3. Provide feedback and suggestions
+Well first off, thank you for your contributions to CoBlocks; every contribution counts. And if you are feeling a little lost, know that you are welcome to submit an issue on any topic, or even submit a pull request on any issue. The worst that can happen is that you'll be politely directed to the best location to ask your question.
 
-## First Time Contributor?
+We appreciate any and all contributions and don't want a wall of rules to get in the way of that. That saying, please read our [Contributing Guidelines](https://github.com/godaddy/coblocks/blob/master/.github/CONTRIBUTING.md) and know that you're expected to follow our [Code of Conduct](https://github.com/godaddy/coblocks/blob/master/.github/CODE_OF_CONDUCT.md).
 
-New to open source/free software? Here is a selection of issues we've made **especially for first-timers**.
-[Good first issues](https://github.com/godaddy/coblocks/labels/good%20first%20issue)
+**Ways to contribute:**
 
-We're here to help, so just raise an [issue](https://github.com/godaddy/coblocks/issues/new) and ask if one looks interesting or if you have questions.
+1. Raise an [issue](https://github.com/godaddy/coblocks/issues/new) to report a bug or feature request
+2. Submit a pull request with bug fixes and/or new features
+3. Provide ideas, feedback, mockups, and suggestions
+4. Join the conversations
 
+**New contributors:**
+
+Are you new at contributing to CoBlocks? If so, here is a selection of [good first issues](https://github.com/godaddy/coblocks/labels/good%20first%20issue) we've marked especially for first-timers. And if you catch yourself spinning your wheels, we're here to help!
 
 ## Screenshots
 
