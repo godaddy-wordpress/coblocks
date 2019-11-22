@@ -4,59 +4,41 @@
 import filter from 'lodash/filter';
 
 /**
- * WordPress dependencies
- */
-const { createBlock } = wp.blocks;
-
-/**
  * Internal dependencies
  */
-import { GalleryTransforms } from '../../components/block-gallery/shared/transforms';
-import { name } from './block.json';
+import metadata from './block.json';
+import { GalleryTransforms } from '../../components/block-gallery/shared';
 
-export const transforms = {
+/**
+ * WordPress dependencies
+ */
+import { createBlock } from '@wordpress/blocks';
+
+const transforms = {
 	from: [
 		{
 			type: 'block',
-			blocks: [ 'blockgallery/masonry' ],
+			blocks: [ 'coblocks/gallery-stacked' ],
 			transform: ( attributes ) => (
-				createBlock( `${ name }`, {
+				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
 				} )
 			),
 		},
 		{
 			type: 'block',
-			blocks: [ 'blockgallery/carousel' ],
+			blocks: [ 'coblocks/gallery-carousel' ],
 			transform: ( attributes ) => (
-				createBlock( `${ name }`, {
+				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
 				} )
 			),
 		},
 		{
 			type: 'block',
-			blocks: [ 'blockgallery/thumbnails' ],
+			blocks: [ 'coblocks/gallery-masonry' ],
 			transform: ( attributes ) => (
-				createBlock( `${ name }`, {
-					...GalleryTransforms( attributes ),
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/stacked' ],
-			transform: ( attributes ) => (
-				createBlock( `${ name }`, {
-					...GalleryTransforms( attributes ),
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/auto-height' ],
-			transform: ( attributes ) => (
-				createBlock( `${ name }`, {
+				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
 				} )
 			),
@@ -65,7 +47,7 @@ export const transforms = {
 			type: 'block',
 			blocks: [ 'core/gallery' ],
 			transform: ( attributes ) => (
-				createBlock( `${ name }`, {
+				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
 				} )
 			),
@@ -77,19 +59,19 @@ export const transforms = {
 			transform: ( attributes ) => {
 				const validImages = filter( attributes, ( { id, url } ) => id && url );
 				if ( validImages.length > 0 ) {
-					return createBlock( `${ name }`, {
+					return createBlock( metadata.name, {
 						images: validImages.map( ( { id, url, alt, caption } ) => ( { id, url, alt, caption } ) ),
 						ids: validImages.map( ( { id } ) => id ),
 					} );
 				}
-				return createBlock( `${ name }` );
+				return createBlock( metadata.name );
 			},
 		},
 		{
 			type: 'prefix',
 			prefix: ':offset',
 			transform: function( content ) {
-				return createBlock( `${ name }`, {
+				return createBlock( metadata.name, {
 					content,
 				} );
 			},
@@ -107,3 +89,5 @@ export const transforms = {
 		},
 	],
 };
+
+export default transforms;
