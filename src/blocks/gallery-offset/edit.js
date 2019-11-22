@@ -11,7 +11,7 @@ import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
 import Inspector from './inspector';
 import Controls from './controls';
-import { icon } from './';
+import icon from './icon';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
