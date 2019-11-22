@@ -22,7 +22,6 @@ class Inspector extends Component {
 		super( ...arguments );
 		this.setLinkTo = this.setLinkTo.bind( this );
 		this.setRadiusTo = this.setRadiusTo.bind( this );
-		this.setShadowTo = this.setShadowTo.bind( this );
 		this.setSizeControl = this.setSizeControl.bind( this );
 		this.setCaptionStyleTo = this.setCaptionStyleTo.bind( this );
 		this.setFullwidthTo = this.setFullwidthTo.bind( this );
@@ -36,12 +35,8 @@ class Inspector extends Component {
 		this.props.setAttributes( { radius: value } );
 	}
 
-	setShadowTo( value ) {
-		this.props.setAttributes( { shadow: value } );
-	}
-
 	setFullwidthTo() {
-		this.props.setAttributes( { fullwidth: ! this.props.attributes.fullwidth, shadow: 'none' } );
+		this.props.setAttributes( { fullwidth: ! this.props.attributes.fullwidth } );
 	}
 
 	setSizeControl( value ) {
@@ -75,7 +70,6 @@ class Inspector extends Component {
 			images,
 			lightbox,
 			radius,
-			shadow,
 			captions,
 		} = attributes;
 
@@ -102,12 +96,6 @@ class Inspector extends Component {
 								max={ 20 }
 								step={ 1 }
 							/> }
-							<SizeControl { ...this.props }
-								onChange={ this.setShadowTo }
-								value={ shadow }
-								label={ __( 'Box Shadow' ) }
-								reset={ false }
-							/>
 							<ToggleControl
 								label={ __( 'Captions', 'coblocks' ) }
 								checked={ !! captions }

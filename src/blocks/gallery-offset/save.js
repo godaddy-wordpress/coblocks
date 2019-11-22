@@ -25,7 +25,6 @@ const save = ( { attributes, className } ) => {
 		target,
 		rel,
 		linkTo,
-		shadow,
 		captions,
 		lightbox,
 	} = attributes;
@@ -84,9 +83,8 @@ const save = ( { attributes, className } ) => {
 					}
 
 					const imgClasses = classnames(
-						image.id ? [ `wp-image-${ image.id }` ] : null, {
-							[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
-						} );
+						image.id ? [ `wp-image-${ image.id }` ] : null, {}
+					);
 
 					const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ imgClasses } />;
 

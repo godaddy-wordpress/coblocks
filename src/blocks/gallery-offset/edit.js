@@ -142,7 +142,6 @@ class Edit extends Component {
 			gutterMobile,
 			images,
 			linkTo,
-			shadow,
 			lightbox,
 		} = attributes;
 
@@ -206,7 +205,6 @@ class Edit extends Component {
 										id={ img.id }
 										gutter={ gutter }
 										gutterMobile={ gutterMobile }
-										shadow={ shadow }
 										isSelected={ isSelected && this.state.selectedImage === index }
 										onRemove={ this.onRemoveImage( index ) }
 										onSelect={ this.onSelectImage( index ) }
