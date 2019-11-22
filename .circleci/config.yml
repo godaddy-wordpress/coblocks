@@ -190,7 +190,7 @@ jobs:
           command: |
             touch .dev/tests/cypress/wp_creds.json
             echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > .dev/tests/cypress/wp_creds.json
-            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --spec "$(cat /tmp/specstring)"
+            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --spec "$(cat /tmp/specstring)"
           path: /tmp/wordpress/wp-content/plugins/coblocks
 
   deploy:
