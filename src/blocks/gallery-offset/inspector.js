@@ -9,7 +9,7 @@ import SizeControl from '../../components/size-control';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
+import { Component } from '@wordpress/element';
 import { InspectorControls, FontSizePicker, withFontSizes } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 import { compose } from '@wordpress/compose';
@@ -59,7 +59,6 @@ class Inspector extends Component {
 		const {
 			attributes,
 			setAttributes,
-			isSelected,
 			setFontSize,
 			fontSize,
 		} = this.props;
@@ -74,49 +73,45 @@ class Inspector extends Component {
 		} = attributes;
 
 		return (
-			isSelected && (
-				<Fragment>
-					<InspectorControls>
-						<PanelBody title={ __( 'Offset Settings' ) }>
-							<SizeControl { ...this.props }
-								label={ __( 'Size' ) }
-								type={ 'reverse-grid' }
-								onChange={ this.setSizeControl }
-								value={ gridSize }
-								resetValue={ 'med' }
-							/>
-							{ images.length > 1 &&
-								<ResponsiveTabsControl { ...this.props } />
-							}
-							{ gutter > 0 && <RangeControl
-								label={ __( 'Rounded Corners' ) }
-								value={ radius }
-								onChange={ this.setRadiusTo }
-								min={ 0 }
-								max={ 20 }
-								step={ 1 }
-							/> }
-							<ToggleControl
-								label={ __( 'Captions', 'coblocks' ) }
-								checked={ !! captions }
-								onChange={ () => setAttributes( { captions: ! captions } ) }
-								help={ this.getCaptionsHelp }
-							/>
-							{ captions && <FontSizePicker
-								value={ fontSize.size }
-								onChange={ setFontSize }
-							/> }
-							<ToggleControl
-								label={ __( 'Lightbox', 'coblocks' ) }
-								checked={ !! lightbox }
-								onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
-								help={ this.getLightboxHelp }
-							/>
-						</PanelBody>
-						<GalleryLinkSettings { ...this.props } />
-					</InspectorControls>
-				</Fragment>
-			)
+			<InspectorControls>
+				<PanelBody title={ __( 'Offset Settings' ) }>
+					<SizeControl { ...this.props }
+						label={ __( 'Size' ) }
+						type={ 'reverse-grid' }
+						onChange={ this.setSizeControl }
+						value={ gridSize }
+						resetValue={ 'med' }
+					/>
+					{ images.length > 1 &&
+						<ResponsiveTabsControl { ...this.props } />
+					}
+					{ gutter > 0 && <RangeControl
+						label={ __( 'Rounded Corners' ) }
+						value={ radius }
+						onChange={ this.setRadiusTo }
+						min={ 0 }
+						max={ 20 }
+						step={ 1 }
+					/> }
+					<ToggleControl
+						label={ __( 'Lightbox', 'coblocks' ) }
+						checked={ !! lightbox }
+						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+						help={ this.getLightboxHelp }
+					/>
+					<ToggleControl
+						label={ __( 'Captions', 'coblocks' ) }
+						checked={ !! captions }
+						onChange={ () => setAttributes( { captions: ! captions } ) }
+						help={ this.getCaptionsHelp }
+					/>
+					{ captions && <FontSizePicker
+						value={ fontSize.size }
+						onChange={ setFontSize }
+					/> }
+				</PanelBody>
+				<GalleryLinkSettings { ...this.props } />
+			</InspectorControls>
 		);
 	}
 }
