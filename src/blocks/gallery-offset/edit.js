@@ -9,8 +9,6 @@ import filter from 'lodash/filter';
  */
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
-import GalleryUploader from '../../components/block-gallery/gallery-uploader';
-import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
 import Inspector from './inspector';
 import Controls from './controls';
 import { icon } from './';
@@ -148,12 +146,7 @@ class Edit extends Component {
 			lightbox,
 		} = attributes;
 
-		const dropZone = (
-			<GalleryDropZone
-				{ ...this.props }
-				label={ __( 'Drop to add to the offset gallery' ) }
-			/>
-		);
+		const hasImages = !! images.length;
 
 		const wrapperClasses = classnames(
 			className, {
@@ -171,14 +164,21 @@ class Edit extends Component {
 			}
 		);
 
-		if ( images.length === 0 ) {
-			return (
+		const offsetGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
 				<GalleryPlaceholder
 					{ ...this.props }
-					label={ __( 'Offset Gallery' ) }
+					label={ __( 'Offset', 'coblocks' ) }
 					icon={ icon }
+					gutter={ gutter }
+					gutterMobile={ gutterMobile }
 				/>
-			);
+			</Fragment>
+		);
+
+		if ( ! hasImages ) {
+			return offsetGalleryPlaceholder;
 		}
 
 		return (
@@ -188,7 +188,6 @@ class Edit extends Component {
 					{ ...this.props }
 				/>
 				{ noticeUI }
-				{ dropZone }
 				<div className={ wrapperClasses }>
 					<ul className={ innerClasses }>
 						{ images.map( ( img, index ) => {
@@ -227,9 +226,7 @@ class Edit extends Component {
 								</li>
 							);
 						} ) }
-						<li className="coblocks-gallery--item--uploader">
-							<GalleryUploader { ...this.props } />
-						</li>
+						{ offsetGalleryPlaceholder }
 					</ul>
 				</div>
 			</Fragment>
