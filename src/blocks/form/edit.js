@@ -24,7 +24,7 @@ import { Button, PanelBody, TextControl, ExternalLink } from '@wordpress/compone
 import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { applyFilters } from '@wordpress/hooks';
 import { compose } from '@wordpress/compose';
-import { withSelect, select } from '@wordpress/data';
+import { withSelect } from '@wordpress/data';
 
 /**
  * Get settings
@@ -64,6 +64,7 @@ class FormEdit extends Component {
 			isSavedKey: false,
 			isSaving: false,
 			keySaved: false,
+			template: null,
 		};
 
 		const to = arguments[ 0 ].attributes.to ? arguments[ 0 ].attributes.to : '';
@@ -113,6 +114,15 @@ class FormEdit extends Component {
 					this.setState( { isSavedKey: true } );
 				}
 			} );
+		}
+	}
+
+	componentDidUpdate( prevProps ) {
+		const { innerBlockCount, innerBlocks } = this.props;
+
+		// Store the selected innerBlocks layout in state so that undo and redo functions work properly.
+		if ( prevProps.innerBlockCount !== innerBlockCount ) {
+			this.setState( { template: innerBlockCount ? innerBlocks : null } );
 		}
 	}
 
@@ -275,39 +285,24 @@ class FormEdit extends Component {
 				submitButtonText = elem.submitButtonText;
 			}
 		} );
-		setAttributes( { submitButtonText, layout } );
+
+		this.setState( { template: layout } );
+		setAttributes( { submitButtonText } );
 	}
 
 	render() {
-		const {
-			className,
-			attributes,
-		} = this.props;
-
-		const { layout } = attributes;
+		const { className } = this.props;
 
 		const classes = classnames(
 			className,
 			'coblocks-form',
 		);
 
-		const hasInnerBlocks = () => {
-			const {	clientId, checkForInnerBlocks } = this.props;
-			const block = checkForInnerBlocks( clientId );
-			let hasBlocks = false;
-			map( block, ( props ) => {
-				if ( ( typeof props.innerBlocks !== 'undefined' ) && props.innerBlocks.length > 0 ) {
-					hasBlocks = true;
-				}
-			} );
-			return hasBlocks;
-		};
-
-		const templateSelection = hasInnerBlocks() || !! layout;
+		const showTemplateSelector = this.props.innerBlockCount === 0;
 
 		return (
 			<Fragment>
-				{ !! templateSelection && (
+				{ ! showTemplateSelector && (
 					<InspectorControls>
 						<PanelBody title={ __( 'Form Settings', 'coblocks' ) }>
 							{ this.renderToAndSubjectFields() }
@@ -384,23 +379,26 @@ class FormEdit extends Component {
 							this.setTemplate( chosenTemplate );
 						} }
 						__experimentalAllowTemplateOptionSkip
-						template={ ! templateSelection ? null : layout }
+						template={ this.state.template }
 						allowedBlocks={ ALLOWED_BLOCKS }
 						renderAppender={ () => null }
 						templateInsertUpdatesSelection={ false }
 					/>
-					{ templateSelection && <SubmitButton { ...this.props } /> }
+					{ ! showTemplateSelector && <SubmitButton { ...this.props } /> }
 				</div>
 			</Fragment>
 		);
 	}
 }
 
-const applyWithSelect = withSelect( () => {
-	const checkForInnerBlocks = select( 'core/block-editor' ).getBlocksByClientId;
+const applyWithSelect = withSelect( ( select, props ) => {
+	const { getBlocks } = select( 'core/block-editor' );
+	const innerBlocks = getBlocks( props.clientId );
 
 	return {
-		checkForInnerBlocks,
+		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
+		innerBlockCount: innerBlocks.length,
+		innerBlocks,
 	};
 } );
 
