@@ -46,7 +46,7 @@ class Edit extends Component {
 	componentDidMount() {
 		if ( this.props.wideControlsEnabled === true && ! this.props.attributes.align ) {
 			this.props.setAttributes( {
-				align: 'full',
+				align: 'wide',
 			} );
 		}
 	}
