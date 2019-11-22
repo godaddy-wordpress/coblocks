@@ -1,6 +1,9 @@
 /**
  * WordPress dependencies
  */
-import { Path, SVG, G } from '@wordpress/components';
+import {
+	Path,
+	SVG,
+} from '@wordpress/components';
 
-export default <SVG aria-hidden className="components-blockgallery-svg dashicon" role="img" focusable="false" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><G transform="translate(3 3)"><Path d="m16 10h-6c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-6v-4h6z" /><Path d="m13.6666667 0h-9.33333337c-1.28333333 0-2.33333333.9-2.33333333 2v4c0 1.1 1.05 2 2.33333333 2h9.33333337c1.2833333 0 2.3333333-.9 2.3333333-2v-4c0-1.1-1.05-2-2.3333333-2zm0 6h-9.33333337v-4h9.33333337z" /><Path d="m4 10h-2c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm0 6h-2v-4h2z" /></G></SVG>;
+export default <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><Path d="m18 1c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-12c-1.1 0-2-.9-2-2v-10c0-1.1.9-2 2-2zm0 12v-10h-12v10zm-3.4810791-5.97615262 2.4810791 4.97615262h-10l3-3.8013916 1.8941799 2.5528077zm-13.5189209 14.97615262v-3c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v2.9698486c0 .0100028-.00007711.0200534-.00023095.0301514h-2.05032284l.05055379-.0510254v-2.9489746h-4v3zm10 0v-3c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v2.9698486c0 .0100028-.0000771.0200534-.0002309.0301514h-2.0503229l.0505538-.0510254v-2.9489746h-8v3z" /></SVG>;
