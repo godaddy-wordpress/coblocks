@@ -22,6 +22,7 @@ const transforms = {
 				'coblocks/gallery-carousel',
 				'coblocks/gallery-masonry',
 				'coblocks/gallery-stacked',
+				'coblocks/gallery-offset',
 				'blockgallery/carousel',
 				'blockgallery/masonry',
 				'blockgallery/stacked',
