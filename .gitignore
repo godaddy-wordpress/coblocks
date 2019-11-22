@@ -10,7 +10,8 @@
 *.sublime-workspace
 *.cache
 .ftppass
-coverage
+coverage/
+cypress/
 .dev/tests/cypress/screenshots
 .dev/tests/cypress/wp_creds.json
 sftp.json
