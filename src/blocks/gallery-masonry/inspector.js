@@ -73,7 +73,7 @@ class Inspector extends Component {
 				<PanelBody title={ __( 'Masonry Settings', 'coblocks' ) }>
 					<SizeControl { ...this.props }
 						type={ 'grid' }
-						label={ __( 'Column Size', 'coblocks' ) }
+						label={ __( 'Size', 'coblocks' ) }
 						onChange={ this.setSizeControl }
 						value={ gridSize }
 						resetValue={ 'xlrg' }
