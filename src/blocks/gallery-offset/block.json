@@ -2,15 +2,13 @@
 	"name": "coblocks/gallery-offset",
 	"category": "coblocks-galleries",
 	"attributes": {
-        "gridSize": {
-            "type": "string",
-            "default": "sml"
-        },
-        "contentAlign": {
-            "type": "string",
-            "default": "center"
-        }
-    }
+		"gridSize": {
+			"type": "string",
+			"default": "sml"
+		},
+		"contentAlign": {
+			"type": "string",
+			"default": "center"
+		}
+	}
 }
-
-

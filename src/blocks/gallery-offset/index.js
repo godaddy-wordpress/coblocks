@@ -33,7 +33,7 @@ const settings = {
 	/* translators: block name */
 	title: __( 'Offset', 'coblocks' ),
 	/* translators: block description */
-	description: __( 'Display images in an offset stacked grid gallery.', 'coblocks' ),
+	description: __( 'Display images in an offset brick pattern gallery.', 'coblocks' ),
 	icon,
 	keywords: [
 		'coblocks',
