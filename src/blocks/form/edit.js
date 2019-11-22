@@ -109,7 +109,7 @@ class FormEdit extends Component {
 				} );
 				if (
 					this.state.recaptchaSecretKey &&
-				this.state.recaptchaSecretKey !== ''
+					this.state.recaptchaSecretKey !== ''
 				) {
 					this.setState( { isSavedKey: true } );
 				}
@@ -317,11 +317,11 @@ class FormEdit extends Component {
 								<Fragment>
 									<ExternalLink href={ RETRIEVE_KEY_URL }>
 										{ this.state.recaptchaSiteKey === '' &&
-									this.state.recaptchaSecretKey === '' ?
+											this.state.recaptchaSecretKey === '' ?
 											__( 'Generate keys', 'coblocks' ) :
 											__( 'My keys', 'coblocks' ) }
 									</ExternalLink>
-								|&nbsp;
+									|&nbsp;
 									<ExternalLink href={ HELP_URL }>{ __( 'Get help', 'coblocks' ) }</ExternalLink>
 								</Fragment>
 							</p>
@@ -343,27 +343,21 @@ class FormEdit extends Component {
 									onClick={ this.saveRecaptchaKey }
 									disabled={
 										this.state.recaptchaSiteKey === '' ||
-									this.state.recaptchaSecretKey === ''
+										this.state.recaptchaSecretKey === ''
 									}
 								>
 									{ this.state.isSaving ? __( 'Saving', 'coblocks' ) : __( 'Save', 'coblocks' ) }
 								</Button>
 								{ this.state.recaptchaSiteKey !== '' &&
-								this.state.recaptchaSecretKey !== '' && (
-									<Fragment>
-										&nbsp;
-										<Button
-											className="components-block-coblocks-form-recaptcha-key-remove__button"
-											isDefault
-											onClick={ this.removeRecaptchaKey }
-											disabled={
-												this.state.recaptchaSiteKey === '' ||
-												this.state.recaptchaSecretKey === ''
-											}
-										>
-											{ __( 'Remove', 'coblocks' ) }
-										</Button>
-									</Fragment>
+									this.state.recaptchaSecretKey !== '' && (
+									<Button
+										className="components-block-coblocks-form-recaptcha-key-remove__button"
+										isDefault
+										onClick={ this.removeRecaptchaKey }
+										disabled={ this.state.recaptchaSiteKey === '' || this.state.recaptchaSecretKey === '' }
+									>
+										{ __( 'Remove', 'coblocks' ) }
+									</Button>
 								) }
 							</div>
 						</PanelBody>
