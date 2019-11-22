@@ -20,22 +20,22 @@ The vision for CoBlocks is to create a suite of WordPress blocks and tools to he
 -   Click to Tweet Block
 -   Dynamic Separator Block
 -   Features Block
--   Food & Drinks Block (New!)
--   Form Block (New!)
+-   Food & Drinks Block
+-   Form Block
 -   Gif Block
 -   GitHub Gist Block
 -   Hero Block
 -   Highlight Block
 -   Icon Block
--   Logos & Badges Block (New!)
+-   Logos & Badges Block
 -   Map Block
 -   Masonry Gallery Block
 -   Media Card Block
 -   Pricing Table Block
 -   Resizable Row/Columns Blocks
--   Services Block (New!)
+-   Services Block
 -   Shape Divider Block
--   Social Profiles Block (New!)
+-   Social Profiles Block
 -   Social Sharing Block
 -   Stacked Gallery Block
 
