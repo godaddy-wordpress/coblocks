@@ -114,12 +114,10 @@ class Inspector extends Component {
 								onChange={ () => setAttributes( { captions: ! captions } ) }
 								help={ this.getCaptionsHelp }
 							/>
-							{ captions &&
-							<FontSizePicker
+							{ captions && <FontSizePicker
 								value={ fontSize.size }
 								onChange={ setFontSize }
-							/>
-							}
+							/> }
 							<ToggleControl
 								label={ __( 'Lightbox', 'coblocks' ) }
 								checked={ !! lightbox }
