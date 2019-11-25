@@ -57,6 +57,7 @@ class FormEdit extends Component {
 		this.saveRecaptchaKey = this.saveRecaptchaKey.bind( this );
 		this.removeRecaptchaKey = this.removeRecaptchaKey.bind( this );
 		this.setTemplate = this.setTemplate.bind( this );
+		this.supportsExperimentalProps = this.supportsExperimentalProps.bind( this );
 
 		this.state = {
 			toError: error && error.length ? error : null,
@@ -121,6 +122,10 @@ class FormEdit extends Component {
 		const { innerBlockCount, innerBlocks } = this.props;
 		if ( innerBlockCount > 0 ) {
 			this.setState( { template: innerBlocks } );
+		}
+
+		if ( ! this.supportsExperimentalProps() && innerBlockCount === 0 ) {
+			this.setTemplate( TEMPLATE_OPTIONS[ 0 ].template );
 		}
 	}
 
@@ -294,7 +299,15 @@ class FormEdit extends Component {
 		} );
 
 		this.setState( { template: layout } );
-		setAttributes( { submitButtonText, layout } );
+		setAttributes( { submitButtonText } );
+	}
+
+	supportsExperimentalProps() {
+		let isSupported = true;
+		if ( typeof InnerBlocks.prototype.shouldComponentUpdate === 'undefined' ) {
+			isSupported = false;
+		}
+		return isSupported;
 	}
 
 	render() {
@@ -304,14 +317,6 @@ class FormEdit extends Component {
 			className,
 			'coblocks-form',
 		);
-
-		const supportsExperimentalProps = () =>{
-			let isSupported = false;
-			if ( typeof InnerBlocks.prototype.shouldComponentUpdate !== 'undefined' ) {
-				isSupported = true;
-			}
-			return isSupported;
-		};
 
 		const showTemplateSelector = this.props.innerBlockCount === 0;
 
@@ -388,7 +393,7 @@ class FormEdit extends Component {
 							this.setTemplate( chosenTemplate );
 						} }
 						__experimentalAllowTemplateOptionSkip
-						template={ supportsExperimentalProps() ? this.state.template : TEMPLATE_OPTIONS[ 0 ].template }
+						template={ this.supportsExperimentalProps() ? this.state.template : TEMPLATE_OPTIONS[ 0 ].template }
 						allowedBlocks={ ALLOWED_BLOCKS }
 						renderAppender={ () => null }
 						templateInsertUpdatesSelection={ false }

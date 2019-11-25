@@ -9,7 +9,6 @@ import './styles/style.scss';
  */
 import edit from './edit';
 import icon from './icon';
-import { TEMPLATE_OPTIONS } from './layouts';
 
 /**
  * WordPress dependencies
@@ -32,13 +31,9 @@ const metadata = {
 			type: 'string',
 			default: null,
 		},
-		layout: {
-			type: 'array',
-			default: TEMPLATE_OPTIONS[ 0 ].template,
-		},
 		submitButtonText: {
 			type: 'string',
-			default: TEMPLATE_OPTIONS[ 0 ].submitButtonText,
+			default: null,
 		},
 		customBackgroundButtonColor: {
 			type: 'string',
