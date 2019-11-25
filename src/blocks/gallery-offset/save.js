@@ -16,7 +16,6 @@ import { RichText, getFontSizeClass } from '@wordpress/block-editor';
 const save = ( { attributes, className } ) => {
 	const {
 		captions,
-		contentAlign,
 		customFontSize,
 		fontSize,
 		gutter,
@@ -36,8 +35,14 @@ const save = ( { attributes, className } ) => {
 
 	const innerClasses = classnames(
 		...GalleryClasses( attributes ),
-		`has-${ contentAlign }-content`,
-		'mb-0', {
+		'flex',
+		'flex-wrap',
+		'justify-center',
+		'mb-0',
+		'ml-1',
+		'pt-1', {
+			[ `sm:ml-${ gutter }` ]: gutter,
+			[ `sm:pt-${ gutter }` ]: gutter,
 			[ `coblocks-gallery--${ gridSize }` ]: gridSize,
 		},
 	);

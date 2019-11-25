@@ -1,8 +1,7 @@
 .coblocks-gallery {
 	list-style: none !important;
-	margin-left: auto !important;
-	margin-right: auto !important;
-	padding: 0;
+	padding-left: 0;
+	padding-right: 0;
 
 	&--item {
 		list-style: none !important;
@@ -23,14 +22,6 @@
 		color: inherit;
 		margin: 0 !important;
 	}
-
-	// &:not(.has-padding) {
-	// 	padding: 0 !important;
-	// }
-
-	// &:not(.has-margin) &--item {
-	// 	margin: auto !important;
-	// }
 
 	&.is-cropped {
 		.coblocks-gallery--item,

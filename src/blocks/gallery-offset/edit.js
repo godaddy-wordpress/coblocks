@@ -164,9 +164,7 @@ class Edit extends Component {
 		} = this.props;
 
 		const {
-			align,
 			captions,
-			contentAlign,
 			gutter,
 			images,
 			linkTo,
@@ -184,11 +182,14 @@ class Edit extends Component {
 
 		const innerClasses = classnames(
 			...GalleryClasses( attributes ),
-			`has-${ contentAlign }-content`,
-			'mb-0', {
+			'flex',
+			'flex-wrap',
+			'justify-center',
+			'ml-1',
+			'pt-1', {
+				[ `sm:ml-${ gutter }` ]: gutter,
+				[ `sm:pt-${ gutter }` ]: gutter,
 				[ `coblocks-gallery--${ gridSize }` ]: gridSize,
-				[ `align${ align }` ]: align,
-				'has-margin': gutter < 0,
 			}
 		);
 

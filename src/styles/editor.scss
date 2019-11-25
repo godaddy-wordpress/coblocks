@@ -99,6 +99,26 @@
 			@include utilities($margin, "margin-left", "-");
 		}
 	}
+
+	.p {
+		@include utilities($padding, "padding", "-");
+	}
+
+	.pt {
+		@include utilities($padding, "padding-top", "-");
+	}
+
+	.pr {
+		@include utilities($padding, "padding-right", "-");
+	}
+
+	.pb {
+		@include utilities($padding, "padding-bottom", "-");
+	}
+
+	.pl {
+		@include utilities($padding, "padding-left", "-");
+	}
 }
 
 // Global styles for our modals.

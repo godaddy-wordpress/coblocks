@@ -41,8 +41,8 @@
 	}
 }
 
-// 1440 +
-@include break-huge() {
+// 1280px+
+@include break-wide() {
 	.lg\:pt {
 		@include utilities($padding__lg, "padding-top", "-");
 	}
