@@ -118,8 +118,8 @@ class FormEdit extends Component {
 	}
 
 	componentDidMount() {
-		if ( !! this.props.attributes.layout ) {
-			const { innerBlocks } = this.props;
+		const { innerBlockCount, innerBlocks } = this.props;
+		if ( innerBlockCount > 0 ) {
 			this.setState( { template: innerBlocks } );
 		}
 	}
@@ -305,6 +305,14 @@ class FormEdit extends Component {
 			'coblocks-form',
 		);
 
+		const supportsExperimentalProps = () =>{
+			let isSupported = false;
+			if ( typeof InnerBlocks.prototype.shouldComponentUpdate !== 'undefined' ) {
+				isSupported = true;
+			}
+			return isSupported;
+		};
+
 		const showTemplateSelector = this.props.innerBlockCount === 0;
 
 		return (
@@ -380,7 +388,7 @@ class FormEdit extends Component {
 							this.setTemplate( chosenTemplate );
 						} }
 						__experimentalAllowTemplateOptionSkip
-						template={ this.state.template }
+						template={ supportsExperimentalProps() ? this.state.template : TEMPLATE_OPTIONS[ 0 ].template }
 						allowedBlocks={ ALLOWED_BLOCKS }
 						renderAppender={ () => null }
 						templateInsertUpdatesSelection={ false }
