@@ -171,6 +171,7 @@ class Edit extends Component {
 			images,
 			linkTo,
 			lightbox,
+			gridSize,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -185,6 +186,7 @@ class Edit extends Component {
 			...GalleryClasses( attributes ),
 			`has-${ contentAlign }-content`,
 			'mb-0', {
+				[ `coblocks-gallery--${ gridSize }` ]: gridSize,
 				[ `align${ align }` ]: align,
 				'has-margin': gutter < 0,
 			}

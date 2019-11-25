@@ -10,12 +10,10 @@ function GalleryClasses( attributes ) {
 		radius,
 		filter,
 		captionStyle,
-		gridSize,
 	} = attributes;
 
 	return [
 		'coblocks-gallery',
-		{ [ `coblocks-gallery--${ gridSize }` ]: gridSize },
 		{ 'has-no-alignment': ! align },
 		{ [ `has-border-radius-${ radius }` ]: radius > 0 },
 		{ [ `has-filter-${ filter }` ]: filter !== 'none' },

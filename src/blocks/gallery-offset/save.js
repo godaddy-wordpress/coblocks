@@ -20,6 +20,7 @@ const save = ( { attributes, className } ) => {
 		customFontSize,
 		fontSize,
 		gutter,
+		gridSize,
 		images,
 		lightbox,
 		linkTo,
@@ -36,7 +37,9 @@ const save = ( { attributes, className } ) => {
 	const innerClasses = classnames(
 		...GalleryClasses( attributes ),
 		`has-${ contentAlign }-content`,
-		'mb-0', {}
+		'mb-0', {
+			[ `coblocks-gallery--${ gridSize }` ]: gridSize,
+		},
 	);
 
 	const fontSizeClass = getFontSizeClass( fontSize );
