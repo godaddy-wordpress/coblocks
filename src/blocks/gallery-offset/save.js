@@ -45,10 +45,6 @@ const save = ( { attributes, className } ) => {
 		},
 	);
 
-	const figureClasses = classnames( 'wp-block-coblocks-gallery-offset__figure' );
-
-	const captionClasses = classnames( 'coblocks-gallery--caption' );
-
 	return (
 		<div className={ wrapperClasses }>
 			<ul className={ innerClasses } >
@@ -94,10 +90,10 @@ const save = ( { attributes, className } ) => {
 
 					return (
 						<li key={ image.id || image.url } className="coblocks-gallery--item">
-							<figure className={ classnames( figureClasses, gutterClasses ) }>
+							<figure className={ classnames( 'wp-block-coblocks-gallery-offset__figure', gutterClasses ) }>
 								{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 								{ captions && image.caption && image.caption.length > 0 && (
-									<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } />
+									<RichText.Content tagName="figcaption" className="coblocks-gallery--caption" value={ image.caption } />
 								) }
 							</figure>
 						</li>
