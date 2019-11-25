@@ -11,13 +11,11 @@ import { GalleryClasses } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-import { RichText, getFontSizeClass } from '@wordpress/block-editor';
+import { RichText } from '@wordpress/block-editor';
 
 const save = ( { attributes, className } ) => {
 	const {
 		captions,
-		customFontSize,
-		fontSize,
 		gutter,
 		gridSize,
 		images,
@@ -47,21 +45,9 @@ const save = ( { attributes, className } ) => {
 		},
 	);
 
-	const fontSizeClass = getFontSizeClass( fontSize );
+	const figureClasses = classnames( 'wp-block-coblocks-gallery-offset__figure' );
 
-	const figureClasses = classnames(
-		'wp-block-coblocks-gallery-offset__figure', {
-			[ fontSizeClass ]: fontSizeClass,
-		} );
-
-	const captionClasses = classnames(
-		'coblocks-gallery--caption', {
-			[ fontSizeClass ]: fontSizeClass,
-		} );
-
-	const captionStyles = {
-		fontSize: fontSizeClass ? undefined : customFontSize,
-	};
+	const captionClasses = classnames( 'coblocks-gallery--caption' );
 
 	return (
 		<div className={ wrapperClasses }>
@@ -111,7 +97,7 @@ const save = ( { attributes, className } ) => {
 							<figure className={ classnames( figureClasses, gutterClasses ) }>
 								{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 								{ captions && image.caption && image.caption.length > 0 && (
-									<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } styles={ captionStyles } />
+									<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } />
 								) }
 							</figure>
 						</li>
