@@ -22,7 +22,6 @@ import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { withNotices } from '@wordpress/components';
-import { withFontSizes } from '@wordpress/block-editor';
 
 /**
  * Block edit function
@@ -160,7 +159,6 @@ class Edit extends Component {
 			className,
 			isSelected,
 			noticeUI,
-			fontSize,
 		} = this.props;
 
 		const {
@@ -247,7 +245,6 @@ class Edit extends Component {
 										isLastItem={ ( index + 1 ) === images.length }
 										onMoveBackward={ this.onMoveBackward( index ) }
 										onMoveForward={ this.onMoveForward( index ) }
-										fontSize={ fontSize.size }
 										newClass="wp-block-coblocks-gallery-offset__figure"
 									/>
 								</li>
@@ -265,6 +262,5 @@ export default compose( [
 	withSelect( ( select ) => ( {
 		wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
 	} ) ),
-	withFontSizes( 'fontSize' ),
 	withNotices,
 ] )( Edit );
