@@ -26,6 +26,10 @@
 		}
 	}
 
+	figure {
+		width: auto !important;
+	}
+
 	.editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
 		overflow: hidden;
 		position: relative !important;
