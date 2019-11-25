@@ -6,6 +6,10 @@
 			"type": "string",
 			"default": "sml"
 		},
+		"gutter": {
+			"type": "number",
+			"default": 1
+		},
 		"contentAlign": {
 			"type": "string",
 			"default": "center"

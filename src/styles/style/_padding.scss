@@ -1,3 +1,7 @@
+.p {
+	@include utilities($padding, "padding", "-");
+}
+
 .pt {
 	@include utilities($padding, "padding-top", "-");
 }

@@ -15,18 +15,16 @@ import { RichText, getFontSizeClass } from '@wordpress/block-editor';
 
 const save = ( { attributes, className } ) => {
 	const {
+		captions,
 		contentAlign,
 		customFontSize,
 		fontSize,
-		gridSize,
 		gutter,
-		gutterMobile,
 		images,
-		target,
-		rel,
-		linkTo,
-		captions,
 		lightbox,
+		linkTo,
+		rel,
+		target,
 	} = attributes;
 
 	const wrapperClasses = classnames(
@@ -37,19 +35,14 @@ const save = ( { attributes, className } ) => {
 
 	const innerClasses = classnames(
 		...GalleryClasses( attributes ),
-		`has-bricks-grid-${ gridSize }`,
-		`has-${ contentAlign }-content`, {
-			[ `has-gutter-${ gutter }` ]: gutter > 0,
-			[ `has-gutter-mobile-${ gutterMobile }` ]: gutterMobile > 0,
-		}
+		`has-${ contentAlign }-content`,
+		'mb-0', {}
 	);
 
 	const fontSizeClass = getFontSizeClass( fontSize );
 
 	const figureClasses = classnames(
-		'coblocks-gallery--figure', {
-			[ `has-margin-bottom-${ gutter }` ]: gutter > 0,
-			[ `has-margin-bottom-mobile-${ gutterMobile }` ]: gutterMobile > 0,
+		'wp-block-coblocks-gallery-offset__figure', {
 			[ fontSizeClass ]: fontSizeClass,
 		} );
 
@@ -86,11 +79,28 @@ const save = ( { attributes, className } ) => {
 						image.id ? [ `wp-image-${ image.id }` ] : null, {}
 					);
 
+					let gutterClasses;
+
+					switch ( gutter ) {
+						case 0:
+							gutterClasses = 'm-0';
+							break;
+						case 1:
+							gutterClasses = 'mr-1 mb-1';
+							break;
+						case 2:
+							gutterClasses = 'mr-1 sm:mr-2 md:mr-3 mb-1 sm:mb-2 md:mb-3';
+							break;
+						case 3:
+							gutterClasses = 'mr-1 sm:mr-2 md:mr-3 lg:mr-4 mb-1 sm:mb-2 md:mb-3 lg:mb-4';
+							break;
+					}
+
 					const img = <img src={ image.url } alt={ image.alt } data-id={ image.id } data-link={ image.link } className={ imgClasses } />;
 
 					return (
 						<li key={ image.id || image.url } className="coblocks-gallery--item">
-							<figure className={ figureClasses }>
+							<figure className={ classnames( figureClasses, gutterClasses ) }>
 								{ href ? <a href={ href } target={ target } rel={ rel }>{ img }</a> : img }
 								{ captions && image.caption && image.caption.length > 0 && (
 									<RichText.Content tagName="figcaption" className={ captionClasses } value={ image.caption } styles={ captionStyles } />

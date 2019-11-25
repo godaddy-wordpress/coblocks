@@ -1,22 +1,4 @@
 .editor-block-list__block[data-type="coblocks/gallery-offset"] {
-
-	.coblocks-gallery--item .is-selected::after {
-		bottom: -0.05em;
-	}
-
-	// Fixes an issue where figures are set to display 100% if alignfull is set.
-	.coblocks-gallery--figure:not(.components-coblocks-gallery-uploader-wrapper) {
-		width: auto !important;
-	}
-
-	// Fullwidth upload image button.
-	.coblocks-gallery--item--uploader {
-		border: 1px dashed $dark-gray-150;
-		margin-bottom: 0; // Remove unnecessary margin applied to the core appender.
-		outline: none;
-		width: 100%;
-	}
-
 	// Captions.
 	.editor-rich-text {
 		bottom: 0;
@@ -45,8 +27,8 @@
 	}
 
 	.editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
-		position: relative !important;
 		overflow: hidden;
+		position: relative !important;
 	}
 
 	.is-selected .editor-rich-text {
@@ -54,9 +36,9 @@
 		@supports (position: sticky) {
 			bottom: 3px;
 			left: 3px;
+			margin-top: -3px;
 			right: 3px;
 			width: calc(100% - 6px);
-			margin-top: -3px;
 		}
 
 		figcaption {
@@ -69,76 +51,12 @@
 		}
 	}
 
-	.coblocks-gallery {
-		list-style: none !important;
-		margin-left: auto !important;
-		margin-right: auto !important;
-		padding: 0
-	}
-
-	.coblocks-gallery--item {
-		list-style: none !important;
-		margin: 0;
-		padding: 0 !important
-	}
-
-	.coblocks-gallery--item figure {
-		position: relative
-	}
-
-	.coblocks-gallery--item img {
-		vertical-align: middle;
-		opacity: 1 !important
-	}
+	// .coblocks-gallery--item img {
+	// 	vertical-align: middle;
+	// }
 
 	.coblocks-gallery .coblocks-gallery--item figcaption {
-		margin: 0 !important
-	}
-
-	.coblocks-gallery:not(.has-padding) {
-		padding: 0 !important
-	}
-
-	.coblocks-gallery:not(.has-margin) .coblocks-gallery--item {
-		margin: auto !important
-	}
-
-	.coblocks-gallery.is-cropped .coblocks-gallery--item a,
-	.coblocks-gallery.is-cropped .coblocks-gallery--item img,
-	.coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail a,
-	.coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail img {
-		width: 100%
-	}
-
-	@supports ((position: -webkit-sticky) or (position: sticky)) {
-		.coblocks-gallery.is-cropped .coblocks-gallery--item a,
-		.coblocks-gallery.is-cropped .coblocks-gallery--item img,
-		.coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail a,
-		.coblocks-gallery.is-cropped .coblocks-gallery--item-thumbnail img {
-			-ms-flex: 1;
-			flex: 1;
-			height: 100%;
-			-o-object-fit: cover;
-			object-fit: cover
-		}
-	}
-
-	.alignfull ul.coblocks-gallery,
-	.alignwide ul.coblocks-gallery {
-		max-width: 100%
-	}
-}
-
-.block-editor-block-preview__content .wp-block-coblocks-gallery-offset {
-	ul {
-		list-style-type: none;
-		.coblocks-gallery--item img {
-				max-height: 200px !important;
-		}
-	}
-
-	.coblocks-gallery--item--uploader {
-		display: none;
+		margin: 0 !important;
 	}
 }
 
@@ -147,5 +65,5 @@
 .editor-block-list__block[data-type="coblocks/gallery-offset"]:not(.is-selected) {
 	div.components-form-file-upload {
 		display: none;
-	} 
+	}
 }

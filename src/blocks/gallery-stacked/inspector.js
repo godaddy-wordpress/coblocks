@@ -108,6 +108,12 @@ class Inspector extends Component {
 
 					/> }
 					<ToggleControl
+						label={ __( 'Lightbox', 'coblocks' ) }
+						checked={ !! lightbox }
+						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+						help={ this.getLightboxHelp }
+					/>
+					<ToggleControl
 						label={ __( 'Captions', 'coblocks' ) }
 						checked={ !! captions }
 						onChange={ () => setAttributes( { captions: ! captions } ) }
@@ -119,12 +125,6 @@ class Inspector extends Component {
 							onChange={ setFontSize }
 						/>
 					}
-					<ToggleControl
-						label={ __( 'Lightbox', 'coblocks' ) }
-						checked={ !! lightbox }
-						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
-						help={ this.getLightboxHelp }
-					/>
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
 			</InspectorControls>

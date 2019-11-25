@@ -14,8 +14,8 @@ import './styles/editor.scss';
  */
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { Component, Fragment } from '@wordpress/element';
-import { ButtonGroup, Button } from '@wordpress/components';
+import { Component } from '@wordpress/element';
+import { ButtonGroup, Button, BaseControl } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
 
 class SizeControl extends Component {
@@ -174,8 +174,8 @@ class SizeControl extends Component {
 		);
 
 		return (
-			<Fragment>
-				{ label && <p>{ label }</p> }
+			<BaseControl>
+				{ label && <span className="components-base-control__label">{ label }</span> }
 				<div className={ classes }>
 					<ButtonGroup aria-label={ __( 'Select Size', 'coblocks' ) }>
 						{ map( this.getSizes(), ( { size, shortName } ) => (
@@ -199,7 +199,7 @@ class SizeControl extends Component {
 						</Button>
 					}
 				</div>
-			</Fragment>
+			</BaseControl>
 		);
 	}
 }

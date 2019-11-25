@@ -10,12 +10,11 @@
 		padding: 0 !important;
 
 		figure {
-			margin: 0;
 			position: relative;
 		}
 
 		img {
-			opacity: 1 !important;
+			opacity: 1;
 			vertical-align: middle;
 		}
 	}
@@ -25,13 +24,13 @@
 		margin: 0 !important;
 	}
 
-	&:not(.has-padding) {
-		padding: 0 !important;
-	}
+	// &:not(.has-padding) {
+	// 	padding: 0 !important;
+	// }
 
-	&:not(.has-margin) &--item {
-		margin: auto !important;
-	}
+	// &:not(.has-margin) &--item {
+	// 	margin: auto !important;
+	// }
 
 	&.is-cropped {
 		.coblocks-gallery--item,

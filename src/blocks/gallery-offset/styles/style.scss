@@ -1,151 +1,68 @@
 .wp-block-coblocks-gallery-offset {
-	text-align: center;
-
 	ul {
-		padding: 0 !important;
-		list-style: none !important;
+		display: flex;
+		flex-wrap: wrap;
 	}
 
-	li {
-		display: inline-block;
-		margin: 0 !important;
-		position: relative;
-		text-align: left;
-
-		a {
-			bottom: 0;
-			left: 0;
-			position: absolute;
-			right: 0;
-			top: 0;
-		}
-
-		img {
-			vertical-align: bottom;
-			width: 100%;
-
-			@media screen and (min-width: 300px) {
-				max-height: 140px;
-				width: auto;
-			}
-
-			@media screen and (min-width: 700px) {
-				max-height: 200px;
-			}
-		}
+	img {
+		max-height: 22vw;
+		width: auto;
 	}
 
 	figcaption {
-		position: absolute !important;
+		background: linear-gradient(0deg, rgba($color: $black, $alpha: 0.7) 0, rgba($color: $black, $alpha: 0.3) 50%, transparent);
 		bottom: 0;
-		width: 100%;
+		font-size: 13px;
 		max-height: 100% !important;
+		opacity: 1;
 		overflow: hidden;
 		padding: 30px 10px 10px !important;
-		opacity: 1;
+		position: absolute !important;
 		text-align: center;
-		font-size: 13px;
-		background: linear-gradient(0deg, rgba($color: $black, $alpha: 0.7) 0, rgba($color: $black, $alpha: 0.3) 50%, transparent);
+		width: 100%;
 
 		@media screen and (max-width: 699px) {
 			display: none;
 		}
 	}
-	
-	@media screen and (min-width: 800px) {
-		.has-bricks-grid-sml .coblocks-gallery--item img {
-			max-height: 250px !important
+
+	.coblocks-gallery--sml img {
+		@include break-small() {
+			max-height: 22vw;
 		}
-	}
-	
-	@media screen and (min-width: 1200px) {
-		.has-bricks-grid-sml .coblocks-gallery--item img {
-			max-height: 300px !important
-		}
-	}
-	
-	@media screen and (min-width: 700px) {
-		.has-bricks-grid-med .coblocks-gallery--item img {
-			max-height: 250px !important
-		}
-	}
-	
-	@media screen and (min-width: 1000px) {
-		.has-bricks-grid-med .coblocks-gallery--item img {
-			max-height: 300px !important
-		}
-	}
-	
-	@media screen and (min-width: 1400px) {
-		.has-bricks-grid-med .coblocks-gallery--item img {
-			max-height: 400px !important
-		}
-	}
-	
-	@media screen and (min-width: 300px) {
-		.has-bricks-grid-lrg .coblocks-gallery--item img {
-			max-height: 180px !important
-		}
-	}
-	
-	@media screen and (min-width: 600px) {
-		.has-bricks-grid-lrg .coblocks-gallery--item img {
-			max-height: 300px !important
-		}
-	}
-	
-	@media screen and (min-width: 1000px) {
-		.has-bricks-grid-lrg .coblocks-gallery--item img {
-			max-height: 350px !important
-		}
-	}
-	
-	@media screen and (min-width: 1400px) {
-		.has-bricks-grid-lrg .coblocks-gallery--item img {
-			max-height: 450px !important
-		}
-	}
-	
-	@media screen and (min-width: 1900px) {
-		.has-bricks-grid-lrg .coblocks-gallery--item img {
-			max-height: 550px !important
-		}
-	}
-	
-	@media screen and (min-width: 300px) {
-		.has-bricks-grid-xlrg .coblocks-gallery--item img {
-			max-height: 200px !important
-		}
-	}
-	
-	@media screen and (min-width: 600px) {
-		.has-bricks-grid-xlrg .coblocks-gallery--item img {
-			max-height: 350px !important
-		}
-	}
-	
-	@media screen and (min-width: 1000px) {
-		.has-bricks-grid-xlrg .coblocks-gallery--item img {
-			max-height: 400px !important
-		}
-	}
-	
-	@media screen and (min-width: 1400px) {
-		.has-bricks-grid-xlrg .coblocks-gallery--item img {
-			max-height: 550px !important
-		}
-	}
-	
-	@media screen and (min-width: 1900px) {
-		.has-bricks-grid-xlrg .coblocks-gallery--item img {
-			max-height: 650px !important
+
+		@include break-large() {
+			max-height: 11vw;
 		}
 	}
 
-	ul.has-lightbox > li > .coblocks-gallery--figure {
-		&:hover {
-			cursor: zoom-in;
+	.coblocks-gallery--med img {
+		@include break-small() {
+			max-height: 28vw;
+		}
+
+		@include break-large() {
+			max-height: 12vw;
 		}
 	}
 
+	.coblocks-gallery--lrg img {
+		@include break-small() {
+			max-height: 40vw;
+		}
+
+		@include break-large() {
+			max-height: 20vw;
+		}
+	}
+
+	.coblocks-gallery--xlrg img {
+		@include break-small() {
+			max-height: 40vw;
+		}
+
+		@include break-large() {
+			max-height: 30vw;
+		}
+	}
 }
