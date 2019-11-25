@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
+import captionOptions from '../../components/block-gallery/options/caption-options';
 import SizeControl from '../../components/size-control';
 
 /**
@@ -9,9 +10,8 @@ import SizeControl from '../../components/size-control';
  */
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
-import { InspectorControls, FontSizePicker, withFontSizes } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, PanelRow, ToggleControl, ButtonGroup, Button, BaseControl } from '@wordpress/components';
-import { compose } from '@wordpress/compose';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, RangeControl, PanelRow, ToggleControl, ButtonGroup, Button, BaseControl, SelectControl } from '@wordpress/components';
 
 /**
  * Inspector controls
@@ -58,8 +58,6 @@ class Inspector extends Component {
 		const {
 			attributes,
 			setAttributes,
-			setFontSize,
-			fontSize,
 		} = this.props;
 
 		const {
@@ -68,6 +66,7 @@ class Inspector extends Component {
 			lightbox,
 			radius,
 			captions,
+			captionStyle,
 		} = attributes;
 
 		const gutterOptions = [
@@ -146,9 +145,11 @@ class Inspector extends Component {
 						onChange={ () => setAttributes( { captions: ! captions } ) }
 						help={ this.getCaptionsHelp }
 					/>
-					{ captions && <FontSizePicker
-						value={ fontSize.size }
-						onChange={ setFontSize }
+					{ captions && <SelectControl
+						label={ __( 'Caption Style', 'coblocks' ) }
+						value={ captionStyle }
+						onChange={ this.setCaptionStyleTo }
+						options={ captionOptions }
 					/> }
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
@@ -157,6 +158,4 @@ class Inspector extends Component {
 	}
 }
 
-export default compose( [
-	withFontSizes( 'fontSize' ),
-] )( Inspector );
+export default Inspector;
