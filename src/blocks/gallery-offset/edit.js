@@ -186,9 +186,9 @@ class Edit extends Component {
 			'flex-wrap',
 			'justify-center',
 			'ml-1',
-			'pt-1', {
+			'-mb-1', {
 				[ `sm:ml-${ gutter }` ]: gutter,
-				[ `sm:pt-${ gutter }` ]: gutter,
+				[ `sm:-mb-${ gutter }` ]: gutter,
 				[ `coblocks-gallery--${ gridSize }` ]: gridSize,
 			}
 		);

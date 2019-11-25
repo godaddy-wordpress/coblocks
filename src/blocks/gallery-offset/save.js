@@ -40,9 +40,9 @@ const save = ( { attributes, className } ) => {
 		'justify-center',
 		'mb-0',
 		'ml-1',
-		'pt-1', {
+		'-mb-1', {
 			[ `sm:ml-${ gutter }` ]: gutter,
-			[ `sm:pt-${ gutter }` ]: gutter,
+			[ `sm:-mb-${ gutter }` ]: gutter,
 			[ `coblocks-gallery--${ gridSize }` ]: gridSize,
 		},
 	);
