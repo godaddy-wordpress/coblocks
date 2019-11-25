@@ -7,6 +7,7 @@ import {
 	PanelRow,
 	ButtonGroup,
 	Button,
+	Tooltip,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -16,34 +17,34 @@ import { __ } from '@wordpress/i18n';
 const DEFAULT_OPTIONS = [
 	{
 		value: 1,
-		title: __( 'Small', 'coblocks' ),
 		/* translators: abbreviation for small size */
 		label: __( 'S', 'coblocks' ),
+		tooltip: __( 'Small', 'coblocks' ),
 	},
 	{
 		value: 2,
-		title: __( 'Medium', 'coblocks' ),
 		/* translators: abbreviation for medium size */
 		label: __( 'M', 'coblocks' ),
+		tooltip: __( 'Medium', 'coblocks' ),
 	},
 	{
 		value: 3,
-		title: __( 'Large', 'coblocks' ),
 		/* translators: abbreviation for large size */
 		label: __( 'L', 'coblocks' ),
+		tooltip: __( 'Large', 'coblocks' ),
 	},
 	{
 		value: 4,
-		title: __( 'Extra Large', 'coblocks' ),
 		/* translators: abbreviation for extra large size */
 		label: __( 'XL', 'coblocks' ),
+		tooltip: __( 'Extra Large', 'coblocks' ),
 	},
 ];
 
 const NONE_OPTION = {
 	value: 0,
-	title: __( 'None', 'coblocks' ),
 	label: __( 'None', 'coblocks' ),
+	tooltip: __( 'None', 'coblocks' ),
 };
 
 export default class OptionSelectorControl extends Component {
@@ -66,16 +67,22 @@ export default class OptionSelectorControl extends Component {
 					<ButtonGroup aria-label={ label }>
 
 						{ buttons.map( option => (
-							<Button
+							<Tooltip
 								key={ `option-${ option.value }` }
-								isDefault
-								isPrimary={ currentOption === option.value }
-								aria-pressed={ currentOption === option.value }
-								onClick={ () => onChange( option.value ) }
-								title={ option.title }
-							>
-								{ option.label }
-							</Button>
+								text={ option.tooltip }>
+
+								<Button
+									isDefault
+									isPrimary={ currentOption === option.value }
+									aria-pressed={ currentOption === option.value }
+									onClick={ () => onChange( option.value ) }
+									aria-label={ option.tooltip }>
+
+									{ option.label }
+
+								</Button>
+
+							</Tooltip>
 						) ) }
 
 					</ButtonGroup>

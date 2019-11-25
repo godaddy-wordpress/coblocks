@@ -58,21 +58,21 @@ class Inspector extends Component {
 		const shadowOptions = [
 			{
 				value: 'sm',
-				title: __( 'Small', 'coblocks' ),
 				/* translators: abbreviation for small size */
 				label: __( 'S', 'coblocks' ),
+				tooltip: __( 'Small', 'coblocks' ),
 			},
 			{
 				value: 'md',
-				title: __( 'Medium', 'coblocks' ),
 				/* translators: abbreviation for medium size */
 				label: __( 'M', 'coblocks' ),
+				tooltip: __( 'Medium', 'coblocks' ),
 			},
 			{
 				value: 'lg',
-				title: __( 'Large', 'coblocks' ),
 				/* translators: abbreviation for large size */
 				label: __( 'L', 'coblocks' ),
+				tooltip: __( 'Large', 'coblocks' ),
 			},
 		];
 
