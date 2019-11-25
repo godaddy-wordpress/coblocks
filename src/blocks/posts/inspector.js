@@ -4,6 +4,11 @@
 import classnames from 'classnames';
 
 /**
+ * Internal dependencies
+ */
+import OptionSelectorControl from '../../components/option-selector-control';
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
@@ -12,14 +17,10 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 import {
 	PanelBody,
-	PanelRow,
 	ToggleControl,
 	RangeControl,
 	QueryControls,
 	RadioControl,
-	BaseControl,
-	ButtonGroup,
-	Button,
 } from '@wordpress/components';
 
 const Inspector = props => {
@@ -54,23 +55,23 @@ const Inspector = props => {
 	const sizeOptions = [
 		{
 			value: 'w-1/7 h-1/7',
-			label: /* translators: label for small size option */ __( 'Small', 'coblocks' ),
-			shortName: /* translators: abbreviation for small size */ __( 'S', 'coblocks' ),
+			title: /* translators: label for small size option */ __( 'Small', 'coblocks' ),
+			label: /* translators: abbreviation for small size */ __( 'S', 'coblocks' ),
 		},
 		{
 			value: 'w-1/7 sm:w-1/5 h-1/7 sm:h-1/5',
-			label: /* translators: label for medium size option */ __( 'Medium', 'coblocks' ),
-			shortName: /* translators: abbreviation for medium size */ __( 'M', 'coblocks' ),
+			title: /* translators: label for medium size option */ __( 'Medium', 'coblocks' ),
+			label: /* translators: abbreviation for medium size */ __( 'M', 'coblocks' ),
 		},
 		{
 			value: 'w-1/7 sm:w-1/3 h-1/7 sm:h-1/3',
-			label: /* translators: label for large size option */ __( 'Large', 'coblocks' ),
-			shortName: /* translators: abbreviation for large size */ __( 'L', 'coblocks' ),
+			title: /* translators: label for large size option */ __( 'Large', 'coblocks' ),
+			label: /* translators: abbreviation for large size */ __( 'L', 'coblocks' ),
 		},
 		{
 			value: 'w-1/7 sm:w-1/3 md:w-1/2 h-1/7 sm:h-1/3 md:h-1/2',
-			label: /* translators: label for extra large size option */ __( 'Extra Large', 'coblocks' ),
-			shortName: /* translators: abbreviation for extra large size */ __( 'XL', 'coblocks' ),
+			title: /* translators: label for extra large size option */ __( 'Extra Large', 'coblocks' ),
+			label: /* translators: abbreviation for extra large size */ __( 'XL', 'coblocks' ),
 		},
 	];
 
@@ -137,35 +138,16 @@ const Inspector = props => {
 					max={ isHorizontalStyle ? Math.min( 2, postCount ) : Math.min( 4, postCount ) }
 					required
 				/>
+
 				{ isHorizontalStyle && hasFeaturedImage &&
-					<BaseControl label={ __( 'Thumbnail Size', 'coblocks' ) }
-						className={ classnames(
-							'components-coblocks-posts-thumbnail-size',
-							{
-								'has-content': displayPostContent,
-							}
-						) }
-					>
-						<PanelRow>
-							<ButtonGroup aria-label={ __( 'Thumbnail Size', 'coblocks' ) }>
-								{ sizeOptions.map( ( option ) => {
-									const isCurrent = imageSize === option.value;
-									return (
-										<Button
-											key={ `option-${ option.value }` }
-											isLarge
-											isPrimary={ isCurrent }
-											aria-pressed={ isCurrent }
-											onClick={ () => setAttributes( { imageSize: option.value } ) }
-										>
-											{ option.shortName }
-										</Button>
-									);
-								} ) }
-							</ButtonGroup>
-						</PanelRow>
-					</BaseControl>
+					<OptionSelectorControl
+						label={ __( 'Thumbnail Size', 'coblocks' ) }
+						options={ sizeOptions }
+						currentOption={ imageSize }
+						onChange={ imageSize => setAttributes( { imageSize } ) }
+					/>
 				}
+
 			</Fragment>
 		</PanelBody>
 	);
