@@ -32,7 +32,7 @@ const metadata = {
 			default: null,
 		},
 		layout: {
-			type: 'string',
+			type: 'array',
 			default: null,
 		},
 		submitButtonText: {

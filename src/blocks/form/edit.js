@@ -117,6 +117,13 @@ class FormEdit extends Component {
 		}
 	}
 
+	componentDidMount() {
+		if ( !! this.props.attributes.layout ) {
+			const { innerBlocks } = this.props;
+			this.setState( { template: innerBlocks } );
+		}
+	}
+
 	componentDidUpdate( prevProps ) {
 		const { innerBlockCount, innerBlocks } = this.props;
 
@@ -287,7 +294,7 @@ class FormEdit extends Component {
 		} );
 
 		this.setState( { template: layout } );
-		setAttributes( { submitButtonText } );
+		setAttributes( { submitButtonText, layout } );
 	}
 
 	render() {
