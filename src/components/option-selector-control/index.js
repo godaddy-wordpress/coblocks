@@ -8,6 +8,7 @@ import {
 	ButtonGroup,
 	Button,
 	Tooltip,
+	RangeControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -52,6 +53,9 @@ export default class OptionSelectorControl extends Component {
 		const {
 			label, options, currentOption,
 			showNoneOption,
+			showAdvancedControls,
+			advancedMinValue,
+			advancedMaxValue,
 			onChange,
 		} = this.props;
 
@@ -61,7 +65,16 @@ export default class OptionSelectorControl extends Component {
 			buttons = [ NONE_OPTION, ...buttons ];
 		}
 
-		return (
+		return ( showAdvancedControls && ( advancedMinValue !== false && advancedMaxValue !== false ) ?
+
+			<RangeControl
+				label={ label }
+				value={ currentOption }
+				onChange={ value => onChange( value ) }
+				min={ advancedMinValue }
+				max={ advancedMaxValue }
+			/> :
+
 			<BaseControl label={ label }>
 				<PanelRow>
 					<ButtonGroup aria-label={ label }>
