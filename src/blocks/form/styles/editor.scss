@@ -10,6 +10,11 @@
 		display: none;
 	}
 
+	// Better appender appearance pre 5.3
+	.editor-default-block-appender {
+		height: 1em;
+	}
+
 	.coblocks-field-label__input-wrapper {
 		display: flex;
 		flex-direction: row;
@@ -268,7 +273,8 @@
 	> .block-editor-block-list__block-edit
 	> [data-block]
 	> div
-	> .block-editor-inner-blocks {
+	> .block-editor-inner-blocks
+	.editor-block-list__layout {
 	padding: 14px;
 	padding-bottom: 0;
 }
