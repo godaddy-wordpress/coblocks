@@ -137,9 +137,6 @@ jobs:
           name: Update npm
           command: sudo npm install -g npm@latest
       - run:
-          name: Install SVN
-          command: sudo apt-get update && sudo apt-get install subversion
-      - run:
           name: Install PHP
           command: sudo apt-get install php libapache2-mod-php php-mbstring
       - run:
