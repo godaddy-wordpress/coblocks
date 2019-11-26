@@ -155,7 +155,7 @@ jobs:
           command: |
             git add languages/coblocks.json
             git add languages/coblocks.pot
-            git commit -m "Update .pot file"
+            git commit -m "Update coblocks.pot/coblocks.json files"
             git push origin master
 
   deploy:
