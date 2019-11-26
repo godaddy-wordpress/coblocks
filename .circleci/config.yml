@@ -153,16 +153,13 @@ jobs:
           command: |
             mkdir -p /tmp/artifacts
             npm run babel:build
-            npm run pot2json
-            npm run json2po
-            npm run po2mo
-            npm run po2jed
-            grunt compress:coblocks
-            mv languages/coblocks-*.json /tmp/artifacts
-            mv coblocks-translations.zip /tmp/artifacts
-      - store_artifacts:
-          path: /tmp/artifacts
-          destination: coblocks-translations
+      - run:
+          name: Update coblocks.pot/coblocks.json and deploy them back to Github
+          command: |
+            git add languages/coblocks.json
+            git add languages/coblocks.pot
+            git commit -m "Update .pot file"
+            git push origin master
 
   deploy:
     docker:
@@ -202,7 +199,7 @@ jobs:
           command: |
             mkdir -p /tmp/artifacts
             grunt build
-            grunt compress:coblocks
+            grunt compress
             mv build/*.zip /tmp/artifacts
       - deploy:
           name: Deploy the plugin
