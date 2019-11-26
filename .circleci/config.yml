@@ -17,9 +17,9 @@ workflows:
             tags:
               only: /.*/
       - i18n:
-          branches:
-            only:
-              - master
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
             - php56-build
