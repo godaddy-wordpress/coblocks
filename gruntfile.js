@@ -73,6 +73,20 @@ module.exports = function( grunt ) {
 					},
 				],
 			},
+			coblocks_l10n: {
+				options: {
+					archive: 'languages/coblocks-translations.zip',
+				},
+				files: [
+					{
+						expand: true,
+						cwd: 'languages/',
+						src: [ 'coblocks-*.json' ],
+						dest: 'languages/',
+						filter: 'isFile'
+					},
+				],
+			},
 		},
 
 		uglify: {

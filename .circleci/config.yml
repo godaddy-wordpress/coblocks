@@ -156,7 +156,9 @@ jobs:
             npm run json2po
             npm run po2mo
             npm run po2jed
+            grunt compress:coblocks
             mv languages/coblocks-*.json /tmp/artifacts
+            mv coblocks-translations.zip /tmp/artifacts
       - store_artifacts:
           path: /tmp/artifacts
           destination: coblocks-translations
@@ -199,7 +201,7 @@ jobs:
           command: |
             mkdir -p /tmp/artifacts
             grunt build
-            grunt compress
+            grunt compress:coblocks
             mv build/*.zip /tmp/artifacts
       - deploy:
           name: Deploy the plugin
