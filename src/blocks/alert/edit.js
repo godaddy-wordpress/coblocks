@@ -26,7 +26,7 @@ class Edit extends Component {
 		const { attributes, setAttributes } = this.props;
 
 		// Convert is-{type}-alert to is-style-{type}.
-		// See: https://github.com/godaddy/coblocks/pull/781
+		// See: https://github.com/godaddy-wordpress/coblocks/pull/781
 		if ( /is-\w+-alert/.test( attributes.className ) ) {
 			let newClassName = attributes.className;
 

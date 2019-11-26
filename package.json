@@ -6,17 +6,17 @@
 	"tested_up_to": "5.3",
 	"author": "GoDaddy",
 	"license": "GPL-2.0",
-	"repository": "godaddy/coblocks",
+	"repository": "godaddy-wordpress/coblocks",
 	"homepage": "https://wordpress.org/plugins/coblocks/",
 	"bugs": {
-		"url": "https://github.com/godaddy/coblocks/issues"
+		"url": "https://github.com/godaddy-wordpress/coblocks/issues"
 	},
 	"scripts": {
 		"start": "node .dev/scripts/start.js",
 		"build": "node .dev/scripts/build.js",
 		"version": "grunt version && npm run babel:build && git add -A .",
 		"postversion": "git push && git push --tags",
-		"makepot": "wp i18n make-pot . --merge=languages/coblocks-js.pot --skip-audit --exclude=build,dist --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy/coblocks/issues\"}' --file-comment='Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.' && rm -f languages/coblocks-js.pot && grunt replace:languages && npm run pot2json",
+		"makepot": "wp i18n make-pot . --merge=languages/coblocks-js.pot --skip-audit --exclude=build,dist --headers='{\"Last-Translator\":\"plugins@godaddy.com\",\"Report-Msgid-Bugs-To\":\"https://github.com/godaddy-wordpress/coblocks/issues\"}' --file-comment='Copyright (c) 2019 GoDaddy Operating Company, LLC. All Rights Reserved.' && rm -f languages/coblocks-js.pot && grunt replace:languages && npm run pot2json",
 		"babel": "babel src --ignore src/blocks/gist/components/gist.js",
 		"babel:json": "wp i18n make-json languages",
 		"babel:build": "npm run babel && npm run makepot",
