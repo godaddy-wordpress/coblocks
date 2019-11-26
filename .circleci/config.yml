@@ -152,6 +152,7 @@ jobs:
           name: Build the plugin
           command: |
             mkdir -p /tmp/artifacts
+            npm run babel:build
             npm run pot2json
             npm run json2po
             npm run po2mo
