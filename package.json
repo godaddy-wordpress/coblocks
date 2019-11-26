@@ -6,7 +6,7 @@
 	"tested_up_to": "5.3",
 	"author": "GoDaddy",
 	"license": "GPL-2.0",
-	"repository": "godaddy/coblocks",
+	"repository": "godaddy-wordpress/coblocks",
 	"homepage": "https://wordpress.org/plugins/coblocks/",
 	"bugs": {
 		"url": "https://github.com/godaddy-wordpress/coblocks/issues"
