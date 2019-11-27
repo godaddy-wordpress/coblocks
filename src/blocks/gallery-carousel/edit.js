@@ -159,6 +159,7 @@ class GalleryCarouselEdit extends Component {
 			alignCells,
 			thumbnails,
 			responsiveHeight,
+			lightbox,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -172,6 +173,7 @@ class GalleryCarouselEdit extends Component {
 				'has-no-arrows': ! prevNextButtons,
 				'is-selected': isSelected,
 				'has-no-thumbnails': ! thumbnails,
+				'has-lightbox': lightbox,
 			}
 		);
 

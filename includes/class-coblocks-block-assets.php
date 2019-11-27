@@ -187,7 +187,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Lightbox.
-		if ( has_block( $this->slug . '/gallery-masonry' ) || has_block( $this->slug . '/gallery-stacked' ) || has_block( $this->slug . '/gallery-collage' ) ) {
+		if ( has_block( $this->slug . '/gallery-masonry' ) || has_block( $this->slug . '/gallery-stacked' ) || has_block( $this->slug . '/gallery-collage' ) || has_block( $this->slug . '/gallery-carousel' ) ) {
 			wp_enqueue_script(
 				$this->slug . '-lightbox',
 				$dir . $this->slug . '-lightbox' . COBLOCKS_ASSET_SUFFIX . '.js',
