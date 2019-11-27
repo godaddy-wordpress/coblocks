@@ -68,6 +68,9 @@ class CoBlocks_Block_Assets {
 	 */
 	public function block_assets() {
 
+		// Define where the asset is loaded from.
+		$dir = CoBlocks()->asset_source( 'js' );
+
 		// Styles.
 		wp_enqueue_style(
 			$this->slug . '-frontend',
@@ -75,6 +78,16 @@ class CoBlocks_Block_Assets {
 			array(),
 			COBLOCKS_VERSION
 		);
+
+		if ( has_block( $this->slug . '/gallery-carousel' ) ) {
+			wp_enqueue_script(
+				$this->slug . '-flickity-buttons',
+				$dir . $this->slug . '-flickity-buttons' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				COBLOCKS_VERSION,
+				true
+			);
+		}
 	}
 
 	/**
@@ -166,13 +179,13 @@ class CoBlocks_Block_Assets {
 				COBLOCKS_VERSION,
 				true
 			);
-			wp_enqueue_script(
-				$this->slug . '-flickity-buttons',
-				$dir . $this->slug . '-flickity-buttons' . COBLOCKS_ASSET_SUFFIX . '.js',
-				array( 'jquery' ),
-				COBLOCKS_VERSION,
-				true
-			);
+			// wp_enqueue_script(
+			// 	$this->slug . '-flickity-buttons',
+			// 	$dir . $this->slug . '-flickity-buttons' . COBLOCKS_ASSET_SUFFIX . '.js',
+			// 	array( 'jquery' ),
+			// 	COBLOCKS_VERSION,
+			// 	true
+			// );
 		}
 
 		// Post Carousel block.

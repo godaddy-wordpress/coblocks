@@ -33,7 +33,6 @@ class GalleryCarouselEdit extends Component {
 		this.setImageAttributes = this.setImageAttributes.bind( this );
 		this.onFocusCaption = this.onFocusCaption.bind( this );
 		this.onItemClick = this.onItemClick.bind( this );
-		this.replaceFlickityButtons = this.replaceFlickityButtons.bind( this );
 
 		this.state = {
 			selectedImage: null,
@@ -136,20 +135,6 @@ class GalleryCarouselEdit extends Component {
 				captionFocused: false,
 			} );
 		}
-	}
-
-	replaceFlickityButtons() {
-		( function( $ ) {
-			'use strict';
-			const arrowRight = $( '<div/>', { class: 'arrow-right' } );
-			const arrowLeft = $( '<div/>', { class: 'arrow-left' } );
-
-			const flickityArrowLeft = $( 'div.wp-block-coblocks-gallery-carousel > .coblocks-gallery > .has-carousel > button.previous' );
-			const flickityArrowRight = $( 'div.wp-block-coblocks-gallery-carousel > .coblocks-gallery > .has-carousel > button.next' );
-
-			flickityArrowLeft.empty().removeClass().addClass( 'coblocks-lightbox__arrow coblocks-lightbox__arrow--left' ).append( arrowLeft );
-			flickityArrowRight.empty().removeClass().addClass( 'coblocks-lightbox__arrow coblocks-lightbox__arrow--right' ).append( arrowRight );
-		}( jQuery ) );
 	}
 
 	render() {
@@ -265,8 +250,6 @@ class GalleryCarouselEdit extends Component {
 		if ( ! hasImages ) {
 			return carouselGalleryPlaceholder;
 		}
-
-		this.replaceFlickityButtons();
 
 		return (
 			<Fragment>
