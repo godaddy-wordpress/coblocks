@@ -17,8 +17,9 @@ import { PanelBody, RangeControl, PanelRow, ToggleControl, ButtonGroup, Button, 
  * Inspector controls
  */
 class Inspector extends Component {
-	constructor( ) {
+	constructor() {
 		super( ...arguments );
+
 		this.setLinkTo = this.setLinkTo.bind( this );
 		this.setRadiusTo = this.setRadiusTo.bind( this );
 		this.setSizeControl = this.setSizeControl.bind( this );
@@ -47,11 +48,15 @@ class Inspector extends Component {
 	}
 
 	getCaptionsHelp( checked ) {
-		return checked ? __( 'Showing captions for each media item.' ) : __( 'Toggle to show media captions.' );
+		return checked ?
+			__( 'Showing captions for each media item.' ) :
+			__( 'Toggle to show media captions.' );
 	}
 
 	getLightboxHelp( checked ) {
-		return checked ? __( 'Image lightbox is enabled.', 'coblocks' ) : __( 'Toggle to enable the image lightbox.', 'coblocks' );
+		return checked ?
+			__( 'Image lightbox is enabled.', 'coblocks' ) :
+			__( 'Toggle to enable the image lightbox.', 'coblocks' );
 	}
 
 	render() {
