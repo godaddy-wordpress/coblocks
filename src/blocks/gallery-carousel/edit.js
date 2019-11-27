@@ -43,8 +43,6 @@ class GalleryCarouselEdit extends Component {
 	componentDidMount() {
 		// This block does not support the following attributes.
 		this.props.setAttributes( {
-			lightbox: undefined,
-			lightboxStyle: undefined,
 			shadow: undefined,
 		} );
 	}
