@@ -45,15 +45,21 @@ class Inspector extends Component {
 	}
 
 	getFullwidthImagesHelp( checked ) {
-		return checked ? __( 'Fullwidth images are enabled.', 'coblocks' ) : __( 'Toggle to fill the available gallery area with completely fullwidth images.', 'coblocks' );
+		return checked ?
+			__( 'Fullwidth images are enabled.', 'coblocks' ) :
+			__( 'Toggle to fill the available gallery area with completely fullwidth images.', 'coblocks' );
 	}
 
 	getCaptionsHelp( checked ) {
-		return checked ? __( 'Showing captions for each media item.', 'coblocks' ) : __( 'Toggle to show media captions.', 'coblocks' );
+		return checked ?
+			__( 'Showing captions for each media item.', 'coblocks' ) :
+			__( 'Toggle to show media captions.', 'coblocks' );
 	}
 
 	getLightboxHelp( checked ) {
-		return checked ? __( 'Image lightbox is enabled.', 'coblocks' ) : __( 'Toggle to enable the image lightbox.', 'coblocks' );
+		return checked ?
+			__( 'Image lightbox is enabled.', 'coblocks' ) :
+			__( 'Toggle to enable the image lightbox.', 'coblocks' );
 	}
 
 	render() {
@@ -78,53 +84,65 @@ class Inspector extends Component {
 		return (
 			<InspectorControls>
 				<PanelBody title={ __( 'Stacked Settings', 'coblocks' ) }>
-					{ wideControlsEnabled &&
-					<ToggleControl
-						label={ images.length > 1 ? __( 'Fullwidth Images', 'coblocks' ) : __( 'Fullwidth Image', 'coblocks' ) }
-						checked={ !! fullwidth }
-						help={ this.getFullwidthImagesHelp }
-						onChange={ this.setFullwidthTo }
-					/>
-					}
-					{ images.length > 1 &&
-					<ResponsiveTabsControl { ...this.props }
-						label={ __( 'Gutter', 'coblocks' ) }
-					/>
-					}
-					{ gutter > 0 && <RangeControl
-						label={ __( 'Rounded Corners', 'coblocks' ) }
-						value={ radius }
-						onChange={ this.setRadiusTo }
-						min={ 0 }
-						max={ 20 }
-						step={ 1 }
-					/> }
-					{ ! fullwidth && <SizeControl { ...this.props }
-						onChange={ this.setShadowTo }
-						value={ shadow }
-						label={ __( 'Box Shadow', 'coblocks' ) }
-						reset={ false }
-						className={ 'components-coblocks-size-control--shadow' }
 
-					/> }
+					{ wideControlsEnabled &&
+						<ToggleControl
+							label={ images.length > 1 ? __( 'Fullwidth Images', 'coblocks' ) : __( 'Fullwidth Image', 'coblocks' ) }
+							checked={ !! fullwidth }
+							help={ this.getFullwidthImagesHelp }
+							onChange={ this.setFullwidthTo }
+						/>
+					}
+
+					{ images.length > 1 &&
+						<ResponsiveTabsControl { ...this.props }
+							label={ __( 'Gutter', 'coblocks' ) }
+						/>
+					}
+
+					{ gutter > 0 &&
+						<RangeControl
+							label={ __( 'Rounded Corners', 'coblocks' ) }
+							value={ radius }
+							onChange={ this.setRadiusTo }
+							min={ 0 }
+							max={ 20 }
+							step={ 1 }
+						/>
+					}
+
+					{ ! fullwidth &&
+						<SizeControl { ...this.props }
+							onChange={ this.setShadowTo }
+							value={ shadow }
+							label={ __( 'Box Shadow', 'coblocks' ) }
+							reset={ false }
+							className={ 'components-coblocks-size-control--shadow' }
+
+						/>
+					}
+
 					<ToggleControl
 						label={ __( 'Lightbox', 'coblocks' ) }
 						checked={ !! lightbox }
 						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 						help={ this.getLightboxHelp }
 					/>
+
 					<ToggleControl
 						label={ __( 'Captions', 'coblocks' ) }
 						checked={ !! captions }
 						onChange={ () => setAttributes( { captions: ! captions } ) }
 						help={ this.getCaptionsHelp }
 					/>
+
 					{ captions &&
 						<FontSizePicker
 							value={ fontSize.size }
 							onChange={ setFontSize }
 						/>
 					}
+
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
 			</InspectorControls>
