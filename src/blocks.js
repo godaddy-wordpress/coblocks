@@ -65,6 +65,7 @@ import * as logos from './blocks/logos';
 import * as map from './blocks/map';
 import * as masonry from './blocks/gallery-masonry';
 import * as mediaCard from './blocks/media-card';
+import * as offset from './blocks/gallery-offset';
 import * as posts from './blocks/posts';
 import * as postCarousel from './blocks/post-carousel';
 import * as pricingTable from './blocks/pricing-table';
@@ -76,7 +77,6 @@ import * as shapeDivider from './blocks/shape-divider';
 import * as share from './blocks/share';
 import * as socialProfiles from './blocks/social-profiles';
 import * as stacked from './blocks/gallery-stacked';
-import * as offset from './blocks/gallery-offset';
 
 /**
  * Function to register an individual block.
@@ -136,6 +136,7 @@ export const registerCoBlocksBlocks = () => {
 		map,
 		masonry,
 		mediaCard,
+		offset,
 		posts,
 		postCarousel,
 		pricingTable,
@@ -147,7 +148,6 @@ export const registerCoBlocksBlocks = () => {
 		share,
 		socialProfiles,
 		stacked,
-		offset,
 	].forEach( registerBlock );
 };
 
