@@ -98,6 +98,7 @@ class Inspector extends Component {
 		return (
 			<InspectorControls>
 				<PanelBody title={ __( 'Offset Settings' ) }>
+
 					<SizeControl { ...this.props }
 						label={ __( 'Size' ) }
 						type={ 'reverse-grid' }
@@ -105,6 +106,7 @@ class Inspector extends Component {
 						value={ gridSize }
 						reset={ false }
 					/>
+
 					<BaseControl label={ __( 'Gutter', 'coblocks' ) }>
 						<PanelRow>
 							<ButtonGroup aria-label={ __( 'Gutter', 'coblocks' ) }>
@@ -125,32 +127,41 @@ class Inspector extends Component {
 							</ButtonGroup>
 						</PanelRow>
 					</BaseControl>
-					{ gutter > 0 && <RangeControl
-						label={ __( 'Rounded Corners' ) }
-						value={ radius }
-						onChange={ this.setRadiusTo }
-						min={ 0 }
-						max={ 20 }
-						step={ 1 }
-					/> }
+
+					{ gutter > 0 &&
+						<RangeControl
+							label={ __( 'Rounded Corners' ) }
+							value={ radius }
+							onChange={ this.setRadiusTo }
+							min={ 0 }
+							max={ 20 }
+							step={ 1 }
+						/>
+					}
+
 					<ToggleControl
 						label={ __( 'Lightbox', 'coblocks' ) }
 						checked={ !! lightbox }
 						onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 						help={ this.getLightboxHelp }
 					/>
+
 					<ToggleControl
 						label={ __( 'Captions', 'coblocks' ) }
 						checked={ !! captions }
 						onChange={ () => setAttributes( { captions: ! captions } ) }
 						help={ this.getCaptionsHelp }
 					/>
-					{ captions && <SelectControl
-						label={ __( 'Caption Style', 'coblocks' ) }
-						value={ captionStyle }
-						onChange={ this.setCaptionStyleTo }
-						options={ captionOptions }
-					/> }
+
+					{ captions &&
+						<SelectControl
+							label={ __( 'Caption Style', 'coblocks' ) }
+							value={ captionStyle }
+							onChange={ this.setCaptionStyleTo }
+							options={ captionOptions }
+						/>
+					}
+
 				</PanelBody>
 				<GalleryLinkSettings { ...this.props } />
 			</InspectorControls>
