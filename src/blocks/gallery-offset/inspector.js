@@ -103,7 +103,7 @@ class Inspector extends Component {
 						type={ 'reverse-grid' }
 						onChange={ this.setSizeControl }
 						value={ gridSize }
-						resetValue={ 'med' }
+						reset={ false }
 					/>
 					<BaseControl label={ __( 'Gutter', 'coblocks' ) }>
 						<PanelRow>
