@@ -13,7 +13,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { InspectorControls, InspectorAdvancedControls } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl, BaseControl } from '@wordpress/components';
 
-const carouselMin = 200;
+const carouselMin = 0;
 
 /**
  * Inspector controls

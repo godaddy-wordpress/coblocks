@@ -273,7 +273,7 @@ class GalleryCarouselEdit extends Component {
 						'is-selected': isSelected,
 						'has-responsive-height': responsiveHeight,
 					} ) }
-					minHeight="200"
+					minHeight="0"
 					enable={ {
 						bottom: true,
 						bottomLeft: false,
