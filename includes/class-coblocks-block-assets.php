@@ -186,6 +186,17 @@ class CoBlocks_Block_Assets {
 			);
 		}
 
+		// Events block.
+		if ( has_block( $this->slug . '/events' ) ) {
+			wp_enqueue_script(
+				$this->slug . '-events-front',
+				$dir . $this->slug . '-events-front' . COBLOCKS_ASSET_SUFFIX . '.js',
+				array( 'jquery' ),
+				COBLOCKS_VERSION,
+				true
+			);
+		}
+
 		// Lightbox.
 		if ( has_block( $this->slug . '/gallery-masonry' ) || has_block( $this->slug . '/gallery-stacked' ) || has_block( $this->slug . '/gallery-collage' ) ) {
 			wp_enqueue_script(
@@ -196,19 +207,6 @@ class CoBlocks_Block_Assets {
 				true
 			);
 		}
-
-		// @codingStandardsIgnoreStart
-		// Events block.
-		 // if ( has_block( $this->slug . '/events' ) ) {
-		 // 	wp_enqueue_script(
-		 // 		$this->slug . '-events-front',
-		 // 		$dir . $this->slug . '-events-front' . COBLOCKS_ASSET_SUFFIX . '.js',
-		 // 		array( 'jquery' ),
-		 // 		COBLOCKS_VERSION,
-		 // 		true
-		 // 	);
-		 // }
-		// @codingStandardsIgnoreEnd
 	}
 
 }
