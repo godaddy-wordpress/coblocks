@@ -23,5 +23,5 @@ $ npx cypress open
 
 ### Run all block tests locally from the command line
 ```bash
-$ npx cypress run --browser chrome --record false --spec 'src/**/test/*.cypress.js'
+$ npx cypress run --browser chrome --config video=false
 ```
