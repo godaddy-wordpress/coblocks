@@ -164,7 +164,7 @@ jobs:
             git add languages/coblocks.json
             git add languages/coblocks.pot
             git commit -m "Update coblocks.pot/coblocks.json files"
-            git push origin master
+            git push origin master --force
 
   deploy:
     docker:
