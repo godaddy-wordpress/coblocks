@@ -167,7 +167,7 @@ jobs:
             git add languages/coblocks.json
             git add languages/coblocks.pot
             git commit -m "Update coblocks.pot/coblocks.json files [skip ci]"
-            git push origin master --force > /dev/null 2>&1
+            git push origin master --force --quiet
           path: ~/coblocks
 
   deploy:
