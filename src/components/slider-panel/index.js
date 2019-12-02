@@ -23,8 +23,12 @@ class SliderPanel extends Component {
 		const speed = this.props.attributes.autoPlaySpeed / 1000;
 		const time = ( speed > 1 ) ? __( 'seconds', 'coblocks' ) : __( 'second', 'coblocks' );
 
-		// translators: 1. Speed of the slider, 2: Time until the slide advances
-		return checked ? sprintf( __( 'Advancing after %1$d %2$s.', 'coblocks' ), speed, time ) : __( 'Automatically advance to the next slide.', 'coblocks' );
+		return checked ? sprintf(
+			/* translators: %1$d: Speed of the slider, %2$d: Time until the slide advances */
+			__( 'Advancing after %1$d %2$s.', 'coblocks' ),
+			speed,
+			time
+		) : __( 'Automatically advance to the next slide.', 'coblocks' );
 	}
 
 	getDraggableHelp( checked ) {

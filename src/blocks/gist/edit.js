@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import Controls from './controls';
 import Inspector from './inspector';
-import icons from './../../utils/icons';
+import icon from './icon';
 import Gist from './gist';
 
 /**
@@ -17,7 +17,7 @@ import Gist from './gist';
 import { __ } from '@wordpress/i18n';
 import { compose, withState } from '@wordpress/compose';
 import { Component, Fragment } from '@wordpress/element';
-import { PlainText, RichText } from '@wordpress/block-editor';
+import { PlainText, RichText, BlockIcon } from '@wordpress/block-editor';
 import { withNotices } from '@wordpress/components';
 
 /**
@@ -120,13 +120,13 @@ class Edit extends Component {
 						>
 
 							<label>
-								{ icons.github }
+								<BlockIcon icon={ icon } />
 								{ __( 'Gist URL', 'coblocks' ) }
 							</label>
 							<PlainText
 								className="input-control"
 								value={ url }
-								placeholder={ __( 'Add GitHub Gist URL...', 'coblocks' ) }
+								placeholder={ __( 'Add GitHub Gist URL…', 'coblocks' ) }
 								onChange={ this.updateURL }
 							/>
 						</div>

@@ -34,6 +34,22 @@ class Inspector extends Component {
 			columns,
 		} = attributes;
 
+		const columnsCountOnChange = ( selectedColumns ) => {
+			const { postsToShow } = attributes;
+			setAttributes( { columns:
+				( selectedColumns > postsToShow ) ? postsToShow : selectedColumns,
+			} );
+		};
+
+		const postsCountOnChange = ( selectedPosts ) => {
+			const { columns } = attributes;
+			const changedAttributes = { postsToShow: selectedPosts };
+			if ( columns > selectedPosts || ( selectedPosts === 1 && columns !== 1 ) ) {
+				Object.assign( changedAttributes, { columns: selectedPosts } );
+			}
+			setAttributes( changedAttributes );
+		};
+
 		const settings = (
 			<PanelBody title={ __( 'Post Carousel Settings', 'coblocks' ) }>
 				<Fragment>
@@ -69,10 +85,8 @@ class Inspector extends Component {
 					<RangeControl
 						label={ __( 'Columns', 'coblocks' ) }
 						value={ columns }
-						onChange={ ( value ) => {
-							setAttributes( { columns: value } );
-						} }
-						min={ 2 }
+						onChange={ ( value ) => columnsCountOnChange( value ) }
+						min={ 1 }
 						max={ Math.min( 4, postCount ) }
 						required
 					/>
@@ -107,7 +121,7 @@ class Inspector extends Component {
 							<RangeControl
 								label={ __( 'Number of posts', 'coblocks' ) }
 								value={ postsToShow }
-								onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+								onChange={ ( value ) => postsCountOnChange( value ) }
 								min={ 1 }
 								max={ 20 }
 							/>

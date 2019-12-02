@@ -13,7 +13,7 @@ import Controls from './controls';
 /**
  * WordPress dependencies
  */
-import { _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
@@ -21,7 +21,7 @@ import { InnerBlocks, RichText } from '@wordpress/block-editor';
 /**
  * Constants
  */
-const TEMPLATE = [ [ 'core/paragraph', { placeholder: 'Add content...' } ] ];
+const TEMPLATE = [ [ 'core/paragraph', { placeholder: __( 'Add content…', 'coblocks' ) } ] ];
 
 /**
  * Block edit function
@@ -62,10 +62,11 @@ class Edit extends Component {
 				>
 					<RichText
 						tagName="p"
-						placeholder={ _x( 'Write accordion item title...', 'Accordion is the block name', 'coblocks' ) }
+						/* translators: Accordion is the block name  */
+						placeholder={ __( 'Write accordion item title…', 'coblocks' ) }
 						value={ title }
 						className={ classnames(
-							`${ className }__title`, {
+							'wp-block-coblocks-accordion-item__title', {
 								'has-background': backgroundColor.color,
 								'has-text-color': textColor.color,
 							}
@@ -85,7 +86,7 @@ class Edit extends Component {
 						} }
 					/>
 					<div
-						className={ `${ className }__content` }
+						className="wp-block-coblocks-accordion-item__content"
 						style={ { borderColor: backgroundColor.color } }
 					>
 						<InnerBlocks

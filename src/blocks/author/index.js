@@ -17,7 +17,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -25,15 +25,25 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Author', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Author', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add an author biography to build credibility and authority.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'biography', 'block keyword', 'coblocks' ), _x( 'profile', 'block keyword', 'coblocks' ), 'coblocks' ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'biography', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'profile', 'coblocks' ),
+	],
 	example: {
 		attributes: {
-			name: 'Jane Doe',
+			/* translators: example female name */
+			name: __( 'Jane Doe', 'coblocks' ),
+			/* translators: example biography */
 			biography: __( 'Born to express, not to impress. A maker making the world I want.', 'coblocks' ),
-			imgUrl: '/wp-content/plugins/coblocks/dist/images/examples/author.jpg',
+			imgUrl: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg',
 		},
 	},
 	attributes,

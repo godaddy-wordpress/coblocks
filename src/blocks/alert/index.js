@@ -17,7 +17,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -25,15 +25,40 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Alert', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Alert', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Provide contextual feedback messages or notices.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'notice', 'block keyword', 'coblocks' ), _x( 'message', 'block keyword', 'coblocks' ), 'coblocks' ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'notice', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'message', 'coblocks' ),
+	],
 	styles: [
-		{ name: 'info', label: _x( 'Info', 'block style', 'coblocks' ), isDefault: true },
-		{ name: 'success', label: _x( 'Success', 'block style', 'coblocks' ) },
-		{ name: 'warning', label: _x( 'Warning', 'block style', 'coblocks' ) },
-		{ name: 'error', label: _x( 'Error', 'block style', 'coblocks' ) },
+		{
+			name: 'info',
+			/* translators: block style */
+			label: __( 'Info', 'coblocks' ),
+			isDefault: true,
+		},
+		{
+			name: 'success',
+			/* translators: block style */
+			label: __( 'Success', 'coblocks' ),
+		},
+		{
+			name: 'warning',
+			/* translators: block style */
+			label: __( 'Warning', 'coblocks' ),
+		},
+		{
+			name: 'error',
+			/* translators: block style */
+			label: __( 'Error', 'coblocks' ),
+		},
 	],
 	supports: {
 		align: true,

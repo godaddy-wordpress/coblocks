@@ -116,14 +116,14 @@ class CoBlocks_Block_Assets {
 		wp_localize_script(
 			$this->slug . '-editor',
 			'coblocksBlockData',
-			[
-				'form'                           => [
+			array(
+				'form'                           => array(
 					'adminEmail'   => $email_to,
 					'emailSubject' => $default_subject,
-				],
+				),
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
-			]
+			)
 		);
 
 	}
@@ -188,19 +188,11 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Lightbox.
-		if ( has_block( $this->slug . '/gallery-masonry' ) || has_block( $this->slug . '/gallery-stacked' ) ) {
+		if ( has_block( $this->slug . '/gallery-masonry' ) || has_block( $this->slug . '/gallery-stacked' ) || has_block( $this->slug . '/gallery-collage' ) || has_block( $this->slug . '/gallery-carousel' ) || has_block( $this->slug . '/gallery-offset' ) ) {
 			wp_enqueue_script(
 				$this->slug . '-lightbox',
 				$dir . $this->slug . '-lightbox' . COBLOCKS_ASSET_SUFFIX . '.js',
 				array( 'jquery' ),
-				COBLOCKS_VERSION,
-				true
-			);
-
-			wp_enqueue_script(
-				$this->slug . '-masonry',
-				$dir . $this->slug . '-masonry' . COBLOCKS_ASSET_SUFFIX . '.js',
-				array( 'jquery', 'masonry', 'imagesloaded' ),
 				COBLOCKS_VERSION,
 				true
 			);

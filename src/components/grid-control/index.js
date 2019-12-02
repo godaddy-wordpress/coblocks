@@ -7,7 +7,7 @@ import map from 'lodash/map';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { withInstanceId } from '@wordpress/compose';
 import { dispatch } from '@wordpress/data';
 import { Component, Fragment } from '@wordpress/element';
@@ -32,26 +32,75 @@ class CSSGridControl extends Component {
 		 * This will make us of existing block instead of creating new one
 		 */
 		let layoutOptions = [
-			{ value: 'top-left', label: _x( 'Top Left', 'block layout', 'coblocks' ) },
-			{ value: 'top-center', label: _x( 'Top Center', 'block layout', 'coblocks' ) },
-			{ value: 'top-right', label: _x( 'Top Right', 'block layout', 'coblocks' ) },
-			{ value: 'center-left', label: _x( 'Center Left', 'block layout', 'coblocks' ) },
-			{ value: 'center-center', label: _x( 'Center Center', 'block layout', 'coblocks' ) },
-			{ value: 'center-right', label: _x( 'Center Right', 'block layout', 'coblocks' ) },
-			{ value: 'bottom-left', label: _x( 'Bottom Left', 'block layout', 'coblocks' ) },
-			{ value: 'bottom-center', label: _x( 'Bottom Center', 'block layout', 'coblocks' ) },
-			{ value: 'bottom-right', label: _x( 'Bottom Right', 'block layout', 'coblocks' ) },
+			{
+				value: 'top-left',
+				/* translators: block layout */
+				label: __( 'Top Left', 'coblocks' ),
+			},
+			{
+				value: 'top-center',
+				/* translators: block layout */
+				label: __( 'Top Center', 'coblocks' ),
+			},
+			{
+				value: 'top-right',
+				/* translators: block layout */
+				label: __( 'Top Right', 'coblocks' ),
+			},
+			{
+				value: 'center-left',
+				/* translators: block layout */
+				label: __( 'Center Left', 'coblocks' ),
+			},
+			{
+				value: 'center-center',
+				/* translators: block layout */
+				label: __( 'Center Center', 'coblocks' ),
+			},
+			{
+				value: 'center-right',
+				/* translators: block layout */
+				label: __( 'Center Right', 'coblocks' ),
+			},
+			{
+				value: 'bottom-left',
+				/* translators: block layout */
+				label: __( 'Bottom Left', 'coblocks' ),
+			},
+			{
+				value: 'bottom-center',
+				/* translators: block layout */
+				label: __( 'Bottom Center', 'coblocks' ),
+			},
+			{
+				value: 'bottom-right',
+				/* translators: block layout */
+				label: __( 'Bottom Right', 'coblocks' ),
+			},
 		];
 
 		if ( ! fullscreen ) {
 			layoutOptions = [
-				{ value: 'center-left', label: _x( 'Center Left', 'block layout', 'coblocks' ) },
-				{ value: 'center-center', label: _x( 'Center Center', 'block layout', 'coblocks' ) },
-				{ value: 'center-right', label: _x( 'Center Right', 'block layout', 'coblocks' ) },
+				{
+					value: 'center-left',
+					/* translators: block layout */
+					label: __( 'Center Left', 'coblocks' ),
+				},
+				{
+					value: 'center-center',
+					/* translators: block layout */
+					label: __( 'Center Center', 'coblocks' ),
+				},
+				{
+					value: 'center-right',
+					/* translators: block layout */
+					label: __( 'Center Right', 'coblocks' ),
+				},
 			];
 		}
 
 		const layoutAttributes = {};
+
 		//top
 		layoutAttributes[ 'top-left' ] = {
 			wrapper: {

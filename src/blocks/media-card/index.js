@@ -18,7 +18,7 @@ import { BackgroundAttributes } from '../../components/background';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -32,10 +32,18 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Media Card', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Media Card', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add an image or video with an offset card side-by-side.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'image', 'block keyword', 'coblocks' ), _x( 'video', 'block keyword', 'coblocks' ), 'coblocks' ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'image', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'video', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		stackedOnMobile: true,
@@ -45,8 +53,8 @@ const settings = {
 		attributes: {
 			align: 'wide',
 			mediaType: 'image',
-			mediaUrl: '/wp-content/plugins/coblocks/dist/images/examples/gallery-5.jpg',
-			mediaWidth: 65,
+			mediaUrl: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg',
+			mediaWidth: 45,
 		},
 	},
 	attributes,

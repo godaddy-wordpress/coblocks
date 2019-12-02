@@ -14,7 +14,6 @@ import { AlignmentToolbar, BlockControls } from '@wordpress/block-editor';
 class Controls extends Component {
 	render() {
 		const {
-			className,
 			attributes,
 			setAttributes,
 		} = this.props;
@@ -32,18 +31,18 @@ class Controls extends Component {
 						onChange={ ( nextTextAlign ) => setAttributes( { textAlign: nextTextAlign } ) }
 					/>
 					<Toolbar>
-						<div className={ `${ className }__via-wrapper` }>
+						<div className="wp-block-coblocks-click-to-tweet__via-wrapper">
 							<label
 								aria-label={ __( 'Twitter Username', 'coblocks' ) }
-								className={ `${ className }__via-label` }
-								htmlFor={ `${ className }__via` }
+								className="wp-block-coblocks-click-to-tweet__via-label"
+								htmlFor="wp-block-coblocks-click-to-tweet__via"
 							>
 								{ icons.at }
 							</label>
 							<input
 								aria-label={ __( 'Twitter Username', 'coblocks' ) }
-								className={ `${ className }__via` }
-								id={ `${ className }__via` }
+								className="wp-block-coblocks-click-to-tweet__via"
+								id="wp-block-coblocks-click-to-tweet__via"
 								onChange={ ( event ) => setAttributes( { via: event.target.value } ) }
 								placeholder={ __( 'Username', 'coblocks' ) }
 								type="text"

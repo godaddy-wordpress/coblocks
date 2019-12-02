@@ -1,0 +1,61 @@
+#!/usr/bin/env php
+<?php
+
+if ( ! isset( $argv[1], $argv[2], $argv[3] ) ) {
+	echo "Error: Missing required parameters.\n";
+	exit;
+}
+
+$msgids = json_decode( file_get_contents( $argv[1] ), true );
+
+if ( ! $msgids ) {
+	echo "Error: No msgid input data.\n";
+	exit;
+}
+
+$msgstrs = json_decode( file_get_contents( $argv[2] ), true );
+
+if ( ! $msgstrs ) {
+	echo "Error: No msgstr input data.\n";
+	exit;
+}
+
+if ( ! is_writable( dirname( $argv[3] ) ) || ( file_exists( $argv[3] ) && ! is_writable( $argv[3] ) ) ) {
+	echo "Error: Target not writable.\n";
+	exit;
+}
+
+$output = <<<PO
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+"X-Generator: json2po\\n"
+PO;
+
+$output .= PHP_EOL . PHP_EOL;
+
+foreach ( $msgids as $hash => $msgid ) {
+	$output .= sprintf( '#: %s', $hash );
+	$output .= PHP_EOL;
+	$output .= sprintf( 'msgid "%s"', addcslashes( stripcslashes( $msgid ), '"' ) );
+	$output .= PHP_EOL;
+	if ( isset( $msgstrs[ $hash ] ) ) {
+		$output .= sprintf( 'msgstr "%s"', addcslashes( str_replace( [ "\r", "\n", "\t" ], [ '\\r', '\\n', '\\t' ], stripcslashes( $msgstrs[ $hash ] ) ), '"' ) );
+	} else {
+		$output .= 'msgstr ""';
+	}
+	$output .= PHP_EOL . PHP_EOL;
+}
+
+$target = is_readable( $argv[3] ) ? file_get_contents( $argv[3] ) : [];
+
+if ( $target == $output ) {
+	echo "Done. No changes.\n";
+	exit;
+}
+
+file_put_contents( $argv[3], $output, LOCK_EX );
+
+echo "Done.\n";
+exit;

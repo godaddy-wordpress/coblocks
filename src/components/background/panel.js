@@ -12,7 +12,7 @@ import ResponsiveTabsControl from '../../components/responsive-tabs-control';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { SelectControl, RangeControl, ToggleControl, PanelBody, Button, FocalPointPicker } from '@wordpress/components';
 
@@ -80,28 +80,92 @@ class BackgroundPanel extends Component {
 		} = attributes;
 
 		const backgroundPositionOptions = [
-			{ value: 'top left', label: _x( 'Top Left', 'block layout', 'coblocks' ) },
-			{ value: 'top center', label: _x( 'Top Center', 'block layout', 'coblocks' ) },
-			{ value: 'top right', label: _x( 'Top Right', 'block layout', 'coblocks' ) },
-			{ value: 'center left', label: _x( 'Center Left', 'block layout', 'coblocks' ) },
-			{ value: 'center center', label: _x( 'Center Center', 'block layout', 'coblocks' ) },
-			{ value: 'center right', label: _x( 'Center Right', 'block layout', 'coblocks' ) },
-			{ value: 'bottom left', label: _x( 'Bottom Left', 'block layout', 'coblocks' ) },
-			{ value: 'bottom center', label: _x( 'Bottom Center', 'block layout', 'coblocks' ) },
-			{ value: 'bottom right', label: _x( 'Bottom Right', 'block layout', 'coblocks' ) },
+			{
+				value: 'top left',
+				/* translators: block layout */
+				label: __( 'Top Left', 'coblocks' ),
+			},
+			{
+				value: 'top center',
+				/* translators: block layout */
+				label: __( 'Top Center', 'coblocks' ),
+			},
+			{
+				value: 'top right',
+				/* translators: block layout */
+				label: __( 'Top Right', 'coblocks' ),
+			},
+			{
+				value: 'center left',
+				/* translators: block layout */
+				label: __( 'Center Left', 'coblocks' ),
+			},
+			{
+				value: 'center center',
+				/* translators: block layout */
+				label: __( 'Center Center', 'coblocks' ),
+			},
+			{
+				value: 'center right',
+				/* translators: block layout */
+				label: __( 'Center Right', 'coblocks' ),
+			},
+			{
+				value: 'bottom left',
+				/* translators: block layout */
+				label: __( 'Bottom Left', 'coblocks' ),
+			},
+			{
+				value: 'bottom center',
+				/* translators: block layout */
+				label: __( 'Bottom Center', 'coblocks' ),
+			},
+			{
+				value: 'bottom right',
+				/* translators: block layout */
+				label: __( 'Bottom Right', 'coblocks' ),
+			},
 		];
 
 		const backgroundRepeatOptions = [
-			{ value: 'no-repeat', label: _x( 'No Repeat', 'block layout', 'coblocks' ) },
-			{ value: 'repeat', label: _x( 'Repeat', 'block layout', 'coblocks' ) },
-			{ value: 'repeat-x', label: _x( 'Repeat Horizontally', 'block layout', 'coblocks' ) },
-			{ value: 'repeat-y', label: _x( 'Repeat Vertically', 'block layout', 'coblocks' ) },
+			{
+				value: 'no-repeat',
+				/* translators: block layout */
+				label: __( 'No Repeat', 'coblocks' ),
+			},
+			{
+				value: 'repeat',
+				/* translators: block layout */
+				label: __( 'Repeat', 'coblocks' ),
+			},
+			{
+				value: 'repeat-x',
+				/* translators: block layout */
+				label: __( 'Repeat Horizontally', 'coblocks' ),
+			},
+			{
+				value: 'repeat-y',
+				/* translators: block layout */
+				label: __( 'Repeat Vertically', 'coblocks' ),
+			},
 		];
 
 		const backgroundSizeOptions = [
-			{ value: 'auto', label: _x( 'Auto', 'block layout', 'coblocks' ) },
-			{ value: 'cover', label: _x( 'Cover', 'block layout', 'coblocks' ) },
-			{ value: 'contain', label: _x( 'Contain', 'block layout', 'coblocks' ) },
+			{
+				value: 'auto',
+				/* translators: block layout */
+				label: __( 'Auto', 'coblocks' ),
+			},
+			{
+				value: 'cover',
+				/* translators: block layout */
+				label: __( 'Cover', 'coblocks' ),
+			},
+			{
+				value: 'contain',
+				/* translators: block layout */
+				label: __( 'Contain', 'coblocks' ),
+			},
 		];
 
 		const backgroundSizeDefault = 'cover';
@@ -229,7 +293,7 @@ class BackgroundPanel extends Component {
 								}
 							} }
 						>
-							{ __( 'Remove ' + backgroundType ) }
+							{ __( 'Remove ' + backgroundType, 'coblocks' ) }
 						</Button>
 					</PanelBody>
 				) }

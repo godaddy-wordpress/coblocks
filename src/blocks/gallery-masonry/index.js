@@ -18,7 +18,7 @@ import { GalleryAttributes } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -31,10 +31,20 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Masonry', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Masonry', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Display multiple images in an organized masonry gallery.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'gallery', 'block keyword', 'coblocks' ), _x( 'photos', 'block keyword', 'coblocks' ), _x( 'lightbox', 'block keyword', 'coblocks' ) ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'gallery', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'photos', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'lightbox', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,
@@ -42,16 +52,14 @@ const settings = {
 	},
 	example: {
 		attributes: {
-			gridSize: 'xlrg',
+			gridSize: 'lrg',
 			gutter: 5,
 			images: [
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-1.jpg' },
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-2.jpg' },
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-3.jpg' },
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-4.jpg' },
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-5.jpg' },
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-6.jpg' },
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-7.jpg' },
+				{ index: 0, url: 'https://s.w.org/images/core/5.3/Sediment_off_the_Yucatan_Peninsula.jpg' },
+				{ index: 1, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
+				{ index: 2, url: 'https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg' },
+				{ index: 3, url: 'https://s.w.org/images/core/5.3/MtBlanc1.jpg' },
+				{ index: 4, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
 			],
 		},
 	},

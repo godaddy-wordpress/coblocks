@@ -7,6 +7,7 @@ import './styles/style.scss';
 /**
  * Internal dependencies
  */
+import deprecated from './deprecated';
 import edit from './edit';
 import icon from './icon';
 import metadata from './block.json';
@@ -16,7 +17,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -24,14 +25,34 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Dynamic HR', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Dynamic HR', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add a resizable spacer between other blocks.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'spacer', 'block keyword', 'coblocks' ), 'hr', 'coblocks' ],
+	keywords: [
+		'coblocks',
+		'hr',
+		/* translators: block keyword */
+		__( 'spacer', 'coblocks' ),
+	],
 	styles: [
-		{ name: 'dots', label: _x( 'Dot', 'block style', 'coblocks' ), isDefault: true },
-		{ name: 'line', label: _x( 'Line', 'block style', 'coblocks' ) },
-		{ name: 'fullwidth', label: _x( 'Fullwidth', 'block style', 'coblocks' ) },
+		{
+			name: 'dots',
+			/* translators: block style */
+			label: __( 'Dot', 'coblocks' ),
+			isDefault: true,
+		},
+		{
+			name: 'line',
+			/* translators: block style */
+			label: __( 'Line', 'coblocks' ),
+		},
+		{
+			name: 'fullwidth',
+			/* translators: block style */
+			label: __( 'Fullwidth', 'coblocks' ),
+		},
 	],
 	example: {
 		attributes: {
@@ -42,6 +63,7 @@ const settings = {
 	transforms,
 	edit,
 	save,
+	deprecated,
 };
 
 export { name, category, metadata, settings };

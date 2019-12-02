@@ -22,7 +22,7 @@
 		const arrowRight = $( '<div/>', { class: 'arrow-right' } );
 		const arrowLeft = $( '<div/>', { class: 'arrow-left' } );
 
-		const images = $( `.has-lightbox.lightbox-${ lightboxIndex } ul li figure img` );
+		const images = $( `.has-lightbox.lightbox-${ lightboxIndex } figure img` );
 		let index;
 
 		modalHeading.append( counter, close );

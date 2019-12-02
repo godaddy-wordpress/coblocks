@@ -6,7 +6,7 @@ import applyWithColors from './colors';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InspectorControls, ContrastChecker, PanelColorSettings } from '@wordpress/block-editor';
@@ -62,7 +62,8 @@ class Inspector extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( 'Accordion Item Settings', 'coblocks' ) }>
 						<ToggleControl
-							label={ _x( 'Display Open', 'Visually display open as opposed to closed.', 'coblocks' ) }
+							/* translators: visually display open as opposed to closed */
+							label={ __( 'Display Open', 'coblocks' ) }
 							checked={ !! open }
 							help={ this.getDisplayOpenHelp }
 							onChange={ () => setAttributes( { open: ! open } ) }

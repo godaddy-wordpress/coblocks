@@ -11,7 +11,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import {
 	InnerBlocks,
@@ -202,13 +202,16 @@ class Edit extends Component {
 			[
 				'core/heading',
 				{
-					placeholder: _x( 'Write title...', 'content placeholder', 'coblocks' ),
+					placeholder: /* translators: placeholder text for input box */ __( 'Write title…', 'coblocks' ),
 					level: attributes.headingLevel,
 				},
 			],
 			[
 				'core/paragraph',
-				{ placeholder: _x( 'Write description...', 'content placeholder', 'coblocks' ) },
+				{
+					/* translators: content placeholder */
+					placeholder: __( 'Write description…', 'coblocks' ),
+				},
 			],
 		];
 

@@ -18,7 +18,7 @@ import { GalleryAttributes } from '../../components/block-gallery/shared';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -31,10 +31,20 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Stacked', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Stacked', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Display multiple images in an single column stacked gallery.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'gallery', 'block keyword', 'coblocks' ), _x( 'photos', 'block keyword', 'coblocks' ), _x( 'lightbox', 'block keyword', 'coblocks' ) ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'gallery', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'photos', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'lightbox', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full', 'left', 'center', 'right' ],
 		html: false,
@@ -45,8 +55,8 @@ const settings = {
 			fullwidth: false,
 			gutter: 5,
 			images: [
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-6.jpg' },
-				{ url: '/wp-content/plugins/coblocks/dist/images/examples/gallery-2.jpg' },
+				{ index: 0, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
+				{ index: 1, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
 			],
 		},
 	},

@@ -15,7 +15,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -23,10 +23,24 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category } = metadata;
 
 const settings = {
-	title: _x( 'Post Carousel', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Post Carousel', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Display posts or an external blog feed as a carousel.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'posts', 'block keyword', 'coblocks' ), _x( 'slider', 'block keyword', 'coblocks' ), _x( 'latest', 'block keyword', 'coblocks' ) ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'slider', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'posts', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'blog', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'latest', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'rss', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		html: false,

@@ -26,19 +26,12 @@
 	}
 
 	&__button-wrapper {
-		border-radius: 6px;
+		border-radius: 3px;
 		cursor: pointer;
 		margin: 0;
 		padding: 4px;
 
-		&:hover {
-			background: $light-gray-200;
-			color: $dark-gray-900;
-		}
-
 		&:focus {
-			box-shadow: 0 0 0 2px theme(primary);
-			color: $dark-gray-900;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
 		}
@@ -47,7 +40,6 @@
 	& &__button.components-button.is-default {
 		align-items: center;
 		background: $white;
-		border: 1px solid rgba(25, 30, 35, 0.2);
 		border-radius: 4px !important;
 		box-shadow: none;
 		display: flex;
@@ -61,21 +53,9 @@
 		text-align: center;
 		width: 90px;
 
-		svg {
-			fill: $dark-gray-500;
-		}
-
 		&:focus {
-			box-shadow: 0 0 0 4px $light-gray-200, 0 0 0 6px theme(toggle);
-			color: $dark-gray-900;
 			outline: 2px solid transparent;
 			outline-offset: -2px;
-		}
-
-		&:active:enabled {
-			background: $white;
-			border-color: rgba(25, 30, 35, 0.3);
-			box-shadow: 0 0 0 4px $light-gray-200, 0 0 0 6px theme(toggle);
 		}
 	}
 
@@ -85,14 +65,7 @@
 	}
 
 	&__back.components-icon-button {
-		background: $white;
-		border: 1px solid rgba(25, 30, 35, 0.2);
 		margin-right: 4px;
-
-		&:hover {
-			box-shadow: 0 0 0 4px $dark-opacity-light-200 !important;
-			color: $dark-gray-900;
-		}
 	}
 
 	// Inspector control for the layout selector.
@@ -113,8 +86,6 @@
 				&:focus,
 				&:active,
 				&.is-selected {
-					box-shadow: 0 0 0 2px theme(toggle);
-					color: $dark-gray-900;
 					outline: 2px solid transparent;
 					outline-offset: -2px;
 
@@ -124,7 +95,7 @@
 				}
 
 				&.is-selected {
-					box-shadow: 0 0 0 2px theme(toggle);
+					box-shadow: 0 0 0 2px $dark-gray-500;
 				}
 			}
 
@@ -132,14 +103,11 @@
 				width: 100%;
 
 				&:active:enabled {
-					background: $white;
-					border-color: none;
 					box-shadow: none !important;
 				}
 
 				&:focus {
 					box-shadow: none;
-					color: $dark-gray-900;
 					outline: 2px solid transparent;
 					outline-offset: -2px;
 				}
@@ -164,21 +132,13 @@
 			width: calc(50% - 8px);
 
 			&.is-selected {
-				box-shadow: 0 0 0 2px theme(toggle);
+				box-shadow: 0 0 0 2px $dark-gray-500;
 			}
 		}
 
 		.components-coblocks-visual-dropdown__button.components-button {
 			margin-bottom: 0;
 			width: 100% !important;
-
-			&:focus {
-				box-shadow: 0 0 0 4px $white, 0 0 0 6px theme(toggle);
-			}
-
-			&:active:enabled {
-				box-shadow: 0 0 0 4px $white, 0 0 0 6px theme(toggle);
-			}
 		}
 	}
 }
@@ -193,10 +153,13 @@
 	width: 63px;
 }
 
-.components-coblocks-visual-dropdown__popover {
-	.components-coblocks-visual-dropdown__button-wrapper:hover {
+.components-panel__body .components-coblocks-visual-dropdown__button {
+	border: 0;
+}
+
+.components-coblocks-visual-dropdown__button-wrapper {
+	&:hover {
 		background: $light-gray-200;
-		color: $dark-gray-900;
 	}
 }
 
@@ -205,17 +168,8 @@
 		max-width: 340px;
 
 		.editor-block-styles__item-label {
-			color: $dark-gray-500;
 			margin-top: 4px;
 			text-align: center;
-		}
-
-		.components-coblocks-visual-dropdown__button-wrapper:hover {
-			background: $light-gray-200;
-
-			.editor-block-styles__item-label {
-				color: $dark-gray-900;
-			}
 		}
 	}
 }
