@@ -164,10 +164,14 @@ class CoBlocks_Block_Assets {
 
 			}
 
+			ob_start();
+			include $icon;
+			$retrieved_icon = ob_get_clean();
+
 			$custom_icons[ $icon_slug ] = array(
 				'label'    => $icon_name,
 				'keywords' => strtolower( $icon_name ),
-				'icon'     => file_get_contents( $icon ),
+				'icon'     => $retrieved_icon,
 			);
 
 		}
