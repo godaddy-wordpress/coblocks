@@ -1,9 +1,10 @@
 /**
  * External dependencies
  */
-import times from 'lodash/times';
 import classnames from 'classnames';
+import dropRight from 'lodash/dropRight';
 import memoize from 'memize';
+import times from 'lodash/times';
 
 /**
  * Internal dependencies
@@ -16,6 +17,8 @@ import Controls from './controls';
 import { __, sprintf } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
+import { withDispatch } from '@wordpress/data';
+import { createBlock } from '@wordpress/blocks';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -32,17 +35,20 @@ const ALLOWED_BLOCKS = [ 'coblocks/pricing-table-item' ];
  *
  * @param {number} count Number of pricing table items.
  *
- * @return {Object[]} Columns layout configuration.
+ * @return {Object[]} Tables layout configuration.
  */
 const getCount = memoize( ( count ) => {
-	/* translators: %d: a digit 1-3 */
-	return times( count, ( index ) => [ 'coblocks/pricing-table-item', { placeholder: sprintf( __( 'Plan %d', 'coblocks' ), parseInt( index + 1 ) ) } ] );
+	return times( count, ( index ) => [ 'coblocks/pricing-table-item', { placeholder: sprintf(
+		/* translators: %d: a digit 1-3 */
+		__( 'Plan %d', 'coblocks' ),
+		parseInt( index + 1 )
+	) } ] );
 } );
 
 /**
  * Block edit function
  */
-class Edit extends Component {
+class PricingTableEdit extends Component {
 	render() {
 		const {
 			attributes,
@@ -74,8 +80,9 @@ class Edit extends Component {
 					<div className={ `${ className }__inner` }>
 						<InnerBlocks
 							template={ getCount( count ) }
-							templateLock="all"
-							allowedBlocks={ ALLOWED_BLOCKS } />
+							templateLock="insert"
+							allowedBlocks={ ALLOWED_BLOCKS }
+							__experimentalMoverDirection={ count > 1 ? 'horizontal' : 'vertical' } />
 					</div>
 				</div>
 			</Fragment>
@@ -83,4 +90,35 @@ class Edit extends Component {
 	}
 }
 
-export default Edit;
+export default withDispatch( ( dispatch, ownProps, registry ) => ( {
+
+	/**
+	 * Updates the table count, including necessary revisions to child Pricing Table Item blocks
+	 *
+	 * @param {number} previousTables Previous table count.
+	 * @param {number} newTables      New table count.
+	 */
+	updateTables( previousTables, newTables ) {
+		const { clientId } = ownProps;
+		const { replaceInnerBlocks } = dispatch( 'core/block-editor' );
+		const { getBlocks } = registry.select( 'core/block-editor' );
+
+		let innerBlocks = getBlocks( clientId );
+
+		const isAddingTable = newTables > previousTables;
+
+		if ( isAddingTable ) {
+			innerBlocks = [
+				...innerBlocks,
+				...times( newTables - previousTables, () => {
+					return createBlock( 'coblocks/pricing-table-item', { placeholder: sprintf( __( 'Plan %d', 'coblocks' ), parseInt( newTables ) ) } );
+				} ),
+			];
+		} else {
+			// The removed table will be the last of the inner blocks.
+			innerBlocks = dropRight( innerBlocks, previousTables - newTables );
+		}
+
+		replaceInnerBlocks( clientId, innerBlocks, false );
+	},
+} ) )( PricingTableEdit );

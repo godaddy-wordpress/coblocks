@@ -4,6 +4,12 @@
 		flex-direction: row;
 	}
 
+	> label {
+		svg {
+			margin-right: 1ch;
+		}
+	}
+
 	.block-editor-plain-text {
 		margin-left: 10px;
 		padding: 8px;

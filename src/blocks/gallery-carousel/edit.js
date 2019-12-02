@@ -13,8 +13,6 @@ import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
-import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
-import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -165,13 +163,6 @@ class GalleryCarouselEdit extends Component {
 
 		const hasImages = !! images.length;
 
-		// An additional dropzone to wrap the entire gallery in.
-		const dropZone = (
-			<GalleryDropZone
-				{ ...this.props }
-			/>
-		);
-
 		const innerClasses = classnames(
 			'is-cropped',
 			...GalleryClasses( attributes ), {
@@ -245,14 +236,19 @@ class GalleryCarouselEdit extends Component {
 			}
 		);
 
-		if ( ! hasImages ) {
-			return (
+		const carouselGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
 				<GalleryPlaceholder
 					{ ...this.props }
 					label={ __( 'Carousel', 'coblocks' ) }
 					icon={ icon }
+					gutter={ gutter }
 				/>
-			);
+			</Fragment> );
+
+		if ( ! hasImages ) {
+			return carouselGalleryPlaceholder;
 		}
 
 		return (
@@ -294,7 +290,6 @@ class GalleryCarouselEdit extends Component {
 						} );
 					} }
 				>
-					{ dropZone }
 					<div className={ className }>
 						<div className={ innerClasses }>
 							<Flickity
@@ -306,8 +301,12 @@ class GalleryCarouselEdit extends Component {
 								updateOnEachImageLoad={ true }
 							>
 								{ images.map( ( img, index ) => {
-									// translators: %1$d is the order number of the image, %2$d is the total number of images
-									const ariaLabel = sprintf( __( 'image %1$d of %2$d in gallery', 'coblocks' ), ( index + 1 ), images.length );
+									const ariaLabel = sprintf(
+										/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+										__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+										( index + 1 ),
+										images.length
+									);
 
 									return (
 										<div className="coblocks-gallery--item" key={ img.id || img.url } onClick={ this.onItemClick }>
@@ -331,49 +330,42 @@ class GalleryCarouselEdit extends Component {
 										</div>
 									);
 								} ) }
-								{ isSelected && (
-									<div className="coblocks-gallery--item">
-										<GalleryUploader { ...this.props }
-											gutter={ gutter }
-											gutterMobile={ gutterMobile }
-											marginRight={ true }
-											marginLeft={ true }
-										/>
-									</div>
-								) }
 							</Flickity>
 						</div>
 					</div>
 				</ResizableBox>
-				<div className={ className }>
-					<div
-						className={ innerClasses }
-						style={ navStyles }
-					>
-						<Flickity
-							className={ navClasses }
-							options={ navOptions }
-							disableImagesLoaded={ false }
-							reloadOnUpdate={ true }
-							flickityRef={ c => this.flkty = c }
-							updateOnEachImageLoad={ true }
+				{ thumbnails &&
+					<div className={ className }>
+						<div
+							className={ innerClasses }
+							style={ navStyles }
 						>
-							{ images.map( ( image ) => {
-								return (
-									<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
-										<figure className={ navFigureClasses }>
-											<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
-										</figure>
-									</div>
-								);
-							} ) }
-						</Flickity>
+							<Flickity
+								className={ navClasses }
+								options={ navOptions }
+								disableImagesLoaded={ false }
+								reloadOnUpdate={ true }
+								flickityRef={ c => this.flkty = c }
+								updateOnEachImageLoad={ true }
+							>
+								{ images.map( ( image ) => {
+									return (
+										<div className="coblocks--item-thumbnail" key={ image.id || image.url }>
+											<figure className={ navFigureClasses }>
+												<img src={ image.url } alt={ image.alt } data-link={ image.link } data-id={ image.id } className={ image.id ? `wp-image-${ image.id }` : null } />
+											</figure>
+										</div>
+									);
+								} ) }
+							</Flickity>
+						</div>
 					</div>
-				</div>
+				}
+				{ carouselGalleryPlaceholder }
 				{ ( ! RichText.isEmpty( primaryCaption ) || isSelected ) && (
 					<RichText
 						tagName="figcaption"
-						placeholder={ __( 'Write caption…', 'coblocks' ) }
+						placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
 						value={ primaryCaption }
 						className="coblocks-gallery--caption coblocks-gallery--primary-caption"
 						unstableOnFocus={ this.onFocusCaption }

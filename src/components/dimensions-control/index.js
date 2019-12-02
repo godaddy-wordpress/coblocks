@@ -14,7 +14,7 @@ import DimensionsSelect from './dimensions-select';
 /**
  * WordPress dependencies
  */
-import { __, _x, sprintf } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { withInstanceId } from '@wordpress/compose';
 import { dispatch } from '@wordpress/data';
 import { Component, Fragment } from '@wordpress/element';
@@ -386,15 +386,28 @@ class DimensionsControl extends Component {
 
 		const unitSizes = [
 			{
-				name: _x( 'Pixel', 'A size unit for CSS markup', 'coblocks' ),
+				/* translators: a unit of size (px) for css markup */
+				name: __( 'Pixel', 'coblocks' ),
 				unitValue: 'px',
 			},
 			{
-				name: _x( 'Em', 'A size unit for CSS markup', 'coblocks' ),
+				/* translators: a unit of size (em) for css markup */
+				name: __( 'Em', 'coblocks' ),
 				unitValue: 'em',
 			},
 			{
-				name: _x( 'Percentage', 'A size unit for CSS markup', 'coblocks' ),
+				/* translators: a unit of size (vw) for css markup */
+				name: __( 'Viewport Width', 'coblocks' ),
+				unitValue: 'vw',
+			},
+			{
+				/* translators: a unit of size (vh) for css markup */
+				name: __( 'Viewport Height', 'coblocks' ),
+				unitValue: 'vh',
+			},
+			{
+				/* translators: a unit of size for css markup */
+				name: __( 'Percentage', 'coblocks' ),
 				unitValue: '%',
 			},
 		];
@@ -441,16 +454,22 @@ class DimensionsControl extends Component {
 								<div className="components-coblocks-dimensions-control__actions">
 									<ButtonGroup className="components-coblocks-dimensions-control__units" aria-label={ __( 'Select Units', 'coblocks' ) }>
 										{ map( unitSizes, ( { unitValue, name } ) => (
-											/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
-											<Tooltip text={ sprintf( __( '%s Units', 'coblocks' ), name ) }>
+											<Tooltip text={ sprintf(
+												/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
+												__( '%s Units', 'coblocks' ),
+												name
+											) }>
 												<Button
 													key={ unitValue }
 													className={ 'components-coblocks-dimensions-control__units--' + name }
 													isSmall
 													isPrimary={ unit === unitValue }
 													aria-pressed={ unit === unitValue }
-													/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
-													aria-label={ sprintf( __( '%s Units', 'coblocks' ), name ) }
+													aria-label={ sprintf(
+														/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
+														__( '%s Units', 'coblocks' ),
+														name
+													) }
 													onClick={ () => this.onChangeUnits( unitValue ) }
 												>
 													{ unitValue }
@@ -464,8 +483,11 @@ class DimensionsControl extends Component {
 										onClick={ () => this.onChangeSize( 'no', -1 ) }
 										isSmall
 										isDefault
-										/* translators: %s: a texual label  */
-										aria-label={ sprintf( __( 'Turn off advanced %s settings', 'coblocks' ), label.toLowerCase() ) }
+										aria-label={ sprintf(
+											/* translators: %s: a texual label  */
+											__( 'Turn off advanced %s settings', 'coblocks' ),
+											label.toLowerCase()
+										) }
 									>
 										{ __( 'Reset', 'coblocks' ) }
 									</Button>
@@ -480,22 +502,22 @@ class DimensionsControl extends Component {
 									{
 										name: 'default',
 										title: icons.desktopChrome,
-										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button components-coblocks-dimensions-control__mobile-controls-item--default components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--default`,
+										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default components-coblocks-dimensions-control__mobile-controls-item--default components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--default`,
 									},
 									{
 										name: 'desktop',
 										title: icons.mobile,
-										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button components-coblocks-dimensions-control__mobile-controls-item--desktop components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--desktop`,
+										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default components-coblocks-dimensions-control__mobile-controls-item--desktop components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--desktop`,
 									},
 									{
 										name: 'tablet',
 										title: icons.desktopChrome,
-										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button components-coblocks-dimensions-control__mobile-controls-item--tablet components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--tablet`,
+										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default components-coblocks-dimensions-control__mobile-controls-item--tablet components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--tablet`,
 									},
 									{
 										name: 'mobile',
 										title: icons.tablet,
-										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button components-coblocks-dimensions-control__mobile-controls-item--mobile components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--mobile`,
+										className: `components-coblocks-dimensions-control__mobile-controls-item components-coblocks-dimensions-control__mobile-controls-item--${ this.props.type } components-button is-button is-default components-coblocks-dimensions-control__mobile-controls-item--mobile components-coblocks-dimensions-control__mobile-controls-item-${ this.props.type }--mobile`,
 									},
 								] }>
 								{
@@ -508,8 +530,11 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeTopValue }
-															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Top', 'coblocks' ), label ) }
+															aria-label={ sprintf(
+																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
+																__( '%s Top', 'coblocks' ),
+																label
+															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueTopMobile !== '' ? valueTopMobile : '' }
 															min={ type === 'padding' ? 0 : undefined }
@@ -519,8 +544,11 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeRightValue }
-															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Right', 'coblocks' ), label ) }
+															aria-label={ sprintf(
+																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
+																__( '%s Right', 'coblocks' ),
+																label
+															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueRightMobile !== '' ? valueRightMobile : '' }
 															min={ type === 'padding' ? 0 : undefined }
@@ -530,8 +558,11 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeBottomValue }
-															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Bottom', 'coblocks' ), label ) }
+															aria-label={ sprintf(
+																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
+																__( '%s Bottom', 'coblocks' ),
+																label
+															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueBottomMobile !== '' ? valueBottomMobile : '' }
 															min={ type === 'padding' ? 0 : undefined }
@@ -541,8 +572,11 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeLeftValue }
-															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Left', 'coblocks' ), label ) }
+															aria-label={ sprintf(
+																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
+																__( '%s Left', 'coblocks' ),
+																label
+															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueLeftMobile !== '' ? valueLeftMobile : '' }
 															min={ type === 'padding' ? 0 : undefined }
@@ -572,8 +606,11 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeTopValue }
-															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Top', 'coblocks' ), label ) }
+															aria-label={ sprintf(
+																/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
+																__( '%s Top', 'coblocks' ),
+																label
+															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueTopTablet !== '' ? valueTopTablet : '' }
 															min={ type === 'padding' ? 0 : undefined }
@@ -583,8 +620,11 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeRightValue }
-															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Right', 'coblocks' ), label ) }
+															aria-label={ sprintf(
+																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
+																__( '%s Right', 'coblocks' ),
+																label
+															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueRightTablet !== '' ? valueRightTablet : '' }
 															min={ type === 'padding' ? 0 : undefined }
@@ -594,8 +634,11 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeBottomValue }
-															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Bottom', 'coblocks' ), label ) }
+															aria-label={ sprintf(
+																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
+																__( '%s Bottom', 'coblocks' ),
+																label
+															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueBottomTablet !== '' ? valueBottomTablet : '' }
 															min={ type === 'padding' ? 0 : undefined }
@@ -605,8 +648,11 @@ class DimensionsControl extends Component {
 															className="components-coblocks-dimensions-control__number"
 															type="number"
 															onChange={ onChangeLeftValue }
-															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-															aria-label={ sprintf( __( '%s Left', 'coblocks' ), label ) }
+															aria-label={ sprintf(
+																/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
+																__( '%s Left', 'coblocks' ),
+																label
+															) }
 															aria-describedby={ !! help ? id + '__help' : undefined }
 															value={ valueLeftTablet !== '' ? valueLeftTablet : '' }
 															min={ type === 'padding' ? 0 : undefined }
@@ -636,8 +682,11 @@ class DimensionsControl extends Component {
 														className="components-coblocks-dimensions-control__number"
 														type="number"
 														onChange={ onChangeTopValue }
-														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-														aria-label={ sprintf( __( '%s Top', 'coblocks' ), label ) }
+														aria-label={ sprintf(
+															/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
+															__( '%s Top', 'coblocks' ),
+															label
+														) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
 														value={ valueTop !== '' ? valueTop : '' }
 														min={ type === 'padding' ? 0 : undefined }
@@ -647,8 +696,11 @@ class DimensionsControl extends Component {
 														className="components-coblocks-dimensions-control__number"
 														type="number"
 														onChange={ onChangeRightValue }
-														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-														aria-label={ sprintf( __( '%s Right', 'coblocks' ), label ) }
+														aria-label={ sprintf(
+															/* translators: %s: values associated with CSS syntax, 'Margin', 'Padding' */
+															__( '%s Right', 'coblocks' ),
+															label
+														) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
 														value={ valueRight !== '' ? valueRight : '' }
 														min={ type === 'padding' ? 0 : undefined }
@@ -658,8 +710,11 @@ class DimensionsControl extends Component {
 														className="components-coblocks-dimensions-control__number"
 														type="number"
 														onChange={ onChangeBottomValue }
-														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-														aria-label={ sprintf( __( '%s Bottom', 'coblocks' ), label ) }
+														aria-label={ sprintf(
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
+															__( '%s Bottom', 'coblocks' ),
+															label
+														) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
 														value={ valueBottom !== '' ? valueBottom : '' }
 														min={ type === 'padding' ? 0 : undefined }
@@ -669,8 +724,10 @@ class DimensionsControl extends Component {
 														className="components-coblocks-dimensions-control__number"
 														type="number"
 														onChange={ onChangeLeftValue }
-														/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
-														aria-label={ sprintf( __( '%s Left', 'coblocks' ), label ) }
+														aria-label={ sprintf(
+															/* translators: %s:  values associated with CSS syntax, 'Margin', 'Padding' */
+															__( '%s Left', 'coblocks' ), label
+														) }
 														aria-describedby={ !! help ? id + '__help' : undefined }
 														value={ valueLeft !== '' ? valueLeft : '' }
 														min={ type === 'padding' ? 0 : undefined }
@@ -718,8 +775,11 @@ class DimensionsControl extends Component {
 									onClick={ () => this.onChangeSize( 'advanced', '' ) }
 
 									isDefault
-									/* translators: %s:  a texual label */
-									aria-label={ sprintf( __( 'Advanced %s settings', 'coblocks' ), label.toLowerCase() ) }
+									aria-label={ sprintf(
+										/* translators: %s: a texual label */
+										__( 'Advanced %s settings', 'coblocks' ),
+										label.toLowerCase()
+									) }
 									isPrimary={ dimensionSize === 'advanced' }
 								>
 									{ __( 'Advanced', 'coblocks' ) }

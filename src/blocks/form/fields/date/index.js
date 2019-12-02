@@ -3,27 +3,54 @@
  */
 import edit from './edit';
 import icon from './icon';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
  */
+const metadata = {
+	name: 'coblocks/field-date',
+	category: 'coblocks',
+	attributes: {
+		label: {
+			type: 'string',
+			default: __( 'Date', 'coblocks' ),
+		},
+		required: {
+			type: 'boolean',
+			default: false,
+		},
+	},
+};
+
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Date', 'block name', 'coblocks' ),
-	keywords: [ _x( 'calendar', 'block keyword', 'coblocks' ), _x( 'day month year', 'block keyword', 'coblocks' ) ],
+	/* translators: block name */
+	title: __( 'Date', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'A field for requesting date selections with a date picker.', 'coblocks' ),
 	icon,
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'calendar', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'day', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'month', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'year', 'coblocks' ),
+	],
 	parent: [ 'coblocks/form' ],
 	supports: {
 		reusable: false,
 		html: false,
+		customClassName: false,
 	},
 	attributes,
 	edit,

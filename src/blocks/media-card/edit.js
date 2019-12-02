@@ -16,7 +16,7 @@ import MediaContainer from './media-container';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { InnerBlocks } from '@wordpress/block-editor';
@@ -40,14 +40,47 @@ export const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
 */
 const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/spacer', 'core/button', 'core/list', 'core/image', 'coblocks/alert', 'coblocks/gif', 'coblocks/social', 'coblocks/row', 'coblocks/column' ];
 const TEMPLATE = [
-	[ 'coblocks/row', { columns: 1, layout: '100', paddingSize: 'huge', hasMarginControl: false, hasStackedControl: false, hasAlignmentControls: false, customBackgroundColor: '#FFFFFF' }, [
-		[ 'coblocks/column', { width: '100' },
+	[
+		'coblocks/row',
+		{
+			columns: 1,
+			layout: '100',
+			paddingSize: 'huge',
+			hasMarginControl: false,
+			hasStackedControl: false,
+			hasAlignmentControls: false,
+			customBackgroundColor: '#FFFFFF',
+		},
+		[
 			[
-				[ 'core/heading', { placeholder: _x( 'Add heading...', 'content placeholder', 'coblocks' ), content: _x( 'Media Card', 'content placeholder', 'coblocks' ), level: 3 } ],
-				[ 'core/paragraph', { placeholder: _x( 'Add content...', 'content placeholder', 'coblocks' ), content: _x( 'Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'content placeholder', 'coblocks' ) } ],
+				'coblocks/column',
+				{
+					width: '100',
+				},
+				[
+					[
+						'core/heading',
+						{
+							/* translators: content placeholder */
+							placeholder: __( 'Add heading…', 'coblocks' ),
+							/* translators: content placeholder */
+							content: __( 'Media Card', 'coblocks' ),
+							level: 3,
+						},
+					],
+					[
+						'core/paragraph',
+						{
+							/* translators: content placeholder */
+							placeholder: __( 'Add content…', 'coblocks' ),
+							/* translators: content placeholder */
+							content: __( 'Replace this text with descriptive copy to go along with the card image. Then add more blocks to this card, such as buttons, lists or images.', 'coblocks' ),
+						},
+					],
+				],
 			],
 		],
-	] ],
+	],
 ];
 
 /**

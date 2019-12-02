@@ -12,7 +12,7 @@ import { BackgroundAttributes } from '../../../components/background';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -26,7 +26,9 @@ const attributes = {
 };
 
 const settings = {
-	title: _x( 'Column', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Column', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'An immediate child of a row.', 'coblocks' ),
 	icon,
 	parent: [ 'coblocks/row' ],

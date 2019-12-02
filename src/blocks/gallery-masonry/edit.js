@@ -13,8 +13,6 @@ import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
-import GalleryDropZone from '../../components/block-gallery/gallery-dropzone';
-import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -156,13 +154,6 @@ class GalleryMasonryEdit extends Component {
 
 		const hasImages = !! images.length;
 
-		// An additional dropzone to wrap the entire gallery in.
-		const dropZone = (
-			<GalleryDropZone
-				{ ...this.props }
-			/>
-		);
-
 		const sidebarIsOpened = editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
 
 		const innerClasses = classnames(
@@ -181,14 +172,20 @@ class GalleryMasonryEdit extends Component {
 			}
 		);
 
-		if ( ! hasImages ) {
-			return (
+		const masonryGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
 				<GalleryPlaceholder
 					{ ...this.props }
 					label={ __( 'Masonry', 'coblocks' ) }
 					icon={ icon }
+					gutter={ gutter }
 				/>
-			);
+			</Fragment>
+		);
+
+		if ( ! hasImages ) {
+			return masonryGalleryPlaceholder;
 		}
 
 		return (
@@ -206,7 +203,6 @@ class GalleryMasonryEdit extends Component {
 				{ noticeUI }
 				<div className={ className }>
 					<div className={ innerClasses }>
-						{ dropZone }
 						<Masonry
 							elementType={ 'ul' }
 							className={ masonryClasses }
@@ -215,8 +211,12 @@ class GalleryMasonryEdit extends Component {
 							updateOnEachImageLoad={ false }
 						>
 							{ images.map( ( img, index ) => {
-								// translators: %1$d is the order number of the image, %2$d is the total number of images
-								const ariaLabel = sprintf( __( 'image %1$d of %2$d in gallery', 'coblocks' ), ( index + 1 ), images.length );
+								const ariaLabel = sprintf(
+									/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+									__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+									( index + 1 ),
+									images.length
+								);
 
 								return (
 									<li className="coblocks-gallery--item" key={ img.id || img.url }>
@@ -242,11 +242,9 @@ class GalleryMasonryEdit extends Component {
 									</li>
 								);
 							} ) }
-							<li className="coblocks-gallery--item">
-								<GalleryUploader { ...this.props } />
-							</li>
 						</Masonry>
 					</div>
+					{ masonryGalleryPlaceholder }
 				</div>
 			</Fragment>
 		);

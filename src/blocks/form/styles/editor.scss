@@ -1,4 +1,4 @@
-.editor-block-list__block[data-type="coblocks/form"] {
+.wp-block[data-type="coblocks/form"] {
 	.components-base-control,
 	.coblocks-option__input {
 		font-family: inherit;
@@ -8,6 +8,11 @@
 	// Hide the appender in pre WP 5.3
 	.block-list-appender {
 		display: none;
+	}
+
+	// Better appender appearance pre 5.3
+	.editor-default-block-appender {
+		height: 1em;
 	}
 
 	.coblocks-field-label__input-wrapper {
@@ -54,6 +59,10 @@
 
 		.components-base-control__field {
 			margin-bottom: 15px;
+
+			.components-base-control__label {
+				width: 100%;
+			}
 		}
 	}
 
@@ -91,6 +100,29 @@
 	.coblocks-field-multiple__list {
 		margin: 0;
 		padding-left: 0;
+
+		&.is-inline {
+			display: flex;
+			flex-direction: row;
+			flex-flow: row wrap;
+
+			.coblocks-option {
+				margin-right: 12px;
+			}
+		}
+	}
+
+	div[data-type="coblocks/field-checkbox"].is-selected,
+	div[data-type="coblocks/field-radio"].is-selected,
+	div[data-type="coblocks/field-checkbox"].is-typing,
+	div[data-type="coblocks/field-radio"].is-typing {
+		.is-inline {
+			display: block;
+
+			.coblocks-option {
+				margin-right: 0;
+			}
+		}
 	}
 
 	.coblocks-option__type.coblocks-option__type {
@@ -132,6 +164,10 @@
 	.coblocks-field-multiple__add-option svg {
 		margin-right: 5px;
 	}
+}
+
+.wp-block[data-type="coblocks/field-select"] .coblocks-field-multiple__add-option {
+	margin-left: 0;
 }
 
 @import "notice";
@@ -237,7 +273,8 @@
 	> .block-editor-block-list__block-edit
 	> [data-block]
 	> div
-	> .block-editor-inner-blocks {
+	> .block-editor-inner-blocks
+	.editor-block-list__layout {
 	padding: 14px;
 	padding-bottom: 0;
 }

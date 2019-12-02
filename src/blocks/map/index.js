@@ -16,7 +16,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -24,10 +24,22 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Map', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Map', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add an address or location to drop a pin on a Google map.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'address', 'block keyword', 'coblocks' ), _x( 'maps', 'block keyword', 'coblocks' ), _x( 'google', 'block keyword', 'coblocks' ) ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'address', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'maps', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'google', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'directions', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
@@ -35,7 +47,7 @@ const settings = {
 	example: {
 		attributes: {
 			align: 'wide',
-			address: 'Scotsdale, Arizona',
+			address: 'Scottsdale, Arizona',
 		},
 	},
 	attributes,

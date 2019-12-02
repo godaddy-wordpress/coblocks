@@ -1,4 +1,4 @@
-/*global $*/
+/*global jQuery*/
 
 /**
  * External dependencies
@@ -14,13 +14,14 @@ import { compose } from '@wordpress/compose';
 import { Placeholder, Spinner, ResizableBox } from '@wordpress/components';
 import { withViewportMatch } from '@wordpress/viewport';
 import { withSelect } from '@wordpress/data';
-import { RichText } from '@wordpress/block-editor';
+import { BlockIcon, RichText } from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
  */
 import Controls from './controls';
 import icons from './../../utils/icons';
+import icon from './icon';
 import Inspector from './inspector';
 import Size from './size';
 
@@ -113,7 +114,7 @@ class Edit extends Component {
 
 			setAttributes( { fetching: true } );
 
-			$.getJSON( GIPHY_URL + encodeURI( search ) )
+			jQuery.getJSON( GIPHY_URL + encodeURI( search ) )
 				.success( function fetchSuccess( data ) {
 					setAttributes( { fetching: false, matches: data.data } );
 				} )
@@ -278,7 +279,7 @@ class Edit extends Component {
 			<Fragment>
 				<Placeholder
 					key="placeholder"
-					icon={ icons.gif }
+					icon={ <BlockIcon icon={ icon } /> }
 					label="Gif"
 					instructions={ __( 'Search for that perfect gif on Giphy', 'coblocks' ) }
 					className={ className }>
@@ -291,7 +292,7 @@ class Edit extends Component {
 					/>
 					<ul
 						key="results"
-						className={ `${ className }__results` }
+						className="wp-block-coblocks-gif__results"
 					>
 						{ results }
 					</ul>

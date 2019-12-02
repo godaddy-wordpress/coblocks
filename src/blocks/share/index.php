@@ -249,7 +249,7 @@ function coblocks_register_share_block() {
 	$metadata = json_decode( ob_get_clean(), true );
 
 	register_block_type(
-		$metadata['name'],
+		'coblocks/social',
 		array(
 			'editor_script'   => 'coblocks-editor',
 			'editor_style'    => 'coblocks-editor',

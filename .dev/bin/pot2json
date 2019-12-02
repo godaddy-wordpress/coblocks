@@ -1,0 +1,50 @@
+#!/usr/bin/env php
+<?php
+
+if ( ! isset( $argv[1], $argv[2] ) ) {
+	echo "Error: Missing required parameters.\n";
+	exit;
+}
+
+$input = preg_grep( '/^msgid "(.+?)"$/', explode( PHP_EOL, file_get_contents( $argv[1] ) ) );
+
+if ( ! $input ) {
+	echo "Error: No input data.\n";
+	exit;
+}
+
+if ( ! is_writable( dirname( $argv[2] ) ) || ( file_exists( $argv[2] ) && ! is_writable( $argv[2] ) ) ) {
+	echo "Error: Target not writable.\n";
+	exit;
+}
+
+$output = [];
+
+foreach ( $input as $line ) {
+	$value = preg_replace( '/^msgid "(.+?)"$/', '$1', $line );
+	$output[ md5( $value ) ] = stripcslashes( $value );
+}
+
+$target = is_readable( $argv[2] ) ? json_decode( file_get_contents( $argv[2] ), true ) : [];
+
+if ( $target == $output ) {
+	echo "Done. No changes.\n";
+	exit;
+}
+
+$added   = $target ? count( array_diff_key( $output, $target ) ) : count( $output );
+$removed = $target ? count( array_diff_key( $target, $output ) ) : 0;
+
+// indent with 2 spaces.
+$json = preg_replace_callback(
+	'/^ +/m',
+	function ( $m ) {
+		return str_repeat( ' ', strlen( $m[0] ) / 2 );
+	},
+	json_encode( $output, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT )
+);
+
+file_put_contents( $argv[2], $json, LOCK_EX );
+
+printf( "Done. Saved %d strings, %d added, %d removed.\n", count( $output ), $added, $removed );
+exit;

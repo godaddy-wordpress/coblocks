@@ -12,7 +12,6 @@ import Inspector from './inspector';
 import Controls from './controls';
 import GalleryImage from '../../components/block-gallery/gallery-image';
 import GalleryPlaceholder from '../../components/block-gallery/gallery-placeholder';
-import GalleryUploader from '../../components/block-gallery/gallery-uploader';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**
@@ -161,14 +160,19 @@ class GalleryStackedEdit extends Component {
 			}
 		);
 
-		if ( ! hasImages ) {
-			return (
+		const stackedGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
 				<GalleryPlaceholder
 					{ ...this.props }
 					label={ __( 'Stacked', 'coblocks' ) }
 					icon={ icon }
+					gutter={ gutter }
 				/>
-			);
+			</Fragment> );
+
+		if ( ! hasImages ) {
+			return stackedGalleryPlaceholder;
 		}
 
 		return (
@@ -187,8 +191,12 @@ class GalleryStackedEdit extends Component {
 				<div className={ classes }>
 					<ul className={ innerClasses }>
 						{ images.map( ( img, index ) => {
-							// translators: %1$d is the order number of the image, %2$d is the total number of images.
-							const ariaLabel = sprintf( __( 'image %1$d of %2$d in gallery', 'coblocks' ), ( index + 1 ), images.length );
+							const ariaLabel = sprintf(
+								/* translators: %1$d is the order number of the image, %2$d is the total number of images */
+								__( 'image %1$d of %2$d in gallery', 'coblocks' ),
+								( index + 1 ),
+								images.length
+							);
 
 							return (
 								<li className="coblocks-gallery--item" key={ img.id || img.url }>
@@ -220,9 +228,7 @@ class GalleryStackedEdit extends Component {
 								</li>
 							);
 						} ) }
-						<li className="coblocks-gallery--item">
-							<GalleryUploader { ...this.props } />
-						</li>
+						{ stackedGalleryPlaceholder }
 					</ul>
 				</div>
 			</Fragment>

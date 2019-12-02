@@ -17,7 +17,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -25,30 +25,65 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Shape Divider', 'block name', 'coblocks' ),
+	/* translators: block name */
+	title: __( 'Shape Divider', 'coblocks' ),
+	/* translators: block description */
 	description: __( 'Add a shape divider to visually distinquish page sections.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'separator', 'block keyword', 'coblocks' ), 'hr', 'svg' ],
+	keywords: [
+		'coblocks',
+		'hr',
+		'svg',
+		/* translators: block keyword */
+		__( 'separator', 'coblocks' ),
+	],
 	supports: {
 		align: [ 'wide', 'full' ],
 		coBlocksSpacing: true,
-
 	},
 	styles: [
-		{ name: 'wavy', label: _x( 'Wavy', 'block style', 'coblocks' ), isDefault: true },
-		{ name: 'hills', label: _x( 'Hills', 'block style', 'coblocks' ) },
-		{ name: 'waves', label: _x( 'Waves', 'block style', 'coblocks' ) },
-		{ name: 'angled', label: _x( 'Angled', 'block style', 'coblocks' ) },
-		{ name: 'sloped', label: _x( 'Sloped', 'block style', 'coblocks' ) },
-		{ name: 'rounded', label: _x( 'Rounded', 'block style', 'coblocks' ) },
-		{ name: 'triangle', label: _x( 'Triangle', 'block style', 'coblocks' ) },
-		{ name: 'pointed', label: _x( 'Pointed', 'block style', 'coblocks' ) },
-	],
-	example: {
-		attributes: {
-			height: 100,
+		{
+			name: 'wavy',
+			/* translators: block style */
+			label: __( 'Wavy', 'coblocks' ),
+			isDefault: true,
 		},
-	},
+		{
+			name: 'hills',
+			/* translators: block style */
+			label: __( 'Hills', 'coblocks' ),
+		},
+		{
+			name: 'waves',
+			/* translators: block style */
+			label: __( 'Waves', 'coblocks' ),
+		},
+		{
+			name: 'angled',
+			/* translators: block style */
+			label: __( 'Angled', 'coblocks' ),
+		},
+		{
+			name: 'sloped',
+			/* translators: block style */
+			label: __( 'Sloped', 'coblocks' ),
+		},
+		{
+			name: 'rounded',
+			/* translators: block style */
+			label: __( 'Rounded', 'coblocks' ),
+		},
+		{
+			name: 'triangle',
+			/* translators: block style */
+			label: __( 'Triangle', 'coblocks' ),
+		},
+		{
+			name: 'pointed',
+			/* translators: block style */
+			label: __( 'Pointed', 'coblocks' ),
+		},
+	],
 	attributes,
 	transforms,
 	edit,

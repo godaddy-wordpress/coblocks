@@ -17,7 +17,7 @@ import icons from './icons';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { DOWN } from '@wordpress/keycodes';
@@ -73,38 +73,46 @@ class TypographyControls extends Component {
 		const weight = [
 			{
 				value: '',
-				label: _x( 'Default', 'typography styles', 'coblocks' ),
+				/* translators: typography style */
+				label: __( 'Default', 'coblocks' ),
 			},
 			{
 				value: 'normal',
-				label: _x( 'Normal', 'typography styles', 'coblocks' ),
+				/* translators: typography style */
+				label: __( 'Normal', 'coblocks' ),
 			},
 			{
 				value: 'bold',
-				label: _x( 'Bold', 'typography styles', 'coblocks' ),
+				/* translators: typography style */
+				label: __( 'Bold', 'coblocks' ),
 			},
 		];
 
 		const transform = [
 			{
 				value: '',
-				label: _x( 'Default', 'typography styles', 'coblocks' ),
+				/* translators: typography style */
+				label: __( 'Default', 'coblocks' ),
 			},
 			{
 				value: 'uppercase',
-				label: _x( 'Uppercase', 'typography styles', 'coblocks' ),
+				/* translators: typography style */
+				label: __( 'Uppercase', 'coblocks' ),
 			},
 			{
 				value: 'lowercase',
-				label: _x( 'Lowercase', 'typography styles', 'coblocks' ),
+				/* translators: typography style */
+				label: __( 'Lowercase', 'coblocks' ),
 			},
 			{
 				value: 'capitalize',
-				label: _x( 'Capitalize', 'typography styles', 'coblocks' ),
+				/* translators: typography style */
+				label: __( 'Capitalize', 'coblocks' ),
 			},
 			{
 				value: 'initial',
-				label: _x( 'Normal', 'typography styles', 'coblocks' ),
+				/* translators: typography style */
+				label: __( 'Normal', 'coblocks' ),
 			},
 		];
 

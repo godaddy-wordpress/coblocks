@@ -39,9 +39,12 @@ module.exports = function( grunt ) {
 							'LICENSE',
 							'readme.txt',
 							'src/**/*.php',
+							'src/blocks/post-carousel/*.json',
+							'src/blocks/posts/*.json',
+							'src/blocks/share/*.json',
+							'src/blocks/social-profiles/*.json',
 							'dist/**',
 							'includes/**',
-							'languages/coblocks.pot',
 							'!**/*.{ai,eps,psd}',
 						],
 						dest: 'build/<%= pkg.name %>',
@@ -67,37 +70,6 @@ module.exports = function( grunt ) {
 						cwd: 'build/<%= pkg.name %>/',
 						dest: '<%= pkg.name %>/',
 						src: [ '**' ],
-					},
-				],
-			},
-		},
-
-		sass: {
-			options: {
-				implementation: require( 'node-sass' ),
-				sourceMap: false,
-			},
-			getting_started: {
-				files: {
-					'dist/css/coblocks-getting-started.css': 'src/styles/getting-started.scss',
-				},
-			},
-		},
-
-		cssmin: {
-			options: {
-				processImport: false,
-				roundingPrecision: -1,
-				shorthandCompacting: false,
-			},
-			getting_started: {
-				files: [
-					{
-						expand: true,
-						cwd: 'dist/css/',
-						src: 'coblocks-getting-started.css',
-						dest: 'dist/css/',
-						ext: '.min.css',
 					},
 				],
 			},
@@ -131,17 +103,6 @@ module.exports = function( grunt ) {
 				cwd: '.wordpress-org/',
 				src: [ '**/*.{gif,jpeg,jpg,png,svg}' ],
 				dest: '.wordpress-org/',
-			},
-		},
-
-		watch: {
-			css: {
-				files: [ 'src/styles/**/*.scss' ],
-				tasks: [ 'sass', 'cssmin' ],
-			},
-			js: {
-				files: [ 'src/js/**/*.js' ],
-				tasks: [ 'uglify' ],
 			},
 		},
 
@@ -200,10 +161,7 @@ module.exports = function( grunt ) {
 				],
 			},
 			languages: {
-				src: [
-					'languages/coblocks.pot',
-					'languages/*.po',
-				],
+				src: 'languages/coblocks.pot',
 				overwrite: true,
 				replacements: [
 					{
@@ -230,9 +188,9 @@ module.exports = function( grunt ) {
 
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
-	grunt.registerTask( 'default', [ 'sass', 'cssmin', 'uglify', 'shell:cgb_start' ] );
+	grunt.registerTask( 'default', [ 'uglify', 'shell:cgb_start' ] );
 	grunt.registerTask( 'check', [ 'devUpdate' ] );
-	grunt.registerTask( 'build', [ 'shell:cgb_build', 'sass', 'cssmin', 'uglify', 'imagemin', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
+	grunt.registerTask( 'build', [ 'shell:cgb_build', 'uglify', 'imagemin', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
 	grunt.registerTask( 'update-pot', [ 'shell:translations' ] );
 	grunt.registerTask( 'version', [ 'replace' ] );
 };

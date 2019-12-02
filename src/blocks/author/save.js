@@ -22,7 +22,7 @@ const isEmpty = attributes => {
 	return hasEmptyAttributes( Object.fromEntries( newAttributes ) );
 };
 
-const save = ( { attributes } ) => {
+const save = ( { className, attributes } ) => {
 	const {
 		backgroundColor,
 		biography,
@@ -39,7 +39,7 @@ const save = ( { attributes } ) => {
 	const textClass = getColorClassName( 'color', textColor );
 	const fontSizeClass = getFontSizeClass( fontSize );
 
-	const classes = classnames( {
+	const classes = classnames( className, {
 		'has-text-color': textColor || customTextColor,
 		'has-background': backgroundColor || customBackgroundColor,
 		[ textClass ]: textClass,

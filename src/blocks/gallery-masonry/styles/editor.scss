@@ -1,21 +1,10 @@
-.editor-block-list__block[data-type="coblocks/gallery-masonry"] {
+.wp-block[data-type="coblocks/gallery-masonry"] {
 	// Fixes issue where figures are set to display 100% if alignfull is set.
 	.coblocks-gallery--figure {
 		width: auto !important;
 
 		img {
 			vertical-align: bottom;
-		}
-	}
-
-	// Fixes issue where the outline does not fully render due to the outside nature of the core outline style applied.
-	.is-appender,
-	.components-coblocks-gallery-uploader {
-		border: 1px dashed $dark-gray-150;
-		outline: none;
-
-		&:hover {
-			border-color: $dark-gray-500;
 		}
 	}
 
@@ -106,4 +95,12 @@
 	.coblocks-gallery--figure:hover {
 		cursor: default !important;
 	}
+}
+
+// Needed until GB 6.9 is merged into core or backward support.
+// Hide the placeholder when not selected.
+.editor-block-list__block[data-type="coblocks/gallery-masonry"]:not(.is-selected) {
+	div.components-form-file-upload {
+		display: none;
+	} 
 }

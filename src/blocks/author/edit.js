@@ -12,12 +12,13 @@ import Inspector from './inspector';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { Component, Fragment } from '@wordpress/element';
 import { mediaUpload } from '@wordpress/editor';
-import { RichText, InnerBlocks, MediaUpload, MediaUploadCheck, withColors, withFontSizes } from '@wordpress/block-editor';
+import { withSelect, select } from '@wordpress/data';
+import { Component, Fragment } from '@wordpress/element';
 import { Button, Dashicon, DropZone } from '@wordpress/components';
+import { RichText, InnerBlocks, MediaUpload, MediaUploadCheck, withColors, withFontSizes } from '@wordpress/block-editor';
 
 class AuthorEdit extends Component {
 	constructor() {
@@ -43,12 +44,14 @@ class AuthorEdit extends Component {
 	render() {
 		const {
 			attributes,
-			className,
-			isSelected,
-			setAttributes,
 			backgroundColor,
-			textColor,
+			className,
+			clientId,
 			fontSize,
+			isSelected,
+			selectedParentClientId,
+			setAttributes,
+			textColor,
 		} = this.props;
 
 		const {
@@ -57,10 +60,13 @@ class AuthorEdit extends Component {
 			name,
 		} = attributes;
 
+		const hasImage = !! imgUrl;
+
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.addImage }
-				label={ _x( 'Drop to upload as avatar', 'image to represent the post author', 'coblocks' ) }
+				/* translators: image to represent the post author */
+				label={ __( 'Drop to upload as avatar', 'coblocks' ) }
 			/>
 		);
 
@@ -95,58 +101,61 @@ class AuthorEdit extends Component {
 				) }
 				<div className={ classes } style={ styles }>
 					{ dropZone }
-					<figure className={ `${ className }__avatar` }>
-						<MediaUploadCheck>
-							<MediaUpload
-								onSelect={ onUploadImage }
-								allowedTypes={ [ 'image' ] }
-								value={ imgUrl }
-								render={ ( { open } ) => (
-									<Button onClick={ open }>
-										{ ! imgUrl ?
-											<Dashicon icon="format-image" /> :
-											<img className={ `${ className }__avatar-img` }
-												src={ imgUrl }
-												alt="avatar"
-											/>
-										}
-									</Button>
-								) }
-							>
-							</MediaUpload>
-						</MediaUploadCheck>
-					</figure>
+					{ ( !! isSelected || clientId === selectedParentClientId || hasImage ) ?
+						<figure className="wp-block-coblocks-author__avatar">
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={ onUploadImage }
+									allowedTypes={ [ 'image' ] }
+									value={ imgUrl }
+									render={ ( { open } ) => (
+										<Button onClick={ open }>
+											{ ! imgUrl ?
+												<Dashicon icon="format-image" /> :
+												<img className="wp-block-coblocks-author__avatar-img"
+													src={ imgUrl }
+													alt="avatar"
+												/>
+											}
+										</Button>
+									) }
+								>
+								</MediaUpload>
+							</MediaUploadCheck>
+						</figure> : null }
 					<div className={ `${ className }__content` }>
 						<RichText
 							identifier="name"
 							multiline={ false }
 							tagName="span"
-							className={ `${ className }__name` }
+							className="wp-block-coblocks-author__name"
 							placeholder={
-								// translators: placeholder text used for the author name
+								/* translators: placeholder text used for the author name */
 								__( 'Write author name…', 'coblocks' )
 							}
 							value={ name }
 							onChange={ ( nextName ) => {
 								setAttributes( { name: nextName } );
 							} }
+							keepPlaceholderOnFocus={ true }
 						/>
 						<RichText
 							identifier="biography"
 							multiline={ false }
 							tagName="p"
-							className={ `${ className }__biography` }
+							className="wp-block-coblocks-author__biography"
 							placeholder={
-								// translators: placeholder text used for the biography
+								/* translators: placeholder text used for the biography */
 								__( 'Write a biography that distills objective credibility and authority to your readers…', 'coblocks' )
 							}
 							value={ biography }
 							onChange={ ( nextBio ) => {
 								setAttributes( { biography: nextBio } );
 							} }
+							keepPlaceholderOnFocus={ true }
 						/>
 						<InnerBlocks
-							template={ [ [ 'core/button', { placeholder: _x( 'Author link…', 'content placeholder', 'coblocks' ) } ] ] }
+							template={ [ [ 'core/button', { placeholder: /* translators: content placeholder */ __( 'Author link…', 'coblocks' ) } ] ] }
 							templateLock="all"
 							allowedBlocks={ [ 'core/button' ] }
 							templateInsertUpdatesSelection={ false }
@@ -158,7 +167,19 @@ class AuthorEdit extends Component {
 	}
 }
 
+const applyWithSelect = withSelect( () => {
+	const selectedClientId = select( 'core/block-editor' ).getBlockSelectionStart();
+	const parentClientId = select( 'core/block-editor' ).getBlockRootClientId(
+		selectedClientId
+	);
+
+	return {
+		selectedParentClientId: parentClientId,
+	};
+} );
+
 export default compose( [
 	withColors( 'backgroundColor', { textColor: 'color' } ),
 	withFontSizes( 'fontSize' ),
+	applyWithSelect,
 ] )( AuthorEdit );

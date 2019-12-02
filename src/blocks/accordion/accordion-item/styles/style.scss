@@ -11,7 +11,7 @@
 	}
 
 	&__title {
-		background: $accordion-background;
+		background: hsla(240, 5%, 57%, 0.1);
 		border-radius: $accordion-border-radius;
 		padding: 10px 15px;
 		position: relative;
@@ -42,9 +42,9 @@
 	}
 
 	&__content {
-		border: 1px solid $accordion-background;
+		border: 1px solid hsla(240, 5%, 57%, 0.1);
+		border-top: 0;
 		border-radius: 0 0 $accordion-border-radius $accordion-border-radius;
-		margin-top: -1px;
 		padding: 15px 20px;
 
 		> div {
