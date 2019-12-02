@@ -10,7 +10,7 @@
 	&__figure {
 		display: flex;
 		margin: 0 0 1.5em;
-		padding-top: calc(3 / 4 * 100%);
+		padding: calc(3 / 4 * 100%) 0 0;
 		position: relative;
 		width: 100%;
 

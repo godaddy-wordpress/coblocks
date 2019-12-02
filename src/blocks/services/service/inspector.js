@@ -15,35 +15,35 @@ const Inspector = props => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Service Settings' ) }>
+			<PanelBody title={ __( 'Service Settings', 'coblocks' ) }>
 				<ToggleControl
-					label={ __( 'Action Button' ) }
+					label={ __( 'Action Button', 'coblocks' ) }
 					help={
 						attributes.showCta ?
-							__( 'Showing the call to action button.' ) :
-							__( 'Toggle to show a call to action button.' )
+							__( 'Showing the call to action button.', 'coblocks' ) :
+							__( 'Toggle to show a call to action button.', 'coblocks' )
 					}
 					checked={ attributes.showCta }
 					onChange={ onToggleCta }
 				/>
 			</PanelBody>
 			{ attributes.imageUrl &&
-				<PanelBody title={ __( 'Image Settings' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Image Settings', 'coblocks' ) } initialOpen={ false }>
 					<TextareaControl
-						label={ __( 'Alt Text (Alternative Text)' ) }
+						label={ __( 'Alt Text (Alternative Text)', 'coblocks' ) }
 						value={ attributes.imageAlt }
 						onChange={ ( value ) => setAttributes( { imageAlt: value } ) }
 						help={
 							<Fragment>
 								<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
-									{ __( 'Describe the purpose of the image' ) }
+									{ __( 'Describe the purpose of the image', 'coblocks' ) }
 								</ExternalLink>
-								{ __( 'Leave empty if the image is purely decorative.' ) }
+								{ __( 'Leave empty if the image is purely decorative.', 'coblocks' ) }
 							</Fragment>
 						}
 					/>
 					<FocalPointPicker
-						label={ __( 'Focal Point' ) }
+						label={ __( 'Focal Point', 'coblocks' ) }
 						url={ attributes.imageUrl }
 						value={ attributes.focalPoint }
 						onChange={ ( value ) => setAttributes( { focalPoint: value } ) }

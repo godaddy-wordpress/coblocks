@@ -37,23 +37,19 @@ class CoBlocks_Accordion_IE_Support_Tests extends WP_UnitTestCase {
 		$new_reflection::register();
 
 		$expected = [
-			'version' => '1.15.0',
-			'slug'    => 'coblocks',
-			'url'     => str_replace( '/.dev/tests/phpunit', '', untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) ) ), // Fix inconsistencies path between plugin and unit tests
+			'slug' => 'coblocks',
+			'url'  => str_replace( '/.dev/tests/phpunit', '', untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) ) ), // Fix inconsistencies path between plugin and unit tests
 		];
 
-		$version = $reflection->getProperty( '_version' );
-		$slug    = $reflection->getProperty( '_slug' );
-		$url     = $reflection->getProperty( '_url' );
+		$slug = $reflection->getProperty( 'slug' );
+		$url  = $reflection->getProperty( 'url' );
 
-		$version->setAccessible( true );
 		$slug->setAccessible( true );
 		$url->setAccessible( true );
 
 		$check = [
-			'version' => $version->getValue( $new_reflection ),
-			'slug'    => $slug->getValue( $new_reflection ),
-			'url'     => $url->getValue( $new_reflection ),
+			'slug' => $slug->getValue( $new_reflection ),
+			'url'  => $url->getValue( $new_reflection ),
 		];
 
 		$this->assertEquals( $expected, $check );
@@ -95,7 +91,7 @@ class CoBlocks_Accordion_IE_Support_Tests extends WP_UnitTestCase {
 		$post_id = wp_insert_post(
 			[
 				'post_author'  => 1,
-				'post_content' => '<!-- wp:coblocks/accordion --><div class="wp-block-coblocks-accordion"><!-- wp:coblocks/accordion-item {"title":"Accordion Title 1"} --><div class="wp-block-coblocks-accordion-item"><details><summary class="wp-block-coblocks-accordion-item__title">Accordion Title 1</summary><div class="wp-block-coblocks-accordion-item__content"><!-- wp:paragraph {"placeholder":"Add content..."} --><p>Accordion Content 1</p><!-- /wp:paragraph --></div></details></div><!-- /wp:coblocks/accordion-item --></div><!-- /wp:coblocks/accordion -->',
+				'post_content' => '<!-- wp:coblocks/accordion --><div class="wp-block-coblocks-accordion"><!-- wp:coblocks/accordion-item {"title":"Accordion Title 1"} --><div class="wp-block-coblocks-accordion-item"><details><summary class="wp-block-coblocks-accordion-item__title">Accordion Title 1</summary><div class="wp-block-coblocks-accordion-item__content"><!-- wp:paragraph {"placeholder":"Add content…"} --><p>Accordion Content 1</p><!-- /wp:paragraph --></div></details></div><!-- /wp:coblocks/accordion-item --></div><!-- /wp:coblocks/accordion -->',
 				'post_title'   => 'CoBlocks Accordion',
 				'post_status'  => 'publish',
 			]

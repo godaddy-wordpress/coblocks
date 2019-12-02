@@ -25,12 +25,12 @@ class Controls extends Component {
 
 		const toolbarControls = [ {
 			icon: icons.mediaCardRight,
-			title: __( 'Media on right' ),
+			title: __( 'Media on right', 'coblocks' ),
 			isActive: mediaPosition === 'right',
 			onClick: () => setAttributes( { mediaPosition: 'right' } ),
 		}, {
 			icon: icons.mediaCardLeft,
-			title: __( 'Media on left' ),
+			title: __( 'Media on left', 'coblocks' ),
 			isActive: mediaPosition === 'left',
 			onClick: () => setAttributes( { mediaPosition: 'left' } ),
 		} ];

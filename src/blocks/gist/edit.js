@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import Controls from './controls';
 import Inspector from './inspector';
-import icons from './../../utils/icons';
+import icon from './icon';
 import Gist from './gist';
 
 /**
@@ -17,7 +17,7 @@ import Gist from './gist';
 import { __ } from '@wordpress/i18n';
 import { compose, withState } from '@wordpress/compose';
 import { Component, Fragment } from '@wordpress/element';
-import { PlainText, RichText } from '@wordpress/block-editor';
+import { PlainText, RichText, BlockIcon } from '@wordpress/block-editor';
 import { withNotices } from '@wordpress/components';
 
 /**
@@ -100,7 +100,7 @@ class Edit extends Component {
 							{ ( ! RichText.isEmpty( caption ) || isSelected ) && (
 								<RichText
 									tagName="figcaption"
-									placeholder={ __( 'Write caption…' ) }
+									placeholder={ __( 'Write caption…', 'coblocks' ) }
 									value={ caption }
 									onChange={ value => setAttributes( { caption: value } ) }
 									keepPlaceholderOnFocus
@@ -120,13 +120,13 @@ class Edit extends Component {
 						>
 
 							<label>
-								{ icons.github }
-								{ __( 'Gist URL' ) }
+								<BlockIcon icon={ icon } />
+								{ __( 'Gist URL', 'coblocks' ) }
 							</label>
 							<PlainText
 								className="input-control"
 								value={ url }
-								placeholder={ __( 'Add GitHub Gist URL...' ) }
+								placeholder={ __( 'Add GitHub Gist URL…', 'coblocks' ) }
 								onChange={ this.updateURL }
 							/>
 						</div>

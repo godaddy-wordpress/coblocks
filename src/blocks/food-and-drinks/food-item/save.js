@@ -63,7 +63,7 @@ export default function save( { attributes } ) {
 						!! attributes.vegan ) && (
 						<div className="wp-block-coblocks-food-item__attributes">
 							{ !! attributes.popular && (
-								<span className="hint--top" aria-label={ __( 'Popular' ) }>
+								<span className="hint--top" aria-label={ __( 'Popular', 'coblocks' ) }>
 									<Icon
 										icon={ icons.popular }
 										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--popular"
@@ -71,7 +71,7 @@ export default function save( { attributes } ) {
 								</span>
 							) }
 							{ !! attributes.spicy && (
-								<span className="hint--top" aria-label={ __( 'Spicy' ) }>
+								<span className="hint--top" aria-label={ __( 'Spicy', 'coblocks' ) }>
 									<Icon
 										icon={ icons.spicy }
 										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicy"
@@ -79,7 +79,7 @@ export default function save( { attributes } ) {
 								</span>
 							) }
 							{ !! attributes.spicier && !! attributes.spicy && (
-								<span className="hint--top" aria-label={ __( 'Spicier' ) }>
+								<span className="hint--top" aria-label={ __( 'Spicier', 'coblocks' ) }>
 									<Icon
 										icon={ icons.spicy }
 										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicier"
@@ -87,7 +87,7 @@ export default function save( { attributes } ) {
 								</span>
 							) }
 							{ !! attributes.vegetarian && (
-								<span className="hint--top" aria-label={ __( 'Vegetarian' ) }>
+								<span className="hint--top" aria-label={ __( 'Vegetarian', 'coblocks' ) }>
 									<Icon
 										icon={ icons.vegetarian }
 										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--veg"
@@ -95,7 +95,7 @@ export default function save( { attributes } ) {
 								</span>
 							) }
 							{ !! attributes.glutenFree && (
-								<span className="hint--top" aria-label={ __( 'Gluten Free' ) }>
+								<span className="hint--top" aria-label={ __( 'Gluten Free', 'coblocks' ) }>
 									<Icon
 										icon={ icons.glutenFree }
 										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--gf"
@@ -103,7 +103,7 @@ export default function save( { attributes } ) {
 								</span>
 							) }
 							{ !! attributes.pescatarian && (
-								<span className="hint--top" aria-label={ __( 'Pescatarian' ) }>
+								<span className="hint--top" aria-label={ __( 'Pescatarian', 'coblocks' ) }>
 									<Icon
 										icon={ icons.pescatarian }
 										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--pescatarian"
@@ -111,7 +111,7 @@ export default function save( { attributes } ) {
 								</span>
 							) }
 							{ !! attributes.vegan && (
-								<span className="hint--top" aria-label={ __( 'Vegan' ) }>
+								<span className="hint--top" aria-label={ __( 'Vegan', 'coblocks' ) }>
 									<Icon
 										icon={ icons.vegan }
 										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegan"

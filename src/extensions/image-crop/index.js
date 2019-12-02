@@ -1,3 +1,5 @@
+/* global coblocksBlockData */
+
 /**
  * Styles
  */
@@ -113,6 +115,7 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 			jQuery.post( global.ajaxurl, {
 				action: 'coblocks_crop_settings',
+				nonce: coblocksBlockData.cropSettingsNonce,
 				id: currentAttributes.id,
 				cropX: currentAttributes.cropX,
 				cropY: currentAttributes.cropY,
@@ -166,7 +169,7 @@ const positioningControl = createHigherOrderComponent( ( BlockEdit ) => {
 			<Fragment>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody title={ __( 'Crop Settings' ) } initialOpen={ false }>
+					<PanelBody title={ __( 'Crop Settings', 'coblocks' ) } initialOpen={ false }>
 						<CropControl
 							attachmentId={ currentAttributes.id }
 							offsetX={ cropX }

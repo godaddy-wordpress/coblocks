@@ -57,7 +57,7 @@
 			"selector": "div > div > a",
 			"attribute": "rel"
 		},
-		"linkTarge": {
+		"linkTarget": {
 			"type": "string",
 			"source": "attribute",
 			"selector": "div > div > a",

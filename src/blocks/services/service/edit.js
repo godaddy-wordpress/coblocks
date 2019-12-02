@@ -11,7 +11,7 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 import {
 	InnerBlocks,
@@ -153,7 +153,7 @@ class Edit extends Component {
 		const dropZone = (
 			<DropZone
 				onFilesDrop={ this.replaceImage }
-				label={ __( 'Drop image to replace' ) }
+				label={ __( 'Drop image to replace', 'coblocks' ) }
 			/>
 		);
 
@@ -166,7 +166,7 @@ class Edit extends Component {
 								icon="no-alt"
 								onClick={ () => setAttributes( { imageUrl: '' } ) }
 								className="coblocks-gallery-item__button"
-								label={ __( 'Remove Image' ) }
+								label={ __( 'Remove Image', 'coblocks' ) }
 								disabled={ ! isSelected }
 							/>
 						</div>
@@ -183,6 +183,7 @@ class Edit extends Component {
 		const { setAttributes } = this.props;
 		return (
 			<MediaPlaceholder
+				className="wp-block-coblocks-service__figure"
 				allowedTypes={ [ 'image' ] }
 				multiple={ false }
 				icon="format-image"
@@ -201,13 +202,16 @@ class Edit extends Component {
 			[
 				'core/heading',
 				{
-					placeholder: _x( 'Write title...', 'content placeholder' ),
+					placeholder: /* translators: placeholder text for input box */ __( 'Write title…', 'coblocks' ),
 					level: attributes.headingLevel,
 				},
 			],
 			[
 				'core/paragraph',
-				{ placeholder: _x( 'Write description...', 'content placeholder' ) },
+				{
+					/* translators: content placeholder */
+					placeholder: __( 'Write description…', 'coblocks' ),
+				},
 			],
 		];
 

@@ -21,14 +21,11 @@ import './extensions/list-styles';
 import './extensions/button-styles';
 import './extensions/button-controls';
 import './extensions/image-styles';
+import './extensions/cover-styles';
 import './extensions/image-crop';
 
 // Formats
 import './formats';
-
-// Sidebars
-import './sidebars/block-manager';
-import './sidebars/block-manager/deprecated';
 
 // Block Gallery
 import './components/block-gallery';
@@ -55,6 +52,10 @@ import * as fieldName from './blocks/form/fields/name';
 import * as fieldRadio from './blocks/form/fields/radio';
 import * as fieldTelephone from './blocks/form/fields/phone';
 import * as fieldTextarea from './blocks/form/fields/textarea';
+import * as fieldSelect from './blocks/form/fields/select';
+import * as fieldCheckbox from './blocks/form/fields/checkbox';
+import * as fieldWebsite from './blocks/form/fields/website';
+import * as fieldHidden from './blocks/form/fields/hidden';
 import * as gif from './blocks/gif';
 import * as gist from './blocks/gist';
 import * as hero from './blocks/hero';
@@ -118,6 +119,10 @@ export const registerCoBlocksBlocks = () => {
 		fieldRadio,
 		fieldTelephone,
 		fieldTextarea,
+		fieldSelect,
+		fieldCheckbox,
+		fieldWebsite,
+		fieldHidden,
 		foodAndDrinks,
 		foodItem,
 		form,

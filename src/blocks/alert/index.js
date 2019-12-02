@@ -17,7 +17,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -25,15 +25,40 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Alert', 'block name' ),
-	description: __( 'Provide contextual feedback messages or notices.' ),
+	/* translators: block name */
+	title: __( 'Alert', 'coblocks' ),
+	/* translators: block description */
+	description: __( 'Provide contextual feedback messages or notices.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'notice', 'block keyword' ), _x( 'message', 'block keyword' ), 'coblocks' ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'notice', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'message', 'coblocks' ),
+	],
 	styles: [
-		{ name: 'info', label: _x( 'Info', 'block style' ), isDefault: true },
-		{ name: 'success', label: _x( 'Success', 'block style' ) },
-		{ name: 'warning', label: _x( 'Warning', 'block style' ) },
-		{ name: 'error', label: _x( 'Error', 'block style' ) },
+		{
+			name: 'info',
+			/* translators: block style */
+			label: __( 'Info', 'coblocks' ),
+			isDefault: true,
+		},
+		{
+			name: 'success',
+			/* translators: block style */
+			label: __( 'Success', 'coblocks' ),
+		},
+		{
+			name: 'warning',
+			/* translators: block style */
+			label: __( 'Warning', 'coblocks' ),
+		},
+		{
+			name: 'error',
+			/* translators: block style */
+			label: __( 'Error', 'coblocks' ),
+		},
 	],
 	supports: {
 		align: true,
@@ -42,8 +67,8 @@ const settings = {
 	},
 	example: {
 		attributes: {
-			title: __( 'This is an alert block' ),
-			value: __( 'An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action.' ),
+			title: __( 'This is an alert block', 'coblocks' ),
+			value: __( 'An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action.', 'coblocks' ),
 		},
 	},
 	attributes,

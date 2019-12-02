@@ -46,18 +46,18 @@ class Inspector extends Component {
 			<Fragment>
 				<InspectorControls>
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'coblocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'coblocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', 'coblocks' ),
 							},
 						] }
 					>

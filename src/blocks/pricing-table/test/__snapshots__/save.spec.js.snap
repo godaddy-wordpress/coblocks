@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/pricing-table should render 1`] = `
+"<!-- wp:coblocks/pricing-table -->
+<div class=\\"wp-block-coblocks-pricing-table has-2-columns has-text-align-center\\"><div class=\\"wp-block-coblocks-pricing-table__inner\\"></div></div>
+<!-- /wp:coblocks/pricing-table -->"
+`;

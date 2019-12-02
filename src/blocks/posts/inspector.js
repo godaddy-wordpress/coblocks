@@ -6,12 +6,13 @@ import classnames from 'classnames';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 import {
 	PanelBody,
+	PanelRow,
 	ToggleControl,
 	RangeControl,
 	QueryControls,
@@ -48,58 +49,77 @@ const Inspector = props => {
 		imageSize,
 	} = attributes;
 
-	const isStackedStyle = ( 'stacked' === activeStyle.name );
 	const isHorizontalStyle = ( 'horizontal' === activeStyle.name );
 
 	const sizeOptions = [
 		{
 			value: 'w-1/7 h-1/7',
-			label: _x( 'Small', 'label for small size option' ),
-			shortName: _x( 'S', 'abbreviation for "Small" size' ),
+			label: /* translators: label for small size option */ __( 'Small', 'coblocks' ),
+			shortName: /* translators: abbreviation for small size */ __( 'S', 'coblocks' ),
 		},
 		{
 			value: 'w-1/7 sm:w-1/5 h-1/7 sm:h-1/5',
-			label: _x( 'Medium', 'label for medium size option' ),
-			shortName: _x( 'M', 'abbreviation for "Medium" size' ),
+			label: /* translators: label for medium size option */ __( 'Medium', 'coblocks' ),
+			shortName: /* translators: abbreviation for medium size */ __( 'M', 'coblocks' ),
 		},
 		{
 			value: 'w-1/7 sm:w-1/3 h-1/7 sm:h-1/3',
-			label: _x( 'Large', 'label for large size option' ),
-			shortName: _x( 'L', 'abbreviation for "Large" size' ),
+			label: /* translators: label for large size option */ __( 'Large', 'coblocks' ),
+			shortName: /* translators: abbreviation for large size */ __( 'L', 'coblocks' ),
 		},
 		{
 			value: 'w-1/7 sm:w-1/3 md:w-1/2 h-1/7 sm:h-1/3 md:h-1/2',
-			label: _x( 'Extra Large', 'label for large size option' ),
-			shortName: _x( 'XL', 'abbreviation for "Large" size' ),
+			label: /* translators: label for extra large size option */ __( 'Extra Large', 'coblocks' ),
+			shortName: /* translators: abbreviation for extra large size */ __( 'XL', 'coblocks' ),
 		},
 	];
 
+	const columnsCountOnChange = ( selectedColumns ) => {
+		const { postsToShow } = attributes;
+		setAttributes( { columns:
+			( selectedColumns > postsToShow ) ? postsToShow : selectedColumns,
+		} );
+	};
+
+	const postsCountOnChange = ( selectedPosts ) => {
+		const { columns } = attributes;
+		const changedAttributes = { postsToShow: selectedPosts };
+		if ( columns > selectedPosts || ( selectedPosts === 1 && columns !== 1 ) ) {
+			Object.assign( changedAttributes, { columns: selectedPosts } );
+		}
+		setAttributes( changedAttributes );
+	};
+
+	if ( isHorizontalStyle && columns > 2 ) {
+		columnsCountOnChange( 2 );
+	}
+
 	const settings = (
-		<PanelBody title={ __( 'Posts Settings' ) }>
+		<PanelBody title={ __( 'Posts Settings', 'coblocks' ) }>
 			<Fragment>
 				<ToggleControl
-					label={ __( 'Post Date' ) }
+					label={ __( 'Post Date', 'coblocks' ) }
 					checked={ displayPostDate }
 					help={
 						displayPostDate ?
-							__( 'Showing the publish date.' ) :
-							__( 'Toggle to show the publish date.' )
+							__( 'Showing the publish date.', 'coblocks' ) :
+							__( 'Toggle to show the publish date.', 'coblocks' )
 					}
 					onChange={ () => setAttributes( { displayPostDate: ! displayPostDate } ) }
 				/>
 				<ToggleControl
-					label={ __( 'Post Content' ) }
+					label={ __( 'Post Content', 'coblocks' ) }
 					checked={ displayPostContent }
 					help={
 						displayPostContent ?
-							__( 'Showing the post content.' ) :
-							__( 'Toggle to show the post content.' )
+							__( 'Showing the post content.', 'coblocks' ) :
+							__( 'Toggle to show the post content.', 'coblocks' )
 					}
 					onChange={ () => setAttributes( { displayPostContent: ! displayPostContent } ) }
 				/>
 				{ displayPostContent &&
 					<RangeControl
-						label={ __( 'Max words in content' ) }
+						label={ __( 'Max words in content', 'coblocks' ) }
 						value={ excerptLength }
 						onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
 						min={ 5 }
@@ -107,18 +127,18 @@ const Inspector = props => {
 					/>
 				}
 				<RangeControl
-					label={ __( 'Columns' ) }
+					label={ __( 'Columns', 'coblocks' ) }
 					value={ columns }
 					onChange={ ( value ) => {
 						onUserModifiedColumn();
-						setAttributes( { columns: value } );
+						columnsCountOnChange( value );
 					} }
-					min={ isStackedStyle ? 2 : 1 }
-					max={ isHorizontalStyle ? 2 : Math.min( 4, postCount ) }
+					min={ 1 }
+					max={ isHorizontalStyle ? Math.min( 2, postCount ) : Math.min( 4, postCount ) }
 					required
 				/>
 				{ isHorizontalStyle && hasFeaturedImage &&
-					<BaseControl label={ __( 'Thumbnail Size' ) }
+					<BaseControl label={ __( 'Thumbnail Size', 'coblocks' ) }
 						className={ classnames(
 							'components-coblocks-posts-thumbnail-size',
 							{
@@ -126,22 +146,24 @@ const Inspector = props => {
 							}
 						) }
 					>
-						<ButtonGroup aria-label={ __( 'Thumbnail Size' ) }>
-							{ sizeOptions.map( ( option ) => {
-								const isCurrent = imageSize === option.value;
-								return (
-									<Button
-										key={ `option-${ option.value }` }
-										isLarge
-										isPrimary={ isCurrent }
-										aria-pressed={ isCurrent }
-										onClick={ () => setAttributes( { imageSize: option.value } ) }
-									>
-										{ option.shortName }
-									</Button>
-								);
-							} ) }
-						</ButtonGroup>
+						<PanelRow>
+							<ButtonGroup aria-label={ __( 'Thumbnail Size', 'coblocks' ) }>
+								{ sizeOptions.map( ( option ) => {
+									const isCurrent = imageSize === option.value;
+									return (
+										<Button
+											key={ `option-${ option.value }` }
+											isLarge
+											isPrimary={ isCurrent }
+											aria-pressed={ isCurrent }
+											onClick={ () => setAttributes( { imageSize: option.value } ) }
+										>
+											{ option.shortName }
+										</Button>
+									);
+								} ) }
+							</ButtonGroup>
+						</PanelRow>
 					</BaseControl>
 				}
 			</Fragment>
@@ -149,12 +171,12 @@ const Inspector = props => {
 	);
 
 	const feedSettings = (
-		<PanelBody title={ __( 'Feed Settings' ) } initialOpen={ ! hasPosts ? true : false }>
+		<PanelBody title={ __( 'Feed Settings', 'coblocks' ) } initialOpen={ ! hasPosts ? true : false }>
 			<RadioControl
 				selected={ postFeedType }
 				options={ [
-					{ label: __( 'My Blog' ), value: 'internal' },
-					{ label: __( 'External Feed' ), value: 'external' },
+					{ label: __( 'My Blog', 'coblocks' ), value: 'internal' },
+					{ label: __( 'External Feed', 'coblocks' ), value: 'external' },
 				] }
 				onChange={ ( value ) => setAttributes( { postFeedType: value } ) }
 			/>
@@ -171,9 +193,9 @@ const Inspector = props => {
 						/>
 					}
 					<RangeControl
-						label={ __( 'Number of posts' ) }
+						label={ __( 'Number of posts', 'coblocks' ) }
 						value={ postsToShow }
-						onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+						onChange={ ( value ) => postsCountOnChange( value ) }
 						min={ 1 }
 						max={ 20 }
 					/>
@@ -184,7 +206,7 @@ const Inspector = props => {
 	return (
 		<InspectorControls>
 			{ hasPosts ?
-				<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 					<div className="editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
 						{ styleOptions.map( style => (
 							<div

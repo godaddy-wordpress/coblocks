@@ -16,7 +16,7 @@ import icons from './icons';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Component, createRef } from '@wordpress/element';
 import { TextControl,
 	RangeControl,
@@ -269,15 +269,16 @@ class CropSettings extends Component {
 				<div ref={ this.imageContainer } className={ mainClass } onMouseDown={ this.mouseDownListener }
 					style={ containerStyle }>
 					<div>
-						<img ref={ this.imageReference } src={ imageUrl } style={ style } alt={ __( 'Crop settings image placeholder' ) } onLoad={ this.handleImageLoaded } />
+						<img ref={ this.imageReference } src={ imageUrl } style={ style } alt={ __( 'Crop settings image placeholder', 'coblocks' ) } onLoad={ this.handleImageLoaded } />
 					</div>
 					<div ref={ this.selectedAreaReference }>
-						<img src={ imageUrl } style={ style } alt={ __( 'Crop settings image placeholder' ) } />
+						<img src={ imageUrl } style={ style } alt={ __( 'Crop settings image placeholder', 'coblocks' ) } />
 					</div>
 				</div>
 				<div className={ offsetClass }>
 					<TextControl
-						label={ _x( 'Horizontal Pos.', 'label for horizontal positioning input' ) }
+						/* translators: label for horizontal positioning input */
+						label={ __( 'Horizontal Pos.', 'coblocks' ) }
 						value={ self.state.x }
 						type={ 'number' }
 						min={ 0 }
@@ -285,7 +286,8 @@ class CropSettings extends Component {
 						onChange={ ( val ) => this.updateState( val, self.state.y, self.state.w, self.state.h, self.state.r ) }
 					/>
 					<TextControl
-						label={ _x( 'Vertical Pos.', 'label for vertical positioning input' ) }
+						/* translators: label for vertical positioning input */
+						label={ __( 'Vertical Pos.', 'coblocks' ) }
 						value={ self.state.y }
 						type={ 'number' }
 						min={ 0 }
@@ -294,26 +296,27 @@ class CropSettings extends Component {
 					/>
 				</div>
 				<RangeControl
-					label={ _x( 'Image Zoom', 'label for the control that allows zooming in on the image' ) }
+					/* translators: label for the control that allows zooming in on the image */
+					label={ __( 'Image Zoom', 'coblocks' ) }
 					className="components-coblocks-zoom-control"
 					value={ this.getCurrentScale() }
 					onChange={ ( val ) => this.setNewZoom( val, self.state.r ) }
 					min={ 100 }
 					max={ 1000 }
 				/>
-				<p>{ __( 'Image Orientation' ) }</p>
+				<p>{ __( 'Image Orientation', 'coblocks' ) }</p>
 				<div className="components-coblocks-rotate-control">
 					<ButtonGroup >
 						<IconButton
 							isLarge
 							icon={ icons.rotateLeft }
-							label={ __( 'Rotate counter-clockwise' ) }
+							label={ __( 'Rotate counter-clockwise', 'coblocks' ) }
 							onClick={ () => this.applyRotation( self.state.r - 90 ) }
 						/>
 						<IconButton
 							isLarge
 							icon={ icons.rotateRight }
-							label={ __( 'Rotate clockwise' ) }
+							label={ __( 'Rotate clockwise', 'coblocks' ) }
 							onClick={ () => this.applyRotation( self.state.r + 90 ) }
 						/>
 					</ButtonGroup>
@@ -322,9 +325,9 @@ class CropSettings extends Component {
 						onClick={ () => this.resetControl() }
 						isSmall
 						isDefault
-						aria-label={ __( 'Reset image cropping options' ) }
+						aria-label={ __( 'Reset image cropping options', 'coblocks' ) }
 					>
-						{ __( 'Reset All' ) }
+						{ __( 'Reset All', 'coblocks' ) }
 					</Button>
 				</div>
 			</div>

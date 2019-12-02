@@ -24,11 +24,11 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Accordion Settings' ) }>
+					<PanelBody title={ __( 'Accordion Settings', 'coblocks' ) }>
 						<ToggleControl
-							label={ __( 'Internet Explorer Support' ) }
+							label={ __( 'Internet Explorer Support', 'coblocks' ) }
 							checked={ !! polyfill }
-							help={ ! polyfill ? __( 'Add support for Internet Explorer by loading a JavaScript polyfill.' ) : __( 'Supporting Internet Explorer by loading a JavaScript polyfill on this page.' ) }
+							help={ ! polyfill ? __( 'Add support for Internet Explorer by loading a JavaScript polyfill.', 'coblocks' ) : __( 'Supporting Internet Explorer by loading a JavaScript polyfill on this page.', 'coblocks' ) }
 							onChange={ () => {
 								setAttributes( { polyfill: ! polyfill } );
 								// Save values to metadata.

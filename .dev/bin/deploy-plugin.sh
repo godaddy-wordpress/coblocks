@@ -8,7 +8,7 @@ rm -rf $HOME/coblocks/trunk/*
 cp -a build/coblocks/* $HOME/coblocks/trunk/
 
 # Create the tag on the SVN repo and copy over plugin files
-svn cp trunk tags/${CIRCLE_TAG}
+svn cp $HOME/coblocks/trunk $HOME/coblocks/tags/${CIRCLE_TAG}
 svn commit -m "Tagging version ${CIRCLE_TAG}"
 
 # Copy the WordPress.org assets over

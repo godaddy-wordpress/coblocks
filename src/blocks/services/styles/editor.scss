@@ -35,6 +35,12 @@ $gutter: 0.3em;
 		width: 100%;
 	}
 
+	.block-editor-media-placeholder {
+		padding-bottom: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
 	.block-editor-block-list__layout {
 		@include break-small() {
 			display: flex;

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/gist should render 1`] = `
+"<!-- wp:coblocks/gist {\\"url\\":\\"https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7\\"} -->
+<div class=\\"wp-block-coblocks-gist\\"><script src=\\"https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7.js\\"></script><noscript><a href=\\"https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7\\">View this gist on GitHub</a></noscript></div>
+<!-- /wp:coblocks/gist -->"
+`;

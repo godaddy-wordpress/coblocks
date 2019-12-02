@@ -66,8 +66,8 @@ class Edit extends Component {
 							isAppender={ hasImages }
 							icon={ <BlockIcon icon={ icon } /> }
 							labels={ {
-								title: __( 'Logos & Badges' ),
-								instructions: __( 'Drag images, upload new ones or select files from your library.' ),
+								title: __( 'Logos & Badges', 'coblocks' ),
+								instructions: __( 'Drag images, upload new ones or select files from your library.', 'coblocks' ),
 							} }
 							multiple
 							accept="image/*"

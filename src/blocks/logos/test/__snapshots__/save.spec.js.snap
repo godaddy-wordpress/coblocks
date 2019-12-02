@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/logos should render 1`] = `
+"<!-- wp:coblocks/logos -->
+<div class=\\"wp-block-coblocks-logos\\"><div class=\\"wp-block-coblocks-logos__row\\"><div style=\\"width:100%\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" data-width=\\"100%\\"/></div></div></div>
+<!-- /wp:coblocks/logos -->"
+`;
