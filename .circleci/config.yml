@@ -16,6 +16,10 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - i18n:
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
             - php56-build
@@ -123,6 +127,36 @@ jobs:
           destination: jest-coverage
       - store_test_results:
           path: /tmp/artifacts/code-coverage/
+
+  i18n:
+    docker:
+      - image: circleci/node:latest-browsers-legacy
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - run:
+          name: Install PHP
+          command: sudo apt-get install php libapache2-mod-php php-mbstring
+      - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
+      - run:
+          name: Install node packages
+          command: npm install
+      - run:
+          name: Build the plugin
+          command: |
+            mkdir -p /tmp/artifacts
+            npm run babel:build
+      - run:
+          name: Update coblocks.pot/coblocks.json and deploy them back to Github
+          command: |
+            git add languages/coblocks.json
+            git add languages/coblocks.pot
+            git commit -m "Update coblocks.pot/coblocks.json files"
+            git push origin master
 
   deploy:
     docker:
