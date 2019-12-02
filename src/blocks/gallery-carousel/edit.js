@@ -43,8 +43,6 @@ class GalleryCarouselEdit extends Component {
 	componentDidMount() {
 		// This block does not support the following attributes.
 		this.props.setAttributes( {
-			lightbox: undefined,
-			lightboxStyle: undefined,
 			shadow: undefined,
 		} );
 	}
@@ -159,6 +157,7 @@ class GalleryCarouselEdit extends Component {
 			alignCells,
 			thumbnails,
 			responsiveHeight,
+			lightbox,
 		} = attributes;
 
 		const hasImages = !! images.length;
@@ -172,6 +171,7 @@ class GalleryCarouselEdit extends Component {
 				'has-no-arrows': ! prevNextButtons,
 				'is-selected': isSelected,
 				'has-no-thumbnails': ! thumbnails,
+				'has-lightbox': lightbox,
 			}
 		);
 
