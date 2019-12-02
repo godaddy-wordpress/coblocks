@@ -293,7 +293,7 @@ class BackgroundPanel extends Component {
 								}
 							} }
 						>
-							{ __( 'Remove ' + backgroundType ) }
+							{ __( 'Remove ' + backgroundType, 'coblocks' ) }
 						</Button>
 					</PanelBody>
 				) }

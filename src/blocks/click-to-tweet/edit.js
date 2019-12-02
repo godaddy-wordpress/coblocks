@@ -83,7 +83,7 @@ class Edit extends Component {
 						value={ content }
 						formattingControls={ [] } // disable controls
 						className={ classnames(
-							`${ className }__text`, {
+							'wp-block-coblocks-click-to-tweet__text', {
 								'has-text-color': textColor.color,
 								[ textColor.class ]: textColor.class,
 								[ fontSize.class ]: fontSize.class,
@@ -110,7 +110,7 @@ class Edit extends Component {
 						value={ buttonText }
 						formattingControls={ [] } // disable controls
 						className={ classnames(
-							`${ className }__twitter-btn`, {
+							'wp-block-coblocks-click-to-tweet__twitter-btn', {
 								'has-button-color': buttonColor.color,
 								[ buttonColor.class ]: buttonColor.class,
 							}

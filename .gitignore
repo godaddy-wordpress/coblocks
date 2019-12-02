@@ -24,5 +24,4 @@ sandbox.json
 languages/coblocks-js.pot
 languages/*.mo
 languages/*.po
-languages/*.json
 !languages/coblocks.json

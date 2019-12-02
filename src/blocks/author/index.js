@@ -43,7 +43,7 @@ const settings = {
 			name: __( 'Jane Doe', 'coblocks' ),
 			/* translators: example biography */
 			biography: __( 'Born to express, not to impress. A maker making the world I want.', 'coblocks' ),
-			imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Headey%2C_Lena_%282007%29_%28headshot%29.jpg/383px-Headey%2C_Lena_%282007%29_%28headshot%29.jpg',
+			imgUrl: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg',
 		},
 	},
 	attributes,
