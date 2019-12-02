@@ -154,11 +154,13 @@ jobs:
       - run:
           name: Build the plugin
           command: |
-            mkdir -p /tmp/artifacts
             npm run babel:build
+            rm -rf languages/project.pot
       - run:
-          name: Update coblocks.pot/coblocks.json and deploy them back to Github
+          name: Deploy coblocks.pot/coblocks.json back to Github
           command: |
+            git config user.email "plugins@godaddy.com"
+            git config user.name "GoDaddy Translator"
             git add languages/coblocks.json
             git add languages/coblocks.pot
             git commit -m "Update coblocks.pot/coblocks.json files"
