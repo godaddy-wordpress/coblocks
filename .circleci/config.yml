@@ -146,6 +146,12 @@ jobs:
           name: Install node packages
           command: npm install
       - run:
+          name: Install WPCLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
           name: Build the plugin
           command: |
             mkdir -p /tmp/artifacts
