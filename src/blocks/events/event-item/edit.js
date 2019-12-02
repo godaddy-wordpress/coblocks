@@ -57,11 +57,11 @@ class EventsEdit extends Component {
 					}
 					style={ textStyles }
 				>
-					<div className="wp-block-coblocks-events__date md:flex mb-3 md:mb-0 md:display-block">
+					<div className="wp-block-coblocks-events__date md:flex mb-2 md:mb-0 md:display-block">
 						<RichText
 							value={ attributes.eventDay }
 							tagName="span"
-							className="wp-block-coblocks-events__day display-block font-bold mb-1"
+							className="wp-block-coblocks-events__day display-block font-bold"
 							placeholder={ __( 'Day…', 'coblocks' ) }
 							onChange={ eventDay => setAttributes( { eventDay } ) }
 							keepPlaceholderOnFocus
@@ -85,7 +85,7 @@ class EventsEdit extends Component {
 							/>
 						</div>
 					</div>
-					<div className="wp-block-coblocks-events__content mb-5">
+					<div className="wp-block-coblocks-events__content mb-2 md:mb-0">
 						<RichText
 							value={ attributes.title }
 							tagName="span"
@@ -107,7 +107,7 @@ class EventsEdit extends Component {
 						<RichText
 							value={ attributes.eventTime }
 							tagName="span"
-							className="wp-block-coblocks-events__time display-block mb-1"
+							className="wp-block-coblocks-events__time font-bold display-block mb-1"
 							placeholder={ __( 'Time…' ) }
 							onChange={ eventTime => setAttributes( { eventTime } ) }
 							keepPlaceholderOnFocus

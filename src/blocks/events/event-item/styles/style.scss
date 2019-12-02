@@ -1,5 +1,4 @@
 .wp-block-coblocks-event-item {
-	// background-color: #ddd;
 	flex: 1 100%;
 	line-height: 1;
 
@@ -10,28 +9,40 @@
 
 .wp-block-coblocks-events__date {
 	@include break-medium() {
-		flex-basis: 15%;
+		flex-basis: 20%;
 	}
 }
 
 .wp-block-coblocks-events__content {
 	@include break-medium() {
-		flex-basis: 60%;
-		padding: 0 2em;
+		flex-basis: 65%;
+		padding: 0 1em;
 	}
 }
 
 .wp-block-coblocks-events__details {
 	@include break-medium() {
-		flex-basis: 25%;
+		flex-basis: 15%;
 	}
 }
 
 .wp-block-coblocks-events__day {
-	font-size: 2em;
+	font-size: 1.75em;
+	margin-bottom: 5px;
+}
+
+.wp-block-coblocks-events__month {
+	margin-right: 5px;
 }
 
 .wp-block-coblocks-events__year,
-.wp-block-coblocks-events__month {
-	font-size: 0.85em;
+.wp-block-coblocks-events__month,
+.wp-block-coblocks-events__time,
+.wp-block-coblocks-events__location,
+.wp-block-coblocks-events__description {
+	font-size: 0.75em;
+}
+
+.wp-block-coblocks-events__description {
+	line-height: 1.476;
 }

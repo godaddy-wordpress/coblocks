@@ -36,10 +36,10 @@ export default function save( { attributes } ) {
 			data-page={ String( attributes.pageNum ) }
 			style={ { color: colorClass ? undefined : attributes.customTextColor } }
 		>
-			<div className="wp-block-coblocks-events__date md:flex mb-3 md:mb-0 md:display-block">
+			<div className="wp-block-coblocks-events__date md:flex mb-2 md:mb-0 md:display-block">
 				<RichText.Content
 					tagName="span"
-					className="wp-block-coblocks-events__day display-block font-bold mb-1"
+					className="wp-block-coblocks-events__day display-block font-bold"
 					value={ attributes.eventDay }
 				/>
 				<div>
@@ -55,7 +55,7 @@ export default function save( { attributes } ) {
 					/>
 				</div>
 			</div>
-			<div className="wp-block-coblocks-events__content mb-3 md:mb-0">
+			<div className="wp-block-coblocks-events__content mb-2 md:mb-0">
 				<RichText.Content
 					value={ attributes.title }
 					tagName="span"
@@ -72,7 +72,7 @@ export default function save( { attributes } ) {
 				<RichText.Content
 					value={ attributes.eventTime }
 					tagName="span"
-					className="wp-block-coblocks-events__time display-block mb-1"
+					className="wp-block-coblocks-events__time font-bold display-block mb-1"
 				/>
 				<RichText.Content
 					value={ attributes.eventLocation }

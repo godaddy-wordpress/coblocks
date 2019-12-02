@@ -92,7 +92,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 			);
 
 			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-events__details"><h5 class="wp-block-coblocks-events__time">%1$s</h5><p class="wp-block-coblocks-events__location">%2$s</p></div>',
+				'<div class="wp-block-coblocks-events__details"><h5 class="wp-block-coblocks-events__time font-bold display-block mb-1">%1$s</h5><p class="wp-block-coblocks-events__location">%2$s</p></div>',
 				$time_string,
 				$location
 			);
