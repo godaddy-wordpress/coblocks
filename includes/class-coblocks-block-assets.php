@@ -157,7 +157,8 @@ class CoBlocks_Block_Assets {
 			$icon_slug = str_replace( '.svg', '', basename( $icon ) );
 			$icon_name = ucwords( str_replace( '-', ' ', $icon_slug ) );
 
-			if( ! empty( $config ) ) {
+			if ( ! empty( $config ) ) {
+
 				// Icon exists in directory, but not found in config.
 				if ( ! array_key_exists( $icon_slug, $config ) ) {
 
