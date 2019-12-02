@@ -25,7 +25,7 @@ const isEmpty = attributes => {
 export default function save( { attributes } ) {
 	const colorClass = getColorClassName( 'color', attributes.textColor );
 
-	const classes = classnames( attributes.className, 'md:flex', 'justify-between', {
+	const classes = classnames( attributes.className, 'w-full', 'md:flex', 'mb-2', 'justify-between', {
 		'has-text-color': attributes.textColor || attributes.customTextColor,
 		[ colorClass ]: colorClass,
 	} );
@@ -36,7 +36,7 @@ export default function save( { attributes } ) {
 			data-page={ String( attributes.pageNum ) }
 			style={ { color: colorClass ? undefined : attributes.customTextColor } }
 		>
-			<div className="wp-block-coblocks-events__date flex mb-3 md:mb-0 md:display-block">
+			<div className="wp-block-coblocks-events__date md:flex mb-3 md:mb-0 md:display-block">
 				<RichText.Content
 					tagName="span"
 					className="wp-block-coblocks-events__day display-block font-bold mb-1"
@@ -46,12 +46,12 @@ export default function save( { attributes } ) {
 					<RichText.Content
 						value={ attributes.eventMonth }
 						tagName="span"
-						className="wp-block-coblocks-events__month display-block mb-1"
+						className="wp-block-coblocks-events__month md:display-block mb-1"
 					/>
 					<RichText.Content
 						value={ attributes.eventYear }
 						tagName="span"
-						className="wp-block-coblocks-events__year display-block mb-1"
+						className="wp-block-coblocks-events__year md:display-block mb-0"
 					/>
 				</div>
 			</div>

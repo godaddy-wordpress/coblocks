@@ -63,7 +63,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 
 		foreach ( $events as $i => $event ) {
 			$page_num       = (int) ( $i / $attributes['eventsToShow'] );
-			$events_layout .= sprintf( '<div class="wp-block-coblocks-event-item md:flex" data-page="%1$s">', $page_num );
+			$events_layout .= sprintf( '<div class="wp-block-coblocks-event-item w-full md:flex mb-2" data-page="%1$s">', $page_num );
 
 			$dtstart           = $ical->ical_date_to_date_time( $event->dtstart_array[3] );
 			$dtend             = $ical->ical_date_to_date_time( $event->dtend_array[3] );

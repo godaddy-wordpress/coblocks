@@ -219,7 +219,7 @@ class CoBlocks_ICal_Event {
 	 *
 	 * @return string
 	 */
-	protected static function snake_case( $input, $glue = '_', $separator = '-' ) {
+	protected static function snake_case( $glue = '_', $input, $separator = '-' ) {
 		$input = preg_split( '/(?<=[a-z])(?=[A-Z])/x', $input );
 		$input = implode( $input, $glue );
 		$input = str_replace( $separator, $glue, $input );

@@ -48,7 +48,7 @@ class EventsEdit extends Component {
 				/>
 				<div
 					data-page={ String( attributes.pageNum ) }
-					className={ classnames( className, 'md:flex', 'justify-between', {
+					className={ classnames( className, 'w-full', 'md:flex', 'mb-2', 'justify-between', {
 						'has-text-color': textColor.color,
 						[ textColor.class ]: textColor.class,
 						'is-empty': isEmpty( attributes ),
@@ -57,7 +57,7 @@ class EventsEdit extends Component {
 					}
 					style={ textStyles }
 				>
-					<div className="wp-block-coblocks-events__date flex mb-3 md:mb-0 md:display-block">
+					<div className="wp-block-coblocks-events__date md:flex mb-3 md:mb-0 md:display-block">
 						<RichText
 							value={ attributes.eventDay }
 							tagName="span"
@@ -70,7 +70,7 @@ class EventsEdit extends Component {
 							<RichText
 								value={ attributes.eventMonth }
 								tagName="span"
-								className="wp-block-coblocks-events__month display-block mb-1"
+								className="wp-block-coblocks-events__month md:display-block mb-1"
 								placeholder={ __( 'Month…', 'coblocks' ) }
 								onChange={ eventMonth => setAttributes( { eventMonth } ) }
 								keepPlaceholderOnFocus
@@ -78,7 +78,7 @@ class EventsEdit extends Component {
 							<RichText
 								value={ attributes.eventYear }
 								tagName="span"
-								className="wp-block-coblocks-events__year display-block mb-1"
+								className="wp-block-coblocks-events__year md:display-block mb-0"
 								placeholder={ __( 'Year…', 'coblocks' ) }
 								onChange={ eventYear => setAttributes( { eventYear } ) }
 								keepPlaceholderOnFocus
@@ -122,7 +122,7 @@ class EventsEdit extends Component {
 						/>
 					</div>
 					{ attributes.lastItem &&
-						<div className="event-item-last">
+						<div className="event-item-last hidden">
 							<div><span>={ __( 'Page Break', 'coblocks' ) }</span></div>
 						</div>
 					}
