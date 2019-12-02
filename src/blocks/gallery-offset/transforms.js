@@ -36,34 +36,7 @@ const transforms = {
 		},
 		{
 			type: 'block',
-			blocks: [ 'coblocks/gallery-offset' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/stacked' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/masonry' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'blockgallery/carousel' ],
+			blocks: [ 'coblocks/gallery-masonry' ],
 			transform: ( attributes ) => (
 				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
@@ -96,7 +69,7 @@ const transforms = {
 		},
 		{
 			type: 'prefix',
-			prefix: ':masonry',
+			prefix: ':offset',
 			transform: function( content ) {
 				return createBlock( metadata.name, {
 					content,
