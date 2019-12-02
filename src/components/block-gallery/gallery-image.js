@@ -112,6 +112,7 @@ class GalleryImage extends Component {
 			isLastItem,
 			isSelected,
 			linkTo,
+			newClass,
 			marginBottom,
 			marginLeft,
 			marginRight,
@@ -120,6 +121,7 @@ class GalleryImage extends Component {
 			onMoveForward,
 			onRemove,
 			setAttributes,
+			gutterUtility,
 			shadow,
 			supportsCaption,
 			supportsMoving = true,
@@ -157,9 +159,12 @@ class GalleryImage extends Component {
 			/* eslint-enable jsx-a11y/no-noninteractive-element-interactions */
 		);
 
-		const className = classnames( {
+		const properClass = newClass ? newClass : 'coblocks-gallery--figure';
+
+		const className = classnames( properClass, {
 			'is-selected': isSelected,
 			'is-transient': url && 0 === url.indexOf( 'blob:' ),
+			[ `${ gutterUtility }` ]: gutterUtility,
 			[ `has-margin-top-${ gutter }` ]: marginTop && gutter > 0,
 			[ `has-margin-top-mobile-${ gutterMobile }` ]: marginTop && gutterMobile > 0,
 			[ `has-margin-right-${ gutter }` ]: marginRight && gutter > 0,
@@ -177,7 +182,7 @@ class GalleryImage extends Component {
 		// Disable reason: Each block can be selected by clicking on it and we should keep the same saved markup
 		/* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/onclick-has-role, jsx-a11y/click-events-have-key-events */
 		return (
-			<figure className={ 'coblocks-gallery--figure ' + className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
+			<figure className={ className } tabIndex="-1" onKeyDown={ this.onKeyDown } ref={ this.bindContainer }>
 				{ isSelected &&
 					<Fragment>
 						{ supportsMoving &&

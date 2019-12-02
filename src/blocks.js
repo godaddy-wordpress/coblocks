@@ -67,6 +67,7 @@ import * as logos from './blocks/logos';
 import * as map from './blocks/map';
 import * as masonry from './blocks/gallery-masonry';
 import * as mediaCard from './blocks/media-card';
+import * as offset from './blocks/gallery-offset';
 import * as posts from './blocks/posts';
 import * as postCarousel from './blocks/post-carousel';
 import * as pricingTable from './blocks/pricing-table';
@@ -139,6 +140,7 @@ export const registerCoBlocksBlocks = () => {
 		map,
 		masonry,
 		mediaCard,
+		offset,
 		posts,
 		postCarousel,
 		pricingTable,

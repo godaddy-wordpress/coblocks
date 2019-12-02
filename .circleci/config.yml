@@ -16,6 +16,10 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - i18n:
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
             - php56-build
@@ -123,6 +127,47 @@ jobs:
           destination: jest-coverage
       - store_test_results:
           path: /tmp/artifacts/code-coverage/
+
+  i18n:
+    docker:
+      - image: circleci/node:latest-browsers-legacy
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "14:ee:bc:31:0f:50:7e:fe:8b:56:87:f8:56:db:48:5b"
+      - checkout
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - run:
+          name: Install PHP
+          command: sudo apt-get install php libapache2-mod-php php-mbstring
+      - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
+      - run:
+          name: Install node packages
+          command: npm install
+      - run:
+          name: Install WPCLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
+          name: Build the plugin
+          command: |
+            npm run babel:build
+            rm -rf languages/project.pot
+      - run:
+          name: Deploy coblocks.pot/coblocks.json back to Github
+          command: |
+            git config --global user.email "plugins@godaddy.com"
+            git config --global user.name "GoDaddy Translator"
+            git add languages/coblocks.json
+            git add languages/coblocks.pot
+            git commit -m "Update coblocks.pot/coblocks.json files"
+            git push origin master --force > /dev/null 2>&1
 
   deploy:
     docker:
