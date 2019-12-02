@@ -11,8 +11,13 @@ import { BlockControls } from '@wordpress/block-editor';
 
 class Controls extends Component {
 	render() {
-		const { attributes } = this.props;
-		const { images } = attributes;
+		const {
+			attributes,
+		} = this.props;
+
+		const {
+			images,
+		} = attributes;
 
 		const hasImages = !! images.length;
 

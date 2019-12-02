@@ -1,0 +1,63 @@
+.wp-block-coblocks-gallery-offset {
+	img {
+		max-height: 22vw;
+		width: auto;
+	}
+
+	figcaption {
+		background: linear-gradient(0deg, rgba($color: $black, $alpha: 0.7) 0, rgba($color: $black, $alpha: 0.3) 50%, transparent);
+		bottom: 0;
+		font-size: 13px;
+		max-height: 100% !important;
+		opacity: 1;
+		overflow: hidden;
+		padding: 30px 10px 10px !important;
+		position: absolute !important;
+		text-align: center;
+		width: 100%;
+
+		@media screen and (max-width: 699px) {
+			display: none;
+		}
+	}
+
+	.coblocks-gallery--sml img {
+		@include break-small() {
+			max-height: 22vw;
+		}
+
+		@include break-large() {
+			max-height: 11vw;
+		}
+	}
+
+	.coblocks-gallery--med img {
+		@include break-small() {
+			max-height: 28vw;
+		}
+
+		@include break-large() {
+			max-height: 12vw;
+		}
+	}
+
+	.coblocks-gallery--lrg img {
+		@include break-small() {
+			max-height: 40vw;
+		}
+
+		@include break-large() {
+			max-height: 20vw;
+		}
+	}
+
+	.coblocks-gallery--xlrg img {
+		@include break-small() {
+			max-height: 40vw;
+		}
+
+		@include break-large() {
+			max-height: 30vw;
+		}
+	}
+}
