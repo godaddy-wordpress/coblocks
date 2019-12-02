@@ -132,6 +132,9 @@ jobs:
     docker:
       - image: circleci/node:latest-browsers-legacy
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "14:ee:bc:31:0f:50:7e:fe:8b:56:87:f8:56:db:48:5b"
       - checkout
       - run:
           name: Update npm
@@ -159,8 +162,8 @@ jobs:
       - run:
           name: Deploy coblocks.pot/coblocks.json back to Github
           command: |
-            git config user.email "plugins@godaddy.com"
-            git config user.name "GoDaddy Translator"
+            git config --global user.email "plugins@godaddy.com"
+            git config --global user.name "GoDaddy Translator"
             git add languages/coblocks.json
             git add languages/coblocks.pot
             git commit -m "Update coblocks.pot/coblocks.json files"
