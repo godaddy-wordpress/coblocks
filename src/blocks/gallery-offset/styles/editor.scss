@@ -1,0 +1,73 @@
+.editor-block-list__block[data-type="coblocks/gallery-offset"] {
+	// Captions.
+	.editor-rich-text {
+		bottom: 0;
+		left: 0;
+		max-height: 100%;
+		overflow-y: auto;
+		position: absolute;
+		right: 0;
+		width: 100%;
+
+		.editor-rich-text__tinymce {
+			color: inherit;
+
+			a {
+				color: inherit;
+			}
+
+			&:not(.mce-content-body) {
+				opacity: 0.6;
+			}
+
+			&:focus a[data-mce-selected] {
+				opacity: 0.2;
+			}
+		}
+	}
+
+	figure {
+		width: auto !important;
+	}
+
+	.editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
+		overflow: hidden;
+		position: relative !important;
+	}
+
+	.is-selected .editor-rich-text {
+		// IE calculates this incorrectly, so leave it to modern browsers.
+		@supports (position: sticky) {
+			bottom: 3px;
+			left: 3px;
+			margin-top: -3px;
+			right: 3px;
+			width: calc(100% - 6px);
+		}
+
+		figcaption {
+			padding-bottom: 5px !important;
+		}
+
+		// Make extra space for the inline toolbar.
+		.editor-rich-text__tinymce {
+			padding-top: 48px;
+		}
+	}
+
+	// .coblocks-gallery--item img {
+	// 	vertical-align: middle;
+	// }
+
+	.coblocks-gallery .coblocks-gallery--item figcaption {
+		margin: 0 !important;
+	}
+}
+
+// Needed until GB 6.9 is merged into core or backward support.
+// Hide the placeholder when not selected.
+.editor-block-list__block[data-type="coblocks/gallery-offset"]:not(.is-selected) {
+	div.components-form-file-upload {
+		display: none;
+	}
+}

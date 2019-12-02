@@ -1,10 +1,9 @@
 /**
  * Internal dependencies
  */
-import ResponsiveTabsControl from '../../components/responsive-tabs-control';
+import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 import captionOptions from '../../components/block-gallery/options/caption-options';
 import SizeControl from '../../components/size-control';
-import GalleryLinkSettings from '../../components/block-gallery/gallery-link-settings';
 
 /**
  * WordPress dependencies
@@ -12,7 +11,7 @@ import GalleryLinkSettings from '../../components/block-gallery/gallery-link-set
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, ToggleControl, SelectControl } from '@wordpress/components';
+import { PanelBody, RangeControl, PanelRow, ToggleControl, ButtonGroup, Button, BaseControl, SelectControl } from '@wordpress/components';
 
 /**
  * Inspector controls
@@ -20,21 +19,24 @@ import { PanelBody, RangeControl, ToggleControl, SelectControl } from '@wordpres
 class Inspector extends Component {
 	constructor() {
 		super( ...arguments );
-		this.setSizeControl = this.setSizeControl.bind( this );
+
+		this.setLinkTo = this.setLinkTo.bind( this );
 		this.setRadiusTo = this.setRadiusTo.bind( this );
+		this.setSizeControl = this.setSizeControl.bind( this );
 		this.setCaptionStyleTo = this.setCaptionStyleTo.bind( this );
+		this.setFullwidthTo = this.setFullwidthTo.bind( this );
 	}
 
-	componentDidUpdate() {
-		if ( this.props.attributes.gutter <= 0 ) {
-			this.props.setAttributes( {
-				radius: 0,
-			} );
-		}
+	setLinkTo( value ) {
+		this.props.setAttributes( { linkTo: value } );
 	}
 
 	setRadiusTo( value ) {
 		this.props.setAttributes( { radius: value } );
+	}
+
+	setFullwidthTo() {
+		this.props.setAttributes( { fullwidth: ! this.props.attributes.fullwidth } );
 	}
 
 	setSizeControl( value ) {
@@ -47,8 +49,8 @@ class Inspector extends Component {
 
 	getCaptionsHelp( checked ) {
 		return checked ?
-			__( 'Showing captions for each media item.', 'coblocks' ) :
-			__( 'Toggle to show media captions.', 'coblocks' );
+			__( 'Showing captions for each media item.' ) :
+			__( 'Toggle to show media captions.' );
 	}
 
 	getLightboxHelp( checked ) {
@@ -64,32 +66,76 @@ class Inspector extends Component {
 		} = this.props;
 
 		const {
-			captions,
-			captionStyle,
 			gridSize,
 			gutter,
-			radius,
 			lightbox,
+			radius,
+			captions,
+			captionStyle,
 		} = attributes;
+
+		const gutterOptions = [
+			{
+				value: 0,
+				label: __( 'None', 'coblocks' ),
+				shortName: __( 'None', 'coblocks' ),
+			},
+			{
+				value: 1,
+				label: __( 'Small', 'coblocks' ),
+				/* translators: abbreviation for small size */
+				shortName: __( 'S', 'coblocks' ),
+			},
+			{
+				value: 2,
+				label: __( 'Medium', 'coblocks' ),
+				/* translators: abbreviation for medium size */
+				shortName: __( 'M', 'coblocks' ),
+			},
+			{
+				value: 3,
+				label: __( 'Large', 'coblocks' ),
+				/* translators: abbreviation for large size */
+				shortName: __( 'L', 'coblocks' ),
+			},
+		];
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Masonry Settings', 'coblocks' ) }>
+				<PanelBody title={ __( 'Offset Settings' ) }>
 
 					<SizeControl { ...this.props }
-						type={ 'grid' }
-						label={ __( 'Size', 'coblocks' ) }
+						label={ __( 'Size' ) }
+						type={ 'reverse-grid' }
 						onChange={ this.setSizeControl }
 						value={ gridSize }
-						resetValue={ 'xlrg' }
+						reset={ false }
 					/>
 
-					<ResponsiveTabsControl { ...this.props } />
+					<BaseControl label={ __( 'Gutter', 'coblocks' ) }>
+						<PanelRow>
+							<ButtonGroup aria-label={ __( 'Gutter', 'coblocks' ) }>
+								{ gutterOptions.map( ( option ) => {
+									const isCurrent = gutter === option.value;
+									return (
+										<Button
+											key={ `option-${ option.value }` }
+											isLarge
+											isPrimary={ isCurrent }
+											aria-pressed={ isCurrent }
+											onClick={ () => setAttributes( { gutter: option.value } ) }
+										>
+											{ option.shortName }
+										</Button>
+									);
+								} ) }
+							</ButtonGroup>
+						</PanelRow>
+					</BaseControl>
 
 					{ gutter > 0 &&
 						<RangeControl
-							label={ __( 'Rounded Corners', 'coblocks' ) }
-							aria-label={ __( 'Add rounded corners to the gallery items.', 'coblocks' ) }
+							label={ __( 'Rounded Corners' ) }
 							value={ radius }
 							onChange={ this.setRadiusTo }
 							min={ 0 }

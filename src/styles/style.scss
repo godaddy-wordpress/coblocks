@@ -48,6 +48,10 @@
 	display: flex;
 }
 
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
 .flex-0 {
 	flex: 0 0 auto;
 }
@@ -74,6 +78,10 @@
 
 .items-stretch {
 	align-items: stretch;
+}
+
+.justify-center {
+	justify-content: center;
 }
 
 .h-full {
