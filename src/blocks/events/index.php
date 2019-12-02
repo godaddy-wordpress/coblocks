@@ -50,7 +50,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 		$custom_text_color = is_array( $attributes ) && isset( $attributes['customTextColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['textColor'] ) ) ? "color: {$attributes['customTextColor']};" : '';
 		$align             = is_array( $attributes ) && isset( $attributes['align'] ) ? "align{$attributes['align']} " : '';
 
-		$class = 'wp-block-coblocks-events justify-between';
+		$class = 'wp-block-coblocks-events';
 		if ( isset( $attributes['className'] ) ) {
 			$class .= ' ' . $attributes['className'];
 		}
@@ -69,7 +69,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$dtend             = $ical->ical_date_to_date_time( $event->dtend_array[3] );
 			$start_date_string = strtotime( $dtstart->format( 'YmdHis' ) );
 			$end_date_string   = strtotime( $dtend->format( 'YmdHis' ) );
-			$day               = date( 'D', $start_date_string );
+			$year              = date( 'Y', $start_date_string );
 			$month             = date( 'F', $start_date_string );
 			$day_of_month      = date( 'd', $start_date_string );
 			$start_time        = date( 'g:ia', $start_date_string );
@@ -79,20 +79,33 @@ function coblocks_render_events_block( $attributes, $content ) {
 			$desctiption       = $event->description;
 			$location          = $event->location;
 			$events_layout    .= sprintf(
-				'<div class="wp-block-coblocks-events__date"><p class="wp-block-coblocks-events__day display-block">%1$s</p><h4 class="wp-block-coblocks-events__month display-block">%2$s</h4><h4 class="wp-block-coblocks-events__year display-block">%3$s</h4></div>',
-				$day,
+				'
+				<div class="wp-block-coblocks-events__date md:flex mb-2 md:mb-0 md:display-block">
+					<span class="wp-block-coblocks-events__day display-block font-bold">%1$s</span>
+					<div>
+						<span class="wp-block-coblocks-events__month md:display-block mb-1">%2$s</span>
+						<span class="wp-block-coblocks-events__year md:display-block mb-0">%3$s</span>
+					</div>
+				</div>',
+				$day_of_month,
 				$month,
-				$day_of_month
+				$year
 			);
 
 			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-events__content"><h4 class="wp-block-coblocks-events__title">%1$s</h4><p class="wp-block-coblocks-events__description">%2$s</p></div>',
+				'<div class="wp-block-coblocks-events__content mb-2 md:mb-0">
+					<span class="wp-block-coblocks-events__title display-block font-bold mb-1">%1$s</span>
+					<span class="wp-block-coblocks-events__description display-block">%2$s</span>
+				</div>',
 				$title,
 				$desctiption
 			);
 
 			$events_layout .= sprintf(
-				'<div class="wp-block-coblocks-events__details"><h5 class="wp-block-coblocks-events__time font-bold display-block mb-1">%1$s</h5><p class="wp-block-coblocks-events__location">%2$s</p></div>',
+				'<div class="wp-block-coblocks-events__details md:text-right">
+					<span class="wp-block-coblocks-events__time font-bold display-block mb-1">%1$s</span>
+					<span class="wp-block-coblocks-events__location display-block">%2$s</span>
+				</div>',
 				$time_string,
 				$location
 			);
@@ -113,7 +126,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 
 	} catch ( \Exception $e ) {
 
-		return '<div class="components-placeholder"><div class="notice notice-error">' . __( 'An error has occurred, check for calendar privileges, make sure it is public, or try again later.', 'coblocks' ) . '</div></div>';
+		return '<div class="components-placeholder"><div class="notice notice-error">' . __( 'An error has occurred, check for calendar privileges to make sure it is public or try again later.', 'coblocks' ) . '</div></div>';
 
 	}
 }
