@@ -111,7 +111,7 @@ class CoBlocks_Block_Assets {
 		 */
 		$email_to = (string) apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), $post_id );
 
-		$form_subject = (new CoBlocks_Form())->__default_subject();
+		$form_subject = ( new CoBlocks_Form() )->default_subject();
 
 		wp_localize_script(
 			$this->slug . '-editor',

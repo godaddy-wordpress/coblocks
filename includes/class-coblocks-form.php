@@ -46,9 +46,10 @@ class CoBlocks_Form {
 	 *
 	 * @var string
 	 */
-	public function __default_subject() {
-		return sprintf( _x( 'Form submission from [%1$s]', 'placeholder for email shortcode', 'coblocks' ), 'email');
-	} 
+	public function default_subject() {
+		// translators: placeholder for email shortcode.
+		return sprintf( __( 'Form submission from [%1$s]', 'coblocks' ), 'email' );
+	}
 
 	/**
 	 * The Constructor.
@@ -925,7 +926,7 @@ class CoBlocks_Form {
 	 */
 	private function setup_email_subject( $atts, $email_field_id, $name_field_id ) {
 
-		$subject = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : self::__default_subject();
+		$subject = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : self::default_subject();
 
 		preg_match_all( '/\[(.*?)\]/i', $subject, $matches );
 
