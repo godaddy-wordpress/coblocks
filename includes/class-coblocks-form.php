@@ -42,6 +42,15 @@ class CoBlocks_Form {
 	const GCAPTCHA_VERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify';
 
 	/**
+	 * Default email subject line
+	 *
+	 * @var string
+	 */
+	public function __default_subject() {
+		return sprintf( _x( 'Form submission from [%1$s]', 'placeholder for email shortcode', 'coblocks' ), 'email');
+	} 
+
+	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
@@ -916,8 +925,7 @@ class CoBlocks_Form {
 	 */
 	private function setup_email_subject( $atts, $email_field_id, $name_field_id ) {
 
-		$default_subject = __( 'Form submission from [email]', 'coblocks' );
-		$subject         = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : $default_subject;
+		$subject = isset( $atts['subject'] ) ? sanitize_text_field( $atts['subject'] ) : self::__default_subject();
 
 		preg_match_all( '/\[(.*?)\]/i', $subject, $matches );
 
