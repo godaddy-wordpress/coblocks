@@ -1,14 +1,14 @@
 workflows:
-  version: 2
+  version: 2.1
   main:
     jobs:
       # Support PHP Versions
       # http://php.net/supported-versions.php
-      - php56-build:
+      - php56:
           filters:
             tags:
               only: /.*/
-      - php72-build: # Will be deprecated on 30 Nov 2020
+      - php72: # Will be deprecated on 30 Nov 2020
           filters:
             tags:
               only: /.*/
@@ -16,20 +16,29 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - e2e:
+          filters:
+            tags:
+              only: /.*/
+      - i18n:
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
-            - php56-build
-            - php72-build
+            - php56
+            - php72
             - jest
+            - e2e
           filters:
             tags:
               only: /.*/
             branches:
               ignore: /.*/
 
-version: 2
+version: 2.1
 jobs:
-  php56-build:
+  php56:
     docker:
       - image: circleci/php:5.6
       - image: circleci/mysql:5.7
@@ -62,7 +71,7 @@ jobs:
           command: WP_MULTISITE=1 composer run test
           working_directory: /tmp/wordpress/wp-content/plugins/coblocks
 
-  php72-build:
+  php72:
     docker:
       - image: circleci/php:7.2
       - image: circleci/mysql:5.7
@@ -123,6 +132,113 @@ jobs:
           destination: jest-coverage
       - store_test_results:
           path: /tmp/artifacts/code-coverage/
+
+  e2e:
+    docker:
+      - image: circleci/php:latest-node-browsers-legacy
+      - image: circleci/mysql:5.7
+    parallelism: 4
+    steps:
+      - checkout
+      - run:
+          name: Setup spec files to run based on git diff-tree
+          command: bash .dev/bin/setup-test-specs.sh
+      - run:
+          name: Disable xdebug PHP extension
+          command: sudo rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - run:
+          name: Update hosts
+          command: echo 127.0.0.1 coblocks.test | sudo tee -a /etc/hosts
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - restore_cache:
+          key: e2e-dependency-cache--{{ checksum "package.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          key: e2e-dependency-cache--{{ checksum "package.json" }}
+          paths:
+            - node_modules
+            - ~/.cache
+      - run:
+          name: "Install Dependencies"
+          command: |
+            bash .dev/bin/install-dependencies.sh
+            cp -a $HOME/project /tmp/wordpress/wp-content/plugins/coblocks
+      - run:
+          name: Install WPCLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
+          name: Build the plugin
+          command: |
+            ./node_modules/.bin/grunt build
+            cp -a ./build/coblocks /tmp/wordpress/wp-content/plugins/
+      - run:
+          name: "Install WordPress"
+          command: |
+            wp config create --dbhost=127.0.0.1 --dbname=coblocks --dbuser=root --dbpass=''
+            wp core install --url="http://coblocks.test" --title=CoBlocks --admin_user=admin --admin_password=password --admin_email=test@admin.com --skip-email
+            wp plugin activate coblocks
+          path: /tmp/wordpress
+      - run:
+          name: "Start WPCLI Server"
+          command: sudo wp server --host=0.0.0.0 --port=80 --allow-root
+          path: /tmp/wordpress
+          background: true
+      - run:
+          name: "Run end to end tests (Cypress.io)"
+          command: |
+            touch .dev/tests/cypress/wp_creds.json
+            echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://coblocks.test"}' | jq . > .dev/tests/cypress/wp_creds.json
+            ./node_modules/.bin/cypress run --config integrationFolder=./ --browser chrome --record --parallel --spec "$(cat /tmp/specstring)"
+          path: /tmp/wordpress/wp-content/plugins/coblocks
+
+  i18n:
+    docker:
+      - image: circleci/node:latest-browsers-legacy
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "14:ee:bc:31:0f:50:7e:fe:8b:56:87:f8:56:db:48:5b"
+      - checkout
+      - run:
+          name: Update npm
+          command: sudo npm install -g npm@latest
+      - run:
+          name: Install PHP
+          command: sudo apt-get install php libapache2-mod-php php-mbstring
+      - run:
+          name: Install gettext
+          command: sudo apt-get install gettext
+      - run:
+          name: Install node packages
+          command: npm install
+      - run:
+          name: Install WPCLI
+          command: |
+            curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+            chmod +x wp-cli.phar
+            sudo mv wp-cli.phar /usr/local/bin/wp
+      - run:
+          name: Generate the translations
+          command: |
+            mv ../project ../coblocks
+            npm run babel:build
+      - run:
+          name: Deploy coblocks.pot/coblocks.json back to Github
+          command: |
+            git config --global user.email "plugins@godaddy.com"
+            git config --global user.name "GoDaddy Translator"
+            git add languages/coblocks.json
+            git add languages/coblocks.pot
+            git commit -m "Update coblocks.pot/coblocks.json files [skip ci]"
+            git push origin master --force --quiet
+          path: ~/coblocks
 
   deploy:
     docker:

@@ -1,0 +1,14 @@
+{
+	"name": "coblocks/gallery-offset",
+	"category": "coblocks-galleries",
+	"attributes": {
+		"gridSize": {
+			"type": "string",
+			"default": "sml"
+		},
+		"gutter": {
+			"type": "number",
+			"default": 1
+		}
+	}
+}
