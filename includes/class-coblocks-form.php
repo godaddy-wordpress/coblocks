@@ -935,10 +935,10 @@ class CoBlocks_Form {
 			array_walk(
 				$matches[1],
 				function( $match, $key ) use ( $matches, &$subject, &$email_field_id, &$name_field_id ) {
-					$slug_match = strtolower( preg_replace( '/\s+/', '', $match ) );
+					$slug_match = strtolower( str_replace( ' ', '', $match ) );
 
 					// phpcs:disable WordPress.Security.NonceVerification.Missing
-					if ( 'name' === $slug_match ) {
+					if ( __( 'name', 'coblocks' ) === $slug_match ) {
 
 						if ( isset( $_POST[ $name_field_id ]['value'] ) ) {
 
@@ -950,7 +950,7 @@ class CoBlocks_Form {
 							$value = $matches[0][ $key ];
 
 						}
-					} elseif ( 'email' === $slug_match ) {
+					} elseif ( __( 'email', 'coblocks' ) === $slug_match ) {
 
 						$value = isset( $_POST[ $email_field_id ]['value'] ) ? sanitize_text_field( $_POST[ $email_field_id ]['value'] ) : $matches[0][ $key ];
 
