@@ -122,9 +122,6 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: Run eslint
-          command: npx grunt eslint
-      - run:
           name: Run jest tests
           command: JEST_JUNIT_OUTPUT_DIR="/tmp/artifacts/code-coverage/jest/" JEST_JUNIT_OUTPUT_NAME="results.xml" npm test -- --ci --runInBand --reporters="default" --reporters="jest-junit" --coverage --coverageDirectory=/tmp/artifacts/code-coverage/jest/html
       - store_artifacts:
