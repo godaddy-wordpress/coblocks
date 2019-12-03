@@ -1,5 +1,5 @@
 .has-caption-style-light {
-	.coblocks-gallery--item .coblocks-gallery--figure figcaption {
+	.coblocks-gallery--item figcaption {
 		background: linear-gradient(
 			0deg,
 			rgba($color: $white, $alpha: 0.93) 6.3%,
@@ -10,16 +10,16 @@
 	}
 }
 
-.coblocks-gallery:not(.has-caption-color).has-caption-style-dark .coblocks-gallery--figure figcaption {
+.coblocks-gallery:not(.has-caption-color).has-caption-style-dark figcaption {
 	color: $white;
 }
 
-.coblocks-gallery:not(.has-caption-color).has-caption-style-light .coblocks-gallery--figure figcaption {
+.coblocks-gallery:not(.has-caption-color).has-caption-style-light figcaption {
 	color: $black;
 }
 
 .has-caption-style-none {
-	.coblocks-gallery--item .coblocks-gallery--figure figcaption {
+	.coblocks-gallery--item {
 		background: none !important;
 		opacity: 1 !important;
 	}

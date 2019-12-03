@@ -243,94 +243,18 @@ function coblocks_register_share_block() {
 		return;
 	}
 
+	// Load attributes from block.json.
+	ob_start();
+	include COBLOCKS_PLUGIN_DIR . 'src/blocks/share/block.json';
+	$metadata = json_decode( ob_get_clean(), true );
+
 	register_block_type(
 		'coblocks/social',
 		array(
 			'editor_script'   => 'coblocks-editor',
 			'editor_style'    => 'coblocks-editor',
 			'style'           => 'coblocks-frontend',
-			'attributes'      => array(
-				'align'                      => array(
-					'type' => 'string',
-					'enum' => array( 'wide', 'full' ),
-				),
-				'className'                  => array(
-					'type' => 'string',
-				),
-				'hasColors'                  => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'borderRadius'               => array(
-					'type'    => 'number',
-					'default' => 40,
-				),
-				'size'                       => array(
-					'type'    => 'string',
-					'default' => 'med',
-				),
-				'iconSize'                   => array(
-					'type'    => 'number',
-					'default' => 22,
-				),
-				'padding'                    => array(
-					'type'    => 'number',
-					'default' => 16,
-				),
-				'textAlign'                  => array(
-					'type' => 'string',
-				),
-				'backgroundColor'            => array(
-					'type' => 'string',
-				),
-				'blockBackgroundColor'       => array(
-					'type' => 'string',
-				),
-				'customBlockBackgroundColor' => array(
-					'type' => 'string',
-				),
-				'customBackgroundColor'      => array(
-					'type' => 'string',
-				),
-				'textColor'                  => array(
-					'type' => 'string',
-				),
-				'customTextColor'            => array(
-					'type' => 'string',
-				),
-				'twitter'                    => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'facebook'                   => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'pinterest'                  => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'linkedin'                   => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'tumblr'                     => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'reddit'                     => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'email'                      => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'google'                     => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-			),
+			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_share_block',
 		)
 	);

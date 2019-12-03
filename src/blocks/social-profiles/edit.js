@@ -139,7 +139,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'facebook' }
-									aria-label={ __( 'Add Facebook Profile' ) }
+									aria-label={ __( 'Add Facebook Profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--facebook',
@@ -156,7 +156,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'Facebook' ) }
+										{ __( 'Facebook', 'coblocks' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'facebook' && (
@@ -171,7 +171,7 @@ class edit extends Component {
 													value={ facebook }
 													/* eslint-disable jsx-a11y/no-autofocus */
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
-													placeholder={ __( 'https://facebook.com/' ) }
+													placeholder={ __( 'https://facebook.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
 													onChange={ value => setAttributes( { facebook: value } ) }
 												/>
@@ -185,7 +185,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'twitter' }
-									aria-label={ __( 'Add Twitter Profile' ) }
+									aria-label={ __( 'Add Twitter Profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--twitter',
@@ -202,7 +202,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'Twitter' ) }
+										{ __( 'Twitter', 'coblocks' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'twitter' && (
@@ -217,7 +217,7 @@ class edit extends Component {
 													value={ twitter }
 													/* eslint-disable jsx-a11y/no-autofocus */
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
-													placeholder={ __( 'https://twitter.com/' ) }
+													placeholder={ __( 'https://twitter.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
 													onChange={ value => setAttributes( { twitter: value } ) }
 												/>
@@ -231,7 +231,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'instagram' }
-									aria-label={ __( 'Add Instagram Profile' ) }
+									aria-label={ __( 'Add Instagram Profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--instagram',
@@ -248,7 +248,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'Instagram' ) }
+										{ __( 'Instagram', 'coblocks' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'instagram' && (
@@ -263,7 +263,7 @@ class edit extends Component {
 													value={ instagram }
 													/* eslint-disable jsx-a11y/no-autofocus */
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
-													placeholder={ __( 'https://instagram.com/' ) }
+													placeholder={ __( 'https://instagram.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
 													onChange={ value =>
 														setAttributes( { instagram: value } )
@@ -279,7 +279,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'pinterest' }
-									aria-label={ __( 'Add Pinterest Profile' ) }
+									aria-label={ __( 'Add Pinterest Profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--pinterest',
@@ -296,7 +296,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'Pinterest' ) }
+										{ __( 'Pinterest', 'coblocks' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'pinterest' && (
@@ -311,7 +311,7 @@ class edit extends Component {
 													value={ pinterest }
 													/* eslint-disable jsx-a11y/no-autofocus */
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
-													placeholder={ __( 'https://pinterest.com/' ) }
+													placeholder={ __( 'https://pinterest.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
 													onChange={ value =>
 														setAttributes( { pinterest: value } )
@@ -327,7 +327,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'linkedin' }
-									aria-label={ __( 'Add LinkedIn Profile' ) }
+									aria-label={ __( 'Add LinkedIn Profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--linkedin',
@@ -344,7 +344,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'LinkedIn' ) }
+										{ __( 'LinkedIn', 'coblocks' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'linkedin' && (
@@ -359,7 +359,7 @@ class edit extends Component {
 													value={ linkedin }
 													/* eslint-disable jsx-a11y/no-autofocus */
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
-													placeholder={ __( 'https://linkedin.com/' ) }
+													placeholder={ __( 'https://linkedin.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
 													onChange={ value => setAttributes( { linkedin: value } ) }
 												/>
@@ -373,7 +373,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'youtube' }
-									aria-label={ __( 'Add YouTube Profile' ) }
+									aria-label={ __( 'Add YouTube Profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--youtube',
@@ -390,7 +390,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'YouTube' ) }
+										{ __( 'YouTube', 'coblocks' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'youtube' && (
@@ -405,7 +405,7 @@ class edit extends Component {
 													value={ youtube }
 													/* eslint-disable jsx-a11y/no-autofocus */
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
-													placeholder={ __( 'https://youtube.com/' ) }
+													placeholder={ __( 'https://youtube.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
 													onChange={ value => setAttributes( { youtube: value } ) }
 												/>
@@ -419,7 +419,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'yelp' }
-									aria-label={ __( 'Add Yelp Profile' ) }
+									aria-label={ __( 'Add Yelp Profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--yelp',
@@ -436,7 +436,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'Yelp' ) }
+										{ __( 'Yelp', 'coblocks' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'yelp' && (
@@ -451,7 +451,7 @@ class edit extends Component {
 													value={ yelp }
 													/* eslint-disable jsx-a11y/no-autofocus */
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
-													placeholder={ __( 'https://yelp.com/' ) }
+													placeholder={ __( 'https://yelp.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
 													onChange={ value => setAttributes( { yelp: value } ) }
 												/>
@@ -465,7 +465,7 @@ class edit extends Component {
 							<li>
 								<button
 									aria-expanded={ this.state.currentIcon === 'twitter' }
-									aria-label={ __( 'Add Houzz Profile' ) }
+									aria-label={ __( 'Add Houzz Profile', 'coblocks' ) }
 									className={ classnames(
 										buttonClasses,
 										'wp-block-coblocks-social__button--houzz',
@@ -482,7 +482,7 @@ class edit extends Component {
 										style={ iconStyles }
 									/>
 									<span className="wp-block-coblocks-social__text">
-										{ __( 'Houzz' ) }
+										{ __( 'Houzz', 'coblocks' ) }
 									</span>
 								</button>
 								{ this.state.currentIcon === 'houzz' && (
@@ -497,7 +497,7 @@ class edit extends Component {
 													value={ houzz }
 													/* eslint-disable jsx-a11y/no-autofocus */
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
-													placeholder={ __( 'https://houzz.com/' ) }
+													placeholder={ __( 'https://houzz.com/', 'coblocks' ) }
 													/* eslint-enable jsx-a11y/no-autofocus */
 													onChange={ value => setAttributes( { houzz: value } ) }
 												/>

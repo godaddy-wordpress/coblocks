@@ -33,6 +33,7 @@ const save = ( { attributes, className } ) => {
 		alignCells,
 		thumbnails,
 		responsiveHeight,
+		lightbox,
 	} = attributes;
 
 	const classes = classnames(
@@ -45,7 +46,7 @@ const save = ( { attributes, className } ) => {
 		'is-cropped',
 		...GalleryClasses( attributes ), {
 			'has-horizontal-gutter': gutter > 0,
-
+			'has-lightbox': lightbox,
 		}
 	);
 

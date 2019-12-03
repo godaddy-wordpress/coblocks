@@ -23,7 +23,7 @@ const Inspector = props => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Styles' ) } initialOpen={ false }>
+			<PanelBody title={ __( 'Styles', 'coblocks' ) } initialOpen={ false }>
 				<div className="editor-block-styles block-editor-block-styles coblocks-editor-block-styles">
 					{ layoutOptions.map( style => (
 						<div
@@ -56,23 +56,23 @@ const Inspector = props => {
 				</div>
 			</PanelBody>
 
-			<PanelBody title={ __( 'Food & Drinks Settings' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Food & Drinks Settings', 'coblocks' ) } initialOpen={ true }>
 				<ToggleControl
-					label={ __( 'Images' ) }
+					label={ __( 'Images', 'coblocks' ) }
 					help={
 						attributes.showImages ?
-							__( 'Showing images for each item' ) :
-							__( 'Toggle to show images for each item.' )
+							__( 'Showing images for each item', 'coblocks' ) :
+							__( 'Toggle to show images for each item.', 'coblocks' )
 					}
 					checked={ attributes.showImages }
 					onChange={ onToggleImages }
 				/>
 				<ToggleControl
-					label={ __( 'Prices' ) }
+					label={ __( 'Prices', 'coblocks' ) }
 					help={
 						attributes.showPrices ?
-							__( 'Showing the price of each item' ) :
-							__( 'Toggle to show the price of each item.' )
+							__( 'Showing the price of each item', 'coblocks' ) :
+							__( 'Toggle to show the price of each item.', 'coblocks' )
 					}
 					checked={ attributes.showPrices }
 					onChange={ onTogglePrices }

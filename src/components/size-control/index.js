@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-import classnames from 'classnames';
 import map from 'lodash/map';
 
 /**
@@ -14,8 +13,8 @@ import './styles/editor.scss';
  */
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { Component, Fragment } from '@wordpress/element';
-import { ButtonGroup, Button } from '@wordpress/components';
+import { Component } from '@wordpress/element';
+import { ButtonGroup, Button, BaseControl, PanelRow } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
 
 class SizeControl extends Component {
@@ -62,11 +61,11 @@ class SizeControl extends Component {
 
 		const standardSizes = [
 			{
-				shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'L' : __( 'Large' ),
+				shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'L' : __( 'Large', 'coblocks' ),
 				size: 'lrg',
 			},
 			{
-				shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'XL' : __( 'Extra Large' ),
+				shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'XL' : __( 'Extra Large', 'coblocks' ),
 				size: 'xlrg',
 			},
 		];
@@ -113,11 +112,11 @@ class SizeControl extends Component {
 		if ( 'reverse-grid' === type ) {
 			const standardSizes = [
 				{
-					shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'S' : __( 'Small' ),
+					shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'S' : __( 'Small', 'coblocks' ),
 					size: 'sml',
 				},
 				{
-					shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'M' : __( 'Medium' ),
+					shortName: ( wideControlsEnabled === true && 'wide' === align ) || 'full' === align ? 'M' : __( 'Medium', 'coblocks' ),
 					size: 'med',
 				},
 			];
@@ -163,21 +162,13 @@ class SizeControl extends Component {
 			value,
 			resetValue = undefined,
 			label,
-			className,
 			reset = true,
 		} = this.props;
 
-		const classes = classnames(
-			'components-coblocks-size-control', {
-				[ className ]: className,
-			}
-		);
-
 		return (
-			<Fragment>
-				{ label && <p>{ label }</p> }
-				<div className={ classes }>
-					<ButtonGroup aria-label={ __( 'Select Size' ) }>
+			<BaseControl label={ label }>
+				<PanelRow>
+					<ButtonGroup aria-label={ __( 'Select Size', 'coblocks' ) }>
 						{ map( this.getSizes(), ( { size, shortName } ) => (
 							<Button
 								key={ size }
@@ -195,11 +186,11 @@ class SizeControl extends Component {
 							isSmall
 							onClick={ () => onChange( resetValue ) }
 						>
-							{ __( 'Reset' ) }
+							{ __( 'Reset', 'coblocks' ) }
 						</Button>
 					}
-				</div>
-			</Fragment>
+				</PanelRow>
+			</BaseControl>
 		);
 	}
 }

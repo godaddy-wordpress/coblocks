@@ -2,11 +2,6 @@
 	&.has-gutter {
 		overflow: hidden;
 	}
-
-	&:not(.has-gutter) {
-		margin-left: auto !important;
-		margin-right: auto !important;
-	}
 }
 
 // For desktop.

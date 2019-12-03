@@ -16,7 +16,7 @@ import transforms from './transforms';
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Block constants
@@ -24,13 +24,21 @@ import { __, _x } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Highlight', 'block name' ),
-	description: __( 'Draw attention and emphasize important narrative.' ),
+	/* translators: block name */
+	title: __( 'Highlight', 'coblocks' ),
+	/* translators: block description */
+	description: __( 'Draw attention and emphasize important narrative.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'text', 'block keyword' ), _x( 'paragraph', 'block keyword' ), 'coblocks' ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'text', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'paragraph', 'coblocks' ),
+	],
 	example: {
 		attributes: {
-			content: __( 'Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative.' ),
+			content: __( 'Add a highlight effect to paragraph text in order to grab attention and emphasize important narrative.', 'coblocks' ),
 		},
 	},
 	attributes,

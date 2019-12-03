@@ -56,9 +56,9 @@ class CoBlocks_Crop_Settings {
 	 */
 	public function register_endpoints() {
 
-		add_filter( 'ajax_query_attachments_args', [ $this, 'hide_cropped_from_library' ] );
-		add_action( 'wp_ajax_coblocks_crop_settings', [ $this, 'api_crop' ] );
-		add_action( 'wp_ajax_coblocks_crop_settings_original_image', [ $this, 'get_original_image' ] );
+		add_filter( 'ajax_query_attachments_args', array( $this, 'hide_cropped_from_library' ) );
+		add_action( 'wp_ajax_coblocks_crop_settings', array( $this, 'api_crop' ) );
+		add_action( 'wp_ajax_coblocks_crop_settings_original_image', array( $this, 'get_original_image' ) );
 
 	}
 
@@ -108,11 +108,11 @@ class CoBlocks_Crop_Settings {
 		$crop = isset( $attachment_meta[ self::CROP_META_KEY ] ) ? $attachment_meta[ self::CROP_META_KEY ] : null;
 
 		wp_send_json_success(
-			[
+			array(
 				'id'   => $original_image_id,
 				'url'  => wp_get_attachment_image_url( $original_image_id, 'original' ),
 				'crop' => $crop,
-			]
+			)
 		);
 
 	}
@@ -158,11 +158,11 @@ class CoBlocks_Crop_Settings {
 		}
 
 		wp_send_json_success(
-			[
+			array(
 				'success' => true,
 				'id'      => $new_id,
 				'url'     => wp_get_attachment_image_url( $new_id, 'original' ),
-			]
+			)
 		);
 
 	}
@@ -256,13 +256,13 @@ class CoBlocks_Crop_Settings {
 		$mime_type = $saved_image['mime-type'];
 
 		$attachment_id = wp_insert_attachment(
-			[
+			array(
 				'guid'           => $filename,
 				'post_mime_type' => $mime_type,
 				'post_title'     => $new_name,
 				'post_content'   => '',
 				'post_status'    => 'inherit',
-			],
+			),
 			$filename,
 			0
 		);
@@ -270,13 +270,13 @@ class CoBlocks_Crop_Settings {
 		$metadata = wp_generate_attachment_metadata( $attachment_id, $filename );
 
 		$metadata[ self::ORIGINAL_META_KEY ] = $original_image_id;
-		$metadata[ self::CROP_META_KEY ]     = [
+		$metadata[ self::CROP_META_KEY ]     = array(
 			'offsetX'  => $offset_x,
 			'offsetY'  => $offset_y,
 			'width'    => $width,
 			'height'   => $height,
 			'rotation' => $rotate,
-		];
+		);
 
 		wp_update_attachment_metadata( $attachment_id, $metadata );
 

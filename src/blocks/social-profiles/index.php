@@ -179,94 +179,18 @@ function coblocks_register_social_profiles_block() {
 		return;
 	}
 
+	// Load attributes from block.json.
+	ob_start();
+	include COBLOCKS_PLUGIN_DIR . 'src/blocks/social-profiles/block.json';
+	$metadata = json_decode( ob_get_clean(), true );
+
 	register_block_type(
 		'coblocks/social-profiles',
 		array(
 			'editor_script'   => 'coblocks-editor',
 			'editor_style'    => 'coblocks-editor',
 			'style'           => 'coblocks-frontend',
-			'attributes'      => array(
-				'align'                      => array(
-					'type' => 'string',
-					'enum' => array( 'wide', 'full' ),
-				),
-				'className'                  => array(
-					'type' => 'string',
-				),
-				'hasColors'                  => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'borderRadius'               => array(
-					'type'    => 'number',
-					'default' => 40,
-				),
-				'size'                       => array(
-					'type'    => 'string',
-					'default' => 'med',
-				),
-				'iconSize'                   => array(
-					'type'    => 'number',
-					'default' => 22,
-				),
-				'padding'                    => array(
-					'type'    => 'number',
-					'default' => 16,
-				),
-				'textAlign'                  => array(
-					'type' => 'string',
-				),
-				'backgroundColor'            => array(
-					'type' => 'string',
-				),
-				'blockBackgroundColor'       => array(
-					'type' => 'string',
-				),
-				'customBlockBackgroundColor' => array(
-					'type' => 'string',
-				),
-				'customBackgroundColor'      => array(
-					'type' => 'string',
-				),
-				'textColor'                  => array(
-					'type' => 'string',
-				),
-				'customTextColor'            => array(
-					'type' => 'string',
-				),
-				'facebook'                   => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'twitter'                    => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'instagram'                  => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'pinterest'                  => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'linkedin'                   => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'youtube'                    => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'yelp'                       => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'houzz'                      => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-			),
+			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_social_profiles_block',
 		)
 	);

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/gallery-collage should render with images 1`] = `
+"<!-- wp:coblocks/gallery-collage -->
+<div class=\\"wp-block-coblocks-gallery-collage has-caption-style-dark\\"><ul><li class=\\"wp-block-coblocks-gallery-collage__item pb-2 sm:pb-2 lg:pb-2\\"><figure class=\\"wp-block-coblocks-gallery-collage__figure\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" data-id=\\"1\\" class=\\"wp-image-1\\"/></figure></li></ul></div>
+<!-- /wp:coblocks/gallery-collage -->"
+`;

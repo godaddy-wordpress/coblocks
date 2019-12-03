@@ -29,7 +29,7 @@ class Controls extends Component {
 					<Toolbar>
 						<CSSGridToolbar
 							icon={ icons.grid }
-							label={ __( 'Change layout' ) }
+							label={ __( 'Change layout', 'coblocks' ) }
 							props={ this.props }
 						/>
 					</Toolbar>

@@ -9,31 +9,69 @@ import './styles/style.scss';
  */
 import edit from './edit';
 import icon from './icon';
-import metadata from './block.json';
 
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Block constants
  */
+const metadata = {
+	name: 'coblocks/form',
+	category: 'coblocks',
+	attributes: {
+		subject: {
+			type: 'string',
+			default: null,
+		},
+		to: {
+			type: 'string',
+			default: null,
+		},
+		submitButtonText: {
+			type: 'string',
+			default: null,
+		},
+		customBackgroundButtonColor: {
+			type: 'string',
+		},
+		customTextButtonColor: {
+			type: 'string',
+		},
+		submitButtonClasses: {
+			type: 'string',
+		},
+	},
+};
+
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: _x( 'Form', 'block name' ),
-	description: __( 'Add a contact form to your page.' ),
+	/* translators: block name */
+	title: __( 'Form', 'coblocks' ),
+	/* translators: block description */
+	description: __( 'Add a contact form to your page.', 'coblocks' ),
 	icon,
-	keywords: [ _x( 'email', 'block keyword' ), _x( 'about', 'block keyword' ), _x( 'contact', 'block keyword' ) ],
+	keywords: [
+		'coblocks',
+		/* translators: block keyword */
+		__( 'email', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'about', 'coblocks' ),
+		/* translators: block keyword */
+		__( 'contact', 'coblocks' ),
+	],
 	supports: {
 		reusable: false,
 		html: false,
+		customClassName: false,
 	},
 	example: {
 		attributes: {
-			subject: __( 'Subject example' ),
+			subject: __( 'Subject example', 'coblocks' ),
 		},
 	},
 	attributes,
