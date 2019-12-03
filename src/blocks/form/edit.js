@@ -287,20 +287,21 @@ class FormEdit extends Component {
 							coblocksBlockData.form.emailSubject
 					}
 					onChange={ this.onChangeSubject }
+					help={ <Fragment> { __( 'You may use the following tags in the subject field: ', 'coblocks' ) }
+						<Button
+							isLink
+							onClick={ this.appendTagsToSubject }
+						>
+							{ '[' + __( 'email', 'coblocks' ) + ']' }
+						</Button>
+						<Button
+							isLink
+							onClick={ this.appendTagsToSubject }
+						>
+							{ '[' + __( 'name', 'coblocks' ) + ']' }
+						</Button></Fragment> }
+
 				/>
-				{ __( 'In the Subject field you can use these mail-tags: ', 'coblocks' ) }
-				<Button
-					isLink
-					onClick={ this.appendTagsToSubject }
-				>
-					{ '[ ' + __( 'email', 'coblocks' ) + ' ]' }
-				</Button>
-				<Button
-					isLink
-					onClick={ this.appendTagsToSubject }
-				>
-					{ '[ ' + __( 'name', 'coblocks' ) + ' ]' }
-				</Button>
 
 			</Fragment>
 		);
