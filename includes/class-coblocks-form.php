@@ -939,10 +939,11 @@ class CoBlocks_Form {
 
 					// phpcs:disable WordPress.Security.NonceVerification.Missing
 					if ( 'name' === $slug_match ) {
+
 						if ( isset( $_POST[ $name_field_id ]['value'] ) ) {
 
 							$name_field_value = is_array( $_POST[ $name_field_id ]['value'] ) ? sanitize_text_field( implode( ' ', $_POST[ $name_field_id ]['value'] ) ) : sanitize_text_field( $_POST[ $name_field_id ]['value'] );
-							$value            = ( '' === $name_field_value ) ? $matches[0][ $key ] : $name_field_value;
+							$value            = empty( $name_field_value ) ? $matches[0][ $key ] : $name_field_value;
 
 						} else {
 
