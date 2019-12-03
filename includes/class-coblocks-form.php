@@ -309,6 +309,7 @@ class CoBlocks_Form {
 
 		?>
 
+		<input type="hidden" id="email-field-id" name="email-field-id" class="coblocks-email-field-id" value="field-<?php echo esc_attr( $label_slug ); ?>" />
 		<input type="email" id="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--email" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
@@ -797,10 +798,13 @@ class CoBlocks_Form {
 
 		}
 
-		$post_id = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
+		$post_id        = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
+		$post_title     = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
+		$email_field_id = isset( $_POST['email-field-id'] ) ? esc_html( $_POST['email-field-id'] ) : 'field-email';
+
 		$to      = isset( $atts['to'] ) ? sanitize_email( $atts['to'] ) : get_option( 'admin_email' );
 
-		unset( $_POST['form-submit'], $_POST['_wp_http_referer'], $_POST['action'], $_POST['form-hash'], $_POST['coblocks-verify-email'] );
+		unset( $_POST['form-submit'], $_POST['_wp_http_referer'], $_POST['action'], $_POST['form-hash'], $_POST['coblocks-verify-email'], $_POST['email-field-id'] );
 
 		if ( isset( $_POST['g-recaptcha-token'] ) ) {
 
@@ -858,6 +862,8 @@ class CoBlocks_Form {
 		 */
 		$email_content = (string) apply_filters( 'coblocks_form_email_content', $this->email_content, $_POST, $post_id );
 
+		$reply_to = isset( $_POST[ $email_field_id ]['value'] ) ? esc_html( $_POST[ $email_field_id ]['value'] ) : esc_html( get_bloginfo( 'admin_email' ) );
+
 		/**
 		 * Filter the form email headers.
 		 *
@@ -868,7 +874,7 @@ class CoBlocks_Form {
 		$email_headers = (array) apply_filters(
 			'coblocks_form_email_headers',
 			array(
-				"Reply-To: {$_POST['field-email']['value']}",
+				"Reply-To: {$reply_to}",
 			),
 			$_POST,
 			$post_id
