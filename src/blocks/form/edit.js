@@ -58,6 +58,7 @@ class FormEdit extends Component {
 		this.removeRecaptchaKey = this.removeRecaptchaKey.bind( this );
 		this.setTemplate = this.setTemplate.bind( this );
 		this.supportsExperimentalProps = this.supportsExperimentalProps.bind( this );
+		this.appendTagsToSubject = this.appendTagsToSubject.bind( this );
 
 		this.state = {
 			toError: error && error.length ? error : null,
@@ -233,6 +234,13 @@ class FormEdit extends Component {
 		} );
 	}
 
+	appendTagsToSubject( event ) {
+		event.target.blur();
+		const { attributes } = this.props;
+		const { subject } = attributes;
+		this.onChangeSubject( subject + event.target.innerHTML );
+	}
+
 	removeRecaptchaKey() {
 		this.setState( {
 			recaptchaSiteKey: '',
@@ -280,7 +288,20 @@ class FormEdit extends Component {
 					}
 					onChange={ this.onChangeSubject }
 				/>
-				{ __( 'In the Subject field you can use these mail-tags: [name] [email]' ) }
+				{ __( 'In the Subject field you can use these mail-tags: ', 'coblocks' ) }
+				<Button
+					isLink
+					onClick={ this.appendTagsToSubject }
+				>
+					{ '[ ' + __( 'email', 'coblocks' ) + ' ]' }
+				</Button>
+				<Button
+					isLink
+					onClick={ this.appendTagsToSubject }
+				>
+					{ '[ ' + __( 'name', 'coblocks' ) + ' ]' }
+				</Button>
+
 			</Fragment>
 		);
 	}
