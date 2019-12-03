@@ -36,25 +36,7 @@ const transforms = {
 		},
 		{
 			type: 'block',
-			blocks: [ 'coblocks/gallery-thumbnails' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-				} )
-			),
-		},
-		{
-			type: 'block',
 			blocks: [ 'coblocks/gallery-offset' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'coblocks/gallery-auto-height' ],
 			transform: ( attributes ) => (
 				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
