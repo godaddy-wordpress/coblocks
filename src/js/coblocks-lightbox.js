@@ -71,5 +71,23 @@
 			image.attr( 'src', imagePreloader[ `img-${ index }` ].src );
 			counter.html( ( index + 1 ) + ' / ' + images.length );
 		}
+
+		$( window ).keydown( function( event ) {
+			const lightboxDisplayValue = wrapper.css( 'display' );
+			const lightboxIsOpen = ( typeof lightboxDisplayValue !== typeof undefined && lightboxDisplayValue !== 'none' );
+			if ( lightboxIsOpen ) {
+				switch ( event.which ) {
+					case 27 : // Esc key
+						close.trigger( 'click' );
+						break;
+					case 37 : // Arrow left
+						arrowLeftContainer.trigger( 'click' );
+						break;
+					case 39 : // Arrow left
+						arrowRightContainer.trigger( 'click' );
+						break;
+				}
+			}
+		} );
 	}
 }( jQuery ) );
