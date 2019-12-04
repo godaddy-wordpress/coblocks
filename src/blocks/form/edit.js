@@ -236,7 +236,7 @@ class FormEdit extends Component {
 
 	appendTagsToSubject( event ) {
 		const { attributes } = this.props;
-		var { subject } = attributes;
+		let { subject } = attributes;
 		if ( null === subject ) {
 			subject = jQuery( event.target ).closest( 'div.components-base-control' ).find( 'input[type="text"]' ).val();
 		}
@@ -294,13 +294,13 @@ class FormEdit extends Component {
 							isLink
 							onClick={ this.appendTagsToSubject }
 						>
-							[{__( 'email', 'coblocks' )}]
+							[{ __( 'email', 'coblocks' ) }]
 						</Button>
 						<Button
 							isLink
 							onClick={ this.appendTagsToSubject }
 						>
-							[{__( 'name', 'coblocks' )}]
+							[{ __( 'name', 'coblocks' ) }]
 						</Button></Fragment> }
 
 				/>
