@@ -2,9 +2,6 @@
 **/*.build.js
 **/node_modules/**
 **/vendor/**
-**/dist/blocks.build.js
-**/dist/blocks.editor.build.css
-**/dist/*.css
 **/build/**
 *.sublime-project
 *.sublime-workspace
@@ -15,9 +12,8 @@ cypress/
 .dev/tests/cypress/screenshots
 .dev/tests/cypress/wp_creds.json
 sftp.json
-dist/blocks.build.js
-dist/blocks.editor.build.css
-dist/blocks.style.build.css
+dist/*
+!dist/images/
 sandbox.json
 /.idea/
 **/.DS_Store
