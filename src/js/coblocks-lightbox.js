@@ -80,10 +80,16 @@
 					case 27 : // Esc key
 						close.trigger( 'click' );
 						break;
-					case 37 : // Arrow left
+					case 37 : // Arrow left or 'A' key.
 						arrowLeftContainer.trigger( 'click' );
 						break;
-					case 39 : // Arrow left
+					case 65 : // 'A' key.
+						arrowLeftContainer.trigger( 'click' );
+						break;
+					case 39 : // Arrow right.
+						arrowRightContainer.trigger( 'click' );
+						break;
+					case 68 : // 'D' key.
 						arrowRightContainer.trigger( 'click' );
 						break;
 				}
