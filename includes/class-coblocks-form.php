@@ -440,7 +440,8 @@ class CoBlocks_Form {
 		$the_options = array_filter( $atts['options'] );
 
 		$label      = isset( $atts['label'] ) ? $atts['label'] : __( 'Choose one', 'coblocks' );
-		$label_slug = $radio_count > 1 ? sanitize_title( $label . '-' . $radio_count ) : sanitize_title( $label );
+		$label_desc = sanitize_title( $label ) !== 'choose-one' ? sanitize_title( $label ) : 'radio';
+		$label_slug = $radio_count > 1 ? sanitize_title( $label_desc . '-' . $radio_count ) : sanitize_title( $label_desc );
 
 		ob_start();
 
