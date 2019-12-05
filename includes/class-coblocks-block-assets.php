@@ -169,14 +169,6 @@ class CoBlocks_Block_Assets {
 				true
 			);
 
-			wp_enqueue_script(
-				$this->slug . '-flickity-buttons',
-				$dir . $this->slug . '-flickity-buttons' . COBLOCKS_ASSET_SUFFIX . '.js',
-				array( 'jquery', 'coblocks-flickity' ),
-				COBLOCKS_VERSION,
-				true
-			);
-
 		}
 
 		// Post Carousel block.
