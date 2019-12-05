@@ -98,10 +98,6 @@
 	.md\:-mb-3 {
 		margin-bottom: -#{map-get($margin, 3)};
 	}
-
-	.md\:-mb-4 {
-		margin-bottom: -#{map-get($margin, 4)};
-	}
 }
 
 // 1280px+
