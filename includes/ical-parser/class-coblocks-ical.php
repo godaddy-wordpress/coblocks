@@ -151,30 +151,14 @@ class CoBlocks_ICal {
 	 *
 	 * @var array
 	 */
-	protected $day_ordinals = array(
-		1 => 'first',
-		2 => 'second',
-		3 => 'third',
-		4 => 'fourth',
-		5 => 'fifth',
-	);
+	protected $day_ordinals;
 
 	/**
 	 * An associative array containing weekday conversion data
 	 *
 	 * @var array
 	 */
-	protected $weekdays = array(
-		'SU'      => 'sunday of',
-		'MO'      => 'monday of',
-		'TU'      => 'tuesday of',
-		'WE'      => 'wednesday of',
-		'TH'      => 'thursday of',
-		'FR'      => 'friday of',
-		'SA'      => 'saturday of',
-		'day'     => 'day of',
-		'weekday' => 'weekday',
-	);
+	protected $weekdays;
 
 	/**
 	 * An associative array containing week conversion data
@@ -193,32 +177,14 @@ class CoBlocks_ICal {
 	 *
 	 * @var array
 	 */
-	protected $month_names = array(
-		1  => 'January',
-		2  => 'February',
-		3  => 'March',
-		4  => 'April',
-		5  => 'May',
-		6  => 'June',
-		7  => 'July',
-		8  => 'August',
-		9  => 'September',
-		10 => 'October',
-		11 => 'November',
-		12 => 'December',
-	);
+	protected $month_names;
 
 	/**
 	 * An associative array containing frequency conversion terms
 	 *
 	 * @var array
 	 */
-	protected $frequency_conversion = array(
-		'DAILY'   => 'day',
-		'WEEKLY'  => 'week',
-		'MONTHLY' => 'month',
-		'YEARLY'  => 'year',
-	);
+	protected $frequency_conversion;
 
 	/**
 	 * Holds the username and password for HTTP basic authentication
@@ -542,6 +508,48 @@ class CoBlocks_ICal {
 	 */
 	public function __construct( $files = false, array $options = array() ) {
 		ini_set( 'auto_detect_line_endings', '1' );
+
+		$this->day_ordinals = array(
+			1 => __('first', 'coblocks'),
+			2 => __('second', 'coblocks'),
+			3 => __('third', 'coblocks'),
+			4 => __('fourth', 'coblocks'),
+			5 => __('fifth', 'coblocks'),
+		);
+
+		$this->weekdays  = array(
+			'SU'      => __('sunday of', 'coblocks'),
+			'MO'      => __('monday of', 'coblocks'),
+			'TU'      => __('tuesday of', 'coblocks'),
+			'WE'      => __('wednesday of', 'coblocks'),
+			'TH'      => __('thursday of', 'coblocks'),
+			'FR'      => __('friday of', 'coblocks'),
+			'SA'      => __('saturday of', 'coblocks'),
+			'day'     => __('day of', 'coblocks'),
+			'weekday' => __('weekday', 'coblocks'),
+		);
+
+		$this->month_names = array(
+			1  => __('January', 'coblocks'),
+			2  => __('February', 'coblocks'),
+			3  => __('March', 'coblocks'),
+			4  => __('April', 'coblocks'),
+			5  => __('May', 'coblocks'),
+			6  => __('June', 'coblocks'),
+			7  => __('July', 'coblocks'),
+			8  => __('August', 'coblocks'),
+			9  => __('September', 'coblocks'),
+			10 => __('October', 'coblocks'),
+			11 => __('November', 'coblocks'),
+			12 => __('December', 'coblocks'),
+		);
+
+		$this->frequency_conversion = array(
+			'DAILY'   => __('day', 'coblocks'),
+			'WEEKLY'  => __('week', 'coblocks'),
+			'MONTHLY' => __('month', 'coblocks'),
+			'YEARLY'  => __('year', 'coblocks'),
+		);
 
 		foreach ( $options as $option => $value ) {
 			if ( in_array( $option, self::$configurable_options, true ) ) {
@@ -2267,7 +2275,7 @@ class CoBlocks_ICal {
 		$range_start = new \DateTime( 'now', new \DateTimeZone( $this->default_time_zone ) );
 		$range_end   = new \DateTime( 'now', new \DateTimeZone( $this->default_time_zone ) );
 
-		$date_interval = \date_interval::createFromDateString( $interval );
+		$date_interval = \DateInterval::createFromDateString( $interval );
 		$range_end->add( $date_interval );
 
 		return $this->events_from_range( $range_start->format( 'Y-m-d' ), $range_end->format( 'Y-m-d' ) );
@@ -2618,7 +2626,6 @@ class CoBlocks_ICal {
 						$current_time_zone = self::TIME_ZONE_UTC;
 					}
 
-					//TODO this was new Carbon
 					$output[] = new \DateTime( $ical_date, $current_time_zone );
 
 					if ( $key === $final_key ) {
@@ -2773,7 +2780,6 @@ class CoBlocks_ICal {
 			$timezone = $this->default_time_zone;
 		}
 
-		//TODO this was new Carbon
 		$a = new \DateTime( $search_date, $timezone );
 		$b = $exdate->addSeconds( $recurring_offset );
 

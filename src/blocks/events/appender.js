@@ -14,7 +14,7 @@ const CustomAppender = ( { onClick = noop } ) => {
 		<div className="coblocks-list-appender">
 			<IconButton
 				icon="insert"
-				label={ __( 'Add Event' ) }
+				label={ __( 'Add Event', 'coblocks' ) }
 				labelPosition="bottom"
 				className="coblocks-list-appender__toggle"
 				onClick={ onClick }

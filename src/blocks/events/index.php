@@ -23,7 +23,7 @@ function coblocks_render_events_block( $attributes, $content ) {
 
 	try {
 		$ical = new \CoBlocks_ICal(
-			'ICal.ics',
+			false,
 			// Default values.
 			array(
 				'default_span'                  => 2,
@@ -153,47 +153,15 @@ function coblocks_register_events_block() {
 		true
 	);
 
+	// Load attributes from block.json.
+	ob_start();
+	include COBLOCKS_PLUGIN_DIR . 'src/blocks/events/block.json';
+	$metadata = json_decode( ob_get_clean(), true );
+
 	register_block_type(
-		'coblocks/events',
+		$metadata['name'],
 		array(
-			'attributes'      => array(
-				'align'               => array(
-					'type' => 'string',
-				),
-				'className'           => array(
-					'type' => 'string',
-				),
-				'linkACalendar'       => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'externalCalendarUrl' => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'eventsRange'         => array(
-					'type'    => 'string',
-					'default' => 'all',
-				),
-				'eventsToShow'        => array(
-					'type'    => 'number',
-					'default' => 5,
-				),
-				'currrentPage'        => array(
-					'type'    => 'number',
-					'default' => 0,
-				),
-				'childrenLength'      => array(
-					'type'    => 'number',
-					'default' => 0,
-				),
-				'textColor'           => array(
-					'type' => 'string',
-				),
-				'customTextColor'     => array(
-					'type' => 'string',
-				),
-			),
+			'attributes'      => $metadata['attributes'],
 			'render_callback' => 'coblocks_render_events_block',
 			'editor_script'   => 'coblocks-events',
 		)

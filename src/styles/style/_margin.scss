@@ -139,6 +139,13 @@
 	}
 }
 
+// Shim as Gutenberg removes margin-bottom from lists.
+.editor-styles-wrapper {
+	.mb {
+		@include utilities($margin, "margin-bottom", "-");
+	}
+}
+
 //Old utitlies.
 body {
 	.has-margin {

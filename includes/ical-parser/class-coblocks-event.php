@@ -175,42 +175,6 @@ class CoBlocks_ICal_Event {
 	}
 
 	/**
-	 * Returns Event data excluding anything blank
-	 * within an HTML template
-	 *
-	 * @param  string $html HTML template to use.
-	 *
-	 * @return string
-	 */
-	public function print_data( $html = self::HTML_TEMPLATE ) {
-		$data   = array(
-			'SUMMARY'       => $this->summary,
-			'DTSTART'       => $this->dtstart,
-			'DTEND'         => $this->dtend,
-			'DTSTART_TZ'    => $this->dtstart_tz,
-			'DTEND_TZ'      => $this->dtend_tz,
-			'DURATION'      => $this->duration,
-			'DTSTAMP'       => $this->dtstamp,
-			'UID'           => $this->uid,
-			'CREATED'       => $this->created,
-			'LAST-MODIFIED' => $this->lastmodified,
-			'DESCRIPTION'   => $this->description,
-			'LOCATION'      => $this->location,
-			'SEQUENCE'      => $this->sequence,
-			'STATUS'        => $this->status,
-			'TRANSP'        => $this->transp,
-			'ORGANISER'     => $this->organizer,
-			'ATTENDEE(S)'   => $this->attendee,
-		);
-		$data   = array_filter( $data ); // Remove any blank values.
-		$output = '';
-		foreach ( $data as $key => $value ) {
-			$output .= sprintf( $html, $key, $value );
-		}
-		return $output;
-	}
-
-	/**
 	 * Converts the given input to snake_case
 	 *
 	 * @param  string $input     Input value.
@@ -221,7 +185,7 @@ class CoBlocks_ICal_Event {
 	 */
 	protected static function snake_case( $input, $glue = '_', $separator = '-' ) {
 		$input = preg_split( '/(?<=[a-z])(?=[A-Z])/x', $input );
-		$input = implode( $input, $glue );
+		$input = implode( $glue, $input );
 		$input = str_replace( $separator, $glue, $input );
 		return strtolower( $input );
 	}

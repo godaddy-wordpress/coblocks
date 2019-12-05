@@ -98,7 +98,7 @@ class EventsEdit extends Component {
 							value={ attributes.description }
 							tagName="span"
 							className="wp-block-coblocks-events__description display-block"
-							placeholder={ __( 'Write event description…' ) }
+							placeholder={ __( 'Write event description…', 'coblocks' ) }
 							onChange={ description => setAttributes( { description } ) }
 							keepPlaceholderOnFocus
 						/>
@@ -108,7 +108,7 @@ class EventsEdit extends Component {
 							value={ attributes.eventTime }
 							tagName="span"
 							className="wp-block-coblocks-events__time font-bold display-block mb-1"
-							placeholder={ __( 'Time…' ) }
+							placeholder={ __( 'Time…', 'coblocks' ) }
 							onChange={ eventTime => setAttributes( { eventTime } ) }
 							keepPlaceholderOnFocus
 						/>
@@ -116,7 +116,7 @@ class EventsEdit extends Component {
 							value={ attributes.eventLocation }
 							tagName="span"
 							className="wp-block-coblocks-events__location display-block"
-							placeholder={ __( 'Location…' ) }
+							placeholder={ __( 'Location…', 'coblocks' ) }
 							onChange={ eventLocation => setAttributes( { eventLocation } ) }
 							keepPlaceholderOnFocus
 						/>

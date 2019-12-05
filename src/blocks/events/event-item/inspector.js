@@ -20,14 +20,14 @@ const Inspector = props => {
 		{
 			value: textColor.color,
 			onChange: setTextColor,
-			label: __( 'Text Color' ),
+			label: __( 'Text Color', 'coblocks' ),
 		},
 	];
 
 	return (
 		<InspectorControls>
 			<PanelColorSettings
-				title={ __( 'Color Settings' ) }
+				title={ __( 'Color Settings', 'coblocks' ) }
 				initialOpen={ false }
 				colorSettings={ defaultColors }
 			>

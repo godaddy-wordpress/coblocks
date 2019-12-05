@@ -14,13 +14,14 @@ const Inspector = props => {
 	} = props;
 
 	const {
+		eventsRange,
 		eventsToShow,
 		linkACalendar,
 		externalCalendarUrl,
 		childrenLength,
 	} = attributes;
 
-	const eventsRange = [
+	const eventsRangeOptions = [
 		{ value: '1 week', label: __( '1 Week', 'coblocks' ) },
 		{ value: '2 weeks', label: __( '2 Weeks', 'coblocks' ) },
 		{ value: '1 month', label: __( '1 Month', 'coblocks' ) },
@@ -29,7 +30,7 @@ const Inspector = props => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Events Settings' ) } initialOpen={ true }>
+			<PanelBody title={ __( 'Events Settings', 'coblocks' ) } initialOpen={ true }>
 				<ToggleControl
 					label={ __( 'Link a Calendar', 'coblocks' ) }
 					help={
@@ -51,9 +52,9 @@ const Inspector = props => {
 				}
 				{ linkACalendar && externalCalendarUrl &&
 					<SelectControl
-						label={ __( 'Period' ) }
+						label={ __( 'Period', 'coblocks' ) }
 						value={ eventsRange }
-						options={ eventsRange }
+						options={ eventsRangeOptions }
 						help={ __( 'Show events from the period (100 events max).', 'coblocks' ) }
 						onChange={ ( value ) => setAttributes( { eventsRange: value } ) }
 					/>
