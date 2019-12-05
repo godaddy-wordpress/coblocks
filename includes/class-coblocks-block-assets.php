@@ -70,10 +70,10 @@ class CoBlocks_Block_Assets {
 
 		// Styles.
 		wp_enqueue_style(
-				$this->slug . '-frontend',
-				$this->url . '/dist/blocks.style.build.css',
-				array(),
-				COBLOCKS_VERSION
+			$this->slug . '-frontend',
+			$this->url . '/dist/blocks.style.build.css',
+			array(),
+			COBLOCKS_VERSION
 		);
 
 		/**
