@@ -22,7 +22,7 @@
 		const arrowRight = $( '<div/>', { class: 'arrow-right' } );
 		const arrowLeft = $( '<div/>', { class: 'arrow-left' } );
 
-		const images = $( `.has-lightbox.lightbox-${ lightboxIndex } figure img` );
+		const images = $( `.has-lightbox.lightbox-${ lightboxIndex } > :not(.carousel-nav) figure img` );
 		let index;
 
 		modalHeading.append( counter, close );
@@ -71,5 +71,29 @@
 			image.attr( 'src', imagePreloader[ `img-${ index }` ].src );
 			counter.html( ( index + 1 ) + ' / ' + images.length );
 		}
+
+		$( window ).keydown( function( event ) {
+			const lightboxDisplayValue = wrapper.css( 'display' );
+			const lightboxIsOpen = ( typeof lightboxDisplayValue !== typeof undefined && lightboxDisplayValue !== 'none' );
+			if ( lightboxIsOpen ) {
+				switch ( event.which ) {
+					case 27 : // Esc key
+						close.trigger( 'click' );
+						break;
+					case 37 : // Arrow left or 'A' key.
+						arrowLeftContainer.trigger( 'click' );
+						break;
+					case 65 : // 'A' key.
+						arrowLeftContainer.trigger( 'click' );
+						break;
+					case 39 : // Arrow right.
+						arrowRightContainer.trigger( 'click' );
+						break;
+					case 68 : // 'D' key.
+						arrowRightContainer.trigger( 'click' );
+						break;
+				}
+			}
+		} );
 	}
 }( jQuery ) );
