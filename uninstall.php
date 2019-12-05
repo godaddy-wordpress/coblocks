@@ -24,4 +24,3 @@ foreach ( $coblocks_options as $coblocks_option ) {
 	delete_option( $coblocks_option );
 
 }
-
