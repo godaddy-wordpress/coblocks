@@ -11,7 +11,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 }
 
-$options = array(
+$coblocks_options = array(
 	'coblocks_settings_api',
 	'coblocks_plugin_feedback_activation_date',
 	'coblocks_date_installed',
@@ -19,8 +19,8 @@ $options = array(
 	'coblocks_plugin_feedback_no_bug',
 );
 
-foreach ( $options as $option ) {
+foreach ( $coblocks_options as $coblocks_option ) {
 
-	delete_option( $option );
+	delete_option( $coblocks_option );
 
 }
