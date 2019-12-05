@@ -116,21 +116,22 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 ### Enhancements
-* [Update Gallery blocks](https://github.com/godaddy-wordpress/coblocks/pull/1142) to use core UX patterns
-* [Hide avatar placeholder](https://github.com/godaddy-wordpress/coblocks/pull/1074) on Author block when not in use
-* Add [top and bottom wave style](https://github.com/godaddy-wordpress/coblocks/pull/1123) to core Cover block
-* Add [lightbox support to the Collage block](https://github.com/godaddy-wordpress/coblocks/pull/1141)
+* Introduce [Offset Gallery](https://github.com/godaddy-wordpress/coblocks/pull/1144) block 🎉
+* Allow [dynamic subject lines](https://github.com/godaddy-wordpress/coblocks/pull/1017) with Form block submissions
+* Use consistent [styling for the next and previous](https://github.com/godaddy-wordpress/coblocks/pull/1166) buttons in the Carousel block and Lightbox
+* Add [keyboard shortcuts](https://github.com/godaddy-wordpress/coblocks/pull/1170) for navigating images in a lightbox
+* Introduce [end-to-end testing](https://github.com/godaddy-wordpress/coblocks/pull/1139) using Cypress
+* Add [Lightbox functionality to the Carousel block](https://github.com/godaddy-wordpress/coblocks/pull/1165)
+* [Remove minimum height limitation](https://github.com/godaddy-wordpress/coblocks/pull/1167) on the Carousel block
+* New shared component: [Option Selector Control](https://github.com/godaddy-wordpress/coblocks/pull/1163)
+* Add [Form block layout templates](https://github.com/godaddy-wordpress/coblocks/pull/1128)
 
 ### Bug Fixes
-* Explicitly set block classnames instead of using the generated className prop ([#1152](https://github.com/godaddy-wordpress/coblocks/pull/1152) and [#1150](https://github.com/godaddy-wordpress/coblocks/pull/1150))
-* Allow fields to have identical [display labels](https://github.com/godaddy-wordpress/coblocks/pull/1146)
-* Ensure avatar image [styles override core styles](https://github.com/godaddy-wordpress/coblocks/pull/1137)
-* Ensure all __() functions [use a text domain](https://github.com/godaddy-wordpress/coblocks/pull/1135)
+* Use [descriptive element name](https://github.com/godaddy-wordpress/coblocks/pull/1023) for Form block radio buttons
 
 ### Misc
-* [Remove excess admin styles from src](https://github.com/godaddy-wordpress/coblocks/pull/1118)
-* [Update example images](https://github.com/godaddy-wordpress/coblocks/pull/1134) to use those from WordPress core
-* Update [classes used in editor styling](https://github.com/godaddy-wordpress/coblocks/pull/1138) for consistency
-* [Remove CoBlocks Block Manager](https://github.com/godaddy-wordpress/coblocks/pull/1110)
-* [Remove unused constant](https://github.com/godaddy-wordpress/coblocks/pull/1148)
-* [Ignore externals on `svn co`](https://github.com/godaddy-wordpress/coblocks/pull/1147)
+* [Cleanup CoBlocks options](https://github.com/godaddy-wordpress/coblocks/pull/1172) from database on uninstall
+* [Generate translation files on master changes](https://github.com/godaddy-wordpress/coblocks/pull/1164)
+* [Create CONTRIBUTORS.md](https://github.com/godaddy-wordpress/coblocks/pull/1158)
+* Update links to point at the [GoDaddy WordPress GitHub Organization](https://github.com/godaddy-wordpress/coblocks/pull/1159)
+* Update [contributor callout](https://github.com/godaddy-wordpress/coblocks/pull/1126) on README
