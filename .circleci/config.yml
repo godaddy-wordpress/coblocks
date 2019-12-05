@@ -207,6 +207,11 @@ jobs:
             - "14:ee:bc:31:0f:50:7e:fe:8b:56:87:f8:56:db:48:5b"
       - checkout
       - run:
+          name: Check commit message for skip flag
+          command: |
+            export GIT_COMMIT_DESC=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
+            if [[ $GIT_COMMIT_DESC == *"skip i18n"* ]]; then exit 0; fi
+      - run:
           name: Update npm
           command: sudo npm install -g npm@latest
       - run:
@@ -236,7 +241,7 @@ jobs:
             git config --global user.name "GoDaddy Translator"
             git add languages/coblocks.json
             git add languages/coblocks.pot
-            git commit -m "Update coblocks.pot/coblocks.json files [skip ci]"
+            git commit -m "Update coblocks.pot/coblocks.json files [skip i18n]"
             git push origin master --force --quiet
           path: ~/coblocks
 
