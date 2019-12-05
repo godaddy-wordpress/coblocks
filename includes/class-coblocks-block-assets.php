@@ -67,21 +67,32 @@ class CoBlocks_Block_Assets {
 	 * @access public
 	 */
 	public function block_assets() {
-		/**
-		 * Filters whether to load block css.
-		 *
-		 * @param bool $load_block_css whether the layout css should be loaded. Default true.
-		 */
-		$load_block_css = (bool) apply_filters( 'coblocks_block_styles_enabled', true );
-		if ( $load_block_css ) {
-			// Styles.
-			wp_enqueue_style(
+
+		// Styles.
+		wp_enqueue_style(
 				$this->slug . '-frontend',
 				$this->url . '/dist/blocks.style.build.css',
 				array(),
 				COBLOCKS_VERSION
+		);
+
+		/**
+		 * Filters whether to load utilitiy styles.
+		 *
+		 * @param bool $load_utility_styles whether the utility css should be loaded. Default true.
+		 */
+		$load_utility_styles = (bool) apply_filters( 'coblocks_utility_styles_enabled', true );
+
+		if ( $load_utility_styles ) {
+
+			// Mock wp_enqueue_style for utility styles.
+			wp_enqueue_style(
+				$this->slug . '-frontend',
+				$this->url . '/dist/utilities.style.build.css',
+				array(),
+				COBLOCKS_VERSION
 			);
-		}
+		};
 	}
 
 	/**
