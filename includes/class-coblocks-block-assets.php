@@ -102,8 +102,7 @@ class CoBlocks_Block_Assets {
 			false
 		);
 
-		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
-		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
+		$post_id = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 
 		/**
 		 * Filter the default block email address value
@@ -113,13 +112,15 @@ class CoBlocks_Block_Assets {
 		 */
 		$email_to = (string) apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), $post_id );
 
+		$form_subject = ( new CoBlocks_Form() )->default_subject();
+
 		wp_localize_script(
 			$this->slug . '-editor',
 			'coblocksBlockData',
 			array(
 				'form'                           => array(
 					'adminEmail'   => $email_to,
-					'emailSubject' => $post_title,
+					'emailSubject' => $form_subject,
 				),
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
