@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-12-03T16:32:54+00:00\n"
+"POT-Creation-Date: 2019-12-05T19:32:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -466,7 +466,7 @@ msgid "Dynamic HR Settings"
 msgstr ""
 
 #: src/blocks/dynamic-separator/inspector.js:46
-#: src/blocks/gallery-carousel/inspector.js:116
+#: src/blocks/gallery-carousel/inspector.js:114
 #: src/blocks/hero/inspector.js:108
 #: src/blocks/map/inspector.js:132
 msgid "Height in pixels"
@@ -563,13 +563,13 @@ msgid "Margin"
 msgstr ""
 
 #: src/blocks/features/inspector.js:164
-#: src/blocks/gallery-carousel/inspector.js:100
+#: src/blocks/gallery-carousel/inspector.js:98
 #: src/blocks/gallery-collage/inspector.js:84
 #: src/blocks/gallery-offset/inspector.js:117
 #: src/blocks/gallery-stacked/inspector.js:99
 #: src/blocks/row/inspector.js:202
 #: src/components/responsive-tabs-control/index.js:31
-#: src/blocks/gallery-carousel/inspector.js:94
+#: src/blocks/gallery-carousel/inspector.js:92
 #: src/blocks/gallery-offset/inspector.js:115
 msgid "Gutter"
 msgstr ""
@@ -1482,7 +1482,7 @@ msgstr ""
 msgid "photos"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:106
+#: src/blocks/gallery-carousel/inspector.js:104
 #: src/blocks/gallery-masonry/inspector.js:91
 #: src/blocks/gallery-offset/inspector.js:138
 #: src/blocks/gallery-stacked/inspector.js:105
@@ -1492,11 +1492,11 @@ msgstr ""
 msgid "Rounded Corners"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:142
+#: src/blocks/gallery-carousel/inspector.js:140
 msgid "Thumbnails"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:148
+#: src/blocks/gallery-carousel/inspector.js:146
 #: src/blocks/gallery-collage/inspector.js:111
 #: src/blocks/gallery-masonry/inspector.js:102
 #: src/blocks/gallery-offset/inspector.js:148
@@ -1504,27 +1504,27 @@ msgstr ""
 msgid "Lightbox"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:158
+#: src/blocks/gallery-carousel/inspector.js:156
 msgid "Responsive Height"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:49
+#: src/blocks/gallery-carousel/inspector.js:47
 msgid "Showing thumbnail navigation."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:49
+#: src/blocks/gallery-carousel/inspector.js:47
 msgid "Toggle to show thumbnails."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:53
+#: src/blocks/gallery-carousel/inspector.js:51
 msgid "Percentage based height is activated."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:53
+#: src/blocks/gallery-carousel/inspector.js:51
 msgid "Toggle for percentage based height."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:57
+#: src/blocks/gallery-carousel/inspector.js:55
 #: src/blocks/gallery-collage/inspector.js:39
 #: src/blocks/gallery-masonry/inspector.js:56
 #: src/blocks/gallery-offset/inspector.js:58
@@ -1532,7 +1532,7 @@ msgstr ""
 msgid "Image lightbox is enabled."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:57
+#: src/blocks/gallery-carousel/inspector.js:55
 #: src/blocks/gallery-collage/inspector.js:39
 #: src/blocks/gallery-masonry/inspector.js:57
 #: src/blocks/gallery-offset/inspector.js:59
@@ -1540,11 +1540,11 @@ msgstr ""
 msgid "Toggle to enable the image lightbox."
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:84
+#: src/blocks/gallery-carousel/inspector.js:82
 msgid "Carousel Settings"
 msgstr ""
 
-#: src/blocks/gallery-carousel/inspector.js:87
+#: src/blocks/gallery-carousel/inspector.js:85
 #: src/blocks/gallery-masonry/inspector.js:81
 #: src/blocks/gallery-offset/inspector.js:108
 #: src/blocks/icon/inspector.js:173
