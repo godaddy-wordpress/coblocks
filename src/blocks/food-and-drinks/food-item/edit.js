@@ -229,22 +229,38 @@ class FoodAndDrinksEdit extends Component {
 							<div className="wp-block-coblocks-food-item__attributes">
 								{ isSelected && attributes.title ? (
 									<span>
-										<IconButton
-											icon={ icons.popular }
-											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--popular"
-											onClick={ () =>
-												setAttributes( { popular: ! attributes.popular } )
-											}
-											label={ __( 'Popular', 'coblocks' ) }
+										<button
+											aria-label={ __( 'Add Popular Indicator', 'coblocks' ) }
+											label={ __( 'disabled Popular', 'coblocks' ) }
+											className={ classnames(
+												'wp-block-coblocks-food-item__attribute',
+												'wp-block-coblocks-food-item__attribute--popular',
+												{
+													'is-toggled': attributes.popular,
+												}
+											) }
+											onClick={ () =>	setAttributes( { popular: ! attributes.popular } ) }
 											isToggled={ attributes.popular }
-										/>
+										>
+											<span
+												className="wp-block-coblocks-food-item__icon"
+											/>
+										</button>
 									</span>
 								) : (
 									!! attributes.popular && (
-										<Icon
-											icon={ icons.popular }
-											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--popular"
-										/>
+										<span>
+											<button
+												aria-label={ __( 'Add Popular Indicator', 'coblocks' ) }
+												label={ __( 'enabled Popular', 'coblocks' ) }
+												className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--popular"
+												onClick={ () =>	setAttributes( { popular: ! attributes.popular } ) }
+											>
+												<span
+													className="wp-block-coblocks-food-item__icon"
+												/>
+											</button>
+										</span>
 									)
 								) }
 								{ isSelected && attributes.title ? (
