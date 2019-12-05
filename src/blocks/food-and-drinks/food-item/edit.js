@@ -3,7 +3,6 @@
  */
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
 import InspectorControls from './inspector';
-import icons from './icons';
 import fromEntries from '../../../js/coblocks-fromEntries';
 
 /**
@@ -16,7 +15,7 @@ import classnames from 'classnames';
  */
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-import { IconButton, DropZone, Spinner, Icon } from '@wordpress/components';
+import { IconButton, DropZone, Spinner } from '@wordpress/components';
 import { dispatch, select } from '@wordpress/data';
 import { RichText, MediaPlaceholder } from '@wordpress/block-editor';
 import { mediaUpload } from '@wordpress/editor';
@@ -227,11 +226,11 @@ class FoodAndDrinksEdit extends Component {
 								{ ...richTextAttributes }
 							/>
 							<div className="wp-block-coblocks-food-item__attributes">
-								{ isSelected && attributes.title ? (
+								{ ( isSelected && attributes.title ) || ( !! attributes.popular ) ? (
 									<span>
 										<button
-											aria-label={ __( 'Add Popular Indicator', 'coblocks' ) }
-											label={ __( 'disabled Popular', 'coblocks' ) }
+											aria-label={ __( 'Add popular indicator', 'coblocks' ) }
+											label={ __( 'Popular', 'coblocks' ) }
 											className={ classnames(
 												'wp-block-coblocks-food-item__attribute',
 												'wp-block-coblocks-food-item__attribute--popular',
@@ -240,159 +239,136 @@ class FoodAndDrinksEdit extends Component {
 												}
 											) }
 											onClick={ () =>	setAttributes( { popular: ! attributes.popular } ) }
-											isToggled={ attributes.popular }
 										>
 											<span
 												className="wp-block-coblocks-food-item__icon"
 											/>
 										</button>
 									</span>
-								) : (
-									!! attributes.popular && (
-										<span>
-											<button
-												aria-label={ __( 'Add Popular Indicator', 'coblocks' ) }
-												label={ __( 'enabled Popular', 'coblocks' ) }
-												className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--popular"
-												onClick={ () =>	setAttributes( { popular: ! attributes.popular } ) }
-											>
-												<span
-													className="wp-block-coblocks-food-item__icon"
-												/>
-											</button>
-										</span>
-									)
-								) }
-								{ isSelected && attributes.title ? (
+								) : null }
+								{ ( isSelected && attributes.title ) || ( !! attributes.spicy ) ? (
 									<span>
-										<IconButton
-											icon={ icons.spicy }
-											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicy"
-											onClick={ this.setSpicyTo }
+										<button
+											aria-label={ __( 'Add spicy indicator', 'coblocks' ) }
 											label={ __( 'Spicy', 'coblocks' ) }
-											isToggled={ attributes.spicy }
-										/>
-									</span>
-								) : (
-									!! attributes.spicy && (
-										<Icon
-											icon={ icons.spicy }
-											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicy"
-										/>
-									)
-								) }
-								{ isSelected && attributes.title && !! attributes.spicy ? (
-									<span>
-										<IconButton
-											icon={ icons.spicy }
-											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicier"
-											onClick={ () =>
-												setAttributes( { spicier: ! attributes.spicier } )
-											}
-											label={ __( 'Hot', 'coblocks' ) }
-											isToggled={ attributes.spicier }
-										/>
-									</span>
-								) : (
-									!! attributes.spicier && (
-										<Icon
-											icon={ icons.spicy }
-											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicier"
-										/>
-									)
-								) }
-								{ isSelected && attributes.title ? (
-									<span>
-										<IconButton
-											icon={ icons.vegetarian }
-											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegetarian"
-											onClick={ () =>
-												setAttributes( {
-													vegetarian: ! attributes.vegetarian,
-												} )
-											}
-											label={ __( 'Vegetarian', 'coblocks' ) }
-											isToggled={ attributes.vegetarian }
-										/>
-									</span>
-								) : (
-									!! attributes.vegetarian && (
-										<Icon
-											icon={ icons.vegetarian }
-											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegetarian"
-										/>
-									)
-								) }
-								{ isSelected &&
-								attributes.title && !! attributes.glutenFree &&
-								( ! attributes.pescatarian && ! attributes.vegan ) ? (
-									// disable reason: 10 tabs seems to be correct indent
-									// eslint-disable-next-line react/jsx-indent
-										<span>
-											<IconButton
-												icon={ icons.glutenFree }
-												className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--gf"
-												onClick={ () =>
-													setAttributes( {
-														glutenFree: ! attributes.glutenFree,
-													} )
+											className={ classnames(
+												'wp-block-coblocks-food-item__attribute',
+												'wp-block-coblocks-food-item__attribute--spicy',
+												{
+													'is-toggled': attributes.spicy,
 												}
-												label={ __( 'Gluten Free', 'coblocks' ) }
-												isToggled={ attributes.glutenFree }
+											) }
+											onClick={ () =>	setAttributes( { spicy: ! attributes.spicy } ) }
+										>
+											<span
+												className="wp-block-coblocks-food-item__icon"
 											/>
-										</span>
-									) : (
-										!! attributes.glutenFree && (
-											<Icon
-												icon={ icons.glutenFree }
-												className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--gf"
+										</button>
+									</span>
+								) : null }
+								{ ( isSelected && attributes.title && !! attributes.spicy ) || ( !! attributes.spicier ) ? (
+									<span>
+										<button
+											aria-label={ __( 'Add hot indicator', 'coblocks' ) }
+											label={ __( 'Hot', 'coblocks' ) }
+											className={ classnames(
+												'wp-block-coblocks-food-item__attribute',
+												'wp-block-coblocks-food-item__attribute--spicy',
+												{
+													'is-toggled': attributes.spicier,
+												}
+											) }
+											onClick={ () =>	setAttributes( { spicier: ! attributes.spicier } ) }
+										>
+											<span
+												className="wp-block-coblocks-food-item__icon"
 											/>
-										)
-									) }
-								{ isSelected && !! attributes.pescatarian ? (
+										</button>
+									</span>
+								) : null }
+								{ ( isSelected && attributes.title ) || ( !! attributes.vegetarian ) ? (
+									<span>
+										<button
+											aria-label={ __( 'Add vegetarian indicator', 'coblocks' ) }
+											label={ __( 'Vegetarian', 'coblocks' ) }
+											className={ classnames(
+												'wp-block-coblocks-food-item__attribute',
+												'wp-block-coblocks-food-item__attribute--vegetarian',
+												{
+													'is-toggled': attributes.vegetarian,
+												}
+											) }
+											onClick={ () =>	setAttributes( { vegetarian: ! attributes.vegetarian } ) }
+										>
+											<span
+												className="wp-block-coblocks-food-item__icon"
+											/>
+										</button>
+									</span>
+								) : null }
+								{ ( isSelected && !! attributes.glutenFree ) || ( !! attributes.glutenFree ) ? (
 									// Only renders if the option is checked within the Settings sidebar.
 									<span>
-										<IconButton
-											icon={ icons.pescatarian }
-											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--pescatarian"
-											onClick={ () =>
-												setAttributes( {
-													pescatarian: ! attributes.pescatarian,
-												} )
-											}
+										<button
+											aria-label={ __( 'Add gluten free indicator', 'coblocks' ) }
+											label={ __( 'Gluten Free', 'coblocks' ) }
+											className={ classnames(
+												'wp-block-coblocks-food-item__attribute',
+												'wp-block-coblocks-food-item__attribute--glutenFree',
+												{
+													'is-toggled': attributes.glutenFree,
+												}
+											) }
+											onClick={ () =>	setAttributes( { glutenFree: ! attributes.glutenFree } ) }
+										>
+											<span
+												className="wp-block-coblocks-food-item__icon"
+											/>
+										</button>
+									</span>
+								) : null }
+								{ ( isSelected && !! attributes.pescatarian ) || ( !! attributes.pescatarian ) ? (
+									// Only renders if the option is checked within the Settings sidebar.
+									<span>
+										<button
+											aria-label={ __( 'Add pescatarian indicator', 'coblocks' ) }
 											label={ __( 'Pescatarian', 'coblocks' ) }
-											isToggled={ attributes.pescatarian }
-										/>
+											className={ classnames(
+												'wp-block-coblocks-food-item__attribute',
+												'wp-block-coblocks-food-item__attribute--pescatarian',
+												{
+													'is-toggled': attributes.pescatarian,
+												}
+											) }
+											onClick={ () =>	setAttributes( { pescatarian: ! attributes.pescatarian } ) }
+										>
+											<span
+												className="wp-block-coblocks-food-item__icon"
+											/>
+										</button>
 									</span>
-								) : (
-									!! attributes.pescatarian && (
-										<Icon
-											icon={ icons.pescatarian }
-											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--pescatarian"
-										/>
-									)
-								) }
-								{ isSelected && !! attributes.vegan ? (
+								) : null }
+								{ ( isSelected && !! attributes.vegan ) || ( !! attributes.vegan ) ? (
 									// Only renders if the option is checked within the Settings sidebar.
 									<span>
-										<IconButton
-											icon={ icons.vegan }
-											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegan"
-											onClick={ () =>
-												setAttributes( { vegan: ! attributes.vegan } )
-											}
+										<button
+											aria-label={ __( 'Add vegan indicator', 'coblocks' ) }
 											label={ __( 'Vegan', 'coblocks' ) }
-											isToggled={ attributes.vegan }
-										/>
+											className={ classnames(
+												'wp-block-coblocks-food-item__attribute',
+												'wp-block-coblocks-food-item__attribute--vegan',
+												{
+													'is-toggled': attributes.vegan,
+												}
+											) }
+											onClick={ () =>	setAttributes( { vegan: ! attributes.vegan } ) }
+										>
+											<span
+												className="wp-block-coblocks-food-item__icon"
+											/>
+										</button>
 									</span>
-								) : (
-									!! attributes.vegan && (
-										<Icon
-											icon={ icons.vegan }
-											className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegan"
-										/>
-									)
-								) }
+								) : null }
 							</div>
 						</div>
 						<RichText

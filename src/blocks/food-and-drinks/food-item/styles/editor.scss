@@ -85,32 +85,32 @@
 		margin: 0;
 	}
 
-	&__attribute.components-icon-button {
-		border: 0;
-		border-radius: 2px;
-		box-shadow: none;
-		color: inherit;
-		font-size: inherit;
-		line-height: 1;
-		overflow: visible;
-		padding: 0;
+	// &__attribute.components-icon-button {
+	// 	border: 0;
+	// 	border-radius: 2px;
+	// 	box-shadow: none;
+	// 	color: inherit;
+	// 	font-size: inherit;
+	// 	line-height: 1;
+	// 	overflow: visible;
+	// 	padding: 0;
 
-		&:not(:disabled):not([aria-disabled="true"]):not(.is-default):hover {
-			box-shadow: none;
-		}
+	// 	&:not(:disabled):not([aria-disabled="true"]):not(.is-default):hover {
+	// 		box-shadow: none;
+	// 	}
 
-		&:not(.is-toggled):hover {
-			opacity: 0.725;
-		}
+	// 	&:not(.is-toggled):hover {
+	// 		opacity: 0.725;
+	// 	}
 
-		&:not(.is-toggled) {
-			opacity: 0.55;
-		}
+	// 	&:not(.is-toggled) {
+	// 		opacity: 0.55;
+	// 	}
 
-		&:focus {
-			box-shadow: 0 0 0 2px $white, 0 0 0 3px $dark-gray-500;
-		}
-	}
+	// 	&:focus {
+	// 		box-shadow: 0 0 0 2px $white, 0 0 0 3px $dark-gray-500;
+	// 	}
+	// }
 
 	&__attribute > span {
 		border: 0;

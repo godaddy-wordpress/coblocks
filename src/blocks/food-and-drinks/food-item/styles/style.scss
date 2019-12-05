@@ -1,4 +1,4 @@
-$icons: (popular);
+$icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 
 .wp-block-coblocks-food-item { 
 	flex-grow: 1;
@@ -140,16 +140,6 @@ $icons: (popular);
 	&__attributes {
 		display: flex;
 		margin-left: 0.4em;
-
-		svg {
-			fill: currentColor;
-			height: 18px;
-			width: 18px;
-
-			&:last-of-type {
-				margin-right: 0;
-			}
-		}
 	}
 
 	&__attribute {
