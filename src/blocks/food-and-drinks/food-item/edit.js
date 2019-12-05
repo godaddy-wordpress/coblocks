@@ -274,6 +274,7 @@ class FoodAndDrinksEdit extends Component {
 											className={ classnames(
 												'wp-block-coblocks-food-item__attribute',
 												'wp-block-coblocks-food-item__attribute--spicy',
+												'spicier',
 												{
 													'is-toggled': attributes.spicier,
 												}

@@ -168,6 +168,10 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 		border:none;
 		padding:0;
 	}
+	
+	&__attribute.spicier {
+		margin-left: -0.25em !important;
+	}
 
 	@each $icon in $icons {
 		&__attribute--#{$icon} &__icon {
