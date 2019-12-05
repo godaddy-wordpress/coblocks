@@ -75,6 +75,7 @@ class CoBlocks_Block_Assets {
 			array(),
 			COBLOCKS_VERSION
 		);
+
 	}
 
 	/**
@@ -159,6 +160,7 @@ class CoBlocks_Block_Assets {
 
 		// Carousel block.
 		if ( has_block( $this->slug . '/gallery-carousel' ) ) {
+
 			wp_enqueue_script(
 				$this->slug . '-flickity',
 				$vendors_dir . '/flickity' . COBLOCKS_ASSET_SUFFIX . '.js',
@@ -166,6 +168,7 @@ class CoBlocks_Block_Assets {
 				COBLOCKS_VERSION,
 				true
 			);
+
 		}
 
 		// Post Carousel block.
