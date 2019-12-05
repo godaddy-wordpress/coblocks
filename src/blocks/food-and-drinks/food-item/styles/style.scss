@@ -113,7 +113,28 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 		flex-wrap: wrap;
 	}
 
+	&__attributes {
+		display: flex;
+		margin-left: 0.4em;
 
+		svg {
+			fill: currentColor;
+			height: 18px;
+			width: 18px;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
+
+	&__attribute {
+		margin-right: 0.25em !important;
+
+		&--spicier {
+			margin-left: -0.25em !important;
+		}
+	}
 
 	&__description {
 		flex: 1 100%;
@@ -153,6 +174,9 @@ $icons: (popular), (spicy), (vegan), (vegetarian), (pescatarian), (glutenFree);
 			mask-image: url(images/food-attribute/#{$icon}.svg);
 			margin-bottom: 40%;
 
+			&:last-of-type {
+				margin-right: 0;
+			}
 		}
 
 		// IE 10+ Support
