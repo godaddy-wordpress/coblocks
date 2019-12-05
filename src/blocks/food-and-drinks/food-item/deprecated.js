@@ -4,6 +4,7 @@
 import { attributes } from './block.json';
 import { hasEmptyAttributes } from '../../../utils/block-helpers';
 import icons from './deprecated/icons';
+import iconsBackground from './deprecated/iconsBackground';
 import fromEntries from '../../../js/coblocks-fromEntries';
 
 /**
@@ -147,10 +148,135 @@ const deprecatedIcons = ( { attributes } ) => {
 	);
 };
 
+const deprecatedIconsToBackgroundImage = ( { attributes } ) => {
+	return isEmpty( attributes ) ? null : (
+		<div
+			className={ attributes.className }
+			itemScope
+			itemType="http://schema.org/MenuItem"
+		>
+			{ !! attributes.showImage && attributes.url && (
+				<figure className="wp-block-coblocks-food-item__figure">
+					<img
+						src={ attributes.url }
+						alt={ attributes.alt }
+						itemProp="image"
+						style={ {
+							objectPosition: attributes.focalPoint ?
+								`${ attributes.focalPoint.x * 100 }% ${ attributes.focalPoint.y *
+										100 }%` :
+								undefined,
+						} }
+					/>
+				</figure>
+			) }
+			<div className="wp-block-coblocks-food-item__content">
+				<div className="wp-block-coblocks-food-item__heading-wrapper">
+					<RichText.Content
+						tagName="h4"
+						className="wp-block-coblocks-food-item__heading"
+						value={ attributes.title }
+						itemprop="name"
+					/>
+					{ ( !! attributes.spicy ||
+						!! attributes.vegetarian ||
+						!! attributes.glutenFree ||
+						!! attributes.pescatarian ||
+						!! attributes.popular ||
+						!! attributes.vegan ) && (
+						<div className="wp-block-coblocks-food-item__attributes">
+							{ !! attributes.popular && (
+								<span className="hint--top" aria-label={ __( 'Popular', 'coblocks' ) }>
+									<Icon
+										icon={ iconsBackground.popular }
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--popular"
+									/>
+								</span>
+							) }
+							{ !! attributes.spicy && (
+								<span className="hint--top" aria-label={ __( 'Spicy', 'coblocks' ) }>
+									<Icon
+										icon={ iconsBackground.spicy }
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicy"
+									/>
+								</span>
+							) }
+							{ !! attributes.spicier && !! attributes.spicy && (
+								<span className="hint--top" aria-label={ __( 'Spicier', 'coblocks' ) }>
+									<Icon
+										icon={ iconsBackground.spicy }
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--spicier"
+									/>
+								</span>
+							) }
+							{ !! attributes.vegetarian && (
+								<span className="hint--top" aria-label={ __( 'Vegetarian', 'coblocks' ) }>
+									<Icon
+										icon={ iconsBackground.vegetarian }
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--veg"
+									/>
+								</span>
+							) }
+							{ !! attributes.glutenFree && (
+								<span className="hint--top" aria-label={ __( 'Gluten Free', 'coblocks' ) }>
+									<Icon
+										icon={ iconsBackground.glutenFree }
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--gf"
+									/>
+								</span>
+							) }
+							{ !! attributes.pescatarian && (
+								<span className="hint--top" aria-label={ __( 'Pescatarian', 'coblocks' ) }>
+									<Icon
+										icon={ iconsBackground.pescatarian }
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--pescatarian"
+									/>
+								</span>
+							) }
+							{ !! attributes.vegan && (
+								<span className="hint--top" aria-label={ __( 'Vegan', 'coblocks' ) }>
+									<Icon
+										icon={ iconsBackground.vegan }
+										className="wp-block-coblocks-food-item__attribute wp-block-coblocks-food-item__attribute--vegan"
+									/>
+								</span>
+							) }
+						</div>
+					) }
+				</div>
+				<RichText.Content
+					tagName="p"
+					className="wp-block-coblocks-food-item__description"
+					value={ attributes.description }
+					itemprop="description"
+				/>
+				{ !! attributes.showPrice && attributes.price && (
+					<p
+						className="wp-block-coblocks-food-item__price"
+						itemProp="offers"
+						itemScope
+						itemType="http://schema.org/Offer"
+					>
+						<RichText.Content
+							tagName="span"
+							value={ attributes.price }
+							itemprop="price"
+						/>
+					</p>
+				) }
+			</div>
+		</div>
+	);
+};
+
 const deprecated = [
 	{
 		attributes,
 		save: deprecatedIcons,
+	},
+	{
+		attributes,
+		save: deprecatedIconsToBackgroundImage,
 	},
 ];
 
