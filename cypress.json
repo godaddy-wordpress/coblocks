@@ -1,9 +1,10 @@
 {
   "chromeWebSecurity": false,
   "fixturesFolder": "languages",
-  "integrationFolder": ".dev/tests/cypress/integration",
   "pluginsFile": ".dev/tests/cypress/plugins/index.js",
   "supportFile": ".dev/tests/cypress/support/commands.js",
-  "screenshotsFolder": ".dev/tests/cypress/screenshos",
-  "video": false
+  "screenshotsFolder": ".dev/tests/cypress/screenshots",
+  "projectId": "sovnn2",
+  "integrationFolder": "./",
+  "testFiles": "**/*.cypress.js"
 }

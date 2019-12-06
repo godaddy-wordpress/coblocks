@@ -1,8 +1,14 @@
-beforeEach( function() {
-  Cypress.Cookies.preserveOnce( 'wordpress_test_cookie' );
-  Cypress.Cookies.preserveOnce( 'wporg_locale' );
-  Cypress.Cookies.preserveOnce( 'wporg_logged_in' );
-  Cypress.Cookies.preserveOnce( 'wporg_sec' );
+import { loginToSite, createNewPost, disableGutenbergFeatures } from '../helpers';
+
+before( function() {
+  loginToSite();
+  createNewPost();
+  disableGutenbergFeatures();
+} );
+
+// Maintain WordPress logged in state
+Cypress.Cookies.defaults( {
+  whitelist: /wordpress_.*/
 } );
 
 // Custom uploadFile command
