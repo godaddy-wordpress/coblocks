@@ -87,7 +87,7 @@ class CoBlocks_Block_Assets {
 
 			// Mock wp_enqueue_style for utility styles.
 			wp_enqueue_style(
-				$this->slug . '-frontend',
+				$this->slug . '-utilities',
 				$this->url . '/dist/utilities.style.build.css',
 				array(),
 				COBLOCKS_VERSION
@@ -119,8 +119,7 @@ class CoBlocks_Block_Assets {
 			false
 		);
 
-		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
-		$post_title = get_bloginfo( 'name' ) . ( ( false === $post_id ) ? '' : sprintf( ' - %s', get_the_title( $post_id ) ) );
+		$post_id = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 
 		/**
 		 * Filter the default block email address value
@@ -130,13 +129,15 @@ class CoBlocks_Block_Assets {
 		 */
 		$email_to = (string) apply_filters( 'coblocks_form_default_email', get_option( 'admin_email' ), $post_id );
 
+		$form_subject = ( new CoBlocks_Form() )->default_subject();
+
 		wp_localize_script(
 			$this->slug . '-editor',
 			'coblocksBlockData',
 			array(
 				'form'                           => array(
 					'adminEmail'   => $email_to,
-					'emailSubject' => $post_title,
+					'emailSubject' => $form_subject,
 				),
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
@@ -177,6 +178,7 @@ class CoBlocks_Block_Assets {
 
 		// Carousel block.
 		if ( has_block( $this->slug . '/gallery-carousel' ) ) {
+
 			wp_enqueue_script(
 				$this->slug . '-flickity',
 				$vendors_dir . '/flickity' . COBLOCKS_ASSET_SUFFIX . '.js',
@@ -184,6 +186,7 @@ class CoBlocks_Block_Assets {
 				COBLOCKS_VERSION,
 				true
 			);
+
 		}
 
 		// Post Carousel block.
