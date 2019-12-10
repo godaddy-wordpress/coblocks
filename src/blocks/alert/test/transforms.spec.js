@@ -42,13 +42,14 @@ describe( 'coblocks/alert transforms', () => {
 	} );
 
 	it( 'should transform raw html to block', () => {
-		const content = 'Lorem <strong>ipsum</strong> dolor sit amet.';
-		const HTML = `<div class="wp-block-coblocks-alert"><p class="wp-block-coblocks-alert__title">${ content }</p><p class="wp-block-coblocks-alert__text">${ content }</p></div>`;
-
+		const value = 'hello';
+		const title = value;
+		const HTML = `<!-- wp:coblocks/alert {"title":"${ title }"} --><div class="wp-block-coblocks-alert"><p class="wp-block-coblocks-alert__title">${ title }</p><p class="wp-block-coblocks-alert__text">${ value }</p></div><!-- /wp:coblocks/alert -->`;
 		const block = rawHandler( { HTML } );
 
 		expect( block[ 0 ].isValid ).toBe( true );
 		expect( block[ 0 ].name ).toBe( name );
-		expect( block[ 0 ].attributes.value ).toBe( content );
+		expect( block[ 0 ].attributes.value ).toBe( value );
+		expect( block[ 0 ].attributes.title ).toBe( title );
 	} );
 } );
