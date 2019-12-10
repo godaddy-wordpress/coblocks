@@ -83,7 +83,7 @@ class CoBlocks_Block_Assets {
 	 * @access public
 	 */
 	public function editor_assets() {
-		$asset_file = include COBLOCKS_PLUGIN_DIR . '/dist/blocks.build.asset.php';
+		$asset_file = include COBLOCKS_PLUGIN_DIR . 'dist/blocks.build.asset.php';
 
 		// Styles.
 		wp_register_style(
