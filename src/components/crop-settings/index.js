@@ -1,9 +1,4 @@
 /**
- * Styles
- */
-import './styles/editor.scss';
-
-/**
  * External dependencies
  */
 import classnames from 'classnames';

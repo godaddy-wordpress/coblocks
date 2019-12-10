@@ -1,10 +1,4 @@
 /**
- * Styles.
- */
-import './styles/style.scss';
-import './styles/editor.scss';
-
-/**
  * Internal dependencies
  */
 import deprecated from './deprecated';

@@ -6,8 +6,6 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import './styles/style.scss';
-import './styles/editor.scss';
 import { GalleryClasses } from '../../components/block-gallery/shared';
 
 /**

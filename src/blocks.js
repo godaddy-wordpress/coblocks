@@ -8,10 +8,6 @@ import {
 // Register block category
 import './utils/block-category';
 
-// Editor and Frontend Styles
-import './styles/editor.scss';
-import './styles/style.scss';
-
 // Extensions
 import './extensions/colors/inspector';
 import './extensions/typography';
@@ -26,9 +22,6 @@ import './extensions/image-crop';
 
 // Formats
 import './formats';
-
-// Block Gallery
-import './components/block-gallery';
 
 // Register Blocks
 import * as accordion from './blocks/accordion';

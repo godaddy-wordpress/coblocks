@@ -7,7 +7,6 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import icons from './icons';
-import './styles/editor.scss';
 
 /**
  * WordPress dependencies

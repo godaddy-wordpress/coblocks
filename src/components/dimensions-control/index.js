@@ -8,7 +8,6 @@ import map from 'lodash/map';
  * Internal dependencies
  */
 import icons from './icons';
-import './styles/editor.scss';
 import DimensionsSelect from './dimensions-select';
 
 /**

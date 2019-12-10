@@ -6,7 +6,6 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import './styles/editor.scss';
 import googleFonts from './../../components/font-family/fonts';
 import TypographyAttributes from './attributes';
 import TypograpyClasses from './classes';

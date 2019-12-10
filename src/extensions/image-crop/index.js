@@ -1,11 +1,6 @@
 /* global coblocksBlockData */
 
 /**
- * Styles
- */
-import './styles/editor.scss';
-
-/**
  * External dependencies
  */
 import _, { assign } from 'lodash';

@@ -5,11 +5,6 @@ import classnames from 'classnames';
 import flatMap from 'lodash/flatMap';
 
 /**
- * Internal dependencies
- */
-import './styles/editor.scss';
-
-/**
  * WordPress dependencies
  */
 import { DOWN } from '@wordpress/keycodes';

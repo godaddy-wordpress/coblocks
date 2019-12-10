@@ -1,8 +1,6 @@
 /**
  * Internal Dependencies
  */
-import './styles/editor.scss';
-import './styles/style.scss';
 import Controls from './controls';
 import applyStyle from './apply-style';
 import { TypographyAttributes } from '../../components/typography-controls';

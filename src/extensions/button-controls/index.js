@@ -1,10 +1,4 @@
 /**
- * Internal Dependencies
- */
-import './styles/editor.scss';
-import './styles/style.scss';
-
-/**
  * External Dependencies
  */
 import classnames from 'classnames';
