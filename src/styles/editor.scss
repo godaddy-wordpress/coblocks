@@ -12,6 +12,10 @@
 // Adjust dropZone component labels for our blocks.
 @import "editor/dropzone";
 
+@import "../components/**/editor.scss";
+@import "../extensions/**/editor.scss";
+@import "../blocks/**/editor.scss";
+
 // Shim as Gutenberg removes margin-bottom from lists.
 // @todo, this should be moved into the editor styles.
 .editor-styles-wrapper {
