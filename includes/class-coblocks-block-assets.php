@@ -83,6 +83,7 @@ class CoBlocks_Block_Assets {
 	 * @access public
 	 */
 	public function editor_assets() {
+		$asset_file = include COBLOCKS_PLUGIN_DIR . '/dist/blocks.build.asset.php';
 
 		// Styles.
 		wp_register_style(
@@ -96,9 +97,9 @@ class CoBlocks_Block_Assets {
 		wp_register_script(
 			$this->slug . '-editor',
 			$this->url . '/dist/blocks.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-plugins', 'wp-components', 'wp-edit-post', 'wp-api', 'wp-rich-text', 'wp-editor' ),
-			COBLOCKS_VERSION,
-			false
+			$asset_file['dependencies'],
+			$asset_file['version'],
+			true
 		);
 
 		$post_id    = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
