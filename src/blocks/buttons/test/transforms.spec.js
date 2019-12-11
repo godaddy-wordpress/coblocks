@@ -19,7 +19,7 @@ describe( 'coblocks/buttons transforms', () => {
 	} );
 
 	// Should allow transform when prefixed with 1-4 colons.
-	for ( let i = 1; i < 5; i++ ) {
+	for ( let i = 1; i <= 4; i++ ) {
 		const prefix = Array( i + 1 ).join( ':' ) + 'buttons';
 		it( `should transform when ${ prefix } prefix is seen`, () => {
 			const block = helpers.performPrefixTransformation( name, prefix, prefix );
