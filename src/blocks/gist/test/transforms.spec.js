@@ -1,10 +1,7 @@
 /**
  * External dependencies
  */
-import { registerCoreBlocks } from '@wordpress/block-library';
 import { registerBlockType, rawHandler } from '@wordpress/blocks';
-
-registerCoreBlocks();
 
 /**
  * Internal dependencies.
