@@ -11,6 +11,7 @@ const Inspector = props => {
 		onToggleCalendarLink,
 		onChangeVisibleEvents,
 		setAttributes,
+		innerBlocks,
 	} = props;
 
 	const {
@@ -18,7 +19,6 @@ const Inspector = props => {
 		eventsToShow,
 		linkACalendar,
 		externalCalendarUrl,
-		childrenLength,
 	} = attributes;
 
 	const eventsRangeOptions = [
@@ -41,7 +41,7 @@ const Inspector = props => {
 					checked={ linkACalendar }
 					onChange={ onToggleCalendarLink }
 				/>
-				{ childrenLength > 5 &&
+				{ innerBlocks.length > 5 &&
 					<RangeControl
 						label={ __( 'Events per page', 'coblocks' ) }
 						value={ eventsToShow }

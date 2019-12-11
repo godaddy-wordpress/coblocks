@@ -32,6 +32,7 @@ class EventItem extends Component {
 
 		this.state = {
 			editing: ! this.props.attributes.externalCalendarUrl && this.props.attributes.linkACalendar,
+			currentPage: this.props.innerBlocks.length,
 		};
 
 		this.onSubmitURL = this.onSubmitURL.bind( this );
@@ -139,7 +140,7 @@ class EventItem extends Component {
 			)
 		);
 
-		attributes.currentPage = newItemPageNumber;
+		this.setState( { currentPage: newItemPageNumber } );
 
 		this.props.innerBlocks.push( newEventBlock[ 0 ] );
 
@@ -214,7 +215,7 @@ class EventItem extends Component {
 				/>
 				{ ! attributes.linkACalendar &&
 					<div
-						data-current-page-num={ String( attributes.currentPage ) }
+						data-current-page-num={ String( this.state.currentPage ) }
 						className={ classnames( className, {
 							'child-selected': isSelected || clientId === selectedParentClientId,
 						}, 'coblocks-custom-event' ) }

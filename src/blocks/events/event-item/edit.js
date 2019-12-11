@@ -122,7 +122,7 @@ class EventsEdit extends Component {
 						/>
 					</div>
 					{ attributes.lastItem &&
-						<div className="event-item-last hidden">
+						<div className="event-item-last">
 							<div><span>={ __( 'Page Break', 'coblocks' ) }</span></div>
 						</div>
 					}
