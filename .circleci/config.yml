@@ -239,7 +239,7 @@ jobs:
               git add languages/coblocks.json
               git add languages/coblocks.pot
               git commit -m "Update coblocks.pot/coblocks.json files [skip i18n]"
-              git push origin master --force --quiet
+              git push origin master --quiet
             fi
           path: ~/coblocks
 
