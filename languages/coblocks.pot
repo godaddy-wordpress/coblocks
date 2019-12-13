@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-12-13T21:06:37+00:00\n"
+"POT-Creation-Date: 2019-12-13T23:56:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: coblocks\n"
@@ -3849,74 +3849,74 @@ msgstr ""
 msgid "Change row block layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:121
-msgid "one"
-msgstr ""
-
-#: src/blocks/row/edit.js:123
-msgid "two"
-msgstr ""
-
-#: src/blocks/row/edit.js:125
-msgid "three"
-msgstr ""
-
-#: src/blocks/row/edit.js:127
-msgid "four"
-msgstr ""
-
-#: src/blocks/row/edit.js:169
-msgid "Add background to row"
-msgstr ""
-
-#: src/blocks/row/edit.js:174
-msgid "One Column"
-msgstr ""
-
-#: src/blocks/row/edit.js:175
-msgid "Two Columns"
-msgstr ""
-
-#: src/blocks/row/edit.js:176
-msgid "Three Columns"
-msgstr ""
-
-#: src/blocks/row/edit.js:177
-msgid "Four Columns"
-msgstr ""
-
-#: src/blocks/row/edit.js:202
+#: src/blocks/row/edit.js:122
 msgid "Row Layout"
 msgstr ""
 
 #. block name
 #. translators: block name
-#: src/blocks/row/edit.js:202
+#: src/blocks/row/edit.js:122
 #: src/blocks/row/index.js:38
 msgid "Row"
 msgstr ""
 
 #. %s: 'one' 'two' 'three' and 'four'
 #. translators: %s: 'one' 'two' 'three' and 'four'
-#: src/blocks/row/edit.js:206
+#: src/blocks/row/edit.js:126
 msgid "Now select a layout for this %s column row."
 msgstr ""
 
-#: src/blocks/row/edit.js:209
+#: src/blocks/row/edit.js:129
 msgid "Select the number of columns for this row."
 msgstr ""
 
-#: src/blocks/row/edit.js:214
+#: src/blocks/row/edit.js:134
 msgid "Select Row Columns"
 msgstr ""
 
-#: src/blocks/row/edit.js:239
+#: src/blocks/row/edit.js:159
 #: src/blocks/row/inspector.js:121
 msgid "Select Row Layout"
 msgstr ""
 
-#: src/blocks/row/edit.js:249
+#: src/blocks/row/edit.js:169
 msgid "Back to Columns"
+msgstr ""
+
+#: src/blocks/row/edit.js:41
+msgid "one"
+msgstr ""
+
+#: src/blocks/row/edit.js:43
+msgid "two"
+msgstr ""
+
+#: src/blocks/row/edit.js:45
+msgid "three"
+msgstr ""
+
+#: src/blocks/row/edit.js:47
+msgid "four"
+msgstr ""
+
+#: src/blocks/row/edit.js:89
+msgid "Add background to row"
+msgstr ""
+
+#: src/blocks/row/edit.js:94
+msgid "One Column"
+msgstr ""
+
+#: src/blocks/row/edit.js:95
+msgid "Two Columns"
+msgstr ""
+
+#: src/blocks/row/edit.js:96
+msgid "Three Columns"
+msgstr ""
+
+#: src/blocks/row/edit.js:97
+msgid "Four Columns"
 msgstr ""
 
 #. block description
@@ -3947,55 +3947,55 @@ msgstr ""
 msgid "Row Settings"
 msgstr ""
 
-#: src/blocks/row/layouts.js:13
+#: src/blocks/row/utilities.js:13
 msgid "Equal Split"
 msgstr ""
 
-#: src/blocks/row/layouts.js:14
+#: src/blocks/row/utilities.js:14
 msgid "Two Thirds / One Third"
 msgstr ""
 
-#: src/blocks/row/layouts.js:15
+#: src/blocks/row/utilities.js:15
 msgid "One Third / Two Thirds"
 msgstr ""
 
-#: src/blocks/row/layouts.js:16
+#: src/blocks/row/utilities.js:16
 msgid "Three Quarters / Quarter"
 msgstr ""
 
-#: src/blocks/row/layouts.js:17
+#: src/blocks/row/utilities.js:17
 msgid "Quarter / Three Quarters"
 msgstr ""
 
-#: src/blocks/row/layouts.js:20
+#: src/blocks/row/utilities.js:20
 msgid "Thirds"
 msgstr ""
 
-#: src/blocks/row/layouts.js:21
+#: src/blocks/row/utilities.js:21
 msgid "Half / Quarter / Quarter"
 msgstr ""
 
-#: src/blocks/row/layouts.js:22
+#: src/blocks/row/utilities.js:22
 msgid "Quarter / Quarter/ Half"
 msgstr ""
 
-#: src/blocks/row/layouts.js:23
+#: src/blocks/row/utilities.js:23
 msgid "Quarter / Half / Quarter"
 msgstr ""
 
-#: src/blocks/row/layouts.js:24
+#: src/blocks/row/utilities.js:24
 msgid "One Fifth/ Three Fifths / One Fifth"
 msgstr ""
 
-#: src/blocks/row/layouts.js:27
+#: src/blocks/row/utilities.js:27
 msgid "Quarters"
 msgstr ""
 
-#: src/blocks/row/layouts.js:28
+#: src/blocks/row/utilities.js:28
 msgid "Two Fifths / Fifth / Fifth / Fifth"
 msgstr ""
 
-#: src/blocks/row/layouts.js:29
+#: src/blocks/row/utilities.js:29
 msgid "Fifth / Fifth / Fifth / Two Fifths"
 msgstr ""
 
