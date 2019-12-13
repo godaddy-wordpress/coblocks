@@ -227,11 +227,12 @@ class FoodAndDrinksEdit extends Component {
 							/>
 							<div className="wp-block-coblocks-food-item__attributes">
 								{ ( isSelected && attributes.title ) || ( !! attributes.popular ) ? (
-									<span className="hint--top" aria-label={ __( 'Popular', 'coblocks' ) }>
+									<span>
 										<button
-											aria-label={ __( 'Add popular indicator', 'coblocks' ) }
+											aria-label={ __( 'Popular', 'coblocks' ) }
 											label={ __( 'Popular', 'coblocks' ) }
 											className={ classnames(
+												'hint--top',
 												'wp-block-coblocks-food-item__attribute',
 												'wp-block-coblocks-food-item__attribute--popular',
 												{
@@ -247,11 +248,12 @@ class FoodAndDrinksEdit extends Component {
 									</span>
 								) : null }
 								{ ( isSelected && attributes.title ) || ( !! attributes.spicy ) ? (
-									<span className="hint--top" aria-label={ __( 'Spicy', 'coblocks' ) }>
+									<span>
 										<button
-											aria-label={ __( 'Add spicy indicator', 'coblocks' ) }
+											aria-label={ __( 'Spicy', 'coblocks' ) }
 											label={ __( 'Spicy', 'coblocks' ) }
 											className={ classnames(
+												'hint--top',
 												'wp-block-coblocks-food-item__attribute',
 												'wp-block-coblocks-food-item__attribute--spicy',
 												{
@@ -267,11 +269,12 @@ class FoodAndDrinksEdit extends Component {
 									</span>
 								) : null }
 								{ ( isSelected && attributes.title && !! attributes.spicy ) || ( !! attributes.spicier ) ? (
-									<span className="hint--top" aria-label={ __( 'Hot', 'coblocks' ) }>
+									<span>
 										<button
-											aria-label={ __( 'Add hot indicator', 'coblocks' ) }
+											aria-label={ __( 'Hot', 'coblocks' ) }
 											label={ __( 'Hot', 'coblocks' ) }
 											className={ classnames(
+												'hint--top',
 												'wp-block-coblocks-food-item__attribute',
 												'wp-block-coblocks-food-item__attribute--spicy',
 												'spicier',
@@ -288,11 +291,12 @@ class FoodAndDrinksEdit extends Component {
 									</span>
 								) : null }
 								{ ( isSelected && attributes.title ) || ( !! attributes.vegetarian ) ? (
-									<span className="hint--top" aria-label={ __( 'Vegetarian', 'coblocks' ) }>
+									<span>
 										<button
-											aria-label={ __( 'Add vegetarian indicator', 'coblocks' ) }
+											aria-label={ __( 'Vegetarian', 'coblocks' ) }
 											label={ __( 'Vegetarian', 'coblocks' ) }
 											className={ classnames(
+												'hint--top',
 												'wp-block-coblocks-food-item__attribute',
 												'wp-block-coblocks-food-item__attribute--vegetarian',
 												{
@@ -309,11 +313,12 @@ class FoodAndDrinksEdit extends Component {
 								) : null }
 								{ ( isSelected && !! attributes.glutenFree ) || ( !! attributes.glutenFree ) ? (
 									// Only renders if the option is checked within the Settings sidebar.
-									<span className="hint--top" aria-label={ __( 'Gluten Free', 'coblocks' ) }>
+									<span>
 										<button
-											aria-label={ __( 'Add gluten free indicator', 'coblocks' ) }
+											aria-label={ __( 'Gluten Free', 'coblocks' ) }
 											label={ __( 'Gluten Free', 'coblocks' ) }
 											className={ classnames(
+												'hint--top',
 												'wp-block-coblocks-food-item__attribute',
 												'wp-block-coblocks-food-item__attribute--glutenFree',
 												{
@@ -330,11 +335,12 @@ class FoodAndDrinksEdit extends Component {
 								) : null }
 								{ ( isSelected && !! attributes.pescatarian ) || ( !! attributes.pescatarian ) ? (
 									// Only renders if the option is checked within the Settings sidebar.
-									<span className="hint--top" aria-label={ __( 'Pescatarian', 'coblocks' ) }>
+									<span>
 										<button
-											aria-label={ __( 'Add pescatarian indicator', 'coblocks' ) }
+											aria-label={ __( 'Pescatarian', 'coblocks' ) }
 											label={ __( 'Pescatarian', 'coblocks' ) }
 											className={ classnames(
+												'hint--top',
 												'wp-block-coblocks-food-item__attribute',
 												'wp-block-coblocks-food-item__attribute--pescatarian',
 												{
@@ -351,11 +357,12 @@ class FoodAndDrinksEdit extends Component {
 								) : null }
 								{ ( isSelected && !! attributes.vegan ) || ( !! attributes.vegan ) ? (
 									// Only renders if the option is checked within the Settings sidebar.
-									<span className="hint--top" aria-label={ __( 'Vegan', 'coblocks' ) }>
+									<span>
 										<button
-											aria-label={ __( 'Add vegan indicator', 'coblocks' ) }
+											aria-label={ __( 'Vegan', 'coblocks' ) }
 											label={ __( 'Vegan', 'coblocks' ) }
 											className={ classnames(
+												'hint--top',
 												'wp-block-coblocks-food-item__attribute',
 												'wp-block-coblocks-food-item__attribute--vegan',
 												{
