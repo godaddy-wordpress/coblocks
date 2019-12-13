@@ -35,7 +35,7 @@ const transforms = {
 			isMultiBlock: true,
 			blocks: [ 'core/image' ],
 			transform: ( attributes ) => {
-				const validImages = filter( attributes, ( { id, url } ) => id && url );
+				const validImages = filter( attributes, ( { id, url } ) => ( id || id === 0 ) && url );
 				if ( validImages.length > 0 ) {
 					return createBlock( metadata.name, {
 						images: validImages.map( ( { id, url, alt, caption }, index ) => ( { id, url, alt, caption, index } ) ),
@@ -47,7 +47,7 @@ const transforms = {
 		},
 		{
 			type: 'prefix',
-			prefix: ':masonry',
+			prefix: ':collage',
 			transform: ( content ) => createBlock( metadata.name, { content } ),
 		},
 	],
