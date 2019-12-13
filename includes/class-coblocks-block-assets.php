@@ -124,8 +124,84 @@ class CoBlocks_Block_Assets {
 				),
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
+				'customIcons'                    => $this->get_custom_icons(),
 			)
 		);
+
+	}
+
+	/**
+	 * Load custom icons from the theme directory, if they exist
+	 *
+	 * @return array Custom icons array if they exist, else empty array.
+	 */
+	public function get_custom_icons() {
+
+		$config = array();
+		$icons  = glob( get_stylesheet_directory() . '/coblocks/icons/*.svg' );
+
+		if ( empty( $icons ) ) {
+
+			return array();
+
+		}
+
+		if ( file_exists( get_stylesheet_directory() . '/coblocks/icons/config.json' ) ) {
+
+			$config = json_decode( file_get_contents( get_stylesheet_directory() . '/coblocks/icons/config.json' ), true );
+
+		}
+
+		$custom_icons = array();
+
+		foreach ( $icons as $icon ) {
+
+			$icon_slug = str_replace( '.svg', '', basename( $icon ) );
+			$icon_name = ucwords( str_replace( '-', ' ', $icon_slug ) );
+
+			if ( ! empty( $config ) ) {
+
+				// Icon exists in directory, but not found in config.
+				if ( ! array_key_exists( $icon_slug, $config ) ) {
+
+					continue;
+
+				}
+			}
+
+			ob_start();
+			include $icon;
+			$retrieved_icon = ob_get_clean();
+
+			$custom_icons[ $icon_slug ] = array(
+				'label'    => $icon_name,
+				'keywords' => strtolower( $icon_name ),
+				'icon'     => $retrieved_icon,
+			);
+
+		}
+
+		if ( ! empty( $config ) ) {
+
+			foreach ( $config as $icon => $metadata ) {
+
+				if ( ! array_key_exists( $icon, $custom_icons ) ) {
+
+					continue;
+
+				}
+
+				if ( array_key_exists( 'icon_outlined', $config[ $icon ] ) ) {
+
+					$metadata['icon_outlined'] = file_exists( get_stylesheet_directory() . '/coblocks/icons/' . $metadata['icon_outlined'] ) ? file_get_contents( get_stylesheet_directory() . '/coblocks/icons/' . $metadata['icon_outlined'] ) : '';
+
+				}
+
+				$custom_icons[ $icon ] = array_replace_recursive( $custom_icons[ $icon ], array_filter( $metadata ) );
+
+			}
+		}
+		return $custom_icons;
 
 	}
 
