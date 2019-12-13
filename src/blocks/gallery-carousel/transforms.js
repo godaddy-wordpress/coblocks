@@ -38,27 +38,7 @@ const transforms = {
 		},
 		{
 			type: 'block',
-			blocks: [ 'coblocks/gallery-thumbnails' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-					gridSize: 'lrg',
-				} )
-			),
-		},
-		{
-			type: 'block',
 			blocks: [ 'coblocks/gallery-offset' ],
-			transform: ( attributes ) => (
-				createBlock( metadata.name, {
-					...GalleryTransforms( attributes ),
-					gridSize: 'lrg',
-				} )
-			),
-		},
-		{
-			type: 'block',
-			blocks: [ 'coblocks/gallery-auto-height' ],
 			transform: ( attributes ) => (
 				createBlock( metadata.name, {
 					...GalleryTransforms( attributes ),
